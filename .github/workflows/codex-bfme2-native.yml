@@ -1,4 +1,4 @@
-name: Codex BFME2 native work selection
+name: Codex BFME2 native decal verification
 on:
   push:
     branches: [codex/20261025-bfme2-native]
@@ -14,13 +14,14 @@ jobs:
     timeout-minutes: 45
     env:
       BFME_CLAIM_OWNER: mcmickey93-20261025-bfme2
+      BFME_CLAIM_NS: refs/heads/claims/
       PYTHONUTF8: '1'
       BUILD_POOL: '4'
     steps:
       - uses: actions/checkout@v4
         with:
           repository: Open-BFME/Open-BFME-2
-          ref: 349db6dc10069cc230469ebf3f6dd6d19a17fb82
+          ref: 0c7ebc35a7181c613f902932d73395abdbad9f66
           fetch-depth: 512
           submodules: false
           persist-credentials: false
@@ -38,59 +39,136 @@ jobs:
           exit $LASTEXITCODE
       - name: Ledger integrity
         run: python tools/check_csv.py
-      - name: Selection and reports (read only)
+      - name: Fenced native source verification and local commit only
         shell: python
         run: |
-          import json, subprocess, sys
+          import csv, hashlib, json, os, struct, subprocess, sys, traceback
           from pathlib import Path
+          sys.path.insert(0, 'tools')
+          import build, claims
+          
           reports = Path('build/codex-selection')
           reports.mkdir(parents=True, exist_ok=True)
-          source = 'Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp'
-          commands = [
-            ('head', ['git', 'rev-parse', 'HEAD']),
-            ('reference', ['git', 'submodule', 'status', 'reference/open-bfme-1']),
-            ('reference-upstream', ['git', 'ls-remote', 'https://github.com/Open-BFME/Open-BFME-1.git', 'refs/heads/master']),
-            ('progress', [sys.executable, 'tools/progress.py', 'origin/master']),
-            ('unmatched', [sys.executable, 'tools/find_declared_unmatched.py', source]),
-            ('census-history', ['git', 'fetch', '--no-tags', '--depth', '1', 'origin', 'ef9c691284a2798f4acce0973f4785d78c7111f4']),
-            ('ledger-rows', [sys.executable, '-c', "import csv,json;print(json.dumps([r for r in csv.DictReader(open('reverse/functions.csv',newline='')) if r['source']=='"+source+"'],indent=2))"]),
-            ('index', [sys.executable, 'tools/link_check.py', '--fetch-index']),
-            ('native-control', [sys.executable, 'tools/build.py', source]),
-            ('preview', [sys.executable, 'tools/link_check.py', source]),
-            ('ranked-file', [sys.executable, 'tools/link_rank.py', '--file', source]),
-            ('link-near', [sys.executable, 'tools/link_rank.py', '--near', '1', '--top', '12']),
-            ('naked-all', [sys.executable, 'tools/list_naked_candidates.py', 'Code', '--all', '--ranked', '--limit', '15', '--max-bytes', '100000']),
-          ]
-          sys.path.insert(0, 'tools')
-          import claims
-          claim_key = claims.key_of('file:' + source)
-          conflict = claims.conflicts([claim_key])
-          if conflict:
-              print('CLAIM_CONFLICT ' + json.dumps({str(k):v for k,v in conflict.items()}), flush=True)
-          else:
-              marker_sha = claims._record(claims.owner(), 4,
-                  note='Prepared source cleanup; no upstream lease until create-only Connector publication',
-                  scope=source, locks=[claim_key])
-              record = json.loads(subprocess.check_output(['git','show','-s','--format=%B',marker_sha], text=True))
-              empty_tree = subprocess.check_output(['git','show','-s','--format=%T',marker_sha],text=True).strip()
-              prepared = {'source':source,'key':claim_key,'record':record,'local_sha':marker_sha,'tree':empty_tree,
-                          'base':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()}
-              (reports / 'prepared-claim.json').write_text(json.dumps(prepared, indent=2))
-              print('PREPARED_CLAIM ' + json.dumps(prepared), flush=True)
-          verdicts = {}
-          for label, command in commands:
-              print('\nREPORT ' + label, flush=True)
-              try:
-                  result = subprocess.run(command, capture_output=True, text=True, timeout=1200)
-                  text = result.stdout + result.stderr
-                  verdicts[label] = result.returncode
-              except subprocess.TimeoutExpired as error:
-                  text = str(error)
-                  verdicts[label] = 'timeout'
-              (reports / (label + '.txt')).write_text(text, encoding='utf-8')
-              print(text, flush=True)
-              print('RETURN ' + str(verdicts[label]), flush=True)
-          (reports / 'verdicts.json').write_text(json.dumps(verdicts, indent=2))
+          source = Path('Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp')
+          obstacles = Path('docs/linking_obstacles.md')
+          original = source.read_bytes()
+          original_obstacles = obstacles.read_bytes()
+          source_key = claims.key_of('file:' + source.as_posix())
+          claim_sha = '49739d89e66d7bcf017adf69b4a6575975074512'
+          success = False
+          
+          def run(label, command, accepted=(0,), timeout=1200):
+              result = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
+              output = result.stdout + result.stderr
+              (reports / (label + '.txt')).write_text(output, encoding='utf-8')
+              print('REPORT ' + label + '\n' + output + '\nRETURN ' + str(result.returncode), flush=True)
+              if result.returncode not in accepted:
+                  raise RuntimeError(label + ' failed')
+              return result
+          
+          def fence():
+              active = claims.active()
+              assert active.get(source_key, {}).get('owner') == os.environ['BFME_CLAIM_OWNER'], active.get(source_key)
+              assert active[source_key].get('lease') == '54e21b7d72c548d7b65b8f81b40999ce'
+              assert claims.holds(source_key, claim_sha), 'claim token changed'
+              conflicts = claims.conflicts([source_key])
+              assert not conflicts, conflicts
+              print('FENCE_OK ' + source_key + ' ' + claim_sha, flush=True)
+          
+          try:
+              fence()
+              run('unmatched-before', [sys.executable, 'tools/find_declared_unmatched.py', source.as_posix()])
+              run('index', [sys.executable, 'tools/link_check.py', '--fetch-index'])
+              run('before-bytes', [sys.executable, 'tools/build.py', source.as_posix()])
+              before = run('before-link', [sys.executable, 'tools/link_check.py', source.as_posix()], accepted=(0,1))
+              rows = [row for row in csv.DictReader(Path('reverse/functions.csv').open(newline='')) if row['source'] == source.as_posix()]
+              assert len(rows) == 6 and all(row['status']=='matched' for row in rows), rows
+              data_rows = [row for row in csv.DictReader(Path('reverse/data_rows.csv').open(newline='')) if row.get('source') == source.as_posix()]
+              assert not data_rows, data_rows
+              registry = Path('reverse/canonical_classes.csv').read_text()
+              assert 'RigidDecalMeshClass' not in registry, 'registered canonical class; a private view is forbidden'
+              getter = build.read_target_bytes(0x005508E9, 7)
+              assert getter[:2] == bytes.fromhex('8b81') and getter[-1:] == bytes.fromhex('c3'), getter.hex()
+              offset = struct.unpack_from('<I', getter, 2)[0]
+              assert 4 < offset < 4096 and offset % 4 == 0, offset
+              print('GETTER_PROOF ' + getter.hex() + ' offset=' + hex(offset), flush=True)
+              header = original.decode('utf-8').splitlines()[0]
+              candidate = header + '\n// stlport\n'
+              candidate += '// Keep the five native Texture-pointer vector members owned by this TU.\n'
+              candidate += '// Unmatched Zero Hour decal renderers are omitted: their ABI is not BFME 2.\n'
+              candidate += 'void __cdecl operator delete[](void *) throw();\nvoid __cdecl operator delete(void *) throw();\n'
+              candidate += 'class TextureClass;\n#include "simplevec.h"\n\n'
+              candidate += 'template SimpleVecClass<TextureClass *>::SimpleVecClass(int);\n'
+              candidate += 'template bool SimpleVecClass<TextureClass *>::Resize(int);\n'
+              candidate += 'template bool SimpleVecClass<TextureClass *>::Uninitialised_Grow(int);\n'
+              candidate += 'template SimpleDynVecClass<TextureClass *>::SimpleDynVecClass(int);\n'
+              candidate += 'template bool SimpleDynVecClass<TextureClass *>::Resize(int);\n\n'
+              candidate += '// Narrow existing receiver view: only the retail count field is modeled.\n'
+              candidate += '// The original donor accessor is Decals.Count(); other fields and slots are not asserted.\n'
+              candidate += 'class RigidDecalMeshClass\n{\npublic:\n    virtual int Decal_Count();\nprivate:\n'
+              candidate += f'    unsigned char m_04[0x{offset-4:X}];\n    int m_{offset:X};\n'
+              candidate += '};\n\nint RigidDecalMeshClass::Decal_Count()\n{\n'
+              candidate += f'    return m_{offset:X};\n'
+              candidate += '}\n'
+              (reports / 'candidate.cpp').write_text(candidate, encoding='utf-8')
+              fence()
+              source.write_text(candidate, encoding='utf-8')
+              run('unmatched-after', [sys.executable, 'tools/find_declared_unmatched.py', source.as_posix()])
+              run('after-bytes', [sys.executable, 'tools/build.py', source.as_posix()])
+              symbols = build.read_object_symbols(build.obj_path(source).read_bytes())
+              rigid = [entry for entry in symbols if entry['section'] > 0 and 'RigidDecalMeshClass' in entry['name']]
+              print('RIGID_DEFINED ' + json.dumps(rigid), flush=True)
+              assert not any('??_7RigidDecalMeshClass' in entry['name'] for entry in rigid), 'partial-view vtable must not be emitted'
+              after = run('after-link', [sys.executable, 'tools/link_check.py', source.as_posix()])
+              assert ': LINKS' in after.stdout and '326' in after.stdout, after.stdout
+              addition = """
+          - **Decal unmatched-emission subset (2026-10-25):**
+            The native check of `decalmsh.cpp` retains all six existing exact rows
+            (326 bytes) while removing 18 explicitly unmatched Zero Hour function
+            definitions. Five Texture-pointer vector members are emitted explicitly;
+            the existing count getter keeps its directly proven receiver-field load,
+            with no new vtable definition. The six unresolved legacy renderer calls
+            disappear. Normal byte verification passes 6/6 before and after.
+            Against the fixed `ef9c691284` index (2026-10-25 18:23), the bounded ordinary
+            preview changes this unit from blocked to clean (0 -> 326 authored bytes).
+            No new C++ exact bytes, census headline or closed-strict result is claimed.
+            Verification is the isolated native fork workflow; canonical class
+            registration, data ownership, source claims and the actual file lease are
+            checked before editing. The broader compiler/provider entry remains open.
+          """
+              old_text = original_obstacles.decode('utf-8')
+              marker = '\n### LINK-007:'
+              assert marker in old_text and 'Decal unmatched-emission subset' not in old_text
+              obstacles.write_text(old_text.replace(marker, addition + marker, 1), encoding='utf-8')
+              run('diff-check', ['git','diff','--check'])
+              run('setup-hooks', ['bash','tools/setup_hooks.sh'])
+              run('git-author', ['git','config','user.name','McMickey93'])
+              run('git-email', ['git','config','user.email','347452154+McMickey93@users.noreply.github.com'])
+              run('stage', ['git','add',source.as_posix(),obstacles.as_posix()])
+              fence()
+              message = 'Remove unmatched decal renderers while retaining all native helper bodies\n\nExplicitly emit the five Texture-pointer vector members and keep the existing count accessor. This removes six legacy-only unresolved dependencies while preserving all six byte-exact rows (326 bytes).\n\nValidation: normal native byte gates 6/6 before and after; bounded fixed-index link preview blocked -> clean. No new C++ exact or census coverage claimed.'
+              run('normal-commit', ['git','-c','core.hooksPath=.githooks','commit','-m',message], timeout=1800)
+              run('progress', [sys.executable,'tools/progress.py','origin/master'])
+              run('review-diff', ['git','show','--stat','--oneline','HEAD'])
+              files = {path.as_posix():path.read_text(encoding='utf-8') for path in [source, obstacles]}
+              export = {'base':subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip(),
+                        'native_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+                        'tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+                        'message':message, 'files':files,
+                        'sha256':{path:hashlib.sha256(value.encode()).hexdigest() for path,value in files.items()},
+                        'getter_offset':offset,'getter_bytes':getter.hex(),'claim':claim_sha}
+              (reports / 'export.json').write_text(json.dumps(export,indent=2),encoding='utf-8')
+              print('EXPORT ' + json.dumps(export), flush=True)
+              success = True
+          except BaseException:
+              traceback.print_exc()
+              raise
+          finally:
+              if not success:
+                  subprocess.run(['git','restore','--staged','--',source.as_posix(),obstacles.as_posix()],capture_output=True)
+                  source.write_bytes(original)
+                  obstacles.write_bytes(original_obstacles)
+          
       - uses: actions/upload-artifact@v4
         if: always()
         with:
