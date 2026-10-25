@@ -8271,3 +8271,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferAddProp.cpp|param
 Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|a,d14b2f7cd72c27e6474dcd2c,claude-opus-5-5,cedric-d,w-ede69917a100,2026-10-26
 Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|b,ac479a32a7d827ea7b20989e,claude-opus-5-5,cedric-d,w-ede69917a100,2026-10-26
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerModuleDataRva00254CCF.cpp|param|ActivateModuleSpecialPowerModuleData::Rva00254CCF|arg,09a253844ff99fa32feb3321,claude-opus-5-5,cedric-d,w-ede69917a100,2026-10-26
+Code/GameEngine/Source/Common/Rva000347A0Realloc.cpp|local|EA::Allocator::GeneralAllocator::realloc|d,566f03316da10f81de41b784,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-25
+Code/GameEngine/Source/Common/Rva005A8666Box.cpp|param|NAT::gotTargetMangledPort|a,207a86c2692eae7e85ec4415,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-25
+Code/GameEngine/Source/Common/Rva005FA98CSwap.cpp|local|swapEntries|m,81355f7b49b2ed1ae1803e79,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-25
