@@ -112,7 +112,7 @@ jobs:
               candidate += '}\n'
               (reports / 'candidate.cpp').write_text(candidate, encoding='utf-8')
               fence()
-              source.write_text(candidate, encoding='utf-8')
+              source.write_bytes(candidate.encode('utf-8'))
               run('unmatched-after', [sys.executable, 'tools/find_declared_unmatched.py', source.as_posix()])
               run('after-bytes', [sys.executable, 'tools/build.py', source.as_posix()])
               symbols = build.read_object_symbols(build.obj_path(source).read_bytes())
@@ -136,10 +136,12 @@ jobs:
             registration, data ownership, source claims and the actual file lease are
             checked before editing. The broader compiler/provider entry remains open.
           """
-              old_text = original_obstacles.decode('utf-8')
-              marker = '\n### LINK-007:'
+              old_text = subprocess.check_output(['git','show','HEAD:' + obstacles.as_posix()]).decode('utf-8')
+          newline = '\r\n' if '\r\n' in old_text else '\n'
+          addition = addition.replace('\r\n', '\n').replace('\n', newline)
+              marker = newline + '### LINK-007:'
               assert marker in old_text and 'Decal unmatched-emission subset' not in old_text
-              obstacles.write_text(old_text.replace(marker, addition + marker, 1), encoding='utf-8')
+              obstacles.write_bytes(old_text.replace(marker, addition + marker, 1).encode('utf-8'))
               run('diff-check', ['git','diff','--check'])
               run('setup-hooks', ['bash','tools/setup_hooks.sh'])
               run('git-author', ['git','config','user.name','McMickey93'])
@@ -150,7 +152,7 @@ jobs:
               run('normal-commit', ['git','-c','core.hooksPath=.githooks','commit','-m',message], timeout=1800)
               run('progress', [sys.executable,'tools/progress.py','origin/master'])
               run('review-diff', ['git','show','--stat','--oneline','HEAD'])
-              files = {path.as_posix():path.read_text(encoding='utf-8') for path in [source, obstacles]}
+              files = {path.as_posix():subprocess.check_output(['git','show','HEAD:' + path.as_posix()]).decode('utf-8') for path in [source, obstacles]}
               export = {'base':subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip(),
                         'native_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
                         'tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
