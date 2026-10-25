@@ -180,8 +180,8 @@ jobs:
                   before_copies = sorted(old_index['comdat'].get(name, ()))
                   after_copies = sorted(new_index['comdat'].get(name, ()))
                   referenced = link_check.is_referenced(old_index, name)
-                  before_losers, _ = link_census.keep_rule(before_copies, referenced)
-                  after_losers, _ = link_census.keep_rule(after_copies, referenced)
+                  before_losers, _ = link_census.keep_rule(before_copies, referenced) if before_copies else ({}, 'empty')
+                  after_losers, _ = link_census.keep_rule(after_copies, referenced) if after_copies else ({}, 'empty')
                   for position, was_loser in before_losers.items():
                       if position != own_position and not was_loser and after_losers.get(position, False):
                           keep_losses.append({'name':name,'object':old_index['objects'][position]})
