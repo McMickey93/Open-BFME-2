@@ -21,8 +21,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: Open-BFME/Open-BFME-2
-          ref: 0c7ebc35a7181c613f902932d73395abdbad9f66
-          fetch-depth: 512
+          ref: 1cd28a3a8832d6e53c4aa4716a5771c0f7dd0349
+          fetch-depth: 1024
           submodules: false
           persist-credentials: false
       - uses: actions/setup-python@v5
@@ -33,7 +33,7 @@ jobs:
         run: |
           git submodule update --init --depth 1 reference/open-bfme-1
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          git fetch --no-tags --depth 1 origin refs/heads/master:refs/remotes/origin/master
+          git fetch --no-tags --depth 1024 origin refs/heads/master:refs/remotes/origin/master
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python -m pip install -r reference/open-bfme-1/tools/requirements.txt
           exit $LASTEXITCODE
@@ -48,7 +48,7 @@ jobs:
       - name: Fenced native source verification and local commit only
         shell: python
         run: |
-          import copy, csv, hashlib, json, os, struct, subprocess, sys, traceback
+          import copy, csv, hashlib, re, json, os, struct, subprocess, sys, traceback
           from pathlib import Path
           sys.path.insert(0, 'tools')
           import build, claims, link_check, link_census
@@ -62,6 +62,10 @@ jobs:
           obstacles = Path('docs/linking_obstacles.md')
           original = source.read_bytes()
           original_obstacles = obstacles.read_bytes()
+          register = Path('reverse/hatch_baseline.tsv')
+          original_register = register.read_bytes()
+          register_changed = False
+          assert subprocess.check_output(['git','rev-parse','HEAD:' + source.as_posix()],text=True).strip() == '11adf762e6f6e2a8296465286d1bb96364c58a02'
           source_key = claims.key_of('file:' + source.as_posix())
           claim_sha = '49739d89e66d7bcf017adf69b4a6575975074512'
           success = False
@@ -105,7 +109,10 @@ jobs:
               assert 4 < offset < 4096 and offset % 4 == 0, offset
               print('GETTER_PROOF ' + getter.hex() + ' offset=' + hex(offset), flush=True)
               header = original.decode('utf-8').splitlines()[0]
-              candidate = header + '\n// stlport\n'
+              tracked_source = subprocess.check_output(['git','show','HEAD:' + source.as_posix()]).decode('utf-8')
+              license_match = re.search(r'/\*\s*\*\*\s*Command & Conquer.*?\*/', tracked_source, re.S)
+              assert license_match, 'existing EA/GPL block must be preserved'
+              candidate = header + '\n// stlport\n' + license_match.group(0) + '\n'
               candidate += '// Keep the five native Texture-pointer vector members owned by this TU.\n'
               candidate += '// Unmatched Zero Hour decal renderers are omitted: their native BFME 2 implementations are not established here.\n'
               candidate += 'void __cdecl operator delete[](void *) throw();\nvoid __cdecl operator delete(void *) throw();\n'
@@ -217,6 +224,30 @@ jobs:
               assert not foreign_aliases, foreign_aliases
               assert not real_literals, real_literals
               run('new-variants', [sys.executable,'tools/link_check.py','--new-variants',source.as_posix()])
+              import hatch_counters
+              old_counts, _ = hatch_counters.parse(original_register.decode('utf-8'))
+              live_counts = hatch_counters.tree_scan()
+              changes = {key:(old_counts.get(key,0),live_counts.get(key,0))
+                  for key in set(old_counts)|set(live_counts) if old_counts.get(key,0)!=live_counts.get(key,0)}
+              unrelated_changes = [key for key in changes if key[1] != source.as_posix()]
+              actual_removed = sum(old_counts.get(key,0)-live_counts.get(key,0)
+                  for key in changes if key[1] == source.as_posix())
+              if not unrelated_changes:
+                  run('hatch-update', [sys.executable,'tools/hatch_counters.py','--update'])
+                  def other_lines(raw):
+                      return [line for line in raw.decode('utf-8').splitlines()
+                          if len(line.split('\t')) < 2 or line.split('\t')[1] != source.as_posix()]
+                  if other_lines(original_register) == other_lines(register.read_bytes()):
+                      register_changed = register.read_bytes() != original_register
+                  else:
+                      register.write_bytes(original_register)
+                      print('HATCH_UPDATE_SKIPPED: writer would change unrelated register lines',flush=True)
+              else:
+                  print('HATCH_UPDATE_SKIPPED: global --update has ' + str(len(unrelated_changes)) + ' unrelated changed keys',flush=True)
+              debt_report = {'actual_removed':actual_removed,'registered_removed':actual_removed if register_changed else 0,
+                             'unrelated_changed_keys':len(unrelated_changes),'register_changed':register_changed}
+              print('HATCH_SCOPE ' + json.dumps(debt_report),flush=True)
+              (reports / 'hatch-scope.json').write_text(json.dumps(debt_report,indent=2),encoding='utf-8')
               addition = """
           - **Decal unmatched-emission subset (2026-10-25):**
             The native check of `decalmsh.cpp` retains all six existing exact rows
@@ -232,6 +263,7 @@ jobs:
             registration, data ownership, source claims and the actual file lease are
             checked before editing. The broader compiler/provider entry remains open.
           """
+              addition += '\n  Removed hatch occurrences: ' + str(actual_removed) + '; registered debt retired: ' + str(actual_removed if register_changed else 0) + '. Unrelated register keys are preserved.\n'
               old_blob = subprocess.check_output(['git','rev-parse','HEAD:' + source.as_posix()],text=True).strip()
               new_blob = subprocess.check_output(['git','hash-object','--path=' + source.as_posix(),source.as_posix()],text=True).strip()
               addition += '\n  Source blobs: original `' + old_blob + '`, repaired `' + new_blob + '`.\n'
@@ -250,19 +282,22 @@ jobs:
               run('setup-hooks', [str(git_bash),'tools/setup_hooks.sh'])
               run('git-author', ['git','config','user.name','McMickey93'])
               run('git-email', ['git','config','user.email','347452154+McMickey93@users.noreply.github.com'])
-              run('stage', ['git','add',source.as_posix(),obstacles.as_posix()])
+              paths = [source, obstacles] + ([register] if register_changed else [])
+              run('stage', ['git','add',*[path.as_posix() for path in paths]])
               fence()
               message = 'Remove unmatched decal renderers while retaining all native helper bodies\n\nExplicitly emit the five Texture-pointer vector members and keep the existing count accessor. This removes six legacy-only unresolved dependencies while preserving all six byte-exact rows (326 bytes).\n\nValidation: normal native byte gates 6/6 before and after; bounded fixed-index link preview blocked -> clean. No new C++ exact or census coverage claimed.'
+              if register_changed:
+                  message += '\n\nVerifier-Change: Tighten only the supported decal hatch counts after removing their source occurrences; no new hatch or verifier exception.'
               run('normal-commit', ['git','-c','core.hooksPath=.githooks','commit','-m',message], timeout=1800)
               run('progress', [sys.executable,'tools/progress.py','origin/master'])
               run('review-diff', ['git','show','--stat','--oneline','HEAD'])
-              files = {path.as_posix():subprocess.check_output(['git','show','HEAD:' + path.as_posix()]).decode('utf-8') for path in [source, obstacles]}
+              files = {path.as_posix():subprocess.check_output(['git','show','HEAD:' + path.as_posix()]).decode('utf-8') for path in paths}
               export = {'base':subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip(),
                         'native_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
                         'tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
                         'message':message, 'files':files,
                         'sha256':{path:hashlib.sha256(value.encode()).hexdigest() for path,value in files.items()},
-                        'getter_offset':offset,'getter_bytes':getter.hex(),'claim':claim_sha}
+                        'hatch_scope':debt_report,'getter_offset':offset,'getter_bytes':getter.hex(),'claim':claim_sha}
               (reports / 'export.json').write_text(json.dumps(export,indent=2),encoding='utf-8')
               print('EXPORT ' + json.dumps(export), flush=True)
               success = True
@@ -271,9 +306,10 @@ jobs:
               raise
           finally:
               if not success:
-                  subprocess.run(['git','restore','--staged','--',source.as_posix(),obstacles.as_posix()],capture_output=True)
+                  subprocess.run(['git','restore','--staged','--',source.as_posix(),obstacles.as_posix(),register.as_posix()],capture_output=True)
                   source.write_bytes(original)
                   obstacles.write_bytes(original_obstacles)
+                  register.write_bytes(original_register)
           
       - uses: actions/upload-artifact@v4
         if: always()
