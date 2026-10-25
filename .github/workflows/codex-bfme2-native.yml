@@ -1,0 +1,74 @@
+name: Codex BFME2 native work selection
+on:
+  push:
+    branches: [codex/20261025-bfme2-native]
+    paths: [.github/workflows/codex-bfme2-native.yml]
+permissions:
+  contents: read
+concurrency:
+  group: codex-bfme2-native-selection
+  cancel-in-progress: false
+jobs:
+  select:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      BFME_CLAIM_OWNER: mcmickey93-20261025-bfme2
+      PYTHONUTF8: '1'
+      BUILD_POOL: '4'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Open-BFME/Open-BFME-2
+          ref: 349db6dc10069cc230469ebf3f6dd6d19a17fb82
+          fetch-depth: 0
+          submodules: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Initialize compiler reference without recursion
+        shell: pwsh
+        run: |
+          git submodule update --init reference/open-bfme-1
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python -m pip install -r reference/open-bfme-1/tools/requirements.txt
+          exit $LASTEXITCODE
+      - name: Ledger integrity
+        run: python tools/check_csv.py
+      - name: Selection and reports (read only)
+        shell: python
+        run: |
+          import json, subprocess, sys
+          from pathlib import Path
+          reports = Path('build/codex-selection')
+          reports.mkdir(parents=True, exist_ok=True)
+          commands = [
+            ('head', ['git', 'rev-parse', 'HEAD']),
+            ('reference', ['git', 'submodule', 'status', 'reference/open-bfme-1']),
+            ('progress', [sys.executable, 'tools/progress.py', 'origin/master']),
+            ('default-selection', [sys.executable, 'tools/next_work.py', '--json']),
+            ('naked-selection', [sys.executable, 'tools/list_naked_candidates.py', 'Code']),
+            ('naked-ranked', [sys.executable, 'tools/list_naked_candidates.py', 'Code', '--ranked', '--limit', '25', '--max-bytes', '256']),
+            ('claims', [sys.executable, 'tools/claims.py', 'list']),
+          ]
+          verdicts = {}
+          for label, command in commands:
+              print('\nREPORT ' + label, flush=True)
+              try:
+                  result = subprocess.run(command, capture_output=True, text=True, timeout=1200)
+                  text = result.stdout + result.stderr
+                  verdicts[label] = result.returncode
+              except subprocess.TimeoutExpired as error:
+                  text = str(error)
+                  verdicts[label] = 'timeout'
+              (reports / (label + '.txt')).write_text(text, encoding='utf-8')
+              print(text, flush=True)
+              print('RETURN ' + str(verdicts[label]), flush=True)
+          (reports / 'verdicts.json').write_text(json.dumps(verdicts, indent=2))
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bfme2-native-selection
+          path: build/codex-selection/
+          if-no-files-found: error
