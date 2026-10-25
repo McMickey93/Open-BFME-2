@@ -42,10 +42,10 @@ jobs:
       - name: Fenced native source verification and local commit only
         shell: python
         run: |
-          import csv, hashlib, json, os, struct, subprocess, sys, traceback
+          import copy, csv, hashlib, json, os, struct, subprocess, sys, traceback
           from pathlib import Path
           sys.path.insert(0, 'tools')
-          import build, claims
+          import build, claims, link_check, link_census
           
           reports = Path('build/codex-selection')
           reports.mkdir(parents=True, exist_ok=True)
@@ -81,6 +81,9 @@ jobs:
               run('index', [sys.executable, 'tools/link_check.py', '--fetch-index'])
               run('before-bytes', [sys.executable, 'tools/build.py', source.as_posix()])
               before = run('before-link', [sys.executable, 'tools/link_check.py', source.as_posix()], accepted=(0,1))
+              saved_before = reports / 'before-object' / build.obj_path(source).name
+              saved_before.parent.mkdir(parents=True, exist_ok=True)
+              saved_before.write_bytes(build.obj_path(source).read_bytes())
               rows = [row for row in csv.DictReader(Path('reverse/functions.csv').open(newline='')) if row['source'] == source.as_posix()]
               assert len(rows) == 6 and all(row['status']=='matched' for row in rows), rows
               data_rows = [row for row in csv.DictReader(Path('reverse/data_rows.csv').open(newline='')) if row.get('source') == source.as_posix()]
@@ -95,7 +98,7 @@ jobs:
               header = original.decode('utf-8').splitlines()[0]
               candidate = header + '\n// stlport\n'
               candidate += '// Keep the five native Texture-pointer vector members owned by this TU.\n'
-              candidate += '// Unmatched Zero Hour decal renderers are omitted: their ABI is not BFME 2.\n'
+              candidate += '// Unmatched Zero Hour decal renderers are omitted: their native BFME 2 implementations are not established here.\n'
               candidate += 'void __cdecl operator delete[](void *) throw();\nvoid __cdecl operator delete(void *) throw();\n'
               candidate += 'class TextureClass;\n#include "simplevec.h"\n\n'
               candidate += 'template SimpleVecClass<TextureClass *>::SimpleVecClass(int);\n'
@@ -121,6 +124,54 @@ jobs:
               assert not any('??_7RigidDecalMeshClass' in entry['name'] for entry in rigid), 'partial-view vtable must not be emitted'
               after = run('after-link', [sys.executable, 'tools/link_check.py', source.as_posix()])
               assert ': LINKS' in after.stdout and '326' in after.stdout, after.stdout
+              truth = link_census.RetailTruth(link_census.ledger())
+              old_index = link_check.load_index()
+              link_check.refresh(old_index, [saved_before], truth)
+              new_index = copy.deepcopy(old_index)
+              new_object = build.obj_path(source)
+              link_check.refresh(new_index, [new_object], truth)
+              old_facts = link_census.object_facts(saved_before, truth)
+              new_facts = link_census.object_facts(new_object, truth)
+              def definitions(facts, obj):
+                  return set(facts[1]) | {entry[0] for entry in facts[0]} | set(link_census.common_definitions(obj))
+              old_names = definitions(old_facts, saved_before)
+              new_names = definitions(new_facts, new_object)
+              removed = sorted(old_names - new_names)
+              known = set(build.load_symbol_map()) | set(old_index['selection']['owners'])
+              def providers(index, name):
+                  found = [(position, 'strong', None, None) for position in index['strong'].get(name,())]
+                  found += [(position, 'comdat', digest, verdict) for position,digest,verdict in index['comdat'].get(name,())]
+                  found += [(position, 'common', size, None) for position,size in index['common'].get(name,())]
+                  return sorted(found)
+              def selected(index, name):
+                  found = providers(index, name)
+                  if not found: return None
+                  holder = index['selection']['exceptions'].get(name, found[0][0])
+                  if holder is None: return {'holder':None, 'kind':'unknown', 'digest':None, 'retail':None}
+                  selected = next((entry for entry in found if entry[0]==holder), found[0])
+                  return {'holder':index['objects'][selected[0]], 'kind':selected[1], 'digest':selected[2], 'retail':selected[3]}
+              audit = []
+              losses = []
+              for name in removed:
+                  old_selected, new_selected = selected(old_index,name), selected(new_index,name)
+                  entry = {'name':name,'mapped':name in known,'referenced':link_check.is_referenced(old_index,name),
+                           'old_selected':old_selected,'new_selected':new_selected,
+                           'remaining_providers':[(new_index['objects'][p],k,d,v) for p,k,d,v in providers(new_index,name)]}
+                  audit.append(entry)
+                  if name in known:
+                      if new_selected is None:
+                          losses.append(name + ': mapped sole provider disappears')
+                      elif old_selected and old_selected['holder'] == saved_before.name:
+                          identical = old_selected['kind']=='comdat' and new_selected['kind']=='comdat' and old_selected['digest']==new_selected['digest']
+                          if not identical and new_selected['retail'] is not True:
+                              losses.append(name + ': mapped selected provider not proven equivalent')
+              removed_aliases = sorted(set(link_check.alternate_names(saved_before)) - set(link_check.alternate_names(new_object)))
+              report = {'removed_count':len(removed),'removed_aliases':removed_aliases,'mapped_losses':losses,'entries':audit}
+              (reports / 'provider-audit.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+              print('PROVIDER_AUDIT ' + json.dumps(report),flush=True)
+              assert not removed_aliases, removed_aliases
+              assert not losses, losses
+              run('new-variants', [sys.executable,'tools/link_check.py','--new-variants',source.as_posix()])
               addition = """
           - **Decal unmatched-emission subset (2026-10-25):**
             The native check of `decalmsh.cpp` retains all six existing exact rows
@@ -136,9 +187,17 @@ jobs:
             registration, data ownership, source claims and the actual file lease are
             checked before editing. The broader compiler/provider entry remains open.
           """
+              old_blob = subprocess.check_output(['git','rev-parse','HEAD:' + source.as_posix()],text=True).strip()
+              new_blob = subprocess.check_output(['git','hash-object','--path=' + source.as_posix(),source.as_posix()],text=True).strip()
+              addition += '\n  Source blobs: original `' + old_blob + '`, repaired `' + new_blob + '`.\n'
+              addition += '  Existing rows retained without ledger edits:\n\n  | RVA | Bytes | Symbol |\n  | --- | ---: | --- |\n'
+              for row in rows:
+                  addition += '  | `' + row['target_rva'] + '` | ' + row['target_size'] + ' | `' + row['name'] + '` |\n'
+              addition += '\n  Provider audit retains every mapped symbol through an equivalent or retail-correct provider; no linker alias is removed.\n'
+              addition += '  Native receipt: https://github.com/McMickey93/Open-BFME-2/actions/runs/' + os.environ['GITHUB_RUN_ID'] + '.\n'
               old_text = subprocess.check_output(['git','show','HEAD:' + obstacles.as_posix()]).decode('utf-8')
-          newline = '\r\n' if '\r\n' in old_text else '\n'
-          addition = addition.replace('\r\n', '\n').replace('\n', newline)
+              newline = '\r\n' if '\r\n' in old_text else '\n'
+              addition = addition.replace('\r\n', '\n').replace('\n', newline)
               marker = newline + '### LINK-007:'
               assert marker in old_text and 'Decal unmatched-emission subset' not in old_text
               obstacles.write_bytes(old_text.replace(marker, addition + marker, 1).encode('utf-8'))
