@@ -7,7 +7,7 @@ permissions:
   contents: read
 concurrency:
   group: codex-bfme2-native-selection
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   select:
     runs-on: windows-latest
@@ -21,7 +21,7 @@ jobs:
         with:
           repository: Open-BFME/Open-BFME-2
           ref: 349db6dc10069cc230469ebf3f6dd6d19a17fb82
-          fetch-depth: 0
+          fetch-depth: 1
           submodules: false
           persist-credentials: false
       - uses: actions/setup-python@v5
