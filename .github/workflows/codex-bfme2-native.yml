@@ -21,7 +21,7 @@ jobs:
         with:
           repository: Open-BFME/Open-BFME-2
           ref: 349db6dc10069cc230469ebf3f6dd6d19a17fb82
-          fetch-depth: 1
+          fetch-depth: 512
           submodules: false
           persist-credentials: false
       - uses: actions/setup-python@v5
@@ -61,6 +61,22 @@ jobs:
             ('link-near', [sys.executable, 'tools/link_rank.py', '--near', '1', '--top', '12']),
             ('naked-all', [sys.executable, 'tools/list_naked_candidates.py', 'Code', '--all', '--ranked', '--limit', '15', '--max-bytes', '100000']),
           ]
+          sys.path.insert(0, 'tools')
+          import claims
+          claim_key = claims.key_of('file:' + source)
+          conflict = claims.conflicts([claim_key])
+          if conflict:
+              print('CLAIM_CONFLICT ' + json.dumps({str(k):v for k,v in conflict.items()}), flush=True)
+          else:
+              marker_sha = claims._record(claims.owner(), 4,
+                  note='Prepared source cleanup; no upstream lease until create-only Connector publication',
+                  scope=source, locks=[claim_key])
+              record = json.loads(subprocess.check_output(['git','show','-s','--format=%B',marker_sha], text=True))
+              empty_tree = subprocess.check_output(['git','show','-s','--format=%T',marker_sha],text=True).strip()
+              prepared = {'source':source,'key':claim_key,'record':record,'local_sha':marker_sha,'tree':empty_tree,
+                          'base':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()}
+              (reports / 'prepared-claim.json').write_text(json.dumps(prepared, indent=2))
+              print('PREPARED_CLAIM ' + json.dumps(prepared), flush=True)
           verdicts = {}
           for label, command in commands:
               print('\nREPORT ' + label, flush=True)
