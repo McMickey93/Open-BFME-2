@@ -30,7 +30,9 @@ jobs:
       - name: Initialize compiler reference without recursion
         shell: pwsh
         run: |
-          git submodule update --init reference/open-bfme-1
+          git submodule update --init --depth 1 reference/open-bfme-1
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          git fetch --no-tags --depth 1 origin refs/heads/master:refs/remotes/origin/master
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python -m pip install -r reference/open-bfme-1/tools/requirements.txt
           exit $LASTEXITCODE
