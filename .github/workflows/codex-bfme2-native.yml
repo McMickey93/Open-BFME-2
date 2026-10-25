@@ -39,6 +39,12 @@ jobs:
           exit $LASTEXITCODE
       - name: Ledger integrity
         run: python tools/check_csv.py
+      - name: Resolve the native Git Bash executable
+        shell: bash
+        run: |
+          git_bash="$BASH"
+          [[ "${git_bash,,}" == *.exe ]] || git_bash="${git_bash}.exe"
+          printf 'BFME_NATIVE_BASH=%s\n' "$(cygpath -aw "$git_bash")" >> "$GITHUB_ENV"
       - name: Fenced native source verification and local commit only
         shell: python
         run: |
@@ -47,6 +53,9 @@ jobs:
           sys.path.insert(0, 'tools')
           import build, claims, link_check, link_census
           
+          git_bash = Path(os.environ['BFME_NATIVE_BASH'])
+          assert git_bash.is_file(), git_bash
+          os.environ['PATH'] = str(git_bash.parent) + os.pathsep + os.environ.get('PATH','')
           reports = Path('build/codex-selection')
           reports.mkdir(parents=True, exist_ok=True)
           source = Path('Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp')
@@ -137,7 +146,7 @@ jobs:
               old_names = definitions(old_facts, saved_before)
               new_names = definitions(new_facts, new_object)
               removed = sorted(old_names - new_names)
-              known = set(build.load_symbol_map()) | set(old_index['selection']['owners'])
+              known = set(build.load_symbol_map()) | set(old_index['selection']['owners']) | set(link_census.ledger_owners(link_census.ledger()))
               def providers(index, name):
                   found = [(position, 'strong', None, None) for position in index['strong'].get(name,())]
                   found += [(position, 'comdat', digest, verdict) for position,digest,verdict in index['comdat'].get(name,())]
@@ -163,14 +172,50 @@ jobs:
                           losses.append(name + ': mapped sole provider disappears')
                       elif old_selected and old_selected['holder'] == saved_before.name:
                           identical = old_selected['kind']=='comdat' and new_selected['kind']=='comdat' and old_selected['digest']==new_selected['digest']
-                          if not identical and new_selected['retail'] is not True:
+                          if not identical and new_selected['retail'] != 'retail':
                               losses.append(name + ': mapped selected provider not proven equivalent')
+              keep_losses = []
+              own_position = old_index['objects'].index(saved_before.name)
+              for name in removed:
+                  before_copies = sorted(old_index['comdat'].get(name, ()))
+                  after_copies = sorted(new_index['comdat'].get(name, ()))
+                  referenced = link_check.is_referenced(old_index, name)
+                  before_losers, _ = link_census.keep_rule(before_copies, referenced)
+                  after_losers, _ = link_census.keep_rule(after_copies, referenced)
+                  for position, was_loser in before_losers.items():
+                      if position != own_position and not was_loser and after_losers.get(position, False):
+                          keep_losses.append({'name':name,'object':old_index['objects'][position]})
+              sole_names = {entry['name'] for entry in audit if not entry['remaining_providers']}
+              foreign = []
+              graph = link_check.index_references(old_index)
+              assert graph is not None, 'reference graph required'
+              for caller, targets in graph['edges'].items():
+                  if caller not in known: continue
+                  elsewhere = any(position != own_position for position,_,_,_ in providers(old_index, caller))
+                  if caller in old_names and not elsewhere: continue
+                  for target in targets & sole_names:
+                      foreign.append({'caller':caller,'target':target})
+              foreign_aliases = [{'alias':alias,'object':old_index['objects'][position],'target':target}
+                  for alias, entries in old_index['alternates'].items() for position,target in entries
+                  if position != own_position and target in sole_names]
+              patterns = reports / 'sole-symbols.txt'
+              patterns.write_bytes(('\n'.join(sorted(sole_names)) + '\n').encode('utf-8'))
+              literals = run('sole-literal-references', ['git','grep','-n','-F','-f',str(patterns),'--','Code','reference/shims'], accepted=(0,1))
+              real_literals = []
+              for line in literals.stdout.splitlines():
+                  text = line.split(':',2)[-1].strip()
+                  if text and not text.startswith(('//',';','*')):
+                      real_literals.append(line)
               removed_aliases = sorted(set(link_check.alternate_names(saved_before)) - set(link_check.alternate_names(new_object)))
-              report = {'removed_count':len(removed),'removed_aliases':removed_aliases,'mapped_losses':losses,'entries':audit}
+              report = {'removed_count':len(removed),'removed_aliases':removed_aliases,'mapped_losses':losses,'new_losers':keep_losses,'known_foreign_consumers_of_sole':foreign,'foreign_aliases_to_sole':foreign_aliases,'literal_code_references_to_sole':real_literals,'entries':audit}
               (reports / 'provider-audit.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
               print('PROVIDER_AUDIT ' + json.dumps(report),flush=True)
               assert not removed_aliases, removed_aliases
               assert not losses, losses
+              assert not keep_losses, keep_losses
+              assert not foreign, foreign
+              assert not foreign_aliases, foreign_aliases
+              assert not real_literals, real_literals
               run('new-variants', [sys.executable,'tools/link_check.py','--new-variants',source.as_posix()])
               addition = """
           - **Decal unmatched-emission subset (2026-10-25):**
@@ -202,7 +247,7 @@ jobs:
               assert marker in old_text and 'Decal unmatched-emission subset' not in old_text
               obstacles.write_bytes(old_text.replace(marker, addition + marker, 1).encode('utf-8'))
               run('diff-check', ['git','diff','--check'])
-              run('setup-hooks', ['bash','tools/setup_hooks.sh'])
+              run('setup-hooks', [str(git_bash),'tools/setup_hooks.sh'])
               run('git-author', ['git','config','user.name','McMickey93'])
               run('git-email', ['git','config','user.email','347452154+McMickey93@users.noreply.github.com'])
               run('stage', ['git','add',source.as_posix(),obstacles.as_posix()])
