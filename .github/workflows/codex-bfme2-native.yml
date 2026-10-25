@@ -45,14 +45,19 @@ jobs:
           from pathlib import Path
           reports = Path('build/codex-selection')
           reports.mkdir(parents=True, exist_ok=True)
+          source = 'Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp'
           commands = [
             ('head', ['git', 'rev-parse', 'HEAD']),
             ('reference', ['git', 'submodule', 'status', 'reference/open-bfme-1']),
+            ('reference-upstream', ['git', 'ls-remote', 'https://github.com/Open-BFME/Open-BFME-1.git', 'refs/heads/master']),
             ('progress', [sys.executable, 'tools/progress.py', 'origin/master']),
-            ('default-selection', [sys.executable, 'tools/next_work.py', '--json']),
-            ('naked-selection', [sys.executable, 'tools/list_naked_candidates.py', 'Code']),
-            ('naked-ranked', [sys.executable, 'tools/list_naked_candidates.py', 'Code', '--ranked', '--limit', '25', '--max-bytes', '256']),
-            ('claims', [sys.executable, 'tools/claims.py', 'list']),
+            ('unmatched', [sys.executable, 'tools/find_declared_unmatched.py', source]),
+            ('index', [sys.executable, 'tools/link_check.py', '--fetch-index']),
+            ('native-control', [sys.executable, 'tools/build.py', source]),
+            ('preview', [sys.executable, 'tools/link_check.py', source]),
+            ('ranked-file', [sys.executable, 'tools/link_rank.py', '--file', source]),
+            ('link-near', [sys.executable, 'tools/link_rank.py', '--near', '1', '--top', '12']),
+            ('naked-all', [sys.executable, 'tools/list_naked_candidates.py', 'Code', '--all', '--ranked', '--limit', '15', '--max-bytes', '100000']),
           ]
           verdicts = {}
           for label, command in commands:
