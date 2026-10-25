@@ -52,6 +52,8 @@ jobs:
             ('reference-upstream', ['git', 'ls-remote', 'https://github.com/Open-BFME/Open-BFME-1.git', 'refs/heads/master']),
             ('progress', [sys.executable, 'tools/progress.py', 'origin/master']),
             ('unmatched', [sys.executable, 'tools/find_declared_unmatched.py', source]),
+            ('census-history', ['git', 'fetch', '--no-tags', '--depth', '1', 'origin', 'ef9c691284a2798f4acce0973f4785d78c7111f4']),
+            ('ledger-rows', [sys.executable, '-c', "import csv,json;print(json.dumps([r for r in csv.DictReader(open('reverse/functions.csv',newline='')) if r['source']=='"+source+"'],indent=2))"]),
             ('index', [sys.executable, 'tools/link_check.py', '--fetch-index']),
             ('native-control', [sys.executable, 'tools/build.py', source]),
             ('preview', [sys.executable, 'tools/link_check.py', source]),
