@@ -11,8 +11,6 @@
 // following GlobalFlagClearers_E06x.cpp.
 // cl: /G7 /MD /EHsc /DNDEBUG
 
-extern unsigned int g_Va00DF3678;
-extern unsigned int g_Va00DF6FC8;
 extern unsigned int g_Va00DFD8E4;
 // g_Va00DFD8E4: matched references place it at VA 0xdfd8e4 (zero-filled .bss).
 unsigned int g_Va00DFD8E4;
