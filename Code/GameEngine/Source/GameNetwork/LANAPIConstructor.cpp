@@ -145,7 +145,7 @@ protected:
 
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
-extern "C" __declspec(dllimport) char * __cdecl getenv( const char *name );
+#include <stdlib.h>
 
 // ??0LANAPI@@QAE@XZ @0x00449AB8 (193B). Zero Hour's constructor with BFME's
 // member order: lists and names empty, no pending action or expiry, in the

@@ -5,7 +5,7 @@
 // address-derived. Target loads the pointer at +0x14 and tail-jumps through
 // the CRT free import. The target starts after int3 padding. The struct
 // layout is donor-carried; the imported free call is target evidence.
-extern "C" __declspec(dllimport) void __cdecl free(void *);
+#include <stdlib.h>
 
 struct Rva0086FD80Callback
 {

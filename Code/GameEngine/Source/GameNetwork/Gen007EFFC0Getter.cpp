@@ -7,7 +7,7 @@ public:
 	virtual void *acquire(int size, int flags);
 	virtual void release(void *block, int flags);
 };
-extern "C" int __cdecl printf(const char *fmt, ...);
+#include <stdio.h>
 GenAlloc *g_genAlloc;
 GenAlloc *Gen007EFFC0()
 {
