@@ -118,7 +118,6 @@ struct BfmeAudioEventPrefix136
 };
 
 #pragma comment(linker, "/alternatename:??1BfmeAudioEventPrefix136@@UAE@XZ=??1BfmeStringTailRecord144@@UAE@XZ")
-#pragma comment(linker, "/alternatename:??_GBfmeAudioEventPrefix136@@UAEPAXI@Z=??_GBfmeStringTailRecord144@@UAEPAXI@Z")
 #pragma comment(linker, "/alternatename:?rva002D96D3@BfmeAudioEventPrefix136@@QAEXABUOpaqueRefElement4@@@Z=?rva002D96D3@BfmeStringTailRecord144@@QAEXABUOpaqueRefElement4@@@Z")
 #pragma comment(linker, "/alternatename:?rva002D9893@BfmeAudioEventPrefix136@@QAEXABU1@@Z=?rva002D9893@Rva002D9893@@QAEXABV1@@Z")
 typedef char VerifyAudioPrefixSize[(sizeof(BfmeAudioEventPrefix136) == 0x88) ? 1 : -1];
