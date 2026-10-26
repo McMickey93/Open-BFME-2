@@ -1455,7 +1455,7 @@ Clearance: pending.
 Census confirmation: not claimed.
 
 ### LINK-035: `StlSweepR3` vector-destructor units instantiated the whole `vector<RecordN>`
-Status: Open (5 of 7 repaired). Updated: 2026-10-26; inspected revision: 5fae0cc47f; index 47e030bafc.
+Status: Open (6 of 7 repaired). Updated: 2026-10-26; inspected revision: 018ace6021; index d1f046749a.
 Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva<rva>.cpp` units holding one
 63 B STLport `vector<RvaNRecord>` destructor (or `_M_clear`) row. Each wrote `template class
 _STL::vector<RvaNRecord>;`, which emits every member: the record's ctor/copy/assign/dtor and `_Construct`
@@ -1472,15 +1472,26 @@ Completed (each in its own commit, `./build.sh` exact, partners still link):
   been run to tighten the register. A forced-inline forwarding `_Destroy` specialization was tried
   first: it loads both bounds into registers before the EH state store, so the bytes differ.
 - link_check: 0 -> 324 B over the five units.
+- 0x00214B22 (c9700d27ca): retail 0x00214B09 is called with two pushed arguments by 0x00214B22 and
+  0x004043AE (capstone over game.dat), so its row was respelled from 3-argument `__destroy_aux` to
+  `??$_Destroy@PAVRva00214ADC@@@_STL@@YAXPAVRva00214ADC@@0@Z` (explicit instantiation in
+  `stlport_vector_rva00214adc_destroy.cpp`, still exact; the one consumer spelling, the erase forwarder in
+  `StlportVectorEraseRangeDeferred.cpp`, respelled with it). Then the recipe: link_check 0 -> 73 B; the
+  provider, `StlportVectorEraseRangeDeferred.cpp` and the two 0x00214ADC units still link.
 Remaining / next check:
-- `StlSweepR3Rva00214B22.cpp` (63 B + EH 10 B, callee 0x00214B09) and `StlSweepR3Rva000B0298.cpp`
-  (`_M_clear`, 30 B, callee 0x000AFF52): both callees are rowed as three-argument
-  `__destroy_aux<T*>(T*, T*, const __false_type &)`, but retail pushes two arguments (the 25 B bodies
-  are `_Destroy` with the loop inlined). Calling the rowed name would push a third argument. This needs
-  those rows respelled as `_Destroy<T*>` (naming lane), then the same recipe.
-- The `_Destroy<RvaNRecord *>` pins in `reverse/symbols.csv` for the five repaired units look
-  unreferenced now; check every object before dropping them through the register's path.
-Clearance: the five units preview LINKS against index 47e030bafc with current objects.
+- `StlSweepR3Rva000B0298.cpp` (`_M_clear`, 30 B, callee 0x000AFF52): 0x000AFF52 is likewise a
+  two-argument `_Destroy` rowed as `__destroy_aux<Rva00111B25Record *>` (StlSweepW5Rva000AFF52.cpp), and
+  respells the same way. But 0x000B0298 itself carries TWO matched rows: this unit's `_M_clear` and
+  `?rva000B0298@Rva000B0298@@QAEXXZ` (`Code/GameEngine/Source/GameClient/Rva000B0298Clear.cpp`, a
+  frameless twin over `EvaMessageInfo` calling `_Destroy<EvaMessageInfo *>`). The pin
+  `?_M_clear@?$vector@UEvaMessageInfo@@...` at 0x000B0298 and the EH twin 0x000B0254
+  `~vector<EvaMessageInfo>` suggest the real identity is `vector<EvaMessageInfo>::_M_clear`. Resolve
+  the over-claim first (keep one row; retire the other through `deleted_rows.csv`), then link the
+  survivor; do not just apply the recipe to the duplicate row.
+- The `_Destroy<RvaNRecord *>` pins in `reverse/symbols.csv` for the six repaired units (incl.
+  `_Destroy<Rva00214B22Record *>` at 0x00214B09) look unreferenced now; check every object before dropping them through the register's path.
+Clearance: the five units preview LINKS against index 47e030bafc with current objects; 0x00214B22 previews
+LINKS against index d1f046749a with current objects. Census confirmation: awaiting.
 
 
 ### LINK-036: StlportVectorEraseRangeDeferred historical blockers resolved by landed providers

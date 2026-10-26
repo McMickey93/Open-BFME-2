@@ -342,7 +342,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WW3D2/collect.cpp` | 79 | 20 (U=14, C=5, S=1) | Open |
 | `Code/GameEngine/Source/Common/System/SaveGame/AerialPathfinder.cpp` | 75 | 3 (U=2, C=1) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanGameOptionsMenu.cpp` | 75 | 28 (U=27, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00214B22.cpp` | 73 | 7 (U=5, C=1, S=1) | Blocked: callee rowed as 3-arg `__destroy_aux` (LINK-035) |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00214B22.cpp` | 73 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (c9700d27ca, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E2857.cpp` | 73 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (1f0a322ceb, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva003609F7.cpp` | 73 | 4 (C=2, S=2) | Open |
 | `Code/GameEngine/Source/Common/S4StlSortHelpers.cpp` | 71 | 21 (U=13, C=5, S=3) | Open |
@@ -455,6 +455,9 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DVideoBuffer.cpp` | 0 | 7 (U=5, C=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x000AF1C2 is rowed and links in `Rva000AF1C2Forward.cpp`; sweep unit, row and its pin removed (LINK-060) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: callee rowed as 3-arg `__destroy_aux` (LINK-035) |
+
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: 0x000B0298 rowed twice (also Rva000B0298Clear.cpp); callee 0x000AFF52 rowed as 3-arg `__destroy_aux` (LINK-035) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001DE3E3.cpp` | 0 | 7 (U=3, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001FDEBC.cpp` | 0 | 7 (U=3, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022DCDA.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (79e9273e2d, LINK-035); census pending |
