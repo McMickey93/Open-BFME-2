@@ -1511,3 +1511,41 @@ Census confirmation: not claimed.
   `MultiplayerColorDefinitionCopy.cpp`, `GapBodiesGE41_Rva00118610.cpp`) have other causes
   and were not investigated here.
 - **Census confirmation:** awaiting the next census.
+
+### LINK-042: the census at d1f046749a's other 10 lost units (IsCapturing respelling and four TU merges)
+
+**Status: Open (partial repair landed). Updated: 2026-10-26; inspected revision: d1f046749a.**
+
+- **Evidence / scope:** the units besides LINK-041's 23 that linked in the census at
+  47e030bafc (or were linked before their merge) and not at d1f046749a, 3,997 B in all.
+  Blockers read with `tools/link_check.py --census-only`; causes traced to the commits below.
+- **Completed:** 397acb4f2e moved `IsCapturing` under `public:` in five WW3D class views to
+  match the ledger's unowned `?IsCapturing@WW3D@@2_NA`, but `ww3d.cpp` defines it private
+  (`?IsCapturing@WW3D@@0_NA`). Reverted ("Revert 397acb4f2e"): `WW3DBeginRenderBFME2.cpp`,
+  `WW3DStartMovieCapture.cpp`, `WW3DShutdownRenderDevice.cpp`, `WW3DStopMovieCapture.cpp`,
+  `GapBodiesGE41_Rva00118610.cpp`; `./build.sh` 8/8, preview 0 -> 818 B.
+- **Remaining** (all four came from `tools/tu_skeleton.py --merge`, which accepts a donor and
+  chooses the `// cl:` line by matched rows only, not by whether the target still links):
+  - `GameFont.cpp` (1,758 B), bdf96f6de4: absorbed `StlSweepR3Rva00218E09.cpp`, which never
+    linked (3 unresolved `Rva00218E09Record` members, pinned non-retail `__median` /
+    `__unguarded_partition` copies). Next: give the record its real type (the copy ctor is
+    already bound to `MixFileCreator::FileInfoStruct`'s) so its members resolve.
+  - `statistics.cpp` (986 B), 01a7f0d9ba: absorbed `Rva001296F0Destroy.cpp`, which never
+    linked (`extern "C" textureStatisticsString`, while the string is a file static in
+    `DebugStatisticsRecordTextureEnd.cpp`; non-retail `??1Rva001880D0Dtor` copy).
+  - `CrateSystem.cpp` (259 B), aab36803a7: the donors were `/O1 /G6 /D_STLP_NO_EXCEPTIONS`;
+    under the TU's flags the emitted `list<Rva0035CBB2Element>::insert` (pinned 0x0035CB8D)
+    is not retail's. Declaring it only leaves it unresolved (a pin does not satisfy the
+    census), so the copy itself has to match.
+  - `MultiplayerSettings.cpp` (97 B) and `MultiplayerColorDefinitionCopy.cpp` (79 B),
+    b93c4b507b: the merge dropped `/FIzh_ascii.h /DNDEBUG /DWIN32 /D_WINDOWS
+    /D_STLP_USE_MALLOC /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE` (unresolved
+    `AsciiString::freeBytes`, non-retail `~MultiplayerColorDefinition`), and the absorbed
+    `pair` copy (0x00380DA3) now emits the implicit `MultiplayerColorDefinition` copy ctor,
+    which clashes with `MultiplayerColorDefinitionCopy.cpp`'s. Restoring the flags fixes the
+    first two blockers but fails the `pair` row (it inlines the copy ctor); tu_map already
+    places 0x00380D30 in this TU, so merging `MultiplayerColorDefinitionCopy.cpp` here is
+    the likely fix.
+- **Process note:** before applying a merge, `tools/link_check.py` the target TU and refuse
+  the merge when a target that linked stops linking.
+- **Census confirmation:** awaiting the next census.
