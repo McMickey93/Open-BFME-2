@@ -123,15 +123,11 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
 { return a._M_node != b._M_node; }
 }
 
-struct Rva0035CBB2Element { double words[1];bool operator<(const Rva0035CBB2Element&)const;bool operator==(const Rva0035CBB2Element&)const; };
+// Instantiate the recovered operation and its required template dependencies.
+template void _STL::list<crateCreationEntry, _STL::allocator<crateCreationEntry> >::_M_insert_dispatch<_STL::_List_iterator<crateCreationEntry, _STL::_Const_traits<crateCreationEntry> > >(_STL::_List_iterator<crateCreationEntry, _STL::_Nonconst_traits<crateCreationEntry> >, _STL::_List_iterator<crateCreationEntry, _STL::_Const_traits<crateCreationEntry> >, _STL::_List_iterator<crateCreationEntry, _STL::_Const_traits<crateCreationEntry> >, _STL::__false_type const &);
 
 // Instantiate the recovered operation and its required template dependencies.
-template void _STL::list<Rva0035CBB2Element, _STL::allocator<Rva0035CBB2Element> >::_M_insert_dispatch<_STL::_List_iterator<Rva0035CBB2Element, _STL::_Const_traits<Rva0035CBB2Element> > >(_STL::_List_iterator<Rva0035CBB2Element, _STL::_Nonconst_traits<Rva0035CBB2Element> >, _STL::_List_iterator<Rva0035CBB2Element, _STL::_Const_traits<Rva0035CBB2Element> >, _STL::_List_iterator<Rva0035CBB2Element, _STL::_Const_traits<Rva0035CBB2Element> >, _STL::__false_type const &);
-
-struct Rva0035CC18Element { double words[1];bool operator<(const Rva0035CC18Element&)const;bool operator==(const Rva0035CC18Element&)const; };
-
-// Instantiate the recovered operation and its required template dependencies.
-template void _STL::list<Rva0035CC18Element, _STL::allocator<Rva0035CC18Element> >::insert<_STL::_List_iterator<Rva0035CC18Element, _STL::_Const_traits<Rva0035CC18Element> > >(_STL::_List_iterator<Rva0035CC18Element, _STL::_Nonconst_traits<Rva0035CC18Element> >, _STL::_List_iterator<Rva0035CC18Element, _STL::_Const_traits<Rva0035CC18Element> >, _STL::_List_iterator<Rva0035CC18Element, _STL::_Const_traits<Rva0035CC18Element> >);
+template void _STL::list<crateCreationEntry, _STL::allocator<crateCreationEntry> >::insert<_STL::_List_iterator<crateCreationEntry, _STL::_Const_traits<crateCreationEntry> > >(_STL::_List_iterator<crateCreationEntry, _STL::_Nonconst_traits<crateCreationEntry> >, _STL::_List_iterator<crateCreationEntry, _STL::_Const_traits<crateCreationEntry> >, _STL::_List_iterator<crateCreationEntry, _STL::_Const_traits<crateCreationEntry> >);
 
 // tu-skeleton: 0x0035C972 52B ?setName@CrateTemplate@@QAEXVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
 
