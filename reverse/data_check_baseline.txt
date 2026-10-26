@@ -44,8 +44,6 @@ Code/GameEngine/Source/Common/GameLogicRandomValue_getValueInt.cpp	duplicate-def
 Code/GameEngine/Source/Common/GameLogicRandomValue_getValueReal.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E03314@@3HA	0x00A03314
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E09FA4@@3HA	0x00A09FA4
-Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	duplicate-def	?g_Va00E031A8@@3PAIA	0x00A031A8
-Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	wrong-name	?g_Va00E031A8@@3PAIA	0x00A031A8
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F24@@3RCRAVRva00075695Item@@C	0x009E1F24
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F54@@3HA	0x009E1F54
 Code/GameEngine/Source/Common/Rva00075A23Draw.cpp	wrong-name	?g_deviceObj@@3PAUDeviceObj@@A	0x009EDA34
@@ -132,7 +130,6 @@ Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEEF
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF08@@3IA	0x009DEF08
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF2C@@3IA	0x009DEF2C
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF38@@3IA	0x009DEF38
-Code/GameEngine/Source/Common/Rva007ABB96AllocCtorInits.cpp	wrong-name	?g_Va00E031A8@@3IA	0x00A031A8
 Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00DEC008@@3IA	0x009EC008
 Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00DEE93C@@3IA	0x009EE93C
 Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E01CF0@@3IA	0x00A01CF0

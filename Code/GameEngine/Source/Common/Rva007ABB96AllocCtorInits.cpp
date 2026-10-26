@@ -75,7 +75,8 @@ extern unsigned g_Va00DFE1AC;
 extern unsigned g_Va00DFE358;
 extern unsigned g_Va00DFEA44;
 extern unsigned g_Va00DFF134;
-extern unsigned g_Va00E031A8;
+namespace _STL { template <class T> struct _Nonconst_traits; template <class T, class Traits> struct _Deque_iterator; }
+extern _STL::_Deque_iterator<BfmeE12, _STL::_Nonconst_traits<BfmeE12> > g_00E031A8;	// deque<BfmeE12>; stlport_deque_e12_findnode.cpp's view names its first iterator
 extern unsigned g_Va00E04484;
 extern unsigned g_Va00E04920;
 extern unsigned g_Va00E0657C;
@@ -130,7 +131,7 @@ void Rva007ABB96AllocCtorInits::rva007AE5A5()
 // 0x007B02D9 (29B): deque<BfmeE12> allocator ctor 0x004226CE on VA 0x00E031A8, atexit(0x007B82E7 -> 0x005858F3)
 void Rva007ABB96AllocCtorInits::rva007B02D9()
 {
-	( (E12Deque *)&g_Va00E031A8 )->E12Deque::deque();
+	( (E12Deque *)&g_00E031A8 )->E12Deque::deque();
 	atexit( rva007B82E7 );
 }
 
