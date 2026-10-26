@@ -88,3 +88,15 @@ workflows and registers: no path consumer needs repointing. Both new canonical
 header consumers were rebuilt together, and historical EA paths remain intact.
 Only the two source edits, header-queue retirement and this handoff are staged.
 The publisher will rebase and run the outgoing batch audit normally.
+
+## Publication recovery, next session
+
+The inherited repair is commit `06bdadce9f` after rebase, still unpublished at
+session start. Rechecked both dispatcher sources with `./build.sh`: five of
+five rows exact, current dependency receipts, and the declared-unmatched check
+passes. `check_csv.py` passes. The complete outgoing range contains those two
+source edits, this handoff and the two header-queue removals, with no path
+moves. Combined basename search of active tools, hooks, workflows and header
+queues finds no consumers requiring an update. The existing before/after
+provider proof above remains applicable: no intervening source edit occurred.
+The four inherited file claims remain held until publication is confirmed.
