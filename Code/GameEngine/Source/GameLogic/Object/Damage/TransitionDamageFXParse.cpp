@@ -18,7 +18,7 @@ typedef int Int;
 typedef float Real;
 typedef unsigned char UnsignedByte;
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 template <typename T> struct BfmeStringData;
 

@@ -22,7 +22,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 #define _STLP_BFME_COPY_TRIVIAL_EXTERN  // call retail's one __copy_trivial (vendor/stlport/stl/_algobase.h)
 #include <vector>
-extern "C" int __cdecl strcmp(const char *, const char *);
+#include <string.h>
 #include "ascii_string.h"
 // bfme link decl-only begin
 namespace _STL { template <> void * __malloc_alloc<0>::allocate(unsigned int); }

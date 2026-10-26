@@ -21,7 +21,7 @@ class PlayerTemplate;
 class Team;
 enum Relationship { ENEMIES = 0, NEUTRAL = 1, ALLIES = 2 };
 class ParticleSystem { public: bool isSaveable() const; };	// 0x002AA223 (rowed under this name)
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int size);
+#include <string.h>
 
 // The 28-byte by-value kind filter retail copies through the rowed copy
 // constructor 0x0004543D; a one-bit filter is built in place (memset, then
