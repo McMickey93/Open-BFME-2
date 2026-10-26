@@ -7,7 +7,7 @@
 // through its virtual slot 1 (deleting form, argument 0) into operator delete and false is
 // returned. Evidence: target bytes only; the class and slot names are neutral views.
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class Rva00090F88Item
 {

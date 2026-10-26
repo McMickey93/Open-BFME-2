@@ -36,7 +36,7 @@ public:
 	void rva00262045(struct Node00262045 *n);
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 // ?rva00090381@W3DDisplayStringManager@@QAEXPAURva90381Node@@@Z @0x00090381 47B
 // Slot 15 offset 0x3C of vtable 0x007C7E20. Unlinks n via rowed 0x00262045,
