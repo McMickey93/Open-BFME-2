@@ -1,4 +1,4 @@
-// cl: /O1 /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// cl: /O1 /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /Ireference/shims/subsystem_bfme2
 // TerrainTypeCollection::newTerrain @0x0031816C (149B): Zero Hour
 // TerrainTypes.cpp's body. A new 0x30-byte TerrainType (its ctor 0x00317F6F,
 // vtable 0x0080C66C) is filled from the "DefaultTerrain" entry through the
@@ -8,31 +8,38 @@
 // BFME allocates with plain operator new where ZH used newInstance(). The
 // only caller is INI::parseTerrainDefinition 0x00200A65, after findTerrain
 // misses, as in ZH INITerrain.cpp.
+typedef bool Bool;
 #include "ascii_string.h"
+#include "subsystem_interface.h"
 
 class TerrainType
 {
+	friend class TerrainTypeCollection;
 public:
 	TerrainType();
 	TerrainType &operator=(const TerrainType &that);
 	void friend_setName(AsciiString name);
-	void friend_setNext(TerrainType *next) { m_next = next; }
-
 private:
-	char m_pad00[0x20];
-	TerrainType *m_next;   // +0x20
+	char m_pad00[4];
+	AsciiString m_str04;
+	AsciiString m_str08;
+	char m_pad0C[0x14];
+	TerrainType *m_next;
 	char m_pad24[0x0C];
 };
 
-class TerrainTypeCollection
+class TerrainTypeCollection : public SubsystemInterface
 {
 public:
+	TerrainTypeCollection();
+	virtual ~TerrainTypeCollection();
+	virtual void init() {}
+	virtual void reset() {}
+	virtual void update() {}
 	TerrainType *findTerrain(AsciiString name);
 	TerrainType *newTerrain(AsciiString name);
-
 private:
-	char m_pad00[0x0C];
-	TerrainType *m_terrainList;   // +0x0C
+	TerrainType *m_head;
 };
 
 TerrainType *TerrainTypeCollection::newTerrain(AsciiString name)
@@ -47,8 +54,8 @@ TerrainType *TerrainTypeCollection::newTerrain(AsciiString name)
 
 	terrain->friend_setName(name);
 
-	terrain->friend_setNext(m_terrainList);
-	m_terrainList = terrain;
+	terrain->m_next = m_head;
+	m_head = terrain;
 
 	return terrain;
 }
