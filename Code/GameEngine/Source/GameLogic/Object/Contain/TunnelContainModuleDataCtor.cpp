@@ -23,7 +23,8 @@ private:
 	unsigned char m_bytes[0x1C];
 };
 
-extern const BfmeFixedStorage0004543D g_defaultStorage009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class Rva003623E5Member
 {
@@ -65,9 +66,5 @@ private:
 TunnelContainModuleData::TunnelContainModuleData()
 {
 	m_D4 = 1.0f;
-	m_filter40.rva00362192(Rva00045411BitSet(0, 8), g_defaultStorage009FEFA4);
+	m_filter40.rva00362192(Rva00045411BitSet(0, 8), *reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 }
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B=?g_00DFEFA4StoragePrototype@@3PAEA")
