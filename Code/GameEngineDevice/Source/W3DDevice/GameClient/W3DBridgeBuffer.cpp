@@ -215,6 +215,31 @@ private:
 	unsigned char m_pad[0x18];
 };
 
+// Texture teardown view shared with the verified bridge destructor donor.
+class TextureBaseClass
+{
+};
+
+// Released through TextureClass's spelling, like W3DBridgeCtor.cpp, so both
+// units emit the same inline TextureRef teardown.
+class TextureClass : public TextureBaseClass
+{
+public:
+	void Release_Ref(void);
+};
+
+class TextureRef
+{
+public:
+	~TextureRef()
+	{
+		if (m_ptr)
+			m_ptr->Release_Ref();
+	}
+
+	TextureClass *m_ptr;
+};
+
 class W3DBridge
 {
 public:
@@ -227,7 +252,8 @@ private:
 private:
 	float m_scale;
 private:
-	char m_pad1C[0x38 - 0x1C];
+	char m_pad1C[0x34 - 0x1C];
+	TextureRef m_bridgeTexture; // +0x34, verified destructor member
 private:
 	MeshClass *m_leftMesh;
 private:
