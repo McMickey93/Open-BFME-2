@@ -469,6 +469,12 @@ Completed: native call/row diagnosis and current-provider verification; these si
   moves prefix clearing into the record's own initialization and uses both
   canonical coordinate headers: all four rows, two EH graphs and complete
   non-debug object facts are preserved, retiring one more queue row.
+  Its [separate native free declaration](../reverse/attempt_support/icoord2d-record-free-header-20261026.md)
+  retires the same file's remaining Microsoft-header item: four rows and
+  two EH graphs stay exact, and the three changed external references bind
+  to the same game allocator through the owner's existing alternate name.
+  The ordinary preview against 47e030bafc retains LINKS, 258 to 258 bytes;
+  final linker directives and every non-debug section byte are unchanged.
   Six remaining ICoord2D items and census confirmation stay open.
 - **Current component-header integration (2026-10-26, base `e1cdb1014f`):**
   The [fresh receipt](../reverse/attempt_support/icoord2d-component-header-20261026.md#current-master-integration)
