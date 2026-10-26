@@ -10,12 +10,8 @@
 // into its dead argument slot. A separate cand value keeps the strcmp push
 // in a register. This qualifier describes our codegen, not a target API fact.
 // Preserve the target's 64-byte clamp, flags and terminator order verbatim.
-extern "C" unsigned int __cdecl strlen(const char *s);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
-extern "C" __declspec(dllimport) char *__cdecl strchr(const char *s, int c);
-extern "C" __declspec(dllimport) char *__cdecl strrchr(const char *s, int c);
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *dst, const char *src, unsigned int n);
+#include <string.h>
+#include <stdio.h>
 
 struct Rva001530E9Parts {
     char m_name[64];
