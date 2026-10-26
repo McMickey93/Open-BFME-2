@@ -372,4 +372,4 @@ void MeshModelClass::Make_Geometry_Unique()
 
 // tu-skeleton: 0x00172F90 663B ?Init_For_NPatch_Rendering@MeshModelClass@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/MeshModelInitNPatch.cpp (not merged yet)
 
-// tu-skeleton: 0x00173230 150B ?Register_For_Rendering@MeshModelClass@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/Rva00173230Finish.cpp (not merged yet)
+// tu-skeleton: 0x00173230 150B ?Register_For_Rendering@MeshModelClass@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/MeshModelClass_Register_For_Rendering.cpp (not merged yet)

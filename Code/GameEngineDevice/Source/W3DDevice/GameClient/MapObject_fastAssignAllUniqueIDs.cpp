@@ -15,7 +15,7 @@
 // twice), getWaypointName (0x0030D748), getGenericAIObjectName (0x0030D808),
 // AsciiString::format, StaticNameKey::key (0x00148F5E), Dict::setAsciiString
 // (0x0031375A) and the five deque bodies named below; layouts as in
-// MapObject_verifyValidUniqueIDMethodThunk_Rva0030E0AA.cpp.
+// MapObject_verifyValidUniqueID.cpp.
 // Donor: GeneralsMD WorldHeightMap.cpp MapObject::fastAssignAllUniqueIDs (the
 // present-unmatched copy in this tree's WorldHeightMap.cpp) and Open-BFME-1
 // MapObjectFastAssignUniqueIDs.cpp. BFME 2 adds the generic-AI-object branch

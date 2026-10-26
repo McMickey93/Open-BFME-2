@@ -208,7 +208,7 @@ void MapObject::validate(void)
 
 // MapObject::verifyValidTeam is defined with its retail-matched body in Code/GameEngineDevice/Source/W3DDevice/GameClient/MapObject_verifyValidTeamMethodThunk_Rva0030D6C7.cpp (0x0030D6C7).
 
-// MapObject::verifyValidUniqueID is defined with its retail-matched body in Code/GameEngineDevice/Source/W3DDevice/GameClient/MapObject_verifyValidUniqueIDMethodThunk_Rva0030E0AA.cpp (0x0030E0AA).
+// MapObject::verifyValidUniqueID is defined with its retail-matched body in Code/GameEngineDevice/Source/W3DDevice/GameClient/MapObject_verifyValidUniqueID.cpp (0x0030E0AA).
 
 // MapObject::fastAssignAllUniqueIDs is defined with its retail-matched body in Code/GameEngineDevice/Source/W3DDevice/GameClient/MapObject_fastAssignAllUniqueIDs_Rva0030E390.cpp (0x0030E390).
 // Its std::stack<MapObject*> draft used to instantiate the deque node allocator

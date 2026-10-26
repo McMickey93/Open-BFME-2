@@ -488,9 +488,9 @@ private:
 	UnicodeString m_str20; // +0x20
 };
 
-// tu-skeleton: 0x0037ADB6 152B ?logCRCMismatch@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037ADB6Write.cpp (not merged yet)
+// tu-skeleton: 0x0037ADB6 152B ?logCRCMismatch@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
 
-// tu-skeleton: 0x0037AE4E 148B ?logGameEnd@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037ADB6Write.cpp (not merged yet)
+// tu-skeleton: 0x0037AE4E 148B ?logGameEnd@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
 
 // tu-skeleton: 0x0037AEE2 35B ?rva0037AEE2@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
 
@@ -1042,7 +1042,7 @@ void RecorderClass::logPlayerDisconnect(UnicodeString player, int slot)
 
 // tu-skeleton: 0x0037B3F7 54B ?rva0037B3F7@Rva0037B3F7@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B3F7.cpp (not merged yet)
 
-// tu-skeleton: 0x0037B42D 52B ?stopRecording@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037ADB6Write.cpp (not merged yet)
+// tu-skeleton: 0x0037B42D 52B ?stopRecording@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/System/Rva0037B5A0.cpp
 

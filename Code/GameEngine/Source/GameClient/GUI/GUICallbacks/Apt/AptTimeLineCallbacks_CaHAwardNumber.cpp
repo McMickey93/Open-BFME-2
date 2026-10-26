@@ -102,7 +102,7 @@ struct AptTimeLinePlayer
 	unsigned char m_pad10[0x50 - 0x10];
 };
 
-// Rva00434160Init.cpp's 0x00434160 and Rva00433D3CClear.cpp's 0x00433D3C.
+// AptSaveLoad_OpenScreen.cpp's 0x00434160 and Rva00433D3CClear.cpp's 0x00433D3C.
 class AptSaveLoad
 {
 public:

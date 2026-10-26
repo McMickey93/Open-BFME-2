@@ -116,7 +116,7 @@ void Connection::setQuitting(UnsignedInt quitFrame)
 	m_openedTime = timeGetTime();
 }
 
-// tu-skeleton: 0x0058B9CA 177B ?processAck@Connection@@QAEPAVNetCommandRef@@GEII@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058B9CAFinish.cpp (not merged yet)
+// tu-skeleton: 0x0058B9CA 177B ?processAck@Connection@@QAEPAVNetCommandRef@@GEII@Z -- matched in Code/GameEngine/Source/GameNetwork/Connection_processAck.cpp (not merged yet)
 
 // tu-skeleton: 0x0058BA7B 44B ?doRetryMetrics@Connection@@IAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/ConnectionRetryMetrics.cpp (not merged yet)
 

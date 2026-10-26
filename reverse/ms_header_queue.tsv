@@ -707,7 +707,7 @@ Code/GameEngine/Source/Common/Rva0054C805Timer.cpp	drop-in candidate	same	1	1	0	
 Code/GameEngine/Source/Common/Rva0054CC1BRelease.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/Rva0054FC14Cleanup.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/Rva00552C0FBase.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/GameEngine/Source/Common/Rva00559B64GetImage.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sprintf:same
+Code/GameEngine/Source/Common/GetRankIcon.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sprintf:same
 Code/GameEngine/Source/Common/Rva00559F11Parse.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	atoi:same
 Code/GameEngine/Source/Common/Rva0055A40CSplit.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
 Code/GameEngine/Source/Common/Rva0057416BCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
@@ -888,7 +888,7 @@ Code/GameEngine/Source/Common/System/Rva002D387AMethod.cpp	drop-in candidate	sam
 Code/GameEngine/Source/Common/System/Rva002D394BMethod.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/Common/System/Rva0030662AXfer.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same
 Code/GameEngine/Source/Common/System/Rva0031AB1EPrepend.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
-Code/GameEngine/Source/Common/System/Rva0033962FFinish.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same
+Code/GameEngine/Source/Common/System/INI_parseDamageFX.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same
 Code/GameEngine/Source/Common/System/Rva0033A865.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/System/Rva004FAFB6Factory.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/System/Rva005046B0ScanTangent.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	tan:same
@@ -1668,7 +1668,7 @@ Code/GameEngine/Source/Common/GameModePreferencesUserName.cpp	adapt	source	6	1	4
 Code/GameEngine/Source/Common/LanLobbyUserNamePrefs_setUserName.cpp	adapt	source	6	1	4	0	0	0	0	1	0	0	0	<stdio.h>	no	yes	hand			_wfopen:source,fprintf:source,fclose:source,fgets:source,FILE:same
 Code/GameEngine/Source/Common/Rva0044DEC1Finish.cpp	adapt	source	6	1	4	0	0	0	0	1	0	0	0	<stdio.h>	no	yes	hand			_wfopen:source,fprintf:source,fclose:source,fgets:source,FILE:same
 Code/GameEngine/Source/Common/Rva0054F508Ctor.cpp	adapt	source	6	1	4	0	0	0	0	1	0	0	0	<stdio.h>	no	yes	hand			_wfopen:source,fprintf:source,fclose:source,fgets:source,FILE:same
-Code/GameEngine/Source/Common/System/Rva0037ADB6Write.cpp	adapt	source	6	0	5	0	0	0	0	1	0	0	0	<stdio.h>,<time.h>	no	yes	hand			ftell:source,fseek:source,fwrite:source,time:source,fclose:source
+Code/GameEngine/Source/Common/System/RecorderClass.cpp	adapt	source	6	0	5	0	0	0	0	1	0	0	0	<stdio.h>,<time.h>	no	yes	hand			ftell:source,fseek:source,fwrite:source,time:source,fclose:source
 Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp	adapt	source	6	5	1	0	0	0	0	0	0	0	0	<string.h>,<math.h>,<tchar.h>	no	yes	hand			strncmp:source,fmod:same,strcmp:same,fabs:same,strlen:same,strcpy:same
 Code/Libraries/Source/Compression/ZLib/zutil.h	adapt	unknown	6	0	1	5	0	0	0	0	0	0	0	<stdio.h>,<MAPIDbg.h>,<stdlib.h>	yes	no	hand			errno:unknown,fdopen:unknown,Assert:unknown,fdopen:source
 Code/Libraries/Source/DirtySock/Rva00819920Comm.cpp	adapt	source	6	1	5	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source,LeaveCriticalSection:source,GetTickCount:source,WaitForSingleObject:source,WaitForMultipleObjects:source,Sleep:same
@@ -1827,7 +1827,7 @@ Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	adapt	source	1	0	1	0	0	0	0
 Code/GameEngine/Source/Common/GapBodiesGE49.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source
 Code/GameEngine/Source/Common/Mutex.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateMutexA:source
 Code/GameEngine/Source/Common/NetworkInterfaceFramePacing.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			QueryPerformanceCounter:source
-Code/GameEngine/Source/Common/RTS/PlayerRva002A9E36Scale.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand			ceil:source
+Code/GameEngine/Source/Common/RTS/Player_ScaleMoney.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand			ceil:source
 Code/GameEngine/Source/Common/Rva00041078Wait.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			WaitForMultipleObjects:source
 Code/GameEngine/Source/Common/Rva0010414CGet.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/Common/Rva00289ABDCtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		operator==:unknown
@@ -1905,7 +1905,7 @@ Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiConnect.c	adapt	unknown	1	0	1	0
 Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerSBGroupsListCallback.c	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			htonl:source
 Code/GameEngine/Source/GameNetwork/LANAPIRequestAccept.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand			wcsncpy:source
 Code/GameEngine/Source/GameNetwork/LANAPIRequestGameCreate.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			timeGetTime:source
-Code/GameEngine/Source/GameNetwork/Rva0058B9CAFinish.cpp	adapt	source	1	0	1	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand			timeGetTime:source
+Code/GameEngine/Source/GameNetwork/Connection_processAck.cpp	adapt	source	1	0	1	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand			timeGetTime:source
 Code/GameEngine/Source/GameNetwork/Rva007F91D0DemanglerLog.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<ctype.h>	no	no	hand			isprint:unknown
 Code/GameEngine/Source/GameNetwork/Y2FeslSafeStrCopy.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<tchar.h>	no	yes	hand			strncpy:source
 Code/GameEngineDevice/Source/MilesAudioDevice/AudioFileCacheThreadEntry.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateThread:source

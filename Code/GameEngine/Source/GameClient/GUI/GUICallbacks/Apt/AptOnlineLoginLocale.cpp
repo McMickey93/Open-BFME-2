@@ -39,7 +39,7 @@ public:
 
 extern Rva00222A8BTarget *TheRva00222A8BTarget;
 
-// The login screen instance (Rva0056E79EDtor.cpp's g_Va00E062EC); its
+// The login screen instance (AptOnlineLogin.cpp's g_Va00E062EC); its
 // recovered 0x0057179D takes the screen's byte flag.
 class AptOnlineLogin
 {
