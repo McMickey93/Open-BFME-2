@@ -76,12 +76,7 @@ public:
 	unsigned char m_pad[0x70];
 	Real m_actualDamageDealt; // out.m_actualDamageDealt, +0x70
 };
-class ProneUpdateModuleData
-{
-public:
-	unsigned char m_pad[8];
-	Real m_damageToFramesRatio; // +0x08
-};
+#include "ProneUpdateModuleDataView.h"
 enum UpdateSleepTime
 {
 	UPDATE_SLEEP_NONE = 1,

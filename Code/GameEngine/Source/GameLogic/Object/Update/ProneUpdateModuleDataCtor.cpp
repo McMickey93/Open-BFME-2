@@ -11,16 +11,7 @@
 extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
 
-class ProneUpdateModuleData
-{
-public:
-	ProneUpdateModuleData();
-
-private:
-	const void *m_vtable;
-	unsigned int m_unused04;
-	float m_damageToFramesRatio;				// +0x08
-};
+#include "ProneUpdateModuleDataView.h"
 
 ProneUpdateModuleData::ProneUpdateModuleData()
 	: m_vtable( reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70)) ),
