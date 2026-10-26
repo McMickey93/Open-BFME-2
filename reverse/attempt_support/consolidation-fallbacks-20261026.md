@@ -92,5 +92,5 @@ declaration, frozen-file, data-identity, or provider-selection prerequisites.
 
 Publication handoff: `origin/master..HEAD` contains only this attempt-support
 file; no source paths changed, so the path-consumer audit had no moved paths to
-review. No claims remain. The runner deferred the two pending commits under
-its shared 8-commit/60-minute publication batch rule.
+review. No claims remain. The runner deferred publication under its shared
+8-commit/60-minute batch rule.
