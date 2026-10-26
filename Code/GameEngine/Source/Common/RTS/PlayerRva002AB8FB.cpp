@@ -37,7 +37,7 @@ public:
 
 extern GameLogic *TheGameLogic;
 extern NameKeyGenerator *TheNameKeyGenerator;
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 extern const char *g_Rva0107301CEmptyString;
 
 class GameWindow

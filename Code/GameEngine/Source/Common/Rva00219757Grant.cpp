@@ -20,7 +20,7 @@ class UpgradeCenter
 public:
 	const UpgradeTemplate *findUpgrade(const AsciiString &name) const;
 };
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 #pragma comment(linker, "/alternatename:_TheUpgradeCenter=?TheUpgradeCenter@@3PAVUpgradeCenter@@A")
 
 class ObjectP04Flags00219757
