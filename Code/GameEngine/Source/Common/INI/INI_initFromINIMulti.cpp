@@ -19,8 +19,7 @@
 // ini_parsers_findFieldParse.cpp's copy of the same static.
 #include "ascii_string.h"
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 typedef int Int;
 typedef unsigned int UnsignedInt;
