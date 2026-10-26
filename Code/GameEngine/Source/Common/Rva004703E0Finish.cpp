@@ -11,7 +11,7 @@
 // uses the same holder idiom). Evidence: callees rowed vector erase 0x002BF70F,
 // free 0x00030830 and StringBase releaseBuffer 0x00036410; callers 0x004704AC
 // and 0x00475942; EH prolog helper 0x00629188.
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 struct BfmePod16
 {

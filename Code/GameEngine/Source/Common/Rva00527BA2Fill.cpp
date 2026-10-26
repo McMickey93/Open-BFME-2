@@ -6,7 +6,7 @@
 // by k and bails at zero, advancing dst/n. Otherwise (or after) reads
 // the table pointer through m_4 (defaulting to g_bfmeEmptyF9 0x00BBAC1C
 // plus 8 when unset) and memcpys m bytes from table + (n - 1).
-extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
+#include <string.h>
 #pragma function(memcpy)
 
 

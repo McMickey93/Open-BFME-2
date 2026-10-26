@@ -12,7 +12,7 @@ private:
 	char m_pad[32];
 };
 
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 class Rva004E3C71
 {
