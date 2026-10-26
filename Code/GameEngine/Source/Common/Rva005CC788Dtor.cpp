@@ -8,7 +8,7 @@
 // produces the native negative-this destructor entry without assembly.
 // Original class/function spellings remain unproven. The older opaque
 // 8B negative-adjust call view in RvaNegativeAdjustFwds is reverified.
-class Rva0007DF07 {public: Rva0007DF07():count(0){} virtual ~Rva0007DF07(){} private:unsigned count;};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005CC5E5 : public virtual Rva0007DF07 {public: Rva005CC5E5() throw(); virtual void slot0(); virtual ~Rva005CC5E5(){};};
 class Rva000AD6F4 {public: void clear(); ~Rva000AD6F4(); private:void *pointer;};
 struct Rva005CE93EContext;

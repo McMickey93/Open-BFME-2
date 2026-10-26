@@ -5,13 +5,7 @@
 // receives the fixed standalone virtual-base bias8 and restores the same pair.
 // Parent5E4F6D and teardown5E5018 independently establish this constructor
 // and destructor ABI. Replaces the former manually written vptr helper views.
-struct RvaSmallVtableZeroBase { void *m_04; };
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-    Rva0007DF07() { m_04 = 0; }
-    virtual ~Rva0007DF07() {}
-};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005E3AE1 : public virtual Rva0007DF07
 {
 public:

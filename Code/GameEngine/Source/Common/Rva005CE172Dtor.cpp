@@ -10,7 +10,7 @@
 // Base destruction clears the owning holder through the existing29B worker
 // before the parent's inline destructor restores C74E6C/C74E68.
 // Layout/ABI are target facts; application identities remain unknown.
-class Rva0007DF07 {public: Rva0007DF07():count(0){} virtual ~Rva0007DF07(){} private:unsigned count;};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005CC5E5 : public virtual Rva0007DF07 {public: Rva005CC5E5() throw(); virtual void slot0(); virtual ~Rva005CC5E5(){};};
 class Rva000AD6F4 {public: void clear(); ~Rva000AD6F4(); private:void *pointer;};
 struct Rva005CE172Context;

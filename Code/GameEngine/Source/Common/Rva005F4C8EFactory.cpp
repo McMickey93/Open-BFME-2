@@ -10,13 +10,7 @@
 // name is matched.
 
 class AsciiString;
-struct RvaSmallVtableZeroBase { void *m_04; };
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-    Rva0007DF07();
-    virtual ~Rva0007DF07();
-};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005CC5E5 : public virtual Rva0007DF07
 {
 public:
