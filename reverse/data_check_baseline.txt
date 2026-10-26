@@ -472,7 +472,6 @@ Code/GameEngine/Source/GameLogic/Object/Contain/Rva00588D24.cpp	wrong-name	?g_bf
 Code/GameEngine/Source/GameLogic/Object/Contain/SiegeEngineContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047C03A@SiegeEngineContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03704
 Code/GameEngine/Source/GameLogic/Object/Contain/SlaughterHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004803B6@SlaughterHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03768
 Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp	wrong-name	?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03660
-Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainModuleDataCtor.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047DB43@TunnelContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0372C
 Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp	wrong-name	?$S23@?1??onObjectCreated@BoneFXDamage@@MAEXXZ@4IA	0x00A03FB4
 Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp	wrong-name	?$S24@?1??onBodyDamageStateChange@BoneFXDamage@@UAEXPBVDamageInfo@@W4BodyDamageType@@1@Z@4IA	0x00A03FBC
@@ -501,7 +500,6 @@ Code/GameEngine/Source/GameLogic/Object/Die/SquishCollidePoolKey.cpp	wrong-name	
 Code/GameEngine/Source/GameLogic/Object/Die/TransitionDamageFXPoolKey.cpp	wrong-name	?$S1@?1??rva0004BA437@TransitionDamageFX@@SA?AW4NameKeyType@@XZ@4IA	0x00A03FD0
 Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDie.cpp	wrong-name	?$S1@?1??rva000486B75@UpgradeDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03898
 Code/GameEngine/Source/GameLogic/Object/FiringTrackerPoolKey.cpp	wrong-name	?$S1@?1??rva0004DEACB@FiringTracker@@SA?AW4NameKeyType@@XZ@4IA	0x00A04410
-Code/GameEngine/Source/GameLogic/Object/Made002CC8A4Ctor.cpp	wrong-name	?g_009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Made002CC971Parse.cpp	wrong-name	?SlaveAttackFieldTable@@3UFieldParse@@B	0x0086BB18
 Code/GameEngine/Source/GameLogic/Object/ObjectFindAttributeModifierPoolUpdate.cpp	wrong-name	?$S1@?1??findAttributeModifierPoolUpdate@Object@@ABEPAVAttributeModifierPoolUpdate@@XZ@4IA	0x009FECE8
 Code/GameEngine/Source/GameLogic/Object/ObjectFindDynamicPortalBehaviour.cpp	wrong-name	?$S1@?1??rva004608E0@DynamicPortalBehaviour@@SAPAVModule@@PAVObject@@@Z@4IA	0x00A035D8
@@ -512,7 +510,6 @@ Code/GameEngine/Source/GameLogic/Object/ObjectRva0028EBDA.cpp	wrong-name	?$S1@?1
 Code/GameEngine/Source/GameLogic/Object/Object_Object_topple.cpp	wrong-name	?$S143@?1??topple@Object@@QAEXPBUCoord3D@@MI@Z@4IA	0x009FED18
 Code/GameEngine/Source/GameLogic/Object/Rva00220DCDInit.cpp	wrong-name	?g_00DFE490@@3VRva00575674@@A	0x009FE490
 Code/GameEngine/Source/GameLogic/Object/Rva002A7400Ctor.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
-Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/SpawnedModelConditionCreatePoolKey.cpp	wrong-name	?$S1@?1??rva00250A4E@SpawnedModelConditionCreate@@SA?AW4NameKeyType@@XZ@4IA	0x009FE990
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CDD59@ActivateModuleSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A043C8
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CashHackSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C266F@CashHackSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041A4
