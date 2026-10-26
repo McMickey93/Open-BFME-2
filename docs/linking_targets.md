@@ -444,7 +444,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameLogic/Object/Update/HordeUpdate.cpp` | 14 | 5 (U=5) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/DumbProjectileBehavior.cpp` | 13 | 22 (U=12, C=6, S=4) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/EMPUpdate.cpp` | 13 | 6 (U=6) | 2026-10-26 at 0a575d1548: LINKS in preview 0 -> 13 B; census pending. BFME 2 has no EMPUpdate or LeafletDropBehavior (no module-name string in game.dat, no rowed method), so the ZH port bodies behind the 6 unresolved went; the unit keeps Drawable::setInstanceScale 0x002C8F2E. |
-| `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/HackInternetAIUpdate.cpp` | 10 | 23 (U=21, C=1, S=1) | Open |
+| `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/HackInternetAIUpdate.cpp` | 10 | 23 (U=21, C=1, S=1) | 2026-10-26 at e0cbcdaa47: LINKS in preview 0 -> 10 B; census pending. BFME 2 has no HackInternetAIUpdate (no module-name string in game.dat, no rowed method), so the ZH port bodies behind the 23 went; the unit keeps ScoreKeeper::addMoneyEarned 0x003B0CA9. |
 | `Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp` | 10 | 20 (U=16, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/texproject.cpp` | 10 | 12 (U=11, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/MobMemberSlavedUpdate.cpp` | 8 | 3 (U=3) | 2026-10-26 at 01564e4a01: LINKS in preview 0 -> 8 B; census pending. BFME 2 has no MobMemberSlavedUpdate (no module-name string in game.dat, no rowed method), so the ZH port bodies behind the 3 unresolved went; the unit keeps sqr<Int> 0x000E13CA. |
