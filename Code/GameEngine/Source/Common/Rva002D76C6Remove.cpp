@@ -12,7 +12,7 @@ struct Rva002D76C6Owner
     char pad[0x260];
     int m260;
 };
-void __cdecl operator delete(void *);
+#include <new>
 bool __stdcall Rva002D76C6Remove(Rva002D76C6Owner *owner, Rva002D76C6Node **head)
 {
     Rva002D76C6Node *cur = *head;

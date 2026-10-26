@@ -9,7 +9,7 @@
 
 class BfmeParserRegistryVE;
 
-void *__cdecl operator new(unsigned int);
+#include <new>
 
 extern const void *const g_00C0D8C4[];
 #pragma comment(linker, "/alternatename:?g_00C0D8C4@@3QBQBXB=??_7Rva00328A75@@6B@")

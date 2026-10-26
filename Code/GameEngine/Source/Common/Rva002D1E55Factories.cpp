@@ -29,7 +29,7 @@
 //   0x0043DA1B  0x35C  0x0043D686
 //   0x0051104D  0x28C  0x00510FDB
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class Rva0051268C;	// the factory row's return spelling
 
