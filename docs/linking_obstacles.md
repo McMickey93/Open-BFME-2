@@ -929,6 +929,19 @@ Updated: 2026-10-25; inspected revision: `4e835ab16a6`.**
   `/alternatename` by hand, hatch counts may rise only through an admitted tool,
   and the counter's own `--allow`/`--admit` is hand-adding. No admission tool
   covers this hatch, so the evidence is preserved as an attempt, not a repair.
+- **Completed (2026-10-26, agent b1):** a placeholder-to-placeholder pair needs no
+  name decision. `Rva000647B5Ctor.cpp`'s ctor 0x000647B5 and the rowed dtor
+  0x000647D4 store the same vptrs (0xBC5A5C/0xBC5A24; slot 0 is
+  `??_GRva000647D4` 0x00064809), so the ctor class became `Rva000647D4` on
+  `LocomotorDerivedDtors.cpp`'s view (two alternatenames dropped): link_check
+  0 -> 25 B LINKS, factory 0x00042036 and the dtor unit still LINK. Two more
+  pairs found, not applied: `WeaponStore` (ctor 0x002CC20E, table 0x00C02114,
+  dtor `Rva002CCD56` 0x002CCD56; Weapon.cpp's present-unmatched `~WeaponStore`
+  would also go; links 0 -> 47 B, patch kept outside the tree) needs the same
+  placeholder-to-real admission as LINK-063; `Rva006DE1A0Finish.cpp` (table
+  0x00CEB150 slot 14 is `??_GRva006DE2B0`) needs its four caller units and the
+  `??3Rva006DE1A0` ICF pin moved. `T1Base_005F3750` is not a pair: its
+  `??_G` 0x003AE8D5 is ICF-shared with a different class (table 0x00C1D55C).
 - **Remaining / next check:** choose an admissible route. Preferred is an
   identity merge of the placeholder destructor class into the class the
   constructor/vtable prove, sharing one class view among every unit that emits
