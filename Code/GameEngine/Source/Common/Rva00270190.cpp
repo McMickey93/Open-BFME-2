@@ -19,7 +19,7 @@ class Drawable {
     static Rva002D752DNode **s_animationTemplates;
 };
 Rva002D752DNode **Drawable::s_animationTemplates = 0;
-extern void __cdecl operator delete[](void *p);
+#include <new>
 
 void __cdecl Rva00270190Free()
 {

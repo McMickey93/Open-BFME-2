@@ -12,7 +12,7 @@ private:
 	int m_3c[14];
 };
 
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 class Rva00270BA8
 {

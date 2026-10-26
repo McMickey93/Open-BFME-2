@@ -10,7 +10,7 @@ class Rva002A8A15 : public Rva004E9337
 public:
     void *rva002A8A15(int flags);
 };
-void __cdecl operator delete(void *p);
+#include <new>
 
 void *Rva002A8A15::rva002A8A15(int flags)
 {
