@@ -8,7 +8,7 @@
 #include "W3DDevice/GameClient/W3DGameFont.h"
 #include "WW3D2/WW3D.h"
 #include "WW3D2/AssetMgr.h"
-#include "WW3D2/Render2DSentence.h"
+#include "W3DGameFontRender2DSentence.h"
 #include "GameClient/GlobalLanguage.h"
 #include <new>
 #include "../../../../../Libraries/Source/WWVegas/WWLib/simplevec.h"
