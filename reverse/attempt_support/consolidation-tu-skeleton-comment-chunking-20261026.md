@@ -11,7 +11,18 @@ is a type definition that `chunks()` split at its `}` and so orphaned its `;`.
 - HEAD before 65d27d52f6: 18 items. After it: 16.
 - With the unlanded patch below: 14. All 14 are family D.
 
-## B + C: patch ready but not landed (no TU dry-run yet; wind-down)
+## B + C: landed (follow-up commit, 2026-10-26)
+
+Landed as below. Chunk-kind census over `Code/` (old vs new chunker): kinds
+change in 5 files (W3DView.cpp, W3DView_MoveCameraOrLocatorAlongSplinePathInit.cpp,
+dx8wrapper.cpp, dx8caps.cpp, texture.cpp); norm keys change only for string
+literals holding `//` in 12 files. No current dry-run moves: every affected
+destination is blocked before composition (dx8caps.cpp, texture.cpp and
+dx8wrapper.cpp are mixed; W3DView.cpp has 0 approved rows; the dx8caps.cpp
+`--split --for statistics.cpp` dry-run refuses 0x00129C80 with "no definition
+spells its name" both before and after). Verified repair only, no unblock.
+
+### Original note
 
 - **B (`strip` order):** block comments were removed before line comments.
   A `//*****` banner followed by `/*! ... */` therefore left a `/` ahead of

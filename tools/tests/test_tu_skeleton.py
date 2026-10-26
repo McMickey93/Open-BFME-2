@@ -177,6 +177,26 @@ class StorageSpecifiedAggregateTests(unittest.TestCase):
         self.assertEqual([k for k, _ in T.chunks(text)], ["def", "def"])
 
 
+class CommentReadingTests(unittest.TestCase):
+    def test_a_line_comment_banner_before_a_block_comment_leaves_no_slash(self):
+        # dx8caps.cpp: `//*****` then `/*! ... */` left a `/` before the struct head,
+        # which then split at its `}` and orphaned the `;`
+        text = "//********\n/*! doc */\nstruct S { int a; };\nint f() { return 1; }\n"
+        self.assertEqual([(k, T.strip(c).strip()) for k, c in T.chunks(text)],
+                         [("decl", "struct S { int a; };"), ("def", "int f() { return 1; }")])
+
+    def test_a_comment_opener_in_a_string_is_text(self):
+        self.assertEqual(T.norm('const char *p = "/* x */ //y";'), 'const char *p = "/* x */ //y";')
+
+    def test_a_block_comment_opened_on_a_directive_line_ends_with_the_directive(self):
+        # W3DView.cpp: `#include "WinMain.h" /** ...` leaked the comment's braces into the next item
+        text = '#include "WinMain.h" /** start\n * more } {\n */\nclass V { int x; };\nint g() { return 2; }\n'
+        items = T.chunks(text)
+        self.assertEqual([k for k, _ in items], ["pp", "decl", "def"])
+        self.assertEqual(T.strip(items[0][1]).strip(), '#include "WinMain.h"')
+        self.assertEqual(T.strip(items[1][1]).strip(), "class V { int x; };")
+
+
 class HeaderQueueTests(unittest.TestCase):
     def test_donors_with_a_queued_private_copy_are_named_before_the_merge(self):
         with tempfile.TemporaryDirectory() as tmp:

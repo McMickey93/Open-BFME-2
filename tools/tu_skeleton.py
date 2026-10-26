@@ -182,7 +182,13 @@ def chunks(text):
                     k = n
                     break
                 if text[k - 1:k] != "\\" and not text[j:k].rstrip("\r").endswith("\\"):
-                    break
+                    # a block comment opened on the directive's line ends with the directive
+                    o = COMMENT.sub(lambda m: m.group(0) if m.group(0)[0] in "\"'" else " " * len(m.group(0)),
+                                    text[i:k]).find("/*")
+                    if o < 0 or text.find("*/", i + o + 2) < 0:
+                        break
+                    j = text.find("*/", i + o + 2) + 2
+                    continue
                 j = k + 1
             lead = text[start:text.rfind("\n", 0, i) + 1]
             if lead.strip():
@@ -224,9 +230,13 @@ def chunks(text):
     return out
 
 
+# one left-to-right pass, as the compiler reads it: a `//****` banner before a `/* ... */` block
+# is a line comment, and comment openers inside string and character literals are text
+COMMENT = re.compile(r'"(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\'|//[^\n]*|/\*.*?\*/', re.S)
+
+
 def strip(t):
-    t = re.sub(r"/\*.*?\*/", " ", t, flags=re.S)
-    return re.sub(r"//[^\n]*", "", t)
+    return COMMENT.sub(lambda m: m.group(0) if m.group(0)[0] in "\"'" else " ", t)
 
 
 def norm(t):
