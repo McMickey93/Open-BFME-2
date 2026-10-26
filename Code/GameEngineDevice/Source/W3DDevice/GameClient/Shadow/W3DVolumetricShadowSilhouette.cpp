@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // W3DVolumetricShadow silhouette tools.
 // Native F17CA..F185F149 RET8: visible noinline GetPolygonIndex67 closes
 // EBX=this/EDI=inner index; standalone declaration swapped both registers.
@@ -25,9 +26,7 @@ typedef short Short;
 typedef unsigned short UnsignedShort;
 typedef unsigned char Byte;
 typedef bool Bool;
-#define TRUE 1
-#define FALSE 0
-#define NULL 0
+#include <windows.h>
 
 #define MAX_POLYGON_NEIGHBORS 3
 #define NO_NEIGHBOR -1

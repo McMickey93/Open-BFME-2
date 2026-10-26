@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // ?RenderDynamicMeshVolume@W3DVolumetricShadow@@IAEXHHPBVMatrix3D@@@Z @0x000F42FF 1745B.
 //
@@ -35,9 +36,7 @@ template <> pair<Lk6AsciiSetTree::iterator, bool> Lk6AsciiSetTree::insert_unique
 template <> _Rb_tree_node<AsciiString> *Lk6AsciiSetTree::_M_create_node(const AsciiString&);
 }
 
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef unsigned int UINT;
+#include <windows.h>
 typedef float Real;
 typedef int Int;
 

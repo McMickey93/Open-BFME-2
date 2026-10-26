@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ??0W3DVolumetricShadow@@QAE@XZ @0x000F1528 355B.
 //
 // W3DVolumetricShadow::W3DVolumetricShadow: the ZH constructor. Target
@@ -19,9 +20,7 @@ typedef bool Bool;
 typedef unsigned char UnsignedByte;
 typedef short Short;
 
-#define TRUE	1
-#define FALSE	0
-#define NULL	0
+#include <windows.h>
 
 #define MAX_SHADOW_LIGHTS			1
 #define MAX_SHADOW_CASTER_MESHES	160
