@@ -10,9 +10,8 @@
 #include <vector>
 #include "ascii_string.h"
 #include "unicode_string.h"
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
+#include <string.h>
+#include <stdio.h>
 // The objectives summary at +0x288: a count at +4 and up to eight
 // checked flags at +0x28.
 struct AptScoreObjectives
