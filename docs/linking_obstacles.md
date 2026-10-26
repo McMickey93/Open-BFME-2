@@ -2321,6 +2321,13 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
 - **Completed:** 3a8ff9f8e0 reverted (`Recorder.cpp` by hand, since files were merged into it
   afterwards). `./build.sh` 728/728 rows across the 23 units; `tools/link_check.py` against
   the d1f046749a index: 23/23 link, 0 -> 71,793 B.
+- **Current-input follow-up (2026-10-26, `ff4455c2af`):** the default picker
+  served `SkirmishPreferencesLoad.cpp`, whose unchanged current source already
+  previews LINKS against the 19:02 index at `5ce093a71a` (299 authored
+  nonpadding bytes). All six rows / 342 ledger bytes and its one EH graph pass;
+  every defined function is matched. This confirms the existing repair for
+  that consumer, without a new source repair or census gain. See
+  [the bounded check and reference comparison](../reverse/attempt_support/bfme1-reference-4fa9d591-20261026/readme.md).
 - **Remaining / next check:** the ledger row at 0x00A02EF0 is derived and provisional (it
   lists both spellings); regenerate it with `tools/data_ledger.py` so it names the defined
   `SkirmishGameInfo *` spelling, rather than respelling consumers to its current name. The
