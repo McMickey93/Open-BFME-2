@@ -4844,7 +4844,6 @@ alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?_rese
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?c_cih@AptValue@@QBEPAVAptCIH@@_N@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?c_date@AptValue@@QBEPAVAptDate@@XZ	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?c_nativefunction@AptValue@@QBEPAVAptNativeFunction@@XZ	1
-alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?getHasClass@AptObject@@UBEHXZ	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?getName@AptActionInterpreter@@SAXPAVAptCIH@@AAVEAStringC@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?isArray@AptValue@@QBE_NXZ	1
@@ -4952,7 +4951,6 @@ alternatename	Code/Libraries/Source/Apt/AptValueShutdownBFME2.cpp	?g_bfmeAptHash
 alternatename	Code/Libraries/Source/Apt/AptValueShutdownBFME2.cpp	?gpGlobalGlobalObject@@3PAVAptValue@@A	1
 alternatename	Code/Libraries/Source/Apt/AptValueShutdownBFME2.cpp	?rva0070A8B0@Rva0070A840@@QAEXXZ	1
 alternatename	Code/Libraries/Source/Apt/Rva006CFCD0Apt.cpp	?rva006CFCD0@AptCIH@@QBE_NXZ	1
-alternatename	Code/Libraries/Source/Apt/Rva006F6A50Cluster.cpp	?g_00E182E0@@3PAXA	1
 alternatename	Code/Libraries/Source/Apt/Rva006F6A50Cluster.cpp	?rva006F7AC0@Rva006F7AC0@@QBE_NXZ	1
 alternatename	Code/Libraries/Source/Apt/Rva006FC1D0Ctor.cpp	??1Rva006D6360@@UAE@XZ	1
 alternatename	Code/Libraries/Source/Apt/Rva006FD5B0HexPair.cpp	?rva006291C0@@YAKPBDPAXH@Z	1
