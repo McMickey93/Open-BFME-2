@@ -32,7 +32,7 @@ The handoff found no earlier served-queue entry for these 16 units. Follow-up:
 | `ElementStrideWalks.cpp` | 90 | Unresolved | Open |
 | `VectorRangeEraseRva003F6975.cpp` | 80 | Unresolved | Open |
 | `Rva00541913CopyCtor.cpp` | 76 | Wrong selected | Open |
-| `StlportNarrowAppendCStr.cpp` | 58 | COMDAT losers | Open: first copy is stlport_float_format's (LINK-061) |
+| `StlportNarrowAppendCStr.cpp` | 58 | COMDAT losers | Open: first copy is stlport_float_format's (LINK-070) |
 | `GrantUpgradeCreate.cpp` | 42 | Unresolved | Open |
 | `PartitionData_friendUpdateCellsTouched.cpp` | 37 | Wrong selected | Open |
 | `StlSweepW5Rva0042830DAssignTwin.cpp` | 33 | Unresolved | Open |
@@ -369,7 +369,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteAssign.cpp` | 45 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005FE3DC.cpp` | 45 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_insertion_sort_s4sortelem20.cpp` | 45 | 3 (U=2, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | 2026-10-26: b313329af6 link_check LINKS (0 -> 44 B); truename/falsename defined beside their storage; LINK-062. |
+| `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | 2026-10-26: b313329af6 link_check LINKS (0 -> 44 B); truename/falsename defined beside their storage; LINK-071. |
 | `Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPower.cpp` | 40 | 3 (U=2, C=1) | 2026-10-25: current-provider preview still has protected SpecialPower dtor, findPositionAround and FindPositionOptions blockers; LINK-014. |
 | `Code/Libraries/Source/WWVegas/WW3D2/decalsys.cpp` | 39 | 8 (U=8) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/ParkingPlaceBehavior.cpp` | 38 | 15 (U=8, C=6, S=1) | 2026-10-26 at 191cb9df0a: LINKS in preview 0 -> 38 B; census pending. BFME 2 has no ParkingPlaceBehavior (no module-name string in game.dat, only "GUI:ParkingPlacesFull"; no rowed method), so the ZH port bodies behind the 15 went; the unit emits vector<RunwayInfo>::size 0x001610A0 and operator[] 0x006BD4B0 by explicit instantiation over a TU-local 36-byte element. |
@@ -455,8 +455,6 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DVideoBuffer.cpp` | 0 | 7 (U=5, C=2) | Open |
 
 
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: 0x000B0298 rowed twice (also Rva000B0298Clear.cpp); callee 0x000AFF52 rowed as 3-arg `__destroy_aux` (LINK-035) |
 
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x000AF1C2 is rowed and links in `Rva000AF1C2Forward.cpp`; sweep unit, row and its pin removed (LINK-060) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: callee rowed as 3-arg `__destroy_aux` (LINK-035) |

@@ -2215,9 +2215,6 @@ Clearance: Wrong COMDATs and imports cleared; remaining blockers isolated to pro
 Census confirmation: awaiting next census.
 
 ### LINK-060: one address rowed twice; the non-linking copy is an over-claim
-Status: Open (10 retired, leads below). Updated: 2026-10-26; inspected revision: b57c128806; index d1f046749a.
-
-### LINK-060: one address rowed twice; the non-linking copy is an over-claim
 Status: Open (11 retired, leads below). Updated: 2026-10-26; inspected revision: b1071e9a26; index d1f046749a.
 Evidence / affected units: a scan of `reverse/functions.csv` for `matched` rows sharing a `target_rva`
 (notes without alias/ICF/fold/dup-of/object-symbol) against `reverse/link_status.csv` finds addresses
@@ -2335,7 +2332,7 @@ funclets) together with 0x0052C823, then point `Rva0056616BCopyDeferred.cpp`'s `
 Clearance: pending.
 Census confirmation: not claimed.
 
-### LINK-061: stlport_float_format keeps its own 279-byte narrow forward-iterator append
+### LINK-070: stlport_float_format keeps its own 279-byte narrow forward-iterator append
 
 Status: Open. Updated: 2026-10-26; inspected revision: 9e70605d3f; census 2026-10-26 13:18 at d1f046749a.
 Evidence / affected units: `??$append@PBD@...forward_iterator_tag...` has seven census copies. The first
@@ -2360,9 +2357,7 @@ into that unit, or find the STLport 4.6 `append` shape that compiles to 254 B.
 Clearance: none.
 Census confirmation: n/a.
 
-### LINK-062: STLport facet virtuals rowed under placeholder names (numpunct truename/falsename)
-
-### LINK-062: STLport facet virtuals rowed under placeholder names (RTTI vftable slots)
+### LINK-071: STLport facet virtuals rowed under placeholder names (RTTI vftable slots)
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 13cb4119f9.**
 
@@ -2435,9 +2430,7 @@ Census confirmation: n/a.
 - **Clearance:** none.
 - **Census confirmation:** not claimed.
 
-### LINK-045: Zero Hour port units for module classes BFME 2 never had
-
-### LINK-063: Zero Hour port units for module classes BFME 2 never had
+### LINK-072: Zero Hour port units for module classes BFME 2 never had
 
 **Status: Open (3 units repaired). Updated: 2026-10-26.**
 
