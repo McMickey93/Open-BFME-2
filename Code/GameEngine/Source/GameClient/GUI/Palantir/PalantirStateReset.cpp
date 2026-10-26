@@ -1,7 +1,7 @@
 // cl: /O1 /G7 /arch:SSE /MD /EHsc
 // Native2D3C5F..2D3CA5 and WB F40800 independently prove reset order.
 // The complete outer state type and field meanings remain unknown.
-void __cdecl operator delete(void *);
+#include <new>
 extern "C" void __cdecl _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 class Rva002D3C5F
