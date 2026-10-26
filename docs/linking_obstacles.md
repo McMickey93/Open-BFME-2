@@ -131,6 +131,15 @@ authored-byte previews or commit-title gains into a projected headline.
   overflow-to-clear key; the separate push_back finding remains registered.
   Historical preview was already clean (178 -> 178 bytes). No application
   identity, new C++ conversion or census-linked-byte gain is claimed.
+- **Narrow-string constructor debt follow-up (2026-10-26, `d76f1e9874`):**
+  [The current-input retirement](../reverse/attempt_support/narrow-string-ctor-identity-retirement-20261026-codexb4.md)
+  confirms the allocator and fill constructors already call the allocation
+  owner recovered by `7a90bdc5bd`. All six rows (343 bytes) and both EH graphs
+  remain exact. After normal refresh of 73 missing objects and one stale
+  provider, the owning identity tool retires both stale allocation-binding
+  keys with zero remaining findings in these sources. Both units are already
+  census-linked; this retires debt and claims no new linking gain. Other
+  string-family prerequisites remain open.
 - **Clearance / census confirmation:** graphics ordinary-preview scope cleared
   at the revision above; other families and census confirmation remain pending.
   Keep individual repair previews separate from later census confirmation.
