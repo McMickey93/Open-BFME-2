@@ -151,6 +151,15 @@ authored-byte previews or commit-title gains into a projected headline.
   RvaHashIndex00928620.cpp retains its separate identity key: the edge-map
   insertion's resize and pair-construction bindings need owner/type evidence.
   The handoff records the exact native targets and preserves this prerequisite.
+- **StructureTopple identity follow-up (2026-10-26):**
+  [The current-provider verification](../reverse/attempt_support/structure-topple-identity-retirement-20261026-codexb4.md)
+  confirms the constructor already calls the rowed range-erase owner at
+  0x003FA4DB. All five rows (307 bytes) and its EH graph remain exact.
+  After normal verification of 239 participating providers (4,420 function
+  rows), the owning identity tool retires its one stale key with zero
+  remaining findings. This source is already census-linked; no linked-byte
+  gain is claimed. The earlier forwarding casts and its separate header
+  prerequisite remain unchanged.
 - **Clearance / census confirmation:** graphics ordinary-preview scope cleared
   at the revision above; other families and census confirmation remain pending.
   Keep individual repair previews separate from later census confirmation.
