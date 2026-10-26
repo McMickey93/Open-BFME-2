@@ -3483,3 +3483,33 @@ reconciliation, LINK-004). `reverse/data_ledger.csv` still lists the old vtable
 alias names until it is next regenerated.
 Clearance: pending.
 Census confirmation: awaiting the next census.
+
+### LINK-066: legacy Zero Hour `GameWindowManager` bodies kept `GameWindowManager.cpp` from linking
+Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
+`9f685c7696` (index 2026-10-26 19:02 at `5ce093a71a`).
+Evidence / affected units: `Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp`
+owns two rows, `PassSelectedButtonsToParentSystem` (0x002C0978) and
+`PassMessagesToParentSystem` (0x002C09DF). It also carried 23 verbatim Zero Hour
+member bodies (ctor, dtor, the `gogoGadget*` builders, `winCreate`, `initTestGUI`, ...)
+under `present-unmatched` markers. They emitted the class vtable and referenced
+`GameWinDefault*`, `winDrawImage`, `winFillRect`, `winOpenRect`, `winDrawLine`,
+`winFontHeight`, `winFormatText`, `winIsDigit/Ascii/AlNum`, `winCreateFromScript`,
+`GameWindow::winSetOwner` and `GameWindow::winGetTooltipFunc`. None of these resolves
+under a real name today, and the unit selected the wrong `registerTabList`. The
+retail `W3DGameWindowManager` vtable 0x007C7C90 has no `winIsDigit/Ascii/AlNum`
+slots (target fact). Slots 66-69 are the placeholders `Rva00314AE0`, `Rva00314B28`,
+`Rva00314B75` and `Rva00314BC9` (`GameWindowRva00314AE0.cpp`); by Zero Hour
+`GameWindowGlobal.cpp` shape they are probably `winDrawImage`, `winFillRect`,
+`winOpenRect` and `winDrawLine`. Slot 73 (`Rva00314C93`, `VslotSmallBodiesB.cpp`)
+is probably `winFormatText` (structural inference, a naming lead).
+Completed: deleted the unmatched bodies, their markers and `testGrab`. Rowed owners got
+pointer comments (`winCreate` in `GameWindowManager_dumpWindow.cpp`, and
+`gogoGadgetListBox`/`ComboBox`/`TextEntry` in their own units). Also dropped the
+`??_H` anchor block: the unit still emits `??_H@YGXPAXIHP6EPAX0@Z@Z`, byte-identical
+to retail 0x00001423 (34 bytes compared). 25 hatches retired (23 `present_unmatched`,
+2 `pragma_optimize`). Both rows pass `./build.sh`, and `find_declared_unmatched.py`
+is clean. Preview: LINKS, LINKED 0 -> 151.
+Remaining / next check: rename the four vtable-slot placeholders above once their
+bodies are checked against Zero Hour.
+Clearance: pending.
+Census confirmation: awaiting the next census.
