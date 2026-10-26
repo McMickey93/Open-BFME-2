@@ -17,7 +17,9 @@ public:
 	void invoke(void *owner, const char *name, int flag, const char *value, void *a4, void *a5, void *a6, void *a7);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 class Rva00513040
 {
@@ -38,5 +40,5 @@ void Rva00513040::rva00513040(int v1, int v2)
 	const char *p2 = s2.str();
 	const char *p1 = s1.str();
 	void *owner = m_owner;
-	TheRva00222A8BTarget->invoke(owner, "SetBarPercent", 2, p1, (void *)p2, 0, 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(owner, "SetBarPercent", 2, p1, (void *)p2, 0, 0, 0);
 }

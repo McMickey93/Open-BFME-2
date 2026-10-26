@@ -37,7 +37,9 @@ public:
 	int invoke(void *owner, const char *name, int flag, const char *value, void *a4, void *a5, void *a6, void *a7);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // The login screen instance (AptOnlineLogin.cpp's g_Va00E062EC); its
 // recovered 0x0057179D takes the screen's byte flag.
@@ -94,6 +96,6 @@ void AptOnline::Login::AcceptLocale(const char *unused)
 	}
 	else
 		g_Va00E062F0 = true;
-	TheRva00222A8BTarget->invoke(m_owner->m_movie, "CallChild", 1, "DoCloseLocale", 0, 0, 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(m_owner->m_movie, "CallChild", 1, "DoCloseLocale", 0, 0, 0, 0);
 	((AptOnlineLogin *)(*(int *)&g_bfmeObjELB))->rva0057179D(m_d0);
 }

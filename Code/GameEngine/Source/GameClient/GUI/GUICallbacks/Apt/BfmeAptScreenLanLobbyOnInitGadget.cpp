@@ -247,7 +247,9 @@ public:
 	int invoke(void *owner, const char *name, int flag, const char *value, void *a4, void *a5, void *a6, void *a7);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // The two GameLogic fields read by the update (TheGameLogic, 0x00DFE78C).
 class GameLogic;
@@ -676,7 +678,7 @@ int AptLanLobby::OnUpdateData()
 				{
 					{
 					void *owner = m_owner;
-					TheRva00222A8BTarget->invoke(owner, "StartLobby", 0, 0, 0, 0, 0, 0);
+					((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(owner, "StartLobby", 0, 0, 0, 0, 0, 0);
 				}
 					m_6a4 = 1;
 					rva00446386(true);
@@ -702,7 +704,7 @@ int AptLanLobby::OnUpdateData()
 				m_6a4 = 4;
 				{
 					void *owner = m_owner;
-					TheRva00222A8BTarget->invoke(owner, "EnablePlayGame", 0, 0, 0, 0, 0, 0);
+					((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(owner, "EnablePlayGame", 0, 0, 0, 0, 0, 0);
 				}
 			}
 			break;
@@ -712,7 +714,7 @@ int AptLanLobby::OnUpdateData()
 				m_6a4 = 4;
 				{
 					void *owner = m_owner;
-					TheRva00222A8BTarget->invoke(owner, "EnablePlayGame", 0, 0, 0, 0, 0, 0);
+					((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(owner, "EnablePlayGame", 0, 0, 0, 0, 0, 0);
 				}
 			}
 			break;

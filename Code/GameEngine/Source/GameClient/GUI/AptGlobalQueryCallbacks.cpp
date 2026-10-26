@@ -34,7 +34,9 @@ public:
 };
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // The click-through handler (Rva0043283CDtor.cpp's singleton
 // g_Va00E032C8); its unrowed press and release handlers 0x00432AA2 and
@@ -101,7 +103,7 @@ extern AudioManager *TheAudio;
 // Retail 0x00412731, 11 bytes: "CloseWindow" closes the current Apt window.
 void __cdecl CloseWindow(const char *unused)
 {
-	((Rva00222479ByteOneSetter *)TheRva00222A8BTarget)->enable();
+	((Rva00222479ByteOneSetter *)g_bfmeAptWindowManager)->enable();
 }
 
 // Retail 0x00412A51, 162 bytes: "PlaySound" plays the named audio event.

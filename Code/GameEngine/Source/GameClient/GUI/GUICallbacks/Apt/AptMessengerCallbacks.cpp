@@ -103,7 +103,9 @@ public:
 		void *a1, void *a2, void *a3, void *a4);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // The rowed dword getter 0x00314126 (+0x210) on the screen's window.
 class Rva00314126DwordField
@@ -487,7 +489,7 @@ int AptMessenger::rva00511E6D()
 	{
 	case 2:
 		m_state = 3;
-		TheRva00222A8BTarget->invoke(((AptMessenger *)AptMessenger::s_instance)->m_274, "CloseScreen", 0, 0, 0, 0, 0, 0);
+		((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(((AptMessenger *)AptMessenger::s_instance)->m_274, "CloseScreen", 0, 0, 0, 0, 0, 0);
 		break;
 	case 4:
 	{
@@ -515,7 +517,7 @@ int AptMessenger::rva00511E6D()
 	{
 		const MouseIO *io = TheMouse->getMouseStatus();
 		if (io && io->leftState == 0 && io->rightState == 0)
-			TheRva00222A8BTarget->invoke(m_274, "StopUpdatePosition", 0, 0, 0, 0, 0, 0);
+			((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(m_274, "StopUpdatePosition", 0, 0, 0, 0, 0, 0);
 	}
 	return 1;
 }
@@ -526,7 +528,7 @@ int AptMessenger::rva00511E6D()
 // lobby message sound (none for the lobby inside a game's chat).
 void Rva005114BD::rva00511620(int tab, int unused)
 {
-	TheRva00222A8BTarget->invoke(0, "MessengerButtonFlash", 0, 0, 0, 0, 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(0, "MessengerButtonFlash", 0, 0, 0, 0, 0, 0);
 	bool buddy = tab == 0;
 	const char *sound = 0;
 	if (buddy)
@@ -536,7 +538,7 @@ void Rva005114BD::rva00511620(int tab, int unused)
 	AptMessenger *messenger = (AptMessenger *)AptMessenger::s_instance;
 	if (messenger)
 	{
-		TheRva00222A8BTarget->invoke(messenger->m_274, buddy ? "FlashTab0" : "FlashTab1", 0, 0, 0, 0, 0, 0);
+		((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(messenger->m_274, buddy ? "FlashTab0" : "FlashTab1", 0, 0, 0, 0, 0, 0);
 		if (sound && tab != s_tabIds[g_Va00E046BC])
 			PlaySound(sound);
 	}
@@ -619,17 +621,17 @@ void AptMessenger::rva00511CE6()
 		MessengerButton *buttons = m_buttons;
 		if (((const StringBase<char> *)&buttons[index].label)->isEmpty())
 		{
-			((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, UnicodeString(L" "), false);
+			g_bfmeAptWindowManager->bfmeSetText(key, UnicodeString(L" "), false);
 			void *movie = ((AptMessenger *)AptMessenger::s_instance)->m_274;
 			bool enabled = false;
-			Rva00511C3AInvoke(TheRva00222A8BTarget, movie, "EnableButton", i, enabled);
+			Rva00511C3AInvoke(((Rva00222A8BTarget *)g_bfmeAptWindowManager), movie, "EnableButton", i, enabled);
 		}
 		else
 		{
-			((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, TheGameText->fetch(buttons[i].label, 0), false);
+			g_bfmeAptWindowManager->bfmeSetText(key, TheGameText->fetch(buttons[i].label, 0), false);
 			MessengerButton *current = m_buttons;
 			void *movie = ((AptMessenger *)AptMessenger::s_instance)->m_274;
-			Rva00511C3AInvoke(TheRva00222A8BTarget, movie, "EnableButton", i, current[i].enabled);
+			Rva00511C3AInvoke(((Rva00222A8BTarget *)g_bfmeAptWindowManager), movie, "EnableButton", i, current[i].enabled);
 		}
 	}
 }

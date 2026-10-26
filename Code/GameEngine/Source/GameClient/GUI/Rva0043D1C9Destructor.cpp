@@ -64,7 +64,9 @@ private: int unknown4;_STL::vector<ScienceType> sciences;int unknown14;
 
 class Rva00223A94 {public:int rva00223A94(const AsciiString*);};
 class Rva00222A8BTarget {public:void rva00222F55(bool);};
-extern Rva00222A8BTarget* TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 class Shell {public:void hide(bool);};extern Shell* TheShell;
 class GameLogic {public:bool isInMultiplayerGame();void rva0023CD9E(bool,int,bool);char unknown[0x110];int mode;};extern GameLogic* TheGameLogic;
 class CommandButton;enum CBCommandStatus{CBC_COMMAND_NOT_USED};class ControlBar {public:CBCommandStatus processCommandUI(const CommandButton*,bool,bool);};extern ControlBar* TheControlBar;
@@ -183,12 +185,12 @@ AptSpellStore::~AptSpellStore() {
  int zero=0;
  Rva0043D1C9UI*ui=reinterpret_cast<Rva0043D1C9UI*>(TheInGameUI);
  if(ui)ui->slot94(zero);
- if(TheRva00222A8BTarget) {
+ if(((Rva00222A8BTarget *)g_bfmeAptWindowManager)) {
   for(int index=0;index<20;++index)if(buttons2A8[index].first) {
    AsciiString name;name.format("SpellStore/Buttons/Spell%d",index+1);
-   reinterpret_cast<Rva00223A94*>(TheRva00222A8BTarget)->rva00223A94(&name);
+   reinterpret_cast<Rva00223A94 *>(g_bfmeAptWindowManager)->rva00223A94(&name);
   }
-  if(hidden2A3==zero){TheRva00222A8BTarget->rva00222F55(false);hidden2A3=true;}
+  if(hidden2A3==zero){((Rva00222A8BTarget *)g_bfmeAptWindowManager)->rva00222F55(false);hidden2A3=true;}
  }
  if(TheShell)TheShell->hide(false);
  GameLogic*logic=TheGameLogic;

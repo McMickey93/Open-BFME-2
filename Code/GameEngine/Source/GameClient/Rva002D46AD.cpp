@@ -17,7 +17,9 @@ public:
 	void rva00225375(const AsciiString &key, const AsciiString &value, bool flag);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 extern const char g_00BBD40C[];
 
 void Rva002D46ADSet(int count)
@@ -28,5 +30,5 @@ void Rva002D46ADSet(int count)
 		s_value.format("%d", count);
 	else
 		s_value.set(g_00BBD40C);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->rva00225375(s_key, s_value, false);
+	g_bfmeAptWindowManager->rva00225375(s_key, s_value, false);
 }

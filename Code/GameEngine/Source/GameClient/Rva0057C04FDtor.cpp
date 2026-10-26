@@ -140,7 +140,9 @@ class Rva00222A8BTarget
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 int __cdecl Rva00524EF4AptCall(Rva00222A8BTarget *t, void *a1, const char *a2, const char *a3);
 struct Base00
 {
@@ -196,7 +198,7 @@ void Rva0057C04F::DoPlay(int turn)
 	key.format("APT:_level%u.%s_TurnNumber", m_level04, m_08.str());
 	UnicodeString value;
 	value.format(L"%d", turn);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, value, false);
-	Rva00524EF4AptCall(TheRva00222A8BTarget, (void *)m_level04, m_08.str(), "Go");
+	g_bfmeAptWindowManager->bfmeSetText(key, value, false);
+	Rva00524EF4AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level04, m_08.str(), "Go");
 	m_flag18 = 1;
 }

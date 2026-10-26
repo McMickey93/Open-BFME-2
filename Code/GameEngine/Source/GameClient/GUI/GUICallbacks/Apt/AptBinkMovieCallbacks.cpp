@@ -18,7 +18,9 @@ public:
 		void *a1, void *a2, void *a3, void *a4);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // The movie window: the rowed getter 0x0056D653 answers its +0x258 name;
 // +0x26C names the Apt function to run on the last frame.
@@ -41,6 +43,6 @@ void __cdecl _CallOnLastFrame(GameWindow *window)
 	if (!window)
 		return;
 	int level = AptPlayer::GetLevelIndex(window);
-	TheRva00222A8BTarget->invoke(reinterpret_cast<void *>(level), ((AptBinkMovieWindow *)window)->m_onLastFrame.str(), 1,
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(reinterpret_cast<void *>(level), ((AptBinkMovieWindow *)window)->m_onLastFrame.str(), 1,
 		((Rva0056D653AsciiField *)window)->get().str(), 0, 0, 0, 0);
 }

@@ -20,7 +20,9 @@ public:
 class Rva00222A8BTarget
 {
 };
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 struct TeamNameRef
 {
@@ -37,5 +39,5 @@ void __cdecl Rva0050EE72Set(int level, const AsciiString &team, int field, const
 	else
 		teamName = "";
 	key.format("APT:_level%u.%s_field%d", level, teamName, field);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, value, false);
+	g_bfmeAptWindowManager->bfmeSetText(key, value, false);
 }

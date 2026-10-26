@@ -327,7 +327,9 @@ public:
 	virtual void *v21();
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // A hero as 0x0043DD34 and 0x0044149C read it.
 class CreateAHeroData
@@ -1123,7 +1125,7 @@ void AptMpGameSetup::rva0043DB6E()
 {
 	m_d0.rva0057EA0F();
 	if (m_flags & 0x40)
-		Rva0043DB23(TheRva00222A8BTarget, m_owner->v21(), "OnClansFlagChange");
+		Rva0043DB23(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_owner->v21(), "OnClansFlagChange");
 }
 
 // Retail 0x00441AAA, 107 bytes. Donor Open-BFME-1 AptMpGameSetup.cpp
@@ -1314,7 +1316,7 @@ void AptMpGameSetup::rva0043E5C1(int slot, int kind, int value)
 
 	char name[128];
 	sprintf(name, "ConnectionIcon~%d", slot);
-	reinterpret_cast<Rva002239B2 *>(TheRva00222A8BTarget)->rva002239E2(AsciiString(name), image);
+	reinterpret_cast<Rva002239B2 *>(g_bfmeAptWindowManager)->rva002239E2(AsciiString(name), image);
 }
 
 // Retail 0x0043DC75, 0x0043DC7F and 0x0043DC89, 10 bytes each: the Apt
@@ -1513,7 +1515,7 @@ void AptMpGameSetup::UpdateReadyIcon(int index)
 				state = "_disabledChecked";
 		}
 	}
-	Rva0043F1A4(TheRva00222A8BTarget, m_owner->v21(), "SetReadyState", index, state);
+	Rva0043F1A4(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_owner->v21(), "SetReadyState", index, state);
 }
 
 // Retail 0x00442B72, 29 bytes: the encoded index's postfix increment
@@ -2091,12 +2093,12 @@ void AptMpGameSetup::rva0043FA68(GameInfo *game)
 	if (game && ((const Rva003FF1C2 *)game)->rva003FF1C2())
 	{
 		AsciiString key("APT:JoinGame");
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, TheGameText->fetch("APT:Continue"), false);
+		g_bfmeAptWindowManager->bfmeSetText(key, TheGameText->fetch("APT:Continue"), false);
 	}
 	else
 	{
 		AsciiString key("APT:JoinGame");
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, TheGameText->fetch("APT:JoinGame"), false);
+		g_bfmeAptWindowManager->bfmeSetText(key, TheGameText->fetch("APT:JoinGame"), false);
 	}
 }
 

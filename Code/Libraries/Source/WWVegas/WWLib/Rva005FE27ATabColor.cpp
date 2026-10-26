@@ -52,7 +52,9 @@ public:
 };
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 int __cdecl Rva00525235Fire(void *a1, void *a2, const char *a3, const char *a4, int *a5, int *a6);
 struct Rva005FDF1COuter;
 
@@ -101,7 +103,7 @@ void Rva005FE750::rva005FE27A(int idx, int w0, int w1, const UnicodeString &text
 	{
 		int savedW1 = w1;
 		const char *mid2 = GetStr005FE27A(m_08);
-		Rva00525235Fire(TheRva00222A8BTarget, (void *)m_04, mid2, "SetTabColor", &idx, &w1);
+		Rva00525235Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_04, mid2, "SetTabColor", &idx, &w1);
 		rec.word1 = (unsigned int)savedW1;
 	}
 	if (text.compare(rec.text) != 0)

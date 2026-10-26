@@ -14,7 +14,9 @@ public:
 	int RemoveExternHandler(const AsciiString *key);
 };
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 class CreateAHeroData;
 class Rva002B7250
 {
@@ -31,11 +33,11 @@ void __cdecl Rva00511F73Run()
 	Rva00511730(0);
 	{
 		AsciiString s1("AptMessenger::OnMessengerBttn");
-		((Rva00224455 *)TheRva00222A8BTarget)->RemoveCommandMap(&s1);
+		((Rva00224455 *)g_bfmeAptWindowManager)->RemoveCommandMap(&s1);
 	}
 	{
 		AsciiString s2("AptMessenger::IsOpen");
-		((Rva002244CA *)TheRva00222A8BTarget)->RemoveExternHandler(&s2);
+		((Rva002244CA *)g_bfmeAptWindowManager)->RemoveExternHandler(&s2);
 	}
 	((Rva002B7250 *)Rva00381452Get())->rva002B7250((CreateAHeroData *)&g_Va00E048C4);
 }
@@ -93,11 +95,11 @@ void __cdecl Rva00512069Register()
  {
   AsciiString name("AptMessenger::OnMessengerBttn");
   void *function=(void*)&AptMessenger::OnMessengerBttn;
-  ((AptPlayer*)TheRva00222A8BTarget)->AddCommandMap(name,AptRef<AptCommandMap>(function));
+  ((AptPlayer *)g_bfmeAptWindowManager)->AddCommandMap(name,AptRef<AptCommandMap>(function));
  }
  {
   AsciiString name("AptMessenger::IsOpen");
   void *function=(void*)&AptMessenger::IsOpen;
-  ((AptPlayer*)TheRva00222A8BTarget)->AddExternHandler(name,0,AptRef<AptExternHandler>(function));
+  ((AptPlayer *)g_bfmeAptWindowManager)->AddExternHandler(name,0,AptRef<AptExternHandler>(function));
  }
 }
