@@ -17,12 +17,16 @@ private:
 	T *pointer;
 };
 
+// Retail slot 0 of each clone-slot vftable (VA 0xC75124, 0xC6CECC, 0xC6E498,
+// 0xC78038) is the ICF-shared deleting dtor 0x005FAA31, which only restores
+// 0xBC6F20 (0x004E84A4); no ??1/??_G/??_7 of these names has a retail address.
+// The destructors are inline here, matching the ctor units' link views.
 class Rva005CE259
 {
 public:
 	__forceinline Rva005CE259(const Rva005CE259 &rhs)
 		: m_ref(0), m_data(rhs.m_data) {}
-	virtual ~Rva005CE259();
+	virtual ~Rva005CE259() {}
 	virtual RvaCloneResult<Rva005CE259> clone() const;
 	struct Payload { int v[2]; };
 	Rva005CE259(const Payload *src);
@@ -35,7 +39,7 @@ class Rva005677B9
 public:
  __forceinline Rva005677B9(const Rva005677B9 &rhs)
   : m_ref(0), m_data(rhs.m_data) {}
- virtual ~Rva005677B9();
+ virtual ~Rva005677B9() {}
  virtual RvaCloneResult<Rva005677B9> clone() const;
  struct Payload { int v[2]; };
  Rva005677B9(const Payload *src);
@@ -48,7 +52,7 @@ class Rva00574ABB
 public:
  __forceinline Rva00574ABB(const Rva00574ABB &rhs)
   : m_ref(0), m_data(rhs.m_data) {}
- virtual ~Rva00574ABB();
+ virtual ~Rva00574ABB() {}
  virtual RvaCloneResult<Rva00574ABB> clone() const;
  struct Payload { int v[2]; };
  Rva00574ABB(const Payload *src);
@@ -61,7 +65,7 @@ class Rva005E9742
 public:
  __forceinline Rva005E9742(const Rva005E9742 &rhs)
   : m_ref(0), m_data(rhs.m_data) {}
- virtual ~Rva005E9742();
+ virtual ~Rva005E9742() {}
  virtual RvaCloneResult<Rva005E9742> clone() const;
  struct Payload { int v[6]; };
  Rva005E9742(const Payload *src);

@@ -76,6 +76,7 @@ public:
 	// Inline empty, as Rva005CE259Ctor.cpp's view: its deleting-dtor copy is
 	// first in link order and inlines this body.
 	virtual ~Rva00574ABB() {}
+	virtual RvaCloneResult<Rva00574ABB> clone() const;
 	int m_ref;
 	Payload m_data;
 };

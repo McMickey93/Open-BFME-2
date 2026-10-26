@@ -3,12 +3,14 @@
 // vtable 0x00875124 at +0; +4 zeroed; 2-dword mov copy from src arg to +8; ret 4.
 // Caller 0x005CE2BA news 0x10 and stores with refcount inc; twin pattern of
 // 0x005CE327 3-dword ctor with 2-mov shape; unblocks 0x005CE2A1.
+template <class T> class RvaCloneResult;
 class Rva005CE259
 {
 public:
 	struct Payload { int v[2]; };
 	Rva005CE259(const Payload *src);
 	virtual ~Rva005CE259() {}
+	virtual RvaCloneResult<Rva005CE259> clone() const;
 private:
 	int m_ref; // +4
 	Payload m_data; // +8
@@ -31,6 +33,7 @@ public:
 	struct Payload { int v[2]; };
 	Rva005677B9(const Payload *src);
 	virtual ~Rva005677B9() {}
+	virtual RvaCloneResult<Rva005677B9> clone() const;
 private:
 	int m_ref; // +4
 	Payload m_data; // +8
@@ -48,6 +51,7 @@ public:
 	struct Payload { int v[2]; };
 	Rva00574ABB(const Payload *src);
 	virtual ~Rva00574ABB() {}
+	virtual RvaCloneResult<Rva00574ABB> clone() const;
 private:
 	int m_ref; // +4
 	Payload m_data; // +8

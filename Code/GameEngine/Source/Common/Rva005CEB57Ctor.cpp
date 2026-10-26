@@ -3,12 +3,13 @@
 // vtable 0x008751E8 at +0; +4 zeroed; 6-dword rep movsd from src arg to +8; ret 4.
 // Caller 0x005CECDA news 0x20 and stores with refcount inc; twin pattern of
 // Rva005CDF6C 5-dword ctor with push 6 pop ecx shape; unblocks 0x005CECC1.
+template <class T> class RvaCloneResult;
 class Rva005CEB57
 {
 public:
 	struct Payload { int v[6]; };
 	Rva005CEB57(const Payload *src);
-	virtual ~Rva005CEB57();
+	virtual ~Rva005CEB57() {}
 private:
 	int m_ref; // +4
 	Payload m_data; // +8
@@ -31,6 +32,7 @@ public:
 	struct Payload { int v[6]; };
 	Rva005E9742(const Payload *src);
 	virtual ~Rva005E9742() {}
+	virtual RvaCloneResult<Rva005E9742> clone() const;
 private:
 	int m_ref; // +4
 	Payload m_data; // +8
