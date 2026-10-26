@@ -15,7 +15,8 @@
 float Sin(float);
 float Cos(float);
 class BfmeFixedStorage0004543D { public: BfmeFixedStorage0004543D(const BfmeFixedStorage0004543D&) throw(); unsigned char bytes[28]; };
-extern const BfmeFixedStorage0004543D g_009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 class Rva000421C8 { public: virtual ~Rva000421C8() {} virtual bool allow(Object*)=0; virtual int getPlayerMask() {return -1;} Rva000421C8 *next; };
 class Rva0004584D: public Rva000421C8 { public: Rva0004584D(const BfmeFixedStorage0004543D &, const BfmeFixedStorage0004543D &); virtual ~Rva0004584D() {} virtual bool allow(Object*); BfmeFixedStorage0004543D accepted,rejected; };
 extern PartitionManager *ThePartitionManager;
@@ -28,7 +29,7 @@ class AIUpdateInterface { char pad[8];Object *object; public: bool findMeACrashS
 bool AIUpdateInterface::findMeACrashSite(float maxRange,const Coord3D *startPos,Coord3D *output,BfmeFixedStorage0004543D mask) {
  Object *self=object;if(!self)return false;
  float spacing=crashSpacing(10.0f,self->radius);
- BfmeWideResult hits=ThePartitionManager->iterateObjectsInRange(startPos,maxRange,0,&Rva0004584D(mask,g_009FEFA4),1);
+ BfmeWideResult hits=ThePartitionManager->iterateObjectsInRange(startPos,maxRange,0,&Rva0004584D(mask,*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),1);
  for(float range=spacing;range<=maxRange;range+=spacing) {
   float numPoints=(6.2831855f*range)/spacing;
   float step=6.2831855f/numPoints;

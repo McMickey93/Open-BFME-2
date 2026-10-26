@@ -153,7 +153,8 @@ namespace _STL {template<>struct __type_traits<Rva0026F4F4Element> : __type_trai
 
 struct TreeHintPayload003012F0 {unsigned a,b,c;TreeHintPayload003012F0(const TreeHintPayload003012F0 &r):a(r.a),b(r.b),c(r.c){}};
 class BfmeFixedStorage0004543D {public:BfmeFixedStorage0004543D(const BfmeFixedStorage0004543D&);char data[28];};
-extern const BfmeFixedStorage0004543D g_009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 struct Rva003623E5Member {void initFromStorages(BfmeFixedStorage0004543D,BfmeFixedStorage0004543D);};
 struct Rva00360D26Member {Rva00360D26Member();~Rva00360D26Member();unsigned word;};
 void __cdecl Rva00030830GameFree(void *);
@@ -255,7 +256,7 @@ unknown18="";unknown44="";unknown138="";unknown13c="";unknown140="";unknown144="
 unknown38.x=unknown38.y=unknown38.z=0;
 unknown17c="";unknown164="";unknown168="";unknown16c="";unknown170="";unknown174="";unknown178="";unknown17c="";
 unknown180.clear();unknown1b0="";unknown1b4="";unknown1b8="";
-((Rva003623E5Member*)&unknown1c8)->initFromStorages(g_009FEFA4,g_009FEFA4);
+((Rva003623E5Member*)&unknown1c8)->initFromStorages(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE),*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 memset(unknown70,0,sizeof(unknown70));}
 
 // Default constructor: target [1FEB8B,1FEEA3) is 792B through RET.
@@ -302,7 +303,7 @@ unknown18="";unknown44="";unknown138="";unknown13c="";unknown140="";unknown144="
 unknown38.x=unknown38.y=unknown38.z=0;
 unknown17c="";unknown164="";unknown168="";unknown16c="";unknown170="";unknown174="";unknown178="";unknown17c="";
 unknown180.clear();unknown1b0="";unknown1b4="";unknown1b8="";
-((Rva003623E5Member*)&unknown1c8)->initFromStorages(g_009FEFA4,g_009FEFA4);
+((Rva003623E5Member*)&unknown1c8)->initFromStorages(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE),*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 memset(unknown70,0,sizeof(unknown70));}
 
 PlayerTemplate::~PlayerTemplate() {}

@@ -24,7 +24,8 @@ public:
 private:
 	unsigned char m_bytes[28];
 };
-extern const BfmeFixedStorage0004543D g_009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 class Rva003623E5Filter
 {
 public:
@@ -61,5 +62,5 @@ CallHelpOnDamageModuleData::CallHelpOnDamageModuleData() :
 	m_callDelay(4 * BfmeLogicFramesPerSecond),
 	m_moveToAttacker(false)
 {
-	m_validObjects.applyFilter(g_009FEFA4);
+	m_validObjects.applyFilter(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 }
