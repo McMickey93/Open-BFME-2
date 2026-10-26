@@ -15,7 +15,7 @@
 //   0x0008FABB  0x000A217F
 //   0x00104FD5  0x00104F8F (rowed)
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class Rva000A334F
 {
