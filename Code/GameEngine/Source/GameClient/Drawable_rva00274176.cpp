@@ -20,8 +20,7 @@ public:
 	virtual void replaceModelConditionState(const void *state, bool immediate, int effect);
 };
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+#include <string.h>
 
 class ElemA274445
 {
@@ -274,8 +273,8 @@ void Drawable::rva00274445(float f)
 		if (obj != 0)
 			((ElemB274445 *)obj)->slot20(f);
 	}
-	ji_006291ae((char *)this + 0x2f0, 0, 0x4c);
-	ji_006291ae((char *)this + 0x2a4, 0, 0x4c);
+	memset((char *)this + 0x2f0, 0, 0x4c);
+	memset((char *)this + 0x2a4, 0, 0x4c);
 }
 #pragma optimize("", on)
 
