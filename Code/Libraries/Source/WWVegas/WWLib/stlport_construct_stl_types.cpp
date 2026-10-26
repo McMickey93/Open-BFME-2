@@ -88,13 +88,7 @@ template void _STL::_Construct<ConstructProbePairC, ConstructProbePairC>(Constru
 // Vtable 0x00BEDC94 is Rva0023FD06Dtor.cpp's class: its slot 0 is the rowed
 // scalar deleting dtor 0x0023FCEA (calling the rowed dtor 0x0023FD06) and its
 // slot 1 the rowed 0x0023FCD3. Use that name so the dtor binds to its row.
-class Rva0007DF07
-{
-public:
-	inline Rva0007DF07() : m_refCount(0) {}
-	virtual ~Rva0007DF07() {}
-	int m_refCount;
-};
+#include "../../../../GameEngine/Include/Common/Rva0007DF07.h"
 
 class Rva0023FD06 : public Rva0007DF07
 {
