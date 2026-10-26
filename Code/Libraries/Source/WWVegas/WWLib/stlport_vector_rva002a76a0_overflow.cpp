@@ -17,8 +17,8 @@ private:
 	unsigned int m_handle;
 };
 struct Rva002A76A0Element {
-	Rva00360D26Member m_filter;
 	float m_a, m_b;
+	Rva00360D26Member m_filter;
 };
 #include <vector>
 template void _STL::vector<Rva002A76A0Element>::_M_insert_overflow(
