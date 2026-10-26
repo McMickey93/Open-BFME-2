@@ -1,4 +1,8 @@
-// cl: /DNDEBUG /MD /EHa
+// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHa /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/sweep
+// stlport
+#define Matrix4x4 Matrix4  // BFME renamed it
+#define __PLACEMENT_VEC_NEW_INLINE  // always.h/GameMemory.h define array placement-new themselves
+// stlport
 //
 // ??0DebugIOOds@@QAE@XZ, retail 0x0003F380 (70 bytes), plus the
 // ??_GDebugIOOds@@UAEPAXI@Z scalar deleting destructor at 0x0003F430
@@ -6,50 +10,12 @@
 // and its unwind action are rowed from this unit too.
 //
 // Ported from Open-BFME-1
-// Code/Libraries/Source/WWVegas/WWDebug/Rva0088FAA0DebugIOOdsDestructor.cpp:
-// same memberless two-vtable DebugIO hierarchy (DebugIOOds::Create already
-// landed from DebugIOOds_Create.cpp, so the factory is left out here). The
-// Rva0088FAA0 names in the donor are the port's guess-labels for this class;
-// retail owns it as DebugIOOds (Create/Write rows + upstream debug_io_ods.h).
-// Same implicit-dtor shape as ??1DebugCmdInterfaceDebug at 0x00039980
-// (the ambiguous twin that differs only in the vtable constant); the ctor
-// is the 70B two-store EH shape of ??0DebugCmdInterfaceDebug.
-
-class Debug;
-class DebugIOInterface
-{
-protected:
-    virtual ~DebugIOInterface(void) {}
-
-public:
-    DebugIOInterface(void) {}
-    enum StringType { Assert = 0, Check, Log, Crash, Exception, CmdReply, StructuredCmdReply, Other, MAX };
-    virtual int Read(char *, int) = 0;
-    virtual void Write(StringType, const char *, const char *) = 0;
-    virtual void EmergencyFlush(void) = 0;
-    virtual void Execute(Debug &, const char *, bool, unsigned, const char *const *) = 0;
-    virtual void Delete(void) = 0;
-};
-
-// The base deleting destructor is frameless; the derived native bodies retain EBP,
-// as in the existing DebugIONetPipeDestructorThunk.cpp compiler boundary.
-#pragma optimize("y", off)
-
-class DebugIOOds : public DebugIOInterface
-{
-public:
-    explicit DebugIOOds(void);
-    virtual int Read(char *, int) { return 0; }
-    virtual void Write(StringType, const char *, const char *);
-    virtual void EmergencyFlush(void) {}
-    virtual void Execute(Debug &, const char *, bool, unsigned, const char *const *) {}
-    virtual void Delete(void);
-};
-
-// ??0DebugIOOds@@QAE@XZ
-inline DebugIOOds::DebugIOOds(void)
-{
-}
+// Code/Libraries/Source/WWVegas/WWDebug/Rva0088FAA0DebugIOOdsDestructor.cpp.
+// The class is upstream's (debug/internal_io.h through _pch.h); retail owns
+// it as DebugIOOds (Create/Write rows). The in-class inline constructor is
+// emitted out of line through the anchor below; Create (DebugIOOds_Create.cpp)
+// inlines it.
+#include "_pch.h"
 
 // ?Delete@DebugIOOds@@UAEXXZ absent-from-retail
 void DebugIOOds::Delete(void)
