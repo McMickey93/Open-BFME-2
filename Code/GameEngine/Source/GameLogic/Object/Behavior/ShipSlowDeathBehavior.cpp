@@ -3,12 +3,125 @@
 #include "../../../../../../reference/shims/bfme_matrix3d_copy_link/matrix3d_copy_link.h"
 #include "ShipSlowDeathBehaviorView.h"
 #include "ShipSlowDeathXferPrefix.h"
+#pragma comment(linker, "/alternatename:_vfn_00065212=?GetSnapshotName@ModuleData@@UBEPBDXZ")
+#pragma comment(linker, "/alternatename:_vfn_000B3FD0=??1Coord2D@@QAE@XZ")
+#pragma comment(linker, "/alternatename:_vfn_000B69A1=?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z")
+#pragma comment(linker, "/alternatename:_vfn_000D43D0=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
+#pragma comment(linker, "/alternatename:_vfn_0045E98E=??_GShipSlowDeathBehaviorModuleData@@UAEPAXI@Z")
+#pragma comment(linker, "/alternatename:_vfn_0047A699=?IsCRC@Xfer@@UBE_NXZ")
+#pragma comment(linker, "/alternatename:_vfn_0047A69C=?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")
+#pragma comment(linker, "/alternatename:_vfn_0050B5C6=?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")
 
 int GetGameLogicRandomValue(int, int, char *, int);
 
-// tu-skeleton: 0x0045E961 18B ??0ShipSlowDeathBehaviorModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorModuleDataCtor.cpp (not merged yet)
+//
+// ??0ShipSlowDeathBehaviorModuleData@@QAE@XZ, retail 0x0045E961, 18 bytes.
+// ModuleData ctor over the pinned SlowDeathBehaviorModuleData base
+// (0x45E386): installs vtable 0x00C42E98 explicitly (novtable; no new
+// members initialized here). Class size 0x190 proven by the
+// ShipSlowDeathBehavior data factory (news 0x190, sole caller at 0x24B34C).
+// Row supersedes the ctor pin.
 
-// tu-skeleton: 0x0045E973 27B ?buildFieldParse@ShipSlowDeathBehaviorModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorModuleDataCtor.cpp (not merged yet)
+// Retail VA 0x00C42E98 (.rdata): a 31-slot vftable no unit emits. Defined here as
+// data with retail's slot pointers, each bound to the ledger name at its
+// target (tools/vftable_map.py); its installers store this table.
+extern "C" void vfn_00065212();
+
+extern "C" void vfn_000B3FD0();
+
+extern "C" void vfn_000B69A1();
+
+extern "C" void vfn_000D43D0();
+
+extern "C" void vfn_0045E98E();
+
+extern "C" void vfn_0047A699();
+
+extern "C" void vfn_0047A69C();
+
+extern "C" void vfn_0050B5C6();
+
+extern "C" const void *const vtbl_00C42E98[] = {
+	(const void *)&vfn_0045E98E,
+	(const void *)&vfn_000B3FD0,
+	(const void *)&vfn_00065212,
+	(const void *)&vfn_0047A69C,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_000B69A1,
+	(const void *)&vfn_0047A699,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_000D43D0,
+	(const void *)&vfn_0050B5C6
+};
+
+class MultiIniFieldParse;
+
+struct FieldParse;
+
+extern const int g_emptyFieldParseTable[4];
+
+class MultiIniFieldParse
+{
+public:
+	void add(const FieldParse *parseTable, unsigned int extraOffset);
+};
+
+class __declspec(novtable) SlowDeathBehaviorModuleData
+{
+public:
+	SlowDeathBehaviorModuleData();
+	virtual ~SlowDeathBehaviorModuleData();
+	static void buildFieldParse(MultiIniFieldParse &parse);
+
+private:
+	// +0x00 vptr (novtable: no compiler install here).
+	// Remainder is opaque (0x18C bytes); only the 0x190 size matters.
+	unsigned char m_opaque[0x18C];
+};
+
+class __declspec(novtable) ShipSlowDeathBehaviorModuleData : public SlowDeathBehaviorModuleData
+{
+public:
+	ShipSlowDeathBehaviorModuleData();
+	static void buildFieldParse(MultiIniFieldParse &parse);
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorModuleDataCtor.cpp
+
+// ??0ShipSlowDeathBehaviorModuleData@@QAE@XZ @0x0045E961
+ShipSlowDeathBehaviorModuleData::ShipSlowDeathBehaviorModuleData()
+	: SlowDeathBehaviorModuleData()
+{
+	*(unsigned int *)this = ((unsigned int)vtbl_00C42E98);
+}
+
+// ?buildFieldParse@ShipSlowDeathBehaviorModuleData@@SAXAAVMultiIniFieldParse@@@Z @0x0045E973
+void ShipSlowDeathBehaviorModuleData::buildFieldParse(MultiIniFieldParse &parse)
+{
+	SlowDeathBehaviorModuleData::buildFieldParse(parse);
+	parse.add(reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable), 0);
+}
 
 // tu-skeleton: 0x0045E9AA 74B ??0ShipSlowDeathBehavior@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorCtor.cpp (not merged yet)
 
@@ -17,6 +130,8 @@ int GetGameLogicRandomValue(int, int, char *, int);
 // tu-skeleton: 0x0045E9FA 69B ?getModuleNameKey@ShipSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0045EA3F 39B ??1Rva0045EA3F@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0045D39EDerived.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehavior.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehavior.cpp
 

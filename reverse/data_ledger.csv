@@ -10628,7 +10628,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00842D98,16,.rdata,vtable,??_7Rva00461EEB@@6BRva0045D39E_B2@@@,,literal,??_7Rva00461EEB@@6BRva0045D39E_B2@@@;_s_secondary10@Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorCtor.cpp,1,2
 0x00842DA8,188,.rdata,vtable,??_7Rva0045D39E@@6BRva0024A797_Mid@@@,,literal,??_7Rva0045D39E@@6BRva0024A797_Mid@@@;??_7Rva0045EA3F@@6BRva0045D39E_Mid@@@;??_7Rva00461EEB@@6BRva0045D39E_Mid@@@;_s_secondary0C@Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorCtor.cpp;_s_secondary0C@Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorCtor.cpp;_vtbl_00C42DA8,2,6
 0x00842E64,52,.rdata,vtable,??_7Rva00461EEB@@6BRva0045D39E_Root@@@,,literal,??_7Rva00461EEB@@6BRva0045D39E_Root@@@;_s_vtable@Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorCtor.cpp,1,2
-0x00842E98,132,.rdata,global,_vtbl_00C42E98,Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorModuleDataCtor.cpp,owned,,1,2
+0x00842E98,132,.rdata,global,_vtbl_00C42E98,Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehavior.cpp,owned,,1,2
 0x00842F1C,408,.rdata,vtable,??_7Rva00462151@@6B@,,literal,??_7Rva00462151@@6B@;_vtbl_00C42F1C,0,2
 0x008430B4,52,.rdata,vtable,??_7ContainIface30@@6B@,,literal,??_7ContainIface30@@6B@;??_7SpawnB4@@6B@;_vtbl_00C430B4,0,5
 0x008430E8,376,.rdata,vtable,??_7ContainIface20@@6B@,,literal,,0,1
