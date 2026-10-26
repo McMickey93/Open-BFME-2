@@ -62,7 +62,7 @@ BFME_DISP8_DIV_AVG_DWORD_GETTER(Rva005C80A9DivAvgField, 0x08, 0x00, 0x48)
 BFME_DISP8_DIV_AVG_DWORD_GETTER(Rva005D50F7DivAvgField, 0x04, 0x00, 0x14)
 
 // ?clear@Rva000AD6F4@@QAEXXZ @0x000AD6F4 29B: owning-pointer clear via virtual slot0 with 0 plus operator delete; callers 40+ incl Rva002D3573 dtor; no donor.
-void __cdecl operator delete(void *);
+#include <new>
 
 struct Rva000AD6F4Base
 {

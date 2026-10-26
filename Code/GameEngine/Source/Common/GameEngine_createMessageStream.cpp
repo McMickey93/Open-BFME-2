@@ -5,7 +5,7 @@
 // rowed ctor 0x0030F697 with EH prolog. Evidence: vslot 30 of GameEngine and
 // Win32GameEngine vtables; no callers; same this forwarded.
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class MessageStream
 {
