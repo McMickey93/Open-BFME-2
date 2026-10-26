@@ -223,7 +223,6 @@ Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E01CF0@
 Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E01CF4@@3IA	0x00A01CF4
 Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E0447C@@3IA	0x00A0447C
 Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E06634@@3IA	0x00A06634
-Code/GameEngine/Source/Common/Rva007ADC9CMaskInits.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00DE1E98@@3IA	0x009E1E98
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00DFF14C@@3IA	0x009FF14C
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00DFF4F8@@3IA	0x009FF4F8

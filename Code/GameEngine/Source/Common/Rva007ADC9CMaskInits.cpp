@@ -6,8 +6,8 @@
 // sizeof mask): a header-level BitFlags-style object whose default
 // constructor resets its words. Unlike those copies these globals are read
 // elsewhere in .text, so each keeps the name the ledger already uses for it
-// (DISABLEDMASK_NONE / DISABLEDMASK_ALL from BitFlags11Any.cpp, the script
-// engine's 28-byte prototype) or an address-named extern sized from the
+// (DISABLEDMASK_NONE / DISABLEDMASK_ALL from BitFlags11Any.cpp, the kind-of
+// mask KINDOFMASK_NONE) or an address-named extern sized from the
 // memset length. The owning TUs are unrecovered, so each initializer keeps
 // an honest address name.
 
@@ -21,7 +21,7 @@ extern unsigned char g_00DFEA50[76];
 // Owned here (retail BSS zeros): cleared by the inits below.
 unsigned char g_00DFE794[16] = { 0 };
 unsigned char g_00DFEA50[76] = { 0 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+extern BitFlags<116> KINDOFMASK_NONE;
 extern unsigned char g_00E01EC0[4];
 extern unsigned char g_00E01EC4[4];
 extern unsigned char g_00E01EC8[4];
@@ -70,10 +70,10 @@ void Rva007ADC9CMaskInits::rva007ADE4C()
 	memset( &g_00DFEA50, 0, 76 );
 }
 
-// 0x007AE26A (18B): memset(VA 0x00DFEFA4, 0, 28); the 28-byte mask prototype the script engine copies
+// 0x007AE26A (18B): memset(VA 0x00DFEFA4, 0, 28); KINDOFMASK_NONE, the 28-byte empty kind-of mask
 void Rva007ADC9CMaskInits::rva007AE26A()
 {
-	memset( &g_00DFEFA4StoragePrototype, 0, 28 );
+	memset( &KINDOFMASK_NONE, 0, 28 );
 }
 
 // 0x007AEDE7 (18B): memset(VA 0x00E01EC0, 0, 4); read around 0x0036877F
