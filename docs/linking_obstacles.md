@@ -248,6 +248,11 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
   composition equals the standalone symbol union. Both tree destructors still
   fail composition bytes; store/vector declarations, STL redefinitions and
   mixed donors remain. No merge, census gain or debt retirement is claimed.
+  A subsequent [name-key declaration trial](../reverse/attempt_support/consolidation-player-key-prerequisite-20261026-codex4.md)
+  preserves all standalone object facts but still rejects the lookup donor
+  with an empty compile diagnostic. Its declarations were reverted; accepted
+  donors remain the same pair. Investigate that compiler boundary before
+  repeating the lookup trial.
 
 - **BridgeBehavior die GameLogic prerequisite (2026-10-26):**
   [Canonical header adoption](../reverse/attempt_support/consolidation-bridge-die-gamelogic-prerequisite-20261026-codex4.md)
