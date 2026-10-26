@@ -22761,7 +22761,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00317CA0,45,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp
 0x00317CCD,37,code,,,-,,Code/GameEngine/Source/Common/TerrainTypes.cpp
 0x00317CF2,38,code,,,-,,Code/GameEngine/Source/Common/TerrainTypes.cpp
-0x00317D18,68,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,Z,Z=Code/GameEngine/Source/Common/TerrainTypes.cpp S=Code/GameEngine/Source/Common/TerrainTypes.cpp N=Code/GameEngine/Source/Common/TerrainTypeCollection.cpp,Code/GameEngine/Source/Common/TerrainTypes_findTerrain.cpp
+0x00317D18,68,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,Z,Z=Code/GameEngine/Source/Common/TerrainTypes.cpp S=Code/GameEngine/Source/Common/TerrainTypes.cpp N=Code/GameEngine/Source/Common/TerrainTypeCollection.cpp,Code/GameEngine/Source/Common/TerrainTypes.cpp
 0x00317D5C,45,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,C,C=0x00317D18..0x00317D89,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_nocasepair_allocate_copy.cpp
 0x00317D89,243,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,C,C=0x00317D18..0x00317E7C,Code/GameEngine/Source/Common/TerrainTypes.cpp
 0x00317E7C,63,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,C,C=0x00317D18..0x00317EBB,Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp
@@ -22771,7 +22771,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0031804D,81,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,C,C=0x00317D18..0x0031809E,Code/GameEngine/Source/Common/Rva0031804DAssign.cpp
 0x0031809E,178,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,C,C=0x00317D18..0x00318150,Code/Libraries/Source/WWVegas/WWLib/StlportVectorInsertOverflowFamily.cpp
 0x00318150,28,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,C,C=0x00317D18..0x0031816C,Code/GameEngine/Source/Common/TerrainType.cpp
-0x0031816C,151,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,Z,Z=Code/GameEngine/Source/Common/TerrainTypes.cpp S=Code/GameEngine/Source/Common/TerrainTypes.cpp N=Code/GameEngine/Source/Common/TerrainTypeCollection.cpp,Code/GameEngine/Source/Common/TerrainTypes_newTerrain.cpp
+0x0031816C,151,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,Z,Z=Code/GameEngine/Source/Common/TerrainTypes.cpp S=Code/GameEngine/Source/Common/TerrainTypes.cpp N=Code/GameEngine/Source/Common/TerrainTypeCollection.cpp,Code/GameEngine/Source/Common/TerrainTypes.cpp
 0x00318203,55,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackFamily.cpp
 0x00318242,122,code,,displaced,-,N=Code/GameEngine/Source/Common/INI/INI.cpp,Code/GameEngine/Source/Common/INI/ININamedRealListParsers.cpp
 0x003182CD,20,code,,,-,,Code/GameEngine/Source/Common/Rva003182CDCheck.cpp

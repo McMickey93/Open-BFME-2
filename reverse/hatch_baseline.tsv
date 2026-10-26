@@ -20133,7 +20133,6 @@ present_unmatched	Code/GameEngine/Source/Common/System/Upgrade.cpp	xfer@Upgrade@
 present_unmatched	Code/GameEngine/Source/Common/T4LeafPredicatesAndMath.cpp	isClear@T4Host005F3010@@	1
 present_unmatched	Code/GameEngine/Source/Common/T4LeafPredicatesAndMath.cpp	matches@T4Host00609150@@	1
 present_unmatched	Code/GameEngine/Source/Common/T4LeafPredicatesAndMath.cpp	update@T4Host005FF710@@	1
-present_unmatched	Code/GameEngine/Source/Common/TerrainTypes_findTerrain.cpp	friend_getNext@TerrainType@@	1
 present_unmatched	Code/GameEngine/Source/Common/Thing/FXBoneInfoVectorErase.cpp	$__copy_ptrs@PAUFXBoneInfo@@PAU1@@_STL@@YAPAUFXBoneInfo@@PAU1@00ABU__false_type@0@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/Thing/ModelConditionMap117InsertUnique.cpp	BitFlags::BitFlags	1
 present_unmatched	Code/GameEngine/Source/Common/Thing/ModelConditionMap117InsertUnique.cpp	MapHelper::operator()	1

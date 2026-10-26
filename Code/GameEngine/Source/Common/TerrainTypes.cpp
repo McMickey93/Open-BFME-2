@@ -17,6 +17,21 @@
 // view matches Rva00317BBBDtor.cpp's so both units emit the same vtable.
 typedef bool Bool;
 #include "subsystem_interface.h"
+// BFME2 terrain-type collection lookup. Layout is retail-owned: the list
+// head lives at this+0x0C, TerrainType carries its name at +0x04 and its
+// next link at +0x20 (the +0x00..+0x03 and +0x0C..+0x1F ranges are still
+// unproven; m_texture sits at +0x08 per the two by-value getters that copy
+// it). The name comparison calls out to AsciiString::compare (rowed at
+// 0x0069D6) instead of inlining it the way the BFME1 donor does.
+//
+// Codegen notes (all load-bearing, verified byte-exact at 0x000317D18):
+// the key travels by value (caller constructs, callee destroys through the
+// pinned ~AsciiString at 0x00036410) and compare is declared throw() -
+// without it MSVC spends an EH state around the loop (and [ebp-4],0) that
+// retail does not have.
+
+typedef int Int;
+
 // ??1TerrainTypeCollection@@UAE@XZ @0x00317BBB 93B: virtual dtor draining the intrusive list at +0xC node by node through virtual slot 0 with arg 0 plus global operator delete, then base 0x001B4E74. Evidence: vtable 0x0080C62C store plus deleting-dtor caller 0x00317C18 plus rowed operator delete 0x0002FD60; node slot-0 identity unproven so TU-local ListNode facade.
 class AsciiStringMember {
 public:
@@ -107,6 +122,8 @@ private:
 
 void __cdecl operator delete(void *p);
 
+// ---- from Code/GameEngine/Source/Common/TerrainTypes.cpp
+
 // ---- from Code/GameEngine/Source/Common/TerrainTypeCollection.cpp
 
 TerrainTypeCollection::TerrainTypeCollection()
@@ -192,7 +209,19 @@ AsciiString makeNrmTextureName(const AsciiString &in)
 
 // tu-skeleton: 0x00317CA0 45B ?Rva00317CA0Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
 
-// tu-skeleton: 0x00317D18 68B ?findTerrain@TerrainTypeCollection@@QAEPAVTerrainType@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/TerrainTypes_findTerrain.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/TerrainTypes_findTerrain.cpp
+
+TerrainType *TerrainTypeCollection::findTerrain(AsciiString name)
+{
+	TerrainType *terrain;
+
+	for (terrain = m_head; terrain; terrain = terrain->m_next) {
+		if (terrain->m_str04.compare(name) == 0)
+			return terrain;
+	}
+
+	return 0;
+}
 
 // tu-skeleton: 0x00317D5C 45B ??$_M_allocate_and_copy@PBU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@?$vector@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@V?$allocator@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@2@@_STL@@IAEPAU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@1@IPBU21@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_nocasepair_allocate_copy.cpp (not merged yet)
 
@@ -208,4 +237,54 @@ AsciiString makeNrmTextureName(const AsciiString &in)
 
 // tu-skeleton: 0x0031809E 178B ?_M_insert_overflow@?$vector@URva00318203Element@@V?$allocator@URva00318203Element@@@_STL@@@_STL@@IAEXPAURva00318203Element@@ABU3@ABU__false_type@2@I_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorInsertOverflowFamily.cpp (not merged yet)
 
-// tu-skeleton: 0x0031816C 151B ?newTerrain@TerrainTypeCollection@@QAEPAVTerrainType@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/TerrainTypes_newTerrain.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/TerrainTypes_newTerrain.cpp
+
+TerrainType *TerrainTypeCollection::newTerrain(AsciiString name)
+{
+	TerrainType *terrain = 0;
+
+	terrain = new TerrainType;
+
+	TerrainType *defaultTerrain = findTerrain(AsciiString("DefaultTerrain"));
+	if (defaultTerrain)
+		*terrain = *defaultTerrain;
+
+	terrain->friend_setName(name);
+
+	terrain->m_next = m_head;
+	m_head = terrain;
+
+	return terrain;
+}
+
+// tu-skeleton: 0x0077A6ED 8B uw_0077a6ed -- matched in Code/gen_small/uw_gen_006.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A6F5 10B __ehhandler$?Rva00317C68Append@@YAAAVAsciiString@@AAV1@PBD@Z -- matched in Code/GameEngine/Source/Common/Rva00317C68Concat.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A6FF 14B $L6485 -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A70D 10B __ehhandler$?Rva00317CA0Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A764 8B $L3206 -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A76C 10B __ehhandler$??1Rva00317E7C@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A776 11B Unwind@00b7a776 -- matched in Code/GameEngine/Source/Common/Rva00317F6FCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A781 11B Unwind@00b7a781 -- matched in Code/GameEngine/Source/Common/Rva00317F6FCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A78C 11B Unwind@00b7a78c -- matched in Code/GameEngine/Source/Common/Rva00317F6FCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A797 11B uw_0077a797 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A7A2 10B __ehhandler$??0TerrainType@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00317F6FCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A7AC 11B Unwind@00b7a7ac -- matched in Code/GameEngine/Source/Common/TerrainType.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A7B7 11B Unwind@00b7a7b7 -- matched in Code/GameEngine/Source/Common/TerrainType.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A7C2 11B Unwind@00b7a7c2 -- matched in Code/GameEngine/Source/Common/TerrainType.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A7CD 10B __ehhandler$??1TerrainType@@UAE@XZ -- matched in Code/GameEngine/Source/Common/TerrainType.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A7D7 8B uw_0077a7d7 -- matched in Code/gen_small/uw_gen_008.cpp (not merged yet)
