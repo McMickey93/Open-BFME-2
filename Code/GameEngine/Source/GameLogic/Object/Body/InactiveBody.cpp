@@ -40,13 +40,6 @@ class BodyModule : public ObjectModule,public BehaviorModuleInterface,public Bod
 protected:float damageScalar;
 };
 
-class InactiveBody : public BodyModule {
-public:virtual NameKeyType getModuleNameKey() const;
- virtual void attemptDamage(DamageInfo*);
- virtual void attemptHealing(DamageInfo*);
-private:bool dieCalled;
-};
-
 // Target004BD8A2..004BD8BD RET4 writes two zero floats through the hidden
 // result pointer. The otherwise dead zeroed local is the value-return flags
 // slot, as in the independently matched twelve-byte return at00596BB7.
@@ -62,6 +55,23 @@ struct BodyZeroPair004BD8A2 {
 class Rva004BD8A2 {
 public:virtual BodyZeroPair004BD8A2 rva004BD8A2();
 };
+
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class InactiveBody : public BodyModule {
+public:virtual NameKeyType getModuleNameKey() const;
+ virtual void attemptDamage(DamageInfo*);
+ virtual void attemptHealing(DamageInfo*);
+private:bool dieCalled;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp
 
@@ -85,12 +95,6 @@ void InactiveBody::attemptHealing(DamageInfo *damageInfo){
  damageInfo->noEffect=true;
 }
 
-// tu-skeleton: 0x004BD7FD 62B ??0BodyModule@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/BodyModuleCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004BD83B 6B ?Rva004BD83BGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
-
-// tu-skeleton: 0x004BD85D 69B ?getModuleNameKey@InactiveBody@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyPoolKey.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Body/BodyZeroPairReturn.cpp
 
 BodyZeroPair004BD8A2 Rva004BD8A2::rva004BD8A2()
@@ -98,6 +102,26 @@ BodyZeroPair004BD8A2 Rva004BD8A2::rva004BD8A2()
  return BodyZeroPair004BD8A2();
 }
 
+// tu-skeleton: 0x004BD7FD 62B ??0BodyModule@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/BodyModuleCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004BD83B 6B ?Rva004BD83BGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyPoolKey.cpp
+
+// ?getModuleNameKey@InactiveBody@@UBE?AW4NameKeyType@@XZ
+NameKeyType InactiveBody::getModuleNameKey() const
+{
+	static NameKeyType TheInactiveBodyPoolKey =
+		TheNameKeyGenerator->nameToKey("InactiveBody");
+	return TheInactiveBodyPoolKey;
+}
+
 // tu-skeleton: 0x004BD8BD 83B ??0InactiveBody@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004BD910 28B ??_GRva004BD78F@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F893 13B ?Rva0078F893ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F8AA 8B $L407 -- matched in Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F8B2 10B __ehhandler$??0InactiveBody@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyCtor.cpp (not merged yet)

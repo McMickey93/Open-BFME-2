@@ -20557,8 +20557,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04080,4,.data,global,?TheCivilianSpawnCollidePoolKey@?1??rva0004BD60C@CivilianSpawnCollide@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp,owned,,1,2
 0x00A04084,4,.data,global,?g_Va00E04084@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva0004BD60C@CivilianSpawnCollide@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp;?g_Va00E04084@@3IA,2,4
 0x00A04088,4,.data,global,_s_rva007B274A,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A0408C,4,.data,global,?TheInactiveBodyPoolKey@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyPoolKey.cpp,owned,,1,2
-0x00A04090,32,.data,global,?g_Va00E04090@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyPoolKey.cpp;?g_Va00E04090@@3IA,2,4
+0x00A0408C,4,.data,global,?TheInactiveBodyPoolKey@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp,owned,,1,2
+0x00A04090,32,.data,global,?g_Va00E04090@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp;?g_Va00E04090@@3IA,2,4
 0x00A040B0,4,.data,global,?g_Va00E040B0@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_08.cpp,owned,,1,14
 0x00A040B4,4,.data,global,?TheActiveBodyPoolKey@?1??rva0004BF848@ActiveBody@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp,owned,,1,2
 0x00A040B8,100,.data,global,?g_Va00E040B8@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva0004BF848@ActiveBody@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp;?g_Va00E040B8@@3IA,2,4

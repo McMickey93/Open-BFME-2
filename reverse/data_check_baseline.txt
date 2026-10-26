@@ -455,7 +455,7 @@ Code/GameEngine/Source/GameLogic/Object/Body/DetachableRiderBodyPoolKey.cpp	wron
 Code/GameEngine/Source/GameLogic/Object/Body/FreeLifeBodyPoolKey.cpp	wrong-name	?$S1@?1??rva0004C1885@FreeLifeBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04164
 Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004C07CA@HighlanderBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04128
 Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004C08B7@ImmortalBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04130
-Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04090
+Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp	wrong-name	?$S1@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04090
 Code/GameEngine/Source/GameLogic/Object/Body/OathbreakerBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004C1F10@OathbreakerBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04180
 Code/GameEngine/Source/GameLogic/Object/Body/PorcupineFormationBodyModulePoolKey.cpp	wrong-name	?$S1@?1??rva0004C2034@PorcupineFormationBodyModule@@SA?AW4NameKeyType@@XZ@4IA	0x00A04188
 Code/GameEngine/Source/GameLogic/Object/Body/RespawnBodyApply.cpp	wrong-name	?$S1@?BB@??apply@Rva004C1395Owner@@QAEXMPAUDamageInfo@@@Z@4IA	0x00A04154
