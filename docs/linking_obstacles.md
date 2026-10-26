@@ -911,6 +911,18 @@ Completed: native call/row diagnosis and current-provider verification; these si
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-26.**
 
+- **Particle-editor loader ownership (2026-10-26, control `665f50f7cf`):**
+  [The scoped repair](../reverse/attempt_support/particle-editor-owner-20261026.md)
+  replaces the cleanup TU's four-byte placeholder with a reference to the
+  existing twelve-byte `TheFXParticleEditor` owner and registers its complete
+  storage. All 950 affected function rows, 22 data rows and both EH graphs
+  pass. The owning tool retires four stale ScriptEngine debug-DLL keys with
+  zero findings in either ScriptEngine source. Thunk retirement remains
+  refused on unrelated findings. Paired ordinary previews preserve the three
+  clean initializer/ScriptEngine units; the thunk unit still requires the
+  LargeGroupAudio storage provider omitted from this bounded control.
+  No strict closure or census gain is claimed.
+
 - **Texture-statistics scalar subset (2026-10-26, control `d831bc24031`):**
   [The scoped ownership repair](../reverse/attempt_support/texture-statistics-data-20261026-bce2/readme.md)
   binds recording mode and seven reporting counters to their existing

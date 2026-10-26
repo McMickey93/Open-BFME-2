@@ -643,10 +643,6 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C31F3.cpp	wron
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003EA566.cpp	wrong-name	?$S1@?9??rva003EA566@ScriptConditions@@QAE_NPAVParameter@@000@Z@4IA	0x00A02E3C
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003EA566.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_evaluateNamedUnit.cpp	wrong-name	?$S1@?4??rva003E3EC3@ScriptConditions@@IAE_NPAVParameter@@@Z@4IA	0x00A02E10
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_dtor.cpp	duplicate-def	_st_DebugDLL	0x009FE158
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_dtor.cpp	wrong-name	_st_DebugDLL	0x009FE158
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_init.cpp	duplicate-def	_st_DebugDLL	0x009FE158
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_init.cpp	wrong-name	_st_DebugDLL	0x009FE158
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003BE7ED.cpp	wrong-name	?g_00DFDC8C@@3PAVRva001EB0CAHolder@@A	0x009FDC8C
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003BE7ED.cpp	wrong-name	?g_00DFE344@@3PAVRva0021A4E6@@A	0x009FE344
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003BE7ED.cpp	wrong-name	?g_00E02D6C@@3PAURva00E02D6CDefeatView@@A	0x00A02D6C

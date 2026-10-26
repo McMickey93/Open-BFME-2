@@ -2075,13 +2075,13 @@ public:
 	virtual ~BfmeDualVtableReleaseDtor();
 };
 
-unsigned g_00DFE180;	// retail RVA 0x009FE180 (.bss), defined here
-// g_00DFE180: packet annotates VA 0x009FE180 (data), no name yet.
+// ScriptEngine_init.cpp owns the 12-byte loader at VA 0x00DFE180.
+extern BfmeDualVtableReleaseDtor TheFXParticleEditor;
 
-// ?rva007B75E2@@YAXXZ @ 0x007B75E2 (10B). Global BfmeDualVtableReleaseDtor dtor thunk: ecx=&g_00DFE180 then tail-jmp to rowed ??1BfmeDualVtableReleaseDtor@@UAE@XZ (0x00203629). No callers. Between 0x007B75D8 and 0x007B75EC. Honest address name.
+// ?rva007B75E2@@YAXXZ @ 0x007B75E2 (10B). Global BfmeDualVtableReleaseDtor dtor thunk: ecx=&TheFXParticleEditor then tail-jmp to rowed ??1BfmeDualVtableReleaseDtor@@UAE@XZ (0x00203629). Registered by the rowed initializer at 0x007AD7DD. Between 0x007B75D8 and 0x007B75EC. Honest address name.
 void __cdecl rva007B75E2()
 {
-	BfmeDualVtableReleaseDtor *receiver = (BfmeDualVtableReleaseDtor *)&g_00DFE180;
+	BfmeDualVtableReleaseDtor *receiver = &TheFXParticleEditor;
 	return receiver->BfmeDualVtableReleaseDtor::~BfmeDualVtableReleaseDtor();
 }
 
