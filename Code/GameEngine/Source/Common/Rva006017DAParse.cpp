@@ -6,8 +6,7 @@
 // INI #include line parser. Evidence: callers 0x00601EE8 in 0x00601C53;
 // strstr IAT 0x00BBA614 and strlen thunk 0x00629170 with table 0x00E06A50.
 
-extern "C" __declspec(dllimport) char *__cdecl strstr(const char *s1, const char *s2);
-extern "C" unsigned int __cdecl strlen(const char *s);
+#include <string.h>
 extern int TextFileCharacterClasses[];
 
 // ?Rva006017DAParse@@YAPADPBDPADH@Z
