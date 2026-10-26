@@ -97,4 +97,7 @@ template S4SortElem20 *__unguarded_partition<S4SortElem20 *, S4SortElem20,
 	S4Cmp002EB8E0>(S4SortElem20 *, S4SortElem20 *, S4SortElem20,
 	S4Cmp002EB8E0);
 
+// The insertion dispatch shares this record's out-of-line lifetime operations.
+template void __insertion_sort<S4SortElem20 *, S4Cmp002EB8E0>(S4SortElem20 *, S4SortElem20 *, S4Cmp002EB8E0);
+
 }

@@ -73,7 +73,7 @@ Each row retains the handoff's investigation lead alongside the census category.
 
 | Unit | Matched bytes | Census blocker | Follow-up / prerequisite |
 | --- | ---: | --- | --- |
-| `Rva0056616BCopyDeferred.cpp` | 481 | Wrong selected | 2026-10-25: current 333 B parent still blocked by selected vector<BfmePod32> copy. [Evidence](../reverse/attempt_support/link-regression-clusters-20261025.md). |
+| `Rva0056616BCopyDeferred.cpp` | 481 | Wrong selected | 2026-10-26, inspected `2a45addda180`: inherited Rva003A6F70 retyping previews LINKS with current copy/destructor providers; no source edit in this run. Cleared in ordinary-preview scope; census confirmation pending. [LINK-051](linking_obstacles.md#link-051-the-0x0052c823-vector-copy-and-0x0052cd03-vector-dtor-are-rva003a6f70s-rowed-as-bfmepod32s). |
 | `stlport_narrow_ostringstream_dtor.cpp` | 429 | COMDAT losers | STL conflicts; compiler C1001 |
 | `vector_class_vector3_ctor.cpp` | 218 | Wrong selected | LINK-015: preview links 194 B (2026-10-26); census pending |
 | `Rva001F9524Concat.cpp` | 185 | COMDAT losers | Symbol identity debt |
@@ -345,7 +345,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00214B22.cpp` | 73 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (c9700d27ca, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E2857.cpp` | 73 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (1f0a322ceb, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva003609F7.cpp` | 73 | 4 (C=2, S=2) | Open |
-| `Code/GameEngine/Source/Common/S4StlSortHelpers.cpp` | 71 | 21 (U=13, C=5, S=3) | Open |
+| `Code/GameEngine/Source/Common/S4StlSortHelpers.cpp` | 71 | 21 (U=13, C=5, S=3) | 2026-10-26, inspected `2a45addda180`: corrected element/comparator view and bounded instantiation. Cleared in ordinary-preview scope; census confirmation pending. [LINK-045](linking_obstacles.md#link-045-s4sortelem20-element-members-exist-only-as-private-comdats-under-a-placeholder-name); raw paired receipts in `build/link-worker-w6/`. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00212A16.cpp` | 68 | 9 (U=3, C=3, S=3) | 2026-10-26 at `2a45addda1`: Native AsciiString-keyed resize, bucket and node owners disagree with the opaque key/value instantiation (LINK-002). Whole-unit clearance and census confirmation pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0002CCC3.cpp` | 67 | 4 (U=2, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00218FC2.cpp` | 67 | 4 (U=4) | Open |
