@@ -12013,7 +12013,7 @@ _VP6_DeleteQuantizer,,0x001B7930,94,Code/Libraries/Source/VP6/DeleteQuantizer.cp
 ?Rva007F00B0@@YAXPAX0@Z,,0x0065CF90,98,Code/GameEngine/Source/Common/Rva007F00B0AllocatorInit.cpp,matched,BFME1 donor with game-specific constants repaired to BFME2 retail values (A5CEC0/CE1DFC/A5CED0)
 ?_Stl_create_filebuf@_STL@@YAPAV?$basic_filebuf@DV?$char_traits@D@_STL@@@1@PAU_iobuf@@H@Z,,0x00015300,145,Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp,matched,BFME1 byte-identical donor; filebuf ctor/_M_open/new resolve via ledger
 ?_Stl_create_wfilebuf@_STL@@YAPAV?$basic_filebuf@GV?$char_traits@G@_STL@@@1@PAU_iobuf@@H@Z,,0x000153A0,145,Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp,matched,BFME1 byte-identical donor; wfilebuf ctor/_M_open/new resolve via ledger
-??0LifetimeUpdateModuleData@@QAE@XZ,,0x003A4A7D,26,Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateModuleDataConstructor.cpp,matched,BFME1 byte-identical donor; vtable immediate repaired to BFME2 0xC4ED70
+??0LifetimeUpdateModuleData@@QAE@XZ,,0x003A4A7D,26,Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp,matched,BFME1 byte-identical donor; vtable immediate repaired to BFME2 0xC4ED70
 ?bfmeRSearchV33@@YAPAPADPAPADPAD111@Z,,0x00026340,758,Code/GameEngine/Source/Common/BfmeConv1473.cpp,matched,BFME1 byte-identical donor; b1 0x0082E130
 ?bfmeRFindNotChV32@@YAPAPADPAPADPAD1D@Z,,0x000260A0,596,Code/GameEngine/Source/Common/BfmeConv1472.cpp,matched,BFME1 byte-identical donor
 ?bfmeRFindChV31@@YAPAPADPAPADPAD1D@Z,,0x00025CE0,540,Code/GameEngine/Source/Common/BfmeConv1471.cpp,matched,BFME1 byte-identical donor
@@ -23946,7 +23946,7 @@ _VP6_UpdateContext,,0x001BC390,51,Code/Libraries/Source/VP6/FilterMath.cpp,match
 ??1SiegeDockingBehavior@@UAE@XZ,,0x00459DAA,91,Code/GameEngine/Source/GameLogic/Object/Behavior/SiegeDockingBehaviorDtor.cpp,matched,vtable 0x00C414DC slot0 caller plus donor dtor plus ctor vptrs
 ??1BfmeOwnVVD@@QAE@XZ,,0x0042E85C,79,Code/GameEngine/Source/Common/BfmeOwnVVDCtor.cpp,matched,BFME1 donor BfmeConv1663 vtable 0x0083C938 base 0x007DBA74 caller 0x0042E9D3 singleton 0x00A03214
 ?Rva004ADBF2@Rva004AD9B0@@MAEX_N0@Z,,0x004ADBF2,70,Code/GameEngine/Source/GameLogic/Object/Update/Rva004AD9B0Slot13.cpp,matched,slot13 vtable 0x008551C0 plus onExit forward plus rowed callees
-?calcSleepDelay@LifetimeUpdate@@AAEIII@Z,,0x003A49F0,55,Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCalcSleepDelay.cpp,matched,ZH header private calc and BFME1 cpp and DeletionUpdate precedent and rowed xfer layout and GetGameLogicRandomValue row
+?calcSleepDelay@LifetimeUpdate@@AAEIII@Z,,0x003A49F0,55,Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp,matched,ZH header private calc and BFME1 cpp and DeletionUpdate precedent and rowed xfer layout and GetGameLogicRandomValue row
 ??_GBfmeOwnVVD@@QAEPAXI@Z,,0x0042E9D0,28,Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-x7q-f4c9.cpp,matched,scalar deleting dtor calls rowed dtor 0x0042E85C plus rowed delete 0x0002FD60 vtable slot1 0x0083C938
 ?setLifetimeRange@LifetimeUpdate@@QAEXII@Z,,0x003A4AB3,31,Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp,matched,DeletionUpdate 31B precedent and rowed calc and rowed setWakeFrame and xfer layout
 ?rva00462785@Rva00462785@@QAEHXZ,,0x00462785,23,Code/GameEngine/Source/GameLogic/Object/Contain/Rva00462785.cpp,matched,leaf after slot81 plus E1 plus 83 reads plus O1
