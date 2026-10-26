@@ -6693,7 +6693,7 @@ _piStopReporting,,0x006A75E0,36,Code/GameEngine/Source/GameNetwork/GameSpy/peer/
 ?parseDurationReal@INI@@SAXPAV1@PAX1PBX@Z,,0x00338B0A,38,Code/GameEngine/Source/Common/System/INI_parseDurationReal.cpp,matched,
 ??0BfmeMsgVJH@@QAE@PADH@Z,,0x00655900,76,Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp,matched,
 ?hasOverrideWindow@RadarWindowOverrideSource@@QBE_NXZ,,0x002D35D6,16,Code/GameEngine/Source/Common/System/RadarWindowOverride.cpp,matched,
-?AsyncGetHostByName@Cftp@@QAEHPADAAUsockaddr_in@@@Z,,0x006C9F90,165,Code/Libraries/Source/WWVegas/WWDownload/CftpAsyncGetHostByName.cpp,matched,
+?AsyncGetHostByName@Cftp@@QAEHPADAAUsockaddr_in@@@Z,,0x006C9F90,165,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,
 ?GetFrameEntry@Debug@@AAEPAUFrameHashEntry@1@IIPBDH@Z,,0x0003A1B0,94,Code/Libraries/Source/WWVegas/WWDebug/Debug_GetFrameEntry.cpp,matched,
 ?RecvReply@Cftp@@QAEJPBDHPAH@Z,,0x006CA080,268,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,
 ?Use_Non_Blocking_Mode@@YA_NXZ,,0x006C9E00,154,Code/Libraries/Source/WWVegas/WWDownload/CftpUseNonBlockingMode.cpp,matched,
