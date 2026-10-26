@@ -369,7 +369,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteAssign.cpp` | 45 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005FE3DC.cpp` | 45 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_insertion_sort_s4sortelem20.cpp` | 45 | 3 (U=2, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | 2026-10-26: b313329af6 link_check LINKS (0 -> 44 B); truename/falsename defined beside their storage; LINK-048. |
 | `Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPower.cpp` | 40 | 3 (U=2, C=1) | 2026-10-25: current-provider preview still has protected SpecialPower dtor, findPositionAround and FindPositionOptions blockers; LINK-014. |
 | `Code/Libraries/Source/WWVegas/WW3D2/decalsys.cpp` | 39 | 8 (U=8) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/ParkingPlaceBehavior.cpp` | 38 | 15 (U=8, C=6, S=1) | Open |
