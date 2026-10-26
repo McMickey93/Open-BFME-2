@@ -21,7 +21,8 @@
 //   range-initialises directly into the hidden result. Retail calls the
 //   char* 2-arg initialiser at 0x00008D00 (the const char* instantiation
 //   folded onto it), so the range is passed as char*.
-// - 0x00017A40 / 0x00017AA0 / 0x00019D30 (85B each): hidden-pointer shape
+// - 0x00017A40 / 0x00017AA0 / 0x00019D30 (85B each; the last is
+//   moneypunct<char, true>::do_grouping, see below): hidden-pointer shape
 //   over no parameters; methods returning a copy of a static narrow string.
 //   The copy constructor zeroes first and only then reads the
 //   static's start/finish, which is why the global loads sit below the
@@ -161,14 +162,30 @@ _STL::NStr Rva00017AA0StringInit::init()
 	return *reinterpret_cast<const _STL::NStr *>(&g_Va00DDEEFC);
 }
 
-class Rva00019D30StringInit
+namespace _STL
 {
-public:
-	_STL::NStr init();
+
+template <class CharT, bool International>
+class moneypunct;
+
+template <>
+class moneypunct<char, true> : public locale::facet
+{
+protected:
+	virtual NStr do_grouping() const;
 };
 
-// 0x00019D30: copy of the static string at 0x00DDEF38.
-_STL::NStr Rva00019D30StringInit::init()
+// 0x00019D30: moneypunct<char, true>::do_grouping, slot 3 of retail's
+// RTTI-named vftable 0x007BC810 (.?AV?$moneypunct@D$00@_STL@@). STLport
+// 4.5.3 returns its file-static empty string (storage 0x00DDEF38) from
+// do_grouping / do_curr_symbol / do_positive_sign / do_negative_sign of both
+// narrow moneypuncts and do_grouping of both wide ones; retail folds all ten
+// onto this body (slots 3-6 of 0x007BC810 / 0x007BC83C, slot 3 of 0x007BC868 /
+// 0x007BC894). The other nine names bind here through the moneypunct units'
+// /alternatename lines.
+NStr moneypunct<char, true>::do_grouping() const
 {
-	return *reinterpret_cast<const _STL::NStr *>(&g_Va00DDEF38);
+	return *reinterpret_cast<const NStr *>(&g_Va00DDEF38);
+}
+
 }
