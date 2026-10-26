@@ -3997,7 +3997,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdat
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdateModuleDataCtor.cpp	_vfn_004B2FF3	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdateModuleDataCtor.cpp	_vfn_0050B5C6	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	??1BehaviorModuleData@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AIUpdateInterfaceIgnoreObstacle.cpp	_theLogicRandomLogFile	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AIUpdateModuleDataCtor.cpp	??0DeflectSpecialPowerModuleDataBase@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AnimalAIUpdateCtor.cpp	??0Rva0026E9BDBase@@QAE@PAVThing@@PBVModuleData@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdateCtor.cpp	??0Rva0026E9BDBase@@QAE@PAVThing@@PBVModuleData@@@Z	1

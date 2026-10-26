@@ -13,7 +13,7 @@
 extern unsigned char g_00E03745;
 // g_00E03745: matched references place it at VA 0xe03745 (zero-filled .bss).
 unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 extern "C" void __cdecl fprintf(void *sink, const char *format, ...);
 
 template <typename T> struct BfmeStringData
@@ -100,8 +100,8 @@ void AIUpdateInterface::ignoreObstacle(const Object *obj)
 	{
 		if (obj)
 		{
-			if (g_00DFEFF0)
-				fprintf(g_00DFEFF0,
+			if (theLogicRandomLogFile)
+				fprintf(theLogicRandomLogFile,
 					"  CritterDesync - Critter %s(%d) set to ignore %s(%d)",
 					m_object->getTemplate()->getName().str(), m_object->getID(),
 					obj->getTemplate()->getName().str(), obj->getID());
@@ -111,16 +111,16 @@ void AIUpdateInterface::ignoreObstacle(const Object *obj)
 			Object *old = TheGameLogic->findObjectByID(m_ignoreObstacleID);
 			if (old)
 			{
-				if (g_00DFEFF0)
-					fprintf(g_00DFEFF0,
+				if (theLogicRandomLogFile)
+					fprintf(theLogicRandomLogFile,
 						"  CritterDesync - Critter %s(%d) set to ignore NOTHING. Was previously ignoring %s(%d)",
 						m_object->getTemplate()->getName().str(), m_object->getID(),
 						old->getTemplate()->getName().str(), old->getID());
 			}
 			else
 			{
-				if (g_00DFEFF0)
-					fprintf(g_00DFEFF0,
+				if (theLogicRandomLogFile)
+					fprintf(theLogicRandomLogFile,
 						"  CritterDesync - Critter %s(%d) set to ignore NOTHING. Was previously ignoring NOTHING",
 						m_object->getTemplate()->getName().str(), m_object->getID());
 			}
@@ -135,6 +135,5 @@ ObjectID AIUpdateInterface::getIgnoredObstacleID() const
 	return m_ignoreObstacleID;
 }
 
-// ?g_00DFEFF0@@3PAXA: matched references place it at VA 0xdfeff0; also referenced as _theLogicRandomLogFile.
-void * g_00DFEFF0 = 0;
-#pragma comment(linker, "/alternatename:_theLogicRandomLogFile=?g_00DFEFF0@@3PAXA")
+// _theLogicRandomLogFile: retail VA 0x00DFEFF0 (desync log file)
+extern "C" void *theLogicRandomLogFile = 0;
