@@ -15,28 +15,12 @@
 extern "C" const void *const vtbl_00C50298[];  // ??_7OneRingPenaltyUpdateModuleData@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C50298=??_7OneRingPenaltyUpdateModuleData@@6B@")
 
-class OneRingPenaltyUpdateModuleData
-{
-public:
-	OneRingPenaltyUpdateModuleData();
-
-private:
-	const void *m_vtable;					// +0x00
-	unsigned int m_unused04;				// +0x04 retail never stores
-	const char *m_specialObjectName;		// +0x08
-	unsigned int m_ringTimeBeforeSpawning;	// +0x0C
-	unsigned int m_timeSpentRoamingAround;	// +0x10
-	unsigned int m_timeRingPowerSuppressed;	// +0x14
-	float m_startingDistanceFromMe;			// +0x18
-	unsigned int m_timeFrozenFromPenalty;	// +0x1C
-	const char *m_discoveredSound;			// +0x20
-};
+#include "OneRingPenaltyModuleDataView.h"
 
 // ??0OneRingPenaltyUpdateModuleData@@QAE@XZ
 OneRingPenaltyUpdateModuleData::OneRingPenaltyUpdateModuleData()
 	: m_vtable( reinterpret_cast<const void *>(((unsigned int)vtbl_00C50298)) )
 {
-	m_specialObjectName = 0;
 	m_discoveredSound = 0;
 	m_timeSpentRoamingAround = 0;
 	m_timeRingPowerSuppressed = 0;

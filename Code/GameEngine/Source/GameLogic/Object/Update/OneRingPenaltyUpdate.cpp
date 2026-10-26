@@ -115,17 +115,7 @@ public:
 	virtual void slotUpdate();
 };
 
-class OneRingPenaltyUpdateModuleData
-{
-public:
-	const void *m_vtable; // +0x00
-	int m_unused04; // +0x04
-	AsciiString m_specialObjectName; // +0x08
-	unsigned int m_ringTimeBeforeSpawning; // +0x0C
-	unsigned int m_timeSpentRoamingAround; // +0x10
-	unsigned int m_timeRingPowerSuppressed; // +0x14
-	float m_startingDistanceFromMe; // +0x18
-};
+#include "OneRingPenaltyModuleDataView.h"
 
 struct BfmeX987
 {
