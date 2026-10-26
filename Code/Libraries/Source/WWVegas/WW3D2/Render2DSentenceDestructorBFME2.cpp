@@ -10,7 +10,7 @@
 // views, not independent identification of the target's renderer records.
 // Concrete member offsets, sizes (8/1C/24) and teardown are target evidence.
 
-void operator delete[](void *block);
+#include <new>
 
 void BFME_DX8_Thread_Lock();
 // The unlock half is rowed at 0x00120F50 as BFME_DX8_Thread_Assert (dx8wrapper.cpp).

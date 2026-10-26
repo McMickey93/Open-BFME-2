@@ -20,7 +20,7 @@ typedef unsigned short TriIndex[3];
 // Retail's destructor runs with the try level already reset, which MSVC only
 // emits when it knows the deallocator cannot throw; declare the standard
 // operator delete[] that way before the inlined destructor uses it.
-void __cdecl operator delete[](void *p) throw();
+#include <new>
 
 class Vertex_Split_Table
 {
