@@ -52,9 +52,9 @@ public:
 	MapMetaData(const MapMetaData &other);
 	~MapMetaData();
 	char m_pad00[0x20];
-	Int m_numPlayers;
+	int m_numPlayers;
 	char m_pad24[0x08];
-	UnsignedInt m_CRC;
+	unsigned int m_CRC;
 	char m_rest[0x100 - 0x30];
 };
 
