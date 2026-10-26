@@ -12,7 +12,7 @@ public:
 	bool rva0033A8D9(const void *mask) const;
 };
 
-struct Rva0033A9A5Entry
+struct AutoResolveArmorEntry
 {
 	const Rva00427157 *armor;
 	char m_pad[0x104 - 4];
@@ -33,15 +33,15 @@ public:
 
 private:
 	char m_pad[0x3EC];
-	Rva0033A9A5Entry *m_begin;
-	Rva0033A9A5Entry *m_end;
+	AutoResolveArmorEntry *m_begin;
+	AutoResolveArmorEntry *m_end;
 };
 
 const Rva00427157 *Rva0033A9A5::getCurrentLivingWorldAutoResolveArmor(const void *arg)
 {
-	Rva0033A9A5Entry *begin = m_begin;
-	Rva0033A9A5Entry *end = m_end;
-	for (Rva0033A9A5Entry *entry = begin; entry != end; entry = (Rva0033A9A5Entry *)((char *)entry + 0x104)) {
+	AutoResolveArmorEntry *begin = m_begin;
+	AutoResolveArmorEntry *end = m_end;
+	for (AutoResolveArmorEntry *entry = begin; entry != end; entry = (AutoResolveArmorEntry *)((char *)entry + 0x104)) {
 		if (((const Rva0033A8D9 *)entry)->rva0033A8D9(arg))
 			return entry->armor;
 	}
