@@ -210,7 +210,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/RTS/PlayerCtorBFME2.cpp` | 841 | 6 (U=4, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/Thing/ThingTemplate.cpp` | 800 | 22 (U=10, C=8, S=4) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DozerAIUpdate.cpp` | 749 | 14 (U=12, C=2) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp` | 748 | 9 (U=7, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp` | 748 | 9 (U=7, C=1, S=1) | 2026-10-26 at e1c2619fa1 (agent K9): repair landed / awaiting census. Unrowed Zero Hour MixFileFactoryClass bodies dropped (their MixFileCreator and GetFileAttributesA/MoveFileA/_stricmp references were the U blockers); template rows emitted by explicit instantiation; `AddInfoStruct` takes retail's 8-byte element layout (int + W3DRadarResetSurface COM holder), so `VectorClass<AddInfoStruct>::Resize` is retail's 0x00155690 body. link_check (index d1f046749a): LINKS 0 -> 748 B; partners still link. |
 | `Code/gen_small/uw_gen_003.cpp` | 703 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/Rva00170C0Siblings.cpp` | 692 | 48 (U=8, C=20, S=20) | Open |
 | `Code/GameEngineDevice/Source/W3DDevice/Common/System/W3DRadar.cpp` | 647 | 8 (U=8) | Open |
