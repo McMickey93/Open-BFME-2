@@ -3,7 +3,7 @@
 // Clears +0x0, frees this through the rowed operator delete when the flag
 // bit is set, and returns this. Honest address-derived names; boundary
 // verified (push esi at 0xA97EC, pop + ret 4 at end).
-void operator delete(void *p);
+#include <new>
 class Rva000A97EC {
 public:
 	Rva000A97EC *rva000A97EC(bool b);

@@ -2,7 +2,7 @@
 // ?set@Rva0009990D@@QAEXPAX@Z retail 0x000998EA 35B guarded pointer swap with
 // LockClass dtor plus delete. Evidence: named pin plus rowed dtor 0x00613AC0
 // plus delete 0x0002FD60; callers at 0x002256FD 0x0038B200.
-void __cdecl operator delete(void *p);
+#include <new>
 struct MutexClass { struct LockClass { ~LockClass(); }; };
 class Rva0009990D
 {
