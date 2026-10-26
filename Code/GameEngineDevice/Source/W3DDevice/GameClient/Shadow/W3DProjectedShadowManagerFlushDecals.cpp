@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?flushDecals@W3DProjectedShadowManager@@QAEXW4ShadowType@@PAVW3DShadowTexture@@1H@Z
 // retail 0x00109E11..0x0010A736 (2341 B), __EH_prolog frame, thiscall, ret 0x10.
@@ -28,9 +29,7 @@
 // second texture, mode). WorldBuilder twin 0x008C8720 (callgraph match)
 // has the same switch arms and shader constants.
 
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef unsigned int UINT;
+#include <windows.h>
 typedef DWORD D3DRENDERSTATETYPE;
 
 typedef float Real;

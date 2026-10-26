@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?renderStencilShadows@W3DVolumetricShadowManager@@IAEXXZ @0x000F0842 208B.
 //
 // W3DVolumetricShadowManager::renderStencilShadows: blends the shadow colour
@@ -13,11 +14,8 @@
 // routes the raw device SetRenderState calls through DX8Wrapper.
 
 typedef float Real;
-typedef unsigned long DWORD;
+#include <windows.h>
 typedef DWORD D3DRENDERSTATETYPE;
-
-#define TRUE	1
-#define FALSE	0
 
 #define D3DRS_ZENABLE			7
 #define D3DRS_SHADEMODE			9

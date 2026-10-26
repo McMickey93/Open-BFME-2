@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?renderShadows@W3DVolumetricShadowManager@@QAEXAAVRenderInfoClass@@@Z @0x000F4AB7 4116B.
 //
 // W3DVolumetricShadowManager::renderShadows: the stencil shadow-volume pass.
@@ -22,9 +23,7 @@
 // 0xF, the first getNextVertexBuffer(NULL, ...) of each walk is inlined.
 // Names of the BFME 2 callees without a ZH counterpart are descriptive.
 
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef unsigned int UINT;
+#include <windows.h>
 typedef DWORD D3DRENDERSTATETYPE;
 typedef DWORD D3DTEXTURESTAGESTATETYPE;
 
@@ -134,9 +133,6 @@ struct IDirect3DDevice8
 	virtual HRESULT __stdcall CreateVertexShader(void) = 0;
 	virtual HRESULT __stdcall SetVertexShader(void *pShader) = 0;
 };
-
-#define TRUE	1
-#define FALSE	0
 
 #define D3DRS_ZENABLE			7
 #define D3DRS_SHADEMODE			9
