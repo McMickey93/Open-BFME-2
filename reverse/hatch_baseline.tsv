@@ -3532,7 +3532,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/Rva002553F6Ctor.cpp
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/Rva00262176Activity.cpp	?rva00262176@Rva003638BA@@QAE_NXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/Rva0029FB3BMemberInit.cpp	?init@Rva0029FB3BMember@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/Rva004382FCWrapper.cpp	??0BfmePod196@@QAE@ABU0@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/Rva0048B95FDtor.cpp	?Rva0048B95FHelper@FireWeaponUpdate@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ScaleWallSpecialAbilityUpdateFriendNew.cpp	??0ScaleWallSpecialAbilityUpdate@@QAE@PAVThing@@PBVModuleData@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/SpawnPointProductionExitUpdateModuleDataFriendNew.cpp	_vtbl_00BF3740	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateDtor.cpp	??1Rva0044EF5E@@UAE@XZ	1
@@ -8711,7 +8710,6 @@ pin	reverse/symbols.csv	0x00487A95	1
 pin	reverse/symbols.csv	0x004882E4	1
 pin	reverse/symbols.csv	0x00488357	1
 pin	reverse/symbols.csv	0x00489D09	1
-pin	reverse/symbols.csv	0x0048B95F	1
 pin	reverse/symbols.csv	0x0048BA39	9
 pin	reverse/symbols.csv	0x0048BC46	1
 pin	reverse/symbols.csv	0x0048BD11	2

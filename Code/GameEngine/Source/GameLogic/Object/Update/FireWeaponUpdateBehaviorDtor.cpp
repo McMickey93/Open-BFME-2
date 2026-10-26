@@ -9,7 +9,7 @@
 // a watch-list drain loop (per value: release helper + operator delete +
 // list remove) plus a tracked-pointer virtual release (slot0 with 0,
 // return-fed operator delete) plus implicit list-base-dtor and base-dtor
-// calls. The release helper rides as an Rva pin (value-this, do-not-name).
+// calls. The per-value release is the value's own dtor (0x0048B95F).
 
 
 #include <list>
@@ -109,13 +109,20 @@ struct FireWeaponTracked
 {
 	virtual void *deleteInstance(int flags);
 };
+// The watch-list value; its dtor is rowed at 0x0048B95F (Rva0048B95FDtor.cpp).
+class Rva0048B95F
+{
+public:
+	~Rva0048B95F();
+private:
+	FireWeaponTracked *m_tracked;	// +0
+};
 class FireWeaponUpdate : public UpdateModule
 {
 public:
 	FireWeaponUpdate(Thing *thing, const ModuleData *moduleData);
 	virtual ~FireWeaponUpdate();
 	virtual UpdateSleepTime update();
-	void Rva0048B95FHelper();
 private:
 	FireWeaponTracked *m_tracked;		// +0x20
 	_STL::list<int> m_trackedIds;		// +0x24
@@ -131,7 +138,7 @@ FireWeaponUpdate::~FireWeaponUpdate()
 		int trackedValue = *it;
 		++it;
 		if (trackedValue != 0) {
-			((FireWeaponUpdate *)trackedValue)->Rva0048B95FHelper();
+			((Rva0048B95F *)trackedValue)->~Rva0048B95F();
 			::operator delete((void *)trackedValue);
 		}
 		trackedIds->remove(trackedValue);

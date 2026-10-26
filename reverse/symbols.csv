@@ -4440,7 +4440,6 @@ name,address,notes
 ?Rva00437EAC@@YAXHABVUnicodeString@@0@Z,0x00437EAC,address-derived helper called by the AptSaveLoad prompt body at 0x00434220; Ghidra function start at 0x00437EAC with 24-byte extent; forwards title and message via global 0x00E032FC
 ?Rva0043CCC2GetRoute@@YAPAXXZ,0x0043CCC2
 ?Rva00441DBFPop@@YAXPAPAX00PAXVRva0043FE9A@@H@Z,0x00441DBF,twin of rowed Pop with dummy for 7-push callers 0x00441E44 0x00443018 mirrors Rva005B64B5Pop
-?Rva0048B95FHelper@FireWeaponUpdate@@QAEXXZ,0x0048B95F,watchlist-value release helper with value-this from behavior dtor 0x48BD11 and value deleting-dtor 0x48B9B4; do-not-name without element-type ID
 ?Rva004C20D5IsWithin@PorcupineFormationBodyModule@@QAE_NMPBUCoord3D@@0@Z,0x004C20D5,"thiscall spelling of the rowed distance test ?Rva004C20D5IsWithin@@YG_NMPBUCoord3D@@0@Z (ret 0xC, this unused): PorcupineFormationBodyModule slot 38 0x004C2127 loads its primary this into ecx before the call"
 ?Rva004C734DConstruct@@YAXPAURva004C77C4Pair@@ABU1@@Z,0x004C734D,address-derived ABI view; REL32 decoded from reference-guided overflow 0x004C77C4; empty tag in final argument padding
 ?Rva004C737ACopy@@YAPAURva004C77C4Pair@@PAU1@00ABURva004C77C4Tag@@@Z,0x004C737A,address-derived ABI view; REL32 decoded from reference-guided overflow 0x004C77C4; empty tag in final argument padding

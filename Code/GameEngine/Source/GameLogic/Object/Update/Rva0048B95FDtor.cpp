@@ -3,8 +3,8 @@
 // ??1Rva0048B95F@@QAE@XZ, retail 0x0048B95F, 27 bytes. Watchlist-value dtor:
 // releases the tracked pointer at +0 through its slot0 virtual with 0,
 // frees the return via operator delete, then zeroes the slot. Called with
-// value-this from the FireWeaponUpdate behavior dtor (rowed 0x48BD11 via
-// the Rva0048B95FHelper pin) and from the value deleting-dtor 0x48B9B4.
+// value-this from the FireWeaponUpdate behavior dtor (rowed 0x48BD11) and
+// from the value deleting-dtor 0x48B9B4.
 // Rva-addressed honest name (twin Rva003A4CAE precedent); do-not-name the
 // value class without an element-type ID. Zero new pins (all callees rowed).
 
@@ -29,7 +29,3 @@ Rva0048B95F::~Rva0048B95F()
 	}
 	m_tracked = 0;
 }
-
-// Callers elsewhere reach bodies in this unit through other spellings; retail's
-// call sites in their matched rows land on these addresses (same ABI). Bind them.
-#pragma comment(linker, "/alternatename:?Rva0048B95FHelper@FireWeaponUpdate@@QAEXXZ=??1Rva0048B95F@@QAE@XZ")
