@@ -197,7 +197,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp` | 1,499 | 8 (U=2, C=4, S=2) | Open |
 | `Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleModuleInfoCopyCtors.cpp` | 1,455 | 28 (U=28) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/texture.cpp` | 1,429 | 21 (U=21) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/W3DModelDrawModuleData.cpp` | 1,361 | 11 (U=10, C=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/W3DModelDrawModuleData.cpp` | 1,361 | 11 (U=10, C=1) | 2026-10-26, `1a919cef47`: repair landed / awaiting census. The ten opaque `Rva*Wrap` vector members became declare-only `_STL::vector<T>` views resolving to the rowed dtors/erase/push_back and the folded `_Vector_base<int>` ctor (0x00211E58); the vtable COMDAT lost to `W3DDrawModuleDeletingDtors.cpp`'s one-slot scaffold view, which now derives from the canonical Snapshot base so both copies are identical. 41/41 + 6/6 rows exact; link_check (index d1f046749a): LINKS 0 -> 911 B, DeletingDtors and the Truck/Tank/Supply/FriendNew partners still link. |
 | `Code/Libraries/Source/STLport/Rva008312E0StringReplace.cpp` | 1,351 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp` | 1,299 | 6 (U=2, C=2, S=2) | Open |
 | `Code/gen_small/uw_gen_005.cpp` | 1,251 | 72 (U=72) | Open |
