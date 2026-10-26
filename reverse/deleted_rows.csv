@@ -2698,3 +2698,4 @@ __ehhandler$?moveSelectedMembersToTarget@Rva005F52C0@@QAEXXZ,0x007A5341,"Renamed
 ?rva004A2BF0@Rva004A2BF0@@QAE_NPAVObject@@@Z,0x004A2BF0,"Renamed to ?allow@Rva004A2BF0@@QAE_NPAVObject@@@Z by tools/rename.py (inferred)"
 ?rva000B6498@Rva000B6498@@QAEXPAURva000B6498Node@@@Z,0x000B6498,"Renamed to ?rva000B6498@Rva000B6498@@QAEXPAURedBlackTreeNode@@@Z by tools/rename.py (inferred)"
 ?rva005C436E@Rva005C436E@@QAEXH@Z,0x005C436E,"Renamed to ?adjustCommandPoints@Rva005C436E@@QAEXH@Z by tools/rename.py (inferred)"
+?Set_Name@DefinitionClass@@UAEXPBD@Z,0x0011FBB0,"Re-rowed as ?set_driver_vendor@BfmeEnumerationDesc@@QAEXPBD@Z in dx8wrapper.cpp: add ecx,0x10; jmp StringClass::operator= sits among the rowed BfmeEnumerationDesc setters (+4 0x11FB80 ... +0x20 0x11FBE0); +0x10 is DriverVendor; retail has no DefinitionClass/WWSaveLoad framework"
