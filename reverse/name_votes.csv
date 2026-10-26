@@ -8214,3 +8214,6 @@ Code/Libraries/Source/WWVegas/WWLib/Rva002F0DD6Worker.cpp|param|Rva002F1DDCTree:
 Code/GameEngine/Source/Common/Rva002B6C9F.cpp|param|Rva002B6C9F::rva002B6C9F|a2,29c8f21e1d83bdfb1e25e663,gpt-6.1-sol,w3-10261600-10,w-46dfa4623b23,2026-10-26
 Code/GameEngine/Source/GameClient/GUI/InGame/Strategic/StrategicVeterancy.cpp|param|Rva005ED15DCreateAutoResolve|c,da850587e394675bc459d41e,gpt-6.1-sol,w4-10261609-3,w-eb83eac9adc1,2026-10-26
 Code/GameEngine/Source/GameNetwork/BfmeGameBrowserVJQ.cpp|member|BfmeThingVJQ|m_bfme10,9deccee21892217806393139,gpt-6.1-sol,w4-10261609-4,w-eb83eac9adc1,2026-10-26
+Code/GameEngine/Source/Common/Rva00595C79Permuted.cpp|class||Rva00595C79Address,03229d57b61e473d0038680b,gpt-6.1-sol,w6-10261617-7,w-06f458dbecf5,2026-10-26
+Code/GameEngine/Source/Common/Rva0042C936.cpp|local|Rva0042C936::assign|q,48babb2c4969a92a291ff185,gpt-6.1-sol,w6-10261617-11,w-06f458dbecf5,2026-10-26
+Code/GameEngine/Source/Common/Rva0042C936.cpp|param|reset|p,e2a191062379ff869d52785a,gpt-6.1-sol,w6-10261617-11,w-06f458dbecf5,2026-10-26
