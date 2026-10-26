@@ -1584,6 +1584,11 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   - `statistics.cpp` (986 B), 01a7f0d9ba: absorbed `Rva001296F0Destroy.cpp`, which never
     linked (`extern "C" textureStatisticsString`, while the string is a file static in
     `DebugStatisticsRecordTextureEnd.cpp`; non-retail `??1Rva001880D0Dtor` copy).
+    **Repair landed / awaiting census (2026-10-26, K5, 320523b560):** the body now forwards
+    the ledger's `texture_statistics_string` (defined in this file, 0x009EE91C) to the
+    0x001880D0 row `Rva001880D0StringCleanupForward::cleanup`; `./build.sh` 33/33,
+    `link_check statistics.cpp wwstring_free_string.cpp dx8wrapper.cpp ww3d.cpp` predicts
+    0 -> 986 B, partners unchanged (index d1f046749a). Census confirmation: awaiting.
   - `CrateSystem.cpp` (259 B), aab36803a7: the donors were `/O1 /G6 /D_STLP_NO_EXCEPTIONS`;
     under the TU's flags the emitted `list<Rva0035CBB2Element>::insert` (pinned 0x0035CB8D)
     is not retail's. Declaring it only leaves it unresolved (a pin does not satisfy the
