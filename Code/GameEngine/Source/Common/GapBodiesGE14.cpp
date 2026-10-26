@@ -55,9 +55,9 @@ extern GlobalData *TheWritableGlobalData;
 struct Rva003B9CDFGlobalData
 {
 	char m_pad[0x86];
-	bool m_86;
-	bool m_87;
-	bool m_88;
+	bool m_liveCampaignMode;
+	bool m_hideLivingWorldRegions;
+	bool m_livingWorldTurbo;
 	char m_pad89[0x1110 - 0x89];
 	bool m_1110;
 };
@@ -73,19 +73,19 @@ int Rva003B9CDF(char *args[], int)
 
 int Rva003B9CF3(char *args[], int)
 {
-	((Rva003B9CDFGlobalData *)TheWritableGlobalData)->m_87 = true;
+	((Rva003B9CDFGlobalData *)TheWritableGlobalData)->m_hideLivingWorldRegions = true;
 	return 1;
 }
 
 int Rva003B9D03(char *args[], int)
 {
-	((Rva003B9CDFGlobalData *)TheWritableGlobalData)->m_86 = false;
+	((Rva003B9CDFGlobalData *)TheWritableGlobalData)->m_liveCampaignMode = false;
 	return 1;
 }
 
 int Rva003B9D13(char *args[], int)
 {
-	((Rva003B9CDFGlobalData *)TheWritableGlobalData)->m_88 = true;
+	((Rva003B9CDFGlobalData *)TheWritableGlobalData)->m_livingWorldTurbo = true;
 	return 1;
 }
 

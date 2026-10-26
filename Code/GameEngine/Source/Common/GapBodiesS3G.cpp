@@ -70,7 +70,7 @@ struct Rva00343EFAState
 struct Rva00343EFAAIData
 {
 	char m_pad[0x8C];
-	bool m_8C;												// +0x8C
+	bool m_aiCrushesInfantry;												// +0x8C
 };
 
 struct Rva00343EFAAIView
@@ -79,7 +79,7 @@ struct Rva00343EFAAIView
 	Rva00343EFAAIData *m_data;								// +0x18
 };
 
-bool rva00343EFA(Rva00343EFAState *state)
+bool wantToSquishTarget(Rva00343EFAState *state)
 {
 	Object *owner = state->m_machine->getOwner();
 	Object *goal = state->m_machine->getGoalObject();
@@ -88,7 +88,7 @@ bool rva00343EFA(Rva00343EFAState *state)
 			goal->m_274 == 0 &&
 			owner->m_ai &&
 			owner->m_ai->getWhichTurretForCurWeapon() != TURRET_INVALID &&
-			((Rva00343EFAAIView *)TheAI)->m_data->m_8C &&
+			((Rva00343EFAAIView *)TheAI)->m_data->m_aiCrushesInfantry &&
 			owner->getControllingPlayer() &&
 			((Rva00343EFAPlayerView *)owner->getControllingPlayer())->m_type == 1 &&
 			owner->rva0029493F(goal, 2) &&

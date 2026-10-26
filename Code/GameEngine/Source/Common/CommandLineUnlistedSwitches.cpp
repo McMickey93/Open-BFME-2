@@ -26,16 +26,16 @@ struct CommandLineSwitchPair
 struct CommandLineSwitchView
 {
     char pad0000[0x27 - 0x0];
-    bool m_bfme27;
+    bool m_dumpAssetUsage;
     char pad0028[0x2d - 0x28];
-    bool m_bfme2D;
+    bool m_skipMapUnroll;
     char pad002E[0x8c - 0x2e];
     StringBase<char> m_bfme8C;
     char pad0090[0x9bf - 0x90];
-    bool m_bfme9BF;
+    bool m_showTooltips;
     bool m_bfme9C0;
     char pad09C1[0xaec - 0x9c1];
-    StringBase<char> m_bfmeAEC;
+    StringBase<char> m_shellMapName;
     char pad0AF0[0xb04 - 0xaf0];
     int m_bfmeB04;
     CommandLineSwitchPair m_bfmeB08;
@@ -55,7 +55,7 @@ struct CommandLineSwitchView
     char pad1112[0x11c8 - 0x1112];
     bool m_bfme11C8;
     char pad11C9[0x11ca - 0x11c9];
-    bool m_bfme11CA;
+    bool m_planningModeEnabled;
     bool m_bfme11CB;
 };
 
@@ -64,21 +64,21 @@ struct CommandLineSwitchView
 // Native 3B9505..3B9516: sets +2D true.
 int Rva003B9505Parse(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches->m_bfme2D=true;
+        TheSwitches->m_skipMapUnroll=true;
     return 1;
 }
 
 // Native 3B9521..3B9535: sets +11CA false.
 int Rva003B9521Parse(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches->m_bfme11CA=false;
+        TheSwitches->m_planningModeEnabled=false;
     return 1;
 }
 
 // Native 3B9535..3B9549: sets +11CA true.
 int Rva003B9535Parse(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches->m_bfme11CA=true;
+        TheSwitches->m_planningModeEnabled=true;
     return 1;
 }
 
@@ -111,9 +111,9 @@ int Rva003B99ABParse(char *args[],int num) {
 }
 
 // Native 3B99BF..3B99D0: sets +27 true.
-int Rva003B99BFParse(char *args[],int num) {
+int parseDumpAssetUsage(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches->m_bfme27=true;
+        TheSwitches->m_dumpAssetUsage=true;
     return 1;
 }
 
@@ -134,7 +134,7 @@ int Rva003B9A29Parse(char *args[],int num) {
 // Native 3B9AA5..3B9AB9: sets +9BF false.
 int Rva003B9AA5Parse(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches->m_bfme9BF=false;
+        TheSwitches->m_showTooltips=false;
     return 1;
 }
 
@@ -152,9 +152,9 @@ int Rva003B9D5FParse(char *args[],int num) {
 }
 
 // Native 3B9F30..3B9F56: copies the argument into the +AEC string.
-int Rva003B9F30Parse(char *args[],int num) {
+int parseShellMap(char *args[],int num) {
     if(TheWritableGlobalData && num>1)
-        TheSwitches->m_bfmeAEC.set(args[1]);
+        TheSwitches->m_shellMapName.set(args[1]);
     return 2;
 }
 
@@ -219,17 +219,17 @@ int Rva003B9F8CParse(char *args[],int num) {
 struct CommandLineSwitchView2
 {
     char pad0000[0x2c - 0x0];
-    bool m_bfme2C;
+    bool m_windowed;
     char pad002D[0x9a4 - 0x2d];
-    bool m_bfme9A4;
+    bool m_disableCameraMovement;
     char pad09A5[0x9ac - 0x9a5];
     bool m_bfme9AC;
     char pad09AD[0x9af - 0x9ad];
-    bool m_bfme9AF;
+    bool m_useFX;
     char pad09B0[0x9c2 - 0x9b0];
-    bool m_bfme9C2;
+    bool m_particleEdit;
     char pad09C3[0x9c6 - 0x9c3];
-    bool m_bfme9C6;
+    bool m_winCursors;
     char pad09C7[0x9c8 - 0x9c7];
     bool m_bfme9C8;
     char pad09C9[0x9d0 - 0x9c9];
@@ -239,65 +239,65 @@ struct CommandLineSwitchView2
     char pad09D3[0x9d8 - 0x9d3];
     bool m_bfme9D8;
     char pad09D9[0x9e4 - 0x9d9];
-    bool m_bfme9E4;
+    bool m_forceBenchmark;
     char pad09E5[0x9e8 - 0x9e5];
-    int m_bfme9E8;
+    int m_fixedSeed;
     char pad09EC[0xa44 - 0x9ec];
-    int m_bfmeA44;
+    int m_netMinPlayers;
     char pad0A48[0xab5 - 0xa48];
-    bool m_bfmeAB5;
+    bool m_buildMapCache;
     char pad0AB6[0xb01 - 0xab6];
     bool m_bfmeB01;
     char pad0B02[0xb6e - 0xb02];
     bool m_bfmeB6E;
     char pad0B6F[0xc30 - 0xb6f];
-    int m_bfmeC30;
+    int m_playStats;
 };
 
 #define TheSwitches2 ((CommandLineSwitchView2 *)TheWritableGlobalData)
 
 // Native 3B97C0..3B97E9: sets +9C2, +9C6 and +2C true.
-int Rva003B97C0Parse(char *args[],int num) {
+int parseParticleEdit(char *args[],int num) {
     if(TheWritableGlobalData) {
-        TheSwitches2->m_bfme9C2=true;
-        TheSwitches2->m_bfme9C6=true;
-        TheSwitches2->m_bfme2C=true;
+        TheSwitches2->m_particleEdit=true;
+        TheSwitches2->m_winCursors=true;
+        TheSwitches2->m_windowed=true;
     }
     return 1;
 }
 
 // Native 3B97E9: sets +AB5 true.
-int Rva003B97E9Parse(char *args[],int num) {
+int parseBuildMapCache(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches2->m_bfmeAB5=true;
+        TheSwitches2->m_buildMapCache=true;
     return 1;
 }
 
 // Native 3B97FD: sets +9AF false.
-int Rva003B97FDParse(char *args[],int num) {
+int parseNoFX(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches2->m_bfme9AF=false;
+        TheSwitches2->m_useFX=false;
     return 1;
 }
 
 // Native 3B9811: sets +9E4 true.
-int Rva003B9811Parse(char *args[],int num) {
+int parseForceBenchmark(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches2->m_bfme9E4=true;
+        TheSwitches2->m_forceBenchmark=true;
     return 1;
 }
 
 // Native 3B9825: sets +9A4 true.
-int Rva003B9825Parse(char *args[],int num) {
+int parseNoMoveCamera(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches2->m_bfme9A4=true;
+        TheSwitches2->m_disableCameraMovement=true;
     return 1;
 }
 
 // Native 3B9839: sets +9C6 true.
-int Rva003B9839Parse(char *args[],int num) {
+int parseWinCursors(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches2->m_bfme9C6=true;
+        TheSwitches2->m_winCursors=true;
     return 1;
 }
 
@@ -337,9 +337,9 @@ int Rva003B989DParse(char *args[],int num) {
 }
 
 // Native 3B98B1: atoi of the argument into +9E8.
-int Rva003B98B1Parse(char *args[],int num) {
+int parseSeed(char *args[],int num) {
     if(TheWritableGlobalData && num>1)
-        TheSwitches2->m_bfme9E8=atoi(args[1]);
+        TheSwitches2->m_fixedSeed=atoi(args[1]);
     return 2;
 }
 
@@ -351,9 +351,9 @@ int Rva003B98DFParse(char *args[],int num) {
 }
 
 // Native 3B98F3: atoi of the argument into +A44.
-int Rva003B98F3Parse(char *args[],int num) {
+int parseNetMinPlayers(char *args[],int num) {
     if(TheWritableGlobalData && num>1)
-        TheSwitches2->m_bfmeA44=atoi(args[1]);
+        TheSwitches2->m_netMinPlayers=atoi(args[1]);
     return 2;
 }
 
@@ -365,9 +365,9 @@ int Rva003B9921Parse(char *args[],int num) {
 }
 
 // Native 3B9935: atoi of the argument into +C30.
-int Rva003B9935Parse(char *args[],int num) {
+int parsePlayStats(char *args[],int num) {
     if(TheWritableGlobalData && num>1)
-        TheSwitches2->m_bfmeC30=atoi(args[1]);
+        TheSwitches2->m_playStats=atoi(args[1]);
     return 2;
 }
 

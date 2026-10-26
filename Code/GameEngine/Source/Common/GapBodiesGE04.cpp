@@ -182,15 +182,15 @@ extern unsigned int BFME2CommandFlags;
 struct Rva003B956EGlobalData
 {
 	char m_pad[0x99D];
-	bool m_99D;
+	bool m_musicOn;
 	char m_pad99E[0xDD0 - 0x99E];
-	bool m_DD0;
+	bool m_useHelpTextSystem;
 };
 
 int Rva003B956E(char *args[], int)
 {
 	if (TheWritableGlobalData)
-		((Rva003B956EGlobalData *)TheWritableGlobalData)->m_DD0 = true;
+		((Rva003B956EGlobalData *)TheWritableGlobalData)->m_useHelpTextSystem = true;
 	return 1;
 }
 
@@ -198,7 +198,7 @@ int Rva003B9582(char *args[], int)
 {
 	BFME2CommandFlags |= 4;
 	if (TheWritableGlobalData)
-		((Rva003B956EGlobalData *)TheWritableGlobalData)->m_99D = false;
+		((Rva003B956EGlobalData *)TheWritableGlobalData)->m_musicOn = false;
 	return 1;
 }
 

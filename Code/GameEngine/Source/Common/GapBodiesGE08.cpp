@@ -131,7 +131,7 @@ extern GlobalData *TheWritableGlobalData;
 struct Rva003B960EGlobalData
 {
 	char m_pad[0x2C];
-	bool m_2C;
+	bool m_windowed;
 	char m_pad2D[0x9AD - 0x2D];
 	bool m_9AD;
 	bool m_9AE;
@@ -154,7 +154,7 @@ int Rva003B9622(char *args[], int)
 int Rva003B9636(char *args[], int)
 {
 	if (TheWritableGlobalData)
-		((Rva003B960EGlobalData *)TheWritableGlobalData)->m_2C = false;
+		((Rva003B960EGlobalData *)TheWritableGlobalData)->m_windowed = false;
 	return 1;
 }
 

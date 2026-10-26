@@ -141,7 +141,7 @@ public:
 // The conditions the tables reference (retail .rdata entries).
 bool rva00343DD8(void *thisState, void *userData);	// outOfWeaponRangeObject
 class Rva00343F8A; struct Rva00343EFAState;
-bool rva00343EFA(Rva00343EFAState *thisState);	// wantToSquishTarget
+bool wantToSquishTarget(Rva00343EFAState *thisState);	// wantToSquishTarget
 bool rva0033FDEB(Rva00343F8A *thisState, void *userData);	// cannotPossiblyAttackObject
 bool rva0033FD98(Rva00343F8A *thisState, void *userData);	// outOfWeaponRangePosition
 int rva00343EE5(void *thisState, void *userData);	// inWeaponRangeObject
@@ -160,7 +160,7 @@ AttackStateMachine::AttackStateMachine(Object *obj, Rva00346D17Attack *att, Unsi
 	static const StateConditionInfo objectConditionsNormal[] =
 	{
 		{ (void *)rva00343DD8, CHASE_TARGET, NULL },
-		{ (void *)rva00343EFA, CHASE_TARGET, NULL },
+		{ (void *)wantToSquishTarget, CHASE_TARGET, NULL },
 		{ (void *)rva0033FDEB, EXIT_MACHINE_WITH_FAILURE, (void *)2 },
 		{ NULL, 0, NULL }	// keep last
 	};
@@ -168,7 +168,7 @@ AttackStateMachine::AttackStateMachine(Object *obj, Rva00346D17Attack *att, Unsi
 	{
 		{ (void *)rva00343DD8, CHASE_TARGET, NULL },
 		{ (void *)rva0033FDEB, EXIT_MACHINE_WITH_FAILURE, (void *)3 },
-		{ (void *)rva00343EFA, CHASE_TARGET, NULL },
+		{ (void *)wantToSquishTarget, CHASE_TARGET, NULL },
 		{ NULL, 0, NULL }	// keep last
 	};
 	const StateConditionInfo *objectConditions = forceAttacking ? objectConditionsForced : objectConditionsNormal;
