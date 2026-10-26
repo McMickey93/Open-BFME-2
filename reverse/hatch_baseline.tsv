@@ -17880,8 +17880,6 @@ pragma_optimize	Code/GameEngine/Source/Common/rva00104A75Rva00104A75Farm.cpp	"",
 pragma_optimize	Code/GameEngine/Source/Common/rva00104A75Rva00104A75Farm.cpp	"w",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/DrawableFields.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/DrawableFields.cpp	"gsy",on	1
-pragma_optimize	Code/GameEngine/Source/GameClient/Drawable_rva00274176.cpp	"",on	3
-pragma_optimize	Code/GameEngine/Source/GameClient/Drawable_rva00274176.cpp	"y",on	3
 pragma_optimize	Code/GameEngine/Source/GameClient/FXListMapNodeEmit.cpp	"",on	2
 pragma_optimize	Code/GameEngine/Source/GameClient/FXListMapNodeEmit.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/FXListMapNodeEmit.cpp	"s",on	1

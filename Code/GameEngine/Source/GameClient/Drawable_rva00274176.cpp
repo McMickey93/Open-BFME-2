@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHsc /Oy-
+// cl: /DNDEBUG /MD /EHsc
 //
 // ?rva00274176@Drawable@@QAEX_N@Z, retail 0x00274176, 104 bytes.
 // Drawable apply-pending over condition state at this+0x258 via rowed helper
@@ -263,7 +263,6 @@ void Drawable::rva00274176(bool immediate)
 	m_isModelDirty = false;
 }
 
-#pragma optimize("y", on)
 void Drawable::rva00274445(float f)
 {
 	void **arr = *(void ***)((char *)this + 0x14c);
@@ -276,9 +275,7 @@ void Drawable::rva00274445(float f)
 	memset((char *)this + 0x2f0, 0, 0x4c);
 	memset((char *)this + 0x2a4, 0, 0x4c);
 }
-#pragma optimize("", on)
 
-#pragma optimize("y", on)
 int Drawable::rva0027434D(int wslot)
 {
 	if (m_isModelDirty) {
@@ -303,7 +300,6 @@ int Drawable::rva0027434D(int wslot)
 	}
 	return 0;
 }
-#pragma optimize("", on)
 
 // ?setIndicatorColor@Drawable@@QAEXH@Z, retail 0x002741DE (98B): BFME's
 // Drawable::setIndicatorColor. It stores the color at +0x454 and lets the
@@ -344,7 +340,6 @@ void Drawable::changedTeam()
 // draw modules' onDrawableBoundToObject and the drawable's slot 13). BFME2
 // keeps the override flag and color at GameLogic +0x190/+0x194 and the time
 // of day at GlobalData +0x134. Callers 0x00239F7E and 0x0023CD52.
-#pragma optimize("y", on)
 void Drawable::friend_bindToObject(Object *obj)
 {
 	m_object = obj;
@@ -368,7 +363,6 @@ void Drawable::friend_bindToObject(Object *obj)
 		vslot13();
 	}
 }
-#pragma optimize("", on)
 
 // ?reactToTransformChange@Drawable@@MAEXPBVMatrix3D@@PBUCoord3D@@M@Z, retail
 // 0x002742E5 (104B), slot 9 of the Drawable vtable at 0x007FB0A4 (entry
