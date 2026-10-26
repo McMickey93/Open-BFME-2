@@ -97,19 +97,12 @@ namespace _STL { template <> allocator<void *>::~allocator(); }
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 enum NameKeyType; class DamageFX;
 namespace _STL { template <> hash_map<NameKeyType,DamageFX,rts::hash<NameKeyType>,rts::equal_to<NameKeyType>,allocator<pair<NameKeyType const ,DamageFX> > >::hash_map(); }
+// Suppress this TU's non-retail copy of the DamageFX hashtable destructor: the kept copy is the
+// retail /GX body 0x0016DEE0 (Rva0016DEE0Cluster.cpp). Plain declaration-only form (no __imp_).
+namespace _STL { template <> hashtable<pair<NameKeyType const ,DamageFX>,NameKeyType,rts::hash<NameKeyType>,_Select1st<pair<NameKeyType const ,DamageFX> >,rts::equal_to<NameKeyType>,allocator<pair<NameKeyType const ,DamageFX> > >::~hashtable(); }
 // Suppress this TU's non-retail copy of ??0?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAE@ABV?$allocator@PAX@1@@Z:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 namespace _STL { template <> vector<void *,allocator<void *> >::vector(allocator<void *> const &); }
-
-// LINK-COMDAT: static FXList::doFXObj is kept as the /O1 copy from ToppleUpdate.cpp;
-// this TU is default-flag, so the ZH header inline copy differs. Declare only (no
-// body) so calls reach the kept copy and this object emits no differing copy.
-class Object;
-class FXList
-{
-public:
-	static void doFXObj(const FXList *fx, const Object *primary, const Object *secondary);
-};
 
 // LINK-COMDAT: rts::equal_to<NameKeyType> is kept as the /O1 copy from FXList.cpp;
 // this TU is default-flag for its hashtable clear row, so its own copy differs.
@@ -161,167 +154,16 @@ void DamageFX::clear()
 }
 
 //-------------------------------------------------------------------------------------------------
-// ?DamageFX::getDamageFXThrottleTime present-unmatched
-UnsignedInt DamageFX::getDamageFXThrottleTime(DamageType t, const Object* source) const 
-{ 
-	return m_dfx[t][source ? source->getVeterancyLevel() : LEVEL_REGULAR].m_damageFXThrottleTime; 
-}
-
-//-------------------------------------------------------------------------------------------------
-// ?DamageFX::doDamageFX present-unmatched
-void DamageFX::doDamageFX(DamageType t, Real damageAmount, const Object* source, const Object* victim) const
-{ 
-	ConstFXListPtr fx = getDamageFXList(t, damageAmount, source);
-	// since the victim is receiving the damage, it's the "primary" object.
-	// the source is the "secondary" object -- unused by most fx, but could be
-	// useful in some cases.
-	FXList::doFXObj(fx, victim, source);
-}
-
-//-------------------------------------------------------------------------------------------------
-// ?DamageFX::getDamageFXList present-unmatched
-ConstFXListPtr DamageFX::getDamageFXList(DamageType t, Real damageAmount, const Object* source) const
-{ 
-	/*
-		if damage is zero, never do damage fx. this is by design, since "zero" damage can happen
-		with some special weapons, like the battleship, which is a "faux" weapon that never does damage.
-		if you really need to change this for some reason, consider carefully... (srj)
-	*/
-	if (damageAmount == 0.0f)
-		return NULL;
-
-	const DFX& dfx = m_dfx[t][source ? source->getVeterancyLevel() : LEVEL_REGULAR];
-	ConstFXListPtr fx = 
-		damageAmount >= dfx.m_amountForMajorFX ? 
-		dfx.m_majorDamageFXList : 
-		dfx.m_minorDamageFXList;
-
-	return fx;
-}
+// DamageFX::getDamageFXThrottleTime, getDamageFXList and doDamageFX: the Zero Hour bodies are
+// not retail's. BFME 2's versions take no veterancy level and are rowed under placeholder names:
+// 0x003605D5 (DamageFXRva003605AF.cpp), 0x003605E3 and 0x003608DF (DamageFXParseCommon.cpp).
 
 //-------------------------------------------------------------------------------------------------
 // DamageFX::getFieldParse is rowed in its home unit; this copy was a duplicate definition.
 
-//-------------------------------------------------------------------------------------------Static
-static void parseCommonStuff(
-	INI* ini, 
-	ConstCharPtrArray names, 
-	VeterancyLevel& vetFirst, 
-	VeterancyLevel& vetLast, 
-	DamageType& damageFirst, 
-	DamageType& damageLast
-)
-{
-	if (names)
-	{
-		vetFirst = (VeterancyLevel)INI::scanIndexList(ini->getNextToken(), names);
-		vetLast = vetFirst;
-	}
-	else
-	{
-		vetFirst = LEVEL_FIRST;
-		vetLast = LEVEL_LAST;
-	}
-
-	const char* damageName = ini->getNextToken();
-	if (stricmp(damageName, "Default") == 0)
-	{
-		damageFirst = (DamageType)0;
-		damageLast = (DamageType)(DAMAGE_NUM_TYPES - 1);
-	}
-	else
-	{
-		damageFirst = (DamageType)DamageTypeFlags::getSingleBitFromName(damageName);
-		damageLast = damageFirst;
-	}
-}
-
-//-------------------------------------------------------------------------------------------Static
-/*static*/ void DamageFX::parseAmount( INI* ini, void* instance, void* /*store*/, const void* userData )
-{
-	DamageFX* self = (DamageFX*)instance;
-	ConstCharPtrArray names = (ConstCharPtrArray)userData;
-
-	VeterancyLevel vetFirst, vetLast;
-	DamageType damageFirst, damageLast;
-	parseCommonStuff(ini, names, vetFirst, vetLast, damageFirst, damageLast);
-
-	Real amt = INI::scanReal(ini->getNextToken());
-
-	for (Int dt = damageFirst; dt <= damageLast; ++dt)
-	{
-		for (Int v = vetFirst; v <= vetLast; ++v)
-		{
-			self->m_dfx[dt][v].m_amountForMajorFX = amt;
-		}
-	}
-}
-
-//-------------------------------------------------------------------------------------------Static
-/*static*/ void DamageFX::parseMajorFXList( INI* ini, void* instance, void* /*store*/, const void* userData )
-{
-	DamageFX* self = (DamageFX*)instance;
-	ConstCharPtrArray names = (ConstCharPtrArray)userData;
-
-	VeterancyLevel vetFirst, vetLast;
-	DamageType damageFirst, damageLast;
-	parseCommonStuff(ini, names, vetFirst, vetLast, damageFirst, damageLast);
-
-	ConstFXListPtr fx;
-	INI::parseFXList(ini, NULL, &fx, NULL);
-
-	for (Int dt = damageFirst; dt <= damageLast; ++dt)
-	{
-		for (Int v = vetFirst; v <= vetLast; ++v)
-		{
-			self->m_dfx[dt][v].m_majorDamageFXList = fx;
-		}
-	}
-}
-
-//-------------------------------------------------------------------------------------------Static
-/*static*/ void DamageFX::parseMinorFXList( INI* ini, void* instance, void* /*store*/, const void* userData )
-{
-	DamageFX* self = (DamageFX*)instance;
-	ConstCharPtrArray names = (ConstCharPtrArray)userData;
-
-	VeterancyLevel vetFirst, vetLast;
-	DamageType damageFirst, damageLast;
-	parseCommonStuff(ini, names, vetFirst, vetLast, damageFirst, damageLast);
-
-	ConstFXListPtr fx;
-	INI::parseFXList(ini, NULL, &fx, NULL);
-
-	for (Int dt = damageFirst; dt <= damageLast; ++dt)
-	{
-		for (Int v = vetFirst; v <= vetLast; ++v)
-		{
-			self->m_dfx[dt][v].m_minorDamageFXList = fx;
-		}
-	}
-}
-
-//-------------------------------------------------------------------------------------------Static
-/*static*/ void DamageFX::parseTime( INI* ini, void* instance, void* /*store*/, const void* userData )
-{
-	DamageFX* self = (DamageFX*)instance;
-	ConstCharPtrArray names = (ConstCharPtrArray)userData;
-
-	VeterancyLevel vetFirst, vetLast;
-	DamageType damageFirst, damageLast;
-	parseCommonStuff(ini, names, vetFirst, vetLast, damageFirst, damageLast);
-
-	UnsignedInt t;
-	INI::parseDurationUnsignedInt(ini, NULL, &t, NULL);
-
-	for (Int dt = damageFirst; dt <= damageLast; ++dt)
-	{
-		for (Int v = vetFirst; v <= vetLast; ++v)
-		{
-			self->m_dfx[dt][v].m_damageFXThrottleTime = t;
-		}
-	}
-}
+//-------------------------------------------------------------------------------------------------
+// parseCommonStuff and DamageFX::parseAmount/parseMajorFXList/parseMinorFXList/parseTime are rowed
+// in DamageFXParseCommon.cpp; the Zero Hour copies here were duplicate definitions.
 
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
@@ -341,20 +183,9 @@ DamageFXStore::~DamageFXStore()
 }
 
 //-------------------------------------------------------------------------------------------------
-// ?DamageFXStore::findDamageFX present-unmatched
-const DamageFX *DamageFXStore::findDamageFX(AsciiString name) const
-{
-	NameKeyType namekey = TheNameKeyGenerator->nameToKey(name);
-  DamageFXMap::const_iterator it = m_dfxmap.find(namekey);
-  if (it == m_dfxmap.end()) 
-	{
-		return NULL;
-	}
-	else
-	{
-		return &(*it).second;
-	}
-}
+// DamageFXStore::findDamageFX: retail's symbol (0x00360966) is the ArmorStore::findArmorTemplate
+// body (ArmorStoreCtor.cpp), which its caller Rva0033962FFinish.cpp already calls; the Zero Hour
+// body here is not retail's.
 
 //-------------------------------------------------------------------------------------------------
 // ?DamageFXStore::init present-unmatched
