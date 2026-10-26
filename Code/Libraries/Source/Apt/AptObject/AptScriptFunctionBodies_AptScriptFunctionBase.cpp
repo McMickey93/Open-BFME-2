@@ -144,7 +144,6 @@ AptScriptFunctionBase::AptScriptFunctionBase(AptVirtualFunctionTable_Indices eTy
 #pragma comment(linker, "/alternatename:?isCIH@AptValue@@QBE_N_N@Z=?isCIH@BfmeAptValue006DCD20@@QBE_N_N@Z")
 #pragma comment(linker, "/alternatename:?GetRootAnimation@AptCIH@@QAEPAV1@XZ=?rva006E0CB0@AptCIH@@QBEPBV1@XZ")
 #pragma comment(linker, "/alternatename:??1AptObject@@MAE@XZ=??1Rva006D6470Owner@@UAE@XZ")
-#pragma comment(linker, "/alternatename:??3AptPrototype@@SAXPAXI@Z=?Rva006F12F0Free@@YAXPAXH@Z")
 
 // AptScriptFunctionBase virtuals, by retail vftable slot (0x00CEE938, 0x00CEE9A0, 0x00CEEAE8):
 // slot 10 PreDestroy is the empty body, 11 DestroyGCPointers 0x00709E00, 13 RegisterReferences
