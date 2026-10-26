@@ -56,6 +56,12 @@ typedef _STL::map<unsigned int, WeaponTemplateSetHead, _STL::less<unsigned int>,
 	_STL::allocator<_STL::pair<const unsigned int, WeaponTemplateSetHead> > >
 	WeaponTemplateSetHeadMap;
 
+// map::insert(hint, v) is retail's 0x00464431 (StlSweepW4Rva00464431.cpp); a
+// declaration-only specialization stops this TU emitting it and its tree chain.
+// bfme link decl-only begin
+namespace _STL { template <> WeaponTemplateSetHeadMap::iterator WeaponTemplateSetHeadMap::insert(WeaponTemplateSetHeadMap::iterator, const WeaponTemplateSetHeadMap::value_type &); }
+// bfme link decl-only end
+
 typedef _STL::map<unsigned int, void *, _STL::less<unsigned int>,
 	_STL::allocator<_STL::pair<const unsigned int, void *> > >
 	UnsignedPointerMap;

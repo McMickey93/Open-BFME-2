@@ -1,6 +1,6 @@
 // cl: /EHs /MD /D_STLP_USE_STATIC_LIB /D_CRTIMP=
 // stlport
-// ?rva004637B7@Rva00463782@@QAE?AURva00463782Iter@@PAU_Rb_tree_node_base@_STL@@0PBVRva0046267A@@H@Z 0x004637B7 136B
+// _Rb_tree<unsigned, pair<const unsigned, WeaponTemplateSetHead> >::_M_insert 0x004637B7 136B
 // _Rb_tree::_M_insert for the Rva0046267A (0x50B) red-black tree: create the
 // node through the member create_node 0x4634BA, link it left/right of pos,
 // fix up the header root/leftmost/rightmost, then rebalance with rowed 0x25490
@@ -11,27 +11,33 @@
 // 0x4638A1. Native create ignores ECX and pops its value argument (RET 4).
 // A four-byte member-call view retains the native receiver reload while naming
 // the existing __stdcall provider, without introducing another function name.
+// Its callers 0x0046383F and 0x00463E4D are that tree's insert_unique pair
+// (map<unsigned, WeaponTemplateSetHead>, 0x00464431); the create call stays on
+// the rowed Rva004634BACreate provider.
 #include <map>
 
-class Rva0046267A;
-
-struct Rva004634BANode;
-struct Rva0046383FOut;
-struct Rva00463782Iter
+class WeaponTemplateSetHead
 {
-	_STL::_Rb_tree_node_base *_M_node;
-	Rva00463782Iter(_STL::_Rb_tree_node_base *node) : _M_node(node) {}
+public:
+	__declspec(nothrow) WeaponTemplateSetHead(const WeaponTemplateSetHead &other);
+private:
+	unsigned int m_bits[19];
 };
+
+class Rva0046267A;
+struct Rva004634BANode;
 
 class Rva00463782
 {
+public:
 	_STL::_Rb_tree_node_base *m_header;
 	unsigned int m_count;
-public:
-	Rva00463782Iter rva004637B7(_STL::_Rb_tree_node_base *x, _STL::_Rb_tree_node_base *pos, const class Rva0046267A *val, int flag);
-	_STL::_Rb_tree_node_base *rva0046383F(struct Rva0046383FOut *out, const class Rva0046267A *val);
-	Rva00463782Iter rva00463E4D(Rva00463782Iter position, const class Rva0046267A &value);
 };
+
+typedef _STL::pair<const unsigned int, WeaponTemplateSetHead> WeaponTemplateSetHeadPair;
+typedef _STL::_Rb_tree<unsigned int, WeaponTemplateSetHeadPair,
+	_STL::_Select1st<WeaponTemplateSetHeadPair>, _STL::less<unsigned int>,
+	_STL::allocator<WeaponTemplateSetHeadPair> > WeaponTemplateSetHeadTree;
 
 Rva004634BANode *__stdcall Rva004634BACreate(const Rva0046267A &);
 union Rva004637B7CreateCall
@@ -41,34 +47,42 @@ union Rva004637B7CreateCall
 };
 typedef char Rva004637B7CreateCallWidth[sizeof(Rva004637B7CreateCall)==4 ? 1 : -1];
 
-Rva00463782Iter Rva00463782::rva004637B7(_STL::_Rb_tree_node_base *x, _STL::_Rb_tree_node_base *pos, const class Rva0046267A *val, int flag)
+namespace _STL {
+// ?_M_insert@?$_Rb_tree@IU?$pair@$$CBIVWeaponTemplateSetHead@@@_STL@@U?$_Select1st@U?$pair@$$CBIVWeaponTemplateSetHead@@@_STL@@@2@U?$less@I@2@V?$allocator@U?$pair@$$CBIVWeaponTemplateSetHead@@@_STL@@@2@@_STL@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBIVWeaponTemplateSetHead@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBIVWeaponTemplateSetHead@@@_STL@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBIVWeaponTemplateSetHead@@@2@0@Z
+template <>
+WeaponTemplateSetHeadTree::iterator WeaponTemplateSetHeadTree::_M_insert(
+	_Rb_tree_node_base *x, _Rb_tree_node_base *pos,
+	const WeaponTemplateSetHeadPair &v, _Rb_tree_node_base *w)
 {
+	Rva00463782 *self = (Rva00463782 *)this;
+	const Rva0046267A *val = (const Rva0046267A *)&v;
 	Rva004637B7CreateCall create;
 	create.target = Rva004634BACreate;
 	_STL::_Rb_tree_node_base *node;
-	if (pos == m_header || (flag == 0 && (x != 0 || *(const unsigned *)val < *(const unsigned *)((const char *)pos + 0x10))))
+	if (pos == self->m_header || (w == 0 && (x != 0 || *(const unsigned *)val < *(const unsigned *)((const char *)pos + 0x10))))
 	{
-		node = (_STL::_Rb_tree_node_base *)(this->*create.member)(*val);
+		node = (_STL::_Rb_tree_node_base *)(self->*create.member)(*val);
 		pos->_M_left = node;
-		if (pos == m_header)
+		if (pos == self->m_header)
 		{
-			m_header->_M_parent = node;
-			m_header->_M_right = node;
+			self->m_header->_M_parent = node;
+			self->m_header->_M_right = node;
 		}
-		else if (pos == m_header->_M_left)
-			m_header->_M_left = node;
+		else if (pos == self->m_header->_M_left)
+			self->m_header->_M_left = node;
 	}
 	else
 	{
-		node = (_STL::_Rb_tree_node_base *)(this->*create.member)(*val);
+		node = (_STL::_Rb_tree_node_base *)(self->*create.member)(*val);
 		pos->_M_right = node;
-		if (pos == m_header->_M_right)
-			m_header->_M_right = node;
+		if (pos == self->m_header->_M_right)
+			self->m_header->_M_right = node;
 	}
 	node->_M_left = 0;
 	node->_M_right = 0;
 	node->_M_parent = pos;
-	_STL::_Rb_global<bool>::_Rebalance(node, m_header->_M_parent);
-	++m_count;
-	return Rva00463782Iter(node);
+	_STL::_Rb_global<bool>::_Rebalance(node, self->m_header->_M_parent);
+	++self->m_count;
+	return iterator((_Link_type)node);
+}
 }
