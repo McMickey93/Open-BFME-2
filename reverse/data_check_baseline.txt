@@ -7,8 +7,6 @@ Code/GameEngine/Source/Common/BfmeConv1335.cpp	wrong-name	?g_bfmeIidUKA@@3UBfmeG
 Code/GameEngine/Source/Common/BfmeConv1424.cpp	wrong-name	?g_bfmeRegVLY@@3VBfmeRegVLY@@A	0x009DF570
 Code/GameEngine/Source/Common/BfmeConv1424.cpp	wrong-name	?g_bfmeRegVLZ@@3VBfmeRegVLZ@@A	0x009DF574
 Code/GameEngine/Source/Common/BfmeConv803O1.cpp	wrong-name	?g_bfmeObjEBL@@3VBfmeObjEBL@@A	0x00A01E68
-Code/GameEngine/Source/Common/BfmeGrokOdIf0.cpp	duplicate-def	?g_bfme0130b254@@3UGen_0082ad50@@A	0x009DF574
-Code/GameEngine/Source/Common/BfmeGrokOdIf0.cpp	wrong-name	?g_bfme0130b254@@3UGen_0082ad50@@A	0x009DF574
 Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	wrong-name	?g_bfmeThingUCHead@@3PAVBfmeNodeUC@@A	0x00A0ABB0
 Code/GameEngine/Source/Common/BfmeTwoHundredSeventyThree.cpp	wrong-name	?bfmeFreeList@@3PAPAUBfmeFreeListNode@@A	0x009DF530
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	duplicate-def	?g_Va00DF6FD0@@3HA	0x009F6FD0
