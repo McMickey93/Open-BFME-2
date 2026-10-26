@@ -2,7 +2,7 @@
 //
 // BFME2 CritterDesync logging gate, VA 0x00E03744 (RVA 0x00A03744, .data).
 // Twenty-six retail sites compare this zero-initialized byte and, when set,
-// call fprintf(g_00DFEFF0, "CritterDesync: ...") -- the AI animal-state
+// call fprintf(theLogicRandomLogFile, "CritterDesync: ...") -- the AI animal-state
 // updates at 0x0047EE26..0x0047F8E3 ("animal %s is doing periodic search",
 // "dice roll failed", "finished update", ...) and CastleBehavior::
 // onTriggerEntered at 0x00396C43. BFME1 owns the same-role flag at VA
