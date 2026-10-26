@@ -106,12 +106,12 @@ bool pickAndPlayUnitVoiceResponse(const DrawableList *list, GameMessage::Type me
 	PickAndPlayInfo *info);
 
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 static __forceinline void critterDesyncLog(const char *text)
 {
 	if (g_00E03745)
 	{
-		FILE *log = (FILE *)g_00DFEFF0;
+		FILE *log = (FILE *)theLogicRandomLogFile;
 		if (log != 0)
 			fprintf(log, text);
 	}

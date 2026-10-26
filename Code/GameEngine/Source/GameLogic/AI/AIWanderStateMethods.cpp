@@ -62,7 +62,7 @@ struct FprintfTarget
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 typedef float Real;
 typedef int Int;
 enum StateExitType
@@ -358,7 +358,7 @@ StateReturnType AIWanderState::update()
 		computeGoal(false);
 		if (g_00E03745)
 		{
-			FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+			FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 			if (log)
 				fprintf(log, "CritterDesync: ComputePath39");
 		}
@@ -443,7 +443,7 @@ StateReturnType AIPanicState::update()
 		computeGoal(false);
 		if (g_00E03745)
 		{
-			FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+			FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 			if (log)
 				fprintf(log, "CritterDesync: ComputePath40");
 		}
