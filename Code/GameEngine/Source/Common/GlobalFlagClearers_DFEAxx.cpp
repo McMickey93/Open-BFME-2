@@ -25,7 +25,6 @@ extern unsigned int g_Va00DFECE0;
 extern unsigned int g_Va00DFECE8;
 extern unsigned int g_Va00DFECF0;
 extern unsigned int g_Va00DFECF8;
-extern unsigned int g_Va00DFED00;
 extern unsigned int g_Va00DFED40;
 
 unsigned int Rva00772D90ClearFlag(void)
@@ -63,9 +62,6 @@ unsigned int Rva007742EAClearFlag(void);
 
 // Rva00774313ClearFlag: defined in GlobalFlagClearers_DFECxx.cpp (its row's unit).
 unsigned int Rva00774313ClearFlag(void);
-
-// Rva0077433CClearFlag: defined in GlobalFlagClearers_DFEDxx.cpp (its row's unit).
-unsigned int Rva0077433CClearFlag(void);
 
 // Rva0077444AClearFlag: defined in GlobalFlagClearers_DFEDxx.cpp (its row's unit).
 unsigned int Rva0077444AClearFlag(void);
