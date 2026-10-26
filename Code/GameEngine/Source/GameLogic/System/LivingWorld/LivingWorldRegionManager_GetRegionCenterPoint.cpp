@@ -8,7 +8,7 @@
 // reproduces native, plain out[0]/out[1] stores schedule the load after.
 struct Rva0020E47CVal {float x,y; Rva0020E47CVal(const Rva0020E47CVal&a):x(a.x),y(a.y){} };
 class Rva0020E47C {public:Rva0020E47CVal rva0020E47C();char pad[0x54];char*name;char pad58[0x28];Rva0020E47CVal value;char pad88;bool custom;};
-struct Region3D {Region3D(const Region3D&);float x_min,y_min,z_min,x_max,y_max,z_max;};
+#include "../../../../../Libraries/Include/Lib/Region3D.h"
 class PositionQueryObject {public:virtual void destroy();
  virtual void slot1();
  virtual void slot2();
@@ -129,7 +129,7 @@ bool LivingWorldRegionManager::GetRegionCenterPoint(Rva0020E89C*region,Coord2D*o
  PositionQueryObject*object=factory->create(name,0);
  if(!object)return false;
  Region3D bounds(*object->bounds());
- float *o=(float*)out+1; o[-1]=bounds.x_min; *o=bounds.y_min;
+ float *o=(float*)out+1; o[-1]=bounds.lo.x; *o=bounds.lo.y;
  if(--object->references==0)object->destroy();
  return true;
 }
