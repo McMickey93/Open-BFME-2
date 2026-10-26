@@ -33,7 +33,7 @@ enum
 	MAX_SLOTS = 8
 };
 
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
+#include <stdlib.h>
 
 struct InitAddrs
 {

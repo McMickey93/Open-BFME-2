@@ -48,7 +48,7 @@ public:
 	char m_flag;
 };
 
-extern "C" char *strncpy(char *dest, const char *src, unsigned int n);
+#include <string.h>
 char *Rva007F89F0(void);
 Bfme5Obj70 *bfme5MakeObj70(int arg);
 
