@@ -2,7 +2,7 @@
 // ??1Rva004D6208@@MAE@XZ retail 0x004D6208 72B.
 // Dtor: vptr 0x860484 then array delete at +0x20 with null assign then Ascii releaseBuffer at +0x1c then vptr 0x860130.
 // Evidence: vtable 0x860484 plus caller 0x004D6ABC plus neighbour setters.
-void __cdecl operator delete[](void *p) throw();
+#include <new>
 template <typename T> class StringBase
 {
 public:

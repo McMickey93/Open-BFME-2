@@ -44,7 +44,7 @@ private:
 	LANGameInfo *m_next;
 };
 
-void __cdecl operator delete(void *memory);
+#include <new>
 
 #include "unicode_string.h"
 

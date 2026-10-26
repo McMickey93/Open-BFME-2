@@ -1,7 +1,7 @@
 // cl: /O1 /DNDEBUG /MD /EHsc
 // ??1NetHeroCommandMsg@@UAE@XZ @0x004D5902 35B: dtor freeing array member +0x24 then restoring base vtable.
 // Target evidence: mov eax [esi+0x24] test je; vtable 0x00860264 then delete[] 0x0002FD80 and [esi+0x24]=0 then vtable 0x00860130; caller 0x004D5B17 for its deleting dtor; donor ctor NetCommandMsgCtor.cpp.
-void __cdecl operator delete[](void *) throw();
+#include <new>
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef int Int;
