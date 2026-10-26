@@ -156,6 +156,27 @@ class BraceInitialisedDataTests(unittest.TestCase):
         self.assertIn("TheDrawableIconNames[] = {", out)
 
 
+class StorageSpecifiedAggregateTests(unittest.TestCase):
+    def test_a_static_enum_ends_at_its_semicolon(self):
+        # BuddyThread.cpp: `static enum CallbackType { ... };` lost its `;` (C2628 in the composed TU)
+        text = "static enum CallbackType\n{\n\tCALLBACK_CONNECT,\n\tCALLBACK_MAX\n};\nvoid f() { }\n"
+        items = T.chunks(text)
+        self.assertEqual([k for k, _ in items], ["decl", "def"])
+        self.assertTrue(items[0][1].strip().endswith("};"))
+        out = T.compose("Seed.cpp", [], ["Seed.cpp"], {"Seed.cpp": text}, [], "first")
+        self.assertNotIn("\n;\n", out)
+        self.assertIn("CALLBACK_MAX\n};", out)
+
+    def test_a_static_class_object_is_one_data_definition(self):
+        text = "static class InitClass { public: InitClass() { } } Instance;\nint g() { return 0; }\n"
+        self.assertEqual([k for k, _ in T.chunks(text)], ["decl", "def"])
+        self.assertEqual([(d[3], d[4]) for d in T.data_decls(text)], [("Instance", True)])
+
+    def test_functions_returning_a_static_struct_pointer_stay_bodies(self):
+        text = "static struct Foo *find(int n) { return 0; }\nstatic const struct Bar *get() const { return 0; }\n"
+        self.assertEqual([k for k, _ in T.chunks(text)], ["def", "def"])
+
+
 class HeaderQueueTests(unittest.TestCase):
     def test_donors_with_a_queued_private_copy_are_named_before_the_merge(self):
         with tempfile.TemporaryDirectory() as tmp:

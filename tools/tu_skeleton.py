@@ -134,6 +134,12 @@ def initialised(head):
     return False
 
 
+# a type definition's head: `{...}` ends at its `;`, not at the `}`; storage and
+# cv specifiers may lead it (`static enum E { ... };`, `static class C { ... } c;`)
+AGGREGATE = re.compile(r"^(?:template\s*<[^>]*>\s*)?(?:typedef\s+)?(?:(?:static|const|volatile)\s+)*"
+                       r"(?:class|struct|enum|union)\b")
+
+
 def chunks(text):
     """Top-level items as (kind, text); comments stay with the item after them.
 
@@ -191,7 +197,7 @@ def chunks(text):
             if depth == 0:
                 body = strip(text[start:i + 1]).strip()
                 head = body.split("{")[0]
-                aggregate = re.match(r"^(template\s*<[^>]*>\s*)?(typedef\s+)?(class|struct|enum|union)\b", body) \
+                aggregate = AGGREGATE.match(body) \
                     and not re.search(r"\)\s*(const)?\s*$", head.strip())
                 # a brace-initialised object (`const char *Names[] = {...};`) ends at its `;`,
                 # like an aggregate: splitting it at the `}` left a lone `;` as the next item
@@ -1006,7 +1012,7 @@ def header_end(text):
 def is_data_head(head):
     """A `{`-initialised object (`static const int t[] = {`), not a function body."""
     h = norm(head)
-    return initialised(h) and not re.match(r"^(?:template\s*<[^>]*>\s*)?(?:typedef\s+)?(?:class|struct|enum|union)\b", h)
+    return initialised(h) and not AGGREGATE.match(h)
 
 
 def def_spans(text):
@@ -1041,7 +1047,7 @@ def def_spans(text):
         if inside:
             at = max(m[1] for m in inside)     # the glued macro lines precede the body
             rest = norm(text[at:end])
-            if not rest or (re.match(r"^(template\s*<[^>]*>\s*)?(typedef\s+)?(class|struct|enum|union)\b", rest)
+            if not rest or (AGGREGATE.match(rest)
                             and not re.search(r"\)\s*(const)?\s*$", rest.split("{")[0].strip())):
                 pos = end          # what the glue hid was an aggregate: a declaration, not a body
                 continue
