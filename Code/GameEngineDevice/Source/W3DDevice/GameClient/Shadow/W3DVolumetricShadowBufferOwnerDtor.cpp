@@ -5,7 +5,7 @@
 // Retail frees these four blocks through operator delete[]
 // (??_V@YAXPAX@Z, 0x00881EF0), not the scalar operator delete at
 // 0x00881EB0 -- a different 21-byte body.
-void __cdecl operator delete[](void *block);
+#include <new>
 // The base deleting destructor must call its complete destructor (retail EFAD2/28).
 // Keep the base thunk out of line while preserving this owner's inline reset.
 #pragma inline_depth(0)
