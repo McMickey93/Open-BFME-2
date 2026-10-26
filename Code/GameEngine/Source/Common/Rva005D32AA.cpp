@@ -9,7 +9,7 @@ public:
 	~Rva005D309D();
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva005D32AA
 {

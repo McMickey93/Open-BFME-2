@@ -5,7 +5,7 @@
 // when the new pointer differs. Evidence: callers 0x002D37AA and 0x002D49DD pass
 // a fresh operator-new result; same /O1 as neighbours 0x002D337F and 0x002D342A.
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva002D3389
 {
