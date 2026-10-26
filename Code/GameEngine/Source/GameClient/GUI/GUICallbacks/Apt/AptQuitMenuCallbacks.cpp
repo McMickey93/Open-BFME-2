@@ -125,7 +125,7 @@ public:
 	void rva001EDDC6(unsigned char value);
 };
 
-// TheLivingWorldLogic (the ledger's g_009FEF10); its rowed
+// TheLivingWorldLogic (0x009FEF10); its rowed
 // isSelectionLocked 0x0004253A tells a war of the ring game apart.
 class BfmeSelectionState
 {
@@ -260,7 +260,7 @@ public:
 	virtual GameMessage *appendMessage(int type);
 };
 
-extern class MessageStream *TheMessageStream;
+extern MessageStream *MessageStreamSubsystem;
 
 // The network quit's frame limit (.rdata 0x007ED97C).
 extern unsigned int g_007ED97C;
@@ -706,7 +706,7 @@ void AptQuitMenu::Externs(int query, char *value, bool set)
 	GameLogic *logic = TheGameLogic;
 	if (logic == 0 || logic->m_114 == 3)
 		label = "Restart";
-	else if ((*(BfmeSelectionState **)&TheLivingWorldLogic) != 0 && (*(BfmeSelectionState **)&TheLivingWorldLogic)->isSelectionLocked())
+	else if (TheLivingWorldLogic != 0 && ((BfmeSelectionState *)TheLivingWorldLogic)->isSelectionLocked())
 		label = "Surrender";
 	else
 		label = "Forfeit";
@@ -750,17 +750,17 @@ AptQuitMenu::~AptQuitMenu()
 	{
 		if (logic->m_40 < g_007ED97C && (logic->m_110 == 1 || logic->m_110 == 5) && TheNetwork)
 			TheNetwork->quitGame();
-		else if (logic->m_114 != 3 && (*(BfmeSelectionState **)&TheLivingWorldLogic))
+		else if (logic->m_114 != 3 && TheLivingWorldLogic)
 		{
-			if (((LivingWorldLocal *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->m_98)
-				((LivingWorldLocal *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->m_98->m_3c5 = true;
-			if (!(*(BfmeSelectionState **)&TheLivingWorldLogic)->isSelectionLocked())
+			if (((LivingWorldLocal *)TheLivingWorldLogic)->m_98)
+				((LivingWorldLocal *)TheLivingWorldLogic)->m_98->m_3c5 = true;
+			if (!((BfmeSelectionState *)TheLivingWorldLogic)->isSelectionLocked())
 			{
-				GameMessage *surrender = TheMessageStream->appendMessage(0x448);
+				GameMessage *surrender = MessageStreamSubsystem->appendMessage(0x448);
 				surrender->appendBooleanArgument(true);
 			}
-			GameMessage *msg = TheMessageStream->appendMessage(0x6B8);
-			msg->appendIntegerArgument(((Rva002B2B66 *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->rva002B2B66());
+			GameMessage *msg = MessageStreamSubsystem->appendMessage(0x6B8);
+			msg->appendIntegerArgument(((Rva002B2B66 *)TheLivingWorldLogic)->rva002B2B66());
 		}
 		else
 			logic->DoExitMap(true);
@@ -797,11 +797,11 @@ void ShowQuitMenu()
 		return;
 	if (TheScriptEngine->m_1a104 >= 0)
 		return;
-	if ((*(BfmeSelectionState **)&TheLivingWorldLogic) && ((LivingWorldLocal *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->m_b4 && ((LivingWorldLocal *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->m_168)
+	if (TheLivingWorldLogic && ((LivingWorldLocal *)TheLivingWorldLogic)->m_b4 && ((LivingWorldLocal *)TheLivingWorldLogic)->m_168)
 		return;
 	if (!TheTransitionHandler->isFinished())
 		return;
-	if ((*(int *)&TheDisconnectMenu))
+	if (TheDisconnectMenu)
 		return;
 	if (TheDisplay)
 	{
@@ -810,7 +810,7 @@ void ShowQuitMenu()
 		if (TheDisplay->slot87())
 			return;
 	}
-	if ((*(BfmeSelectionState **)&TheLivingWorldLogic) && ((Rva0051AEEF *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->rva0051AEEF())
+	if (TheLivingWorldLogic && ((Rva0051AEEF *)TheLivingWorldLogic)->rva0051AEEF())
 		return;
 
 	Rva0043C96FEnable();
@@ -870,8 +870,8 @@ void restartMissionMenu()
 
 	TheGameLogic->clearGameData(false, false);
 	TheGameEngine->setQuitting(false);
-	if ((*(BfmeSelectionState **)&TheLivingWorldLogic))
-		((Rva002BA8F1Logic *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->rva002B36F3();
+	if (TheLivingWorldLogic)
+		((Rva002BA8F1Logic *)TheLivingWorldLogic)->rva002B36F3();
 
 	if (replayFile.isNotEmpty())
 	{
@@ -880,7 +880,7 @@ void restartMissionMenu()
 	else
 	{
 		TheWritableGlobalData->m_pendingFile = mapName;
-		GameMessage *msg = TheMessageStream->appendMessage(0x1E);
+		GameMessage *msg = MessageStreamSubsystem->appendMessage(0x1E);
 		msg->appendIntegerArgument(gameMode);
 		msg->appendIntegerArgument(diff);
 		msg->appendIntegerArgument(rankPointsStartedWith);
@@ -899,7 +899,7 @@ void AptQuitMenu::HandleOverRestartButton(const char *unused)
 	const char *label;
 	if (TheGameLogic && TheGameLogic->m_114 != 3)
 	{
-		if ((*(BfmeSelectionState **)&TheLivingWorldLogic) && (*(BfmeSelectionState **)&TheLivingWorldLogic)->isSelectionLocked())
+		if (TheLivingWorldLogic && ((BfmeSelectionState *)TheLivingWorldLogic)->isSelectionLocked())
 			label = "TOOLTIP:QuitMenu/Surrender/WOTRSurrender";
 		else
 			label = "TOOLTIP:QuitMenu/Forfeit/WOTRForfeit";
@@ -1051,23 +1051,23 @@ void AptQuitMenu::OnInitialized(const char *unused_in)
 	{
 		if (TheGameLogic->m_114 != 3)
 		{
-			if ((*(BfmeSelectionState **)&TheLivingWorldLogic) && (*(BfmeSelectionState **)&TheLivingWorldLogic)->isSelectionLocked())
+			if (TheLivingWorldLogic && ((BfmeSelectionState *)TheLivingWorldLogic)->isSelectionLocked())
 				DisableButton(this, "ExitMission");
 		}
 		else
 			DisableButton(this, "Restart");
-		if (!((Rva00210C66CmpBoolField *)TheGameLogic)->get() || !(*(BfmeSelectionState **)&TheLivingWorldLogic) || !(*(BfmeSelectionState **)&TheLivingWorldLogic)->isSelectionLocked())
+		if (!((Rva00210C66CmpBoolField *)TheGameLogic)->get() || !TheLivingWorldLogic || !((BfmeSelectionState *)TheLivingWorldLogic)->isSelectionLocked())
 			DisableButton(this, "Save");
-		if (((Rva00210C66CmpBoolField *)TheGameLogic)->get() && (*(BfmeSelectionState **)&TheLivingWorldLogic))
+		if (((Rva00210C66CmpBoolField *)TheGameLogic)->get() && TheLivingWorldLogic)
 		{
-			if (((Rva002BA8F1Logic *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->rva002B5256(false) < ((Rva002BA8F1Logic *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->rva002B5256(true))
+			if (((Rva002BA8F1Logic *)TheLivingWorldLogic)->rva002B5256(false) < ((Rva002BA8F1Logic *)TheLivingWorldLogic)->rva002B5256(true))
 				DisableButton(this, "Save");
 		}
 		DisableButton(this, "Load");
 	}
 	else
 	{
-		BfmeSelectionState *livingWorld = (*(BfmeSelectionState **)&TheLivingWorldLogic);
+		BfmeSelectionState *livingWorld = ((BfmeSelectionState *)TheLivingWorldLogic);
 		_ReadWriteBarrier();
 		if (livingWorld && livingWorld->isSelectionLocked())
 		{
@@ -1080,13 +1080,13 @@ void AptQuitMenu::OnInitialized(const char *unused_in)
 				DisableButton(this, "Save");
 				DisableButton(this, "Load");
 			}
-			if ((unsigned char)((Rva002B254F *)(*(BfmeSelectionState **)&TheLivingWorldLogic))->rva002B254F() != 0)
+			if ((unsigned char)((Rva002B254F *)TheLivingWorldLogic)->rva002B254F() != 0)
 				DisableButton(this, "Save");
 		}
 	}
 	if (TheGameLogic && TheGameLogic->m_114 != 3)
 	{
-		if ((*(BfmeSelectionState **)&TheLivingWorldLogic) && (*(BfmeSelectionState **)&TheLivingWorldLogic)->isSelectionLocked())
+		if (TheLivingWorldLogic && ((BfmeSelectionState *)TheLivingWorldLogic)->isSelectionLocked())
 		{
 			AsciiString key("APT:RestartOrSurrender");
 			g_bfmeAptWindowManager->bfmeSetText(key, TheGameText->fetch("APT:Surrender"), false);
