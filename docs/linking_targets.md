@@ -449,7 +449,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WW3D2/texproject.cpp` | 10 | 12 (U=11, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/MobMemberSlavedUpdate.cpp` | 8 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/light.cpp` | 6 | 3 (U=3) | Open |
-| `Code/GameEngine/Source/Common/BfmeConv892_Rva004C121B.cpp` | 0 | 4 (U=2, C=1, S=1) | Open |
+| `Code/GameEngine/Source/Common/BfmeConv892_Rva004C121B.cpp` | 0 | 4 (U=2, C=1, S=1) | 2026-10-26: retired (93ba3a07a8). Duplicate claim: 0x004C121B is rowed and links as `SymbioticStructuresBody::rva004C121B` in `SymbioticStructuresBodySlots.cpp`; unit and row removed, recorded in deleted_rows.csv; its `reverse/header_queue.tsv` GameLogic key now names a deleted source |
 | `Code/GameEngine/Source/GameClient/GUI/Rva00576DF1Ctor.cpp` | 0 | 11 (U=8, C=2, S=1) | 2026-10-26: retired (9caa4cbd11). Duplicate claim: 0x00576DF1 is rowed and links as the `Impl@ResolveBattlesBehavior` ctor in `Rva00576C4BDtor.cpp` (link_check LINKS 482 B); unit and row removed, recorded in deleted_rows.csv |
 | `Code/GameEngineDevice/Source/MilesAudioDevice/Rva0006047CSeq.cpp` | 0 | 5 (U=5) | 2026-10-26: retired (dd45d8c862). Duplicate claim: 0x0006047C is rowed and links as `MilesAudioManager::rva0006047C` in `MilesAudioManager.cpp`; unit and row removed, recorded in deleted_rows.csv |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DVideoBuffer.cpp` | 0 | 7 (U=5, C=2) | Open |
