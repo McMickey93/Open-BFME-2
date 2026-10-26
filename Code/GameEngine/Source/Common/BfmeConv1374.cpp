@@ -2,7 +2,7 @@
 // a vptr immediate (twin SubtitleEntryCtor.cpp pattern); the drop helper
 // rides a donor-evidenced pin, the conditional free is scalar delete.
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 extern int g_bfmeVtableCZ[];					// retail 0x008E4A10
 

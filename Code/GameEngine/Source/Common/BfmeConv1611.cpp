@@ -7,8 +7,7 @@
 // Callee addresses are read off retail call sites (reverse/symbols.csv).
 // Open-BFME5 conversions.
 
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *block);
+#include <new>
 
 // The object built is Rva0060061A (one vtable pointer; its ctor is the rowed
 // ??0Rva0060061A at 0x00600611, the call retail makes).

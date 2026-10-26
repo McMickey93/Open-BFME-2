@@ -1,6 +1,6 @@
 // Retail embedded-table destructor; parent lifetime proof: 0x0075A080 and
 // unwind entries 0x007AB790/0x007AB79B call the same whole cleanup body.
-void __cdecl operator delete(void *place);
+#include <new>
 
 struct BfmeNodeVMN
 {
