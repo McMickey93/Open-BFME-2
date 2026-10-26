@@ -7,9 +7,9 @@
 // pointers; that binding is their only reference.
 #include "ascii_string.h"
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *format, ...);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 // BfmePathLeafAfterMarker.cpp's path helpers, and the unrowed 0x004128F0
 // (239 bytes) next to them that reads one "key=value" parameter, pinned by
