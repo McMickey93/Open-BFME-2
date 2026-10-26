@@ -520,7 +520,6 @@ Code/GameEngine/Source/GameLogic/Object/SpecialPower/DarknessSpecialPowerPoolKey
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DefectorSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C29D4@DefectorSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041AC
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DeflectSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C54F0@DeflectSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04278
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DevastateSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C8270@DevastateSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042EC
-Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPowerModuleDataCtor.cpp	wrong-name	?g_dominateFilterDefaults@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CC9DF@DominateEnemySpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04390
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C391E@ElvenWoodSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041CC
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/EvacuateGarrisonSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CDC53@EvacuateGarrisonSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A043C0
@@ -541,7 +540,6 @@ Code/GameEngine/Source/GameLogic/Object/SpecialPower/ScavengerSpecialPowerPoolKe
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C6472@SiegeDeployHordeSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A0429C
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C577C@SiegeDeploySpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04280
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleCreateViewObject.cpp	wrong-name	?$S1@?O@??createViewObject@SpecialPowerModule@@IAEXPBUCoord3D@@@Z@4IA	0x00A039FC
-Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDataCtor.cpp	wrong-name	?g_009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModulePoolKey.cpp	wrong-name	?$S1@?1??rva000493DAA@SpecialPowerModule@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A04
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/SplitHordeSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C85BD@SplitHordeSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042F4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/StopSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C67DB@StopSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042AC
@@ -616,7 +614,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/LargeGroupBonusUpdatePoolKey.cpp	
 Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000363102@LaserUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A01E8C
 Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A028E4
 Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A7699@MissileUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C68
-Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdateModuleDataCtor2.cpp	wrong-name	?g_modelConditionFilterDefaults@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000490D96@ModelConditionSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039B0
 Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp	duplicate-def	_s_dummyDFD4	0x0084DFD4
 Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp	wrong-name	_s_dummyDFD4	0x0084DFD4
