@@ -402,9 +402,13 @@ def donors(tu, sk):
         home = {r["name"]: assigned.get(int(r["target_rva"], 16)) for r in own}
         dtors = {m.group(1): r["name"] for r in own if (m := re.match(r"^\?\?1((?:\?\$)?[A-Za-z_]\w*@)", r["name"]))}
         # a companion row (funclet, deleting dtor) is emitted with its parent and lives where it lives
-        foreign = [r for r in own
-                   if (home[p] if (p := parent_of(r, dtors)) and p in home
-                       else assigned.get(int(r["target_rva"], 16))) != tu.lower()]
+        where = {id(r): home[p] if (p := parent_of(r, dtors)) and p in home
+                 else assigned.get(int(r["target_rva"], 16)) for r in own}
+        # The TU file itself may keep rows the map has not placed anywhere: the merge
+        # seeds from it, moves none of them, and verifies they still match. A row the
+        # map puts in another TU still makes it mixed (split it first).
+        foreign = [r for r in own if where[id(r)] != tu.lower()
+                   and not (f == tu and where[id(r)] is None)]
         if foreign:
             mixed[f] = len(foreign)
         elif own:

@@ -190,6 +190,49 @@ class HeaderQueueTests(unittest.TestCase):
             self.assertEqual(dict(q), {"Code/A.cpp": ["AsciiString", "Rva0007DF07"]})
 
 
+class DonorTests(unittest.TestCase):
+    TU = "Code/T.cpp"
+
+    def donors(self, ledger, placed):
+        """donors() over `ledger` [(name, rva, source)] with `placed` {rva: tu} approved."""
+        T._CACHE.clear()
+        T._CACHE["ledger"] = [{"name": n, "export_rva": "", "target_rva": f"0x{rva:08X}", "target_size": "8",
+                               "source": s, "status": "matched", "notes": ""} for n, rva, s in ledger]
+        T._CACHE["map"] = [{"rva": f"0x{rva:08X}", "size": "8", "kind": "code", "tu": tu, "confidence": "approved",
+                            "by": "-", "evidence": "", "source": ""} for rva, tu in placed.items()]
+        T._CACHE["stale"] = False
+        try:
+            with patch.object(T, "refusal", return_value=None):
+                return T.donors(self.TU, T.skeleton(self.TU))
+        finally:
+            T._CACHE.clear()
+
+    def test_the_tu_file_keeps_rows_the_map_places_nowhere(self):
+        # The seed moves none of its rows and the merge re-verifies them, so an
+        # unplaced row of the TU file itself is no reason to call it mixed.
+        don, mixed, _ = self.donors([("?t@@YAXXZ", 0x1000, self.TU), ("?u@@YAXXZ", 0x1100, self.TU),
+                                     ("?a@@YAXXZ", 0x1010, "Code/A.cpp")],
+                                    {0x1000: self.TU, 0x1010: self.TU})
+        self.assertEqual(mixed, {})
+        self.assertEqual(sorted(don), ["Code/A.cpp", self.TU])
+        self.assertEqual(len(don[self.TU]), 2)
+
+    def test_a_tu_file_row_placed_in_another_tu_still_makes_it_mixed(self):
+        don, mixed, _ = self.donors([("?t@@YAXXZ", 0x1000, self.TU), ("?o@@YAXXZ", 0x1200, self.TU),
+                                     ("?a@@YAXXZ", 0x1010, "Code/A.cpp")],
+                                    {0x1000: self.TU, 0x1010: self.TU, 0x1200: "Code/Other.cpp"})
+        self.assertEqual(mixed, {self.TU: 1})
+        self.assertNotIn(self.TU, don)
+
+    def test_a_donor_with_unplaced_rows_is_still_not_absorbed(self):
+        # Absorbing it would move a row the map does not put in this TU.
+        don, mixed, _ = self.donors([("?t@@YAXXZ", 0x1000, self.TU), ("?b@@YAXXZ", 0x1020, "Code/B.cpp"),
+                                     ("?v@@YAXXZ", 0x1300, "Code/B.cpp")],
+                                    {0x1000: self.TU, 0x1020: self.TU})
+        self.assertEqual(mixed, {"Code/B.cpp": 1})
+        self.assertEqual(sorted(don), [self.TU])
+
+
 class ComposePreprocessorTests(unittest.TestCase):
     def test_conditionals_are_not_deduplicated_across_donors(self):
         texts = {"Seed.cpp": "#ifndef FALSE\n#define FALSE 0\n#endif\nint seed() { return 1; }\n",
