@@ -78,7 +78,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int, int) throw();
 	unsigned int bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 class Rva000421C8
 {
   public:
@@ -126,7 +127,7 @@ bool Pathfinder::CircleClipsTallBuilding(const Coord3D *from, const Coord3D *to,
 	Object *tallBuilding =
 		ThePartitionManager->getClosestObject(to, circleRadius, 1,
 											  &Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 66),
-														   *(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype));
+														   *(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE));
 	if (tallBuilding)
 	{
 		float radius = tallBuilding->getRadius() + 20.0f;
@@ -134,7 +135,7 @@ bool Pathfinder::CircleClipsTallBuilding(const Coord3D *from, const Coord3D *to,
 		Object *otherTallBuilding = ThePartitionManager->getClosestObject(
 			adjustTo, circleRadius, 1,
 			&Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 66),
-						 *(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype));
+						 *(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE));
 		if (otherTallBuilding && otherTallBuilding != tallBuilding)
 		{
 			radius = otherTallBuilding->getRadius() + 20.0f;

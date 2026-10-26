@@ -206,7 +206,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int, int) throw();
 	unsigned int bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 class Rva000421C8
 {
 public:
@@ -393,7 +394,7 @@ void W3DDisplay::gatherSkirmishAIStats()
 								{
 									BfmeWideResult iter = ThePartitionManager->iterateObjectsInRange(obj->getPosition(), 300.0f, 0,
 										&Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 50),
-											*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype), 1);
+											*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE), 1);
 									obj = iter.next();
 								}
 								if (obj)
