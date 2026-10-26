@@ -37,15 +37,9 @@ typedef bool Bool;
 typedef int Int;
 typedef float Real;
 
-template <typename T> struct BfmeStringData
-{
-	int refCount;
-	unsigned short length;
-	unsigned short capacity;
-	T text[1];
-};
-
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
+template<> __declspec(dllimport) __forceinline bool StringBase<unsigned short>::isEmpty() const { return !m_data || m_data->length == 0; }
 // bfme link decl-only begin
 namespace _STL { template <> _List_base<UnicodeString, allocator<UnicodeString> >::~_List_base(); }
 namespace _STL { template <> _List_node<UnicodeString> * list<UnicodeString, allocator<UnicodeString> >::_M_create_node(UnicodeString const &); }
@@ -65,48 +59,6 @@ template <> __declspec(dllimport) __forceinline
 void _STLP_CALL __node_alloc<true, 0>::deallocate(void *__p, size_t __n)
 { if (__n > (size_t)_MAX_BYTES) __stl_delete(__p); else _M_deallocate(__p, __n); }
 }
-
-template <> class StringBase<unsigned short>
-{
-	friend class UnicodeString;
-	StringBase(const StringBase &other);
-	void releaseBuffer();
-
-public:
-	StringBase() : m_data(0) {}
-	~StringBase() { releaseBuffer(); }
-	bool isEmpty() const;
-	int compare(const StringBase &other) const;
-	int compareNoCase(const StringBase &other) const throw();
-	void set(const StringBase &other);
-	void trim(void);
-	Bool nextToken(StringBase *token, const unsigned short *seps);
-	void concat(const StringBase &other);
-	void concat(const unsigned short *text);
-
-protected:
-	BfmeStringData<unsigned short> *m_data;
-};
-
-
-class UnicodeString : public StringBase<unsigned short>
-{
-public:
-	static UnicodeString TheEmptyString;
-
-	UnicodeString() {}
-	UnicodeString(const UnicodeString &other) : StringBase<unsigned short>(other) {}
-	UnicodeString &operator=(const UnicodeString &other) { set(other); return *this; }
-	bool isEmpty() const { return m_data == 0 || m_data->length == 0; }
-	int compare(const UnicodeString &other) const;
-	void translate(const char *text);
-	__declspec(dllimport) __forceinline void trim(void) { StringBase<unsigned short>::trim(); }
-	Bool nextToken(UnicodeString *token, const unsigned short *seps)
-	{
-		return StringBase<unsigned short>::nextToken(token, seps);
-	}
-	const unsigned short *str() const { return m_data ? &m_data->text[0] : L""; }
-};
 
 inline bool operator==(const UnicodeString &a, const UnicodeString &b)
 {
