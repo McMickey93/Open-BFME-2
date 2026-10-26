@@ -8165,3 +8165,11 @@ Code/GameEngine/Source/GameLogic/Object/Rva002CA9CAContains.cpp|local|Rva002CA9C
 Code/GameEngine/Source/Common/Rva00418A8EOuter.cpp|class||Rva00418AB2Host,573181011977bfd05e1774c9,gpt-6.1-sol,w4-10261512-7,w-eb83eac9adc1,2026-10-26
 Code/GameEngine/Source/Common/Rva000B6498Free.cpp|class||Rva000B6498Node,50bf1f71cdc8cc6d44de1756,gpt-6.1-sol,w4-10261512-10,w-eb83eac9adc1,2026-10-26
 Code/GameEngine/Source/Common/Rva000B6498Free.cpp|class||Rva000B6498Head,e0df43f032fb235db6c78887,gpt-6.1-sol,w4-10261512-10,w-eb83eac9adc1,2026-10-26
+Code/GameEngine/Source/GameClient/GUI/StrategicUiArmyDragDrop.cpp|class||Rva005FContextView,67472989b8e5d0809c06550c,gpt-6.1-sol,w5-10261504-2,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/GameLogic/Object/Update/Rva0049D526.cpp|local|Rva0049D526::rva0049D57F|v,f211cd5f0192fae8d5c05df5,gpt-6.1-sol,w5-10261504-7,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva0010F760Factory.cpp|function|0x0010F760|Rva0010F760,853b6edd6f026d18edaeef67,gpt-6.1-sol,w5-10261504-9,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/BfmeConv1361.cpp|member|BfmeMsgVHE|m_bfme1c,6115066948f1ccefaef995d1,gpt-6.1-sol,w5-10261504-10,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/ThingTemplateBuildFacility.cpp|local|ThingTemplate::calcTimeToBuild|BfmeLogicFramesPerSecond,2e676e1f126caf5eb911ce16,gpt-6.1-sol,w5-10261504-11,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptLeafCheck.cpp|class||Rva003B489CEntry,96ea2452baca65ba11d77986,gpt-6.1-sol,w5-10261504-12,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp|class||Rva0112B7F8Base,482b7b09f957f6c45a525600,gpt-6.1-sol,w5-10261504-15,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp|member|Rva007F8400Node|m_6a8,1743b840506234ae056c28f1,gpt-6.1-sol,w5-10261504-15,w-f0819d403c17,2026-10-26
