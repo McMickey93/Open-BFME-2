@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // Thin token FieldParse procs (original names unproven; address names):
 //   0x001DFBC7 33B / 0x001DFC09 33B Type (0x00BDD7F4 / 0x00BDD8A0, store
@@ -13,7 +14,7 @@
 //       at 0x00C3C210 that falls in 0..5 is appended to the 4-byte enum vector
 //       at the store (push_back fold 0x002E01C6).
 
-#define NULL 0
+#include <windows.h>
 
 struct LookupListRec;
 

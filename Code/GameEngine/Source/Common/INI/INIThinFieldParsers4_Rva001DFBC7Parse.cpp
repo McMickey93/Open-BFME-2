@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 // Split from INIThinFieldParsers4.cpp; parse tables are owned below and the
 // four-byte enum append calls the existing retail ScienceType vector provider.
 //
@@ -15,7 +16,7 @@
 //       at 0x00C3C210 that falls in 0..5 is appended to the 4-byte enum vector
 //       at the store (push_back fold 0x002E01C6).
 
-#define NULL 0
+#include <windows.h>
 
 struct LookupListRec { const char *name; int value; };
 
