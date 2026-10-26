@@ -23,7 +23,7 @@
 
 void __cdecl Rva001532E1Erase(const char *name);
 void __cdecl Rva001530E9Parse(const char *name, void *volatile path);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
+#include <string.h>
 void __cdecl Rva00153565Register(const char *name, void *binder);
 
 struct IDirect3DBaseTexture8;

@@ -3,7 +3,7 @@
 // Native4CC371..4CC582,529B; WB1274440 parser body proves grammar.
 // Reference0bef Rva000BD640ParseSoundEventList supplies owning audio lookup
 // and INIException lifecycle only. No original target parser name asserted.
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *,const char *);
+#include <string.h>
 #include <vector>
 #include "ascii_string.h"
 class OpaqueRefCounted {public:void Release_Ref();};

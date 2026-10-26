@@ -11,7 +11,7 @@
 // the address of the dllimport emits exactly that load. Each match stores
 // the value and returns; no match falls through.
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 const char *g_SkuNameValue;
 const char *g_GameNameValue;
