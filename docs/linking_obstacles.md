@@ -2024,6 +2024,13 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   `W3DRopeDraw.cpp` refuses the never-linked `W3DRopeDrawCtor.cpp` (unresolved
   `__node_alloc::deallocate`, two losing COMDATs). Not covered: the split lane, merges in
   which no unit links, and changes to other units since the census.
+- **Guard false reject (2026-10-27):** the PR115 INI merge preserves its existing
+  21-byte `rts::equal_to<AsciiString>` copy and its precedence over ThingFactory,
+  but the trial view forgets that ThingFactory already lost before the merge.
+  [The pre-merge evidence](../reverse/attempt_support/ini-linkguard-premerge-baseline-20261027.md)
+  distinguishes unchanged debt from newly broken outside units. A separate
+  verifier repair and a fresh guard after rebase remain prerequisites; no
+  source workaround, census gain or linking clearance is claimed.
 - **Census confirmation:** awaiting the next census.
 
 
