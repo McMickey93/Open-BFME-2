@@ -1,5 +1,59 @@
-// cl: /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /MD /O1 /GX /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/bfme_namekey /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/shims -ICode/Libraries/Source/Compression/LZHCompress/CompLibHeader /Ireference/shims/bfme2htree /Ireference/shims/bfme2renderobj /Ireference/shims/bfmecamera /Ireference/shims/bfmelight /Ireference/shims/bfmeparticlehandle /Ireference/shims/bfmeparticleload /Ireference/shims/bfmeparticlequat /Ireference/shims/bfmeparticlesave /Ireference/shims/bfmeparticleline /Ireference/shims/bfme2ray /Ireference/shims/bfme2scene -D_STLP_USE_STATIC_LIB -DNDEBUG -DWIN32 -D_WINDOWS /Ireference/shims/bfmefrustum
+// cl: /FIzh_ascii.h /MD /GX /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE -D_STLP_USE_STATIC_LIB -DNDEBUG -DWIN32 -D_WINDOWS /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/bfme_namekey /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/shims -ICode/Libraries/Source/Compression/LZHCompress/CompLibHeader /Ireference/shims/bfme2htree /Ireference/shims/bfme2renderobj /Ireference/shims/bfmecamera /Ireference/shims/bfmelight /Ireference/shims/bfmeparticlehandle /Ireference/shims/bfmeparticleload /Ireference/shims/bfmeparticlequat /Ireference/shims/bfmeparticlesave /Ireference/shims/bfmeparticleline /Ireference/shims/bfme2ray /Ireference/shims/bfme2scene /Ireference/shims/bfmefrustum
 // stlport
+// TU Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
+#include "PreRTS.h"
+#include "Common/Xfer.h"
+#include "GameLogic/Module/CreateModule.h"
+#pragma comment(linker, "/alternatename:??0ExperienceLevelCreateBase@@QAE@PAVThing@@PBVModuleData@@@Z=??0CreateModule@@QAE@PAVThing@@PBVModuleData@@@Z")
+#pragma comment(linker, "/alternatename:?crc@BehaviorModule@@MAEXPAVXfer@@@Z=??_GRva004607E1@@UAEPAXI@Z")
+//
+// ??_GRva004B8CDE@@UAEPAXI@Z at retail 0x004B8D32 (28B): emitted scalar
+// deleting destructor for the opaque MI middle Rva004B8CDE (25B order-B body
+// tail-jumping the 0x49B47C fold). The middle uses the per-TU PrimaryP model
+// (order +0x10/+0/+0xC, own B2, tail-jump to the pinned fold;
+// Rva0049B47C throw() is truthful and mangle-safe). The dtor call resolves
+// via the row once the pin upgrades; operator delete via its pin. The anchor
+// new/deletes (devirtualized direct ??_G call) to emit the COMDAT.
+
+class Rva0049B47C
+{
+public:
+	virtual ~Rva0049B47C() throw();
+
+private:
+	char m_pad04[8];
+};
+class MiBase1
+{
+public:
+	virtual void f1();
+};
+// Per-TU PrimaryP (named to avoid colliding with the sibling TU's shared
+// one): user empty dtor shares P's vptrs for retail order; inlines away so
+// the middle still tail-calls the fold.
+class PrimaryP4B8CDE : public Rva0049B47C, public MiBase1
+{
+public:
+	~PrimaryP4B8CDE() {}
+};
+class Rva004B8CDE_B2
+{
+public:
+	virtual void f2();
+};
+class Rva004B8CDE : public PrimaryP4B8CDE, public Rva004B8CDE_B2
+{
+public:
+	virtual ~Rva004B8CDE();
+};
+Rva004B8CDE::~Rva004B8CDE()
+{
+}
+#include <new>
+#pragma comment(linker, "/alternatename:?f2@Rva004B8CDE_B2@@UAEXXZ=__purecall")
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp
+
 // Ported verbatim from the Generals Zero Hour reference
 // (GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp); this unit had no counterpart under Code/.
 /*
@@ -32,9 +86,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h"
-#include "Common/Xfer.h"
-#include "GameLogic/Module/CreateModule.h"
 
 // ------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
@@ -43,7 +94,9 @@ CreateModule::CreateModule( Thing *thing, const ModuleData* moduleData )
 						  m_needToRunOnBuildComplete(TRUE)
 {
 
-}  // end createModule
+}
+
+  // end createModule
 
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
@@ -51,7 +104,9 @@ CreateModule::CreateModule( Thing *thing, const ModuleData* moduleData )
 CreateModule::~CreateModule()
 {
 
-}  // end ~CreateModule
+}
+
+  // end ~CreateModule
 
 //-------------------------------------------------------------------------------------------------
 /** CRC */
@@ -63,7 +118,9 @@ void CreateModule::crc( Xfer *xfer )
 	// extend base class
 	BehaviorModule::crc( xfer );
 
-}  // end crc
+}
+
+  // end crc
 
 // ------------------------------------------------------------------------------------------------
 /** Xfer method
@@ -83,15 +140,33 @@ void CreateModule::loadPostProcess( void )
 	// extend base class
 	BehaviorModule::loadPostProcess();
 
-}  // ene loadPostProcess
+}
+
+  // ene loadPostProcess
 
 
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.
-#pragma comment(linker, "/alternatename:??0ExperienceLevelCreateBase@@QAE@PAVThing@@PBVModuleData@@@Z=??0CreateModule@@QAE@PAVThing@@PBVModuleData@@@Z")
 
 // Placeholder virtuals this unit's vftables hold.  In retail each such slot
 // holds a rowed function; the vftable's address is proven by the vptr stores in
 // the matched destructors, so bind the placeholder to that row's name.
-#pragma comment(linker, "/alternatename:?crc@BehaviorModule@@MAEXPAVXfer@@@Z=??_GRva004607E1@@UAEPAXI@Z")
+
+// tu-skeleton: 0x004B8D2C 6B ?Rva004B8D2CGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva004B8CDEDeletingDtor.cpp
+
+// Anchor: new/delete devirtualizes to a direct ??_G call, emitting the COMDAT.
+void Rva004B8CDE_Anchor()
+{
+	Rva004B8CDE *p = new Rva004B8CDE;
+	delete p;
+}
+
+// Placeholder virtuals this unit's vftables hold.  In retail each such slot
+// holds a rowed function; the vftable's address is proven by the vptr stores in
+// the matched destructors, so bind the placeholder to that row's name.  Rva004B8CDE_B2
+// is the second polymorphic base, so its vftable is the one stored at +0x10.
+
+// tu-skeleton: 0x004B8D4E 51B ?xfer@CreateModule@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Create/CreateModuleXfer.cpp (not merged yet)
