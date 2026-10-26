@@ -4,12 +4,11 @@
 // imports _vsnprintf through IAT VA 0x01359360.
 #include <stdarg.h>
 #include <string.h>
+#include <stdio.h>
+#include <new>
 
 // .bss VA 0x00DDF9D0; the next datum starts 0x800 bytes later.
 char g_bfmeFormatBuffer[2048];
-extern "C" __declspec(dllimport) int __cdecl _vsnprintf(char *, unsigned int, const char *, va_list);
-void __cdecl operator delete[](void *block);
-void *__cdecl operator new[](unsigned int size);
 
 class INIException
 {
