@@ -5,7 +5,7 @@ Retail was linked from real translation units, and a TU's functions sit next to
 each other in `.text` in object order. This lane merges the small files back into
 the TU retail built them from, one TU at a time, without losing a matched row.
 
-Four tools support the workflow; a seat does the judgement.
+Five tools support the workflow; a seat does the judgement.
 
 Start a consolidation or subsystem naming pass with the read-only
 [evidence catalogue and naming planner](#evidence-catalogue-and-naming-packets).
@@ -17,6 +17,7 @@ merges continue through `tools/tu_skeleton.py` and the normal verification gates
 | `tools/name_lane.py consolidate` | The evidence planner: catalogues original paths and donor structure, identifies candidate groups and flags routing, declaration, include and compiler prerequisites. |
 | `tools/tu_map.py` | Which TU each retail function came from: `__FILE__` strings, Zero Hour definitions and class sites, naming inside an anchored address cluster, contiguity. `approved` rows are the only ones a merge moves. |
 | `tools/tu_skeleton.py` | The lane: `--queue`, `--plan`, `--merge`. It verifies every merge by compiling and byte-matching, claims its scope, and repoints the ledger. |
+| `tools/tu_evidence.py` | Retail layout signals (funclet order, vftables, initializers, .rdata order, funclet parentage) for rows nothing else places; proposal-only until a signal passes its 99% precision gate and is promoted. |
 | `tools/tu_ownership.py` | The commit hook's invariants (a row moved to a file other than its approved TU, a second body for one address). Shadow mode. |
 
 `tu_skeleton.py` rebuilds the map in memory when the committed `tu_map.csv` is
@@ -109,6 +110,41 @@ deleted donor. It prints:
   `repair_queue.py retire identity|data TU`, and `flag_defaults.py propose TU`
   for a carried override. Retiring in the merge commit itself would hide the
   transfer from verify-removed.
+
+## Retail layout evidence (the TU-evidence lane)
+
+About 8,400 sources have no tu_map row with any TU: no `__FILE__` string, no Zero
+Hour definition, no usable name and no bracketing anchor. `tools/tu_evidence.py`
+reads layouts the linker kept in object order out of the retail image and the
+committed xref tables: funclet order in `.text$x` (E, parents from the image's own
+EH FuncInfo tables), vftable layout (V), the `.CRT$XCU` initializer table (I),
+`.rdata` order (R), and funclet parentage (P: a handler or funclet takes its
+parent's TU and confidence). A row is placed only when the nearest anchored entries
+on both sides of each of its entries name one TU within the signal's gap, and all
+signals that reach it agree.
+
+    python3 tools/tu_evidence.py --validate          # precision/recall per signal, rows a pass would approve
+    python3 tools/tu_evidence.py --source FILE       # what reaches one source's rows
+    python3 tools/tu_evidence.py --write             # build/tu_evidence.csv, every evidence row
+    python3 tools/tu_evidence.py --check             # re-derive it; a row nothing re-derives fails
+
+Every signal starts proposal-only. It counts toward tu_map approval only when
+`tu_evidence.PROMOTED` lists it, in a Verifier-Change commit recording
+`--validate` at >= 99% precision (leave-one-out over approved F/Z/S rows; P
+against the ledger's `parent=` notes) in the tool's docstring. `--validate` exits 1
+when a promoted signal has fallen below the gate. Even then tu_map computes the
+approval: the TU must be anchored and contiguous, the row must not sit inside
+another approved TU's span, and a funclet's parent must be approved. Nothing here is
+entered by hand, and the lane never commits a regenerated map.
+
+`next_work.py --tier tu-evidence` (`repair_queue.tu_evidence_items`) serves the
+unmapped address runs that hold those sources, at most 16 sources per item, runs a
+signal reaches first. Each item lists the bracketing rows, the gap and the
+re-derived layout evidence, and claims its sources. The seat finds a re-checkable
+anchor (a real name with a Zero Hour definition or a `__FILE__` string, often a
+mis-named row whose Z fails) or a missing bracket through the naming lanes. It never
+asserts a TU. The item passes when the map rebuilt from current inputs gives the
+run's rows a TU.
 
 ## Carving a mixed file (the split lane)
 

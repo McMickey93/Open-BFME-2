@@ -40,6 +40,8 @@ Sections, in priority order:
        consolidate  approved TUs a merge can shrink (tools/tu_skeleton.py --queue)
        tu-approval  TUs whose rows tu_map only proposes: evidence (real names,
                     resolved interleaving) approves them (docs/consolidation.md)
+       tu-evidence  unmapped address runs holding sources no tu_map row places, with
+                    the retail layout evidence tools/tu_evidence.py re-derives for them
        ms-headers   reverse/ms_header_queue.tsv (repair_queue.py ms-headers)
        dx           reverse/dx_migration_queue.tsv; --tier dx keeps its own view
      Naming is not a default tier: --wb and tools/name_lane.py serve it on request.
@@ -85,7 +87,7 @@ in `prior_attempt` in --json. Text output prints it before the start command,
 including evidence paths; read it before repeating a failed trial.
 
 Usage:
-  python3 tools/next_work.py [--claim] [--tier link|data|header|identity|stubs|consolidate|tu-approval|ms-headers|...]
+  python3 tools/next_work.py [--claim] [--tier link|data|header|identity|stubs|consolidate|tu-approval|tu-evidence|ms-headers|...]
   python3 tools/next_work.py --wb [--claim] [--ranked]
   python3 tools/next_work.py --ranked [--limit 10] [--json]
 
@@ -1083,8 +1085,8 @@ def debt_rank_factor(candidate):
     share their address (one declaration fix, repeated) and doubly for duplicate-def
     (a link blocker), link units by how few blockers they have left, stub groups by the
     stubs they close, merges by the files they remove, TU approvals by the files their
-    proposed rows span (each capped at 16), and debt whose source vanished (a
-    regression) first. 1 for anything else."""
+    proposed rows span, TU-evidence runs by the sources they hold (each capped at 16),
+    and debt whose source vanished (a regression) first. 1 for anything else."""
     if candidate.get("check") == "vanished-source":
         return 16
     tier = candidate.get("tier")
@@ -1095,7 +1097,7 @@ def debt_rank_factor(candidate):
                                                                     else 1)
     if tier == "link" and "blockers" in candidate:
         return max(1, 8 - int(candidate["blockers"]))
-    if tier in ("stubs", "consolidate", "tu-approval"):     # stubs closed, files a merge removes or could
+    if tier in ("stubs", "consolidate", "tu-approval", "tu-evidence"):   # stubs closed, files a merge removes or could
         return max(1, min(16, int(candidate.get("count") or 1)))
     return 1
 
@@ -1481,7 +1483,7 @@ DEFAULT_ORDER = ("repair", "link", "data", "header", "identity",
                  "packet", "named", "harvest", "structural", "ghidra", "anchored")
 EMPTY_LABEL = "default order"
 DEBT_LABELS = ("gate-debt repair", "link-cycle repair", "data-identity debt", "class-header adoption",
-               "code-identity debt", "link-stub closure", "TU consolidation", "TU approval",
+               "code-identity debt", "link-stub closure", "TU consolidation", "TU approval", "TU evidence",
                "Microsoft-header migration", "DirectX SDK migration")
 
 
@@ -1512,7 +1514,7 @@ def selected_queue(tier, drifts, structural, ghidra_absent, anchored, named,
 
 
 DEBT_TIERS = ("repair", "link", "data", "header", "identity",
-              "stubs", "consolidate", "tu-approval", "ms-headers", "dx")
+              "stubs", "consolidate", "tu-approval", "tu-evidence", "ms-headers", "dx")
 STRUCTURAL_TIERS = DEBT_TIERS[5:]          # repair_queue.STRUCTURAL_QUEUES
 TIER_LABELS = dict(zip(DEBT_TIERS, DEBT_LABELS))
 # Shares of the default pick among the queues after gate debt (always first: it is wrong
@@ -1533,8 +1535,10 @@ TIER_LABELS = dict(zip(DEBT_TIERS, DEBT_LABELS))
 #                  728 queued units.
 #   consolidate 7  tu_skeleton --queue: only ~31 approved TUs a merge can shrink, each
 #                  removing up to ~28 files. Small, so it drains; the share keeps it drained.
-#   tu-approval 8  16,858 proposed code rows in ~1,640 TUs: approval feeds the merge queue,
-#                  so it gets the larger half of the 15 consolidation points.
+#   tu-approval 5  16,858 proposed code rows in ~1,640 TUs: approval feeds the merge queue.
+#   tu-evidence 3  8,398 sources (2026-10-25) no tu_map row places at all, in unmapped
+#                  address runs; the retail layouts (tools/tu_evidence.py) reach few of
+#                  them, so a seat finds the anchor. Taken from tu-approval's 8.
 #   data 10        2,229 data-identity keys, a link prerequisite (one name per datum),
 #                  halved from 20 to pay for the structural tiers.
 #   identity 5     844 code-identity keys, reported in shadow; halved from 10.
@@ -1543,8 +1547,8 @@ TIER_LABELS = dict(zip(DEBT_TIERS, DEBT_LABELS))
 # Naming is not a default tier (it never was): --wb and tools/name_lane.py serve it on
 # request. BFME_TIER_WEIGHTS="link=30,stubs=15,..." overrides any subset; a tier at 0 is
 # still tried, last.
-TIER_WEIGHTS = {"link": 30, "stubs": 15, "header": 15, "consolidate": 7, "tu-approval": 8, "data": 10,
-                "identity": 5, "ms-headers": 5, "dx": 5}
+TIER_WEIGHTS = {"link": 30, "stubs": 15, "header": 15, "consolidate": 7, "tu-approval": 5, "tu-evidence": 3,
+                "data": 10, "identity": 5, "ms-headers": 5, "dx": 5}
 BUILT = []                  # debt queues this run built, in order (lazy: tests read it)
 _DEBT = {}
 
@@ -2015,7 +2019,7 @@ def main():
                          "names one, else its RVA); retry a raced selection")
     ap.add_argument("--tier",
                     choices=("repair", "link", "data", "header", "identity", "stubs", "consolidate",
-                             "tu-approval", "ms-headers", "packet", "named", "harvest",
+                             "tu-approval", "tu-evidence", "ms-headers", "packet", "named", "harvest",
                              "structural", "ghidra", "anchored", "similar", "wb", "dx"),
                     help="choose from only this task lane")
     ap.add_argument("--wb", action="store_const", const="wb", dest="tier",

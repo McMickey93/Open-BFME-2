@@ -613,9 +613,10 @@ AGENTS.md ("Work loop") gives the order; this is how the picker applies it.
 ### The default pick
 
 `python3 tools/next_work.py --claim` tries gate debt first, then the link, stub
-closure, header, TU-approval, consolidation, data, code-identity, Microsoft-header
-and DirectX queues in an order drawn by weight (link 30, stubs 15, header 15,
-tu-approval 8, consolidate 7, data 10, identity 5, ms-headers 5, dx 5; the
+closure, header, TU-approval, TU-evidence, consolidation, data, code-identity,
+Microsoft-header and DirectX queues in an order drawn by weight (link 30, stubs 15,
+header 15, tu-approval 5, tu-evidence 3, consolidate 7, data 10, identity 5,
+ms-headers 5, dx 5; the
 evidence for each number is beside `TIER_WEIGHTS` in `tools/next_work.py`;
 `BFME_TIER_WEIGHTS` overrides), falling through when one is empty or fully
 claimed. The structural queues (`repair_queue.STRUCTURAL_QUEUES`) retire no

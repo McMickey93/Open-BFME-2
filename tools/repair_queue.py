@@ -1890,6 +1890,63 @@ def tu_approval_items():
                    f"{TU_MAP}{stale}")
 
 
+def tu_evidence_items():
+    """(items, note): unmapped address runs holding sources no tu_map row places at all
+    (tools/tu_evidence.py runs), largest first, one item per run (at most 16 sources). Each
+    carries the retail-structural evidence tu_evidence re-derives for its rows (funclet
+    order, vftable layout, initializer order, .rdata order, funclet parentage), the
+    bracketing rows and the gap. A signal approves only once promoted past its precision
+    gate; the seat's job is a re-checkable anchor (a real name with a Zero Hour definition
+    or a __FILE__ string, often a mis-named row whose Z fails) or a missing bracket, never an
+    asserted TU. The item claims its sources (`file:`). PASS TEST: the map rebuilt from
+    current inputs gives the run's rows a TU (tools/tu_evidence.py --source SRC lists what
+    reaches them; never commit a regenerated map from this lane)."""
+    if not (ROOT / TU_MAP).exists():
+        return [], f"{TU_MAP} absent: TU-evidence queue skipped"
+    tools_on_path()
+    import tu_evidence
+    import tu_map
+    import tu_skeleton
+    out = tu_skeleton.map_rows()
+    layout = tu_map.Layout(ROOT)
+    st = tu_evidence.Structures(layout, out) if layout.image.is_file() else None
+    runs, bare = tu_evidence.runs(out, st, exists=lambda s: (ROOT / s).exists())
+    items = []
+    for run in runs:
+        lo, hi, srcs = run["lo"], run["hi"], run["sources"]
+        ends = []
+        for side, r in (("below", run["below"]), ("above", run["above"])):
+            if r:
+                ends.append(f"{side} {r['rva']} {r['tu']} ({r['confidence']} by {r['by']})")
+        sig = "; ".join(f"{s} " + ", ".join(f"{tu} x{n}" for tu, n in c.most_common(3))
+                        + (" (gated)" if s in tu_evidence.PROMOTED else " (proposal)")
+                        for s, c in sorted(run["signals"].items()))
+        items.append({
+            "tier": "tu-evidence", "check": "signal" if run["signals"] else "no-signal",
+            "function": f"0x{lo:08X}..0x{hi:08X}", "source": srcs[0], "target_rva": f"0x{lo:08X}",
+            "size": 0, "count": len(srcs), "rows": run["rows"], "sources": srcs,
+            "credit_note": f"{len(srcs)} source(s) with no TU evidence, {run['rows']} row(s)",
+            "why": (f"{run['rows']} row(s) in {len(srcs)} source(s) no tu_map signal places; "
+                    + ("; ".join(ends) or "no assigned row on either side")
+                    + (f", 0x{run['gap']:X} bytes apart" if run["gap"] is not None else "")
+                    + (f". Retail layout evidence: {sig}" if sig else ". No retail layout signal reaches them")
+                    + ". Find a re-checkable anchor (a real name with a Zero Hour definition or a __FILE__ "
+                      "string; often a mis-named row whose Z fails) or a missing bracket; never assert a TU"),
+            "start": (f"python3 tools/tu_evidence.py --source {srcs[0]}; python3 tools/name_lane.py consolidate "
+                      f"--under {posixpath.dirname(srcs[0])}/; names through tools/name_evidence.py and "
+                      "tools/rename.py (docs/naming.md)"),
+            "claim": [f"file:{s}" for s in srcs],
+            "pass_test": ("the map rebuilt from current inputs gives the run's rows a TU: python3 tools/tu_map.py "
+                          "--dir <source> or tools/tu_skeleton.py --plan <tu> (never commit a regenerated map from "
+                          "this lane)"),
+        })
+    stale = " (tu_map.csv stale: rebuilt in memory, never written)" if tu_skeleton._CACHE.get("stale") else ""
+    image = "" if st is not None else "; no retail image, so no layout evidence"
+    served = len({src for i in items for src in i["sources"]})
+    return items, (f"{len(items)} unmapped run(s) holding {served} of {bare} source(s) with "
+                   f"no TU evidence, from {TU_MAP}{stale}{image}")
+
+
 def ms_header_queue_items():
     """(items, note): reverse/ms_header_queue.tsv as a picker queue (ms_header_items)."""
     if not (ROOT / MS_HEADER_QUEUE).exists():
@@ -1934,6 +1991,7 @@ DEBT_QUEUES = {"data": (DATA_BASELINE, data_identity_items), "header": (HEADER_Q
 # The Phase 2 structural queues, served by the same picker; their builders skip themselves
 # with a note when an input is absent.
 STRUCTURAL_QUEUES = {"stubs": stub_items, "consolidate": consolidation_items, "tu-approval": tu_approval_items,
+                     "tu-evidence": tu_evidence_items,
                      "ms-headers": ms_header_queue_items, "dx": dx_items}
 
 

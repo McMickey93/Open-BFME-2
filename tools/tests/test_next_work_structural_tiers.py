@@ -19,7 +19,7 @@ import claims  # noqa: E402
 import next_work  # noqa: E402
 import repair_queue as rq  # noqa: E402
 
-STRUCTURAL = ("stubs", "consolidate", "tu-approval", "ms-headers", "dx")
+STRUCTURAL = ("stubs", "consolidate", "tu-approval", "tu-evidence", "ms-headers", "dx")
 
 
 # ---- weights and order

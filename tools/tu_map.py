@@ -25,6 +25,12 @@ Signals, strongest first (one letter each in the `by` and `evidence` columns):
      within 0x3000 bytes (retail object order keeps a TU contiguous).
   K  placeholder-class propagation (`??1Rva...` follows its `??_GRva...`).
   X  data: every function that references the item is assigned to one TU.
+  E/V/I/R/P  retail-structural layouts (tools/tu_evidence.py): funclet order,
+     vftable layout, initializer order, .rdata order and funclet parentage. Each
+     reaches only a row nothing above reaches, and only once tu_evidence.PROMOTED
+     lists it (a Verifier-Change commit recording `tu_evidence.py --validate` at
+     >= 99% held-out precision); until then it only proposes, in that tool's own
+     report and lane (`next_work.py --tier tu-evidence`), never in this map.
 
 The `evidence` column keeps each row's own pre-clustering F/Z/S/N values, so a
 row's TU can always be checked against what its own name and strings say.
@@ -663,7 +669,16 @@ def build(layout, ledger=None):
                     "evidence": " ".join(ev), "source": r["source"]})
     out.extend(data_rows(layout, rows))
     out.sort(key=lambda d: (int(d["rva"], 16), d["kind"]))
-    return out
+    return _evidence().apply(layout, out)
+
+
+def _evidence():
+    """tools/tu_evidence.py, imported late: it imports this module."""
+    here = str(Path(__file__).resolve().parent)
+    if here not in sys.path:
+        sys.path.insert(0, here)
+    import tu_evidence
+    return tu_evidence
 
 
 def data_rows(layout, rows):
@@ -887,10 +902,12 @@ def fingerprint(layout, zh_kind=None):
     out = ["# inputs of tu_map.csv as tools/tu_map.py wrote it; `tu_map.py --check-fresh` compares them"]
     for p in [layout.path(n) for n in FINGERPRINTED]:
         out.append(f"{_digest(p)}  {p.resolve().relative_to(layout.root.resolve()).as_posix()}")
+    if _evidence().PROMOTED:                 # a promoted layout signal reads the retail image
+        out.append(f"{_digest(layout.image)}  {layout.image.resolve().relative_to(layout.root.resolve()).as_posix()}")
     digest, note = zh_identity(layout, zh_kind)
     out.append(f"{digest}  {ZH_KEY}")
     out.append(f"# {ZH_KEY}: {note}")
-    for p in (Path(__file__).resolve(), layout.out):
+    for p in (Path(__file__).resolve(), Path(__file__).resolve().with_name("tu_evidence.py"), layout.out):
         try:
             name = p.resolve().relative_to(layout.root.resolve()).as_posix()
         except ValueError:
