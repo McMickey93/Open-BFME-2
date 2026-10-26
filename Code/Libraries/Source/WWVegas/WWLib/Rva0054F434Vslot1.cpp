@@ -32,7 +32,7 @@ namespace _STL { template <> void _List_base<AsciiString, allocator<AsciiString>
 namespace _STL { template <> _List_iterator<AsciiString, _Nonconst_traits<AsciiString> > list<AsciiString, allocator<AsciiString> >::insert(_List_iterator<AsciiString, _Nonconst_traits<AsciiString> >, AsciiString const &); }
 // bfme link decl-only end
 
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 class Rva00072FE6
 {

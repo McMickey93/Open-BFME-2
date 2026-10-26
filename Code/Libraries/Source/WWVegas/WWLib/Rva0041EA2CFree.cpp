@@ -27,7 +27,7 @@ class LocomotorTemplate;
 typedef _STL::vector<const LocomotorTemplate *> LocomotorVec;
 typedef _STL::pair<const LocomotorSetType, LocomotorVec> LocoPair;
 
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
 
 class Rva0041EA2C
 {
