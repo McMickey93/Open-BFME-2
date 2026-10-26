@@ -11,7 +11,7 @@
 // as the retail stosd/stosb shred.
 
 #pragma intrinsic(memset)
-extern "C" void* __cdecl memset(void *, int, unsigned int);
+#include <string.h>
 namespace _STL { struct __new_alloc { static void __cdecl deallocate(void *, unsigned int); }; }
 
 struct __alloc_header {

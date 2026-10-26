@@ -92,7 +92,7 @@ void Rva0073EECA::set(TargetNestedHandleData *other) {
 // Canonical list iterator erase @0x0073EFFC 42B: unlinks the
 // node, destroys its 12B value via the rowed ??1, frees it, stores next.
 // Callers: 0x0073F026, list erase paths 0x0073F170/0x0073F231.
-extern "C" void __cdecl free(void *p);
+#include <stdlib.h>
 struct ListNode0073EFFC {
     ListNode0073EFFC *m_next;
     ListNode0073EFFC *m_prev;

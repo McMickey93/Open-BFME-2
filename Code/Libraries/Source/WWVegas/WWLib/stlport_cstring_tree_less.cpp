@@ -7,7 +7,7 @@
 // result register.
 
 // 0x0006038D4 (27B): true if strcmp(a, b) < 0.
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 bool __stdcall Rva0006038D4CStrLess(const char *a, const char *b)
 {
