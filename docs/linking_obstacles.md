@@ -1593,6 +1593,13 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
     under the TU's flags the emitted `list<Rva0035CBB2Element>::insert` (pinned 0x0035CB8D)
     is not retail's. Declaring it only leaves it unresolved (a pin does not satisfy the
     census), so the copy itself has to match.
+    **Repaired 2026-10-26 (aa04b88683, agent K9):** 0x0035CB8D is the matched row
+    `list<crateCreationEntry>::insert`, so the two absorbed rows (0x0035CBB2
+    `_M_insert_dispatch`, 0x0035CC18 range `insert`) are `list<crateCreationEntry>` members.
+    Instantiated over `crateCreationEntry` instead of `Rva0035CBB2Element`/`Rva0035CC18Element`,
+    the TU emits retail's insert copy; the two `symbols.csv` pins that bound the placeholder
+    callees were dropped. `./build.sh` 5/5; `tools/link_check.py` (d1f046749a index):
+    `CrateSystem.cpp` 0 -> 259 B, `CrateCreationEntryListInsert.cpp` stays linked.
   - `MultiplayerSettings.cpp` (97 B) and `MultiplayerColorDefinitionCopy.cpp` (79 B),
     b93c4b507b: the merge dropped `/FIzh_ascii.h /DNDEBUG /DWIN32 /D_WINDOWS
     /D_STLP_USE_MALLOC /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE` (unresolved
