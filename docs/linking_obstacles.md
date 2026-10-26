@@ -1440,6 +1440,16 @@ separate strict receipt limitation encountered there.
   build/builder stack-home swap. Restoring the original header with a local field
   view passes both units (7/7 functions); the header queue debt is restored.
   Three local prerequisite repairs remain; original adoption evidence is banked.
+- The codex4 prerequisite batch ending at `bca2dcdf04` published no source
+  moves or composed objects. SlavedUpdateRepair.cpp's canonical GameLogic
+  adoption preserves all 62 external code definitions, 52 undefined symbols
+  and 71 code/data COMDATs against its original verified object. The push hook
+  passed 60/60 rows across five affected sources, but its batch audit remained
+  inconclusive: provider index `d1f046749a` did not match outgoing base
+  `0dd5e48e6a`, and five source objects lacked current strict receipts (first
+  Eva.cpp). No linked-byte increase or whole-image provider clearance is
+  claimed. See the SlavedUpdate prerequisite handoff for unchanged merge and
+  split blockers; all landed scope claims were released.
 - **Remaining / next check:** after the next published census/index supplies
   current receipts, rerun `link_batch_audit.py` for these exact source paths
   and `Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp`,

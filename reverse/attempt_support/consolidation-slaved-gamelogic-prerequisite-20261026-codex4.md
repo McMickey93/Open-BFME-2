@@ -64,3 +64,22 @@ the canonical include resolves from the donor's existing directory.
 Historical EA strings remain. Keep the source, header queue and this handoff's
 file claims, plus inherited retained scopes, until publication is confirmed.
 No RVA claims were taken. Unrelated untracked reverse/zh_sweep is preserved.
+
+Publication confirmed at bca2dcdf04, with the four inherited/recovery commits
+b2962d2d87, bb720e6b3c, 56b70313df and f6e0a2986b. The push hook passed
+60/60 rows across five sources. Its link audit was inconclusive: index
+d1f046749a differed from outgoing base 0dd5e48e6a, and five source objects
+lacked current strict receipts (first Eva.cpp). LINK-017 records that limit;
+no linked-byte increase is claimed. All ten landed file claims were released;
+release --landed found no outstanding RVA claims. The commit's identity shadow
+report includes the divergent Object::getBodyModule definition: the complete
+before/after object comparison above proves this adoption did not change that
+definition, and no identity key was retired.
+
+Read-only followup probes found no demonstrated new prerequisite in the
+allocated ProjectileStreamUpdate, RiderChangeContain, PlayerTemplate,
+ControlBarScheme or AITactic targets. Existing composition/ABI blockers were
+not retried. In particular AITactic's private Xfer has incompatible virtual
+slots; adding forward declarations alone cannot adopt BfmeXfer.h. The
+SubsystemInterface naming decision remains reserved to issue #116. No new
+merge acceptance or downstream Luna landing is claimed.
