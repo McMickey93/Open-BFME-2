@@ -235,7 +235,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_record_deferred.cpp` | 413 | 12 (C=6, S=6) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdateCtor.cpp` | 409 | 9 (U=9) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva005205DA.cpp` | 402 | 5 (U=3, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002BC47D.cpp` | 398 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002BC47D.cpp` | 398 | 5 (U=3, C=1, S=1) | Blocked 2026-10-26: element spelled four ways (LINK-040 sibling); needs a real `BfmeAssignRecord52` name first |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_pod_hash_bodies.cpp` | 391 | 14 (C=7, S=7) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/RailroadGuideAIUpdate.cpp` | 361 | 29 (U=22, C=6, S=1) | Open |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/WorldHeightMap.cpp` | 352 | 26 (U=14, C=7, S=5) | Open |

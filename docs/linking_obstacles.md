@@ -1525,6 +1525,20 @@ still byte-matches and that the POD-named helpers really are the same instantiat
 Clearance: pending.
 Census confirmation: not claimed.
 
+Sibling family, same cause (K10, 2026-10-26, inspected revision 7790bd44c7): the 52-byte
+`BfmeAssignRecord52` vector. `StlSweepW4Rva002BC47D.cpp` (`vector<Rva002BC47DElement>::_M_fill_insert`
+0x002BC47D plus `Rva002BC8C9Vector::resize`, 382 B) fails on unresolved `Rva002BC47DElement`
+copy ctor/dtor/`operator=` and a non-retail `_M_insert_overflow<Rva002BC47DElement>`. Retail
+0x002BC47D calls (target facts): 0x002B90D6 copy ctor (rowed `??0Rva002B91EDElement@@QAE@ABU0@@Z`,
+pinned again as `??0Rva002BC47DElement@@QAE@ABU0@@Z`), 0x002BADB2 / 0x002BADD8 / 0x002BBC7A
+(`uninitialized_copy` / `uninitialized_fill_n` / `_M_insert_overflow` over `Rva002BBC7ARecord`,
+`VectorOverflowRva002BBC7A.cpp`), 0x002B913D / 0x002B915A (`__copy_backward_ptrs` / `fill` over
+`BfmeAssignRecord52`) and 0x002B707E `??1BfmeAssignRecord52@@QAE@XZ`. One element is spelled
+`BfmeAssignRecord52`, `Rva002BC47DElement`, `Rva002BBC7ARecord`, `Rva002B91EDElement` (and
+`Rva002B91BBElement` op= ICF row). `tools/rename.py class --name Rva002BC47DElement --new
+BfmeAssignRecord52 --dry-run` refuses: BfmeAssignRecord52 is itself a placeholder, so the family
+needs a real element name (or a sanctioned merge path) first. No edit made.
+
 ### LINK-041: 23 units lost `TheSkirmishGameInfo` after their declarations were respelled `GameInfo *`
 
 **Status: Repair landed, awaiting census. Updated: 2026-10-26; inspected revision: 35efd22768.**
