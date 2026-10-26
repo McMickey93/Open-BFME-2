@@ -22343,7 +22343,6 @@ present_unmatched	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_unicode_era
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/thread.cpp	Sleep_Ms@ThreadClass@@	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/vector_class_resize.cpp	EmitPendingSurfaceDestructor	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/widestring.cpp	Release_Resources@WideStringClass@@	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/QuaternionRandomize.cpp	normalizeForRandomize@Quaternion@@QAEXXZ	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/aabtreecull.cpp	0AABTreeCullSystemClass@@	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/aabtreecull.cpp	0AABTreeIterator@@QAE@PAVAABTreeCullSystemClass@@@Z	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/aabtreecull.cpp	0AABTreeNodeClass@@	1
