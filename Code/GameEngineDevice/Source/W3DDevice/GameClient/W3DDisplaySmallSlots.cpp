@@ -13,7 +13,7 @@
 typedef int Int;
 typedef bool Bool;
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 #define VSLOTS4(p) virtual void p##0(); virtual void p##1(); virtual void p##2(); virtual void p##3();
 #define VSLOTS16(p) VSLOTS4(p##0) VSLOTS4(p##1) VSLOTS4(p##2) VSLOTS4(p##3)

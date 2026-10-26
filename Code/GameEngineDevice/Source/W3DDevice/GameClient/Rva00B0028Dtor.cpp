@@ -18,7 +18,7 @@
 // (rowed element destructor 0x004D9A3C), twelve GameFree buffers and
 // RefCountClass (unwind copy 0x00072892).
 void __cdecl Rva00030830GameFree(void *);
-void operator delete[](void *p);
+#include <new>
 
 class RefCountClass
 {

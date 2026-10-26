@@ -25,7 +25,7 @@ struct Rva00112153Elem
 	char m_00;
 };
 
-void __cdecl operator delete[](void *p);
+#include <new>
 
 struct Rva0011216CSlotQuartet
 {
