@@ -148,3 +148,37 @@ change. progress.py origin/master: byte-matched 100%, LINKED 7,567,229
 (98.13%), LINKING 7,322,361 (97.47%), all deltas zero. File reduction and debt
 retirement remain zero. Retain the eight claims listed above if the publisher
 defers the batch; the runner publishes it after the session.
+
+## Second recovery receipt
+
+The following session inherited the same four unpublished commits, rebased as
+a76572b3c6, 5510e17787, b60da35364 and ac0a89927a. No new trial target was
+selected before recovering this batch. The eight file claims above remain
+owned by this seat. Fresh five-source build: 30/30 exact, one string literal,
+four float literals; dependency receipts current. Declaration check passes.
+allowed_symbols: 63 references, zero wrong bindings. data_check: zero findings
+on the three changed sources; converged: ten addresses, zero second names or
+unjudged rows. The standalone Bridge provider comparison against the original
+pre-repair receipt passes again, including the exact added accessor COMDAT twin.
+
+The complete pending range origin/master..ac0a89927a plus this receipt has no
+source path changes, ledger moves or protected-register changes. Active path
+consumers need no repoint; historical EA paths remain intact. CSV and diff
+whitespace checks pass. Official BFME1 upstream was fetched by the initial
+pull: d906a5aee1f9f1b5addbb96d2578b9a8bddffbbc. The retained clean reference
+is still 001ccd8e27686e9887235b62ff797627f2dde7f5; full update validation is
+still outstanding and no success receipt was written.
+
+progress.py origin/master passes: BYTE-MATCHED 100%, LINKED 7,567,229 bytes
+(98.13%), LINKING 7,322,361 bytes (97.47%), all deltas zero. This recovery
+adds no recovered bytes, file reduction or debt retirement.
+
+Fresh ordinary dry-runs (build/sol-b5-recovery2-{bridge,prop}.log) confirm the
+same acceptance: Bridge seed/destructor/vertex, 23 rows; PropDraw accepts none
+with the same recorded COMDAT/member/header blockers. Fresh composition
+receipts show all 56 bindings unchanged, all 44 external definitions retained,
+no changed provider facts or new undefineds, and identical data binding and
+definition unions. These are supported scoped object comparisons, not a new
+census or a confirmed Luna merge. The first planner scan overlapped a merge
+trial's temporary source and refused its snapshot; it was rerun after both
+trials completed. No failed or partial source trial remains in Code/.
