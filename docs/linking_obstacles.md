@@ -229,6 +229,18 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
 
 **Status: Open. Updated: 2026-10-26.**
 
+- **ControlBarScheme manager prerequisite (2026-10-26):**
+  [Canonical manager adoption](../reverse/attempt_support/consolidation-controlbar-manager-prerequisite-20261026-codex4.md)
+  preserves all 14 seed/lookup/setter rows and their code/data facts; all 37
+  affected names retain selected provider and verdict. Ordinary dry-run newly
+  accepts lookup, both setters and manager constructor, with 26 rows / 2,130
+  bytes across 13 files. This is not a superset of the prior 21 rows / 3,678
+  bytes: scheme init now needs TheWindowManager's declaration and manager dtor
+  fails bytes. The accepted composition equals the fresh standalone external
+  symbol/COMDAT union and all row data bindings, with LinkGuard acceptance.
+  List/StringBase, drawing declarations, constructor adoption and parse-table
+  boundaries remain. No merge, debt retirement or census gain is claimed.
+
 - **GameEngine consolidation provider boundary (2026-10-26):**
   [The banked declaration trial](../reverse/attempt_support/consolidation-gameengine-declarations-prerequisite-20261026-codex4.md)
   removes a redundant TheNetwork macro and declares the existing frame-period

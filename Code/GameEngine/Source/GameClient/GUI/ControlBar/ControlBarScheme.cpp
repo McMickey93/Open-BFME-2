@@ -1,4 +1,4 @@
-// cl: /Ireference/shims/ini_bfme2 /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/open-bfme-1/Code/GameEngine/Source/Common/System /Ireference/open-bfme-1/Code/GameEngine/Include /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib
+// cl: /Ireference/shims/bfme2_ascii /Ireference/shims/ini_bfme2 /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/open-bfme-1/Code/GameEngine/Source/Common/System /Ireference/open-bfme-1/Code/GameEngine/Include /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib
 // stlport
 //
 // ?init@ControlBarSchemeManager@@QAEXXZ, retail 0x00320205 (140 bytes).
@@ -31,17 +31,7 @@ class ControlBarScheme;
 
 #include "../../../../../Libraries/Include/Lib/Coord2D.h"
 
-class ControlBarSchemeManager
-{
-public:
-	void init( void );
-
-private:
-	ControlBarScheme *m_currentScheme;
-	Coord2D m_multiplyer;
-	typedef std::list< ControlBarScheme * > ControlBarSchemeList;
-	ControlBarSchemeList m_schemeList;
-};
+#include "ControlBarSchemeManagerView.h"
 
 void ControlBarSchemeManager::init( void )
 {
