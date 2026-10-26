@@ -22,4 +22,4 @@ struct Rva00501B33Element {
  char bytes[8];
 };
 bool operator<(const Rva00501B33Element&,const Rva00501B33Element&);
-template class _STL::set<Rva00501B33Element>;
+template _STL::set<Rva00501B33Element>::set(const _STL::set<Rva00501B33Element> &);

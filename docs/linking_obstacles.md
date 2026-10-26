@@ -207,6 +207,14 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
 
 **2026-10-26 assigned-vector follow-up, inspected `896af216804e`:** current objects retain the selected-wrong `vector<BfmePod28>::_M_fill_insert` in `stlport_pod_noexc_deferred_copies.cpp`, blocking `stlport_pod28_vector_resize_value.cpp`. Retail resize 0x005849F4 calls 0x00584405, already rowed under `vector<Rva00584405Element>`. That owner calls 0x00583A1E (`Rva002337F0::set`, 49 B), 0x0058431D (`Rva0058431D::rva0058431D`, 189 B), and the existing typed copy/fill rows at 0x00583A4F, 0x00583B11, 0x00583B37 and 0x00583B54. This is an element/member/signature identity prerequisite across existing rows, not a missing body. The owner itself remains U1/L1/S1; the resize remains S1 in the 40-unit current-provider preview. No source trial repeated the earlier exception-contract or /Ob0 forwarding failures. Next: reconcile the 28-byte record and these already rowed helpers in the naming lane, then recheck both consumers and the deferred provider. Evidence: `build/link-worker-w5/retail-probe-final.log`, `before-extra-providers.log`, `after-cohort.log` and `build/link-report.md`. No clearance or census confirmation claimed.
 
+#### Assigned W4 and W5 vector sweep, 2026-10-26
+
+Status: Blocked on element and row-name reconciliation. Inspected revision: `58598f540fd3c84610304b3659ed382a4c05acca`; ordinary-preview index `d1f046749a`, rules `retail-truth-4`. The current 91-unit provider/consumer comparison in `build/c136-w4sweep/before-with-providers.log`, `before-narrow-consumers.log` and `after-narrow-consumers.log` preserves every previously clean result and adds no named blocker. `build/link-report.md` maps all assigned units, native calls, existing row homes and gate receipts.
+
+Evidence / affected units: the unchanged W4 fill-insert units `000C225D`, `001524F9`, `0017422D`, `00215949`, `003F53DA` and `005205DA` use element names different from the rowed constructors, destructors, assignment and overflow workers their retail calls reach. In particular, `003F53DA` calls the now-rowed `ArmySummary` copy at 0x0040E96D and destructor at 0x0040E499; its element is not established by the generic 104-byte helper labels. W5 `001506BF`, `0015079D` and `0015087B` reach the three distinct polymorphic copy constructors at 0x0014F480, 0x0014F4A1 and 0x0014F4C2 and their rowed overflow owners, rather than their local two-word copy bodies. W5 `0039C415` reaches `Rva0039B893` at 0x0039B893 and the rowed 0x0039C1C3 worker; its additional 0x00587DCD row remains subject to the existing 0x00587C40 exception-contract bank.
+
+Completed: all listed units were checked with their current native provider objects, and all assigned rows pass the normal byte gate. No vector source edit is retained. The recorded `/Ob0` forwarder, overflow-suppression and 0x00587C40 exception-contract failures were not repeated. Remaining / next check: reconcile each native element and its existing row owners together through the naming lane, then recheck the whole family. Preserve the three distinct 0x0014F4xx classes. No missing native match, admissible new fold pin or shared-header-only repair was established. Clearance and census confirmation remain pending.
+
 ### LINK-003: residual Zero Hour memory-pool interfaces
 
 **Status: Open. Updated: 2026-10-25.**
@@ -1928,6 +1936,8 @@ pinned again as `??0Rva002BC47DElement@@QAE@ABU0@@Z`), 0x002BADB2 / 0x002BADD8 /
 BfmeAssignRecord52 --dry-run` refuses: BfmeAssignRecord52 is itself a placeholder, so the family
 needs a real element name (or a sanctioned merge path) first. No edit made.
 
+**Assigned-family confirmation (2026-10-26, inspected `58598f540fd3c84610304b3659ed382a4c05acca`):** both `StlSweepW4Rva001EBEAB.cpp` and `StlSweepW4Rva002BC47D.cpp` remain U3/L1/S1 with current native providers against index `d1f046749a`. Their retail calls still reach the CarryoverUnit and split 52-byte-record owners documented above. No source change or repeat of the failed forwarder/overflow-suppression trials was made. `build/c136-w4sweep/native-evidence.log`, `provider-rows.json` and the paired ordinary-preview logs retain the native references and row homes; all their rows pass `final-all-assigned-build.log`. Next check remains coherent element/row reconciliation, including the real `CarryoverUnit` name where independently supported, rather than adding more same-address placeholder names. Clearance and census confirmation remain pending.
+
 ### LINK-041: 23 units lost `TheSkirmishGameInfo` after their declarations were respelled `GameInfo *`
 
 **Status: Repair landed, awaiting census. Updated: 2026-10-26; inspected revision: 35efd22768.**
@@ -2728,6 +2738,16 @@ Remaining / next check: each pair still calls an undefined placeholder element c
 Clearance: only the unused-emission subset is cleared in ordinary-preview scope; the three units remain blocked. Census confirmation pending.
 Census confirmation: not claimed.
 
+#### Additional constructor-only sweep cleanup, 2026-10-26
+
+Status: Open; unused-emission subset cleared in ordinary-preview scope; census confirmation pending. Inspected revision: `58598f540fd3c84610304b3659ed382a4c05acca`; index `d1f046749a`, rules `retail-truth-4`.
+
+Evidence / affected units: `StlSweepW4Rva0033A7DC.cpp`, `StlSweepW4Rva0056DDF5.cpp`, `StlSweepW4Rva004DA329.cpp` and `StlSweepW4Rva00501B33.cpp`. Completed: instantiate only the two rowed `pair` constructors and the default/copy `set` constructors from the unchanged STLport headers. All five rows remain exact. The paired preview changes the four units from U5/U5/U3-L1-S1/U3-L1-S1 to U1/U1/U1-L1-S1/U2-L1-S1 respectively. Object inventories remove 389 distinct emitted names without adding any definition. The index reference-edge audit finds no retained external referrer for the 383 names without alternate providers; the other six have alternatives, and no selected first provider changes. The same 70 of 91 current units preview LINKS before and after, including `StlportElementCopyCtorsW3G15.cpp` and `PickAndPlayUnitVoiceResponse.cpp`; no compared unit gains a named blocker. Raw inventories, reference audit, comparisons and all passing byte/declaration/EH/shadow-data/CSV/pin checks are under `build/c136-w4sweep/`, mapped by `build/link-report.md`.
+
+Remaining / next check: the pair constructors call 0x002CF0F0 (`BfmeFixedStorage002CF0F0`, 24 bytes, FixedStorageCopyBFME2.cpp) and 0x00037050 (the private `StringBase<unsigned short>` copy, 66 bytes, StringBaseWideCopyCtor.cpp). Reconcile each key's actual identity and pair row with those existing owners; the earlier 0x0033A7DC wrapper failure was not repeated. The default set calls the rowed 51-byte `Rva004D9B18` constructor at 0x004D9B18, whose allocator/type contract still differs. The copy set's tree calls the 36-byte proxy constructor at 0x004FF55E and 115-byte tree-copy worker at 0x0050146E, which operates on 92-byte values rather than its eight-byte placeholder. The residual element destructors/comparators are emitted dependencies, not independently established missing native bodies. All four units remain blocked; naming/receiver/allocator reconciliation precedes another emission trial. No row, pin, alias, code-generation flag or shared header was changed.
+
+Clearance: only the removed unrelated emissions are cleared in ordinary-preview scope; census confirmation pending. No whole-unit link or census gain is claimed.
+
 ### LINK-055: map and set sweep wrappers bind differently named existing tree workers
 
 Status: Blocked on row and receiver identity reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
@@ -2842,3 +2862,13 @@ Census confirmation: not claimed.
   parameter spelled `int` where the caller passes a tag reference). Calling those rows by type means
   stubbing `basic_string<char>` in a unit that stubs its own STL; frame-slot effects under /Ob1 untested.
 - **Census confirmation:** awaiting the next census.
+
+### LINK-069: the four-byte merge sweep combines a string buffer with opaque record helpers
+
+Status: Blocked on algorithm, element and provider-name reconciliation. Updated: 2026-10-26; inspected revision: `58598f540fd3c84610304b3659ed382a4c05acca`.
+
+Evidence / affected unit: `StlSweepW4Rva004F8C16.cpp`, all three rows byte-exact against the current inputs. Retail's 131-byte wrapper calls 0x004F77AD (51-byte temporary initializer) and 0x004F77E0 (33-byte destructor), rowed as `Rva004F60AA` members in Rva004F60AAInit.cpp; it calls 0x004F840B (303-byte `__merge_without_buffer<TreeHintRef00217D4C,...>`, PAUTreeHintRef00217D4CRva004F9565.cpp) and 0x004F853A (279-byte `__merge_adaptive<AsciiString,...>`, stlport_stable_sort_asciistring_o1.cpp). The sweep's distinct `Rva004F8C16Element` names leave U4/L3/S3. Raw retail references and existing row homes: `build/c136-w4sweep/native-evidence.log` and `provider-rows.json`; current-provider before/after previews and full gates are mapped in `build/link-report.md`.
+
+Completed: diagnosis and unchanged byte verification only. No source trial repeated the documented TreeHintRef/AsciiString helper-spelling conflict or copied the existing providers' incompatible function-pointer adapters. Remaining / next check: reconcile the native string/owning-handle element, buffer operations, comparator and the already rowed algorithms together. Suppressing the sole current-name copies would leave unresolved names; changing the wrapper's template spelling requires ledger work outside this seat. No missing native body, independently proven new fold pin or shared-header change is established by these calls.
+
+Clearance: pending. Census confirmation: not claimed.

@@ -226,7 +226,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp` | 499 | 4 (C=2, S=2) | Open |
 | `Code/GameEngine/Source/Common/Rva005F422CDtor.cpp` | 495 | 9 (U=9) | Open |
 | `Code/GameEngine/Source/Common/V3PolyDeferredCopyCtors.cpp` | 491 | 13 (U=12, C=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0039C415.cpp` | 457 | 11 (C=5, S=6) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0039C415.cpp` | 457 | 11 (C=5, S=6) | 2026-10-26 at `58598f540f`: Current-provider preview retains the COMDAT/selected blockers; reconcile native element/provider names and preserve the existing failed-trial boundaries (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/Libraries/Source/WWVegas/WW3D2/mesh.cpp` | 454 | 6 (U=3, C=2, S=1) | Open |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva001041BDASlot1.cpp` | 438 | 7 (U=6, C=1) | Open |
 | `Code/GameEngine/Source/Common/RTS/ProductionPrerequisite.cpp` | 429 | 11 (U=2, C=6, S=3) | Open |
@@ -234,8 +234,8 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/System/CrateCreationEntryList.cpp` | 417 | 5 (U=1, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_record_deferred.cpp` | 413 | 12 (C=6, S=6) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdateCtor.cpp` | 409 | 9 (U=9) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva005205DA.cpp` | 402 | 5 (U=3, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002BC47D.cpp` | 398 | 5 (U=3, C=1, S=1) | Blocked 2026-10-26: element spelled four ways (LINK-040 sibling); needs a real `BfmeAssignRecord52` name first |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva005205DA.cpp` | 402 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the native element and rowed copy/destructor/assignment/overflow names (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002BC47D.cpp` | 398 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the split 52-byte-record row family (LINK-040). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_pod_hash_bodies.cpp` | 391 | 14 (C=7, S=7) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/RailroadGuideAIUpdate.cpp` | 361 | 29 (U=22, C=6, S=1) | Open |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/WorldHeightMap.cpp` | 352 | 26 (U=14, C=7, S=5) | Open |
@@ -246,19 +246,19 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp` | 326 | 6 (U=6) | Open |
 | `Code/GameEngine/Source/Common/Rva004E0D67Dtor.cpp` | 325 | 4 (U=4) | Open |
 | `Code/GameEngine/Source/Common/RvaMorphInitFamily.cpp` | 309 | 5 (U=5) | Links on current inputs: `link_check.py --refresh` LINKS 0 -> 301 B (2026-10-26 at 42ca4d9ffc, index d1f046749a); no edit; census pending |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001EBEAB.cpp` | 307 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001EBEAB.cpp` | 307 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the CarryoverUnit row family (LINK-040). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/GameEngine/Source/Common/BfmeConv1292DeferredWalkers.cpp` | 298 | 6 (U=6) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp` | 290 | 4 (U=3, C=1) | Open |
 | `Code/GameEngine/Source/Common/VslotSmallBodiesAG_Rva00131CF2.cpp` | 286 | 10 (U=10) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Contain/OpenContain.cpp` | 283 | 13 (U=11, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001DF2D3.cpp` | 281 | 4 (U=2, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00215949.cpp` | 274 | 5 (U=3, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001524F9.cpp` | 273 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00215949.cpp` | 274 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the native element and rowed copy/destructor/assignment/overflow names (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001524F9.cpp` | 273 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the native element and rowed copy/destructor/assignment/overflow names (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/GameEngine/Source/Common/RvaCloneDeferredValueReturns.cpp` | 272 | 10 (U=4, C=6) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0017422D.cpp` | 269 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0017422D.cpp` | 269 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the native element and rowed copy/destructor/assignment/overflow names (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_pod_noexc_deferred_copies.cpp` | 269 | 8 (C=4, S=4) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva000C225D.cpp` | 264 | 5 (U=3, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva003F53DA.cpp` | 263 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva000C225D.cpp` | 264 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the native element and rowed copy/destructor/assignment/overflow names (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva003F53DA.cpp` | 263 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Current-provider preview remains U3/L1/S1; reconcile the native element and rowed copy/destructor/assignment/overflow names (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContain.cpp` | 261 | 11 (U=9, C=2) | Open |
 | `Code/GameEngine/Source/Common/Rva007AEA2CArrayInits.cpp` | 249 | 10 (U=10) | Open |
 | `Code/GameEngine/Source/Common/Rva006CBF40Deferred.cpp` | 245 | 14 (C=7, S=7) | Open |
@@ -267,9 +267,9 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/Rva00240230VectorInsertOverflow_Rva00541d10.cpp` | 231 | 8 (U=2, C=3, S=3) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDtor_Unresolved.cpp` | 230 | 3 (C=3) | 2026-10-25: aa31e9bac4 and paired current-provider checks clear 222 B and 14 public consumers (1,212 B); LINK-014. Census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00584405.cpp` | 225 | 3 (U=1, C=1, S=1) | 2026-10-26 (d0d3b5054d): still blocked. The element family is split across three placeholder names, and the copy-ctor pin 0x00583A1E is an assignment. Needs a family rename; see [LINK-064](linking_obstacles.md#link-064-placeholder-element-names-that-hide-the-retail-element-of-three-stl-families). |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001506BF.cpp` | 222 | 8 (C=4, S=4) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0015079D.cpp` | 222 | 8 (C=4, S=4) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0015087B.cpp` | 222 | 8 (C=4, S=4) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001506BF.cpp` | 222 | 8 (C=4, S=4) | 2026-10-26 at `58598f540f`: Current-provider preview retains the COMDAT/selected blockers; reconcile native element/provider names and preserve the existing failed-trial boundaries (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0015079D.cpp` | 222 | 8 (C=4, S=4) | 2026-10-26 at `58598f540f`: Current-provider preview retains the COMDAT/selected blockers; reconcile native element/provider names and preserve the existing failed-trial boundaries (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0015087B.cpp` | 222 | 8 (C=4, S=4) | 2026-10-26 at `58598f540f`: Current-provider preview retains the COMDAT/selected blockers; reconcile native element/provider names and preserve the existing failed-trial boundaries (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/gen_small/gthunks_000_admitted.cpp` | 220 | 69 (U=69) | Open |
 | `Code/GameEngine/Source/GameClient/RegionDetailsStructuresIconCtor.cpp` | 217 | 4 (U=4) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyWarehouseDockUpdate.cpp` | 217 | 9 (U=7, C=2) | Open |
@@ -289,7 +289,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWSaveLoad/twiddler.cpp` | 187 | 11 (U=10, C=1) | Open |
 | `Code/GameEngine/Source/Common/Rva00787C20HashOwnerDestructor.cpp` | 186 | 8 (U=4, C=2, S=2) | Open |
 | `Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteRecVectorInsertOverflow.cpp` | 183 | 3 (C=1, S=2) | 2026-10-26 (d0d3b5054d): still blocked. The real element is the `BfmeStringRecord002CF5B1` family. `ProductionPrerequisite.cpp`'s ZH view emits a wrong overflow and `_Construct`, and conflates 0x004EE1A9. See [LINK-064](linking_obstacles.md#link-064-placeholder-element-names-that-hide-the-retail-element-of-three-stl-families). |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00501B33.cpp` | 183 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00501B33.cpp` | 183 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Copy-constructor-only instantiation verified; U3/L1/S1 to U2/L1/S1. Native proxy and 92-byte-value tree-copy workers differ from the placeholder; LINK-054. Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/GameEngine/Source/Common/Rva00566695Assign.cpp` | 179 | 3 (C=2, S=1) | 2026-10-26 (d0d3b5054d): still blocked. The map value is a 0x18-byte two-tree record, not AsciiString (0x2C node; pair copy 0x00500839). The pair pin is wrong. See [LINK-064](linking_obstacles.md#link-064-placeholder-element-names-that-hide-the-retail-element-of-three-stl-families). |
 | `Code/Libraries/Source/WWVegas/WWMath/vehiclecurve.cpp` | 178 | 4 (U=3, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamageCtorModuleFactoryBody.cpp` | 177 | 5 (U=1, C=2, S=2) | Open |
@@ -299,7 +299,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/System/SaveGame/GameState.cpp` | 152 | 27 (U=23, C=2, S=2) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp` | 151 | 17 (U=16, S=1) | Open |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DAnimationInfoVectorInsert.cpp` | 149 | 4 (C=2, S=2) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva004F8C16.cpp` | 149 | 10 (U=4, C=3, S=3) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva004F8C16.cpp` | 149 | 10 (U=4, C=3, S=3) | 2026-10-26 at `58598f540f`: Current-provider preview remains U4/L3/S3; native buffer and string/owning-handle merge rows need one supported identity (LINK-069). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp` | 145 | 6 (U=6) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_pod8_resize_byvalue.cpp` | 143 | 6 (C=3, S=3) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehavior.cpp` | 142 | 7 (U=7) | Open |
@@ -428,10 +428,10 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00627B10.cpp` | 28 | 6 (U=4, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/R5VectorDtorEHFramedPolymorphic.cpp` | 27 | 15 (U=4, C=5, S=6) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionsMenu.cpp` | 27 | 8 (U=8) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0033A7DC.cpp` | 27 | 5 (U=5) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0056DDF5.cpp` | 27 | 5 (U=5) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0033A7DC.cpp` | 27 | 5 (U=5) | 2026-10-26 at `58598f540f`: Pair-only instantiation verified; U5 to U1. Native key copy 0x002CF0F0 has a different row name; LINK-054. No whole-unit clearance. Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0056DDF5.cpp` | 27 | 5 (U=5) | 2026-10-26 at `58598f540f`: Pair-only instantiation verified; U5 to U1. Native key copy 0x00037050 is StringBase<unsigned short>; LINK-054. No whole-unit clearance. Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_valarray_int.cpp` | 27 | 4 (U=1, C=2, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva004DA329.cpp` | 25 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva004DA329.cpp` | 25 | 5 (U=3, C=1, S=1) | 2026-10-26 at `58598f540f`: Default-constructor-only instantiation verified; U3/L1/S1 to U1/L1/S1. Native tree constructor 0x004D9B18 needs receiver/allocator reconciliation; LINK-054. Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005F35ED.cpp` | 25 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp` | 24 | 4 (U=2, C=2) | 2026-10-26 at 78413ee546: remove the unrowed lookup-table manager port and explicitly instantiate the matched accessor; 1/1 exact, current-receipt preview LINKS 0 -> 24 B. WWMathInit remains 3/3 exact and 388 B linkable. Fifteen hatches removed; cached consumer audit clear. [Evidence](../reverse/attempt_support/lookuptable-port-removal-20261026-codex5.md), LINK-046; older-index provider audit provisional, census confirmation pending. |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLGameSetupMenu.cpp` | 23 | 12 (U=11, C=1) | Open |
