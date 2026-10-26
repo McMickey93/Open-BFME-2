@@ -15,7 +15,6 @@
 class Rva00222A8BTarget
 {
 };
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
 void __cdecl Rva005277D9Fire(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function, bool *flagPtr);
 
 class BfmeAptWindowManager
@@ -23,6 +22,7 @@ class BfmeAptWindowManager
 public:
 	void bfmeSetText(const AsciiString &, const UnicodeString &, bool);
 };
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 extern const unsigned short g_Va007C9260[];
 
@@ -64,7 +64,7 @@ void StrategicHUD::CommandButtonMovieClip::Impl::ShowProductionCount(int val)
 		{
 			bool flag = true;
 			const char *prefix = m_inner0C ? (const char *)((char *)m_inner0C + 8) : "";
-			Rva005277D9Fire(TheRva00222A8BTarget, (void *)m_level08, prefix, "ShowProductionCount", &flag);
+			Rva005277D9Fire((Rva00222A8BTarget *)g_bfmeAptWindowManager, (void *)m_level08, prefix, "ShowProductionCount", &flag);
 		}
 		m_flag42 = 1;
 	}
@@ -75,7 +75,7 @@ void StrategicHUD::CommandButtonMovieClip::Impl::ShowProductionCount(int val)
 		AsciiString key;
 		const char *mid = m_inner0C ? (const char *)((char *)m_inner0C + 8) : "";
 		key.format("APT:_level%u.%s_ProductionCount", m_level08, mid);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, tmp, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, tmp, false);
 		m_count38 = val;
 	}
 }
