@@ -22,11 +22,7 @@ protected:
 	unsigned char m_pad08[0x28 - 8];
 };
 
-class Rva0007DF07
-{
-public:
-	virtual ~Rva0007DF07() {}
-};
+#include "../../Include/Common/Rva0007DF07.h"
 
 class Rva001E2906 : public Rva001E2747, public Rva0007DF07
 {
