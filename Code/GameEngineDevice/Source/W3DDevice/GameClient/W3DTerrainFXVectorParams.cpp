@@ -352,7 +352,7 @@ struct Rva001530E9Path
 };
 
 // Retail loads the msvcr71.dll _strcmpi import from IAT slot 0x00BBA518.
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
+#include <string.h>
 
 class Rva00080221
 {

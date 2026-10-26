@@ -8,7 +8,7 @@
 // Native teardown then restores Snapshot table 0xBBB554; original intermediate
 // inheritance and the meaning of the word at +4 remain unrecovered.
 inline ModuleData::~ModuleData() { reinterpret_cast<Snapshot *>(this)->Snapshot::~Snapshot(); }
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 extern float g_parseDurationMsecScale;
 struct Rva001408C0Target;
 struct Rva00E03CE0 { void Rva004ABEAE(Rva001408C0Target *); };
