@@ -223,7 +223,7 @@ class Rva005CCEB6 { public: void rva005CCEB6(); };
 class Rva005CD708 { public: void rva005CD708(); };
 class Rva005D14AB { public: void rva005D14AB(); };
 class Rva000AD6F4 { public: void clear(); };
-class Rva002B5EB5 { public: bool rva002B5EB5(); };
+class Rva002B5EB5 { public: bool IsLocalPlayerAllowedToEndPhase(); };
 class Rva0042D6AEPtrChaseField { public: int get() const; };
 class ResolveUpdateAction {
 public:
@@ -269,7 +269,7 @@ void StrategicInGameUI::ResolveBattlesBehavior::Impl::Update()
  reinterpret_cast<Rva005CCEB6 *>(reinterpret_cast<char *>(this)+4)->rva005CCEB6();
  reinterpret_cast<StrategicInGameUI::ManualPhaseEnder *>(state->phaseEnder)->Update();
  reinterpret_cast<Rva005CD708 *>(state->statusDisplayer)->rva005CD708();
- if(!state->endPhaseRequested && !state->battleState && reinterpret_cast<Rva002B5EB5 *>(TheLivingWorldLogic)->rva002B5EB5()) {
+ if(!state->endPhaseRequested && !state->battleState && reinterpret_cast<Rva002B5EB5 *>(TheLivingWorldLogic)->IsLocalPlayerAllowedToEndPhase()) {
   int hud=state->ui->impl->get();
   int button=reinterpret_cast<Rva0042D6AEPtrChaseField *>(hud)->get();
   if(button) {

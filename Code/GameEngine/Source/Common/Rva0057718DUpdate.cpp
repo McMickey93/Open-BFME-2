@@ -46,7 +46,7 @@ public:
 class Rva002B5EB5
 {
 public:
-	bool rva002B5EB5();
+	bool IsLocalPlayerAllowedToEndPhase();
 };
 
 class LivingWorldLogic;
@@ -104,7 +104,7 @@ void Rva0057718D::rva0057718D()
 	m_notifier28.rva005CD708();
 	if (m_hook14)
 		m_hook14->rva000B3FD0();
-	if (!m_done38 && reinterpret_cast<Rva002B5EB5 *>(TheLivingWorldLogic)->rva002B5EB5())
+	if (!m_done38 && reinterpret_cast<Rva002B5EB5 *>(TheLivingWorldLogic)->IsLocalPlayerAllowedToEndPhase())
 	{
 		const Rva0042D6AEPtrChaseField *field = (const Rva0042D6AEPtrChaseField *)m_source0C->m_field04->get();
 		Rva0057718DTarget *target = (Rva0057718DTarget *)field->get();

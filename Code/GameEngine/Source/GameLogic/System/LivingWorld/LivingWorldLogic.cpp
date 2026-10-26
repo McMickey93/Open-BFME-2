@@ -4033,9 +4033,9 @@ void LivingWorldLogic::rva0047A69C(const AsciiString &name)
 // Keep the existing callers' address-derived ABI spelling; the receiver
 // borrows this unit's established LivingWorldLogic layout, with no copy.
 class Rva002B32CE {public:bool rva002B32CE();};
-class Rva002B5EB5 {public:bool rva002B5EB5();};
+class Rva002B5EB5 {public:bool IsLocalPlayerAllowedToEndPhase();};
 
-bool Rva002B5EB5::rva002B5EB5()
+bool Rva002B5EB5::IsLocalPlayerAllowedToEndPhase()
 {
     LivingWorldLogic *logic = reinterpret_cast<LivingWorldLogic *>(this);
     Int allowed;

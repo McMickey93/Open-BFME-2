@@ -10037,7 +10037,7 @@ name,address,notes
 ?rva002B3740@Rva002BA8F1Logic@@QAE_NXZ,0x002B3740,unrowed thiscall on TheLivingWorldLogic (g_009FEF10 0x00DFEF10) returning a byte of its 0x002B2B2D entry (+0xA8) or 0; REL32 read at AptScoreScreen::Continue 0x0051BFBF; address name
 ?rva002B488E@Rva002BA8F1Logic@@QAEPAURva002B488EResult@@H@Z,0x002B488E,PC audio owner-position worker2DA1CC direct call; target disassembly verifies thiscall and return ABI; original receiver identity unasserted
 ?rva002B5BBA@Rva002B5BBA@@QAEXXZ,0x002B5BBA,EH funclet entered by tail-jmp from 0x2B6875 with ecx=this; shares caller frame; not standalone
-?rva002B5EB5@Rva002B5EB5@@QAE_NXZ,0x002B5EB5,thiscall bool with 0 stack args seen at 0x2B5F8A site; 213B body fresh unattempted
+?IsLocalPlayerAllowedToEndPhase@Rva002B5EB5@@QAE_NXZ,0x002B5EB5,thiscall bool with 0 stack args seen at 0x2B5F8A site; 213B body fresh unattempted
 ?rva002BEECD@Rva002BEECDTarget@@QAEXH@Z,0x002BEECD,callee of ?rva002BEF43@Rva002BEF43Forwarder@@QAEXH@Z at retail 0x002BEF43 read from its REL32 displacement; argument count from the callee's ret
 ?rva002BF6A7@Rva002BF6A7@@QAEXH@Z,0x002BF6A7,this+int void for 0x005D20E5 via +0x10; address-derived pin
 ?rva002C108F@Rva0008FF12Host@@QAEXXZ,0x002C108F,"member vtable slot 0x0008FF12 tail-jumps to; opaque address name"

@@ -48,7 +48,7 @@ struct Rva002B5F8AHolder98
 class Rva002B5EB5
 {
 public:
-	bool rva002B5EB5();
+	bool IsLocalPlayerAllowedToEndPhase();
 };
 
 class Rva002B5F8A
@@ -69,7 +69,7 @@ private:
 bool Rva002B5F8A::rva002B5F8A()
 {
 	if (m_f4 < 6) {
-		if (((Rva002B5EB5 *)this)->rva002B5EB5()) {
+		if (((Rva002B5EB5 *)this)->IsLocalPlayerAllowedToEndPhase()) {
 			GameMessage *gameMessage = TheMessageStream->appendMessage(GameMessage::T_6A6);
 			gameMessage->appendIntegerArgument(m_fc);
 			gameMessage->appendIntegerArgument(m_f4);
