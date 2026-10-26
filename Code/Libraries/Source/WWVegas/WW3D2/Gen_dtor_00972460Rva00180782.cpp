@@ -12,7 +12,7 @@
 // StringClass m_name); honest address name since slot-to-method mapping is
 // unproven.
 
-void __cdecl operator delete(void *);
+#include <new>
 
 class StringClass
 {
