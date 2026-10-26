@@ -3582,5 +3582,14 @@ Evidence / affected units:
   whose inline base dtor reproduces it, or one family header reconciling the
   `Rva006F6A50Cluster.cpp`, `Rva006F8DA0Cluster.cpp` and
   `FamilyDeletingDtors_Rva006F8460.cpp` views. Deferred (re_attempts.log).
+- `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00551B02.cpp`,
+  `StlSweepR3Rva005838DC.cpp` and `StlSweepR3Rva005AFEDB.cpp` each row a
+  placeholder `??_GRva...Record` whose `??1` is a pin onto a real owner's
+  dtor. The owners' objects already emit the byte-identical 28-byte `??_G`
+  comdats (`??_GGameSpyBuddyMessageQueue`, `??_GRva005838B5`,
+  `??_GRva005AFE3F`). Remaining: re-row each address under its real `??_G` in
+  the owner's unit, retire the sweep file and its pin. Blocked because
+  `reverse/tu_map.csv` approves no unit for any of the three: 0x005838DC has
+  none, and the other two are only proposed. Deferred (re_attempts.log).
 Clearance: pending.
 Census confirmation: awaiting the next census.
