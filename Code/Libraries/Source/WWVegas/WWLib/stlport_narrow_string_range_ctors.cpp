@@ -14,9 +14,13 @@
 //   signature as the template range ctor rowed at 0x00017830, but retail
 //   keeps the 2-arg initialiser out of line here instead of inlining down
 //   to the 3-arg tag overload, so this address is a dup_ of that name.
-// - 0x00017890 (82B): hidden-pointer shape (this unused) over two range
-//   parameters; a method returning a string by value whose temporary
-//   range ctor range-initialises directly into the hidden result.
+// - 0x00017890 (82B): collate<char>::do_transform, slot 2 of retail's
+//   RTTI-named vftable ??_7?$collate@D@_STL@@6B@ (0x007BBB50; the wide twin
+//   sits in the same slot of 0x007BBB64). Hidden-pointer shape (this unused)
+//   over the two range parameters; the temporary range ctor
+//   range-initialises directly into the hidden result. Retail calls the
+//   char* 2-arg initialiser at 0x00008D00 (the const char* instantiation
+//   folded onto it), so the range is passed as char*.
 // - 0x00017A40 / 0x00017AA0 / 0x00019D30 (85B each): hidden-pointer shape
 //   over no parameters; methods returning a copy of a static narrow string.
 //   The copy constructor zeroes first and only then reads the
@@ -98,17 +102,39 @@ extern unsigned g_Va00DDEF08;
 extern unsigned g_Va00DDEEFC;
 extern unsigned g_Va00DDEF38;
 
-class Rva00017890StringInit
+namespace _STL
+{
+
+class locale
 {
 public:
-	_STL::NStr init(char *first, char *last);
+	class facet
+	{
+	protected:
+		virtual ~facet();
+	};
 };
 
-// 0x00017890: build a narrow string from an explicit pointer range.
-_STL::NStr Rva00017890StringInit::init(char *first, char *last)
+template <class CharT>
+class collate : public locale::facet
 {
-	_STL::allocator<char> al;
-	return _STL::NStr(first, last, al);
+public:
+	typedef basic_string<CharT, char_traits<CharT>, allocator<CharT> > string_type;
+protected:
+	virtual ~collate();
+	virtual int do_compare(const CharT *, const CharT *, const CharT *, const CharT *) const;
+	virtual string_type do_transform(const CharT *low, const CharT *high) const;
+	virtual long do_hash(const CharT *, const CharT *) const;
+};
+
+// 0x00017890: build a narrow string from the input range.
+template <>
+collate<char>::string_type collate<char>::do_transform(const char *low, const char *high) const
+{
+	allocator<char> al;
+	return NStr(const_cast<char *>(low), const_cast<char *>(high), al);
+}
+
 }
 
 class Rva00017A40StringInit

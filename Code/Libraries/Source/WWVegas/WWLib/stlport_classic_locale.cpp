@@ -463,7 +463,6 @@ template <> _String_base<char, allocator<char> >::_String_base(allocator<char> c
 #pragma comment(linker, "/alternatename:?do_in@?$codecvt@DDH@_STL@@MBE?AW4result@codecvt_base@2@AAHPBD1AAPBDPAD3AAPAD@Z=?do_out@?$codecvt@DDH@_STL@@MBE?AW4result@codecvt_base@2@AAHPBD1AAPBDPAD3AAPAD@Z")
 #pragma comment(linker, "/alternatename:?do_out@?$codecvt@GDH@_STL@@MBE?AW4result@codecvt_base@2@AAHPBG1AAPBGPAD3AAPAD@Z=?do_out@codecvt_wide_char@_STL@@QBEHAAHPBG1AAPBGPAD3AAPAD@Z")
 #pragma comment(linker, "/alternatename:?do_in@?$codecvt@GDH@_STL@@MBE?AW4result@codecvt_base@2@AAHPBD1AAPBDPAG3AAPAG@Z=?do_in@codecvt_wide_char@_STL@@QBEHAAHPBD1AAPBDPAG3AAPAG@Z")
-#pragma comment(linker, "/alternatename:?do_transform@?$collate@D@_STL@@MBE?AV?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@2@PBD0@Z=?init@Rva00017890StringInit@@QAE?AV?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@PAD0@Z")
 #pragma comment(linker, "/alternatename:?_M_incr@_Locale_impl@_STL@@UAEXXZ=?DX8_Assert@@YAXXZ")
 #pragma comment(linker, "/alternatename:?_M_decr@_Locale_impl@_STL@@UAEXXZ=?DX8_Assert@@YAXXZ")
 
