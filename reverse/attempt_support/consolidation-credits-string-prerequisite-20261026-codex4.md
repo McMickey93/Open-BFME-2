@@ -140,3 +140,22 @@ verified includes. Historical EA paths remain unchanged.
 Follow-up accounting: compatible composition 35 -> 36 rows; recovered bytes
 +0; source reduction 0; identity debt retired 0. The additional box file claim
 must also remain held until publication is confirmed.
+
+## Inherited-batch recovery after rebase
+
+Rebased all three pending prerequisites onto bfbe71c750 without conflicts.
+Current commit identities are eba4807157 (OneRing), 43ef0a489f (Credits string),
+and 5268d22efe (Credits list). Rechecked the five affected source files together:
+`./build.sh` preserves 41/41 rows, three literal and three float references;
+`find_declared_unmatched.py` accepts all five. Both saved code/data/COMDAT union
+proofs and both strict-fresh provider-overlay proofs pass against current inputs.
+OneRing releaseBuffer remains an unchanged unknown verdict in the scoped overlay,
+as documented above. No census or linked-byte increase is inferred.
+
+Pending-range path audit `git diff --name-status --find-renames origin/master..HEAD`
+again has no moved/deleted sources; the sole added code path is the shared header.
+The active include search still finds exactly its two verified consumers.
+`git diff --check origin/master..HEAD` and `tools/check_csv.py` pass. Original EA
+paths, ledgers, protected registers and identity debt are untouched. File claims
+remain held until the publisher confirms landing. This recovery records existing
+verified improvements; it adds no recovered bytes, file reduction or debt retirement.
