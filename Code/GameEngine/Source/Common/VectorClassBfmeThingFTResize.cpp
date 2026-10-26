@@ -17,8 +17,7 @@
 
 #include <new.h>
 
-extern void *__cdecl operator new[](size_t size);
-extern void __cdecl operator delete[](void *p);
+#include <new>
 
 class BfmeItemFT;
 

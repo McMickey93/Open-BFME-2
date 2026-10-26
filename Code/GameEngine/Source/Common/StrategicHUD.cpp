@@ -235,7 +235,7 @@ public:
 	void SetHelpBox(void *newObj);
 };
 
-void operator delete(void *p);
+#include <new>
 
 // The slot holders. Each one's destructor is its rowed clear, which the
 // Impl destructor calls once per slot, in reverse, under its own
@@ -816,7 +816,6 @@ Rva0042DFF5::Rva0042DFF5(const unsigned int &level)
 // Native +24 cleanup is the complete 26-byte owning body at 42D789.
 // Clear the holder before calling the rowed nonvirtual Palantir destructor
 // at 578C43, then release the allocation through global operator delete.
-void __cdecl operator delete(void *);
 Rva0042D766::~Rva0042D766()
 {
 	StrategicHUD::Palantir *old = reinterpret_cast<StrategicHUD::Palantir *>(m_ptr);

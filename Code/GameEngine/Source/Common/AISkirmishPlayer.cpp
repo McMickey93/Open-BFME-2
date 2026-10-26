@@ -12,7 +12,7 @@ class AISkirmishPlayer : public AIPlayer
 public:
 	virtual ~AISkirmishPlayer();
 };
-void __cdecl operator delete(void *p);
+#include <new>
 AISkirmishPlayer::~AISkirmishPlayer()
 {
 	((AIPlayer *)this)->clearTeamsInQueue();
