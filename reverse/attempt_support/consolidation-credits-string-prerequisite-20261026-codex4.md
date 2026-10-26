@@ -76,3 +76,67 @@ Accounting: 35 existing matched rows preserved; recovered bytes +0; source
 file reduction 0; identity debt retired 0. Leave the compatible destructor
 donor for Luna. Keep the three file claims until this commit is published;
 the runner may batch it with the pending OneRing prerequisite.
+
+## Follow-up: canonical list declaration (separate prerequisite commit)
+
+After 37e6d07948, the remaining non-mixed donor Rva005B7DC3Box.cpp was claimed
+and investigated. Its full class specialization for list<int> was incompatible
+with Credits' existing instantiation. It now includes STLport's canonical list
+and declares only the already rowed push_back specialization. Its three external
+call symbols remain unchanged: scalar operator new, Rva0040C1F0's constructor,
+and list<int>::push_back at 0x0005548F. No replacement alias or pin was added.
+
+The initial canonical include exposed duplicate placement-new declarations;
+the donor now uses the standard declaration. Its initial -Oy- build emitted an
+eight-byte placement helper that differed from Credits' five-byte provider.
+Removing that unnecessary flag preserves all 54 bytes of Run and emits the
+same five-byte ANY COMDAT already present in Credits. The donor now uses the
+canonical /EHsc /MD STLport environment. Its constructor declaration takes the
+existing seed's throw() contract; the verified constructor at 0x005B72BE only
+initializes scalar members. This avoids newly introducing EH machinery.
+
+Composition next exposed the seed's opaque constructor view. Both call views
+now expose the proven first int followed by 0x24 bytes, preserving total size
+0x28; the actual constructor's stores and Run's first-word assignment establish
+this prefix. The seed's unused box member view now uses the same canonical
+one-word list<int> at +0x0C. No field offset or body changed. The original seed
+and constructor/dtor naming remain unaltered.
+
+Normal merge dry-run now accepts seed, destructor and box donors, **36 rows,
+zero rejected donors**. The two mixed donors remain excluded. This supersedes
+the C2908/C2766 blocker above; no merge was applied, so leave these compatible
+donors for Luna and do not count a later landing yet.
+
+Follow-up checks:
+
+- `./build.sh <target> Common/Rva005B7DC3Box.cpp
+  Code/Libraries/Source/WWVegas/WWLib/stlport_list_int_o1.cpp` (full Common path
+  in the actual command): 51/51 exact, including the 19-row list provider.
+- Frozen-file and class gates pass on both edited files. EH: five EXACT,
+  zero missing/not-exact/baseline. Converged data: ten addresses, zero second
+  names/unjudged. Allowed-symbol check on all three composition inputs:
+  95 references, 79 owners, seven aliases, six EH, three folds, zero wrong.
+- `build/codex4-credits-box-proof.py`: every existing seed/box code and external
+  data fact, COMDAT selection and undefined reference survives. The only new
+  box definition is the exact existing five-byte placement-new provider twin.
+  The composed object d10b1d91426e9229.obj equals the standalone union: 81 code
+  definitions, 19 external data definitions, 42 unresolved references. All 36
+  row DIR32 binding sets agree before/after and in composition.
+- Five separate fresh scoped objects (all three inputs, UnicodeString and
+  list<int> providers) pass strict input receipts outside build/match.
+  `build/codex4-credits-box-provider-proof.py` finds all five defined/referenced
+  box symbol selections unchanged in the fresh scoped overlay. The saved
+  census baseline remains provisional; no linked coverage is claimed.
+
+The existing box MS-header queue item still describes the old hand-written
+operator-new conflict. It was not hand-edited or counted as retired debt.
+Neither edited file has data/code-identity debt keys. No baseline or TU-map
+changes were made. The complete pending batch (a5e2a3ab10, 37e6d07948 and this
+prerequisite) was re-audited across tools/hooks/workflows/includes/build inputs
+and registries: still no moves or deletions and no newly invalid path consumer.
+The only new source path remains OneRingPenaltyModuleDataView.h, with its two
+verified includes. Historical EA paths remain unchanged.
+
+Follow-up accounting: compatible composition 35 -> 36 rows; recovered bytes
++0; source reduction 0; identity debt retired 0. The additional box file claim
+must also remain held until publication is confirmed.

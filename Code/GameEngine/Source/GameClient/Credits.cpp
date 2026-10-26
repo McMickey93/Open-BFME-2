@@ -168,7 +168,7 @@ struct Rva005B7DC3Sub
 struct Rva005B7DC3Box
 {
 	char pad[0xc];
-	Rva005B7DC3Sub m_0C;
+	_STL::list<int, _STL::allocator<int> > m_0C;
 
 	void Run();
 };
@@ -210,8 +210,8 @@ class Rva0040C1F0
 {
 public:
 	Rva0040C1F0() throw();
-private:
-	char m_storage[0x28];
+	int m_00;
+	char m_pad[0x24];
 };
 
 class Rva005B72E7

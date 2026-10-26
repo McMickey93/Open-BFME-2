@@ -1,4 +1,6 @@
-// cl: -Oy- -GR- -EHsc-
+// cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// stlport
+#include <list>
 // ?Run@Rva005B7DC3Box@@QAEXXZ @0x005B7DC3 54B: allocate-transform-consume.
 // Raw-allocates 0x28 bytes through operator new at 0x2FDA0, then
 // transforms non-null results through the pinned
@@ -7,24 +9,18 @@
 // a null block (the store is unconditional). Targets from retail REL32.
 // 0x005B72BE is the rowed Rva0040C1F0 constructor; the +0x0C consumer
 // 0x0005548F is the rowed STLport list<int>::push_back.
-struct Rva0040C1F0
+class Rva0040C1F0
 {
-	Rva0040C1F0();
+public:
+	Rva0040C1F0() throw();
 	int m_00;
 	char m_pad[0x24];
 };
 
 namespace _STL
 {
-template <class _Tp> class allocator;
-template <class _Tp, class _Alloc> class list;
-template <>
-class list<int, allocator<int> >
-{
-public:
-	void push_back(const int &value);
-	void *m_node;
-};
+// Keep the established out-of-line list<int>::push_back provider.
+template <> void list<int, allocator<int> >::push_back(const int &value);
 }
 
 struct Rva005B7DC3Box
@@ -34,11 +30,6 @@ struct Rva005B7DC3Box
 
 	void Run();
 };
-
-void *__cdecl operator new(unsigned int size);
-// Placement new: inlined here, and dllimport keeps cl from emitting an
-// out-of-line copy that would compete with retail's 0x00006EE0 body.
-__declspec(dllimport) __forceinline void *operator new(unsigned int, void *where) { return where; }
 
 void Rva005B7DC3Box::Run()
 {
