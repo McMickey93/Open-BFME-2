@@ -191,7 +191,6 @@ Code/GameEngine/Source/GameClient/GUI/Palantir/PalantirResourceBar.cpp	drop-in c
 Code/GameEngine/Source/GameClient/GUI/Rva0035FF76FamilyInitDraw.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	FALSE:same,TRUE:same
 Code/GameEngine/Source/GameClient/GUI/Rva0035FF76Update.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	FALSE:same,TRUE:same
 Code/GameEngine/Source/GameClient/GUI/Rva0050DE39Observer.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,NULL:same
-Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldArmyLine.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new [ ]:same,operator delete [ ]:same
 Code/GameEngine/Source/GameClient/MapPreviewImage.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new [ ]:same,operator delete [ ]:same
 Code/GameEngine/Source/GameClient/MapPreviewTextureAsset.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	size_t:same,operator new:same
 Code/GameEngine/Source/GameClient/MessageBox.cpp	drop-in candidate	same	2	1	0	0	0	0	0	1	0	0	0	<new>,<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same

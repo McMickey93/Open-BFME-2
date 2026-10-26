@@ -8,8 +8,7 @@
 // Its observed out-of-line array callback requires noinline. No new pins,
 // private canonical-class copy or generated alias are introduced.
 #include <stdlib.h>
-extern void *__cdecl operator new[](size_t);
-extern void __cdecl operator delete[](void *);
+#include <new>
 #include "Coord3D.h"
 struct Rva005390AEPoint : Coord3D {
  __declspec(noinline) Rva005390AEPoint();
