@@ -1,3 +1,5 @@
+// 1 further clearers formerly here are rowed as their matched parents'
+// /G7 guard-rollback $L funclets (EXACT EH graphs); see reverse/deleted_rows.csv.
 // Thirteen B2-native flag-word clearers across six .data flag words of one
 // contiguous run (0x007605CD-0x007608FD):
 //
@@ -10,9 +12,6 @@
 // GlobalFlagClearers_08.cpp.
 // cl: /G7 /MD /EHsc /DNDEBUG
 
-extern unsigned int g_Va00DE6078;
-// g_Va00DE6078: matched references place it at VA 0xde6078 (zero-filled .bss).
-unsigned int g_Va00DE6078;
 extern unsigned int g_Va00DE6090;
 // g_Va00DE6090: matched references place it at VA 0xde6090 (zero-filled .bss).
 unsigned int g_Va00DE6090;
@@ -28,11 +27,6 @@ unsigned int g_Va00DE60F0;
 extern unsigned int g_Va00DE6100;
 // g_Va00DE6100: matched references place it at VA 0xde6100 (zero-filled .bss).
 unsigned int g_Va00DE6100;
-
-unsigned int Rva007605CDClearFlag(void)
-{
-	return g_Va00DE6078 &= 0xFFFFFFFEu;
-}
 
 unsigned int Rva007606C6ClearFlag(void)
 {
