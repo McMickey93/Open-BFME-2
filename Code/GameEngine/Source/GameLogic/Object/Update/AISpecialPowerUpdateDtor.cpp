@@ -58,7 +58,7 @@ private:
 	int m_20;
 	AISpecialPowerUpdatePointee *m_pointee;
 };
-void operator delete(void *p);
+#include <new>
 AISpecialPowerUpdate::~AISpecialPowerUpdate()
 {
 	void *tmp = 0;

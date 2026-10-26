@@ -48,8 +48,7 @@ private:
 	unsigned char m_pad00[0x28];
 };
 
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *block);
+#include <new>
 
 class Thing
 {

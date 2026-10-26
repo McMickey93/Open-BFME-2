@@ -8,7 +8,7 @@
 // +0x164. Layout follows the rowed machine at +0x30. Callers include
 // 0x002989B5 and 0x0029A1D9 passing the Object+0x258 AI. Sibling of 0x002633B6.
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class Tracked
 {
