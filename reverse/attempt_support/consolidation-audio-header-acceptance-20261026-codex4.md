@@ -61,3 +61,16 @@ confirms publication. No RVA claims were acquired. If the batch remains held,
 release those scopes after landing and run claims.py release --landed.
 Inherited commits were already upstream and their old scopes were released.
 The unrelated untracked reverse/zh_sweep directory is preserved.
+
+Recovery verification, next session on 2026-10-26: the three inherited commits
+are still local (59ba4cfa22, b8c31040de, 74d2342e38), with no preserved tracked
+edits. Pull/rebase and check_csv pass. The official two-source build again
+passes 32/32, both frozen scans pass, and the scanner plus gate-exploit suites
+pass 78 tests with the same one existing skip. PoisonedBehavior's scoped
+allowed_symbols check again reports zero wrong bindings and data_check zero
+findings. Re-audited origin/master..HEAD plus this documentation update:
+no source path additions, deletions or renames, so no path consumer changes.
+The existing provider comparison above remains applicable: source content and
+the current cached objects are unchanged. This recovery receipt accompanies
+the required commit-and-publish retry; release retained scopes after confirmed
+publication, or carry them forward if the shared publisher holds the batch.
