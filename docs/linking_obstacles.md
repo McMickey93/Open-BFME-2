@@ -153,7 +153,7 @@ authored-byte previews or commit-title gains into a projected headline.
 
 ### LINK-002: distinct container element identities and exception contracts
 
-**Status: Open. Updated: 2026-10-25.**
+**Status: Open. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.**
 
 - **Evidence / scope:** equal-sized `BfmePod28` / `BfmePod32` views conflate
   native types with different constructors and copy operations. The
@@ -184,6 +184,24 @@ authored-byte previews or commit-title gains into a projected headline.
   preserve the shared pin and do not equate unrelated equal-sized records.
 
 **Assigned-unit recheck (2026-10-26, inspected `896af216804e`):** the local d1f046749a index and current objects still block `AerialPathfinder.cpp`, `Rva0052CD81Finish.cpp`, `ProductionPrerequisiteAssign.cpp` and `ProductionPrerequisiteRecVectorInsertOverflow.cpp`. No source change is retained in these four. The Aerial native-list bank remains the prerequisite; its missing base spelling and imported allocator are additional current findings. SaveMapPreview's count-base and non-const uninitialized-copy names have only wrong indexed copies, so declaration-only suppression has no proven replacement. The prerequisite assignment still conflates vector<int> with the 177-byte nontrivial-element assignment at 0x0021C21B; the record assignment and PrereqUnitRec construction/overflow also retain wrong selected copies from the RTS provider. Preserve the earlier failed exception-contract trials. Next: reconcile native element identities, exact helper callees and folded-name admissions across the provider family. Raw current results and native references are in `build/link-worker-20261026-w2/all-cohort-before.log`, `all-cohort-after.log`, `native-rows.log` and `dependencies2.log`; the full handoff is `build/link-report.md`. Clearance and census confirmation remain pending.
+
+#### Opaque STL linking subset, 2026-10-26
+
+Evidence / affected units: inspected `896af216804e1f1e34de28bd318285fbbbfcc536` against index `d1f046749a` (`retail-truth-4`). The [worker handoff](../build/link-report.md) and its raw `build/w4-link-20261026/evidence.log` record the retail calls, current row homes and emitted helper relocations. These are existing mismatched type/provider identities, not established missing native bodies.
+
+| Unit under `Code/Libraries/Source/WWVegas/WWLib/` | Native provider facts | Remaining prerequisite |
+| --- | --- | --- |
+| `StlSweepR3Rva002BFA86.cpp` | Erase calls bucket index 00223149 (PlayerXferStringMaps.cpp) and node deletion 002BF75A (Rva002BF75AFree.cpp). The node provider uses `pair<const AsciiString, TreeHintRef002BF0D6>`; the bucket helper calls ASCII hash 00055041. | Reconcile the rowed erase type and the actual key/value providers. The record hasher and destructor are unresolved only inside the wrong emitted helpers. |
+| `StlSweepW4Rva00054EBE.cpp` | Find calls 00053FD2, 75 B, rowed as `Rva00053FD2::find` in HashRefIdFind53FD2.cpp; native reads a reference id at +8. | Recover the reference-key/hash/equality identity before normalizing row names. The provider's existing function-pointer ABI union must not be copied into a consumer. |
+| `StlSweepW4Rva000E0225.cpp` | Find calls 000E01B0, 68 B, rowed as `Rva000E01B0::rva000E01B0` in Rva000E01B0HashFind.cpp; native hashes two key words with XOR. | Recover the two-word key/equality identity and reconcile the rowed provider. An int-key instantiation is insufficient. |
+| `StlSweepW4Rva001DF2D3.cpp` | Destructor 001DDEC3 belongs to `Rva00414BDBElement`; overflow 001DF21C belongs to `vector<Rva001DF3F1Element>`; the rowed fill 001DE8E9 calls `Rva001DE727::operator=` at 001DE727. | Reconcile the 48-byte record across copy, assignment, destruction, fill and overflow. The recorded /Ob0 forced-forwarder failure was not retried. |
+| `StlSweepW4Rva002F0B8A.cpp` | The 43-byte destructor calls 002EE9E0 (41 B) and 002EEA09 (20 B), rowed as `Rva002EB416` members in Rva002EE9E0Reset.cpp. Native base cleanup null-checks the header and returns it to a free list. | Restore the actual allocator/type contract and provider names. The emitted generic-allocator base cleanup and outlined-accessor clear remain wrong. |
+| `StlSweepW4Rva002F0BB5.cpp` | The 43-byte destructor calls 002EEA1D (41 B) and 002EEA46 (20 B), rowed as `Rva002EB46E` members in Rva002EEA1DReset.cpp. | Same allocator/type prerequisite, preserving this family's distinct free list. |
+| `StlSweepW4Rva003609F7.cpp` | Insert calls resize 0053F1EC (184 B, Armor.cpp and proven folded owners) and node creation 00360939 (40 B, DamageFX_hashtableNewNode.cpp). Native allocates 0x788 bytes, while the placeholder helper allocates 0x0C. | Reconcile the insertion row and callers to the actual `NameKeyType` and `DamageFX` identity. Do not extend DamageFXHashSubscript.cpp's existing container/pair reinterpretation. |
+
+Completed: the two tree units now instantiate only their rowed `_Rb_tree` destructor instead of the whole map. This removes the unrelated `__imp_less<int>` dependency and comparison adapters. Each unit passes all three existing rows, declaration, EH and shadow data checks; parent EH data verifies the renumbered funclet without a ledger edit. StlportMapForwardersSeat8.cpp and both reset providers remain LINKS in the paired preview. The other five units above were inspected and left unchanged; each still builds exact.
+
+Remaining / next check: perform coherent type/allocator and row-name reconciliation with the listed provider homes. Replacing a real member call with an address placeholder, adding an alias/pin, changing the ledger, or casting a container to another instantiation was outside this worker's permitted repair scope. All native direct callees listed above already have matched owners. No new match or pin with independent fold proof was established. Clearance remains pending for all seven units; the bounded emission cleanup does not clear their required COMDATs. Census confirmation is pending.
 
 ### LINK-003: residual Zero Hour memory-pool interfaces
 
@@ -1929,11 +1947,11 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
 - **Bounded duplicate follow-up (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`):** `MultiplayerColorDefinitionCopy.cpp` still collides with MultiplayerSettings.cpp's implicit copy constructor. The explicit 79-byte body is retail-correct; the merged provider's implicit copy is not. No repeat of the failed flag trial and no source edit were made. Preventing that implicit copy requires the shared MultiplayerColorDefinition declaration to declare the out-of-line copy constructor, or the separately approved TU reconciliation; this seat forbids shared-shim edits and row moves. The raw index providers, ordinary previews and unchanged byte gate are in `build/link-worker-w1/`. No clearance claimed.
 
 ### LINK-043: StlSweepR3Rva00406B1D instantiated stable_sort instead of emitting scalar deleting destructor
-Status: Cleared. Updated: 2026-10-26; inspected revision: b06312df51.
+Status: Open for the extended family; original unit cleared. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
 Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`,
 `reverse/link_status.csv` reported 4 unresolved blockers (`??0Rva00406B1DRecord@@QAE@ABU0@@Z`, `??1Rva00406B1DRecord@@QAE@XZ`, `??4Rva00406B1DRecord@@QAEAAU0@ABU0@@Z`, `??MRva00406B1DRecord@@QBE_NABU0@@Z`).
 Completed: Retail 0x00406B1D (28 B) is the scalar deleting destructor `??_GRva00406B1DRecord@@QAEPAXI@Z` calling ~Rva00215E42 at 0x004059AC. Replaced `stable_sort` template instantiation with direct delete anchor calling rowed dtor provider `??1Rva00215E42@@UAE@XZ` via `/alternatename`, resolving all 4 unresolved symbols.
-Remaining / next check: None.
+Remaining / next check: none for the original unit (inspected b06312df51); the extended family below still needs three destructor identities reconciled.
 Clearance: `tools/link_check.py Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`
 reports: LINKS (0 -> 28 bytes). Exact 1/1 byte match preserved.
 Census confirmation: awaiting the next census.
@@ -1960,6 +1978,16 @@ inline `delete p` helper emits no `??_G` (1/1 FAIL, symbol not found), reverted.
 (non-inline anchor plus `/alternatename`) adds hatches, so it was not repeated. Hatch-free route:
 name 0x004E366E as the real class's destructor (`??1<Class>`) and give the record that class, then
 find what emits a non-virtual `??_G` without an invented anchor. Status for this unit: Open.
+
+#### Six deleting-destructor instantiations, 2026-10-26
+
+Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva{00551B02,005838DC,005AFEDB,005CE7CE,005DA663,005E96DC}.cpp`, one existing 28-byte scalar deleting-destructor row each. Current retail disassembly and emitted-helper references are in the [worker handoff](../build/link-report.md) and `build/w4-link-20261026/evidence.log`; ordinary previews use published index `d1f046749a`, rules `retail-truth-4`.
+
+Completed: replace each unrelated `stable_sort` instantiation with scalar `_STL::_Destroy<Record>`. MSVC emits the same deleting destructor from the existing declared destructor. No handwritten function, anchor or new alias is needed. The unused min/max adapters and optimization pragmas disappear. All six rows pass `build.sh`, declaration, EH and shadow data checks. Units `005CE7CE`, `005DA663` and `005E96DC` now report LINKS in the combined current-input preview. Their existing bindings to `FamilyDeletingDtors_muse-06-5E8EA9.cpp` (005E8F6A), `Disp0DwordImmSetters.cpp` (005970E6) and `Rva005E9625Dtor.cpp` (005E9625) are unchanged; all three providers remain LINKS.
+
+Remaining / next check: `00551B02`, `005838DC` and `005AFEDB` each retain only their record destructor as unresolved. Their retail calls already target rowed destructors: `GameSpyBuddyMessageQueue` at 00551988 (126 B, BuddyThread_Unresolved.cpp), `Rva005838B5` at 005838F8 (59 B, Rva00587F69Dtor.cpp), and `Rva005AFE3F` at 005AFE3F (71 B, Rva005AFE3FDtor.cpp). Reconcile the deleting-destructor row's class and virtual contract with its provider rather than adding an alias. The GameSpy class has a real-name lead; the other application class names remain unknown. Row renames were unavailable to this worker. BuddyThread_Unresolved.cpp retains its pre-existing deque blockers; the other two provider units remain LINKS.
+
+Clearance: `005CE7CE`, `005DA663` and `005E96DC` are cleared in ordinary-preview scope; census confirmation pending. The other three units remain blocked. Across the full paired worker scope, no previously clean unit becomes blocked and no compared unit gains a named blocker; raw before/after outputs are retained with the handoff. This does not clear the broader identity or whole-game linking scope.
 
 ### LINK-044: NetPacket private views and remaining list-copy identity
 
@@ -2503,3 +2531,17 @@ Evidence / affected units: `DieModule.cpp` retains undefined `BitFlags<45>::s_bi
 Completed: both a minimal bitset-only cleanup and a narrower removal of the port's field-parser definition were tried and fully reversed. The narrow trial makes DieModule preview clean but stops emitting its matched `_Base_bitset<2>::_S_maskbit` row and makes InstantDeathBehavior unresolved. The restored source passes 1/1 and restores that consumer's 34-byte LINKS result. Raw evidence: `build/link-worker-20261026-w2/die-consumers-before2.log`, `die-parser-preview2.log`, `die-parser-build.log`, `die-restored-preview.log` and `die-restored-build.log`.
 Remaining / next check: reconcile the native field-parser provider and all actual callers together before removing the port; retain explicit ownership of the bitset row. This seat stops on the demonstrated linking-consumer regression and retains no DieModule edit.
 Clearance: pending. Census confirmation: not claimed.
+
+### LINK-052: dispatch-shaped wrappers were misidentified as uninitialized fill
+
+Status: Open. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
+
+Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva{005243FA,00569450,005AE78A}.cpp`, one 27-byte `uninitialized_fill_n` row each, compared with published index `d1f046749a` (`retail-truth-4`). The [worker handoff](../build/link-report.md) and `build/w4-link-20261026/evidence.log` retain retail wrapper/helper disassembly and the emitted one-byte fill-loop copies. Equal wrapper bytes do not establish the inferred STL algorithm or record identity.
+
+Completed: instantiate only each rowed dispatch wrapper instead of the unrelated `stable_sort`. This removes its unresolved record comparator and the unused min/max/optimization adapters. All three rows pass byte, declaration, EH and shadow data checks. The existing native helper providers remain LINKS in the paired preview. No row, alias, pin, compiler flag or shared header changed.
+
+Remaining / next check: `005243FA` calls 0052408B (179 B, `Rva0052408BFind` in stlport_hero_integer_vector_tree.cpp), which scans 8-byte int/StringBase records with the rowed predicate 00523EFF. `00569450` calls 00569109 (29 B, `Rva00569109RangeForward` in Rva00569109RangeForward.cpp); the same wrapper address also has a 27-byte row named `rva00569450` in Rva00569450Forward.cpp. `005AE78A` calls 005AE6F8 (107 B, `rva005AE6F8` in Rva005AE6F8Find.cpp), an unrolled 8-byte slot scan. Reconcile actual operation, argument types and overlapping ownership before renaming these wrapper/helper relationships. Suppressing an emitted helper alone leaves no same-name provider; substituting an address-named call for a real algorithm name is not a faithful repair. No new native match or fold pin was established.
+
+Clearance: pending for all three units; each retains its required helper as both comdat and selected findings. The comparator cleanup is verified but does not clear linking.
+
+Census confirmation: awaiting; no census claim.
