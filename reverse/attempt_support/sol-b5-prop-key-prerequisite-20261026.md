@@ -78,3 +78,20 @@ No maintainer-only link, smoke or nightly runner was started.
 Measurements: file reduction 0, identity debt retired 0, data debt retired 0,
 recovered C++ bytes 0, census LINKED increase unmeasured. Hold the three source
 file claims and this evidence claim until publication, then release them.
+
+## Recovery: current acceptance supersedes the earlier dry-run
+
+The following session reran the ordinary merge dry-run with current link guard
+and census inputs (build/sol-b5-recovery-prop-trial.log). It now accepts no
+merge: the key donor compiles, but would stop linking. The guard reports
+`??1ModuleData@@UAE@XZ` (retail), `??_7DrawModule@@6B@` (first) and
+`??_GDrawModule@@MAEPAXI@Z` (first). Thus the earlier seven-row acceptance is
+historical compile/composition evidence, not present merge authorization.
+Resolve these global provider selections before Luna can merge this pair.
+The module-data constructor still lacks m_distanceFog and React still needs
+Coord3D adoption; those unchanged prerequisites were not retried as edits.
+
+Recovery standalone verification remains 30/30 exact over the five PropDraw
+and Bridge sources; code identity checks 63 references, zero wrong bindings.
+The declaration-only change preserves standalone object behavior; no merge,
+new recovery, provider repair or currently accepted PropDraw donor is claimed.

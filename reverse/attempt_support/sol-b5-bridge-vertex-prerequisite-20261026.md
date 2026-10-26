@@ -112,3 +112,39 @@ File reduction 0; identity debt retired 0; recovered C++ bytes +0; measured
 LINKED gain +0. Together these three commits demonstrate two destination TUs
 accepting seven additional existing donor rows (1366 retail bytes); they are
 prerequisite improvements, not seven new recoveries or confirmed Luna landings.
+
+## Recovery verification, following runner session
+
+Recovered the three unpublished prerequisite commits as 7c45efece1,
+c872978c6a and f7d211dee9 after the runner's rebase. Working tree was clean;
+all eight file claims still belong to this seat. Fresh check_csv passes.
+The five-source PropDraw/Bridge build verifies 30/30 rows, one string literal
+and four float literals. find_declared_unmatched passes; allowed_symbols
+checks 63 references with zero wrong bindings. Current data_check on the three
+changed sources reports zero findings; converged checks ten addresses with
+zero second names or unjudged rows. Parent-directory planner regenerated and
+its currency check passes. No paths move in the complete outgoing batch;
+protected registers and active path consumers remain unchanged.
+
+Official BFME1 master was fetched again: retained verified gitlink/check-out
+001ccd8e27686e9887235b62ff797627f2dde7f5, upstream
+49c396bdbd86c5e98faed1a3a0a65395addc81f5. Full update validation remains
+unresolved; retain the verified inputs and do not write a freshness receipt.
+
+Fresh ordinary Bridge dry-run completes with the same seed/destructor/vertex
+subset accepted, 23 rows, including the current census link guard. Its other
+four clean donors retain the compile/header blockers listed above. Scoped
+provider receipts still cover the identical three-source composition: 56
+bindings, 44 external definitions, no changed selections/data unions. No
+merge was applied. In contrast, current PropDraw dry-run rejects the key
+composition at the link guard; its companion handoff and re_log record the
+ModuleData/DrawModule COMDAT prerequisites. The earlier batch total of seven
+additional accepted rows across two TUs must not be used as a current result:
+only Bridge's five additional donor rows remain accepted (1287 retail bytes).
+
+Recovery audit covers origin/master..f7d211dee9 plus these staged handoff/log
+corrections. Source paths, ledgers and protected registers do not move or
+change. progress.py origin/master: byte-matched 100%, LINKED 7,567,229
+(98.13%), LINKING 7,322,361 (97.47%), all deltas zero. File reduction and debt
+retirement remain zero. Retain the eight claims listed above if the publisher
+defers the batch; the runner publishes it after the session.
