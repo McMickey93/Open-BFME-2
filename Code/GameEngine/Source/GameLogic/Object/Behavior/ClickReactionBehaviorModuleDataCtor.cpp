@@ -19,26 +19,12 @@ extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7Bea
 
 #include <cstring>
 
-class ClickReactionBehaviorModuleData
-{
-public:
-	ClickReactionBehaviorModuleData();
-
-private:
-	const void *m_vtable; // +0
-	unsigned int m_unused04; // +4
-	int m_clickReactionTimer; // +8
-	int m_reactionFrames1; // +0xC
-	int m_reactionFrames2; // +0x10
-	int m_reactionFrames3; // +0x14
-	int m_reactionFrames4; // +0x18
-	int m_reactionFrames5; // +0x1C
-};
+#include "ClickReactionModuleDataView.h"
 
 // ??0ClickReactionBehaviorModuleData@@QAE@XZ @0x4595F0
 ClickReactionBehaviorModuleData::ClickReactionBehaviorModuleData()
 {
 	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70));
-	m_clickReactionTimer = 0x258;
-	memset(&m_reactionFrames1, 0, sizeof(int) * 5);
+	m_weight = 0x258;
+	memset(m_cooldown, 0, sizeof(m_cooldown));
 }

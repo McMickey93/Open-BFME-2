@@ -72,12 +72,7 @@ class Thing;
 
 class ModuleData;
 
-struct ClickReactionBehaviorModuleData
-{
-	unsigned char m_pad00[0x08];
-	int m_weight; // +0x08
-	int m_cooldown[5]; // +0x0C
-};
+#include "ClickReactionModuleDataView.h"
 
 int GetGameLogicRandomValue(int lo, int hi, char *file, int line);
 
