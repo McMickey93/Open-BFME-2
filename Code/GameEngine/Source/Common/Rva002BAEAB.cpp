@@ -39,8 +39,7 @@ Rva002BAEAB::~Rva002BAEAB()
 {
 }
 
-void *operator new(unsigned int size);
-void operator delete(void *p);
+#include <new>
 
 // Anchor: new/delete calls the scalar deleting dtor directly (non-virtual,
 // so devirtualization is a direct ??_G call), emitting the COMDAT for

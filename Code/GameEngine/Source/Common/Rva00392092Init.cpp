@@ -9,8 +9,7 @@
 extern class GlobalData *TheWritableGlobalData;
 
 // Without these MSVC routes new T[n] to scalar ??2 (0x0002FDA0); retail uses array ??_U (0x0002FDE0).
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
+#include <new>
 
 class GlobalData
 {
