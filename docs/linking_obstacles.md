@@ -2203,6 +2203,15 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
 
 - **Bounded duplicate follow-up (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`):** `MultiplayerColorDefinitionCopy.cpp` still collides with MultiplayerSettings.cpp's implicit copy constructor. The explicit 79-byte body is retail-correct; the merged provider's implicit copy is not. No repeat of the failed flag trial and no source edit were made. Preventing that implicit copy requires the shared MultiplayerColorDefinition declaration to declare the out-of-line copy constructor, or the separately approved TU reconciliation; this seat forbids shared-shim edits and row moves. The raw index providers, ordinary previews and unchanged byte gate are in `build/link-worker-w1/`. No clearance claimed.
 
+- **INI integration guard verified (2026-10-27, base `72327e6ccf`):**
+  [the current integration receipt](../reverse/attempt_support/ini-publication-current-provider-audit-20261026.md)
+  passes 57/57 current rows and the fresh eight-object pre-merge guard with
+  authenticated census-object evidence, `problems: []`. Seven whole donors
+  move 14 existing rows / 906 bytes. The outgoing path audit finds no active
+  removed-path consumer, and the unrelated HeaderTemplate queue row is
+  preserved. This clears this INI consolidation guard only; the broader
+  obstacle, official census and runtime confirmation remain open.
+
 ### LINK-043: StlSweepR3Rva00406B1D instantiated stable_sort instead of emitting scalar deleting destructor
 Status: Open for the extended family; original unit cleared. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
 Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`,

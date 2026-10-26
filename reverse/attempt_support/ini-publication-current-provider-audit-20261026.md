@@ -1,3 +1,44 @@
+# PR 115 integration verification (2026-10-27)
+
+Unmerged base `72327e6ccf87f0cd4957d6798502c04010cf5920`; candidate `717a9d86605f7974ecdec8c6f0453cca7bcde6c1`.
+The earlier publication narrative below is retained as historical evidence.
+
+The rebased normal build passes **57/57 rows**: all 53 rows of the merged
+INI.cpp and all four rows of the remaining error-helper owner. The seven whole
+donors move **14 existing rows / 906 bytes**, with no new matched-byte claim.
+No generated TU map or historical census was rewritten.
+
+A fresh LinkGuard instance was prepared in a clean checkout of this exact
+unmerged base and judged the rebased normal-build object. All eight cohort
+objects are census-linked, with eight raw object proofs authenticated against
+published index `5ce093a71a` (2026-10-26 19:02). The result is `problems: []`.
+This clears the consolidation guard for this cohort; it does not establish a
+new complete-image link, census gain or runtime result.
+
+- Source SHA-256: `069a326afe452a7e5ae3140098cc17837c74e4aad43afe920cbf4550db456648`.
+- Object SHA-256: `572926a84c3a381ee71774d4446cb543249684f707b8a70b84d4bd85a9c91bd1`.
+- Index SHA-256: `9259010fbce4dce6a86fd7ea9ead6042f64a87a9f95efe967902188a539a4583`.
+
+The complete outgoing path audit covers all seven removed paths, basenames
+and relative forms. No active tool, hook, configuration, source include or
+live source/debt register requires a removed path. Remaining references are
+source provenance comments, prior attempt evidence, the historical census
+and the generated TU map. Both donor directories still exist; active directory
+discovery remains valid. Tool donor-reference strings point to the external
+Zero Hour reference, which was not moved.
+
+Review caught an unrelated HeaderTemplate queue row dropped during conflict
+resolution. A separate integration commit restores the exact base row. The
+owning INI refresh then reproduces the final queue, and all
+**3232 unrelated queue entries** compare equal to the base.
+The affected final queue diff contains only the three retired INI entries.
+
+Receipts: `iteration57-ini-build.log`, `iteration57-path-audit.json` and the
+guard checkout's `iteration57-ini-integration-guard.json` under each checkout's
+`build/codex-cleanup-20261025/`. Normal publication hooks remain required.
+
+---
+
 # INI follow-up publication and current-provider audit
 
 Published `f8aefae21a397402f7e3d90a8674a408f4c8ca24`, 2026-10-26 05:38 UTC.
