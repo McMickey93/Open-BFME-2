@@ -193,7 +193,12 @@ def chunks(text):
             lead = text[start:text.rfind("\n", 0, i) + 1]
             if lead.strip():
                 out.append(("tail", lead))
-            out.append(("pp", text[i:k].rstrip()))
+            directive = text[i:k].rstrip()
+            if directive.endswith("\\"):
+                # a continuation onto the blank line that ends it (part_ldr's SAFE_DELETE_ARRAY):
+                # the blank line is dropped here, so the `\` would continue onto the next item
+                directive = directive[:-1].rstrip()
+            out.append(("pp", directive))
             i = start = min(k + 1, n)
             continue
         if c == "\n" and depth == 0 and code:

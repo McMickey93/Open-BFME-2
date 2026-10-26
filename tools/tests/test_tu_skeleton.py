@@ -150,6 +150,17 @@ class PreludeOrderTests(unittest.TestCase):
         self.assertEqual(out.count('#pragma optimize("s", on)'), 1)
 
 
+class DirectiveContinuationTests(unittest.TestCase):
+    def test_a_continuation_onto_a_blank_line_does_not_swallow_the_next_line(self):
+        # particle_emitter_convert_version.cpp: SAFE_DELETE_ARRAY ends `}\` and a blank line; with
+        # the blank line dropped the macro continued onto `#endif` (C2162 in the composed TU)
+        text = "#ifndef M\n#define M(p)\t\\\n\tif (p) { p = 0; }\t\\\n\n#endif\nvoid f() { }\n"
+        out = T.compose("Seed.cpp", [], ["Seed.cpp"], {"Seed.cpp": text}, [], "first")
+        self.assertIn("#endif", out)
+        line = next(l for l in out.splitlines() if "p = 0;" in l)
+        self.assertFalse(line.rstrip().endswith("\\"))
+
+
 class BraceInitialisedDataTests(unittest.TestCase):
     def test_operator_equals_and_default_arguments_are_still_bodies(self):
         text = ("Transition &Transition::operator=(const Transition &o) { return *this; }\n"
