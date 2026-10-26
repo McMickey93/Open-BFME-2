@@ -72,7 +72,8 @@ public:
 	BfmeFixedStorage0004543D m_08;
 	BfmeFixedStorage0004543D m_24;
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
@@ -188,7 +189,7 @@ bool ScriptConditions::evaluateSkirmishSuppliesWithinDistancePerimeter(Parameter
 		float value = valueParm->m_real;
 		float best = 0.0f;
 		BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(&center, radius, 0,
-			Rva0004584D((const BfmeFixedStorage0004543D &)Rva00045411BitSet(0, 7), *(const BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+			Rva0004584D((const BfmeFixedStorage0004543D &)Rva00045411BitSet(0, 7), *(const BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 				.link(Rva00261409Filter(player, true, 8).link(&Rva002611DDFilter())), 0);
 		Object *obj;
 		while ((obj = hits.next()) != 0) {
