@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // Two FieldParse procs whose bodies are generic but which sit in their own
 // units (names address-derived):
@@ -11,7 +12,7 @@
 
 #include "ascii_string.h"
 
-#define NULL 0
+#include <windows.h>
 
 typedef float Real;
 

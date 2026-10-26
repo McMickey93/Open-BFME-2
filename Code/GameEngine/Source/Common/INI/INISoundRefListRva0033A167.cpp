@@ -1,4 +1,5 @@
 // cl: /O1 /GX /DNDEBUG /MD
+// platformsdk
 //
 // ?Rva0033A167_ParseSoundRefList@INI@@SAXPAV1@PAX1PBX@Z, retail
 // 0x0033A167..0x0033A1CE (103B), cdecl FieldParse proc (ret).
@@ -17,7 +18,7 @@
 // call or address reference to it exists in retail; the name stays
 // address-derived.
 
-#define NULL 0
+#include <windows.h>
 
 class INI
 {

@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // Record-list FieldParse procs (names address-derived) appending a local
 // record to the vector at the store through the rowed push_back of the
@@ -14,7 +15,7 @@
 
 #include "ascii_string.h"
 
-#define NULL 0
+#include <windows.h>
 
 class INI
 {
