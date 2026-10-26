@@ -182,3 +182,19 @@ LINKING 7,322,361 (97.47%), LINKED 7,567,229 (98.14%), all deltas zero;
 authored C++ 7,249,397, delta zero. The census is still 2026-10-26 13:18 at
 d1f046749a / retail-truth-4. Actual work is the two newly demonstrated dry-run
 unblocks and three retired data keys, with inherited recovery separate.
+
+### Next-seat inherited handoff recovery
+
+The next session found a clean tree and inherited unpublished handoff commit
+9a99fdd0af. Its source batch remains confirmed published through aa99981c20;
+there is no unfinished source reconstruction to recover. Re-read current
+AGENTS.md and consolidation verification/audit requirements; check_csv passes
+98,272 function rows. The full outgoing range contains only this handoff edit,
+with no source/path changes or active consumer repointing required. Retain this
+file claim until its publication is confirmed.
+
+Fresh official BFME 1 fetch now reports de077dd5 at the verified checkout and
+46eeba35 at official master (74 commits ahead). The inherited update verification
+remains incomplete; kept verified inputs and did not create a successful
+build/bfme1-last-check.txt receipt. Updating that reference and proving the full
+BFME 2 input comparison is outside this allocated prerequisite pass.
