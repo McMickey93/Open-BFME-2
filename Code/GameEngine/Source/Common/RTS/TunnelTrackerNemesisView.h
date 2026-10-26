@@ -8,6 +8,16 @@ class Object;
 class Player;
 class BodyModuleInterface;
 
+// Keep the declaration before its intrinsic pragma when the TU composer hoists
+// preprocessor lines. isValidContainerFor uses this existing scheduling barrier.
+extern "C" void _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
+
+enum ObjectStatusTypes
+{
+    OBJECT_STATUS_26 = 0x26
+};
+
 typedef void (__cdecl *ContainIterateFunc)(Object *object, void *userData);
 
 struct TunnelContainedNode
@@ -21,6 +31,7 @@ class TunnelTracker
 {
 public:
     int getContainMax() const;
+    bool isValidContainerFor(Object *object, bool flag);
     void addToContainList(Object *object);
     void iterateContained(ContainIterateFunc func, void *userData, bool reverse);
     void healObjects(float frames);
@@ -40,6 +51,7 @@ private:
 class Object
 {
 public:
+	bool testStatus(ObjectStatusTypes status) const;
 	BodyModuleInterface *getBodyModule() const { return m_body; }
 	void rva0028FB6F(void *param);
 	bool rva002943B2(const Player *viewer);
@@ -57,5 +69,13 @@ public:
 	unsigned int m_containedByFrame; // +0x27C, healing callback
 	char m_pad280[0x438 - 0x280];
 	unsigned char m_deadFlag;
+};
+
+// Shared accessed prefix: getContainMax and isValidContainerFor read +0xA98.
+class GlobalData
+{
+public:
+    char m_pad00[0xA98];
+    int m_maxTunnelCapacity;
 };
 

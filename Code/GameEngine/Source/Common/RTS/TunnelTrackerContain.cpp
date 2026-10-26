@@ -76,12 +76,6 @@ public:
 
 extern GameLogic *TheGameLogic;
 
-class GlobalData
-{
-public:
-	char m_pad00[0xA98];
-	Int m_maxTunnelCapacity; // +0xA98
-};
 extern GlobalData *TheWritableGlobalData; // 0x00DFE758
 #define TheGlobalData TheWritableGlobalData
 
