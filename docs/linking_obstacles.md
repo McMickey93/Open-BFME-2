@@ -1972,6 +1972,9 @@ Census confirmation: awaiting next census.
 
 ### LINK-060: one address rowed twice; the non-linking copy is an over-claim
 Status: Open (7 retired, leads below). Updated: 2026-10-26; inspected revision: e9bab0ff07; index d1f046749a.
+
+### LINK-046: one address rowed twice; the non-linking copy is an over-claim
+Status: Open (10 retired, leads below). Updated: 2026-10-26; inspected revision: b57c128806; index d1f046749a.
 Evidence / affected units: a scan of `reverse/functions.csv` for `matched` rows sharing a `target_rva`
 (notes without alias/ICF/fold/dup-of/object-symbol) against `reverse/link_status.csv` finds addresses
 where one row's unit links and a second row's unit never did. The second row is usually an older
@@ -1986,17 +1989,35 @@ Completed (each `./build.sh` exact on the surviving owner, link_check LINKS for 
 - 0x000AF1C2, 0x005243FA, 0x00569450 (2360ac3cf8) and 0x005AE78A (476ee27be8): StlSweepR3
   `uninitialized_fill_n` units (stable_sort over a 1-byte record, `#pragma optimize`); their
   `__uninitialized_fill_n` pins, named only by those units, were dropped.
+- 0x00331578 `Rva00331578` copy in `ThingTemplate.cpp` (owner `RadiusDecalTemplateAssign.cpp`, typed
+  layout agrees with rowed assign 0x00330CDD and ctor 0x00330E5D) b84b538a13; ThingTemplate.cpp 20/20.
+- 0x00502645 `StlSweepR3Rva00502645.cpp` (owner `StlportIntMapInsertFamily.cpp`) eab974b6f3 and
+  0x004F715B `StlSweepR3Rva004F715B.cpp` (owner `stlport_pop_heap_rva004f7e61.cpp`) 3e5be5935c; the
+  pins only they named were dropped.
 Remaining / next check:
 - 0x0057621A `Rva0057621ACtor.cpp` (4 rows): owner `Rva00575F38Dtor.cpp` rows the Impl ctor and
   funclets $L1049..$L1055, but `__ehhandler` 0x0079B403 and funclets 0x0079B3ED/0x0079B3F8 are rowed
   only in the address-named unit; rehome them (tu_map has no approved unit for them) before retiring.
+  Tried 2026-10-26 (reverted): the owner object emits `__ehhandler$??0Impl@...` (row exact at
+  0x0079B403) and `$L1057` (exact at 0x0079B3F8), but `$L1056` at 0x0079B3ED jumps to
+  `??1Rva005CD7DA@@QAE@XZ`, the owner's inline +0x30 record dtor, which has no row; retail jumps to the
+  39B body at 0x005CD7DA. That body has three spellings (`?rva005CD7DA@Rva005CD7DA` in
+  `Rva005CD7DAMethod.cpp`, gen-alias `??1Wrap2000576C4B` in `Rva00576C4BDtor.cpp`, pin
+  `??1Rva005CD7BDHolder`); it is most likely `??1Rva005CD7BD` (ctor 0x005CD7BD sits just before).
+  Naming decision first, then respell the users and rehome all three EH rows together.
+- 0x0052BBD7 `StlSweepR3Rva0052BBD7.cpp`: owner `FamilyDeletingDtors11.cpp` (`??_GRva004E364F`) links;
+  ready to retire like 0x004F715B, but the unit was locked by another agent this round.
+- 0x00217607 `GameFont.cpp` `Rva004738A0::set` (BFME 1 donor, unused in the unit): the STLport pair
+  ctor in `Rva005C6CCC.cpp` links; ready to retire, but GameFont.cpp was locked by another agent.
+- Not over-claims (genuine ICF folds of distinct functions; add a fold note, do not retire):
+  0x001F81BF (ten default vector-holder ctors), 0x00313840 and 0x003140A4 (7B getters).
 - StlSweepR3 copies that now also link (LINK-035 repairs) duplicate placeholder rows:
   0x00577EB2 (`RvaVectorDtorFamily.cpp`), 0x0022DCDA (`Rva0022DCDADtor.cpp`); also unlinked
-  0x000B0298, 0x001DE3E3, 0x001FDEBC, 0x0052BBD7, 0x00502645, 0x004F715B. Decide which row keeps
+  0x000B0298, 0x001DE3E3, 0x001FDEBC. Decide which row keeps
   the address (the STL spelling may be the better name; respell callers) before dropping one.
 - Multi-row units holding a second copy: DozerAIUpdate.cpp (0x00488C48, 0x0048AEC6, 0x00489DE3,
-  0x00489E2E), ThingTemplate.cpp (0x00331578), WOLBuddyOverlay.cpp (0x002B70B3), GameFont.cpp
-  (0x00217607), R5VectorDtorEHFramedPolymorphic.cpp (0x002D0F65), ProductionPrerequisiteAssign.cpp
+  0x00489E2E; DozerAIUpdate.cpp was edited on master in the last 6 hours, and tu_map approves it as
+  0x00488C48's home), WOLBuddyOverlay.cpp (0x002B70B3), R5VectorDtorEHFramedPolymorphic.cpp (0x002D0F65), ProductionPrerequisiteAssign.cpp
   (0x00564CD4, 0x00565668, emitted COMDATs; its real blockers are op= copies).
 Clearance: the surviving owners link in preview (link_check against index d1f046749a); the retired
 units held 0 census-linked bytes, so no headline change is claimed.
