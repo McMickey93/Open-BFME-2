@@ -108,7 +108,7 @@ public:
  virtual void freeDisplayString(DisplayString *);
 };
 
-extern DisplayStringManager *TheDisplayStringManager;
+extern class DisplayStringManager *TheDisplayStringManager;
 
 class CreditsLine {
 public:
