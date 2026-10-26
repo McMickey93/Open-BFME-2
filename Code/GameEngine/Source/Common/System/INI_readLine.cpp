@@ -29,8 +29,7 @@
 
 #include "ascii_string.h"
 
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *dst, const char *src, unsigned int n);
-extern "C" unsigned int __cdecl strlen(const char *s);
+#include <string.h>
 
 struct BfmeE12
 {
