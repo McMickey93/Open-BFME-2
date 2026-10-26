@@ -86,12 +86,12 @@ private:
 };
 
 // The +0x18 record built from the owner's +4 object (read once).
-class Rva005CD7BDHolder : public Rva005CD7BD
+class Wrap2000576C4B : public Rva005CD7BD
 {
 public:
-	__forceinline Rva005CD7BDHolder(Rva005772BFTarget *source, Rva005CD1A9 *owner)
+	__forceinline Wrap2000576C4B(Rva005772BFTarget *source, Rva005CD1A9 *owner)
 		: Rva005CD7BD(((Rva00574A98 *)source)->rva00574A98(), ((const Rva00328A83PtrChaseField *)source)->get(), (int)owner) {}
-	~Rva005CD7BDHolder() {}
+	~Wrap2000576C4B();
 };
 
 class StrategicInGameUI
@@ -117,7 +117,7 @@ private:
 	Rva005772BF *m_owner;				// +0x0C
 	int m_value;					// +0x10
 	Rva0057702E m_14;				// +0x14
-	Rva005CD7BDHolder m_18;				// +0x18
+	Wrap2000576C4B m_18;				// +0x18
 	Rva005CD651 m_28;				// +0x28
 	bool m_38;					// +0x38
 };

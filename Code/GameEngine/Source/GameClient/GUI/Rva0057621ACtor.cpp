@@ -121,12 +121,12 @@ private:
 };
 
 // The +0x30 record built from the owner's +4 object (read once).
-class Rva005CD7BDHolder : public Rva005CD7BD
+class Wrap2000576C4B : public Rva005CD7BD
 {
 public:
-	__forceinline Rva005CD7BDHolder(Rva005772BFTarget *source, Rva005CD1A9 *owner)
+	__forceinline Wrap2000576C4B(Rva005772BFTarget *source, Rva005CD1A9 *owner)
 		: Rva005CD7BD(((Rva00574A98 *)source)->rva00574A98(), ((const Rva00328A83PtrChaseField *)source)->get(), (int)owner) {}
-	~Rva005CD7BDHolder() {}
+	~Wrap2000576C4B();
 };
 
 class LivingWorldLogic;
@@ -174,7 +174,7 @@ private:
 	Rva005CC61E m_24;				// +0x24
 	Rva000AD6F4 m_28;				// +0x28
 	Rva000AD6F4 m_2C;				// +0x2C
-	Rva005CD7BDHolder m_30;				// +0x30
+	Wrap2000576C4B m_30;				// +0x30
 	Rva005CD651 m_40;				// +0x40
 };
 
