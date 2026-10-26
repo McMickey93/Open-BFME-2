@@ -470,7 +470,7 @@ Rva0048C8C6::Rva0048C8C6() : m_00(0), m_04("")
 
 // tu-skeleton: 0x0048D72A 17B ?buildFieldParse@FlammableUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
-// tu-skeleton: 0x0078C634 13B ?Rva0078C634ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+// tu-skeleton: 0x0078C634 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078C641 10B __ehhandler$?getModuleNameKey@FlammableUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdatePoolKey.cpp (not merged yet)
 
@@ -495,13 +495,13 @@ void Rva0048C7BF::rva0048C7BF()
 
 // tu-skeleton: 0x0078C680 10B __ehhandler$?Rva0048C81FConstruct@@YAXPAUTreeKey00242F5E@@ABU1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_game_structs.cpp (not merged yet)
 
-// tu-skeleton: 0x0078C68A 13B ?Rva0078C68AClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+// tu-skeleton: 0x0078C68A 13B $L8165 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078C697 8B Unwind@00b8c697 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078C69F 10B __ehhandler$?rva0048C8F9@FlammableUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078C6A9 13B ?Rva0078C6A9ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+// tu-skeleton: 0x0078C6A9 13B $L8347 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078C6B6 11B Unwind@00b8c6b6 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
@@ -523,7 +523,7 @@ void Rva0048C7BF::rva0048C7BF()
 
 // tu-skeleton: 0x0078C70A 10B __ehhandler$??1FlammableUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078C714 13B ?Rva0078C714ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+// tu-skeleton: 0x0078C714 13B $L8252 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078C721 10B __ehhandler$?update@FlammableUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
