@@ -2125,6 +2125,12 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   (`?IsCapturing@WW3D@@0_NA`). Reverted ("Revert 397acb4f2e"): `WW3DBeginRenderBFME2.cpp`,
   `WW3DStartMovieCapture.cpp`, `WW3DShutdownRenderDevice.cpp`, `WW3DStopMovieCapture.cpp`,
   `GapBodiesGE41_Rva00118610.cpp`; `./build.sh` 8/8, preview 0 -> 818 B.
+- **Capture-owner ledger follow-up (2026-10-27, base `6f7952d716`):** the five
+  consumer fixes are already upstream. The existing private one-byte owner is
+  now recorded separately, with seven native DIR32 operands and the zero
+  initializer verified. The current six-source cohort passes 31 function rows
+  and five data rows. [Current evidence](../reverse/attempt_support/ww3d-capture-data-owner-20261026.md)
+  preserves the historical preview separately; no new census gain is claimed.
 - **Remaining** (all four came from `tools/tu_skeleton.py --merge`, which accepts a donor and
   chooses the `// cl:` line by matched rows only, not by whether the target still links):
   - `GameFont.cpp` (1,758 B), bdf96f6de4: absorbed `StlSweepR3Rva00218E09.cpp`, which never
