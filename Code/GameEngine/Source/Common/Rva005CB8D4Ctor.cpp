@@ -30,7 +30,7 @@ public:
 private:
 	Rva005CB4E6Elem *m_elem;
 };
-void *__cdecl operator new(unsigned int);
+#include <new>
 Rva005CB8D4::Rva005CB8D4()
 {
 	m_elem = new Rva005CB4E6Elem(this);

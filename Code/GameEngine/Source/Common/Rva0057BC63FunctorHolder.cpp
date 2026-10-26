@@ -11,7 +11,7 @@
 // Inner wrapper ctor same movsd x4 at 0x005185BA (30B). Callers 0x002D558D
 // 0x002D595A 0x000E2083 build 16B payload on stack and construct holder via
 // push placeholder + mov ecx,esp.
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class __multiple_inheritance FunctorTarget;
 typedef void (FunctorTarget::*FunctorMethod)(void);

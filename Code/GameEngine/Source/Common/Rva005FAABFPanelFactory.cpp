@@ -11,7 +11,7 @@
 // No fabricated pin, naked code or explicit frame-state manipulation.
 // stlport
 #include "BattlePromptArmyPanelView.h"
-void *operator new(unsigned);
+#include <new>
 struct Rva005FAABFResult {
  Rva005FAF5D *ptr;
  Rva005FAABFResult(Rva005FAF5D *p):ptr(p){if(p)++*(int *)((char *)p+4);}
