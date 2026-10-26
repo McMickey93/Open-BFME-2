@@ -536,6 +536,134 @@ class MergeDiagnosticsTests(unittest.TestCase):
         self.assertIn("C1001", out["blocked"])
 
 
+class LinkGuardTests(unittest.TestCase):
+    # LINK-042: GameFont.cpp, statistics.cpp, CrateSystem.cpp, MultiplayerSettings.cpp and
+    # htree.cpp linked in the census, then a merge chosen by matched rows alone made them stop.
+    TU, A, B = "Code/T.cpp", "Code/A.cpp", "Code/B.cpp"
+
+    def index(self):
+        import link_check as LC
+        return {"meta": {}, "objects": ["t.obj", "a.obj", "b.obj", "x.obj"],
+                "blockers": {self.TU: {"object": "t.obj", "linked": True},
+                             self.A: {"object": "a.obj", "linked": True},
+                             self.B: {"object": "b.obj", "linked": False}},
+                "strong": {"?t@@YAXXZ": [0], "?a@@YAXXZ": [1], "?b@@YAXXZ": [2], "?x@@YAXXZ": [3]},
+                "comdat": {"?inl@@YAXXZ": [(0, "d1", "retail"), (1, "d1", "retail"), (3, "d1", "retail")]},
+                "common": {}, "common_schema": LC.COMMON_SCHEMA, "alternates": {"?al@@YAXXZ": [(1, "?a@@YAXXZ")]},
+                "selection": {"exceptions": {}, "owners": {}},
+                "excuses": {"runtime": set(), "imported": set(), "stubs": set()},
+                "references": {"schema": LC.REFERENCES_SCHEMA, "edges": {"?t@@YAXXZ": frozenset({"?a@@YAXXZ"})},
+                               "referenced": {"?t@@YAXXZ", "?a@@YAXXZ"}}}
+
+    def guard(self, tmp, index=None):
+        return T.LinkGuard(self.TU, root=tmp, index=index if index is not None else self.index(), truth=object(),
+                           rank={"t.obj": 0, "a.obj": 1, "b.obj": 2, "x.obj": 3})
+
+    def test_the_merged_object_replaces_every_absorbed_unit_at_the_first_place(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g = self.guard(tmp)
+            self.assertIsNone(g.prepare([self.TU, self.A, self.B]))
+            index = g.index
+            view = g.view(Path("merged.obj"), {0, 1})
+        self.assertEqual(view["objects"], ["merged.obj", "a.obj", "b.obj", "x.obj"])
+        self.assertEqual(set(view["strong"]), {"?b@@YAXXZ", "?x@@YAXXZ"})
+        self.assertEqual(view["comdat"]["?inl@@YAXXZ"], [(3, "d1", "retail")])
+        self.assertEqual(view["alternates"], {})
+        view["references"]["referenced"].add("?new@@YAXXZ")
+        # the census index itself is untouched: every trial gets its own view
+        self.assertEqual(index["objects"][0], "t.obj")
+        self.assertIn("?t@@YAXXZ", index["strong"])
+        self.assertNotIn("?new@@YAXXZ", index["references"]["referenced"])
+
+    def merge(self, guard, links):
+        """_merge of T + A + B with every text matching; `links(files)` says
+        whether the merged object of those files links."""
+        texts = {self.TU: "seed", self.A: "a", self.B: "b"}
+        don = {self.TU: [{"target_rva": "0x1000"}], self.A: [{"target_rva": "0x1010"}],
+               self.B: [{"target_rva": "0x1020"}, {"target_rva": "0x1030"}]}
+        judged = []
+
+        class Verifier:
+            fd = SimpleNamespace(MANAGED=re.compile(r"(?!)"), overrides=lambda: {})
+            errors, all_errors, flags = [], [], None
+            obj = None
+
+            def matched(self, text, rows):
+                self.obj = Path(f"build/{text}.obj")
+                return {r["target_rva"] for r in rows}
+
+        def check_object(obj, view, truth, source=None):
+            files = obj.stem.split("+")
+            judged.append((files, view["objects"]))
+            bad = [] if links(files) else ["?b_needs@@YAXXZ"]
+            return {"unresolved": bad, "duplicates": [], "comdat": [], "addresses": [], "selected": [],
+                    "unreferenced_differs": []}
+
+        def compose(tu_, sk, files, texts_, flags, *a, **k):
+            return "+".join(Path(f).stem for f in files)
+
+        import link_check as LC
+        with patch.object(T, "Verifier", return_value=Verifier()), \
+                patch.object(T, "compose", side_effect=compose), \
+                patch.object(LC, "check_object", side_effect=check_object), \
+                patch.object(LC, "new_variants", return_value=[]), \
+                patch.object(T, "apply") as apply:
+            out = T._merge(self.TU, [], don, {"accepted": [], "rejected": {}}, True, texts=texts, guard=guard)
+        apply.assert_not_called()
+        return out, judged
+
+    def test_a_never_linked_donor_that_breaks_a_linked_target_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out, judged = self.merge(self.guard(tmp), links=lambda files: "B" not in files)
+        self.assertNotIn("blocked", out)
+        self.assertEqual(sorted(out["accepted"]), [self.A, self.TU])
+        self.assertTrue(out["rejected"][self.B].startswith(
+            f"link: {self.B} never linked at the census and {self.A}, {self.TU} link; "
+            "the merged object would not: unresolved ?b_needs@@YAXXZ"))
+        # the merged object sits where the target linked, beside every unit it does not absorb
+        self.assertTrue(all(objects[0] == "+".join(files) + ".obj" and objects[3] == "x.obj"
+                            for files, objects in judged))
+
+    def test_a_never_linked_donor_is_accepted_when_the_merged_object_still_links(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out, judged = self.merge(self.guard(tmp), links=lambda files: True)
+        self.assertNotIn("blocked", out)
+        self.assertEqual(sorted(out["accepted"]), [self.A, self.B, self.TU])
+        self.assertTrue(any(sorted(files) == ["A", "B", "T"] for files, _ in judged))
+        self.assertTrue(out["link_guard"].startswith("census-linked: "))
+
+    def test_a_target_that_no_longer_links_with_any_donor_blocks_the_merge(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out, _ = self.merge(self.guard(tmp), links=lambda files: files == ["T"])
+        self.assertTrue(out["blocked"].startswith("no verified merge of two or more donors"))
+        self.assertTrue(out["rejected"][self.A].startswith(f"link: {self.A} links at the census"))
+
+    def test_without_the_census_index_a_merge_touching_a_linked_unit_is_blocked(self):
+        import link_check as LC
+        with tempfile.TemporaryDirectory() as tmp:
+            (Path(tmp) / "reverse").mkdir()
+            (Path(tmp) / "reverse/link_status.csv").write_text(
+                "source,linked,unresolved,duplicates,comdat_losers,addresses,wrong_selected\n"
+                f"{self.TU},yes,0,0,0,0,0\n{self.B},no,1,0,0,0,0\n")
+            guard = T.LinkGuard(self.TU, root=tmp)
+            with patch.object(LC, "INDEX", Path(tmp) / "build/link_census/link_index.pkl"), \
+                    patch.object(LC, "ROOT", Path(tmp)):
+                out, judged = self.merge(guard, links=lambda files: True)
+        self.assertTrue(out["blocked"].startswith("link guard: no census index at build/link_census/link_index.pkl"))
+        self.assertIn(f"census-linked: {self.TU}", out["blocked"])
+        self.assertEqual((out["accepted"], judged), ([], []))
+
+    def test_a_merge_of_units_that_never_linked_needs_no_index(self):
+        import link_check as LC
+        with tempfile.TemporaryDirectory() as tmp:
+            guard = T.LinkGuard(self.TU, root=tmp)    # no link_status.csv: nothing links
+            with patch.object(LC, "INDEX", Path(tmp) / "missing.pkl"):
+                out, judged = self.merge(guard, links=lambda files: False)
+        self.assertNotIn("blocked", out)
+        self.assertEqual(judged, [])
+        self.assertEqual(out["link_guard"], "no file of this merge links at the census")
+
+
 class ClaimTests(unittest.TestCase):
     def test_the_scope_is_the_tu_every_donor_and_every_moved_row(self):
         don = {"Code/T.cpp": [{"target_rva": "0x00001000"}],

@@ -22,6 +22,15 @@ differently gets one spelling (first, else longest) and the byte check decides
 whether that was safe. A donor that also holds rows of another TU is never
 split here ("mixed"): it stays a satellite and is reported.
 
+Matched rows are not enough: a merge must not cost any unit its link
+(LinkGuard). When the target or a donor links at the last census, every
+candidate that keeps its rows is also judged as one object by
+tools/link_check.py's census rules (the absorbed units leave the index and the
+merged object takes their link-order place), and a donor that would make it
+stop linking is rejected like one that loses bytes ("link: ..."). Without the
+census index (python3 tools/link_check.py --fetch-index) such a merge is
+blocked. The split lane is not judged this way.
+
 Applying a merge writes the TU file (`// cl:` line chosen from the donors' own
 flag sets by the same verification), repoints every ledger row of each absorbed
 donor at it, deletes the absorbed donors and stages the result. The commit hook
@@ -639,6 +648,7 @@ class Verifier:
             # A cached failure must restore its own errors, not the last trial's.
             self.cache[key] = (obj if ok else None, errors)
         obj, errors = self.cache[key]
+        self.obj = obj          # the candidate's object, for LinkGuard.judge
         self.all_errors = list(errors)
         self.errors = self.all_errors[:3]
         out = set()
@@ -653,6 +663,153 @@ class Verifier:
                 except BaseException:   # build.py reports misses by SystemExit
                     pass
         return out
+
+
+# ---------------------------------------------------------------- link guard
+# link_check's index tables and where each entry keeps its object's position
+LINK_TABLES = (("strong", lambda entry: entry), ("comdat", lambda entry: entry[0]),
+               ("common", lambda entry: entry[0]), ("alternates", lambda entry: entry[0]))
+
+
+class LinkGuard:
+    """No merge leaves a unit that links not linking (LINK-042: GameFont.cpp,
+    statistics.cpp, CrateSystem.cpp, MultiplayerSettings.cpp and htree.cpp each
+    absorbed a donor that never linked, or lost the flags its donors linked
+    under, and stopped linking).
+
+    A unit links when a census says so: reverse/link_status.csv or the census
+    index's blockers (they can be different censuses; either is enough). When a merge's files include one, a
+    candidate text that keeps every matched row must also link as one object by
+    tools/link_check.py's census rules: the Verifier's object of that text takes
+    the link-order place of its earliest census unit, every unit it absorbs
+    leaves the index (their definitions are its own now), and it must have no
+    unresolved name, duplicate, losing COMDAT copy, wrong selection or
+    hard-coded address, nor a new COMDAT copy that breaks another unit's link
+    (link_check --new-variants' rule). Without the census index a merge that
+    touches a linked unit is blocked, never waved through."""
+
+    def __init__(self, tu, root=ROOT, index=None, truth=None, rank=None):
+        self.tu, self.root = tu, Path(root)
+        self.index, self.truth, self.rank = index, truth, rank
+        self._status, self.touched, self.previous, self.cache = None, None, {}, {}
+
+    def status(self):
+        if self._status is None:
+            path = self.root / "reverse/link_status.csv"
+            text = path.read_text(encoding="utf-8", errors="replace") if path.exists() else ""
+            self._status = {r["source"]: r.get("linked") == "yes" for r in csv.DictReader(io.StringIO(text))}
+        return self._status
+
+    def load(self):
+        """The census index, when this checkout has one (link_check --fetch-index)."""
+        import link_check as LC
+        if self.index is None and LC.INDEX.exists():
+            self.index = LC.load_index()
+        return self.index
+
+    def linked(self, files):
+        """The files a census records as linking."""
+        blockers = self.index["blockers"] if self.index else {}
+        return sorted(f for f in files if self.status().get(f) or (blockers.get(f) or {}).get("linked"))
+
+    def position(self, f):
+        import link_check as LC
+        entry = self.index["blockers"].get(f)
+        if entry and LC.in_census(self.index, entry.get("object")):
+            if "places" not in self.cache:
+                self.cache["places"] = {name: i for i, name in enumerate(self.index["objects"])}
+            return self.cache["places"].get(entry["object"])
+        return None
+
+    def prepare(self, files):
+        """Load the census index for a merge of `files`: the reason it cannot
+        judge them, or None."""
+        import link_check as LC
+        import link_census as LCe
+        if self.load() is None:
+            return (f"no census index at {LC.INDEX.relative_to(LC.ROOT).as_posix()} "
+                    "(python3 tools/link_check.py --fetch-index)")
+        try:
+            LC.require_common_index(self.index)
+        except SystemExit as exc:
+            return str(exc)
+        if self.truth is None:
+            rows = LCe.ledger()
+            self.truth, self.rank = LCe.RetailTruth(rows), LC.link_rank(rows)
+        outside = [f for f in self.linked(files) if self.position(f) is None]
+        if outside:
+            return "census-linked unit(s) missing from the census index: " + ", ".join(outside[:5])
+        # one pass over the index: the names each merge file's object holds, and its COMDAT copies
+        want = {p for f in files if (p := self.position(f)) is not None}
+        self.touched = {table: collections.defaultdict(set) for table, _ in LINK_TABLES}
+        for table, at in LINK_TABLES:
+            for name, entries in self.index[table].items():
+                for entry in entries:
+                    if at(entry) in want:
+                        self.touched[table][at(entry)].add(name)
+        for name, copies in self.index["comdat"].items():
+            for p, digest, _ in copies:
+                if p in want:
+                    self.previous.setdefault(p, {}).setdefault(name, set()).add(digest)
+        return None
+
+    def view(self, obj, places):
+        """The census index with the objects at `places` gone and `obj` at the
+        first of them; the reference graph is copied (check_object adds to it)."""
+        index, out = self.index, dict(self.index)
+        for table, at in LINK_TABLES:
+            names = set().union(*(self.touched[table].get(p, ()) for p in places))
+            if names:
+                out[table] = dict(index[table])
+                for name in names:
+                    kept = [entry for entry in index[table][name] if at(entry) not in places]
+                    if kept:
+                        out[table][name] = kept
+                    else:
+                        del out[table][name]
+        out["objects"] = list(index["objects"])
+        if places:
+            out["objects"][min(places)] = obj.name
+        graph = index.get("references")
+        if isinstance(graph, dict) and isinstance(graph.get("edges"), dict):
+            out["references"] = dict(graph, edges=dict(graph["edges"]), referenced=set(graph["referenced"]))
+        return out
+
+    def judge(self, obj, files, text):
+        """Why the merged object of `files` (compiled from `text`) would not
+        link, [] when it links or when no file of it links at the census."""
+        if not self.linked(files):
+            return []
+        if obj is None:
+            return ["no object to judge"]
+        key = (str(obj), tuple(sorted(files)))
+        if key not in self.cache:
+            import link_check as LC
+            import link_debt
+            places = {p for f in files if (p := self.position(f)) is not None}
+            view = self.view(Path(obj), places)
+            obj = Path(obj)
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                found = LC.check_object(obj, view, self.truth)
+                rank, previous = None, {}
+                if places and self.rank is not None and view["objects"][min(places)] == obj.name:
+                    holder = self.index["objects"][min(places)]
+                    if holder in self.rank:
+                        rank = dict(self.rank, **{obj.name: self.rank[holder]})
+                for p in places:
+                    for name, digests in self.previous.get(p, {}).items():
+                        previous.setdefault(name, set()).update(digests)
+                breaks = LC.new_variants(obj, view, self.truth, previous, rank) if rank else []
+            why = ([f"unresolved {n}" for n in found["unresolved"]]
+                   + [f"duplicate {n}" for n in found["duplicates"]]
+                   + [f"comdat {n} ({rule})" for n, rule, _ in found["comdat"]]
+                   + [f"selected {n}" for n in found["selected"]]
+                   + [f"breaks another unit's copy of {n}" for n in breaks])
+            addresses = link_debt.addresses(text, self.tu)
+            if addresses:
+                why.append(f"{len(addresses)} hard-coded image address(es), e.g. {addresses[0]}")
+            self.cache[key] = why
+        return self.cache[key]
 
 
 def header_queue_rows(root=ROOT):
@@ -696,8 +853,21 @@ def merge(tu, dry_run=False, log=print, claim=True):
     return _merge(tu, sk, don, report, dry_run)
 
 
-def _merge(tu, sk, don, report, dry_run, texts=None, applier=None):
+def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
     v = Verifier(tu)
+    # A merge must not cost a unit its link (LinkGuard). The split lane's donor
+    # is carved from a file that stays, so its census object cannot simply leave
+    # the index: that lane is not judged here.
+    guard = None if applier else guard or LinkGuard(tu)
+    if guard is not None:
+        guard.load()
+        linked = guard.linked(don)
+        why = guard.prepare(don) if linked else None
+        report["link_guard"] = (f"census-linked: {', '.join(linked)}" if linked
+                                else "no file of this merge links at the census")
+        if why:
+            report["blocked"] = f"link guard: {why}; census-linked: {', '.join(linked)}"
+            return report
     texts = dict(texts or {})
     for f in don:
         if f not in texts:
@@ -761,6 +931,8 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None):
                     incs.append(x)
     flag_sets = [list(k) + incs for k, _ in weight.most_common()]
 
+    link_why = {}
+
     def attempt(files, flags):
         best = None
         need = set().union(*(base[f] for f in files))
@@ -776,15 +948,28 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None):
                 drop_all |= again & drop   # still redefined with only the seed's copy: a header owns it
                 drop |= again
             if got is not None and need <= got:
-                return text
+                why = guard.judge(getattr(v, "obj", None), files, text) if guard else []
+                if not why:
+                    return text
+                link_why[tuple(files)] = why
+                best = "link"   # matched, but a unit that links would stop linking
+                continue
             best = best or ("compile" if got is None else "bytes")
         return best
+
+    def link_reason(files, f):
+        linked = guard.linked(files)
+        whose = (f"{f} links at the census" if f in linked
+                 else f"{f} never linked at the census and {', '.join(linked)} link")
+        return f"link: {whose}; the merged object would not: " + "; ".join(link_why[tuple(files)][:3])[:300]
 
     def greedy(order, flags):
         acc, rej = [], {}
         for f in order:
             res = attempt(acc + [f], flags)
-            if res in ("compile", "bytes"):
+            if res == "link":
+                rej[f] = link_reason(acc + [f], f)
+            elif res in ("compile", "bytes"):
                 rej[f] = res + ("" if res == "bytes" else ": " + " | ".join(v.errors)[:300])
             else:
                 acc.append(f)
@@ -835,12 +1020,13 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None):
     score, acc, rej, flags = best
     if ov and not set(acc) & set(ov):   # verified under flags no accepted donor carries: redo without them
         report["rejected"].update({f: "its flag override is not carried by the verified merge" for f in ov})
-        return _merge(tu, sk, {f: r for f, r in don.items() if f not in ov}, report, dry_run, texts, applier)
+        return _merge(tu, sk, {f: r for f, r in don.items() if f not in ov}, report, dry_run, texts, applier, guard)
     text = attempt(acc, flags)
-    if text in ("compile", "bytes"):   # the accepted set no longer re-verifies (a flaky compile, an ICE):
-        report["rejected"].update(rej)  # never write the failure token as the TU's text
+    if text in ("compile", "bytes", "link"):   # the accepted set no longer re-verifies (a flaky compile, an ICE):
+        report["rejected"].update(rej)          # never write the failure token as the TU's text
         report["blocked"] = (f"the accepted donors did not re-verify ({text}"
-                             + (": " + " | ".join(v.errors)[:300] if text == "compile" else "") + ")")
+                             + (": " + " | ".join(v.errors)[:300] if text == "compile" else "")
+                             + (": " + "; ".join(link_why[tuple(acc)][:3])[:300] if text == "link" else "") + ")")
         return report
     if ov:   # the TU spells the override's flags (flag_defaults check)
         text = v.effective(text, [r for f in acc for r in don[f]])
