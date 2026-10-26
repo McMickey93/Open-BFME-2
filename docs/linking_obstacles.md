@@ -3484,7 +3484,7 @@ alias names until it is next regenerated.
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
-### LINK-066: legacy Zero Hour `GameWindowManager` bodies kept `GameWindowManager.cpp` from linking
+### LINK-070: legacy Zero Hour `GameWindowManager` bodies kept `GameWindowManager.cpp` from linking
 Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
 `9f685c7696` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units: `Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp`
@@ -3514,7 +3514,7 @@ bodies are checked against Zero Hour.
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
-### LINK-067: `Rva006DF470Initialize.cpp` named 0x00A180C4 a second time
+### LINK-071: `Rva006DF470Initialize.cpp` named 0x00A180C4 a second time
 Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
 `9f685c7696` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units: `Code/Libraries/Source/Apt/AptValue/Rva006DF470Initialize.cpp`
@@ -3529,7 +3529,7 @@ EH data. Preview: LINKS, LINKED 0 -> 1,374.
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
-### LINK-068: ArmyDetailsPanel icon family views drop the retail `Rva005F4179` slots
+### LINK-072: ArmyDetailsPanel icon family views drop the retail `Rva005F4179` slots
 Status: Open / prerequisite identified. Updated: 2026-10-26; inspected revision:
 `31e2c236a0` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units: `Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/Rva005E39F3Ctor.cpp`
@@ -3555,7 +3555,7 @@ COMDATs replace the placeholder rows.
 Clearance: not cleared.
 Census confirmation: not applicable.
 
-### LINK-069: one-row units held back by unrowed placeholder siblings or a split class name
+### LINK-073: one-row units held back by unrowed placeholder siblings or a split class name
 Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
 `e303e68966` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units:
@@ -3572,15 +3572,8 @@ Evidence / affected units:
   (`Rva00042036Factory.cpp`) are respelled on `Rva000647D4`; both stay exact.
   Preview: LINKS 0 -> 25.
 - `Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp`
-  (0x007B556E) zeroes the 16 B at 0x00A09E50 and registers the atexit thunk
-  0x007B9B0A, through two names nothing defined (`g_rva0134FB38`,
-  `Rva00C715CARelease`). Completed: it now names ATL's
-  `CImage::s_cache` (defined in `Code/Libraries/Source/ATL/atlimage.cpp`) and
-  the rowed `rva007B9B0A`; 1/1 exact. Preview: LINKS 0 -> 25. Remaining: two
-  definitions sit at 0x00A09E50 (`s_cache` in `atlimage.cpp`, the
-  address-named `g_Va00E09E50` data row in `Rva007B6A00AtexitThunks.cpp`, used
-  by the 0x007B9B0A thunk), so `data_check` (shadow) reports `s_cache` here as
-  `wrong-name`. The data lane should retire `g_Va00E09E50` onto `s_cache`.
+  (0x007B556E): the same `CImage::s_cache`/`rva007B9B0A` repair landed
+  independently in 748950b51b; see LINK-067.
 - `Code/GameEngine/Source/Common/Rva006F84C0DeletingDtor.cpp` (0x006F84C0)
   still defines a placeholder `~Rva006F84C0` body retail lacks. Retail 0x006F8460
   (rowed `??1Rva006F8460`) stores base vtable 0x008EC9CC: it is the ICF fold of
