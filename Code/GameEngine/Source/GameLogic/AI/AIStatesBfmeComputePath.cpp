@@ -3,7 +3,7 @@
 // Small computePath (slot 17), onExit (slot 5) and other overrides of AI
 // states, each named by its vtable's own slot-2 name getter (the state's name
 // literal). BFME 2 logs a numbered "CritterDesync" line from computePath
-// when the desync log is on (g_00E03745, file g_00DFEFF0):
+// when the desync log is on (g_00E03745, file theLogicRandomLogFile):
 //
 //  - AIMoveAndTightenState::computePath 0x00340158 (34 bytes; 0x00C124D8,
 //    whose constructor 0x00342843 builds on AIInternalMoveToState directly):
@@ -193,7 +193,7 @@ enum WeaponLockType
 };
 
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 struct FprintfTarget
 {
 	char m_pad[4];
@@ -203,7 +203,7 @@ static __forceinline void critterDesyncLog(const char *text)
 {
 	if (g_00E03745)
 	{
-		FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+		FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 		if (log != 0)
 			fprintf(log, text);
 	}
@@ -814,7 +814,7 @@ static __declspec(noinline) Bool isSamePosition(const Coord3D *ourPos,
 
 static __forceinline void debugTrace(const char *text)
 {
-	FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+	FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 	if (log != 0)
 		fprintf(log, text);
 }
@@ -897,7 +897,7 @@ Bool AIAttackMeleeEngageState::computePath()
 			return true;
 		if (TheGameLogic->getBfmeDebugLevel() > 0)
 		{
-			FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+			FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 			if (log != 0)
 				fprintf(log, "AIAttackFireDuringApproachState::computePath[2] will call FindMeleeEngagmentLocation with %f,%f (m_goalPosition:%f,%f = m_prevVictimPosition:%f, %f;)",
 					(double)m_goalPosition.x, (double)m_goalPosition.y,
