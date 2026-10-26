@@ -701,25 +701,7 @@ Debug& Debug::operator<<(double val)
   return (*this) << help;
 }
 
-Debug& Debug::operator<<(short val)
-{
-  // usually having a fixed size buffer and a function
-  // that doesn't check for buffer overflow isn't a good idea
-  // but in this case we know how long it can be at max...
-  char help[1+16+1]; // sign, 16 digits, NUL
-  AddOutput(m_prefix,strlen(m_prefix));
-  return (*this) << _itoa(val,help,m_radix);
-}
-
-Debug& Debug::operator<<(unsigned short val)
-{
-  // usually having a fixed size buffer and a function
-  // that doesn't check for buffer overflow isn't a good idea
-  // but in this case we know how long it can be at max...
-  char help[16+1]; // 16 digits, NUL
-  AddOutput(m_prefix,strlen(m_prefix));
-  return (*this) << _itoa(val,help,m_radix);
-}
+// ??6Debug@@UAEAAV0@F@Z and ??6Debug@@UAEAAV0@G@Z defined in Common/BfmeThreeHundred.cpp and Common/BfmeThreeHundredOne.cpp (their rows' units).
 
 Debug& Debug::operator<<(__int64 val)
 {

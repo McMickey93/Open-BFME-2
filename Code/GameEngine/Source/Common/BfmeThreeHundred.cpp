@@ -1,51 +1,52 @@
 // cl: /Oy-
-// The record's own name written out with its length measured in place, then a
-// number written after it in the record's own base. The name-writer is pinned
-// by address; the number is turned into text by the runtime.
+// Debug::operator<<(short) at retail 0x0003B470 (80 bytes), the Zero Hour body
+// (GeneralsMD/Code/Libraries/Source/debug/debug_debug.cpp, operator<<(short val)): the prefix is
+// written out with its length measured in place, then the value is turned into
+// text in the record's radix and sent through the virtual operator<<(const char *).
+// The Debug vtable at 0x007BE810 holds the fifteen overloads in reverse
+// declaration order: unsigned short is slot 5, short slot 6, const char * slot 14.
 
 extern "C" unsigned int __cdecl strlen(const char *at);
 #pragma intrinsic(strlen)
 
 extern "C" __declspec(dllimport) char *__cdecl _itoa(int value, char *out, int base);
 
-class BfmeThingQQ;
 class Debug
 {
-	friend class BfmeThingQQ;
-	virtual void AddOutput(const char *str, unsigned int len);
-};
-
-class BfmeThingQQ
-{
 public:
-	virtual void bfmeSpare000QQ(void) = 0;
-	virtual void bfmeSpare001QQ(void) = 0;
-	virtual void bfmeSpare002QQ(void) = 0;
-	virtual void bfmeSpare003QQ(void) = 0;
-	virtual void bfmeSpare004QQ(void) = 0;
-	virtual void bfmeSpare005QQ(void) = 0;
-	virtual void bfmeSpare006QQ(void) = 0;
-	virtual void bfmeSpare007QQ(void) = 0;
-	virtual void bfmeSpare008QQ(void) = 0;
-	virtual void bfmeSpare009QQ(void) = 0;
-	virtual void bfmeSpare010QQ(void) = 0;
-	virtual void bfmeSpare011QQ(void) = 0;
-	virtual void bfmeSpare012QQ(void) = 0;
-	virtual void bfmeSpare013QQ(void) = 0;
-	virtual void bfmeAddQQ(const char *text) = 0;
+	class MemDump;
+	class HResult;
 
-	void bfmeShowQQ(short what);
+	virtual Debug &operator<<(const char *str);
+	virtual Debug &operator<<(int val);
+	virtual Debug &operator<<(unsigned val);
+	virtual Debug &operator<<(long val);
+	virtual Debug &operator<<(unsigned long val);
+	virtual Debug &operator<<(bool val);
+	virtual Debug &operator<<(float val);
+	virtual Debug &operator<<(double val);
+	virtual Debug &operator<<(short val);
+	virtual Debug &operator<<(unsigned short val);
+	virtual Debug &operator<<(__int64 val);
+	virtual Debug &operator<<(unsigned __int64 val);
+	virtual Debug &operator<<(const void *ptr);
+	virtual Debug &operator<<(const MemDump &dump);
+	virtual Debug &operator<<(HResult hres);
 
-	unsigned char m_bfmeHead[0x9e78];	// 0x0004
-	char m_bfmeName[0x10];			// 0x9e7c
-	int m_bfmeBase;				// 0x9e8c
+private:
+	virtual void AddOutput(const char *str, unsigned int len);
+
+	unsigned char m_pad04[0x9E78];
+	char m_prefix[16];			// +0x9E7C
+	int m_radix;				// +0x9E8C
 };
 
-void BfmeThingQQ::bfmeShowQQ(short what)
+Debug &Debug::operator<<(short val)
 {
-	char tmp[0x14];
-
-	reinterpret_cast<Debug *>(this)->Debug::AddOutput(m_bfmeName, strlen(m_bfmeName));
-
-	bfmeAddQQ(_itoa(what, tmp, m_bfmeBase));
+	// usually having a fixed size buffer and a function
+	// that doesn't check for buffer overflow isn't a good idea
+	// but in this case we know how long it can be at max...
+	char help[1+16+1]; // sign, 16 digits, NUL
+	Debug::AddOutput(m_prefix, strlen(m_prefix));
+	return (*this) << _itoa(val, help, m_radix);
 }
