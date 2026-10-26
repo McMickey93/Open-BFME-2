@@ -27,27 +27,49 @@ public:
 class Vector3
 {
 public:
-	Vector3() {}
-	Vector3(float x, float y, float z) : X(x), Y(y), Z(z) {}
-	Vector3(const Vector3 &vec) { X = vec.X; Y = vec.Y; Z = vec.Z; }
+	float X;
+	float Y;
+	float Z;
+
+	__forceinline Vector3() {}
+	__forceinline Vector3(const Vector3 &v) { X = v.X; Y = v.Y; Z = v.Z; }
+	__forceinline Vector3(float x, float y, float z) { X = x; Y = y; Z = z; }
+	__forceinline Vector3 &operator=(const Vector3 &v) { X = v.X; Y = v.Y; Z = v.Z; return *this; }
+	__forceinline void Set(float x, float y, float z) { X = x; Y = y; Z = z; }
+
 	__forceinline float Length2() const { return X * X + Y * Y + Z * Z; }
 	__forceinline void Normalize()
 	{
 		float len2 = Length2();
-		if (len2 != 0.0f) {
+		if (len2 != 0.0f)
+		{
 			float oolen = WWMath::Inv_Sqrt(len2);
 			X *= oolen;
 			Y *= oolen;
 			Z *= oolen;
 		}
 	}
-	friend Vector3 operator+(const Vector3 &a, const Vector3 &b) { return Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 	friend Vector3 operator*(const Vector3 &a, float k) { return Vector3(a.X * k, a.Y * k, a.Z * k); }
 	friend Vector3 operator-(const Vector3 &a, const Vector3 &b) { return Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-	float X;
-	float Y;
-	float Z;
+	// Declared here, defined out of class as in WWMath vector3.h: in-class
+	// friend bodies shift cl's SSE operand tie-breaks in the vertex blend.
+	__forceinline friend Vector3 operator * (float k, const Vector3 &a);
+	__forceinline friend Vector3 operator + (const Vector3 &a, const Vector3 &b);
 };
+
+__forceinline Vector3 operator * (float k, const Vector3 &a)
+{
+	return Vector3((a.X * k),(a.Y * k),(a.Z * k));
+}
+
+__forceinline Vector3 operator + (const Vector3 &a,const Vector3 &b)
+{
+	return Vector3(
+		a.X+b.X,
+		a.Y+b.Y,
+		a.Z+b.Z
+	);
+}
 
 struct BridgeTriangle
 {
@@ -94,6 +116,10 @@ struct TriIndex { unsigned short I, J, K; };
 // second when byte +0xD7B6 is set or dword +0xC is zero. Clears +0xD7B5.
 
 class RenderObjClass;
+class MeshClass;
+class BaseHeightMapRenderObjClass;
+class Matrix3D;
+struct VertexFormatXYZNDUV1;
 
 template <class T> class RefMultiListIterator;
 
@@ -133,11 +159,16 @@ public:
 	int NumRefs;
 };
 
+class MeshModelClass;
+
 class MeshClass : public RefCountClass
 {
 public:
-	char _pad[0xC4 - 8];
-	De5d2Mid *m_mid;
+	// Native bridge loads use +C4; the shared Peek_Model owner reads +94.
+	__forceinline MeshModelClass *bridgeModel() { return Model; }
+private:
+	char m_pad08[0xC4 - 8];
+	MeshModelClass *Model; // +0xC4
 };
 
 class CameraClass;
@@ -281,6 +312,10 @@ private:
 	bool m_enabled;
 	unsigned char m_pad111[0x114 - 0x111];
 protected:
+	int getModelVertices(VertexFormatXYZNDUV1 *destination_vb, int curVertex, float xOffset,
+		Vector3 &vec, Vector3 &vecNormal, Vector3 &vecZ, Vector3 &offset,
+		const Matrix3D &mtx, MeshClass *pMesh, RefRenderObjListIterator *pLightsIterator);
+	friend void _bfmeW3DBridgeGetModelVerticesAnchor();
 	int getModelIndices(unsigned short *, int, int, MeshClass *);
 public:
 	~W3DBridge();
@@ -498,8 +533,8 @@ static __forceinline void setCoord3D(Coord3D &c, float ax, float ay, float az)
 
 void W3DBridge::getBridgeInfo(Rva0027C36A *pInfo)
 {
-	*(Vector3 *)&pInfo->from = m_start;
-	*(Vector3 *)&pInfo->to = m_end;
+	pInfo->from = *(const Coord3D *)&m_start;
+	pInfo->to = *(const Coord3D *)&m_end;
 	pInfo->bridgeWidth = (m_maxY - m_minY) * m_scale;
 
 	Vector3 vec = m_end - m_start;
@@ -540,7 +575,7 @@ int W3DBridge::getModelIndices(unsigned short *destination_ib, int curIndex, int
 {
 	if (pMesh == 0)
 		return 0;
-	De5d2Mid *model = pMesh->m_mid;
+	De5d2Mid *model = (De5d2Mid *)pMesh->bridgeModel();
 	int numPoly = model->m_count;
 	De5d2Inner *inner = model->m_inner;
 	const TriIndex *pPoly = (const TriIndex *)inner->m_buf;

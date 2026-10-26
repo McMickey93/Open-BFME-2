@@ -31,28 +31,30 @@ typedef unsigned char UnsignedByte;
 class Vector3
 {
 public:
-	Real X;
-	Real Y;
-	Real Z;
+	float X;
+	float Y;
+	float Z;
 
 	__forceinline Vector3() {}
 	__forceinline Vector3(const Vector3 &v) { X = v.X; Y = v.Y; Z = v.Z; }
-	__forceinline Vector3(Real x, Real y, Real z) { X = x; Y = y; Z = z; }
+	__forceinline Vector3(float x, float y, float z) { X = x; Y = y; Z = z; }
 	__forceinline Vector3 &operator=(const Vector3 &v) { X = v.X; Y = v.Y; Z = v.Z; return *this; }
-	__forceinline void Set(Real x, Real y, Real z) { X = x; Y = y; Z = z; }
+	__forceinline void Set(float x, float y, float z) { X = x; Y = y; Z = z; }
 
-	__forceinline Real Length2() const { return X * X + Y * Y + Z * Z; }
+	__forceinline float Length2() const { return X * X + Y * Y + Z * Z; }
 	__forceinline void Normalize()
 	{
-		Real len2 = Length2();
+		float len2 = Length2();
 		if (len2 != 0.0f)
 		{
-			Real oolen = WWMath::Inv_Sqrt(len2);
+			float oolen = WWMath::Inv_Sqrt(len2);
 			X *= oolen;
 			Y *= oolen;
 			Z *= oolen;
 		}
 	}
+	friend Vector3 operator*(const Vector3 &a, float k) { return Vector3(a.X * k, a.Y * k, a.Z * k); }
+	friend Vector3 operator-(const Vector3 &a, const Vector3 &b) { return Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 	// Declared here, defined out of class as in WWMath vector3.h: in-class
 	// friend bodies shift cl's SSE operand tie-breaks in the vertex blend.
 	__forceinline friend Vector3 operator * (float k, const Vector3 &a);
@@ -166,14 +168,26 @@ private:
 	MeshMatDescClass *CurMatDesc;		// +0x94
 };
 
-class MeshClass
+class RefCountClass
+{
+public:
+	virtual void Delete_This(void) = 0;
+	void Release_Ref(void)
+	{
+		if (--NumRefs == 0)
+			Delete_This();
+	}
+	int NumRefs;
+};
+
+class MeshClass : public RefCountClass
 {
 public:
 	// Native bridge loads use +C4; the shared Peek_Model owner reads +94.
 	__forceinline MeshModelClass *bridgeModel() { return Model; }
 private:
-	char m_pad00[0xC4];
-	MeshModelClass *Model;			// +0xC4
+	char m_pad08[0xC4 - 8];
+	MeshModelClass *Model; // +0xC4
 };
 
 class GlobalData;
