@@ -24,7 +24,7 @@
 // bool result, and Read_Subobject dispatch through slot +0x14. The last
 // ret 4 ends at RVA 0x001A34C8, followed by eight padding int3 bytes.
 // Field names and the read-loop algorithm are carried from the donor.
-extern "C" void * __cdecl memset(void *, int, unsigned);
+#include <string.h>
 #pragma intrinsic(memset)
 class ChunkLoadClass {
 public:

@@ -3,7 +3,7 @@
 // HorizontalLine_1_2_Scale_MMX, retail RVA 0x001D2700 (193 bytes).
 // The copy is the compiler's own memcpy, not hand-written assembly: only the
 // intrinsic puts the register saves between the argument loads.
-extern "C" void * __cdecl memcpy(void *destination, const void *source, unsigned int bytes);
+#include <string.h>
 
 #pragma intrinsic(memcpy)
 

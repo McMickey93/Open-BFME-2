@@ -13,7 +13,7 @@
 // its slot 2 either way. The chunk and anim class names follow the BFME1
 // and ZH W3D loaders (W3D_CHUNK_ANIMATION / W3D_CHUNK_COMPRESSED_ANIMATION).
 
-extern "C" __declspec(dllimport) char *__cdecl strchr(const char *s, int c);
+#include <string.h>
 
 typedef unsigned int uint32;
 typedef unsigned char uint8;
