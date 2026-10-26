@@ -1145,6 +1145,13 @@ inspected revision: `2f9834aa34`.**
   pass all seven EH graphs. Five other retirement findings are not classified
   as false rejects. No identity key is removed; the separate 15-marker hatch
   cleanup preserves every matched byte.
+- **Additional consumer (2026-10-26, `42e205255d`):**
+  [audio key insertion](../reverse/attempt_support/audio-identity-funclet-refusal-20261026.md)
+  passes all five rows and two EXACT EH graphs. Retirement still demands
+  `$L4992`, while the verified parent places `$L5053` at 0x00773EC5. The
+  relocation scanner repeats the literal lookup, so skipping the first refusal
+  would conceal the cleanup call. Missing/stale providers remain independent
+  prerequisites; seven real-COFF regression cases reproduce the verifier defect.
 - **Clearance / census confirmation:** none claimed.
 
 ### LINK-062: AIUpdate TU span combines weak propagation and disputed placement
