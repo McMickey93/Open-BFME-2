@@ -229,6 +229,8 @@ public:
 	void addMessageAction(const TreeHintRef00217D4C &action, Int messageType);
 	void rva00358A53();
 	void rva00358ACB();
+	AsciiString searchHotKey(const AsciiString &);
+	AsciiString searchHotKey(const UnicodeString &);
 private:
 	unsigned char m_pad00[0x0c];
 	HotKeyMap m_map;		// +0x0C
