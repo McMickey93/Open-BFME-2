@@ -264,32 +264,6 @@ void W3DRadar::radarToPixel( const ICoord2D *radar, ICoord2D *pixel,
 //-------------------------------------------------------------------------------------------------
 /** Draw a hero icon at a position, given radar box upper left location and dimensions.  */
 //-------------------------------------------------------------------------------------------------
-// ?drawHeroIcon@W3DRadar@@ present-unmatched
-void W3DRadar::drawHeroIcon( Int pixelX, Int pixelY, Int width, Int height, const Coord3D *pos )
-{
-	// get the hero icon image
-	static const Image *image = (Image *)TheMappedImageCollection->findImageByName("HeroReticle");
-	if (image != NULL)
-	{
-		// convert world to radar coords
-		ICoord2D ulRadar; 
-		ulRadar.x = pos->x / (m_mapExtent.width() / RADAR_CELL_WIDTH);
-		ulRadar.y = pos->y / (m_mapExtent.height() / RADAR_CELL_HEIGHT);
-
-		// convert radar to screen coords
-		ICoord2D offsetScreen;
-		radarToPixel( &ulRadar, &offsetScreen, pixelX, pixelY, width, height );
-		
-		// shift from an upper left to a center focus for the icon
-		int iconWidth = image->getImageWidth();
-		int iconHeight = image->getImageHeight();
-		offsetScreen.x -= (iconWidth / 2) - 1;
-		offsetScreen.y -= iconHeight / 2; 
-
-		// draw the icon
-		TheDisplay->drawImage( image, offsetScreen.x , offsetScreen.y, offsetScreen.x + iconWidth, offsetScreen.y + iconHeight );
-	}
-}
 
 //-------------------------------------------------------------------------------------------------
 /** Draw a "box" into the texture passed in that represents the viewable area for
@@ -301,256 +275,19 @@ void W3DRadar::drawHeroIcon( Int pixelX, Int pixelY, Int width, Int height, cons
 
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
-// ?drawSingleBeaconEvent@W3DRadar@@IAEXHHHHH@Z present-unmatched
-void W3DRadar::drawSingleBeaconEvent( Int pixelX, Int pixelY, Int width, Int height, Int index )
-{
-	RadarEvent *event = &(m_event[index]);
-	ICoord2D tri[ 3 ];
-	ICoord2D start, end;
-	Real angle, addAngle;
-	Color startColor, endColor;
-	Real lineWidth = 1.0f;
-	UnsignedInt currentFrame = TheGameLogic->getFrame();
-	UnsignedInt frameDiff;							// frames the event has been alive for
-	Real maxEventSize = width / 10.0f;   // max size of the event marker
-	Int minEventSize = 6;     // min size of the event marker
-	Int eventSize;									 // current size of a marker to draw
-	const Real TIME_FROM_FULL_SIZE_TO_SMALL_SIZE = LOGICFRAMES_PER_SECOND * 1.5;
-	Real totalAnglesToSpin = 2.0f * PI;  ///< spin around this many angles going from big to small
-	UnsignedByte r, g, b, a;
-
-	// setup screen clipping region
-	IRegion2D clipRegion;
-	clipRegion.lo.x = pixelX;
-	clipRegion.lo.y = pixelY;
-	clipRegion.hi.x = pixelX + width;
-	clipRegion.hi.y = pixelY + height;
-
-	// get the difference in frame from the current frame to the frame we were created on
-	frameDiff = currentFrame - event->createFrame;
-
-	// compute the size of the event marker, it is largest when it starts and smallest at the end
-	eventSize = REAL_TO_INT( maxEventSize * ( 1.0f - frameDiff / TIME_FROM_FULL_SIZE_TO_SMALL_SIZE) );;
-
-	// we never let the event size get too small
-	if( eventSize < minEventSize )
-		eventSize = minEventSize;
-
-	// compute how much "angle" we will add to each point to make it rotate as it's getting small
-	addAngle = -totalAnglesToSpin * (frameDiff / TIME_FROM_FULL_SIZE_TO_SMALL_SIZE);
-
-	// create a triangle around the event
-	angle = 0.0f - addAngle;
-	tri[ 0 ].x = REAL_TO_INT( (DOUBLE_TO_REAL( Cos( angle ) ) * eventSize) + event->radarLoc.x );
-	tri[ 0 ].y = REAL_TO_INT( (DOUBLE_TO_REAL( Sin( angle ) ) * eventSize) + event->radarLoc.y );
-
-	angle = 2.0f * PI / 3.0f - addAngle;
-	tri[ 1 ].x = REAL_TO_INT( (DOUBLE_TO_REAL( Cos( angle ) ) * eventSize) + event->radarLoc.x );
-	tri[ 1 ].y = REAL_TO_INT( (DOUBLE_TO_REAL( Sin( angle ) ) * eventSize) + event->radarLoc.y );
-
-	angle = -2.0f * PI / 3.0f - addAngle;
-	tri[ 2 ].x = REAL_TO_INT( (DOUBLE_TO_REAL( Cos( angle ) ) * eventSize) + event->radarLoc.x );
-	tri[ 2 ].y = REAL_TO_INT( (DOUBLE_TO_REAL( Sin( angle ) ) * eventSize) + event->radarLoc.y );
-
-	// translate radar coords to screen coords
-	radarToPixel( &tri[ 0 ], &tri[ 0 ], pixelX, pixelY, width, height );
-	radarToPixel( &tri[ 1 ], &tri[ 1 ], pixelX, pixelY, width, height );
-	radarToPixel( &tri[ 2 ], &tri[ 2 ], pixelX, pixelY, width, height );
-
-	//
-	// make the colors we're going to use, when we're at our smallest size we will start to
-	// fade the alpha away to transparent so that at our lifetime frame we are completely gone
-	//
-
-	// color 1 ------------------
-	r = event->color1.red;
-	g = event->color1.green;
-	b = event->color1.blue;
-	a = event->color1.alpha;
-	if( currentFrame > event->fadeFrame )
-	{
-		
-		a = REAL_TO_UNSIGNEDBYTE( (Real)a * (1.0f - (Real)(currentFrame - event->fadeFrame) / 
-																								(Real)(event->dieFrame - event->fadeFrame) ) );
-
-	}  // end if
-	startColor = GameMakeColor( r, g, b, a );
-
-	// color 2 ------------------
-	r = event->color2.red;
-	g = event->color2.green;
-	b = event->color2.blue;
-	a = event->color2.alpha;
-	if( currentFrame > event->fadeFrame )
-	{
-		
-		a = REAL_TO_UNSIGNEDBYTE( (Real)a * (1.0f - (Real)(currentFrame - event->fadeFrame) / 
-																								(Real)(event->dieFrame - event->fadeFrame) ) );
-
-	}  // end if
-	endColor = GameMakeColor( r, g, b, a );
-
-	// draw the lines
-	if( ClipLine2D( &tri[ 0 ], &tri[ 1 ], &start, &end, &clipRegion ) )
-		TheDisplay->drawLine( start.x, start.y, end.x, end.y, lineWidth, startColor, endColor );
-	if( ClipLine2D( &tri[ 1 ], &tri[ 2 ], &start, &end, &clipRegion ) )
-		TheDisplay->drawLine( start.x, start.y, end.x, end.y, lineWidth, startColor, endColor );
-	if( ClipLine2D( &tri[ 2 ], &tri[ 0 ], &start, &end, &clipRegion ) )
-		TheDisplay->drawLine( start.x, start.y, end.x, end.y, lineWidth, startColor, endColor );
-}
 
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
-// ?drawSingleGenericEvent@W3DRadar@@IAEXHHHHH@Z present-unmatched
-void W3DRadar::drawSingleGenericEvent( Int pixelX, Int pixelY, Int width, Int height, Int index )
-{
-	RadarEvent *event = &(m_event[index]);
-	ICoord2D tri[ 3 ];
-	ICoord2D start, end;
-	Real angle, addAngle;
-	Color startColor, endColor;
-	Real lineWidth = 1.0f;
-	UnsignedInt currentFrame = TheGameLogic->getFrame();
-	UnsignedInt frameDiff;							// frames the event has been alive for
-	Real maxEventSize = width / 2.0f;   // max size of the event marker
-	Int minEventSize = 6;     // min size of the event marker
-	Int eventSize;									 // current size of a marker to draw
-	const Real TIME_FROM_FULL_SIZE_TO_SMALL_SIZE = LOGICFRAMES_PER_SECOND * 1.5;
-	Real totalAnglesToSpin = 2.0f * PI;  ///< spin around this many angles going from big to small
-	UnsignedByte r, g, b, a;
-
-	// setup screen clipping region
-	IRegion2D clipRegion;
-	clipRegion.lo.x = pixelX;
-	clipRegion.lo.y = pixelY;
-	clipRegion.hi.x = pixelX + width;
-	clipRegion.hi.y = pixelY + height;
-
-	// get the difference in frame from the current frame to the frame we were created on
-	frameDiff = currentFrame - event->createFrame;
-
-	// compute the size of the event marker, it is largest when it starts and smallest at the end
-	eventSize = REAL_TO_INT( maxEventSize * ( 1.0f - frameDiff / TIME_FROM_FULL_SIZE_TO_SMALL_SIZE) );;
-
-	// we never let the event size get too small
-	if( eventSize < minEventSize )
-		eventSize = minEventSize;
-
-	// compute how much "angle" we will add to each point to make it rotate as it's getting small
-	addAngle = totalAnglesToSpin * (frameDiff / TIME_FROM_FULL_SIZE_TO_SMALL_SIZE);
-
-	// create a triangle around the event
-	angle = 0.0f - addAngle;
-	tri[ 0 ].x = REAL_TO_INT( (DOUBLE_TO_REAL( Cos( angle ) ) * eventSize) + event->radarLoc.x );
-	tri[ 0 ].y = REAL_TO_INT( (DOUBLE_TO_REAL( Sin( angle ) ) * eventSize) + event->radarLoc.y );
-
-	angle = 2.0f * PI / 3.0f - addAngle;
-	tri[ 1 ].x = REAL_TO_INT( (DOUBLE_TO_REAL( Cos( angle ) ) * eventSize) + event->radarLoc.x );
-	tri[ 1 ].y = REAL_TO_INT( (DOUBLE_TO_REAL( Sin( angle ) ) * eventSize) + event->radarLoc.y );
-
-	angle = -2.0f * PI / 3.0f - addAngle;
-	tri[ 2 ].x = REAL_TO_INT( (DOUBLE_TO_REAL( Cos( angle ) ) * eventSize) + event->radarLoc.x );
-	tri[ 2 ].y = REAL_TO_INT( (DOUBLE_TO_REAL( Sin( angle ) ) * eventSize) + event->radarLoc.y );
-
-	// translate radar coords to screen coords
-	radarToPixel( &tri[ 0 ], &tri[ 0 ], pixelX, pixelY, width, height );
-	radarToPixel( &tri[ 1 ], &tri[ 1 ], pixelX, pixelY, width, height );
-	radarToPixel( &tri[ 2 ], &tri[ 2 ], pixelX, pixelY, width, height );
-
-	//
-	// make the colors we're going to use, when we're at our smallest size we will start to
-	// fade the alpha away to transparent so that at our lifetime frame we are completely gone
-	//
-
-	// color 1 ------------------
-	r = event->color1.red;
-	g = event->color1.green;
-	b = event->color1.blue;
-	a = event->color1.alpha;
-	if( currentFrame > event->fadeFrame )
-	{
-		
-		a = REAL_TO_UNSIGNEDBYTE( (Real)a * (1.0f - (Real)(currentFrame - event->fadeFrame) / 
-																								(Real)(event->dieFrame - event->fadeFrame) ) );
-
-	}  // end if
-	startColor = GameMakeColor( r, g, b, a );
-
-	// color 2 ------------------
-	r = event->color2.red;
-	g = event->color2.green;
-	b = event->color2.blue;
-	a = event->color2.alpha;
-	if( currentFrame > event->fadeFrame )
-	{
-		
-		a = REAL_TO_UNSIGNEDBYTE( (Real)a * (1.0f - (Real)(currentFrame - event->fadeFrame) / 
-																								(Real)(event->dieFrame - event->fadeFrame) ) );
-
-	}  // end if
-	endColor = GameMakeColor( r, g, b, a );
-
-	// draw the lines
-	if( ClipLine2D( &tri[ 0 ], &tri[ 1 ], &start, &end, &clipRegion ) )
-		TheDisplay->drawLine( start.x, start.y, end.x, end.y, lineWidth, startColor, endColor );
-	if( ClipLine2D( &tri[ 1 ], &tri[ 2 ], &start, &end, &clipRegion ) )
-		TheDisplay->drawLine( start.x, start.y, end.x, end.y, lineWidth, startColor, endColor );
-	if( ClipLine2D( &tri[ 2 ], &tri[ 0 ], &start, &end, &clipRegion ) )
-		TheDisplay->drawLine( start.x, start.y, end.x, end.y, lineWidth, startColor, endColor );
-}
 
 //-------------------------------------------------------------------------------------------------
 /** Draw all the radar events */
 //-------------------------------------------------------------------------------------------------
 // byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/Common/System/W3DRadar_drawEvents_Thunk.cpp
-// ?drawEvents@W3DRadar@@ present-unmatched
-void W3DRadar::drawEvents( Int pixelX, Int pixelY, Int width, Int height )
-{
-	Int i;
-
-	for( i = 0;  i < MAX_RADAR_EVENTS; i++ )
-	{
-
-		// only 'active' events actually have something to draw
-		if( m_event[ i ].active == TRUE && m_event[ i ].type != RADAR_EVENT_FAKE )
-		{
-
-			// if we haven't played the sound for this event, do it now that we can see it
-			if( m_event[ i ].soundPlayed == FALSE && m_event[i].type != RADAR_EVENT_BEACON_PULSE )
-			{
-				static AudioEventRTS eventSound("RadarEvent");
-				TheAudio->addAudioEvent( &eventSound );
-
-			}  // end if
-
-			m_event[ i ].soundPlayed = TRUE;
-
-			if ( m_event[ i ].type == RADAR_EVENT_BEACON_PULSE )
-				drawSingleBeaconEvent( pixelX, pixelY, width, height, i );
-			else
-				drawSingleGenericEvent( pixelX, pixelY, width, height, i );
-
-		}  // end if
-
-	}  // end for i
-
-}  // end drawEvents
 
 
 //-------------------------------------------------------------------------------------------------
 /** Draw all the radar icons */
 //-------------------------------------------------------------------------------------------------
-// ?drawIcons@W3DRadar@@IAEXHHHH@Z present-unmatched
-void W3DRadar::drawIcons( Int pixelX, Int pixelY, Int width, Int height )
-{
-	// draw the hero icons
-	std::list<const Coord3D *>::const_iterator iter = m_cachedHeroPosList.begin();
-	while (iter != m_cachedHeroPosList.end())
-	{
-		drawHeroIcon( pixelX, pixelY, width, height, (*iter) );
-		++iter;
-	}
-}
 
 // BFME's Object declaration adds this visibility query after the Zero Hour
 // headers used to compile this source.  The retail body at 0x001CAEE0 reads
@@ -566,38 +303,6 @@ public:
 // The sole caller at 0x006C45C2 supplies the Object in ESI and the address of
 // its local Color in EBX; keeping the helper TU-local lets the compiler select
 // that same private calling convention.
-static __declspec(noinline) Bool rva006C42B0(
-	const Object *object, Color *color)
-{
-	const BFMEObjectStealthQuery *stealthQuery =
-		static_cast<const BFMEObjectStealthQuery *>(object);
-	if (!stealthQuery->isStealthedAndUndetected(NULL))
-		return TRUE;
-
-	if (object->getControllingPlayer() != ThePlayerList->getLocalPlayer() &&
-		!object->testStatus(OBJECT_STATUS_DETECTED))
-	{
-		return FALSE;
-	}
-
-	UnsignedByte red;
-	UnsignedByte green;
-	UnsignedByte blue;
-	UnsignedByte alpha;
-	GameGetColorComponents(*color, &red, &green, &blue, &alpha);
-
-	const UnsignedInt framesForTransition = 60;
-	const UnsignedInt halfTransition = framesForTransition / 2;
-	const UnsignedInt alphaRange = 191;
-	UnsignedInt frame = TheGameClient->getFrame() % framesForTransition;
-	if (frame >= halfTransition)
-		alpha = (UnsignedByte)(255 - ((frame - halfTransition) * alphaRange) / halfTransition);
-	else
-		alpha = (UnsignedByte)(64 + (frame * alphaRange) / halfTransition);
-
-	*color = GameMakeColor(red, green, blue, alpha);
-	return TRUE;
-}
 
 // BFME inserts two KindOf entries before AIRCRAFT, making DISGUISER bit 89.
 // The matched caller tests word 2 at ThingTemplate+0xD0 with 0x02000000.
@@ -607,113 +312,6 @@ static const KindOfType BFME_KINDOF_DISGUISER = static_cast<KindOfType>(89);
 /** Render an object list into the texture passed in */
 //-------------------------------------------------------------------------------------------------
 // byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/Common/System/W3DRadar_renderObjectList.asm
-// ?renderObjectList@W3DRadar@@IAEXPBVRadarObject@@PAVTextureClass@@_N@Z present-unmatched
-void W3DRadar::renderObjectList( const RadarObject *listHead, TextureClass *texture, Bool calcHero )
-{
-
-	// sanity
-	if( listHead == NULL || texture == NULL )
-		return;
-
-	// get surface for texture to render into
-	SurfaceClass *surface = texture->Get_Surface_Level();
-
-	// loop through all objects and draw
-	ICoord2D radarPoint;
-
-	Player *player = ThePlayerList->getLocalPlayer();
-	Int playerIndex=0;
-	if (player)
-		playerIndex=player->getPlayerIndex();
-
-	if( calcHero )
-	{
-		// clear all entries from the cached hero object list
-		m_cachedHeroPosList.clear();
-	}
-
-	for( const RadarObject *rObj = listHead; rObj; rObj = rObj->friend_getNext() )
-	{
-
-		if (rObj->isTemporarilyHidden())
-			continue;
-
-		// get object
-		const Object *obj = rObj->friend_getObject();
-
-		// cache hero object positions for drawing in icon layer
-		if( calcHero && obj->isHero() )
-		{
-			m_cachedHeroPosList.push_back(obj->getPosition());
-		}
-    Bool skip = FALSE;
-
-		// check for shrouded status
-		if (obj->getShroudedStatus(playerIndex) > OBJECTSHROUD_PARTIAL_CLEAR)
-			skip = TRUE;	//object is fogged or shrouded, don't render it.
-
- 		//
- 		// objects with a local only unit priority will only appear on the radar if they
- 		// are controlled by the local player, or if the local player is an observer (cause
-		// they are godlike and can see everything)
- 		//
-
-
- 		if( obj->getRadarPriority() == RADAR_PRIORITY_LOCAL_UNIT_ONLY &&
- 				obj->getControllingPlayer() != ThePlayerList->getLocalPlayer() &&
-				ThePlayerList->getLocalPlayer()->isPlayerActive() )
- 			skip = TRUE;
-
-		// get object position
-		const Coord3D *pos = obj->getPosition();
-
-		// compute object position as a radar blip
-		radarPoint.x = pos->x / (m_mapExtent.width() / RADAR_CELL_WIDTH);
-		radarPoint.y = pos->y / (m_mapExtent.height() / RADAR_CELL_HEIGHT);
-
-
-    if ( skip )
-      continue;
-
-    // get the color we're going to draw in
-		Color c = rObj->getColor();
-
-		
-		
-		// adjust the alpha for stealth units so they "fade/blink" on the radar for the controller
-		// if( obj->getRadarPriority() == RADAR_PRIORITY_LOCAL_UNIT_ONLY )
-		// ML-- What the heck is this? local-only and neutral-observier-viewed units are stealthy?? Since when?	
-		// Now it twinkles for any stealthed object, whether locally controlled or neutral-observier-viewed
-		if( obj->isKindOf(BFME_KINDOF_DISGUISER) )
-		{
-			if (!rva006C42B0(obj, &c))
-				continue;
-
-		}  // end if
-
-
-
-		
-		// draw the blip, but make sure the points are legal
-		if( legalRadarPoint( radarPoint.x, radarPoint.y ) )
-			surface->DrawPixel( radarPoint.x, radarPoint.y, c );
-
-		radarPoint.y++;
-		if( legalRadarPoint( radarPoint.x, radarPoint.y ) )
-			surface->DrawPixel( radarPoint.x, radarPoint.y, c );
-
-		radarPoint.x++;
-		if( legalRadarPoint( radarPoint.x, radarPoint.y ) )
-			surface->DrawPixel( radarPoint.x, radarPoint.y, c );
-
-		radarPoint.y--;
-		if( legalRadarPoint( radarPoint.x, radarPoint.y ) )
-			surface->DrawPixel( radarPoint.x, radarPoint.y, c );
-
-	}  // end for
-	REF_PTR_RELEASE(surface);
-
-}  // end renderObjectList
 
 //-------------------------------------------------------------------------------------------------
 /** Shade the color passed in using the height parameter to lighten and darken it.  Colors
@@ -789,25 +387,10 @@ extern void W3DRadarResetUnlock();
 //-------------------------------------------------------------------------------------------------
 /** Update */
 //-------------------------------------------------------------------------------------------------
-// ?update@W3DRadar@@UAEXXZ present-unmatched
-void W3DRadar::update( void )
-{
-
-	// extend base class
-	Radar::update();
-
-}  // end update
 
 //-------------------------------------------------------------------------------------------------
 /** Reset the radar for the new map data being given to it */
 //-------------------------------------------------------------------------------------------------
-// ?newMap@W3DRadar@@UAEXPAVTerrainLogic@@@Z present-unmatched
-void W3DRadar::newMap( TerrainLogic *terrain )
-{
-	*reinterpret_cast<Bool *>(reinterpret_cast<char *>(this) + 0x146c) = TRUE;
-	Radar::newMap( terrain );
-
-}  // end newMap
 
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
