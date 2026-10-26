@@ -4,8 +4,7 @@
 // thunk 0x00629170 plus strncmp IAT then advance past name and require ';'
 // storing table value to out byte. Caller 0x005427A7. Evidence: retail bytes
 // unlock lane plus '&' 0x26 and ';' 0x3B checks and 8-byte entries.
-extern "C" unsigned int __cdecl strlen(const char *s);
-extern "C" __declspec(dllimport) int __cdecl strncmp(const char *s1, const char *s2, unsigned int n);
+#include <string.h>
 
 struct EntityEntry {
 	const char *name;
