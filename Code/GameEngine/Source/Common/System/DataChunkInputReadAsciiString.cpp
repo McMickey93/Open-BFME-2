@@ -13,8 +13,6 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef bool Bool;
 
-// Retail calls the out-of-line AsciiString destructor in this reader and its unwind.
-#define BFME_ASCII_DTOR_DECL
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class ChunkInputStream
