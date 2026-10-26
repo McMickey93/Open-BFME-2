@@ -10,6 +10,18 @@
 // The G00xxxxxx externs are address-derived placeholders (DIR32 sites the
 // verifier fills from retail) and carry no type information beyond int.
 
+// 0x00DB5FD4/0x00DB5FD8 are the data ledger's DX8Wrapper::ResolutionWidth
+// and ResolutionHeight (dx8wrapper.cpp's protected statics, @@1): a minimal
+// view of the real class reads them through an inline accessor.
+class DX8Wrapper {
+public:
+	static __forceinline int Get_Device_Resolution_Width() { return ResolutionWidth; }
+	static __forceinline int Get_Device_Resolution_Height() { return ResolutionHeight; }
+protected:
+	static int ResolutionWidth;
+	static int ResolutionHeight;
+};
+
 // ?Rva000752F2Get@@YAHXZ @ 0x000752F2 (6B): returns global at 0x9EDA30.
 // Follows a ret (prev C3), no .rdata vtable slot, no direct callers,
 // no branch sources. Opaque address-derived name.
@@ -22,19 +34,17 @@ int Rva000752F2Get(void)
 // ?Rva00116E20Get@@YAHXZ @ 0x00116E20 (6B): returns global at 0x9B5FD4.
 // Follows int3 (prev CC), no .rdata vtable slot, no direct callers,
 // no branch sources. Opaque address-derived name.
-extern int BfmeRenderWidth;
 int Rva00116E20Get(void)
 {
-	return BfmeRenderWidth;
+	return DX8Wrapper::Get_Device_Resolution_Width();
 }
 
 // ?Rva00116E30Get@@YAHXZ @ 0x00116E30 (6B): returns global at 0x9B5FD8.
 // Follows int3 (prev CC), no .rdata vtable slot, no direct callers,
 // no branch sources. Opaque address-derived name.
-extern int BfmeRenderHeight;
 int Rva00116E30Get(void)
 {
-	return BfmeRenderHeight;
+	return DX8Wrapper::Get_Device_Resolution_Height();
 }
 
 // ?Rva00117C30Get@@YAHXZ @ 0x00117C30 (6B): returns global at 0x9B5FE0.

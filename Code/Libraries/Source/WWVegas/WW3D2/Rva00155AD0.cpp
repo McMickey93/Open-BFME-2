@@ -81,9 +81,8 @@ public:
     static char*m_EmptyString;static char m_NullChar;
     void Get_String(int,bool);void Free_String();
 };
-extern int BfmeRenderWidth,BfmeRenderHeight;
-#define renderDeviceWidth ((unsigned)BfmeRenderWidth)
-#define renderDeviceHeight ((unsigned)BfmeRenderHeight)
+#define renderDeviceWidth ((unsigned)DX8Wrapper::Get_Device_Resolution_Width())
+#define renderDeviceHeight ((unsigned)DX8Wrapper::Get_Device_Resolution_Height())
 extern int g_Va00DB5FC0,g_Va00DB5FC4,g_Va00DB5FBC;
 extern unsigned int g_Va00DEC4A0,g_Va00DEC4A4;
 #define render2DSrcBlend ((unsigned)g_Va00DB5FC0)
@@ -109,7 +108,12 @@ protected:
     static Matrix4 DeviceProjectionMatrix;
     static float ZFar,ZNear;
     static IDirect3DDevice8 *D3DDevice;
+    static int ResolutionWidth; // dx8wrapper.cpp's protected static (@@1)
+    static int ResolutionHeight;
     friend class Rva00118F50;
+public:
+    static __forceinline int Get_Device_Resolution_Width() { return ResolutionWidth; }
+    static __forceinline int Get_Device_Resolution_Height() { return ResolutionHeight; }
 public:
     static __forceinline void SetMaterial(VertexMaterialClass*vertexMaterial) {
         if(vertexMaterial)vertexMaterial->Add_Ref();

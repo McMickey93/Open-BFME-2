@@ -236,9 +236,16 @@ void Render2DClass::Enable_Additive(bool b)
 // byte is WW3D::IsScreenUVBiased (ww3d.cpp), reached through its inline
 // accessor so the coordinate bias and getter share the same defined datum.
 // Matched DIR32 sites place these screen globals at VA 0x00DB5FD4 and
-// 0x00DB5FD8. Retail stores 0x00000280 (640) and 0x000001E0 (480).
-int BfmeRenderWidth = 640;
-int BfmeRenderHeight = 480;
+// 0x00DB5FD8: the data ledger's DX8Wrapper::ResolutionWidth/Height, defined
+// in dx8wrapper.cpp (retail stores 640 and 480). They are protected statics,
+// read here through a derived accessor (WW3D_RegistryDeviceWrappers.cpp
+// precedent).
+class Render2DDeviceAccess : public DX8Wrapper
+{
+public:
+	using DX8Wrapper::Get_Device_Resolution_Width;
+	using DX8Wrapper::Get_Device_Resolution_Height;
+};
 
 void	Render2DClass::Set_Coordinate_Range( const RectClass & range )
 {
@@ -255,8 +262,8 @@ void	Render2DClass::Set_Coordinate_Range( const RectClass & range )
 		Vector2 bais_add( -0.5f ,-0.5f );	// offset by -0.5,-0.5 in pixels
 
 		// Convert from pixels to (-1,1)-(1,-1) units
-		bais_add.X = bais_add.X / ( (unsigned)BfmeRenderWidth * 0.5f );
-		bais_add.Y = bais_add.Y / ( (unsigned)BfmeRenderHeight * -0.5f );
+		bais_add.X = bais_add.X / ( (unsigned)Render2DDeviceAccess::Get_Device_Resolution_Width() * 0.5f );
+		bais_add.Y = bais_add.Y / ( (unsigned)Render2DDeviceAccess::Get_Device_Resolution_Height() * -0.5f );
 
 		CoordinateOffset.X = CoordinateOffset.X + bais_add.X;
 		CoordinateOffset.Y = CoordinateOffset.Y + bais_add.Y;

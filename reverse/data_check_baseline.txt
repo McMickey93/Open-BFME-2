@@ -36,8 +36,6 @@ Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E062E
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0ABB0@@3HA	0x00A0ABB0
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E18078@@3HA	0x00A18078
 Code/GameEngine/Source/Common/ColdGlobalDwordSetters.cpp	wrong-name	?G009B5FE0@@3HA	0x009B5FE0
-Code/GameEngine/Source/Common/ConstGlobalGetters.cpp	wrong-name	?BfmeRenderHeight@@3HA	0x009B5FD8
-Code/GameEngine/Source/Common/ConstGlobalGetters.cpp	wrong-name	?BfmeRenderWidth@@3HA	0x009B5FD4
 Code/GameEngine/Source/Common/ConstGlobalGetters.cpp	wrong-name	?G009B5F9C@@3HA	0x009B5F9C
 Code/GameEngine/Source/Common/ConstGlobalGetters.cpp	wrong-name	?G009B5FE0@@3HA	0x009B5FE0
 Code/GameEngine/Source/Common/ConstGlobalGetters.cpp	wrong-name	?G009EDA30@@3HA	0x009EDA30
@@ -91,8 +89,6 @@ Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F54@@3HA	
 Code/GameEngine/Source/Common/Rva00075A23Draw.cpp	wrong-name	?g_deviceObj@@3PAUDeviceObj@@A	0x009EDA34
 Code/GameEngine/Source/Common/Rva0009A2CDDispatch.cpp	wrong-name	?g_00DEC2CC@@3PAV?$StringBase@G@@A	0x009EC2CC
 Code/GameEngine/Source/Common/Rva000E6AC0Ctor.cpp	wrong-name	?g_Va009FE710@@3PAUGlobal9FE710@@A	0x009FE710
-Code/GameEngine/Source/Common/Rva0011009AGetters.cpp	wrong-name	?BfmeRenderHeight@@3HA	0x009B5FD8
-Code/GameEngine/Source/Common/Rva0011009AGetters.cpp	wrong-name	?BfmeRenderWidth@@3HA	0x009B5FD4
 Code/GameEngine/Source/Common/Rva001518D1Get.cpp	wrong-name	?empty@?3??rva001518D1@Rva001518D1@@QAEPAV?$vector@UBfmeE16@@V?$allocator@UBfmeE16@@@_STL@@@_STL@@XZ@4V34@A	0x009F6F10
 Code/GameEngine/Source/Common/Rva00202678Get.cpp	wrong-name	?g_00DB96B0@@3PAPBDA	0x009B96B0
 Code/GameEngine/Source/Common/Rva00202B6CGet.cpp	duplicate-def	?rva00202B6CNames@@3PAPBDA	0x009B95F4
@@ -1026,10 +1022,6 @@ Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?bfmeApplyRenderSt
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?bfmeProjectionApplied@@3VMatrix4@@A	0x009EDBF0
 Code/Libraries/Source/WWVegas/WW3D2/particle_buffer_render_line.cpp	wrong-name	?$S4@?4??Render_Line@ParticleBufferClass@@IAEXAAVRenderInfoClass@@@Z@4IA	0x009FD8E4
 Code/Libraries/Source/WWVegas/WW3D2/promoted__Reset_HAnimComboClass_QAEXXZ_00974DC0.cpp	wrong-name	?TheHAnimComboDataPool@@3V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A	0x009FCEC4
-Code/Libraries/Source/WWVegas/WW3D2/render2d.cpp	duplicate-def	?BfmeRenderHeight@@3HA	0x009B5FD8
-Code/Libraries/Source/WWVegas/WW3D2/render2d.cpp	duplicate-def	?BfmeRenderWidth@@3HA	0x009B5FD4
-Code/Libraries/Source/WWVegas/WW3D2/render2d.cpp	wrong-name	?BfmeRenderHeight@@3HA	0x009B5FD8
-Code/Libraries/Source/WWVegas/WW3D2/render2d.cpp	wrong-name	?BfmeRenderWidth@@3HA	0x009B5FD4
 Code/Libraries/Source/WWVegas/WW3D2/sortingrenderer.cpp	wrong-name	_clean_list	0x009B620C
 Code/Libraries/Source/WWVegas/WW3D2/sortingrenderer.cpp	wrong-name	_sorted_list	0x009B6200
 Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	duplicate-def	?Movie@WW3D@@0PAVFrameGrabClass@@A	0x009EC3DC
