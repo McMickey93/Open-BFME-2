@@ -187,7 +187,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/gen_small/uw_gen_001.cpp` | 3,406 | 184 (U=184) | Open |
 | `Code/gen_small/uw_gen_013.cpp` | 3,205 | 184 (U=184) | Open |
 | `Code/gen_small/uw_gen_009.cpp` | 2,533 | 113 (U=113) | Open; four parent repoints and four duplicate rows retired (LINK-095), 113 unresolved names remain |
-| `Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp` | 2,520 | 49 (U=42, C=4, S=3) | Open |
+| `Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp` | 2,520 | 49 (U=42, C=4, S=3) | 2026-10-27 at `97c23353111e`: U42/L4/S3; tree adapter ownership (LINK-005) |
 | `Code/gen_small/uw_gen_014.cpp` | 2,489 | 271 (U=263, A=8) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlportVectorEraseRangeDeferred.cpp` | 2,464 | 3 (U=3) | Cleared (LINK-036, link_check 2,464B) |
 | `Code/gen_small/uw_gen_006.cpp` | 2,448 | 103 (U=103) | Open |
@@ -201,11 +201,11 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/STLport/Rva008312E0StringReplace.cpp` | 1,351 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp` | 1,299 | 6 (U=2, C=2, S=2) | Open |
 | `Code/gen_small/uw_gen_005.cpp` | 1,251 | 72 (U=72) | Open |
-| `Code/GameEngine/Source/GameClient/MapUtil.cpp` | 1,182 | 24 (U=12, C=7, S=5) | Open |
+| `Code/GameEngine/Source/GameClient/MapUtil.cpp` | 1,182 | 24 (U=12, C=7, S=5) | 2026-10-27 at `97c23353111e`: U14/L6/S4; native ownership prerequisites (LINK-005) |
 | `Code/GameEngine/Source/GameClient/MapMetaDataCopyDeferred.cpp` | 941 | 7 (C=3, S=4) | 2026-10-26 at `2a45addda180`: L3/S3 with current providers. Three stale typed pin bindings identified; no source trial. LINK-006 and `build/c136-gui-w2/map-native-targets.log`; census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/Rva0020EE29Clear.cpp` | 938 | 24 (U=23, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldLogicCtorBfme.cpp` | 913 | 9 (U=6, C=3) | 2026-10-26 at `2a45addda1`: current-provider preview U6, L3. Observer callbacks and update/reset all reach existing rows with incompatible names or signatures. Shared observer/table reconciliation is required (LINK-004). Evidence: `build/c136-logic/final-cohort-after.log`, `build/link-report.md`; census confirmation pending. |
-| `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp` | 899 | 17 (U=12, C=2, S=3) | Open |
+| `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp` | 899 | 17 (U=12, C=2, S=3) | 2026-10-27 at `97c23353111e`: U12/L2/S3; shared GUI and BuddyInfo interfaces (LINK-005) |
 | `Code/GameEngine/Source/Common/UserPreferencesDeferredIgnores.cpp` | 897 | 5 (C=3, S=2) | Open |
 | `Code/GameEngine/Source/Common/RTS/PlayerCtorBFME2.cpp` | 841 | 6 (U=4, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/Thing/ThingTemplate.cpp` | 800 | 22 (U=10, C=8, S=4) | Open |
@@ -216,7 +216,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngineDevice/Source/W3DDevice/Common/System/W3DRadar.cpp` | 647 | 8 (U=8) | 2026-10-26 at `2a45addda180`: cleared in ordinary-preview scope; census confirmation pending. Unrowed donor methods removed; all existing rows and parent EH remain exact. See LINK-006. |
 | `Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldManagerCtor.cpp` | 585 | 5 (U=5) | 2026-10-26 at `2a45addda180`: U5 with current providers. Existing container and lifetime owners need coherent class/row reconciliation. LINK-073 and `build/link-report.md`; census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_pod_malloc_deferred_copies.cpp` | 583 | 13 (C=6, S=7) | Open |
-| `Code/GameEngine/Source/GameClient/FXList.cpp` | 581 | 9 (U=3, C=4, S=2) | Open |
+| `Code/GameEngine/Source/GameClient/FXList.cpp` | 581 | 9 (U=3, C=4, S=2) | 2026-10-27 at `97c23353111e`: U2/L3/S2; list and nugget identities (LINK-006) |
 | `Code/GameEngine/Source/GameLogic/ScriptEngine/Scripts.cpp` | 572 | 9 (U=5, C=3, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WorkerAIUpdate.cpp` | 564 | 13 (U=12, S=1) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/AptPlayerTooltipMap.cpp` | 550 | 4 (U=1, C=2, S=1) | Open |
@@ -278,7 +278,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/Rva0037BCC4DeferredCtorCRC.cpp` | 208 | 3 (U=2, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateCtor.cpp` | 208 | 4 (U=1, C=3) | 2026-10-26, `895c0f21ef`: repair landed / awaiting census. Placeholder dtor `Rva00373CB1` renamed `StealthUpdate` (shared vftable 0x00817F20) and the ctor view switched to the dtor unit's flattened hierarchy; current-object link_check 0 -> 208 B with Derived/FriendNew/Xfer/Logic still linking. `StealthUpdate.cpp` (ZH port) keeps 13 unresolved + `isDisguised` selected. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003F318C.cpp` | 206 | 5 (U=3, C=1, S=1) | 2026-10-26 at `2a45addda1`: Native LivingWorldRegionConnection helper and element identities require reconciliation (LINK-002). Whole-unit clearance and census confirmation pending. |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0051F7AD.cpp` | 206 | 7 (U=3, C=2, S=2) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0051F7AD.cpp` | 206 | 7 (U=3, C=2, S=2) | 2026-10-27 at `97c23353111e`: U3/L2/S2; unused pragma block removed (LINK-083) |
 | `Code/GameEngine/Source/GameNetwork/native_network_BFMENetwork_Ctor.cpp` | 205 | 9 (U=7, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/RvaPayloadValueReturnsUnresolved.cpp` | 204 | 7 (U=3, C=4) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/Rva005776A7Ctor.cpp` | 203 | 8 (U=5, C=2, S=1) | 2026-10-26 at `2a45addda180`: U5/L2/S1 to U4/L1 through the existing record-destructor owner; all six rows exact. Native translator and lifetime names remain. LINK-085 and `build/link-report.md`; record subset cleared in ordinary-preview scope; census confirmation pending. |
@@ -309,7 +309,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/Rva002D22CAInit.cpp` | 135 | 7 (U=7) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00332613.cpp` | 135 | 7 (U=3, C=2, S=2) | 2026-10-26 at `2a45addda1`: Median fold and native record/comparator helper names require coherent ownership (LINK-002). Whole-unit clearance and census confirmation pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00337D21.cpp` | 135 | 7 (U=3, C=2, S=2) | 2026-10-26 at `2a45addda1`: Prior median/partition fold-ownership prerequisite persists; no failed retyping trial repeated (LINK-002). Whole-unit clearance and census confirmation pending. |
-| `Code/Libraries/Source/WWVegas/WW3D2/shattersystem.cpp` | 133 | 8 (U=3, C=2, S=3) | Open |
+| `Code/Libraries/Source/WWVegas/WW3D2/shattersystem.cpp` | 133 | 8 (U=3, C=2, S=3) | 2026-10-27 at `97c23353111e`: U3/L2/S2; shared material interfaces (LINK-012) |
 | `Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/ArmyHeroIconCtor.cpp` | 130 | 10 (U=10) | 2026-10-26 at `2a45addda180`: U10 with current lifetime and method providers. Eight-slot table and destructor/signature reconciliation required with Rva005E39F3Ctor.cpp. LINK-086 and `build/link-report.md`; census pending. |
 | `Code/GameEngine/Source/GameLogic/Object/PartitionManager.cpp` | 129 | 15 (U=12, C=1, S=2) | 2026-10-26 at `2a45addda1`: current-provider preview U12, L1, S2. The native UpdateModule include-directory trial is reverted. The four rows stay exact; isDisguised still differs in instruction shape. No retained source change (LINK-070). Evidence: `build/c136-logic/final-cohort-after.log`, `build/link-report.md`; census confirmation pending. |
 | `Code/GameEngine/Source/Common/BfmeConv881O1.cpp` | 127 | 4 (U=2, C=1, S=1) | Open |
@@ -319,7 +319,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/BfmeConv1950.cpp` | 118 | 4 (U=4) | Open |
 | `Code/GameEngine/Source/Common/Thing/ThingFactory.cpp` | 85 | 13 (U=6, C=6, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdate.cpp` | 117 | 6 (U=4, C=1, S=1) | Open |
-| `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/SkirmishGameOptionsMenu.cpp` | 116 | 61 (U=49, C=6, S=6) | Open |
+| `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/SkirmishGameOptionsMenu.cpp` | 116 | 61 (U=49, C=6, S=6) | 2026-10-27 at `97c23353111e`: U49/L2/S2; shared GUI interfaces (LINK-005) |
 | `Code/Libraries/Source/WWVegas/WW3D2/dynamesh.cpp` | 113 | 28 (U=17, C=8, S=3) | Open |
 | `Code/GameEngine/Source/Common/PAVectorEraseRangeFamily003AF.cpp` | 112 | 4 (U=2, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/Rva00196D90MemberConstructor_Rva0032bde7.cpp` | 112 | 6 (C=3, S=3) | Open |
@@ -333,13 +333,13 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_introsort_loop_s4sortelem20.cpp` | 98 | 3 (U=3) | Repair landed / awaiting census (2026-10-26, 797d6cd0f5): placeholder tail ctor/dtor/set replaced by the rowed vector<Rva00332217Record>::operator= (0x332217) and out-of-line element ctor/dtor; link_check LINKS 0 -> 90 B against index d1f046749a, all 8 S4SortElem20 units checked, none drops |
 | `Code/GameEngine/Source/Common/System/SaveGame/Rva0052CD81Finish.cpp` | 96 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_istream.cpp` | 90 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003F40EF.cpp` | 85 | 5 (U=5) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003F40EF.cpp` | 85 | 5 (U=5) | 2026-10-27 at `97c23353111e`: U5 to U3; narrowed to swap; ArmySummary rename needed (LINK-083) |
 | `Code/GameEngine/Source/Common/ConstIntGettersAddr.cpp` | 84 | 1042 (A=1042) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv1879.cpp` | 82 | 5 (U=5) | Cleared (LINK-022, link_check 82B) |
 | `Code/GameEngine/Source/Common/RTS/PlayerRelationMapCtor.cpp` | 81 | 3 (C=2, S=1) | Open |
 | `Code/GameEngine/Source/Common/Rva001F4B01Ctor.cpp` | 80 | 13 (U=12, C=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BFA86.cpp` | 80 | 4 (U=2, C=1, S=1) | 2026-10-26: LINKS in preview (f29627cb3f, LINK-083); census pending |
-| `Code/Libraries/Source/WWVegas/WW3D2/collect.cpp` | 79 | 20 (U=14, C=5, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WW3D2/collect.cpp` | 79 | 20 (U=14, C=5, S=1) | 2026-10-27 at `97c23353111e`: U14/L4; shared RenderObjClass and ProxyClass interfaces (LINK-015) |
 | `Code/GameEngine/Source/Common/System/SaveGame/AerialPathfinder.cpp` | 75 | 3 (U=2, C=1) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanGameOptionsMenu.cpp` | 75 | 28 (U=27, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00214B22.cpp` | 73 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (c9700d27ca, LINK-035); census pending |
@@ -364,7 +364,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/RTS/Player.cpp` | 52 | 33 (U=24, C=6, S=3) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/sphereobj.cpp` | 51 | 12 (U=7, C=5) | Open |
 | `Code/GameEngine/Source/Common/Rva003C2F40TreeCtor.cpp` | 50 | 3 (U=3) | Open |
-| `Code/Libraries/Source/WWVegas/WWMath/curve.cpp` | 48 | 5 (U=3, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWMath/curve.cpp` | 48 | 5 (U=3, C=1, S=1) | 2026-10-27 at `97c23353111e`: U3/L1/S1; frozen definitions and shared interfaces (LINK-006) |
 | `Code/GameEngine/Source/Common/WeaponStore.cpp` | 47 | 3 (U=2, C=1) | Open |
 | `Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteAssign.cpp` | 45 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005FE3DC.cpp` | 45 | 3 (U=1, C=1, S=1) | Open |
@@ -390,7 +390,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00162860.cpp` | 32 | 3 (U=1, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv821.cpp` | 31 | 6 (U=6) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv907.cpp` | 31 | 8 (U=8) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva005de9c4_ctor.cpp` | 31 | 6 (U=1, C=2, S=3) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva005de9c4_ctor.cpp` | 31 | 6 (U=1, C=2, S=3) | 2026-10-27 at `97c23353111e`: U1/L2/S3; suppression trial reversed (LINK-002) |
 | `Code/gen_small/uw_gen_007.cpp` | 31 | 4 (U=4) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00013490.cpp` | 30 | 4 (U=4) | 2026-10-26 (437bc30603): unit removed. 0x00013490 is `??_G?$basic_ios@GV?$char_traits@G@_STL@@@_STL@@UAEPAXI@Z` (slot 0 of retail RTTI vftable 0x007BBCFC); row repointed to `stlport_wide_ios.cpp`, which link_check (index d1f046749a) shows LINKS 296 -> 326 B. Census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva004157BB.cpp` | 29 | 4 (U=4) | Open |
@@ -425,7 +425,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005CE7CE.cpp` | 28 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005DA663.cpp` | 28 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E96DC.cpp` | 28 | 3 (U=3) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00627B10.cpp` | 28 | 6 (U=4, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00627B10.cpp` | 28 | 6 (U=4, C=1, S=1) | 2026-10-27 at `97c23353111e`: U4/L1/S1; narrowed to make_heap (LINK-083) |
 | `Code/GameEngine/Source/Common/R5VectorDtorEHFramedPolymorphic.cpp` | 27 | 15 (U=4, C=5, S=6) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionsMenu.cpp` | 27 | 8 (U=8) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0033A7DC.cpp` | 27 | 5 (U=5) | 2026-10-26 at `58598f540f`: Pair-only instantiation verified; U5 to U1. Native key copy 0x002CF0F0 has a different row name; LINK-054. No whole-unit clearance. Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
@@ -452,7 +452,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/BfmeConv892_Rva004C121B.cpp` | 0 | 4 (U=2, C=1, S=1) | 2026-10-26: retired (93ba3a07a8). Duplicate claim: 0x004C121B is rowed and links as `SymbioticStructuresBody::rva004C121B` in `SymbioticStructuresBodySlots.cpp`; unit and row removed, recorded in deleted_rows.csv; its `reverse/header_queue.tsv` GameLogic key now names a deleted source |
 | `Code/GameEngine/Source/GameClient/GUI/Rva00576DF1Ctor.cpp` | 0 | 11 (U=8, C=2, S=1) | 2026-10-26: retired (9caa4cbd11). Duplicate claim: 0x00576DF1 is rowed and links as the `Impl@ResolveBattlesBehavior` ctor in `Rva00576C4BDtor.cpp` (link_check LINKS 482 B); unit and row removed, recorded in deleted_rows.csv |
 | `Code/GameEngineDevice/Source/MilesAudioDevice/Rva0006047CSeq.cpp` | 0 | 5 (U=5) | 2026-10-26: retired (dd45d8c862). Duplicate claim: 0x0006047C is rowed and links as `MilesAudioManager::rva0006047C` in `MilesAudioManager.cpp`; unit and row removed, recorded in deleted_rows.csv |
-| `Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DVideoBuffer.cpp` | 0 | 7 (U=5, C=2) | Open |
+| `Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DVideoBuffer.cpp` | 0 | 7 (U=5, C=2) | 2026-10-27 at `97c23353111e`: U5/L2; removal breaks linking constructor; reversed (LINK-094) |
 
 
 
