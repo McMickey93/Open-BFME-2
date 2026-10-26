@@ -49,10 +49,6 @@ public:
 	const Object *m_obj;
 };
 
-// The base filter's slot 2 is the trivial virtual retail shares across many
-// vftable slots (0x0036CC7A); bind the declaration to that row.
-#pragma comment(linker, "/alternatename:?getPlayerMask@Rva000421C8@@UAEHXZ=?Get_File_Handle@FileClass@@UAEPAXXZ")
-
 // vftable 0x00C1FE1C, allow 0x00261478: +0x08 a player, +0x0C whether a
 // match allows, +0x10 the command source (Zero Hour's
 // PartitionFilterGarrisonableByPlayer).
