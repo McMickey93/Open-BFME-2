@@ -7,7 +7,7 @@
 
 class Rva005F566A;
 class Rva005F54DA;
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 struct TargetRef00217D4C
 {
@@ -162,7 +162,6 @@ void Rva005F54DA::rva005F4EED(void *inputA, void *inputB)
 // Native ctor/destructor EH cleanups5F53E6/5F54DA reach5F50B9 directly.
 // This complete owning-pointer destructor is the verified clear worker twin:
 // detach the pointer before its destructor and scalar deallocation.
-void __cdecl operator delete(void *p);
 Rva005F50B9::~Rva005F50B9()
 {
  Rva005F501E *p=m_ptr;

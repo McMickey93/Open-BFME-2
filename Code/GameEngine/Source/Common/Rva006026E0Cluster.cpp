@@ -7,7 +7,7 @@
 // match, the same defaults the neighbouring zero getters rely on.
 
 void *operator new[](unsigned n);
-void operator delete[](void *p);
+#include <new>
 
 class Rva006026E0
 {
