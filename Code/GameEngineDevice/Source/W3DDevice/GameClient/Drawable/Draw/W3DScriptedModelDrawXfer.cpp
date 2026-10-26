@@ -16,6 +16,7 @@
 
 #include "ascii_string.h"
 #include "Coord3D.h"
+#include "Coord3DBase.h"
 // Bind to the kept retail copy instead of emitting this unit's own.
 namespace _STL { template <> __declspec(dllimport) __forceinline _String_base<char,allocator<char> >::~_String_base() { this->_M_deallocate_block(); } }
 // bfme link decl-only begin
@@ -25,52 +26,30 @@ namespace _STL { template <> basic_string<char, char_traits<char>, allocator<cha
 
 extern const char g_Rva0107301CEmptyString[];
 
-struct XferVersion
-{
-	XferVersion(unsigned char low, unsigned char high) : version(low), current(high) {}
-	unsigned char version, current;
-};
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();
-	virtual bool isSaving();
-	virtual void slot03();
-	virtual bool slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void xferVersion(XferVersion *);
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void xferCoord3D(Coord3D *);
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *);
-	virtual void xferReal(float *);
-	virtual void slot29();
-	virtual void xferUnsignedInt(unsigned int *);
-	virtual void xferInt(int *);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual void xferBool(bool *);
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+
+#include "../../../../../../GameEngine/Include/Common/BfmeXfer.h"
+class Xfer::Version
+{ public:
+	Version(unsigned char low, unsigned char high) : version(low), current(high) {}
+	unsigned char version, current;
 };
 
 void XferDrawableID(Xfer *, int *);
@@ -321,15 +300,15 @@ private:
 void W3DScriptedModelDraw::xfer(Xfer *xfer)
 {
 	DrawModule::xfer(xfer);
-	if (xfer->slot04())
+	if (xfer->IsLightCRC())
 		return;
 
-	XferVersion version(1, 6);
-	xfer->xferVersion(&version);
+	Xfer::Version version(1, 6);
+	(*xfer == version);
 
 	float percent = 0.0f;
 	bool restoreAnimation = false;
-	if (xfer->isSaving())
+	if (xfer->IsStoring())
 	{
 		if (m_renderObject50 && m_renderObject50->Class_ID() == 0x19 && m_curState14)
 		{
@@ -338,31 +317,31 @@ void W3DScriptedModelDraw::xfer(Xfer *xfer)
 			float frame, dummy;
 			HAnimClass *anim = hlod->Peek_Animation_And_Info(frame, numFrames, mode, dummy);
 			bool present = anim != 0;
-			xfer->xferBool(&present);
+			(*xfer == present);
 			if (anim)
 			{
-				xfer->xferInt(&mode);
+				(*xfer == mode);
 				percent = frame / (float)(anim->Get_Num_Frames() - 1);
-				xfer->xferReal(&percent);
+				(*xfer == percent);
 			}
 		}
 		else
 		{
 			bool present = false;
-			xfer->xferBool(&present);
+			(*xfer == present);
 		}
 	}
 	else
 	{
 		bool present;
-		xfer->xferBool(&present);
+		(*xfer == present);
 		if (present)
 		{
 			{
 				int mode;
-				xfer->xferInt(&mode);
+				(*xfer == mode);
 			}
-			xfer->xferReal(&percent);
+			(*xfer == percent);
 			if (m_renderObject50 && m_renderObject50->Class_ID() == 0x19)
 			{
 				HLodClass *hlod = (HLodClass *)m_renderObject50;
@@ -380,88 +359,88 @@ void W3DScriptedModelDraw::xfer(Xfer *xfer)
 		}
 	}
 
-	xfer->xferBool(&m_A0);
+	(*xfer == m_A0);
 	XferDrawableID(xfer, &m_A4);
 	Rva000BC559Xfer(xfer, &m_A8);
-	xfer->xferAsciiString(&m_B4);
-	xfer->xferInt(&m_BC);
-	xfer->xferInt(&m_C0);
+	(*xfer == m_B4);
+	(*xfer == m_BC);
+	(*xfer == m_C0);
 	m_flags17C.xfer(xfer);
-	xfer->xferInt(&m_214);
+	(*xfer == m_214);
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		int count = 0;
 		reinterpret_cast<_STL::vector<Rva00079EA1Element> &>(m_vec68).clear();
 		reinterpret_cast<_STL::vector<Rva00079EA1Element> &>(m_vec74).clear();
 		BfmeStringRecord000B9534 record;
-		xfer->xferInt(&count);
+		(*xfer == count);
 		m_vec68.reserve(count);
 		for (int i = 0; i < count; ++i)
 		{
-			xfer->xferAsciiString(&record.text);
-			xfer->xferBool(&record.flag);
-			xfer->xferReal(&record.word0);
-			xfer->xferReal(&record.word1);
-			xfer->xferReal(&record.word2);
-			xfer->xferReal(&record.word3);
+			(*xfer == record.text);
+			(*xfer == record.flag);
+			(*xfer == record.word0);
+			(*xfer == record.word1);
+			(*xfer == record.word2);
+			(*xfer == record.word3);
 			m_vec68.push_back(record);
 		}
-		xfer->xferInt(&count);
+		(*xfer == count);
 		m_vec74.reserve(count);
 		for (int j = 0; j < count; ++j)
 		{
-			xfer->xferAsciiString(&record.text);
-			xfer->xferBool(&record.flag);
-			xfer->xferReal(&record.word0);
-			xfer->xferReal(&record.word1);
-			xfer->xferReal(&record.word2);
-			xfer->xferReal(&record.word3);
+			(*xfer == record.text);
+			(*xfer == record.flag);
+			(*xfer == record.word0);
+			(*xfer == record.word1);
+			(*xfer == record.word2);
+			(*xfer == record.word3);
 			m_vec74.push_back(record);
 		}
 	}
-	else if (xfer->isSaving())
+	else if (xfer->IsStoring())
 	{
 		int count = m_vec68.size();
-		xfer->xferInt(&count);
+		(*xfer == count);
 		for (int i = 0; i < count; ++i)
 		{
 			BfmeStringRecord000B9534 *record = &m_vec68[i];
-			xfer->xferAsciiString(&record->text);
-			xfer->xferBool(&record->flag);
-			xfer->xferReal(&record->word0);
-			xfer->xferReal(&record->word1);
-			xfer->xferReal(&record->word2);
-			xfer->xferReal(&record->word3);
+			(*xfer == record->text);
+			(*xfer == record->flag);
+			(*xfer == record->word0);
+			(*xfer == record->word1);
+			(*xfer == record->word2);
+			(*xfer == record->word3);
 		}
 		count = m_vec74.size();
-		xfer->xferInt(&count);
+		(*xfer == count);
 		for (int j = 0; j < count; ++j)
 		{
 			BfmeStringRecord000B9534 *record = &m_vec74[j];
-			xfer->xferAsciiString(&record->text);
-			xfer->xferBool(&record->flag);
-			xfer->xferReal(&record->word0);
-			xfer->xferReal(&record->word1);
-			xfer->xferReal(&record->word2);
-			xfer->xferReal(&record->word3);
+			(*xfer == record->text);
+			(*xfer == record->flag);
+			(*xfer == record->word0);
+			(*xfer == record->word1);
+			(*xfer == record->word2);
+			(*xfer == record->word3);
 		}
 	}
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		clearSlot90();
 		int count;
-		xfer->xferInt(&count);
+		(*xfer == count);
 		for (int i = 0; i < count; ++i)
 		{
 			BfmeNarrowRecord000BFDC7 record;
 			AsciiString renderObjectName(g_Rva0107301CEmptyString);
 			AsciiString boneName(g_Rva0107301CEmptyString);
-			xfer->xferAsciiString(&renderObjectName);
-			xfer->xferAsciiString(&boneName);
-			xfer->xferCoord3D(&record.word1);
-			xfer->xferInt(&record.word4);
+			(*xfer == renderObjectName);
+			(*xfer == boneName);
+			(*xfer == asBase(record.word1));
+			(*xfer == record.word4);
 			record.word0 = Create_Render_Obj(renderObjectName.str());
 			record.text = boneName.str();
 			if (record.word0)
@@ -471,10 +450,10 @@ void W3DScriptedModelDraw::xfer(Xfer *xfer)
 			}
 		}
 	}
-	else if (xfer->isSaving())
+	else if (xfer->IsStoring())
 	{
 		int count = m_vec164.size();
-		xfer->xferInt(&count);
+		(*xfer == count);
 		for (int i = 0; i < count; ++i)
 		{
 			BfmeNarrowRecord000BFDC7 record(m_vec164[i]);
@@ -484,35 +463,35 @@ void W3DScriptedModelDraw::xfer(Xfer *xfer)
 				renderObjectName.set(record.word0->Get_Name());
 			if (!record.text.empty())
 				boneName.set(record.text.c_str());
-			xfer->xferAsciiString(&renderObjectName);
-			xfer->xferAsciiString(&boneName);
-			xfer->xferCoord3D(&record.word1);
-			xfer->xferInt(&record.word4);
+			(*xfer == renderObjectName);
+			(*xfer == boneName);
+			(*xfer == asBase(record.word1));
+			(*xfer == record.word4);
 		}
 	}
 
-	xfer->xferBool(&m_28C);
-	xfer->xferBool(&m_28D);
-	xfer->xferBool(&m_270);
+	(*xfer == m_28C);
+	(*xfer == m_28D);
+	(*xfer == m_270);
 	bool value49 = m_49;
-	xfer->xferBool(&value49);
-	xfer->xferBool(&m_1CA);
-	xfer->xferBool(&m_80);
-	xfer->xferBool(&m_1CB);
+	(*xfer == value49);
+	(*xfer == m_1CA);
+	(*xfer == m_80);
+	(*xfer == m_1CB);
 	bool value48 = m_48;
-	xfer->xferBool(&m_48);
+	(*xfer == m_48);
 	m_48 = value48;
-	xfer->xferBool(&m_81);
-	xfer->xferBool(&m_1C9);
-	xfer->xferBool(&m_4A);
-	xfer->xferBool(&m_1C8);
-	xfer->xferBool(&m_4B);
-	xfer->xferBool(&m_25C);
+	(*xfer == m_81);
+	(*xfer == m_1C9);
+	(*xfer == m_4A);
+	(*xfer == m_1C8);
+	(*xfer == m_4B);
+	(*xfer == m_25C);
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		unsigned int color = 0;
-		xfer->xferUnsignedInt(&color);
+		(*xfer == color);
 		if (color == 0)
 		{
 			m_recolorCount28 = 0;
@@ -540,52 +519,52 @@ void W3DScriptedModelDraw::xfer(Xfer *xfer)
 		unsigned int color = (unsigned int)reinterpret_cast<Rva000B4653 *>(&m_recolor2C - 1)->rva000B4653(0);
 		if (m_recolorCount28 == 0)
 			color = 0;
-		xfer->xferUnsignedInt(&color);
+		(*xfer == color);
 	}
 
 	if (version.current < 2)
-		xfer->xferInt(&m_44);
-	xfer->xferAsciiString(&m_54);
-	xfer->xferInt(&m_84);
+		(*xfer == m_44);
+	(*xfer == m_54);
+	(*xfer == m_84);
 	if (version.current < 2)
-		xfer->xferInt(&m_88);
-	xfer->xferReal(&m_8C);
-	xfer->xferReal(&m_98);
-	xfer->xferReal(&m_9C);
-	xfer->xferReal(&m_26C);
-	xfer->xferBool(&m_270);
-	xfer->xferUnsignedInt(&m_274);
-	xfer->xferUnsignedInt(&m_278);
-	xfer->xferUnsignedInt(&m_27C);
+		(*xfer == m_88);
+	(*xfer == m_8C);
+	(*xfer == m_98);
+	(*xfer == m_9C);
+	(*xfer == m_26C);
+	(*xfer == m_270);
+	(*xfer == m_274);
+	(*xfer == m_278);
+	(*xfer == m_27C);
 	Rva0030612AXfer(xfer, &m_280);
-	xfer->xferAsciiString(&m_260);
+	(*xfer == m_260);
 	for (int k = 0; k < 2; ++k)
-		xfer->xferAsciiString(&m_264[k]);
+		(*xfer == m_264[k]);
 	if (version.current >= 3)
-		xfer->xferBool(&m_4C);
+		(*xfer == m_4C);
 	if (version.current >= 4)
 	{
-		xfer->xferReal(&m_2C8);
-		xfer->xferReal(&m_2CC);
-		xfer->xferReal(&m_2D0);
-		xfer->xferReal(&m_2D4);
+		(*xfer == m_2C8);
+		(*xfer == m_2CC);
+		(*xfer == m_2D0);
+		(*xfer == m_2D4);
 	}
 	if (version.current >= 5)
-		xfer->xferBool(&m_4D);
+		(*xfer == m_4D);
 	if (restoreAnimation)
 		reinterpret_cast<Rva000B8F5AOuter *>(this)->rva000BFB51(percent);
 	if (version.current >= 6)
 	{
 		int count = m_vec38.size();
-		xfer->xferInt(&count);
+		(*xfer == count);
 		m_vec38.resize(count);
 		for (BfmeStringRecord000B94D2 *it = m_vec38.begin(); it != m_vec38.end(); ++it)
 		{
-			xfer->xferAsciiString(&it->text0);
-			xfer->xferAsciiString(&it->text1);
+			(*xfer == it->text0);
+			(*xfer == it->text1);
 		}
 	}
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		setSlot8C(value49);
 		slot74();

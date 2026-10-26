@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /ICode/Libraries/Include/Lib /Ireference/shims/moduledata
+// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /ICode/Libraries/Include/Lib /Ireference/shims/moduledata /Ireference/shims/bfme2_ascii
 //
 // ?xfer@W3DPropBuffer@@MAEXPAVXfer@@@Z, retail 0x000ee901, 758 bytes. Banked partial (score 0.95) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
@@ -28,6 +28,8 @@ typedef float Real;
 typedef bool Bool;
 
 #include "Coord3D.h"
+#include "Coord3DBase.h"
+#include "ascii_string.h"
 
 struct Matrix3D
 {
@@ -97,49 +99,25 @@ public:
 	Real Radius;
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual Bool isLoading();			// +0x04
-	virtual void slot08();
-	virtual Bool isCRC();				// +0x0C
-	virtual void slot10();
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual void slot24();
-	virtual void slot28();
-	virtual void slot2C();
-	virtual void slot30();
-	virtual void slot34();
-	virtual void slot38();
-	virtual void slot3C();
-	virtual void slot40();
-	virtual void slot44();
-	virtual void slot48();
-	virtual void slot4C();
-	virtual void slot50();
-	virtual void slot54();
-	virtual void slot58();
-	virtual void slot5C();
-	virtual void xferCoord3D(Coord3D *value);	// +0x60
-	virtual void slot64();
-	virtual void slot68();
-	virtual void xferAsciiString(void *value);	// +0x6C
-	virtual void xferReal(Real *value);		// +0x70
-	virtual void slot74();
-	virtual void slot78();
-	virtual void xferInt(Int *value);		// +0x7C
-	virtual void slot80();
-	virtual void slot84();
-	virtual void slot88();
-	virtual void slot8C();
-	virtual void xferBool(Bool *value);		// +0x90
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
 
-	void Version1();
-};
+#include "../../../../GameEngine/Include/Common/BfmeXfer.h"
 
 void Rva0030612AXfer(Xfer *xfer, Real *value);
 Xfer *Rva003062FEXfer(Xfer *xfer, Real *value);
@@ -181,15 +159,6 @@ public:
 	Matrix3D m_transform;				// +0x18
 };
 
-struct PropNameString
-{
-	void *m_data;
-
-	const char *str() const
-	{
-		return m_data ? (const char *)m_data + 8 : "";
-	}
-};
 
 struct TProp
 {
@@ -205,7 +174,7 @@ struct TProp
 struct TPropType
 {
 	RenderObjClass *m_robj;
-	PropNameString m_robjName;
+	AsciiString m_robjName;
 	SphereClass m_bounds;
 };
 
@@ -233,31 +202,31 @@ RenderObjClass *Create_Render_Obj(const char *name);
 
 void W3DPropBuffer::xfer(Xfer *xfer)
 {
-	if ((xfer?xfer:xfer)->isCRC())
+	if ((xfer?xfer:xfer)->IsCRC())
 		return;
 
 	xfer->Version1();
 
-	xfer->xferInt(&m_numPropTypes);
+	(*xfer == m_numPropTypes);
 	Int i;
 	for (i = 0; i < m_numPropTypes; ++i) {
 		Rva0030612AXfer(xfer, &m_propTypes[i].m_bounds.Center.X);
-		xfer->xferReal(&m_propTypes[i].m_bounds.Radius);
-		xfer->xferAsciiString(&m_propTypes[i].m_robjName);
-		if (xfer->isLoading())
+		(*xfer == m_propTypes[i].m_bounds.Radius);
+		(*xfer == m_propTypes[i].m_robjName);
+		if (xfer->IsLoading())
 			m_propTypes[i].m_robj = Create_Render_Obj(m_propTypes[i].m_robjName.str());
 	}
 
-	xfer->xferInt(&m_numProps);
+	(*xfer == m_numProps);
 	for (i = 0; i < m_numProps; ++i) {
-		xfer->xferInt(&m_props[i].propType);
-		xfer->xferInt(&m_props[i].id);
-		xfer->xferCoord3D(&m_props[i].location);
-		xfer->xferBool(&m_props[i].visible);
+		(*xfer == m_props[i].propType);
+		(*xfer == m_props[i].id);
+		(*xfer == asBase(m_props[i].location));
+		(*xfer == m_props[i].visible);
 		Matrix3D transform(true);
 		Real scale = 1.0f;
 
-		if (!xfer->isLoading()) {
+		if (!xfer->IsLoading()) {
 			RenderObjClass *current = m_props[i].m_robj;
 			if (current) {
 				current->Get_Transform();
@@ -265,9 +234,9 @@ void W3DPropBuffer::xfer(Xfer *xfer)
 			}
 		}
 		Rva003062FEXfer(xfer, transform.row0);
-		xfer->xferReal(&scale);
+		(*xfer == scale);
 
-		if (xfer->isLoading()) {
+		if (xfer->IsLoading()) {
 			m_props[i].ss = 0;
 			RenderObjClass *source;
 			if (m_props[i].propType < 0 || m_props[i].propType > m_numPropTypes ||
@@ -291,7 +260,7 @@ void W3DPropBuffer::xfer(Xfer *xfer)
 		}
 	}
 
-	xfer->xferBool(&m_anythingChanged);
-	xfer->xferBool(&m_doCull);
-	xfer->xferInt(&m_bfmeExtraField);
+	(*xfer == m_anythingChanged);
+	(*xfer == m_doCull);
+	(*xfer == m_bfmeExtraField);
 }

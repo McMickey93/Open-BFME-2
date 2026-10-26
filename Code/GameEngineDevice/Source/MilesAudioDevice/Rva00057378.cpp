@@ -57,24 +57,25 @@ struct BfmeEventPositionView;
 typedef _STL::hash_map<unsigned int, int> MilesPhysicalHandles;
 
 // The Xfer slots 0x000596E9 uses (Xfer::Version1 is rowed at 0x000053EE).
-class Xfer
-{
-public:
-    virtual ~Xfer();
-    virtual bool isLoading();
-    virtual bool isSaving(); virtual bool isCRC(); virtual void slot04(); virtual void slot05();
-    virtual void slot06(); virtual void slot07(); virtual void slot08(); virtual void slot09();
-    virtual void slot10(); virtual void slot11(); virtual void slot12(); virtual void slot13();
-    virtual void slot14(); virtual void slot15(); virtual void slot16(); virtual void slot17();
-    virtual void slot18(); virtual void slot19(); virtual void slot20(); virtual void slot21();
-    virtual void slot22(); virtual void slot23(); virtual void slot24(); virtual void slot25();
-    virtual void slot26(); virtual void slot27(); virtual void slot28(); virtual void slot29();
-    virtual void slot30();
-    virtual Xfer &xferInt(int *value); virtual void slot32(); virtual void slot33(); virtual void slot34();
-    virtual void slot35();
-    virtual Xfer &xferBool(bool *value);
-    void Version1(void);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+
+#include "../../../GameEngine/Include/Common/BfmeXfer.h"
 
 // The manager's table as 0x000596E9 reaches it: slot 27 drops a logical
 // handle's playing audio (Zero Hour's removeAudioEvent).
@@ -281,20 +282,20 @@ bool MilesAudioManager::rva000572DC(unsigned int key)
 void MilesAudioManager::rva000596E9(Xfer *xfer, unsigned int *handle)
 {
     xfer->Version1();
-    if (xfer->isCRC())
+    if (xfer->IsCRC())
         return;
-    if (xfer->isSaving()) {
+    if (xfer->IsStoring()) {
         MilesMutexGuard guard(&mutex, 0);
         MilesKeyAliases::iterator found;
         found = aliases.find(*handle);
         bool aliased = found != aliases.end();
-        xfer->xferBool(&aliased);
+        (*xfer == aliased);
         if (aliased) {
             int count = 0;
             MilesKeyAliases::iterator it;
             for (it = found; it != aliases.end() && it->first == *handle; ++it)
                 ++count;
-            xfer->xferInt(&count);
+            (*xfer == count);
             for (it = found; it != aliases.end() && it->first == *handle; ++it)
                 rva000563FE(xfer, it->second);
         } else {
@@ -305,11 +306,11 @@ void MilesAudioManager::rva000596E9(Xfer *xfer, unsigned int *handle)
         if (*handle >= 5)
             reinterpret_cast<MilesAudioManagerVirtuals *>(this)->removeAudioEvent(*handle);
         bool aliased;
-        xfer->xferBool(&aliased);
+        (*xfer == aliased);
         if (aliased) {
             *handle = allocateNewHandle();
             int count;
-            xfer->xferInt(&count);
+            (*xfer == count);
             while (count > 0) {
                 --count;
                 mapLogicalHandleToPhysicalHandle(*handle, rva000532B7(xfer));

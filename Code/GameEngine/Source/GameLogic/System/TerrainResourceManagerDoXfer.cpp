@@ -25,47 +25,26 @@ template<class T,class Traits> static inline bool operator!=(const _List_iterato
 enum ObjectID { INVALID_ID = 0 };
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../Libraries/Include/Lib/Region3D.h"
-struct XferVersion { XferVersion(unsigned char low,unsigned char high):version(low),current(high){} unsigned char version,current; };
-class Xfer {
-public:
-virtual void slot00();
-virtual bool IsLoading() const;
-virtual void slot02();
-virtual void slot03();
-virtual void slot04();
-virtual void slot05();
-virtual void slot06();
-virtual void slot07();
-virtual void slot08();
-virtual void slot09();
-virtual void xferVersion(XferVersion *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void xferRegion3D(Region3D *);
-virtual void slot23();
-virtual void slot24();
-virtual void slot25();
-virtual void slot26();
-virtual void slot27();
-virtual void xferFloat(float *);
-virtual void slot29();
-virtual void slot30();
-virtual void xferInt(int *);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual void xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+
+#include "../../../Include/Common/BfmeXfer.h"
+class Xfer::Version { public: Version(unsigned char low,unsigned char high):version(low),current(high){} unsigned char version,current; };
 void XferObjectID(Xfer *, ObjectID *);
 struct BfmePod12 { ObjectID id; float value; bool active; char pad[3]; };
 struct BfmePod8 { int a[2]; };
@@ -92,18 +71,18 @@ public:
 // ?DoXfer@TerrainResourceManager@@UAEXPAVXfer@@@Z
 void TerrainResourceManager::DoXfer(Xfer *xfer)
 {
-    XferVersion version(1,3);
-    xfer->xferVersion(&version);
+    Xfer::Version version(1,3);
+    *xfer == version;
     int count=entries.size();
-    xfer->xferInt(&count);
+    *xfer == count;
     if(xfer->IsLoading())
     {
         BfmePod12 entry;
         for(int i=0;i<count;++i)
         {
             XferObjectID(xfer,&entry.id);
-            xfer->xferFloat(&entry.value);
-            if(version.current>=2)xfer->xferBool(&entry.active);
+            *xfer == entry.value;
+            if(version.current>=2)*xfer == entry.active;
             entries.push_back(entry);
         }
     }
@@ -113,17 +92,17 @@ void TerrainResourceManager::DoXfer(Xfer *xfer)
         {
             BfmePod12 *entry=&*it;
             XferObjectID(xfer,&entry->id);
-            xfer->xferFloat(&entry->value);
-            if(version.current>=2)xfer->xferBool(&entry->active);
+            *xfer == entry->value;
+            if(version.current>=2)*xfer == entry->active;
         }
     }
-    xfer->xferRegion3D(&region);
-    xfer->xferInt(&width);
-    xfer->xferInt(&height);
-    xfer->xferFloat(&value3C);
-    xfer->xferFloat(&value18);
+    *xfer == region;
+    *xfer == width;
+    *xfer == height;
+    *xfer == value3C;
+    *xfer == value18;
     int cellCount=width*height;
-    xfer->xferInt(&cellCount);
+    *xfer == cellCount;
     if(xfer->IsLoading())
     {
         cells=new Rva0035A18D[cellCount];
@@ -133,15 +112,15 @@ void TerrainResourceManager::DoXfer(Xfer *xfer)
             if(version.current>=3)
             {
                 int state;
-                xfer->xferInt(&state);
+                *xfer == state;
                 cell->state=state;
                 int valueCount;
-                xfer->xferInt(&valueCount);
+                *xfer == valueCount;
                 reinterpret_cast<Rva0035ABC0 *>(cell)->rva0035ABC0(valueCount);
                 for(int j=0;j<valueCount;++j)
                 {
                     BfmePod8 *value=&cell->values[j];
-                    xfer->xferInt(&value->a[0]);
+                    *xfer == value->a[0];
                     XferObjectID(xfer,reinterpret_cast<ObjectID *>(&value->a[1]));
                 }
             }
@@ -163,12 +142,12 @@ void TerrainResourceManager::DoXfer(Xfer *xfer)
         {
             Rva0035A18D *cell=&cells[i];
             int state=cell->state;
-            xfer->xferInt(&state);
+            *xfer == state;
             int valueCount=cell->values.size();
-            xfer->xferInt(&valueCount);
+            *xfer == valueCount;
             for(BfmePod8 *value=cell->values.begin();value!=cell->values.end();++value)
             {
-                xfer->xferInt(&value->a[0]);
+                *xfer == value->a[0];
                 XferObjectID(xfer,reinterpret_cast<ObjectID *>(&value->a[1]));
             }
         }

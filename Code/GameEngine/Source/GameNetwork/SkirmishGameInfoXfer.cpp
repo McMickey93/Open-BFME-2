@@ -88,67 +88,25 @@ extern GameState *TheGameState;
 
 #include "../../../../reference/shims/moduledata/Common/Snapshot.h"
 
-class Xfer
-{
-public:
-	class Version;
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+struct XferUnknown11;
 
-	Xfer();
-	virtual ~Xfer();
-
-	void Version1();
-
-	// Slot order proven by GameSlot::xfer's two guards: slot 1 (0x04) runs
-	// the original-info save-off (true on load), slot 4 (0x10) skips the
-	// whole body (true in light-CRC mode). Xfer.cpp lists IsStoring first,
-	// which its folded mode-predicate rows cannot distinguish; the guards
-	// here can, so this TU uses the BFME1 Xfer.h order.
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-
-	virtual void v5() = 0;
-	virtual void v6() = 0;
-	virtual void v7() = 0;
-
-	virtual void SkipBadBlock(Snapshot &snapshot, unsigned int size);
-	virtual Xfer &XferRawBytes(void *data, unsigned int size);
-	virtual Xfer &operator==(bool &value);
-	virtual Xfer &operator==(char &value);
-	virtual Xfer &operator==(unsigned char &value);
-	virtual Xfer &operator==(short &value);
-	virtual Xfer &operator==(unsigned short &value);
-	virtual Xfer &operator==(int &value);
-	virtual Xfer &operator==(unsigned int &value);
-	virtual Xfer &operator==(__int64 &value);
-	virtual Xfer &operator==(float &value);
-	virtual Xfer &operator==(AsciiString &value);
-	virtual Xfer &operator==(UnicodeString &value);
-	virtual Xfer &operator==(PooledString &value);
-	virtual Xfer &operator==(Coord3DBase &value);
-	virtual Xfer &operator==(ICoord3D &value);
-	virtual Xfer &operator==(Region3D &value);
-	virtual Xfer &operator==(IRegion3D &value);
-	virtual Xfer &operator==(Coord2D &value);
-	virtual Xfer &operator==(ICoord2D &value);
-	virtual Xfer &operator==(Region2D &value);
-	virtual Xfer &operator==(IRegion2D &value);
-	virtual Xfer &operator==(RealRange &value);
-	virtual Xfer &operator==(RGBColor &value);
-	virtual Xfer &operator==(RGBAColorReal &value);
-	virtual Xfer &operator==(RGBAColorInt &value);
-	virtual Xfer &operator==(Snapshot &value);
-	virtual Xfer &operator==(XferUnknown11 &value) = 0;
-	virtual Xfer &operator==(Version &value);
-
-	virtual Xfer &XferEnum(const char *name, void *data, unsigned int size);
-
-	void xferAsciiString(AsciiString *value) { *this == *value; }
-
-protected:
-	virtual void XferData(unsigned int type, void *data, unsigned int size) = 0;
-};
+#include "../../Include/Common/BfmeXfer.h"
 
 class Xfer::Version
 {
@@ -260,11 +218,11 @@ void __cdecl xferMapName(Xfer *xfer, AsciiString *mapNameData)
 	if (xfer->IsStoring())
 	{
 		AsciiString tmp = TheGameState->realMapPathToPortableMapPath(*mapNameData);
-		xfer->xferAsciiString(&tmp);
+		*xfer == tmp;
 	}
 	else
 	{
-		xfer->xferAsciiString(mapNameData);
+		*xfer == *mapNameData;
 		*mapNameData = TheGameState->portableMapPathToRealMapPath(*mapNameData);
 	}
 }

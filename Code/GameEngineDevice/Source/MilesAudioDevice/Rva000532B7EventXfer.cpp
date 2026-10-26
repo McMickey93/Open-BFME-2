@@ -10,19 +10,25 @@ public:
 	void rva002D9FD9(Rva002D9FD9Arg *arg);
 };
 
-class Xfer
-{
-public:
-	virtual void x00(); virtual void x01(); virtual void x02(); virtual void x03(); virtual void x04();
-	virtual void x05(); virtual void x06(); virtual void x07(); virtual void x08(); virtual void x09();
-	virtual void x10(); virtual void x11(); virtual void x12(); virtual void x13(); virtual void x14();
-	virtual void x15(); virtual void x16(); virtual void x17(); virtual void x18(); virtual void x19();
-	virtual void x20(); virtual void x21(); virtual void x22(); virtual void x23(); virtual void x24();
-	virtual void x25(); virtual void x26(); virtual void x27(); virtual void x28(); virtual void x29();
-	virtual void x30(); virtual void x31(); virtual void x32(); virtual void x33(); virtual void x34();
-	virtual void x35();
-	virtual void getFlag(unsigned char *flag);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+
+#include "../../../GameEngine/Include/Common/BfmeXfer.h"
 
 // The native state transitions and temporary Release_Ref call prove that
 // the null reference argument owns its temporary lifetime through the call.
@@ -39,8 +45,8 @@ public:
 };
 int MilesAudioManager::rva000532B7(Xfer *xfer)
 {
-	unsigned char flag;
-	xfer->getFlag(&flag);
+	bool flag;
+	*xfer == flag;
 	if (flag != 0) {
 		BfmeAudioEventPrefix136 prefix(Rva000532B7TemporaryRef(), 0);
 		((Rva002D9FD9Owner *)&prefix)->rva002D9FD9((Rva002D9FD9Arg *)xfer);

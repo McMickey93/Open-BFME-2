@@ -108,18 +108,26 @@ struct FloatPair
 #define __PLACEMENT_VEC_NEW_INLINE
 #include <new>
 
-struct ShrubVersion { unsigned char minimum,current; ShrubVersion(unsigned char a,unsigned char b):minimum(a),current(b){} };
-class Xfer { public:
- virtual ~Xfer();
- virtual bool IsLoading()const; virtual bool IsStoring()const; virtual bool IsCRC()const; virtual bool IsLightCRC()const;
- virtual void s05();virtual void s06();virtual void s07();virtual void s08();virtual void s09();
- virtual void Version(ShrubVersion *);
- virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual void s16();virtual void s17();
- virtual void Bounds(float *);virtual void s19();virtual void RawPair(void *);
- virtual void s21();virtual void s22();virtual void s23();virtual void s24();virtual void s25();virtual void s26();
- virtual void String(AsciiString *);virtual void Real(float *);virtual void s29();virtual void s30();virtual void Int(int *);
- virtual void s32();virtual void s33();virtual void s34();virtual void s35();virtual void Bool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+
+#include "../../../../GameEngine/Include/Common/BfmeXfer.h"
+class Xfer::Version { public: unsigned char minimum,current; Version(unsigned char a,unsigned char b):minimum(a),current(b){} };
 class Rva000E63DCObj;void __stdcall Rva000E63DCDo(Rva000E63DCObj *);
 void Rva0030612AXfer(Xfer *,float *);
 Xfer *Rva003062FEXfer(Xfer *,float *);
@@ -176,18 +184,18 @@ void W3DShrubBuffer::DoXfer(Xfer *xfer)
  int i;
  Rva000E63DCDo(reinterpret_cast<Rva000E63DCObj *>(xfer));
  if(xfer->IsLightCRC()||xfer->IsCRC())return;
- ShrubVersion version(1,3);xfer->Version(&version);
- int count=numTrees;xfer->Int(&count);
+ Xfer::Version version(1,3);(*xfer == version);
+ int count=numTrees;(*xfer == count);
  if(version.current>=2){
-  xfer->Int(&numTypes);
+  (*xfer == numTypes);
   for(i=0;i<numTypes;++i){
    Rva000E91CEType &shrubType=types[i];
    Rva0030612AXfer(xfer,reinterpret_cast<float *>(&shrubType.offset));
    Rva0030612AXfer(xfer,reinterpret_cast<float *>(&shrubType.bounds));
-   xfer->Real(&shrubType.bounds.Radius);
-   xfer->RawPair(shrubType.gap24);xfer->RawPair(shrubType.gap24+8);xfer->RawPair(shrubType.gap24+16);xfer->RawPair(shrubType.gap24+24);
-   xfer->Bool(&shrubType.shadowKind);
-   xfer->String(&shrubType.textureName);xfer->String(&shrubType.modelName);xfer->String(&shrubType.nameC);xfer->Int(&shrubType.field58);xfer->String(&shrubType.templateName);
+   (*xfer == shrubType.bounds.Radius);
+   (*xfer == *reinterpret_cast<Coord2D *>(shrubType.gap24));(*xfer == *reinterpret_cast<Coord2D *>(shrubType.gap24+8));(*xfer == *reinterpret_cast<Coord2D *>(shrubType.gap24+16));(*xfer == *reinterpret_cast<Coord2D *>(shrubType.gap24+24));
+   (*xfer == shrubType.shadowKind);
+   (*xfer == shrubType.textureName);(*xfer == shrubType.modelName);(*xfer == shrubType.nameC);(*xfer == shrubType.field58);(*xfer == shrubType.templateName);
    if(xfer->IsLoading()){
     shrubType.data=0;
 
@@ -214,19 +222,19 @@ void W3DShrubBuffer::DoXfer(Xfer *xfer)
    _ReadWriteBarrier();
    if(treeType!=-2){modelName=types[treeType].data->modelName;modelTexture=types[treeType].data->nameC;}
   }
-  xfer->String(&modelName);xfer->String(&modelTexture);
+  (*xfer == modelName);(*xfer == modelTexture);
   if(xfer->IsLoading()){
    for(int j=0;j<numTypes;++j){
     if(((const StringBase<char> *)&types[j].data->modelName)->compareNoCase(*(const StringBase<char> *)&modelName)==0 &&((const StringBase<char> *)&types[j].data->nameC)->compareNoCase(*(const StringBase<char> *)&modelTexture)==0){treeType=j;break;}
    }
   }
-  xfer->Real(&tree.location.X);xfer->Real(&tree.location.Y);xfer->Real(&tree.location.Z);xfer->Real(&tree.scale);
+  (*xfer == tree.location.X);(*xfer == tree.location.Y);(*xfer == tree.location.Z);(*xfer == tree.scale);
   Rva003062FEXfer(xfer,reinterpret_cast<float *>(&tree.transform));
   XferDrawableID(xfer,reinterpret_cast<int *>(&tree.drawableID));
   bool shadow=false;
   AsciiString textureName;
   if(!xfer->IsLoading()&&treeType>=0&&treeType<numTypes){shadow=types[treeType].shadowKind;textureName=types[treeType].textureName;}
-  xfer->Bool(&shadow);xfer->String(&textureName);xfer->Bounds(bounds1948);
+  (*xfer == shadow);(*xfer == textureName);(*xfer == *reinterpret_cast<Region2D *>(bounds1948));
   if(xfer->IsLoading()&&treeType>=0&&treeType<numTypes){
    Coord3D pos;pos.x=tree.location.X;pos.y=tree.location.Y;pos.z=tree.location.Z;
    AsciiString nameD("");

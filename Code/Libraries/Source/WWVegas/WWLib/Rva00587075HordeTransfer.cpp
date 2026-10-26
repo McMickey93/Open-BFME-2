@@ -33,21 +33,26 @@ public:
  int state; BfmeE12 position; OpaqueTriple12 unknown10; bool flag; char pad[3]; int a,b;
  _STL::deque<BfmeE12> path; int tail;
 };
-struct XferVersion { unsigned char current,minimum; XferVersion(unsigned char a,unsigned char b):current(a),minimum(b){} };
-class Xfer {
-public:
- virtual ~Xfer(); virtual bool isLoading(); virtual bool isSaving();
- virtual void slot3(); virtual void slot4(); virtual void slot5(); virtual void slot6(); virtual void slot7(); virtual void slot8(); virtual void slot9();
- virtual Xfer &xferVersion(XferVersion &);
- virtual void slot11();virtual void slot12();virtual void slot13();virtual void slot14();virtual void slot15();virtual void slot16();virtual void slot17();virtual void slot18();virtual void slot19();virtual void slot20();virtual void slot21();virtual void slot22();virtual void slot23();
- virtual Xfer &xferFloat3(BfmeE12 &);
- virtual void slot25();virtual void slot26();
- virtual void xferAsciiString(AsciiString *);
- virtual void slot28();virtual void slot29();virtual void slot30();
- virtual Xfer &xferInt(int &);
- virtual void slot32();virtual void slot33();virtual void slot34();virtual void slot35();
- virtual Xfer &xferBoolean(bool &);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+
+#include "../../../../GameEngine/Include/Common/BfmeXfer.h"
+class Xfer::Version { public: unsigned char current,minimum; Version(unsigned char a,unsigned char b):current(a),minimum(b){} };
 Xfer *Rva00586231Xfer(Xfer *,_STL::deque<Gen_t_00595870_p12cd> *);
 struct XferException {char *text;int tag;};
 extern "C" XferException *__cdecl bfmeFormatText(XferException *,int,const char *,...);
@@ -70,27 +75,27 @@ public:
  virtual void rva00587075(Xfer *);
 };
 void HordeMeleeFormation::rva00587075(Xfer *xfer) {
- XferVersion version(1,1); xfer->xferVersion(version);
+ Xfer::Version version(1,1); (*xfer == version);
  AsciiString expected("HordeMeleeFormation");
  AsciiString actual(expected);
- xfer->xferAsciiString(&actual);
+ (*xfer == actual);
  if(actual.compare(expected)!=0) {
   XferException error;
   bfmeFormatText(&error,4,"Xfer data saved by %s is now being loaded by %s",actual.str(),expected.str());
   _CxxThrowException(&error,(const _s__ThrowInfo *)&g_guardTargetTypeThrowInfo);
   __assume(0);
  }
- xfer->xferBoolean(flag);
+ (*xfer == flag);
  int count=entries.size();
- xfer->xferInt(count);
- if(xfer->isLoading()) ((Rva00584A7DVector<Rva00587057Entry> *)&entries)->grow(count);
+ (*xfer == count);
+ if(xfer->IsLoading()) ((Rva00584A7DVector<Rva00587057Entry> *)&entries)->grow(count);
  for(int i=0;i<count;++i) {
   Rva00585B16 value;
-  if(!xfer->isLoading())
+  if(!xfer->IsLoading())
    ((BfmeAssignRecord84 *)&value)->operator=(entries[i]);
-  xfer->xferFloat3(value.position);
-  xfer->xferBoolean(value.flag);
-  if(xfer->isLoading())
+  (*xfer == *reinterpret_cast<Coord3DBase *>(&value.position));
+  (*xfer == value.flag);
+  if(xfer->IsLoading())
    entries[i].operator=(*(BfmeAssignRecord84 *)&value);
   Rva00586231Xfer(xfer,(_STL::deque<Gen_t_00595870_p12cd> *)&value.path);
  }
