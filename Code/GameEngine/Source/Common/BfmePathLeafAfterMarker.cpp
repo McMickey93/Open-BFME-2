@@ -1,8 +1,7 @@
 // cl: /DNDEBUG /MD /EHsc
 
-extern "C" __declspec(dllimport) char * __cdecl strrchr(const char *text, int character);
-extern "C" __declspec(dllimport) int __cdecl strncmp(const char *a, const char *b, unsigned int n);
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
+#include <string.h>
+#include <stdio.h>
 
 // ?bfmePathLeafAfterMarker@@YAPBDPBD@Z
 const char *__cdecl bfmePathLeafAfterMarker(const char *path)
