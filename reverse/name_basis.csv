@@ -2586,3 +2586,4 @@ member,Rva005FD4AARecord::m_08,Rva005FD4AARecord::m_commandPoints,inferred,agree
 member,Rva005FD4AARecord::m_0C,Rva005FD4AARecord::m_maxCommandPoints,inferred,agree:nl-d4b8af835122,Code/GameEngine/Source/Common/GapBodiesGE12.cpp,
 function,?rva005FD4CC@Rva005FD4AA@@QBEHH@Z,?getCommandPoints@Rva005FD4AA@@QBEHH@Z,inferred,agree:nl-98d56f033181,Code/GameEngine/Source/Common/GapBodiesGE12.cpp,0x005FD4CC
 function,?rva005FD4DD@Rva005FD4AA@@QBEHH@Z,?getMaxCommandPoints@Rva005FD4AA@@QBEHH@Z,inferred,agree:nl-0cd3edc8ed94,Code/GameEngine/Source/Common/GapBodiesGE12.cpp,0x005FD4DD
+param,Rva005ED15DCreateAutoResolve::c,Rva005ED15DCreateAutoResolve::autoResolveBattle,inferred,agree:nl-63d98c6c137b,Code/GameEngine/Source/GameClient/GUI/InGame/Strategic/StrategicVeterancy.cpp,0x005ED15D
