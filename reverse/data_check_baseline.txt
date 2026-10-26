@@ -875,7 +875,6 @@ Code/GameEngine/Source/GameNetwork/Rva007EBAA0Create.cpp	wrong-name	?g_Va0130A5A
 Code/GameEngine/Source/GameNetwork/Rva007EBAA0Create.cpp	wrong-name	?vftable_01129D30@@3HA	0x008E157C
 Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	duplicate-def	_Rva00803890Vt2Anchor	0x008E3F08
 Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	wrong-name	_Rva00803890Vt2Anchor	0x008E3F08
-Code/GameEngine/Source/GameNetwork/WOLBrowser/Rva001776a0Cluster.cpp	wrong-name	?g_bfmeObjECF@@3VBfmeObjECFPtr@@A	0x009F7040
 Code/GameEngine/Source/GameNetwork/createServiceHubImpl.cpp	wrong-name	?g_Va0130A588@@3PAVServiceHubImpl@@A	0x00A09FA4
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DLaserDrawBfmeDoDraw.cpp	wrong-name	?$S17@?1??doDrawModule@W3DLaserDraw@@UAEXPBVMatrix3D@@@Z@4IA	0x009EBB5C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp	wrong-name	?$S1@?3??doDrawModule@W3DProjectileStreamDraw@@UAEXPBVMatrix3D@@@Z@4IA	0x009EBC24
@@ -938,10 +937,8 @@ Code/Libraries/Source/DirtySock/Y4TextToValue.c	wrong-name	_g_Rva0112A310Class	0
 Code/Libraries/Source/DirtySock/Y4TextToValue.c	wrong-name	_g_Rva012C391CSeparator	0x009D8074
 Code/Libraries/Source/Apt/string/StringPool.cpp	wrong-name	?g_00E18650@@3VEAStringC@@A	0x00A18650
 Code/Libraries/Source/Apt/string/StringPool.cpp	wrong-name	?saConstantAtE18388@@3PAVEAStringC@@A	0x00A18388
-Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserCreateBrowser.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_00000000_0000_0000_c000_000000000046	0x007D4E4C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_ee883b17_0778_4b18_a12b_e44c0d298412	0x007D4E3C
-Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowser_Is_Browser_Open.cpp	wrong-name	?g_bfmeObjECF@@3VBfmeObjECFPtr@@A	0x009F7040
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	wrong-name	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	0x007D4E3C

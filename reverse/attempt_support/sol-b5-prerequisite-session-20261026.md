@@ -91,3 +91,63 @@ Official BFME 1 master was fetched: current de077dd5 is 67 commits behind.
 Its full update verification is incomplete; retain current inputs and do not
 write a freshness-success receipt. Publication is retried with this recovery
 commit; keep the inherited claims if the runner holds the batch again.
+
+## Additional prerequisite pass and final publication handoff
+
+This pass first recovered/reverified the inherited Apt focus repair and retained
+its pending publication claims. It then demonstrated two new scoped dry-run
+unblocks and separately retired data debt:
+
+| Target | New demonstrated result | Remaining prerequisites |
+| --- | --- | --- |
+| dx8webbrowser.cpp | Preserve the existing D30 overload and use the existing checked pointer view at the helper call. Normal dry-run grows from two clean donors / nine rows to three / ten. The subsequent existing-data-owner cleanup retains all ten rows and 23 references, with three EXACT EH graphs. | Four mixed donors remain, including cross-family Common providers; no merge applied. |
+| GameInfo.cpp | MapMetaData uses its exact underlying int/unsigned int field types, removing a composed typedef-order dependency. Normal dry-run grows from ten files / 49 rows to eleven / 52. All 135 references and 73 selected definitions remain; ten composed EH parents EXACT. | Reset/constructor and destructor need complete named member/base/lifetime views. Twelve mixed donors untouched. |
+| Browser data identity | Three clean donors now declare the existing Common owner's BfmeObjECF pointer at RVA 0x009F7040 and cast at point of use. Owning repair_queue retire data acceptance removes exactly three wrong-name register keys. | The hatch register is claimed by another worker: reconcile the two now-removed donor-local alternatename entries there. Its count is not claimed as reduced. Common's remaining alias and its other consumers stay unchanged. |
+
+Apt InputDispatch was investigated once with a seed declaration, but button
+record/character/CIH/pool view disagreements remain. Restored the seed and
+reverified 11/11 exact; recorded the blocked attempt and substantive handoff in
+sol-b5-aptinput-composition-blocked-20261026.md. Released the trial-only dispatch
+and FB910 file claims. No unchanged blocked work was repeated afterward.
+
+Each new prerequisite/cleanup has its own Markdown/JSON evidence. Full supported
+object, COMDAT, global provider, code/data binding, consumer and EH comparisons
+bound the verified scope. The GameInfo scratch aggregate EH-label scan was
+corrected to per-row verified mappings before acceptance: 135/135 references;
+the incomplete initial 134-reference scan is explicitly retained as superseded.
+For the browser cleanup, only the two known obsolete global spellings are
+canonicalized; code bytes/relocations and selected providers otherwise agree.
+Removed unused unrowed conversion helpers have no external consumer; composition
+also drops one unused checked-pointer helper whose only hit is its defining
+standalone object. These exceptions are recorded, not hidden as equal digests.
+
+After rebase onto c973319b7d, inspected all pending origin/master..HEAD changes
+plus the final staged cleanup together. All five source paths are edited in
+place; only evidence is added. No source moves/deletions, include/build-input or
+historical EA-path changes require active tools, hooks/workflows, registries or
+other consumers to be repointed. Protected identity/data/header keys retain
+ownership except the three owning-tool-retired data keys. No regenerated TU map
+or new hatch is staged. Current AGENTS.md/consolidation instructions and all
+edited source scopes are unchanged by incoming commits. Scoped planner refreshed
+and checked after the final source edit/rebase. No maintainer-only runner used.
+
+The last publication request before this final cleanup was held by the shared
+cooldown. Publish this cleanup in the same command as its commit; if still held,
+the runner owns final publication. Commit subjects identify the pending inherited
+focus repair/recovery, Apt blocked handoff, browser overload prerequisite,
+GameInfo declaration-order prerequisite, and browser data cleanup; SHAs can
+change under the publisher's rebase. No confirmed downstream Luna landing or
+link-census improvement is claimed.
+
+Until publication is confirmed, retain this seat's Apt focus RVA/file/evidence
+claims, both target scope claims and their donor/evidence claims, and the data
+register claim. Once the pending batch is confirmed in origin/master, release
+these scope claims and settle RVAs with claims.py release --landed; explicitly
+release existing 0x006FA7E0 if needed. The hatch register claim belongs to someone
+else and must not be released by this seat. Scratch backups remain under build/.
+
+New measured improvement in this pass: two demonstrated prerequisite unblocks,
+three data debt keys retired. File reduction: zero; recovered C++ bytes: zero.
+Inherited recovery is reported separately and is not attributed as a new repair.
+MessageStream issue #116 and BFME 1's incomplete freshness verification remain
+unchanged. No fallback lane or independent naming vote was taken.

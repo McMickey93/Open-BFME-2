@@ -43,7 +43,8 @@ struct Rva00959410Ptr {
  }
  operator bool() const { return m_p != 0; }
 };
-extern Rva00959410Ptr Rva00959410Dispatch;
+struct BfmeObjECF;
+extern BfmeObjECF *g_bfmeObjECF;
 struct HWND__;
 struct IDispatch;
 class DX8WebBrowser {
@@ -52,10 +53,10 @@ public:
  static void CreateBrowser(const char*, const char*, int,int,int,int,int,long,IDispatch*);
 };
 void DX8WebBrowser::CreateBrowser(const char *browsername,const char *url,int x,int y,int w,int h,int updateticks,long options,IDispatch *gamedispatch) {
- if(Rva00959410Dispatch) {
+ if((*(Rva00959410Ptr *)&g_bfmeObjECF)) {
   BfmeBstrVGP brsname(browsername);
-  ((Rva00958C80*)Rva00959410Dispatch.operator->())->invoke(brsname,BfmeBstrVGP(url),(long)hWnd,x,y,w,h,options,gamedispatch);
-  Rva00959410Dispatch->invoke(brsname,(void*)updateticks);
+  ((Rva00958C80*)(*(Rva00959410Ptr *)&g_bfmeObjECF).operator->())->invoke(brsname,BfmeBstrVGP(url),(long)hWnd,x,y,w,h,options,gamedispatch);
+  (*(Rva00959410Ptr *)&g_bfmeObjECF)->invoke(brsname,(void*)updateticks);
  }
 }
 

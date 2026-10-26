@@ -55,7 +55,8 @@ public:
 	}
 };
 
-extern BfmeObjECFPtr g_bfmeObjECF;
+struct BfmeObjECF;
+extern BfmeObjECF *g_bfmeObjECF;
 
 struct HWND__;
 struct IDispatch;
@@ -70,7 +71,7 @@ public:
 	{
 		if (g_bfmeObjECF == 0)
 			return false;
-		return (g_bfmeObjECF->invoke(_bstr_t(browsername)) != 0);
+		return (((BfmeObjECFPtr *)&g_bfmeObjECF)->operator->()->invoke(_bstr_t(browsername)) != 0);
 	}
 };
 
@@ -78,5 +79,3 @@ __declspec(noinline) bool forceIsBrowserOpen(const char *browsername)
 {
 	return DX8WebBrowser::Is_Browser_Open(browsername);
 }
-// ?g_bfmeObjECF@@3VBfmeObjECFPtr@@A: the global at VA 0xdf7040 is ?g_bfmeObjECF@@3PAUBfmeObjECF@@A.
-#pragma comment(linker, "/alternatename:?g_bfmeObjECF@@3VBfmeObjECFPtr@@A=?g_bfmeObjECF@@3PAUBfmeObjECF@@A")

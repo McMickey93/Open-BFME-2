@@ -66,13 +66,12 @@ public:
     }
 };
 
-extern BfmeObjECFPtr g_bfmeObjECF;
+struct BfmeObjECF;
+extern BfmeObjECF *g_bfmeObjECF;
 
 void rva001776a0(const char *browsername)
 {
     if (g_bfmeObjECF == 0)
         return;
-    ((Rva00958D30 *)g_bfmeObjECF.operator->())->invoke(BfmeBstrVGP(browsername));
+    ((Rva00958D30 *)((BfmeObjECFPtr *)&g_bfmeObjECF)->operator->())->invoke(BfmeBstrVGP(browsername));
 }
-// ?g_bfmeObjECF@@3VBfmeObjECFPtr@@A: the global at VA 0xdf7040 is ?g_bfmeObjECF@@3PAUBfmeObjECF@@A.
-#pragma comment(linker, "/alternatename:?g_bfmeObjECF@@3VBfmeObjECFPtr@@A=?g_bfmeObjECF@@3PAUBfmeObjECF@@A")
