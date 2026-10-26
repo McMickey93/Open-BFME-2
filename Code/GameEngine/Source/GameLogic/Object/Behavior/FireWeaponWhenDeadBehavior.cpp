@@ -27,6 +27,11 @@ typedef int Int;
 
 typedef unsigned int UnsignedInt;
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class Thing;
 
 class ModuleData;
@@ -126,6 +131,9 @@ public:
 	virtual void s02();
 protected:
 	virtual void xfer(Xfer *xfer);
+public:
+	// Primary vtable slot 4, already rowed at 0x00482E51.
+	virtual NameKeyType getModuleNameKey() const;
 private:
 	const FireWeaponWhenDeadBehaviorModuleData *getFireWeaponWhenDeadBehaviorModuleData() const { return (const FireWeaponWhenDeadBehaviorModuleData *)m_moduleData; }
 
