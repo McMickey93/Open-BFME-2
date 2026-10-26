@@ -49,7 +49,7 @@ class UpgradeCenter
 public:
 	const UpgradeTemplate *findUpgrade(const AsciiString &n) const;
 };
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 
 int ObjectHasUpgrade(lua_State *L)
 {

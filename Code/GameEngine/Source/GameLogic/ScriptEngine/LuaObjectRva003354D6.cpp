@@ -56,7 +56,7 @@ class UpgradeCenter
 public:
 	const UpgradeTemplate *findUpgrade(const AsciiString &n) const;
 };
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 
 // Static callback view only; this helper reads no LuaScriptEngine object.
 // WB C06AD0 ObjectModifyUpgrade has the same two stack arguments, complete

@@ -31,7 +31,7 @@ class UpgradeCenter
 public:
 	const UpgradeTemplate *findUpgrade(const AsciiString &name) const;
 };
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 class Player
 {
 public:
