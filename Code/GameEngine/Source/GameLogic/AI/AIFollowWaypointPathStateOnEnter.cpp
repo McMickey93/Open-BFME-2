@@ -71,7 +71,7 @@ struct FprintfTarget
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 typedef float Real;
 typedef int Int;
 enum StateExitType
@@ -424,7 +424,7 @@ StateReturnType AIFollowWaypointPathState::onEnter()
     {
         if (g_00E03745)
         {
-            FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+            FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
             if (log != NULL)
                 fprintf(log, "CritterDesync: setAdjustDestination(FALSE) 54");
         }
@@ -434,8 +434,8 @@ StateReturnType AIFollowWaypointPathState::onEnter()
     {
         if (g_00E03745)
         {
-            if (g_00DFEFF0 != 0)
-                fprintf((FprintfTarget *)g_00DFEFF0,
+            if (theLogicRandomLogFile != 0)
+                fprintf((FprintfTarget *)theLogicRandomLogFile,
                     "CritterDesync: setAdjustDestination(ai->isDoingGroundMovement()=%s) 55",
                     ai->isDoingGroundMovement() ? "TRUE" : "FALSE");
         }

@@ -209,7 +209,7 @@ public:
 };
 class PlayerList;
 extern PlayerList *ThePlayerList;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 extern int g_00E062F4;
 extern "C" int __cdecl fprintf(void *file, const char *format, ...);
 float GetGameLogicRandomValueReal(float lo, float hi, char *file, int line);
@@ -220,20 +220,20 @@ float GetGameLogicRandomValueReal(float lo, float hi, char *file, int line);
 // a record count of at least 1 and a coin flip; each step logs.
 bool AITargetHeuristicExpansionBase::wantsToExpand(Player *player)
 {
-	if (g_00DFEFF0)
-		fprintf(g_00DFEFF0, "pos 1: p1=%d, p2= %d", ((const Rva002A7EA0CmpBoolField *)ThePlayerList)->get(), m_08);
+	if (theLogicRandomLogFile)
+		fprintf(theLogicRandomLogFile, "pos 1: p1=%d, p2= %d", ((const Rva002A7EA0CmpBoolField *)ThePlayerList)->get(), m_08);
 	if (!((const Rva002A7EA0CmpBoolField *)ThePlayerList)->get() || m_08 <= (unsigned int)g_00E062F4) {
 		++m_08;
 		return false;
 	}
 	m_08 = 0;
-	if (g_00DFEFF0)
-		fprintf(g_00DFEFF0, "pos 2: money= %d", player->m_94);
+	if (theLogicRandomLogFile)
+		fprintf(theLogicRandomLogFile, "pos 2: money= %d", player->m_94);
 	if (player->m_94 < 3000)
 		return false;
 	Rva002A8AB1Record *record = TheSkirmishAIManager->rva002A8AB1(player);
-	if (g_00DFEFF0)
-		fprintf(g_00DFEFF0, "pos 3: p1 = %d", record->m_16C);
+	if (theLogicRandomLogFile)
+		fprintf(theLogicRandomLogFile, "pos 3: p1 = %d", record->m_16C);
 	if (record->m_16C < 1)
 		return false;
 	if (GetGameLogicRandomValueReal(0.0f, 1.0f, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\SkirmishAI\\AITacticalAI\\AITargetChooser\\AITargetHeuristics\\AITargetHeuristicExpansionBase.cpp", 63) <= 0.5f)

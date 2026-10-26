@@ -26,7 +26,7 @@ struct FprintfTarget
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 
 extern int BfmeLogicFramesPerSecond;
 #define LogicFramesPerSecond BfmeLogicFramesPerSecond
@@ -241,7 +241,7 @@ void AIUpdateInterface::requestPath( Coord3D *destination, Bool isFinalGoal )
 
 	if (g_00E03745)
 	{
-		FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+		FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 		if (log)
 			fprintf(log, "CritterDesync: requestPath1-- m_requestedDestination changing from %g,%g,%g to %g,%g,%g",
 				m_requestedDestination.x, m_requestedDestination.y, m_requestedDestination.z,
