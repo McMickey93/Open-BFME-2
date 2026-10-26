@@ -87,7 +87,7 @@ void Rva002BB5DD::rva002BB5DD(Xfer*xfer){
  if(!xfer->IsCRC() && v.current>=2)((Rva002B8BFE*)this)->rva002B8BFE(xfer);
 }
 
-void*operator new(unsigned int);
+#include <new>
 class ModuleData;
 namespace _STL{template<class T>class allocator;template<class T,class A>class vector{public:void push_back(const T&);};}
 typedef _STL::vector<const ModuleData*,_STL::allocator<const ModuleData*> > ModuleVec;
