@@ -56,8 +56,7 @@ class Drawable
     static Rva002D752DNode **s_animationTemplates;
 };
 extern Anim2DCollection *TheAnim2DCollection;
-void *__cdecl operator new(unsigned int size) throw();
-void __cdecl operator delete(void *);
+#include <new>
 
 class Rva00275F3FHost
 {

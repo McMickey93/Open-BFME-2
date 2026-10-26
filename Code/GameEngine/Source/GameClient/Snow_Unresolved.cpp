@@ -80,7 +80,7 @@ SnowManager::SnowManager()
     m_targetPair48.b = 0.0f;
 }
 
-extern void * __cdecl operator new[](unsigned int);
+#include <new>
 
 
 class MemoryPoolObject {
@@ -167,7 +167,6 @@ public:
 
 // Owned by Snow.cpp: the weather override readers use; retail .data starts it at 0.
 extern OVERRIDE<WeatherSetting> TheWeatherSetting;
-extern void __cdecl operator delete[](void *);
 
 
 SnowManager::~SnowManager()

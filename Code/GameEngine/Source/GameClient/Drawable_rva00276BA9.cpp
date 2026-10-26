@@ -84,7 +84,7 @@ public:
 	const Coord3D *rva00276470() const;
 };
 
-void *operator new(unsigned int s) throw();
+#include <new>
 
 class Drawable
 {
