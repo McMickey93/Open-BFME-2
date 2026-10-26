@@ -78,3 +78,59 @@ parseAsciiStringVectorAppend. These are first trial diagnostics, not proven
 independent root causes. The original byte-matched bodies remain intact.
 
 Logs: `build/codex-cleanup-20261025/iteration19-{dry-run,merge,merged-build,merged-identity,merged-link}.log`.
+
+## Final flags and path-consumer audit
+
+After rebasing on `origin/master` at `561f16348d`, the owning
+`flag_defaults.py propose` tool measures the final 53-row TU. The existing
+`-O1 -arch:SSE` override remains necessary: the region default loses two rows.
+Only the measured row count changes from two to 53; effective compilation
+flags do not change. Log: `iteration19-flags-final.log`.
+
+The complete source-path delta in `561f16348d..37dc9e234d` removes exactly the
+seven donors listed above and in the preceding consolidation handoff. A single
+combined search of their full paths and basenames across active tools, hooks,
+workflows, source/header files, build configuration, registers and documentation
+finds no active consumer requiring another path change. INI-specific directory
+and glob checks likewise find no dependency on those retired files. Existing
+generic source discovery and source-keyed register transfers use the new TU.
+
+Remaining old-path mentions are source/provenance comments, immutable attempt
+evidence, append-only attempt history and the saved census's `link_status.csv`.
+Those historical records are intentionally retained. No include, hook, active
+function/data owner, override, header queue or tooling path still requires a
+deleted donor. Audit log: `iteration19-path-consumers.log`. Recheck this audit
+only if a later change adds another move or alters a relevant consumer.
+
+## Publication audit qualification
+
+The final flag-metadata commit passed the normal full hook: 98,252 function
+rows, 2,216 data rows, 214 STLport constructor folds, all reference checks and
+the no-op image. Converged-data enforcement checks 23,032 sources with zero
+second names or unjudged rows. The batch was published as `7d17532afb` at
+2026-10-26 04:24 UTC in PR 115's fork branch.
+
+Before publication, supported bounded `link_check.py --prepare-current` runs
+produce strict reusable receipts and ordinary byte proofs for 135 explicit
+changed sources. The normal push hook expands this to 138 changed/dependent
+sources and passes 1,375 function rows, three data rows and 195 EXACT EH graphs.
+Its shadow link audit is still inconclusive: the saved index `763dc8759f`
+predates outgoing base `0edae3a354`, and the additional dependent `Eva.cpp`
+lacks a strict reusable receipt. The other two additions are the already
+current generated unwind containers `uw_gen_012.cpp` and `uw_gen_013.cpp`.
+
+A focused supported preparation of
+`Code/GameEngine/Source/GameClient/Eva.cpp` then refuses with
+`macro or parent-traversing include has unknown search roots`. This is an
+include-inventory prerequisite, not a demonstrated byte failure or false
+reject. No provider-change or lost-byte verdict was reached, no check was
+relaxed and no fallback receipt was admitted. The incomplete include graph
+must be resolved under the normal tooling rules before that comparison can
+complete. A newer index with the correct comparison base is separately needed
+for a definitive batch verdict.
+
+Logs: `iteration19-flags-commit.log`, `iteration19-receipts-{1,2,3,4,5}.log`,
+`iteration19-push.log` and `iteration19-receipts-eva.log`, all under
+`build/codex-cleanup-20261025/`. The fresh `progress.py origin/master` comparison
+keeps BYTE-MATCHED at 100% and C++ exact at 7,984,346 bytes (+0). No new census,
+NOT OURS, complete-image or runtime result is claimed.
