@@ -2525,7 +2525,7 @@ Remaining / next check: the integer public signature still records the old opaqu
 Clearance: cleared in ordinary-preview scope; census confirmation pending.
 Census confirmation: pending; no headline change claimed.
 
-### LINK-049: an entire hashtable instantiation adds allocator dependencies to one row
+### LINK-066: an entire hashtable instantiation adds allocator dependencies to one row
 
 Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: `896af216804e`.
 Evidence / affected unit: `Code/GameEngine/Source/Common/System/XferBlockWriter_rva009D86E0_Rva0060CB97.cpp`, the 21-byte `_M_bkt_num_key(key, count)` row. The whole-class hashtable instantiation emits unrowed operations that reference undefined `__node_alloc<false,0>::_M_allocate` and `_M_deallocate`.
@@ -2533,7 +2533,7 @@ Completed: explicitly instantiate only the existing member from the same STLport
 Remaining / next check: confirm this unit and the removed-provider scope in the next scheduled census. The build, frozen-file, EH and data checks pass; CSV and pin consistency pass. Full local receipt: `build/link-report.md`.
 Clearance: cleared in ordinary-preview scope; census confirmation pending. No census headline change is claimed.
 
-### LINK-050: an ATL cache initializer retains BFME 1 callback and storage names
+### LINK-067: an ATL cache initializer retains BFME 1 callback and storage names
 
 Status: Cleared in ordinary-preview scope; data-owner reconciliation remains. Updated: 2026-10-26; inspected revision: `896af216804e`.
 Evidence / affected unit: `Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp`, 25 bytes at 0x007B556E. Native instructions zero 16 bytes at VA 0x00E09E50 and register 0x007B9B0A. `atlimage.cpp` already defines the 16-byte `ATL::CImage::s_cache`; `Rva007B6A00AtexitThunks.cpp` already defines the cleanup, which jumps to the rowed cache destructor at 0x00628BC5.
@@ -2541,7 +2541,7 @@ Completed: bind the initializer to those existing names, preserving the private 
 Remaining / next check: reconcile the stale four-byte `g_Va00E09E50` data row with the actual 16-byte ATL owner. The shadow data checker exits zero but reports the real `s_cache` spelling as one new `wrong-name` finding because the four-byte data row overrides the provisional data ledger. No data register or owner definition is edited here. All required hard checks pass; see `build/link-report.md` and `final-data-Rva00C6E31EInitializers.log` in the same evidence directory.
 Clearance: cleared in ordinary-preview scope; census confirmation pending. This is no data-debt retirement or image-ownership claim.
 
-### LINK-051: removing DieModule's unrowed field parser removes a live provider
+### LINK-068: removing DieModule's unrowed field parser removes a live provider
 
 Status: Blocked on field-parser consumer/provider reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
 Evidence / affected units: `DieModule.cpp` retains undefined `BitFlags<45>::s_bitNameList` and `INI::scanIndexList` through the unrowed port's parsing code. `InstantDeathBehavior.cpp` currently LINKS by referencing that port's static `DieMuxData::getFieldParse`.
