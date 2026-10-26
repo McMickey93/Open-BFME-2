@@ -3566,11 +3566,8 @@ Evidence / affected units:
   0 -> 34, 0 -> 31 and 0 -> 31.
 - `Code/GameEngine/Source/Common/Rva000647B5Ctor.cpp` named its class
   `Rva000647B5`, but retail's dtor 0x000647D4 for the same vptrs
-  (0x007C5A5C/0x007C5A24) is rowed as `Rva000647D4` in
-  `GameLogic/Object/LocomotorDerivedDtors.cpp`, so `??1Rva000647B5` stayed
-  unresolved. Completed: the ctor row and the factory 0x00042036
-  (`Rva00042036Factory.cpp`) are respelled on `Rva000647D4`; both stay exact.
-  Preview: LINKS 0 -> 25.
+  (0x007C5A5C/0x007C5A24) is rowed as `Rva000647D4`. The same respell (with
+  the factory 0x00042036) landed independently in faf38d4803.
 - `Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp`
   (0x007B556E): the same `CImage::s_cache`/`rva007B9B0A` repair landed
   independently in 748950b51b; see LINK-067.
