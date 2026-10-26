@@ -525,6 +525,17 @@ authored-byte previews or commit-title gains into a projected headline.
   `f995f30157`. The owning acceptance tool retires three queue rows. The Version storage,
   transfer order, native callees and existing alias remain unchanged.
   Other consumers and class-wide closure remain open; no new census gain is claimed.
+- **Skirmish pointer owner repaired (2026-10-26, base `c63ad61ed9`):**
+  [The verified four-byte owner](../reverse/attempt_support/skirmish-game-info-data-owner-20261026.md)
+  reconciles 24 declarations in 23 consumers with the existing menu definition.
+  The cohort passes 729 functions, 13 data rows and 100 EXACT EH graphs; one
+  unused declaration's removal preserves another 39 rows and four EH graphs.
+  Full non-debug COFF comparison proves no code/exception change beyond the
+  intended data-symbol binding. The 24-unit ordinary preview improves from
+  0/24 to 22/24, restoring 64,163 already-censused authored bytes against
+  `763dc8759f`. Recorder's consolidation diagnostics and the menu owner's
+  other dependencies remain. Existing shadow data/identity findings are
+  retained and qualified in the handoff. No new census or full-image claim.
 - **Remaining / next check:** resolve the real existing owner, parameter types,
   ABI and data ownership from native references; reconcile canonical headers
   with implementations and consumers as a batch. Verify all affected rows and
