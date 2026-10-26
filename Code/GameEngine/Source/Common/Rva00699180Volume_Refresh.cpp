@@ -57,8 +57,7 @@ public:
 	char m_pad1B8[0x1C4 - 0x1B8];
 };
 
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
-extern "C" void *memset(void *dst, int v, unsigned int n);
+#include <string.h>
 
 // g_00DB3F64: VA 0x00DB3F64 (.data); retail bytes are six float 1.0 values.
 float g_00DB3F64[6] = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
