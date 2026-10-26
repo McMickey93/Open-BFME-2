@@ -236,7 +236,19 @@ typedef char BFMERetailKeyboardSizeCheck[ sizeof( Keyboard ) == 0xe1c ? 1 : -1 ]
 typedef char BFMERetailDirectInputKeyboardSizeCheck[ sizeof( DirectInputKeyboard ) == 0xe24 ? 1 : -1 ];
 
 #include "W3DDevice/GameClient/W3DGameClient.h"
-#include "W3DDevice/GameClient/W3DStatusCircle.h"
+// This unit only uses the static color operation, not an instance layout.
+// Its dirty byte is the existing data-ledger owner at RVA 0x009E207C.
+extern unsigned char g_trackDirty;
+class W3DStatusCircle
+{
+public:
+	static void setColor(Int red, Int green, Int blue)
+	{
+		g_trackDirty = true;
+		m_diffuse = blue + (green << 8) + (red << 16);
+	}
+	static Int m_diffuse;
+};
 #include "W3DDevice/GameClient/W3DScene.h"
 #include "W3DDevice/GameClient/W3DShadow.h"
 #include "W3DDevice/GameClient/heightmap.h"
@@ -326,7 +338,6 @@ Drawable *W3DGameClient::friend_createDrawable( const ThingTemplate *thingTempla
 
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
-// ?W3DGameClient::addScorch present-unmatched
 void W3DGameClient::addScorch(const Coord3D *pos, Real radius, Scorches type)
 {
 	if (TheTerrainRenderObject) 
@@ -345,7 +356,6 @@ public:
 	Drawable *newDrawable(const ThingTemplate *tmplate, DrawableStatus statusBits, Int drawableID);
 };
 
-// ?W3DGameClient::createRayEffectByTemplate present-unmatched
 void W3DGameClient::createRayEffectByTemplate( const Coord3D *start, 
 																		 const Coord3D *end, 
 																		 const ThingTemplate* thingTemplate )
@@ -477,8 +487,4 @@ void W3DGameClient::notifyTerrainObjectMoved(Object *obj)
 	}
 
 }  // end setTimeOfDay
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?m_needUpdate@W3DStatusCircle@@1_NA=?g_trackDirty@@3EA")
 
