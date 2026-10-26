@@ -575,6 +575,19 @@ class LinkGuardTests(unittest.TestCase):
         self.assertIn("?t@@YAXXZ", index["strong"])
         self.assertNotIn("?new@@YAXXZ", index["references"]["referenced"])
 
+    def test_a_unit_merged_since_the_census_defines_nothing(self):
+        # GameWindow.cpp absorbed GameWindowRva0031468CDtor.cpp after the census; that
+        # unit's census object still defined ??1Rva0031468C and read as a duplicate.
+        index = self.index()
+        with tempfile.TemporaryDirectory() as tmp:
+            g = T.LinkGuard(self.TU, root=tmp, index=index, truth=object(),
+                            rank={"t.obj": 0, "a.obj": 1, "b.obj": 2})   # the next census links no x.obj
+            self.assertIsNone(g.prepare([self.TU, self.B]))
+            view = g.view(Path("merged.obj"), {0})
+        self.assertEqual(set(view["strong"]), {"?a@@YAXXZ", "?b@@YAXXZ"})
+        self.assertEqual(view["comdat"]["?inl@@YAXXZ"], [(1, "d1", "retail")])
+        self.assertEqual(view["objects"][0], "merged.obj")
+
     def merge(self, guard, links):
         """_merge of T + A + B with every text matching; `links(files)` says
         whether the merged object of those files links."""

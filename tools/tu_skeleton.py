@@ -682,7 +682,9 @@ class LinkGuard:
     candidate text that keeps every matched row must also link as one object by
     tools/link_check.py's census rules: the Verifier's object of that text takes
     the link-order place of its earliest census unit, every unit it absorbs
-    leaves the index (their definitions are its own now), and it must have no
+    leaves the index (their definitions are its own now) with every census object
+    the next census does not link (link_check.link_rank, code and data ledgers:
+    a unit merged since the census defines nothing), and it must have no
     unresolved name, duplicate, losing COMDAT copy, wrong selection or
     hard-coded address, nor a new COMDAT copy that breaks another unit's link
     (link_check --new-variants' rule). Without the census index a merge that
@@ -691,6 +693,7 @@ class LinkGuard:
     def __init__(self, tu, root=ROOT, index=None, truth=None, rank=None):
         self.tu, self.root = tu, Path(root)
         self.index, self.truth, self.rank = index, truth, rank
+        self.gone = set()
         self._status, self.touched, self.previous, self.cache = None, None, {}, {}
 
     def status(self):
@@ -739,8 +742,12 @@ class LinkGuard:
         outside = [f for f in self.linked(files) if self.position(f) is None]
         if outside:
             return "census-linked unit(s) missing from the census index: " + ", ".join(outside[:5])
-        # one pass over the index: the names each merge file's object holds, and its COMDAT copies
-        want = {p for f in files if (p := self.position(f)) is not None}
+        if self.rank is not None:
+            self.gone = {p for p, name in enumerate(self.index["objects"])
+                         if name not in self.rank and LC.in_census(self.index, name)}
+        # one pass over the index: the names each merge file's (and gone unit's) object holds,
+        # and the merge files' COMDAT copies
+        want = {p for f in files if (p := self.position(f)) is not None} | self.gone
         self.touched = {table: collections.defaultdict(set) for table, _ in LINK_TABLES}
         for table, at in LINK_TABLES:
             for name, entries in self.index[table].items():
@@ -749,14 +756,16 @@ class LinkGuard:
                         self.touched[table][at(entry)].add(name)
         for name, copies in self.index["comdat"].items():
             for p, digest, _ in copies:
-                if p in want:
+                if p in want and p not in self.gone:
                     self.previous.setdefault(p, {}).setdefault(name, set()).add(digest)
         return None
 
     def view(self, obj, places):
-        """The census index with the objects at `places` gone and `obj` at the
-        first of them; the reference graph is copied (check_object adds to it)."""
+        """The census index with the objects at `places` and every gone unit's
+        removed and `obj` at the first of `places`; the reference graph is
+        copied (check_object adds to it)."""
         index, out = self.index, dict(self.index)
+        first, places = min(places, default=None), set(places) | self.gone
         for table, at in LINK_TABLES:
             names = set().union(*(self.touched[table].get(p, ()) for p in places))
             if names:
@@ -768,8 +777,8 @@ class LinkGuard:
                     else:
                         del out[table][name]
         out["objects"] = list(index["objects"])
-        if places:
-            out["objects"][min(places)] = obj.name
+        if first is not None:
+            out["objects"][first] = obj.name
         graph = index.get("references")
         if isinstance(graph, dict) and isinstance(graph.get("edges"), dict):
             out["references"] = dict(graph, edges=dict(graph["edges"]), referenced=set(graph["referenced"]))
