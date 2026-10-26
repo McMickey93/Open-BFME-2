@@ -190,7 +190,7 @@ private:
 struct GlobalData2
 {
 	unsigned char m_pad000[0x68];
-	bool m_68;
+	bool m_enableBehindBuildingMarkers;
 	unsigned char m_pad069[0x9A5 - 0x69];
 	bool m_showSelectedUnitMarker;
 	unsigned char m_pad9a6[0x9BD - 0x9A6];
@@ -289,7 +289,7 @@ AptCreateAHero::AptCreateAHero(void *context)
 {
 	m_42c = TheGlobalDataView->m_showObjectHealth;
 	m_42d = TheGlobalDataView->m_D45;
-	m_42e = TheGlobalDataView->m_68;
+	m_42e = TheGlobalDataView->m_enableBehindBuildingMarkers;
 	m_takePicture = false;
 	m_rotateLeft = false;
 	m_rotateRight = false;
@@ -301,7 +301,7 @@ AptCreateAHero::AptCreateAHero(void *context)
 	TheGlobalDataView->m_showObjectHealth = false;
 	TheGlobalDataView->m_showSelectedUnitMarker = false;
 	TheGlobalDataView->m_D45 = true;
-	TheGlobalDataView->m_68 = false;
+	TheGlobalDataView->m_enableBehindBuildingMarkers = false;
 	s_instance = this;
 	m_pageM = new Rva005B6B93(this);
 	m_pageC = new Class((Rva005B3676Owner *)this);
