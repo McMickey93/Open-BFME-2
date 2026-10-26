@@ -324,3 +324,14 @@ another worker holds that source file. The refreshed merge dry-run accepted
 rejected after the split changed TU composition. Apply the latest dry-run only
 after this split batch is committed, then record any remaining donor failures
 from a fresh plan.
+
+## ReplaceObjectUpdate.cpp allocation check — 2026-10-26
+
+The allocated TU passed `--check-tu`; its merge dry run accepted no donors.
+`ReplaceObjectUpdateCtor.cpp` failed with C2511 (constructor declaration not
+found), `ReplaceObjectUpdateXfer.cpp` and `ReplaceObjectUpdatePoolKey.cpp`
+failed with C2039 (missing class members), `Rva004B2A9D.cpp`,
+`ReplaceObjectUpdateModuleDataCtor.cpp`, and `ReplaceObjectUpdateModuleDataDtor.cpp`
+failed on incomplete `ReplaceObjectUpdateModuleData`/member types, and
+`ReplaceObjectUpdateFieldParse.cpp` failed with C2953 (`_STL::allocator`
+already defined). No rejected donor was changed.

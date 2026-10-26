@@ -241,12 +241,6 @@ int Rva0039B81DGet(void)
 	return (int)"ScoreKeeper::PerFrameStats";
 }
 
-// ?Rva004B29B8Get@@YAHXZ @ 0x004B29B8: verified existing getter.
-int Rva004B29B8Get(void)
-{
-	return (int)"ReplaceObjectUpdate";
-}
-
 // ?Rva004C07ABGet@@YAHXZ @ 0x004C07AB: verified existing getter.
 int Rva004C07ABGet(void)
 {

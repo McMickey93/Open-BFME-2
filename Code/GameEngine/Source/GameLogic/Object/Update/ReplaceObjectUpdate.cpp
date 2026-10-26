@@ -316,9 +316,113 @@ private:
 	_STL::vector<AsciiString> m_vec; // +4
 };
 
+// Existing getters rehomed after naming their verified factory providers.
+// Integer return representation is retained; function addresses now relocate.
+class Rva0009FD78;
+
+ Rva0009FD78 *__stdcall Rva0008F925Create(void *);
+
+class Rva0009FDBD;
+
+ Rva0009FDBD *__stdcall Rva0008F95FCreate(void *);
+
+class Rva000A0891;
+
+ Rva000A0891 *__stdcall Rva0008F6E1Create(void *);
+
+class Rva000A08D9;
+
+ Rva000A08D9 *__stdcall Rva0008F71BCreate(void *);
+
+class Rva000A0CE7;
+
+ Rva000A0CE7 *__stdcall Rva0008FAF5Create(void *);
+
+class Rva000A0D3A;
+
+ Rva000A0D3A *__stdcall Rva0008FB2FCreate(void *);
+
+class Rva000A12FE;
+
+ Rva000A12FE *__stdcall Rva0008FB69Create(void *);
+
+class Rva000A1346;
+
+ Rva000A1346 *__stdcall Rva0008FBA3Create(void *);
+
+class Rva000A15FE;
+
+ Rva000A15FE *__stdcall Rva0008FBDDCreate(void *);
+
+class Rva000A1646;
+
+ Rva000A1646 *__stdcall Rva0008FC17Create(void *);
+
+class Rva000A2137;
+
+ Rva000A2137 *__stdcall Rva0008FA81Create(void *);
+
+class Rva000A217F;
+
+ Rva000A217F *__stdcall Rva0008FABBCreate(void *);
+
+class Rva000A2670;
+
+ Rva000A2670 *__stdcall Rva0008F999Create(void *);
+
+class Rva000A26C7;
+
+ Rva000A26C7 *__stdcall Rva0008F9D3Create(void *);
+
+class Rva000A26F7;
+
+ Rva000A26F7 *__stdcall Rva0008FA0DCreate(void *);
+
+class Rva000A270F;
+
+ Rva000A270F *__stdcall Rva0008FA47Create(void *);
+
+class Rva000A3307;
+
+ Rva000A3307 *__stdcall Rva0008F8B1Create(void *);
+
+class Rva000A334F;
+
+ Rva000A334F *__stdcall Rva0008F8EBCreate(void *);
+
+class Rva000A3DE3;
+
+ Rva000A3DE3 *__stdcall Rva0008F7C9Create(void *);
+
+class Rva000A3E2B;
+
+ Rva000A3E2B *__stdcall Rva0008F803Create(void *);
+
+class Rva000A435C;
+
+ Rva000A435C *__stdcall Rva0008F83DCreate(void *);
+
+class Rva000A43A4;
+
+ Rva000A43A4 *__stdcall Rva0008F877Create(void *);
+
+class Rva000A4916;
+
+ Rva000A4916 *__stdcall Rva0008F755Create(void *);
+
+class Rva000A4969;
+
+ Rva000A4969 *__stdcall Rva0008F78FCreate(void *);
+
 // tu-skeleton: 0x004B2987 49B ??0ReplaceObjectUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x004B29B8 6B ?Rva004B29B8Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters2.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/ConstIntGetters2.cpp
+
+// ?Rva004B29B8Get@@YAHXZ @ 0x004B29B8: verified existing getter.
+int Rva004B29B8Get(void)
+{
+	return (int)"ReplaceObjectUpdate";
+}
 
 // tu-skeleton: 0x004B29BE 32B ??1Rva004B29BE@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp (not merged yet)
 
@@ -327,6 +431,8 @@ private:
 // tu-skeleton: 0x004B29FF 69B ?getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x004B2A44 28B ??_GRva004B29BE@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva004B2A60.cpp
 
@@ -338,12 +444,6 @@ void Rva004B2A60::rva004B2A60(Object *obj)
 	obj->attemptDamage((DamageInfo *)&info);
 	TheGameLogic->destroyObject(obj);
 }
-
-// tu-skeleton: 0x004B2A9D 39B ?rva004B2A9D@Rva004B2A9D@@QAEPAHXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva004B2A9D.cpp (not merged yet)
-
-// tu-skeleton: 0x004B2AC4 61B ??0ReplaceObjectUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004B2B01 19B ?rva004B2B01@Rva004B2B01@@QAEXPBVModuleData@@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE24.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateEntryDtor.cpp
 
@@ -368,10 +468,6 @@ Rva004B2B2F::Rva004B2B2F()
 Rva004B2B2F::~Rva004B2B2F()
 {
 }
-
-// tu-skeleton: 0x004B2B64 128B ?Rva004B2B64_ParseReplaceObject@INI@@SAXPAV1@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateFieldParse.cpp (not merged yet)
-
-// tu-skeleton: 0x004B2BE4 28B ??_GRva004B2B2F@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdate.cpp
 
@@ -426,6 +522,30 @@ void ReplaceObjectUpdate::rva004B2C00(Object *obj, Rva004B2A9D *entry)
 	rva004B2A60(obj);
 }
 
+// tu-skeleton: 0x004B2A9D 39B ?rva004B2A9D@Rva004B2A9D@@QAEPAHXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva004B2A9D.cpp (not merged yet)
+
+// tu-skeleton: 0x004B2AC4 61B ??0ReplaceObjectUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004B2B01 19B ?rva004B2B01@Rva004B2B01@@QAEXPBVModuleData@@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE24.cpp (not merged yet)
+
+// tu-skeleton: 0x004B2B64 128B ?Rva004B2B64_ParseReplaceObject@INI@@SAXPAV1@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateFieldParse.cpp (not merged yet)
+
+// tu-skeleton: 0x004B2BE4 28B ??_GRva004B2B2F@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
+
 // tu-skeleton: 0x004B2C9A 142B ??1ReplaceObjectUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004B2E5D 28B ??_GReplaceObjectUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E9AF 13B ?Rva0078E9AFClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Dxx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E9BC 10B __ehhandler$?getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E9D8 10B uw_0078e9d8 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateFieldParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E9E2 10B __ehhandler$?Rva004B2B64_ParseReplaceObject@INI@@SAXPAV1@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateFieldParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E9EC 8B Unwind@00b8e9ec -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E9F4 14B uw_0078e9f4 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+
+// tu-skeleton: 0x0078EA02 10B __ehhandler$??1ReplaceObjectUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
