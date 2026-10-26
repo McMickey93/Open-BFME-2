@@ -8217,3 +8217,8 @@ Code/GameEngine/Source/GameNetwork/BfmeGameBrowserVJQ.cpp|member|BfmeThingVJQ|m_
 Code/GameEngine/Source/Common/Rva00595C79Permuted.cpp|class||Rva00595C79Address,03229d57b61e473d0038680b,gpt-6.1-sol,w6-10261617-7,w-06f458dbecf5,2026-10-26
 Code/GameEngine/Source/Common/Rva0042C936.cpp|local|Rva0042C936::assign|q,48babb2c4969a92a291ff185,gpt-6.1-sol,w6-10261617-11,w-06f458dbecf5,2026-10-26
 Code/GameEngine/Source/Common/Rva0042C936.cpp|param|reset|p,e2a191062379ff869d52785a,gpt-6.1-sol,w6-10261617-11,w-06f458dbecf5,2026-10-26
+Code/GameEngine/Source/Common/Rva002BFF5A.cpp|function|0x002BFF5A|rva002BFF5A,40693e9c028de5a71c24da32,gpt-6.1-sol,w5-10261627-5,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva004DF4B5.cpp|param|Rva004DF4B5::rva004DF4B5|p,3c079685a01009694be3f21a,gpt-6.1-sol,w5-10261627-6,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/GameLogic/Map/TerrainLogicRva0028449F.cpp|class||Rva0028449FRecordView,6834d7a68f6ded9b69d76b24,gpt-6.1-sol,w5-10261627-8,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva002B280CCheck.cpp|function|0x002B280C|rva002B280C,426de61fe0fb7e4703f88b47,gpt-6.1-sol,w5-10261627-9,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva0044E7A8Check.cpp|param|Rva0044E7A8::rva0044E7A8|arg,76a1a20ddbf111169b6e8c59,gpt-6.1-sol,w5-10261627-10,w-f0819d403c17,2026-10-26
