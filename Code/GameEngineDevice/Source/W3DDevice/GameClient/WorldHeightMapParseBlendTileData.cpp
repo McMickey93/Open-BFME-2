@@ -17,7 +17,7 @@
 #include <windows.h>
 #include "ascii_string.h"
 enum ErrorCode { ERROR_CORRUPT_FILE_FORMAT=0xDEAD0005 };
-void *__cdecl operator new[](unsigned int);
+#include <new>
 class DataChunkInput { public: int readInt(); unsigned char readByte(); float readReal(); AsciiString readAsciiString(); void readArrayOfBytes(char *,int); };
 struct DataChunkInfo { AsciiString label,parent; unsigned short version; };
 class GlobalData { public: char opaque[0x44]; int use3WayTerrainBlends; };
