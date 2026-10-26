@@ -30,12 +30,7 @@ class ExperienceTrackerAutoResolve {public:ExperienceTrackerAutoResolve(LivingWo
 class Rva005DB023 {public:void rva005DB023();};
 class ThingFactory {public:const ThingTemplate *findTemplate(const AsciiString &);};
 extern ThingFactory *TheThingFactory;
-class Rva0007DF07 {
-public:
- __forceinline Rva0007DF07():references(0){}
- virtual ~Rva0007DF07(){}
- int references;
-};
+#include "../../../../../Include/Common/Rva0007DF07.h"
 struct AutoResolveTargetHolder {
  TargetRef00217D4C *value;
  AutoResolveTargetHolder():value(0){}

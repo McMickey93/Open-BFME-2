@@ -11,8 +11,7 @@
 // Native5E38EB..5E3947 complete92B and WB15F6AA0. Owner from
 // admitted dtor5E362F and vtableC77BD0; Impl allocation16B from direct native call5E3753.
 #include "ascii_string.h"
-struct RvaSmallVtableZeroBase {void *m_04;};
-class Rva0007DF07:public RvaSmallVtableZeroBase {public:virtual ~Rva0007DF07(){}};
+#include "../../../../Include/Common/Rva0007DF07.h"
 class Rva005EEE5A:public Rva0007DF07 {public:Rva005EEE5A();bool active;};
 namespace StrategicInGameUI {class RegionDetailsTerritoryPage {public:class Impl;};}
 namespace StrategicHUD {class RegionDetailsTerritoryMovieClip {public:class Impl;RegionDetailsTerritoryMovieClip(unsigned,const AsciiString&);virtual ~RegionDetailsTerritoryMovieClip();private:void *implementation;};}
