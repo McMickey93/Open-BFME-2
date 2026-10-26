@@ -22,13 +22,7 @@
 //   constructing. Upgrade-flavored callees (calcCostToBuild,
 //   bfmeCanAffordUpgrade) in the 0x49D867 owner.
 
-class AsciiString
-{
-public:
-	~AsciiString() throw();
-
-	void *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class Rva0049D1B1
 {
@@ -60,26 +54,26 @@ private:
 
 // ??0Rva0049D1B1@@QAE@XZ @0x0049D162
 Rva0049D1B1::Rva0049D1B1()
+	: m_04(0)
+	, m_08(0)
+	, m_0C(0)
+	, m_10(1)
+	, m_14(0.0f)
+	, m_18(0.0f)
+	, m_1C(0)
+	, m_20(0)
+	, m_24(0)
+	, m_28(0)
+	, m_2C(0)
+	, m_30(0)
+	, m_34(0)
+	, m_38(0)
+	, m_3C(0)
+	, m_name()
+	, m_44(0)
+	, m_48(0)
+	, m_4C(0)
 {
-	m_04 = 0;
-	m_08 = 0;
-	m_0C = 0;
-	m_10 = 1;
-	m_14 = 0.0f;
-	m_18 = 0.0f;
-	m_1C = 0;
-	m_20 = 0;
-	m_24 = 0;
-	m_28 = 0;
-	m_2C = 0;
-	m_30 = 0;
-	m_34 = 0;
-	m_38 = 0;
-	m_3C = 0;
-	m_name.m_data = 0;
-	m_44 = 0;
-	m_48 = 0;
-	m_4C = 0;
 }
 
 // ??1Rva0049D1B1@@UAE@XZ @0x0049D1B1

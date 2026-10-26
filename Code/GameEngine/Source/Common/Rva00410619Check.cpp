@@ -19,10 +19,7 @@ struct AsciiHeader
 	char data[1];
 };
 
-struct AsciiString
-{
-	AsciiHeader *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class GameWindow
 {
@@ -50,23 +47,19 @@ private:
 
 void Rva0045F0A0::process(Rva0045F0A0Input *arg)
 {
-	AsciiHeader *asciiHeader = m_name.m_data;
+	AsciiHeader *asciiHeader = *(AsciiHeader **)&m_name;
 	unsigned int len;
 	if (asciiHeader != 0)
 		len = asciiHeader->length;
 	else
 		len = 0;
-	AsciiHeader *p2 = *(AsciiHeader * volatile *)&m_name.m_data;
+	AsciiHeader *p2 = *(AsciiHeader * volatile *)&m_name;
 	const char *b;
 	if (p2 != 0)
 		b = p2->data;
 	else
 		b = (char *)"";
-	const char *a;
-	if (arg->m_10.m_data != 0)
-		a = arg->m_10.m_data->data;
-	else
-		a = (char *)"";
+	const char *a = arg->m_10.str();
 	if (strncmp(a, b, len) != 0)
 		return;
 	GameWindow *win = arg->m_14;

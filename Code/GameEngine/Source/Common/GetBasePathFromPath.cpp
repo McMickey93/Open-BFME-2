@@ -31,51 +31,8 @@ AsciiString GetExtensionFromFile(AsciiString fname);
 
 extern "C" void *memcpy(void *destination, const void *source, unsigned int count);
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	friend AsciiString GetBasePathFromPath(AsciiString path);
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-	StringBase() { m_data = 0; }
-	StringBase(const StringBase<T> &other);
-	StringBase(const T *str);
-	~StringBase() { releaseBuffer(); }
-
-public:
-	const T *reverseFind(T c) const;
-	T *getBufferForRead(int length);
-	const T *str() const { return m_data ? &m_data->data[0] : (const T *)""; }
-
-private:
-	void releaseBuffer();
-
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-
-	Header *m_data;
-};
-
-class AsciiString : public StringBase<char>
-{
-public:
-	AsciiString() : StringBase<char>() {}
-	AsciiString(const AsciiString &other) : StringBase<char>(other) {}
-	AsciiString(const char *text) : StringBase<char>(text) {}
-	~AsciiString() {}
-	const char *str() const { return StringBase<char>::str(); }
-	const char *reverseFind(char match) const;
-	char *getBufferForRead(int length) { return StringBase<char>::getBufferForRead(length); }
-	void __cdecl format(const char *format, ...);
-
-	static const AsciiString TheEmptyString;
-	friend AsciiString GetBasePathFromPath(AsciiString path);
-};
 
 AsciiString GetBasePathFromPath(AsciiString path)
 {
@@ -83,7 +40,7 @@ AsciiString GetBasePathFromPath(AsciiString path)
 	if (separator) {
 		int prefixLength = (int)(separator - path.str());
 		AsciiString base;
-		char *buffer = base.getBufferForRead(prefixLength);
+		char *buffer = ((StringBase<char> *)&base)->getBufferForRead(prefixLength);
 		memcpy(buffer, path.str(), prefixLength);
 		buffer[prefixLength] = 0;
 		return buffer;
@@ -146,7 +103,7 @@ AsciiString GetBaseFileFromFile(AsciiString fname)
 	if (separator) {
 		int prefixLength = (int)(separator - fname.str());
 		AsciiString base;
-		char *buffer = base.getBufferForRead(prefixLength);
+		char *buffer = ((StringBase<char> *)&base)->getBufferForRead(prefixLength);
 		memcpy(buffer, fname.str(), prefixLength);
 		buffer[prefixLength] = 0;
 		return buffer;

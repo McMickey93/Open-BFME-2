@@ -14,46 +14,8 @@
 
 extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	void releaseBuffer();
-public:
-	bool nextToken(StringBase<T> *out, const T *seps);
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-	friend class INI;
-	friend class AsciiString;
-
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-
-private:
-	Header *m_data;
-};
-
-class AsciiString : public StringBase<char>
-{
-public:
-	AsciiString() { m_data = 0; }
-	~AsciiString() { releaseBuffer(); }
-	bool isEmpty() const;
-	void clear();
-	const char *str() const
-	{
-		const char *text = (const char *)m_data;
-		if (text != 0)
-			text += 8;
-		else
-			text = "";
-		return text;
-	}
-};
 
 namespace _STL
 {
@@ -98,12 +60,7 @@ const char *INI::getNextTokenOrNull(const char *seps)
 		if (m_buffer.nextToken(&token, seps)) {
 			m_tokens.push_back(token);
 			AsciiString *finish = m_tokens.m_finish;
-			const char *result = (const char *)finish[-1].m_data;
-			if (result != 0)
-				result += 8;
-			else
-				result = "";
-			return result;
+			return finish[-1].str();
 		}
 		m_buffer.clear();
 	}

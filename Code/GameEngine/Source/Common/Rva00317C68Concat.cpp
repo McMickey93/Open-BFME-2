@@ -10,13 +10,7 @@ public:
 	virtual void _gap() const = 0;
 	virtual int getChars(T *dest) const = 0;
 };
-template <typename T> class StringBase
-{
-public:
-	void concat(const CharSource<T> &source);
-private:
-	void *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 // This view uses the external retail table throughout its lifetime; no
 // separate table for the partial method declarations belongs in the link.
 class __declspec(novtable) CharSourceSuffix : public CharSource<char>
@@ -34,13 +28,10 @@ public:
 private:
 	const char *m_arg;
 };
-class AsciiString : public StringBase<char>
-{
-};
 AsciiString &Rva00317C68Append(AsciiString &dst, const char *src)
 {
 	CharSourceSuffix tmp(src);
-	dst.concat(tmp);
+	((StringBase<char> *)&dst)->concat(tmp);
 	return dst;
 }
 

@@ -5731,7 +5731,6 @@ class_gate_allow	Code/GameEngine/Source/GameLogic/Object/Update/Rva005892F6.cpp	
 class_gate_allow	Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderAttackView.cpp	Coord3D	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Pathfinder/Rva002E916AFootprintCheck.cpp	ICoord2D	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Rva00194810Split_Rva0032abda.cpp	AsciiString	1
-class_gate_allow	Code/GameEngine/Source/GameLogic/ScriptEngine/LuaScriptBindingsLuaAO1.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_appendMessage_Rva00341350AdjustVariableForwarder.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/CaveSystem.cpp	Snapshot	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/GameLogicDestructor.cpp	GameLogic	1

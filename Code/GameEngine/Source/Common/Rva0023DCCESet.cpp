@@ -10,20 +10,8 @@
 
 class Rva0023DC8E;
 
-template <typename T> class StringBase
-{
-public:
-	bool isEmpty() const;
-	void set(const StringBase<T> &other);
-private:
-	void releaseBuffer();
-	T *m_data;
-	friend class Rva0023DC8E;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-class AsciiString : public StringBase<char>
-{
-};
 
 struct OpaqueRefElement4
 {
@@ -65,12 +53,12 @@ void Rva0023DC8E::rva0023DC8E(const AsciiString &value)
 	if (value.isEmpty() || TheWritableGlobalData->m_flag9AD)
 	{
 		m_flag = 0;
-		((StringBase<char> *)&m_string)->releaseBuffer();
+		((StringBase<char> *)&m_string)->clear();
 	}
 	else
 	{
 		m_flag = 1;
-		((StringBase<char> *)&m_string)->set(value);
+		((StringBase<char> *)&m_string)->set(*(const StringBase<char> *)&value);
 	}
 }
 // ?TheWritableGlobalData@@3PAVGlobalData@@A: the global at VA 0xdfe758.

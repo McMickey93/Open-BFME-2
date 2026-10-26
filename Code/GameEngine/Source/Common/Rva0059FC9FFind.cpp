@@ -12,33 +12,13 @@
 // 0x0059F340, compare 0x000069D6, release 0x00036410, increment 0x00024250,
 // dtor 0x00416088. Callers 0x005A57BA/0x005A61C6.
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	StringBase() : m_data(0) {}
-	StringBase(const StringBase<T> &other);
-	void releaseBuffer() throw();
-public:
-	int compare(const StringBase<T> &other) const throw();
-	__forceinline ~StringBase() { releaseBuffer(); }
-private:
-	void *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 // Existing public narrow teardown spelling resolves to the verified
 // 133-byte releaseBuffer worker at RVA 0x36410. Wide teardown is unchanged.
 template <> StringBase<char>::~StringBase();
 
 
-class AsciiString : public StringBase<char>
-{
-public:
-	__forceinline AsciiString(const AsciiString &other) : StringBase<char>(other) {}
-	__forceinline AsciiString() {}
-	__forceinline ~AsciiString() {}
-	AsciiString &operator=(const AsciiString &other);
-};
 
 class Rva0059F340AsciiField
 {
@@ -171,7 +151,7 @@ int Rva0059FC9F::rva0059FC9F()
 	do
 	{
 		MapNode *mn = (MapNode *)node;
-		unsigned char isEqual = (unsigned char)(mn->m_field14->get().compare((const StringBase<char> &)rec.m_04.m_08) == 0);
+		unsigned char isEqual = (unsigned char)(mn->m_field14->get().compare(rec.m_04.m_08) == 0);
 		if (isEqual != 0)
 		{
 			out = mn->m_id10;

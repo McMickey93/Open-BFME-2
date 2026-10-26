@@ -4,13 +4,9 @@
 // Evidence: this+0x08/+0x0C as begin/end into Rva000BD22FFind at 0xBD22F; cmp against end plus setne;
 // chain lane via 0xBD22F; same last-first locals shape as 0x59E2FD.
 // ?addObjectType@ObjectTypes@@QAEXABVAsciiString@@@Z at 0x00376B50 (32B).
-template <typename T> class StringBase {
-	void *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 StringBase<char> *Rva000BD22FFind(StringBase<char> *first, StringBase<char> *last, const StringBase<char> &val);
 
-class AsciiString : public StringBase<char> {
-};
 
 namespace _STL {
 template <typename T> class allocator {
@@ -46,7 +42,7 @@ bool ObjectTypes::isInSet(const AsciiString &val) const
 {
 	StringBase<char> *last = m_end;
 	StringBase<char> *first = m_begin;
-	return Rva000BD22FFind(first, last, val) != last;
+	return Rva000BD22FFind(first, last, *(const StringBase<char> *)&val) != last;
 }
 
 bool Rva00376A62::rva00376A84(const void *o)
