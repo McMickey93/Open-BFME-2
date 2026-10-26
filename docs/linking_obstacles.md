@@ -2216,3 +2216,18 @@ Census confirmation: n/a.
   string in game.dat) now leaves `HackInternetAIUpdate::hackInternet`
   unresolved; that unit did not link before either.
 - **Census confirmation:** pending for all three units.
+
+  b313329af6 renamed the four numpunct slot rows in place to the real `do_truename` /
+  `do_falsename` names (narrow pair in `stlport_narrow_string_range_ctors.cpp`, wide pair in
+  `Rva00017B00StringInit.cpp`, which drops `/EHs-c-` so `return <static>;` emits retail's
+  return-value flag), still reading the existing address-named storage, and removed the
+  unrowed duplicates from `stlport_numpunct_virtuals.cpp`: that unit now LINKS (0 -> 44 B).
+  The data-lane rename of the statics was not needed for the link.
+- **Remaining / next check:** (1) 0x00019D90 (wide `moneypunct` string getters) is the same
+  shape as the wide truename pair and can become `do_curr_symbol@?$moneypunct@G$00` in
+  `Rva00017B00StringInit.cpp`, retargeting the 6 wide hatches in the moneypunct ctor/dtor
+  units. (2) Give the 12-byte statics their STLport names (`_M_truename` / `_M_falsename`,
+  monetary.cpp's file-static empty strings) through the data lane; `data_check` (shadow)
+  already flags `g_009DEEF0Static` and siblings as duplicate-def / wrong-name. (3) The nine
+  narrow and six wide moneypunct alias hatches need alias rows to go.
+- **Census confirmation:** awaiting the next census for 437bc30603 and b313329af6.
