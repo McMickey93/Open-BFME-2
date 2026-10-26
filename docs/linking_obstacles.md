@@ -2148,6 +2148,9 @@ Census confirmation: awaiting next census.
 
 ### LINK-060: one address rowed twice; the non-linking copy is an over-claim
 Status: Open (10 retired, leads below). Updated: 2026-10-26; inspected revision: b57c128806; index d1f046749a.
+
+### LINK-060: one address rowed twice; the non-linking copy is an over-claim
+Status: Open (11 retired, leads below). Updated: 2026-10-26; inspected revision: b1071e9a26; index d1f046749a.
 Evidence / affected units: a scan of `reverse/functions.csv` for `matched` rows sharing a `target_rva`
 (notes without alias/ICF/fold/dup-of/object-symbol) against `reverse/link_status.csv` finds addresses
 where one row's unit links and a second row's unit never did. The second row is usually an older
@@ -2167,6 +2170,9 @@ Completed (each `./build.sh` exact on the surviving owner, link_check LINKS for 
 - 0x00502645 `StlSweepR3Rva00502645.cpp` (owner `StlportIntMapInsertFamily.cpp`) eab974b6f3 and
   0x004F715B `StlSweepR3Rva004F715B.cpp` (owner `stlport_pop_heap_rva004f7e61.cpp`) 3e5be5935c; the
   pins only they named were dropped.
+- 0x0020F0B8 `StlSweepW5Rva0020F0B8.cpp` (owner `ParticleSystemDebugDisplay.cpp`, pair<AsciiString, int>
+  ctor; ICF aliases in `Rva002214A6Dtor.cpp`, `ParticleSystemManagerRva001FCF11.cpp`) c1775868b0; its
+  element copy-ctor pin dropped.
 Remaining / next check:
 - 0x0057621A `Rva0057621ACtor.cpp` (4 rows): owner `Rva00575F38Dtor.cpp` rows the Impl ctor and
   funclets $L1049..$L1055, but `__ehhandler` 0x0079B403 and funclets 0x0079B3ED/0x0079B3F8 are rowed
@@ -2178,10 +2184,16 @@ Remaining / next check:
   `Rva005CD7DAMethod.cpp`, gen-alias `??1Wrap2000576C4B` in `Rva00576C4BDtor.cpp`, pin
   `??1Rva005CD7BDHolder`); it is most likely `??1Rva005CD7BD` (ctor 0x005CD7BD sits just before).
   Naming decision first, then respell the users and rehome all three EH rows together.
-- 0x0052BBD7 `StlSweepR3Rva0052BBD7.cpp`: owner `FamilyDeletingDtors11.cpp` (`??_GRva004E364F`) links;
-  ready to retire like 0x004F715B, but the unit was locked by another agent this round.
 - 0x00217607 `GameFont.cpp` `Rva004738A0::set` (BFME 1 donor, unused in the unit): the STLport pair
-  ctor in `Rva005C6CCC.cpp` links; ready to retire, but GameFont.cpp was locked by another agent.
+  ctor in `Rva005C6CCC.cpp` links; ready to retire, but GameFont.cpp was edited on master (6db0d6d013).
+- Now both copies link (other agents' LINK-035 repairs on master), so these are no longer over-claims
+  but a which-name decision: 0x0052BBD7 (10c7278d38), 0x00587752 (282446c955), 0x005F9813 (16e13794ee),
+  0x004F7D7F (392f9f6fe0).
+- Naming decisions (the non-linking copy carries the better name): 0x005481F9
+  `ObjectOrderQueue::setPatrolStartOrder` in `ObjectOrderQueue.cpp` vs linking `Rva00548117::rva005481F9`
+  (`Rva005481F9.cpp`); 0x0048C7BF address-named `Rva0048C7BF` copy in `FlammableUpdate.cpp` vs linking
+  `FlammableUpdate::rva0048C7BF` (`FlammableUpdateRva0048C7BF.cpp`) is ready to retire, but
+  FlammableUpdate.cpp was just consolidated on master (f41e95506b).
 - Not over-claims (genuine ICF folds of distinct functions; add a fold note, do not retire):
   0x001F81BF (ten default vector-holder ctors), 0x00313840 and 0x003140A4 (7B getters).
 - StlSweepR3 copies that now also link (LINK-035 repairs) duplicate placeholder rows:
