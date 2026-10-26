@@ -12,6 +12,24 @@
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 #define COORD3D_VIEW_INLINE
 #include "Coord3DCtorView.h"
+#include "../../../../Libraries/Include/Lib/Coord3D.h"
+#include "../../../../GameEngine/Source/Common/GameLogicObjectLookupView.h"
+#include "Lib/Coord3D.h"
+#define REAL_TO_INT_FLOOR(x) realFloor(x)
+#define REAL_TO_INT_CEIL(x) realCeil(x)
+#include "ascii_string.h"
+#define DEBUG_CRASH_REPORT(MESSAGE) \
+	do { \
+		if (_bfme_debugReportingEnabled()) { \
+			_bfme_debugRecordCallsite(1); \
+			reinterpret_cast<BfmeAwakenDebug *>(theDebug)->v60(); \
+			reinterpret_cast<BfmeAwakenDebug *>(theDebug)->v6c(0, 0, 0)->slot38(MESSAGE)->slot4C(2); \
+		} \
+	} while (0)
+#include "matrix3.h"
+#include "rendobj.h"
+#include "scene.h"
+#define TheBfmeAwakenDebug (*(BfmeAwakenDebug **)&theDebug)
 
 class Rva000E6AC0Base
 {
@@ -303,6 +321,442 @@ struct Rva000E912ATree
 	unsigned char m_pad5c[0xa0 - 0x5c];
 };
 
+typedef bool Bool;
+
+struct Rva000E72B3GlobalData
+{
+	unsigned char m_pad00[0x1c];
+	bool m_flag1c;
+};
+
+class GameLogic;
+
+extern GameLogic *TheGameLogic;
+
+struct Rva000E72B3Tree
+{
+	Real m_locationX;
+	Real m_locationY;
+	Real m_locationZ;
+	unsigned char m_pad0c[0x34];
+	Int m_treeType;
+	unsigned char m_pad44[0x58 - 0x44];
+	UnsignedInt m_drawableID;
+	Real m_pushAside;
+	Real m_pushAsideDelta;
+	Real m_pushAsideSin;
+	Real m_pushAsideCos;
+	UnsignedInt m_pushAsideSource;
+	UnsignedInt m_lastFrameUpdated;
+	unsigned char m_pad74[0xa0 - 0x74];
+};
+
+struct Rva000E72B3TypeData
+{
+	unsigned char m_pad00[0x10];
+	UnsignedInt m_framesToMoveOutward;
+};
+
+struct Rva000E72B3Type
+{
+	unsigned char m_pad00[0x20];
+	Rva000E72B3TypeData *m_data;
+	unsigned char m_pad24[0x5c - 0x24];
+};
+
+typedef short Short;
+
+extern "C" __declspec(dllimport) double floor(double);
+
+extern "C" __declspec(dllimport) double ceil(double);
+
+struct Rva000E7734GlobalData
+{
+	unsigned char m_pad00[0x1c];
+	bool m_flag1c;
+	bool m_flag1d;
+};
+
+struct Rva000E7734Template
+{
+	unsigned char m_pad00[0x108];
+	unsigned char m_kindOf;
+};
+
+class Thing
+{
+public:
+	const Coord3D *getUnitDirectionVector2D(void) const;
+
+	unsigned char m_pad00[4];
+	Rva000E7734Template *m_template;
+	unsigned char m_pad08[0x38 - 0x08];
+	Real m_x;
+	Real m_y;
+	Real m_z;
+	unsigned char m_pad44[0x74 - 0x44];
+	UnsignedInt m_id;
+	unsigned char m_pad78[0xb8 - 0x78];
+	Real m_majorRadius;
+};
+
+struct Rva000E7734Region
+{
+	Real lox;
+	Real loy;
+	Real hix;
+	Real hiy;
+};
+
+struct Rva000E7734TreeData
+{
+	char m_pad00[0x10];
+	UnsignedInt m_framesToMoveOutward;
+};
+
+struct Rva000E7734Type
+{
+	char m_pad00[0x20];
+	Rva000E7734TreeData *m_data;
+	char m_pad24[0x5c - 0x24];
+};
+
+struct Rva000E7734Tree
+{
+	Coord3D m_location;
+	char m_pad0c[0x34];
+	Int m_treeType;
+	char m_pad44[0x58 - 0x44];
+	UnsignedInt m_drawableID;
+	char m_pad5c[0x74 - 0x5c];
+	Int m_nextInPartition;
+	char m_pad78[0xa0 - 0x78];
+};
+
+struct Vec2
+{
+	Real x, y;
+};
+
+class ProxyClass
+{
+public:
+	class ProxyData
+	{
+	};
+};
+
+// Callees rowed under other class views: the 16-bit-count release 0x0061ED10
+// (TextureBaseClass::Release_Ref), the holder size getters 0x0013275A and
+// 0x00132784 (TextureBaseClass, a one-pointer view), and the packer's clear,
+// page lookup and result getter (0x00170EBC, 0x00171583, 0x00171625).
+class TextureBaseClass
+{
+public:
+	void Release_Ref();
+	int rva0013275A() const;
+	int rva00132784() const;
+};
+
+// One-pointer texture handles returned by value and released on scope exit.
+class BFME2ParticleTextureHandle
+{
+public:
+	~BFME2ParticleTextureHandle() { if (m_data) ((TextureBaseClass *)m_data)->Release_Ref(); }
+	ProxyClass::ProxyData *m_data;
+};
+
+class TextureAsset
+{
+public:
+	static BFME2ParticleTextureHandle Get(const char *name, Int a, Int b);
+};
+
+class HierarchyPrototype : public ProxyClass::ProxyData
+{
+};
+
+template <class T> class RefCountPtr
+{
+public:
+	~RefCountPtr() { if (m_data) ((TextureBaseClass *)m_data)->Release_Ref(); }
+	const RefCountPtr &operator=(const RefCountPtr &other);
+	T *m_data;
+};
+
+class AssetReference : public RefCountPtr<HierarchyPrototype>
+{
+};
+
+class Rva00132D0FHolder : public RefCountPtr<HierarchyPrototype>
+{
+public:
+	using RefCountPtr<HierarchyPrototype>::operator=;
+	const TextureBaseClass *texture() const { return (const TextureBaseClass *)this; }
+};
+
+class Rva00170EBC
+{
+public:
+	void rva00170EBC(Bool shadow);
+};
+
+class Rva00171583
+{
+public:
+	Bool rva00171583(const unsigned int &texture, Vec2 *topLeft, Vec2 *bottomRight);
+};
+
+class Rva00171024
+{
+public:
+	AssetReference rva00171625();
+};
+
+class TexturePacker
+{
+public:
+	void rva00171067(const BFME2ParticleTextureHandle &texture);
+	Rva00170EBC *clearView() { return (Rva00170EBC *)this; }
+	Rva00171583 *lookupView() { return (Rva00171583 *)this; }
+	Rva00171024 *resultView() { return (Rva00171024 *)this; }
+private:
+	unsigned char m_bytes[0x28];
+};
+
+class BfmeAwakenLog
+{
+public:
+	virtual void slot00(); virtual void slot04(); virtual void slot08(); virtual void slot0C();
+	virtual void slot10(); virtual void slot14(); virtual void slot18(); virtual void slot1C();
+	virtual void slot20(); virtual void slot24(); virtual void slot28(); virtual void slot2C();
+	virtual void slot30(); virtual void slot34();
+	virtual BfmeAwakenLog *slot38(const char *text);
+	virtual void slot3C(); virtual void slot40(); virtual void slot44(); virtual void slot48();
+	virtual void slot4C(int report);
+};
+
+class BfmeAwakenDebug
+{
+public:
+	virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
+	virtual void v10(); virtual void v14(); virtual void v18(); virtual void v1c();
+	virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
+	virtual void v30(); virtual void v34(); virtual void v38(); virtual void v3c();
+	virtual void v40(); virtual void v44(); virtual void v48(); virtual void v4c();
+	virtual void v50(); virtual void v54(); virtual void v58(); virtual void v5c();
+	virtual void v60();
+	virtual void v64(); virtual void v68();
+	virtual BfmeAwakenLog *v6c(int first, int second, int third);
+};
+
+class Debug;
+
+extern Debug *theDebug;
+
+extern bool _bfme_debugReportingEnabled();
+
+extern void _bfme_debugRecordCallsite(int kind);
+
+struct ShrubTypeData
+{
+	unsigned char m_pad00[0x0C];
+	AsciiString m_textureName;		// +0x0C
+};
+
+struct ShrubType
+{
+	const ShrubTypeData *m_data;		// +0x00
+	Vec2 m_topLeft;				// +0x04
+	Vec2 m_shadowTopLeft;			// +0x0C
+	Vec2 m_bottomRight;			// +0x14
+	Vec2 m_shadowBottomRight;		// +0x1C
+	Bool m_doShadow;			// +0x24
+	AsciiString m_shadowTextureName;	// +0x28
+	unsigned char m_pad2c[0x5C - 0x2C];
+};
+
+struct BreezeInfo;
+
+class ScriptEngine;
+
+class PlayerList;
+
+enum ObjectShroudStatus { SHROUD_STATUS_A = 0 };
+
+class Rva00203ACEByteField { public: unsigned char get() const; };
+
+class Rva00203B08 { public: bool rva0020424FF(); };
+
+class Rva00739800 { public: ObjectShroudStatus rva00739800(int, const Coord3D *) const; };
+
+class Rva000EC9C6 { public: void rva000E663B(int); };
+
+struct Rva000E89BDPlayer { unsigned char pad[0x54]; int index; };
+
+struct Rva000E89BDPlayerList { unsigned char pad[0x10]; Rva000E89BDPlayer *local; };
+
+struct Rva000E89BDGlobalData { unsigned char pad[0x1c]; bool flag1c; };
+
+struct Rva000E89BDScriptEngine { unsigned char pad[0x1a4a8]; unsigned char breeze[1]; };
+
+extern ScriptEngine *TheScriptEngine;
+
+extern PlayerList *ThePlayerList;
+
+struct Rva000E89BDData
+{
+	unsigned char pad[0x14];
+	unsigned int framesToMoveInward;
+};
+
+struct Rva000E89BDType
+{
+	unsigned char pad[0x20];
+	const Rva000E89BDData *data;
+	unsigned char pad24[0x5c - 0x24];
+};
+
+struct Rva000E89BDTree
+{
+	Coord3D location;
+	unsigned char pad0c[0x40 - 0x0c];
+	int treeType;
+	bool visible;
+	unsigned char pad45[0x5c - 0x45];
+	float pushAside;
+	float pushAsideDelta;
+	unsigned char pad64[0x84 - 0x64];
+	int toppleState;
+	unsigned char pad88[0x9c - 0x88];
+	int shroudState;
+};
+
+class Rva000E6406SwayView
+{
+public:
+	void rva000E6406(const BreezeInfo &info);
+};
+
+class FXList
+{
+public:
+	static void doFXPos(const FXList *list, const Coord3D *position, const Matrix3D *matrix, Real speed,
+		const Coord3D *direction);
+};
+
+class Rva0027F2D6
+{
+public:
+	void rva0027F2D6(Int id);
+};
+
+// retail singleton: TerrainLogic *TheTerrainLogic (mangled ?TheTerrainLogic@@3PAVTerrainLogic@@A),
+// defined in GameLogic/Map/TerrainLogic.cpp. Uses go through this TU's Rva0027F2D6 view.
+class TerrainLogic;
+
+extern TerrainLogic *TheTerrainLogic;
+
+// Retail global 0x012F8058 is W3DDisplay::m_3DScene
+// (?m_3DScene@W3DDisplay@@2PAVRTS3DScene@@A, defined in W3DDisplay's own TU).
+// RTS3DScene is forward declared: the two scene calls go through scene.h's
+// SceneClass view, which is what the retail call sites do.
+class RTS3DScene;
+
+class W3DDisplay { public: static RTS3DScene *m_3DScene; };
+
+RenderObjClass *Create_Render_Obj(const char *name);
+
+void rva0010E4F6(void *object, bool geometry);
+
+struct Rva000E8C2DTypeData
+{
+	unsigned char m_pad00[8];
+	AsciiString m_modelName;
+	unsigned char m_pad0c[0x4c - 0x0c];
+	Int m_duration;
+	const FXList *m_effect;
+	bool m_flag54;
+};
+
+struct Rva000E8C2DType
+{
+	unsigned char m_pad00[0x20];
+	const Rva000E8C2DTypeData *m_data;
+	unsigned char m_pad24[0x4c - 0x24];
+	AsciiString m_modelName;
+	unsigned char m_pad50[0x58 - 0x50];
+	Int m_field58;
+};
+
+struct Rva000E8C2DTree
+{
+	Coord3D m_location;
+	Real m_scale;
+	Matrix3D m_transform;
+	Int m_treeType;
+	unsigned char m_pad44[0x84 - 0x44];
+	Int m_request;
+	Int m_uprightType;
+	Int m_toppledType;
+	Int m_sinkFrames;
+	RenderObjClass *m_topple;
+	RenderObjClass *m_pushAside;
+	unsigned char m_pad9c[0xa0 - 0x9c];
+};
+
+struct Rva000E8F9DTreeDrawData
+{
+	unsigned char moduleDataBase[8];
+	AsciiString m_modelName;
+	AsciiString m_nameC;
+};
+
+class ModuleData
+{
+public:
+	virtual void slot00(); virtual void slot01(); virtual void slot02(); virtual void slot03();
+	virtual void slot04(); virtual void slot05(); virtual void slot06(); virtual void slot07();
+	virtual void slot08(); virtual void slot09(); virtual void slot10(); virtual void slot11();
+	virtual void slot12(); virtual void slot13(); virtual void slot14(); virtual void slot15();
+	virtual const Rva000E8F9DTreeDrawData *getAsW3DTreeDrawModuleData() const;
+};
+
+class ModuleInfo
+{
+public:
+	const ModuleData *getNthData(Int i) const;
+};
+
+class ThingTemplate
+{
+public:
+	unsigned char m_pad00[0x64];
+	AsciiString m_name;
+	unsigned char m_pad68[0x2F0 - 0x68];
+	ModuleInfo m_drawModuleInfo;
+};
+
+class ThingFactory
+{
+public:
+	const ThingTemplate *findTemplate(const AsciiString &name);
+};
+
+extern ThingFactory *TheThingFactory;
+
+bool bfmeRva000387C0();
+
+void _bfme_debugRecordCallsite(int kind);
+
+struct Rva000E8F9DTreeType
+{
+	unsigned char prefix[0x4c];
+	AsciiString m_modelName;
+	AsciiString m_nameC;
+	unsigned char suffix[0x5c - 0x54];
+};
+
 class W3DShrubBuffer : public Rva000E6AC0
 {
 public:
@@ -355,7 +809,30 @@ public:
 	bool rva000E90DB(unsigned int key, Int mode);
 private:
 	Rva000E912ATree &tree912A(Int i) { return reinterpret_cast<Rva000E912ATree *>(m_records)[i]; }
+public:
+	void rva000E72B3(UnsignedInt id, const Coord3D *pusherPos, const Coord3D *pusherDirection, UnsignedInt pusherID);
+public:
+	void rva000E7734(Thing *unit);
+protected:
+	void updateTexture();
+public:
+	void drawShrubs(int arg);
+public:
+	void loadShrubsInVertexAndIndexBuffers(void);
+public:
+	void rva000E8365(void);
+public:
+	void rva000E76B8();
+public:
+	void startMorph(Int index, Int request);
+public:
+	Int addTreeType(const AsciiString &modelName, const AsciiString &nameC, const void *data, Int shadowKind,
+		const AsciiString &textureName, const AsciiString &templateName);
+public:
+	Int rva000E8F9D(const AsciiString &templateName, Int shadowKind, const AsciiString &textureName);
 };
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer.cpp
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer.cpp
 
@@ -476,8 +953,6 @@ char W3DShrubBuffer::rva000E7140(void *key, Vector3 position,
     return 0;
 }
 
-// tu-skeleton: 0x000E72B3 283B ?rva000E72B3@W3DShrubBuffer@@QAEXIPBUCoord3D@@0I@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E72B3.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva000E73FCCopy.cpp
 
 // ??0Rva000E73FC@@QAE@ABU0@@Z 0x000E73FC 301B
@@ -526,8 +1001,6 @@ Rva000E73FC::Rva000E73FC(const Rva000E73FC &that)
 	, m_9c(that.m_9c)
 {
 }
-
-// tu-skeleton: 0x000E7529 29B ?rva000E7529@Rva000E7529@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3.cpp (not merged yet)
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E75F5.cpp
 
@@ -592,8 +1065,6 @@ bool W3DShrubBuffer::rva000E7546(Int index, float *outPos, float *outScale, Coor
  return false;
 }
 
-// tu-skeleton: 0x000E7734 780B ?rva000E7734@W3DShrubBuffer@@QAEXPAVThing@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferUnitMoved.cpp (not merged yet)
-
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E7A40.cpp
 
 void W3DShrubBuffer::rva000E7A40(Int treeIndex)
@@ -620,24 +1091,6 @@ void W3DShrubBuffer::rva000E7A40(Int treeIndex)
 	if (sinkFrames == 0)
 		rva000E75F5(treeIndex);
 }
-
-// tu-skeleton: 0x000E7B3F 692B ?updateTexture@W3DShrubBuffer@@IAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferUpdateTexture.cpp (not merged yet)
-
-// tu-skeleton: 0x000E7DF3 1394B ?loadShrubsInVertexAndIndexBuffers@W3DShrubBuffer@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_loadShrubsInVertexAndIndexBuffers.cpp (not merged yet)
-
-// tu-skeleton: 0x000E8365 753B ?rva000E8365@W3DShrubBuffer@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E8365.cpp (not merged yet)
-
-// tu-skeleton: 0x000E8656 98B ??0Rva00735D80TreeType@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x000E86B8 124B ??1Rva000E86B8@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x000E8734 649B ?addTreeType@W3DShrubBuffer@@QAEHABVAsciiString@@0PBXH00@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferAddTreeType.cpp (not merged yet)
-
-// tu-skeleton: 0x000E89BD 624B ?drawShrubs@W3DShrubBuffer@@QAEXH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_drawShrubs.cpp (not merged yet)
-
-// tu-skeleton: 0x000E8C2D 880B ?startMorph@W3DShrubBuffer@@QAEXHH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_startMorph.cpp (not merged yet)
-
-// tu-skeleton: 0x000E8F9D 318B ?rva000E8F9D@W3DShrubBuffer@@QAEHABVAsciiString@@H0@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E8F9D.cpp (not merged yet)
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E912A.cpp
 
@@ -673,6 +1126,440 @@ void W3DShrubBuffer::rva000E912A(const Coord3D *center, float radius, Int mode)
 	}
 }
 
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E72B3.cpp
+
+// W3DShrubBuffer::pushAsideTree, retail 0x000E72B3 (283 bytes, ret 0x10): a unit walking past a shrub bends it away
+// from the walker: records of the drawable that were not pushed by this pusher within three frames get a push
+// direction perpendicular to the walker's heading and a push-aside rate from the type's frames to move outward.
+// Open-BFME-1 twin: W3DShrubBuffer.cpp (pushAsideTree, BFME1 0x0071CBB0). BFME2 layout read from retail: 2000
+// records of 0xA0 at +0x1958 (drawable +0x58, push-aside +0x5C, rate +0x60, sin +0x64, cos +0x68, source +0x6C,
+// last frame +0x70), count +0x4FB58, push-changed byte +0x4FB5D, types of 0x5C at +0x4FB70 with the type data at
+// +0x20, move-outward rate scale at +0x5BC; GlobalData flag +0x1C; TheGameLogic frame +0x40.
+
+void W3DShrubBuffer::rva000E72B3(UnsignedInt id, const Coord3D *pusherPos, const Coord3D *pusherDirection, UnsignedInt pusherID)
+{
+	if (!((const Rva000E72B3GlobalData *)TheWritableGlobalData)->m_flag1c)
+		return;
+
+	for (Int i = 0; i < m_count; ++i) {
+		Rva000E72B3Tree *tree = &reinterpret_cast<Rva000E72B3Tree *>(m_records)[i];
+		if (tree->m_drawableID == id) {
+			UnsignedInt lastFrame = tree->m_lastFrameUpdated;
+			tree->m_lastFrameUpdated = TheGameLogic->getFrame();
+			if (tree->m_pushAsideSource == pusherID) {
+				if (tree->m_lastFrameUpdated - lastFrame < 3)
+					return;
+			}
+
+			if (tree->m_pushAside != 0.0f)
+				return;
+
+			tree->m_pushAsideSource = pusherID;
+			Coord3D delta;
+			delta.x = tree->m_locationX;
+			delta.y = tree->m_locationY;
+			delta.z = tree->m_locationZ;
+			delta.x -= pusherPos->x;
+			delta.y -= pusherPos->y;
+			delta.z -= pusherPos->z;
+			if (pusherDirection->x * delta.y - pusherDirection->y * delta.x > 0.0f) {
+				tree->m_pushAsideCos = -pusherDirection->y;
+				tree->m_pushAsideSin = pusherDirection->x;
+			} else {
+				tree->m_pushAsideCos = pusherDirection->y;
+				tree->m_pushAsideSin = -pusherDirection->x;
+			}
+
+			m_4fb5d = true;
+			tree->m_pushAsideDelta = 1.0f /
+				((Real)reinterpret_cast<Rva000E72B3Type *>(m_types)[tree->m_treeType].m_data->m_framesToMoveOutward * m_pushRateScale);
+		}
+	}
+}
+
+// tu-skeleton: 0x000E7529 29B ?rva000E7529@Rva000E7529@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VtableSlotBodiesR3.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferUnitMoved.cpp
+
+// ?rva000E7734@W3DShrubBuffer@@QAEXPAVThing@@@Z
+// W3DShrubBuffer::unitMoved, retail 0x000E7734 (780 bytes, ret 4): when a mobile unit moves, every shrub of the
+// 50 by 50 partition cells under the unit's footprint (radius + 7) that is within that radius is pushed aside.
+// Donor revision 575ba2b04743f190f069805fbdc59936123c45da.
+// Open-BFME-1 twin: W3DShrubBuffer_unitMoved.cpp (0x00721B20). BFME2 layout read from retail: partition table of
+// shorts at +0x5C0, world bounds at +0x1948 (lo x, lo y, hi x, hi y), 2000 shrub records of 0xA0 at +0x1958
+// (type +0x40, drawable +0x58, next in partition +0x74), count +0x4FB58, types of 0x5C at +0x4FB70 with the type
+// data at +0x20 (frames to move outward +0x10); the unit is described by its position at +0x38, kind-of mask byte
+// at template+0x108 and major radius at +0xB8; GlobalData flags +0x1C/+0x1D.
+
+// Retail uses FISTP under the ambient x87 rounding mode. MSVC casts use
+// the truncating _ftol2 machinery, so this short round helper is the
+// established x87 code-generation blocker carried from the donor.
+__forceinline long fast_float2long_round(Real f)
+{
+	long i;
+	__asm {
+		fld [f]
+		fistp [i]
+	}
+	return i;
+}
+
+// Keep the result temporary in the wrapper: retail pops the first cdecl
+// argument slot before storing the float, then pops the second slot.
+__forceinline long realFloor(Real x)
+{
+	Real flooredValue = (Real)floor((double)x);
+	return fast_float2long_round(flooredValue);
+}
+
+__forceinline long realCeil(Real x)
+{
+	Real ceilingValue = (Real)ceil((double)x);
+	return fast_float2long_round(ceilingValue);
+}
+
+void W3DShrubBuffer::rva000E7734(Thing *unit)
+{
+	const Rva000E7734GlobalData *global = (const Rva000E7734GlobalData *)TheWritableGlobalData;
+	if (!global->m_flag1c || !global->m_flag1d)
+		return;
+
+	if (unit->m_template->m_kindOf & 4)
+		return;
+
+	Real radius = unit->m_majorRadius + 7.0f;
+	Coord3D pos;
+	pos.x = unit->m_x;
+	pos.y = unit->m_y;
+	pos.z = unit->m_z;
+	Real x = pos.x - radius;
+	Real y = pos.y - radius;
+	if (x < reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->lox) x = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->lox;
+	if (y < reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->loy) y = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->loy;
+	if (x > reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hix) x = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hix;
+	if (y > reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hiy) y = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hiy;
+	Real xRatio = x / (reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hix - reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->lox);
+	Int xIndex = REAL_TO_INT_FLOOR(xRatio * 49.9f);
+	Real yRatio = y / (reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hiy - reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->loy);
+	Int yIndex = REAL_TO_INT_FLOOR(yRatio * 49.9f);
+
+	x = pos.x + radius;
+	y = pos.y + radius;
+	if (x < reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->lox) x = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->lox;
+	if (y < reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->loy) y = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->loy;
+	if (x > reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hix) x = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hix;
+	if (y > reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hiy) y = reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hiy;
+	Real xMaxRatio = x / (reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hix - reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->lox);
+	Int xMax = REAL_TO_INT_CEIL(xMaxRatio * 49.9f);
+	Real yMaxRatio = y / (reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->hiy - reinterpret_cast<Rva000E7734Region *>(m_pad5c0 + 0x1948 - 0x5c0)->loy);
+	Int yMax = REAL_TO_INT_CEIL(yMaxRatio * 49.9f);
+
+	Int i, j;
+	for (i = xIndex; i < xMax; i++) {
+		for (j = yIndex; j < yMax; j++) {
+			Int treeNdx = reinterpret_cast<Short *>(m_pad5c0)[i + 50 * j];
+			while (treeNdx != -1) {
+				if (treeNdx < 0 || treeNdx >= m_count)
+					break;
+				if (reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_treeType < 0) {
+					treeNdx = reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_nextInPartition;
+					continue;
+				}
+				Coord3D delta;
+				delta.x = reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_location.x;
+				delta.y = reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_location.y;
+				delta.z = reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_location.z;
+				delta.x -= pos.x;
+				delta.y -= pos.y;
+				delta.z -= pos.z;
+				if (radius * radius > delta.x * delta.x + delta.y * delta.y + delta.z * delta.z) {
+					Rva000E7734TreeData *data = reinterpret_cast<Rva000E7734Type *>(m_types)[reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_treeType].m_data;
+					if (data != 0 && data->m_framesToMoveOutward > 0) {
+						rva000E72B3(reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_drawableID, (const Coord3D *)&pos, unit->getUnitDirectionVector2D(), unit->m_id);
+					}
+				}
+				treeNdx = reinterpret_cast<Rva000E7734Tree *>(m_records)[treeNdx].m_nextInPartition;
+			}
+		}
+	}
+}
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferUpdateTexture.cpp
+
+//
+// W3DShrubBuffer::updateTexture, retail 0x000E7B3F (692B). WorldBuilder's
+// debug build names it (W3DShrubBuffer.cpp, asserts at lines 176/181); BFME 1's
+// matched W3DShrubBufferRva0071DAF0.cpp is the donor for the two-pass
+// texture-page build. BFME 2 packs through two TexturePackers (+0x40 shrubs,
+// +0x68 shadows): clear both, add every tree type's texture (and its shadow
+// texture when the type casts one) as loaded by TextureAsset::Get (rowed
+// 0x00132D89), then read back each texture's page coordinates, store the two
+// result textures (+0x38 / +0x3C) and report a page larger than 1024 on either
+// side. Tree type stride 0x5C from +0x4FB90, count at +0x51270.
+
+void W3DShrubBuffer::updateTexture()
+{
+	(*reinterpret_cast<TexturePacker *>(m_storage + 0x3C)).clearView()->rva00170EBC(false);
+	(*reinterpret_cast<TexturePacker *>(m_storage + 0x64)).clearView()->rva00170EBC(true);
+	Int i;
+	for (i = 0; i < m_numTypes; i++)
+	{
+		(*reinterpret_cast<TexturePacker *>(m_storage + 0x3C)).rva00171067(TextureAsset::Get(reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_data->m_textureName.str(), 0, 0));
+		if (reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_doShadow)
+			(*reinterpret_cast<TexturePacker *>(m_storage + 0x64)).rva00171067(TextureAsset::Get(reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_shadowTextureName.str(), 0, 0));
+	}
+	for (i = 0; i < m_numTypes; i++)
+	{
+		(*reinterpret_cast<TexturePacker *>(m_storage + 0x3C)).lookupView()->rva00171583((const unsigned int &)TextureAsset::Get(reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_data->m_textureName.str(), 0, 0),
+			&reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_topLeft, &reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_bottomRight);
+		if (reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_doShadow)
+			(*reinterpret_cast<TexturePacker *>(m_storage + 0x64)).lookupView()->rva00171583((const unsigned int &)TextureAsset::Get(reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_shadowTextureName.str(), 0, 0),
+				&reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_shadowTopLeft, &reinterpret_cast<ShrubType *>(reinterpret_cast<unsigned char *>(m_types) + 0x20)[i].m_shadowBottomRight);
+	}
+	(*reinterpret_cast<Rva00132D0FHolder *>(m_storage + 0x34)) = (*reinterpret_cast<TexturePacker *>(m_storage + 0x3C)).resultView()->rva00171625();
+	(*reinterpret_cast<Rva00132D0FHolder *>(m_storage + 0x38)) = (*reinterpret_cast<TexturePacker *>(m_storage + 0x64)).resultView()->rva00171625();
+	if ((*reinterpret_cast<Rva00132D0FHolder *>(m_storage + 0x34)).texture()->rva0013275A() > 1024U || (*reinterpret_cast<Rva00132D0FHolder *>(m_storage + 0x34)).texture()->rva00132784() > 1024U)
+		DEBUG_CRASH_REPORT("Combined shrub texture is bigger than 1024x1024. This will cause errors and significant slowdown on most graphics cards and has to be fixed!");
+	if ((*reinterpret_cast<Rva00132D0FHolder *>(m_storage + 0x38)).texture()->rva0013275A() > 1024U || (*reinterpret_cast<Rva00132D0FHolder *>(m_storage + 0x38)).texture()->rva00132784() > 1024U)
+		DEBUG_CRASH_REPORT("Combined shrub shadow texture is bigger than 1024x1024. This will cause errors and significant slowdown on most graphics cards and has to be fixed!");
+}
+
+// tu-skeleton: 0x000E7DF3 1394B ?loadShrubsInVertexAndIndexBuffers@W3DShrubBuffer@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_loadShrubsInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x000E8365 753B ?rva000E8365@W3DShrubBuffer@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E8365.cpp (not merged yet)
+
+// tu-skeleton: 0x000E8656 98B ??0Rva00735D80TreeType@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x000E86B8 124B ??1Rva000E86B8@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x000E8734 649B ?addTreeType@W3DShrubBuffer@@QAEHABVAsciiString@@0PBXH00@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferAddTreeType.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_drawShrubs.cpp
+
+// W3DShrubBuffer::drawShrubs, retail 0x000E89BD (624 bytes, ret 4): the shrub
+// buffer's per-frame update before drawing, the Zero Hour drawTrees body
+// reduced to its update half. It runs the sway update unless time is frozen
+// or the game is paused, handles the deferred texture update, advances 30
+// round-robin records' visibility state, then pushes aside visible upright
+// records and refills the vertex buffers (0x000E7DF3) or only re-writes them
+// (0x000E8365) before the draw pass 0x000E663B. Donor semantics: Open-BFME-1
+// W3DTreeBuffer.cpp drawTrees; the BFME2 shrub fields are read from retail.
+// Layout: records of 0xA0 at +0x1958 (count +0x4FB58), index counts vector at
+// +0x28, texture at +0x38, swayRate +0x5BC, flags +0x4FB5C/D/E/6D/6E, byte
+// +0x51274, step +0x51278, round-robin index +0x5127C.
+
+// ?drawShrubs@W3DShrubBuffer@@QAEXH@Z
+void W3DShrubBuffer::drawShrubs(int arg)
+{
+	if (!(*reinterpret_cast<void **>(m_storage + 0x30)))
+		return;
+	if (!m_4fb6d)
+		return;
+	if (!((Rva000E89BDGlobalData *)TheWritableGlobalData)->flag1c)
+		return;
+
+	const BreezeInfo *info = (const BreezeInfo *)((Rva000E89BDScriptEngine *)TheScriptEngine)->breeze;
+	bool pause;
+	if (((Rva00203ACEByteField *)TheScriptEngine)->get() || ((Rva00203B08 *)TheScriptEngine)->rva0020424FF())
+		pause = true;
+	else
+		pause = false;
+	if (TheGameLogic && TheGameLogic->isGamePaused())
+		pause = true;
+	if (!pause)
+		((Rva000E6406SwayView *)this)->rva000E6406(*info);
+
+	m_4fb6d = false;
+	if (m_4fb6e) {
+		m_4fb6e = false;
+		updateTexture();
+	}
+	if (!(*reinterpret_cast<void **>(m_storage + 0x34)))
+		return;
+
+	for (int k = 30; k > 0; k--) {
+		if (m_5127c >= m_count)
+			m_5127c = 0;
+		reinterpret_cast<Rva000E89BDTree *>(m_records)[m_5127c].shroudState = 0;
+		m_5127c++;
+	}
+	if (m_4fb5e)
+		rva000E76B8();
+
+	int playerIndex = ThePlayerList ? ((Rva000E89BDPlayerList *)ThePlayerList)->local->index : 0;
+	for (int curTree = 0; curTree < m_count; curTree += m_51278) {
+		int type = reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].treeType;
+		if (type < 0)
+			continue;
+		if (reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].toppleState != 0)
+			continue;
+		if (!reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].visible)
+			continue;
+		if (!ThePlayerList || !TheShroudManager)
+			reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].shroudState = 1;
+		if (reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].shroudState == 0)
+			reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].shroudState = ((Rva00739800 *)TheShroudManager)->rva00739800(playerIndex, &reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].location);
+		if (reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].shroudState >= 3 || reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].shroudState <= 0)
+			continue;
+		if (pause)
+			continue;
+		if (reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAsideDelta != 0.0f) {
+			reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAside += reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAsideDelta;
+			if (reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAside >= 1.0f) {
+				reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAsideDelta = -1.0 / ((float)reinterpret_cast<Rva000E89BDType *>(m_types)[type].data->framesToMoveInward * m_pushRateScale);
+			} else if (reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAside <= 0.0f) {
+				reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAsideDelta = 0.0f;
+				reinterpret_cast<Rva000E89BDTree *>(m_records)[curTree].pushAside = 0.0f;
+			}
+		}
+	}
+
+	(*reinterpret_cast<bool *>(&m_51274)) = (*reinterpret_cast<bool *>(&m_4fb5c));
+	if ((*reinterpret_cast<bool *>(&m_4fb5c))) {
+		loadShrubsInVertexAndIndexBuffers();
+		(*reinterpret_cast<bool *>(&m_4fb5c)) = false;
+	} else if (m_4fb5d) {
+		m_4fb5d = false;
+		rva000E8365();
+	}
+	if (*(*reinterpret_cast<int **>(m_storage + 0x24)) != 0)
+		((Rva000EC9C6 *)this)->rva000E663B(arg);
+}
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_startMorph.cpp
+
+// ?startMorph@W3DShrubBuffer@@QAEXHH@Z
+// W3DShrubBuffer start-morph at retail 0x000E8C2D (880 bytes, ret 8), shrub twin of the tree 0x000ECA4D:
+// gives a shrub its type's model and the model of the type at +0xD0 at the tree's position and rotation,
+// starts the +0xD4 countdown and plays the type's effect. Donor: Open-BFME-1 W3DShrubBufferRva00736150.cpp
+// (BFME1 0x00736150). BFME2 layout read from retail.
+
+// File-static matrix copy (LK3-style): the TU's copy-ctor COMDAT loses
+// the link, and the rowed body below inlines the construction, so the def
+// cannot just go away. The helper keeps a call in the source (regalloc
+// preserved) while the copy-ctor goes unused.
+static void CopyShrubMatrix3D(Matrix3D &dst, const Matrix3D &src)
+{
+    dst[0] = src[0];
+    dst[1] = src[1];
+    dst[2] = src[2];
+}
+
+// ?startMorph@W3DShrubBuffer@@QAEXHH@Z
+void W3DShrubBuffer::startMorph(Int index, Int request)
+{
+	Int type = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_treeType;
+	if (index >= m_count)
+		return;
+	if (type < 0)
+		return;
+	if (request == 1) {
+		if (reinterpret_cast<Rva000E8C2DType *>(m_types)[type].m_data->m_flag54)
+			return;
+	}
+	if (request == 2) {
+		if (!reinterpret_cast<Rva000E8C2DType *>(m_types)[type].m_data->m_flag54)
+			return;
+	}
+
+	reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_sinkFrames = reinterpret_cast<Rva000E8C2DType *>(m_types)[type].m_data->m_duration;
+	reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_request = request;
+	if (reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple != 0) {
+		reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple->Release_Ref();
+		reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple = 0;
+	}
+	reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple = Create_Render_Obj(reinterpret_cast<Rva000E8C2DType *>(m_types)[type].m_modelName.str());
+	rva0010E4F6(reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple, false);
+	reinterpret_cast<SceneClass *>(W3DDisplay::m_3DScene)->Add_Render_Object(reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple);
+	Matrix3D transform;
+	CopyShrubMatrix3D(transform, reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple->Get_Transform());
+	transform[0][3] = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.x;
+	transform[1][3] = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.y;
+	transform[2][3] = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.z;
+	Matrix3 rotation(reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_transform);
+	transform.Set_Rotation(rotation);
+	reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple->Set_Transform(transform);
+
+	if (reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside != 0) {
+		reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside->Release_Ref();
+		reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside = 0;
+	}
+	if (reinterpret_cast<Rva000E8C2DType *>(m_types)[type].m_field58 != -2) {
+		reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside = Create_Render_Obj(reinterpret_cast<Rva000E8C2DType *>(m_types)[reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_toppledType].m_data->m_modelName.str());
+		rva0010E4F6(reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside, false);
+		reinterpret_cast<SceneClass *>(W3DDisplay::m_3DScene)->Add_Render_Object(reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside);
+		transform = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside->Get_Transform();
+		transform[0][3] = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.x;
+		transform[1][3] = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.y;
+		transform[2][3] = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.z;
+		transform.Set_Rotation(rotation);
+		reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside->Set_Transform(transform);
+	}
+	if (reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple != 0)
+		Rva0010E87A_SetOpacity(reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_topple, 1.0f);
+	if (reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside != 0)
+		Rva0010E87A_SetOpacity(reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_pushAside, 0.0f);
+	if (reinterpret_cast<Rva000E8C2DType *>(m_types)[type].m_data->m_effect != 0) {
+		Coord3D position;
+		position.x = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.x;
+		position.y = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.y;
+		position.z = reinterpret_cast<Rva000E8C2DTree *>(m_records)[index].m_location.z;
+		FXList::doFXPos(reinterpret_cast<Rva000E8C2DType *>(m_types)[type].m_data->m_effect, &position, 0, 0.0f, 0);
+	}
+	m_4fb5c = true;
+}
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRva000E8F9D.cpp
+
+// W3DShrubBuffer method at retail 0x000E8F9D (318 bytes, ret 0xC, called from
+// addShrub 0x000E91CE): finds or adds the shrub type under the template name for a template's tree
+// draw module data and returns its index, or -2; a template without that
+// module reports it and fails. Donor: Open-BFME-1 W3DShrubBufferRva00736940.cpp
+// (BFME1 0x00736940). BFME2 deltas read from retail: the template is looked up
+// through the rowed 0x002D06CA on the 0x00DFF000 registry, the draw module
+// list is the ModuleInfo at template+0x2F0 (rowed getNthData 0x0033ACE8), the
+// tree draw module data accessor is module vtable slot 16 (+0x40), the debug
+// report goes through theDebug +0x60 / +0x6C(0,0,0) / +0x38 / +0x4C(2), shrub
+// types are 0x5C bytes at +0x4FB70 (count +0x51270), and the type-added flag
+// is +0x4FB6E.
+
+Int W3DShrubBuffer::rva000E8F9D(const AsciiString &asciiString, Int shadowKind, const AsciiString &textureName)
+{
+	if (((const StringBase<char> *)&asciiString)->isEmpty())
+		return -2;
+	const ThingTemplate *thingTemplate = TheThingFactory->findTemplate(asciiString);
+	if (thingTemplate == 0)
+		return -2;
+	const ModuleData *module = thingTemplate->m_drawModuleInfo.getNthData(0);
+	if (module == 0)
+		return -2;
+	const Rva000E8F9DTreeDrawData *data = module->getAsW3DTreeDrawModuleData();
+	if (data == 0) {
+		if (bfmeRva000387C0()) {
+			_bfme_debugRecordCallsite(1);
+			TheBfmeAwakenDebug->v60();
+			TheBfmeAwakenDebug->v6c(0, 0, 0)->slot38("Shrub ")->slot38(thingTemplate->m_name.str())
+				->slot38(" requires a W3DTreeDrawModule.\n")->slot4C(2);
+		}
+		return -2;
+	}
+
+	Int index = -2;
+	for (Int i = 0; i < m_numTypes; ++i) {
+		if (((const StringBase<char> &)reinterpret_cast<Rva000E8F9DTreeType *>(m_types)[i].m_modelName).compareNoCase(*(const StringBase<char> *)&data->m_modelName) == 0 &&
+			((const StringBase<char> &)reinterpret_cast<Rva000E8F9DTreeType *>(m_types)[i].m_nameC).compareNoCase(*(const StringBase<char> *)&data->m_nameC) == 0) {
+			index = i;
+			break;
+		}
+	}
+	if (index < 0) {
+		index = addTreeType(data->m_modelName, data->m_nameC, data, shadowKind, textureName, thingTemplate->m_name);
+		if (index >= 0)
+			m_4fb6e = true;
+	}
+	return index;
+}
+
 // tu-skeleton: 0x000E91CE 1254B ?addShrub@W3DShrubBuffer@@QAEXIUCoord3D@@MPBVMatrix3D@@MPBURva000E91CEData@@HABVAsciiString@@3@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_addShrub.cpp (not merged yet)
 
 // tu-skeleton: 0x000E96B4 1272B ?DoXfer@W3DShrubBuffer@@QAEXPAVXfer@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferDoXfer.cpp (not merged yet)
@@ -686,3 +1573,39 @@ void W3DShrubBuffer::rva000E912A(const Coord3D *center, float radius, Int mode)
 // tu-skeleton: 0x000E9CDF 28B ??_GRva000E9BAC@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB01.cpp (not merged yet)
 
 // tu-skeleton: 0x000E9D18 228B ?rva000E9D18@W3DShrubBuffer@@QAEXPBUCoord3D@@ABVGeometryInfo@@M@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRemoveShrubsForConstruction.cpp (not merged yet)
+
+// tu-skeleton: 0x00763627 8B Unwind@00b63627 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_loadShrubsInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x0076362F 8B Unwind@00b6362f -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_loadShrubsInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x00763637 10B __ehhandler$?loadShrubsInVertexAndIndexBuffers@W3DShrubBuffer@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBuffer_loadShrubsInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x00763641 22B uw_00763641 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00763657 10B __ehhandler$??0Rva00735D80TreeType@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00763661 22B $L448 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00763677 22B $L449 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0076368D 11B uw_0076368d -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00763698 11B uw_00763698 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007636A3 11B uw_007636a3 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007636AE 10B __ehhandler$??1Rva000E86B8@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00735D80TreeTypeDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007636B8 8B Unwind@00b636b8 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferDoXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x007636C0 8B Unwind@00b636c0 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferDoXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x007636C8 8B Unwind@00b636c8 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferDoXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x007636D0 8B Unwind@00b636d0 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferDoXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x007636D8 10B __ehhandler$?DoXfer@W3DShrubBuffer@@QAEXPAVXfer@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferDoXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x0076371A 8B Unwind@00b6371a -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRemoveShrubsForConstruction.cpp (not merged yet)
+
+// tu-skeleton: 0x00763722 10B __ehhandler$?rva000E9D18@W3DShrubBuffer@@QAEXPBUCoord3D@@ABVGeometryInfo@@M@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferRemoveShrubsForConstruction.cpp (not merged yet)
