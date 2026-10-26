@@ -77,3 +77,17 @@ Final python3 tools/progress.py origin/master passes: BYTE-MATCHED 7,978,500
 7,249,397 bytes, delta zero. No image-ownership receipt or NOT OURS improvement
 is claimed. The BFME 1 reference comparison was fetched/inspected, but its full
 update verification remains incomplete; no freshness-success receipt was made.
+
+## Recovery session
+
+Inherited commits rebased as af73cd8f90 and 9f441bb594 remain unpublished.
+Recovery rechecked `./build.sh Code/Libraries/Source/Apt/AptInput.cpp
+Code/Libraries/Source/Apt/Rva006FA7E0FocusTransition.cpp`: 12/12 exact,
+18 literals; declared-unmatched passes. The full outgoing range has one source
+edited in place and three evidence additions, no path moves; active path
+consumers and protected registers need no repointing. Existing composed provider
+and binding proof remains in the focus JSON. Recovery makes no new unblock claim.
+Official BFME 1 master was fetched: current de077dd5 is 67 commits behind.
+Its full update verification is incomplete; retain current inputs and do not
+write a freshness-success receipt. Publication is retried with this recovery
+commit; keep the inherited claims if the runner holds the batch again.
