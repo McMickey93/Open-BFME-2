@@ -23,13 +23,15 @@
 
 #include "../../../../../Libraries/Include/Lib/Coord2D.h"
 
-class Region3D
+#include "../../../../../Libraries/Include/Lib/Region3D.h"
+
+// The 12-byte BridgeInfo entries use the opaque ctor already owned by
+// Rva0027C36ACtor.cpp. Their retail identity is still unknown; Region3D is 24 bytes.
+class Rva0027C36ATwelve
 {
 public:
-	Region3D();
-	float m_x;
-	float m_y;
-	float m_z;
+	Rva0027C36ATwelve();
+	char m_d[12];
 };
 
 class Rva0027C36ASix
@@ -58,7 +60,7 @@ public:
 	int m_58[4];
 	unsigned char m_68;
 	char m_pad69[3];
-	Region3D m_6c[4];
+	Rva0027C36ATwelve m_6c[4];
 	Rva0027C36ASix m_9c[2];
 };
 

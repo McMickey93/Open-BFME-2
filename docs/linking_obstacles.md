@@ -1859,6 +1859,28 @@ everse/re_attempts.log.
   against census `d1f046749a`; no clearance, queue retirement or census gain.
   Evidence: `reverse/attempt_support/region3d-header-prerequisite-20261026-bce2/`.
 
+#### Bridge Region3D debt subset, 2026-10-26
+
+- **Recovery reconciliation, 2026-10-27:** upstream `2a5ee5a0db` already names the AddBridge records `Coord3D` and matrix rows `Vector4`; retain those types. The earlier opaque AddBridge replacement below is superseded, while the canonical includes and accepted header-debt retirements remain.
+
+- **Inspected `fff0ff229a`:** [the bridge adoption evidence](../reverse/attempt_support/bridge-region3d-adoption-20261026-codex4/readme.md)
+  replaces two incorrect 12-byte Region3D views in
+  `BridgeBehaviorHandleObjectsOnBridgeOnDie.cpp` and
+  `W3DBridgeBufferAddBridge.cpp` with the already-owned opaque
+  `Rva0027C36ATwelve` callback type. `W3DBridgeCtor.cpp` now binds its
+  16-byte matrix rows to the existing Vector4 constructor owner. All three
+  include the canonical Region3D header; no shared header or callback pin
+  changed. The owning adoption tool retires three header queue rows.
+- **Verification / clearance:** 9/9 matched rows, three EXACT EH graphs and
+  three unmatched-body checks pass. Ordinary before/after link previews
+  against index `5ce093a71a` preserve 3/3 LINKS and 1,014 authored bytes.
+  Header debt is cleared only for these three sources. This is not a new
+  linked-byte gain, strict-closure receipt or census confirmation.
+- **Remaining:** the four Region3D queue entries retain their separate
+  copy-visibility, opaque 16-byte element, Coord3D lifetime and streamer
+  provider prerequisites, detailed in the evidence. The broader LINK-018
+  Coord3D member-growth and provider work remains open.
+
 ### LINK-019: `Rva0039B893` vtable mismatch across copy-ctor and default-ctor units blocks `ScoreKeeperPerFrameStatsDefaultResizeDeferred.cpp` linking
 
 **Status: Cleared. Updated: 2026-10-26; inspected revision: d831bc24031.**

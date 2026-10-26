@@ -5,6 +5,7 @@
 // Vector4 empty ctor (an inline or implicit Matrix3D ctor is not inlined here)
 // evidence: LINK BONUS 110B W3DBridgeBufferCtor waits only for this body; retail pushes 0xC8 0x114 with dtor 0x000DDA6E; calls ??_H 0x00001423 thrice with ctor 0x0047A6A9 for 3x0x10 rows at +0x3C +0x80 +0xBC; ZH donor W3DBridgeBuffer.h layout with Matrix3D as 3 Vector4 rows; BFME1 constructor donor for scalar defaults
 #include "ascii_string.h"
+#include "../../../../Libraries/Include/Lib/Region3D.h"
 
 class TextureClass
 {
