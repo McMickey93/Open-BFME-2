@@ -33,8 +33,7 @@ public:
 	int m_bfmeExtra;			// 0xc
 };
 
-extern "C" unsigned int strlen(const char *text);
-extern "C" char *strcpy(char *to, const char *from);
+#include <string.h>
 
 #pragma intrinsic(strlen, strcpy)
 
