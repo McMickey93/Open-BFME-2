@@ -266,7 +266,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp` | 231 | 28 (U=17, C=6, S=5) | 2026-10-26 at 766153ce00: current eight rows/241 B and one EH graph pass; ordinary preview retains 17 U, 6 C, 5 S and 0 linked bytes. TU approval remains 0 rows/1 mixed seed; see [routing handoff](../reverse/attempt_support/aiupdate-tu-approval-20261026/readme.md), LINK-062. |
 | `Code/Libraries/Source/WWVegas/WWLib/Rva00240230VectorInsertOverflow_Rva00541d10.cpp` | 231 | 8 (U=2, C=3, S=3) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDtor_Unresolved.cpp` | 230 | 3 (C=3) | 2026-10-25: aa31e9bac4 and paired current-provider checks clear 222 B and 14 public consumers (1,212 B); LINK-014. Census pending. |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00584405.cpp` | 225 | 3 (U=1, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00584405.cpp` | 225 | 3 (U=1, C=1, S=1) | 2026-10-26 (d0d3b5054d): still blocked. The element family is split across three placeholder names, and the copy-ctor pin 0x00583A1E is an assignment. Needs a family rename; see [LINK-064](linking_obstacles.md#link-064-placeholder-element-names-that-hide-the-retail-element-of-three-stl-families). |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001506BF.cpp` | 222 | 8 (C=4, S=4) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0015079D.cpp` | 222 | 8 (C=4, S=4) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0015087B.cpp` | 222 | 8 (C=4, S=4) | Open |
@@ -288,9 +288,9 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00587375_overflow.cpp` | 189 | 8 (U=2, C=4, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWSaveLoad/twiddler.cpp` | 187 | 11 (U=10, C=1) | Open |
 | `Code/GameEngine/Source/Common/Rva00787C20HashOwnerDestructor.cpp` | 186 | 8 (U=4, C=2, S=2) | Open |
-| `Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteRecVectorInsertOverflow.cpp` | 183 | 3 (C=1, S=2) | Open |
+| `Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteRecVectorInsertOverflow.cpp` | 183 | 3 (C=1, S=2) | 2026-10-26 (d0d3b5054d): still blocked. The real element is the `BfmeStringRecord002CF5B1` family. `ProductionPrerequisite.cpp`'s ZH view emits a wrong overflow and `_Construct`, and conflates 0x004EE1A9. See [LINK-064](linking_obstacles.md#link-064-placeholder-element-names-that-hide-the-retail-element-of-three-stl-families). |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00501B33.cpp` | 183 | 5 (U=3, C=1, S=1) | Open |
-| `Code/GameEngine/Source/Common/Rva00566695Assign.cpp` | 179 | 3 (C=2, S=1) | Open |
+| `Code/GameEngine/Source/Common/Rva00566695Assign.cpp` | 179 | 3 (C=2, S=1) | 2026-10-26 (d0d3b5054d): still blocked. The map value is a 0x18-byte two-tree record, not AsciiString (0x2C node; pair copy 0x00500839). The pair pin is wrong. See [LINK-064](linking_obstacles.md#link-064-placeholder-element-names-that-hide-the-retail-element-of-three-stl-families). |
 | `Code/Libraries/Source/WWVegas/WWMath/vehiclecurve.cpp` | 178 | 4 (U=3, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamageCtorModuleFactoryBody.cpp` | 177 | 5 (U=1, C=2, S=2) | Open |
 | `Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemCtorDeferred.cpp` | 173 | 4 (U=4) | Open |
