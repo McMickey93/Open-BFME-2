@@ -1543,6 +1543,15 @@ Updated: 2026-10-26; inspected revision: `766153ce00`.**
   link blockers (17 unresolved, six COMDAT, five selected against f995f30157).
 - **Clearance / census confirmation:** none. Neither a false reject nor a new
   matched, linked or debt-retirement gain is claimed.
+- **Independent identity attempt (2026-10-26, `a4cd5136e5`):**
+  [the const-tree lookup handoff](../reverse/attempt_support/aiupdate-tree-find-identity-20261026.md)
+  identifies unsigned retail comparisons at 0x00759410 versus the donor's
+  signed 70-byte copy. An unsigned blend-tuned trial reproduces that helper's
+  71 bytes but breaks the existing G7 vector-empty row; declaration-only and
+  direct-owner return forms hit VC7.1 C1001. All trials are discarded. Restored
+  source passes eight rows/241 B and its EXACT EH graph; the current-object
+  preview against d1f046749a retains 17 U, six C, five S and zero linked bytes.
+  The identity key and disputed routing remain open. No clearance is claimed.
 
 ## Investigation-specific validation limitation
 
