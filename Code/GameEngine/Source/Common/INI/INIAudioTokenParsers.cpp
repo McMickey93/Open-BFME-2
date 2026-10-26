@@ -54,7 +54,7 @@ void INI::parseAudioEventRTS(INI *ini, void *, void *store, const void *)
 #include "ascii_string.h"
 #include "Common/INIException.h"
 #include "Common/BfmeAudioEventPrefix136.h"
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *,const char *);
+#include <string.h>
 struct Rva00339184Ref : OpaqueRefElement4 {
  ~Rva00339184Ref(){if(referent)referent->Release_Ref();}
 };
@@ -146,7 +146,6 @@ void Rva00339184(const char *token,void *store)
  if(!((OpaqueRefElement4*)store)->referent) throw INIException(3,"Invalid Sound '%s'",token);
 }
 
-extern "C" __declspec(dllimport) int __cdecl _strnicmp(const char *,const char *,unsigned int);
 class Eva {public:int rva001DE78E(const AsciiString *name);};extern Eva *TheEva;
 struct Rva00339235Value {int eventID;OpaqueRefElement4 sound;};
 void Rva00339235(const char *token,void *store)
