@@ -371,7 +371,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_insertion_sort_s4sortelem20.cpp` | 45 | 3 (U=2, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | 2026-10-26: b313329af6 link_check LINKS (0 -> 44 B); truename/falsename defined beside their storage; LINK-071. |
 | `Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPower.cpp` | 40 | 3 (U=2, C=1) | 2026-10-25: current-provider preview still has protected SpecialPower dtor, findPositionAround and FindPositionOptions blockers; LINK-014. |
-| `Code/Libraries/Source/WWVegas/WW3D2/decalsys.cpp` | 39 | 8 (U=8) | Open |
+| `Code/Libraries/Source/WWVegas/WW3D2/decalsys.cpp` | 39 | 8 (U=8) | 2026-10-26, `042fe08592`: repair landed / awaiting census. The 28 unrowed Zero Hour decal-system bodies (their ProjectorClass / MatrixMapperClass callees were the U blockers) removed; the rowed LogicalDecalClass ctor 0x00143D40 kept. link_check LINKS 0 -> 39 B. See LINK-065. |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/ParkingPlaceBehavior.cpp` | 38 | 15 (U=8, C=6, S=1) | 2026-10-26 at 191cb9df0a: LINKS in preview 0 -> 38 B; census pending. BFME 2 has no ParkingPlaceBehavior (no module-name string in game.dat, only "GUI:ParkingPlacesFull"; no rowed method), so the ZH port bodies behind the 15 went; the unit emits vector<RunwayInfo>::size 0x001610A0 and operator[] 0x006BD4B0 by explicit instantiation over a TU-local 36-byte element. |
 | `Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/RailedTransportDockUpdate.cpp` | 37 | 10 (U=8, C=2) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/StickyBombUpdate.cpp` | 36 | 15 (U=13, C=1, S=1) | 2026-10-26 at ac1b73589c: LINKS in preview 0 -> 36 B; census pending. BFME 2 has no StickyBombUpdate (no "StickyBomb" string in game.dat, no row for its lifecycle methods), so the ZH port bodies behind the 15 went; the unit keeps the rowed getTargetObject 0x005EEDE6 and setTargetObject 0x005EEDB5 (AISpecialPowerPickers.cpp calls them). |
@@ -384,7 +384,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00423EB0.cpp` | 33 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00555D32.cpp` | 33 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00555D53.cpp` | 33 | 4 (C=2, S=2) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/wwfont.cpp` | 33 | 4 (U=4) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/wwfont.cpp` | 33 | 4 (U=4) | 2026-10-26, `2b3be7808e`: repair landed / awaiting census. The 11 unrowed Zero Hour WWFontClass bodies (their TRect<int> callees were the U blockers) removed; the rowed TPoint2D<int>(int,int) 0x00024800 emitted by explicit instantiation. link_check LINKS 0 -> 33 B. See LINK-065. |
 | `Code/GameEngine/Source/GameClient/GUI/Rva0057621ACtor.cpp` | 32 | 15 (U=11, C=3, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdate.cpp` | 32 | 8 (U=6, C=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00162860.cpp` | 32 | 3 (U=1, C=1, S=1) | Open |
