@@ -70,16 +70,7 @@ public:
 	unsigned char m_flag;
 };
 
-class GameLogic
-{
-public:
-	unsigned getFrame() { return m_frame; }
-	// LINK: same-body helper under a TU-unique name (identical inlined bytes); the getFrame copy loses to the first-in-order copy. No flags touched.
-	unsigned bfme_getFrame_9b0c3() { return m_frame; }
-private:
-	unsigned char m_pad[0x40];
-	unsigned m_frame;
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -171,7 +162,7 @@ private:
 UpdateSleepTime PoisonedBehavior::update()
 {
 	const PoisonedBehaviorModuleData* poisonedBehaviorModuleData = getPoisonedBehaviorModuleData();
-	unsigned now = TheGameLogic->bfme_getFrame_9b0c3();
+	unsigned now = TheGameLogic->getFrame();
 
 	if( m_poisonOverallStopFrame == 0 )
 	{
@@ -220,7 +211,7 @@ void PoisonedBehavior::onHealing( DamageInfo *damageInfo )
 void PoisonedBehavior::startPoisonedEffects( const DamageInfo *damageInfo )
 {
 	const PoisonedBehaviorModuleData* poisonedBehaviorModuleData = getPoisonedBehaviorModuleData();
-	unsigned now = TheGameLogic->bfme_getFrame_9b0c3();
+	unsigned now = TheGameLogic->getFrame();
 
 	// We are going to take the damage dealt by the original poisoner every so often for a while.
 	m_poisonDamageAmount = damageInfo->m_70;
