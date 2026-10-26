@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?Rva002A7A6F@PlayerList@@QAEPAVPlayer@@H@Z,
 // retail 0x002A7A6F, 49 bytes. Dedicated TU.
@@ -20,7 +21,7 @@
 
 typedef int Int;
 
-#define NULL 0
+#include <windows.h>
 
 class Player
 {

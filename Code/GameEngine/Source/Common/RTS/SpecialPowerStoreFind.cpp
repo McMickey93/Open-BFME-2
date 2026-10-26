@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS
+// platformsdk
 // stlport
 //
 // SpecialPowerStore lookups, ported from Zero Hour's GameEngine/Source/Common/
@@ -14,7 +15,7 @@
 
 typedef unsigned int UnsignedInt;
 typedef int Int;
-#define NULL 0
+#include <windows.h>
 
 class Overridable
 {

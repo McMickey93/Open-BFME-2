@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?findPlayerWithNameKey@PlayerList@@QAEPAVPlayer@@W4NameKeyType@@@Z,
 // retail 0x002A7A41, 46 bytes. Dedicated TU.
@@ -12,7 +13,7 @@
 
 typedef int Int;
 
-#define NULL 0
+#include <windows.h>
 
 enum NameKeyType
 {
