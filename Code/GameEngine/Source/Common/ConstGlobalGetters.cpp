@@ -10,6 +10,8 @@
 // The G00xxxxxx externs are address-derived placeholders (DIR32 sites the
 // verifier fills from retail) and carry no type information beyond int.
 
+struct IDirect3D8;
+
 // 0x00DB5FD4/0x00DB5FD8 are the data ledger's DX8Wrapper::ResolutionWidth
 // and ResolutionHeight (dx8wrapper.cpp's protected statics, @@1): a minimal
 // view of the real class reads them through an inline accessor.
@@ -17,18 +19,30 @@ class DX8Wrapper {
 public:
 	static __forceinline int Get_Device_Resolution_Width() { return ResolutionWidth; }
 	static __forceinline int Get_Device_Resolution_Height() { return ResolutionHeight; }
+	static __forceinline int Get_Texture_Bit_Depth() { return TextureBitDepth; }
+	static __forceinline IDirect3D8 *Get_D3D8() { return D3DInterface; }
 protected:
 	static int ResolutionWidth;
 	static int ResolutionHeight;
+	static int TextureBitDepth;			// 0x009B5FE0
+	static IDirect3D8 *D3DInterface;	// 0x009EDA30
+};
+
+// 0x009B5F9C is the data ledger's WW3D::TextureFilter (ww3d.cpp's private
+// static, @@0).
+class WW3D {
+public:
+	static __forceinline int Get_Texture_Filter() { return TextureFilter; }
+private:
+	static int TextureFilter;
 };
 
 // ?Rva000752F2Get@@YAHXZ @ 0x000752F2 (6B): returns global at 0x9EDA30.
 // Follows a ret (prev C3), no .rdata vtable slot, no direct callers,
 // no branch sources. Opaque address-derived name.
-extern int G009EDA30;
 int Rva000752F2Get(void)
 {
-	return G009EDA30;
+	return (int)DX8Wrapper::Get_D3D8();
 }
 
 // ?Rva00116E20Get@@YAHXZ @ 0x00116E20 (6B): returns global at 0x9B5FD4.
@@ -50,19 +64,17 @@ int Rva00116E30Get(void)
 // ?Rva00117C30Get@@YAHXZ @ 0x00117C30 (6B): returns global at 0x9B5FE0.
 // Follows int3 (prev CC), no .rdata vtable slot, no direct callers,
 // no branch sources. Opaque address-derived name.
-extern int G009B5FE0;
 int Rva00117C30Get(void)
 {
-	return G009B5FE0;
+	return DX8Wrapper::Get_Texture_Bit_Depth();
 }
 
 // ?Rva0011C450Get@@YAHXZ @ 0x0011C450 (6B): returns global at 0x9B5F9C.
 // Follows int3 (prev CC), no .rdata vtable slot, no direct callers,
 // no branch sources. Opaque address-derived name.
-extern int G009B5F9C;
 int Rva0011C450Get(void)
 {
-	return G009B5F9C;
+	return WW3D::Get_Texture_Filter();
 }
 
 // ?Rva0011D200Get@@YAHXZ @ 0x0011D200 (6B): returns global at 0x9EDA9C.
@@ -113,10 +125,3 @@ int Rva0011D240Get(void)
 {
 	return G009EDAAC;
 }
-
-// ?G009B5F9C@@3HA: the global at this VA is ?TextureFilter@WW3D@@0HA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G009B5F9C@@3HA=?TextureFilter@WW3D@@0HA")
-// ?G009B5F9C@@3HA: the global at VA 0xdb5f9c is ?TextureFilter@WW3D@@0HA.
-#pragma comment(linker, "/alternatename:?G009B5F9C@@3HA=?TextureFilter@WW3D@@0HA")
-// ?G009EDA30@@3HA: the global at VA 0xdeda30 is ?D3DInterface@DX8Wrapper@@1PAUIDirect3D8@@A.
-#pragma comment(linker, "/alternatename:?G009EDA30@@3HA=?D3DInterface@DX8Wrapper@@1PAUIDirect3D8@@A")
