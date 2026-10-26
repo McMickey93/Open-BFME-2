@@ -20,7 +20,7 @@ public:
 _STL::basic_ostream<char, _STL::char_traits<char> > &Rva001F6951Pad(
 	_STL::basic_ostream<char, _STL::char_traits<char> > &os,
 	unsigned int n);
-_STL::basic_ostream<char, _STL::char_traits<char> > &Rva001F696EPut(
+_STL::basic_ostream<char, _STL::char_traits<char> > &writeAsciiString(
 	_STL::basic_ostream<char, _STL::char_traits<char> > &os,
 	const AsciiString &s);
 
@@ -33,6 +33,6 @@ void Rva001F82EEWrite(
 	_STL::basic_ostream<char, _STL::char_traits<char> > &r = Rva001F6951Pad(os, pad);
 	r._M_put_nowiden(key);
 	r._M_put_nowiden(" = ");
-	_STL::basic_ostream<char, _STL::char_traits<char> > &r2 = Rva001F696EPut(os, value);
+	_STL::basic_ostream<char, _STL::char_traits<char> > &r2 = writeAsciiString(os, value);
 	r2._M_put_char('\n');
 }

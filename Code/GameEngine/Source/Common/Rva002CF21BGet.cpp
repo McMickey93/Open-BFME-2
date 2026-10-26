@@ -81,17 +81,17 @@ struct Mgr
 
 struct ThingFactory
 {
-	void *newDrawable(void *thingTemplate, int statusBits, int a3);
+	void *newDrawable(void *thingTemplate, int statusBits, int randomValue);
 };
 
-void *ThingFactory::newDrawable(void *thingTemplate, int statusBits, int a3)
+void *ThingFactory::newDrawable(void *thingTemplate, int statusBits, int randomValue)
 {
 	if (thingTemplate == 0)
 		return 0;
 	Result *draw;
 	{
 		Mgr *mgr = (Mgr *)((ClientFrameSubsystem *)TheGameClient);
-		draw = mgr->v28((int)thingTemplate, statusBits, a3);
+		draw = mgr->v28((int)thingTemplate, statusBits, randomValue);
 	}
 	Elem **module = draw->m_array;
 	if (module == 0)
@@ -99,9 +99,9 @@ void *ThingFactory::newDrawable(void *thingTemplate, int statusBits, int a3)
 	while (*module != 0) {
 		if (isLoadingMap)
 			Sleep(0);
-		Obj *o = (*module)->v16();
-		if (o != 0)
-			o->v00();
+		Obj *create = (*module)->v16();
+		if (create != 0)
+			create->v00();
 		++module;
 	}
 	return draw;

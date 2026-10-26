@@ -2576,3 +2576,9 @@ local,Rva00318333::rva00318768::o2,Rva00318333::rva00318768::oldCountdown,inferr
 function,?rva005C436E@Rva005C436E@@QAEXH@Z,?adjustCommandPoints@Rva005C436E@@QAEXH@Z,inferred,agree:nl-db91316593e6,Code/GameEngine/Source/Common/Rva005C436EDispatch.cpp,0x005C436E
 carry,Rva005C436E::rva005C436E::player,Rva005C436E::adjustCommandPoints::player,inferred,scope renamed by Rename rva005C436E to adjustCommandPoints (inferred),Code/GameEngine/Source/Common/Rva005C436EDispatch.cpp,0x005C436E
 class,Rva002860CFS,BurningCellTreeNode,inferred,agree:nl-3d15e2d7cea5,Code/GameEngine/Source/Common/Rva002860CF.cpp,
+local,EA::Allocator::GeneralAllocator::realloc::d,EA::Allocator::GeneralAllocator::realloc::dest,inferred,agree:nl-cc382008af06,Code/GameEngine/Source/Common/Rva000347A0Realloc.cpp,0x000347A0
+param,ThingFactory::newDrawable::a3,ThingFactory::newDrawable::randomValue,inferred,agree:nl-f9e71bfcaadb,Code/GameEngine/Source/Common/Rva002CF21BGet.cpp,0x002CF21B
+local,ThingFactory::newDrawable::o,ThingFactory::newDrawable::create,inferred,agree:nl-d1f9be8fac47,Code/GameEngine/Source/Common/Rva002CF21BGet.cpp,0x002CF21B
+function,?Rva001F696EPut@@YAAAV?$basic_ostream@DV?$char_traits@D@_STL@@@_STL@@AAV12@ABVAsciiString@@@Z,?writeAsciiString@@YAAAV?$basic_ostream@DV?$char_traits@D@_STL@@@_STL@@AAV12@ABVAsciiString@@@Z,inferred,agree:nl-d87dda9b97fb,Code/Libraries/Source/WWVegas/WWLib/Rva001F696EPut.cpp,0x001F696E
+carry,Rva001F696EPut::stringData,writeAsciiString::stringData,inferred,scope renamed by Rename Rva001F696EPut to writeAsciiString (inferred),Code/Libraries/Source/WWVegas/WWLib/Rva001F696EPut.cpp,0x001F696E
+carry,Rva001F696EPut::text,writeAsciiString::text,inferred,scope renamed by Rename Rva001F696EPut to writeAsciiString (inferred),Code/Libraries/Source/WWVegas/WWLib/Rva001F696EPut.cpp,0x001F696E
