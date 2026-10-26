@@ -1757,3 +1757,35 @@ Completed: Eliminated non-retail COMDAT copies of `clear()` and `~_Rb_tree_base(
 Remaining / next check: The two callees `0x002EE9E0` and `0x002EEA09` are rowed under placeholder names `?rva002EE9E0@Rva002EB416@@QAEXXZ` and `?rva002EEA09@Rva002EB416@@QAEXXZ` in `Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp` (and pinned in `symbols.csv`, which the plain link does not use). Resolving requires renaming the rowed providers to their template names or TU consolidation into retail `AIPathfind.cpp`.
 Clearance: Wrong COMDATs and imports cleared; remaining blockers isolated to provider naming.
 Census confirmation: awaiting next census.
+
+### LINK-060: one address rowed twice; the non-linking copy is an over-claim
+Status: Open (7 retired, leads below). Updated: 2026-10-26; inspected revision: e9bab0ff07; index d1f046749a.
+Evidence / affected units: a scan of `reverse/functions.csv` for `matched` rows sharing a `target_rva`
+(notes without alias/ICF/fold/dup-of/object-symbol) against `reverse/link_status.csv` finds addresses
+where one row's unit links and a second row's unit never did. The second row is usually an older
+address-named view, a BFME 1 donor port or an StlSweepR3 sweep instantiation.
+Completed (each `./build.sh` exact on the surviving owner, link_check LINKS for it, row recorded in
+`reverse/deleted_rows.csv`, re_log `converted`):
+- 0x00576DF1 `Rva00576DF1Ctor.cpp` (owner `Rva00576C4BDtor.cpp`, Impl ctor) 9caa4cbd11.
+- 0x0006047C `Rva0006047CSeq.cpp` (owner `MilesAudioManager.cpp`) dd45d8c862; its two
+  `g_Va00BBAB74/78` address globals are gone (`hatch_counters.py --update` not run).
+- 0x004C121B `BfmeConv892_Rva004C121B.cpp` (owner `SymbioticStructuresBodySlots.cpp`) 93ba3a07a8;
+  its `reverse/header_queue.tsv` GameLogic key now names a deleted source.
+- 0x000AF1C2, 0x005243FA, 0x00569450 (2360ac3cf8) and 0x005AE78A (476ee27be8): StlSweepR3
+  `uninitialized_fill_n` units (stable_sort over a 1-byte record, `#pragma optimize`); their
+  `__uninitialized_fill_n` pins, named only by those units, were dropped.
+Remaining / next check:
+- 0x0057621A `Rva0057621ACtor.cpp` (4 rows): owner `Rva00575F38Dtor.cpp` rows the Impl ctor and
+  funclets $L1049..$L1055, but `__ehhandler` 0x0079B403 and funclets 0x0079B3ED/0x0079B3F8 are rowed
+  only in the address-named unit; rehome them (tu_map has no approved unit for them) before retiring.
+- StlSweepR3 copies that now also link (LINK-035 repairs) duplicate placeholder rows:
+  0x00577EB2 (`RvaVectorDtorFamily.cpp`), 0x0022DCDA (`Rva0022DCDADtor.cpp`); also unlinked
+  0x000B0298, 0x001DE3E3, 0x001FDEBC, 0x0052BBD7, 0x00502645, 0x004F715B. Decide which row keeps
+  the address (the STL spelling may be the better name; respell callers) before dropping one.
+- Multi-row units holding a second copy: DozerAIUpdate.cpp (0x00488C48, 0x0048AEC6, 0x00489DE3,
+  0x00489E2E), ThingTemplate.cpp (0x00331578), WOLBuddyOverlay.cpp (0x002B70B3), GameFont.cpp
+  (0x00217607), R5VectorDtorEHFramedPolymorphic.cpp (0x002D0F65), ProductionPrerequisiteAssign.cpp
+  (0x00564CD4, 0x00565668, emitted COMDATs; its real blockers are op= copies).
+Clearance: the surviving owners link in preview (link_check against index d1f046749a); the retired
+units held 0 census-linked bytes, so no headline change is claimed.
+Census confirmation: not claimed.
