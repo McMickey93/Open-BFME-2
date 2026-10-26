@@ -101,7 +101,7 @@ public:
 	OpaqueOwnerInterface *m_258;
 };
 
-extern void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class Rva004885DE
 {

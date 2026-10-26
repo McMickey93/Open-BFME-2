@@ -7,7 +7,7 @@
 // nameToKey 0x0009FA65, findPlayerWithNameKey 0x002A7A41, ctor 0x0030F47A,
 // append* GameMessage rows; callers 0x0025E5F4 etc; chain unlock of 0x0030F47A.
 
-void *__cdecl operator new(unsigned int) throw();
+#include <new>
 
 #include "ascii_string.h"
 
