@@ -10,30 +10,16 @@ extern float g_008601E0;
 // g_008601E0: matched references place it at VA 0xc601e0 (retail .rdata value 0.03448276f).
 float g_008601E0 = 0.03448276f;
 
-class Transport
-{
-	char m_pad40E6C[0x40E6C];
-	int m_skip40E6C;
-	int m_40E70;
-	unsigned int m_dummy[30 * 5];
-	unsigned int m_vals410CC[30];
-
-public:
-	float rva004D5046() const;
-	float rva004D5002() const;
-	float rva004D508A() const;
-	float rva004D4FBE() const;
-	float rva004D4F7A() const;
-};
+#include "../../Include/GameNetwork/Transport.h"
 
 float Transport::rva004D5046() const
 {
 	float sum = 0.0f;
 	for (int i = 0; i < 30; ++i)
 	{
-		if (i == m_skip40E6C)
+		if (i == m_int40E6C)
 			continue;
-		sum += (float)m_vals410CC[i];
+		sum += (float)(unsigned int)m_stats5[i];
 	}
 	return sum * g_008601E0;
 }
@@ -43,9 +29,9 @@ float Transport::rva004D5002() const
 	float sum = 0.0f;
 	for (int i = 0; i < 30; ++i)
 	{
-		if (i == m_skip40E6C)
+		if (i == m_int40E6C)
 			continue;
-		sum += (float)m_dummy[60 + i];
+		sum += (float)(unsigned int)m_stats2[i];
 	}
 	return sum * g_008601E0;
 }
@@ -55,9 +41,9 @@ float Transport::rva004D508A() const
 	float sum = 0.0f;
 	for (int i = 0; i < 30; ++i)
 	{
-		if (i == m_skip40E6C)
+		if (i == m_int40E6C)
 			continue;
-		sum += (float)m_dummy[30 + i];
+		sum += (float)(unsigned int)m_stats1[i];
 	}
 	return sum * g_008601E0;
 }
@@ -67,9 +53,9 @@ float Transport::rva004D4FBE() const
 	float sum = 0.0f;
 	for (int i = 0; i < 30; ++i)
 	{
-		if (i == m_skip40E6C)
+		if (i == m_int40E6C)
 			continue;
-		sum += (float)m_dummy[90 + i];
+		sum += (float)(unsigned int)m_stats3[i];
 	}
 	return sum * g_008601E0;
 }
@@ -79,9 +65,9 @@ float Transport::rva004D4F7A() const
 	float sum = 0.0f;
 	for (int i = 0; i < 30; ++i)
 	{
-		if (i == m_skip40E6C)
+		if (i == m_int40E6C)
 			continue;
-		sum += (float)m_dummy[i];
+		sum += (float)(unsigned int)m_stats0[i];
 	}
 	return sum * g_008601E0;
 }

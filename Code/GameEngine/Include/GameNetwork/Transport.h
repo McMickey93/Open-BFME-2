@@ -40,6 +40,11 @@ public:
 	bool update(Rva00594DC0 *receiver);
 	bool doSend();
 	bool queueSend(NetPacketAddress *, const unsigned char *, int);
+	float rva004D5046() const;
+	float rva004D5002() const;
+	float rva004D508A() const;
+	float rva004D4FBE() const;
+	float rva004D4F7A() const;
 
 private:
 #pragma pack(push, 1)
