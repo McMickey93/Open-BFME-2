@@ -4,7 +4,8 @@
 
 #include "ascii_string.h"
 
-extern void *g_00DEC2D4;
+class AudioManager0029E159;
+extern AudioManager0029E159 *g_00DEC2D4;	// data ledger type at 0x00DEC2D4
 
 extern "C" void __cdecl free(void *);
 
@@ -116,5 +117,3 @@ void Rva000B9DD9::rva000B9DD9(const AsciiString &asciiString)
 		*(unsigned char *)((char *)c + 4) = b;
 	}
 }
-// ?g_00DEC2D4@@3PAXA: the global at VA 0xdec2d4 is ?g_00DEC2D4@@3PAVAudioManager0029E159@@A.
-#pragma comment(linker, "/alternatename:?g_00DEC2D4@@3PAXA=?g_00DEC2D4@@3PAVAudioManager0029E159@@A")
