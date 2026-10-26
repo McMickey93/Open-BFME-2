@@ -1,45 +1,45 @@
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
-// ?rva000B6498@Rva000B6498@@QAEXPAURva000B6498Node@@@Z, retail 0x000B6498, 45 bytes.
+// ?rva000B6498@Rva000B6498@@QAEXPAURedBlackTreeNode@@@Z, retail 0x000B6498, 45 bytes.
 // __thiscall method freeing a linked structure: if arg null return; else loop
 // recursing on node+0xc then freeing the node via rowed _free 0x00030830 and
 // advancing to node+8. Twin of rowed 0x000B646B (same 45B shape). Self call at
 // 0x000B64AA; caller 0x000B9332. Honest address name.
 extern "C" void __cdecl free(void *block);
 
-struct Rva000B6498Node
+struct RedBlackTreeNode
 {
 	int m0;
 	int m1;
-	struct Rva000B6498Node *m_next;
-	struct Rva000B6498Node *m_child;
+	struct RedBlackTreeNode *m_next;
+	struct RedBlackTreeNode *m_child;
 };
 
-struct Rva000B6498Head
+struct RedBlackTreeHeader
 {
 	int m00;
-	struct Rva000B6498Node *m04;
-	struct Rva000B6498Head *m08;
-	struct Rva000B6498Head *m0c;
+	struct RedBlackTreeNode *m04;
+	struct RedBlackTreeHeader *m08;
+	struct RedBlackTreeHeader *m0c;
 };
 
 class Rva000B6498
 {
 public:
-	void rva000B6498(struct Rva000B6498Node *node);
+	void rva000B6498(struct RedBlackTreeNode *node);
 	void rva000B9324();
 private:
-	struct Rva000B6498Head *m_head;
+	struct RedBlackTreeHeader *m_head;
 	int m_count;
 };
 
-void Rva000B6498::rva000B6498(struct Rva000B6498Node *node)
+void Rva000B6498::rva000B6498(struct RedBlackTreeNode *node)
 {
 	if (!node)
 		return;
 	do
 	{
 		rva000B6498(node->m_child);
-		struct Rva000B6498Node *next = node->m_next;
+		struct RedBlackTreeNode *next = node->m_next;
 		free(node);
 		node = next;
 	} while (node);

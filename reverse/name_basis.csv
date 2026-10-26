@@ -2570,3 +2570,5 @@ class,Rva00151632Link,FXShaderAssetImpl,inferred,agree:nl-5e48b83f3700,Code/Game
 member,Glob004E93E8::m_860,Glob004E93E8::m_forceAI,inferred,agree:nl-948b13a7c586,Code/GameEngine/Source/Common/Rva004E93E8Find.cpp,
 local,Rotate_Z::tmp1,Rotate_Z::rowX,inferred,agree:nl-4a0899f41fa2,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferAddProp.cpp,
 member,Filter::m_04,Filter::m_weaponTemplate,inferred,agree:nl-c6a5f589f99d,Code/GameEngine/Source/GameLogic/Object/Rva002CA9CAContains.cpp,
+class,Rva000B6498Node,RedBlackTreeNode,inferred,agree:nl-9844fa86a2e4,Code/GameEngine/Source/Common/Rva000B6498Free.cpp,
+class,Rva000B6498Head,RedBlackTreeHeader,inferred,agree:nl-617a6ba18179,Code/GameEngine/Source/Common/Rva000B6498Free.cpp,
