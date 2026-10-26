@@ -10,7 +10,7 @@
 // constructor. /G7 for the cmp-mem create-test (load-hoist family).
 
 class Vector4;
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 template<class T>
 class ShareBufferClass

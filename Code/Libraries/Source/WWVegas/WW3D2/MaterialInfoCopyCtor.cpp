@@ -16,7 +16,7 @@ public:
  VertexMaterialClass &operator=(const VertexMaterialClass &);
  char storage[0x6c];
 };
-void *__cdecl operator new(unsigned int);
+#include <new>
 
 class TextureClass
 {

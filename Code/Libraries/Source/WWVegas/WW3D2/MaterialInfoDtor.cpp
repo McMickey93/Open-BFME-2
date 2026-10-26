@@ -6,7 +6,7 @@
 // final POD vector cleanup; TextureClass::Release_Ref can still unwind.
 
 class VertexMaterialClass;
-void __cdecl operator delete[](void *) throw();
+#include <new>
 
 class TextureClass
 {
