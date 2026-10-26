@@ -40,6 +40,13 @@ struct Rva004F9185Cmp
 // the established converting-handle comparison and owning-reference ABI.
 // The volatile cursor constrains compiler reloads to retail's stack home;
 // it is not evidence of an original volatile qualifier or concurrent access.
+// copy_backward<TreeHintRef00217D4C *> is rowed at 0x004F6FE1 in
+// StlSweepW5Rva004F6FE1.cpp; declaration-only so __merge_backward calls that
+// body and this TU emits no second (non-retail) copy.
+namespace _STL {
+template <> TreeHintRef00217D4C *copy_backward<TreeHintRef00217D4C *, TreeHintRef00217D4C *>(
+	TreeHintRef00217D4C *, TreeHintRef00217D4C *, TreeHintRef00217D4C *);
+}
 namespace _STL {
 template<> void __unguarded_linear_insert<TreeHintRef00217D4C *,TreeHintRef00217D4C,Rva004F9185Cmp>(TreeHintRef00217D4C *last,TreeHintRef00217D4C value,Rva004F9185Cmp cmp) {
  TreeHintRef00217D4C *volatile next=last-1;

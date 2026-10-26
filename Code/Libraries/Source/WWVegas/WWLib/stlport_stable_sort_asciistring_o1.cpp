@@ -25,11 +25,11 @@ static inline const int &min(const int &a, const int &b)
 #include <algorithm>
 // bfme link decl-only begin
 // Retail's copy_backward call lands on 0x004F6FE1, rowed as
-// __copy_backward_aux<Rva004F6FE1Element **>: forward to it with this call shape.
-struct Rva004F6FE1Element;
-namespace _STL { template <> Rva004F6FE1Element ** __copy_backward_aux<Rva004F6FE1Element **,Rva004F6FE1Element **>(Rva004F6FE1Element **,Rva004F6FE1Element **,Rva004F6FE1Element **,const __true_type &); }
+// copy_backward<TreeHintRef00217D4C *> (an ICF fold): forward to it with this call shape.
+struct TreeHintRef00217D4C;
+namespace _STL { template <> TreeHintRef00217D4C * copy_backward<TreeHintRef00217D4C *,TreeHintRef00217D4C *>(TreeHintRef00217D4C *,TreeHintRef00217D4C *,TreeHintRef00217D4C *); }
 namespace _STL { template <> __declspec(dllimport) __forceinline AsciiString * copy_backward<AsciiString *, AsciiString *>(AsciiString *a0, AsciiString *a1, AsciiString *a2)
-{ return ((AsciiString * (__cdecl *)(AsciiString *,AsciiString *,AsciiString *))(Rva004F6FE1Element ** (__cdecl *)(Rva004F6FE1Element **,Rva004F6FE1Element **,Rva004F6FE1Element **,const __true_type &))&__copy_backward_aux<Rva004F6FE1Element **,Rva004F6FE1Element **>)(a0, a1, a2); } }
+{ return ((AsciiString * (__cdecl *)(AsciiString *,AsciiString *,AsciiString *))(TreeHintRef00217D4C * (__cdecl *)(TreeHintRef00217D4C *,TreeHintRef00217D4C *,TreeHintRef00217D4C *))&copy_backward<TreeHintRef00217D4C *,TreeHintRef00217D4C *>)(a0, a1, a2); } }
 // bfme link decl-only end
 
 // Retail calls each of these helpers out of line at an address the ledger

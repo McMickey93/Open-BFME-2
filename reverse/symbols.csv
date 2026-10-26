@@ -1092,7 +1092,6 @@ name,address,notes
 ??$copy_backward@PAUS4SortElem8@@PAU1@@_STL@@YAPAUS4SortElem8@@PAU1@00@Z,0x004C72FE,ICF with the rowed 8-byte copy_backward; REL32 read from the score-row linear insert 0x005EC8D0 at 0x005EC8ED
 ??$copy_backward@PAUS4SortElem8B@@PAU1@@_STL@@YAPAUS4SortElem8B@@PAU1@00@Z,0x004C72FE,ICF with the rowed 8-byte copy_backward (instantiation B)
 ??$copy_backward@PAUStringLookUp@@PAU1@@_STL@@YAPAUStringLookUp@@PAU1@00@Z,0x004C72FE,ICF alias: copy_backward over StringLookUp pointers compiled under the StringLookUp sort TU flags is byte-identical to the rowed 27B body here; called by __linear_insert 0x002E6232
-??$copy_backward@PAUTreeHintRef00217D4C@@PAU1@@_STL@@YAPAUTreeHintRef00217D4C@@PAU1@00@Z,0x004F6FE1,calls TreeHintRef ptrs 0x004F6D2E and called by linear_insert 0x004F7883
 ??$copy_backward@PAVAsciiString@@PAV1@@_STL@@YAPAVAsciiString@@PAV1@00@Z,0x004F6FE1,address read from the REL32 displacement at a placed body
 ??$copy_backward@PAVRva0040CB11Entry@@PAV1@@_STL@@YAPAVRva0040CB11Entry@@PAV1@00@Z,0x0040DA59,"call-site agreement: the matched __linear_insert 0x0040E333 calls it with (first, last, last + 1) as STLport copy_backward; the body is the three-argument wrapper that passes the pointer tag by reference to the 0x0040D66B layer over the rowed element loop 0x0040D251"
 ??$copy_backward@PAVRva005D5A7E@@PAV1@@_STL@@YAPAVRva005D5A7E@@PAV1@00@Z,0x0051C94D,ICF with the 12-byte BfmeE12 body rowed here (bitwise 12-byte records): the Rva005D5A7E sort (sort 0x005D6A1B) calls it
@@ -12600,7 +12599,6 @@ rva009C7380WeightPairs,0x009B84E0
 ??$__copy_backward@PAURva0030B378Element@@PAU1@H@_STL@@YAPAURva0030B378Element@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x005B0505,
 ??4Rva005FE0A6Element@@QAEAAU0@ABU0@@Z,0x005FDEC7,
 ??1Rva00002926Element@@QAE@XZ,0x0000267B,
-??$__copy_backward_ptrs@PAPAURva004F6FE1Element@@PAPAU1@@_STL@@YAPAPAURva004F6FE1Element@@PAPAU1@00ABU__true_type@0@@Z,0x004F6D2E,
 ??0Rva0020F0B8Element@@QAE@ABU0@@Z,0x000365F0,
 ?insert@?$list@URva004390F7Element@@V?$allocator@URva004390F7Element@@@_STL@@@_STL@@QAE?AU?$_List_iterator@URva004390F7Element@@U?$_Nonconst_traits@URva004390F7Element@@@_STL@@@2@U32@ABURva004390F7Element@@@Z,0x004390A2,
 ??1Rva002CFBAEElement@@QAE@XZ,0x004F5115,
