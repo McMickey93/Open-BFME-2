@@ -733,7 +733,7 @@ authored-byte previews or commit-title gains into a projected headline.
   2,992 seconds with no final drift or new unresolved references. Publication
   controls also pass against the rebased reference inputs. This is scoped closure
   evidence, not a new current-master census headline.
-- **Quantizer endpoint layout repaired / awaiting measurement (2026-10-26,
+- **Quantizer endpoint layout cleared in the fixed comparison (2026-10-26,
   source base `0044debbb5`):** the
   [native layout proof](../reverse/attempt_support/vp6-quantizer-layout-link-20261026/readme.md)
   puts the existing 256-byte scan table directly after the correction array,
@@ -742,10 +742,18 @@ authored-byte previews or commit-title gains into a projected headline.
   biased end at 532, with unchanged contribution size and alignment. Normal
   controls pass the complete 945-byte parent, all 16 initializers and all 26
   native data references; the expanded two-body control also preserves the
-  unchanged 185-byte quantize.cpp caller. Its pre-existing scan+260 reference
-  to the separate IdentityIndex owner remains a placement prerequisite and is
-  included in the pending full comparison. No new name, pin, header or data
-  value is introduced. Authoritative credit and whole-chain clearance are pending.
+  unchanged 185-byte quantize.cpp caller. The authoritative comparison
+  `f012cbcc5e` to `d8d65b08cc` gains **1,538 placed closed-strict bytes** in
+  VP6_init_quantizer (945), VP6_UpdateQC (93) and VP6_quantize_c (500), with
+  zero losses. Exactly one of 23,460 canonical objects changes. Independent
+  reconstruction reproduces all 98,202 rows and the 1,705,216-byte credit;
+  25 roots are additionally re-proved. The process exits zero after 3,626
+  seconds with no final drift or new unresolved references. The unchanged
+  quantize.cpp caller loses its old backward-map failure but still has the
+  forward-map failure on scan+260 toward the separate IdentityIndex owner;
+  its actual witness is retained. No new name, pin, header or data value is
+  introduced. This subset is cleared in the fixed comparison; whole-chain
+  clearance and a current-master census remain pending (LINK-008/017).
 - **Remaining / next check:** shader/filter root-object ownership remains
   open. The [current witnesses](../reverse/attempt_support/vp6-filter-scratch-link-20261025/remaining-witnesses.json)
   show InitPostProcessing, PostProcMachineSpecificConfig and

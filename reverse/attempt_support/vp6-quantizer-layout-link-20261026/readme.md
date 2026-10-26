@@ -34,8 +34,9 @@ used to hide that prerequisite. Keep its full closure in the next comparison;
 require no loss of previously credited bytes. This repair claims only the
 correction-to-scan edge, not the whole native table chain.
 
-The full fixed comparison against f012cbcc5e is pending. No prospective credit,
-new function coverage, current-master census or runtime pass is claimed here.
+At source-commit time the full comparison against f012cbcc5e was pending;
+no prospective credit was claimed. The completed scoped result follows below.
+No new function coverage, current-master census or runtime pass is claimed.
 The private diagnostics are under build/vp6-quantizer-layout-link-20261026/.
 
 The first byte-exact order put the scalars after the adjacent arrays. Tracking
@@ -50,3 +51,38 @@ superseded ordering; after-native-proof.json and final-gate.txt prove the final
 source. No second add_match or attempt-log record was made: the single original
 945-byte match record remains accurate. source-finalization.json records the
 additional layout work separately from that initial record.
+
+The completed authoritative comparison f012cbcc5e -> d8d65b08cc
+changes unique placed closed-strict credit from 1,703,678 to 1,705,216 bytes.
+The gain is 1,538 bytes in 3 rows, with zero losses and zero new
+function coverage. Exactly one of 23,460 canonical objects changes; all other
+23,459 agree. The target is placed and closed-strict. The actual runner
+exits zero after 3626 seconds, with zero final drift and new unresolved
+references, no missing objects or failed compiles, and no stale warm start.
+This is a fixed-comparison receipt, not a new current-master census.
+The unchanged quantization-error caller is still closure-blocked; its actual status
+and reachable failures are retained in remaining-caller-witness.json. Each
+gaining row's previous blockers and complete passing closure are retained in
+beneficiary-closure.json. Source work finalized at t=22 minutes, including
+the layout review after the initial t=11 match record. Measurement time is
+recorded separately; no repeated match record was made.
+
+The three gaining rows are VP6_init_quantizer (945 bytes), VP6_UpdateQC (93)
+and VP6_quantize_c (500). All three now have placed, self-strict and closed-strict
+status. The unchanged 185-byte GetQuantizedCoeffsMSE_RD loses its prior backward
+conflict; its forward-map failure on scan+260 remains, so it is not counted.
+All other 23,459 canonical objects agree, including both gaining caller objects.
+
+The independent report reproduces the 1,705,216-byte credit and every one of
+98,202 status rows; it additionally forces and rechecks 25 closure roots.
+The bound receipt/graph/tool hashes are retained in
+independent-closure-verification.json. The fixed comparison uses the same
+32774ab03393709a7f14331ba8d98d281a55ffd9 reference in both states, while the
+ordinary source controls passed against production reference
+001ccd8e27686e9887235b62ff797627f2dde7f5. No input was silently substituted.
+
+The remaining native table chain and the separately recorded import-twin
+prerequisite stay open. The complete game's no-FORCE/no-stubs/runtime exit test
+is not met: the fixed receipt still records five forced duplicate symbols
+(ten diagnostics), and no runtime pass is claimed. Current-master confirmation
+belongs to the next normal census; no extra census or nightly runner was used.
