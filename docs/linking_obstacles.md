@@ -122,6 +122,15 @@ authored-byte previews or commit-title gains into a projected headline.
   repairs, not a new linking gain; the joint command retains INI's separate
   historical-index blockers. Four identity keys remain, with the narrow EH
   retirement discrepancy tracked in LINK-061.
+- **Stale vector-clear identity key retired (2026-10-27 integration):**
+  [the overflow caller check](../reverse/attempt_support/vector-overflow-identity-retirement-20261026.md)
+  revalidates the unchanged caller at 0x0048D48F in its current
+  FlammableUpdate.cpp owner. Normal builds pass all 89 rows in the five-source
+  cohort, including the owner's ten rows, and 38 rows in three refreshed
+  providers. The owning retirement tool removes the obsolete 0x000C060A
+  overflow-to-clear key; the separate push_back finding remains registered.
+  Historical preview was already clean (178 -> 178 bytes). No application
+  identity, new C++ conversion or census-linked-byte gain is claimed.
 - **Clearance / census confirmation:** graphics ordinary-preview scope cleared
   at the revision above; other families and census confirmation remain pending.
   Keep individual repair previews separate from later census confirmation.
