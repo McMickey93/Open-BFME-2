@@ -19084,9 +19084,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00569450.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005838DC.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005838DC.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005838DC.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00587752.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00587752.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00587752.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AE78A.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AE78A.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AE78A.cpp	"t",on	1
