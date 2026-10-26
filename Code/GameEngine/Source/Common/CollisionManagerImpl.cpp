@@ -51,7 +51,7 @@ public:
 	~Rva009A45A0CollisionData();
 };
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 struct Rva009A3300Node
 {

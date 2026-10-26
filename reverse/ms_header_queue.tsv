@@ -306,13 +306,11 @@ Code/GameEngine/Source/Common/BfmeConv1447.cpp	drop-in candidate	same	1	1	0	0	0	
 Code/GameEngine/Source/Common/BfmeConv2034.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sqrt:same
 Code/GameEngine/Source/Common/BfmeIntVecG.h	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/Common/BfmeSubobject00229875Clear.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
-Code/GameEngine/Source/Common/BfmeThreeHundredFiftyThree.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/Common/BfmeThreeHundredTwo.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/BfmeTwoHundredNinety.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/BfmeTwoHundredNinetyFive.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
 Code/GameEngine/Source/Common/BfmeTwoHundredNinetySix.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/BfmeWideResultTeardown.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
-Code/GameEngine/Source/Common/CollisionManagerImpl.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/CommandLineRva003B998E.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	atoi:same
 Code/GameEngine/Source/Common/ConnectionManagerAttachTransport.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/ConnectionManagerInit.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same

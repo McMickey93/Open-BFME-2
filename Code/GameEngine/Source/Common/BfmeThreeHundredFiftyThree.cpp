@@ -1,6 +1,6 @@
 extern "C" unsigned char bfmeVftUB[];
 
-void __cdecl operator delete[](void *block);
+#include <new>
 
 class BfmeThingUB
 {
