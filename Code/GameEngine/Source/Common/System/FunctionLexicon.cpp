@@ -80,6 +80,8 @@ public:
 
 // ---- from Code/GameEngine/Source/Common/System/FunctionLexicon.cpp
 
+// ---- from Code/GameEngine/Source/Common/System/FunctionLexicon.cpp
+
 void *FunctionLexicon::keyToFunc(NameKeyType key, TableEntry *table)
 {
 	if (key == NAMEKEY_INVALID)
@@ -169,10 +171,6 @@ bool Rva002D22CA::rva002D22D5()
 	return ok;
 }
 
-// tu-skeleton: 0x002D22AC 30B ??0Rva002D22CA@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva002D22CACtor.cpp (not merged yet)
-
-// tu-skeleton: 0x002D22CA 11B ??1Rva002D22CA@@UAE@XZ -- matched in Code/GameEngine/Source/Common/GameEngineDeletingBaseDerived.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva00DFF024RegistryLookup56.cpp
 
 void *Rva00DFF024Registry::lookup56(int a, int b)
@@ -196,3 +194,27 @@ void *Rva00DFF024Registry::lookup34(int a, int b)
     }
     return lookup(a, b);
 }
+
+// ---- from Code/GameEngine/Source/Common/Rva002D22CACtor.cpp
+
+//
+// ??0Rva002D22CA@@QAE@XZ
+// RVA 0x002D22AC size 30. Ctor calls SubsystemInterface ctor at 0x1B4E63
+// via pin then stores derived vtable 0x00802A20 and zeroes 48B tail at +0x0C
+// via 12-int loop lowered to rep stosd with lea before xor. Evidence: vtable
+// store names Rva002D22CA per packet; base layout 12B from
+// GameEngineDeletingBaseDtor.cpp; unblocks 0x4CA3A; neighbours in
+// GameEngineDeletingBaseDerived.cpp share /O1 /MD; loop (not memset) keeps
+// retail lea-xor order.
+
+// Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
+// The native header GameEngineDeletingBaseDerived.cpp (which defines ~Rva002D22CA)
+// uses: flag +0x04, name +0x08 and its fourteen slots, so both TUs emit one table.
+
+Rva002D22CA::Rva002D22CA() : SubsystemInterface()
+{
+	for (int i = 0; i < 12; i++)
+		((int *)m_tables)[i] = 0;
+}
+
+// tu-skeleton: 0x002D22CA 11B ??1Rva002D22CA@@UAE@XZ -- matched in Code/GameEngine/Source/Common/GameEngineDeletingBaseDerived.cpp (not merged yet)

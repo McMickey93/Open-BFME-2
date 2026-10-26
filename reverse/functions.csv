@@ -25409,7 +25409,7 @@ _FilterBlockBil_8_wmt,,0x001D7C80,204,Code/Libraries/Source/VP6/FilterBlockBil8W
 ??0Rva005965A5@@QAE@XZ,,0x005965A5,33,Code/GameEngine/Source/Common/Rva005965A5Ctor.cpp,matched,Derived ctor via base plus vector
 ??0AIEconomyStats@@QAE@H@Z,,0x00596366,35,Code/GameEngine/Source/Common/Rva0025BFE3Derived.cpp,matched,Rva00596389 ctor via base plus ints
 ?Rva00596095Get@@YGHPAX@Z,,0x00596095,44,Code/GameEngine/Source/Common/Rva00596095Bits.cpp,matched,Bit predicate via three status bytes
-??0Rva002D22CA@@QAE@XZ,,0x002D22AC,30,Code/GameEngine/Source/Common/Rva002D22CACtor.cpp,matched,vtable 0x00802A20 names Rva002D22CA ctor; base 12B via Dtor.cpp; unblocks 0x4CA3A; loop keeps lea-xor order
+??0Rva002D22CA@@QAE@XZ,,0x002D22AC,30,Code/GameEngine/Source/Common/System/FunctionLexicon.cpp,matched,vtable 0x00802A20 names Rva002D22CA ctor; base 12B via Dtor.cpp; unblocks 0x4CA3A; loop keeps lea-xor order
 ?rva002D2D13@Rva002D2D13@@QAEXPAXH@Z,,0x002D2D13,32,Code/GameEngine/Source/Common/Rva002D2D13Calls.cpp,matched,virtual slot 31 twice with this and this+4; caller 0x2D649B; O1 gives eax
 ?setOrientation@Thing@@QAEXM@Z,,0x0030AB9D,480,Code/GameEngine/Source/Common/Thing/ThingSetOrientation.cpp,matched,BFME1 donor Thing setOrientation via 0x108 KINDOF and 0x48 align slot
 ?rva00469075@Rva00469075@@QAEXM@Z,,0x00469075,52,Code/GameEngine/Source/Common/Rva00469075Setter.cpp,matched,chain via setOrientation 0x30AB9D and setWakeFrame 1
