@@ -487,7 +487,6 @@ extern GameTextInterface *TheGameText;
 
 void __cdecl GadgetStaticTextSetText(GameWindow *win, UnicodeString text);
 
-extern unsigned int g_Va00E05F64;
 extern unsigned int g_00E05F60;
 
 void ControlBar::updateConstructionTextDisplay(Object *obj)
