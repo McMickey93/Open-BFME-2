@@ -823,7 +823,6 @@ Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTextureEnd.cpp	wrong-na
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTextureEnd.cpp	wrong-name	_textureStatisticsString	0x009EE91C
 Code/Libraries/Source/WWVegas/WW3D2/DynamicVBAccessClassDeinit.cpp	wrong-name	?bfmeDynamicVBInUse@@3PA_NA	0x009F29F0
 Code/Libraries/Source/WWVegas/WW3D2/DynamicVBAccessClassDeinit.cpp	wrong-name	?bfmeDynamicVBOffsets@@3PAGA	0x009F2A44
-Code/Libraries/Source/WWVegas/WW3D2/MeshModelInitNPatch.cpp	wrong-name	?BfmeCurrentCaps@@3PAEA	0x009EDA7C
 Code/Libraries/Source/WWVegas/WW3D2/Rva00075655SetShader.cpp	wrong-name	?g_00DE1F54@@3HA	0x009E1F54
 Code/Libraries/Source/WWVegas/WW3D2/Rva00118990Init.cpp	wrong-name	?g_Va00DB5FBC@@3HA	0x009B5FBC
 Code/Libraries/Source/WWVegas/WW3D2/Rva00118990Init.cpp	wrong-name	?g_Va00DB5FC0@@3HA	0x009B5FC0

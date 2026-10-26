@@ -138,7 +138,6 @@ struct SideIndexInfo
 
 
 
-extern unsigned char *BfmeCurrentCaps;
 extern HashTemplateClass<Vector3,unsigned> LocationHash;
 extern HashTemplateClass<Vector3,unsigned> DuplicateLocationHash;
 extern HashTemplateClass<TriangleSide,SideIndexInfo> SideHash;
@@ -151,7 +150,7 @@ extern HashTemplateClass<TriangleSide,SideIndexInfo> SideHash;
 // the unique-coordinate, duplicate-coordinate, and triangle-side tables.
 void MeshModelClass::Init_For_NPatch_Rendering()
 {
-	if (!BfmeCurrentCaps[0x13b]) return;
+	if (!reinterpret_cast<const unsigned char *>(DX8Wrapper::Get_Current_Caps())[0x13b]) return;
 	if (!Get_Flag(MeshGeometryClass::ALLOW_NPATCHES)) return;
 
 	struct BfmeMeshGeometryFields {
