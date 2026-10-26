@@ -1,3 +1,5 @@
+// 14 further clearers formerly here are rowed as their matched parents'
+// /G7 guard-rollback $L funclets (EXACT EH graphs); see reverse/deleted_rows.csv.
 // Fourteen B2-native flag-word clearers across fourteen .data flag words
 // of one contiguous run (0x00781323-0x00781D66):
 //
@@ -18,115 +20,6 @@ unsigned int g_Va00E0282C;
 extern unsigned int g_Va00E02844;
 // g_Va00E02844: matched references place it at VA 0xe02844 (zero-filled .bss).
 unsigned int g_Va00E02844;
-extern unsigned int g_Va00E028CC;
-// g_Va00E028CC: matched references place it at VA 0xe028cc (zero-filled .bss).
-unsigned int g_Va00E028CC;
-extern unsigned int g_Va00E028D4;
-// g_Va00E028D4: matched references place it at VA 0xe028d4 (zero-filled .bss).
-unsigned int g_Va00E028D4;
-extern unsigned int g_Va00E028E4;
-// g_Va00E028E4: matched references place it at VA 0xe028e4 (zero-filled .bss).
-unsigned int g_Va00E028E4;
-extern unsigned int g_Va00E028EC;
-// g_Va00E028EC: matched references place it at VA 0xe028ec (zero-filled .bss).
-unsigned int g_Va00E028EC;
-extern unsigned int g_Va00E02910;
-// g_Va00E02910: matched references place it at VA 0xe02910 (zero-filled .bss).
-unsigned int g_Va00E02910;
-extern unsigned int g_Va00E02918;
-// g_Va00E02918: matched references place it at VA 0xe02918 (zero-filled .bss).
-unsigned int g_Va00E02918;
-extern unsigned int g_Va00E02920;
-// g_Va00E02920: matched references place it at VA 0xe02920 (zero-filled .bss).
-unsigned int g_Va00E02920;
-extern unsigned int g_Va00E02928;
-// g_Va00E02928: matched references place it at VA 0xe02928 (zero-filled .bss).
-unsigned int g_Va00E02928;
-extern unsigned int g_Va00E02930;
-// g_Va00E02930: matched references place it at VA 0xe02930 (zero-filled .bss).
-unsigned int g_Va00E02930;
-extern unsigned int g_Va00E02938;
-// g_Va00E02938: matched references place it at VA 0xe02938 (zero-filled .bss).
-unsigned int g_Va00E02938;
-extern unsigned int g_Va00E02940;
-// g_Va00E02940: matched references place it at VA 0xe02940 (zero-filled .bss).
-unsigned int g_Va00E02940;
-extern unsigned int g_Va00E0294C;
-// g_Va00E0294C: matched references place it at VA 0xe0294c (zero-filled .bss).
-unsigned int g_Va00E0294C;
-extern unsigned int g_Va00E02958;
-// g_Va00E02958: matched references place it at VA 0xe02958 (zero-filled .bss).
-unsigned int g_Va00E02958;
-
-unsigned int Rva00781323ClearFlag(void)
-{
-	return g_Va00E02844 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva007816EBClearFlag(void)
-{
-	return g_Va00E028CC &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781B3FClearFlag(void)
-{
-	return g_Va00E028D4 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781B83ClearFlag(void)
-{
-	return g_Va00E028E4 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781BACClearFlag(void)
-{
-	return g_Va00E028EC &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781C62ClearFlag(void)
-{
-	return g_Va00E02910 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781C79ClearFlag(void)
-{
-	return g_Va00E02918 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781C90ClearFlag(void)
-{
-	return g_Va00E02920 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781CA7ClearFlag(void)
-{
-	return g_Va00E02928 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781CBEClearFlag(void)
-{
-	return g_Va00E02930 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781CD5ClearFlag(void)
-{
-	return g_Va00E02938 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781CECClearFlag(void)
-{
-	return g_Va00E02940 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781D4FClearFlag(void)
-{
-	return g_Va00E0294C &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00781D66ClearFlag(void)
-{
-	return g_Va00E02958 &= 0xFFFFFFFEu;
-}
 
 unsigned int Rva007810A7ClearFlag(void)
 {
