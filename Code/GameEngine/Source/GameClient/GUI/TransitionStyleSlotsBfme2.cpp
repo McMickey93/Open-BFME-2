@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 // Unfilled update/draw slots of the BFME 2 window transitions in the vtable
 // run 0x008163D8..0x008166D8, ported from Zero Hour's
 // GameWindowTransitionsStyles.cpp where a donor body exists. Slot order is
@@ -58,12 +59,10 @@ typedef unsigned char UnsignedByte;
 typedef int Color;
 
 #ifndef NULL
-#define NULL 0
+#include <windows.h>
 #endif
 
 #ifndef FALSE
-#define FALSE 0
-#define TRUE 1
 #endif
 
 inline Color GameMakeColor(UnsignedByte red, UnsignedByte green, UnsignedByte blue, UnsignedByte alpha)

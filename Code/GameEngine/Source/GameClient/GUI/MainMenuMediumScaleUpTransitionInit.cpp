@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
+// platformsdk
 // ?init@MainMenuMediumScaleUpTransition@@UAEXPAVGameWindow@@@Z
 // retail 0x0035DF18, 247 bytes. Dedicated TU.
 //
@@ -20,12 +21,10 @@ typedef int Int;
 typedef unsigned char Bool;
 
 #ifndef NULL
-#define NULL 0
+#include <windows.h>
 #endif
 
 #ifndef FALSE
-#define FALSE 0
-#define TRUE 1
 #endif
 
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
