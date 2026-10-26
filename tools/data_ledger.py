@@ -16,7 +16,7 @@ address, sorted:
   address   rva of the global (retail base of the bound symbol)
   size      bytes to the next ledger address or the section end (an upper bound)
   section   retail section (.rdata, .data, .bss is .data past its raw size)
-  kind      string | wstring | float | vtable | rtti | import | global
+  kind      string | wstring | float | vtable (including vbtable) | rtti | import | global
   name      the canonical symbol: a compiler-emitted literal/vtable name if one
             is bound here; else an external name over a TU-local static; then
             one that is not address-invented (no 6-8 digit hex token); then a
@@ -66,7 +66,8 @@ CODE, UNINIT, COMDAT = 0x20, 0x80, 0x1000
 # g_bfmeAptBreakOnAssertAtDDC01C -- a 6-8 digit hex run holding a digit
 INVENTED = re.compile(r"(?:^|[a-z_]|Va|Rva|At)(?=[0-9A-F]*[0-9])[0-9A-F]{6,8}(?![0-9A-F])")
 EMITTED = (("??_C@_1", "wstring"), ("??_C@", "string"), ("__real@", "float"), ("__xmm@", "float"),
-           ("??_7", "vtable"), ("??_R", "rtti"), ("__TI", "rtti"), ("__CT", "rtti"), ("__imp_", "import"))
+           ("??_7", "vtable"), ("??_8", "vtable"), ("??_R", "rtti"),
+           ("__TI", "rtti"), ("__CT", "rtti"), ("__imp_", "import"))
 
 
 def identifier(symbol):

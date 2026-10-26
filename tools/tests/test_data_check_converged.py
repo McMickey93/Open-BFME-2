@@ -81,6 +81,7 @@ def facts_for(tmp_path, monkeypatch, symbol, addend, retail_va, current=True, re
     ("?TheGameLogic@@3PAVGameLogicFrame@@A", 0, VA, True),  # a type-variant spelling
     ("$seat", 0, VA, True),                               # review: $-names were skipped
     ("__TIseat", 0, VA, True),                            # review: RTTI-looking names were exempt
+    ("??_8?$basic_ofstream@DV?$char_traits@D@_STL@@@_STL@@7B@", 0, VA, True),  # vbtables have no exemption here
     ("??_C@_00CNPNBAHC@?$AA@", 0, VA, True),              # nothing is exempt at a converged slot
     ("?g_arr@@3PAHA", 4, VA, True),                       # review: array+4 onto the slot from outside
     ("?g_other@@3PAHA", 0, VA + 0x10, False),             # control: another address

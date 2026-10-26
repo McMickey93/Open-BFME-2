@@ -77,6 +77,10 @@ class LiteralEdit(unittest.TestCase):
 
 
 class Ledger(unittest.TestCase):
+    def test_virtual_base_table_is_compiler_emitted(self):
+        self.assertEqual(dl.kind_of("??_8?$basic_ofstream@DV?$char_traits@D@_STL@@@_STL@@7B@"),
+                         "vtable")
+
     def test_invented(self):
         for name in ("?g_Va009FE16C@@3PAVScriptEngine@@A", "?g_00DFEEF8@@3PAVX@@A",
                      "?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A", "?g_bfmeAptBreakOnAssertAtDDC01C@@3HA"):
@@ -186,6 +190,17 @@ class Check(unittest.TestCase):
         sym = "?TheScriptEngine@@3PAVScriptEngine@@A"
         facts = {"New.cpp": ({(sym, 0x9FE16C)}, {sym})}
         self.assertEqual(data_check.findings(facts, self.LEDGER), [("New.cpp", "duplicate-def", sym, "0x009FE16C")])
+
+    def test_folded_vbtable_is_not_a_user_global_alias(self):
+        # The real stream constructor case at 007BCD24: both compiler tables
+        # contain the same eight bytes; the older index calls them globals.
+        table = "??_8?$basic_ofstream@DV?$char_traits@D@_STL@@@_STL@@7B@"
+        owner = "??_8?$basic_fstream@DV?$char_traits@D@_STL@@@_STL@@7B?$basic_ostream@DV?$char_traits@D@_STL@@@1@@"
+        alias = "?g_streamTable@@3PAHA"
+        ledger = {0x7BCD24: {"kind": "global", "name": owner, "source": "Fstream.cpp"}}
+        facts = {"Ofstream.cpp": ({(table, 0x7BCD24), (alias, 0x7BCD24)}, set())}
+        self.assertEqual(data_check.findings(facts, ledger),
+                         [("Ofstream.cpp", "wrong-name", alias, "0x007BCD24")])
 
     def test_negative_controls(self):
         sym = "?TheScriptEngine@@3PAVScriptEngine@@A"
