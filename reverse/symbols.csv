@@ -12205,8 +12205,6 @@ rva009C7380WeightPairs,0x009B84E0
 ??1Rva002A3FAFRecord@@QAE@XZ,0x000B6CF1
 ?_M_erase@?$_Rb_tree@HU?$pair@$$CBHURva00759B40Record@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00759B40Record@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00759B40Record@@@_STL@@@2@@_STL@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBHURva00759B40Record@@@_STL@@@2@@Z,0x007590B0
 ?_M_erase@?$_Rb_tree@HU?$pair@$$CBHURva00156FA0Record@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00156FA0Record@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00156FA0Record@@@_STL@@@2@@_STL@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBHURva00156FA0Record@@@_STL@@@2@@Z,0x001553C0
-??$__introsort_loop@PAURva00218FC2Record@@U1@HURva00218FC2RecordCompare@@@_STL@@YAXPAURva00218FC2Record@@00HURva00218FC2RecordCompare@@@Z,0x00218E09
-??$__final_insertion_sort@PAURva00218FC2Record@@URva00218FC2RecordCompare@@@_STL@@YAXPAURva00218FC2Record@@0URva00218FC2RecordCompare@@@Z,0x0021889A
 ??0Rva003F40EFRecord@@QAE@ABU0@@Z,0x0040E96D
 ??4Rva003F40EFRecord@@QAEAAU0@ABU0@@Z,0x0040EAED
 ??1Rva003F40EFRecord@@QAE@XZ,0x0040E499
