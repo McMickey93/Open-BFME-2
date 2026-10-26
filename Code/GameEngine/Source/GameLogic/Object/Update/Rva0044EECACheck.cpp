@@ -14,7 +14,9 @@ public:
 	const Overridable *friend_getFinalOverride() const;
 	unsigned char m_pad00[0x1C];
 	int m_val1C;
-	int m_val20;
+	int m_val20; // +0x20, also read by the rowed 0x0044EECA predicate
+	unsigned char m_pad24[0x44 - 0x24];
+	int m_evaEvent44; // +0x44
 };
 
 struct Rva0044EECAParam
