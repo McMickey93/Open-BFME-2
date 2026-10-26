@@ -7,7 +7,7 @@
 // rowed AIUpdateInterface machine at +0x30 (rva002630FD). Caller at 0x0029A1E0
 // passes the Object+0x258 AI. Sibling of 0x0026331C which moves +0x34.
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class Tracked
 {
