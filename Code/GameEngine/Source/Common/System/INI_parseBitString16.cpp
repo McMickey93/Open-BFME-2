@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?parseBitString16@INI@@SAXPAV1@PAX1PBX@Z, retail 0x002F21A, 62 bytes.
 // Dedicated TU (same INI verb family as INI_parseBitString8.cpp, framed).
@@ -11,7 +12,7 @@
 // _CxxThrowException call since the family builds /GX-), thrown through the
 // int throwinfo at 0x8FE2C8.
 
-#define NULL 0
+#include <windows.h>
 
 class INI
 {

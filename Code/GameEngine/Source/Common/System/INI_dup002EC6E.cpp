@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?dup_002EC6E@INI@@SAXPAV1@PAX1PBX@Z, retail 0x002EC6E, 64 bytes.
 // Dedicated TU (same INI verb family as INI_parseBitString8.cpp, framed).
@@ -15,7 +16,7 @@
 // to this body (the next verb stores without throwing), so the 64B extent
 // covers success (43B) plus the direct-throw block.
 
-#define NULL 0
+#include <windows.h>
 
 typedef const char *ConstCharPtr;
 typedef const ConstCharPtr *ConstCharPtrArray;
