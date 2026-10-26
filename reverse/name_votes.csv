@@ -8239,3 +8239,9 @@ Code/GameEngine/Source/Common/Rva000B508A.cpp|member|Rva000B508ATemplate|m_flags
 Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|a,c6e6751eed5f883c8bfa176d,gpt-6.1-sol,w5-10261704-5,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|b,b152d2bed551e344b3be2df4,gpt-6.1-sol,w5-10261704-5,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/Common/Rva005FA98CSwap.cpp|local|swapEntries|t,2a9358c6171d8239e9a56d85,gpt-6.1-sol,w5-10261704-11,w-f0819d403c17,2026-10-26
+Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelDecoders.cpp|local|BFME2Encoding1MotionChannel::rva001B2450|fi0,a92b89ec941cddbaf0968771,claude-opus-5-5,claude-20261026-160341-4,w-7a37700644b5,2026-10-26
+Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelDecoders.cpp|local|BFME2Encoding1MotionChannel::rva001B2450|p,dc57fdf7b926e8e8db4b0987,claude-opus-5-5,claude-20261026-160341-4,w-7a37700644b5,2026-10-26
+Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|a,d14b2f7cd72c27e6474dcd2c,claude-opus-5-5,claude-20261026-160341-5,w-7a37700644b5,2026-10-26
+Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|b,ac479a32a7d827ea7b20989e,claude-opus-5-5,claude-20261026-160341-5,w-7a37700644b5,2026-10-26
+Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelRva001B2210.cpp|local|BFME2Encoding1MotionChannel::decompress|fi0,1248e82fa0b72b88864371f3,claude-opus-5-5,claude-20261026-160341-9,w-7a37700644b5,2026-10-26
+Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelRva001B2210.cpp|local|BFME2Encoding1MotionChannel::decompress|p,0f16418df863ff8dfdc88fdc,claude-opus-5-5,claude-20261026-160341-9,w-7a37700644b5,2026-10-26
