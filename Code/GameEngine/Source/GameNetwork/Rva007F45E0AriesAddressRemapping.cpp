@@ -7,9 +7,8 @@
 // The original public class spelling is not present in the retail image, so
 // this source keeps the owner neutral while preserving the observed ABI.
 
-extern "C" int __cdecl sscanf(const char *, const char *, ...);
-extern "C" unsigned int __cdecl strlen(const char *);
-extern "C" void * __cdecl memset(void *, int, unsigned int);
+#include <string.h>
+#include <stdio.h>
 
 int Rva007EB410NetConnStatus(int selector, void *buffer, int bufferSize);
 extern "C" int Rva007EE930(const char *text, char *dest, int destSize,
