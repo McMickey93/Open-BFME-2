@@ -2129,6 +2129,16 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   `WW3D*` units, `CrateSystem.cpp`, `MultiplayerSettings.cpp`,
   `MultiplayerColorDefinitionCopy.cpp`, `GapBodiesGE41_Rva00118610.cpp`) have other causes
   and were not investigated here.
+- **Recheck (2026-10-26, HEAD 8f71fe0657):** the census at 5ce093a71a still lists the 23
+  units, but it predates the revert (f598ec4226 is not its ancestor; its tree still spells
+  `extern GameInfo *TheSkirmishGameInfo;` in ten `Common/` units), so it is not evidence
+  against the repair. No `Code/` declaration spells `GameInfo *` at HEAD, and
+  `link_check.py` against that census previews `Rva005216A6.cpp` 0 -> 37 B and
+  `SkirmishPreferences.cpp` 0 -> 2,175 B. The data-ledger step above is not a link
+  prerequisite: `link_census.data_ledger()` reads `reverse/data_rows.csv`, which since
+  e40a67706e holds the matched `?TheSkirmishGameInfo@@3PAVSkirmishGameInfo@@A` row at
+  0x00E02EF0; `reverse/data_ledger.csv` is a derived register that needs every matched
+  object built to regenerate (`data_ledger.py --check`: 1,037 sources without objects here).
 - **Census confirmation:** awaiting the next census.
 
 ### LINK-042: the census at d1f046749a's other 10 lost units (IsCapturing respelling and four TU merges)
