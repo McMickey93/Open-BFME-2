@@ -9,37 +9,15 @@
 // The emptiness test reads the string data header directly: a 16-bit length
 // at +4, characters from +8.
 
-template <typename T>
-class StringBase
+#include "../../../../../reference/shims/bfme2_ascii/unicode_string.h"
+
+// StringBase<unsigned short>::isEmpty, inline here as retail expands it (the
+// exported out-of-line copy 0x00035740 is not called from this body).
+static inline bool parseAndTranslateLabelIsEmpty(const UnicodeString &text)
 {
-	friend class UnicodeString;
-
-public:
-	void set(const T *s);
-
-private:
-	struct Data
-	{
-		int m_refCount;
-		unsigned short m_length;	// +4
-		unsigned short m_pad;
-		T m_chars[1];			// +8
-	};
-
-	void releaseBuffer();
-	Data *m_data;
-};
-
-class UnicodeString : public StringBase<unsigned short>
-{
-public:
-	__forceinline ~UnicodeString() { releaseBuffer(); }
-	bool isEmpty() const { return m_data == 0 || m_data->m_length == 0; }
-	const unsigned short *str() const { return m_data ? m_data->m_chars : (const unsigned short *)""; }
-	// LINK: same-body helper under a TU-unique name (identical inlined bytes); the
-	// original copy loses to the first-in-order copy. No flags touched.
-	const unsigned short *bfme_str_patl() const { return m_data ? m_data->m_chars : (const unsigned short *)""; }
-};
+	const char *data = *(const char *const *)&text;
+	return data == 0 || *(const unsigned short *)(data + 4) == 0;
+}
 
 class GameTextInterface
 {
@@ -76,7 +54,7 @@ void INI::parseAndTranslateLabel(INI *ini, void *, void *store, const void *)
 {
 	const char *token = ini->getNextToken();
 	UnicodeString translated = TheGameText->fetch(token);
-	if (translated.isEmpty())
+	if (parseAndTranslateLabelIsEmpty(translated))
 		throw INIException(3, "Label '%s' not found in game text", token);
-	((StringBase<unsigned short> *)store)->set(translated.bfme_str_patl());
+	((UnicodeString *)store)->set(translated.str());
 }
