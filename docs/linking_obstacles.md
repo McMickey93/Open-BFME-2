@@ -2787,3 +2787,45 @@ Census confirmation: not claimed.
   DamageFX.cpp markers with `hatch_counters.py --update`.
 - **Clearance:** current-object preview of DamageFX.cpp only.
 - **Census confirmation:** awaiting.
+
+### LINK-083: `StlSweepR3` units instantiate a whole algorithm or container over an opaque record whose retail callees are rowed under another type
+
+**Status: Repair landed / awaiting census (4 units); family Open. Updated: 2026-10-26; inspected revision: d5855a74e9 parent ae176a8a20; index 5ce093a71a.**
+
+- **Evidence / scope:** a `StlSweepR3Rva<rva>.cpp` unit holds one STLport row over an address-named
+  record (`Rva<rva>Record`) and writes `template class` / `template void` instantiations to emit it.
+  That emits every member and helper over the opaque record: the record's ctor/dtor/operator=/
+  operator</operator==/hash are unresolved, and the emitted helpers (pinned in `symbols.csv` to
+  retail addresses) are not retail's bodies. Retail's callees are already rowed, but under another
+  type (the record's real element, or a placeholder method), so the names never line up.
+- **Repair recipe:** define only the row as an explicit specialization (STLport 4.5.3's body)
+  that calls the rowed callees by their own types (`reinterpret_cast` / pointer casts, as in
+  LINK-035), then `template X::member();` where cl 7.1 would not emit it otherwise. Drop the pins
+  for helpers the unit no longer emits and the `max<unsigned>` `#pragma optimize` block.
+- **Completed (agent K9):**
+  - 4ca752a55e `StlSweepR3Rva00218FC2.cpp` (`sort`, 67 B): calls 0x00218E09
+    `__introsort_loop<Rva00218E09Record*, ..., less<>>` and 0x0021889A `Rva0021889AFinalSort`, both
+    rowed in `GameFont.cpp`; 2 pins dropped. link_check with GameFont.cpp and MixFileCreatorParse.cpp:
+    0 -> 67 B, partners link.
+  - d5855a74e9 `StlSweepR3Rva00058A86.cpp` and `StlSweepR3Rva0002CCC3.cpp` (hash-set dtors, 57 + 67 B):
+    call 0x00057FC1 (`clear` of the pair-keyed table over `Rva00057FC1Record`) and 0x002234FE
+    (`clear` of `hash_map<AsciiString, AsciiString, rts::hash>`, INIMacroTable.cpp); 2 pins dropped.
+    0 -> 124 B, and `AudioManagerAdjustPriorityAndVolume.cpp` (calls the 0x00058A86 dtor) 0 -> 43 B.
+  - f29627cb3f `StlSweepR3Rva002BFA86.cpp` (`erase(const_iterator)`, 80 B): calls 0x00223149
+    `Rva000427195::bucketIndex` and 0x002BF75A `Rva002BF75A::rva002BF75A`; 2 pins dropped; 0 -> 80 B.
+    The same commit removes the unused `max<unsigned>` pragma blocks from 00058A86 and 0002CCC3.
+  - Each `./build.sh` exact; RvaPairCopyCallFamily.cpp, PlayerXferStringMaps.cpp,
+    Rva002BF75AFree.cpp, StlSweepR3Rva0002CD71.cpp, StlSweepR3Rva00057FC1.cpp, INIMacroTable.cpp
+    still link. Preview total 0 -> 314 B; `hatch_counters.py --update` not run (9 pragma lines down).
+- **Remaining, same shape (inspected 2026-10-26, no edit):** `StlSweepR3Rva00332613.cpp`,
+  `StlSweepR3Rva00337D21.cpp` (`__introsort_loop`, 136 B each; five retail callees each, e.g.
+  0x00331716 median, 0x00331962, 0x00331D10, 0x0033254D); `StlSweepR3Rva003F318C.cpp`,
+  `StlSweepR3Rva0051F7AD.cpp`, `StlSweepR3Rva003F40EF.cpp` (vector members over a record: unresolved
+  `_Construct`, dtor, operator=). Next check: disassemble the row, name each callee's existing row,
+  apply the recipe.
+- **Related leads not done:** `Rva008312E0StringReplace.cpp` / `Rva008314E0StringReplace.cpp`
+  (/Od /Ob1) emit `erase`/`replaceBase` COMDATs that retail calls out of line at 0x00012150
+  (`basic_string<char>::erase`) and 0x0002A610 / 0x0002A730 (`BfmeStrV24::bfmeReplaceV24`, last
+  parameter spelled `int` where the caller passes a tag reference). Calling those rows by type means
+  stubbing `basic_string<char>` in a unit that stubs its own STL; frame-slot effects under /Ob1 untested.
+- **Census confirmation:** awaiting the next census.
