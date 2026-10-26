@@ -2652,3 +2652,4 @@ member,GlobalData2::m_68,GlobalData2::m_enableBehindBuildingMarkers,inferred,agr
 param,Rva0049A64B::isClearToApproach::a,Rva0049A64B::isClearToApproach::docker,inferred,agree:nl-a380432cd9ca,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/Rva0049A64BRva0049A8FA.cpp,0x0049A880
 local,W3DProjectedShadowManager::rva0010BE72::value40,W3DProjectedShadowManager::rva0010BE72::opacityStart,inferred,agree:nl-79d867e20463,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp,0x0010BE72
 local,W3DProjectedShadowManager::rva0010BE72::value54,W3DProjectedShadowManager::rva0010BE72::opacityEnd,inferred,agree:nl-a626726d054b,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp,0x0010BE72
+param,W3DPropBuffer::addPropType::bfmeFlag,W3DPropBuffer::addPropType::distanceFog,inferred,agree:nl-6ac5c5225eb3,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferAddProp.cpp,0x000EE822

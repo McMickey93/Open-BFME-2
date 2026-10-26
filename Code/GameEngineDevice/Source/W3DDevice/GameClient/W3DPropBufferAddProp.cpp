@@ -271,7 +271,7 @@ class W3DPropBuffer
 public:
 	virtual ~W3DPropBuffer( void );
 	void addProp( Int id, Coord3D location, Real angle, Real scale, const AsciiString &modelName, Bool bfmeFlag );
-	Int addPropType( const AsciiString &modelName, Bool bfmeFlag );
+	Int addPropType( const AsciiString &modelName, Bool distanceFog );
 
 protected:
 	enum { MAX_PROPS=4000};
@@ -292,7 +292,7 @@ protected:
 //=============================================================================
 /** Adds a type of prop (model & texture).  */
 //=============================================================================
-Int W3DPropBuffer::addPropType(const AsciiString &modelName, Bool bfmeFlag)
+Int W3DPropBuffer::addPropType(const AsciiString &modelName, Bool distanceFog)
 {
 	if (m_numPropTypes>=MAX_TYPES) {
 		return 0;
@@ -302,7 +302,7 @@ Int W3DPropBuffer::addPropType(const AsciiString &modelName, Bool bfmeFlag)
 	if (m_propTypes[m_numPropTypes].m_robj==0) {
 		return -1;
 	}
-	if (!bfmeFlag) {
+	if (!distanceFog) {
 		m_propTypes[m_numPropTypes].m_robj->m_bfmePropFlagBD = false;
 	}
 	m_propTypes[m_numPropTypes].m_robjName = modelName;
