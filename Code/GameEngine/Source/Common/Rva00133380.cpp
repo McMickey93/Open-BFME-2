@@ -19,8 +19,7 @@ public:
 	void rva0013331A();
 };
 
-void operator delete(void *p);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 class Rva00131BE5
 {
