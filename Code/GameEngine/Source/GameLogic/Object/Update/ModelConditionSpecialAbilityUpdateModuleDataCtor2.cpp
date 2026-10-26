@@ -33,7 +33,8 @@ public:
 	__declspec(nothrow) BfmeFixedStorage0004543D(const BfmeFixedStorage0004543D &);
 };
 
-extern const BfmeFixedStorage0004543D g_modelConditionFilterDefaults;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class Rva003623E5Filter
 {
@@ -70,9 +71,5 @@ ModelConditionSpecialAbilityUpdateModuleData::ModelConditionSpecialAbilityUpdate
 	m_generateTerror = false;
 	m_generateUncontrollableFear = false;
 	m_emotionPulseRadius = c_emotionPulseRadiusDefault;
-	m_objectFilter.applyFilter(g_modelConditionFilterDefaults);
+	m_objectFilter.applyFilter(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 }
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_modelConditionFilterDefaults@@3VBfmeFixedStorage0004543D@@B=?g_00DFEFA4StoragePrototype@@3PAEA")

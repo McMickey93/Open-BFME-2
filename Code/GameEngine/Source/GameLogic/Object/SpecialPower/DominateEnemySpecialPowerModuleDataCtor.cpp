@@ -37,7 +37,8 @@ public:
 	__declspec(nothrow) BfmeFixedStorage0004543D(const BfmeFixedStorage0004543D &);
 };
 
-extern const BfmeFixedStorage0004543D g_dominateFilterDefaults;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class Rva003623E5Filter
 {
@@ -72,9 +73,5 @@ DominateEnemySpecialPowerModuleData::DominateEnemySpecialPowerModuleData()
 	, m_permanentlyConvert(false)
 	, m_filter()
 {
-	m_filter.applyFilter(g_dominateFilterDefaults);
+	m_filter.applyFilter(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 }
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_dominateFilterDefaults@@3VBfmeFixedStorage0004543D@@B=?g_00DFEFA4StoragePrototype@@3PAEA")
