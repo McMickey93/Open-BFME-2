@@ -338,7 +338,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/BfmeConv1879.cpp` | 82 | 5 (U=5) | Cleared (LINK-022, link_check 82B) |
 | `Code/GameEngine/Source/Common/RTS/PlayerRelationMapCtor.cpp` | 81 | 3 (C=2, S=1) | Open |
 | `Code/GameEngine/Source/Common/Rva001F4B01Ctor.cpp` | 80 | 13 (U=12, C=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BFA86.cpp` | 80 | 4 (U=2, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BFA86.cpp` | 80 | 4 (U=2, C=1, S=1) | 2026-10-26: LINKS in preview (f29627cb3f, LINK-083); census pending |
 | `Code/Libraries/Source/WWVegas/WW3D2/collect.cpp` | 79 | 20 (U=14, C=5, S=1) | Open |
 | `Code/GameEngine/Source/Common/System/SaveGame/AerialPathfinder.cpp` | 75 | 3 (U=2, C=1) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanGameOptionsMenu.cpp` | 75 | 28 (U=27, S=1) | Open |
