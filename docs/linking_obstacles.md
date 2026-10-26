@@ -451,6 +451,13 @@ Completed: native call/row diagnosis and current-provider verification; these si
   Retirement additionally needs 93 missing ledger objects and resolution of a
   renumbered cleanup label in the identity checker. Source and debt are intact;
   the blocked source claim was released. No composition trial was repeated.
+- **Current component-header integration (2026-10-26, base `e1cdb1014f`):**
+  The [fresh receipt](../reverse/attempt_support/icoord2d-component-header-20261026.md#current-master-integration)
+  verifies 1,939 rows and 27 data rows across 255 header dependents, plus the
+  planning-controls file's current 18 rows and two exact EH graphs. Both
+  changed objects preserve every non-debug byte and relocation target. Four
+  shadow cleanup-identity findings in ThrowingNewHelpers retain their old
+  bindings; they are not introduced or retired by this header adoption.
 - **ICoord2D constructor-header prerequisite (2026-10-26):**
   [the evidenced component-constructor mode](../reverse/attempt_support/icoord2d-component-header-20261026.md)
   lets ThrowingNewHelpers.cpp use the canonical header while retaining its
@@ -475,14 +482,13 @@ Completed: native call/row diagnosis and current-provider verification; these si
   to the same game allocator through the owner's existing alternate name.
   The ordinary preview against 47e030bafc retains LINKS, 258 to 258 bytes;
   final linker directives and every non-debug section byte are unchanged.
-  Six remaining ICoord2D items and census confirmation stay open.
-- **Current component-header integration (2026-10-26, base `e1cdb1014f`):**
-  The [fresh receipt](../reverse/attempt_support/icoord2d-component-header-20261026.md#current-master-integration)
-  verifies 1,939 rows and 27 data rows across 255 header dependents, plus the
-  planning-controls file's current 18 rows and two exact EH graphs. Both
-  changed objects preserve every non-debug byte and relocation target. Four
-  shadow cleanup-identity findings in ThrowingNewHelpers retain their old
-  bindings; they are not introduced or retired by this header adoption.
+  The [empty-constructor view](../reverse/attempt_support/icoord2d-default-header-20261026.md)
+  records native 47A6A9/3 and lets ButtonFlashTransitionUpdate.cpp adopt the
+  same header: 3/3 rows (2,278 bytes), all 13 non-debug sections and all
+  93 relocations remain exact, retiring its header-queue item. Ordinary
+  aggregate users keep their existing type; mode selection remains a
+  first-include prerequisite. Five ICoord2D items and census confirmation
+  stay open.
 - **Science purchase-cost header prerequisite (2026-10-26):**
   [canonical GameLogic adoption](../reverse/attempt_support/consolidation-science-cost-prerequisite-20261026-codex.md)
   preserves the 86-byte cost donor and retires one header-queue row through
