@@ -11,15 +11,13 @@ public:
     virtual void release(int value);
 };
 
-extern Rva007EB830Target *g_Va0130A5A0;
+extern int g_FeslDiagReporter;
 
 void Rva007EB830Release(void)
 {
-    if (g_Va0130A5A0 != 0)
+    if (g_FeslDiagReporter != 0)
     {
-        g_Va0130A5A0->release(1);
+        ((Rva007EB830Target *)g_FeslDiagReporter)->release(1);
     }
-    g_Va0130A5A0 = 0;
+    g_FeslDiagReporter = 0;
 }
-// ?g_Va0130A5A0@@3PAVRva007EB830Target@@A: the global at VA 0xe09fbc is ?g_Va0130A5A0@@3PAURva007EB810Diag@@A.
-#pragma comment(linker, "/alternatename:?g_Va0130A5A0@@3PAVRva007EB830Target@@A=?g_Va0130A5A0@@3PAURva007EB810Diag@@A")

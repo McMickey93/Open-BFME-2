@@ -10,7 +10,7 @@ struct Rva007EB810Diag
 	virtual void fail(const char *expr, const char *file, int line);
 };
 
-extern Rva007EB810Diag *g_Va0130A5A0;
+extern int g_FeslDiagReporter;
 
 extern "C"
 {
@@ -37,7 +37,7 @@ void Rva007EB8B0(Rva007EB8B0Log *self, unsigned int need, const char *fmt, ...)
 	vsprintf(self->m_0C, fmt, (char *)(&fmt + 1));
 	self->emit(self->m_0C);
 	if (self->m_0C[self->m_10 - 1])
-		g_Va0130A5A0->fail(
+		((Rva007EB810Diag *)g_FeslDiagReporter)->fail(
 			"!mVarArgBuffer[mVarArgBufferSize - 1]",
 			"\\views\\feslbuild_main\\jabba\\fesl\\source\\debug.cpp",
 			123);
