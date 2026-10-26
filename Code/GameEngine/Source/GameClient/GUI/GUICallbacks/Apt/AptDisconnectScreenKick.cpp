@@ -9,8 +9,8 @@
 
 #include "unicode_string.h"
 
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
+#include <string.h>
+#include <stdlib.h>
 
 class GameWindow;
 
@@ -43,7 +43,6 @@ void GadgetListBoxReset(GameWindow *listBox);
 void BfmeGadgetListBoxSetAudioFeedback(GameWindow *listBox, bool enable);
 int GadgetListBoxAddEntryText(GameWindow *listBox, UnicodeString text, int color, int row, int column, bool overwrite);
 
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 
 // Rva0066B3E0Adj.cpp's slot translation (0x004D39F0).
 int rva0066b3e0(int slot, int localSlot);
