@@ -87,7 +87,7 @@ struct PlayerView
  
 }
 ;
-class Rva0048B9D0 
+class FireWeaponUpdate 
 
 {
  public: void rva0048B9D0(const WeaponTemplate *);
@@ -149,7 +149,7 @@ void Made002CC774::rva005093C6(Input005093C6 *input, const Coord3D *position)
    obj->setProducer(producer);
    obj->setPosition(position);
    static NameKeyType fireKey = TheNameKeyGenerator->nameToKey("FireWeaponUpdate");
-   Rva0048B9D0 *fire = (Rva0048B9D0 *)obj->findModule(fireKey);
+   FireWeaponUpdate *fire = (FireWeaponUpdate *)obj->findModule(fireKey);
    DeletionUpdate *del = 0;
    if (fire)
    

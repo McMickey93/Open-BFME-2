@@ -1,6 +1,10 @@
 // cl: /MD
 //
-// ?rva0048B9D0@Rva0048B9D0@@QAEXPBVWeaponTemplate@@@Z @0x0048B9D0 74B
+// ?rva0048B9D0@FireWeaponUpdate@@QAEXPBVWeaponTemplate@@@Z @0x0048B9D0 74B
+// FireWeaponUpdate: the sole caller (0x005093C6) fetches the module with
+// findModule(nameToKey("FireWeaponUpdate")) and calls this on it (target
+// fact). Donor fact: BFME 1's FireWeaponUpdate ctor sets up its m_weapon the
+// same way (allocateNewWeapon, source ID, loadAmmoNow). Method name unknown.
 // Replaces the Weapon at +0x20: deletes the old via virtual dtor plus global
 // delete, allocates a new one from TheWeaponStore with slot 0, copies the
 // owner ID from owner+0x74 into weapon+8, then loads ammo from the owner.
@@ -41,7 +45,7 @@ public:
 
 extern WeaponStore *TheWeaponStore;
 
-class Rva0048B9D0
+class FireWeaponUpdate
 {
 public:
 	void rva0048B9D0(const WeaponTemplate *tmpl);
@@ -53,7 +57,7 @@ private:
 	Weapon *m_weapon; // +0x20
 };
 
-void Rva0048B9D0::rva0048B9D0(const WeaponTemplate *weaponTemplate)
+void FireWeaponUpdate::rva0048B9D0(const WeaponTemplate *weaponTemplate)
 {
 	if (weaponTemplate == 0)
 		return;
