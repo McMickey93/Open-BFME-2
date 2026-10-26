@@ -8429,3 +8429,4 @@ Code/GameEngine/Source/GameLogic/AI/PathfinderCellQueryPredicates.cpp|param|Path
 Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderIsValidHordeMemberRegularMovement.cpp|class||Rva002F06A3Template,de1a27080f3e019936f918eb,claude-opus-5-5,cedric-c-L20,w-553b9b55db02,2026-10-26
 Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderIsValidHordeMemberRegularMovement.cpp|member|Rva002F06A3Template|m_56C,b47b4ff0faa72b2a2d7849ff,claude-opus-5-5,cedric-c-L20,w-553b9b55db02,2026-10-26
 Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderIsValidHordeMemberRegularMovement.cpp|member|Rva002F06A3Template|m_634,2df13670d6d9d9d2bf6f146a,claude-opus-5-5,cedric-c-L20,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/Rva00515Wrappers.cpp|member|Rva00515B0AGlobalData|m_2d,8b7243cb721bbdf174ecb15b,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
