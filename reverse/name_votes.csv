@@ -8266,3 +8266,5 @@ Code/GameEngine/Source/Common/Rva005388C2Assign.cpp|local|QuadStrip2D::rva005382
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp|local|W3DProjectedShadowManager::rva0010BE72|value40,44d9a139ab04147413d11a3a,claude-opus-5-5,claude2-20261026-190046-1,w-85ac5a290b20,2026-10-26
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp|local|W3DProjectedShadowManager::rva0010BE72|value54,e472cd95d2d3c364f80370bd,claude-opus-5-5,claude2-20261026-190046-1,w-85ac5a290b20,2026-10-26
 Code/GameEngine/Source/Common/Rva0043283CDtor.cpp|class||Rva0043283CBase,b2d9f0eb447c8a71e319b185,claude-opus-5-5,claude2-20261026-190046-4,w-85ac5a290b20,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferAddProp.cpp|param|W3DPropBuffer::addPropType|bfmeFlag,d4f3a983da905012449e0ab8,claude-opus-5-5,claude2-20261026-191604-3,w-85ac5a290b20,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferAddProp.cpp|param|W3DPropBuffer::addProp|bfmeFlag,9ccbbf614feac77080a3a1c6,claude-opus-5-5,claude2-20261026-191604-3,w-85ac5a290b20,2026-10-26
