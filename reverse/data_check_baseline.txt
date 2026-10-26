@@ -595,7 +595,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/AutoFindHealingUpdate.cpp	wrong-n
 Code/GameEngine/Source/GameLogic/Object/Update/AutoPickUpUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000495CEC@AutoPickUpUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A54
 Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000496A1E@BannerCarrierUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A64
 Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000497915@BattlePlanUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03AD0
-Code/GameEngine/Source/GameLogic/Object/Update/BeaconClientUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004C9607@BeaconClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04338
+Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp	wrong-name	?$S1@?1??rva004C9607@BeaconClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04338
 Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00044E054@BloodthirstyUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03384
 Code/GameEngine/Source/GameLogic/Object/Update/BoneFXDamagePoolKey.cpp	wrong-name	?$S1@?1??rva004B9757@BoneFXDamage@@SA?AW4NameKeyType@@XZ@4IA	0x00A03FAC
 Code/GameEngine/Source/GameLogic/Object/Update/BoneFXUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000487A19@BoneFXUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A038CC
