@@ -7,7 +7,7 @@
 #include "ascii_string.h"
 #include "Common/INIException.h"
 
-extern "C" int __cdecl strcmp(const char *, const char *);
+#include <string.h>
 
 class INI;
 typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);

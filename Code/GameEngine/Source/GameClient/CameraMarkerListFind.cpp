@@ -14,7 +14,7 @@
 
 typedef int Int;
 
-extern "C" int __cdecl memcmp(const void *, const void *, unsigned int);
+#include <string.h>
 #pragma intrinsic(memcmp)
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/AsciiString.h
