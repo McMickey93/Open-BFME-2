@@ -8260,3 +8260,6 @@ Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp|param|Rva0006EE7A::Rva
 Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp|param|Rva0006EE7A::Rva0006EE7A#2|b2,75eb8cc8498bfd2a2739ec81,claude-opus-5-5,cedric-d,w-ede69917a100,2026-10-25
 Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp|param|Rva0006EE7A::Rva0006EE7A#2|b3,2c6b9354695772733dbe7b1e,claude-opus-5-5,cedric-d,w-ede69917a100,2026-10-25
 Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp|param|Rva0006EE7A::Rva0006EE7A#2|b4,db293a0ef00a666389316c8a,claude-opus-5-5,cedric-d,w-ede69917a100,2026-10-25
+Code/GameEngine/Source/Common/Rva005C436EDispatch.cpp|param|Rva005C436E::adjustCommandPoints|v,34290a38196a2a4d5d20eecd,claude-opus-5-5,claude2-20261026-184238-8,w-85ac5a290b20,2026-10-26
+Code/GameEngine/Source/Common/Rva005388C2Assign.cpp|local|QuadStrip2D::rva00538383|p,dba4814c75c9ed0275c0b86c,claude-opus-5-5,claude2-20261026-184238-10,w-85ac5a290b20,2026-10-26
+Code/GameEngine/Source/Common/Rva005388C2Assign.cpp|local|QuadStrip2D::rva005382F4|p,c9a19bda10c604dfbff0a64c,claude-opus-5-5,claude2-20261026-184238-10,w-85ac5a290b20,2026-10-26
