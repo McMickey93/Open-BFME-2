@@ -20,7 +20,7 @@
 
 // Declared so the array path frees through operator delete[] (0x0002FD80)
 // as retail does; left undeclared, cl falls back to scalar operator delete.
-void operator delete[](void *p);
+#include <new>
 
 // Complete-destructor providers exist for this collector; unresolved owners
 // remain byte-verified in the corresponding _Unresolved unit.
