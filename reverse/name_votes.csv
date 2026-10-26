@@ -8203,3 +8203,12 @@ Code/GameEngine/Source/Common/Rva00285DC5Paint.cpp|local|FireLogicSystem::rva002
 Code/GameEngine/Source/Common/Rva003EE980Forward.cpp|local|Rva003EE980::rva003EE980|f,ac85e5ad2d989559625f5252,gpt-6.1-sol,w5-10261548-13,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp|local|Team::rva0039DDC2|b3,2a4cabcdbb5efc9647f8da95,gpt-6.1-sol,w5-10261548-14,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp|local|Team::rva0039DDC2|b4,d1fb7ba0d04938ada9169394,gpt-6.1-sol,w5-10261548-14,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/System/Rva0060BC53.cpp|local|Rva0060BC53Xfer3|p,b2cacb4f5c9c54db90a94f0b,gpt-6.1-sol,w3-10261600-1,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/System/Rva0060BC53.cpp|local|Rva0060BD31Xfer|tmp,2b0f18b160c1af3f6ea81a04,gpt-6.1-sol,w3-10261600-1,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Rva005A8666Box.cpp|param|NAT::gotTargetMangledPort|a,3f8914ea1304dde200bd7d56,gpt-6.1-sol,w3-10261600-2,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/GapBodiesS3D.cpp|function|0x004E81DE|rva004E81DE,123e6795356ed8705e89ce5a,gpt-6.1-sol,w3-10261600-3,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/GapBodiesS3D.cpp|function|0x005AF117|rva005AF117,ac39321454af1140c0ae74be,gpt-6.1-sol,w3-10261600-3,w-46dfa4623b23,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTreeBufferAddTree.cpp|member|Rva000ECF79Tree|fieldd0,5cb5bce317c1d574ece6dd7a,gpt-6.1-sol,w3-10261600-4,w-46dfa4623b23,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTreeBufferAddTree.cpp|member|Rva000ECF79Tree|fieldd8,a26bf8a69f2364b79b9c94f6,gpt-6.1-sol,w3-10261600-4,w-46dfa4623b23,2026-10-26
+Code/Libraries/Source/WWVegas/WWLib/Rva002F0DD6Worker.cpp|param|Rva002F1DDCTree::rva002F0DD6|x,63066131af6ac486ae982d66,gpt-6.1-sol,w3-10261600-7,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Rva002B6C9F.cpp|param|Rva002B6C9F::rva002B6C9F|a2,29c8f21e1d83bdfb1e25e663,gpt-6.1-sol,w3-10261600-10,w-46dfa4623b23,2026-10-26
