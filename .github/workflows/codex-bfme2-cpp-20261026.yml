@@ -1,0 +1,112 @@
+name: Codex BFME2 real C++ source selection
+on:
+  push:
+    branches: [codex/20261025-bfme2-native]
+    paths: [.github/workflows/codex-bfme2-cpp-20261026.yml]
+permissions:
+  contents: read
+concurrency:
+  group: codex-bfme2-cpp-20261026
+  cancel-in-progress: false
+jobs:
+  select:
+    runs-on: windows-2022
+    timeout-minutes: 75
+    env:
+      BFME_CLAIM_OWNER: github:McMickey93:bfme2:real-cpp-20261026
+      PYTHONUTF8: '1'
+      PYTHONUNBUFFERED: '1'
+      BUILD_POOL: '4'
+      GIT_CONFIG_COUNT: '2'
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: 'false'
+      GIT_CONFIG_KEY_1: core.longpaths
+      GIT_CONFIG_VALUE_1: 'true'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: Open-BFME/Open-BFME-2
+          ref: 26a7b4f8f6194623faa696f0ba84adf13bfe81f7
+          fetch-depth: 1024
+          submodules: false
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Initialize the committed compiler reference without recursion
+        shell: pwsh
+        run: |
+          git submodule update --init --depth 1 reference/open-bfme-1
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          git fetch --no-tags --depth 1024 origin refs/heads/master:refs/remotes/origin/master
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python -m pip install -r reference/open-bfme-1/tools/requirements.txt
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python tools/check_csv.py
+          exit $LASTEXITCODE
+      - name: Resolve native Git Bash
+        shell: bash
+        run: |
+          git_bash="$BASH"
+          [[ "${git_bash,,}" == *.exe ]] || git_bash="${git_bash}.exe"
+          printf 'BFME_NATIVE_BASH=%s\n' "$(cygpath -aw "$git_bash")" >> "$GITHUB_ENV"
+      - name: Select through current project tools and a bounded reference sample
+        shell: python
+        run: |
+          import json,os,subprocess,sys,hashlib
+          from pathlib import Path
+          root=Path.cwd().resolve()
+          out=root/"build/codex-cpp-20261026"
+          out.mkdir(parents=True,exist_ok=True)
+          sys.path.insert(0,str(root/"tools"))
+          assert subprocess.check_output(["git","hash-object","AGENTS.md"],text=True).strip()=="43a21b639c94eba6538b14a8b7eb117adecd10c3", "AGENTS changed; reread"
+          bash=Path(os.environ["BFME_NATIVE_BASH"])
+          assert bash.is_file()
+          os.environ["PATH"]=str(bash.parent)+os.pathsep+os.environ.get("PATH","")
+          result={"commands":[]}
+          def run(label,args,timeout=1800):
+              try:
+                  cp=subprocess.run(args,cwd=root,capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=timeout)
+                  content=cp.stdout+cp.stderr
+                  code=cp.returncode
+              except subprocess.TimeoutExpired as error:
+                  content=(error.stdout or b"").decode("utf-8","replace") if isinstance(error.stdout,bytes) else (error.stdout or "")
+                  content+="\nTIMEOUT: command stopped without a measurement verdict\n"
+                  code=-1
+              (out/(label+".log")).write_text(content,encoding="utf-8")
+              result["commands"].append({"label":label,"command":args,"returncode":code})
+              print("REPORT "+label+"\n"+content+"\nRETURN "+str(code),flush=True)
+              (out/"manifest.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
+              return code
+          run("revision",["git","log","-1","--format=%H %s"])
+          run("reference",["git","submodule","status","reference/open-bfme-1"])
+          run("reference-fetch",["git","-C","reference/open-bfme-1","fetch","--no-tags","--depth=256","origin","master"])
+          run("reference-upstream",["git","-C","reference/open-bfme-1","rev-parse","FETCH_HEAD"])
+          run("reference-input-delta",["git","-C","reference/open-bfme-1","diff","--stat","HEAD","FETCH_HEAD","--","tools","inputs","game","AGENTS.md"])
+          run("index",[sys.executable,"tools/link_check.py","--fetch-index"])
+          run("default-pick",[sys.executable,"tools/next_work.py","--json"])
+          run("link-pick",[sys.executable,"tools/next_work.py","--tier","link","--json"])
+          run("bfme1-scan",[sys.executable,"tools/bfme1_sweep.py","scan"])
+          run("bfme1-ranked",[sys.executable,"tools/bfme1_sweep.py","ranked","--limit","12","--json"])
+          run("bfme1-near",[sys.executable,"tools/bfme1_sweep.py","near","--limit","12","--json"])
+          run("bfme1-lift-lane",[sys.executable,"reference/open-bfme-1/tools/lift_lane.py","--limit","1000"])
+          run("zh-compile-sample",[sys.executable,"tools/zh_sweep.py","compile","--limit","16","--jobs","4"])
+          run("zh-match",[sys.executable,"tools/zh_sweep.py","match"])
+          run("zh-packets",[sys.executable,"tools/zh_sweep.py","packets"])
+          run("packet-pick",[sys.executable,"tools/next_work.py","--tier","packet","--json"])
+          run("naked-pick",[sys.executable,"tools/list_naked_candidates.py","Code","--all","--ranked","--limit","20","--max-bytes","100000"])
+          run("final-progress",[sys.executable,"tools/progress.py","origin/master"])
+          assert subprocess.check_output(["git","diff","--name-only"],text=True).strip()=="", "Selection must not edit tracked inputs"
+          print("CPP_SELECTION_COMPLETE "+json.dumps(result),flush=True)
+      - name: Preserve selection evidence and source-lead caches
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: bfme2-real-cpp-selection-${{ github.run_id }}
+          path: |
+            build/codex-cpp-20261026/
+            build/bfme1_sweep/
+            build/zh_sweep/
+          retention-days: 90
+          if-no-files-found: warn
+          compression-level: 9
