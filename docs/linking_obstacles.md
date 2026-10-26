@@ -662,6 +662,8 @@ authored-byte previews or commit-title gains into a projected headline.
   Provider audit retains every mapped symbol through an equivalent or retail-correct provider; no linker alias is removed.
   Native receipt: https://github.com/McMickey93/Open-BFME-2/actions/runs/40240437884.
 
+- **Near-linking constructor scope (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`, retail-truth-4):** `BfmeConv881O1.cpp`, `RTS/PlayerRelationMapCtor.cpp`, `RTS/PlayerCtorBFME2.cpp`, `Rva00415704Ctor.cpp` and `StlSweepW4Rva001FEAB2.cpp` no longer replace three empty allocator/vector bodies with declaration-only specializations. The visible STLport bodies restore the native 64-byte hashtable-constructor shape instead of the former 77-byte shape. Removing only the allocator destructor declaration left 65 bytes; also revealing the vector constructor still left 65 bytes while its base stayed declaration-only. The complete change clears the corresponding ordinary-preview COMDAT/selected blockers. The sibling `StlSweepW4Rva001FEAB2.cpp` must change with PlayerCtor so their no-address copies agree; its 31-byte row remains exact and it still links. Raw paired previews, disassemblies, all six edited sources' byte/frozen/EH/data gates and the combined 149/149-row check are in `build/link-worker-w1/`; `build/link-report.md` maps each receipt. `comdat_verdicts.py` calls the resulting 64-byte copies `unknown`, so this is a cleared ordinary-preview blocker scope, not a full retail-body or census claim. Whole-unit blockers remain: two opaque XferSave element destructors, the PlayerRelationMap vtable, the 0x00415704 subsystem destructor, and PlayerCtor's existing UnitRevivalTracker/energy virtuals. Next check: reconcile those actual types and tables without restoring the three stale specializations. Census confirmation pending.
+
 ### LINK-007: incomplete data ownership beyond clean symbol resolution
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-26.**
@@ -1525,6 +1527,8 @@ Clearance: the 8 already-linking units preview LINKS against index 47e030bafc wi
 Census confirmation: awaiting the next census.
 
 
+- **Current address-blocker clarification (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`):** the ordinary preview still reports A=1 for `ConstIntGetters2Addr.cpp` and A=1042 for `ConstIntGettersAddr.cpp`. The former's 0x00424F58 literal is inside a rowed string body and its meaning remains unasserted. The latter now contains large FieldParse/data initializers as well as getter immediates, so the earlier blanket false-positive explanation does not establish the meaning of its current findings. No literal, row or data ownership was changed. Raw before/after previews and the successful 149-row combined byte gate are in `build/link-worker-w1/`; classify actual datum ownership before changing these values or the heuristic. Clearance remains pending.
+
 ### LINK-021: W3DRopeDraw ctor linked against non-retail headers emitting conflicting COMDATs and unresolved references
 Status: Cleared. Updated: 2026-10-26; inspected revision: 692d9a3158.
 Evidence / affected units: `Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DRopeDrawCtor.cpp`,
@@ -1594,6 +1598,8 @@ respell the ctor's `Rva004E0790` holder dtor to `ArmySummaryEntryRef` (or rename
 `link_check.py` the ctor with `Rva004E0D67Dtor.cpp` and `OpaqueScalarDeletingDtorsB11.cpp`.
 Clearance: pending.
 Census confirmation: not claimed.
+
+Current destructor-side inspection (2026-10-26, revision `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`): `Rva004E0D67Dtor.cpp` still has four unresolved virtual names. Its table at RVA 0x00861618 puts the name getter `LivingWorldBuilding::GetSnapshotName` (0x004E0777) where the private view spells `crc`, and `LivingWorldBuilding::DoXfer` (0x004E0E78) where it spells `xfer`. `Gen_uwm_004edfff::s0` also conflates the derived listener slot at 0x004E06B8 (`LivingWorldBuilding::BeginTurn`) and its base slot at 0x0050B238. These are signature/type conflicts, not requests for one same-signature alias. No source trial was made. Raw table-slot witnesses and row homes are in `build/link-worker-w1/native-witnesses.log`; the unchanged destructor unit passes the combined byte gate. The class/observer reconciliation above remains the prerequisite; no clearance or census change is claimed.
 
 ### LINK-025: `StlSweepR3Rva0002CCC3.cpp`'s opaque hashtable record needs the macro table's real type
 Status: Blocked (identity prerequisite). Updated: 2026-10-26; inspected revision: 308a442bae.
@@ -1909,6 +1915,8 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   which no unit links, and changes to other units since the census.
 - **Census confirmation:** awaiting the next census.
 
+
+- **Bounded duplicate follow-up (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`):** `MultiplayerColorDefinitionCopy.cpp` still collides with MultiplayerSettings.cpp's implicit copy constructor. The explicit 79-byte body is retail-correct; the merged provider's implicit copy is not. No repeat of the failed flag trial and no source edit were made. Preventing that implicit copy requires the shared MultiplayerColorDefinition declaration to declare the out-of-line copy constructor, or the separately approved TU reconciliation; this seat forbids shared-shim edits and row moves. The raw index providers, ordinary previews and unchanged byte gate are in `build/link-worker-w1/`. No clearance claimed.
 
 ### LINK-043: StlSweepR3Rva00406B1D instantiated stable_sort instead of emitting scalar deleting destructor
 Status: Cleared. Updated: 2026-10-26; inspected revision: b06312df51.
@@ -2452,3 +2460,12 @@ Census confirmation: n/a.
   alone.
 - **Clearance:** none.
 - **Census confirmation:** not applicable.
+
+### LINK-065: audio lookup emits an unrowed owner and an untyped tree-worker trampoline
+Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
+Evidence / affected units: `Audio/AudioManagerAdjustPriorityAndVolume.cpp` owns the 33-byte lookup at 0x00059238 and two five-byte destructor forwarders. The lookup's REL32 at +0xE targets the existing 78-byte `AsciiString` tree worker at 0x001F8437; its `pair<const AsciiString,int>` and `pair<const AsciiString,float>` rows are in `GameClient/System/ParticleSystemDebugDisplay.cpp`, while `OptionPreferences_mapFind.cpp` supplies the existing string/string spelling. Its former setter references were emitted only by an unrowed owner body, whose prior 0x000592B3 placement is explicitly refuted in `reverse/re_attempts.log`.
+Completed: use the vendored `_Rb_tree<AsciiString,pair<const AsciiString,int>,...>` directly at +0x1B8; its lookup and iterator access inline into the existing 33-byte row. The existing integer ABI parameter is treated as the native pointer to its `AsciiString` key. Define the rowed lookup out of class so it remains emitted without the unrowed owner. Remove that owner, its setter declarations and the function/member-pointer union. Retain both existing destructor-forwarder rows. Only the STLport and canonical AsciiString include paths are added; no code-generation flags, shared headers, pins or ledger entries change.
+Verification: `build/link-worker-w1/audio-before.log` reports three unresolved names and two linking providers; `audio-after.log` reports all three units LINKS. `audio-build.log` and `final-7-build.log` both pass 3/3 matched rows, and `final-7-frozen.log`, `final-7-eh.log` and `final-7-data.log` pass. `final-link-with-audio.log` rechecks every assigned unit and inspected provider together against index d1f046749a (2026-10-26 13:18 UTC, retail-truth-4). Full receipts and exact paths are in `build/link-report.md`.
+Remaining / next check: the integer public signature still records the old opaque key ABI; a future naming/identity pass can correct its source signature with its callers and ledger under the normal rename rules. This does not block the verified current call binding. Confirm the unit in the next normal maintainer census.
+Clearance: cleared in ordinary-preview scope; census confirmation pending.
+Census confirmation: pending; no headline change claimed.

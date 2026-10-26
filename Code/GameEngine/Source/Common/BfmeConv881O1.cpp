@@ -30,8 +30,6 @@ template <> bool less<unsigned int>::operator()(const unsigned int &a, const uns
 }
 #include <vector>
 // bfme link decl-only begin
-namespace _STL { template <> _Vector_base<void *, allocator<void *> >::_Vector_base(allocator<void *> const &); }
-namespace _STL { template <> vector<void *, allocator<void *> >::vector(allocator<void *> const &); }
 namespace _STL { template <> _STLP_alloc_proxy<void **, void *, allocator<void *> >::~_STLP_alloc_proxy(); }
 namespace _STL { template <> _Vector_base<void *, allocator<void *> >::~_Vector_base(); }
 namespace _STL { template <> vector<void *, allocator<void *> >::~vector(); }
@@ -47,7 +45,6 @@ namespace _STL { template <> void ** vector<void *, allocator<void *> >::end(); 
 namespace _STL { template <> void vector<void *, allocator<void *> >::insert(void **, unsigned int, void *const &); }
 namespace _STL { template <> void vector<void *, allocator<void *> >::reserve(unsigned int); }
 namespace _STL { template <> unsigned int vector<void *, allocator<void *> >::size() const; }
-namespace _STL { template <> allocator<void *>::~allocator(); }
 // bfme link decl-only end
 // Keep __node_alloc<true,0>::deallocate inline-only: every call here is inlined,
 // and this TU's /O1 COMDAT copy differs from the copy the link keeps.
