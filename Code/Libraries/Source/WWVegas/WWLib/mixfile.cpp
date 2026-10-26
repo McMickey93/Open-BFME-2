@@ -38,31 +38,60 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include "../../../../../reference/shims/ffactory_o1_dtor/ffactory.h"
-#include "mixfile.h"
-#include "wwdebug.h"
 #include "ffactory.h"
-#include "wwfile.h"
-#include "realcrc.h"
-#include "rawfile.h"
-#include "win.h"
-#include "bittype.h"
+#include "wwstring.h"
+#include "vector.h"
 
-/*
-**
-*/
-typedef struct
+// The surface holder W3DRadarResetSurface (dtor 0x00176CB0): a COM pointer
+// released through vtable slot 2 and add-refed through slot 1 on copy.
+class W3DRadarResetSurfaceInterface
 {
-	char	signature[4];
-	long	header_offset;
-	long	names_offset;
+public:
+	virtual void slot00();
+	virtual unsigned long __stdcall AddRef();
+	virtual unsigned long __stdcall Release();
+};
 
-} MIXFILE_HEADER;
-
-typedef struct
+class W3DRadarResetSurface
 {
-	long	file_count;
+public:
+	~W3DRadarResetSurface();
 
-} MIXFILE_DATA_HEADER;
+	W3DRadarResetSurface &operator=(const W3DRadarResetSurface &that)
+	{
+		if (that.m_surface)
+			that.m_surface->AddRef();
+		if (m_surface)
+			m_surface->Release();
+		m_surface = that.m_surface;
+		return *this;
+	}
+
+	W3DRadarResetSurfaceInterface *m_surface;
+};
+
+// The rowed VectorClass/DynamicVectorClass members here keep the Zero Hour
+// element spelling, but retail's element is not Zero Hour's two StringClass
+// record: its __ehvec ctor/dtor pair is 0x00154300 (clears +4 only) and
+// 0x00001E13 (add ecx,4; jmp ~W3DRadarResetSurface), and the VectorClass
+// vtable 0x007D3BC8 slot 2 is the Resize at 0x00155690, whose copy loop
+// AddRef/Releases the +4 word. That is this 8-byte layout. (This unit is
+// /Od, so the element ctor clears the holder itself rather than calling an
+// out-of-line holder ctor.)
+class MixFileFactoryClass
+{
+public:
+	struct AddInfoStruct
+	{
+		bool operator== (const AddInfoStruct &src)	{ return false; }
+		bool operator!= (const AddInfoStruct &src)	{ return true; }
+
+		AddInfoStruct() { m_04.m_surface = 0; }
+
+		int m_00;
+		W3DRadarResetSurface m_04;
+	};
+};
 
 struct FileOffsetStruct {
 		bool operator== (const FileOffsetStruct &src)	{ return false; }
@@ -72,413 +101,13 @@ struct FileOffsetStruct {
 		unsigned long Offset;
 };
 
-/*
-**
-*/					
-// ??0MixFileFactoryClass@@QAE@PBDPAVFileFactoryClass@@@Z present-unmatched
-MixFileFactoryClass::MixFileFactoryClass( const char * mix_filename, FileFactoryClass * factory )	:
-	FileCount (0),
-	NamesOffset (0),
-	IsValid (false),
-	BaseOffset (0),
-	Factory (NULL),
-	IsModified (false)
-{
-//	WWDEBUG_SAY(( "MixFileFactory( %s )\n", mix_filename ));
-	MixFilename	= mix_filename;
-	Factory		= factory;
-	FilenameList.Set_Growth_Step (1000);
+// Retail has no MixFileFactoryClass bodies (no row; nothing imports the
+// GetFileAttributesA/MoveFileA/_stricmp the Zero Hour ones call, and no
+// MixFileCreator member exists). Only the template members below are
+// rowed here, so they are instantiated directly.
+template class DynamicVectorClass<MixFileFactoryClass::AddInfoStruct>;
+template class DynamicVectorClass<FileOffsetStruct>;
 
-	// First, open the mix file
-	FileClass * file = factory->Get_File( mix_filename );
-
-//	WWASSERT( file );
-
-	if ( file && file->Is_Available() ) {
-
-		file->Open();
-
-		IsValid = true;
-
-		//
-		//	Read the file header
-		//
-		MIXFILE_HEADER header = { 0 };
-		IsValid = (file->Read( &header, sizeof( header ) ) == sizeof( header ));
-
-		//
-		//	Validate the file header
-		//
-		if ( IsValid ) {
-			IsValid = (::memcmp( header.signature, "MIX1", sizeof ( header.signature ) ) == 0);
-		}
-
-		//
-		//	Seek to the data start
-		//
-		FileCount = 0;
-		if ( IsValid ) {
-			file->Seek( header.header_offset, SEEK_SET );
-			IsValid = ( file->Read( &FileCount, sizeof( FileCount ) ) == sizeof( FileCount ) );
-		}
-		
-		//
-		//	Read the array of data headers
-		//
-		if ( IsValid ) {
-			FileInfo.Resize( FileCount );
-			int size = FileCount * sizeof( FileInfoStruct );
-			IsValid = ( file->Read( &FileInfo[0], size ) == size );
-		}
-
-		//
-		//	Check for success
-		//
-		if ( IsValid ) {
-			BaseOffset	= 0;
-			NamesOffset	= header.names_offset;
-			WWDEBUG_SAY(( "MixFileFactory( %s ) loaded successfully  %d files\n", MixFilename, FileInfo.Length() ));
-		} else {
-			FileInfo.Resize(0);
-		}	
-
-		factory->Return_File( file );
-
-	} else {
-		WWDEBUG_SAY(( "MixFileFactory( %s ) FAILED\n", mix_filename ));
-	}
-}
-
-// ??1MixFileFactoryClass@@UAE@XZ present-unmatched
-MixFileFactoryClass::~MixFileFactoryClass( void )
-{
-	FileInfo.Resize(0);
-}
-
-// ?Build_Filename_List@MixFileFactoryClass@@QAE_NAAV?$DynamicVectorClass@VStringClass@@@@@Z present-unmatched
-bool	MixFileFactoryClass::Build_Filename_List (DynamicVectorClass<StringClass> &list)
-{
-	if (IsValid == false) {
-		return false;
-	}
-
-	bool retval = false;
-
-	//
-	//	Attempt to open the file
-	//
-	RawFileClass *file = (RawFileClass *)Factory->Get_File( MixFilename );
-	if ( file != NULL && file->Open ( RawFileClass::READ ) ) {
-
-		//
-		//	Seek to the names offset header
-		//
-		file->Seek (NamesOffset, SEEK_SET);
-		retval = true;
-		
-		//
-		//	Read the count of files
-		//
-		int file_count = 0;
-		if (file->Read( &file_count, sizeof( file_count) ) == sizeof( file_count )) {
-
-			//
-			//	Loop over each saved filename
-			//
-			bool keep_going = true;
-			for (int index = 0; index < file_count && keep_going; index ++) {
-				keep_going = false;
-				
-				//
-				//	Get the length of the filename
-				//
-				uint8 name_len = 0;
-				if (file->Read( &name_len, sizeof( name_len ) ) == sizeof( name_len )) {
-					
-					//
-					//	Read the filename
-					//
-					StringClass filename;
-					if (file->Read( filename.Get_Buffer( name_len ), name_len ) == name_len ) {
-						
-						//
-						//	Add the filename to our list
-						//
-						list.Add( filename );
-						keep_going = true;
-					}
-				}
-			}
-		}
-
-		//
-		//	Close the file
-		//
-		Factory->Return_File( file );
-	}
-
-	return retval;
-}
-
-// ?Get_File@MixFileFactoryClass@@UAEPAVFileClass@@PBD@Z present-unmatched
-FileClass * MixFileFactoryClass::Get_File( char const *filename )
-{
-	if ( FileInfo.Length() == 0 ) {
-		return NULL;
-	}
-//	WWDEBUG_SAY(( "MixFileFactoryClass::Get_File( %s )\n", filename ));
-
-	RawFileClass *file = NULL;
-
-	//	Create the key block that will be used to binary search for the file.
-	unsigned long crc = CRC_Stringi( filename );
-
-	//	Binary search for the file in this mixfile. If it is found, then create the file
-	FileInfoStruct * info = NULL;
-	FileInfoStruct * base = &FileInfo[0];
-	int stride = FileInfo.Length();
-	while (stride > 0) {
-		int pivot = stride / 2;
-		FileInfoStruct * tryptr = base + pivot;
-		if (crc < tryptr->CRC) {
-			stride = pivot;
-		} else {
-			if (tryptr->CRC == crc) {
-				info = tryptr;
-				break;
-			}
-		   base = tryptr + 1;
-			stride -= pivot + 1;
-		}
-	}		
-
-	if ( info != NULL) {
-//		WWDEBUG_SAY(( "MixFileFactoryClass::Get_File( %s ) FOUND\n", filename ));
-		file = (RawFileClass *)Factory->Get_File( MixFilename );
-		if ( file ) {
-			file->Bias( BaseOffset + info->Offset, info->Size );
-		}
-//		WWDEBUG_SAY(( "MixFileFactoryClass::Get_File( %s ) FOUND\n", filename ));
-	} else {
-//		WWDEBUG_SAY(( "MixFileFactoryClass::Get_File( %s ) NOT FOUND\n", filename ));
-	}
-
-	return file;
-}
-
-// ?Return_File@MixFileFactoryClass@@UAEXPAVFileClass@@@Z present-unmatched
-void	MixFileFactoryClass::Return_File( FileClass * file )
-{
-	if ( file != NULL ) {
-		Factory->Return_File( file );
-	}
-}
-
-
-/*
-**
-*/
-void
-// ?Add_File@MixFileFactoryClass@@QAEXPBD0@Z present-unmatched
-MixFileFactoryClass::Add_File (const char *full_path, const char *filename)
-{
-	AddInfoStruct info;
-	info.FullPath = full_path;
-	info.Filename = filename;
-	PendingAddFileList.Add (info);
-	IsModified = true;
-	return ;
-}
-
-
-/*
-**
-*/
-void
-// ?Delete_File@MixFileFactoryClass@@QAEXPBD@Z present-unmatched
-MixFileFactoryClass::Delete_File (const char *filename)
-{
-	//
-	//	Remove this file (if it exists) from our filename list
-	//
-	for (int list_index = 0; list_index < FilenameList.Count (); list_index ++) {
-		if (FilenameList[list_index].Compare_No_Case (filename) == 0) {
-			FilenameList.Delete (list_index);
-			IsModified = true;
-			break;
-		}
-	}
-
-	return ;
-}
-
-
-/*
-**
-*/
-void
-// ?Flush_Changes@MixFileFactoryClass@@QAEXXZ present-unmatched
-MixFileFactoryClass::Flush_Changes (void)
-{
-	//
-	//	Exit if there's nothing to do.
-	//
-	if (IsModified == false) {
-		return ;
-	}
-
-	//
-	//	Get the path of the mix file
-	//
-	char drive[_MAX_DRIVE] = { 0 };
-	char dir[_MAX_DIR] = { 0 };
-	::_splitpath (MixFilename, drive, dir, NULL, NULL);
-	StringClass path	= drive;
-	path					+= dir;
-
-	//
-	//	Try to find a temp filename
-	//
-	StringClass full_path;
-	if (Get_Temp_Filename (path, full_path)) {
-		MixFileCreator new_mix_file (full_path);
-
-		//
-		//	Add all the remaining files from our file set
-		//
-		for (int index = 0; index < FilenameList.Count (); index ++) {
-			StringClass &filename = FilenameList[index];
-
-			//
-			//	Copy this file data to the mix file
-			//
-			FileClass *file_data = Get_File (filename);
-			if (file_data != NULL) {
-				file_data->Open ();
-				new_mix_file.Add_File (filename, file_data);
-				Return_File (file_data);
-
-				//
-				//	Remove this file from the pending list (if necessary)
-				//
-				for (int temp_index = 0; temp_index < PendingAddFileList.Count (); temp_index ++) {
-					if (filename.Compare_No_Case (PendingAddFileList[temp_index].Filename) == 0) {
-						PendingAddFileList.Delete (temp_index);
-						break;
-					}
-				}
-			}
-		}
-
-		//
-		//	Add the new files that are pending
-		//
-		for (index = 0; index < PendingAddFileList.Count (); index ++) {
-			new_mix_file.Add_File (PendingAddFileList[index].FullPath, PendingAddFileList[index].Filename);
-		}
-	}
-
-	//
-	//	Delete the old mix file and rename the new one
-	//
-	::DeleteFile (MixFilename);
-	::MoveFile (full_path, MixFilename);
-
-	//
-	//	Reset the lists
-	//
-	IsModified = false;	
-	PendingAddFileList.Delete_All ();
-	return ;
-}
-
-
-/*
-**
-*/
-bool
-// ?Get_Temp_Filename@MixFileFactoryClass@@AAE_NPBDAAVStringClass@@@Z present-unmatched
-MixFileFactoryClass::Get_Temp_Filename (const char *path, StringClass &full_path)
-{
-	bool retval = false;
-
-	StringClass temp_path	= path;
-	temp_path					+= "_tmpmix";
-	
-	//
-	//	Try to find a unique temp filename
-	//
-	for (int index = 0; index < 20; index ++) {
-		full_path.Format ("%s%.2d.dat", (const char *)temp_path, index + 1);
-		if (GetFileAttributes (full_path) == 0xFFFFFFFF) {
-			retval = true;
-			break;
-		}
-	}
-
-	return retval;
-}
-
-
-//
-// Comparison function, used by Build_Ordered_Filename_List
-//
-// ?File_Offset_Compare@MixFileFactoryClass@@CAHPBX0@Z present-unmatched
-int MixFileFactoryClass::File_Offset_Compare(const void * a, const void * b) 
-{
-	unsigned int OffsetA = ((FileOffsetStruct*)a)->Offset;
-	unsigned int OffsetB = ((FileOffsetStruct*)b)->Offset;
-	if ( OffsetA < OffsetB ) return -1;
-	if ( OffsetA > OffsetB ) return 1;
-	return 0;
-}
-
-
-//
-// Function builds a list of file names in the order that they are stored in the file
-//
-// ?Build_Ordered_Filename_List@MixFileFactoryClass@@QAE_NAAV?$DynamicVectorClass@VStringClass@@@@@Z present-unmatched
-bool	MixFileFactoryClass::Build_Ordered_Filename_List (DynamicVectorClass<StringClass> &list)
-{
-	if (IsValid == false) {
-		return false;
-	}
-
-	// get list of filenames
-	DynamicVectorClass<StringClass> name_list;
-	if (!Build_Filename_List(name_list)) {
-		return false;
-	}
-
-	// associate offset with each name and add to list
-	DynamicVectorClass<FileOffsetStruct>	local_file_info;
-	local_file_info.Resize( name_list.Count());
-	for (int i = 0; i < name_list.Count(); ++i) {
-		// Here, we have to assume that the names in the list are in CRC order, just like FileInfo is.
-		FileOffsetStruct temp;
-		temp.Filename	= name_list[i];
-		temp.Offset		= FileInfo[i].Offset;
-		local_file_info.Add( temp );
-	}
-
-	// sort name/offset by offset
-	if (local_file_info.Count() > 1) {
-		qsort( &local_file_info[0], local_file_info.Count(), sizeof(local_file_info[0]), &File_Offset_Compare);
-	}
-
-	// add names to output parameter
-	list.Clear();
-	list.Resize( name_list.Count());
-	for (i = 0; i < local_file_info.Count(); ++i) {
-		list.Add(local_file_info[i].Filename);
-	}
-
-	return true;
-}
-
-/*
-**
-*/
 SimpleFileFactoryClass _SimpleFileFactory;
 
 // The unrecovered MixFileCreator/makemix helpers remain in the BFME1 donor
