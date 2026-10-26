@@ -1738,14 +1738,6 @@ int Rva004CD3D5Get(void)
 	return (int)"TeleportToCasterSpecialPower";
 }
 
-// ?Rva004CD975Get@@YAHXZ @ 0x004cd975 (6B): returns 0x00bf4b50.
-// Follows a ret-8 (prev C2-08-00), carried by 1 .rdata vtable slot,
-// no direct callers, no branch sources. Opaque address-derived name.
-int Rva004CD975Get(void)
-{
-	return (int)"StoreObjectsSpecialPower";
-}
-
 // ?Rva004CDC2DGet@@YAHXZ @ 0x004cdc2d (6B): returns 0x00bf4b1c.
 // Follows a ret-8 (prev C2-08-00), carried by 1 .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.

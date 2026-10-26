@@ -83,6 +83,7 @@ struct ObjectStatusMaskNone : public Rva0023DA79
 #include "Code/GameEngine/Source/Common/PartitionRangeQueryCallView.h"
 extern PartitionManager *ThePartitionManager;
 #include "Code/GameEngine/Source/Common/GameLogicObjectLookupView.h"
+#include "../../../GameClient/BuffManager.h"
 
 namespace _STL {
 template <class T> class allocator;
@@ -105,19 +106,6 @@ class ThingTemplate
 public:
 	char m_pad000[0x114];
 	unsigned m_114;		// +0x114 (bit 13 tested)
-};
-
-class Object
-{
-public:
-	Player *getControllingPlayer() const;	// 0x0028AFA9
-	bool testStatus(ObjectStatusTypes bit) const;	// 0x0004E536
-	ObjectID getID() const { return m_74; }
-	char m_pad000[0x04];
-	const ThingTemplate *m_template;	// +0x04
-	char m_pad008[0x74 - 0x08];
-	ObjectID m_74;		// +0x74
-	ObjectID m_78;		// +0x78
 };
 
 extern GameLogic *TheGameLogic;
@@ -186,6 +174,134 @@ private:
 	_STL::vector<ObjectID, _STL::allocator<ObjectID> > m_88;	// +0x88
 };
 
+// Cold-slice B8-imm32 const-int returners (twin-free TU).
+//
+// Same shape as ConstIntGetters2.cpp/ConstIntGetters3.cpp (mov eax,<IMM32> /
+// ret, 6B) but kept in a separate TU so this lane does not contend with the
+// hot ConstIntGetters appends on origin/master. Rows are opaque
+// address-derived names: each body follows a ret-imm (C2-04-00 / C2-08-00)
+// and is carried by .rdata vtable slots with no direct callers and no branch
+// sources, so no class identity is witnessed. No // cl: line (defaults match
+// the frameless 6-byte shape).
+
+// The three Apt screen factories these getters return are matched rows.
+void *__stdcall createAptScreenInGameChat(void *);
+
+void *__stdcall createAptScreenObjectives(void *);
+
+void *__stdcall createAptScreenQuickMatchMenu(void *);
+
+class Object
+{
+public:
+	Player *getControllingPlayer() const;	// 0x0028AFA9
+	bool testStatus(ObjectStatusTypes bit) const;	// 0x0004E536
+	ObjectID getID() const { return m_74; }
+	char m_pad000[0x04];
+	const ThingTemplate *m_template;	// +0x04
+	char m_pad008[0x74 - 0x08];
+	ObjectID m_74;		// +0x74
+	ObjectID m_78;		// +0x78
+};
+
+// ?GetSnapshotName@Rva004885DE@@MBEPBDXZ @ 0x004886c1 (6B): returns 0x00c4b550.
+// Follows a ret-8 (prev C2-08-00), carried by 1 .rdata vtable slot,
+// no direct callers, no branch sources. Opaque address-derived name.
+class Rva004885DE
+{
+protected:
+	virtual const char *GetSnapshotName() const;
+};
+
+// Retail table C4C3D4 selects this Snapshot name getter in slot 2.
+class FlammableUpdate
+{
+protected:
+	virtual const char *GetSnapshotName() const;
+};
+
+// Snapshot slot 2 of retail DamageModule table RVA 0x008598E4 selects this getter.
+class DamageModule
+{
+protected:
+	virtual const char *GetSnapshotName() const;
+};
+
+class Xfer;
+
+class LivingWorldCampaign
+{
+public:
+	virtual ~LivingWorldCampaign();
+	virtual void loadPostProcess();
+	virtual const char *GetSnapshotName() const;
+	virtual void xfer(Xfer *);
+};
+
+// Existing verified getters rehomed after naming their actual providers.
+// Integer return representation retained; provider addresses now relocate.
+class GameWindow;
+
+ class WinInstanceData;
+
+ void W3DLeftHUDDraw(GameWindow *, WinInstanceData *);
+
+class Rva0078D310Host;
+
+ Rva0078D310Host *__stdcall Rva00104FD5Create(void *);
+
+class AptLanLobby;
+
+ AptLanLobby *__stdcall Rva002D1F77Create(void *);
+
+class Rva004E4A45;
+
+ Rva004E4A45 *__stdcall Rva002D1FEBCreate(void *);
+
+class Rva004E8B38;
+
+ Rva004E8B38 *__stdcall Rva002D1F3DCreate(void *);
+
+class Rva00512AC8;
+
+ Rva00512AC8 *__stdcall Rva002D1E8FCreate(void *);
+
+class Rva005142B0;
+
+ Rva005142B0 *__stdcall Rva002D1F03Create(void *);
+
+class Rva00516211;
+
+ Rva00516211 *__stdcall Rva002D1FB1Create(void *);
+
+class Rva0051A78E;
+
+ Rva0051A78E *__stdcall Rva002D205FCreate(void *);
+
+class Rva005202C8;
+
+ Rva005202C8 *__stdcall Rva002D2147Create(void *);
+
+class Rva00523825;
+
+ Rva00523825 *__stdcall Rva002D21FBCreate(void *);
+
+// tu-skeleton: 0x004CD8FB 29B ??0StoreObjectsSpecialPowerModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004CD918 27B ?buildFieldParse@StoreObjectsSpecialPowerModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
+
+// tu-skeleton: 0x004CD933 66B ??0StoreObjectsSpecialPower@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/MissileLauncherBuildingUpdateCtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/ConstIntGetters4.cpp
+
+// ?Rva004CD975Get@@YAHXZ @ 0x004cd975 (6B): returns 0x00bf4b50.
+// Follows a ret-8 (prev C2-08-00), carried by 1 .rdata vtable slot,
+// no direct callers, no branch sources. Opaque address-derived name.
+int Rva004CD975Get(void)
+{
+	return (int)"StoreObjectsSpecialPower";
+}
+
 // tu-skeleton: 0x004CD97B 69B ?getModuleNameKey@StoreObjectsSpecialPower@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/StoreObjectsSpecialPowerPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x004CD9C0 89B ??1MissileLauncherBuildingUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/MissileLauncherBuildingUpdateDtor.cpp (not merged yet)
@@ -193,6 +309,8 @@ private:
 // tu-skeleton: 0x004CDA19 28B ??_GMissileLauncherBuildingUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/MissileLauncherBuildingUpdateDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004CDA35 20B ?rva004CDA35@Rva004CDA35@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva004CDA35ScienceTypesClear.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/MissileLauncherBuildingUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/StoreObjectsSpecialPowerUpdate.cpp
 
@@ -226,3 +344,11 @@ void StoreObjectsSpecialPower::triggerAbilityEffect()
 	if (0)
 		throw 1;
 }
+
+// tu-skeleton: 0x00790A3D 13B ?Rva00790A3DClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E043xx.cpp (not merged yet)
+
+// tu-skeleton: 0x00790A4A 10B __ehhandler$?getModuleNameKey@StoreObjectsSpecialPower@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/StoreObjectsSpecialPowerPoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x00790A54 8B Unwind@00b90a54 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/MissileLauncherBuildingUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00790A5C 10B __ehhandler$??1MissileLauncherBuildingUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/MissileLauncherBuildingUpdateDtor.cpp (not merged yet)
