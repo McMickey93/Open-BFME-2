@@ -245,7 +245,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingCtor.cpp` | 327 | 3 (U=3) | Blocked: dtor rowed as placeholder `Rva004E0D67` (LINK-024) |
 | `Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp` | 326 | 6 (U=6) | Open |
 | `Code/GameEngine/Source/Common/Rva004E0D67Dtor.cpp` | 325 | 4 (U=4) | Open |
-| `Code/GameEngine/Source/Common/RvaMorphInitFamily.cpp` | 309 | 5 (U=5) | Open |
+| `Code/GameEngine/Source/Common/RvaMorphInitFamily.cpp` | 309 | 5 (U=5) | Links on current inputs: `link_check.py --refresh` LINKS 0 -> 301 B (2026-10-26 at 42ca4d9ffc, index d1f046749a); no edit; census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001EBEAB.cpp` | 307 | 5 (U=3, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv1292DeferredWalkers.cpp` | 298 | 6 (U=6) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp` | 290 | 4 (U=3, C=1) | Open |
