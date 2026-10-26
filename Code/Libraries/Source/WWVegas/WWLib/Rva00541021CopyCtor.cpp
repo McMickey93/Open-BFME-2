@@ -6,8 +6,19 @@ struct Rva00541021
     int m_field0;
     Region3D m_region;
     Rva00541021(const Rva00541021 &other);
+    Rva00541021 &operator=(const Rva00541021 &other);
 };
 Rva00541021::Rva00541021(const Rva00541021 &other)
     : m_field0(other.m_field0), m_region(other.m_region)
 {
+}
+
+// Retail's assignment folds onto the copy ctor (0x00541D80 in vector::insert
+// calls 0x00541021 with ecx=position, arg=&x_copy; 0x0054112D's copy_backward
+// loop does the same): an int copy, then the Region3D copy, then return this.
+Rva00541021 &Rva00541021::operator=(const Rva00541021 &other)
+{
+    m_field0 = other.m_field0;
+    m_region.Region3D::Region3D(other.m_region);
+    return *this;
 }

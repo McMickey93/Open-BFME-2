@@ -172,8 +172,8 @@ Rva00540E9D rva00540EBD(float value, void *arg10, void *arg14,
 // preserved ECX are required by these two caller sequences.
 #include <vector>
 #include <new>
-struct Rva00244A80Element {char bytes[28];Rva00244A80Element(const Rva00244A80Element&);Rva00244A80Element&operator=(const Rva00244A80Element&);};
-namespace _STL {template<> Rva00244A80Element *vector<Rva00244A80Element>::insert(Rva00244A80Element*,const Rva00244A80Element&);}
+struct Rva00541021 {int m_field0;Region3D m_region;Rva00541021(const Rva00541021&);Rva00541021&operator=(const Rva00541021&);};
+namespace _STL {template<> Rva00541021 *vector<Rva00541021>::insert(Rva00541021*,const Rva00541021&);}
 class Rva00541579 {public:bool rva00541579(int);};
 class Rva005414E5Listener {public:
 virtual void beforeInsert(void*,int);
@@ -192,20 +192,20 @@ namespace _STL {template<> BfmePod28 *vector<BfmePod28>::erase(BfmePod28*,BfmePo
 class Rva00542225:public Rva005414E5List {public:
 __declspec(noinline) void rva00541FCC(int,const Region3D&);
  bool read(DataChunkInput*,DataChunkInfo*);
-_STL::vector<Rva00244A80Element> values;int hint;
+_STL::vector<Rva00541021> values;int hint;
 };
 // ?rva00541FCC@Rva00542225@@QAEXHABURegion3D@@@Z
 void Rva00542225::rva00541FCC(int key,const Region3D &region) {
  if(key<0)return;
  if(((Rva00541579*)this)->rva00541579(key)){
   forEach(&Rva005414E5Listener::beforeChange,this,key);
-  ((Region3D*)((values.begin()+hint)->bytes+4))->Region3D::Region3D(region);
+  (values.begin()+hint)->m_region.Region3D::Region3D(region);
   forEach(&Rva005414E5Listener::afterChange,this,key);
  }else{
   forEach(&Rva005414E5Listener::beforeInsert,this,key);
-  Rva00244A80Element *begin=values.begin();
+  Rva00541021 *begin=values.begin();
   char entry[28];
-  values.insert(begin+(hint+1),*(const Rva00244A80Element*)new((void*)entry)Rva00540FDB(key,region));
+  values.insert(begin+(hint+1),*(const Rva00541021*)new((void*)entry)Rva00540FDB(key,region));
   forEach(&Rva005414E5Listener::afterInsert,this,key);
  }
 }
