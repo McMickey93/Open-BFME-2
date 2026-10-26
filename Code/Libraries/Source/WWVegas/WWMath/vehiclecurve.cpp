@@ -67,7 +67,13 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 //////////////////////////////////////////////////////////////////////
 // Save-Load stuff
 //////////////////////////////////////////////////////////////////////
-SimplePersistFactoryClass<VehicleCurveClass,WWMATH_CHUNKID_VEHICLECURVE>	_VehicleCurveFactory;
+// BFME 2 has no VehicleCurve persistence: game.dat holds neither its factory's
+// Chunk_ID body (B8 05 01 08 00 C3) nor the chunk IDs 0x11071217/0x00080105,
+// so the Zero Hour factory and its Save/Load/Evaluate bodies are not ported.
+// The arc-list vector members retail does keep are instantiated here.
+struct VehicleCurveArcListView : VehicleCurveClass { typedef ArcInfoStruct Elem; };
+template DynamicVectorClass<VehicleCurveArcListView::Elem>::DynamicVectorClass(unsigned, VehicleCurveArcListView::Elem const *);
+template void DynamicVectorClass<VehicleCurveArcListView::Elem>::Delete_All(void);
 
 ////////////////////////////////////////////////////////////////
 //	Save/Load constants
@@ -305,167 +311,6 @@ Find_Tangents
 //	Update_Arc_List
 //
 //////////////////////////////////////////////////////////////////////
-void
-// ?VehicleCurveClass::Update_Arc_List present-unmatched
-VehicleCurveClass::Update_Arc_List (void)
-{
-	WWMEMLOG(MEM_PATHFIND);
-	m_ArcList.Delete_All ();
-	
-	//
-	//	Bail out if there is nothing to do
-	//
-	int count = Key_Count ();
-	if (count == 0) {
-		return ;
-	}
-
-	//
-	//	Add a record for the starting point of the arc...
-	//
-	ArcInfoStruct arc_start;
-	arc_start.point_in			= Keys[0].Point;
-	arc_start.point_out			= Keys[0].Point;
-	arc_start.center				= Keys[0].Point;
-	arc_start.point_angle		= 0;
-	arc_start.radius				= 0;
-	arc_start.angle_in_delta	= 0;
-	arc_start.angle_out_delta	= 0;
-	m_ArcList.Add (arc_start);
-	
-	//
-	//	Loop over each 'interior' point and generate arc information
-	// for each.
-	//
-	for (int index = 1; index < count - 1; index ++) {
-
-		//
-		//	Get information about the previous, next, and current points.
-		//
-		Vector3 prev_pt;
-		Vector3 next_pt;
-		Vector3 curr_pt;
-		float time = 0;
-		Get_Key (index-1, &prev_pt, &time);
-		Get_Key (index,	&curr_pt, &time);
-		Get_Key (index+1, &next_pt, &time);
-
-		//
-		//	Determine the last known point on the path
-		//
-		Vector3 last_path_pt = m_ArcList[index-1].point_out;
-
-		//
-		//	Create a transformation matrix to simulate the vehicle's position and
-		// orientation at the last point...
-		//
-		Vector3 x_vector (curr_pt - last_path_pt);
-		Vector3 z_vector (0, 0, 1);
-		x_vector.Normalize ();
-#ifdef ALLOW_TEMPORARIES
-		Vector3 y_vector = Vector3::Cross_Product (x_vector, z_vector);
-#else
-		Vector3 y_vector;
-		Vector3::Cross_Product (x_vector, z_vector, &y_vector);
-#endif
-		Matrix3D tm (x_vector, y_vector, z_vector, last_path_pt);
-
-		//
-		//	Find where the turn arc should be centered and whether we should
-		// make a right-turn or a left turn...
-		//
-		bool is_right_turn = false;
-		Vector3 arc_center (0, 0, 0);
-		::Find_Turn_Arc (	tm,
-								m_Radius,
-								last_path_pt,
-								curr_pt,
-								next_pt,
-								&arc_center,
-								&is_right_turn);
-
-		//
-		//	Determine where the vehicle should enter and exit the turn
-		//
-		float angle_in_delta		= 0;
-		float angle_out_delta	= 0;
-		float point_angle			= 0;
-		::Find_Tangents (	m_Radius,
-								last_path_pt,
-								curr_pt,
-								next_pt,
-								arc_center,
-								is_right_turn,
-								&point_angle,
-								&angle_in_delta,
-								&angle_out_delta);
-
-		//
-		//	Determine at what points these angles intersect the arc
-		//
-		Vector3 point_in (0, 0, 0);
-		point_in.X = arc_center.X + (m_Radius * ::WWMath::Sin (point_angle + angle_in_delta));
-		point_in.Y = arc_center.Y + (m_Radius * -::WWMath::Cos (point_angle + angle_in_delta));
-
-		Vector3 point_out (0, 0, 0);
-		point_out.X = arc_center.X + (m_Radius * ::WWMath::Sin (point_angle + angle_out_delta));
-		point_out.Y = arc_center.Y + (m_Radius * -::WWMath::Cos (point_angle + angle_out_delta));
-
-		//
-		//	Sanity check to ensure the vehicle doesn't try to go the long way around the
-		// turn arc...
-		//
-		if (	angle_in_delta > DEG_TO_RADF (200) || angle_out_delta > DEG_TO_RADF (200) ||
-				angle_in_delta < -DEG_TO_RADF (200) || angle_out_delta < -DEG_TO_RADF (200) )
-		{
-			//
-			//	Record information about this arc
-			//
-			ArcInfoStruct arc_info;	
-			arc_info.center				= curr_pt;
-			arc_info.point_angle			= 0;
-			arc_info.point_in				= curr_pt;
-			arc_info.point_out			= curr_pt;
-			arc_info.radius				= 0;
-			arc_info.angle_in_delta		= 0;
-			arc_info.angle_out_delta	= 0;
-			m_ArcList.Add (arc_info);
-
-		} else {
-
-			//
-			//	Record information about this arc
-			//
-			ArcInfoStruct arc_info;	
-			arc_info.center				= arc_center;
-			arc_info.point_angle			= point_angle;
-			arc_info.point_in				= point_in;
-			arc_info.point_out			= point_out;
-			arc_info.radius				= m_Radius;
-			arc_info.angle_in_delta		= angle_in_delta;
-			arc_info.angle_out_delta	= angle_out_delta;
-			m_ArcList.Add (arc_info);
-		}
-	}
-
-	//
-	//	Add a record for the starting point of the arc...
-	//
-	if (count > 1) {
-		ArcInfoStruct arc_end;
-		arc_end.point_in				= Keys[count-1].Point;
-		arc_end.point_out				= Keys[count-1].Point;
-		arc_end.center					= Keys[count-1].Point;
-		arc_end.point_angle			= 0;
-		arc_end.radius					= 0;
-		arc_end.angle_in_delta		= 0;
-		arc_end.angle_out_delta		= 0;
-		m_ArcList.Add (arc_end);
-	}
-
-	m_IsDirty = false;
-	return ;
-}
 
 
 //////////////////////////////////////////////////////////////////////
@@ -473,170 +318,7 @@ VehicleCurveClass::Update_Arc_List (void)
 //	Evaluate
 //
 //////////////////////////////////////////////////////////////////////
-void
-// ?VehicleCurveClass::Evaluate present-unmatched
-VehicleCurveClass::Evaluate (float time, Vector3 *set_val)
-{
-	int count = Keys.Count ();
-	m_Sharpness = 0;
 
-	if (time < Keys[0].Time) {
-		*set_val		= Keys[0].Point;
-		m_LastTime	= Keys[0].Time;
-		return;
-	}
-
-	if (time >= Keys[count - 1].Time) {
-		*set_val		= Keys[count - 1].Point;
-		m_LastTime	= Keys[count - 1].Time;
-		return;
-	}
-
-	//
-	//	Update the arc information if any of the keys have changed...
-	//
-	if (m_IsDirty) {
-		Update_Arc_List ();
-	}
-
-	//
-	//	Determine which segment we are on
-	//
-	int index0 = 0;
-	int index1 = 0;
-	float seg_time = 0;
-	Find_Interval (time, &index0, &index1, &seg_time);
-
-	ArcInfoStruct &arc_info0 = m_ArcList[index0];
-	ArcInfoStruct &arc_info1 = m_ArcList[index1];
-
-	//
-	//	Determine the lengths of each segment of this curve.
-	// The segments are:
-	//		- Exit curve from prev point
-	//		- Straight line from exit of last curve to enter of this curve
-	//		- Enter curve for the current point
-	//
-	float arc_length0		= arc_info0.radius * WWMath::Fabs (arc_info0.angle_out_delta);
-	float arc_length1		= arc_info1.radius * WWMath::Fabs (arc_info1.angle_in_delta);
-	float other_length	= ((arc_info1.point_in - arc_info0.point_out).Length ()) / 2;
-	float total_length	= arc_length0 + arc_length1 + other_length;
-
-	//
-	//	Determine at what times we should switch between parts of the segment
-	//
-	float time1 = arc_length0 / total_length;
-	float time2 = (arc_length0 + other_length) / total_length;
-
-	//
-	//	Determine which part of the segment we are on
-	//
-	if (seg_time < time1) {
-		
-		//
-		//	We are on the initial curve of the segment, so calculate where
-		// on the curve we are...
-		//
-		//float percent = seg_time / time1;
-		//float angle = arc_info0.point_angle + (arc_info0.angle_out_delta) * percent;
-		float angle = arc_info0.point_angle + arc_info0.angle_out_delta;
-
-		set_val->X = arc_info0.center.X + (arc_info0.radius * ::WWMath::Sin (angle));
-		set_val->Y = arc_info0.center.Y + (arc_info0.radius * -::WWMath::Cos (angle));
-
-		// Inline Clamp without emitting a competing external copy.
-		float sharpness = WWMath::Fabs (arc_info0.angle_out_delta) / DEG_TO_RADF (15);
-		float clamped;
-		if (sharpness < 0.0F)
-			clamped = 0.0F;
-		else if (sharpness > 1.0F)
-			clamped = 1.0F;
-		else
-			clamped = sharpness;
-		m_Sharpness = clamped;
-		m_SharpnessPos.X = set_val->X;
-		m_SharpnessPos.Y = set_val->Y;
-		m_SharpnessPos.Z = Keys[index0].Point.Z + (Keys[index1].Point.Z - Keys[index0].Point.Z) * seg_time;
-
-		m_LastTime = Keys[index0].Time + (Keys[index1].Time - Keys[index0].Time) * time1;
-
-	} else if (seg_time < time2) {
-
-		//
-		//	We are on the line between the two curves, so calculate where on
-		// the line we are
-		//			
-		float percent = (seg_time - time1) / (time2 - time1);
-
-		if (percent == 0) {
-			set_val->X = arc_info0.point_out.X;
-			set_val->Y = arc_info0.point_out.Y;
-		} else {
-			set_val->X = arc_info1.point_in.X;
-			set_val->Y = arc_info1.point_in.Y;			
-		}
-
-		//set_val->X = arc_info0.point_out.X + (arc_info1.point_in.X - arc_info0.point_out.X) * percent;
-		//set_val->Y = arc_info0.point_out.Y + (arc_info1.point_in.Y - arc_info0.point_out.Y) * percent;
-
-		float sharpness = WWMath::Fabs (arc_info1.angle_out_delta) / DEG_TO_RADF (15);
-		float clamped;
-		if (sharpness < 0.0F)
-			clamped = 0.0F;
-		else if (sharpness > 1.0F)
-			clamped = 1.0F;
-		else
-			clamped = sharpness;
-		m_Sharpness = clamped;
-		m_SharpnessPos = arc_info1.point_in;
-		
-		m_LastTime = Keys[index0].Time + (Keys[index1].Time - Keys[index0].Time) * time2;
-		
-	} else {
-
-		//
-		//	We are on the ending curve of the segment, so calculate where
-		// on the curve we are...
-		//
-		/*float percent = 1.0F - ((seg_time - time2) / (1.0F - time2));
-		float angle = arc_info1.point_angle + (arc_info1.angle_in_delta * percent);
-		
-		set_val->X = arc_info1.center.X + (arc_info1.radius * ::WWMath::Sin (angle));
-		set_val->Y = arc_info1.center.Y + (arc_info1.radius * -::WWMath::Cos (angle));			*/
-
-		float angle = arc_info1.point_angle + (arc_info1.angle_out_delta);
-
-		set_val->X = arc_info1.center.X + (arc_info1.radius * ::WWMath::Sin (angle));
-		set_val->Y = arc_info1.center.Y + (arc_info1.radius * -::WWMath::Cos (angle));		
-
-		float sharpness = WWMath::Fabs (arc_info1.angle_out_delta) / DEG_TO_RADF (15);
-		float clamped;
-		if (sharpness < 0.0F)
-			clamped = 0.0F;
-		else if (sharpness > 1.0F)
-			clamped = 1.0F;
-		else
-			clamped = sharpness;
-		m_Sharpness = clamped;
-		m_SharpnessPos.X = set_val->X;
-		m_SharpnessPos.Y = set_val->Y;
-		m_SharpnessPos.Z = Keys[index0].Point.Z + (Keys[index1].Point.Z - Keys[index0].Point.Z) * seg_time;
-
-		m_LastTime = Keys[index1].Time;
-	}
-
-	//
-	//	Our Z value is just a linear interpolation
-	//
-	set_val->Z = Keys[index0].Point.Z + (Keys[index1].Point.Z - Keys[index0].Point.Z) * seg_time;	
-	return ;
-}
-
-// ?VehicleCurveClass::Get_Factory present-unmatched
-const PersistFactoryClass & VehicleCurveClass::Get_Factory(void) const
-{
-	return _VehicleCurveFactory;
-}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -644,37 +326,6 @@ const PersistFactoryClass & VehicleCurveClass::Get_Factory(void) const
 //	Save
 //
 ////////////////////////////////////////////////////////////////////////////////////////////
-bool
-// ?VehicleCurveClass::Save present-unmatched
-VehicleCurveClass::Save (ChunkSaveClass &csave)
-{
-	csave.Begin_Chunk (CHUNKID_PARENT);
-		Curve3DClass::Save (csave);
-	csave.End_Chunk ();
-
-	csave.Begin_Chunk (CHUNKID_VARIABLES);
-
-		//
-		//	Save each variable to its own microchunk
-		//
-		WRITE_MICRO_CHUNK (csave, VARID_IS_DIRTY,		m_IsDirty);
-		WRITE_MICRO_CHUNK (csave, VARID_RADIUS,		m_Radius);
-		
-	csave.End_Chunk ();
-
-	//
-	//	Save each arc info struct to its own chunk
-	//
-	for (int index = 0; index < m_ArcList.Count (); index ++) {
-		ArcInfoStruct &arc_info = m_ArcList[index];
-
-		csave.Begin_Chunk (CHUNKID_ARC_INFO);
-			csave.Write (&arc_info, sizeof (arc_info));
-		csave.End_Chunk ();
-	}
-	
-	return true;
-}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -682,35 +333,6 @@ VehicleCurveClass::Save (ChunkSaveClass &csave)
 //	Load
 //
 ////////////////////////////////////////////////////////////////////////////////////////////
-bool
-// ?VehicleCurveClass::Load present-unmatched
-VehicleCurveClass::Load (ChunkLoadClass &cload)
-{
-	while (cload.Open_Chunk ()) {		
-		switch (cload.Cur_Chunk_ID ()) {
-			
-			case CHUNKID_PARENT:
-				Curve3DClass::Load (cload);
-				break;
-
-			case CHUNKID_ARC_INFO:
-			{
-				ArcInfoStruct arc_info;
-				cload.Read (&arc_info, sizeof (arc_info));
-				m_ArcList.Add (arc_info);
-			}
-			break;
-
-			case CHUNKID_VARIABLES:
-				Load_Variables (cload);
-				break;
-		}
-
-		cload.Close_Chunk ();
-	}
-
-	return true;
-}
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -718,25 +340,6 @@ VehicleCurveClass::Load (ChunkLoadClass &cload)
 //	Load_Variables
 //
 ///////////////////////////////////////////////////////////////////////
-void
-// ?VehicleCurveClass::Load_Variables present-unmatched
-VehicleCurveClass::Load_Variables (ChunkLoadClass &cload)
-{
-	//
-	//	Loop through all the microchunks that define the variables
-	//
-	while (cload.Open_Micro_Chunk ()) {
-		switch (cload.Cur_Micro_Chunk_ID ()) {
-
-			READ_MICRO_CHUNK (cload, VARID_IS_DIRTY,	m_IsDirty);
-			READ_MICRO_CHUNK (cload, VARID_RADIUS,		m_Radius);
-		}
-
-		cload.Close_Micro_Chunk ();
-	}
-
-	return ;
-}
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.
