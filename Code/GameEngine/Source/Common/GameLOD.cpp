@@ -134,14 +134,11 @@ static const FieldParse TheDynamicGameLODFieldParseTable[] =
 	{ "MinParticleSkipPriority",		INI::parseIndexList, ParticlePriorityNames,	offsetof( DynamicGameLODInfo, m_minDynamicParticleSkipPriority)},
 };
 
-static const char *DynamicGameLODNames[]=
-{
-	"VeryLow",
-	"Low",
-	"Medium",
-	"High",
-	"VeryHigh"
-};
+// BFME 2 keeps one five-entry level-name table (VeryLow..VeryHigh) at retail
+// 0x009B969C; it is defined with getStaticGameLODIndex in
+// GameLODManagerGetStaticGameLODIndex.cpp, and the dynamic-level parser and
+// name getter read the same table.
+extern const char *bfmeStaticLODNames[5];
 
 // ??0DynamicGameLODInfo@@QAE@XZ present-unmatched
 DynamicGameLODInfo::DynamicGameLODInfo(void)
@@ -531,7 +528,7 @@ void INI::parseDynamicGameLODLevel( INI* ini, void * , void *store, const void*)
 {
 	const char *tok=ini->getNextToken();
 	for (Int i=0; i<DYNAMIC_GAME_LOD_COUNT; i++)
-		if( _strcmpi(tok, DynamicGameLODNames[i]) == 0 )
+		if( _strcmpi(tok, bfmeStaticLODNames[i]) == 0 )
 		{	*(DynamicGameLODLevel*)store = (DynamicGameLODLevel)i;
 			return;
 		}
@@ -541,7 +538,7 @@ void INI::parseDynamicGameLODLevel( INI* ini, void * , void *store, const void*)
 
 const char *GameLODManager::getDynamicGameLODLevelName(DynamicGameLODLevel level)
 {
-	return DynamicGameLODNames[level];
+	return bfmeStaticLODNames[level];
 }
 
 /**Given an average fps, return the optimal dynamic LOD level that matches this fps.*/

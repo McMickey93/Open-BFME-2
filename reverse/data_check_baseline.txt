@@ -37,8 +37,6 @@ Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?AudioSu
 Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?InputLockSubsystem@@3PAVClientSubsystem@@A	0x009FE720
 Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?Radar@@3PAVRadarSubsystem@@A	0x009FF070
 Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?WindowManagerSubsystem@@3PAVClientSubsystem@@A	0x009FE4CC
-Code/GameEngine/Source/Common/GameLOD.cpp	duplicate-def	_DynamicGameLODNames	0x009B969C
-Code/GameEngine/Source/Common/GameLOD.cpp	wrong-name	_DynamicGameLODNames	0x009B969C
 Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
 Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameClientSeed	0x009BA3A0
 Code/GameEngine/Source/Common/GameLogicRandomSeedCRC_get.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
