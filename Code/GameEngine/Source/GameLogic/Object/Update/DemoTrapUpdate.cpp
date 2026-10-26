@@ -14,48 +14,7 @@ enum UpdateSleepTime
 	UPDATE_SLEEP_NONE = 1,
 	UPDATE_SLEEP_FOREVER = 0x3fffffff
 };
-enum ObjectStatusTypes
-{
-	STATUS_UNDER_CONSTRUCTION = 2,
-	STATUS_SOLD = 0x13
-};
-enum WeaponSlotType
-{
-	WEAPONSLOT_PRIMARY = 0
-};
-enum Relationship
-{
-	RELATIONSHIP_ENEMIES = 0
-};
-template <int N>
-class BitFlags
-{
-public:
-	unsigned int m_bits[7];
-};
-class Weapon
-{
-public:
-	unsigned char m_pad00[0x0c];
-	WeaponSlotType m_slot;
-};
-class Thing
-{
-public:
-	bool isAnyKindOf(const BitFlags<69> &mask) const;
-	bool isAboveTerrain() const;
-};
-class Object : public Thing
-{
-public:
-	bool testStatus(ObjectStatusTypes s) const;
-	const Weapon *getCurrentWeapon(WeaponSlotType *slot) const;
-	Relationship getRelationship(const Object *other) const;
-	unsigned char m_pad00[0x38];
-	Coord3D m_pos38;
-	unsigned char m_pad44[0x438 - 0x44];
-	unsigned char m_dead438;
-};
+#include "DemoTrapObjectView.h"
 class Rva000CBA20Point
 {
 public:
@@ -63,11 +22,6 @@ public:
 	float y;
 };
 extern PartitionManager *ThePartitionManager;
-class Rva00495A2B
-{
-public:
-	void rva00495A2B();
-};
 #include "DemoTrapUpdateModuleDataView.h"
 // ??0DemoTrapUpdateModuleData@@QAE@XZ at retail 0x0049597A (55 bytes).
 // The module-data half of DemoTrapUpdate: vtable immediate 0x00C4ED70 modelled
