@@ -1293,7 +1293,6 @@ Census confirmation: awaiting the next census.
   retail layout above in one shared view for `hcanim.cpp`, `hrawanim.cpp`, `htree.cpp`,
   `HRawLoadW3D*.cpp`, re-verifying every virtual-call offset in their matched bodies.
 
-<<<<<<< HEAD
 ### LINK-024: `LivingWorldBuildingCtor.cpp` needs placeholder `Rva004E0D67` named `LivingWorldBuilding`
 Status: Open. Updated: 2026-10-26; inspected revision: d40f06e91c.
 Evidence / affected units: `Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingCtor.cpp`
@@ -1416,7 +1415,24 @@ units), then re-verify each unit's rowed callers still call 0x00666E80.
 Clearance: pending.
 Census confirmation: not claimed.
 
-<<<<<<< HEAD
+### LINK-031: `TransportContain.cpp` predicts a duplicate module-data ctor after its merge
+
+Status: Open. Updated: 2026-10-26; inspected revision: a3e207d553 (index 47e030bafc).
+Evidence / affected units: `link_check TransportContain.cpp` (with or without
+`ContainModuleDeletingDtors.cpp`) reports "does not link", LINKED 1,921 -> 0 B:
+`duplicate` + `selected` on `??0TransportContainModuleData@@QAE@XZ` (row 0x00468301).
+The current tree has one real definition (TransportContain.cpp; the other textual hit,
+ContainModuleDeletingDtors.cpp, is the `EmitVtableTag` overload). The merge d8f97282ee
+(absorbed `TransportContainModuleDataCtor.cpp`) landed after the index commit, so the
+index most likely still holds the deleted donor's object, which link_check cannot retract.
+Identical result before and after 18cd9f0976 (KINDOFMASK_NONE rebinding), so that change
+is not the cause.
+Completed: diagnosis only.
+Remaining / next check: rerun `link_check TransportContain.cpp` against the next census;
+if the duplicate persists, find the second definer in the census objects.
+Clearance: pending.
+Census confirmation: not claimed.
+
 ### LINK-035: `StlSweepR3` vector-destructor units instantiated the whole `vector<RecordN>`
 Status: Open (5 of 7 repaired). Updated: 2026-10-26; inspected revision: 5fae0cc47f; index 47e030bafc.
 Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva<rva>.cpp` units holding one
