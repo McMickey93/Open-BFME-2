@@ -17,7 +17,7 @@
 // The application classes are unknown; names are address-derived.
 
 #include "ascii_string.h"
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
+#include <stdlib.h>
 
 class Rva0052B894Registration
 {

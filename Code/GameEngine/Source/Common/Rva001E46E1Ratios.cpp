@@ -23,7 +23,6 @@
 #include <math.h>
 #include "Lib/Coord3D.h"
 #include "matrix3d.h"
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 class Rva001E43CF {public: void rva001E43CF(void*);};
 class Object;
 class GameLogic;
@@ -271,7 +270,6 @@ struct Rva001E546BFlags {
     __forceinline void reset(unsigned i){m_bits[i>>5]&=~(1u<<(i&31));}
 };
 class Thing { public: float getHeightAboveTerrainOrWater()const; void setOrientation(float); const Coord3D *getUnitDirectionVector2D()const; void setPositionZ(float); };
-extern "C" double __cdecl sin(double);
 float normalizeAngle(float);
 float GetGameLogicRandomValueReal(float,float,char*,int);
 class Object : public Thing
