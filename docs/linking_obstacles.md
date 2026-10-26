@@ -1168,6 +1168,24 @@ everse/re_attempts.log.
 - **Census confirmation:** n/a (adoption lane; surfaced via the scoped header
   gate, not the link census).
 
+#### Region3D adoption: separate Coord3D class-key/provider prerequisite
+
+- **2026-10-26, inspected `c973319b7d3`:** the Region3D queue serves
+  `WWMath/region.cpp` with a canonical/private Coord3D redefinition. The
+  supported, non-applying Coord3D header trial (`--sample 1 --seed 17`) selects
+  this file and fails its 47-byte Region3D debug streamer at `0x0000517C`.
+  Canonical `struct Coord3D` emits two undefined U-form streamer calls; retail
+  calls `0x000050BA`, owned by the V-form provider in `WWMath/coord3d.cpp`.
+  A scoped consumer ledger rename cannot migrate that separate provider.
+- **Remaining:** reconcile canonical Coord3D adoption across the provider and
+  callers, preserving constructor behavior and verifying dependent rows. This
+  class-key binding prerequisite is distinct from the member-growth/EH failure
+  above. No alias, pin or shared-header growth was applied.
+- **Preservation:** the tool restored source/ledger; normal build passes 45/45
+  rows and seven string references. Current link preview retains 1,287 bytes
+  against census `d1f046749a`; no clearance, queue retirement or census gain.
+  Evidence: `reverse/attempt_support/region3d-header-prerequisite-20261026-bce2/`.
+
 ### LINK-019: `Rva0039B893` vtable mismatch across copy-ctor and default-ctor units blocks `ScoreKeeperPerFrameStatsDefaultResizeDeferred.cpp` linking
 
 **Status: Cleared. Updated: 2026-10-26; inspected revision: d831bc24031.**
