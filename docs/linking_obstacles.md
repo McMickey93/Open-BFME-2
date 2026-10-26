@@ -3484,7 +3484,7 @@ alias names until it is next regenerated.
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
-### LINK-070: legacy Zero Hour `GameWindowManager` bodies kept `GameWindowManager.cpp` from linking
+### LINK-075: legacy Zero Hour `GameWindowManager` bodies kept `GameWindowManager.cpp` from linking
 Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
 `9f685c7696` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units: `Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp`
@@ -3514,7 +3514,7 @@ bodies are checked against Zero Hour.
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
-### LINK-071: `Rva006DF470Initialize.cpp` named 0x00A180C4 a second time
+### LINK-076: `Rva006DF470Initialize.cpp` named 0x00A180C4 a second time
 Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
 `9f685c7696` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units: `Code/Libraries/Source/Apt/AptValue/Rva006DF470Initialize.cpp`
@@ -3529,7 +3529,7 @@ EH data. Preview: LINKS, LINKED 0 -> 1,374.
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
-### LINK-072: ArmyDetailsPanel icon family views drop the retail `Rva005F4179` slots
+### LINK-077: ArmyDetailsPanel icon family views drop the retail `Rva005F4179` slots
 Status: Open / prerequisite identified. Updated: 2026-10-26; inspected revision:
 `31e2c236a0` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units: `Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/Rva005E39F3Ctor.cpp`
@@ -3555,7 +3555,7 @@ COMDATs replace the placeholder rows.
 Clearance: not cleared.
 Census confirmation: not applicable.
 
-### LINK-073: one-row units held back by unrowed placeholder siblings or a split class name
+### LINK-078: one-row units held back by unrowed placeholder siblings or a split class name
 Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
 `e303e68966` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units:
@@ -3594,7 +3594,7 @@ Evidence / affected units:
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
-### LINK-074: a StateMachine subclass's xfer slot is the shared 0x0033FB0B fold
+### LINK-079: a StateMachine subclass's xfer slot is the shared 0x0033FB0B fold
 Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
 `55e3ea8048` (index 2026-10-26 19:02 at `5ce093a71a`).
 Evidence / affected units:
