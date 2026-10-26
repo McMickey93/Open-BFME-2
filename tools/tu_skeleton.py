@@ -534,14 +534,25 @@ def compose(tu, sk, files, texts, flags, strategy, drop=frozenset(), drop_all=fr
                 # other donors may name types those donors declare first
                 pick = (union_view(pick[0], [x[0] for x in v if x is not pick]), v[-1][1])
             chosen[k] = pick
-    pps, decls, seen = [], [], set()
+    pps, decls, seen, placed, bodies = [], [], set(), set(), set()
     for f in files:
         # a declaration before the file's last #include (a type an included header
-        # needs, e.g. CrateSystem.cpp's KindOfMaskType) stays among the includes
+        # needs, e.g. CrateSystem.cpp's KindOfMaskType) stays among the includes;
+        # so do an optimize pragma and a body there (mapper.cpp's pragmas around
+        # refcount.h and vector2.h scope those headers' inlines, its anchor body
+        # sits between them): moved below every include they changed bytes
         last_inc = max((i for i, (kind, c) in enumerate(parsed[f])
                         if kind == "pp" and re.match(r"#\s*include\b", c.strip())), default=-1)
         for at, (kind, c) in enumerate(parsed[f]):
             into = pps if at < last_inc else decls
+            if at < last_inc and kind in ("def", "body-pp"):
+                placed.add((f, at))
+                if kind == "body-pp":
+                    pps.append(c.strip())
+                elif norm(c) not in bodies:
+                    bodies.add(norm(c))
+                    pps.append(c.strip("\n"))
+                continue
             if kind == "pp":
                 line = c.strip()
                 # only an #include repeats harmlessly; a conditional or a #define
@@ -560,7 +571,7 @@ def compose(tu, sk, files, texts, flags, strategy, drop=frozenset(), drop_all=fr
                     continue
                 seen.add(k)
                 into.append((chosen[k][0] if k in chosen else c).strip("\n"))
-    body, done, bodies = [], set(), set()
+    body, done = [], set()
     for t, led in sk:
         f = led["source"] if led else None
         if f in files:
@@ -568,7 +579,9 @@ def compose(tu, sk, files, texts, flags, strategy, drop=frozenset(), drop_all=fr
                 continue
             done.add(f)
             body.append(f"// ---- from {f}")
-            for kind, c in parsed[f]:
+            for at, (kind, c) in enumerate(parsed[f]):
+                if (f, at) in placed:
+                    continue
                 if kind == "def" and norm(c) not in bodies:
                     bodies.add(norm(c))
                     body.append(c.strip("\n"))
@@ -581,7 +594,8 @@ def compose(tu, sk, files, texts, flags, strategy, drop=frozenset(), drop_all=fr
         body.append(f"{MARK} {t['rva']} {t['size']}B {name} -- {why}")
     for f in files:   # a donor none of whose rows is approved here (cannot happen today)
         if f not in done:
-            body.extend(c.strip("\n") for kind, c in parsed[f] if kind in ("def", "body-pp"))
+            body.extend(c.strip("\n") for at, (kind, c) in enumerate(parsed[f])
+                        if kind in ("def", "body-pp") and (f, at) not in placed)
     head = [f"// cl: {' '.join(flags)}"] if flags else []
     if any("// stlport" in texts[f] for f in files):
         head.append("// stlport")

@@ -134,6 +134,21 @@ class PreludeOrderTests(unittest.TestCase):
         self.assertLess(at["typedef int Mask;"], at['"B.h"'])
         self.assertLess(at['"B.h"'], at["typedef int AfterAll;"])
 
+    def test_pragmas_and_a_body_between_includes_stay_between_them(self):
+        # mapper.cpp: the pragmas around refcount.h/vector2.h scope those headers' inlines and
+        # its ??_H anchor body sits between them; moved below every include, the seed lost bytes
+        tu = "Code/T.cpp"
+        seed = ('// cl: /MD\n#pragma optimize("s", on)\n#include "A.h"\n#pragma optimize("", on)\n'
+                'static void anchor() { }\n#include "B.h"\n#pragma optimize("y", on)\n'
+                'int f() { return 1; }\n')
+        out = T.compose(tu, [], [tu], {tu: seed}, ["/MD"], "first")
+        names = ('#pragma optimize("s", on)', '"A.h"', '#pragma optimize("", on)',
+                 "static void anchor()", '"B.h"', '#pragma optimize("y", on)', "int f()")
+        at = [out.index(name) for name in names]
+        self.assertEqual(at, sorted(at))
+        self.assertEqual(out.count("static void anchor()"), 1)
+        self.assertEqual(out.count('#pragma optimize("s", on)'), 1)
+
 
 class BraceInitialisedDataTests(unittest.TestCase):
     def test_operator_equals_and_default_arguments_are_still_bodies(self):
