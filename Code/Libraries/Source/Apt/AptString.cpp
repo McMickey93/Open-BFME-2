@@ -256,7 +256,33 @@ extern Rva008A98B0Releasable*g_rva008A98B0_10;
 
 extern Rva008A98B0Releasable*g_rva008A98B0_11;
 
-// tu-skeleton: 0x006D6EF0 287B ?Rva006D6EF0Find@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptValue/AptStringFindCallback.cpp (not merged yet)
+extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char *,const char *,int);
+
+// ---- from Code/Libraries/Source/Apt/AptValue/AptStringFindCallback.cpp
+
+AptValue *Rva006D6EF0Find(AptValue *value,int argc) {
+ EAStringC a,b;
+ int offset=0;
+ value->toString(a);
+ AptValue *result;
+ if(!argc) result=gpUndefinedValue;
+ else {
+  AptValue *aptValue=(AptValue *)g_aptDateInterpreter.stack.At(0);
+  aptValue->toString(b);
+  if(argc==2) {
+   BfmeAptValue006DCD20 *start=g_aptDateInterpreter.stack.At(1);
+   if(!((unsigned char)start->isInteger() || (unsigned char)start->isFloat())) {
+    g_bfmeAptAssertAtE17734("pStartOffset->isInteger() || pStartOffset->isFloat()","C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptString.cpp",0x116);
+    if(g_bfmeAptBreakOnAssertAtDDC01C){__asm int 3}
+   }
+   offset=start->toInteger();if(offset<0)offset=0;
+  }
+  result=AptInteger::Create(a.rva006d6070(b.rva00620090(),offset));
+ }
+ return result;
+}
+
+// ---- from Code/Libraries/Source/Apt/AptString.cpp
 
 // ---- from Code/Libraries/Source/Apt/AptString.cpp
 
@@ -416,14 +442,6 @@ AptString *AptString::Create()
     return (AptString*)new Rva006D6D20;
 }
 
-// tu-skeleton: 0x006D71B0 35B ??_GRva006D71B0@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva006CBF40Deferred.cpp (not merged yet)
-
-// tu-skeleton: 0x006D71E0 35B ??_GRva006D71E0@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva006CBF40Deferred.cpp (not merged yet)
-
-// tu-skeleton: 0x006D7320 35B ??_GRva006D6D20@@UAEPAXI@Z -- matched in Code/Libraries/Source/Apt/Rva006D6D20Ctor.cpp (not merged yet)
-
-// tu-skeleton: 0x006D7350 177B ?rva006D7350@@YAPAXPAVRva006DCE50Opaque@@@Z -- matched in Code/GameEngine/Source/Common/Rva006D7350Finish.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/Apt/AptValue/AptStringCharCodeAt.cpp
 
 // ?sMethod_charCodeAt@AptString@@SAPAVAptValue@@PAV2@H@Z retail 0x006D7410 195B
@@ -453,18 +471,6 @@ AptValue *AptString::sMethod_charCodeAt(AptValue *self,int)
  return reinterpret_cast<AptValue *>(result);
  }
 }
-
-// tu-skeleton: 0x006D74E0 191B ?rva006d74e0@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@H@Z -- matched in Code/GameEngine/Source/Common/Rva006D74E0Cluster.cpp (not merged yet)
-
-// tu-skeleton: 0x006D7670 318B ?sMethod_slice@AptString@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptValue/AptStringSlice.cpp (not merged yet)
-
-// tu-skeleton: 0x006D7A60 242B ?rva006d7a60@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@HH@Z -- matched in Code/GameEngine/Source/Common/Rva006D7A60Finish.cpp (not merged yet)
-
-// tu-skeleton: 0x006D7B60 285B ?rva006d7b60@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@HH@Z -- matched in Code/GameEngine/Source/Common/Rva006D7B60Finish.cpp (not merged yet)
-
-// tu-skeleton: 0x006D7C80 118B ?rva006d7c80@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@@Z -- matched in Code/GameEngine/Source/Common/Rva006D74E0Cluster.cpp (not merged yet)
-
-// tu-skeleton: 0x006D7D00 118B ?rva006D7D00@@YAPAVAptString@@PAVRva006DD6C0@@@Z -- matched in Code/GameEngine/Source/Common/Rva006D7D00Cluster.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/Apt/AptStringObjectMemberLookup.cpp
 
@@ -578,3 +584,31 @@ AptValue*AptString::objectMemberLookup(AptValue*const context,const EAStringC*co
  }
  return 0;
 }
+
+// tu-skeleton: 0x006D71B0 35B ??_GRva006D71B0@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva006CBF40Deferred.cpp (not merged yet)
+
+// tu-skeleton: 0x006D71E0 35B ??_GRva006D71E0@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva006CBF40Deferred.cpp (not merged yet)
+
+// tu-skeleton: 0x006D7320 35B ??_GRva006D6D20@@UAEPAXI@Z -- matched in Code/Libraries/Source/Apt/Rva006D6D20Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x006D7350 177B ?rva006D7350@@YAPAXPAVRva006DCE50Opaque@@@Z -- matched in Code/GameEngine/Source/Common/Rva006D7350Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x006D74E0 191B ?rva006d74e0@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@H@Z -- matched in Code/GameEngine/Source/Common/Rva006D74E0Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006D7670 318B ?sMethod_slice@AptString@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptValue/AptStringSlice.cpp (not merged yet)
+
+// tu-skeleton: 0x006D7A60 242B ?rva006d7a60@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@HH@Z -- matched in Code/GameEngine/Source/Common/Rva006D7A60Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x006D7B60 285B ?rva006d7b60@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@HH@Z -- matched in Code/GameEngine/Source/Common/Rva006D7B60Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x006D7C80 118B ?rva006d7c80@@YAPAVAptString@@PAVBfmeAptValue006DCD20@@@Z -- matched in Code/GameEngine/Source/Common/Rva006D74E0Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006D7D00 118B ?rva006D7D00@@YAPAVAptString@@PAVRva006DD6C0@@@Z -- matched in Code/GameEngine/Source/Common/Rva006D7D00Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x007A88B0 8B Unwind@00ba88b0 -- matched in Code/Libraries/Source/Apt/AptValue/AptStringSlice.cpp (not merged yet)
+
+// tu-skeleton: 0x007A88B8 8B Unwind@00ba88b8 -- matched in Code/Libraries/Source/Apt/AptValue/AptStringSlice.cpp (not merged yet)
+
+// tu-skeleton: 0x007A88C0 8B Unwind@00ba88c0 -- matched in Code/Libraries/Source/Apt/AptValue/AptStringSlice.cpp (not merged yet)
+
+// tu-skeleton: 0x007A88C8 10B __ehhandler$?sMethod_slice@AptString@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptValue/AptStringSlice.cpp (not merged yet)
