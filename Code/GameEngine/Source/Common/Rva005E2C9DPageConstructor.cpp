@@ -7,8 +7,7 @@
 // pointer arguments and the PageContext reference), keeping the result at +0xC.
 // The Impl ctor is the callee the sibling's allocation flow names; its ledger
 // spelling comes from the page's slot methods (RegionDetailsStructuresPage).
-struct RvaSmallVtableZeroBase {void *m_04;};
-class Rva0007DF07:public RvaSmallVtableZeroBase {public:virtual ~Rva0007DF07(){}};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005EEE5A:public Rva0007DF07 {public:Rva005EEE5A();bool active;};
 struct PageContext {void *region,*page,*owner;};
 namespace StrategicInGameUI {class RegionDetailsStructuresPage {public:class Impl;};}

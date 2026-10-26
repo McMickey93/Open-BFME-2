@@ -1,8 +1,7 @@
 // cl: /O1 /G7 /MD /EHsc
 // Native5E20A6..5E2103 complete93B and WB15F13C0; class from
 // admitted dtor5E1FBC/vtableC77A64, Impl allocation44B and WB15F0740.
-struct RvaSmallVtableZeroBase {void *m_04;};
-class Rva0007DF07:public RvaSmallVtableZeroBase {public:virtual ~Rva0007DF07(){}};
+#include "../../Include/Common/Rva0007DF07.h"
 class Rva005EEE5A:public Rva0007DF07 {public:Rva005EEE5A();bool active;};
 struct PageContext {void *region,*page,*owner;};
 namespace StrategicInGameUI {class RegionDetailsArmiesPage {public:class Impl;};}

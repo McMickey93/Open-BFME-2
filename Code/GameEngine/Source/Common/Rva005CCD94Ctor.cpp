@@ -2,18 +2,7 @@
 // Native 5CCD94..5CCDDD constructs the reference-counted base at +0,
 // allocates a 28-byte child, and stores it at +8. Existing destructor
 // 5CCDDD and vtable C74F44 establish the address-derived owner name.
-struct RvaSmallVtableZeroBase
-{
-	void *m_04;
-	RvaSmallVtableZeroBase() : m_04(0) {}
-};
-
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-	Rva0007DF07() {}
-	virtual ~Rva0007DF07() {}
-};
+#include "../../Include/Common/Rva0007DF07.h"
 
 class Rva005CCDDD;
 

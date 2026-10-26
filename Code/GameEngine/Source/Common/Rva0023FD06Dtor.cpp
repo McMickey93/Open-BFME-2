@@ -13,15 +13,7 @@
 // The previous 4B private base view put that word in the derived class and
 // emitted a divergent9B implicit ctor. Use the existing 8B base view; the
 // held value remains at+8, so both declared matched bodies are unchanged.
-struct RvaSmallVtableZeroBase {
- void *m_04;
- RvaSmallVtableZeroBase() : m_04(0) {}
-};
-class Rva0007DF07 : public RvaSmallVtableZeroBase
-{
-public:
-	virtual ~Rva0007DF07() {}
-};
+#include "../../Include/Common/Rva0007DF07.h"
 
 // The held value at +0x08 is GameLogicInit.cpp's timed transition reverse
 // (a group name and a frame; the copy at 0x0023FCBD goes through the folded
