@@ -5,6 +5,7 @@
 // +0xB8). BridgeInfo is the ledger's Rva0027C36A (0xA8 bytes, bridgeIndex at
 // +0x4C); bridges are 0x114 bytes from +0x10 with the count at +0xD7B0.
 #include "ascii_string.h"
+#include "../../../../Libraries/Include/Lib/Coord3D.h"
 
 class Vector3
 {
@@ -15,14 +16,6 @@ public:
 	float z;
 };
 
-class Region3D
-{
-public:
-	Region3D();
-	float m_x;
-	float m_y;
-	float m_z;
-};
 
 class Rva0027C36ASix
 {
@@ -39,7 +32,7 @@ public:
 	char m_pad00[0x4C];
 	int bridgeIndex; // +0x4C
 	char m_pad50[0x6C - 0x50];
-	Region3D m_6c[4];
+	Coord3D m_6c[4]; // Zero Hour's fromLeft, fromRight, toLeft, toRight
 	Rva0027C36ASix m_9c[2];
 };
 

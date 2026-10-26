@@ -1,7 +1,8 @@
 // cl: /O1 /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /arch:SSE /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib
 // ??0W3DBridge@@QAE@XZ 0x000DD97F 239B W3DBridge ctor with scale/length 1.0f
 // (a compiler literal; reading it through an address-named global
-// reordered the stores) plus Matrix rows via Region3D empty ctor
+// reordered the stores) plus Zero Hour's Matrix3D members as Vector4 rows via the out-of-line
+// Vector4 empty ctor (an inline or implicit Matrix3D ctor is not inlined here)
 // evidence: LINK BONUS 110B W3DBridgeBufferCtor waits only for this body; retail pushes 0xC8 0x114 with dtor 0x000DDA6E; calls ??_H 0x00001423 thrice with ctor 0x0047A6A9 for 3x0x10 rows at +0x3C +0x80 +0xBC; ZH donor W3DBridgeBuffer.h layout with Matrix3D as 3 Vector4 rows; BFME1 constructor donor for scalar defaults
 #include "ascii_string.h"
 
@@ -24,14 +25,14 @@ public:
 	TextureClass *m_ptr;
 };
 
-class Region3D
+class Vector4
 {
 public:
-	Region3D();
-	float a;
-	float b;
-	float c;
-	float d;
+	Vector4();
+	float X;
+	float Y;
+	float Z;
+	float W;
 };
 
 class W3DBridge
@@ -47,17 +48,17 @@ private:
 	float m_bounds[4];
 	TextureRef m_bridgeTexture;
 	void *m_leftMesh;
-	Region3D m_leftMtx[3];
+	Vector4 m_leftMtx[3]; // Zero Hour's Matrix3D rows
 	float m_minY;
 	float m_maxY;
 	float m_leftMinX;
 	float m_leftMaxX;
 	void *m_sectionMesh;
-	Region3D m_sectionMtx[3];
+	Vector4 m_sectionMtx[3]; // Zero Hour's Matrix3D rows
 	float m_sectionMinX;
 	float m_sectionMaxX;
 	void *m_rightMesh;
-	Region3D m_rightMtx[3];
+	Vector4 m_rightMtx[3]; // Zero Hour's Matrix3D rows
 	float m_rightMinX;
 	float m_rightMaxX;
 	int m_firstIndex;

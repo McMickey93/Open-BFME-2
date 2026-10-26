@@ -69,12 +69,14 @@ void Rva000747E5::rva000748DF(int val)
 }
 
 // ??0Rva000748F6@@QAE@XZ, retail 0x000748F6, 25 bytes.
-// Ctor: 3x 0x10 elements at +4 via vector ctor iterator with rowed ??0Region3D.
+// Ctor: 3x 0x10 elements at +4 via vector ctor iterator with the folded
+// empty ctor 0x0047A6A9 (the 16-byte row element the ledger names
+// Rva0047A6A9Row16; a 24-byte Region3D cannot have this stride).
 // Evidence: unlock lane, static init caller 0x00074AFF with ecx=0xDE1ED8, size 0x10 count 3 per retail.
-struct Region3D
+struct Rva0047A6A9Row16
 {
-	Region3D() throw();
-	char m_data[0x10];
+	Rva0047A6A9Row16() throw();
+	float x, y, z, w;
 };
 
 class Rva000748F6
@@ -83,7 +85,7 @@ public:
 	Rva000748F6();
 private:
 	char m_00[4];
-	Region3D m_arr[3];
+	Rva0047A6A9Row16 m_arr[3];
 };
 
 Rva000748F6::Rva000748F6()
