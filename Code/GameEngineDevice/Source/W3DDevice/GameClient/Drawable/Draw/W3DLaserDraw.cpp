@@ -74,10 +74,13 @@ protected:
 	virtual void xfer(Xfer *xfer);
 };
 
+enum NameKeyType;
+
 class W3DLaserDraw : public DrawModule
 {
 public:
 	W3DLaserDraw(Thing *thing, const ModuleData *moduleData);
+	virtual NameKeyType getModuleNameKey() const;
 
 protected:
 	virtual void loadPostProcess();
