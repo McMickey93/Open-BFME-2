@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHa /Oy-
+// platformsdk
 // readable body of ??0DebugIOCon@@QAE@XZ: Code/Libraries/Source/debug/debug_io_con.cpp
 //
 // DebugIOCon::DebugIOCon, retail 0x00040C40 (466 bytes). Local class
@@ -12,68 +13,8 @@
 // greeting goes straight to the output handle; and the console is titled
 // "<executable> [debug console]".
 
-typedef void *HANDLE;
-typedef void *HWND;
-typedef void *HMENU;
-typedef unsigned long DWORD;
-typedef int BOOL;
-
-struct COORD
-{
-	short X;
-	short Y;
-};
-
-struct SMALL_RECT
-{
-	short Left;
-	short Top;
-	short Right;
-	short Bottom;
-};
-
-struct CONSOLE_SCREEN_BUFFER_INFO
-{
-	COORD dwSize;
-	COORD dwCursorPosition;
-	unsigned short wAttributes;
-	SMALL_RECT srWindow;
-	COORD dwMaximumWindowSize;
-};
-
-struct CONSOLE_CURSOR_INFO
-{
-	DWORD dwSize;
-	BOOL bVisible;
-};
-
-extern "C"
-{
-	__declspec(dllimport) BOOL __stdcall AllocConsole(void);
-	__declspec(dllimport) HANDLE __stdcall GetStdHandle(DWORD handle);
-	__declspec(dllimport) BOOL __stdcall SetConsoleMode(HANDLE console, DWORD mode);
-	__declspec(dllimport) BOOL __stdcall GetConsoleScreenBufferInfo(HANDLE console,
-		CONSOLE_SCREEN_BUFFER_INFO *info);
-	__declspec(dllimport) BOOL __stdcall SetConsoleCursorInfo(HANDLE console,
-		const CONSOLE_CURSOR_INFO *info);
-	__declspec(dllimport) BOOL __stdcall SetConsoleCtrlHandler(BOOL(__stdcall *handler)(DWORD),
-		BOOL add);
-	__declspec(dllimport) DWORD __stdcall GetConsoleTitleA(char *title, DWORD size);
-	__declspec(dllimport) BOOL __stdcall SetConsoleTitleA(const char *title);
-	__declspec(dllimport) void __stdcall Sleep(DWORD milliseconds);
-	__declspec(dllimport) HWND __stdcall FindWindowA(const char *className, const char *windowName);
-	__declspec(dllimport) HMENU __stdcall GetSystemMenu(HWND wnd, BOOL revert);
-	__declspec(dllimport) BOOL __stdcall DeleteMenu(HMENU menu, unsigned int position,
-		unsigned int flags);
-	__declspec(dllimport) BOOL __stdcall DrawMenuBar(HWND wnd);
-	__declspec(dllimport) BOOL __stdcall WriteFile(HANDLE file, const void *buffer, DWORD bytes,
-		DWORD *written, void *overlapped);
-	__declspec(dllimport) DWORD __stdcall GetModuleFileNameA(void *module, char *name, DWORD size);
-	__declspec(dllimport) int __cdecl wsprintfA(char *out, const char *fmt, ...);
-	__declspec(dllimport) char *__cdecl strrchr(const char *text, int ch);
-	char *strcpy(char *dest, const char *src);
-	char *strcat(char *dest, const char *src);
-}
+#include <windows.h>
+#include <string.h>
 
 class DebugIOConBase
 {
