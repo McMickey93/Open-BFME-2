@@ -10,6 +10,7 @@ struct BfmePod88;
 class Rva0052BDE6;
 class Rva0052BE33;
 struct BfmePod32;
+class Rva003A6F70;
 class Rva004E32F2;
 class Rva0052CD81;
 class Rva0052C867;
@@ -95,6 +96,12 @@ void __cdecl Rva0052C3BFDestroyRange(Rva0052BF67Elem *, Rva0052BF67Elem *);
 
 namespace _STL {
 template <> __declspec(noinline) vector<BfmePod32, allocator<BfmePod32> >::~vector()
+{
+ Rva0052C3BFDestroyRange(reinterpret_cast<Rva0052BF67Elem *>(m_start),
+                       reinterpret_cast<Rva0052BF67Elem *>(m_finish));
+}
+// The same 63-byte body under its real element (0x0052C823's vector<Rva003A6F70>).
+template <> __declspec(noinline) vector<Rva003A6F70, allocator<Rva003A6F70> >::~vector()
 {
  Rva0052C3BFDestroyRange(reinterpret_cast<Rva0052BF67Elem *>(m_start),
                        reinterpret_cast<Rva0052BF67Elem *>(m_finish));

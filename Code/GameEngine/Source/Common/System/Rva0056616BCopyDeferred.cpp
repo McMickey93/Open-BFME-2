@@ -11,7 +11,7 @@ struct BfmePod40;
 struct BfmePod88;
 class Rva0052BDE6;
 class Rva0052BE33;
-struct BfmePod32;
+class Rva003A6F70;
 class Rva004E32F2;
 class Rva0052CD81
 {
@@ -97,7 +97,7 @@ struct Rva0052BF67Elem;
 void __cdecl Rva0052C3BFDestroyRange(Rva0052BF67Elem *, Rva0052BF67Elem *);
 
 namespace _STL {
-template <> inline __declspec(noinline) vector<BfmePod32, allocator<BfmePod32> >::~vector();
+template <> inline __declspec(noinline) vector<Rva003A6F70, allocator<Rva003A6F70> >::~vector();
 }
 
 class LivingWorldRegionConnection;
@@ -133,7 +133,7 @@ public:
 	_STL::vector<Rva0052BE33, _STL::allocator<Rva0052BE33> > m_38;
 	_STL::vector<AsciiString, _STL::allocator<AsciiString> > m_44;
 	AsciiString m_50;
-	_STL::vector<BfmePod32, _STL::allocator<BfmePod32> > m_54;
+	_STL::vector<Rva003A6F70, _STL::allocator<Rva003A6F70> > m_54;
 	_STL::vector<Rva004E32F2, _STL::allocator<Rva004E32F2> > m_60;
 	Rva0052CD81 m_6C;
 	Rva0052C867 m_78;

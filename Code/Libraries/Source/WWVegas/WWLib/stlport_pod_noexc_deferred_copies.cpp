@@ -110,5 +110,10 @@ namespace _STL { template <> BfmePod52 *vector<BfmePod52, allocator<BfmePod52> >
 struct Rva00541021 { char bytes[28]; Rva00541021(const Rva00541021 &) throw(); };
 namespace _STL { template <> void _Construct<Rva00541021, Rva00541021>(Rva00541021 *, const Rva00541021 &) throw(); }
 template _STL::vector<Rva00541021,_STL::allocator<Rva00541021> >::vector(_STL::vector<Rva00541021,_STL::allocator<Rva00541021> > const &);
-template _STL::vector<BfmePod32,_STL::allocator<BfmePod32> >::vector(_STL::vector<BfmePod32,_STL::allocator<BfmePod32> > const &);
+// 0x0052C823 copies vector<Rva003A6F70>: its copy loop 0x0052C27E calls
+// _Construct<Rva003A6F70> 0x0052BD04 -> ??0Rva003A6F70 0x0052BB34 (the view
+// stlport_vector_rva003a6f70_pushback.cpp uses).
+class Rva003A6F70 { public: virtual ~Rva003A6F70(); int a[7]; };
+namespace _STL { template <> void _Construct<Rva003A6F70, Rva003A6F70>(Rva003A6F70 *, const Rva003A6F70 &) throw(); }
+template _STL::vector<Rva003A6F70,_STL::allocator<Rva003A6F70> >::vector(_STL::vector<Rva003A6F70,_STL::allocator<Rva003A6F70> > const &);
 template void _STL::vector<Rva00541021,_STL::allocator<Rva00541021> >::reserve(unsigned int);
