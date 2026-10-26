@@ -17914,8 +17914,6 @@ pragma_optimize	Code/GameEngine/Source/GameLogic/Object/PartitionManager.cpp	"s"
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	"",on	2
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	"s",on	1
-pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	"",on	1
-pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/RailroadGuideAIUpdate.cpp	"",on	2
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/RailroadGuideAIUpdate.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/RailroadGuideAIUpdate.cpp	"s",on	1
@@ -20990,16 +20988,6 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	se
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	wakeUpAndAttemptToTarget@AIUpdateInterface@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	xfer@AIUpdateInterface@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AIUpdateInterfaceIgnoreObstacle.cpp	getIgnoredObstacleID@AIUpdateInterface@@QBE?AW4ObjectID@@XZ	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	1AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	aiDoCommand@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	crc@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	giveFinalOrders@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	isIdle@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	isMemberHealthy@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	isMemberWounded@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	loadPostProcess@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	reset@AssaultTransportAIUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp	retrieveMembers@AssaultTransportAIUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DeliverPayloadAIUpdate.cpp	0DeliverPayloadAIUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DeliverPayloadAIUpdate.cpp	0DeliverPayloadStateMachine@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DeliverPayloadAIUpdate.cpp	1DeliverPayloadAIUpdate@@	1

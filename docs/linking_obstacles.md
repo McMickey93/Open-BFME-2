@@ -3110,6 +3110,17 @@ Census confirmation: not claimed.
   blocks went (39 present-unmatched markers, 6 pragma lines). `texproject.cpp` is the same case
   (one row, inline `MaterialPassClass::Set_Cull_Volume` 0x003B23A5, extern pointer anchor
   byte-verified 1/1 and LINKS 0 -> 10 B in preview) but is file-claimed by another seat; left for them.
+- **Assault transport port cleanup (2026-10-26, parent `8738ddb103`):**
+  [the paired current-object check](../reverse/attempt_support/assault-transport-port-cleanup-20261026.md)
+  removes ten obsolete unrowed definitions from `AssaultTransportAIUpdate.cpp`,
+  the unrelated free sleep helper and the unused array anchor. Both retained
+  rows remain exact (75 bytes); ten unmatched exemptions and two optimization
+  occurrences retire through the hatch tool. The unit loses its two command
+  COMDAT blockers and previews LINKS, 0 -> 75 bytes against index `5ce093a71a`.
+  Eight adjacent units remain LINKS in the paired ten-object preview.
+  `Rva0026E836Derived.cpp` retains its three unresolved secondary-interface
+  methods and two address findings in both cases. Scope cleared: this port
+  unit's ordinary preview only; wider closure and census confirmation pending.
 - **Remaining / next check:** other ZH-port units (header comment "Ported verbatim from the
   Generals Zero Hour reference") whose U blockers are ZH-only callees: list each defined body,
   check whether its BFME 2 counterpart is rowed under another name or absent, and drop the ZH copy
