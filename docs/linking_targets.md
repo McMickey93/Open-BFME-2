@@ -32,7 +32,7 @@ The handoff found no earlier served-queue entry for these 16 units. Follow-up:
 | `ElementStrideWalks.cpp` | 90 | Unresolved | Open |
 | `VectorRangeEraseRva003F6975.cpp` | 80 | Unresolved | Open |
 | `Rva00541913CopyCtor.cpp` | 76 | Wrong selected | Open |
-| `StlportNarrowAppendCStr.cpp` | 58 | COMDAT losers | Open: first copy is stlport_float_format's (LINK-045) |
+| `StlportNarrowAppendCStr.cpp` | 58 | COMDAT losers | Open: first copy is stlport_float_format's (LINK-061) |
 | `GrantUpgradeCreate.cpp` | 42 | Unresolved | Open |
 | `PartitionData_friendUpdateCellsTouched.cpp` | 37 | Wrong selected | Open |
 | `StlSweepW5Rva0042830DAssignTwin.cpp` | 33 | Unresolved | Open |
@@ -154,7 +154,7 @@ existing LINK-011 preview clearances retained for its two rows.
 | `Code/GameEngine/Source/Common/System/BitFlagsClear.cpp` | 14 | 2 (C=1, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Die/DieModule.cpp` | 13 | 2 (U=2) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/Rva001296F0Destroy.cpp` | 10 | 2 (U=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00502645.cpp` | 0 | 2 (U=2) | 2026-10-26: retired (eab974b6f3). Duplicate claim: 0x00502645 is rowed and links in `StlportIntMapInsertFamily.cpp`; sweep unit, row and its pin removed (LINK-046) |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00502645.cpp` | 0 | 2 (U=2) | 2026-10-26: retired (eab974b6f3). Duplicate claim: 0x00502645 is rowed and links in `StlportIntMapInsertFamily.cpp`; sweep unit, row and its pin removed (LINK-060) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva004FCD6D.cpp` | 0 | 2 (C=1, S=1) | Open |
 | **Total: 35 units** | **4,492** | | |
 
@@ -369,7 +369,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteAssign.cpp` | 45 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005FE3DC.cpp` | 45 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_insertion_sort_s4sortelem20.cpp` | 45 | 3 (U=2, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | 2026-10-26: b313329af6 link_check LINKS (0 -> 44 B); truename/falsename defined beside their storage; LINK-048. |
+| `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | 2026-10-26: b313329af6 link_check LINKS (0 -> 44 B); truename/falsename defined beside their storage; LINK-062. |
 | `Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPower.cpp` | 40 | 3 (U=2, C=1) | 2026-10-25: current-provider preview still has protected SpecialPower dtor, findPositionAround and FindPositionOptions blockers; LINK-014. |
 | `Code/Libraries/Source/WWVegas/WW3D2/decalsys.cpp` | 39 | 8 (U=8) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/ParkingPlaceBehavior.cpp` | 38 | 15 (U=8, C=6, S=1) | Open |
@@ -453,10 +453,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameClient/GUI/Rva00576DF1Ctor.cpp` | 0 | 11 (U=8, C=2, S=1) | 2026-10-26: retired (9caa4cbd11). Duplicate claim: 0x00576DF1 is rowed and links as the `Impl@ResolveBattlesBehavior` ctor in `Rva00576C4BDtor.cpp` (link_check LINKS 482 B); unit and row removed, recorded in deleted_rows.csv |
 | `Code/GameEngineDevice/Source/MilesAudioDevice/Rva0006047CSeq.cpp` | 0 | 5 (U=5) | 2026-10-26: retired (dd45d8c862). Duplicate claim: 0x0006047C is rowed and links as `MilesAudioManager::rva0006047C` in `MilesAudioManager.cpp`; unit and row removed, recorded in deleted_rows.csv |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DVideoBuffer.cpp` | 0 | 7 (U=5, C=2) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x000AF1C2 is rowed and links in `Rva000AF1C2Forward.cpp`; sweep unit, row and its pin removed (LINK-060) |
 
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x000AF1C2 is rowed and links in `Rva000AF1C2Forward.cpp`; sweep unit, row and its pin removed (LINK-046) |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: callee rowed as 3-arg `__destroy_aux` (LINK-035) |
 
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: 0x000B0298 rowed twice (also Rva000B0298Clear.cpp); callee 0x000AFF52 rowed as 3-arg `__destroy_aux` (LINK-035) |
@@ -464,11 +461,9 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001FDEBC.cpp` | 0 | 7 (U=3, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022DCDA.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (79e9273e2d, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0046AA69.cpp` | 0 | 3 (U=3) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F715B.cpp` | 0 | 5 (U=3, C=1, S=1) | 2026-10-26: retired (3e5be5935c). Duplicate claim: 0x004F715B is rowed and links in `stlport_pop_heap_rva004f7e61.cpp`; sweep unit, row and its two pins removed (LINK-046) |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F715B.cpp` | 0 | 5 (U=3, C=1, S=1) | 2026-10-26: retired (3e5be5935c). Duplicate claim: 0x004F715B is rowed and links in `stlport_pop_heap_rva004f7e61.cpp`; sweep unit, row and its two pins removed (LINK-060) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F7D7F.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (61b147288f, LINK-035); census pending |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005243FA.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0052BBD7.cpp` | 0 | 3 (U=3) | Open 2026-10-26: LINK-043 shape; hatch-free fix needs 0x004E366E named as a real dtor |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00569450.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
+
 
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005243FA.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x005243FA is rowed and links in `Rva0052A22CForwarders.cpp`; sweep unit, row and its pin removed (LINK-060) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0052BBD7.cpp` | 0 | 3 (U=3) | Open |
@@ -476,13 +471,6 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00577EB2.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (02b625c1f2, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00587752.cpp` | 0 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AE78A.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (476ee27be8). Duplicate claim: 0x005AE78A is rowed and links in `Rva005AE78AChain.cpp`; sweep unit, row and its pin removed (LINK-060) |
-
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005243FA.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x005243FA is rowed and links in `Rva0052A22CForwarders.cpp`; sweep unit, row and its pin removed (LINK-046) |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0052BBD7.cpp` | 0 | 3 (U=3) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00569450.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x00569450 is rowed and links in `Rva00569450Forward.cpp`; sweep unit, row and its pin removed (LINK-046) |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00577EB2.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (02b625c1f2, LINK-035); census pending |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00587752.cpp` | 0 | 3 (U=3) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AE78A.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (476ee27be8). Duplicate claim: 0x005AE78A is rowed and links in `Rva005AE78AChain.cpp`; sweep unit, row and its pin removed (LINK-046) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005B09D8.cpp` | 0 | 6 (U=4, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005F9813.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (1a419a0c1d, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0020F0B8.cpp` | 0 | 5 (U=5) | Open |
