@@ -1,4 +1,4 @@
-// cl: /O1 /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS
+// cl: /O1 /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfme2_ascii
 // stlport
 
 // BFME2 terrain-type collection lookup. Layout is retail-owned: the list
@@ -17,37 +17,45 @@
 typedef int Int;
 typedef bool Bool;
 
-#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include "ascii_string.h"
+#include "subsystem_interface.h"
 
 class TerrainType
 {
 	friend class TerrainTypeCollection;
 public:
-// ?friend_getNext@TerrainType@@ present-unmatched
-	TerrainType *friend_getNext(void) { return m_next; }
+	TerrainType();
+	TerrainType &operator=(const TerrainType &that);
+	void friend_setName(AsciiString name);
 private:
-	char m_pad0[4];
-	AsciiString m_name;
-	AsciiString m_texture;
-	char m_pad1[0x14];
+	char m_pad00[4];
+	AsciiString m_str04;
+	AsciiString m_str08;
+	char m_pad0C[0x14];
 	TerrainType *m_next;
+	char m_pad24[0x0C];
 };
 
-class TerrainTypeCollection
+class TerrainTypeCollection : public SubsystemInterface
 {
 public:
+	TerrainTypeCollection();
+	virtual ~TerrainTypeCollection();
+	virtual void init() {}
+	virtual void reset() {}
+	virtual void update() {}
 	TerrainType *findTerrain(AsciiString name);
+	TerrainType *newTerrain(AsciiString name);
 private:
-	char m_pad[0x0c];
-	TerrainType *m_terrainList;
+	TerrainType *m_head;
 };
 
 TerrainType *TerrainTypeCollection::findTerrain(AsciiString name)
 {
 	TerrainType *terrain;
 
-	for (terrain = m_terrainList; terrain; terrain = terrain->friend_getNext()) {
-		if (terrain->m_name.compare(name) == 0)
+	for (terrain = m_head; terrain; terrain = terrain->m_next) {
+		if (terrain->m_str04.compare(name) == 0)
 			return terrain;
 	}
 
