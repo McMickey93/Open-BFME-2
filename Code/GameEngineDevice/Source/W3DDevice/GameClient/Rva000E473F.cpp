@@ -40,7 +40,7 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 void __cdecl BFME_DX8_Thread_Lock();
 bool __cdecl BFME_DX8_Thread_Assert();
 void *__cdecl operator new(unsigned);
-void __cdecl operator delete(void *) throw();
+#include <new>
 
 class BFMEDX8DeviceLock
 {

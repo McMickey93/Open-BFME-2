@@ -110,8 +110,7 @@ void Rva001159F1::rva001159F1(void *value)
 
 #define MAP_HEIGHT_SCALE (10.0f / 256.0f)
 
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 class BoundedShortGrid
 {

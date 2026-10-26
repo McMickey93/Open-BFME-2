@@ -5,8 +5,7 @@
 // Set_Texture atEF87B establishes adoption and the two-byte resource refs.
 // Base cleanup and failed-allocation state match native EH; the inherited
 // RefCountPtr is an owning-word ABI view, not an original type-name claim.
-void *__cdecl operator new(unsigned int);
-void __cdecl operator delete(void*);
+#include <new>
 class TextureClass {public:void Release_Ref();};
 template<class T>class RefCountPtr {public:
  RefCountPtr():m_ptr(0){}
