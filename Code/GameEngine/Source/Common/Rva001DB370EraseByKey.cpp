@@ -1,6 +1,6 @@
 // cl: -Ireference/open-bfme-1/game/GameEngine/Source/Common
 
-void __cdecl operator delete(void *);
+#include <new>
 
 struct Gen_001DB2C0
 {

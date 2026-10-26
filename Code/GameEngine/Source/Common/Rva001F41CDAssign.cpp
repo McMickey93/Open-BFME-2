@@ -5,7 +5,7 @@
 // Callers at 0x001F9CD3 and 0x001FA67F pass own this plus stack arg proving thiscall ret 4.
 // Prev 0x001F41AF same clone shape and next 0x001F4206 same delete shape same flags. Honest Rva class.
 // /O1 for test push-edi je plus jmp-over-xor shared stores.
-void __cdecl operator delete(void *p);
+#include <new>
 struct Rva001F41CDHelper {
     virtual void *func0(int x);
     virtual void *clone();
