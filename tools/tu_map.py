@@ -766,7 +766,8 @@ def build(layout, ledger=None):
         if not k:
             r["conf"] = "displaced" if r["disp"] else ""
             continue
-        ok = k in roots and k not in broken and r["by"] in APPROVABLE and not r["contra"]             and id(r) not in island
+        ok = (k in roots and k not in broken and r["by"] in APPROVABLE and not r["contra"]
+              and id(r) not in island)
         r["conf"] = "approved" if ok else "proposed"
         r["island"] = id(r) in island
     # C rows inherit approval only from two approved brackets. Within a run the
@@ -821,7 +822,8 @@ def islands(assigned, roots):
     runs = [list(g) for _, g in itertools.groupby(seq, key=lambda r: r["A"].lower())]
     out = set()
     for a, run, b in zip(runs, runs[1:], runs[2:]):
-        if len(run) <= ISLAND and len(run) < min(len(a), len(b)) and a[0]["A"].lower() == b[0]["A"].lower()                 and not any(x["by"] == "F" for x in run):
+        if (len(run) <= ISLAND and len(run) < min(len(a), len(b)) and a[0]["A"].lower() == b[0]["A"].lower()
+                and not any(x["by"] == "F" for x in run)):
             out.update(id(x) for x in run)
     return out
 
