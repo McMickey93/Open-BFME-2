@@ -3193,6 +3193,15 @@ Census confirmation: not claimed.
   `Rva0026E836Derived.cpp` retains its three unresolved secondary-interface
   methods and two address findings in both cases. Scope cleared: this port
   unit's ordinary preview only; wider closure and census confirmation pending.
+- **W3DDisplayString seed prerequisite (2026-10-26, inspected `71f28db691`):**
+  [the native-layout handoff](../reverse/attempt_support/w3d-displaystring-consolidation-20261026.md)
+  replaces its BFME 1 include stack with BFME 2 declarations before consolidation.
+  The seed's three rows remain exact and ordinary preview preserves its existing
+  146 authored bytes; no new conflicting COMDAT is emitted. All six candidates
+  already preview LINKS for 1,577 authored bytes. The initial merge failed on
+  incompatible string/class declarations, not missing rows. Constructor/destructor
+  field/virtual names remain a separate reconciliation prerequisite; no linking
+  gain or census confirmation is claimed.
 - **Remaining / next check:** other ZH-port units (header comment "Ported verbatim from the
   Generals Zero Hour reference") whose U blockers are ZH-only callees: list each defined body,
   check whether its BFME 2 counterpart is rowed under another name or absent, and drop the ZH copy
@@ -3365,6 +3374,15 @@ Verification: paired previews over 48 Vslot-related units and 66 clear-related u
 Remaining / next check: the Vslot unit retains two empty-fold provider names, three unowned field tables, and bool/thiscall spelling prerequisites at 00130FCE, 003FF145 and 0023C7F5. The clear unit retains nineteen unresolved names and its existing hash-table `_M_find` COMDAT conflict. Reconcile those actual owners, container identities and incoming-register contracts rather than introducing another alias. Both whole units remain blocked.
 Clearance: the six named unresolved blockers are cleared in ordinary-preview scope; census confirmation pending. No newly linking assigned unit or headline gain is claimed.
 Census confirmation: pending.
+
+### LINK-096: consolidation guard retains a private constant after its seed references change
+
+Status: Blocked on a separate LinkGuard verifier repair. Updated: 2026-10-26; inspected revision: `71f28db691`.
+Evidence / affected units: [W3DDisplayString native-layout handoff](../reverse/attempt_support/w3d-displaystring-consolidation-20261026.md), provider index `5ce093a71a` (2026-10-26 19:02).
+Completed: the seed's BFME 1 includes are replaced by BFME 2 declarations; all three rows byte-verify, data_check has no findings, code identity has two owner references and no wrong bindings, and ordinary preview preserves 146 authored bytes with no new conflicting COMDAT. The supported merge still refuses the seed because its private str_RV empty-character COMDAT disappears. Its only discardable-COMDAT index edge is from the removed str_RV helper, itself unreferenced; the old getWidth root reference is rewritten to the canonical shim constant at the same retail address. The guard retains the historical aggregate reference set. No merge or guard workaround was applied; re_log records the false rejection.
+Remaining / next check: authenticate per-object roots, reproduce and repair the retained-reference analysis in a separate verifier commit with regression/exploit tests, then retry the supported merge. Constructor/destructor declaration reconciliation remains independently necessary.
+Clearance: only the seed prerequisite's ordinary-preview scope; consolidation remains blocked.
+Census confirmation: not claimed; all six original units already preview link cleanly.
 
 ### LINK-094: GUI helper cleanup would remove live unrowed providers
 

@@ -1,12 +1,4 @@
-// cl: /O1 /DNDEBUG /DWIN32 /MD /EHsc /Ireference/open-bfme-1/reference/shims/w3ddisplaystring /Ireference/open-bfme-1/reference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad
-// stlport
-#define Matrix4x4 Matrix4  // BFME renamed it
-// BFME's retail AsciiStringData/UnicodeStringData have an extra 4-byte field
-// (debug ptr) before the string buffer, so force the _INTERNAL layout without
-// enabling debug side effects.
-#define _INTERNAL
-#define DISABLE_ALLOW_DEBUG_UTILS
-#define DISABLE_MEMORYPOOL_DEBUG_CUSTOM_NEW
+// cl: /O1 /arch:SSE /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -25,129 +17,141 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-////////////////////////////////////////////////////////////////////////////////
-//																																						//
-//  (c) 2001-2003 Electronic Arts Inc.																				//
-//																																						//
-////////////////////////////////////////////////////////////////////////////////
+// BFME 2 declarations follow the existing draw and compute-extents units.
+// Retail getWidth reads the first renderer at +0x14 and its font at +0x4C;
+// Set_Word_Wrap_Centered accesses the renderer flag at +0x88. These native
+// offsets replace the BFME 1 / Zero Hour include stack previously used here.
+#include "unicode_string.h"
+#include "../../../../Libraries/Include/Lib/ICoord2D.h"
+#include "../../../../Libraries/Include/Lib/IRegion2D.h"
+#include "../../../../../reference/shims/wwmath/Vector2.h"
 
-// FILE: W3DDisplayString.cpp /////////////////////////////////////////////////
-//-----------------------------------------------------------------------------
-//                                                                          
-//                       Westwood Studios Pacific.                          
-//                                                                          
-//                       Confidential Information                           
-//                Copyright (C) 2001 - All Rights Reserved                  
-//                                                                          
-//-----------------------------------------------------------------------------
-//
-// Project:    RTS3
-//
-// File name:  W3DDisplayString.cpp
-//
-// Created:    Colin Day, July 2001
-//
-// Desc:       Display string W3D implementation, display strings hold
-//						 double byte characters and all the data we need to render
-//						 those strings to the screen.
-//
-//-----------------------------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
-
-// SYSTEM INCLUDES ////////////////////////////////////////////////////////////
-#define peek peek_RV // bfme link: inlined everywhere, keep the COMDAT out of the link
-#define str str_RV // bfme link: inlined everywhere, keep the COMDAT out of the link
-#include <stdlib.h>
-
-// USER INCLUDES //////////////////////////////////////////////////////////////
-#include "GameClient/GameClient.h"
-#include "W3DDevice/GameClient/W3DDisplayString.h"
-#include "GameClient/HotKey.h"
-#include "GameClient/GameFont.h"
-#include "GameClient/GlobalLanguage.h"
-
-// DEFINES ////////////////////////////////////////////////////////////////////
-#ifdef _INTERNAL
-// for occasional debugging...
-//#pragma optimize("", off)
-//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
-#endif
-
-// PRIVATE TYPES //////////////////////////////////////////////////////////////
-
-class FontLibraryBFMERetail
+typedef bool Bool;
+typedef int Int;
+typedef int Color;
+class GameFont;
+class FontCharsClass
 {
 public:
-	GameFont *getFont(AsciiString *name, Real pointSize, UnsignedByte bold);
+ int Get_Char_Spacing(unsigned short ch);
 };
 
-struct GlobalLanguageDataBFMERetail
+class RectClass
 {
-	unsigned char m_unmodelled_00[0x20];
-	Bool m_useHardWrap;
+public:
+	RectClass( float left, float top, float right, float bottom ) : Left( left ), Top( top ), Right( right ), Bottom( bottom ) {}
+	float Left;
+	float Top;
+	float Right;
+	float Bottom;
+	RectClass &operator=( const RectClass &r );
 };
 
-// PRIVATE DATA ///////////////////////////////////////////////////////////////
+class DisplayString
+{
+public:
+	virtual ~DisplayString();
+	virtual void setText( UnicodeString text );
+	virtual UnicodeString getText( void );
+	virtual Int getTextLength( void );
+	virtual void notifyTextChanged( void );
+	virtual void reset( void );
+	virtual void setFont( GameFont *font ) { m_font = font; }
+	virtual GameFont *getFont( void );
+	virtual void setWordWrap( Int wordWrap ) = 0;
+	virtual void setWordWrapCentered( Bool isCentered ) = 0;
+	virtual void setColors( Color textColor, Color dropColor ) = 0;
+	virtual void setTextColor( Color *colors ) = 0;
+	virtual void setDropColor( Color *colors ) = 0;
+	// MSVC lays out overloaded virtuals in reverse declaration order: the
+	// two-argument draw is slot 13, the four-argument draw slot 14.
+	virtual void draw( Int x, Int y, Color color, Color dropColor ) = 0;
+	virtual void draw( Int x, Int y ) = 0;
+	virtual void getSize( Int *width, Int *height ) = 0;
+	virtual Int getWidth( Int charPos = -1 ) = 0;
+	virtual void bfmeSetFloats17( float a, float b ) = 0;
+	virtual void bfmeSetFloats18( float a, float b ) = 0;
+	virtual void setUseHotkey( Bool useHotkey, Color hotKeyColor ) = 0;
+	virtual void setClipRegion( IRegion2D *region );
+	virtual void removeLastChar( void );
+	virtual void appendChar( wchar_t c );
+	virtual void appendString( const UnicodeString &text );
+protected:
+	UnicodeString m_textString;
+	GameFont *m_font;
+	DisplayString *m_next;
+	DisplayString *m_prev;
+};
 
-// PUBLIC DATA ////////////////////////////////////////////////////////////////
+class Render2DSentenceClass
+{
+public:
+	~Render2DSentenceClass();
+	Vector2 Get_Formatted_Text_Extents(const unsigned short *text);
+	FontCharsClass *Peek_Font() { return Font; }
+	bool Set_Word_Wrap_Centered(bool centered)
+	{
+		if (IsWordWrapCentered == centered)
+			return false;
+		IsWordWrapCentered = centered;
+		return true;
+	}
+	virtual void Reset();
+private:
+	char m_unrecovered04[ 0x4C - 0x04 ];
+	FontCharsClass *Font;
+	char m_unrecovered50[ 0x84 - 0x50 ];
+	float WrapWidth;																		///< 0x84
+	bool IsWordWrapCentered;
+	char m_unrecovered89[ 0x8C - 0x89 ];
+	RectClass ClipRect;																	///< 0x8C
+	char m_unrecovered9C[ 0xAC - 0x9C ];
+	bool IsClippedEnabled;															///< 0xAC
+	bool ParseHotKey;																		///< 0xAD
+	bool UseHardWordWrap;																///< 0xAE
+	char m_unrecoveredAF[ 0xC4 - 0xAF ];
+};
 
-// PRIVATE PROTOTYPES /////////////////////////////////////////////////////////
-
-// PRIVATE FUNCTIONS //////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-// PUBLIC FUNCTIONS ///////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-// W3DDisplayString::W3DDisplayString =========================================
-/** */
-//=============================================================================
-// W3DDisplayString constructor: BFME 2's body is the row 0x00106088 in W3DDisplayStringCtor.cpp;
-// Zero Hour's copy here duplicated it.
-
-// ?reset@W3DDisplayString@@UAEXXZ is a row of W3DDisplayStringDtor.cpp; this unit's copy was
-// a second, non-retail definition of it.
-
-// W3DDisplayString::~W3DDisplayString ========================================
-/** */
-//=============================================================================
-// BFME 2's destructor is the row 0x00106162 in W3DDisplayStringDtor.cpp, which also emits
-// its unwind funclet uw_0076443a. Zero Hour's copy here duplicated that funclet and emitted a
-// second W3DDisplayString vftable whose DisplayString::getTextLength copy is not retail's.
-
-// W3DDisplayString::textChanged ==============================================
-/** This method automatically gets called from some methods in the display
-	* class so that we can write our own code here to to appropriate things
-	* on the changing of string data */
-//=============================================================================
-// byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringWordWrap.cpp
-
-// W3DDisplayString::Draw =====================================================
-/** Draw the text at the specified location in in the specified colors
-	* in the parameters.  Since we keep an instance of the rendered text
-	* texture around, this is the time to check to see if any of our
-	* properties have changed since the last render, like color, or
-	* position, or content.  If they have, we need to rebuild the sentence
-	* texture for rendering */
-//=============================================================================
-// byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringDrawDefault.cpp
-// W3DDisplayString::draw(x y color dropColor): BFME 2's body is the row 0x00106405 in W3DDisplayStringDraw.cpp;
-// Zero Hour's copy here duplicated it.
-// byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringDrawDefault.cpp
-// Zero Hour's six-argument draw (x y color dropColor xDrop yDrop) has no BFME 2 counterpart: retail's
-// W3DDisplayString vftable 0x00BCF900 carries only draw(int,int) (slot 13, 0x00105E65) and
-// draw(int,int,int,int) (slot 14, 0x00106405). The copy that sat here only pulled HotKeyManager and
-// AsciiString externals into this unit.
-
-// W3DDisplayString::getSize ==================================================
-/** Get the render size width and height of the string in this instance
-	* with the font associated with it */
-//=============================================================================
-// byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringWordWrap.cpp
-
-// DisplayString::appendChar ==================================================
-/** Get text with up to charPos characters, -1 = all characters */
-//=============================================================================
+class W3DDisplayString : public DisplayString
+{
+public:
+	virtual ~W3DDisplayString();
+	virtual Int getWidth(Int charPos = -1);
+	virtual void setWordWrapCentered(Bool isCentered);
+	virtual void notifyTextChanged();
+	virtual void setWordWrap( Int wordWrap );
+	virtual void setFont( GameFont *font );
+	virtual void setColors( Color textColor, Color dropColor );
+	virtual void setTextColor( Color *colors );
+	virtual void setDropColor( Color *colors );
+	virtual void draw( Int x, Int y );
+	virtual void draw( Int x, Int y, Color color, Color dropColor );
+	virtual void getSize( Int *width, Int *height );
+	virtual void setUseHotkey( Bool useHotkey, Color hotKeyColor );
+	virtual void setClipRegion( IRegion2D *region );
+protected:
+	void computeExtents();
+public:
+	Bool rva00106277( void );
+private:
+	Render2DSentenceClass m_textRenderer;								///< 0x14
+	Render2DSentenceClass m_textRendererHotKey;					///< 0xD8
+	UnicodeString m_hotkey;															///< 0x19C
+	Bool m_textChanged;																	///< 0x1A0
+	Bool m_fontChanged;																	///< 0x1A1
+	Bool m_bfmeColorsChanged;														///< 0x1A2
+	Bool m_useHotKey;																		///< 0x1A3
+	ICoord2D m_hotKeyPos;																///< 0x1A4
+	ICoord2D m_textPos;																	///< 0x1AC
+	Color m_hotKeyColor;																///< 0x1B4
+	Color m_textColors[ 4 ];														///< 0x1B8
+	Color m_dropColors[ 4 ];														///< 0x1C8
+	Int m_colorKey;																			///< 0x1D8, callback value of m_textColors[0]
+	Int m_sizeX;																				///< 0x1DC
+	Int m_sizeY;																				///< 0x1E0
+	IRegion2D m_clipRegion;															///< 0x1E4
+	unsigned int m_lastResourceFrame;										///< 0x1F4
+};
 
 // ?getWidth@W3DDisplayString@@UAEHH@Z
 Int W3DDisplayString::getWidth( Int charPos )
@@ -160,12 +164,12 @@ Int W3DDisplayString::getWidth( Int charPos )
 
 	if ( font )
 	{
-		const WideChar *text = m_textString.str();
-		WideChar ch;
+		const unsigned short *text = m_textString.str();
+		unsigned short ch;
 
-		while ( (ch = *text++ ) != 0 && ( charPos == -1 || count < charPos ) ) 
+		while ( (ch = *text++ ) != 0 && ( charPos == -1 || count < charPos ) )
 		{
-			if ( ch != (WideChar)'\n' ) 
+			if ( ch != (unsigned short)'\n' )
 			{
 				width += font->Get_Char_Spacing( ch );
 			}
@@ -176,33 +180,7 @@ Int W3DDisplayString::getWidth( Int charPos )
 	return width;
 }
 
-// W3DDisplayString::setFont ==================================================
-/** Set the font for this particular display string */
-//=============================================================================
-// W3DDisplayString::setFont: BFME 2's body is the row 0x001066B3 in W3DDisplayStringWordWrap.cpp;
-// Zero Hour's copy here duplicated it.
 
-// W3DDisplayString::setClipRegion ============================================
-/** Set the clipping region for the text */
-//=============================================================================
-// byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringWordWrap.cpp
-
-// W3DDisplayString::computeExtents ===========================================
-/** Update the width and height of our string */
-//=============================================================================
-// ?computeExtents@W3DDisplayString@@IAEXXZ is a row of W3DDisplayStringComputeExtents.cpp; this unit's copy was
-// a second, non-retail definition of it.
-
-// W3DDisplayString::setWordWrap ===========================================
-/** Set the wordwrap of the m_textRenderer */
-//=============================================================================
-// byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringWordWrap.cpp
-
-// byte-exact reconstruction: Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayStringWordWrap.cpp
-
-// W3DDisplayString::setWordWrapCentered ======================================
-/** Set the whether or not we want to center each new line in a text string */
-//=============================================================================
 void W3DDisplayString::setWordWrapCentered( Bool isCentered )
 {
 	// set the Word Wrap
