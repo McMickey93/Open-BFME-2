@@ -638,6 +638,8 @@ Completed: native call/row diagnosis and current-provider verification; these si
 
 **Assigned subsystem/module recheck (2026-10-26, inspected `896af216804e`):** `WeaponStore.cpp`, `GameWindowDtor.cpp`, `SlowDeathBehavior.cpp` and `LockWeaponCreate.cpp` retain their blockers in the paired 78-unit ordinary preview against d1f046749a. No source trial is retained in these units. WeaponStore still needs one native subsystem/table identity shared with the 225-byte `Rva002CCD56` destructor and its rowed deleting destructor at 0x002CD5E0; the current `unused` slot points at that deleting destructor. GameWindow still needs the full 11-slot native table reconciliation already documented above, rather than matching an incomplete copy. SlowDeath's unresolved disabled-mask and CRC references come from unrowed port/header emission; its wrong applicability and pool copies remain. LockWeaponCreate's current table spelling `xfer` occupies the native slot that reaches the 0x00497805 load-post-process wrapper, so a same-address rename would assert the wrong interface. Its native create-interface slot 1 reaches 0x004B8CC9, currently rowed as `BfmeThing940G::bfmeGo940G` (21 bytes), a candidate for naming after interface proof. Next: reconcile the native interfaces and provider names before changing consumers. Raw evidence: `build/link-worker-20261026-w2/vtable-targets.log`, `dependencies2.log` and the paired cohort logs; details in `build/link-report.md`. No clearance or census claim.
 
+**Assigned logic-unit audit (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `build/link-report.md` records all 26 assigned units and a paired current-provider preview against `d1f046749a` (`retail-truth-4`). The existing AutoHeal UpgradeMux references pass masks by value while the rowed `attemptUpgrade` takes a const reference; INI scanInt/scanReal are rowed as instance methods, Object::setProducer takes a non-const Object pointer, ParticleSystemManager::createParticleSystem returns a handle, and DISABLEDMASK storage is BitFlags<11> rather than the ports' BitFlags<13>. These are shared-declaration/ABI prerequisites, not proof of absent native bodies. LivingWorldLogicCtorBfme also projects its unresolved observer slots onto existing rows at 0x002B64C7, 0x002BA82B, 0x002BA3F2 and 0x002B2A95; its update slot reaches the nonvirtual-spelled 0x002BD9B4 row, and reset reaches 0x002B2535. Reconcile the shared observer contract and provider names before changing that table. No source trial is retained in these families. `build/c136-logic/native-references.log`, `providers.log`, `final-cohort-before.log` and `final-cohort-after.log` preserve the bindings and remaining blockers. No new missing match or admissible fold pin was established. Clearance and census confirmation remain pending.
+
 ### LINK-005: units blocked by several incompatible dependencies
 
 **Status: Open. Updated: 2026-10-25.**
@@ -765,6 +767,8 @@ Completed: native call/row diagnosis and current-provider verification; these si
 - **Current-input string audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` records fresh checks of both `Rva008312E0StringReplace.cpp` and `Rva008314E0StringReplace.cpp`, their BfmeConv providers, and all seven narrow forward-append emitters. The two replace units retain their four erase/replaceBase findings each; the documented frame and naming prerequisites are unchanged and were not retried. The append owner still emits its retail 254-byte body, while the first copy in `stlport_float_format.cpp` is an unproven 279-byte body; `urlBuilder.cpp` and `Rva001F9524Concat.cpp` remain blocked even when all seven current objects are supplied together. The recorded declaration and extern-template ICE trials were not repeated. Next check: establish an admissible retail copy or declaration strategy in the early emitter while preserving its rows, then recheck the entire seven-unit family. No string clearance or census gain is claimed.
 
 **Waypoint-tree binding check (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `MapMetaDataCopyDeferred.cpp` remains L3/S3 against `d1f046749a` with the current `stlport_rb_tree_hint_00301883.cpp` provider. The emitted 165-byte tree copy constructor at 0x003025A5, 115-byte `_M_copy` at 0x00301F9B and 30-byte clone at 0x00301BBF have zero non-relocation byte differences. Their binding failures are concrete: the Coord3D clone pin names 0x00413E55 (also considered as 0x00013E55), whereas `_M_copy` calls 0x00301BBF; the node-creation pin names 0x0016D760, whereas the clone calls 0x003012CE; the header-base constructor pin names 0x0016D590, whereas the copy constructor calls 0x0030087C. The native clone and create operations already have the opaque-payload owners above. No pin, real type, row or shared header changed. Reconcile the typed owners and existing pins together; suppressing the only Coord3D-name definitions leaves no same-name provider. Raw byte/relocation diagnostics: `build/c136-gui-w2/map-native-targets.log`; all 21 assigned rows pass `final-assigned-build.log`. Clearance and census confirmation remain pending.
+
+**Assigned record-family audit (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`, index `d1f046749a`):** no source edit is retained in EvacuateDamageCtorModuleFactoryBody.cpp or ObjectCreationList.cpp. The Evacuate constructor's native EH cleanup reaches the existing 25-byte `Rva004B96CC` destructor, but two other rowed lifetimes in that source call the nocase-string tree destructor at 0x0002CC38 and the hashtable destructor at 0x0002CCC3. A declaration-only suppression would have no exact-name provider and would conceal those incompatible type identities. ObjectCreationList's rowed Payload vector construction reaches the existing 0x004F6A52 assignment worker, while destruction reaches the existing 0x005F85C8 stride-eight range worker. These are naming/type reconciliation prerequisites; no container reinterpretation, new pin or row change was attempted. Raw native references, exact owner names and the paired provider preview are in `build/c136-logic/`; all assigned sources pass the combined 118-row byte gate. The families remain blocked; no census clearance is claimed.
 
 ### LINK-007: incomplete data ownership beyond clean symbol resolution
 
@@ -1020,11 +1024,12 @@ Updated: 2026-10-25; inspected revision: `4e835ab16a6`.**
   the vtable; that is still blocked on `rename.py` support for a
   placeholder-to-real merge and on the class-view/COMDAT cases recorded in the
   handoff (GameLogic/SubsystemInterface slots, the ExperienceTrackerXfer vtable
-  COMDAT, BaseHeightMapRenderObjClass and GlobalWeatherSystem whose rowed names
-  are deleting destructors only). Otherwise a maintainer decision is needed for
+  COMDAT, BaseHeightMapRenderObjClass and GlobalWeatherSystem split identities). Otherwise a maintainer decision is needed for
   a scoped admission path. Do not repeat the unchanged alias trial.
 - **Clearance / census confirmation:** pending; no census change is claimed and
   the alias trial was not published.
+
+**GlobalWeather current-owner audit (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `GlobalWeatherSystemCtorDeferred.cpp` still has four unresolved names. Native primary table RVA 0x0080C734 slot zero reaches deleting destructor 0x0031861B, which calls the complete 110-byte destructor at 0x00318637. Both, plus the secondary thunk at 0x00318613, now have rows in `Code/GameEngine/Source/Common/Rva00318637Dtor.cpp` under `Rva00318637`; this is an existing split identity, not a needed destructor match. The constructor's element callbacks reach the ten-byte `IPEnumeration` constructor at 0x00318329 and the counted-reference destructor at 0x0010F149. The native cleanup at 0x0077A838 destroys member +0x20 through 0x0048BA39 (the rowed AsciiString/StringBase cleanup). Preserve their distinct lifetimes and resolve the identities through the naming lane. No source change, alias trial or pin was made. Raw proof: `build/c136-logic/weather-native.log`, `weather-owners.log`, `native-references.log` and the full report. Clearance and census confirmation remain pending.
 
 ### LINK-010: folded STL table bases need the actual native predecessor
 
@@ -2340,21 +2345,11 @@ Clearance: `tools/link_check.py` on the five units: LINKS (661 -> 690 bytes), 5/
 Census confirmation: awaiting the next census.
 
 ### LINK-050: SplineCameraParseINIBlock record is Rva004E32F2, whose vftable and FieldParse table are unrowed
-Status: Open. Updated: 2026-10-26; inspected revision: c9c4584d48.
-Evidence / affected units: `SplineCameraParseINIBlock.cpp` (0x004E3300, 130 B) declares a private
-`Rva003BA660Record`, so its ctor, tree dtor, field table and append stay unresolved. Retail 0x004E3300
-(target facts): ctor 0x004E32D5 `??0Rva004E32F2@@QAE@XZ`, `INI::initFromINI` 0x0002DE78 with the table
-at RVA 0x00861FB8, append 0x00566D7B `?rva00566D7B@Rva00566D7B@@QAEXABVRva004E32F2@@@Z`, then the
-inlined virtual dtor: vftable 0x00861F68 (slot 0 = `??_G` 0x004E37B3) and the tree dtor 0x002B80CE
-(`~_Rb_tree<int, pair<const int, AsciiString> >`), while the ctor binds the map<int, BfmePod24> ctor 0x005011C1
-by `/alternatename` (`Rva004E32D5Ctor.cpp`). The table holds three 16-byte FieldParse entries (strings
-0x008618F8, 0x008618D0, 0x00861F6C; parsers 0x0002F0F7, 0x0002E850, 0x00503FD1 with userData 0x008E148C;
-offsets 4, 8, 0) plus a null terminator.
-Completed: none (diagnosis only).
-Remaining / next check: row the table as data, give the record the Rva004E32F2 identity with one
-tree type for ctor and dtor, and settle where `??_7Rva004E32F2@@6B@` and `??_G` are emitted
-(`Rva004E32F2Dtor.cpp` carries an inline anchor for them) before the parse unit inlines that dtor.
-Clearance: pending.
+Status: Open. Updated: 2026-10-26; inspected revision: 2a45addda1806342ac5c52757f63be902dcd428e.
+Evidence / affected units: `SplineCameraParseINIBlock.cpp` (0x004E3300, 130 B) declares a private `Rva003BA660Record`, so its ctor, tree dtor, field table and append stay unresolved. Retail 0x004E3300 (target facts): ctor 0x004E32D5 `??0Rva004E32F2@@QAE@XZ`, `INI::initFromINI` 0x0002DE78 with the table at RVA 0x00861FB8, append 0x00566D7B `?rva00566D7B@Rva00566D7B@@QAEXABVRva004E32F2@@@Z`, then the inlined virtual dtor: vftable 0x00861F68 (slot 0 = `??_G` 0x004E37B3) and the tree dtor 0x002B80CE (`~_Rb_tree<int, pair<const int, AsciiString> >`), while the ctor binds the map<int, BfmePod24> ctor 0x005011C1 by `/alternatename` (`Rva004E32D5Ctor.cpp`). The table holds three 16-byte FieldParse entries (strings 0x008618F8, 0x008618D0, 0x00861F6C; parsers 0x0002F0F7, 0x0002E850, 0x00503FD1 with userData 0x008E148C; offsets 4, 8, 0) plus a null terminator.
+Completed (2026-10-26): SplineCameraParseINIBlock.cpp now includes the existing `reference/shims/iniexception/Common/INIException.h` instead of its reversed-field, destructor-free private exception view. This agrees with INIExceptionCtor.cpp and INI_initFromINIMulti.cpp. The paired current-provider preview removes `__TI1?AVINIException@@` and preserves both providers as LINKS; the parser remains U4. Both source rows and its EH graph verify exactly, with zero shadow-data findings. Raw evidence: `build/c136-logic/spline-paired-before.log`, `spline-paired-after.log`, `spline-build.log`, `spline-eh-final.log`, and `build/link-report.md`.
+Remaining / next check: row the table as data, give the record the Rva004E32F2 identity with one tree type for ctor and dtor, and settle where `??_7Rva004E32F2@@6B@` and `??_G` are emitted (`Rva004E32F2Dtor.cpp` carries an inline anchor for them) before the parse unit inlines that dtor.
+Clearance: the INIException metadata subset is cleared in ordinary-preview scope; census confirmation pending. The record, append and data-table prerequisites remain open. The existing data ledger marks the table at 0x00861FB8 unowned; its provisional extent is not a newly verified table definition.
 Census confirmation: not claimed.
 
 ### LINK-051: the 0x0052C823 vector copy and 0x0052CD03 vector dtor are Rva003A6F70's, rowed as BfmePod32's
@@ -2601,6 +2596,9 @@ Census confirmation: n/a.
     retail class owns it; name/home first.
   - `BridgeScaffoldBehavior.cpp` already links in a current preview (952 B);
     its census `UpdateModule::loadPostProcess` blocker is stale.
+
+**Assigned inline-unit recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`, index `d1f046749a`):** HackInternetAIUpdate.cpp and EMPUpdate.cpp already report LINKS in the initial 26-unit preview and retain that result in the paired current-provider preview. Their ten and thirteen authored bytes are inherited repairs, not new gains from this worker. The other assigned inline-only ZH units retain the emission, identity and approved-home prerequisites above; no anchor, row move, new body or repeated rehome trial was added. Raw evidence: `build/c136-logic/before.log`, `final-cohort-before.log`, `final-cohort-after.log` and `all-assigned-build.log`. These two units are cleared in ordinary-preview scope; census confirmation pending.
+
 - **Census confirmation:** pending for all three units.
 
   b313329af6 renamed the four numpunct slot rows in place to the real `do_truename` /
@@ -2950,3 +2948,19 @@ Evidence / affected unit: `LivingWorld/LivingWorldManagerCtor.cpp` remains U5 ag
 Completed: diagnosis only; all 19 assigned rows pass the byte gate. The named lifetime owner, both container providers and the setter provider remain LINKS in the same current-provider preview. Raw native calls and pin/owner lookups are in `build/c136-gui-w2/native-all.log`, `dependencies.log` and `final-all-with-providers.log`.
 
 Remaining / next check: rename/reconcile the existing constructor row to `LivingWorldManager`, establish the actual container member types with their destructor owners, and reconcile the listener lifetime with the existing setter owner. Existing pins do not supply definitions to the census; adding another pin cannot resolve these names. No missing native body is established. Clearance: pending. Census confirmation: not claimed.
+
+### LINK-088: PartitionManager keeps the wrong isDisguised copy before its exact owner
+Status: Blocked on shared declaration/emission reconciliation. Updated: 2026-10-26; inspected revision: 2a45addda1806342ac5c52757f63be902dcd428e.
+Evidence / affected units: `PartitionManager.cpp`, `StealthUpdate.cpp` and `WeaponSet.cpp` select `?isDisguised@StealthUpdate@@QBE_NXZ` from PartitionManager. The rowed owner at 0x0004D65B in StealthUpdate.cpp emits retail's nine-byte body; the first copy uses the older UpdateModule layout and a different instruction shape. All six sources spelling the member were checked together.
+Completed: a trial of the existing `/Ireference/shims/dockupdate` include directory keeps all four verified PartitionManager rows exact and corrects the field placement, but leaves the selected-copy blocker. The unit's existing optimization context still emits a different body. The trial was reversed by removing only that include-directory edit; the restored byte gate and six-source preview reproduce the baseline. All three already-linking consumers stay LINKS throughout. Raw logs: `build/c136-logic/stealth-before.log`, `stealth-after-trial.log`, `partition-build-trial.log`, `stealth-restored.log` and `partition-restored-build.log`.
+Remaining / next check: reconcile the shared StealthUpdate declaration so this early emitter can bind the existing exact owner without emitting its stale copy, while preserving other inline uses and every caller row. A shared-header edit, an optimization-flag change and a renamed helper were outside this seat. Do not repeat the include-directory-only trial.
+Clearance: pending; no production source change is retained for this cause.
+Census confirmation: pending; no gain claimed.
+
+### LINK-089: SupplyTruckAIUpdateCtor's private interface slots disagree with native callbacks
+Status: Blocked on interface and provider-name reconciliation. Updated: 2026-10-26; inspected revision: 2a45addda1806342ac5c52757f63be902dcd428e.
+Evidence / affected units: `SupplyTruckAIUpdateCtor.cpp` remains U9 against index `d1f046749a`. Its constructor and destructor anchor the interface table at RVA 0x00852F38. Projecting the current private declaration onto that native table maps its gainOneBox slot to the rowed loseOneBox worker at 0x004A6E8E and its getActionDelayForDock slot to the unrelated byte setter at 0x00210CD3. The SupplyTruckStateMachine owner already records later native interface offsets for the force-state accessors. Equal calling-sequence sizes do not establish the current slot names or signatures.
+Completed: every assigned row passes the combined byte gate, and the current native row providers were included in the paired preview. No source or ledger change was attempted. `build/c136-logic/native-references.log` labels table projections separately from direct calls and lists the exact row names and homes; `weather-native.log` also preserves the raw native table bytes.
+Remaining / next check: recover the complete interface order and argument types, then reconcile the existing rowed workers and folded getters under supported real names. Do not bind these current slots to address placeholders or propose pins from the mismatched projection alone.
+Clearance: pending.
+Census confirmation: pending; no gain claimed.
