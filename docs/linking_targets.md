@@ -372,9 +372,9 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_numpunct_virtuals.cpp` | 44 | 4 (U=4) | 2026-10-26: b313329af6 link_check LINKS (0 -> 44 B); truename/falsename defined beside their storage; LINK-062. |
 | `Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPower.cpp` | 40 | 3 (U=2, C=1) | 2026-10-25: current-provider preview still has protected SpecialPower dtor, findPositionAround and FindPositionOptions blockers; LINK-014. |
 | `Code/Libraries/Source/WWVegas/WW3D2/decalsys.cpp` | 39 | 8 (U=8) | Open |
-| `Code/GameEngine/Source/GameLogic/Object/Behavior/ParkingPlaceBehavior.cpp` | 38 | 15 (U=8, C=6, S=1) | Open |
+| `Code/GameEngine/Source/GameLogic/Object/Behavior/ParkingPlaceBehavior.cpp` | 38 | 15 (U=8, C=6, S=1) | 2026-10-26 at 191cb9df0a: LINKS in preview 0 -> 38 B; census pending. BFME 2 has no ParkingPlaceBehavior (no module-name string in game.dat, only "GUI:ParkingPlacesFull"; no rowed method), so the ZH port bodies behind the 15 went; the unit emits vector<RunwayInfo>::size 0x001610A0 and operator[] 0x006BD4B0 by explicit instantiation over a TU-local 36-byte element. |
 | `Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/RailedTransportDockUpdate.cpp` | 37 | 10 (U=8, C=2) | Open |
-| `Code/GameEngine/Source/GameLogic/Object/Update/StickyBombUpdate.cpp` | 36 | 15 (U=13, C=1, S=1) | Open |
+| `Code/GameEngine/Source/GameLogic/Object/Update/StickyBombUpdate.cpp` | 36 | 15 (U=13, C=1, S=1) | 2026-10-26 at ac1b73589c: LINKS in preview 0 -> 36 B; census pending. BFME 2 has no StickyBombUpdate (no "StickyBomb" string in game.dat, no row for its lifecycle methods), so the ZH port bodies behind the 15 went; the unit keeps the rowed getTargetObject 0x005EEDE6 and setTargetObject 0x005EEDB5 (AISpecialPowerPickers.cpp calls them). |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/FlightDeckBehavior.cpp` | 35 | 14 (U=8, C=5, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002CEFAA.cpp` | 35 | 3 (U=3) | Open |
 | `Code/gen_small/thunks_000_admitted.cpp` | 35 | 7 (U=7) | Open |
@@ -440,7 +440,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW6Rva0016DEC0.cpp` | 21 | 3 (U=1, C=1, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.cpp` | 16 | 14 (U=13, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DeliverPayloadAIUpdate.cpp` | 14 | 25 (U=17, C=4, S=4) | Open |
-| `Code/GameEngine/Source/GameLogic/Object/Update/AnimationSteeringUpdate.cpp` | 14 | 6 (U=4, C=2) | Open |
+| `Code/GameEngine/Source/GameLogic/Object/Update/AnimationSteeringUpdate.cpp` | 14 | 6 (U=4, C=2) | 2026-10-26 at 9cae72c749: LINKS in preview 0 -> 14 B; census pending. BFME 2 has no AnimationSteeringUpdate (no "AnimationSteering" string in game.dat, no rowed method), so the ZH port bodies behind the 6 went; the unit emits _Base_bitset<4>::_M_do_reset 0x00388815 by explicit instantiation. |
 | `Code/GameEngine/Source/GameLogic/Object/Update/HordeUpdate.cpp` | 14 | 5 (U=5) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Behavior/DumbProjectileBehavior.cpp` | 13 | 22 (U=12, C=6, S=4) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/EMPUpdate.cpp` | 13 | 6 (U=6) | 2026-10-26 at 0a575d1548: LINKS in preview 0 -> 13 B; census pending. BFME 2 has no EMPUpdate or LeafletDropBehavior (no module-name string in game.dat, no rowed method), so the ZH port bodies behind the 6 unresolved went; the unit keeps Drawable::setInstanceScale 0x002C8F2E. |
