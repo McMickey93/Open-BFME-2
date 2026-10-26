@@ -8458,3 +8458,4 @@ Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoR
 Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|member|Rva004F9F39Template|m_494,21558bf83f562d2e15ab8fda,claude-opus-5-5,cedric-c-L32,w-553b9b55db02,2026-10-26
 Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|member|Rva004F9F39Template|m_5c4,c794d635c7b69415f5bb5c17,claude-opus-5-5,cedric-c-L32,w-553b9b55db02,2026-10-26
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawRva000B61AB.cpp|member|Rva000B61ABDrawTemplate|m_flags5E2,ea132bf6cd5245ff332ed985,claude-opus-5-5,cedric-c-L37,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/Rva000B508A.cpp|member|Rva000B508ATemplate|m_flags108,fab893d76f13460d40b5c6a2,claude-opus-5-5,claude-20261026-185127-3,w-7a37700644b5,2026-10-26
