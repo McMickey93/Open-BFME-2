@@ -5,7 +5,7 @@
 extern int g_Va00A03354;
 class LANAPI;extern LANAPI *TheLAN;
 #include "unicode_string.h"
-extern "C" __declspec(dllimport) int __cdecl iswspace(unsigned short);
+#include <ctype.h>
 class LanguageFilter {public:void filterLine(UnicodeString&);};extern LanguageFilter*TheLanguageFilter;
 class GameModePreferences {public:UnicodeString rva0044D330();};
 struct ChatMenuPreferenceView {char pad[0x684];GameModePreferences preferences;};

@@ -14,7 +14,7 @@
 
 #include <stdarg.h>
 
-extern "C" __declspec(dllimport) int __cdecl _vsnprintf(char *buffer, unsigned int size, const char *format, va_list args);
+#include <stdio.h>
 
 template <typename T>
 class StringBase

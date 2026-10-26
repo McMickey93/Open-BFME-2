@@ -6,7 +6,7 @@
 // caller cleans via pop ecx pop ecx, so __cdecl); IAT FF15 atoi needs
 // dllimport; pop ecx cleanup and xor-al false indicate /O1. Free-function
 // honest Rva name with Parse verb.
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
+#include <stdlib.h>
 
 // WorldBuilder StrategicHUD::ParseRowNum, WB VA 0x014C10A0 (callgraph lead, score 1.0).
 namespace StrategicHUD {
