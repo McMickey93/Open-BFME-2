@@ -5,8 +5,7 @@
 // Retail uses the inline SEH prologue and leaves the EH state at 0 across the
 // inlined member dtor; declaring the global delete operators throw() is what
 // stops /O2 from emitting a state -1 store before the member-dtor body.
-void operator delete[](void *block) throw();
-void operator delete(void *block) throw();
+#include <new>
 
 class HAnimComboDataClass;
 

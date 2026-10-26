@@ -12,8 +12,7 @@
 
 #include <new.h>
 
-extern void *__cdecl operator new[](size_t size);
-extern void __cdecl operator delete[](void *pointer);
+#include <new>
 
 // Surface COM-style AddRef/Release calls use the surface object's vtable.
 class SurfaceResource

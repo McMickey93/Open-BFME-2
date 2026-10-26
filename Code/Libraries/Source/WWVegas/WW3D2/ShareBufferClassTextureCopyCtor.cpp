@@ -75,8 +75,7 @@ protected:
 	int m_alignment; // +0x14
 };
 
-void *operator new[](unsigned int size);
-void operator delete[](void *block);
+#include <new>
 
 template <class T>
 ShareBufferClass<T>::ShareBufferClass(const ShareBufferClass<T> &that) :
