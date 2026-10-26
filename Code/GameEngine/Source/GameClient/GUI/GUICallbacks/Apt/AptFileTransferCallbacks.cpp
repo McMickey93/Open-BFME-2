@@ -6,8 +6,8 @@
 // is named for the string's prefix (the screen whose destructor is the
 // rowed ??1Rva00582FC1).
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
+#include <string.h>
+#include <stdio.h>
 
 class GameSlot
 {
