@@ -177,7 +177,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit);	// 0x00045411
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // vftable 0x00C07160, allow 0x00261246: two flags (Zero Hour's
 // PartitionFilterInsignificantBuildings(allowNonBuildings, allowInsignificant)).
@@ -281,9 +282,9 @@ bool AIPlayer::isLocationSafe(const Coord3D *pos, const ThingTemplate *tthing)
 			.link(Rva00261058(m_player, false)
 			.link(Rva00261246Filter(true, false)
 			.link(PartitionFilterRejectByKindOf(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 16),
-				*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+				*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 			.link(&PartitionFilterRejectByKindOf(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 14),
-				*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)))))));
+				*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)))))));
 	if (enemy != 0)
 		return false;
 	return true;
