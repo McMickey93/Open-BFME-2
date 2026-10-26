@@ -4,7 +4,7 @@
 // calls old virtual slot0 with 0, deletes returned pointer via rowed operator delete,
 // returns this. Evidence: single caller 0x0042C342, __thiscall via ecx plus ret 4,
 // EH handler at 0xB875AE with scope table, shape twins Rva001F4206 plus Rva00180AB5.
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct Rva0042C1F9Helper
 {

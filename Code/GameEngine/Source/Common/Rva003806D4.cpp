@@ -3,7 +3,7 @@
 // Bare new of AptMessageBox with EH state and null-checked ctor.
 // Evidence: push 8 via rowed 0x0002FDA0 then rowed 0x00437F0A; caller at
 // 0x00380C07; prev 0x003802DF next 0x00380705 share page and flags.
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class AptMessageBox
 {

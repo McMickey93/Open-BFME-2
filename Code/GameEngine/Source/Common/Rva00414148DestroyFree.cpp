@@ -11,7 +11,7 @@ struct Rva0022CD2A
 };
 
 void __cdecl Rva0022D941Destroy(struct Rva0022CD2A *first, struct Rva0022CD2A *last) throw();
-extern "C" void __cdecl free(void *block) throw();
+#include <stdlib.h>
 
 class Rva00414148
 {
