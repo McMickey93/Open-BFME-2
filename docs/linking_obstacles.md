@@ -121,7 +121,7 @@ authored-byte previews or commit-title gains into a projected headline.
   window bodies preview LINKS for 2,116 authored bytes. This confirms earlier
   repairs, not a new linking gain; the joint command retains INI's separate
   historical-index blockers. Four identity keys remain, with the narrow EH
-  retirement discrepancy tracked in LINK-017.
+  retirement discrepancy tracked in LINK-061.
 - **Clearance / census confirmation:** graphics ordinary-preview scope cleared
   at the revision above; other families and census confirmation remain pending.
   Keep individual repair previews separate from later census confirmation.
@@ -1125,7 +1125,7 @@ confirmation remain pending.
 - **Clearance:** preview scope only (the units listed).
 - **Census confirmation:** awaiting the next census.
 
-### LINK-017: identity retirement does not resolve verified renumbered EH labels
+### LINK-061: identity retirement does not resolve verified renumbered EH labels
 
 **Status: Blocked on verifier reconciliation and current providers. Updated: 2026-10-26;
 inspected revision: `2f9834aa34`.**
@@ -1147,7 +1147,7 @@ inspected revision: `2f9834aa34`.**
   cleanup preserves every matched byte.
 - **Clearance / census confirmation:** none claimed.
 
-### LINK-016: AIUpdate TU span combines weak propagation and disputed placement
+### LINK-062: AIUpdate TU span combines weak propagation and disputed placement
 
 **Status: Blocked on independent routing evidence and classification review.
 Updated: 2026-10-26; inspected revision: `766153ce00`.**
