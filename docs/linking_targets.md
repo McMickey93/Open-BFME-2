@@ -457,6 +457,9 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: 0x000B0298 rowed twice (also Rva000B0298Clear.cpp); callee 0x000AFF52 rowed as 3-arg `__destroy_aux` (LINK-035) |
+
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x000AF1C2 is rowed and links in `Rva000AF1C2Forward.cpp`; sweep unit, row and its pin removed (LINK-060) |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: callee rowed as 3-arg `__destroy_aux` (LINK-035) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001DE3E3.cpp` | 0 | 7 (U=3, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001FDEBC.cpp` | 0 | 7 (U=3, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022DCDA.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (79e9273e2d, LINK-035); census pending |
@@ -473,7 +476,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AE78A.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (476ee27be8). Duplicate claim: 0x005AE78A is rowed and links in `Rva005AE78AChain.cpp`; sweep unit, row and its pin removed (LINK-060) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005B09D8.cpp` | 0 | 6 (U=4, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005F9813.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (1a419a0c1d, LINK-035); census pending |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0020F0B8.cpp` | 0 | 5 (U=5) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0020F0B8.cpp` | 0 | 5 (U=5) | 2026-10-26: retired (c1775868b0). Duplicate claim: 0x0020F0B8 is rowed and links in `ParticleSystemDebugDisplay.cpp` (pair<AsciiString, int>); sweep unit, row and its pin removed (LINK-060) |
 | `Code/gen_small/fam_003_Rva0028688a.cpp` | 0 | 7 (U=5, C=1, S=1) | Open |
 | **Total: 290 units** | **95,078** | | |
 
