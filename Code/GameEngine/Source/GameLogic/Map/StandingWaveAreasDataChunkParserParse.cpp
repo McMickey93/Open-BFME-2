@@ -83,12 +83,7 @@ public:
 	~VBase00C6EE28();
 };
 
-class __declspec(novtable) Rva0007DF07
-{
-public:
-	virtual ~Rva0007DF07();
-	unsigned int references;						// +0x04
-};
+#include "../../../Include/Common/Rva0007DF07.h"
 
 class Rva00330757Member
 {
@@ -146,7 +141,7 @@ class StandingWaveAreaRef
 public:
 	StandingWaveAreaRef(Rva0030CAA9Owner *p) : m_ptr(p)
 	{
-		if (m_ptr) ++m_ptr->references;
+		if (m_ptr) ++m_ptr->m_04;
 	}
 	~StandingWaveAreaRef()
 	{
