@@ -114,9 +114,7 @@ extern const unsigned char g_bfmeFeslFieldClassTable[256] = {
 // bank calls the same byte Rva007E8B00Separator and compares it with '\n'.
 char g_bfmeFeslFieldSeparator = '\n';
 
-extern "C" void * __cdecl memmove( void *dest, const void *src, unsigned int count );
-extern "C" int __cdecl memcmp( const void *left, const void *right, unsigned int count );
-extern "C" void * __cdecl memcpy( void *dest, const void *src, unsigned int count );
+#include <string.h>
 
 // Complete 549-byte FESL copy of the DirtySock Y4TextToValue.c donor.
 // Keep the final equivalent clear paths and the volatile separator read;
