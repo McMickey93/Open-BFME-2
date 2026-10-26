@@ -13,7 +13,7 @@
 // Do not add pins without separately establishing and verifying providers.
 // Names of the reference class and its three fields remain provisional.
 #include "ascii_string.h"
-void *__cdecl operator new(unsigned int size);
+#include <new>
 struct Rva003BRefRecord {
  int previous,next;
  AsciiString name;

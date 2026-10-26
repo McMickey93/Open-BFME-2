@@ -11,7 +11,7 @@
 // through a TU-local deleting-destructor emission plus the declared
 // operator delete at 0x0002FD60.
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class Rva003B448C
 {

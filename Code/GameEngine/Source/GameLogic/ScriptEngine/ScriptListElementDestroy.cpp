@@ -14,7 +14,7 @@
 // Both names reach the same +0x08 AsciiString adjust-and-tail destructor.
 #pragma comment(linker, "/alternatename:??1ScriptListElementName@@QAE@XZ=??1PrereqUnitRec@ProductionPrerequisite@@QAE@XZ")
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class BfmeNodeZ
 {
