@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // Team::getTeamTargetObject, retail 0x003A105B (101 bytes), ported from Zero
 // Hour's GameEngine/Source/Common/RTS/Team.cpp (GeneralsMD tree vendored under
@@ -12,7 +13,7 @@
 // absent.
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
-#define NULL 0
+#include <windows.h>
 
 #include "../GameLogicObjectLookupView.h"
 

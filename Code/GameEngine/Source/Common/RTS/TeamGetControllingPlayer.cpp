@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC /D_CRTIMP= /Ireference/shims/bfmealloc /Ireference/shims/moduledata
+// platformsdk
 // stlport
 
 // ?getControllingPlayer@Team@@QBEPAVPlayer@@XZ, retail 0x0039D7CF (12 bytes).
@@ -132,7 +133,7 @@ namespace _STL { template <> __declspec(dllimport) __forceinline void *const &ve
 typedef bool Bool;
 typedef float Real;
 typedef unsigned int UnsignedInt;
-#define NULL 0
+#include <windows.h>
 
 extern GameLogic *TheGameLogic;
 

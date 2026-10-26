@@ -476,8 +476,6 @@ Code/GameEngine/Source/Common/RTS/PlayerDoBountyForKill.cpp	drop-in candidate	sa
 Code/GameEngine/Source/Common/RTS/PlayerRva002ACE2B.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	floor:same
 Code/GameEngine/Source/Common/RTS/Rva00739AF0Siblings.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	floor:same
 Code/GameEngine/Source/Common/RTS/Rva00739CA0.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	floor:same
-Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
-Code/GameEngine/Source/Common/RTS/TeamGetTeamTargetObject.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/Common/RadarWindowOverrideCreatePing.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	fabs:same
 Code/GameEngine/Source/Common/RandomValueMultFactorInit.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	powf:same
 Code/GameEngine/Source/Common/Rva00020620GuardedFree.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
@@ -863,7 +861,6 @@ Code/GameEngine/Source/Common/StringRecordInlineCopyBFME2.cpp	drop-in candidate	
 Code/GameEngine/Source/Common/System/ArmyPlacerPlaceObjects.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	atan2f:same
 Code/GameEngine/Source/Common/System/AsciiStringRvoGetters.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/Common/System/AsciiString_skipWhitespace.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<ctype.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	isspace:same
-Code/GameEngine/Source/Common/System/AudioEventRTSCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/Common/System/BitFlags11DisabilityCtors.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/System/BitFlags7FactionCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/System/DataChunkTableOfContentsRead.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same

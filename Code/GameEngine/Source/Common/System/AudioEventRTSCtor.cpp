@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// platformsdk
 //
 // ??0ShadowTypeInfo@Shadow@@QAE@XZ, retail 0x00079514, 64 bytes. Dedicated
 // TU (its file name is from the row's earlier, wrong AudioEventRTS name).
@@ -20,7 +21,7 @@
 
 typedef int Int;
 
-#define NULL 0
+#include <windows.h>
 
 #include "ascii_string.h"
 
