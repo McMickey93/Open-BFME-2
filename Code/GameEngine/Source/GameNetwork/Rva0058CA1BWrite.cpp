@@ -32,7 +32,7 @@ public:
 
 void __cdecl Rva0058CA1BWrite(char *dst, NetCommandRef *ref)
 {
-	NetWrapperCommandMsg *msg = ref->m_msg;
+	NetWrapperCommandMsg *msg = (NetWrapperCommandMsg *)ref->m_msg;
 	dst[0] = 'T';
 	dst[1] = (char)msg->m_commandType;
 	dst[2] = 'R';
