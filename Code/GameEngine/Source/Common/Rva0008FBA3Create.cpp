@@ -13,7 +13,7 @@ private:
 	char m_pad[0x2F0];
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 Rva000A1346 *__stdcall Rva0008FBA3Create(void *context)
 {
