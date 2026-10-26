@@ -9,9 +9,8 @@
 #include "unicode_string.h"
 #include "ascii_string.h"
 
-extern "C" __declspec(dllimport) char *__cdecl strchr(const char *text, int c);
-extern "C" __declspec(dllimport) char *__cdecl strstr(const char *text, const char *pattern);
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
+#include <string.h>
+#include <stdio.h>
 
 // Rva00559F7ESwitchGetters.cpp's per-mode counts.
 int Rva00559F7EGet(int mode);
