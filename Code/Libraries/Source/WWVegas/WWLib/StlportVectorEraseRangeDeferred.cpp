@@ -336,7 +336,7 @@ void __cdecl Rva000BDD08Destroy(Rva000B9AAA *,Rva000B9AAA *);
 void __cdecl Rva005A6EDADestroyRange(Rva0052BF33Elem *,Rva0052BF33Elem *);
 void __cdecl Rva00212AD6Get(Rva002115C5 *,Rva002115C5 *);
 void __cdecl Rva0022C8E3DestroyRange(Rva0052BF9BElem *,Rva0052BF9BElem *);
-namespace _STL { template <> void __destroy_aux<class Rva00214ADC *>(Rva00214ADC *,Rva00214ADC *,_STL::__false_type const &); }
+namespace _STL { template <> void _Destroy<class Rva00214ADC *>(Rva00214ADC *,Rva00214ADC *); }
 void __cdecl Rva0052C3BFDestroyRange(Rva0052BF67Elem *,Rva0052BF67Elem *);
 namespace _STL { template <> void _Destroy<struct Elem003AF9E0 *>(Elem003AF9E0 *,Elem003AF9E0 *); }
 void __cdecl Rva0052C37ADestroyRange(Rva0052BFB5Elem *,Rva0052BFB5Elem *);
@@ -387,7 +387,7 @@ namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<s
 namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<struct Rva002DCFEEElement *>(Rva002DCFEEElement * a0, Rva002DCFEEElement * a1)
 { ((void (__cdecl *)(Rva002DCFEEElement *,Rva002DCFEEElement *))(void (__cdecl *)(Rva0052BF9BElem *,Rva0052BF9BElem *))&Rva0022C8E3DestroyRange)(a0, a1); } }
 namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<struct Rva004043AEElement *>(Rva004043AEElement * a0, Rva004043AEElement * a1)
-{ ((void (__cdecl *)(Rva004043AEElement *,Rva004043AEElement *))(void (__cdecl *)(Rva00214ADC *,Rva00214ADC *,_STL::__false_type const &))&_STL::__destroy_aux<Rva00214ADC *>)(a0, a1); } }
+{ ((void (__cdecl *)(Rva004043AEElement *,Rva004043AEElement *))(void (__cdecl *)(Rva00214ADC *,Rva00214ADC *))&_STL::_Destroy<Rva00214ADC *>)(a0, a1); } }
 namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<struct Rva0040538FElement *>(Rva0040538FElement * a0, Rva0040538FElement * a1)
 { ((void (__cdecl *)(Rva0040538FElement *,Rva0040538FElement *))(void (__cdecl *)(void *,void *))&Rva00405337Clear)(a0, a1); } }
 namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<struct Rva00565865Element *>(Rva00565865Element * a0, Rva00565865Element * a1)

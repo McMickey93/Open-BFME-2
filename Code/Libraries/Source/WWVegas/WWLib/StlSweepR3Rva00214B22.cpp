@@ -2,22 +2,20 @@
 // Element spelling/layout is donor inference; opaque records have address-derived identity.
 // cl: /O1 /G7 /EHsc- /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
 // stlport
-// The emitted unsigned max copy must match retail RVA 0x00013740.
-// Define it for speed, then restore this unit's flags for its own bodies.
-#include <stl/_algobase.h>
-#pragma optimize("s", off)
-#pragma optimize("t", on)
-namespace _STL {
-static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
-{
-    return a < b ? b : a;
-}
-}
-#pragma optimize("", on)
-
 #include <vector>
 
+struct Rva00214B22Record { ~Rva00214B22Record(); char bytes[1]; };
 
-struct Rva00214B22Record { Rva00214B22Record(); Rva00214B22Record(const Rva00214B22Record&); ~Rva00214B22Record(); Rva00214B22Record&operator=(const Rva00214B22Record&); char bytes[1]; };
-namespace _STL {template<> void _Construct<Rva00214B22Record,Rva00214B22Record>(Rva00214B22Record*,const Rva00214B22Record&);}
-template class _STL::vector<Rva00214B22Record>;
+// Retail's destructor calls the rowed 25-byte range destroy at 0x00214B09,
+// ??$_Destroy@PAVRva00214ADC@@@_STL@@YAXPAVRva00214ADC@@0@Z
+// (stlport_vector_rva00214adc_destroy.cpp), over 0x14-byte elements. Spell
+// STLport's ~vector body against that owner instead of instantiating the whole
+// vector<Rva00214B22Record> and a competing _Destroy<Rva00214B22Record *> copy.
+class Rva00214ADC;
+namespace _STL {
+template <> void _Destroy<Rva00214ADC *>(Rva00214ADC *, Rva00214ADC *);
+template <> vector<Rva00214B22Record>::~vector()
+{ _Destroy(reinterpret_cast<Rva00214ADC *>(this->_M_start), reinterpret_cast<Rva00214ADC *>(this->_M_finish)); }
+}
+
+template _STL::vector<Rva00214B22Record>::~vector();
