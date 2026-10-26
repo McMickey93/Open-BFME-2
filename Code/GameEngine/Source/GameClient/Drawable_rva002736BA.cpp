@@ -9,9 +9,8 @@ public:
 	Rva002D752DNode *rva002D752D(const StringBase<char> &name);
 };
 
-// g_00DFF068 is only an alias of the owned global TheAnim2DCollection (ledger names column); this unit reads the owner through its own view type.
+// TheAnim2DCollection is the native global at VA 0x00DFF068.
 extern class Anim2DCollection *TheAnim2DCollection;
-#define g_00DFF068 (*(Rva002D752D * *)&TheAnim2DCollection)
 
 class Rva00270025
 {
@@ -52,18 +51,15 @@ public:
 	void setEmoticon(const StringBase<char> &name, int val);
 };
 
-// ?rva002736A8@Drawable@@QAEXXZ present-unmatched
-// ?rva002D752D@Rva002D752D@@QAEPAURva002D752DNode@@ABV?$StringBase@D@@@Z present-unmatched
-// ?rva00270BA8@Rva00270BA8@@QAEPAVRva00270025@@XZ present-unmatched
 void Drawable::setEmoticon(const StringBase<char> &name, int val)
 {
 	rva002736A8();
-	Rva002D752DNode *found = g_00DFF068->rva002D752D(name);
+	Rva002D752DNode *found = ((Rva002D752D *)TheAnim2DCollection)->rva002D752D(name);
 	if (found == 0)
 		return;
 	if (((Rva00270BA8 *)this)->rva00270BA8()->m_items[10] != 0)
 		return;
-	Anim2D *anim = new Anim2D((Anim2DTemplate *)found, (Anim2DCollection *)g_00DFF068);
+	Anim2D *anim = new Anim2D((Anim2DTemplate *)found, TheAnim2DCollection);
 	((Rva00270BA8 *)this)->rva00270BA8()->m_items[10] = anim;
 	int v;
 	if (val >= 0)
