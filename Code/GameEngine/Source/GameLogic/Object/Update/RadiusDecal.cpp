@@ -7,7 +7,7 @@
 // machinery, proven by native731009..73100F; ordinary unsigned casts emit
 // truncation/conversion helpers instead and change the rounding contract.
 #include "../../../Common/GameLogicObjectLookupView.h"
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 float Sin(float);float normalizeAngle(float);
 extern float BfmeClientFramesPerMillisecond;
 // Retail's one-frame-in-seconds at 30 fps, VA 0x00DBA508 (RVA 0x009BA508): the

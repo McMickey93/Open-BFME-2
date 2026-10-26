@@ -11,7 +11,7 @@
 // (0x00DB4D3C) it reports abs(p0-p2) > abs(p1-p3) (the dz1 > dz2 flip test
 // of WorldHeightMap::getAlphaUVData). abs is the CRT import (0x00629952).
 
-extern "C" int __cdecl abs(int value);
+#include <stdlib.h>
 
 float g_00DB4D40 = 0.00390625f;	// retail RVA 0x009B4D40 (.data), defined here
 float g_00DB4D3C = 0.5f;	// retail RVA 0x009B4D3C (.data), defined here

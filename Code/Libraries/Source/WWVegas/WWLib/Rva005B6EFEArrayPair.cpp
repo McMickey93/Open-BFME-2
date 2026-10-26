@@ -14,7 +14,7 @@
 // (0x005B6ED1, which ends where this body starts) and destroyed here by the
 // ctor's unwind funclet 0x0079535E and the dtor 0x00514EAB, so this is
 // ~BfmeThingTTD (a placeholder class name).
-void __cdecl operator delete[](void *);
+#include <new>
 
 class BfmeThingTTD
 {
