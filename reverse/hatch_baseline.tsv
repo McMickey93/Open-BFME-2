@@ -5636,7 +5636,6 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/Gen_dtor_00972460.cpp	?slot1C@
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/Gen_dtor_00972460.cpp	?slot20@Rva009EB810TailBase@@UAEXXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/GetHTree.cpp	?Release_Ref@HierarchyPrototype@@QAEXXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/GetHTree.cpp	?Rva0061F230_GetPrototype@@YA?AVHierarchyPrototypeRef@@PBD@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WW3D2/Line3DClassCtor.cpp	?Class_ID@Line3DClass@@UBEHXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/MatPassTaskPoolAllocateObjectMemory.cpp	?Allocate_Object_Memory@MatPassTaskPoolClass@@QAEPAUMatPassTaskClass@@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/MaterialInfoCopyCtor.cpp	??0BfmeCreated_0035B680@@QAE@PAVGen_0035B680@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/MaterialRemapMesh.cpp	?Get_Single_Texture@MeshMatDescClass@@QBE?AVBfmeHandleCX@@HH@Z	1
@@ -5724,6 +5723,7 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	?rva001216E7Shu
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	_bfmeDirectXErrorName@4	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	_bfmeDtorCbDMC	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/htree.cpp	_strcpy	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp	?Class_ID@Line3DClass@@UBEHXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/mapper.cpp	?bfmeInit1039@BfmeC1039@@QAEXPAVBfmeD1039@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	??0ParticleBufferClass@@QAE@PAVParticleEmitterClass@@IAAU?$ParticlePropertyStruct@VVector3@@@@AAU?$ParticlePropertyStruct@M@@22M22VVector3@@MMABVBFME2ParticleTextureHandle@@VShaderClass@@_NHHPBUW3dEmitterLinePropertiesStruct@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	?Get_Texture@BFMELineGroupTexture@@QBE?AVTextureHandleClass@ParticleBufferClass@@XZ	1

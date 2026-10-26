@@ -9466,7 +9466,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00166C20,13,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x00166A70..0x00166C30,Code/GameEngine/Source/Common/DispByteFieldSetters.cpp
 0x00166C30,8,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,S,S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00166C40,413,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x00166C30..0x00166DE0,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
-0x00166DE0,18,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x00166C30..0x00166E00,Code/Libraries/Source/WWVegas/WW3D2/RenderObjClassDerivedDtors.cpp
+0x00166DE0,18,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x00166C30..0x00166E00,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
 0x00166E00,96,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
 0x00166E60,548,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00167090,560,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
@@ -9474,9 +9474,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001672F0,55,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00167330,61,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00167370,66,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
-0x001673C0,8,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x00167370..0x001673D0,Code/Libraries/Source/WWVegas/WW3D2/RenderObjClassDerivedDtors.cpp
-0x001673D0,621,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassCtor.cpp
-0x00167640,30,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x001673D0..0x00167660,Code/Libraries/Source/WWVegas/WW3D2/RenderObjClassDerivedDtors.cpp
+0x001673C0,8,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x00167370..0x001673D0,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
+0x001673D0,621,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
+0x00167640,30,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,C,C=0x001673D0..0x00167660,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
 0x00167660,1267,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00167B60,318,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00167CA0,356,code,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp S=Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp N=Code/Libraries/Source/WWVegas/WW3D2/Line3DClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
@@ -59119,7 +59119,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007674C0,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/HTreeClassInitDefault.cpp
 0x007674E0,11,code-unledgered,,,-,,
 0x00767500,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
-0x00767520,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassCtor.cpp
+0x00767520,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp
 0x00767540,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00767548,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
 0x00767550,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/Line3DClassRender.cpp
