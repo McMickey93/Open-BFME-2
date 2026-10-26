@@ -19,24 +19,18 @@ unsigned int g_Va00DEC4A4;
 extern unsigned int g_Va00DEC4A0;
 // g_Va00DEC4A0: matched references place it at VA 0xdec4a0 (zero-filled .bss).
 unsigned int g_Va00DEC4A0;
-extern int g_Va00DB5FBC;
-// g_Va00DB5FBC: matched references place it at VA 0xdb5fbc (retail .data initial value 7).
-int g_Va00DB5FBC = 7;
-extern int g_Va00DB5FC0;
-// g_Va00DB5FC0: matched references place it at VA 0xdb5fc0 (retail .data initial value 2).
-int g_Va00DB5FC0 = 2;
-extern int g_Va00DB5FC4;
-// g_Va00DB5FC4: matched references place it at VA 0xdb5fc4 (retail .data initial value 5).
-int g_Va00DB5FC4 = 5;
+extern int G00DB5FBC;	// defined in GapBodiesGE41_Rva00118610.cpp (data ledger name)
+extern int G00DB5FC0;	// defined in GapBodiesGE41_Rva00118610.cpp (data ledger name)
+extern int G00DB5FC4;	// defined in GapBodiesGE41_Rva00118610.cpp (data ledger name)
 
 void Rva00118990(void)
 {
 	g_Va00DEC4A8 = 0;
 	g_Va00DEC4A4 = 0;
 	g_Va00DEC4A0 = 0;
-	g_Va00DB5FBC = 7;
-	g_Va00DB5FC0 = 2;
-	g_Va00DB5FC4 = 5;
+	G00DB5FBC = 7;
+	G00DB5FC0 = 2;
+	G00DB5FC4 = 5;
 }
 
 // 0x00118A50: full 53-byte state setter; see crack-j-state-boundaries.txt.
@@ -45,9 +39,9 @@ void Rva00118A50(void)
 	g_Va00DEC4A8 = 1;
 	g_Va00DEC4A4 = 0;
 	g_Va00DEC4A0 = 0;
-	g_Va00DB5FBC = 7;
-	g_Va00DB5FC0 = 2;
-	g_Va00DB5FC4 = 5;
+	G00DB5FBC = 7;
+	G00DB5FC0 = 2;
+	G00DB5FC4 = 5;
 }
 
 // 0x001189F0: full 48-byte state setter; see crack-j-state-boundaries.txt.
@@ -56,9 +50,9 @@ void Rva001189F0(void)
 	g_Va00DEC4A8 = 0;
 	g_Va00DEC4A4 = 0;
 	g_Va00DEC4A0 = 0;
-	g_Va00DB5FBC = 3;
-	g_Va00DB5FC0 = 2;
-	g_Va00DB5FC4 = 5;
+	G00DB5FBC = 3;
+	G00DB5FC0 = 2;
+	G00DB5FC4 = 5;
 }
 
 // 0x00118A20: full 48-byte state setter; see crack-j-state-boundaries.txt.
@@ -67,7 +61,7 @@ void Rva00118A20(void)
 	g_Va00DEC4A8 = 2;
 	g_Va00DEC4A4 = 0;
 	g_Va00DEC4A0 = 0;
-	g_Va00DB5FBC = 7;
-	g_Va00DB5FC0 = 0;
-	g_Va00DB5FC4 = 1;
+	G00DB5FBC = 7;
+	G00DB5FC0 = 0;
+	G00DB5FC4 = 1;
 }

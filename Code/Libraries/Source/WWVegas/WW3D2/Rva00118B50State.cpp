@@ -15,9 +15,9 @@
 // honest Rva name. Flags: /G7 gives cmp/test plus add scheduling and
 // /arch:SSE gives xorps plus movss for the 0.0f store (defaults give mov plus
 // test and x87 or integer zeroing).
-extern int g_Va00DB5FC4;
-extern int g_Va00DB5FC0;
-extern int g_Va00DB5FBC;
+extern int G00DB5FC4;
+extern int G00DB5FC0;
+extern int G00DB5FBC;
 extern float g_Va00DEC49C;
 extern unsigned int g_Va00DEC4A8;
 extern unsigned int g_Va00DEC4A4;
@@ -32,13 +32,13 @@ public:
 void Rva00118B50(void)
 {
 	if (DX8Wrapper::Has_Stencil()) {
-		g_Va00DB5FBC = 7;
-		g_Va00DB5FC0 = 2;
-		g_Va00DB5FC4 = 5;
+		G00DB5FBC = 7;
+		G00DB5FC0 = 2;
+		G00DB5FC4 = 5;
 	} else {
-		g_Va00DB5FBC = 7;
-		g_Va00DB5FC0 = 2;
-		g_Va00DB5FC4 = 5;
+		G00DB5FBC = 7;
+		G00DB5FC0 = 2;
+		G00DB5FC4 = 5;
 		g_Va00DEC49C = 0.0f;
 	}
 	g_Va00DEC4A8 = 0;

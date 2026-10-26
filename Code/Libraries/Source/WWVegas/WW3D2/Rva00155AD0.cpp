@@ -83,11 +83,11 @@ public:
 };
 #define renderDeviceWidth ((unsigned)DX8Wrapper::Get_Device_Resolution_Width())
 #define renderDeviceHeight ((unsigned)DX8Wrapper::Get_Device_Resolution_Height())
-extern int g_Va00DB5FC0,g_Va00DB5FC4,g_Va00DB5FBC;
+extern int G00DB5FC0,G00DB5FC4,G00DB5FBC;
 extern unsigned int g_Va00DEC4A0,g_Va00DEC4A4;
-#define render2DSrcBlend ((unsigned)g_Va00DB5FC0)
-#define render2DDstBlend ((unsigned)g_Va00DB5FC4)
-#define render2DShaderBits ((unsigned)g_Va00DB5FBC)
+#define render2DSrcBlend ((unsigned)G00DB5FC0)
+#define render2DDstBlend ((unsigned)G00DB5FC4)
+#define render2DShaderBits ((unsigned)G00DB5FBC)
 #define render2DExtraShaderBits g_Va00DEC4A0
 #define render2DShaderAlphaFlag g_Va00DEC4A4
 extern unsigned number_of_DX8_calls;
