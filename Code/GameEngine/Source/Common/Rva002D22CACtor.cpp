@@ -12,21 +12,10 @@
 // Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
 // The native header GameEngineDeletingBaseDerived.cpp (which defines ~Rva002D22CA)
 // uses: flag +0x04, name +0x08 and its fourteen slots, so both TUs emit one table.
-typedef bool Bool;
-#include "subsystem_interface.h"
-
-class Rva002D22CA : public SubsystemInterface
-{
-public:
-	Rva002D22CA();
-	virtual ~Rva002D22CA();
-
-private:
-	char m_tail0C[48];
-};
+#include "System/FunctionLexiconRegistryView.h"
 
 Rva002D22CA::Rva002D22CA() : SubsystemInterface()
 {
 	for (int i = 0; i < 12; i++)
-		((int *)m_tail0C)[i] = 0;
+		((int *)m_tables)[i] = 0;
 }
