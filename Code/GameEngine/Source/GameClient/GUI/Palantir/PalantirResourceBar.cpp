@@ -54,7 +54,7 @@ class Rva0055076F {public:void rva0055076F();};
 // The owned image records: their releases are rowed out of line
 // (0x002D3869 checks for null, 0x0055076F does not); the destructor below
 // inlines both.
-void __cdecl operator delete(void *) throw();
+#include <new>
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 class LivingWorldLogic;extern LivingWorldLogic *TheLivingWorldLogic;
@@ -77,7 +77,6 @@ class Rva002D2DB2 {public:Rva002D2DB2 &initialize(int,int)throw();int delay,valu
 class Rva002D2DD4 {public:Rva002D2DD4 &initialize(float)throw();int delay,hold;float value;};
 class Rva002D387A {public:void rva002D387A(void*);};
 class Rva002D3389 {public:void rva002D3389(void*);};
-void __cdecl operator delete(void*)throw();
 void Rva002D46ADSet(int);void setResourceIconState(bool);void playCommandPointEffect();
 bool Rva003FEECBSetPalantirCommandPoints(int,int);bool Rva003FEF80SetPalantirMultiplier(float);
 

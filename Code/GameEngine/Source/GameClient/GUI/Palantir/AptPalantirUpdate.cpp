@@ -85,7 +85,7 @@ public:
 	FunctorBinding m_binding;
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 // The holder constructor (row 0x0057BC63, Rva0057BC63FunctorHolder.cpp) is
 // defined here inline, as in AptOptionsConstructor.cpp: retail's compiler
@@ -298,8 +298,6 @@ public:
 
 	void *m_movie;
 };
-
-void __cdecl operator delete(void *pointer);
 
 // An owned raw allocation, released and cleared on destruction.
 struct AptPalantirSpellPointCost

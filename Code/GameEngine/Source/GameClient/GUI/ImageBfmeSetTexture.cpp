@@ -4,8 +4,7 @@
 // Dedicated TU so AptMapPreviewPictureImage.cpp cannot see this body.
 // Allocates a 4-byte holder at this+0x2C if missing then copy-assigns into it.
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t);
+#include <new>
 
 class BfmeMapPictureTexture
 {
