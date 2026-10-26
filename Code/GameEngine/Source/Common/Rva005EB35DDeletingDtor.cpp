@@ -13,7 +13,7 @@ public:
 	~Rva005EB2E7();
 };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva005EB2E7_DeleteAnchor(Rva005EB2E7 *p)
 {

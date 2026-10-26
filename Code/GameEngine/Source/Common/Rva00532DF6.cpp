@@ -8,7 +8,7 @@
 // stlport
 #define _STLP_NO_EXCEPTIONS 1
 #include <algorithm>
-void __cdecl operator delete[](void*);
+#include <new>
 struct Rva00532DF6Entry {unsigned short id,count;};
 struct Rva00532DF6Less {bool operator()(const Rva00532DF6Entry&a,unsigned short b)const{return a.id<b;}};
 struct Rva00532DF6Node {Rva00532DF6Node*next;unsigned short id,count;union{Rva00532DF6Entry one;Rva00532DF6Entry*array;};};
