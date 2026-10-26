@@ -117,9 +117,8 @@ public:
 };
 
 void *Rva007F93E0( void *message, void *route, void *owner );
-extern "C" char *strchr( const char *text, int character );
-extern "C" int strcmp( const char *left, const char *right );
-extern "C" int sscanf( const char *text, const char *format, ... );
+#include <string.h>
+#include <stdio.h>
 
 class Rva0080A940Owner
 {
