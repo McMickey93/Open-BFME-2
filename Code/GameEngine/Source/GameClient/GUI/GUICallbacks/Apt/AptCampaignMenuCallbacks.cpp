@@ -11,8 +11,8 @@ extern "C" char *__cdecl strcpy(char *destination, const char *source);
 
 class GameMessage;
 
-// Zero Hour's TheMessageStream (VA 0x00E00950, the ledger's
-// MessageStreamSubsystem); appendMessage is vslot 18.
+// Retail's MessageStreamSubsystem (VA 0x00E00950); appendMessage is
+// vslot 18. Use the existing data owner's spelling.
 class MessageStream
 {
 public:
@@ -24,7 +24,7 @@ public:
 	virtual GameMessage *appendMessage(int type);
 };
 
-extern class MessageStream *TheMessageStream;
+extern MessageStream *MessageStreamSubsystem;
 
 // TheLinearCampaignManager (VA 0x00DFDC8C, the data ledger's name); its unrowed 0x001ECEF6 forwards to its +0x10
 // member's 0x001ECE98 and is pinned by address.
@@ -159,7 +159,7 @@ void AptCampaignMenu::OnBttnLastMission(const char *unused)
 // message 0x21.
 void AptCampaignMenu::OnBttnNextMission(const char *unused)
 {
-	TheMessageStream->appendMessage(0x21);
+	MessageStreamSubsystem->appendMessage(0x21);
 	Rva005210ECEnable(false);
 }
 

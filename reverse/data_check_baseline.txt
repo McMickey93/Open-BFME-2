@@ -248,7 +248,6 @@ Code/GameEngine/Source/GameClient/FXParticleSystemDefaults.cpp	wrong-name	?$S9@?
 Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarUpdateConstruction.cpp	wrong-name	?$S1@?1??updateConstructionTextDisplay@ControlBar@@QAEXPAVObject@@@Z@4IA	0x00A05F64
 Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_setControlBarSchemeByPlayerTemplate.cpp	wrong-name	?$S1@?3??setControlBarSchemeByPlayerTemplate@ControlBar@@QAEXPBVPlayerTemplate@@@Z@4IA	0x00A01D34
 Code/GameEngine/Source/GameClient/GUI/ControlBar/Rva005257F6SelectAllHeroes.cpp	wrong-name	?$S1@?3??rva005257F6@@YGXH@Z@4IA	0x00A04960
-Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp	wrong-name	?g_Rva0023D607Holder@@3PAURva0023D607Holder@@A	0x009FDC8C
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMainMenuCallbacks.cpp	wrong-name	?ApplicationHWnd@@3PAUHWND__@@A	0x009DE024
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMainMenuCallbacks.cpp	wrong-name	?g_Va00E06474@@3PAVAptMainMenuCredits@@A	0x00A06474
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineCustomMatchCallbacks.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
