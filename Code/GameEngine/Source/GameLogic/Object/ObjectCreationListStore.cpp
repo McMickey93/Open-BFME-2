@@ -46,8 +46,8 @@ public:
 };
 
 // The base destructor 0x001B4E74 is rowed as ??1SubsystemInterface@@UAE@XZ.
-// Its second slot is the pure virtual Rva001F092ACtor.cpp's view declares,
-// so both units emit the same two-slot ObjectCreationListStore vftable.
+// Rva001F092ACtor.cpp declares the same single destructor slot, so both units
+// emit the same ObjectCreationListStore vftable.
 #include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 struct Rva001F077D

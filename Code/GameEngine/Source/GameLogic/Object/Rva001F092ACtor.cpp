@@ -27,7 +27,6 @@ public:
 	BFME2NativeNetwork();
 	virtual ~BFME2NativeNetwork() { _ReadWriteBarrier(); }
 private:
-	virtual void unused() = 0;
 	char m_flag;
 	int m_value;
 };
