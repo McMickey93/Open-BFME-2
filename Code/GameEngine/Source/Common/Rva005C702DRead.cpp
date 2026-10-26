@@ -29,11 +29,8 @@ struct KeyCode
 	int code;
 };
 
-static const KeyCode c_table[3] = {
-	{ 0, 0x73746570 },
-	{ 1, 0x6c696e65 },
-	{ 2, 0x6361746d },
-};
+// Defined once, in Rva005C706AWrite.cpp (the writer); retail has one table.
+extern "C" const KeyCode c_table[3];
 
 class Rva005C702D
 {

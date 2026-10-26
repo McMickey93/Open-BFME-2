@@ -106,7 +106,6 @@ Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A01E48@@3P
 Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A04910@@3PAUGlobalA04910@@A	0x00A04910
 Code/GameEngine/Source/Common/Rva0052906BUpdate.cpp	wrong-name	?$S1@?1??Rva0052906BUpdate@@YAXH@Z@4IA	0x00A04988
 Code/GameEngine/Source/Common/Rva00598CBC.cpp	wrong-name	?g_00E063D4@@3VAsciiString@@A	0x00A063D4
-Code/GameEngine/Source/Common/Rva005C702DRead.cpp	duplicate-def	_c_table	0x00874934
 Code/GameEngine/Source/Common/Rva005C7889Init.cpp	wrong-name	?$S1@?1??Rva005C7889Init@@YAXXZ@4IA	0x00A065DC
 Code/GameEngine/Source/Common/Rva005D1F45.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
 Code/GameEngine/Source/Common/Rva005E3AE1.cpp	wrong-name	?g_00C74ED4@@3QBQBXB	0x00874ED4

@@ -22,7 +22,8 @@ struct KeyCode
 	int code;
 };
 
-static const KeyCode c_table[3] = {
+// The one table both the writer and Rva005C702DRead.cpp's reader index.
+extern "C" const KeyCode c_table[3] = {
 	{ 0, 0x73746570 },
 	{ 1, 0x6c696e65 },
 	{ 2, 0x6361746d },
