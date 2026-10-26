@@ -1565,7 +1565,7 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
 
 ### LINK-042: the census at d1f046749a's other 10 lost units (IsCapturing respelling and four TU merges)
 
-**Status: Open (partial repair landed). Updated: 2026-10-26; inspected revision: d1f046749a.**
+**Status: Open (partial repair landed). Updated: 2026-10-26; inspected revision: e9bab0ff07.**
 
 - **Evidence / scope:** the units besides LINK-041's 23 that linked in the census at
   47e030bafc (or were linked before their merge) and not at d1f046749a, 3,997 B in all.
@@ -1602,6 +1602,12 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
     first two blockers but fails the `pair` row (it inlines the copy ctor); tu_map already
     places 0x00380D30 in this TU, so merging `MultiplayerColorDefinitionCopy.cpp` here is
     the likely fix.
+    **Repaired 2026-10-26 (c923d4c567, agent K9):** restored the dropped flags and replaced
+    the ZH header include with a TU-local copy of its view whose `MultiplayerColorDefinition`
+    declares (does not define) its copy ctor, so the `pair` row calls 0x00380D30 out of line
+    and nothing re-emits it; no merge needed. `./build.sh` 2/2; `tools/link_check.py` on the
+    d1f046749a index: `MultiplayerSettings.cpp` 0 -> 97 B, `MultiplayerColorDefinitionCopy.cpp`
+    0 -> 79 B. Census confirmation pending.
 - **Process note:** before applying a merge, `tools/link_check.py` the target TU and refuse
   the merge when a target that linked stops linking.
 - **Census confirmation:** awaiting the next census.
