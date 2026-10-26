@@ -2549,7 +2549,7 @@ inspected revision: 78413ee546.
   donor dropped): `Credits.cpp` 0 -> 3,053 B, `stlport_list_int_insert.cpp` keeps its
   62 B. Without the provider instantiation, the same index still reports the `insert`
   comdat and selected blockers.
-- **Remaining / next check:** the `insert` pin's `fold-proof=` names `Credits.cpp`,
+- **Prior pin follow-up:** the `insert` pin's `fold-proof=` names `Credits.cpp`,
   whose copy no longer equals retail; `stlport_list_int_insert.cpp` now proves it. The
   pin was left as is (pin edits go through `tools/pin_admission.py`).
 - **Wrapper cleanup (2026-10-26, inspected `c254d71bb8`):**
@@ -2563,6 +2563,15 @@ inspected revision: 78413ee546.
   repair; it adds no linking gain. A bounded preparation accepts Credits' strict
   reusable input receipt, without claiming dependency closure. The stale pin
   proof above and confirmation in the next normal census remain follow-ups.
+- **Pin follow-up closed (2026-10-26):** the same
+  [evidence](../reverse/attempt_support/credits-delete-wrapper-cleanup-20261026.md#redundant-insertion-pin-follow-up)
+  confirms that the exact insertion name already has its 37-byte matched row
+  in `stlport_list_int_insert.cpp`. Removed its redundant pin and lowered that
+  address's pin hatch count 14 -> 13. Both whole units pass 36/36 byte checks
+  without the pin; pin consistency and CSV validation pass, and both still
+  preview LINKS. This retires one further hatch, with no new linking gain.
+- **Remaining / next check:** confirm the repaired two-unit scope in the next
+  normal census; the stale insertion-pin proof no longer needs repair.
 - **Clearance:** preview scope (the two units above) on a HEAD-updated index.
 - **Census confirmation:** awaiting the next census.
 

@@ -43,5 +43,21 @@ and `after-{eh,data,frozen}.log`.
 The outgoing audit must distinguish the intentional removal of this unused,
 unrowed wrapper from losing a retail provider. The published index predates the
 outgoing base; any since-index provider changes are provisional. Census
-confirmation remains pending. LINK-047's separate stale `insert` fold-proof
-annotation remains a follow-up; this cleanup does not edit pins.
+confirmation remains pending. The wrapper cleanup leaves the separate stale
+`insert` fold-proof annotation unchanged; the follow-up below retires it.
+
+## Redundant insertion pin follow-up
+
+Claimed `0x005925E2` and its insertion-provider file lock before removing the
+pin. The exact same decorated `list<CreditsLine *>::insert` name already has
+its matched 37-byte row at `0x005925E2` in `stlport_list_int_insert.cpp`. Thus
+the row supplies the binding, and the pin adds no address or identity evidence.
+Removed only that pin, whose fold-proof still named Credits' nonretail inline
+copy, and lowered its address's hatch count from 14 to 13. No pin is added or
+renamed. This closes the separate pin-proof follow-up from the original repair.
+
+Without the pin, the combined Credits/provider build passes 36/36 functions,
+the data row and all literal checks. Pin consistency passes (zero baseline,
+new or stale findings), and CSV validation passes with one fewer symbol row.
+The same two-unit link preview still returns LINKS for 3,053 + 62 authored
+bytes. This is a second hatch retired, with zero new preview-linked bytes.
