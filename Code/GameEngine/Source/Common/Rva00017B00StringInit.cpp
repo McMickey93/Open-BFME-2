@@ -19,7 +19,7 @@
 // game.dat and the address keeps an opaque address-derived name. One data
 // pin (the static); the callee is already rowed so no code pin.
 
-// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /D_STLP_USE_STATIC_LIB /EHs-c-
+// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /D_STLP_USE_STATIC_LIB
 // stlport
 typedef unsigned short BfmeWChar;
 
@@ -31,6 +31,7 @@ template <class C, class T, class A> class basic_string
 {
 public:
 	basic_string(const basic_string &src);
+	~basic_string();
 };
 typedef basic_string<BfmeWChar, char_traits<BfmeWChar>, allocator<BfmeWChar> > BfmeWideString;
 }
@@ -44,19 +45,36 @@ namespace _STL { template <> basic_string<unsigned short, char_traits<unsigned s
 // 0xc-byte gap before the next known global there.
 unsigned char g_009DEEF0Static[12];
 
-class Rva00017B00StringInit
+namespace _STL
+{
+class locale
 {
 public:
-	void *init(void *other);
+	class facet
+	{
+	protected:
+		virtual ~facet();
+	};
 };
 
-void *Rva00017B00StringInit::init(void *other)
+template <class CharT> class numpunct;
+
+template <>
+class numpunct<BfmeWChar> : public locale::facet
 {
-	volatile int tmp = 0;
-	_STL::BfmeWideString *slot = static_cast<_STL::BfmeWideString *>(other);
-	const _STL::BfmeWideString &empty = *reinterpret_cast<const _STL::BfmeWideString *>(g_009DEEF0Static);
-	slot->_STL::BfmeWideString::BfmeWideString(empty);
-	return other;
+protected:
+	virtual BfmeWideString do_truename() const;
+	virtual BfmeWideString do_falsename() const;
+};
+
+// 0x00017B00: numpunct<wchar_t>::do_truename, slot 4 of retail's RTTI-named
+// vftable 0x007BBB94 (.?AV?$numpunct@G@_STL@@). Copy-constructs the hidden
+// result from the static wide "true" string (storage above); the "volatile"
+// store in the old placeholder model was the compiler's return-value flag.
+BfmeWideString numpunct<BfmeWChar>::do_truename() const
+{
+	return *reinterpret_cast<const BfmeWideString *>(g_009DEEF0Static);
+}
 }
 
 // Two more initializers with the same code as Rva00017B00StringInit::init,
@@ -67,19 +85,10 @@ void *Rva00017B00StringInit::init(void *other)
 // the first.
 unsigned char g_00DDEF20Static[12];	// VA 0x00ddef20
 
-class Rva00017B30StringInit
+// 0x00017B30: numpunct<wchar_t>::do_falsename, slot 5 of 0x007BBB94.
+_STL::BfmeWideString _STL::numpunct<BfmeWChar>::do_falsename() const
 {
-public:
-	void *init(void *other);
-};
-
-void *Rva00017B30StringInit::init(void *other)
-{
-	volatile int tmp = 0;
-	_STL::BfmeWideString *slot = static_cast<_STL::BfmeWideString *>(other);
-	const _STL::BfmeWideString &empty = *reinterpret_cast<const _STL::BfmeWideString *>(g_00DDEF20Static);
-	slot->_STL::BfmeWideString::BfmeWideString(empty);
-	return other;
+	return *reinterpret_cast<const BfmeWideString *>(g_00DDEF20Static);
 }
 
 unsigned char g_00DDEF2CStatic[12];	// VA 0x00ddef2c

@@ -138,28 +138,35 @@ collate<char>::string_type collate<char>::do_transform(const char *low, const ch
 
 }
 
-class Rva00017A40StringInit
+namespace _STL
 {
-public:
-	_STL::NStr init();
+
+template <class CharT>
+class numpunct;
+
+template <>
+class numpunct<char> : public locale::facet
+{
+protected:
+	virtual NStr do_truename() const;
+	virtual NStr do_falsename() const;
 };
 
-// 0x00017A40: copy of the static string at 0x00DDEF08.
-_STL::NStr Rva00017A40StringInit::init()
+// 0x00017A40: numpunct<char>::do_truename, slot 4 of retail's RTTI-named
+// vftable 0x007BBB78 (.?AV?$numpunct@D@_STL@@): copy of the static "true"
+// string at 0x00DDEF08.
+NStr numpunct<char>::do_truename() const
 {
-	return *reinterpret_cast<const _STL::NStr *>(&g_Va00DDEF08);
+	return *reinterpret_cast<const NStr *>(&g_Va00DDEF08);
 }
 
-class Rva00017AA0StringInit
+// 0x00017AA0: numpunct<char>::do_falsename, slot 5 of 0x007BBB78: copy of the
+// static "false" string at 0x00DDEEFC.
+NStr numpunct<char>::do_falsename() const
 {
-public:
-	_STL::NStr init();
-};
+	return *reinterpret_cast<const NStr *>(&g_Va00DDEEFC);
+}
 
-// 0x00017AA0: copy of the static string at 0x00DDEEFC.
-_STL::NStr Rva00017AA0StringInit::init()
-{
-	return *reinterpret_cast<const _STL::NStr *>(&g_Va00DDEEFC);
 }
 
 namespace _STL
