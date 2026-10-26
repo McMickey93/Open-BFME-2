@@ -4,13 +4,10 @@
 // seven override/default fields to18..30/14. Existing neutral config name is
 // retained; constructor0020010B and lookup002000D7 establish its prefix.
 #include "ascii_string.h"
+#include "RankInfoLookupView.h"
 class GameLogic;
 extern GameLogic *TheGameLogic;
 class Rva0023C6A4 { public: bool rva00200084(); };
-struct Rva002000D7Config {
-    int rva00200157(const AsciiString &);
-    char unknown00[0x14]; int fallback,primary,men,elves,dwarves,isengard,mordor,wild;
-};
 int Rva002000D7Config::rva00200157(const AsciiString &side)
 {
     Rva0023C6A4 *logic=reinterpret_cast<Rva0023C6A4 *>(TheGameLogic);
