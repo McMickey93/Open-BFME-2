@@ -93,17 +93,26 @@ _STL::BfmeWideString _STL::numpunct<BfmeWChar>::do_falsename() const
 
 unsigned char g_00DDEF2CStatic[12];	// VA 0x00ddef2c
 
-class Rva00019D90StringInit
+namespace _STL
 {
-public:
-	void *init(void *other);
+template <class CharT, bool International> class moneypunct;
+
+template <>
+class moneypunct<BfmeWChar, true> : public locale::facet
+{
+protected:
+	virtual BfmeWideString do_curr_symbol() const;
 };
 
-void *Rva00019D90StringInit::init(void *other)
+// 0x00019D90: moneypunct<wchar_t, true>::do_curr_symbol, slot 4 of retail's
+// RTTI-named vftable 0x007BC868 (.?AV?$moneypunct@G$00@_STL@@). STLport 4.5.3
+// returns monetary.cpp's file-static empty wide string from do_curr_symbol,
+// do_positive_sign and do_negative_sign of both wide moneypuncts; retail
+// folds all six onto this body (slots 4-6 of 0x007BC868 / 0x007BC894). The
+// other five names bind here through the moneypunct units' /alternatename
+// lines.
+BfmeWideString moneypunct<BfmeWChar, true>::do_curr_symbol() const
 {
-	volatile int tmp = 0;
-	_STL::BfmeWideString *slot = static_cast<_STL::BfmeWideString *>(other);
-	const _STL::BfmeWideString &empty = *reinterpret_cast<const _STL::BfmeWideString *>(g_00DDEF2CStatic);
-	slot->_STL::BfmeWideString::BfmeWideString(empty);
-	return other;
+	return *reinterpret_cast<const BfmeWideString *>(g_00DDEF2CStatic);
+}
 }
