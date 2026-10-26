@@ -20,7 +20,7 @@ private:
 };
 }
 void __cdecl Rva005C7889Init(void);
-void *__cdecl operator new(unsigned int);
+#include <new>
 class PointGroupClass
 {
 public:

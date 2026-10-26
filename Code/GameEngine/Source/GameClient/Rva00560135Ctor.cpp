@@ -27,7 +27,7 @@ class StreakDrawModule;
 class StreakDrawModuleTemplate;
 }
 void __cdecl Rva005C7889Init(void);
-void *__cdecl operator new(unsigned int);
+#include <new>
 class RefCountClass
 {
 public:
