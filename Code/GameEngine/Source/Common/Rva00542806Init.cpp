@@ -5,8 +5,7 @@
 // unlock lane plus strncmp IAT and header literal 0x0086954C.
 #pragma function(memset)
 
-extern "C" void * __cdecl memset(void *dst, int value, unsigned int size);
-extern "C" __declspec(dllimport) int __cdecl strncmp(const char *s1, const char *s2, unsigned int n);
+#include <string.h>
 
 class Rva00542806
 {
