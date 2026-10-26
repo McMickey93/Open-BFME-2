@@ -1,6 +1,6 @@
 // STLport 4.5.3 reference instantiation. Target boundary and byte comparison prove operation shape.
 // Element spelling/layout is donor inference; opaque records have address-derived identity.
-// cl: /O1 /EHs /D_BFME_RETAIL_TREE_INSERT_LAYOUT /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
+// cl: /DBFME_ASCII_DTOR_DECL /Ireference/shims/bfme2_ascii /O1 /EHs /D_BFME_RETAIL_TREE_INSERT_LAYOUT /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
 // stlport
 // The emitted unsigned max copy must match retail RVA 0x00013740.
 // Define it for speed, then restore this unit's flags for its own bodies.
@@ -71,4 +71,20 @@ template <> void vector<void*>::clear();
 
 struct Rva0002CCC3Record {char bytes[1];bool operator<(const Rva0002CCC3Record&)const;bool operator==(const Rva0002CCC3Record&)const;};
 namespace _STL {template<>struct hash<Rva0002CCC3Record> {unsigned int operator()(const Rva0002CCC3Record&)const;};}
-namespace _STL {template class hashtable<Rva0002CCC3Record,Rva0002CCC3Record,hash<Rva0002CCC3Record>,_Identity<Rva0002CCC3Record>,equal_to<Rva0002CCC3Record>,allocator<Rva0002CCC3Record> >;}
+// Retail 0x0002CCC3 calls 0x002234FE, the rowed clear of
+// hash_map<AsciiString, AsciiString, rts::hash<AsciiString> > (INIMacroTable.cpp).
+// Instantiating the whole set over this unit's own record left its operator==
+// and hash unresolved and emitted a non-retail clear, so only the destructor is
+// defined here and it calls that rowed clear by its own type.
+#include "ascii_string.h"
+namespace rts { template <class T> struct hash; template <> struct hash<AsciiString> { unsigned int operator()(const AsciiString &) const; }; }
+typedef _STL::hashtable<_STL::pair<AsciiString const, AsciiString>, AsciiString, rts::hash<AsciiString>, _STL::_Select1st<_STL::pair<AsciiString const, AsciiString> >, _STL::equal_to<AsciiString>, _STL::allocator<_STL::pair<AsciiString const, AsciiString> > > Rva002234FETable;
+namespace _STL {
+template <> void Rva002234FETable::clear();
+typedef hashtable<Rva0002CCC3Record,Rva0002CCC3Record,hash<Rva0002CCC3Record>,_Identity<Rva0002CCC3Record>,equal_to<Rva0002CCC3Record>,allocator<Rva0002CCC3Record> > Rva0002CCC3Table;
+template <> Rva0002CCC3Table::~hashtable()
+{
+    reinterpret_cast<Rva002234FETable *>(this)->clear();
+}
+template Rva0002CCC3Table::~hashtable();
+}
