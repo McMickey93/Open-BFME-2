@@ -4,7 +4,7 @@ struct Rva004E624D
 {
 	void rva004E624D();
 };
-void __cdecl operator delete(void *);
+#include <new>
 struct Rva004E630C
 {
 	void *rva004E630C(unsigned int flag);

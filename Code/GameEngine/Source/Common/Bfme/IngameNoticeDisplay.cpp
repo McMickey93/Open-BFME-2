@@ -18,7 +18,7 @@ struct Rva004E61C8Inner
 	virtual void *v0(int x);
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 // The rowed 0x54-byte FadeInTextRender constructor 0x005966DD.
 class FadeInTextRender
