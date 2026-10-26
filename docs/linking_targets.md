@@ -447,7 +447,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/HackInternetAIUpdate.cpp` | 10 | 23 (U=21, C=1, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp` | 10 | 20 (U=16, C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/texproject.cpp` | 10 | 12 (U=11, C=1) | Open |
-| `Code/GameEngine/Source/GameLogic/Object/Update/MobMemberSlavedUpdate.cpp` | 8 | 3 (U=3) | Open |
+| `Code/GameEngine/Source/GameLogic/Object/Update/MobMemberSlavedUpdate.cpp` | 8 | 3 (U=3) | 2026-10-26 at 01564e4a01: LINKS in preview 0 -> 8 B; census pending. BFME 2 has no MobMemberSlavedUpdate (no module-name string in game.dat, no rowed method), so the ZH port bodies behind the 3 unresolved went; the unit keeps sqr<Int> 0x000E13CA. |
 | `Code/Libraries/Source/WWVegas/WW3D2/light.cpp` | 6 | 3 (U=3) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv892_Rva004C121B.cpp` | 0 | 4 (U=2, C=1, S=1) | 2026-10-26: retired (93ba3a07a8). Duplicate claim: 0x004C121B is rowed and links as `SymbioticStructuresBody::rva004C121B` in `SymbioticStructuresBodySlots.cpp`; unit and row removed, recorded in deleted_rows.csv; its `reverse/header_queue.tsv` GameLogic key now names a deleted source |
 | `Code/GameEngine/Source/GameClient/GUI/Rva00576DF1Ctor.cpp` | 0 | 11 (U=8, C=2, S=1) | 2026-10-26: retired (9caa4cbd11). Duplicate claim: 0x00576DF1 is rowed and links as the `Impl@ResolveBattlesBehavior` ctor in `Rva00576C4BDtor.cpp` (link_check LINKS 482 B); unit and row removed, recorded in deleted_rows.csv |
