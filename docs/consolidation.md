@@ -15,7 +15,7 @@ merges continue through `tools/tu_skeleton.py` and the normal verification gates
 | Tool | Role |
 |---|---|
 | `tools/name_lane.py consolidate` | The evidence planner: catalogues original paths and donor structure, identifies candidate groups and flags routing, declaration, include and compiler prerequisites. |
-| `tools/tu_map.py` | Which TU each retail function came from: `__FILE__` strings, Zero Hour definitions and class sites, naming inside an anchored address cluster, contiguity. `approved` rows are the only ones a merge moves. |
+| `tools/tu_map.py` | Which TU each retail function came from: `__FILE__` strings, Zero Hour definitions and class sites, WorldBuilder leads that corroborate a hinted path, naming inside an anchored address cluster, contiguity. `approved` rows are the only ones a merge moves. |
 | `tools/tu_skeleton.py` | The lane: `--queue`, `--plan`, `--merge`. It verifies every merge by compiling and byte-matching, claims its scope, and repoints the ledger. |
 | `tools/tu_evidence.py` | Retail layout signals (funclet order, vftables, initializers, .rdata order, funclet parentage) for rows nothing else places; proposal-only until a signal passes its 99% precision gate and is promoted. |
 | `tools/tu_ownership.py` | The commit hook's invariants (a row moved to a file other than its approved TU, a second body for one address). Shadow mode. |
@@ -315,6 +315,10 @@ WorldBuilder has considerably more surviving paths, including editor-only
 files. Its path inventory establishes that a file existed in that build; a
 callgraph pairing in `wb_name_leads.csv` supplies a file hint for a BFME 2
 function. Neither fact proves that the retail function belonged in that TU.
+`tools/tu_map.py` uses a pairing (W) only as corroboration: it anchors a TU
+when it names exactly the path a row's own naming hint already gives, and only
+while `tu_map.py --validate` shows W agreeing with the game's own `__FILE__`
+strings at 99% or better (170/170 when it landed). W never names a TU itself.
 
 Zero Hour supplies actual source/header structure and out-of-line definitions.
 The planner reuses `tu_map.zh_definitions`, rather than matching filenames or

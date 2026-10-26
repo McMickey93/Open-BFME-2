@@ -142,6 +142,46 @@ def test_a_file_string_row_is_never_an_island(tmp_path):
     assert out[0x1000]["confidence"] == "proposed" and "noncontiguous" in out[0x1000]["evidence"]
 
 
+WB_HEADER = "target_rva,current_name,current_kind,wb_name,wb_file,score,evidence\n"
+
+
+def _wb(tmp_path, monkeypatch, foo_lead, bar_lead="Bar.cpp"):
+    """Foo.cpp is a TU only naming proposes (N, no ZH definition); Bar.cpp's row pushes its
+    own __FILE__ (F), the test of the WorldBuilder leads (W)."""
+    monkeypatch.setattr(tu_map, "W_MIN", 1)
+    (tmp_path / "reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/X").mkdir(parents=True)
+    (tmp_path / "reverse").mkdir()
+    (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join([
+        row("?a@Foo@@QAEXXZ", 0x1000, 16, "Code/X/FooA.cpp"),
+        row("?b@Foo@@QAEXXZ", 0x1100, 16, "Code/X/FooB.cpp"),
+        row("?rva00008000@Rva00008000@@QAEXXZ", 0x8000, 16, "Code/X/Rva00008000.cpp"),
+    ]))
+    (tmp_path / "reverse/string_xrefs.tsv").write_text("C:\\bfme2\\Code\\X\\Bar.cpp\t0x8004\n")
+    (tmp_path / "reverse/wb_name_leads.csv").write_text(WB_HEADER + "".join(
+        f"0x{rva:08X},,PLACEHOLDER,X::f,C:\\Projects\\bfme2\\Code\\X\\{f},3.0,callgraph\n"
+        for rva, f in ((0x1000, foo_lead), (0x8000, bar_lead))))
+    return {int(r["rva"], 16): r for r in tu_map.build(tu_map.Layout(tmp_path))}
+
+
+def test_worldbuilder_lead_naming_the_hinted_path_anchors_the_tu(tmp_path, monkeypatch):
+    out = _wb(tmp_path, monkeypatch, "Foo.cpp")
+    for rva in (0x1000, 0x1100):
+        assert (out[rva]["tu"], out[rva]["by"], out[rva]["confidence"]) == ("Code/X/Foo.cpp", "N", "approved")
+    assert "W=Code/X/Foo.cpp" in out[0x1000]["evidence"]
+
+
+def test_worldbuilder_lead_naming_another_path_anchors_nothing(tmp_path, monkeypatch):
+    out = _wb(tmp_path, monkeypatch, "Elsewhere.cpp")
+    assert out[0x1000]["tu"] == "Code/X/Foo.cpp" and out[0x1000]["confidence"] == "proposed"
+
+
+def test_worldbuilder_leads_that_disagree_with_file_strings_anchor_nothing(tmp_path, monkeypatch):
+    out = _wb(tmp_path, monkeypatch, "Foo.cpp", bar_lead="NotBar.cpp")
+    assert out[0x1000]["confidence"] == "proposed"
+    rows = tu_map.evidence_rows(tu_map.Layout(tmp_path))
+    assert tu_map.w_score(rows) == (1, 0) and not tu_map.w_passes(rows)
+
+
 def test_far_placeholder_class_row_does_not_stretch_its_tu_span(tmp_path):
     """A K row (placeholder-class propagation) is never approved, so it is not part of its
     TU's span: one emitted past another TU's anchor must not make its TU noncontiguous."""

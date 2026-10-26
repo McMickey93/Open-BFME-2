@@ -21,6 +21,14 @@ Signals, strongest first (one letter each in the `by` and `evidence` columns):
   U  the row's own naming hint (N, never F/Z/S) names a small TU whose rows
      interleave with an anchored TU's, so the two are one file (several
      classes in one .cpp) and the row takes the anchored TU's name.
+  W  a WorldBuilder lead (reverse/wb_name_leads.csv, tools/wb_match.py) pairs the
+     function with a WorldBuilder function whose own strings name a .cpp of BFME 2's
+     tree (`C:/Projects/bfme2/Code/...`). W never names a TU by itself: it anchors
+     a TU (as F/Z/S do) only where it names the very path a row's own hint gives,
+     and only once `--validate` shows it agreeing with F (the game's own strings)
+     at >= 99%. Where W and Z/S differ it is BFME 2's reorganised tree against
+     Zero Hour's (Pathfinder/pathfinder*.cpp vs AI/AIPathfind.cpp), so Z/S are not
+     its test.
   C  address contiguity: the nearest assigned rows on both sides agree and are
      within 0x3000 bytes (retail object order keeps a TU contiguous).
   K  placeholder-class propagation (`??1Rva...` follows its `??_GRva...`).
@@ -40,7 +48,7 @@ N, and header-inline bodies (??_G, friend_new*, *ModuleData ctors) are emitted a
 COMDATs in whichever TU used them first. A naming hint outside its TU's main
 address cluster is therefore `displaced`, never assigned.
 
-Clusters are merged (U) only when at most one of them is anchored by F/Z/S. Two
+Clusters are merged (U) only when at most one of them is anchored by F/Z/S/W. Two
 TUs that F/Z/S name differently are two files; when their rows interleave, both
 are noncontiguous and nothing in them is approved. A row's own F/Z/S anchor is
 never renamed by a merge, and a row whose TU contradicts its own F (or, without
@@ -70,7 +78,7 @@ a body no signal reaches), so the map carries the extents `tu_at()` needs:
     unsplit function would start. Without the image it is at most proposed.
 
 Confidence:
-  approved  the TU's main cluster holds at least one F/Z/S anchor, the row is
+  approved  the TU's main cluster holds at least one F/Z/S/W anchor, the row is
             assigned by F/Z/S/N/U or bracketed (C) by approved rows, its own
             F/Z/S do not contradict the TU, and no row that could be approved
             for a different TU sits inside the TU's address span (a TU that is
@@ -132,7 +140,9 @@ PAD = 0xCC            # MSVC fills between functions with int3
 COLUMNS = ["rva", "size", "kind", "tu", "confidence", "by", "evidence", "source"]
 APPROVABLE = {"F", "Z", "S", "N", "U"}
 SPAN_BREAKERS = APPROVABLE | {"C"}
-FINGERPRINTED = ("functions.csv", "ghidra_functions.csv", "string_xrefs.tsv", "data_xrefs.tsv")
+WB_LEADS = "wb_name_leads.csv"
+W_GATE, W_MIN = 0.99, 20  # W anchors only while it agrees with F on >= W_MIN rows at >= W_GATE
+FINGERPRINTED = ("functions.csv", "ghidra_functions.csv", "string_xrefs.tsv", "data_xrefs.tsv", WB_LEADS)
 
 
 class Layout:
@@ -484,6 +494,33 @@ def file_strings(layout, paths, owner):
     return out
 
 
+def wb_files(layout, paths):
+    """{rva: TU} from WB_LEADS: the .cpp/.c whose path a WorldBuilder function's own strings
+    name (BFME 2's tree, `C:\\Projects\\bfme2\\Code\\...`), for the game function
+    tools/wb_match.py paired it with. Headers name no TU."""
+    out = {}
+    for r in read_csv(layout.path(WB_LEADS)):
+        m = re.search(r"[\\/]Code[\\/](.+\.(?:cpp|c))$", r.get("wb_file") or "", re.I)
+        try:
+            rva = int(r.get("target_rva") or "", 16)
+        except ValueError:
+            continue
+        if m:
+            out.setdefault(rva, paths.repo(m.group(1)))
+    return out
+
+
+def w_score(rows):
+    """(rows with both W and F, of them agreeing): W's test against the game's own strings."""
+    both = [r for r in rows if r["W"] and r["F"]]
+    return len(both), sum(1 for r in both if same(r["W"], r["F"]))
+
+
+def w_passes(rows):
+    n, ok = w_score(rows)
+    return n >= W_MIN and ok >= W_GATE * n
+
+
 def same(a, b):
     return bool(a and b and a.lower() == b.lower())
 
@@ -582,9 +619,11 @@ def evidence_rows(layout, ledger=None):
     zmeth, zsite = zh_index(layout, paths)
     zhead = zh_header_members(layout)
     F = file_strings(layout, paths, owner)
+    W = wb_files(layout, paths)
     for r in rows:
         r["cls"], r["meth"] = demangle(r["name"]) if r["name"] else (None, None)
         r["F"] = F.get(r["rva"])
+        r["W"] = W.get(r["rva"])
         r["Z"] = zmeth.get((r["cls"], r["meth"])) if r["cls"] else None
     z_anchors = sorted((r["rva"], r["Z"]) for r in rows if r["Z"])   # out-of-line ZH definitions
     z_rvas = [a for a, _ in z_anchors]
@@ -613,6 +652,7 @@ def build(layout, ledger=None):
         if r["hint"]:
             by_hint[r["hint"].lower()].append(r)
     main, anchored = {}, set()
+    use_w = w_passes(rows)
     for key, members in by_hint.items():
         clusters = [[members[0]]]
         for a, b in zip(members, members[1:]):
@@ -623,7 +663,8 @@ def build(layout, ledger=None):
                                             sum(1 for x in c if not COMDAT.match(x["name"])), len(c)))
         if not any(x["hard"] or not COMDAT.match(x["name"]) for x in best):
             continue
-        if any(x["hard"] and x["hard"].lower() == key for x in best):
+        # an anchor: a row's own F/Z/S, or a WorldBuilder lead naming this very path (W)
+        if any(x["hard"] and x["hard"].lower() == key or use_w and same(x["W"], key) for x in best):
             anchored.add(key)
         for x in best:
             main[id(x)] = key
@@ -745,7 +786,7 @@ def build(layout, ledger=None):
     out = []
     for r in rows:
         ev = []
-        for s in "FZSN":
+        for s in "FZSNW":
             if r[s]:
                 ev.append(f"{s}={r[s]}")
         if r["C"]:
@@ -1104,6 +1145,10 @@ def report_validation(layout, rev, out=None):
     n, bad = self_check(read_csv(layout.out) if out is None else out)
     print(f"self-check: {bad} of {n} approved code rows in {layout.out.name} have their own F/Z/S "
           f"naming another TU")
+    n, ok = w_score(evidence_rows(layout))
+    print(f"W (WorldBuilder lead path) against the row's own F: {ok}/{n} agree "
+          f"({100 * ok / n:.1f}%); anchors {'on' if n >= W_MIN and ok >= W_GATE * n else 'OFF'} "
+          f"(gate {W_GATE:.0%}, at least {W_MIN} rows)" if n else "W: no row has both W and F; anchors OFF")
     landed, tally, misses = validate(layout, rev)
     print(f"landed since {rev}: {landed} named rows with F/Z/S evidence at addresses its ledger had no row for")
     for conf in ("approved", "proposed"):
