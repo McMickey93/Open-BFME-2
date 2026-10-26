@@ -38,8 +38,20 @@ BfmeStateTDB * g_bfmeStateTDB;
 extern int g_bfmeModeTDB;
 // g_bfmeModeTDB: matched references place it at VA 0xdee844 (zero-filled .bss).
 int g_bfmeModeTDB;
-extern BfmeObjTDB *g_bfmeObjTDB;
-extern int g_bfmeCountTDB;
+// The ledger's DX8Wrapper device (0x9EDA34, a protected static read through a
+// derived view) and DX8 call counter (0x9EDA98).
+struct IDirect3DDevice8;
+class DX8Wrapper
+{
+protected:
+	static IDirect3DDevice8 *D3DDevice;
+};
+extern unsigned number_of_DX8_calls;
+
+struct BfmeDeviceTDB : DX8Wrapper
+{
+	static BfmeObjTDB *get() { return (BfmeObjTDB *)D3DDevice; }
+};
 
 // ?bfmeStepTDB@@YAXXZ
 void bfmeStepTDB(void)
@@ -53,8 +65,8 @@ void bfmeStepTDB(void)
 	if (g_bfmeStateTDB->m_bfmeBusyTDB)
 		return;
 
-	g_bfmeObjTDB->m_bfmeCalls->m_bfmeSetTDB(g_bfmeObjTDB,
+	BfmeDeviceTDB::get()->m_bfmeCalls->m_bfmeSetTDB(BfmeDeviceTDB::get(),
 		*g_bfmeStateTDB->m_bfmeSourceTDB);
 
-	++g_bfmeCountTDB;
+	++number_of_DX8_calls;
 }
