@@ -23,9 +23,7 @@ public:
 	const UpgradeTemplate *findUpgrade(const AsciiString &name) const;
 };
 
-// _TheUpgradeCenter: the global at this VA is ?TheUpgradeCenter@@3PAVUpgradeCenter@@A; this name is an alias for it.
 extern UpgradeCenter *TheUpgradeCenter;
-#pragma comment(linker, "/alternatename:_TheUpgradeCenter=?TheUpgradeCenter@@3PAVUpgradeCenter@@A")
 
 class Rva001EAE6FHelper
 {
