@@ -125,7 +125,10 @@ BfmeDualVtableReleaseDtor TheFXParticleEditor(0);
 
 void rva00203C21();
 
-static HMODULE st_DebugDLL;
+// The debug DLL handle: the data ledger's ?st_DebugDLL@@3HA (0x9FE158),
+// defined in ScriptEngine_appGate.cpp; used here as the HMODULE it holds.
+extern int st_DebugDLL;
+#define TheDebugDLL (*(HMODULE *)&st_DebugDLL)
 
 class ScriptEngine
 {
@@ -163,11 +166,11 @@ void ScriptEngine::init()
 	if (TheWritableGlobalData->m_windowed) {
 		if (TheWritableGlobalData->m_scriptDebug) {
 			if (BFME2UseDebugWindowLite)
-				st_DebugDLL = LoadLibraryA("DebugWindowLite.dll");
+				TheDebugDLL = LoadLibraryA("DebugWindowLite.dll");
 			else
-				st_DebugDLL = LoadLibraryA("DebugWindow.dll");
+				TheDebugDLL = LoadLibraryA("DebugWindow.dll");
 		} else {
-			st_DebugDLL = 0;
+			TheDebugDLL = 0;
 		}
 
 		if (TheWritableGlobalData->m_particleEdit) {
@@ -177,14 +180,14 @@ void ScriptEngine::init()
 			}
 		}
 
-		if (st_DebugDLL) {
-			FARPROC proc = GetProcAddress(st_DebugDLL, "CreateDebugDialog");
+		if (TheDebugDLL) {
+			FARPROC proc = GetProcAddress(TheDebugDLL, "CreateDebugDialog");
 			if (proc) {
 				proc();
 				rva00203C21();
 			} else {
-				FreeLibrary(st_DebugDLL);
-				st_DebugDLL = 0;
+				FreeLibrary(TheDebugDLL);
+				TheDebugDLL = 0;
 			}
 		}
 	}

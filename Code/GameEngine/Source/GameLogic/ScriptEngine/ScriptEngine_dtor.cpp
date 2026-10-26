@@ -292,7 +292,9 @@ extern class ParticleSystemManager *TheParticleSystemManager;
 class ScriptEngine;
 extern ScriptEngine *TheScriptEngine;
 
-static HMODULE st_DebugDLL;
+// The debug DLL handle: the data ledger's ?st_DebugDLL@@3HA (0x9FE158),
+// defined in ScriptEngine_appGate.cpp; read here as the HMODULE it holds.
+extern int st_DebugDLL;
 
 class ScriptEngine : public SubsystemInterface, public Snapshot
 {
@@ -350,12 +352,12 @@ ScriptEngine::~ScriptEngine()
 	TheDebugWindowHolder = 0;
 
 	if (st_DebugDLL) {
-		FARPROC proc = GetProcAddress(st_DebugDLL, "DestroyDebugDialog");
+		FARPROC proc = GetProcAddress((HMODULE)st_DebugDLL, "DestroyDebugDialog");
 		if (proc) {
 			proc();
 		}
 
-		FreeLibrary(st_DebugDLL);
+		FreeLibrary((HMODULE)st_DebugDLL);
 		st_DebugDLL = 0;
 	}
 
