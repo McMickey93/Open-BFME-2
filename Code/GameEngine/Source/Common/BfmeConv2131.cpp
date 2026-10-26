@@ -1,4 +1,4 @@
-void __cdecl operator delete(void *p);
+#include <new>
 
 class BfmeThingCDE;
 

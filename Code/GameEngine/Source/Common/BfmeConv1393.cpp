@@ -1,4 +1,4 @@
-void __cdecl operator delete[](void *block);
+#include <new>
 
 extern int g_bfmeVftAVJS[];
 extern int g_bfmeVftBVJS[];

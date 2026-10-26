@@ -5,7 +5,7 @@
 // image (0 hits): BFME2 either never instantiates it or compiles it to
 // different bytes, so it is not claimable from this donor and is left out.
 
-void __cdecl operator delete[](void *block);
+#include <new>
 
 class BfmeElemVVE
 {
