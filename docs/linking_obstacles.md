@@ -215,6 +215,21 @@ Evidence / affected units: the unchanged W4 fill-insert units `000C225D`, `00152
 
 Completed: all listed units were checked with their current native provider objects, and all assigned rows pass the normal byte gate. No vector source edit is retained. The recorded `/Ob0` forwarder, overflow-suppression and 0x00587C40 exception-contract failures were not repeated. Remaining / next check: reconcile each native element and its existing row owners together through the naming lane, then recheck the whole family. Preserve the three distinct 0x0014F4xx classes. No missing native match, admissible new fold pin or shared-header-only repair was established. Clearance and census confirmation remain pending.
 
+#### Assigned R3 container identities, 2026-10-26
+
+Status: Blocked on coherent element and row-name reconciliation. Inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`; ordinary-preview index `d1f046749a`, rules `retail-truth-4`. The current-provider checks and native REL32 evidence are in `build/c136-r3sweep/before-expanded-cohort.log`, `after-expanded-cohort.log`, `native-evidence-03.log` and `native-rows.json`; [the worker handoff](../build/link-report.md) maps the full scope and gates.
+
+| Unit under `Code/Libraries/Source/WWVegas/WWLib/` | Existing native providers and prerequisite |
+| --- | --- |
+| `StlContainerRva0073E4C0.cpp` | Push-back calls `_Construct` at 0x0060C9D9 (23 B, several existing two-word owners) and `_M_push_back_aux_v` at 0x0073E290 (123 B, `deque<Gen_t_008fb570_p8pod>` in Rva008FB570DequePushBackAux.cpp). The sweep's nontrivial record and template names disagree with those providers. Recover one supported payload identity; do not copy the provider's existing pair reinterpretation into this consumer. |
+| `StlSweepR3Rva00212A16.cpp` | Insert calls resize 0x00212858 (199 B, Rva00212858Resize.cpp), bucketIndex 0x00223149 (31 B, PlayerXferStringMaps.cpp) and node creation 0x00212354 (37 B, Rva00212354NewNode.cpp). The latter allocates a 12-byte node for an AsciiString-keyed pair; the sweep uses two one-byte records. Reconcile the actual key/value and row signatures first. |
+| `StlSweepR3Rva00332613.cpp` | Introsort calls median 0x00331716 (53 B, `__median<int>`), copy 0x00331962 (37 B, `BfmeStringRecord00331962`), partition 0x00331D10 (87 B, `S4SortElem12`/`S4Cmp002E1690`) and partial-sort 0x0033254D (27 B, Rva0033254DPartial.cpp). The median fold and record/comparator identities need coherent ownership; retaining the copy alias alone cannot supply the missing record operators. |
+| `StlSweepR3Rva00337D21.cpp` | Introsort calls median 0x00335CFD (94 B, Rva00335CFMedian.cpp), copy 0x003371B1 (67 B), partition 0x00337655 (101 B, `S4SortElem20`/`S4Cmp002EB8E0`) and partial-sort 0x00337C55 (27 B, `Rva003371B1`/`Rva00337C55Less`). This confirms the existing blocked attempt: retyping the element still requires the folded median/partition ownership to be resolved. |
+| `StlSweepR3Rva003F318C.cpp` | Assignment reaches existing LivingWorldRegionConnection-family owners at 0x003F2CD6 (45 B), 0x00565A24 (30 B), 0x003F325A (29 B), 0x003F0CA1 (24 B) and 0x003F29D2 (38 B). The opaque nonpolymorphic record view does not establish those providers' polymorphic element contract. Reconcile the complete record and helper family before suppressing its destroy copy. |
+| `stlport_vector_rva00587375_overflow.cpp` | The owner still reaches Construct 0x00587410 (18 B, Rva00587410Copy.cpp), range copy 0x00587599 (38 B) and fill 0x00587422 (37 B). The current fill-insert provider is included in the paired preview; its selected overflow copy and the Construct contract remain blockers. The existing failed `throw()` and extern-template controls were not repeated. |
+
+Completed: native call/row diagnosis and current-provider verification; these six sources are unchanged. Every direct native REL32 target inspected has an existing matched row. No new missing match, admissible fold pin or shared-header-only repair was established. Remaining / next check: reconcile each supported native element, its helpers and all row names through the naming lane, then repeat the paired preview. Whole-unit clearance and census confirmation remain pending; this is not a census gain.
+
 ### LINK-003: residual Zero Hour memory-pool interfaces
 
 **Status: Open. Updated: 2026-10-25.**
@@ -1879,6 +1894,7 @@ Remaining / next check:
 Clearance: the five units preview LINKS against index 47e030bafc with current objects; 0x00214B22 previews
 LINKS against index d1f046749a with current objects. Census confirmation: awaiting.
 
+**Assigned `_M_clear` recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `StlSweepR3Rva000B0298.cpp` remains U5/L1/S1 with current providers. Its 30-byte row still calls 0x000AFF52, whose 25-byte owner remains spelled `__destroy_aux<Rva00111B25Record*>`; the second 0x000B0298 row in Rva000B0298Clear.cpp remains present. Both provider and duplicate owner preview LINKS. No source edit or repeat of the failed forced-inline forwarding recipe was made. Raw native evidence and paired previews are in `build/c136-r3sweep/`; `build/link-report.md` maps the receipts. Resolve the duplicate row and destroy signature together before the next repair; clearance and census confirmation remain pending.
 
 ### LINK-036: StlportVectorEraseRangeDeferred historical blockers resolved by landed providers
 Status: Cleared. Updated: 2026-10-26; inspected revision: 6fced2088a.
@@ -2296,6 +2312,8 @@ Clearance: the surviving owners link in preview (link_check against index d1f046
 units held 0 census-linked bytes, so no headline change is claimed.
 Census confirmation: not claimed.
 
+**Assigned retired-unit recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `StlSweepR3Rva004F715B.cpp` is absent and has no current row; its retirement is recorded in `reverse/deleted_rows.csv`. The surviving `stlport_pop_heap_rva004f7e61.cpp` remains byte-exact and LINKS in the paired current-provider preview. The two hashtable over-claims at 0x001DE3E3 and 0x001FDEBC remain; their bounded emission cleanup is recorded under LINK-066 and does not settle ownership. Evidence: `build/c136-r3sweep/before-retired-004f715b.log`, `native-evidence-03.log`, `after-expanded-cohort.log` and `final-assigned-build.log`. No new retirement or census gain is claimed; the next check is the normal ownership/naming decision for the surviving duplicates.
+
 ### LINK-049: map<unsigned, WeaponTemplateSetHead> insert family rowed on an int-key placeholder and a private tree view
 Status: Repair landed, awaiting census. Updated: 2026-10-26; inspected revision: a8fa0b2df4.
 Evidence / affected units: `StlSweepW4Rva00464431.cpp` (0x00464431, 29 B) was rowed as
@@ -2688,6 +2706,16 @@ Evidence / affected unit: `Code/GameEngine/Source/Common/System/XferBlockWriter_
 Completed: explicitly instantiate only the existing member from the same STLport primary definition. The matched row is unchanged, and the unit now LINKS. The removed selected copies have no external referrers in the index reference graph; the paired 78-unit preview introduces no blocker. Raw proof: `build/link-worker-20261026-w2/xfer-member-build2.log`, `removed-selected-consumers.log`, `paired-comparison.log` and `all-cohort-after.log`.
 Remaining / next check: confirm this unit and the removed-provider scope in the next scheduled census. The build, frozen-file, EH and data checks pass; CSV and pin consistency pass. Full local receipt: `build/link-report.md`.
 Clearance: cleared in ordinary-preview scope; census confirmation pending. No census headline change is claimed.
+
+#### Assignment-only R3 hashtables, 2026-10-26
+
+Status: the unrelated equality-dependency scope is cleared in ordinary-preview scope; census confirmation pending. Both whole units remain blocked on native helper identities. Inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`; index `d1f046749a`, `retail-truth-4`.
+
+Evidence / affected units: `StlSweepR3Rva001DE3E3.cpp` and `StlSweepR3Rva001FDEBC.cpp` each instantiated the entire hashtable for one assignment row. Completed: instantiate only the existing `operator=` from the unchanged STLport `_hashtable.h` definition, retaining its required `clear` and `_M_copy_from` bodies. Remove the unused local unsigned-max definition and its optimization pragmas. No replacement helper, renamed class, body-suppression declaration, ledger edit or new hatch is introduced.
+
+Verification: both assignment rows remain exact and their equality-only unresolved names disappear. The expanded paired preview preserves every previously linking unit and adds no blocker. The complete removed-definition/reference audit finds no retained caller without a provider. Raw proof: `build/c136-r3sweep/before-expanded-cohort.log`, `after-expanded-cohort.log`, `expanded-provider-audit.log` and the `final-*` gate logs mapped by `build/link-report.md`. Declaration, EH, shadow-data, CSV and pin checks pass.
+
+Remaining / next check: both units retain unresolved record copy/destructor names and wrong selected `clear`/`_M_copy_from` copies. Native `clear` is 0x003A2A41 in Rva003A2A41Clear.cpp; the copy workers are 0x001DDCC5 in StlSweepR3Rva001DDCC5.cpp and 0x001FDC0F in PlayerTemplate.cpp, under different record names. All three native providers and Eva.cpp are included in the current-object comparison. Reconcile those key/value identities and the duplicate assignment rows (LINK-060) together. Whole-unit clearance remains pending; the ordinary-preview cleanup changes no census headline.
 
 ### LINK-067: an ATL cache initializer retains BFME 1 callback and storage names
 
