@@ -140,9 +140,40 @@ template <> void _Construct<WeaponTemplateSet, WeaponTemplateSet>(WeaponTemplate
 // Instantiate the recovered operation and its required template dependencies.
 template WeaponTemplateSet * _STL::__uninitialized_fill_n<WeaponTemplateSet *, unsigned int, WeaponTemplateSet>(WeaponTemplateSet *, unsigned int, WeaponTemplateSet const &, _STL::__false_type const &);
 
+// ?getModuleNameKey@DetachableRiderUpdate@@UBE?AW4NameKeyType@@XZ @0x4AE832
+// (69B): cached pool-name key for DetachableRiderUpdate. The class
+// identity comes from the pool-name string the body pushes
+// ("DetachableRiderUpdate"); the body guards a function-local static
+// key fetched once through TheNameKeyGenerator. It is NOT getClassMemoryPool:
+// retail stores nameToKey's return (a key not a pool pointer) and returns it
+// and the address carries no getClassMemoryPool row anywhere. /EHsc for the
+// static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
+// from retail no pins; nameToKey resolves via its matched row).
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class DetachableRiderUpdate
+{
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
 // tu-skeleton: 0x004AE7AD 72B ?xfer@DetachableRiderUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x004AE7F5 28B ?allocate@?$allocator@VWeaponTemplateSet@@@_STL@@QBEPAVWeaponTemplateSet@@IPBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp
 
 // ---- from Code/GameEngine/Source/Common/Thing/WeaponTemplateSetCopyCtor.cpp
 
@@ -151,40 +182,21 @@ WeaponTemplateSet::WeaponTemplateSet(const WeaponTemplateSet &that)
 {
 }
 
-// tu-skeleton: 0x004AE832 69B ?getModuleNameKey@DetachableRiderUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdatePoolKey.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva004AE877Ctor.cpp
 
 Rva004AE877::Rva004AE877()
 {
 }
 
-// tu-skeleton: 0x004AE883 91B ??0DetachableRiderUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)
-
-// tu-skeleton: 0x004AE8DE 28B ??_GRva004AE78E@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
-
-// tu-skeleton: 0x004AE8FA 15B ?rva004AE8FA@DetachableRiderUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)
-
-// tu-skeleton: 0x004AE909 12B ?get@Rva004AE909ImulAddField@@QBEHH@Z -- matched in Code/GameEngine/Source/Common/Disp8ImulAddDwordGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x004AE915 18B ??$_Construct@VWeaponTemplateSet@@V1@@_STL@@YAXPAVWeaponTemplateSet@@ABV1@@Z -- matched in Code/GameEngine/Source/Common/Thing/WeaponTemplateSetConstruct.cpp (not merged yet)
-
-// tu-skeleton: 0x004AE927 38B ??$__uninitialized_copy@PAVWeaponTemplateSet@@PAV1@@_STL@@YAPAVWeaponTemplateSet@@PAV1@00ABU__false_type@0@@Z -- matched in Code/GameEngine/Source/Common/Thing/WeaponTemplateSetUninitializedCopy.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva004AE94D.cpp
 
 // STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
 // Element identity and unconstrained fields remain address-derived structural inference.
 
-// tu-skeleton: 0x004AE972 22B ?getDisabledTypesToProcess@Rva004AE972@@UBE?AV?$BitFlags@$0L@@@XZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAC.cpp (not merged yet)
 
-// tu-skeleton: 0x004AE988 114B ?killRider@DetachableRiderUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DetachableRiderUpdate_killRider.cpp (not merged yet)
 
-// tu-skeleton: 0x004AE9FA 189B ?_M_insert_overflow@?$vector@VWeaponTemplateSet@@V?$allocator@VWeaponTemplateSet@@@_STL@@@_STL@@IAEXPAVWeaponTemplateSet@@ABV3@ABU__false_type@2@I_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
 
-// tu-skeleton: 0x004AEAEC 55B ?push_back@?$vector@VWeaponTemplateSet@@V?$allocator@VWeaponTemplateSet@@@_STL@@@_STL@@QAEXABVWeaponTemplateSet@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
 
-// tu-skeleton: 0x004AEB84 278B ?Rva004AEB84Parse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp
 
@@ -233,4 +245,42 @@ UpdateSleepTime DetachableRiderUpdateUpdateReceiver::update(){
  return FOREVER;
 }
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdatePoolKey.cpp
+
+// ?getModuleNameKey@DetachableRiderUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType DetachableRiderUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheDetachableRiderUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("DetachableRiderUpdate");
+	return TheDetachableRiderUpdatePoolKey;
+}
+
+// tu-skeleton: 0x004AE883 91B ??0DetachableRiderUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE8DE 28B ??_GRva004AE78E@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE8FA 15B ?rva004AE8FA@DetachableRiderUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE909 12B ?get@Rva004AE909ImulAddField@@QBEHH@Z -- matched in Code/GameEngine/Source/Common/Disp8ImulAddDwordGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE915 18B ??$_Construct@VWeaponTemplateSet@@V1@@_STL@@YAXPAVWeaponTemplateSet@@ABV1@@Z -- matched in Code/GameEngine/Source/Common/Thing/WeaponTemplateSetConstruct.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE927 38B ??$__uninitialized_copy@PAVWeaponTemplateSet@@PAV1@@_STL@@YAPAVWeaponTemplateSet@@PAV1@00ABU__false_type@0@@Z -- matched in Code/GameEngine/Source/Common/Thing/WeaponTemplateSetUninitializedCopy.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE972 22B ?getDisabledTypesToProcess@Rva004AE972@@UBE?AV?$BitFlags@$0L@@@XZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAC.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE988 114B ?killRider@DetachableRiderUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DetachableRiderUpdate_killRider.cpp (not merged yet)
+
+// tu-skeleton: 0x004AE9FA 189B ?_M_insert_overflow@?$vector@VWeaponTemplateSet@@V?$allocator@VWeaponTemplateSet@@@_STL@@@_STL@@IAEXPAVWeaponTemplateSet@@ABV3@ABU__false_type@2@I_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
+
+// tu-skeleton: 0x004AEAEC 55B ?push_back@?$vector@VWeaponTemplateSet@@V?$allocator@VWeaponTemplateSet@@@_STL@@@_STL@@QAEXABVWeaponTemplateSet@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
+
+// tu-skeleton: 0x004AEB84 278B ?Rva004AEB84Parse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
+
 // tu-skeleton: 0x004AEF05 17B ?buildFieldParse@DetachableRiderUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E61F 13B ?Rva0078E61FClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Dxx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E636 8B Unwind@00b8e636 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)
+
+// tu-skeleton: 0x0078E63E 10B __ehhandler$??0DetachableRiderUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)

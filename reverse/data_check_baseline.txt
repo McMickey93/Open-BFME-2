@@ -612,7 +612,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/DeletionUpdatePoolKey.cpp	wrong-n
 Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000495935@DemoTrapUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A48
 Code/GameEngine/Source/GameLogic/Object/Update/DeployStyleAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00048E8AC@DeployStyleAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A0396C
 Code/GameEngine/Source/GameLogic/Object/Update/DestroyEnvironmentUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004AC686@DestroyEnvironmentUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D00
-Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004AE832@DetachableRiderUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D60
+Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp	wrong-name	?$S1@?1??rva004AE832@DetachableRiderUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D60
 Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00048B16A@DynamicShroudClearingRangeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A038FC
 Code/GameEngine/Source/GameLogic/Object/Update/EmotionTrackerUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004B1393@EmotionTrackerUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D90
 Code/GameEngine/Source/GameLogic/Object/Update/EntEnragedUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004B2458@EntEnragedUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D9C
