@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
+// platformsdk
 //
 // ?update@HordeAIUpdate@@UAE?AW4UpdateSleepTime@@XZ
 // retail 0x0049AB10, 335 bytes.
@@ -25,9 +26,7 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define NULL 0
-#define TRUE 1
-#define FALSE 0
+#include <windows.h>
 
 #include "../../../../Common/GameLogicObjectLookupView.h"
 

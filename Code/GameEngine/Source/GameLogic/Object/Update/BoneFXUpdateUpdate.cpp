@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /GX /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /ICode/Libraries/Include
+// platformsdk
 // stlport
 //
 // BoneFXUpdate::update and the per-bone FX helpers (BFME 2), from the
@@ -42,9 +43,7 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define NULL 0
-#define TRUE 1
-#define FALSE 0
+#include <windows.h>
 
 class ModuleData;
 class Object;
