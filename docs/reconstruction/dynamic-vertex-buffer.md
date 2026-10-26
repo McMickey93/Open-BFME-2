@@ -100,8 +100,10 @@ function information `0xD0A2D0` (28), unwind map `0xD0A2C8` (8), unwind action
 `0xB65CF0` (8), and guard destructor `0x442F8C` (5). All bytes and targets are
 independently checked. The guard destructor reaches the already established
 mutex release at `0x120F50`; the runtime thunk names msvcr71's C++ handler.
-The SDK-ordered Device9 prefix is included with its Wine source attribution,
-through the exact CreateVertexBuffer slot 26. No placeholder slots are used.
+The Device9 interface now comes from the vendored August 2005 DirectX SDK,
+including the exact CreateVertexBuffer slot 26. This compatible declaration
+input replaces the earlier Wine-derived prefix; it does not establish which
+SDK release retail used.
 
 The dynamic write-lock constructor and destructor now match their full 247- and
 108-byte bodies at `0x13AA00` and `0x13AB00`. The lock holds its owner pointer at
@@ -115,9 +117,8 @@ The original inline native-buffer accessor is necessary to preserve the caller's
 separate buffer evaluations; a direct field expression compiled the constructor
 three bytes short. Restoring the ordinary accessor matches all 247 bytes, while
 the destructor and the four previously claimed allocation/create bodies remain
-exact. The SDK-ordered VertexBuffer9 interface uses the actual Lock/Unlock slots
-`0x2C/0x30`, including the Device9 `void **` data parameter, and is based on
-[Wine's primary d3d9.h declaration](https://github.com/wine-mirror/wine/blob/master/include/d3d9.h).
+exact. The vendored SDK's VertexBuffer9 interface uses the actual Lock/Unlock
+slots `0x2C/0x30`, including the Device9 `void **` data parameter.
 
 Both lock bodies independently reproduce the entire same exception graph:
 handler `0xB65D1B` (10 bytes), function information `0xD0A25C` (28), unwind map

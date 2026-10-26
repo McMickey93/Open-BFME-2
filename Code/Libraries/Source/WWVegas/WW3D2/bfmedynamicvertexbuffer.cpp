@@ -1,3 +1,5 @@
+// dxsdk
+// platformsdk
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /Ireference/shims/sweep
 // Copyright 2025 Electronic Arts Inc.
 // SPDX-License-Identifier: GPL-3.0-or-later
@@ -6,10 +8,8 @@
 // Recovered role names and independent identities: docs/reconstruction/dynamic-vertex-buffer.md.
 extern class MeshModelClass *MeshModelListHead;
 
-#include <d3d8.h>
+#include <d3d9.h>
 #include <string.h>
-typedef unsigned long ULONG;
-typedef void *HANDLE;
 void *__cdecl operator new(unsigned);
 // throw() as <new> declares them: otherwise every buffer destructor that
 // frees something grows an unwind frame for its base, which retail's have not.
@@ -86,7 +86,6 @@ public:
  const BfmeDynamicFVFPrefix &FVF_Info() const { return *reinterpret_cast<BfmeDynamicFVFPrefix *>(format); }
  void rva00139280(bool uses_declaration);
 };
-struct BfmeDynamicVertexBuffer9;
 class Vector2;
 class Vector3;
 class Vector4;
@@ -107,7 +106,7 @@ public:
  void Copy(const Vector3 *,const Vector2 *,unsigned,unsigned);
  void Copy(const Vector3 *,unsigned,unsigned);
  void Copy(const Vector3 *,const Vector3 *,unsigned,unsigned);
- BfmeDynamicVertexBuffer9 *Get_DX8_Vertex_Buffer() const { return reinterpret_cast<BfmeDynamicVertexBuffer9 *>(buffer); }
+ IDirect3DVertexBuffer9 *Get_DX8_Vertex_Buffer() const { return reinterpret_cast<IDirect3DVertexBuffer9 *>(buffer); }
 };
 class BfmeDynamicSortingVB:public BfmeDynamicVBBase {
 public:
@@ -301,79 +300,7 @@ BfmeDynamicVBBase::BfmeDynamicVBBase(unsigned type_,unsigned fvf,unsigned short 
  _VertexBufferTotalSize+=vertexCount*FVF_Info().Get_FVF_Size();
 }
 
-/*
- * Copyright (C) 2002-2003 Jason Edmeades
- *                         Raphael Junqueira
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
- */
-
-// Device9 method prefix through CreateVertexBuffer, in Wine/SDK order.
-// https://github.com/wine-mirror/wine/blob/master/include/d3d9.h
-struct IDirect3D9;
-struct D3DCAPS9;
-struct IDirect3DSurface9;
-struct IDirect3DSwapChain9;
-struct IDirect3DTexture9;
-struct IDirect3DVolumeTexture9;
-struct IDirect3DCubeTexture9;
-struct IDirect3DVertexBuffer9;
-struct IDirect3DIndexBuffer9;
-struct IDirect3DBaseTexture9;
-struct D3DVIEWPORT9;
-struct D3DMATERIAL9;
-struct D3DLIGHT9;
-struct IDirect3DStateBlock9;
-struct D3DCLIPSTATUS9;
-typedef DWORD D3DTEXTUREFILTERTYPE;
-typedef DWORD D3DBACKBUFFER_TYPE;
-typedef DWORD D3DMULTISAMPLE_TYPE;
-typedef DWORD D3DSTATEBLOCKTYPE;
-typedef DWORD D3DSAMPLERSTATETYPE;
-struct RGNDATA;
-struct BfmeDynamicDevice9 {
-    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppvObject) = 0;
-    virtual ULONG __stdcall AddRef() = 0;
-    virtual ULONG __stdcall Release() = 0;
-    virtual HRESULT __stdcall TestCooperativeLevel() = 0;
-    virtual UINT __stdcall GetAvailableTextureMem() = 0;
-    virtual HRESULT __stdcall EvictManagedResources() = 0;
-    virtual HRESULT __stdcall GetDirect3D(IDirect3D9** ppD3D9) = 0;
-    virtual HRESULT __stdcall GetDeviceCaps(D3DCAPS9* pCaps) = 0;
-    virtual HRESULT __stdcall GetDisplayMode(UINT iSwapChain, D3DDISPLAYMODE* pMode) = 0;
-    virtual HRESULT __stdcall GetCreationParameters(D3DDEVICE_CREATION_PARAMETERS *pParameters) = 0;
-    virtual HRESULT __stdcall SetCursorProperties(UINT XHotSpot, UINT YHotSpot, IDirect3DSurface9* pCursorBitmap) = 0;
-    virtual void __stdcall SetCursorPosition(int X,int Y, DWORD Flags) = 0;
-    virtual BOOL __stdcall ShowCursor(BOOL bShow) = 0;
-    virtual HRESULT __stdcall CreateAdditionalSwapChain(D3DPRESENT_PARAMETERS* pPresentationParameters, IDirect3DSwapChain9** pSwapChain) = 0;
-    virtual HRESULT __stdcall GetSwapChain(UINT iSwapChain, IDirect3DSwapChain9** pSwapChain) = 0;
-    virtual UINT __stdcall GetNumberOfSwapChains() = 0;
-    virtual HRESULT __stdcall Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) = 0;
-    virtual HRESULT __stdcall Present(const RECT *src_rect, const RECT *dst_rect, HWND dst_window_override, const RGNDATA *dirty_region) = 0;
-    virtual HRESULT __stdcall GetBackBuffer(UINT iSwapChain, UINT iBackBuffer, D3DBACKBUFFER_TYPE Type, IDirect3DSurface9** ppBackBuffer) = 0;
-    virtual HRESULT __stdcall GetRasterStatus(UINT iSwapChain, D3DRASTER_STATUS* pRasterStatus) = 0;
-    virtual HRESULT __stdcall SetDialogBoxMode(BOOL bEnableDialogs) = 0;
-    virtual void __stdcall SetGammaRamp(UINT swapchain_idx, DWORD flags, const D3DGAMMARAMP *ramp) = 0;
-    virtual void __stdcall GetGammaRamp(UINT iSwapChain, D3DGAMMARAMP* pRamp) = 0;
-    virtual HRESULT __stdcall CreateTexture(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DTexture9** ppTexture, HANDLE* pSharedHandle) = 0;
-    virtual HRESULT __stdcall CreateVolumeTexture(UINT Width, UINT Height, UINT Depth, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DVolumeTexture9** ppVolumeTexture, HANDLE* pSharedHandle) = 0;
-    virtual HRESULT __stdcall CreateCubeTexture(UINT EdgeLength, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DCubeTexture9** ppCubeTexture, HANDLE* pSharedHandle) = 0;
-    virtual HRESULT __stdcall CreateVertexBuffer(UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer9** ppVertexBuffer, HANDLE* pSharedHandle) = 0;
-};
-
-inline BfmeDynamicDevice9 *bfmeGetDynamicDevice() { return (BfmeDynamicDevice9 *)DX8Wrapper::Get_D3D_Device(); }
+inline IDirect3DDevice9 *bfmeGetDynamicDevice() { return (IDirect3DDevice9 *)DX8Wrapper::Get_D3D_Device(); }
 
 class WW3D { public:static void _Invalidate_Mesh_Cache(); };
 __declspec(noinline) void bfmeEvictManagedResources();
@@ -409,26 +336,6 @@ void bfmeEvictManagedResources()
  bfmeGetDynamicDevice()->EvictManagedResources();
  number_of_DX8_calls++;
 }
-
-// VertexBuffer9 method order from the same Wine d3d9.h source credited above.
-struct IDirect3DDevice9;
-struct D3DVERTEXBUFFER_DESC;
-struct BfmeDynamicVertexBuffer9 {
- virtual HRESULT __stdcall QueryInterface(REFIID,void**)=0;
- virtual ULONG __stdcall AddRef()=0;
- virtual ULONG __stdcall Release()=0;
- virtual HRESULT __stdcall GetDevice(IDirect3DDevice9**)=0;
- virtual HRESULT __stdcall SetPrivateData(REFIID,const void*,DWORD,DWORD)=0;
- virtual HRESULT __stdcall GetPrivateData(REFIID,void*,DWORD*)=0;
- virtual HRESULT __stdcall FreePrivateData(REFIID)=0;
- virtual DWORD __stdcall SetPriority(DWORD)=0;
- virtual DWORD __stdcall GetPriority()=0;
- virtual void __stdcall PreLoad()=0;
- virtual D3DRESOURCETYPE __stdcall GetType()=0;
- virtual HRESULT __stdcall Lock(UINT,UINT,void**,DWORD)=0;
- virtual HRESULT __stdcall Unlock()=0;
- virtual HRESULT __stdcall GetDesc(D3DVERTEXBUFFER_DESC*)=0;
-};
 
 // Zero Hour's VertexBufferClass destructor: the statistics come back out and
 // the FVF record is freed.  Both derived destructors below inline it.

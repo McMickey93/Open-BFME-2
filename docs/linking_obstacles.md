@@ -933,6 +933,16 @@ Whole-unit clearance and census confirmation remain pending.
   LargeGroupAudio storage provider omitted from this bounded control.
   No strict closure or census gain is claimed.
 
+- **Dynamic vertex-buffer storage trial (2026-10-26, control `1429c156108`):**
+  [The scoped handoff](../reverse/attempt_support/dynamic-vertex-buffer-data-20261026.md)
+  records five existing-owner extern trials blocked by changed constructor,
+  destructor and sorting-allocator bytes. All failed edits were restored; the
+  ten registered data keys remain. Retail TU and alias-contract reconciliation
+  are still prerequisites. The separate SDK declaration cleanup preserves all
+  46 rows, 14 EXACT EH graphs and every emitted code section/relocation.
+  Ordinary preview against census index `5ce093a71a` retains all 6,860 bytes;
+  no census gain or storage-ownership closure is claimed.
+
 - **Texture-statistics scalar subset (2026-10-26, control `d831bc24031`):**
   [The scoped ownership repair](../reverse/attempt_support/texture-statistics-data-20261026-bce2/readme.md)
   binds recording mode and seven reporting counters to their existing
