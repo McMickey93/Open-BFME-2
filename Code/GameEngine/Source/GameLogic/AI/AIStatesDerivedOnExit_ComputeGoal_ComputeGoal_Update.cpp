@@ -655,7 +655,7 @@ private:
 
 
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 struct FprintfTarget
 {
 	char m_pad[4];
@@ -665,7 +665,7 @@ static __forceinline void critterDesyncLog(const char *text)
 {
 	if (g_00E03745)
 	{
-		FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+		FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 		if (log != 0)
 			fprintf(log, text);
 	}
@@ -674,7 +674,7 @@ static __forceinline void critterDesyncLog(const char *text)
 #define CRITTER_DESYNC_GOAL_LOG(text) \
 	if (g_00E03745) \
 	{ \
-		FprintfTarget *log = (FprintfTarget *)g_00DFEFF0; \
+		FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile; \
 		if (log != 0) \
 			fprintf(log, text, m_goalPosition.x, m_goalPosition.y, m_goalPosition.z); \
 	}
