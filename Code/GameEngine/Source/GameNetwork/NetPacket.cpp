@@ -416,6 +416,20 @@ private:
 
 class NetPacket
 {
+	class AckRepeatReceiver
+	{
+	public:
+		bool isAckBothRepeat(NetCommandRef *msg);
+		bool isAckStage1Repeat(NetCommandRef *msg);
+		bool isAckStage2Repeat(NetCommandRef *msg);
+	};
+
+	union AckRepeatCall
+	{
+		void (*free_function)(void);
+		bool (AckRepeatReceiver::*member_function)(NetCommandRef *msg);
+	};
+
 public:
 	NetCommandList *getCommandList();
 	static _STL::list<NetPacket *> ConstructBigCommandPacketList(NetCommandRef *ref);
