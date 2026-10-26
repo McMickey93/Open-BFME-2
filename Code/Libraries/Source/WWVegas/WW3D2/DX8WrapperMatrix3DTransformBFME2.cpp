@@ -27,6 +27,8 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 // cl: /O1 /Oy- /G7 /arch:SSE /DNDEBUG /MD /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWDebug /Ireference/shims/sweep
+// dxsdk
+// platformsdk
 // ZH dx8wrapper.h donor at BFME1 revision9cbfb551fe20dae985f91f2319d8997287b6a705.
 // DX8Wrapper Matrix3D transform overload at6A553,1042B throughRET6A964.
 // ZH dx8wrapper.h is the semantic guide; BFME Matrix4 sibling A68A7 and
@@ -37,7 +39,8 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 // Link view: Matrix4(Vector4 x4), Transpose and the Matrix3D overloads stay inline without emitting
 // copies that lose to retail's /O1 owners (0x0006A34E, 0x0006A3D1).
 #include "../../../../../reference/shims/bfme_matrix4_rows_link/matrix4_bfme1_rows_link.h"
-#include <d3d8.h>
+#include <d3d9.h>
+struct IDirect3DDevice8;
 struct RenderStateStruct { unsigned char unused_fields[0x1EC]; Matrix4 world,view; };
 extern unsigned number_of_DX8_calls;
 class DX8Wrapper {
@@ -70,13 +73,13 @@ __declspec(noinline) inline void DX8Wrapper::Set_Transform(D3DTRANSFORMSTATETYPE
   ProjectionMatrix=m2.Transpose();
   DeviceProjectionMatrix=ProjectionMatrix;
   ZFar=0.0f;ZNear=0.0f;
-  D3DDevice->SetTransform(D3DTS_PROJECTION,(D3DMATRIX*)&DeviceProjectionMatrix);
+  reinterpret_cast<IDirect3DDevice9*>(D3DDevice)->SetTransform(D3DTS_PROJECTION,(D3DMATRIX*)&DeviceProjectionMatrix);
   number_of_DX8_calls++;
   break;
  default:
   matrix_changes++;
   m2=m2.Transpose();
-  D3DDevice->SetTransform(transform,(D3DMATRIX*)&m2);
+  reinterpret_cast<IDirect3DDevice9*>(D3DDevice)->SetTransform(transform,(D3DMATRIX*)&m2);
   number_of_DX8_calls++;
   break;
  }
