@@ -7064,7 +7064,7 @@ _Rva008118C0,,0x0067D7C0,5,Code/Libraries/Source/DirtySock/Y5SmallHelpers.c,matc
 ??1Rva004B9287@@UAE@XZ,,0x004B9287,25,Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp,matched,opaque MI dtor
 ??1Rva004B9375@@UAE@XZ,,0x004B9375,25,Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp,matched,opaque MI dtor
 ??1Rva004B9458@@UAE@XZ,,0x004B9458,25,Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp,matched,opaque MI dtor
-??1HighlanderBody@@UAE@XZ,,0x004C07B1,25,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyConstructor.cpp,matched,HighlanderBody destructor: stores its three vptrs and tail-jumps ActiveBody dtor 0x004BF951; +0x10 table 0x0085B390 slot 0 is the rowed HighlanderBody::attemptDamage 0x004C082B; was opaque Rva004C07B1
+??1HighlanderBody@@UAE@XZ,,0x004C07B1,25,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBody.cpp,matched,HighlanderBody destructor: stores its three vptrs and tail-jumps ActiveBody dtor 0x004BF951; +0x10 table 0x0085B390 slot 0 is the rowed HighlanderBody::attemptDamage 0x004C082B; was opaque Rva004C07B1
 ??1Rva004C089E@@UAE@XZ,,0x004C089E,25,Code/GameEngine/Source/Common/Rva004BF951Derived_Unresolved.cpp,matched,opaque MI dtor
 ??1Rva004C0988@@UAE@XZ,,0x004C0988,25,Code/GameEngine/Source/Common/Rva004BF951Derived_Unresolved.cpp,matched,opaque MI dtor
 ??1Rva004C0A4C@@UAE@XZ,,0x004C0A4C,25,Code/GameEngine/Source/Common/Rva004BF951Derived.cpp,matched,opaque MI dtor odd secondary
@@ -10891,7 +10891,7 @@ _math_rad,,0x00748740,38,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.r
 ??_GRva004BCE62@@UAEPAXI@Z,,0x004BCEC0,28,Code/GameEngine/Source/Common/Rva004BC4FCDerived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva004BD207@@UAEPAXI@Z,,0x004BD265,28,Code/GameEngine/Source/Common/Rva004BC4FCDerived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva004BD5ED@@UAEPAXI@Z,,0x004BD6BE,28,Code/GameEngine/Source/Common/Rva004BB68EDerived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
-??_GHighlanderBody@@UAEPAXI@Z,,0x004C080F,28,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyConstructor.cpp,matched,HighlanderBody scalar deleting destructor: calls 0x004C07B1 and operator delete; was opaque Rva004C07B1
+??_GHighlanderBody@@UAEPAXI@Z,,0x004C080F,28,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBody.cpp,matched,HighlanderBody scalar deleting destructor: calls 0x004C07B1 and operator delete; was opaque Rva004C07B1
 ??_GRva004C089E@@UAEPAXI@Z,,0x004C08FC,28,Code/GameEngine/Source/Common/Rva004BF951Derived_Unresolved.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva004C0A4C@@UAEPAXI@Z,,0x004C0B44,28,Code/GameEngine/Source/Common/Rva004BF951Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva004C131B@@UAEPAXI@Z,,0x004C1379,28,Code/GameEngine/Source/Common/Rva004BF951Derived_Unresolved.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
@@ -15275,7 +15275,7 @@ __heap_abort,,0x000398A0,80,Code/Libraries/Source/WWVegas/WWDebug/DebugHeapAbort
 ??0ExperienceLevelCreate@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B917B,42,Code/GameEngine/Source/GameLogic/Object/Create/ExperienceLevelCreateCtorThunk.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0BoneFXDamage@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B979C,42,Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0ReflectDamage@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004BABB4,42,Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamageConstructor.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
-??0HighlanderBody@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004C0781,42,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyConstructor.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
+??0HighlanderBody@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004C0781,42,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBody.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0ImmortalBody@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004C086E,42,Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyConstructor.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0OathbreakerBody@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004C1EC7,42,Code/GameEngine/Source/GameLogic/Object/Body/OathbreakerBodyConstructor.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0RespawnBody@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004C12EB,42,Code/GameEngine/Source/GameLogic/Object/Body/RespawnBodyCtorThunk.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
