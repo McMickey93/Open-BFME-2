@@ -270,11 +270,11 @@ public:
 class GameClientMessageDispatcher
 {
 public:
-	virtual GameMessageDisposition translateGameMessage(const GameMessage *arg);
+	virtual GameMessageDisposition translateGameMessage(const GameMessage *msg);
 };
-GameMessageDisposition GameClientMessageDispatcher::translateGameMessage(const GameMessage *arg)
+GameMessageDisposition GameClientMessageDispatcher::translateGameMessage(const GameMessage *msg)
 {
-	Int id = arg->m_10;
+	Int id = msg->m_10;
 	if ((id >= 1000 && id <= 1999) || id == 30 || id == 29 || id == 2009 || id == 2029
 		|| id == 1701 || id == 31 || id == 32 || id == 34 || id == 33)
 		return KEEP_MESSAGE;

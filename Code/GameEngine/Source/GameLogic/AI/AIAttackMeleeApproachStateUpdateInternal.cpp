@@ -49,8 +49,8 @@ public:
 struct Rva00349611AIData
 {
 	unsigned char m_pad00[0x90];
-	volatile Real m_90; // +0x90
-	Real m_94; // +0x94
+	volatile Real m_meleeApproachTolerance; // +0x90
+	Real m_meleeApproachDist; // +0x94
 };
 
 class AI
@@ -220,7 +220,7 @@ StateReturnType Rva00349611::rva00349611()
 		{
 			Coord3D *goal = &m_prevVictimPos;
 			*goal = *victim->getPosition();
-			ApproachCoordCopy raw(*source->getPosition());raw.sub(goal);float dx=raw.x,dy=raw.y;const Rva00349611AIData*data=TheAI->m_aiData;ApproachCoordCopy delta(dx,dy,0.0f);if (delta.length() < data->m_90 + data->m_94)
+			ApproachCoordCopy raw(*source->getPosition());raw.sub(goal);float dx=raw.x,dy=raw.y;const Rva00349611AIData*data=TheAI->m_aiData;ApproachCoordCopy delta(dx,dy,0.0f);if (delta.length() < data->m_meleeApproachTolerance + data->m_meleeApproachDist)
 				return STATE_SUCCESS;
 		}
 		if (g_00E03745)

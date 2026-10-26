@@ -182,9 +182,9 @@ public:
 struct Rva002E9ACCTemplate
 {
 	char _00[0x56C];
-	int m_56C;
+	int m_slopeLimitIndex;
 	char _570[0x634 - 0x570];
-	unsigned char m_634;
+	unsigned char m_canPathThroughGates;
 };
 class Object
 {
@@ -195,11 +195,11 @@ public:
 };
 static unsigned char Rva002E9ACCFlag(const Object *obj)
 {
-	return obj->m_04->m_634;
+	return obj->m_04->m_canPathThroughGates;
 }
 static int Rva002E9ACCCount(const Object *obj)
 {
-	return obj->m_04->m_56C;
+	return obj->m_04->m_slopeLimitIndex;
 }
 class Rva002E9ACC
 {

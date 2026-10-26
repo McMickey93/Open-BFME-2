@@ -52,11 +52,11 @@ class Rva00495916ModuleData
 {
 public:
 	unsigned char m_pad[0x28];
-	WeaponSlotType m_28; // +0x28
+	WeaponSlotType m_manualModeWeaponSlot; // +0x28
 	unsigned char m_pad2C[0x30 - 0x2C];
-	WeaponSlotType m_30; // +0x30
+	WeaponSlotType m_proximityModeWeaponSlot; // +0x30
 	unsigned char m_pad34[0x3C - 0x34];
-	bool m_3C; // +0x3C
+	bool m_defaultsToProximityMode; // +0x3C
 };
 class DemoTrapUpdate : public Rva0024A797, public MiBase1, public Rva00495916_B2
 {
@@ -67,8 +67,8 @@ void DemoTrapUpdate::onObjectCreated()
 {
 	const Rva00495916ModuleData *data = (const Rva00495916ModuleData *)m_moduleData;
 	m_object->setWeaponSetFlag((WeaponSetType)0);
-	if (data->m_3C)
-		m_object->setWeaponLock(data->m_30, LOCKED_TEMPORARILY);
+	if (data->m_defaultsToProximityMode)
+		m_object->setWeaponLock(data->m_proximityModeWeaponSlot, LOCKED_TEMPORARILY);
 	else
-		m_object->setWeaponLock(data->m_28, LOCKED_TEMPORARILY);
+		m_object->setWeaponLock(data->m_manualModeWeaponSlot, LOCKED_TEMPORARILY);
 }

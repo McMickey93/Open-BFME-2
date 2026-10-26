@@ -48,7 +48,7 @@ struct BfmeDamageTemplate
  char pad114[4];
  unsigned char flag118;
  char pad119[0x580-0x119];
- int event580,event584,event588,event58c;
+ int m_evaEventDamagedOwner,m_evaEventDamagedFromShroudedSourceOwner,m_evaEventDamagedByFireOwner,m_evaEventSecondDamageFarFromFirstOwner;
  float range;
  unsigned delay;
  int event598;
@@ -208,25 +208,25 @@ void Drawable::rva0027B18C(DamageInfo*damage)
    if(event598!=-1&&!obj->isKindOf((KindOfType)157)&&!obj->rva00293926((KindOfType)63)&&!obj->rva00293926((KindOfType)37)&&attacker&&!attacker->rva00294471(player,1))
    {
     event=event598;
-    other=templ->event58c;
+    other=templ->m_evaEventSecondDamageFarFromFirstOwner;
     
    }
-   else if(damage->damageType==23&&templ->event588!=-1)
+   else if(damage->damageType==23&&templ->m_evaEventDamagedByFireOwner!=-1)
    {
-    event=templ->event588;
+    event=templ->m_evaEventDamagedByFireOwner;
     other=-1;
     
    }
-   else if(damage->damageType!=23&&attacker&&((Thing*)attacker)->getDrawable()&&((Thing*)attacker)->getDrawable()->active440&&templ->event584!=-1)
+   else if(damage->damageType!=23&&attacker&&((Thing*)attacker)->getDrawable()&&((Thing*)attacker)->getDrawable()->active440&&templ->m_evaEventDamagedFromShroudedSourceOwner!=-1)
    {
-    event=templ->event584;
-    other=templ->event58c;
+    event=templ->m_evaEventDamagedFromShroudedSourceOwner;
+    other=templ->m_evaEventSecondDamageFarFromFirstOwner;
     
    }
    else
    {
-    event=templ->event580;
-    other=templ->event58c;
+    event=templ->m_evaEventDamagedOwner;
+    other=templ->m_evaEventSecondDamageFarFromFirstOwner;
     
    }
    if(event!=-1)
@@ -236,10 +236,10 @@ void Drawable::rva0027B18C(DamageInfo*damage)
    if(nextFrame<=now&&(TheEva->isEventBlockedByTimeout((EvaEventID)event)||TheEva->isEventAboutToPlay((EvaEventID)event))&&other!=-1)TheEva->reportEvaEvent((EvaEventID)other,&obj->position,0);
    else TheEva->reportEvaEvent((EvaEventID)event,&obj->position,0);
     float range=templ->range;
-    if(range<=0.0f||templ->event580==-1)((Rva00271B03*)this)->rva00271B03();
+    if(range<=0.0f||templ->m_evaEventDamagedOwner==-1)((Rva00271B03*)this)->rva00271B03();
     else
     {
-     Rva00271B3CFilter eventFilter(templ->event580);
+     Rva00271B3CFilter eventFilter(templ->m_evaEventDamagedOwner);
      Rva00260E2AFilter playerFilter(player);
      eventFilter.link(&playerFilter);
      BfmeWideResult objects=ThePartitionManager->iterateObjectsInRange(getPosition(),range,2,&eventFilter,0);

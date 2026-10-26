@@ -6,7 +6,7 @@
 typedef bool Bool;
 typedef int Int;
 enum PathfindLayerEnum { PATHFIND_LAYER_UNKNOWN=0, PATHFIND_LAYER_GROUND=1 };
-struct Rva002F06A3Template { char pad0[0x56c]; Int m_56C; char pad570[0x634-0x570]; unsigned char m_634; };
+struct Rva002F06A3Template { char pad0[0x56c]; Int m_slopeLimitIndex; char pad570[0x634-0x570]; unsigned char m_canPathThroughGates; };
 class Object {
 public:
  bool rva0028AFBB() const;
@@ -33,8 +33,8 @@ Bool Pathfinder::IsValidHordeMemberRegularMovement(Object *obj, const Coord3D *f
  {
 	if (rva002EE49B(obj, *to, *other))
 		goto success;
-	Int count = obj->m_template->m_56C;
-	unsigned char flag = obj->m_template->m_634;
+	Int count = obj->m_template->m_slopeLimitIndex;
+	unsigned char flag = obj->m_template->m_canPathThroughGates;
 	char *ai = (char *)obj->getAI();
 	Rva002E8BCF locomotors((const Rva002E8BCFSrc *)(ai + 0x1CC),
 		flag == 0, count - 1, obj->rva0028AFBB());

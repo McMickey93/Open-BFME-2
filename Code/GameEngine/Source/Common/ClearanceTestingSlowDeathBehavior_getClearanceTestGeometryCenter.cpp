@@ -23,7 +23,7 @@ public:
 struct Rva00483C35ModuleData
 {
 	unsigned char m_pad000[0x1EC];
-	Coord3D m_1EC;
+	Coord3D m_clearanceGeometryOffset;
 };
 struct B00 { virtual void f00(); const Rva00483C35ModuleData *m_moduleData; Thing *m_object; };
 struct B0C { virtual void f0C(); };
@@ -54,7 +54,7 @@ void ClearanceTestingSlowDeathBehavior::getClearanceTestGeometryCenter(Coord3D *
 	else
 	{
 		Coord3D tmp;
-		obj->transformPoint(&md->m_1EC, &tmp);
+		obj->transformPoint(&md->m_clearanceGeometryOffset, &tmp);
 		out->x = tmp.x;
 		out->y = tmp.y;
 		out->z = tmp.z;
