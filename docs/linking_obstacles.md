@@ -2166,3 +2166,40 @@ Census confirmation: n/a.
   `OrCondition` view and moves both rows. No source was changed.
 - **Clearance:** none.
 - **Census confirmation:** not claimed.
+
+### LINK-045: Zero Hour port units for module classes BFME 2 never had
+
+**Status: Open (3 units repaired). Updated: 2026-10-26.**
+
+- **Evidence / scope:** several `Code/` units are verbatim Zero Hour ports of
+  module classes that retail BFME 2 does not contain. Test, per class: game.dat
+  (`baselines/bfme2/workshop-vanilla-1.06/files/game.dat`, `strings` ASCII and
+  UTF-16) has no module-name string for it (the factory's name table, e.g.
+  around `SlavedUpdate`, `BezierProjectileBehavior`, lists every registered
+  module), and `reverse/functions.csv` has no row for any of its methods. The
+  port's bodies are then all `present-unmatched` nonmatching reconstructions
+  whose references are the unit's only link blockers; the unit's few rows are
+  generic inlines a masked search placed there.
+- **Completed:** MobMemberSlavedUpdate.cpp (01564e4a01, 0 -> 8 B),
+  EMPUpdate.cpp (0a575d1548, 0 -> 13 B, also LeafletDropBehavior),
+  HackInternetAIUpdate.cpp (e0cbcdaa47, 0 -> 10 B): ZH bodies dropped, the
+  rowed inline kept by explicit instantiation (template) or a pointer anchor
+  (TU-local const at /O1; extern const at the default -O2, which drops an
+  unused TU-local one). 61 present-unmatched hatches removed. All LINK in
+  preview.
+- **Remaining / next check:** same test passes for SpectreGunshipUpdate,
+  StickyBombUpdate, RailedTransportDockUpdate, DeliverPayloadAIUpdate,
+  JetAIUpdate, FlightDeckBehavior, ParkingPlaceBehavior,
+  DumbProjectileBehavior, HelicopterSlowDeathUpdate and HordeUpdate (no
+  module-name string), but check each unit's rows first: several carry ZH
+  class names on retail bodies (`SpectreGunshipUpdate::setLogicalStatus`,
+  `StickyBombUpdate::set/getTargetObject`, `RailedTransportDockUpdate`
+  getters, `RunwayInfo` vector helpers), which need an honest name/home
+  before the class can go. HelicopterSlowDeathUpdate's only row is the
+  virtual inline `SlowDeathBehavior::isDieApplicable` (0x0045D49E): a
+  pointer-to-member of a virtual yields a vcall thunk, not the body, so it
+  needs another emission route (parked). AIUpdate.cpp's present-unmatched
+  `AIUpdateInterface::privateHackInternet` (no "HackInternetAIUpdate" NAMEKEY
+  string in game.dat) now leaves `HackInternetAIUpdate::hackInternet`
+  unresolved; that unit did not link before either.
+- **Census confirmation:** pending for all three units.
