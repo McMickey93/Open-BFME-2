@@ -475,7 +475,22 @@ class PolygonTrigger;
 class CommandButton;
 class Rva00263404Source;
 class PathfindServicesInterface;
-class Xfer;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+#include "../../../../../Include/Common/BfmeXfer.h"
 enum GuardMode;
 enum NameKeyType;
 namespace _STL { template<class T, class A> class vector; }
@@ -1095,6 +1110,14 @@ DozerAIUpdate::DozerAIUpdate(Thing *thing, const ModuleData *moduleData)
 // 0x00488997) and tail-calls ~StateMachine.
 DozerPrimaryStateMachine::~DozerPrimaryStateMachine()
 {
+}
+
+// Retail slot 3 of vtable 0x0084B668 is 0x0033FB0B, the identical-code fold of
+// this override with the other StateMachine xfers rowed as Rva0033FB0B.
+void DozerPrimaryStateMachine::xfer(Xfer *xfer)
+{
+	StateMachine::xfer(xfer);
+	xfer->Version1();
 }
 
 DozerPrimaryStateMachine::DozerPrimaryStateMachine(Object *owner) : StateMachine(owner, 0x3EA7DE5F, false)
