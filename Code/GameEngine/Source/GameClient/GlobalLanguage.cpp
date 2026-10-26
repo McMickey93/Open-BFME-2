@@ -136,13 +136,15 @@ public:
 	static void parseBool(INI *ini, void *instance, void *store, const void *userData);
 public:
 	static void parseReal(INI *ini, void *instance, void *store, const void *userData);
+public:
+	AsciiString getNextAsciiString();
 };
 
 struct Rva001EAD69Owner;
 
 void parseStringEntryRva001EAD69(INI *ini, Rva001EAD69Owner *owner);
 
-extern GlobalLanguage *TheGlobalLanguageData;
+extern class GlobalLanguage *TheGlobalLanguageData;
 
 // Retail's language field table at VA 0x00BDEAA0 (.rdata, 512 bytes: 31
 // records and the zero sentinel), transcribed from retail's own bytes; the
