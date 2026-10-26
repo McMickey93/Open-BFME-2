@@ -8173,3 +8173,4 @@ Code/GameEngine/Source/Common/ThingTemplateBuildFacility.cpp|local|ThingTemplate
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptLeafCheck.cpp|class||Rva003B489CEntry,96ea2452baca65ba11d77986,gpt-6.1-sol,w5-10261504-12,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp|class||Rva0112B7F8Base,482b7b09f957f6c45a525600,gpt-6.1-sol,w5-10261504-15,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp|member|Rva007F8400Node|m_6a8,1743b840506234ae056c28f1,gpt-6.1-sol,w5-10261504-15,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva002DA0CFFinish.cpp|member|ClientRet40|m_44A,bf6e73e16a8cf56dfcadade5,gpt-6.1-sol,w2-10261519-8,w-dce04682aaeb,2026-10-26
