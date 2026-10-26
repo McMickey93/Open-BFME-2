@@ -10,7 +10,39 @@
 #include "Common/Xfer.h"
 #include "GameLogic/Object.h"
 #include "GameClient/Drawable.h"
-#include "W3DDevice/GameClient/Module/W3DPropDraw.h"
+#include "Common/DrawModule.h"
+#include "WW3D2/Line3D.h"
+// TU-local declarations from Zero Hour's W3DPropDraw.h, with the static
+// cached-name-key method already defined by the BFME 2 row at 0x000CEEE6.
+// Preserve the seed's module-data view pending separate ABI reconciliation.
+class W3DPropDrawModuleData : public ModuleData
+{
+public:
+	AsciiString m_modelName;
+	W3DPropDrawModuleData();
+	~W3DPropDrawModuleData();
+	static void buildFieldParse(MultiIniFieldParse& p);
+	virtual const W3DPropDrawModuleData* getAsW3DPropDrawModuleData() const { return this; }
+};
+
+class W3DPropDraw : public DrawModule
+{
+	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(W3DPropDraw, "W3DPropDraw")
+	MAKE_STANDARD_MODULE_MACRO_WITH_MODULE_DATA(W3DPropDraw, W3DPropDrawModuleData)
+public:
+	W3DPropDraw(Thing *thing, const ModuleData* moduleData);
+	// Existing retail cached-name-key body; no identity is inferred here.
+	static NameKeyType rva000CEEE6();
+	virtual void doDrawModule(const Matrix3D* transformMtx);
+	virtual void setShadowsEnabled(Bool enable) {}
+	virtual void releaseShadows(void) {}
+	virtual void allocateShadows(void) {}
+	virtual void setFullyObscuredByShroud(Bool fullyObscured) {}
+	virtual void reactToTransformChange(const Matrix3D* oldMtx, const Coord3D* oldPos, Real oldAngle);
+	virtual void reactToGeometryChange() {}
+protected:
+	Bool m_propAdded;
+};
 #include "W3DDevice/GameClient/BaseHeightMap.h"
 #ifdef _INTERNAL
 // for occasional debugging...
