@@ -122,17 +122,17 @@ void W3DProjectedShadowManager::rva0010BE72(void)
 				else
 				{
 					UnsignedInt fadeInStartFrame = shadow->m_value38;
-					UnsignedInt value40 = shadow->m_value40;
+					UnsignedInt opacityStart = shadow->m_value40;
 					UnsignedInt fadeInEndFrame = shadow->m_value44;
 					UnsignedInt peakOpacity = shadow->m_value48;
 					UnsignedInt fadeOutStartFrame = shadow->m_value4C;
 					UnsignedInt fadeOutEndFrame = shadow->m_value50;
-					UnsignedInt value54 = shadow->m_value54;
+					UnsignedInt opacityEnd = shadow->m_value54;
 					if (frame < fadeInStartFrame)
 						shadow->setOpacity(0);
 					else if (frame < fadeInEndFrame)
 					{
-						double from = value40;
+						double from = opacityStart;
 						shadow->setOpacity(fast_float2long_round(ceil((float)(from + (Real)(frame - fadeInStartFrame) / (Real)(fadeInEndFrame - fadeInStartFrame) * (peakOpacity - from)))));
 					}
 					else if (frame < fadeOutStartFrame)
@@ -140,10 +140,10 @@ void W3DProjectedShadowManager::rva0010BE72(void)
 					else if (frame < fadeOutEndFrame)
 					{
 						double from = peakOpacity;
-						shadow->setOpacity(fast_float2long_round(ceil((float)(from + (Real)(frame - fadeOutStartFrame) / (Real)(fadeOutEndFrame - fadeOutStartFrame) * (value54 - from)))));
+						shadow->setOpacity(fast_float2long_round(ceil((float)(from + (Real)(frame - fadeOutStartFrame) / (Real)(fadeOutEndFrame - fadeOutStartFrame) * (opacityEnd - from)))));
 					}
 					else
-						shadow->setOpacity(value54);
+						shadow->setOpacity(opacityEnd);
 				}
 			}
 		}

@@ -2650,3 +2650,5 @@ carry,?formatAddress@@YA?AVAsciiString@@PBURva00595C79Address@@@Z,?formatAddress
 class,Rva0033A9A5Entry,AutoResolveArmorEntry,inferred,agree:nl-9419a833a847,Code/GameEngine/Source/Common/Rva0033A9A5.cpp,
 member,GlobalData2::m_68,GlobalData2::m_enableBehindBuildingMarkers,inferred,agree:nl-066590d92906,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroConstructor.cpp,
 param,Rva0049A64B::isClearToApproach::a,Rva0049A64B::isClearToApproach::docker,inferred,agree:nl-a380432cd9ca,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/Rva0049A64BRva0049A8FA.cpp,0x0049A880
+local,W3DProjectedShadowManager::rva0010BE72::value40,W3DProjectedShadowManager::rva0010BE72::opacityStart,inferred,agree:nl-79d867e20463,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp,0x0010BE72
+local,W3DProjectedShadowManager::rva0010BE72::value54,W3DProjectedShadowManager::rva0010BE72::opacityEnd,inferred,agree:nl-a626726d054b,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp,0x0010BE72
