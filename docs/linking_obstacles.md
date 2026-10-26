@@ -1651,7 +1651,11 @@ find what emits a non-virtual `??_G` without an invented anchor. Status for this
   EH parents are EXACT. No merge or measured linked-byte gain is claimed.
 - **Remaining / next check:** two wrapper views disagree on fields; NetPacketO1
   duplicates BaseType coordinates; two helpers retain declaration/compile
-  boundaries. Five mixed donors remain untouched. Independently,
+  boundaries. The [Unicode-helper trial](../reverse/attempt_support/netpacket-unicode-view-prerequisite-20261026.md)
+  preserves standalone bytes but still cannot compose: the longest view emits
+  a 211-byte EH body instead of retail's 188-byte body under the carried flags.
+  That trial is reverted; the sixteen-source subset remains verified. Five
+  mixed donors remain untouched. Independently,
   ConstructBigCommandPacketList still has the existing shadow list-copy
   identity finding targeting 0x00594689. No identity key was retired. Leave
   the verified compatible subset for Luna and repair the remaining views in
