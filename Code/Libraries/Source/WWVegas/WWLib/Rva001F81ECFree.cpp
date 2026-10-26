@@ -7,7 +7,7 @@ public:
 	void rva001F65AF();
 };
 
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 class Rva001F81EC
 {

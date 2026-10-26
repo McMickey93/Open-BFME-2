@@ -14,7 +14,7 @@
 struct BfmeAssignRecord172;
 namespace _STL { template <> void _Destroy<BfmeAssignRecord172 *>(BfmeAssignRecord172 *,BfmeAssignRecord172 *); }
 
-extern "C" void __cdecl free(void *ptr);
+#include <stdlib.h>
 
 struct AsciiStringLike
 {
