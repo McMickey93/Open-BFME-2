@@ -69,9 +69,6 @@ extern int g_00E18374;
 // g_00E18374: matched references place it at VA 0xe18374 (zero-filled .bss).
 extern int g_00E18374;
 extern EAStringC saConstantAtE18388[];
-// g_00E18650: matched references place it at VA 0xe18650 (zero-filled; a
-// plain-data view).
-extern EAStringC g_00E18650;
 
 class AptString {
 public:

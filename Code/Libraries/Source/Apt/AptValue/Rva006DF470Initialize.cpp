@@ -7,9 +7,8 @@
 // Class identities of the address-named constructors remain unknown. The
 // local layouts expose only their proven allocation extents and AptValue +4.
 // The undefined-value slot uses the shared AptValue pointer owner. Other
-// existing global providers retain their exact COFF spellings; the
-// E18650 provider's one-pointer EAStringC view represents the global object
-// slot, not another string allocation. Color transform32B and counter16B
+// existing global providers retain their exact COFF spellings; 0x00E18650
+// is gpGlobalGlobalObject, the global object slot. Color transform32B and counter16B
 // storage are independently sized and initially zero in retail; the 16B
 // counter memset is corroborated by WB, and retains retail's zero scheduling.
 // Callback names remain addresses; native construction operands plus the
@@ -40,7 +39,7 @@ extern AptValue *gpUndefinedValue;
 class AptRenderingContext;extern AptRenderingContext*g_aptRenderingContextAtE180C0;
 struct BfmeM1208{float m_w[6];};struct BfmeQ1206;extern "C" BfmeQ1206 g_bfmeD1206;
 struct AptColorTransformWords{float m_w[8];};AptColorTransformWords g_aptIdentityColorTransform;
-class Rva00898D60Target;extern Rva00898D60Target*g_Rva01337A20;class EAStringC{void *data;};extern EAStringC g_00E18650;
+class Rva00898D60Target;extern Rva00898D60Target*g_Rva01337A20;extern AptValue *gpGlobalGlobalObject;
 extern AptValue*g_shutdownAtE18070,*g_shutdownAtE180B8,*g_shutdownAtE18068,*g_shutdownAtE180BC,*g_shutdownAtE18360,*g_shutdownAtE180AC;
 struct AptNativeHash;extern AptNativeHash*g_bfmeAptHashAtE180E4;
 extern AptValue *g_shutdownAtE180A8,*g_shutdownAtE18080,*g_shutdownAtE18084,*g_shutdownAtE180B4,*g_shutdownAtE18074,*g_shutdownAtE1806C,*g_shutdownAtE180E8;
@@ -61,7 +60,7 @@ g_shutdownAtE18070=new Rva006DE480;g_shutdownAtE18070->AddRef();
 g_shutdownAtE180B8=new Rva006DE510;g_shutdownAtE180B8->AddRef();
 g_shutdownAtE18068=new Rva006DE5A0;g_shutdownAtE18068->AddRef();
 g_shutdownAtE180BC=new Rva006DE790;g_shutdownAtE180BC->AddRef();
-((AptValue*&)g_00E18650)=new Rva006DE630;((AptValue*&)g_00E18650)->AddRef();
+gpGlobalGlobalObject=new Rva006DE630;gpGlobalGlobalObject->AddRef();
 g_shutdownAtE18360=new Rva006DE6D0;g_shutdownAtE18360->AddRef();
 g_shutdownAtE180AC=AptString::Create();g_shutdownAtE180AC->mnGCRootCount=1;g_shutdownAtE180AC->AddRef();
 g_bfmeAptHashAtE180E4=0;
