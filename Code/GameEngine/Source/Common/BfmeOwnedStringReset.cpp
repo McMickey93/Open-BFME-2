@@ -5,7 +5,7 @@
 #ifndef BFME_ASCII_DTOR_DECL
 #define BFME_ASCII_DTOR_DECL
 #endif
-void __cdecl operator delete(void *);
+#include <new>
 
 #include "ascii_string.h"
 

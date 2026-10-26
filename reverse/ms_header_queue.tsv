@@ -304,10 +304,7 @@ Code/GameEngine/Source/Common/BfmeConv1422.cpp	drop-in candidate	same	1	1	0	0	0	
 Code/GameEngine/Source/Common/BfmeConv1423.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/BfmeConv1447.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/BfmeConv2034.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sqrt:same
-Code/GameEngine/Source/Common/BfmeConv730.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
-Code/GameEngine/Source/Common/BfmeDynamicVBRefCountRva0006CE57.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/BfmeIntVecG.h	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
-Code/GameEngine/Source/Common/BfmeOwnedStringReset.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/BfmeSubobject00229875Clear.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/BfmeThreeHundredFiftyThree.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/Common/BfmeThreeHundredTwo.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same

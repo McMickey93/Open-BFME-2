@@ -1,5 +1,5 @@
 extern "C" void bfmeDtorCbDMC(void *what);
-void __cdecl operator delete[](void *block);
+#include <new>
 
 class BfmeThingDMC
 {

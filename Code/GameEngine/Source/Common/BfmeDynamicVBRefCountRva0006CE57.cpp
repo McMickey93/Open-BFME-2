@@ -2,7 +2,7 @@
 //
 // ?DeleteThis@BfmeDynamicVBRefCount@@UAEXXZ, retail 0x0006ce57, 20 bytes. Banked partial (score 0.85) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
-void __cdecl operator delete(void *) throw();
+#include <new>
 
 class BfmeDynamicVBRefCount
 {
