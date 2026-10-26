@@ -113,7 +113,8 @@ public:
 	BfmeFixedStorage0004543D m_08;
 	BfmeFixedStorage0004543D m_24;
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
@@ -181,7 +182,7 @@ bool ScriptConditions::evaluateEnemySighted(const AsciiString &unitName, Paramet
 				Rva0026137EFilter(player, true).link(Rva00260EB1Filter(theObj, relationDescriber, false).link(
 					Rva0026119DFilter().link(Rva00261058(theObj, false).link(Rva002611BFFilter(theObj).link(
 						Rva00261513Filter(theObj, true, -1.0f).link(
-							&Rva0004584D(*(const BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+							&Rva0004584D(*(const BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 								(const BfmeFixedStorage0004543D &)Rva0006EE7A(0, 0x59, 0x86))))))))) != 0)
 			return true;
 	} while (mask);

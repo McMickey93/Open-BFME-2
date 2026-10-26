@@ -62,7 +62,8 @@ public:
 	BfmeFixedStorage0004543D m_08;
 	BfmeFixedStorage0004543D m_24;
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
@@ -170,7 +171,7 @@ bool ScriptConditions::rva003E6ED0(Parameter *teamParm, const AsciiString *unitN
 		Coord3D pos;
 		team->rva0039E5B9(&pos);
 		castle = ThePartitionManager->getClosestObject(&pos, REALLY_FAR, 0,
-			Rva0004584D((const BfmeFixedStorage0004543D &)Rva00045411BitSet(0, 0x78), *(const BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+			Rva0004584D((const BfmeFixedStorage0004543D &)Rva00045411BitSet(0, 0x78), *(const BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 				.link(&Rva0026137EFilter(player, true)));
 	}
 	if (!castle)

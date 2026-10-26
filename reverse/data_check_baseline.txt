@@ -836,10 +836,7 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C3175.cpp	wron
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C31F3.cpp	wrong-name	?$S1@?3??Rva003C31F3Do@@YGXABVAsciiString@@0_N@Z@4IA	0x00A02DD4
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C31F3.cpp	wrong-name	?g_bfmeWorldRV@@3PAUBfmeWorldRV@@A	0x00A01CFC
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_teamCommandButtonOnNearest.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003E56C5.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003E5CB1.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003E6835.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003E6ED0.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003EA566.cpp	wrong-name	?$S1@?9??rva003EA566@ScriptConditions@@QAE_NPAVParameter@@000@Z@4IA	0x00A02E3C
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003EA566.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_evaluateNamedUnit.cpp	wrong-name	?$S1@?4??rva003E3EC3@ScriptConditions@@IAE_NPAVParameter@@@Z@4IA	0x00A02E10
