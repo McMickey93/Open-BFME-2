@@ -6349,7 +6349,6 @@ class_gate_allow	Code/GameEngine/Source/GameLogic/Object/ObjectSetTriggerAreaFla
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/ScoredKillTrackerCopyCtor.cpp	ScoredKillTracker	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/SpecialPower/Rva003F9FA9Ctor.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AIUpdateInterfaceCtor.cpp	Coord3D	1
-class_gate_allow	Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateModuleDataCtor.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/Update/FireWeaponUpdate.cpp	Coord3D	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/Update/Rva005892F6.cpp	GameLogic	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderAttackView.cpp	Coord3D	1

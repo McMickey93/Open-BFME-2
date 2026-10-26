@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD
+// cl: /DNDEBUG /MD /GX- /DBFME_ASCII_DTOR_DECL
 // ??0BattlePlanUpdateModuleData@@QAE@XZ
 // partial score=0.95 date=2026-10-03
 // ??0BattlePlanUpdateModuleData@@QAE@XZ
@@ -30,17 +30,11 @@
 // m_visionObjectName's address into a local that stays live across the
 // scalar block keeps the zero with the tail stores where retail puts it.
 // pointer-members (revives the lea hoist), explicit member inits.
-// class-gate: allow AsciiString retail inlines the ctor to a single pointer
-// store at each of the thirteen name slots; the shared header's non-inline
-// ctor emits calls and the body stops byte-matching.
-class AsciiString
-{
-public:
-	AsciiString() : m_data(0) {}
-
-private:
-	void *m_data;
-};
+// Retail has no EH registration or unwind cleanup in this constructor.
+// Disable C++ unwind generation when using the canonical nontrivial strings.
+// The shared header declares the out-of-line string destructor in this TU;
+// this constructor needs no local destructor copy or destructor call.
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class Rva0024C7B3Member
 {
