@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // Object-record FieldParse proc (name address-derived):
 //   0x003F341E 113B ConnectsTo (0x00C36640): for every token (separators
@@ -10,7 +11,7 @@
 
 #include "ascii_string.h"
 
-#define NULL 0
+#include <windows.h>
 
 class INI
 {

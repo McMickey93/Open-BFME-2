@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // ?Rva004DBFF1Parse@@YAXPAVINI@@PAX1PBX@Z, retail 0x004DBFF1 (145B): the
 // SkirmishAIHeuristic FieldParse proc (row 0x00BFA878, store +0x98). The
@@ -11,7 +12,7 @@
 // Retail calls the rowed StringBase text comparator with no unwind state.
 template <> int StringBase<char>::compare(const char *text) const throw();
 
-#define NULL 0
+#include <windows.h>
 
 class INI
 {

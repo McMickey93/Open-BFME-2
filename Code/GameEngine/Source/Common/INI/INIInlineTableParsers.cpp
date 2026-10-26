@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // Two more FieldParse procs (names address-derived):
 //   0x0033A49B 102B FormationPreviewDecal / FormationPreviewItemDecal
@@ -16,7 +17,7 @@
 
 #include "ascii_string.h"
 
-#define NULL 0
+#include <windows.h>
 
 class INI;
 typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
