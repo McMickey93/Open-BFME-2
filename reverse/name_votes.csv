@@ -8303,3 +8303,17 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/BezierProjectileBehaviorRva0045
 Code/GameEngine/Source/Common/ClearanceTestingSlowDeathBehavior_getClearanceTestGeometryCenter.cpp|member|Rva00483C35ModuleData|m_1EC,91501b306e72dce56954aeb6,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
 Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenAndCloseBehaviorUpdate.cpp|member|Rva00498716|m_0C,0f8c9ac0ef9a8f69e6107d06,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
 Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenAndCloseBehaviorUpdate.cpp|member|Rva00498716|m_48,2d0a081ff6512f83ae0bc426,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawRva000B61AB.cpp|member|Rva000B61ABDrawTemplate|m_flags5E2,ea132bf6cd5245ff332ed985,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/Common/VslotSmallBodiesW.cpp|member|Rva003412A5Template|m_78,d885b035bda0a0e21e058ad7,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/Common/VslotSmallBodiesW.cpp|param|GameClientMessageDispatcher::translateGameMessage|arg,de381c882f8f75b425d64ac4,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameClient/DrawableRva0027B18C.cpp|member|BfmeDamageTemplate|event580,b5f1b42523f434447af7374e,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameClient/DrawableRva0027B18C.cpp|member|BfmeDamageTemplate|event584,f50201143b717768756eba15,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameClient/DrawableRva0027B18C.cpp|member|BfmeDamageTemplate|event588,8426d8a8c8f495f08f9aff8b,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameClient/DrawableRva0027B18C.cpp|member|BfmeDamageTemplate|event58c,9aa078d4c266c4f624cf2b79,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameClient/DrawableRva0027B18C.cpp|member|BfmeDamageTemplate|event598,8c1bb0433404a5f2aabf267c,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|member|Rva004F9F39Template|m_494,21558bf83f562d2e15ab8fda,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|member|Rva004F9F39Template|m_5c4,c794d635c7b69415f5bb5c17,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameLogic/AI/PathfinderCellQueryPredicates.cpp|member|Rva002E9ACCTemplate|m_56C,f9f67ae57f289f6b14cb8141,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameLogic/AI/PathfinderCellQueryPredicates.cpp|member|Rva002E9ACCTemplate|m_634,581df9ae272a263e943b9ac8,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderIsValidHordeMemberRegularMovement.cpp|member|Rva002F06A3Template|m_56C,b47b4ff0faa72b2a2d7849ff,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderIsValidHordeMemberRegularMovement.cpp|member|Rva002F06A3Template|m_634,2df13670d6d9d9d2bf6f146a,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
