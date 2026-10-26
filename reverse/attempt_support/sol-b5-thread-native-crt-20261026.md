@@ -126,3 +126,20 @@ After the runner lands the batch, release those file claims and run
 `python3 tools/claims.py release --landed`. Complete claim snapshot:
 `build/sol-b5-thread-final-claims.txt`. Other allocated work remains; this is
 a completed prerequisite pass, not an assertion that every lane is empty.
+
+## Inherited batch recovery, next session
+
+Clean-tree recovery retained four unpublished commits (`065c8e1fb1`,
+`14da88962f`, `afc925697f`, `ea8cc531b2` after runner rebase). Re-read current
+AGENTS.md and consolidation instructions; pull/rebase and check_csv pass.
+Reverification of both thread sources passes 11/11 rows, two data rows,
+two literals and eleven imports; declared-unmatched passes. No source edits
+were needed. The full pending path audit contains only the same two in-place
+source edits, evidence and attempt-log entries: no moved/deleted source or
+affected active path consumer. Protected registers retain their owners.
+
+Official BFME 1 fetch compares verified checkout `de077dd5` against
+`fc68fb74` (76 commits ahead). The inherited full-input update verification
+remains incomplete; preserve verified inputs, do not write a success receipt.
+No reference update or maintainer-only measurement was attempted. Retain the
+four file claims above until publication of this recovered batch is confirmed.
