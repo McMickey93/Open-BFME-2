@@ -166,5 +166,3 @@ void bfmeGoTDB(void)
 	bfmeStepTDB();
 	BfmeShaderTDB::setDirty();
 }
-// ?g_bfmeVftTDA@@3PAPAXA: the global at VA 0xce157c is ?vftable_01129D30@@3HA.
-#pragma comment(linker, "/alternatename:?g_bfmeVftTDA@@3PAPAXA=?vftable_01129D30@@3HA")
