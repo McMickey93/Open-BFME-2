@@ -8192,3 +8192,14 @@ Code/GameEngine/Source/Common/Rva002CF21BGet.cpp|local|ThingFactory::newDrawable
 Code/GameEngine/Source/Common/Rva000347A0Realloc.cpp|local|EA::Allocator::GeneralAllocator::realloc|d,cc382008af0601c864edbb15,gpt-6.1-sol,w6-10261534-16,w-06f458dbecf5,2026-10-26
 Code/GameEngine/Source/Common/Rva00437EDCFinish.cpp|member|Rva0054D222Prompt|m_callback20,4940a3a2b7c8f246f0dea347,gpt-6.1-sol,w6-10261534-17,w-06f458dbecf5,2026-10-26
 Code/GameEngine/Source/Common/BfmeTwoHundredOne.cpp|member|BfmeThingGL|m_bfmeHeld,8ee7adeb10ae64c3fd7386e8,gpt-6.1-sol,w6-10261534-18,w-06f458dbecf5,2026-10-26
+Code/GameEngine/Source/Common/Rva002860CF.cpp|class||Rva002860CFS,256bc65e1f8967e661ee7e53,gpt-6.1-sol,w5-10261548-1,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/GapBodiesGE12.cpp|class||Rva00431FF2Handler,78793d495aa223e27a0216c5,gpt-6.1-sol,w5-10261548-6,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/GapBodiesGE12.cpp|member|Rva005FD4AARecord|m_08,050feee5e5d345a3a2de2908,gpt-6.1-sol,w5-10261548-6,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/GapBodiesGE12.cpp|member|Rva005FD4AARecord|m_0C,22aaf3d1047f3ed71ff8f60b,gpt-6.1-sol,w5-10261548-6,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/GapBodiesGE12.cpp|function|0x005FD4CC|rva005FD4CC,6b33df6bcf213a62cafff840,gpt-6.1-sol,w5-10261548-6,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/GapBodiesGE12.cpp|function|0x005FD4DD|rva005FD4DD,1a57c06b2fcdf5d01b44918c,gpt-6.1-sol,w5-10261548-6,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/GameLogic/Object/Update/PartTheHeavensUpdateRva004AC9FA.cpp|member|ShadowChild|m_20,3bb143a5488051104f5c6606,gpt-6.1-sol,w5-10261548-7,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva00285DC5Paint.cpp|local|FireLogicSystem::rva00285DC5|t,b5836a1aecc8e6bdbc333032,gpt-6.1-sol,w5-10261548-8,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva003EE980Forward.cpp|local|Rva003EE980::rva003EE980|f,ac85e5ad2d989559625f5252,gpt-6.1-sol,w5-10261548-13,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp|local|Team::rva0039DDC2|b3,2a4cabcdbb5efc9647f8da95,gpt-6.1-sol,w5-10261548-14,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp|local|Team::rva0039DDC2|b4,d1fb7ba0d04938ada9169394,gpt-6.1-sol,w5-10261548-14,w-f0819d403c17,2026-10-26

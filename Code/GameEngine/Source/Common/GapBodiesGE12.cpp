@@ -133,8 +133,8 @@ struct Rva005FD4AARecord
 {
 	int m_00;
 	int m_04;
-	int m_08;
-	int m_0C;
+	int m_commandPoints;
+	int m_maxCommandPoints;
 	int m_10;
 	int m_14;
 };
@@ -150,8 +150,8 @@ class Rva005FD4AA
 public:
 	int *rva005FD4AA(int index) const;
 	int *rva005FD4BB(int index) const;
-	int rva005FD4CC(int index) const;
-	int rva005FD4DD(int index) const;
+	int getCommandPoints(int index) const;
+	int getMaxCommandPoints(int index) const;
 private:
 	int m_00;
 	Rva005FD4AATable *m_04;
@@ -167,14 +167,14 @@ int *Rva005FD4AA::rva005FD4BB(int index) const
 	return &m_04->m_records[index].m_04;
 }
 
-int Rva005FD4AA::rva005FD4CC(int index) const
+int Rva005FD4AA::getCommandPoints(int index) const
 {
-	return m_04->m_records[index].m_08;
+	return m_04->m_records[index].m_commandPoints;
 }
 
-int Rva005FD4AA::rva005FD4DD(int index) const
+int Rva005FD4AA::getMaxCommandPoints(int index) const
 {
-	return m_04->m_records[index].m_0C;
+	return m_04->m_records[index].m_maxCommandPoints;
 }
 
 // --- 0x005FDE81 (70B): a numeric string naming one of the +0x28 vector's

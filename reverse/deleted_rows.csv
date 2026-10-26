@@ -2700,3 +2700,5 @@ __ehhandler$?moveSelectedMembersToTarget@Rva005F52C0@@QAEXXZ,0x007A5341,"Renamed
 ?rva005C436E@Rva005C436E@@QAEXH@Z,0x005C436E,"Renamed to ?adjustCommandPoints@Rva005C436E@@QAEXH@Z by tools/rename.py (inferred)"
 ?Set_Name@DefinitionClass@@UAEXPBD@Z,0x0011FBB0,"Re-rowed as ?set_driver_vendor@BfmeEnumerationDesc@@QAEXPBD@Z in dx8wrapper.cpp: add ecx,0x10; jmp StringClass::operator= sits among the rowed BfmeEnumerationDesc setters (+4 0x11FB80 ... +0x20 0x11FBE0); +0x10 is DriverVendor; retail has no DefinitionClass/WWSaveLoad framework"
 ?Rva001F696EPut@@YAAAV?$basic_ostream@DV?$char_traits@D@_STL@@@_STL@@AAV12@ABVAsciiString@@@Z,0x001F696E,"Renamed to ?writeAsciiString@@YAAAV?$basic_ostream@DV?$char_traits@D@_STL@@@_STL@@AAV12@ABVAsciiString@@@Z by tools/rename.py (inferred)"
+?rva005FD4CC@Rva005FD4AA@@QBEHH@Z,0x005FD4CC,"Renamed to ?getCommandPoints@Rva005FD4AA@@QBEHH@Z by tools/rename.py (inferred)"
+?rva005FD4DD@Rva005FD4AA@@QBEHH@Z,0x005FD4DD,"Renamed to ?getMaxCommandPoints@Rva005FD4AA@@QBEHH@Z by tools/rename.py (inferred)"
