@@ -5,7 +5,7 @@
 // 0x0073CC60 instead of 0x0073CE30. Same world-to-cell floor/round shape,
 // same Gen layout (originX@+4 originY@+8 scale@+0x20) and same caller Gen*
 // at +0x10. Evidence: identical 229-byte body except the E8 displacement.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 static __forceinline float fast_floor(float f)
 {

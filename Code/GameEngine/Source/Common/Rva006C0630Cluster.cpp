@@ -90,10 +90,10 @@ bool rva006C0630(Rva00880D10Info *info, Rva00880D10Info *other)
 // Native6C0500..6C0628 RET4: four separating-axis tests on the witnessed
 // 32-byte box view built by rva006C0630 above. No original method name
 // is inferred. Center-load PHIs preserve the native x87 register roles.
-extern "C" double __cdecl fabs(double);
+#include <math.h>
 #pragma intrinsic(fabs)
 static __forceinline float dot(float ax,float ay,float bx,float by){return ax*bx+ay*by;}
-static __forceinline float absf(float x){return (float)fabs(x); }
+static __forceinline float absf(float x){return (float)fabs((double)x); }
 
 bool BfmeBoxF0::rva006C0500(const BfmeBoxF0 *b) const {
  Real d[2];Real y=(this ? b->m_centerY : b->m_centerY);Real x=(b?b:b)->m_centerX;d[0]=x-m_centerX;d[1]=y-m_centerY;

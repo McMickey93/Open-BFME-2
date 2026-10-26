@@ -7,7 +7,7 @@
 
 // Owned here (its only reader); retail .rdata holds 0.001f (VA 0x00BC28F8).
 float g_00BC28F8 = 0.001f;
-extern "C" double __cdecl fabs(double v);
+#include <math.h>
 
 int __cdecl Rva001E3896Check(float x)
 {
