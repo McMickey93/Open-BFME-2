@@ -19,7 +19,7 @@ public:
 
 #include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
-void operator delete(void *ptr);
+#include <new>
 
 class GameMessageList : public SubsystemInterface
 {

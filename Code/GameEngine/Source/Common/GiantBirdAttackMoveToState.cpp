@@ -5,7 +5,7 @@
 // operator delete 0x0002FD60 plus the State base dtor 0x0049B47C (ICF fold
 // of the Snapshot dtor). Evidence: caller 0x003689AB; rowed base dtor plus
 // delete. Slot 4 is onEnter (GiantBirdNormalFlightStates.cpp).
-void __cdecl operator delete(void *p);
+#include <new>
 class Rva0036783FMember
 {
 public:

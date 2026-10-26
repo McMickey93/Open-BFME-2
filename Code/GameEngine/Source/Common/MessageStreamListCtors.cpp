@@ -30,7 +30,7 @@ public:
 	void *m_list; // +0x0C
 };
 
-void operator delete(void *ptr);
+#include <new>
 
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
