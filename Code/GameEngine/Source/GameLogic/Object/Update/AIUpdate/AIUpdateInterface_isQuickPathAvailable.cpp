@@ -20,7 +20,6 @@ public:
 };
 extern NameKeyGenerator *TheNameKeyGenerator;
 
-extern unsigned int g_Va00DFEAE8;
 extern int g_00DFEAE4;
 
 class LocomotorTemplate;
