@@ -14,7 +14,7 @@
 
 typedef unsigned short uint16;
 
-void *__cdecl operator new[](unsigned int size);
+#include <new>
 
 struct BfmeFontCharsBuffer
 {

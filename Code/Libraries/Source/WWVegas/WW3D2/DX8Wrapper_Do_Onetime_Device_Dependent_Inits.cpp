@@ -116,7 +116,7 @@ void __cdecl Rva0017E210Init( void );
 void __cdecl Rva00177923Init( void );
 void __cdecl DebugLogTyped( unsigned tag, void *data, unsigned size );
 
-void *__cdecl operator new( unsigned int size );
+#include <new>
 
 // The six dwords retail copies from VA 0xDECA08..0xDECA1F before logging
 // them; field identity is not established, only the boundary and size.

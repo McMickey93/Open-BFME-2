@@ -11,7 +11,7 @@
 
 struct FontCharsClassCharDataStruct;
 
-void __cdecl operator delete[](void *ptr);
+#include <new>
 
 class FontCharsClass
 {
