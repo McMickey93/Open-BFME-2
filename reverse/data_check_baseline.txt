@@ -830,9 +830,6 @@ Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUI
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_ee883b17_0778_4b18_a12b_e44c0d298412	0x007D4E3C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	0x007D4E3C
-Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_D3DCalls.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
-Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_Set_Render_Target_Depth.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
-Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_Set_Render_Target_Surface.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_count	0x009EE8E0
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_memory	0x009EE8A8
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_procedural_texture_count	0x009EE8FC

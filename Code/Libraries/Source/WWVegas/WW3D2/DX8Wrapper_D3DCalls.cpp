@@ -7,7 +7,7 @@
 // The four DX8Wrapper entry points that reach straight through a Direct3D
 // vtable: the swap-chain and surface creators at 0x00905620 and 0x00904CE0,
 // the front-buffer grab at 0x00904FF0 and the display-mode search at
-// 0x009021C0. Each bumps D3DCallCount once per call it makes.
+// 0x009021C0. Each bumps number_of_DX8_calls once per call it makes.
 //
 // They sit outside dx8wrapper.cpp because each needs the raw COM layout, and
 // they sit together because they need the SAME one -- three of them index the
@@ -133,9 +133,11 @@ private:
 protected:
 	static IDirect3DDevice8 *D3DDevice;
 private:
-	static unsigned D3DCallCount;
 	static D3DPRESENT_PARAMETERS _PresentParameters;
 };
+
+// The DX8 call counter at 0x9EDA98 (the ledger's ?number_of_DX8_calls@@3IA).
+extern unsigned number_of_DX8_calls;
 
 // ?Create_Additional_Swap_Chain@DX8Wrapper@@SAPAUIDirect3DSwapChain8@@PAX@Z
 // Zero Hour's windowed present-parameter fill, then CreateAdditionalSwapChain.
@@ -153,15 +155,15 @@ IDirect3DSurface9 *DX8Wrapper::_Get_DX8_Front_Buffer()
 {
 	D3DDISPLAYMODE mode;
 	D3DDevice->lpVtbl->GetDisplayMode(D3DDevice, 0, &mode);
-	++D3DCallCount;
+	++number_of_DX8_calls;
 
 	IDirect3DSurface9 *fb = 0;
 	D3DDevice->lpVtbl->CreateOffscreenPlainSurface(
 		D3DDevice, mode.Width, mode.Height, D3DFMT_A8R8G8B8, D3DPOOL_SCRATCH, &fb, 0);
-	++D3DCallCount;
+	++number_of_DX8_calls;
 
 	D3DDevice->lpVtbl->GetFrontBufferData(D3DDevice, 0, fb);
-	++D3DCallCount;
+	++number_of_DX8_calls;
 	return fb;
 }
 
@@ -169,7 +171,3 @@ IDirect3DSurface9 *DX8Wrapper::_Get_DX8_Front_Buffer()
 // The adapter's mode list is walked twice: once to find the first mode of the
 // requested size and format, then on from there to find where that run ends.
 // Defined in dx8wrapper.cpp (its row's unit).
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?D3DCallCount@DX8Wrapper@@0IA=?number_of_DX8_calls@@3IA")
