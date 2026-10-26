@@ -85,10 +85,7 @@ template <class NUM> inline NUM sqr(NUM x)
 
 #define PI 3.14159265359f
 
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 enum CommandSourceType
 {
@@ -156,11 +153,6 @@ enum DisabledType
 	DISABLED_HELD = 3
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 extern GameLogic *TheGameLogic;
 
 class TerrainLogic
@@ -1173,7 +1165,7 @@ void SlavedUpdate::stopSlavedEffects()
 	if (data && data->m_dieOnMastersDeath)
 		return;
 
-	m_slaver = INVALID_ID;
+	m_slaver = INVALID_OBJECT_ID;
 	m_guardPointOffset.zero();
 
 	getObject()->clearStatus(OBJECT_STATUS_UNSELECTABLE);
@@ -1262,7 +1254,7 @@ UpdateSleepTime SlavedUpdate::update()
 		m_framesToWait = BfmeSlavedUpdateIntervalFrames;
 	}
 
-	if (m_slaver == INVALID_ID)
+	if (m_slaver == INVALID_OBJECT_ID)
 		return UPDATE_SLEEP_NONE;
 
 	if (isUpdateSuspended())
@@ -1297,13 +1289,13 @@ UpdateSleepTime SlavedUpdate::update()
 		return UPDATE_SLEEP_NONE;
 	}
 
-	if (m_guardTargetID != INVALID_ID)
+	if (m_guardTargetID != INVALID_OBJECT_ID)
 	{
 		Object *guardTarget = TheGameLogic->findObjectByID(m_guardTargetID);
 		if (guardTarget && guardTarget->isEffectivelyDead())
 			guardTarget = NULL;
 		if (!guardTarget)
-			m_guardTargetID = INVALID_ID;
+			m_guardTargetID = INVALID_OBJECT_ID;
 	}
 
 	Object *master = TheGameLogic->findObjectByID(m_slaver);
