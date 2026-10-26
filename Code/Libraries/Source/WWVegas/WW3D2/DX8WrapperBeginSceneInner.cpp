@@ -50,12 +50,9 @@ struct IUnknown;
 extern void __stdcall _com_issue_errorex(long error, IUnknown *object,
 	const GUID &iid);
 
-struct BfmeGuidTSA
-{
-	char m_bfmeBytes[16];
-};
-
-extern BfmeGuidTSA g_bfmeIidTSA;
+// The interface id this dispatch reports: the data ledger's GUID at
+// 0x007D4E3C (WebBrowserComCreateInstance.cpp).
+extern GUID g_bfmeIidTSA;
 
 class Rva00958D30
 {
@@ -85,29 +82,23 @@ public:
 		long result = vtable->slot3c(this);
 		if (result < 0)
 			_com_issue_errorex(result, (IUnknown *)this,
-				reinterpret_cast<const GUID &>(g_bfmeIidTSA));
+				g_bfmeIidTSA);
 		return result;
 	}
 
 	Vtable *vtable;
 };
 
-struct Rva00959410Ptr
-{
-	Rva00958D30 *m_p;
-	operator bool() const
-	{
-		return m_p != 0;
-	}
-};
-
-extern Rva00959410Ptr Rva00959410Dispatch;
+// The dispatch object: the data ledger's g_bfmeObjECF at 0x009F7040
+// (BfmeConv804.cpp), read through this unit's Rva00958D30 view.
+struct BfmeObjECF;
+extern BfmeObjECF *g_bfmeObjECF;
 
 // ?bfmeDebugTouch009588e0@@YAXXZ
 __declspec(noinline) void bfmeDebugTouch009588e0(void)
 {
-	if (Rva00959410Dispatch)
-		Rva00959410Dispatch.m_p->invoke();
+	if (g_bfmeObjECF)
+		((Rva00958D30 *)g_bfmeObjECF)->invoke();
 }
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.h
@@ -120,16 +111,18 @@ public:
 private:
 protected:
 	static IDirect3DDevice8 *D3DDevice;
-private:
-	static unsigned D3DCallCount;
 };
+
+// Retail's D3D call counter: the data ledger's number_of_DX8_calls
+// (dx8wrapper.cpp), a plain global.
+extern unsigned number_of_DX8_calls;
 
 // ?Begin_Scene_Inner@DX8Wrapper@@SAXXZ
 void DX8Wrapper::Begin_Scene_Inner(void)
 {
 	bfmeDebugTouch009588e0();
 	D3DDevice->lpVtbl->BeginScene(D3DDevice);
-	++D3DCallCount;
+	++number_of_DX8_calls;
 	bfmeDebugTouch009588e0();
 }
 
@@ -153,9 +146,3 @@ void DX8Wrapper::Rva0011D2D0WaitForBackBuffer(void)
 		}
 	}
 }
-// ?Rva00959410Dispatch@@3URva00959410Ptr@@A: the global at VA 0xdf7040 is ?g_bfmeObjECF@@3PAUBfmeObjECF@@A.
-#pragma comment(linker, "/alternatename:?Rva00959410Dispatch@@3URva00959410Ptr@@A=?g_bfmeObjECF@@3PAUBfmeObjECF@@A")
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?D3DCallCount@DX8Wrapper@@0IA=?number_of_DX8_calls@@3IA")

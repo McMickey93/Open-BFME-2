@@ -905,9 +905,6 @@ Code/Libraries/Source/Apt/string/StringPool.cpp	wrong-name	?g_00E18650@@3VEAStri
 Code/Libraries/Source/Apt/string/StringPool.cpp	wrong-name	?saConstantAtE18388@@3PAVEAStringC@@A	0x00A18388
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_00000000_0000_0000_c000_000000000046	0x007D4E4C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_ee883b17_0778_4b18_a12b_e44c0d298412	0x007D4E3C
-Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
-Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
-Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	wrong-name	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	0x007D4E3C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	0x007D4E3C
 Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_Create_DX8_Surface.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
