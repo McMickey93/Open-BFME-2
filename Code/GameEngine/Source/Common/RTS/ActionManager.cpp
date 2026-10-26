@@ -791,9 +791,9 @@ bool ActionManager::canOverrideSpecialPowerDestination(Object *obj, const Coord3
 
 // tu-skeleton: 0x0041D60B 3709B ?canDoSpecialPowerAtLocation@ActionManager@@QAE_NPBVObject@@PBUCoord3D@@W4CommandSourceType@@PBVSpecialPowerTemplate@@0I_N@Z -- matched in Code/GameEngine/Source/Common/RTS/ActionManagerCanDoSpecialPowerAtLocation.cpp (not merged yet)
 
-// tu-skeleton: 0x00786A39 13B ?Rva00786A39ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E031xx.cpp (not merged yet)
+// tu-skeleton: 0x00786A39 13B $L3024 -- matched in Code/GameEngine/Source/Common/RTS/ActionManagerSpecialPowerChecks.cpp (not merged yet)
 
-// tu-skeleton: 0x00786A46 13B ?Rva00786A46ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E031xx.cpp (not merged yet)
+// tu-skeleton: 0x00786A46 13B $L3025 -- matched in Code/GameEngine/Source/Common/RTS/ActionManagerSpecialPowerChecks.cpp (not merged yet)
 
 // tu-skeleton: 0x00786A53 10B __ehhandler$?canTransferSuppliesAt@ActionManager@@QAE_NPBVObject@@0@Z -- matched in Code/GameEngine/Source/Common/RTS/ActionManagerSpecialPowerChecks.cpp (not merged yet)
 
@@ -807,7 +807,7 @@ bool ActionManager::canOverrideSpecialPowerDestination(Object *obj, const Coord3
 
 // tu-skeleton: 0x00786A7F 10B __ehhandler$?validateLocationForForbiddenObjects@ActionManager@@QAE_NPBVObject@@PBUCoord3D@@PBVSpecialPowerTemplate@@@Z -- matched in Code/GameEngine/Source/Common/RTS/ActionManagerSpecialPowerChecks.cpp (not merged yet)
 
-// tu-skeleton: 0x00786A89 13B ?Rva00786A89ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E031xx.cpp (not merged yet)
+// tu-skeleton: 0x00786A89 13B $L3345 -- matched in Code/GameEngine/Source/Common/RTS/ActionManagerSpecialPowerChecks.cpp (not merged yet)
 
 // tu-skeleton: 0x00786A96 10B __ehhandler$?canDoSpecialPowerAtObject@ActionManager@@QAE_NPBVObject@@0W4CommandSourceType@@PBVSpecialPowerTemplate@@I_N@Z -- matched in Code/GameEngine/Source/Common/RTS/ActionManagerSpecialPowerChecks.cpp (not merged yet)
 
