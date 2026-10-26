@@ -9,8 +9,7 @@ extern "C" const void *const vtbl_00BD4640[];  // folded, 2 classes; via ??_7?$V
 
 #include <new.h>
 
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *pointer);
+#include <new>
 
 class TextureClass
 {
