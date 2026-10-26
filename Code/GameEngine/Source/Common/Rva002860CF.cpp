@@ -27,7 +27,7 @@ public:
 	virtual void v28();
 	virtual void v2C(int v);
 };
-struct Rva002860CFS
+struct BurningCellTreeNode
 {
 	unsigned char m_pad[0x10];
 	Rva002860CFVirt m_10;
@@ -56,7 +56,7 @@ void Rva002860CFHost::rva002860CF(Rva002860CFIterator it)
 		*(_STL::_Rb_tree_node_base **)((char *)m_ptr + 4),
 		*(_STL::_Rb_tree_node_base **)((char *)m_ptr + 8),
 		*(_STL::_Rb_tree_node_base **)((char *)m_ptr + 12));
-	Rva002860CFVirt *pm = &((Rva002860CFS *)node)->m_10;
+	Rva002860CFVirt *pm = &((BurningCellTreeNode *)node)->m_10;
 	pm->v2C(0);
 	if (node != 0)
 		Rva00030830GameFree(node);
