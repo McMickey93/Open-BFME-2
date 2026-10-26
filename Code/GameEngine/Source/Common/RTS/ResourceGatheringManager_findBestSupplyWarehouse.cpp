@@ -15,6 +15,7 @@
 
 #include <float.h>
 #include "Lib/Coord3D.h"
+#include "../GameLogicObjectLookupView.h"
 #define _STLP_NO_EXCEPTIONS 1
 #include <list>
 
@@ -30,8 +31,6 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 typedef bool Bool;
 typedef float Real;
 typedef unsigned int ObjectIDValue;
-// GameLogic::findObjectByID (row 0x00049DC5) takes Zero Hour's ObjectID enum.
-enum ObjectID { INVALID_ID = 0, FORCE_OBJECTID_TO_LONG_SIZE = 0x7ffffff };
 
 enum NameKeyType
 {
@@ -231,12 +230,6 @@ class ActionManager
 {
 public:
 	Bool canTransferSuppliesAt(const Object *object, const Object *destination);
-};
-
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
 };
 
 extern ActionManager *TheActionManager;
