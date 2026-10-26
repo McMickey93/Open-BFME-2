@@ -578,7 +578,7 @@ class Rva00395A60 { public: __declspec(noinline) float rva00395A60(); };
 class TerrainLogic { public: void rva00283262(const Coord3D*,float); };
 extern TerrainLogic* TheTerrainLogic;
 class ScriptEngine { public: void rva00357960(const AsciiString&,Object*); };
-extern void* g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 extern "C" int __cdecl fprintf(void*,const char*,...);
 static __forceinline void castleUnpackedConditions(Object* owner) {
  CastleConditionView* view=(CastleConditionView*)owner;

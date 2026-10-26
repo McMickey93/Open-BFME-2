@@ -563,7 +563,7 @@ float Rva00395A60::rva00395A60() { float value=0.0f; void* data=field<void*>(thi
 class TerrainLogic { public: void rva00283262(const Coord3D*,float); };
 extern TerrainLogic* TheTerrainLogic;
 class ScriptEngine { public: void rva00357960(const AsciiString&,Object*); };
-extern void* g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 extern "C" int __cdecl fprintf(void*,const char*,...);
 static __forceinline void castleUnpackedConditions(Object* owner) {
  CastleConditionView* view=(CastleConditionView*)owner;
@@ -615,8 +615,8 @@ void Rva00399959::unpack(bool instant) {
   owner->setStatus((ObjectStatusTypes)3,true);
   owner->getDrawable()->rva00274176(false);
   ((CastleBehavior*)this)->rva0039792B();
-  if(field<int>(TheGameLogic,0x1b4)>0 && g_00DFEFF0) {
-   fprintf(g_00DFEFF0,"CAMP: Frame %d: Castle %s(%d) ::unpack() called by %s",TheGameLogic->getFrame(),field<AsciiString>(objectTemplate(owner),0x64).str(),objectID(owner),field<AsciiString>(owner->getControllingPlayer(),0x4c).str());
+  if(field<int>(TheGameLogic,0x1b4)>0 && theLogicRandomLogFile) {
+   fprintf(theLogicRandomLogFile,"CAMP: Frame %d: Castle %s(%d) ::unpack() called by %s",TheGameLogic->getFrame(),field<AsciiString>(objectTemplate(owner),0x64).str(),objectID(owner),field<AsciiString>(owner->getControllingPlayer(),0x4c).str());
   }
   Object* pending=TheGameLogic->findObjectByID(field<ObjectID>(this,0x38));
   if(pending && field<Object*>(this,8)) {
@@ -667,8 +667,8 @@ void CastleBehavior::initiateUnpack(bool instant,const ThingTemplate* type) {
   else ((Rva00396B25*)this)->rva00396B25();
  }
  ((Rva00395CEB*)((char*)this+0xa0))->rva0039611E();
- if(field<int>(TheGameLogic,0x1b4)>0 && g_00DFEFF0) {
-  fprintf(g_00DFEFF0,"CAMP: Frame %d: Castle %s(%d) ::initiateUnpack() called by %s",TheGameLogic->getFrame(),field<AsciiString>(objectTemplate(owner),0x64).str(),objectID(owner),field<AsciiString>(owner->getControllingPlayer(),0x4c).str());
+ if(field<int>(TheGameLogic,0x1b4)>0 && theLogicRandomLogFile) {
+  fprintf(theLogicRandomLogFile,"CAMP: Frame %d: Castle %s(%d) ::initiateUnpack() called by %s",TheGameLogic->getFrame(),field<AsciiString>(objectTemplate(owner),0x64).str(),objectID(owner),field<AsciiString>(owner->getControllingPlayer(),0x4c).str());
  }
 }
 

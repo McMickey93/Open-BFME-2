@@ -165,7 +165,7 @@ static __forceinline void scaleCoord(Coord3D &c, float s) { c.x *= s; c.y *= s; 
 
 extern "C" int __cdecl fprintf(void *stream, const char *format, ...);
 extern bool g_bfmeCritterDesyncLog;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 extern GameLogic *TheGameLogic;
 
 class Rva00396E4A
@@ -218,13 +218,13 @@ void Rva00396E4A::rva00396C43(Object *obj)
 		Rva00396C43Critter *critter = ai->slot96();
 		if (critter == 0)
 			return;
-		if (g_bfmeCritterDesyncLog && g_00DFEFF0)
-			fprintf(g_00DFEFF0, "CritterDesync:  CastleBehavior::onTriggerEntered called with animal %s",
+		if (g_bfmeCritterDesyncLog && theLogicRandomLogFile)
+			fprintf(theLogicRandomLogFile, "CritterDesync:  CastleBehavior::onTriggerEntered called with animal %s",
 				obj->getTemplate()->getName().str());
 		if (!critter->slot0())
 		{
-			if (g_bfmeCritterDesyncLog && g_00DFEFF0)
-				fprintf(g_00DFEFF0, "CritterDesync:  animal %s not scared, returning.",
+			if (g_bfmeCritterDesyncLog && theLogicRandomLogFile)
+				fprintf(theLogicRandomLogFile, "CritterDesync:  animal %s not scared, returning.",
 					obj->getTemplate()->getName().str());
 			return;
 		}
@@ -236,8 +236,8 @@ void Rva00396E4A::rva00396C43(Object *obj)
 		addCoord(dest, obj->getPosition());
 		obj->rva0028AD32();
 		ai->requestPath(&dest, true);
-		if (g_bfmeCritterDesyncLog && g_00DFEFF0)
-			fprintf(g_00DFEFF0, "CritterDesync:  animal %s is scared, requesting new path to pos %g,%g,%g.",
+		if (g_bfmeCritterDesyncLog && theLogicRandomLogFile)
+			fprintf(theLogicRandomLogFile, "CritterDesync:  animal %s is scared, requesting new path to pos %g,%g,%g.",
 				obj->getTemplate()->getName().str(), (double)dest.x, (double)dest.y, (double)dest.z);
 		return;
 	}
