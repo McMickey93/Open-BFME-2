@@ -45,11 +45,6 @@ class Rva0043DA65 {public:int rva0043DA65();};
 class ColorSetupOwner {public:virtual void v00();virtual bool amIHost();};
 class GameWindow {public:void *winGetUserData();};
 class MpGameSetupComboRef {public:MpGameSetupComboRef(const MpGameSetupComboRef&);~MpGameSetupComboRef();GameWindow*window;};
-// Retail's single-pointer copy and its empty destructor are folded onto the
-// bodies the resolver pins for this unit's verified rows (0x0027EA56 and the
-// one-byte empty function at 0x000B3FD0); bind those spellings.
-#pragma comment(linker, "/alternatename:??0MpGameSetupComboRef@@QAE@ABV0@@Z=??0?$_STLP_alloc_proxy@PAVAsciiString@@V1@V?$allocator@VAsciiString@@@_STL@@@_STL@@QAE@ABV01@@Z")
-#pragma comment(linker, "/alternatename:??1MpGameSetupComboRef@@QAE@XZ=?LoadPostProcess@Rva003ABD81@@UAEXXZ")
 class Image;
 class ImageCollection {public:const Image*findImageByName(const AsciiString&);};
 class MultiplayerColorDefinition {public:char pad[0x10];int color;};
@@ -129,9 +124,3 @@ bool AptMpGameSetup::PopulateColorCombo(int index) {
  if(changed)dirty=true;
  return true;
 }
-
-// Names this unit references that no unit defines under that spelling. Each is
-// bound to the row that owns the pinned retail address (same address, same
-// body); the pin keeps the name, the row supplies the definition.
-#pragma comment(linker, "/alternatename:??0MpGameSetupComboRef@@QAE@ABV0@@Z=??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBHH@_STL@@@_STL@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBHH@_STL@@@_STL@@@2@@_STL@@QAE@ABV01@@Z")
-#pragma comment(linker, "/alternatename:??1MpGameSetupComboRef@@QAE@XZ=??1Region2D@@QAE@XZ")
