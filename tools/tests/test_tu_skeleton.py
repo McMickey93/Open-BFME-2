@@ -295,6 +295,20 @@ class EffectiveFlagsTests(unittest.TestCase):
         self.assertTrue(out.startswith("// cl: /O1 /arch:SSE /G7\n"))
 
 
+class StlStaticFlagTests(unittest.TestCase):
+    def test_an_md_set_with_the_alloc_shim_gets_the_define_before_its_includes(self):
+        self.assertEqual(T.stl_static(["/MD", "/EHsc", "/Ireference/shims/bfmealloc", "/ICode"]),
+                         ["/MD", "/EHsc", "/D_STLP_USE_STATIC_LIB", "/Ireference/shims/bfmealloc", "/ICode"])
+        self.assertIn("/D_STLP_USE_STATIC_LIB", T.stl_static(["-MD", "-Ireference\\shims\\bfmealloc_alloconly\\"]))
+
+    def test_other_sets_are_left_alone(self):
+        for flags in (["/MD", "/D_STLP_USE_STATIC_LIB", "/Ireference/shims/bfmealloc"],
+                      ["/MT", "/Ireference/shims/bfmealloc"],
+                      ["/MD", "/Ireference/shims/bfmelist"],
+                      ["/MD", "/Ireference/shims/notbfmealloc"]):
+            self.assertEqual(T.stl_static(flags), flags)
+
+
 class VerifierCacheTests(unittest.TestCase):
     ERRORS = {
         "type-A": ["a.cpp(1) : error C2011: 'A' : 'class' type redefinition"],

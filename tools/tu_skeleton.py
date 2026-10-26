@@ -446,6 +446,21 @@ def flags_of(text):
     return []
 
 
+def stl_static(flags):
+    """`flags` with /D_STLP_USE_STATIC_LIB when they pair /MD with a bfmealloc shim
+    and lack it. Without it the shim's _alloc.h exports allocator<char>, its own
+    explicit specialization (C2950), so every STL-including donor fails; the /MD
+    users of the shim that compile all carry it."""
+    if not any(x.upper() in ("/MD", "-MD", "/MDD", "-MDD") for x in flags) \
+            or any(re.match(r"[-/]D_STLP_USE_STATIC_LIB(=|$)", x) for x in flags) \
+            or not any(x.lower().startswith(("/i", "-i"))
+                       and posixpath.basename(x[2:].replace("\\", "/").rstrip("/")).startswith("bfmealloc")
+                       for x in flags):
+        return flags
+    i = next((n for n, x in enumerate(flags) if x.lower().startswith(("/i", "-i"))), len(flags))
+    return flags[:i] + ["/D_STLP_USE_STATIC_LIB"] + flags[i:]
+
+
 # ---------------------------------------------------------------- compose
 # Redefinitions cl reports when two donors (or a donor and a header another
 # donor includes) both declare one type: the later, donor-local copy is dropped
@@ -982,7 +997,11 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
                 if d not in seen_dirs:
                     seen_dirs.add(d)
                     incs.append(x)
-    flag_sets = [list(k) + incs for k, _ in weight.most_common()]
+    flag_sets = []
+    for k, _ in weight.most_common():
+        fl = stl_static(list(k) + incs)
+        if fl not in flag_sets:     # sets that differ only in the define are one
+            flag_sets.append(fl)
 
     link_why = {}
 
@@ -1062,7 +1081,7 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
         own_k = [x for x in own if not x.lower().startswith(("/i", "-i"))
                  and not v.fd.MANAGED.match(x.replace("/", "-", 1) if x.startswith("/") else x)]
         own_incs = [x for x in own if x.lower().startswith(("/i", "-i"))]
-        extra = [own_k + incs, own_k + own_incs]
+        extra = [stl_static(own_k + incs), own_k + own_incs]
         trial([f for i, f in enumerate(extra) if f not in flag_sets[:3] and f not in extra[:i]])
     report["rejected"].update({f: "no baseline match" for f in don if f not in good})
     if not best or len(best[1]) < 2 and not (len(best[1]) == 1 and best[1][0] != tu):
