@@ -209,8 +209,8 @@ Code/GameEngine/Source/Common/Rva006D7B60Finish.cpp	wrong-name	?g_bfmeAptDefault
 Code/GameEngine/Source/Common/Rva006D94A0AptCluster.cpp	wrong-name	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	0x00A182E0
 Code/GameEngine/Source/Common/Rva006FBE60Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva8D0D80Result@@A	0x00A1835C
 Code/GameEngine/Source/Common/Rva006FBED0Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva006FBED0Root@@A	0x00A1835C
-Code/GameEngine/Source/Common/Rva0070E440Cluster.cpp	duplicate-def	?g_00E180C4@@3URva0070E440Box@@A	0x00A180C4
-Code/GameEngine/Source/Common/Rva0070E440Cluster.cpp	wrong-name	?g_00E180C4@@3URva0070E440Box@@A	0x00A180C4
+Code/Libraries/Source/Apt/AptRenderingContext.cpp	duplicate-def	?g_00E180C4@@3URva0070E440Box@@A	0x00A180C4
+Code/Libraries/Source/Apt/AptRenderingContext.cpp	wrong-name	?g_00E180C4@@3URva0070E440Box@@A	0x00A180C4
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEB2C@@3IA	0x009DEB2C
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEEFC@@3IA	0x009DEEFC
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF08@@3IA	0x009DEF08
