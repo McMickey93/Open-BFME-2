@@ -63,7 +63,9 @@ template <> void **vector<void*>::begin();
 template <> void **vector<void*>::end();
 }
 
-struct Rva004157BBElement { Rva004157BBElement();Rva004157BBElement(const Rva004157BBElement&);~Rva004157BBElement();Rva004157BBElement&operator=(const Rva004157BBElement&);char bytes[1]; bool operator<(const Rva004157BBElement&)const; bool operator==(const Rva004157BBElement&)const; };
-namespace _STL {template<> struct hash<Rva004157BBElement> { unsigned operator()(const Rva004157BBElement&) const; };}
-template _STL::pair<const int, Rva004157BBElement>::pair(
-    const int &, const Rva004157BBElement &);
+// Retail 0x004157BB copies its second member through the rowed
+// Rva0041573F copy ctor 0x0041573F (Rva0041573FCopy.cpp); 0x0041579E is the
+// same pair's rowed copy ctor. Only the copy ctor is used here.
+class Rva0041573F { public: Rva0041573F(const Rva0041573F&); ~Rva0041573F(); private: char bytes[1]; };
+template _STL::pair<const int, Rva0041573F>::pair(
+    const int &, const Rva0041573F &);
