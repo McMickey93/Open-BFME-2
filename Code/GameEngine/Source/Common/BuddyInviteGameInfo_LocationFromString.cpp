@@ -8,9 +8,8 @@
 // neighbours 0x00416088/0x004161F1. Best probe V6 two ternaries gives 172B vs 174B 69 vs 70 insns.
 #include "ascii_string.h"
 
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
-extern "C" __declspec(dllimport) char *__cdecl strstr(const char *s, const char *sub);
-extern "C" unsigned int __cdecl strlen(const char *s);
+#include <string.h>
+#include <stdio.h>
 
 
 struct BuddyInviteGameInfo
