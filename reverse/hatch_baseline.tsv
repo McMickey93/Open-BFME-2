@@ -4312,7 +4312,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainDto
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainDtor.cpp	?b6@B6@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainDtor.cpp	?b7@B7@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainDtor.cpp	?b8@B8@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainModuleDataCtor.cpp	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeTransportContain.cpp	_vfn_00065212	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeTransportContain.cpp	_vfn_000B3FD0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeTransportContain.cpp	_vfn_000B69A1	1
@@ -4422,7 +4421,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainDtor.
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainDtor.cpp	?b6@B6@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainDtor.cpp	?b7@B7@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainDtor.cpp	?b8@B8@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainModuleDataCtor.cpp	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	??0ExperienceLevelCreateBase@@QAE@PAVThing@@PBVModuleData@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	?crc@BehaviorModule@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	??1CreateModuleData@@QAE@XZ	1
@@ -4456,7 +4454,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Die/SpecialPowerCompletion
 alternatename	Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDieOnDie.cpp	_TheUpgradeCenter	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/ExperienceTracker.cpp	??1ExperienceTracker@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/GhostObjectCtorDtor.cpp	?crc@GhostObject@@MAEXPAVXfer@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Made002CC8A4Ctor.cpp	?g_009FEFA4@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp	?findObjectCreationList@ObjectCreationListStore@@QAEPBVObjectCreationList@@PBD@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp	?bfmeDoBPB@BfmeSubBPB@@QAEXPAX00@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp	?bfmeDoBUC@BfmeSubBUC@@QAEXPAX000@Z	1
@@ -4475,7 +4472,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Rva001E86D0.cpp	?Rva000308
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva001E86D0.cpp	?rvaClear@Rva001E7087@@AAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00220DCDInit.cpp	?g_00DFE490@@3VRva00575674@@A	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0028D8EB.cpp	?hasSpecialPower@Object@@QBE_NW4SpecialPowerType@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Rva002A7400Ctor.cpp	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003552BD.cpp	?dup_00355257@@YAXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00355B61Ctor.cpp	??1Rva00355B61@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00355B61Ctor.cpp	??1SnapshotBase@@UAE@XZ	1
@@ -4484,7 +4480,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0036105BCopyCtor.cpp	?R
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00361594Assign.cpp	?Rva00361594Assign@@YAPAVRva0036105B@@PAV1@00PAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	??0Rva003623E5Filter@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	?construct@Rva003623E5Member@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003FD789Ctor.cpp	_vtbl_00837D78	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0041E764Find.cpp	??$_M_find@W4NameKeyType@@@?$hashtable@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@@2@@_STL@@ABEPAU?$_Hashtable_node@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@@1@ABW4NameKeyType@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0049C6E1Finish.cpp	_TheUpgradeCenter	1
@@ -4505,7 +4500,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpe
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpecialPowerModuleDataCtor.cpp	_vfn_0050B5C6	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DarknessSpecialPowerModuleDataCtor.cpp	_vtbl_00C5E7A8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DevastateSpecialPowerDoSpecialPowerAtLocation.cpp	?rva0028447F@Rva004C82E5Terrain@@QAEXPAVBfmeX1035@@PBUCoord3D@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPowerModuleDataCtor.cpp	?g_dominateFilterDefaults@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/FreezingRainSpecialPowerModuleDataCtor.cpp	_vtbl_00C5E7A8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/GiveOrRestoreUpgradeSpecialPowerModuleDataCtor.cpp	_vfn_00065212	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/GiveOrRestoreUpgradeSpecialPowerModuleDataCtor.cpp	_vfn_000B3FD0	1
@@ -4534,7 +4528,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySp
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f3@SiegeDeploySpecialPower_S3@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f4@SiegeDeploySpecialPower_S4@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerModuleDataCtor.cpp	_vtbl_00C5DAB0	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDataCtor.cpp	?g_009FEFA4@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDtor.cpp	??1Rva00493DEF@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerTimerRefreshSpecialPowerCtor.cpp	_vtbl_00BEFCF8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerTimerRefreshSpecialPowerCtor.cpp	_vtbl_00C5E080	1
@@ -4765,7 +4758,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdateCtor.c
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdateCtor.cpp	_vtbl_00C5362C	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdateModuleDataCtor.cpp	_vtbl_00C53668	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdateFriendNew.cpp	??0ModelConditionSpecialAbilityUpdate@@QAE@PAVThing@@PBVModuleData@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdateModuleDataCtor2.cpp	?g_modelConditionFilterDefaults@@3VBfmeFixedStorage0004543D@@B	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionUpgradeModuleDataCtor.cpp	_vtbl_00BF2558	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MonitorConditionUpdateDtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MonsterDockUpdateDtor.cpp	?f1@Rva0058A0F4_M1@@UAEXXZ	1
@@ -5200,7 +5192,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/V2FeslBrowserEvents.cpp	?BfmeGa
 alternatename	Code/GameEngine/Source/GameNetwork/V2FeslBrowserEvents.cpp	?BfmeGameBrowserVJRCallback@@YGXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/V2FeslResultCursors.cpp	?bfmeSendVIR@BfmeThingVIR@@QAEXPAVBfmeMsgVIR@@PBUBfmeOwnerVIR@@PBQBDHHH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/V2FeslResultCursors.cpp	?bfmeSendVIS@BfmeThingVIS@@QAEXPAVBfmeMsgVIR@@PBUBfmeOwnerVIR@@PBQBDHHH@Z	1
-alternatename	Code/GameEngine/Source/GameNetwork/WOLBrowser/Rva001776a0Cluster.cpp	?g_bfmeObjECF@@3VBfmeObjECFPtr@@A	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y2FeslAddressParse.cpp	?bfmeFmtVJJ@BfmeThingVJJ@@QAEXPADH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y2FeslAddressParse.cpp	?parse@Rva00800780Addr@@QAEXPBDH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y2FeslBufferAndChain.cpp	??1Gen_dtor_007f6d20@@UAE@XZ	1
@@ -5628,7 +5619,6 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/BfmeResetTextureRefClear.cpp	?
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/BoxDynamicVBAccessClassDestructor.cpp	??1BfmeSortingVBAccess@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8Caps_constructors.cpp	??0BfmeEnumerationCaps@@QAE@PAUIDirect3D8@@ABUBFME_DeviceCaps9@@W4WW3DFormat@@ABUBFME_AdapterIdentifier9@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8RendererAddMesh.cpp	?Peek_Texture@MeshModelClass@@QBE?AV?$RefCountPtr@VTextureClass@@@@HHH@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowser_Is_Browser_Open.cpp	?g_bfmeObjECF@@3VBfmeObjECFPtr@@A	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	?D3DCallCount@DX8Wrapper@@0IA	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperBeginSceneInner.cpp	?Rva00959410Dispatch@@3URva00959410Ptr@@A	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	1
@@ -14609,9 +14599,8 @@ pin	reverse/symbols.csv	0x005404CF	1
 pin	reverse/symbols.csv	0x0054098B	1
 pin	reverse/symbols.csv	0x00540B48	1
 pin	reverse/symbols.csv	0x00540F8F	2
-pin	reverse/symbols.csv	0x00541021	3
+pin	reverse/symbols.csv	0x00541021	1
 pin	reverse/symbols.csv	0x0054103E	1
-pin	reverse/symbols.csv	0x0054105B	1
 pin	reverse/symbols.csv	0x005410B1	2
 pin	reverse/symbols.csv	0x0054115F	1
 pin	reverse/symbols.csv	0x005411C8	3
@@ -14620,10 +14609,8 @@ pin	reverse/symbols.csv	0x00541214	1
 pin	reverse/symbols.csv	0x00541231	2
 pin	reverse/symbols.csv	0x0054124E	1
 pin	reverse/symbols.csv	0x0054127B	1
-pin	reverse/symbols.csv	0x005412A8	1
 pin	reverse/symbols.csv	0x00541579	1
 pin	reverse/symbols.csv	0x00541641	1
-pin	reverse/symbols.csv	0x00541709	1
 pin	reverse/symbols.csv	0x00541E77	1
 pin	reverse/symbols.csv	0x00542067	1
 pin	reverse/symbols.csv	0x00542148	1
@@ -15103,10 +15090,10 @@ pin	reverse/symbols.csv	0x00583709	1
 pin	reverse/symbols.csv	0x005838F8	1
 pin	reverse/symbols.csv	0x005839A7	1
 pin	reverse/symbols.csv	0x00583A1E	1
-pin	reverse/symbols.csv	0x00583A4F	2
-pin	reverse/symbols.csv	0x00583B11	2
+pin	reverse/symbols.csv	0x00583A4F	1
+pin	reverse/symbols.csv	0x00583B11	1
 pin	reverse/symbols.csv	0x00583B37	1
-pin	reverse/symbols.csv	0x00583B54	2
+pin	reverse/symbols.csv	0x00583B54	1
 pin	reverse/symbols.csv	0x00583D54	1
 pin	reverse/symbols.csv	0x005842F7	1
 pin	reverse/symbols.csv	0x0058431D	1
@@ -21736,7 +21723,7 @@ present_unmatched	Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp	zeroF
 present_unmatched	Code/GameEngine/Source/GameNetwork/DownloadManager.cpp	OnQueryResume@DownloadManager@@	1
 present_unmatched	Code/GameEngine/Source/GameNetwork/DownloadManager.cpp	init@DownloadManager@@	1
 present_unmatched	Code/GameEngine/Source/GameNetwork/DownloadManager.cpp	reset@DownloadManager@@	1
-present_unmatched	Code/GameEngine/Source/GameNetwork/GameInfoGrabHexInt3.cpp	callGrabHexInt3	1
+present_unmatched	Code/GameEngine/Source/GameNetwork/GameInfo.cpp	callGrabHexInt3	1
 present_unmatched	Code/GameEngine/Source/GameNetwork/GameSpy/Chat.cpp	registerTextWindow@GameSpyInfo@@	1
 present_unmatched	Code/GameEngine/Source/GameNetwork/GameSpy/Chat.cpp	unregisterTextWindow@GameSpyInfo@@	1
 present_unmatched	Code/GameEngine/Source/GameNetwork/GameSpy/GameSpyStagingRoomCopy.cpp	Rva003835F4Use@@YAXPAXABVGameSpyStagingRoom@@@Z	1
