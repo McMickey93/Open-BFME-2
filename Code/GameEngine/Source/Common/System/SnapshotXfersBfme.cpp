@@ -210,7 +210,7 @@ struct Rva005334A4Element;
 class CarryoverUnit;
 Xfer *Rva001EC0A0Xfer( Xfer *xfer, _STL::vector<CarryoverUnit> *units );
 Xfer *Rva001ECA2DXfer( Xfer *xfer, void *sciences );
-extern "C" void *__cdecl memset( void *dst, int value, unsigned int size );
+#include <string.h>
 
 // The LinearCampaign snapshot (vftable 0x00BDF168, slot-2 name getter
 // 0x001EAE63 "LinearCampaign"); its rowed constructor 0x001EBAEA sets out this

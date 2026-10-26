@@ -5,7 +5,7 @@
 // rva00413D46 off TheLivingWorldAutoResolveReinforcementScheduleStore + 0xc + index*16; else INIException(1, msg)
 // plus CxxThrow. Evidence: chain lane (calls just-landed 0x00413D46);
 // strings Attacker Defender; prev/next Common Rva parse TUs.
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 class INI
 {
