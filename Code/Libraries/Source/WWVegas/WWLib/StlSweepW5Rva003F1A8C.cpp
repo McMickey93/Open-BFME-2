@@ -16,8 +16,3 @@ template <> __declspec(dllimport) __declspec(nothrow) __forceinline void _Constr
 
 // Instantiate the recovered operation and its required template dependencies.
 template Rva003F1A8CElement * _STL::__uninitialized_fill_n<Rva003F1A8CElement *, unsigned int, Rva003F1A8CElement>(Rva003F1A8CElement *, unsigned int, Rva003F1A8CElement const &, _STL::__false_type const &);
-
-// Retail's call goes to the rowed _Construct at 0x003F1A5F; suppress this TU's own copy (which would
-// call the element copy constructor, defined nowhere) and bind the template name to that row.
-namespace _STL { template <> void _Construct<Rva003F1A8CElement, Rva003F1A8CElement>(Rva003F1A8CElement *, const Rva003F1A8CElement &); }
-#pragma comment(linker, "/alternatename:??$_Construct@URva003F1A8CElement@@U1@@_STL@@YAXPAURva003F1A8CElement@@ABU1@@Z=?Rva003F1A5FConstruct@@YAXPAXPBX@Z")
