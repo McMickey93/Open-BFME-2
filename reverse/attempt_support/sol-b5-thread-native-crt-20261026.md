@@ -81,3 +81,48 @@ W3DDisplayStringManager still accepts none: Common/Rva00090360Ctor.cpp and
 Common/W3DDisplayStringManager.cpp require missing m_14/rva00090381 declarations.
 Those donors are outside family B; their existing handoff is retained and they
 were not edited or claimed.
+
+## Final allocated probes and session handoff
+
+Prerequisite commit: `569d4d26f9` (pending runner publication at handoff).
+Inherited evidence commits rebased to `d2963c2d59` and `4b29cac09e`; the runner
+held the three-commit batch. Preserve these verified commits. No further
+source trials or failed reconstructions remain in Code/.
+
+Additional read-only allocated plans and normal merge dry-runs:
+
+| Target | Current result | Remaining prerequisite |
+| --- | --- | --- |
+| GameNetwork/udp.cpp | 14 approved rows, accepted none, exit 2 | Three private UDP alias members and fields absent from shared header; no independent naming decision made |
+| GameNetwork/NAT.cpp | 73 approved rows, accepted none, exit 2 | PortNegotiationSchema::attachSlotList/NAT::setConnectionState and incompatible private fields; native cstring strtok_unimported in negotiation donor; six mixed files and Common owners retained |
+| WW3D2/linegrp.cpp | 26 approved rows, accepted none, exit 2 | Render and SetArrays flag overrides differ from carried -G7; destructor byte rejection; no new pragma/flag override |
+
+All three boundaries were recorded with `tools/re_log.py` at 0x00594976,
+0x005A678E and 0x001B3510. They held no trial file/RVA claims. Logs are under
+`build/sol-b5-{udp,nat,linegrp}-{plan,trial}.log`. One WW3D2 planner run raced a
+NAT temporary trial file disappearing; it is a transient inventory failure,
+not evidence of no work. The final WW3D2 planner/currency check was rerun only
+after both trials finished. No gate/build was duplicated or bypassed.
+
+Immediately before this final handoff commit, outgoing `origin/master..HEAD`
+plus staged changes contain two source modifications in place, the inherited
+evidence file, this new evidence file and attempt-log appends. No source path
+changes or newly affected path consumer exist; the previous compatibility
+audit still applies. No protected register, TU map or header queue changed.
+
+`python3 tools/progress.py origin/master`: BYTE-MATCHED 7,978,500 (100.00%),
+LINKING 7,322,361 (97.47%), LINKED 7,567,229 (98.14%); all deltas zero. Linking
+figures are the existing 2026-10-26 13:18 census at d1f046749a, retail-truth-4.
+The verified result is the eleven-row thread composition unblock, not new C++
+bytes or a measured link gain. BFME 1 reference freshness remains the inherited
+verification boundary recorded in the recovery handoff; no success receipt
+was fabricated and no maintainer-only runner was used.
+
+Until publication is confirmed retain this seat's four file claims:
+`Code/Libraries/Source/WWVegas/WWLib/thread.cpp`, `ThreadClassLifecycle.cpp` in
+that directory, `reverse/attempt_support/sol-b5-thread-native-crt-20261026.md`,
+and `reverse/attempt_support/sol-b5-prerequisite-session-20261026.md`.
+After the runner lands the batch, release those file claims and run
+`python3 tools/claims.py release --landed`. Complete claim snapshot:
+`build/sol-b5-thread-final-claims.txt`. Other allocated work remains; this is
+a completed prerequisite pass, not an assertion that every lane is empty.
