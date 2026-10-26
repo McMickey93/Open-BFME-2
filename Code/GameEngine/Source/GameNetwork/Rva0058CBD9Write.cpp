@@ -7,17 +7,21 @@
 // getPercentage row 0x004C54EC and getDataLength row 0x0030D377 on the same msg.
 void __cdecl ji_006291a8();
 
-class NetProgressCommandMsg
+class NetCommandMsg
 {
 public:
-	void *m_vptr;
+	virtual ~NetCommandMsg();
 	unsigned int m_timestamp;
 	unsigned int m_executionFrame;
 	unsigned int m_playerID;
 	unsigned short m_id;
-	char m_pad12[2];
 	int m_commandType;
 	int m_referenceCount;
+};
+
+class NetProgressCommandMsg : public NetCommandMsg
+{
+public:
 	unsigned char getPercentage();
 };
 
@@ -38,7 +42,7 @@ public:
 class NetCommandRef
 {
 public:
-	NetProgressCommandMsg *m_msg;
+	NetCommandMsg *m_msg;
 	NetCommandRef *m_next;
 	NetCommandRef *m_prev;
 	unsigned char m_relay;
@@ -46,7 +50,7 @@ public:
 
 void __cdecl Rva0058CBD9Write(char *dst, NetCommandRef *ref)
 {
-	NetProgressCommandMsg *msg = ref->m_msg;
+	NetProgressCommandMsg *msg = (NetProgressCommandMsg *)ref->m_msg;
 	dst[0] = 'T';
 	dst[1] = (char)msg->m_commandType;
 	dst[2] = 'R';

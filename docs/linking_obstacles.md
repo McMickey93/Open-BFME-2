@@ -1643,8 +1643,13 @@ find what emits a non-virtual `??_G` without an invented anchor. Status for this
   getCommand duplicate has an identical, earlier unchanged ConnectionManager
   provider; the composed object has no reference requiring that duplicate.
   No other provider loss or changed binding is accepted. No merge is applied.
-- **Remaining / next check:** three flattened progress views hide inherited
-  base methods; two wrapper views also disagree on fields; NetPacketO1
+- **Further completed:** the separately verified
+  [progress-view prerequisite](../reverse/attempt_support/netpacket-progress-prerequisite-20261026.md)
+  admits three more existing serializers (531 retail bytes). The ordinary
+  trial grows from thirteen sources / 185 rows to sixteen / 188; eighteen
+  standalone provider/context objects remain identical and all 65 composed
+  EH parents are EXACT. No merge or measured linked-byte gain is claimed.
+- **Remaining / next check:** two wrapper views disagree on fields; NetPacketO1
   duplicates BaseType coordinates; two helpers retain declaration/compile
   boundaries. Five mixed donors remain untouched. Independently,
   ConstructBigCommandPacketList still has the existing shadow list-copy
