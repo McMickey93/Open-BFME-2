@@ -616,7 +616,7 @@ Rva00072A94 *__cdecl Rva000E1860Copy(Rva00072A94 *first, Rva00072A94 *last, Rva0
 // delete[]; otherwise it calls the element destructor and operator delete.
 // Element destructor 0x00112291 is pinned, not defined.
 
-void operator delete[](void *block);
+#include <new>
 
 class Rva00112291
 {

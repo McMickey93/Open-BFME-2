@@ -8,8 +8,7 @@
 // upstream `(n <= max_size() + 1) && (n > 0)` guard; its length-error else arm
 // leaves no code because the retail library is built without exceptions.
 
-extern "C" __declspec(dllimport) void *__cdecl memmove(void *destination,
-		const void *source, unsigned int count);
+#include <string.h>
 
 namespace _STL
 {
