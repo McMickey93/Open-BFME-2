@@ -47,3 +47,45 @@ remain from these trials.
 
 All remaining action is tool-approved unchanged consolidation or a Sol repair
 of the specific declaration, data-identity, or link-verification prerequisites.
+
+## Follow-up screen (2026-10-26)
+
+- `Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp`:
+  the unchanged `Rva00495A2B.cpp` donor passed the merge trial and all five rows
+  built byte-exactly. Both inputs linked before (`425 + 73` bytes), but after
+  composition the TU lost all 425 linked bytes due to duplicate
+  `?rva00495A2B@Rva00495A2B@@QAEXXZ`. Refreshing the destination object
+  reproduced the duplicate. The trial was restored; refreshing the restored
+  inputs confirmed `425 + 73` linked bytes again. The other donors still need
+  class declaration repairs: `getModuleNameKey`, the constructor overload,
+  `onObjectCreated`, and `xfer` are absent from the destination view.
+- `Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp`: the unchanged
+  `FXListDiePoolKey.cpp` donor was accepted and both inputs link (`25 + 78`
+  bytes). The required `find_declared_unmatched.py` check reports one
+  unclaimed definition in the destination, so no merge was applied. The
+  constructor donor was separately rejected because merging would stop
+  defining `??_7FXListDie@@6BDieModuleInterface@@@` still referenced by the
+  census. `DieModuleDerived.cpp` and `FXListDieOnDie.cpp` remain mixed.
+- `Code/Libraries/Source/Apt/AptValueVector.cpp`: the accepted value donor
+  matched, but composition removed 204 linked bytes because it duplicated
+  `?aptHasAll@Rva004959E0Value@@QAEHXZ`; a refreshed object reproduced the
+  loss. Restored inputs linked again (`204 + 17` bytes).
+- `Code/Libraries/Source/Apt/DogmaAllocator.cpp`: accepted pool-byte/free-block
+  donors matched, but composition removed 239 linked bytes and selected
+  duplicate `GetTotalBytesUsed`, `freeBlock`, `g_bfmeAptAllocAtE17728`, and
+  `g_bfmeAptFreeSizeAtE17730` providers. Refresh reproduced it; restored inputs
+  linked again (`239 + 24 + 205` bytes).
+- Other unchanged merge trials produced no accepted donors: `AIGuard.cpp`
+  (missing `StateMachine` and `Object` nested declarations),
+  `Connection.cpp` (2 rows lost under a carried flag override),
+  `GiantBirdAIUpdate.cpp` (missing AI command/type/class declarations),
+  `LocomotorSetUpgrade.cpp` and `LifetimeUpdate.cpp` (missing
+  `getModuleNameKey`, plus `UpdateModule`), `ActionManager.cpp` (missing
+  `CanAttackResult`, `ObjectStatusTypes`, nested types and methods),
+  `MessageStream.cpp` (`bytes`, protected allocator, duplicate coordinate and
+  subsystem declarations), `AITactic.cpp` (undefined `Xfer::Version`), and
+  `CrateSystem.cpp` (duplicate subsystem/STL declarations and undeclared
+  generated assignment operator).
+
+No follow-up trial is authorized until the code seat resolves the listed
+declaration, frozen-file, data-identity, or provider-selection prerequisites.
