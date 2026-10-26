@@ -37,8 +37,8 @@ public:
 	Int rva00202B6C(AsciiString name);
 };
 
-// Retail table at 0xDB95F4: VeryLow, Low, Medium, High, VeryHigh, Custom.
-const char *rva00202B6CNames[6] = { "VeryLow", "Low", "Medium", "High", "VeryHigh", "Custom" };
+// Retail table at 0xDB95F4: VeryLow, Low, Medium, High, UltraHigh, Custom.
+const char *rva00202B6CNames[6] = { "VeryLow", "Low", "Medium", "High", "UltraHigh", "Custom" };
 
 // ?rva00202B6C@Rva00202B6C@@QAEHVAsciiString@@@Z
 Int Rva00202B6C::rva00202B6C(AsciiString name)
