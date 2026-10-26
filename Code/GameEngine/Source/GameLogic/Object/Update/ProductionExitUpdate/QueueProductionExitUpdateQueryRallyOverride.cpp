@@ -13,7 +13,8 @@ public:
 private:
 	unsigned char m_bytes[28];
 };
-extern const BfmeFixedStorage0004543D g_defaultStorage009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 struct Rva0006EE7A
 {
@@ -136,7 +137,7 @@ Object *bfmeQueryRallyOverride(Object *obj, const Coord3D *pos)
 	if (obj == 0 || pos == 0)
 		return 0;
 	Rva003623E5Member handle;
-	handle.rva00362192(Rva00045411BitSet(0, 0x76, 0x87), g_defaultStorage009FEFA4);
+	handle.rva00362192(Rva00045411BitSet(0, 0x76, 0x87), *reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 	Rva00265150RJFilter filter(&handle, 0, true);
 	Object *found = ThePartitionManager->getClosestObject(pos, 1.0f, 1, &filter);
 	if (found)

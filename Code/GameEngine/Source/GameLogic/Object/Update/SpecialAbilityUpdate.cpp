@@ -681,7 +681,8 @@ public:
 	BfmeFixedStorage0004543D m08, m24;
 };
 
-extern const BfmeFixedStorage0004543D g_009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 extern PartitionManager *ThePartitionManager;
 
@@ -1600,7 +1601,7 @@ void SpecialAbilityUpdate::finishAbility()
 				if (player)
 				{
 					Object *mine = ThePartitionManager->getClosestObject(&pos,
-						data->m_fleeRangeAfterCompletion, 0, Rva0004584D(*(const BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 0x37), g_009FEFA4).link(&Rva00260E2AFilter(player)));
+						data->m_fleeRangeAfterCompletion, 0, Rva0004584D(*(const BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 0x37), *reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)).link(&Rva00260E2AFilter(player)));
 					if (mine)
 					{
 						dir.set(pos.x - mine->m_position.x, pos.y - mine->m_position.y, 0.0f);

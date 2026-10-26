@@ -204,7 +204,6 @@ public:
 private:
 	unsigned char m_bytes[28];
 };
-extern const BfmeFixedStorage0004543D g_009FEFA4;
 class Rva003623E5Member
 {
 public:
