@@ -5,7 +5,7 @@
 // from m_p, release old via prefix rule (virtual slot 0 with 2 or rowed
 // delete[] 0x0002FD80, then delete[] result) and store new. Evidence:
 // ret 4 one pointer arg; cmp new vs old then je; neighbour /O1.
-void __cdecl operator delete[](void *p);
+#include <new>
 
 struct Item002B2EC7
 {

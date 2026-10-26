@@ -5,7 +5,7 @@
 // to rowed operator delete[] 0x0002FD80, a nonzero prefix first calls
 // virtual slot 0 with 2 and deletes its return. Evidence: caller 0x002B7529
 // (lea ecx+8 no pushes = __thiscall no args); neighbours are /O1.
-void __cdecl operator delete[](void *p);
+#include <new>
 
 class Rva002B2EA0Item
 {
