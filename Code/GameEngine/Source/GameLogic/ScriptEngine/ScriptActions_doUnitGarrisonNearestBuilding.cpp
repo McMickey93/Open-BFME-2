@@ -65,7 +65,8 @@ struct Rva0006EE7A
 	Rva0006EE7A(int unused, int bit1, int bit2);
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
@@ -246,7 +247,7 @@ void ScriptActions::doUnitGarrisonNearestBuilding(const AsciiString &unitName)
 
 	BfmeWideResult iter = ThePartitionManager->iterateObjectsInRange(theUnit->getPosition(), REALLY_FAR, 2,
 		Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva0006EE7A(0, 7, 118),
-			*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype).link(&Rva002611BFFilter(theUnit)), 1);
+			*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE).link(&Rva002611BFFilter(theUnit)), 1);
 
 	Object *theBuilding;
 	while ((theBuilding = iter.next()) != 0) {

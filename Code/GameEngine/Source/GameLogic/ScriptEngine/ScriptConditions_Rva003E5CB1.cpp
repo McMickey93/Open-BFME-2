@@ -57,7 +57,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit);	// 0x00045411
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // vftable 0x00BFAD28, allow 0x0026137E, slot 2 0x00261368: +0x08 a
 // player, +0x0C whether a hit allows.
@@ -152,7 +153,7 @@ bool ScriptConditions::rva003E5CB1(Parameter *unitParm, Parameter *playerParm)
 		return false;
 	Object *found = ThePartitionManager->getClosestObject(&obj->m_pos, 1000000.0f, 0,
 		Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 120),
-			*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype).link(&Rva0026137EFilter(player, true)));
+			*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE).link(&Rva0026137EFilter(player, true)));
 	if (found == 0)
 		return false;
 	return TheAI->pathfinder()->QuickDoesPathExist(obj, &obj->m_pos, &found->m_pos, 0);
@@ -173,7 +174,7 @@ bool ScriptConditions::rva003E83AF(Parameter *teamParm, Parameter *playerParm)
 	team->rva0039E5B9(&center);
 	Object *found = ThePartitionManager->getClosestObject(&center, 1000000.0f, 0,
 		Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 120),
-			*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype).link(&Rva0026137EFilter(player, true)));
+			*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE).link(&Rva0026137EFilter(player, true)));
 	if (found == 0)
 		return false;
 	return TheAI->pathfinder()->QuickDoesPathExist(obj, &obj->m_pos, &found->m_pos, 0);
