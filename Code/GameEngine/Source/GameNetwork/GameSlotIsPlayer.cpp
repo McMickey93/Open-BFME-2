@@ -9,6 +9,8 @@
 // - m_name sits at +0x30 (retail add ecx,0x30; ZH places it at +0x28).
 // Callees already settled: StringBase<G>::compareNoCase is rowed at 0x6AA4,
 // StringBase<G>::releaseBuffer is pinned at 0x36E70. No new pins.
+// The by-value name is released by its callee-side destructor (the shared
+// header's inline ~UnicodeString -> releaseBuffer).
 
 typedef int Int;
 typedef bool Bool;
@@ -24,38 +26,7 @@ enum
 	SLOT_PLAYER
 };
 
-template <typename T>
-class StringBase
-{
-	friend class UnicodeString;
-
-public:
-	int compareNoCase(const StringBase<T> &that) const;
-
-private:
-	void releaseBuffer();
-
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-
-	Header *m_data;
-};
-
-class GameSlot;
-class Rva004481A7;
-
-class UnicodeString : public StringBase<unsigned short>
-{
-protected:
-	friend class GameSlot;
-	friend class Rva004481A7;
-	void releaseBuffer();
-};
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 class GameSlot
 {
@@ -78,7 +49,6 @@ Bool GameSlot::isPlayer(UnicodeString userName) const
 	else
 		result = false;
 
-	userName.releaseBuffer();
 	return result;
 }
 
@@ -86,7 +56,7 @@ Bool GameSlot::isPlayer(UnicodeString userName) const
 // Same GameSlot layout (m_state +4 == 6 is SLOT_PLAYER, m_name +0x30);
 // retail calls compareNoCase on the by-value param with m_name as the
 // argument (add ecx,0x30 then push, lea ecx,[esp+0xc]), where the 0x3FFF62
-// twin calls it on m_name. Frameless 45B with explicit releaseBuffer, ret 4.
+// twin calls it on m_name. Frameless 45B with the by-value releaseBuffer, ret 4.
 class Rva004481A7
 {
 public:
@@ -108,6 +78,5 @@ Bool Rva004481A7::isPlayer(UnicodeString userName) const
 	else
 		result = false;
 
-	userName.releaseBuffer();
 	return result;
 }
