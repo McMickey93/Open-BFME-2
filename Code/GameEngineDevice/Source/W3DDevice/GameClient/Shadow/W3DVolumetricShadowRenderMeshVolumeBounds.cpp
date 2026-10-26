@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?RenderMeshVolumeBounds@W3DVolumetricShadow@@IAEXHHPBVMatrix3D@@@Z @0x000F2203 1241B.
 //
 // W3DVolumetricShadow::RenderMeshVolumeBounds: debug draw of a shadow
@@ -19,10 +20,8 @@
 // and passed untransposed, and SetFVF goes through DX8CALL.
 
 #include <stdlib.h>
+#include <windows.h>
 
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef unsigned int UINT;
 typedef float Real;
 typedef int Int;
 typedef unsigned short UnsignedShort;

@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?RenderMeshVolume@W3DVolumetricShadow@@IAEXHHPBVMatrix3D@@@Z @0x000F200A 505B.
 //
 // W3DVolumetricShadow::RenderMeshVolume: draws one static shadow volume
@@ -21,9 +22,7 @@
 // bound buffer stays the ZH file-static: retail keeps the slot chain live
 // across its store, which only a non-escaping static allows.
 
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef unsigned int UINT;
+#include <windows.h>
 typedef float Real;
 typedef int Int;
 
