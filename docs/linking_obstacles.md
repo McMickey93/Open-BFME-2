@@ -3571,5 +3571,15 @@ Evidence / affected units:
   unresolved. Completed: the ctor row and the factory 0x00042036
   (`Rva00042036Factory.cpp`) are respelled on `Rva000647D4`; both stay exact.
   Preview: LINKS 0 -> 25.
+- `Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp`
+  (0x007B556E) zeroes the 16 B at 0x00A09E50 and registers the atexit thunk
+  0x007B9B0A, through two names nothing defined (`g_rva0134FB38`,
+  `Rva00C715CARelease`). Completed: it now names ATL's
+  `CImage::s_cache` (defined in `Code/Libraries/Source/ATL/atlimage.cpp`) and
+  the rowed `rva007B9B0A`; 1/1 exact. Preview: LINKS 0 -> 25. Remaining: two
+  definitions sit at 0x00A09E50 (`s_cache` in `atlimage.cpp`, the
+  address-named `g_Va00E09E50` data row in `Rva007B6A00AtexitThunks.cpp`, used
+  by the 0x007B9B0A thunk), so `data_check` (shadow) reports `s_cache` here as
+  `wrong-name`. The data lane should retire `g_Va00E09E50` onto `s_cache`.
 Clearance: pending.
 Census confirmation: awaiting the next census.
