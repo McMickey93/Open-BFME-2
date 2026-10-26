@@ -65,7 +65,6 @@ public:
 	const UpgradeTemplate *findUpgrade(const AsciiString &name) const;
 };
 extern UpgradeCenter *TheUpgradeCenter;
-#pragma comment(linker, "/alternatename:_TheUpgradeCenter=?TheUpgradeCenter@@3PAVUpgradeCenter@@A")
 
 extern GameLogic *TheGameLogic;
 
