@@ -8331,3 +8331,11 @@ Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|memb
 Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|member|Rva00508120WeaponTemplateView|flag171,93fff4ac7fa1572c51012b38,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
 Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|local|DamageNugget::generateDamageInfo|flag171,593e85ee91803530abad600b,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
 Code/GameEngine/Source/GameLogic/Object/LocomotorTransformSetup.cpp|member|LocomotorReverseData|m_13C,99e2a77d5974767c52a6537d,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-26
+Code/GameEngine/Source/Common/RTS/TeamRva0039DE46.cpp|local|Team::rva0039DE46|b3,db60a43e42adda7d0238cf9e,gpt-6.1-sol,w2-10261712-8,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/Common/RTS/TeamRva0039DE46.cpp|local|Team::rva0039DE46|b4,1dcde280c36b34df10fa61cd,gpt-6.1-sol,w2-10261712-8,w-dce04682aaeb,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTreeBufferAddTree.cpp|member|Rva000ECF79Tree|fieldd8,8597bddb10f68b13388d9bd3,gpt-6.1-sol,w2-10261712-10,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/Common/Rva002BEFE5.cpp|member|Rva002BEFE5|m_6C,b4e79184895292bb488c2e5f,gpt-6.1-sol,w2-10261712-12,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/Common/Rva002BEFE5.cpp|member|Rva002BEFE5|m_70,14cee25d4ba5ebc24481f358,gpt-6.1-sol,w2-10261712-12,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/Common/Rva002BEFE5.cpp|param|Rva002BEFE5::rva002BEFE5|a2,793ec66109127c3586e6fa71,gpt-6.1-sol,w2-10261712-12,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/Common/Rva002BEFE5.cpp|local|Rva002BEFE5::rva002BEFE5|t,a3c95baa4ba1fbf7b1bd2802,gpt-6.1-sol,w2-10261712-12,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroScreenDestructor.cpp|member|DestructorGlobalData|m_D45,eafadafdb82c03c0587a56ee,gpt-6.1-sol,w2-10261712-14,w-dce04682aaeb,2026-10-26

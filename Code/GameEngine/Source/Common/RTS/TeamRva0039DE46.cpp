@@ -91,10 +91,10 @@ bool Team::rva0039DE46(BfmeTab1026 *tab, bool flag)
 			if ((thingTemplate->m_kind0 & 0x80) != 0) {
 				UnsignedInt status = cur->m_status114;
 				bool b3 = ((status >> 3) & 1) != 0;
-				bool b4 = ((status >> 4) & 1) != 0;
+				bool partiallyConstructed = ((status >> 4) & 1) != 0;
 				if (b3)
 					continue;
-				if (b4)
+				if (partiallyConstructed)
 					continue;
 			}
 		}
