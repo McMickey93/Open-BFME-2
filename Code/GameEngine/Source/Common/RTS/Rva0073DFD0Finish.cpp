@@ -68,8 +68,7 @@ private:
 	bool enabled;
 };
 
-void *operator new[](unsigned int bytes);
-void operator delete[](void *pointer);
+#include <new>
 
 // ?reset@ShroudManager@@QAEXXZ
 void ShroudManager::reset()

@@ -17,11 +17,9 @@
 // No aliases or new pins. All322 bytes and exception metadata are exact.
 #include "ascii_string.h"
 
-// strtok keeps its <string.h> dllimport (FF15 [0xBBA5EC], per GameWindowManagerScript
-// parse* TUs); strcmp/strcpy drop dllimport here (allowed direction, per INIO1Bodies
-// malloc/free) to emit E8 into the linker thunks at 0x6291C6/0x629176 like retail.
-extern "C" int __cdecl strcmp(const char *s1, const char *s2);
-extern "C" char *__cdecl strcpy(char *dst, const char *src);
+// <string.h> declares strcmp/strcpy without dllimport, so they emit E8 into the
+// linker thunks at 0x6291C6/0x629176 like retail.
+#include <string.h>
 
 typedef void (*INIBlockParse)(class INI *ini);
 

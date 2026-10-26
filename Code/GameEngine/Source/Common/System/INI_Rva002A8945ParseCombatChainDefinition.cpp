@@ -24,8 +24,7 @@ struct FieldParse
 };
 typedef void (*FieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
 
-extern "C" void *memset(void *dst, int val, unsigned int n);
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
+#include <string.h>
 
 struct CombatChainEntry
 {
