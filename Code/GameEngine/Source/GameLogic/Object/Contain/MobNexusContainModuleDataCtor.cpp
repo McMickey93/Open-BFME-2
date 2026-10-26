@@ -13,7 +13,8 @@
 // BroadcastRadius/Duration stores are init-listed so they bracket the
 // filter construction exactly as retail.
 
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
 {
@@ -80,5 +81,5 @@ InvisibilitySpecialPowerModuleData::InvisibilitySpecialPowerModuleData()
 	, m_duration(0)
 {
 	reinterpret_cast<Rva003623E5Filter *>(&m_objectFilter)->applyFilter(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }

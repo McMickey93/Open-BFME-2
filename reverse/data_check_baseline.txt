@@ -485,7 +485,6 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/CastleMemberBehaviorPoolKey.cpp
 Code/GameEngine/Source/GameLogic/Object/Behavior/ClearanceTestingSlowDeathBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000483CF4@ClearanceTestingSlowDeathBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037E0
 Code/GameEngine/Source/GameLogic/Object/Behavior/ClickReactionBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004595AB@ClickReactionBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0346C
 Code/GameEngine/Source/GameLogic/Object/Behavior/DualWeaponBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00045ADE0@DualWeaponBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A034B0
-Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourModuleDataCtor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourPoolKey.cpp	wrong-name	?$S1@?1??rva000460BD3@DynamicPortalBehaviour@@SA?AW4NameKeyType@@XZ@4IA	0x00A035E0
 Code/GameEngine/Source/GameLogic/Object/Behavior/EnragedBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000459002@EnragedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03458
 Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourPoolKey.cpp	wrong-name	?$S1@?1??rva0004619AD@FakePathfindPortalBehaviour@@SA?AW4NameKeyType@@XZ@4IA	0x00A035F4
@@ -561,7 +560,6 @@ Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainPoolKey.cpp	wrong-na
 Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047A0E6@HordeGarrisonContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A036EC
 Code/GameEngine/Source/GameLogic/Object/Contain/HordeSiegeEngineContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047D0A2@HordeSiegeEngineContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03718
 Code/GameEngine/Source/GameLogic/Object/Contain/HorseHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004766E8@HorseHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03698
-Code/GameEngine/Source/GameLogic/Object/Contain/MobNexusContainModuleDataCtor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/ProductionQueueHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004812B9@ProductionQueueHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0377C
 Code/GameEngine/Source/GameLogic/Object/Contain/RiderChangeContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047E2E0@RiderChangeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03738
 Code/GameEngine/Source/GameLogic/Object/Contain/Rva00463235Finish.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
@@ -749,7 +747,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdatePoolKey.cpp
 Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049FE9A@ProneUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B78
 Code/GameEngine/Source/GameLogic/Object/Update/QueueProductionExitUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A00C2@QueueProductionExitUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B84
 Code/GameEngine/Source/GameLogic/Object/Update/RadarUpdate.cpp	wrong-name	?$S1@?1??rva0004A0C2D@RadarUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B8C
-Code/GameEngine/Source/GameLogic/Object/Update/RadiateFearUpdateModuleDataCtor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/RadiateFearUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049BFDD@RadiateFearUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B40
 Code/GameEngine/Source/GameLogic/Object/Update/RadiusDecalUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000391445@RadiusDecalUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A027B4
 Code/GameEngine/Source/GameLogic/Object/Update/RainOfFireUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004AC148@RainOfFireUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03CF8

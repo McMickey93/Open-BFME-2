@@ -75,7 +75,8 @@ namespace _STL {
 template <> vector<DynamicPortalLink, allocator<DynamicPortalLink> >::~vector();
 }
 
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
 {
@@ -140,5 +141,5 @@ DynamicPortalBehaviourModuleData::DynamicPortalBehaviourModuleData() :
 	topAttackPos->y = 0.0f;
 	topAttackPos->z = 0.0f;
 	m_destroyedDamageTimeout.applyFilter(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }

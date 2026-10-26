@@ -19,7 +19,8 @@ extern "C" const void *const vtbl_00C50FF0[];  // ??_7RadiateFearUpdateModuleDat
 
 #include "Common/Snapshot.h"
 
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
 {
@@ -90,5 +91,5 @@ RadiateFearUpdateModuleData::RadiateFearUpdateModuleData()
 {
 	m_20.construct();
 	reinterpret_cast<Rva003623E5Filter *>(&m_victimFilter)->applyFilter(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
