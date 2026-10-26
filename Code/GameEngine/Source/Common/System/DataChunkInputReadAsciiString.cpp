@@ -13,35 +13,9 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef bool Bool;
 
-class AsciiString;
-
-template <typename T>
-class StringBase
-{
-    friend class AsciiString;
-
-public:
-    StringBase(void) : m_data(0) {}
-    T *getBufferForRead(Int len);
-
-protected:
-    void *m_data;
-
-private:
-    StringBase(const StringBase &other);
-};
-
-class AsciiString : public StringBase<char>
-{
-public:
-    AsciiString(void) : StringBase<char>() {}
-    AsciiString(const AsciiString &other) : StringBase<char>(other) {}
-    AsciiString(const char *text);
-    ~AsciiString();
-
-private:
-    // keep 4-byte layout via base only
-};
+// Retail calls the out-of-line AsciiString destructor in this reader and its unwind.
+#define BFME_ASCII_DTOR_DECL
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class ChunkInputStream
 {
@@ -100,7 +74,7 @@ AsciiString DataChunkInput::readAsciiString(void)
     AsciiString theString;
     if (len > 0)
     {
-        char *str = theString.getBufferForRead(len);
+        char *str = reinterpret_cast<StringBase<char> *>(&theString)->getBufferForRead(len);
         m_file->read(str, len);
         decrementDataLeft(len);
         str[len] = '\0';
