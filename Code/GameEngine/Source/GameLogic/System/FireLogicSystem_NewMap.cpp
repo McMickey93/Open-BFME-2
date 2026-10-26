@@ -278,8 +278,7 @@ public:
 	unsigned int rva00285860(const Rva002E6EFFPosition *position);
 };
 
-void operator delete[](void *p);
-void *operator new[](unsigned int size);
+#include <new>
 
 // m_cellsOnFire's clear (0x0028662D).
 class Rva0028614C

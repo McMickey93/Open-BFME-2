@@ -214,7 +214,6 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActionsReinforcements.cpp	dr
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActionsRva003C2A9FNearestKindOf.cpp	drop-in candidate	same	2	1	0	0	0	0	0	1	0	0	0	<string.h>,<adoint.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptWriteDataChunk.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcmp:same,memset:same
 Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same,operator delete:same
-Code/GameEngine/Source/GameLogic/System/FireLogicSystem_NewMap.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same,operator new [ ]:same
 Code/GameEngine/Source/GameNetwork/ConnectionManager_heroData.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>,<new>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	TRUE:same,operator delete [ ]:same
 Code/GameEngine/Source/GameNetwork/ConnectionManager_processNetCommand.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	1	0	<windows.h>,<string.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same,memcpy:same
 Code/GameEngine/Source/GameNetwork/ConnectionManager_reset.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same,operator new:same
@@ -1171,7 +1170,6 @@ Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWallDoXfer.cpp	drop-
 Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI_SkirmishAI.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/GameLogic/System/AttributeModifier.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	ceil:same
-Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/GameLogic/System/CrateTemplateCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/GameLogic/System/GameLogicLastHeardFrom.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameLogic/System/GameLogicRva0023CF8B.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same

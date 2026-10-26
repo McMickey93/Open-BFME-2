@@ -137,7 +137,7 @@ CrateTemplate *CrateSystem::friend_findCrateTemplate(AsciiString name)
 	return 0;
 }
 
-extern void *__cdecl operator new(unsigned int size);
+#include <new>
 extern unsigned char g_00E01EA8;
 // g_00E01EA8: matched references place it at VA 0xe01ea8 (zero-filled .bss).
 unsigned char g_00E01EA8;
