@@ -100,7 +100,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit) throw();	// 0x00045411
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // vftable 0x00C1FE34, allow 0x002614BC: +0x08 the source object, +0x0C the
 // command button, +0x10 whether a valid target allows, +0x14 the command
@@ -205,7 +206,7 @@ void ScriptActions::rva003BD905(const AsciiString &unitName, const AsciiString &
 	if (button->rva003BDCCA()) {
 		Object *target = ThePartitionManager->getClosestObject(obj->getPosition(), REALLY_FAR, 0,
 			Rva00261409Filter(obj->getControllingPlayer(), true, 4)
-				.link(Rva0004584D(*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+				.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 					*(BfmeFixedStorage0004543D *)&mask)
 					.link(&Rva002611BFFilter(obj))));
 		if (target)
@@ -214,7 +215,7 @@ void ScriptActions::rva003BD905(const AsciiString &unitName, const AsciiString &
 		Object *target = ThePartitionManager->getClosestObject(obj->getPosition(), REALLY_FAR, 0,
 			Rva00261409Filter(obj->getControllingPlayer(), true, 4)
 				.link(Rva002614BCFilter(obj, button, true, 1)
-					.link(Rva0004584D(*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+					.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 						*(BfmeFixedStorage0004543D *)&mask).link(&Rva002611BFFilter(obj)))));
 		if (target)
 			obj->rva00297000(button, target, 1, 0);
@@ -236,7 +237,7 @@ void ScriptActions::rva003BDB03(const AsciiString &unitName, const AsciiString &
 	Object *target = ThePartitionManager->getClosestObject(obj->getPosition(), REALLY_FAR, 0,
 		Rva00261409Filter(obj->getControllingPlayer(), true, 4)
 			.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 7),
-				*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+				*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 				.link(Rva0026144CFilter(true).link(Rva002614BCFilter(obj, button, true, 1).link(&Rva002611BFFilter(obj))))));
 	if (target)
 		obj->rva00297000(button, target, 1, 0);
@@ -258,7 +259,7 @@ void ScriptActions::rva003BDC65(const AsciiString &unitName, const AsciiString &
 		Object *target = ThePartitionManager->getClosestObject(obj->getPosition(), REALLY_FAR, 0,
 			Rva00261409Filter(obj->getControllingPlayer(), true, 4)
 				.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, kindofBit),
-					*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+					*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 					.link(&Rva002611BFFilter(obj))));
 		if (target)
 			obj->doCommandButtonAtPosition(button, target->getPosition(), 1, 0);
@@ -266,7 +267,7 @@ void ScriptActions::rva003BDC65(const AsciiString &unitName, const AsciiString &
 		Object *target = ThePartitionManager->getClosestObject(obj->getPosition(), REALLY_FAR, 0,
 			Rva00261409Filter(obj->getControllingPlayer(), true, 4)
 				.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, kindofBit),
-					*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+					*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 					.link(Rva002614BCFilter(obj, button, true, 1).link(&Rva002611BFFilter(obj)))));
 		if (target)
 			obj->rva00297000(button, target, 1, 0);
@@ -288,7 +289,7 @@ void ScriptActions::rva003BDE5D(const AsciiString &unitName, const AsciiString &
 	Object *target = ThePartitionManager->getClosestObject(obj->getPosition(), REALLY_FAR, 0,
 		Rva00261409Filter(obj->getControllingPlayer(), true, 4)
 			.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 7),
-				*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+				*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 				.link(Rva002614BCFilter(obj, button, true, 1).link(&Rva002611BFFilter(obj)))));
 	if (target)
 		obj->rva00297000(button, target, 1, 0);
@@ -309,9 +310,9 @@ void ScriptActions::rva003BDFA5(const AsciiString &unitName, const AsciiString &
 	Object *target = ThePartitionManager->getClosestObject(obj->getPosition(), REALLY_FAR, 0,
 		Rva00261409Filter(obj->getControllingPlayer(), true, 4)
 			.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 7),
-				*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+				*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 				.link(Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, kindofBit),
-					*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)
+					*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)
 					.link(Rva002614BCFilter(obj, button, true, 1).link(&Rva002611BFFilter(obj))))));
 	if (target)
 		obj->rva00297000(button, target, 1, 0);
