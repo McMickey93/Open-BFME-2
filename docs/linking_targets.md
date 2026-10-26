@@ -313,7 +313,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/ArmyHeroIconCtor.cpp` | 130 | 10 (U=10) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/PartitionManager.cpp` | 129 | 15 (U=12, C=1, S=2) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv881O1.cpp` | 127 | 4 (U=2, C=1, S=1) | Open |
-| `Code/GameEngine/Source/Common/DamageFX.cpp` | 126 | 7 (U=4, C=2, S=1) | Open |
+| `Code/GameEngine/Source/Common/DamageFX.cpp` | 126 | 7 (U=4, C=2, S=1) | 2026-10-26, `6533919013`: repair landed / awaiting census. Zero Hour bodies removed: the parse helpers (rowed in DamageFXParseCommon.cpp), the veterancy-indexed lookups (BFME 2 rows 0x003605D5/0x003605E3/0x003608DF) and findDamageFX (retail symbol is ArmorStore::findArmorTemplate 0x00360966); hashtable dtor decl-only so retail 0x0016DEE0 is kept. link_check (index d1f046749a) LINKS 0 -> 126 B; 10 DamageFX/ArmorStore partners still link. |
 | `Code/GameEngine/Source/Common/Rva006C3CC0Cluster.cpp` | 125 | 3 (U=1, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/Rva006DE1A0Finish.cpp` | 125 | 3 (U=3) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv1950.cpp` | 118 | 4 (U=4) | Open |
