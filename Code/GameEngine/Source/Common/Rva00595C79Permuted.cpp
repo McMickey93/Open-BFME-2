@@ -3,14 +3,14 @@
 // primary owner and its full 10-byte extent.
 // cl: /Ireference/shims/bfme2_ascii /GX /MD /D_CRTIMP=
 //
-// ?formatAddress@@YA?AVAsciiString@@PBURva00595C79Address@@@Z, retail 0x00595c79, 34 bytes. Banked partial (score 0.9) closed by tools/permute.py;
+// ?formatAddress@@YA?AVAsciiString@@PBUNetworkAddress@@@Z, retail 0x00595c79, 34 bytes. Banked partial (score 0.9) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
 #include "ascii_string.h"
 
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 
-struct Rva00595C79Address
+struct NetworkAddress
 {
 	UnsignedInt m_ip;
 	UnsignedShort m_port;
@@ -23,7 +23,7 @@ AsciiString formatIPPort( UnsignedInt ip, UnsignedShort port )
 	return str;
 }
 
-AsciiString formatAddress( const Rva00595C79Address *address )
+AsciiString formatAddress( const NetworkAddress *address )
 {
 	return formatIPPort( address->m_ip, address->m_port );
 }

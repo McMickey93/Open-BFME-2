@@ -2702,3 +2702,4 @@ __ehhandler$?moveSelectedMembersToTarget@Rva005F52C0@@QAEXXZ,0x007A5341,"Renamed
 ?Rva001F696EPut@@YAAAV?$basic_ostream@DV?$char_traits@D@_STL@@@_STL@@AAV12@ABVAsciiString@@@Z,0x001F696E,"Renamed to ?writeAsciiString@@YAAAV?$basic_ostream@DV?$char_traits@D@_STL@@@_STL@@AAV12@ABVAsciiString@@@Z by tools/rename.py (inferred)"
 ?rva005FD4CC@Rva005FD4AA@@QBEHH@Z,0x005FD4CC,"Renamed to ?getCommandPoints@Rva005FD4AA@@QBEHH@Z by tools/rename.py (inferred)"
 ?rva005FD4DD@Rva005FD4AA@@QBEHH@Z,0x005FD4DD,"Renamed to ?getMaxCommandPoints@Rva005FD4AA@@QBEHH@Z by tools/rename.py (inferred)"
+?formatAddress@@YA?AVAsciiString@@PBURva00595C79Address@@@Z,0x00595C79,"Renamed to ?formatAddress@@YA?AVAsciiString@@PBUNetworkAddress@@@Z by tools/rename.py (inferred)"
