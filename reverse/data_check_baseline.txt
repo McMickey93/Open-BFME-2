@@ -912,8 +912,6 @@ Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_Create_DX8_Surface.cpp	wrong-name
 Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_D3DCalls.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
 Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_Set_Render_Target_Depth.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
 Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_Set_Render_Target_Surface.cpp	wrong-name	?D3DCallCount@DX8Wrapper@@0IA	0x009EDA98
-Code/Libraries/Source/WWVegas/WW3D2/statistics.cpp	wrong-name	?CurrentCaps@DX8Wrapper@@2PAVDX8Caps@@A	0x009EDA7C
-Code/Libraries/Source/WWVegas/WW3D2/statistics.cpp	wrong-name	?NPatchesLevel@WW3D@@2IA	0x009B5F94
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_count	0x009EE8E0
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_memory	0x009EE8A8
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_procedural_texture_count	0x009EE8FC
@@ -955,7 +953,6 @@ Code/Libraries/Source/WWVegas/WW3D2/Rva00118BA0State.cpp	wrong-name	?g_Va00DB5FC
 Code/Libraries/Source/WWVegas/WW3D2/Rva00118C20State.cpp	wrong-name	?g_Va00DB5FBC@@3HA	0x009B5FBC
 Code/Libraries/Source/WWVegas/WW3D2/Rva00118C20State.cpp	wrong-name	?g_Va00DB5FC0@@3HA	0x009B5FC0
 Code/Libraries/Source/WWVegas/WW3D2/Rva00118C20State.cpp	wrong-name	?g_Va00DB5FC4@@3HA	0x009B5FC4
-Code/Libraries/Source/WWVegas/WW3D2/statistics.cpp	wrong-name	_textureStatisticsString	0x009EE91C
 Code/Libraries/Source/WWVegas/WW3D2/Rva0061F090Siblings.cpp	wrong-name	_g_bfme00E09C0C	0x00A09C0C
 Code/Libraries/Source/WWVegas/WW3D2/ShroudTexture_getFilter.cpp	wrong-name	?$S1@?4??getFilter@ShroudTexture@@QAEPAVShroudFilter@@XZ@4IA	0x009F2970
 Code/Libraries/Source/WWVegas/WW3D2/SortingRendererBFME1.cpp	wrong-name	?BfmeCurrentCaps@@3PAEA	0x009EDA7C
