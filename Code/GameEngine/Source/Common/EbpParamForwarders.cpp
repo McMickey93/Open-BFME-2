@@ -60,23 +60,23 @@ public:
 class Rva001DA73E
 {
 public:
-	void rva001DA73E(int a, int b, int c);
+	void rva001DA73E(int first, int last, int c);
 };
 
-void Rva001DA73E::rva001DA73E(int a, int b, int c)
+void Rva001DA73E::rva001DA73E(int first, int last, int c)
 {
-	((Rva001DA112 *)this)->rva001DA112(a, b, (char *)&b + 3);
+	((Rva001DA112 *)this)->rva001DA112(first, last, (char *)&last + 3);
 }
 
 class Rva001DAB29
 {
 public:
-	void rva001DAB29(int a, int b);
+	void rva001DAB29(int first, int last);
 };
 
-void Rva001DAB29::rva001DAB29(int a, int b)
+void Rva001DAB29::rva001DAB29(int first, int last)
 {
-	((Rva001DA112 *)this)->rva001DA112(a, b, (char *)&b + 3);
+	((Rva001DA112 *)this)->rva001DA112(first, last, (char *)&last + 3);
 }
 
 class Rva00569F0C
@@ -88,23 +88,23 @@ public:
 class Rva0056A2DE
 {
 public:
-	void rva0056A2DE(int a, int b, int c);
+	void rva0056A2DE(int first, int last, int c);
 };
 
-void Rva0056A2DE::rva0056A2DE(int a, int b, int c)
+void Rva0056A2DE::rva0056A2DE(int first, int last, int c)
 {
-	((Rva00569F0C *)this)->rva00569F0C(a, b, (char *)&b + 3);
+	((Rva00569F0C *)this)->rva00569F0C(first, last, (char *)&last + 3);
 }
 
 class Rva0056A362
 {
 public:
-	void rva0056A362(int a, int b);
+	void rva0056A362(int first, int last);
 };
 
-void Rva0056A362::rva0056A362(int a, int b)
+void Rva0056A362::rva0056A362(int first, int last)
 {
-	((Rva00569F0C *)this)->rva00569F0C(a, b, (char *)&b + 3);
+	((Rva00569F0C *)this)->rva00569F0C(first, last, (char *)&last + 3);
 }
 
 class Rva005F4F74

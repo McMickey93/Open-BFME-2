@@ -2653,3 +2653,11 @@ param,Rva0049A64B::isClearToApproach::a,Rva0049A64B::isClearToApproach::docker,i
 local,W3DProjectedShadowManager::rva0010BE72::value40,W3DProjectedShadowManager::rva0010BE72::opacityStart,inferred,agree:nl-79d867e20463,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp,0x0010BE72
 local,W3DProjectedShadowManager::rva0010BE72::value54,W3DProjectedShadowManager::rva0010BE72::opacityEnd,inferred,agree:nl-a626726d054b,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp,0x0010BE72
 param,W3DPropBuffer::addPropType::bfmeFlag,W3DPropBuffer::addPropType::distanceFog,inferred,agree:nl-6ac5c5225eb3,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferAddProp.cpp,0x000EE822
+param,Rva001DA73E::rva001DA73E::a,Rva001DA73E::rva001DA73E::first,inferred,agree:nl-066e5fe3ae0f,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x001DA73E
+param,Rva001DA73E::rva001DA73E::b,Rva001DA73E::rva001DA73E::last,inferred,agree:nl-2eac89f9f185,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x001DA73E
+param,Rva001DAB29::rva001DAB29::a,Rva001DAB29::rva001DAB29::first,inferred,agree:nl-c88ac7cea2d7,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x001DAB29
+param,Rva001DAB29::rva001DAB29::b,Rva001DAB29::rva001DAB29::last,inferred,agree:nl-3c52eaf4a783,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x001DAB29
+param,Rva0056A2DE::rva0056A2DE::a,Rva0056A2DE::rva0056A2DE::first,inferred,agree:nl-7b3c1571125a,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x0056A2DE
+param,Rva0056A2DE::rva0056A2DE::b,Rva0056A2DE::rva0056A2DE::last,inferred,agree:nl-5721e70f77af,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x0056A2DE
+param,Rva0056A362::rva0056A362::a,Rva0056A362::rva0056A362::first,inferred,agree:nl-ce5604d49f70,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x0056A362
+param,Rva0056A362::rva0056A362::b,Rva0056A362::rva0056A362::last,inferred,agree:nl-c9a61e8c8624,Code/GameEngine/Source/Common/EbpParamForwarders.cpp,0x0056A362
