@@ -19,63 +19,20 @@ public:
 	int tagValue;
 };
 
-class Xfer
+#include "XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	class Version
-	{
-	public:
-		unsigned char data[2];	// [0] earliest supported, [1] current
-	};
-
-	virtual ~Xfer(void);
-	virtual void slot01(void);
-	virtual bool isStoring(void) const;	// +08
-	virtual void slot03(void);
-	virtual void slot04(void);
-	virtual void slot05(void);
-	virtual void slot06(void);
-	virtual void slot07(void);
-	virtual void slot08(void);
-	virtual void slot09(void);
-	virtual void slot10(void);
-	virtual void slot11(void);
-	virtual void slot12(void);
-	virtual void slot13(void);
-	virtual void slot14(void);
-	virtual void slot15(void);
-	virtual void slot16(void);
-	virtual void slot17(void);
-	virtual void slot18(void);
-	virtual void slot19(void);
-	virtual void slot20(void);
-	virtual void slot21(void);
-	virtual void slot22(void);
-	virtual void slot23(void);
-	virtual void slot24(void);
-	virtual void slot25(void);
-	virtual void slot26(void);
-	virtual void slot27(void);
-	virtual void slot28(void);
-	virtual void slot29(void);
-	virtual void slot30(void);
-	virtual void slot31(void);
-	virtual void slot32(void);
-	virtual void slot33(void);
-	virtual void slot34(void);
-	virtual void slot35(void);
-	virtual void slot36(void);
-	virtual void slot37(void);
-	virtual void transfer(void *context, const void *data, unsigned int size);	// +98
-
-	virtual Xfer &operator==(Version &v);
+	unsigned char data[2];	// [0] earliest supported, [1] current
 };
 
 Xfer &Xfer::operator==(Xfer::Version &v)
 {
-	if (isStoring())
+	if (IsStoring())
 	{
-		transfer(reinterpret_cast<void *>(('v' << 16) | ('e' << 8) | 'r'), &v.data[1], 1);
+		XferData(('v' << 16) | ('e' << 8) | 'r', &v.data[1], 1);
 	}
 	else
 	{
@@ -84,7 +41,7 @@ Xfer &Xfer::operator==(Xfer::Version &v)
 		unsigned char earliestVersion;
 		{
 			previousVersion = v.data[1];
-			transfer(reinterpret_cast<void *>(('v' << 16) | ('e' << 8) | 'r'), &v.data[1], 1);
+			XferData(('v' << 16) | ('e' << 8) | 'r', &v.data[1], 1);
 			loadedVersion = v.data[1];
 			earliestVersion = v.data[0];
 		}

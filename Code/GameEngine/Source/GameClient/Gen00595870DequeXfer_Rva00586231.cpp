@@ -46,41 +46,8 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion &version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual Xfer &slot24(Gen_t_00595870_p12cd &value);
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(void *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-};
+#include "../Common/System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 class XferException
 {
@@ -97,17 +64,17 @@ Xfer *Rva00586231Xfer(Xfer *xfer, GenDeque *vec)
 	XferVersion version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(version);
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	E12Deque *evec = (E12Deque *)vec;
 	UnsignedInt count = (UnsignedInt)evec->size();
-	xfer->xferTypeName("std::deque").xferUnsignedInt(count);
+	(*xfer == XferVectorTypeName("std::deque")) == count;
 
-	if (xfer->isSaving()) {
+	if (xfer->IsStoring()) {
 		E12Deque::iterator end = evec->end();
 		E12Deque::iterator cur = evec->begin();
 		while (cur != end) {
-			xfer->slot24((Gen_t_00595870_p12cd &)*cur);
+			*xfer == reinterpret_cast<Coord3DBase &>((Gen_t_00595870_p12cd &)*cur);
 			++cur;
 		}
 	} else {
@@ -117,7 +84,7 @@ Xfer *Rva00586231Xfer(Xfer *xfer, GenDeque *vec)
 		Gen_t_00595870_p12cd value;
 		while (count != 0) {
 			--count;
-			xfer->slot24(value);
+			*xfer == reinterpret_cast<Coord3DBase &>(value);
 			vec->push_back(value);
 		}
 	}

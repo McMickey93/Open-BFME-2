@@ -48,41 +48,8 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion &version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString &value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-};
+#include "XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
 
 class XferException
 {
@@ -107,18 +74,18 @@ Xfer *Rva00058DC6Xfer(Xfer *xfer, AsciiStringSet *set)
 	XferVersion version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(version);
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = set->size();
-	xfer->xferTypeName("std::set").xferUnsignedInt(count);
+	(*xfer == XferVectorTypeName("std::set")) == count;
 
-	if (xfer->isSaving())
+	if (xfer->IsStoring())
 	{
 		AsciiStringSet::iterator end = set->end();
 		AsciiStringSet::iterator node = set->begin();
 		while (node != end)
 		{
-			xfer->xferAsciiString(const_cast<AsciiString &>(*node));
+			*xfer == const_cast<AsciiString &>(*node);
 			++node;
 		}
 	}
@@ -132,7 +99,7 @@ Xfer *Rva00058DC6Xfer(Xfer *xfer, AsciiStringSet *set)
 		AsciiString value;
 		while (count--)
 		{
-			xfer->xferAsciiString(value);
+			*xfer == value;
 			set->insert(value);
 		}
 	}

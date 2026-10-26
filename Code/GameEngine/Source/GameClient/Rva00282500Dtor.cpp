@@ -35,47 +35,8 @@ struct XferVersion
 	UnsignedByte m_version;
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual Bool isLoading(); // +0x04
-	virtual Bool isStoring(); // +0x08
-	virtual void slot0C();
-	virtual void slot10();
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual void xferUser(void *data, Int size); // +0x24
-	virtual void xferVersion(XferVersion *version); // +0x28
-	virtual void slot2C();
-	virtual void slot30();
-	virtual void slot34();
-	virtual void slot38();
-	virtual void slot3C();
-	virtual void slot40();
-	virtual void slot44();
-	virtual void slot48();
-	virtual void slot4C();
-	virtual void slot50();
-	virtual void slot54();
-	virtual void slot58();
-	virtual void slot5C();
-	virtual void xferCoord3D(Coord3D *value); // +0x60
-	virtual void slot64();
-	virtual void slot68();
-	virtual void xferAsciiString(AsciiString *value); // +0x6C
-	virtual void slot70();
-	virtual void slot74();
-	virtual void xferUnsignedInt(UnsignedInt *value); // +0x78
-	virtual void xferInt(Int *value); // +0x7C
-	virtual void slot80();
-	virtual void slot84();
-	virtual void slot88();
-	virtual void slot8C();
-	virtual void xferBool(Bool *value); // +0x90
-};
+#include "../Common/System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 enum ObjectID
 {
@@ -315,19 +276,19 @@ void Waypoint::xfer(Xfer *xfer)
 	XferVersion version;
 	version.m_first = 1;
 	version.m_version = 4;
-	xfer->xferVersion(&version);
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	XferWaypointID(xfer, (Int *)&m_id);
-	xfer->xferAsciiString(&m_name);
-	xfer->xferCoord3D(&m_location);
+	*xfer == m_name;
+	*xfer == reinterpret_cast<Coord3DBase &>(m_location);
 	if (version.m_version >= 2)
 		XferWaypointID(xfer, &g_Va00DBB708);
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		Int count;
 		Int id;
-		xfer->xferInt(&count);
+		*xfer == count;
 		Int i = 0;
 		while (i < count)
 		{
@@ -352,10 +313,10 @@ void Waypoint::xfer(Xfer *xfer)
 		else
 			m_linkSource = (Waypoint *)INVALID_WAYPOINT_ID;
 	}
-	else if (xfer->isStoring())
+	else if (xfer->IsStoring())
 	{
 		Int i = 8;
-		xfer->xferInt(&i);
+		*xfer == i;
 		i = 0;
 		Int id;
 		while (i < 8)
@@ -381,27 +342,27 @@ void Waypoint::xfer(Xfer *xfer)
 		}
 	}
 
-	xfer->xferBool(&m_field48);
-	xfer->xferInt(&m_numLinks);
-	xfer->xferAsciiString(&m_pathLabel1);
-	xfer->xferAsciiString(&m_pathLabel2);
-	xfer->xferAsciiString(&m_pathLabel3);
-	xfer->xferBool(&m_biDirectional);
-	xfer->xferUser(&m_extraField, 4);
-	xfer->xferAsciiString(&m_extraLabel);
-	xfer->xferBool(&m_hasInclude);
-	xfer->xferBool(&m_hasExclude);
-	xfer->xferBool(&m_skipRelationship);
-	xfer->xferBool(&m_fieldA9);
+	*xfer == m_field48;
+	*xfer == m_numLinks;
+	*xfer == m_pathLabel1;
+	*xfer == m_pathLabel2;
+	*xfer == m_pathLabel3;
+	*xfer == m_biDirectional;
+	xfer->XferRawBytes(&m_extraField, 4);
+	*xfer == m_extraLabel;
+	*xfer == m_hasInclude;
+	*xfer == m_hasExclude;
+	*xfer == m_skipRelationship;
+	*xfer == m_fieldA9;
 	XferObjectID(xfer, (ObjectID *)&m_linkedObjectId);
 	m_includeMask.xfer(xfer);
 	m_excludeMask.xfer(xfer);
 	if (version.m_version >= 3)
-		xfer->xferUnsignedInt((UnsignedInt *)&m_frameThreshold);
+		*xfer == *((UnsignedInt *)&m_frameThreshold);
 	if (version.m_version >= 4)
 	{
 		m_bc.xfer(xfer);
-		xfer->xferBool(&m_fieldB8);
+		*xfer == m_fieldB8;
 	}
 }
 

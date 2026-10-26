@@ -74,36 +74,8 @@ struct XferVersion
 	unsigned char m_pad[2];
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();							// +0x04
-	virtual bool isStoring();							// +0x08
-	virtual bool isCRC();								// +0x0C
-	virtual bool isLightCRC();							// +0x10
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual void slot24();
-	virtual void xferVersion( XferVersion *version );	// +0x28
-#define SLOT(N) virtual void slot##N();
-	SLOT(2C) SLOT(30) SLOT(34) SLOT(38) SLOT(3C) SLOT(40) SLOT(44) SLOT(48)
-	SLOT(4C) SLOT(50) SLOT(54) SLOT(58) SLOT(5C) SLOT(60) SLOT(64)
-#undef SLOT
-	virtual void xferUnicodeString( UnicodeString *value );	// +0x68
-	virtual void xferAsciiString( AsciiString *value );	// +0x6C
-	virtual void xferReal( float *value );				// +0x70
-	virtual void slot74();
-	virtual void xferUnsignedInt( unsigned int *value );	// +0x78
-	virtual void xferInt( int *value );					// +0x7C
-	virtual void slot80();
-	virtual void slot84();
-	virtual void slot88();
-	virtual void slot8C();
-	virtual void xferBool( bool *value );				// +0x90
-};
+#include "../Common/System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 class XferException
 {
@@ -451,54 +423,54 @@ void InGameUI::addNamedTimer( const AsciiString &timerName, const UnicodeString 
 // ?xfer@InGameUI@@MAEXPAVXfer@@@Z
 void InGameUI::xfer( Xfer *xfer )
 {
-	if( xfer->isCRC() && TheTacticalView )
+	if( xfer->IsCRC() && TheTacticalView )
 	{
 		float value = TheTacticalView->slot58();
-		xfer->xferReal( &value );
+		*xfer == value;
 	}
 
-	if( xfer->isLightCRC() )
+	if( xfer->IsLightCRC() )
 		return;
 
 	XferVersion version;
 	version.m_first = 1;
 	version.m_version = 2;
-	xfer->xferVersion( &version );
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
-	xfer->xferInt( &m_namedTimerLastFlashFrame );
-	xfer->xferBool( &m_namedTimerUsedFlashColor );
-	xfer->xferBool( &m_showNamedTimers );
+	*xfer == m_namedTimerLastFlashFrame;
+	*xfer == m_namedTimerUsedFlashColor;
+	*xfer == m_showNamedTimers;
 
-	if( xfer->isStoring() )
+	if( xfer->IsStoring() )
 	{
 		int timerCount = m_namedTimers.size();
-		xfer->xferInt( &timerCount );
+		*xfer == timerCount;
 		for( NamedTimerMap::iterator it = m_namedTimers.begin(); it != m_namedTimers.end(); ++it )
 		{
-			xfer->xferAsciiString( &it->second->m_timerName );
-			xfer->xferUnicodeString( &it->second->timerText );
-			xfer->xferBool( &it->second->isCountdown );
+			*xfer == it->second->m_timerName;
+			*xfer == it->second->timerText;
+			*xfer == it->second->isCountdown;
 		}
 	}
 	else
 	{
 		int timerCount;
-		xfer->xferInt( &timerCount );
+		*xfer == timerCount;
 		for( int timerIndex = 0; timerIndex < timerCount; ++timerIndex )
 		{
 			AsciiString timerName;
 			UnicodeString timerText;
 			bool isCountdown;
-			xfer->xferAsciiString( &timerName );
-			xfer->xferUnicodeString( &timerText );
-			xfer->xferBool( &isCountdown );
+			*xfer == timerName;
+			*xfer == timerText;
+			*xfer == isCountdown;
 			addNamedTimer( timerName, timerText, isCountdown );
 		}
 	}
 
-	xfer->xferBool( &m_superweaponHiddenByScript );
+	*xfer == m_superweaponHiddenByScript;
 
-	if( xfer->isStoring() )
+	if( xfer->IsStoring() )
 	{
 		for( int playerIndex = 0; playerIndex < MAX_PLAYER_COUNT; ++playerIndex )
 		{
@@ -509,34 +481,34 @@ void InGameUI::xfer( Xfer *xfer )
 				for( SuperweaponList::iterator listIt = swList.begin(); listIt != swList.end(); ++listIt )
 				{
 					SuperweaponInfo *swInfo = *listIt;
-					xfer->xferInt( &playerIndex );
+					*xfer == playerIndex;
 					AsciiString templateName = swInfo->getSpecialPowerTemplate()->getName();
-					xfer->xferAsciiString( &templateName );
-					xfer->xferAsciiString( &powerName );
+					*xfer == templateName;
+					*xfer == powerName;
 					XferObjectID( xfer, &swInfo->m_id );
-					xfer->xferUnsignedInt( &swInfo->m_timestamp );
-					xfer->xferBool( &swInfo->m_hiddenByScript );
-					xfer->xferBool( &swInfo->m_hiddenByScience );
-					xfer->xferBool( &swInfo->m_ready );
+					*xfer == swInfo->m_timestamp;
+					*xfer == swInfo->m_hiddenByScript;
+					*xfer == swInfo->m_hiddenByScience;
+					*xfer == swInfo->m_ready;
 				}
 			}
 		}
 		int noMorePlayers = -1;
-		xfer->xferInt( &noMorePlayers );
+		*xfer == noMorePlayers;
 	}
 	else
 	{
 		for( ;; )
 		{
 			int playerIndex;
-			xfer->xferInt( &playerIndex );
+			*xfer == playerIndex;
 			if( playerIndex == -1 )
 				break;
 			else if( playerIndex < 0 || playerIndex >= MAX_PLAYER_COUNT )
 				throw XferException( 0, 0 );
 
 			AsciiString templateName;
-			xfer->xferAsciiString( &templateName );
+			*xfer == templateName;
 			const SpecialPowerTemplate *powerTemplate = TheSpecialPowerStore->findSpecialPowerTemplate( templateName );
 			if( powerTemplate == 0 )
 				throw XferException( 0, 0 );
@@ -545,12 +517,12 @@ void InGameUI::xfer( Xfer *xfer )
 			ObjectID id;
 			unsigned int timestamp;
 			bool hiddenByScript, hiddenByScience, ready;
-			xfer->xferAsciiString( &powerName );
+			*xfer == powerName;
 			XferObjectID( xfer, &id );
-			xfer->xferUnsignedInt( &timestamp );
-			xfer->xferBool( &hiddenByScript );
-			xfer->xferBool( &hiddenByScience );
-			xfer->xferBool( &ready );
+			*xfer == timestamp;
+			*xfer == hiddenByScript;
+			*xfer == hiddenByScience;
+			*xfer == ready;
 
 			SuperweaponInfo *swInfo = findSWInfo( playerIndex, powerName, id, powerTemplate );
 			if( swInfo == 0 )
@@ -574,7 +546,7 @@ void InGameUI::xfer( Xfer *xfer )
 
 	if( version.m_version >= 2 )
 	{
-		if( xfer->isStoring() && !xfer->isCRC() )
+		if( xfer->IsStoring() && !xfer->IsCRC() )
 		{
 			int count = 0;
 			for( int i = 0; i < TheGlobalData->m_maxLineBuildObjects; ++i )
@@ -582,7 +554,7 @@ void InGameUI::xfer( Xfer *xfer )
 				if( m_placeIcon[ i ].drawable )
 					++count;
 			}
-			xfer->xferInt( &count );
+			*xfer == count;
 			for( int j = 0; j < TheGlobalData->m_maxLineBuildObjects; ++j )
 			{
 				if( m_placeIcon[ j ].drawable )
@@ -592,10 +564,10 @@ void InGameUI::xfer( Xfer *xfer )
 				}
 			}
 		}
-		else if( xfer->isLoading() )
+		else if( xfer->IsLoading() )
 		{
 			int count = 0;
-			xfer->xferInt( &count );
+			*xfer == count;
 			m_placeIconDrawableIDs.clear();
 			((FoldedReserveVector *)&m_placeIconDrawableIDs)->reserve( count );
 			ObjectID drawableID = (ObjectID)INVALID_DRAWABLE_ID;
@@ -606,7 +578,7 @@ void InGameUI::xfer( Xfer *xfer )
 			}
 		}
 	}
-	else if( xfer->isLoading() )
+	else if( xfer->IsLoading() )
 	{
 		m_placeIconDrawableIDs.clear();
 	}

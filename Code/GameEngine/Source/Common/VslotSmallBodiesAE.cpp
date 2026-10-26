@@ -69,41 +69,8 @@ void Rva00041B85::rva00041B85(unsigned char a, unsigned char *b)
 // chains to: the pinned helper 0x0030662A on +0x0C; resp. the pinned
 // 0x005045E0 on the +0x0C member and Xfer slot 0x78 (unsigned int) on
 // +0x18.
-class Xfer
-{
-public:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void v06();
-	virtual void v07();
-	virtual void v08();
-	virtual void v09();
-	virtual void v10();
-	virtual void v11();
-	virtual void v12();
-	virtual void v13();
-	virtual void v14();
-	virtual void v15();
-	virtual void v16();
-	virtual void v17();
-	virtual void v18();
-	virtual void v19();
-	virtual void v20();
-	virtual void v21();
-	virtual void v22();
-	virtual void v23();
-	virtual void v24();
-	virtual void v25();
-	virtual void v26();
-	virtual void v27();
-	virtual void v28();
-	virtual void v29();
-	virtual void xferUnsignedInt(UnsignedInt *value);
-};
+#include "System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 class Rva0036CA00Str;
 void Rva0030662AXfer(Xfer *xfer, const Rva0036CA00Str &value);	// row 0x0030662A
 class ControlPointBlock
@@ -146,7 +113,7 @@ void Rva003FD321::rva003FD1C5(Xfer *xfer)
 {
 	Rva003FD1C5::rva003FD1C5(xfer);
 	m_0C.DoXfer(xfer);
-	xfer->xferUnsignedInt(&m_18);
+	*xfer == m_18;
 }
 
 // 0x00540BE4 (table VA 0x00C69508): an override of the rowed chunk reader

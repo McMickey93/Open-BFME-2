@@ -15,27 +15,8 @@
 
 enum ScienceType { SCIENCE_0 = 0 };
 enum NameKeyType { NAMEKEY_INVALID = -1 };
-class Xfer {
-public:
- virtual ~Xfer();
- virtual bool IsLoading() const;
- virtual bool IsStoring() const;
- virtual bool IsCRC() const;
- virtual bool IsLightCRC() const;
- virtual void slot05(); virtual void slot06(); virtual void slot07();
- virtual void slot08(); virtual void slot09(); virtual void slot10();
- virtual void slot11(); virtual void slot12(); virtual void slot13();
- virtual void slot14(); virtual void slot15(); virtual void slot16();
- virtual void slot17(); virtual void slot18(); virtual void slot19();
- virtual void slot20(); virtual void slot21(); virtual void slot22();
- virtual void slot23(); virtual void slot24(); virtual void slot25();
- virtual void slot26();
- virtual Xfer &xferAsciiString(AsciiString &value);
- virtual void slot28(); virtual void slot29(); virtual void slot30();
- virtual void slot31(); virtual void slot32(); virtual void slot33();
- virtual void slot34(); virtual void slot35(); virtual void slot36();
- virtual Xfer &XferEnum(const char *name, void *data, unsigned int size);
-};
+#include "XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
 class ScienceStore {
 public:
  AsciiString getInternalNameForScience(ScienceType science) const;
@@ -59,10 +40,10 @@ Xfer *Rva00306232XferScience(Xfer *xfer, ScienceType *science)
   xfer->XferEnum("ScienceType", science, 4);
  } else if (xfer->IsStoring()) {
   AsciiString scienceName = TheScienceStore->getInternalNameForScience(*science);
-  xfer->xferAsciiString(scienceName);
+  *xfer == scienceName;
  } else {
   AsciiString scienceName;
-  xfer->xferAsciiString(scienceName);
+  *xfer == scienceName;
   *science = TheScienceStore->getScienceFromInternalName(scienceName);
   if ((int)*science == -1)
    throw XferException(0, 0);

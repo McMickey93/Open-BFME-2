@@ -18,16 +18,8 @@ namespace _STL {
 template<> BfmePod8 *vector<BfmePod8>::erase(BfmePod8*,BfmePod8*);
 template<> void vector<BfmeE8>::push_back(const BfmeE8&);
 }
-class Xfer {public:
- void Version1();
- virtual ~Xfer();virtual bool isLoading();
-#define V(N) virtual void slot##N();
- V(2) V(3) V(4) V(5) V(6) V(7) V(8) V(9) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
- virtual void xferPoint(BfmeE8*);
- V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30)
- virtual void xferInt(int*);
-#undef V
-};
+#include "../../Common/System/XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
 class GameLogic;extern GameLogic *TheGameLogic;
 struct TowerGameLogicView {char pad[0x110];int mode;char gap[0x1b4-0x114];int fpDepth;};
 class Rva000421FD {public:void rva000421FD();};
@@ -47,18 +39,18 @@ class LivingWorldEyeTower {public:
 void LivingWorldEyeTower::xfer(Xfer*xfer) {
  xfer->Version1();
  int count=points.size();
- xfer->xferInt(&count);
- if(xfer->isLoading()) {
+ *xfer == count;
+ if(xfer->IsLoading()) {
   points.clear();
   for(int i=0;i<count;++i) {
    BfmeE8 point;
-   xfer->xferPoint(&point);
+   *xfer == reinterpret_cast<Coord2D &>(point);
    points.push_back(point);
   }
   if(TheGameLogic && (((TowerGameLogicView*)TheGameLogic)->mode==5 || ((TowerGameLogicView*)TheGameLogic)->mode==1)) throw;
   Rva0004224C guard;
   rva003F9B5A();
  } else {
-  for(int i=0;i<count;++i) xfer->xferPoint(&points[i]);
+  for(int i=0;i<count;++i) *xfer == reinterpret_cast<Coord2D &>(points[i]);
  }
 }

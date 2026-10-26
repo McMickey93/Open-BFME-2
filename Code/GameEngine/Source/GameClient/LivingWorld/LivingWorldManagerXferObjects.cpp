@@ -30,43 +30,8 @@ typedef int Int;
 
 class Snapshot;
 
-class Xfer
-{
-public:
-	void Version1();								// 0x000053EE
-	virtual ~Xfer();
-	virtual bool isLoading();
-	virtual void slot02();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void slot10();
-	virtual void slot11();
-	virtual void xferSnapshot(Snapshot *snapshot);		// slot 12
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *value);	// slot 27
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual Xfer &xferInt(Int *value);				// slot 31
-};
+#include "../../Common/System/XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
 
 class Rva00213D93Target;
 
@@ -231,10 +196,10 @@ void LivingWorldManager::rva0021219E(Rva00213D93Target *target)
 {
 	Xfer *xfer = (Xfer *)target;
 	xfer->Version1();
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		Int count;
-		xfer->xferInt(&count);
+		*xfer == count;
 		for (Int i = 0; i < count; ++i)
 		{
 			Rva003FD789 record(*(const StringBase<char> *)&AsciiString("loadObject"));
@@ -253,7 +218,7 @@ void LivingWorldManager::rva0021219E(Rva00213D93Target *target)
 			if (m_objects[i]->m_11)
 				++count;
 		}
-		xfer->xferInt(&count);
+		*xfer == count;
 		for (unsigned int j = 0; j < m_objects.size(); ++j)
 		{
 			Rva003FD789 *object = m_objects[j];
@@ -272,32 +237,32 @@ void LivingWorldManager::rva0021219E(Rva00213D93Target *target)
 void LivingWorldManager::rva00213C6E(Rva00213D93Target *target)
 {
 	Xfer *xfer = (Xfer *)target;
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		Int count;
-		xfer->xferInt(&count);
+		*xfer == count;
 		for (Int i = 0; i < count; ++i)
 		{
 			AsciiString name;
-			xfer->xferAsciiString(&name);
+			*xfer == name;
 			Rva00213C6ENode *node = (Rva00213C6ENode *)((Rva00056F61 *)m_table)->rva00056F61(&name);
 			if (node == 0)
-				xfer->xferSnapshot((Snapshot *)new Rva00210EF1(name));
+				*xfer == reinterpret_cast<Snapshot &>(*((Snapshot *)new Rva00210EF1(name)));
 			else
-				xfer->xferSnapshot((Snapshot *)node->m_object);
+				*xfer == reinterpret_cast<Snapshot &>(*((Snapshot *)node->m_object));
 		}
 	}
 	else
 	{
 		Int count = m_tableCount;
-		xfer->xferInt(&count);
+		*xfer == count;
 		AudioCacheCursor it = ((Rva000427195 *)m_table)->rva00427195();
 		Rva00213C6ENode *node;
 		while ((node = (Rva00213C6ENode *)it.s.first) != 0)
 		{
 			AsciiString name(node->m_object->m_name);
-			xfer->xferAsciiString(&name);
-			xfer->xferSnapshot((Snapshot *)node->m_object);
+			*xfer == name;
+			*xfer == reinterpret_cast<Snapshot &>(*((Snapshot *)node->m_object));
 			((Rva000411084 *)&it)->next();
 		}
 	}

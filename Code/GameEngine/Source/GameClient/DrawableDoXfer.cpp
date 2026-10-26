@@ -58,47 +58,8 @@ struct XferVersion
 	unsigned char m_pad[2];
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();						// +0x04
-	virtual bool isStoring();						// +0x08
-	virtual bool isCRC();							// +0x0C
-	virtual void slot10();
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual void xferUser(void *data, int dataSize);			// +0x24
-	virtual void xferVersion(XferVersion *version);			// +0x28
-	virtual void slot2C();
-	virtual void xferSnapshot(void *snapshot);			// +0x30
-	virtual void slot34();
-	virtual void slot38();
-	virtual void xferRGBColor(void *color);				// +0x3C
-	virtual void slot40();
-	virtual void xferIRegion2D(void *region);			// +0x44
-	virtual void slot48();
-	virtual void xferICoord2D(void *coord);				// +0x4C
-	virtual void slot50();
-	virtual void slot54();
-	virtual void slot58();
-	virtual void slot5C();
-	virtual void slot60();
-	virtual void slot64();
-	virtual void slot68();
-	virtual void xferAsciiString(AsciiString *value);		// +0x6C
-	virtual void xferReal(float *value);				// +0x70
-	virtual void slot74();
-	virtual void xferUnsignedInt(unsigned int *value);		// +0x78
-	virtual void xferInt(int *value);				// +0x7C
-	virtual void slot80();
-	virtual void slot84();
-	virtual void xferUnsignedByte(unsigned char *value);		// +0x88
-	virtual void slot8C();
-	virtual void xferBool(bool *value);				// +0x90
-};
+#include "../Common/System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 class XferException
 {
@@ -417,7 +378,7 @@ void Drawable::DoXfer(Xfer *xfer)
 	XferVersion version;
 	version.m_first = 1;
 	version.m_version = 11;
-	xfer->xferVersion(&version);
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	int id = m_id;
 	XferDrawableID(xfer, &id);
@@ -432,57 +393,57 @@ void Drawable::DoXfer(Xfer *xfer)
 	setTransformMatrix(&mtx);
 
 	bool hasColorTint = m_colorTintEnvelope != 0;
-	xfer->xferBool(&hasColorTint);
+	*xfer == hasColorTint;
 	if (hasColorTint)
 	{
 		if (!m_colorTintEnvelope)
 			m_colorTintEnvelope = new Rva00271826;
-		xfer->xferSnapshot(m_colorTintEnvelope);
+		*xfer == reinterpret_cast<Snapshot &>(*(m_colorTintEnvelope));
 	}
 
 	bool hasSelectionFlash = m_selectionFlashEnvelope != 0;
-	xfer->xferBool(&hasSelectionFlash);
+	*xfer == hasSelectionFlash;
 	if (hasSelectionFlash)
 	{
 		if (!m_selectionFlashEnvelope)
 			m_selectionFlashEnvelope = new Rva00271826;
-		xfer->xferSnapshot(m_selectionFlashEnvelope);
+		*xfer == reinterpret_cast<Snapshot &>(*(m_selectionFlashEnvelope));
 	}
 
 	unsigned int decal = m_terrainDecalType;
-	xfer->xferUnsignedInt(&decal);
-	if (xfer->isLoading())
+	*xfer == decal;
+	if (xfer->IsLoading())
 		rva00272870(decal);
 
-	xfer->xferReal(&m_ac);
-	xfer->xferReal(&m_b0);
-	xfer->xferReal(&m_b4);
-	xfer->xferReal(&m_b8);
-	xfer->xferReal(&m_bc);
-	xfer->xferReal(&m_c0);
-	xfer->xferReal(&m_c4);
-	xfer->xferReal(&m_c8);
-	xfer->xferReal(&m_cc);
-	xfer->xferUnsignedInt(&m_d4);
-	xfer->xferReal(&m_d0);
-	xfer->xferBool(&m_440);
+	*xfer == m_ac;
+	*xfer == m_b0;
+	*xfer == m_b4;
+	*xfer == m_b8;
+	*xfer == m_bc;
+	*xfer == m_c0;
+	*xfer == m_c4;
+	*xfer == m_c8;
+	*xfer == m_cc;
+	*xfer == m_d4;
+	*xfer == m_d0;
+	*xfer == m_440;
 	if (version.m_version >= 9)
-		xfer->xferUnsignedInt(&m_388);
+		*xfer == m_388;
 	else
 		m_388 = 0;
-	xfer->xferReal(&m_d8);
-	xfer->xferReal(&m_dc);
-	xfer->xferReal(&m_e0);
+	*xfer == m_d8;
+	*xfer == m_dc;
+	*xfer == m_e0;
 	if (version.m_version < 10)
 	{
 		unsigned int obsolete = 0;
-		xfer->xferUnsignedInt(&obsolete);
+		*xfer == obsolete;
 	}
-	xfer->xferUnsignedInt(&m_384);
+	*xfer == m_384;
 
 	ObjectID objectID = m_object ? m_object->getID() : INVALID_ID;
 	XferObjectID(xfer, &objectID);
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		if (m_object)
 		{
@@ -493,59 +454,59 @@ void Drawable::DoXfer(Xfer *xfer)
 			throw XferException(5, 0);
 	}
 
-	xfer->xferUnsignedInt(&m_status);
-	xfer->xferUnsignedInt(&m_118);
-	xfer->xferUnsignedInt(&m_11c);
-	xfer->xferUser(m_128, 4);
-	xfer->xferUnsignedInt(&m_12c);
-	xfer->xferUnsignedInt(&m_130);
-	xfer->xferReal(&m_140);
+	*xfer == m_status;
+	*xfer == m_118;
+	*xfer == m_11c;
+	xfer->XferRawBytes(m_128, 4);
+	*xfer == m_12c;
+	*xfer == m_130;
+	*xfer == m_140;
 
 	bool hasLocoInfo = m_locoInfo != 0;
-	xfer->xferBool(&hasLocoInfo);
+	*xfer == hasLocoInfo;
 	if (hasLocoInfo)
 	{
-		if (xfer->isLoading() && !m_locoInfo)
+		if (xfer->IsLoading() && !m_locoInfo)
 			m_locoInfo = new DrawableLocoInfo;
-		xfer->xferReal(&m_locoInfo->m_04);
-		xfer->xferReal(&m_locoInfo->m_08);
-		xfer->xferReal(&m_locoInfo->m_0c);
-		xfer->xferReal(&m_locoInfo->m_10);
-		xfer->xferReal(&m_locoInfo->m_14);
-		xfer->xferReal(&m_locoInfo->m_18);
-		xfer->xferReal(&m_locoInfo->m_1c);
-		xfer->xferReal(&m_locoInfo->m_20);
-		xfer->xferReal(&m_locoInfo->m_24);
-		xfer->xferReal(&m_locoInfo->m_28);
-		xfer->xferReal(&m_locoInfo->m_2c);
-		xfer->xferReal(&m_locoInfo->m_30);
-		xfer->xferReal(&m_locoInfo->m_3c);
-		xfer->xferReal(&m_locoInfo->m_40);
-		xfer->xferReal(&m_locoInfo->m_44);
-		xfer->xferReal(&m_locoInfo->m_48);
-		xfer->xferReal(&m_locoInfo->m_4c);
-		xfer->xferInt(&m_locoInfo->m_50);
-		xfer->xferInt(&m_locoInfo->m_54);
+		*xfer == m_locoInfo->m_04;
+		*xfer == m_locoInfo->m_08;
+		*xfer == m_locoInfo->m_0c;
+		*xfer == m_locoInfo->m_10;
+		*xfer == m_locoInfo->m_14;
+		*xfer == m_locoInfo->m_18;
+		*xfer == m_locoInfo->m_1c;
+		*xfer == m_locoInfo->m_20;
+		*xfer == m_locoInfo->m_24;
+		*xfer == m_locoInfo->m_28;
+		*xfer == m_locoInfo->m_2c;
+		*xfer == m_locoInfo->m_30;
+		*xfer == m_locoInfo->m_3c;
+		*xfer == m_locoInfo->m_40;
+		*xfer == m_locoInfo->m_44;
+		*xfer == m_locoInfo->m_48;
+		*xfer == m_locoInfo->m_4c;
+		*xfer == m_locoInfo->m_50;
+		*xfer == m_locoInfo->m_54;
 	}
 
 	if (version.m_version < 4)
 		xferDrawableModules(xfer);
 
 	XferStealthLookType(xfer, &m_stealthLook);
-	xfer->xferInt(&m_168);
-	xfer->xferInt(&m_16c);
-	xfer->xferBool(&m_43d);
-	xfer->xferBool(&m_43e);
-	xfer->xferReal(&m_358);
-	xfer->xferBool(&m_43f);
+	*xfer == m_168;
+	*xfer == m_16c;
+	*xfer == m_43d;
+	*xfer == m_43e;
+	*xfer == m_358;
+	*xfer == m_43f;
 
 	Rva003062FEXfer(xfer, m_1a0);
 	Rva003062FEXfer(xfer, m_170);
 	Rva003062FEXfer(xfer, m_1d0);
-	xfer->xferUnsignedInt(&m_frame);
-	xfer->xferReal(&m_instanceScale);
+	*xfer == m_frame;
+	*xfer == m_instanceScale;
 	XferObjectID(xfer, &m_shroudStatusObjectID);
-	xfer->xferUnsignedInt(&m_350);
+	*xfer == m_350;
 
 	unsigned char iconCount = 0;
 	if (m_iconInfo)
@@ -554,24 +515,24 @@ void Drawable::DoXfer(Xfer *xfer)
 			if (getIconInfo()->m_icons[i])
 				++iconCount;
 	}
-	xfer->xferUnsignedByte(&iconCount);
+	*xfer == iconCount;
 
 	AsciiString iconIndexName;
 	AsciiString iconTemplateName;
 	unsigned int keepTillFrame;
-	if (xfer->isStoring())
+	if (xfer->IsStoring())
 	{
 		for (unsigned char i = 0; i < 14; ++i)
 		{
 			if (!m_iconInfo || !getIconInfo()->m_icons[i])
 				continue;
 			iconIndexName = drawableIconIndexToName(i);
-			xfer->xferAsciiString(&iconIndexName);
+			*xfer == iconIndexName;
 			keepTillFrame = getIconInfo()->m_keepTillFrame[i];
-			xfer->xferUnsignedInt(&keepTillFrame);
+			*xfer == keepTillFrame;
 			iconTemplateName = getIconInfo()->m_icons[i]->getAnimTemplate()->getName();
-			xfer->xferAsciiString(&iconTemplateName);
-			xfer->xferSnapshot(getIconInfo()->m_icons[i]);
+			*xfer == iconTemplateName;
+			*xfer == reinterpret_cast<Snapshot &>(*(getIconInfo()->m_icons[i]));
 		}
 	}
 	else
@@ -580,48 +541,48 @@ void Drawable::DoXfer(Xfer *xfer)
 			getIconInfo()->rva00270041();
 		for (int i = 0; i < iconCount; ++i)
 		{
-			xfer->xferAsciiString(&iconIndexName);
+			*xfer == iconIndexName;
 			int index = drawableIconIndex(iconIndexName.str());
-			xfer->xferUnsignedInt(&keepTillFrame);
+			*xfer == keepTillFrame;
 			getIconInfo()->m_keepTillFrame[index] = keepTillFrame;
-			xfer->xferAsciiString(&iconTemplateName);
+			*xfer == iconTemplateName;
 			Anim2DTemplate *animTemplate = (Anim2DTemplate *)((Rva002D752D *)TheAnim2DCollection)->rva002D752D(*(const StringBase<char> *)&iconTemplateName);
 			if (!animTemplate)
 				throw XferException(5, 0);
 			getIconInfo()->m_icons[index] = new Anim2D(animTemplate, TheAnim2DCollection);
-			xfer->xferSnapshot(getIconInfo()->m_icons[index]);
+			*xfer == reinterpret_cast<Snapshot &>(*(getIconInfo()->m_icons[index]));
 		}
 	}
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		m_stealthLook = 0;
 		if (m_43d || m_43e)
 			((Rva002716Holder *)this)->rva00271547();
 	}
-	if (!xfer->isStoring())
+	if (!xfer->IsStoring())
 		m_isModelDirty = true;
 
-	xfer->xferBool(&m_447);
-	xfer->xferBool(&m_448);
-	xfer->xferBool(&m_449);
-	xfer->xferBool(&m_44a);
-	xfer->xferBool(&m_44b);
+	*xfer == m_447;
+	*xfer == m_448;
+	*xfer == m_449;
+	*xfer == m_44a;
+	*xfer == m_44b;
 
 	bool customized = m_customSoundAmbientInfo.item != 0;
-	xfer->xferBool(&customized);
+	*xfer == customized;
 	if (customized)
 	{
 		bool silent = m_customSoundAmbientInfo.item == Rva00274DD4().item;
-		xfer->xferBool(&silent);
-		if (xfer->isLoading())
+		*xfer == silent;
+		if (xfer->IsLoading())
 		{
 			if (silent)
 				((Rva0027974B *)this)->rva0027974B();
 			else
 			{
 				AsciiString baseInfoName;
-				xfer->xferAsciiString(&baseInfoName);
+				*xfer == baseInfoName;
 				Rva0036CA00Str baseInfo = TheAudio->findAudioEventInfo(baseInfoName);
 				Rva0036CA00Str info;
 				bool success = true;
@@ -645,7 +606,7 @@ void Drawable::DoXfer(Xfer *xfer)
 		else if (!silent)
 		{
 			AsciiString baseInfoName(*(const AsciiString *)((Rva000B56F0Object *)m_customSoundAmbientInfo.item)->selectStorage());
-			xfer->xferAsciiString(&baseInfoName);
+			*xfer == baseInfoName;
 			((DynamicAudioEventInfo *)m_customSoundAmbientInfo.item)->xferNoName(xfer);
 		}
 	}
@@ -658,10 +619,10 @@ void Drawable::DoXfer(Xfer *xfer)
 
 	if (version.m_version >= 6)
 	{
-		if (xfer->isLoading())
+		if (xfer->IsLoading())
 		{
 			AsciiString baseSoundName;
-			xfer->xferAsciiString(&baseSoundName);
+			*xfer == baseSoundName;
 			if (TheAudio)
 				reinterpret_cast<OpaqueRefElement4 &>(m_baseSoundAmbientInfo) = reinterpret_cast<const OpaqueRefElement4 &>(TheAudio->findAudioEventInfo(baseSoundName));
 			else
@@ -672,19 +633,19 @@ void Drawable::DoXfer(Xfer *xfer)
 			AsciiString baseSoundName;
 			if (m_baseSoundAmbientInfo.item)
 				baseSoundName = *(const AsciiString *)((const char *)m_baseSoundAmbientInfo.item + 8);
-			xfer->xferAsciiString(&baseSoundName);
+			*xfer == baseSoundName;
 		}
 	}
 
-	xfer->xferInt(&m_364);
-	xfer->xferInt(&m_368);
-	xfer->xferUnsignedInt(&m_37c);
-	xfer->xferUnsignedInt(&m_380);
+	*xfer == m_364;
+	*xfer == m_368;
+	*xfer == m_37c;
+	*xfer == m_380;
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		unsigned int count;
-		xfer->xferUnsignedInt(&count);
+		*xfer == count;
 		while (count--)
 		{
 			int waypointID;
@@ -696,7 +657,7 @@ void Drawable::DoXfer(Xfer *xfer)
 	else
 	{
 		unsigned int count = m_waypoints.size();
-		xfer->xferUnsignedInt(&count);
+		*xfer == count;
 		for (_STL::vector<const ModuleData *>::iterator it = m_waypoints.begin(); it != m_waypoints.end(); ++it)
 		{
 			int waypointID = ((const Waypoint *)*it)->getID();
@@ -704,81 +665,81 @@ void Drawable::DoXfer(Xfer *xfer)
 		}
 	}
 
-	xfer->xferRGBColor(m_tintColor);
-	xfer->xferUnsignedInt(&m_78);
-	xfer->xferUnsignedInt(&m_7c);
-	xfer->xferUnsignedInt(&m_80);
-	xfer->xferReal(&m_84);
-	xfer->xferReal(&m_88);
-	xfer->xferUnsignedInt(&m_3a4);
-	xfer->xferBool(&m_3a8);
-	xfer->xferBool(&m_3a9);
-	xfer->xferInt(&m_indicatorColor);
-	xfer->xferAsciiString(&m_348);
-	xfer->xferAsciiString(&m_34c);
-	xfer->xferBool(&m_3aa);
-	xfer->xferBool(&m_441);
-	xfer->xferBool(&m_444);
+	*xfer == reinterpret_cast<RGBColor &>(*(m_tintColor));
+	*xfer == m_78;
+	*xfer == m_7c;
+	*xfer == m_80;
+	*xfer == m_84;
+	*xfer == m_88;
+	*xfer == m_3a4;
+	*xfer == m_3a8;
+	*xfer == m_3a9;
+	*xfer == m_indicatorColor;
+	*xfer == m_348;
+	*xfer == m_34c;
+	*xfer == m_3aa;
+	*xfer == m_441;
+	*xfer == m_444;
 	Rva0030612AXfer(xfer, m_90);
 	Rva0030612AXfer(xfer, m_9c);
-	xfer->xferBool(&m_e4);
-	xfer->xferICoord2D(m_e8);
-	xfer->xferInt(&m_f0);
-	xfer->xferReal(&m_f4);
-	xfer->xferReal(&m_f8);
-	xfer->xferUnsignedInt(&m_138);
-	xfer->xferReal(&m_33c);
-	xfer->xferInt(&m_35c);
-	xfer->xferIRegion2D(m_460);
-	xfer->xferUser(m_360, 4);
+	*xfer == m_e4;
+	*xfer == reinterpret_cast<ICoord2D &>(*(m_e8));
+	*xfer == m_f0;
+	*xfer == m_f4;
+	*xfer == m_f8;
+	*xfer == m_138;
+	*xfer == m_33c;
+	*xfer == m_35c;
+	*xfer == reinterpret_cast<IRegion2D &>(*(m_460));
+	xfer->XferRawBytes(m_360, 4);
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 		rva002791E7(m_conditionState, 1, 1);
 
 	if (version.m_version >= 4)
 		xferDrawableModules(xfer);
 
 	if (version.m_version >= 5)
-		xfer->xferBool(&m_445);
-	else if (xfer->isLoading())
+		*xfer == m_445;
+	else if (xfer->IsLoading())
 		m_445 = false;
 
 	if (version.m_version >= 8)
-		xfer->xferBool(&m_446);
-	else if (xfer->isLoading())
+		*xfer == m_446;
+	else if (xfer->IsLoading())
 		m_446 = false;
 
-	if (xfer->isCRC())
+	if (xfer->IsCRC())
 		return;
 
 	if (version.m_version >= 2)
 	{
 		bool hasBuffManager = m_buffManager != 0;
-		xfer->xferBool(&hasBuffManager);
+		*xfer == hasBuffManager;
 		if (hasBuffManager)
 		{
-			if (xfer->isLoading())
+			if (xfer->IsLoading())
 				m_buffManager = new BuffManager((int)this);
 			m_buffManager->DoXfer(xfer);
 		}
 	}
 	if (version.m_version >= 3)
-		xfer->xferBool(&m_442);
+		*xfer == m_442;
 
-	if (xfer->isLoading() && m_object && (m_object->m_template->m_kindOf11A & 0x40) && rva00272C1E())
+	if (xfer->IsLoading() && m_object && (m_object->m_template->m_kindOf11A & 0x40) && rva00272C1E())
 	{
 		((AIPathfinderView *)TheAI)->m_pathfinder->RemoveObjectFromPathfindMap(m_object);
 		((AIPathfinderView *)TheAI)->m_pathfinder->AddObjectToPathfindMap(m_object);
 	}
 
-	if (version.m_version >= 7 && version.m_version < 11 && xfer->isLoading())
+	if (version.m_version >= 7 && version.m_version < 11 && xfer->IsLoading())
 	{
 		float obsoleteReal;
-		xfer->xferReal(&obsoleteReal);
-		xfer->xferReal(&obsoleteReal);
-		xfer->xferReal(&obsoleteReal);
-		xfer->xferReal(&obsoleteReal);
+		*xfer == obsoleteReal;
+		*xfer == obsoleteReal;
+		*xfer == obsoleteReal;
+		*xfer == obsoleteReal;
 		unsigned int obsoleteUInt;
-		xfer->xferUnsignedInt(&obsoleteUInt);
+		*xfer == obsoleteUInt;
 	}
 }

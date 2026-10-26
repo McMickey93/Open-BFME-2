@@ -6,47 +6,8 @@
 // and the +0x20 and +0x21 members once the version reaches 2 and 3.
 class GameClientRandomVariable;
 
-class Xfer
-{
-public:
-	virtual void v00();
-	virtual void v04();
-	virtual void v08();
-	virtual void v0C();
-	virtual void v10();
-	virtual void v14();
-	virtual void v18();
-	virtual void v1C();
-	virtual void v20();
-	virtual void v24();
-	virtual void s28(void *p);
-	virtual void v2C();
-	virtual void v30();
-	virtual void v34();
-	virtual void v38();
-	virtual void v3C();
-	virtual void v40();
-	virtual void v44();
-	virtual void v48();
-	virtual void v4C();
-	virtual void v50();
-	virtual void v54();
-	virtual void v58();
-	virtual void v5C();
-	virtual void s60(void *p);
-	virtual void v64();
-	virtual void v68();
-	virtual void v6C();
-	virtual void s70(void *p);
-	virtual void v74();
-	virtual void v78();
-	virtual void v7C();
-	virtual void v80();
-	virtual void v84();
-	virtual void v88();
-	virtual void v8C();
-	virtual void s90(void *p);
-};
+#include "../Common/System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 Xfer &xferRandomVariable(Xfer &xfer, GameClientRandomVariable &value);
 
@@ -75,12 +36,12 @@ void FXParticleSystem::DefaultPhysicsModuleInfo::DoXfer(Xfer &xfer)
 	Rva0055EECBVersion version;
 	version.current = 1;
 	version.stored = 3;
-	xfer.s28(&version);
-	xfer.s70(&m10);
-	xfer.s60(&m4);
+	xfer == reinterpret_cast<Xfer::Version &>(version);
+	xfer == reinterpret_cast<float &>(m10);
+	xfer == reinterpret_cast<Coord3DBase &>(m4);
 	xferRandomVariable(xfer, *reinterpret_cast<GameClientRandomVariable *>(&m14));
 	if (version.stored >= 2)
-		xfer.s90(&m20[0]);
+		xfer == reinterpret_cast<bool &>(m20[0]);
 	if (version.stored >= 3)
-		xfer.s90(&m20[1]);
+		xfer == reinterpret_cast<bool &>(m20[1]);
 }

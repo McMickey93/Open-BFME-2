@@ -20,44 +20,8 @@ typedef unsigned char UnsignedByte;
 
 #include "ascii_string.h"
 
-class Xfer
-{
-public:
-	void Version1();
-	virtual void slot00();
-	virtual void slot01();
-	virtual bool isStoring();
-	virtual bool IsCRC() const;
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void slot10();
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual void xferInt(Int *value);
-	virtual void xferUnsignedShort(UnsignedShort *value);
-};
+#include "../System/XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
 
 class ThingTemplate;
 struct ScoreThingTemplateView { unsigned char opaque00[0x64]; AsciiString name; };
@@ -86,37 +50,37 @@ void xferThingTemplateCountMap(Xfer *xfer, ObjectCountMap *map)
 	xfer->Version1();
 
 	UnsignedShort mapSize = map->size();
-	xfer->xferUnsignedShort(&mapSize);
+	*xfer == mapSize;
 
 	Int count;
 	TemplateCountKey thingTemplate;
 	AsciiString thingTemplateName;
 
-	if (xfer->isStoring())
+	if (xfer->IsStoring())
 	{
 		ObjectCountMap::iterator it;
 		for (it = map->begin(); it != map->end(); ++it)
 		{
 			thingTemplate = it->first;
 			thingTemplateName = reinterpret_cast<const ScoreThingTemplateView *>(thingTemplate.pointer)->name;
-			xfer->xferAsciiString(&thingTemplateName);
+			*xfer == thingTemplateName;
 
 			count = it->second;
-			xfer->xferInt(&count);
+			*xfer == count;
 		}
 	}
 	else
 	{
 		for (UnsignedShort i = 0; i < mapSize; ++i)
 		{
-			xfer->xferAsciiString(&thingTemplateName);
+			*xfer == thingTemplateName;
 			thingTemplate.pointer = static_cast<const ThingTemplate *>((void *)reinterpret_cast<ThingFactory *>(TheThingFactory)->findTemplate(thingTemplateName));
 			if (thingTemplate.pointer == 0)
 			{
 				throw XferException(5,0);
 			}
 
-			xfer->xferInt(&count);
+			*xfer == count;
 			(*map)[thingTemplate] = count;
 		}
 	}
