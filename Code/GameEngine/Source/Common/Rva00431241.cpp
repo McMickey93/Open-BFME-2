@@ -28,7 +28,7 @@ public:
 	virtual GameMessage *createMessage(int type);
 };
 
-extern MessageStream *TheMessageStream;
+extern MessageStream *MessageStreamSubsystem;
 
 class TacticalView
 {
@@ -120,7 +120,7 @@ int __cdecl doSetRallyPointCommand(void *a, ICoord2D *b)
 		return 1;
 	Coord3D pos;
 	((TacticalView *)TheTacticalView)->screenToTerrain(b, &pos, false);
-	GameMessage *msg = TheMessageStream->createMessage(0x413);
+	GameMessage *msg = MessageStreamSubsystem->createMessage(0x413);
 	msg->appendObjectIDArgument(ret->m_fc->m_id);
 	msg->appendLocationArgument(pos);
 	bool active = TheKeyboard->isShift();
