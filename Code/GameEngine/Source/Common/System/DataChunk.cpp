@@ -16,6 +16,7 @@ struct InputChunk
 };
 
 class ChunkInputStream;
+class UnicodeString;
 
 class Mapping;
 
@@ -50,6 +51,8 @@ public:
 	unsigned char readByte();
 	void readArrayOfBytes(char *buffer, int length);
 	AsciiString getChunkLabel();
+	AsciiString readAsciiString();
+	UnicodeString readUnicodeString();
 
 protected:
 	void decrementDataLeft(int size);
