@@ -8,7 +8,7 @@
 // 0x4C bytes); the 3 extra bytes are the 5-byte push of 0x80 versus the
 // 2-byte push of 0x4C. Plain-extern memset keeps the E8-to-thunk shape.
 
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 struct Rva0028F633
 {

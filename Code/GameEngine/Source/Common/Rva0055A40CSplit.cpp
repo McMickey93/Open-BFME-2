@@ -26,7 +26,7 @@ public:
 	void rva0055A40C(float t, Rva0055A246 &left, Rva0055A246 &right) const;
 	Coord3D m_arr[4];
 };
-extern "C" void * __cdecl memcpy(void*,const void*,unsigned int);
+#include <string.h>
 #pragma intrinsic(memcpy)
 // ?Rva0055A40CDifference present-unmatched
 struct Rva0055A40CDifference { float x,y,z; Rva0055A40CDifference(float a,float b,float c):x(a),y(b),z(c) {} void scale(float t) { x*=t;y*=t;z*=t; } void add(const Coord3D *p) { x+=p->x;y+=p->y;z+=p->z; } void add(const Rva0055A40CDifference *p) { x+=p->x;y+=p->y;z+=p->z; } };

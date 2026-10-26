@@ -9,7 +9,7 @@
 // 0x002DD173 operate on object44 (esi+0x44); prev Rva002DBA3FXfer shares
 // /O1 /MD. Honest address name; owner class proven by layout and callers.
 #pragma function(memset)
-extern "C" void *memset(void *dst, int value, unsigned int size);
+#include <string.h>
 
 #include "../../../../reference/shims/moduledata/Common/Snapshot.h"
 
