@@ -8225,3 +8225,5 @@ Code/GameEngine/Source/Common/Rva0044E7A8Check.cpp|param|Rva0044E7A8::rva0044E7A
 Code/GameEngine/Source/Common/Rva00488906Chain.cpp|class||Rva00488906Obj,fc3f1a4eb032f243d5655815,gpt-6.1-sol,w2-10261554-2,w-dce04682aaeb,2026-10-26
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003C1E8C.cpp|function|0x002886C2|Rva002886C2,3b8c620e9f29f4c352be077e,gpt-6.1-sol,w2-10261554-4,w-dce04682aaeb,2026-10-26
 Code/GameEngine/Source/Common/System/Rva002F1BD5Finish.cpp|member|Rva002F1BD5Mid|m_110,705f5d58eb3dd0a4ab4b78b1,gpt-6.1-sol,w2-10261554-5,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/Common/Rva0033A9A5.cpp|class||Rva0033A9A5Entry,86d4ff20fd70e16f33ed36d1,gpt-6.1-sol,w4-10261641-6,w-eb83eac9adc1,2026-10-26
+Code/GameEngine/Source/Common/Rva005A8666Box.cpp|param|NAT::gotTargetMangledPort|a,3f8914ea1304dde200bd7d56,gpt-6.1-sol,w4-10261641-10,w-eb83eac9adc1,2026-10-26
