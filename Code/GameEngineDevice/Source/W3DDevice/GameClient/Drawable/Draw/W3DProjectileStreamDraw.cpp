@@ -89,10 +89,13 @@ public:
 	static RTS3DScene *m_3DScene;
 };
 
+enum NameKeyType;
+
 class W3DProjectileStreamDraw : public DrawModule
 {
 public:
 	W3DProjectileStreamDraw(Thing *thing, const ModuleData *moduleData);
+	virtual NameKeyType getModuleNameKey() const;
 	virtual void setFullyObscuredByShroud(bool fullyObscured);
 
 protected:
