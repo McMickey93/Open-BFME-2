@@ -122,9 +122,9 @@ __declspec(noinline) void HordeGarrisonContain::rva00479C35(Coord3D *in, Coord3D
 struct HordeGarrisonContainModuleDataView
 {
 	unsigned char m_pad00[0xB0];
-	Coord3D m_b0;
+	Coord3D m_entryOffset;
 	Coord3D m_bc;
-	Coord3D m_c8;
+	Coord3D m_exitOffset;
 };
 
 struct StaticCoord3D : public Coord3D
@@ -144,7 +144,7 @@ const Coord3D *HordeGarrisonContain::rva004626CA()
 const Coord3D *HordeGarrisonContain::rva004626AF()
 {
 	static StaticCoord3D s_pos;
-	rva00479C35(&((HordeGarrisonContainModuleDataView *)m_moduleData)->m_b0, &s_pos);
+	rva00479C35(&((HordeGarrisonContainModuleDataView *)m_moduleData)->m_entryOffset, &s_pos);
 	return &s_pos;
 }
 
@@ -152,6 +152,6 @@ const Coord3D *HordeGarrisonContain::rva004626AF()
 const Coord3D *HordeGarrisonContain::rva00464829()
 {
 	static StaticCoord3D s_pos;
-	rva00479C35(&((HordeGarrisonContainModuleDataView *)m_moduleData)->m_c8, &s_pos);
+	rva00479C35(&((HordeGarrisonContainModuleDataView *)m_moduleData)->m_exitOffset, &s_pos);
 	return &s_pos;
 }

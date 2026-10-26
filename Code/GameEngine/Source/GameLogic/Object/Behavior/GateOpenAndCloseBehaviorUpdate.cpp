@@ -214,7 +214,7 @@ class Rva00498716
 	char m_pad0[0xC];
 	int m_0C;
 	char m_pad1[0x38];
-	int m_48;
+	int m_timeBeforePlayingClosedSound;
 public:
 	int rva00498716();
 };
@@ -223,7 +223,7 @@ extern int g_00DCB4CC;
 // ?rva00498716@Rva00498716@@QAEHXZ @0x00498716 15B
 int Rva00498716::rva00498716()
 {
-	int v = m_48;
+	int v = m_timeBeforePlayingClosedSound;
 	if (v == g_00DCB4CC)
 		v = m_0C;
 	return v;

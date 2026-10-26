@@ -19,7 +19,7 @@ struct RespawnUpdateModuleDataRef
 {
 	char m_pad[0x118];
 	AsciiString m_deadImageName;
-	AsciiString m_str11C;
+	AsciiString m_respawnAsTemplate;
 };
 
 class Image;
@@ -121,7 +121,7 @@ const Image *RespawnUpdate::getDeadImage()
 void *RespawnUpdate::rva004AF25D()
 {
 	if (m_cached == (void *)-1) {
-		void *found = (void *)TheThingFactory->findTemplate(m_moduleData->m_str11C);
+		void *found = (void *)TheThingFactory->findTemplate(m_moduleData->m_respawnAsTemplate);
 		m_cached = found;
 		if (found == 0)
 			m_cached = m_object->m_unk04;

@@ -37,7 +37,7 @@ Int GetGameLogicRandomValue(Int lo, Int hi, char *file, int line);
 struct ReplenishUnitsModuleData
 {
 	unsigned char m_pad00[0x134];
-	Int m_134;
+	Int m_replenishDelay;
 	bool m_138;
 };
 
@@ -98,7 +98,7 @@ ReplenishUnitsBehavior::ReplenishUnitsBehavior(Thing *thing, const ModuleData *m
 	if (((const ReplenishUnitsModuleData *)m_moduleData)->m_138)
 	{
 		m_20.giveSelfUpgrade();
-		int hi = ((const ReplenishUnitsModuleData *)m_moduleData)->m_134;
+		int hi = ((const ReplenishUnitsModuleData *)m_moduleData)->m_replenishDelay;
 		setWakeFrame(obj, (UpdateSleepTime)(GetGameLogicRandomValue(1, hi, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\Object\\Behavior\\ReplenishUnitsBehavior.cpp", 0x74)));
 	}
 	else

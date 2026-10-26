@@ -101,9 +101,9 @@ struct Rva004F9F39Key
 struct Rva004F9F39Template
 {
 	unsigned char m_pad000[0x494];
-	Rva00417FBA *m_494; // +0x494
+	Rva00417FBA *m_autoResolveLeadership; // +0x494
 	unsigned char m_pad498[0x5C4 - 0x498];
-	unsigned int m_5c4; // +0x5C4
+	unsigned int m_autoResolveUnitType; // +0x5C4
 };
 struct Rva004F9F39Unit : public TargetRef00217D4C
 {
@@ -160,7 +160,7 @@ void LivingWorldAutoResolveBattle::rva004F9F39()
 		for (TreeHintRef00217D4C *it = vec.m_start; it != end; ++it)
 		{
 			Rva004F9F39Unit *unit = it->get();
-			Rva00417FBA *table = unit->m_2c->m_494;
+			Rva00417FBA *table = unit->m_2c->m_autoResolveLeadership;
 			if (!table)
 				continue;
 			int *entry = table->rva00417FBA(unit->m_08->m_key);
@@ -182,7 +182,7 @@ void LivingWorldAutoResolveBattle::rva004F9F39()
 				Rva004F9F39Unit *unit = ref.get();
 				if (unit->getBonus() == 0)
 				{
-					unsigned int bit = unit->m_2c->m_5c4;
+					unsigned int bit = unit->m_2c->m_autoResolveUnitType;
 					if ((info->m_mask.m_bits[bit >> 5] & (1u << (bit & 31))) && unit != (Rva004F9F39Unit *)r->m_08.m_ptr && !(unit->m_0c <= 0.0f))
 					{
 						unit->m_1c = r->m_ptr;

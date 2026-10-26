@@ -56,7 +56,7 @@ struct LocomotorReverseData
 	char m_pad000[0xd8];
 	int m_canReverse; // +0xD8
 	char m_pad0DC[0x13c - 0xdc];
-	Bool m_13C; // +0x13C
+	Bool m_backingUpStopWhenTurning; // +0x13C
 	char m_pad13D[3];
 	Real m_reverseDistance; // +0x140
 	Real m_reversePathDistance; // +0x144
@@ -148,7 +148,7 @@ void Locomotor::rva001E68D7(Object *obj, const Coord3D *goalPos, Real onPathDist
 		if (angleCoeff > 0.9f)
 			angleCoeff = 0.9f;
         desiredSpeed = (1.0f - angleCoeff) * desiredSpeed;
-        if (m_template->m_13C && reversing())
+        if (m_template->m_backingUpStopWhenTurning && reversing())
         {
             if (obj->modelTest(5) || obj->modelTest(6))
                 desiredSpeed = 0.0f;

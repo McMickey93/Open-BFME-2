@@ -100,10 +100,10 @@ struct Rva00508120WeaponTemplateView
  unsigned char pad00[0x10];
  int value10;
  unsigned char pad14[0x140 - 0x14];
- bool scaleByContained140;
- unsigned char maxContained141;
+ bool m_passengerProportionalAttack;
+ unsigned char m_maxAttackPassengers;
  unsigned char pad142[0x16D - 0x142];
- bool flag16D;
+ bool m_shouldPlayUnderAttackEvaEvent;
  unsigned char pad16E[3];
  bool flag171;
 };
@@ -201,10 +201,10 @@ bool DamageNugget::generateDamageInfo(void *weapon, Object *target, DamageInfo *
  else
   info->amount20 = damage128;
  Rva00508120ContainView *contain;
- if (view->template04->scaleByContained140 && (contain = source->contain250) != 0)
+ if (view->template04->m_passengerProportionalAttack && (contain = source->contain250) != 0)
  {
   unsigned int count = contain->getMemberView().rva0036AE51().size();
-  int maximum = view->template04->maxContained141;
+  int maximum = view->template04->m_maxAttackPassengers;
   if (maximum > 0)
   {
    float ratio = (float)count / maximum;
@@ -272,6 +272,6 @@ bool DamageNugget::generateDamageInfo(void *weapon, Object *target, DamageInfo *
  Player *player = source->getControllingPlayer();
  info->playerMask0C = 1 << player->index54;
  info->value2C = view->template04->value10;
- info->flag25 = view->template04->flag16D;
+ info->flag25 = view->template04->m_shouldPlayUnderAttackEvaEvent;
  return true;
 }

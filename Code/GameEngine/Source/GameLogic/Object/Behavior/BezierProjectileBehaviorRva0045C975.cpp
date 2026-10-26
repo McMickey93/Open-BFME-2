@@ -133,7 +133,7 @@ struct BezierModuleData
 	char m_pad[0x19];
 	bool m_flag19; // +0x19
 	char m_pad1A[0x38 - 0x1A];
-	unsigned int m_command38; // +0x38
+	unsigned int m_finalStuckTime; // +0x38
 };
 
 class BezierProjectileBehavior
@@ -185,10 +185,10 @@ void BezierProjectileBehavior::rva0045C975(int)
 	}
 	obj->setStatus(OBJECT_STATUS_5, false);
 
-	if (bezierModuleData->m_command38 > 0)
+	if (bezierModuleData->m_finalStuckTime > 0)
 	{
 		if (obj->getAI())
-			obj->getAI()->m_ai.rva0045003E(bezierModuleData->m_command38, COMMAND_SOURCE_2);
+			obj->getAI()->m_ai.rva0045003E(bezierModuleData->m_finalStuckTime, COMMAND_SOURCE_2);
 	}
 	else if (obj->getAI())
 	{

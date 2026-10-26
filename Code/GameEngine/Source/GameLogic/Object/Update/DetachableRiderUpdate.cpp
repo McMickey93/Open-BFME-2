@@ -76,7 +76,7 @@ public:
 
 struct RiderRecord {int mask[19];unsigned opaque4c;ObjectCreationList*creation;};
 
-struct RiderData {char pad[8];_STL::vector<RiderRecord> records;_STL::vector<AsciiString> names;WeaponSlotType weapon;bool flag24;bool flag25;};
+struct RiderData {char pad[8];_STL::vector<RiderRecord> records;_STL::vector<AsciiString> names;WeaponSlotType weapon;bool m_riderlessHordeFlees;bool m_removeRiderlessFromHorde;};
 
 struct RiderOwnerHead {void*vtable;const RiderData*data;Object*object;};
 
@@ -211,7 +211,7 @@ UpdateSleepTime DetachableRiderUpdateUpdateReceiver::update(){
   ((Rva001E42F2*)object)->rva001E42F2(data->records[index].mask);
   object->setWeaponLock(data->weapon,LOCK2);object->setStatus(STATUS39,true);
   if(object->conditions.test(265)==0){object->conditions.set(265);object->rva0028AE6D();}
-  if(data->flag25){
+  if(data->m_removeRiderlessFromHorde){
    Object*parent=object->parent;
    if(parent){
     RiderInterface*rider=parent->getRider();
@@ -219,7 +219,7 @@ UpdateSleepTime DetachableRiderUpdateUpdateReceiver::update(){
     if(object->ai)object->ai->commands.aiIdle(SOURCE2);
    }
    TheGameLogic->deselectObject(object,0xfffff,true);
-  }else if(data->flag24){
+  }else if(data->m_riderlessHordeFlees){
    Object*parent=object->parent;
    if(parent){
     if(parent->getRider()){

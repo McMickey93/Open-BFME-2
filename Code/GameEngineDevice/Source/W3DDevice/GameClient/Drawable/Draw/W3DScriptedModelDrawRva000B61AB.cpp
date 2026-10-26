@@ -60,7 +60,7 @@ struct Rva000B61ABObject
 struct Rva000B61ABDrawTemplate
 {
 	unsigned char m_pad000[0x5E2];
-	unsigned short m_flags5E2;
+	unsigned short m_shadowType;
 };
 
 // The rowed geometry getter of the drawable (0x00270FEE).
@@ -100,7 +100,7 @@ float W3DScriptedModelDraw::rva000B61AB()
 	Rva000B61ABDrawTemplate *tmpl = draw->m_template04;
 	if (obj && (obj->m_template04->m_flags108 & 0x40))
 		return draw->getGeometry()->getMaxHeightAbovePosition() * 4.0f;
-	unsigned short flags = tmpl->m_flags5E2;
+	unsigned short flags = tmpl->m_shadowType;
 	if (!((flags & 0x386) || ((flags & 0xC000) && TheWritableGlobalData->m_useShadowVolumes)) || !m_4a)
 		return 0.0f;
 	const Coord3D *p = draw->rva00276470();

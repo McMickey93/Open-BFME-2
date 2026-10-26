@@ -80,7 +80,7 @@ public:
 struct Rva002CB35CAIData
 {
 	char m_pad000[0xD0];
-	float m_D0;							// +0xD0
+	float m_chaseFromBehindLimit;							// +0xD0
 };
 
 class AI
@@ -174,7 +174,7 @@ bool Weapon::isWithinAttackRange(Object *source, const Coord3D *pos,
 		{
 			if (source->testStatus(OBJECT_STATUS_4B))
 			{
-				float reach = TheAI->m_data->m_D0;
+				float reach = TheAI->m_data->m_chaseFromBehindLimit;
 				if (source->rva00263763(victim) < reach * reach)
 					return true;
 			}
