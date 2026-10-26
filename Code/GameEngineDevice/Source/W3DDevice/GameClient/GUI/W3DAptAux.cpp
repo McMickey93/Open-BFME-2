@@ -321,9 +321,9 @@ struct AptSizePair {
 AptSizePair g_aptLastStageSize,g_aptLastDeviceSize; // DE61B8 and DE61C0, zero-filled
 AptRenderTransform g_aptTransformBeforeLinearScale; // DE6130, before the linear scale
 void Rva006CD6F0Get(void **,void **);
-extern "C" double __cdecl fabs(double);
+#include <math.h>
 static __forceinline bool aptFar(float value) {
- float magnitude=fabs(value);
+ float magnitude=(float)fabs((double)value);
  return magnitude>0.0001f;
 }
 #define aptScaleX (*reinterpret_cast<float*>(g_aptHostStateStorage+0x10))
@@ -412,14 +412,11 @@ void Rva000A9192TransformPointCaller(const Rva000A9192Point *p, const Rva000A919
 // XMM0: MSVC returns a TU-local float there when the caller is visible.
 // Native literals BC93B4/BCF628/BBB8D8 are 0.0001f/0.01f/1.0f.
 
-// <math.h>'s float overloads of fabs, which this unit does not include.
-static inline float __cdecl bfmeFabsf(float _X) {return ((float)fabs((double)_X)); }
-static inline float __cdecl bfmeFabs(float _X) {return (bfmeFabsf(_X)); }
 static float rva000A925D(float denominator, float numerator)
 {
 	if (denominator < 0.0001f)
 		return 1.0f;
-	if (bfmeFabs(numerator - denominator) < 0.01f)
+	if (fabs(numerator - denominator) < 0.01f)
 		return 1.0f;
 	return numerator / denominator;
 }
