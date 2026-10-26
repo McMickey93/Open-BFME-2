@@ -330,7 +330,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankTruckDraw.cpp` | 103 | 16 (U=12, C=3, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/JetAIUpdate.cpp` | 101 | 53 (U=47, C=3, S=3) | Open |
 | `Code/GameEngine/Source/Common/Rva00415704Ctor.cpp` | 100 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/stlport_introsort_loop_s4sortelem20.cpp` | 98 | 3 (U=3) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/stlport_introsort_loop_s4sortelem20.cpp` | 98 | 3 (U=3) | Repair landed / awaiting census (2026-10-26, 797d6cd0f5): placeholder tail ctor/dtor/set replaced by the rowed vector<Rva00332217Record>::operator= (0x332217) and out-of-line element ctor/dtor; link_check LINKS 0 -> 90 B against index d1f046749a, all 8 S4SortElem20 units checked, none drops |
 | `Code/GameEngine/Source/Common/System/SaveGame/Rva0052CD81Finish.cpp` | 96 | 4 (C=2, S=2) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_istream.cpp` | 90 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003F40EF.cpp` | 85 | 5 (U=5) | Open |
