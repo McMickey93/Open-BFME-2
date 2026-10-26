@@ -90,3 +90,14 @@ Two concurrent planner scans encountered disappearing temporary trial sources.
 After the trial finished, the Behavior-scoped planner was regenerated and
 `name_lane.py consolidate --check build/consolidation` passed. No planner or
 routing gate was changed, and no temporary source remains.
+
+## Next-session recovery audit
+
+At the next session's start the two inherited commits are still unpublished:
+`39c05b2f0d` (SlavedUpdate publication receipt) and `5d8dc4d8fc` (this repair),
+rebased by the runner from their earlier SHAs. The worktree contains no inherited
+source edits. `git pull --rebase origin master` and `check_csv.py` pass.
+The pending range has no source moves; its sole changed source remains the
+BridgeBehavior die donor above. This recovery receipt retries publication only
+through the required commit-and-publish command. Claims remain held until the
+runner confirms publication. Unrelated untracked `reverse/zh_sweep/` remains.
