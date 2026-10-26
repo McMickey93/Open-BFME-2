@@ -15,7 +15,7 @@ public:
 };
 
 class UpgradeCenter;
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 #pragma comment(linker, "/alternatename:_TheUpgradeCenter=?TheUpgradeCenter@@3PAVUpgradeCenter@@A")
 
 enum ObjectID
