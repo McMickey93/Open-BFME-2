@@ -2770,6 +2770,16 @@ Census confirmation: not claimed.
   link_check (index d1f046749a) LINKS 0 -> 126 B; DamageFXParseCommon, Rva0033962FFinish,
   ArmorStoreCtor, Rva0016DEE0Cluster, ActiveBody, DamageFXRva003605AF, DamageFXHashSubscript,
   DamageFX_pairConstruct, DamageFX_hashtableNewNode and GameEngineInit still link.
+  WW3D/WWLib ports, same test (2026-10-26, K1): `WW3D2/decalsys.cpp` (042fe08592, 0 -> 39 B)
+  and `WWLib/wwfont.cpp` (2b3be7808e, 0 -> 33 B). Each carried one row (an empty
+  `LogicalDecalClass` ctor; the header inline `TPoint2D<int>(int,int)`) beside Zero Hour bodies
+  with no row anywhere in functions.csv (DecalSystemClass/DecalGeneratorClass/pool methods;
+  WWFontClass) whose callees (ProjectorClass, `MatrixMapperClass::Set_Texture_Transform(Matrix4,float)`;
+  `TRect<int>` members) have no BFME 2 provider. The link index showed no other object referencing
+  a symbol only those units defined, so the bodies, their `??_H` anchors and `#pragma optimize`
+  blocks went (39 present-unmatched markers, 6 pragma lines). `texproject.cpp` is the same case
+  (one row, inline `MaterialPassClass::Set_Cull_Volume` 0x003B23A5, extern pointer anchor
+  byte-verified 1/1 and LINKS 0 -> 10 B in preview) but is file-claimed by another seat; left for them.
 - **Remaining / next check:** other ZH-port units (header comment "Ported verbatim from the
   Generals Zero Hour reference") whose U blockers are ZH-only callees: list each defined body,
   check whether its BFME 2 counterpart is rowed under another name or absent, and drop the ZH copy
