@@ -182,10 +182,6 @@ static SimpleDynVecClass<Vector4> temp_apt;	// retail 0x001AC680 loads the Vecto
 #endif
 
 
-/*
-** Temporary storage used during decal creation
-*/
-static DynamicVectorClass<Vector3>	_TempVertexBuffer;
 
 
 /***********************************************************************************************
@@ -614,63 +610,7 @@ void MeshClass::Delete_Decal(uint32 decal_id)
 // MeshClass::Render_Material_Pass: defined in bfme2_mesh_material_pass.cpp (its row's unit).
 
 
-/***********************************************************************************************
- * MeshClass::Special_Render -- special render function for meshes                             *
- *                                                                                             *
- * INPUT:                                                                                      *
- *                                                                                             *
- * OUTPUT:                                                                                     *
- *                                                                                             *
- * WARNINGS:                                                                                   *
- *                                                                                             *
- * HISTORY:                                                                                    *
- *   12/10/98   GTH : Created.                                                                 *
- *=============================================================================================*/
-// ?MeshClass::Special_Render present-unmatched
-void MeshClass::Special_Render(SpecialRenderInfoClass & rinfo)
-{
-	if ((Is_Not_Hidden_At_All() == false) && (rinfo.RenderType != SpecialRenderInfoClass::RENDER_SHADOW)) {
-		return;
-	}
-	
-	if (rinfo.RenderType == SpecialRenderInfoClass::RENDER_VIS) {
-	
-		WWASSERT(rinfo.VisRasterizer != NULL);
-		rinfo.VisRasterizer->Enable_Two_Sided_Rendering(!!Model->Get_Flag(MeshGeometryClass::TWO_SIDED));
-
-		if (Model->Get_Flag(MeshModelClass::SKIN) == 0) {
-
-			rinfo.VisRasterizer->Set_Model_Transform(Transform);
-			rinfo.VisRasterizer->Render_Triangles(	Model->Get_Vertex_Array(),
-																Model->Get_Vertex_Count(),
-																Model->Get_Polygon_Array(),
-																Model->Get_Polygon_Count(),
-																Get_Bounding_Box() );
-		} else {
-
-			int vertex_count = Model->Get_Vertex_Count();
-			if (_TempVertexBuffer.Count() < vertex_count) _TempVertexBuffer.Resize(vertex_count);
-			Vector3 *dst_vert = &(_TempVertexBuffer[0]);
-			Get_Deformed_Vertices(dst_vert);
-
-			rinfo.VisRasterizer->Set_Model_Transform(Matrix3D::Identity);
-			rinfo.VisRasterizer->Render_Triangles(	dst_vert,
-																Model->Get_Vertex_Count(),
-																Model->Get_Polygon_Array(),
-																Model->Get_Polygon_Count(),
-																Get_Bounding_Box() );
-		}
-		rinfo.VisRasterizer->Enable_Two_Sided_Rendering(false);
-	}
-
-	if (rinfo.RenderType == SpecialRenderInfoClass::RENDER_SHADOW) {
-		const HTreeClass * htree = NULL;
-		if (Container!=NULL) {
-			htree = Container->Get_HTree();
-		}
-		Model->Shadow_Render(rinfo,Transform,htree);
-	}
-}
+// MeshClass::Special_Render: Zero Hour visibility body removed; it is not retail's (no VisRasterizer path in BFME 2's MeshClass).
 
 
 
@@ -930,53 +870,7 @@ void MeshClass::Generate_Culling_Tree(void)
 }
 
 
-/***********************************************************************************************
- * MeshClass::Add_Dependencies_To_List -- Add dependent files to the list.                     *
- *                                                                                             *
- * INPUT:                                                                                      *
- *                                                                                             *
- * OUTPUT:                                                                                     *
- *                                                                                             *
- * WARNINGS:                                                                                   *
- *                                                                                             *
- * HISTORY:                                                                                    *
- *   3/18/99    PDS : Created.                                                                 *
- *=============================================================================================*/
-void MeshClass::Add_Dependencies_To_List
-(
-	DynamicVectorClass<StringClass> &file_list,
-	bool										textures_only
-)
-{
-	//
-	// Get a pointer to this mesh's material information object
-	//
-	MaterialInfoClass *material = Get_Material_Info ();
-	if (material != NULL) {
-		
-		//
-		// Loop through all the textures and add their filenames to our list
-		//
-		for (int index = 0; index < material->Texture_Count (); index ++) {
-			
-			//
-			//	Add this texture's filename to the list
-			//
-			TextureClass *texture = material->Peek_Texture (index);
-			if (texture != NULL) {
-				file_list.Add (texture->Get_Full_Path ());
-			}
-		}
-		
-		//
-		// Release our hold on the material information object
-		//
-		material->Release_Ref ();
-	}
-
-	RenderObjClass::Add_Dependencies_To_List (file_list, textures_only);
-	return ;
-}
+// MeshClass::Add_Dependencies_To_List: Zero Hour override removed; retail MeshClass has none.
 
 
 /***********************************************************************************************
@@ -1095,58 +989,20 @@ void _bfmeMeshClassInlineAnchor(MeshClass *mesh)
 }
 #pragma inline_depth()
 
+// The two-sided-rendering setters' rows (0x00355C2F, 0x005BE1D8) were emitted
+// only by the removed visibility bodies; keep them emitted as header inlines.
+#pragma inline_depth(0)
+// ?_bfmeVisTwoSidedInlineAnchor@@YAXPAVVisRasterizerClass@@PAVIDBufferClass@@_N@Z absent-from-retail
+void _bfmeVisTwoSidedInlineAnchor(VisRasterizerClass *v, IDBufferClass *idb, bool b)
+{
+    v->Enable_Two_Sided_Rendering(b);
+    idb->Enable_Two_Sided_Rendering(b);
+}
+#pragma inline_depth()
+
 // ?bfmeEmitLineSegClassCtor@@YAXPAVLineSegClass@@ABV0@ABVMatrix3D@@@Z present-unmatched
 void bfmeEmitLineSegClassCtor(LineSegClass *lineSeg, const LineSegClass &src, const Matrix3D &tm)
 {
     new (lineSeg) LineSegClass(src, tm);
 }
 
-// Box visibility rendering shares the mesh visibility path's unrecovered
-// rasterizer dependencies. Keep these donor bodies here while ordinary box
-// rendering can link independently. The geometry tables remain owned by boxrobj.cpp.
-#include "boxrobj.h"
-extern "C" TriIndex _BoxFaces[12];
-extern "C" Vector3 _BoxVerts[8];
-#define NUM_BOX_VERTS 8
-#define NUM_BOX_FACES 12
-
-// ?BoxRenderObjClass::vis_render_box present-unmatched
-void BoxRenderObjClass::vis_render_box(SpecialRenderInfoClass & rinfo,const Vector3 & center,const Vector3 & extent)
-{
-	if (!IsInitted) return;
-	
-	static Vector3 verts[NUM_BOX_VERTS];
-
-	// compute the vertex positions
-	for (int ivert=0; ivert<NUM_BOX_VERTS; ivert++) {
-		verts[ivert].X = center.X + _BoxVerts[ivert][0] * extent.X;
-		verts[ivert].Y = center.Y + _BoxVerts[ivert][1] * extent.Y;
-		verts[ivert].Z = center.Z + _BoxVerts[ivert][2] * extent.Z;
-	}
-
-	// render!
-	rinfo.VisRasterizer->Render_Triangles(verts,NUM_BOX_VERTS,_BoxFaces,NUM_BOX_FACES,Get_Bounding_Box());
-}
-
-// ?AABoxRenderObjClass::Special_Render present-unmatched
-void AABoxRenderObjClass::Special_Render(SpecialRenderInfoClass & rinfo)
-{
-	if (rinfo.RenderType == SpecialRenderInfoClass::RENDER_VIS) {
-		WWASSERT(rinfo.VisRasterizer != NULL);
-		const Matrix3D & tm = Transform;
-		Matrix3D temp(1);
-		temp.Translate(Vector3(tm[0][3], tm[1][3], tm[2][3]));
-		rinfo.VisRasterizer->Set_Model_Transform(temp);
-		vis_render_box(rinfo,ObjSpaceCenter,ObjSpaceExtent);
-	}
-}
-
-// ?OBBoxRenderObjClass::Special_Render present-unmatched
-void OBBoxRenderObjClass::Special_Render(SpecialRenderInfoClass & rinfo)
-{
-	if (rinfo.RenderType == SpecialRenderInfoClass::RENDER_VIS) {
-		WWASSERT(rinfo.VisRasterizer != NULL);
-		rinfo.VisRasterizer->Set_Model_Transform(Transform);
-		vis_render_box(rinfo,ObjSpaceCenter,ObjSpaceExtent);
-	}
-}
