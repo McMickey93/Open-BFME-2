@@ -26,19 +26,28 @@
 // AsciiString destructor (RVA 0x005EE90 / ILT 0x0000D828), not the private
 // StringBase<char> destructor.
 
-struct BfmeSortTailElement12;
+// Retail's tail is the STLport vector whose assignment is rowed at 0x332217
+// (StlSweepR3Rva00332217.cpp, Rva00332217Record elements). The assignment
+// below calls that row; the tail's layout is the vector's three pointers.
+struct Rva00332217Record;
+namespace _STL
+{
+template <class T> class allocator;
+template <class T, class A> class vector
+{
+public:
+	vector &operator=(const vector &other);
+};
+}
+typedef _STL::vector<Rva00332217Record, _STL::allocator<Rva00332217Record> >
+	Rva00332217RecordVector;
 
 class BfmeSortElem20Tail
 {
-public:
-    BfmeSortElem20Tail(const BfmeSortElem20Tail &other);
-    ~BfmeSortElem20Tail();
-    void set(const BfmeSortElem20Tail &other);
-
 private:
-    BfmeSortTailElement12 *m_begin;
-    BfmeSortTailElement12 *m_end;
-    BfmeSortTailElement12 *m_capacity;
+    Rva00332217Record *m_begin;
+    Rva00332217Record *m_end;
+    Rva00332217Record *m_capacity;
 };
 
 struct S4SortElem20
@@ -52,11 +61,17 @@ struct S4SortElem20
 	// is pinned from the BFME1 donor's placed caller; the Ghidra boundary and
 	// those callees are target evidence. Preserve the donor's field-wise copy:
 	// compiler-generated whole-tail copying emits a different 38-byte body.
+	// Copy construction and destruction stay out of line: retail's swap
+	// calls 0x3371B1 and 0x3372B7, which this unit does not own.
+	S4SortElem20(const S4SortElem20 &other);
+	~S4SortElem20();
+
 	S4SortElem20 &operator=(const S4SortElem20 &other)
 	{
 		m_bfmeName = other.m_bfmeName;
 		m_bfmeFlag = other.m_bfmeFlag;
-		m_bfmeTail.set(other.m_bfmeTail);
+		*(Rva00332217RecordVector *)&m_bfmeTail =
+			*(const Rva00332217RecordVector *)&other.m_bfmeTail;
 		return *this;
 	}
 };
