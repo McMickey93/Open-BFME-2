@@ -18,7 +18,7 @@ public:
     __forceinline Rva0044BC76(int, int) : m_ptr(0) {}
     TargetRef00217D4C *m_ptr;
 };
-void *__cdecl operator new(unsigned int size);
+#include <new>
 struct ImplRef0044BC76 { virtual ~ImplRef0044BC76() {} int m_ref; ImplRef0044BC76() : m_ref(0) {} };
 struct Impl0044BC76 : ImplRef0044BC76 { int m_value; Impl0044BC76(const int &v) : m_value(v) {} };
 // ??0Rva0044BC76@@QAE@PBH@Z: retail 0x0044BC76 (53B), homed here. Select-any

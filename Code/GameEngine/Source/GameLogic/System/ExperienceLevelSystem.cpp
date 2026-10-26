@@ -669,8 +669,7 @@ class ExperienceLevelSystem;
 // GameEngine::init registers this singleton under its native literal name.
 // VA DFECC4 is one zero-initialized pointer; original class layout is opaque.
 ExperienceLevelSystem *TheExperienceLevelSystem = 0;
-void *operator new(unsigned int);
-void operator delete(void *);
+#include <new>
 // ExperienceLevel copy assignment, rowed at 0x00289902 under its address name.
 class Rva00289902 { public: Rva00289902 &rva00289902(const Rva00289902 &); };
 // Native and WB both pass this ExperienceLevel FieldParse table (VA
