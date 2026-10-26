@@ -4,6 +4,27 @@ Base `7360cb439a`, on upstream `7de0e86f1c`, 2026-10-26. The picker claimed
 class ICoord2D and served ThrowingNewHelpers.cpp. Its frozen-file check passes;
 all 31 existing rows pass before the change.
 
+## Current master integration
+
+The PR115 replay starts from `e1cdb1014f` on 2026-10-26. The current
+component-header commit passes 1,939 function rows and 27 data rows across
+255 dependent sources. Its separately checked changed consumer passes 31
+rows and eight EXACT EH graphs; these overlapping checks are not summed.
+The planning-controls consumer now has 18 ledger rows, all exact, with two
+EXACT EH graphs. Both header-queue retirements remain applicable.
+
+Fresh comparisons with the normally compiled pre-adoption objects preserve
+all external symbols, non-debug bytes and physical relocation targets:
+ThrowingNewHelpers has 58 sections / 2,547 bytes / 201 relocations; planning
+controls has 121 / 5,162 / 214. The current shadow identity scan reports four
+ThrowingNewHelpers cleanup references to the pre-existing Rva00575E4EBase2
+and Rva005CF07EListener destructor spellings. The object comparison proves
+this adoption changes none of those bindings; no identity retirement or
+clean-link claim follows. Receipts: `iteration49-coordinate-parity.log`,
+`iteration49-coordinate-selection-parity.log` and the normal commit logs
+under `build/codex-cleanup-20261025/`. The remaining sections retain their
+original historical bases and counts.
+
 ## Evidence and interface
 
 Retail exports `??0ICoord2D@@QAE@HH@Z` at RVA `0x0007E523`. The existing

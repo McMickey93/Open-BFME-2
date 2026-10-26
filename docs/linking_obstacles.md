@@ -466,6 +466,13 @@ Completed: native call/row diagnosis and current-provider verification; these si
   TemplateCountKey allocator COMDATs still have two divergent-definition
   diagnostics in the shadow identity check; no clean-link verdict is claimed.
   Seven remaining ICoord2D items and census confirmation stay open.
+- **Current component-header integration (2026-10-26, base `e1cdb1014f`):**
+  The [fresh receipt](../reverse/attempt_support/icoord2d-component-header-20261026.md#current-master-integration)
+  verifies 1,939 rows and 27 data rows across 255 header dependents, plus the
+  planning-controls file's current 18 rows and two exact EH graphs. Both
+  changed objects preserve every non-debug byte and relocation target. Four
+  shadow cleanup-identity findings in ThrowingNewHelpers retain their old
+  bindings; they are not introduced or retired by this header adoption.
 - **Science purchase-cost header prerequisite (2026-10-26):**
   [canonical GameLogic adoption](../reverse/attempt_support/consolidation-science-cost-prerequisite-20261026-codex.md)
   preserves the 86-byte cost donor and retires one header-queue row through
