@@ -44,15 +44,8 @@ Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameClie
 Code/GameEngine/Source/Common/GameLogicRandomSeedCRC_get.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
 Code/GameEngine/Source/Common/GameLogicRandomValue_getValueInt.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
 Code/GameEngine/Source/Common/GameLogicRandomValue_getValueReal.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
-Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	duplicate-def	?g_Va00DB5F90@@3HA	0x009B5F90
-Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00DA6CC8@@3HA	0x009A6CC8
-Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00DB5F90@@3HA	0x009B5F90
-Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00DDF578@@3HA	0x009DF578
-Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00DEDA24@@3HA	0x009EDA24
-Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00DFEC54@@3HA	0x009FEC54
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E03314@@3HA	0x00A03314
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E09FA4@@3HA	0x00A09FA4
-Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E0C1F4@@3HA	0x00A0C1F4
 Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	duplicate-def	?g_Va00E031A8@@3PAIA	0x00A031A8
 Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	wrong-name	?g_Va00E031A8@@3PAIA	0x00A031A8
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F24@@3RCRAVRva00075695Item@@C	0x009E1F24
