@@ -19,7 +19,8 @@ public:
 private:
  unsigned char data[28];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class Rva002542F3Member {
 public: Rva002542F3Member();
