@@ -69,6 +69,8 @@ public:
 	void rva0011178B(TileData *value);
 };
 
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileData.cpp
+
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataDtor.cpp
 
 TileData::~TileData()
@@ -80,31 +82,17 @@ TileData::~TileData()
 	}
 }
 
-// tu-skeleton: 0x00111772 18B ?rva00111772@Rva00111772@@QAEPAUGapCounted@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE39.cpp (not merged yet)
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileData.cpp
 
-// tu-skeleton: 0x00111784 7B ?get@Rva00111784DwordField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x0011178B 41B ?rva0011178B@TileData@@QAEXPAV1@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataReplaceCompanionRef.cpp (not merged yet)
+
+
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileData.cpp
 
-// tu-skeleton: 0x0011172A 72B ??1TileData@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00111772 18B ?rva00111772@Rva00111772@@QAEPAUGapCounted@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE39.cpp (not merged yet)
 
-// tu-skeleton: 0x00111784 7B ?get@Rva00111784DwordField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x0011178B 41B ?rva0011178B@TileData@@QAEXPAV1@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataReplaceCompanionRef.cpp (not merged yet)
-
-// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileData.cpp
-
-// tu-skeleton: 0x0011172A 72B ??1TileData@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00111772 18B ?rva00111772@Rva00111772@@QAEPAUGapCounted@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE39.cpp (not merged yet)
-
-// tu-skeleton: 0x00111784 7B ?get@Rva00111784DwordField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x0011178B 41B ?rva0011178B@TileData@@QAEXPAV1@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataReplaceCompanionRef.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/TileData_hasRGBDataForWidth.cpp
 
@@ -131,21 +119,13 @@ bool TileData::hasRGBDataForWidth(int v)
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataDownsample.cpp
 
-// tu-skeleton: 0x00111850 23B ??0TileData@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataGetRGBDataForWidth.cpp (not merged yet)
 
-// tu-skeleton: 0x00111867 28B ??_GTileData@@UAEPAXI@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataGetRGBDataForWidth.cpp (not merged yet)
 
-// tu-skeleton: 0x00111883 105B ?updateMips@TileData@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataGetRGBDataForWidth.cpp (not merged yet)
 
-// tu-skeleton: 0x001118EC 281B _Rva001118ECResampleRgb555 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataResampleRgb555.cpp (not merged yet)
 
-// tu-skeleton: 0x00111A05 134B ?rva00111A05@TileData@@QAEXPBEH@Z -- matched in Code/GameEngine/Source/Common/Rva00111A05Finish.cpp (not merged yet)
 
-// tu-skeleton: 0x00111850 23B ??0TileData@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataGetRGBDataForWidth.cpp (not merged yet)
 
-// tu-skeleton: 0x00111867 28B ??_GTileData@@UAEPAXI@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataGetRGBDataForWidth.cpp (not merged yet)
 
-// tu-skeleton: 0x00111883 105B ?updateMips@TileData@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataGetRGBDataForWidth.cpp (not merged yet)
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataResampleRgb555.cpp
 
@@ -185,7 +165,20 @@ void __cdecl Rva001118ECResampleRgb555(
     }
 }
 
-// tu-skeleton: 0x00111A05 134B ?rva00111A05@TileData@@QAEXPBEH@Z -- matched in Code/GameEngine/Source/Common/Rva00111A05Finish.cpp (not merged yet)
+// tu-skeleton: 0x00111772 18B ?rva00111772@Rva00111772@@QAEPAUGapCounted@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE39.cpp (not merged yet)
+
+// tu-skeleton: 0x00111784 7B ?get@Rva00111784DwordField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataReplaceCompanionRef.cpp
+
+void TileData::rva0011178B(TileData *value)
+{
+    RefCountClass *incoming=value;
+    if(incoming)++incoming->m_numRefs;
+    RefCountClass *&slot=m_ref;
+    if(slot)slot->Release_Ref();
+    slot=incoming;
+}
 
 // tu-skeleton: 0x00111850 23B ??0TileData@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/TileDataGetRGBDataForWidth.cpp (not merged yet)
 
