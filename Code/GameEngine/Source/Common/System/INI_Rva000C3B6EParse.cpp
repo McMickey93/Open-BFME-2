@@ -44,8 +44,7 @@ private:
 	const char *m_sepsColon;
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 void INI::Rva000C3B6EParse(INI *ini, void *instance, void *store, const void *userData)
 {
