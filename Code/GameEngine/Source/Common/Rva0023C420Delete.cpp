@@ -11,7 +11,7 @@
 // edx slot load, push-eax and pop-ecx cleanup (defaults give test-ecx,
 // push-0 and one extra byte).
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva0023C420
 {

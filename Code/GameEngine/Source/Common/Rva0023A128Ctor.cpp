@@ -285,7 +285,7 @@ void Rva0023A128::rva00239B94(int)
 // Native23932B clears the owner before calling the rowed42C1B7 pointee
 // destructor and global delete. The full26B body and both REL32 bindings
 // equal the existing clear; the holder's original spelling is not inferred.
-void __cdecl operator delete(void *);
+#include <new>
 Rva0023932BMember::~Rva0023932BMember()
 {
 	Rva0042C1B7Item *p=m_ptr;
