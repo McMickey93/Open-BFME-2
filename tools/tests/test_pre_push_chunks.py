@@ -125,6 +125,49 @@ def test_full_gate_failure_stops_before_eh_and_data(repo):
     assert not calls(repo[0], 'conv-calls.jsonl')
 
 
+RECORD_RECEIPT = """import json, os, sys
+with open('receipt-calls.jsonl', 'a', encoding='utf-8') as out:
+    out.write(json.dumps(sys.argv[1:]) + '\\n')
+if sys.argv[1:2] == ['find'] and os.environ.get('CARRY_FROM'):
+    print(os.environ['CARRY_FROM'])
+"""
+
+
+def receipt_log(fixture):
+    path, sources, base, _ = fixture
+    hooks.write(path, 'tools/full_gate_receipt.py', RECORD_RECEIPT)
+    hooks.git(path, 'add', '--', 'tools/full_gate_receipt.py')
+    hooks.git(path, 'commit', '-qm', 'receipt log fixture')
+    return path, sources, base, hooks.git(path, 'rev-parse', 'HEAD')
+
+
+def test_large_bounded_chunk_scope_records_a_receipt(repo):
+    # A bounded scope of 1,000+ sources (a widely included header) stays in chunks
+    # but takes as long as the full gate; its rebased retry must be able to carry it.
+    fixture = receipt_log(repo)
+    selected = list(repo[1])
+    selected.pop(0)
+    done = run_hook(fixture, selected)
+    assert done.returncode == 0, done.stderr
+    assert len(calls(repo[0])) > 1 and all(calls(repo[0]))
+    assert calls(repo[0], 'receipt-calls.jsonl') == [['find', fixture[3]], ['record', fixture[3]]]
+
+
+def test_full_scope_still_records_a_receipt(repo):
+    fixture = receipt_log(repo)
+    done = run_hook(fixture)
+    assert done.returncode == 0, done.stderr
+    assert calls(repo[0]) == [[]]
+    assert calls(repo[0], 'receipt-calls.jsonl') == [['find', fixture[3]], ['record', fixture[3]]]
+
+
+def test_small_scope_neither_asks_for_nor_records_a_receipt(repo):
+    fixture = receipt_log(repo)
+    done = run_hook(fixture, [repo[1][0]])
+    assert done.returncode == 0, done.stderr
+    assert not calls(repo[0], 'receipt-calls.jsonl')
+
+
 def unbounded_headers(fixture):
     path, sources, base, _ = fixture
     hooks.write(path, 'tools/header_dependents.py', 'raise SystemExit(2)\n')

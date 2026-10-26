@@ -6,7 +6,9 @@ header change) spends 13-25 minutes byte-verifying every source. Master moves
 meanwhile, git rejects the push, and the rebased push ran the whole gate again;
 on 2026-10-12 one batch passed it ten times and never landed. The shared push
 window that answered this (tools/push_lease.py) froze every other pusher for
-the length of each full gate instead.
+the length of each full gate instead. A bounded scope of 1,024 or more sources
+(a header with a thousand dependents) stays in chunks but takes as long, so the
+hook records it as well and its retry carries it the same way.
 
 HOW. When the full gate passes for a commit C0, the hook records C0 here (in
 the git common directory, so every worktree of the clone sees it). A later push

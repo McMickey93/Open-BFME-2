@@ -412,7 +412,9 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
     # Asked whenever this push could need the full gate: an unbounded dependency change,
     # or a scope large enough that classify_full_scope below may choose it.
     carried=""
+    large_scope=0
     if [ "$header_all" -ne 0 ] || [ "${#verify[@]}" -ge 1024 ]; then
+        large_scope=1
         carried="$(python3 tools/full_gate_receipt.py find "$local_sha")" || carried=""
     fi
     if [ -n "$carried" ]; then
@@ -512,7 +514,11 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
     # 10 s), then shadow_cap. Reports, never fails the push.
     shadow_cap python3 tools/replay_check.py --shadow --range "$base" "$local_sha" < /dev/null \
         || echo "pre-push: replay_check shadow check failed to run (ignored)" >&2
-    if [ "$full_scope" -ne 0 ]; then
+    # A large bounded scope that classify_full_scope left in chunks (a header with
+    # 1,000+ dependents) takes as long as the full gate and loses the same race with
+    # master, so it is recorded too: the rebased retry carries it like a full gate.
+    # A carried push records nothing; the commit it carried from stays the receipt.
+    if [ "$full_scope" -ne 0 ] || { [ "$large_scope" -ne 0 ] && [ -z "$carried" ]; }; then
         python3 tools/full_gate_receipt.py record "$local_sha" \
             || echo "pre-push: could not record the full gate for $local_sha (a retry runs it again)" >&2
     fi
