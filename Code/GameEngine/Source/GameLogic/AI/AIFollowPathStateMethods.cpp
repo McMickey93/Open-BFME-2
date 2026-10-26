@@ -56,11 +56,11 @@ struct FprintfTarget
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 #define CRITTER_LOG(msg) \
 	if (g_00E03745) \
 	{ \
-		FprintfTarget *log = (FprintfTarget *)g_00DFEFF0; \
+		FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile; \
 		if (log) \
 			fprintf msg; \
 	}
@@ -346,7 +346,7 @@ StateReturnType AIFollowPathState::update()
 		} 
 		else 
 		{
-			CRITTER_LOG(((FprintfTarget *)g_00DFEFF0, "CritterDesync: setAdjustDestination(m_adjustFinal=%s && (m_adjustFinalOverride=%s || ai->isDoingGroundMovement()=%s) 43",
+			CRITTER_LOG(((FprintfTarget *)theLogicRandomLogFile, "CritterDesync: setAdjustDestination(m_adjustFinal=%s && (m_adjustFinalOverride=%s || ai->isDoingGroundMovement()=%s) 43",
 				m_adjustFinal ? "TRUE" : "FALSE", m_adjustFinalOverride ? "TRUE" : "FALSE", ai->isDoingGroundMovement() ? "TRUE" : "FALSE"));
 			setAdjustsDestination(m_adjustFinal && (m_adjustFinalOverride || ai->isDoingGroundMovement()));
 			if (getAdjustsDestination()) 

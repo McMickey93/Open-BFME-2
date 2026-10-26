@@ -360,7 +360,6 @@ Code/GameEngine/Source/GameClient/System/ParticleSystemMake001FCBD7.cpp	wrong-na
 Code/GameEngine/Source/GameClient/System/SmudgeManagerDtor.cpp	wrong-name	?m_freeSmudgeList@SmudgeSet@@2V?$DLListClass@USmudge@@@@A	0x009BCBF4
 Code/GameEngine/Source/GameClient/System/SmudgeSetReset.cpp	wrong-name	?m_freeSmudgeList@SmudgeSet@@2V?$DLListClass@USmudge@@@@A	0x009BCBF4
 Code/GameEngine/Source/GameClient/VideoPlayerDestructorThunk.cpp	wrong-name	?TheVideoPlayer@@3PAVVideoPlayer@@A	0x00A0ABA8
-Code/GameEngine/Source/GameLogic/AI/AIFollowPathStateMethods.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0
 Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S1@?7??checkForSupplyCenter@AIPlayer@@IAEXPAVBuildListInfo@@PAVObject@@@Z@4IA	0x00A044C8
 Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S2@?N@??findSupplyCenter@AIPlayer@@IAEPAVObject@@H@Z@4IA	0x00A044C0
 Code/GameEngine/Source/GameLogic/AI/AIStatesBfmeComputePath.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0

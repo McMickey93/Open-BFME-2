@@ -27,7 +27,7 @@
 // bytes): the ZH body (parachuting status 7 -> false; AI present and its
 // isAllowedToAdjustDestination, vslot 107 at +0x1AC, false -> false; else
 // m_adjustDestinations at +0x48) with BFME2's CritterDesync log lines
-// (flag g_00E03745, log file g_00DFEFF0; strings from retail .rdata).
+// (flag g_00E03745, log file theLogicRandomLogFile; strings from retail .rdata).
 typedef int AudioHandle;
 enum ObjectStatusTypes
 {
@@ -222,7 +222,7 @@ struct FprintfTarget
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 
 
 
