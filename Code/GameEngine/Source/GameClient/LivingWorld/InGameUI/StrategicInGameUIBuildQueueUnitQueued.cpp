@@ -159,13 +159,7 @@ virtual int slot12();
  virtual const Rva005E72B4Production *slot13();
 };
 struct Rva005E72B4Entry { char bytes[8]; };
-class Rva0007DF07 {
-public:
- inline Rva0007DF07() : m_refCount(0) {}
- virtual ~Rva0007DF07() {}
- void AddRef() { ++m_refCount; }
-private: int m_refCount;
-};
+#include "../../../../Include/Common/Rva0007DF07.h"
 class Rva005E7ED7 : public StrategicInGameUI::BuildQueueDetailsPanel::Impl::Icon, public Rva0007DF07 {
 public:
  typedef StrategicInGameUI::BuildQueueDetailsPanel::Impl Owner;
@@ -184,13 +178,13 @@ struct TargetRef00217D4C;
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 struct Rva005E71C6Ref {
  Rva005E7ED7 *object; Rva005E7ED7 *operator->()const {return object;}
- Rva005E71C6Ref(const Rva005E71C6Ref &r):object(r.object){if(object)object->AddRef();}
+ Rva005E71C6Ref(const Rva005E71C6Ref &r):object(r.object){if(object)++object->m_04;}
  Rva005E71C6Ref &operator=(const Rva005E71C6Ref &);
- Rva005E71C6Ref(Rva005E7ED7 *p) : object(p) { if(object) object->AddRef(); }
+ Rva005E71C6Ref(Rva005E7ED7 *p) : object(p) { if(object) ++object->m_04; }
  ~Rva005E71C6Ref() { if(object) ReleaseTreeHintRef00217D4C((TargetRef00217D4C *)(Rva0007DF07 *)object); }
 };
 class Rva005E7198;
-inline Rva005E71C6Ref &Rva005E71C6Ref::operator=(const Rva005E71C6Ref &r){if(this==&r)return *this;Rva005E7ED7 *n=r.object;if(n)n->AddRef();Rva005E7ED7 *o=object;if(o)ReleaseTreeHintRef00217D4C((TargetRef00217D4C*)(Rva0007DF07*)o);object=r.object;return *this;}
+inline Rva005E71C6Ref &Rva005E71C6Ref::operator=(const Rva005E71C6Ref &r){if(this==&r)return *this;Rva005E7ED7 *n=r.object;if(n)++n->m_04;Rva005E7ED7 *o=object;if(o)ReleaseTreeHintRef00217D4C((TargetRef00217D4C*)(Rva0007DF07*)o);object=r.object;return *this;}
 namespace _STL {template <> __declspec(nothrow) __declspec(noinline) inline void _Construct<Rva005E71C6Ref,Rva005E71C6Ref>(Rva005E71C6Ref *p,const Rva005E71C6Ref &r){new(p) Rva005E71C6Ref(r);}}
 // The native range dispatch is owned by the icon-selection unit (0x005E7FB0).
 // Keep its exception cleanup call instead of emitting a competing inline loop.

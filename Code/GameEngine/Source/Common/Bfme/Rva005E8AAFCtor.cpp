@@ -16,14 +16,7 @@
 //   0x005F88CE; both handles release through the rowed 0x0007DEEF. It is the
 //   0x005E8F6F pattern for a constructor that can throw.
 
-class Rva0007DF07
-{
-public:
-	inline Rva0007DF07() : m_refCount(0) {}
-	virtual ~Rva0007DF07() {}
-
-	int m_refCount;					// +0x04
-};
+#include "../../../Include/Common/Rva0007DF07.h"
 
 struct TargetRef00217D4C
 {
@@ -62,7 +55,7 @@ private:
 // The member list's generic counted handle (see Rva005F83B9Notify.cpp).
 struct Rva005F888CRef
 {
-	Rva005F888CRef(Rva0007DF07 *object) : m_object(object) { if (object) ++object->m_refCount; }
+	Rva005F888CRef(Rva0007DF07 *object) : m_object(object) { if (object) ++object->m_04; }
 	~Rva005F888CRef() { if (m_object) ReleaseTreeHintRef00217D4C(reinterpret_cast<TargetRef00217D4C *>(m_object)); }
 	Rva0007DF07 *m_object;
 };
@@ -117,7 +110,7 @@ private:
 class Rva005E8AAFHandle
 {
 public:
-	explicit Rva005E8AAFHandle(Rva005E8AAF *object) : m_object(object) { if (object) ++object->m_refCount; }
+	explicit Rva005E8AAFHandle(Rva005E8AAF *object) : m_object(object) { if (object) ++object->m_04; }
 	~Rva005E8AAFHandle() { if (m_object) ReleaseTreeHintRef00217D4C(reinterpret_cast<TargetRef00217D4C *>(m_object)); }
 	Rva005E8AAF *m_object;
 };
