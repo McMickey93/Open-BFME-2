@@ -788,14 +788,6 @@ int Rva004621ACGet(void)
 	return (int)"RunOffMapBehavior";
 }
 
-// ?Rva00466B3FGet@@YAHXZ @ 0x00466b3f (6B): returns 0x00bf5a40.
-// Follows a ret-8 (prev C2-08-00), carried by 1 .rdata vtable slot,
-// no direct callers, no branch sources. Opaque address-derived name.
-int Rva00466B3FGet(void)
-{
-	return (int)"HealContain";
-}
-
 // ?Rva0046F7B3Get@@YAHXZ @ 0x0046f7b3 (6B): returns 0x00bf5a30.
 // Follows a ret-8 (prev C2-08-00), carried by 1 .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
