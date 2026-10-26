@@ -86,7 +86,8 @@ private:
 	unsigned char m_bytes[28];
 };
 
-extern const BfmeFixedStorage0004543D g_009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class Rva003623E5Member
 {
@@ -220,16 +221,12 @@ SpecialPowerModuleData::SpecialPowerModuleData()
 	, m_value78(0.0f)
 {
 	m_filter24.initFromStorages(
-		BfmeFixedStorage0004543D(g_009FEFA4),
-		BfmeFixedStorage0004543D(g_009FEFA4));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 	m_filter38.initFromStorages(
-		BfmeFixedStorage0004543D(g_009FEFA4),
-		BfmeFixedStorage0004543D(g_009FEFA4));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 	m_filter3C.initFromStorages(
-		BfmeFixedStorage0004543D(g_009FEFA4),
-		BfmeFixedStorage0004543D(g_009FEFA4));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_009FEFA4@@3VBfmeFixedStorage0004543D@@B=?g_00DFEFA4StoragePrototype@@3PAEA")
