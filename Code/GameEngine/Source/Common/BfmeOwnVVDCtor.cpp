@@ -517,7 +517,8 @@ virtual void g16();
 virtual UnicodeString *fetchPtr(const char *, bool *);
 };
 extern GameTextInterface *TheGameText;
-static bool scrollDir[4];
+// Owned by BfmeOwnVVDTranslateGameMessage.cpp (data ledger ?scrollDir@@3PA_NA at 0x00A03218).
+extern bool scrollDir[4];
 
 int BfmeOwnVVD::rva0042E9EC(const GameMessage *msg)
 {
