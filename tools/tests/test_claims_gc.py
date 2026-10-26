@@ -473,3 +473,41 @@ def test_atomic_release_never_falls_back_to_separate_body_and_lock_pushes(hosts,
     expected = {":" + claims.ref_of(k) for k in (0x100, claims.file_key("Code/x.cpp"))}
     assert all("--atomic" in p and expected <= set(p) for p in pushes)
     assert {0x100, claims.file_key("Code/x.cpp")} <= set(claims.active())
+
+
+def test_gc_retry_keeps_the_file_lock_of_a_body_renewed_mid_collection(hosts, monkeypatch):
+    root = hosts("a")
+    _task_fixture(root)
+    held = claims.acquire([0x100], ttl_hours=-3)
+    fkey = claims.file_key("Code/x.cpp")
+    assert set(held.tokens) == {0x100, fkey}
+    moved = []
+
+    def renew_body_only(args):
+        # the heartbeat has pushed the body but not yet its lock when gc pushes
+        if "--atomic" in args and any(a.startswith(":") for a in args) and not moved:
+            moved.append(claims.claim([0x100]))
+    _pushes(monkeypatch, root, renew_body_only)
+    deleted, kept = claims.gc(max_per_minute=0)
+    assert deleted == [] and set(kept) == {0x100, fkey}
+    refs = _remote_refs(hosts.origin)
+    assert refs[claims.ref_of(0x100)] == moved[0].tokens[0x100]
+    assert refs[claims.ref_of(fkey)] == held.tokens[fkey]       # the live body's lock survives
+
+
+def test_gc_opportunistic_makes_one_short_push_attempt(hosts, monkeypatch):
+    root = hosts("a")
+    _stale([0x100])
+    monkeypatch.setenv("BFME_CLAIM_GC", "on")
+    real = claims._git
+    pushes = []
+
+    def refuse(*args, **kwargs):
+        if args[:1] == ("push",) and any(a.startswith(":") for a in args):
+            pushes.append(kwargs.get("timeout"))
+            return subprocess.CompletedProcess(args, 1, "", "refused")
+        return real(*args, **kwargs)
+    monkeypatch.setattr(claims, "_git", refuse)
+    monkeypatch.setattr(claims, "_backoff", lambda attempt: pytest.fail("no retry expected"))
+    assert claims.gc_opportunistic() == []
+    assert pushes == [20]

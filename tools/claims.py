@@ -1472,7 +1472,8 @@ def _gc_batches(keys, found, batch):
 
 
 def gc(root=None, grace_minutes=GC_GRACE_MINUTES, limit=None, batch=GC_BATCH,
-       max_per_minute=GC_MAX_PER_MINUTE, sample=None, rng=random, fresh=True, dry_run=False):
+       max_per_minute=GC_MAX_PER_MINUTE, sample=None, rng=random, fresh=True, dry_run=False,
+       attempts=3, timeout=120):
     """Delete expired claim refs (lock refs included) on origin. Returns
     (deleted keys, kept keys): kept refs moved under us or could not be deleted.
     `sample` deletes a random slice (so concurrent seats spread out), `limit`
@@ -1498,7 +1499,7 @@ def gc(root=None, grace_minutes=GC_GRACE_MINUTES, limit=None, batch=GC_BATCH,
     processed = 0
     for chunk in _gc_batches(keys, found, batch):
         began = time.monotonic()
-        done = _gc_push(chunk, root, grace_minutes)
+        done = _gc_push(chunk, root, grace_minutes, attempts=attempts, timeout=timeout)
         deleted += done
         done_set = set(done)
         kept += [k for k in chunk if k not in done_set]
@@ -1509,19 +1510,23 @@ def gc(root=None, grace_minutes=GC_GRACE_MINUTES, limit=None, batch=GC_BATCH,
     return deleted, kept
 
 
-def _gc_push(chunk, root, grace_minutes):
+def _gc_push(chunk, root, grace_minutes, attempts=3, timeout=120):
     """One fenced, atomic deletion of `chunk` {key: sha}. A refused push is
-    re-read and only refs still at their sha and still expired are retried."""
-    for attempt in range(3):
+    re-read and only refs still at their sha and still expired are retried.
+    Every attempt keeps a lock some surviving body still needs, as release
+    does (_safe_deletions): a body renewed mid-collection drops out of the
+    chunk while its lock's heartbeat may not have landed yet."""
+    for attempt in range(attempts):
+        chunk = _safe_deletions(chunk, root)
         if not chunk:
             return []
         leases = [f"--force-with-lease={ref_of(k)}:{sha}" for k, sha in chunk.items()]
         refs = [f":{ref_of(k)}" for k in chunk]
-        if _git("push", "-q", "--atomic", *leases, REMOTE, *refs, cwd=root, timeout=120).returncode == 0:
+        if _git("push", "-q", "--atomic", *leases, REMOTE, *refs, cwd=root, timeout=timeout).returncode == 0:
             for key in chunk:
                 _mirror(key, None, root)
             return sorted(chunk, key=_order)
-        if attempt == 2:
+        if attempt == attempts - 1:
             break
         time.sleep(_backoff(attempt))
         _invalidate_snapshot(root)
@@ -1543,7 +1548,10 @@ def gc_opportunistic(root=None, rng=random):
             if time.time() - _read_stamp(path) < GC_EVERY_SECONDS:
                 return []
             path.write_text(repr(time.time()), encoding="utf-8")
-        return gc(root, sample=GC_SLICE, batch=GC_SLICE, max_per_minute=0, rng=rng, fresh=False)[0]
+        # One short attempt: settle runs this in-line before serving a pick,
+        # and a slow or refusing origin must not stall the seat.
+        return gc(root, sample=GC_SLICE, batch=GC_SLICE, max_per_minute=0, rng=rng, fresh=False,
+                  attempts=1, timeout=20)[0]
     except Exception as error:  # noqa: BLE001 -- collection is best effort
         print(f"claims: gc skipped ({error})", file=sys.stderr)
         return []
