@@ -29,7 +29,8 @@ extern PartitionManager *ThePartitionManager;
 class Rva000421C8 {public:Rva000421C8():next(0){}virtual ~Rva000421C8(){}virtual bool allow(Object*)=0;virtual int getPlayerMask(){return -1;}Rva000421C8 *link(Rva000421C8*);Rva000421C8 *next;};
 class Rva0026119DFilter:public Rva000421C8 {public:virtual bool allow(Object*);};
 class BfmeFixedStorage0004543D {public:void SetBit(unsigned bit){words[bit>>5]|=1<<(bit&31);} void set(int i){SetBit(i);}BfmeFixedStorage0004543D(){memset(words,0,sizeof(words));}BfmeFixedStorage0004543D(int,int) throw();BfmeFixedStorage0004543D(const BfmeFixedStorage0004543D&) throw();unsigned words[7];};
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 class Rva00045411BitSet:public BfmeFixedStorage0004543D{public:Rva00045411BitSet(int,int) throw();};
 class Rva003959FA:public Rva000421C8 {public:Rva003959FA(const BfmeFixedStorage0004543D&) throw();virtual bool allow(Object*);BfmeFixedStorage0004543D mask;};
 class PartitionFilterRejectByKindOf:public Rva000421C8 {public:PartitionFilterRejectByKindOf(const BfmeFixedStorage0004543D&,const BfmeFixedStorage0004543D&) throw();virtual bool allow(Object*);BfmeFixedStorage0004543D a,b;};
@@ -62,7 +63,7 @@ void CastleBehavior::rva00398E9A(){
  pos.x=object->pos.x;pos.y=object->pos.y;pos.z=object->pos.z;
  BfmeFixedStorage0004543D flags;flags.set(8);flags.set(10);flags.set(11);flags.set(9);
  BfmeWideResult result=ThePartitionManager->iterateObjectsInRange(&pos,castleData->radius,0,
-  PartitionFilterRejectByKindOf(Rva00045411BitSet(0,127),*(BfmeFixedStorage0004543D*)g_00DFEFA4StoragePrototype).link(Rva003959FA(flags).link(&Rva0026119DFilter())),0);
+  PartitionFilterRejectByKindOf(Rva00045411BitSet(0,127),*(BfmeFixedStorage0004543D*)&KINDOFMASK_NONE).link(Rva003959FA(flags).link(&Rva0026119DFilter())),0);
  int initial=-1;_STL::vector<int> weights(20U,initial);
  Rva00395D18 players;
  bool hostile=false;

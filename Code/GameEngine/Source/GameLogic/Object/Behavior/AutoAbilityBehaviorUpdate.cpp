@@ -114,7 +114,8 @@ public:
 	BfmeFixedStorage0004543D m_08;
 	BfmeFixedStorage0004543D m_24;
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // The 128-bit status masks: 0x00391F4E builds one from three bit indices and the
 // out-of-line filter constructor 0x003685CF takes the must / must-not pair.
@@ -467,7 +468,7 @@ UpdateSleepTime AutoAbilityBehavior::update()
 	Rva002611BFFilter notSelf(obj);
 	Rva00261513Filter inRange(obj, true, range);
 	Rva003685CF status(BfmeZeroHeader(), *(const BfmeObject872Header *)&Rva00391F4E(0, 0x3C, 0x3A));
-	Rva0004584D kindFilter(*(const BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+	Rva0004584D kindFilter(*(const BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 		*(const BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 0x36));
 	alive.link(notSelf.link(kindFilter.link(status.link(&inRange))));
 	bool anyEntry = false;

@@ -482,7 +482,8 @@ struct Rva00045411BitSet
 	unsigned int bits[7];
 	Rva00045411BitSet(int unused, int bit) throw();
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 class Rva0004584D : public Rva000421C8 {
 public:
  Rva0004584D(const BfmeFixedStorage0004543D &, const BfmeFixedStorage0004543D &);
@@ -505,7 +506,7 @@ void FoundationAIUpdate::rva0045537F()
  const Coord3D *pos = self->getPosition();
  float radius = geom.m_radius;
  Object *obj = ThePartitionManager->getClosestObject(pos, radius * 1.1F, 1,
-  linkKeepingRadius(&Rva0004584D(reinterpret_cast<const BfmeFixedStorage0004543D &>(Rva00045411BitSet(0, 105)), *reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)),
+  linkKeepingRadius(&Rva0004584D(reinterpret_cast<const BfmeFixedStorage0004543D &>(Rva00045411BitSet(0, 105)), *reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
    &Rva00261603Filter(*pos, geom, self->getTransformMatrix()->Get_Z_Rotation(), true), geom, radius));
  if (obj) {
   bool kind = (self->getTemplate()->constructionWord118() & 0x02000000U) != 0;
