@@ -1,3 +1,5 @@
+// 5 further clearers formerly here are rowed as their matched parents'
+// /G7 guard-rollback $L funclets (EXACT EH graphs); see reverse/deleted_rows.csv.
 // Eight B2-native flag-word clearers across six .data flag words of one
 // contiguous run (0x0076929D-0x0076B9FF):
 //
@@ -23,26 +25,6 @@ extern unsigned int g_Va00DFE014;
 // g_Va00DFE014: matched references place it at VA 0xdfe014 (zero-filled .bss).
 unsigned int g_Va00DFE014;
 
-unsigned int Rva0076929DClearFlag(void)
-{
-	return g_Va00DFD8E4 &= 0xFFFFFFFDu;
-}
-
-unsigned int Rva007692AAClearFlag(void)
-{
-	return g_Va00DFD8E4 &= 0xFFFFFFFBu;
-}
-
-unsigned int Rva00769BDDClearFlag(void)
-{
-	return g_Va00DFDC48 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva00769BF4ClearFlag(void)
-{
-	return g_Va00DFDC50 &= 0xFFFFFFFEu;
-}
-
 unsigned int Rva0076B063ClearFlag(void)
 {
 	return g_Va00DFDCD8 &= 0xFFFFFFFEu;
@@ -54,7 +36,3 @@ unsigned int Rva0076B063ClearFlag(void)
 // GlobalFlagClearers_DFxx.cpp) belong to GenericObjectCreationNugget::doStuffToObj,
 // whose native parent emits them and owns the guard datum at 0x00DFDCF4.
 
-unsigned int Rva0076B9FFClearFlag(void)
-{
-	return g_Va00DFE014 &= 0xFFFFFFFDu;
-}
