@@ -91,3 +91,15 @@ These are inspection-only boundaries, not failed byte conversions. No claims
 or source edits remain for them. ModelCondition/Locomotor/ExperienceScalar/
 Unpause getter blockers are unchanged from existing handoffs and were not
 patched again.
+
+## Commit acceptance
+
+Commit `07aee9b190` passed the normal hook. Its conservative header-dependent
+scope also included Eva.cpp, ThreadClassLifecycle.cpp and thread.cpp: all
+60 rows across six sources, two data rows, strings/floats/imports and converged
+data checks passed. The source-scoped 22-row check and four exact EH records
+also passed. The identity shadow report adds three divergent AsciiString list
+inline definitions beside the already documented extent finding. The complete
+saved-object comparison proves every external definition unchanged; none is
+retired here. The runner deferred publication at four pending commits. Claims
+are retained until publication, not released on the local commit.

@@ -229,6 +229,16 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
 
 **Status: Open. Updated: 2026-10-26.**
 
+- **GameEngine consolidation provider boundary (2026-10-26):**
+  [The banked declaration trial](../reverse/attempt_support/consolidation-gameengine-declarations-prerequisite-20261026-codex4.md)
+  removes a redundant TheNetwork macro and declares the existing frame-period
+  helper, clearing the seed's composition compile error with all five bodies
+  and object facts unchanged. The census-linked guard then refuses unresolved
+  BfmeClientFramesPerSecond. Published/local index both remain d1f046749a;
+  the existing data-ledger owner is LivingWorldEyeTower.cpp. No provider was
+  edited and the source trial was reverted. Resolve that binding/index boundary
+  before repeating composition; no donor acceptance or linking gain claimed.
+
 - **PlayerTemplate tree receiver prerequisite (2026-10-26):**
   [Shared receiver evidence](../reverse/attempt_support/consolidation-player-tree-prerequisite-20261026-codex4.md)
   clears the assignment donor's conflicting tree declarations. Ordinary dry-run
