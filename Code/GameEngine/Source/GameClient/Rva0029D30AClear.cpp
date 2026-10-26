@@ -34,7 +34,7 @@ public:
 	_STL::list<int> m_8A0; // +0x8A0
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 void Rva0029D30A::rva0029D30A()
 {

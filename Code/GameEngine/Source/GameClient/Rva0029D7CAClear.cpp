@@ -39,7 +39,7 @@ public:
 	_STL::list<int> m_8D0; // +0x8D0
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 void Rva0029D7CA::rva0029D7CA()
 {
