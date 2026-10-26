@@ -733,6 +733,19 @@ authored-byte previews or commit-title gains into a projected headline.
   2,992 seconds with no final drift or new unresolved references. Publication
   controls also pass against the rebased reference inputs. This is scoped closure
   evidence, not a new current-master census headline.
+- **Quantizer endpoint layout repaired / awaiting measurement (2026-10-26,
+  source base `0044debbb5`):** the
+  [native layout proof](../reverse/attempt_support/vp6-quantizer-layout-link-20261026/readme.md)
+  puts the existing 256-byte scan table directly after the correction array,
+  preserving the biased correction+260 end comparison at BD8464. The final
+  order keeps the scan table at its previous section offset 272 and its own
+  biased end at 532, with unchanged contribution size and alignment. Normal
+  controls pass the complete 945-byte parent, all 16 initializers and all 26
+  native data references; the expanded two-body control also preserves the
+  unchanged 185-byte quantize.cpp caller. Its pre-existing scan+260 reference
+  to the separate IdentityIndex owner remains a placement prerequisite and is
+  included in the pending full comparison. No new name, pin, header or data
+  value is introduced. Authoritative credit and whole-chain clearance are pending.
 - **Remaining / next check:** shader/filter root-object ownership remains
   open. The [current witnesses](../reverse/attempt_support/vp6-filter-scratch-link-20261025/remaining-witnesses.json)
   show InitPostProcessing, PostProcMachineSpecificConfig and

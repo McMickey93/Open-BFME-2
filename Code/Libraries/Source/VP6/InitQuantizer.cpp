@@ -100,6 +100,14 @@ extern const int g_bfmeUvDcRounding[64] = {
 	50, 50, 48, 48, 46, 46, 38, 38, 38, 38, 36, 36, 34, 32, 32, 32,
 	32, 32, 30, 22, 22, 22, 20, 20, 18, 16, 14, 10, 6, 6, 4, 4,
 };
+extern double g_vp6Fixed16Scale;
+// g_vp6Fixed16Scale: matched references place it at VA 0xbd8768 (retail .rdata value 65536.0).
+double g_vp6Fixed16Scale = 65536.0;
+// g_bfmePlaneSelector: matched references place it at VA 0xbd8760; retail contents, sized to the
+// 0x8-byte gap before the next known global there.
+unsigned char g_bfmePlaneSelector[8] = {
+	0, 0, 0, 0, 1, 1, 0, 0,
+};
 // g_bfmeZeroRunCorrection: the zero-run zero-bin correction percentages by run length (VA 0xbd8360, retail .rdata contents).
 int g_bfmeZeroRunCorrection[64] = {
 	-8, 0, 5, 0xa, 0xa, 0xa, 0xa, 0xa,
@@ -111,14 +119,9 @@ int g_bfmeZeroRunCorrection[64] = {
 	0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0x19,
 	0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e,
 };
-extern double g_vp6Fixed16Scale;
-// g_vp6Fixed16Scale: matched references place it at VA 0xbd8768 (retail .rdata value 65536.0).
-double g_vp6Fixed16Scale = 65536.0;
-// g_bfmePlaneSelector: matched references place it at VA 0xbd8760; retail contents, sized to the
-// 0x8-byte gap before the next known global there.
-unsigned char g_bfmePlaneSelector[8] = {
-	0, 0, 0, 0, 1, 1, 0, 0,
-};
+// Retail places this scan table immediately after the 256-byte correction
+// table. The unrolled correction loop compares its biased pointer with
+// correction+260, which is scan entry one at 0x00BD8464.
 // vp6DequantIndex: the zig-zag scan order (transmission index -> raster
 // position) at VA 0xbd8460; retail contents. The dequantiser, quantiser and
 // quantiser-index builders all read it under this name.
