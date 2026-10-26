@@ -835,4 +835,4 @@ void Rva0057851BDwordImmSetter::apply()
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.
 #pragma comment(linker, "/alternatename:??1Rva00539926Base@@UAE@XZ=?apply@Rva0004E84A4DwordImmSetter@@QAEXXZ")
-#pragma comment(linker, "/alternatename:?bfmeTailSF@BfmeThingSF@@QAEXXZ=?apply@Rva001DBAC3DwordImmSetter@@QAEXXZ")
+#pragma comment(linker, "/alternatename:?bfmeTailSF@BfmeThingSF@@QAEXXZ=??1Rva001DBAA4@@UAE@XZ")
