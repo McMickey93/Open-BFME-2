@@ -15,8 +15,7 @@
 // Neighbours Disp32FloatGetters/Disp8ByteOneSetters carry no // cl: line so defaults apply.
 void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
 #pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
-void operator delete[](void *block);
-void *operator new[](unsigned int size);
+#include <new>
 
 class BooleanBitmapSet
 {

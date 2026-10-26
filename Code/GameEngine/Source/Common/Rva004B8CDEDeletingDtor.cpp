@@ -48,8 +48,7 @@ Rva004B8CDE::~Rva004B8CDE()
 {
 }
 
-void *operator new(unsigned int size);
-void operator delete(void *p);
+#include <new>
 
 // Anchor: new/delete devirtualizes to a direct ??_G call, emitting the COMDAT.
 void Rva004B8CDE_Anchor()

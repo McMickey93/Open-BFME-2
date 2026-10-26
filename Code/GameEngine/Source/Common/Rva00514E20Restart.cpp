@@ -5,8 +5,7 @@
 // that does not read its receiver.
 // Restarts global thread object via wrapper. Evidence: chain lane packet.
 #include <new>
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *p);
+#include <new>
 class Rva0073F778 {
     char _pad[4];
     void *m_handle;
