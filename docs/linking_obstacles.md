@@ -1560,3 +1560,38 @@ Remaining / next check: None.
 Clearance: `tools/link_check.py Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`
 reports: LINKS (0 -> 28 bytes). Exact 1/1 byte match preserved.
 Census confirmation: awaiting the next census.
+
+### LINK-044: NetPacket private views and remaining list-copy identity
+
+**Status: Open. Updated: 2026-10-26.**
+
+- **Evidence / scope:** the family-B Sol handoff
+  [records the NetPacket prerequisite batch](../reverse/attempt_support/consolidation-sol-codexb-session-20261026-1415.md).
+  Inherited argument/reference declarations and the new repeat-dispatch types
+  and four wrapper casts preserve standalone code/data providers, relocations,
+  COMDAT rules and references. The ordinary composition trial now accepts
+  thirteen sources / 185 rows, with all 65 EH parents EXACT. This is bounded
+  composition evidence, not a new link or census result.
+- **Completed:** the inherited recovery raises the compatible subset from
+  174 to 180 rows; new work raises it to 185. The one suppressed unrowed
+  getCommand duplicate has an identical, earlier unchanged ConnectionManager
+  provider; the composed object has no reference requiring that duplicate.
+  No other provider loss or changed binding is accepted. No merge is applied.
+- **Remaining / next check:** three flattened progress views hide inherited
+  base methods; two wrapper views also disagree on fields; NetPacketO1
+  duplicates BaseType coordinates; two helpers retain declaration/compile
+  boundaries. Five mixed donors remain untouched. Independently,
+  ConstructBigCommandPacketList still has the existing shadow list-copy
+  identity finding targeting 0x00594689. No identity key was retired. Leave
+  the verified compatible subset for Luna and repair the remaining views in
+  their own claimed prerequisites. Review the publisher's outgoing batch
+  audit when the shared slot permits publication and carry census confirmation
+  into the next normal measurement. Recovery dry-run at d76d8d4b8a passed
+  218/218 rows and 69/69 EH checks; the batch audit is inconclusive because
+  its index is at 763dc8759f (outgoing base df25e102ce) and the affected
+  Eva.cpp object lacks a current receipt. The retained bounded COFF comparison
+  does not resolve that full-index freshness gap; next census confirmation
+  remains required. No selected-provider or linked-byte gain is claimed.
+- **Clearance:** only the stated declaration/composition blockers are cleared
+  in the ordinary trial. No downstream Luna landing is claimed.
+- **Census confirmation:** pending; the batch does not change census history.
