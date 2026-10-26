@@ -2126,8 +2126,6 @@ funclets) together with 0x0052C823, then point `Rva0056616BCopyDeferred.cpp`'s `
 Clearance: pending.
 Census confirmation: not claimed.
 
-### LINK-045: stlport_float_format keeps its own 279-byte narrow forward-iterator append
-
 ### LINK-061: stlport_float_format keeps its own 279-byte narrow forward-iterator append
 
 Status: Open. Updated: 2026-10-26; inspected revision: 9e70605d3f; census 2026-10-26 13:18 at d1f046749a.
