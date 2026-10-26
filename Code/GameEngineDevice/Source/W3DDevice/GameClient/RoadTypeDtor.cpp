@@ -16,7 +16,7 @@
 // Declared so the array path of the vector deleting dtor releases through
 // operator delete[] (0x0002FD80), as retail does; without it MSVC 7.1 falls
 // back to the scalar operator delete.
-void operator delete[](void *block);
+#include <new>
 
 class TimeCodedBitChannelClass
 {

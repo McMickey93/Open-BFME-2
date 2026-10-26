@@ -3,7 +3,7 @@
 // Subsystem12 at108, ref-list114, lights130/150 and environments164/38C/5B4.
 // ZH W3DScene.cpp RTS3DScene destructor supplies the release and buffer order.
 // Preserve the established address-derived owner used by deleting-dtor callers.
-void __cdecl operator delete[](void*);
+#include <new>
 class RenderObjClass;
 class RefCountClass{public:virtual void Delete_This();void Release_Ref(){if(--refs==0)Delete_This();}int refs;};
 class LightClass:public RefCountClass{};

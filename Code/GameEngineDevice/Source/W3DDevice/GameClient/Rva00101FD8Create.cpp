@@ -37,7 +37,7 @@ private:
     char m_pad[12];
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 LookupTablePostEffect *__stdcall Rva00101FD8Create(const StringBase<char> &name)
 {
