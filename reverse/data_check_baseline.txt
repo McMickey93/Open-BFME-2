@@ -60,7 +60,6 @@ Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E09FA4@@
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E0C1F4@@3HA	0x00A0C1F4
 Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	duplicate-def	?g_Va00E031A8@@3PAIA	0x00A031A8
 Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	wrong-name	?g_Va00E031A8@@3PAIA	0x00A031A8
-Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F24@@3RCRAVRva00075695Item@@C	0x009E1F24
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F54@@3HA	0x009E1F54
 Code/GameEngine/Source/Common/Rva00075A23Draw.cpp	wrong-name	?g_deviceObj@@3PAUDeviceObj@@A	0x009EDA34
@@ -271,7 +270,6 @@ Code/GameEngine/Source/Common/T2CtypeTableFacets.cpp	duplicate-def	?g_ctypeLower
 Code/GameEngine/Source/Common/T2CtypeTableFacets.cpp	duplicate-def	?g_ctypeUppercaseMap@@3QBDB	0x007BC1E0
 Code/GameEngine/Source/Common/T2CtypeTableFacets.cpp	wrong-name	?g_ctypeLowercaseMap@@3QBDB	0x007BC2E0
 Code/GameEngine/Source/Common/T2CtypeTableFacets.cpp	wrong-name	?g_ctypeUppercaseMap@@3QBDB	0x007BC1E0
-Code/GameEngine/Source/Common/TerrainLogicRva00283262.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/Common/VersionDestructor.cpp	wrong-name	?$S1@?1??initializeBuildMetadata@Version@@QAEXXZ@4IA	0x009FE778
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Source@@3VAsciiString@@A	0x00A01CF0
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Target@@3VAsciiString@@A	0x00A01CF4
@@ -471,7 +469,6 @@ Code/GameEngine/Source/GameLogic/Object/Contain/HordeSiegeEngineContainPoolKey.c
 Code/GameEngine/Source/GameLogic/Object/Contain/HorseHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004766E8@HorseHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03698
 Code/GameEngine/Source/GameLogic/Object/Contain/ProductionQueueHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004812B9@ProductionQueueHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0377C
 Code/GameEngine/Source/GameLogic/Object/Contain/RiderChangeContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047E2E0@RiderChangeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03738
-Code/GameEngine/Source/GameLogic/Object/Contain/Rva00463235Finish.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/Rva00588D24.cpp	wrong-name	?g_bfmeWorldRV@@3PAUBfmeWorldRV@@A	0x00A01CFC
 Code/GameEngine/Source/GameLogic/Object/Contain/SiegeEngineContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047C03A@SiegeEngineContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03704
 Code/GameEngine/Source/GameLogic/Object/Contain/SlaughterHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004803B6@SlaughterHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03768
