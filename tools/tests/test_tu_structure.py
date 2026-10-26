@@ -104,6 +104,28 @@ def test_noncontiguous_tu_is_not_approved(tmp_path):
     assert out[0x1000]["confidence"] == "proposed" and "noncontiguous" in out[0x1000]["evidence"]
 
 
+def test_far_placeholder_class_row_does_not_stretch_its_tu_span(tmp_path):
+    """A K row (placeholder-class propagation) is never approved, so it is not part of its
+    TU's span: one emitted past another TU's anchor must not make its TU noncontiguous."""
+    zh = tmp_path / "reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/X"
+    zh.mkdir(parents=True)
+    (zh / "A.cpp").write_text("void A::f()\n{\n}\nvoid A::g()\n{\n}\n")
+    (zh / "B.cpp").write_text("void B::f()\n{\n}\n")
+    (tmp_path / "reverse").mkdir()
+    (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join([
+        row("?f@A@@QAEXXZ", 0x1000, 16, "Code/X/Af.cpp"),
+        row("?x@Rva00001080@@QAEXXZ", 0x1080, 16, "Code/X/Rva00001080.cpp"),   # C between A's anchors
+        row("?g@A@@QAEXXZ", 0x1100, 16, "Code/X/Ag.cpp"),
+        row("?f@B@@QAEXXZ", 0x3000, 16, "Code/X/Bf.cpp"),
+        row("??1Rva00001080@@QAE@XZ", 0x5000, 16, "Code/X/Rva00001080Dtor.cpp"),  # K, past B
+    ]))
+    out = {int(r["rva"], 16): r for r in tu_map.build(tu_map.Layout(tmp_path))}
+    assert (out[0x5000]["by"], out[0x5000]["tu"], out[0x5000]["confidence"]) == ("K", "Code/X/A.cpp", "proposed")
+    for rva, by in ((0x1000, "Z"), (0x1080, "C"), (0x1100, "Z"), (0x3000, "Z")):
+        assert (out[rva]["by"], out[rva]["confidence"]) == (by, "approved"), hex(rva)
+        assert "noncontiguous" not in out[rva]["evidence"]
+
+
 # ---------------------------------------------------------------- header-inline COMDATs
 @pytest.fixture
 def header_inline(tmp_path):

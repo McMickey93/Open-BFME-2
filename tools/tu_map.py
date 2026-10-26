@@ -78,8 +78,10 @@ Confidence:
             when its TU is anchored and it is assigned by F/Z/S/N/U/C; a K row,
             or a row of a TU no F/Z/S anchors (a naming hint for a class this
             repo named, alone), never can, so it does not break its host's
-            span. A run of C rows is approved exactly when the two rows that
-            bracket the whole run are.
+            span. A TU's span is the extent of its own F/Z/S/N/U rows (every
+            row that could be approved for it lies within): a K row emitted
+            far from its class's TU does not stretch it. A run of C rows is
+            approved exactly when the two rows that bracket the whole run are.
   proposed  assigned, but by N/K only, by brackets that are not approved, in a
             non-contiguous span, or contradicted. The queue for investigation.
   displaced a naming hint sat outside its TU's cluster (COMDAT pile).
@@ -611,10 +613,15 @@ def build(layout, ledger=None):
                    "C" if r["C"] else "K" if r["K"] else "N" if same(r["N"], a) else "U" if a else "")
         r["contra"] = contradicts(a, r["F"], r["Z"], r["S"])
 
-    # Confidence. Retail object order: a TU must be contiguous in .text.
+    # Confidence. Retail object order: a TU must be contiguous in .text. Its span is the
+    # extent of the rows that could be approved for it (F/Z/S/N/U; a C row inside them
+    # needs approved brackets, so it lies within): a K row is never approved, and one
+    # emitted far away must not stretch the span over other TUs' rows.
     assigned = [r for r in rows if r["A"]]
     lo_hi = {}
     for r in assigned:
+        if r["by"] not in APPROVABLE:
+            continue
         k = r["A"].lower()
         lo, hi = lo_hi.get(k, (r["rva"], r["rva"]))
         lo_hi[k] = (min(lo, r["rva"]), max(hi, r["rva"]))
