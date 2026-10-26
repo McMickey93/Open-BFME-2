@@ -8,8 +8,7 @@
 // Fresh layout are unproven beyond index, arity and size.
 #include "ascii_string.h"
 
-void *operator new(unsigned int size);
-void operator delete(void *block);
+#include <new>
 
 class Rva002130F6
 {

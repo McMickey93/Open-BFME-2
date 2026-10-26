@@ -66,7 +66,7 @@ struct Rva0048BCBBOwner
 	_STL::list<int, _STL::allocator<int> > m_nuggets;	// +0x08
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 void Rva0048B97A_InitObject(INI *ini, void *obj, int, int);
 
 // ?Rva0048B97A_InitObject@@YAXPAVINI@@PAXHH@Z

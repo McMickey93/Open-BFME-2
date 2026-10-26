@@ -153,7 +153,6 @@ Code/GameEngine/Source/Common/System/INI_parseDurationUnsignedShort.cpp	drop-in 
 Code/GameEngine/Source/Common/System/INI_parseMathExpression.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>,<string.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same,strcmp:same
 Code/GameEngine/Source/Common/System/INI_readLine.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strncpy:same,strlen:same
 Code/GameEngine/Source/Common/System/INI_rva0002D6F8.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strtok:same,_strcmpi:same
-Code/GameEngine/Source/Common/System/LivingWorldArmy_createVisualObjects.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same,operator delete:same
 Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp	drop-in candidate	same	2	1	0	0	0	0	0	1	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	fread:same
 Code/GameEngine/Source/Common/System/Rva009A3770HashChainInsert.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcpy:same,operator new:same
 Code/GameEngine/Source/Common/System/SaveGame/SaveGameInfoCopyBFME2.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,memcpy:same
@@ -796,7 +795,6 @@ Code/GameEngine/Source/Common/System/AsciiStringRvoGetters.cpp	drop-in candidate
 Code/GameEngine/Source/Common/System/AsciiString_skipWhitespace.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<ctype.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	isspace:same
 Code/GameEngine/Source/Common/System/BitFlags11DisabilityCtors.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/System/BitFlags7FactionCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
-Code/GameEngine/Source/Common/System/DataChunkTableOfContentsRead.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/System/EmotionNuggetTemplateIniParseEmotionType.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strcmp:same
 Code/GameEngine/Source/Common/System/GameMemoryBlockSlots.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	OutputDebugStringA:same
 Code/GameEngine/Source/Common/System/GeometryRecordAssign.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
@@ -804,7 +802,6 @@ Code/GameEngine/Source/Common/System/INIRva000C38F8.cpp	drop-in candidate	same	1
 Code/GameEngine/Source/Common/System/INI_Rva00339761ParseDurationUnsignedByte.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	ceil:same
 Code/GameEngine/Source/Common/System/INI_Rva00339E1CParseBrowser.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same
 Code/GameEngine/Source/Common/System/INI_Rva0044E6CDParseCustomAnim.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strcmp:same
-Code/GameEngine/Source/Common/System/INI_Rva0048BCBBParseFireWeaponNugget.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/System/INI_getNextTokenOrNull.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strtok:same
 Code/GameEngine/Source/Common/System/INI_parseCrateCreationEntry.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sscanf:same
 Code/GameEngine/Source/Common/System/INI_parseFXList.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same

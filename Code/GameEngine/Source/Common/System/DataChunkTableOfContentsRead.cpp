@@ -33,7 +33,7 @@ struct Mapping
 // ??1Mapping@@UAE@XZ present-unmatched
 Mapping::~Mapping() {}
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class DataChunkTableOfContents
 {
