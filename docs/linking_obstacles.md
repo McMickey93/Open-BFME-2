@@ -229,6 +229,16 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
 
 **Status: Open. Updated: 2026-10-26.**
 
+- **PlayerTemplate tree receiver prerequisite (2026-10-26):**
+  [Shared receiver evidence](../reverse/attempt_support/consolidation-player-tree-prerequisite-20261026-codex4.md)
+  clears the assignment donor's conflicting tree declarations. Ordinary dry-run
+  now accepts the seed and assignment (21 existing rows / 1,837 bytes), versus
+  none before. All 22 standalone rows across three consumers still match;
+  code/data, COMDAT policies and bindings are unchanged, and the accepted
+  composition equals the standalone symbol union. Both tree destructors still
+  fail composition bytes; store/vector declarations, STL redefinitions and
+  mixed donors remain. No merge, census gain or debt retirement is claimed.
+
 - **BridgeBehavior die GameLogic prerequisite (2026-10-26):**
   [Canonical header adoption](../reverse/attempt_support/consolidation-bridge-die-gamelogic-prerequisite-20261026-codex4.md)
   retires one header-queue row. The 79-byte die body, code/data fingerprints,

@@ -19,36 +19,30 @@ struct Rva001FD751
 	Rva001FD751Node *rva001FD751(Rva001FD751Node *x, Rva001FD751Node *p);
 };
 
-struct Rva001FD42B
-{
-	void rva001FD630();
-	Rva001FD42B *rva001FD8DF(const Rva001FD42B &other);
-	Rva001FD751Node *m_header;
-	unsigned int m_count;
-};
+#include "RTS/PlayerTemplateTreeView.h"
 
 Rva001FD42B *Rva001FD42B::rva001FD8DF(const Rva001FD42B &other)
 {
 	if (this != &other) {
 		rva001FD630();
 		m_count = 0;
-		Rva001FD751Node *otherRoot = other.m_header->m_parent;
+		Rva001FD42BNode *otherRoot = other.m_handle.m_header->m_parent;
 		if (otherRoot == 0) {
-			m_header->m_parent = 0;
-			m_header->m_left = m_header;
-			m_header->m_right = m_header;
+			m_handle.m_header->m_parent = 0;
+			m_handle.m_header->m_left = m_handle.m_header;
+			m_handle.m_header->m_right = m_handle.m_header;
 		} else {
 			Rva001FD751 *self = (Rva001FD751 *)this;
-			Rva001FD751Node *hdr = m_header;
-			hdr->m_parent = self->rva001FD751(otherRoot, hdr);
-			Rva001FD751Node *x = m_header->m_parent;
+			Rva001FD42BNode *hdr = m_handle.m_header;
+			hdr->m_parent = (Rva001FD42BNode *)self->rva001FD751((Rva001FD751Node *)otherRoot, (Rva001FD751Node *)hdr);
+			Rva001FD42BNode *x = m_handle.m_header->m_parent;
 			while (x->m_left != 0)
 				x = x->m_left;
-			m_header->m_left = x;
-			x = m_header->m_parent;
+			m_handle.m_header->m_left = x;
+			x = m_handle.m_header->m_parent;
 			while (x->m_right != 0)
 				x = x->m_right;
-			m_header->m_right = x;
+			m_handle.m_header->m_right = x;
 			m_count = other.m_count;
 		}
 	}
