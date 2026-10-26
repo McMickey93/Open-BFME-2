@@ -2318,7 +2318,7 @@ Census confirmation: not claimed.
 
 **Assigned retired-unit recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `StlSweepR3Rva004F715B.cpp` is absent and has no current row; its retirement is recorded in `reverse/deleted_rows.csv`. The surviving `stlport_pop_heap_rva004f7e61.cpp` remains byte-exact and LINKS in the paired current-provider preview. The two hashtable over-claims at 0x001DE3E3 and 0x001FDEBC remain; their bounded emission cleanup is recorded under LINK-066 and does not settle ownership. Evidence: `build/c136-r3sweep/before-retired-004f715b.log`, `native-evidence-03.log`, `after-expanded-cohort.log` and `final-assigned-build.log`. No new retirement or census gain is claimed; the next check is the normal ownership/naming decision for the surviving duplicates.
 
-**GUI-package recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `Rva00576DF1Ctor.cpp` is absent; current history records its retirement as `febea697c2a`. The surviving `Rva00576C4BDtor.cpp` remains LINKS and passes all 25 byte rows. The two remaining constructor views now bind their 0x005CD7DA cleanup directly to that owner's existing `Wrap2000576C4B` destructor, clearing that record subset as detailed in LINK-070. The duplicate planning constructor and its three unique EH rows remain untouched. Approved ownership and coherent class naming are still prerequisites for retiring that duplicate; no row move or retirement was attempted here. Raw receipts: `build/c136-gui-w2/expanded-before.log`, `expanded-after.log`, `final-provider-build.log` and `build/link-report.md`. Census confirmation remains pending.
+**GUI-package recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `Rva00576DF1Ctor.cpp` is absent; current history records its retirement as `febea697c2a`. The surviving `Rva00576C4BDtor.cpp` remains LINKS and passes all 25 byte rows. The two remaining constructor views now bind their 0x005CD7DA cleanup directly to that owner's existing `Wrap2000576C4B` destructor, clearing that record subset as detailed in LINK-085. The duplicate planning constructor and its three unique EH rows remain untouched. Approved ownership and coherent class naming are still prerequisites for retiring that duplicate; no row move or retirement was attempted here. Raw receipts: `build/c136-gui-w2/expanded-before.log`, `expanded-after.log`, `final-provider-build.log` and `build/link-report.md`. Census confirmation remains pending.
 
 ### LINK-049: map<unsigned, WeaponTemplateSetHead> insert family rowed on an int-key placeholder and a private tree view
 Status: Repair landed, awaiting census. Updated: 2026-10-26; inspected revision: a8fa0b2df4.
@@ -2696,7 +2696,7 @@ Census confirmation: n/a.
 - **Clearance:** none.
 - **Census confirmation:** not applicable.
 
-### LINK-065: audio lookup emits an unrowed owner and an untyped tree-worker trampoline
+### LINK-084: audio lookup emits an unrowed owner and an untyped tree-worker trampoline
 Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
 Evidence / affected units: `Audio/AudioManagerAdjustPriorityAndVolume.cpp` owns the 33-byte lookup at 0x00059238 and two five-byte destructor forwarders. The lookup's REL32 at +0xE targets the existing 78-byte `AsciiString` tree worker at 0x001F8437; its `pair<const AsciiString,int>` and `pair<const AsciiString,float>` rows are in `GameClient/System/ParticleSystemDebugDisplay.cpp`, while `OptionPreferences_mapFind.cpp` supplies the existing string/string spelling. Its former setter references were emitted only by an unrowed owner body, whose prior 0x000592B3 placement is explicitly refuted in `reverse/re_attempts.log`.
 Completed: use the vendored `_Rb_tree<AsciiString,pair<const AsciiString,int>,...>` directly at +0x1B8; its lookup and iterator access inline into the existing 33-byte row. The existing integer ABI parameter is treated as the native pointer to its `AsciiString` key. Define the rowed lookup out of class so it remains emitted without the unrowed owner. Remove that owner, its setter declarations and the function/member-pointer union. Retain both existing destructor-forwarder rows. Only the STLport and canonical AsciiString include paths are added; no code-generation flags, shared headers, pins or ledger entries change.
@@ -2907,7 +2907,7 @@ Completed: diagnosis and unchanged byte verification only. No source trial repea
 
 Clearance: pending. Census confirmation: not claimed.
 
-### LINK-070: GUI phase constructors emit a forwarding record destructor instead of its native owner
+### LINK-085: GUI phase constructors emit a forwarding record destructor instead of its native owner
 
 Status: Open; record subset cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`.
 
@@ -2919,7 +2919,7 @@ Remaining / next check: planning remains U10/L2 and retreat remains U4/L1. Their
 
 Clearance: only the shared record binding is cleared in ordinary-preview scope; census confirmation pending. Neither assigned constructor now LINKS. Census confirmation: not claimed.
 
-### LINK-071: ArmyHeroIcon constructors and lifetime owners disagree on class and virtual signatures
+### LINK-086: ArmyHeroIcon constructors and lifetime owners disagree on class and virtual signatures
 
 Status: Blocked on class and table reconciliation. Updated: 2026-10-26; inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`.
 
@@ -2931,7 +2931,7 @@ Remaining / next check: reconcile the destructor owner to `StrategicInGameUI::Ar
 
 Clearance: pending. Census confirmation: not claimed.
 
-### LINK-072: ControlBar tooltip adapter slots belong to several existing row identities
+### LINK-087: ControlBar tooltip adapter slots belong to several existing row identities
 
 Status: Blocked on adapter identity and virtual signature reconciliation. Updated: 2026-10-26; inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`.
 
