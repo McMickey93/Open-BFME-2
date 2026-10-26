@@ -16639,12 +16639,8 @@ uw_0075f79f,,0x0075F79F,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obje
 uw_0075f844,,0x0075F844,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
 uw_0075f864,,0x0075F864,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5048
 uw_0075f88c,,0x0075F88C,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2910
-uw_0075f9ee,,0x0075F9EE,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2949
 uw_0075fa00,,0x0075FA00,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L6086
-uw_0075fa12,,0x0075FA12,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2950
 uw_0075fa24,,0x0075FA24,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L6086
-uw_0075fa36,,0x0075FA36,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2950
-uw_0075fa48,,0x0075FA48,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2950
 uw_0075fa78,,0x0075FA78,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3866
 uw_0075fa8a,,0x0075FA8A,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3866
 uw_0075fa92,,0x0075FA92,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9690
@@ -19288,10 +19284,6 @@ uw_007a767b,,0x007A767B,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;obje
 uw_007a7683,,0x007A7683,11,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4151
 uw_007a768e,,0x007A768E,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4142
 uw_007a76a0,,0x007A76A0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4376
-uw_007a7724,,0x007A7724,14,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3813
-uw_007a7732,,0x007A7732,14,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3814
-uw_007a7740,,0x007A7740,14,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3815
-uw_007a774e,,0x007A774E,14,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3816
 uw_007a78b0,,0x007A78B0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L7559
 uw_007a78f0,,0x007A78F0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4813
 uw_007a79e6,,0x007A79E6,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9410
@@ -98271,3 +98263,9 @@ $L310,,0x0078A70A,13,Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBeh
 $L310,,0x0078A759,13,Code/GameEngine/Source/GameLogic/Object/Behavior/SpawnBehaviorPoolKey.cpp,matched,gen-funclet;parent=?getModuleNameKey@SpawnBehavior@@UBE?AW4NameKeyType@@XZ; Exact parent 0x0045F688 EH graph (eh_verify EXACT) places compiler label $L310 at native 0x0078A759: /G7 local-static guard rollback of the parent's compiler-owned guard; replaces the retired standalone Rva0078A759ClearFlag (reverse/deleted_rows.csv)
 $L1538,,0x0078A97D,13,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourDtor.cpp,matched,gen-funclet;parent=?Rva004617CFFind@@YAPAVBehaviorModule@@PAUFakePortalObjectView@@@Z; Exact parent 0x004617CF EH graph (eh_verify EXACT) places compiler label $L1538 at native 0x0078A97D: /G7 local-static guard rollback of the parent's compiler-owned guard; replaces the retired standalone Rva0078A97DClearFlag (reverse/deleted_rows.csv)
 $L337,,0x0078A7C1,13,Code/GameEngine/Source/GameLogic/Object/ObjectFindDynamicPortalBehaviour.cpp,matched,gen-funclet;parent=?rva004608E0@DynamicPortalBehaviour@@SAPAVModule@@PAVObject@@@Z; Exact parent 0x004608E0 EH graph (eh_verify EXACT) places compiler label $L337 at native 0x0078A7C1: /G7 local-static guard rollback of the parent's compiler-owned guard; replaces the retired standalone Rva0078A7C1ClearFlag (reverse/deleted_rows.csv)
+??1Rva00082BE6Element@@QAE@XZ,,0x005F8F96,12,Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.cpp,matched,gen-alias;whole12B counted-handle destructor and sole REL32 are exact twins of existing TreeHintRef00217D4C owner at0x005F8F96;null-check stored pointer then tail-call ReleaseTreeHintRef00217D4C at0x0007DEEF;exact parent EH independently places parameter cleanup calling0x005F8F96;existing element view name retained with no original type claim;fold-proof=Code/GameEngine/Source/Common/Rva002833A3C5.cpp
+??1Rva00082C1DElement@@QAE@XZ,,0x005F8F96,12,Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.cpp,matched,gen-alias;whole12B counted-handle destructor and sole REL32 are exact twins of existing TreeHintRef00217D4C owner at0x005F8F96;null-check stored pointer then tail-call ReleaseTreeHintRef00217D4C at0x0007DEEF;exact parent EH independently places parameter cleanup calling0x005F8F96;existing element view name retained with no original type claim;fold-proof=Code/GameEngine/Source/Common/Rva002833A3C5.cpp
+Unwind@00b5f9ee,,0x0075F9EE,8,Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.cpp,matched,gen-funclet;parent=?onAreaAdded@WaterRenderObjClass@@UAEXHPAVStandingWaveArea@@@Z;object-symbol=$L6478;retail unwind state=1;parent-EH=EXACT;replaces=uw_0075f9ee
+Unwind@00b5fa12,,0x0075FA12,8,Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.cpp,matched,gen-funclet;parent=?rva0008385F@WaterRenderObjClass@@QAEXPAV?$AreaSet@VStandingWaveArea@@@@PAV?$vector@UTreeHintRef00217D4C@@V?$allocator@UTreeHintRef00217D4C@@@_STL@@@_STL@@@Z;object-symbol=$L6528;retail unwind state=2;parent-EH=EXACT;replaces=uw_0075fa12
+Unwind@00b5fa36,,0x0075FA36,8,Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.cpp,matched,gen-funclet;parent=?rva00083959@WaterRenderObjClass@@QAEXPAV?$AreaSet@VRiverArea@@@@PAV?$vector@UTreeHintRef00217D4C@@V?$allocator@UTreeHintRef00217D4C@@@_STL@@@_STL@@@Z;object-symbol=$L6603;retail unwind state=2;parent-EH=EXACT;replaces=uw_0075fa36
+Unwind@00b5fa48,,0x0075FA48,8,Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.cpp,matched,gen-funclet;parent=?rva00083A7A@WaterRenderObjClass@@QAEXPAV?$AreaSet@VStandingWaveArea@@@@PAV?$AreaSet@VRiverArea@@@@PAV?$AreaSet@VWaterWaveArea@@@@@Z;object-symbol=$L6671;retail unwind state=0;parent-EH=EXACT;replaces=uw_0075fa48

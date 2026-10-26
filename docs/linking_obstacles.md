@@ -2582,6 +2582,16 @@ Clearance: the surviving owners link in preview (link_check against index d1f046
 units held 0 census-linked bytes, so no headline change is claimed.
 Census confirmation: not claimed.
 
+**Generated unwind duplicate cleanup (2026-10-26, inspected `39e752ed5b`):**
+Retired `uw_gen_009.cpp`'s four 14-byte copies at 0x007A7724/32/40/4E.
+The existing AssetManagerImplCtor.cpp rows from `f943117658` retain each exact
+range; the current constructor and its full EH graph verify EXACT, and all
+12 surviving rows pass. The strict-current parent preview remains LINKS
+against index `5ce093a71a`. Tombstones and evidence are in
+`reverse/attempt_support/uw009-parent-repoints-20261026.md`; LINK-095 records
+the broader generated-harness cleanup and remaining blockers. No census gain
+is claimed.
+
 **Assigned retired-unit recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `StlSweepR3Rva004F715B.cpp` is absent and has no current row; its retirement is recorded in `reverse/deleted_rows.csv`. The surviving `stlport_pop_heap_rva004f7e61.cpp` remains byte-exact and LINKS in the paired current-provider preview. The two hashtable over-claims at 0x001DE3E3 and 0x001FDEBC remain; their bounded emission cleanup is recorded under LINK-066 and does not settle ownership. Evidence: `build/c136-r3sweep/before-retired-004f715b.log`, `native-evidence-03.log`, `after-expanded-cohort.log` and `final-assigned-build.log`. No new retirement or census gain is claimed; the next check is the normal ownership/naming decision for the surviving duplicates.
 
 **GUI-package recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `Rva00576DF1Ctor.cpp` is absent; current history records its retirement as `febea697c2a`. The surviving `Rva00576C4BDtor.cpp` remains LINKS and passes all 25 byte rows. The two remaining constructor views now bind their 0x005CD7DA cleanup directly to that owner's existing `Wrap2000576C4B` destructor, clearing that record subset as detailed in LINK-085. The duplicate planning constructor and its three unique EH rows remain untouched. Approved ownership and coherent class naming are still prerequisites for retiring that duplicate; no row move or retirement was attempted here. Raw receipts: `build/c136-gui-w2/expanded-before.log`, `expanded-after.log`, `final-provider-build.log` and `build/link-report.md`. Census confirmation remains pending.
@@ -3332,3 +3342,36 @@ re-run the repoint with an unmasked `./build.sh` before staging. A relocation-
 masked sweep alone over-reports.
 Clearance: pending.
 Census confirmation: awaiting.
+
+**uw_gen_009 parent ownership cleanup (2026-10-26):**
+
+Status: Open, partially cleaned. Updated: 2026-10-26; inspected revision: `39e752ed5b`; census index `5ce093a71a` (2026-10-26 19:02).
+
+Evidence / affected unit: `Code/gen_small/uw_gen_009.cpp` has 113 unresolved
+`Gen_uw*`, `gen_uw_ext` and `gen_uw_sink` names in the current-object preview.
+Its source is generator-owned. Retail FuncInfo/unwind maps identify parent
+candidates, but an EXACT EH graph masks external relocation sites and does not
+by itself establish the destructor callee identity. Detailed target facts and
+verification are in `reverse/attempt_support/uw009-parent-repoints-20261026.md`.
+
+Completed: four eight-byte water parameter cleanups now use their matched
+WaterRenderObjClass parents. Their two emitted handle destructors were admitted
+as complete byte-and-relocation twins of the existing 0x005F8F96 owner, without
+new pins or source changes. Four redundant asset-manager scaffold rows were
+removed in favor of existing C++ owners (LINK-060). Generated ownership falls
+from 181 rows / 1,733 bytes to 173 / 1,645; byte coverage is preserved. Water's
+21 rows and assetmanager's 12 rows pass, with six EXACT parent EH graphs and
+strict-current receipts. Both parents remain LINKS in the paired preview.
+
+Remaining / next check: the harness still has 113 unresolved names. Six trial
+repoints from Rva000C38F8Ctor.cpp were reverted because their
+`vector<PlayerAITypeEntry>` destructor is unresolved; retail calls the existing
+`vector<AsciiString>` destructor at 0x0002CC70. Establish the element cleanup
+identity before retrying those six rows; do not infer a destructor fold from
+the common vector constructor. Repoint other generated rows only after both
+parent EH placement and complete resolved funclet bytes pass. The initial
+0x0075C9DA lead was left untouched because its candidate parent files were held.
+
+Clearance: only the four water row bindings and four redundant asset-manager
+claims are resolved; whole-unit closure remains open. Census confirmation:
+awaiting measurement; no headline gain claimed.

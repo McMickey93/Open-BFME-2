@@ -186,7 +186,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/gen_small/uw_gen_000.cpp` | 3,419 | 95 (U=95) | Open |
 | `Code/gen_small/uw_gen_001.cpp` | 3,406 | 184 (U=184) | Open |
 | `Code/gen_small/uw_gen_013.cpp` | 3,205 | 184 (U=184) | Open |
-| `Code/gen_small/uw_gen_009.cpp` | 2,533 | 113 (U=113) | Open |
+| `Code/gen_small/uw_gen_009.cpp` | 2,533 | 113 (U=113) | Open; four parent repoints and four duplicate rows retired (LINK-095), 113 unresolved names remain |
 | `Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp` | 2,520 | 49 (U=42, C=4, S=3) | Open |
 | `Code/gen_small/uw_gen_014.cpp` | 2,489 | 271 (U=263, A=8) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlportVectorEraseRangeDeferred.cpp` | 2,464 | 3 (U=3) | Cleared (LINK-036, link_check 2,464B) |
