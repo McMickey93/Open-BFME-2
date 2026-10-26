@@ -2649,3 +2649,4 @@ class,Rva00595C79Address,NetworkAddress,inferred,agree:nl-fc5ebe9094fe,Code/Game
 carry,?formatAddress@@YA?AVAsciiString@@PBURva00595C79Address@@@Z,?formatAddress@@YA?AVAsciiString@@PBUNetworkAddress@@@Z,inferred,scope renamed by Rename Rva00595C79Address to NetworkAddress (inferred),Code/GameEngine/Source/Common/Rva00595C79Permuted.cpp,0x00595C79
 class,Rva0033A9A5Entry,AutoResolveArmorEntry,inferred,agree:nl-9419a833a847,Code/GameEngine/Source/Common/Rva0033A9A5.cpp,
 member,GlobalData2::m_68,GlobalData2::m_enableBehindBuildingMarkers,inferred,agree:nl-066590d92906,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroConstructor.cpp,
+param,Rva0049A64B::isClearToApproach::a,Rva0049A64B::isClearToApproach::docker,inferred,agree:nl-a380432cd9ca,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/Rva0049A64BRva0049A8FA.cpp,0x0049A880

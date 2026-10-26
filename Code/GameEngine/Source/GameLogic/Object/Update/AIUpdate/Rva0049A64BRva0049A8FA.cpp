@@ -94,7 +94,7 @@ public:
 class Rva0049A64B : public B00, public B0C, public B10, public B20, public B24, public Iface3E4
 {
 public:
-	virtual bool isClearToApproach(int a);
+	virtual bool isClearToApproach(int docker);
 	virtual bool reserveApproachPosition(int a, Coord3D *pos, int *out);
 	virtual void getEnterPosition(int docker, Coord3D *out);
 };
@@ -130,11 +130,11 @@ bool Rva0049A64B::reserveApproachPosition(int a, Coord3D *pos, int *out)
 // Retail table C50868 slot 0 uses the same +3E4 interface receiver as
 // slots 1 and 5. Its whole 33B span ends at the following slot-1 body.
 // The Object member at +8 is therefore [secondary-this - 3DC].
-bool Rva0049A64B::isClearToApproach(int a)
+bool Rva0049A64B::isClearToApproach(int docker)
 {
  Rva0049A8FAProvider *provider = m_object->m_250->rva7C();
  if (!provider) return false;
- return provider->rva18(a);
+ return provider->rva18(docker);
 }
 
 // The two rowed Horde constructors install this entire 20-entry secondary
