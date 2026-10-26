@@ -81,7 +81,8 @@ public:
 	BfmeFixedStorage0004543D m_08;
 	BfmeFixedStorage0004543D m_24;
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
@@ -226,7 +227,7 @@ UpdateSleepTime BroadcastStealthUpdate::update()
 	BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(obj->getPosition(), data->m_24, 0,
 		Rva002614DFFilter(obj).link(&Rva0026119DFilter())->link(&Rva00260EB1Filter(obj, 4, false))
 			->link(&Rva002611BFFilter(obj))
-			->link(&Rva0004584D(data->m_08, *(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)), 0);
+			->link(&Rva0004584D(data->m_08, *(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)), 0);
 	Object *other;
 	while ((other = hits.next()) != 0)
 	{

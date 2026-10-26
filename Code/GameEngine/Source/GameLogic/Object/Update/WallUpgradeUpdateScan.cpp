@@ -50,7 +50,8 @@ struct Rva0006EE7A
 	Rva0006EE7A(int unused, int bit1, int bit2);
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // vftable 0x00BC2908, allow 0x002610DE: accept what has every kind of the
 // first mask and none of the second (ZH's PartitionFilterAcceptByKindOf).
@@ -248,7 +249,7 @@ void WallUpgradeUpdate::scanForBuildingAndPossess()
 	const Coord3D *pos = &obj->m_pos;
 	Object *found = ThePartitionManager->getClosestObject(pos, 200.0f, 1,
 		Rva002614DFFilter(obj).link(&Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva0006EE7A(0, 7, 60),
-			*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)));
+			*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)));
 	if (found)
 		m_28 = found->m_id;
 }
@@ -265,7 +266,7 @@ void WallUpgradeUpdate::rva004AB57E()
 			->link(&Rva002FDF1C(*(BfmeObject872Header *)Rva0023DA79().rva0023DA79(0, OBJECT_STATUS_3B),
 				*(BfmeObject872Header *)&ObjectStatusMaskNone()))
 			->link(&Rva002611BFFilter(us))
-			->link(&Rva0004584D(*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+			->link(&Rva0004584D(*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 				*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 2))), 2);
 	if (hits.count() > 0) {
 		for (Object *obj = hits.next(); obj; obj = hits.next()) {

@@ -684,7 +684,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/BoneFXDamagePoolKey.cpp	wrong-nam
 Code/GameEngine/Source/GameLogic/Object/Update/BoneFXUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000487A19@BoneFXUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A038CC
 Code/GameEngine/Source/GameLogic/Object/Update/BoredUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004966B9@BoredUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A5C
 Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A34C6@BroadcastStealthUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03BD8
-Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpdateUpdate.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00047F97E@CivilianSpawnUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03754
 Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateModuleDataCtor.cpp	wrong-name	?g_Va00DBA4E4@@3HA	0x009BA4E4
 Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A3C
@@ -797,7 +796,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdate
 Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A812E@ToppleUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C80
 Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateFind.cpp	wrong-name	?$S1@?1??rva004AB1F5@WallUpgradeUpdate@@SAPAVModule@@PAVObject@@@Z@4IA	0x00A03CC8
 Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004AB2D2@WallUpgradeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03CD0
-Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateScan.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/WeaponFireSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000492685@WeaponFireSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039E8
 Code/GameEngine/Source/GameLogic/Object/Update/WeaponModeSpecialPowerUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000494AF3@WeaponModeSpecialPowerUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A18
 Code/GameEngine/Source/GameLogic/Object/Update/WeaponSetSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000492459@WeaponSetSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039E0
@@ -840,7 +838,6 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003BE7ED.cpp	wrong-na
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003BE7ED.cpp	wrong-name	?g_00DFE344@@3PAVRva0021A4E6@@A	0x009FE344
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003BE7ED.cpp	wrong-name	?g_00E02D6C@@3PAURva00E02D6CDefeatView@@A	0x00A02D6C
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003BE7ED.cpp	wrong-name	?g_00E03138@@3PAVRva00E03138@@A	0x00A03138
-Code/GameEngine/Source/GameLogic/SkirmishAI/AISpecialPowers/AISPecialPowerTargetAoE.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	duplicate-def	?AIFarmKillSquad_FrameNextRun@@3VAsciiString@@A	0x00A06430
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	duplicate-def	?AIFarmKillSquad_IsRunning@@3VAsciiString@@A	0x00A0642C
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	duplicate-def	?g_00E06434@@3MA	0x00A06434
