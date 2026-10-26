@@ -112,4 +112,3 @@ namespace _STL { template <> void _Construct<Rva00541021, Rva00541021>(Rva005410
 template _STL::vector<Rva00541021,_STL::allocator<Rva00541021> >::vector(_STL::vector<Rva00541021,_STL::allocator<Rva00541021> > const &);
 template _STL::vector<BfmePod32,_STL::allocator<BfmePod32> >::vector(_STL::vector<BfmePod32,_STL::allocator<BfmePod32> > const &);
 template void _STL::vector<Rva00541021,_STL::allocator<Rva00541021> >::reserve(unsigned int);
-template void _STL::vector<BfmePod28,_STL::allocator<BfmePod28> >::insert(BfmePod28 *,unsigned int,BfmePod28 const &);
