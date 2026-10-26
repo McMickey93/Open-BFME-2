@@ -14,7 +14,7 @@
 #include "unicode_string.h"
 typedef unsigned int UnsignedInt;
 #include "Code/Libraries/Include/Lib/Coord3D.h"
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 __forceinline int bountyRound(float value) {
  int result;
  __asm {fld value}

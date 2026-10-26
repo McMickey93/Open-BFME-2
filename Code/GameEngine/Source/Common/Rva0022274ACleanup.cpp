@@ -16,7 +16,7 @@ void Rva006CDF60();
 void Rva006CC600(const char *first, char *second);
 void Rva00411E80(int value);
 
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
+#include <stdio.h>
 // Retail calls the IAT slot directly rather than the CRT import thunk.
 #pragma function(sprintf)
 

@@ -8,7 +8,7 @@ public:
 	void set(const T *str);
 };
 int GetGameClientRandomValue(int lo, int hi, char *file, int line);
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buf, const char *fmt, ...);
+#include <stdio.h>
 void Rva0023D614Set(StringBase<char> *out)
 {
 	char buf[60];
