@@ -6,7 +6,7 @@
 // the rowed Rva003B3204::clear and delete it. Twin of the inline +0x0C half
 // in the 118B caller at 0x003B779C (which calls this body for its +0x2C
 // half). Evidence: caller 0x003B77CD, rowed 71B4/clear/delete callees.
-void __cdecl operator delete(void *block);
+#include <new>
 
 struct Rva003B3204
 {

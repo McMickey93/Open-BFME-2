@@ -1161,9 +1161,6 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineAdjustTimer.cpp	drop-i
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineSetTimer.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	ceil:same
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_nodeFree.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_setCounter.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	ceil:same
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListSubrecordRemove.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptList_deleteGroupRef.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptList_deleteScriptRef.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptRetailChunkReader.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptTagCheck.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcmp:same
 Code/GameEngine/Source/GameLogic/ScriptEngine/VictoryConditions.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same

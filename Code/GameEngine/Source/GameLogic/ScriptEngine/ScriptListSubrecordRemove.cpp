@@ -65,7 +65,7 @@ struct Rva003B675BRecord
 	void *m_nodes; // +0x10
 };
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class BfmeNodeZ
 {

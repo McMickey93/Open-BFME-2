@@ -9,7 +9,7 @@
 // half lives in deleteScriptRef; this body is the +0x0C twin plus the capture
 // and drain. Evidence: chain via rowed 7389, rowed captureGroup/7096/
 // clear/delete callees, inline twin of the 7389 unlink loop.
-void __cdecl operator delete(void *block);
+#include <new>
 
 struct Rva003B31DF
 {
