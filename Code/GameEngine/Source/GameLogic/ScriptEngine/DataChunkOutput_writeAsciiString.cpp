@@ -13,30 +13,8 @@ typedef unsigned short UnsignedShort;
 extern "C" __declspec(dllimport) unsigned int __cdecl fwrite(
 	const void *chunkBuffer, unsigned int elementSize, unsigned int elementCount, void *outputFile);
 
-struct AsciiStringHeader
-{
-	int headerRefCount;
-	UnsignedShort headerLength; ///< retail +0x04
-	UnsignedShort headerCapacity;
-	char headerData[1]; ///< retail +0x08
-};
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-class AsciiString
-{
-public:
-	int getLength() const
-	{
-		return asciiData ? asciiData->headerLength : 0;
-	}
-
-	const char *getStringData() const
-	{
-		return asciiData ? &asciiData->headerData[0] : "";
-	}
-
-private:
-	AsciiStringHeader *asciiData;
-};
 
 class DataChunkOutput
 {
@@ -53,5 +31,5 @@ void DataChunkOutput::writeAsciiString(const AsciiString &textValue)
 {
 	UnsignedShort textLength = textValue.getLength();
 	::fwrite((const char *)&textLength, sizeof(UnsignedShort), 1, tempFile);
-	::fwrite(textValue.getStringData(), textLength, 1, tempFile);
+	::fwrite(textValue.str(), textLength, 1, tempFile);
 }
