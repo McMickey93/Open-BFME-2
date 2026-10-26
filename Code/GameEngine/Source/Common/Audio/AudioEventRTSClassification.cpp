@@ -643,46 +643,24 @@ public:
 extern AudioManager *TheAudio;
 
 class Rva002D9AC3 { public: const char *rva002D9AC3(); };
-class Xfer {
-public:
- virtual void x0();
- virtual bool isLoad();
- virtual void x2();
- virtual void x3();
- virtual void x4();
- virtual void x5();
- virtual void x6();
- virtual void x7();
- virtual void x8();
- virtual void x9();
- virtual void x10();
- virtual void x11();
- virtual void x12();
- virtual void x13();
- virtual void x14();
- virtual void x15();
- virtual void x16();
- virtual void x17();
- virtual void x18();
- virtual void x19();
- virtual void x20();
- virtual void x21();
- virtual void x22();
- virtual void x23();
- virtual void coord(BfmeEventPositionView *value);
- virtual void x25();
- virtual void x26();
- virtual void ascii(AsciiString *value);
- virtual void real(float *value);
- virtual void x29();
- virtual void x30();
- virtual void integer(int *value);
- virtual void x32();
- virtual void x33();
- virtual void x34();
- virtual void byte(char *value);
- virtual void boolean(unsigned char *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 
 void XferDrawableID(Xfer *xfer, int *id);
 void XferObjectID(Xfer *xfer, ObjectID *id);
@@ -695,18 +673,18 @@ void AudioEventRTS::internalXfer(Xfer *xfer, const void *version)
 {
  BfmeAudioEventPrefix136 &event = *(BfmeAudioEventPrefix136 *)this;
  AsciiString name(*(const AsciiString *)((Rva002D9AC3 *)this)->rva002D9AC3());
- xfer->ascii(&name);
- if (xfer->isLoad()) {
+ (*xfer == name);
+ if (xfer->IsLoading()) {
   if (name.isEmpty())
    ((Rva000A8C9B *)&event.m_pool08)->clear();
   else
    *(OpaqueRefElement4 *)&event.m_pool08 = TheAudio->a75(&name);
  }
  char owner = (char)event.m_int38;
- xfer->byte(&owner);
+ (*xfer == owner);
  event.m_int38 = owner;
  switch (event.m_int38) {
- case 0: xfer->coord(&event.m_position); break;
+ case 0: (*xfer == reinterpret_cast<Coord3DBase &>(event.m_position)); break;
  case 1: XferDrawableID(xfer, &event.m_int34); break;
  case 2: XferObjectID(xfer, (ObjectID *)&event.m_int34); break;
  case 3: XferLivingWorldUniqueID(xfer, &event.m_int34); break;
@@ -714,25 +692,25 @@ void AudioEventRTS::internalXfer(Xfer *xfer, const void *version)
  case 5: Rva004E075FGet((Rva004E075FObj *)xfer, (int)&event.m_int34); break;
  }
  const unsigned char *v = (const unsigned char *)version;
- if (v[1] >= 2) xfer->boolean(&event.m_b48);
- xfer->boolean(&event.m_b49);
- if (v[1] < 5) { unsigned char obsolete = 0; xfer->boolean(&obsolete); }
- xfer->boolean(&event.m_b4A);
- xfer->integer(&event.m_int6C);
+ if (v[1] >= 2) (*xfer == reinterpret_cast<bool &>(event.m_b48));
+ (*xfer == reinterpret_cast<bool &>(event.m_b49));
+ if (v[1] < 5) { unsigned char obsolete = 0; (*xfer == reinterpret_cast<bool &>(obsolete)); }
+ (*xfer == reinterpret_cast<bool &>(event.m_b4A));
+ (*xfer == event.m_int6C);
  if (v[1] >= 4) XferLivingWorldPlayerID(xfer, &event.m_int70);
- xfer->boolean(&event.m_b4C);
+ (*xfer == reinterpret_cast<bool &>(event.m_b4C));
  char logical = (char)event.m_int30;
- xfer->byte(&logical);
+ (*xfer == logical);
  event.m_int30 = logical;
  char portion = (char)event.m_int78;
- xfer->byte(&portion);
+ (*xfer == portion);
  event.m_int78 = portion;
- xfer->ascii(&event.m_string84);
- xfer->integer(&event.m_int7C);
- xfer->real(&event.m_f2C);
- if (v[1] >= 3) xfer->integer(&event.m_int80);
+ (*xfer == event.m_string84);
+ (*xfer == event.m_int7C);
+ (*xfer == event.m_f2C);
+ if (v[1] >= 3) (*xfer == event.m_int80);
  if (v[1] >= 6) {
-  xfer->integer(&event.m_int14);
+  (*xfer == event.m_int14);
   TheAudio->a103(xfer, &event.m_pool10);
  }
 }

@@ -301,23 +301,25 @@ Rva002C5398::Rva002C5398(EmitVtableTag *)
 extern "C" void __cdecl free(void *);
 // Pointer-only transfer ABI established by native calls and the existing
 // entry serializer. Coordinate temporary lifetime is visible in the EH flags.
-class Xfer {
-public:
- class Version { public: Version(unsigned char a,unsigned char b):current(a),minimum(b){} unsigned char current,minimum; };
- virtual ~Xfer(); virtual bool IsLoading(); virtual bool IsStoring();
- virtual void v03(); virtual void v04(); virtual void v05();
- virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
- virtual void v10(void *);
- virtual void v11(); virtual void v12(); virtual void v13();
- virtual void v14(); virtual void v15(); virtual void v16();
- virtual void v17(); virtual void v18(); virtual void v19();
- virtual void v20(); virtual void v21(); virtual void v22();
- virtual void v23(); virtual void v24(); virtual void v25();
- virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
- virtual void v30(unsigned &);
- virtual void v31(); virtual void v32(); virtual void v33();
- virtual void v34(); virtual void v35(); virtual void v36(bool &);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+class Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../Include/Common/BfmeXfer.h"
+class Xfer::Version { public: Version(unsigned char a,unsigned char b):current(a),minimum(b){} unsigned char current,minimum; };
 class Coord3DBase {
 public:
  Coord3DBase(float a, float b, float c) : x(a), y(b), z(c) {}
@@ -424,15 +426,15 @@ Rva002C6354::~Rva002C6354()
 void Rva002C6354::DoXfer(Xfer *x)
 {
  Xfer::Version version(1,1);
- x->v10(&version);
+ (*x == version);
  bool hasChooser = m_0C != 0;
- x->v36(hasChooser);
+ (*x == hasChooser);
  if (m_0C) m_0C->xfer(x);
  m_10->DoXfer(x);
  _STL::vector<const ModuleData *> &entries =
      *reinterpret_cast<_STL::vector<const ModuleData *> *>(&m_buffer);
  unsigned count = entries.size();
- x->v30(count);
+ (*x == count);
  if (x->IsStoring()) {
   const ModuleData **last = (const ModuleData **)m_buffer.end;
   for (const ModuleData **it = (const ModuleData **)m_buffer.begin; it != last; ++it)

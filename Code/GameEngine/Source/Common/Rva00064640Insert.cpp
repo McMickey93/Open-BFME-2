@@ -50,42 +50,24 @@ class Rva00064390 { public: Rva00064390(); float m_00,m_04,m_08,m_0C,m_10,m_14; 
 class Rva00503E76;
 struct Rva00503E76Arg1;
 Rva00503E76Arg1 *__cdecl Rva00503EB7Call(Rva00503E76Arg1 *, Rva00503E76 *);
-class Xfer {
-public:
- virtual void slot00() = 0;
- virtual bool isLoading() = 0;
- virtual bool isSaving() = 0;
- virtual void slot03() = 0;
- virtual void slot04() = 0;
- virtual void slot05() = 0;
- virtual void slot06() = 0;
- virtual void slot07() = 0;
- virtual void slot08() = 0;
- virtual void slot09() = 0;
- virtual void slot10() = 0;
- virtual void slot11() = 0;
- virtual void slot12() = 0;
- virtual void slot13() = 0;
- virtual void slot14() = 0;
- virtual void slot15() = 0;
- virtual void slot16() = 0;
- virtual void slot17() = 0;
- virtual void slot18() = 0;
- virtual void slot19() = 0;
- virtual void slot20() = 0;
- virtual void slot21() = 0;
- virtual void slot22() = 0;
- virtual void slot23() = 0;
- virtual void slot24() = 0;
- virtual void slot25() = 0;
- virtual void slot26() = 0;
- virtual void slot27() = 0;
- virtual void slot28() = 0;
- virtual void slot29() = 0;
- virtual void slot30() = 0;
-
- virtual void xferCount(int *) = 0; // retail slot 0x7C
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../Include/Common/BfmeXfer.h"
 class ControlPointBlock {
 public:
  void DoXfer(Xfer *xfer);
@@ -95,14 +77,14 @@ private:
 // WB ControlPoint.cpp names ControlPointBlock::DoXfer. The existing
 // address-derived owner preserves its established caller ABI.
 void ControlPointBlock::DoXfer(Xfer *xfer) {
- if(xfer->isSaving()) {
+ if(xfer->IsStoring()) {
   int count = m_controlPoints.size();
-  xfer->xferCount(&count);
+  (*xfer == count);
   for(Rva00064640Set::iterator it=m_controlPoints.begin(); it._M_node != m_controlPoints.end()._M_node; ++it)
    Rva00503EB7Call(reinterpret_cast<Rva00503E76Arg1 *>(xfer), reinterpret_cast<Rva00503E76 *>(const_cast<Rva00064640Record *>(&*it)));
- } else if(xfer->isLoading()) {
+ } else if(xfer->IsLoading()) {
   int count;
-  xfer->xferCount(&count);
+  (*xfer == count);
   m_controlPoints.clear();
   Rva00064390 value;
   for(int i=0;i<count;++i) {

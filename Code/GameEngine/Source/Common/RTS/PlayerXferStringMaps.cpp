@@ -50,42 +50,24 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void slot10();
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString &value);
-	virtual void xferReal(float &value);
-	virtual void slot29();
-	virtual void xferUnsignedInt(UnsignedInt &value);
-	virtual void xferInt(Int &value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 
 // Iterator home for the table walk: current node then owning table.
 class GameWindow;
@@ -241,30 +223,30 @@ public:
 
 void Player::rva002AF236(Xfer *xfer, Rva001FDE3F *map)
 {
-	if (xfer->isSaving())
+	if (xfer->IsStoring())
 	{
 		float value;
 		UnsignedInt count = ((Rva002AE4C5 *)map)->m_numElements;
-		xfer->xferUnsignedInt(count);
+		(*xfer == count);
 		Rva000411084 it = ((WVMap *)map)->begin();
 		for (; it.m_current != 0; it.next())
 		{
 			AsciiString key = ((Rva002AF236Node *)it.m_current)->m_key;
 			value = ((Rva002AF236Node *)it.m_current)->m_value;
-			xfer->xferAsciiString(key);
-			xfer->xferReal(value);
+			(*xfer == key);
+			(*xfer == value);
 		}
 	}
 	else
 	{
 		UnsignedInt count = 0;
-		xfer->xferUnsignedInt(count);
+		(*xfer == count);
 		AsciiString key;
 		float value;
 		for (UnsignedInt i = 0; i < count; ++i)
 		{
-			xfer->xferAsciiString(key);
-			xfer->xferReal(value);
+			(*xfer == key);
+			(*xfer == value);
 			map->rva001FDE3F(key) = value;
 		}
 	}
@@ -272,30 +254,30 @@ void Player::rva002AF236(Xfer *xfer, Rva001FDE3F *map)
 
 void Player::rva002AF33B(Xfer *xfer, Rva002AE4C5 *map)
 {
-	if (xfer->isSaving())
+	if (xfer->IsStoring())
 	{
 		Int value;
 		UnsignedInt count = map->m_numElements;
-		xfer->xferUnsignedInt(count);
+		(*xfer == count);
 		Rva000411084 it = ((WVMap *)map)->begin();
 		for (; it.m_current != 0; it.next())
 		{
 			AsciiString key = ((Rva002AF33BNode *)it.m_current)->m_key;
 			value = ((Rva002AF33BNode *)it.m_current)->m_value;
-			xfer->xferAsciiString(key);
-			xfer->xferInt(value);
+			(*xfer == key);
+			(*xfer == value);
 		}
 	}
 	else
 	{
 		UnsignedInt count = 0;
-		xfer->xferUnsignedInt(count);
+		(*xfer == count);
 		AsciiString key;
 		Int value;
 		for (UnsignedInt i = 0; i < count; ++i)
 		{
-			xfer->xferAsciiString(key);
-			xfer->xferInt(value);
+			(*xfer == key);
+			(*xfer == value);
 			map->rva002AE4C5(&key) = value;
 		}
 	}

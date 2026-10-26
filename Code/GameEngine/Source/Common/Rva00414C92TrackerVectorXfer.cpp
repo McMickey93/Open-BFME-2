@@ -47,24 +47,8 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03(); virtual void slot04(); virtual void slot05(); virtual void slot06();
-	virtual void slot07(); virtual void slot08(); virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion *version); // +0x28
-	virtual Xfer &xferTypeName(const char *const &name); // +0x2C
-	virtual Xfer &xferSnapshot(Snapshot *snapshot); // +0x30
-	virtual void slot13(); virtual void slot14(); virtual void slot15(); virtual void slot16();
-	virtual void slot17(); virtual void slot18(); virtual void slot19(); virtual void slot20();
-	virtual void slot21(); virtual void slot22(); virtual void slot23(); virtual void slot24();
-	virtual void slot25(); virtual void slot26(); virtual void slot27(); virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt *value); // +0x78
-};
+#include "System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 class XferException
 {
@@ -82,14 +66,14 @@ Xfer *Rva00414C92(Xfer *xfer, Rva00414EA1Vector *trackers)
 	XferVersion version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(&version);
+	(*xfer == reinterpret_cast<Xfer::Version &>(version));
 	UnsignedInt count = trackers->end - trackers->begin;
-	xfer->xferTypeName("std::vector").xferUnsignedInt(&count);
-	if (xfer->isSaving())
+	((*xfer == XferVectorTypeName("std::vector")) == count);
+	if (xfer->IsStoring())
 	{
 		ScoredKillTracker *end = trackers->end;
 		for (ScoredKillTracker *it = trackers->begin; it != end; ++it)
-			xfer->xferSnapshot(it);
+			(*xfer == static_cast<Snapshot &>(*it));
 	}
 	else
 	{
@@ -101,7 +85,7 @@ Xfer *Rva00414C92(Xfer *xfer, Rva00414EA1Vector *trackers)
 		{
 			reinterpret_cast<_STL::vector<ScoredKillTracker> *>(trackers)->push_back(value);
 			ScoredKillTracker *last = &trackers->back();
-			xfer->xferSnapshot(last);
+			(*xfer == static_cast<Snapshot &>(*last));
 		}
 	}
 	return xfer;

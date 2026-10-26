@@ -22,40 +22,24 @@
 #include "ascii_string.h"
 #include "GameLogicObjectLookupView.h"
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void slot10();
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual Xfer &xferAsciiString(AsciiString *value);
-
-	void Version1();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../Include/Common/BfmeXfer.h"
 
 void XferObjectID(Xfer *xfer, ObjectID *objectID);
 
@@ -126,7 +110,7 @@ void Rva00306910::xfer(Xfer *xfer)
 		ObjectID id = INVALID_OBJECT_ID;
 		AsciiString name("");
 		XferObjectID(xfer, &id);
-		xfer->xferAsciiString(&name);
+		(*xfer == name);
 		if (id != INVALID_OBJECT_ID)
 		{
 			Object *object = TheGameLogic->findObjectByID(id);
@@ -145,6 +129,6 @@ void Rva00306910::xfer(Xfer *xfer)
 		if (m_template)
 			name = m_template->bfme_get_name();
 		XferObjectID(xfer, &id);
-		xfer->xferAsciiString(&name);
+		(*xfer == name);
 	}
 }

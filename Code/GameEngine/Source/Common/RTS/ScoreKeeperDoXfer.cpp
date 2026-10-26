@@ -39,43 +39,24 @@ struct ScoreWeightsView {
 #include "../ScoredKillTrackerView.h"
 
 struct XferVersion { unsigned char minimum,current; };
-class Xfer
-{
-public:
- virtual ~Xfer();
- virtual void slot01();
- virtual void slot02();
- virtual bool IsCRC() const;
- virtual bool IsLightCRC() const;
- virtual void slot05();
- virtual void slot06();
- virtual void slot07();
- virtual void slot08();
- virtual void slot09();
- virtual Xfer &xferVersion(XferVersion*);
- virtual void slot11();
- virtual void slot12();
- virtual void slot13();
- virtual void slot14();
- virtual void slot15();
- virtual void slot16();
- virtual void slot17();
- virtual void slot18();
- virtual void slot19();
- virtual void slot20();
- virtual void slot21();
- virtual void slot22();
- virtual void slot23();
- virtual void slot24();
- virtual void slot25();
- virtual void slot26();
- virtual void slot27();
- virtual Xfer &xferFloat(float*);
- virtual void slot29();
- virtual Xfer &xferUnsignedInt(unsigned int*);
- virtual Xfer &xferInt(int*);
- virtual Xfer &xferUnsignedShort(unsigned short*);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 class XferException
 {
 public:
@@ -120,75 +101,75 @@ void ScoreKeeper::DoXfer(Xfer *xfer)
  versionStorage.version.minimum=1;
  versionStorage.version.current=12;
  XferVersion &version=versionStorage.version;
- xfer->xferVersion(&version);
+ (*xfer == reinterpret_cast<Xfer::Version &>(version));
  if (version.current < 8)
  {
- xfer->xferInt(&moneyEarned);
- xfer->xferInt(&moneySpent);
+ (*xfer == moneyEarned);
+ (*xfer == moneySpent);
  for (int i = 0; i < 20; ++i)
  {
-  xfer->xferInt(&unitsDestroyed[i]);
-  xfer->xferInt(&buildingsDestroyed[i]);
+  (*xfer == unitsDestroyed[i]);
+  (*xfer == buildingsDestroyed[i]);
  }
- xfer->xferInt(&unitsBuilt);
- xfer->xferInt(&unitsLost);
- xfer->xferInt(&buildingsBuilt);
- xfer->xferInt(&buildingsLost);
+ (*xfer == unitsBuilt);
+ (*xfer == unitsLost);
+ (*xfer == buildingsBuilt);
+ (*xfer == buildingsLost);
  }
  else if (version.current < 9)
  {
- xfer->xferInt(&field108);
- xfer->xferInt(&field10C);
+ (*xfer == field108);
+ (*xfer == field10C);
  }
  else
  {
- xfer->xferInt(&moneyEarned);
- xfer->xferInt(&moneySpent);
+ (*xfer == moneyEarned);
+ (*xfer == moneySpent);
  for (int i = 0; i < 20; ++i)
  {
-  xfer->xferInt(&unitsDestroyed[i]);
-  xfer->xferInt(&buildingsDestroyed[i]);
+  (*xfer == unitsDestroyed[i]);
+  (*xfer == buildingsDestroyed[i]);
  }
- xfer->xferInt(&unitsBuilt);
- xfer->xferInt(&unitsLost);
- xfer->xferInt(&buildingsBuilt);
- xfer->xferInt(&buildingsLost);
- xfer->xferInt(&field108);
- xfer->xferInt(&field10C);
+ (*xfer == unitsBuilt);
+ (*xfer == unitsLost);
+ (*xfer == buildingsBuilt);
+ (*xfer == buildingsLost);
+ (*xfer == field108);
+ (*xfer == field10C);
  }
- xfer->xferInt(&fieldDC);
- xfer->xferInt(&currentScore);
- xfer->xferInt(&field100);
+ (*xfer == fieldDC);
+ (*xfer == currentScore);
+ (*xfer == field100);
  if(version.current>=2){
   int legacyPowerPoints=0;
-  xfer->xferInt(&heroesVetted);
- xfer->xferInt(&unitsVetted);
- xfer->xferInt(&legacyPowerPoints);
- xfer->xferInt(&powerPoints);
+  (*xfer == heroesVetted);
+ (*xfer == unitsVetted);
+ (*xfer == legacyPowerPoints);
+ (*xfer == powerPoints);
  }
- if(version.current>=3){xfer->xferInt(&regionCommandPoints);
- xfer->xferInt(&regionResources);
- xfer->xferInt(&regionPowerPoints);}
- if(version.current>=4)xfer->xferUnsignedInt(&frameOverride);
+ if(version.current>=3){(*xfer == regionCommandPoints);
+ (*xfer == regionResources);
+ (*xfer == regionPowerPoints);}
+ if(version.current>=4)(*xfer == frameOverride);
  if(xfer->IsCRC())return;
  xferThingTemplateCountMap(xfer,&objectsBuilt);
  unsigned short destroyedArraySize=20;
- xfer->xferUnsignedShort(&destroyedArraySize);
+ (*xfer == destroyedArraySize);
  if(destroyedArraySize!=20)throw XferException(5,0);
  for(unsigned short i=0;i<destroyedArraySize;++i)xferThingTemplateCountMap(xfer,&objectsDestroyed[i]);
  xferThingTemplateCountMap(xfer,&objectsLost);
  xferThingTemplateCountMap(xfer,&objectsCaptured);
  if(version.current>=5)Rva0039C4F7XferSnapshotVector(xfer,reinterpret_cast<Rva0039C1C3*>(&stats));
- if(version.current>=6)xfer->xferFloat(&realF8);
- if(version.current>=7){xfer->xferUnsignedInt(&fieldF4);
- xfer->xferInt(&field0C);
- xfer->xferInt(&field10);}
+ if(version.current>=6)(*xfer == realF8);
+ if(version.current>=7){(*xfer == fieldF4);
+ (*xfer == field0C);
+ (*xfer == field10);}
  if(version.current>=10)xferThingTemplateCountMap(xfer,&map1E4);
- if(version.current>=11){xfer->xferInt(&field104);
- xfer->xferFloat(&realFC);}
- if(version.current>=12){xfer->xferInt(&field14);
- xfer->xferInt(&field18);
- xfer->xferInt(&field1C);}
+ if(version.current>=11){(*xfer == field104);
+ (*xfer == realFC);}
+ if(version.current>=12){(*xfer == field14);
+ (*xfer == field18);
+ (*xfer == field1C);}
 }
 
 // Native39D1F1..39D40F; WBFA1D10 names updateFrame and explains the owner,

@@ -30,27 +30,24 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03(); virtual void slot04(); virtual void slot05();
-	virtual void slot06(); virtual void slot07(); virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion *version); // +0x28
-	virtual Xfer &xferTypeName(const char *const &name); // +0x2C
-	virtual void slot12(); virtual void slot13(); virtual void slot14();
-	virtual void slot15(); virtual void slot16(); virtual void slot17();
-	virtual void slot18(); virtual void slot19(); virtual void slot20();
-	virtual void slot21(); virtual void slot22(); virtual void slot23();
-	virtual void slot24(); virtual void slot25(); virtual void slot26();
-	virtual Xfer &xferAsciiString(AsciiString *value); virtual void xferReal(float *value); virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt *value); // +0x78
- virtual void slot31();virtual void slot32();virtual void slot33();virtual void slot34();virtual void slot35();virtual void xferBool(bool*);
- void Version1();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../Include/Common/BfmeXfer.h"
 
 class XferException
 {
@@ -75,8 +72,8 @@ class MilesAudioManager {public:class GlobalVolumeData {public:
 };};
 void MilesAudioManager::GlobalVolumeData::rva0005CE7E(Xfer*xfer) {
  xfer->Version1();
- for(int i=0;i<6;++i)for(int j=0;j<2;++j)xfer->xferReal(&volume[i][j]);
- Rva00058DC6Xfer(xfer,&names);xfer->xferReal(&at9C);xfer->xferBool(&atC4);
- if(atC4){xfer->xferReal(&atAC);xfer->xferReal(&atB0);xfer->xferReal(&atB4);xfer->xferReal(&atB8);xfer->xferReal(&atBC);xfer->xferReal(&atC0);}
+ for(int i=0;i<6;++i)for(int j=0;j<2;++j)(*xfer == volume[i][j]);
+ Rva00058DC6Xfer(xfer,&names);(*xfer == at9C);(*xfer == atC4);
+ if(atC4){(*xfer == atAC);(*xfer == atB0);(*xfer == atB4);(*xfer == atB8);(*xfer == atBC);(*xfer == atC0);}
  Rva0005CC28Xfer(xfer,&map);refreshAll();
 }

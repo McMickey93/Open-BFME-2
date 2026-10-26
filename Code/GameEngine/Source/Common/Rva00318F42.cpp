@@ -77,47 +77,25 @@ struct Rva0031A6DBStatus {
     virtual void s08(); virtual void s09(); virtual void s10();
     virtual bool s11();
 };
-class Xfer {
-public:
-    struct Version { unsigned char current, minimum; Version(unsigned char a,unsigned char b):current(a),minimum(b){} };
-    virtual void slot00();
-    virtual bool IsLoading() const;
-    virtual bool IsStoring() const;
-    virtual bool IsCRC() const;
-    virtual void slot04();
-    virtual void slot05();
-    virtual void slot06();
-    virtual void slot07();
-    virtual void slot08();
-    virtual Xfer &XferRawBytes(void *, unsigned int);
-    virtual Xfer &xferVersion(Version &);
-    virtual void slot11();
-    virtual Xfer &xferSnapshot(void *);
-    virtual void slot13();
-    virtual void slot14();
-    virtual void slot15();
-    virtual void slot16();
-    virtual void slot17();
-    virtual void slot18();
-    virtual void slot19();
-    virtual Xfer &xferCoord2D(void *);
-    virtual void slot21();
-    virtual void slot22();
-    virtual void slot23();
-    virtual void slot24();
-    virtual void slot25();
-    virtual Xfer &xferUnicodeString(UnicodeString &);
-    virtual Xfer &xferAsciiString(AsciiString &);
-    virtual Xfer &xferReal(float &);
-    virtual void slot29();
-    virtual void slot30();
-    virtual Xfer &xferInt(int &);
-    virtual void slot32();
-    virtual void slot33();
-    virtual void slot34();
-    virtual void slot35();
-    virtual Xfer &xferBool(bool &);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../Include/Common/BfmeXfer.h"
+class Xfer::Version { public: unsigned char current, minimum; Version(unsigned char a,unsigned char b):current(a),minimum(b){} };
 
 struct LivingWorldArmy {
 public:
@@ -266,24 +244,24 @@ void XferArmyIconSize(Xfer *xfer, int *value);
 void LivingWorldArmy::xfer(Xfer *xfer)
 {
     Xfer::Version version(1, 6);
-    xfer->xferVersion(version);
+    (*xfer == version);
     XferLivingWorldArmyID(xfer, &owner20);
-    xfer->xferAsciiString(name24);
-    xfer->xferCoord2D(pos44);
-    xfer->xferCoord2D(pos34);
+    (*xfer == name24);
+    (*xfer == *reinterpret_cast<Coord2D *>(pos44));
+    (*xfer == *reinterpret_cast<Coord2D *>(pos34));
     Rva003EFE82Get((Rva003EFE82Obj *)xfer, &region2C);
-    xfer->xferInt(value30);
-    xfer->xferCoord2D(pos3C);
-    xfer->xferBool(flag59);
-    xfer->xferReal(value5C);
-    xfer->xferBool(flag74);
-    xfer->xferAsciiString(name18);
+    (*xfer == value30);
+    (*xfer == *reinterpret_cast<Coord2D *>(pos3C));
+    (*xfer == flag59);
+    (*xfer == value5C);
+    (*xfer == flag74);
+    (*xfer == name18);
     if (version.minimum >= 2)
-        xfer->xferBool(flag75);
+        (*xfer == flag75);
     if (version.minimum >= 3)
-        xfer->xferAsciiString(name1C);
+        (*xfer == name1C);
     if (version.minimum >= 4)
-        xfer->xferBool(flag58);
+        (*xfer == flag58);
     xfer->XferRawBytes(&owner54, 4);
     if (!xfer->IsLoading() && ((const Rva00318F42 *)this)->rva00318B83())
         records7C = *(const _STL::vector<BfmeVectorRecord00319C84> *)((const Rva00318F42 *)this)->rva00318B83();
@@ -293,20 +271,20 @@ void LivingWorldArmy::xfer(Xfer *xfer)
     }
     if (!xfer->IsCRC())
         Rva0031A160Xfer(xfer, &records7C);
-    xfer->xferSnapshot(summary78);
+    (*xfer == *reinterpret_cast<Snapshot *>(summary78));
     ((Rva0031A6DBAudio *)TheAudio)->xferHandle(xfer, &audio60);
     if (version.minimum >= 5) {
-        xfer->xferAsciiString(name28);
-        xfer->xferCoord2D(&source4C);
+        (*xfer == name28);
+        (*xfer == *reinterpret_cast<Coord2D *>(&source4C));
     }
     if (!xfer->IsCRC()) {
         if (version.minimum >= 6) {
             if (xfer->IsStoring())
                 flag65 = status88 ? status88->s11() : false;
-            xfer->xferBool(flag65);
+            (*xfer == flag65);
             XferArmyIconSize(xfer, &iconSize70);
-            xfer->xferUnicodeString(text68);
-            xfer->xferUnicodeString(text6C);
+            (*xfer == text68);
+            (*xfer == text6C);
         } else {
             iconSize70 = -1;
             text68 = UnicodeString::TheEmptyString;

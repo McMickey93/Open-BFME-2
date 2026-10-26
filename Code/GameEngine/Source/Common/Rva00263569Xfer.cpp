@@ -24,47 +24,30 @@ public:
 
 
 
-class Xfer
-{
-public:
-	virtual void s00();
-	virtual void s01();
-	virtual void s02();
-	virtual void s03();
-	virtual void s04();
-	virtual void s05();
-	virtual void s06();
-	virtual void s07();
-	virtual void s08();
-	virtual void s09();
-	virtual void s10();
-	virtual void s11();
-	virtual void s12();
-	virtual void s13();
-	virtual void s14();
-	virtual void s15();
-	virtual void s16();
-	virtual void s17();
-	virtual void s18();
-	virtual void s19();
-	virtual void s20();
-	virtual void s21();
-	virtual void s22();
-	virtual void s23();
-	virtual void s24();
-	virtual void s25();
-	virtual void s26();
-	virtual void s27();
-	virtual void s28();
-	virtual void s29();
-	virtual void xferVersion(int *version);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../Include/Common/BfmeXfer.h"
 
 Xfer *__cdecl Rva00263569Xfer(Xfer *xfer, int *values)
 {
 	int version = 2;
 	Xfer *x = xfer;
-	x->xferVersion(&version);
+	(*x == reinterpret_cast<unsigned int &>(version));
 	if (version != 2) {
 		throw XferException(0, 0);
 	}

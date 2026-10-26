@@ -21,20 +21,24 @@ void **vector<void*>::end()
 }
 class ModuleData;
 struct XferVersion {unsigned char version,current;unsigned short padding;};
-class Xfer {public:
- virtual void slot00();virtual bool isLoading();
- virtual void slot02();virtual void slot03();virtual void slot04();
- virtual void slot05();virtual void slot06();virtual void slot07();
- virtual void slot08();virtual void slot09();virtual void xferVersion(XferVersion*);
- virtual void slot0B();virtual void xferSnapshot(void*);
- virtual void slot0D();virtual void slot0E();virtual void slot0F();
- virtual void slot10();virtual void slot11();virtual void slot12();
- virtual void slot13();virtual void slot14();virtual void slot15();
- virtual void slot16();virtual void slot17();virtual void slot18();
- virtual void slot19();virtual void slot1A();virtual void slot1B();
- virtual void slot1C();virtual void slot1D();virtual void slot1E();
- virtual void xferUnsignedInt(unsigned int*);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 class LivingWorldBattle {public:LivingWorldBattle();char opaque[64];};
 namespace _STL {
  template<>void vector<const ModuleData*,allocator<const ModuleData*> >::reserve(unsigned int);
@@ -44,17 +48,17 @@ class Rva0020EE29 {public:void rva002100E6(void*,void*);};
 void Rva0020EE29::rva002100E6(void*arg,void*range){
  Xfer*xfer=(Xfer*)arg;
  _STL::vector<const ModuleData*>&battles=*(_STL::vector<const ModuleData*>*)range;
- XferVersion version;version.version=1;version.current=1;xfer->xferVersion(&version);
- if(xfer->isLoading()){
-  int count;xfer->xferUnsignedInt((unsigned int*)&count);
+ XferVersion version;version.version=1;version.current=1;(*xfer == reinterpret_cast<Xfer::Version &>(version));
+ if(xfer->IsLoading()){
+  int count;(*xfer == count);
   ((_STL::vector<void*>*)&battles)->erase(((_STL::vector<void*>*)&battles)->begin(),((_STL::vector<void*>*)&battles)->end());
   battles.reserve(count);
   for(int i=0;i<count;++i){
    const ModuleData*battle=(const ModuleData*)new LivingWorldBattle;
-   xfer->xferSnapshot((void*)battle);battles.push_back(battle);
+   (*xfer == *reinterpret_cast<Snapshot *>(const_cast<ModuleData *>(battle)));battles.push_back(battle);
   }
  }else{
-  int count=battles.size();xfer->xferUnsignedInt((unsigned int*)&count);
-  for(int i=0;i<count;++i)xfer->xferSnapshot((void*)battles[i]);
+  int count=battles.size();(*xfer == count);
+  for(int i=0;i<count;++i)(*xfer == *reinterpret_cast<Snapshot *>(const_cast<ModuleData *>(battles[i])));
  }
 }
