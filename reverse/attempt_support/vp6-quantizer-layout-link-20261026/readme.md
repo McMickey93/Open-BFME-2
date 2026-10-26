@@ -86,3 +86,14 @@ prerequisite stay open. The complete game's no-FORCE/no-stubs/runtime exit test
 is not met: the fixed receipt still records five forced duplicate symbols
 (ten diagnostics), and no runtime pass is claimed. Current-master confirmation
 belongs to the next normal census; no extra census or nightly runner was used.
+
+The first normal publication hook passes 39/39 bodies across four sources,
+18 data rows, four exact EH graphs, 15 float literals, 11 imports and
+converged-data enforcement. Its shadow batch audit is inconclusive: index
+d1f046749a predates outgoing base ced3615d0f3 and four scoped objects lack
+current strict receipts, first Eva.cpp. The exact source paths and output are
+retained in publication-audit.json and publication-gate-before-retry.txt and
+carried under LINK-008 for the next normal census. No current-master provider
+or lost-byte verdict follows from that audit. The Git push was rejected as
+non-fast-forward after all hooks passed; only a normal rebase/retry is used,
+with no repeated add_match, attempt record or full comparison.

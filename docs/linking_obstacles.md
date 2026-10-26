@@ -793,6 +793,18 @@ authored-byte previews or commit-title gains into a projected headline.
   immutable fixed comparison proves the scoped 2,747-byte gain with zero losses;
   it does not supply a current-master census. Carry this cohort to the next
   normal census and inventory Eva's include graph before strict reuse.
+- **Quantizer publication cohort (2026-10-26, first candidate `71b55f3f7a`):**
+  [the retained normal-hook audit](../reverse/attempt_support/vp6-quantizer-layout-link-20261026/publication-audit.json)
+  passes 39/39 bodies, 18 data rows, four exact EH graphs and converged-data
+  enforcement across InitQuantizer.cpp, Eva.cpp, ThreadClassLifecycle.cpp and
+  thread.cpp. The shadow batch comparison is inconclusive against index
+  `d1f046749a`: its outgoing base was `ced3615d0f3`, and all four scoped
+  objects lacked current strict receipts (first Eva). No selected-provider or
+  current-master lost-byte verdict is claimed. Carry these exact four paths
+  to the next normal census/current-index check. The independent immutable
+  comparison proves the separate 1,538-byte gain with zero losses. The first
+  push was rejected solely because master advanced; the existing commits are
+  rebased and retried without repeating any match or full measurement.
 - **Remaining / next check:** prove and make the actual include graph
   inventoryable under the existing gates, then repeat bounded strict preparation
   for all affected providers/consumers. A needed verifier repair follows the
