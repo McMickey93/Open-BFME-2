@@ -1,64 +1,11 @@
 // cl: /DNDEBUG /MD /EHsc
 // Copy constructors split from V3PolyDeferredCopyCtors.cpp: their classes'
-// destructors are still unprovided (0x0015E640 awaits its
-// SimpleDynVecClass<Vector3> identity; 0x0028C62B/0x0028F68F the DamageInfo class
-// reconciliation), so they stay out of the unit that now links.
+// destructors are still unprovided (0x0028C62B/0x0028F68F await the DamageInfo
+// class reconciliation), so they stay out of the unit that now links.
 
 typedef int Int;
 typedef short Short;
 #include "../../Include/Common/Rva0028C6D6.h"
-
-// ---- vptr + two ints base plus derived vptr and third int (retail 0x0015E640)
-// B2 body-address name: the base copy inlines (vptr 0xBC6F44 with +0x04/+0x08)
-// then the derived part installs vptr 0xBC6F50 and copies +0x0C. The outlined
-// base is retail 0x0015E0D0. One retail E8 caller at 0x0016855F.
-class Rva0015E640Base
-{
-public:
-	Rva0015E640Base(const Rva0015E640Base &other)
-	{
-		m_field04 = other.m_field04;
-		m_field08 = other.m_field08;
-	}
-	virtual ~Rva0015E640Base();
-
-	Int m_field04;
-	Int m_field08;
-};
-
-class Rva0015E640 : public Rva0015E640Base
-{
-public:
-	Rva0015E640(const Rva0015E640 &other);
-	Rva0015E640 &operator=(const Rva0015E640 &other);
-	virtual ~Rva0015E640();
-
-	Int m_field0C;
-};
-
-Rva0015E640::Rva0015E640(const Rva0015E640 &other)
-	: Rva0015E640Base(other)
-{
-	m_field0C = other.m_field0C;
-}
-
-// Retail 0x0015E670 (27 bytes), the matching assignment: the three fields after the vptr.
-// Select-any like the copy in Rva001684D6Assign.cpp (this retail body comes first
-// in link order, so it is the copy the link keeps); the anchor keeps the body emitted.
-inline Rva0015E640 &Rva0015E640::operator=(const Rva0015E640 &other)
-{
-	m_field04 = other.m_field04;
-	m_field08 = other.m_field08;
-	m_field0C = other.m_field0C;
-	return *this;
-}
-
-// Retain the inline body's ledger emission without changing its callers.
-// ?bfmeEmitRva0015E640Assign@@YAXPAVRva0015E640@@ABV1@@@Z absent-from-retail
-void bfmeEmitRva0015E640Assign(Rva0015E640 *p, const Rva0015E640 &o)
-{
-	p->Rva0015E640::operator=(o);
-}
 
 // ----------------- vptr + twenty-three ints + three bytes (retail 0x0028C62B)
 // B2 body-address name: seven dwords +0x04..+0x1C then bytes +0x20/+0x21 then
