@@ -53,6 +53,12 @@ with the ZH tree; 6,858 approved F/Z/S rows held out one at a time; P against 18
   E+V+P together would approve 7,680 rows in 1,501 sources.
 `--validate` prints the current numbers; a promotion commit records them here.
 
+Promoted 2026-10-26 (E and P; V stays proposal-only: 3 of its 462 predictions
+were wrong). `--validate` at ed0e06e23f, 6,860 held-out rows, P against 19,649
+`parent=` notes:
+  E  precision 1.0000 (701/701)      recall 0.102  alone approves 32 rows in 32 sources
+  P  precision 0.9999 (18255/18256)  recall 0.929  alone approves 7,495 rows in 1,433 sources
+
 Every evidence row names its own `ref` (the bracketing entries' positions and anchor
 functions, or the FuncInfo address) and `--check` re-derives the file from the
 committed inputs and the image, so a row nothing re-derives is reported, never used.
@@ -80,7 +86,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import tu_map  # noqa: E402
 
 SIGNALS = ("E", "I", "V", "R", "P")            # order of preference when several agree
-PROMOTED = frozenset()                        # approval-capable signals (Verifier-Change commit)
+PROMOTED = frozenset("EP")                    # approval-capable signals (Verifier-Change commit)
 GATE = 0.99
 ANCHOR_BY = frozenset("FZSNU")
 TEST_BY = frozenset("FZS")

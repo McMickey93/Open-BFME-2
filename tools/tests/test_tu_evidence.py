@@ -186,7 +186,8 @@ def test_a_promoted_signal_below_the_gate_fails_validate(tree, monkeypatch, caps
     assert "below the 99% gate" in capsys.readouterr().err
 
 
-def test_evidence_rows_are_deterministic_and_re_checked(tree, tmp_path):
+def test_evidence_rows_are_deterministic_and_re_checked(tree, tmp_path, monkeypatch):
+    monkeypatch.setattr(te, "PROMOTED", frozenset())   # every row a proposal
     layout, _ = tree
     st = structures(tree)
     rows = te.evidence_rows(layout, map_rows(), st)
@@ -201,6 +202,7 @@ def test_evidence_rows_are_deterministic_and_re_checked(tree, tmp_path):
 
 
 def test_the_lane_serves_unplaced_sources_with_their_evidence(tree, monkeypatch, tmp_path):
+    monkeypatch.setattr(te, "PROMOTED", frozenset())   # the lane serves proposals
     out = map_rows()
     runs, bare = te.runs(out, structures(tree))
     assert bare == 2 and len(runs) == 1             # X.cpp and uw_gen_1.cpp; uw_gen is gen_uw's, never served
