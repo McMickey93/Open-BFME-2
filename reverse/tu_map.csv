@@ -11220,15 +11220,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001B4D16,77,code,,,-,,Code/GameEngine/Source/Common/Rva0022E0E5Dtor.cpp
 0x001B4D63,28,code,,,-,,Code/GameEngine/Source/Common/SubsystemLegend.cpp
 0x001B4D7F,136,code-unledgered,,,-,,
-0x001B4E21,40,code,,,-,,Code/GameEngine/Source/Common/Rva001B4E21Get.cpp
+0x001B4E21,40,code,,,-,,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp
 0x001B4E49,26,code,,,-,,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp
 0x001B4E63,17,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/SubsystemInterface.cpp S=Code/GameEngine/Source/Common/System/SubsystemInterface.cpp N=Code/Libraries/Source/subsystem/SubsystemInterface.cpp,Code/Libraries/Source/subsystem/SubsystemInterface.cpp
 0x001B4E74,14,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/SubsystemInterface.cpp S=Code/GameEngine/Source/Common/System/SubsystemInterface.cpp N=Code/Libraries/Source/subsystem/SubsystemInterface.cpp,Code/Libraries/Source/subsystem/SubsystemInterface.cpp
-0x001B4EAB,166,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,C,C=0x001B4E74..0x001B4F6D,Code/GameEngine/Source/Common/Rva001B4EABExport.cpp
+0x001B4EAB,166,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,C,C=0x001B4E74..0x001B4F6D,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp
 0x001B4F51,28,code,,displaced,-,N=Code/Libraries/Source/subsystem/SubsystemInterface.cpp,Code/Libraries/Source/subsystem/SubsystemInterface.cpp
 0x001B4F6D,30,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,S,S=Code/GameEngine/Source/Common/System/SubsystemInterface.cpp N=Code/GameEngine/Source/Common/SubsystemInterfaceList.cpp,Code/GameEngine/Source/Common/SubsystemInterfaceListRva001B4FE9.cpp
-0x001B4F8B,45,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,C,C=0x001B4F6D..0x001B4FB8,Code/GameEngine/Source/Common/Rva001B4F8B.cpp
-0x001B4FB8,49,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,C,C=0x001B4F6D..0x001B4FE9,Code/GameEngine/Source/Common/SubsystemInterfaceList.cpp
+0x001B4F8B,45,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,C,C=0x001B4F6D..0x001B4FB8,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp
+0x001B4FB8,49,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,C,C=0x001B4F6D..0x001B4FE9,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp
 0x001B4FE9,47,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,S,S=Code/GameEngine/Source/Common/System/SubsystemInterface.cpp N=Code/GameEngine/Source/Common/SubsystemInterfaceList.cpp,Code/GameEngine/Source/Common/SubsystemInterfaceListRva001B4FE9.cpp
 0x001B5018,71,code,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,S,S=Code/GameEngine/Source/Common/System/SubsystemInterface.cpp N=Code/GameEngine/Source/Common/SubsystemInterfaceList.cpp,Code/GameEngine/Source/Common/SubsystemInterfaceListAdd.cpp
 0x001B505F,225,code-unledgered,Code/GameEngine/Source/Common/System/SubsystemInterface.cpp,approved,C,C=0x001B5018..0x001B5140,
