@@ -2120,12 +2120,17 @@ Census confirmation: n/a.
   `Rva007AB8D0StringInits.cpp` / `Rva007B6880Thunks.cpp`). `stlport_numpunct_virtuals.cpp`
   (44 B, 4 rows) defines the real `do_truename` / `do_falsename`, unrowed, and does not link:
   its `_M_truename` / `_M_falsename` statics of both specializations are unresolved.
-  Same slot test also shows `collate<char>` slot 2 (0x00017890) and `moneypunct` slots 3-6
-  (0x00019D30, 0x00019D90) rowed as `Rva...StringInit` placeholders.
+  Same slot test also shows `moneypunct` slots 3-6 (0x00019D30, 0x00019D90) rowed as
+  `Rva...StringInit` placeholders.
 - **Completed:** the same shape for slot 0 of `basic_ios<wchar_t>` (0x007BBCFC):
   437bc30603 repointed 0x00013490 from `??_GRva00013490Element` to
   `??_G?$basic_ios@GV?$char_traits@G@_STL@@@_STL@@UAEPAXI@Z` in `stlport_wide_ios.cpp`
   (link_check 296 -> 326 B) and removed the never-linking split unit.
+  ea8aaf453c renamed `collate<char>` slot 2 (0x00017890, vftable 0x007BBB50) from
+  `?init@Rva00017890StringInit@@` to `?do_transform@?$collate@D@_STL@@MBE...PBD0@Z` in place in
+  `stlport_narrow_string_range_ctors.cpp` and removed the two `/alternatename` hatches that bound
+  the real name to the placeholder (`stlport_classic_locale.cpp`,
+  `stlport_locale_facet_subclass_dtors.cpp`); 5/5 units still LINK, bytes unchanged.
 - **Remaining / next check:** give the six 12-byte strings their STLport names
   (`?_M_truename@?$numpunct@D@_STL@@1V?$basic_string@...@2@A` etc.) through
   `tools/name_globals.py` / the data lane, then repoint the four slot rows to the real
