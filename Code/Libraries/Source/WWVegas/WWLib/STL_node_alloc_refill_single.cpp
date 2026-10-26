@@ -1,13 +1,15 @@
 // cl: /DNDEBUG /MD /EHsc /Og-
 // Open-BFME7: STLport __node_alloc<false,0>::_S_refill, retail 0x0082C870.
 // The retail body calls the recovered chunk allocator at 0x0082B3A0 and uses
-// the false-thread free-list table at 0x0130B210.
+// the false-thread free-list table at 0x0130B210, which is the static
+// _STL::__node_alloc<false, 0>::_S_free_list (defined by BfmeSmallAllocPR.cpp).
 
 extern char *bfmeChunk1149(unsigned int size, int *nobjs);
-extern char *g_bfmeFreeList1149[];
 
 namespace _STL
 {
+
+class _Node_alloc_obj;
 
 template <bool __threads, int __inst>
 class __node_alloc
@@ -18,6 +20,11 @@ class __node_alloc
     };
 
     static void *_S_refill(unsigned int n);
+
+public:
+    static _Node_alloc_obj * volatile _S_free_list[16];
+
+private:
 
     static unsigned int _S_round_up(unsigned int bytes)
     {
@@ -45,7 +52,7 @@ void *__node_alloc<__threads, __inst>::_S_refill(unsigned int n)
 
     if (1 == locals.nobjs)
         return locals.chunk;
-    locals.my_free_list = (_Obj * volatile *)g_bfmeFreeList1149 + ((n - 1) >> 3);
+    locals.my_free_list = (_Obj * volatile *)_S_free_list + ((n - 1) >> 3);
     locals.result = (_Obj *)locals.chunk;
     *locals.my_free_list = locals.next_obj = (_Obj *)(locals.chunk + n);
     for (locals.i = 1; ; locals.i++) {
@@ -64,8 +71,6 @@ void *__node_alloc<__threads, __inst>::_S_refill(unsigned int n)
 template void *__node_alloc<false, 0>::_S_refill(unsigned int);
 
 }
-// ?g_bfmeFreeList1149@@3PAPADA: the global at VA 0xddf530 is ?_S_free_list@?$__node_alloc@$0A@$0A@@_STL@@2RCRAV_Node_alloc_obj@2@C.
-#pragma comment(linker, "/alternatename:?g_bfmeFreeList1149@@3PAPADA=?_S_free_list@?$__node_alloc@$0A@$0A@@_STL@@2RCRAV_Node_alloc_obj@2@C")
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.
