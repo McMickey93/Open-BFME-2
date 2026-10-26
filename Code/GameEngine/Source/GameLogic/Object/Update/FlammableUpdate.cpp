@@ -18,6 +18,7 @@
 #include <stl/_algobase.h>
 #pragma comment(linker, "/alternatename:??$_Construct@URva0048D628Record@@U1@@_STL@@YAXPAURva0048D628Record@@ABU1@@Z=?Rva0048C81FConstruct@@YAXPAUTreeKey00242F5E@@ABU1@@Z")
 #pragma comment(linker, "/alternatename:??$_Destroy@PAURva0048D628Record@@@_STL@@YAXPAURva0048D628Record@@0@Z=??$_Destroy@PAVCameraMarker@@@_STL@@YAXPAVCameraMarker@@0@Z")
+#include "Common/BfmeAudioEventPrefix136.h"
 
 // Ported verbatim from the Generals Zero Hour reference (GameEngine/Source/GameLogic/Object/Update/FlammableUpdate.cpp); this unit had no counterpart under Code/.
 extern class GameLogic *TheGameLogic;
@@ -158,6 +159,68 @@ namespace _STL {template<> void _Construct<Rva0048D628Record,Rva0048D628Record>(
 namespace _STL {template<> void _Destroy<Rva0048D628Record*>(Rva0048D628Record*,Rva0048D628Record*);}
 
 template void _STL::vector<Rva0048D628Record>::push_back(const Rva0048D628Record&);
+
+class AudioManager;
+
+extern AudioManager *TheAudio;
+
+class Rva0048C7BFAudio
+{
+public:
+	virtual void slot0();
+	virtual void slot1();
+	virtual void slot2();
+	virtual void slot3();
+	virtual void slot4();
+	virtual void slot5();
+	virtual void slot6();
+	virtual void slot7();
+	virtual void slot8();
+	virtual void slot9();
+	virtual void slot10();
+	virtual void slot11();
+	virtual void slot12();
+	virtual void slot13();
+	virtual void slot14();
+	virtual void slot15();
+	virtual void slot16();
+	virtual void slot17();
+	virtual void slot18();
+	virtual void slot19();
+	virtual void slot20();
+	virtual void slot21();
+	virtual void slot22();
+	virtual void slot23();
+	virtual void slot24();
+	virtual int addAudioEvent(const BfmeAudioEventPrefix136 *evt);
+};
+
+struct Rva0048C7BFRef
+{
+	char m_pad[0x18];
+	OpaqueRefElement4 m_ref;
+};
+
+struct Rva0048C7BFId
+{
+	char m_pad[0x74];
+	ObjectID m_id;
+};
+
+class Rva0048C7BF
+{
+public:
+	void rva0048C7BF();
+
+private:
+	char m_pad[4];
+	Rva0048C7BFRef *m_ref;
+	Rva0048C7BFId *m_id;
+	char m_padC[0x34 - 0x0C];
+	int m_result;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdate.cpp
 
@@ -331,6 +394,36 @@ Rva0048C8C6::Rva0048C8C6() : m_00(0), m_04("")
 {
 }
 
+// ---- from Code/Libraries/Source/WWVegas/WWLib/VectorOverflowRva0048D48F.cpp
+
+// Reference: pristine STLport4.5.3 vector::_M_insert_overflow.
+// Retail 0x0048D48F, 178B; Ghidra boundary, ret14 ABI and 8-byte
+// arithmetic independently establish the overflow and storage width. The
+// address-derived record is an opaque ABI view; no application class or
+// member layout is inferred. Each helper pin comes from this target's calls.
+// vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
+// overload takes the call instead, so this TU emits no external max COMDAT.
+
+
+
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlVectorRva0048D628.cpp
+
+// Reference: pristine STLport4.5.3. Address-derived opaque record ABI.
+// Target boundary and literal pointer stride establish storage width only; no application identity inferred.
+// The emitted unsigned max copy must match retail RVA 0x00013740.
+// Define it for speed, then restore this unit's flags for its own bodies.
+
+#pragma optimize("s", off)
+
+#pragma optimize("t", on)
+
+#pragma optimize("", on)
+
+// Bind lifetime operations to the existing rowed native providers.
+// push_back and overflow 48D48F call the cdecl copy provider 48C81F.
+// Native cleanup C060A calls range destructor 48CE25, whose loop steps 8.
+// These bindings identify operations on an ABI view, not a new game type.
+
 // tu-skeleton: 0x0048C582 205B ?xfer@FlammableUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x0048C64F 138B ??0FlammableUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateCtor.cpp (not merged yet)
@@ -369,38 +462,79 @@ Rva0048C8C6::Rva0048C8C6() : m_00(0), m_04("")
 
 // tu-skeleton: 0x0048D0BE 977B ?update@FlammableUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
 
-// ---- from Code/Libraries/Source/WWVegas/WWLib/VectorOverflowRva0048D48F.cpp
-
-// Reference: pristine STLport4.5.3 vector::_M_insert_overflow.
-// Retail 0x0048D48F, 178B; Ghidra boundary, ret14 ABI and 8-byte
-// arithmetic independently establish the overflow and storage width. The
-// address-derived record is an opaque ABI view; no application class or
-// member layout is inferred. Each helper pin comes from this target's calls.
-// vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
-// overload takes the call instead, so this TU emits no external max COMDAT.
-
 // tu-skeleton: 0x0048D541 203B ??0FlammableUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0048D60C 28B ??_GFlammableUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataDtor.cpp (not merged yet)
 
-// ---- from Code/Libraries/Source/WWVegas/WWLib/StlVectorRva0048D628.cpp
-
-// Reference: pristine STLport4.5.3. Address-derived opaque record ABI.
-// Target boundary and literal pointer stride establish storage width only; no application identity inferred.
-// The emitted unsigned max copy must match retail RVA 0x00013740.
-// Define it for speed, then restore this unit's flags for its own bodies.
-
-#pragma optimize("s", off)
-
-#pragma optimize("t", on)
-
-#pragma optimize("", on)
-
-// Bind lifetime operations to the existing rowed native providers.
-// push_back and overflow 48D48F call the cdecl copy provider 48C81F.
-// Native cleanup C060A calls range destructor 48CE25, whose loop steps 8.
-// These bindings identify operations on an ABI view, not a new game type.
-
 // tu-skeleton: 0x0048D65F 203B ?Rva0048D65FParse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/INI/INILevelUpFxParse.cpp (not merged yet)
 
 // tu-skeleton: 0x0048D72A 17B ?buildFieldParse@FlammableUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C634 13B ?Rva0078C634ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C641 10B __ehhandler$?getModuleNameKey@FlammableUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdatePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C65D 11B uw_0078c65d -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva0048C7BFEvent.cpp
+
+//
+// ?rva0048C7BF@Rva0048C7BF@@QAEXXZ @0x0048C7BF 96B.
+// Builds an audio event from the ref at [this+4]+0x18 and the id at
+// [this+8]+0x74, hands it to TheAudio slot 0x64, and stores the result at +0x34.
+
+void Rva0048C7BF::rva0048C7BF()
+{
+	Rva0048C7BFRef *ref = m_ref;
+	Rva0048C7BFId *id = m_id;
+	BfmeAudioEventPrefix136 evt(ref->m_ref, id->m_id);
+	m_result = reinterpret_cast<Rva0048C7BFAudio *>(TheAudio)->addAudioEvent(&evt);
+}
+
+// tu-skeleton: 0x0078C672 14B $L4056 -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_game_structs.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C680 10B __ehhandler$?Rva0048C81FConstruct@@YAXPAUTreeKey00242F5E@@ABU1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_game_structs.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C68A 13B ?Rva0078C68AClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C697 8B Unwind@00b8c697 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C69F 10B __ehhandler$?rva0048C8F9@FlammableUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6A9 13B ?Rva0078C6A9ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6B6 11B Unwind@00b8c6b6 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6C1 8B Unwind@00b8c6c1 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6C9 10B __ehhandler$?tryToIgnite@FlammableUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6D3 8B Unwind@00b8c6d3 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6DB 10B __ehhandler$?onDamage@FlammableUpdate@@UAEXPAVDamageInfo@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6E5 8B $L7514 -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorChains.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6ED 10B __ehhandler$??1CameraMarkerVec@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorChains.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6F7 8B Unwind@00b8c6f7 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C6FF 11B uw_0078c6ff -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C70A 10B __ehhandler$??1FlammableUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C714 13B ?Rva0078C714ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E039xx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C721 10B __ehhandler$?update@FlammableUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C72B 8B Unwind@00b8c72b -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C733 11B uw_0078c733 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C73E 11B Unwind@00b8c73e -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C749 10B __ehhandler$??0FlammableUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdateModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C753 8B uw_0078c753 -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C75B 10B __ehhandler$?Rva0048D65FParse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/INI/INILevelUpFxParse.cpp (not merged yet)
