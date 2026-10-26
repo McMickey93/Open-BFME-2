@@ -12,6 +12,7 @@
 
 class Object;
 class Xfer;
+struct EmitVtableTag;
 
 class ResourceGatheringManagerBase
 {
@@ -23,6 +24,8 @@ class ResourceGatheringManager : public ResourceGatheringManagerBase
 {
 public:
     ResourceGatheringManager();
+    // Existing deleter donor's non-retail vtable-emission constructor.
+    ResourceGatheringManager(EmitVtableTag *);
     virtual ~ResourceGatheringManager();
     void removeSupplyCenter(Object *oldCenter);
     void removeSupplyWarehouse(Object *oldWarehouse);
