@@ -12587,7 +12587,6 @@ rva009C7380WeightPairs,0x009B84E0
 ??$__copy_backward@PAURva0030B378Element@@PAU1@H@_STL@@YAPAURva0030B378Element@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x005B0505,
 ??4Rva005FE0A6Element@@QAEAAU0@ABU0@@Z,0x005FDEC7,
 ??1Rva00002926Element@@QAE@XZ,0x0000267B,
-??0Rva0020F0B8Element@@QAE@ABU0@@Z,0x000365F0,
 ?insert@?$list@URva004390F7Element@@V?$allocator@URva004390F7Element@@@_STL@@@_STL@@QAE?AU?$_List_iterator@URva004390F7Element@@U?$_Nonconst_traits@URva004390F7Element@@@_STL@@@2@U32@ABURva004390F7Element@@@Z,0x004390A2,
 ??1Rva002CFBAEElement@@QAE@XZ,0x004F5115,
 ??H?$_Deque_iterator@URva00422D82Element@@U?$_Nonconst_traits@URva00422D82Element@@@_STL@@@_STL@@QBE?AU01@H@Z,0x00422767,
