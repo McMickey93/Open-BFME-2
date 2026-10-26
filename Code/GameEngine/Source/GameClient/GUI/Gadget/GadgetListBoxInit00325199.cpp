@@ -29,8 +29,7 @@ public:
 	int winSetInputFunc(GameWinInputFunc input);
 };
 
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *memory);
+#include <new>
 
 void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
 #pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")

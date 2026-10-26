@@ -33,8 +33,7 @@ struct GadgetListboxColumnData
 	GameWindow *m_slider;				// +0x24
 };
 
-extern void *__cdecl operator new[](unsigned int size);
-extern void __cdecl operator delete[](void *memory);
+#include <new>
 void GadgetListBoxUpdateColumnWidths(GameWindow *listbox);
 
 void GadgetListBoxSetColumnWidths(GameWindow *listbox, int count, int *widths)

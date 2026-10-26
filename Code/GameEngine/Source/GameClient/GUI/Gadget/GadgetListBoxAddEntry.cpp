@@ -24,8 +24,7 @@ typedef short Short;
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 
-void *operator new[](unsigned int size);
-void operator delete[](void *block);
+#include <new>
 
 class GameFont;
 
