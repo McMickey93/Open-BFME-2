@@ -1665,6 +1665,19 @@ separate strict receipt limitation encountered there.
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 377ffd1724.**
 
+- **Camera-shake bounded composition (2026-10-26, input `6db4bffb3e`):**
+  [The consolidation audit](../reverse/attempt_support/camera-shake-consolidation-20261026-codexb4.md)
+  records absorption of Rva00065E21Method.cpp into its approved camera-shake TU.
+  All 27 rows across the three surviving units and five EH graphs remain exact;
+  the destination has a strict current receipt and zero wrong code/data bindings.
+  The plain preview against index `5ce093a71a` retains the deleted donor and
+  reports a historical duplicate. The merge guard and a bounded in-memory
+  comparison that removes that retired object clear all three current units,
+  preserving 1,332 authored bytes. This clears this composition's ordinary
+  bounded scope only; the index predates outgoing base `3389824a5a`, and exact-base
+  batch closure and census confirmation remain pending. No new linking gain,
+  debt retirement or image-ownership measurement is claimed.
+
 - **Evidence / scope:** outgoing `NetCommandRef.cpp`, `AptValueGCAllocator.cpp`
   and a mechanical MessageStream trial. `tools/link_check.py --fetch-index`
   fetched 763dc8759f, older than the outgoing base. The scoped
