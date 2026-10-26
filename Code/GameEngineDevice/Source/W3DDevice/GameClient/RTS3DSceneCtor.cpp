@@ -22,8 +22,7 @@
 // The heat-vision material, shader and occlusion buffers follow Zero Hour.
 #include "ascii_string.h"
 
-void *operator new[](unsigned int size);
-void operator delete[](void *p);
+#include <new>
 
 typedef int Int;
 typedef float Real;

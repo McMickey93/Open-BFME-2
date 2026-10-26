@@ -11,9 +11,7 @@
 #include <vector>
 #include "ascii_string.h"
 enum ErrorCode { ERROR_CORRUPT_FILE_FORMAT = 0xDEAD0005 };
-void *__cdecl operator new[](unsigned int);
-void __cdecl operator delete(void *);
-void __cdecl operator delete[](void *);
+#include <new>
 class DataChunkInput { public: int readInt(); void readArrayOfBytes(char *, int); };
 struct DataChunkInfo { AsciiString label, parent; unsigned short version; };
 struct BfmePod8 { int a[2]; };

@@ -17,9 +17,7 @@
 // and guarantees release during tile-array destruction; explicit reset order
 // is cols/rows/count. The emitted nonvirtual78B vector-deleting helper is a
 // complete byte-and-relocation twin of the existing address-derived owner.
-void* __cdecl operator new[](unsigned int);
-void __cdecl operator delete[](void*);
-void __cdecl operator delete(void*);
+#include <new>
 class Rva000AD9AB{public:void rva000AD9FE();char pad[8];int width,height;};
 class WorldHeightMap;
 class BaseHeightMapRenderObjClass{public:int initHeightData(int,int,WorldHeightMap*,void*);};
