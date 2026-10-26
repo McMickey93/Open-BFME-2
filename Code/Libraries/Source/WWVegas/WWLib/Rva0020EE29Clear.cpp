@@ -96,7 +96,6 @@ class Rva0020EE29
 {
 public:
 	void rva0020EE29();
-	void rva0020F685();
 	void rva0020F795();
 	void rva0020F483();
 	void rva002100E6(void *a1, void *a2);
@@ -509,42 +508,6 @@ void LivingWorldRegionManager::loadPostProcess()
 	m_08->rva0020F5B3();
 }
 
-// ?rva0020F685@Rva0020EE29@@QAEXXZ @0x0020F685 141B
-// Notifies (rowed-pending free 0x002FD60) for every entry of the +0x14 and
-// +0x20 vectors with the entry's vtable slot-0 result under a zero argument
-// (or null for a null entry), then range-erases both vectors through the
-// rowed two-arg erase. Evidence: retail pop-ecx cleanup of the notify arg
-// (cdecl); the identical halves over [ebx+0x14]/[ebx+0x20]; the erase calls
-// with this=vector and (begin,end). Slot-0 goes through a stand-in element
-// type (vtable layout only); the vectors reuse the rowed-erase helper.
-class Rva0020F685Elem
-{
-public:
-	virtual void *v00(int zero);
-};
-
-void rva002FD60(void *v);
-
-// ?rva0020F685@Rva0020EE29@@QAEXXZ present-unmatched
-void Rva0020EE29::rva0020F685()
-{
-	Rva0020EE29 *self = this;
-	Rva0020FD42Arg *vec14 = (Rva0020FD42Arg *)((char *)self + 0x14);
-	for (unsigned i = 0; i < (unsigned)(((char *)vec14->m_end - (char *)vec14->m_begin) >> 2); ++i) {
-		Rva0020F685Elem *elem = (Rva0020F685Elem *)vec14->m_begin[i];
-		void *v = elem ? elem->v00(0) : 0;
-		rva002FD60(v);
-	}
-	vec14->vecErase2(vec14->m_begin, vec14->m_end);
-	Rva0020FD42Arg *vec20 = (Rva0020FD42Arg *)((char *)self + 0x20);
-	for (unsigned j = 0; j < (unsigned)(((char *)vec20->m_end - (char *)vec20->m_begin) >> 2); ++j) {
-		Rva0020F685Elem *elem = (Rva0020F685Elem *)vec20->m_begin[j];
-		void *v = elem ? elem->v00(0) : 0;
-		rva002FD60(v);
-	}
-	vec20->vecErase2(vec20->m_begin, vec20->m_end);
-}
-
 // ?rva0020F795@Rva0020EE29@@QAEXXZ @0x0020F795 157B
 // Resets a slice of members, then when the +0x8 inner is present notifies
 // per entry and drains it: the first loop reports every +0x14 entry's +0x30
@@ -556,13 +519,13 @@ void Rva0020EE29::rva0020F685()
 // block strength reduction); the member zeroes before the inner check with
 // the +0x8 null store running on both paths; ebp used as a saved zero, not
 // a frame. Element identities are unproven (address-derived views).
-class Rva003EF1B8Host
+class Rva003EF14A
 {
 public:
 	void rva003EF1B8();
 };
 
-class Rva0020F795Elem2
+class Rva003F3F27
 {
 public:
 	void rva003F3F27();
@@ -581,8 +544,8 @@ void Rva0020EE29::rva0020F795()
 	self->m_30 = 0;
 	if (self->m_inner) {
 		if (((Rva00DFE1C8Host *)TheLivingWorldManager)->m_268)
-			((Rva003EF1B8Host *)((Rva00DFE1C8Host *)TheLivingWorldManager)->m_268)->rva003EF1B8();
-		Rva0020F795Elem2 ***bounds = (Rva0020F795Elem2 ***)&self->m_inner->m_begin;
+			((Rva003EF14A *)((Rva00DFE1C8Host *)TheLivingWorldManager)->m_268)->rva003EF1B8();
+		Rva003F3F27 ***bounds = (Rva003F3F27 ***)&self->m_inner->m_begin;
 		for (unsigned j = 0; j < (unsigned)(((char *)bounds[1] - (char *)bounds[0]) >> 2); ++j)
 			bounds[0][j]->rva003F3F27();
 	}
@@ -615,32 +578,6 @@ void Rva00DFE1C8Host::rva00212655(int arg)
         ::operator delete(allocation);
         beacons.erase(it);
     }
-}
-
-// ?rva00210F09@Rva00210F09@@QAEXXZ @0x00210F09 30B
-// Runs the rowed-pending same-class 0x000B3FD0, then when this is non-null
-// runs its vtable slot-0 under zero and reports through the rowed free
-// 0x002FD60 (pop-cleaned). Evidence: retail member call with this
-// passthrough; the defensive this-null check; the indirect slot-0 call
-// shape shared with the 0x0020F685 loop body; bare ret.
-class Rva00210F09
-{
-public:
-	void rva00210F09();
-	void rva000B3FD0();
-};
-
-// ?rva00210F09@Rva00210F09@@QAEXXZ present-unmatched
-void Rva00210F09::rva00210F09()
-{
-	rva000B3FD0();
-	// Retail shares one zero across the null check (cmp esi,eax), the
-	// slot-0 argument (push eax) and the result, so it is one variable.
-	void *v = 0;
-	if (this == v)
-		return;
-	v = ((Rva0020F685Elem *)this)->v00((int)v);
-	rva002FD60(v);
 }
 
 // ?Rva00210E5B@@YGXPAX0@Z @0x00210E5B 33B

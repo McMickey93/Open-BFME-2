@@ -56,7 +56,7 @@ bool Rva00131CF2::rva00151415()
 class Rva005D4E6F
 {
 public:
-	bool rva005D4E6F();
+	Int rva005D4E6F();
 };
 class Rva0057B97C
 {
@@ -68,7 +68,7 @@ private:
 };
 Int Rva0057B97C::rva0057B97C()
 {
-	if (m_34 && m_34->rva005D4E6F())
+	if (m_34 && (char)m_34->rva005D4E6F())
 		return 1;
 	return 0;
 }
@@ -210,15 +210,15 @@ class Rva0042D697PtrChaseField
 public:
 	Int get() const;
 };
-class Rva00328A83
+class Rva00328A83PtrChaseField
 {
 public:
-	Rva0042D697PtrChaseField *rva00328A83() const;
+	Int get() const;
 };
 struct Rva00576FFEInfo
 {
 	Int m_00;
-	Rva00328A83 *m_04;
+	Rva00328A83PtrChaseField *m_04;
 };
 class Rva00576FFE
 {
@@ -231,7 +231,7 @@ private:
 };
 Int Rva00576FFE::rva00576FFE()
 {
-	return m_08->m_04->rva00328A83()->get();
+	return ((Rva0042D697PtrChaseField *)m_08->m_04->get())->get();
 }
 
 // 0x00251C24, 0x004624E3, 0x00466E0A and 0x004BC51B: interface overrides
