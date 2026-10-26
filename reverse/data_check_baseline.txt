@@ -3,11 +3,9 @@ Code/GameEngine/Source/Common/Bfme/Rva004E5A24Ctor.cpp	wrong-name	?g_00DD00A8@@3
 Code/GameEngine/Source/Common/Bfme/Rva004E5A24Ctor.cpp	wrong-name	?g_00DD00AC@@3MA	0x009D00AC
 Code/GameEngine/Source/Common/Bfme/Rva004E65CFLeaf.cpp	wrong-name	?g_00DEC2D4@@3PAVRva004E65CFMgr@@A	0x009EC2D4
 Code/GameEngine/Source/Common/BfmeConv1149.cpp	wrong-name	_g_bfmeFreeList1149	0x009DF530
-Code/GameEngine/Source/Common/BfmeConv1322.cpp	wrong-name	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	0x007D4E3C
 Code/GameEngine/Source/Common/BfmeConv1335.cpp	wrong-name	?g_bfmeIidUKA@@3UBfmeGuidUKA@@A	0x007D4E3C
 Code/GameEngine/Source/Common/BfmeConv1424.cpp	wrong-name	?g_bfmeRegVLY@@3VBfmeRegVLY@@A	0x009DF570
 Code/GameEngine/Source/Common/BfmeConv1424.cpp	wrong-name	?g_bfmeRegVLZ@@3VBfmeRegVLZ@@A	0x009DF574
-Code/GameEngine/Source/Common/BfmeConv789.cpp	wrong-name	?g_bfmeCsDWC@@3UBfmeCsDWA@@A	0x009E0884
 Code/GameEngine/Source/Common/BfmeConv803O1.cpp	wrong-name	?g_bfmeObjEBL@@3VBfmeObjEBL@@A	0x00A01E68
 Code/GameEngine/Source/Common/BfmeGrokOdIf0.cpp	duplicate-def	?g_bfme0130b254@@3UGen_0082ad50@@A	0x009DF574
 Code/GameEngine/Source/Common/BfmeGrokOdIf0.cpp	wrong-name	?g_bfme0130b254@@3UGen_0082ad50@@A	0x009DF574
@@ -25,8 +23,6 @@ Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E062E
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0ABB0@@3HA	0x00A0ABB0
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E18078@@3HA	0x00A18078
 Code/GameEngine/Source/Common/D008791E0HandleTableRemove.cpp	wrong-name	?Rva008791E0Handles@@3URva008791E0Table@@A	0x00A226E0
-Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	wrong-name	?TheGen001336E5C@@3PAVGen001336E5C@@A	0x009E0880
-Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	wrong-name	?theDebug@@3RAVDebug@@A	0x009E0880
 Code/GameEngine/Source/Common/GameAudioRandomValue_getValueReal.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
 Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp	duplicate-def	_theGameClientSeed	0x009BA3A0
 Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?AudioSubsystem@@3PAVClientSubsystem@@A	0x009FE6E8
@@ -105,7 +101,6 @@ Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?TheRva00222A8BTarge
 Code/GameEngine/Source/Common/Rva005F632AFormat.cpp	wrong-name	?$S1@?4??Rva005F632AFormat@@YA?AVUnicodeString@@H@Z@4IA	0x00A06930
 Code/GameEngine/Source/Common/Rva005F8920.cpp	wrong-name	?g_009FE720@@3PAVRva0025CEEFHost@@A	0x009FE720
 Code/GameEngine/Source/Common/Rva00627AA0Call.cpp	wrong-name	?g_rva00627AA0@@3PAURva00627AA0Obj@@A	0x00A05FBC
-Code/GameEngine/Source/Common/Rva006CD2A0Cluster.cpp	wrong-name	?g_bfmeAptHashAtE180E4@@3PAVAptNativeHash@@A	0x00A180E4
 Code/GameEngine/Source/Common/Rva006FBE60Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva8D0D80Result@@A	0x00A1835C
 Code/GameEngine/Source/Common/Rva006FBED0Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva006FBED0Root@@A	0x00A1835C
 Code/Libraries/Source/Apt/AptRenderingContext.cpp	duplicate-def	?g_00E180C4@@3URva0070E440Box@@A	0x00A180C4
@@ -312,7 +307,6 @@ Code/GameEngine/Source/GameClient/System/ParticleSystemMake001FCBD7.cpp	wrong-na
 Code/GameEngine/Source/GameClient/System/ParticleSystemMake001FCBD7.cpp	wrong-name	?nullTemplate@?1??Make001FCBD7@@YAPAVParticleSystem@@XZ@4VParticleSystemTemplate@FXParticleSystem@@A	0x009FDF40
 Code/GameEngine/Source/GameClient/System/SmudgeManagerDtor.cpp	wrong-name	?m_freeSmudgeList@SmudgeSet@@2V?$DLListClass@USmudge@@@@A	0x009BCBF4
 Code/GameEngine/Source/GameClient/System/SmudgeSetReset.cpp	wrong-name	?m_freeSmudgeList@SmudgeSet@@2V?$DLListClass@USmudge@@@@A	0x009BCBF4
-Code/GameEngine/Source/GameClient/VideoPlayerDestructorThunk.cpp	wrong-name	?TheVideoPlayer@@3PAVVideoPlayer@@A	0x00A0ABA8
 Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S1@?7??checkForSupplyCenter@AIPlayer@@IAEXPAVBuildListInfo@@PAVObject@@@Z@4IA	0x00A044C8
 Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S2@?N@??findSupplyCenter@AIPlayer@@IAEPAVObject@@H@Z@4IA	0x00A044C0
 Code/GameEngine/Source/GameLogic/AI/AIStatesBfmeComputePath.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0
@@ -757,7 +751,6 @@ Code/Libraries/Source/Apt/string/StringPool.cpp	wrong-name	?g_00E18650@@3VEAStri
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_00000000_0000_0000_c000_000000000046	0x007D4E4C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_ee883b17_0778_4b18_a12b_e44c0d298412	0x007D4E3C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
-Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	0x007D4E3C
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_count	0x009EE8E0
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_memory	0x009EE8A8
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_procedural_texture_count	0x009EE8FC

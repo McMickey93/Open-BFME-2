@@ -24,7 +24,10 @@ struct BfmeThingDWB
 };
 
 
-extern BfmeCsDWA g_bfmeCsDWC;
+// The critical section is the DebugCriticalSection the debug manager owns at
+// 0x009E0884; this unit enters it through its byte view.
+struct DebugCriticalSection;
+extern DebugCriticalSection g_bfmeCsDWC;
 
 struct BfmeThingDWC
 {
@@ -36,10 +39,7 @@ struct BfmeThingDWC
 bool BfmeThingDWC::bfmeGoDWC()
 {
 	InterlockedIncrement(&m_bfmeCs);
-	EnterCriticalSection(&g_bfmeCsDWC);
+	EnterCriticalSection((BfmeCsDWA *)&g_bfmeCsDWC);
 	return false;
 }
 
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_bfmeCsDWC@@3UBfmeCsDWA@@A=?g_bfmeCsDWC@@3UDebugCriticalSection@@A")

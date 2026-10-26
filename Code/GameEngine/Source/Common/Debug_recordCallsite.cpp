@@ -16,7 +16,9 @@ public:
 	virtual void slot5C(void *returnAddress, int kind);
 };
 
-extern Gen001336E5C *TheGen001336E5C;
+// The debug manager pointer at 0x009E0880 is theDebug; both views read it.
+class Debug;
+extern Debug *theDebug;
 
 // ?_bfme_debugRecordCallsite@@YAXH@Z
 void _bfme_debugRecordCallsite(int kind)
@@ -27,7 +29,7 @@ void _bfme_debugRecordCallsite(int kind)
 		mov eax, [ebp + 4]
 		mov returnAddress, eax
 	}
-	TheGen001336E5C->slot5C(reinterpret_cast<void *>(returnAddress), kind);
+	((Gen001336E5C *)theDebug)->slot5C(reinterpret_cast<void *>(returnAddress), kind);
 }
 
 class Debug
@@ -42,8 +44,6 @@ public:
 	static bool SkipNext(bool set);
 };
 
-extern Debug * volatile theDebug;
-
 // The matched ProfileAllocMemory caller uses this spelling before the
 // separate virtual SkipNext call. The static body records the caller address.
 bool Debug::SkipNext(bool set)
@@ -54,12 +54,8 @@ bool Debug::SkipNext(bool set)
 		mov eax, [ebp + 4]
 		mov returnAddress, eax
 	}
-	theDebug->SetCrashAddress(reinterpret_cast<void *>(returnAddress), set);
+	(*(Debug * volatile *)&theDebug)->SetCrashAddress(reinterpret_cast<void *>(returnAddress), set);
 }
-// ?TheGen001336E5C@@3PAVGen001336E5C@@A: the global at VA 0xde0880 is ?theDebug@@3PAVDebug@@A.
-#pragma comment(linker, "/alternatename:?TheGen001336E5C@@3PAVGen001336E5C@@A=?theDebug@@3PAVDebug@@A")
-// ?theDebug@@3RAVDebug@@A: the global at VA 0xde0880 is ?theDebug@@3PAVDebug@@A.
-#pragma comment(linker, "/alternatename:?theDebug@@3RAVDebug@@A=?theDebug@@3PAVDebug@@A")
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.

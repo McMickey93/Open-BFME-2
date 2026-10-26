@@ -10,12 +10,8 @@ struct IUnknown;
 struct _GUID;
 void __stdcall _com_issue_errorex(long hr, IUnknown *punk, const _GUID &riid);
 
-struct BfmeGuidTSA
-{
-	char m_bfmeBytes[16];
-};
-
-extern BfmeGuidTSA g_bfmeIidTSA;
+// The IID is the GUID WebBrowserComCreateInstance.cpp defines at 0x007D4E3C.
+extern _GUID g_bfmeIidTSA;
 
 class BfmeThingTSA;
 

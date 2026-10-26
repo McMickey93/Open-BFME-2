@@ -30,7 +30,8 @@ public:
 extern Rva006E34D0 *g_bfmeAptPtrAtE176D0;
 // g_bfmeAptPtrAtE176D0: matched references place it at VA 0xe176d0 (zero-filled .bss).
 
-class AptNativeHash
+// Struct key, as the owner of g_bfmeAptHashAtE180E4 declares it.
+struct AptNativeHash
 {
 public:
 	void rva0070B220(void *ptr);

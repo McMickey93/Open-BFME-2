@@ -2498,7 +2498,6 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv692.cpp	?Gen007F89D0@@YAPAUR
 alternatename	Code/GameEngine/Source/Common/BfmeConv695.cpp	?Gen007F86A0@@YAPAURva007E9EF0Cached@@PAURva007E9EF0Owner@@@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv730.cpp	?bfmeVecDtorDMC@@YGXPAXIHP6AX0@Z@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv771.cpp	?bfmeVecDtorDSE@@YGXPAXIHP6AX0@Z@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv789.cpp	?g_bfmeCsDWC@@3UBfmeCsDWA@@A	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv793.cpp	?bfmeFailDXE@@YGXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv803O1.cpp	?g_bfmeObjEBL@@3VBfmeObjEBL@@A	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv804.cpp	?Rva00959410Dispatch@@3URva00959410Ptr@@A	1
@@ -2627,8 +2626,6 @@ alternatename	Code/GameEngine/Source/Common/D3DXTexCLockVolume.cpp	??0MaterialPa
 alternatename	Code/GameEngine/Source/Common/D3DXTexCLockVolume.cpp	??0TextureClassPtr@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/D3DXTexCLockVolume.cpp	?b_00025e1e@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	?SkipNext@BfmeResetDebug@@SA_N_N@Z	1
-alternatename	Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	?TheGen001336E5C@@3PAVGen001336E5C@@A	1
-alternatename	Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	?theDebug@@3RAVDebug@@A	1
 alternatename	Code/GameEngine/Source/Common/DictPairClear.cpp	?bfmeInitUBB@BfmeSubUBB@@QAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/Disp0DwordImmSetters.cpp	_vtbl_00BBC8D4	1
 alternatename	Code/GameEngine/Source/Common/Disp0DwordImmSetters.cpp	_vtbl_00BBE7EC	1
@@ -5575,7 +5572,6 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/BfmeResetTextureRefClear.cpp	?
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/BoxDynamicVBAccessClassDestructor.cpp	??1BfmeSortingVBAccess@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8Caps_constructors.cpp	??0BfmeEnumerationCaps@@QAE@PAUIDirect3D8@@ABUBFME_DeviceCaps9@@W4WW3DFormat@@ABUBFME_AdapterIdentifier9@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8RendererAddMesh.cpp	?Peek_Texture@MeshModelClass@@QBE?AV?$RefCountPtr@VTextureClass@@@@HHH@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	?g_bfmeIidTSA@@3UBfmeGuidTSA@@A	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DynamicIBAccessWriteLock.cpp	??0WriteLock@BfmeSortingIBAccess@@QAE@PAU1@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DynamicIBAccessWriteLock.cpp	??1WriteLock@BfmeSortingIBAccess@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/DynamicVBAccessClassDeinit.cpp	?bfmeDynamicVBInUse@@3PA_NA	1
