@@ -80,7 +80,11 @@ Confidence:
             repo named, alone), never can, so it does not break its host's
             span. A TU's span is the extent of its own F/Z/S/N/U rows (every
             row that could be approved for it lies within): a K row emitted
-            far from its class's TU does not stretch it. A run of C rows is
+            far from its class's TU does not stretch it, and neither does an
+            island (`islands()`: at most ISLAND rows of one TU, none F, between
+            longer runs of one other TU; a header COMDAT emitted in the host's
+            object or a row named for the wrong class): it breaks no span and
+            is itself never approved. A run of C rows is
             approved exactly when the two rows that bracket the whole run are.
   proposed  assigned, but by N/K only, by brackets that are not approved, in a
             non-contiguous span, or contradicted. The queue for investigation.
@@ -618,30 +622,32 @@ def build(layout, ledger=None):
     # needs approved brackets, so it lies within): a K row is never approved, and one
     # emitted far away must not stretch the span over other TUs' rows.
     assigned = [r for r in rows if r["A"]]
+    roots = {find(k) for k in anchored if k in parent}
+    island = islands(assigned, roots)
     lo_hi = {}
     for r in assigned:
-        if r["by"] not in APPROVABLE:
+        if r["by"] not in APPROVABLE or id(r) in island:
             continue
         k = r["A"].lower()
         lo, hi = lo_hi.get(k, (r["rva"], r["rva"]))
         lo_hi[k] = (min(lo, r["rva"]), max(hi, r["rva"]))
     idx = [r["rva"] for r in assigned]
-    roots = {find(k) for k in anchored if k in parent}
     # Only a row that could be approved contradicts a span: one of an anchored TU,
     # assigned by F/Z/S/N/U/C. A K row or an unanchored TU's naming hint never can.
     broken = set()
     for k, (lo, hi) in lo_hi.items():
         i, j = bisect.bisect_left(idx, lo), bisect.bisect_right(idx, hi)
         if any(x["A"].lower() != k and x["A"].lower() in roots and x["by"] in SPAN_BREAKERS
-               for x in assigned[i:j]):
+               and id(x) not in island for x in assigned[i:j]):
             broken.add(k)
     for r in rows:
         k = r["A"].lower() if r["A"] else None
         if not k:
             r["conf"] = "displaced" if r["disp"] else ""
             continue
-        ok = k in roots and k not in broken and r["by"] in APPROVABLE and not r["contra"]
+        ok = k in roots and k not in broken and r["by"] in APPROVABLE and not r["contra"]             and id(r) not in island
         r["conf"] = "approved" if ok else "proposed"
+        r["island"] = id(r) in island
     # C rows inherit approval only from two approved brackets. Within a run the
     # upper bracket is the next C row up, so walk down from the top until the
     # whole run resolves to its two ends (a fixed pass count left long runs
@@ -650,7 +656,7 @@ def build(layout, ledger=None):
     while changed:
         changed = False
         for r in reversed(rows):
-            if r["by"] == "C" and r["conf"] == "proposed":
+            if r["by"] == "C" and r["conf"] == "proposed" and not r["island"]:
                 a, b = r["Cvia"]
                 if a["conf"] == b["conf"] == "approved" and r["A"].lower() not in broken:
                     r["conf"] = "approved"
@@ -669,6 +675,8 @@ def build(layout, ledger=None):
             ev.append(f"K={r['cls']}")
         if r["A"] and r["A"].lower() in broken:
             ev.append("noncontiguous")
+        if r.get("island"):
+            ev.append("island")
         if r["contra"]:
             ev.append("contradicted")
         out.append({"rva": f"0x{r['rva']:08X}", "size": r["size"], "kind": r["kind"],
@@ -677,6 +685,24 @@ def build(layout, ledger=None):
     out.extend(data_rows(layout, rows))
     out.sort(key=lambda d: (int(d["rva"], 16), d["kind"]))
     return _evidence().apply(layout, out)
+
+
+ISLAND = 2
+
+
+def islands(assigned, roots):
+    """ids of the rows of island runs. In address order, the rows that could break a span
+    (an anchored TU's, by F/Z/S/N/U/C) form runs of one TU each; a run of at most ISLAND
+    rows, none of them F, shorter than the runs of one other TU on both sides of it, is
+    an island: a header body emitted as a COMDAT in the host's object, or a row this repo
+    named for the wrong class. It neither breaks the host's span nor counts in its own."""
+    seq = [r for r in assigned if r["A"].lower() in roots and r["by"] in SPAN_BREAKERS]
+    runs = [list(g) for _, g in itertools.groupby(seq, key=lambda r: r["A"].lower())]
+    out = set()
+    for a, run, b in zip(runs, runs[1:], runs[2:]):
+        if len(run) <= ISLAND and len(run) < min(len(a), len(b)) and a[0]["A"].lower() == b[0]["A"].lower()                 and not any(x["by"] == "F" for x in run):
+            out.update(id(x) for x in run)
+    return out
 
 
 def _evidence():

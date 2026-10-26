@@ -104,6 +104,44 @@ def test_noncontiguous_tu_is_not_approved(tmp_path):
     assert out[0x1000]["confidence"] == "proposed" and "noncontiguous" in out[0x1000]["evidence"]
 
 
+def _islands(tmp_path, ledger, strings=""):
+    zh = tmp_path / "reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/X"
+    zh.mkdir(parents=True)
+    (zh / "A.cpp").write_text("".join(f"void A::{m}()\n{{\n}}\n" for m in "fghi"))
+    (zh / "B.cpp").write_text("void B::f()\n{\n}\nvoid B::g()\n{\n}\n")
+    (tmp_path / "reverse").mkdir()
+    (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join(
+        row(f"?{m}@{c}@@QAEXXZ", rva, 16, f"Code/X/{c}{m}.cpp") for c, m, rva in ledger))
+    (tmp_path / "reverse/string_xrefs.tsv").write_text(strings)
+    return {int(r["rva"], 16): r for r in tu_map.build(tu_map.Layout(tmp_path))}
+
+
+def test_short_run_of_another_tu_inside_a_span_is_an_island(tmp_path):
+    out = _islands(tmp_path, [("A", "f", 0x1000), ("A", "g", 0x1100), ("B", "f", 0x1200),
+                              ("A", "h", 0x1300), ("A", "i", 0x1400)])
+    for rva in (0x1000, 0x1100, 0x1300, 0x1400):
+        assert (out[rva]["tu"], out[rva]["confidence"]) == ("Code/X/A.cpp", "approved"), hex(rva)
+    island = out[0x1200]
+    assert (island["tu"], island["confidence"]) == ("Code/X/B.cpp", "proposed")
+    assert "island" in island["evidence"] and "noncontiguous" not in island["evidence"]
+
+
+def test_island_needs_longer_runs_of_one_tu_on_both_sides(tmp_path):
+    # alternating single rows: neither TU is an island in the other, both are noncontiguous
+    out = _islands(tmp_path, [("A", "f", 0x1000), ("B", "f", 0x1100), ("A", "g", 0x1200),
+                              ("B", "g", 0x1300), ("A", "h", 0x1400)])
+    assert all(r["confidence"] == "proposed" and "island" not in r["evidence"]
+               for r in out.values() if r["tu"])
+
+
+def test_a_file_string_row_is_never_an_island(tmp_path):
+    out = _islands(tmp_path, [("A", "f", 0x1000), ("A", "g", 0x1100), ("B", "f", 0x1200),
+                              ("A", "h", 0x1300), ("A", "i", 0x1400)],
+                   strings="C:\\bfme2\\Code\\X\\B.cpp\t0x1204\n")
+    assert out[0x1200]["by"] == "F" and "island" not in out[0x1200]["evidence"]
+    assert out[0x1000]["confidence"] == "proposed" and "noncontiguous" in out[0x1000]["evidence"]
+
+
 def test_far_placeholder_class_row_does_not_stretch_its_tu_span(tmp_path):
     """A K row (placeholder-class propagation) is never approved, so it is not part of its
     TU's span: one emitted past another TU's anchor must not make its TU noncontiguous."""
