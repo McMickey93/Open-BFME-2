@@ -11,7 +11,6 @@
 // following GlobalFlagClearers_E06x.cpp.
 // cl: /G7 /MD /EHsc /DNDEBUG
 
-extern unsigned int g_Va00DE6128;
 extern unsigned int g_Va00DF3678;
 extern unsigned int g_Va00DF6FC8;
 extern unsigned int g_Va00DFD8E4;
