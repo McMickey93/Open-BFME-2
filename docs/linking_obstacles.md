@@ -1797,6 +1797,19 @@ Remaining / next check: None.
 Clearance: `tools/link_check.py Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`
 reports: LINKS (0 -> 28 bytes). Exact 1/1 byte match preserved.
 Census confirmation: awaiting the next census.
+Same cause, more units (2026-10-26, K5): nine more `StlSweepR3Rva<rva>.cpp` units that instantiated
+`stable_sort` over a 1-byte record only to emit the 28 B non-virtual `??_G...Record` now use a plain
+delete site (the `StlSweepR3Rva0046AA69.cpp` form), keeping each file's existing destructor
+`/alternatename` and retiring its three `#pragma optimize` lines: 005CE7CE, 005E96DC, 00406CB7,
+0044BE1D, 00482A4D, 0052BBD7, 00587752, 005DA663, 0042D4EB. 0042D4EB's binding also named a
+placeholder since renamed (`??1Rva005794ED@@UAE@XZ` -> `??1EndTurnButtonImpl@StrategicHUD@@QAE@XZ`)
+and now names the current symbol; that record is very likely `StrategicHUD::EndTurnButtonImpl` itself
+(naming-lane follow-up, would drop the alternatename). Each 1/1 exact and `link_check` LINKS (0 -> 28 B).
+Still open in this family, no hatch added: 00551B02, 005838DC and 005AFEDB have no destructor binding.
+Retail calls rowed virtual destructors (`??1GameSpyBuddyMessageQueue@@UAE@XZ` 0x00551988,
+`??1Rva005838B5@@UAE@XZ` 0x005838F8, `??1Rva005AFE3F@@UAE@XZ` 0x005AFE3F), so these rows are probably
+those classes' virtual `??_G...@@UAEPAXI@Z` (same 28 B shape); next check: each class's vtable slot 0,
+then rename the row and emit it from the class's own unit.
 
 Same shape, still open (K10, 2026-10-26, inspected revision 7790bd44c7):
 `StlSweepR3Rva0052BBD7.cpp` (row `??_GRva0052BBD7Record@@QAEPAXI@Z` 0x0052BBD7, 28 B) instantiates
