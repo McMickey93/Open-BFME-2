@@ -1549,3 +1549,14 @@ Census confirmation: not claimed.
 - **Process note:** before applying a merge, `tools/link_check.py` the target TU and refuse
   the merge when a target that linked stops linking.
 - **Census confirmation:** awaiting the next census.
+
+
+### LINK-043: StlSweepR3Rva00406B1D instantiated stable_sort instead of emitting scalar deleting destructor
+Status: Cleared. Updated: 2026-10-26; inspected revision: b06312df51.
+Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`,
+`reverse/link_status.csv` reported 4 unresolved blockers (`??0Rva00406B1DRecord@@QAE@ABU0@@Z`, `??1Rva00406B1DRecord@@QAE@XZ`, `??4Rva00406B1DRecord@@QAEAAU0@ABU0@@Z`, `??MRva00406B1DRecord@@QBE_NABU0@@Z`).
+Completed: Retail 0x00406B1D (28 B) is the scalar deleting destructor `??_GRva00406B1DRecord@@QAEPAXI@Z` calling ~Rva00215E42 at 0x004059AC. Replaced `stable_sort` template instantiation with direct delete anchor calling rowed dtor provider `??1Rva00215E42@@UAE@XZ` via `/alternatename`, resolving all 4 unresolved symbols.
+Remaining / next check: None.
+Clearance: `tools/link_check.py Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`
+reports: LINKS (0 -> 28 bytes). Exact 1/1 byte match preserved.
+Census confirmation: awaiting the next census.
