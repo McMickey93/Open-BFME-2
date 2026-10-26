@@ -19,7 +19,7 @@ public:
 	float scanReal(const char *token);
 };
 
-extern "C" double __cdecl tan(double);
+#include <math.h>
 
 #define PI 3.14159265359f
 

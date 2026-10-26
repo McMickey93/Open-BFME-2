@@ -21,7 +21,7 @@ struct Rva0052DC3FPoint
 extern float g_Va00BC2428;
 extern float g_Va00BC26F0;
 
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 static __forceinline long fast_round(Real f)
 {

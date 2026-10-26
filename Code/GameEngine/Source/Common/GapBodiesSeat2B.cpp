@@ -133,7 +133,7 @@ void Rva000E0F0E::rva000E0F0E()
 
 // --- 0x0009DBF4 (17B): log10 of a float through the msvcr71 import
 // (thunk 0x0062997C), returned as double.
-extern "C" double __cdecl log10(double);
+#include <math.h>
 
 double __cdecl Rva0009DBF4Log10(float value)
 {
