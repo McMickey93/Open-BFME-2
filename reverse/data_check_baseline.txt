@@ -857,7 +857,6 @@ Code/Libraries/Source/WWVegas/WWLib/Rva00038780Siblings.cpp	wrong-name	_g_bfme00
 Code/Libraries/Source/WWVegas/WWLib/Rva001EC311Ctor.cpp	wrong-name	?g_007ED97C@@3HA	0x007ED97C
 Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	wrong-name	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A	0x009DF4E0
 Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	wrong-name	?_S_free_list@__new_alloc@_STL@@0PAPAU_Obj@12@A	0x009DF4E0
-Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refillThunk.cpp	wrong-name	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0RCRAU_Node_alloc_obj@2@C	0x009DF4E0
 Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refill_single.cpp	wrong-name	?g_bfmeFreeList1149@@3PAPADA	0x009DF530
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?$S1@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4IA	0x009E084C
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?$S3@?1??Rva00035DF0Get@@YAPAVRva00041004@@XZ@4IA	0x009E0874

@@ -5839,7 +5839,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/RvaTreeEraseRangeFamily.cpp	?e
 alternatename	Code/Libraries/Source/WWVegas/WWLib/RvaTreeEraseRangeFamily_Rva00082BE1.cpp	?erase@Rva006DF050Slot@@QAEIABH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	?_S_free_list@__new_alloc@_STL@@0PAPAU_Obj@12@A	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refillThunk.cpp	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0RCRAU_Node_alloc_obj@2@C	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refillThunk.cpp	?_S_refill@__new_alloc@_STL@@CAPAU_Obj@12@I@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refill_single.cpp	?bfmeSmallRefillPR@@YAPAXI@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refill_single.cpp	?g_bfmeFreeList1149@@3PAPADA	1
