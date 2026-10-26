@@ -17,7 +17,7 @@
 
 // Required so `delete[]` routes through the vector delete operator ??_V; the
 // declaration emits no code.
-void operator delete[](void *p);
+#include <new>
 
 class Rva00154320
 {

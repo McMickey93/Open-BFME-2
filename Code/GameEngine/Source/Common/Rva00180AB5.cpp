@@ -6,7 +6,7 @@
 // ??3@YAXPAX@Z, then nulls +0x14 via and [m],0 (/O1). Class and flags from
 // donor TU; m_tree stays void* there, cast here proves vtable from the
 // slot-0 call. No callers rowed; vtable slot proves identity.
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct TreeLink
 {
