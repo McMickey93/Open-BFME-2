@@ -20,8 +20,7 @@
 // make this unit emit the two destructors through delete[]; it is not a
 // retail function.
 
-void __cdecl operator delete(void *p);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 class W3DRadarResetSurface
 {

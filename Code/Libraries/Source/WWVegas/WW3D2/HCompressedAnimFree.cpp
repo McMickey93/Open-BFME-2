@@ -2,8 +2,7 @@
 // Retail compressed-animation cleanup at RVA 0x0018FE30.
 // The second node type has no recovered source name; the BFME2 prefix marks
 // a descriptive reconstruction, not a claim about its original spelling.
-void __cdecl operator delete(void *);
-void __cdecl operator delete[](void *);
+#include <new>
 class TimeCodedBitChannelClass { public: ~TimeCodedBitChannelClass(); int Get_Channel_Memory_Usage(); };
 class BFME2MotionChannel {
 public:
