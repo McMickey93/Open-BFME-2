@@ -698,7 +698,6 @@ Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	wrong-name	_piNex
 Code/GameEngine/Source/GameNetwork/LANAPILobbyMenuForwarders.cpp	wrong-name	?g_Va00E03354@@3PAURva004469D1Receiver@@A	0x00A03354
 Code/GameEngine/Source/GameNetwork/LANAPIOnGameCreate.cpp	wrong-name	?g_Va00E03354@@3PAURva004469D1Receiver@@A	0x00A03354
 Code/GameEngine/Source/GameNetwork/LANAPIRva00248D9D.cpp	wrong-name	?g_Va00A03354@@3PAUGlobalA03354@@A	0x00A03354
-Code/GameEngine/Source/GameNetwork/Rva007EB920Assert.cpp	wrong-name	?g_Va0130A5A0@@3PAURva007EB810Diag@@A	0x00A09FBC
 Code/GameEngine/Source/GameNetwork/Rva007EBAA0Create.cpp	wrong-name	?vftable_01129D30@@3HA	0x008E157C
 Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	duplicate-def	_Rva00803890Vt2Anchor	0x008E3F08
 Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	wrong-name	_Rva00803890Vt2Anchor	0x008E3F08

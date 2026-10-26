@@ -1991,8 +1991,6 @@ address_global	Code/GameEngine/Source/GameNetwork/Rva007E8D30FeslSetField.cpp	g_
 address_global	Code/GameEngine/Source/GameNetwork/Rva007E8D30FeslSetField.cpp	g_Rva011294A8HexSecond	2
 address_global	Code/GameEngine/Source/GameNetwork/Rva007E9310AccountWriter.cpp	g_Rva0130A50CTxn	3
 address_global	Code/GameEngine/Source/GameNetwork/Rva007E93C0Acct.cpp	g_Rva0130A4F4Txn	3
-address_global	Code/GameEngine/Source/GameNetwork/Rva007EB810Get.cpp	g_Va0130A5A0	1
-address_global	Code/GameEngine/Source/GameNetwork/Rva007EB920Assert.cpp	g_Va0130A5A0	4
 address_global	Code/GameEngine/Source/GameNetwork/Rva007F14B0BlobWriter.cpp	g_Rva00E0A010	2
 address_global	Code/GameEngine/Source/GameNetwork/Rva007F14B0BlobWriter.cpp	g_Rva0130A768	1
 address_global	Code/GameEngine/Source/GameNetwork/Rva007F2FA0RecordRequest.cpp	g_Rva0130A6CC	2
@@ -5080,7 +5078,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?bfmeDoE
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?bfmeDoECKb@BfmeHeldECKb@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?prepare@Rva007EAD30Owner@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	?prepare@Rva007EADC0Owner@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007EB810Get.cpp	?g_FeslDiagReporter@@3HA	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F0080DefaultPointers.cpp	?slot@Rva007F0080Owner@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1800FeslSearch.cpp	?bfmeSubVJE@BfmeThingVJE@@QAEXPAVBfmeMsgVJC@@HPAX@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1DE0DerivedCtors.cpp	?primary@Rva007F1DE0Object@@UAEXXZ	1

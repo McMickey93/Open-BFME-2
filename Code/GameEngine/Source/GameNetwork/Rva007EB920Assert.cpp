@@ -10,7 +10,7 @@ struct Rva007EB810Diag
 	virtual void fail(const char *expr, const char *file, int line);
 };
 
-extern Rva007EB810Diag *g_Va0130A5A0;
+extern int g_FeslDiagReporter;
 
 extern "C"
 {
@@ -34,7 +34,7 @@ int Rva007EB8B0Log::assertFailed(const char *expr, const char *file, int line)
 	char buf[0x180];
 	sprintf(buf, "assert '%.128s' at %.128s:%ld failed\n", expr, file, line);
 	if (!(strlen(buf) < 0x180))
-		g_Va0130A5A0->fail(
+		((Rva007EB810Diag *)g_FeslDiagReporter)->fail(
 			"strlen(buf) < sizeof(buf)",
 			"\\views\\feslbuild_main\\jabba\\fesl\\source\\debug.cpp",
 			137);
@@ -49,7 +49,7 @@ int Rva007EB8B0Log::errorFrom(int code, const char *from, const char *file, int 
 	{
 		sprintf(buf, "error %d from '%.128s' at %.128s:%ld\n", code, from, file, line);
 		if (!(strlen(buf) < 0x180))
-			g_Va0130A5A0->fail(
+			((Rva007EB810Diag *)g_FeslDiagReporter)->fail(
 				"strlen(buf) < sizeof(buf)",
 				"\\views\\feslbuild_main\\jabba\\fesl\\source\\debug.cpp",
 				161);
@@ -58,5 +58,6 @@ int Rva007EB8B0Log::errorFrom(int code, const char *from, const char *file, int 
 	return 0;
 }
 
-// ?g_Va0130A5A0@@3PAURva007EB810Diag@@A: matched references place it at VA 0xe09fbc; also referenced as ?g_Va0130A5A0@@3PAXA, ?g_Va0130A5A0@@3PAVRva007EB830Target@@A, ?g_FeslDiagReporter@@3HA.
-Rva007EB810Diag * g_Va0130A5A0 = 0;
+// ?g_FeslDiagReporter@@3HA: the data ledger's global at VA 0xe09fbc (the FESL
+// diagnostic reporter pointer); users cast it to their Rva007EB810Diag view.
+int g_FeslDiagReporter = 0;
