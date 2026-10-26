@@ -322,6 +322,24 @@ Whole-unit clearance and census confirmation remain pending.
   Transport composition/provider obstacles are retained in the linked handoff;
   no merge or census-linked-byte gain is claimed.
 
+- **SpecialAbilityUpdate predicate consolidation (2026-10-26, base c41b1ad5660):**
+  [Field-view repair and composition evidence](../reverse/attempt_support/specialability-view-prerequisite-20261026-bce2/README.md)
+  aligns the existing Overridable views at +0x20 without changing the seed's
+  size or other offsets. The supported merge then absorbs Rva0044EECACheck.cpp
+  into SpecialAbilityUpdate.cpp; all 27 ledger rows and five EH graphs verify,
+  and the merge's census-linked guard accepts. Eleven other donors retain
+  declaration or byte blockers, listed in the handoff. The existing DrawableList
+  forwarding-destructor identity finding and two static-guard data-name findings
+  remain; no debt retirement or census linking gain is claimed. A standalone
+  preview still sees the historical donor object, so publication must use the
+  outgoing-batch audit that removes retired providers. Census confirmation remains.
+  Publication resume, 2026-10-27: the normal dependent gate passes 65 rows and
+  nine EH graphs, but Eva.cpp, ThreadClassLifecycle.cpp and thread.cpp cannot
+  supply strict reusable receipts because their include search roots are not
+  fully inventoried (LINK-008). Their batch provider audit remains inconclusive;
+  carry this scope into the next census. The rebase retains upstream's string.h
+  adoption and its cleared Microsoft-header queue entry.
+
 - **ControlBarScheme manager prerequisite (2026-10-26):**
   [Canonical manager adoption](../reverse/attempt_support/consolidation-controlbar-manager-prerequisite-20261026-codex4.md)
   preserves all 14 seed/lookup/setter rows and their code/data facts; all 37

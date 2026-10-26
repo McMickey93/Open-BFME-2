@@ -684,6 +684,7 @@ public:
 };
 
 template <int N> class BitFlags;
+
 extern BitFlags<116> KINDOFMASK_NONE;
 
 extern PartitionManager *ThePartitionManager;
@@ -878,6 +879,29 @@ public:
 	unsigned int m_bits[4];
 };
 
+struct Rva0044EECAParam
+{
+	unsigned char m_pad00[0x1D];
+	unsigned char m_flags1D;
+	unsigned char m_pad1E[0x44 - 0x1E];
+	Overridable *m_over44;
+};
+
+class Rva0044EECA
+{
+public:
+	bool rva0044EECA(Rva0044EECAParam *p);
+private:
+	unsigned char m_pad00[0x10];
+	int m_val10;
+	unsigned char m_pad14[0x48 - 0x14];
+	int m_val48;
+	unsigned char m_pad4C[0x60 - 0x4C];
+	unsigned char m_val60;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateBridgeApproach.cpp
 
 // ?rva0044E85E@SpecialAbilityUpdate@@QAE_NPAUCoord3D@@M@Z
@@ -994,14 +1018,6 @@ Rva0044EAF3 *Rva0044EAF3::rva0044EAF3(int a, unsigned int b, unsigned int c, uns
 	m_bits[d >> 5] |= 1u << (d & 31);
 	return this;
 }
-
-// tu-skeleton: 0x0044EB54 378B ??0SpecialAbilityUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateModuleData.cpp (not merged yet)
-
-// tu-skeleton: 0x0044ECCE 199B ??1Rva0044ECCE@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0044ECCEDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0044ED95 17B ?buildFieldParse@SpecialAbilityUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
-
-// tu-skeleton: 0x0044EDA6 97B ?rva0044EDA6@SpecialAbilityUpdate@@UAE_NH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateSlot8.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp
 
@@ -1650,7 +1666,40 @@ void SpecialAbilityUpdate::finishAbility()
 	onExit(false, false);
 }
 
-// tu-skeleton: 0x0044EECA 98B ?rva0044EECA@Rva0044EECA@@QAE_NPAURva0044EECAParam@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva0044EECACheck.cpp (not merged yet)
+// tu-skeleton: 0x0044EB54 378B ??0SpecialAbilityUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateModuleData.cpp (not merged yet)
+
+// tu-skeleton: 0x0044ECCE 199B ??1Rva0044ECCE@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0044ECCEDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0044ED95 17B ?buildFieldParse@SpecialAbilityUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
+
+// tu-skeleton: 0x0044EDA6 97B ?rva0044EDA6@SpecialAbilityUpdate@@UAE_NH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateSlot8.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva0044EECACheck.cpp
+
+bool Rva0044EECA::rva0044EECA(Rva0044EECAParam *p)
+{
+	if (p != 0) {
+		Overridable *overridable = p->m_over44;
+		if (overridable != 0) {
+			const Overridable *f = overridable->friend_getFinalOverride();
+			if (f->m_val1C == 0x16 && (p->m_flags1D & 2) == 0)
+				return m_val48 == 0;
+		}
+	}
+	int v = m_val10;
+	if (v != 0) {
+		if (v == 1 || v == 3) {
+			if (p != 0) {
+				const Overridable *f2 = p->m_over44->friend_getFinalOverride();
+				if (f2->m_val20 == 0)
+					return false;
+			}
+		}
+		if (m_val60 != 0)
+			return true;
+	}
+	return false;
+}
 
 // tu-skeleton: 0x0044EF42 28B ??_GRva0044ECCE@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0044ECCEDtor.cpp (not merged yet)
 
@@ -1697,3 +1746,41 @@ void SpecialAbilityUpdate::finishAbility()
 // tu-skeleton: 0x00451FA2 846B ?update@SpecialAbilityUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp (not merged yet)
 
 // tu-skeleton: 0x004522F0 28B ??_GSpecialAbilityUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00789AC7 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x00789AD4 10B __ehhandler$?getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x00789ADE 8B uw_00789ade -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateIsWithinStartAbilityRange.cpp (not merged yet)
+
+// tu-skeleton: 0x00789AE6 10B __ehhandler$?isWithinStartAbilityRange@SpecialAbilityUpdate@@IAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateIsWithinStartAbilityRange.cpp (not merged yet)
+
+// tu-skeleton: 0x00789AF0 13B $L4459 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp (not merged yet)
+
+// tu-skeleton: 0x00789AFD 10B __ehhandler$?initLaser@SpecialAbilityUpdate@@IAE_NPAVObject@@0@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp (not merged yet)
+
+// tu-skeleton: 0x00789B07 8B Unwind@00b89b07 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp (not merged yet)
+
+// tu-skeleton: 0x00789B0F 11B Unwind@00b89b0f -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp (not merged yet)
+
+// tu-skeleton: 0x00789B1A 10B __ehhandler$?continuePreparation@SpecialAbilityUpdate@@UAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp (not merged yet)
+
+// tu-skeleton: 0x00789B39 13B ?Rva00789B39ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E033xx.cpp (not merged yet)
+
+// tu-skeleton: 0x00789B6D 13B ?Rva00789B6DClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E033xx.cpp (not merged yet)
+
+// tu-skeleton: 0x00789B99 11B Unwind@00b89b99 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
+
+// tu-skeleton: 0x00789BA4 11B Unwind@00b89ba4 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
+
+// tu-skeleton: 0x00789BAF 8B Unwind@00b89baf -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
+
+// tu-skeleton: 0x00789BB7 11B Unwind@00b89bb7 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
+
+// tu-skeleton: 0x00789BC2 13B $L3659 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
+
+// tu-skeleton: 0x00789BCF 11B Unwind@00b89bcf -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
+
+// tu-skeleton: 0x00789BDA 13B $L3661 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
+
+// tu-skeleton: 0x00789BE7 10B __ehhandler$?triggerAbilityEffect@SpecialAbilityUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateTriggerAbilityEffect.cpp (not merged yet)
