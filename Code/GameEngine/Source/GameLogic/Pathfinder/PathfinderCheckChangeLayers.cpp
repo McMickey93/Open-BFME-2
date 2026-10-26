@@ -475,7 +475,7 @@ union PathfinderCheckCoordinates {
 struct PathfinderLogFile;
 extern "C" int __cdecl fprintf(PathfinderLogFile *,const char *,...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 
 struct In002E6BA1 { int x,y; };
 #include "ICoord2D.h"

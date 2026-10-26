@@ -924,7 +924,7 @@ union PathfinderCheckCoordinates
 struct PathfinderLogFile;
 extern "C" int __cdecl fprintf(PathfinderLogFile *,const char *,...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 class Rva002F6F90Context 
 {
  public: Bool rva002F6F90(unsigned int,Int);
