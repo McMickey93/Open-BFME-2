@@ -21,7 +21,7 @@ public:
 	};
 };
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 // Zero Hour shader.h's SHADE_CNST field packing (SHIFT_DEPTHCOMPARE 0, DEPTHMASK 3, COLORMASK 4,
 // DSTBLEND 5, FOG 8, PRIGRADIENT 10, SECGRADIENT 13, SRCBLEND 14, TEXTURING 16, ALPHATEST 18,

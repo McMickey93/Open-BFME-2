@@ -7,7 +7,7 @@
 // cell set at +0x44 unwinds through its tree destructor (0x000730DE, spelled
 // with the owner class the ledger rows it under) and the +0x1C texture handle
 // drops its reference (TextureBaseClass::Release_Ref 0x0061ED10).
-void __cdecl operator delete[](void *block) throw();
+#include <new>
 class TextureClass
 {
 public:

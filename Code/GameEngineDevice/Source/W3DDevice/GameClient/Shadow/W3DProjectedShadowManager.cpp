@@ -45,7 +45,7 @@ private:
  BfmeSub928F *m_24c; unsigned m_250,m_254,m_258,m_25c,m_260,m_264,m_268,m_26c,m_270;
 };
 
-void operator delete(void *) throw();
+#include <new>
 W3DProjectedShadowManager::~W3DProjectedShadowManager(){
 ((BfmeThing928F*)this)->bfmeOne928F();
 ((BfmeThing928F*)this)->bfmeTwo928F();
