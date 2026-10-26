@@ -699,6 +699,10 @@ private:
 private:
 	unsigned char m_45c64;
 public:
+	bool rva000EA48D(void *key, const Coord3D *direction, float height);
+	bool rva000EA644(void *key);
+	void rva000EA2C0(void *key);
+	bool rva000EA6A7(void *key);
 	void rva000EB2EF(int index);
 	void rva000EB0E6(int index);
 	bool rva000ECF2A(unsigned key, int mode);

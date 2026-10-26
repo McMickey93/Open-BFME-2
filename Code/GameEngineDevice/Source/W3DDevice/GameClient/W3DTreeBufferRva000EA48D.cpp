@@ -69,25 +69,10 @@ struct Rva000EA48DRecord
     unsigned char padcc[0x1c];
 };
 
-class W3DTreeBuffer
+// Retains this donor's verified native member views without imposing them on
+// the canonical tree records used by the composed W3DTreeBuffer TU.
+struct Rva000EA48DBufferView
 {
-public:
-    Bool rva000EA48D(void *key, const Coord3D *direction, Real height);
-    Bool rva000EA644(void *key);
-    void rva000EA2C0(void *key);
-    Bool rva000EA6A7(void *key);
-
-    __forceinline Rva000EA48DRecord *find(void *key)
-    {
-        for (Int i = 0; i < count; ++i)
-        {
-            if (records[i].key == key)
-                return records + i;
-        }
-        return 0;
-    }
-
-private:
     unsigned char pad000[0x5bc];
     Real frameScale5bc;
     Rva000EA48DRecord records[1200];
@@ -99,17 +84,27 @@ private:
     Int numTypes;
 };
 
+class W3DTreeBuffer
+{
+public:
+    Bool rva000EA48D(void *key, const Coord3D *direction, Real height);
+    Bool rva000EA644(void *key);
+    void rva000EA2C0(void *key);
+    Bool rva000EA6A7(void *key);
+};
+
 Bool W3DTreeBuffer::rva000EA48D(void *key, const Coord3D *direction, Real height)
 {
+    Rva000EA48DBufferView *buffer = reinterpret_cast<Rva000EA48DBufferView *>(this);
     if (!key)
         return false;
 
     Rva000EA48DRecord *record = 0;
-    for (Int i = 0; i < count; ++i)
+    for (Int i = 0; i < buffer->count; ++i)
     {
-        if (records[i].key == key)
+        if (buffer->records[i].key == key)
         {
-            record = records + i;
+            record = buffer->records + i;
             break;
         }
     }
@@ -120,7 +115,7 @@ Bool W3DTreeBuffer::rva000EA48D(void *key, const Coord3D *direction, Real height
     if (record->guardc8)
         return false;
 
-    const Rva000EA48DTypeData *typeData = types[record->type].data;
+    const Rva000EA48DTypeData *typeData = buffer->types[record->type].data;
     Real terrainHeight = *(Real *)((unsigned char *)TheTerrainLogic + 0x1918);
     if (terrainHeight > 0.0f)
         height = terrainHeight;
@@ -141,7 +136,7 @@ Bool W3DTreeBuffer::rva000EA48D(void *key, const Coord3D *direction, Real height
     position.z = record->location.Z;
     FXList::doFXPos(typeData->fx, &position, 0, 0.0f, 0);
 
-    changed = 1;
+    buffer->changed = 1;
     record->matrix.Make_Identity();
     record->matrix.Set_Translation(record->location);
     return true;
@@ -152,12 +147,13 @@ Bool W3DTreeBuffer::rva000EA48D(void *key, const Coord3D *direction, Real height
 // +0xC4, a real type (+0x40 not -2) and no +0xC8 guard. Identity unproven.
 Bool W3DTreeBuffer::rva000EA644(void *key)
 {
-    for (Int i = 0; i < count; ++i)
+    Rva000EA48DBufferView *buffer = reinterpret_cast<Rva000EA48DBufferView *>(this);
+    for (Int i = 0; i < buffer->count; ++i)
     {
-        if (records[i].key == key)
+        if (buffer->records[i].key == key)
         {
-            return (records[i].guard80 > 0 && !records[i].startedc4 &&
-                records[i].type != -2 && !records[i].guardc8) ? 1 : 0;
+            return (buffer->records[i].guard80 > 0 && !buffer->records[i].startedc4 &&
+                buffer->records[i].type != -2 && !buffer->records[i].guardc8) ? 1 : 0;
         }
     }
     return false;
@@ -169,17 +165,18 @@ Bool W3DTreeBuffer::rva000EA644(void *key)
 // W3DShrubBuffer_resetMatchingRow) on the tree layout. Identity unproven.
 void W3DTreeBuffer::rva000EA2C0(void *key)
 {
-    for (Int i = 0; i < count; ++i)
+    Rva000EA48DBufferView *buffer = reinterpret_cast<Rva000EA48DBufferView *>(this);
+    for (Int i = 0; i < buffer->count; ++i)
     {
-        if (records[i].key == key)
+        if (buffer->records[i].key == key)
         {
-            records[i].location.Set(0, 0, 0);
-            records[i].type = -2;
-            records[i].field48 = 0;
-            records[i].field4c = 0;
-            records[i].field50 = 0;
-            records[i].field54 = 1.0f;
-            dirty44544 = 1;
+            buffer->records[i].location.Set(0, 0, 0);
+            buffer->records[i].type = -2;
+            buffer->records[i].field48 = 0;
+            buffer->records[i].field4c = 0;
+            buffer->records[i].field50 = 0;
+            buffer->records[i].field54 = 1.0f;
+            buffer->dirty44544 = 1;
         }
     }
 }
@@ -191,15 +188,16 @@ void W3DTreeBuffer::rva000EA2C0(void *key)
 // 0x000681FB. Identity unproven.
 Bool W3DTreeBuffer::rva000EA6A7(void *key)
 {
+    Rva000EA48DBufferView *buffer = reinterpret_cast<Rva000EA48DBufferView *>(this);
     if (!key)
         return false;
 
     Rva000EA48DRecord *record = 0;
-    for (Int i = 0; i < count; ++i)
+    for (Int i = 0; i < buffer->count; ++i)
     {
-        if (records[i].key == key)
+        if (buffer->records[i].key == key)
         {
-            record = records + i;
+            record = buffer->records + i;
             break;
         }
     }
@@ -207,13 +205,13 @@ Bool W3DTreeBuffer::rva000EA6A7(void *key)
         return false;
     if (record->type < 0)
         return false;
-    if (record->type >= numTypes)
+    if (record->type >= buffer->numTypes)
         return false;
     if (record->guardc8)
         return false;
 
-    Real scaled = (Real)types[record->type].data->frames40;
-    scaled *= frameScale5bc;
+    Real scaled = (Real)buffer->types[record->type].data->frames40;
+    scaled *= buffer->frameScale5bc;
     record->framesc0 = (Int)scaled;
     record->startedc4 = true;
     return true;
