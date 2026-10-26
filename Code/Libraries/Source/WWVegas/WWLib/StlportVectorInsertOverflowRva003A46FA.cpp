@@ -27,9 +27,18 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 struct BfmeStringHeadRecord160 { AsciiString s; int a[39]; };
 
+// The wrapper retail calls at 0x3A454E is the copy-construct of the 160-byte
+// record rowed in StringContainerRecordCopyBFME2.cpp; reach it through that
+// record's own specialization so the call binds the owner's body.
+struct BfmeContainerRecord003A451B;
 namespace _STL {
-template <> void _Construct<BfmeStringHeadRecord160, BfmeStringHeadRecord160>(
-	BfmeStringHeadRecord160 *, const BfmeStringHeadRecord160 &);
+template <> void _Construct<BfmeContainerRecord003A451B, BfmeContainerRecord003A451B>(
+	BfmeContainerRecord003A451B *, const BfmeContainerRecord003A451B &);
+template <> inline void _Construct<BfmeStringHeadRecord160, BfmeStringHeadRecord160>(
+	BfmeStringHeadRecord160 *p, const BfmeStringHeadRecord160 &v)
+{
+	_Construct((BfmeContainerRecord003A451B *)p, (const BfmeContainerRecord003A451B &)v);
+}
 }
 
 template void _STL::vector<BfmeStringHeadRecord160>::_M_insert_overflow(
