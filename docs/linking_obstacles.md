@@ -779,6 +779,15 @@ authored-byte previews or commit-title gains into a projected headline.
   witnesses. Clearance and closed-strict confirmation remain pending; no census
   change is claimed for this inventory work.
 
+- **Full publication (`98500fc347`, 2026-10-26):** the next normal push passes
+  all 98,252 function rows, 2,218 data rows, reference checks and the no-op
+  image. Its final EH audit retains 24 registered exceptions beside 11,876
+  EXACT graphs. Converged-data enforcement passes for 22,962 sources with no
+  second names or unjudged rows. The shadow link audit does not finish within
+  the hook's limit and still compares against an older census index; it gives
+  no new provider-change/lost-byte verdict. Prior strict-input prerequisites
+  remain unclosed. [Receipt and follow-up](../reverse/attempt_support/skirmish-game-info-data-owner-20261026.md#publication-and-following-file-cleanup).
+
 ### LINK-009: split-identity destructors; the alias route needs an admission path
 
 **Status: Blocked on an identity merge or a maintainer admission decision.
