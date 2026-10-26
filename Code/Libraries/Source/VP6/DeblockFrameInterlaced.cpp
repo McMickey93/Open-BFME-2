@@ -9,7 +9,7 @@
 // advanced for the odd field) and the U and V planes with their own scales.
 
 
-extern "C" void * __cdecl memset(void *, int, unsigned int);
+#include <string.h>
 #pragma intrinsic(memset)
 
 struct Rva009ACBA0Context;

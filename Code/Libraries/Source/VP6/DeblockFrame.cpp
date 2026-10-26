@@ -8,7 +8,7 @@
 // DeblockPlaneNew for Y, U and V, otherwise through DeblockPlane for channels
 // 0, 1 and 2. The two offsets are the source and destination frame offsets.
 
-extern "C" void * __cdecl memset(void *, int, unsigned int);
+#include <string.h>
 #pragma intrinsic(memset)
 
 struct Rva009ACBA0Context;

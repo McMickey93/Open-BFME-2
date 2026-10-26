@@ -8,7 +8,7 @@
 void *Rva007F0000Alloc(int size);
 extern "C" void Rva007FD3F0( void *socket );
 extern "C" void Rva0080AD00( int a, int b, unsigned char *state );
-extern "C" void * __cdecl memset( void *dest, int c, unsigned int count );
+#include <string.h>
 void bfmeGo1019C(int a);
 extern "C" void __RTC_CheckEsp( void );
 
