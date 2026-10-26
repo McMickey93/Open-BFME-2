@@ -82,3 +82,38 @@ The existing list-copy identity finding remains open. File reduction, debt
 retirement, recovered C++ bytes and census-linked-byte gain are each zero.
 Keep the four source scope claims and this evidence claim until publication is
 confirmed; no new RVA claims were needed.
+
+## Recovery verification at 179de3e004
+
+On resuming the pending batch, rebased onto origin/master 978d1d04ae and
+regenerated the GameNetwork naming packet. The ordinary dry-run again accepts
+the same sixteen sources and 188 rows, with the same five rejected donors.
+The eighteen saved standalone objects still have identical external providers,
+relocations, section flags, COMDAT selections and undefined references.
+The composed object remains eb9ec061ae941f80.obj: no added or changed provider,
+no new undefined reference, and all 65 EH parents EXACT. The retained
+ConnectionManager getCommand provider now ranks 4115 before donor rank 19346;
+the same byte, relocation, selection and alignment-only comparison passes.
+
+Current scoped identity analysis reports only the existing list-copy binding
+at 0x00594689; the older cross-unit tree variant is no longer observed. This
+batch retires neither finding and changes no protected register. Receipts are
+build/codexb-recovery-20261026-{providers,trial,composition-proof}.txt.
+
+The complete pending range contains three production edits in place, handoffs,
+the obstacle register and attempt log. There are no production path moves.
+The combined path-consumer search across tools, hooks, workflows, includes and
+source registries requires no repointing; historical EA paths are preserved.
+CSV and frozen-file checks pass. Coverage and census deltas remain zero.
+
+Before publication rebased again onto 0be605a714. None of the eighteen context
+sources, AGENTS.md or docs/consolidation.md changed upstream. The eighteen-source
+build passes 227/227 rows at rebased 4eb64da3bc with BFME 1 pointer 001ccd8e.
+The final standalone and composition proofs pass unchanged, including 65 EXACT
+EH parents; retained getCommand rank 4115 precedes donor rank 19344. Scoped
+identity still has the same list-copy finding and no newly introduced finding.
+Final receipts are build/codexb-final-{context-build,providers,composition,
+current-receipts}.txt. The inherited repair is now 28f11fb2e6, followed by
+b852dd5028 (AptString handoff) and 4eb64da3bc (Unicode handoff), before any
+publication rebase. The reference freshness repair carries its own full-gate
+comparison in bfme1-reference-001ccd8e-20261026.md.
