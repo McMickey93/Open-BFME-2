@@ -502,7 +502,13 @@ Completed: native call/row diagnosis and current-provider verification; these si
   then lets GameClientDrawableTOC.cpp retain native array construction while
   adopting the same header: all 92 rows, eleven EXACT EH graphs and complete
   object facts remain unchanged; owning acceptance retires its queue item.
-  The icoord.cpp base/operator item and census confirmation stay open.
+  The icoord.cpp base/operator item initially remained open. Its subsequent
+  [arithmetic-owner adoption](../reverse/attempt_support/icoord-math-headers-20261026.md)
+  supplies the existing methods through opt-in canonical declarations and
+  retires its ICoord2D queue item. All nineteen rows and the complete object
+  remain exact: 25 non-debug sections, 633 bytes and ten relocations.
+  Ordinary preview retains LINKS 491 -> 491. The same file's ICoord3D item
+  and census confirmation remain open.
   Its shared-header gate passes 2,107 functions and 25 data rows across 259
   sources. A separate SDK-header adoption preserves the whole GameClient
   object, all 92 rows and eleven EXACT EH graphs while retiring its two
