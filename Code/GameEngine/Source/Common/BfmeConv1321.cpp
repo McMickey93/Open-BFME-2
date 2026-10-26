@@ -1,5 +1,4 @@
-extern void *g_bfmeVftTQD[];
-extern int vftable_01129D30;
+extern void *g_bfmeVftTDA[];
 
 class BfmeSinkTQD
 {
@@ -48,7 +47,7 @@ void Rva006587B0Print(void *context, const char *text)
 // Retail 0x006587C0 (27 bytes); target extent is bracketed by int3 padding.
 BfmeThingTQD::BfmeThingTQD()
 {
-	m_bfmeVft = &vftable_01129D30;
+	m_bfmeVft = g_bfmeVftTDA;
 	m_bfmeField4 = reinterpret_cast<void *>(&Rva006587B0Print);
 	m_bfmeField8 = 0;
 	m_bfmeItem = 0;
@@ -58,11 +57,9 @@ BfmeThingTQD::BfmeThingTQD()
 // ?bfmeDelTQD@BfmeThingTQD@@QAEPAXE@Z
 void *BfmeThingTQD::bfmeDelTQD(unsigned char flags)
 {
-	m_bfmeVft = g_bfmeVftTQD;
+	m_bfmeVft = g_bfmeVftTDA;
 	((BfmeSinkTQD *)Gen007EFFC0())->bfmeDropTQD(m_bfmeItem, 0);
 	if (flags & 1)
 		bfmeFreeTQD(this, 0x14);
 	return this;
 }
-// ?g_bfmeVftTQD@@3PAPAXA: the global at VA 0xce157c is ?vftable_01129D30@@3HA.
-#pragma comment(linker, "/alternatename:?g_bfmeVftTQD@@3PAPAXA=?vftable_01129D30@@3HA")

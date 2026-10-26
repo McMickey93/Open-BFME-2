@@ -4,7 +4,7 @@
 
 void *Gen007F0130(unsigned int size);
 
-extern int vftable_01129D30;
+extern void *g_bfmeVftTDA[];
 // The +4 slot is the rowed Rva006587B0Print (BfmeConv1321.cpp, 0x006587B0).
 void Rva006587B0Print(void *p, const char *text);
 extern int g_FeslDiagReporter;
@@ -19,7 +19,7 @@ void Rva007EBAA0(void)
 		*((int *)p + 2) = 0;
 		*((int *)p + 3) = 0;
 		*((int *)p + 4) = 0;
-		*(int *)p = (int)&vftable_01129D30;
+		*(int *)p = (int)g_bfmeVftTDA;
 		*((int *)p + 1) = (int)&Rva006587B0Print;
 		g_FeslDiagReporter = (int)p;
 	}
@@ -27,5 +27,6 @@ void Rva007EBAA0(void)
 		g_FeslDiagReporter = 0;
 }
 
-// ?vftable_01129D30@@3HA: matched references place it at VA 0xce157c; also referenced as ?g_bfmeVftTQD@@3PAPAXA, ?g_bfmeVftTDA@@3PAPAXA.
-int vftable_01129D30 = 10847984;
+// ?g_bfmeVftTDA@@3PAPAXA: the data ledger's global at VA 0xce157c (the vftable
+// these FESL diag objects install).
+void *g_bfmeVftTDA[1] = { (void *)10847984 };
