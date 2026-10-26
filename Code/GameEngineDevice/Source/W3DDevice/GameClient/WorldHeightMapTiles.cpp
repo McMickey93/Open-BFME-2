@@ -11,8 +11,7 @@
 #include <string.h>
 
 // Array new and delete bind to the game's array operators, not the scalar ones.
-void *__cdecl operator new[](size_t size);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 typedef int Int;
 typedef bool Bool;

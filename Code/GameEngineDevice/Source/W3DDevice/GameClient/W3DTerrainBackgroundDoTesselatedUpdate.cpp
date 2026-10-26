@@ -23,8 +23,7 @@ typedef unsigned short UnsignedShort;
 #define MAP_XY_FACTOR 10.0f
 #define MAP_HEIGHT_SCALE (10.0f / 256.0f)
 
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 extern void BFME_DX8_Thread_Lock(void);
 extern void BFME_DX8_Thread_Assert(void);
