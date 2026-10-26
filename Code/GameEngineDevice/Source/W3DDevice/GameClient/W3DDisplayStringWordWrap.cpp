@@ -58,8 +58,10 @@ public:
 };
 extern FontLibrary *TheFontLibrary;
 
-struct GlobalLanguage
+// The global owner is class GlobalLanguage; keep the class tag in its symbol.
+class GlobalLanguage
 {
+public:
 	char m_unrecovered00[ 0x24 ];
 	Bool m_useHardWrap;																	///< 0x24
 };
