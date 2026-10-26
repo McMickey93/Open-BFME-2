@@ -1612,6 +1612,16 @@ Clearance: `tools/link_check.py Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rv
 reports: LINKS (0 -> 28 bytes). Exact 1/1 byte match preserved.
 Census confirmation: awaiting the next census.
 
+Same shape, still open (K10, 2026-10-26, inspected revision 7790bd44c7):
+`StlSweepR3Rva0052BBD7.cpp` (row `??_GRva0052BBD7Record@@QAEPAXI@Z` 0x0052BBD7, 28 B) instantiates
+`stable_sort` and fails on unresolved `Rva0052BBD7Record` copy ctor, `operator=` and `operator<`;
+its dtor is already bound by an `/alternatename` to `?rva004E366E@Rva004E366E@@QAEXXZ` (0x004E366E,
+"vector erase plus free clear", rowed as a plain method). Trial: replacing the instantiation with an
+inline `delete p` helper emits no `??_G` (1/1 FAIL, symbol not found), reverted. The LINK-043 route
+(non-inline anchor plus `/alternatename`) adds hatches, so it was not repeated. Hatch-free route:
+name 0x004E366E as the real class's destructor (`??1<Class>`) and give the record that class, then
+find what emits a non-virtual `??_G` without an invented anchor. Status for this unit: Open.
+
 ### LINK-044: NetPacket private views and remaining list-copy identity
 
 **Status: Open. Updated: 2026-10-26.**

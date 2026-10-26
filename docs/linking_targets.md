@@ -462,7 +462,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F715B.cpp` | 0 | 5 (U=3, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F7D7F.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (61b147288f, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005243FA.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0052BBD7.cpp` | 0 | 3 (U=3) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0052BBD7.cpp` | 0 | 3 (U=3) | Open 2026-10-26: LINK-043 shape; hatch-free fix needs 0x004E366E named as a real dtor |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00569450.cpp` | 0 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00577EB2.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (02b625c1f2, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00587752.cpp` | 0 | 3 (U=3) | Open |
