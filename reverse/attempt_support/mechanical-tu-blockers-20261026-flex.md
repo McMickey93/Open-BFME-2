@@ -204,3 +204,123 @@ The suggested owner command `repair_queue.py retire data Code/GameEngine/Source/
   verification and hatch counters pass. No data key retired. Active tooling
   search found no consumer of the absorbed donor filenames; historical link
   and attempt records retain their original provenance paths.
+
+## W3DDisplayStringManager.cpp trial, 2026-10-26
+
+The allocated full-queue fallback listed `W3DDisplayStringManager.cpp` after
+first-page work was exhausted. Fresh planner/check passed; unchanged dry-run
+accepted no donors. `Rva00090360Ctor.cpp` is rejected because the class view
+lacks `rva00090381` (C2039); `W3DDisplayStringManager.cpp` from the Common TU
+is rejected because `m_14` is absent and `rva00090381` is undeclared (C2065,
+C3861). No source or ledger changes were applied. Skip unless the class view
+or donor changes.
+
+## W3DBibBuffer.cpp trial, 2026-10-26
+
+The allocated full-queue fallback listed this TU with three removable rows and
+no mixed donors. Its merge dry-run ran a single trial process for about two
+minutes, then exited without returning its output to the session. It left no
+source/ledger changes or live trial process. Result is inconclusive; do not
+repeat the unchanged compile in this session.
+
+## debug_io_net.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. The only donor,
+`DebugIONet_Create.cpp`, is rejected on duplicate allocator definitions:
+C2375 `operator new` has different linkage and C2084 `operator delete` is
+already defined. No source or ledger changes were applied; skip unless donor
+composition changes.
+
+## GlobalData.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. Five donor
+trials were rejected: `GlobalDataSetTimeOfDay.cpp` needs absent terrain fields;
+`rva00235312Rva00235312Farm.cpp` lacks the method and terrain fields;
+`GlobalDataOptionPreferences.cpp` needs absent preference fields;
+`Rva00236285Ctor.cpp` has an undefined base and negative subscript; and
+`Rva002362B4Dtor.cpp` fails parsing at `m_basicTutorialMap`. No source or ledger
+changes were applied. Skip these unchanged donors pending a source-prerequisite
+pass.
+
+## CrushDie.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. The
+`CrushDieOnDie.cpp` donor lacks the `DieModuleInterface` base and `CrushDie::onDie`
+member (C2504, C2039). The allocated TU's mixed `DieModuleDerived.cpp` donor
+was inspected; its split dry-run refused because no row is approved for
+`CrushDie.cpp`. No source or ledger changes were applied.
+
+## debug_io_ods.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors because the
+alternate `DebugIOOds.cpp` donor repeats the already-defined constructor
+(C2084, followed by C2264). The allocated mixed `DebugIOOds_Create.cpp` donor
+was inspected; split dry-run refused because carving `0x0003F3D0` would grow a
+hatch count. No source or ledger changes were applied.
+
+## GlobalLanguage.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. The destructor
+and constructor donors lack `TheGlobalLanguageData` declarations, the list
+clear donor lacks `Rva001EA443`/template declarations, the exit callback lacks
+platform declarations, and the parser lacks `INI::getNextAsciiString`. All
+three allocated mixed donors were inspected: `StringRecordCopyBFME2.cpp` split
+is unsupported across its namespace/extern-C block; both STL list donors have
+no definition spelling their candidate symbols. No source or ledger changes
+were applied.
+
+## WindowLayout.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. The lowercase
+`window_layout.cpp` donor lacks `GameWindowManager::managerSlot35` (C2039); the
+quick-match base default ctor cannot be defined as a compiler-generated
+special member without a declaration (C2600). The `AsciiStringFoldDeleters.cpp`
+mixed split for `0x00538C5F` was compiler accepted but would not unblock an
+accepted merge, so it was not applied. The constructor mixed split for
+`0x00538C6D` was refused because copying its helper/data grows a hatch count.
+No source or ledger changes were applied.
+
+## W3DProjectileStreamDraw.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. The module-data
+dtor donor is a byte mismatch; the module and object dtors need declarations;
+the ctor lacks its `DrawModule` base; and the pool-key class view lacks
+`getModuleNameKey`. The `W3DDrawNameGetters.cpp` split for `0x000D1401` was
+accepted as an isolated row but did not unblock its donor's merge (still
+missing `setFullyObscuredByShroud`), so it was not applied. Splits for the
+mixed deleting dtor and render inline rows refused because no definition spells
+their symbols. No source or ledger changes were applied.
+
+## W3DLaserDraw.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. The module-data
+ctor duplicates `RefCountPtr`; `doDrawModule` duplicates `AsciiString`; module
+data dtor and vector overflow donors are byte mismatches; the object dtor has a
+`void *`/`RefCountPtr` type mismatch; and the pool key lacks a class member.
+The `W3DDrawNameGetters.cpp` split for `0x000C9C11` was compiler accepted in
+isolation but did not unblock any donor merge, so it was not applied. Both STL
+mixed donors' rows had no definition spelling the target symbols. No source or
+ledger changes were applied.
+
+## CommandSetUpgrade.cpp trial, 2026-10-26
+
+Fresh planner/check passed; unchanged dry-run accepted no donors. The pool-key
+donor lacks `CommandSetUpgrade::getModuleNameKey` in the class view (C2039),
+and `Rva004B3AFFNotify.cpp` lacks a `TheControlBar` declaration. Its mixed
+`FireWeaponWhenDeadBehaviorDerived.cpp` split was refused because no row is
+approved for this TU. No source or ledger changes were applied.
+
+## StealthDetectorUpdate.cpp split and merge follow-up, 2026-10-26
+
+Fresh planning and unchanged dry-run accepted the `GapBodiesGE10.cpp` row at
+`0x004A2BF0` and the `ModuleNameGetters3.cpp` name getter at `0x004A2BEA` as
+approved splits into this retail TU. Both splits were applied with
+`tu_skeleton.py`; the three affected sources build with 125/125 matched rows,
+all three frozen-file checks pass, and staged code identity, data, TU ownership,
+removed-row and hatch checks report no new findings. The mixed
+`ModuleDataBuildFieldParse.cpp` row at `0x004A2D82` remains unsplit because
+another worker holds that source file. The refreshed merge dry-run accepted
+`Rva004A2D49.cpp` and `Rva004A2D67Init.cpp`; its earlier accepted donors were
+rejected after the split changed TU composition. Apply the latest dry-run only
+after this split batch is committed, then record any remaining donor failures
+from a fresh plan.

@@ -52,16 +52,6 @@ private:
 	const Player *m_player;									// +0x08
 };
 
-bool Rva004A2BF0::allow(Object *obj)
-{
-	if (obj->rva002943B2(m_player))
-		return true;
-	Rva004A2BF0Interface *iface = obj->m_250;
-	if (iface && iface->s4() && iface->s73())
-		return true;
-	return false;
-}
-
 // --- 0x005DB033 (18B): the rowed 0x0039B28F with 0, then the rowed
 // 0x005DB004.
 class Rva005DB004
