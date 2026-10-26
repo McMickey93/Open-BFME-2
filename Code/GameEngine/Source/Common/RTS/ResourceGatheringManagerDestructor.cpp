@@ -57,25 +57,7 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 }
 
 
-class ResourceGatheringManagerBase
-{
-public:
-	virtual ~ResourceGatheringManagerBase() {}
-};
-
-class ResourceGatheringManager : public ResourceGatheringManagerBase
-{
-public:
-	ResourceGatheringManager();
-	virtual ~ResourceGatheringManager();
-	virtual void slot1() = 0;
-	virtual const char *name() const = 0;
-	virtual void seed(void *) = 0;
-
-private:
-	_STL::list<int> m_supplyWarehouses;
-	_STL::list<int> m_supplyCenters;
-};
+#include "ResourceGatheringManagerView.h"
 
 // ??1ResourceGatheringManager@@UAE@XZ
 ResourceGatheringManager::~ResourceGatheringManager()
