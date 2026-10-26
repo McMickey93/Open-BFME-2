@@ -122,6 +122,7 @@ Rva00540FCB::Rva00540FCB() : m_00(0)
 // and Region2D at +4 via rowed copy ctor 0x0004254E. Evidence: same shape
 // as sibling ??0Rva00540FDB@@QAE@HABURegion3D@@@Z 27B in this TU; caller at
 // 0x0054211B passes (int, Region2D) and stores result stride 0x14.
+// Canonical Region2D adopted from Code/Libraries/Include/Lib/Region2D.h.
 #include "../../../Libraries/Include/Lib/Region2D.h"
 
 class Rva00541006
