@@ -5,6 +5,7 @@
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 #include <new>
+#include <math.h>
 
 typedef int Int;
 typedef float Real;
@@ -68,7 +69,6 @@ private:
 	Bool m_isOptimized;char padD[3];Rva003642DFNode *current;float fraction;Coord3D last;
 };
 
-extern "C" double __cdecl fabs(double);
 double __cdecl Rva00363CF3Distance(const Coord3D *,const Coord3D *);
 struct PathPeekPortal { char pad[0x60];int type; };
 class PathPeekTerrain {public:
@@ -136,7 +136,7 @@ Rva003642DFResult Path::rva003642DF(Real distance)
    if(portal) {
     if(portal->type==1 && (1.0f-t)*length>=distance)length=distance/(1.0f-t)-0.1f;
     else if(portal->type==3) {
-     scale=length/((float)fabs(next->position.z-result.m_node->position.z)+1.0f);
+     scale=length/((float)fabs((double)(next->position.z-result.m_node->position.z))+1.0f);
      if(scale>1.0f)scale=1.0f;
      else if(scale<0.5f)scale*=0.85f;
     }
