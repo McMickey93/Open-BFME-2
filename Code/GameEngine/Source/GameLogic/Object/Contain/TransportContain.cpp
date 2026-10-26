@@ -1185,7 +1185,8 @@ struct BfmePod8
 // bfme link decl-only BfmeE16
 namespace _STL { template <> vector<BfmeE16, allocator<BfmeE16> >::~vector(); }
 
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
 {
@@ -1822,11 +1823,11 @@ TransportContainModuleData::TransportContainModuleData()
 	, m_exitPitchRate(0.0f)
 	, m_healthRegen(0.0f)
 	, m_exitDelay(0)
-	, m_typeOneForWeaponSet(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype))
-	, m_typeTwoForWeaponSet(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype))
-	, m_typeOneForWeaponState(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype))
-	, m_typeTwoForWeaponState(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype))
-	, m_typeThreeForWeaponState(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype))
+	, m_typeOneForWeaponSet(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE))
+	, m_typeTwoForWeaponSet(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE))
+	, m_typeOneForWeaponState(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE))
+	, m_typeTwoForWeaponState(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE))
+	, m_typeThreeForWeaponState(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE))
 	, m_forceOrientationContainer(true)
 	, m_canGrabStructure(false)
 	, m_scatterNearbyOnExit(true)
@@ -1849,13 +1850,13 @@ TransportContainModuleData::TransportContainModuleData()
 	, m_releaseSnappyness(0.7f)
 {
 	m_filter40.initFromStorages(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)),
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 	m_filter44.applyFilter(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 	m_fadeFilter.initFromStorages(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)),
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
 
 // tu-skeleton: 0x004684D5 28B ??_GTransportContainModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/ContainModuleDeletingDtors.cpp (not merged yet)

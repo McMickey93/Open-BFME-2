@@ -564,7 +564,6 @@ Code/GameEngine/Source/GameLogic/Object/Contain/Rva00463235Finish.cpp	wrong-name
 Code/GameEngine/Source/GameLogic/Object/Contain/Rva00588D24.cpp	wrong-name	?g_bfmeWorldRV@@3PAUBfmeWorldRV@@A	0x00A01CFC
 Code/GameEngine/Source/GameLogic/Object/Contain/SiegeEngineContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047C03A@SiegeEngineContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03704
 Code/GameEngine/Source/GameLogic/Object/Contain/SlaughterHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004803B6@SlaughterHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03768
-Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp	wrong-name	?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03660
 Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainModuleDataCtor.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047DB43@TunnelContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0372C
@@ -694,7 +693,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/DeployStyleAIUpdatePoolKey.cpp	wr
 Code/GameEngine/Source/GameLogic/Object/Update/DestroyEnvironmentUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004AC686@DestroyEnvironmentUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D00
 Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004AE832@DetachableRiderUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D60
 Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00048B16A@DynamicShroudClearingRangeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A038FC
-Code/GameEngine/Source/GameLogic/Object/Update/EmotionTrackerUpdateModuleDataCtor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/EmotionTrackerUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004B1393@EmotionTrackerUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D90
 Code/GameEngine/Source/GameLogic/Object/Update/EntEnragedUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004B2458@EntEnragedUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D9C
 Code/GameEngine/Source/GameLogic/Object/Update/FadeAndDieOrnamentUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0003A4358@FadeAndDieOrnamentUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A028D4
