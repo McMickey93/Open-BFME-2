@@ -10,8 +10,7 @@
 
 #include <new.h>
 
-extern void *__cdecl operator new[](size_t size);
-extern void __cdecl operator delete[](void *pointer);
+#include <new>
 
 class Rva0093E4D0SurfaceResource
 {

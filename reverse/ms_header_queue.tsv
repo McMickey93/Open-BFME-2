@@ -272,7 +272,6 @@ Code/Libraries/Source/WWVegas/WWLib/Rva0084DD20SignPositions.c	drop-in candidate
 Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_filebuf_allocate.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	size_t:same,malloc:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_write_formatted_time.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<stdio.h>,<time.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sprintf:same,tm:same
 Code/Libraries/Source/WWVegas/WWMath/coord2d_rotate.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<math.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sin:same,cos:same
-Code/Libraries/Source/WWVegas/WWSaveLoad/VectorClassEnumValueResize.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new [ ]:same,operator delete [ ]:same
 Code/Libraries/Source/string/Rva00035660SpacePredicate.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<ctype.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	isspace:same,iswspace:same
 Code/stlport/FileSizeHelper.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	GetFileSize:same,GetLastError:same
 Code/stlport/NarrowFilebufInputError.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	UnmapViewOfFile:same,CloseHandle:same
