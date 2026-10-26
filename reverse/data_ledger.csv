@@ -20526,8 +20526,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04000,4,.data,global,?g_Va00E04000@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva0004BB470@CallHelpOnDamage@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp;?g_Va00E04000@@3IA,2,4
 0x00A04004,4,.data,global,?TheFireWeaponCollidePoolKey@?1??rva00004BB755@FireWeaponCollide@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollidePoolKey.cpp,owned,,1,2
 0x00A04008,4,.data,global,?g_Va00E04008@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva00004BB755@FireWeaponCollide@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollidePoolKey.cpp;?g_Va00E04008@@3IA,2,4
-0x00A0400C,4,.data,global,?TheSquishCollidePoolKey@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/SquishCollidePoolKey.cpp,owned,,1,2
-0x00A04010,8,.data,global,?g_Va00E04010@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/SquishCollidePoolKey.cpp;?g_Va00E04010@@3IA,2,4
+0x00A0400C,4,.data,global,?TheSquishCollidePoolKey@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp,owned,,1,2
+0x00A04010,8,.data,global,?g_Va00E04010@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp;?g_Va00E04010@@3IA,2,4
 0x00A04018,4,.data,global,?g_Va00E04018@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,owned,,1,2
 0x00A0401C,4,.data,global,_s_rva007B25AC,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A04020,4,.data,global,_s_rva007B25BC,Code/GameEngine/Source/Common/Rva007AD295ZeroInits.cpp,owned,,1,1
