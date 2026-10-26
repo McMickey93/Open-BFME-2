@@ -2198,8 +2198,25 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   linked unit not linking is rejected; a merge it cannot judge (no index, a linked unit
   missing from it, a link position it cannot model) is blocked. Dry run on real data:
   `W3DRopeDraw.cpp` refuses the never-linked `W3DRopeDrawCtor.cpp` (unresolved
-  `__node_alloc::deallocate`, two losing COMDATs). Not covered: the split lane, merges in
-  which no unit links, and changes to other units since the census.
+  `__node_alloc::deallocate`, two losing COMDATs). Initial gaps: the split lane
+  (covered by the follow-up below), merges in which no unit links, and changes
+  to other units since the census.
+- **Split protection (2026-10-26):** `tu_skeleton.py --split` now compares a
+  freshly compiled original mixed file and existing destination against the
+  residual/destination pair, at their actual post-carve link positions. The
+  existing byte checks remain. New blockers, a clean destination inheriting
+  donor debt, missing outside providers, changed alias routes, new outside
+  duplicates/COMDAT losers and changed selected implementations refuse the
+  candidate before application. Existing debt remains visible. Moved unknown
+  copies require matching raw relocation context and stable outside referents;
+  changed `/MAP` exceptions need measured evidence. Regression fixtures use
+  real COFF readers and the census rules, including accepted cross-file calls,
+  COMMON providers, unchanged debt and dry runs. The scope is the two affected
+  compiled units plus the census's outside-provider evidence; changes elsewhere
+  since that census remain a limitation. No game source or census was changed.
+  Verification: 259 tests and 17 subtests passed, with one existing skip. One
+  Windows CRLF-writing split-ledger fixture was deselected after reproducing
+  its LF-refusal on the original HEAD tooling; ledger validation stays enforced.
 - **Guard false reject (2026-10-27):** the PR115 INI merge preserves its existing
   21-byte `rts::equal_to<AsciiString>` copy and its precedence over ThingFactory,
   but the trial view forgets that ThingFactory already lost before the merge.

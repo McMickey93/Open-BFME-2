@@ -192,8 +192,21 @@ What it does, in order, writing nothing until the last step:
    (duplicate declarations dropped once, redefinitions repaired); a donor the
    seed's headers cannot host is rejected with the compiler's reason, exactly as
    in `--merge`, and the seat reconciles the seed or the donor first.
-6. Claims `file:TU`, `file:FILE` and every moved RVA; writes the TU and the
-   residual; repoints only the moved rows in `functions.csv`, `tu_map.csv` and
+6. For application, claims `file:TU`, `file:FILE` and every moved RVA. Compares
+   linking before and after with `SplitLinkGuard`. It compiles the
+   original mixed file and existing destination for a bounded baseline, then
+   judges the residual and destination together in their post-split ledger
+   order. Both objects' providers, COMMON data, aliases and row ownership join
+   the same view. A link-clean original stays link-clean; existing debt remains
+   visible and new blockers require repair. Outside consumers retain their
+   providers, alias routes and selected implementations, with no new duplicate
+   or COMDAT losses. A moved unproven selected copy needs matching raw relocation
+   context; a changed measured `/MAP` selection needs measured evidence.
+   The census index downloads automatically when absent. Missing or inconclusive
+   evidence blocks the split before either source or its ledger is written.
+   Other providers remain the last census's evidence, as for merge protection;
+   broader changes since that census still need the outgoing audit and census.
+7. Writes the TU and residual; repoints only the moved rows in `functions.csv`, `tu_map.csv` and
    `body_owners.csv`; adds the TU to the doxygen list; stages the result and
    prints a commit subject. When a moved body carries an escape hatch the carve
    first proves no per-hatch total grows (rule 3 of `tools/hatch_counters.py`),

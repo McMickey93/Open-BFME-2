@@ -973,6 +973,268 @@ class LinkGuardTests(unittest.TestCase):
         self.assertEqual(out["link_guard"], "no file of this merge links at the census")
 
 
+class SplitLinkGuardTests(unittest.TestCase):
+    """Real COFF objects and the real census rules; compilation is the fixture."""
+    SOURCE, TU, OUTSIDE = "Code/Mixed.cpp", "Code/T.cpp", "Code/Outside.cpp"
+
+    def setUp(self):
+        import build
+        import link_census as LCe
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name).resolve()
+        self.stack = contextlib.ExitStack()
+        self.addCleanup(self.stack.close)
+        self.stack.enter_context(patch.object(build, "ROOT", self.root))
+        self.stack.enter_context(patch.object(LCe, "ROOT", self.root))
+        self.stack.enter_context(patch.object(T, "ROOT", self.root))
+        (self.root / "Code").mkdir()
+        (self.root / "reverse").mkdir()
+        self.truth = SimpleNamespace(verdict=lambda *args: None)
+
+    def obj(self, stem, defined=(), refs=(), copies=(), aliases=(), common=()):
+        import struct
+        from test_gate_exploits import coff, TEXT
+        sections, symbols, aux_at = [], [], []
+        for name in defined:
+            sections.append((".text", TEXT, b"\xc3", []))
+            symbols.append((name, 0, len(sections), 0x20, 2, 0))
+        for name, body in copies:
+            sections.append((".text", TEXT | 0x1000, body, []))
+            aux_at.append(sum(1 + s[-1] for s in symbols) + 1)
+            symbols.extend([(".text", 0, len(sections), 0, 3, 1),
+                            (name, 0, len(sections), 0x20, 2, 0)])
+        first = sum(1 + s[-1] for s in symbols)
+        symbols.extend((name, 0, 0, 0x20, 2, 0) for name in refs)
+        if refs:
+            name, flags, body, _ = sections[0]
+            sections[0] = (name, flags, b"\0" * (4 * len(refs)) + body,
+                           [(4 * i, first + i, 6) for i in range(len(refs))])
+        symbols.extend((name, size, 0, 0, 2, 0) for name, size in common)
+        if aliases:
+            sections.append((".drectve", 0x00100A00,
+                             " ".join(f"/alternatename:{a}={b}" for a, b in aliases).encode(), []))
+        raw = bytearray(coff(sections, symbols))
+        table = struct.unpack_from("<I", raw, 8)[0]
+        for at in aux_at:
+            raw[table + 18 * at + 14] = 2
+        path = self.root / "objects" / (stem + ".obj")
+        path.parent.mkdir(exist_ok=True)
+        path.write_bytes(raw)
+        return path
+
+    def setup_guard(self, source_options=None, target_options=None, outside_options=None, existing=True):
+        import build
+        import link_check as LC
+        import link_census as LCe
+        source_options, target_options, outside_options = source_options or {}, target_options or {}, outside_options or {}
+        (self.root / self.SOURCE).write_text("void move(){}\nvoid stay(){}\n")
+        if existing:
+            (self.root / self.TU).write_text("void target(){}\n")
+        row = lambda n, r, s: dict(name=n, target_rva=r, target_size="1", source=s, status="matched", notes="")
+        self.rows = [row("_move", "0x1000", self.SOURCE), row("_stay", "0x3000", self.SOURCE),
+                     row("_outside", "0x2000", self.OUTSIDE)]
+        if existing:
+            self.rows.append(row("_target", "0x4000", self.TU))
+        objects = {self.SOURCE: self.obj("original", defined=("_move", "_stay", *source_options.pop("extra", ())), **source_options),
+                   self.OUTSIDE: self.obj("outside", defined=("_outside",), **outside_options)}
+        if existing:
+            objects[self.TU] = self.obj("target", defined=("_target",), **target_options)
+        # Give the original objects the names the actual linker inventory uses.
+        logical = {}
+        for source, obj in objects.items():
+            path = obj.parent / build.obj_path(self.root / source).name
+            path.write_bytes(obj.read_bytes())
+            logical[source] = path
+        order = sorted(logical.values(), key=lambda p: next(i for i, o in enumerate(LCe.link_order(self.rows, [])) if o.name == p.name))
+        facts = [LCe.object_facts(obj, self.truth) for obj in order]
+        owners = LCe.ledger_owners(self.rows, [])
+        edges, referenced = LCe.link_references(order, facts, owners)
+        index = LC.index_tables(order, facts, dict(owners=owners, exceptions={}), dict(edges=edges, referenced=referenced))
+        index.update(blockers={f: dict(object=o.name, linked=True) for f, o in logical.items()},
+                     excuses=dict(runtime=set(), imported={}, stubs={}))
+        g = T.SplitLinkGuard(self.TU, self.SOURCE, "residual", None, ["0x1000"], root=self.root)
+        g.guard.index, g.guard.truth = index, self.truth
+        g.guard.rank = {p.name: i for i, p in enumerate(LCe.link_order(self.rows, []))}
+        def verifier(source):
+            return SimpleNamespace(obj=logical[source], matched=lambda text, rows: {r["target_rva"] for r in rows})
+        with patch.object(LCe, "ledger", return_value=self.rows), patch.object(LCe, "data_ledger", return_value=[]), \
+                patch.object(T, "Verifier", side_effect=verifier):
+            self.assertIsNone(g.prepare([self.SOURCE, self.TU] if existing else [self.SOURCE]))
+        self.guard = g
+        return g
+
+    def judge(self, residual_options=None, destination_options=None, existing=True):
+        residual_options, destination_options = residual_options or {}, destination_options or {}
+        self.guard.residual_obj = self.obj("residual", defined=("_stay", *residual_options.pop("extra", ())), **residual_options)
+        obj = self.obj("destination", defined=("_move", *(("_target",) if existing else ()),
+                                              *destination_options.pop("extra", ())), **destination_options)
+        return self.guard.judge(obj, [self.SOURCE, self.TU] if existing else [self.SOURCE], "destination")
+
+    def test_both_split_objects_resolve_each_others_definitions(self):
+        import copy
+        g = self.setup_guard()
+        untouched = copy.deepcopy(g.guard.index)
+        self.assertEqual(self.judge(dict(refs=("_move",)), dict(refs=("_stay",))), [])
+        self.assertEqual(g.guard.index, untouched)
+
+    def test_residual_and_destination_use_the_post_split_link_order(self):
+        import build
+        g = self.setup_guard(existing=False)
+        rows = [dict(r, source=self.TU) if r["name"] == "_move" else r for r in self.rows]
+        records = {self.SOURCE: g.record(self.SOURCE, self.obj("r", defined=("_stay",)), "residual"),
+                   self.TU: g.record(self.TU, self.obj("d", defined=("_move",)), "destination")}
+        view = g.view(records, rows, [])
+        self.assertEqual(view["objects"], [build.obj_path(self.root / f).name for f in (self.TU, self.OUTSIDE, self.SOURCE)])
+        self.assertEqual(view["selection"]["owners"]["_move"], {build.obj_path(self.root / self.TU).name})
+
+    def test_new_unresolved_on_either_side_is_refused(self):
+        for side in ("residual", "destination"):
+            with self.subTest(side=side):
+                self.setup_guard()
+                args = {side + "_options": dict(refs=("_missing",))}
+                self.assertTrue(any("new unresolved: _missing" in why for why in self.judge(**args)))
+
+    def test_new_implicit_definition_duplicate_between_the_sides_is_refused(self):
+        self.setup_guard()
+        why = self.judge(dict(extra=("_implicit",)), dict(extra=("_implicit",)))
+        self.assertTrue(any("new duplicates: _implicit" in item for item in why))
+
+    def test_unchanged_unrelated_debt_is_retained_and_does_not_block(self):
+        self.setup_guard(source_options=dict(refs=("_old_missing",)))
+        self.assertEqual(self.judge(dict(refs=("_old_missing",))), [])
+
+    def test_old_donor_debt_cannot_break_a_previously_clean_destination(self):
+        self.setup_guard(source_options=dict(refs=("_old_missing",)))
+        why = self.judge(destination_options=dict(refs=("_old_missing",)))
+        self.assertTrue(any(self.TU in item and "link-clean original" in item for item in why))
+
+    def test_an_unrowed_provider_needed_by_an_outside_consumer_cannot_disappear(self):
+        self.setup_guard(source_options=dict(extra=("_helper",)), outside_options=dict(refs=("_helper",)))
+        self.assertIn("outside consumers lose provider _helper", self.judge())
+
+    def test_moving_the_same_provider_to_the_destination_preserves_outside_consumers(self):
+        self.setup_guard(source_options=dict(extra=("_helper",)), outside_options=dict(refs=("_helper",)))
+        self.assertEqual(self.judge(destination_options=dict(extra=("_helper",))), [])
+
+    def test_a_removed_alias_cannot_unresolve_an_outside_consumer(self):
+        self.setup_guard(source_options=dict(aliases=(("_alias", "_outside"),)), outside_options=dict(refs=("_alias",)))
+        self.assertIn("outside consumers lose provider _alias", self.judge())
+
+    def test_an_alias_cannot_silently_retarget_an_outside_consumer(self):
+        self.setup_guard(source_options=dict(aliases=(("_alias", "_outside"),)), outside_options=dict(refs=("_alias",)))
+        why = self.judge(destination_options=dict(aliases=(("_alias", "_move"),)))
+        self.assertIn("outside alias route changes for _alias", why)
+
+    def test_duplicate_identical_alias_directives_keep_the_same_route(self):
+        alias = dict(aliases=(("_alias", "_outside"),))
+        self.setup_guard(source_options=alias, outside_options=dict(refs=("_alias",)))
+        self.assertEqual(self.judge(dict(alias), dict(alias)), [])
+
+    def test_a_new_earlier_copy_cannot_make_an_outside_comdat_lose(self):
+        self.setup_guard(source_options=dict(copies=(("_fold", b"\xc3"),)),
+                         outside_options=dict(copies=(("_fold", b"\xc3"),), refs=("_fold",)))
+        why = self.judge(destination_options=dict(copies=(("_fold", b"\x90\xc3"),)))
+        self.assertIn("new outside COMDAT losers for _fold", why)
+
+    def test_an_unchanged_moved_copy_does_not_hide_or_increase_existing_outside_losses(self):
+        self.setup_guard(source_options=dict(copies=(("_fold", b"\xc3"),)),
+                         outside_options=dict(copies=(("_fold", b"\x90\xc3"),), refs=("_fold",)))
+        self.assertEqual(self.judge(destination_options=dict(copies=(("_fold", b"\xc3"),))), [])
+
+    def test_moved_unknown_copy_needs_raw_relocation_context_as_well_as_a_digest(self):
+        with patch.object(T, "portable_comdat_contexts", return_value={}):
+            self.setup_guard(source_options=dict(copies=(("_fold", b"\xc3"),)),
+                             outside_options=dict(refs=("_fold",)))
+            why = self.judge(destination_options=dict(copies=(("_fold", b"\xc3"),)))
+        self.assertTrue(any("lacks matching private/weak-free context" in item for item in why))
+
+    def test_common_provider_can_move_and_resolve_a_cross_file_reference(self):
+        self.setup_guard(source_options=dict(common=(("_data", 4),)), outside_options=dict(refs=("_data",)))
+        self.assertEqual(self.judge(dict(refs=("_data",)), dict(common=(("_data", 4),))), [])
+
+    def test_changed_map_selection_is_inconclusive_and_refused(self):
+        g = self.setup_guard(source_options=dict(copies=(("_fold", b"\xc3"),)))
+        g.guard.index["selection"]["exceptions"]["_fold"] = 0
+        g.before["selection"]["exceptions"]["_fold"] = 0
+        self.assertTrue(any("changed /MAP selection" in why for why in
+                            self.judge(destination_options=dict(copies=(("_fold", b"\xc3"),)))))
+
+    def test_missing_candidate_object_fails_closed(self):
+        self.setup_guard()
+        self.guard.residual_obj = self.root / "missing.obj"
+        self.assertTrue(any("evidence unavailable" in why for why in self.guard.judge(
+            self.root / "also-missing.obj", [self.SOURCE], "text")))
+
+    def test_truncated_candidate_object_fails_closed(self):
+        self.setup_guard()
+        bad = self.root / "truncated.obj"
+        bad.write_bytes(b"bad coff")
+        self.guard.residual_obj = bad
+        self.assertTrue(any("unreadable split object" in why for why in self.guard.judge(bad, [self.SOURCE], "text")))
+
+    def test_ledger_change_invalidates_a_cached_success(self):
+        self.setup_guard()
+        self.assertEqual(self.judge(), [])
+        (self.root / "reverse/functions.csv").write_bytes(b"changed\n")
+        self.assertEqual(self.judge(), ["split compiler/ledger inputs changed during verification; retry"])
+
+    def test_original_source_must_still_equal_the_text_that_was_carved(self):
+        g = self.setup_guard()
+        g.expected_source = b"earlier source revision"
+        self.assertEqual(g.prepare([self.SOURCE]), "mixed source changed while planning the split; retry")
+
+    def test_a_concurrent_source_edit_invalidates_cached_success(self):
+        self.setup_guard()
+        self.assertEqual(self.judge(), [])
+        (self.root / self.SOURCE).write_text("changed")
+        self.assertEqual(self.judge(), ["split source changed during verification; retry"])
+
+    def split(self, broken_residual=False, dry_run=False):
+        import link_census as LCe
+        guard = self.setup_guard()
+        owner = self
+        class Verifier:
+            flags, errors, all_errors = None, [], []
+            fd = SimpleNamespace(MANAGED=re.compile(r"(?!)"), overrides=lambda: {})
+            def __init__(self, source):
+                self.source, self.obj = source, None
+            def matched(self, text, rows):
+                names = tuple("_" + n for n in re.findall(r"void\s+(\w+)\s*\(", text))
+                bad = broken_residual and names == ("_stay",)
+                self.obj = owner.obj("compiled-" + str(len(text)) + "-" + "-".join(names),
+                                     defined=names, refs=("_missing",) if bad else ())
+                return {r["target_rva"] for r in rows}
+        assigned = {int(r["target_rva"], 16): self.TU.lower() for r in self.rows}
+        with patch.dict(T._CACHE, {"assigned": assigned}), \
+                patch.object(T, "file_rows", side_effect=lambda p: [r for r in self.rows if r["source"] == p]), \
+                patch.object(T, "breakdown", return_value={self.TU: [self.rows[0]], "Other": [self.rows[1]]}), \
+                patch.object(T, "refusal", return_value=None), patch.object(T, "included_by", return_value=[]), \
+                patch.object(T, "skeleton", return_value=[]), patch.object(T, "Verifier", Verifier), \
+                patch.object(T, "LinkGuard", return_value=guard.guard), \
+                patch.object(T, "compose", side_effect=lambda tu, sk, files, texts, *args: "\n".join(texts[f] for f in files)), \
+                patch.object(LCe, "ledger", return_value=self.rows), patch.object(LCe, "data_ledger", return_value=[]), \
+                patch.object(T, "apply_split", return_value={}) as apply:
+            report = T.split(self.SOURCE, self.TU, dry_run=dry_run, claim=False)
+        return report, apply
+
+    def test_split_runs_the_guard_before_writing_either_file(self):
+        report, apply = self.split(broken_residual=True)
+        self.assertIn("blocked", report)
+        self.assertIn("link:", report["rejected"][self.SOURCE])
+        apply.assert_not_called()
+
+    def test_verified_split_is_applied_and_dry_run_is_read_only(self):
+        for dry_run in (False, True):
+            with self.subTest(dry_run=dry_run):
+                report, apply = self.split(dry_run=dry_run)
+                self.assertNotIn("blocked", report)
+                if dry_run:
+                    apply.assert_not_called()
+                else:
+                    apply.assert_called_once()
+
+
 class ClaimTests(unittest.TestCase):
     def test_the_scope_is_the_tu_every_donor_and_every_moved_row(self):
         don = {"Code/T.cpp": [{"target_rva": "0x00001000"}],

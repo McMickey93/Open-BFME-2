@@ -29,7 +29,9 @@ tools/link_check.py's census rules (the absorbed units leave the index and the
 merged object takes their link-order place), and a donor that would make it
 stop linking is rejected like one that loses bytes ("link: ..."). Without the
 census index (python3 tools/link_check.py --fetch-index) such a merge is
-blocked. The split lane is not judged this way.
+blocked. Splits judge the residual and destination together against the same
+census, preserving existing debt while refusing new failures in either file or
+outside consumers.
 
 Applying a merge writes the TU file (`// cl:` line chosen from the donors' own
 flag sets by the same verification), repoints every ledger row of each absorbed
@@ -1039,6 +1041,290 @@ class LinkGuard:
         return self.cache[key]
 
 
+class SplitLinkGuard:
+    """Compare the two actual split objects, at their post-carve link places.
+
+    Compile evidence is bounded to the original file and existing destination.
+    Other providers remain the census's evidence, as in the merge guard. No
+    census/cache publication or whole-tree compilation takes place here.
+    """
+    KINDS = ("unresolved", "duplicates", "comdat", "addresses", "selected")
+
+    def __init__(self, tu, source, residual, residual_obj, carved, data_moved=(), root=ROOT, expected_source=None):
+        self.tu, self.source, self.root = tu, source, Path(root)
+        self.residual, self.residual_obj = residual, residual_obj
+        self.carved, self.data_moved = set(carved), set(data_moved)
+        self.expected_source = expected_source
+        self.guard = LinkGuard(tu, root=root)
+        self.before, self.cache = None, {}
+
+    def load(self):
+        return self.guard.load()
+
+    def linked(self, files):
+        return self.guard.linked(files)
+
+    def input_state(self):
+        import link_census as LCe
+        paths = ("reverse/functions.csv", "reverse/data_rows.csv", "reverse/symbols.csv",
+                 "reverse/flag_overrides.csv", "reverse/retail_inventory/flag_regions.csv",
+                 "tools/tu_skeleton.py", "tools/flag_defaults.py", *("tools/" + name for name in LCe.TOOL_FILES))
+        return (LCe.census_inputs_state(), tuple((name, hashlib.sha256((self.root / name).read_bytes()).hexdigest()
+                                                 if (self.root / name).is_file() else None) for name in paths))
+
+    def record(self, source, obj, text):
+        """An immutable private copy with the real object's logical name."""
+        import build
+        import struct
+        import link_census as LCe
+        import link_check as LC
+        if obj is None:
+            raise LCe.MissingObject(f"{source}: no compiled split object")
+        raw = Path(obj).read_bytes()
+        path = self.root / "build/tu_skeleton/link_guard" / hashlib.sha256(raw).hexdigest() / build.obj_path(self.root / source).name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(raw)
+        try:
+            return dict(source=source, obj=path, text=text, fact=LCe.object_facts(path, self.guard.truth),
+                        common=LCe.common_definitions(path), aliases=LC.alternate_names(path),
+                        references=LCe.object_references(path), contexts=portable_comdat_contexts(raw))
+        except (struct.error, IndexError, ValueError, KeyError) as error:
+            raise LCe.MissingObject(f"{source}: unreadable split object: {error}") from error
+
+    def prepare(self, files):
+        import link_census as LCe
+        try:
+            self.inputs = self.input_state()
+            why = self.guard.prepare(files)
+            if why:
+                return why
+            self.original = {f: (self.root / f).read_bytes() if (self.root / f).exists() else None
+                             for f in (self.source, self.tu)}
+            if self.expected_source is not None and self.original[self.source] != self.expected_source:
+                return "mixed source changed while planning the split; retry"
+            self.rows, self.data = LCe.ledger(), LCe.data_ledger()
+            records = {}
+            for source, raw in self.original.items():
+                if raw is None:
+                    continue
+                rows = [r for r in self.rows if r["source"] == source]
+                v = Verifier(source)
+                text = raw.decode("utf-8-sig", errors="replace")
+                matched = v.matched(text, rows)
+                if matched is None or not {r["target_rva"] for r in rows} <= matched:
+                    return f"original {source} does not byte-verify; repair its baseline first"
+                records[source] = self.record(source, v.obj, text)
+            self.records = records
+            self.before = self.view(records, self.rows, self.data)
+            self.debt = self.findings(self.before, records)
+            if self.input_state() != self.inputs:
+                return "split compiler/ledger inputs changed during baseline verification; retry"
+            return None
+        except (OSError, ValueError, LCe.MissingObject) as error:
+            return f"split linking evidence unavailable: {error}"
+
+    def view(self, records, rows, data):
+        """Replace both affected objects and remap every index into true order."""
+        import link_census as LCe
+        import link_check as LC
+        index = self.guard.index
+        order = [p.name for p in LCe.link_order(rows, data)]
+        if len(order) != len(set(order)):
+            raise ValueError("split object-name collision")
+        replacements = {r["obj"].name: r for r in records.values()}
+        affected = {self.guard.position(f) for f in (self.source, self.tu)} - {None}
+        visible = {name for i, name in enumerate(index["objects"]) if i not in affected}
+        objects = [name for name in order if name in visible or name in replacements]
+        if not replacements.keys() <= set(objects):
+            raise ValueError("an affected split object has no ledger link position")
+        positions = {name: i for i, name in enumerate(objects)}
+        remap = {i: positions[name] for i, name in enumerate(index["objects"])
+                 if i not in affected and name in positions}
+        out = dict(index, objects=objects)
+        for table, at in LINK_TABLES:
+            out[table] = {}
+            for name, entries in index[table].items():
+                kept = [remap[e] if table == "strong" else (remap[e[0]], *e[1:])
+                        for e in entries if at(e) in remap]
+                if kept:
+                    out[table][name] = kept
+        for name, record in replacements.items():
+            position = positions[name]
+            copies, defined, _, _ = record["fact"]
+            for symbol in defined:
+                out["strong"].setdefault(symbol, []).append(position)
+            for symbol, digest, _, verdict in copies:
+                out["comdat"].setdefault(symbol, []).append((position, digest, verdict))
+            for symbol, size in record["common"].items():
+                out["common"].setdefault(symbol, []).append((position, size))
+            for symbol, target in record["aliases"].items():
+                out["alternates"].setdefault(symbol, []).append((position, target))
+        for table, _ in LINK_TABLES:
+            for entries in out[table].values():
+                entries.sort()
+        out["selection"] = dict(owners=LCe.ledger_owners(rows, data), exceptions={
+            name: None if holder is None else positions.get(index["objects"][holder])
+            for name, holder in index["selection"]["exceptions"].items()})
+        graph = LC.index_references(index)
+        if graph is not None:
+            out["references"] = dict(graph, edges=dict(graph["edges"]), referenced=set(graph["referenced"]))
+            LC.add_references(out, [r["references"] for r in records.values()],
+                              [pair for r in records.values() for pair in r["fact"][3]],
+                              set(out["selection"]["owners"]) |
+                              set().union(*(LC.kept_copies(out, r["fact"][0]) for r in records.values())))
+        return out
+
+    def findings(self, view, records):
+        import link_check as LC
+        import link_debt
+        result = {}
+        for source, record in records.items():
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                found = LC.check_object(record["obj"], view, self.guard.truth)
+            found["addresses"] = link_debt.addresses(record["text"], source)
+            result[source] = collections.Counter((kind, tuple(item) if isinstance(item, (tuple, list)) else item)
+                                                 for kind in self.KINDS for item in found[kind])
+        return result
+
+    def outside_failures(self, after, records):
+        """Judge changed symbol contracts without rebuilding outside consumers."""
+        import link_check as LC
+        import link_census as LCe
+        before = self.before
+        cohort = {r["obj"].name for r in (*self.records.values(), *records.values())}
+        names = set().union(*(LCe.touched_names(r["fact"]) | set(r["common"]) | set(r["aliases"])
+                              for r in (*self.records.values(), *records.values())))
+        for view in (before, after):
+            graph = LC.index_references(view)
+            if graph is not None:
+                names |= graph["referenced"] - before.get("references", {}).get("referenced", set())
+        while True:
+            more = {alias for view in (before, after) for alias, entries in view["alternates"].items()
+                    if any(target in names for _, target in entries)} - names
+            if not more:
+                break
+            names |= more
+
+        def resolves(view, name, seen=frozenset()):
+            return bool(view["strong"].get(name) or view["comdat"].get(name) or view["common"].get(name)
+                        or LCe.excused(name, view["excuses"]["runtime"], view["excuses"]["imported"],
+                                       view["excuses"]["stubs"])) or (name not in seen and any(
+                            resolves(view, target, seen | {name}) for _, target in view["alternates"].get(name, ())))
+
+        def state(view, name):
+            objects = view["objects"]
+            copies = {objects[p]: (d, v) for p, d, v in view["comdat"].get(name, ())}
+            strong = {objects[p] for p in view["strong"].get(name, ())}
+            definers = set(copies) | strong
+            losses = LCe.keep_rule(view["comdat"].get(name, ()), LC.is_referenced(view, name))[0] if copies else {}
+            losses = {objects[p] for p, lost in losses.items() if lost and objects[p] not in cohort}
+            duplicates = {objects[p] for p in set(view["strong"].get(name, ())) |
+                          {p for p, _, _ in view["comdat"].get(name, ())}
+                          if objects[p] not in cohort and LC.duplicate(name, p, objects[p] in strong, p, view)}
+            chosen = min(set(view["strong"].get(name, ())) |
+                         {p for p, _, _ in view["comdat"].get(name, ())}, default=None)
+            chosen = view["selection"]["exceptions"].get(name, chosen)
+            holder = objects[chosen] if chosen is not None and chosen < len(objects) else None
+            selected = LCe.judge_selected(holder, copies, definers, strong, view["selection"]["owners"].get(name, set()))
+            body = (("copy", *copies[holder]) if holder in copies else
+                    ("strong", name if holder in cohort else holder)) if holder in definers else None
+            return losses, duplicates, selected, body, holder
+
+        def context(view, state, name, records):
+            holder, body = state[4], state[3]
+            if body is None or body[0] != "copy":
+                return None
+            for record in records.values():
+                if record["obj"].name == holder:
+                    return record["contexts"].get((name, body[1]))
+            # An outside copy needs authenticated old bytes, just as a moved
+            # merge copy does. Its normalized digest alone omits local context.
+            if holder in self.guard.index["objects"]:
+                position = self.guard.index["objects"].index(holder)
+                return self.guard.census_contexts({position}).get(position, {}).get((name, body[1]))
+            return None
+
+        failures = []
+        for name in sorted(names):
+            old, new = state(before, name), state(after, name)
+            if LC.is_referenced(before, name) and resolves(before, name) and not resolves(after, name):
+                failures.append(f"outside consumers lose provider {name}")
+            if new[0] - old[0]:
+                failures.append(f"new outside COMDAT losers for {name}")
+            if new[1] - old[1]:
+                failures.append(f"new outside duplicate for {name}")
+            if new[2] == "wrong" and old[2] != "wrong":
+                failures.append(f"outside consumers select a wrong provider for {name}")
+            routes = lambda v: list(dict.fromkeys(target for _, target in v["alternates"].get(name, ())))
+            direct = lambda v: v["strong"].get(name) or v["comdat"].get(name) or v["common"].get(name)
+            if (LC.is_referenced(before, name) and not direct(before) and not direct(after)
+                    and routes(before) and routes(before) != routes(after)):
+                failures.append(f"outside alias route changes for {name}")
+            if (old[3] is not None and old[3][0] == "copy" and old[3] == new[3] and old[4] != new[4]
+                    and LC.is_referenced(before, name) and not (old[2] == new[2] == "ok")):
+                old_context = context(before, old, name, self.records)
+                safe_routes = old_context is not None
+                for _, _, referent in old_context[2] if old_context else ():
+                    # Raw relocation equality cannot prove a callee's route
+                    # when another changed object defines or redirects it.
+                    for record in (*self.records.values(), *records.values()):
+                        if (referent in set(record["fact"][1]) | {n for n, _, _, _ in record["fact"][0]}
+                                | set(record["common"]) | set(record["aliases"])
+                                | {n for n, _ in record["fact"][3]}):
+                            safe_routes = False
+                    if not any(p not in cohort for p in ({before["objects"][i] for i in before["strong"].get(referent, ())}
+                               | {before["objects"][i] for i, _, _ in before["comdat"].get(referent, ())}
+                               | {before["objects"][i] for i, _ in before["common"].get(referent, ())})):
+                        safe_routes = False
+                if not safe_routes or old_context != context(after, new, name, records):
+                    failures.append(f"moved selected COMDAT {name} lacks matching private/weak-free context")
+            if name in self.guard.index["selection"]["exceptions"]:
+                signature = lambda v: [(table, v["objects"][at(e)], *(() if table == "strong" else e[1:]))
+                                       for table, at in LINK_TABLES[:2] for e in v[table].get(name, ())]
+                if signature(before) != signature(after):
+                    failures.append(f"changed /MAP selection for {name} needs measured evidence")
+            elif old[3] is not None and old[3] != new[3] and LC.is_referenced(before, name) and not (old[2] == new[2] == "ok"):
+                failures.append(f"selected implementation changes for {name}")
+        return failures
+
+    def judge(self, obj, files, text):
+        if self.source not in files:
+            return []  # greedy seed trial; judge both objects when the carve joins it
+        import link_census as LCe
+        try:
+            key = (str(obj), tuple(sorted(files)))
+            if self.before is None:
+                return ["split linking baseline was not prepared"]
+            if self.input_state() != self.inputs:
+                return ["split compiler/ledger inputs changed during verification; retry"]
+            if any(((self.root / f).read_bytes() if (self.root / f).exists() else None) != raw
+                   for f, raw in self.original.items()):
+                return ["split source changed during verification; retry"]
+            if key in self.cache:
+                return self.cache[key]
+            rows = [dict(r, source=self.tu) if r["source"] == self.source and r["target_rva"] in self.carved else r
+                    for r in self.rows]
+            moved = data_row_names((self.root / "reverse/data_rows.csv").read_bytes(), self.data_moved) if self.data_moved else set()
+            data = [dict(r, source=self.tu) if r["source"] == self.source and r["name"] in moved else r for r in self.data]
+            records = {self.source: self.record(self.source, self.residual_obj, self.residual),
+                       self.tu: self.record(self.tu, obj, text)}
+            after = self.view(records, rows, data)
+            found = self.findings(after, records)
+            failures = []
+            for source, debt in found.items():
+                if source in self.debt and not self.debt[source] and debt:
+                    failures.append(f"{source}: a link-clean original would stop linking")
+            added = sum(found.values(), collections.Counter()) - sum(self.debt.values(), collections.Counter())
+            failures += [f"new {kind}: {item}" for kind, item in sorted(added, key=str)]
+            failures += self.outside_failures(after, records)
+            if self.input_state() != self.inputs:
+                failures.append("split compiler/ledger inputs changed during verification; retry")
+            self.cache[key] = failures
+            return failures
+        except (OSError, ValueError, LCe.MissingObject) as error:
+            return [f"split linking evidence unavailable: {error}"]
+
+
 def header_queue_rows(root=ROOT):
     """{source: [class, ...]} of reverse/header_queue.tsv: a donor listed there
     still carries a private copy of a class with a canonical header, and the
@@ -1082,15 +1368,14 @@ def merge(tu, dry_run=False, log=print, claim=True):
 
 def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
     v = Verifier(tu)
-    # A merge must not cost a unit its link (LinkGuard). The split lane's donor
-    # is carved from a file that stays, so its census object cannot simply leave
-    # the index: that lane is not judged here.
-    guard = None if applier else guard or LinkGuard(tu)
+    # Splits provide their own two-object guard: their residual stays in the link.
+    guard = guard or (None if applier else LinkGuard(tu))
     if guard is not None:
         guard.load()
         linked = guard.linked(don)
-        why = guard.prepare(don) if linked else None
-        report["link_guard"] = (f"census-linked: {', '.join(linked)}" if linked
+        why = guard.prepare(don) if linked or applier else None
+        report["link_guard"] = ("split: residual and destination compared together" if applier else
+                                f"census-linked: {', '.join(linked)}" if linked
                                 else "no file of this merge links at the census")
         if why:
             report["blocked"] = f"link guard: {why}; census-linked: {', '.join(linked)}"
@@ -1189,6 +1474,8 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
         return best
 
     def link_reason(files, f):
+        if applier:
+            return "link: split residual/destination would regress: " + "; ".join(link_why[tuple(files)][:3])[:300]
         linked = guard.linked(files)
         whose = (f"{f} links at the census" if f in linked
                  else f"{f} never linked at the census and {', '.join(linked)} link")
@@ -1770,7 +2057,8 @@ def split(path, tu, dry_run=False, claim=True):
     if why and not why.startswith("keyed in a protected"):
         report["blocked"] = "file cannot be carved: " + why
         return report
-    text0 = (ROOT / path).read_text(encoding="utf-8-sig", errors="replace")
+    original_bytes = (ROOT / path).read_bytes()
+    text0 = original_bytes.decode("utf-8-sig", errors="replace").replace("\r\n", "\n").replace("\r", "\n")
     if "__FILE__" in strip(text0):          # rename_files reports only its first reason
         report["blocked"] = "file cannot be carved: expands __FILE__ (the path reaches its bytes)"
         return report
@@ -1886,7 +2174,8 @@ def split(path, tu, dry_run=False, claim=True):
         report["hatches_move"] = bool(moved_hatches)
         donor_text = relocate_includes(donor_text, posixpath.dirname(path), posixpath.dirname(tu))
         report["carved"] = [r["target_rva"] for r in carved]
-        got = Verifier(path).matched(residual, keep) if keep else set()
+        v = Verifier(path)
+        got = v.matched(residual, keep) if keep else set()
         lost = sorted({r["target_rva"] for r in keep} - (got or set()))
         report["residual_keeps"] = len(keep) - len(lost)
         if lost:
@@ -1913,6 +2202,8 @@ def split(path, tu, dry_run=False, claim=True):
         don[tu] = own
     report.update(approved=len(sk), accepted=[], rejected={})
     texts = {path: donor_text}
+    guard = SplitLinkGuard(tu, path, residual, v.obj, [r["target_rva"] for r in carved],
+                           data_moved=cv.data_moved, root=ROOT, expected_source=original_bytes)
 
     def applier(tu_, acc, text_):
         return apply_split(tu_, text_, path, residual, [r["target_rva"] for r in carved], report["hatches_move"],
@@ -1924,11 +2215,11 @@ def split(path, tu, dry_run=False, claim=True):
             claims.release(claim_keys(tu, {path: carved}))
             report["blocked"] = "held by another worker: " + ", ".join(held[:5])
             return report
-        report = _merge(tu, sk, don, report, dry_run, texts=texts, applier=applier)
+        report = _merge(tu, sk, don, report, dry_run, texts=texts, applier=applier, guard=guard)
         if "blocked" in report:
             claims.release(claim_keys(tu, {path: carved}))
     else:
-        report = _merge(tu, sk, don, report, dry_run, texts=texts, applier=applier)
+        report = _merge(tu, sk, don, report, dry_run, texts=texts, applier=applier, guard=guard)
     if path not in report.get("accepted", []):
         report.setdefault("blocked", "the carved bodies do not verify in the TU: "
                           + str(report.get("rejected", {}).get(path, ""))[:300])
