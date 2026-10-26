@@ -143,7 +143,7 @@ existing LINK-011 preview clearances retained for its two rows.
 | `Code/GameEngine/Source/Common/S2DualVptrDerivedCtors.cpp` | 32 | 2 (U=2) | 2026-10-26 ("Link AudioManager ctor unit through the shared Rva005109D view"): preview LINKS 0 -> 32 B (with MilesAudioManager.cpp, Rva005109DDtor.cpp, SubsystemInterface.cpp, all unchanged). AudioManager now uses MilesAudioManager.cpp's novtable `Rva005109D` (SubsystemInterface + Snapshot) view; unrowed `Rva00694E00` copy, keepOwn `/alternatename` and the `GenBase009A1A30` alias pin removed. Census pending. |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DPropDraw.cpp` | 32 | 2 (C=2) | Open |
 | `Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-cd13.cpp` | 28 | 2 (U=1, C=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva004F6FE1.cpp` | 27 | 2 (C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva004F6FE1.cpp` | 27 | 2 (C=1, S=1) | 2026-10-26 at db6faf305d: repair landed / awaiting census. Retail 0x004F6FE1 is `copy_backward<TreeHintRef00217D4C*>` (3-arg callers in 0x004F792B; calls the rowed `__false_type` dispatcher 0x004F6D2E), not `__copy_backward_aux<Rva004F6FE1Element**>` whose `__true_type` memmove copy was rejected. Row renamed to the already-pinned name, two pins retired; `PAUTreeHintRef00217D4CRva004F9565.cpp` declares it only; `stlport_stable_sort_asciistring_o1.cpp` fold forwarder respelled. link_check (index d1f046749a): 4/4 LINK, +27 B. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005FE3C1.cpp` | 27 | 2 (C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp` | 25 | 2 (U=2) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Rva005003C7EqualRange.cpp` | 24 | 2 (C=1, S=1) | Open |
