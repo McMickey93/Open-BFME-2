@@ -723,12 +723,32 @@ class LinkGuardTests(unittest.TestCase):
                 "source,linked,unresolved,duplicates,comdat_losers,addresses,wrong_selected\n"
                 f"{self.TU},yes,0,0,0,0,0\n{self.B},no,1,0,0,0,0\n")
             guard = T.LinkGuard(self.TU, root=tmp)
+            fetched = []
+            offline = lambda objects=True: fetched.append(objects) or (_ for _ in ()).throw(SystemExit("offline"))
             with patch.object(LC, "INDEX", Path(tmp) / "build/link_census/link_index.pkl"), \
-                    patch.object(LC, "ROOT", Path(tmp)):
+                    patch.object(LC, "ROOT", Path(tmp)), patch.object(LC, "fetch_index", side_effect=offline):
                 out, judged = self.merge(guard, links=lambda files: True)
+        self.assertEqual(fetched, [False])                     # one index-only download was tried
         self.assertTrue(out["blocked"].startswith("link guard: no census index at build/link_census/link_index.pkl"))
+        self.assertIn("the download failed: offline", out["blocked"])
         self.assertIn(f"census-linked: {self.TU}", out["blocked"])
         self.assertEqual((out["accepted"], judged), ([], []))
+
+    def test_a_missing_index_is_downloaded_once_and_used(self):
+        import link_check as LC
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "link_index.pkl"
+            fetched = []
+
+            def fetch(objects=True):
+                fetched.append(objects)
+                path.write_bytes(b"index")
+            guard = T.LinkGuard(self.TU, root=tmp)
+            with patch.object(LC, "INDEX", path), patch.object(LC, "fetch_index", side_effect=fetch), \
+                    patch.object(LC, "load_index", return_value=self.index()):
+                self.assertIsNotNone(guard.load())
+                self.assertIsNotNone(guard.load())
+        self.assertEqual(fetched, [False])
 
     def judge(self, guard, files, defined=("?t@@YAXXZ", "?a@@YAXXZ", "?b@@YAXXZ")):
         """guard.judge of a merged object that links by itself and defines `defined`;
@@ -793,7 +813,8 @@ class LinkGuardTests(unittest.TestCase):
         import link_check as LC
         with tempfile.TemporaryDirectory() as tmp:
             guard = T.LinkGuard(self.TU, root=tmp)    # no link_status.csv: nothing links
-            with patch.object(LC, "INDEX", Path(tmp) / "missing.pkl"):
+            with patch.object(LC, "INDEX", Path(tmp) / "missing.pkl"), \
+                    patch.object(LC, "fetch_index", side_effect=SystemExit("offline")):
                 out, judged = self.merge(guard, links=lambda files: False)
         self.assertNotIn("blocked", out)
         self.assertEqual(judged, [])

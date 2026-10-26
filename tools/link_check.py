@@ -275,13 +275,15 @@ def contains(commit, ref="HEAD"):
                           capture_output=True).returncode == 0
 
 
-def fetch_index(url=INDEX_URL):
+def fetch_index(url=INDEX_URL, objects=True):
     """--fetch-index: download the published census's index unless the local
     one is the same census or a later one. Only the repository's writers can
     replace the release asset, and they can already change these tools.
     An index of a commit this checkout lacks would show providers it does
     not have as linking, so it replaces nothing: pull first. The published
-    objects go to the object store either way (fetch_objects)."""
+    objects go to the object store either way (fetch_objects), unless
+    `objects` is false (they only spare compiles; tu_skeleton's link guard
+    needs the index alone)."""
     temp = download(url, "link_index.")
     try:
         meta = index_meta(temp)
@@ -299,7 +301,8 @@ def fetch_index(url=INDEX_URL):
             print(f"link_check: index {meta['date']} at {meta['commit']} -> {INDEX.relative_to(ROOT).as_posix()}")
     finally:
         temp.unlink(missing_ok=True)
-    fetch_objects()
+    if objects:
+        fetch_objects()
     return 0
 
 

@@ -739,6 +739,7 @@ class LinkGuard:
         self.index, self.truth, self.rank = index, truth, rank
         self.gone = set()
         self._status, self.touched, self.previous, self.cache = None, None, {}, {}
+        self.fetch_error, self.fetched = None, False
 
     def status(self):
         if self._status is None:
@@ -748,8 +749,20 @@ class LinkGuard:
         return self._status
 
     def load(self):
-        """The census index, when this checkout has one (link_check --fetch-index)."""
+        """The census index: this checkout's, else the published one, downloaded
+        once (index only, link_check.fetch_index(objects=False)). A failed
+        download leaves it None, and prepare() blocks the merge."""
         import link_check as LC
+        if (self.index is None and not LC.INDEX.exists() and not self.fetched
+                and os.environ.get("BFME_LINK_GUARD_FETCH", "on") != "off"):
+            self.fetched = True     # one try per merge
+            try:
+                with contextlib.redirect_stdout(io.StringIO()):
+                    LC.fetch_index(objects=False)
+            except BaseException as exc:  # noqa: BLE001 -- any failure leaves no index: blocked
+                if isinstance(exc, KeyboardInterrupt):
+                    raise
+                self.fetch_error = str(exc) or type(exc).__name__
         if self.index is None and LC.INDEX.exists():
             self.index = LC.load_index()
         return self.index
@@ -775,7 +788,8 @@ class LinkGuard:
         import link_census as LCe
         if self.load() is None:
             return (f"no census index at {LC.INDEX.relative_to(LC.ROOT).as_posix()} "
-                    "(python3 tools/link_check.py --fetch-index)")
+                    "(python3 tools/link_check.py --fetch-index)"
+                    + (f"; the download failed: {self.fetch_error}" if self.fetch_error else ""))
         try:
             LC.require_common_index(self.index)
         except SystemExit as exc:
