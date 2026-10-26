@@ -30,8 +30,7 @@ public:
 	void rva002EE9B7();
 };
 
-void __cdecl operator delete(void *p);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 class PathfindCell {
 public:
