@@ -2031,6 +2031,12 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   distinguishes unchanged debt from newly broken outside units. A separate
   verifier repair and a fresh guard after rebase remain prerequisites; no
   source workaround, census gain or linking clearance is claimed.
+  The separate verifier repair is now tested against authenticated old object
+  bytes and the real before/after order: 228 tests and 11 subtests pass (one
+  existing skip), and the bounded eight-object INI replay reports no problems.
+  Missing raw proof, private/weak/alias context, a changed selected body or a
+  newly referenced losing copy remain refused. The final guard after rebase
+  and census confirmation are still pending.
 - **Census confirmation:** awaiting the next census.
 
 

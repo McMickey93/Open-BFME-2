@@ -601,6 +601,53 @@ class LinkGuardTests(unittest.TestCase):
     # htree.cpp linked in the census, then a merge chosen by matched rows alone made them stop.
     TU, A, B = "Code/T.cpp", "Code/A.cpp", "Code/B.cpp"
 
+    @staticmethod
+    def context_object(storage=2, section=0, value=0, referent="callee", alias=False):
+        import struct
+        from test_gate_exploits import coff, TEXT
+        sections = [(".text", TEXT | 0x1000, b"\xe8\0\0\0\0\xc3", [(1, 3, 0x14)]),
+                    (".data", 0xC0000040, b"data", [])]
+        if alias:
+            sections.append((".drectve", 0x00100A00, b" /alternatename:callee=other", []))
+        data = bytearray(coff(sections, [(".text", 0, 1, 0, 3, 1),
+                                       ("f", 0, 1, 0x20, 2, 0),
+                                       (referent, value, section, 0x20, storage, 0)]))
+        table = struct.unpack_from("<I", data, 8)[0]
+        data[table + 18 + 14] = 2  # IMAGE_COMDAT_SELECT_ANY
+        return bytes(data)
+
+    def test_portable_context_requires_ordinary_undefined_external_relocations(self):
+        self.assertEqual(len(T.portable_comdat_contexts(self.context_object())), 1)
+        for options in ({"storage": 3, "section": 2}, {"storage": 105}, {"section": 2},
+                        {"value": 4}, {"referent": "?f@?A0x12345678@@"}, {"alias": True}):
+            with self.subTest(options=options):
+                self.assertEqual(T.portable_comdat_contexts(self.context_object(**options)), {})
+        self.assertEqual(T.portable_comdat_contexts(b"truncated"), {})
+
+    def test_identical_digests_cannot_hide_changed_local_referents(self):
+        import link_census as LCe
+        old = self.context_object(storage=3, section=2, referent="$S1")
+        new = old.replace(b"data", b"diff")
+        self.assertNotEqual(old, new)
+        self.assertEqual(list(LCe._comdat_sections(old))[0][3], list(LCe._comdat_sections(new))[0][3])
+        self.assertEqual(T.portable_comdat_contexts(old), {})
+        self.assertEqual(T.portable_comdat_contexts(new), {})
+
+    def test_census_context_is_bound_to_the_complete_old_object_hash(self):
+        import hashlib
+        data = self.context_object()
+        digest = hashlib.sha256(data).hexdigest()
+        with tempfile.TemporaryDirectory() as tmp:
+            guard = self.guard(tmp)
+            guard.index["digests"] = {"t.obj": digest}
+            path = Path(tmp) / "build/link_census/guard_objects" / (digest + ".obj")
+            path.parent.mkdir(parents=True)
+            self.assertEqual(guard.census_contexts({0}), {})
+            path.write_bytes(data)
+            self.assertEqual(guard.census_contexts({0}), {0: T.portable_comdat_contexts(data)})
+            path.write_bytes(data + b"changed")
+            self.assertEqual(guard.census_contexts({0}), {})
+
     def index(self):
         import link_check as LC
         return {"meta": {}, "objects": ["t.obj", "a.obj", "b.obj", "x.obj"],
@@ -808,6 +855,111 @@ class LinkGuardTests(unittest.TestCase):
             self.assertIn("no longer defines ?a@@YAXXZ, which the census still references", why)
             why, _ = self.judge(self.ranked_guard(tmp), [self.TU, self.A], defined=("?t@@YAXXZ", "?a@@YAXXZ"))
             self.assertEqual(why, [])
+
+    def judge_moved_copy(self, copies, emitted="old", *, outside_rank=13, strong=False, exception=False,
+                         unknown_holder=False, portable=True, old_proof=True, cohort_route=None,
+                         missing_cohort_proof=False, becomes_referenced=False, alias_only=False):
+        """Exercise real variant and keep rules around a two-file merge."""
+        import link_check as LC
+        import link_census as LCe
+        import link_debt
+        name = "?inl@@YAXXZ"
+        with tempfile.TemporaryDirectory() as tmp:
+            guard = self.ranked_guard(tmp)
+            guard.index["comdat"][name] = copies
+            guard.index["strong"]["callee"] = [2]
+            if not becomes_referenced:
+                guard.index["references"]["referenced"].add(name)
+            if alias_only:
+                del guard.index["strong"]["callee"]
+                guard.index["alternates"]["callee"] = [(3, "target")]
+                guard.index["strong"]["target"] = [0]
+            outsider = guard.index["objects"][3]
+            guard.rank[outsider] = outside_rank
+            if strong:
+                guard.index["strong"][name] = [3]
+                guard.index["selection"]["owners"][name] = {outsider}
+            if exception:
+                guard.index["selection"]["exceptions"][name] = 3
+            if unknown_holder:
+                guard.index["selection"]["exceptions"][name] = None
+            fact = ([(name, emitted, 21, None)], ["?t@@YAXXZ", "?a@@YAXXZ"], [], [])
+            context = lambda digest: (0, digest.encode(), ((1, 0x14, "callee"),))
+            contexts = {p: {(name, digest): context(digest)} for p, digest, _ in copies if p in (0, 1)} if old_proof else {}
+            guard.before_weaks = {0: set(), 1: set()}
+            if missing_cohort_proof:
+                del guard.before_weaks[0]
+            if cohort_route == "weak":
+                guard.before_weaks[0].add("callee")
+            elif cohort_route:
+                entries = {"strong": [0, 2], "comdat": [(0, "provider", None)],
+                           "common": [(0, 4)], "alternates": [(0, "oldTarget")]}
+                guard.index[cohort_route]["callee"] = entries[cohort_route]
+            obj = Path(tmp) / "merged.obj"
+            obj.write_bytes(b"synthetic object facts supplied below")
+            clean = {"unresolved": [], "duplicates": [], "comdat": [], "addresses": [],
+                     "selected": [], "unreferenced_differs": []}
+            def check_object(obj, view, truth):
+                if becomes_referenced:
+                    view["references"]["referenced"].add(name)
+                return clean
+            with patch.object(LC, "check_object", side_effect=check_object), \
+                    patch.object(LCe, "object_facts", return_value=fact), \
+                    patch.object(LCe, "common_definitions", return_value=set()), \
+                    patch.object(guard, "census_contexts", return_value=contexts), \
+                    patch.object(T, "portable_comdat_contexts", return_value={(name, emitted): context(emitted)} if portable else {}), \
+                    patch.object(link_debt, "addresses", return_value=[]):
+                self.assertIsNone(guard.prepare([self.TU, self.A]))
+                return guard.judge(obj, [self.TU, self.A], "text")
+
+    def test_moving_an_existing_winner_keeps_an_already_losing_outside_copy(self):
+        # INI's unchanged functor moves 575 -> 566; ThingFactory at 4304 already lost.
+        self.assertEqual(self.judge_moved_copy([(1, "old", None), (3, "other", None)]), [])
+
+    def test_moving_a_copy_across_the_previous_outside_winner_is_refused(self):
+        why = self.judge_moved_copy([(1, "old", None), (3, "other", None)], outside_rank=10.5)
+        self.assertIn("breaks another unit's copy of ?inl@@YAXXZ", why)
+
+    def test_a_changed_copy_cannot_use_the_moved_donors_old_exemption(self):
+        why = self.judge_moved_copy([(1, "old", None), (3, "old", None)], emitted="changed")
+        self.assertIn("breaks another unit's copy of ?inl@@YAXXZ", why)
+
+    def test_a_different_absorbed_copy_cannot_replace_the_original_selected_body(self):
+        # Both outside losses and selected verdict 'unknown' stay the same, but
+        # the chosen implementation changes from the target's old body to A's.
+        why = self.judge_moved_copy([(0, "target", None), (1, "old", None), (3, "other", None)])
+        self.assertIn("breaks another unit's copy of ?inl@@YAXXZ", why)
+
+    def test_a_moved_old_copy_cannot_displace_the_selected_exclusive_owner(self):
+        # The proven copy prevents keep_rule losses; selected-provider identity
+        # must independently catch an unproven COMDAT moving before its owner.
+        why = self.judge_moved_copy([(1, "old", None), (2, "proven", "retail")],
+                                   outside_rank=10.5, strong=True)
+        self.assertIn("breaks another unit's copy of ?inl@@YAXXZ", why)
+
+    def test_an_existing_map_selection_and_outside_loss_survive_a_moved_copy(self):
+        self.assertEqual(self.judge_moved_copy([(1, "old", None), (3, "other", None)], exception=True), [])
+
+    def test_an_unknown_map_holder_cannot_prove_the_selected_body_unchanged(self):
+        self.assertTrue(self.judge_moved_copy([(1, "old", None), (3, "other", None)], unknown_holder=True))
+
+    def test_an_ambiguous_relocation_or_missing_old_object_keeps_the_refusal(self):
+        copies = [(1, "old", None), (3, "other", None)]
+        self.assertTrue(self.judge_moved_copy(copies, portable=False))
+        self.assertTrue(self.judge_moved_copy(copies, old_proof=False))
+
+    def test_another_absorbed_objects_provider_or_route_cannot_be_exempted(self):
+        copies = [(1, "old", None), (3, "other", None)]
+        for table in ("strong", "comdat", "common", "alternates", "weak"):
+            with self.subTest(table=table):
+                self.assertTrue(self.judge_moved_copy(copies, cohort_route=table))
+        self.assertTrue(self.judge_moved_copy(copies, missing_cohort_proof=True))
+
+    def test_a_previously_unused_copy_cannot_start_charging_an_outside_unit(self):
+        self.assertTrue(self.judge_moved_copy([(1, "old", None), (3, "other", None)], becomes_referenced=True))
+
+    def test_an_external_alias_cannot_hide_a_target_in_the_absorbed_cohort(self):
+        self.assertTrue(self.judge_moved_copy([(1, "old", None), (3, "other", None)], alias_only=True))
 
     def test_a_merge_of_units_that_never_linked_needs_no_index(self):
         import link_check as LC

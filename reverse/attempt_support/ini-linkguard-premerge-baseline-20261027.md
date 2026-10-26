@@ -43,3 +43,36 @@ are still required before publication of the INI merge.
 Local receipts in the INI worktree: `iteration48-ini-guard-ready.json`,
 `iteration48-ini-guard-result.json`, `iteration50-ini-dc8c028a5c-build.log` and
 `iteration50-ini-dc8c028a5c-commit.log`, under `build/codex-cleanup-20261025/`.
+
+## Separate verifier repair
+
+The guard now compares the real pre-merge losses and selected implementation
+with the proposed overlay. Both sides retain their own referenced-name state.
+An unchanged digest is insufficient: the old object's complete SHA256 must
+match the census index, and its raw COMDAT body, entry offset and ordinary
+external relocations must equal the new object's. Local, weak, defined,
+anonymous or aliased referents retain the refusal. Every absorbed object needs
+an authenticated weak-route inventory; providers and routes inside that cohort
+are excluded. Each referent must have a direct surviving provider. Unknown
+/MAP holders, changed selected bodies and newly losing outside units remain
+refused, including outside units that were already blocked for other reasons.
+
+The optional raw evidence is kept outside the compiler cache at
+`build/link_census/guard_objects/<index SHA256>.obj`. It comes from the published
+`census-index` object bundle and is rehashed before use. Missing or changed
+evidence preserves the conservative refusal; no whitelist or source workaround
+is added. The old INI object SHA256 is
+`f4c9a5cd6a38bb53e745bf6bd053820ed071c31dc08b3d8922e93dbb10ac30cc`.
+
+The original failure and the newly-referenced/indirect-alias counterexamples
+were first reproduced by failing tests. The final run passes **228 tests and
+11 subtests, with one existing skip**, including all gate-exploit tests.
+A bounded replay from the unmerged `55b80217e6` baseline against candidate
+`ccd433d0fc` authenticates all eight census objects and returns no guard
+problems. The candidate's object and source hashes remain those recorded
+above. This is verifier reproduction, not the final post-rebase integration
+receipt or a new census result.
+
+Tooling-worktree receipts: `iteration53-guard-tests-broad.log`,
+`iteration53-real-ini-guard-result.json` and `iteration51-census-object-proof.json`
+under `build/codex-cleanup-20261025/`.

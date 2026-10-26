@@ -715,6 +715,38 @@ LINK_TABLES = (("strong", lambda entry: entry), ("comdat", lambda entry: entry[0
                ("common", lambda entry: entry[0]), ("alternates", lambda entry: entry[0]))
 
 
+def portable_comdat_contexts(data):
+    """Exact copies whose relocations need no private or weak object context.
+
+    The census digest normalizes local labels and does not encode weak defaults.
+    It is not enough for moving existing debt. Compare raw bodies and ordinary
+    undefined external references, from both authenticated old and new objects.
+    Other kinds keep the existing refusal; this is deliberately a narrow proof.
+    """
+    import struct
+    import link_census as LCe
+    try:
+        selections = LCe._comdat_selections(data)
+        aliases = {m.group(1).decode("latin-1").strip('"')
+                   for m in re.finditer(rb"/alternatename:([^=\s]+)=(\S+)", data, re.I)}
+        weaks = {name for name, _ in LCe._weak_externals(data)}
+        defined = {s["name"] for s in LCe._coff_symbols(data)
+                   if s["storage"] == LCe.EXTERNAL and (s["section"] > 0 or s["value"] != 0)}
+        result = {}
+        for symbol, body, relocs, digest, _ in LCe._comdat_sections(data):
+            if body is None or selections.get(symbol["section"]) != 2:  # IMAGE_COMDAT_SELECT_ANY
+                continue
+            if any(ref["storage"] != LCe.EXTERNAL or ref["section"] != 0 or ref["value"] != 0
+                   or "definition" in ref or ref["name"] in aliases | weaks | defined
+                   or LCe._normal(ref["name"]) != ref["name"] for _, _, ref in relocs):
+                continue
+            result[(symbol["name"], digest)] = (symbol["value"], body,
+                tuple((offset, kind, ref["name"]) for offset, kind, ref in relocs))
+        return result
+    except (ValueError, IndexError, KeyError, struct.error):
+        return {}  # no proof from an unreadable object
+
+
 class LinkGuard:
     """No merge leaves a unit that links not linking (LINK-042: GameFont.cpp,
     statistics.cpp, CrateSystem.cpp, MultiplayerSettings.cpp and htree.cpp each
@@ -740,6 +772,94 @@ class LinkGuard:
         self.gone = set()
         self._status, self.touched, self.previous, self.cache = None, None, {}, {}
         self.fetch_error, self.fetched = None, False
+        self.before_contexts = {}
+        self.before_weaks = {}
+
+    def census_contexts(self, places):
+        """Optional immutable census objects, authenticated by the index SHA256.
+
+        These are evidence, not compiler cache entries. Missing/stale evidence
+        never exempts a moved copy. A published object bundle can supply them at
+        build/link_census/guard_objects/<index object digest>.obj.
+        """
+        import link_census as LCe
+        result, self.before_weaks = {}, {}
+        for position in places - self.gone:
+            digest = self.index.get("digests", {}).get(self.index["objects"][position], "")
+            if not re.fullmatch(r"[0-9a-f]{64}", digest):
+                continue
+            path = self.root / "build/link_census/guard_objects" / (digest + ".obj")
+            try:
+                data = path.read_bytes()
+            except OSError:
+                continue
+            if hashlib.sha256(data).hexdigest() == digest:
+                result[position] = portable_comdat_contexts(data)
+                self.before_weaks[position] = {name for name, _ in LCe._weak_externals(data)}
+        return result
+
+    def preserves_existing_variant(self, name, digest, verdict, context, obj, places, view, rank):
+        """Does this proven old copy retain both outside losses and selection?"""
+        import link_census as LCe
+        import link_check as LC
+        if context is None or self.rank is None:
+            return False
+        # Another absorbed object can change an ordinary external reference's
+        # provider without changing the functor's own bytes. The index retains
+        # definitions and /alternatename routes, but COFF weak defaults need the
+        # authenticated raw object for EVERY member of the cohort.
+        absorbed = places - self.gone
+        if not absorbed <= self.before_weaks.keys():
+            return False
+        for _, _, referent in context[2]:
+            if any(referent in self.before_weaks[p] for p in absorbed):
+                return False
+            for table, at in LINK_TABLES:
+                if any(at(entry) in absorbed for entry in self.index[table].get(referent, ())):
+                    return False
+            # Do not infer a surviving alias/runtime chain. Require a direct
+            # external provider that the merge neither removes nor changes.
+            if not any(at(entry) not in absorbed and self.index["objects"][at(entry)] in self.rank
+                       for table, at in LINK_TABLES if table != "alternates"
+                       for entry in self.index[table].get(referent, ())):
+                return False
+        proven = {self.index["objects"][p] for p, d, v in self.index["comdat"].get(name, ())
+                  if p in places and p not in self.gone and (d, v) == (digest, verdict)
+                  and self.before_contexts.get(p, {}).get((name, digest)) == context}
+        if not proven:
+            return False
+
+        def state(index, order, replacement=None):
+            objects = index["objects"]
+            copies = {objects[i]: (d, v) for i, d, v in index["comdat"].get(name, ()) if objects[i] in order}
+            exclusive = {objects[i] for i in index["strong"].get(name, ()) if objects[i] in order}
+            if replacement is not None:
+                copies[obj.name] = replacement
+            losses = LCe.keep_rule([(o, *copies[o]) for o in sorted(copies, key=order.__getitem__)],
+                                  referenced=LC.is_referenced(index, name))[0] if copies else {}
+            definers = set(copies) | exclusive
+            holder = min(definers, key=order.__getitem__) if definers else None
+            selection = index["selection"]
+            if name in selection["exceptions"]:
+                place = selection["exceptions"][name]
+                holder = None if place is None else objects[place] if objects[place] in definers else holder
+            if holder is None:
+                return losses, None, None
+            selected = LCe.judge_selected(holder, copies, definers, exclusive, selection["owners"].get(name, set()))
+            body = ("copy", *copies[holder]) if holder in copies else ("exclusive", holder)
+            return losses, (selected, body), holder
+
+        before, before_selected, before_holder = state(self.index, self.rank)
+        after, after_selected, after_holder = state(view, rank, (digest, verdict))
+        if before_selected is None or before_selected != after_selected:
+            return False  # unknown /MAP holder, changed implementation, or changed owner
+        cohort = {self.index["objects"][p] for p in places}
+        if before_holder in cohort:
+            if before_holder not in proven or after_holder != obj.name:
+                return False
+        elif before_holder != after_holder:
+            return False  # an outside selected provider must remain the same object
+        return not any(lost and not before.get(other, False) for other, lost in after.items() if other != obj.name)
 
     def status(self):
         if self._status is None:
@@ -816,6 +936,7 @@ class LinkGuard:
             for p, digest, _ in copies:
                 if p in want and p not in self.gone:
                     self.previous.setdefault(p, {}).setdefault(name, set()).add(digest)
+        self.before_contexts = self.census_contexts(want)
         return None
 
     def view(self, obj, places):
@@ -886,10 +1007,15 @@ class LinkGuard:
                     for name, digests in self.previous.get(p, {}).items():
                         previous.setdefault(name, set()).update(digests)
                 breaks = LC.new_variants(obj, view, self.truth, previous, rank) if rank else []
+                copies, defined, _, _ = LCe.object_facts(obj, self.truth)
+                if breaks:
+                    contexts = portable_comdat_contexts(obj.read_bytes())
+                    facts = {name: (digest, verdict) for name, digest, _, verdict in copies}
+                    breaks = [name for name in breaks if name not in facts or not self.preserves_existing_variant(
+                        name, *facts[name], contexts.get((name, facts[name][0])), obj, places, view, rank)]
                 # A definition an absorbed unit made and the merged object no longer
                 # makes must not be one the census still references with no other
                 # definer: a linked consumer would go unresolved.
-                copies, defined, _, _ = LCe.object_facts(obj, self.truth)
                 mine = set(defined) | {n for n, _, _, _ in copies} | set(LCe.common_definitions(obj))
                 dropped = set()
                 for table in ("strong", "comdat", "common"):
