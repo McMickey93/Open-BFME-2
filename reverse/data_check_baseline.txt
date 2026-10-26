@@ -24,7 +24,6 @@ Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0490
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E062EC@@3HA	0x00A062EC
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0ABB0@@3HA	0x00A0ABB0
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E18078@@3HA	0x00A18078
-Code/GameEngine/Source/Common/ColdGlobalDwordSetters.cpp	wrong-name	?G009B5FE0@@3HA	0x009B5FE0
 Code/GameEngine/Source/Common/D008791E0HandleTableRemove.cpp	wrong-name	?Rva008791E0Handles@@3URva008791E0Table@@A	0x00A226E0
 Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	wrong-name	?TheGen001336E5C@@3PAVGen001336E5C@@A	0x009E0880
 Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	wrong-name	?theDebug@@3RAVDebug@@A	0x009E0880

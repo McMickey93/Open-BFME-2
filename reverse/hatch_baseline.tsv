@@ -2612,7 +2612,6 @@ alternatename	Code/GameEngine/Source/Common/CarryoverUnit.cpp	?xfer@CarryoverUni
 alternatename	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	?g_Va00E04450@@3HA	1
 alternatename	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	?g_Va00E046B4@@3HA	1
 alternatename	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	?g_Va00E04904@@3HA	1
-alternatename	Code/GameEngine/Source/Common/ColdGlobalDwordSetters.cpp	?G009B5FE0@@3HA	1
 alternatename	Code/GameEngine/Source/Common/CollisionManagerImpl_Update.cpp	?bfmeGlobalCGD@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/ConstIntGetters.cpp	?opaqueCall@Rva00507552@@SAPAXXZ	1
 alternatename	Code/GameEngine/Source/Common/ConstIntGetters.cpp	?opaqueCall@Rva005088C8@@SAPAXXZ	1

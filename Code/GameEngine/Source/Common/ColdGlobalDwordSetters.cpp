@@ -9,16 +9,23 @@
 // unrecoverable, so globals and functions are address-derived
 // (g_Va<VA> / Rva<RVA>Set). The /GX- line matches the sibling getter TUs
 // (verified frameless ten-byte shape).
-extern int G009B5FE0;
-// ?G009B5FE0@@3HA: the global at this VA is ?TextureBitDepth@DX8Wrapper@@1HA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G009B5FE0@@3HA=?TextureBitDepth@DX8Wrapper@@1HA")
+// 0x009B5FE0 is the data ledger's DX8Wrapper::TextureBitDepth (protected,
+// dx8wrapper.cpp). A minimal view of the real class writes it through the
+// WW3D2 inline setter.
+class DX8Wrapper
+{
+public:
+	static __forceinline void Set_Texture_Bitdepth(int depth) { TextureBitDepth = depth; }
+protected:
+	static int TextureBitDepth;	// 0x009B5FE0
+};
 
 // ?Rva00116E40Set@@YAXH@Z @ 0x00116e40 (10B) over 0x00DB5FE0.
 // Int3-padded both sides (prev CC next CC), live E8 caller. Opaque
 // address-derived name.
 void Rva00116E40Set(int value)
 {
-	G009B5FE0 = value;
+	DX8Wrapper::Set_Texture_Bitdepth(value);
 }
 extern int G00DFDA54;
 
