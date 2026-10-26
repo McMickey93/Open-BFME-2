@@ -8245,3 +8245,8 @@ Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|a,d
 Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|b,ac479a32a7d827ea7b20989e,claude-opus-5-5,claude-20261026-160341-5,w-7a37700644b5,2026-10-26
 Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelRva001B2210.cpp|local|BFME2Encoding1MotionChannel::decompress|fi0,1248e82fa0b72b88864371f3,claude-opus-5-5,claude-20261026-160341-9,w-7a37700644b5,2026-10-26
 Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelRva001B2210.cpp|local|BFME2Encoding1MotionChannel::decompress|p,0f16418df863ff8dfdc88fdc,claude-opus-5-5,claude-20261026-160341-9,w-7a37700644b5,2026-10-26
+Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp|member|Rva00201DC4LODInfo|flag30,af1b6477bcd6d89bb7891f3f,claude-opus-5-5,claude-20261026-162400-1,w-7a37700644b5,2026-10-26
+Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroConstructor.cpp|member|GlobalData2|m_68,9543dc7b109ad059a94187c9,claude-opus-5-5,claude-20261026-162400-3,w-7a37700644b5,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferUnitMoved.cpp|member|Rva000E7734GlobalData|m_flag1c,8bfc1e00f1434e7288ec3f6c,claude-opus-5-5,claude-20261026-162400-5,w-7a37700644b5,2026-10-26
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShrubBufferUnitMoved.cpp|member|Rva000E7734GlobalData|m_flag1d,33619af4b55c5ebe632a54dd,claude-opus-5-5,claude-20261026-162400-5,w-7a37700644b5,2026-10-26
+Code/GameEngine/Source/Common/BfmeConv793.cpp|local|clearMissingVariant|r,b30523c1a8a4efd65cec77f6,claude-opus-5-5,claude-20261026-162400-9,w-7a37700644b5,2026-10-26
