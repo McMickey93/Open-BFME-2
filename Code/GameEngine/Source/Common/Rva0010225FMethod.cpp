@@ -68,7 +68,7 @@ private:
 	_STL::vector<EvaMessageInfo> m_14;
 };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva0010225F::rva0010225F(const _STL::vector<EvaMessageInfo> &arg)
 {

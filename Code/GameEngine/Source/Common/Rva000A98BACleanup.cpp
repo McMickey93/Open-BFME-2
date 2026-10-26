@@ -9,7 +9,7 @@ class W3DAptAux
 	static BfmeHub982 *s_renderer;
 };
 // Storage is owned by W3DAptAuxPreDrawRva000A8F98.cpp at VA 0x00DE6170.
-void __cdecl operator delete(void *p);
+#include <new>
 
 // The destructor at 0x0011018B is rowed as the non-virtual
 // ??1Rva00785FD0Renderer@@QAE@XZ (WW3D2/Rva0011018BDestructor.cpp).

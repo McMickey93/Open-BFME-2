@@ -8,7 +8,7 @@ extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 #include "GameLogicObjectLookupView.h"
 class ObjectLookupMap { public: Object **findSlot(int *key); };
-void *__cdecl operator new(unsigned int size);
+#include <new>
 class Rva000AB0F5 { public: void *rva000AB0F5(int key); private: char m_pad[0x1C]; };
 void *Rva000AB0F5::rva000AB0F5(int key)
 {
