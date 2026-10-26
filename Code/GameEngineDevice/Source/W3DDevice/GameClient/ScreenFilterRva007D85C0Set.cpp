@@ -29,9 +29,19 @@ struct Device;
 struct DeviceVtable {char pad[0xe4]; int (__stdcall *SetRenderState)(Device*,unsigned long,unsigned);};
 struct Device{DeviceVtable *v;};
 extern VertexMaterialClass *ScreenMaterial;
-extern unsigned TheBoxTextureDirtyMask;
-extern bool ScreenShaderDirty;
-extern unsigned ScreenOpaqueShader, ScreenCurrentShader;
+class Rva007D85C0;
+// ShaderClass / DX8Wrapper statics under the names shader.cpp, ShaderClassApply.cpp and
+// dx8wrapper.cpp define (data ledger 0x009B6228, 0x009B621C, 0x009EE5D8, 0x009EC4F4):
+// the inlined DX8Wrapper::Set_Material / Set_Shader sequence.
+class ShaderClass {
+public:
+ unsigned ShaderBits;
+ static ShaderClass _PresetOpaqueShader;
+protected:
+ friend class Rva007D85C0;
+ static bool ShaderDirty;
+};
+struct RenderStateStruct { ShaderClass shader; };
 // DX8Wrapper / WW3D statics under the names dx8wrapper.cpp and ww3d.cpp define (data
 // ledger 0x009ED5F8 / 0x009EDA34 / 0x009EDA64 / 0x009EC3FD), so the out-of-line
 // Set_DX8_Render_State this unit emits is the retail body DX8WrapperSetDX8States.cpp
@@ -54,6 +64,9 @@ protected:
  static unsigned RenderStates[256];
  static IDirect3DDevice8 *D3DDevice;
  static unsigned render_state_changes;
+ friend class Rva007D85C0;
+ static RenderStateStruct render_state;
+ static unsigned render_state_changed;
 };
 enum FilterModes {FM_NULL_MODE};
 class Rva007D85C0 { protected: virtual int set(FilterModes); };
@@ -63,9 +76,9 @@ int Rva007D85C0::set(FilterModes mode) {
  if(vmat)++vmat->refs;
  if(ScreenMaterial)ScreenMaterial->Release_Ref();
  ScreenMaterial=vmat;
- TheBoxTextureDirtyMask|=0x4000;
+ DX8Wrapper::render_state_changed|=0x4000;
  if(vmat)vmat->Release_Ref();
- if(ScreenShaderDirty||ScreenOpaqueShader!=ScreenCurrentShader){ScreenCurrentShader=ScreenOpaqueShader;TheBoxTextureDirtyMask|=0x8000;StringClass s;}
+ if(ShaderClass::ShaderDirty||ShaderClass::_PresetOpaqueShader.ShaderBits!=DX8Wrapper::render_state.shader.ShaderBits){DX8Wrapper::render_state.shader.ShaderBits=ShaderClass::_PresetOpaqueShader.ShaderBits;DX8Wrapper::render_state_changed|=0x8000;StringClass s;}
  {TextureHandle tex;BoxSetTexture(0,(TextureBaseClass*&)tex.p);}
  {TextureHandle tex;BoxSetTexture(1,(TextureBaseClass*&)tex.p);}
  DX8Wrapper::Apply_Render_State_Changes();
@@ -76,16 +89,6 @@ int Rva007D85C0::set(FilterModes mode) {
  return true;
 }
 
-// ?ScreenOpaqueShader@@3IA: the global at this VA is ?_PresetOpaqueShader@ShaderClass@@2V1@A; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?ScreenOpaqueShader@@3IA=?_PresetOpaqueShader@ShaderClass@@2V1@A")
 
-// ?ScreenCurrentShader@@3IA: the global at this VA is ?render_state@DX8Wrapper@@1URenderStateStruct@@A; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?ScreenCurrentShader@@3IA=?render_state@DX8Wrapper@@1URenderStateStruct@@A")
-// ?ScreenShaderDirty@@3_NA: the global at this VA is ?ShaderDirty@ShaderClass@@1_NA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?ScreenShaderDirty@@3_NA=?ShaderDirty@ShaderClass@@1_NA")
-// ?ScreenShaderDirty@@3_NA: the global at VA 0xdb621c is ?ShaderDirty@ShaderClass@@1_NA.
-#pragma comment(linker, "/alternatename:?ScreenShaderDirty@@3_NA=?ShaderDirty@ShaderClass@@1_NA")
-// ?ScreenCurrentShader@@3IA: the global at VA 0xdee5d8 is ?render_state@DX8Wrapper@@1URenderStateStruct@@A.
-#pragma comment(linker, "/alternatename:?ScreenCurrentShader@@3IA=?render_state@DX8Wrapper@@1URenderStateStruct@@A")
 
 // Inline public teardown calls Free_String directly; the standalone destructor is 0x00065F5B.

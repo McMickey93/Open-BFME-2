@@ -31,9 +31,19 @@ struct Device{DeviceVtable *v;};
 extern VertexMaterialClass *ScreenMaterial;
 // ScreenMaterial: matched references place it at VA 0xdee5dc (zero-filled .bss).
 VertexMaterialClass * ScreenMaterial;
-extern unsigned TheBoxTextureDirtyMask;
-extern bool ScreenShaderDirty;
-extern unsigned ScreenOpaqueShader, ScreenCurrentShader;
+class Rva007D6B70;
+// ShaderClass / DX8Wrapper statics under the names shader.cpp, ShaderClassApply.cpp and
+// dx8wrapper.cpp define (data ledger 0x009B6228, 0x009B621C, 0x009EE5D8, 0x009EC4F4):
+// the inlined DX8Wrapper::Set_Material / Set_Shader sequence.
+class ShaderClass {
+public:
+ unsigned ShaderBits;
+ static ShaderClass _PresetOpaqueShader;
+protected:
+ friend class Rva007D6B70;
+ static bool ShaderDirty;
+};
+struct RenderStateStruct { ShaderClass shader; };
 // DX8Wrapper / WW3D statics under the names dx8wrapper.cpp and ww3d.cpp define (data
 // ledger 0x009ED5F8 / 0x009EDA34 / 0x009EDA64 / 0x009EC3FD), so the out-of-line
 // Set_DX8_Render_State this unit emits is the retail body DX8WrapperSetDX8States.cpp
@@ -56,6 +66,9 @@ protected:
  static unsigned RenderStates[256];
  static IDirect3DDevice8 *D3DDevice;
  static unsigned render_state_changes;
+ friend class Rva007D6B70;
+ static RenderStateStruct render_state;
+ static unsigned render_state_changed;
 };
 enum FilterModes {FM_NULL_MODE};
 class Rva007D6B70 { protected: virtual int set(FilterModes); };
@@ -64,9 +77,9 @@ int Rva007D6B70::set(FilterModes mode) {
  if(vmat)++vmat->refs;
  if(ScreenMaterial)ScreenMaterial->Release_Ref();
  ScreenMaterial=vmat;
- TheBoxTextureDirtyMask|=0x4000;
+ DX8Wrapper::render_state_changed|=0x4000;
  if(vmat)vmat->Release_Ref();
- if(ScreenShaderDirty||ScreenOpaqueShader!=ScreenCurrentShader){ScreenCurrentShader=ScreenOpaqueShader;TheBoxTextureDirtyMask|=0x8000;StringClass s;}
+ if(ShaderClass::ShaderDirty||ShaderClass::_PresetOpaqueShader.ShaderBits!=DX8Wrapper::render_state.shader.ShaderBits){DX8Wrapper::render_state.shader.ShaderBits=ShaderClass::_PresetOpaqueShader.ShaderBits;DX8Wrapper::render_state_changed|=0x8000;StringClass s;}
  {TextureHandle tex;BoxSetTexture(0,(TextureBaseClass*&)tex.p);}
  DX8Wrapper::Apply_Render_State_Changes();
  DX8Wrapper::Set_DX8_Render_State(23,8);
