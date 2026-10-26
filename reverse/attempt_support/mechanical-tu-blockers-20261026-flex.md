@@ -184,3 +184,23 @@ The current allocator served `Code/GameEngine/Source/GameLogic/Object/Update/Flo
 Applied the unchanged accepted split for `Code/GameEngine/Source/GameLogic/Object/Upgrade/UnpauseSpecialPowerUpgrade.cpp`: absorbed `UnpauseSpecialPowerUpgradePoolKey.cpp`, `UnpauseSpecialPowerUpgradeModuleDataCtor.cpp`, and `Rva004B555FUpgradeNameRef.cpp`; 4 matched rows. Rejected constructor and implementation donors still lack `getModuleNameKey` declarations in their classes. Build and frozen-file check passed, 4/4 rows matched. TU ownership, removed-row verification, and hatch counters passed. The merge tool carried the data register entries and moved the one `alternatename` hatch to the new owner, totals preserved.
 
 The suggested owner command `repair_queue.py retire data Code/GameEngine/Source/GameLogic/Object/Upgrade/UnpauseSpecialPowerUpgrade.cpp` refused and retired nothing: fresh findings remain wrong-name at `0x00A03E68` and `0x00A03E64`. Staged shadow identity also reports the moved `alternatename` as one new finding. These are retained for the register owners; no manual baseline or source changes were made. Path audit found no consumers of the three removed donors outside comments in the consolidated TU.
+
+## Luna shard continuation — W3DSnow and AutoDepositUpdate
+
+- `W3DSnow.cpp`: merged four unchanged accepted donors and retained four
+  matched rows. Build (20/20), frozen-file check, code-identity, data, ownership,
+  EH and path-consumer checks passed. The commit gate reports one shadow
+  invented-name finding for existing `g_Va00BBB8D8`; no identity key was
+  retired. Commit `be2b7e26b0` is waiting in the publisher's batch and has not
+  yet been confirmed landed.
+- `AutoDepositUpdate.cpp`: merged the unchanged pool-key and update donors;
+  eight rows build byte-exactly and the frozen-file check passes. The ctor
+  donor remains rejected with C2511 because the class view has no matching
+  `AutoDepositUpdate(Thing *, const ModuleData *)` declaration. The merge
+  preserved the data-register keys at `0x00A03B14` and `0x00A03B10`; the owner's
+  prescribed `repair_queue.py retire data` check refused them because the
+  fresh verdict still reports two `wrong-name` static-local symbols. The
+  converged data check, staged code-identity check, TU ownership, removed-row
+  verification and hatch counters pass. No data key retired. Active tooling
+  search found no consumer of the absorbed donor filenames; historical link
+  and attempt records retain their original provenance paths.
