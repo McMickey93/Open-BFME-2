@@ -8222,3 +8222,6 @@ Code/GameEngine/Source/Common/Rva004DF4B5.cpp|param|Rva004DF4B5::rva004DF4B5|p,3
 Code/GameEngine/Source/GameLogic/Map/TerrainLogicRva0028449F.cpp|class||Rva0028449FRecordView,6834d7a68f6ded9b69d76b24,gpt-6.1-sol,w5-10261627-8,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/Common/Rva002B280CCheck.cpp|function|0x002B280C|rva002B280C,426de61fe0fb7e4703f88b47,gpt-6.1-sol,w5-10261627-9,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/Common/Rva0044E7A8Check.cpp|param|Rva0044E7A8::rva0044E7A8|arg,76a1a20ddbf111169b6e8c59,gpt-6.1-sol,w5-10261627-10,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva00488906Chain.cpp|class||Rva00488906Obj,fc3f1a4eb032f243d5655815,gpt-6.1-sol,w2-10261554-2,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003C1E8C.cpp|function|0x002886C2|Rva002886C2,3b8c620e9f29f4c352be077e,gpt-6.1-sol,w2-10261554-4,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/Common/System/Rva002F1BD5Finish.cpp|member|Rva002F1BD5Mid|m_110,705f5d58eb3dd0a4ab4b78b1,gpt-6.1-sol,w2-10261554-5,w-dce04682aaeb,2026-10-26
