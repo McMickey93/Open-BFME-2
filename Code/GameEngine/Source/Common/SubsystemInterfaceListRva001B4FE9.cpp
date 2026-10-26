@@ -16,7 +16,12 @@ template <> __declspec(dllimport) __forceinline
 void **vector<void *>::end() { return this->_M_finish; }
 }
 
-class SubsystemInterface
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
+
+// Dispatch-only view: the canonical data header deliberately omits slots 1-13.
+// Retail rva001B4FE9 calls slot 8; resetAll calls slot 9. No objects of this
+// view are constructed and it supplies no vtable or named method definition.
+class Rva001B4FE9Target
 {
 public:
 	virtual void vf0();
@@ -50,7 +55,7 @@ void SubsystemInterfaceList::rva001B4FE9()
 	for (void **it = m_vec.begin(); it != m_vec.end(); ++it) {
 		void *obj = *it;
 		if (obj != 0)
-			((SubsystemInterface *)obj)->vf8();
+			((Rva001B4FE9Target *)obj)->vf8();
 	}
 	_STL::vector<void *> &v = m_vec;
 	v.erase(v.begin(), v.end());
@@ -62,5 +67,5 @@ void SubsystemInterfaceList::rva001B4FE9()
 void SubsystemInterfaceList::resetAll()
 {
  for(_STL::vector<SubsystemEntry8>::reverse_iterator i=m_primary.rbegin();i!=m_primary.rend();++i)
-  i->object->vf9();
+  ((Rva001B4FE9Target *)i->object)->vf9();
 }

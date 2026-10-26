@@ -41,7 +41,12 @@ template <> inline void vector<const ModuleData *>::_M_insert_overflow(pointer _
 	_M_set(__new_start, __new_finish, __new_start + __len);
 }
 }
-class SubsystemInterface
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
+
+// Dispatch-only view of the existing slot-7 call with its byte argument.
+// The canonical data header intentionally omits slots 1-13. This view emits
+// no vtable or named method definition and makes no additional identity claim.
+class Rva001B505FTarget
 {
 public:
 	virtual void vf0();
@@ -103,7 +108,7 @@ unsigned char SubsystemInterfaceList::rva001B505F()
 	for (const ModuleData **it = collected.begin(); it != collected.end(); ++it)
 	{
 		if (*it)
-			((SubsystemInterface *)*it)->vf7(flag);
+			((Rva001B505FTarget *)*it)->vf7(flag);
 	}
 	if (any)
 		Rva0002BBC9Update();
