@@ -2223,11 +2223,13 @@ Census confirmation: n/a.
   return-value flag), still reading the existing address-named storage, and removed the
   unrowed duplicates from `stlport_numpunct_virtuals.cpp`: that unit now LINKS (0 -> 44 B).
   The data-lane rename of the statics was not needed for the link.
-- **Remaining / next check:** (1) 0x00019D90 (wide `moneypunct` string getters) is the same
-  shape as the wide truename pair and can become `do_curr_symbol@?$moneypunct@G$00` in
-  `Rva00017B00StringInit.cpp`, retargeting the 6 wide hatches in the moneypunct ctor/dtor
-  units. (2) Give the 12-byte statics their STLport names (`_M_truename` / `_M_falsename`,
+  620cbe78fd did the same for 0x00019D90 (slot 4 of `moneypunct<wchar_t,true>` 0x007BC868;
+  slots 4-6 of both wide moneypuncts): now `?do_curr_symbol@?$moneypunct@G$00@_STL@@...XZ` in
+  `Rva00017B00StringInit.cpp`; its own hatch dropped, the other five retargeted. 6/6 LINK.
+  Note: link_check without the edited partners in the set uses stale index objects and
+  reports spurious duplicates / unresolveds; check these units together.
+- **Remaining / next check:** (1) Give the 12-byte statics their STLport names (`_M_truename` / `_M_falsename`,
   monetary.cpp's file-static empty strings) through the data lane; `data_check` (shadow)
-  already flags `g_009DEEF0Static` and siblings as duplicate-def / wrong-name. (3) The nine
-  narrow and six wide moneypunct alias hatches need alias rows to go.
+  already flags `g_009DEEF0Static` and siblings as duplicate-def / wrong-name. (2) The nine
+  narrow and five wide moneypunct alias hatches (per unit) need alias rows to go.
 - **Census confirmation:** awaiting the next census for 437bc30603 and b313329af6.
