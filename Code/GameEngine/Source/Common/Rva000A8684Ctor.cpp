@@ -8,6 +8,8 @@
 // A86CE releases the same event's+88 reference after the file handleA8A37.
 // These target facts replace the former AsciiString/UnicodeString guesses.
 // Both complete74B owner and native associative EH graph verify exact.
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 class BfmePoolHolder88;
 class BfmePoolRef10
 {
