@@ -13,7 +13,7 @@
 // unit: one void* word and the same ctor/copy/dtor signatures. That unit's
 // independent unrowed maker dependency is outside this teardown recovery.
 
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
 
 // Only the accessed payload words are modeled: native teardown 0x0007FAB3
 // frees the owned pointer at +0, and 0x0004AA28 reads the count at +0x10.

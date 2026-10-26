@@ -16,7 +16,7 @@
 #include <memory>
 #include <string>
 
-extern "C" void __cdecl free(void *ptr);
+#include <stdlib.h>
 
 #include "BfmeNarrowRecord0041A617.h"
 // Inline _String_base<char>'s dtor everywhere so this unit emits no copy of
