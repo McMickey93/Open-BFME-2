@@ -8227,3 +8227,7 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGlueRva003C1E8C.cpp|function
 Code/GameEngine/Source/Common/System/Rva002F1BD5Finish.cpp|member|Rva002F1BD5Mid|m_110,705f5d58eb3dd0a4ab4b78b1,gpt-6.1-sol,w2-10261554-5,w-dce04682aaeb,2026-10-26
 Code/GameEngine/Source/Common/Rva0033A9A5.cpp|class||Rva0033A9A5Entry,86d4ff20fd70e16f33ed36d1,gpt-6.1-sol,w4-10261641-6,w-eb83eac9adc1,2026-10-26
 Code/GameEngine/Source/Common/Rva005A8666Box.cpp|param|NAT::gotTargetMangledPort|a,3f8914ea1304dde200bd7d56,gpt-6.1-sol,w4-10261641-10,w-eb83eac9adc1,2026-10-26
+Code/GameEngine/Source/Common/Rva005E4DAFTwins.cpp|class||Rva005E4BB7,95bf0b54e564e3f4f3817215,gpt-6.1-sol,w3-10261634-6,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Rva0010F42AFinish.cpp|local|Rva0010F42A::execute|m_scale0C,d14f038c84618e67ed2566ca,gpt-6.1-sol,w3-10261634-8,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Rva001F51DC.cpp|local|Rva001F51DC::rva001F51DC|a,90486daf23e0e4010c5e2ecb,gpt-6.1-sol,w3-10261634-11,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Rva001F51DC.cpp|local|Rva001F51DC::rva001F51DC|b,639a7780f62be0f55dd616e1,gpt-6.1-sol,w3-10261634-11,w-46dfa4623b23,2026-10-26
