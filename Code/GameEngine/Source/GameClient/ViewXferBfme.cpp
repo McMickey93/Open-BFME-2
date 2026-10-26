@@ -11,57 +11,38 @@
 // or slot offsets, not target facts.
 typedef unsigned char UnsignedByte;
 
-struct XferVersionInfo
-{
-	XferVersionInfo(UnsignedByte v, UnsignedByte c) : version(v), currentVersion(c) {}
-	UnsignedByte version;
-	UnsignedByte currentVersion;
-};
 
 #include "Coord3D.h"
+#include "Coord2D.h"
+#include "ICoord3D.h"
 
 enum ObjectID { INVALID_ID = 0 };
 
-class Xfer
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	virtual void slot00();
-	virtual bool isLoading();
-	virtual void slot08();
-	virtual bool isLightCRC();
-	virtual void slot10();
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual void xferUser(void *data, int size);
-	virtual void xferVersion(XferVersionInfo *version);
-	virtual void slot2C();
-	virtual void slot30();
-	virtual void slot34();
-	virtual void slot38();
-	virtual void slot3C();
-	virtual void slot40();
-	virtual void slot44();
-	virtual void slot48();
-	virtual void slot4C();
-	virtual void xferSlot50(void *value);
-	virtual void slot54();
-	virtual void slot58();
-	virtual void xferSlot5C(void *value);
-	virtual void slot60();
-	virtual void slot64();
-	virtual void slot68();
-	virtual void slot6C();
-	virtual void xferReal(float *value);
-	virtual void slot74();
-	virtual void slot78();
-	virtual void xferInt(int *value);
-	virtual void slot80();
-	virtual void slot84();
-	virtual void slot88();
-	virtual void slot8C();
-	virtual void xferBool(bool *value);
+	Version(UnsignedByte v, UnsignedByte c) : version(v), currentVersion(c) {}
+	UnsignedByte version;
+	UnsignedByte currentVersion;
 };
 
 void XferObjectID(Xfer *xfer, ObjectID *objectID);
@@ -199,12 +180,12 @@ public:
 	bool m_bfme75;
 	bool m_bfme76;
 	unsigned char m_padding77;
-	int m_bfme78[2];
+	Coord2D m_bfme78;
 	Rva0025ECFC *m_bfme80;
 	bool m_bfme84;
 	unsigned char m_padding85[3];
 	ObjectID m_bfme88;
-	int m_bfme8c[3];
+	ICoord3D m_bfme8c;
 	float m_bfme98;
 	float m_bfme9c;
 	float m_bfmea0;
@@ -216,69 +197,69 @@ public:
 
 void View::xfer(Xfer *xfer)
 {
-	if (xfer->isLightCRC())
+	if (xfer->IsCRC())
 		return;
 
-	XferVersionInfo version(1, 3);
-	xfer->xferVersion(&version);
+	Xfer::Version version(1, 3);
+	*xfer == version;
 
 	float angle = getAngle();
-	xfer->xferReal(&angle);
+	*xfer == angle;
 	setAngle(angle);
 
 	Coord3D viewPos;
 	getPosition(&viewPos);
-	xfer->xferReal(&viewPos.x);
-	xfer->xferReal(&viewPos.y);
-	xfer->xferReal(&viewPos.z);
+	*xfer == viewPos.x;
+	*xfer == viewPos.y;
+	*xfer == viewPos.z;
 	lookAt(&viewPos);
 
 	if (version.currentVersion < 3)
 	{
-		xfer->xferInt(&m_bfme18);
-		xfer->xferInt(&m_bfme1c);
-		xfer->xferInt(&m_bfme20);
-		xfer->xferInt(&m_bfme24);
+		*xfer == m_bfme18;
+		*xfer == m_bfme1c;
+		*xfer == m_bfme20;
+		*xfer == m_bfme24;
 	}
 
 	if (version.currentVersion >= 2)
 	{
-		xfer->xferReal(&m_bfme28);
+		*xfer == m_bfme28;
 	}
 
-	xfer->xferReal(&m_bfme2c);
-	xfer->xferReal(&m_bfme30);
-	xfer->xferReal(&m_bfme34);
-	xfer->xferReal(&m_bfme38);
-	xfer->xferReal(&m_bfme40);
-	xfer->xferBool(&m_bfme44);
-	xfer->xferReal(&m_bfme48);
-	xfer->xferReal(&m_bfme4c);
-	xfer->xferReal(&m_bfme50);
-	xfer->xferReal(&m_bfme54);
+	*xfer == m_bfme2c;
+	*xfer == m_bfme30;
+	*xfer == m_bfme34;
+	*xfer == m_bfme38;
+	*xfer == m_bfme40;
+	*xfer == m_bfme44;
+	*xfer == m_bfme48;
+	*xfer == m_bfme4c;
+	*xfer == m_bfme50;
+	*xfer == m_bfme54;
 
 	XferObjectID(xfer, &m_bfme58);
 	XferDrawableID(xfer, &m_bfme5c);
-	xfer->xferUser(&m_bfme60, 4);
-	xfer->xferReal(&m_bfme64);
-	xfer->xferReal(&m_bfme68);
+	xfer->XferRawBytes(&m_bfme60, 4);
+	*xfer == m_bfme64;
+	*xfer == m_bfme68;
 
 	if (version.currentVersion < 3)
 	{
-		xfer->xferReal(&m_bfme6c);
+		*xfer == m_bfme6c;
 	}
-	xfer->xferReal(&m_bfme70);
-	xfer->xferBool(&m_bfme74);
-	xfer->xferBool(&m_bfme75);
-	xfer->xferBool(&m_bfme76);
-	xfer->xferSlot50(&m_bfme78[0]);
+	*xfer == m_bfme70;
+	*xfer == m_bfme74;
+	*xfer == m_bfme75;
+	*xfer == m_bfme76;
+	*xfer == m_bfme78;
 
 	int count = 0;
 	Rva0025ECFC *node;
 	for (node = m_bfme80; node != 0; node = node->m_next)
 		++count;
-	xfer->xferInt(&count);
-	if (xfer->isLoading())
+	*xfer == count;
+	if (xfer->IsLoading())
 	{
 		for (int index = 0; index < count; ++index)
 		{
@@ -293,16 +274,16 @@ void View::xfer(Xfer *xfer)
 		for (node = m_bfme80; node != 0; node = node->m_next)
 			node->rva0025ECFC((BigIface0025ECFC *)xfer);
 	}
-	xfer->xferBool(&m_bfme84);
+	*xfer == m_bfme84;
 	XferObjectID(xfer, &m_bfme88);
-	xfer->xferSlot5C(&m_bfme8c[0]);
-	xfer->xferReal(&m_bfme98);
-	xfer->xferReal(&m_bfme9c);
-	xfer->xferReal(&m_bfmea0);
-	xfer->xferReal(&m_bfmea4);
-	xfer->xferReal(&m_bfmea8);
-	xfer->xferReal(&m_bfmeac);
-	xfer->xferReal(&m_bfmeb0);
+	*xfer == m_bfme8c;
+	*xfer == m_bfme98;
+	*xfer == m_bfme9c;
+	*xfer == m_bfmea0;
+	*xfer == m_bfmea4;
+	*xfer == m_bfmea8;
+	*xfer == m_bfmeac;
+	*xfer == m_bfmeb0;
 }
 
 // Retail 0x004583AF (14B, RET4): View's +0x30 float setter, called by

@@ -34,7 +34,7 @@
 // 0x00DFEC68 (0x00286373).
 #define _STLP_BFME_COPY_TRIVIAL_EXTERN  // call retail's one __copy_trivial (vendor/stlport/stl/_algobase.h)
 #include "ascii_string.h"
-#include "Lib/Coord3D.h"
+#include "Lib/Coord3DBase.h"
 #include "../../Common/GameLogicObjectLookupView.h"
 
 // vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
@@ -74,54 +74,34 @@ typedef float Real;
 
 enum { INVALID_WAYPOINT_ID = 0x7fffffff };
 
-struct XferVersion
+
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
+public:
 	UnsignedByte m_first;
 	UnsignedByte m_version;
 	UnsignedByte m_pad[2];
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual Bool isLoading(); // +0x04
-	virtual Bool isStoring(); // +0x08
-	virtual Bool isCRC(); // +0x0C
-	virtual Bool isLightCRC(); // +0x10
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual void xferUser(void *data, Int size); // +0x24
-	virtual void xferVersion(XferVersion *version); // +0x28
-	virtual void slot2C();
-	virtual void slot30();
-	virtual void slot34();
-	virtual void slot38();
-	virtual void slot3C();
-	virtual void slot40();
-	virtual void slot44();
-	virtual void slot48();
-	virtual void slot4C();
-	virtual void slot50();
-	virtual void slot54();
-	virtual void slot58();
-	virtual void slot5C();
-	virtual void xferCoord3D(Coord3D *value); // +0x60
-	virtual void slot64();
-	virtual void slot68();
-	virtual void xferAsciiString(AsciiString *value); // +0x6C
-	virtual void xferReal(Real *value); // +0x70
-	virtual void slot74();
-	virtual void xferUnsignedInt(UnsignedInt *value); // +0x78
-	virtual void xferInt(Int *value); // +0x7C
-	virtual void slot80();
-	virtual void xferShort(short *value); // +0x84
-	virtual void slot88();
-	virtual void slot8C();
-	virtual void xferBool(Bool *value); // +0x90
-};
 
 class XferException
 {
@@ -472,20 +452,20 @@ Rva0027C230::Rva0027C230(Int value)
 // ?rva0028002F@Rva0027C230@@QAEXPAVXfer@@@Z @0x0028002F
 void Rva0027C230::rva0028002F(Xfer *xfer)
 {
-	XferVersion version;
+	Xfer::Version version;
 	version.m_first = 1;
 	version.m_version = 2;
-	xfer->xferVersion(&version);
+	*xfer == version;
 
-	xfer->xferCoord3D(&m_pos);
-	if (!xfer->isCRC())
+	*xfer == asBase(m_pos);
+	if (!xfer->IsCRC())
 		XferDrawableID(xfer, &m_drawableID);
 
 	AsciiString name;
-	if (!xfer->isLoading() && m_template != NULL)
+	if (!xfer->IsLoading() && m_template != NULL)
 		name = m_template->getName();
-	xfer->xferAsciiString(&name);
-	if (xfer->isLoading())
+	*xfer == name;
+	if (xfer->IsLoading())
 	{
 		if (!name.isEmpty())
 			m_template = TheThingFactory->findTemplate(name);
@@ -493,16 +473,16 @@ void Rva0027C230::rva0028002F(Xfer *xfer)
 			m_template = NULL;
 	}
 
-	xfer->xferBool(&m_18);
-	xfer->xferCoord3D(&m_1C);
-	xfer->xferInt(&m_28);
-	xfer->xferShort(&m_2E);
-	xfer->xferBool(&m_2C);
-	xfer->xferBool(&m_2D);
+	*xfer == m_18;
+	*xfer == asBase(m_1C);
+	*xfer == m_28;
+	*xfer == m_2E;
+	*xfer == m_2C;
+	*xfer == m_2D;
 	if (version.m_version >= 2)
-		xfer->xferUnsignedInt(&m_10);
+		*xfer == m_10;
 
-	if (xfer->isLoading() && TheFireLogicSystem() != NULL && m_template != NULL)
+	if (xfer->IsLoading() && TheFireLogicSystem() != NULL && m_template != NULL)
 		TheFireLogicSystem()->rva00286373(m_drawableID, &m_pos, m_template);
 }
 
@@ -583,53 +563,53 @@ void TerrainLogic::addTree(const ThingTemplate *thingTemplate, const Coord3D *po
 // ?xfer@TerrainLogic@@MAEXPAVXfer@@@Z @0x00283845
 void TerrainLogic::xfer(Xfer *xfer)
 {
-	if (xfer->isLightCRC())
+	if (xfer->IsLightCRC())
 		return;
 
-	XferVersion version;
+	Xfer::Version version;
 	version.m_first = 1;
 	version.m_version = 2;
-	xfer->xferVersion(&version);
+	*xfer == version;
 
-	xfer->xferBool(&m_field44);
-	xfer->xferBool(&m_field60);
+	*xfer == m_field44;
+	*xfer == m_field60;
 
 	Int activeBoundary = m_activeBoundary;
-	xfer->xferInt(&activeBoundary);
-	if (xfer->isLoading())
+	*xfer == activeBoundary;
+	if (xfer->IsLoading())
 		setActiveBoundary(activeBoundary);
 
-	xfer->xferInt((Int *)&m_numWaterToUpdate);
+	*xfer == reinterpret_cast<Int &>(m_numWaterToUpdate);
 	for (UnsignedInt i = 0; i < m_numWaterToUpdate; ++i)
 	{
-		if (xfer->isStoring())
+		if (xfer->IsStoring())
 		{
 			Int triggerID = m_field50->rva00280ADF(m_waterToUpdate[i].waterTable);
-			xfer->xferInt(&triggerID);
+			*xfer == triggerID;
 		}
 		else
 		{
 			Int triggerID;
-			xfer->xferInt(&triggerID);
+			*xfer == triggerID;
 			const WaterHandle *water = (const WaterHandle *)((Rva0027F4F8 *)m_field50)->getWaterHandleByID(triggerID);
 			if (water == NULL)
 				throw XferException(5, 0);
 			m_waterToUpdate[i].waterTable = water;
 		}
-		xfer->xferReal(&m_waterToUpdate[i].changePerFrame);
-		xfer->xferReal(&m_waterToUpdate[i].targetHeight);
-		xfer->xferReal(&m_waterToUpdate[i].damageAmount);
-		xfer->xferReal(&m_waterToUpdate[i].currentHeight);
+		*xfer == m_waterToUpdate[i].changePerFrame;
+		*xfer == m_waterToUpdate[i].targetHeight;
+		*xfer == m_waterToUpdate[i].damageAmount;
+		*xfer == m_waterToUpdate[i].currentHeight;
 	}
 
 	Int nextID = g_Va00DBB708;
 	XferWaypointID(xfer, &nextID);
 	g_Va00DBB708 = nextID;
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		Bool more;
-		xfer->xferBool(&more);
+		*xfer == more;
 		if (more)
 		{
 			Coord3D loc;
@@ -642,7 +622,7 @@ void TerrainLogic::xfer(Xfer *xfer)
 					AsciiString::TheEmptyString, AsciiString::TheEmptyString, AsciiString::TheEmptyString,
 					false, 0, AsciiString::TheEmptyString);
 				way->xfer(xfer);
-				xfer->xferBool(&more);
+				*xfer == more;
 			} while (more);
 		}
 		for (Waypoint *way = g_waypointListHead; way; way = way->getNext())
@@ -654,16 +634,16 @@ void TerrainLogic::xfer(Xfer *xfer)
 		Bool more = true;
 		for (Waypoint *way = g_waypointListHead; way; way = way->getNext())
 		{
-			xfer->xferBool(&more);
+			*xfer == more;
 			way->xfer(xfer);
 		}
 		more = false;
-		xfer->xferBool(&more);
+		*xfer == more;
 	}
 
 	Int count = m_records.size();
-	xfer->xferInt(&count);
-	if (xfer->isLoading())
+	*xfer == count;
+	if (xfer->IsLoading())
 	{
 		for (Rva0027C230 **it = m_records.begin(), **end = m_records.end(); it != end; ++it)
 			if (*it)
@@ -678,13 +658,13 @@ void TerrainLogic::xfer(Xfer *xfer)
 	for (Int j = 0; j < count; ++j)
 		m_records[j]->rva0028002F(xfer);
 
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 		((Rva0028360CHost *)this)->rva0028360C();
 
 	for (Int k = 0; k < 2500; ++k)
-		xfer->xferShort(&m_words[k]);
-	xfer->xferUnsignedInt(&m_field1910);
-	xfer->xferBool(&m_field1914);
+		*xfer == m_words[k];
+	*xfer == m_field1910;
+	*xfer == m_field1914;
 	if (version.m_version >= 2)
-		xfer->xferUnsignedInt(&m_field48);
+		*xfer == m_field48;
 }

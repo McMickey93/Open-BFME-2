@@ -6,51 +6,26 @@
 // derived; the Xfer slot names follow the BFME 2 views already rowed
 // (xferCoord3D +0x60 and xferBool +0x90 as in TerrainLogicXfer.cpp, xferReal
 // +0x70 as in xferRandomVariable.cpp).
-#include "Coord3D.h"
+#include "Coord3DBase.h"
 
-class Xfer
-{
-public:
-	virtual void r0();
-	virtual void r1();
-	virtual void r2();
-	virtual void r3();
-	virtual void r4();
-	virtual void r5();
-	virtual void r6();
-	virtual void r7();
-	virtual void r8();
-	virtual void r9();
-	virtual void r10();
-	virtual void r11();
-	virtual void r12();
-	virtual void r13();
-	virtual void r14();
-	virtual void r15();
-	virtual void r16();
-	virtual void r17();
-	virtual void r18();
-	virtual void r19();
-	virtual void r20();
-	virtual void r21();
-	virtual void r22();
-	virtual void r23();
-	virtual void xferCoord3D(Coord3D *value);	// +0x60
-	virtual void r25();
-	virtual void r26();
-	virtual void r27();
-	virtual void xferReal(float *value);		// +0x70
-	virtual void r29();
-	virtual void r30();
-	virtual void r31();
-	virtual void r32();
-	virtual void r33();
-	virtual void r34();
-	virtual void r35();
-	virtual void xferBool(bool *value);		// +0x90
-
-	void Version1();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 // The two tables (data ledger): DefaultModuleHeadBase at +0 and the
 // LineEmissionVolumeInfo table at +0x1C, both with xfer in slot 3; slot 3 of
@@ -146,11 +121,11 @@ void Rva003AF7FE::rva0055D616()
 void Rva003AF7FE::xfer(Xfer *xfer)
 {
 	xfer->Version1();
-	xfer->xferBool(&m_flag20);
-	xfer->xferReal(&m_real24);
-	xfer->xferReal(&m_real28);
-	xfer->xferReal(&m_real2C);
-	xfer->xferCoord3D(&m_coord30);
+	*xfer == m_flag20;
+	*xfer == m_real24;
+	*xfer == m_real28;
+	*xfer == m_real2C;
+	*xfer == asBase(m_coord30);
 }
 
 // Tag constructor with no retail counterpart: it only makes this TU emit the

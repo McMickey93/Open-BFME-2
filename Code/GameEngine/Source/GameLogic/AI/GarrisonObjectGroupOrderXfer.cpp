@@ -10,47 +10,34 @@ enum ObjectID
 	OBJECTID_0 = 0
 };
 
-struct XferVersion
+
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Libraries/Include/Lib/Coord3DBase.h"
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
+public:
 	UnsignedByte m_version;
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion &version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24(int *value);
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(void *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-};
 
 extern void __cdecl XferObjectID(Xfer *xfer, enum ObjectID *id);
 
@@ -71,16 +58,16 @@ public:
 	virtual void xfer(Xfer *xfer);
 private:
 	enum ObjectID m_18;
-	int m_1c;
+	Coord3DBase m_1c;
 };
 
 void GarrisonObjectGroupOrder::xfer(Xfer *xfer)
 {
-	XferVersion version;
+	Xfer::Version version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
 	GroupOrder::xfer(xfer);
-	xfer->xferVersion(version);
+	*xfer == version;
 	XferObjectID(xfer, &m_18);
-	xfer->slot24(&m_1c);
+	*xfer == m_1c;
 }

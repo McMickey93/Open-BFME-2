@@ -188,46 +188,24 @@ struct BfmeStringRecord00568CE0 { char opaque00[12]; Rva00568F04 *subject; char 
 // protocol. WB-named1442010 establishes xferGridCellVector identity.
 // ModuleData pointer vectors are opaque four-byte emitter views only.
 struct VersionPair { unsigned char minimum,current; };
-class Xfer {
-public:
- virtual ~Xfer();
- virtual bool IsLoading() const;
- virtual bool IsStoring() const;
- virtual bool IsCRC() const;
- virtual void slot04();
- virtual void slot05();
- virtual void slot06();
- virtual void slot07();
- virtual void slot08();
- virtual void slot09();
- virtual void slot10();
- virtual void slot11();
- virtual void slot12();
- virtual void slot13();
- virtual void slot14();
- virtual void slot15();
- virtual void slot16();
- virtual void slot17();
- virtual void slot18();
- virtual void slot19();
- virtual void xferPosition(FloatPair *);
- virtual void slot21();
- virtual void slot22();
- virtual void slot23();
- virtual void slot24();
- virtual void slot25();
- virtual void slot26();
- virtual void slot27();
- virtual void slot28();
- virtual void slot29();
- virtual void xferUnsigned(unsigned *);
- virtual void xferInt(int *);
- virtual void xferWeight(unsigned short *);
- virtual void slot33();
- virtual void slot34();
- virtual void slot35();
- virtual void xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 class Rva00568A05 { public: Rva00568A05 &operator=(const Rva00568A05 &); };
 
 struct Rva005688D2Base { char pad[0x10]; float scale; };
@@ -497,13 +475,13 @@ void LargeGroupAudioSoundKeyPair::rva0056A378(Rva0056A378Source arg)
 
 void LargeGroupAudioSoundKeyPair::rva00569BBC(Xfer *xfer, VersionPair *version)
 {
- if(version->current>=3)xfer->xferInt(&m_totalWeight);
+ if(version->current>=3)*xfer == m_totalWeight;
  else if(xfer->IsLoading())m_totalWeight=300000;
  bool hasGrids=rva00568920();
  if(version->current>=5){
-  xfer->xferBool(&hasGrids);
+  *xfer == hasGrids;
   unsigned count=m_pendingAdds.size();
-  xfer->xferUnsigned(&count);
+  *xfer == count;
   if(xfer->IsLoading()){
    m_pendingAdds.clear();
    if(count>0){
@@ -511,8 +489,8 @@ void LargeGroupAudioSoundKeyPair::rva00569BBC(Xfer *xfer, VersionPair *version)
     do{
      Rva0056887D record;
      record.rva0056887D(reinterpret_cast<const Rva0056887D &>(position),0);
-     xfer->xferPosition(reinterpret_cast<FloatPair *>(&record));
-     xfer->xferWeight(reinterpret_cast<unsigned short *>(reinterpret_cast<char *>(&record)+8));
+     *xfer == *reinterpret_cast<Coord2D *>(&record);
+     *xfer == *reinterpret_cast<unsigned short *>(reinterpret_cast<char *>(&record)+8);
      m_pendingAdds.insert(reinterpret_cast<const Rva00568FE4Key &>(record));
     }while(--count);
    }
@@ -521,8 +499,8 @@ void LargeGroupAudioSoundKeyPair::rva00569BBC(Xfer *xfer, VersionPair *version)
    for(;it!=end;++it){
     Rva0056887D record;
     reinterpret_cast<Rva00568A05 *>(&record)->operator=(*reinterpret_cast<const Rva00568A05 *>(&*it));
-    xfer->xferPosition(reinterpret_cast<FloatPair *>(&record));
-    xfer->xferWeight(reinterpret_cast<unsigned short *>(reinterpret_cast<char *>(&record)+8));
+    *xfer == *reinterpret_cast<Coord2D *>(&record);
+    *xfer == *reinterpret_cast<unsigned short *>(reinterpret_cast<char *>(&record)+8);
    }
   }
  }else if(xfer->IsLoading()){
@@ -542,12 +520,12 @@ void LargeGroupAudioSoundKeyPair::xferGridCellVector(Xfer *xfer, void *storage, 
 {
  _STL::vector<const ModuleData *> *vec=reinterpret_cast<_STL::vector<const ModuleData *> *>(storage);
  int count=static_cast<int>(vec->size());
- xfer->xferInt(&count);
+ *xfer == count;
  if(xfer->IsLoading()){vec->clear();vec->reserve(count);}
  for(int index=0;index<count;++index){
   FloatPair position;position.x=0;position.y=0;
   if(xfer->IsStoring())position=*reinterpret_cast<const FloatPair *>((*vec)[index]);
-  xfer->xferPosition(&position);
+  *xfer == reinterpret_cast<Coord2D &>(position);
   if(xfer->IsLoading()){
    for(unsigned grid=0;grid<4;++grid){
     if(m_grids[grid]){

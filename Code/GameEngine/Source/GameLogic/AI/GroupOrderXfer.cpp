@@ -13,47 +13,33 @@ enum ScienceType
 	SCIENCE_0 = 0
 };
 
-struct XferVersion
+
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
+public:
 	UnsignedByte m_version;
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion &version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(void *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-};
 
 typedef _STL::vector<ScienceType> ScienceTypeVector;
 extern Xfer *Rva00398280Xfer(Xfer *xfer, ScienceTypeVector *vec);
@@ -73,11 +59,11 @@ private:
 
 void GroupOrder::xfer(Xfer *xfer)
 {
-	XferVersion version;
+	Xfer::Version version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(version);
+	*xfer == version;
 	Rva00398280Xfer(xfer, &m_list);
-	xfer->xferUnsignedInt(m_10);
-	xfer->xferUnsignedInt(m_14);
+	*xfer == m_10;
+	*xfer == m_14;
 }

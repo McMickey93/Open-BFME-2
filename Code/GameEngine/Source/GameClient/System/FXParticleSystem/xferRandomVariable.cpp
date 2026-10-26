@@ -4,41 +4,24 @@
 // BFME2 deltas: Version1 helper for the 1/1 version pair, XferDistributionType helper for the enum,
 // xferReal at vtable slot 28 (0x70). Callers: 40+ DoXfer bodies including 0x0055EA8E vslot candidate.
 // Callees rowed: Version1 0x53EE, XferDistributionType 0x305F92, setRange 0x2341E7.
-class Xfer
-{
-public:
-	virtual void r0();
-	virtual void r1();
-	virtual bool isSaving();
-	virtual void r3();
-	virtual void r4();
-	virtual void r5();
-	virtual void r6();
-	virtual void r7();
-	virtual void r8();
-	virtual void r9();
-	virtual void xferVersion(unsigned char *version);
-	virtual void r11();
-	virtual void r12();
-	virtual void r13();
-	virtual void r14();
-	virtual void r15();
-	virtual void r16();
-	virtual void r17();
-	virtual void r18();
-	virtual void r19();
-	virtual void r20();
-	virtual void r21();
-	virtual void r22();
-	virtual void r23();
-	virtual void r24();
-	virtual void r25();
-	virtual void r26();
-	virtual void r27();
-	virtual void xferReal(float *value);
-
-	void Version1();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class GameClientRandomVariable
 {
@@ -74,17 +57,17 @@ Xfer &xferRandomVariable(Xfer &xfer, GameClientRandomVariable &var)
 	high = 0.0f;
 	type = GameClientRandomVariable::CONSTANT;
 
-	if (xfer.isSaving()) {
+	if (xfer.IsStoring()) {
 		low = var.m_low;
 		high = var.m_high;
 		type = var.m_type;
 	}
 
-	xfer.xferReal(&low);
-	xfer.xferReal(&high);
+	xfer == low;
+	xfer == high;
 	XferDistributionType(&xfer, (int *)&type);
 
-	if (!xfer.isSaving()) {
+	if (!xfer.IsStoring()) {
 		var.setRange(low, high, type);
 	}
 	return xfer;

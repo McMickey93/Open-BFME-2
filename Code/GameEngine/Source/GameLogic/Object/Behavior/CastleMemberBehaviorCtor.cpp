@@ -79,44 +79,29 @@ CastleMemberBehavior::CastleMemberBehavior(Thing *thing, const ModuleData *modul
 // Existing XferObjectID3060B2 and BehaviorModule4C9C7D supply owned calls.
 // The following vtable slot views describe only the invoked ABI; original
 // transfer method name and the unaccessed virtual slots remain unknown.
-class Xfer { public: struct Version {unsigned char loaded,current; /* LINK: no user ctor (implicit trivial emits nothing); the single use below assigns manually. The previous :loaded(1),current(1){} copy loses to the first-in-order copy. */ };
-virtual void pad0();
-virtual void pad1();
-virtual void pad2();
-virtual void pad3();
-virtual void pad4();
-virtual void pad5();
-virtual void pad6();
-virtual void pad7();
-virtual void pad8();
-virtual void pad9();
-virtual void version(Version*);
-virtual void pad11();
-virtual void pad12();
-virtual void pad13();
-virtual void pad14();
-virtual void pad15();
-virtual void pad16();
-virtual void pad17();
-virtual void pad18();
-virtual void pad19();
-virtual void pad20();
-virtual void pad21();
-virtual void pad22();
-virtual void pad23();
-virtual void pad24();
-virtual void pad25();
-virtual void pad26();
-virtual void pad27();
-virtual void pad28();
-virtual void pad29();
-virtual void xferUnsignedInt(unsigned*);
-virtual void pad31();
-virtual void pad32();
-virtual void pad33();
-virtual void pad34();
-virtual void pad35();
-virtual void xferBool(bool*);
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
+{
+public:
+ unsigned char loaded,current;
 };
 class AudioManager {public:
 virtual void audioPad0();
@@ -213,14 +198,14 @@ extern AudioManager* TheAudio;
 enum ObjectID { INVALID_ID=0 };
 void XferObjectID(Xfer*, ObjectID*);
 void CastleMemberBehavior::xfer(Xfer* xfer) {
- Xfer::Version v; v.loaded = 1; v.current = 1; xfer->version(&v);
+ Xfer::Version v; v.loaded = 1; v.current = 1; *xfer == v;
  XferObjectID(xfer,reinterpret_cast<ObjectID*>(&m_14));
- xfer->xferBool(reinterpret_cast<bool*>(&m_24));
- xfer->xferUnsignedInt(reinterpret_cast<unsigned*>(&m_1C));
+ *xfer == reinterpret_cast<bool &>(m_24);
+ *xfer == reinterpret_cast<unsigned &>(m_1C);
  XferObjectID(xfer,reinterpret_cast<ObjectID*>(&m_18));
  BehaviorModule::xfer(xfer);
  XferObjectID(xfer,reinterpret_cast<ObjectID*>(&m_18));
- xfer->xferUnsignedInt(reinterpret_cast<unsigned*>(&m_1C));
- xfer->xferBool(reinterpret_cast<bool*>(&m_25));
+ *xfer == reinterpret_cast<unsigned &>(m_1C);
+ *xfer == reinterpret_cast<bool &>(m_25);
  TheAudio->xferAudioHandle(xfer,reinterpret_cast<unsigned*>(&m_20));
 }

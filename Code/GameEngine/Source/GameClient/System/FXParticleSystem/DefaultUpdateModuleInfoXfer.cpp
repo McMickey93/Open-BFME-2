@@ -3,39 +3,30 @@
 // Evidence: vtable slot 3 of 0x0081BCE0 (DefaultUpdateModuleInfo) DoXfer;
 //   8 GameClientRandomVariable plus rotation-typed extra at +0x40.
 
-class Xfer
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	virtual void r0();
-	virtual void r1();
-	virtual bool isSaving();
-	virtual void r3();
-	virtual bool r4();
-	virtual void r5();
-	virtual void r6();
-	virtual void r7();
-	virtual void r8();
-	virtual void r9();
-	virtual void xferVersion(unsigned char *version);
-	virtual void r11();
-	virtual void r12();
-	virtual void r13();
-	virtual void r14();
-	virtual void r15();
-	virtual void r16();
-	virtual void r17();
-	virtual void r18();
-	virtual void r19();
-	virtual void r20();
-	virtual void r21();
-	virtual void r22();
-	virtual void r23();
-	virtual void r24();
-	virtual void r25();
-	virtual void r26();
-	virtual void r27();
-	virtual void xferReal(float *value);
-	void Version1();
+	unsigned char current;
+	unsigned char minimum;
 };
 
 class GameClientRandomVariable
@@ -83,19 +74,19 @@ private:
 
 void FXParticleSystem::DefaultUpdateModuleInfo::xfer(Xfer *xfer)
 {
-	if (xfer->r4())
+	if (xfer->IsLightCRC())
 		return;
-	union Ver { int i; unsigned char b[4]; } ver;
-	ver.b[0] = 1;
-	ver.b[1] = 2;
-	xfer->xferVersion(&ver.b[0]);
+	union Ver { int i; Xfer::Version value; } ver;
+	ver.value.current = 1;
+	ver.value.minimum = 2;
+	*xfer == ver.value;
 	xferRandomVariable(*xfer, m_var0);
 	xferRandomVariable(*xfer, m_var1);
 	xferRandomVariable(*xfer, m_var2);
 	xferRandomVariable(*xfer, m_var3);
 	xferRandomVariable(*xfer, m_var4);
 	XferRotationType(xfer, &m_extra);
-	if (ver.b[1] < 2)
+	if (ver.value.minimum < 2)
 		return;
 	xferRandomVariable(*xfer, m_var5);
 	xferRandomVariable(*xfer, m_var6);
@@ -145,22 +136,22 @@ private:
 
 void Rva0055F76C::xfer(Xfer *xfer)
 {
-	union Ver { int i; unsigned char b[4]; } ver;
-	ver.b[0] = 1;
-	ver.b[1] = 2;
-	xfer->xferVersion(&ver.b[0]);
-	xfer->xferReal(&m_04);
-	xfer->xferReal(&m_08);
-	xfer->xferReal(&m_0c);
-	xfer->xferReal(&m_10);
-	xfer->xferReal(&m_14);
-	xfer->xferReal(&m_18);
+	union Ver { int i; Xfer::Version value; } ver;
+	ver.value.current = 1;
+	ver.value.minimum = 2;
+	*xfer == ver.value;
+	*xfer == m_04;
+	*xfer == m_08;
+	*xfer == m_0c;
+	*xfer == m_10;
+	*xfer == m_14;
+	*xfer == m_18;
 	XferRotationType(xfer, &m_1c);
-	if (ver.b[1] < 2)
+	if (ver.value.minimum < 2)
 		return;
-	xfer->xferReal(&m_20);
-	xfer->xferReal(&m_24);
-	xfer->xferReal(&m_28);
+	*xfer == m_20;
+	*xfer == m_24;
+	*xfer == m_28;
 }
 
 class Rva0055F805

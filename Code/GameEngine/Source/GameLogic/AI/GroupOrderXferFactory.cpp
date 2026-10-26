@@ -19,49 +19,35 @@
 typedef unsigned char UnsignedByte;
 typedef bool Bool;
 
-struct XferVersion
+
+class GroupOrder;
+
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
+public:
 	UnsignedByte m_version;
 	UnsignedByte m_currentVersion;
 };
 
-class GroupOrder;
-
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual void slot11();
-	virtual Xfer &xferSnapshot(GroupOrder *snapshot);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer *xferInt(int *value);
-};
 
 enum NameKeyType
 {
@@ -155,11 +141,11 @@ private:
 
 Xfer *Rva00354EFCXfer(Xfer *xfer, GroupOrder **order)
 {
-	XferVersion version;
+	Xfer::Version version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(&version);
-	if (xfer->isLoading())
+	*xfer == version;
+	if (xfer->IsLoading())
 	{
 		NameKeyType key;
 		Rva00149101XferNameKey(*xfer, key);
@@ -181,7 +167,7 @@ Xfer *Rva00354EFCXfer(Xfer *xfer, GroupOrder **order)
 		NameKeyType key = (*order)->getClassKey();
 		Rva00149101XferNameKey(*xfer, key);
 	}
-	xfer->xferSnapshot(*order);
+	*xfer == reinterpret_cast<Snapshot &>(**order);
 	return xfer;
 }
 
@@ -197,5 +183,5 @@ struct Rva00355100Pair
 
 Xfer *Rva00355100Xfer(Xfer *xfer, Rva00355100Pair *pair)
 {
-	return Rva00354EFCXfer(xfer->xferInt(&pair->m_key), &pair->m_order);
+	return Rva00354EFCXfer(&(*xfer == reinterpret_cast<unsigned int &>(pair->m_key)), &pair->m_order);
 }

@@ -12,27 +12,24 @@
 #include "Common/Snapshot.h"
 #include <list>
 
-class Xfer
-{
-public:
-	virtual void s0();
-	virtual bool IsLoading() const;
-	virtual void s2();
-	virtual bool IsCRC() const;
-	virtual void s4(); virtual void s5(); virtual void s6(); virtual void s7();
-	virtual void s8();
-	virtual void xferUser(void *data, int size);
-	virtual void s10(); virtual void s11();
-	virtual void xferSnapshot(Snapshot *snapshot);
-	virtual void s13(); virtual void s14(); virtual void s15(); virtual void s16();
-	virtual void s17(); virtual void s18(); virtual void s19(); virtual void s20();
-	virtual void s21(); virtual void s22(); virtual void s23(); virtual void s24();
-	virtual void s25(); virtual void s26();
-	virtual void xferAsciiString(AsciiString *s);
-	virtual void s28(); virtual void s29();
-	virtual void xfer30(int *value);
-	void Version1();										// 0x000053EE
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 
 class PathfinderBase
 {
@@ -71,15 +68,15 @@ void AI::xfer(Xfer *xfer)
 {
 	if (xfer->IsCRC())
 	{
-		xfer->xferSnapshot(m_pathfinder);
+		*xfer == static_cast<Snapshot &>(*m_pathfinder);
 
 		AsciiString marker;
 		TAiData *aiData = m_aiData;
 		while (aiData)
 		{
 			marker = "MARKER:TAiData";
-			xfer->xferAsciiString(&marker);
-			xfer->xferSnapshot(aiData);
+			*xfer == marker;
+			*xfer == static_cast<Snapshot &>(*aiData);
 			aiData = aiData->m_next;
 		}
 
@@ -90,15 +87,15 @@ void AI::xfer(Xfer *xfer)
 			if (*groupIt)
 			{
 				marker = "MARKER:AIGroup";
-				xfer->xferAsciiString(&marker);
-				xfer->xferSnapshot(*groupIt);
+				*xfer == marker;
+				*xfer == static_cast<Snapshot &>(**groupIt);
 			}
 		}
 	}
 	else
 	{
 		xfer->Version1();
-		xfer->xfer30(&m_10);
-		xfer->xferUser(&m_14, 4);
+		*xfer == reinterpret_cast<unsigned int &>(m_10);
+		xfer->XferRawBytes(&m_14, 4);
 	}
 }
