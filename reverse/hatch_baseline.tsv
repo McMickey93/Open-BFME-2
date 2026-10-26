@@ -3300,7 +3300,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp	?f2@Rva004C86
 alternatename	Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp	?f2@Rva004C87F4_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp	?f2@Rva004C8A16_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp	??1CollideModule@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/Rva004A2D67Init.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva004A4580Mark.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva004ADC88Hide.cpp	?rva00451B92@SpecialAbilityUpdate@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004B8CDEDeletingDtor.cpp	?f2@Rva004B8CDE_B2@@UAEXXZ	1
@@ -4864,6 +4863,7 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUp
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdateModuleDataCtor.cpp	_vfn_0047A69C	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdateModuleDataCtor.cpp	_vfn_0050B5C6	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StanceTemplateUpdateModuleDataFriendNew.cpp	??0StancesBehaviorModuleData@@QAE@XZ	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateModuleDataCtor.cpp	_vtbl_00C184D8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateXfer.cpp	?g_rva008ffd18ThrowInfo@@3HA	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdateCtor.cpp	_vtbl_00BEFF90	1
