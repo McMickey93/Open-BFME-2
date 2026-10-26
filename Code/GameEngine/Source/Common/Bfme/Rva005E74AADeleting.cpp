@@ -9,7 +9,7 @@
 // destroys 4B elements with flag 0.
 struct TargetRef00217D4C { virtual void *destroy(unsigned int); int references; };
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
-void operator delete(void *);
+#include <new>
 struct Rva005E74AAHolder { char pad[0x24]; TargetRef00217D4C target; };
 struct Rva005E74AA { Rva005E74AAHolder *holder; void *rva005E74AA(unsigned int); };
 void *Rva005E74AA::rva005E74AA(unsigned int flags)
