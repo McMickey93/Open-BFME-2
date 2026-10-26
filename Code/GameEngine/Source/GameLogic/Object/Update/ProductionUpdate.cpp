@@ -700,7 +700,7 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 
 // tu-skeleton: 0x0078D8EF 10B __ehhandler$?Rva0049DE6DParse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateCostModifierParse.cpp (not merged yet)
 
-// tu-skeleton: 0x0078D8F9 13B ?Rva0078D8F9ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp (not merged yet)
+// tu-skeleton: 0x0078D8F9 13B $L20331 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
 
 // tu-skeleton: 0x0078D906 10B __ehhandler$?rva0049DEC8@ProductionUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
 
@@ -708,7 +708,7 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 
 // tu-skeleton: 0x0078D92A 10B __ehhandler$??0ProductionUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078D934 13B ?Rva0078D934ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp (not merged yet)
+// tu-skeleton: 0x0078D934 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078D941 10B __ehhandler$?getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp (not merged yet)
 

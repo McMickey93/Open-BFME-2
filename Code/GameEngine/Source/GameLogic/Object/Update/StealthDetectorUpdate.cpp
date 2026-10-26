@@ -260,7 +260,7 @@ void *__stdcall Rva004A2D67Init(void *p)
 
 // tu-skeleton: 0x004A2D93 1579B ?update@StealthDetectorUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateBfme.cpp (not merged yet)
 
-// tu-skeleton: 0x0078DBB6 13B ?Rva0078DBB6ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp (not merged yet)
+// tu-skeleton: 0x0078DBB6 13B $L380 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078DBC3 10B __ehhandler$?getModuleNameKey@StealthDetectorUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp (not merged yet)
 
@@ -278,7 +278,7 @@ void *__stdcall Rva004A2D67Init(void *p)
 
 // tu-skeleton: 0x0078DC02 8B $L6662 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateBfme.cpp (not merged yet)
 
-// tu-skeleton: 0x0078DC0A 13B ?Rva0078DC0AClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp (not merged yet)
+// tu-skeleton: 0x0078DC0A 13B $L6741 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateBfme.cpp (not merged yet)
 
 // tu-skeleton: 0x0078DC17 8B $L6664 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateBfme.cpp (not merged yet)
 
