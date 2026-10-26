@@ -1,17 +1,17 @@
 // cl: /GX- /DNDEBUG /MD
 //
 // ?getAudioLODIndex@GameLODManager@@QAEHABVAsciiString@@@Z, retail 0x00202C76,
-// 124 bytes. Dedicated TU.
+// 130 bytes. Dedicated TU.
 //
 // BFME1 GameLODManager::getAudioLODIndex port
 // (reference/open-bfme-1 Code/GameEngine/Source/Common/GameLODManagerGetAudioLODIndex.cpp:
 // two-entry bfmeTabEYC table walked with compareNoCase returning the index;
 // debug-reporting tail otherwise; miss -1). BFME2 adaptations proven by the
 // retail bytes:
-// - compareNoCase is DECLARED-only (retail calls the StringBase<char> 1-arg
-//   out-of-line body at 0x00037980; BFME1's TU defines it inline, which would
-//   fold the call away). AsciiString befriends GameLODManager for the
-//   private-base access; friendship is compile-time only.
+// - The canonical BFME2 AsciiString wrapper calls the StringBase<char>
+//   1-arg out-of-line compareNoCase body at 0x00037980. Debug streaming uses
+//   the same one-pointer StringBase view explicitly; BFME2 AsciiString owns
+//   its pointer instead of inheriting StringBase.
 // - The reporting tail logs through Debug virtuals plus the matched
 //   Debug/StringBase operator<< at 0x000028E8: slot60(), 3-arg slot6C,
 //   slot38 Invalid-name literal (whose return feeds operator<< with the name),
@@ -25,32 +25,9 @@
 typedef int Int;
 typedef bool Bool;
 
-template <typename T> struct BfmeStringData
-{
-	int refCount;
-	unsigned short length;
-	unsigned short capacity;
-	T text[1];
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-template <typename T> class StringBase
-{
-	friend class AsciiString;
-	friend class GameLODManager;
-public:
-	Int compareNoCase(const char *other) const;
-private:
-	BfmeStringData<T> *m_data;
-};
 
-class AsciiString : private StringBase<char>
-{
-	friend class GameLODManager;
-public:
-	AsciiString(const char *text);
-	AsciiString(const AsciiString &other);
-	~AsciiString() {}
-};
 
 class Debug
 {
@@ -118,7 +95,7 @@ Int GameLODManager::getAudioLODIndex(const AsciiString &name)
 		// Nested (no named report temp): retail keeps the slot6C result in
 		// eax straight into the slot38 dispatch, and evaluates the
 		// operator<< name operand first (push [esp+8] before the lit push).
-		operator<<(theDebug->slot6C(0, 0, 0)->slot38("GameLODManager::getAudioLODIndex - Invalid LOD name '"), name).slot38("'").slot4C(2);
+		operator<<(theDebug->slot6C(0, 0, 0)->slot38("GameLODManager::getAudioLODIndex - Invalid LOD name '"), *(const StringBase<char> *)&name).slot38("'").slot4C(2);
 	}
 
 	return -1;
