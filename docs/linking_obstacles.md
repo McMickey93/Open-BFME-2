@@ -2153,7 +2153,9 @@ Census confirmation: n/a.
 
 ### LINK-062: STLport facet virtuals rowed under placeholder names (numpunct truename/falsename)
 
-**Status: Open. Updated: 2026-10-26; inspected revision: d1f046749a.**
+### LINK-062: STLport facet virtuals rowed under placeholder names (RTTI vftable slots)
+
+**Status: Open. Updated: 2026-10-26; inspected revision: 13cb4119f9.**
 
 - **Evidence / scope:** `tools/vtable_slots.py _STL` names every STLport vftable by RTTI.
   Slots 4 and 5 of `numpunct<char>` (0x007BBB78) hold 0x00017A40 / 0x00017AA0 and of
@@ -2274,7 +2276,28 @@ Census confirmation: n/a.
   `Rva00017B00StringInit.cpp`; its own hatch dropped, the other five retargeted. 6/6 LINK.
   Note: link_check without the edited partners in the set uses stale index objects and
   reports spurious duplicates / unresolveds; check these units together.
-- **Remaining / next check:** (1) Give the 12-byte statics their STLport names (`_M_truename` / `_M_falsename`,
+  13cb4119f9 named the `_Messages` pair (vftable 0x007BC8D4, `.?AV_Messages@_STL@@`): slot 1
+  0x0001A090 is `do_get(..., const wstring&)` and slot 2 0x0001A060 `do_get(..., const string&)`
+  (reverse declaration order). They were the BFME 1 donor shells `?bfmeGoDQE` / `?bfmeGoDQD` in
+  `BfmeConv760.cpp` / `BfmeConv759.cpp`; both now define the real `return __dfault;` in place.
+  Four hatches removed (two `do_get` lines in `stlport_messages_dtors.cpp`, the `bfmeCallDQD` /
+  `bfmeCallDQE` copy-ctor aliases in `stlport_{narrow,wide}_string_copy_ctor.cpp`) and the two
+  placeholder symbol aliases dropped. 6/6 units still LINK, bytes unchanged.
+  After this, every RTTI vftable slot outside `ctype` holds a real STLport name or a known
+  fold (`do_close` / `Prepare_LOD`, `do_always_noconv` / `_AptValidate`, `showmanyc` /
+  `GetNativeHashVirtual`): `tools/vtable_slots.py` lists no other placeholder. Retail is `/GR-`,
+  so no engine, W3D or Apt class has an RTTI vftable; this method does not reach them.
+- **Remaining / next check:** (0) `ctype` range virtuals: slots 5/7 of `ctype<char>` (0x007BC3E4)
+  hold 0x00016C20 / 0x00016C60 (`do_widen` / `do_narrow` range forms) and slots 1/5/7/9/11 of
+  `ctype<wchar_t>` (0x007BBAD0) hold 0x00016D00..0x00016E60 (`do_is` / `do_toupper` /
+  `do_tolower` / `do_widen` / `do_narrow` range forms), all rowed as the BFME 1 donor names
+  `T2NarrowCtype::*Range` / `T2WideCtype::*Range` in `T2CtypeTableFacets.cpp`. The natural owners
+  are `stlport_narrow_ctype_virtuals.cpp` (which already defines the two narrow range forms
+  unrowed, with `memcpy` bodies that do not match retail's `if (high != low) memmove`) and
+  `stlport_wide_ctype_virtuals.cpp` (single-character forms only; addresses interleave).
+  Moving the seven rows there removes ten hatches (five each in `stlport_classic_locale.cpp`
+  and `stlport_locale_facet_subclass_dtors.cpp`). Not attempted: `T2CtypeTableFacets.cpp` was
+  LOCKED by K6. (1) Give the 12-byte statics their STLport names (`_M_truename` / `_M_falsename`,
   monetary.cpp's file-static empty strings) through the data lane; `data_check` (shadow)
   already flags `g_009DEEF0Static` and siblings as duplicate-def / wrong-name. (2) The nine
   narrow and five wide moneypunct alias hatches (per unit) need alias rows to go.
