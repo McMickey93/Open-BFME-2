@@ -1785,6 +1785,15 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
     0 -> 79 B. Census confirmation pending.
 - **Process note:** before applying a merge, `tools/link_check.py` the target TU and refuse
   the merge when a target that linked stops linking.
+- **Guard (2026-10-26, 40bf8d4d7a, 1d3eaaf01f, 01e0e3a952):** `tu_skeleton.py --merge` now
+  does this itself (`LinkGuard`). When the target or a donor links at the census, every
+  candidate text is judged as one object against the census index (`link_check
+  check_object` and `new_variants`, the absorbed units removed). A donor that would leave a
+  linked unit not linking is rejected; a merge it cannot judge (no index, a linked unit
+  missing from it, a link position it cannot model) is blocked. Dry run on real data:
+  `W3DRopeDraw.cpp` refuses the never-linked `W3DRopeDrawCtor.cpp` (unresolved
+  `__node_alloc::deallocate`, two losing COMDATs). Not covered: the split lane, merges in
+  which no unit links, and changes to other units since the census.
 - **Census confirmation:** awaiting the next census.
 
 
