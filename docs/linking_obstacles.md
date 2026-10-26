@@ -3037,7 +3037,7 @@ Census confirmation: not claimed.
 
 ### LINK-083: `StlSweepR3` units instantiate a whole algorithm or container over an opaque record whose retail callees are rowed under another type
 
-**Status: Repair landed / awaiting census (4 units); family Open. Updated: 2026-10-26; inspected revision: d5855a74e9 parent ae176a8a20; index 5ce093a71a.**
+**Status: Repair landed / awaiting census (7 units); family Open. Updated: 2026-10-26; inspected revision: bf8a1b680e parent d2bfe4bfad; index 5ce093a71a.**
 
 - **Evidence / scope:** a `StlSweepR3Rva<rva>.cpp` unit holds one STLport row over an address-named
   record (`Rva<rva>Record`) and writes `template class` / `template void` instantiations to emit it.
@@ -3064,12 +3064,40 @@ Census confirmation: not claimed.
   - Each `./build.sh` exact; RvaPairCopyCallFamily.cpp, PlayerXferStringMaps.cpp,
     Rva002BF75AFree.cpp, StlSweepR3Rva0002CD71.cpp, StlSweepR3Rva00057FC1.cpp, INIMacroTable.cpp
     still link. Preview total 0 -> 314 B; `hatch_counters.py --update` not run (9 pragma lines down).
-- **Remaining, same shape (inspected 2026-10-26, no edit):** `StlSweepR3Rva00332613.cpp`,
-  `StlSweepR3Rva00337D21.cpp` (`__introsort_loop`, 136 B each; five retail callees each, e.g.
-  0x00331716 median, 0x00331962, 0x00331D10, 0x0033254D); `StlSweepR3Rva003F318C.cpp`,
-  `StlSweepR3Rva0051F7AD.cpp`, `StlSweepR3Rva003F40EF.cpp` (vector members over a record: unresolved
-  `_Construct`, dtor, operator=). Next check: disassemble the row, name each callee's existing row,
-  apply the recipe.
+  - 6edfe79e8d `StlSweepR3Rva003F318C.cpp` (`vector::operator=`, 206 B, LivingWorldRegionConnection
+    elements): calls 0x003F2CD6 `vector<BfmeStringRecord000B9534>::_M_allocate_and_copy<LivingWorldRegionConnection*>`
+    (protected: reached through a derived view), 0x00565A24 `ConnectionVec::Rva00565A24_ScrapStorage`,
+    0x003F325A `Rva003F325ACopy`, 0x003F0CA1 `Rva003F0CA1_DestroyRange`, 0x003F29D2 `Rva003F29D2_CopyRange`
+    (the two copy rows through tag-taking casts: retail pushes a fourth tag argument); 6 pins dropped.
+    0 -> 206 B. Calling a declared-only explicit specialization of the real `<vector>` member template
+    `_M_allocate_and_copy` ICEs cl 7.1 (C1001, P2 main.c:148) from any context (derived view, template
+    view, own member, pointer-to-member), so the unit spells a minimal `_STL::vector` shape instead of
+    including `<vector>` (Rva00569F0CAssign.cpp precedent); same bytes.
+  - 827dd7e8a1 `StlSweepR3Rva00332613.cpp` and bf8a1b680e `StlSweepR3Rva00337D21.cpp` (`__introsort_loop`,
+    135 B each): call 0x00331716 `__median<int, less<int>>` / 0x00335CFD `Rva00335CFMedian` (comparator
+    as a fourth argument through a cast), the pivot copy ctors 0x00331962 `BfmeStringRecord00331962` /
+    0x003371B1 `Rva003371B1`, 0x00331D10 / 0x00337655 `__unguarded_partition<S4SortElem12/20*>` (cast so
+    the by-value pivot parameter is the copy ctor's record) and 0x0033254D `Rva0033254DPartial` /
+    0x00337C55 `partial_sort<Rva003371B1*, Rva00337C55Less>`. The pivot record needs a destructor in
+    scope (inline, or declared when rowed: 0x003372B7 `??1Rva003371B1`) or the `mov [ebp+0Ch],esp` EH
+    spill of the argument slot disappears. Each drops a copy-ctor `/alternatename`, a `max<unsigned>`
+    `#pragma optimize` block and 5 pins; 0 -> 135 B each. The five callees were already rowed, so no
+    renames were needed.
+  - Each `./build.sh` exact; provider units (Rva003F3F27.cpp, Rva003F2CD6.cpp,
+    LivingWorldRegionConnectionHelpers.cpp, Rva003F325ACopy.cpp, stlport_int_algorithm_bodies.cpp,
+    StringRecordCopyBFME2.cpp, stlport_introsort_loop_s4sortelem12_002e1b60.cpp, Rva0033254DPartial.cpp,
+    stlport_sort_s4sortelem20.cpp, Rva00335CFMedian.cpp, Rva003371B1Copy.cpp, Rva003371B1Dtor.cpp,
+    stlport_unguarded_partition_s4sortelem20.cpp, stlport_partial_sort_rva00337c55.cpp) still link.
+    Preview total for the family now 0 -> 790 B.
+- **Remaining, same shape (inspected 2026-10-26, no edit):** `StlSweepR3Rva0051F7AD.cpp` (operator=
+  over 12-byte `ProductionPrerequisite::PrereqUnitRec`; callees 0x004EE233, 0x004EE540, 0x0051EC31,
+  0x0052C37A, 0x004EE1E2 all rowed; draft follows the 003F318C shape) and `StlSweepR3Rva003F40EF.cpp`
+  are file-claimed by another seat (StarkillerHDX, link seat w6). `StlSweepR3Rva00627B10.cpp`
+  (`__make_heap`) likewise claimed. `StlSweepR3Rva00212A16.cpp` (hashtable resize/insert, 68 B) not
+  yet inspected. `StlSweepR3Rva000B0298.cpp` is a different cause: 0x000B0298 carries two rows
+  (`?rva000B0298@Rva000B0298@@QAEXXZ` in Rva000B0298Clear.cpp, which VectorOverflowRva000B059B.cpp
+  calls, and this unit's `vector<Rva000B0298Record>::_M_clear`, which nothing calls); a duplicate-row
+  question (LINK-060), not this recipe.
 - **Related leads not done:** `Rva008312E0StringReplace.cpp` / `Rva008314E0StringReplace.cpp`
   (/Od /Ob1) emit `erase`/`replaceBase` COMDATs that retail calls out of line at 0x00012150
   (`basic_string<char>::erase`) and 0x0002A610 / 0x0002A730 (`BfmeStrV24::bfmeReplaceV24`, last
