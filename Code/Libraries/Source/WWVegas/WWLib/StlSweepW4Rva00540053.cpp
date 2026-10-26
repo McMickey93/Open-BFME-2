@@ -65,4 +65,5 @@ template <> void **vector<void*>::end();
 
 struct Rva00540053Element { Rva00540053Element();Rva00540053Element(const Rva00540053Element&);~Rva00540053Element();Rva00540053Element&operator=(const Rva00540053Element&);char bytes[1]; bool operator<(const Rva00540053Element&)const; bool operator==(const Rva00540053Element&)const; };
 namespace _STL {template<> struct hash<Rva00540053Element> { unsigned operator()(const Rva00540053Element&) const; };}
-template class _STL::hash_map<int,Rva00540053Element>;
+template _STL::pair<const int, Rva00540053Element>::pair(
+    const _STL::pair<const int, Rva00540053Element> &);

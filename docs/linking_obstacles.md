@@ -205,6 +205,8 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
 
 - **Bounded identity audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` retains the unchanged failures for `Rva00056da2Finish.cpp`, `StlSweepR3Rva00058A86.cpp`, `StlSweepR3Rva000AF1C2.cpp` and `StlSweepR3Rva00218FC2.cpp`. Native callees are respectively `0x000558AD` (the copy auxiliary, not uninitialized construction), `0x00057FC1` (the rowed pair-key hashtable clear), `0x000ADF1B` (a range-copy forwarder) and `0x00218E09`/`0x0021889A` (the GameFont sort family). Their emitting template identities disagree with the existing row owners. No suppressed unresolved helper, type-punned container, row rename or pin is retained. Next check: reconcile each native algorithm and element identity with those owners before changing emission. Clearance and census confirmation remain pending.
 
+**2026-10-26 assigned-vector follow-up, inspected `896af216804e`:** current objects retain the selected-wrong `vector<BfmePod28>::_M_fill_insert` in `stlport_pod_noexc_deferred_copies.cpp`, blocking `stlport_pod28_vector_resize_value.cpp`. Retail resize 0x005849F4 calls 0x00584405, already rowed under `vector<Rva00584405Element>`. That owner calls 0x00583A1E (`Rva002337F0::set`, 49 B), 0x0058431D (`Rva0058431D::rva0058431D`, 189 B), and the existing typed copy/fill rows at 0x00583A4F, 0x00583B11, 0x00583B37 and 0x00583B54. This is an element/member/signature identity prerequisite across existing rows, not a missing body. The owner itself remains U1/L1/S1; the resize remains S1 in the 40-unit current-provider preview. No source trial repeated the earlier exception-contract or /Ob0 forwarding failures. Next: reconcile the 28-byte record and these already rowed helpers in the naming lane, then recheck both consumers and the deferred provider. Evidence: `build/link-worker-w5/retail-probe-final.log`, `before-extra-providers.log`, `after-cohort.log` and `build/link-report.md`. No clearance or census confirmation claimed.
+
 ### LINK-003: residual Zero Hour memory-pool interfaces
 
 **Status: Open. Updated: 2026-10-25.**
@@ -1566,6 +1568,8 @@ Census confirmation: awaiting the next census.
 
 - **Current address-blocker clarification (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`):** the ordinary preview still reports A=1 for `ConstIntGetters2Addr.cpp` and A=1042 for `ConstIntGettersAddr.cpp`. The former's 0x00424F58 literal is inside a rowed string body and its meaning remains unasserted. The latter now contains large FieldParse/data initializers as well as getter immediates, so the earlier blanket false-positive explanation does not establish the meaning of its current findings. No literal, row or data ownership was changed. Raw before/after previews and the successful 149-row combined byte gate are in `build/link-worker-w1/`; classify actual datum ownership before changing these values or the heuristic. Clearance remains pending.
 
+**2026-10-26 current-provider recheck, inspected `896af216804e`:** the d1f046749a index still reports one append COMDAT blocker for each of `StlportNarrowAppendCStr.cpp`, `stlport_float_format.cpp`, `stlport_narrow_ostringstream_dtor.cpp` and `stlport_narrow_stringbuf_overflow_setbuf.cpp` when the four are checked alone. Supplying current `stlport_narrow_string.cpp` and `stlport_narrow_string_append.cpp` in the same call makes all six LINKS. The former changed since the index and now emits the native const/mutable append bodies. This is inherited repair, verified without any string-source edit or repeated C1001 trial. Repeated 40-unit before/after previews preserve all four results; all assigned rows byte-verify. Raw evidence: `build/link-worker-w5/before-all.log`, `before-strings-current.log`, `before-cohort.log`, `after-cohort.log` and `all-assigned-build.log`. These four units are cleared in ordinary-preview scope; census confirmation pending. Their preview bytes are not new repair credit for this worker.
+
 ### LINK-021: W3DRopeDraw ctor linked against non-retail headers emitting conflicting COMDATs and unresolved references
 Status: Cleared. Updated: 2026-10-26; inspected revision: 692d9a3158.
 Evidence / affected units: `Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DRopeDrawCtor.cpp`,
@@ -1692,6 +1696,8 @@ Census confirmation: not claimed.
   Verify with `link_check` on both StlSweepW5 units plus `StlportNestedWordDeque.cpp`.
 - **Clearance:** pending.
 - **Census confirmation:** not claimed.
+
+**2026-10-26 bounded recheck, inspected `896af216804e`:** retail 0x00423EB0 still calls the 58-byte inner-deque destructor 0x00422D48 and 36-byte 40-byte-stride iterator increment 0x0042198C. With both current providers supplied, the sweep unit remains L2/S2, while `StlportNestedWordDeque.cpp` and `stlport_pod_deque_bodies.cpp` remain LINKS. No trial changed element/template names: they occur in the matched row name, so adopting the real nested-deque element requires naming-lane ledger changes outside this seat. Evidence: `build/link-worker-w5/retail-probe-final.log`, `before-extra-providers.log` and `after-cohort.log`. Remaining prerequisite and next useful check are unchanged; no clearance or census confirmation claimed.
 
 ### LINK-028: module ctor units whose private ZH-shaped view emits vftable COMDATs a ZH port also emits
 
@@ -2069,6 +2075,8 @@ the insertion-sort unit's implicit copies and recheck it with
 S4StlSortHelpers.cpp, partition and introsort units together.
 Clearance: pending.
 Census confirmation: awaiting.
+
+**2026-10-26 current-provider follow-up, inspected `896af216804e`:** the assigned insertion-sort unit remains U2/S1 when checked alongside current `S4StlSortHelpers.cpp`; the helper unit still selects its nonretail linear-insert copy. Retail 0x00337555 calls the 67-byte record copy 0x003371B1 and 85-byte linear insert 0x00337424, both already rowed under the placeholder names recorded above. Its unresolved `BfmeSortElem20Tail` members come from the implicit local element copies, not separate calls in the matched 46-byte loop. Dropping those copies without reconciling the existing S4 users would remove their provider. No source edit or additional pin was attempted. Evidence: `build/link-worker-w5/retail-probe-final.log`, `index-probe.log`, `before-extra-providers.log` and `after-cohort.log`. Next: the existing cross-unit element/member identity reconciliation, preserving all consumers. No clearance or census confirmation claimed.
 
 ### LINK-046: unrowed lookup-table manager port blocks the matched accessor
 
@@ -2563,3 +2571,49 @@ Verification: final build verifies 40/40 rows across all 20 assigned units; chan
 Remaining / next check: carry the removed-provider audit and the retained six-byte accessor into the next scheduled census; missing cached objects prevent a complete object-level consumer claim.
 Clearance: cleared in ordinary-preview scope; census confirmation pending.
 Census confirmation: awaiting the next normal census; no headline change claimed.
+
+
+### LINK-054: pair sweep units instantiate unrelated whole containers
+
+Status: Open (partial emission repair verified). Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected units: `StlSweepW4Rva004157BB.cpp`, `StlSweepW4Rva00540053.cpp` and `StlSweepW5Rva002CEFAA.cpp`, each with one rowed pair constructor, instantiate an entire hash_map or map. Raw before/after source-object inventories and the 40-unit preview are in `build/link-worker-w5/`; the full local handoff is `build/link-report.md`.
+Completed: explicitly instantiate only each rowed pair constructor from the unchanged STLport `_pair.h`. All three rows remain exact; unused unresolved names fall from U4/U4/U3 to U1/U1/U1. The object inventories remove 373 distinct unrelated function names. The index reference graph has no retained node referencing the 362 names without alternate providers. The other 11 have alternate providers; two first-provider changes retain the identical retail-proven digests in current TeamFactory providers. The paired 40-unit previews keep the same 26 LINKS units and introduce no blocker. Frozen-file, EH, data, CSV and pin checks pass; all 53 assigned rows pass the ordinary byte gate.
+Remaining / next check: each pair still calls an undefined placeholder element copy name. Retail destinations already have rows: 0x0041573F is `Rva0041573F` copy construction (67 B, `Rva0041573FCopy.cpp`); 0x0053FFCE is `Render2DSentenceClass::SentenceDataStruct::operator=` (61 B, `render2dsentence.cpp`); 0x000366F0 is `StringBase<char>::set` (132 B, `StringBaseNarrowCopySet.cpp`). Reconcile the pair/element operation identities and existing owners through the naming lane. In particular, assignment callees must not be renamed as constructors merely to satisfy the current sweep labels. The row names and pins are unchanged here.
+Clearance: only the unused-emission subset is cleared in ordinary-preview scope; the three units remain blocked. Census confirmation pending.
+Census confirmation: not claimed.
+
+### LINK-055: map and set sweep wrappers bind differently named existing tree workers
+
+Status: Blocked on row and receiver identity reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected units: `StlSweepW4Rva00464431.cpp` and `StlSweepW6Rva0016DEC0.cpp`. Raw retail calls and current-provider previews: `build/link-worker-w5/retail-probe-final.log`, `before-extra-providers.log` and `after-cohort.log`.
+Completed: diagnosis only. The 29-byte map wrapper calls 0x00463E4D, already rowed as the 294-byte `Rva00463782::rva00463E4D` in `Rva00463E4DHintInsert.cpp`. The 21-byte set wrapper calls 0x0016D6A0, already rowed as the 108-byte `_Rb_tree<Gen_p12pod,pair<const Gen_p12pod,int>>::_M_find<Gen_p12pod>` in `RvaTreeFindGenP12pod00927790.cpp`. Both actual providers LINKS; the sweep units each retain U1/L1/S1. The latter provider compares three integer fields, which does not establish the sweep's string-containing record identity.
+Remaining / next check: reconcile the existing row names, operation and receiver layouts through the naming lane before suppressing template bodies. Declaring the current pinned names alone cannot supply a provider; casting containers to other instantiations is not a repair. No source trial was applied and no missing match is claimed.
+Clearance: pending.
+Census confirmation: not claimed.
+
+### LINK-056: pointer-copy sweep spelling selects memmove for a native string-copy wrapper
+
+Status: Blocked on template identity reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected units: `StlSweepW5Rva004F6FE1.cpp`; native 27-byte wrapper calls 0x004F6D2E. This address is the 29-byte `__copy_backward_ptrs<TreeHintRef00217D4C*,TreeHintRef00217D4C*>(...,__false_type const&)` row in `Rva004F6D2ECopyBackward.cpp`. Raw evidence: `build/link-worker-w5/retail-probe-final.log`, `before-extra-providers.log` and `after-cohort.log`; the earlier AsciiString identity lead is in re_attempts.log at 0x004F6D4B.
+Completed: diagnosis only. The real worker LINKS in the paired preview. The assigned unit retains L1/S1 because its pointer-to-pointer `__true_type` specialization emits the trivial memmove path. No source edit or repeated AsciiString row admission was attempted.
+Remaining / next check: reconcile the wrapper's existing template row with the nontrivial string element family, keeping the one-name/one-address distinction from the older AsciiString copy_backward attempt at 0x000B6631. Do not suppress the only current-name provider or reinterpret another instantiation to call the worker.
+Clearance: pending.
+Census confirmation: not claimed.
+
+### LINK-057: valarray sweep copy reaches a record assignment instead of a gslice copy
+
+Status: Blocked on row identity reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected units: `stlport_valarray_int.cpp`, row 0x000B68F0 (27 B), named `gslice_array<int>` copy construction. Retail calls 0x000B43E5, the 47-byte `BfmeRecord000B43E5::operator=` in `Rva000B43E5Assign.cpp`. That worker copies three scalar dwords, a byte at +0x0C and a string at +0x10 through `StringBase<char>::set`; the native wrapper then copies +0x14. STLport gslice instead contains two owned valarrays.
+Completed: diagnosis only. Supplying the actual assignment provider leaves the sweep at U1/L2/S1 while the provider LINKS. No valarray or shared-header trial was applied. Raw evidence: `build/link-worker-w5/retail-probe-final.log`, `before-extra-providers.log` and `after-cohort.log`.
+Remaining / next check: identify and rename the wrapper and record operation together, including `StlHelperRva000B978A.cpp`, whose existing alias binds the sweep name. The exception/bad_alloc emissions are consequences of whole-valarray instantiation; removing those emissions alone cannot correct the gslice body identity. No new body or pin is supported by this call site.
+Clearance: pending.
+Census confirmation: not claimed.
+
+### LINK-058: narrow istream find_if sweep row calls a record-construction worker
+
+Status: Blocked on row identity reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected units: `stlport_narrow_istream.cpp`, whose 30-byte `find_if` row at 0x006BE980 pushes an empty tag and calls 0x006BE8C0. The destination is the 115-byte `bfmeFillBE` in `Rva006BE840Construction.cpp`, which constructs 36-byte records with a string at +0x1C and flags at +0x20/+0x21. Raw evidence: `build/link-worker-w5/retail-probe-final.log`, `before-extra-providers.log` and `after-cohort.log`.
+Completed: diagnosis only. The actual worker LINKS; the istream unit still has U1/L1/S1. The four other rows are small constructor/accessor shapes and do not prove the distant fill wrapper's find_if identity. The unresolved `ctype<char>::scan_not` comes from other emitted istream operations, with no corresponding reference in these five matched bodies. No missing retail address is inferred for that unused dependency.
+Remaining / next check: recover the construction wrapper's real template/type spelling, preserving its four argument slots and the already rowed worker, then narrow the unrelated istream instantiation without losing any of the other four rows or their consumers. No new function body, shared-header change or pin was attempted.
+Clearance: pending.
+Census confirmation: not claimed.

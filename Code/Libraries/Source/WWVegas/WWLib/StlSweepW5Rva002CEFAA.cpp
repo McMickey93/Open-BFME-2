@@ -18,4 +18,5 @@ static inline bool operator!=(const _Rb_tree_iterator<_RbVal, _RbLeft> &a,
 }
 
 struct Rva002CEFAAElement { char bytes[1]; Rva002CEFAAElement();Rva002CEFAAElement(const Rva002CEFAAElement&);~Rva002CEFAAElement();Rva002CEFAAElement& operator=(const Rva002CEFAAElement&); };
-template class _STL::map<_STL::pair<int,int>,Rva002CEFAAElement>;
+template _STL::pair<const _STL::pair<int, int>, Rva002CEFAAElement>::pair(
+    const _STL::pair<const _STL::pair<int, int>, Rva002CEFAAElement> &);
