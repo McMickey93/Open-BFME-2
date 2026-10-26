@@ -5,6 +5,8 @@
 // Layout: pad 0x10, list at +0x10, count at +0x18 (list size 8). Evidence: leaf packet with 2 unclaimed callers; TunnelContain caller 0x0047DC88 passes through ObjectID plus second int arg; ret 8 is thiscall 2 args with second unused.
 // Precedent Rva002A1111.cpp for find plus Rva0029BA28.cpp for list erase.
 #include <list>
+#include "../GameLogicObjectLookupView.h"
+#include "../RTS/TunnelTrackerNemesisView.h"
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.
 namespace _STL {
@@ -15,28 +17,11 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 }
 
 
-enum ObjectID
-{
-	OBJECTID_NONE = 0
-};
-
 namespace _STL
 {
 template <class _InputIter, class _Tp>
 _InputIter find(_InputIter __first, _InputIter __last, const _Tp &__val);
 }
-
-class TunnelTracker
-{
-public:
-	void removeFromContain(ObjectID val, int dummy);
-	bool isInContainer(ObjectID val);
-private:
-	char m_pad[0x10];
-	_STL::list<ObjectID> m_list;
-	int m_14;
-	int m_count;
-};
 
 // bfme link decl-only begin
 namespace _STL { template <> void _STLP_alloc_proxy<_STL::_List_node<ObjectID> *,_STL::_List_node<ObjectID>,_STL::allocator<_STL::_List_node<ObjectID> > >::deallocate(_STL::_List_node<ObjectID> *,unsigned int); }
@@ -45,14 +30,19 @@ namespace _STL { template <> _STL::_List_iterator<ObjectID,_STL::_Nonconst_trait
 // bfme link decl-only end
 void TunnelTracker::removeFromContain(ObjectID val, int dummy)
 {
-	_STL::list<ObjectID>::iterator it = _STL::find(m_list.begin(), m_list.end(), val);
-	if (it == m_list.end())
+	_STL::list<ObjectID>::iterator it = _STL::find(
+		reinterpret_cast<_STL::list<ObjectID> *>(&m_containHead)->begin(),
+		reinterpret_cast<_STL::list<ObjectID> *>(&m_containHead)->end(), val);
+	if (it == reinterpret_cast<_STL::list<ObjectID> *>(&m_containHead)->end())
 		return;
-	m_list.erase(it);
-	--m_count;
+	reinterpret_cast<_STL::list<ObjectID> *>(&m_containHead)->erase(it);
+	--m_containListSize;
 }
 
 bool TunnelTracker::isInContainer(ObjectID val)
 {
-	return _STL::find(m_list.begin(), m_list.end(), val) != m_list.end();
+	return _STL::find(
+		reinterpret_cast<_STL::list<ObjectID> *>(&m_containHead)->begin(),
+		reinterpret_cast<_STL::list<ObjectID> *>(&m_containHead)->end(), val)
+		!= reinterpret_cast<_STL::list<ObjectID> *>(&m_containHead)->end();
 }

@@ -8,7 +8,7 @@ Inspected base `9e2d22764b`; no recovered bytes, file reduction or debt retireme
 
 The Luna handoff `consolidation-tunneltracker-blockers-20261026-codex3.md`
 records C2039 for isValidContainerFor. The prior contain prerequisite leaves
-nine existing rows / 611 bytes accepted. The valid-container donor still has
+nine existing rows / 511 bytes accepted. The valid-container donor still has
 competing TunnelTracker, Object and GlobalData declarations. It now shares the
 existing TU-scoped accessed prefixes, retaining count +0x18, Object template
 +0x04, template flag +0x109 and GlobalData capacity +0xA98. No virtual methods,
@@ -33,7 +33,7 @@ hatch was added. The standalone donor remains byte-for-byte equivalent.
   and no wrong binding. The existing getBodyModule +0x254 provider is unchanged;
   its previously recorded cross-owner divergence is not resolved here.
 - Ordinary `tu_skeleton.py --merge TU --dry-run` accepts seed, contain donor
-  and valid-container donor: **10 existing rows / 687 bytes**. This is one
+  and valid-container donor: **10 existing rows / 587 bytes**. This is one
   additional accepted row / 76 existing bytes, not recovered coverage or a
   confirmed later Luna merge. Routing is rebuilt from current inputs; no
   committed TU map or ledger source changed.

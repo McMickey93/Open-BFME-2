@@ -7,6 +7,7 @@
 class Object;
 class Player;
 class BodyModuleInterface;
+enum ObjectID;
 
 // Keep the declaration before its intrinsic pragma when the TU composer hoists
 // preprocessor lines. isValidContainerFor uses this existing scheduling barrier.
@@ -32,6 +33,8 @@ class TunnelTracker
 public:
     int getContainMax() const;
     bool isValidContainerFor(Object *object, bool flag);
+    void removeFromContain(ObjectID value, int dummy);
+    bool isInContainer(ObjectID value);
     void addToContainList(Object *object);
     void iterateContained(ContainIterateFunc func, void *userData, bool reverse);
     void healObjects(float frames);
