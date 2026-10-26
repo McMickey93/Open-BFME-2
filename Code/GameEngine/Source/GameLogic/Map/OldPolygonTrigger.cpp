@@ -87,7 +87,7 @@ struct PolygonData : Out
 // the trailing flag stays uninitialized.
 PolygonData::PolygonData() {}
 
-void __cdecl operator delete(void *);
+#include <new>
 
 class OldPolygonTriggerDataChunkParserBase
 {
@@ -200,7 +200,6 @@ class Rva00308765
 public:
 	void rva00308765(int, const AsciiString &);
 };
-void *__cdecl operator new(unsigned int);
 
 // WB's unnamed helper at 0x00BE19B0 imports non-river water records. Retail
 // proves allocation DC, retained-reference field +4 and boundary interface +30.

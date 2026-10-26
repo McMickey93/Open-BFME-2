@@ -872,7 +872,7 @@ bool FireLogicSystem::rva00286772(const PolygonTrigger *area, Int minBurn)
 	return false;
 }
 
-void operator delete[](void *p);
+#include <new>
 
 // m_cellsOnFire's clear (0x0028662D).
 class Rva0028614C

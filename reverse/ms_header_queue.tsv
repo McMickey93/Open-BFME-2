@@ -197,8 +197,6 @@ Code/GameEngine/Source/GameClient/MessageBox.cpp	drop-in candidate	same	2	1	0	0	
 Code/GameEngine/Source/GameClient/Rva00282500Dtor.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,NULL:same
 Code/GameEngine/Source/GameClient/Rva00419AB8Commands.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strcmp:same,atoi:same
 Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyObjectFootprint.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	floor:same,ceil:same
-Code/GameEngine/Source/GameLogic/Map/OldPolygonTrigger.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same,operator new:same
-Code/GameEngine/Source/GameLogic/Map/StandingWaterAreaDepthColoring.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new [ ]:same,operator delete [ ]:same
 Code/GameEngine/Source/GameLogic/Map/StandingWaterAreaLoadPCA.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	atof:same,atoi:same
 Code/GameEngine/Source/GameLogic/Module/OpenContainParsePassengerBone.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strcmp:same,memset:same
 Code/GameEngine/Source/GameLogic/Object/Behavior/TriggerSpecialPowerParse.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>,<string.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same,strcmp:same
@@ -1048,7 +1046,6 @@ Code/GameEngine/Source/GameLogic/LargeGroupAudio/Rva0056A83BParseAudioMap.cpp	dr
 Code/GameEngine/Source/GameLogic/LivingWorld/SplineEffectParseINIBlock.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/GameLogic/Map/BridgeCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameLogic/Map/BridgeObjectCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
-Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/GameLogic/Map/FireLogicSystemParseMaterial.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	atoi:same
 Code/GameEngine/Source/GameLogic/Map/PolygonTriggerCenter.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameLogic/Map/Rva0032BF1BDtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same

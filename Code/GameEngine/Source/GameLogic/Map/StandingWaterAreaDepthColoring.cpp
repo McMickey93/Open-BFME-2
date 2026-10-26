@@ -6,8 +6,7 @@
 // interfaces; target adds cached reload and Art\\Terrain\\ fallback path.
 // Explicit array new/delete declarations preserve native 2FDE0/2FD80.
 #include "ascii_string.h"
-void * __cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *);
+#include <new>
 
 class File
 {
