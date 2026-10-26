@@ -49,23 +49,7 @@ public:
 
 struct SmudgeSet;
 
-class SmudgeManager
-{
-public:
-	SmudgeManager(void);
-	virtual ~SmudgeManager();
-
-	virtual void init(void);
-	virtual void reset(void);
-
-protected:
-	enum HardwareSmudgeSupport { SMUDGE_SUPPORT_UNKNOWN, SMUDGE_SUPPORT_NO, SMUDGE_SUPPORT_YES };
-
-	HardwareSmudgeSupport m_hardwareSupportStatus;
-	DLListClass<SmudgeSet> m_usedSmudgeSetList;
-	DLListClass<SmudgeSet> m_freeSmudgeSetList;
-	Int m_smudgeCountLastFrame;
-};
+#include "SmudgeViews.h"
 
 // ??0SmudgeManager@@QAE@XZ
 SmudgeManager::SmudgeManager(void)

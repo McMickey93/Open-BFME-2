@@ -63,23 +63,7 @@ private:
 	Int m_usedSmudgeCount;
 };
 
-class SmudgeManager
-{
-public:
-	SmudgeManager(void);
-	virtual ~SmudgeManager();
-
-	virtual void init(void);
-	virtual void reset(void);
-
-	SmudgeSet *addSmudgeSet(void);
-
-protected:
-	Int m_hardwareSupportStatus;
-	DLListClass<SmudgeSet> m_usedSmudgeSetList;
-	DLListClass<SmudgeSet> m_freeSmudgeSetList;
-	Int m_smudgeCountLastFrame;
-};
+#include "SmudgeViews.h"
 
 // ?reset@SmudgeManager@@UAEXXZ
 void SmudgeManager::reset(void)

@@ -133,25 +133,7 @@ SmudgeSet::SmudgeSet(void)
 	m_usedSmudgeCount = 0;
 }
 
-class SmudgeManager
-{
-public:
-	SmudgeManager(void);
-	virtual ~SmudgeManager();
-
-	virtual void init(void);
-	virtual void reset(void);
-
-	SmudgeSet *addSmudgeSet(void);
-	void removeSmudgeSet(SmudgeSet &mySmudge);
-
-protected:
-	// Retail seats the free list at +0x14: vptr + hardware flag + used list.
-	Int m_hardwareSupportStatus;
-	DLListClass<SmudgeSet> m_usedSmudgeSetList;
-	DLListClass<SmudgeSet> m_freeSmudgeSetList;
-	Int m_smudgeCountLastFrame;
-};
+#include "SmudgeViews.h"
 
 // ?removeSmudgeSet@SmudgeManager@@QAEXAAUSmudgeSet@@@Z
 void SmudgeManager::removeSmudgeSet(SmudgeSet &mySmudge)
