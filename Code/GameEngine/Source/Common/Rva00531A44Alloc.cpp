@@ -5,8 +5,7 @@
 // new[]s four arrays (short at +4/+C/+10 sized count*2, byte at +8 sized
 // count) via the rowed ??_U@YAPAXI@Z, returns *this. Callers at 0x00531FC6
 // and 0x005323C2 are unclaimed so owner is unknown. No FP, no EH.
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *ptr);
+#include <new>
 class Rva00531A44
 {
 public:

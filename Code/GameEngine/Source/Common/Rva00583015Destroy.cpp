@@ -5,8 +5,7 @@
 // call operator delete 0x0002FD60 and [0x00A06398] 0 pop ecx ret; caller 0x0044D279;
 // same virtual-slot-0 plus delete shape as Rva0023C420Delete 20B.
 
-void __cdecl operator delete(void *p);
-void *__cdecl operator new(unsigned int size);
+#include <new>
 void __cdecl Rva00437E9C(int value);
 
 class Rva00582FC1

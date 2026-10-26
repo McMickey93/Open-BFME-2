@@ -3,8 +3,7 @@
 // Reset grid 8x7 words at +0x1B596, frees Item arrays via 0x00532F9F,
 // zeroes header and rect, preserves word at +0 into +4, sets flag +0x1BA31.
 // Callees rowed 0x0002FD80 0x00532F9F. Callers 0x002F46ED 0x00533B8C.
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *p);
+#include <new>
 class Rva00531132
 {
 public:
