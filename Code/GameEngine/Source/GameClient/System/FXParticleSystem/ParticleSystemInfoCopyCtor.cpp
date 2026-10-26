@@ -33,14 +33,11 @@ struct ThreeDwords
 
 class Xfer;
 
-class Snapshot
-{
-public:
-    virtual ~Snapshot() {}
-    virtual const char *GetSnapshotName() = 0;
-    virtual void LoadPostProcess() = 0;
-    virtual void DoXfer(Xfer &xfer) = 0;
-};
+#define BFME_SNAPSHOT_CAPITALIZED_SLOTS
+#define BFME_SNAPSHOT_NAME_SLOT
+#define BFME_SNAPSHOT_NONCONST_NAME_SLOT
+#define BFME_SNAPSHOT_REFERENCE_XFER
+#include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 namespace FXParticleSystem
 {

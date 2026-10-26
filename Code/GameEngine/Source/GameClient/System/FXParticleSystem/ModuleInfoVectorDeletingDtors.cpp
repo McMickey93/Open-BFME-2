@@ -82,6 +82,12 @@ private:
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include/Lib/BaseType.h
 #include "../../../../../Libraries/Include/Lib/RGBColor.h"
 
+#define BFME_SNAPSHOT_CAPITALIZED_SLOTS
+#define BFME_SNAPSHOT_NAME_SLOT
+#define BFME_SNAPSHOT_NONCONST_NAME_SLOT
+#define BFME_SNAPSHOT_REFERENCE_XFER
+#include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
+
 namespace FXParticleSystem {
 
 struct RandomAlphaKeyframe
@@ -103,15 +109,9 @@ struct RGBColorKeyframe
 	float frame;
 };
 
-class Xfer;
+
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/Snapshot.h
-// class-gate: allow Snapshot the donor's own view; the placed bodies are byte-exact under it
-class Snapshot
-{
-protected:
-	~Snapshot();
-};
 
 class DefaultAlphaModuleInfo : public Snapshot
 {

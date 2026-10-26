@@ -3800,3 +3800,15 @@ Census confirmation: awaiting the next census.
   43 units' 95,344 B; the current preview relinks 87,161 B of that
   (86,849 + 312), so a fresh census should measure above the 08:28 peak's
   7,614,012 B if nothing else moves.
+
+### LINK-098: Snapshot and Coord2D header adoption prerequisites
+
+Status: Blocked for the remaining assigned units; retained adoptions verified in ordinary-preview scope. Updated: 2026-10-27; inspected revision: `6c583e82f0c53df8e12b2ac83e1a48206513de5e`.
+
+Evidence / affected units: the per-unit before/after builds, ordinary previews against index `5ce093a71a` (`retail-truth-4`), raw source and ledger witnesses, acceptance outputs and blocked verdicts are mapped by [the header handoff](../build/header-report.md) under `build/header-h3/`.
+
+Completed: `ModuleInfoVectorDeletingDtors.cpp` and `ParticleSystemInfoCopyCtor.cpp` use the canonical Snapshot with its existing capitalized, non-const name and reference-transfer switches. `CaveSystem.cpp` uses the canonical Snapshot and Xfer headers and their public transfer operators. Their queue entries leave only through `header_adopt_lane.py accept`; the retained cohort preserves every function row and its clean ordinary link previews. The Snapshot exceptions in the destructor and Cave units are removed. No shared header, ledger row, pin or compiler flag changes.
+
+Remaining / next check: the allocator's nested `GeneralAllocator::Snapshot` is a distinct heap-report struct and must not be replaced with engine `::Snapshot`. Xfer needs authorized access to Snapshot's protected transfer. FX info virtual surfaces, the ParticleSystemInfo constructor vtable and RemoveUpgrade's real ModuleData base hierarchy need reconciliation. The LivingWorldBattle and LivingWorldBuildPlot constructors need an evidenced Snapshot constructor surface that emits no base-vptr store before the list-base call. Coord2D's registered header lacks the constructors, destructor, conversions and arithmetic members these remaining consumers require; AnimateWindow getVel and setVel rows also encode the other class-key. Rva00062B17Init is a stale queue item with no remaining Coord2D view or use. Preserve all stopped sources; the handoff records their exact restoration and next-owner evidence. Money's existing record-identity prerequisite remains LINK-092.
+
+Clearance: only the named retained adoptions and their local preview scope are verified; no new linked-unit or headline gain claimed. Census confirmation: pending.
