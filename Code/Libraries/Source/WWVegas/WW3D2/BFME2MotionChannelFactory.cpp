@@ -11,7 +11,7 @@
 // Constructors and table identities are independently established by their
 // initialization, load methods, and factory call sites; no table bytes count
 // as executable progress.
-void * __cdecl operator new[](unsigned int);
+#include <new>
 class Vector3;
 class Quaternion;
 class ChunkLoadClass { public: unsigned long Read(void *, unsigned long); unsigned long Cur_Chunk_Length(); unsigned long Seek(unsigned long); };

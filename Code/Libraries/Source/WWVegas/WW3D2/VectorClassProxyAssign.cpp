@@ -24,8 +24,7 @@
 // mangles identically to the real instantiation while keeping the fat
 // ProxyClass views other TUs use untouched.
 
-extern void *__cdecl operator new[](unsigned int size);
-extern void __cdecl operator delete[](void *block);
+#include <new>
 
 class TextureBaseClass
 {

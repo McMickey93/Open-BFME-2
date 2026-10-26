@@ -15,7 +15,7 @@ public:
 	int Components;
 };
 
-void __cdecl operator delete[](void *) throw();
+#include <new>
 
 class BFME2StreamMotionChannel : public BFME2MotionChannel
 {
