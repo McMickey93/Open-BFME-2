@@ -6429,20 +6429,18 @@ public:
 	~Rva00411453Tree();
 };
 
-// 0x00A02FE4: defined elsewhere as ?g_Va00E02FE4@@3URva004114EFGlobalTable@@A.
-struct Rva004114EFGlobalTable;
-extern Rva004114EFGlobalTable g_Va00E02FE4;
+// 0x00A02FE4: defined in GUI/AptComponentWindowLookup.cpp as ?AptComponentWindowDataTableStorage@@3PAIA.
+extern unsigned int AptComponentWindowDataTableStorage[5];
 
-// ?rva007B821F@@YAXXZ @ 0x007B821F (10B). Tree teardown: ecx=&g_Va00E02FE4 then tail-jmp to the 0x004110B4 stub for a tree-dtor-family body (0x00410C42, same prologue as the rowed family). No callers. Honest address name.
+// ?rva007B821F@@YAXXZ @ 0x007B821F (10B). Tree teardown: ecx=&AptComponentWindowDataTableStorage then tail-jmp to the 0x004110B4 stub for a tree-dtor-family body (0x00410C42, same prologue as the rowed family). No callers. Honest address name.
 void __cdecl rva007B821F()
 {
-	Rva004110B4Tree *receiver = (Rva004110B4Tree *)&g_Va00E02FE4;
+	Rva004110B4Tree *receiver = (Rva004110B4Tree *)AptComponentWindowDataTableStorage;
 	return receiver->~Rva004110B4Tree();
 }
 
-// 0x00A02FF8: defined elsewhere as ?g_Va00E02FF8@@3URva004110DCGlobalTable@@A.
-struct Rva004110DCGlobalTable;
-extern Rva004110DCGlobalTable g_Va00E02FF8;
+// 0x00A02FF8: defined in Rva004121B2HashMapInits.cpp as ?g_Va00E02FF8@@3IA.
+extern unsigned g_Va00E02FF8;
 
 // ?rva007B8229@@YAXXZ @ 0x007B8229 (10B). Tree teardown: ecx=&g_Va00E02FF8 then tail-jmp to the 0x004110B9 stub for the rowed dup_00410c7b body (0x00410C7B). No callers. Honest address name.
 void __cdecl rva007B8229()
@@ -6671,8 +6669,9 @@ public:
 	Rva00552F2E();
 };
 
-extern unsigned g_Va00E06484;
-unsigned int g_Va00E06484;
+// RVA 0x00A06484..0x00A06543: six FactionStatBlock globals defined in Rva005B947DTicker.cpp.
+struct FactionStatBlock;
+extern FactionStatBlock g_Va00E06484;
 
 // ?rva007B474C@@YAXXZ @ 0x007B474C (10B). Rva00552F2E construction thunk: ecx=&g_Va00E06484 then tail-jmp to rowed ??0Rva00552F2E@@QAE@XZ (0x00552F2E). No callers. Honest address name.
 void __cdecl rva007B474C()
@@ -6681,8 +6680,7 @@ void __cdecl rva007B474C()
 	receiver->Rva00552F2E::Rva00552F2E();
 }
 
-extern unsigned g_Va00E064A4;
-unsigned int g_Va00E064A4;
+extern FactionStatBlock g_Va00E064A4;
 
 // ?rva007B4756@@YAXXZ @ 0x007B4756 (10B). Rva00552F2E construction thunk: ecx=&g_Va00E064A4 then tail-jmp to rowed ??0Rva00552F2E@@QAE@XZ (0x00552F2E). No callers. Honest address name.
 void __cdecl rva007B4756()
@@ -6691,8 +6689,7 @@ void __cdecl rva007B4756()
 	receiver->Rva00552F2E::Rva00552F2E();
 }
 
-extern unsigned g_Va00E064C4;
-unsigned int g_Va00E064C4;
+extern FactionStatBlock g_Va00E064C4;
 
 // ?rva007B4760@@YAXXZ @ 0x007B4760 (10B). Rva00552F2E construction thunk: ecx=&g_Va00E064C4 then tail-jmp to rowed ??0Rva00552F2E@@QAE@XZ (0x00552F2E). No callers. Honest address name.
 void __cdecl rva007B4760()
@@ -6701,8 +6698,7 @@ void __cdecl rva007B4760()
 	receiver->Rva00552F2E::Rva00552F2E();
 }
 
-extern unsigned g_Va00E064E4;
-unsigned int g_Va00E064E4;
+extern FactionStatBlock g_Va00E064E4;
 
 // ?rva007B476A@@YAXXZ @ 0x007B476A (10B). Rva00552F2E construction thunk: ecx=&g_Va00E064E4 then tail-jmp to rowed ??0Rva00552F2E@@QAE@XZ (0x00552F2E). No callers. Honest address name.
 void __cdecl rva007B476A()
@@ -6711,8 +6707,7 @@ void __cdecl rva007B476A()
 	receiver->Rva00552F2E::Rva00552F2E();
 }
 
-extern unsigned g_Va00E06504;
-unsigned int g_Va00E06504;
+extern FactionStatBlock g_Va00E06504;
 
 // ?rva007B4774@@YAXXZ @ 0x007B4774 (10B). Rva00552F2E construction thunk: ecx=&g_Va00E06504 then tail-jmp to rowed ??0Rva00552F2E@@QAE@XZ (0x00552F2E). No callers. Honest address name.
 void __cdecl rva007B4774()
@@ -6721,8 +6716,7 @@ void __cdecl rva007B4774()
 	receiver->Rva00552F2E::Rva00552F2E();
 }
 
-extern unsigned g_Va00E06524;
-unsigned int g_Va00E06524;
+extern FactionStatBlock g_Va00E06524;
 
 // ?rva007B477E@@YAXXZ @ 0x007B477E (10B). Rva00552F2E construction thunk: ecx=&g_Va00E06524 then tail-jmp to rowed ??0Rva00552F2E@@QAE@XZ (0x00552F2E). No callers. Honest address name.
 void __cdecl rva007B477E()
@@ -6803,13 +6797,13 @@ public:
 	FrustumClass();
 };
 
-extern unsigned g_Va00DEBD00;
-unsigned int g_Va00DEBD00;
+// RVA 0x009EBD00: defined in W3DVolumetricShadowRenderShadows.cpp.
+extern FrustumClass shadowCameraFrustum;
 
-// ?rva007AC7F5@@YAXXZ @ 0x007AC7F5 (10B). FrustumClass construction thunk: ecx=&g_Va00DEBD00 then tail-jmp to rowed ??0FrustumClass@@QAE@XZ (0x000F0F5B). No callers. Honest address name.
+// ?rva007AC7F5@@YAXXZ @ 0x007AC7F5 (10B). FrustumClass construction thunk: ecx=&shadowCameraFrustum then tail-jmp to rowed ??0FrustumClass@@QAE@XZ (0x000F0F5B). No callers. Honest address name.
 void __cdecl rva007AC7F5()
 {
-	FrustumClass *receiver = (FrustumClass *)&g_Va00DEBD00;
+	FrustumClass *receiver = &shadowCameraFrustum;
 	receiver->FrustumClass::FrustumClass();
 }
 
@@ -7003,19 +6997,18 @@ void __cdecl rva007B7AFF()
 // ?rva007B89C1@@YAXXZ @ 0x007B89C1 (10B). Global dtor thunk: ecx=&BfmeLargeGroupAudioRegistry then tail-jmp to pinned ??1Rva004ABE53Dtor@@QAE@XZ (0x004ABE53). No callers. Honest address name.
 void __cdecl rva007B89C1();
 
-class AptActionInterpreter
+struct AptActionInterpreter
 {
-public:
 	~AptActionInterpreter();
 };
 
-extern unsigned g_Va00E182E0;
-unsigned int g_Va00E182E0;
+// Defined in Apt/AptDateSetters.cpp (VA 0x00E182E0).
+extern AptActionInterpreter g_aptDateInterpreter;
 
-// ?rva007B9C50@@YAXXZ @ 0x007B9C50 (10B). Global AptActionInterpreter dtor thunk: ecx=&g_Va00E182E0 then tail-jmp to pinned ??1AptActionInterpreter@@QAE@XZ (0x006FE9C0). No callers. Honest address name.
+// ?rva007B9C50@@YAXXZ @ 0x007B9C50 (10B). Global AptActionInterpreter dtor thunk: ecx=&g_aptDateInterpreter then tail-jmp to pinned ??1AptActionInterpreter@@QAE@XZ (0x006FE9C0). No callers. Honest address name.
 void __cdecl rva007B9C50()
 {
-	AptActionInterpreter *receiver = (AptActionInterpreter *)&g_Va00E182E0;
+	AptActionInterpreter *receiver = &g_aptDateInterpreter;
 	return receiver->~AptActionInterpreter();
 }
 
