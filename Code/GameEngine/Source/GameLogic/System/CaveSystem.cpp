@@ -38,15 +38,15 @@ class PooledString;
 struct Coord3DBase;
 struct ICoord3D;
 struct Region3D;
-struct IRegion3D;
+class IRegion3D;
 class Coord2D;
 struct ICoord2D;
 struct Region2D;
 struct IRegion2D;
-struct RealRange;
+class RealRange;
 struct RGBColor;
-struct RGBAColorReal;
-struct RGBAColorInt;
+class RGBAColorReal;
+class RGBAColorInt;
 struct XferUnknown11;
 #include "../../../Include/Common/BfmeXfer.h"
 
@@ -75,7 +75,7 @@ public:
 	void unregisterCave(Int theIndex);
 	virtual void crc(Xfer *xfer) {}
 	virtual void DoXfer(Xfer *xfer);
-	virtual void loadPostProcess() {}
+	virtual void LoadPostProcess() {}
 
 private:
 	_STL::vector<TunnelTracker *> m_tunnelTrackerVector;
@@ -129,14 +129,14 @@ void CaveSystem::DoXfer(Xfer *xfer)
 {
 	xfer->Version1();
 	unsigned short count = (unsigned short)m_tunnelTrackerVector.size();
-	(*xfer) == count;
+	xfer->operator==(count);
 	TunnelTracker *tracker;
 	if (xfer->IsStoring())
 	{
 		for (_STL::vector<TunnelTracker *>::iterator it = m_tunnelTrackerVector.begin(); it != m_tunnelTrackerVector.end(); ++it)
 		{
 			tracker = *it;
-			(*xfer) == *reinterpret_cast<Snapshot *>(tracker);
+			xfer->operator==(reinterpret_cast<class Snapshot &>(*(tracker)));
 		}
 	}
 	else
@@ -148,7 +148,7 @@ void CaveSystem::DoXfer(Xfer *xfer)
 		for (unsigned short i = 0; i < count; ++i)
 		{
 			tracker = new TunnelTracker;
-			(*xfer) == *reinterpret_cast<Snapshot *>(tracker);
+			xfer->operator==(reinterpret_cast<class Snapshot &>(*(tracker)));
 			reinterpret_cast<_STL::vector<unsigned int> *>(&m_tunnelTrackerVector)->push_back(reinterpret_cast<unsigned int &>(tracker));
 		}
 	}

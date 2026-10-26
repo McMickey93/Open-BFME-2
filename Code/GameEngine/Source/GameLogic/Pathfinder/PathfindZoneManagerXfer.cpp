@@ -22,47 +22,24 @@ struct Rva005334A4Element {unsigned short first, second;};
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 static __forceinline void zeroICoord2D(ICoord2D &zoneCell) {zoneCell.x=0;zoneCell.y=0;}
 #include "../../../../Libraries/Include/Lib/IRegion2D.h"
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual void slot01();
-	virtual void slot02();
-	virtual bool IsCRC()const;
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void slot10();
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual Xfer &xferIRegion2D(IRegion2D *);
-	virtual void slot18();
-	virtual Xfer &xferICoord2D(ICoord2D *);
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(unsigned *);
-	virtual Xfer &xferInt(int *);
-	virtual Xfer &xferUnsignedShort(unsigned short *);
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 
 void XferWaypointID(Xfer *, int *);
 Xfer *Rva005334DBXfer(Xfer *, void *);
@@ -171,7 +148,7 @@ public:
 void PathfindZoneManager::Block::DoXfer(Xfer *xfer)
 {
 	if (!xfer->IsCRC()) return;
-	Rva005334DBXfer(&xfer->xferInt(&portalCount).xferBool(&flag34).xferBool(&flag35), vector38);
+	Rva005334DBXfer(&xfer->operator==(portalCount).operator==(flag34).operator==(flag35), vector38);
 	for (int k = 0; k < portalCount; ++k) {
 		int id = portals[k]->id;
 		XferWaypointID(xfer, &id);
@@ -181,15 +158,15 @@ void PathfindZoneManager::Block::DoXfer(Xfer *xfer)
 void PathfindZoneManager::DoXfer(Xfer *xfer)
 {
 	if (!xfer->IsCRC()) return;
-	xfer->xferBool(&flag1BA30).xferBool(&flag1BA31)
-		.xferICoord2D(&dimensions).xferIRegion2D(&extent);
+	xfer->operator==(flag1BA30).operator==(flag1BA31)
+		.operator==(dimensions).operator==(extent);
 	for (int x = 0; x < dimensions.x; ++x) {
 		for (int y = 0; y < dimensions.y; ++y) {
 			blocks[x][y].DoXfer(xfer);
 		}
 	}
 	unsigned short k = end;
-	xfer->xferUnsignedShort(&k);
+	xfer->operator==(k);
 	for (k = 0; k < end; ++k) {
 		// The established predicate provider is declared as a byte but returns
 		// only0/1. Its representation is also the native transferred Bool;
@@ -197,13 +174,13 @@ void PathfindZoneManager::DoXfer(Xfer *xfer)
 		union { bool b; unsigned char raw; } value;
 		value.raw = IsUsed_SlowMethod(k);
 		bool &used = value.b;
-		xfer->xferBool(&used);
+		xfer->operator==(used);
 		if (used) reinterpret_cast<CellType *>(unknown0C)[k].DoXfer(xfer);
 	}
 	for (unsigned i = 0; i < 8; ++i) {
-		xfer->xferUnsignedInt(&i);
+		xfer->operator==(i);
 		for (unsigned j = 0; j < 7; ++j) {
-			xfer->xferUnsignedInt(&j);
+			xfer->operator==(j);
 			unions[i][j].rva00531BA7(xfer);
 		}
 	}

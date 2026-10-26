@@ -17,7 +17,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 class Object;
 namespace _STL { template <> __declspec(dllimport) __forceinline _Vector_base<Object *, allocator<Object *> >::~_Vector_base() { if (this->_M_start != 0) this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start); } }
 #include "ascii_string.h"
-#include "Coord3D.h"
+#include "Coord3DBase.h"
 // Existing bfmealloc shim and no-exception STL configuration reproduce the
 // native record-vector helpers. Each body and recursive relocation was checked.
 // AITactic::initializeTeamTemplate @ 0x004ECE61, 50 bytes: slot 3 of the AITactic
@@ -47,48 +47,24 @@ public:
     unsigned int m_tacticOrdinal; // +0x2DC
 };
 
-class Xfer
-{
-public:
-	class Version;
-	virtual ~Xfer();
-	virtual bool isLoading();				// +0x04
-	virtual bool isSaving();				// +0x08
-	virtual void v3();
-	virtual void v4();
-	virtual void v5();
-	virtual void v6();
-	virtual void v7();
-	virtual void v8();
-	virtual void v9();
-	virtual Xfer &operator==(Version &value);		// +0x28
-	virtual void v11();
-	virtual void v12();
-	virtual void v13();
-	virtual void v14();
-	virtual void v15();
-	virtual void v16();
-	virtual void v17();
-	virtual void v18();
-	virtual void v19();
-	virtual void v20();
-	virtual void v21();
-	virtual void v22();
-	virtual void v23();
-	virtual void xferCoord3D(Coord3D *value);		// +0x60
-	virtual void v25();
-	virtual void v26();
-	virtual void xferAsciiString(AsciiString *value);	// +0x6C
-	virtual void v28();
-	virtual void v29();
-	virtual void xferUnsignedInt(unsigned int *value);	// +0x78
-	virtual void xferInt(int *value);			// +0x7C
-	virtual void v32();
-	virtual void v33();
-	virtual void v34();
-	virtual void v35();
-	virtual void xferBool(bool *value);			// +0x90
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../../Include/Common/BfmeXfer.h"
 
 class Xfer::Version
 {
@@ -473,41 +449,41 @@ void AITactic::xfer(Xfer *xfer)
 {
 	Xfer::Version version(2);
 	*xfer == version;
-	xfer->xferUnsignedInt((unsigned int *)&g_00E044AC);
+	xfer->operator==(*((unsigned int *)&g_00E044AC));
 
 	unsigned int protoCount = m_protos.size();
-	xfer->xferUnsignedInt(&protoCount);
-	if (xfer->isSaving())
+	xfer->operator==(protoCount);
+	if (xfer->IsStoring())
 	{
 		std::vector<TeamPrototype *>::iterator end = m_protos.end();
 		for (std::vector<TeamPrototype *>::iterator it = m_protos.begin(); it != end; ++it)
 		{
 			unsigned int id = (*it)->snapshotID();
-			xfer->xferUnsignedInt(&id);
+			xfer->operator==(id);
 		}
 	}
-	else if (xfer->isLoading())
+	else if (xfer->IsLoading())
 	{
 		for (unsigned int i = 0; i < protoCount; ++i)
 		{
 			unsigned int id = 0;
-			xfer->xferUnsignedInt(&id);
+			xfer->operator==(id);
 			TeamPrototype *proto = TheTeamFactory->findTeamPrototypeByID(id);
 			m_protos.push_back(proto);
 		}
 	}
 
-	xfer->xferBool(&m_10);
+	xfer->operator==(m_10);
 
 	unsigned int teamCount = m_teams.size();
-	xfer->xferUnsignedInt(&teamCount);
-	if (xfer->isSaving())
+	xfer->operator==(teamCount);
+	if (xfer->IsStoring())
 	{
 		Rva004ECDC8 *end = m_teams.end();
 		for (Rva004ECDC8 *rec = m_teams.begin(); rec != end; ++rec)
 			rec->rva004ECDC8(xfer);
 	}
-	else if (xfer->isLoading())
+	else if (xfer->IsLoading())
 	{
 		for (unsigned int i = 0; i < teamCount; ++i)
 		{
@@ -517,27 +493,27 @@ void AITactic::xfer(Xfer *xfer)
 		}
 	}
 
-	int playerIndex = (xfer->isSaving() && m_24) ? ((Player *)m_24)->getPlayerIndex() : -1;
-	xfer->xferInt(&playerIndex);
-	if (xfer->isLoading() && playerIndex != -1)
+	int playerIndex = (xfer->IsStoring() && m_24) ? ((Player *)m_24)->getPlayerIndex() : -1;
+	xfer->operator==(playerIndex);
+	if (xfer->IsLoading() && playerIndex != -1)
 		m_24 = ThePlayerList->getNthPlayer(playerIndex);
 
 	unsigned int targetID = m_20 ? m_20->getID() : (unsigned int)-1;
-	xfer->xferUnsignedInt(&targetID);
-	if (xfer->isLoading() && targetID != (unsigned int)-1)
+	xfer->operator==(targetID);
+	if (xfer->IsLoading() && targetID != (unsigned int)-1)
 		m_20 = (Rva002C589B *)TheSkirmishAIManager->rva002A8B73(m_24, targetID);
 
-	xfer->xferBool(&m_ended);
-	xfer->xferAsciiString(&m_name);
-	xfer->xferUnsignedInt(&m_30);
-	xfer->xferBool(&m_34);
-	xfer->xferCoord3D(&m_38);
-	xfer->xferCoord3D(&m_44);
-	xfer->xferBool(&m_50);
+	xfer->operator==(m_ended);
+	xfer->operator==(m_name);
+	xfer->operator==(m_30);
+	xfer->operator==(m_34);
+	xfer->operator==(asBase(m_38));
+	xfer->operator==(asBase(m_44));
+	xfer->operator==(m_50);
 	if (version.m_current >= 2)
 	{
-		xfer->xferBool(&m_51);
-		xfer->xferUnsignedInt(&m_54);
+		xfer->operator==(m_51);
+		xfer->operator==(m_54);
 	}
 }
 

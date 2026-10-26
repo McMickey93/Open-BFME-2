@@ -259,24 +259,24 @@ Script::Script(const Script &other)
 // preserves native EBP-8/-7; groupCount occupies EBP-4. Padding is neither
 // read nor transferred. Whole body and the existing Script EH family match.
 struct ScriptListXferVersion { unsigned char version, maximum; unsigned short padding; };
-template<int N> class ScriptListXferSlots : public ScriptListXferSlots<N - 1>
-{ public: virtual void gap(char (*)[N]); };
-template<> class ScriptListXferSlots<0> {};
-class Xfer : public ScriptListXferSlots<10>
-{
-public:
-    virtual void transferVersion(ScriptListXferVersion *);
-    virtual void gap11();
-    virtual void transferSnapshot(Snapshot *);
-    virtual void gap13(); virtual void gap14(); virtual void gap15();
-    virtual void gap16(); virtual void gap17(); virtual void gap18();
-    virtual void gap19(); virtual void gap20(); virtual void gap21();
-    virtual void gap22(); virtual void gap23(); virtual void gap24();
-    virtual void gap25(); virtual void gap26(); virtual void gap27();
-    virtual void gap28(); virtual void gap29(); virtual void gap30();
-    virtual void gap31();
-    virtual void transferUnsignedShort(unsigned short *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 struct ScriptListXferRecord
 {
     int previous, next;
@@ -310,13 +310,13 @@ void ScriptList::xfer(Xfer *xfer)
     ScriptListXferVersion version;
     version.version = 1;
     version.maximum = 2;
-    xfer->transferVersion(&version);
+    xfer->operator==(reinterpret_cast<Xfer::Version &>(version));
     unsigned short count = (unsigned short)(scripts.sortedEnd - scripts.sortedBegin);
-    xfer->transferUnsignedShort(&count);
+    xfer->operator==(count);
     for (int index = scripts.head; index != -1;
          index = scripts.recordsBegin[index].previous) {
         void *node = scripts.recordsBegin[index].node;
-        xfer->transferSnapshot((Snapshot *)((char *)node + 4));
+        xfer->operator==(*((Snapshot *)((char *)node + 4)));
         if (--count == 0)
             break;
     }
@@ -324,17 +324,17 @@ void ScriptList::xfer(Xfer *xfer)
         if (!s_mtScript)
             s_mtScript = new Script;
         while (count) {
-            xfer->transferSnapshot(s_mtScript);
+            xfer->operator==(*(s_mtScript));
             --count;
         }
     }
     if (version.maximum >= 2) {
         groupCount = (unsigned short)(groups.sortedEnd - groups.sortedBegin);
-        xfer->transferUnsignedShort(&groupCount);
+        xfer->operator==(groupCount);
         for (int index = groups.head; index != -1;
              index = groups.recordsBegin[index].previous) {
             void *node = groups.recordsBegin[index].node;
-            xfer->transferSnapshot((Snapshot *)((char *)node + 4));
+            xfer->operator==(*((Snapshot *)((char *)node + 4)));
             if (--groupCount == 0)
                 break;
         }

@@ -17,7 +17,7 @@
 // key, the optimized-link key and the load-side waypoint share one frame slot.
 #include <map>
 #include <new>
-#include "../../../../Libraries/Include/Lib/Coord3D.h"
+#include "../../../../Libraries/Include/Lib/Coord3DBase.h"
 
 namespace _STL {
 template<class V,class L,class R> __declspec(dllimport) __forceinline bool operator!=(const _Rb_tree_iterator<V,L>&a,const _Rb_tree_iterator<V,R>&b){return a._M_node!=b._M_node;}
@@ -58,21 +58,25 @@ template<> __declspec(dllimport) __forceinline bool less<unsigned>::operator()(c
 template<> __declspec(dllimport) __forceinline pair<const int,int>::pair(const int&a,const int&b):first(a),second(b){}
 }
 
-class Xfer
-{
-public:
-	virtual void slot00(); virtual void slot01(); virtual bool IsStoring() const;
-	virtual void slot03(); virtual bool IsLightCRC() const;
-	virtual void slot05(); virtual void slot06(); virtual void slot07(); virtual void slot08(); virtual void slot09();
-	struct Version { unsigned char value, current; Version() : value(1), current(1) {} };
-	virtual Xfer &xferVersion(Version *);
-	virtual void slot11(); virtual void slot12(); virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18(); virtual void slot19(); virtual void slot20();
-	virtual void slot21(); virtual void slot22(); virtual void slot23(); virtual Xfer &xferCoord3D(Coord3D *);
-	virtual void slot25(); virtual void slot26(); virtual void slot27(); virtual Xfer &xferReal(float *);
-	virtual void slot29(); virtual Xfer &xferUnsignedInt(unsigned *); virtual Xfer &xferInt(int *);
-	virtual void slot32(); virtual void slot33(); virtual void slot34(); virtual void slot35(); virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+class Xfer::Version { public: unsigned char value, current; Version() : value(1), current(1) {} };
 Xfer *XferPathfindLayerEnum(Xfer *, int *);
 enum PathfindLayerEnum { LAYER_INVALID = 0 };
 
@@ -134,53 +138,53 @@ void Path::DoXfer(Xfer *xfer)
 	if (xfer->IsLightCRC())
 		return;
 	Xfer::Version version;
-	xfer->xferVersion(&version);
+	xfer->operator==(version);
 	int count = 0;
 	for (PathNode *node = head; node; node = node->next)
 		++count;
-	xfer->xferInt(&count);
+	xfer->operator==(count);
 	if (xfer->IsStoring()) {
 		Rva00364A37 ids;
 		unsigned key;
 		PathNode *node = tail;
 		while ((key = (unsigned)node), node) {
 			ids.idOf(key) = count;
-			xfer->xferInt(&count);
+			xfer->operator==(count);
 			Coord3D position;
 			position.x = node->position.x; position.y = node->position.y; position.z = node->position.z;
-			xfer->xferCoord3D(&position);
+			xfer->operator==(asBase(position));
 			int layer = node->layer;
 			XferPathfindLayerEnum(xfer, &layer);
 			bool canOpt = node->canOptimize;
-			xfer->xferBool(&canOpt);
+			xfer->operator==(canOpt);
 			int optID = -1;
 			if (node->optimized)
 				optID = ids.idOf((unsigned)node->optimized);
-			xfer->xferInt(&optID);
+			xfer->operator==(optID);
 			unsigned waypoint = node->waypoint;
-			xfer->xferUnsignedInt(&waypoint);
+			xfer->operator==(waypoint);
 			--count;
 			node = node->previous;
 		}
 		int currentID = 0;
 		if (current)
 			currentID = ids.idOf(current);
-		xfer->xferInt(&currentID);
+		xfer->operator==(currentID);
 	} else {
 		Rva00364A60 nodes;
 		while (count) {
 			int nodeID;
-			xfer->xferInt(&nodeID);
+			xfer->operator==(nodeID);
 			Coord3D position; position.x = 0; position.y = 0; position.z = 0;
-			xfer->xferCoord3D(&position);
+			xfer->operator==(asBase(position));
 			int layer;
 			XferPathfindLayerEnum(xfer, &layer);
 			bool canOpt;
-			xfer->xferBool(&canOpt);
+			xfer->operator==(canOpt);
 			int optID = -1;
-			xfer->xferInt(&optID);
+			xfer->operator==(optID);
 			unsigned waypoint = 0x7fffffff;
-			xfer->xferUnsignedInt(&waypoint);
+			xfer->operator==(waypoint);
 			void *storage = g_pathNodePool.rva002635C2();
 			PathNode *node = storage ? new (storage) PathNode(&position, (PathfindLayerEnum)layer) : 0;
 			nodes.get(nodeID) = node;
@@ -196,13 +200,13 @@ void Path::DoXfer(Xfer *xfer)
 			--count;
 		}
 		int currentID;
-		xfer->xferInt(&currentID);
+		xfer->operator==(currentID);
 		PathNode *curNode = 0;
 		if (currentID)
 			curNode = nodes.get(currentID);
 		current = curNode;
 		unknown24 = -1;
 	}
-	xfer->xferBool(&optimized).xferBool(&blocked).xferCoord3D(&goal).xferReal(&distance);
-	xfer->xferInt(&unknown00);
+	xfer->operator==(optimized).operator==(blocked).operator==(asBase(goal)).operator==(distance);
+	xfer->operator==(unknown00);
 }

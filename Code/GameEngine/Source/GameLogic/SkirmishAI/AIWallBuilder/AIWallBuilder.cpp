@@ -29,43 +29,24 @@ struct WallVersion
     WallVersion(unsigned char min, unsigned char cur) : minimum(min), current(cur) {}
     unsigned char minimum, current;
 };
-class Xfer{public:virtual~Xfer();virtual bool IsLoading() const;
-virtual bool IsStoring() const;
-virtual bool IsCRC() const;
-virtual void slot04();
-virtual void slot05();
-virtual void slot06();
-virtual void slot07();
-virtual void slot08();
-virtual void slot09();
-virtual Xfer &xferVersion(WallVersion *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual Xfer &xferCoord3D(struct Coord3D *);
-virtual void slot25();
-virtual void slot26();
-virtual Xfer& xferAsciiString(AsciiString*);
-virtual void slot28();
-virtual void slot29();
-virtual Xfer &xferUnsignedInt(unsigned int *);
-virtual Xfer& xferInt(int*);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 
 class ModuleData;
@@ -85,19 +66,19 @@ private: unsigned char m_prefix[8]; void *m_owner;
 };
 void AIWallBuilder::DoXfer(Xfer *xfer) {
     WallVersion version(1,1);
-    xfer->xferVersion(&version);
+    xfer->operator==(reinterpret_cast<Xfer::Version &>(version));
     unsigned int count=m_walls.size();
-    xfer->xferUnsignedInt(&count);
+    xfer->operator==(count);
     if (xfer->IsStoring()) {
         _STL::vector<AIWallIDView*>::iterator end=m_walls.end();
         for (_STL::vector<AIWallIDView*>::iterator it=m_walls.begin(); it!=end; ++it) {
             unsigned int id=static_cast<AIWallIDView*>(*it)->id;
-            xfer->xferUnsignedInt(&id);
+            xfer->operator==(id);
         }
     } else if (xfer->IsLoading()) {
         for (unsigned int i=0; i<count; ++i) {
             unsigned int id=-1;
-            xfer->xferUnsignedInt(&id);
+            xfer->operator==(id);
             void *wall=rva004E99B1(reinterpret_cast<void*>(id));
             if (wall) {
                 // Native append uses the canonical pointer-vector provider. Its

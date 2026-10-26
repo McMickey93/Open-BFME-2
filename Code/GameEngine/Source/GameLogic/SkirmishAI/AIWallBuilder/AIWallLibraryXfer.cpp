@@ -20,23 +20,24 @@ enum NameKeyType
 	NAMEKEY_INVALID = 0
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual void slot04(); virtual void slot05(); virtual void slot06(); virtual void slot07();
-	virtual void slot08(); virtual void slot09(); virtual void slot10(); virtual void slot11();
-	virtual void slot12(); virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18(); virtual void slot19();
-	virtual void slot20(); virtual void slot21(); virtual void slot22(); virtual void slot23();
-	virtual void slot24(); virtual void slot25(); virtual void slot26();
-	virtual Xfer &xferAsciiString(AsciiString *value); // +0x6C
-	virtual void slot28(); virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt *value); // +0x78
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class NameKeyGenerator
 {
@@ -88,14 +89,14 @@ void **rva004E99D6(void **first, void **last, const void *key);
 void Rva004E99F1Xfer(Xfer *xfer)
 {
 	UnsignedInt count = g_00E04484.end - g_00E04484.begin;
-	xfer->xferUnsignedInt(&count);
+	xfer->operator==(count);
 	if (xfer->IsStoring())
 	{
 		void **end = g_00E04484.end;
 		for (void **it = g_00E04484.begin; it != end; ++it)
 		{
 			AsciiString name = TheNameKeyGenerator->keyToName(((AIWall *)*it)->m_nameKey);
-			xfer->xferAsciiString(&name);
+			xfer->operator==(name);
 			((AIWall *)*it)->DoXfer(xfer, false);
 		}
 	}
@@ -104,7 +105,7 @@ void Rva004E99F1Xfer(Xfer *xfer)
 		for (UnsignedInt i = 0; i < count; ++i)
 		{
 			AsciiString name;
-			xfer->xferAsciiString(&name);
+			xfer->operator==(name);
 			NameKeyType key = TheNameKeyGenerator->nameToKey(name);
 			void **found = rva004E99D6(g_00E04484.begin, g_00E04484.end, &key);
 			if (found != g_00E04484.end)

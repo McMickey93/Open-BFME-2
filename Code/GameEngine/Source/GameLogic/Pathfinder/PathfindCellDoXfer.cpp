@@ -4,41 +4,24 @@
 // corroborated by PathfindCell constructor/reset and bitfield setters.
 enum ObjectID{INVALID_OBJECT_ID=0};
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
-class Xfer{public:
-virtual void slot0();
-virtual void slot1();
-virtual void slot2();
-virtual bool IsCRC()const;
-virtual void slot4();
-virtual void slot5();
-virtual void slot6();
-virtual void slot7();
-virtual void slot8();
-virtual void slot9();
-virtual void slot10();
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual Xfer&xferICoord2D(ICoord2D*);
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual void slot24();
-virtual void slot25();
-virtual void slot26();
-virtual void slot27();
-virtual void slot28();
-virtual void slot29();
-virtual void slot30();
-virtual Xfer&xferInt(int*);
-virtual Xfer&xferUnsignedShort(unsigned short*);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 void XferObjectID(Xfer*,ObjectID*);
 struct CellXferObject{char pad[0x74];ObjectID id;};
 struct CellXferLink{CellXferLink*next,*previous;CellXferObject*object;};
@@ -53,23 +36,23 @@ class PathfindCell{public:void DoXfer(Xfer*);
 void PathfindCell::DoXfer(Xfer*xfer){
  if(!xfer->IsCRC())return;
  if(info){
-  xfer->xferICoord2D(&info->coordinates);
-  xfer->xferUnsignedShort(&info->first);xfer->xferUnsignedShort(&info->second);
+  xfer->operator==(info->coordinates);
+  xfer->operator==(info->first);xfer->operator==(info->second);
   for(int i=0;i<5;++i)for(CellXferLink*cellXferLink=info->lists[i];cellXferLink;cellXferLink=cellXferLink->next){ObjectID id=cellXferLink->object->id;XferObjectID(xfer,&id);}
   XferObjectID(xfer,&info->owner);
-  int state0=info->state0;xfer->xferInt(&state0);
-  int state1=info->state1;xfer->xferInt(&state1);
-  int state2=info->state2;xfer->xferInt(&state2);
-  int state3=info->state3;xfer->xferInt(&state3);
-  int state4=info->state4;xfer->xferInt(&state4);
+  int state0=info->state0;xfer->operator==(state0);
+  int state1=info->state1;xfer->operator==(state1);
+  int state2=info->state2;xfer->operator==(state2);
+  int state3=info->state3;xfer->operator==(state3);
+  int state4=info->state4;xfer->operator==(state4);
  }
- xfer->xferUnsignedShort(&first);
- int cellType=type;xfer->xferInt(&cellType);
- int cellLayer=layer;xfer->xferInt(&cellLayer);
- int cellField10=field10;xfer->xferInt(&cellField10);
- int cellPinched=pinched;xfer->xferInt(&cellPinched);
- int cellGate=gate;xfer->xferInt(&cellGate);
- int cellBit22=bit22;xfer->xferInt(&cellBit22);
- int cellBit23=bit23;xfer->xferInt(&cellBit23);
- int cellField19=field19;xfer->xferInt(&cellField19);
+ xfer->operator==(first);
+ int cellType=type;xfer->operator==(cellType);
+ int cellLayer=layer;xfer->operator==(cellLayer);
+ int cellField10=field10;xfer->operator==(cellField10);
+ int cellPinched=pinched;xfer->operator==(cellPinched);
+ int cellGate=gate;xfer->operator==(cellGate);
+ int cellBit22=bit22;xfer->operator==(cellBit22);
+ int cellBit23=bit23;xfer->operator==(cellBit23);
+ int cellField19=field19;xfer->operator==(cellField19);
 }

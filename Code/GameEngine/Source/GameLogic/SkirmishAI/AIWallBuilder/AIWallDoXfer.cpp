@@ -7,43 +7,24 @@ struct WallVersion
     WallVersion(unsigned char min, unsigned char cur) : minimum(min), current(cur) {}
     unsigned char minimum, current;
 };
-class Xfer{public:virtual~Xfer();virtual bool IsLoading() const;
-virtual bool IsStoring() const;
-virtual bool IsCRC() const;
-virtual void slot04();
-virtual void slot05();
-virtual void slot06();
-virtual void slot07();
-virtual void slot08();
-virtual void slot09();
-virtual Xfer &xferVersion(WallVersion *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual Xfer &xferCoord3D(struct Coord3D *);
-virtual void slot25();
-virtual void slot26();
-virtual Xfer& xferAsciiString(AsciiString*);
-virtual void slot28();
-virtual void slot29();
-virtual Xfer &xferUnsignedInt(unsigned int *);
-virtual Xfer& xferInt(int*);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class Player;
 struct WallPlayerIndexView { unsigned char unknown[0x54]; int index; int getIndex() const {return index;} };
@@ -124,14 +105,14 @@ private:
 };
 void AIWall::DoXfer(Xfer *xfer,bool detachOwner) {
     WallVersion version(1,2);
-    xfer->xferVersion(&version);
+    xfer->operator==(reinterpret_cast<Xfer::Version &>(version));
     int ownerIndex=owner18?reinterpret_cast<const WallPlayerIndexView *>(owner18)->getIndex():-1;
-    xfer->xferInt(&ownerIndex);
+    xfer->operator==(ownerIndex);
     if(xfer->IsLoading() && ownerIndex!=-1)
         owner18=detachOwner?0:ThePlayerList->getNthPlayer(ownerIndex);
     {
     unsigned int count=orders08.size();
-    xfer->xferUnsignedInt(&count);
+    xfer->operator==(count);
     for(unsigned int i=0;i<count;++i) {
         if(i<orders08.size())
             orders08[i]->Rva00596CEA(xfer,owner18);
@@ -142,14 +123,14 @@ void AIWall::DoXfer(Xfer *xfer,bool detachOwner) {
     }
     }
     unsigned int selectedID=selected04?selected04->getKey():-1;
-    xfer->xferUnsignedInt(&selectedID);
+    xfer->operator==(selectedID);
     if(xfer->IsLoading() && selectedID!=-1) {
         Rva00596CDF **end=orders08.end();
         for(Rva00596CDF **it=orders08.begin();it!=end && selected04==0;++it)
             if((*it)->getKey()==selectedID) selected04=*it;
     }
     bool hasUpgrade=upgrade14!=0;
-    xfer->xferBool(&hasUpgrade);
+    xfer->operator==(hasUpgrade);
     if(xfer->IsStoring() && hasUpgrade)
         upgrade14->xfer(xfer,owner18);
     else if(xfer->IsLoading() && hasUpgrade) {
@@ -157,16 +138,16 @@ void AIWall::DoXfer(Xfer *xfer,bool detachOwner) {
         upgrade14->xfer(xfer,owner18);
     }
     unsigned int count2=orders1c.size();
-    xfer->xferUnsignedInt(&count2);
+    xfer->operator==(count2);
     int value=value34;
-    xfer->xferInt(&value);
+    xfer->operator==(value);
     value34=value;
-    xfer->xferInt(&value38);
+    xfer->operator==(value38);
     value=value3c;
-    xfer->xferInt(&value);
+    xfer->operator==(value);
     value3c=value;
-    xfer->xferInt(&value40);
-    xfer->xferUnsignedInt(&id44);
-    xfer->xferUnsignedInt(reinterpret_cast<unsigned int *>(&g_00E044A0));
+    xfer->operator==(value40);
+    xfer->operator==(id44);
+    xfer->operator==(*(reinterpret_cast<unsigned int *>(&g_00E044A0)));
     if(version.current>=2) Rva00149101XferNameKey(*xfer,key48);
 }

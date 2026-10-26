@@ -44,47 +44,24 @@ struct XferVersionPair
 	unsigned char minimum, current;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool IsLoading() const;
-	virtual void slot02();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersionPair *version);
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual Xfer &xferSlot20(void *value);
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual Xfer &xferAsciiString(AsciiString *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual Xfer &xferInt(int *value);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual Xfer &xferBool(bool *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 
 enum ScienceType
 {
@@ -181,27 +158,27 @@ private:
 void ArmySummary::xfer(Xfer *xfer)
 {
 	XferVersionPair version(1, 2);
-	xfer->xferVersion(&version);
-	xfer->xferBool(&m_flag14);
-	xfer->xferAsciiString(&m_name18);
+	xfer->operator==(reinterpret_cast<Xfer::Version &>(version));
+	xfer->operator==(m_flag14);
+	xfer->operator==(m_name18);
 	XferLivingWorldArmyID(xfer, &m_armyID);
-	xfer->xferAsciiString(&m_name20);
-	xfer->xferInt(&m_24);
-	xfer->xferInt(&m_28);
-	xfer->xferInt(&m_30);
-	xfer->xferInt(&m_34);
-	xfer->xferInt(&m_38);
+	xfer->operator==(m_name20);
+	xfer->operator==(m_24);
+	xfer->operator==(m_28);
+	xfer->operator==(m_30);
+	xfer->operator==(m_34);
+	xfer->operator==(m_38);
 	XferReinforcementState(xfer, &m_reinforcement);
-	xfer->xferInt(&m_60);
-	xfer->xferAsciiString(&m_name64);
-	xfer->xferSlot20(&m_58);
+	xfer->operator==(m_60);
+	xfer->operator==(m_name64);
+	xfer->operator==(reinterpret_cast<Coord2D &>(m_58));
 	XferArmySummaryEntryID(xfer, &m_entryID);
 	if (version.current >= 2)
 		Rva0040E19DXfer(xfer, &m_delayedCarryoverIds);
 	if (xfer->IsLoading())
 	{
 		int count;
-		xfer->xferInt(&count);
+		xfer->operator==(count);
 		m_entries.reserve(count);
 		for (int i = 0; i < count; ++i)
 		{
@@ -215,7 +192,7 @@ void ArmySummary::xfer(Xfer *xfer)
 	else
 	{
 		int count = m_entries.size();
-		xfer->xferInt(&count);
+		xfer->operator==(count);
 		for (int i = 0; i < count; ++i)
 		{
 			XferArmySummaryEntryID(xfer, &m_entries[i].m_id);

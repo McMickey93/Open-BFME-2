@@ -7,43 +7,24 @@ struct FarmVersion
     FarmVersion(unsigned char min, unsigned char cur) : minimum(min), current(cur) {}
     unsigned char minimum, current;
 };
-class Xfer{public:virtual~Xfer();virtual bool IsLoading() const;
-virtual bool IsStoring() const;
-virtual bool IsCRC() const;
-virtual void slot04();
-virtual void slot05();
-virtual void slot06();
-virtual void slot07();
-virtual void slot08();
-virtual void slot09();
-virtual Xfer &xferVersion(FarmVersion *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual Xfer &xferCoord3D(struct Coord3D *);
-virtual void slot25();
-virtual void slot26();
-virtual Xfer& xferAsciiString(AsciiString*);
-virtual void slot28();
-virtual void slot29();
-virtual Xfer &xferUnsignedInt(unsigned int *);
-virtual Xfer& xferInt(int*);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 class Player;
 namespace _STL
 {
@@ -166,16 +147,16 @@ private:
 void AIFarm::DoXfer(Xfer *xfer, Player *owner)
 {
     FarmVersion version(1,1);
-    xfer->xferVersion(&version);
-    xfer->xferBool(&value64);
+    xfer->operator==(reinterpret_cast<Xfer::Version &>(version));
+    xfer->operator==(value64);
     int index=-1;
     if (xfer->IsStoring() && m_owningPlayer)
         index=reinterpret_cast<const FarmPlayerIndexView *>(m_owningPlayer)->index;
-    xfer->xferInt(&index);
+    xfer->operator==(index);
     if (xfer->IsLoading() && index!=-1)
         m_owningPlayer=ThePlayerList->getNthPlayer(index);
-    xfer->xferInt(&value6c);
-    xfer->xferUnsignedInt(&value70);
+    xfer->operator==(value6c);
+    xfer->operator==(value70);
     reinterpret_cast<Rva00573F03 *>(this)->Rva00573F03::Rva00573F9F(xfer,m_owningPlayer);
 }
 
