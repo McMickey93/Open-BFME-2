@@ -151,3 +151,34 @@ three data debt keys retired. File reduction: zero; recovered C++ bytes: zero.
 Inherited recovery is reported separately and is not attributed as a new repair.
 MessageStream issue #116 and BFME 1's incomplete freshness verification remain
 unchanged. No fallback lane or independent naming vote was taken.
+
+### Confirmed publication and census-audit handoff
+
+The publisher confirmed source batch `c973319b7d..aa99981c20` pushed to master.
+The final normal pre-push gate verified six outgoing/affected source files,
+51/51 rows, 28 literals, five empty-string refs, five floats, one named import,
+and ten EXACT EH graphs; converged data had zero findings across ten addresses.
+
+The batch link audit remains **INCONCLUSIVE**: index `f995f30157` predates
+outgoing base `c973319b7d3e681a42d8e93c938cc1b2f2ced3f7`; two source objects lack
+current strict receipts, first `Code/GameEngine/Source/GameClient/Eva.cpp`.
+It stopped at that freshness boundary, so no provider/lost-byte clearance or
+linked-byte gain follows from this audit. LINK-017 remains open. Its register
+file claim is held by another worker: hand this exact range/index/receipt scope
+to that owner and carry it into the next census. No maintainer-only measurement
+was started. The independently supported bounded prerequisite/provider proofs
+remain in their committed receipts; no source merge was published.
+
+After confirmed publication, released all nineteen body/donor/target/evidence
+and data-register claims, including existing 0x006FA7E0; release --landed had no
+additional rows to settle. Only this final handoff file claim remains until its
+own publication is confirmed. It contains no source/path move; the pending audit
+therefore needs no active tooling/consumer repoint. No other worker's claim was
+released. If its small final commit is cooldown-held, the runner publishes it
+and the next session releases this final file claim.
+
+Final `python3 tools/progress.py origin/master`: BYTE-MATCHED 7,978,500 (100%),
+LINKING 7,322,361 (97.47%), LINKED 7,567,229 (98.14%), all deltas zero;
+authored C++ 7,249,397, delta zero. The census is still 2026-10-26 13:18 at
+d1f046749a / retail-truth-4. Actual work is the two newly demonstrated dry-run
+unblocks and three retired data keys, with inherited recovery separate.
