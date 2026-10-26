@@ -8,7 +8,7 @@
 // unwind correctly.
 //
 // Read from the retail bytes:
-//  * index0 = g_aptValueStackAtE182E0.At(0)->toInteger() (0x006FE580, 0x006DD360)
+//  * index0 = g_aptDateInterpreter.stack.At(0)->toInteger() (0x006FE580, 0x006DD360)
 //    and index1 = the same pair at index 1. The second read is guarded by
 //    `cmp esi,2` / `jl`, so a count below 2 skips it, which is why the second
 //    integer's seed is the constant 0x98967f rather than -1.
@@ -76,7 +76,8 @@ public:
 	BfmeAptValue006DCD20 *At(int index);
 };
 
-extern AptBasePtrStack g_aptValueStackAtE182E0;	// VA 0x00E182E0
+struct AptActionInterpreter { AptBasePtrStack stack; };
+extern AptActionInterpreter g_aptDateInterpreter;	// VA 0x00E182E0 (AptDateSetters.cpp); its value stack is the first member
 
 class AptString
 {
@@ -98,9 +99,9 @@ AptString *rva006d7a60(BfmeAptValue006DCD20 *value, int count, int unused)
 	if (count == 0)
 		return (AptString *)gpUndefinedValue;
 	if (count >= 1)
-		start = g_aptValueStackAtE182E0.At(0)->toInteger();
+		start = g_aptDateInterpreter.stack.At(0)->toInteger();
 	if (count >= 2)
-		end = g_aptValueStackAtE182E0.At(1)->toInteger();
+		end = g_aptDateInterpreter.stack.At(1)->toInteger();
 	value->rva006DD6C0(text);
 	int len = text.rva006D5EC0();
 	if (start < 0)

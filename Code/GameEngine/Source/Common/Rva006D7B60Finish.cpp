@@ -71,7 +71,8 @@ public:
 	BfmeAptValue006DCD20 *At(int index);
 };
 
-extern AptBasePtrStack g_aptValueStackAtE182E0;	// VA 0x00E182E0
+struct AptActionInterpreter { AptBasePtrStack stack; };
+extern AptActionInterpreter g_aptDateInterpreter;	// VA 0x00E182E0 (AptDateSetters.cpp); its value stack is the first member
 
 class AptString
 {
@@ -93,9 +94,9 @@ AptString *rva006d7b60(BfmeAptValue006DCD20 *value, int count, int unused)
 	if (count == 0)
 		return (AptString *)gpUndefinedValue;
 	if (count >= 1)
-		start = g_aptValueStackAtE182E0.At(0)->toInteger();
+		start = g_aptDateInterpreter.stack.At(0)->toInteger();
 	if (count >= 2)
-		end = g_aptValueStackAtE182E0.At(1)->toInteger();
+		end = g_aptDateInterpreter.stack.At(1)->toInteger();
 	if (start > end) {
 		int tmp = end;
 		end = start;

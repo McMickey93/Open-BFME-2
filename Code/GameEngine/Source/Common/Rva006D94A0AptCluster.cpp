@@ -24,9 +24,12 @@ public:
 	BfmeAptValue006DCD20 **m_aElements;
 };
 
-// The interpreter value stack at VA 0x00E182E0. The matched bodies use it only
-// through AptBasePtrStack::At, so the object name is TU-local.
-extern AptBasePtrStack g_aptValueStackAtE182E0;
+// The interpreter value stack is the first member of the ledger global
+// g_aptDateInterpreter at VA 0x00E182E0 (AptDateSetters.cpp). The matched bodies
+// use it only through AptBasePtrStack, so they read it through that view.
+struct AptActionInterpreter;
+extern AptActionInterpreter g_aptDateInterpreter;
+#define aptValueStack (*(AptBasePtrStack *)&g_aptDateInterpreter)
 
 class AptValue;
 class AptInteger
@@ -156,7 +159,7 @@ BfmeAptValue006DCD20 *rva006D9CE0(BfmeAptValue006DCD20 *pValue, int count)
 			for (int i = 0; i < count; ++i)
 			{
 				array->m_data[i] = 0;
-				BfmeAptValue006DCD20 *value = g_aptValueStackAtE182E0.At(i);
+				BfmeAptValue006DCD20 *value = aptValueStack.At(i);
 				array->rva006D95E0(i, value);
 			}
 		}
@@ -195,18 +198,18 @@ extern "C" int __cdecl rva006D9E40Comparator(const void *a, const void *b)
 		return 0;
 	BfmeAptValue006DCD20 *left = *(BfmeAptValue006DCD20 **)a;
 	BfmeAptValue006DCD20 *right = *(BfmeAptValue006DCD20 **)b;
-	AptActionInterpreter *interpreter = (AptActionInterpreter *)&g_aptValueStackAtE182E0;
+	AptActionInterpreter *interpreter = &g_aptDateInterpreter;
 	AptActionSetup setup;
 	setup.context = (BfmeAptValue006DCD20 *)g_rva006D9F00Data;
 	setup.value = g_rva006D9F00Handle;
 	setup.name = "AptArraySortScriptFunction";
 	setup.action = 0x1000000;
 	void *saved = interpreter->PrepareForExecution(&setup);
-	g_aptValueStackAtE182E0.Push(right);
-	g_aptValueStackAtE182E0.Push(left);
+	aptValueStack.Push(right);
+	aptValueStack.Push(left);
 	interpreter->callFunction((AptValue *)g_rva006D9F00Data, (AptValue *)g_rva006D9F00Handle, 2);
-	int result = g_aptValueStackAtE182E0.At(0)->toInteger();
-	g_aptValueStackAtE182E0.rva006FE920();
+	int result = aptValueStack.At(0)->toInteger();
+	aptValueStack.rva006FE920();
 	interpreter->CleanupAfterExecution(saved, &setup);
 	return result;
 }
@@ -288,7 +291,7 @@ BfmeAptValue006DCD20 *rva006D9F00(BfmeAptValue006DCD20 *pValue, int mode)
 		}
 		else
 		{
-			BfmeAptValue006DCD20 *value = g_aptValueStackAtE182E0.At(0);
+			BfmeAptValue006DCD20 *value = aptValueStack.At(0);
 			g_rva006D9F00Handle = value;
 			g_rva006D9F00Data = value->rva006DCEE0()->m_data;
 			qsort(array->m_data, array->mnLength, 4, rva006D9E40Comparator);
@@ -315,7 +318,7 @@ BfmeAptValue006DCD20 *rva006DA0C0(BfmeAptValue006DCD20 *pValue, int mode)
 
 		if (mode > 0)
 		{
-			g_aptValueStackAtE182E0.At(0)->rva006DD6C0(&(*reinterpret_cast<EAStringC *>(&g_eaStringAtE18060Storage)));
+			aptValueStack.At(0)->rva006DD6C0(&(*reinterpret_cast<EAStringC *>(&g_eaStringAtE18060Storage)));
 			qsort(array->m_data, array->mnLength, 4, rva006DA0C0Comparator);
 			(*reinterpret_cast<EAStringC *>(&g_eaStringAtE18060Storage)).rva006D3470();
 		}
@@ -345,7 +348,3 @@ void BfmeAptValue006DCD20::rva006D94A0()
 		}
 	}
 }
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A=?g_aptDateInterpreter@@3UAptActionInterpreter@@A")

@@ -24,7 +24,8 @@ public:
 	BfmeAptValue006DCD20 *At(int index);
 };
 
-extern AptBasePtrStack g_aptValueStackAtE182E0; // 0x00E182E0
+struct AptActionInterpreter { AptBasePtrStack stack; };
+extern AptActionInterpreter g_aptDateInterpreter;	// VA 0x00E182E0 (AptDateSetters.cpp); its value stack is the first member
 
 class Rva006DCE50Opaque;
 
@@ -60,7 +61,7 @@ extern AptValue *gpUndefinedValue;	// 0x00E18078, the rowed AptBuiltinValues.cpp
 
 void *rva006D7350(Rva006DCE50Opaque *source)
 {
-	int index = g_aptValueStackAtE182E0.At(0)->toInteger();
+	int index = g_aptDateInterpreter.stack.At(0)->toInteger();
 	void *data = ((BfmeAptValue006DCD20 *)source)->checkedString();
 	Rva006D5E70String *str = (Rva006D5E70String *)((char *)data + 8);
 	if (index < 0) {
