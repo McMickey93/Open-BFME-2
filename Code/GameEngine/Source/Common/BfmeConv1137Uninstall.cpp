@@ -151,7 +151,5 @@ void BfmeB1137::UnInstall_Materials(void) const
 	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 0x0b, 0);
 	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 0x18, 0);
 }
-// ?ScreenTextureStageStates@@3PAY0CA@IA: the global at VA 0xdeca38 is ?TextureStageStates@DX8Wrapper@@1PAY0CA@IA.
-#pragma comment(linker, "/alternatename:?ScreenTextureStageStates@@3PAY0CA@IA=?TextureStageStates@DX8Wrapper@@1PAY0CA@IA")
 
 // Inline public teardown calls Free_String directly; the standalone destructor is 0x00065F5B.

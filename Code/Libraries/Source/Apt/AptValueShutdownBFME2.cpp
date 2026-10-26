@@ -58,5 +58,3 @@ void AptValueShutdown(int bQuiet)
 #pragma comment(linker, "/alternatename:?rva0070A8B0@Rva0070A840@@QAEXXZ=?DestroyGCPointers@AptNativeHash@@QAEXXZ")
 #pragma comment(linker, "/alternatename:?gpGlobalGlobalObject@@3PAVAptValue@@A=?g_00E18650@@3VEAStringC@@A")
 
-// Existing address-derived consumer spells the native hash tag as class.
-#pragma comment(linker, "/alternatename:?g_bfmeAptHashAtE180E4@@3PAVAptNativeHash@@A=?g_bfmeAptHashAtE180E4@@3PAUAptNativeHash@@A")
