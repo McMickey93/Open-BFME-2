@@ -13,8 +13,7 @@
 // 0x005DA5D7 (FrameData::addCommand), rowed ctor 0x0058B88A, pinned
 // isEqual 0x0058B174, detach/delete duplicate path.
 
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *block) throw();
+#include <new>
 
 // Callers test only al, so BFME 2's version returns bool; the call resolves
 // through the _N pin at 0x005811B5.
