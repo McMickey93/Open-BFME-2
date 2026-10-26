@@ -41,6 +41,7 @@ extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count)
 extern "C" unsigned char *__cdecl _mbscpy(unsigned char *dest, const unsigned char *src) throw();
 void *__cdecl operator new(unsigned int size);
 void *__cdecl operator new[](unsigned int size);
+class NetCommandRef;
 class NetCommandMsg
 {
 public:
@@ -161,6 +162,10 @@ union GameMessageArgumentType
 	IRegion2D pixelRegion;
 	UnsignedInt timestamp;
 	unsigned short wChar;
+	unsigned char b;
+	unsigned short w;
+	Int ints[4];
+	char bytes[16];
 };
 
 class GameMessage
@@ -182,6 +187,7 @@ class NetGameCommandMsg : public NetCommandMsg
 public:
 	NetGameCommandMsg();
 	GameMessage *constructGameMessage();
+	void addArgument(GameMessageArgumentDataType type, GameMessageArgumentType arg);
 private:
 	UnsignedInt m_gameFields[5];
 };
