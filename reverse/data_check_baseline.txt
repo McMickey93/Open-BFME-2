@@ -118,9 +118,7 @@ Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va009FE4CC@@3P
 Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A01E48@@3PAUGlobalA01E48@@A	0x00A01E48
 Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A04910@@3PAUGlobalA04910@@A	0x00A04910
 Code/GameEngine/Source/Common/Rva0052906BUpdate.cpp	wrong-name	?$S1@?1??Rva0052906BUpdate@@YAXH@Z@4IA	0x00A04988
-Code/GameEngine/Source/Common/Rva00572DE8Slot1.cpp	wrong-name	_TheUpgradeCenter	0x009FEB60
 Code/GameEngine/Source/Common/Rva00598CBC.cpp	wrong-name	?g_00E063D4@@3VAsciiString@@A	0x00A063D4
-Code/GameEngine/Source/Common/Rva005AC98ACheck.cpp	wrong-name	_TheUpgradeCenter	0x009FEB60
 Code/GameEngine/Source/Common/Rva005C702DRead.cpp	duplicate-def	_c_table	0x00874934
 Code/GameEngine/Source/Common/Rva005C7889Init.cpp	wrong-name	?$S1@?1??Rva005C7889Init@@YAXXZ@4IA	0x00A065DC
 Code/GameEngine/Source/Common/Rva005D1F45.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
@@ -257,7 +255,6 @@ Code/GameEngine/Source/Common/System/RemoveUpgradeUpgradePoolKey.cpp	wrong-name	
 Code/GameEngine/Source/Common/System/ReplaceSelfUpgradePoolKey.cpp	wrong-name	?$S1@?1??rva0004B708A@ReplaceSelfUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F00
 Code/GameEngine/Source/Common/System/Rva00074AFFInit.cpp	wrong-name	?$S1@?1??Rva00074AFFGet@@YGPAVRva000748F6@@H@Z@4IA	0x009E1F14
 Code/GameEngine/Source/Common/System/Rva000B9DD9.cpp	wrong-name	?g_00DEC2D4@@3PAXA	0x009EC2D4
-Code/GameEngine/Source/Common/System/Rva0028900AParse.cpp	wrong-name	_TheUpgradeCenter	0x009FEB60
 Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?TheRva002D3627Host@@3PAVRva002D3627Host@@A	0x009FF028
 Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
 Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?g_00DFEC68@@3PAVRva00285D34@@A	0x009FEC68

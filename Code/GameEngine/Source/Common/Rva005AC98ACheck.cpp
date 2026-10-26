@@ -36,7 +36,7 @@ public:
 };
 
 extern PlayerList *ThePlayerList;
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 
 class AIRingHeroTactic
 {

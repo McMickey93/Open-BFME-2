@@ -12,7 +12,7 @@ class GameLogic;
 class UpgradeCenter;
 
 extern GameLogic *TheGameLogic;
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 
 struct Rva002A8AB1Record
 {
