@@ -578,7 +578,19 @@ void __cdecl Rva002176F1Insert(MixFileCreator::FileInfoStruct *, MixFileCreator:
 // The recovered cdecl worker consumes the same value and ignores that word.
 typedef void (__cdecl *QRInsertCall)(BfmeElemQR *, BfmeElemQR, void *);
 
-struct Rva00218E09Record { Rva00218E09Record(); Rva00218E09Record(const Rva00218E09Record&); ~Rva00218E09Record(); Rva00218E09Record&operator=(const Rva00218E09Record&); char bytes[16]; bool operator<(const Rva00218E09Record&)const; };
+// The sorted record has MixFileCreator::FileInfoStruct's layout (CRC, Offset,
+// Size, Filename) and compares by signed CRC inline, as the rowed partition
+// 0x00217AB0 and the int median 0x00331716 it folds onto do; the implicit
+// dtor and copy-assign stay inline, so nothing here is left unresolved.
+struct Rva00218E09Record
+{
+	Rva00218E09Record(const Rva00218E09Record &src);
+	bool operator<(const Rva00218E09Record &src) const { return (int)CRC < (int)src.CRC; }
+	unsigned long CRC;
+	unsigned long Offset;
+	unsigned long Size;
+	AsciiString Filename;
+};
 
 template void _STL::sort(Rva00218E09Record*,Rva00218E09Record*);
 
