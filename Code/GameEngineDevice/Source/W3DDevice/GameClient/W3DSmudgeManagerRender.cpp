@@ -1,4 +1,5 @@
 // ?render@W3DSmudgeManager@@QAEXAAVRenderInfoClass@@@Z
+// platformsdk
 // cl: /DNDEBUG /MD /EHsc /O1 /arch:SSE /G7
 //
 // W3DSmudgeManager::render, retail 0x000A6E08, 2447 bytes.
@@ -35,10 +36,7 @@
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-typedef unsigned int UINT;
-typedef unsigned long DWORD;
-typedef unsigned long ULONG;
-typedef long HRESULT;
+#include <windows.h>
 
 #define SMUDGE_DRAW_SIZE 500
 

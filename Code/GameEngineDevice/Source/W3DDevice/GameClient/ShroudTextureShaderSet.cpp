@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 // ?set@ShroudTextureShader@@EAEHH@Z retail 0x000F5D3B..0x000F630C (1489 bytes).
 // Slot 4 of the shader vftable at 0x007CF1C8: the next slots are reset
 // (0x000F5B5F: clears the texture of the stage saved at +8 and restores
@@ -16,9 +17,7 @@
 // transpose; inverse view; draw-origin translation; texel scaling; two
 // D3DXMatrixMultiply temporaries) and the terrain shroud/map fields are the
 // BFME 2 offsets 3878/37C0 proven there.
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef unsigned int UINT;
+#include <windows.h>
 typedef DWORD D3DRENDERSTATETYPE;
 typedef DWORD D3DTEXTURESTAGESTATETYPE;
 

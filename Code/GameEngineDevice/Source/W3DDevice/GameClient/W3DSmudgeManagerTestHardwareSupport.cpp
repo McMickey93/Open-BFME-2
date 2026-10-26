@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /O1 /arch:SSE /G7
+// platformsdk
 //
 // W3DSmudgeManager::testHardwareSupport, retail 0x000A648C, 930 bytes.
 // Ported from Open-BFME-1's
@@ -24,14 +25,8 @@
 typedef int Int;
 typedef int Bool;
 typedef float Real;
-typedef unsigned int UINT;
-typedef unsigned long DWORD;
-typedef unsigned long ULONG;
-typedef long HRESULT;
-typedef char TCHAR;
+#include <windows.h>
 
-#define FALSE 0
-#define TRUE 1
 #define UNIQUE_COLOR (0x12345678)
 #define BLOCK_SIZE (8)
 
