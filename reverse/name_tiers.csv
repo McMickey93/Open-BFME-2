@@ -861,7 +861,7 @@ _Rva0088E1A0ShowAssertCrashDialog,0x0003D880,address,placeholder
 ?rva00041F81@Win32GameEngine@@UAEPAXXZ,0x00041F81,address,placeholder
 ?name@Rva00041FC9Named@@QBEPBDXZ,0x00041FC9,address,placeholder
 ?rva00041FCF@Rva0004208C@@QAEPAXXZ,0x00041FCF,address,placeholder
-?rva00042036@Rva00042036@@QAEPAVRva000647B5@@XZ,0x00042036,address,placeholder
+?rva00042036@Rva00042036@@QAEPAVRva000647D4@@XZ,0x00042036,address,placeholder
 ??_ERva0004208C@@WM@AEPAXI@Z,0x00042068,address,placeholder
 ??_GRva0004208C@@UAEPAXI@Z,0x00042070,address,placeholder
 ?rva00042091@Win32GameEngine@@UAEPAXXZ,0x00042091,address,placeholder
@@ -1174,7 +1174,7 @@ _Rva0088E1A0ShowAssertCrashDialog,0x0003D880,address,placeholder
 ?detach@Rva006BD6C0@@QAEXXZ,0x00063C33,address,placeholder
 ?drain@Rva006BDB00@@QAEXXZ,0x00063C48,address,placeholder
 ?_M_clear@?$vector@URva00255D17@@V?$allocator@URva00255D17@@@_STL@@@_STL@@IAEXXZ,0x0006445F,address,placeholder
-??0Rva000647B5@@QAE@XZ,0x000647B5,address,placeholder
+??0Rva000647D4@@QAE@XZ,0x000647B5,address,placeholder
 ?name@Rva000647CENamed@@QBEPBDXZ,0x000647CE,address,placeholder
 ??1Rva000647D4@@UAE@XZ,0x000647D4,address,placeholder
 ?xfer@Rva000647D4@@MAEXPAVXfer@@@Z,0x000647E6,address,placeholder
