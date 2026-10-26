@@ -461,7 +461,6 @@ Code/GameEngine/Source/GameLogic/Object/Collide/UnitCrateCollidePoolKey.cpp	wron
 Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047B51E@AODHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A036F8
 Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004663FF@CaveContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0364C
 Code/GameEngine/Source/GameLogic/Object/Contain/CitadelSlaughterHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva000480600@CitadelSlaughterHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03770
-Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainModuleDataCtor.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp	wrong-name	?$S1@?1??rva000466B88@HealContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03658
 Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva00046F860@HordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0367C
 Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047A0E6@HordeGarrisonContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A036EC
@@ -497,7 +496,6 @@ Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDie.cpp	wrong-name	
 Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDieFind.cpp	wrong-name	?$S1@?1??Rva00486687Find@@YAPAXPAX@Z@4IA	0x00A03878
 Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamagePoolKey.cpp	wrong-name	?$S1@?1??rva0004BAB55@ReflectDamage@@SA?AW4NameKeyType@@XZ@4IA	0x00A03FDC
 Code/GameEngine/Source/GameLogic/Object/Die/RefundDiePoolKey.cpp	wrong-name	?$S1@?1??rva00048521D@RefundDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A0381C
-Code/GameEngine/Source/GameLogic/Object/Die/Rva004bb3a7Finish.cpp	wrong-name	?g_009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Die/SpecialPowerCompletionDiePoolKey.cpp	wrong-name	?$S1@?1??rva000486A2F@SpecialPowerCompletionDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03890
 Code/GameEngine/Source/GameLogic/Object/Die/SquishCollidePoolKey.cpp	wrong-name	?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04010
 Code/GameEngine/Source/GameLogic/Object/Die/TransitionDamageFXPoolKey.cpp	wrong-name	?$S1@?1??rva0004BA437@TransitionDamageFX@@SA?AW4NameKeyType@@XZ@4IA	0x00A03FD0
@@ -633,7 +631,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdatePoolKey.cpp	w
 Code/GameEngine/Source/GameLogic/Object/Update/POWTruckAIUpdateCtor.cpp	duplicate-def	_s_dummyFD98	0x0085FD98
 Code/GameEngine/Source/GameLogic/Object/Update/PartTheHeavensUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004AC942@PartTheHeavensUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D0C
 Code/GameEngine/Source/GameLogic/Object/Update/PickupStuffUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000491DF2@PickupStuffUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039D0
-Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdate/QueueProductionExitUpdateQueryRallyOverride.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049E15E@ProductionUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B60
 Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0033EE84@ProjectileStreamUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A01DE0
 Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049FE9A@ProneUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B78
