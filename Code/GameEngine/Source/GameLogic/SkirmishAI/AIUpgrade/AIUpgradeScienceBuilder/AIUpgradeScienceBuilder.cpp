@@ -4,6 +4,8 @@
 #include "ascii_string.h"
 #include "../../../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../Common/GameLogicObjectLookupView.h"
+#include "ScienceBuilderPruneView.h"
+#include "ScienceBuilderView.h"
 
 class Object;
 
@@ -94,12 +96,6 @@ struct Rva002A8AB1Record
 	char m_pad00[0x16C];
 	int get16C() const { return m_16C; }
 	int m_16C;		// +0x16C
-};
-
-class Rva002A8F24
-{
-public:
-	Rva002A8AB1Record *rva002A8AB1(void *owner);	// 0x002A8AB1
 };
 
 extern Rva002A8F24 *TheSkirmishAIManager;
@@ -244,44 +240,7 @@ public:
 // (0x004DFCB0) through two of its existing storage views, ModuleData pointers
 // and longs: retail's two calls name distinct instantiations (one view would
 // let the compiler merge the calls), and no record is a ModuleData or long.
-enum ScienceType
-{
-	SCIENCE_DUMMY = 0
-};
-
 class ModuleData;
-
-namespace _STL
-{
-	template<class T> class allocator
-	{
-	};
-	template<class T, class A = allocator<T> > class vector
-	{
-	public:
-		void push_back(const T &value);
-		T *m_begin, *m_end, *m_limit;
-	};
-}
-
-class BaseA
-{
-public:
-    virtual void Register(Object *, void *) = 0;
-    virtual void UnRegister(Object *) = 0;
-    virtual ~BaseA();
-    int m_04;
-    int m_08;
-};
-
-class Rva00506B1B
-{
-public:
-    virtual ~Rva00506B1B();
-    virtual void rva00597fc5() = 0;
-    virtual void shutdown() = 0;
-    bool m_04;
-};
 
 // Address-derived range-30 body at 0x00597FC5 (66 bytes). Target bytes pass
 // this-0x0C to the rowed 0x005977D3, 0x0059781D, and
@@ -289,18 +248,6 @@ public:
 // walk the begin/end pair at this+0x18/+0x1C and call 0x005975C0 for entries
 // whose byte at +0x34 is set. The 0x00597983 callee has a string-xref lead
 // into this file, but its identity remains unknown.
-class Rva005977D3
-{
-public:
-	void rva005977D3();
-};
-
-class Rva0059781D
-{
-public:
-	void rva0059781D();
-};
-
 class Rva00597983
 {
 public:
@@ -324,26 +271,6 @@ struct Rva0059764AMask
     unsigned &word(unsigned bit) { return m_bits[bit / 32]; }
     void set(unsigned bit) { word(bit) |= 1UL << (bit % 32); }
     unsigned m_bits[7];
-};
-
-class AIUpgradeScienceBuilder : public BaseA, public Rva00506B1B
-{
-public:
-    virtual void Register(Object *, void *);
-    virtual void UnRegister(Object *);
-    virtual ~AIUpgradeScienceBuilder();
-    virtual void rva00597fc5();
-    virtual void shutdown();
-	bool rva0059764A(Object *object);	// 0x0059764A
-	void buildExpansionUpgrades();
-private:
-	Player *m_14;			// +0x14 the owner
-	_STL::vector<ScienceType> m_objects;	// +0x18
-	_STL::vector<const ModuleData *> m_upgrades;	// +0x24
-	Rva00597E30Entry **m_30;	// +0x30 the entries
-	Rva00597E30Entry **m_34;	// +0x34 their end
-	char m_pad38[0x3C - 0x38];
-	unsigned m_3C;			// +0x3C the last frame
 };
 
 // ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AIUpgrade/AIUpgradeScienceBuilder/AIUpgradeScienceBuilderKindMask.cpp

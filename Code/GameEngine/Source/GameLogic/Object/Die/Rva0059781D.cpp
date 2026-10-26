@@ -1,34 +1,15 @@
 // cl: /GX-
 // ?rva0059781D@Rva0059781D@@QAEXXZ @0x0059781D 208B: prune two voidptr vectors at +0x24/+0x30 erasing null or checked via rowed findObjectByID 0x00049DC5 and 0x004E9378 with slot0+delete then 0x0055ADBA on flag; caller 0x00597FC5
-#include "../../../Common/GameLogicObjectLookupView.h"
+#include "../../SkirmishAI/AIUpgrade/AIUpgradeScienceBuilder/ScienceBuilderPruneView.h"
 
-class Object
+struct SciencePruneRecordObjectView
 {
-public:
 	char m_pad00[0x438];
 	unsigned char m_438;
 };
 
 
 extern GameLogic *TheGameLogic;
-
-namespace _STL
-{
-
-template <class _Tp> class allocator
-{
-};
-
-template <class _Tp, class _Alloc> class vector
-{
-public:
-	_Tp *erase(_Tp *pos);
-	_Tp *m_start;
-	_Tp *m_finish;
-	_Tp *m_end;
-};
-
-}
 
 class Elem
 {
@@ -56,22 +37,10 @@ public:
 
 void __cdecl operator delete(void *p);
 
-class Rva0059781D
-{
-public:
-	void rva0059781D();
-private:
-	char m_pad00[0x14];
-	void *m_14;
-	_STL::vector<void *, _STL::allocator<void *> > m_vec18;
-	_STL::vector<void *, _STL::allocator<void *> > m_vec24;
-	_STL::vector<void *, _STL::allocator<void *> > m_vec30;
-};
-
 void Rva0059781D::rva0059781D()
 {
-	void **it = m_vec24.m_start;
-	while (it != m_vec24.m_finish)
+	void **it = m_vec24.m_begin;
+	while (it != m_vec24.m_end)
 	{
 		Elem *elem = (Elem *)*it;
 		Object *obj = TheGameLogic->findObjectByID(elem->m_id08);
@@ -96,14 +65,14 @@ void Rva0059781D::rva0059781D()
 		::operator delete(q);
 		it = m_vec24.erase(it);
 	}
-	void **it2 = m_vec30.m_start;
-	while (it2 != m_vec30.m_finish)
+	void **it2 = m_vec30.m_begin;
+	while (it2 != m_vec30.m_end)
 	{
 		Elem *elem = (Elem *)*it2;
 		Object *obj = TheGameLogic->findObjectByID(elem->m_id08);
 		if (obj != 0)
 		{
-			if ((obj->m_438 & 1) == 0)
+			if ((((SciencePruneRecordObjectView *)obj)->m_438 & 1) == 0)
 			{
 				if (!((Rva004E9378 *)elem)->rva004E9378())
 				{
