@@ -183,6 +183,8 @@ authored-byte previews or commit-title gains into a projected headline.
   admission and current-input provider/consumer gates when claims permit;
   preserve the shared pin and do not equate unrelated equal-sized records.
 
+**Assigned-unit recheck (2026-10-26, inspected `896af216804e`):** the local d1f046749a index and current objects still block `AerialPathfinder.cpp`, `Rva0052CD81Finish.cpp`, `ProductionPrerequisiteAssign.cpp` and `ProductionPrerequisiteRecVectorInsertOverflow.cpp`. No source change is retained in these four. The Aerial native-list bank remains the prerequisite; its missing base spelling and imported allocator are additional current findings. SaveMapPreview's count-base and non-const uninitialized-copy names have only wrong indexed copies, so declaration-only suppression has no proven replacement. The prerequisite assignment still conflates vector<int> with the 177-byte nontrivial-element assignment at 0x0021C21B; the record assignment and PrereqUnitRec construction/overflow also retain wrong selected copies from the RTS provider. Preserve the earlier failed exception-contract trials. Next: reconcile native element identities, exact helper callees and folded-name admissions across the provider family. Raw current results and native references are in `build/link-worker-20261026-w2/all-cohort-before.log`, `all-cohort-after.log`, `native-rows.log` and `dependencies2.log`; the full handoff is `build/link-report.md`. Clearance and census confirmation remain pending.
+
 ### LINK-003: residual Zero Hour memory-pool interfaces
 
 **Status: Open. Updated: 2026-10-25.**
@@ -542,6 +544,8 @@ authored-byte previews or commit-title gains into a projected headline.
   selected definitions. Do not add a duplicate identity, stub or escape hatch
   to satisfy an old spelling. Clearance and census confirmation remain pending.
 
+**Assigned subsystem/module recheck (2026-10-26, inspected `896af216804e`):** `WeaponStore.cpp`, `GameWindowDtor.cpp`, `SlowDeathBehavior.cpp` and `LockWeaponCreate.cpp` retain their blockers in the paired 78-unit ordinary preview against d1f046749a. No source trial is retained in these units. WeaponStore still needs one native subsystem/table identity shared with the 225-byte `Rva002CCD56` destructor and its rowed deleting destructor at 0x002CD5E0; the current `unused` slot points at that deleting destructor. GameWindow still needs the full 11-slot native table reconciliation already documented above, rather than matching an incomplete copy. SlowDeath's unresolved disabled-mask and CRC references come from unrowed port/header emission; its wrong applicability and pool copies remain. LockWeaponCreate's current table spelling `xfer` occupies the native slot that reaches the 0x00497805 load-post-process wrapper, so a same-address rename would assert the wrong interface. Its native create-interface slot 1 reaches 0x004B8CC9, currently rowed as `BfmeThing940G::bfmeGo940G` (21 bytes), a candidate for naming after interface proof. Next: reconcile the native interfaces and provider names before changing consumers. Raw evidence: `build/link-worker-20261026-w2/vtable-targets.log`, `dependencies2.log` and the paired cohort logs; details in `build/link-report.md`. No clearance or census claim.
+
 ### LINK-005: units blocked by several incompatible dependencies
 
 **Status: Open. Updated: 2026-10-25.**
@@ -663,6 +667,8 @@ authored-byte previews or commit-title gains into a projected headline.
   Native receipt: https://github.com/McMickey93/Open-BFME-2/actions/runs/40240437884.
 
 - **Near-linking constructor scope (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`, retail-truth-4):** `BfmeConv881O1.cpp`, `RTS/PlayerRelationMapCtor.cpp`, `RTS/PlayerCtorBFME2.cpp`, `Rva00415704Ctor.cpp` and `StlSweepW4Rva001FEAB2.cpp` no longer replace three empty allocator/vector bodies with declaration-only specializations. The visible STLport bodies restore the native 64-byte hashtable-constructor shape instead of the former 77-byte shape. Removing only the allocator destructor declaration left 65 bytes; also revealing the vector constructor still left 65 bytes while its base stayed declaration-only. The complete change clears the corresponding ordinary-preview COMDAT/selected blockers. The sibling `StlSweepW4Rva001FEAB2.cpp` must change with PlayerCtor so their no-address copies agree; its 31-byte row remains exact and it still links. Raw paired previews, disassemblies, all six edited sources' byte/frozen/EH/data gates and the combined 149/149-row check are in `build/link-worker-w1/`; `build/link-report.md` maps each receipt. `comdat_verdicts.py` calls the resulting 64-byte copies `unknown`, so this is a cleared ordinary-preview blocker scope, not a full retail-body or census claim. Whole-unit blockers remain: two opaque XferSave element destructors, the PlayerRelationMap vtable, the 0x00415704 subsystem destructor, and PlayerCtor's existing UnitRevivalTracker/energy virtuals. Next check: reconcile those actual types and tables without restoring the three stale specializations. Census confirmation pending.
+
+**Assigned split-name/provider recheck (2026-10-26, inspected `896af216804e`):** `Rva006C3CC0Cluster.cpp`, `Rva006DE1A0Finish.cpp`, `Rva006F84C0DeletingDtor.cpp`, `AptPlayerTooltipMap.cpp`, `GameWindowManager_registerTabList.cpp` and `StateMachineDefineState.cpp` remain blocked against d1f046749a with current providers. No source change is retained. The allocator destructor calls the five-byte 0x00034D00 thunk, whereas its declared GeneralAllocator destructor pin targets the 309-byte 0x00033D50 owner; the real destructor/thunk identities need reconciliation without replacing a real destructor call by a placeholder. The pooled deleting destructor reaches the existing 37-byte `Rva006F8460` destructor, but its local complete-destructor definition is wrong; a folded-name/provider decision is required. The Apt value constructor retains the prior 15-slot hierarchy and split-class naming prerequisite; AptPlayer also needs its actual heterogeneous member types, the 68-byte `DetailedArchivedDirectoryInfo` destructor at 0x00224252 instead of `Rva00224C95`, and a complete table contract. The registerTabList call targets 0x002C54EE while the current list<GameWindow*> assignment row names 0x0046F0C2; State's eight-byte map still shares a falsely identified 16-byte-value `_M_insert` row at 0x0053479F. These are naming/ownership prerequisites, not missing bodies proven by an unresolved spelling. Preserve the earlier failed trials. Next: resolve each native identity before suppressing a copy or requesting a fold pin. Raw evidence and exact row homes: `build/link-worker-20261026-w2/dependencies2.log`, `native-rows.log`, `provider-paths.log` and `build/link-report.md`. No clearance or census claim.
 
 ### LINK-007: incomplete data ownership beyond clean symbol resolution
 
@@ -1176,6 +1182,8 @@ confirmation remain pending.
   `pointgr.cpp`, `PointGroupClassRva0017A890.cpp`, `DX8SkinClearVisibleList.cpp` and
   `vector_class_vector3_ctor.cpp`; `Rva007B7280Siblings.cpp` and `Rva007B73C0.cpp` still
   lose one COMDAT each, as expected.
+
+**Destructor specialization trial (2026-10-26, inspected `896af216804e`):** a TU-local `dllimport` plus `forceinline` specialization of the existing Vector3 destructor, retaining the header's qualified `Clear()` operation, does not suppress the losing deleting destructor and changes both `rva007B7280` and `rva007B7400`. The byte gate fails 2/6; the trial is fully reversed. The restored source passes 6/6 and retains its original single blocker with the current owner and sibling objects. Raw outputs: `build/link-worker-20261026-w2/vector-inline-preview.log`, `vector-inline-build.log`, `vector-restored-preview.log` and `vector-restored-build.log`. Do not repeat this specialization. The native table ownership or approved TU consolidation prerequisite above remains; census confirmation is pending.
 
 ### LINK-016: folded bodies whose consumers declare them decl-only, with no provider
 
@@ -1702,6 +1710,8 @@ Remaining / next check: the declaration must land between `BitFlags.h` and `Kind
 units), then re-verify each unit's rowed callers still call 0x00666E80.
 Clearance: pending.
 Census confirmation: not claimed.
+
+**Current-provider recheck (2026-10-26, inspected `896af216804e`):** `BitFlagsClear.cpp`, `DumbProjectileBehavior.cpp`, `Player.cpp` and `WeaponSet.cpp` were checked together against d1f046749a. The row owner still loses its reset copy and sees a wrong selected clear copy. No new source trial or shared-header edit is applied. The previously documented include-order/shared-view prerequisite remains; a future repair must preserve every provider and consumer row. Raw evidence: `build/link-worker-20261026-w2/all-cohort-before.log`, `all-cohort-after.log` and `provider-paths.log`. No clearance or census claim.
 
 ### LINK-031: `TransportContain.cpp` predicts a duplicate module-data ctor after its merge
 
@@ -2469,3 +2479,27 @@ Verification: `build/link-worker-w1/audio-before.log` reports three unresolved n
 Remaining / next check: the integer public signature still records the old opaque key ABI; a future naming/identity pass can correct its source signature with its callers and ledger under the normal rename rules. This does not block the verified current call binding. Confirm the unit in the next normal maintainer census.
 Clearance: cleared in ordinary-preview scope; census confirmation pending.
 Census confirmation: pending; no headline change claimed.
+
+### LINK-049: an entire hashtable instantiation adds allocator dependencies to one row
+
+Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected unit: `Code/GameEngine/Source/Common/System/XferBlockWriter_rva009D86E0_Rva0060CB97.cpp`, the 21-byte `_M_bkt_num_key(key, count)` row. The whole-class hashtable instantiation emits unrowed operations that reference undefined `__node_alloc<false,0>::_M_allocate` and `_M_deallocate`.
+Completed: explicitly instantiate only the existing member from the same STLport primary definition. The matched row is unchanged, and the unit now LINKS. The removed selected copies have no external referrers in the index reference graph; the paired 78-unit preview introduces no blocker. Raw proof: `build/link-worker-20261026-w2/xfer-member-build2.log`, `removed-selected-consumers.log`, `paired-comparison.log` and `all-cohort-after.log`.
+Remaining / next check: confirm this unit and the removed-provider scope in the next scheduled census. The build, frozen-file, EH and data checks pass; CSV and pin consistency pass. Full local receipt: `build/link-report.md`.
+Clearance: cleared in ordinary-preview scope; census confirmation pending. No census headline change is claimed.
+
+### LINK-050: an ATL cache initializer retains BFME 1 callback and storage names
+
+Status: Cleared in ordinary-preview scope; data-owner reconciliation remains. Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected unit: `Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp`, 25 bytes at 0x007B556E. Native instructions zero 16 bytes at VA 0x00E09E50 and register 0x007B9B0A. `atlimage.cpp` already defines the 16-byte `ATL::CImage::s_cache`; `Rva007B6A00AtexitThunks.cpp` already defines the cleanup, which jumps to the rowed cache destructor at 0x00628BC5.
+Completed: bind the initializer to those existing names, preserving the private nested cache type and all 25 bytes. All three units LINKS; both providers retain their previous results. Raw evidence: `build/link-worker-20261026-w2/native-initializer.log`, `static-providers-before.log`, `static-cache-preview.log` and `static-cache-build.log`.
+Remaining / next check: reconcile the stale four-byte `g_Va00E09E50` data row with the actual 16-byte ATL owner. The shadow data checker exits zero but reports the real `s_cache` spelling as one new `wrong-name` finding because the four-byte data row overrides the provisional data ledger. No data register or owner definition is edited here. All required hard checks pass; see `build/link-report.md` and `final-data-Rva00C6E31EInitializers.log` in the same evidence directory.
+Clearance: cleared in ordinary-preview scope; census confirmation pending. This is no data-debt retirement or image-ownership claim.
+
+### LINK-051: removing DieModule's unrowed field parser removes a live provider
+
+Status: Blocked on field-parser consumer/provider reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
+Evidence / affected units: `DieModule.cpp` retains undefined `BitFlags<45>::s_bitNameList` and `INI::scanIndexList` through the unrowed port's parsing code. `InstantDeathBehavior.cpp` currently LINKS by referencing that port's static `DieMuxData::getFieldParse`.
+Completed: both a minimal bitset-only cleanup and a narrower removal of the port's field-parser definition were tried and fully reversed. The narrow trial makes DieModule preview clean but stops emitting its matched `_Base_bitset<2>::_S_maskbit` row and makes InstantDeathBehavior unresolved. The restored source passes 1/1 and restores that consumer's 34-byte LINKS result. Raw evidence: `build/link-worker-20261026-w2/die-consumers-before2.log`, `die-parser-preview2.log`, `die-parser-build.log`, `die-restored-preview.log` and `die-restored-build.log`.
+Remaining / next check: reconcile the native field-parser provider and all actual callers together before removing the port; retain explicit ownership of the bitset row. This seat stops on the demonstrated linking-consumer regression and retains no DieModule edit.
+Clearance: pending. Census confirmation: not claimed.

@@ -8,7 +8,7 @@
 // The BFME1 donor XferBlockWriter_rva009D86E0.cpp only emits it through the
 // map's own instantiation. Retail 0x0060CB97 pushes the key, calls
 // __stl_string_hash (0x0060C9F0) and divides by n; the member is emitted here
-// by explicit instantiation of the same hashtable, donor's own body omitted.
+// by instantiating only this member of the same hashtable.
 #define _STLP_NO_EXCEPTIONS 1
 #define _STLP_BFME_COPY_TRIVIAL_EXTERN  // call retail's one __copy_trivial (vendor/stlport/stl/_algobase.h)
 #define _STLP_BFME_LOWER_BOUND_EXTERN  // call retail's one __lower_bound<const size_t*> (vendor/stlport/stl/_hashtable.c)
@@ -124,10 +124,10 @@ template <> void _STLP_alloc_proxy<char*, char, allocator<char> >::deallocate(ch
 namespace _STL {
 template <> char *_STLP_alloc_proxy<char*, char, allocator<char> >::allocate(size_t);
 }
-template class _STL::hashtable<
+template unsigned int _STL::hashtable<
 	Rva009D86E0Pair,
 	Rva009D86E0String,
 	_STL::hash<Rva009D86E0String>,
 	_STL::_Select1st<Rva009D86E0Pair>,
 	_STL::equal_to<Rva009D86E0String>,
-	_STL::allocator<Rva009D86E0Pair> >;
+	_STL::allocator<Rva009D86E0Pair> >::_M_bkt_num_key(const Rva009D86E0String &, unsigned int) const;
