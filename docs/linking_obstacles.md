@@ -2373,6 +2373,8 @@ Census confirmation: n/a.
 
 **Status: Open (3 units repaired). Updated: 2026-10-26.**
 
+**Status: Open (6 units repaired). Updated: 2026-10-26.**
+
 **Status: Open (3 units repaired; inline-only units parked). Updated: 2026-10-26.**
 
 - **Evidence / scope:** several `Code/` units are verbatim Zero Hour ports of
@@ -2391,10 +2393,20 @@ Census confirmation: n/a.
   (TU-local const at /O1; extern const at the default -O2, which drops an
   unused TU-local one). 61 present-unmatched hatches removed. All LINK in
   preview.
+  StickyBombUpdate.cpp (ac1b73589c, 0 -> 36 B; the two rowed accessors are
+  ordinary out-of-line definitions), ParkingPlaceBehavior.cpp (191cb9df0a,
+  0 -> 38 B), AnimationSteeringUpdate.cpp (9cae72c749, 0 -> 14 B): same
+  test, ZH bodies dropped, template rows emitted by explicit instantiation
+  of the single member. Zero Hour's header declares
+  `ParkingPlaceBehavior::RunwayInfo` private and cl 7.1 refuses to name it
+  in an explicit instantiation (C2248), so that unit declares only the
+  element (36 bytes; the byte-exact strides confirm it). 50 more
+  present-unmatched hatches (and one `#pragma optimize`) removed. All LINK
+  in preview.
 - **Remaining / next check:** same test passes for SpectreGunshipUpdate,
-  StickyBombUpdate, RailedTransportDockUpdate, DeliverPayloadAIUpdate,
-  JetAIUpdate, FlightDeckBehavior, ParkingPlaceBehavior,
-  DumbProjectileBehavior, HelicopterSlowDeathUpdate and HordeUpdate (no
+  RailedTransportDockUpdate, DeliverPayloadAIUpdate, JetAIUpdate,
+  FlightDeckBehavior, DumbProjectileBehavior, HelicopterSlowDeathUpdate and
+  HordeUpdate (no
   module-name string), but check each unit's rows first: several carry ZH
   class names on retail bodies (`SpectreGunshipUpdate::setLogicalStatus`,
   `StickyBombUpdate::set/getTargetObject`, `RailedTransportDockUpdate`
@@ -2433,6 +2445,25 @@ Census confirmation: n/a.
     (AISpecialPowerPickers.cpp calls the rowed set/getTargetObject).
     SpectreGunshipUpdate's only row `setLogicalStatus` is protected (`IAE`), so
     a file-scope pointer anchor cannot reach it once the ZH callers go.
+
+  unresolved; that unit did not link before either. Why the rest are
+  not one-step (K9, 2026-10-26): HordeUpdate (`isTrueHordeMember`),
+  DumbProjectileBehavior (`UpdateModule::getUpdatePhase`), FlightDeckBehavior
+  (`ExitInterface::getNaturalRallyPoint`) and RailedTransportDockUpdate
+  (`getRailedTransportDockUpdateInterface`, `DockUpdate::setDockOpen`) keep
+  virtual inlines, the HelicopterSlowDeathUpdate case; JetAIUpdate's only
+  row is the inline `Matrix3D(bool)` ctor (0x0004C91A, whose other emitters
+  keep it inline by shim), and no pointer can anchor a ctor;
+  SpectreGunshipUpdate's `setLogicalStatus` is a protected inline, so a
+  namespace-scope pointer anchor is refused; DeliverPayloadAIUpdate (row:
+  `WeaponTemplate::getProjectileExhaust`, anchorable) is the `fold-proof=`
+  source of the `Locomotor::setUltraAccurate` / `setAllowInvalidPosition`
+  fold pins in `reverse/symbols.csv`, which its ZH bodies instantiate, so
+  those pins need another proving source (pin admission) before the
+  bodies can go. W3DTankTruckDraw.cpp also fails the string test, but
+  retail rows its methods under that class in sibling units
+  (W3DTankTruckDrawTossEmitters.cpp, ...CreateEmitters.cpp), so it is not
+  this case.
 - **Census confirmation:** pending for all three units.
 
   b313329af6 renamed the four numpunct slot rows in place to the real `do_truename` /
