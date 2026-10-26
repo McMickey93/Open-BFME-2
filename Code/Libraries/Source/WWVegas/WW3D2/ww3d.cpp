@@ -13,6 +13,8 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
 #include "rendobj.h"	// the bfmerendobj shim has to win the include guard
+#include "ww3d.h"	// the bfme2_ww3d shims must win both include guards, ww3d.h first
+#include "dx8wrapper.h"	// the bfme2_ww3d shim (BFME 2 DX8Wrapper spellings) has to win the include guard
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -268,56 +270,7 @@ bool														WW3D::Lite = false;
  * HISTORY:                                                                                    *
  *   3/24/98    GTH : Created.                                                                 *
  *=============================================================================================*/
-WW3DErrorType WW3D::Init(void *hwnd, char *defaultpal, bool lite)
-{
-	assert(IsInitted == false);
-	WWDEBUG_SAY(("WW3D::Init hwnd = %p\n",hwnd));
-	_Hwnd = (HWND)hwnd;
-	Lite = lite;
-
-	/*
-	** Initialize d3d, this also enumerates the available devices and resolutions.
-	*/
-	Init_D3D_To_WW3_Conversion();
-	WWDEBUG_SAY(("Init DX8Wrapper\n"));
-	if (!DX8Wrapper::Init(_Hwnd, lite)) {
-		return(WW3D_ERROR_INITIALIZATION_FAILED);
-	}
-	WWDEBUG_SAY(("Allocate Debug Resources\n"));
-	Allocate_Debug_Resources();
-
- 	MMRESULT r=timeBeginPeriod(1);
-	WWASSERT(r==TIMERR_NOERROR);
-
-	/*
-	** Initialize the dazzle system
-	*/
-	if (!lite) {
-		WWDEBUG_SAY(("Init Dazzles\n"));
-		FileClass * dazzle_ini_file = _TheFileFactory->Get_File(DAZZLE_INI_FILENAME);
-		if (dazzle_ini_file) {
-			INIClass dazzle_ini(*dazzle_ini_file);
-			DazzleRenderObjClass::Init_From_INI(&dazzle_ini);
-			_TheFileFactory->Return_File(dazzle_ini_file);
-		}
-	}
-	/*
-	** Initialize the default static sort lists
-	** Note that DefaultStaticSortLists[0] is unused.
-	*/
-	DefaultStaticSortLists = W3DNEW DefaultStaticSortListClass();
-	Reset_Current_Static_Sort_Lists_To_Default();
-
-	/*
-	** Initialize the animation-triggered sound system
-	*/
-	if (!lite) {
-		AnimatedSoundMgrClass::Initialize ();
-		IsInitted = true;
-	}
-	WWDEBUG_SAY(("WW3D Init completed\n"));
-	return WW3D_ERROR_OK;
-}
+// WW3D::Init: Zero Hour copy removed; BFME 2's body is rowed in WW3D_Init_Bfme.cpp (0x00118040).
 
 
 /***********************************************************************************************
@@ -332,59 +285,7 @@ WW3DErrorType WW3D::Init(void *hwnd, char *defaultpal, bool lite)
  * HISTORY:                                                                                    *
  *   3/24/98    GTH : Created.                                                                 *
  *=============================================================================================*/
-// ?Shutdown@WW3D@@ present-unmatched
-WW3DErrorType WW3D::Shutdown(void)
-{
-	assert(Lite || IsInitted == true);
-//	WWDEBUG_SAY(("WW3D::Shutdown\n"));
-
-#ifdef WW3D_DX8
-	if (IsCapturing) {
-		Stop_Movie_Capture();
-	}
-#endif //WW3D_DX8
-
-	//restore the previous timer resolution
-	MMRESULT r=timeEndPeriod(1);
-	WWASSERT(r==TIMERR_NOERROR);
-	/*
-	** Free memory in predictive LOD optimizer
-	*/
-	PredictiveLODOptimizerClass::Free();
-
-	/*
-	** Free the DazzleRenderObject class stuff. Whatever it is. ST - 6/11/2001 8:20PM
-	*/
-	if (!Lite) {
-		DazzleRenderObjClass::Deinit ();
-	}
-
-	/*
-	** Release all of our assets
-	*/
-	Release_Debug_Resources();
-	if (WW3DAssetManager::Get_Instance()) {
-		WW3DAssetManager::Get_Instance()->Free_Assets();
-	}
-
-	DX8TextureManagerClass::Shutdown();
-	if (!Lite) {
-		DX8Wrapper::Shutdown();
-	}
-
-	/*
-	** Clear the default static sort lists
-	*/
-	delete DefaultStaticSortLists;
-
-	/*
-	** Release the animation-triggered sound data
-	*/
-	AnimatedSoundMgrClass::Shutdown ();
-
-	IsInitted = false;
-	return WW3D_ERROR_OK;
-}
+// WW3D::Shutdown (retail 0x001180E0): Zero Hour copy removed; it is not retail's body.
 
 
 /***********************************************************************************************
@@ -446,15 +347,7 @@ WW3DErrorType WW3D::Set_Any_Render_Device( void )
  * HISTORY:                                                                                    *
  *   3/24/98    GTH : Created.                                                                 *
  *=============================================================================================*/
-WW3DErrorType WW3D::Set_Render_Device(int dev, int width, int height, int bits, int windowed, bool resize_window, bool reset_device, bool restore_assets )
-{
-	bool success = DX8Wrapper::Set_Render_Device(dev,width,height,bits,windowed,resize_window,reset_device, restore_assets );
-	if (success) {
-		return WW3D_ERROR_OK;
-	} else {
-		return WW3D_ERROR_INITIALIZATION_FAILED;
-	}
-}
+// WW3D::Set_Render_Device(int, ...): Zero Hour copy removed; retail's is rowed at 0x00116F10.
 
 
 /***********************************************************************************************
@@ -779,79 +672,7 @@ void WW3D::Set_Texture_Filter(int texture_filter)
  * HISTORY:                                                                                    *
  *   3/24/98    GTH : Created.                                                                 *
  *=============================================================================================*/
-// ?Begin_Render@WW3D@@ present-unmatched
-WW3DErrorType WW3D::Begin_Render(bool clear,bool clearz,const Vector3 & color, float dest_alpha, void(*network_callback)(void))
-{
-	if (!IsInitted) {
-		return(WW3D_ERROR_OK);
-	}
-
-	WWPROFILE("WW3D::Begin_Render");
-	WWASSERT(IsInitted);
-	HRESULT hr;
-
-	SNAPSHOT_SAY(("==========================================\r\n"));
-	SNAPSHOT_SAY(("========== WW3D::Begin_Render ============\r\n"));
-	SNAPSHOT_SAY(("==========================================\r\n\r\n"));
-
-	if (DX8Wrapper::_Get_D3D_Device8() && (hr=DX8Wrapper::_Get_D3D_Device8()->TestCooperativeLevel()) != D3D_OK)
-	{
-        // If the device was lost, do not render until we get it back
-        if( D3DERR_DEVICELOST == hr )
-            return WW3D_ERROR_GENERIC;	//other app has the device
-
-        // Check if the device needs to be reset
-        if( D3DERR_DEVICENOTRESET == hr )
-        {
-			DX8Wrapper::Reset_Device();
-        }
-
-		return WW3D_ERROR_GENERIC;
-	}
-
-	// Memory allocation statistics
-	LastFrameMemoryAllocations=WWMemoryLogClass::Get_Allocate_Count();
-	LastFrameMemoryFrees=WWMemoryLogClass::Get_Free_Count();
-	WWMemoryLogClass::Reset_Counters();
-
-	TextureLoader::Update(network_callback);
-//	TextureClass::_Reset_Time_Stamp();
-	DynamicVBAccessClass::_Reset(true);
-	DynamicIBAccessClass::_Reset(true);
-#ifdef WW3D_DX8
-	TextureFileClass::Update_Texture_Flash();
-#endif //WW3D_DX8
-	Debug_Statistics::Begin_Statistics();
-
-	if (IsCapturing && (!PauseRecord || RecordNextFrame)) {
-		Update_Movie_Capture();
-		RecordNextFrame = false;
-	}
-
-	WWASSERT(!IsRendering);
-	IsRendering = true;
-
-	// If we want to clear the screen, we need to set the viewport to include the entire screen:
-	if (clear || clearz) {
-		D3DVIEWPORT8 vp;
-		int width, height, bits;
-		bool windowed;
-		WW3D::Get_Render_Target_Resolution(width, height, bits, windowed);
-		vp.X = 0;
-		vp.Y = 0;
-		vp.Width = width;
-		vp.Height = height;
-		vp.MinZ = 0.0f;;
-		vp.MaxZ = 1.0f;
-		DX8Wrapper::Set_Viewport(&vp);
-		DX8Wrapper::Clear(clear, clearz, color, dest_alpha);
-	}
-
-	// Notify D3D that we are beginning to render the frame
-	DX8Wrapper::Begin_Scene();
-
-	return WW3D_ERROR_OK;
-}
+// WW3D::Begin_Render (retail 0x00118170): Zero Hour copy removed; it is not retail's body.
 
 /***********************************************************************************************
  * WW3D::Render -- Render a list of layers, starting at the back.                              *
@@ -927,16 +748,7 @@ WW3DErrorType WW3D::Begin_Render(bool clear,bool clearz,const Vector3 & color, f
  *   4/17/2001  gth : Created.                                                                 *
  * 07/01/02 KM Scalable shader library integration				                               *
  *=============================================================================================*/
-// ?Flush@WW3D@@ present-unmatched
-void WW3D::Flush(RenderInfoClass & rinfo)
-{
-	TheDX8MeshRenderer.Flush();
-	SHD_FLUSH;
-	WW3D::Render_And_Clear_Static_Sort_Lists(rinfo);	//draws things like water
-
-	SortingRendererClass::Flush();
-	TheDX8MeshRenderer.Clear_Pending_Delete_Lists();
-}
+// WW3D::Flush (retail 0x001173F0): Zero Hour copy removed; it is not retail's body.
 
 
 /***********************************************************************************************
@@ -1324,36 +1136,7 @@ void WW3D::Make_Screen_Shot( const char * filename_base , const float gamma, con
  *   5/19/99    GTH : Created.                                                                 *
  *   2/26/2001  hy : updated to dx8                                                            *
  *=============================================================================================*/
-// ?Start_Movie_Capture@WW3D@@ present-unmatched
-void WW3D::Start_Movie_Capture( const char * filename_base, float frame_rate )
-{
-#ifdef _WINDOWS
-	if (IsCapturing) {
-		Stop_Movie_Capture();
-	}
-	WWASSERT( !IsCapturing);
-	IsCapturing = true;
-
-	RECT bounds;
-	GetWindowRect(_Hwnd,&bounds);
-	int height=bounds.bottom-bounds.top;
-	int width=bounds.right-bounds.left;
-	int depth=24;
-
-	WWASSERT( Movie == NULL);
-
-	if (frame_rate == 0.0f) {
-		frame_rate = 1.0f;
-		PauseRecord = true;
-	} else {
-		PauseRecord = false;
-	}
-
-	Movie = W3DNEW FrameGrabClass( filename_base, FrameGrabClass::AVI, width, height, depth, frame_rate);
-
-	WWDEBUG_SAY(( "Starting Movie %s\n", filename_base ));
-#endif
-}
+// WW3D::Start_Movie_Capture (retail 0x00118530): Zero Hour copy removed; it is not retail's body.
 
 
 /***********************************************************************************************
@@ -1383,15 +1166,7 @@ void WW3D::Start_Movie_Capture( const char * filename_base, float frame_rate )
  * HISTORY:                                                                                    *
  *   5/19/99    GTH : Created.                                                                 *
  *=============================================================================================*/
-// ?Toggle_Movie_Capture@WW3D@@ present-unmatched
-void WW3D::Toggle_Movie_Capture( const char * filename_base, float frame_rate )
-{
-	if (IsCapturing) {
-		Stop_Movie_Capture();
-	} else {
-		Start_Movie_Capture( filename_base, frame_rate);
-	}
-}
+// WW3D::Toggle_Movie_Capture: Zero Hour copy removed; it is not retail's body.
 
 
 /***********************************************************************************************
@@ -1406,11 +1181,7 @@ void WW3D::Toggle_Movie_Capture( const char * filename_base, float frame_rate )
  * HISTORY:                                                                                    *
  *   5/19/99    GTH : Created.                                                                 *
  *=============================================================================================*/
-// ?Start_Single_Frame_Movie_Capture@WW3D@@ present-unmatched
-void WW3D::Start_Single_Frame_Movie_Capture(const char *filename_base)
-{
-	Start_Movie_Capture(filename_base, 0.0f);
-}
+// WW3D::Start_Single_Frame_Movie_Capture: Zero Hour copy removed; it is not retail's body.
 
 
 /***********************************************************************************************
