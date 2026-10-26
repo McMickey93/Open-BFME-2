@@ -5,6 +5,7 @@
 #include "../../../../../Libraries/Include/Lib/Coord3DInline.h"
 
 typedef float Real;
+enum NameKeyType;
 class Xfer;
 class ModuleData;
 class BehaviorModule;
@@ -82,6 +83,7 @@ class BridgeScaffoldBehavior : public UpdateModule, public BridgeScaffoldBehavio
 {
 public:
  BridgeScaffoldBehavior(Thing *, const ModuleData *);
+ static NameKeyType rva0004583BD();
  virtual void setPositions(const Coord3D *, const Coord3D *, const Coord3D *);
  virtual void setMotion(ScaffoldTargetMotion);
  virtual void reverseMotion();

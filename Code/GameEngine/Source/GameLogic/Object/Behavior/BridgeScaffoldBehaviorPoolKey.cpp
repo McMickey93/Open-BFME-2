@@ -22,11 +22,7 @@ public:
 
 extern NameKeyGenerator *TheNameKeyGenerator;
 
-class BridgeScaffoldBehavior
-{
-public:
-	static NameKeyType rva0004583BD();
-};
+#include "BridgeScaffoldBehaviorView.h"
 
 // ?rva0004583BD@BridgeScaffoldBehavior@@SA?AW4NameKeyType@@XZ
 NameKeyType BridgeScaffoldBehavior::rva0004583BD()
