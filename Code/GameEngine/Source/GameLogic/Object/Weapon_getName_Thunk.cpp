@@ -23,7 +23,13 @@
 class WeaponTemplate
 {
 public:
-	AsciiString getName(void) const;				///< ILT 0x0002D70E
+	// Retail 0x0028F940 (28 B), the release build's body: it returns the empty
+	// string, not m_name. /OPT:ICF folded it with the identical
+	// NetCommandMsg::getContentsAsAsciiString (NetCommandMsg.cpp), so it has no row
+	// of its own; the symbols.csv pin at that address names this file as its
+	// fold-proof. This unit builds without inlining, so Weapon::getName below calls
+	// the emitted copy as retail calls 0x0028F940.
+	AsciiString getName(void) const { return AsciiString::TheEmptyString; }
 };
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Weapon.h
