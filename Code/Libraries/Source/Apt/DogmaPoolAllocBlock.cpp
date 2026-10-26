@@ -11,7 +11,8 @@
 // MSVC emit retail's add eax,-15 and load the old head first.
 #include <string.h>
 inline void *operator new(unsigned int, void *p) { return p; }
-extern void *(__cdecl *g_00E17728)(unsigned int);
+// Use the allocation callback defined by DogmaPoolFreeBlock.cpp at VA 0x00E17728.
+extern void *(__cdecl *g_bfmeAptAllocAtE17728)(unsigned int);
 extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char *, const char *, int);
 extern int g_bfmeAptBreakOnAssertAtDDC01C;
 void __debugbreak();
@@ -58,7 +59,7 @@ void *Rva006DB160::allocBlock(int blockSize)
     if (nSize < low)
         nSize = low;
     if (nSize > m_maxSize)
-        return g_00E17728(blockSize);
+        return g_bfmeAptAllocAtE17728(blockSize);
     ++m_used;
     if (m_table[nSize >> 2] != 0)
         return rva006DAFE0(nSize);
@@ -68,7 +69,7 @@ void *Rva006DB160::allocBlock(int blockSize)
             return pool->AllocateBytes(nSize);
         pool = pool->mpNextPool;
     } while (pool != 0);
-    pool = (_DOGMA_MemPool *)g_00E17728(m_poolSize);
+    pool = (_DOGMA_MemPool *)g_bfmeAptAllocAtE17728(m_poolSize);
     memset(pool, 0x0d, m_poolSize);
     pool->Init(m_firstPool, m_poolSize); m_firstPool = pool;
     if (!pool->CanFitBytes(nSize)) {
@@ -111,7 +112,3 @@ void *Rva006DB160::rva006DAFE0(unsigned int nSize)
     }
     return pReturn;
 }
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00E17728@@3P6APAXI@ZA=?g_bfmeAptAllocAtE17728@@3P6APAXI@ZA")
