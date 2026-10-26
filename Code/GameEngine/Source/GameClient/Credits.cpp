@@ -765,11 +765,6 @@ void BfmeSinkBOE::bfmeDoBOE(void *one, void *two)
 
 // tu-skeleton: 0x005B72E7 107B ??1Rva005B72E7@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva005B72E7Dtor.cpp (not merged yet)
 
-// ---- from Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-08-5B7352.cpp
-
-// ?famgenDelete005B72E7@@YAXPAVRva005B72E7@@@Z present-unmatched
-void famgenDelete005B72E7(Rva005B72E7 *p) { delete p; }
-
 // tu-skeleton: 0x005B7426 17B ?rva005B7426@Rva005B7426@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesG.cpp (not merged yet)
 
 // tu-skeleton: 0x005B7DC3 54B ?Run@Rva005B7DC3Box@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva005B7DC3Box.cpp (not merged yet)

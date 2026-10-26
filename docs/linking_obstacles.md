@@ -2552,6 +2552,17 @@ inspected revision: 78413ee546.
 - **Remaining / next check:** the `insert` pin's `fold-proof=` names `Credits.cpp`,
   whose copy no longer equals retail; `stlport_list_int_insert.cpp` now proves it. The
   pin was left as is (pin edits go through `tools/pin_admission.py`).
+- **Wrapper cleanup (2026-10-26, inspected `c254d71bb8`):**
+  [paired verification](../reverse/attempt_support/credits-delete-wrapper-cleanup-20261026.md)
+  removes the unused `famgenDelete005B72E7` wrapper and its unmatched hatch.
+  `addText` still emits the matched deleting destructor. All 31 byte-checked
+  functions, the data row and five EH graphs remain exact; the frozen-file and
+  shadow data checks pass. With published index `5ce093a71a` (19:02), both
+  before and after preview LINKS for Credits (3,053 authored bytes) and its
+  insertion provider (62 bytes). This retires one hatch and confirms the earlier
+  repair; it adds no linking gain. A bounded preparation accepts Credits' strict
+  reusable input receipt, without claiming dependency closure. The stale pin
+  proof above and confirmation in the next normal census remain follow-ups.
 - **Clearance:** preview scope (the two units above) on a HEAD-updated index.
 - **Census confirmation:** awaiting the next census.
 
