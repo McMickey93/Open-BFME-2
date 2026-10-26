@@ -12,8 +12,6 @@ Code/GameEngine/Source/Common/BfmeConv789.cpp	wrong-name	?g_bfmeCsDWC@@3UBfmeCsD
 Code/GameEngine/Source/Common/BfmeConv803O1.cpp	wrong-name	?g_bfmeObjEBL@@3VBfmeObjEBL@@A	0x00A01E68
 Code/GameEngine/Source/Common/BfmeGrokOdIf0.cpp	duplicate-def	?g_bfme0130b254@@3UGen_0082ad50@@A	0x009DF574
 Code/GameEngine/Source/Common/BfmeGrokOdIf0.cpp	wrong-name	?g_bfme0130b254@@3UGen_0082ad50@@A	0x009DF574
-Code/GameEngine/Source/Common/BfmeThingTXAHasFlag.cpp	wrong-name	?g_Va00DEC3DC@@3IA	0x009EC3DC
-Code/GameEngine/Source/Common/BfmeThingTXAHasObject.cpp	wrong-name	?g_Va00DEC3DC@@3IA	0x009EC3DC
 Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	wrong-name	?g_bfmeThingUCHead@@3PAVBfmeNodeUC@@A	0x00A0ABB0
 Code/GameEngine/Source/Common/BfmeTwoHundredSeventyThree.cpp	wrong-name	?bfmeFreeList@@3PAPAUBfmeFreeListNode@@A	0x009DF530
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	duplicate-def	?g_Va00DF6FD0@@3HA	0x009F6FD0
@@ -48,7 +46,6 @@ Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F24@@3RCR
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F54@@3HA	0x009E1F54
 Code/GameEngine/Source/Common/Rva00075A23Draw.cpp	wrong-name	?g_deviceObj@@3PAUDeviceObj@@A	0x009EDA34
 Code/GameEngine/Source/Common/Rva0009A2CDDispatch.cpp	wrong-name	?g_00DEC2CC@@3PAV?$StringBase@G@@A	0x009EC2CC
-Code/GameEngine/Source/Common/Rva000E6AC0Ctor.cpp	wrong-name	?g_Va009FE710@@3PAUGlobal9FE710@@A	0x009FE710
 Code/GameEngine/Source/Common/Rva001518D1Get.cpp	wrong-name	?empty@?3??rva001518D1@Rva001518D1@@QAEPAV?$vector@UBfmeE16@@V?$allocator@UBfmeE16@@@_STL@@@_STL@@XZ@4V34@A	0x009F6F10
 Code/GameEngine/Source/Common/Rva00202678Get.cpp	wrong-name	?g_00DB96B0@@3PAPBDA	0x009B96B0
 Code/GameEngine/Source/Common/Rva00202B6CGet.cpp	duplicate-def	?rva00202B6CNames@@3PAPBDA	0x009B95F4
@@ -112,14 +109,10 @@ Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?TheRva00222A8BTarge
 Code/GameEngine/Source/Common/Rva005F632AFormat.cpp	wrong-name	?$S1@?4??Rva005F632AFormat@@YA?AVUnicodeString@@H@Z@4IA	0x00A06930
 Code/GameEngine/Source/Common/Rva005F8920.cpp	wrong-name	?g_009FE720@@3PAVRva0025CEEFHost@@A	0x009FE720
 Code/GameEngine/Source/Common/Rva00627AA0Call.cpp	wrong-name	?g_rva00627AA0@@3PAURva00627AA0Obj@@A	0x00A05FBC
-Code/GameEngine/Source/Common/Rva0062AF7Rva0027D815.cpp	wrong-name	?g_Va00DBA4E4@@3HA	0x009BA4E4
 Code/GameEngine/Source/Common/Rva006CD2A0Cluster.cpp	wrong-name	?g_bfmeAptHashAtE180E4@@3PAVAptNativeHash@@A	0x00A180E4
 Code/GameEngine/Source/Common/Rva006D7350Finish.cpp	wrong-name	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	0x00A182E0
-Code/GameEngine/Source/Common/Rva006D7350Finish.cpp	wrong-name	?g_bfmeAptDefaultValueAtE18078@@3PAXA	0x00A18078
 Code/GameEngine/Source/Common/Rva006D7A60Finish.cpp	wrong-name	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	0x00A182E0
-Code/GameEngine/Source/Common/Rva006D7A60Finish.cpp	wrong-name	?g_bfmeAptDefaultValueAtE18078@@3PAXA	0x00A18078
 Code/GameEngine/Source/Common/Rva006D7B60Finish.cpp	wrong-name	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	0x00A182E0
-Code/GameEngine/Source/Common/Rva006D7B60Finish.cpp	wrong-name	?g_bfmeAptDefaultValueAtE18078@@3PAXA	0x00A18078
 Code/GameEngine/Source/Common/Rva006D94A0AptCluster.cpp	wrong-name	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	0x00A182E0
 Code/GameEngine/Source/Common/Rva006FBE60Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva8D0D80Result@@A	0x00A1835C
 Code/GameEngine/Source/Common/Rva006FBED0Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva006FBED0Root@@A	0x00A1835C
@@ -289,11 +282,6 @@ Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSkirmishCallbacks.cpp	
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/GeneralsExpPoints_Rva0050dd9f.cpp	wrong-name	?$S22@?8??GeneralsExpPointsSystem@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z@4IA	0x00A04608
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/MapSelectMenu.cpp	duplicate-def	_isShuttingDown	0x00A045C4
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionPreferences_getStaticGameDetail.cpp	wrong-name	?TheRva00DFE144@@3PAURva00DFE144Globals@@A	0x009FE144
-Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp	wrong-name	?TheBfmeKeyboardModifiers@@3PAVBfmeKeyboardModifiers@@A	0x009FE720
-Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript.cpp	wrong-name	_theDrawString	0x00A01314
-Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript.cpp	wrong-name	_theInputString	0x00A0130C
-Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript.cpp	wrong-name	_theSystemString	0x00A01308
-Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript.cpp	wrong-name	_theTooltipString	0x00A01310
 Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp	wrong-name	?$S1@?1??OnBttnSpellStore@AptPalantir@@QAEXPBD@Z@4IA	0x009FF038
 Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp	wrong-name	?$S2@?4??rva002D4DD0@AptPalantir@@QAEXPBD@Z@4IA	0x009FF04C
 Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp	wrong-name	?$S5@?4??rva002D4E71@AptPalantir@@QAEXPBD@Z@4IA	0x009FF058
@@ -485,7 +473,6 @@ Code/GameEngine/Source/GameLogic/Object/ObjectRepulsorHelperPoolKey.cpp	wrong-na
 Code/GameEngine/Source/GameLogic/Object/ObjectRva0028EBDA.cpp	wrong-name	?$S1@?1??rva0028EBDA@Object@@QAEX_N@Z@4IA	0x009FED38
 Code/GameEngine/Source/GameLogic/Object/Object_Object_topple.cpp	wrong-name	?$S143@?1??topple@Object@@QAEXPBUCoord3D@@MI@Z@4IA	0x009FED18
 Code/GameEngine/Source/GameLogic/Object/Rva00220DCDInit.cpp	wrong-name	?g_00DFE490@@3VRva00575674@@A	0x009FE490
-Code/GameEngine/Source/GameLogic/Object/Rva002A7400Ctor.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/SpawnedModelConditionCreatePoolKey.cpp	wrong-name	?$S1@?1??rva00250A4E@SpawnedModelConditionCreate@@SA?AW4NameKeyType@@XZ@4IA	0x009FE990
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CDD59@ActivateModuleSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A043C8
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CashHackSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C266F@CashHackSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041A4
@@ -698,17 +685,6 @@ Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva002BA8F1AddPlayer.cpp	wro
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchor	0x008E3018
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchorH4	0x008E3010
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchorH8	0x008E3008
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A3EC@@3PADA	0x00A0A3EC
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A410@@3PADA	0x00A0A410
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A470@@3PADA	0x00A0A470
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A494@@3PADA	0x00A0A494
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A4A0@@3PADA	0x00A0A4A0
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A4B8@@3PADA	0x00A0A4B8
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A4C4@@3PADA	0x00A0A4C4
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A518@@3PADA	0x00A0A518
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A530@@3PADA	0x00A0A530
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A53C@@3PADA	0x00A0A53C
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp	wrong-name	?g_00E0A548@@3PADA	0x00A0A548
 Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp	wrong-name	?g_rva00627AA0@@3PAURva00627AA0Obj@@A	0x00A05FBC
 Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	wrong-name	_matchbotProfileID	0x00A02698
 Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c	duplicate-def	_ciLocalIP	0x00A0BE00
@@ -781,10 +757,8 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	w
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?rva012F9D20@@3IA	0x009E1F80
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	_W3DFilters	0x009E1F2C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	_W3DShaders	0x009E1F24
-Code/Libraries/Source/Apt/AptMathCallbacksBFME2.cpp	wrong-name	?g_aptUndefinedAtE18078@@3PAVBfmeAptValue006DCD20@@A	0x00A18078
 Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	wrong-name	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	0x00A182E0
 Code/Libraries/Source/Apt/AptValue/Rva006DC9E0.cpp	wrong-name	?g_00E18650@@3PAVRva0070A5C0@@A	0x00A18650
-Code/Libraries/Source/Apt/BfmeNode1279Finish.cpp	wrong-name	?g_00E176F8@@3PAVBfmeTracker4310@@A	0x00A176F8
 Code/Libraries/Source/Apt/Rva006F6A50Cluster.cpp	wrong-name	?g_00E182E0@@3PAXA	0x00A182E0
 Code/Libraries/Source/Apt/Rva0070B5D0Cluster.cpp	wrong-name	?g_00E18650@@3VEAStringC@@A	0x00A18650
 Code/Libraries/Source/DirtySock/Y2Rva007EBAE0Module.cpp	wrong-name	?g_Rva0112A210Lower@@3QBEB	0x008E1A60
@@ -793,7 +767,6 @@ Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	wrong-name	_g_Rva013
 Code/Libraries/Source/DirtySock/Y4TextToValue.c	wrong-name	_g_Rva0112A310Class	0x008E1B60
 Code/Libraries/Source/DirtySock/Y4TextToValue.c	wrong-name	_g_Rva012C391CSeparator	0x009D8074
 Code/Libraries/Source/Apt/string/StringPool.cpp	wrong-name	?g_00E18650@@3VEAStringC@@A	0x00A18650
-Code/Libraries/Source/Apt/string/StringPool.cpp	wrong-name	?saConstantAtE18388@@3PAVEAStringC@@A	0x00A18388
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_00000000_0000_0000_c000_000000000046	0x007D4E4C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_ee883b17_0778_4b18_a12b_e44c0d298412	0x007D4E3C
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
@@ -880,7 +853,6 @@ Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	wrong-name	__Hwnd	0x009EC408
 Code/Libraries/Source/debug/debug_except.cpp	wrong-name	?g_crashAttachments@@3PAUCrashAttachment@@A	0x009E0DEC
 Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	duplicate-def	_g_debugAssertDialogAnswered	0x009E089D
 Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	wrong-name	_g_debugAssertDialogAnswered	0x009E089D
-Code/Libraries/Source/WWVegas/WWLib/thread.cpp	wrong-name	_g_poolYieldEvent	0x00A07C00
 Code/Libraries/Source/WWVegas/WWLib/Rva00038780Siblings.cpp	wrong-name	_g_bfme00DE0880	0x009E0880
 Code/Libraries/Source/WWVegas/WWLib/Rva001EC311Ctor.cpp	wrong-name	?g_007ED97C@@3HA	0x007ED97C
 Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	wrong-name	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A	0x009DF4E0
