@@ -4748,7 +4748,7 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdat
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C50250	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C50254	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C50260	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataCtor.cpp	_vtbl_00C50298	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C50298	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/PartTheHeavensUpdateDtor.cpp	?update@UpdateModuleInterface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/PartTheHeavensUpdateModuleDataDtor.cpp	??1Rva002BB6BE20Rec@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/PickupStuffUpdateModuleDataCtor.cpp	_vfn_00065212	1

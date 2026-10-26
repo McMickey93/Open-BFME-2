@@ -9,28 +9,20 @@
 #pragma comment(linker, "/alternatename:_vtbl_00C50254=??_7Rva00499934@@6BRva0024A797_B2@@@")
 #pragma comment(linker, "/alternatename:_vtbl_00C50260=??_7Rva00499934@@6BRva0024A797_Root@@@")
 #pragma comment(linker, "/alternatename:_vtbl_00C1C780=??_7?$CategoryModuleInfo@$00@FXParticleSystem@@6B@")
-
 typedef float Real;
-
 typedef int Int;
-
 class ThingTemplate;
-
 class Team;
-
 class Object;
-
 struct CreateMask
 {
 	unsigned int words[4];
 };
-
 class Thing
 {
 public:
 	void setPosition(const Coord3D *pos);
 };
-
 class Player
 {
 public:
@@ -39,7 +31,6 @@ private:
 	char m_pad[0x2EC];
 	Team *m_defaultTeam; // +0x2EC
 };
-
 class PlayerList
 {
 public:
@@ -50,9 +41,7 @@ private:
 	unsigned char m_pad14[0x18 - 0x10 - 4];
 	Player *m_neutralPlayer; // +0x18
 };
-
 extern PlayerList *ThePlayerList;
-
 class TerrainLogic
 {
 public:
@@ -64,36 +53,25 @@ public:
 	virtual void slot05();
 	virtual Real getGroundHeight(Real x, Real y, Coord3D *normal) const;
 };
-
 extern TerrainLogic *TheTerrainLogic;
-
 enum ObjectID;
-
  class ThingFactory
 {
 public:
 	const ThingTemplate *findTemplate(const AsciiString &key);
 	Object *newObject(const ThingTemplate *tmplate, Team *team, const CreateMask *mask, ObjectID flag);
 };
-
 extern ThingFactory *TheThingFactory;
-
 const float PI = 3.14159265359f;
-
 float GetGameLogicRandomValueReal(float lo, float hi, char *file, int line);
-
 float Cos(float value);
-
 float Sin(float value);
-
 void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-
 class ModuleData
 {
 public:
 	virtual ~ModuleData();
 };
-
 class ObjectModule
 {
 public:
@@ -102,20 +80,31 @@ protected:
 	const ModuleData *m_moduleData; // +0x04
 	Object *m_object; // +0x08
 };
-
 class BehaviorModuleInterface
 {
 public:
 	virtual void behaviorModuleInterfaceAnchor();
 };
-
 class UpdateModuleInterface
 {
 public:
 	virtual void slotUpdate();
 };
-
 #include "OneRingPenaltyModuleDataView.h"
+// ??0OneRingPenaltyUpdateModuleData@@QAE@XZ at retail 0x004999F1 (37 bytes).
+// The module-data half of OneRingPenaltyUpdate: vtable immediate 0x00C50298
+// modelled as an explicit first member (DemoTrapUpdateModuleDataCtor
+// precedent, so no vtable is emitted and no dtor row is owed), an unstored
+// word at +0x04 retail never touches, then the seven table-backed slots the
+// BFME1 OneRingPenaltyUpdateModuleData donor constructs in this exact order:
+// SpecialObjectName at +0x08, DiscoveredSound at +0x20, RingTimeBeforeSpawning
+// at +0x0C, TimeSpentRoamingAround at +0x10, TimeRingPowerSuppressed at +0x14,
+// StartingDistanceFromMe (a real) at +0x18 and TimeFrozenFromPenalty at +0x1C.
+// Retail's own INI table at 0x00C503B0 (landed buildFieldParse row) proves the
+// names and offsets; the BFME1 donor proves the store order. Sole caller is
+// the rowed 0x24E42C factory which news 0x24 and pushes the rowed proc.
+extern "C" const void *const vtbl_00C50298[];
+#pragma comment(linker, "/alternatename:_vtbl_00C50298=??_7OneRingPenaltyUpdateModuleData@@6B@")
 
 struct BfmeX987
 {
@@ -267,11 +256,27 @@ private:
 
 // tu-skeleton: 0x004999AC 69B ?getModuleNameKey@OneRingPenaltyUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdatePoolKey.cpp (not merged yet)
 
-// tu-skeleton: 0x004999F1 37B ??0OneRingPenaltyUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataCtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataCtor.cpp
+
+  // ??_7OneRingPenaltyUpdateModuleData@@6B@
+
+// ??0OneRingPenaltyUpdateModuleData@@QAE@XZ
+OneRingPenaltyUpdateModuleData::OneRingPenaltyUpdateModuleData()
+	: m_vtable( reinterpret_cast<const void *>(((unsigned int)vtbl_00C50298)) )
+{
+	m_discoveredSound = 0;
+	m_timeSpentRoamingAround = 0;
+	m_timeRingPowerSuppressed = 0;
+	m_startingDistanceFromMe = 0.0f;
+	m_ringTimeBeforeSpawning = 0;
+	m_timeFrozenFromPenalty = 0;
+}
 
 // tu-skeleton: 0x00499A16 73B ??1OneRingPenaltyUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00499A5F 17B ?buildFieldParse@OneRingPenaltyUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateCtor.cpp
 
@@ -303,8 +308,6 @@ OneRingPenaltyUpdate::OneRingPenaltyUpdate(Thing *thing, const ModuleData *modul
 	m_30 = zero;
 	setWakeFrame(m_object, UPDATE_SLEEP_NONE);
 }
-
-// tu-skeleton: 0x00499AE1 28B ??_GRva00499934@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp
 
@@ -390,6 +393,8 @@ void BfmeC987::bfmeGo987C()
 	}
 }
 
+// tu-skeleton: 0x00499AE1 28B ??_GRva00499934@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
+
 // tu-skeleton: 0x00499C19 28B ??_GOneRingPenaltyUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00499C35 17B ?rva00499C35@OneRingPenaltyUpdate@@AAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateUpdate.cpp (not merged yet)
@@ -401,3 +406,19 @@ void BfmeC987::bfmeGo987C()
 // tu-skeleton: 0x00499D23 373B ?rva00499D23@OneRingPenaltyUpdate@@AAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateRva00499D23.cpp (not merged yet)
 
 // tu-skeleton: 0x00499E98 173B ?update@OneRingPenaltyUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D53A 13B ?Rva0078D53AClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D547 10B __ehhandler$?getModuleNameKey@OneRingPenaltyUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdatePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D551 8B Unwind@00b8d551 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D559 11B Unwind@00b8d559 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D564 10B __ehhandler$??1OneRingPenaltyUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D56E 8B uw_0078d56e -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D580 11B uw_0078d580 -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D58B 10B __ehhandler$?rva00499C6C@Rva00499C6C@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva00499C6CWake.cpp (not merged yet)
