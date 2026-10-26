@@ -9,7 +9,7 @@
 // the extra slot-0x3C call is TU-local method3C. Layout is base 0x0C plus
 // pad to +0x20 plus pointer.
 
-void __cdecl operator delete(void *ptr);
+#include <new>
 
 class Rva0049B47C
 {

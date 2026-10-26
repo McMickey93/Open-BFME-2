@@ -7,7 +7,7 @@
 // landed 0x00345F21) then nulling it (state 0), then calling the rowed base
 // ??1Rva0033FF2B at 0x0033FF2B. Caller is 0x00349FF8.
 
-void __cdecl operator delete(void *ptr);
+#include <new>
 
 class Rva00345CABMember
 {

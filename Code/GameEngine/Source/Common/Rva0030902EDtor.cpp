@@ -13,7 +13,7 @@
 #include "ascii_string.h"
 
 void __cdecl Rva00030830GameFree(void *);
-void operator delete[](void *p);
+#include <new>
 
 #include "../../../Libraries/Include/Lib/Region2D.h"
 struct Rva0030B72CPoint {
