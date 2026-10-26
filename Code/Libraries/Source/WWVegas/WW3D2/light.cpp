@@ -106,7 +106,7 @@ class LightPersistFactoryClass : public PersistFactoryClass
 {
 public:
 
-	virtual uint32				Chunk_ID(void) const										{ return WW3D_PERSIST_CHUNKID_LIGHT; }
+	virtual uint32				Chunk_ID(void) const;
 	virtual PersistClass *	Load(ChunkLoadClass & cload) const;
 	virtual void				Save(ChunkSaveClass & csave,PersistClass * obj) const;
 
@@ -120,39 +120,9 @@ public:
 	};
 };
 
-static LightPersistFactoryClass _LightFactory;
-
-// ?LightPersistFactoryClass::Load present-unmatched
-PersistClass * LightPersistFactoryClass::Load(ChunkLoadClass & cload) const 
+uint32 LightPersistFactoryClass::Chunk_ID(void) const
 {
-	LightClass * new_obj = W3DNEW LightClass;
-	LightClass * old_obj = NULL;
-
-	cload.Open_Chunk();
-	WWASSERT(cload.Cur_Chunk_ID() == SIMPLEFACTORY_CHUNKID_OBJPOINTER);
-	cload.Read(&old_obj,sizeof(LightClass *));
-	cload.Close_Chunk();
-
-	cload.Open_Chunk();
-	WWASSERT(cload.Cur_Chunk_ID() == SIMPLEFACTORY_CHUNKID_OBJDATA);
-	new_obj->Load(cload);
-	cload.Close_Chunk();
-
-	SaveLoadSystemClass::Register_Pointer(old_obj,new_obj);
-	return (PersistClass *)new_obj;  // BFME: RenderObjClass dropped PersistClass base
-}
-
-// ?LightPersistFactoryClass::Save present-unmatched
-void LightPersistFactoryClass::Save(ChunkSaveClass & csave,PersistClass * obj) const 
-{
-	uint32 objptr = (uint32)obj;
-	csave.Begin_Chunk(SIMPLEFACTORY_CHUNKID_OBJPOINTER);
-	csave.Write(&objptr,sizeof(uint32));
-	csave.End_Chunk();
-
-	csave.Begin_Chunk(SIMPLEFACTORY_CHUNKID_OBJDATA);
-	((LightClass *)obj)->Save(csave);
-	csave.End_Chunk();
+    return WW3D_PERSIST_CHUNKID_LIGHT;
 }
 
 /*
@@ -472,25 +442,6 @@ WW3DErrorType LightClass::Save_W3D(ChunkSaveClass & csave)
 	csave.End_Chunk();
 	
 	return WW3D_ERROR_OK;
-}
-
-
-/***********************************************************************************************
- * LightClass::Get_Factory -- get the PersistFactory for LightClass                            *
- *                                                                                             *
- * INPUT:                                                                                      *
- *                                                                                             *
- * OUTPUT:                                                                                     *
- *                                                                                             *
- * WARNINGS:                                                                                   *
- *                                                                                             *
- * HISTORY:                                                                                    *
- *   9/23/99    GTH : Created.                                                                 *
- *=============================================================================================*/
-// ?Get_Factory@LightClass@@QBEABVPersistFactoryClass@@XZ present-unmatched
-const PersistFactoryClass & LightClass::Get_Factory (void) const
-{
-	return _LightFactory;	
 }
 
 

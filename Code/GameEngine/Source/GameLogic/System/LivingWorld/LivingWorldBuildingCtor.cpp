@@ -49,9 +49,12 @@ class Rva004E0790
 public:
 	void rva004E0790();
 	void rva004E08F6(Rva004E0790Inner *p);
-	__forceinline Rva004E0790():m_ptr(0) {}
- ~Rva004E0790();
- Rva004E0790Inner *m_ptr;
+};
+struct ArmySummaryEntryRef
+{
+	__forceinline ArmySummaryEntryRef():m_ptr(0) {}
+	~ArmySummaryEntryRef();
+	Rva004E0790Inner *m_ptr;
 };
 
 struct BuildingNuggetTemplateView
@@ -92,7 +95,7 @@ public:
 	const AsciiString *m_template;
 	Rva0052B17F *m_2C;
 	_STL::vector<BuildingNuggetView *> m_nuggets;
-	Rva004E0790 m_armyEntry;
+	ArmySummaryEntryRef m_armyEntry;
 	int word40,word44;
 	Coord2D m_position;
 	bool m_pad50;
@@ -111,7 +114,7 @@ LivingWorldBuilding::LivingWorldBuilding(LivingWorldRegion *region,const Coord2D
  ((Rva002E00F9*)m_template)->rva002E00F9(this,(m_template ? &m_nuggets : &m_nuggets));
  const Rva003F1BD3TemplateView *d=(const Rva003F1BD3TemplateView*)m_template;
  if((d->army ? d->army : d->army) && !((const StringBase<char>*)&d->armyType)->isEmpty()) {
-  m_armyEntry.rva004E08F6((Rva004E0790Inner*)new ArmySummaryEntry);
+  ((Rva004E0790 *)&m_armyEntry)->rva004E08F6((Rva004E0790Inner*)new ArmySummaryEntry);
   ((StringBase<char>*)((char*)m_armyEntry.m_ptr+4))->set(*(const StringBase<char>*)&((const Rva003F1BD3TemplateView*)m_template)->armyType);
   *(int*)((char*)m_armyEntry.m_ptr+0xB4)=m_id;
  }

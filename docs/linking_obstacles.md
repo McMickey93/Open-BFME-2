@@ -203,6 +203,8 @@ Completed: the two tree units now instantiate only their rowed `_Rb_tree` destru
 
 Remaining / next check: perform coherent type/allocator and row-name reconciliation with the listed provider homes. Replacing a real member call with an address placeholder, adding an alias/pin, changing the ledger, or casting a container to another instantiation was outside this worker's permitted repair scope. All native direct callees listed above already have matched owners. No new match or pin with independent fold proof was established. Clearance remains pending for all seven units; the bounded emission cleanup does not clear their required COMDATs. Census confirmation is pending.
 
+- **Bounded identity audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` retains the unchanged failures for `Rva00056da2Finish.cpp`, `StlSweepR3Rva00058A86.cpp`, `StlSweepR3Rva000AF1C2.cpp` and `StlSweepR3Rva00218FC2.cpp`. Native callees are respectively `0x000558AD` (the copy auxiliary, not uninitialized construction), `0x00057FC1` (the rowed pair-key hashtable clear), `0x000ADF1B` (a range-copy forwarder) and `0x00218E09`/`0x0021889A` (the GameFont sort family). Their emitting template identities disagree with the existing row owners. No suppressed unresolved helper, type-punned container, row rename or pin is retained. Next check: reconcile each native algorithm and element identity with those owners before changing emission. Clearance and census confirmation remain pending.
+
 ### LINK-003: residual Zero Hour memory-pool interfaces
 
 **Status: Open. Updated: 2026-10-25.**
@@ -688,6 +690,8 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
 
 **Assigned split-name/provider recheck (2026-10-26, inspected `896af216804e`):** `Rva006C3CC0Cluster.cpp`, `Rva006DE1A0Finish.cpp`, `Rva006F84C0DeletingDtor.cpp`, `AptPlayerTooltipMap.cpp`, `GameWindowManager_registerTabList.cpp` and `StateMachineDefineState.cpp` remain blocked against d1f046749a with current providers. No source change is retained. The allocator destructor calls the five-byte 0x00034D00 thunk, whereas its declared GeneralAllocator destructor pin targets the 309-byte 0x00033D50 owner; the real destructor/thunk identities need reconciliation without replacing a real destructor call by a placeholder. The pooled deleting destructor reaches the existing 37-byte `Rva006F8460` destructor, but its local complete-destructor definition is wrong; a folded-name/provider decision is required. The Apt value constructor retains the prior 15-slot hierarchy and split-class naming prerequisite; AptPlayer also needs its actual heterogeneous member types, the 68-byte `DetailedArchivedDirectoryInfo` destructor at 0x00224252 instead of `Rva00224C95`, and a complete table contract. The registerTabList call targets 0x002C54EE while the current list<GameWindow*> assignment row names 0x0046F0C2; State's eight-byte map still shares a falsely identified 16-byte-value `_M_insert` row at 0x0053479F. These are naming/ownership prerequisites, not missing bodies proven by an unresolved spelling. Preserve the earlier failed trials. Next: resolve each native identity before suppressing a copy or requesting a fold pin. Raw evidence and exact row homes: `build/link-worker-20261026-w2/dependencies2.log`, `native-rows.log`, `provider-paths.log` and `build/link-report.md`. No clearance or census claim.
 
+- **Current-input string audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` records fresh checks of both `Rva008312E0StringReplace.cpp` and `Rva008314E0StringReplace.cpp`, their BfmeConv providers, and all seven narrow forward-append emitters. The two replace units retain their four erase/replaceBase findings each; the documented frame and naming prerequisites are unchanged and were not retried. The append owner still emits its retail 254-byte body, while the first copy in `stlport_float_format.cpp` is an unproven 279-byte body; `urlBuilder.cpp` and `Rva001F9524Concat.cpp` remain blocked even when all seven current objects are supplied together. The recorded declaration and extern-template ICE trials were not repeated. Next check: establish an admissible retail copy or declaration strategy in the early emitter while preserving its rows, then recheck the entire seven-unit family. No string clearance or census gain is claimed.
+
 ### LINK-007: incomplete data ownership beyond clean symbol resolution
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-26.**
@@ -844,6 +848,8 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
   extents, initial bytes, relocations and dependent closure through the existing
   gates. Family clearance and later census confirmation remain pending.
   Preserve the no-stubs/no-`/FORCE` runtime exit requirements.
+
+- **Filter-root current-input audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` confirms `W3DShaderManagerScreenBWFilterInit.cpp` remains unresolved on `screenBWFilter` and `screenBWFilterDOT3`; native DIR32 operands select VA `0x00DB5B54` and `0x00DB5B5C`. `Rva000FDCD7Get.cpp` still selects VA `0x00DB5BD4` for `W3DFilters[9]`. The old 144-byte inferred interval beginning at `0x009B5B88` is not storage proof for that filter: the current data register owns only the four-byte swap counter at its start. No artificial storage or alias is introduced. Next check: independently bound and recover complete filter objects and their initialized vtables before registering their ownership. Clearance and census confirmation remain pending.
 
 ### LINK-008: include inventories prevent strict reusable graphics receipts
 
@@ -1154,6 +1160,8 @@ tried in `urlBuilder.cpp` on 2026-10-26, also ends in C1001 (`_string.h(573)`); 
 Both float trials were restored. Broader family closure and census
 confirmation remain pending.
 
+- **OCL current-input audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` preserves the three unchanged OCL findings with current providers. The protected destructor and nonstatic `findPositionAround` references originate in the unmatched donor methods; the matched 42-byte constructor remains exact. The recovered finder at `0x00285202` is the static cdecl spelling in `TerrainLogicFindPositionAround.cpp`, and `SpecialPowerModuleDtor_Unresolved.cpp` supplies the public destructor. Adopting those contracts and the native `FindPositionOptions` layout requires reconciling the shared declarations; this seat changes no shared header or unmatched marker decoration. Next check: repair that header family and its consumers together. OCL clearance and census confirmation remain pending.
+
 ### LINK-015: naming `VectorClass<Vector3>`'s deleting destructor proved the consumers' inlined copies wrong
 
 **Status: Census-confirmed for the four repaired units; two teardown units remain blocked. Updated: 2026-10-26; inspected revision: c01848c0b1.**
@@ -1202,6 +1210,8 @@ confirmation remain pending.
   lose one COMDAT each, as expected.
 
 **Destructor specialization trial (2026-10-26, inspected `896af216804e`):** a TU-local `dllimport` plus `forceinline` specialization of the existing Vector3 destructor, retaining the header's qualified `Clear()` operation, does not suppress the losing deleting destructor and changes both `rva007B7280` and `rva007B7400`. The byte gate fails 2/6; the trial is fully reversed. The restored source passes 6/6 and retains its original single blocker with the current owner and sibling objects. Raw outputs: `build/link-worker-20261026-w2/vector-inline-preview.log`, `vector-inline-build.log`, `vector-restored-preview.log` and `vector-restored-build.log`. Do not repeat this specialization. The native table ownership or approved TU consolidation prerequisite above remains; census confirmation is pending.
+
+- **Teardown and table audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` records two reverted `Rva007B73C0.cpp` trials. An extern-template destructor replaces the 59-byte teardown with an unresolved destructor jump; an inline-only imported specialization also changes the teardown and leaves the losing deleting destructor. Final byte verification restores the original 59-byte body and the original single COMDAT finding. The proposed vtable-ownership route has an additional prerequisite: the six native table slots at `0x007CEFAC` point to RVAs `0x000F1CF7`, `0x000F1C16`, `0x000F0BF1`, `0x000F0CD4`, `0x000F0DC5`, `0x000F0E20`. The current Vector3 table instead names its pointer-ID owner at `0x001298B0`, while native slot 5 is the 27-byte TCB-class pointer-ID row at `0x000F0E20`. A data row cannot simply assert that these bindings agree. Next check: reconcile the native class/fold identities and every table slot before admitting a full table owner. The constructor and resize providers still preview LINKS; the two teardown units remain blocked. Census confirmation remains pending.
 
 ### LINK-016: folded bodies whose consumers declare them decl-only, with no provider
 
@@ -1552,6 +1562,7 @@ Remaining / next check (each needs a decision, a row or a shared change; none is
 Clearance: the 8 already-linking units preview LINKS against index 47e030bafc with current objects.
 Census confirmation: awaiting the next census.
 
+- **Assignment current-input audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` supersedes the earlier already-linking append observation for this fixed index: the seven current append emitters still block the two assigned consumers, as detailed in LINK-006. `RtcStack.cpp` retains the native-library duplicate; a noinline-inline trial previewed LINKS only because its matched symbol disappeared, so the failed byte check forced reversal. The final 90-byte row is exact and still duplicate-blocked. The `Weapon_getName_Thunk.cpp` native callee at `0x0028F940` is the existing `NetCommandMsg::getContentsAsAsciiString` row: it ignores `this` and constructs from the empty-string global, so changing a shared WeaponTemplate accessor to fit it would require first settling the wrapper identity. The Debug vtable and file-static latest-texture ownership prerequisites remain unchanged; no forbidden shared-header, row-move or pin trial was made. Next checks: resolve the CRT owner policy, establish the weapon-wrapper identity, reconcile Debug slots, and recover the texture thunk in its proper owning TU. No clearance or census gain is claimed for these units.
 
 - **Current address-blocker clarification (2026-10-26, inspected `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`):** the ordinary preview still reports A=1 for `ConstIntGetters2Addr.cpp` and A=1042 for `ConstIntGettersAddr.cpp`. The former's 0x00424F58 literal is inside a rowed string body and its meaning remains unasserted. The latter now contains large FieldParse/data initializers as well as getter immediates, so the earlier blanket false-positive explanation does not establish the meaning of its current findings. No literal, row or data ownership was changed. Raw before/after previews and the successful 149-row combined byte gate are in `build/link-worker-w1/`; classify actual datum ownership before changing these values or the heuristic. Clearance remains pending.
 
@@ -1606,9 +1617,9 @@ Census confirmation: awaiting the next census.
   `HRawLoadW3D*.cpp`, re-verifying every virtual-call offset in their matched bodies.
 
 ### LINK-024: `LivingWorldBuildingCtor.cpp` needs placeholder `Rva004E0D67` named `LivingWorldBuilding`
-Status: Open. Updated: 2026-10-26; inspected revision: d40f06e91c.
+Status: Open. Updated: 2026-10-26; inspected revision: 896af21680.
 Evidence / affected units: `Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingCtor.cpp`
-(298 B) has three unresolved names on current inputs (`link_check.py`, index 47e030bafc):
+(298 B) initially had three unresolved names on the earlier inputs (`link_check.py`, index 47e030bafc):
 `??1LivingWorldBuilding@@UAE@XZ`, `?LoadPostProcess@LivingWorldBuilding@@UAEXXZ`, `??1Rva004E0790@@QAE@XZ`.
 Target facts: retail ctor 0x004E119C stores vptrs 0x00C61618 (Snapshot) and 0x00C61610 (RegionTurnObserverView).
 0x00C61618 slots: 0 = 0x004E0E5C (rowed `??_GRva004E0D67` in `OpaqueScalarDeletingDtorsB11.cpp`, which calls the
@@ -1616,13 +1627,9 @@ dtor 0x004E0D67, rowed `??1Rva004E0D67` in `Rva004E0D67Dtor.cpp`), 1 = 0x000B3FD
 2 = 0x004E0777 `GetSnapshotName`, 3 = 0x004E0E78 `DoXfer`. The ctor's +0x3C unwind funclet (0x0079198E) jumps to
 0x002B2E8E, the ICF-folded holder dtor already rowed as `??1ArmySummaryEntryRef@@QAE@XZ` (fold-proof in
 `Rva002B4076Dispatch.cpp`).
-Completed: none (investigation only).
-Remaining / next check: rename class `Rva004E0D67` to `LivingWorldBuilding` (dtor row and the B11 `??_G` row;
-drop the `??1Rva004E0D67` pin), reconciling B11's one-slot `EmitVtableTag` view with the ctor TU's vtables;
-give `LoadPostProcess` its empty body or a fold-proof row at 0x000B3FD0 (precedent: `SpawnArmy::loadPostProcess`);
-respell the ctor's `Rva004E0790` holder dtor to `ArmySummaryEntryRef` (or rename the class). Then
-`link_check.py` the ctor with `Rva004E0D67Dtor.cpp` and `OpaqueScalarDeletingDtorsB11.cpp`.
-Clearance: pending.
+Completed: the constructor now stores the army holder as `ArmySummaryEntryRef`, whose existing 18-byte destructor at `0x002B2E8E` is defined by `Rva002B4076Dispatch.cpp`. Its setter keeps the existing `Rva004E0790` call view. All six constructor-unit rows remain exact, the complete EH graph is EXACT, and the current six-unit preview drops `??1Rva004E0790@@QAE@XZ` with no new finding. Raw before/after and gate outputs: `build/link-report.md` and `build/link-worker-20261026/`.
+Remaining / next check: rename/reconcile the `Rva004E0D67` destructor and deleting-destructor owners to `LivingWorldBuilding` while preserving their full vtable bindings; admit the empty `LoadPostProcess` override at `0x000B3FD0` through the normal folded-row path. Both remaining names stay unresolved in the current preview. No row rename, new body or pin was attempted in this seat.
+Clearance: holder destructor binding cleared in ordinary-preview scope; census confirmation pending. The complete constructor unit remains blocked on the two names above.
 Census confirmation: not claimed.
 
 Current destructor-side inspection (2026-10-26, revision `896af216804e1f1e34de28bd318285fbbbfcc536`; index `d1f046749a`): `Rva004E0D67Dtor.cpp` still has four unresolved virtual names. Its table at RVA 0x00861618 puts the name getter `LivingWorldBuilding::GetSnapshotName` (0x004E0777) where the private view spells `crc`, and `LivingWorldBuilding::DoXfer` (0x004E0E78) where it spells `xfer`. `Gen_uwm_004edfff::s0` also conflates the derived listener slot at 0x004E06B8 (`LivingWorldBuilding::BeginTurn`) and its base slot at 0x0050B238. These are signature/type conflicts, not requests for one same-signature alias. No source trial was made. Raw table-slot witnesses and row homes are in `build/link-worker-w1/native-witnesses.log`; the unchanged destructor unit passes the combined byte gate. The class/observer reconciliation above remains the prerequisite; no clearance or census change is claimed.
@@ -1640,6 +1647,8 @@ Remaining / next check: name the macro table's hash_map type (it differs from 0x
 another seat on 2026-10-26.
 Clearance: pending.
 Census confirmation: not claimed.
+
+- **Current-input confirmation (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` verifies both rows remain byte-exact and the original two opaque references plus losing/wrong-selected clear remain. The recorded declaration-only trial was not repeated because it leaves the clear name without a provider. Native `0x0002CCC3` still calls `0x002234FE`; recover the macro-table element identity and reconcile row owners before an emission change. Clearance and census confirmation remain pending.
 
 ### LINK-026: a unit owns a Zero Hour field-parse table whose parsers BFME 2 rows under other names
 
@@ -2545,3 +2554,12 @@ Remaining / next check: `005243FA` calls 0052408B (179 B, `Rva0052408BFind` in s
 Clearance: pending for all three units; each retains its required helper as both comdat and selected findings. The comparator cleanup is verified but does not clear linking.
 
 Census confirmation: awaiting; no census claim.
+
+### LINK-053: unmatched light persistence factory instantiates missing donor interfaces
+Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: 896af21680.
+Evidence / affected units: `Code/Libraries/Source/WWVegas/WW3D2/light.cpp`; unresolved `PersistFactoryClass` constructor/destructor and `SaveLoadSystemClass::Register_Pointer`; current index `d1f046749a`. Raw evidence: `build/link-report.md` and `build/link-worker-20261026/`.
+Completed: removed the unrowed Light factory instance, its Load/Save bodies and the unmatched `LightClass::Get_Factory` accessor. The existing `LightPersistFactoryClass::Chunk_ID` definition remains under its own name as an ordinary out-of-class member and byte-matches all six retail bytes. Three present-unmatched markers disappear. No row, pin, alias, storage substitute or code-generation flag changes.
+Verification: final build verifies 40/40 rows across all 20 assigned units; changed-source frozen, EH, data, ledger and pin checks pass. The final expanded ordinary preview reports light LINKS; the 46-unit before/after intersection gains no blocker. Exact-name source search and all available cached census objects find no other light-factory consumer; 517 indexed object files are absent locally, so this is bounded evidence, not whole-game closure.
+Remaining / next check: carry the removed-provider audit and the retained six-byte accessor into the next scheduled census; missing cached objects prevent a complete object-level consumer claim.
+Clearance: cleared in ordinary-preview scope; census confirmation pending.
+Census confirmation: awaiting the next normal census; no headline change claimed.
