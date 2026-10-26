@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 typedef void *PEER;
 
@@ -129,8 +130,6 @@ int piXpingTableHashFn(const void *param, int numBuckets)
 /* BFME2 links the CRT directly here (retail import slot is msvcr71!_strcmpi);
    same strcasecmp->_strcmpi mapping as the landed peerPlayersRoomFlags sibling. */
 #define strcasecmp _strcmpi
-extern __declspec(dllimport) int __cdecl _strcmpi(const char *left,
-	const char *right);
 
 int piXpingTableCompareFn(const void *param1, const void *param2)
 {
@@ -172,7 +171,6 @@ void piXpingTableElementFreeFn(void *param)
 int pingerInit(const char *localAddress, unsigned short localPort,
 	void *pinged, void *pingedParam, void *setData, void *setDataParam);
 unsigned int current_time(void);
-__declspec(dllimport) void srand(unsigned int seed);
 piPlayer *piGetPlayer(PEER peer, const char *nick);
 piPlayer *piFindPlayerByIP(PEER peer, unsigned int IP);
 void piAddPingCallback(PEER peer, const char *nick, int ping);

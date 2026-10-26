@@ -97,7 +97,7 @@ TreeHintOpaque0043671B *Rva004360B3(AsciiString key)
 // nonzero by that digest's MD5 text in this map (0x004360B3 and 0x004361B3
 // search it the same way). The owning application type stays unresolved.
 #include <set>
-extern "C" int __cdecl strcmp(const char *left, const char *right);
+#include <string.h>
 extern "C" void MD5Print(unsigned char digest[16], char output[33]);
 
 // The file-name set GameState::iterateSaveFiles also fills (its destructor

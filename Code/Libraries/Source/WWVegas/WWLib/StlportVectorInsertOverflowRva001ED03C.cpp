@@ -35,7 +35,7 @@ public:
 private:
     unsigned char unknown[0x24];
 };
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
 
 namespace _STL
 {
