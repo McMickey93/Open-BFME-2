@@ -8236,3 +8236,6 @@ Code/GameEngine/Source/GameClient/GUI/StrategicVeterancyAutoResolveCtor.cpp|para
 Code/GameEngine/Source/Common/Rva004A6E8EBatch.cpp|class||Rva004A6EObj,f324e1da7d7939f3122c3a2f,gpt-6.1-sol,w6-10261657-1,w-06f458dbecf5,2026-10-26
 Code/GameEngine/Source/GameLogic/Object/ObjectRva0028CECF.cpp|member|Rva0028CECFTemplate|m_flag115,ce4638f3e3fde1f612bd0497,gpt-6.1-sol,w6-10261657-5,w-06f458dbecf5,2026-10-26
 Code/GameEngine/Source/Common/Rva000B508A.cpp|member|Rva000B508ATemplate|m_flags108,972d48573dfd3a0bab3af01b,gpt-6.1-sol,w6-10261657-6,w-06f458dbecf5,2026-10-26
+Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|a,c6e6751eed5f883c8bfa176d,gpt-6.1-sol,w5-10261704-5,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva001F51AD.cpp|local|Rva001F51AD::rva001F51AD|b,b152d2bed551e344b3be2df4,gpt-6.1-sol,w5-10261704-5,w-f0819d403c17,2026-10-26
+Code/GameEngine/Source/Common/Rva005FA98CSwap.cpp|local|swapEntries|t,2a9358c6171d8239e9a56d85,gpt-6.1-sol,w5-10261704-11,w-f0819d403c17,2026-10-26
