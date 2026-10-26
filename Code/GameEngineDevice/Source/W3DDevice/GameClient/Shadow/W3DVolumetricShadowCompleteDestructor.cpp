@@ -12,7 +12,7 @@
 
 #include <new>
 
-void __cdecl operator delete[](void *block);
+#include <new>
 
 class BfmeShadowRefCount
 {
