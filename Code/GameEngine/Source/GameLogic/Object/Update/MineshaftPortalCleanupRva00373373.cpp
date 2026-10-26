@@ -24,7 +24,7 @@ public:
     void rva003731CB(Rva00373373Portal *portal, Player *player);
 };
 extern void *TheMineshaftPortalNetworkManager;
-void __cdecl operator delete(void *pointer);
+#include <new>
 
 class Rva003733B5Base
 {

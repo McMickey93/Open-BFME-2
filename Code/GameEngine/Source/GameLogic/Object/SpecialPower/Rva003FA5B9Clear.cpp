@@ -3,7 +3,7 @@
 // Native59B record cleanup; shared listener layout and real vector.
 #include "../../../../Include/Common/Rva003FA62B.h"
 
-void __cdecl operator delete(void *);
+#include <new>
 struct VirtBase { virtual void *func(int); };
 namespace _STL { template <> BfmePod8 *vector<BfmePod8>::erase(BfmePod8 *,BfmePod8 *); }
 void Rva003FA62B::clear()

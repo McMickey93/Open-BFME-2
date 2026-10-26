@@ -1,5 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /EHsc
-void __cdecl operator delete(void *);
+#include <new>
 namespace _STL { template<class T> class allocator {}; template<class T,class A=allocator<T> > class vector { public: T *erase(T *,T *); T *begin,*end,*capacity; }; }
 class EconomyFarmDestroyView { public: virtual void *destroy(int); };
 class Player;
