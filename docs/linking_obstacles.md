@@ -2439,6 +2439,23 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   preserved. This clears this INI consolidation guard only; the broader
   obstacle, official census and runtime confirmation remain open.
 
+**Guard provider-index prerequisite (2026-10-26, inspected `442a92e102`,
+rebased through `6c583e82f0`):** MetaEvent's unchanged merge trial accepts
+nothing against index `5ce093a71a`. The guard removes obsolete
+GameMessageIntWideArgs/GetArgument objects but does not refresh their
+replacement definitions in MessageStream.cpp, leaving integer append and
+argument access unresolved in the seed. The current provider verifies 18/18
+rows; the six fragments preview cleanly at 1,389 authored bytes. Including the
+provider in the ordinary preview instead exposes its duplicates against the
+obsolete objects, so whole-image closure is not established. The
+[bounded handoff](../reverse/attempt_support/consolidation-metaevent-prerequisites-20261026-codex4.md)
+records both results and independently verified canonical base/string
+declaration cleanups. Next: a coherent fresh provider index or a separate
+verified guard-freshness repair, then reconcile the remaining reference-header
+conflicts. No merge, guard workaround, link gain or census clearance is claimed.
+The preceding publication's batch-link audit was also inconclusive against
+the older index and its receipt requirements; carry this into the next census.
+
 ### LINK-043: StlSweepR3Rva00406B1D instantiated stable_sort instead of emitting scalar deleting destructor
 Status: Open for the extended family; original unit cleared. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
 Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00406B1D.cpp`,
