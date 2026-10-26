@@ -232,7 +232,6 @@ Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Tar
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva004AB9D5Value@@3VBfmeFixedStorage002CF0F0@@A	0x00A030D0
 Code/GameEngine/Source/Common/VslotSmallBodiesP.cpp	wrong-name	?g_rva00709E50Pending@@3PAXA	0x00A1835C
 Code/GameEngine/Source/Common/VslotSmallBodiesQ.cpp	wrong-name	?g_rva00709A00Pending@@3PAXA	0x00A1835C
-Code/GameEngine/Source/Common/WW3DOptionSetter.cpp	wrong-name	?g_WW3D_IsInitted@@3EA	0x009EC3D4
 Code/GameEngine/Source/GameClient/Drawable/Update/AnimationSoundClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004C9EF3@AnimationSoundClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0435C
 Code/GameEngine/Source/GameClient/Drawable/Update/EvaAnnounceClientCreatePoolKey.cpp	wrong-name	?$S1@?1??rva0004C9A0C@EvaAnnounceClientCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04344
 Code/GameEngine/Source/GameClient/Drawable/Update/RadarMarkerClientUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004C9BF3@RadarMarkerClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04350
@@ -785,7 +784,6 @@ Code/Libraries/Source/WWVegas/WW3D2/TextureStatisticsVector.cpp	duplicate-def	_t
 Code/Libraries/Source/WWVegas/WW3D2/TextureStatisticsVector.cpp	duplicate-def	_texture_statistics	0x009EE920
 Code/Libraries/Source/WWVegas/WW3D2/TextureStatisticsVector.cpp	wrong-name	_latest_texture	0x009EE918
 Code/Libraries/Source/WWVegas/WW3D2/TextureStatisticsVector.cpp	wrong-name	_texture_statistics	0x009EE920
-Code/Libraries/Source/WWVegas/WW3D2/WW3D_Init_Bfme.cpp	wrong-name	?g_WW3D_IsInitted@@3EA	0x009EC3D4
 Code/Libraries/Source/WWVegas/WW3D2/WW3D_SetNPatchesLevelThunk.cpp	wrong-name	?NPatchesLevel@@3IA	0x009B5F94
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	__VertexBufferCount	0x009F2A40
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	__VertexBufferTotalSize	0x009F2A00

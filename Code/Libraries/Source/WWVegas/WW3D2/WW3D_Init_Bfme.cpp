@@ -25,17 +25,15 @@ struct WW3DStaticSortGlobals
 };
 
 WW3DStaticSortGlobals g_WW3D_StaticSortGlobals;
-// The global at this VA is WW3D::IsInitted; this name aliases it rather than
-// defining a second variable the rest of the game never sees.
-extern unsigned char g_WW3D_IsInitted;
-#pragma comment(linker, "/alternatename:?g_WW3D_IsInitted@@3EA=?IsInitted@WW3D@@0_NA")
-
 extern "C" __declspec(dllimport) unsigned long __stdcall timeBeginPeriod(unsigned long period);
 
 class WW3D
 {
 public:
 	static bool Init(void *hwnd, char *defaultpal, bool lite);
+
+private:
+	static bool IsInitted;	// 0x00DEC3D4, defined in ww3d.cpp
 };
 
 bool WW3D::Init(void *hwnd, char *, bool lite)
@@ -49,6 +47,6 @@ bool WW3D::Init(void *hwnd, char *, bool lite)
 	g_WW3D_StaticSortGlobals.defaultList = list;
 	g_WW3D_StaticSortGlobals.currentList = list;
 	if (!lite)
-		g_WW3D_IsInitted = 1;
+		IsInitted = true;
 	return true;
 }

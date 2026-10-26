@@ -7,7 +7,13 @@
 // cl: /MD
 
 extern int g_Va00DEC40C;
-extern unsigned char g_WW3D_IsInitted;
+void Rva00117BB0SetOption(int value);
+
+class WW3D
+{
+	friend void Rva00117BB0SetOption(int value);
+	static bool IsInitted;	// 0x00DEC3D4, defined in ww3d.cpp
+};
 
 void rva001171B0Notify();
 
@@ -15,7 +21,7 @@ void Rva00117BB0SetOption(int value)
 {
 	if (g_Va00DEC40C != value) {
 		g_Va00DEC40C = value;
-		if (g_WW3D_IsInitted != 0) {
+		if (WW3D::IsInitted) {
 			rva001171B0Notify();
 		}
 	}
