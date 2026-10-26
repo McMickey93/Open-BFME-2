@@ -3,7 +3,6 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 
-extern unsigned int g_Va00E02ED4;
 extern const unsigned short g_Va007C9260[];
 
 class BfmeAptWindowManager

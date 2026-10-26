@@ -3,7 +3,6 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 
-extern unsigned int g_Va00E02EDC;
 extern float g_Va00BBB8D8;
 extern const unsigned short g_00BC26DC[];
 
