@@ -32,19 +32,8 @@ public:
 	void rva0004D6B3(Image *image, float x0, float y0, float x1, float y1, int color, int mode);
 };
 
-class Rva0025C6E2Elem
-{
-public:
-	void rva0025C8D3(W3DDisplay *disp, int id, int color);
-	void rva0025C829(W3DDisplay *disp, int id);
-private:
-	Image *m_00;
-	float m_04;
-	float m_08;
-	float m_0c;
-	float m_10;
-	int m_14;
-};
+#include "../GameClient/DisplayStaticDebugView.h"
+
 void Rva0025C6E2Elem::rva0025C8D3(W3DDisplay *disp, int id, int color)
 {
 	if (m_00 == 0)

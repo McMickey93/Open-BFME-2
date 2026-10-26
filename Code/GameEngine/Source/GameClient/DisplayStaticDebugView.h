@@ -10,16 +10,21 @@ class DebugDisplayInterface;
 typedef void DebugDisplayCallback(DebugDisplayInterface *, void *, FILE *);
 
 class W3DDisplay;
+class Image;
 
 class Rva0025C6E2Elem
 {
 public:
-	void rva0025C829(W3DDisplay *display, int arg);	// 0x0025C829
-
+	void rva0025C8D3(W3DDisplay *disp, int id, int color);
+	void rva0025C829(W3DDisplay *disp, int id);
 private:
-	unsigned char m_data[0x18];
+	Image *m_00;
+	float m_04;
+	float m_08;
+	float m_0c;
+	float m_10;
+	int m_14;
 };
-
 enum { MAX_STATIC_IMAGES = 3 };
 
 class Display
