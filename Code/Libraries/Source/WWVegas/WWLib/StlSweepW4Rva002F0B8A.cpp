@@ -4,24 +4,16 @@
 // stlport
 #include <map>
 
-// _Rb_tree_iterator comparisons otherwise instantiate the base-class
-// operator!= COMDAT (one byte shape per TU flags); exact-match free
-// overloads take those calls instead so this TU emits no external copy.
-namespace _STL {
-template <class _RbVal, class _RbLeft, class _RbRight>
-static inline bool operator!=(const _Rb_tree_iterator<_RbVal, _RbLeft> &a,
-                              const _Rb_tree_iterator<_RbVal, _RbRight> &b)
-{ return a._M_node != b._M_node; }
-}
-
-// map/set<int> internals otherwise instantiate the less<int>::operator()
-// COMDAT (one byte shape per TU flags); an explicit dllimport+forceinline
-// specialization takes those calls inline so this TU emits no external copy.
-namespace _STL {
-template <> __declspec(dllimport) __forceinline
-bool less<int>::operator()(const int &a, const int &b) const
-{ return a < b; }
-}
-
 struct Rva002F0B8AElement { char bytes[1]; bool operator<(const Rva002F0B8AElement&)const; bool operator==(const Rva002F0B8AElement&)const; };
-template class _STL::map<int,Rva002F0B8AElement>;
+
+typedef _STL::pair<const int, Rva002F0B8AElement> _Rva002F0B8APair;
+typedef _STL::allocator<_Rva002F0B8APair> _Rva002F0B8AAlloc;
+typedef _STL::_Rb_tree<int, _Rva002F0B8APair, _STL::_Select1st<_Rva002F0B8APair>, _STL::less<int>, _Rva002F0B8AAlloc > _Rva002F0B8ATree;
+typedef _STL::_Rb_tree_base<_Rva002F0B8APair, _Rva002F0B8AAlloc > _Rva002F0B8ABase;
+
+namespace _STL {
+template <> void _Rva002F0B8ATree::clear();
+template <> _Rva002F0B8ABase::~_Rb_tree_base() throw();
+}
+
+template _Rva002F0B8ATree::~_Rb_tree();

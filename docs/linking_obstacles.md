@@ -1742,3 +1742,13 @@ inspected revision: 78413ee546.
   pin was left as is (pin edits go through `tools/pin_admission.py`).
 - **Clearance:** preview scope (the two units above) on a HEAD-updated index.
 - **Census confirmation:** awaiting the next census.
+
+
+### LINK-048: StlSweepW4Rva002F0B8A callees clear() and ~_Rb_tree_base() rowed under placeholder names
+Status: Open. Updated: 2026-10-26; inspected revision: cc8e3e767b (index d1f046749a).
+Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0B8A.cpp`,
+retail 0x002F0B8A (43 B) is `_Rb_tree<int, pair<const int, Rva002F0B8AElement>...>::~_Rb_tree()`.
+Completed: Eliminated non-retail COMDAT copies of `clear()` and `~_Rb_tree_base()`, unresolved `__imp_??R?$less@H@_STL@@QBE_NABH0@Z`, and wrong selected definitions by selectively instantiating `~_Rb_tree()` while explicitly specializing declarations for `clear()` and `~_Rb_tree_base() throw()`. Updated funclet pin object-symbol to current `$L4142`. Exact 3/3 byte match preserved.
+Remaining / next check: The two callees `0x002EE9E0` and `0x002EEA09` are rowed under placeholder names `?rva002EE9E0@Rva002EB416@@QAEXXZ` and `?rva002EEA09@Rva002EB416@@QAEXXZ` in `Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp` (and pinned in `symbols.csv`, which the plain link does not use). Resolving requires renaming the rowed providers to their template names or TU consolidation into retail `AIPathfind.cpp`.
+Clearance: Wrong COMDATs and imports cleared; remaining blockers isolated to provider naming.
+Census confirmation: awaiting next census.
