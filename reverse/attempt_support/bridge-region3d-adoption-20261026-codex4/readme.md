@@ -58,3 +58,35 @@ identity is not established by size or the folded empty callback.
 view and region data aggregate. `WWMath/region.cpp` retains the documented
 Coord3D streamer class-key/provider prerequisite (LINK-018). These leads
 are not fresh failed trials, and this batch does not clear those scopes.
+
+## Follow-up: command-pool matrix rows
+
+After the first bridge commit (`6bdbf0ba29`), inspection of the existing
+`Rva000748F6Builders.cpp` established the fourth queue entry's element
+identity beyond its size and folded callback. Native builders `0x00074B3B`,
+`0x00074C3F`, `0x00074DB4`, `0x00074F25` and `0x00075091` fetch the same
+pooled record through `Rva00074AFFGet`. Its constructor is `0x000748F6` in
+`Rva000747E5Method.cpp`; its three 16-byte elements start at +4.
+The builders' already-matched code treats that 48-byte member as Matrix3D,
+including Matrix3D::Set and its axis-scaling order.
+
+The BFME 1 donor declaration in
+`reference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath/matrix3d.h`
+contains `Vector4 Row[3]`. This is a donor layout fact, supported here by
+the target's builder operations; it is not a recovered BFME 2 source path
+or a name for the pooled record itself. The existing ledger owns the
+empty Vector4 constructor at `0x0047A6A9`, as above.
+
+`Rva000747E5Method.cpp` now declares those elements as Vector4 and includes
+the canonical Region3D header. The replacement preserves the external
+nonthrow constructor declaration, stride/count and record offsets. No
+callback implementation, pin, ledger row, shared header or caller changed.
+The earlier remaining-queue paragraph records what was known before this
+follow-up; the 16-byte element prerequisite is now resolved for this file.
+
+Verification: normal before/after builds preserve **3/3 matched**; the
+unmatched-body check passes; the adoption tool passes and retires **one**
+additional header queue row. Ordinary before/after link previews against
+`5ce093a71a` preserve **LINKS, 71 -> 71 authored bytes**. Raw outputs have
+`pool-` prefixes beside this note. Three Region3D entries remain, with the
+copy-visibility, Coord3D lifetime and streamer-provider prerequisites above.

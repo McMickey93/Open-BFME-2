@@ -1,4 +1,6 @@
 // cl: /Ireference/shims/bfme2_ascii /EHsc /MD /DNDEBUG /DWIN32 /D_WINDOWS
+#include "../../../../Libraries/Include/Lib/Region3D.h"
+
 // ?rva000747E5@Rva000747E5@@QAEXXZ, retail 0x000747E5, 23 bytes.
 // Guarded DisplayStringManager factory: if TheDisplayStringManager (VA 0xdfead8)
 // then this+0x28 = manager->newDisplayString() at slot 0x38. Manager layout per
@@ -69,14 +71,18 @@ void Rva000747E5::rva000748DF(int val)
 }
 
 // ??0Rva000748F6@@QAE@XZ, retail 0x000748F6, 25 bytes.
-// Ctor: 3x 0x10 elements at +4 via vector ctor iterator with the folded
-// empty ctor 0x0047A6A9 (the 16-byte row element the ledger names
-// Rva0047A6A9Row16; a 24-byte Region3D cannot have this stride).
+// Ctor: three Vector4 rows at +4 via the rowed Vector4 empty constructor.
 // Evidence: unlock lane, static init caller 0x00074AFF with ecx=0xDE1ED8, size 0x10 count 3 per retail.
-struct Rva0047A6A9Row16
+// Rva000748F6Builders.cpp identifies +4 as Matrix3D; its three rows are
+// Vector4 in the BFME1 WWMath declaration. Keep the provider declaration-only.
+class Vector4
 {
-	Rva0047A6A9Row16() throw();
-	float x, y, z, w;
+public:
+	Vector4() throw();
+	float X;
+	float Y;
+	float Z;
+	float W;
 };
 
 class Rva000748F6
@@ -85,7 +91,7 @@ public:
 	Rva000748F6();
 private:
 	char m_00[4];
-	Rva0047A6A9Row16 m_arr[3];
+	Vector4 m_arr[3];
 };
 
 Rva000748F6::Rva000748F6()

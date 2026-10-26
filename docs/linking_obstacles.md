@@ -1881,6 +1881,23 @@ everse/re_attempts.log.
   provider prerequisites, detailed in the evidence. The broader LINK-018
   Coord3D member-growth and provider work remains open.
 
+#### Command-pool Region3D debt follow-up, 2026-10-26
+
+- **Inspected after `6bdbf0ba29`:** the existing native builders in
+  `Rva000748F6Builders.cpp` identify the +4 member of the command-pool record
+  as Matrix3D through its Set and axis-scaling operations. BFME 1's WWMath
+  declaration supplies three Vector4 rows. This resolves the preceding
+  opaque 16-byte element prerequisite for `Rva000747E5Method.cpp`.
+- **Completed / clearance:** this source now declares Vector4 rows against
+  the existing constructor owner and includes canonical Region3D. Normal
+  builds preserve 3/3 matched; unmatched-body and header-adoption checks
+  pass. The adoption tool retires one further header debt row. Ordinary
+  before/after previews preserve LINKS and 71 authored bytes against
+  `5ce093a71a`; no census gain is claimed. Evidence and raw logs are in
+  [the same adoption evidence](../reverse/attempt_support/bridge-region3d-adoption-20261026-codex4/readme.md).
+- **Remaining:** three Region3D entries retain the copy-visibility, Coord3D
+  lifetime and streamer-provider prerequisites. LINK-018 remains open.
+
 ### LINK-019: `Rva0039B893` vtable mismatch across copy-ctor and default-ctor units blocks `ScoreKeeperPerFrameStatsDefaultResizeDeferred.cpp` linking
 
 **Status: Cleared. Updated: 2026-10-26; inspected revision: d831bc24031.**
