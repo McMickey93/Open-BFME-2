@@ -181,14 +181,19 @@ def test_preprocessor_uses_wine_paths_and_compiler_environment(tmp_path, monkeyp
     monkeypatch.setattr(mha, "vc71_root", lambda: tmp_path)
     monkeypatch.setattr(mha.os, "name", "posix")
     monkeypatch.setattr(build, "compiler_environment", lambda root: {"WINEPATH": "compiler-dlls"})
-    monkeypatch.setattr(build, "wine_path", lambda path: "Z:" + str(path).replace("/", "\\"))
+    # The test simulates Wine even on a Windows host; do not produce Z:C:\...
+    # from that host's tmp_path when constructing the fake Wine mapping.
+    def fake_wine_path(path):
+        return "Z:\\" + str(path).lstrip("/\\").replace(":", "").replace("/", "\\")
+
+    monkeypatch.setattr(build, "wine_path", fake_wine_path)
     calls = []
     monkeypatch.setattr(mha.subprocess, "run", lambda command, **kw:
                         calls.append((command, kw)) or SimpleNamespace(returncode=0, stdout="ok", stderr=""))
     assert mha.run_cl_e(["#include <windows.h>"], [("sdk", tmp_path / "include")], workdir=tmp_path)[0]
     command, kwargs = calls[0]
     assert command[0] == "wine" and command[-1].startswith("Z:\\")
-    assert kwargs["env"] == {"WINEPATH": "compiler-dlls", "INCLUDE": "Z:" + str(tmp_path / "include").replace("/", "\\")}
+    assert kwargs["env"] == {"WINEPATH": "compiler-dlls", "INCLUDE": fake_wine_path(tmp_path / "include")}
 
 
 def test_preprocessor_line_paths_recover_header_provenance_under_wine(tmp_path, monkeypatch):
@@ -294,6 +299,43 @@ def test_forward_declarations_alone_do_not_queue_a_file():
     res, occ = scan("struct tagRECT;\n")
     assert occ["tagRECT"][3] == "fwd"
     assert mha.classify("Code/Game/Fixture.cpp", res, INDEX)[0] is None
+
+
+def test_imported_game_operators_are_not_simd_header_copies():
+    # bfme_colmathaabox/vector3.h uses dllimport to suppress an out-of-line
+    # copy. It still overloads on Vector3, not the SDK's SIMD vector types.
+    for operator in ("*", "+"):
+        index = index_from(
+            "struct SimdVector { float data[4]; };\n"
+            f"inline SimdVector operator{operator}(float k, const SimdVector &v) {{return v;}}\n",
+            label="Vc7/include/dvec.h")
+        prefix = "class Vector3 { public: float X, Y, Z; };\n"
+        for ending in (";", " {return v;}"):
+            text = prefix + ("__declspec(dllimport) __forceinline Vector3 "
+                             f"operator{operator}(float k, const Vector3 &v){ending}\n")
+            res = mha.scan_text("reference/shims/fixture/vector3.h", text, index)
+            assert not any(o[1] == f"operator{operator}" for o in res["occ"])
+            assert not mha.check(["reference/shims/fixture/vector3.h"],
+                                 read_new=lambda p: text, read_old=lambda p: "",
+                                 index=index)
+
+
+def test_imported_matching_operator_still_reports_abi_conflict():
+    index = index_from("inline SimdVector operator*(float k, const SimdVector &v) {return v;}\n",
+                       label="Vc7/include/dvec.h")
+    text = "__declspec(dllimport) SimdVector operator*(float k, const SimdVector &v);\n"
+    occ = mha.scan_text("Code/Fixture.cpp", text, index)["occ"]
+    assert any(o[1] == "operator*" and o[3] == "abi" and "dllimport" in o[4] for o in occ)
+    assert mha.check(["Code/Fixture.cpp"], read_new=lambda p: text,
+                     read_old=lambda p: "", index=index)
+
+
+def test_imported_named_function_and_allocator_conflicts_remain():
+    for name in ("free", "operator new"):
+        index = index_from(f"void *{name}(unsigned int size);\n", label="Vc7/include/new")
+        text = f"__declspec(dllimport) void *{name}(const char *size);\n"
+        occ = mha.scan_text("Code/Fixture.cpp", text, index)["occ"]
+        assert any(o[1] == name and o[3] == "abi" for o in occ)
 
 
 def crt_free_index():

@@ -2209,9 +2209,14 @@ class Comparer:
                 break
         # an unrelated C++ overload (operator+ on AsciiString against the
         # templates in <xcomplex>, sqrt(float) against sqrt(double)): C++
-        # linkage, no dllimport, and no real non-template overload whose
-        # parameters have the same ABI
-        if best and best[0] != "same" and d.linkage == "C++" and not d.d.get("dllimport") \
+        # linkage and no real non-template overload with the same parameter
+        # types. dllimport does not make a game's operator a SIMD overload;
+        # keep the existing conservative treatment of named functions and
+        # allocation operators, whose malformed declarations need reporting.
+        overload_operator = d.name.startswith("operator") and not d.name.startswith(
+            ("operator new", "operator delete"))
+        if best and best[0] != "same" and d.linkage == "C++" \
+                and (not d.d.get("dllimport") or overload_operator) \
                 and not any(self._same_params(local, e) for e in fns):
             return None
         return best
