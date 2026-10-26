@@ -17086,7 +17086,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009BA4C0,20,.data,global,?TheVeterancyNames@@3PAPBDA,Code/GameEngine/Source/GameLogic/Object/WeaponParseVetLevels.cpp,owned,,1,5
 0x009BA4D4,16,.data,global,?TheRelationshipNames@@3PAPBDA,Code/GameEngine/Source/Common/Recorder.cpp,owned,,1,1
 0x009BA4E4,4,.data,global,?BfmeLogicFramesPerSecond@@3HA,Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp,owned,,1,296
-0x009BA4E8,4,.data,global,?BfmeClientFramesPerSecond@@3HA,Code/GameEngine/Source/GameClient/LivingWorldEyeTowerProcessItems.cpp,owned,,1,497
+0x009BA4E8,4,.data,global,?BfmeClientFramesPerSecond@@3HA,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldEyeTower.cpp,owned,,1,497
 0x009BA4EC,4,.data,global,?g_parseDurationMsecScale@@3MA,Code/GameEngine/Source/Common/System/INI_parseDurationUnsignedShort.cpp,owned,,1,20
 0x009BA4F0,4,.data,float,__real@43480000,,literal,?g_00DBA4F0@@3MA;__real@43480000,1,2
 0x009BA4F4,4,.data,global,?g_00DBA4F4@@3MA,Code/GameEngine/Source/Common/Rva0040C985Init.cpp,owned,,1,2
