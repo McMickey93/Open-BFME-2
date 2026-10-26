@@ -465,7 +465,11 @@ Completed: native call/row diagnosis and current-provider verification; these si
   rows and two exact EH graphs, retiring its own queue item. Its unchanged
   TemplateCountKey allocator COMDATs still have two divergent-definition
   diagnostics in the shadow identity check; no clean-link verdict is claimed.
-  Seven remaining ICoord2D items and census confirmation stay open.
+  A [separate coordinate-record adoption](../reverse/attempt_support/icoord2d-record-header-20261026.md)
+  moves prefix clearing into the record's own initialization and uses both
+  canonical coordinate headers: all four rows, two EH graphs and complete
+  non-debug object facts are preserved, retiring one more queue row.
+  Six remaining ICoord2D items and census confirmation stay open.
 - **Current component-header integration (2026-10-26, base `e1cdb1014f`):**
   The [fresh receipt](../reverse/attempt_support/icoord2d-component-header-20261026.md#current-master-integration)
   verifies 1,939 rows and 27 data rows across 255 header dependents, plus the
