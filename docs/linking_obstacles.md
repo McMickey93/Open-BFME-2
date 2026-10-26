@@ -1592,6 +1592,15 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
     linked (3 unresolved `Rva00218E09Record` members, pinned non-retail `__median` /
     `__unguarded_partition` copies). Next: give the record its real type (the copy ctor is
     already bound to `MixFileCreator::FileInfoStruct`'s) so its members resolve.
+    **Repaired 2026-10-26 (b5c5d490a1, agent K9):** the record now carries
+    `FileInfoStruct`'s 16-byte layout (CRC, Offset, Size, `AsciiString` Filename) with an
+    inline signed-CRC `operator<` (the compare the rowed partition 0x00217AB0 does). The
+    implicit dtor and copy-assign are inline, so the three unresolved members disappear,
+    and the emitted `__median` / `__unguarded_partition` copies are retail's.
+    `./build.sh` 26/26; `tools/link_check.py` (d1f046749a index): `GameFont.cpp`
+    0 -> 1,758 B; `MixFileCreatorFileInfoStructAssign.cpp`, `stlport_int_algorithm_bodies.cpp`
+    stay linked. The copy ctor still binds through the file's existing `/alternatename`
+    (renaming the record to `MixFileCreator::FileInfoStruct` would retire it; not done).
   - `statistics.cpp` (986 B), 01a7f0d9ba: absorbed `Rva001296F0Destroy.cpp`, which never
     linked (`extern "C" textureStatisticsString`, while the string is a file static in
     `DebugStatisticsRecordTextureEnd.cpp`; non-retail `??1Rva001880D0Dtor` copy).
