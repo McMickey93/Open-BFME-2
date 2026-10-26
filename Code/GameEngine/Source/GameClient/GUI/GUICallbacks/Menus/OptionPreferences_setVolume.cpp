@@ -4,7 +4,7 @@
 // ?setVolume@OptionPreferences@@QAEXHM@Z, retail 0x002E545A,
 // 144 bytes. Dedicated TU.
 //
-// BFME2-new indexed volume setter over the inline 20-byte volume-name table
+// BFME2-new indexed volume setter over the shared 20-byte volume-name table
 // (SFX/Voice/Music/Ambient/MovieVolume). Same push-sink recipe as the landed
 // setCampaignDifficulty sibling: the key is a NAMED local and the slot is a
 // NAMED reference so the text push sinks below the op[] call. /G7 keeps the
@@ -49,14 +49,9 @@ namespace _STL
 template <> AsciiString &map<AsciiString, AsciiString, less<AsciiString>, allocator<pair<const AsciiString, AsciiString> > >::operator[](const AsciiString &key);
 }
 
-static const char volumeNames[5][20] =
-{
-	"SFXVolume",
-	"VoiceVolume",
-	"MusicVolume",
-	"AmbientVolume",
-	"MovieVolume"
-};
+// The 5-by-20-byte volume key table (SFX/Voice/Music/Ambient/MovieVolume),
+// defined once in OptionPreferences_getVolume.cpp.
+extern const char g_volumePreferenceKeys[5][20];
 
 class OptionPreferences : public AsciiPreferenceMap
 {
@@ -78,7 +73,7 @@ void OptionPreferences::setVolume(Int index, Real value)
 	// the imul), and the table address must fold into the scaled index with
 	// compound assignment (add esi,imm) rather than a fresh lea.
 	index *= 20;
-	index += (Int)volumeNames;
+	index += (Int)g_volumePreferenceKeys;
 	AsciiString key((const char *)index);
 	AsciiString &slot = (*this)[key];
 	((StringBase<char> *)&slot)->set(*(const StringBase<char> *)&text);
