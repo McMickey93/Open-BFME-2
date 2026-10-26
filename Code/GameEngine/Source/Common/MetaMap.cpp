@@ -12,8 +12,7 @@ public:
 };
 
 // Retail base vtable BD77A0 and destructor 1B4E74 prove the canonical 12-byte subsystem base.
-typedef bool Bool;
-#include "subsystem_interface.h"
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 class MetaMap : public SubsystemInterface
 {
@@ -21,21 +20,21 @@ public:
 	MetaMap();
 	virtual ~MetaMap();
 private:
-	MetaMapRec *m_head;
+	MetaMapRec *m_metaMaps;
 };
 
 MetaMap::~MetaMap()
 {
-	while (m_head != 0) {
-		MetaMapRec *next = m_head->m_next;
-		delete m_head;
-		m_head = next;
+	while (m_metaMaps != 0) {
+		MetaMapRec *next = m_metaMaps->m_next;
+		delete m_metaMaps;
+		m_metaMaps = next;
 	}
 }
 
 // ??0MetaMap@@QAE@XZ retail 0x001DB3E8 22B, the matching constructor
 // (same vtable 0x007DBA7C; caller 0x0022E2E4): the canonical subsystem base,
 // then an empty record list.
-MetaMap::MetaMap() : m_head(0)
+MetaMap::MetaMap() : m_metaMaps(0)
 {
 }
