@@ -28,7 +28,7 @@ protected:
 };
 }
 
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
 
 template <>
 void _STL::vector<Rva0008B4AFElement>::_M_clear()

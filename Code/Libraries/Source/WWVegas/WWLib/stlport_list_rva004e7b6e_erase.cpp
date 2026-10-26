@@ -17,7 +17,7 @@ struct Rva004E7B6ENode
 	Rva004E7A76 m_msg;
 };
 
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 void __stdcall Rva004E7B6EErase(void **out, Rva004E7B6ENode *pos)
 {

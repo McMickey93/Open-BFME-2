@@ -24,7 +24,7 @@ protected:
 };
 }
 
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
 
 void _STL::vector<Rva002B9062Element>::_M_clear()
 {
