@@ -14,8 +14,7 @@
 typedef int Int;
 typedef bool Bool;
 
-extern void *operator new[](unsigned int size);
-extern void operator delete[](void *memory);
+#include <new>
 
 class File
 {

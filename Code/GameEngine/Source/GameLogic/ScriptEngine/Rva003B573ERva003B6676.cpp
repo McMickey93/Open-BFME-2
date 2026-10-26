@@ -5,7 +5,7 @@
 // Native3B6676 walks 20B records from head1C, clearing node cells10 and
 // setting referencesE to1. The rowed node destructor448C and element drain
 // supply ownership; field purposes beyond that remain neutral.
-void __cdecl operator delete(void *block);
+#include <new>
 class Rva003B448C
 {
 public:

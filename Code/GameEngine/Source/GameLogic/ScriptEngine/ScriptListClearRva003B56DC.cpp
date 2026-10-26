@@ -5,7 +5,7 @@
 // Native head1C,20-byte record stride, next-index0, node-cell10 and countE
 // prove the accessed layout. The owner/method spellings remain neutral.
 // Matched sibling supplies the same-valued record/node pointer forms.
-void __cdecl operator delete(void *block);
+#include <new>
 class BfmeNodeZ
 {
 public:
