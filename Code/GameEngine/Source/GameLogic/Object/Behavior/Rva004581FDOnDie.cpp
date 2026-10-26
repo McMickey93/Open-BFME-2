@@ -8,10 +8,7 @@
 // remains address-derived. The helper is BridgeBehavior::handleObjectsOnBridgeOnDie
 // (BridgeBehaviorHandleObjectsOnBridgeOnDie.cpp).
 
-enum ObjectID
-{
-	Rva004581FDInvalidObjectID = 0
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 enum BridgeTowerType
 {
@@ -32,12 +29,6 @@ class Object
 {
 public:
 	void kill(DamageType damageType, DeathType deathType);
-};
-
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
 };
 
 extern GameLogic *TheGameLogic;

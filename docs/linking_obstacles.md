@@ -229,6 +229,14 @@ Remaining / next check: perform coherent type/allocator and row-name reconciliat
 
 **Status: Open. Updated: 2026-10-26.**
 
+- **BridgeBehavior die GameLogic prerequisite (2026-10-26):**
+  [Canonical header adoption](../reverse/attempt_support/consolidation-bridge-die-gamelogic-prerequisite-20261026-codex4.md)
+  retires one header-queue row. The 79-byte die body, code/data fingerprints,
+  COMDAT policies and all references remain identical; no bindings change.
+  The ordinary merge trial still has independent carried-flag, composition,
+  Coord3D/Region3D and mixed-source prerequisites. No new merge acceptance,
+  file reduction, identity retirement, census gain or Luna landing is claimed.
+
 - **AITNGuard scan prerequisite (2026-10-26):**
   [the shared Object receiver](../reverse/attempt_support/consolidation-guard-scan-prerequisite-20261026-codex.md)
   makes the seed and scan donor compose: six existing rows / 595 bytes,
