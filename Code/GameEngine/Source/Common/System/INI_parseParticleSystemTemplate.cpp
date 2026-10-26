@@ -10,6 +10,7 @@
 
 class ParticleSystemTemplate;
 
+#include <string.h>
 #include "ascii_string.h"
 
 
@@ -30,7 +31,6 @@ public:
 	static void parseParticleSystemTemplate(INI *ini, void *instance, void *store, const void *userData);
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 // ?parseParticleSystemTemplate@INI@@SAXPAV1@PAX1PBX@Z
 void INI::parseParticleSystemTemplate(INI *ini, void *, void *store, const void *)
