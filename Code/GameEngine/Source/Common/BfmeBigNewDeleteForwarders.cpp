@@ -8,8 +8,7 @@
 // their 7 and 4 calling units; the true identity (plausibly an allocator
 // helper's allocate/deallocate) is not witnessed.
 
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *block);
+#include <new>
 
 void *bfmeBigAllocPR(unsigned int size)
 {

@@ -9,8 +9,7 @@
 // likewise unknown. Explicit global delete preserves destructor flag0 followed
 // by global deallocation, unlike an ordinary delete expression.
 bool __cdecl Render_Obj_Exists(const char*);
-void *__cdecl operator new(unsigned int)throw();
-void __cdecl operator delete(void*);
+#include <new>
 void __cdecl Add_Prototype(void*);
 class StringClass {
  char *buffer;void Free_String();
