@@ -224,7 +224,9 @@ StrategicHUD::EndTurnButtonImpl::~EndTurnButtonImpl()
 }
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 extern const char g_Rva0107301CEmptyString[];
 int __cdecl Rva00524EF4AptCall(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function);
 int __cdecl Rva0050E9FEAptCall(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function, const char **a0ptr);
@@ -241,7 +243,7 @@ void StrategicHUD::EndTurnButtonImpl::DoSetEnabled(bool newState)
 		return;
 	const char *state = newState ? "_up" : "_disabled";
 	const char *prefix = Rva005794EDGetStr(m_08);
-	Rva0050E9FEAptCall(TheRva00222A8BTarget, (void *)m_04, prefix, "SetState", &state);
+	Rva0050E9FEAptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_04, prefix, "SetState", &state);
 	m_1C = newState;
 }
 
@@ -250,12 +252,12 @@ void StrategicHUD::EndTurnButtonImpl::DoSetEnabled(bool newState)
 // (retail strings "PlayAlertFlash" / "HaltAlertFlash").
 void StrategicHUD::EndTurnButtonImpl::DoPlayAlertFlash()
 {
-	Rva00524EF4AptCall(TheRva00222A8BTarget, (void *)m_04, Rva005794EDGetStr(m_08), "PlayAlertFlash");
+	Rva00524EF4AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_04, Rva005794EDGetStr(m_08), "PlayAlertFlash");
 }
 
 void StrategicHUD::EndTurnButtonImpl::DoHaltAlertFlash()
 {
-	Rva00524EF4AptCall(TheRva00222A8BTarget, (void *)m_04, Rva005794EDGetStr(m_08), "HaltAlertFlash");
+	Rva00524EF4AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_04, Rva005794EDGetStr(m_08), "HaltAlertFlash");
 }
 
 // 0x00579542 (43 B), slot 6 of the table 0x00C6ECBC: drops the click target.

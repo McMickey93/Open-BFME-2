@@ -31,7 +31,9 @@ public:
 
 // The Apt window manager's +0x318 mode (0: open, 2: close).
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 struct Rva00578A7EAptMode
 {
@@ -612,7 +614,7 @@ void StrategicHUD::Palantir::OnSelectionUIUnloaded(const char *name)
 // starts the options button's open (mode 0) or close (mode 2) animation.
 void StrategicHUD::Palantir::OnOptionsButtonClicked(const char *unused)
 {
-	int mode = ((Rva00578A7EAptMode *)TheRva00222A8BTarget)->m_mode;
+	int mode = ((Rva00578A7EAptMode *)g_bfmeAptWindowManager)->m_mode;
 	if (mode == 0)
 		PalantirButton<0>::forEach(reinterpret_cast<void (Rva00578A60Listener::*)(void *)>(&ProcessAnimateWindowSlideFromBottomTimed::initAnimateWindow), static_cast<PalantirButton<0> *>(this));
 	else if (mode == 2)
@@ -630,7 +632,7 @@ void StrategicHUD::Palantir::OnOptionsButtonRollOver(const char *unused)
 // Retail 0x00578AF1, 67 bytes: bound as "<movie>_OnObjectivesButtonClicked".
 void StrategicHUD::Palantir::OnObjectivesButtonClicked(const char *unused)
 {
-	int mode = ((Rva00578A7EAptMode *)TheRva00222A8BTarget)->m_mode;
+	int mode = ((Rva00578A7EAptMode *)g_bfmeAptWindowManager)->m_mode;
 	if (mode == 0)
 		PalantirButton<1>::forEach(reinterpret_cast<void (Rva00578A60Listener::*)(void *)>(&ProcessAnimateWindowSlideFromBottomTimed::initAnimateWindow), static_cast<PalantirButton<1> *>(this));
 	else if (mode == 2)
@@ -684,7 +686,7 @@ struct PalantirOptionsButtonReceiver {
 void PalantirOptionsButtonReceiver::setEnabled(bool value) {
  if(value!=enabled) {
   if(!value && rolledOver)((StrategicHUD::Palantir *)((char *)this-4))->rva00578AC1(0);
-  Rva005277D9Fire(TheRva00222A8BTarget,level,name.str(),"EnableOptionsButton",&value);
+  Rva005277D9Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager),level,name.str(),"EnableOptionsButton",&value);
   enabled=value;
  }
 }
@@ -695,7 +697,7 @@ struct PalantirObjectivesButtonReceiver {
 void PalantirObjectivesButtonReceiver::setEnabled(bool value) {
  if(value!=enabled) {
   if(!value && rolledOver)((StrategicHUD::Palantir *)((char *)this-0x18))->rva00578B4C(0);
-  Rva005277D9Fire(TheRva00222A8BTarget,level,name.str(),"EnableObjectivesButton",&value);
+  Rva005277D9Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager),level,name.str(),"EnableObjectivesButton",&value);
   enabled=value;
  }
 }

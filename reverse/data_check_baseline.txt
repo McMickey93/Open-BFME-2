@@ -1,7 +1,4 @@
 # source	check	symbol	address -- shrink-only; written by tools/data_check.py
-Code/GameEngine/Source/Common/AptHeroPowerText.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/AptImageKeySetters.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/AptStateCalls.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Bfme/Rva004E5A24Ctor.cpp	wrong-name	?g_00DD00A8@@3MA	0x009D00A8
 Code/GameEngine/Source/Common/Bfme/Rva004E5A24Ctor.cpp	wrong-name	?g_00DD00AC@@3MA	0x009D00AC
 Code/GameEngine/Source/Common/Bfme/Rva004E65CFLeaf.cpp	wrong-name	?g_00DEC2D4@@3PAVRva004E65CFMgr@@A	0x009EC2D4
@@ -90,7 +87,6 @@ Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp	wrong-name	?err@?1??rva002
 Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp	wrong-name	?err@?1??rva0021B13A@Rva00219B9E@@QAEPAXII@Z@4VAsciiString@@A	0x009FE420
 Code/GameEngine/Source/Common/Rva002214C5Vec.cpp	wrong-name	?SlaveAttackFieldTable@@3UFieldParse@@B	0x0086BB18
 Code/GameEngine/Source/Common/Rva002B2E77Finish.cpp	wrong-name	?Glo00A00950@@3PAVGlobalHolder@@A	0x00A00950
-Code/GameEngine/Source/Common/Rva002B5D36EndGame.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva002E8B9B.cpp	wrong-name	?g_00A049D0@@3PAVMixFileInfoBuffer@@A	0x00A049D0
 Code/GameEngine/Source/Common/Rva0030062CGet.cpp	wrong-name	?$S1@?1??Rva0030062CGet@@YAPAVAsciiString@@XZ@4IA	0x009FF158
 Code/GameEngine/Source/Common/Rva00300678Get.cpp	wrong-name	?$S1@?1??Rva00300678Get@@YAPAVAsciiString@@XZ@4IA	0x009FF160
@@ -101,11 +97,8 @@ Code/GameEngine/Source/Common/Rva0038153BListenerWalks.cpp	duplicate-def	?g_00E0
 Code/GameEngine/Source/Common/Rva0038153BListenerWalks.cpp	wrong-name	?g_00E02310@@3VRva003818B0List@@A	0x00A02310
 Code/GameEngine/Source/Common/Rva00381C82AddChatText.cpp	wrong-name	?g_00E02310@@3VRva0038188BList@@A	0x00A02310
 Code/GameEngine/Source/Common/Rva003FEE43.cpp	wrong-name	?$S1@?1??Rva003FEE43SetPlayerRank@@YA_NH@Z@4IA	0x00A02ECC
-Code/GameEngine/Source/Common/Rva003FEE43.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva003FEECB.cpp	wrong-name	?$S1@?1??Rva003FEECBSetPalantirCommandPoints@@YA_NHH@Z@4IA	0x00A02ED4
-Code/GameEngine/Source/Common/Rva003FEECB.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva003FEF80.cpp	wrong-name	?$S1@?1??Rva003FEF80SetPalantirMultiplier@@YA_NM@Z@4IA	0x00A02EDC
-Code/GameEngine/Source/Common/Rva003FEF80.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva003FF02EPowerCap.cpp	wrong-name	?$S1@?1??Rva003FF02EPowerCap@@YAXH@Z@4IA	0x00A02EE4
 Code/GameEngine/Source/Common/Rva00444525Init.cpp	wrong-name	?g_Va00A03354@@3PAUOuter00446A77@@A	0x00A03354
 Code/GameEngine/Source/Common/Rva00446A77Enable.cpp	wrong-name	?g_Va00A03354@@3PAUOuter00446A77@@A	0x00A03354
@@ -113,9 +106,6 @@ Code/GameEngine/Source/Common/Rva004A9660Delay.cpp	wrong-name	?$S1@?1??rva004A96
 Code/GameEngine/Source/Common/Rva004DF418Finish.cpp	duplicate-def	_s_10	0x0086157C
 Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
 Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp	wrong-name	?g_00E04424@@3VRva004E0918@@A	0x00A04424
-Code/GameEngine/Source/Common/Rva004E44FBPlayerTable.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva004E6A9BDtor.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva004E855CMethod.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva004E855CMethod.cpp	wrong-name	?g_Va00E04478@@3PAURva004E855CState@@A	0x00A04478
 Code/GameEngine/Source/Common/Rva004EE5D2Erase.cpp	duplicate-def	?g_00E04424@@3VRva002B7250@@A	0x00A04424
 Code/GameEngine/Source/Common/Rva004EE5D2Erase.cpp	wrong-name	?g_00E04424@@3VRva002B7250@@A	0x00A04424
@@ -131,13 +121,7 @@ Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va009FE4CC@@3P
 Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A01E48@@3PAUGlobalA01E48@@A	0x00A01E48
 Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A04910@@3PAUGlobalA04910@@A	0x00A04910
 Code/GameEngine/Source/Common/Rva0052906BUpdate.cpp	wrong-name	?$S1@?1??Rva0052906BUpdate@@YAXH@Z@4IA	0x00A04988
-Code/GameEngine/Source/Common/Rva0052906BUpdate.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva00572DE8Slot1.cpp	wrong-name	_TheUpgradeCenter	0x009FEB60
-Code/GameEngine/Source/Common/Rva00578AC1.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva005794EDDtor.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva0057A51CApt.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva0057A5A8Apt.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva0057A685Apt.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva00598CBC.cpp	wrong-name	?g_00E063D4@@3VAsciiString@@A	0x00A063D4
 Code/GameEngine/Source/Common/Rva005AC98ACheck.cpp	wrong-name	_TheUpgradeCenter	0x009FEB60
 Code/GameEngine/Source/Common/Rva005B5E2D.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC

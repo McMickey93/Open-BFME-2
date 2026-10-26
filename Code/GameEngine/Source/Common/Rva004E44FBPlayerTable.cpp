@@ -21,11 +21,13 @@ public:
     void bfmeSetText(const AsciiString &, const UnicodeString &, bool);
 };
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 void __stdcall Rva004E44FBSet(int a, int b, const UnicodeString &text)
 {
     AsciiString key;
     key.format("PlayerTable:%d:%d", a, b);
-    ((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, false);
+    g_bfmeAptWindowManager->bfmeSetText(key, text, false);
 }

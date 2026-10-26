@@ -18,7 +18,9 @@ public:
 	void bfmeSetText(const AsciiString &, const UnicodeString &, bool);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 bool __cdecl Rva003FEECBSetPalantirCommandPoints(int cur, int max)
 {
@@ -39,7 +41,7 @@ bool __cdecl Rva003FEECBSetPalantirCommandPoints(int cur, int max)
 	{
 		str.set(L" ");
 	}
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(s_key, str, false);
+	g_bfmeAptWindowManager->bfmeSetText(s_key, str, false);
 	return true;
 }
 

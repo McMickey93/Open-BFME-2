@@ -37,7 +37,9 @@ public:
 };
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 UnicodeString __cdecl Rva005F6B74Format(int quantity);
 namespace StrategicHUD { UnicodeString __cdecl FormatNumTurnsString(int turns); }
@@ -501,7 +503,7 @@ void StrategicHUD::BuildQueueDetailsMovieClip::Impl::QueuedIconSlot::rva005F6FCC
 			return;                                                       \
 		AsciiString key;                                                  \
 		key.format(FORMAT, m_level, m_name.str());                        \
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, false); \
+		g_bfmeAptWindowManager->bfmeSetText(key, text, false); \
 		FIELD = text;                                                     \
 	}
 
@@ -537,28 +539,28 @@ void StrategicHUD::BuildQueueDetailsMovieClip::Impl::InProgressIconSlot::SetQuan
 {
 	AsciiString key;
 	key.format("APT:_level%u.%s_InProgressIconSlotQuantity", m_owner->m_level, m_owner->m_name.str());
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, Rva005F6B74Format(quantity), true);
+	g_bfmeAptWindowManager->bfmeSetText(key, Rva005F6B74Format(quantity), true);
 }
 
 void StrategicHUD::BuildQueueDetailsMovieClip::Impl::InProgressIconSlot::SetProgressString(int unused, int turns)
 {
 	AsciiString key;
 	key.format("APT:_level%u.%s_InProgressIconSlotTurnsRemaining", m_owner->m_level, m_owner->m_name.str());
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, Rva005F6C8EFormat(unused, turns), true);
+	g_bfmeAptWindowManager->bfmeSetText(key, Rva005F6C8EFormat(unused, turns), true);
 }
 
 void StrategicHUD::BuildQueueDetailsMovieClip::Impl::QueuedIconSlot::SetQuantityString(int quantity)
 {
 	AsciiString key;
 	key.format("APT:_level%u.%s_QueuedIconSlotQuantity%d", m_owner->m_level, m_owner->m_name.str(), m_index);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, Rva005F6B74Format(quantity), true);
+	g_bfmeAptWindowManager->bfmeSetText(key, Rva005F6B74Format(quantity), true);
 }
 
 void StrategicHUD::BuildQueueDetailsMovieClip::Impl::QueuedIconSlot::SetNumTurnsString(int turns)
 {
 	AsciiString key;
 	key.format("APT:_level%u.%s_QueuedIconSlotTurnsRemaining%d", m_owner->m_level, m_owner->m_name.str(), m_index);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, StrategicHUD::FormatNumTurnsString(turns), true);
+	g_bfmeAptWindowManager->bfmeSetText(key, StrategicHUD::FormatNumTurnsString(turns), true);
 }
 
 // @0x005F753E and @0x005F75AE, 27B each: QueuedIconSlot vtable slots that
@@ -613,7 +615,7 @@ void StrategicHUD::StatsDisplayImpl::SetRowText(int index, const UnicodeString &
 {
 	AsciiString key;
 	key.format("APT:_level%u.%s.%d_Text", m_level, m_name.str(), index);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, false);
+	g_bfmeAptWindowManager->bfmeSetText(key, text, false);
 }
 
 // StrategicHUD::ArmyMemberIconMovieClip::Impl::rva005FC85A @0x005FC85A 163B: the _TypeImage panel's
@@ -628,7 +630,7 @@ void StrategicHUD::ArmyMemberIconMovieClip::Impl::rva005FC85A(int quantity)
 		text.format(L"%d", quantity);
 	AsciiString key;
 	key.format("APT:_level%u.%s_Quantity", m_level, m_name.str());
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, true);
+	g_bfmeAptWindowManager->bfmeSetText(key, text, true);
 	m_quantity = quantity;
 }
 
@@ -647,7 +649,7 @@ void InGameCommandButtonMovieClip::Impl::SetProductionCount(int count)
 		text = L" ";
 	AsciiString key;
 	key.format("APT:_level%u.%s_ProductionCount", m_level, m_name.str());
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, false);
+	g_bfmeAptWindowManager->bfmeSetText(key, text, false);
 	m_count = count;
 }
 
@@ -656,7 +658,7 @@ void InGameCommandButtonMovieClip::Impl::SetProductionCount(int count)
 // the Apt "SetState" through 0x0050E9FE with the +0x0C name and +0x08 level).
 // Evidence: flag at +0x4c plus cached index at +0x50 plus team ptr at +0x0c with +8 name or empty plus level at +0x08 plus table g_00C74A98 indexed by arg plus SetState plus TheRva00222A8BTarget; same shape as rowed Rva005FB6E2 eliminated/survived setters; caller jmp at 0x005C7C78.
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
 // Retail's eight state-name pointers at VA 0x00C74A98. The following bytes
 // belong to the separate "_level%u" format; the table ends after entry eight.
 #pragma section(".rdata", read)
@@ -682,7 +684,7 @@ void InGameCommandButtonMovieClip::Impl::SetState(int index)
         teamName = team->m_name;
     else
         teamName = "";
-    Rva0050E9FEAptCall(TheRva00222A8BTarget, (void *)m_level, teamName, "SetState", &g_00C74A98[index]);
+    Rva0050E9FEAptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, teamName, "SetState", &g_00C74A98[index]);
     m_state = index;
 }
 

@@ -47,7 +47,9 @@ class Rva00222A8BTarget
 	char m_pad;
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 void __cdecl Rva0052906BUpdate(int rank)
 {
@@ -55,5 +57,5 @@ void __cdecl Rva0052906BUpdate(int rank)
 	static AsciiString s_heroRank("APT:HeroRank");
 	UnicodeString tmp;
 	tmp.format(TheGameText->fetchRank(s_rankLabel, 0), rank);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(s_heroRank, tmp, false);
+	g_bfmeAptWindowManager->bfmeSetText(s_heroRank, tmp, false);
 }

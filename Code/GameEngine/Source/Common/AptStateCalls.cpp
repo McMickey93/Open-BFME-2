@@ -50,7 +50,9 @@ class Rva00222A8BTarget
 public:
 
 };
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 int __cdecl Rva005FB5E6AptCall(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function, const char *a0);
 
@@ -80,7 +82,7 @@ void StrategicHUD::ChecklistUIImpl::DoShowTimeRemaining(int seconds)
 {
 	if (!m_shown)
 	{
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, (void *)m_level, m_name.str(), "SetTimeRemainingState", "_show");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, m_name.str(), "SetTimeRemainingState", "_show");
 		m_shown = true;
 	}
 	if (seconds != m_seconds)
@@ -94,7 +96,7 @@ void StrategicHUD::ChecklistUIImpl::DoHideTimeRemaining()
 {
 	if (m_shown)
 	{
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, (void *)m_level, m_name.str(), "SetTimeRemainingState", "_hide");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, m_name.str(), "SetTimeRemainingState", "_hide");
 		m_shown = false;
 	}
 }
@@ -111,7 +113,7 @@ void StrategicHUD::RegionDetailsArmiesMovieClip::Impl::ShowCommandPoints(int a, 
 	}
 	if (!m_shown)
 	{
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, (void *)m_level, m_name.str(), "SetCommandPointsState", "_show");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, m_name.str(), "SetCommandPointsState", "_show");
 		m_shown = true;
 	}
 }
@@ -120,7 +122,7 @@ void StrategicHUD::RegionDetailsArmiesMovieClip::Impl::HideCommandPoints()
 {
 	if (m_shown)
 	{
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, (void *)m_level, m_name.str(), "SetCommandPointsState", "_hide");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, m_name.str(), "SetCommandPointsState", "_hide");
 		m_shown = false;
 		m_3E = false;
 	}
@@ -160,7 +162,7 @@ private:
 void Rva005FFC8B::CreateGarrisonPanel(const TreeHintRef00217D4C &ref)
 {
 	m_ref = ref;
-	Rva005FB5E6AptCall(TheRva00222A8BTarget, (void *)m_level, m_name.str(), "CreateArmyPanel", "garrison");
+	Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, m_name.str(), "CreateArmyPanel", "garrison");
 }
 
 // ?rva005779A0@Rva005779A0@@QBE?AVAsciiString@@XZ @0x005779A0 110B: the
@@ -254,7 +256,7 @@ void Rva00525783::rva00525783()
 			((Rva00E01E28Owner *)TheHotKeyManager)->rva003591F4(m_pending);
 		m_hasPending = false;
 	}
-	Rva005FB5E6AptCall(TheRva00222A8BTarget, (void *)m_level, m_name.str(), "SetSelectAllHeroesButtonState", "_unused");
+	Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, m_name.str(), "SetSelectAllHeroesButtonState", "_unused");
 	m_active = false;
 }
 
@@ -290,7 +292,7 @@ void InGameNotificationBoxMovieClip::rva004E67D0(int unused)
 	(void)unused;
 	if (m_state == 2 || m_state == 3)
 	{
-		Rva0043DB23(TheRva00222A8BTarget, m_owner, "Close");
+		Rva0043DB23(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_owner, "Close");
 		m_state = 4;
 	}
 }
@@ -300,7 +302,7 @@ void InGameNotificationBoxMovieClip::DoClose()
 	m_child.clear();
 	if (m_state == 2 || m_state == 3)
 	{
-		Rva0043DB23(TheRva00222A8BTarget, m_owner, "Close");
+		Rva0043DB23(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_owner, "Close");
 		m_state = 4;
 	}
 }
@@ -329,12 +331,12 @@ void StrategicVeterancy::FadeOut()
 	switch (m_window->m_state)
 	{
 	case 1:
-		reinterpret_cast<AptPlayer *>(TheRva00222A8BTarget)->HideLevel((int)m_window->m_owner);
+		reinterpret_cast<AptPlayer *>(g_bfmeAptWindowManager)->HideLevel((int)m_window->m_owner);
 		m_window->m_state = 0;
 		break;
 	case 2:
 	case 5:
-		Rva0043DB23(TheRva00222A8BTarget, m_window->m_owner, "CloseWindow");
+		Rva0043DB23(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_window->m_owner, "CloseWindow");
 		m_window->m_state = 3;
 		break;
 	}

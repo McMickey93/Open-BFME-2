@@ -70,7 +70,9 @@ class Rva00222A8BTarget
 public:
 	void invoke(void *level, const char *name, int argc, const char *a0, void *a1, void *a2, void *a3, void *a4);
 };
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 extern const char g_Rva0107301CEmptyString[];
 
@@ -107,7 +109,7 @@ void LivingWorldLogic::ShowEndGameSplashScreen()
 	AsciiString endKey(isVictory ? "APT:EndVictorious" : "APT:EndDefeat");
 	{
 		AsciiString suffix(":VictoryDefeat");
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(suffix, TheGameText->fetch(endKey), false);
+		g_bfmeAptWindowManager->bfmeSetText(suffix, TheGameText->fetch(endKey), false);
 	}
-	TheRva00222A8BTarget->invoke((void *)0xD, "ShowEndGame", 3, isEvil ? "0" : "1", (void *)screen.str(), (void *)(isVictory ? cheer.str() : g_Rva0107301CEmptyString), 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke((void *)0xD, "ShowEndGame", 3, isEvil ? "0" : "1", (void *)screen.str(), (void *)(isVictory ? cheer.str() : g_Rva0107301CEmptyString), 0, 0);
 }

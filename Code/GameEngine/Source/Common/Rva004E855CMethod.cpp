@@ -34,7 +34,9 @@ struct Rva004E855CState
 
 extern Rva004E855CState *g_Va00E04478;
 extern UnicodeString g_00E0447C;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 void __cdecl Rva004E84ABRun();
 
@@ -62,7 +64,7 @@ void __cdecl Rva004E855CClose()
 	{
 		g_00E0447C.set(UnicodeString::TheEmptyString);
 	}
-	TheRva00222A8BTarget->invoke(g_Va00E04478->m_level274, "CloseChat", 0, 0, 0, 0, 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(g_Va00E04478->m_level274, "CloseChat", 0, 0, 0, 0, 0, 0);
 	g_Va00E04478->m_state27C = 3;
 	Rva004E84ABRun();
 }

@@ -20,7 +20,9 @@ class Rva00222A8BTarget
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 class GameTextInterface
 {
@@ -64,5 +66,5 @@ void StrategicHUD::SetTimeRemainingString(int level, Rva0057A5A8Team **ppTeam, i
 	if (exists) {
 		value.format(tmp.str(), totalSeconds / 60, Rva0057A272Get(), totalSeconds % 60);
 	}
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, value, false);
+	g_bfmeAptWindowManager->bfmeSetText(key, value, false);
 }

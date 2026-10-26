@@ -28,7 +28,9 @@ class Rva00222A8BTarget
 public:
 	void invoke(void *owner, const char *name, int argc, const char *a0, void *a1, void *a2, void *a3, void *a4);
 };
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 UnicodeString __cdecl Rva005B2376Describe(void *power, const AsciiString &unused, const AsciiString &fallback);
 UnicodeString __cdecl Rva005B2446Describe(void *power);
@@ -36,14 +38,14 @@ UnicodeString __cdecl Rva005B2446Describe(void *power);
 void __cdecl Rva005B23D7HeroPowersDescription(void *power, const AsciiString &unused, const AsciiString &fallback)
 {
 	UnicodeString text = Rva005B2376Describe(power, unused, fallback);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(AsciiString("APT:HeroPowersDescription"), text, true);
+	g_bfmeAptWindowManager->bfmeSetText(AsciiString("APT:HeroPowersDescription"), text, true);
 }
 
 void __cdecl Rva005B24CDHeroPowerText(void *power, const char *prefix, int index)
 {
 	AsciiString key;
 	key.format("APT:%s_%d", prefix, index + 1);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, Rva005B2446Describe(power), false);
+	g_bfmeAptWindowManager->bfmeSetText(key, Rva005B2446Describe(power), false);
 }
 
 // ?rva005B2295@@YA_NPBVCommandButton@@PBDHH@Z @0x005B2295 225B: points the
@@ -95,15 +97,15 @@ bool __cdecl rva005B2295(const CommandButton *button, const char *prefix, int in
 		const Image *image = button->rva0035B19E();
 		if (image == NULL)
 			image = TheMappedImageCollection->findImageByName(AsciiString("CircleRed_42x42"));
-		if (((Rva00223A9F *)TheRva00222A8BTarget)->rva00223A9F(&key) != image)
+		if (((Rva00223A9F *)g_bfmeAptWindowManager)->rva00223A9F(&key) != image)
 		{
-			((Rva002239B2 *)TheRva00222A8BTarget)->rva002239E2(key, image);
+			((Rva002239B2 *)g_bfmeAptWindowManager)->rva002239E2(key, image);
 			changed = true;
 		}
 	}
 	else
 	{
-		((Rva00223A94 *)TheRva00222A8BTarget)->rva00223A94(&key);
+		((Rva00223A94 *)g_bfmeAptWindowManager)->rva00223A94(&key);
 		changed = true;
 	}
 	return changed;
@@ -282,12 +284,12 @@ void Rva00513497::rva00513497(int slot, UnicodeString name)
 	key.format("DisconnectScreen::PlayerName%d", slot);
 	if (Rva00513497IsEmpty(name))
 	{
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, UnicodeString(L" "), false);
+		g_bfmeAptWindowManager->bfmeSetText(key, UnicodeString(L" "), false);
 		((Rva00513040 *)this)->rva00513040(slot, 0);
 	}
 	else
 	{
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, name, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, name, false);
 		((AptDisconnectScreen *)this)->rva00512CE9(slot, false);
 		((Rva00513040 *)this)->rva00513040(slot, 100);
 	}
@@ -316,11 +318,11 @@ void Rva0057F538::rva0057F538(UnicodeString message)
 {
 	if (message.compare(m_error) == 0)
 		return;
-	Rva0043DB23(TheRva00222A8BTarget, v08(), "ResetClanErrorMessage");
+	Rva0043DB23(((Rva00222A8BTarget *)g_bfmeAptWindowManager), v08(), "ResetClanErrorMessage");
 	m_error = message;
 	if (Rva00513497IsEmpty(message))
 		message = L" ";
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(AsciiString("CLAN:Error"), message, false);
+	g_bfmeAptWindowManager->bfmeSetText(AsciiString("CLAN:Error"), message, false);
 }
 
 // ?rva0051C2E2@Rva0051C2E2@@QAEXPAHABVAsciiString@@H@Z @0x0051C2E2 201B: one
@@ -343,12 +345,12 @@ void Rva0051C2E2::rva0051C2E2(int *row, const AsciiString &label, int bonus)
 	{
 		UnicodeString text;
 		text.format(TheGameText->fetchFormat(label, 0), bonus);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, text, false);
 		++*row;
 	}
 	else if (bonus < 0)
 	{
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, UnicodeString(L" "), false);
+		g_bfmeAptWindowManager->bfmeSetText(key, UnicodeString(L" "), false);
 		++*row;
 	}
 }
@@ -377,12 +379,12 @@ void AptFileTransferPopup::ProcessProgress(int player, int percent, UnicodeStrin
 		return;
 	AsciiString key;
 	key.format("FileTransfer::Status%d", slot);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, false);
+	g_bfmeAptWindowManager->bfmeSetText(key, text, false);
 	char slotText[64];
 	char percentText[64];
 	sprintf(slotText, "%d", slot);
 	sprintf(percentText, "%d", percent);
-	TheRva00222A8BTarget->invoke((void *)13, "SetBarTo", 2, slotText, percentText, 0, 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke((void *)13, "SetBarTo", 2, slotText, percentText, 0, 0, 0);
 }
 
 // ?rva0057C7BA@Rva0057E3DB@@QAEXH@Z @0x0057C7BA 216B: the lobby map title
@@ -407,13 +409,13 @@ void Rva0057E3DB::rva0057C7BA(int type)
 	case 0:
 		{
 			AsciiString key("APT:LobbyMapTiltle");
-			((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, TheGameText->fetch("APT:LobbyMapTiltle", 0), false);
+			g_bfmeAptWindowManager->bfmeSetText(key, TheGameText->fetch("APT:LobbyMapTiltle", 0), false);
 		}
 		break;
 	case 1:
 		{
 			AsciiString key("APT:LobbyMapTiltle");
-			((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, TheGameText->fetch("GUI:GameTypeScenario", 0), false);
+			g_bfmeAptWindowManager->bfmeSetText(key, TheGameText->fetch("GUI:GameTypeScenario", 0), false);
 		}
 		break;
 	}
@@ -456,7 +458,7 @@ extern int g_Va00E06398;
 
 Rva00582FC1::~Rva00582FC1()
 {
-	TheRva00222A8BTarget->invoke((void *)13, "FileTransferPopUpClose", 0, 0, 0, 0, 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke((void *)13, "FileTransferPopUpClose", 0, 0, 0, 0, 0, 0);
 	g_Va00E06398 = 0;
 }
 
@@ -480,5 +482,5 @@ void AptLoadScreen::processProgress(int slot, int percent)
 	char percentText[64];
 	sprintf(idText, "%d", m_ids[slot]);
 	sprintf(percentText, "%d", percent);
-	TheRva00222A8BTarget->invoke(m_owner, "SetBarTo", 2, idText, percentText, 0, 0, 0);
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(m_owner, "SetBarTo", 2, idText, percentText, 0, 0, 0);
 }

@@ -14,7 +14,9 @@ class Rva00222A8BTarget
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 #include "unicode_string.h"
 struct Rva0057A685Team;
@@ -77,5 +79,5 @@ void StrategicHUD::SetPhaseTitleString(int level, Rva0057A685Team **ppTeam, int 
 	Rva0057A685Team *team = *ppTeam;
 	const char *mid = team ? team->m_name : "";
 	key.format("APT:_level%u.%s_PhaseTitle", level, mid);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, value, true);
+	g_bfmeAptWindowManager->bfmeSetText(key, value, true);
 }

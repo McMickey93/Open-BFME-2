@@ -20,7 +20,9 @@ class Rva00222A8BTarget
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 extern const unsigned short g_Va007C9260[];
 
 struct Rva0057A51CTeam
@@ -37,7 +39,7 @@ void StrategicHUD::SetTurnNumberString(int level, Rva0057A51CTeam **ppTeam, int 
 	key.format("APT:_level%u.%s_TurnNumber", level, mid);
 	UnicodeString value;
 	value.format(g_Va007C9260, turn);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, value, false);
+	g_bfmeAptWindowManager->bfmeSetText(key, value, false);
 }
 
 // Retail's data references in this unit's matched rows land on globals defined
