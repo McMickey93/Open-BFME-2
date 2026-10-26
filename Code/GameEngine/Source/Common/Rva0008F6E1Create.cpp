@@ -15,7 +15,7 @@ private:
 	char m_pad[0x2F0];
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 Rva000A0891 *__stdcall Rva0008F6E1Create(void *context)
 {

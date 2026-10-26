@@ -9,7 +9,7 @@
 // four callers, callee rowed, no vtable. Address-derived name stays honest.
 // Plain declaration lets the gate resolve the callee by full mangled name.
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva0006ED29
 {
