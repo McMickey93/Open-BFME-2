@@ -795,25 +795,59 @@ class LinkGuard:
         if key not in self.cache:
             import link_check as LC
             import link_debt
+            import build
+            import link_census as LCe
             places = {p for f in files if (p := self.position(f)) is not None}
             view = self.view(Path(obj), places)
             obj = Path(obj)
+            why = []
+            # The next census places the merged object by the lowest row of ALL its
+            # files, census-known or not. The view can only hold it at the census
+            # slot of its earliest census unit, so a file that would move it earlier
+            # than that slot is a link order this guard cannot model: refuse.
+            merged = None
+            if self.rank is not None:
+                merged = min((r for f in files if (r := self.rank.get(build.obj_path(build.ROOT / f).name)) is not None),
+                             default=None)   # link_rank's names (build.row_object)
+            holder = self.index["objects"][min(places)] if places else None
+            if merged is not None and holder in self.rank and merged < self.rank[holder]:
+                why.append("a file without a census object would place the merged unit earlier in link "
+                           "order than the guard can judge")
             with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
                 found = LC.check_object(obj, view, self.truth)
                 rank, previous = None, {}
                 if places and self.rank is not None and view["objects"][min(places)] == obj.name:
-                    holder = self.index["objects"][min(places)]
                     if holder in self.rank:
                         rank = dict(self.rank, **{obj.name: self.rank[holder]})
+                # Existing copies are exempt only where they keep their link place: a
+                # file absorbed from a later place moves its copies earlier, which can
+                # make another unit's copy lose (breaks_others judges those).
                 for p in places:
+                    if rank is not None and self.rank.get(self.index["objects"][p]) != rank[obj.name]:
+                        continue
                     for name, digests in self.previous.get(p, {}).items():
                         previous.setdefault(name, set()).update(digests)
                 breaks = LC.new_variants(obj, view, self.truth, previous, rank) if rank else []
-            why = ([f"unresolved {n}" for n in found["unresolved"]]
-                   + [f"duplicate {n}" for n in found["duplicates"]]
-                   + [f"comdat {n} ({rule})" for n, rule, _ in found["comdat"]]
-                   + [f"selected {n}" for n in found["selected"]]
-                   + [f"breaks another unit's copy of {n}" for n in breaks])
+                # A definition an absorbed unit made and the merged object no longer
+                # makes must not be one the census still references with no other
+                # definer: a linked consumer would go unresolved.
+                copies, defined, _, _ = LCe.object_facts(obj, self.truth)
+                mine = set(defined) | {n for n, _, _, _ in copies} | set(LCe.common_definitions(obj))
+                dropped = set()
+                for table in ("strong", "comdat", "common"):
+                    for p in places:
+                        dropped |= self.touched[table].get(p, set())
+                dropped -= mine
+                other = lambda n: (view["strong"].get(n) or view["comdat"].get(n) or view["common"].get(n)
+                                   or LCe.excused(n, view["excuses"]["runtime"], view["excuses"]["imported"],
+                                                  view["excuses"]["stubs"]))
+                lost = sorted(n for n in dropped if not other(n) and LC.is_referenced(view, n))
+            why += ([f"unresolved {n}" for n in found["unresolved"]]
+                    + [f"duplicate {n}" for n in found["duplicates"]]
+                    + [f"comdat {n} ({rule})" for n, rule, _ in found["comdat"]]
+                    + [f"selected {n}" for n in found["selected"]]
+                    + [f"breaks another unit's copy of {n}" for n in breaks]
+                    + [f"no longer defines {n}, which the census still references" for n in lost])
             addresses = link_debt.addresses(text, self.tu)
             if addresses:
                 why.append(f"{len(addresses)} hard-coded image address(es), e.g. {addresses[0]}")

@@ -616,10 +616,14 @@ class LinkGuardTests(unittest.TestCase):
             return "+".join(Path(f).stem for f in files)
 
         import link_check as LC
+        import link_census as LCe
+        every = ([], ["?t@@YAXXZ", "?a@@YAXXZ", "?b@@YAXXZ"], [], [])   # the merge keeps every definition
         with patch.object(T, "Verifier", return_value=Verifier()), \
                 patch.object(T, "compose", side_effect=compose), \
                 patch.object(LC, "check_object", side_effect=check_object), \
                 patch.object(LC, "new_variants", return_value=[]), \
+                patch.object(LCe, "object_facts", return_value=every), \
+                patch.object(LCe, "common_definitions", return_value=set()), \
                 patch.object(T, "apply") as apply:
             out = T._merge(self.TU, [], don, {"accepted": [], "rejected": {}}, True, texts=texts, guard=guard)
         apply.assert_not_called()
@@ -665,6 +669,65 @@ class LinkGuardTests(unittest.TestCase):
         self.assertTrue(out["blocked"].startswith("link guard: no census index at build/link_census/link_index.pkl"))
         self.assertIn(f"census-linked: {self.TU}", out["blocked"])
         self.assertEqual((out["accepted"], judged), ([], []))
+
+    def judge(self, guard, files, defined=("?t@@YAXXZ", "?a@@YAXXZ", "?b@@YAXXZ")):
+        """guard.judge of a merged object that links by itself and defines `defined`;
+        returns (why, the `previous` new_variants was given)."""
+        import link_check as LC
+        import link_census as LCe
+        import link_debt
+        given = {}
+
+        def new_variants(obj, view, truth, previous=None, rank=None):
+            given["previous"] = previous
+            return []
+        clean = {"unresolved": [], "duplicates": [], "comdat": [], "addresses": [], "selected": [],
+                 "unreferenced_differs": []}
+        with patch.object(LC, "check_object", return_value=clean), \
+                patch.object(LC, "new_variants", side_effect=new_variants), \
+                patch.object(LCe, "object_facts", return_value=([], list(defined), [], [])), \
+                patch.object(LCe, "common_definitions", return_value=set()), \
+                patch.object(link_debt, "addresses", return_value=[]):
+            self.assertIsNone(guard.prepare(files))
+            why = guard.judge(Path("m.obj"), files, "text")
+        return why, given.get("previous")
+
+    def ranked_guard(self, tmp, extra=None):
+        """A guard whose rank uses link_rank's real object names (build.obj_path)."""
+        import build
+        name = lambda f: build.obj_path(build.ROOT / f).name
+        index = self.index()
+        index["objects"] = [name(self.TU), name(self.A), name(self.B), "x.obj"]
+        for f in (self.TU, self.A, self.B):
+            index["blockers"][f]["object"] = name(f)
+        rank = {name(self.TU): 10, name(self.A): 11, name(self.B): 12, "x.obj": 13}
+        rank.update({name(f): r for f, r in (extra or {}).items()})
+        return T.LinkGuard(self.TU, root=tmp, index=index, truth=object(), rank=rank)
+
+    def test_a_new_donor_that_moves_the_merged_unit_earlier_is_refused(self):
+        new = "Code/New.cpp"    # no census object; its rows sit before the target's
+        with tempfile.TemporaryDirectory() as tmp:
+            why, _ = self.judge(self.ranked_guard(tmp, {new: 5}), [self.TU, new])
+            self.assertTrue(any("earlier in link order" in w for w in why))
+            why, _ = self.judge(self.ranked_guard(tmp, {new: 20}), [self.TU, new])
+            self.assertEqual(why, [])
+
+    def test_a_donor_moved_earlier_loses_its_copy_exemption(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g = self.ranked_guard(tmp)
+            g.prepare([self.TU, self.A])
+            g.previous = {0: {"?inl@@YAXXZ": {"dt"}}, 1: {"?inl@@YAXXZ": {"da"}}}
+            _, previous = self.judge(g, [self.TU, self.A])
+        # A's copy moves from its own place (11) to the target's (10): breaks_others judges it
+        self.assertIn("dt", previous["?inl@@YAXXZ"])          # the target keeps its place: exempt
+        self.assertNotIn("da", previous["?inl@@YAXXZ"])       # the moved donor's copy is judged
+
+    def test_a_dropped_definition_the_census_references_is_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            why, _ = self.judge(self.ranked_guard(tmp), [self.TU, self.A], defined=("?t@@YAXXZ",))
+            self.assertIn("no longer defines ?a@@YAXXZ, which the census still references", why)
+            why, _ = self.judge(self.ranked_guard(tmp), [self.TU, self.A], defined=("?t@@YAXXZ", "?a@@YAXXZ"))
+            self.assertEqual(why, [])
 
     def test_a_merge_of_units_that_never_linked_needs_no_index(self):
         import link_check as LC
