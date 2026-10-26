@@ -33,9 +33,12 @@ struct IDirect3DDevice8
 	virtual long __stdcall CreateVertexBuffer(int a, int b, int c, int d, void **e, int f);
 	virtual long __stdcall CreateIndexBuffer(int a, int b, int c, int d, void **e, int f);
 };
+// D3DDevice is protected in dx8wrapper.h; read it through WW3D2's accessor.
 class DX8Wrapper
 {
 public:
+	static __forceinline IDirect3DDevice8 *_Get_D3D_Device8() { return D3DDevice; }
+protected:
 	static IDirect3DDevice8 *D3DDevice;
 };
 class Rva000F0972Releasable
@@ -70,7 +73,7 @@ bool W3DVolumetricShadowManager::ReAcquireResources()
 {
 	Rva000F09E1LockGuard guard;
 	ReleaseResources();
-	IDirect3DDevice8 *dev = DX8Wrapper::D3DDevice;
+	IDirect3DDevice8 *dev = DX8Wrapper::_Get_D3D_Device8();
 	if (dev->CreateIndexBuffer(0x8000, 0x208, 0x65, 0, (void **)&(*(Rva000F0972Releasable * *)&shadowIndexBufferD3D), 0) < 0)
 		return false;
 	if ((*(Rva000F0972Releasable * *)&shadowVertexBufferD3D) == 0)
@@ -87,6 +90,3 @@ bool W3DVolumetricShadowManager::ReAcquireResources()
 	return true;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?D3DDevice@DX8Wrapper@@2PAUIDirect3DDevice8@@A=?D3DDevice@DX8Wrapper@@1PAUIDirect3DDevice8@@A")

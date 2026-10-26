@@ -184,7 +184,6 @@ Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	duplicate-def	?g_rva00E08D3C
 Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	wrong-name	?g_rva00E08D3CString@@3VStringClass@@A	0x00A08D3C
 Code/GameEngine/Source/Common/SkirmishPreferences.cpp	duplicate-def	_g_emptyUserName	0x00A0C898
 Code/GameEngine/Source/Common/SkirmishPreferences.cpp	wrong-name	_g_emptyUserName	0x00A0C898
-Code/GameEngine/Source/Common/Small03bLeafTrio_Rva00945460Lookup.cpp	wrong-name	?ScreenTextureStageStates@@3PAY0CA@IA	0x009ECA38
 Code/GameEngine/Source/Common/SmallGaps/Rva00826740ResetTables.cpp	wrong-name	?Rva00826740BigInit@@3URva00826740Big@@B	0x009D9E00
 Code/GameEngine/Source/Common/SmallGaps/Rva00826740ResetTables.cpp	wrong-name	?Rva00826740SmallInit@@3URva00826740Small@@B	0x009D9D80
 Code/GameEngine/Source/Common/SmallGaps/Rva00826840ResetTables.cpp	wrong-name	?Rva00826740BigInit@@3URva00826740Big@@B	0x009D9E00
@@ -233,7 +232,6 @@ Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Tar
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva004AB9D5Value@@3VBfmeFixedStorage002CF0F0@@A	0x00A030D0
 Code/GameEngine/Source/Common/VslotSmallBodiesP.cpp	wrong-name	?g_rva00709E50Pending@@3PAXA	0x00A1835C
 Code/GameEngine/Source/Common/VslotSmallBodiesQ.cpp	wrong-name	?g_rva00709A00Pending@@3PAXA	0x00A1835C
-Code/GameEngine/Source/Common/W3DVolumetricShadowManagerReAcquire.cpp	wrong-name	?D3DDevice@DX8Wrapper@@2PAUIDirect3DDevice8@@A	0x009EDA34
 Code/GameEngine/Source/Common/WW3DOptionSetter.cpp	wrong-name	?g_WW3D_IsInitted@@3EA	0x009EC3D4
 Code/GameEngine/Source/GameClient/Drawable/Update/AnimationSoundClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004C9EF3@AnimationSoundClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0435C
 Code/GameEngine/Source/GameClient/Drawable/Update/EvaAnnounceClientCreatePoolKey.cpp	wrong-name	?$S1@?1??rva0004C9A0C@EvaAnnounceClientCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04344
@@ -695,7 +693,6 @@ Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	wrong-name	_Rva008038
 Code/GameEngine/Source/GameNetwork/createServiceHubImpl.cpp	wrong-name	?g_Va0130A588@@3PAVServiceHubImpl@@A	0x00A09FA4
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DLaserDrawBfmeDoDraw.cpp	wrong-name	?$S17@?1??doDrawModule@W3DLaserDraw@@UAEXPBVMatrix3D@@@Z@4IA	0x009EBB5C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp	wrong-name	?$S1@?3??doDrawModule@W3DProjectileStreamDraw@@UAEXPBVMatrix3D@@@Z@4IA	0x009EBC24
-Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DStreakDrawDestructor.cpp	wrong-name	?m_3DScene@W3DDisplay@@2PAVBFME3DScene@@A	0x009E1B34
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DBoatWakeModelDrawPoolKey.cpp	wrong-name	?$S1@?1??rva0000D0C93@W3DBoatWakeModelDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBC10
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DBuffDrawPoolKey.cpp	wrong-name	?$S1@?1??rva000CEE07@W3DBuffDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBBB8
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DDebrisDrawPoolKey.cpp	wrong-name	?$S1@?1??rva0000B1C97@W3DDebrisDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EA2FC

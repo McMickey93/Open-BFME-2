@@ -11,17 +11,21 @@
 // the scale is 32 entries of 4 bytes.  ecx is untouched, so this is __cdecl and
 // caller-cleaned -- both indices arrive on the stack.
 //
-// IDENTITY IS NOT RECOVERED.  Nothing in the image names the table, so the
-// global is named for the lookup and disclaims identity.
-//
-// The table is declared here rather than taken from a retail header because
-// none of the image's names resolve to it; it is the storage this body reads,
-// and nothing else in the image writes through a symbol for it.
+// THE TABLE.  0x009ECA38 is the data ledger's DX8Wrapper::TextureStageStates
+// (protected, dx8wrapper.cpp; WW3D2 declares it unsigned [MAX_TEXTURE_STAGES][32]),
+// so a minimal view of the real class reads it through an inline accessor. The
+// function's own identity is still not recovered.
 
-// shl eax,5 / add / indexed load off the ScreenTextureStageStates table.
-extern unsigned int ScreenTextureStageStates[8][32];
+class DX8Wrapper
+{
+public:
+	static __forceinline unsigned Texture_Stage_State(int stage, int state) { return TextureStageStates[stage][state]; }
+protected:
+	static unsigned TextureStageStates[8][32];	// 0x009ECA38
+};
 
+// shl eax,5 / add / indexed load off the texture-stage-state table.
 int __cdecl Rva00945460Lookup(int a, int b)
 {
-	return ScreenTextureStageStates[a][b];
+	return DX8Wrapper::Texture_Stage_State(a, b);
 }

@@ -25,10 +25,13 @@ public:
 	virtual void Remove_Render_Object(void *object);
 };
 
+// The scene pointer is W3DDisplay::m_3DScene as its owner declares it (an
+// RTS3DScene *); this unit calls it through its scene view.
+class RTS3DScene;
 class W3DDisplay
 {
 public:
-	static BFME3DScene *m_3DScene;
+	static RTS3DScene *m_3DScene;
 };
 
 class BfmeStreakObject
@@ -78,7 +81,7 @@ W3DStreakDraw::~W3DStreakDraw()
 {
 	if (m_streak)
 	{
-		W3DDisplay::m_3DScene->Remove_Render_Object(m_streak);
+		((BFME3DScene *)W3DDisplay::m_3DScene)->Remove_Render_Object(m_streak);
 		if (m_streak)
 		{
 			m_streak->Release_Ref();
@@ -87,6 +90,3 @@ W3DStreakDraw::~W3DStreakDraw()
 	}
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?m_3DScene@W3DDisplay@@2PAVBFME3DScene@@A=?m_3DScene@W3DDisplay@@2PAVRTS3DScene@@A")
