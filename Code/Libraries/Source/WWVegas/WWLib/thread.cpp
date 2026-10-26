@@ -7,7 +7,10 @@
 #include "always.h"
 #include "except.h"
 #include "wwdebug.h"
-#include <process.h>
+// The sweep process.h lacks _beginthreadex. Select the CRT header through
+// STLport's native-header path, retaining this unit's existing include order.
+#include <stl/_config.h>
+#include _STLP_NATIVE_C_HEADER(process.h)
 #include <windows.h>
 #pragma warning ( push )
 #pragma warning ( disable : 4201 )
@@ -99,10 +102,12 @@ extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(
 // unit's dynamic initializer; one definition, declared here.
 extern void *test_event;
 
+// Keep the ordinary virtual class: the composed destructor must write its
+// retail vptr. The constructor's explicit table store keeps its existing bytes.
 // The existing 0x00610430 constructor and lifecycle bodies establish this
 // BFME 2 prefix and three-slot virtual interface. Zero Hour's thread.h adds
 // a running flag and exception-handler argument/field that retail lacks.
-class __declspec(novtable) ThreadClass
+class ThreadClass
 {
 public:
     ThreadClass(const char *name);

@@ -1,6 +1,9 @@
 // cl: /DNDEBUG /MD /GX
 #include <string.h>
-#include <process.h>
+// stlport
+// Use the native CRT declarations both alone and beside thread.cpp.
+#include <stl/_config.h>
+#include _STLP_NATIVE_C_HEADER(process.h)
 
 extern "C" __declspec(dllimport) int __stdcall SetThreadPriority(void *, int);
 extern "C" __declspec(dllimport) unsigned long __stdcall ResumeThread(void *);
