@@ -9,7 +9,7 @@ typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
 
 void *__cdecl operator new(UnsignedInt size);
-void __cdecl operator delete(void *block) throw();
+#include <new>
 
 enum NetCommandType
 {

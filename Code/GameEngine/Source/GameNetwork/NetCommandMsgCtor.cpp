@@ -247,7 +247,7 @@ NetWrapperCommandMsg::NetWrapperCommandMsg() : NetCommandMsg()
 
 // Global delete declared throw(): otherwise cl wraps the dtor below in an EH
 // frame (base-dtor unwind state) that retail 0x004D5871 lacks.
-void operator delete(void *p) throw();
+#include <new>
 
 // ??1NetWrapperCommandMsg@@MAE@XZ, retail 0x004D5871, 35 bytes: frees m_data
 // (+0x1C) through global operator delete and nulls it, as ZH's
@@ -577,7 +577,6 @@ private:
 // ??1NetHeroCommandMsg@@UAE@XZ, retail 0x004D5902, is rowed in
 // Rva004D58DEDtor.cpp; the deleting dtor this unit emits with vtable 0x860264
 // calls this identical inline copy.
-void __cdecl operator delete[](void *) throw();
 inline NetHeroCommandMsg::~NetHeroCommandMsg()
 {
 	if (m_24)

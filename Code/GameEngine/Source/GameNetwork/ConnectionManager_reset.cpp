@@ -23,7 +23,7 @@ typedef unsigned short UnsignedShort;
 
 #include "../../Include/GameNetwork/Transport.h"
 
-void __cdecl operator delete(void *block);
+#include <new>
 void *__cdecl operator new(UnsignedInt size);
 
 
