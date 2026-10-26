@@ -6,7 +6,7 @@
 // objects +0x30, done bytes +0x50, and three four-byte owners +0x58/5C/60.
 // Array ownership is the rowed setter 0x00041168 and new[] 0x0002FDE0.
 // Original class and helper names remain unknown.
-void *__cdecl operator new[](unsigned int);
+#include <new>
 
 class Rva00041168 {
 public:

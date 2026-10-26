@@ -365,9 +365,6 @@ Code/GameEngine/Source/Common/RadarWindowOverrideCreatePing.cpp	drop-in candidat
 Code/GameEngine/Source/Common/RandomValueMultFactorInit.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	powf:same
 Code/GameEngine/Source/Common/Rva00020620GuardedFree.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/Common/Rva00024610Cluster.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same
-Code/GameEngine/Source/Common/Rva00041078Arrays.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new [ ]:same
-Code/GameEngine/Source/Common/Rva00041078Dtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
-Code/GameEngine/Source/Common/Rva00041168.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/Common/Rva00041403.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<float.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_isnan:same
 Code/GameEngine/Source/Common/Rva00042036Factory.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/Rva00045411BitSet.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same

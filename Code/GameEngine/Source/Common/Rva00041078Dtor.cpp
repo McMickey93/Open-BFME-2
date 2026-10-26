@@ -6,7 +6,7 @@
 // 0x4135C); callees 0x0002FD80 operator delete[] rowed in mem_ops.cpp;
 // unwind callers jmp here from Unwind@00bab2f8/00bab366; state 2 reflects
 // three members; throw() on delete[] removes inter-delete state stores.
-void __cdecl operator delete[](void *block) throw();
+#include <new>
 struct Rva00041344Holder
 {
     Rva00041344Holder() : m_p(0) {}
