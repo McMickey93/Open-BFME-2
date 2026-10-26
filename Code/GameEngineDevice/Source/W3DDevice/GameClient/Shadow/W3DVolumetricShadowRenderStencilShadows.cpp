@@ -37,10 +37,7 @@ typedef DWORD D3DRENDERSTATETYPE;
 #define D3DCMP_ALWAYS			8
 #define D3DSTENCILOP_KEEP		1
 
-struct Vector2
-{
-	Real X, Y;
-};
+#include "../../../../../../reference/shims/wwmath/Vector2.h"
 
 class DX8Wrapper
 {

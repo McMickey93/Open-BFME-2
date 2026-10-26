@@ -18,11 +18,7 @@ struct IDirect3DDevice8
 typedef unsigned long (__stdcall *TextureReferenceFunction)(IDirect3DBaseTexture8 *);
 typedef long (__stdcall *SetTextureFunction)(IDirect3DDevice8 *, unsigned long, IDirect3DBaseTexture8 *);
 
-struct Vector2
-{
-	float x;
-	float y;
-};
+#include "../../../../../reference/shims/wwmath/Vector2.h"
 
 struct W3DShaderManager
 {
@@ -75,8 +71,8 @@ bool Rva000FDD1C::rva000FDD1C(int arg1, int arg2, int arg3, int arg4)
 			++DX8Wrapper::texture_changes;
 		}
 		Vector2 uv;
-		uv.x = 1.0f;
-		uv.y = 1.0f;
+		uv.X = 1.0f;
+		uv.Y = 1.0f;
 		W3DShaderManager::drawViewport(-1, false, &uv);
 		rva000FDD1CNext();
 		return true;

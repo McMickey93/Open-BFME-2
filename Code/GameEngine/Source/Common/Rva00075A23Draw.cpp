@@ -142,11 +142,7 @@ void Rva00075A23Draw(int width, int height)
 #pragma comment(linker, "/alternatename:?g_deviceObj@@3PAUDeviceObj@@A=?D3DDevice@DX8Wrapper@@1PAUIDirect3DDevice8@@A")
 
 // The target drawViewport takes an optional pair of floating extents.
-struct Vector2
-{
-	float x;
-	float y;
-};
+#include "../../../../reference/shims/wwmath/Vector2.h"
 
 // Narrow virtual views from drawViewport's retail call sites: origin at +0x4c,
 // width at +0x3c and height at +0x44.
@@ -210,8 +206,8 @@ void W3DShaderManager::drawViewport(int color, bool useExplicitDimensions, const
 	float uvWidth;
 	float uvHeight;
 	if (useExplicitDimensions) {
-		uvWidth = dimensions->x;
-		uvHeight = dimensions->y;
+		uvWidth = dimensions->X;
+		uvHeight = dimensions->Y;
 	} else if (TheDisplay != 0) {
 		uvWidth = (float)TheDisplay->getWidth();
 		uvHeight = (float)TheDisplay->getHeight();

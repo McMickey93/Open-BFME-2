@@ -83,8 +83,9 @@ public:
 	float m_minWaterOpacity;
 };
 extern BaseHeightMapRenderObjClass *TheTerrainRenderObject;
-struct Vector2
+class Vector2
 {
+public:
 	float m_x;
 	float m_y;
 };

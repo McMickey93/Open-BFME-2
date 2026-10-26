@@ -3,15 +3,7 @@
 // four Vector2 corners and three scalars. NativeD4ED0's array callback is
 // the existing folded3B empty constructor47A6A9. The six early stores are
 // explicit zero-valued prefix construction; the later loop clears corners.
-class Vector2 {
-public:
- Vector2();
- __forceinline Vector2(float xValue,float yValue) : x(xValue),y(yValue) {}
- float x,y;
-};
-// Select-any like the ~45 identical copies other TUs emit (a strong definition
-// would duplicate theirs at link time); the anchor keeps the body emitted.
-inline Vector2::Vector2() {}
+#include "../../../../../reference/shims/wwmath/Vector2.h"
 
 // Retain the inline body's ledger emission without changing its callers.
 // ?bfmeEmitVector2Ctor@@YAXPAVVector2@@@Z absent-from-retail
@@ -32,8 +24,8 @@ TRoadSegInfo::TRoadSegInfo() : loc(0.f,0.f),roadNormal(0.f,0.f),roadVector(0.f,0
  Vector2 *corner=corners;
  int count=4;
  do {
-  corner->x=0;
-  corner->y=0;
+  corner->X=0;
+  corner->Y=0;
   ++corner;
  } while(--count);
 }

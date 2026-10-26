@@ -63,7 +63,7 @@ protected:
 	static Bool _EnableTriangleDraw;
 };
 
-struct Vector2 { float X; float Y; };
+#include "../../../../../reference/shims/wwmath/Vector2.h"
 
 class W3DShaderManager
 {

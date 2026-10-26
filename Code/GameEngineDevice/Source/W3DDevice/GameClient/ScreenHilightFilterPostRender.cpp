@@ -42,7 +42,7 @@ public:
 };
 
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
-struct Vector2;
+class Vector2;
 
 struct IDirect3DSurface8;
 struct IDirect3DBaseTexture8

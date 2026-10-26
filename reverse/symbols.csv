@@ -8350,7 +8350,7 @@ name,address,notes
 ?drawFloatingText@InGameUI@@IAEXXZ,0x0029D200,address read from the REL32 displacement at a placed body
 ?drawListBoxText@@YAXPAVGameWindow@@PAVWinInstanceData@@HHHH_N@Z,0x000A283D,callee of the lexicon-named W3DGadgetListBoxDraw (0x000A2D6F) at the site the BFME1 donor calls it; may be an ICF alias
 ?drawStaticTextText@@YAXPAVGameWindow@@PAVWinInstanceData@@HH@Z,0x000A08FD,callee of the lexicon-named W3DGadgetStaticTextImageDraw (0x000A0B6A) at the site its Zero Hour source calls it; may be an ICF alias
-?drawViewport@W3DShaderManager@@SAXH_NPBUVector2@@@Z,0x00075746,BFME2 3-arg form color plus scale flag plus vector; called from startRenderToTexture alpha path where donor calls drawViewport
+?drawViewport@W3DShaderManager@@SAXH_NPBVVector2@@@Z,0x00075746,BFME2 3-arg form color plus scale flag plus vector; called from startRenderToTexture alpha path where donor calls drawViewport
 ?dtor@Rva00254008Dtor@@QAEXXZ,0x00254024,TU-local dtor pinned to thunk 0x254024 (ILT to rowed GateOpenAndClose dtor) for 0x254008
 ?dup_0013623C@@YAXXZ,0x0013623C,"Retail REL32 calls at 0x001364C0 resolve to this unique byte-matched row at 0x0013623C; synthetic dup alias only, original C++ identity remains unknown."
 ?dup_003F1A8C@@YAXXZ,0x003F1A8C,"Retail REL32 call at 0x003F1EFC resolves to this unique matched row; synthetic dup alias only, original C++ identity remains unknown."
