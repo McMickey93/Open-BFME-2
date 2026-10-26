@@ -55,8 +55,7 @@ UpdateModule::~UpdateModule()
 {
 }
 
-void *operator new(unsigned int size);
-void operator delete(void *p);
+#include <new>
 
 class __declspec(novtable) Rva0024A797_Concrete : public UpdateModule
 {

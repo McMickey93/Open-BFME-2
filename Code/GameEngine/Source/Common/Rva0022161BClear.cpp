@@ -13,8 +13,7 @@ private:
 	char m_pad[8];
 };
 
-void __cdecl operator delete(void *block);
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class Rva0022161B {
 public:

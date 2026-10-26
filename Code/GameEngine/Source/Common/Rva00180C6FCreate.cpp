@@ -7,8 +7,7 @@
 // (rowed 0x0061EF90, null-tolerant). Twin of 0x001806D8/0x001809EA.
 // Caller at 0x0012CD53 unblocks 0x0012CB67.
 bool __cdecl Render_Obj_Exists(const char *name);
-void *__cdecl operator new(unsigned int size) throw();
-void __cdecl operator delete(void *p);
+#include <new>
 void __cdecl Add_Prototype(void *proto);
 
 class Rva00180B94_Prototype
