@@ -527,7 +527,7 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/SlaveWatcherBehaviorPoolKey.cpp
 Code/GameEngine/Source/GameLogic/Object/Behavior/SpawnBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00045F688@SpawnBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A035C0
 Code/GameEngine/Source/GameLogic/Object/Behavior/SpawnUnitBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva004B8752@SpawnUnitBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F54
 Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00045EFBC@StancesBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A035B8
-Code/GameEngine/Source/GameLogic/Object/Behavior/SupplyWarehouseCripplingBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000483A1C@SupplyWarehouseCripplingBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037D8
+Code/GameEngine/Source/GameLogic/Object/Behavior/SupplyWarehouseCripplingBehavior.cpp	wrong-name	?$S1@?1??rva000483A1C@SupplyWarehouseCripplingBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037D8
 Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000481FBD@TerrainResourceBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03794
 Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000252E0B@TerrainResourceClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x009FE9A8
 Code/GameEngine/Source/GameLogic/Object/Behavior/UpgradeSoundSelectorClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000252CDF@UpgradeSoundSelectorClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x009FE9A0

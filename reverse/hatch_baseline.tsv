@@ -3585,7 +3585,6 @@ alternatename	Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp	??1Rva004EE5
 alternatename	Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp	??1SlowDeathSoundVec@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/RvaWideAdjustFwds.cpp	?method@Rva0040FAFESub@@QAEHH@Z	1
 alternatename	Code/GameEngine/Source/Common/S2DeleteHeldObject.cpp	??1Gen0002AB5D@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/S2DualVptrDerivedCtors.cpp	?keepOwn@AudioManager@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/S3AllocatorOperatorNewDelete.cpp	??2Gen007F0150@@SAPAXI@Z	1
 alternatename	Code/GameEngine/Source/Common/S3AllocatorOperatorNewDelete.cpp	??3Gen007E9B10@@SAXPAXI@Z	1
 alternatename	Code/GameEngine/Source/Common/S3AllocatorOperatorNewDelete.cpp	??3Gen007EB140@@SAXPAXI@Z	1
@@ -4258,7 +4257,7 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorCt
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorCtor.cpp	_vtbl_00C424D0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorDtor.cpp	?stancesInterfaceA@StancesBehavior@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorDtor.cpp	?stancesInterfaceB@StancesBehavior@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SupplyWarehouseCripplingBehaviorModuleDataCtor.cpp	_vtbl_00C4ED70	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SupplyWarehouseCripplingBehavior.cpp	_vtbl_00C4ED70	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorCtor.cpp	_vtbl_00C42B60	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorCtor.cpp	_vtbl_00C493E8	1
@@ -8660,7 +8659,7 @@ pin	reverse/symbols.csv	0x001B4B5C	1
 pin	reverse/symbols.csv	0x001B4C7A	1
 pin	reverse/symbols.csv	0x001B4D09	1
 pin	reverse/symbols.csv	0x001B4D16	1
-pin	reverse/symbols.csv	0x001B4E63	4
+pin	reverse/symbols.csv	0x001B4E63	3
 pin	reverse/symbols.csv	0x001B4E74	3
 pin	reverse/symbols.csv	0x001B4E82	1
 pin	reverse/symbols.csv	0x001B4FE9	1
