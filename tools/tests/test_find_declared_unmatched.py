@@ -77,6 +77,53 @@ def test_incomplete_signature_is_not_silently_excused():
     }
 
 
+@pytest.mark.parametrize("suffix", ["", " absent-from-retail", " present-unmatched"])
+def test_vtable_comment_does_not_annotate_a_function(suffix):
+    # tu_skeleton lifts this trailing data comment off the extern declaration.
+    source = """// ?old@Worker@@QAEXXZ absent-from-retail
+// ??_7WeaponSetUpgradeModuleData@@6B@%s
+ModelConditionUpgradeModuleData::ModelConditionUpgradeModuleData()
+    : Base()
+{
+}
+""" % suffix
+    assert find_defined_functions(source) == {
+        ("ModelConditionUpgradeModuleData", "ModelConditionUpgradeModuleData", None)
+    }
+
+
+@pytest.mark.parametrize("matched_ctor", [False, True])
+def test_vtable_comment_still_requires_a_matched_constructor(
+        tmp_path, monkeypatch, capsys, matched_ctor):
+    import find_declared_unmatched as tool
+    source = "Code/Upgrade.cpp"
+    (tmp_path / "Code").mkdir()
+    (tmp_path / source).write_text("""// ??_7WeaponSetUpgradeModuleData@@6B@
+ModelConditionUpgradeModuleData::ModelConditionUpgradeModuleData() {}
+""")
+    ctor = "??0ModelConditionUpgradeModuleData@@QAE@XZ"
+    vtable = "??_7WeaponSetUpgradeModuleData@@6B@"
+    names = {"?anchor@Worker@@QAEXXZ"}
+    if matched_ctor:
+        names.add(ctor)
+    # A declared data symbol must not substitute for a matched function row.
+    monkeypatch.setattr(tool, "read_function_names", lambda *_: (
+        names | {vtable}, names, {source: len(names)},
+        {name: {source} for name in names}))
+    monkeypatch.setattr(tool, "read_data_row_sources", lambda *_: [])
+    monkeypatch.setattr(tool, "load_claims_whitelist", lambda: set())
+    monkeypatch.setattr(tool, "ROOT", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["find_declared_unmatched.py", "--fail", source])
+    if matched_ctor:
+        tool.main()
+        assert "All defined functions are already matched." in capsys.readouterr().out
+    else:
+        with pytest.raises(SystemExit) as exc:
+            tool.main()
+        assert exc.value.code == 1
+        assert "ModelConditionUpgradeModuleData::ModelConditionUpgradeModuleData" in capsys.readouterr().out
+
+
 def test_single_line_bodies_are_retained_but_prototypes_and_calls_are_not():
     source = """void Worker::declared();
 void Worker::run() { perform(); }

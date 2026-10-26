@@ -230,7 +230,12 @@ def find_defined_functions(text: str):
             if parts and parts[0].endswith(","):
                 parts[0] = parts[0].rstrip(",")
                 candidate = " ".join(parts)
-            if len(parts) == 1 or (len(parts) >= 2 and parts[1] in
+            # A vftable is data, never the following function's annotation.
+            # Consolidation can lift a trailing vftable comment off an extern
+            # declaration. Clear pending markers too: data cannot excuse a body.
+            if parts and parts[0].startswith("??_7"):
+                symbol_comment = None
+            elif len(parts) == 1 or (len(parts) >= 2 and parts[1] in
                                    ("present-unmatched", "absent-from-retail")):
                 symbol_comment = candidate
             else:
