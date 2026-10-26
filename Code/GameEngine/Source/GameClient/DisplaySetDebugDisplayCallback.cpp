@@ -4,10 +4,7 @@
 // setDebugDisplayCallback stores the callback and user data (+0x30/+0x34, the fields
 // W3DDisplayInit.cpp reads); BFME 2 also records in the writable global data (+0xBBC)
 // whether the network debug display (rowed 0x00043D96) is the one installed.
-#include <stdio.h>
-
-class DebugDisplayInterface;
-typedef void DebugDisplayCallback(DebugDisplayInterface *dd, void *userData, FILE *fp);
+#include "DisplayStaticDebugView.h"
 
 void NetworkDebugDisplay(DebugDisplayInterface *dd, void *userData, FILE *fp);
 
@@ -18,17 +15,6 @@ public:
 	bool m_networkDebugDisplay;		// +0xBBC
 };
 extern GlobalData *TheWritableGlobalData;
-
-class Display
-{
-public:
-	virtual void setDebugDisplayCallback(DebugDisplayCallback *callback, void *userData = NULL);
-
-private:
-	unsigned char m_pad04[0x30 - 4];
-	DebugDisplayCallback *m_debugDisplayCallback;	// +0x30
-	void *m_debugDisplayUserData;			// +0x34
-};
 
 void Display::setDebugDisplayCallback(DebugDisplayCallback *callback, void *userData)
 {
