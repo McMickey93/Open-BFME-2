@@ -47,7 +47,7 @@ DynamicAutoResolveDialog::Impl::PlayerPanelMovieClip::PlayerPanelMovieClip(EmitP
 class Rva003B241AOwner { public: __declspec(dllimport) __forceinline ~Rva003B241AOwner() { reinterpret_cast<BfmeParserBindingBaseVE *>(this)->BfmeParserBindingBaseVE::~BfmeParserBindingBaseVE(); } };
 class Rva005D10D6 { public: __declspec(dllimport) __forceinline ~Rva005D10D6() { reinterpret_cast<Rva0005D10D6DwordImmSetter *>(this)->apply(); } };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva0044BE85_DeleteAnchor(Rva0044BE85 *p) { delete p; }
 void Rva003B241AOwner_DeleteAnchor(Rva003B241AOwner *p) { delete p; }

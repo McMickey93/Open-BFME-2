@@ -10,7 +10,7 @@
 // The explicit array-new declaration keeps the native2FDE0 call; MSVC's
 // undeclared primitive-array allocation otherwise collapses to scalar2FDA0.
 #include "ascii_string.h"
-void * __cdecl operator new[](unsigned int size);
+#include <new>
 
 class File
 {
