@@ -417,7 +417,7 @@ Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollidePoolKey.cpp	wro
 Code/GameEngine/Source/GameLogic/Object/Collide/HealCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva00004BC858@HealCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04050
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/MoneyCrateCollide.cpp	wrong-name	?$S1@?1??rva00004BC988@MoneyCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04058
 Code/GameEngine/Source/GameLogic/Object/Collide/SalvageCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva00004BD220@SalvageCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A0407C
-Code/GameEngine/Source/GameLogic/Object/Collide/UnitCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04068
+Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp	wrong-name	?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04068
 Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047B51E@AODHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A036F8
 Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004663FF@CaveContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0364C
 Code/GameEngine/Source/GameLogic/Object/Contain/CitadelSlaughterHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva000480600@CitadelSlaughterHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03770
