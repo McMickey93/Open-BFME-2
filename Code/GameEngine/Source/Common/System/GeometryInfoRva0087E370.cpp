@@ -5,8 +5,7 @@
 
 #include <vector>
 
-extern "C" double __cdecl cos(double);
-extern "C" double __cdecl sin(double);
+#include <math.h>
 
 typedef float Real;
 typedef bool Bool;

@@ -1,8 +1,7 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
 #include "ascii_string.h"
 #include <stddef.h>
-void *__cdecl operator new(size_t);
-void __cdecl operator delete(void *);
+#include <new>
 struct FieldParse;
 class INI {
 public:

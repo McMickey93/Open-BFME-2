@@ -29,8 +29,8 @@ public:
 	int bfmeTakeEC(int *out);
 };
 
-extern "C" void __cdecl free(void *block);
-void __cdecl operator delete(void *block);
+#include <stdlib.h>
+#include <new>
 
 struct Rva0023E7D9Link
 {
