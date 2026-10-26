@@ -21,7 +21,8 @@ public:
 	File *openFile(const char *filename, int access, int unk);
 };
 extern FileSystem *TheFileSystem;
-extern "C" __declspec(dllimport) char *__cdecl strchr(const char *, int);
+#include <string.h>
+#include <stdio.h>
 
 // Native DAT temporary is destroyed without an extra unwind state; the
 // already-owned render-data parser also carries this helper exception contract.
@@ -80,7 +81,6 @@ class Object;
 class ObjectLookupMap {public:Object **findSlot(int *);};
 class WW3D {public:static void Get_Device_Resolution(int&,int&,int&,bool&);};
 class GlobalData; extern GlobalData *TheWritableGlobalData;
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *,const char *,...);
 // Target AB193..AB3E2 full591B: .dat lines map texture IDs to asset holders.
 // Buffer-end NUL, renderer outputs, DD1 flag, filter words, allocation8 and
 // hash-table+8 calls are native facts; WB8AA510 independently supplies the
