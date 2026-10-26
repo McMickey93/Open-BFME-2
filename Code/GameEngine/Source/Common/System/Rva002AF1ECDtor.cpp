@@ -8,7 +8,7 @@
 // free, releaseBuffer via reverse destruction (m_14, m_08, m_00).
 #include <vector>
 
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 #include "ascii_string.h"
 

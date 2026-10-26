@@ -108,7 +108,7 @@ template void _STL::_Construct<BfmeStringRecord005D511F,BfmeStringRecord005D511F
 // Range destroy over 0x14-byte record via rowed dtor 0x005D51B9 in this TU. Callers 0x005D5434 and 0x005D5473.
 template void _STL::_Destroy<BfmeStringRecord005D511F *>(BfmeStringRecord005D511F *, BfmeStringRecord005D511F *);
 
-extern "C" void free(void *ptr);
+#include <stdlib.h>
 
 // ??1BfmeRecordRange005D5473@@QAE@XZ retail 0x005D5473 30B.
 // Owning two-pointer range over BfmeStringRecord005D511F: destroy via rowed _Destroy 0x005D541B then free via 0x00030830.
