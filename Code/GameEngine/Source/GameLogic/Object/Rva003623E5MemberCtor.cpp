@@ -36,7 +36,8 @@ public:
 void Rva00360CB0Release(int *indexHolder);
 int __cdecl Rva00361790(Rva00360F55 *record);
 
-extern const BfmeFixedStorage0004543D g_defaultStorage009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class Rva00045411BitSet
 {
@@ -139,7 +140,7 @@ void Rva003623E5Member::rva00362192(Rva00045411BitSet first, BfmeFixedStorage000
 			return;
 		}
 	}
-	initFromStorages(g_defaultStorage009FEFA4, g_defaultStorage009FEFA4);
+	initFromStorages(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE), *reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 }
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
@@ -149,7 +150,3 @@ void Rva003623E5Member::rva00362192(Rva00045411BitSet first, BfmeFixedStorage000
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.
 #pragma comment(linker, "/alternatename:?construct@Rva003623E5Member@@QAEXXZ=??0Rva003623E5Member@@QAE@XZ")
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B=?g_00DFEFA4StoragePrototype@@3PAEA")
