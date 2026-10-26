@@ -164,6 +164,46 @@ def test_far_placeholder_class_row_does_not_stretch_its_tu_span(tmp_path):
         assert "noncontiguous" not in out[rva]["evidence"]
 
 
+def test_header_macros_expand_into_class_inline_members():
+    macros = tu_map.header_macros([
+        "#define GLUE(cls) \\\n public: virtual int getPool() { return cls##_pool; } \\\n"
+        " static const char *name() { return #cls; }\n"
+        "#define MODULE(cls) \\\n GLUE(cls) \\\n virtual int getKey() const { return 1; }\n"
+        "#define BEGIN_LOOP(x) for (x) {\n"
+        "#define LOG(x) printf x\n"])
+    assert sorted(macros) == ["GLUE", "MODULE"]       # BEGIN_LOOP is unbalanced, LOG defines nothing
+    text = "class Helper : public Module\n{\n\tMODULE( Helper )\npublic:\n\tvoid f();\n};\n"
+    assert sorted(tu_map.class_inline_members(tu_map.expand_macros(text, macros))) == \
+        [("Helper", "getKey"), ("Helper", "getPool"), ("Helper", "name")]
+    assert list(tu_map.class_inline_members(text)) == []
+
+
+def test_macro_generated_inline_virtual_is_not_placed_by_class_site(tmp_path):
+    """A helper's getModuleNameKey comes from MAKE_STANDARD_MODULE_MACRO in its header and is
+    emitted as a COMDAT where its vftable is (Object.cpp in retail); the class site S must
+    not claim it and so split the host's span."""
+    zh = tmp_path / "reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/X"
+    zh.mkdir(parents=True)
+    (zh / "Module.h").write_text("#define MAKE_MOD( cls ) \\\npublic: \\\n"
+                                 "\tvirtual int getModuleNameKey() const { return 1; }\n")
+    (zh / "Helper.h").write_text("class Helper : public Module\n{\n\tMAKE_MOD( Helper )\n"
+                                 "public:\n\tvoid f();\n};\n")
+    (zh / "Helper.cpp").write_text("void Helper::f()\n{\n}\n")
+    (zh / "Host.cpp").write_text("void Host::a()\n{\n}\nvoid Host::b()\n{\n}\n")
+    (tmp_path / "reverse").mkdir()
+    (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join([
+        row("?a@Host@@QAEXXZ", 0x1000, 16, "Code/X/HostA.cpp"),
+        row("?getModuleNameKey@Helper@@UBEHXZ", 0x1080, 16, "Code/X/HelperKey.cpp"),
+        row("?b@Host@@QAEXXZ", 0x1100, 16, "Code/X/HostB.cpp"),
+        row("?f@Helper@@QAEXXZ", 0x9000, 16, "Code/X/HelperF.cpp"),
+    ]))
+    out = {int(r["rva"], 16): r for r in tu_map.build(tu_map.Layout(tmp_path))}
+    key = out[0x1080]
+    assert "S=" not in key["evidence"]
+    assert (key["by"], key["tu"], key["confidence"]) == ("C", "Code/X/Host.cpp", "approved")
+    assert out[0x1000]["confidence"] == out[0x1100]["confidence"] == "approved"
+
+
 # ---------------------------------------------------------------- header-inline COMDATs
 @pytest.fixture
 def header_inline(tmp_path):

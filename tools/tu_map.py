@@ -337,23 +337,103 @@ def class_inline_members(text):
                 head = i + 1
 
 
+# A function-like `#define NAME(params) body`, continuation lines included.
+MACRO_DEF = re.compile(r"^[ \t]*#[ \t]*define[ \t]+([A-Za-z_]\w*)\(([^)]*)\)((?:[^\n]*\\\r?\n)*[^\n]*)", re.M)
+MACRO_CONT = re.compile(r"\\\r?\n")
+
+
+def header_macros(texts):
+    """{name: (params, body)} of the function-like macros in `texts` whose body defines a
+    function (holds balanced `{}`) or invokes such a macro: MAKE_STANDARD_MODULE_MACRO,
+    MEMORY_POOL_GLUE and the like write member bodies into every class that invokes
+    them. A body with unbalanced braces (a BEGIN_/END_ pair) is never expanded. First
+    definition wins."""
+    defs = {}
+    for text in texts:
+        for m in MACRO_DEF.finditer(text):
+            body = MACRO_CONT.sub(" ", m.group(3))
+            if m.group(1) not in defs and body.count("{") == body.count("}"):
+                defs[m.group(1)] = ([p.strip() for p in m.group(2).split(",") if p.strip()], body)
+    out = {k: v for k, v in defs.items() if "{" in v[1]}
+    grew = True
+    while grew:
+        grew = False
+        for k, v in defs.items():
+            if k not in out and any(re.search(r"\b" + re.escape(n) + r"\s*\(", v[1]) for n in out):
+                out[k] = v
+                grew = True
+    return out
+
+
+def _macro_args(text, i):
+    """(arguments, end) of the invocation whose `(` precedes `i`, or (None, i) when unbalanced."""
+    depth, args, start = 1, [], i
+    while i < len(text):
+        c = text[i]
+        if c == "(":
+            depth += 1
+        elif c == ")":
+            depth -= 1
+            if not depth:
+                args.append(text[start:i].strip())
+                return args, i + 1
+        elif c == "," and depth == 1:
+            args.append(text[start:i].strip())
+            start = i + 1
+        i += 1
+    return None, i
+
+
+def expand_macros(text, macros, depth=3):
+    """`text` with #define lines blanked and each invocation of `macros` replaced by its
+    body (arguments substituted, `#p` stringised, `##` pasted), `depth` levels deep, so
+    class_inline_members sees the members a macro writes into a class."""
+    text = MACRO_DEF.sub(lambda m: re.sub(r"[^\n]", " ", m.group(0)), text)
+    if not macros:
+        return text
+    call = re.compile(r"\b(" + "|".join(sorted(map(re.escape, macros))) + r")\s*\(")
+    for _ in range(depth):
+        out, at = [], 0
+        for m in call.finditer(text):
+            if m.start() < at:
+                continue
+            args, end = _macro_args(text, m.end())
+            if args is None:
+                break
+            params, body = macros[m.group(1)]
+            sub = dict(zip(params, args))
+            body = re.sub(r"(?<!#)#\s*([A-Za-z_]\w*)",
+                          lambda t: f'"{sub[t.group(1)]}"' if t.group(1) in sub else t.group(0), body)
+            body = re.sub(r"\b[A-Za-z_]\w*\b", lambda t: sub.get(t.group(0), t.group(0)), body)
+            out += [text[at:m.start()], re.sub(r"\s*##\s*", "", body)]
+            at = end
+        if not out:
+            break
+        text = "".join(out) + text[at:]
+    return text
+
+
 def zh_header_members(layout):
-    """{(class, member)} whose ZH body sits in a header: written inside the class, or as
-    an `inline X::y(` definition at header scope."""
+    """{(class, member)} whose ZH body sits in a header: written inside the class (by hand
+    or by a ZH header macro such as MAKE_STANDARD_MODULE_MACRO), or as an `inline X::y(`
+    definition at header scope."""
     out = set()
     if not layout.zh.exists():
         return out
+    texts = []
     for dp, dn, fn in sorted(os.walk(layout.zh)):
         dn.sort()
         for f in sorted(fn):
             if not f.lower().endswith((".h", ".hpp")):
                 continue
             try:
-                text = (Path(dp) / f).read_text(encoding="latin-1")
+                texts.append((Path(dp) / f).read_text(encoding="latin-1"))
             except OSError:
                 continue
-            out.update(zh_definitions(text))
-            out.update(class_inline_members(text))
+    macros = header_macros(texts)
+    for text in texts:
+        out.update(zh_definitions(text))
+        out.update(class_inline_members(expand_macros(text, macros)))
     return out
 
 
