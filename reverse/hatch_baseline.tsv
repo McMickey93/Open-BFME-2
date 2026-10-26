@@ -787,6 +787,7 @@ address_global	Code/GameEngine/Source/Common/PinnedForwarders1830.cpp	g_Va00A033
 address_global	Code/GameEngine/Source/Common/RTS/PlayerRva002AB8FB.cpp	g_Rva0107301CEmptyString	1
 address_global	Code/GameEngine/Source/Common/RTS/PlayerRva002ACE2B.cpp	g_Va007C26F0	2
 address_global	Code/GameEngine/Source/Common/RTS/Rva00439920Reset.cpp	g_Va00BBB8D8	2
+address_global	Code/GameEngine/Source/Common/RTS/Science.cpp	g_Va00DB9440	1
 address_global	Code/GameEngine/Source/Common/RTS/ScienceStoreFindScienceInfo.cpp	g_Va00DB9440	2
 address_global	Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp	g_Va00E028C4	2
 address_global	Code/GameEngine/Source/Common/Recorder.cpp	g_Rva00A00958	2
@@ -820,7 +821,6 @@ address_global	Code/GameEngine/Source/Common/Rva001E72B4Reload.cpp	g_Va00DFDC60	
 address_global	Code/GameEngine/Source/Common/Rva001E72B4Reload.cpp	g_Va00DFDC61	4
 address_global	Code/GameEngine/Source/Common/Rva001F5300Finish.cpp	g_Va00BBB8D8	3
 address_global	Code/GameEngine/Source/Common/Rva001FF6D7List.cpp	g_Va00DB9440	4
-address_global	Code/GameEngine/Source/Common/Rva001FF703CreateNode.cpp	g_Va00DB9440	1
 address_global	Code/GameEngine/Source/Common/Rva002036B4GlobalCopiers.cpp	g_Va00DFE18C	4
 address_global	Code/GameEngine/Source/Common/Rva00210F96Body.cpp	g_Rva00E02E84	2
 address_global	Code/GameEngine/Source/Common/Rva0023E7D9Clear.cpp	g_Rva00A00958	3
@@ -18914,9 +18914,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0021D657.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022CCEF.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022CCEF.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022CCEF.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022DCDA.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022DCDA.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022DCDA.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0024314A.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0024314A.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0024314A.cpp	"t",on	1
@@ -19097,9 +19094,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F69D6.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F715B.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F715B.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F715B.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F7D7F.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F7D7F.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004F7D7F.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004FFBB5.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004FFBB5.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004FFBB5.cpp	"t",on	1
@@ -19145,9 +19139,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00551B02.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00569450.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00569450.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00569450.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00577EB2.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00577EB2.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00577EB2.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005838DC.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005838DC.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005838DC.cpp	"t",on	1
@@ -19172,15 +19163,9 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005DA663.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005DFCA9.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005DFCA9.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005DFCA9.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E2857.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E2857.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E2857.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E96DC.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E96DC.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E96DC.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005F9813.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005F9813.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005F9813.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00620A00.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00620A00.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00620A00.cpp	"t",on	1
@@ -19602,7 +19587,6 @@ present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00564B1AAssign.cpp	Rva00
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00739C70Cleanup.cpp	Owner00739C90::cleanup	1
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00739C70Cleanup.cpp	Rva00739C70::reset	1
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00739C70Cleanup.cpp	Rva00739C70::rva_00739E50	1
-present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00739C70Cleanup.cpp	Rva00739C70::update	1
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00739C70Cleanup.cpp	Rva00739C70::~Rva00739C70	1
 present_unmatched	Code/GameEngine/Source/Common/Bfme/Rva00885980.cpp	Rva00885980Class::d_00885980	1
 present_unmatched	Code/GameEngine/Source/Common/BfmeCellAt.cpp	Rva0073BE00Point::~Rva0073BE00Point	1
@@ -19831,6 +19815,7 @@ present_unmatched	Code/GameEngine/Source/Common/RTS/ProductionPrerequisite.cpp	i
 present_unmatched	Code/GameEngine/Source/Common/RTS/Rva00263895Init.cpp	rva00263895_dummy@Rva00263895Member@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Rva0073DFD0Finish.cpp	Rva0073DFD0Element::Rva0073DFD0Element	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Rva0073DFD0Finish.cpp	Rva0073DFD0Element::~Rva0073DFD0Element	1
+present_unmatched	Code/GameEngine/Source/Common/RTS/Science.cpp	callCreate@ScienceTreeExposer@@SAPAU?$_Rb_tree_node@U?$pair@$$CBW4ScienceType@@_N@_STL@@@_STL@@AAU1@ABU?$pair@$$CBW4ScienceType@@_N@3@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	ScoreKeeper::ScoreKeeper	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	ScoreKeeper::addObjectBuilt	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	ScoreKeeper::addObjectCaptured	1
@@ -19876,7 +19861,6 @@ present_unmatched	Code/GameEngine/Source/Common/Rva00170999.cpp	Rva001709F8Delet
 present_unmatched	Code/GameEngine/Source/Common/Rva001F4C67Finish.cpp	Base001F4C67::~Base001F4C67	1
 present_unmatched	Code/GameEngine/Source/Common/Rva001F8BE8DtorChain.cpp	1Rva001F8BE8Hold@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva001FDB55Ctor.cpp	0BFME2NativeNetwork@@QAE@XZ	1
-present_unmatched	Code/GameEngine/Source/Common/Rva001FF703CreateNode.cpp	callCreate@ScienceTreeExposer@@SAPAU?$_Rb_tree_node@U?$pair@$$CBW4ScienceType@@_N@_STL@@@_STL@@AAU1@ABU?$pair@$$CBW4ScienceType@@_N@3@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	loadIniFilesFromLegend@CreateAHeroManager	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	reset@CreateAHeroManager	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	update@CreateAHeroManager	1
