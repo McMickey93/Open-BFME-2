@@ -104,7 +104,12 @@ namespace _STL { template <> BfmePod52 *vector<BfmePod52, allocator<BfmePod52> >
 
 // Deferred callers: their stride-only helper names disagree with rowed retail callees.
 // Kept unchanged here while the complete-lifetime collector links independently.
-template _STL::vector<BfmePod28,_STL::allocator<BfmePod28> >::vector(_STL::vector<BfmePod28,_STL::allocator<BfmePod28> > const &);
+// 0x00541434 and 0x00541BDF copy the 28-byte Rva00541021 (an int then a
+// Region3D): the copy reaches its rowed copy worker 0x005411C8 and _Construct
+// 0x0054105B, the view StlSweepW5Rva005411C8.cpp uses.
+struct Rva00541021 { char bytes[28]; Rva00541021(const Rva00541021 &) throw(); };
+namespace _STL { template <> void _Construct<Rva00541021, Rva00541021>(Rva00541021 *, const Rva00541021 &) throw(); }
+template _STL::vector<Rva00541021,_STL::allocator<Rva00541021> >::vector(_STL::vector<Rva00541021,_STL::allocator<Rva00541021> > const &);
 template _STL::vector<BfmePod32,_STL::allocator<BfmePod32> >::vector(_STL::vector<BfmePod32,_STL::allocator<BfmePod32> > const &);
-template void _STL::vector<BfmePod28,_STL::allocator<BfmePod28> >::reserve(unsigned int);
+template void _STL::vector<Rva00541021,_STL::allocator<Rva00541021> >::reserve(unsigned int);
 template void _STL::vector<BfmePod28,_STL::allocator<BfmePod28> >::insert(BfmePod28 *,unsigned int,BfmePod28 const &);

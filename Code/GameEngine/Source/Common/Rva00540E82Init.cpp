@@ -188,7 +188,7 @@ struct DataChunkInfo;
 class Rva00540C0A {public:bool rva00540C0A(DataChunkInput*,DataChunkInfo*);};
 struct BfmePod28{char bytes[28];};
 struct Rva0054107FRecord{char bytes[28];};
-namespace _STL {template<> BfmePod28 *vector<BfmePod28>::erase(BfmePod28*,BfmePod28*);template<>void vector<BfmePod28>::reserve(unsigned);template<>Rva0054107FRecord *vector<Rva0054107FRecord>::erase(Rva0054107FRecord*,Rva0054107FRecord*);}
+namespace _STL {template<> BfmePod28 *vector<BfmePod28>::erase(BfmePod28*,BfmePod28*);template<>void vector<Rva00541021>::reserve(unsigned);template<>Rva0054107FRecord *vector<Rva0054107FRecord>::erase(Rva0054107FRecord*,Rva0054107FRecord*);}
 class Rva00542225:public Rva005414E5List {public:
 __declspec(noinline) void rva00541FCC(int,const Region3D&);
  bool read(DataChunkInput*,DataChunkInfo*);
@@ -219,7 +219,7 @@ bool Rva00542225::read(DataChunkInput *file,DataChunkInfo *info) {
  _STL::vector<Rva0054107FRecord> &eraseView=*(_STL::vector<Rva0054107FRecord>*)&values;
  eraseView.erase(eraseView.begin(),eraseView.end());
  int count=file->readInt();
- ((_STL::vector<BfmePod28>*)&values)->reserve(count);
+ values.reserve(count);
  for(int i=0;i<count;++i){
   int key=file->readInt();
   Rva00540D67 value;
