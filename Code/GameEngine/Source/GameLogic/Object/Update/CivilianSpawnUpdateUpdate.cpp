@@ -222,7 +222,6 @@ public:
 	char m_pad25C[0x304 - 0x25C];
 	Team *m_team;								// +0x304
 };
-#pragma comment(linker, "/alternatename:?getPlayerMask@Rva000421C8@@UAEHXZ=?Get_File_Handle@FileClass@@UAEPAXXZ")
 
 __forceinline void CivilianSpawnScale(Coord3D &c, Real s)
 {

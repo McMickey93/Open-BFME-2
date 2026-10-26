@@ -48,8 +48,6 @@ public:
 	Rva000421C8 *m_next;
 };
 
-#pragma comment(linker, "/alternatename:?getPlayerMask@Rva000421C8@@UAEHXZ=?Get_File_Handle@FileClass@@UAEPAXXZ")
-
 // vftable 0x00C071B4: +0x08 the owner.
 class Rva002FE13DFilter : public Rva000421C8
 {
