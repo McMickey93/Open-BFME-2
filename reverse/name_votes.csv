@@ -8274,3 +8274,12 @@ Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerM
 Code/GameEngine/Source/Common/Rva000347A0Realloc.cpp|local|EA::Allocator::GeneralAllocator::realloc|d,566f03316da10f81de41b784,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-25
 Code/GameEngine/Source/Common/Rva005A8666Box.cpp|param|NAT::gotTargetMangledPort|a,207a86c2692eae7e85ec4415,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-25
 Code/GameEngine/Source/Common/Rva005FA98CSwap.cpp|local|swapEntries|m,81355f7b49b2ed1ae1803e79,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-25
+Code/GameEngine/Source/GameNetwork/Rva007F2350StatsCursor.cpp|class||Rva007F27C0Stat,8499f717b55b942eb2985933,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva001DA73E::rva001DA73E|a,066e5fe3ae0f317e84d6c7a1,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva001DA73E::rva001DA73E|b,2eac89f9f18593185e8fefbc,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva001DAB29::rva001DAB29|a,c88ac7cea2d7f94a7489d78e,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva001DAB29::rva001DAB29|b,3c52eaf4a783cba6391d26e3,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva0056A2DE::rva0056A2DE|a,7b3c1571125a889761326df2,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva0056A2DE::rva0056A2DE|b,5721e70f77af82161fcbe1f2,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva0056A362::rva0056A362|a,ce5604d49f70adda45f7f45d,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
+Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva0056A362::rva0056A362|b,c9a61e8c8624eb7a8c89f329,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-26
