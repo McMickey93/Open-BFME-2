@@ -19443,9 +19443,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/gridcull.cpp	"gsy",on	2
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/gridcull.cpp	"s",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/lineseg.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/lineseg.cpp	"gsy",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	"",on	3
-pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	"gsy",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	"s",on	2
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/matrix3.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/matrix3.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/matrix3d.cpp	"",on	1
@@ -23431,15 +23428,6 @@ present_unmatched	Code/Libraries/Source/WWVegas/WWMath/cullsys.cpp	CullSystemCla
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/cullsys.cpp	CullSystemClass::Peek_Next_Collected_Object_Internal	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/icoord.cpp	bfmeEmitICoord2DEquals@@YA_NPBUICoord2D@@PBUICoord2DBase@@@Z	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/icoord.cpp	bfmeEmitICoord3DComponentCtor@@YAXPAUICoord3D@@HHH@Z	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableClass::Init	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableClass::LookupTableClass	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableClass::~LookupTableClass	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableMgrClass::Add_Table	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableMgrClass::Get_Table	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableMgrClass::Init	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableMgrClass::Remove_Table	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableMgrClass::Reset	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp	LookupTableMgrClass::Shutdown	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/matrix3d.cpp	Matrix3DHelperAnchor	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/obbox.cpp	Init_From_Box_Points@OBBoxClass@@QAEXPAVVector3@@H@Z	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWMath/obbox.cpp	Init_Random@OBBoxClass@@QAEXMM@Z	1

@@ -433,7 +433,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_valarray_int.cpp` | 27 | 4 (U=1, C=2, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva004DA329.cpp` | 25 | 5 (U=3, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005F35ED.cpp` | 25 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp` | 24 | 4 (U=2, C=2) | Open |
+| `Code/Libraries/Source/WWVegas/WWMath/lookuptable.cpp` | 24 | 4 (U=2, C=2) | 2026-10-26 at 78413ee546: remove the unrowed lookup-table manager port and explicitly instantiate the matched accessor; 1/1 exact, current-receipt preview LINKS 0 -> 24 B. WWMathInit remains 3/3 exact and 388 B linkable. Fifteen hatches removed; cached consumer audit clear. [Evidence](../reverse/attempt_support/lookuptable-port-removal-20261026-codex5.md), LINK-046; older-index provider audit provisional, census confirmation pending. |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLGameSetupMenu.cpp` | 23 | 12 (U=11, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/HelicopterSlowDeathUpdate.cpp` | 22 | 13 (U=12, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/PhysicsUpdate.cpp` | 21 | 19 (U=13, C=5, S=1) | Open |
