@@ -1611,3 +1611,31 @@ Census confirmation: awaiting the next census.
 - **Clearance:** only the stated declaration/composition blockers are cleared
   in the ordinary trial. No downstream Luna landing is claimed.
 - **Census confirmation:** pending; the batch does not change census history.
+
+### LINK-045: S4SortElem20 element members exist only as private COMDATs under a placeholder name
+Status: Open. Updated: 2026-10-26; inspected revision: 25f8ba858f (index d1f046749a).
+Evidence / affected units: the 20-byte S4 sort element is rowed under two
+placeholder class names: copy ctor `??0Rva003371B1@@QAE@ABV0@@Z` 0x003371B1
+(Rva003371B1Copy.cpp), dtor `??1Rva003371B1@@QAE@XZ` 0x003372B7
+(Rva003371B1Dtor.cpp), assignment `??0Rva002E9E70@@QAE@ABV0@@Z` 0x003372EC
+(Rva002E9E70Copy.cpp, named as a copy ctor but called as the assignment by
+swap 0x003373D9); its unguarded linear insert 0x00337424 is rowed as
+`?Rva00337424Insert@@...` (Rva00337424Insert.cpp). The STLport sort units name
+the element `S4SortElem20` and reach those bodies through symbols.csv pins,
+which the link does not use: `??0`/`??1S4SortElem20` resolve only through the
+implicit COMDAT copies in stlport_unguarded_insertion_sort_s4sortelem20.cpp
+(census provenance `unknown`), whose bodies still call the undefined
+placeholder `BfmeSortElem20Tail` ctor/dtor. That unit itself fails on those
+two names and on `__unguarded_linear_insert<S4SortElem20 *...>` (kept copy is
+S4StlSortHelpers.cpp's, not retail's).
+Completed: 797d6cd0f5 linked stlport_introsort_loop_s4sortelem20.cpp (+90 B,
+link_check vs d1f046749a; all 8 S4SortElem20 units checked, none drops): its
+tail assignment now calls the rowed vector<Rva00332217Record>::operator=
+(0x332217) and the element ctor/dtor are declared out of line.
+Remaining / next check: one element type and name for 0x3371B1 / 0x3372B7 /
+0x3372EC / 0x337424 (rename the Rva003371B1 / Rva002E9E70 rows, or respell
+the S4SortElem20 users onto them) so one unit defines each member; then drop
+the insertion-sort unit's implicit copies and recheck it with
+S4StlSortHelpers.cpp, partition and introsort units together.
+Clearance: pending.
+Census confirmation: awaiting.
