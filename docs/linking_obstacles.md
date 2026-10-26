@@ -2464,6 +2464,35 @@ Census confirmation: n/a.
   retail rows its methods under that class in sibling units
   (W3DTankTruckDrawTossEmitters.cpp, ...CreateEmitters.cpp), so it is not
   this case.
+
+- **Checked, not removable as-is (2026-10-26, K5, index d1f046749a, no source change):**
+  - `ObjectCreationList.cpp` (1,427 B, 8 blockers): `DeliverPayloadNugget`
+    is ZH-only (no `DeliverPayload` string in game.dat; retail's table at
+    0x007E07F0 lacks it) and its `parsePayload` is the unit's static
+    `INI::scanInt` caller, but its three `vector<Payload>` rows (0x005F8653
+    `_M_clear`, 0x005F8752 `_M_insert_overflow`, 0x005F8855 `push_back`,
+    no TU approval) are a masked-search misnaming: retail 0x005F8752 calls
+    0x004F6A88/0x004F6A52/0x004F6AAE (`Rva004C5DD0Set.cpp`, an 8-byte
+    two-ref-counted-pointer element), which is why `_Construct`/`_Destroy<Payload>`
+    lose as "not retail's body". Those rows need an honest element type and
+    home before the nugget can go. The `setProducer(const Object *)` U
+    blocker is the unfinished ZH-spelling pass from 83a5361fc7 (29 files).
+  - `DieModule.cpp` (13 B): its unrowed ZH `crc`/`xfer`/`loadPostProcess`
+    and `DieMuxData::getFieldParse` are the only providers of names that
+    linked units reference (DieModule vftables in CreateObjectDie,
+    SpecialPowerCompletionDie, FXListDie; `buildFieldParse` in ModuleFactory,
+    InstantDeathBehavior, about 2.7 KB linked). Dropping them would lose
+    those units; the static `INI::scanIndexList` blocker comes from
+    `ObjectStatusMaskType::parseFromINI` in that table.
+  - `light.cpp` (6 B): the row `LightPersistFactoryClass::Chunk_ID`
+    (0x00615B60, `mov eax,0x10001; ret`) is in no retail vftable, so retail
+    has no such factory; the virtual inline cannot be kept emitted without
+    the ZH factory instance (same vcall-thunk limit as HelicopterSlowDeath).
+  - `HordeUpdate.cpp` (14 B): its row 0x0049001F is pointed to from retail
+    .rdata 0x0084D054, inside a run of code pointers (a vftable), so a
+    retail class owns it; name/home first.
+  - `BridgeScaffoldBehavior.cpp` already links in a current preview (952 B);
+    its census `UpdateModule::loadPostProcess` blocker is stale.
 - **Census confirmation:** pending for all three units.
 
   b313329af6 renamed the four numpunct slot rows in place to the real `do_truename` /
