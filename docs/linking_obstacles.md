@@ -140,6 +140,17 @@ authored-byte previews or commit-title gains into a projected headline.
   keys with zero remaining findings in these sources. Both units are already
   census-linked; this retires debt and claims no new linking gain. Other
   string-family prerequisites remain open.
+- **Hashtable prime-table identity follow-up (2026-10-26):**
+  [The current-object proof](../reverse/attempt_support/hashtable-prime-table-identity-20261026-codexb4.md)
+  verifies STLport's complete 112-byte prime table at RVA 0x007BD410 from
+  the existing stlport_hashtable_asciistring.cpp definition. Its matched data
+  row resolves the resize copy's three previously unplaced data relocations;
+  the owning identity tool retires one key with zero remaining findings in
+  that source. Both hashtable sources and DamageFX_hashtableResize.cpp already
+  preview LINKS and are census-linked, so no linked-byte gain is claimed.
+  RvaHashIndex00928620.cpp retains its separate identity key: the edge-map
+  insertion's resize and pair-construction bindings need owner/type evidence.
+  The handoff records the exact native targets and preserves this prerequisite.
 - **Clearance / census confirmation:** graphics ordinary-preview scope cleared
   at the revision above; other families and census confirmation remain pending.
   Keep individual repair previews separate from later census confirmation.
