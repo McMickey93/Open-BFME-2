@@ -21,3 +21,10 @@ These are unchanged blockers for Sol; no repair, identity retirement, or tool ch
 
 - Merged the unchanged `Rva004BCF92.cpp` helper; nine matched rows remain in the approved TU. Build byte verification passed 9/9, including four funclet pins whose compiler labels renumbered; `find_declared_unmatched.py`, CSV, and allowed-symbol checks passed (30 refs, 0 wrong bindings). Staged data and code-identity gates reported no findings.
 - The ctor donor remains rejected with C2511: `VeterancyCrateCollide(Thing *, const ModuleData *)` is not declared; the pool-key donor remains rejected with C2039: `getModuleNameKey` is not a member of `VeterancyCrateCollide`. Both stay untouched for Sol.
+
+## Final batch audit and additional rejected candidates
+
+- Outgoing path-consumer search across `tools/`, `.githooks/`, `.github/` and `Code/` found no active references to absorbed donor paths. The outgoing `link_batch_audit.py` was run for base `f4ec351d97abc6bbd58f1473e1157b5a44684724` and tip `6716deeb10628457add29f54211f6a33e3ef6c6e`. It is inconclusive: its census index is at `bcb191bfeb`, before the outgoing base, and `VeterancyCrateCollide.cpp` has no current object receipt. Treat reported since-index changes as provisional; no link-cycle or census claim is made.
+- `AutoFindHealingUpdate.cpp`: no donor accepted; ctor donor fails C2039 because `getModuleNameKey` is not a member.
+- `UpgradeDie.cpp`: no donor accepted; `DieModule` is undefined and member initialization is invalid.
+- `QueueProductionExitUpdate.cpp`: no donor accepted. Exact dry-run blockers include `BitFlags` `NUMBITS` template mismatch (C3855), duplicate `Xfer`/`Coord3D` declarations (C2011), missing `rva0004A00C2` (C2039), undeclared `m_secondary20` (C2065), and exit-position/query/set/notify donors that collide on `Coord3D`. No rejected donor was modified.
