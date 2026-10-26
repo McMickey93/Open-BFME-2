@@ -17,7 +17,7 @@ public:
 private:
 	void *object;
 };
-void __cdecl operator delete(void *p);
+#include <new>
 void Rva00053D66DeviceRef::assign(Rva000A8903AudioDevice *device)
 {
 	void *old = object;

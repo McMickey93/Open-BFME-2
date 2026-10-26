@@ -6,7 +6,7 @@
 // pointer at +0 via qualified virtual dtor plus rowed operator delete
 // 0x0002FD60. Callers at 0x00060491 0x000611A8. Honest Rva class and clear
 // name; no donor.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva00A897D
 {
