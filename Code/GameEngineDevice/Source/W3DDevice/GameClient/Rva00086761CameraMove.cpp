@@ -82,7 +82,7 @@ void Rva00086761CameraMove::rva00088EB4(float finalValue, int milliseconds, floa
 // These are data-only views of the five control blocks and waypoint values;
 // the receiver remains the canonical array owner. Untouched members remain
 // donor-carried or opaque. Double interpolation preserves native x87 shape.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 
 // BaseType.h verbatim: C cast emits out-of-line _ftol plus qword shape;

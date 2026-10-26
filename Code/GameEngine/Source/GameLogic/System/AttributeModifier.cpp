@@ -8,7 +8,7 @@
 // already verified scale/import/unsigned conversion shape, not class identity.
 #include "ascii_string.h"
 #include <string.h>
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
+#include <math.h>
 extern float g_parseDurationMsecScale;
 class UpgradeTemplate;
 class UpgradeCenter {

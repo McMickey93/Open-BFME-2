@@ -409,7 +409,7 @@ public:
 };
 extern TerrainLogic *TheTerrainLogic;
 
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 #include <math.h>
 
 __forceinline long fast_float2long_round(Real f)
