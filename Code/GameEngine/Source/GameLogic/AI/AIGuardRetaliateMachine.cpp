@@ -45,7 +45,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit) throw();	// 0x00045411
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // vftable 0x00BC2908, allow 0x002610DE: accept what has every kind of the
 // first mask and none of the second (ZH's PartitionFilterAcceptByKindOf).
@@ -202,7 +203,7 @@ bool AIGuardRetaliateMachine::lookForInnerTarget()
 	Rva00260EB1Filter f1(owner, 1, false);
 	Rva00260FD0Filter f2(owner, 2, 0);
 	PartitionFilterRejectBuildings f3(owner);
-	Rva0004584D f8(*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+	Rva0004584D f8(*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 		*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 0x82));
 	Rva002611BFFilter filterMapStatus(owner);
 	PartitionFilterIsFlying unused;

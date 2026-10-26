@@ -113,7 +113,8 @@ public:
 	BfmeFixedStorage0004543D m_08;
 	BfmeFixedStorage0004543D m_24;
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
@@ -275,7 +276,7 @@ StateReturnType AIMeleeReAcquireState::onEnter()
 		pos.z = owner->getPosition()->z;
 		Rva002618A2 kinds;
 		target = ThePartitionManager->getClosestObject(&pos, TheAI->getAiData()->m_meleeAcquireRadius * 2.0f, 1,
-			Rva0004584D(*(const BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+			Rva0004584D(*(const BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 				*(const BfmeFixedStorage0004543D *)kinds.rva002618A2(0, 0x59, 0x82, 0x36))
 				.link(&Rva00341C54Filter(owner, weapon))->link(&PartitionFilterRejectBuildings(owner))
 				->link(&Rva00260FD0Filter(owner, 2, 0))->link(&Rva00261246Filter(true, false))

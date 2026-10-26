@@ -443,10 +443,8 @@ Code/GameEngine/Source/GameClient/System/SmudgeManagerDtor.cpp	wrong-name	?m_fre
 Code/GameEngine/Source/GameClient/System/SmudgeSetReset.cpp	wrong-name	?m_freeSmudgeList@SmudgeSet@@2V?$DLListClass@USmudge@@@@A	0x009BCBF4
 Code/GameEngine/Source/GameClient/VideoPlayerDestructorThunk.cpp	wrong-name	?TheVideoPlayer@@3PAVVideoPlayer@@A	0x00A0ABA8
 Code/GameEngine/Source/GameLogic/AI/AIFollowPathStateMethods.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0
-Code/GameEngine/Source/GameLogic/AI/AIGuardRetaliateMachine.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/AI/AIGuardRetaliateStates.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0
 Code/GameEngine/Source/GameLogic/AI/AIGuardReturnStateOnEnter.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0
-Code/GameEngine/Source/GameLogic/AI/AIMeleeReAcquireStateOnEnter.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/AI/AIMoveAndEvacuateStateEnterExit.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0
 Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S1@?7??checkForSupplyCenter@AIPlayer@@IAEXPAVBuildListInfo@@PAVObject@@@Z@4IA	0x00A044C8
 Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S2@?N@??findSupplyCenter@AIPlayer@@IAEPAVObject@@H@Z@4IA	0x00A044C0
@@ -461,7 +459,6 @@ Code/GameEngine/Source/GameLogic/AI/ObjectSMCHelperPoolKey.cpp	wrong-name	?$S1@?
 Code/GameEngine/Source/GameLogic/AI/ObjectWeaponStatusHelperPoolKey.cpp	wrong-name	?$S1@?1??rva00028CB96@ObjectWeaponStatusHelper@@SA?AW4NameKeyType@@XZ@4IA	0x009FED10
 Code/GameEngine/Source/GameLogic/AI/PathDtor.cpp	duplicate-def	?g_pathNodePool@@3URva00065964ObjectPool@@A	0x00A01E94
 Code/GameEngine/Source/GameLogic/AI/PathDtor.cpp	wrong-name	?g_pathNodePool@@3URva00065964ObjectPool@@A	0x00A01E94
-Code/GameEngine/Source/GameLogic/AI/Rva004389AENearbyCheck.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Module/AIUpdateInterfacePoolKey.cpp	wrong-name	?$S1@?1??rva0026E93D@AIUpdateInterface@@SA?AW4NameKeyType@@XZ@4IA	0x009FEB54
 Code/GameEngine/Source/GameLogic/Module/BridgeBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva004571A9@BridgeBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03430
 Code/GameEngine/Source/GameLogic/Module/DozerAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004895E4@DozerAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A038F0
