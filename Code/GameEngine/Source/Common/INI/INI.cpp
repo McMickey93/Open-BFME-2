@@ -17,9 +17,7 @@
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 #include <vector>
-#define NULL 0
 #include "../../../../Libraries/Include/Lib/RGBColor.h"
-#define NULL 0
 
 namespace rts
 {
@@ -312,10 +310,6 @@ template <> _Vector_base<AsciiString, allocator<AsciiString> >::~_Vector_base();
 template <> void _STLP_alloc_proxy<AsciiString*, AsciiString, allocator<AsciiString> >::deallocate(AsciiString*, size_t);
 template <> void allocator<AsciiString>::deallocate(AsciiString*, size_t) const;
 }
-
-extern "C" unsigned int strlen(const char *s);
-
-extern "C" char *_mbscpy(char *dst, const char *src);
 
 class INI
 {
