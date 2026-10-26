@@ -25,6 +25,7 @@ public:
 };
 
 class AptValue;
+class Rva006E1E30;
 
 class BfmeAptValue006DCD20 {
 public:
@@ -40,7 +41,7 @@ public:
     BfmeAptValue006DCD20 *checkedString();
 };
 
-class AptCIH {public:bool rva006CFCD0()const;void *rva006E1170()const;int rva006E1F90(int);void factorySetProperty(int,float,bool);};
+class AptCIH {public:bool rva006CFCD0()const;void *rva006E1170()const;int rva006E1F90(int);bool queueClipEvents(int,int,int);void factorySetProperty(int,float,bool);};
 
 struct AptNativeHash;
 
@@ -273,13 +274,15 @@ public:
 	char pad18[0x44 - 0x18];
 	BfmeAptValue006DCD20 *mValue;
 	float m48, m4C, m50, m54, m58, m5C;
-	char pad60[0x6C - 0x60];
+	BfmeAptValue006DCD20 *m60, *m64, *m68;
 public:
 	AptCIH *current;
 	char pad70[4];
 	int m74, m78;
 	bool validateBIL();
 	void Rva006F9EF0();
+	void rva006FA7E0(bool first, bool enabled, int value);
+	bool rva006F9FC0(Rva006E1E30 *object, int unused);
 public:
 	void rva006E6540();
 public:
