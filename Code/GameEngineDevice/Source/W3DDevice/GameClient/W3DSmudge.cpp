@@ -1,17 +1,123 @@
-// cl: /DBFME_WWSTRING_NATIVE_CSTR_ASSIGN /Ireference/shims/wwstring_teardown/zhmd /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmestages /G7 /arch:SSE /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib
+// cl: /DBFME_WWSTRING_NATIVE_CSTR_ASSIGN /FIzh_ascii.h /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/wwstring_teardown/zhmd /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmestages /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib
+// stlport
+// TU Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudge.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
+#define __PLACEMENT_VEC_NEW_INLINE
+#include "../../../../../reference/shims/bfme_matrix3d_sse_link/vector4.h"
+#include "always.h"
+#undef W3DMPO_GLUE
+#define W3DMPO_GLUE(ARGCLASS)
+#include "WWSaveLoad/persist.h"
+#include "Lib/Basetype.h"
+#include "W3DDevice/GameClient/W3DSmudge.h"
+#include "W3DDevice/GameClient/W3DShaderManager.h"
+#include "Common/GameMemory.h"
+#include "GameClient/view.h"
+#include "GameClient/display.h"
+#include "WW3D2/texture.h"
+#include "WW3D2/dx8indexbuffer.h"
+#include "dx8wrapper.h"
+#include "WW3D2/rinfo.h"
+#include "WW3D2/camera.h"
+#include "WW3D2/sortingrenderer.h"
+#ifdef _INTERNAL
+// for occasional debugging...
+//#pragma optimize("", off)
+//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
+
+#endif
+#define SMUDGE_DRAW_SIZE	500	//draw at most 50 smudges per call. Tweak value to improve CPU/GPU parallelism.
+#define UNIQUE_COLOR	(0x12345678)
+#define BLOCK_SIZE	(8)
+#undef W3DMPO_GLUE
+#define W3DMPO_GLUE(ARGCLASS)
+
+SmudgeManager *TheSmudgeManager=NULL;
+
+// W3DSmudgeManager::ReAcquireResources is defined with its retail-matched body in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva000A6176Finish.cpp (0x000A6176).
+
+/*Copies a portion of the current render target into a specified buffer*/
+// Defined with its retail-matched body in W3DSmudge_copyRect.cpp (0x000A6270); this
+// unit no longer carries Zero Hour's copy, which duplicated that definition.
+Int copyRect(unsigned char *buf, Int bufSize, int oX, int oY, int width, int height);
+
+// Native testHardwareSupport at 0x000A648C is owned by
+// W3DSmudgeManagerTestHardwareSupport.cpp; its verified BFME 2 body
+// replaces this obsolete Zero Hour probe.
+
+// Native render at 0x000A6E08 is owned by W3DSmudgeManagerRender.cpp.
+// Its verified BFME2 body replaces this obsolete ZH view, including the
+// target GlobalData probe and native matrix / dynamic-VB call boundaries.
+
+// Keep the independently rowed native SmudgeSet successor emitted after
+// retiring render; the template uses this unit's established node ABI.
+template SmudgeSet *DLNodeClass<SmudgeSet>::Succ(void);
+
+// W3DSmudgeManager::ReleaseResources, retail 0x000A6135, 65 bytes.
+//
+// The lock and unlock at either end are a guard object, not two bare calls:
+// that is what gives the body its SEH frame and the two unwind writes, which
+// bracket exactly the region between the constructor and the destructor. Both
+// halves are free functions the ledger already names.
+//
+// Between them one reference-counted handle at +0x34 is released -- the count
+// at +0x04 of the target dropped in place, slot 0 of its table entered with no
+// argument when it reaches zero -- and the pointer cleared.
+
+typedef int Int;
+
+void BFME_DX8_Thread_Lock(void);
+
+					// retail 0x00903090
+bool BFME_DX8_Thread_Assert(void);
+
+					// matched release half at 0x00120F50
+
+class BfmeRadarResetLock
+{
+public:
+	BfmeRadarResetLock() { BFME_DX8_Thread_Lock(); }
+	~BfmeRadarResetLock() { BFME_DX8_Thread_Assert(); }
+};
+
+class IndexBufferRef
+{
+public:
+	virtual void destroy(void);					// slot 0
+
+	Int m_refCount;							// +0x04
+};
+
+class DX8IndexBufferClass;
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerConstructor.cpp
+
+// Native ctor 0x000A60F0..0x000A6120 (48 bytes). Use the seed's class
+// declarations. Retail stores the BFME probe color at +0x40, beyond the
+// legacy header's final member; retain that target-proven tail access.
+
+W3DSmudgeManager::W3DSmudgeManager()
+{
+	m_smudgeGroup = 0;
+	m_posBuffer = 0;
+	m_RGBABuffer = 0;
+	m_sizeBuffer = 0;
+	m_indexBuffer = 0;
+	m_backBufferWidth = 0;
+	m_backBufferHeight = 0;
+	*reinterpret_cast<unsigned int *>(reinterpret_cast<char *>(this) + 0x40) = 0x00FFEEDD;
+}
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudge.cpp
+
 // Link view first: Vector4(x,y,z,w) stays inline without emitting an SSE
 // copy that competes with retail's integer-move owner (0x006D8A30).
 // GameMemory supplies placement array new/delete before SDK headers.
-#define __PLACEMENT_VEC_NEW_INLINE
-#include "../../../../../reference/shims/bfme_matrix3d_sse_link/vector4.h"
-// stlport
+
 // Ported verbatim from the Generals Zero Hour reference
 // (GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudge.cpp); this unit had no counterpart under Code/.
 
 // BFME 2 has no W3D memory pools (see Code/Libraries/Source/WWVegas/WWLib/always.h).
-#include "always.h"
-#undef W3DMPO_GLUE
-#define W3DMPO_GLUE(ARGCLASS)
+
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -42,28 +148,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Qualify the game header: SDK-enabled composition also sees Microsoft persist.h.
-#include "WWSaveLoad/persist.h"
-#include "Lib/Basetype.h"
-#include "always.h"
-#include "W3DDevice/GameClient/W3DSmudge.h"
-#include "W3DDevice/GameClient/W3DShaderManager.h"
-#include "Common/GameMemory.h"
-#include "GameClient/view.h"
-#include "GameClient/display.h"
-#include "WW3D2/texture.h"
-#include "WW3D2/dx8indexbuffer.h"
-#include "dx8wrapper.h"
-#include "WW3D2/rinfo.h"
-#include "WW3D2/camera.h"
-#include "WW3D2/sortingrenderer.h"
-
-#ifdef _INTERNAL
-// for occasional debugging...
-//#pragma optimize("", off)
-//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
-#endif
-
-SmudgeManager *TheSmudgeManager=NULL;
 
 // W3DSmudgeManager::W3DSmudgeManager: defined in W3DSmudgeManagerConstructor.cpp (its row's unit).
 
@@ -87,26 +171,61 @@ void W3DSmudgeManager::reset (void)
 // W3DSmudgeManager::ReleaseResources: defined in W3DSmudgeManagerReleaseResources.cpp (its row's unit).
 
 //Make sure (SMUDGE_DRAW_SIZE * 12) < 65535 because that's the max index buffer size.
-#define SMUDGE_DRAW_SIZE	500	//draw at most 50 smudges per call. Tweak value to improve CPU/GPU parallelism.
 
-// W3DSmudgeManager::ReAcquireResources is defined with its retail-matched body in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva000A6176Finish.cpp (0x000A6176).
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerReleaseResources.cpp
 
-/*Copies a portion of the current render target into a specified buffer*/
-// Defined with its retail-matched body in W3DSmudge_copyRect.cpp (0x000A6270); this
-// unit no longer carries Zero Hour's copy, which duplicated that definition.
-Int copyRect(unsigned char *buf, Int bufSize, int oX, int oY, int width, int height);
+// ?ReleaseResources@W3DSmudgeManager@@UAEXXZ
+void W3DSmudgeManager::ReleaseResources(void)
+{
+	BfmeRadarResetLock lock;
 
-#define UNIQUE_COLOR	(0x12345678)
-#define BLOCK_SIZE	(8)
+	// Keep the seed header's slot type; view only the native refcount prefix.
+	// Retail decrements its count at +4 and calls slot zero when it reaches zero.
+	IndexBufferRef *indexBuffer = reinterpret_cast<IndexBufferRef *>(m_indexBuffer);
 
-// Native testHardwareSupport at 0x000A648C is owned by
-// W3DSmudgeManagerTestHardwareSupport.cpp; its verified BFME 2 body
-// replaces this obsolete Zero Hour probe.
+	if (indexBuffer)
+	{
+		if (--indexBuffer->m_refCount == 0)
+			indexBuffer->destroy();
 
-// Native render at 0x000A6E08 is owned by W3DSmudgeManagerRender.cpp.
-// Its verified BFME2 body replaces this obsolete ZH view, including the
-// target GlobalData probe and native matrix / dynamic-VB call boundaries.
+		m_indexBuffer = 0;
+	}
+}
 
-// Keep the independently rowed native SmudgeSet successor emitted after
-// retiring render; the template uses this unit's established node ABI.
-template SmudgeSet *DLNodeClass<SmudgeSet>::Succ(void);
+// tu-skeleton: 0x000A6176 250B ?ReAcquireResources@W3DSmudgeManager@@UAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
+
+// tu-skeleton: 0x000A6270 272B ?copyRect@@YAHPAEHHHHH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudge_copyRect.cpp (not merged yet)
+
+// tu-skeleton: 0x000A638D 199B ??D@YA?AVVector4@@ABVMatrix4@@ABVVector3@@@Z -- matched in Code/Libraries/Source/WWVegas/WWMath/vp.cpp (not merged yet)
+
+// tu-skeleton: 0x000A648C 930B ?testHardwareSupport@W3DSmudgeManager@@QAE_NXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerTestHardwareSupport.cpp (not merged yet)
+
+// tu-skeleton: 0x000A682E 121B ??0Matrix4@@QAE@_N@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/StreakRendererSetTextureBFME1.cpp (not merged yet)
+
+// tu-skeleton: 0x000A6E08 2447B ?render@W3DSmudgeManager@@QAEXAAVRenderInfoClass@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerRender.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A09 8B uw_00760a09 -- matched in Code/gen_small/uw_gen_000.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A1B 8B uw_00760a1b -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A23 8B $L463 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A2B 10B $L464 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A35 10B __ehhandler$?ReAcquireResources@W3DSmudgeManager@@UAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A51 8B uw_00760a51 -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A59 10B __ehhandler$?testHardwareSupport@W3DSmudgeManager@@QAE_NXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerTestHardwareSupport.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A63 8B $L3186 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerRender.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A6B 11B Unwind@00b60a6b -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerRender.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A76 8B Unwind@00b60a76 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerRender.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A7E 8B $L3235 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerRender.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A86 8B $L3258 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerRender.cpp (not merged yet)
+
+// tu-skeleton: 0x00760A8E 10B __ehhandler$?render@W3DSmudgeManager@@QAEXAAVRenderInfoClass@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerRender.cpp (not merged yet)
