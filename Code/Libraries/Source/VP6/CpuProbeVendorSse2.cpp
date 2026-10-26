@@ -10,12 +10,7 @@
 // covers the filter and handler funclets retail places after the body.
 
 #include <excpt.h>
-extern "C" unsigned long __cdecl _exception_code(void);
-#define GetExceptionCode _exception_code
-
-
-extern "C" __declspec(dllimport) int __cdecl strncmp(
-	const char *, const char *, unsigned int);
+#include <string.h>
 
 extern "C" int __cdecl CpuProbe_VendorSse2(void)
 {

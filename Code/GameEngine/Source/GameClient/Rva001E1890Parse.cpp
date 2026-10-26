@@ -17,8 +17,7 @@ static inline void _Construct(int *__p, const int &__val)
 { new (__p) int(__val); }
 }
 
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *dst, const char *src, unsigned int n);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 #include "ascii_string.h"
 
@@ -54,7 +53,6 @@ public:
 	char m_buf160[64];
 };
 
-extern void *__cdecl operator new(unsigned int s) throw();
 // Retail's FXTrigger index list at RVA 0x009B8DB4 (.data): three names and the null terminator (the next
 // list, {NONE, FRONT/RIGHT/BACK/LEFT_DESTROYED}, follows at 0x009B8DC4).
 const char *g_00DB8DB4[] = { "NONE", "CATAPULT_ROCK", "TREBUCHET_ROCK", 0 };

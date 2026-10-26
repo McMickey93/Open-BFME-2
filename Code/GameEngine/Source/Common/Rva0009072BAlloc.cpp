@@ -6,9 +6,8 @@
 // Callers at 0x0009199B and 0x001067B3 forward two ints; landing unblocks 2.
 #pragma function(memset)
 
-extern "C" void *memset(void *dst, int value, unsigned int size);
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *p);
+#include <string.h>
+#include <new>
 
 // ?Rva00090714Free@@YAXPAPAX@Z @0x00090714 23B
 // Gap between FrameDataManagerCounts 0x0009070B and Rva0009072BAlloc 0x0009072B.
