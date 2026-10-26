@@ -10,6 +10,58 @@
 // The G00xxxxxx externs are address-derived placeholders (DIR32 sites the
 // verifier fills from retail) and carry no type information beyond int.
 
+// Retail globals the getters below read, declared as minimal views of the
+// real classes (the data ledger's names and owners: WW3D in ww3d.cpp,
+// DX8Wrapper in dx8wrapper.cpp, CPUDetectClass in cpudetect.cpp); each
+// static is read through an inline accessor.
+
+class DX8Wrapper {
+public:
+	static __forceinline unsigned long Read_FrameCount() { return FrameCount; }
+protected:
+	static unsigned long FrameCount;
+};
+
+class WW3D {
+public:
+	static __forceinline int Read_FrameCount() { return FrameCount; }
+	static __forceinline unsigned int Read_NPatchesLevel() { return NPatchesLevel; }
+private:
+	static int FrameCount;
+	static unsigned int NPatchesLevel;
+};
+
+class CPUDetectClass {
+public:
+	static __forceinline unsigned int Read_ExtendedFeatureBits() { return ExtendedFeatureBits; }
+	static __forceinline unsigned int Read_FeatureBits() { return FeatureBits; }
+	static __forceinline unsigned int Read_L1DataCacheLineSize() { return L1DataCacheLineSize; }
+	static __forceinline unsigned int Read_L1DataCacheSetAssociative() { return L1DataCacheSetAssociative; }
+	static __forceinline unsigned int Read_L1DataCacheSize() { return L1DataCacheSize; }
+	static __forceinline unsigned int Read_L1InstructionCacheLineSize() { return L1InstructionCacheLineSize; }
+	static __forceinline unsigned int Read_L1InstructionCacheSetAssociative() { return L1InstructionCacheSetAssociative; }
+	static __forceinline unsigned int Read_L1InstructionCacheSize() { return L1InstructionCacheSize; }
+	static __forceinline unsigned int Read_L1InstructionTraceCacheSize() { return L1InstructionTraceCacheSize; }
+	static __forceinline unsigned int Read_L2CacheLineSize() { return L2CacheLineSize; }
+	static __forceinline unsigned int Read_L2CacheSetAssociative() { return L2CacheSetAssociative; }
+	static __forceinline unsigned int Read_L2CacheSize() { return L2CacheSize; }
+	static __forceinline int Read_ProcessorType() { return ProcessorType; }
+private:
+	static unsigned int ExtendedFeatureBits;
+	static unsigned int FeatureBits;
+	static unsigned int L1DataCacheLineSize;
+	static unsigned int L1DataCacheSetAssociative;
+	static unsigned int L1DataCacheSize;
+	static unsigned int L1InstructionCacheLineSize;
+	static unsigned int L1InstructionCacheSetAssociative;
+	static unsigned int L1InstructionCacheSize;
+	static unsigned int L1InstructionTraceCacheSize;
+	static unsigned int L2CacheLineSize;
+	static unsigned int L2CacheSetAssociative;
+	static unsigned int L2CacheSize;
+	static int ProcessorType;
+};
+
 // ?Rva00139450Get@@YAHXZ @ 0x00139450 (6B): returns global at 0x9F2A40.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
@@ -68,10 +120,9 @@ int Rva00120130Get(void)
 // ?Rva00129450Get@@YAHXZ @ 0x00129450 (6B): returns global at 0x9B5F94.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G009B5F94;
 int Rva00129450Get(void)
 {
-	return G009B5F94;
+	return (int)WW3D::Read_NPatchesLevel();
 }
 
 // ?Rva0011D250Get@@YAHXZ @ 0x0011D250 (6B): returns global at 0xDEDAB0.
@@ -132,23 +183,17 @@ int Rva0011D290Get(void)
 // ?Rva0011D2A0Get@@YAHXZ @ 0x0011D2A0 (6B): returns global at 0xDEDA84.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00DEDA84;
-// ?G00DEDA84@@3HA: the global at this VA is ?FrameCount@DX8Wrapper@@1KA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00DEDA84@@3HA=?FrameCount@DX8Wrapper@@1KA")
 int Rva0011D2A0Get(void)
 {
-	return G00DEDA84;
+	return (int)DX8Wrapper::Read_FrameCount();
 }
 
 // ?Rva001432A0Get@@YAHXZ @ 0x001432A0 (6B): returns global at 0xDEC3E0.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00DEC3E0;
-// ?G00DEC3E0@@3HA: the global at this VA is ?FrameCount@WW3D@@0HA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00DEC3E0@@3HA=?FrameCount@WW3D@@0HA")
 int Rva001432A0Get(void)
 {
-	return G00DEC3E0;
+	return (int)WW3D::Read_FrameCount();
 }
 
 // ?Rva00143300Get@@YAHXZ @ 0x00143300 (6B): returns global at 0xDEDA78.
@@ -188,144 +233,105 @@ int G00DFDA54;
 // ?Rva00610F10Get@@YAHXZ @ 0x00610F10 (6B): returns global at 0xE08C48.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08C48;
-// ?G00E08C48@@3HA: the global at this VA is ?FeatureBits@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08C48@@3HA=?FeatureBits@CPUDetectClass@@0IA")
 int Rva00610F10Get(void)
 {
-	return G00E08C48;
+	return (int)CPUDetectClass::Read_FeatureBits();
 }
 
 // ?Rva00610F20Get@@YAHXZ @ 0x00610F20 (6B): returns global at 0xE08CF0.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08CF0;
-// ?G00E08CF0@@3HA: the global at this VA is ?ExtendedFeatureBits@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08CF0@@3HA=?ExtendedFeatureBits@CPUDetectClass@@0IA")
 int Rva00610F20Get(void)
 {
-	return G00E08CF0;
+	return (int)CPUDetectClass::Read_ExtendedFeatureBits();
 }
 
 // ?Rva00610F30Get@@YAHXZ @ 0x00610F30 (6B): returns global at 0xE08C44.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08C44;
-// ?G00E08C44@@3HA: the global at this VA is ?L2CacheSize@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08C44@@3HA=?L2CacheSize@CPUDetectClass@@0IA")
 int Rva00610F30Get(void)
 {
-	return G00E08C44;
+	return (int)CPUDetectClass::Read_L2CacheSize();
 }
 
 // ?Rva00610F40Get@@YAHXZ @ 0x00610F40 (6B): returns global at 0xE08CA0.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08CA0;
-// ?G00E08CA0@@3HA: the global at this VA is ?L2CacheLineSize@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08CA0@@3HA=?L2CacheLineSize@CPUDetectClass@@0IA")
 int Rva00610F40Get(void)
 {
-	return G00E08CA0;
+	return (int)CPUDetectClass::Read_L2CacheLineSize();
 }
 
 // ?Rva00610F50Get@@YAHXZ @ 0x00610F50 (6B): returns global at 0xE08CA4.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08CA4;
-// ?G00E08CA4@@3HA: the global at this VA is ?L2CacheSetAssociative@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08CA4@@3HA=?L2CacheSetAssociative@CPUDetectClass@@0IA")
 int Rva00610F50Get(void)
 {
-	return G00E08CA4;
+	return (int)CPUDetectClass::Read_L2CacheSetAssociative();
 }
 
 // ?Rva00610F60Get@@YAHXZ @ 0x00610F60 (6B): returns global at 0xE08C28.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08C28;
-// ?G00E08C28@@3HA: the global at this VA is ?L1DataCacheSize@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08C28@@3HA=?L1DataCacheSize@CPUDetectClass@@0IA")
 int Rva00610F60Get(void)
 {
-	return G00E08C28;
+	return (int)CPUDetectClass::Read_L1DataCacheSize();
 }
 
 // ?Rva00610F70Get@@YAHXZ @ 0x00610F70 (6B): returns global at 0xE08CC0.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08CC0;
-// ?G00E08CC0@@3HA: the global at this VA is ?L1DataCacheLineSize@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08CC0@@3HA=?L1DataCacheLineSize@CPUDetectClass@@0IA")
 int Rva00610F70Get(void)
 {
-	return G00E08CC0;
+	return (int)CPUDetectClass::Read_L1DataCacheLineSize();
 }
 
 // ?Rva00610F80Get@@YAHXZ @ 0x00610F80 (6B): returns global at 0xE08D08.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08D08;
-// ?G00E08D08@@3HA: the global at this VA is ?L1DataCacheSetAssociative@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08D08@@3HA=?L1DataCacheSetAssociative@CPUDetectClass@@0IA")
 int Rva00610F80Get(void)
 {
-	return G00E08D08;
+	return (int)CPUDetectClass::Read_L1DataCacheSetAssociative();
 }
 
 // ?Rva00610F90Get@@YAHXZ @ 0x00610F90 (6B): returns global at 0xE08CD8.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08CD8;
-// ?G00E08CD8@@3HA: the global at this VA is ?L1InstructionCacheSize@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08CD8@@3HA=?L1InstructionCacheSize@CPUDetectClass@@0IA")
 int Rva00610F90Get(void)
 {
-	return G00E08CD8;
+	return (int)CPUDetectClass::Read_L1InstructionCacheSize();
 }
 
 // ?Rva00610FA0Get@@YAHXZ @ 0x00610FA0 (6B): returns global at 0xE08CC4.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08CC4;
-// ?G00E08CC4@@3HA: the global at this VA is ?L1InstructionCacheLineSize@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08CC4@@3HA=?L1InstructionCacheLineSize@CPUDetectClass@@0IA")
 int Rva00610FA0Get(void)
 {
-	return G00E08CC4;
+	return (int)CPUDetectClass::Read_L1InstructionCacheLineSize();
 }
 
 // ?Rva00610FB0Get@@YAHXZ @ 0x00610FB0 (6B): returns global at 0xE08C40.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08C40;
-// ?G00E08C40@@3HA: the global at this VA is ?L1InstructionCacheSetAssociative@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08C40@@3HA=?L1InstructionCacheSetAssociative@CPUDetectClass@@0IA")
 int Rva00610FB0Get(void)
 {
-	return G00E08C40;
+	return (int)CPUDetectClass::Read_L1InstructionCacheSetAssociative();
 }
 
 // ?Rva00610FC0Get@@YAHXZ @ 0x00610FC0 (6B): returns global at 0xE08CFC.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08CFC;
-// ?G00E08CFC@@3HA: the global at this VA is ?L1InstructionTraceCacheSize@CPUDetectClass@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08CFC@@3HA=?L1InstructionTraceCacheSize@CPUDetectClass@@0IA")
 int Rva00610FC0Get(void)
 {
-	return G00E08CFC;
+	return (int)CPUDetectClass::Read_L1InstructionTraceCacheSize();
 }
 
 // ?Rva00611020Get@@YAHXZ @ 0x00611020 (6B): returns global at 0xE08D24.
 // Follows int3 (prev CC), followed by CC padding, no .rdata vtable slot,
 // no direct callers, no branch sources. Opaque address-derived name.
-extern int G00E08D24;
-// ?G00E08D24@@3HA: the global at this VA is ?ProcessorType@CPUDetectClass@@0HA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G00E08D24@@3HA=?ProcessorType@CPUDetectClass@@0HA")
 int Rva00611020Get(void)
 {
-	return G00E08D24;
+	return (int)CPUDetectClass::Read_ProcessorType();
 }
 
 // ?Rva0069BD50Get@@YAHXZ @ 0x0069BD50 (6B): returns global at 0xE0BE00.
@@ -349,8 +355,3 @@ int Rva006C5E70Get(void)
 {
 	return (int)ProfileId::GetFirst();
 }
-
-// ?G009B5F94@@3HA: the global at this VA is ?NPatchesLevel@WW3D@@0IA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?G009B5F94@@3HA=?NPatchesLevel@WW3D@@0IA")
-// ?G009B5F94@@3HA: the global at VA 0xdb5f94 is ?NPatchesLevel@WW3D@@0IA.
-#pragma comment(linker, "/alternatename:?G009B5F94@@3HA=?NPatchesLevel@WW3D@@0IA")
