@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /EHsc /MD /DNDEBUG /DWIN32 /D_WINDOWS /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib
+// dxsdk
+// platformsdk
 #include <string.h>
 #include "wwmath.h"
 
@@ -82,10 +84,11 @@ class ShroudManager;
 extern class PartitionManager *TheShroudManager;
 #define TheShroudManager (*(ShroudManager * *)&TheShroudManager)
 
-#include "../../../../../reference/shims/d3d8_shim_validated.h"
+#include <d3d9.h>
+struct IDirect3DDevice8;
 class CameraClass;
 class DX8Wrapper { public:
- static IDirect3DDevice8 *_Get_D3D_Device8() { return D3DDevice; }
+ static IDirect3DDevice9 *_Get_D3D_Device8() { return reinterpret_cast<IDirect3DDevice9 *>(D3DDevice); }
 protected:
  static IDirect3DDevice8 *D3DDevice;
 };
@@ -225,7 +228,7 @@ void W3DShroud::rva00073628(void *cam)
 	if (!m_dstTexture.m_p)
 		return;
 
-	IDirect3DDevice8 *device = DX8Wrapper::_Get_D3D_Device8();
+	IDirect3DDevice9 *device = DX8Wrapper::_Get_D3D_Device8();
 	if (device && device->TestCooperativeLevel() != D3D_OK)
 		return;
 
