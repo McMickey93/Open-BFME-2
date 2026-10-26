@@ -8174,3 +8174,12 @@ Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptLeafCheck.cpp|class||Rva003B
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp|class||Rva0112B7F8Base,482b7b09f957f6c45a525600,gpt-6.1-sol,w5-10261504-15,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp|member|Rva007F8400Node|m_6a8,1743b840506234ae056c28f1,gpt-6.1-sol,w5-10261504-15,w-f0819d403c17,2026-10-26
 Code/GameEngine/Source/Common/Rva002DA0CFFinish.cpp|member|ClientRet40|m_44A,bf6e73e16a8cf56dfcadade5,gpt-6.1-sol,w2-10261519-8,w-dce04682aaeb,2026-10-26
+Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldSetActive.cpp|local|LivingWorld::rva002BF391|m_18,9e0524ff5e90dbcf4fbd3435,gpt-6.1-sol,w3-10261526-1,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Audio/DynamicAudioEventInfoXferNoName.cpp|local|DynamicAudioEventInfo::xferNoName|b,fa4b8702e28a55d1cb6b4b33,gpt-6.1-sol,w3-10261526-2,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/LivingWorldAutoResolveBattle_enumerateReinforcementUnits.cpp|local|LivingWorldAutoResolveBattle::enumerateReinforcementUnits|p,d0130338e5cc47f73369c20d,gpt-6.1-sol,w3-10261526-5,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/BfmeConv802.cpp|class||BfmeHeaderEBD,de3b646f1acf2ce0a8c6c293,gpt-6.1-sol,w3-10261526-7,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/LivingWorld_ZoomInTo.cpp|param|LivingWorld::ZoomInTo|arg,700811d8c04375a6730bf16c,gpt-6.1-sol,w3-10261526-8,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/RTS/Rva00739BE0.cpp|param|fast_floor|f,785347a08fb2c85c29d65f37,gpt-6.1-sol,w3-10261526-9,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/RTS/Rva00739BE0.cpp|param|fast_ceil|f,86bdaa56285337bf6a4b7b2f,gpt-6.1-sol,w3-10261526-9,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/RTS/Rva00739BE0.cpp|param|fast_round|f,30984f943e01b333510ac95a,gpt-6.1-sol,w3-10261526-9,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/GameNetwork/Rva00318333.cpp|local|Rva00318333::rva00318768|o2,f7423e88b64db4a227377496,gpt-6.1-sol,w3-10261526-10,w-46dfa4623b23,2026-10-26

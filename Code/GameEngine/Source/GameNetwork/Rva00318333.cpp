@@ -178,10 +178,10 @@ void Rva00318333::rva00318768()
 	} else {
 		rva00318719();
 	}
-	int o2 = m_28;
-	int remainingCountdown = o2 - 1;
+	int oldCountdown = m_28;
+	int remainingCountdown = oldCountdown - 1;
 	m_28 = remainingCountdown;
-	if (!o2) {
+	if (!oldCountdown) {
 	} else if (remainingCountdown) {
 	} else {
 		((Rva003186EE *)this)->rva003186EE(0, 0, 0);
