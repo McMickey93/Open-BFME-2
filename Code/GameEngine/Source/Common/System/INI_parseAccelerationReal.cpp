@@ -1,4 +1,5 @@
 // cl: /Oy /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?parseAccelerationReal@INI@@SAXPAV1@PAX1PBX@Z, retail 0x00338BE3, 43 bytes.
 // Dedicated frameless TU (twin of INI_parseVelocityReal.cpp).
@@ -13,7 +14,7 @@
 // scanReal with no named temp. Name by family convention with the velocity
 // twin (same B1 source pair, same retail twin shape, six table refs).
 
-#define NULL 0
+#include <windows.h>
 
 class INI
 {

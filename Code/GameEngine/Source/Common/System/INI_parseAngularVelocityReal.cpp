@@ -1,4 +1,5 @@
 // cl: /Oy /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?parseAngularVelocityReal@INI@@SAXPAV1@PAX1PBX@Z, retail 0x003389DD, 44 bytes,
 // in the INI.cpp run between clearVeterancyLevelFlag (0x003389AC) and
@@ -10,7 +11,7 @@
 // the PI / 180 literal. Name proven by the FieldParse rows TurretTurnRate /
 // TurretPitchRate (0x00C60B90 / 0x00C60BA0), ExitPitchRate and BounceAmount.
 
-#define NULL 0
+#include <windows.h>
 
 typedef float Real;
 

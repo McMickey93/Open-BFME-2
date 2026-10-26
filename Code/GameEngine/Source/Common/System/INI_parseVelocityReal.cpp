@@ -1,4 +1,5 @@
 // cl: /Oy /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?parseVelocityReal@INI@@SAXPAV1@PAX1PBX@Z, retail 0x00338BBD, 37 bytes.
 // Dedicated frameless TU (same INI verb family as INI_parseAngleReal.cpp).
@@ -12,7 +13,7 @@
 // by twenty-one FieldParse tables (Topple InitialVelocityPercent,
 // SupplyTruck ... velocity fields).
 
-#define NULL 0
+#include <windows.h>
 
 class INI
 {
