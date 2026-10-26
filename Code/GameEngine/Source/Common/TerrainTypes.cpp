@@ -25,11 +25,18 @@ public:
 
 class TerrainType
 {
+	friend class TerrainTypeCollection;
 public:
-	void friend_setName(AsciiString s);
+	TerrainType();
+	TerrainType &operator=(const TerrainType &that);
+	void friend_setName(AsciiString name);
 private:
 	char m_pad00[4];
 	AsciiString m_str04;
+	AsciiString m_str08;
+	char m_pad0C[0x14];
+	TerrainType *m_next;
+	char m_pad24[0x0C];
 };
 
 struct Rva00317CCDElement {Rva00317CCDElement();Rva00317CCDElement(const Rva00317CCDElement&);Rva00317CCDElement&operator=(const Rva00317CCDElement&);virtual void slot0();virtual ~Rva00317CCDElement();char bytes[4]; bool operator==(const Rva00317CCDElement&)const;};
@@ -92,8 +99,10 @@ public:
 	virtual void init() {}
 	virtual void reset() {}
 	virtual void update() {}
+	TerrainType *findTerrain(AsciiString name);
+	TerrainType *newTerrain(AsciiString name);
 private:
-	ListNode *m_head;
+	TerrainType *m_head;
 };
 
 void __cdecl operator delete(void *p);
@@ -112,7 +121,7 @@ TerrainTypeCollection::~TerrainTypeCollection()
   if (m_head != 0) {
     ListNode *next;
     do {
-      ListNode *listNode = m_head;
+      ListNode *listNode = (ListNode *)m_head;
       next = listNode->m_next;
       void *mem;
       if (m_head != 0)
@@ -120,7 +129,7 @@ TerrainTypeCollection::~TerrainTypeCollection()
       else
         mem = 0;
       ::operator delete(mem);
-      m_head = next;
+      m_head = (TerrainType *)next;
     } while (next != 0);
   }
 }
