@@ -150,6 +150,41 @@ class Obj:
         return not flags & COMDAT or census._comdat_selections(self.data).get(sym["section"]) == 1
 
 
+class UnverifiedFunclet(ValueError):
+    """A funclet cannot be scanned without its verified physical identity."""
+
+
+def row_code_symbol(row, obj, retail):
+    """Resolve a row without treating a compiler-local ordinal as identity.
+
+    Funclets require the byte-verified parent's exact EH placement. Keep the
+    ledger row unchanged so findings retain their registered logical key.
+    """
+    name = build.ledger_object_symbol(row)
+    if build.is_funclet_row(row, name):
+        try:
+            located = build.located_funclet(row, obj.path, retail)
+        except (OSError, ValueError, struct.error, IndexError, KeyError, SystemExit) as error:
+            raise UnverifiedFunclet(f"funclet {name}: verified parent EH resolution failed: {error}") from error
+        labels = [s for s in obj.symbols.values() if s["name"] == located]
+        if len(labels) != 1 or labels[0]["storage"] != STATIC or not obj.is_code(labels[0]):
+            raise UnverifiedFunclet(f"funclet {name}: no unique verified local code label from parent EH")
+        symbol = labels[0]
+        try:
+            raw, extent, relocs = obj.body(symbol)
+        except (ValueError, struct.error, IndexError, KeyError) as error:
+            raise UnverifiedFunclet(f"funclet {name}: verified label is unreadable: {error}") from error
+        size = int(row["target_size"])
+        if raw is None or len(raw) < size or extent < size or len(retail) != size:
+            raise UnverifiedFunclet(f"funclet {name}: verified label has an incomplete row extent")
+        if any(where < size and (where + 4 > size or "index" not in ref)
+               for where, kind, ref in relocs if kind in (REL32, DIR32)):
+            raise UnverifiedFunclet(f"funclet {name}: verified label has an invalid row relocation")
+        return symbol
+    symbol = obj.by_name.get(name)
+    return symbol if symbol is not None and obj.is_code(symbol) else None
+
+
 def digest(raw, size, relocs):
     h = hashlib.sha1(raw if raw is not None else b"uninitialized %d" % size)
     for where, kind, ref in relocs:
@@ -652,15 +687,14 @@ class Identity:
         if not path.exists():
             return []
         o = self.obj(str(path))
-        name = build.ledger_object_symbol(row)
-        sym = o.by_name.get(name)
-        if sym is None or not o.is_code(sym):
-            return []
         rva, size = int(row["target_rva"], 16), int(row["target_size"])
-        raw, _, relocs = o.body(sym)
         retail = self.read(rva, size)
         if retail is None:
             return []
+        sym = row_code_symbol(row, o, retail)
+        if sym is None:
+            return []
+        raw, _, relocs = o.body(sym)
         out = []
         for where, kind, ref in relocs:
             if kind not in (REL32, DIR32) or where + 4 > size:
@@ -695,6 +729,8 @@ def scan(ident, rows):
     for row in rows:
         try:
             refs = ident.row_refs(row)
+        except UnverifiedFunclet:
+            raise
         except (OSError, ValueError, struct.error, IndexError):
             continue
         for ref in refs:

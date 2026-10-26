@@ -1461,6 +1461,65 @@ def test_identity_debt_retires_only_on_allowed_symbols_verdict(tmp_path, monkeyp
     assert (failures == []) == (attempt == "fixed"), failures
 
 
+@pytest.mark.parametrize("case", ["fixed", "wrong", "divergent", "no-proof", "resolver-exit", "stale"])
+def test_identity_retirement_checks_the_located_funclet(tmp_path, monkeypatch, case):
+    """Retirement and the outgoing check must judge the located cleanup relocation."""
+    import struct
+    import allowed_symbols as allowed
+    import build
+    from test_gate_exploits import coff, TEXT
+
+    source = "Code/GameEngine/Body.cpp"
+    key = f"{source}\t$L4992\t_cleanup\t0x00002000\twrong"
+    baseline = "# Wrong code bindings\n# mode: shadow\n" + key + "\n"
+    rq, rev, _ = load(tmp_path, "bfme2", [("$L4992", 0x1000, 8, "GameEngine/Body.cpp")], [
+        (source, "//\n"), ("reverse/code_identity_baseline.tsv", baseline)])
+    ledger = rev / "functions.csv"
+    ledger.write_text(ledger.read_text().replace(
+        ",matched,\n", ",matched,gen-funclet;parent=_parent\n"), newline="\n")
+    git = _git_repo(tmp_path)
+    rq.head_ledger_rows.cache_clear()
+    objpath = tmp_path / "Body.obj"
+    objpath.write_bytes(coff([(".text", TEXT, b"\x8d\x4d\xf0\xe9\0\0\0\0", [(4, 1, allowed.REL32)])], [
+        ("$L5053", 0, 1, 0x20, allowed.STATIC, 0), ("_cleanup", 0, 0, 0x20, allowed.EXTERNAL, 0)]))
+    row = dict(name="$L4992", target_rva="0x1000", target_size="8", source=source,
+               notes="gen-funclet;parent=_parent", status="matched")
+    ident = allowed.Identity.__new__(allowed.Identity)
+    ident.defs = allowed._Defs(list)
+    ident.defs.referrers = {}
+    ident.obj = lambda _: allowed.Obj(objpath)
+    ident.read = lambda *_: b"\x8d\x4d\xf0\xe9" + struct.pack("<i", 0x2000 - 0x1008)
+    ident.text = (0x1000, 0x3000)
+    classified = []
+
+    def classify(actual_row, obj, sym, where, kind, ref, target):
+        classified.append((actual_row["name"], sym["name"], ref["name"], target))
+        return (case if case in ("wrong", "divergent") else "owner"), "fixture"
+
+    def locate(*_):
+        if case == "resolver-exit":
+            raise SystemExit("parent verification failed")
+        return None if case == "no-proof" else "$L5053"
+
+    ident.classify = classify
+    monkeypatch.setattr(allowed, "load", lambda *_, **__: (ident, [row]))
+    monkeypatch.setattr(allowed.census, "ledger", lambda: [row])
+    monkeypatch.setattr(allowed, "row_object", lambda _: objpath)
+    monkeypatch.setattr(build, "compile_is_current", lambda *_, **__: case != "stale")
+    monkeypatch.setattr(build, "located_funclet", locate)
+    ok, message = rq.retire("identity", source)
+    assert ok == (case == "fixed"), message
+    path = rev / "code_identity_baseline.tsv"
+    if case != "fixed":
+        assert path.read_text() == baseline
+        path.write_text(baseline.replace(key + "\n", ""), newline="\n")
+    if case in ("fixed", "wrong", "divergent"):
+        assert classified == [("$L4992", "$L5053", "_cleanup", 0x2000)]
+    git("add", "reverse/code_identity_baseline.tsv")
+    failures = rq.verify_removed_debt(build_cmd=[sys.executable, "-c", "pass"])
+    assert (failures == []) == (case == "fixed"), failures
+
+
 # ---- the header queue: acceptance verifies the real include and retires its own row
 
 def _header_fixture(tmp_path, monkeypatch):
@@ -1667,6 +1726,9 @@ def seats(tmp_path, monkeypatch):
     monkeypatch.delenv("BFME_CLAIMS", raising=False)
     monkeypatch.setattr(claims, "NS", "refs/claims/")
     monkeypatch.setattr(claims, "REMOTE", "origin")
+    # These transports use a local bare repository, and some tests skew time
+    # by an hour. Production host pacing must not turn that into a real sleep.
+    monkeypatch.setenv("BFME_CLAIM_PUSHES_PER_MINUTE", "0")
     monkeypatch.setattr(next_work, "weighted_choice", lambda candidates: candidates[0])
 
     def act(name):

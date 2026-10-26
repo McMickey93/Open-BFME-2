@@ -732,3 +732,99 @@ def test_main_rejects_a_deleted_register_even_while_head_is_shadow(registers, mo
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@pytest.mark.parametrize('old_present', [False, True])
+def test_row_refs_scans_the_eh_located_label_and_keeps_ledger_identity(tmp_path, monkeypatch, old_present):
+    import struct
+    from test_gate_exploits import coff, TEXT
+
+    body = b'\x8d\x4d\xf0\xe9\0\0\0\0'
+    symbols = [('$L5053', 0, 1, 0x20, allowed.STATIC, 0),
+               ('real_cleanup', 0, 0, 0x20, allowed.EXTERNAL, 0)]
+    relocs = [(4, 1, allowed.REL32)]
+    if old_present:
+        symbols += [('$L4992', 8, 1, 0x20, allowed.STATIC, 0),
+                    ('other_cleanup', 0, 0, 0x20, allowed.EXTERNAL, 0)]
+        relocs.append((12, 3, allowed.REL32))
+    path = tmp_path / 'renumbered.obj'
+    path.write_bytes(coff([('.text', TEXT, body * (2 if old_present else 1), relocs)], symbols))
+    obj = allowed.Obj(path)
+    row = dict(name='$L4992', source='Code/Body.cpp', target_rva='0x1000', target_size='8',
+               notes='gen-funclet;parent=_parent')
+    original = dict(row)
+    native = body[:4] + struct.pack('<i', 0x2000 - 0x1008)
+    ident = allowed.Identity.__new__(allowed.Identity)
+    ident.obj = lambda _: obj
+    ident.read = lambda rva, size: native
+    ident.text = (0x1000, 0x3000)
+    monkeypatch.setattr(allowed, 'row_object', lambda _: path)
+    calls = []
+
+    def locate(actual_row, actual_path, retail):
+        assert actual_row == row and actual_path == path and retail == native
+        calls.append(actual_row['name'])
+        return '$L5053'
+
+    monkeypatch.setattr(allowed.build, 'located_funclet', locate)
+    ident.classify = lambda actual_row, o, sym, where, kind, ref, t: (
+        'wrong' if sym['name'] == '$L5053' else 'unexpected', 'fixture')
+    refs = ident.row_refs(row)
+    assert refs == [(4, allowed.REL32, 'real_cleanup', 0x2000, 'wrong', 'fixture')]
+    assert calls == ['$L4992']
+    assert row == original
+    assert allowed.key((row,) + refs[0]) == 'Code/Body.cpp\t$L4992\treal_cleanup\t0x00002000\twrong'
+
+
+@pytest.mark.parametrize('case', ['no-proof', 'duplicate', 'external', 'non-code', 'missing',
+                                 'short-body', 'crossing-reloc', 'bad-reloc'])
+def test_row_refs_refuses_unproven_or_nonlocal_funclet(tmp_path, monkeypatch, case):
+    from test_gate_exploits import coff, TEXT
+
+    symbols = [('$L4992', 0, 1, 0x20, allowed.STATIC, 0),
+               ('$L5053', 1, 2, 0x20, allowed.EXTERNAL if case == 'external' else allowed.STATIC, 0)]
+    if case == 'duplicate':
+        symbols.append(('$L5053', 0, 2, 0x20, allowed.STATIC, 0))
+    size = 4 if case in ('short-body', 'bad-reloc') else 1
+    blob = b'\xc3' * (5 if case in ('crossing-reloc', 'bad-reloc') else 2)
+    relocs = [(1, 999 if case == 'bad-reloc' else 0, allowed.REL32)] if case in (
+        'crossing-reloc', 'bad-reloc') else []
+    path = tmp_path / 'unproven.obj'
+    path.write_bytes(coff([('.text', TEXT, b'\xc3', []),
+                          ('.text', 0xC0300040 if case == 'non-code' else TEXT, blob, relocs)], symbols))
+    obj = allowed.Obj(path)
+    row = dict(name='$L4992', source='Code/Body.cpp', target_rva='0x1000', target_size=str(size),
+               notes='gen-funclet;parent=_parent')
+    ident = allowed.Identity.__new__(allowed.Identity)
+    ident.obj = lambda _: obj
+    ident.read = lambda *_: b'\xc3' * size
+    monkeypatch.setattr(allowed, 'row_object', lambda _: path)
+    monkeypatch.setattr(allowed.build, 'located_funclet', lambda *_: (
+        None if case == 'no-proof' else '$L7777' if case == 'missing' else '$L5053'))
+    with pytest.raises(ValueError, match='verified.*funclet|funclet.*verified'):
+        ident.row_refs(row)
+
+
+@pytest.mark.parametrize('entrypoint', ['scan', 'full-scan'])
+def test_unproven_funclet_cannot_disappear_from_identity_scan(tmp_path, monkeypatch, entrypoint):
+    from test_gate_exploits import coff, TEXT
+
+    path = tmp_path / 'unproved-old-label.obj'
+    path.write_bytes(coff([('.text', TEXT, b'\xe8\0\0\0\0\xc3', [(1, 1, allowed.REL32)])], [
+        ('$L4992', 0, 1, 0x20, allowed.STATIC, 0), ('wrong_cleanup', 0, 0, 0x20, allowed.EXTERNAL, 0)]))
+    row = dict(name='$L4992', source='Code/Body.cpp', target_rva='0x1000', target_size='6',
+               notes='gen-funclet;parent=_parent')
+    ident = allowed.Identity.__new__(allowed.Identity)
+    ident.obj = lambda _: allowed.Obj(path)
+    ident.read = lambda *_: b'\xe8\xfb\x0f\0\0\xc3'
+    ident.defs, ident.truth = {}, None
+    monkeypatch.setattr(allowed, 'row_object', lambda _: path)
+    monkeypatch.setattr(allowed.build, 'located_funclet', lambda *_: None)
+    monkeypatch.setattr(allowed, 'load', lambda *_, **__: (ident, [row]))
+    monkeypatch.setattr(dup_defs, 'analyse', lambda *_: [])
+    monkeypatch.setattr(dup_defs, 'debt', lambda *_: set())
+    with pytest.raises(ValueError, match='funclet.*verified'):
+        if entrypoint == 'scan':
+            allowed.scan(ident, [row])
+        else:
+            gate.full_scan()

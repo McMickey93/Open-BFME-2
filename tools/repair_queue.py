@@ -1399,15 +1399,16 @@ def identity_verdict(source, held):
             break
         symbol = build.ledger_object_symbol(row)
         o = ident.obj(str(obj))
-        if o.by_name.get(symbol) is None or not o.is_code(o.by_name[symbol]):
-            problems.append(f"row {row['name']}: {obj.name} defines no code symbol {symbol}")
-            continue
-        if ident.read(int(row["target_rva"], 16), int(row["target_size"])) is None:
+        retail = ident.read(int(row["target_rva"], 16), int(row["target_size"]))
+        if retail is None:
             problems.append(f"row {row['name']}: retail bytes unreadable")
             continue
         try:
+            if allowed.row_code_symbol(row, o, retail) is None:
+                problems.append(f"row {row['name']}: {obj.name} defines no code symbol {symbol}")
+                continue
             refs = ident.row_refs(row)
-        except Exception as error:                           # scan() would skip it silently
+        except (Exception, SystemExit) as error:              # scan() would skip it silently
             problems.append(f"row {row['name']}: scan failed: {error}")
             continue
         found |= {allowed.key((row,) + ref) for ref in refs if ref[4] in allowed.WRONG}

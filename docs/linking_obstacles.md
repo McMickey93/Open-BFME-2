@@ -1152,6 +1152,13 @@ inspected revision: `2f9834aa34`.**
   relocation scanner repeats the literal lookup, so skipping the first refusal
   would conceal the cleanup call. Missing/stale providers remain independent
   prerequisites; seven real-COFF regression cases reproduce the verifier defect.
+- **Verifier repair (2026-10-26):**
+  [strict shared EH resolution](../reverse/attempt_support/identity-eh-retirement-verifier-20261026.md)
+  preserves the logical row key while scanning the physical label's references;
+  unproved labels refuse retirement and ordinary/full scans. After normal
+  provider refresh, audio's two outgoing identity keys have a clean verdict;
+  its complete 992-row scan checks 1,117 references with zero findings. This
+  clears the audio verifier prerequisite, not the other source-specific repairs.
 - **Clearance / census confirmation:** none claimed.
 
 ### LINK-062: AIUpdate TU span combines weak propagation and disputed placement
