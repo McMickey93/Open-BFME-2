@@ -59,7 +59,7 @@ public:
 	bool isKindOfMulti(const BitFlags<116> &mustBeSet, const BitFlags<116> &mustBeClear) const;
 };
 
-extern const BfmeFixedStorage0004543D g_defaultStorage009FEFA4;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class Object
 {
@@ -105,7 +105,7 @@ bool Team::rva0039DDC2(Rva0039DDC2Filter kindOfFilter, bool flag)
 		}
 		((unsigned char *)&kindOfFilter)[0] |= 0x80;
 		const BitFlags<116> &mustBeSet = *(const BitFlags<116> *)(const void *)&kindOfFilter;
-		const BitFlags<116> &mustBeClear = *(const BitFlags<116> *)(const void *)&g_defaultStorage009FEFA4;
+		const BitFlags<116> &mustBeClear = KINDOFMASK_NONE;
 		if (((const Thing *)cur)->isKindOfMulti(mustBeSet, mustBeClear))
 			return true;
 	}

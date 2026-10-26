@@ -58,7 +58,8 @@ public:
 private:
 	unsigned char m_bytes[28];
 };
-extern const BfmeFixedStorage0004543D g_defaultStorage009FEFA4;
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 struct Rva00045411BitSet
 {
@@ -100,7 +101,7 @@ void TerrainLogic::rva00283262(const Coord3D *a, float b)
 	if (TheGameLogic == 0)
 		return;
 	BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(a, b, 0,
-		&Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 0x98), g_defaultStorage009FEFA4), 1);
+		&Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 0x98), *reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)), 1);
 	for (Object *other = hits.next(); other != 0; other = hits.next()) {
 		rva00282CFB(&other->m_pos38, b, (unsigned int)-1);
 		TheGameLogic->destroyObject(other);
@@ -142,7 +143,7 @@ void TerrainLogic::rva00282CFB(const Coord3D *pos, float radius, unsigned int mo
 		(const BfmePointFC *)pos, radius, 128, true, mode);
 	BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(pos, radius, 0,
 		&Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 175),
-			g_defaultStorage009FEFA4), 1);
+			*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)), 1);
 	for (Object *other = hits.next(); other != 0; other = hits.next())
 		TheGameLogic->destroyObject(other);
 	((BfmeThingCME *)this)->rva0027F1DD((Coord3D *)pos, radius);

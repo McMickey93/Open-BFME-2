@@ -30,7 +30,7 @@ class BfmeFixedStorage0004543D
 public:
 	char m_data[28];
 };
-extern const BfmeFixedStorage0004543D g_defaultStorage009FEFA4;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 struct Rva00463235Node
 {
@@ -64,7 +64,7 @@ AsciiString Rva00463235::rva00463235(Thing *filter)
 	for (; cur != list->m_head; cur = cur->m_next) {
 		if (filter == 0)
 			return cur->m_str24;
-		if (filter->isKindOfMulti(cur->m_flags08, (const BitFlags<116> &)g_defaultStorage009FEFA4))
+		if (filter->isKindOfMulti(cur->m_flags08, KINDOFMASK_NONE))
 			return cur->m_str24;
 	}
 	return AsciiString("ARROW_");
