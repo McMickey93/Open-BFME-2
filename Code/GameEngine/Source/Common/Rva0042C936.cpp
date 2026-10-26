@@ -5,7 +5,7 @@
 // calls old virtual slot0 with 0, deletes returned pointer via rowed operator delete,
 // returns this. Evidence: single caller 0x0042CA4B, __thiscall via ecx plus ret 4,
 // chain sibling of 0x0042C1F9 with identical 65B shape and same // cl.
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct Rva0042C936Helper
 {

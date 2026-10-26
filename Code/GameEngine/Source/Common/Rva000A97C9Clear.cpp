@@ -5,7 +5,7 @@
 // so it takes the map's pair by reference. Runs the value's object slot0 probe
 // (or null) through the rowed operator delete, then clears the slot. Honest
 // address-derived names; boundary verified (frameless at 0xA97C9, ret at end).
-void operator delete(void *p);
+#include <new>
 class Rva000A97C9Sub {
 public:
 	virtual void *vslot0(int v);
