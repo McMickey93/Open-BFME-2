@@ -28,7 +28,8 @@ private:
 	char m_pad[0x80];
 };
 
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
 {
@@ -294,8 +295,8 @@ DamageNugget::DamageNugget()
 {
 	memset(&m_178, 0, 0x1C);
 	m_19C.initFromStorages(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)),
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
 
 // The single-target exit returns from inside the loop, as WorldBuilder 0x10A115B
@@ -314,7 +315,7 @@ void DamageNugget::doEffectPosition(void *weapon, const Coord3D *position)
 		if (!(source->m_template->kind11D & 8) || !(source->m_template->kind10A & 0x20) || !source->m_contain)
 			mode = 4;
 	}
-	Rva0004584D filter(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype), damageStorage(Rva0006EE7A(0, 0x59, 0x36)));
+	Rva0004584D filter(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE), damageStorage(Rva0006EE7A(0, 0x59, 0x36)));
 	BfmeWideResult iter = ThePartitionManager->iterateObjectsInRange(position, radius, mode, &filter, 0);
 	Object *obj;
 	while ((obj = iter.next()) != 0)

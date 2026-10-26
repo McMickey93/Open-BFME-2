@@ -278,7 +278,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit);	// 0x00045411
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // vftable 0x00C1A268, allow 0x0026115D: reject objects satisfying the
 // set/clear masks (ZH's PartitionFilterRejectByKindOf).
@@ -641,7 +642,7 @@ bool AIStructureCreepTactic::findBestInterestZone()
 				Rva0026119DFilter().link(&Rva00261409Filter(m_owner, true, 2))
 					->link(&Rva003959FA(*(BfmeFixedStorage0004543D *)&mask))
 					->link(&PartitionFilterRejectByKindOf(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 7),
-						*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)), 0);
+						*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)), 0);
 			if ((unsigned int)(hits.m_value->m_end - hits.m_value->m_begin) > 15) {
 				m_68 = site->m_id;
 				return true;
@@ -881,7 +882,7 @@ void AIStructureCreepTactic::update()
 					Rva0026119DFilter().link(&Rva00261409Filter(m_owner, true, 2))
 						->link(&Rva003959FA(*(BfmeFixedStorage0004543D *)&mask))
 						->link(&PartitionFilterRejectByKindOf(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 7),
-							*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype)), 0);
+							*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE)), 0);
 				if (hits.next() == 0)
 					m_78 = true;
 			}

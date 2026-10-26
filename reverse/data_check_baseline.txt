@@ -600,7 +600,6 @@ Code/GameEngine/Source/GameLogic/Object/Die/TransitionDamageFXPoolKey.cpp	wrong-
 Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDie.cpp	wrong-name	?$S1@?1??rva000486B75@UpgradeDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03898
 Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDieOnDie.cpp	wrong-name	_TheUpgradeCenter	0x009FEB60
 Code/GameEngine/Source/GameLogic/Object/FiringTrackerPoolKey.cpp	wrong-name	?$S1@?1??rva0004DEACB@FiringTracker@@SA?AW4NameKeyType@@XZ@4IA	0x00A04410
-Code/GameEngine/Source/GameLogic/Object/Made002CC5E1Ctor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Made002CC8A4Ctor.cpp	wrong-name	?g_009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Made002CC971Parse.cpp	wrong-name	?SlaveAttackFieldTable@@3UFieldParse@@B	0x0086BB18
 Code/GameEngine/Source/GameLogic/Object/ObjectFindAttributeModifierPoolUpdate.cpp	wrong-name	?$S1@?1??findAttributeModifierPoolUpdate@Object@@ABEPAVAttributeModifierPoolUpdate@@XZ@4IA	0x009FECE8
@@ -840,7 +839,6 @@ Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/Targ
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	duplicate-def	?g_00E06434@@3MA	0x00A06434
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	duplicate-def	?g_00E06438@@3HA	0x00A06438
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIFarmKillSquad.cpp	duplicate-def	?g_00E0643C@@3HA	0x00A0643C
-Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIStructureCreepTactic.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva002BA8F1AddPlayer.cpp	wrong-name	?Va00DFE0ECStore@@3PAVRva002000D7Store@@A	0x009FE0EC
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchor	0x008E3018
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchorH4	0x008E3010
