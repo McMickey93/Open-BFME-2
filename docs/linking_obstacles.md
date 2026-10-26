@@ -3215,3 +3215,26 @@ Evidence / affected units: retail 0x0028F940 (28 B) is `WeaponTemplate::getName`
 Completed: df9e34ca31. The thunk unit's WeaponTemplate view defines getName with the retail body and the pin is re-admitted with `fold-proof=` naming it. New TU-scoped shim `reference/shims/weapon_outofline/GameLogic/Weapon.h` (Zero Hour's header, getName declaration only) is put ahead of `zh_outofline` in the three units. It is a separate directory because `AssistedTargetingUpdate.cpp` lists `zh_outofline` ahead of `update_modules_bfme2`, whose own Weapon.h it needs. build.sh 207/207 rows over the 47 zh_outofline units; link_check: `Weapon_getName_Thunk.cpp` 0 -> 26 B, nothing dropped.
 Remaining / next check: the same pattern may hold for other Zero Hour inline getters whose retail body is a release-build stub folded elsewhere. Note: the build object store restored a stale object after the new shim directory shadowed a header (its receipt does not see a newly shadowing file); rebuild such changes with `BFME_OBJSTORE=off` after deleting the units' `.deps.json` sidecars.
 Clearance: preview (link_check on current objects). Census confirmation: pending.
+
+### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
+Status: Open. Updated: 2026-10-26; inspected revision: the 44-funclet repoint commit.
+Evidence / affected units: `Code/gen_small/uw_gen_*.cpp` never links (its
+`gen_uw_ext`/`gen_uw_sink` are undefined by design), so each funclet must move
+to its matched parent's `$L` label. In `uw_gen_003.cpp`, all 69 funclets have a
+parent whose EH graph is EXACT and an emitted label that matches retail with
+relocations masked. Unmasked, 25 fail the byte verify. In 23, the parent TU's
+inline element dtor has no pin or row, e.g. `??1WeightedModel@@QAE@XZ`,
+`??1ObjectTOCEntry@@QAE@XZ`, `??1crateCreationEntry@@QAE@XZ`,
+`??1QuantityModifier@@QAE@XZ`, the `pair<const AsciiString, TreeHintPayload*>`
+family and placeholder `??1Rva*` elements. In 2 (`Rva00426F17Xfer.cpp`,
+`Rva0042700FParse.cpp`), the dtor resolves to a different body than retail's
+rel32. The names are in the `blocked` rows of `reverse/re_attempts.log`.
+Completed: "Repoint 44 uw_gen_003 funclets to their EXACT EH parents" moved the 44 verified funclets (414/414 across 41
+sources, EH verify EXACT 84) and left the 25 in `uw_gen_003.cpp` unchanged.
+Remaining / next check: name or row each missing element dtor at the address
+retail's funclet jumps to (`tools/pin_admission.py --add`, or a real row). For
+the two wrong-callee units, align the element type with retail's dtor. Then
+re-run the repoint with an unmasked `./build.sh` before staging. A relocation-
+masked sweep alone over-reports.
+Clearance: pending.
+Census confirmation: awaiting.
