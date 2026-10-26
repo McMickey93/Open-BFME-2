@@ -140,9 +140,13 @@ unsigned bfmeDynamicFVFs[15] = {
 		BFME_D3DFVF_TEXCOORDSIZE3(1) | BFME_D3DFVF_TEXCOORDSIZE3(2) | BFME_D3DFVF_TEXCOORDSIZE3(3),
 	0xb0312u, 0x52u, 0x344u, 0x444u,
 };
-static bool bfmeSortingVBInUse;
+// The sorting-buffer size and in-use flag are the data ledger's globals
+// (DynamicVBAccessClassDeinit.cpp, BoxDynamicVBAccessClassDestructor.cpp).
+extern bool BfmeDynamicSortingVertexArrayInUse;
+#define bfmeSortingVBInUse BfmeDynamicSortingVertexArrayInUse
 static BfmeDynamicSortingVB *bfmeSortingVB;
-static unsigned short bfmeSortingVBSize,bfmeSortingVBOffset;
+extern unsigned short bfmeSortingVBSize;
+static unsigned short bfmeSortingVBOffset;
 extern void BFME_DX8_Thread_Lock();
 extern bool BFME_DX8_Thread_Assert();
 class BFMEDX8DeviceLock {
@@ -206,8 +210,8 @@ void DynamicVBAccessClass::Allocate_DX8_Dynamic_Buffer()
 }
 void DynamicVBAccessClass::Allocate_Sorting_Dynamic_Buffer()
 {
- bfmeSortingVBInUse=true;
  unsigned newCount=bfmeSortingVBOffset+vertexCount;
+ bfmeSortingVBInUse=true;
  if(newCount>bfmeSortingVBSize) {
   if(bfmeSortingVB) { bfmeSortingVB->ReleaseRef();bfmeSortingVB=0; }
   bfmeSortingVBSize=newCount;

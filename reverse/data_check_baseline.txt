@@ -802,16 +802,12 @@ Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	__
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	__VertexBufferTotalSize	0x009F2A00
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	__VertexBufferTotalVertices	0x009F2A84
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	_bfmeSortingVB	0x009F2A8C
-Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	_bfmeSortingVBInUse	0x009F2A88
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	_bfmeSortingVBOffset	0x009F2A94
-Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	duplicate-def	_bfmeSortingVBSize	0x009F2A90
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	__VertexBufferCount	0x009F2A40
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	__VertexBufferTotalSize	0x009F2A00
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	__VertexBufferTotalVertices	0x009F2A84
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	_bfmeSortingVB	0x009F2A8C
-Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	_bfmeSortingVBInUse	0x009F2A88
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	_bfmeSortingVBOffset	0x009F2A94
-Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	_bfmeSortingVBSize	0x009F2A90
 Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp	duplicate-def	__BoxMaterial	0x009F6FD4
 Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp	duplicate-def	__BoxShader	0x009B6480
 Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp	wrong-name	?$S9@?6??render_box@BoxRenderObjClass@@IAEXAAVRenderInfoClass@@ABVVector3@@1@Z@4IA	0x009F7038
