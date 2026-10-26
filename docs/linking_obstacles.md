@@ -2617,3 +2617,30 @@ Completed: diagnosis only. The actual worker LINKS; the istream unit still has U
 Remaining / next check: recover the construction wrapper's real template/type spelling, preserving its four argument slots and the already rowed worker, then narrow the unrelated istream instantiation without losing any of the other four rows or their consumers. No new function body, shared-header change or pin was attempted.
 Clearance: pending.
 Census confirmation: not claimed.
+
+### LINK-065: Zero Hour port units still define ZH bodies that BFME 2 rows elsewhere or lacks
+
+**Status: Repair landed / awaiting census (DamageFX.cpp). Updated: 2026-10-26; inspected revision: 6533919013.**
+
+- **Evidence / affected units:** `Code/GameEngine/Source/Common/DamageFX.cpp` (126 B, 3 rows: the
+  DamageFX hashtable `clear`, `DFX::DFX`, `DFX::clear`) was ported verbatim from Zero Hour. Its
+  unrowed ZH bodies held it out: `parseCommonStuff` and the four `DamageFX::parse*` (duplicates of
+  rows in `DamageFXParseCommon.cpp`, calling static `INI::scanReal`/`scanIndexList` and
+  `BitFlags<38>::s_bitNameList`, which BFME 2 does not provide), the veterancy-indexed
+  `getDamageFXThrottleTime`/`getDamageFXList`/`doDamageFX` (BFME 2's versions take no veterancy and
+  are rowed as 0x003605D5, 0x003605E3, 0x003608DF; unresolved `Object::getVeterancyLevel`), a
+  wrong_selected `DamageFXStore::findDamageFX` (retail's symbol 0x00360966 is the
+  `ArmorStore::findArmorTemplate` body) and its own `~hashtable` copy. Same cause as mesh.cpp's
+  b57c128806 repair.
+- **Completed:** 6533919013 removes those bodies (with four present-unmatched markers) and makes the
+  hashtable destructor declaration-only so the retail /GX copy 0x0016DEE0 is kept. 3/3 rows exact;
+  link_check (index d1f046749a) LINKS 0 -> 126 B; DamageFXParseCommon, Rva0033962FFinish,
+  ArmorStoreCtor, Rva0016DEE0Cluster, ActiveBody, DamageFXRva003605AF, DamageFXHashSubscript,
+  DamageFX_pairConstruct, DamageFX_hashtableNewNode and GameEngineInit still link.
+- **Remaining / next check:** other ZH-port units (header comment "Ported verbatim from the
+  Generals Zero Hour reference") whose U blockers are ZH-only callees: list each defined body,
+  check whether its BFME 2 counterpart is rowed under another name or absent, and drop the ZH copy
+  rather than providing the ZH callee. `hatch_baseline.tsv` can be tightened for the four removed
+  DamageFX.cpp markers with `hatch_counters.py --update`.
+- **Clearance:** current-object preview of DamageFX.cpp only.
+- **Census confirmation:** awaiting.
