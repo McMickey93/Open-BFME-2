@@ -18,8 +18,7 @@
 // with the ebp-frame __EH_prolog sequence; the /O1 cleanup form (pop ecx,
 // not add esp,4) is what retail's kept deleting destructor shows.
 
-void * __cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *) throw();
+#include <new>
 
 class RefCountClass
 {
