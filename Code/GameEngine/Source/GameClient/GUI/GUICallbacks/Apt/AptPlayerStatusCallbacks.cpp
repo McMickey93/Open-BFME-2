@@ -8,11 +8,9 @@
 // Built /G7 (the bool goes out as mov al without the P6 xor) and without
 // EH (the static's guard carries no frame), as retail.
 
-extern "C" unsigned int __cdecl strlen(const char *text);
-extern "C" __declspec(dllimport) int __cdecl strncmp(const char *left, const char *right, unsigned int count);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 // The players' colors at +0x27C (a vector).
 struct AptPlayerStatusColors
