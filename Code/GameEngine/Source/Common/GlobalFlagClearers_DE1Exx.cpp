@@ -1,3 +1,5 @@
+// 4 further clearers formerly here are rowed as their matched parents'
+// /G7 guard-rollback $L funclets (EXACT EH graphs); see reverse/deleted_rows.csv.
 // Six B2-native flag-word clearers across six .data flag words of one
 // contiguous run (0x0075D47B-0x0075F15C):
 //
@@ -19,20 +21,6 @@ unsigned int g_Va00DE1E68;
 extern unsigned int g_Va00DE1E70;
 // g_Va00DE1E70: matched references place it at VA 0xde1e70 (zero-filled .bss).
 unsigned int g_Va00DE1E70;
-extern unsigned int g_Va00DE1F14;
-// g_Va00DE1F14: matched references place it at VA 0xde1f14 (zero-filled .bss).
-unsigned int g_Va00DE1F14;
-extern unsigned int g_Va00DE1FC4;
-// g_Va00DE1FC4: matched references place it at VA 0xde1fc4 (zero-filled .bss).
-unsigned int g_Va00DE1FC4;
-extern unsigned int g_Va00DE1FF0;
-// g_Va00DE1FF0: matched references place it at VA 0xde1ff0 (zero-filled .bss).
-unsigned int g_Va00DE1FF0;
-
-unsigned int Rva0075D47BClearFlag(void)
-{
-	return g_Va00DE1E48 &= 0xFFFFFFFEu;
-}
 
 unsigned int Rva0075E42FClearFlag(void)
 {
@@ -44,17 +32,3 @@ unsigned int Rva0075E4D4ClearFlag(void)
 	return g_Va00DE1E70 &= 0xFFFFFFFEu;
 }
 
-unsigned int Rva0075EEFDClearFlag(void)
-{
-	return g_Va00DE1F14 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva0075F04CClearFlag(void)
-{
-	return g_Va00DE1FC4 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva0075F15CClearFlag(void)
-{
-	return g_Va00DE1FF0 &= 0xFFFFFFFEu;
-}
