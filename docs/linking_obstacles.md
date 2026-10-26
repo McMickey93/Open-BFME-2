@@ -1024,6 +1024,9 @@ Completed: native call/row diagnosis and current-provider verification; these si
   outgoing base `0edae3a354`. No provider-change/lost-byte verdict, false reject
   or closure is inferred; complete include inventory and a suitable comparison
   baseline remain prerequisites.
+  The subsequent `5994f7c59a` publication passes 85 functions and 12 EXACT EH
+  graphs in three sources, but its audit reaches the same Eva.cpp prerequisite.
+  The failed strict preparation is not relaunched without new include evidence.
 
 ### LINK-009: split-identity destructors; the alias route needs an admission path
 
