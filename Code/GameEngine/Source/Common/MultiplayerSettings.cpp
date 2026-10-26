@@ -1,4 +1,4 @@
-// cl: /G7 /arch:SSE /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib
+// cl: /FIzh_ascii.h /G7 /arch:SSE /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib
 // stlport
 // TU Code/GameEngine/Source/Common/MultiplayerSettings.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
 #include <stl/_algobase.h>
@@ -6,7 +6,106 @@
 #include <map>
 #define DEFINE_TERRAIN_LOD_NAMES
 #define DEFINE_TIME_OF_DAY_NAMES
-#include "Common/MultiplayerSettings.h"
+// TU-local view of Zero Hour's Common/MultiplayerSettings.h (its include guard
+// is defined below, so the reference header is skipped). Unchanged from Zero
+// Hour except that MultiplayerColorDefinition declares its copy constructor:
+// retail's pair<const int, MultiplayerColorDefinition> copy at 0x00380DA3 calls
+// the copy constructor at 0x00380D30 out of line, and BFME 2's 0x40-byte class
+// (MultiplayerColorDefinitionCopy.cpp, which defines it) is not this ZH-shaped
+// view. With the implicit one, this TU either inlines it into the pair row or
+// emits a second copy of ??0MultiplayerColorDefinition@@QAE@ABV0@@Z.
+#define _MULTIPLAYERSETTINGS_H_
+#include "GameClient/Color.h"
+#include "Common/Money.h"
+
+struct FieldParse;
+class MultiplayerSettings;
+
+class MultiplayerColorDefinition
+{
+public:
+	MultiplayerColorDefinition();
+	MultiplayerColorDefinition(const MultiplayerColorDefinition &other);
+	static const FieldParse m_colorFieldParseTable[];
+	const FieldParse *getFieldParse( void ) const { return m_colorFieldParseTable; }
+
+	inline AsciiString getTooltipName(void) const { return m_tooltipName; };
+	inline RGBColor getRGBValue(void) const { return m_rgbValue; };
+	inline RGBColor getRGBNightValue(void) const { return m_rgbValueNight; };
+	inline Color getColor(void) const { return m_color; }
+	inline Color getNightColor(void) const { return m_colorNight; }
+	void setColor( RGBColor rgb );
+	void setNightColor( RGBColor rgb );
+
+	MultiplayerColorDefinition * operator =(const MultiplayerColorDefinition& other);
+
+private:
+	AsciiString m_tooltipName;
+	RGBColor m_rgbValue;
+	Color m_color;
+	RGBColor m_rgbValueNight;
+	Color m_colorNight;
+};
+
+typedef std::map<Int, MultiplayerColorDefinition> MultiplayerColorList;
+typedef std::map<Int, MultiplayerColorDefinition>::iterator MultiplayerColorIter;
+typedef std::vector< Money > MultiplayerStartingMoneyList;
+
+class MultiplayerSettings : public SubsystemInterface
+{
+public:
+	MultiplayerSettings( void );
+
+	virtual void init() { }
+	virtual void update() { }
+	virtual void reset() { }
+
+	static const FieldParse m_multiplayerSettingsFieldParseTable[];
+	const FieldParse *getFieldParse( void ) const { return m_multiplayerSettingsFieldParseTable; }
+
+	MultiplayerColorDefinition * findMultiplayerColorDefinitionByName(AsciiString name);
+	MultiplayerColorDefinition * newMultiplayerColorDefinition(AsciiString name);
+
+	inline Int getStartCountdownTimerSeconds( void ) { return m_startCountdownTimerSeconds; }
+	inline Int getMaxBeaconsPerPlayer( void ) { return m_maxBeaconsPerPlayer; }
+	inline Bool isShroudInMultiplayer( void ) { return m_isShroudInMultiplayer; }
+	inline Bool showRandomPlayerTemplate( void ) { return m_showRandomPlayerTemplate; }
+	inline Bool showRandomStartPos( void ) { return m_showRandomStartPos; }
+	inline Bool showRandomColor( void ) { return m_showRandomColor; }
+
+	inline Int getNumColors( void )
+	{
+		if (m_numColors == 0) {
+			m_numColors = m_colorList.size();
+		}
+		return m_numColors;
+	}
+	MultiplayerColorDefinition * getColor(Int which);
+
+	const Money & getDefaultStartingMoney() const { return m_defaultStartingMoney; }
+	const MultiplayerStartingMoneyList & getStartingMoneyList() const { return m_startingMoneyList; }
+	void addStartingMoneyChoice( const Money & money, Bool isDefault );
+
+private:
+	Int m_initialCreditsMin;
+	Int m_initialCreditsMax;
+	Int m_startCountdownTimerSeconds;
+	Int m_maxBeaconsPerPlayer;
+	Bool m_isShroudInMultiplayer;
+	Bool m_showRandomPlayerTemplate;
+	Bool m_showRandomStartPos;
+	Bool m_showRandomColor;
+
+	MultiplayerColorList m_colorList;
+	Int m_numColors;
+	MultiplayerColorDefinition m_observerColor;
+	MultiplayerColorDefinition m_randomColor;
+	MultiplayerStartingMoneyList m_startingMoneyList;
+	Money m_defaultStartingMoney;
+	Bool m_gotDefaultStartingMoney;
+};
+
+extern MultiplayerSettings *TheMultiplayerSettings;
 #include "Common/INI.h"
 #include "GameNetwork/GameInfo.h" // for PLAYERTEMPLATE_*
 #define _STLP_BFME_LOWER_BOUND_EXTERN  // call retail's one __lower_bound<const size_t*> (vendor/stlport/stl/_hashtable.c)
