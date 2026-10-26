@@ -28,7 +28,7 @@ template _STL::vector<DynamicPortalLink>::~vector();
 // Evidence: retail push [esi+4] push [esi] plus call 0x003F29F8,
 // mov esi [esi] plus test, push esi plus call 0x00030830;
 // prev 0x0032E7A3 same TU and flags, same Link Destroy callee.
-extern "C" void free(void *p);
+#include <stdlib.h>
 
 class Rva0032E7E2
 {

@@ -10,8 +10,6 @@
 // smoothed slopes are scaled by MAP_HEIGHT_SCALE before the cross product
 // with a 2*MAP_XY_FACTOR run.  Layout as in BaseHeightMapCellQueries.cpp.
 // Linking repair follows BF1 dc69c74c54/f989 and the verified BFME2 LOS sibling.
-// Retain the VC7 float boundary with a TU-local inline CRT wrapper.
-extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
