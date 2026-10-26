@@ -88,8 +88,7 @@ public:
 
 class CameraClass;
 
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *ptr);
+#include <new>
 
 class DX8MeshRendererClass
 {

@@ -40,8 +40,7 @@ private:
 	char m_pad[0x2E4]; // proven retail class size (ctor TU static assert)
 };
 
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *block);
+#include <new>
 
 // The globals are DX8Wrapper's protected static members (defined in
 // dx8wrapper.cpp); this view grants the caps rebuild access to them.

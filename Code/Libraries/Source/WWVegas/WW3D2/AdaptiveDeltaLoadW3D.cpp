@@ -21,8 +21,7 @@
 // Field+10 holds bytes; allocation reserves that count plus one extra dword.
 // Declare array operators so MSVC keeps new[] on the target array allocator.
 
-extern void *__cdecl operator new[](unsigned int);
-extern void __cdecl operator delete[](void *);
+#include <new>
 class ChunkLoadClass {
 public:
     unsigned long Cur_Chunk_Length();

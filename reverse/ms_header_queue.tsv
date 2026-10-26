@@ -317,9 +317,6 @@ Code/Libraries/Source/VP6/MemShim.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0
 Code/Libraries/Source/VP6/ScaleFrame.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same,memset:same
 Code/Libraries/Source/VP6/UpdateUMVBorder.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,memcpy:same
 Code/Libraries/Source/VP6/decodembs.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,memcpy:same
-Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaLoadW3D.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new [ ]:same,operator delete [ ]:same
-Code/Libraries/Source/WWVegas/WW3D2/DX8CapsRecreate.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same,operator delete:same
-Code/Libraries/Source/WWVegas/WW3D2/DX8MeshRendererClass_Invalidate_Thunk.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same,operator delete:same
 Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperSetDX8States.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	HRESULT:same,NULL:same
 Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_D3DCalls.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	UINT:same,HRESULT:same
 Code/Libraries/Source/WWVegas/WW3D2/HAnimComboClass.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same,operator delete:same
