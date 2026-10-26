@@ -14,7 +14,7 @@ public:
 	void *m_vtable;
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class BfmeD1039
 {

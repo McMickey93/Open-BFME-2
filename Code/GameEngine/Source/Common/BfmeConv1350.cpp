@@ -2,7 +2,7 @@
 // unwind entries 0x007AB790/0x007AB79B call the same whole cleanup body.
 // Node-deletion loop retained from the existing BFME 1 donor.
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct BfmeNodeVDB
 {
