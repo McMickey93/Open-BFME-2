@@ -37,6 +37,11 @@ mismatches. This adoption retires header debt; it demonstrates no increase in
 merge acceptance. Receipt: build/codex-playerlist-after-trial.txt. No merge is
 published and no confirmed downstream Luna landing is claimed.
 
+After the trial, `link_check.py --prepare-current --paths-from
+build/codex-playerlist-sources.txt` passes for both explicit providers and
+writes strict reusable receipts. This does not check LINK closure or change
+the census/index. The blocked composition verdict is recorded at 0x002A7D63.
+
 Compatibility audit of origin/master..HEAD plus the staged adoption finds
 no source move, rename or deletion. The existing header resolves via the
 explicit relative include; active tooling, hooks, workflows, includes, build
