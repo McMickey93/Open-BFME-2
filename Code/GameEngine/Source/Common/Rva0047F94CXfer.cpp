@@ -14,21 +14,8 @@ struct XferVersion47
 	unsigned char m_flags;
 };
 
-class Xfer
-{
-public:
-	virtual void s00();
-	virtual void s01();
-	virtual void s02();
-	virtual void s03();
-	virtual void s04();
-	virtual void s05();
-	virtual void s06();
-	virtual void s07();
-	virtual void s08();
-	virtual void s09();
-	virtual void xferVersion(XferVersion47 *version);
-};
+#include "System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 class UpdateModule
 {
@@ -47,7 +34,7 @@ void Rva0047F94C::xfer(Xfer *xfer)
 	XferVersion47 version;
 	version.m_version = 1;
 	version.m_flags = 2;
-	xfer->xferVersion(&version);
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
 	if (version.m_flags >= 2)
 		UpdateModule::xfer(xfer);
 }

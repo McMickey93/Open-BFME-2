@@ -36,26 +36,8 @@ public:
     char *text;
     int tag;
 };
-class Xfer
-{
-public:
-    virtual void slot00(); virtual void slot04(); virtual void slot08();
-    virtual void slot0C(); virtual void slot10(); virtual void slot14();
-    virtual void slot18(); virtual void slot1C(); virtual void slot20();
-    virtual void slot24(); virtual void slot28(); virtual void slot2C();
-    virtual void slot30(); virtual void slot34(); virtual void slot38();
-    virtual void slot3C(); virtual void slot40(); virtual void slot44();
-    virtual void slot48(); virtual void slot4C(); virtual void slot50();
-    virtual void slot54(); virtual void slot58(); virtual void slot5C();
-    virtual void slot60(); virtual void slot64(); virtual void slot68();
-    virtual void slot6C(); virtual void slot70(); virtual void slot74();
-    virtual void slot78(); virtual void slot7C();
-    virtual void slot80(unsigned short *);
-    virtual void slot84();
-    virtual void slot88(unsigned char *);
-    virtual void slot8C();
-    virtual void slot90(bool *);
-};
+#include "System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 class Rva002D9FD9Arg;
 class Rva002D9FD9Owner { public: void rva002D9FD9(Rva002D9FD9Arg *); };
 class HostClass005C8E0A { public: void method_005C9069(); };
@@ -76,17 +58,17 @@ void Rva005C847BRecord::method_005C90F1(int a0, int)
 {
     Xfer *xfer = (Xfer *)a0;
     bool hasRef = m_ref.m_target != 0;
-    xfer->slot90(&hasRef);
+    *xfer == hasRef;
     if (hasRef && !m_ref.m_target)
         m_ref.rva00053D26((BfmePoolHolder88 *)new Rva0051D93(OpaqueRefElement4(), 0));
     if (hasRef) {
         ((Rva002D9FD9Owner *)m_ref.m_target)->rva002D9FD9((Rva002D9FD9Arg *)xfer);
         ((HostClass005C8E0A *)this)->method_005C9069();
     }
-    xfer->slot80(&m_44);
-    xfer->slot88(&m_46);
+    *xfer == m_44;
+    *xfer == m_46;
     unsigned char count = m_low;
-    xfer->slot88(&count);
+    *xfer == count;
     m_low = count;
     if (count != m_low)
         throw XferException(0, "Lock count does not fit into 4 bits");

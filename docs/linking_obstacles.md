@@ -736,6 +736,7 @@ Whole-unit clearance and census confirmation remain pending.
   declaration order and the temporary string-pointer lifetime needed for retail
   stack reuse. Shared headers and existing vector/exception identities are unchanged.
   Other Xfer consumers and class-wide closure remain open.
+- **Common and System Xfer package (2026-10-27, inspected `6c583e82f0c`):** Canonical-header adoption is verified for the compatible transfer consumers, with every matched row exact and their ordinary link previews preserved against the published `5ce093a71a` index. The uncommitted unit results, acceptance outputs and raw check paths are in `build/header-report.md` and `build/hx2-xfer/`. Remaining prerequisites are the ModuleData operand contracts at slots 0x70 and 0x7C, inline base lifetime definitions required by XferSaveAsText, and concrete save-reader and block-operation declarations. Stopped sources are restored exactly and their queue rows remain; class owners must reconcile those interfaces before another adoption attempt. The shared header is unchanged, and no new census gain is claimed.
 - **Update-module Xfer header subset (2026-10-26, `9e1ca7f93f`):**
   [the StealthUpdate, DeletionUpdate and crushing-notification adoptions](../reverse/attempt_support/update-xfer-header-adoption-20261026.md)
   replace private Xfer declarations with the canonical header and a local

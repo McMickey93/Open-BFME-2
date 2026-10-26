@@ -61,21 +61,8 @@ struct XferVersion
 	unsigned char m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool isLoading();
-	virtual bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion &version);
-};
+#include "System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 
 Xfer *Rva00426F17Xfer(Xfer *xfer, BfmeVec00426A5B *vec);
 
@@ -96,8 +83,8 @@ void Rva00426EB0::xfer(Xfer *xfer)
 	XferVersion version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(version);
-	if (xfer->isLoading())
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
+	if (xfer->IsLoading())
 	{
 		m_vec.clear();
 	}

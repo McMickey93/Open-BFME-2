@@ -49,41 +49,8 @@ struct XferVersion
     unsigned char minimum, current;
 };
 
-class Xfer
-{
-public:
- virtual ~Xfer();
- virtual void slot01();
- virtual bool IsStoring() const;
- virtual void slot03();
- virtual void slot04();
- virtual void slot05();
- virtual void slot06();
- virtual void slot07();
- virtual void slot08();
- virtual void slot09();
- virtual Xfer &xferVersion(XferVersion *);
- virtual Xfer &xferTypeName(const char *const &);
- virtual Xfer &xferSnapshot(Elem003AF8C0 *);
- virtual void slot13();
- virtual void slot14();
- virtual void slot15();
- virtual void slot16();
- virtual void slot17();
- virtual void slot18();
- virtual void slot19();
- virtual void slot20();
- virtual void slot21();
- virtual void slot22();
- virtual void slot23();
- virtual void slot24();
- virtual void slot25();
- virtual void slot26();
- virtual void slot27();
- virtual void slot28();
- virtual void slot29();
- virtual Xfer &xferUnsignedInt(unsigned int *);
-};
+#include "System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 struct XferException
 {
     char *text;
@@ -96,16 +63,16 @@ extern "C" void __stdcall _CxxThrowException(void *pExceptionObject, const _s__T
 Xfer *Rva004EE9E9XferVector(Xfer *xfer, Rva004EE6D0 *vector)
 {
     XferVersion version = {1, 1};
-    xfer->xferVersion(&version);
+    *xfer == reinterpret_cast<Xfer::Version &>(version);
     unsigned int count = vector->finish - vector->start;
-    xfer->xferTypeName("std::vector").xferUnsignedInt(&count);
+    (*xfer == XferVectorTypeName("std::vector")) == count;
     if (xfer->IsStoring())
     {
         Elem003AF8C0 *end = vector->finish;
         Elem003AF8C0 *it = vector->start;
         while (it != end)
         {
-            xfer->xferSnapshot(it);
+            *xfer == *it;
             ++it;
         }
     }
@@ -125,7 +92,7 @@ Xfer *Rva004EE9E9XferVector(Xfer *xfer, Rva004EE6D0 *vector)
             {
                 --count;
                 vector->push_back(value);
-                xfer->xferSnapshot(vector->finish - 1);
+                *xfer == *(vector->finish - 1);
             }
         }
     }

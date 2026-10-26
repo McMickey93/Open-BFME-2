@@ -104,35 +104,8 @@ struct GeometryXferVersion
 // Retail string 0x00CE7AA8 "GeometryType" (defined in ConstIntGettersAddr.cpp).
 extern const char s_geometryTypeString[];
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool slot01();
-	virtual bool slot02();
-	virtual bool slot03();
-	virtual bool slot04();	// true: nothing to xfer (the body returns at once)
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void xferVersion(GeometryXferVersion *version);
-	virtual void slot11(); virtual void slot12(); virtual void slot13();
-	virtual void slot14(); virtual void slot15(); virtual void slot16();
-	virtual void slot17(); virtual void slot18(); virtual void slot19();
-	virtual void slot20(); virtual void slot21(); virtual void slot22();
-	virtual void slot23();
-	virtual void xferCoord3D(BfmeCoord3D *value);
-	virtual void slot25(); virtual void slot26(); virtual void slot27();
-	virtual void xferReal(float *value);
-	virtual void slot29(); virtual void slot30();
-	virtual void xferInt(int *value);
-	virtual void slot32(); virtual void slot33(); virtual void slot34();
-	virtual void slot35();
-	virtual void xferBool(unsigned char *value);
-	virtual void xferUser(const char *name, void *value, unsigned int size);
-};
+#include "XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
 
 class GeometryInfo : public Snapshot
 {
@@ -200,33 +173,33 @@ void BfmeVec60::resize(unsigned int count) throw()
 // member names past the shape vector are structural, not donor-proven.
 void GeometryInfo::DoXfer(Xfer &xfer)
 {
-	if (xfer.slot04())
+	if (xfer.IsLightCRC())
 		return;
 
 	GeometryXferVersion version(1, 2);
-	xfer.xferVersion(&version);
-	xfer.xferBool(&m_isSmall);
+	xfer == reinterpret_cast<Xfer::Version &>(version);
+	xfer == reinterpret_cast<bool &>(m_isSmall);
 
 	int count = m_shapes.size();
-	xfer.xferInt(&count);
+	xfer == count;
 	m_shapes.resize(count);
 	for (int i = 0; i < count; ++i)
 	{
 		BfmeElem60 *shape = &m_shapes.m_begin[i];
-		xfer.xferUser(s_geometryTypeString, &shape->m_type, sizeof(shape->m_type));
-		xfer.xferReal(&shape->m_height);
-		xfer.xferReal(&shape->m_majorRadius);
-		xfer.xferReal(&shape->m_minorRadius);
-		xfer.xferCoord3D(&shape->m_center);
+		xfer.XferEnum(s_geometryTypeString, &shape->m_type, sizeof(shape->m_type));
+		xfer == shape->m_height;
+		xfer == shape->m_majorRadius;
+		xfer == shape->m_minorRadius;
+		xfer == reinterpret_cast<Coord3DBase &>(shape->m_center);
 		if (version.m_current > 1)
-			xfer.xferBool(&shape->m_enabled);
+			xfer == reinterpret_cast<bool &>(shape->m_enabled);
 	}
 
-	xfer.xferReal(&m_boundingCircleRadius);
-	xfer.xferReal(&m_boundingSphereRadius);
-	xfer.xferReal(&m_24);
-	xfer.xferReal(&m_28);
-	xfer.xferCoord3D(&m_center18);
-	xfer.xferCoord3D(&m_44);
-	xfer.xferCoord3D(&m_50);
+	xfer == m_boundingCircleRadius;
+	xfer == m_boundingSphereRadius;
+	xfer == m_24;
+	xfer == m_28;
+	xfer == reinterpret_cast<Coord3DBase &>(m_center18);
+	xfer == reinterpret_cast<Coord3DBase &>(m_44);
+	xfer == reinterpret_cast<Coord3DBase &>(m_50);
 }

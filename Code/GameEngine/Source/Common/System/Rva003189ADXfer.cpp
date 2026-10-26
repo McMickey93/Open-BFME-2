@@ -15,10 +15,9 @@ void XferGlobalWeatherType(Xfer *xfer, int *value);
 void XferGlobalWeatherAffectsType(Xfer *xfer, int *value);
 void XferAttributeModifierCategoryType(Xfer *xfer, int *value);
 
-class Xfer
-{
-public:
-	class Version
+#include "XferVectorTypes.h"
+#include "../../../Include/Common/BfmeXfer.h"
+class Xfer::Version
 	{
 	public:
 		Version(unsigned char earliest, unsigned char current)
@@ -27,26 +26,6 @@ public:
 		unsigned char m_earliest;
 		unsigned char m_current;
 	};
-
-	virtual ~Xfer() = 0;				// 0
-	virtual void s01() = 0; virtual void s02() = 0;	// 1-2
-	virtual void s03() = 0; virtual void s04() = 0;
-	virtual void s05() = 0; virtual void s06() = 0;
-	virtual void s07() = 0; virtual void s08() = 0;
-	virtual void s09() = 0;				// 9
-	virtual Xfer &operator==(Version &value) = 0;		// 10
-	virtual void s11() = 0; virtual void s12() = 0;
-	virtual void s13() = 0; virtual void s14() = 0;
-	virtual void s15() = 0; virtual void s16() = 0;
-	virtual void s17() = 0; virtual void s18() = 0;
-	virtual void s19() = 0; virtual void s20() = 0;
-	virtual void s21() = 0; virtual void s22() = 0;
-	virtual void s23() = 0; virtual void s24() = 0;
-	virtual void s25() = 0; virtual void s26() = 0;	// 11-26
-	virtual Xfer &slot27(int &value) = 0;		// 27
-	virtual void s28() = 0; virtual void s29() = 0;	// 28-29
-	virtual Xfer &slot30(int &value) = 0;		// 30
-};
 
 class Rva003189ADGlobal
 {
@@ -149,15 +128,15 @@ void Rva003189ADOwner::rva003189AD(Xfer *xfer)
 	((Rva003189ADGlobal *)TheAudio)->slot88(xfer, &m_08);
 	XferGlobalWeatherAffectsType(xfer, &m_0c);
 	reinterpret_cast<ObjectFilter *>(&m_10)->DoXfer(xfer);
-	xfer->slot27(m_10.m_04);
+	*xfer == reinterpret_cast<AsciiString &>(m_10.m_04);
 	unsigned int out = 0;
 	XferAttributeModifierCategoryType(xfer, (int *)&out);
 	if (version.m_current >= 2)
-		xfer->slot30(m_18);
+		*xfer == reinterpret_cast<unsigned int &>(m_18);
 	if (version.m_current >= 3)
 	{
-		xfer->slot30(m_1c);
-		xfer->slot30(m_20);
+		*xfer == reinterpret_cast<unsigned int &>(m_1c);
+		*xfer == reinterpret_cast<unsigned int &>(m_20);
 	}
 	if (version.m_current >= 4)
 		((BitFlags<15> *)&m_4c)->xfer(xfer);

@@ -258,31 +258,8 @@ Rva00538E43Result::Rva00538E43Result() : position(), tag(-1) {}
 // reserves through the rowed 00319C84 instantiation and appends a default
 // record through rowed 0031A129 before transferring it in place. Same shape
 // as the rowed ScoreKeeper per-frame vector transfer 0039C4F7.
-class Xfer
-{
-public:
-	struct Version { unsigned char minimum, current; };
-	virtual ~Xfer();
-	virtual void slot01();
-	virtual bool IsStoring() const;
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(Version *);
-	virtual Xfer &xferTypeName(const char *const &);
-	virtual Xfer &xferSnapshot(Snapshot *);
-	virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18();
-	virtual void slot19(); virtual void slot20(); virtual void slot21();
-	virtual void slot22(); virtual void slot23(); virtual void slot24();
-	virtual void slot25(); virtual void slot26(); virtual void slot27();
-	virtual void slot28(); virtual void slot29();
-	virtual Xfer &xferUnsignedInt(unsigned int *);
-};
+#include "System/XferVectorTypes.h"
+#include "../../Include/Common/BfmeXfer.h"
 // The empty-on-load error is a block-local exception built by the rowed
 // formatter and thrown through retail's XferException throw info 0x00CFFD18,
 // which lets its slot share the record's (frame 0x14), as in
@@ -298,16 +275,16 @@ extern "C" void __stdcall _CxxThrowException(void *pExceptionObject, const _s__T
 
 Xfer *Rva0031A160Xfer(Xfer *xfer, _STL::vector<BfmeVectorRecord00319C84> *records)
 {
-	Xfer::Version version = {1, 1};
-	xfer->xferVersion(&version);
+	struct { unsigned char minimum, current; } version = {1, 1};
+	*xfer == reinterpret_cast<Xfer::Version &>(version);
 	Rva00318B5C **span = reinterpret_cast<Rva00318B5C **>(records);
 	unsigned int count = span[1] - span[0];
-	xfer->xferTypeName("std::vector").xferUnsignedInt(&count);
+	(*xfer == XferVectorTypeName("std::vector")) == count;
 	if (xfer->IsStoring()) {
 		Rva00318B5C *end = span[1];
 		Rva00318B5C *it = span[0];
 		while (it != end) {
-			xfer->xferSnapshot(it);
+			*xfer == *it;
 			++it;
 		}
 	} else {
@@ -321,7 +298,7 @@ Xfer *Rva0031A160Xfer(Xfer *xfer, _STL::vector<BfmeVectorRecord00319C84> *record
 			while (count != 0) {
 				--count;
 				reinterpret_cast<Rva00319F5A *>(records)->rva0031A129(value);
-				xfer->xferSnapshot(span[1] - 1);
+				*xfer == *(span[1] - 1);
 			}
 		}
 	}
