@@ -41,3 +41,7 @@ namespace _STL { template <> vector<Rva0054103E, allocator<Rva0054103E> >::vecto
 namespace _STL { template <> Rva0054103E * vector<Rva0054103E, allocator<Rva0054103E> >::erase(Rva0054103E *, Rva0054103E *); }
 // bfme link decl-only end
 template class _STL::vector<Rva0054103E, _STL::allocator<Rva0054103E> >;
+// SaveMapPreview (20 bytes, SaveMapPreviewCopy.cpp) shares this folded
+// 20-byte _Vector_base constructor (pinned at 0x004FF36C); only its size matters.
+class SaveMapPreview { unsigned int words[5]; };
+template _STL::_Vector_base<SaveMapPreview, _STL::allocator<SaveMapPreview> >::_Vector_base(size_t, const _STL::allocator<SaveMapPreview> &);

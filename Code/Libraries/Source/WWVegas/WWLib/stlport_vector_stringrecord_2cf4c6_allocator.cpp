@@ -18,3 +18,7 @@ struct BfmeStringRecord002CF4C6 {
 };
 #include <memory>
 template class _STL::allocator<BfmeStringRecord002CF4C6>;
+// SaveMapPreview (20 bytes, SaveMapPreviewCopy.cpp) shares this folded
+// 20-byte allocate body (pinned at 0x00395960); only its size matters here.
+class SaveMapPreview { unsigned int words[5]; };
+template SaveMapPreview *_STL::allocator<SaveMapPreview>::allocate(size_t, const void *) const;
