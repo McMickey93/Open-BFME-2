@@ -26,8 +26,9 @@ are used.
 The original bundled DX8.1 SDK, at
 `reference/open-bfme-1/inputs/toolchains/dx81/include/d3d8types.h:577`, defines the
 five blend-position constants as `6,8,0xA,0xC,0xE`. The legacy shared shim had
-incorrect values for the last four. This recovered body uses an explicit SDK
-`XYZB4=0xC`, independently of that shared-header repair.
+incorrect values for the last four. The recovered body now reads
+`D3DFVF_XYZB4=0xC` directly from the vendored August 2005 DirectX SDK. Its TU-local Zero Hour FVF declarations allow the
+unit to include `d3dx9core.h` without the reference header's DX8 stand-in.
 
 The only direct callee is the complete six-byte thunk at RVA `0x62AFBC`, whose
 `FF 25` operand names IAT VA `0xBBA9E4`. Independent PE import parsing identifies

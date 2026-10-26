@@ -1,5 +1,7 @@
 // cl: /DBFME_WWSTRING_NATIVE_CSTR_ASSIGN /Ireference/shims/wwstring_teardown/zhmd /arch:SSE /G7 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/sweep
-// Ported verbatim from the Generals Zero Hour reference
+// dxsdk
+// platformsdk
+// Adapted from the Generals Zero Hour reference
 // (Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp); this unit had no counterpart under Code/.
 /*
 **	Command & Conquer Generals Zero Hour(tm)
@@ -42,9 +44,64 @@
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "dx8fvf.h"
+#include "always.h"
 #include "wwstring.h"
-#include <D3dx8core.h>
+#include <d3dx9core.h>
+
+// These declarations retain the Zero Hour FVF layout used by Get_FVF_Name.
+// Keep them local so the reference header need not bring in its DX8 stand-in.
+enum {
+	DX8_FVF_XYZ				= D3DFVF_XYZ,
+	DX8_FVF_XYZN			= D3DFVF_XYZ|D3DFVF_NORMAL,
+	DX8_FVF_XYZNUV1		= D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_TEX1,
+	DX8_FVF_XYZNUV2		= D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_TEX2,
+	DX8_FVF_XYZNDUV1		= D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_TEX1|D3DFVF_DIFFUSE,
+	DX8_FVF_XYZNDUV2		= D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_TEX2|D3DFVF_DIFFUSE,
+	DX8_FVF_XYZDUV1		= D3DFVF_XYZ|D3DFVF_TEX1|D3DFVF_DIFFUSE,
+	DX8_FVF_XYZDUV2		= D3DFVF_XYZ|D3DFVF_TEX2|D3DFVF_DIFFUSE,
+	DX8_FVF_XYZUV1			= D3DFVF_XYZ|D3DFVF_TEX1,
+	DX8_FVF_XYZUV2			= D3DFVF_XYZ|D3DFVF_TEX2,
+	DX8_FVF_XYZNDUV1TG3	= (D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_DIFFUSE|D3DFVF_TEX4|D3DFVF_TEXCOORDSIZE2(0)|D3DFVF_TEXCOORDSIZE3(1)|D3DFVF_TEXCOORDSIZE3(2)|D3DFVF_TEXCOORDSIZE3(3)),
+	DX8_FVF_XYZNUV2DMAP	= (D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_TEX3 | D3DFVF_TEXCOORDSIZE1(0) | D3DFVF_TEXCOORDSIZE4(1) | D3DFVF_TEXCOORDSIZE2(2) ),
+	DX8_FVF_XYZNDCUBEMAP	= D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_DIFFUSE //|D3DFVF_TEX1|D3DFVF_TEXCOORDSIZE3(0)
+};
+
+class FVFInfoClass : public W3DMPO
+{
+	W3DMPO_GLUE(FVFInfoClass)
+
+	mutable unsigned						FVF;
+	mutable unsigned						fvf_size;
+
+	unsigned							location_offset;
+	unsigned							normal_offset;
+	unsigned							blend_offset;
+	unsigned							texcoord_offset[D3DDP_MAXTEXCOORD];
+	unsigned							diffuse_offset;
+	unsigned							specular_offset;
+public:
+	FVFInfoClass(unsigned FVF, unsigned vertex_size=0);
+
+	inline unsigned Get_Location_Offset() const { return location_offset; }
+	inline unsigned Get_Normal_Offset() const { return normal_offset; }
+#ifdef WWDEBUG
+	inline unsigned Get_Tex_Offset(unsigned int n) const { WWASSERT(n<D3DDP_MAXTEXCOORD); return texcoord_offset[n]; }
+#else
+	inline unsigned Get_Tex_Offset(unsigned int n) const { return texcoord_offset[n]; }
+#endif
+
+	inline unsigned Get_Diffuse_Offset() const { return diffuse_offset; }
+	inline unsigned Get_Specular_Offset() const { return specular_offset; }
+	inline unsigned Get_FVF() const { return FVF; }
+	inline unsigned Get_FVF_Size() const { return fvf_size; }
+
+	void Get_FVF_Name(StringClass& fvfname) const;	// For debug purposes
+
+	// for enabling vertex shaders
+	inline void Set_FVF(unsigned fvf) const { FVF=fvf; }
+	inline void Set_FVF_Size(unsigned size) const { fvf_size=size; }
+};
+
 
 static unsigned Get_FVF_Vertex_Size(unsigned FVF)
 {
@@ -110,9 +167,6 @@ void FVFInfoClass::Get_FVF_Name(StringClass& fvfname) const
 // Generals FVFInfoClass above has the older layout and two-argument constructor.
 // Recovered roles and complete caller/table evidence are documented in
 // docs/reconstruction/dx8fvf-descriptor.md.
-// The bundled original DX8.1 SDK d3d8types.h defines XYZB4 as 0x00C.
-// Keep that SDK value explicit here while the shared shim is repaired.
-enum { BFME_FVF_XYZB4 = 0x00C };
 unsigned bfmeKnownFVFFormats[15]={
  DX8_FVF_XYZ,DX8_FVF_XYZN,DX8_FVF_XYZNUV1,DX8_FVF_XYZNUV2,
  DX8_FVF_XYZNDUV1,DX8_FVF_XYZNDUV2,DX8_FVF_XYZDUV1,DX8_FVF_XYZDUV2,
@@ -159,7 +213,7 @@ void BfmeFVFDescriptor::Initialize(unsigned format,unsigned vertex_size,bool bas
  blendOffset=locationOffset;
  if((fvf&D3DFVF_XYZ)==D3DFVF_XYZ) blendOffset+=3*sizeof(float);
  normalOffset=blendOffset;
- if(((fvf&BFME_FVF_XYZB4)==BFME_FVF_XYZB4) && ((fvf&D3DFVF_LASTBETA_UBYTE4)==D3DFVF_LASTBETA_UBYTE4)) normalOffset+=3*sizeof(float)+sizeof(unsigned);
+ if(((fvf&D3DFVF_XYZB4)==D3DFVF_XYZB4) && ((fvf&D3DFVF_LASTBETA_UBYTE4)==D3DFVF_LASTBETA_UBYTE4)) normalOffset+=3*sizeof(float)+sizeof(unsigned);
  diffuseOffset=normalOffset;
  if((fvf&D3DFVF_NORMAL)==D3DFVF_NORMAL) diffuseOffset+=3*sizeof(float);
  specularOffset=diffuseOffset;
