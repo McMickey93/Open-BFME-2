@@ -1789,6 +1789,7 @@ Remaining / next check:
 Clearance: the surviving owners link in preview (link_check against index d1f046749a); the retired
 units held 0 census-linked bytes, so no headline change is claimed.
 Census confirmation: not claimed.
+
 ### LINK-049: map<unsigned, WeaponTemplateSetHead> insert family rowed on an int-key placeholder and a private tree view
 Status: Repair landed, awaiting census. Updated: 2026-10-26; inspected revision: a8fa0b2df4.
 Evidence / affected units: `StlSweepW4Rva00464431.cpp` (0x00464431, 29 B) was rowed as
@@ -1808,7 +1809,7 @@ are still the placeholder spelling of this tree's `_M_create_node` and element c
 Clearance: `tools/link_check.py` on the five units: LINKS (661 -> 690 bytes), 5/5 rows exact.
 Census confirmation: awaiting the next census.
 
-### LINK-048: SplineCameraParseINIBlock record is Rva004E32F2, whose vftable and FieldParse table are unrowed
+### LINK-050: SplineCameraParseINIBlock record is Rva004E32F2, whose vftable and FieldParse table are unrowed
 Status: Open. Updated: 2026-10-26; inspected revision: c9c4584d48.
 Evidence / affected units: `SplineCameraParseINIBlock.cpp` (0x004E3300, 130 B) declares a private
 `Rva003BA660Record`, so its ctor, tree dtor, field table and append stay unresolved. Retail 0x004E3300
@@ -1826,7 +1827,7 @@ tree type for ctor and dtor, and settle where `??_7Rva004E32F2@@6B@` and `??_G` 
 Clearance: pending.
 Census confirmation: not claimed.
 
-### LINK-049: the 0x0052C823 vector copy and 0x0052CD03 vector dtor are Rva003A6F70's, rowed as BfmePod32's
+### LINK-051: the 0x0052C823 vector copy and 0x0052CD03 vector dtor are Rva003A6F70's, rowed as BfmePod32's
 Status: Open. Updated: 2026-10-26; inspected revision: c9c4584d48.
 Evidence / affected units: `Rva0056616BCopyDeferred.cpp` (0x0052D555, wrong_selected 1) and
 `stlport_pod_noexc_deferred_copies.cpp` (selected 4). Target facts: the copy ctor 0x0052C823 calls
