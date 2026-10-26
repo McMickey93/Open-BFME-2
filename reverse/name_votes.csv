@@ -8231,3 +8231,5 @@ Code/GameEngine/Source/Common/Rva005E4DAFTwins.cpp|class||Rva005E4BB7,95bf0b54e5
 Code/GameEngine/Source/Common/Rva0010F42AFinish.cpp|local|Rva0010F42A::execute|m_scale0C,d14f038c84618e67ed2566ca,gpt-6.1-sol,w3-10261634-8,w-46dfa4623b23,2026-10-26
 Code/GameEngine/Source/Common/Rva001F51DC.cpp|local|Rva001F51DC::rva001F51DC|a,90486daf23e0e4010c5e2ecb,gpt-6.1-sol,w3-10261634-11,w-46dfa4623b23,2026-10-26
 Code/GameEngine/Source/Common/Rva001F51DC.cpp|local|Rva001F51DC::rva001F51DC|b,639a7780f62be0f55dd616e1,gpt-6.1-sol,w3-10261634-11,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp|member|Rva00201DC4LODInfo|flag30,af1b6477bcd6d89bb7891f3f,gpt-6.1-sol,w1-10261648-4,w-6d5d2b593eca,2026-10-26
+Code/GameEngine/Source/GameClient/GUI/StrategicVeterancyAutoResolveCtor.cpp|param|StrategicVeterancy::Data::AutoResolve::AutoResolve|b,a7da3a05428365afc581efe2,gpt-6.1-sol,w1-10261648-12,w-6d5d2b593eca,2026-10-26
