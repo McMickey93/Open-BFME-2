@@ -10,7 +10,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 #include <vector>
 
-void __cdecl operator delete(void *);
+#include <new>
 
 struct Rva004DFCB0Element { unsigned word0;Rva004DFCB0Element& operator=(const Rva004DFCB0Element&b){if(this!=&b){word0=b.word0;}return *this;}bool operator<(const Rva004DFCB0Element&)const;bool operator==(const Rva004DFCB0Element&)const; };
 

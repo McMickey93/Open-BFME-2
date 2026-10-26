@@ -15,8 +15,8 @@ void _STLP_alloc_proxy<_List_node<int>*, _List_node<int>, allocator<_List_node<i
 }
 #include "ascii_string.h"
 
-void __cdecl operator delete(void *p);
-extern "C" void __cdecl free(void *p);
+#include <new>
+#include <stdlib.h>
 
 class OpaqueRefCounted
 {

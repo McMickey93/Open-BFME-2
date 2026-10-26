@@ -27,7 +27,7 @@ private:
 	friend class Rva00131D07;
 };
 
-void __cdecl operator delete[](void *p);
+#include <new>
 
 class Rva00131BE5 : public BfmeThingUB
 {
