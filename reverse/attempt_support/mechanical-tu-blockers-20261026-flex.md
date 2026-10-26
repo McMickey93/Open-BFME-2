@@ -335,3 +335,69 @@ failed with C2039 (missing class members), `Rva004B2A9D.cpp`,
 failed on incomplete `ReplaceObjectUpdateModuleData`/member types, and
 `ReplaceObjectUpdateFieldParse.cpp` failed with C2953 (`_STL::allocator`
 already defined). No rejected donor was changed.
+
+## UnpauseSpecialPowerUpgrade.cpp allocation check — 2026-10-26
+
+The allocated TU passed `--check-tu`; no unchanged donor merge was accepted.
+The constructor and upgrade implementation donors both fail C2039 because
+`getModuleNameKey` is absent from the class view. The field-parse split for
+`0x004B546A` was accepted but that RVA was already claimed by another worker,
+so it was not applied. The two other mixed splits were refused by hatch-counter
+rule 3 (a copied helper or datum would grow the count). No donor was changed.
+
+## RiderChangeContain.cpp allocation check — 2026-10-26
+
+The allocated TU passed `--check-tu`; the report was current and the plan had
+35 approved rows, 13 donor files, and 9 mixed files. No unchanged donor was
+accepted. The dry run rejected all 13: constructor donor C2512
+(`TransportContain` has no default constructor); pool-key C2084 (duplicate
+`getModuleNameKey` body); xfer C2011/C2039 (`Xfer` redefinition and missing
+`Version1`); module-data constructor and parser C2011/C2084 (`AsciiString`
+redefinitions); module-data parse C1001 (compiler internal error); remove-first
+C2248 (private `Module::m_moduleData`); validity/containing/removing/module-data
+dtor donors C2011/C2084 (`AsciiString` redefinitions); object kill C2065
+(`Rva047E59EDamage8` undeclared). No donor was changed.
+
+## INIWater.cpp allocation check — 2026-10-26
+
+The allocated TU passed `--check-tu`; the fresh scoped report passed its
+currency check. Its plan had 25 approved rows, 5 donors, and 4 mixed files. No
+unchanged donor was accepted. The dry run rejected the assignment donor for
+bytes mismatch; `Rva00200D38Ctor.cpp` and `INIWaterTransparency.cpp` for C2953
+`_STL::allocator`/`_STL::vector` and C2953/C2955 `OVERRIDE`; and
+`Rva00200E95Dtor.cpp` for C2511 (the `WaterTransparencySetting(int)` overload
+is absent). No donor was changed.
+
+INIWater mixed-split checks: the `WaterTransparencySettingCtor.cpp` carve of
+`0x00200D80` was refused because the residual loses matched row `0x00200E79`.
+`ConstIntGetters.cpp` can carve `0x00200BBA`, but it would grow a hatch count
+(rule 3); `ThingFactory.cpp` has no definition spelling `0x00200BC0`; the
+`VslotSmallBodiesR.cpp` carve for `0x00200BD9` matches alone, but composition
+fails C2039 because `rva00200BD9` is not a member of `WaterTransparencySetting`.
+No split was applied.
+
+## MissileLauncherBuildingUpdate.cpp allocation check — 2026-10-26
+
+The allocated TU passed `--check-tu`; the fresh scoped report passed its
+currency check. Its plan had 20 approved rows, 6 donor files, and 2 mixed
+files. No unchanged donor was accepted. The dry run rejected the behavior
+constructor donor with C2143/C2501 (missing type syntax/declaration), the
+update constructor, destructor, and science-types helper with C2950/C2953 STL
+allocator/vector instantiation conflicts, the pool-key donor with C2039
+(`getModuleNameKey` absent from `StoreObjectsSpecialPower`), and the exit-door
+constructor with C2143/C2501. No donor was changed.
+
+MissileLauncher mixed-split checks: `GlobalFlagClearers_E043xx.cpp` can carve
+`0x00790A3D`, but would grow an escape-hatch count while moving
+`g_Va00E043B8`; `ModuleDataBuildFieldParseChained.cpp` can carve `0x004CD918`
+and matches it alone, but donor composition fails C2143/C2501 (missing type
+syntax/declaration). No split was applied.
+
+## AIUpgradeScienceBuilder.cpp allocation check — 2026-10-26
+
+The allocated TU passed `--check-tu`; its scoped planner report passed the
+currency check. Its plan had 30 approved rows, 8 donor files, and 2 mixed
+files. No unchanged donor was accepted. Four donors failed with C2950/C2953
+STL allocator/vector instantiation conflicts; the normal-upgrades donor failed
+C2143/C2501 (missing type syntax/declaration); the shutdown donor failed C2065
+(`ScienceType` undeclared). No donor was changed.
