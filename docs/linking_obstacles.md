@@ -1807,3 +1807,21 @@ Remaining / next check: 0x004634BA (`Rva004634BACreate`) and 0x00462D83 (`_Const
 are still the placeholder spelling of this tree's `_M_create_node` and element construct.
 Clearance: `tools/link_check.py` on the five units: LINKS (661 -> 690 bytes), 5/5 rows exact.
 Census confirmation: awaiting the next census.
+
+### LINK-048: SplineCameraParseINIBlock record is Rva004E32F2, whose vftable and FieldParse table are unrowed
+Status: Open. Updated: 2026-10-26; inspected revision: c9c4584d48.
+Evidence / affected units: `SplineCameraParseINIBlock.cpp` (0x004E3300, 130 B) declares a private
+`Rva003BA660Record`, so its ctor, tree dtor, field table and append stay unresolved. Retail 0x004E3300
+(target facts): ctor 0x004E32D5 `??0Rva004E32F2@@QAE@XZ`, `INI::initFromINI` 0x0002DE78 with the table
+at RVA 0x00861FB8, append 0x00566D7B `?rva00566D7B@Rva00566D7B@@QAEXABVRva004E32F2@@@Z`, then the
+inlined virtual dtor: vftable 0x00861F68 (slot 0 = `??_G` 0x004E37B3) and the tree dtor 0x002B80CE
+(`~_Rb_tree<int, pair<const int, AsciiString> >`), while the ctor binds the map<int, BfmePod24> ctor 0x005011C1
+by `/alternatename` (`Rva004E32D5Ctor.cpp`). The table holds three 16-byte FieldParse entries (strings
+0x008618F8, 0x008618D0, 0x00861F6C; parsers 0x0002F0F7, 0x0002E850, 0x00503FD1 with userData 0x008E148C;
+offsets 4, 8, 0) plus a null terminator.
+Completed: none (diagnosis only).
+Remaining / next check: row the table as data, give the record the Rva004E32F2 identity with one
+tree type for ctor and dtor, and settle where `??_7Rva004E32F2@@6B@` and `??_G` are emitted
+(`Rva004E32F2Dtor.cpp` carries an inline anchor for them) before the parse unit inlines that dtor.
+Clearance: pending.
+Census confirmation: not claimed.
