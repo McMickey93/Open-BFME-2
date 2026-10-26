@@ -60,9 +60,9 @@ public:
 	SmudgeSet(void);
 	virtual ~SmudgeSet();
 	void reset(void);
-	static DLListClass<Smudge> m_freeSmudgeList;
 
 private:
+	static DLListClass<Smudge> m_freeSmudgeList;
 	DLListClass<Smudge> m_usedSmudgeList;
 	Int m_usedSmudgeCount;
 };

@@ -58,12 +58,12 @@ struct Smudge : public DLNodeClass<Smudge>
 
 struct SmudgeSet : public DLNodeClass<SmudgeSet>
 {
+	friend class SmudgeManager;
 public:
 	virtual void *deleteInstance(int flags);
 
-	static DLListClass<Smudge> m_freeSmudgeList;
-
 private:
+	static DLListClass<Smudge> m_freeSmudgeList;
 	DLListClass<Smudge> m_usedSmudgeList;
 	Int m_usedSmudgeCount;
 };
@@ -101,7 +101,3 @@ SmudgeManager::~SmudgeManager()
 		::operator delete(smudge);
 	}
 }
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?m_freeSmudgeList@SmudgeSet@@2V?$DLListClass@USmudge@@@@A=?m_freeSmudgeList@SmudgeSet@@0V?$DLListClass@USmudge@@@@A")

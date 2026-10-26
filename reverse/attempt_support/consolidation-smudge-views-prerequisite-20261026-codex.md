@@ -81,3 +81,60 @@ Keep file claims until publication is confirmed. This task holds eight source
 scopes, SmudgeViews.h and this handoff; the inherited batch additionally holds
 17 scopes recorded in its handoffs and build/codex-session8-pending-claims.txt.
 After publication release scopes and run claims.py release --landed.
+
+
+## Publication and static-list identity follow-up
+
+The four prerequisite commits landed together at 99aec78239 (Smudge),
+af217f51ad (RankInfo), c7c16d7aa3 (ScienceBuilder) and 108878443c (FireDead).
+The push gate passed 71 rows across 15 sources, two data rows and eight EXACT
+EH graphs. Its mandatory link_batch_audit.py found the index at d1f046749a,
+older than outgoing base 503766b364, and three source objects without current
+receipts (first Eva.cpp). Its selected-provider/lost-byte result is inconclusive;
+carry this exact cohort to the next normal census. The bounded standalone and
+composition proofs above are separate evidence, not a census replacement.
+LINK-017 covers the stale-index/receipt cause. An attempted file claim for
+updating docs/linking_obstacles.md was refused because another worker holds it;
+that register was left untouched. Its owner can carry this audit receipt forward.
+Published prerequisite file claims were released; only the current identity
+follow-up's SetReset, ManagerDtor and this handoff scopes remain held.
+
+The follow-up makes both consumers declare m_freeSmudgeList private, matching
+its current defining owner SmudgeRemoveSmudgeFromSet.cpp and data_ledger.csv's
+single primary symbol at RVA 0x009BCBF4. SmudgeManager is granted friend access
+in its destructor view; no ABI/layout or virtual-interface change follows from
+that source access. ManagerDtor's now-unneeded public-to-private linker alias
+is removed. This directly fixes the relevant data prerequisite rather than
+counting a source move as identity cleanup.
+
+./build.sh SetReset.cpp ManagerDtor.cpp passes all four rows;
+find_declared_unmatched.py passes both, data_check.py --enforce reports zero
+findings, converged enforcement reports zero second names/unjudged rows, and
+ManagerDtor has one EXACT EH graph. Saved pre-edit/current COFF comparison
+preserves all 15 non-debug sections, bytes, COMDAT policies and SafeSEH handlers
+after explicitly normalizing only the public static symbol to its existing
+private owner and removing exactly its linker directive. No other binding or
+directive changes. repair_queue.py retire data SOURCE independently accepts
+and removes each of the two keys. hatch_counters.py --update verifies removal
+of the one alias hatch; only that tool-generated deletion is retained, with
+unrelated preexisting shrink findings restored verbatim from HEAD.
+
+This retires two data keys and one alias hatch, separately from consolidation
+or code-identity debt. It does not repair ManagerDtor's remaining deleteInstance
+interface or add recovered C++ bytes. Scratch receipts use
+build/codex-session9-smudge-data-; the final composition and publication status
+are recorded below after verification.
+
+Final follow-up ordinary trial retains the same five accepted sources and all
+eight rows / 350 existing bytes. Composition 7b5f2edddeea4ad7.obj preserves the
+24 independently verified expected providers, their policies, four data
+symbols and all external bindings after internal resolution. The static data
+reference now uses its primary private name in both standalone and composed
+objects. ManagerDtor still needs a coherent SmudgeSet interface; the selected
+private view now exposes missing reset/member declarations rather than resolving
+that underlying destructor-model mismatch. The include conflict remains.
+No further unchanged trial is needed. Staged code identity checks four rows
+and zero new findings. The final planner is regenerated and freshness passes.
+The pending-range/index path audit finds no new paths, moves or affected tooling
+consumers. This follow-up carries the inconclusive publication audit above;
+strict receipt checks do not claim to update that index or the census.
