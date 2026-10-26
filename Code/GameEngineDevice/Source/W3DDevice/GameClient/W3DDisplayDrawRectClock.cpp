@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// cl: /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
 //
 // ?drawRectClock@W3DDisplay@@UAEXMMMMMI@Z, retail 0x00045B45..0x000463B5 (2160 bytes)
 // ?drawRemainingRectClock@W3DDisplay@@UAEXMMMMMI@Z, retail 0x000463B5..0x000465CE (537 bytes)
@@ -28,30 +28,10 @@ typedef unsigned int UnsignedInt;
 typedef float Real;
 typedef int Int;
 
+#include "../../../../../reference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath/wwmath.h"
+#include "../../../../../reference/shims/wwmath/Vector2.h"
+
 #define WWMATH_TWO_PI 6.283185307f
-
-// WWMath's x87 float-to-long (fld/fistp, current rounding mode).
-class WWMath
-{
-public:
-	static __forceinline long Float_To_Long(float f)
-	{
-		long retval;
-		__asm fld dword ptr [f]
-		__asm fistp dword ptr [retval]
-		return retval;
-	}
-};
-
-class Vector2
-{
-public:
-	Vector2() {}
-	Vector2(float x, float y) : X(x), Y(y) {}
-	Vector2 &operator=(const Vector2 &v) { X = v.X; Y = v.Y; return *this; }
-	float X;
-	float Y;
-};
 
 class RectClass
 {
@@ -126,7 +106,7 @@ void W3DDisplay::rva00045990(Real startX, Real startY, Real width, Real height, 
 	m_2DRender->Enable_Texturing(false);
 	Vector2 prev(halfWidth, 0.0f);
 	Real radius = (halfWidth > halfHeight) ? halfWidth : halfHeight;
-	Int segments = WWMath::Float_To_Long(ceil(static_cast<double>(radius * 4.0f)));
+	Int segments = WWMath::Float_To_Long(ceil(radius * 4.0f));
 	Real step = WWMATH_TWO_PI / (Real)segments;
 	Real angle = 0.0f;
 
@@ -326,7 +306,7 @@ void W3DDisplay::drawRemainingRectClock(Real startX, Real startY, Real width, Re
 	percent = 1.0f - (0.01f * percent);
 	Real sweep = percent * WWMATH_TWO_PI;
 	Real radius = (halfWidth > halfHeight) ? halfWidth : halfHeight;
-	Int segments = WWMath::Float_To_Long(ceil(static_cast<double>(radius * percent * 4.0f)));
+	Int segments = WWMath::Float_To_Long(ceil(radius * percent * 4.0f));
 	Real step = sweep / (Real)segments;
 	Real angle = 0.0f;
 
