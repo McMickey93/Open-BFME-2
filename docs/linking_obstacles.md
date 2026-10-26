@@ -3554,3 +3554,22 @@ targets as `Rva005E39F3`/`Rva005E3BD5` overrides so the compiler-emitted vtordis
 COMDATs replace the placeholder rows.
 Clearance: not cleared.
 Census confirmation: not applicable.
+
+### LINK-069: one-row units held back by unrowed placeholder siblings or a split class name
+Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision:
+`e303e68966` (index 2026-10-26 19:02 at `5ce093a71a`).
+Evidence / affected units:
+- `Code/GameEngine/Source/Common/BfmeConv890.cpp`, `BfmeConv907.cpp` and
+  `BfmeConv821.cpp` each held one matched row beside `present-unmatched` bodies
+  whose externals nothing defines. Completed: the unrowed bodies and their types
+  were dropped (nine `present_unmatched` hatch lines retired); previews LINKS
+  0 -> 34, 0 -> 31 and 0 -> 31.
+- `Code/GameEngine/Source/Common/Rva000647B5Ctor.cpp` named its class
+  `Rva000647B5`, but retail's dtor 0x000647D4 for the same vptrs
+  (0x007C5A5C/0x007C5A24) is rowed as `Rva000647D4` in
+  `GameLogic/Object/LocomotorDerivedDtors.cpp`, so `??1Rva000647B5` stayed
+  unresolved. Completed: the ctor row and the factory 0x00042036
+  (`Rva00042036Factory.cpp`) are respelled on `Rva000647D4`; both stay exact.
+  Preview: LINKS 0 -> 25.
+Clearance: pending.
+Census confirmation: awaiting the next census.
