@@ -24,8 +24,7 @@ typedef float Real;
 // SkirmishFindMap throw() shim (and its existing 0x001F8437 pin): the
 // node layout retails here reads the value at +0x14, exactly the shim's
 // m_value.
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s) throw();
-extern "C" int __cdecl abs(int value) throw();
+#include <stdlib.h>
 
 template <typename T> struct BfmeStringData
 {
