@@ -5,7 +5,7 @@
 // Identity from prev dtor 0x004D5902 layout +0x24 ptr +0x28 len, same 39B shape
 // as next setFileData, callees new[] 0x0002FDE0 and memcpy thunk 0x006291A8,
 // callers 0x004D02AD 0x0058E20D.
-void *__cdecl operator new[](unsigned int size);
+#include <new>
 void __cdecl ji_006291a8();
 
 typedef unsigned int UnsignedInt;

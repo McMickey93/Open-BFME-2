@@ -9,7 +9,7 @@
 #include <string.h>
 #pragma intrinsic(memcpy)
 
-void *__cdecl operator new(unsigned int bytes);
+#include <new>
 
 struct Rva009A3540PairNode
 {

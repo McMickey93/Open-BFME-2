@@ -5,7 +5,7 @@
 // ctor 0x4D65DC, loops to [ebp-0x110], StringBase char ctor 0x37BA0 twice,
 // setters 0x4D65F9 plus 0x4D662D; callers 0x5928FC 0x5941B8;
 // chain from 0x004D662D.
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 #include "ascii_string.h"
 
