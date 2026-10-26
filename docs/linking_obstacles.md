@@ -2089,3 +2089,37 @@ Census confirmation: n/a.
   `do_truename` / `do_falsename` names and check `stlport_numpunct_virtuals.cpp` against
   them. Needs claims on both placeholder units and the data owners.
 - **Census confirmation:** awaiting the next census for 437bc30603.
+
+### LINK-063: `Scripts.cpp` needs `OrCondition`'s destructor, which is rowed under the placeholder `Rva003B262E`
+
+**Status: Blocked on a name decision (`rename.py` refuses; no canonical evidence). Updated: 2026-10-26; inspected revision: 319adf8b41.**
+
+- **Evidence / scope:** `Scripts.cpp` (512 B) has two blockers: unresolved
+  `??1OrCondition@@MAE@XZ`, and an `??_7OrCondition@@6B@` copy that differs from
+  `OrConditionCtor.cpp`'s, the first in link order. Retail's table 0x0081F3F4 has one
+  slot, the 28-byte deleting dtor 0x003B331E, which calls the 68-byte dtor 0x003B262E.
+  Both are matched in `Rva003B262EFinish.cpp` as `??_GRva003B262E@@MAEPAXI@Z` /
+  `??1Rva003B262E@@MAE@XZ` (tier `address`/placeholder). The rowed `??0OrCondition`
+  (0x003B238A) installs that table; the dtor body is Zero Hour's
+  `OrCondition::~OrCondition` (`Scripts.cpp:1352`) without memory pools.
+  `OrConditionCtor.cpp` spells the dtor public (`UAE`) and reaches the placeholder
+  through `/alternatename:??1OrCondition@@UAE@XZ=??1Rva003B262E@@MAE@XZ`, a counted
+  hatch. The three units' deleting-dtor bodies are already byte-identical (retail's
+  28 B), and `??_E` is a weak alias of `??_G` in each.
+- **Planned fix (not applied):** rename `Rva003B262E` to `OrCondition`; spell
+  `OrConditionCtor.cpp`'s dtor protected and drop its alias. All three vtable copies
+  would then name `??_EOrCondition@@MAEPAXI@Z`, and `Scripts.cpp` would resolve its dtor.
+- **Why it is blocked:** `rename.py class` refuses any new name that already appears in
+  the tree (`OrCondition already appears in ...`), whatever the basis, and so does
+  the inferred lane's `apply`, which lands through it. A hand rename needs evidence
+  that would pass as canonical. `canonical:zh` fails: a full `zh_sweep` (918 objects)
+  places no ZH `??1OrCondition@@MAE@XZ` (130 B, pool-based) and the 30-byte ZH
+  `??_G` has no needle. `canonical:bfme1` fails: `bfme1_sweep.py scan` has no placement
+  for either body. The constructor-to-vtable link is a `vtable-slot` hint
+  (`docs/naming.md`), and `??0OrCondition` is itself unverified in `name_tiers.csv`.
+- **Remaining / next check:** a maintainer decision: either `rename.py` admits a
+  rename into an existing class name when the old class is a placeholder whose rows
+  are that class's own table entries, or a class-reconciliation commit adopts one
+  `OrCondition` view and moves both rows. No source was changed.
+- **Clearance:** none.
+- **Census confirmation:** not claimed.
