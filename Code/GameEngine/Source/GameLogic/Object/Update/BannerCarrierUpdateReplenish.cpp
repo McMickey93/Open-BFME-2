@@ -63,7 +63,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit) throw();	// 0x00045411
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
@@ -163,7 +164,7 @@ void BannerCarrierUpdate::rva004973CF()
 	const BannerCarrierUpdateModuleData *data = getBannerCarrierUpdateModuleData();
 	BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(getObject()->getPosition(), data->m_scanHordeDistance, 0,
 		Rva0004584D(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 109),
-			*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype).link(&Rva00261409Filter(player, true, 2)), 1);
+			*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE).link(&Rva00261409Filter(player, true, 2)), 1);
 	Object *other;
 	while ((other = hits.next()) != 0) {
 		if (!other->testStatus(OBJECT_STATUS_RVA004973CF_2)) {

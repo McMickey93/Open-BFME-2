@@ -75,7 +75,8 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit) throw();	// 0x00045411
 	unsigned int m_bits[7];
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // Inherited mask resolves to the real implementation in
 // ActionManagerSpecialPowerChecks.cpp (retail 0x0036CC7A).
@@ -236,7 +237,7 @@ void CurseSpecialPower::triggerAbilityEffect()
 			return;
 		float radius = power->getRadius();
 		Rva0004584D kind(*(BfmeFixedStorage0004543D *)&Rva00045411BitSet(0, 90),
-			*(BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype);
+			*(BfmeFixedStorage0004543D *)&KINDOFMASK_NONE);
 		BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(&m_44, radius, 0,
 			Rva0026119DFilter().link(Rva0004584D(kind).link(&Rva00260EB1Filter(owner, 1, false))), 0);
 		Object *other = hits.next();

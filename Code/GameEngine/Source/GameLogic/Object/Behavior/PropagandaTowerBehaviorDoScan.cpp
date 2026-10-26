@@ -81,7 +81,8 @@ public:
 	BfmeFixedStorage0004543D m_08;
 	BfmeFixedStorage0004543D m_24;
 };
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
@@ -214,7 +215,7 @@ void PropagandaTowerBehavior::doScan()
 
 	BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(us->getPosition(), modData->m_scanRadius, 0,
 		Rva00260EB1Filter(us, 4, false).link(Rva0026119DFilter().link(Rva002611BFFilter(us).link(
-			&Rva0004584D(*(const BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype,
+			&Rva0004584D(*(const BfmeFixedStorage0004543D *)&KINDOFMASK_NONE,
 				(const BfmeFixedStorage0004543D &)Rva00045411BitSet(0, 7))))), 0);
 	Object *obj;
 	while ((obj = hits.next()) != 0) {

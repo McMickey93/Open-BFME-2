@@ -504,7 +504,6 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/OathbreakersFadeAwayBehaviorPoo
 Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000484ADD@PassiveAreaEffectBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03804
 Code/GameEngine/Source/GameLogic/Object/Behavior/PhysicsBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00039085C@PhysicsBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A027A8
 Code/GameEngine/Source/GameLogic/Object/Behavior/PoisonedBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000482F27@PoisonedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037B4
-Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00048191A@PropagandaTowerBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03788
 Code/GameEngine/Source/GameLogic/Object/Behavior/RampageBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000458B0A@RampageBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0344C
 Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004CBCAD@RandomSoundSelectorClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A04370
@@ -622,7 +621,6 @@ Code/GameEngine/Source/GameLogic/Object/SpecialPower/CashHackSpecialPowerPoolKey
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C4521@CloudBreakSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A0423C
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CombineHordeSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C880D@CombineHordeSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04304
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CurseSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CCDEB@CurseSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04398
-Code/GameEngine/Source/GameLogic/Object/SpecialPower/CurseSpecialPowerSlots.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DarknessSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C4E02@DarknessSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04260
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DefectorSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C29D4@DefectorSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041AC
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DeflectSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C54F0@DeflectSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04278
@@ -679,7 +677,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp	wrong-name	
 Code/GameEngine/Source/GameLogic/Object/Update/AutoFindHealingUpdate.cpp	wrong-name	?$S1@?1??rva0004950B4@AutoFindHealingUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A30
 Code/GameEngine/Source/GameLogic/Object/Update/AutoPickUpUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000495CEC@AutoPickUpUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A54
 Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000496A1E@BannerCarrierUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A64
-Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateReplenish.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000497915@BattlePlanUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03AD0
 Code/GameEngine/Source/GameLogic/Object/Update/BeaconClientUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004C9607@BeaconClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04338
 Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00044E054@BloodthirstyUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03384
