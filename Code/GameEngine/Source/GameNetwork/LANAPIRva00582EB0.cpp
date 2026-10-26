@@ -124,7 +124,7 @@ private:
 };
 
 extern AsciiString __cdecl GenerateGameOptionsString(void);
-void __cdecl operator delete(void *memory);
+#include <new>
 
 void LANAPI::rva00582EB0(LANMessage *message, const BfmeNetAddress *address, Bool flag)
 {

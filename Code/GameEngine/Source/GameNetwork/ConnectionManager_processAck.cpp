@@ -30,7 +30,7 @@ enum NetCommandType
 
 enum { NUM_CONNECTIONS = 8 };
 
-void __cdecl operator delete(void *block) throw();
+#include <new>
 
 class NetCommandRef;
 

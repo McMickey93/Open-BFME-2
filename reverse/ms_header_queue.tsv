@@ -1179,8 +1179,6 @@ Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldPlayerDtor.cpp	dr
 Code/GameEngine/Source/GameNetwork/BFMEConnectionManager_sendCommands.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameNetwork/Connection.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	1	0	<windows.h>,<time.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same,time_t:same
 Code/GameEngine/Source/GameNetwork/ConnectionManagerParseUserList.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	atoi:same
-Code/GameEngine/Source/GameNetwork/ConnectionManager_processAck.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/GameEngine/Source/GameNetwork/ConnectionManager_sendFile.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/GameNetwork/ConnectionProcessAck.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameNetwork/ConnectionRetryMetrics.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameNetwork/Connection_doSend.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
@@ -1202,7 +1200,6 @@ Code/GameEngine/Source/GameNetwork/LANAPIConstructor.cpp	drop-in candidate	same	
 Code/GameEngine/Source/GameNetwork/LANAPIRequestSetName.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameNetwork/LANAPIReset.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/GameNetwork/LANAPIRva00449693.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
-Code/GameEngine/Source/GameNetwork/LANAPIRva00582EB0.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/GameNetwork/LANAPI_RequestGameOptions.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strncpy:same
 Code/GameEngine/Source/GameNetwork/LANAPI_RequestGameStartTimer.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same

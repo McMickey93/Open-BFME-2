@@ -116,7 +116,7 @@ public:
 
 #undef LAN_SLOT
 
-void operator delete[](void *p);
+#include <new>
 
 extern FileSystem *TheFileSystem;
 extern LANAPI *TheLAN;
