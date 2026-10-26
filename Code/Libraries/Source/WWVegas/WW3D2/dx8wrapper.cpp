@@ -682,7 +682,10 @@ public:
 	BfmeResetDebug &operator<<(const Hex &) { SetPrefixAndRadix("0x",16); return *this; }
 	BfmeResetDebug &operator<<(const Dec &) { SetPrefixAndRadix("",10); return *this; }
 };
-extern BfmeResetDebug *BfmeResetDebugInstance;
+// The debug singleton is the real theDebug (DebugPreStaticInit.cpp); this TU
+// reaches it through the BfmeResetDebug view.
+class Debug;
+extern Debug *theDebug;
 
 // BFME2 resource-manager views recovered from Reset_Device and its callees.
 // Bfme-prefixed names describe observed roles, not original source spellings.
@@ -809,8 +812,8 @@ bool DX8Wrapper::Reset_Device(bool reload_assets)
 				if (bfmeResetAttempts>=50) {
 					bfmeResetAttempts=0;
 					BfmeResetDebug::SkipNext(true);
-					BfmeResetDebugInstance->SkipNext();
-					(BfmeResetDebugInstance->CrashBegin(0,0,0)<<"Direct3D device reset failed after multiple attempts").CrashDone(true);
+					((BfmeResetDebug *)theDebug)->SkipNext();
+					(((BfmeResetDebug *)theDebug)->CrashBegin(0,0,0)<<"Direct3D device reset failed after multiple attempts").CrashDone(true);
 				}
 				return false;
 			}
@@ -2056,7 +2059,7 @@ extern void *bfmeData00DEDBE8;
 // Render2DClass resolution and shadow-map clearing are gone.
 bool DX8Wrapper::Init(void * hwnd, bool lite)
 {
-	BfmeResetDebugInstance->AddHResultTranslator(100,bfmeDX8HResultTranslator,0);
+	((BfmeResetDebug *)theDebug)->AddHResultTranslator(100,bfmeDX8HResultTranslator,0);
 
 	// zero memory
 	memset(Textures,0,sizeof(IDirect3DBaseTexture8*)*MAX_TEXTURE_STAGES);
@@ -3851,8 +3854,6 @@ void DX8Wrapper::Draw_Sorting_IB_VB(unsigned primitive_type,unsigned start_index
  DX8_RECORD_RENDER(polygon_count,vertex_count,bfmeApplyRenderState.shader);
 }
 
-// ?BfmeResetDebugInstance@@3PAVBfmeResetDebug@@A: the global at this VA is ?theDebug@@3PAVDebug@@A; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?BfmeResetDebugInstance@@3PAVBfmeResetDebug@@A=?theDebug@@3PAVDebug@@A")
 // ?bfmeSkipFixedFunctionState@@3_NA: matched references place it at VA 0xdeda20.
 bool bfmeSkipFixedFunctionState;
 // ?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A: the global at this VA is ?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A; this name is an alias for it.
@@ -3861,8 +3862,6 @@ bool bfmeSkipFixedFunctionState;
 float bfmeProjectionBias;
 // ?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A: the global at VA 0xdf363c is ?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A.
 #pragma comment(linker, "/alternatename:?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A=?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A")
-// ?BfmeResetDebugInstance@@3PAVBfmeResetDebug@@A: the global at VA 0xde0880 is ?theDebug@@3PAVDebug@@A.
-#pragma comment(linker, "/alternatename:?BfmeResetDebugInstance@@3PAVBfmeResetDebug@@A=?theDebug@@3PAVDebug@@A")
 // ?bfmeApplyRenderState@@3UBfmeApplyRenderState@@A: the global at VA 0xdee5d8 is ?render_state@DX8Wrapper@@1URenderStateStruct@@A.
 #pragma comment(linker, "/alternatename:?bfmeApplyRenderState@@3UBfmeApplyRenderState@@A=?render_state@DX8Wrapper@@1URenderStateStruct@@A")
 

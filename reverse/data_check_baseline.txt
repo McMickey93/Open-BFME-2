@@ -787,7 +787,6 @@ Code/Libraries/Source/WWVegas/WW3D2/dx8caps.cpp	wrong-name	_CapsWorkString	0x009
 Code/Libraries/Source/WWVegas/WW3D2/dx8indexbuffer.cpp	duplicate-def	__DynamicDX8IndexBufferSize	0x009B62D4
 Code/Libraries/Source/WWVegas/WW3D2/dx8indexbuffer.cpp	wrong-name	__DynamicDX8IndexBufferSize	0x009B62D4
 Code/Libraries/Source/WWVegas/WW3D2/dx8renderer.cpp	wrong-name	?RendererPtr00DF363C@@3PAURendererFVFDeleteListView@@A	0x009F363C
-Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?BfmeResetDebugInstance@@3PAVBfmeResetDebug@@A	0x009E0880
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A	0x009F363C
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?ShutdownMeshRenderer@@3PAVDX8MeshRendererClass@@A	0x009F363C
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?bfmeApplyRenderState@@3UBfmeApplyRenderState@@A	0x009EE5D8
