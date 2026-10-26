@@ -8183,3 +8183,5 @@ Code/GameEngine/Source/Common/RTS/Rva00739BE0.cpp|param|fast_floor|f,785347a08fb
 Code/GameEngine/Source/Common/RTS/Rva00739BE0.cpp|param|fast_ceil|f,86bdaa56285337bf6a4b7b2f,gpt-6.1-sol,w3-10261526-9,w-46dfa4623b23,2026-10-26
 Code/GameEngine/Source/Common/RTS/Rva00739BE0.cpp|param|fast_round|f,30984f943e01b333510ac95a,gpt-6.1-sol,w3-10261526-9,w-46dfa4623b23,2026-10-26
 Code/GameEngine/Source/GameNetwork/Rva00318333.cpp|local|Rva00318333::rva00318768|o2,f7423e88b64db4a227377496,gpt-6.1-sol,w3-10261526-10,w-46dfa4623b23,2026-10-26
+Code/GameEngine/Source/Common/Rva005C436EDispatch.cpp|function|0x005C436E|rva005C436E,818e05bcf6eb74bd53204885,gpt-6.1-sol,w4-10261541-5,w-eb83eac9adc1,2026-10-26
+Code/GameEngine/Source/Common/Rva002860CF.cpp|class||Rva002860CFS,256bc65e1f8967e661ee7e53,gpt-6.1-sol,w4-10261541-6,w-eb83eac9adc1,2026-10-26
