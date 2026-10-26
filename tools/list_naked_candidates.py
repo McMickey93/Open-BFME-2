@@ -652,7 +652,7 @@ def main():
         return
     if not args.ranked:
         if args.claim:
-            claims.settle()    # release this checkout's landings origin/master now holds
+            claims.settle(defer=True)    # rides on the claim push; release this checkout's landings origin/master now holds
             selected, meta, acquired = claim_choice(candidates)
         else:
             selected, meta = select_candidate(candidates)

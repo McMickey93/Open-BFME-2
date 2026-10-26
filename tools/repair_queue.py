@@ -2103,7 +2103,7 @@ def serve_ms_headers(args):
     """Use the shared picker's symmetric locks and atomic acquisition, not raw refs."""
     import next_work
     if args.claim:
-        next_work.claims.settle()
+        next_work.claims.settle(defer=True)    # rides on the claim push
     items = next_work.without_busy(ms_header_items(args.cls), next_work.busy_keys())
     limit = args.limit if args.limit is not None else (1 if args.claim else 20)
     print(f"{len(items)} available file(s) define Microsoft-header names locally; "

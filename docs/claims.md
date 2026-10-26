@@ -36,6 +36,35 @@ ignored header) keeps its claim until it expires.
 
 Release a banked, blocked or abandoned body with `claims.py release 0xRVA`.
 
+During steady work, releases ride on the next acquisition. The pickers'
+settlement queues every release (landed bodies, finished scopes and the file locks they leave unneeded)
+and the seat's next claim push carries it in the same atomic transaction; what
+no claim push takes is pushed once when the picker exits. `claims.py release`
+deletes a body and its file locks in one atomic push. A task costs one claim
+push plus its direct master push in steady work (previously up to four total).
+The final settlement without a next claim costs one extra push; opportunistic
+GC and contention retries are additional maintenance traffic.
+
+## Collecting expired claims
+
+`python3 tools/claims.py gc` deletes claim and lock refs whose record expired
+more than an hour ago (`--grace-minutes`, never below 60), in atomic batches
+(`--batch`, default 150, also bounded by Windows' command line) paced by
+`--max-per-minute` (default 600), capped by
+`--max`; `--dry-run` lists them. Each ref is deleted only at the sha gc read
+(`--force-with-lease`), so a claim renewed or taken over meanwhile survives,
+and only the configured write namespace is touched. Settlement also runs a
+random slice of 50 at most once per 10 minutes per host (`BFME_CLAIM_GC=off`
+disables it), so no machine owns collection.
+
+## Pacing
+
+Contended claim pushes and fetches retry with full-jitter exponential backoff
+(base 0.5 s, capped at 30 s). Each host spaces its claim pushes through a
+shared bucket under the machine-wide temp dir: 60 per minute per remote with a
+burst of 8 (`BFME_CLAIM_PUSHES_PER_MINUTE`, 0 unpaced; `BFME_CLAIM_HOST_DIR`
+moves the state files).
+
 ## Renewing
 
 Renew before expiry with `claims.py renew 0xRVA` when work lasts longer than four

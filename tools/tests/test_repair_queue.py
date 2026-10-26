@@ -2483,7 +2483,7 @@ def test_ms_headers_cli_claim_retries_atomic_file_contention(tmp_path, seats, mo
     seats("a")
     assert next_work.claim_choice([items[0]], "ms-headers")[0] == items[0]
     seats("b")
-    monkeypatch.setattr(claims, "settle", lambda: None)
+    monkeypatch.setattr(claims, "settle", lambda **_: None)
     monkeypatch.setattr(next_work, "busy_keys", lambda: set())  # stale view; acquire must arbitrate
     assert rq.main(["ms-headers", "--claim"]) == 0
     out = capsys.readouterr()

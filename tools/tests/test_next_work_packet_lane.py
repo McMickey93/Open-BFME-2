@@ -237,7 +237,7 @@ def test_packet_claims_never_escape_the_requested_shard(
         return next_work.claims.ClaimResult(list(rvas), [])
 
     monkeypatch.setattr(next_work.claims, "acquire", acquire)
-    monkeypatch.setattr(next_work.claims, "settle", lambda: None)
+    monkeypatch.setattr(next_work.claims, "settle", lambda **_: None)
     output = json.loads(run_queue(monkeypatch, capsys, "--tier", "packet", "--claim",
                                   "--json", "--shard", shard))
     assert claimed == expected

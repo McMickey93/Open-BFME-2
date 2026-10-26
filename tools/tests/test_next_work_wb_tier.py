@@ -113,7 +113,8 @@ def _main(monkeypatch, argv, claim=None):
     monkeypatch.setattr(next_work, "check_ledger", lambda: "ledger healthy")
     monkeypatch.setattr(build, "load_claim_rows",
                         lambda *, counting_dumps, matched_only: list(ROWS))
-    monkeypatch.setattr(next_work.claims, "busy_rvas", lambda: {0x0F000300})
+    monkeypatch.setattr(next_work, "busy_keys", lambda: {0x0F000300})
+    monkeypatch.setattr(next_work.claims, "settle", lambda **_: [])
     monkeypatch.setattr(next_work, "_ghidra_sizes", lambda: {})
 
     def unrelated(*args, **kwargs):
@@ -123,7 +124,10 @@ def _main(monkeypatch, argv, claim=None):
                  "reloc_named_candidates", "anchored_candidates", "packet_candidates"]:
         monkeypatch.setattr(next_work, name, unrelated)
     if claim:
-        monkeypatch.setattr(next_work.claims, "claim", claim)
+        def acquire(targets, work=(), note=""):
+            got, refused = claim(targets, note=note)
+            return next_work.claims.ClaimResult(got, refused)
+        monkeypatch.setattr(next_work.claims, "acquire", acquire)
     next_work.main()
 
 

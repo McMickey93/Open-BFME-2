@@ -859,7 +859,7 @@ def serve_dx(args):
     file:PATH scope claim, moving to the next unit when a peer holds one."""
     import dx_migration
     if args.claim:
-        claims.settle()
+        claims.settle(defer=True)    # rides on the claim push
     for record in dx_migration.servable():
         scope = "file:" + record["source"]
         # `class` here is a migration classification, not a C++ class scope.
@@ -2045,7 +2045,7 @@ def main():
     settled, debt_suppressed = False, 0
     if not args.ranked and (args.tier is None or args.tier in DEBT_TIERS):
         if args.claim:
-            claims.settle()    # release this checkout's landings (and finished scopes) origin/master holds
+            claims.settle(defer=True)    # rides on the claim push; release this checkout's landings (and finished scopes) origin/master holds
             settled = True
         picked = pick_debt(debt_order() if args.tier is None else [args.tier], args, busy_keys())
         if picked["candidate"] is not None or args.tier is not None:
@@ -2242,7 +2242,7 @@ def main():
                                        wb=wb, data=debt["data"], header=debt["header"],
                                        identity=debt["identity"])
     if args.claim and not settled:
-        claims.settle()    # release this checkout's landings origin/master now holds
+        claims.settle(defer=True)    # rides on the claim push; release this checkout's landings origin/master now holds
     suppressed += debt_suppressed
     candidate, acquired = (claim_choice(candidates, label) if args.claim else
                            (weighted_choice(candidates) if candidates else None, []))

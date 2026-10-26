@@ -28,6 +28,8 @@ what they serve, settling this checkout's published landings first.
   python3 tools/claims.py release 0xRVA [...]  # release your own claims
   python3 tools/claims.py release --landed [SHA]
       # release claims whose rows are ON origin/master (SHA: rows it names by Claim-Lease trailer)
+  python3 tools/claims.py gc [--max N] [--max-per-minute N] [--dry-run]
+      # delete refs expired over an hour, fenced; any seat may run it
 
 FAIL-CLOSED (Open-BFME-1 2026-09-29, ported 2026-10-09). claim() used to
 return ([], []) when origin was unreachable, which a caller cannot tell from
@@ -98,14 +100,17 @@ The writes remain fenced within one namespace: different namespaces cannot
 arbitrate simultaneous new claims atomically, so use one namespace per fleet.
 """
 import argparse
+import atexit
 import hashlib
 import json
+import math
 import os
 import random
 import re
 import socket
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 import uuid
@@ -161,6 +166,71 @@ SEEN = "refs/worktree/claims-seen/"  # local mirror; never pushed
 TTL_HOURS = float(os.environ.get("BFME_CLAIM_TTL_HOURS", "4"))
 REMOTE = os.environ.get("BFME_CLAIM_REMOTE", "origin")
 PENDING = Path("build") / "claims" / "landed_pending.jsonl"
+
+# ---- pacing (Stage 2, item 4b) ----------------------------------------------
+# Every seat pushes claims directly, so contention is met with full-jitter
+# exponential backoff, and each host spaces its claim pushes through a shared
+# GCRA bucket: a timestamp file under the machine-wide temp dir, one per
+# claims remote, rewritten under a file lock.
+BACKOFF_BASE = 0.5          # seconds; attempt n sleeps uniform(0, min(cap, base * 2**n))
+BACKOFF_CAP = 30.0
+PUSHES_PER_MINUTE = 60.0    # per host and remote; BFME_CLAIM_PUSHES_PER_MINUTE, 0 = unpaced
+PUSH_BURST = 8              # pushes a quiet host may send back to back
+HOST_DIR = Path(os.environ.get("BFME_CLAIM_HOST_DIR") or tempfile.gettempdir())
+_HOST_THREADS = threading.Lock()
+
+
+def _backoff(attempt, rng=random):
+    """Seconds to wait before retry `attempt` (0-based): full jitter, capped."""
+    return rng.uniform(0, min(BACKOFF_CAP, BACKOFF_BASE * (2 ** attempt)))
+
+
+@lru_cache(maxsize=8)
+def _remote_tag(root):
+    url = _git("remote", "get-url", REMOTE, cwd=root).stdout.strip() or REMOTE
+    return hashlib.sha1(url.encode("utf-8")).hexdigest()[:12]
+
+
+@contextmanager
+def _host_file(name, root=None):
+    """Yield the path of a per-host, per-remote state file, locked against every
+    process and thread on this machine."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from portable_lock import lock, unlock
+    HOST_DIR.mkdir(parents=True, exist_ok=True)
+    path = HOST_DIR / f"bfme-claims-{name}-{_remote_tag(str(root or ROOT))}"
+    with _HOST_THREADS, open(path.with_suffix(".lock"), "a+b") as handle:
+        lock(handle, exclusive=True)
+        try:
+            yield path
+        finally:
+            unlock(handle)
+
+
+def _read_stamp(path):
+    try:
+        stamp = float(path.read_text(encoding="utf-8"))
+        return stamp if math.isfinite(stamp) else 0.0
+    except (OSError, ValueError):
+        return 0.0
+
+
+def _pace(root=None):
+    """Reserve this host's next claim-push slot and sleep until it; returns the wait."""
+    rate = float(os.environ.get("BFME_CLAIM_PUSHES_PER_MINUTE", PUSHES_PER_MINUTE))
+    if not math.isfinite(rate):
+        raise ValueError("BFME_CLAIM_PUSHES_PER_MINUTE must be finite")
+    if rate <= 0:
+        return 0.0
+    interval = 60.0 / rate
+    with _host_file("pacer", root) as path:
+        now = time.time()
+        due = min(max(_read_stamp(path), now), now + 3600)   # a clock jump never stalls an hour
+        wait = max(0.0, due - now - (PUSH_BURST - 1) * interval)
+        path.write_text(repr(due + interval), encoding="utf-8")
+    if wait:
+        time.sleep(wait)
+    return wait
 
 
 class ClaimsUnavailable(RuntimeError):
@@ -219,6 +289,8 @@ def _git(*args, cwd=None, input_text=None, timeout=60):
     # claims on Open-BFME-1 (review 2026-09-29). Every caller passes a
     # checkout root, so discovery may start there and nowhere else.
     env = _git_env(cwd)
+    if args[:1] == ("push",):
+        _pace(cwd)
     try:
         return subprocess.run(["git", *extra, *args], cwd=cwd, capture_output=True, text=True,
                               input=input_text, timeout=timeout, env=env)
@@ -440,7 +512,7 @@ def fetch(root=None):
         if got.returncode == 0:
             break
         if attempt < 4:
-            time.sleep(random.uniform(0.04, 0.16) * (attempt + 1))
+            time.sleep(_backoff(attempt))
     if got.returncode and any(text in got.stderr.lower() for text in
                              ("not our ref", "couldn't find remote ref", "could not find remote ref",
                               "missing ref", "cannot lock ref")):
@@ -808,7 +880,7 @@ def _rollback(fresh, tokens, who, root, refused=()):
                 done.add(key)
                 break
             if attempt < 4:
-                time.sleep(random.uniform(0.04, 0.16) * (attempt + 1))
+                time.sleep(_backoff(attempt))
     _invalidate_snapshot(root)
     active.cache_clear()
     if len(done) != len(fresh):
@@ -824,18 +896,39 @@ def release_orphans(root=None, who=None):
     by hand. Returns the released keys; origin trouble releases nothing."""
     if not fetch(root):
         return []
-    names = _names(who or owner(root), root)
-    mine = {k: v for k, v in live(_read_local(root)).items() if v[1].get("owner") in names}
-    needed = lock_keys({k for k, (_, info) in mine.items() if not info.get("lock")}, root,
-                       records={k: info for k, (_, info) in mine.items()})
-    free = {k: sha for k, (sha, info) in mine.items() if info.get("lock") and k not in needed}
+    free = _orphan_locks(root, who)
     return release(list(free), who=who, root=root, tokens=free) if free else []
 
 
-def release_work(keys, who=None, root=None, tokens=None):
-    """release() `keys`, then the file locks they leave unneeded (release_orphans)."""
-    done = release(keys, who=who, root=root, tokens=tokens) if keys else []
-    return list(done) + release_orphans(root=root, who=who)
+def _orphan_locks(root=None, who=None, gone=()):
+    """{key: sha} of this owner's lock-only refs in the fetched snapshot that no
+    other live claim of its needs once the keys in `gone` are deleted."""
+    names = _names(who or owner(root), root)
+    gone = set(gone)
+    mine = {k: v for k, v in live(_read_local(root)).items()
+            if v[1].get("owner") in names and k not in gone}
+    needed = lock_keys({k for k, (_, info) in mine.items() if not info.get("lock")}, root,
+                       records={k: info for k, (_, info) in mine.items()})
+    return {k: sha for k, (sha, info) in mine.items() if info.get("lock") and k not in needed}
+
+
+def release_work(keys, who=None, root=None, tokens=None, force=False):
+    """release() `keys` and the file locks they leave unneeded, in one atomic push."""
+    keys = _ints(keys)
+    _invalidate_snapshot(root)
+    if not fetch(root):
+        print("claims: origin unreachable; releasing nothing (claims expire on their own)", file=sys.stderr)
+        return []
+    plan = _eligible(keys, who, root, tokens, force=force) if keys else {}
+    holders = {who or owner(root)}
+    if force:
+        current = _read_local(root)
+        holders.update(current[k][1].get("owner") for k in plan)
+    for holder in holders:
+        plan.update(_orphan_locks(root, holder, gone=plan))
+    done = _drop(plan, who, root) if plan else []
+    active.cache_clear()
+    return done
 
 
 def claim(rvas, who=None, ttl_hours=TTL_HOURS, note="", root=None, locks=(), atomic_only=False, work_locks=()):
@@ -903,20 +996,34 @@ def claim(rvas, who=None, ttl_hours=TTL_HOURS, note="", root=None, locks=(), ato
         return (f"--force-with-lease={ref_of(rva)}:{old[0]}" if old else None,
                 f"{sha}:{ref_of(rva)}" if not old else f"+{sha}:{ref_of(rva)}")
 
-    def push(batch):
-        leases = [s[0] for s in map(spec, batch) if s[0]]
-        refspecs = [spec(r)[1] for r in batch]
+    def push(batch, deletions=((), ())):
+        leases = [s[0] for s in map(spec, batch) if s[0]] + list(deletions[0])
+        refspecs = [spec(r)[1] for r in batch] + list(deletions[1])
         return _git("push", "-q", "--atomic", *leases, REMOTE, *refspecs,
                     cwd=root, timeout=120).returncode == 0
 
+    # The releases settle(defer=True) queued ride in this push: one transaction
+    # instead of one more push. A key this push writes is needed again, so its
+    # deletion is dropped. If the combined push fails they go on their own.
+    outbox, outbox_who, settled = _take_outbox(root, exclude=wanted) if wanted else ({}, None, ())
     claimed, failed = [], []
-    if wanted and push(wanted):
+    with _guard_deletions(outbox, settled, root) as outbox:
+        deletions = _deletion(outbox, outbox_who or who, root) if outbox else ((), (), None)
+        accepted = bool(wanted) and push(wanted, deletions)
+    if accepted:
         claimed = list(wanted)
-    elif atomic_only:
-        failed = list(wanted)
+        for key in outbox:
+            _mirror(key, deletions[2], root)
+        _settled(root, settled, outbox)
+        outbox = {}
     else:
-        for rva in wanted:              # somebody raced us for part of the batch
-            (claimed if push([rva]) else failed).append(rva)
+        if atomic_only:
+            failed = list(wanted)
+        else:
+            if wanted:
+                time.sleep(_backoff(0))
+            for rva in wanted:              # somebody raced us for part of the batch
+                (claimed if push([rva]) else failed).append(rva)
     unconfirmed = []
     for attempt in range(4):
         if not failed:
@@ -940,6 +1047,7 @@ def claim(rvas, who=None, ttl_hours=TTL_HOURS, note="", root=None, locks=(), ato
                                       reachable=reachable)
             error.tokens = {r: token(r) for r in uncertain}
             error.prior = prior
+            defer_release(outbox, root, outbox_who, settled)     # retried at exit
             raise error
         after = _read_local(root)
         other = live(_read_visible(root, other_only=True))
@@ -960,13 +1068,17 @@ def claim(rvas, who=None, ttl_hours=TTL_HOURS, note="", root=None, locks=(), ato
         # held its locks. Refresh the leases and retry instead of serving it unclaimed.
         current = after
         shas.clear()
-        time.sleep(random.uniform(0.04, 0.16) * (attempt + 1))
+        time.sleep(_backoff(attempt))
         failed = list(unconfirmed)
         if push(failed):
             claimed.extend(failed)
             unconfirmed = []
             break
         unconfirmed = []
+    if outbox:
+        # The combined push was refused. Delete what is still at its sha on its
+        # own, after the claim, from the snapshot just re-read.
+        _settled(root, settled, _drop(outbox, outbox_who or who, root, entries=settled))
     claimed = sorted(claimed, key=_order)
     refused = sorted(set(rvas) - set(claimed), key=_order)
     for rva in claimed:
@@ -1025,21 +1137,26 @@ def renew(tokens, who=None, ttl_hours=TTL_HOURS, note="", root=None):
                       scope=entry[1].get("scope", ""), lock=entry[1].get("lock", False),
                       locks=entry[1].get("locks", ()))
         token = entry[0]                                    # the generation we replace
-        pushed = _git("push", "-q", f"--force-with-lease={ref_of(rva)}:{token}", REMOTE,
-                      f"+{sha}:{ref_of(rva)}", cwd=root, timeout=120)
-        if pushed.returncode == 0:
-            renewed[rva] = sha
-            _mirror(rva, sha, root)
-            continue
-        if not fetch(root):
-            raise ClaimsUnavailable("claims: renew push failed and origin cannot be re-read")
-        entry = _read_local(root).get(rva)
-        if entry and entry[0] == sha:
-            renewed[rva] = sha
-        elif entry and entry[0] == token:
-            raise ClaimsUnavailable(f"claims: origin did not accept the renewal of {ref_of(rva)}")
-        else:
-            lost.append(rva)
+        for attempt in range(5):
+            pushed = _git("push", "-q", f"--force-with-lease={ref_of(rva)}:{token}", REMOTE,
+                          f"+{sha}:{ref_of(rva)}", cwd=root, timeout=120)
+            if pushed.returncode == 0:
+                renewed[rva] = sha
+                _mirror(rva, sha, root)
+                break
+            _invalidate_snapshot(root)
+            if not fetch(root):
+                raise ClaimsUnavailable("claims: renew push failed and origin cannot be re-read")
+            entry = _read_local(root).get(rva)
+            if entry and entry[0] == sha:
+                renewed[rva] = sha
+                break
+            if not entry or entry[0] != token:
+                lost.append(rva)
+                break
+            if attempt == 4:
+                raise ClaimsUnavailable(f"claims: origin did not accept the renewal of {ref_of(rva)}")
+            time.sleep(_backoff(attempt))
     active.cache_clear()
     return renewed, lost
 
@@ -1116,59 +1233,320 @@ def release(rvas, who=None, force=False, root=None, tokens=None):
     trouble releases nothing (with a warning): claims expire on their own.
     A legacy-owner claim (see legacy_owner) counts as the default owner's.
     BFME2: the batch goes in one atomic push (each ref leased at the
-    generation read here), one by one only if that fails; a branch-namespace
+    generation read here), with contended batches retried together; a branch-namespace
     host overwrites the claim with an expired record instead of deleting it."""
     rvas = _ints(rvas)
     if not rvas:
         return []
-    who = who or owner(root)
-    names = _names(who, root)
     _invalidate_snapshot(root)  # deletion must use a fresh snapshot, even inside a picker
     if not fetch(root):
         print("claims: origin unreachable; releasing nothing (claims expire on their own)", file=sys.stderr)
         return []
-    current = _read_local(root)
-    tokens = {key_of(r): t for r, t in (tokens or {}).items()}
-    eligible = []
-    for rva in rvas:
-        entry = current.get(rva)
-        if not entry or (entry[1].get("owner") not in names and not force):
-            continue
-        if rva in tokens and entry[0] != tokens[rva]:
-            continue                    # taken over since: not ours to delete
-        eligible.append((rva, entry[0]))
-
-    def drop(batch):
-        leases = [f"--force-with-lease={ref_of(rva)}:{sha}" for rva, sha in batch]
-        expired = None
-        if NS.startswith("refs/heads/"):
-            # Branch-only hosts cannot delete a branch: overwrite the claim
-            # with an already-expired record, which every reader ignores.
-            expired = _record(who, -1, "released", root)
-            refs = [f"+{expired}:{ref_of(rva)}" for rva, _ in batch]
-        else:
-            refs = [f":{ref_of(rva)}" for rva, _ in batch]
-        for attempt in range(5):
-            if _git("push", "-q", "--atomic", *leases, REMOTE, *refs, cwd=root, timeout=120).returncode == 0:
-                break
-            if attempt == 4:
-                return False
-            time.sleep(random.uniform(0.04, 0.16) * (attempt + 1))
-        for rva, _ in batch:
-            _mirror(rva, expired, root)
-        return True
-
-    done = []
-    if eligible and drop(eligible):
-        done = [rva for rva, _ in eligible]
-    elif eligible:
-        # One owner may have renewed a ref after our fetch. Let that body stay
-        # protected while clearing every other unchanged ref in the batch.
-        for entry in eligible:
-            if drop([entry]):
-                done.append(entry[0])
+    done = _drop(_eligible(rvas, who, root, tokens, force=force), who, root)
     active.cache_clear()
     return done
+
+
+def _eligible(keys, who=None, root=None, tokens=None, force=False, current=None):
+    """{key: sha} of `keys` that release() may delete from the fetched snapshot:
+    `who`'s own (any, with force) and, with `tokens`, still at that token."""
+    names = _names(who or owner(root), root)
+    current = _read_local(root) if current is None else current
+    tokens = {key_of(r): t for r, t in (tokens or {}).items()}
+    out = {}
+    for key in _ints(keys):
+        entry = current.get(key)
+        if not entry or (entry[1].get("owner") not in names and not force):
+            continue
+        if key in tokens and entry[0] != tokens[key]:
+            continue                    # taken over since: not ours to delete
+        out[key] = entry[0]
+    return out
+
+
+def _safe_deletions(pairs, root=None):
+    """Keep observed tokens, and retain locks needed by any surviving body.
+
+    In particular, a renewal may move a body's token before its file lock's
+    heartbeat lands. Retrying only the unchanged lock would free live work.
+    """
+    current = _read_local(root)
+    changed = {k for k, sha in pairs.items() if current.get(k, (None,))[0] != sha}
+    pairs = {k: sha for k, sha in pairs.items() if current.get(k, (None,))[0] == sha}
+    records = {k: info for k, (_, info) in current.items()}
+    # A moved dependent lock also keeps its body: never split their release
+    # into separate transactions merely because one lease was refused.
+    pairs = {k: sha for k, sha in pairs.items()
+             if current[k][1].get("lock") or not (lock_keys({k}, root, records=records) & changed)}
+    records = {k: info for k, (_, info) in live(current).items()
+               if k not in pairs and not info.get("lock")}
+    needed = lock_keys(records, root, records=records)
+    return {k: sha for k, sha in pairs.items()
+            if not current[k][1].get("lock") or k not in needed}
+
+
+@contextmanager
+def _guard_deletions(pairs, entries=(), root=None):
+    """Keep unevaluated landings claimed through a deferred deletion's push.
+
+    queue_landed uses the same lock. Evidence queued since settlement must
+    neither be released by the old plan nor race its actual transaction.
+    """
+    if not pairs:
+        yield {}
+        return
+    if not entries:
+        yield _safe_deletions(pairs, root)
+        return
+    evaluated = {text for _, text in entries}
+    with _queue_lock(root) as path:
+        hold = {int(e["rva"], 16) for e in _read_queue(path)
+                if json.dumps(e, sort_keys=True) not in evaluated}
+        yield _safe_deletions({k: sha for k, sha in pairs.items() if k not in hold}, root)
+
+
+def _deletion(pairs, who=None, root=None):
+    """(lease args, refspecs, expired record) deleting each ref of `pairs`
+    {key: sha} only while it still carries that sha. Branch-only hosts cannot
+    delete a branch: they overwrite the claim with an already-expired record,
+    which every reader ignores."""
+    leases = [f"--force-with-lease={ref_of(key)}:{sha}" for key, sha in pairs.items()]
+    expired = _record(who or owner(root), -1, "released", root) if NS.startswith("refs/heads/") else None
+    refs = [f"+{expired}:{ref_of(key)}" if expired else f":{ref_of(key)}" for key in pairs]
+    return leases, refs, expired
+
+
+def _drop(pairs, who=None, root=None, entries=()):
+    """Delete `pairs` {key: sha} in one atomic, lease-fenced push. A refused
+    push is re-read: refs that moved (renewed, taken over, already gone) are
+    left alone and the rest retried together. Returns the
+    deleted keys."""
+    pairs = dict(pairs)
+    done = []
+    for attempt in range(5):
+        if not pairs:
+            break
+        with _guard_deletions(pairs, entries, root) as pairs:
+            if not pairs:
+                break
+            leases, refs, expired = _deletion(pairs, who, root)
+            if _git("push", "-q", "--atomic", *leases, REMOTE, *refs, cwd=root, timeout=120).returncode == 0:
+                for key in pairs:
+                    _mirror(key, expired, root)
+                done += list(pairs)
+                break
+        if attempt == 4:
+            break
+        time.sleep(_backoff(attempt))
+        _invalidate_snapshot(root)
+        fetch(root)  # the next guard rechecks every token and dependent lock together
+    return sorted(done, key=_order)
+
+
+# ---- fewer pushes per task (Stage 2, item 4c) ------------------------------
+# settle(defer=True) -- what the pickers run -- queues its fenced deletions
+# here instead of pushing them; the seat's next claim() push carries them in
+# its own atomic transaction. Whatever no claim push took is flushed in one
+# push when the process exits.
+_OUTBOX = {}
+_OUTBOX_LOCK = threading.Lock()
+_OUTBOX_HOOKED = []
+
+
+def _outbox_key(root):
+    return str(Path(root or ROOT).resolve())
+
+
+def defer_release(pairs, root=None, who=None, entries=()):
+    """Queue fenced deletions {key: sha} for the next claim push of `root`;
+    `entries` [(key, queued landing JSON)] are forgotten once their key is deleted."""
+    if not pairs:
+        return
+    with _OUTBOX_LOCK:
+        box = _OUTBOX.setdefault(_outbox_key(root), {"who": who, "pairs": {}, "entries": set()})
+        box["pairs"].update(pairs)
+        box["entries"].update(entries)
+        if not _OUTBOX_HOOKED:
+            _OUTBOX_HOOKED.append(atexit.register(_flush_all))
+
+
+def _take_outbox(root=None, exclude=()):
+    """Remove and return ({key: sha}, who, entries) for `root`; keys in `exclude`
+    (the claim push rewrites them, so they are needed again) are dropped."""
+    exclude = set(exclude)
+    with _OUTBOX_LOCK:
+        box = _OUTBOX.pop(_outbox_key(root), None) or {"who": None, "pairs": {}, "entries": set()}
+    return ({k: sha for k, sha in box["pairs"].items() if k not in exclude}, box["who"],
+            box["entries"])
+
+
+def _settled(root, entries, done):
+    """Forget the queued landings whose claims `done` just deleted."""
+    done = set(done)
+    _forget_landed(root, {text for key, text in entries if key in done})
+
+
+def flush_outbox(root=None):
+    """Push the deferred deletions of `root` now; returns the deleted keys."""
+    if os.environ.get("BFME_CLAIMS", "on") == "off":
+        return []
+    pairs, who, entries = _take_outbox(root)
+    if not pairs:
+        return []
+    _invalidate_snapshot(root)
+    if not fetch(root):
+        defer_release(pairs, root, who, entries)
+        return []
+    done = _drop(pairs, who, root, entries=entries)
+    active.cache_clear()
+    _settled(root, entries, done)
+    return done
+
+
+def _flush_all():
+    for key in list(_OUTBOX):
+        try:
+            flush_outbox(key)
+        except Exception as error:  # noqa: BLE001 -- claims expire on their own
+            print(f"claims: deferred release failed ({error}); claims expire on their own", file=sys.stderr)
+
+
+# ---- garbage collection (Stage 2, item 4a) ---------------------------------
+# Nothing ever deleted an expired claim, so origin piled up thousands of refs
+# and every fetch paid for them. Any seat may collect: each ref is deleted only
+# at the sha it was seen at (--force-with-lease, one atomic push per batch), and
+# only when its own record expired more than the grace period ago. A renewal or
+# takeover moves the ref, so its lease fails and it survives. Only the write
+# namespace is ever touched.
+GC_GRACE_MINUTES = 60       # also the floor: clock skew must never free a live claim
+GC_BATCH = 150              # refs per push; _gc_batches also bounds command-line length
+GC_MAX_PER_MINUTE = 600
+GC_SLICE = 50               # refs an opportunistic pass deletes
+GC_EVERY_SECONDS = 600      # one opportunistic pass per host and remote per interval
+
+
+def gc_candidates(root=None, grace_minutes=GC_GRACE_MINUTES, now=None):
+    """{key: sha} of refs in the write namespace (from the fetched mirror) whose
+    record expired more than `grace_minutes` ago. Unreadable records are kept."""
+    if not math.isfinite(grace_minutes):
+        raise ValueError("gc grace minutes must be finite")
+    cutoff = (time.time() if now is None else now) - max(grace_minutes, GC_GRACE_MINUTES) * 60
+    listed = _git("for-each-ref", "--format=%(refname)%09%(objectname)%09%(contents:subject)", SEEN,
+                  cwd=root)
+    if listed.returncode:
+        raise ClaimsUnavailable("claims: cannot read fetched claim records to collect")
+    found = {}
+    for line in listed.stdout.splitlines():
+        name, sha, subject = (line.split("\t") + ["", ""])[:3]
+        rest = name[len(SEEN):]
+        try:
+            expires = json.loads(subject).get("expires")
+            key = key_of(rest) if rest.startswith(("file/", "class/", "lease/")) else int(rest, 16)
+        except (ValueError, AttributeError):
+            continue
+        if (isinstance(expires, bool) or not isinstance(expires, (int, float))
+                or not math.isfinite(expires) or expires >= cutoff):
+            continue
+        if ref_of(key) != NS + rest:
+            continue                    # a hand-made spelling ref_of would not delete
+        found[key] = sha
+    return found
+
+
+def _gc_batches(keys, found, batch):
+    """Bound both the ref count and Windows' command line, including long scopes."""
+    chunk, units = {}, 0
+    for key in keys:
+        ref = ref_of(key)
+        args = [f"--force-with-lease={ref}:{found[key]}", f":{ref}"]
+        cost = len(subprocess.list2cmdline(args).encode("utf-16-le")) // 2 + 2
+        if cost > 24000:
+            raise ValueError("gc ref exceeds command-line budget")
+        if chunk and (len(chunk) >= batch or units + cost > 24000):
+            yield chunk
+            chunk, units = {}, 0
+        chunk[key] = found[key]
+        units += cost
+    if chunk:
+        yield chunk
+
+
+def gc(root=None, grace_minutes=GC_GRACE_MINUTES, limit=None, batch=GC_BATCH,
+       max_per_minute=GC_MAX_PER_MINUTE, sample=None, rng=random, fresh=True, dry_run=False):
+    """Delete expired claim refs (lock refs included) on origin. Returns
+    (deleted keys, kept keys): kept refs moved under us or could not be deleted.
+    `sample` deletes a random slice (so concurrent seats spread out), `limit`
+    caps the run, `max_per_minute` spaces the batches. Raises ClaimsUnavailable
+    when origin cannot be read."""
+    if not math.isfinite(grace_minutes) or not math.isfinite(max_per_minute) or max_per_minute < 0:
+        raise ValueError("gc grace and rate must be finite, and rate nonnegative")
+    if batch < 1 or (limit is not None and limit < 0) or (sample is not None and sample < 0):
+        raise ValueError("gc batch must be positive; max and sample must be nonnegative")
+    if fresh:
+        _invalidate_snapshot(root)
+    if not fetch(root):
+        raise ClaimsUnavailable("claims: cannot fetch refs/claims/* to collect")
+    found = gc_candidates(root, grace_minutes)
+    keys = sorted(found, key=_order)
+    if sample is not None and sample < len(keys):
+        keys = sorted(rng.sample(keys, sample), key=_order)
+    if limit is not None:
+        keys = keys[:limit]
+    if dry_run:
+        return keys, []
+    deleted, kept = [], []
+    processed = 0
+    for chunk in _gc_batches(keys, found, batch):
+        began = time.monotonic()
+        done = _gc_push(chunk, root, grace_minutes)
+        deleted += done
+        done_set = set(done)
+        kept += [k for k in chunk if k not in done_set]
+        processed += len(chunk)
+        if max_per_minute and processed < len(keys):
+            time.sleep(max(0.0, len(chunk) * 60.0 / max_per_minute - (time.monotonic() - began)))
+    active.cache_clear()
+    return deleted, kept
+
+
+def _gc_push(chunk, root, grace_minutes):
+    """One fenced, atomic deletion of `chunk` {key: sha}. A refused push is
+    re-read and only refs still at their sha and still expired are retried."""
+    for attempt in range(3):
+        if not chunk:
+            return []
+        leases = [f"--force-with-lease={ref_of(k)}:{sha}" for k, sha in chunk.items()]
+        refs = [f":{ref_of(k)}" for k in chunk]
+        if _git("push", "-q", "--atomic", *leases, REMOTE, *refs, cwd=root, timeout=120).returncode == 0:
+            for key in chunk:
+                _mirror(key, None, root)
+            return sorted(chunk, key=_order)
+        if attempt == 2:
+            break
+        time.sleep(_backoff(attempt))
+        _invalidate_snapshot(root)
+        if not fetch(root):
+            break
+        still = gc_candidates(root, grace_minutes)
+        chunk = {k: sha for k, sha in chunk.items() if still.get(k) == sha}
+    return []
+
+
+def gc_opportunistic(root=None, rng=random):
+    """A small random collection slice, at most once per GC_EVERY_SECONDS per host
+    and remote, from the claims snapshot already fetched (settle runs it), so no
+    machine owns GC. Never raises; returns the deleted keys."""
+    if os.environ.get("BFME_CLAIM_GC", "on") == "off" or os.environ.get("BFME_CLAIMS", "on") == "off":
+        return []
+    try:
+        with _host_file("gc", root) as path:
+            if time.time() - _read_stamp(path) < GC_EVERY_SECONDS:
+                return []
+            path.write_text(repr(time.time()), encoding="utf-8")
+        return gc(root, sample=GC_SLICE, batch=GC_SLICE, max_per_minute=0, rng=rng, fresh=False)[0]
+    except Exception as error:  # noqa: BLE001 -- collection is best effort
+        print(f"claims: gc skipped ({error})", file=sys.stderr)
+        return []
 
 
 # ---- release on authoritative landing -------------------------------------
@@ -1608,7 +1986,8 @@ def lease_trailers(sha, root=None):
     return {int(rva, 16): lease for rva, lease in LEASE_TRAILER.findall(body)}
 
 
-def release_landed(sha=None, root=None, who=None, keep_days=1.0, hold=(), tip=None):
+def release_landed(sha=None, root=None, who=None, keep_days=1.0, hold=(), tip=None, plan=None,
+                   planned_entries=None):
     """Release claims for bodies that have landed on origin/master.
 
     Every queued landing (queue_landed) with EVIDENCE whose row (_row_key),
@@ -1626,7 +2005,11 @@ def release_landed(sha=None, root=None, who=None, keep_days=1.0, hold=(), tip=No
     entries older than `keep_days` are dropped (their claims have long
     expired). Bodies in `hold` are never released, whether a queued landing
     or a `sha` trailer names them, and keep any queued landing: the caller is
-    claiming them again. Returns
+    claiming them again. With `plan` (a dict) nothing is pushed: the fenced
+    deletions are added to it as {key: sha} for the caller to push (settle),
+    and their entries stay queued until a later settlement sees them gone
+    (or the caller drops them once pushed: `planned_entries` collects them).
+    Returns
     (released, still_pending) lists of ints. Raises ClaimsUnavailable when
     origin/master cannot be read."""
     hold = set(hold)        # once: an iterator would be spent by the first test (Sol, round 2)
@@ -1732,7 +2115,7 @@ def release_landed(sha=None, root=None, who=None, keep_days=1.0, hold=(), tip=No
     # landing of the same body, never overrides a pending one (review
     # 2026-09-29: `release --landed <old sha>` freed a body whose replacement
     # source was still local).
-    released = []
+    released, planned = [], {}
     if not any(by_owner.values()) and not queue:
         return [], sorted(set(waiting))
     snapshot = {json.dumps(e, sort_keys=True) for e in queue}
@@ -1768,8 +2151,12 @@ def release_landed(sha=None, root=None, who=None, keep_days=1.0, hold=(), tip=No
                 lease = info.get("lease") or token
                 if lease in leases:
                     tokens[rva] = token
-            if tokens:
+            if tokens and plan is None:
                 released += release(sorted(tokens), who=holder, root=root, tokens=tokens)
+            elif tokens:
+                got = _eligible(sorted(tokens), holder, root, tokens, current=generation)
+                plan.update(got)
+                planned.update(got)
         # A landed entry is the only evidence a retry has, so it goes only once
         # its claim is settled: released here, held under another lease,
         # expired or gone -- or still held for a newer queued landing of the
@@ -1779,6 +2166,11 @@ def release_landed(sha=None, root=None, who=None, keep_days=1.0, hold=(), tip=No
         # (review 2026-10-09: a failed delete dropped it, stranding the claim).
         retry, again = set(), set()
         for rva, entry in evidence:
+            if rva in planned:
+                retry.add(json.dumps(entry, sort_keys=True))    # dropped once seen gone
+                if planned_entries is not None:
+                    planned_entries.append((rva, json.dumps(entry, sort_keys=True)))
+                continue
             live_claim = generation.get(rva)
             if (rva in unsettled or rva in released or not live_claim
                     or live_claim[1].get("expires", 0) <= time.time()
@@ -1789,7 +2181,16 @@ def release_landed(sha=None, root=None, who=None, keep_days=1.0, hold=(), tip=No
         # drop only the entries settled here
         settled = snapshot - kept - retry
         _write_queue(path, [e for e in current if json.dumps(e, sort_keys=True) not in settled])
-    return sorted(set(released)), sorted(set(waiting) | (unsettled - set(released)) | again)
+    released = set(released) | set(planned)
+    return sorted(released), sorted(set(waiting) | (unsettled - released) | again)
+
+
+def _forget_landed(root, texts):
+    """Drop the queued landings `texts` (their JSON) whose claims were just released."""
+    if not texts:
+        return
+    with _queue_lock(root) as path:
+        _write_queue(path, [e for e in _read_queue(path) if json.dumps(e, sort_keys=True) not in texts])
 
 
 DEBT_TOKEN = re.compile(r"\bdebt=(\S+)")
@@ -1828,13 +2229,14 @@ def _debt_lines(text, path):
     return out
 
 
-def settle_scopes(root=None, who=None, tip=None, hold=()):
+def settle_scopes(root=None, who=None, tip=None, hold=(), plan=None):
     """Release this owner's claims (RVA or scope; `hold` and lock-only refs excepted)
     whose recorded debt lines (the `debt=` note next_work --claim writes for every
     debt item) origin/master no longer holds: the fix is published, so the work is
     free. A claim without a `debt=` note (a hand claim, a link-cycle row) is never
     released here -- release it by hand after the push. Returns the released keys;
-    origin trouble or an unreadable debt file releases nothing (fail closed)."""
+    origin trouble or an unreadable debt file releases nothing (fail closed).
+    With `plan` the fenced deletions are added to it instead of pushed."""
     tip = tip or _fetch_master(root)
     if tip is None or not fetch(root):
         return []
@@ -1860,18 +2262,27 @@ def settle_scopes(root=None, who=None, tip=None, hold=()):
         if not held:
             free.append(key)
             tokens[key] = sha
+    if plan is not None:
+        plan.update(tokens)
+        return sorted(tokens, key=_order)
     return release(free, who=who, root=root, tokens=tokens) if free else []
 
 
-def settle(rvas=(), who=None, root=None, tokens=None, hold=()):
+def settle(rvas=(), who=None, root=None, tokens=None, hold=(), defer=False):
     """BFME2 (Open-BFME-1: fleet_run.settle_shared). Release this checkout's
     queued landings that origin/master now holds, then the claims `rvas`
     except bodies whose landing is still waiting for publication. BFME2 has no
     fleet_run, so the pickers' --claim and bfme1_sweep's donor landing settle
     here. When origin/master cannot be read, a landed-but-unpublished body
     looks like an abandoned one, so every claim is kept until it expires.
-    Bodies in `hold` are never released, even when `rvas` names them. Never raises;
-    returns the released keys."""
+    Bodies in `hold` are never released, even when `rvas` names them.
+
+    Every release -- landed bodies, finished scopes, `rvas` and the file locks
+    that leaves unneeded -- goes in ONE fenced atomic push; with `defer` (the
+    pickers) not even that: the seat's next claim push carries it (claim()), or
+    the process flushes it on exit. Then a small opportunistic gc slice runs
+    (gc_opportunistic). Never raises; returns the released (with `defer`: the
+    queued) keys."""
     if os.environ.get("BFME_CLAIMS", "on") == "off":
         return []
     try:
@@ -1879,30 +2290,69 @@ def settle(rvas=(), who=None, root=None, tokens=None, hold=()):
         tip = _fetch_master(root)
         if not tip and pending(root):
             return []
-        released, waiting = release_landed(root=root, hold=hold, tip=tip)
+        plan, entries = {}, []
+        released, waiting = release_landed(root=root, hold=hold, tip=tip, plan=plan, planned_entries=entries)
         busy = set(waiting) | set(released)
         free = [k for k in _ints(rvas) if k not in busy and k not in hold]
-        done = release(free, who=who, root=root, tokens=tokens) if free else []
-        done = list(done) + (settle_scopes(root=root, who=who, hold=hold, tip=tip) if tip else [])
-        done += release_orphans(root=root, who=who)              # file locks no claim needs now
+        if free:
+            _invalidate_snapshot(root)  # deletion must use a fresh snapshot, even inside a picker
+            if fetch(root):
+                plan.update(_eligible(free, who, root, tokens))
+        if tip:
+            settle_scopes(root=root, who=who, hold=hold, tip=tip, plan=plan)
+        if fetch(root):
+            plan.update(_orphan_locks(root, who, gone=plan))     # file locks no claim needs now
+        plan = {k: sha for k, sha in plan.items() if k not in hold}
+        if defer:
+            defer_release(plan, root, who, entries)
+            done = list(plan)
+        else:
+            done = _drop(plan, who, root, entries=entries) if plan else []
+            active.cache_clear()
+            _settled(root, entries, done)
+        gc_opportunistic(root)
     except Exception as error:  # noqa: BLE001 -- claims expire on their own
         print(f"{error}; claims kept until published or expired", file=sys.stderr)
         return []
-    return sorted(set(done) | set(released), key=_order)
+    return sorted(set(done), key=_order)
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("action", choices=["list", "claim", "renew", "release", "whoami"])
+    ap.add_argument("action", choices=["list", "claim", "renew", "release", "whoami", "gc"])
     ap.add_argument("rvas", nargs="*")
     ap.add_argument("--note", default="")
     ap.add_argument("--force", action="store_true", help="release: also claims owned by others")
     ap.add_argument("--landed", nargs="?", const="", default=None, metavar="SHA",
                     help="release: claims whose rows origin/master holds (this checkout's queued "
                          "landings; with SHA also rows that commit adds under a Claim-Lease: 0xRVA=<lease> trailer)")
+    ap.add_argument("--grace-minutes", type=float, default=GC_GRACE_MINUTES,
+                    help=f"gc: delete refs expired longer than this (floor {GC_GRACE_MINUTES})")
+    ap.add_argument("--max", type=int, default=None, help="gc: delete at most this many refs")
+    ap.add_argument("--batch", type=int, default=GC_BATCH, help="gc: refs per atomic push")
+    ap.add_argument("--max-per-minute", type=float, default=GC_MAX_PER_MINUTE,
+                    help="gc: delete at most this many refs per minute (0: unpaced)")
+    ap.add_argument("--sample", type=int, default=None, help="gc: a random slice of this many refs")
+    ap.add_argument("--dry-run", action="store_true", help="gc: list what would be deleted")
     args = ap.parse_args(argv)
     if args.action == "whoami":
         print(owner())
+        return 0
+    if args.action == "gc":
+        try:
+            deleted, kept = gc(grace_minutes=args.grace_minutes, limit=args.max, batch=args.batch,
+                               max_per_minute=args.max_per_minute, sample=args.sample,
+                               dry_run=args.dry_run)
+        except ClaimsUnavailable as error:
+            print(error, file=sys.stderr)
+            return 2
+        except ValueError as error:
+            ap.error(str(error))
+        if args.dry_run:
+            for key in deleted:
+                print(label(key))
+        print(f"{'would delete' if args.dry_run else 'deleted'} {len(deleted)} expired claim ref(s)"
+              + (f"; kept {len(kept)} that moved or were refused" if kept else ""))
         return 0
     if args.action == "list":
         claims = active()
@@ -1915,6 +2365,14 @@ def main(argv=None):
         # Each key with its file locks (acquire): a body's file is locked with it, and
         # a key whose file a peer's work holds is refused, as the pickers refuse it.
         got, refused, unconfirmed = [], [], []
+        # Settle first, as the pickers' --claim does: a seat that claims here directly
+        # never ran a picker, and 28% of live RVA claims (2026-10-10) sat on bodies
+        # origin/master already held until they expired. Holding what it asks for:
+        # releasing a claim the command is about to renew would re-take it under a
+        # new lease, leaving a gap a peer could win (GPT-6.1-Sol review). Deferred,
+        # so the releases ride in the first claim push. settle() never raises.
+        asked = set(_ints(args.rvas))
+        released = settle(hold=asked, defer=True)
         try:
             for text in args.rvas:
                 result = acquire([text], note=args.note)
@@ -1940,14 +2398,9 @@ def main(argv=None):
             if mine:
                 print(f"{' '.join(label(r) for r in mine)}: held under this checkout's pre-2026-10-09 "
                       f"owner {legacy}; `claims.py renew` continues it, `release` frees it")
-        # Then settle, as the pickers' --claim does: a seat that claims here directly
-        # never ran a picker, and 28% of live RVA claims (2026-10-10) sat on bodies
-        # origin/master already held until they expired. After the claim, holding
-        # what it asked for: settling first released a claim the command was about
-        # to renew and re-took it under a new lease, leaving a gap a peer could win
-        # (GPT-6.1-Sol review). settle() never raises: the claim's result stands.
-        asked = {key for key in _ints(args.rvas) if isinstance(key, int)}
-        released = settle(hold=asked)
+        flush_outbox()      # whatever no claim push carried (every target refused)
+        remaining = live(_read_local())
+        released = [key for key in released if key not in remaining]
         if released:
             print(f"released {len(released)} landed claim(s) origin/master now holds: "
                   f"{' '.join(label(r) for r in released)}")
@@ -1964,8 +2417,16 @@ def main(argv=None):
                   f"{' '.join(label(r) for r in missed)}")
         return 0 if not missed else 1
     if args.action == "release" and args.landed is not None:
+        plan, entries = {}, []
         try:
-            done, waiting = release_landed(args.landed or None)
+            planned, waiting = release_landed(args.landed or None, plan=plan, planned_entries=entries)
+            if fetch():
+                plan.update(_orphan_locks(gone=plan))
+            released = _drop(plan, entries=entries) if plan else []
+            active.cache_clear()
+            _settled(None, entries, released)
+            done = sorted(k for k in released if isinstance(k, int))
+            waiting = sorted(set(waiting) | (set(planned) - set(done)))
         except ClaimsUnavailable as error:
             print(error, file=sys.stderr)
             return 2
@@ -1977,8 +2438,7 @@ def main(argv=None):
             print(f"still queued (not yet on origin/master as verified, or its release is retried "
                   f"next time): {' '.join(f'0x{r:08X}' for r in waiting)}")
         return 0
-    done = release(args.rvas, force=args.force)
-    done += release_orphans()           # the file locks those claims took, unless another claim needs them
+    done = release_work(args.rvas, force=args.force)  # with the file locks it leaves unneeded, one push
     print(f"released {len(done)}: {' '.join(label(r) for r in done)}")
     return 0
 

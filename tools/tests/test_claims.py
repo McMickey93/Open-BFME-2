@@ -40,6 +40,12 @@ def hosts(tmp_path, monkeypatch):
     monkeypatch.delenv("BFME_CLAIMS", raising=False)
     monkeypatch.setattr(claims, "NS", "refs/claims/")
     monkeypatch.setattr(claims, "REMOTE", "origin")
+    # never this machine's real pacer or gc stamp; fast retries; gc only where a test asks
+    monkeypatch.setattr(claims, "HOST_DIR", tmp_path / "host")
+    monkeypatch.setattr(claims, "BACKOFF_BASE", 0.02)
+    monkeypatch.setenv("BFME_CLAIM_PUSHES_PER_MINUTE", "0")
+    monkeypatch.setenv("BFME_CLAIM_GC", "off")
+    monkeypatch.setattr(claims, "_OUTBOX", {})
 
     def act(name):
         monkeypatch.setattr(claims, "ROOT", clones[name])
