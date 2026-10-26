@@ -1,5 +1,7 @@
 // cl: /Ireference/shims/bfmealloc /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib
 // stlport
+// dxsdk
+// platformsdk
 // W3DTaint::setTaintLevel: WB 0x0082D3C0 names the function and W3DTaint.cpp
 // assertion 330; game.dat 0x00073CC0..0x000740C2 supplies its full boundary.
 // Semantic donor: Open-BFME-1 9cbfb551fe20dae985f91f2319d8997287b6a705
@@ -482,10 +484,11 @@ __forceinline float taintCeil(float value) { return float(ceil(double(value))); 
 // is unknown; rva000738C4 describes the address. Preserve the legacy view used
 // by setTaintLevel above while giving this separately proven entry its WB class.
 
-#include "../../../../../reference/shims/d3d8_shim_validated.h"
+#include <d3d9.h>
+struct IDirect3DDevice8;
 class CameraClass;
 class DX8Wrapper { public:
- static IDirect3DDevice8 *_Get_D3D_Device8() { return D3DDevice; }
+ static IDirect3DDevice9 *_Get_D3D_Device8() { return reinterpret_cast<IDirect3DDevice9 *>(D3DDevice); }
 protected:
  static IDirect3DDevice8 *D3DDevice;
 };
@@ -683,7 +686,7 @@ void W3DTaint::render(CameraClass *cam)
 	if (!m_dstTexture)
 		return;
 
-	IDirect3DDevice8 *device = DX8Wrapper::_Get_D3D_Device8();
+	IDirect3DDevice9 *device = DX8Wrapper::_Get_D3D_Device8();
 	if (device && device->TestCooperativeLevel() != D3D_OK)
 		return;
 
