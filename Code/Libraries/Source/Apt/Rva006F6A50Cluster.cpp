@@ -619,7 +619,8 @@ public:
 	void ReleaseValues();
 };
 extern AptValueVector *g_releaseVectorAtE17710;
-extern void *g_00E182E0;
+struct AptActionInterpreter;
+extern AptActionInterpreter g_aptDateInterpreter;
 void AptDisplayList::clear(bool flag)
 {
 	BfmeQuery1279 *query = m_query;
@@ -654,7 +655,7 @@ void AptDisplayList::clear(bool flag)
 		AptValueVector *vec = g_releaseVectorAtE17710;
 		CullableClass *collected = ((CullSystemClass *)vec)->Get_First_Collected_Object_Internal();
 		if (collected != 0) {
-			if (g_00E182E0 == 0)
+			if (*reinterpret_cast<void **>(&g_aptDateInterpreter) == 0)
 				g_releaseVectorAtE17710->ReleaseValues();
 		}
 		cur->v1();
@@ -665,10 +666,6 @@ void AptDisplayList::clear(bool flag)
 // Other units call this body (pinned at its address) under the spelling(s)
 // below, with the same calling convention and stack arguments; bind them.
 #pragma comment(linker, "/alternatename:?rva006F7AC0@Rva006F7AC0@@QBE_NXZ=?rva006F7AC0@Rva006F7AC0List@@QAE_NXZ")
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00E182E0@@3PAXA=?g_aptDateInterpreter@@3UAptActionInterpreter@@A")
 
 // Native6F7030..6F7090 RET16. Same item assertion and 17-bit key write
 // as rva006F6FB0; this sibling receives the already-found previous/depth

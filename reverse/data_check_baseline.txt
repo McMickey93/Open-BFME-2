@@ -683,8 +683,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	w
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?rva012F9D20@@3IA	0x009E1F80
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	_W3DFilters	0x009E1F2C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	_W3DShaders	0x009E1F24
-Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	wrong-name	?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A	0x00A182E0
-Code/Libraries/Source/Apt/Rva006F6A50Cluster.cpp	wrong-name	?g_00E182E0@@3PAXA	0x00A182E0
 Code/Libraries/Source/Apt/Rva0070B5D0Cluster.cpp	wrong-name	?g_00E18650@@3VEAStringC@@A	0x00A18650
 Code/Libraries/Source/DirtySock/Y2Rva007EBAE0Module.cpp	wrong-name	?g_Rva0112A210Lower@@3QBEB	0x008E1A60
 Code/Libraries/Source/DirtySock/Y4CommTransportLife.c	wrong-name	_g_Rva0130AD08Count	0x00A0A720

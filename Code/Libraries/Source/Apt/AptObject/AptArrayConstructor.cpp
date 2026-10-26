@@ -194,7 +194,9 @@ AptValue *AptArray::sMethod_shift(AptValue *pThis,int nParams) {
 #pragma comment(linker, "/alternatename:?toInteger@AptValue@@QBEHXZ=?toInteger@BfmeAptValue006DCD20@@QBEHXZ")
 
 class AptBasePtrStack { public: AptValue *At(int); int count,capacity; AptValue **values; };
-extern AptBasePtrStack g_aptValueStackAtE182E0;
+struct AptActionInterpreter;
+extern AptActionInterpreter g_aptDateInterpreter;
+#define g_aptValueStackAtE182E0 (*reinterpret_cast<AptBasePtrStack *>(&g_aptDateInterpreter))
 AptValue *AptArray::sMethod_slice(AptValue *pThis,int nParams) {
  if(pThis->isArray()) {
   AptArray *array=pThis->c_array();
@@ -211,7 +213,6 @@ AptValue *AptArray::sMethod_slice(AptValue *pThis,int nParams) {
 }
 
 #pragma comment(linker, "/alternatename:?rva006D95E0@BfmeAptValue006DCD20@@QAEXHPAV1@@Z=?set@AptArray@@QAEXHPAVAptValue@@@Z")
-#pragma comment(linker, "/alternatename:?g_aptValueStackAtE182E0@@3VAptBasePtrStack@@A=?g_aptDateInterpreter@@3UAptActionInterpreter@@A")
 
 AptValue *AptArray::sMethod_push(AptValue *pThis,int nParams) {
  if(pThis->isArray()) {
