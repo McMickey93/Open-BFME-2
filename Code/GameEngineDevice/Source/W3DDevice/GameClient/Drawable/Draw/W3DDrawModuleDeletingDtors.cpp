@@ -1,4 +1,4 @@
-// cl: /O1 /MD
+// cl: /O1 /MD /Ireference/shims/moduledata
 //
 // Scalar deleting-destructor wrappers with audited owner attributions.
 // Target facts: 28-byte flag-test wrappers, their call destinations, and the
@@ -17,6 +17,8 @@
 // (0x000D0B69), W3DTornadoDrawModuleData (0x000D1713) and
 // W3DProjectileStreamDraw (0x000D146B) destructors.
 
+#include "Common/Snapshot.h"
+
 // ??_GW3DScriptedModelDraw@@UAEPAXI@Z @0x000C8617 28B: slot 0 of vtable 0x00BCA090; calls ??1 at 0x000C79C9.
 // Owner evidence (audited 2026-09-26): retail slot 4 -> RVA 0x000C1201 uses class-name string "W3DScriptedModelDraw".
 class W3DScriptedModelDraw { public: W3DScriptedModelDraw(struct EmitVtableTag *); virtual ~W3DScriptedModelDraw(); };
@@ -26,7 +28,11 @@ void W3DScriptedModelDraw_Delete(W3DScriptedModelDraw *w3DScriptedModelDraw) { d
 
 // ??_GW3DModelDrawModuleData@@UAEPAXI@Z @0x000C8DC3 28B: slot 0 of vtable 0x00BCADE8; calls ??1 at 0x000C8BE0.
 // Owner evidence (audited 2026-09-26): retail W3DScriptedModelDraw registration -> shared data factory RVA 0x000648D6 -> ctor RVA 0x000C8EEF; primary vptr store RVA 0x000C8F13; field parser RVA 0x000C9240 agrees with donor W3DModelDraw data.
-class W3DModelDrawModuleData { public: W3DModelDrawModuleData(struct EmitVtableTag *); virtual ~W3DModelDrawModuleData(); };
+// Its view derives from the canonical Snapshot base, as the rowed destructor's
+// unit (Code/Libraries/Source/WWVegas/WWLib/W3DModelDrawModuleData.cpp) does
+// (that destructor restores Snapshot's vtable 0x00BBB554), so both units emit
+// one identical vtable COMDAT.
+class W3DModelDrawModuleData : public Snapshot { public: W3DModelDrawModuleData(struct EmitVtableTag *); virtual ~W3DModelDrawModuleData(); };
 // ?<W3DModelDrawModuleData::W3DModelDrawModuleData> absent-from-retail
 W3DModelDrawModuleData::W3DModelDrawModuleData(struct EmitVtableTag *) {}
 void W3DModelDrawModuleData_Delete(W3DModelDrawModuleData *w3DModelDrawModuleData) { delete w3DModelDrawModuleData; }

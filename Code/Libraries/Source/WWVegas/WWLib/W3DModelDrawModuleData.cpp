@@ -23,23 +23,35 @@
 #include "ascii_string.h"
 
 // Rowed providers (declare-only, resolve to ledger rows, no definitions here).
-// Empty allocator tag: every vector member's default construction calls the
-// one ICF-folded empty _Vector_base ctor at 0x00211E58 with a reused
-// one-byte allocator temporary ([ebp-0xD] in retail).
-struct Rva00211E58Alloc
+// Every vector member's default construction calls the one ICF-folded empty
+// _Vector_base ctor at 0x00211E58 with a reused one-byte allocator temporary
+// ([ebp-0xD] in retail). The fold has one primary row,
+// _Vector_base<int, allocator<int> >'s ctor, so the declare-only views below
+// reach it under that name; the folded bodies are byte-identical.
+namespace _STL
 {
-	Rva00211E58Alloc() {}
+template <class T> class allocator
+{
+public:
+	allocator() {}
 };
 
-// The 12-byte start/finish/end triple every vector member shares; its
-// out-of-line ctor is that folded empty _Vector_base ctor.
-struct Rva00211E58VectorBase
+template <class T, class A> class _Vector_base;
+template <> class _Vector_base<int, allocator<int> >
 {
-	void *m_start;
-	void *m_finish;
-	void *m_end;
-	Rva00211E58VectorBase(const Rva00211E58Alloc &alloc) throw();
+public:
+	int *_M_start;
+	int *_M_finish;
+	int *_M_end_of_storage;
+	_Vector_base(const allocator<int> &a) throw();
 };
+
+template <class T, class A = allocator<T> > class vector;
+}
+
+typedef _STL::_Vector_base<int, _STL::allocator<int> > Rva00211E58VectorBase;
+typedef _STL::allocator<int> Rva00211E58Alloc;
+
 struct Rva000C0495 : Rva00211E58VectorBase
 {
 	Rva000C0495(const Rva00211E58Alloc &alloc = Rva00211E58Alloc()) : Rva00211E58VectorBase(alloc) {}
@@ -74,60 +86,49 @@ struct BfmePod248
 	~BfmePod248();
 };
 
-// Unrowed +0x08 vector (Ghidra 63B FUN_004c7720) and +0x160 array element
-// (0x14 bytes, ehvec 0x629110 with element dtor). Declared here for
-// measurement; bodies are placeholders to be replaced by genuine
-// RvaVectorDtorFamily-style specialization (Destroy 0xC4DEF rowed) and
-// honest element identity. No donor identity claimed for these two.
-// Template vector placeholders (12B each) with declared dtors so the empty
-// dtor emits calls + EH states in retail order; each must resolve to its
-// rowed instantiation (0xC68C2/0xC1C6A/0x2CC70/0xC8B83/0xC8216) in the final
-// version via genuine element types -- this measurement TU uses opaque
-// wrappers to prove offsets/states without claiming element identity.
-struct Rva000C68C2Wrap : Rva00211E58VectorBase
+// Element types of the vector members whose rowed instantiations this unit
+// calls; only their names matter here (the element bodies are elsewhere).
+struct Rva000BEDF0Record;
+struct BfmePod252;
+struct Rva000C828CElement;
+
+// Declare-only views of the rowed STLport vector instantiations: each
+// member's out-of-line ~vector (0xC7720/0xC8216/0xC8B83/0x2CC70/0xC1C6A/
+// 0xC68C2), the two range erases clear() reaches (0xC690C/0xC4D89) and
+// push_back (0xC8DDF). Default construction is the folded empty base ctor.
+#define BFME_DECLARE_ONLY_VECTOR_HEAD(T) \
+	template <> class vector<T, allocator<T> > : public _Vector_base<int, allocator<int> > \
+	{ \
+	public: \
+		vector(const allocator<int> &a = allocator<int>()) : _Vector_base<int, allocator<int> >(a) {} \
+		~vector();
+
+namespace _STL
 {
-	Rva000C68C2Wrap(const Rva00211E58Alloc &alloc = Rva00211E58Alloc()) : Rva00211E58VectorBase(alloc) {}
-	void *erase(void *first, void *last);
-	void *begin() { return m_start; }
-	void *end() { return m_finish; }
+BFME_DECLARE_ONLY_VECTOR_HEAD(Rva000C828CElement)
+};
+BFME_DECLARE_ONLY_VECTOR_HEAD(BfmePod252)
+};
+BFME_DECLARE_ONLY_VECTOR_HEAD(BfmePod248)
+	void push_back(const BfmePod248 &value);
+};
+BFME_DECLARE_ONLY_VECTOR_HEAD(AsciiString)
+};
+BFME_DECLARE_ONLY_VECTOR_HEAD(Rva00079554Record)
+	Rva00079554Record *erase(Rva00079554Record *first, Rva00079554Record *last);
+	Rva00079554Record *begin() { return (Rva00079554Record *)_M_start; }
+	Rva00079554Record *end() { return (Rva00079554Record *)_M_finish; }
 	void clear() { erase(begin(), end()); }
-	~Rva000C68C2Wrap();
 };
-
-struct Rva000C1C6AWrap : Rva00211E58VectorBase
-{
-	Rva000C1C6AWrap(const Rva00211E58Alloc &alloc = Rva00211E58Alloc()) : Rva00211E58VectorBase(alloc) {}
-	void *erase(void *first, void *last);
-	void *begin() { return m_start; }
-	void *end() { return m_finish; }
+BFME_DECLARE_ONLY_VECTOR_HEAD(Rva000BEDF0Record)
+	Rva000BEDF0Record *erase(Rva000BEDF0Record *first, Rva000BEDF0Record *last);
+	Rva000BEDF0Record *begin() { return (Rva000BEDF0Record *)_M_start; }
+	Rva000BEDF0Record *end() { return (Rva000BEDF0Record *)_M_finish; }
 	void clear() { erase(begin(), end()); }
-	~Rva000C1C6AWrap();
 };
+}
 
-struct Rva0002CC70Wrap : Rva00211E58VectorBase
-{
-	Rva0002CC70Wrap(const Rva00211E58Alloc &alloc = Rva00211E58Alloc()) : Rva00211E58VectorBase(alloc) {}
-	~Rva0002CC70Wrap();
-};
-
-struct Rva000C8B83Wrap : Rva00211E58VectorBase
-{
-	Rva000C8B83Wrap(const Rva00211E58Alloc &alloc = Rva00211E58Alloc()) : Rva00211E58VectorBase(alloc) {}
-	void push_back(const struct BfmePod248 &value);
-	~Rva000C8B83Wrap();
-};
-
-struct Rva000C8216Wrap : Rva00211E58VectorBase
-{
-	Rva000C8216Wrap(const Rva00211E58Alloc &alloc = Rva00211E58Alloc()) : Rva00211E58VectorBase(alloc) {}
-	~Rva000C8216Wrap();
-};
-
-struct Rva000C7720Vec : Rva00211E58VectorBase
-{
-	Rva000C7720Vec(const Rva00211E58Alloc &alloc = Rva00211E58Alloc()) : Rva00211E58VectorBase(alloc) {}
-	~Rva000C7720Vec();
-};
+#undef BFME_DECLARE_ONLY_VECTOR_HEAD
 
 struct AssetList
 {
@@ -136,23 +137,16 @@ struct AssetList
 	~AssetList();
 };
 
-// Measurement note: Rva000C7720Vec and AssetList dtors are
-// intentionally left undefined here so the containing dtor emits calls +
-// EH states for +0x08/+0x160 without intra-TU folding; each resolves
-// through its genuine provider in the final version (C7720 via
-// RvaVectorDtorFamily-style specialization on rowed Destroy 0xC4DEF;
-// array element via honest identity, never a fake empty). No donor
-// identity is claimed for these two.
+// AssetList's dtor is declared only, so the containing dtor emits the
+// +0x160 array teardown through its provider; no donor identity is claimed.
 
 // Full layout from retail byte decode (capstone) + rowed callee identities.
 // Declaration order is increasing offset so the empty dtor tears down in
 // reverse (retail states 0x11..0): +0x160 array, +0x11C vec, 4 strings
 // +0x118..+0x10C, +0x8C record, +0x7C/+0x70 vecs, 4 strings +0x48..+0x3C,
 // +0x30/+0x24/+0x18 vecs, +0x14 string, +0x08 vec. Scalar runs are padding;
-// only member offsets matter for the dtor. Vector placeholders are 12-byte
-// start/finish/end triples; each must resolve to its rowed dtor
-// (0xC0495/0xC68C2/0xC1C6A/0x2CC70/0xC8B83/0xC8216/0xC7720) in the final
-// version -- this measurement TU uses void triples to prove the shape.
+// only member offsets matter for the dtor. Each vector member resolves to
+// its rowed dtor (0xC0495/0xC68C2/0xC1C6A/0x2CC70/0xC8B83/0xC8216/0xC7720).
 class W3DModelDrawModuleData : public Snapshot
 {
 public:
@@ -161,11 +155,11 @@ public:
 
 private:
 	unsigned char m_pad04[4]; // +0x04..+0x07 (Snapshot is vptr-only)
-	Rva000C7720Vec m_08; // +0x08
+	_STL::vector<Rva000C828CElement> m_08; // +0x08
 	AsciiString m_wadingParticleSys; // +0x14
-	Rva000C8216Wrap m_18; // +0x18 vector via rowed 0xC8216 shape
-	Rva000C8B83Wrap m_24; // +0x24 vector<BfmePod248> via rowed 0xC8B83 shape
-	Rva0002CC70Wrap m_extraPublicBone; // +0x30 vector via rowed 0x2CC70 shape
+	_STL::vector<BfmePod252> m_18; // +0x18 vector via rowed 0xC8216 shape
+	_STL::vector<BfmePod248> m_24; // +0x24 vector<BfmePod248> via rowed 0xC8B83 shape
+	_STL::vector<AsciiString> m_extraPublicBone; // +0x30 vector via rowed 0x2CC70 shape
 	AsciiString m_trackMarks; // +0x3C
 	AsciiString m_attachToBoneInAnotherModule; // +0x40
 	AsciiString m_trackMarksLeftBone; // +0x44
@@ -183,8 +177,8 @@ private:
 	bool m_animationsRequirePower; // +0x6B
 	bool m_6C; // +0x6C
 	unsigned char m_pad6D[3];
-	Rva000C1C6AWrap m_70; // +0x70 vector via rowed 0xC1C6A shape
-	Rva000C68C2Wrap m_7C; // +0x7C vector via rowed 0xC68C2 shape
+	_STL::vector<Rva00079554Record> m_70; // +0x70 vector via rowed 0xC1C6A shape
+	_STL::vector<Rva000BEDF0Record> m_7C; // +0x7C vector via rowed 0xC68C2 shape
 	bool m_randomTextureFixedRandomIndex; // +0x88
 	unsigned char m_pad89[3];
 	Rva00079554Record m_8C; // +0x8C record 0x2C
