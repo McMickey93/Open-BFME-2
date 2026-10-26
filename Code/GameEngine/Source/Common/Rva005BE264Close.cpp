@@ -7,7 +7,9 @@
 #include "ascii_string.h"
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 class Rva00224455
 {
@@ -31,6 +33,6 @@ void Rva005BE264Owner::rva005BE264()
 	}
 	{
 		AsciiString s2("AptTimeLine::SetPlayerFocus");
-		reinterpret_cast<Rva00224455 *>(TheRva00222A8BTarget)->RemoveCommandMap(&s2);
+		reinterpret_cast<Rva00224455 *>(g_bfmeAptWindowManager)->RemoveCommandMap(&s2);
 	}
 }

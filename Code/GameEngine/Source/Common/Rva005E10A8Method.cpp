@@ -254,7 +254,9 @@ struct Rva005E10A8Inner
 };
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 extern const char g_Rva0107301CEmptyString[];
 void __cdecl Rva005277D9Fire(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function, bool *flagPtr);
 
@@ -388,17 +390,17 @@ void StrategicHUD::CommandButtonMovieClip::Impl::OnInitialized(int dummy)
 	if (m_flag41 == 0) {
 		bool flag0 = false;
 		const char *prefix0 = inner() ? inner()->m_name : empty;
-		Rva005277D9Fire(TheRva00222A8BTarget, (void *)m_level08, prefix0, "Enable", &flag0);
+		Rva005277D9Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level08, prefix0, "Enable", &flag0);
 	}
 	if (m_flag42 != 0) {
 		bool flag1 = true;
 		const char *prefix1 = inner() ? inner()->m_name : empty;
-		Rva005277D9Fire(TheRva00222A8BTarget, (void *)m_level08, prefix1, "ShowProductionCount", &flag1);
+		Rva005277D9Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level08, prefix1, "ShowProductionCount", &flag1);
 	}
 	if (m_flag43 != 0) {
 		bool flag2 = true;
 		const char *prefix2 = inner() ? inner()->m_name : empty;
-		Rva005277D9Fire(TheRva00222A8BTarget, (void *)m_level08, prefix2, "ShowTimerOverlay", &flag2);
+		Rva005277D9Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level08, prefix2, "ShowTimerOverlay", &flag2);
 	}
 	m_flag40 = true;
 }
@@ -407,7 +409,7 @@ void StrategicHUD::CommandButtonMovieClip::Impl::OnInitialized(int dummy)
 // close mode to slot 3 or 4 (WorldBuilder line 257 asserts TheAptPlayer).
 void StrategicHUD::CommandButtonMovieClip::Impl::OnClicked(const char *)
 {
-	int mode = ((CommandButtonAptMode *)TheRva00222A8BTarget)->m_mode;
+	int mode = ((CommandButtonAptMode *)g_bfmeAptWindowManager)->m_mode;
 	if (mode == 0)
 	{
 		if (m_flag41)

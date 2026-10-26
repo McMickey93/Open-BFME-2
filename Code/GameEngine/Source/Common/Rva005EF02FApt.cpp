@@ -36,7 +36,9 @@ class Rva00222A8BTarget
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 namespace StrategicHUD
 {
@@ -48,5 +50,5 @@ void StrategicHUD::SetArmyNameString(int level, Rva005EF02FOuter *outer, const U
 	AsciiString key;
 	const char *mid = outer->m_ptr ? outer->m_ptr->m_name : "";
 	key.format("APT:_level%u.%s_ArmyName", level, mid);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, true);
+	g_bfmeAptWindowManager->bfmeSetText(key, text, true);
 }

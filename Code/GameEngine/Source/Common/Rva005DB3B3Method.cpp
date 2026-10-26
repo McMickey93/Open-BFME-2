@@ -99,7 +99,9 @@ class Rva00222A8BTarget
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 extern const unsigned short g_00BC26DC[] = { 0 };
 extern const unsigned short g_00C76704[] = { '%', 'd', '.', 0 };
 
@@ -123,21 +125,21 @@ void AptConnectionScreen::UpdateSlotName(int idx)
 	key.format("APT:ConnectionPlayerName_%d", idx);
 	UnicodeString tmp(slot->m_name);
 	if (slot->isHuman())
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, slot->m_name, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, slot->m_name, false);
 	else
 	{
 		UnicodeString def(g_00BC26DC);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, def, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, def, false);
 	}
 	key.format("APT:ConnectionPlayerNum_%d", idx);
 	if (slot->isHuman())
 	{
 		tmp.format(g_00C76704, idx + 1);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, tmp, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, tmp, false);
 	}
 	else
 	{
 		UnicodeString def2(g_00BC26DC);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, def2, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, def2, false);
 	}
 }

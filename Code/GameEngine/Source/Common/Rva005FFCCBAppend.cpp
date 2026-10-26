@@ -10,7 +10,7 @@ struct TreeHintRef00217D4C
 };
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
 extern const char g_Rva0107301CEmptyString[];
 int __cdecl Rva0050E9FEAptCall(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function, const char **a0ptr);
 
@@ -272,7 +272,7 @@ int StrategicHUD::BattlePromptPlayerPageMovieClip::Impl::AddHeroArmyPanel(const 
 		state = g_Rva0107301CEmptyString;
 	Rva005FFCCBInner *inner = *(Rva005FFCCBInner **)&m_name;
 	const char *prefix = inner ? inner->m_name : g_Rva0107301CEmptyString;
-	Rva0050E9FEAptCall(TheRva00222A8BTarget, m_4, prefix, "CreateArmyPanel", &state);
+	Rva0050E9FEAptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_4, prefix, "CreateArmyPanel", &state);
 	return idx;
 }
 
@@ -309,7 +309,7 @@ namespace AptUtils { int __cdecl LevelIndexFromTarget(const char *path); }
 // the panel index leading the Apt path (0..1) goes to owner slot 1.
 void StrategicHUD::BattlePromptPlayerPageMovieClip::Impl::OnSwapButtonClicked(const char *path)
 {
-	if (((Rva005FFA60AptMode *)TheRva00222A8BTarget)->m_mode != 0)
+	if (((Rva005FFA60AptMode *)g_bfmeAptWindowManager)->m_mode != 0)
 		return;
 	if (!path)
 		return;

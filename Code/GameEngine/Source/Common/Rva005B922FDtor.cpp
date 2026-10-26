@@ -27,7 +27,9 @@ class Rva00222A8BTarget : public Rva00223A94
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 extern int g_Va00E06480;
 const char * g_00DD3BC0 = "OnlineHome/Gadgets/Image";	// retail RVA 0x009D3BC0 (.data), defined here
 const char * g_00DD3BC4 = "OnlineHome/Gadgets/ImageLevelIconMain";	// retail RVA 0x009D3BC4 (.data), defined here
@@ -78,11 +80,11 @@ AptOnline::OnlineHome::~OnlineHome()
 	if ((int)this == g_Va00E06480) {
 		{
 			AsciiString s(g_00DD3BC0);
-			((Rva00223A94 *)TheRva00222A8BTarget)->rva00223A94(&s);
+			((Rva00223A94 *)g_bfmeAptWindowManager)->rva00223A94(&s);
 		}
 		{
 			AsciiString s(g_00DD3BC4);
-			((Rva00223A94 *)TheRva00222A8BTarget)->rva00223A94(&s);
+			((Rva00223A94 *)g_bfmeAptWindowManager)->rva00223A94(&s);
 		}
 		{
 			AsciiString s("AptOnlineHome::InitGadgets");

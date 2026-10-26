@@ -15,7 +15,9 @@ public:
 };
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 struct Rva005F2792Name
 {
@@ -61,7 +63,7 @@ void Rva005F2792::RemoveOnLoadedCommandMap()
 	AsciiString key;
 	const char *mid = m_info->m_holder ? m_info->m_holder->m_name : "";
 	key.format("_level%u.%s_OnUnitIconSlotLoaded%d", m_info->m_level, mid, m_slot);
-	((Rva00224455 *)TheRva00222A8BTarget)->RemoveCommandMap(&key);
+	((Rva00224455 *)g_bfmeAptWindowManager)->RemoveCommandMap(&key);
 }
 
 // Native 0x005F27F8..0x005F2897, RET4. The proven callback family supplies

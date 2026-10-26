@@ -16,7 +16,9 @@ template <typename T> struct BfmeStringData
 UnicodeString Rva005ED310Get(int val);
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 int __cdecl Rva0057A9B7Fire(void *a1, void *a2, const char *a3, const char *a4, int *a5, void *a6);
 int __cdecl Rva00525235Fire(void *a1, void *a2, const char *a3, const char *a4, int *a5, int *a6);
 
@@ -71,7 +73,7 @@ void StrategicHUD::RegionAwardMovieClip::Impl::rva005ED6B9(int index, int color)
 	if (color != slot->m_color) {
 		int value = color;
 		const char *team = m_holder08 ? (const char *)m_holder08 + 8 : "";
-		Rva00525235Fire(TheRva00222A8BTarget, m_level04, team, "SetPlayerColor", &index, &color);
+		Rva00525235Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level04, team, "SetPlayerColor", &index, &color);
 		slot->m_color = value;
 	}
 }
@@ -112,11 +114,11 @@ void StrategicHUD::RegionAwardMovieClip::Impl::SelectPlayer(int newRow)
 		return;
 	if (m_row50 >= 0) {
 		const char *oldTeam = m_holder08 ? (const char *)m_holder08 + 8 : "";
-		Rva0057A9B7Fire(TheRva00222A8BTarget, m_level04, oldTeam, "SetPlayerRowState", &m_row50, (void *)"_deselect");
+		Rva0057A9B7Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level04, oldTeam, "SetPlayerRowState", &m_row50, (void *)"_deselect");
 	}
 	m_row50 = newRow;
 	if (newRow < 0)
 		return;
 	const char *newTeam = m_holder08 ? (const char *)m_holder08 + 8 : "";
-	Rva0057A9B7Fire(TheRva00222A8BTarget, m_level04, newTeam, "SetPlayerRowState", &m_row50, (void *)"_selected");
+	Rva0057A9B7Fire(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level04, newTeam, "SetPlayerRowState", &m_row50, (void *)"_selected");
 }

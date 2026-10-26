@@ -13,7 +13,9 @@ class Rva00222A8BTarget
 {
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 struct Rva005F6220Team
 {
@@ -54,7 +56,7 @@ void StrategicHUD::HeroArmyDetailsMovieClip::Impl::SetLeaderQuantityString(const
 	AsciiString key;
 	const char *mid = m_team08 ? (const char *)((char *)m_team08 + 8) : "";
 	key.format("APT:_level%u.%s_LeaderQuantity", m_level04, mid);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, true);
+	g_bfmeAptWindowManager->bfmeSetText(key, text, true);
 }
 
 void StrategicHUD::HeroArmyDetailsMovieClip::Impl::SetLeaderRankString(const UnicodeString &text)
@@ -62,7 +64,7 @@ void StrategicHUD::HeroArmyDetailsMovieClip::Impl::SetLeaderRankString(const Uni
 	AsciiString key;
 	const char *mid = m_team08 ? (const char *)((char *)m_team08 + 8) : "";
 	key.format("APT:_level%u.%s_LeaderRank", m_level04, mid);
-	((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, true);
+	g_bfmeAptWindowManager->bfmeSetText(key, text, true);
 }
 
 void StrategicHUD::HeroArmyDetailsMovieClip::Impl::rva005F63EC(int rank)

@@ -12,7 +12,9 @@ extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 class Rva00222A8BTarget
 {
 };
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 typedef bool Bool;
 class GameTextInterface
@@ -80,7 +82,7 @@ public:
 };
 void AptCreateAHero::Manager::OnSelectAward(const char *arg)
 {
-    if (!TheRva00222A8BTarget)
+    if (!((Rva00222A8BTarget *)g_bfmeAptWindowManager))
         return;
     int idx = atoi(arg);
     BfmePod40 *found = 0;
@@ -92,10 +94,10 @@ void AptCreateAHero::Manager::OnSelectAward(const char *arg)
     if (found)
     {
         AsciiString key("Cah:SelectedAwardDesc");
-        ((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, TheGameText->fetch(*(const AsciiString *)((char *)found + 0x14), (Bool *)0), false);
+        g_bfmeAptWindowManager->bfmeSetText(key, TheGameText->fetch(*(const AsciiString *)((char *)found + 0x14), (Bool *)0), false);
         return;
     }
     UnicodeString uw((const wchar_t *)g_00BC26DC);
     AsciiString key("Cah:SelectedAwardDesc");
-    ((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, uw, false);
+    g_bfmeAptWindowManager->bfmeSetText(key, uw, false);
 }

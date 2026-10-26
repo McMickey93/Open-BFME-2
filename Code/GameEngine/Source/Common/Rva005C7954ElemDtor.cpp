@@ -6,7 +6,7 @@
 #include "ascii_string.h"
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
 int __cdecl Rva005FB5E6AptCall(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function, const char *a0);
 
 class Rva005C31FB
@@ -136,12 +136,12 @@ InGameCommandButtonMovieClip::Impl::~Impl()
 		if (m_54) {
 			char *t = *(char **)(void *)&m_0C;
 			const char *s = t ? t + 8 : "";
-			Rva005FB5E6AptCall(TheRva00222A8BTarget, m_08, s, "SetAutoAbilityOverlayState", "_hide");
+			Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_08, s, "SetAutoAbilityOverlayState", "_hide");
 		}
 		if (m_55) {
 			char *t = *(char **)(void *)&m_0C;
 			const char *s = t ? t + 8 : "";
-			Rva005FB5E6AptCall(TheRva00222A8BTarget, m_08, s, "SetFlashEffectState", "_hide");
+			Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_08, s, "SetFlashEffectState", "_hide");
 		}
 	}
 	m_04->DeleteContentMovieClip();

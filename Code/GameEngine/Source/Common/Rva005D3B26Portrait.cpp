@@ -22,7 +22,9 @@ class Rva00222A8BTarget
 public:
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 struct Rva005D2FD0Inner
 {
@@ -63,14 +65,14 @@ public:
 
 void StrategicHUD::SelectionUIImpl::rva005D3B26()
 {
-	if (TheRva00222A8BTarget == 0)
+	if (((Rva00222A8BTarget *)g_bfmeAptWindowManager) == 0)
 		return;
 	if (m_image20 == 0)
 		return;
 	AsciiString tmp;
 	const char *name = m_inner ? m_inner->m_name : "";
 	tmp.format("_level%u.%s_Portrait", m_level, name);
-	reinterpret_cast<Rva002239B2 *>(TheRva00222A8BTarget)->rva002239E2(tmp, m_image20);
+	reinterpret_cast<Rva002239B2 *>(g_bfmeAptWindowManager)->rva002239E2(tmp, m_image20);
 }
 // ?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A: the global at VA 0xdfe4cc is ?g_bfmeAptWindowManager@@3PAVBfmeAptWindowManager@@A.
 #pragma comment(linker, "/alternatename:?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A=?g_bfmeAptWindowManager@@3PAVBfmeAptWindowManager@@A")
@@ -84,7 +86,7 @@ void StrategicHUD::SelectionUIImpl::Show()
 	if (m_shown30)
 		return;
 	const char *name = m_inner ? m_inner->m_name : "";
-	Rva005FB5E6AptCall(TheRva00222A8BTarget, (void *)m_level, name, "SetState", "_show");
+	Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, name, "SetState", "_show");
 	m_shown30 = true;
 	if (m_32)
 		reinterpret_cast<Rva005D3A91 *>(this)->rva005D3A91();

@@ -22,7 +22,9 @@ public:
     void bfmeSetText(const AsciiString &, const UnicodeString &, bool);
 };
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 struct TeamNameHolder
 {
     char m_pad[8];
@@ -73,7 +75,7 @@ void StrategicHUD::BattlePromptMovieClip::Impl::SetRegionNameString(const Unicod
     else
         teamName = "";
     key.format("APT:_level%u.%s_RegionName", m_level, teamName);
-    ((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, regionName, true);
+    g_bfmeAptWindowManager->bfmeSetText(key, regionName, true);
 }
 void StrategicHUD::BattlePromptMovieClip::Impl::rva005F960C(const UnicodeString &regionName)
 {

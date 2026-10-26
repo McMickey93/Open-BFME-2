@@ -258,7 +258,7 @@ public:
 };
 
 class Rva00222A8BTarget;
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+class Rva00222A8BTarget;
 extern const char g_Rva0107301CEmptyString[];
 int __cdecl Rva0050E9FEAptCall(Rva00222A8BTarget *target, void *level, const char *prefix, const char *function, const char **a0ptr);
 
@@ -431,19 +431,19 @@ void StrategicHUD::ArmyMemberIconMovieClip::Impl::Update()
 	if (!(m_flags & 0x10)) {
 		const char *state = (m_flags & 1) ? "_selected" : "_up";
 		const char *prefix = inner() ? inner()->m_name : g_Rva0107301CEmptyString;
-		Rva0050E9FEAptCall(TheRva00222A8BTarget, (void *)m_level, prefix, "SetState", &state);
+		Rva0050E9FEAptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, prefix, "SetState", &state);
 		m_flags |= 0x10;
 	}
 	if (!(m_flags & 0x20)) {
 		const char *state = (m_flags & 2) ? "_show" : "_hide";
 		const char *prefix = inner() ? inner()->m_name : g_Rva0107301CEmptyString;
-		Rva0050E9FEAptCall(TheRva00222A8BTarget, (void *)m_level, prefix, "SetNotThereOverlayState", &state);
+		Rva0050E9FEAptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, prefix, "SetNotThereOverlayState", &state);
 		m_flags |= 0x20;
 	}
 	if (!(m_flags & 0x40)) {
 		const char *state = (m_flags & 4) ? "_show" : "_hide";
 		const char *prefix = inner() ? inner()->m_name : g_Rva0107301CEmptyString;
-		Rva0050E9FEAptCall(TheRva00222A8BTarget, (void *)m_level, prefix, "SetDisbandingOverlayState", &state);
+		Rva0050E9FEAptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), (void *)m_level, prefix, "SetDisbandingOverlayState", &state);
 		m_flags |= 0x40;
 	}
 }
