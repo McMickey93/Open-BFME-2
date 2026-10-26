@@ -9,7 +9,19 @@ extern "C" unsigned int g_bfmeHeapSize1149 = 0;
 extern "C" char *g_bfmeHeapEnd1149 = 0;
 // g_bfmeHeapCur1149: matched references place it at VA 0xddf528 (retail .data initial value 0).
 extern "C" char *g_bfmeHeapCur1149 = 0;
-extern "C" char *g_bfmeFreeList1149[];
+// The free-list table at 0x009DF530 is STLport's
+// _STL::__node_alloc<false, 0>::_S_free_list (defined by BfmeSmallAllocPR.cpp).
+namespace _STL
+{
+class _Node_alloc_obj;
+
+template <bool __threads, int __inst>
+class __node_alloc
+{
+public:
+	static _Node_alloc_obj * volatile _S_free_list[16];
+};
+}
 
 char *bfmeChunk1149(unsigned int size, int *nobjs)
 {
@@ -34,7 +46,7 @@ char *bfmeChunk1149(unsigned int size, int *nobjs)
 		unsigned int n5 = 2 * n6 + (((g_bfmeHeapSize1149 >> 4) + 7) & ~7);
 
 		if (n7 > 0) {
-			char **n4 = g_bfmeFreeList1149 + ((n7 - 1) >> 3);
+			char **n4 = (char **)_STL::__node_alloc<false, 0>::_S_free_list + ((n7 - 1) >> 3);
 
 			*(char **)g_bfmeHeapCur1149 = *n4;
 			*n4 = g_bfmeHeapCur1149;
@@ -48,7 +60,7 @@ char *bfmeChunk1149(unsigned int size, int *nobjs)
 			char *n3;
 
 			for (n2 = size; n2 <= 0x80; n2 += 8) {
-				n1 = g_bfmeFreeList1149 + ((n2 - 1) >> 3);
+				n1 = (char **)_STL::__node_alloc<false, 0>::_S_free_list + ((n2 - 1) >> 3);
 				n3 = *n1;
 				if (n3 != 0) {
 					*n1 = *(char **)n3;
@@ -67,5 +79,3 @@ char *bfmeChunk1149(unsigned int size, int *nobjs)
 		return bfmeChunk1149(size, nobjs);
 	}
 }
-// _g_bfmeFreeList1149: the global at VA 0xddf530 is ?_S_free_list@?$__node_alloc@$0A@$0A@@_STL@@2RCRAV_Node_alloc_obj@2@C.
-#pragma comment(linker, "/alternatename:_g_bfmeFreeList1149=?_S_free_list@?$__node_alloc@$0A@$0A@@_STL@@2RCRAV_Node_alloc_obj@2@C")

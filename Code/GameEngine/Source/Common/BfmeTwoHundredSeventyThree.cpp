@@ -39,6 +39,17 @@ public:
 template <bool __threads, int __inst>
 NodeAllocMutex _Node_Alloc_Lock<__threads, __inst>::_S_lock;
 
+// The free-list table at 0x009DF530 is this static (defined by
+// BfmeSmallAllocPR.cpp).
+class _Node_alloc_obj;
+
+template <bool __threads, int __inst>
+class __node_alloc
+{
+public:
+	static _Node_alloc_obj * volatile _S_free_list[16];
+};
+
 }
 
 struct BfmeFreeListNode
@@ -46,12 +57,10 @@ struct BfmeFreeListNode
 	BfmeFreeListNode *m_next;
 };
 
-extern BfmeFreeListNode *bfmeFreeList[0x10];
-
 void bfmeSmallFreePM(void *at, unsigned int bytes)
 {
 	BfmeFreeListNode * volatile *my_free_list =
-		bfmeFreeList + ((bytes - 1) >> 3);
+		(BfmeFreeListNode * volatile *)_STL::__node_alloc<false, 0>::_S_free_list + ((bytes - 1) >> 3);
 	_STL::_Node_Alloc_Lock<false, 0> lock_instance;
 	((BfmeFreeListNode *)at)->m_next = *my_free_list;
 	*my_free_list = (BfmeFreeListNode *)at;
@@ -64,5 +73,3 @@ void bfmeFreePM(void *at, unsigned int bytes)
 	else
 		bfmeSmallFreePM(at, bytes);
 }
-// ?bfmeFreeList@@3PAPAUBfmeFreeListNode@@A: the global at VA 0xddf530 is ?_S_free_list@?$__node_alloc@$0A@$0A@@_STL@@2RCRAV_Node_alloc_obj@2@C.
-#pragma comment(linker, "/alternatename:?bfmeFreeList@@3PAPAUBfmeFreeListNode@@A=?_S_free_list@?$__node_alloc@$0A@$0A@@_STL@@2RCRAV_Node_alloc_obj@2@C")
