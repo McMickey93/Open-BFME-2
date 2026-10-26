@@ -5,6 +5,7 @@
 
 class IDirect3DSurface9;
 
+struct IDirect3DDevice8;
 struct IDirect3DDevice9;
 
 struct IDirect3DDevice9Vtbl
@@ -41,22 +42,23 @@ public:
 	static IDirect3DSurface9 *_Create_DX8_Surface(
 		unsigned width, unsigned height, WW3DFormat format, _D3DPOOL pool);
 
-private:
-	static IDirect3DDevice9 *D3DDevice;
-	static unsigned int D3DCallCount;
+protected:
+	// The ledger's ?D3DDevice@DX8Wrapper@@1PAUIDirect3DDevice8@@A (0x9EDA34);
+	// BFME 2 calls through it with the Direct3D 9 vtable.
+	static IDirect3DDevice8 *D3DDevice;
 };
+
+// The DX8 call counter at 0x9EDA98 (the ledger's ?number_of_DX8_calls@@3IA).
+extern unsigned number_of_DX8_calls;
 
 IDirect3DSurface9 *DX8Wrapper::_Create_DX8_Surface(
 	unsigned width, unsigned height, WW3DFormat format, _D3DPOOL pool)
 {
 	IDirect3DSurface9 *surface = 0;
-	D3DDevice->lpVtbl->CreateOffscreenPlainSurface(
-		D3DDevice, width, height, (unsigned)format, (unsigned)pool, &surface, 0);
-	++D3DCallCount;
+	IDirect3DDevice9 *device = (IDirect3DDevice9 *)D3DDevice;
+	device->lpVtbl->CreateOffscreenPlainSurface(
+		device, width, height, (unsigned)format, (unsigned)pool, &surface, 0);
+	++number_of_DX8_calls;
 	return surface;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?D3DCallCount@DX8Wrapper@@0IA=?number_of_DX8_calls@@3IA")
-#pragma comment(linker, "/alternatename:?D3DDevice@DX8Wrapper@@0PAUIDirect3DDevice9@@A=?D3DDevice@DX8Wrapper@@1PAUIDirect3DDevice8@@A")
