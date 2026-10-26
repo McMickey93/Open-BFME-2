@@ -40,7 +40,8 @@ template <> void _STLP_alloc_proxy<AsciiString*, AsciiString, allocator<AsciiStr
 template <> void allocator<AsciiString>::deallocate(AsciiString*, size_t) const;
 }
 
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
 {
@@ -104,6 +105,6 @@ CitadelSlaughterHordeContainModuleData::CitadelSlaughterHordeContainModuleData()
 	m_fxForRingEntry = 0;
 	memset(m_statusForRingEntry.m_words, 0, sizeof(m_statusForRingEntry.m_words));
 	m_objectToDestroy.initFromStorages(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)),
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }

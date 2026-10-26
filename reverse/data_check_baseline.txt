@@ -551,7 +551,6 @@ Code/GameEngine/Source/GameLogic/Object/Collide/SalvageCrateCollidePoolKey.cpp	w
 Code/GameEngine/Source/GameLogic/Object/Collide/UnitCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04068
 Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047B51E@AODHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A036F8
 Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004663FF@CaveContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0364C
-Code/GameEngine/Source/GameLogic/Object/Contain/CitadelSlaughterHordeContainModuleDataCtor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/CitadelSlaughterHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva000480600@CitadelSlaughterHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03770
 Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainModuleDataCtor.cpp	wrong-name	?g_defaultStorage009FEFA4@@3VBfmeFixedStorage0004543D@@B	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp	wrong-name	?$S1@?1??rva000466B88@HealContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03658
@@ -638,7 +637,6 @@ Code/GameEngine/Source/GameLogic/Object/SpecialPower/HordeDispatchSpecialPowerPo
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C23D4@InvisibilitySpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A0419C
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/LevelGrantSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C2BC1@LevelGrantSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041B4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/ManTheWallsSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C7063@ManTheWallsSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042C8
-Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPowerModuleDataCtor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C3147@OCLSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041C4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/PlayerHealSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C7EFB@PlayerHealSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042E4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/PlayerUpgradeSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C7C4C@PlayerUpgradeSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042DC
@@ -753,7 +751,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdatePoolKey.cpp	wr
 Code/GameEngine/Source/GameLogic/Object/Update/RubbleRiseUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A4C82@RubbleRiseUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C20
 Code/GameEngine/Source/GameLogic/Object/Update/Rva002EFB20Helper_Rva003bc27b.cpp	wrong-name	?$S1@?1??helper@Rva002EFB20@@YAXPAX_N@Z@4IA	0x00A02DA4
 Code/GameEngine/Source/GameLogic/Object/Update/Rva00468E26Get.cpp	wrong-name	?$S1@?1??Rva00468E26Get@@YGPAVModule@@PAVObject@@@Z@4IA	0x00A0366C
-Code/GameEngine/Source/GameLogic/Object/Update/Rva00485ADCFilterCtor.cpp	wrong-name	?g_00DFEFA4StoragePrototype@@3PAEA	0x009FEFA4
 Code/GameEngine/Source/GameLogic/Object/Update/Rva00496B48Finish.cpp	wrong-name	?$S1@?P@??rva00496B48@Rva00496B48@@QAE_NXZ@4IA	0x00A03A6C
 Code/GameEngine/Source/GameLogic/Object/Update/Rva004A44B1.cpp	wrong-name	?$S1@?1??rva004A44B1@Rva004A44B1@@QAEXXZ@4IA	0x00A03C14
 Code/GameEngine/Source/GameLogic/Object/Update/ScaleWallSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000494E83@ScaleWallSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A20

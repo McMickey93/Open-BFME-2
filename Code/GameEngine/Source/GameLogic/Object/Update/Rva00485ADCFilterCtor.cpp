@@ -11,7 +11,8 @@
 // Rva name is honest: the address is proven, the filter role is proven
 // by the callees, but no donor names the holder class.
 
-extern unsigned char g_00DFEFA4StoragePrototype[28];
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
 {
@@ -46,6 +47,6 @@ private:
 Rva00485ADCFilter::Rva00485ADCFilter()
 {
 	m_filter.initFromStorages(
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)),
-		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(g_00DFEFA4StoragePrototype)));
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)),
+		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
