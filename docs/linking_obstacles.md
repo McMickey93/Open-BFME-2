@@ -5070,3 +5070,43 @@ Remaining: the two slides still need canonical coordinate/private animation decl
   `StaticGameLODNames`, but the target spelling is unproven.
 - **Clearance:** build verification only.
 - **Census confirmation:** pending.
+
+### LINK-068: W3DPropDraw's vftables disagree between units and with retail
+
+**Status: Open. Updated: 2026-10-26; inspected revision: `60d0fc0a50`.**
+
+- **Evidence / affected units:**
+  - `W3DPropDrawModuleDataCtor.cpp` (33 B) has one blocker: `??_7W3DPropDrawModuleData@@6B@`
+    differs from the first copy in link order.
+  - That first copy is `W3DPropDraw.cpp`'s (124 B). That unit also loses
+    `??_7DrawModule@@6B@`, `??_GDrawModule@@MAEPAXI@Z` and `??1ModuleData@@UAE@XZ`
+    (unproven, differs from the kept retail copy).
+- **Target facts:** retail's table 0x00BCD420 (VA) is the shared 31-slot BFME 2 ModuleData
+  table (`Code/GameEngine/Include/Common/BfmeModuleData.h`) with three own slots:
+  - slot 0 is `??_G` 0x000CF058;
+  - slot 14 is 0x000CED14, `return m_modelName` by value, folded with
+    `W3DTreeDrawModuleData`'s rowed `rva000CED14`;
+  - slot 17 is 0x0047A6A9, `mov eax,ecx; ret`.
+  - Slots 1-3, 4-13, 15-16 and 18-30 are the base bodies the header lists.
+- **Current copies:**
+  - The ctor unit's Snapshot view emits 4 slots: `??_E` and three `__purecall`.
+  - `W3DPropDraw.cpp` emits 9 ZH-shaped slots from
+    `reference/shims/update_modules_bfme2/Common/Module.h`.
+  - Neither copy is retail's. Copying the ZH view into the ctor unit (the LINK-028 recipe)
+    would link the 33 B but install a vftable whose slots 5-8 run the wrong bodies.
+- **Family context:** the other W3D*Draw units (BoatWakeModelDrawDtor, LaserDrawDestructor,
+  LightDrawDestructor, RopeDraw ctor/dtor, ScriptedModelDrawDestructor,
+  ProjectileStreamDrawDtor, `Code/GameEngine/Source/GameClient/Drawable/Update/DrawModule.cpp`)
+  agree on a one-slot `??_7DrawModule` (only `??_E`). `W3DPropDraw.cpp` emits the full
+  32-slot ZH DrawModule table, so it loses there too.
+- **Remaining / next check:** give `W3DPropDraw.cpp` BFME 2 views instead of the ZH Module.h
+  family. Two pieces are needed:
+  - a BfmeModuleData.h-based `W3DPropDrawModuleData` declaring the slot-14 and slot-17
+    overrides;
+  - a DrawModule view that agrees with the family's kept copy, or a family-wide DrawModule
+    table proven against retail.
+  Then give the ctor unit the same W3DPropDrawModuleData declaration. The ZH Module.h
+  include chain in `W3DPropDraw.cpp` already defines `ModuleData`, so this means
+  replacing that chain, not adding a header. No source was changed.
+- **Clearance:** none.
+- **Census confirmation:** not claimed.
