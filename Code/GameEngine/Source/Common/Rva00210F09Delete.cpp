@@ -18,7 +18,7 @@ public:
 	virtual void rva00210F09();
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 void Rva00210EF1::rva00210F09()
 {

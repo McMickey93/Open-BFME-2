@@ -5,7 +5,7 @@
 // Clone: if src null return null else new Rva003FA776 copy-assign from src then link src+4 and flag +8.
 // Evidence: callees ??2@YAPAXI@Z ??0Rva003FA776@@QAE@XZ ??4Rva00210F3D@@QAEAAV0@ABV0@@Z all rowed; caller 0x002137F1; ret 4 one pointer arg.
 
-void *operator new(unsigned int);
+#include <new>
 
 class Rva00210F3D
 {

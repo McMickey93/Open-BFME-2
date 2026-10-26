@@ -4,7 +4,7 @@
 // Callers at 0x001F58E8 with this plus 8 and at 0x001F904E with own this prove __thiscall void void.
 // Prev 0x001F3FD0 Rva001F3FD0Set same flags and next 0x001F421B FXParticleSystem. Honest Rva names.
 // /O1 for xor-first compare plus push-eax delete epilogue.
-void __cdecl operator delete(void *p);
+#include <new>
 struct Rva001F4206Helper {
     virtual void *func(int x);
 };
