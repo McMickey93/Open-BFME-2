@@ -2302,3 +2302,58 @@ Census confirmation: n/a.
   already flags `g_009DEEF0Static` and siblings as duplicate-def / wrong-name. (2) The nine
   narrow and five wide moneypunct alias hatches (per unit) need alias rows to go.
 - **Census confirmation:** awaiting the next census for 437bc30603 and b313329af6.
+
+### LINK-064: placeholder element names that hide the retail element of three STL families
+
+**Status: Open. Updated: 2026-10-26; inspected revision: d0d3b5054d, index d1f046749a.**
+
+- **Evidence / scope:** retail call chains name the element of three families
+  differently from their rows. Read with `tools/retail_body.py` callers/disasm.
+  - **`vector<ProductionPrerequisite::PrereqUnitRec>`**
+    (`ProductionPrerequisiteRecVectorInsertOverflow.cpp`, 183 B): the overflow
+    0x004F5165 and push_back 0x004F5243 call `_Construct` 0x002CF99D. That body
+    calls copy ctor 0x002CF5B1, whose only caller is 0x002CF99D. Both are rowed
+    as `BfmeStringRecord002CF5B1` in `StringRecordCopyBFME2.cpp`. The helpers
+    0x004F5097 and 0x004F50BD are also rowed under that name, so it is the real
+    PrereqUnitRec: two words, then an AsciiString. The ZH view conflates this
+    element with another 12-byte record. `ProductionPrerequisite.cpp` rows
+    `__uninitialized_copy`/`__uninitialized_fill_n<PrereqUnitRec>` at
+    0x004EE1E2/0x004EE20B. Those bodies call 0x004EE1A9, a word-field copy
+    rowed as `PerTurnStats` in `V3PolyCopyCtors.cpp`. The symbols.csv pin
+    `??0PrereqUnitRec@ProductionPrerequisite@@QAE@ABU01@@Z -> 0x004EE1A9`
+    carries the same conflation. That ZH-flagged TU also emits an EH-enabled
+    `_M_insert_overflow` (267 B) and an 18 B `_Construct`. It is first in link
+    order, so its wrong copies are selected.
+  - **`map<int, AsciiString>` in `Rva00566695Assign.cpp`** (179 B): the node
+    that clone_node 0x005041D8 allocates through 0x005041B6 is 0x2C bytes
+    (`push 0x2c`). That holds a 0x1C value, not `pair<const int, AsciiString>`
+    (0x8). The rowed `_Construct` 0x00500CFE calls pair copy 0x00500839, rowed
+    `pair<const int, Rva0050055D>` in `StlSweepW4Rva00500839.cpp`. That calls
+    0x0050055D, a two-tree copy. The symbols.csv pin
+    `??0?$pair@$$CBHVAsciiString@@@_STL@@QAE@ABU01@@Z -> 0x00500839` and the
+    whole `map<int, AsciiString>` row family behind 0x00566695 are therefore a
+    placeholder value type. It is shared with the genuine ignore-list
+    `map<int, AsciiString>` (`UserPreferencesDeferredIgnores.cpp`, `PeerDefs.cpp`,
+    `WOLBuddyOverlay.cpp`).
+  - **`vector<Rva00584405Element>`** (`StlSweepW4Rva00584405.cpp`, 225 B):
+    retail overflow 0x0058431D and copy worker 0x00583B11 construct through
+    0x00583A72. 0x00583A1E is an assignment (`mov eax, ecx ... ret 4`, rowed
+    `Rva002337F0::set`), not the copy ctor its pin claims. The 28 B element is
+    four dwords, a byte at +0x10, then dwords at +0x14/+0x18. Its family is
+    split across `Rva002337F0`, `BfmeStringRecord00111ACF` and
+    `Rva00584405Element` rows.
+- **Completed:** diagnosis only. No source or row was changed.
+- **Remaining / next check:** each repair is a family rename, not a unit-local
+  change. Retype the rows and callers together under one element and drop the
+  wrong pins. Keep the genuine `map<int, AsciiString>` ignore family separate.
+  For PrereqUnitRec, first rename the 0x004EE1E2/0x004EE20B rows and their
+  0x004EE1A9 element away from `PrereqUnitRec`. Then the 0x002CF5B1 family can
+  take the real name, and `ProductionPrerequisite.cpp` can stop emitting its
+  overflow and `_Construct`. Related: the `vector<BfmePod32>` copy 0x0052C823
+  (`Rva0056616BCopyDeferred.cpp`, 517 B) reaches 0x0052C27E, rowed
+  `__uninitialized_copy<Rva003A6F70*>`, so its element is `Rva003A6F70`
+  (LINK-002). Its provider file `stlport_pod_noexc_deferred_copies.cpp` was
+  being repaired by another worker (98e2e4d836, Pod28 sibling) and was left
+  alone.
+- **Clearance:** none.
+- **Census confirmation:** not applicable.
