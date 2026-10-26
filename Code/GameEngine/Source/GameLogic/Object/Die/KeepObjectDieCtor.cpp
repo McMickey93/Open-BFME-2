@@ -32,32 +32,9 @@
 class Thing;
 class ModuleData;
 
-template <typename T> struct BfmeStringData
-{
-	int refCount;
-	unsigned short length;
-	unsigned short capacity;
-	T text[1];
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-template <typename T> class StringBase
-{
-public:
-	StringBase() : m_data(0) {}
-	StringBase(const StringBase<T> &that);
 
-private:
-	BfmeStringData<T> *m_data;
-};
-
-class AsciiString : private StringBase<char>
-{
-	friend class KeepObjectDie;
-public:
-	AsciiString(const char *text);
-	AsciiString(const AsciiString &other);
-	~AsciiString() {}
-};
 
 class Debug
 {
@@ -180,7 +157,8 @@ KeepObjectDie::KeepObjectDie(Thing *thing, const ModuleData *moduleData) :
 		{
 			Debug::SkipNext(true);
 			theDebug->slot60();
-			operator<<(theDebug->slot6C(0, 0, 0), thing->getTemplate()->m_nameString).slot38(": Objects with KeepObjectDie should be KindOf SELECTABLE\n").slot4C(2);
+			operator<<(theDebug->slot6C(0, 0, 0),
+				*reinterpret_cast<const StringBase<char> *>(&thing->getTemplate()->m_nameString)).slot38(": Objects with KeepObjectDie should be KindOf SELECTABLE\n").slot4C(2);
 		}
 	}
 }
