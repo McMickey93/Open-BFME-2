@@ -36,7 +36,7 @@ template <> void **vector<void*>::end();
 class UpgradeTemplate;
 class UpgradeCenter;
 class Object;
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 // Retail Version stores minimum/current bytes and has an inline constructor;
 // that constructor form also reproduces the independent stack homes in DoXfer.
 struct WallVersion

@@ -61,7 +61,7 @@ public:
 	const UpgradeTemplate *rva001DB0A8() const;
 };
 
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 // Retail ThrowInfo identifies the 8-byte XferException class and its
 // established constructor, copy constructor and destructor providers.
 class XferException

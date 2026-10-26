@@ -29,7 +29,7 @@ class UpgradeCenter
 public:
 	const UpgradeTemplate *findUpgrade(const AsciiString &name) const;
 };
-extern "C" UpgradeCenter *TheUpgradeCenter;
+extern UpgradeCenter *TheUpgradeCenter;
 
 void ScriptActions::Rva003C2121Grant(const AsciiString &teamName, const AsciiString &upgradeName)
 {
