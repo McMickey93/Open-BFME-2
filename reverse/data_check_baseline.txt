@@ -809,7 +809,6 @@ Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	wrong-name	__Hwnd	0x009EC408
 Code/Libraries/Source/debug/debug_except.cpp	wrong-name	?g_crashAttachments@@3PAUCrashAttachment@@A	0x009E0DEC
 Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	duplicate-def	_g_debugAssertDialogAnswered	0x009E089D
 Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	wrong-name	_g_debugAssertDialogAnswered	0x009E089D
-Code/Libraries/Source/WWVegas/WWLib/Rva00038780Siblings.cpp	wrong-name	_g_bfme00DE0880	0x009E0880
 Code/Libraries/Source/WWVegas/WWLib/Rva001EC311Ctor.cpp	wrong-name	?g_007ED97C@@3HA	0x007ED97C
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?$S1@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4IA	0x009E084C
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?$S3@?1??Rva00035DF0Get@@YAPAVRva00041004@@XZ@4IA	0x009E0874
