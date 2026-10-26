@@ -20,3 +20,12 @@ template <> list<int>::_Node *list<int>::_M_create_node(const int &);
 template list<int>::iterator list<int>::insert(list<int>::iterator, const int &);
 template class _List_iterator<int, _Const_traits<int> >;
 }
+
+// list<CreditsLine *>::insert is the same folded body (0x5925E2). Credits.cpp's
+// own copy inlines the bfmelist node creator; this one, first in link order,
+// calls Credits.cpp's retail _M_create_node (0xB6447) as retail does.
+class CreditsLine;
+namespace _STL {
+template <> list<CreditsLine *>::_Node *list<CreditsLine *>::_M_create_node(CreditsLine *const &);
+template list<CreditsLine *>::iterator list<CreditsLine *>::insert(list<CreditsLine *>::iterator, CreditsLine *const &);
+}

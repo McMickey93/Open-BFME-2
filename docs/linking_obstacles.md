@@ -940,7 +940,7 @@ confirmation remain pending.
 
 ### LINK-015: naming `VectorClass<Vector3>`'s deleting destructor proved the consumers' inlined copies wrong
 
-**Status: Repair landed / awaiting verification (two teardown units remain blocked). Updated: 2026-10-26; inspected revision: cf035cfb20.**
+**Status: Census-confirmed for the four repaired units; two teardown units remain blocked. Updated: 2026-10-26; inspected revision: c01848c0b1.**
 
 - **Evidence / scope:** 4e0bfa8260 named retail 0x000F1CF7 as
   `??_G?$VectorClass@VVector3@@@@UAEPAXI@Z` (34 B: vptr store, call to the kept
@@ -980,7 +980,10 @@ confirmation remain pending.
   their retail TU, `pointgr.cpp`, would clear them. No source trial; no hatch
   (`#pragma optimize`) considered.
 - **Clearance:** preview scope (the units above) on current objects.
-- **Census confirmation:** awaiting the next census.
+- **Census confirmation:** the census at d1f046749a (2026-10-26 13:18) links
+  `pointgr.cpp`, `PointGroupClassRva0017A890.cpp`, `DX8SkinClearVisibleList.cpp` and
+  `vector_class_vector3_ctor.cpp`; `Rva007B7280Siblings.cpp` and `Rva007B73C0.cpp` still
+  lose one COMDAT each, as expected.
 
 ### LINK-016: folded bodies whose consumers declare them decl-only, with no provider
 
@@ -1684,3 +1687,34 @@ inspected revision: 78413ee546.
 - **Clearance:** the four local preview blockers are cleared with current
   source receipts; all matched coverage is preserved.
 - **Census confirmation:** awaiting the next census; no headline gain claimed.
+
+### LINK-047: `Credits.cpp`'s `list<CreditsLine *>::insert` copy inlines the bfmelist node creator
+
+**Status: Repair landed / awaiting census. Updated: 2026-10-26; inspected revision: c01848c0b1.**
+
+- **Evidence / scope:** `Credits.cpp` (3,053 B) did not link: its
+  `list<CreditsLine *>::insert`, the only copy, is not retail's. Retail folds every
+  four-byte-element `list<T *>::insert` into 0x005925E2 (37 B), which calls
+  `_M_create_node` 0xB6447; `Credits.cpp` builds `insert` with the bfmelist shim's
+  inlined node creator. Two earlier attempts (`reverse/re_attempts.log`, 0x005B78A4 and
+  0x005B72A5) declared `insert` decl-only in `Credits.cpp`, which re-allocates registers
+  in `addText`/`update`, since `push_back` inlines `insert` there. The census's
+  `famgenDelete005B72E7` duplicate is a stale-index artifact: its donor,
+  `FamilyDeletingDtors_muse-08-5B7352.cpp`, was merged into `Credits.cpp` by 800def3e22,
+  after the census commit.
+- **Completed:** `Credits.cpp` is unchanged. `stlport_list_int_insert.cpp`, link position
+  1104 against `Credits.obj`'s 19770, instantiates `list<CreditsLine *>::insert` beside
+  its `list<int>` owner row, with `_M_create_node` declared only so it calls
+  `Credits.cpp`'s retail-proven copy, as the `SuperweaponInfo` twin units do. Its body
+  is byte-identical to the `list<int>` row, and the existing pins place both names, so
+  the first copy is proven retail and `Credits.cpp`'s copy no longer loses
+  (retail-truth-3). Added as an ICF-twin row (`add_match.py --icf-owner`); `./build.sh`
+  5/5. `tools/link_check.py` on a local `--update-index` index at c01848c0b1 (stale
+  donor dropped): `Credits.cpp` 0 -> 3,053 B, `stlport_list_int_insert.cpp` keeps its
+  62 B. Without the provider instantiation, the same index still reports the `insert`
+  comdat and selected blockers.
+- **Remaining / next check:** the `insert` pin's `fold-proof=` names `Credits.cpp`,
+  whose copy no longer equals retail; `stlport_list_int_insert.cpp` now proves it. The
+  pin was left as is (pin edits go through `tools/pin_admission.py`).
+- **Clearance:** preview scope (the two units above) on a HEAD-updated index.
+- **Census confirmation:** awaiting the next census.
