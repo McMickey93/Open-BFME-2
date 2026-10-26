@@ -2,8 +2,7 @@
 // Native2E70E8..2E7133: vector deleting destructor for 16-byte PathfindCell.
 // The scalar callback is52DD64; source identity is independently established
 // by the shipped WorldBuilder PathfindCell::Info::Free assertion/callback chain.
-void __cdecl operator delete(void *p);
-void __cdecl operator delete[](void *p);
+#include <new>
 class PathfindCell {
 public:
  ~PathfindCell();

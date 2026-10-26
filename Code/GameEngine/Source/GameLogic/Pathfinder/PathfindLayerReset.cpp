@@ -20,8 +20,7 @@ template<class T> inline volatile T &__vref(T &x){return *(volatile T *)&x;}
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
-void __cdecl operator delete(void *pointer);
-void __cdecl operator delete[](void *pointer);
+#include <new>
 
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 
