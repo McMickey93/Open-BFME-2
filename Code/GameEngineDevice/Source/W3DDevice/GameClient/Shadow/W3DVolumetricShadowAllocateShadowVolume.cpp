@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?allocateShadowVolume@W3DVolumetricShadow@@IAE_NHHH@Z @0x000F185F 158B.
 // ?Create@Geometry@@QAEHHH@Z @0x000EFB99 172B.
 // ??0Geometry@@QAE@XZ @0x000F0F98 32B.
@@ -26,16 +27,13 @@ typedef float Real;
 typedef int Int;
 typedef unsigned short UnsignedShort;
 typedef bool Bool;
-#define NULL 0
-#define FALSE 0
-#define TRUE 1
+#include <windows.h>
+#include <new>
 #define NEW new
 #define MAX_SHADOW_LIGHTS		1
 #define MAX_SHADOW_CASTER_MESHES	160
 #define SHADOW_DYNAMIC	0x1
 
-void * __cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
 
 class Vector3
 {

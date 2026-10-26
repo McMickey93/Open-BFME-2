@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // W3DShadowGeometryMesh: per-mesh shadow geometry, face normals and the
 // polygon neighbour table the silhouette walk reads.
 //   ??1W3DShadowGeometryMesh@@QAE@XZ                       @0x000F11C0  82B
@@ -45,13 +46,10 @@ typedef short Short;
 typedef unsigned short UnsignedShort;
 typedef unsigned char Byte;
 typedef bool Bool;
-#define TRUE 1
-#define FALSE 0
-#define NULL 0
+#include <windows.h>
+#include <new>
 #define NEW new
 
-void * __cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *p);
 
 #define MAX_POLYGON_NEIGHBORS 3
 #define NO_NEIGHBOR -1

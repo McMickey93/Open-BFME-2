@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?initFromMesh@W3DShadowGeometry@@QAEHPAVRenderObjClass@@HPAV1@@Z @0x000F1018 424B.
 //
 // W3DShadowGeometry::initFromMesh: appends one mesh to the shadow geometry,
@@ -21,11 +22,10 @@ typedef float Real;
 typedef int Int;
 typedef unsigned short UnsignedShort;
 typedef bool Bool;
-#define FALSE 0
-#define TRUE 1
+#include <windows.h>
+#include <new>
 #define NEW new
 
-void * __cdecl operator new[](unsigned int size);
 #define MAX_SHADOW_CASTER_MESHES	160
 #define MAX_SHADOW_VOLUME_VERTS	16384
 
