@@ -392,7 +392,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/BfmeConv907.cpp` | 31 | 8 (U=8) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva005de9c4_ctor.cpp` | 31 | 6 (U=1, C=2, S=3) | Open |
 | `Code/gen_small/uw_gen_007.cpp` | 31 | 4 (U=4) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00013490.cpp` | 30 | 4 (U=4) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00013490.cpp` | 30 | 4 (U=4) | 2026-10-26 (437bc30603): unit removed. 0x00013490 is `??_G?$basic_ios@GV?$char_traits@G@_STL@@@_STL@@UAEPAXI@Z` (slot 0 of retail RTTI vftable 0x007BBCFC); row repointed to `stlport_wide_ios.cpp`, which link_check (index d1f046749a) shows LINKS 296 -> 326 B. Census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva004157BB.cpp` | 29 | 4 (U=4) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00464431.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva00540053.cpp` | 29 | 4 (U=4) | Open |
