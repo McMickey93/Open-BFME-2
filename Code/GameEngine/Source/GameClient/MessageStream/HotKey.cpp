@@ -221,23 +221,6 @@ private:
 	int m_compare;		// +0x08
 };
 
-class HotKeyManager
-{
-public:
-	Bool executeHotKey(const AsciiString &keyIn, Bool shift);
-	GameMessageDisposition translate(const GameMessage *msg);
-	void addMessageAction(const TreeHintRef00217D4C &action, Int messageType);
-	void rva00358A53();
-	void rva00358ACB();
-	AsciiString searchHotKey(const AsciiString &);
-	AsciiString searchHotKey(const UnicodeString &);
-private:
-	unsigned char m_pad00[0x0c];
-	HotKeyMap m_map;		// +0x0C
-	HotKeyMap m_altMap;		// +0x18
-	HotKeyMessageActionMap m_messageActionMap;		// +0x24
-};
-
 // The audio manager's misc sounds (+0x80 hot key ran, +0x84 hot key failed).
 struct HotKeyMiscAudioView
 {
@@ -483,6 +466,38 @@ public:
 	void rva003592E6();
 };
 
+class GameTextInterface
+{
+public:
+	virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+	virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+	virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+	virtual void v12(); virtual void v13();
+	// Slot 14 (+0x38): the text a label names.
+	virtual UnicodeString fetch(const AsciiString &label, bool *exists = 0);
+};
+
+extern GameTextInterface *TheGameText;
+
+class HotKeyManager
+{
+public:
+	Bool executeHotKey(const AsciiString &keyIn, Bool shift);
+	GameMessageDisposition translate(const GameMessage *msg);
+	void addMessageAction(const TreeHintRef00217D4C &action, Int messageType);
+	void rva00358A53();
+	void rva00358ACB();
+	AsciiString searchHotKey(const AsciiString &);
+	AsciiString searchHotKey(const UnicodeString &);
+private:
+	unsigned char m_pad00[0x0c];
+	HotKeyMap m_map;		// +0x0C
+	HotKeyMap m_altMap;		// +0x18
+	HotKeyMessageActionMap m_messageActionMap;		// +0x24
+};
+
+// ---- from Code/GameEngine/Source/GameClient/MessageStream/HotKey.cpp
+
 // ---- from Code/GameEngine/Source/GameClient/MessageStream/HotKey.cpp
 
 // HotKey.cpp -- HotKeyManager members at their WorldBuilder home
@@ -642,12 +657,6 @@ void HotKeyManager::addMessageAction(const TreeHintRef00217D4C &action, Int mess
 	m_messageActionMap[messageType] = action;
 }
 
-// tu-skeleton: 0x00358B43 34B ??0?$pair@$$CBVAsciiString@@UTreeHintRef00217D4C@@@_STL@@QAE@ABU01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_hint_00218022.cpp (not merged yet)
-
-// tu-skeleton: 0x00358B65 57B ??1Rva00358B65@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00358B65Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00358B9E 194B ?searchHotKey@HotKeyManager@@QAE?AVAsciiString@@ABVUnicodeString@@@Z -- matched in Code/GameEngine/Source/GameClient/MessageStream/HotKeySearch.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/Rva00358C60PairFactory.cpp
 
 // Native358C60..358C7B is the27B return-buffer pair-factory twin of2C621.
@@ -658,8 +667,6 @@ void HotKeyManager::addMessageAction(const TreeHintRef00217D4C &action, Int mess
 Pair358C60 __cdecl Rva00358C60Factory(const AsciiString &key,const TreeHintRef00217D4C &value) {
  return Pair358C60(key,value);
 }
-
-// tu-skeleton: 0x00358C7B 9B ??$_Destroy@URva0027EA49@@@_STL@@YAXPAURva0027EA49@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_rva0027EA49_erase.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/Rva00358E6AClear.cpp
 
@@ -690,12 +697,6 @@ void Rva00358E6A::rva00358F7C()
 	m_00->m_0c = m_00;
 	m_04 = 0;
 }
-
-// tu-skeleton: 0x00358CA0 45B ?Rva00358CA0Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types2.cpp (not merged yet)
-
-// tu-skeleton: 0x00358CCD 90B ?searchHotKey@HotKeyManager@@QAE?AVAsciiString@@ABV2@@Z -- matched in Code/GameEngine/Source/GameClient/MessageStream/HotKeySearch.cpp (not merged yet)
-
-// tu-skeleton: 0x00358D27 59B ?erase@?$_Rb_tree@URva0027EA49@@U1@U?$_Identity@URva0027EA49@@@_STL@@U?$less@URva0027EA49@@@3@V?$allocator@URva0027EA49@@@3@@_STL@@QAEXU?$_Rb_tree_iterator@URva0027EA49@@U?$_Nonconst_traits@URva0027EA49@@@_STL@@@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_rva0027EA49_erase.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/Rva00358D62Clear.cpp
 
@@ -728,12 +729,6 @@ void Rva00358D62::rva00358DFD()
 	m_04 = 0;
 }
 
-// tu-skeleton: 0x00358D97 9B ??$_Destroy@VRva00358B65@@@_STL@@YAXPAVRva00358B65@@@Z -- matched in Code/GameEngine/Source/Common/DestroyInstances.cpp (not merged yet)
-
-// tu-skeleton: 0x00358DA0 34B ?_M_create_node@?$_Rb_tree@URva00358DA0Element@@U?$pair@$$CBURva00358DA0Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva00358DA0Element@@H@_STL@@@3@U?$less@URva00358DA0Element@@@3@V?$allocator@U?$pair@$$CBURva00358DA0Element@@H@_STL@@@3@@_STL@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBURva00358DA0Element@@H@_STL@@@2@ABU?$pair@$$CBURva00358DA0Element@@H@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00358DA0.cpp (not merged yet)
-
-// tu-skeleton: 0x00358DC2 59B ?rva00358DC2@Rva00358DC2@@QAEXPAURva00358DC2Node@@@Z -- matched in Code/GameEngine/Source/GameClient/Rva00358DC2Erase.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00358E26.cpp
 
 // STLport 4.5.3 reference instantiation. Target boundary and byte comparison prove operation shape.
@@ -751,12 +746,6 @@ unsigned int Rva00359269::rva00359269(const int &key)
 {
 	return erase(key);
 }
-
-// tu-skeleton: 0x00358E9F 148B ?_M_insert@?$_Rb_tree@VAsciiString@@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@U?$_Select1st@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@@3@U?$less@VAsciiString@@@3@V?$allocator@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@@3@@_STL@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVAsciiString@@VAudioEventRTS@@@2@0@Z -- matched in Code/GameEngine/Source/Common/Thing/ThingTemplate.cpp (not merged yet)
-
-// tu-skeleton: 0x00358F33 17B ?rva00358F33@Rva00358DC2@@QAEXURva00358F33Iterator@@@Z -- matched in Code/GameEngine/Source/GameClient/Rva00358DC2Erase.cpp (not merged yet)
-
-// tu-skeleton: 0x00358F44 56B ??1Rva00358D62@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00358FEE.cpp
 
@@ -793,26 +782,12 @@ _STL::pair<Rva00359032Tree::iterator, bool> Rva00359218Set::insert(const Rva0035
 	return m_tree.insert_unique(value);
 }
 
-// tu-skeleton: 0x003590C9 294B ?insert_unique@?$_Rb_tree@HU?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@U?$_Select1st@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@@2@U32@ABU?$pair@$$CBHUTreeHintRef00217D4C@@@2@@Z -- matched in Code/GameEngine/Source/Common/Rva005C6CCC.cpp (not merged yet)
-
-// tu-skeleton: 0x003591EF 5B ?rva003591EF@Rva003591EF@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x003591F4 36B ?rva003591F4@Rva00E01E28Owner@@QAEXURva003591F4Arg@@@Z -- matched in Code/GameEngine/Source/Common/Thing/IntFloatMapSubscript.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/Rva0035922CClearForward.cpp
 
 void Rva0035922C::rva0035922C()
 {
 	m_tree.rva00358F7C();
 }
-
-// tu-skeleton: 0x00359231 56B ??1Rva00358E6A@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0035926E 29B ?insert@?$map@HUTreeHintRef00217D4C@@U?$less@H@_STL@@V?$allocator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@3@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@@2@U32@ABU?$pair@$$CBHUTreeHintRef00217D4C@@@2@@Z -- matched in Code/GameEngine/Source/Common/Rva005C6CCC.cpp (not merged yet)
-
-// tu-skeleton: 0x0035928B 5B ?rva0035928B@Rva0035928B@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00359290 86B ??1Rva00359290@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/AI/Rva00359290Dtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/Rva003592E6Clear.cpp
 
@@ -821,6 +796,84 @@ void Rva003592E6::rva003592E6()
 	m_0c.rva00358F7C();
 	m_18.rva00358F7C();
 }
+
+// tu-skeleton: 0x00358B43 34B ??0?$pair@$$CBVAsciiString@@UTreeHintRef00217D4C@@@_STL@@QAE@ABU01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_hint_00218022.cpp (not merged yet)
+
+// tu-skeleton: 0x00358B65 57B ??1Rva00358B65@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00358B65Dtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/MessageStream/HotKeySearch.cpp
+
+// HotKeyManager::searchHotKey, retail 0x00358B9E (194 bytes): the hot key a
+// label marks with '&' (the character after the first ampersand, translated
+// to an AsciiString), or the empty string. Its own unit: HotKey.cpp builds
+// without /arch:SSE /G7 /EHsc. Body from the banked BFME 1 hotkey donor
+// (Open-BFME-1 1399ad37, GameClient HotKey.cpp) over BFME 2's canonical
+// strings; it becomes exact once StringBase::isEmpty is declared throw(),
+// as retail compiles its calls.
+
+template<> inline void StringBase<unsigned short>::concat(unsigned short character)
+{ concat(&character, 1); }
+
+// ?searchHotKey@HotKeyManager@@QAE?AVAsciiString@@ABVUnicodeString@@@Z
+AsciiString HotKeyManager::searchHotKey( const UnicodeString& uStr )
+{
+	if (uStr.isEmpty())
+		return AsciiString::TheEmptyString;
+
+	const unsigned short *marker = uStr.str();
+	while (marker && *marker)
+	{
+		if (*marker == L'&')
+		{
+			UnicodeString tmp = UnicodeString::TheEmptyString;
+			tmp.StringBase<unsigned short>::concat(*(marker + 1));
+			AsciiString retStr;
+			retStr.translate( tmp );
+			return retStr;
+		}
+		marker++;
+	}
+	return AsciiString::TheEmptyString;
+}
+
+// HotKeyManager::searchHotKey(const AsciiString &), retail 0x00358CCD (90
+// bytes): the hot key of the text a label names (TheGameText slot 14).
+AsciiString HotKeyManager::searchHotKey( const AsciiString& label )
+{
+	return searchHotKey(TheGameText->fetch(label));
+}
+
+// tu-skeleton: 0x00358C7B 9B ??$_Destroy@URva0027EA49@@@_STL@@YAXPAURva0027EA49@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_rva0027EA49_erase.cpp (not merged yet)
+
+// tu-skeleton: 0x00358CA0 45B ?Rva00358CA0Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types2.cpp (not merged yet)
+
+// tu-skeleton: 0x00358D27 59B ?erase@?$_Rb_tree@URva0027EA49@@U1@U?$_Identity@URva0027EA49@@@_STL@@U?$less@URva0027EA49@@@3@V?$allocator@URva0027EA49@@@3@@_STL@@QAEXU?$_Rb_tree_iterator@URva0027EA49@@U?$_Nonconst_traits@URva0027EA49@@@_STL@@@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_rva0027EA49_erase.cpp (not merged yet)
+
+// tu-skeleton: 0x00358D97 9B ??$_Destroy@VRva00358B65@@@_STL@@YAXPAVRva00358B65@@@Z -- matched in Code/GameEngine/Source/Common/DestroyInstances.cpp (not merged yet)
+
+// tu-skeleton: 0x00358DA0 34B ?_M_create_node@?$_Rb_tree@URva00358DA0Element@@U?$pair@$$CBURva00358DA0Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva00358DA0Element@@H@_STL@@@3@U?$less@URva00358DA0Element@@@3@V?$allocator@U?$pair@$$CBURva00358DA0Element@@H@_STL@@@3@@_STL@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBURva00358DA0Element@@H@_STL@@@2@ABU?$pair@$$CBURva00358DA0Element@@H@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00358DA0.cpp (not merged yet)
+
+// tu-skeleton: 0x00358DC2 59B ?rva00358DC2@Rva00358DC2@@QAEXPAURva00358DC2Node@@@Z -- matched in Code/GameEngine/Source/GameClient/Rva00358DC2Erase.cpp (not merged yet)
+
+// tu-skeleton: 0x00358E9F 148B ?_M_insert@?$_Rb_tree@VAsciiString@@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@U?$_Select1st@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@@3@U?$less@VAsciiString@@@3@V?$allocator@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@@3@@_STL@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBVAsciiString@@VAudioEventRTS@@@_STL@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVAsciiString@@VAudioEventRTS@@@2@0@Z -- matched in Code/GameEngine/Source/Common/Thing/ThingTemplate.cpp (not merged yet)
+
+// tu-skeleton: 0x00358F33 17B ?rva00358F33@Rva00358DC2@@QAEXURva00358F33Iterator@@@Z -- matched in Code/GameEngine/Source/GameClient/Rva00358DC2Erase.cpp (not merged yet)
+
+// tu-skeleton: 0x00358F44 56B ??1Rva00358D62@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003590C9 294B ?insert_unique@?$_Rb_tree@HU?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@U?$_Select1st@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@@2@U32@ABU?$pair@$$CBHUTreeHintRef00217D4C@@@2@@Z -- matched in Code/GameEngine/Source/Common/Rva005C6CCC.cpp (not merged yet)
+
+// tu-skeleton: 0x003591EF 5B ?rva003591EF@Rva003591EF@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x003591F4 36B ?rva003591F4@Rva00E01E28Owner@@QAEXURva003591F4Arg@@@Z -- matched in Code/GameEngine/Source/Common/Thing/IntFloatMapSubscript.cpp (not merged yet)
+
+// tu-skeleton: 0x00359231 56B ??1Rva00358E6A@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0035926E 29B ?insert@?$map@HUTreeHintRef00217D4C@@U?$less@H@_STL@@V?$allocator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@3@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHUTreeHintRef00217D4C@@@_STL@@@2@@2@U32@ABU?$pair@$$CBHUTreeHintRef00217D4C@@@2@@Z -- matched in Code/GameEngine/Source/Common/Rva005C6CCC.cpp (not merged yet)
+
+// tu-skeleton: 0x0035928B 5B ?rva0035928B@Rva0035928B@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0046A93EDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00359290 86B ??1Rva00359290@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/AI/Rva00359290Dtor.cpp (not merged yet)
 
 // tu-skeleton: 0x003592FA 8B ?rva003592FA@Rva003592FAForwarder@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMemberForwarders.cpp (not merged yet)
 
@@ -835,3 +888,25 @@ void Rva003592E6::rva003592E6()
 // tu-skeleton: 0x0035973D 79B ??0Rva00359290@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/AI/Rva00359290Dtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0035978C 28B ??_GRva00359290@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/AI/Rva00359290Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D838 8B Unwind@00b7d838 -- matched in Code/GameEngine/Source/Common/Rva00358B65Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D840 10B __ehhandler$??1Rva00358B65@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00358B65Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D864 14B $L4879 -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types2.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D872 10B __ehhandler$?Rva00358CA0Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types2.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D8E1 8B Unwind@00b7d8e1 -- matched in Code/GameEngine/Source/GameClient/MessageStream/HotKeyAddHotKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D8E9 8B Unwind@00b7d8e9 -- matched in Code/GameEngine/Source/GameClient/MessageStream/HotKeyAddHotKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D8F1 8B uw_0077d8f1 -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D8F9 10B __ehhandler$?addHotKey@HotKeyManager@@QAE?AURva00359302Result@@ABUTreeHintRef00217D4C@@ABVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/GameClient/MessageStream/HotKeyAddHotKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D92F 8B uw_0077d92f -- matched in Code/gen_small/uw_gen_006.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D937 8B uw_0077d937 -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+
+// tu-skeleton: 0x0077D93F 10B __ehhandler$??A?$map@HUTreeHintRef003596AD@@U?$less@H@_STL@@V?$allocator@U?$pair@$$CBHUTreeHintRef003596AD@@@_STL@@@3@@_STL@@QAEAAUTreeHintRef003596AD@@ABH@Z -- matched in Code/GameEngine/Source/Common/Rva005C6CCC.cpp (not merged yet)
