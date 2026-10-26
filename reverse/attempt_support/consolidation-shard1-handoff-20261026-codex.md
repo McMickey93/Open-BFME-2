@@ -16,3 +16,8 @@ The combined active-path consumer search for the absorbed donors in those three 
 - `DeletionUpdate.cpp`: no accepted donors. Sleep-delay donor fails with duplicate `GameLogic` class C2011; pool-key donor lacks `rva00048838B` on `DeletionUpdate` (C2039); Xfer donor lacks `Xfer::Version1` (C2039), with first-use `Xfer` adoption indicated.
 
 These are unchanged blockers for Sol; no repair, identity retirement, or tool change was attempted. The mixed donors were left untouched.
+
+## VeterancyCrateCollide follow-up
+
+- Merged the unchanged `Rva004BCF92.cpp` helper; nine matched rows remain in the approved TU. Build byte verification passed 9/9, including four funclet pins whose compiler labels renumbered; `find_declared_unmatched.py`, CSV, and allowed-symbol checks passed (30 refs, 0 wrong bindings). Staged data and code-identity gates reported no findings.
+- The ctor donor remains rejected with C2511: `VeterancyCrateCollide(Thing *, const ModuleData *)` is not declared; the pool-key donor remains rejected with C2039: `getModuleNameKey` is not a member of `VeterancyCrateCollide`. Both stay untouched for Sol.
