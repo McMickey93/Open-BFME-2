@@ -110,7 +110,7 @@ struct FprintfTarget
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 template <int N> class AIDeadStateAISlots : public AIDeadStateAISlots<N - 1>
 {
 public:
@@ -286,7 +286,7 @@ StateReturnType AIFollowWaypointPathExactState::onEnter()
 
 	if (g_00E03745)
 	{
-		FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+		FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 		if (log)
 			fprintf(log, "CritterDesync: setAdjustDestination(FALSE) 56");
 	}

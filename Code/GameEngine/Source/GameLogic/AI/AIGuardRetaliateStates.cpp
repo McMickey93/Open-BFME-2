@@ -355,7 +355,7 @@ struct FprintfTarget
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
 extern unsigned char g_00E03745;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 class StateMachine
 {
 public:
@@ -446,7 +446,7 @@ StateReturnType AIGuardRetaliateReturnState::onEnter( void )
 	}
 	if (g_00E03745)
 	{
-		FprintfTarget *log = (FprintfTarget *)g_00DFEFF0;
+		FprintfTarget *log = (FprintfTarget *)theLogicRandomLogFile;
 		if (log)
 			fprintf(log, "CritterDesync: setAdjustDestination(TRUE) 4");
 	}
