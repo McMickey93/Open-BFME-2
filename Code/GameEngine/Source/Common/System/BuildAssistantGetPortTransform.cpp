@@ -1,4 +1,5 @@
 // cl: /O1 /EHs /MD /arch:SSE
+// platformsdk
 // BuildAssistantGetPortTransform.cpp -- BuildAssistant::getPortTransform (retail 0x00392802,
 // 725 bytes), the naval port placement BFME2 added to BuildAssistant.cpp.
 //
@@ -43,9 +44,7 @@ typedef bool Bool;
 typedef int Int;
 typedef float Real;
 
-#define NULL 0
-#define FALSE 0
-#define TRUE 1
+#include <windows.h>
 #define MAP_XY_FACTOR (10.0f)
 
 class ThingTemplate;

@@ -1,4 +1,5 @@
 // cl: /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /Ireference/shims/moduledata
+// platformsdk
 // GameState CRC helper: friend_xferSaveDataForCRC (retail 0x002DDD0B, 50B).
 // SaveGameInfo carries pristineMapName at +0x2C with description/
 // saveFileType/missionMapName at +0x44/+0x48/+0x50, read off retail's own
@@ -10,9 +11,7 @@
 #include "Common/Snapshot.h"
 
 typedef bool Bool;
-#define FALSE 0
-#define TRUE 1
-#define NULL 0
+#include <windows.h>
 typedef int Int;
 enum SnapshotType { SNAPSHOT_SAVELOAD = 0, SNAPSHOT_DEEPCRC_LOGICONLY = 1, SNAPSHOT_NATIVE3 = 3, SNAPSHOT_NATIVE4 = 4 };
 

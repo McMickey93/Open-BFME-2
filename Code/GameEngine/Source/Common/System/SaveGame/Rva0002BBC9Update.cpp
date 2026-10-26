@@ -1,8 +1,9 @@
 // cl: /MD
+// platformsdk
 // ?Rva0002BBC9Update@@YAXXZ @0x0002BBC9 21B
 // Refreshes global SaveDate BfmeINIReadTimestamp via rowed 0x0002BB1C then copies
 // BfmeINIMacroGeneration to BfmeINISavedMacroGeneration. Caller at 0x001B511B ignores the return.
-typedef unsigned short WORD;
+#include <windows.h>
 
 struct SaveDate
 {
