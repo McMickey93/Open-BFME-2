@@ -244,7 +244,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DViewMoveAlongWaypointPath.c
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same,operator delete:same
 Code/Libraries/Source/ATL/AtlMathWrappers.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	fabs:same,sqrt:same
 Code/Libraries/Source/ATL/atl_vector_constructor_iterator.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	size_t:same,operator new [ ]:same
-Code/Libraries/Source/Apt/AptObject/AptScriptFunctionStatic.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same,operator delete:same
 Code/Libraries/Source/DirtySock/Y4DirtySockDateParse.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<stdio.h>,<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sscanf:same,strcmp:same
 Code/Libraries/Source/EA/Apt/Bfme5PrefixCheck8C5680.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	strlen:same,strncmp:same
 Code/Libraries/Source/VP6/ConfigureEntropyDecoder.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,memcpy:same

@@ -16,9 +16,8 @@ void __debugbreak();
 #pragma intrinsic(__debugbreak)
 class AptValue;
 struct AptInitParmsT { unsigned char unaccessed[48]; int iRegArraySize; };
-void *__cdecl operator new(unsigned int);
+#include <new>
 extern AptValue *gpUndefinedValue;
-void __cdecl operator delete(void *);
 
 // These four class statics occupy consecutive zero-filled .data slots.
 // VA 0x00E1834C (.data, zero-filled tail).
