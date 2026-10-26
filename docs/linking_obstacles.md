@@ -2232,6 +2232,8 @@ Census confirmation: n/a.
 
 **Status: Open (3 units repaired). Updated: 2026-10-26.**
 
+**Status: Open (3 units repaired; inline-only units parked). Updated: 2026-10-26.**
+
 - **Evidence / scope:** several `Code/` units are verbatim Zero Hour ports of
   module classes that retail BFME 2 does not contain. Test, per class: game.dat
   (`baselines/bfme2/workshop-vanilla-1.06/files/game.dat`, `strings` ASCII and
@@ -2259,10 +2261,37 @@ Census confirmation: n/a.
   before the class can go. HelicopterSlowDeathUpdate's only row is the
   virtual inline `SlowDeathBehavior::isDieApplicable` (0x0045D49E): a
   pointer-to-member of a virtual yields a vcall thunk, not the body, so it
-  needs another emission route (parked). AIUpdate.cpp's present-unmatched
+  needs another emission route (parked; see the rehome trial below). AIUpdate.cpp's present-unmatched
   `AIUpdateInterface::privateHackInternet` (no "HackInternetAIUpdate" NAMEKEY
   string in game.dat) now leaves `HackInternetAIUpdate::hackInternet`
   unresolved; that unit did not link before either.
+- **Non-hatch emission routes for the inline-only units (2026-10-26):**
+  - HelicopterSlowDeathUpdate: the row's approved unit (tu_map) is
+    `Behavior/SlowDeathBehavior.cpp`, which already emits
+    `SlowDeathBehavior::isDieApplicable` through SlowDeathBehavior's vftable
+    (its dtor), but with the ZH UpdateModule layout (`[ecx-0x18]/[ecx-0x1C]`
+    against retail `[ecx-0x1C]/[ecx-0x20]`). Adding `/Ireference/shims/dockupdate`
+    (retail's extra UpdateModule dword) and `/O1` byte-matches it, but moves the
+    unit's two masked-search rows `PhysicsBehavior::setExtraBounciness` /
+    `setExtraFriction` (0x000EFB3E/0x000EFB5A) from +0x74/+0x78 to +0x78/+0x7C.
+    Those rows are displaced COMDATs with no approved home, so they block the
+    rehome; settle their identity/home first (re_log db1eba0fb4).
+  - JetAIUpdate: `Matrix3D::Matrix3D(bool)` (0x0004C91A) sits inside
+    W3DGameClient.cpp's approved cluster but is itself only `proposed` to a
+    non-existent `AIUpdate/Matrix3D.cpp`; a ctor cannot be pointer-anchored, and
+    `reference/shims/bfme_matrix3d_bool_link` keeps every other consumer inline
+    so JetAIUpdate.cpp is its sole emitter. Parked until the address gets an
+    approved unit.
+  - DumbProjectileBehavior: `UpdateModule::getUpdatePhase` (0x0022C4CB, the
+    ICF-shared PUSH 2/POP EAX/RET slot) is a displaced COMDAT with no approved
+    unit (3092d4a84c moved it here); `sqr<float>` alone could stay by explicit
+    instantiation. Parked with the getUpdatePhase home.
+  - Also failing test 4 (other units need the class's symbols):
+    DeliverPayloadAIUpdate (ObjectCreationList.cpp's DeliverPayloadNugget uses
+    `DeliverPayloadData::getFieldParse` and the AI update), StickyBombUpdate
+    (AISpecialPowerPickers.cpp calls the rowed set/getTargetObject).
+    SpectreGunshipUpdate's only row `setLogicalStatus` is protected (`IAE`), so
+    a file-scope pointer anchor cannot reach it once the ZH callers go.
 - **Census confirmation:** pending for all three units.
 
   b313329af6 renamed the four numpunct slot rows in place to the real `do_truename` /
