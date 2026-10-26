@@ -31,6 +31,8 @@ public:
 };
 class Rva00958D30 {
 public:
+ // Existing sibling overload at retail 0x001770C0 (WebBrowserComWrappers.cpp).
+ long invoke(BfmeBstrVGP);
  long invoke(BfmeBstrVGP, void*);
 };
 struct Rva00959410Ptr {
