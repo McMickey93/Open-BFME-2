@@ -36,7 +36,7 @@ struct Rva00426C6FXfer {
  virtual void boolean(bool &);
 };
 void *__cdecl operator new(unsigned);
-void __cdecl operator delete(void *);
+#include <new>
 class Rva00426C6F { public: void xfer(Rva00426C6FXfer *); void *vtable; Rva00426C4D *object; };
 void Rva00426C6F::xfer(Rva00426C6FXfer *x)
 {

@@ -55,8 +55,7 @@ Rva003F8ED6::~Rva003F8ED6()
 {
 }
 
-void *operator new(unsigned int size);
-void operator delete(void *p);
+#include <new>
 
 // Anchor: new/delete emits the scalar deleting dtor COMDAT for
 // ??_GRva003F8ED6@@UAEPAXI@Z at 0x003F905F. Operator new/delete resolve

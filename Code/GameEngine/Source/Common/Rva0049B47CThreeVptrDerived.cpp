@@ -63,8 +63,7 @@ Rva00484EF4::~Rva00484EF4()
 // the compiler devirtualize to a direct ??_G call, which emits the COMDAT;
 // ??_G calls the dtor above plus the pinned operator delete. The anchor
 // itself is unclaimed scratch. Operator new/delete resolve to their pins.
-void *operator new(unsigned int size);
-void operator delete(void *p);
+#include <new>
 
 void Rva00484EF4_Anchor()
 {
