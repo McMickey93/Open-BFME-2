@@ -39,8 +39,7 @@ struct Holder00426D14
 struct Rva0039B95FHolder;
 extern Rva0039B95FHolder *TheMissionObjectiveTracker;
 
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *p);
+#include <new>
 
 void __cdecl _bfme_debugRecordCallsite(int kind);
 

@@ -34,8 +34,7 @@ extern int TheMixFileInfoCount;
 int TheMixFileInfoCount;
 extern int TheMixFileInfoPool; // 0x00A049D0
 
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
+#include <new>
 
 MixFileInfoBuffer::MixFileInfoBuffer()
 {
