@@ -4,6 +4,10 @@
 // ctor/dtor guard acquire/release behind `if (__threads)` (emitted as
 // constant tests), free-list link updates in between.
 
+// The free-list table at 0x009DF4E0 is the data ledger's g_bfmeFreeList1150
+// (BfmeConv1150.cpp); the allocator reads it through its node view.
+extern "C" char *g_bfmeFreeList1150[];
+
 namespace _STL
 {
 
@@ -48,15 +52,13 @@ class __node_alloc
         _Obj *_M_free_list_link;
     };
 
-    static _Obj *_S_free_list[0x10];
-
     static void _M_deallocate(void *p, unsigned int n);
 };
 
 template <bool __threads, int __inst>
 void __node_alloc<__threads, __inst>::_M_deallocate(void *p, unsigned int n)
 {
-    _Obj * volatile *my_free_list = _S_free_list + ((n - 1) >> 3);
+    _Obj * volatile *my_free_list = (_Obj * volatile *)g_bfmeFreeList1150 + ((n - 1) >> 3);
     _Node_Alloc_Lock<__threads, __inst> lock_instance;
     ((_Obj *)p)->_M_free_list_link = *my_free_list;
     *my_free_list = (_Obj *)p;
@@ -65,7 +67,3 @@ void __node_alloc<__threads, __inst>::_M_deallocate(void *p, unsigned int n)
 template void __node_alloc<true, 0>::_M_deallocate(void *, unsigned int);
 
 }
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A=_g_bfmeFreeList1150")

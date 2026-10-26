@@ -5837,8 +5837,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva005EDA8AEraseRange.cpp	??$_
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva008FB570DequePushBackAux.cpp	?_M_reallocate_map@?$deque@UGen_t_008fb570_p8pod@@V?$allocator@UGen_t_008fb570_p8pod@@@_STL@@@_STL@@IAEXI_N@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/RvaTreeEraseRangeFamily.cpp	?erase@Rva006DF050Slot@@QAEIABH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/RvaTreeEraseRangeFamily_Rva00082BE1.cpp	?erase@Rva006DF050Slot@@QAEIABH@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	?_S_free_list@__new_alloc@_STL@@0PAPAU_Obj@12@A	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refillThunk.cpp	?_S_refill@__new_alloc@_STL@@CAPAU_Obj@12@I@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refill_single.cpp	?bfmeSmallRefillPR@@YAPAXI@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refill_single.cpp	?g_bfmeFreeList1149@@3PAPADA	1
@@ -5989,7 +5987,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/VectorResizeRva005EE06C.cpp	?e
 alternatename	Code/Libraries/Source/WWVegas/WWLib/VectorResizeRva005EE06C.cpp	?fill@Rva005EE06CVector@@AAEXPAURva005EE06CRecord@@IABU2@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/VectorResizeRva005FE974.cpp	?erase@Rva005FE974Vector@@AAEPAURva005FE974Record@@PAU2@0@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/VectorResizeRva005FE974.cpp	?fill@Rva005FE974Vector@@AAEXPAURva005FE974Record@@IABU2@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/node_alloc_M_deallocateThunk.cpp	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/rva002da398_audio_string.cpp	?g_00BBD3EC@@3QBDB	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_nocase_less.cpp	??RRecordNocaseLess@@QBE_NABUBfmeStringRecord004071F7@@0@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_record_bodies.cpp	??$_Construct@UBfmeStringTailRecord156@@U1@@_STL@@YAXPAUBfmeStringTailRecord156@@ABU1@@Z	1

@@ -855,14 +855,11 @@ Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	duplicate-def	_g_debug
 Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	wrong-name	_g_debugAssertDialogAnswered	0x009E089D
 Code/Libraries/Source/WWVegas/WWLib/Rva00038780Siblings.cpp	wrong-name	_g_bfme00DE0880	0x009E0880
 Code/Libraries/Source/WWVegas/WWLib/Rva001EC311Ctor.cpp	wrong-name	?g_007ED97C@@3HA	0x007ED97C
-Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	wrong-name	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A	0x009DF4E0
-Code/Libraries/Source/WWVegas/WWLib/STL_new_alloc_allocateThunk.cpp	wrong-name	?_S_free_list@__new_alloc@_STL@@0PAPAU_Obj@12@A	0x009DF4E0
 Code/Libraries/Source/WWVegas/WWLib/STL_node_alloc_refill_single.cpp	wrong-name	?g_bfmeFreeList1149@@3PAPADA	0x009DF530
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?$S1@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4IA	0x009E084C
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?$S3@?1??Rva00035DF0Get@@YAPAVRva00041004@@XZ@4IA	0x009E0874
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?obj@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4V2@A	0x009E0828
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?obj@?1??Rva00035DF0Get@@YAPAVRva00041004@@XZ@4V2@A	0x009E0850
-Code/Libraries/Source/WWVegas/WWLib/node_alloc_M_deallocateThunk.cpp	wrong-name	?_S_free_list@?$__node_alloc@$00$0A@@_STL@@0PAPAU_Obj@12@A	0x009DF4E0
 Code/Libraries/Source/WWVegas/WWLib/stlport_basic_ofstream_char_default_ctor.cpp	wrong-name	??_8?$basic_ofstream@DV?$char_traits@D@_STL@@@_STL@@7B@	0x007BCD24
 Code/Libraries/Source/WWVegas/WWLib/stlport_classic_locale.cpp	duplicate-def	__Null_messages	0x009DEB24
 Code/Libraries/Source/WWVegas/WWLib/stlport_classic_locale.cpp	wrong-name	__Null_messages	0x009DEB24
