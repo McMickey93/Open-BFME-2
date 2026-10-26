@@ -3581,5 +3581,16 @@ Evidence / affected units:
   address-named `g_Va00E09E50` data row in `Rva007B6A00AtexitThunks.cpp`, used
   by the 0x007B9B0A thunk), so `data_check` (shadow) reports `s_cache` here as
   `wrong-name`. The data lane should retire `g_Va00E09E50` onto `s_cache`.
+- `Code/GameEngine/Source/Common/Rva006F84C0DeletingDtor.cpp` (0x006F84C0)
+  still defines a placeholder `~Rva006F84C0` body retail lacks. Retail 0x006F8460
+  (rowed `??1Rva006F8460`) stores base vtable 0x008EC9CC: it is the ICF fold of
+  an inline base dtor and the implicit dtors of the 0x18-byte subclass (vtable
+  0x008ED358, `??_G` 0x006F8490) and the 0x1C-byte one (vtable 0x008ED364,
+  `??_G` 0x006F84C0). A VC7.1 `??_G` always calls its own `??1` (implicit and
+  `__forceinline` dtors tried; both emit an out-of-line `??1Rva006F84C0`).
+  Remaining: a fold-proof pin of `??1Rva006F84C0` onto 0x006F8460 from a TU
+  whose inline base dtor reproduces it, or one family header reconciling the
+  `Rva006F6A50Cluster.cpp`, `Rva006F8DA0Cluster.cpp` and
+  `FamilyDeletingDtors_Rva006F8460.cpp` views. Deferred (re_attempts.log).
 Clearance: pending.
 Census confirmation: awaiting the next census.
