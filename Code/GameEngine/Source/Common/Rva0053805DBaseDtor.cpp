@@ -86,13 +86,7 @@ private:
 };
 }
 
-class Rva0007DF07
-{
-public:
-	virtual ~Rva0007DF07() {}
-private:
-	unsigned int count;		// +0x04
-};
+#include "../../Include/Common/Rva0007DF07.h"
 
 class Rva0053805DBase : public Rva0007DF07, public Rva00330757Member,
 	public virtual Rva00330C50Interface

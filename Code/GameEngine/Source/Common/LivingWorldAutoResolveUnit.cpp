@@ -60,12 +60,7 @@ struct Holder08_0059B072
 	}
 };
 
-class Rva0007DF07
-{
-public:
-	virtual ~Rva0007DF07() {}
- int references;
-};
+#include "../../Include/Common/Rva0007DF07.h"
 
 class LivingWorldAutoResolveUnit : public Rva0007DF07
 {
