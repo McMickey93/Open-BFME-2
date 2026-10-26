@@ -44,8 +44,9 @@ views, row bodies, source paths and ledgers are unchanged.
 trial `build/codex4-subsystem-after-trial.txt` accepted no pair. The new
 `build/codex4-subsystem-seed-after-trial.txt` accepts the seed and five donors:
 SubsystemInterfaceListDtor, Rva001B4EABExport, Rva001B4E21Get, Rva001B4F8B and
-SubsystemInterfaceList: 16 rows / 712 retail bytes in total (including the
-three seed rows / 180 bytes). This clears their compile prerequisite. This is not a
+SubsystemInterfaceList: 15 distinct-address rows / 686 retail bytes. Whole-file
+builds also count the existing second spelling postProcessLoadAll at the same
+0x001B4E49 address, making 16 ledger entries / 712 bytes; that adds no coverage. This clears their compile prerequisite. This is not a
 Luna landing or permission to publish that composition.
 
 An explicit donor-union/composed-object comparison using
