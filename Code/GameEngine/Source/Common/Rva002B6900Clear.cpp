@@ -24,7 +24,7 @@ public:
 };
 }
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 struct Node002B4360
 {

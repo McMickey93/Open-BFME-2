@@ -28,7 +28,7 @@ public:
 	void **erase(void **__pos);
 };
 }
-void __cdecl operator delete(void *p);
+#include <new>
 
 void Rva002C5FE8::rva002C60A9(unsigned int key)
 {

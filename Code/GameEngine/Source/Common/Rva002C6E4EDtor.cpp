@@ -10,7 +10,7 @@
 #include <map>
 #include "ascii_string.h"
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 struct TreeHintPayload001F8ACB;
 namespace _STL
