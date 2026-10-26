@@ -9,7 +9,7 @@ extern class GameClient *TheGameClient;
 class Rva0029A407 {
 public: void rva0029A407();
 };
-void __cdecl operator delete(void *block);
+#include <new>
 class Rva0029D9CAHolder {
 public:
 	virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03();

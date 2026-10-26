@@ -1,7 +1,7 @@
 // cl: /O1 /DNDEBUG /DWIN32 /MD /D_STLP_USE_STATIC_LIB /EHsc
 // ??_ERva002E5791@@QAEPAXI@Z 0x002E5E5A 75B
 // Evidence: chain from 0x002E5791 landing; size 8 cookie at [esi-4]; calls rowed ??1Rva002E5791 0x002E5791 plus ??_M ??_V ??3.
-void operator delete[](void *p);
+#include <new>
 
 template <typename T> class StringBase
 {

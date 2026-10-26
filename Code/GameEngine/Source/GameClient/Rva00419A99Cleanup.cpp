@@ -12,7 +12,7 @@ public:
 };
 
 Rva00419A99Item * g_00E030C8;	// retail RVA 0x00A030C8 (.data, 4 bytes), defined here: nothing else owns it
-extern void __cdecl operator delete(void *p);
+#include <new>
 
 void __cdecl Rva00419A99Cleanup()
 {
