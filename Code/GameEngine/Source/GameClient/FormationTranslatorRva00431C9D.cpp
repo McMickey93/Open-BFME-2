@@ -76,7 +76,7 @@ public:
 	int rva00431C9D(GameMessage *msg);
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 void FormationTranslator::WaitForSecondButtonDownStateHandler::Restart(void *message)
 {

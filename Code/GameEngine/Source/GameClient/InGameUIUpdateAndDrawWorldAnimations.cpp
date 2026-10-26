@@ -217,7 +217,7 @@ struct WorldAnimationData
 	Real m_zRisePerSecond; // +0x18
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class InGameUI
 {

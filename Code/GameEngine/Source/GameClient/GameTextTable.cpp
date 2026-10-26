@@ -3,7 +3,7 @@
 // Evidence: chain from 0x002E5E5A vector dtor; scalar dtor over +4 Rva002E5791 array via delete[] then +8 trivial array via vector delete; callers 0x002E6415 0x002E6551 0x002E6303.
 #include "ascii_string.h"
 #include "unicode_string.h"
-void operator delete[](void *p);
+#include <new>
 
 class Rva002E5791
 {
