@@ -32,7 +32,7 @@ The handoff found no earlier served-queue entry for these 16 units. Follow-up:
 | `ElementStrideWalks.cpp` | 90 | Unresolved | Open |
 | `VectorRangeEraseRva003F6975.cpp` | 80 | Unresolved | Open |
 | `Rva00541913CopyCtor.cpp` | 76 | Wrong selected | Open |
-| `StlportNarrowAppendCStr.cpp` | 58 | COMDAT losers | Open |
+| `StlportNarrowAppendCStr.cpp` | 58 | COMDAT losers | Open: first copy is stlport_float_format's (LINK-045) |
 | `GrantUpgradeCreate.cpp` | 42 | Unresolved | Open |
 | `PartitionData_friendUpdateCellsTouched.cpp` | 37 | Wrong selected | Open |
 | `StlSweepW5Rva0042830DAssignTwin.cpp` | 33 | Unresolved | Open |
