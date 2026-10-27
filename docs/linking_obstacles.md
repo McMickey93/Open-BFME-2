@@ -1266,6 +1266,15 @@ piNextID keys need reconciliation with RvaSmallLeafTransfers.cpp's existing unio
 owner. Those five keys remain registered. Clearance is limited to the eight
 duplicate-definition keys; no census or image-ownership gain is claimed.
 
+**Pinger compiler-contract follow-up (2026-10-27, `bb2acc05b2`):** the
+[additional alias trials](../reverse/attempt_support/pinger-alias-contract-20261027-codexb4.md)
+retain no source change. VC7.1 rejects a restrict-qualified socket-address
+parameter with C4235; an inline scalar-argument callback helper changes
+piProcessTrip2's frame from 24 to 28 bytes and fails its byte check. Both
+sources are restored and all 19 rows pass again. The existing mixed-width
+counter owner and all five registered keys remain prerequisites. No new
+clearance or linking gain is claimed.
+
 ### LINK-008: include inventories prevent strict reusable graphics receipts
 
 **Status: Blocked on complete include inventories. Updated: 2026-10-27.**
