@@ -102,6 +102,10 @@ enum ObjectID
 	INVALID_ID = 0
 };
 
+// The native four-byte append is the rowed list<int> member at 0x0005548F,
+// also used by TunnelTracker's other ID list. Keep it out of line here.
+namespace _STL { template <> void list<int, allocator<int> >::push_back(const int &); }
+
 void XferObjectID( Xfer *xfer, ObjectID *value );
 Xfer *Rva0036ABAFXfer( Xfer *xfer, _STL::list<int> *values );
 
@@ -128,7 +132,7 @@ private:
 	_STL::list<int> m_tunnelIDs;																							///< 0x08
 	char m_unrecovered0C[ 0x10 - 0x0C ];
 	ContainedItemsList m_containList;																					///< 0x10
-	_STL::list<ObjectID> m_xferContainList;																		///< 0x14
+	_STL::list<int> m_xferContainList;																		///< 0x14
 	Int m_containListSize;																										///< 0x18
 	UnsignedInt m_tunnelCount;																								///< 0x1C
 	ObjectID m_bfmeObject20;																									///< 0x20
@@ -176,7 +180,7 @@ void TunnelTracker::xfer( Xfer *xfer )
 		{
 
 			XferObjectID( xfer, &objectID );
-			m_xferContainList.push_back( objectID );
+			m_xferContainList.push_back( reinterpret_cast<const int &>(objectID) );
 
 		}  // end for, i
 
@@ -189,8 +193,3 @@ void TunnelTracker::xfer( Xfer *xfer )
 	*xfer == m_bfmeUnsigned24;
 
 }  // end xfer
-// bfme link decl-only begin
-namespace _STL { template <> _STL::_List_node<ObjectID> * list<ObjectID,_STL::allocator<ObjectID> >::_M_create_node(ObjectID const &); }
-namespace _STL { template <> _STL::_List_node<ObjectID> * allocator<_STL::_List_node<ObjectID> >::allocate(unsigned int,void const *) const; }
-namespace _STL { template <> _STL::_List_iterator<ObjectID,_STL::_Nonconst_traits<ObjectID> > list<ObjectID,_STL::allocator<ObjectID> >::insert(_STL::_List_iterator<ObjectID,_STL::_Nonconst_traits<ObjectID> >,ObjectID const &); }
-// bfme link decl-only end

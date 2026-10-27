@@ -658,6 +658,16 @@ Whole-unit clearance and census confirmation remain pending.
   index 763dc8759f predates outgoing base 462ffdd1f8 and Eva.cpp lacks a current
   audit receipt. This is a receipt/freshness limitation, not a verified link
   gain or proof of a newly lost byte; carry it into the next normal census.
+- **TunnelTracker Xfer identity follow-up (2026-10-27, `fb5c33cf4f`):**
+  The +0x14 transfer list now uses the `list<int>` view already present in
+  the constructor and destructor, and calls the declaration-only native append
+  at 0x0005548F. The 192-byte Xfer row remains exact; all six code references
+  bind to their owners. The owning retirement tool removes its one divergent
+  identity key after refreshing TransportAIUpdate, Team and ScriptEngineDoXfer
+  objects (133/133 rows exact). Paired ordinary preview with the append provider
+  retains LINKS, 859 authored bytes, at index `bf3dd31211`; no census gain is
+  claimed. [Scoped evidence](../reverse/attempt_support/tunneltracker-xfer-identity-20261027-codexb4.md).
+  Other consolidation receivers and shared contracts remain separate prerequisites.
 - **FireSpreadUpdate declaration trial (2026-10-26):**
   [The blocked prerequisite handoff](../reverse/attempt_support/consolidation-firespread-prerequisite-20261026-codex.md)
   preserves 11/11 baseline rows. A minimal declaration trial kept every object
@@ -691,6 +701,9 @@ Whole-unit clearance and census confirmation remain pending.
   Guard identity/transfer remains an actual-merge prerequisite alongside the
   other receiver/Coord3D/PartitionManager/mixed-source blockers. See the same
   handoff for exact checks. No merge, debt retirement or measured gain claimed.
+  Recovery recheck (2026-10-28): retain the divergent identity key because the
+  owning retirement check lacks 74 ledger objects and 12 current providers.
+  The source binding is retained; current debt retirement remains pending.
 
 - **HeaderTemplate provider inspection (2026-10-26):**
   [The scoped inspection](../reverse/attempt_support/consolidation-headertemplate-pushfront-prerequisite-20261026-codex.md)
