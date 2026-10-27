@@ -60,7 +60,7 @@ extern "C" char Rva003AEF6E_v1c = -64;
 extern "C" char Rva003AED3E_v0 = -9;
 // Rva003AED3E_v14: matched references place it at VA 0xc1c608 (retail .rdata value 59).
 extern "C" char Rva003AED3E_v14 = 59;
-extern "C" char Rva003AED3E_v18;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // Rva003AED3E_v1c: matched references place it at VA 0xc1cee8 (retail .rdata value -77).
 extern "C" char Rva003AED3E_v1c = -77;
 
@@ -156,11 +156,10 @@ Rva003AED3E::Rva003AED3E(const Rva003AED3E &that)
 	((Rva003AED6B *)this)->Rva003AED6B::Rva003AED6B(*(const Rva003AED6B *)src);
 	*(void **)this = &Rva003AED3E_v0;
 	*(void **)((char *)this + 0x14) = &Rva003AED3E_v14;
-	*(void **)((char *)this + 0x18) = &Rva003AED3E_v18;
+	*(void **)((char *)this + 0x18) = &__identifier("?vftable_0112B89C@@3HA");
 	*(void **)((char *)this + 0x1C) = &Rva003AED3E_v1c;
 }
 // _Rva003AED3E_v18: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_Rva003AED3E_v18=?vftable_0112B89C@@3HA")
 
 // Retail's data references in this unit's matched rows land on globals defined
 // under other spellings at the same addresses (addend-corrected DIR32). Bind them.

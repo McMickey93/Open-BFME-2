@@ -21,7 +21,7 @@ public:
 };
 
 extern "C" char ButterflyDrawModuleTemplate_cvtbl0;
-extern "C" char ButterflyDrawModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // ButterflyDrawModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bd70 (retail .rdata value 109).
 extern "C" char ButterflyDrawModuleTemplate_csub_vtbl = 109;
 
@@ -49,10 +49,9 @@ ButterflyDrawModuleTemplate::ButterflyDrawModuleTemplate(
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &ButterflyDrawModuleTemplate_csub_vtbl;
 	m_v0 = &ButterflyDrawModuleTemplate_cvtbl0;
-	m_v4 = &ButterflyDrawModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _ButterflyDrawModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_ButterflyDrawModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")
 // _ButterflyDrawModuleTemplate_cvtbl0: the global at VA 0xc1bd60 is _DefaultModuleTemplate05_vtbl0.
 #pragma comment(linker, "/alternatename:_ButterflyDrawModuleTemplate_cvtbl0=_DefaultModuleTemplate05_vtbl0")

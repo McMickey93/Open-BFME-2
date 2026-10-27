@@ -21,7 +21,7 @@ public:
 };
 
 extern "C" char DefaultModuleTemplate05_vtbl0;
-extern "C" char QuadDrawModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // QuadDrawModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bd40 (retail .rdata value 109).
 extern "C" char QuadDrawModuleTemplate_csub_vtbl = 109;
 
@@ -49,8 +49,7 @@ QuadDrawModuleTemplate::QuadDrawModuleTemplate(
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &QuadDrawModuleTemplate_csub_vtbl;
 	m_v0 = &DefaultModuleTemplate05_vtbl0;
-	m_v4 = &QuadDrawModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _QuadDrawModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_QuadDrawModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")

@@ -1,4 +1,4 @@
-extern "C" int __cdecl bfmeScanYA(const char *text, const char *format, ...);
+extern "C" int __cdecl __identifier("?ji_00629892@@YAXXZ")(const char *text, const char *format, ...);
 
 class BfmeOwnerYA
 {
@@ -26,11 +26,10 @@ void BfmeOwnerYA::bfmeParseYA(const char *text)
 		m_bfmeValueYA = -203;
 		break;
 	default:
-		bfmeScanYA(text, (char *)"%d", &m_bfmeValueYA);
+		__identifier("?ji_00629892@@YAXXZ")(text, (char *)"%d", &m_bfmeValueYA);
 		break;
 	}
 }
 
 // Retail's call sites in this unit's matched rows land on bodies rowed under
 // other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_bfmeScanYA=?ji_00629892@@YAXXZ")

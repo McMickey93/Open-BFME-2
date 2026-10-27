@@ -1,4 +1,4 @@
-extern "C" unsigned char bfmeVftUB[];
+extern "C" unsigned char __identifier("??_7ShdDefFactoryClass@@6B@")[];
 
 #include <new>
 
@@ -14,7 +14,7 @@ public:
 
 void BfmeThingUB::bfmeResetUB()
 {
-	m_bfmeVft = bfmeVftUB;
+	m_bfmeVft = __identifier("??_7ShdDefFactoryClass@@6B@");
 	::operator delete[](m_bfmeWhat);
 }
 
@@ -28,7 +28,6 @@ void BfmeThingUB::bfmeResetUB()
 
 // Retail's data references in this unit's matched rows land on globals defined
 // under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:_bfmeVftUB=??_7ShdDefFactoryClass@@6B@")
 
 // Native135E35..135E3A five-byte JMP61ED80. The established opaque
 // donor receiver and no-argument ABI are preserved; this wrapper has no

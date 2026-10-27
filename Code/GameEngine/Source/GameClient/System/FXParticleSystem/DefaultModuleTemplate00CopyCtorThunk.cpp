@@ -22,7 +22,7 @@ public:
 
 // DefaultModuleTemplate00_vtbl0: matched references place it at VA 0xc1ba70 (retail .rdata value -117).
 extern "C" char DefaultModuleTemplate00_vtbl0 = -117;
-extern "C" char DefaultModuleTemplate00_vtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // DefaultModuleTemplate00_sub_vtbl: matched references place it at VA 0xc1ba80 (retail .rdata value 61).
 extern "C" char DefaultModuleTemplate00_sub_vtbl = 61;
 
@@ -51,10 +51,9 @@ DefaultModuleTemplate<N>::DefaultModuleTemplate(const DefaultModuleTemplate &tha
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &DefaultModuleTemplate00_sub_vtbl;
 	m_v0 = &DefaultModuleTemplate00_vtbl0;
-	m_v4 = &DefaultModuleTemplate00_vtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 
 template DefaultModuleTemplate<1>::DefaultModuleTemplate(const DefaultModuleTemplate &);
 }
 // _DefaultModuleTemplate00_vtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_DefaultModuleTemplate00_vtbl4=?vftable_0112B89C@@3HA")

@@ -10,10 +10,9 @@
 
 // The three consecutive words read at 0x00BCEFA0 are the table this
 // constructor installs.
-extern "C" const void *const Rva000F0F2BDispatchTable[];
+extern "C" const void *const __identifier("??_7W3DProjectedShadow@@6B@")[];
 // The decoder's ledger names that address as W3DProjectedShadow's vtable
 // (0x00BCEFA0, 3 slots); bind the address-derived spelling to it.
-#pragma comment(linker, "/alternatename:_Rva000F0F2BDispatchTable=??_7W3DProjectedShadow@@6B@")
 
 class Rva000F0F2B : public Rva000EFA4E
 {
@@ -30,7 +29,7 @@ Rva000F0F2B::Rva000F0F2B()
 	initialize();
 	m_value58 = 0.0f;
 	m_value5c = 0.0f;
-	*(const void *const **)this = Rva000F0F2BDispatchTable;
+	*(const void *const **)this = __identifier("??_7W3DProjectedShadow@@6B@");
 	m_value60 = 20.0f;
 	m_flag64 = false;
 }
@@ -43,6 +42,6 @@ public:
 
 Rva000F0F19::Rva000F0F19()
 {
-	*(const void *const **)this = Rva000F0F2BDispatchTable;
+	*(const void *const **)this = __identifier("??_7W3DProjectedShadow@@6B@");
 	initialize();
 }

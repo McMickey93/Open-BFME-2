@@ -22,7 +22,7 @@ public:
 
 // SphericalEmissionVelocityModuleTemplate_cvtbl0: matched references place it at VA 0xc1bc40 (retail .rdata value -83).
 extern "C" char SphericalEmissionVelocityModuleTemplate_cvtbl0 = -83;
-extern "C" char SphericalEmissionVelocityModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // SphericalEmissionVelocityModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bc50 (retail .rdata value 125).
 extern "C" char SphericalEmissionVelocityModuleTemplate_csub_vtbl = 125;
 
@@ -50,8 +50,7 @@ SphericalEmissionVelocityModuleTemplate::SphericalEmissionVelocityModuleTemplate
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &SphericalEmissionVelocityModuleTemplate_csub_vtbl;
 	m_v0 = &SphericalEmissionVelocityModuleTemplate_cvtbl0;
-	m_v4 = &SphericalEmissionVelocityModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _SphericalEmissionVelocityModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_SphericalEmissionVelocityModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")

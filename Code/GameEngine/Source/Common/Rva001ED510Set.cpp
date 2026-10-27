@@ -1,7 +1,6 @@
 // cl: -Ireference/open-bfme-1/game/GameEngine/Source/Common
 
-extern "C" const void *bfmeVftPartitionFilterValidCommandButtonTarget[];
-#pragma comment(linker, "/alternatename:_bfmeVftPartitionFilterValidCommandButtonTarget=??_7Rva002614BCFilter@@6B@")
+extern "C" const void *__identifier("??_7Rva002614BCFilter@@6B@")[];
 
 class Rva001ED510
 {
@@ -21,7 +20,7 @@ Rva001ED510 &Rva001ED510::set(int a, int b, char c, int d)
 	m_08 = a;
 	m_0C = b;
 	m_04 = 0;
-	m_00 = (void *)bfmeVftPartitionFilterValidCommandButtonTarget;
+	m_00 = (void *)__identifier("??_7Rva002614BCFilter@@6B@");
 	m_10 = c;
 	m_14 = d;
 	return *this;

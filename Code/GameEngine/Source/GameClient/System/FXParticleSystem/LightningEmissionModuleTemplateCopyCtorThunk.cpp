@@ -22,7 +22,7 @@ public:
 
 // LightningEmissionModuleTemplate_cvtbl0: matched references place it at VA 0xc1bbb0 (retail .rdata value 17).
 extern "C" char LightningEmissionModuleTemplate_cvtbl0 = 17;
-extern "C" char LightningEmissionModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // LightningEmissionModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bbc0 (retail .rdata value 53).
 extern "C" char LightningEmissionModuleTemplate_csub_vtbl = 53;
 
@@ -50,8 +50,7 @@ LightningEmissionModuleTemplate::LightningEmissionModuleTemplate(
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &LightningEmissionModuleTemplate_csub_vtbl;
 	m_v0 = &LightningEmissionModuleTemplate_cvtbl0;
-	m_v4 = &LightningEmissionModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _LightningEmissionModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_LightningEmissionModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")

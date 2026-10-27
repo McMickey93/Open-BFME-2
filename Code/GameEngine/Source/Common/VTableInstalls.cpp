@@ -19,95 +19,79 @@ extern "C" const void *const __identifier("??_7Rva0060061A@@6B@")[];  // vftable
 // 0x00090FE0; 0x00C6573C has two slots installed at 0x005111FA. The map
 // identifies every slot as a matched body, so keep the retail tables as
 // relocations to those bodies rather than absolute image-address bytes.
-extern "C" void bfmeVTableSlot_00BC7F74_0(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00BC7F74_0=?rva000910E1@Rva000910E1@@QAEPAXIH@Z")
-extern "C" void bfmeVTableSlot_00BC7F74_1(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00BC7F74_1=?rva000910EE@Rva000910E1@@QAEXPAXH@Z")
-extern "C" void bfmeVTableSlot_00BC7F74_2(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00BC7F74_2=?Create@GameFileClass@@UAEHXZ")
-extern "C" void bfmeVTableSlot_00BC7F74_4(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00BC7F74_4=??_GRva0090771@@UAEPAXI@Z")
-extern "C" void bfmeVTableSlot_00C6573C_0(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C6573C_0=?rva00511620@Rva005114BD@@UAEXHH@Z")
-extern "C" void bfmeVTableSlot_00C6573C_1(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C6573C_1=?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")
+extern "C" void __identifier("?rva000910E1@Rva000910E1@@QAEPAXIH@Z")(void);
+extern "C" void __identifier("?rva000910EE@Rva000910E1@@QAEXPAXH@Z")(void);
+extern "C" void __identifier("?Create@GameFileClass@@UAEHXZ")(void);
+extern "C" void __identifier("??_GRva0090771@@UAEPAXI@Z")(void);
+extern "C" void __identifier("?rva00511620@Rva005114BD@@UAEXHH@Z")(void);
+extern "C" void __identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")(void);
 
 extern "C" const void *const vtbl_00BC7F74[] =
 {
-	reinterpret_cast<const void *>(bfmeVTableSlot_00BC7F74_0),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00BC7F74_1),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00BC7F74_2),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00BC7F74_2),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00BC7F74_4)
+	reinterpret_cast<const void *>(__identifier("?rva000910E1@Rva000910E1@@QAEPAXIH@Z")),
+	reinterpret_cast<const void *>(__identifier("?rva000910EE@Rva000910E1@@QAEXPAXH@Z")),
+	reinterpret_cast<const void *>(__identifier("?Create@GameFileClass@@UAEHXZ")),
+	reinterpret_cast<const void *>(__identifier("?Create@GameFileClass@@UAEHXZ")),
+	reinterpret_cast<const void *>(__identifier("??_GRva0090771@@UAEPAXI@Z"))
 };
 
 extern "C" const void *const vtbl_00C6573C[] =
 {
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C6573C_0),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C6573C_1)
+	reinterpret_cast<const void *>(__identifier("?rva00511620@Rva005114BD@@UAEXHH@Z")),
+	reinterpret_cast<const void *>(__identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z"))
 };
 
 // vftable_map identifies all 35 slots in 0x00C594E0 as matched bodies.
 // Keep the GrantUpgradeCreateModuleData ctor's pointer relocatable by mapping
 // each slot to the corresponding linked body rather than the retail VA.
-extern "C" void bfmeVTableSlot_00C594E0_0(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_0=??_GGrantUpgradeCreateModuleData@@UAEPAXI@Z")
-extern "C" void bfmeVTableSlot_00C594E0_1(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_1=??1Coord2D@@QAE@XZ")
-extern "C" void bfmeVTableSlot_00C594E0_2(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_2=?GetSnapshotName@ModuleData@@UBEPBDXZ")
-extern "C" void bfmeVTableSlot_00C594E0_3(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_3=?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")
-extern "C" void bfmeVTableSlot_00C594E0_4(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_4=?IsCRC@Xfer@@UBE_NXZ")
-extern "C" void bfmeVTableSlot_00C594E0_5(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_5=?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z")
-extern "C" void bfmeVTableSlot_00C594E0_6(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_6=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
-extern "C" void bfmeVTableSlot_00C594E0_7(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_7=?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")
-extern "C" void bfmeVTableSlot_00C594E0_8(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_8=?onBuildComplete@ExperienceLevelCreate@@UAEXXZ")
-extern "C" void bfmeVTableSlot_00C594E0_9(void);
-#pragma comment(linker, "/alternatename:_bfmeVTableSlot_00C594E0_9=?Is_Valid@RegistryClass@@QAE_NXZ")
+extern "C" void __identifier("??_GGrantUpgradeCreateModuleData@@UAEPAXI@Z")(void);
+extern "C" void __identifier("??1Coord2D@@QAE@XZ")(void);
+extern "C" void __identifier("?GetSnapshotName@ModuleData@@UBEPBDXZ")(void);
+extern "C" void __identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")(void);
+extern "C" void __identifier("?IsCRC@Xfer@@UBE_NXZ")(void);
+extern "C" void __identifier("?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z")(void);
+extern "C" void __identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")(void);
+extern "C" void __identifier("?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")(void);
+extern "C" void __identifier("?onBuildComplete@ExperienceLevelCreate@@UAEXXZ")(void);
+extern "C" void __identifier("?Is_Valid@RegistryClass@@QAE_NXZ")(void);
 
 extern "C" const void *const vtbl_00C594E0[] =
 {
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_0),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_1),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_2),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_3),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_5),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_4),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_6),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_7),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_1),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_8),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_1),
-	reinterpret_cast<const void *>(bfmeVTableSlot_00C594E0_9)
+	reinterpret_cast<const void *>(__identifier("??_GGrantUpgradeCreateModuleData@@UAEPAXI@Z")),
+	reinterpret_cast<const void *>(__identifier("??1Coord2D@@QAE@XZ")),
+	reinterpret_cast<const void *>(__identifier("?GetSnapshotName@ModuleData@@UBEPBDXZ")),
+	reinterpret_cast<const void *>(__identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z")),
+	reinterpret_cast<const void *>(__identifier("?IsCRC@Xfer@@UBE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")),
+	reinterpret_cast<const void *>(__identifier("?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")),
+	reinterpret_cast<const void *>(__identifier("??1Coord2D@@QAE@XZ")),
+	reinterpret_cast<const void *>(__identifier("?onBuildComplete@ExperienceLevelCreate@@UAEXXZ")),
+	reinterpret_cast<const void *>(__identifier("??1Coord2D@@QAE@XZ")),
+	reinterpret_cast<const void *>(__identifier("?Is_Valid@RegistryClass@@QAE_NXZ"))
 };
 
 #define BFME_VTABLE_INSTALL(NAME, VTABLE) \

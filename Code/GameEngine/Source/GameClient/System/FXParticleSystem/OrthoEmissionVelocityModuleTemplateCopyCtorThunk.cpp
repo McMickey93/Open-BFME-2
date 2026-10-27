@@ -22,7 +22,7 @@ public:
 
 // OrthoEmissionVelocityModuleTemplate_cvtbl0: matched references place it at VA 0xc1bc10 (retail .rdata value -44).
 extern "C" char OrthoEmissionVelocityModuleTemplate_cvtbl0 = -44;
-extern "C" char OrthoEmissionVelocityModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // OrthoEmissionVelocityModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bc20 (retail .rdata value -35).
 extern "C" char OrthoEmissionVelocityModuleTemplate_csub_vtbl = -35;
 
@@ -50,8 +50,7 @@ OrthoEmissionVelocityModuleTemplate::OrthoEmissionVelocityModuleTemplate(
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &OrthoEmissionVelocityModuleTemplate_csub_vtbl;
 	m_v0 = &OrthoEmissionVelocityModuleTemplate_cvtbl0;
-	m_v4 = &OrthoEmissionVelocityModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _OrthoEmissionVelocityModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_OrthoEmissionVelocityModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")

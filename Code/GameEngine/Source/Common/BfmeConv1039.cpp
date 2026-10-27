@@ -2,7 +2,7 @@
 // Go1039E lives elsewhere -- kept out so the TU holds only claimed bodies).
 // Near-miss repair: alloc size 0x34 in BFME1, 0x38 in BFME2.
 
-extern "C" void *bfmeVft1039C[];
+extern "C" void *__identifier("??_7GridWSClassicEnvironmentMapperClass@@6B@")[];
 
 class BfmeD1039;
 
@@ -28,7 +28,7 @@ BfmeC1039 *BfmeD1039::Clone(void)
 
 	if (mapper != 0) {
 		mapper->bfmeInit1039(this);
-		mapper->m_vtable = bfmeVft1039C;
+		mapper->m_vtable = __identifier("??_7GridWSClassicEnvironmentMapperClass@@6B@");
 		return mapper;
 	}
 
@@ -37,4 +37,3 @@ BfmeC1039 *BfmeD1039::Clone(void)
 
 // Retail's data references in this unit's matched rows land on globals defined
 // under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:_bfmeVft1039C=??_7GridWSClassicEnvironmentMapperClass@@6B@")

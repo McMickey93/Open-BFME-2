@@ -22,7 +22,7 @@ public:
 
 // RenderObjectUpdateModuleTemplate_cvtbl0: matched references place it at VA 0xc1bdc0 (retail .rdata value 96).
 extern "C" char RenderObjectUpdateModuleTemplate_cvtbl0 = 96;
-extern "C" char RenderObjectUpdateModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // RenderObjectUpdateModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bdd0 (retail .rdata value 13).
 extern "C" char RenderObjectUpdateModuleTemplate_csub_vtbl = 13;
 
@@ -50,8 +50,7 @@ RenderObjectUpdateModuleTemplate::RenderObjectUpdateModuleTemplate(
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &RenderObjectUpdateModuleTemplate_csub_vtbl;
 	m_v0 = &RenderObjectUpdateModuleTemplate_cvtbl0;
-	m_v4 = &RenderObjectUpdateModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _RenderObjectUpdateModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_RenderObjectUpdateModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")

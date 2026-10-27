@@ -22,7 +22,7 @@ public:
 
 // TerrainFireEmissionModuleTemplate_cvtbl0: matched references place it at VA 0xc1bbe0 (retail .rdata value -123).
 extern "C" char TerrainFireEmissionModuleTemplate_cvtbl0 = -123;
-extern "C" char TerrainFireEmissionModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // TerrainFireEmissionModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bbf0 (retail .rdata value 77).
 extern "C" char TerrainFireEmissionModuleTemplate_csub_vtbl = 77;
 
@@ -50,8 +50,7 @@ TerrainFireEmissionModuleTemplate::TerrainFireEmissionModuleTemplate(
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &TerrainFireEmissionModuleTemplate_csub_vtbl;
 	m_v0 = &TerrainFireEmissionModuleTemplate_cvtbl0;
-	m_v4 = &TerrainFireEmissionModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _TerrainFireEmissionModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_TerrainFireEmissionModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")

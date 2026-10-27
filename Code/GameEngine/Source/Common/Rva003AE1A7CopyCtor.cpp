@@ -13,7 +13,7 @@ public:
 
 // Rva003AE1A7_v0: matched references place it at VA 0xc1ca40 (retail .rdata value 112).
 extern "C" char Rva003AE1A7_v0 = 112;
-extern "C" char Rva003AE1A7_v8;
+extern "C" char __identifier("??_7?$ConcreteModuleTemplate@V?$ModuleTag@$01$E?RENDEROBJECT_UPDATE_MODULE_KEY@FXParticleSystem@@3QBDB$E?RENDEROBJECT_UPDATE_MODULE_NAME@2@3QBDBVRenderObjectUpdateModule@2@VRenderObjectUpdateModuleTemplate@2@VRenderObjectParticleUpdateModule@2@@FXParticleSystem@@@FXParticleSystem@@6BSecondaryModuleBase@1@@");
 // Rva003AE1A7_v0C: matched references place it at VA 0xc1ca2c (retail .rdata value 72).
 extern "C" char Rva003AE1A7_v0C = 72;
 
@@ -34,10 +34,9 @@ Rva003AE1A7::Rva003AE1A7(const Rva003AE1A7 &that)
 	const void *src = &that;
 	((Rva003AE1CD *)this)->Rva003AE1CD::Rva003AE1CD(*(const Rva003AE1CD *)src);
 	*(void **)this = &Rva003AE1A7_v0;
-	*(void **)((char *)this + 8) = &Rva003AE1A7_v8;
+	*(void **)((char *)this + 8) = &__identifier("??_7?$ConcreteModuleTemplate@V?$ModuleTag@$01$E?RENDEROBJECT_UPDATE_MODULE_KEY@FXParticleSystem@@3QBDB$E?RENDEROBJECT_UPDATE_MODULE_NAME@2@3QBDBVRenderObjectUpdateModule@2@VRenderObjectUpdateModuleTemplate@2@VRenderObjectParticleUpdateModule@2@@FXParticleSystem@@@FXParticleSystem@@6BSecondaryModuleBase@1@@");
 	*(void **)((char *)this + 0x0C) = &Rva003AE1A7_v0C;
 }
 
 // Retail's data references in this unit's matched rows land on globals defined
 // under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:_Rva003AE1A7_v8=??_7?$ConcreteModuleTemplate@V?$ModuleTag@$01$E?RENDEROBJECT_UPDATE_MODULE_KEY@FXParticleSystem@@3QBDB$E?RENDEROBJECT_UPDATE_MODULE_NAME@2@3QBDBVRenderObjectUpdateModule@2@VRenderObjectUpdateModuleTemplate@2@VRenderObjectParticleUpdateModule@2@@FXParticleSystem@@@FXParticleSystem@@6BSecondaryModuleBase@1@@")

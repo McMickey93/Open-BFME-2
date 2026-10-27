@@ -1,6 +1,6 @@
 extern "C" const void *const __identifier("??_7?$basic_streambuf@DV?$char_traits@D@_STL@@@_STL@@6B@")[];  // vftable 0x00BBBC30
 
-extern "C" unsigned char bfmeVftTL[];
+extern "C" unsigned char __identifier("??_7stdio_streambuf_base@_SgI@@6B@")[];
 
 class BfmeLocaleShim
 {
@@ -73,13 +73,12 @@ StdioStreambufBase *StdioStreambufBase::bfmeInitTL(void *what)
 {
 	bfmeBaseTL(what, 0);
 	m_file = what;
-	m_vtable = bfmeVftTL;
+	m_vtable = __identifier("??_7stdio_streambuf_base@_SgI@@6B@");
 	return this;
 }
 
 // Retail's data references in this unit's matched rows land on globals defined
 // under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:_bfmeVftTL=??_7stdio_streambuf_base@_SgI@@6B@")
 
 // RTTI names the vtable installed by bfmeInitTL as _SgI::stdio_streambuf_base.
 // Retail callers in ios_base::_S_initialize and sync_with_stdio invoke this

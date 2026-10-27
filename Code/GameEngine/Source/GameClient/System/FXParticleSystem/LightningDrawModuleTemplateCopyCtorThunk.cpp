@@ -22,7 +22,7 @@ public:
 
 // LightningDrawModuleTemplate_cvtbl0: matched references place it at VA 0xc1bd90 (retail .rdata value -123).
 extern "C" char LightningDrawModuleTemplate_cvtbl0 = -123;
-extern "C" char LightningDrawModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // LightningDrawModuleTemplate_csub_vtbl: matched references place it at VA 0xc1bda0 (retail .rdata value 77).
 extern "C" char LightningDrawModuleTemplate_csub_vtbl = 77;
 
@@ -50,8 +50,7 @@ LightningDrawModuleTemplate::LightningDrawModuleTemplate(
 	// Sub vtbl then outer dual vtbls (retail store order).
 	*(void **)sub = &LightningDrawModuleTemplate_csub_vtbl;
 	m_v0 = &LightningDrawModuleTemplate_cvtbl0;
-	m_v4 = &LightningDrawModuleTemplate_cvtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 }
 // _LightningDrawModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_LightningDrawModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")

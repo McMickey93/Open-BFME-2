@@ -10,10 +10,8 @@ struct RvaCopyIteratorTag {};
 struct RvaVector104Tag : RvaCopyIteratorTag {};
 struct RvaVector104Element { unsigned char opaque[104]; };
 extern "C" void *Rva003B8B44CopyDispatch(void *, void *, void *, const RvaCopyIteratorTag &);
-extern "C" void Rva003B8E13DestroyRecords(void *, void *);
-extern "C" void *Rva003F417EConstructRecords(const void *, const void *, void *, const RvaCopyIteratorTag &);
-#pragma comment(linker, "/alternatename:_Rva003B8E13DestroyRecords=?Rva003B8E13DestroyRange@@YAXPAURva003B8B61Elem@@0@Z")
-#pragma comment(linker, "/alternatename:_Rva003F417EConstructRecords=??$__uninitialized_copy@PBUBfmePod104@@PAU1@@_STL@@YAPAUBfmePod104@@PBU1@0PAU1@ABU__false_type@0@@Z")
+extern "C" void __identifier("?Rva003B8E13DestroyRange@@YAXPAURva003B8B61Elem@@0@Z")(void *, void *);
+extern "C" void *__identifier("??$__uninitialized_copy@PBUBfmePod104@@PAU1@@_STL@@YAPAUBfmePod104@@PBU1@0PAU1@ABU__false_type@0@@Z")(const void *, const void *, void *, const RvaCopyIteratorTag &);
 struct Rva003F5254Vector104
 {
     RvaVector104Element *begin, *end, *capacity_end;
@@ -36,10 +34,10 @@ Rva003F5254Vector104 &Rva003F5254Vector104::operator=(const Rva003F5254Vector104
             capacity_end = begin + xlen;
         } else if (unsigned(end - begin) >= xlen) {
             void *i = Rva003B8B44CopyDispatch(x.begin + 0, x.end + 0, begin, RvaVector104Tag());
-            Rva003B8E13DestroyRecords(i, end);
+            __identifier("?Rva003B8E13DestroyRange@@YAXPAURva003B8B61Elem@@0@Z")(i, end);
         } else {
             Rva003B8B44CopyDispatch(x.begin, x.begin + (end - begin), begin, RvaVector104Tag());
-            Rva003F417EConstructRecords(x.begin + (end - begin), x.end + 0, end, RvaVector104Tag());
+            __identifier("??$__uninitialized_copy@PBUBfmePod104@@PAU1@@_STL@@YAPAUBfmePod104@@PBU1@0PAU1@ABU__false_type@0@@Z")(x.begin + (end - begin), x.end + 0, end, RvaVector104Tag());
         }
         end = begin + xlen;
     }

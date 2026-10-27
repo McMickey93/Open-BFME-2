@@ -22,7 +22,7 @@ public:
 
 // DefaultModuleTemplate0A_vtbl0: matched references place it at VA 0xc1baa0 (retail .rdata value -18).
 extern "C" char DefaultModuleTemplate0A_vtbl0 = -18;
-extern "C" char DefaultModuleTemplate0A_vtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // DefaultModuleTemplate0A_sub_vtbl: matched references place it at VA 0xc1bab0 (retail .rdata value -99).
 extern "C" char DefaultModuleTemplate0A_sub_vtbl = -99;
 
@@ -49,10 +49,9 @@ DefaultModuleTemplate<N>::DefaultModuleTemplate(const DefaultModuleTemplate &tha
 	sub->DefaultColorModuleInfo::DefaultColorModuleInfo(*(const DefaultColorModuleInfo *)sub_src);
 	*(void **)sub = &DefaultModuleTemplate0A_sub_vtbl;
 	m_v0 = &DefaultModuleTemplate0A_vtbl0;
-	m_v4 = &DefaultModuleTemplate0A_vtbl4;
+	m_v4 = &__identifier("?vftable_0112B89C@@3HA");
 }
 
 template DefaultModuleTemplate<0>::DefaultModuleTemplate(const DefaultModuleTemplate &);
 }
 // _DefaultModuleTemplate0A_vtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_DefaultModuleTemplate0A_vtbl4=?vftable_0112B89C@@3HA")

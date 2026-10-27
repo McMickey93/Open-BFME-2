@@ -20,7 +20,7 @@ protected:
 
 // HemisphericalEmissionVelocityModuleTemplate_cvtbl0: matched references place it at VA 0xc1bc60 (retail .rdata value 62).
 extern "C" char HemisphericalEmissionVelocityModuleTemplate_cvtbl0 = 62;
-extern "C" char HemisphericalEmissionVelocityModuleTemplate_cvtbl4;
+extern "C" char __identifier("?vftable_0112B89C@@3HA");
 // HemisphericalEmissionVelocityModuleTemplate_csub_vtbl: matched references place it at VA 0xc1c00c (retail .rdata value 85).
 extern "C" char HemisphericalEmissionVelocityModuleTemplate_csub_vtbl = 85;
 
@@ -37,9 +37,8 @@ HemisphericalEmissionVelocityModuleTemplate::HemisphericalEmissionVelocityModule
 {
 	void **self = (void **)this;
 	self[0] = &HemisphericalEmissionVelocityModuleTemplate_cvtbl0;
-	self[1] = &HemisphericalEmissionVelocityModuleTemplate_cvtbl4;
+	self[1] = &__identifier("?vftable_0112B89C@@3HA");
 	self[2] = &HemisphericalEmissionVelocityModuleTemplate_csub_vtbl;
 }
 }
 // _HemisphericalEmissionVelocityModuleTemplate_cvtbl4: the global at VA 0xc1c780 is ?vftable_0112B89C@@3HA.
-#pragma comment(linker, "/alternatename:_HemisphericalEmissionVelocityModuleTemplate_cvtbl4=?vftable_0112B89C@@3HA")
