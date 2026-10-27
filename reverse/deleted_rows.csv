@@ -3668,3 +3668,4 @@ $L784,0x007A8288,Renumbered compiler label: the matched parent ?insert@Rva006CE6
 ?setListener@Rva005D2EA8@@UAEXPAVRva005D2EA8Listener@@@Z,0x002B230F,"Renamed to ?setListener@Rva005D2EA8@@UAEXPAVRollOverListener@@@Z by tools/rename.py (inferred)"
 ?rva005FD4AA@Rva005FD4AA@@QBEPAHH@Z,0x005FD4AA,"Renamed to ?getRegionName@Rva005FD4AA@@QBEPAHH@Z by tools/rename.py (inferred)"
 ?rva005FD4BB@Rva005FD4AA@@QBEPAHH@Z,0x005FD4BB,"Renamed to ?getArmyName@Rva005FD4AA@@QBEPAHH@Z by tools/rename.py (inferred)"
+?rva00577E43@Rva00577E43@@QAEXXZ,0x00577E43,"Renamed to ?rva00577E43@AptRadialMenuImpl@@QAEXXZ by tools/rename.py (inferred)"

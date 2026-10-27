@@ -76,7 +76,7 @@ class Rva005F8FCC
 public:
     void *rva005F8FCC(unsigned int flags);
 };
-class Rva00577E43
+class AptRadialMenuImpl
 {
 public:
     void rva00577E43();
@@ -86,7 +86,7 @@ private:
     void **m_begin;
     void **m_end;
 };
-void Rva00577E43::rva00577E43()
+void AptRadialMenuImpl::rva00577E43()
 {
     ((Rva005C6CC7Call *)this)->rva005C6CC7();
     while (m_begin != m_end) {
@@ -99,7 +99,7 @@ void Rva00577E43::rva00577E43()
 // ?rva00577EAA@Rva00577EAA@@QAEXXZ retail 0x00577EAA 8 bytes. Forwards to
 // rowed 0x00577E43 via the pointer at +4. Evidence: single caller 0x005F882E
 // passes its own this in ecx with no pushes; target is the rowed
-// Rva00577E43::rva00577E43 in this file; no vtable or strings.
+// AptRadialMenuImpl::rva00577E43 in this file; no vtable or strings.
 class Rva00577EAA
 {
 public:
@@ -107,7 +107,7 @@ public:
 
 private:
     char m_pad00[4];
-    Rva00577E43 *m_target;
+    AptRadialMenuImpl *m_target;
 };
 void Rva00577EAA::rva00577EAA()
 {

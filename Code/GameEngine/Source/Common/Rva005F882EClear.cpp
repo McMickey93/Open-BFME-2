@@ -7,7 +7,7 @@
 // packet disassembly, callees rowed, thunk at 0x005F884D (mov ecx,[ecx+4]
 // then jmp here), prev deleting dtor 0x005F8804 and next push_back 0x005F8855.
 
-class Rva00577E43;
+class AptRadialMenuImpl;
 class Rva00577EAA
 {
 public:
@@ -15,7 +15,7 @@ public:
 
 private:
 	char m_pad00[4];
-	Rva00577E43 *m_target;
+	AptRadialMenuImpl *m_target;
 };
 
 struct Rva005F8620Element;

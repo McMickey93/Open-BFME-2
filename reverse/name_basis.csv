@@ -2737,3 +2737,4 @@ param,BfmeMgrVPE::rva007F9A40GetOrCreateSlot::a4,BfmeMgrVPE::rva007F9A40GetOrCre
 class,Rva005D2EA8Listener,RollOverListener,inferred,agree:nl-e74ab198c586,Code/GameEngine/Source/Common/Rva005D2EA8Dtor.cpp,
 function,?rva005FD4AA@Rva005FD4AA@@QBEPAHH@Z,?getRegionName@Rva005FD4AA@@QBEPAHH@Z,inferred,agree:nl-8f4736b6c3f0,Code/GameEngine/Source/Common/GapBodiesGE12.cpp,0x005FD4AA
 function,?rva005FD4BB@Rva005FD4AA@@QBEPAHH@Z,?getArmyName@Rva005FD4AA@@QBEPAHH@Z,inferred,agree:nl-fcd4d0a34a0a,Code/GameEngine/Source/Common/GapBodiesGE12.cpp,0x005FD4BB
+class,Rva00577E43,AptRadialMenuImpl,inferred,agree:nl-e030637ee591,Code/GameEngine/Source/Common/FamilyDeletingDtors3.cpp,
