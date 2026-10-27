@@ -3,12 +3,6 @@
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../Common/RTS/XYDistanceCallView.h"
 #include "../../../Common/PartitionRangeQueryCallView.h"
-// ?update@DemoTrapUpdate@@UAE?AW4UpdateSleepTime@@XZ 0x00495ABA 360B
-// DemoTrapUpdate::update via ZH DemoTrapUpdate.cpp update plus BFME1
-// game/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp wide-result
-// shape. ModuleData offsets (+0x28/+0x2c/+0x34/+0x38/+0x3d/+0x3e/+0x0c) and
-// DemoTrapUpdate members (+0x20/+0x24) match rowed DemoTrapUpdateModuleDataCtor
-// and DemoTrapUpdateConstructor. Detonate helper is rowed 0x00495A2B.
 #include "DemoTrapObjectView.h"
 class Rva000CBA20Point
 {
@@ -18,6 +12,36 @@ public:
 };
 extern PartitionManager *ThePartitionManager;
 #include "DemoTrapUpdateModuleDataView.h"
+#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+//
+// ?xfer@DemoTrapUpdate@@MAEXPAVXfer@@@Z, retail 0x00495A74, 53 bytes.
+// Slot 3 (offset 0x0C) of vtable 0x0084ED3C (class of rowed dtor ??1Rva00495916
+// and ctor ??0DemoTrapUpdate at 0x004959B1). Version1 via rowed 0x000053EE
+// then base UpdateModule xfer via rowed 0x0044DF9F then int at +0x20 via Xfer
+// slot 0x7C plus bool at +0x24 via Xfer slot 0x90. Layout is rowed 0x28-byte
+// class (UpdateModule base 0x20 plus m_nextScanFrames/m_detonated) from
+// DemoTrapUpdateConstructor.cpp. Donor is ZH DemoTrapUpdate::xfer (xferVersion
+// plus base plus xferInt/xferBool); BFME2 uses Version1 plus operator==.
+
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+#include "../../../../Include/Common/BfmeXfer.h"
+
 // ??0DemoTrapUpdateModuleData@@QAE@XZ at retail 0x0049597A (55 bytes).
 // The module-data half of DemoTrapUpdate: vtable immediate 0x00C4ED70 modelled
 // as an explicit first member (OCLUpdateModuleDataCtor precedent, so no vtable
@@ -34,7 +58,6 @@ extern PartitionManager *ThePartitionManager;
 // ProximityModeWeaponSlot, ManualModeWeaponSlot, TriggerDetonationRange,
 // DetonateWhenKilled). Body order is load-bearing and follows retail.
 extern "C" const void *const vtbl_00C4ED70[];
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
 
 // The module classes spell the DemoTrapUpdate.cpp TU's union view. Vptrs at
 // +0x00, +0x0C and +0x10 (the constructor's three stores). Retail's primary
@@ -45,9 +68,13 @@ extern "C" const void *const vtbl_00C4ED70[];
 // with loadPostProcess (0x0058B03E) and GetSnapshotName (0x002533CD). The
 // +0x10 one (0x00C4ED30) opens with update (0x00495ABA).
 class Thing;
+
 class ModuleData;
+
 class Object;
+
 class Xfer;
+
 class DemoTrapUpdateModuleData;
 
 enum NameKeyType
@@ -122,11 +149,62 @@ private:
 	bool m_detonated;					// +0x24
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class WeaponTemplate;
+
+class WeaponStore
+{
+public:
+	void createAndFireTempWeapon(const WeaponTemplate *wt, const Object *obj, const Coord3D *pos);
+};
+
+extern WeaponStore *TheWeaponStore;
+
+struct Rva00495A2B_H04
+{
+	unsigned char m_pad[8];
+	const WeaponTemplate *m_wt08;
+};
+
+class Xfer::Version
+{
+public:
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
+
+	unsigned char m_current;
+	unsigned char m_minimum;
+};
+
 // tu-skeleton: 0x00495916 25B ??1DemoTrapUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
 
 // tu-skeleton: 0x0049592F 6B ?name@Rva0049592FNamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
 
-// tu-skeleton: 0x00495935 69B ?getModuleNameKey@DemoTrapUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdatePoolKey.cpp
+
+// ?getModuleNameKey@DemoTrapUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType DemoTrapUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheDemoTrapUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("DemoTrapUpdate");
+	return TheDemoTrapUpdatePoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp
+
+// ?update@DemoTrapUpdate@@UAE?AW4UpdateSleepTime@@XZ 0x00495ABA 360B
+// DemoTrapUpdate::update via ZH DemoTrapUpdate.cpp update plus BFME1
+// game/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp wide-result
+// shape. ModuleData offsets (+0x28/+0x2c/+0x34/+0x38/+0x3d/+0x3e/+0x0c) and
+// DemoTrapUpdate members (+0x20/+0x24) match rowed DemoTrapUpdateModuleDataCtor
+// and DemoTrapUpdateConstructor. Detonate helper is rowed 0x00495A2B.
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdateModuleDataCtor.cpp
 
@@ -145,16 +223,6 @@ DemoTrapUpdateModuleData::DemoTrapUpdateModuleData()
 	m_detonateWhenKilled = false;
 	m_triggerDetonationRange = 0.0f;
 }
-
-// tu-skeleton: 0x004959B1 50B ??0DemoTrapUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdateConstructor.cpp (not merged yet)
-
-// tu-skeleton: 0x004959FF 44B ?onObjectCreated@DemoTrapUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/Common/DemoTrapUpdate_onObjectCreated.cpp (not merged yet)
-
-// tu-skeleton: 0x00495A2B 73B ?rva00495A2B@Rva00495A2B@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00495A2B.cpp (not merged yet)
-
-// tu-skeleton: 0x00495A74 53B ?xfer@DemoTrapUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdateXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x00495AA9 17B ?buildFieldParse@DemoTrapUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp
 
@@ -220,3 +288,48 @@ UpdateSleepTime DemoTrapUpdate::update()
 		((Rva00495A2B *)this)->rva00495A2B();
 	return UPDATE_SLEEP_NONE;
 }
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdateConstructor.cpp
+
+// ??0DemoTrapUpdate@@QAE@PAVThing@@PBVModuleData@@@Z
+DemoTrapUpdate::DemoTrapUpdate( Thing *thing, const ModuleData *moduleData )
+	: UpdateModule( thing, moduleData )
+{
+	m_nextScanFrames = 0;
+	m_detonated = false;
+}
+
+// tu-skeleton: 0x004959FF 44B ?onObjectCreated@DemoTrapUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/Common/DemoTrapUpdate_onObjectCreated.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva00495A2B.cpp
+
+//
+// ?rva00495A2B@Rva00495A2B@@QAEXXZ, retail 0x00495A2B (73 bytes).
+// Identity: unlock predicate firing a temp weapon then killing the object;
+// testStatus 2 and 0x13 gate the fire, kill is Damage 8 Death 0, flag +0x24
+// set. Callers in DemoTrap area; TheWeaponStore via rowed name.
+
+void Rva00495A2B::rva00495A2B()
+{
+	Object *obj = m_obj08;
+	if (obj->testStatus(STATUS_UNDER_CONSTRUCTION))
+		goto doKill;
+	if (obj->testStatus(STATUS_SOLD))
+		goto doKill;
+	TheWeaponStore->createAndFireTempWeapon(m_p04->m_wt08, obj, &obj->m_pos38);
+doKill:
+	obj->kill(DAMAGE_8, DEATH_0);
+	m_b24 = 1;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdateXfer.cpp
+
+void DemoTrapUpdate::xfer(Xfer *xfer)
+{
+	xfer->Version1();
+	UpdateModule::xfer(xfer);
+	*xfer == m_nextScanFrames;
+	*xfer == m_detonated;
+}
+
+// tu-skeleton: 0x00495AA9 17B ?buildFieldParse@DemoTrapUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
