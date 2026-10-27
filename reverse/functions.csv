@@ -17748,7 +17748,6 @@ $L1217,,0x007910C0,8,Code/GameEngine/Source/GameNetwork/Rva004D5795Contents.cpp,
 uw_00791110,,0x00791110,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4958
 uw_00791183,,0x00791183,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0079119d,,0x0079119D,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4988
-uw_00791212,,0x00791212,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_0079122e,,0x0079122E,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_00791325,,0x00791325,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L2512
 uw_00791403,,0x00791403,11,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L2530
@@ -75084,7 +75083,6 @@ uw_007791b7,,0x007791B7,10,Code/GameEngine/Source/GameLogic/AI/AI_createGroup.cp
 uw_007980c1,,0x007980C1,10,Code/GameEngine/Source/GameLogic/AI/GroupOrderClones.cpp,matched,gen-funclet;parent=?rva00546F6C@AttackObjectGroupOrder@@UAEPAV1@XZ;object-symbol=$L389
 uw_007881a2,,0x007881A2,8,Code/GameEngine/Source/GameLogic/AI/Rva004389AENearbyCheck.cpp,matched,gen-funclet;parent=?rva0043912F@Rva004389AE@@QAE_NPAVObject@@PBUCoord3D@@PAURva004388E3Template@@PAW4ObjectID@@@Z;object-symbol=$L917
 uw_00798085,,0x00798085,10,Code/GameEngine/Source/GameLogic/AI/SynchronizeGroupOrderCtor.cpp,matched,gen-funclet;parent=?rva005469FD@SynchronizeGroupOrder@@QAEPAV1@XZ;object-symbol=$L4490
-uw_0079121a,,0x0079121A,10,Code/GameEngine/Source/GameLogic/AI/TurretAICtor.cpp,matched,gen-funclet;parent=??0TurretAI@@QAE@PAVObject@@PBVTurretAIData@@W4WhichTurretType@@@Z;object-symbol=$L483
 uw_0079a341,,0x0079A341,10,Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioSoundKeyPair.cpp,matched,gen-funclet;parent=?update@LargeGroupAudioSoundKeyPair@@QAEXPA_N@Z;object-symbol=$L12719
 uw_0079a35d,,0x0079A35D,8,Code/GameEngine/Source/GameLogic/LargeGroupAudio/Rva0056A83BParseAudioMap.cpp,matched,gen-funclet;parent=?Rva0056A83BParseAudioMap@@YAXPAVINI@@PAX1PBX@Z;object-symbol=$L1279
 uw_00791e83,,0x00791E83,10,Code/GameEngine/Source/GameLogic/LivingWorld/SplineEffectParseINIBlock.cpp,matched,gen-funclet;parent=?SplineEffectParseINIBlock@@YAXPAVINI@@PAX1PBD@Z;object-symbol=$L1226
@@ -98707,3 +98705,4 @@ $L5474,,0x007881DE,8,Code/GameEngine/Source/Common/RTS/Rva000D3FA0Destructor.cpp
 $L5192,,0x007713DB,8,Code/Libraries/Source/WWVegas/WWLib/Rva00243177.cpp,matched,gen-funclet;parent=??0Rva000D3FA0Map@@QAE@XZ; Matched parent 0x00243177 EH graph is EXACT (eh_verify) and binds compiler label $L5192 to retail 0x007713DB; whole 8B destroys the base through ??1Snapshot@@UAE@XZ at its rowed fold 0x0049B47C now that the unit derives the canonical Snapshot; replaces generated uw_007713db
 $L1277,,0x0077D4D0,11,Code/GameEngine/Source/GameLogic/Object/Rva00355B61Ctor.cpp,matched,gen-funclet;parent=??0Rva00355B61@@QAE@XZ; Matched parent 0x00355B61 EH graph is EXACT (eh_verify) and binds compiler label $L1277 to retail 0x0077D4D0; whole 11B destroys the +0x0C base through ??1Snapshot@@UAE@XZ at its rowed fold 0x0049B47C now that the unit derives the canonical Snapshot; replaces generated uw_0077d4d0
 ??1W3DShadowGeometryManagerIterator@@UAE@XZ,,0x00108650,7,Code/GameEngine/Source/Common/Rva000F1AD8Clear.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva000F1AD8Clear.cpp; compiler-emitted destructor of the iterator subclass (table 0x00BCF9AC) that retail ICF-folded with ??1Rva000EFA0E@@UAE@XZ at 0x00108650: its own table store is dead behind the expanded empty HashTableIteratorClass destructor so it stores 0x00BCEF9C; the unwind funclet of 0x000F1AD8 calls it
+$L502,,0x00791212,8,Code/GameEngine/Source/GameLogic/AI/TurretAICtor.cpp,matched,gen-funclet;parent=??0TurretAI@@QAE@PAVObject@@PBVTurretAIData@@W4WhichTurretType@@@Z; Matched parent 0x004D85B6 EH graph is EXACT (eh_verify) and binds compiler label $L502 to retail 0x00791212; whole 8B destroys the base through ??1Snapshot@@UAE@XZ at its rowed fold 0x0049B47C now that the unit derives the canonical Snapshot; replaces generated uw_00791212

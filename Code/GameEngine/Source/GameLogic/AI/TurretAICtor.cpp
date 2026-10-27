@@ -66,11 +66,9 @@ private:
 	unsigned char m_pad04[0x40 - 0x04];
 };
 
-class TurretAISnapshotBase
-{
-public:
-	virtual ~TurretAISnapshotBase() {}
-};
+// The base is the canonical Snapshot (vtable 0x00BBB554): retail unwind
+// funclets destroy it through the folded Snapshot destructor 0x0049B47C.
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 class TurretAINotifyBase
 {
@@ -78,7 +76,7 @@ public:
 	virtual void notifyFired() = 0;
 };
 
-class TurretAI : public TurretAISnapshotBase, public TurretAINotifyBase
+class TurretAI : public Snapshot, public TurretAINotifyBase
 {
 public:
 	TurretAI(Object *owner, const TurretAIData *data, WhichTurretType tur);
