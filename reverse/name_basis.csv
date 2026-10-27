@@ -2730,3 +2730,7 @@ member,Rva002CB35CAIData::m_D0,Rva002CB35CAIData::m_chaseFromBehindLimit,inferre
 member,Rva004F9F39Template::m_494,Rva004F9F39Template::m_autoResolveLeadership,inferred,agree:nl-17f1effaab42,Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp,
 member,Rva004F9F39Template::m_5c4,Rva004F9F39Template::m_autoResolveUnitType,inferred,agree:nl-fd4e5f825a6a,Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp,
 member,Rva000B61ABDrawTemplate::m_flags5E2,Rva000B61ABDrawTemplate::m_shadowType,inferred,agree:nl-46fef8f0a911,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawRva000B61AB.cpp,
+local,DynamicAudioEventInfo::xferNoName::b,DynamicAudioEventInfo::xferNoName::loopFlag,inferred,agree:nl-e2fe64068cac,Code/GameEngine/Source/Common/Audio/DynamicAudioEventInfoXferNoName.cpp,0x004331C6
+local,DynamicAudioEventInfo::xferNoName::v,DynamicAudioEventInfo::xferNoName::overrideValue,inferred,agree:nl-0614b7b54cb3,Code/GameEngine/Source/Common/Audio/DynamicAudioEventInfoXferNoName.cpp,0x004331C6
+local,W3DTerrainLogic::Rva0027D960::c,W3DTerrainLogic::Rva0027D960::buffer,inferred,agree:nl-9279e8ec3e61,Code/GameEngine/Source/Common/Rva0062AF7Rva0027D815.cpp,0x0027D960
+param,BfmeMgrVPE::rva007F9A40GetOrCreateSlot::a4,BfmeMgrVPE::rva007F9A40GetOrCreateSlot::callback,inferred,agree:nl-629194aaa096,Code/GameEngine/Source/Common/SmallGaps/Rva007F9A40GetOrCreateSlot.cpp,0x00665FB0
