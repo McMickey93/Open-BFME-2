@@ -61,7 +61,6 @@ Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldPlayerDtor.cpp	dr
 Code/GameEngine/Source/GameNetwork/Connection_doSend.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameNetwork/GUIUtil.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DBufferManager_Slots.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
-Code/Libraries/Source/Apt/AptNativeHashBFME2.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/Libraries/Source/COM/ComSupp.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	6	0	0	<comdef.h>,<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	IID_ISupportErrorInfo:same
 Code/Libraries/Source/CRT/TypeInfoCopyConstructor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	1	<excpt.h>,<typeinfo.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	type_info:same
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<comdef.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_com_issue_errorex:same
