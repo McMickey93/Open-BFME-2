@@ -5341,6 +5341,18 @@ Open leads (claude2, same pass; not edited):
   Prerequisite: one class declaration for `TheCrowdResponseStore`'s type (a
   shared header with the real destructor) used by all five units.
 
+**2026-10-27 follow-up (lk1, inspected `d16a31e4dc`, index 73061d9452), same cause, a table this time:**
+`BfmeThreeHundredThirtyFour.cpp` (22 B) failed only on `_bfmeVftSF`, a stray name for
+the 0x00816778 table. `reverse/data_ledger.csv` names that table `??_7Rva00360243@@6B@`
+and lists `_bfmeVftSF` as an alias. Rva00360474Ctor.cpp defines that name, and its
+rowed ctor 0x00360243 stores the same 0x00C16778. 4e4c99282a binds the defined name;
+`tools/dir32.py` resolves both stores to 0x00C16778. 1/1 rows exact; link_check 3/3
+LINKS with Rva00360474Ctor.cpp and Rva0035FF76FamilyInitDraw.cpp (0 -> 22 B,
+prediction only). A sweep of every current unresolved name against the ledger's
+alias lists found no other alias with a defined owner, apart from LINK-123's
+`g_Va00E03354`. The class still has three spellings (BfmeThingSF, Rva00360243,
+Rva003601C5; re_attempts 80298), which needs a class reconciliation.
+
 ### LINK-122: census index 73061d9452 carries a deleted merge donor's object, and the bf3dd31211 link queue triage
 Status: Open (census hygiene lead; no source change). Updated: 2026-10-27; inspected revision: 9601a55fa8; index 73061d9452 (2026-10-27 14:34 UTC).
 Evidence / affected units: `Code/GameEngine/Source/Common/System/INI_parseCrateCreationEntry.cpp` was deleted by the CrateSystem merge 578eb15d7b and is absent from the 73061d9452 tree, yet the published index still lists its object (188 B, linked) and its strong `?parseCrateCreationEntry@CrateTemplate@@SAXPAVINI@@PAX1PBX@Z`. The census itself records `GameLogic/System/CrateSystem.cpp` as linked (259 B; it was `no` at bf3dd31211), so the merge did not regress; but an ordinary preview of CrateSystem.cpp reports a duplicate/wrong-selected parseCrateCreationEntry against that leftover object. The same leftover-donor pattern makes previews of consumers of other post-census merges (boxrobj.cpp f9e70dca51, ww3d.cpp adff7abc28: dx8wrapper.cpp, WW3DShutdownRenderDevice.cpp) report false failures, and `--refresh` does not drop deleted sources' objects.
