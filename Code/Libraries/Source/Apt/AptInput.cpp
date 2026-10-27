@@ -25,6 +25,7 @@ public:
 };
 
 class AptValue;
+
 class Rva006E1E30;
 
 class BfmeAptValue006DCD20 {
@@ -316,9 +317,27 @@ struct ButtonHitTestRecord {
     AptMatrix matrix;
 };
 
+// ?rva006FA7E0@AptAnimationPoolData@@QAEX_N0H@Z retail 0x006FA7E0..0x006FAA20 (576 bytes)
+// thiscall ret 0xC. Focus/press state transition on the Apt input object
+// shared with 0x006FB860/0x006FB910/0x006FAA20 (Rva006FB910Cluster.cpp):
+// +0x44 current value and the +0x60/+0x64/+0x68 AptValue slots are tested
+// with AptValue::isUndefined (0x006DC010) and dispatched through the checked
+// CIH cast 0x006DCF60 to 0x006E2010 with event masks 0x400..0x10000; the
+// coordinate hit test is 0x006F9FC0. Cleared slots take gpUndefinedValue.
+// Only caller: 0x006FB120 (passes the two flags and the packed position).
+// Owner class and method name remain address-derived. Bank
+// reverse/attempts/0x006fa7e0.cpp was the starting point; region flags
+// /O2 /G6 /arch:SSE make it exact.
+
+class AptCIH;
+
+extern AptValue *gpUndefinedValue;
+
 // tu-skeleton: 0x006F98C0 271B ?rva006F98C0Score@@YAMHHHHH@Z -- matched in Code/Libraries/Source/Apt/AptInputSuffixAdvance.cpp (not merged yet)
 
 // tu-skeleton: 0x006F99D0 604B ?rva006F99D0@@YAPAVAptCIH@@HPAV1@0@Z -- matched in Code/Libraries/Source/Apt/AptInputSuffixAdvance.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/Apt/AptInput.cpp
 
 // ---- from Code/Libraries/Source/Apt/AptInput.cpp
 
@@ -664,8 +683,6 @@ void AptAnimationPoolData::Rva006F9EF0()
     ((AptCIH *)mValue->rva006DCF60(false))->factorySetProperty(1, y, true);
 }
 
-// tu-skeleton: 0x006F9FC0 90B ?rva006F9FC0@AptAnimationPoolData@@QAE_NPAVRva006E1E30@@H@Z -- matched in Code/GameEngine/Source/Common/Rva006F9FC0Cluster.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/Apt/AptAnimationPoolBILValidate.cpp
 
 bool AptAnimationPoolData::validateBIL()
@@ -701,11 +718,86 @@ bool AptAnimationPoolData::validateBIL()
     return true;
 }
 
+// tu-skeleton: 0x006F9FC0 90B ?rva006F9FC0@AptAnimationPoolData@@QAE_NPAVRva006E1E30@@H@Z -- matched in Code/GameEngine/Source/Common/Rva006F9FC0Cluster.cpp (not merged yet)
+
 // tu-skeleton: 0x006FA340 216B ?setValidFocusButton@AptAnimationPoolData@@QAEXXZ -- matched in Code/Libraries/Source/Apt/AptInputSuffixAdvance.cpp (not merged yet)
 
 // tu-skeleton: 0x006FA420 957B ?rva006FA420@AptAnimationPoolData@@QAEPAVAptCIH@@HH@Z -- matched in Code/Libraries/Source/Apt/AptInputSuffixAdvance.cpp (not merged yet)
 
-// tu-skeleton: 0x006FA7E0 576B ?rva006FA7E0@AptAnimationPoolData@@QAEX_N0H@Z -- matched in Code/Libraries/Source/Apt/Rva006FA7E0FocusTransition.cpp (not merged yet)
+// ---- from Code/Libraries/Source/Apt/Rva006FA7E0FocusTransition.cpp
+
+void AptAnimationPoolData::rva006FA7E0(bool first, bool enabled, int value)
+{
+    if (enabled) {
+        if (m60->isUndefined())
+            return;
+        if (!mValue->isUndefined()) {
+            if (mValue == m60) {
+                ((AptCIH *)m60->rva006DCF60(false))
+                    ->queueClipEvents(0x800, value, 1);
+            } else {
+                ((AptCIH *)m60->rva006DCF60(false))
+                    ->queueClipEvents(0x1000, value, 1);
+            }
+        } else {
+            if (rva006F9FC0(
+                    (Rva006E1E30 *)m60->rva006DCF60(false), value) && m68 == m60) {
+                ((AptCIH *)m60->rva006DCF60(false))
+                    ->queueClipEvents(0x800, value, 1);
+            } else {
+                ((AptCIH *)m60->rva006DCF60(false))
+                    ->queueClipEvents(0x1000, value, 1);
+            }
+        }
+        m60 = (BfmeAptValue006DCD20 *)gpUndefinedValue;
+        return;
+    }
+
+    if (first) {
+        if (m68->isUndefined())
+            return;
+        ((AptCIH *)m68->rva006DCF60(false))
+            ->queueClipEvents(0x400, value, 1);
+        m60 = m68;
+        return;
+    }
+
+    if (!m60->isUndefined()) {
+        bool inside = rva006F9FC0(
+            (Rva006E1E30 *)m60->rva006DCF60(false), value);
+        if (!m64->isUndefined() && !inside) {
+            ((AptCIH *)m60->rva006DCF60(false))
+                ->queueClipEvents(0x10000, value, 1);
+            m64 = (BfmeAptValue006DCD20 *)gpUndefinedValue;
+            return;
+        }
+        if (m64->isUndefined() && inside) {
+            ((AptCIH *)m60->rva006DCF60(false))
+                ->queueClipEvents(0x8000, value, 1);
+            m64 = m60;
+        }
+    } else {
+        if (!m68->isUndefined() && m68 != m64) {
+            if (!m64->isUndefined() && m64 != m60) {
+                ((AptCIH *)m64->rva006DCF60(false))
+                    ->queueClipEvents(0x4000, value, 1);
+            }
+            m64 = m68;
+            ((AptCIH *)m68->rva006DCF60(false))
+                ->queueClipEvents(0x2000, value, 1);
+        } else {
+            if (m64->isUndefined() || m68 == m64 || !m60->isUndefined())
+                return;
+            if (rva006F9FC0(
+                    (Rva006E1E30 *)m64->rva006DCF60(false), value))
+                return;
+            ((AptCIH *)m64->rva006DCF60(false))
+                ->queueClipEvents(0x4000, value, 1);
+            m64 = (BfmeAptValue006DCD20 *)gpUndefinedValue;
+            return;
+        }
+    }
+}
 
 // tu-skeleton: 0x006FAA20 281B ?ProcessButtonState@AptAnimationPoolData@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006FB910Cluster.cpp (not merged yet)
 
@@ -718,3 +810,7 @@ bool AptAnimationPoolData::validateBIL()
 // tu-skeleton: 0x006FB860 173B ?rva006FB860@AptAnimationPoolData@@QAEXHD@Z -- matched in Code/Libraries/Source/Apt/Rva006FB910Cluster.cpp (not merged yet)
 
 // tu-skeleton: 0x006FB910 70B ?rva006FB910@AptAnimationPoolData@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006FB910Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x007AA1A0 8B uw_007aa1a0 -- matched in Code/Libraries/Source/Apt/Rva006FB910Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x007AA1A8 10B __ehhandler$?rva006FB5B0@AptAnimationPoolData@@QAEXHHHH@Z -- matched in Code/Libraries/Source/Apt/Rva006FB910Cluster.cpp (not merged yet)
