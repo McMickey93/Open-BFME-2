@@ -71,6 +71,13 @@ long __cdecl atol(const char * str) {
  return _imp__atol(str);
 }
 
+// _strcmp
+typedef int (__cdecl *PFN_strcmp)(const char *, const char *);
+extern PFN_strcmp _imp__strcmp;
+int __cdecl strcmp(const char * string1, const char * string2) {
+ return _imp__strcmp(string1, string2);
+}
+
 // _wcslen
 typedef size_t (__cdecl *PFN_wcslen)(const wchar_t *);
 extern PFN_wcslen _imp__wcslen;

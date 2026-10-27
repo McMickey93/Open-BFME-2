@@ -20065,7 +20065,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_006291ae@@YAXXZ,,0x006291AE,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6C0;dll=msvcr71.dll;import=memset;target=memset
 ?ji_006291b4@@YAXXZ,,0x006291B4,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6BC;dll=msvcr71.dll;import=sprintf;target=sprintf
 ?ji_006291c0@@YAXXZ,,0x006291C0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6B4;dll=msvcr71.dll;import=strtoul;target=strtoul
-?ji_006291c6@@YAXXZ,,0x006291C6,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6B0;dll=msvcr71.dll;import=strcmp;target=strcmp
 ?ji_0062920a@@YAXXZ,,0x0062920A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A8;dll=msvcr71.dll;import=cos;target=cos
 ?ji_00629210@@YAXXZ,,0x00629210,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A4;dll=msvcr71.dll;import=fabs;target=fabs
 ?ji_00629216@@YAXXZ,,0x00629216,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A0;dll=msvcr71.dll;import=sin;target=sin
@@ -98832,3 +98831,4 @@ $L38872,,0x00798AB1,8,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThr
 ??1Rva0055BC8B@@UAE@XZ,,0x0049B47C,7,Code/GameEngine/Source/GameClient/System/FXParticleSystem/Rva0055BCF1ColorModuleCtor.cpp,matched,fold-proof=Code/GameEngine/Source/GameClient/System/FXParticleSystem/Rva0055BCF1ColorModuleCtor.cpp; compiler-emitted destructor that retail ICF-folded with ??1BoxEmissionVolumeInfo@FXParticleSystem@@UAE@XZ at 0x0049B47C: this unit compiles it to the same whole body; its unwind funclets call 0x0049B47C
 $L542,,0x007997EF,11,Code/GameEngine/Source/GameClient/System/FXParticleSystem/Rva0055BCF1ColorModuleCtor.cpp,matched,gen-funclet;parent=??0Rva0055BCF1@@QAE@IPBUColorModuleTemplate@@@Z; Matched parent 0x0055BCF1's EH graph is EXACT (eh_verify) and binds compiler label $L542 to retail 0x007997EF; its callee ??1Rva0055BC8B@@UAE@XZ is rowed at its ICF fold 0x0049B47C; replaces generated uw_007997ef
 _strlen,,0x00629170,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strlen import pointer; retail IAT slot 0x00BBA6D4 names msvcr71.dll!strlen (gen-import row); complete 6B tail
+_strcmp,,0x006291C6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strcmp import pointer; retail IAT slot 0x00BBA6B0 names msvcr71.dll!strcmp (gen-import row); complete 6B tail
