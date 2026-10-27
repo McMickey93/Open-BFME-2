@@ -6,22 +6,10 @@
 // zeroed. Caller 0x002140DB news 0x1C bytes and calls this with its AsciiString arg.
 // Flags and bfmealloc shim copied from sibling Rva003F9FE6CopyCtor.cpp.
 #include <vector>
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	StringBase(const StringBase<T> &other);
-	~StringBase();
-	void releaseBuffer();
-	T *m_data;
-};
-class AsciiString : public StringBase<char>
-{
-public:
-	AsciiString();
-	AsciiString(const AsciiString &other);
-	~AsciiString();
-};
+// Retail calls the out-of-line AsciiString copy ctor (0x001D8F56): the
+// canonical header's implicit-destructor shape keeps that call here.
+#define BFME_ASCII_IMPLICIT_DTOR
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 #include "../../../../../Libraries/Include/Lib/BfmeE16.h"
 // bfme link decl-only BfmeE16
 namespace _STL { template <> vector<BfmeE16, allocator<BfmeE16> >::~vector(); }

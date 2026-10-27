@@ -10,25 +10,17 @@
 // unlock lane beside the matched copy ctor Rva003F9FE6CopyCtor.cpp, caller
 // 0x00214060 news 0x30 bytes then calls this with an AsciiString, callees
 // AsciiString copy 0x001D8F56 and Vector_base 0x00211E58 both rowed. BfmeE16
-// is 16 bytes (stlport_vector_e16_o1.cpp). The AsciiString view is TU-local
-// so its copy ctor resolves to the AsciiString row at 0x001D8F56; the shared
-// bfme2_ascii shim would instead emit a call to StringBase<char> (0x000365F0).
+// is 16 bytes (stlport_vector_e16_o1.cpp).
 #include <vector>
 
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
-// class-gate: allow AsciiString retail calls its own copy ctor 0x001D8F56 here
-// while the shared shim routes the same constructor to StringBase<char> at
-// 0x000365F0; the target bytes pin the AsciiString spelling and only this view
-// reproduces them.
-class AsciiString
-{
-public:
-	AsciiString(const AsciiString &that);
-private:
-	char *m_text;
-};
+// Retail calls the out-of-line AsciiString copy ctor (0x001D8F56); the
+// canonical header's default shape would expand it into the StringBase<char>
+// call at 0x000365F0. Its implicit-destructor shape keeps the call.
+#define BFME_ASCII_IMPLICIT_DTOR
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 #include "../../../../../Libraries/Include/Lib/BfmeE16.h"
 // bfme link decl-only BfmeE16
