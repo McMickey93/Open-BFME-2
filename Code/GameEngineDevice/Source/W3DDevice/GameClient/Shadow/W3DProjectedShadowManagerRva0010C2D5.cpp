@@ -10,7 +10,9 @@
 // failing drops the first reference). The shadow comes from the manager's free
 // list (+0x18, next link +0x64, recycled through the rowed reset 0x0010953E) or
 // is newly allocated (0x68 bytes, base ctor 0x00109D8C, final vtable 0x007CF9F4,
-// init 0x0010BDF8). The two texture slots (+0x58/+0x5C) get the textures at +0x68
+// init 0x0010BDF8): the allocated shadow is the Rva001095B2 subclass, whose
+// rowed ctor 0x0010B9B7 is exactly that call and store, expanded inline here.
+// The two texture slots (+0x58/+0x5C) get the textures at +0x68
 // and the sizes at +0x58/+0x5C, the rowed updateOffsets 0x00108996 gets each
 // info's offsets, and the shadow is filed in the manager's decal list (+0x14)
 // in front of the first entry using the same pair of textures (else at the head),
@@ -95,20 +97,24 @@ struct ShadowTextureSlot
 	W3DShadowTexture *m_texture; // +0x68
 };
 
+// The shadow base, as far as this unit needs it: the rowed constructor
+// 0x00109D8C (address-derived spelling) installs table 0x007CEFA0, which the
+// data ledger names W3DProjectedShadow's. The table pointer is modelled as a
+// member: this unit never dispatches through it, and a virtual destructor
+// here stops the subclass constructor below from being expanded inline.
 class Rva007B1380
 {
 public:
 	Rva007B1380();
-	virtual void slot0();
 
-private:
+protected:
+	const void *const *m_table; // +0x00
 	char m_pad04[0x30];
 };
 
 class W3DProjectedShadow : public Rva007B1380
 {
 public:
-	virtual void slot0();
 	bool init();
 
 	int m_34;
@@ -118,6 +124,23 @@ public:
 	RenderObjClass *m_60;
 	W3DProjectedShadow *m_next; // +0x64
 };
+
+// Table 0x007CF9F4: the rowed ctor 0x0010B9B7 and dtor 0x001095B2 store it,
+// and its slot 0 is the rowed deleting dtor ??_GRva001095B2 (0x0010B9C9).
+extern "C" const void *const __identifier("??_7Rva001095B2@@6B@")[];
+
+// The two-texture decal shadow this factory allocates. Its constructor's
+// out-of-line definition lives in Rva001095B2Ctor.cpp; MSVC still emits a
+// COMDAT for this unit's inline expansion, so the view stays unit-local
+// rather than colliding with that definition at link.
+namespace
+{
+class Rva001095B2 : public W3DProjectedShadow
+{
+public:
+	Rva001095B2() { m_table = __identifier("??_7Rva001095B2@@6B@"); }
+};
+}
 
 class Rva0010959E
 {
@@ -208,7 +231,7 @@ W3DProjectedShadow *W3DProjectedShadowManager::rva0010C2D5(int id, RenderObjClas
 	else
 	{
 		void *memory = operator new(0x68);
-		shadow = memory ? new (memory) W3DProjectedShadow : 0;
+		shadow = memory ? new (memory) Rva001095B2 : 0;
 		if (shadow == 0 || !shadow->init())
 		{
 			releaseTexture(textureA);
@@ -257,8 +280,3 @@ W3DProjectedShadow *W3DProjectedShadowManager::rva0010C2D5(int id, RenderObjClas
 	}
 	return shadow;
 }
-
-// Placeholder virtuals this unit's vftables hold.  In retail each such slot
-// holds a rowed function; the vftable's address is proven by the vptr stores in
-// the matched destructors, so bind the placeholder to that row's name.
-#pragma comment(linker, "/alternatename:?slot0@W3DProjectedShadow@@UAEXXZ=??_GRva001095B2@@UAEPAXI@Z")
