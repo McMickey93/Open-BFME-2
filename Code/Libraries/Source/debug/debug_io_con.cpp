@@ -8,6 +8,9 @@
 #pragma optimize("y",on)
 #include <new>      // needed for placement new prototype
 #include <new>
+#include <windows.h>
+#include <string.h>
+#pragma intrinsic(strlen)
 
 extern void *DebugAllocMemory(unsigned size);
 
@@ -16,6 +19,8 @@ class DebugIOInterface;
 // tu-skeleton: 0x00040860 85B ??1DebugIOCon@@UAE@XZ -- matched in Code/Libraries/Source/debug/DebugIOConDestructorThunk.cpp (not merged yet)
 
 // tu-skeleton: 0x000408C0 9B ?Rva000408C0NonzeroByte4@@YI_NPBE@Z -- matched in Code/Libraries/Source/debug/DebugIOConDestructorThunk.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/debug/debug_io_con.cpp
 
 // ---- from Code/Libraries/Source/debug/debug_io_con.cpp
 
@@ -218,10 +223,6 @@ void DebugIOCon::Delete(void)
   DebugFreeMemory(this);
 }
 
-// tu-skeleton: 0x00040B10 59B ?bfmeWriteQN@@YGXHPAXPAD@Z -- matched in Code/GameEngine/Source/Common/BfmeTwoHundredNinetySeven.cpp (not merged yet)
-
-// tu-skeleton: 0x00040C40 466B ??0DebugIOCon@@QAE@XZ -- matched in Code/Libraries/Source/debug/DebugIOConConstructor.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWDebug/DebugIOCon_Create.cpp
 
 // ?Create@DebugIOCon@@SAPAVDebugIOInterface@@XZ @0x00040E50 89B: the "con"
@@ -231,6 +232,26 @@ DebugIOInterface *DebugIOCon::Create(void)
 {
     return (DebugIOInterface *)new (DebugAllocMemory(sizeof(DebugIOCon))) DebugIOCon();
 }
+
+// ---- from Code/GameEngine/Source/Common/BfmeTwoHundredNinetySeven.cpp
+
+// platformsdk
+// A text written to the standard output, its length measured in place. Nothing
+// is written for one particular kind, nor when there is no text. The count
+// written lands back in the first argument's own slot.
+
+void __stdcall bfmeWriteQN(int kind, void *spare, char *text)
+{
+	if (kind == 5)
+		return;
+
+	if (text == 0)
+		return;
+
+	WriteFile(GetStdHandle((DWORD)-11), text, strlen(text), (DWORD *)&kind, 0);
+}
+
+// tu-skeleton: 0x00040C40 466B ??0DebugIOCon@@QAE@XZ -- matched in Code/Libraries/Source/debug/DebugIOConConstructor.cpp (not merged yet)
 
 // tu-skeleton: 0x0075CE80 8B uw_0075ce80 -- matched in Code/Libraries/Source/debug/DebugIOConDestructorThunk.cpp (not merged yet)
 
