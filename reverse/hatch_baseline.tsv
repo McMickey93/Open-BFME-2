@@ -3808,6 +3808,7 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHo
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerDtor.cpp	?f3@SiegeDeployHordeSpecialPower_S3@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerDtor.cpp	?f4@SiegeDeployHordeSpecialPower_S4@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerModuleDataCtor.cpp	_vtbl_00C5DAB0	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPower.cpp	_vtbl_00C5DAB0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C4E998	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C5DC68	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C5DCCC	1
@@ -3817,7 +3818,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySp
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f2@SiegeDeploySpecialPower_S2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f3@SiegeDeploySpecialPower_S3@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f4@SiegeDeploySpecialPower_S4@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerModuleDataCtor.cpp	_vtbl_00C5DAB0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDtor.cpp	??1Rva00493DEF@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerTimerRefreshSpecialPowerCtor.cpp	_vtbl_00BEFCF8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerTimerRefreshSpecialPowerCtor.cpp	_vtbl_00C5E080	1
