@@ -21,7 +21,7 @@
 
 #include "ascii_string.h"
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
+#include <string.h>
 
 class GameWindow;
 class WindowLayoutInfo;

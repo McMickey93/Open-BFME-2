@@ -18,7 +18,7 @@ public:
 	void *get() const;
 };
 
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
+#include <string.h>
 
 void copyGadgetDrawData_Rva003157BE(GameWindow *dst, GameWindow *src, void *enabled, void *disabled, void *hilite)
 {

@@ -4,7 +4,7 @@
 // GetParam4128F0 writes the canonical counted AsciiString; key is "_mode".
 // The application mode names come from target data, not a donor inference.
 #include "ascii_string.h"
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char*,const char*);
+#include <string.h>
 bool Rva004128F0GetParam(const char*,const char*,AsciiString&);
 struct AptImageMode {int mode;const char *name;};
 static const AptImageMode imageModes[]={{0,"SOLID"},{1,"GRAYSCALE"},{2,"ALPHA"},{3,"ADDITIVE"},{4,"SOLID_GRAYSCALE"},{5,"SOLID_TEXTURE"}};
