@@ -16,6 +16,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #include <vector>
+#include <stdlib.h>
 struct Rva004E3E5AElement {
  unsigned char unknown[32];
  Rva004E3E5AElement(const Rva004E3E5AElement&);
@@ -36,7 +37,6 @@ template void _STL::vector<Rva004E3E5AElement>::_M_insert_overflow(Rva004E3E5AEl
 // then frees the allocation. The 32-byte record lifetime is independently
 // established by Rva004E2382's constructor/destructor and the owned cleanup.
 class Rva004E2382 { public: ~Rva004E2382(); private: char unknown[32]; };
-extern "C" void __cdecl free(void *);
 namespace _STL {
 template <> void vector<Rva004E3E5AElement>::_M_clear()
 {

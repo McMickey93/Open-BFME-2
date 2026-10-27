@@ -1,6 +1,7 @@
 // cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // ?Rva001F63C9Erase@@YGXPAPAXPAURva001F63C9Node@@@Z @0x001F63C9 44B
 // Evidence: unlink via Next at +0 Prev at +4 destroys 12B value at +8 via rowed destroyDelete 0x0004CCFF with flags 0 frees node via rowed _free 0x00030830 stores Next into *out; caller 0x001F8144 passes list plus node; shape from Rva004168D3Erase plus EraseTargetListNode0073EFFC.
+#include <stdlib.h>
 class Rva0004CCFF
 {
 public:
@@ -13,8 +14,6 @@ struct Rva001F63C9Node
 	void *m_prev;
 	Rva0004CCFF m_value;
 };
-
-extern "C" void __cdecl free(void *block);
 
 void __stdcall Rva001F63C9Erase(void **out, Rva001F63C9Node *pos)
 {

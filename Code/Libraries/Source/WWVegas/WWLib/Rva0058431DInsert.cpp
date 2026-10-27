@@ -6,6 +6,7 @@
 // grow via rowed allocator 0xB40EA, rowed Copy 0x583B11, Set 0x583A72, FillN 0x583A84, free 0x30830).
 // Prev/next Rva005843DACtor.cpp same dir. No callers rowed. Splash: EBP frame so /O1.
 
+#include <stdlib.h>
 struct BfmeStringRecord00111ACF { char m_data[28]; };
 
 struct Rva002337F0Blk
@@ -48,7 +49,6 @@ public:
 Rva002337F0* __cdecl Rva00583B11Copy(Rva002337F0* first, Rva002337F0* last, Rva002337F0* result, const Tag& tag);
 void __cdecl Rva00583A72Set(Rva002337F0* a, const Rva002337F0Blk* b);
 Rva002337F0* __cdecl Rva00583A84FillN(Rva002337F0* result, unsigned int count, const Rva002337F0Blk& value, const Tag& tag);
-extern "C" void __cdecl free(void* p);
 
 class Rva0058431D
 {

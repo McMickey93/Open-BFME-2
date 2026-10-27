@@ -9,7 +9,7 @@
 // native provider names retained. No names inferred from byte identity alone.
 #include <map>
 #include <algorithm>
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
 class Rva00079A0C {
     unsigned opaque[2];
 public:

@@ -4,8 +4,8 @@
 // while (n) { rva00421BF7(n->m_child); next = n->m_next; free(n); n = next; }
 // Evidence: unlock lane; self-call at 0x00421C09; free row 0x00030830;
 // caller at 0x00421EF8; neighbours share /O1 flags.
-extern "C" void __cdecl free(void *);
 
+#include <stdlib.h>
 struct Rva00421BF7Node
 {
 	char m_pad[8];

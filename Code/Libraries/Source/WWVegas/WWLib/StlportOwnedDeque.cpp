@@ -1,4 +1,5 @@
 // cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // BFME 1 STLport deque algorithms, instantiated for the target-supported 4-byte
 // owning-reference element view; original class names are unknown. Its release and assignment members are defined in
@@ -15,7 +16,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 
 #include <deque>
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
+#include <windows.h>
 class OpaqueRefCounted {
 public:
     virtual ~OpaqueRefCounted();

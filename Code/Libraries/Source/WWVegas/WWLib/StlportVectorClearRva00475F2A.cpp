@@ -5,6 +5,7 @@
 // @0x004758D6 30B: destroys range via F4 Destroy 0x00470398 then frees storage.
 // Evidence: callers overflow 0x00475BE8 plus erase 0x004758F4 plus Destroy pin 0x00470398
 // plus stride 4 plus free row 0x00030830. F2A and F4 share 4B layout.
+#include <stdlib.h>
 struct Rva00475F2AElement { char m_pad[4]; };
 struct Rva004758F4Element { char m_pad[4]; };
 
@@ -22,8 +23,6 @@ protected:
 	_Tp *_M_end_of_storage;
 };
 }
-
-extern "C" void __cdecl free(void *);
 
 void _STL::vector<Rva00475F2AElement>::_M_clear()
 {

@@ -5,8 +5,8 @@
 // Evidence: chain lane (calls landed 0x0023D377); same 59B shape as landed
 // Rva00383F9CErase 0x00383F9C (rebalance 0x00025620 plus dtor plus _free);
 // caller 0x0043963C; neighbours share flags.
-extern "C" void __cdecl free(void *block);
 
+#include <stdlib.h>
 namespace _STL
 {
 typedef bool _Rb_tree_Color_type;

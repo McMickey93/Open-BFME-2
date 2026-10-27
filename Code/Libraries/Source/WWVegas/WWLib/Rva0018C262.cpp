@@ -1,6 +1,6 @@
 // cl: /Ireference/shims/bfmelist /O1 /GX /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // ?rva0018C262@Rva0018C262@@QAEXPAURva0018C262Node@@@Z @ 0x0018C262 45B unlock: recursive node free via rowed _free. Caller 0x0018C316 passes node+4.
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 struct Rva0018C262Node {
 	int m_00;
 	int m_04;

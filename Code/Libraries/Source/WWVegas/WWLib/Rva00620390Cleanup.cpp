@@ -4,8 +4,7 @@
 // at [esi] plus size +4 after calling here; self-recursive plus _free 0x30830
 // plus loop on +8 with nop lea matches O2 tree cleanup; +8/+0xC links.
 
-extern "C" void __cdecl free(void *block);
-
+#include <stdlib.h>
 struct Rva00620390Node
 {
 	char m_pad[8];

@@ -8,6 +8,7 @@
 // rowed _free @0x00030830; caller @0x000C36F4; same recipe as rowed
 // ??1Rva000C2085 @0x000C2085.
 #include <vector>
+#include <stdlib.h>
 
 struct Rva00079554Record
 {
@@ -18,8 +19,6 @@ namespace _STL
 {
 template <> void _Destroy<Rva00079554Record *>(Rva00079554Record *first, Rva00079554Record *last);
 }
-
-extern "C" void __cdecl free(void *block);
 
 class Rva000C20A3
 {

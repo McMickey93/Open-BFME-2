@@ -9,7 +9,7 @@
 // Retail built the STLport alloc helpers unoptimised, hence /Od above:
 // __result lives on the stack ([ebp-4]) rather than in a register.
 
-extern "C" __declspec(dllimport) void* __cdecl malloc(unsigned int);
+#include <stdlib.h>
 extern "C" void* __cdecl bfme_MallocAlloc0Allocate_82C580(unsigned int);
 
 // The same body is also instantiated under its real name: this unit sorts

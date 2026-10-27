@@ -6,8 +6,8 @@
 // +4 ret 4; same 59B shape as Rva002A408B 0x002A408B Rva00358DC2 0x00358DC2
 // Rva00439325 0x00439325; neighbours pair ctors 0x00303D6B 0x00303DDF map
 // AsciiString->MapMetaData; caller 0x003042DD; unblocks 0x003042DD.
-extern "C" void __cdecl free(void *block);
 
+#include <stdlib.h>
 namespace _STL
 {
 typedef bool _Rb_tree_Color_type;

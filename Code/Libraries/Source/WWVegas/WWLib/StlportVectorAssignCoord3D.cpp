@@ -12,6 +12,7 @@
 // pinned under their STLport spellings from this body's REL32s. Caller
 // 0x002CD700.
 #include "../../../Include/Lib/Coord3D.h"
+#include <stdlib.h>
 struct BfmeE12;
 // The allocate-and-copy at 0x000E016A is rowed under this name.
 class Rva000E016A
@@ -37,7 +38,6 @@ private:
 template <class InputIter, class OutputIter> OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type &tag);
 template <class InputIter, class OutputIter> OutputIter __uninitialized_copy(InputIter first, InputIter last, OutputIter result, const __false_type &tag);
 }
-extern "C" void __cdecl free(void *);
 template <class Type, class Allocator>
 _STL::vector<Type, Allocator> &_STL::vector<Type, Allocator>::operator=(const vector &x)
 {

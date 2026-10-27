@@ -6,6 +6,7 @@
 // 0x004333EC, neighbours StlportVectorGrowthFootprints.
 #include <vector>
 #include "ascii_string.h"
+#include <stdlib.h>
 
 class BfmeStringTailRecord156 { public: ~BfmeStringTailRecord156(); char m_pad[8]; };
 struct RvaPair001D9F62 { AsciiString m_key; int m_value; };
@@ -36,7 +37,6 @@ public:
 };
 
 extern AudioManager *TheAudio;
-extern "C" void __cdecl free(void *) throw(...);
 
 // The +0xB8 slot is a destructible member, not a raw pointer freed from the
 // class body. Retail's first cleanup state (byte [ebp-4]=6) sits on the free,

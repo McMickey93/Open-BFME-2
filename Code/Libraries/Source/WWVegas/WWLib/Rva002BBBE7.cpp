@@ -5,8 +5,8 @@
 // +0x10 via rowed dtor, free node, iterate next at +8.
 // Evidence: chain lane; callees rowed 0x002B923F plus _free 0x00030830;
 // self-recursive call; caller at 0x002BC3AB; unblocks 0x002BC39D.
-extern "C" void __cdecl free(void *block);
 
+#include <stdlib.h>
 class Rva002B923F
 {
 public:

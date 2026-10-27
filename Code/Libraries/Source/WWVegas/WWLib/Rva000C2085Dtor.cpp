@@ -8,6 +8,7 @@
 // @0x00030830; callers @0x000C21D7 @0x000C363D; declared-only
 // specialization pattern from VectorMemberRecordDtors.cpp.
 #include <vector>
+#include <stdlib.h>
 
 struct Rva00B9AC2
 {
@@ -19,8 +20,6 @@ namespace _STL
 {
 template <> void _Destroy<Rva00B9AC2 *>(Rva00B9AC2 *first, Rva00B9AC2 *last);
 }
-
-extern "C" void __cdecl free(void *block);
 
 class Rva000C2085
 {

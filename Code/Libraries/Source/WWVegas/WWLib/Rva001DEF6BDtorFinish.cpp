@@ -19,6 +19,7 @@
 // element already rowed at 0x001DEEE0 and at the vector dtor 0x00414721. The
 // owning class of the two-pointer {start,finish} pair is not established here,
 // so the honest address-derived name stands.
+#include <stdlib.h>
 struct Rva00414BDBElement {
 	char m_opaque[48];
 	Rva00414BDBElement(const Rva00414BDBElement &);
@@ -31,8 +32,6 @@ namespace _STL {
 // instantiation at 0x001DEEE0. Only first/last are read.
 void __destroy_aux(Rva00414BDBElement *first, Rva00414BDBElement *last);
 }
-
-extern "C" void __cdecl free(void *p);
 
 class Rva001DEF6B
 {

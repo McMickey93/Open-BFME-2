@@ -9,8 +9,7 @@
 // destroy+free the old buffer after 0x0040CAD3 allocates. Honest address
 // name: owner unproven, shape is thiscall void with two pointer members.
 #include <stddef.h>
-
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 struct Rva0040DC56Element
 {

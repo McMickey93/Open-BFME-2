@@ -1,8 +1,8 @@
 // cl: /EHs /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // ??1Rva005681CE@@QAE@XZ @0x005681CE 63B
 // Evidence: chain via 0x00567FA3 Destroy stride16; 63B Destroy-plus-free shape same as 0x004F887C; caller 0x0056820D.
-extern "C" void __cdecl free(void *block);
 
+#include <stdlib.h>
 struct Rva004F691E;
 void __cdecl Rva00567FA3Destroy(Rva004F691E *first, Rva004F691E *last);
 

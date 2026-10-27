@@ -1,4 +1,5 @@
 // cl: /MD /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 
 // These four 49-byte BFME 2 bodies have confirmed retail boundaries and
@@ -6,8 +7,8 @@
 // so keep the target definitions address-named until target callers establish
 // stronger identities. Donor code supplies the equivalent locale flag logic;
 // the imported call, field offset, and each immediate are verified in retail.
-__declspec(dllimport) int __stdcall GetLocaleInfoA(unsigned long, unsigned long, char *, int);
 
+#include <windows.h>
 typedef struct Rva0020LocaleFlagInput
 {
 	unsigned long lcid;
