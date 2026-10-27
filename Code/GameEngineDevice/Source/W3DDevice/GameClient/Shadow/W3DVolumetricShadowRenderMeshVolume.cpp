@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 // ?RenderMeshVolume@W3DVolumetricShadow@@IAEXHHPBVMatrix3D@@@Z @0x000F200A 505B.
 //
@@ -22,158 +23,18 @@
 // bound buffer stays the ZH file-static: retail keeps the slot chain live
 // across its store, which only a non-escaping static allows.
 
-#include <windows.h>
+#include <d3d9.h>
 typedef float Real;
 typedef int Int;
 
-#define D3DTS_WORLD				256
-#define D3DPT_TRIANGLELIST		4
-#define D3DRS_STENCILREF		57
-#define D3DRS_STENCILMASK		58
 
-struct D3DMATRIX;
 struct IDirect3DDevice8;
-struct IDirect3DVertexBuffer8
-{
-	virtual HRESULT __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual DWORD __stdcall AddRef(void) = 0;
-	virtual DWORD __stdcall Release(void) = 0;
-	virtual HRESULT __stdcall GetDevice(IDirect3DDevice8 **ppDevice) = 0;
-	virtual HRESULT __stdcall SetPrivateData(void) = 0;
-	virtual HRESULT __stdcall GetPrivateData(void) = 0;
-	virtual HRESULT __stdcall FreePrivateData(void) = 0;
-	virtual DWORD __stdcall SetPriority(DWORD priorityNew) = 0;
-	virtual DWORD __stdcall GetPriority(void) = 0;
-	virtual void __stdcall PreLoad(void) = 0;
-	virtual DWORD __stdcall GetType(void) = 0;
-	virtual HRESULT __stdcall Lock(UINT offsetToLock, UINT sizeToLock, unsigned char **ppbData, DWORD flags) = 0;
-	virtual HRESULT __stdcall Unlock(void) = 0;
-};
-struct IDirect3DIndexBuffer8
-{
-	virtual HRESULT __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual DWORD __stdcall AddRef(void) = 0;
-	virtual DWORD __stdcall Release(void) = 0;
-	virtual HRESULT __stdcall GetDevice(IDirect3DDevice8 **ppDevice) = 0;
-	virtual HRESULT __stdcall SetPrivateData(void) = 0;
-	virtual HRESULT __stdcall GetPrivateData(void) = 0;
-	virtual HRESULT __stdcall FreePrivateData(void) = 0;
-	virtual DWORD __stdcall SetPriority(DWORD priorityNew) = 0;
-	virtual DWORD __stdcall GetPriority(void) = 0;
-	virtual void __stdcall PreLoad(void) = 0;
-	virtual DWORD __stdcall GetType(void) = 0;
-	virtual HRESULT __stdcall Lock(UINT offsetToLock, UINT sizeToLock, unsigned char **ppbData, DWORD flags) = 0;
-	virtual HRESULT __stdcall Unlock(void) = 0;
-};
-struct IDirect3DDevice8
-{
-	virtual HRESULT __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual DWORD __stdcall AddRef(void) = 0;
-	virtual DWORD __stdcall Release(void) = 0;
-	virtual HRESULT __stdcall TestCooperativeLevel(void) = 0;
-	virtual UINT __stdcall GetAvailableTextureMem(void) = 0;
-	virtual HRESULT __stdcall EvictManagedResources(void) = 0;
-	virtual HRESULT __stdcall GetDirect3D(void **ppD3D9) = 0;
-	virtual HRESULT __stdcall GetDeviceCaps(void *pCaps) = 0;
-	virtual HRESULT __stdcall GetDisplayMode(UINT iSwapChain, void *pMode) = 0;
-	virtual HRESULT __stdcall GetCreationParameters(void *pParameters) = 0;
-	virtual HRESULT __stdcall SetCursorProperties(UINT x, UINT y, void *pCursorBitmap) = 0;
-	virtual void __stdcall SetCursorPosition(int x, int y, DWORD flags) = 0;
-	virtual int __stdcall ShowCursor(int bShow) = 0;
-	virtual HRESULT __stdcall CreateAdditionalSwapChain(void *pPresentationParameters, void **pSwapChain) = 0;
-	virtual HRESULT __stdcall GetSwapChain(UINT iSwapChain, void **pSwapChain) = 0;
-	virtual UINT __stdcall GetNumberOfSwapChains(void) = 0;
-	virtual HRESULT __stdcall Reset(void *pPresentationParameters) = 0;
-	virtual HRESULT __stdcall Present(const void *pSourceRect, const void *pDestRect, void *hDestWindowOverride, const void *pDirtyRegion) = 0;
-	virtual HRESULT __stdcall GetBackBuffer(UINT iSwapChain, UINT iBackBuffer, DWORD type, void **ppBackBuffer) = 0;
-	virtual HRESULT __stdcall GetRasterStatus(UINT iSwapChain, void *pRasterStatus) = 0;
-	virtual HRESULT __stdcall SetDialogBoxMode(int bEnableDialogs) = 0;
-	virtual void __stdcall SetGammaRamp(UINT iSwapChain, DWORD flags, const void *pRamp) = 0;
-	virtual void __stdcall GetGammaRamp(UINT iSwapChain, void *pRamp) = 0;
-	virtual HRESULT __stdcall CreateTexture(void) = 0;
-	virtual HRESULT __stdcall CreateVolumeTexture(void) = 0;
-	virtual HRESULT __stdcall CreateCubeTexture(void) = 0;
-	virtual HRESULT __stdcall CreateVertexBuffer(void) = 0;
-	virtual HRESULT __stdcall CreateIndexBuffer(void) = 0;
-	virtual HRESULT __stdcall CreateRenderTarget(void) = 0;
-	virtual HRESULT __stdcall CreateDepthStencilSurface(void) = 0;
-	virtual HRESULT __stdcall UpdateSurface(void) = 0;
-	virtual HRESULT __stdcall UpdateTexture(void) = 0;
-	virtual HRESULT __stdcall GetRenderTargetData(void) = 0;
-	virtual HRESULT __stdcall GetFrontBufferData(void) = 0;
-	virtual HRESULT __stdcall StretchRect(void) = 0;
-	virtual HRESULT __stdcall ColorFill(void) = 0;
-	virtual HRESULT __stdcall CreateOffscreenPlainSurface(void) = 0;
-	virtual HRESULT __stdcall SetRenderTarget(void) = 0;
-	virtual HRESULT __stdcall GetRenderTarget(void) = 0;
-	virtual HRESULT __stdcall SetDepthStencilSurface(void) = 0;
-	virtual HRESULT __stdcall GetDepthStencilSurface(void) = 0;
-	virtual HRESULT __stdcall BeginScene(void) = 0;
-	virtual HRESULT __stdcall EndScene(void) = 0;
-	virtual HRESULT __stdcall Clear(void) = 0;
-	virtual HRESULT __stdcall SetTransform(DWORD state, const D3DMATRIX *pMatrix) = 0;
-	virtual HRESULT __stdcall GetTransform(void) = 0;
-	virtual HRESULT __stdcall MultiplyTransform(void) = 0;
-	virtual HRESULT __stdcall SetViewport(void) = 0;
-	virtual HRESULT __stdcall GetViewport(void) = 0;
-	virtual HRESULT __stdcall SetMaterial(void) = 0;
-	virtual HRESULT __stdcall GetMaterial(void) = 0;
-	virtual HRESULT __stdcall SetLight(void) = 0;
-	virtual HRESULT __stdcall GetLight(void) = 0;
-	virtual HRESULT __stdcall LightEnable(void) = 0;
-	virtual HRESULT __stdcall GetLightEnable(void) = 0;
-	virtual HRESULT __stdcall SetClipPlane(void) = 0;
-	virtual HRESULT __stdcall GetClipPlane(void) = 0;
-	virtual HRESULT __stdcall SetRenderState(DWORD state, DWORD value) = 0;
-	virtual HRESULT __stdcall GetRenderState(DWORD state, DWORD *pValue) = 0;
-	virtual HRESULT __stdcall CreateStateBlock(void) = 0;
-	virtual HRESULT __stdcall BeginStateBlock(void) = 0;
-	virtual HRESULT __stdcall EndStateBlock(void) = 0;
-	virtual HRESULT __stdcall SetClipStatus(void) = 0;
-	virtual HRESULT __stdcall GetClipStatus(void) = 0;
-	virtual HRESULT __stdcall GetTexture(void) = 0;
-	virtual HRESULT __stdcall SetTexture(void) = 0;
-	virtual HRESULT __stdcall GetTextureStageState(void) = 0;
-	virtual HRESULT __stdcall SetTextureStageState(void) = 0;
-	virtual HRESULT __stdcall GetSamplerState(void) = 0;
-	virtual HRESULT __stdcall SetSamplerState(void) = 0;
-	virtual HRESULT __stdcall ValidateDevice(void) = 0;
-	virtual HRESULT __stdcall SetPaletteEntries(void) = 0;
-	virtual HRESULT __stdcall GetPaletteEntries(void) = 0;
-	virtual HRESULT __stdcall SetCurrentTexturePalette(void) = 0;
-	virtual HRESULT __stdcall GetCurrentTexturePalette(void) = 0;
-	virtual HRESULT __stdcall SetScissorRect(void) = 0;
-	virtual HRESULT __stdcall GetScissorRect(void) = 0;
-	virtual HRESULT __stdcall SetSoftwareVertexProcessing(void) = 0;
-	virtual int __stdcall GetSoftwareVertexProcessing(void) = 0;
-	virtual HRESULT __stdcall SetNPatchMode(void) = 0;
-	virtual float __stdcall GetNPatchMode(void) = 0;
-	virtual HRESULT __stdcall DrawPrimitive(void) = 0;
-	virtual HRESULT __stdcall DrawIndexedPrimitive(DWORD type, int baseVertexIndex, UINT minVertexIndex, UINT numVertices, UINT startIndex, UINT primCount) = 0;
-	virtual HRESULT __stdcall DrawPrimitiveUP(void) = 0;
-	virtual HRESULT __stdcall DrawIndexedPrimitiveUP(void) = 0;
-	virtual HRESULT __stdcall ProcessVertices(void) = 0;
-	virtual HRESULT __stdcall CreateVertexDeclaration(void) = 0;
-	virtual HRESULT __stdcall SetVertexDeclaration(void) = 0;
-	virtual HRESULT __stdcall GetVertexDeclaration(void) = 0;
-	virtual HRESULT __stdcall SetFVF(DWORD fvf) = 0;
-	virtual HRESULT __stdcall GetFVF(DWORD *pFVF) = 0;
-	virtual HRESULT __stdcall CreateVertexShader(void) = 0;
-	virtual HRESULT __stdcall SetVertexShader(void *pShader) = 0;
-	virtual HRESULT __stdcall GetVertexShader(void) = 0;
-	virtual HRESULT __stdcall SetVertexShaderConstantF(void) = 0;
-	virtual HRESULT __stdcall GetVertexShaderConstantF(void) = 0;
-	virtual HRESULT __stdcall SetVertexShaderConstantI(void) = 0;
-	virtual HRESULT __stdcall GetVertexShaderConstantI(void) = 0;
-	virtual HRESULT __stdcall SetVertexShaderConstantB(void) = 0;
-	virtual HRESULT __stdcall GetVertexShaderConstantB(void) = 0;
-	virtual HRESULT __stdcall SetStreamSource(UINT streamNumber, IDirect3DVertexBuffer8 *pStreamData, UINT offsetInBytes, UINT stride) = 0;
-	virtual HRESULT __stdcall GetStreamSource(void) = 0;
-	virtual HRESULT __stdcall SetStreamSourceFreq(void) = 0;
-	virtual HRESULT __stdcall GetStreamSourceFreq(void) = 0;
-	virtual HRESULT __stdcall SetIndices(IDirect3DIndexBuffer8 *pIndexData) = 0;
-};
-typedef IDirect3DDevice8 *LPDIRECT3DDEVICE8;
+struct IDirect3DVertexBuffer8;
+struct IDirect3DIndexBuffer8;
+// The device and buffers keep their D3D8 type names (the decorations of
+// DX8Wrapper::D3DDevice, the shadow buffers and the WW3D buffer classes) but
+// are Direct3D 9 objects: SetTransform 44, DrawIndexedPrimitive 82,
+// SetStreamSource 100, SetIndices 104; buffer Lock / Unlock 11 / 12.
 class Vector4
 {
 public:
@@ -346,7 +207,7 @@ static IDirect3DVertexBuffer8 *lastActiveVertexBuffer = 0;
 
 void W3DVolumetricShadow::RenderMeshVolume(Int meshIndex, Int lightIndex, const Matrix3D *meshXform)
 {
-	LPDIRECT3DDEVICE8 m_pDev = DX8Wrapper::_Get_D3D_Device8();
+	IDirect3DDevice9 *m_pDev = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 	if (!m_pDev)
 		return;
 
@@ -378,14 +239,14 @@ void W3DVolumetricShadow::RenderMeshVolume(Int meshIndex, Int lightIndex, const 
 	if (vbSlot->m_VB->m_DX8VertexBuffer->Get_DX8_Vertex_Buffer() != lastActiveVertexBuffer)
 	{
 		lastActiveVertexBuffer = vbSlot->m_VB->m_DX8VertexBuffer->Get_DX8_Vertex_Buffer();
-		m_pDev->SetStreamSource(0, lastActiveVertexBuffer, 0,
+		m_pDev->SetStreamSource(0, reinterpret_cast<IDirect3DVertexBuffer9 *>(lastActiveVertexBuffer), 0,
 			vbSlot->m_VB->m_DX8VertexBuffer->FVF_Info().Get_FVF_Size());
 	}
 
 	W3DBufferManager::W3DIndexBufferSlot *ibSlot = m_shadowVolumeIB[lightIndex][meshIndex];
 	if (!ibSlot)
 		return;
-	m_pDev->SetIndices(ibSlot->m_IB->m_DX8IndexBuffer->Get_DX8_Index_Buffer());
+	m_pDev->SetIndices(reinterpret_cast<IDirect3DIndexBuffer9 *>(ibSlot->m_IB->m_DX8IndexBuffer->Get_DX8_Index_Buffer()));
 
 	if (DX8Wrapper::_Is_Triangle_Draw_Enabled())
 	{

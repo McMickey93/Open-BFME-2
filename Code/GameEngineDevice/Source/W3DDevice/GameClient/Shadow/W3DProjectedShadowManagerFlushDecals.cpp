@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 //
 // ?flushDecals@W3DProjectedShadowManager@@QAEXW4ShadowType@@PAVW3DShadowTexture@@1H@Z
@@ -29,43 +30,18 @@
 // second texture, mode). WorldBuilder twin 0x008C8720 (callgraph match)
 // has the same switch arms and shader constants.
 
-#include <windows.h>
-typedef DWORD D3DRENDERSTATETYPE;
+#include <d3d9.h>
 
 typedef float Real;
 typedef bool Bool;
 typedef int Int;
 
-#define D3DRS_ALPHAREF			24
-#define D3DRS_ALPHAFUNC			25
-#define D3DRS_STENCILPASS		55
-#define D3DRS_STENCILFUNC		56
 
-#define D3DCMP_NOTEQUAL			6
-#define D3DCMP_GREATEREQUAL		7
-#define D3DCMP_ALWAYS			8
-#define D3DSTENCILOP_KEEP		1
-#define D3DSTENCILOP_REPLACE	3
 
-struct IDirect3DDevice8
-{
-	virtual void slot00(); virtual void slot01(); virtual void slot02(); virtual void slot03();
-	virtual void slot04(); virtual void slot05(); virtual void slot06(); virtual void slot07();
-	virtual void slot08(); virtual void slot09(); virtual void slot10(); virtual void slot11();
-	virtual void slot12(); virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18(); virtual void slot19();
-	virtual void slot20(); virtual void slot21(); virtual void slot22(); virtual void slot23();
-	virtual void slot24(); virtual void slot25(); virtual void slot26(); virtual void slot27();
-	virtual void slot28(); virtual void slot29(); virtual void slot30(); virtual void slot31();
-	virtual void slot32(); virtual void slot33(); virtual void slot34(); virtual void slot35();
-	virtual void slot36(); virtual void slot37(); virtual void slot38(); virtual void slot39();
-	virtual void slot40(); virtual void slot41(); virtual void slot42(); virtual void slot43();
-	virtual void slot44(); virtual void slot45(); virtual void slot46(); virtual void slot47();
-	virtual void slot48(); virtual void slot49(); virtual void slot50(); virtual void slot51();
-	virtual void slot52(); virtual void slot53b(); virtual void slot54(); virtual void slot55();
-	virtual void slot56();
-	virtual HRESULT __stdcall SetRenderState(D3DRENDERSTATETYPE state, DWORD value) = 0;	// +0xE4
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (SetRenderState, vtable slot 57). The wrapper's state parameter is the
+// DWORD its decorations carry (?Get_DX8_Render_State_Value_Name@...KI@Z).
+struct IDirect3DDevice8;
 
 class StringClass
 {
@@ -215,7 +191,7 @@ public:
 	static bool Has_Stencil(void);
 	static bool Get_Fog_Enable(void) { return FogEnable; }
 	static void Apply_Render_State_Changes(void);
-	static void Get_DX8_Render_State_Value_Name(StringClass &name, D3DRENDERSTATETYPE state, unsigned value);
+	static void Get_DX8_Render_State_Value_Name(StringClass &name, unsigned long state, unsigned value);
 	static void Set_Vertex_Buffer(const VertexBufferClass *vb, unsigned stream);
 	static void Set_Index_Buffer(const IndexBufferClass *ib, unsigned short index_base_offset);
 	static void Draw_Triangles(unsigned int start_index, unsigned int polygon_count, unsigned int min_vertex_index, unsigned int vertex_count);
@@ -241,7 +217,7 @@ public:
 
 	static __forceinline void Set_Texture(unsigned stage, const BFME2TextureRef &texture) { BFME2Set_Texture(stage, texture); }
 
-	static __forceinline void Set_DX8_Render_State(D3DRENDERSTATETYPE state, unsigned value)
+	static __forceinline void Set_DX8_Render_State(unsigned long state, unsigned value)
 	{
 		if (RenderStates[state] == value) return;
 		if (WW3D::Is_Snapshot_Activated()) {
@@ -249,7 +225,7 @@ public:
 			Get_DX8_Render_State_Value_Name(value_name, state, value);
 		}
 		RenderStates[state] = value;
-		D3DDevice->SetRenderState(state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		render_state_changes++;
 	}

@@ -1,5 +1,7 @@
 // ?renderSubBox@W3DSnowManager@@QAEXAAVRenderInfoClass@@HHHH@Z
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // BFME1 575ba2b04 W3DSnowManagerRenderSubBox.cpp semantic/reference guide.
 // Saved cubeOriginXRemainder declaration BEFORE y preserves native ECX/EDX
 // initial setup and delayed EDI save; arithmetic/loop semantics are unchanged.
@@ -23,14 +25,12 @@
 // Native93507..938C4 RET20 independently gives fields and four cube arguments.
 // Target prefix grows4; resource offsets74..90, added offsets98/9C,
 // statistics countA0 and brightness gateAC. FastSinTable is already owned.
+#include <d3d9.h>
+
 #define MODPOW2(x,y) ((x) & (y-1))
 #define MAXIMUM_CAMERA_DISTANCE 100000
 #define SIN_TABLE_SIZE 1024
 #define WWMATH_PI 3.14159265358979323846f
-#define D3DLOCK_NOOVERWRITE 0x1000
-#define D3DLOCK_DISCARD 0x2000
-#define D3D_OK 0
-#define D3DPT_POINTLIST 1
 extern float _FastSinTable[SIN_TABLE_SIZE];
 class WWMath {public:static __forceinline int Float_To_Int_Floor(const float&);static __forceinline float Fast_Sin(float);};
 struct Vector3 {float X,Y,Z;void Set(float x,float y,float z){X=x;Y=y;Z=z;} Vector3&operator=(const Vector3&r){X=r.X;Y=r.Y;Z=r.Z;return *this;}};
@@ -78,23 +78,8 @@ struct POINTVERTEX
 	unsigned int diffuse;
 };
 
-struct Rva00093507VertexBuffer;
-struct Rva00093507VertexBufferVtable
-{
-	void *slots00[11];
-	long (__stdcall *Lock)(Rva00093507VertexBuffer *, unsigned, unsigned, void **, unsigned);
-	long (__stdcall *Unlock)(Rva00093507VertexBuffer *);
-};
-struct Rva00093507VertexBuffer { Rva00093507VertexBufferVtable *vtable; };
-
-// BFME binds a D3D9 device: DrawPrimitive is slot 81.
-struct Rva00093507Device;
-struct Rva00093507DeviceVtable
-{
-	void *slots00[81];
-	long (__stdcall *DrawPrimitive)(Rva00093507Device *, unsigned, unsigned, unsigned);
-};
-struct Rva00093507Device { Rva00093507DeviceVtable *vtable; };
+// BFME binds a D3D9 device and vertex buffer: DrawPrimitive is device slot 81,
+// Lock / Unlock are buffer slots 11 / 12.
 
 class W3DSnowManager
 {
@@ -112,7 +97,7 @@ private:
 	char pad42[0x74 - 0x42];
 	void *m_indexBuffer;
 	TextureBaseClass *m_snowTexture;
-	Rva00093507VertexBuffer *m_vertexBuffer;
+	IDirect3DVertexBuffer9 *m_vertexBuffer;
 	int m_dwBase, m_dwFlush, m_dwDiscard, m_leafDim;
 	float m_snowCeiling, m_heightTraveled,m_offsetX,m_offsetY;
 	int m_totalRendered;
@@ -148,7 +133,7 @@ void W3DSnowManager::renderSubBox(RenderInfoClass &rinfo, int originX, int origi
 			m_dwBase = 0;
 
 		POINTVERTEX *verts;
-		if (m_vertexBuffer->vtable->Lock(m_vertexBuffer, m_dwBase * sizeof(POINTVERTEX), batchSize * sizeof(POINTVERTEX),
+		if (m_vertexBuffer->Lock(m_dwBase * sizeof(POINTVERTEX), batchSize * sizeof(POINTVERTEX),
 			(void **)&verts, m_dwBase ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD) != D3D_OK)
 			return;
 
@@ -181,12 +166,12 @@ void W3DSnowManager::renderSubBox(RenderInfoClass &rinfo, int originX, int origi
 		}
 
 flush_particles:
-		m_vertexBuffer->vtable->Unlock(m_vertexBuffer);
+		m_vertexBuffer->Unlock();
 		if (numberInBatch)
 		{
 			Debug_Statistics::Record_DX8_Polys_And_Vertices(numberInBatch * 2, numberInBatch * 4, ShaderClass::_PresetAlphaShader);
-			Rva00093507Device *device = (Rva00093507Device *)DX8Wrapper::D3DDevice;
-			device->vtable->DrawPrimitive(device, D3DPT_POINTLIST, m_dwBase, numberInBatch);
+			IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice);
+			device->DrawPrimitive(D3DPT_POINTLIST, m_dwBase, numberInBatch);
 			totalPart -= numberInBatch;
 			m_dwBase += numberInBatch;
 		}

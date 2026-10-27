@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 //
 // ?Flush@RTS3DScene@@QAEXAAVRenderInfoClass@@@Z, retail 0x00071606..0x00071E40
 // (2106 bytes, RET 4, EH). Zero Hour's RTS3DScene::Flush with BFME 2's render
@@ -67,15 +69,11 @@ public:
 	BFME2ScopedRenderEvent(const char *label, const char *group, unsigned color);
 	~BFME2ScopedRenderEvent();
 };
+#include <d3d9.h>
+
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (SetRenderState slot 57, SetVertexShader slot 92).
 struct IDirect3DDevice8;
-struct DeviceVtable
-{
-	char pad[0xe4];
-	int (__stdcall *SetRenderState)(IDirect3DDevice8 *, unsigned long, unsigned);
-	char pad2[0x170 - 0xe4 - 4];
-	int (__stdcall *SetVertexShader)(IDirect3DDevice8 *, unsigned long);
-};
-struct IDirect3DDevice8 { DeviceVtable *v; };
 extern unsigned number_of_DX8_calls;
 class WW3D
 {
@@ -107,7 +105,7 @@ __forceinline void bfmeSetRS(unsigned long state, unsigned value)
 		DX8Wrapper::Get_DX8_Render_State_Value_Name(valueName, state, value);
 	}
 	DX8Wrapper::RenderStates[state] = value;
-	DX8Wrapper::D3DDevice->v->SetRenderState(DX8Wrapper::D3DDevice, state, value);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)state, value);
 	++number_of_DX8_calls;
 	++DX8Wrapper::render_state_changes;
 }
@@ -190,14 +188,14 @@ void RTS3DScene::Flush(RenderInfoClass &rinfo)
 	}
 	if (DX8Wrapper::Has_Stencil())
 	{
-		BFME_SET_RS(0x34, 1);
-		BFME_SET_RS(0x39, 0);
-		BFME_SET_RS(0x3a, 0xFFFFFFFF);
-		BFME_SET_RS(0x3b, 0xFFFFFFFF);
-		BFME_SET_RS(0x38, 8);
-		BFME_SET_RS(0x36, 1);
-		BFME_SET_RS(0x35, 1);
-		BFME_SET_RS(0x37, 3);
+		BFME_SET_RS(D3DRS_STENCILENABLE, TRUE);
+		BFME_SET_RS(D3DRS_STENCILREF, 0);
+		BFME_SET_RS(D3DRS_STENCILMASK, 0xFFFFFFFF);
+		BFME_SET_RS(D3DRS_STENCILWRITEMASK, 0xFFFFFFFF);
+		BFME_SET_RS(D3DRS_STENCILFUNC, D3DCMP_ALWAYS);
+		BFME_SET_RS(D3DRS_STENCILZFAIL, D3DSTENCILOP_KEEP);
+		BFME_SET_RS(D3DRS_STENCILFAIL, D3DSTENCILOP_KEEP);
+		BFME_SET_RS(D3DRS_STENCILPASS, D3DSTENCILOP_REPLACE);
 	}
 	if (TheTerrainRenderObject)
 	{
@@ -236,13 +234,13 @@ void RTS3DScene::Flush(RenderInfoClass &rinfo)
 		TheTerrainRenderObject->rva0006B895(rinfo);
 		rinfo.light_environment = 0;
 	}
-	BFME_SET_RS(0x34, 0);
+	BFME_SET_RS(D3DRS_STENCILENABLE, FALSE);
 	if (m_customPassMode == 0 && m_polygonMode == 0 && TheW3DShadowManager)
 	{
 		BFME2ScopedRenderEvent event("RenderVolumeShadows", "Frame", 0);
 		((Rva0009A361 *)TheW3DShadowManager)->rva0009A361((int)&rinfo);
 	}
-	DX8Wrapper::D3DDevice->v->SetVertexShader(DX8Wrapper::D3DDevice, 0);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetVertexShader(0);
 	++number_of_DX8_calls;
 	{
 		BFME2ScopedRenderEvent event("RenderStaticSortLists", "Frame", 0);
