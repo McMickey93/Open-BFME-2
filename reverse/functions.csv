@@ -17043,7 +17043,6 @@ uw_0076e1ff,,0x0076E1FF,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;obje
 uw_0076e211,,0x0076E211,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2327
 uw_0076e2a4,,0x0076E2A4,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L6777
 uw_0076e354,,0x0076E354,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3309
-uw_0076e38e,,0x0076E38E,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2819
 uw_0076e406,,0x0076E406,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4720
 uw_0076e46e,,0x0076E46E,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L6882
 uw_0076e483,,0x0076E483,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L3552
@@ -98275,3 +98274,4 @@ $L1300,,0x0076B651,8,Code/GameEngine/Source/GameClient/System/FXParticleSystem/R
 ??1?$pair@VAsciiString@@M@_STL@@QAE@XZ,,0x0048BA39,5,Code/GameEngine/Source/GameClient/System/ParticleSystemDebugDisplayBody.cpp,matched,fold-proof=Code/GameEngine/Source/GameClient/System/ParticleSystemDebugDisplayBody.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$StringBase@D@@AAE@XZ at 0x0048BA39: this unit compiles it to the same whole body; its unwind funclets call 0x0048BA39
 $L8742,,0x0076B72B,8,Code/GameEngine/Source/GameClient/System/ParticleSystemDebugDisplayBody.cpp,matched,gen-funclet;parent=?ParticleSystemDebugDisplay@@YAXPAVDebugDisplayInterface@@PAXPAU_iobuf@@@Z; Matched parent 0x001FA04B's EH graph is EXACT (eh_verify) and binds compiler label $L8742 to retail 0x0076B72B; its callee ??1?$pair@VAsciiString@@M@_STL@@QAE@XZ is rowed at its ICF fold 0x0048BA39; replaces generated uw_0076b72b
 uw_0078435c,,0x0078435C,8,Code/GameEngine/Source/Common/Rva003F86F9Ctor.cpp,matched,gen-funclet;parent=?Rva003F90E4Parse@@YAXPAVINI@@PAURva003F9004@@@Z;object-symbol=$L5043; retail cleanup of canonical AsciiString at parent arg home; exact parent body and EH graph locate the compiler label at 0x0078435C
+$L3015,,0x0076E38E,11,Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUI.cpp,matched,gen-funclet;parent=??0BannerUI@@QAE@XZ

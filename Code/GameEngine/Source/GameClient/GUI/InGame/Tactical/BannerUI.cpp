@@ -144,6 +144,10 @@ public:
 	iterator end() { return reinterpret_cast<iterator>(this->_M_finish); }
 	void push_back(const T &value);	// 0x00216BB9
 };
+// The banner vector's destructor: the inline base teardown alone, the 14-byte
+// free-first-member body /OPT:ICF folds onto 0x0007FAB3 (the constructor's
+// unwind funclet 0x0076E38E jumps there with the +0x28 receiver).
+template <class T, class A> vector<T, A>::~vector() {}
 // STLport 4.5.3 for_each (stl/_algo.h). Over the banners with the collector
 // below it is retail 0x00215EF7 (43 bytes; the collector has a constructor,
 // so it is returned through the hidden pointer).
