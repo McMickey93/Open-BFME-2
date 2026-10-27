@@ -3381,6 +3381,11 @@ Census confirmation: not claimed.
   `__false_type` (cl zero-fills an empty POD tag temporary passed to an opaque callee) and a pre-copy
   `_M_finish` local, and 10 bytes of frame-slot colouring remain. Draft and variants:
   `reverse/attempt_support/stlsweep-w5-1506bf-fill-insert-20261026.md`.
+  `StlSweepW4Rva000C225D.cpp` (260 B, BfmeStringRecord000B94D2 callees) reaches 254/260 B with the
+  same draft: only the `_M_finish - __n` spill slot (`__x` home instead of retail's `__n` home) and
+  the two `__uninitialized_copy` tags just below it differ. The W4/W5 `_M_fill_insert` units 001524F9,
+  0017422D, 00215949, 003F53DA, 005205DA and 0039C415 have the same shape and probably hit the same
+  wall; solve the spill-slot choice once before drafting them.
 - **Related leads not done:** `Rva008312E0StringReplace.cpp` / `Rva008314E0StringReplace.cpp`
   (/Od /Ob1) emit `erase`/`replaceBase` COMDATs that retail calls out of line at 0x00012150
   (`basic_string<char>::erase`) and 0x0002A610 / 0x0002A730 (`BfmeStrV24::bfmeReplaceV24`, last
