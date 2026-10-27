@@ -70,6 +70,18 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **Melee approach log ABI (2026-10-27):**
+  [the bounded signature cleanup](../reverse/attempt_support/20261027-melee-log-game-abi.md)
+  aligns one caller with the existing game append provider and keeps the
+  paired 4/4 rows exact. The normal outgoing hook verifies 39/39 rows, two
+  data rows and four EXACT EH graphs across four sources. Its link audit
+  remains **UNVERIFIED**: index 73061d9452 predates outgoing base
+  75b39b52832cbbec8327db99b454d656d6c1586c, and four objects lack current
+  strict receipts (first Eva.cpp). The initial missing-index result was
+  rechecked after fetching the published 2026-10-27 14:34 index. Carry this
+  scope to the next normal census; no selected-provider, linked-byte or
+  debt-retirement gain is claimed. The game/CRT name collision remains open.
+
 - **Vector insert-overflow identity cleanup (2026-10-27):**
   [the whole-source check](../reverse/attempt_support/vector-overflow-family-identity-20261027/readme.md)
   verifies all 55 rows in StlportVectorInsertOverflowFamily.cpp and repairs
