@@ -28121,15 +28121,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x003B0FD0,71,code-unledgered,,,-,,
 0x003B1017,234,code,,,-,,Code/GameEngine/Source/Common/Disp8SarAvgDwordGetters.cpp
 0x003B1101,172,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,proposed,K,K=Rva003B1101,Code/GameEngine/Source/Common/Rva003B1101Dtor.cpp
-0x003B11AD,37,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,proposed,C,C=0x003B1101..0x003B11D2,Code/GameEngine/Source/Common/SpecialPowerStore.cpp
+0x003B11AD,37,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,proposed,C,C=0x003B1101..0x003B11D2,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp
 0x003B11D2,114,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,Z,Z=Code/GameEngine/Source/Common/RTS/SpecialPower.cpp S=Code/GameEngine/Source/Common/RTS/SpecialPower.cpp N=Code/GameEngine/Source/Common/RTS/SpecialPowerStore.cpp,Code/GameEngine/Source/Common/RTS/SpecialPowerStoreFind.cpp
 0x003B1244,227,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,Z,Z=Code/GameEngine/Source/Common/RTS/SpecialPower.cpp S=Code/GameEngine/Source/Common/RTS/SpecialPower.cpp N=Code/GameEngine/Source/Common/RTS/SpecialPowerStore.cpp,Code/GameEngine/Source/Common/RTS/SpecialPowerStoreCanUseSpecialPower.cpp
 0x003B1337,215,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,C,C=0x003B1244..0x003B140E,Code/GameEngine/Source/Common/Rva003B1101Assign.cpp
-0x003B140E,284,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,C,C=0x003B1244..0x003B152A,Code/GameEngine/Source/Common/Rva003B1101Ctor.cpp
+0x003B140E,284,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,C,C=0x003B1244..0x003B152A,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp
 0x003B152A,28,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,C,C=0x003B1244..0x003B1546,Code/GameEngine/Source/Common/Rva003B1101Dtor.cpp
-0x003B1546,144,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,C,C=0x003B1244..0x003B15D6,Code/GameEngine/Source/Common/Rva003B1546Dtor.cpp
+0x003B1546,144,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,C,C=0x003B1244..0x003B15D6,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp
 0x003B15D6,541,code,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp,approved,Z,Z=Code/GameEngine/Source/Common/RTS/SpecialPower.cpp S=Code/GameEngine/Source/Common/RTS/SpecialPower.cpp N=Code/GameEngine/Source/Common/RTS/SpecialPowerStore.cpp,Code/GameEngine/Source/Common/RTS/SpecialPowerStoreParseSpecialPowerDefinition.cpp
-0x003B17F3,28,code,,,-,,Code/GameEngine/Source/Common/Rva003B1546Dtor.cpp
+0x003B17F3,28,code,,,-,,Code/GameEngine/Source/Common/RTS/SpecialPower.cpp
 0x003B180F,17,code,,,-,,Code/GameEngine/Source/Common/System/AsciiString.cpp
 0x003B1820,51,code,,,-,,Code/GameEngine/Source/Common/Rva003B1820Find.cpp
 0x003B1853,38,code,,,-,,Code/GameEngine/Source/Common/Rva003B1853Set.cpp
