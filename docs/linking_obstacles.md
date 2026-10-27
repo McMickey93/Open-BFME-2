@@ -942,6 +942,10 @@ Whole-unit clearance and census confirmation remain pending.
   46 rows, 14 EXACT EH graphs and every emitted code section/relocation.
   Ordinary preview against census index `5ce093a71a` retains all 6,860 bytes;
   no census gain or storage-ownership closure is claimed.
+  The normal shadow identity warning on `uw_00765c90` is also reproduced in
+  the saved control object: the local reference-count destructor's target
+  00072892 already belongs to `RefCountClass::~RefCountClass`. That existing
+  class-identity prerequisite remains open; no register key was added.
 
 - **Texture-statistics scalar subset (2026-10-26, control `d831bc24031`):**
   [The scoped ownership repair](../reverse/attempt_support/texture-statistics-data-20261026-bce2/readme.md)

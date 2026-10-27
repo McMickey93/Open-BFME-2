@@ -74,3 +74,16 @@ Checks:
 
 The failed storage trials and successful SDK migration are separate results.
 The existing internal storage bindings and all matched rows are preserved.
+
+## Normal hook identity warning
+
+The normal pre-commit gate passes, but its shadow identity scan reports
+`uw_00765c90` calling `??1BfmeDynamicVBRefCount@@UAE@XZ` at retail target
+00072892 as `wrong/unknown`. A read-only comparison through
+`allowed_symbols.Identity.row_refs` returns exactly the same reference for the
+saved control object and the SDK object: offset 4, relocation type 20, the same
+symbol, target and classification. This is an existing local destructor
+identity, not a new emitted binding or a label-resolution failure. The retail
+target already belongs to `RefCountClass::~RefCountClass` in `hlod.cpp`.
+Reconcile the local reference-count base with that owner in future class work;
+the SDK cleanup adds no pin, alias, identity-register key or verifier change.
