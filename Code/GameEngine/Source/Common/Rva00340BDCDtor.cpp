@@ -7,7 +7,7 @@
 // (state 0, pop-before-or), then calling the rowed base ??1Rva0033FF2B at
 // 0x0033FF2B. Caller is 0x00342B6E. Sibling of landed 0x00340D1F.
 
-void __cdecl operator delete(void *ptr);
+#include <new>
 
 class Rva00340BDCMember
 {

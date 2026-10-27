@@ -29,7 +29,7 @@ public:
 private:
 	Rva0033F33DMember *m_20;
 };
-void __cdecl operator delete(void *);
+#include <new>
 Rva0033F33D::~Rva0033F33D()
 {
 	if (m_20) {
