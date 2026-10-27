@@ -4811,6 +4811,16 @@ BfmeDX8ThreadCheck.cpp providers, all three preview LINKS (1,502, 247 and 31
 authored bytes). [Scoped checks](../reverse/attempt_support/texture-current-frame-data-20261027.md)
 confirm this caller needs no further source repair; census confirmation remains
 pending.
+Follow-up verification (2026-10-27, `e43a9aad40`): the default link queue (shard
+0/10) still serves nine historical BFME_DX8_Thread_Lock callers. Alone, each
+current object keeps only the selected-copy finding; paired with the current
+BfmeDX8ThreadLock.cpp provider all nine and the provider preview LINKS against
+index `bf3dd31211`: W3DDisplayInit.cpp (1,599 B), Rva00111DB6PostFXLookupTable.cpp
+(342), WaterRenderObjInit.cpp (297), W3DDisplayResetD3DDevice.cpp (288),
+W3DSmudgeManager_ReAcquireResources.cpp (260), W3DDisplayReset.cpp (259),
+W3DTaintReAcquire.cpp (183), W3DRadarReset.cpp (177) and Rva00066A9ASubHeadB.cpp
+(114). No source change; this extends the landed repair's caller evidence only.
+Census confirmation remains pending; no headline gain claimed.
 
 Follow-up verification (2026-10-27, `10d8ab4531`): the default picker served
 W3DDisplayCreate_W3DDisplay_createVideoBuffer.cpp's historical selected-copy
