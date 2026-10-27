@@ -1,4 +1,4 @@
-// cl: /MD /EHsc
+// cl: /MD /GX /D_CRTIMP=
 // ??1Rva005AA55D@@UAE@XZ @0x005AA55D 81B: virtual dtor of unknown class
 // (vptr 0x00871EB0 stored at +0x0). Member at +0x58 points at a heap record
 // whose +0x4 buffer is released with _free (row 0x00030830) before the record
@@ -7,14 +7,8 @@
 // EH prolog with state stores, free/delete pair, base call, and the 28B
 // caller at 0x005AA62B (unclaimed, ??_G shape). Base size unproven: base is
 // declared vptr-only here and the derived pads to the retail +0x58 offset.
-
-// Retail calls free directly (the game allocator), not through the CRT
-// import: read <stdlib.h> without dllimport.
-#define _CRTIMP
 #include <stdlib.h>
-#undef _CRTIMP
-
-void operator delete(void *block);
+#include <new>
 
 class AITacticOffensive
 {
