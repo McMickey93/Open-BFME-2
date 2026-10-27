@@ -401,7 +401,7 @@ void RecorderClass::update()
 		reinterpret_cast<Rva0037B7C7 *>(this)->rva0037BC65();
 }
 
-void __cdecl operator delete(void *p);
+#include <new>
 namespace FXParticleSystem
 {
 class CPUParticle

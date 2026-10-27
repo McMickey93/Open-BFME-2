@@ -2,7 +2,7 @@
 // Retail tables C1C2F4 and C1C314 identify the named category-8 wrappers.
 // Their canonical module base and existing constructors emit both delete thunks.
 #include "ModuleTemplate.h"
-void operator delete[](void *p);
+#include <new>
 namespace FXParticleSystem {
 class SecondaryModuleBase { public: virtual ~SecondaryModuleBase(); virtual void v1() = 0; };
 class ModuleInfo {};

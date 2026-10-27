@@ -50,7 +50,7 @@ class Rva004AF17D { public: __declspec(noinline) ~Rva004AF17D(); };
 class Rva004BAEC8 { public: __declspec(dllimport) __forceinline ~Rva004BAEC8() { reinterpret_cast<EvacuateDamage *>(this)->EvacuateDamage::~EvacuateDamage(); } };
 class Rva006022CA { public: __declspec(dllimport) __forceinline ~Rva006022CA() { reinterpret_cast<Rva006022CAFileCleanupForward *>(this)->cleanup(); } };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva002BEDA4_DeleteAnchor(Rva002BEDA4 *p) { delete p; }
 void Rva00419B8D_DeleteAnchor(Rva00419B8D *p) { delete p; }
