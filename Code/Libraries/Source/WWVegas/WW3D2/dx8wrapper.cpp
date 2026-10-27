@@ -2551,7 +2551,9 @@ struct BfmeApplyRenderState {
  Matrix4x4 world,view; unsigned vertexTypes[2],indexType; unsigned short vertexOffset,vertexCount,indexOffset;
  BfmeApplyVertexBuffer *vertexBuffers[2]; BfmeApplyIndexBuffer *indexBuffer; unsigned short indexBase;
 };
-extern BfmeApplyRenderState bfmeApplyRenderState;
+// The applied state is DX8Wrapper::render_state (0x009EE5D8, the data ledger's
+// owner); these DX8Wrapper members read it through the recovered field view.
+#define bfmeApplyRenderState (reinterpret_cast<BfmeApplyRenderState &>(DX8Wrapper::render_state))
 extern bool bfmeSkipFixedFunctionState;
 struct BfmeApplyOps:DX8Wrapper {
  static __forceinline BfmeApplyDevice9 *Device() { return reinterpret_cast<BfmeApplyDevice9 *>(_Get_D3D_Device8()); }
@@ -3862,8 +3864,6 @@ bool bfmeSkipFixedFunctionState;
 float bfmeProjectionBias;
 // ?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A: the global at VA 0xdf363c is ?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A.
 #pragma comment(linker, "/alternatename:?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A=?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A")
-// ?bfmeApplyRenderState@@3UBfmeApplyRenderState@@A: the global at VA 0xdee5d8 is ?render_state@DX8Wrapper@@1URenderStateStruct@@A.
-#pragma comment(linker, "/alternatename:?bfmeApplyRenderState@@3UBfmeApplyRenderState@@A=?render_state@DX8Wrapper@@1URenderStateStruct@@A")
 
 // Retail's call sites in this unit's matched rows land on bodies rowed under
 // other spellings at the same addresses (same ABI). Bind the spellings used here.

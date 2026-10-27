@@ -767,7 +767,6 @@ Code/Libraries/Source/WWVegas/WW3D2/dx8indexbuffer.cpp	wrong-name	__DynamicDX8In
 Code/Libraries/Source/WWVegas/WW3D2/dx8renderer.cpp	wrong-name	?RendererPtr00DF363C@@3PAURendererFVFDeleteListView@@A	0x009F363C
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A	0x009F363C
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?ShutdownMeshRenderer@@3PAVDX8MeshRendererClass@@A	0x009F363C
-Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?bfmeApplyRenderState@@3UBfmeApplyRenderState@@A	0x009EE5D8
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?bfmeProjectionApplied@@3VMatrix4@@A	0x009EDBF0
 Code/Libraries/Source/WWVegas/WW3D2/particle_buffer_render_line.cpp	wrong-name	?$S4@?4??Render_Line@ParticleBufferClass@@IAEXAAVRenderInfoClass@@@Z@4IA	0x009FD8E4
 Code/Libraries/Source/WWVegas/WW3D2/promoted__Reset_HAnimComboClass_QAEXXZ_00974DC0.cpp	wrong-name	?TheHAnimComboDataPool@@3V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A	0x009FCEC4
