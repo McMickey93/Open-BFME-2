@@ -81,6 +81,7 @@ struct RGBAColorReal;
 struct RGBAColorInt;
 #include "../../Include/Common/BfmeXfer.h"
 #include <list>
+template <> int StringBase<unsigned short>::compare(const StringBase<unsigned short> &) const throw();
 
 enum { MAX_SLOTS = 8 };
 
@@ -708,6 +709,34 @@ public:
 	RecorderModeType getMode() { return (RecorderModeType)m_mode; }
 	friend class Rva0037B7C7;
 };
+
+class RecorderClass;
+
+unsigned int GetGameLogicRandomSeed();
+
+extern "C" __declspec(dllimport) int __cdecl fgetc(_iobuf *file);
+
+// The CRC queue's list wrappers at 0x0037D097/0x0037BD64 are rowed (ICF-shared)
+// under FXList's names; bind to those owners and cast at the call.
+class FXNugget;
+
+class FXList
+{
+public:
+    void addFXNugget(FXNugget *nugget);
+    int rva0037BD64();
+};
+
+RecorderClass *createRecorder();
+
+class Rva00241529CRCView
+{
+public:
+    char opaque00[0x71];
+    bool crcProcessing71;
+};
+
+// ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
 // ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
@@ -1668,24 +1697,6 @@ Rva0037B5DF::~Rva0037B5DF()
 {
 }
 
-// tu-skeleton: 0x0037B326 171B ?init@Rva0037BBED@@UAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B70A 189B ?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0037CF51 52B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0037D0A7 72B ?rva0037D0A7@Rva0037BBED@@QAEXIH_NI@Z -- matched in Code/GameEngine/Source/Common/Rva0037BCC4DeferredCtorCRC.cpp (not merged yet)
-
-// tu-skeleton: 0x0037D0EF 247B ?rva0037D0EF@Rva0037BBED@@QAE_NVUnicodeString@@@Z -- matched in Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp (not merged yet)
-
-// tu-skeleton: 0x0037D3C9 98B ??BBFME2WideConcatTriple@@QAE?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/System/WideConcatPair.cpp (not merged yet)
-
-// tu-skeleton: 0x0037D55E 394B ?Rva0037D55EGet@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp
 
 // ?copyCurrentRecordingToFile@RecorderClass@@QAE_NPAVUnicodeString@@0@Z
@@ -1754,21 +1765,163 @@ bool RecorderClass::copyCurrentRecordingToFile(UnicodeString *name, UnicodeStrin
  
 }
 
+// ---- from Code/GameEngine/Source/Common/Rva0037BCC4.cpp
+
+// ?createRecorder@@YAPAVRecorderClass@@XZ @0x0037BCC4 53B
+// Evidence: leaf lane; allocates 0xE7C via rowed ??2 0x0002FDA0 then pinned
+// ctor 0x0037BB98 with null check and EH prolog; caller 0x0022F6A1 unclaimed;
+// class layout copied from Rva0037BBEDDtor.cpp so sizeof is 0xE7C.
+
+// Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
+
+RecorderClass *createRecorder()
+{
+    return reinterpret_cast<RecorderClass *>(new Rva0037BBED);
+}
+
+void Rva0037BBED::init()
+{
+	m_file = 0;
+	m_e74 = 9;
+	m_1c = 2;
+	m_14.clear();
+	m_18 = 0;
+	GameInfo *gi = &m_gameInfo;
+	gi->clearSlotList();
+	gi->reset();
+	const GlobalData *wd = TheWritableGlobalData;
+	if (((const StringBase<char> &)wd->pendingFile).isEmpty())
+		gi->setMap(wd->m_mapName);
+	else
+		gi->setMap(wd->pendingFile);
+	gi->setSeed(GetGameLogicRandomSeed());
+	m_mode = -1;
+	m_crcInterval = NET_CRC_INTERVAL;
+	m_numPlayers = 0;
+	m_localIndex = -1;
+	m_e70 = 0;
+}
+
+// Native Ghidra 0x0037B70A..0x0037B7C7; 189 bytes; hidden return buffer/RET 4.
+// ZH GeneralsMD Code/GameEngine/Source/Common/Recorder.cpp readAsciiString
+// (via BFME1 reference 1399ad37) supplies the zeroed 1024-byte buffer and loop.
+// Retail proves FILE* storage at +0x10, fgetc IAT, terminal byte at 1023,
+// and StringBase<char> text/copy/release workers. Shared AsciiString preserves
+// the observed local temporary, copied return value, and unwind cleanup.
+AsciiString Rva0037BBED::rva0037B70A()
+{
+    char str[1024] = "";
+    int index = 0;
+    int c = fgetc(m_file);
+    if (c == -1)
+        str[index] = 0;
+    str[index] = c;
+    while (index < 1024 && str[index] != 0)
+    {
+        ++index;
+        int c = fgetc(m_file);
+        if (c == -1)
+        {
+            str[index] = 0;
+            break;
+        }
+        str[index] = c;
+    }
+    str[1023] = 0;
+    AsciiString retval(str);
+    return retval;
+}
+
+// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
+
+// tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0037CF51 52B (unledgered) -- unmatched, no code, never credited
+
+// ---- from Code/GameEngine/Source/Common/Rva0037BCC4DeferredCtorCRC.cpp
+
+// Constructor and CRC dispatch retain unresolved provider contracts here.
+// The independent version check stays in Rva0037BCC4_Unresolved.cpp.
+// ?createRecorder@@YAPAVRecorderClass@@XZ @0x0037BCC4 53B
+// Evidence: leaf lane; allocates 0xE7C via rowed ??2 0x0002FDA0 then pinned
+// ctor 0x0037BB98 with null check and EH prolog; caller 0x0022F6A1 unclaimed;
+// class layout copied from Rva0037BBEDDtor.cpp so sizeof is 0xE7C.
+
+// Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
+
+// Native Ghidra extent 0x0037BB98..0x0037BBED, 85 bytes, thiscall RET 0.
+// The existing allocator and destructor establish this receiver and vtable.
+// Two default UnicodeStrings and the +0x24 GameInfo-shaped member explain
+// EH states 0..3; native calls identify its constructor and the reset worker.
+// The ZH Recorder constructor has the same member/reset relationship; target
+// offsets and the final +0xE78 clear are taken from retail rather than the donor.
+Rva0037BBED::Rva0037BBED()
+{
+    m_frameE78 = 0;
+    init();
+}
+
+// Native Ghidra 0x0037D0A7..0x0037D0EF; 72 bytes; thiscall RET 16.
+// Reference: BFME 1 1399ad37d42ea52a63829e417c46a1ba9ed2cd20,
+// game/GameEngine/Source/Common/System/RecorderHandleCRCMessage.cpp.
+// The four argument roles and processing sequence follow that readable donor;
+// retail proves +0xC receiver storage, +0x71 flag and all three call targets.
+// Native rva0037BD64 already checks the queue before removing its front value.
+// Its folded list wrappers are named opaquely here: the FXList ledger spelling
+// at those addresses does not establish a recorder's CRC storage as FXList.
+void Rva0037BBED::rva0037D0A7(unsigned int crc, int player, bool fromPlayback, unsigned int frame)
+{
+    if (fromPlayback)
+        reinterpret_cast<FXList *>(m_0c)->addFXNugget(reinterpret_cast<FXNugget *>(crc));
+    reinterpret_cast<FXList *>(m_0c)->rva0037BD64();
+    if (frame > 0)
+    {
+        Rva00241529CRCView *logic = reinterpret_cast<Rva00241529CRCView *>(TheGameLogic);
+        if (!logic->crcProcessing71)
+            TheGameLogic->ProcessCRC(crc, player, frame, 0, false, 0);
+    }
+}
+
+// ---- from Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp
+
+// Independent recorder version check. The constructor and CRC dispatcher
+// retain their unresolved contracts in Rva0037BCC4DeferredCtorCRC.cpp.
+// ?createRecorder@@YAPAVRecorderClass@@XZ @0x0037BCC4 53B
+// Evidence: leaf lane; allocates 0xE7C via rowed ??2 0x0002FDA0 then pinned
+// ctor 0x0037BB98 with null check and EH prolog; caller 0x0022F6A1 unclaimed;
+// class layout copied from Rva0037BBEDDtor.cpp so sizeof is 0xE7C.
+
+// Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
+
+// Native Ghidra 0x0037D0EF..0x0037D1E6; 247 bytes; thiscall RET 4.
+// ZH Recorder::testVersionPlayback and BFME1 1399ad37 RecorderReadReplayHeader
+// supply the comparison sequence. Target uses a Unicode filename and omits
+// the donor's version-number/executable checks. The destructor proves header
+// storage; retail proves forPlayback+2C, version+44/+48, and CRC+4C/global+B04.
+bool Rva0037BBED::rva0037D0EF(UnicodeString filename)
+{
+    Rva0037B5DF header;
+    header.forPlayback = true;
+    header.filename = filename;
+    bool success = rva0037CBB6(header);
+    if (!success)
+        return false;
+    bool versionStringDiff = header.version.compare(TheVersion->getFullUnicodeVersion()) != 0;
+    bool versionTimeStringDiff = header.versionTime.compare(TheVersion->getUnicodeBuildTime()) != 0;
+    bool exeDifferent = versionStringDiff || versionTimeStringDiff;
+    bool iniDifferent = header.crc4C != TheWritableGlobalData->field0b04;
+    if (exeDifferent || iniDifferent)
+        return true;
+    return false;
+}
+
+// tu-skeleton: 0x0037D3C9 98B ??BBFME2WideConcatTriple@@QAE?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/System/WideConcatPair.cpp (not merged yet)
+
+// tu-skeleton: 0x0037D55E 394B ?Rva0037D55EGet@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
+
 // tu-skeleton: 0x0037DC36 28B ?update@RecorderClass@@UAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAG.cpp (not merged yet)
 
-// tu-skeleton: 0x0077ED30 8B $L1648 -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ED38 25B ?rva0077ed38@@YAXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ED51 10B __ehhandler$?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
 // tu-skeleton: 0x0077EF54 8B uw_0077ef54 -- matched in Code/gen_small/uw_gen_000.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EF66 8B Unwind@00b7ef66 -- matched in Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EF6E 8B uw_0077ef6e -- matched in Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EF76 10B __ehhandler$?rva0037D0EF@Rva0037BBED@@QAE_NVUnicodeString@@@Z -- matched in Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp (not merged yet)
 
 // tu-skeleton: 0x0077EFAC 8B Unwind@00b7efac -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
 
