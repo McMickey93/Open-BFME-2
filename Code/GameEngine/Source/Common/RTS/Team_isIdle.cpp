@@ -23,6 +23,8 @@ public:
 	OBJCLASS *cur() const { return m_cur; }
 };
 
+class AIUpdateInterface;
+
 class AIVirtual110
 {
 public:
@@ -143,7 +145,7 @@ class Object
 {
 public:
 	unsigned char m_pad0[0x258];
-	AIVirtual110 *m_ai;
+	AIUpdateInterface *m_ai;
 	unsigned char m_pad25C[0x438 - 0x25C];
 	unsigned char m_dead;
 };
@@ -160,7 +162,7 @@ bool Team::isIdle() const
 	bool ok = true;
 	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
 		Object *cur = iter.cur();
-		AIVirtual110 *ai = cur->m_ai;
+		AIVirtual110 *ai = (AIVirtual110 *)cur->m_ai;
 		if (ai == 0)
 			continue;
 		if ((cur->m_dead & 1) != 0)

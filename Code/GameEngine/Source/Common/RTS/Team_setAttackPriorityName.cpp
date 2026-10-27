@@ -7,6 +7,9 @@
 // Evidence: ret 4 thiscall; EH prolog; [ecx+0x30] null check.
 #include "ascii_string.h"
 
+class TeamPrototype;
+
+// The prototype read through its +0x318 string only.
 struct TeamRvaInner
 {
 	char m_pad00[0x318];
@@ -19,12 +22,12 @@ public:
 	void setAttackPriorityName(AsciiString name);
 private:
 	unsigned char m_pad00[0x30];
-	TeamRvaInner *m_ptr30;
+	TeamPrototype *m_proto;
 };
 
 void Team::setAttackPriorityName(AsciiString name)
 {
-	TeamRvaInner *inner = m_ptr30;
+	TeamRvaInner *inner = (TeamRvaInner *)m_proto;
 	if (inner) {
 		AsciiString &slot = inner->m_str318;
 		((StringBase<char> *)&slot)->set(*(const StringBase<char> *)&name);

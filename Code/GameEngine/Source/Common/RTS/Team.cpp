@@ -136,15 +136,30 @@ public:
 	virtual unsigned int v69(int a);
 };
 
+class ThingTemplate;
+class AIUpdateInterface;
+
+// Object as this TU's units read it: one view, the offsets every unit here
+// agrees on (template +0x04, status bytes +0x94 and +0x114, contain module
+// +0x250, AI +0x258, containedBy +0x274, private status +0x438). A unit that
+// reads a slot through its own interface view casts the member.
 class Object
 {
 public:
-	unsigned char m_pad00[0x94];
-	unsigned char m_flag94;
-	unsigned char m_pad95[0x250 - 0x95];
-	Rva003A1C3AInner *m_inner250;
-	unsigned char m_pad254[0x438 - 0x254];
-	unsigned char m_flag438;
+	unsigned char m_pad00[0x04];
+	ThingTemplate *m_template;			// +0x04
+	unsigned char m_pad08[0x94 - 0x08];
+	unsigned char m_status94;			// +0x94
+	unsigned char m_pad95[0x114 - 0x95];
+	unsigned int m_status114;			// +0x114
+	unsigned char m_pad118[0x250 - 0x118];
+	Rva003A1C3AInner *m_inner250;		// +0x250
+	unsigned char m_pad254[0x258 - 0x254];
+	AIUpdateInterface *m_ai;			// +0x258
+	unsigned char m_pad25C[0x274 - 0x25C];
+	Object *m_containedBy;				// +0x274
+	unsigned char m_pad278[0x438 - 0x278];
+	unsigned char m_dead;				// +0x438
 };
 
 class Team;
@@ -160,6 +175,16 @@ private:
 
 extern GameLogic *TheGameLogic;
 
+class TeamPrototype;
+class TeamRelationMap;
+class PlayerRelationMap;
+
+// Team as this TU's units read it: one view with the member offsets the
+// units agree on (TeamCtor.cpp's member list, TeamXfer.cpp and the accessors).
+// The bases (+0x00..+0x2F), the state table at +0x48, the bytes +0x5F..+0x63,
+// the per-script words at +0x90 and the set at +0x130 are spelled differently
+// by different units, so they stay opaque here. 0x13C bytes (the factory's
+// operator new size).
 class Team
 {
 public:
@@ -167,7 +192,36 @@ public:
 	DLINK_ITERATOR<Object> iterate_TeamMemberList() const;
 	void deleteTeam(bool ignoreDead);
 	void evacuateTeam(bool flag);
+
+	unsigned char m_pad00[0x30];
+	TeamPrototype *m_proto;					// +0x30
+	unsigned int m_id;						// +0x34
+	Object *m_dlinkhead_TeamMemberList;		// +0x38
+	Team *m_dlink_TeamInstanceList_prev;	// +0x3C
+	Team *m_dlink_TeamInstanceList_next;	// +0x40
+	unsigned char m_pad44[0x5C - 0x44];
+	bool m_enteredOrExited;					// +0x5C
+	bool m_active;							// +0x5D
+	bool m_created;							// +0x5E
+	unsigned char m_pad5F[0x64 - 0x5F];
+	int m_destroyThreshold;					// +0x64
+	int m_curUnits;							// +0x68
+	unsigned char m_pad6C[0x70 - 0x6C];
+	bool m_shouldAttemptGenericScript[32];	// +0x70 (MAX_GENERIC_SCRIPTS)
+	unsigned char m_pad90[0x110 - 0x90];
+	bool m_isRecruitablitySet;				// +0x110
+	bool m_isRecruitable;					// +0x111
+	bool m_112;								// +0x112
+	bool m_113;								// +0x113
+	ObjectID m_commonAttackTarget;			// +0x114
+	TeamRelationMap *m_teamRelations;		// +0x118
+	PlayerRelationMap *m_playerRelations;	// +0x11C
+	float m_120;							// +0x120
+	int m_deadline;							// +0x124
+	bool m_128;								// +0x128
+	unsigned char m_pad129[0x13C - 0x129];
 };
+
 
 struct TeamHomeLocation : Coord3D { TeamHomeLocation() { x=0.0f; y=0.0f; z=0.0f; } };
 
@@ -270,14 +324,14 @@ public:
  void addToLists();
 protected:
  virtual ~TeamPrototype();virtual const char *GetSnapshotName() const;virtual void xfer(Xfer*);virtual void loadPostProcess();
-private:
+public: // data members (access is not part of their names): every unit here reads them
  TeamFactory *m_factory;Player*m_owningPlayer;int m_id;
  AsciiString m_ownerName,m_name;int m_flags;bool m_productionConditionAlwaysFalse;
  AsciiString m_conditionName;Script*m_productionConditionScript;bool m_retrievedGenericScripts;
  Script*m_genericScriptsToRun[32];AsciiString m_genericScriptNames[32];
  TeamTemplateInfo m_teamTemplate;AsciiString m_attackPriorityName;
  bool m_byte31C,m_byte31D,m_byte31E;unsigned m_frame320;TeamFlag324 m_byte324;
- TeamInitialCoordinate m_coordinate328;Team *m_teamInstanceList;
+ TeamInitialCoordinate m_coordinate328;Team *m_dlinkhead_TeamInstanceList;
 };
 
 typedef char TeamPrototypeSizeCheck[sizeof(TeamPrototype)==0x338?1:-1];
@@ -1186,7 +1240,7 @@ void Team::deleteTeam(bool ignoreDead)
 		Object *obj = iter.cur();
 		if (!obj)
 			continue;
-		if (ignoreDead && (obj->m_flag438 & 1) != 0)
+		if (ignoreDead && (obj->m_dead & 1) != 0)
 			continue;
 		TheGameLogic->destroyObject(obj);
 	}
@@ -1200,9 +1254,9 @@ void Team::evacuateTeam(bool flag)
 		int curVal = (int)cur;
 		if (cur == 0)
 			continue;
-		if ((cur->m_flag94 & 1) != 0)
+		if ((cur->m_status94 & 1) != 0)
 			continue;
-		if ((cur->m_flag438 & 1) != 0)
+		if ((cur->m_dead & 1) != 0)
 			continue;
 		Rva003A1C3AInner *inner = cur->m_inner250;
 		if (inner == 0)
@@ -1451,7 +1505,7 @@ TeamPrototype::TeamPrototype(TeamFactory*tf,const AsciiString&owner,const AsciiS
  m_factory(tf),m_owningPlayer(player),m_id(id),m_ownerName(owner),m_name(name),m_flags(singleton?1:0),
  m_productionConditionAlwaysFalse(false),m_productionConditionScript(0),m_retrievedGenericScripts(false),
  m_teamTemplate(dict),m_byte31C(false),m_byte31D(false),m_byte31E(false),m_frame320(TheGameLogic->getFrame()),
- m_byte324(false),m_coordinate328(),m_teamInstanceList(0)
+ m_byte324(false),m_coordinate328(),m_dlinkhead_TeamInstanceList(0)
 {
  memset(m_genericScriptsToRun,0,sizeof(m_genericScriptsToRun));
  addToLists();

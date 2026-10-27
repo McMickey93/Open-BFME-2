@@ -96,7 +96,7 @@ public:
 	unsigned char m_pad0[4];
 	ThingTemplate *m_template;
 	unsigned char m_pad1[0x250 - 0x8];
-	Rva0039E0D0AI *m_ai250;
+	Rva0039E0D0AI *m_inner250;
 };
 
 class Team
@@ -107,12 +107,12 @@ public:
 
 private:
 	unsigned char m_pad[0x112];
-	unsigned char m_byte112;
+	bool m_112;
 };
 
 bool Team::rva0039E0D0()
 {
-	if (m_byte112 != 0) {
+	if (m_112 != 0) {
 		for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
 			Object *cur = iter.cur();
 			if (cur->testStatus(ObjectStatus_Two))
@@ -120,7 +120,7 @@ bool Team::rva0039E0D0()
 			ThingTemplate *thingTemplate = cur->m_template;
 			if ((thingTemplate->m_byte115 & 0x20) == 0)
 				continue;
-			Rva0039E0D0AI *ai = cur->m_ai250;
+			Rva0039E0D0AI *ai = (Rva0039E0D0AI *)cur->m_inner250;
 			if (ai == 0)
 				continue;
 			Rva0039E0D0Sub *sub = (Rva0039E0D0Sub *)ai->getSub();

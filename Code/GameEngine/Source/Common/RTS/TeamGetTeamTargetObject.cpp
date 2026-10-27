@@ -22,7 +22,7 @@ class Player;
 class Object
 {
 public:
-	Bool isEffectivelyDead() const { return (m_privateStatus & 1) != 0; }
+	Bool isEffectivelyDead() const { return (m_dead & 1) != 0; }
 	Bool rva002943B2(const Player *player);
 	// Read directly: an inline getContainedBy here would be one more COMDAT
 	// copy beside the Zero Hour header views' (ZH offset).
@@ -30,7 +30,7 @@ public:
 	Object *m_containedBy; // +0x274
 private:
 	unsigned char m_pad278[0x438 - 0x278];
-	unsigned char m_privateStatus; // +0x438
+	unsigned char m_dead; // +0x438 (private status)
 };
 
 extern GameLogic *TheGameLogic;

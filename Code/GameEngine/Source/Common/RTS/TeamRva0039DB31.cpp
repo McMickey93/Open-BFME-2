@@ -61,7 +61,7 @@ public:
 	void rva00293077(const void *arg);
 
 	unsigned char m_pad[0x250];
-	Rva0039DB31Provider *m_provider250; // +0x250
+	Rva0039DB31Provider *m_inner250; // +0x250
 };
 
 class Team
@@ -76,7 +76,7 @@ void Team::rva0039DB31(const void *arg)
 	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance())
 	{
 		Object *obj = iter.cur();
-		Rva0039DB31Provider *provider = obj->m_provider250;
+		Rva0039DB31Provider *provider = (Rva0039DB31Provider *)obj->m_inner250;
 		Rva0039DB31Contain *contain = provider ? provider->slot31() : 0;
 		if (contain)
 			contain->slot46(arg, 0);

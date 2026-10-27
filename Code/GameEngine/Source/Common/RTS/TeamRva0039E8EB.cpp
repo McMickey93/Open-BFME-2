@@ -89,7 +89,7 @@ class Object
 public:
 	bool affectedByUpgrade(const UpgradeTemplate *upgrade) const;
 	char m_pad[0x250];
-	Rva0039E8FFMid *m_mid;
+	Rva0039E8FFMid *m_inner250;
 };
 bool Team::rva0039E8FF(int val)
 {
@@ -98,7 +98,7 @@ bool Team::rva0039E8FF(int val)
 	DLINK_ITERATOR<Object> iter = iterate_TeamMemberList();
 	while (!iter.done()) {
 		Object *cur = iter.cur();
-		Rva0039E8FFMid *mid = cur->m_mid;
+		Rva0039E8FFMid *mid = (Rva0039E8FFMid *)cur->m_inner250;
 		void *res = mid ? mid->f31() : 0;
 		if (res != 0) {
 			if (((Rva0039E8FFTarget *)res)->g43(val))
