@@ -286,7 +286,8 @@ public:
 
 extern GameWindowManager *TheWindowManager;
 
-extern class Rva00222A8BTarget *TheRva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 class GameLogic;
 extern GameLogic *TheGameLogic;
@@ -390,7 +391,7 @@ void AptPalantir::OnInitialized(const char *unused)
 // Retail 0x002D2FE3, 31 bytes: "AptPalantir::OnClosed".
 void AptPalantir::OnClosed(const char *unused)
 {
-	reinterpret_cast<AptPlayer *>(TheRva00222A8BTarget)->HideLevel((int)m_movie);
+	reinterpret_cast<AptPlayer *>(g_bfmeAptWindowManager)->HideLevel((int)m_movie);
 	m_flags = (m_flags & ~2) | 4;
 }
 
@@ -426,7 +427,7 @@ void AptPalantir::OnBttnSpellStore(const char *unused)
 	WinInstanceData *instData = (WinInstanceData *)((Rva00314046LeaField *)button)->get();
 	if (!instData)
 		return;
-	int mouse = TheRva00222A8BTarget->m_318;
+	int mouse = reinterpret_cast<Rva00222A8BTarget *>(g_bfmeAptWindowManager)->m_318;
 	GameWindow *owner = instData->m_owner;
 	TheWindowManager->winSendSystemMsg(owner, 0x4008 + (mouse == 2), (int)button, ((Rva005C4AE9DwordField *)button)->get());
 	m_e4 = false;
