@@ -9,11 +9,6 @@
 // shape. ModuleData offsets (+0x28/+0x2c/+0x34/+0x38/+0x3d/+0x3e/+0x0c) and
 // DemoTrapUpdate members (+0x20/+0x24) match rowed DemoTrapUpdateModuleDataCtor
 // and DemoTrapUpdateConstructor. Detonate helper is rowed 0x00495A2B.
-enum UpdateSleepTime
-{
-	UPDATE_SLEEP_NONE = 1,
-	UPDATE_SLEEP_FOREVER = 0x3fffffff
-};
 #include "DemoTrapObjectView.h"
 class Rva000CBA20Point
 {
@@ -41,22 +36,90 @@ extern PartitionManager *ThePartitionManager;
 extern "C" const void *const vtbl_00C4ED70[];
 #pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
 
-class DemoTrapUpdate
+// The module classes spell the DemoTrapUpdate.cpp TU's union view. Vptrs at
+// +0x00, +0x0C and +0x10 (the constructor's three stores). Retail's primary
+// vftable (0x00C4ED3C) holds the scalar deleting dtor (0x004959E3), the
+// shared loadPostProcess (0x00497805), the name getter (0x0049592F), xfer
+// (0x00495A74), getModuleNameKey (0x00495935) and onObjectCreated
+// (0x004959FF) in slots 0-5; UpdateModule's own (0x00BF004C) fills slots 1-2
+// with loadPostProcess (0x0058B03E) and GetSnapshotName (0x002533CD). The
+// +0x10 one (0x00C4ED30) opens with update (0x00495ABA).
+class Thing;
+class ModuleData;
+class Object;
+class Xfer;
+class DemoTrapUpdateModuleData;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+enum UpdateSleepTime
+{
+	UPDATE_SLEEP_NONE = 1,
+	UPDATE_SLEEP_FOREVER = 0x3fffffff
+};
+
+class ObjectModule
 {
 public:
+	ObjectModule(Thing *, const ModuleData *);
+	virtual void objectModuleAnchor();			// slot 0
+protected:
+	const ModuleData *m_moduleData;				// +0x04
+	Object *m_object;					// +0x08
+};
+
+class BehaviorInterface
+{
+public:
+	virtual void behaviorAnchor() = 0;			// vptr at +0x0C
+};
+
+class UpdateInterface
+{
+public:
+	virtual UpdateSleepTime update() = 0;			// vptr at +0x10
+};
+
+class UpdateModule : public ObjectModule,
+	public BehaviorInterface, public UpdateInterface
+{
+public:
+	// Defined once, out of line, in UpdateModuleCtor.cpp (retail 0x00253390).
+	UpdateModule(Thing *thing, const ModuleData *moduleData);
+	virtual void behaviorAnchor();
+	void xfer(Xfer *xfer);					// 0x0044DF9F, spelled as its row
+protected:
+	virtual void loadPostProcess();				// slot 1
+	virtual const char *GetSnapshotName() const;		// slot 2
+private:
+	unsigned int m_nextCallFrameAndPhase;			// +0x14
+	int m_indexInLogic;					// +0x18
+	int m_updateState;					// +0x1C
+};
+
+class DemoTrapUpdate : public UpdateModule
+{
+public:
+	DemoTrapUpdate(Thing *thing, const ModuleData *moduleData);
+	virtual void objectModuleAnchor();
+	virtual void behaviorAnchor();
+protected:
+	virtual void xfer(Xfer *xfer);				// slot 3
+public:
+	virtual NameKeyType getModuleNameKey() const;		// slot 4
+	virtual void onObjectCreated();				// slot 5
 	virtual UpdateSleepTime update();
 	const DemoTrapUpdateModuleData *getDemoTrapUpdateModuleData() const
 	{
-		return *(const DemoTrapUpdateModuleData **)((const char *)this - 0x0c);
+		return (const DemoTrapUpdateModuleData *)m_moduleData;
 	}
-	Object *getObject() const
-	{
-		return *(Object **)((const char *)this - 0x08);
-	}
+	Object *getObject() const { return m_object; }
 private:
-	unsigned char m_pad00[0x0c];
-	int m_nextScanFrames;
-	bool m_detonated;
+	int m_nextScanFrames;					// +0x20
+	bool m_detonated;					// +0x24
 };
 
 // tu-skeleton: 0x00495916 25B ??1DemoTrapUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
@@ -99,11 +162,10 @@ DemoTrapUpdateModuleData::DemoTrapUpdateModuleData()
 
 UpdateSleepTime DemoTrapUpdate::update()
 {
-	register DemoTrapUpdate *self = this;
-	const DemoTrapUpdateModuleData *data = self->getDemoTrapUpdateModuleData();
-	if (self->m_detonated)
+	const DemoTrapUpdateModuleData *data = getDemoTrapUpdateModuleData();
+	if (m_detonated)
 		return UPDATE_SLEEP_NONE;
-	Object *me = self->getObject();
+	Object *me = getObject();
 	if (me->testStatus(STATUS_UNDER_CONSTRUCTION))
 		return UPDATE_SLEEP_NONE;
 	if (me->testStatus(STATUS_SOLD))
@@ -112,24 +174,24 @@ UpdateSleepTime DemoTrapUpdate::update()
 	{
 		if (!data->m_detonateWhenKilled)
 			return UPDATE_SLEEP_NONE;
-		((Rva00495A2B *)((char *)self - 0x10))->rva00495A2B();
+		((Rva00495A2B *)this)->rva00495A2B();
 		return UPDATE_SLEEP_NONE;
 	}
 	const Weapon *weapon = me->getCurrentWeapon(0);
 	WeaponSlotType weaponSlot = weapon->m_slot;
 	if (weaponSlot == data->m_detonationWeaponSlot)
 	{
-		((Rva00495A2B *)((char *)self - 0x10))->rva00495A2B();
+		((Rva00495A2B *)this)->rva00495A2B();
 		return UPDATE_SLEEP_NONE;
 	}
-	if (self->m_nextScanFrames > 0)
+	if (m_nextScanFrames > 0)
 	{
-		--self->m_nextScanFrames;
+		--m_nextScanFrames;
 		return UPDATE_SLEEP_NONE;
 	}
 	if (weaponSlot == data->m_manualModeWeaponSlot)
 		return UPDATE_SLEEP_NONE;
-	self->m_nextScanFrames = data->m_scanRate;
+	m_nextScanFrames = data->m_scanRate;
 	bool shallDetonate = false;
 	BfmeWideResult iterator = ThePartitionManager->rva006255D0(&me->m_pos38, data->m_triggerDetonationRange, 0, 0);
 	for (Object *other = iterator.next(); other; other = iterator.next())
@@ -138,7 +200,7 @@ UpdateSleepTime DemoTrapUpdate::update()
 			continue;
 		if ((other->m_dead438 & 1) != 0)
 			continue;
-		if (self->getObject()->getRelationship(other) != RELATIONSHIP_ENEMIES)
+		if (getObject()->getRelationship(other) != RELATIONSHIP_ENEMIES)
 		{
 			if (!data->m_autoDetonationWithFriends)
 				return UPDATE_SLEEP_NONE;
@@ -155,6 +217,6 @@ UpdateSleepTime DemoTrapUpdate::update()
 		}
 	}
 	if (shallDetonate)
-		((Rva00495A2B *)((char *)self - 0x10))->rva00495A2B();
+		((Rva00495A2B *)this)->rva00495A2B();
 	return UPDATE_SLEEP_NONE;
 }
