@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/shims/bfme2_ascii
+// platformsdk
 // stlport
 //
 // Win32LocalFileSystem::getFileListInDirectory, retail 0x006050B9 (619
@@ -14,33 +15,8 @@
 // the directory name and '\\'.  WorldBuilder twin 0x01651B70 (order lead).
 #include <set>
 #include "unicode_string.h"
-
-typedef unsigned long DWORD;
-typedef int BOOL;
-typedef void *HANDLE;
-typedef struct _FILETIME { DWORD dwLowDateTime; DWORD dwHighDateTime; } FILETIME;
-typedef struct _WIN32_FIND_DATAW
-{
-	DWORD dwFileAttributes;
-	FILETIME ftCreationTime;
-	FILETIME ftLastAccessTime;
-	FILETIME ftLastWriteTime;
-	DWORD nFileSizeHigh;
-	DWORD nFileSizeLow;
-	DWORD dwReserved0;
-	DWORD dwReserved1;
-	unsigned short cFileName[260];
-	unsigned short cAlternateFileName[14];
-} WIN32_FIND_DATAW;
-#define INVALID_HANDLE_VALUE ((HANDLE)-1)
-#define FILE_ATTRIBUTE_DIRECTORY 0x10
-
-extern "C" {
-__declspec(dllimport) HANDLE __stdcall FindFirstFileW(const unsigned short *, WIN32_FIND_DATAW *);
-__declspec(dllimport) BOOL __stdcall FindNextFileW(HANDLE, WIN32_FIND_DATAW *);
-__declspec(dllimport) BOOL __stdcall FindClose(HANDLE);
-__declspec(dllimport) int __cdecl wcscmp(const unsigned short *, const unsigned short *);
-}
+#include <windows.h>
+#include <string.h>
 
 namespace rts {
 	template <class T> struct less_than_nocase {

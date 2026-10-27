@@ -34,6 +34,7 @@
 // instead of in descending case-value order; and the top-entry declaration
 // precedes the bottom-entry one, which makes the bottom call come first.
 #include "unicode_string.h"
+#include <string.h>
 
 typedef int Int;
 typedef short Short;
@@ -97,13 +98,8 @@ enum { LISTBOX_TEXT = 1 };
 #define BitSet(x, i) ((x) |= (i))
 #define BitClear(x, i) ((x) &= ~(i))
 
-#ifndef NULL
-#define NULL 0
-#endif
 #define TRUE true
 #define FALSE false
-
-extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int count);
 
 // Zero Hour inlines UnicodeString::getCharAt; WWLib keeps the out-of-line
 // copy at 0x00035760. Keep this expansion inline without emitting a competing

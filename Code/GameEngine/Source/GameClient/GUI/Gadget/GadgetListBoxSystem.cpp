@@ -37,6 +37,7 @@ extern "C" void _ReadWriteBarrier();
 // /arch:SSE /EHsc. The helper is static beside its actual retail caller;
 // the former separate unit and synthetic forceAIE caller are retired.
 #include <string.h>
+#include <new>
 #include "unicode_string.h"
 
 typedef int Int;
@@ -106,15 +107,8 @@ enum { KEY_STATE_DOWN = 0x02 };
 #define BitSet(x, i) ((x) |= (i))
 #define BitClear(x, i) ((x) &= ~(i))
 
-#ifndef NULL
-#define NULL 0
-#endif
 #define TRUE true
 #define FALSE false
-
-void *operator new[](unsigned int size);
-void operator delete[](void *block);
-void operator delete(void *block);
 
 class GameFont
 {

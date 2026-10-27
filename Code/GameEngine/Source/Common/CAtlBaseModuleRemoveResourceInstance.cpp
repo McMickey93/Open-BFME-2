@@ -1,4 +1,5 @@
 // cl: /Oy-
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // Open-BFME5: ATL 7.1 CAtlBaseModule::RemoveResourceInstance.
 //
@@ -7,14 +8,9 @@
 // atlcore.h.  These declarations stay TU-local so this one retail body can be
 // converted without changing the shared headers.
 
-typedef void *HINSTANCE;
-typedef long HRESULT;
-typedef int BOOL;
-
-#define FAILED(hr) ((hr) < 0)
-
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *cs);
+// Non-strict handles keep HINSTANCE a void *, the type this module's symbols take.
+#define NO_STRICT
+#include <windows.h>
 
 namespace ATL
 {
@@ -25,15 +21,15 @@ class CComCriticalSection
 public:
 	HRESULT Lock() throw()
 	{
-		EnterCriticalSection(m_sec);
+		EnterCriticalSection(&m_sec);
 		return 0;
 	}
 	HRESULT Unlock() throw()
 	{
-		LeaveCriticalSection(m_sec);
+		LeaveCriticalSection(&m_sec);
 		return 0;
 	}
-	unsigned long m_sec[6];
+	CRITICAL_SECTION m_sec;
 };
 
 template <class TLock>

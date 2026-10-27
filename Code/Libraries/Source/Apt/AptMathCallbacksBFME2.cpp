@@ -7,6 +7,8 @@
 // factory calls establish its operation independently of the donor name.
 // BFME2 calls the checked stack accessor instead of reading donor fields.
 // The numeric converter retains an address-derived member name.
+#include <stdlib.h>
+
 // The CRT math declarations this unit needs, in place of <math.h> (this TU compiles with
 // /D_CRTIMP= and /O2, so these are the same plain, intrinsic-eligible declarations). <math.h>'s
 // float overloads would emit this /O2 x87 unit's copies of floor(float), sqrt(float), sinf, cosf
@@ -15,7 +17,6 @@
 // sin(float), cos(float) (rowed here, 0x0002FBB0/0x0002FBC0) and pow(float, float) keep float
 // overloads, written with the bodies <math.h> gives them after inlining sinf/cosf.
 extern "C" {
-int __cdecl abs(int);
 double __cdecl acos(double);
 double __cdecl asin(double);
 double __cdecl atan(double);

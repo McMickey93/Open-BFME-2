@@ -31,7 +31,6 @@
 // WorldBuilder's FoundationAIUpdate::construct; the slot's other names are
 // by address.
 
-// The float-returning atan2f declaration reproduces the native argument setup.
 // Member IDs copy directly, and construction cost uses the caller's template.
 
 typedef bool Bool;
@@ -39,7 +38,8 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define NULL 0
+#include <math.h>
+#include <string.h>
 #define TRUE true
 #define FALSE false
 
@@ -348,10 +348,7 @@ inline Object *GameLogic::findObjectByID(ObjectID id)
 }
 extern GameLogic *TheGameLogic;
 
-extern "C" float __cdecl atan2f(float y, float x);
 Real normalizeAngle(Real angle);
-
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int size);
 
 // BFME 2's delayed Lua event list (rowed ctor 0x000B6D8B and dtor 0x000B6DD2).
 struct BfmeDispatchDelayedLuaEvent

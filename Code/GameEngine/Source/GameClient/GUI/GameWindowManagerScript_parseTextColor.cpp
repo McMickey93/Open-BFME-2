@@ -25,13 +25,11 @@
 //   with 0x715994 (entries are name@+0/fn@+4; the walker at 0x31701C
 //   compares names and calls [eax+4]).
 
+#include <string.h>
+
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 #ifndef TRUE
 #define TRUE true
@@ -63,8 +61,6 @@ struct WinInstanceDataLayout
 // Declared extern (not static: MSVC rejects defined-never statics with
 // C2129); the decoration is identical and the pin resolves the address.
 Int scanInt(const char *source, Int &val);
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseTextColor@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseTextColor(char *token, WinInstanceData *instData, char *buffer, void *data)

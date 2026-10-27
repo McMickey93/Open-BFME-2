@@ -1,3 +1,4 @@
+// platformsdk
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -27,24 +28,7 @@
 // where the donor spells set(buffer, wcslen(buffer)).
 
 #define WIN32_LEAN_AND_MEAN
-
-struct HKEY__ { int unused; };
-typedef struct HKEY__ *HKEY;
-
-typedef unsigned long DWORD;
-typedef long LONG;
-typedef int BOOL;
-#define NULL 0
-#define ERROR_SUCCESS 0L
-#define KEY_READ 0x20019L
-#define HKEY_LOCAL_MACHINE ((HKEY)0x80000002)
-
-extern "C" __declspec(dllimport) LONG __stdcall RegOpenKeyExW(
-		HKEY hKey, const unsigned short *lpSubKey, DWORD ulOptions, DWORD samDesired, HKEY *phkResult);
-extern "C" __declspec(dllimport) LONG __stdcall RegQueryValueExW(
-		HKEY hKey, const unsigned short *lpValueName, DWORD *lpReserved, DWORD *lpType,
-		unsigned char *lpData, DWORD *lpcbData);
-extern "C" __declspec(dllimport) LONG __stdcall RegCloseKey(HKEY hKey);
+#include <windows.h>
 
 // Only what this body reaches of the engine's reference-counted string:
 // the header layout behind str(), the out-of-line releaseBuffer the

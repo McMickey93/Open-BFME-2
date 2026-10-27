@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /EHsc /D_STLP_NO_EXCEPTIONS /MD /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC /D_CRTIMP= /D_BFME_RETAIL_TREE_INSERT_LAYOUT
+// platformsdk
 // stlport
 // ?onGameEngineExit@GlobalLanguage@@QAEXXZ retail 0x001EA77F 473 bytes.
 // GlobalLanguage local-font and temp-dir cleanup: counts m_localFonts at
@@ -40,26 +41,8 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 
 
 typedef int Bool;
-typedef unsigned long DWORD;
-typedef void *HANDLE;
-typedef void *HMODULE;
-typedef const char *LPCSTR;
-typedef char *LPSTR;
 
-#define NULL 0
-#define MAX_PATH 260
-#define INVALID_HANDLE_VALUE ((HANDLE)-1)
-
-extern "C" __declspec(dllimport) HMODULE __stdcall LoadLibraryA(LPCSTR);
-extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(HMODULE, LPCSTR);
-extern "C" __declspec(dllimport) Bool __stdcall FreeLibrary(HMODULE);
-extern "C" __declspec(dllimport) DWORD __stdcall GetTempPathA(DWORD, LPSTR);
-extern "C" __declspec(dllimport) HANDLE __stdcall FindFirstFileA(LPCSTR, void *);
-extern "C" __declspec(dllimport) Bool __stdcall FindNextFileA(HANDLE, void *);
-extern "C" __declspec(dllimport) Bool __stdcall FindClose(HANDLE);
-extern "C" __declspec(dllimport) Bool __stdcall DeleteFileA(LPCSTR);
-extern "C" __declspec(dllimport) Bool __stdcall RemoveDirectoryA(LPCSTR);
-
+#include <windows.h>
 #include "ascii_string.h"
 extern const char *BfmeFontExtractionDirectory;
 
@@ -80,14 +63,6 @@ struct Rva001EA443
 
 inline bool operator==(const Rva001EA443 &x, const Rva001EA443 &y) { return false; }
 inline bool operator<(const Rva001EA443 &x, const Rva001EA443 &y) { return false; }
-
-struct BfmeFindData
-{
-	unsigned char header[44];
-	char fileName[MAX_PATH];
-	char alternateFileName[14];
-	unsigned short padding;
-};
 
 class GlobalLanguage
 {
@@ -126,11 +101,11 @@ void GlobalLanguage::onGameEngineExit()
 		fontDirectory.format("%s\\%s", tempPath, BfmeFontExtractionDirectory);
 		AsciiString searchPath;
 		searchPath.format("%s\\lrf*.*", fontDirectory.str());
-		BfmeFindData findData;
+		WIN32_FIND_DATAA findData;
 		HANDLE findHandle = FindFirstFileA(searchPath.str(), &findData);
 		while (findHandle != INVALID_HANDLE_VALUE) {
 			AsciiString fontPath;
-			fontPath.format("%s\\%s", fontDirectory.str(), findData.fileName);
+			fontPath.format("%s\\%s", fontDirectory.str(), findData.cFileName);
 			DeleteFileA(fontPath.str());
 			if (!FindNextFileA(findHandle, &findData)) {
 				FindClose(findHandle);

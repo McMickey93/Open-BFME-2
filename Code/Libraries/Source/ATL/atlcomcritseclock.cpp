@@ -1,3 +1,4 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // Microsoft Visual C++ .NET 2003 ATL 7.1 CComCritSecLock<CComCriticalSection>.
 //
@@ -8,13 +9,7 @@
 // atlbase.h's, and the EnterCriticalSection/LeaveCriticalSection imports take
 // &m_cs.m_sec, which is the lock's first member.
 
-typedef long HRESULT;
-
-#define FAILED(hr) ((hr) < 0)
-#define S_OK 0
-
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *cs);
+#include <windows.h>
 
 namespace ATL
 {
@@ -35,7 +30,7 @@ public:
         return 0;
     }
 
-    unsigned char m_sec[0x18];
+    CRITICAL_SECTION m_sec;
 };
 
 template< class TLock >

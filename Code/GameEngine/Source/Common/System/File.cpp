@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // Trimmed from Open-BFME-1
 // (Code/GameEngine/Source/Common/System/File.cpp): only the placed
 // ?lock@File, ?close@File, ?open@File, ??1File, ?size@File, ?position@File,
@@ -19,18 +20,12 @@
 
 typedef void *FileHandle;
 
-extern "C" __declspec(dllimport) FileHandle __stdcall CreateMutexA(void *attrs, int owned, const char *name);
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(FileHandle handle, unsigned long timeout);
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void *handle);
-extern "C" __declspec(dllimport) int __stdcall ReleaseMutex(FileHandle handle);
-
-typedef char *va_list;
-#define va_start(ap, v) (ap = (va_list)&v + ((sizeof(v) + 3) & ~3))
-#define va_end(ap) (ap = (va_list)0)
-extern "C" __declspec(dllimport) int __cdecl vsprintf(char *buffer, const char *format, va_list args);
-extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count);
+#include <windows.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
+#include <new>
 #pragma function(memcpy)
-void *operator new[](unsigned int bytes);
 
 static const unsigned long FILE_INFINITE = 0xFFFFFFFF;
 

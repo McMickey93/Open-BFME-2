@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // DirectInputKeyboard (vtable 0x00BC8688), Zero Hour's
 // GameEngineDevice/Source/Win32Device/GameClient/Win32DIKeyboard.cpp. The
@@ -26,15 +27,14 @@
 //
 // Names are Zero Hour's, matched by body shape and slot position.
 
+#include <windows.h>
+
 typedef bool Bool;
 typedef unsigned char UnsignedByte;
 typedef unsigned short UnsignedShort;
 typedef unsigned int UnsignedInt;
-typedef unsigned long DWORD;
-typedef long HRESULT;
 
 #define DI_OK 0
-#define S_FALSE 1
 #define DIERR_INVALIDPARAM ((HRESULT)0x80070057L)
 #define DIERR_NOTINITIALIZED ((HRESULT)0x80070015L)
 #define DIERR_OTHERAPPHASPRIO ((HRESULT)0x80070005L)
@@ -93,8 +93,6 @@ struct KeyboardIO
 	UnsignedInt sequence;
 };
 
-extern "C" __declspec(dllimport) short __stdcall GetKeyState(int nVirtKey);
-
 // The DirectInput 8 interface, as far as closeKeyboard calls it.
 struct IDirectInput8
 {
@@ -103,7 +101,6 @@ struct IDirectInput8
 	virtual unsigned long __stdcall Release() = 0;
 };
 
-#define VK_CAPITAL 0x14
 #define KEY_STATE_CAPSLOCK 0x0200
 
 class Keyboard

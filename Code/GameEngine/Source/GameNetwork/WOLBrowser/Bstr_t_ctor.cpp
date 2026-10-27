@@ -1,5 +1,7 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
 
+#include <new.h>
+
 namespace _com_util
 {
 	unsigned short *__stdcall ConvertStringToBSTR(const char *value);
@@ -30,7 +32,6 @@ public:
 	_bstr_t(const char *value);
 };
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline _bstr_t::_bstr_t(const char *value)
@@ -46,4 +47,3 @@ void *bfmeAnchorBstrT(void *where, const char *value)
 {
 	return new (where) _bstr_t(value);
 }
-

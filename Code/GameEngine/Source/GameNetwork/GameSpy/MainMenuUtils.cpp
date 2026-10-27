@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /EHsc /DNDEBUG /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /ICode/GameEngine/Source/Common
+// platformsdk
 // stlport
 // BFME1 34f59164 MainMenuUtils.cpp is the primary reference.
 // WB158CC80 names startOnline and MainMenuUtils.cpp; native5BC887..5BCA60
@@ -14,6 +15,10 @@ void __cdecl Rva00030830GameFree(void *);
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include <list>
+#include <string.h>
+#include <new>
+#include <windows.h>
+#include <WinInet.h>
 
 // _List_iterator comparisons otherwise instantiate the base-class
 // operator!= COMDAT (one byte shape per TU flags); exact-match free
@@ -105,9 +110,6 @@ void patchBeforeOnlineCallback()
 // BFME1 34f59164 MOTD behavior; WB158DAF0 supplies the proper callback
 // identity and signed64 byte-count ABI. Native5BCA60..5BCAF1 proves the
 // whole145-byte body. The shared-state C++ decrement emits native DEC.
-extern "C" void *__cdecl memcpy(void *,const void *,unsigned);
-void *__cdecl operator new[](unsigned);
-void __cdecl operator delete[](void *);
 void b_00042a50();void startOnline();
 enum GHTTPBool {GHTTPFalse,GHTTPTrue};
 enum GHTTPResult {GHTTPSuccess};
@@ -295,14 +297,6 @@ GHTTPBool gamePatchCheckCallback(int request,GHTTPResult result,char *buffer,__i
 // the checking dialog as an untitled MessageBoxOk, takes the host to look up
 // from the registry's online server URL (InternetCrackUrlA) and runs the
 // async lookup through Rva005BC4CEStart.
-struct MainMenuUrlComponents {
- unsigned long dwStructSize; char *lpszScheme; unsigned long dwSchemeLength; int nScheme;
- char *lpszHostName; unsigned long dwHostNameLength; unsigned short nPort;
- char *lpszUserName; unsigned long dwUserNameLength; char *lpszPassword; unsigned long dwPasswordLength;
- char *lpszUrlPath; unsigned long dwUrlPathLength; char *lpszExtraInfo; unsigned long dwExtraInfoLength;
-};
-extern "C" __declspec(dllimport) int __stdcall InternetCrackUrlA(const char *url,unsigned long length,unsigned long flags,MainMenuUrlComponents *components);
-extern "C" void *__cdecl memset(void *,int,unsigned);
 const char *GetRegistryOnlineServer();
 int Rva005BC4CEStart(int hostName);
 void rva005BD6A7();
@@ -317,7 +311,7 @@ void StartPatchCheck()
  timeThroughOnline++;
  MessageBoxOk(UnicodeString(L""),TheGameText->fetch("GUI:CheckingForPatches"),CancelPatchCheckCallbackAndReopenDropdown);
  g_00E06576=1;
- MainMenuUrlComponents components;
+ URL_COMPONENTSA components;
  char hostName[512];
  memset(&components,0,sizeof(components));
  components.dwStructSize=sizeof(components);
@@ -334,7 +328,6 @@ void StartPatchCheck()
  startOnline();
 }
 
-#include <new>
 // The native three-pointer STL string view already verified in the request
 // helper also serves configHeadCallback. Constructors bind to the existing
 // string providers; native cleanup uses the game free wrapper.
