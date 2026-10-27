@@ -125,7 +125,7 @@ existing LINK-011 preview clearances retained for its two rows.
 | `Code/gen_small/uw_gen_008.cpp` | 1,238 | 2 (U=2) | Open |
 | `Code/GameEngine/Source/GameClient/System/FXParticleSystem/T1Base005F3750Ctor.cpp` | 184 | 2 (U=1, C=1) | Open |
 | `Code/GameEngine/Source/Common/MultiplayerSettingsCtor.cpp` | 159 | 2 (U=2) | Open |
-| `Code/Libraries/Source/WWVegas/WW3D2/HRawLoadW3D_Unresolved.cpp` | 149 | 2 (C=2) | Open |
+| `Code/Libraries/Source/WWVegas/WW3D2/HRawLoadW3D_Unresolved.cpp` | 149 | 2 (C=2) | Current-object preview LINKS (2026-10-27); census pending; shared-view/consolidation prerequisites in LINK-023 |
 | `Code/Libraries/Source/WWVegas/WWLib/Rva00056da2Finish.cpp` | 136 | 2 (C=1, S=1) | Open |
 | `Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerScreenBWFilterInit.cpp` | 101 | 2 (U=2) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GameWindowManager_registerTabList.cpp` | 73 | 2 (C=1, S=1) | Open |

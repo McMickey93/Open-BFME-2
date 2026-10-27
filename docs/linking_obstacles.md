@@ -2367,6 +2367,23 @@ Census confirmation: awaiting the next census.
 
 **Constructor emission follow-up (2026-10-27):** at inspected revision 40d8eced18722ddcee26c59ddc4f3fb8d157d887, the current-object preview reproduces the sole HAnim vtable blocker against index 5ce093a71a (2026-10-26 19:02, retail-truth-4). The object reference graph shows that only the unused standalone HAnimClass constructor copy references that table. Marking that existing inline constructor __declspec(dllimport) __forceinline retains its inlined base initialization and stops both unused external copies. No novtable change is needed. The actual 37-byte HAnim constructor remains rowed in hcanim.cpp at 0x0018D170; the native HRaw constructor has no HAnim vptr store. The 149-byte HRaw row remains exact, its one EH graph is EXACT, and declaration and shadow data checks pass. A paired preview retains LINKS for hcanim.cpp, hrawanim.cpp and hanim.cpp, while HRawLoadW3D_Unresolved.cpp changes from blocked to LINKS. This constructor-emission subset is cleared in ordinary-preview scope; census confirmation pending. The incompatible shared class views documented above remain a separate prerequisite for full ABI reconciliation.
 
+**Consolidation follow-up (2026-10-27, inspected `0ea53cd8e3`):** the supported
+hrawanim merge dry-run is blocked before class reconciliation: carrying
+`BfmeConv1372.cpp`'s empty flag override loses 14 seed rows and four loader
+rows. `flag_defaults.py propose` confirms that simply deleting the override
+loses its 128-byte row at 0x0018D220 (region build: 126 bytes). No merge,
+flag override or path move retained. The constructor donor's handwritten
+`toupper` declaration was replaced with `<ctype.h>`; both loader units now
+have clean Microsoft-header scans and their two stale queue entries are
+retired. Constructor byte verification is 1/1, both loaders' EH graphs are
+EXACT 4/4, shadow data checks are clean. Before/after previews against
+`bf3dd31211` retain LINKS for both loaders, hrawanim and hanim. hcanim has an
+independent pre-existing duplicate `?reset@Rva0018F900FramePrefix@@QAEPAV1@XZ`
+in both previews; its earlier clean preview above remains historical.
+Next: resolve donor flag compatibility, retry the supported merge, then
+reconcile the shared views. Census confirmation remains pending. Evidence:
+`reverse/attempt_support/hrawanim-consolidation-flags-20261027.md`.
+
 ### LINK-024: `LivingWorldBuildingCtor.cpp` needs placeholder `Rva004E0D67` named `LivingWorldBuilding`
 Status: Open. Updated: 2026-10-26; inspected revision: 896af21680.
 Evidence / affected units: `Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingCtor.cpp`

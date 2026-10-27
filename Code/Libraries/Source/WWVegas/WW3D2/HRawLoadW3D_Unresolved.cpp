@@ -284,7 +284,7 @@ private:
 
 HTreeClass *Get_HTree(const char *name);
 #include "htree.h"
-extern "C" __declspec(dllimport) int __cdecl toupper(int);
+#include <ctype.h>
 enum NameKeyType { NAMEKEY_INVALID = 0, FORCE_NAMEKEYTYPE_LONG = 0x7fffffff };
 class NameKeyGenerator { public: NameKeyType nameToKey(const char *name); };
 extern NameKeyGenerator *TheNameKeyGenerator;
