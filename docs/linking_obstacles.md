@@ -2025,8 +2025,8 @@ confirmation remain pending.
 
 ### LINK-061: identity retirement does not resolve verified renumbered EH labels
 
-**Status: Blocked on verifier reconciliation and current providers. Updated: 2026-10-26;
-inspected revision: `2f9834aa34`.**
+**Status: Verifier prerequisite cleared; DX8 descriptor reconciliation remains.
+Updated: 2026-10-27; inspected revision: `b8ac4b22c1`.**
 
 - **Evidence / scope:** [the DX8 retirement refusal](../reverse/attempt_support/dx8-identity-funclet-refusal-20261026.md)
   records 13 identity keys in dx8wrapper.cpp. Normal verification passes 228
@@ -2057,6 +2057,17 @@ inspected revision: `2f9834aa34`.**
   provider refresh, audio's two outgoing identity keys have a clean verdict;
   its complete 992-row scan checks 1,117 references with zero findings. This
   clears the audio verifier prerequisite, not the other source-specific repairs.
+- **DX8 follow-up (2026-10-27):**
+  [the destructor fold receipts](../reverse/attempt_support/dx8wrapper-destructor-folds-20261027.md)
+  clear the funclet-label prerequisite for this source too. Normal verification
+  passes 230 functions and 13 data rows; refreshing 22 provider sources passes
+  404 functions and three data rows and permits a complete retirement verdict.
+  Tool-admitted fold receipts replace the two existing derived-vector destructor
+  pin annotations without increasing pins. Retirement removes five identity keys;
+  eight keys for the duplicate descriptor constructor/destructor views remain.
+  Reconcile those views with naming evidence, rather than adding alias pins.
+  The paired current thread-lock provider preview is 2/2 LINKS (28,658 and
+  247 authored bytes); it confirms LINK-106, not a new census result.
 - **Clearance / census confirmation:** none claimed.
 
 ### LINK-062: AIUpdate TU span combines weak propagation and disputed placement
@@ -4810,6 +4821,15 @@ byte in its 19 executable sections are preserved; shadow data has no findings.
 records the exact two relocation-name changes. The shared alias remains for
 other callers. This is caller binding cleanup; census confirmation of the
 earlier provider repair is still pending, and no new linked-byte gain is claimed.
+
+Follow-up verification (2026-10-27, `b8ac4b22c1`): the default picker also
+served W3DDisplayRva0004A462.cpp. All seven rows byte-verify; the paired
+current BfmeDX8ThreadLock.cpp provider clears its sole stale-index blocker
+(2/2 LINKS, 1,432 and 247 authored bytes). The same provider clears
+dx8wrapper.cpp (2/2 LINKS, 28,658 and 247 authored bytes). Neither caller
+needed a source repair for LINK-106. [The scoped evidence](../reverse/attempt_support/dx8wrapper-destructor-folds-20261027.md)
+also records five independent DX8 identity-key retirements; no census gain
+is claimed.
 
 ### LINK-110: a class view omits its base's out-of-line destructor, so an unused implicit inline dtor references an unprovided grand-base
 Status: Open (SubObjectsUpgrade subset repaired). Updated: 2026-10-27; inspected revision: 952d800df1; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.
