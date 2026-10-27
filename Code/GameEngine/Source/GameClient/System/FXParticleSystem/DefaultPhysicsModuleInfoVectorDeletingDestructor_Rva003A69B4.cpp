@@ -1,7 +1,7 @@
 // cl: -Ireference/open-bfme-1/game/GameEngine/Source/GameClient/System/FXParticleSystem
 // Retail RVA 0x005D7F70. The wrapper's scalar-destructor operand is ILT
 // 0x00042F28, which routes directly to the matched destructor at 0x005D7E90.
-void operator delete[](void *block);
+#include <new>
 
 namespace FXParticleSystem
 {
