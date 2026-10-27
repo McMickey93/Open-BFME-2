@@ -6,6 +6,7 @@
 #include <new>      // needed for placement new prototype
 #pragma inline_depth(0)
 #pragma inline_depth()
+#include <new>
 
 // Open-BFME: Debug I/O net destructor. Stores the net vtable, CloseHandle on
 // the pipe at +4 unless it is INVALID_HANDLE_VALUE, then restores the
@@ -35,6 +36,10 @@ public:
   virtual void f0() = 0; virtual void f1() = 0; virtual void f2() = 0;
   virtual void write(int, const char *, const char *) = 0;
 };
+
+extern void *DebugAllocMemory(unsigned size);
+
+// ---- from Code/Libraries/Source/debug/debug_io_net.cpp
 
 // ---- from Code/Libraries/Source/WWVegas/WWDebug/DebugIONetConstructorThunk.cpp
 
@@ -195,4 +200,15 @@ void DebugIONet::Delete(void)
   DebugFreeMemory(this);
 }
 
-// tu-skeleton: 0x0003F7B0 96B ?Create@DebugIONet@@SAPAVDebugIOInterface@@XZ -- matched in Code/Libraries/Source/WWVegas/WWDebug/DebugIONet_Create.cpp (not merged yet)
+// ---- from Code/Libraries/Source/WWVegas/WWDebug/DebugIONet_Create.cpp
+
+// Keep the base deleting destructor frameless, as its rowed owner does.
+// The derived constructor/factory retain the native EBP frame.
+
+#pragma optimize("y", off)
+
+// ?Create@DebugIONet@@SAPAVDebugIOInterface@@XZ
+DebugIOInterface *DebugIONet::Create(void)
+{
+    return new (DebugAllocMemory(sizeof(DebugIONet))) DebugIONet();
+}
