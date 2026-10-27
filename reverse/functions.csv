@@ -16503,9 +16503,7 @@ _getluaproto,,0x0074CBA0,27,Code/Libraries/Source/Lua/ldebug.c,matched,placed by
 ?compressData@CompressionManager@@SAHW4CompressionType@@PAXH1H@Z,,0x0068A360,374,Code/Libraries/Source/Compression/CompressionManager_decompressData.cpp,matched,BFME1 donor graft; b1 0x0081E710; TU sandwich with decompressData; all callees rowed
 uw_0075b560,,0x0075B560,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_0075b5d1,,0x0075B5D1,11,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L3636
-uw_0075b6d0,,0x0075B6D0,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9406
 uw_0075bcfa,,0x0075BCFA,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L3843
-uw_0075c310,,0x0075C310,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9406
 uw_0075c92a,,0x0075C92A,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;object-symbol=$L320
 uw_0075c93c,,0x0075C93C,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2880
 uw_0075c9c8,,0x0075C9C8,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
@@ -16573,8 +16571,6 @@ uw_0075ed9d,,0x0075ED9D,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;obje
 uw_0075edaf,,0x0075EDAF,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3866
 uw_0075f011,,0x0075F011,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3936
 uw_0075f063,,0x0075F063,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
-uw_0075f087,,0x0075F087,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9406
-uw_0075f08f,,0x0075F08F,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9408
 uw_0075f117,,0x0075F117,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3966
 uw_0075f13c,,0x0075F13C,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2599
 uw_0075f147,,0x0075F147,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2602
@@ -17745,7 +17741,6 @@ uw_0078678c,,0x0078678C,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;obje
 uw_007867d8,,0x007867D8,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7003
 uw_007867e0,,0x007867E0,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7021
 uw_007867f5,,0x007867F5,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3522
-uw_00786837,,0x00786837,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9406
 uw_00786861,,0x00786861,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2399
 uw_0078687f,,0x0078687F,11,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2409
 uw_0078688a,,0x0078688A,11,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2419
@@ -17778,7 +17773,6 @@ uw_0078733c,,0x0078733C,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;obje
 uw_0078734e,,0x0078734E,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
 uw_00787385,,0x00787385,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L957
 uw_007873ba,,0x007873BA,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3309
-uw_00787441,,0x00787441,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9406
 uw_00787499,,0x00787499,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7084
 uw_007874ab,,0x007874AB,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L5093
 uw_007874bd,,0x007874BD,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L5091
@@ -98381,3 +98375,9 @@ $L9598,,0x0077BA8B,8,Code/GameEngine/Source/GameLogic/Map/SidesListCastleBuildLi
 ??1RiverQuadStripStorage_RV@@QAE@XZ,,0x0007FAB3,14,Code/GameEngine/Source/GameLogic/Map/RiverAreasDataChunkParserParse.cpp,matched,fold-proof=Code/GameEngine/Source/GameLogic/Map/RiverAreasDataChunkParserParse.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$vector@HV?$allocator@H@_STL@@@_STL@@QAE@XZ at 0x0007FAB3: this unit compiles it to the same whole body; its unwind funclets call 0x0007FAB3
 $L1521,,0x0077A16B,8,Code/GameEngine/Source/GameLogic/Map/RiverAreasDataChunkParserParse.cpp,matched,gen-funclet;parent=?parse@RiverAreasDataChunkParser@@UAE_NAAVDataChunkInput@@PAUDataChunkInfo@@@Z; Matched parent 0x0030C6C8's EH graph is EXACT (eh_verify) and binds compiler label $L1521 to retail 0x0077A16B; its callee ??1RiverAreaRef@@QAE@XZ is rowed at its ICF fold 0x005F8F96; replaces generated uw_0077a16b
 $L1524,,0x0077A183,8,Code/GameEngine/Source/GameLogic/Map/RiverAreasDataChunkParserParse.cpp,matched,gen-funclet;parent=?parse@RiverAreasDataChunkParser@@UAE_NAAVDataChunkInput@@PAUDataChunkInfo@@@Z; Matched parent 0x0030C6C8's EH graph is EXACT (eh_verify) and binds compiler label $L1524 to retail 0x0077A183; its callee ??1RiverQuadStripStorage_RV@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_0077a183
+$L412,,0x0075B6D0,8,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_string_default_ctor.cpp,matched,gen-funclet;parent=??0?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@QAE@XZ;Retail shared FuncInfo 0x008FD644 unwind state 0 binds this label to 0x0075B6D0; existing handler row 0x0075B6D8 already uses this parent; complete bytes and String_base destructor target verified; no inferred parent by adjacency
+$L8251,,0x0075F087,8,Code/GameEngine/Source/Common/NarrowStringRecordCopyBFME2.cpp,matched,gen-funclet;parent=??0BfmeNarrowRecord00079C23@@QAE@ABU0@@Z;Retail shared FuncInfo unwind graph proves this emitted label at this RVA; complete bytes including String dtor rel32 verified; see reverse/attempt_support/uw_gen_011_shared_eh_20261027.md
+$L8252,,0x0075F08F,11,Code/GameEngine/Source/Common/NarrowStringRecordCopyBFME2.cpp,matched,gen-funclet;parent=??0BfmeNarrowRecord00079C23@@QAE@ABU0@@Z;Retail shared FuncInfo unwind graph proves this emitted label at this RVA; complete bytes including String dtor rel32 verified; see reverse/attempt_support/uw_gen_011_shared_eh_20261027.md
+$L8284,,0x00786837,8,Code/GameEngine/Source/Common/NarrowStringRecordCopyBFME2.cpp,matched,gen-funclet;parent=??0BfmeNarrowRecord0041A5D2@@QAE@ABU0@@Z;Retail shared FuncInfo unwind graph proves this emitted label at this RVA; complete bytes including String dtor rel32 verified; see reverse/attempt_support/uw_gen_011_shared_eh_20261027.md
+$L8296,,0x00787441,8,Code/GameEngine/Source/Common/NarrowStringRecordCopyBFME2.cpp,matched,gen-funclet;parent=??0BfmeNarrowRecord00427F75@@QAE@ABU0@@Z;Retail shared FuncInfo unwind graph proves this emitted label at this RVA; complete bytes including String dtor rel32 verified; see reverse/attempt_support/uw_gen_011_shared_eh_20261027.md
+$L543,,0x0075C310,8,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_string_range_ctors.cpp,matched,gen-funclet;parent=??$?0PAD@?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@QAE@PAD0ABV?$allocator@D@1@@Z;Retail shared FuncInfo unwind graph places this cleanup; String_base destructor rel32 verified without masking; see reverse/attempt_support/uw_gen_011_shared_eh_20261027.md

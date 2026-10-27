@@ -3800,7 +3800,7 @@ Remaining / next check: the same pattern may hold for other Zero Hour inline get
 Clearance: preview (link_check on current objects). Census confirmation: pending.
 
 ### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
-Status: Open. Updated: 2026-10-26; inspected revision: 092dc02d24.
+Status: Open. Updated: 2026-10-27; inspected revision: b29299d15c.
 Evidence / affected units: `Code/gen_small/uw_gen_*.cpp` never links (its
 `gen_uw_ext`/`gen_uw_sink` are undefined by design), so each funclet must move
 to its matched parent's `$L` label. In `uw_gen_003.cpp`, all 69 funclets have a
@@ -3840,6 +3840,18 @@ the two wrong-callee units, align the element type with retail's dtor. Then
 re-run the repoint with an unmasked `./build.sh` before staging. A relocation-
 masked sweep alone over-reports.
 uw_gen_000/001 (2026-10-26, K7 r14): of 596 generated funclets, 474 have one EXACT parent (120 have several candidate parents and were skipped as ambiguous). 133 now name their parent label (73 in uw_gen_000, 60 in uw_gen_001). 300 are blocked rows in `reverse/re_attempts.log`: 292 name a dtor with no row or pin, and 8 name every callee but still fail the byte verify. The remaining rows were held by locks or recently touched files. Four rows (0x007650D0, 0x0076B8FD, 0x007A7CD0, 0x007A7D30) already have a real parent-label row next to the generated row, so `--replace-rva` refuses them. Retire those generated twins with `tools/gen_uw.py land`.
+uw_gen_011 shared graphs (2026-10-27): six existing placeholders (51 bytes)
+now name emitted labels in three verified parent sources, including shared
+graphs previously skipped by single-parent selection. Retail FuncInfo unwind
+entries prove each placement; full bytes and destructor targets match without
+masking. `./build.sh` 48/48; EH EXACT 16; all three parent units preserve LINKS
+in the ordinary preview (111/447/850 authored bytes). Generated source remains
+untouched and retains 366 rows. No census or ownership gain is claimed.
+`uw_00767c40` stays blocked: BfmeAssignRecord32's ctor/copy/dtor cleanups name
+the refcount destructor at 0x0007B724, but retail jumps to the MeshClass
+specialization at 0x0014A0D0. Reconcile member lifetime types before repointing.
+Full graph, byte and compatibility evidence:
+`reverse/attempt_support/uw_gen_011_shared_eh_20261027.md`.
 Clearance: pending.
 Census confirmation: awaiting.
 

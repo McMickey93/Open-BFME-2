@@ -182,7 +182,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | Census source | Game bytes | Blockers | Follow-up |
 | --- | ---: | --- | --- |
 | `Code/gen_small/uw_gen_010.cpp` | 6,639 | 88 (U=88) | Open |
-| `Code/gen_small/uw_gen_011.cpp` | 5,320 | 457 (U=457) | Open |
+| `Code/gen_small/uw_gen_011.cpp` | 5,320 | 457 (U=457) | Open; 2026-10-27 six shared-graph funclets (51 B) repointed to verified parents (LINK-095); 366 generated rows remain, census closure pending |
 | `Code/gen_small/uw_gen_000.cpp` | 3,419 | 95 (U=95) | Open |
 | `Code/gen_small/uw_gen_001.cpp` | 3,406 | 184 (U=184) | Open |
 | `Code/gen_small/uw_gen_013.cpp` | 3,205 | 184 (U=184) | Open |
