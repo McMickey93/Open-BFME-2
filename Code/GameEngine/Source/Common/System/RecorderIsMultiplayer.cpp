@@ -31,14 +31,7 @@ public:
 	GameSlot *getSlot(Int slotNum);
 };
 
-class GameLogic
-{
-public:
-	Bool rva00085124(void);
-	char m_pad[0x110];
-	Int m_gameMode;
-	Int m_unk114;
-};
+#include "../GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -72,12 +65,12 @@ Bool RecorderClass::isMultiplayer(void)
 		}
 	}
 	GameLogic *game = TheGameLogic;
-	Int mode = game->m_gameMode;
+	Int mode = game->m_110;
 	if (mode == 0 || mode == 6)
 		return false;
 	if (game->rva00085124())
 		return false;
-	if (game->m_unk114 != 3)
+	if (game->m_114 != 3)
 		return true;
 	if (TheNetwork || (*(GameInfo * *)&TheSkirmishGameInfo))
 		return true;

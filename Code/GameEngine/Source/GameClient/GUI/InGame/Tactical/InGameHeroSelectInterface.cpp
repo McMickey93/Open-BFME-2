@@ -52,7 +52,7 @@ namespace _STL
 
 typedef int Int;
 
-enum ObjectID {};
+#include "../../../../Common/GameLogicObjectLookupView.h"
 
 class ThingTemplate
 {
@@ -84,11 +84,6 @@ public:
  char pad258[0x274-0x258];Object *containerOwner;char pad278[0x438-0x278]; unsigned char flags438;
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);		// 0x00049DC5
-};
 
 extern GameLogic *TheGameLogic;
 

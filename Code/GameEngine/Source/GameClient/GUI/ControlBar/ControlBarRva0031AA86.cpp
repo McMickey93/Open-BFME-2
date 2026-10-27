@@ -111,12 +111,7 @@ public:
 
 extern PlayerList *ThePlayerList;
 
-class GameLogic
-{
-public:
-	char m_pad00[0x40];
-	unsigned int m_0040;
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 extern int BfmeLogicFramesPerSecond;
@@ -149,7 +144,7 @@ int ControlBar::rva0031AA86()
 		GadgetButtonSetEnabledImage_Rva002C0433(win, m_p0270);
 		return 0;
 	}
-	unsigned int frame = TheGameLogic->m_0040;
+	unsigned int frame = TheGameLogic->getFrame();
 	int period = BfmeLogicFramesPerSecond;
 	if (frame % (unsigned int)period > (unsigned int)(period / 2))
 		GadgetButtonSetEnabledImage_Rva002C0433(win, m_p0274);

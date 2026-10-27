@@ -562,12 +562,7 @@ Image *getMapPreviewImage(AsciiString mapName);
 void positionAdditionalImages(MapMetaData *mmd, GameWindow *mapWindow, Bool force);
 void positionStartSpotControls(GameWindow *win, GameWindow *mapWindow, Coord3D *pos, MapMetaData *mmd, GameWindow *buttonMapStartPositions[]);
 
-class GameLogic
-{
-public:
-	unsigned char m_pad00[0x114];
-	Int m_gameMode;	// +0x114
-};
+#include "../../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -1129,7 +1124,7 @@ void AptMapPreview::UpdateMapStartSpots(MapMetaData *map)
 		positionAdditionalImages(map, m_currentMap, true);
 		AsciiString waypointName;
 		Int i = 0;
-		if (map->m_isMultiplayer && TheGameLogic->m_gameMode == 3)
+		if (map->m_isMultiplayer && TheGameLogic->m_114 == 3)
 		{
 			for (; i < map->m_numPlayers; ++i)
 			{

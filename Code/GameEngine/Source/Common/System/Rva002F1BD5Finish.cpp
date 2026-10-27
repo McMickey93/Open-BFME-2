@@ -6,34 +6,13 @@
 // Evidence: caller 0x002F203F; callee findObjectByID rowed 0x00049DC5 via global
 // TheGameLogic 0x009FE78C; arg tag at +0xC low nibble 4 with payload ptr at +0
 // and ObjectID at +0x28; Object +4 -> flag byte at +0x110 bit 2 and +0x74 vs this+4.
-enum ObjectID
-{
-	INVALID_OBJECT_ID = 0
-};
+#include "../GameLogicObjectLookupView.h"
 
 class Object;
 class PathfindCell;
 
-struct ObjectIdNode
-{
-	char pad[8];
-	Object *object;
-};
 
-class ObjectIdMap
-{
-public:
-	ObjectIdNode *find(const ObjectID &id);
-};
 
-class GameLogic
-{
-	char pad[0xB4];
-	ObjectIdMap m_map;
-
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern class GameLogic *TheGameLogic;
 

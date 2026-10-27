@@ -60,10 +60,7 @@ enum CommandSourceType
 	CMD_FROM_AI = 2
 };
 
-enum ObjectID
-{
-	OBJID_INVALID = 0
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 class Object;
 class AIGroup;
@@ -104,11 +101,6 @@ public:
 	void destroyGroup(AIGroup *g);
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern AI *TheAI;
 extern GameLogic *TheGameLogic;

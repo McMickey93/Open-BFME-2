@@ -198,14 +198,7 @@ public:
 	UnsignedInt m_lastReallyPlayedFrame;			// +0x30
 };
 
-class GameLogic
-{
-public:
-	Bool rva001DCD1C();					// 0x001DCD1C
-
-	unsigned char m_pad00[0x40];
-	UnsignedInt m_frame;				// +0x40, observed retail load
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 class Eva;
 extern GameLogic *TheGameLogic;
@@ -505,7 +498,7 @@ Bool Eva::reportEvaEvent(EvaEventID eventID, const Coord3D *position, const Coor
 		GameLogic *logic = TheGameLogic;
 		if (!logic->rva001DCD1C())
 		{
-			m_delayedEvents.insert_equal(Rva001DD1B3(logic->m_frame + delay, report));
+			m_delayedEvents.insert_equal(Rva001DD1B3(logic->getFrame() + delay, report));
 			return true;
 		}
 	}
@@ -582,7 +575,7 @@ void Rva001DCDAF::rva001DD7C1(Arg001DCDAF *info, const Vec001DCDAF *position)
 		++eventID;
 	}
 	m_hasPlayed = true;
-	m_lastReallyPlayedFrame = TheGameLogic->m_frame;
+	m_lastReallyPlayedFrame = TheGameLogic->getFrame();
 	*(Vec001DCDAF *)((unsigned char *)this + 0x24) = *position;
 }
 

@@ -198,19 +198,7 @@ extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *f
 
 // The game mode at +0x110 (2 skirmish, 6 the one where the UI's +0x16
 // flag decides whether input is enabled).
-class GameLogic
-{
-public:
-	bool isInMultiplayerGame();
-	// The pinned pause setter (paused, reason, pause music).
-	void rva0023CD9E(bool paused, int reason, bool music);
-	// (rva0023C6FD decl removed; call goes through BfmeGlob939D below)
-
-	unsigned char m_pad000[0x6D];
-	bool m_6d; // +0x6D
-	unsigned char m_pad06e[0x110 - 0x6E];
-	int m_gameMode; // +0x110
-};
+#include "../../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -375,11 +363,11 @@ void AptPlayerStatus::rva004E434C(int query, char *result, bool set)
 		break;
 	case 1:
 		if (!set)
-			strcpy(result, TheGameLogic && TheGameLogic->m_gameMode == 2 ? "1" : "0");
+			strcpy(result, TheGameLogic && TheGameLogic->m_110 == 2 ? "1" : "0");
 		break;
 	case 2:
 		if (!set)
-			strcpy(result, TheGameLogic->m_gameMode != 6 || TheInGameUI->m_16 ? "1" : "0");
+			strcpy(result, TheGameLogic->m_110 != 6 || TheInGameUI->m_16 ? "1" : "0");
 		break;
 	}
 }
@@ -674,7 +662,7 @@ void Rva004E41AB()
 			return;
 	}
 	GameLogic *logic = TheGameLogic;
-	if (!logic->isInMultiplayerGame() && logic->m_gameMode != 6)
+	if (!logic->isInMultiplayerGame() && logic->m_110 != 6)
 		logic->rva0023CD9E(true, 0, true);
 	if ((*(int *)&TheDisconnectMenu) != 0)
 		return;

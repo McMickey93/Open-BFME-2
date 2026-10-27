@@ -83,12 +83,7 @@ public:
 
 extern PlayerTemplateStore *ThePlayerTemplateStore;
 
-class GameLogic
-{
-public:
-	char _pad[0x110];
-	int m_gameMode;
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -157,7 +152,7 @@ void ControlBar::setControlBarSchemeByPlayerTemplate(const PlayerTemplate *pt)
 		m_isObserverCommandBar = false;
 
 		if (buttonPlaceBeacon)
-			buttonPlaceBeacon->winHide((TheGameLogic->m_gameMode != GAME_LAN && TheGameLogic->m_gameMode != GAME_INTERNET) || !TheGameInfo->isMultiPlayer());
+			buttonPlaceBeacon->winHide((TheGameLogic->m_110 != GAME_LAN && TheGameLogic->m_110 != GAME_INTERNET) || !TheGameInfo->isMultiPlayer());
 		if (buttonIdleWorker)
 			buttonIdleWorker->winHide(false);
 		if (buttonGeneral)
@@ -207,7 +202,7 @@ void ControlBar::setControlBarSchemeByPlayer(Player *player)
 		m_isObserverCommandBar = false;
 
 		if (buttonPlaceBeacon)
-			buttonPlaceBeacon->winHide((TheGameLogic->m_gameMode != GAME_LAN && TheGameLogic->m_gameMode != GAME_INTERNET) || !TheGameInfo->isMultiPlayer());
+			buttonPlaceBeacon->winHide((TheGameLogic->m_110 != GAME_LAN && TheGameLogic->m_110 != GAME_INTERNET) || !TheGameInfo->isMultiPlayer());
 		if (buttonIdleWorker)
 			buttonIdleWorker->winHide(false);
 		if (buttonGeneral)

@@ -8,8 +8,8 @@
 // hide always hides, toggle shows only when in a replay and currently hidden.
 // Retail agrees on every branch. Target-established: the window global at
 // 0x00DFEDF4, TheGameLogic at 0x00DFE78C, the game mode compared against 3 at
-// GameLogic+0x110 (Zero Hour's GameLogic puts it at +0x94, so this TU carries
-// a shim of just that field), winHide at 0x313C64, winIsHidden at 0x313CD9.
+// GameLogic+0x110 in the canonical header (Zero Hour uses +0x94),
+// winHide at 0x313C64 and winIsHidden at 0x313CD9.
 // The value 3 as "replay game" is carried from the ZH GameMode enum.
 //
 // InGameUI.cpp still carries the unledgered ZH copies of these names; it
@@ -24,15 +24,7 @@ public:
 	bool winIsHidden();
 };
 
-class GameLogic
-{
-public:
-	bool isInReplayGame() { return m_gameMode == 3; }
-
-private:
-	char m_pad[0x110];
-	int m_gameMode;
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 extern GameWindow *m_replayWindow;
@@ -41,7 +33,7 @@ void showReplayControls(void)
 {
 	if (m_replayWindow)
 	{
-		m_replayWindow->winHide(!TheGameLogic->isInReplayGame());
+		m_replayWindow->winHide(!(TheGameLogic->m_110 == 3));
 	}
 }
 
@@ -57,7 +49,7 @@ void toggleReplayControls(void)
 {
 	if (m_replayWindow)
 	{
-		bool show = TheGameLogic->isInReplayGame() && m_replayWindow->winIsHidden();
+		bool show = (TheGameLogic->m_110 == 3) && m_replayWindow->winIsHidden();
 		m_replayWindow->winHide(!show);
 	}
 }

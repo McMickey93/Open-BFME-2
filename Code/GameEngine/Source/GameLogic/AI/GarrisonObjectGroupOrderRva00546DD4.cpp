@@ -1,10 +1,7 @@
 // cl: /MD
 // ?rva00546DD4@GarrisonObjectGroupOrder@@UAEXW4ObjectID@@@Z @0x00546DD4 90B evidence: slot 4 of 0x0086A3C4; calls findObjectByID rowed 0x00049DC5 three times plus AI rva0036EBB8 rowed 0x0036EBB8; uses TheGameLogic; clears +0x18 on null.
 // Honest-address slot method via vtable (naming rule).
-enum ObjectID
-{
-	OBJECTID_INVALID = 0
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 enum CommandSourceType
 {
@@ -13,11 +10,6 @@ enum CommandSourceType
 
 class Object;
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 
@@ -75,5 +67,5 @@ void GarrisonObjectGroupOrder::rva00546DD4(enum ObjectID id)
 	if (third != 0)
 		holder->m_ai.rva0036EBB8(third, CMDSOURCE_0);
 	else
-		m_18 = OBJECTID_INVALID;
+		m_18 = INVALID_OBJECT_ID;
 }
