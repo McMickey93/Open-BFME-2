@@ -9,7 +9,7 @@
 
 typedef bool Bool;
 
-extern "C" int __cdecl memcmp(const void *left, const void *right, unsigned int count);
+#include <string.h>
 
 Bool Rva002634E0Equal(const void *a, const void *b)
 {

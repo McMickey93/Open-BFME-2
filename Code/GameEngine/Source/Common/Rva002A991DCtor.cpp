@@ -7,7 +7,7 @@
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 #pragma function(memset)
-extern "C" void *memset(void *dst, int value, unsigned int size);
+#include <string.h>
 
 // Ledger global: the FLT_MAX float at VA 0x00BBB8E0 (defined by Rva002A996FMethod.cpp, data ledger g_Va00BBB8E0).
 extern float g_Va00BBB8E0;
