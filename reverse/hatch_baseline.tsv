@@ -3477,7 +3477,6 @@ alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_player
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C2EC9.cpp	??0?$BitFlags@$0HE@@@QAE@ABV0@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditionsPlayerMask.cpp	?getEachPlayerFromMask@PlayerList@@QAEPAVPlayer@@AAG@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditionsPlayerMask.cpp	?unidentified_0034DB40@ScriptEngine@@QAEGPAVParameter@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_ctor.cpp	??1ScriptConditions@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_ctor.cpp	?init@ScriptConditions@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineGetUnitNamed.cpp	?getUnitNamed@ScriptEngine@@QAEPAVObject@@ABVAsciiString@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineRva00357AF8.cpp	?g_str009E0878@@3V?$StringBase@D@@A	1

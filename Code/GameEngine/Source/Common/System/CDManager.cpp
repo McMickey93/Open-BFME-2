@@ -181,10 +181,11 @@ CDManager::CDManager()
 // CDManager::~CDManager
 //============================================================================
 
-CDManager::~CDManager()
-{
-	destroyAllDrives();
-}
+// Not defined here: the destructor this file used to claim at 0x003E5525 is
+// ScriptConditions' (it stores ScriptConditions' vftable 0x00C35B38 and calls
+// ScriptConditions::reset 0x003E3C66), now rowed in
+// GameLogic/ScriptEngine/ScriptConditions_ctor.cpp. Retail's CDManager uses
+// vftable 0x00C3C5DC (constructor 0x00427526); its destructor is not rowed yet.
 
 //============================================================================
 // CDManager::init
