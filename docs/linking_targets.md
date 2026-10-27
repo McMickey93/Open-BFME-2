@@ -336,7 +336,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003F40EF.cpp` | 85 | 5 (U=5) | 2026-10-27 at `97c23353111e`: U5 to U3; narrowed to swap; ArmySummary rename needed (LINK-083) |
 | `Code/GameEngine/Source/Common/ConstIntGettersAddr.cpp` | 84 | 1042 (A=1042) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv1879.cpp` | 82 | 5 (U=5) | Cleared (LINK-022, link_check 82B) |
-| `Code/GameEngine/Source/Common/RTS/PlayerRelationMapCtor.cpp` | 81 | 3 (C=2, S=1) | Open |
+| `Code/GameEngine/Source/Common/RTS/PlayerRelationMapCtor.cpp` | 81 | 3 (C=2, S=1) | 2026-10-27 (d16a31e4dc, index 73061d9452): LINKS in ordinary preview together with the renamed getter provider SubsystemNameGetters2.cpp (LINK-116, LINK-112); census confirmation pending |
 | `Code/GameEngine/Source/Common/Rva001F4B01Ctor.cpp` | 80 | 13 (U=12, C=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BFA86.cpp` | 80 | 4 (U=2, C=1, S=1) | 2026-10-26: LINKS in preview (f29627cb3f, LINK-083); census pending |
 | `Code/Libraries/Source/WWVegas/WW3D2/collect.cpp` | 79 | 20 (U=14, C=5, S=1) | 2026-10-27 at `97c23353111e`: U14/L4; shared RenderObjClass and ProxyClass interfaces (LINK-015) |

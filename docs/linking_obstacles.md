@@ -3890,7 +3890,7 @@ Clearance: pending. Census confirmation: not claimed.
 
 ### LINK-052: dispatch-shaped wrappers were misidentified as uninitialized fill
 
-Status: Open. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
+Status: Cleared (the three units were retired as duplicate claims; ordinary preview). Updated: 2026-10-27; inspected revision: d16a31e4dc; preview index 73061d9452. The 2026-10-26 text below is history.
 
 Evidence / affected units: `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva{005243FA,00569450,005AE78A}.cpp`, one 27-byte `uninitialized_fill_n` row each, compared with published index `d1f046749a` (`retail-truth-4`). The [worker handoff](../build/link-report.md) and `build/w4-link-20261026/evidence.log` retain retail wrapper/helper disassembly and the emitted one-byte fill-loop copies. Equal wrapper bytes do not establish the inferred STL algorithm or record identity.
 
@@ -3901,6 +3901,8 @@ Remaining / next check: `005243FA` calls 0052408B (179 B, `Rva0052408BFind` in s
 Clearance: pending for all three units; each retains its required helper as both comdat and selected findings. The comparator cleanup is verified but does not clear linking.
 
 Census confirmation: awaiting; no census claim.
+
+**2026-10-27 recheck (lk1, inspected `d16a31e4dc`, index 73061d9452):** none of the three StlSweepR3 units exists any more. Each address was rowed twice. The sweep row (`uninitialized_fill_n<RvaNRecord *>` over a `stable_sort` instantiation) never linked. The three-argument forwarder rows byte-verify and link. 66e3b24016 retired the 0x005243FA and 0x00569450 sweep rows and 862d9410db the 0x005AE78A row, all into `reverse/deleted_rows.csv` (re_attempts 86433-86435; LINK-060). The surviving owners and their helpers all LINK in ordinary preview: `Rva0052A22CForwarders.cpp` (`?Rva005243FA@@YAHHHH@Z`, 65 B), `Rva00569450Forward.cpp` (27 B), `Rva005AE78AChain.cpp` (60 B), `stlport_hero_integer_vector_tree.cpp` (0x0052408B, 1,331 B), `Rva00569109RangeForward.cpp` (29 B) and `Rva005AE6F8Find.cpp` (107 B): 6/6 LINKS at the same byte counts as the census, so nothing is lost and no linking gain remains. The paragraph above about reconciling wrapper and helper identities is now a naming and pin-cleanup lead, not a link blocker. The forwarders still reach their callees through address-named rows and pins (`?rva005AE78A@@YAHHHH@Z` "pinned callee"). Recover their real STLport names in the naming lane.
 
 ### LINK-053: unmatched light persistence factory instantiates missing donor interfaces
 Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: 896af21680.
@@ -5074,7 +5076,7 @@ Clearance: ProductionUpdate.cpp, current-object ordinary preview; the naming ren
 Census confirmation: not claimed.
 
 ### LINK-112: identity leads found while triaging the bf3dd31211 link queue
-Status: Open (leads; no source change). Updated: 2026-10-27; inspected revision: 08d99b62ed; preview index: bf3dd31211, retail-truth-4.
+Status: Cleared in ordinary preview (every lead resolved by its own lane; see the 2026-10-27 recheck at the end of this entry). Updated: 2026-10-27; inspected revision: d16a31e4dc; preview index: 73061d9452. Originally inspected 08d99b62ed against bf3dd31211.
 Evidence / affected units:
 - Cleared 2026-10-27 (link_check preview 0 -> 90 B, index bf3dd31211): `Rva00415CAB` was merged into `Rva0022A809Subsystem` (rows 0x00415CAB, its `__ehhandler$`/funclet parents and ??_G 0x00415E6E; the redundant 0x00415CAB pin dropped), and Rva00415704Ctor.cpp now compiles the fourteen-slot `subsystem_interface.h` base its destructor and deleting-destructor units use, so all three emit one `??_7Rva0022A809Subsystem@@6B@` (with the canonical dtor-only header the ctor's one-slot table was first in link order and the other two lost). `./build.sh` 33/33; joint link_check with SubsystemInterface.cpp, GameEngineInit.cpp and the CrowdResponse parsers: 8/8 LINK. Original finding: Rva00415704Ctor.cpp (90 B) is blocked by the unresolved `??1Rva0022A809Subsystem@@UAE@XZ`. Its constructor 0x00415704 installs vftable RVA 0x0083A288. Slot 0 of that table is the rowed `??_GRva00415CAB@@UAEPAXI@Z` at 0x00415E6E (OpaqueScalarDeletingDtorsB10.cpp), which calls the rowed `??1Rva00415CAB@@UAE@XZ` at 0x00415CAB (Rva00415CABDtor.cpp). `Rva0022A809Subsystem` (the type of `TheCrowdResponseStore`) and `Rva00415CAB` are therefore one class. rename.py cannot merge two existing class names, so this needs a class reconciliation commit.
 - Watchdog.cpp (203 B): `??0Watchdog@@QAE@HHH@Z` fails on the LINK-106 cause (thread-wrapper callee). Its REL32 to `_GetCurrentThreadId@0` lands on 0x006105D0, ThreadClass::_Get_Current_Thread_ID. The unit's `update` and `resumeTimeouts` declarations use the same callee. `?rva00225492@BfmeDfe6e4@@QAEXXZ` (0x00225492) has the body of Watchdog's present-unmatched `update`: the thread id at +0x50, time(), and the critical section at +0x70. The two critical-section helpers at 0x00225460/0x0022546B sit beside it. At inspection Watchdog.cpp was claimed by another fleet's link seat.
@@ -5085,6 +5087,14 @@ Remaining / next check: reconcile each identity in its own lane, then rerun link
 
 Completed: diagnosis only; no source or ledger change. Attempt evidence: `reverse/re_attempts.log` (blocked, 0x0049DD0B).
 Remaining / next check: emit that explicit specialization (the existing `Rva0039A48EElement` pattern in the same file) and move the parent row, its `$L6605` funclet (0x0078D8B3) and `__ehhandler$` row (0x0078D8C1) to the new name. `rename.py` refuses the signature change and `add_match.py --replace-rva` takes scaffold rows only, so retract the three rows in their own reviewed commit and re-add them with `add_match.py`; then `link_check.py` ProductionUpdate.cpp together with stlport_construct_stl_types.cpp.
+
+**2026-10-27 recheck (lk1, inspected `d16a31e4dc`, index 73061d9452, current objects):** every lead now links in ordinary preview, so no LINK-112 source work remains:
+- Rva00415704Ctor.cpp: cleared earlier (above).
+- Watchdog.cpp: LINKS (203 B), and so do WatchdogDtor.cpp (127 B), WatchdogThreadFunction.cpp (440 B) and the `?rva00225492@BfmeDfe6e4` provider BfmeDfe6e4_rva00225492.cpp (78 B). The LINK-106 thread-wrapper repair covers it. The present-unmatched `update` / 0x00225492 identity remains a naming lead.
+- PlayerRelationMap: cleared by LINK-116. Alone, its Ctor (81 B), Deleter (28 B) and Dtor (134 B) report unresolved `?GetSnapshotName@PlayerRelationMap@@MBEPBDXZ`. Run them with its renamed provider, `SubsystemNameGetters2.cpp` (row 0x002AD0C0, renamed after the census), and all four LINK (0 -> 81 B, the others unchanged). This is expected until the next census picks up the renamed getter.
+- V3PolyDeferredCopyCtors2.cpp: cleared earlier (LINK-096).
+- The trailing "Completed / Remaining" pair above (the ProductionUpdate `_Construct<QuantityModifier>` lead, 0x0049DD0B) belongs to LINK-111. It was solved by forwarding through an import-inline specialization (re_attempts 89850). ProductionUpdate.cpp (1,101 B) and stlport_construct_stl_types.cpp (1,791 B) both LINK. Renaming the row to the template name remains a naming lead.
+Census confirmation: pending for the units not yet linked at 73061d9452 (Rva00415704Ctor.cpp, PlayerRelationMapCtor.cpp, V3PolyDeferredCopyCtors2.cpp).
 
 ### LINK-113: BoneFXDamage imports the Zero Hour DamageModule Snapshot contract
 Status: Blocked on shared module interface and existing row identity reconciliation. Updated: 2026-10-27; inspected revision: a0b82f68445de8ab0254437ef7e97332ce48cfb0.
@@ -5365,3 +5375,28 @@ Clearance: none. Census confirmation: CrateSystem.cpp linked at 73061d9452.
 
 **2026-10-27 follow-up, inspected `7db1ac5c68`, index 73061d9452:** link_check now drops a deleted unit's second copies (3d44b2bbcbe, Verifier-Change); ordinary previews of CrateSystem.cpp (447 B), boxrobj.cpp (5,522 B) and dx8wrapper.cpp (28,658 B) LINK, while BitFlagsClear.cpp's real wrong copy (LINK-030) is still reported. Merge previews are therefore conclusive again for units whose moved bodies have a surviving definer. A `tu_skeleton --merge --dry-run` sweep of all 22 queue TUs with no mixed/refused/held rows (registry, HeaderTemplate, quat, AptMpChat, NetCommandList, AIUnitUpgrader, Win32DIKeyboard, thread, RayEffect, AptValueVector, INIMultiplayer, AptValueGCAllocator, frustum, LivingWorldAIInformation, W3DDisplayStringManager, Transport, motchan, udp, UserPreferences, RadiusDecal, TerrainRoads, matpass) accepted no donor: every one needs private-view or flag reconciliation first (seed views lacking donor members, redefined STL/StringBase templates, sweep vs platformsdk headers, carried flag overrides). thread.cpp tolerates the `platformsdk` marker byte-exact, but its donor ThreadClassLifecycle.cpp is claimed by another seat. No merge pushed.
 **2026-10-27 merge follow-up:** BitChannelLoadW3D.cpp merged into motchan.cpp (4f9f55f9cd5 donor reconcile: the view's `Free_Inline` became `Free`; d346ae3d08c merge, 19/19 byte-exact, link_check LINKS 984 -> 1,219 B). In the merged TU the out-of-line `BitChannelClass::Free` is auto-inlined into `Load_W3D` as retail does, so a private view's renamed inline copy is only needed while the body stands alone. Still blocked in motchan: AdaptiveDeltaMotionChannelFinish.cpp (view field `DataByteCount` has no counterpart in the seed's 0x24-byte header view; needs a layout reconcile) and AdaptiveDeltaLoadW3D.cpp (includes `<new>`, colliding with the seed's placement new). udp donors reference `rvaXXXXXXXX` placeholder members of their private `UDP` view; matpass donors lose rows under the seed's flag override or have no baseline match.
+
+### LINK-124: changes after the 73061d9452 census removed providers that census-linked units still use
+
+Status: Repair landed / awaiting census for three units; cause class open (single-unit previews miss it). Updated: 2026-10-27; inspected revision: d16a31e4dc (rebased onto cd2bf1dd60); index 73061d9452.
+
+Evidence / affected units: a current-object preview of every census-unlinked unit plus every source changed since the census (1,485 previewable units; 31 new merged units are not previewable) found three census-linked units that no longer link. One more, GameLogicInit.cpp, failed only in that full preview:
+- `StlportVectorInsertOverflowRva003A46FA.cpp` (221 B). After the census, a9a72a7980 turned the decl-only `_Construct<BfmeStringHeadRecord160>` into an `inline` forwarder to `_Construct<BfmeContainerRecord003A451B>`. Every call is inlined, but VC7.1 still emits the specialization as a 5-byte `jmp` COMDAT. `reverse/symbols.csv` pins that name at 0x003A454E, the 45-byte EH body, so the census rejects the thunk as not retail's body.
+- `Rva000F0F2BFinish.cpp` (65 B): unresolved `??_7W3DProjectedShadow@@6B@`. In the census index its only definition was a COMDAT from W3DProjectedShadowManagerRva0010C2D5.cpp, which 9c3a383b2b rightly stopped emitting.
+- `GameLogicInit.cpp` (28,191 B): unresolved `_strcat`. e40e476d69 measured it linking while the DirtySock Y2 units still carried `/alternatename:_strcat=?ji_0062988c@@YAXXZ`. At the same time e015ef1d25 dropped those pragmas as dead. An `/alternatename` is link-wide; retail imports no strcat, and the 0x0062988C thunk is `_mbscat`. The same drop broke six other units; davidrazidlo-claude-K5 repaired those in cd2bf1dd60.
+
+Completed (lk1):
+- 3f52d8533b: the forwarder is `__declspec(dllimport) __forceinline` (the ProductionUpdate import-inline pattern). The object then defines no `_Construct<BfmeStringHeadRecord160>`. 2/2 rows exact. All 7 sources spelling either record LINK.
+- 289c61ac84: Rva000F0F2BFinish.cpp stores `??_7Rva007B1380@@6B@`, a ledger name of 0x007CEFA0 that Rva007B1380Ctor.cpp defines. Its rowed ctor 0x00109D8C stores the same 0x00BCEFA0, and `tools/dir32.py` resolves all three stores to 0x00BCEFA0. data_check finds nothing. 4/4 cohort LINKS.
+- ba645a64fc: GameLogicInit.cpp calls `_mbscat` and `_mbscpy` from `<mbstring.h>`, as e015ef1d25 did for the strcpy callers. The REL32 targets are the same thunks. 203/203 rows exact, 32 EH graphs exact.
+- All three LINK in the full current-object preview (1,304 of 1,485 previewable units, up from 1,301).
+
+Method (reusable): a single-unit `link_check` uses the census index for every other object, so it cannot see a provider that a later commit removed. To find such losses:
+1. Preview the changed sources together.
+2. Diff the census index's definitions and `alternates` for changed and deleted objects against the current objects.
+3. Search a full object tree (for example `build/wt_link/build/match`, read-only) for undefined references to the lost names.
+On this tree that search found only the `_strcat` users and Rva000F0F2BFinish.cpp. Commits that drop an `/alternatename` or a COMDAT provider should run this search.
+
+Remaining / next check: the next census should confirm the three units. W3DBridgeLoad.cpp still waits on TerrainLogic.cpp (merged, not previewable; cd2bf1dd60). `_strcpy` still resolves only through leftover `/alternatename:_strcpy=?ji_00629176@@YAXXZ` pragmas in GameWindowManagerScript.cpp and AptScoreScreenCallbacks.cpp. Before retiring the last of them, convert every remaining `strcpy` caller to `_mbscpy`, or those callers lose the name.
+
+Clearance: ordinary current-object preview only. Census confirmation: awaiting.
