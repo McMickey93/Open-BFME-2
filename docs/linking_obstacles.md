@@ -1280,6 +1280,18 @@ duplicate-definition keys; no census or image-ownership gain is claimed.
   comparison proves the separate 1,538-byte gain with zero losses. The first
   push was rejected solely because master advanced; the existing commits are
   rebased and retried without repeating any match or full measurement.
+- **Huffman publication cohort (2026-10-27, first candidate `6cec0a4f41`):**
+  [the retained normal-hook audit](../reverse/attempt_support/vp6-huff-table-layout-link-20261027/publication-audit.json)
+  passes 41/41 bodies, five data rows, four exact EH graphs and converged-data
+  enforcement across HuffTokens.cpp, Eva.cpp, ThreadClassLifecycle.cpp and
+  thread.cpp. The mandatory comparison is inconclusive: index `d1f046749a`
+  predates outgoing base `3e1e5f6d6a5`, and three objects lack current strict
+  receipts (first Eva). No selected-provider or current-master lost-byte verdict
+  follows; carry these four paths to the next normal census/current-index check.
+  The separate immutable comparison proves 2,877 placed closed-strict bytes
+  with zero losses. The first push was rejected because master advanced;
+  only the existing commits are rebased/retried, without repeating any match
+  record or full measurement.
 - **Remaining / next check:** prove and make the actual include graph
   inventoryable under the existing gates, then repeat bounded strict preparation
   for all affected providers/consumers. A needed verifier repair follows the
