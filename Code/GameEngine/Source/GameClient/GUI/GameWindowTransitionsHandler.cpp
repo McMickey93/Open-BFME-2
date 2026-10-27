@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /Ireference/shims/bfmelist /MD /GX /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // GameWindowTransitionsHandler construction and teardown (Zero Hour
@@ -36,6 +37,7 @@ template <> bool less<unsigned int>::operator()(const unsigned int &a, const uns
 #include <list>
 
 #include <cstddef>
+#include <windows.h>
 
 // vector<void*> begin/end otherwise instantiate per-TU COMDATs (one byte
 // shape per TU flags); explicit dllimport+forceinline specializations take
@@ -113,8 +115,6 @@ typedef Transition *(*WindowTransitionFactory)( void );
 typedef std::hash_map<NameKeyType, WindowTransitionFactory,
 	rts::hash<NameKeyType>, rts::equal_to<NameKeyType> > WindowTransitionMap;
 
-extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(void *cs);
-
 // TransitionGroup (0x14 bytes) under its rowed address names: the dtor
 // 0x001DC0EC (scalar deleting 0x001DC1E1) and the list walk rva001DBE17.
 class Rva001DC0EC
@@ -150,7 +150,7 @@ private:
 	TransitionGroup *m_drawGroup;               // +0x2C
 	TransitionGroup *m_secondaryDrawGroup;      // +0x30
 	int m_unk34;
-	char m_lock[0x50 - 0x38];                   // +0x38 CRITICAL_SECTION
+	CRITICAL_SECTION m_lock;                    // +0x38
 	unsigned char m_lockInitialized;            // +0x50
 	unsigned char m_unk51;
 	char m_pad52[0x64 - 0x52];
@@ -202,7 +202,7 @@ GameWindowTransitionsHandler::~GameWindowTransitionsHandler()
 	}
 	if( m_lockInitialized )
 	{
-		DeleteCriticalSection( m_lock );
+		DeleteCriticalSection( &m_lock );
 		m_lockInitialized = 0;
 	}
 

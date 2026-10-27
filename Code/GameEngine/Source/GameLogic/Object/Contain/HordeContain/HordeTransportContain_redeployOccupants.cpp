@@ -17,7 +17,7 @@ static inline void _Construct(int *dest, const int &value)
 { new (dest) int(value); }
 }
 #include <list>
-extern "C" void *__cdecl memcpy(void *,const void *,unsigned int);
+#include <string.h>
 #pragma intrinsic(memcpy)
 #include "../../../../../Include/GameLogic/ContainmentListView.h"
 typedef _STL::list<int> IntList;

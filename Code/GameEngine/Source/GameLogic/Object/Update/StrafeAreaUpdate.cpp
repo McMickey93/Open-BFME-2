@@ -6,6 +6,7 @@
 // No clean BF1/ZH counterpart exists for this BFME strafe helper; WB and
 // adjacent matched BFME2 layout are the reconstruction evidence.
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
+#include <math.h>
 enum CommandSourceType {CMD_FROM_AI=2};
 class AICommandInterface {public:void aiMoveToPosition(const Coord3D *,CommandSourceType);};
 template<int N> class StrafeAISlots:public StrafeAISlots<N-1> {public:virtual void gap(char (*)[N])=0;};template<> class StrafeAISlots<0> {};
@@ -13,7 +14,6 @@ class AIUpdateInterface;
 class AIUpdateInterface:public StrafeAISlots<98> {public:virtual AIUpdateInterface *rvaSlot98()=0;char pad[0x1C];AICommandInterface commands;};
 class Thing {public:void setOrientation(float);};
 class Object:public Thing {public:char pad[0x258];AIUpdateInterface *ai;};
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 struct StrafeAreaUpdateModuleData {char pad[0x1C];unsigned word1C;};
 struct StrafeDirection {float x,y,z;
  __forceinline StrafeDirection(const Coord3D &v):x(v.x),y(v.y),z(v.z) {}

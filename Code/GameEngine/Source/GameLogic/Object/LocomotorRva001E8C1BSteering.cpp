@@ -25,7 +25,6 @@ extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 
 struct SteeringCoord:Coord3D { SteeringCoord(){} void copy(const Coord3D&r){x=r.x;y=r.y;z=r.z;} SteeringCoord(const Coord3D&r){copy(r);} void subtract(const Coord3D&r){x-=r.x;y-=r.y;z-=r.z;} };
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 #include <math.h>
 Real normalizeAngle(Real angle);
 Real Cos(Real angle);

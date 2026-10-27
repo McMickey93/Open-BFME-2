@@ -29,6 +29,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 #include <map>
 #include <vector>
+#include <string.h>
 
 class LocomotorTemplate;
 
@@ -148,7 +149,6 @@ public:
 };
 
 __declspec(noreturn) void __stdcall _CxxThrowException(void *pExc, void *pInfo);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 extern const char *TheLocomotorSetNames[];
 extern NameKeyGenerator *TheNameKeyGenerator;

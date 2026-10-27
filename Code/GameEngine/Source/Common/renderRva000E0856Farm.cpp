@@ -1,9 +1,11 @@
+// platformsdk
 // ?render@Rva000E0856@@QAEXPAVRenderContext@@@Z
 // ?render@Rva000E0856@@QAEXPAVRenderContext@@@Z
 // ?render@Rva000E0856@@QAEXPAVRenderContext@@@Z
 // cl: /O1 /G7 /arch:SSE /MD /EHs /DNDEBUG /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // stlport
 #include <stl/_hashtable.h>
+#include <windows.h>
 class BfmeVecHF {public:float x,y,z;};
 class Gen_0094AC70 {public:void bfmeSetPair(const BfmeVecHF*,const BfmeVecHF*);};
 class Matrix3D {public:float cells[12];};
@@ -159,7 +161,6 @@ virtual DrawableView*lookup(unsigned);};extern GameClient*TheGameClient;
 class Rva000E0123 {public:void rva000E0123(float);void rva000E00C0(float);};
 class Rva000E07F4Host {public:void rva000E0584(Rva000E07F4Obj*);};
 int rva000E07F4(Rva000E07F4Obj*,Rva000E07F4Host*);
-extern "C" __declspec(dllimport) unsigned __stdcall timeGetTime();
 extern float terrainLineOpacity;
 // Owned here (its only reader); retail .data VA 0x00DB5468 starts at 1.0f.
 float terrainLineOpacity = 1.0f;

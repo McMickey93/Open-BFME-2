@@ -52,7 +52,6 @@ inline void Coord3D::normalize()
 	}
 }
 
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 Real Cos(Real);									///< retail 0x0002FBC0
 Real Sin(Real);									///< retail 0x0002FBB0
 

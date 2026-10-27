@@ -4,10 +4,10 @@
 // adapted (no Physics argument). The unrowed minimum-speed helper 0x001E4073
 // is pinned under its address-derived name. Protected, as in ZH's Locomotor.h.
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
+#include <math.h>
 class Thing { public: bool isAboveTerrain() const; };
 class Object;
 int __cdecl Rva001E3896Check(float);
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 float Cos(float); float Sin(float);
 struct Rva001E3F08Arg;
 class Rva001E3F08 { public: float rva001E3F08(Rva001E3F08Arg *); };
@@ -40,4 +40,3 @@ void Locomotor::maintainCurrentPositionWings(Object *obj) {
   ((Rva001E7C2B *)this)->rva001e7c2b((unsigned)obj,(unsigned)&desired,0,((Rva001E3F08 *)this)->rva001E3F08((Rva001E3F08Arg *)obj));
  }
 }
-

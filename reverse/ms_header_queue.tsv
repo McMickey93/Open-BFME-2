@@ -653,10 +653,8 @@ Code/GameEngine/Source/Common/Rva00289ABDCtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	
 Code/GameEngine/Source/Common/Rva004EE5D2Erase.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<time.h>	no	yes	hand			time:source
 Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			atexit:source
 Code/GameEngine/Source/Common/System/SkipWhitespaceW.c	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<ctype.h>	no	no	hand			iswspace:unknown
-Code/GameEngine/Source/Common/renderRva000E0856Farm.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/Common/renderRva000E0856Farm.cpp:6 stl/_hashtable.h(unknown)		timeGetTime:source
 Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarCommandProcessing.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			MSG:unknown
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoad_SetDefaultFileName.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			_wsplitpath:source
-Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		DeleteCriticalSection:source
 Code/GameEngine/Source/GameClient/GUI/Rva007B4874Registrations.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			atexit:source
 Code/GameEngine/Source/GameClient/GlobalLanguageDtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/GameClient/GlobalLanguageDtor.cpp:14 stl/_alloc.h(unknown)		operator==:unknown
 Code/GameEngine/Source/GameClient/LanguageFilterUnHaxor.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand			wcsrchr:source
@@ -664,16 +662,9 @@ Code/GameEngine/Source/GameLogic/AI/AIGroupMoveFormation.cpp	adapt	unknown	1	1	0
 Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsCtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsCtor.cpp:13 stl/_algobase.h(unknown)		operator==:unknown
 Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsInsertDeferred.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsInsertDeferred.cpp:13 stl/_algobase.h(unknown)		operator==:unknown
 Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorUpdate.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
-Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeTransportContain_redeployOccupants.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	1: Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeTransportContain_redeployOccupants.cpp:13 stl/_construct.h(unknown)		memcpy:same
-Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainModuleDataParse.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	1	<excpt.h>,<string.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		strcmp:same
 Code/GameEngine/Source/GameLogic/Object/CreateAHeroHero.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateDirectoryW:source
-Code/GameEngine/Source/GameLogic/Object/LocomotorRva001E8C1BSteering.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/GameLogic/Object/LocomotorTransformSetup.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
-Code/GameEngine/Source/GameLogic/Object/Locomotor_maintainCurrentPositionWings.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
-Code/GameEngine/Source/GameLogic/Object/Update/AIUpdateParseLocomotorSet.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	1: Code/GameEngine/Source/GameLogic/Object/Update/AIUpdateParseLocomotorSet.cpp:22 stl/_algobase.h(unknown)		_strcmpi:same
 Code/GameEngine/Source/GameLogic/Object/Update/Rva0016DEE0Cluster.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			operator==:unknown
-Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdate.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
-Code/GameEngine/Source/GameLogic/Object/WeaponComputeApproachTarget.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/GameLogic/Object/WeaponTemplateScatterTargetPos.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/GameLogic/ScriptEngine/iniParseObjectFilter.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		_strcmpi:source
 Code/GameEngine/Source/GameLogic/System/ArmySummary.h	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand	1: Code/GameEngine/Source/GameLogic/System/ArmySummary.h:5 ascii_string.h(unknown)		free:same
