@@ -57,7 +57,8 @@ struct Rva0059517FPacket
 class UDP
 {
 public:
-	int rva00594A06();
+	enum sockStat { NOTSOCK = -11 };
+	sockStat GetStatus(void);
 	int getLocalAddr(unsigned int &ip, unsigned short &port);
 };
 
@@ -94,7 +95,7 @@ bool Rva0059517F::sendToManglerFromPort(unsigned long a1, unsigned short a2, uns
 
 bool Rva0059517F::rva00595213(UDP *udp, unsigned long address, unsigned short packetID, unsigned short port, bool blitzme)
 {
-	if (udp->rva00594A06() == -11)
+	if (udp->GetStatus() == UDP::NOTSOCK)
 		return false;
 	unsigned int localIP;
 	unsigned short localPort;

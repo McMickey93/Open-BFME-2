@@ -129,9 +129,9 @@ public:
 public:
 	int Read(unsigned char *, unsigned int, sockaddr_in *);
 public:
-	enum SockStatus { ADDRNOTAVAIL = -7 };
+	enum sockStat { ADDRNOTAVAIL = -7 };
 public:
-	int rva00594A06();
+	sockStat GetStatus(void);
 };
 
 struct TransportAddress
@@ -552,7 +552,7 @@ Bool Transport::update(Rva00594DC0 *receiver)
 	{
 		for (int i = 0; i < 8; ++i)
 		{
-			if (((UDP *)m_slots[i].m_object) && ((UDP *)m_slots[i].m_object)->rva00594A06() == UDP::ADDRNOTAVAIL)
+			if (((UDP *)m_slots[i].m_object) && ((UDP *)m_slots[i].m_object)->GetStatus() == UDP::ADDRNOTAVAIL)
 			{
 				retval = false;
 				break;
@@ -563,7 +563,7 @@ Bool Transport::update(Rva00594DC0 *receiver)
 	{
 		for (int i = 0; i < 8; ++i)
 		{
-			if (((UDP *)m_slots[i].m_object) && ((UDP *)m_slots[i].m_object)->rva00594A06() == UDP::ADDRNOTAVAIL)
+			if (((UDP *)m_slots[i].m_object) && ((UDP *)m_slots[i].m_object)->GetStatus() == UDP::ADDRNOTAVAIL)
 			{
 				retval = false;
 				break;
