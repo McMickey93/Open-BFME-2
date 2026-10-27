@@ -67,6 +67,17 @@ template <> void _Construct<BfmeStringRecord005EC43C, BfmeStringRecord005EC43C>(
 template <> void _Construct<BfmeStringRecord005F93E3, BfmeStringRecord005F93E3>(BfmeStringRecord005F93E3 *, const BfmeStringRecord005F93E3 &);
 }
 
+// vector<BfmeStringRecord0022074B>::_M_clear's range destroy is the rowed
+// Rva00220AEBDestroy (0x00220AEB); forward to it so this unit's kept _M_clear
+// copy calls that owner rather than an unaddressed _Destroy instantiation.
+class LocomotorStore;
+void __cdecl Rva00220AEBDestroy(LocomotorStore *, LocomotorStore *);
+namespace _STL
+{
+template <> __declspec(dllimport) __forceinline void _Destroy<BfmeStringRecord0022074B *>(BfmeStringRecord0022074B *__first, BfmeStringRecord0022074B *__last)
+{ Rva00220AEBDestroy(reinterpret_cast<LocomotorStore *>(__first), reinterpret_cast<LocomotorStore *>(__last)); }
+}
+
 // Retail 0x0021E1EB (180B).
 template void _STL::vector<BfmeStringRecord002199C8>::_M_insert_overflow(
     BfmeStringRecord002199C8 *, const BfmeStringRecord002199C8 &, const _STL::__false_type &, unsigned int, bool);
