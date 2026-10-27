@@ -616,7 +616,6 @@ Code/GameEngine/Source/Common/System/Rva0030662AXfer.cpp	drop-in candidate	same	
 Code/GameEngine/Source/Common/System/Rva0031AB1EPrepend.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/System/INI_parseDamageFX.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same
 Code/GameEngine/Source/Common/System/Rva0033A865.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
-Code/GameEngine/Source/Common/System/Rva004FAFB6Factory.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/System/Rva005046B0ScanTangent.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	tan:same
 Code/GameEngine/Source/Common/System/Rva005659CATidy.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/Common/System/Rva005CFC12.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	floor:same

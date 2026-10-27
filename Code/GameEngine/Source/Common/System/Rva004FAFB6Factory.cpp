@@ -35,7 +35,7 @@ private:
 	int m_2c;
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class Rva004FAC21
 {
