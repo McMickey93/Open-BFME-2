@@ -20,18 +20,13 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 
-class SubsystemInterface
-{
-public:
-	virtual ~SubsystemInterface();
-};
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 class Rva0041FE0E : public SubsystemInterface
 {
 public:
 	Rva0041FE0E();
 	virtual ~Rva0041FE0E();
-	char m_pad04[8];
 	int m_0C;
 };
 

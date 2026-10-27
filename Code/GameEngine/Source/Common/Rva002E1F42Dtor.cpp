@@ -6,11 +6,7 @@
 // passes this in ecx; same vptr-plus-free-plus-base shape as dtor lane;
 // neighbours carry /O1.
 // Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
-class SubsystemInterface
-{
-public:
-	virtual ~SubsystemInterface();
-};
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 // Retail calls free directly (the game allocator), not through the CRT
 // import: read <stdlib.h> without dllimport.
@@ -23,7 +19,6 @@ class Rva002E1F42 : public SubsystemInterface
 public:
 	virtual ~Rva002E1F42();
 private:
-	char m_pad[8];
 	char *m_c;
 };
 

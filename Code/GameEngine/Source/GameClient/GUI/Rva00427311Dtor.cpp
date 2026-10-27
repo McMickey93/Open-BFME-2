@@ -29,12 +29,7 @@ public:
 };
 
 // Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
-class SubsystemInterface
-{
-public:
-	SubsystemInterface();
-	virtual ~SubsystemInterface();
-};
+#include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 // The rowed empty-map constructor at 0x00427507 uses this neutral element
 // view. This call establishes neither an element identity nor a map-use layout.
@@ -76,7 +71,6 @@ public:
 	Rva00427311();
 	virtual ~Rva00427311();
 private:
-	char m_pad[8];
 	Rva004271D9 m_playingVideos;
 };
 

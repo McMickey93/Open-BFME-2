@@ -60,12 +60,7 @@ struct GlobalDataWinCursorsView {
 	bool m_winCursors;
 };
 
-class SubsystemInterface
-{
-public:
-	SubsystemInterface();
-	virtual ~SubsystemInterface();
-};
+#include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 // Retail identity is Mouse (vtable 0x00BE0358 is written by both the ctor
 // 0x001EEC97 and the dtor 0x001EE3DE, which share one ICF-folded FuncInfo
@@ -78,7 +73,6 @@ public:
 	virtual ~Mouse();
 
 private:
-	unsigned char m_pad04[8];
 	CursorInfo m_arr0C[0x38];
 	AsciiString m_tooltipFontName;			// 0x126C
 	int m_tooltipFontSize;					// 0x1270

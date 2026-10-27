@@ -25,11 +25,7 @@
 //   0x005FB1AD  0x00C79EDC  +0x20  0x005FAFB2  0x006003FC
 
 // Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
-class SubsystemInterface
-{
-public:
-	virtual ~SubsystemInterface();
-};
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 // Member destructors 0x0022DC9B and 0x005F85E1 are rowed STLport ~vector
 // instantiations (StlportVectorDtorFamily.cpp); declared, not defined here.
@@ -230,7 +226,6 @@ public:
 	virtual ~Rva00413A24();
 
 private:
-	char m_unmodelled_04[0x8];
 	_STL::vector<Rva00413B16Element> m_member;	// +0xC
 };
 
@@ -246,7 +241,6 @@ protected:
 	virtual ~Rva0022DE6B();
 
 private:
-	char m_unmodelled_04[0x8];
 	Rva0022DCDA m_member;	// +0xC
 };
 
