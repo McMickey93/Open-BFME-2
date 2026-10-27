@@ -39,11 +39,9 @@ typedef bool Bool;
 #endif
 
 
-// Coord3D: shared derived view (Coord3DBase base); no private copy.
-#define COORD3D_DV_CTOR_INLINE
-#define COORD3D_DV_COPY_EXTERN
-#define COORD3D_DV_ZERO
-#include "../../../../../../Libraries/Include/Lib/Coord3DDerivedView.h"
+// Transfer coordinates through the canonical Coord3DBase view.
+#include "../../../../../../Libraries/Include/Lib/Coord3D.h"
+#include "../../../../../../Libraries/Include/Lib/Coord3DBase.h"
 
 
 enum ObjectID
@@ -228,16 +226,16 @@ void DockUpdate::xfer(Xfer *xfer)
 	if (xfer->IsLightCRC())
 		return;
 	xfer->Version1();
-	*xfer == m_enterPosition;
-	*xfer == m_dockPosition;
-	*xfer == m_exitPosition;
+	*xfer == asBase(m_enterPosition);
+	*xfer == asBase(m_dockPosition);
+	*xfer == asBase(m_exitPosition);
 	*xfer == m_numberApproachPositions;
 	*xfer == m_positionsLoaded;
 	Int vectorSize = (Int)m_approachPositions.size();
 	*xfer == vectorSize;
 	m_approachPositions.resize(vectorSize);
 	for (Int vectorIndex = 0; vectorIndex < vectorSize; ++vectorIndex)
-		*xfer == m_approachPositions[vectorIndex];
+		*xfer == asBase(m_approachPositions[vectorIndex]);
 	vectorSize = (Int)m_approachPositionOwners.size();
 	*xfer == vectorSize;
 	m_approachPositionOwners.resize(vectorSize, INVALID_ID);

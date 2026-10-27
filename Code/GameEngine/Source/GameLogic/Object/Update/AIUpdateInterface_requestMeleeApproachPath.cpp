@@ -23,8 +23,8 @@ typedef unsigned int UnsignedInt;
 typedef float Real;
 typedef bool Bool;
 
-// Coord3D: retail user ctors, opt-in view (Lib/Coord3DCtorView.h); no private copy.
-#include "../../../../../Libraries/Include/Lib/Coord3DCtorView.h"
+// Coord3D uses the canonical three-float layout.
+#include "../../../../../Libraries/Include/Lib/Coord3D.h"
 
 #include <math.h>
 
@@ -267,7 +267,8 @@ private:
 
 Bool AIUpdateInterface::requestMeleeApproachPath(const Coord3D *destination, Bool exact)
 {
-	Coord3D objPos = *getObject()->getPosition();
+	const Coord3D *position = getObject()->getPosition();
+	Coord3D objPos = {position->x, position->y, position->z};
 	Coord3D delta;
 	delta.x = objPos.x - destination->x;
 	delta.y = objPos.y - destination->y;
@@ -281,7 +282,7 @@ Bool AIUpdateInterface::requestMeleeApproachPath(const Coord3D *destination, Boo
 		delta.y *= data->m_meleeApproachDistance;
 	}
 
-	Coord3D dest = *destination;
+	Coord3D dest = {destination->x, destination->y, destination->z};
 	if (!exact)
 	{
 		dest.x += delta.x;

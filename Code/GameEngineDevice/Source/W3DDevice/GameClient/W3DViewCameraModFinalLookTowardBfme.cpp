@@ -20,7 +20,7 @@ typedef bool Bool;
 #include "ascii_string.h"
 
 // Coord3D: shared header/view; no private copy.
-#include "../../../../Libraries/Include/Lib/Coord3DCtorView.h"
+#include "../../../../Libraries/Include/Lib/Coord3D.h"
 
 struct Rva00740AE0Elem
 {
@@ -135,7 +135,7 @@ void W3DView::cameraModFinalLookToward(Coord3D *pLoc)
 			end.x /= 2;
 			end.y /= 2;
 
-			Coord3D result = start;
+			Coord3D result = {start.x, start.y, start.z};
 			result.x += 0.5f * (end.x - start.x);
 			result.y += 0.5f * (end.y - start.y);
 			result.x += 0.25f * (middle.x - end.x + middle.x - start.x);

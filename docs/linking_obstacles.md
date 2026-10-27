@@ -1976,6 +1976,11 @@ everse/re_attempts.log.
 - **Remaining:** three Region3D entries retain the copy-visibility, Coord3D
   lifetime and streamer-provider prerequisites. LINK-018 remains open.
 
+#### Coord3D consumer adoption package, 2026-10-27
+
+- **Inspected `0c1d1f01636`:** `AIUpdateInterface_requestMeleeApproachPath.cpp`, `DockUpdateXfer.cpp`, `W3DViewCameraModFinalLookTowardBfme.cpp` and `W3DViewCameraModLookTowardBfme.cpp` now include canonical Coord3D. Field initialization preserves the local-copy code, and the transfer unit uses the canonical `asBase` accessor. The owning acceptance tool removes their queue entries. Normal byte checks and paired ordinary link previews against `5ce093a71a` preserve the assigned rows and clean link states. Per-unit raw outputs and final checks are recorded in `build/header-report.md` and `build/header-hc2-coord3d/`.
+- **Remaining:** the other assigned units retain constructor, destructor, member, code-generation or class-key prerequisites. In particular, the array and by-value units require nontrivial coordinate lifetimes, while `coord3d.cpp`, `coord3d_crossproduct.cpp`, `matrix4d.cpp` and `region.cpp` retain V-form coordinate rows that canonical struct adoption would rename. Sources are restored or untouched, their queue entries remain, and blocked verdicts identify the evidence. Resolve the class-owner interface and provider prerequisites before retrying. This package establishes header-debt retirement only; LINK-018 remains open and no census or strict-closure gain is claimed.
+
 ### LINK-019: `Rva0039B893` vtable mismatch across copy-ctor and default-ctor units blocks `ScoreKeeperPerFrameStatsDefaultResizeDeferred.cpp` linking
 
 **Status: Cleared. Updated: 2026-10-26; inspected revision: d831bc24031.**
