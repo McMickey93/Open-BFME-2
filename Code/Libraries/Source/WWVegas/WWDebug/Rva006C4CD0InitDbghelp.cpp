@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /Oi-
+// platformsdk
 // ?initDbghelp@Rva006C4CD0Helper@@QAEXXZ
 // retail 0x006C4CD0, 124 bytes. Dedicated TU.
 //
@@ -12,22 +13,9 @@
 // the method name describes the proven behavior. Imports resolve by name
 // (LoadLibraryA, GetProcAddress).
 
-#ifndef NULL
-#define NULL 0
-#endif
-
-#ifndef FALSE
-#define FALSE 0
-#define TRUE 1
-#endif
-
-typedef void *HMODULE;
-
-extern "C" __declspec(dllimport) HMODULE __stdcall LoadLibraryA(const char *name);
-extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(HMODULE module, const char *name);
-extern "C" __declspec(dllimport) void *__stdcall GetCurrentProcess(void);
-extern "C" __declspec(dllimport) int __stdcall FreeLibrary(HMODULE module);
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *dst, const char *src, unsigned int n);
+#include <windows.h>
+#include <stdio.h>
+#include <string.h>
 
 class Rva006C4CD0Helper
 {
@@ -80,13 +68,13 @@ void Rva006C4CD0Helper::initDbghelp(void)
 	if (m_hLib == NULL) {
 		return;
 	}
-	m_symInitialize = GetProcAddress(m_hLib, "SymInitialize");
-	m_symCleanup = GetProcAddress(m_hLib, "SymCleanup");
-	m_stackWalk = GetProcAddress(m_hLib, "StackWalk");
-	m_symFunctionTableAccess = GetProcAddress(m_hLib, "SymFunctionTableAccess");
-	m_symGetModuleBase = GetProcAddress(m_hLib, "SymGetModuleBase");
-	m_symGetSymFromAddr = GetProcAddress(m_hLib, "SymGetSymFromAddr");
-	m_symGetLineFromAddr = GetProcAddress(m_hLib, "SymGetLineFromAddr");
+	m_symInitialize = (void *)GetProcAddress(m_hLib, "SymInitialize");
+	m_symCleanup = (void *)GetProcAddress(m_hLib, "SymCleanup");
+	m_stackWalk = (void *)GetProcAddress(m_hLib, "StackWalk");
+	m_symFunctionTableAccess = (void *)GetProcAddress(m_hLib, "SymFunctionTableAccess");
+	m_symGetModuleBase = (void *)GetProcAddress(m_hLib, "SymGetModuleBase");
+	m_symGetSymFromAddr = (void *)GetProcAddress(m_hLib, "SymGetSymFromAddr");
+	m_symGetLineFromAddr = (void *)GetProcAddress(m_hLib, "SymGetLineFromAddr");
 }
 
 // ?uninitDbghelp@Rva006C4CD0Helper@@QAEXXZ
@@ -175,10 +163,6 @@ bool Rva006C4CD0Helper::getSymbolName(unsigned long addr, char *buf, unsigned lo
 // remaining capacity, and symbol/line copies exclude NUL: retain that target
 // behavior. Import verification proves bounded copies use strncpy. /Oi-
 // keeps imported strncpy while only strlen/strcpy are explicitly intrinsic.
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *, const char *, ...);
-
-extern "C" unsigned int __cdecl strlen(const char *);
-extern "C" char *__cdecl strcpy(char *,const char *);
 #pragma intrinsic(strlen, strcpy)
 struct DbgLineInfo {
  unsigned long size; void *key; unsigned long line; const char *filename; unsigned long address;
@@ -241,14 +225,6 @@ unsigned int Rva006C50D0Describe(const unsigned long *addresses, unsigned int co
 // this TU's dbghelp object, a ??_7 strncmp, then strtok @ and strncpy. The second
 // VirtualQuery's arguments sit in swapped registers unless the first-slot read is
 // spelled as an equal-arm conditional (the late-folded ?: tie breaker).
-struct DbgMemoryInfo
-{
-	void *baseAddress, *allocationBase;
-	unsigned long allocationProtect, regionSize, state, protect, type;
-};
-extern "C" __declspec(dllimport) unsigned long __stdcall VirtualQuery(const void *, DbgMemoryInfo *, unsigned long);
-extern "C" __declspec(dllimport) int __cdecl strncmp(const char *, const char *, unsigned int);
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *, const char *);
 bool Rva006C4E90VtableName(void ***object, unsigned int size, char *out, unsigned int outSize)
 {
 	if (size >= 4)
@@ -256,9 +232,9 @@ bool Rva006C4E90VtableName(void ***object, unsigned int size, char *out, unsigne
 		void **vtable = (void **)**object;
 		if (((unsigned long)vtable & 3) == 0)
 		{
-			DbgMemoryInfo info;
-			if (VirtualQuery(vtable, &info, sizeof(info)) >= sizeof(info) && (info.protect & 2)
-				&& VirtualQuery(object ? *vtable : *vtable, &info, sizeof(info)) >= sizeof(info) && (info.protect & 0x30))
+			MEMORY_BASIC_INFORMATION info;
+			if (VirtualQuery(vtable, &info, sizeof(info)) >= sizeof(info) && (info.Protect & 2)
+				&& VirtualQuery(object ? *vtable : *vtable, &info, sizeof(info)) >= sizeof(info) && (info.Protect & 0x30))
 			{
 				char name[0x200];
 				if (g_rva006C4CD0Object.getSymbolName((unsigned long)vtable, name, sizeof(name))
@@ -277,8 +253,6 @@ bool Rva006C4E90VtableName(void ***object, unsigned int size, char *out, unsigne
 	}
 	return false;
 }
-
-extern "C" __declspec(dllimport) void *__stdcall GetCurrentThread(void);
 
 struct BfmeCaptureContext
 {

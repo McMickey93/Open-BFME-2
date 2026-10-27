@@ -1,4 +1,5 @@
 // cl: /EHsc
+// platformsdk
 //
 // ScriptEngine::init, retail 0x00205AFD (406 bytes, including the catch
 // block Ghidra splits off at 0x00205BEF). Vtable slot 1 of the table at
@@ -20,11 +21,7 @@
 //   * the template tables are filled by the three out-of-line helpers.
 // GlobalData field names follow ZH; their offsets are target-derived.
 
-typedef void *HMODULE;
-typedef int (__stdcall *FARPROC)();
-extern "C" __declspec(dllimport) HMODULE __stdcall LoadLibraryA(const char *name);
-extern "C" __declspec(dllimport) FARPROC __stdcall GetProcAddress(HMODULE module, const char *name);
-extern "C" __declspec(dllimport) int __stdcall FreeLibrary(HMODULE module);
+#include <windows.h>
 
 class GlobalData
 {

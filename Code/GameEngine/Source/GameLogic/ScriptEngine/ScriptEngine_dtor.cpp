@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /EHs /Ow
+// platformsdk
 //
 // ScriptEngine::~ScriptEngine, retail 0x0020A2B0 (726 bytes). Its scalar
 // deleting destructor (0x0020C0C7) is slot 0 of the vtable at 0x007E3D70.
@@ -24,11 +25,8 @@
 //     twice instead of caching it in a register, which MSVC does only for
 //     two different symbols.
 
-typedef void *HMODULE;
-typedef int (__stdcall *FARPROC)();
-extern "C" __declspec(dllimport) FARPROC __stdcall GetProcAddress(HMODULE module, const char *name);
-extern "C" __declspec(dllimport) int __stdcall FreeLibrary(HMODULE module);
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
+#include <windows.h>
 
 typedef bool Bool;
 #include "../../../../../reference/shims/subsystem_bfme2/subsystem_interface.h"

@@ -3,6 +3,8 @@
 // ?GadgetListBoxSetListLength@@YAXPAVGameWindow@@H@Z, retail 0x00326e21, 378 bytes. Banked partial (score 0.99) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
 // Read-only BFME1 2791daf553 clean donor trial; native manager free slot +3C.
+#include <assert.h>
+#include <new>
 #include <string.h>
 typedef short Short;
 typedef unsigned short UnsignedShort;
@@ -12,11 +14,7 @@ typedef int Int;
 typedef bool Bool;
 #define DEBUG_ASSERTCRASH(a,b)
 #define DEBUG_LOG(a)
-#define assert(a)
-#define NULL 0
 #define NEW new
-extern void *__cdecl operator new[](unsigned int);
-extern void __cdecl operator delete[](void *);
 enum { LISTBOX_TEXT = 1 };
 class GameWindow { public: void *winGetUserData(); };
 class DisplayString;

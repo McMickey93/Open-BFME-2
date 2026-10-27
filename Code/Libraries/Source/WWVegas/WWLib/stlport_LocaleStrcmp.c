@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // STLport 4.5.3 locale collation helper (_Locale_strcmp, retail 0x00021C40).
 // Distinct TU under WWLib: Code/stlport/ is not an allowed root for a new
 // source, so this donor body lives here like stlport_EnumLocalesProcA.cpp.
@@ -6,27 +7,9 @@
 // are T3 ICF guesses (no row, no definition) and the KeepDefault helpers
 // are unserved (no row, no definition). Static workers stay static exactly
 // like the donor.
-typedef unsigned long LCID;
-typedef unsigned int UINT;
 
-__declspec(dllimport) int __stdcall GetLocaleInfoA(
-    LCID locale, unsigned long type, char *data, int count);
-__declspec(dllimport) int __cdecl atoi(const char *text);
-__declspec(dllimport) int __stdcall LCMapStringA(
-    LCID locale, unsigned long flags, const char *src, int srcCount,
-    char *dest, int destCount);
-__declspec(dllimport) int __stdcall MultiByteToWideChar(
-    unsigned int codePage, unsigned long flags, const char *source, int sourceCount,
-    unsigned short *destination, int destinationCount);
-__declspec(dllimport) int __stdcall WideCharToMultiByte(
-    unsigned int codePage, unsigned long flags, const unsigned short *source,
-    int sourceCount, char *destination, int destinationCount,
-    const char *defaultChar, int *usedDefaultChar);
-__declspec(dllimport) int __stdcall CompareStringA(
-    LCID locale, unsigned long flags, const char *a, int aCount,
-    const char *b, int bCount);
-__declspec(dllimport) void *__cdecl malloc(unsigned int size);
-__declspec(dllimport) void __cdecl free(void *memory);
+#include <windows.h>
+#include <stdlib.h>
 
 typedef struct _Locale_ctype_t {
     LCID lcid;
@@ -67,11 +50,11 @@ static char *__ConvertToCP(int from_cp, int to_cp, const char *from,
 {
     int wideSize;
     int bufferSize;
-    unsigned short *wideBuffer;
+    wchar_t *wideBuffer;
     char *buffer;
 
     wideSize = MultiByteToWideChar(from_cp, 1, from, (int)size, 0, 0);
-    wideBuffer = (unsigned short *)malloc(sizeof(unsigned short) * wideSize);
+    wideBuffer = (wchar_t *)malloc(sizeof(wchar_t) * wideSize);
     MultiByteToWideChar(from_cp, 1, from, (int)size, wideBuffer, wideSize);
     bufferSize = WideCharToMultiByte(to_cp, 0x220, wideBuffer, wideSize, 0, 0, 0, 0);
     buffer = (char *)malloc(bufferSize);

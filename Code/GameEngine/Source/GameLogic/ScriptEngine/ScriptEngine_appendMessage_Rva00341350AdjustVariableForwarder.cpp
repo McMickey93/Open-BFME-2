@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/game/GameEngine/Source/GameLogic/ScriptEngine
+// platformsdk
 //
 // ScriptEngine.cpp's script-debugger helper _adjustVariable (0x002054FF), its
 // forwarder (0x00206559) and its one in-TU caller ScriptEngine::update
@@ -47,6 +48,8 @@ template <> void _List_base<int, allocator<int> >::clear();
 }
 #include <map>
 #include <vector>
+#include <stdio.h>
+#include <windows.h>
 
 // list<int> destruction otherwise instantiates per-TU deallocate
 // COMDATs (one byte shape per TU flags); explicit dllimport+forceinline
@@ -75,11 +78,6 @@ static inline bool operator!=(const _Rb_tree_iterator<_RbVal, _RbLeft> &a,
 
 typedef int Int;
 typedef bool Bool;
-typedef void *HMODULE;
-typedef int(__stdcall *FARPROC)();
-
-extern "C" __declspec(dllimport) FARPROC __stdcall GetProcAddress(
-	HMODULE module, const char *procName);
 
 // The shared empty string retail substitutes for a null buffer.
 
@@ -267,8 +265,6 @@ private:
 };
 }
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-
 // BFME 2 scopes Zero Hour's counter and flag arrays by (script scope, name)
 // in two maps; update reads the counter value, its countdown flag and the
 // seconds-display flag the debug window gets, and the flag value.
@@ -323,9 +319,6 @@ private:
 	unsigned char m_unknown1A268[0x1a4d8 - 0x1a268];
 	Bool m_bfme1A4D8;					// +0x1A4D8
 };
-
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer,
-	const char *format, ...);
 
 // Zero Hour's st_DebugDLL is the global the data ledger defines at
 // 0x00DFE158: update() keeps its read after the byte store at +0x1A4D8,

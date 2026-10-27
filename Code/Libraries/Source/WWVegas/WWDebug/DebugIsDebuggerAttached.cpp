@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHs-c- /Oy-
+// platformsdk
 //
 // Late-bound debugger probe, retail 0x0003E3E0 (108 bytes), between
 // DebugFreeMemory and DebugAllocMemory in the debug library. The Debug
@@ -10,17 +11,10 @@
 // BFME2 additionally asks CheckRemoteDebuggerPresent for the current
 // process and ORs both answers.
 
+#include <windows.h>
 
-typedef void *HMODULE;
 typedef int(__stdcall *IsDebuggerPresentProc)(void);
 typedef int(__stdcall *CheckRemoteDebuggerPresentProc)(void *process, int *present);
-
-extern "C"
-{
-	__declspec(dllimport) HMODULE __stdcall LoadLibraryA(const char *fileName);
-	__declspec(dllimport) void *__stdcall GetProcAddress(HMODULE module, const char *procName);
-	__declspec(dllimport) void *__stdcall GetCurrentProcess(void);
-}
 
 // ?DebugIsDebuggerAttached@@YA_NXZ
 bool DebugIsDebuggerAttached()

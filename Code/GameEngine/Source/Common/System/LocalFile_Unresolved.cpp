@@ -48,23 +48,14 @@
 // already matched in File.cpp), which brackets the class: everything from
 // 0x009D23E0 to 0x009D2A00 is one compiland.
 
-// The CRT low-level io family, /MD, so dllimport -- retail reaches all three
-// through the IAT (ds:0x135936C, ds:0x1359300, ds:0x1359320) rather than a
-// direct call, which is exactly what an import stub gives.
-#define NULL 0
+#include <ctype.h>
+#include <fcntl.h>
+#include <io.h>
+#include <new>
+#include <stdlib.h>
+#include <sys/stat.h>
 
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
-
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
-extern "C" __declspec(dllimport) double __cdecl atof(const char *text);
-extern "C" __declspec(dllimport) int __cdecl isspace(int c);
-
-extern "C" __declspec(dllimport) int __cdecl _write(int fd, const void *buffer, unsigned int count);
-extern "C" __declspec(dllimport) long __cdecl _lseek(int fd, long offset, int origin);
-extern "C" __declspec(dllimport) int __cdecl _read(int fd, void *buffer, unsigned int count);
-extern "C" __declspec(dllimport) int __cdecl _close(int fd);
-extern "C" __declspec(dllimport) int __cdecl _open(const char *filename, int oflag, ...);
-extern "C" __declspec(dllimport) int __cdecl _wopen(const unsigned short *filename, int oflag, ...);
 
 // Wide filename adapter, retail 0x002FB30: UTF16-to-UTF8 through
 // WideCharToMultiByte (CP_UTF8). Rowed in Utf8Conversions.cpp; the G spelling
@@ -72,26 +63,6 @@ extern "C" __declspec(dllimport) int __cdecl _wopen(const unsigned short *filena
 typedef unsigned short Wide;
 int BFME2WideToUtf8(const Wide *source, int count, char *output, int capacity);
 int BFME2Utf8ToWide(const char *source, int count, Wide *output, int capacity);
-
-// <fcntl.h> / <sys/stat.h>, spelled out so this TU pulls in no CRT headers.
-#define _O_APPEND	0x0008
-#define _O_CREAT	0x0100
-#define _O_TRUNC	0x0200
-#define _O_TEXT		0x4000
-#define _O_BINARY	0x8000
-#define _O_RDONLY	0x0000
-#define _O_WRONLY	0x0001
-#define _O_RDWR		0x0002
-#define _S_IREAD	0x0100
-#define _S_IWRITE	0x0080
-
-// For a POD element type with no explicit `operator new[]` declaration visible,
-// this MSVC 7.1 build folds `new T[n]` down to the scalar ??2 as a size-cookie-
-// avoidance optimization. Retail's readEntireAndClose calls the array form
-// (0x00881F70), so the declaration has to be visible here the way <new> makes
-// it visible in the real project TUs.
-void *operator new[](unsigned int);
-void operator delete[](void *block);
 
 class File
 {

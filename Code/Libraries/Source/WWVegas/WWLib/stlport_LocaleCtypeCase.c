@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // STLport 4.5.3 _Locale_toupper/_Locale_tolower (retail 0x000219E0/0x00021B10)
 // and _dup_0084EBC0 (retail 0x00021D50).
 // Distinct TU under WWLib: Code/stlport/ is not an allowed root for a new
@@ -7,24 +8,9 @@
 // already lives in stlport_LocaleStrcmp.c and the KeepDefault helpers are
 // unserved (no row, no definition). Static workers stay static exactly
 // like the donor.
-typedef unsigned long LCID;
-typedef unsigned int UINT;
 
-__declspec(dllimport) int __stdcall GetLocaleInfoA(
-    LCID locale, unsigned long type, char *data, int count);
-__declspec(dllimport) int __cdecl atoi(const char *text);
-__declspec(dllimport) int __stdcall LCMapStringA(
-    LCID locale, unsigned long flags, const char *src, int srcCount,
-    char *dest, int destCount);
-__declspec(dllimport) int __stdcall MultiByteToWideChar(
-    unsigned int codePage, unsigned long flags, const char *source, int sourceCount,
-    unsigned short *destination, int destinationCount);
-__declspec(dllimport) int __stdcall WideCharToMultiByte(
-    unsigned int codePage, unsigned long flags, const unsigned short *source,
-    int sourceCount, char *destination, int destinationCount,
-    const char *defaultChar, int *usedDefaultChar);
-__declspec(dllimport) void *__cdecl malloc(unsigned int size);
-__declspec(dllimport) void __cdecl free(void *memory);
+#include <windows.h>
+#include <stdlib.h>
 
 typedef unsigned int bfme_size_t;
 
@@ -65,11 +51,11 @@ static char *__ConvertToCP(int from_cp, int to_cp, const char *from,
 {
     int wideSize;
     int bufferSize;
-    unsigned short *wideBuffer;
+    wchar_t *wideBuffer;
     char *buffer;
 
     wideSize = MultiByteToWideChar(from_cp, 1, from, (int)size, 0, 0);
-    wideBuffer = (unsigned short *)malloc(sizeof(unsigned short) * wideSize);
+    wideBuffer = (wchar_t *)malloc(sizeof(wchar_t) * wideSize);
     MultiByteToWideChar(from_cp, 1, from, (int)size, wideBuffer, wideSize);
     bufferSize = WideCharToMultiByte(to_cp, 0x220, wideBuffer, wideSize, 0, 0, 0, 0);
     buffer = (char *)malloc(bufferSize);
@@ -88,7 +74,7 @@ int _Locale_toupper(_Locale_ctype_t *ltype, int c)
         LCMapStringA(ltype->lcid, 0x01000200, buf, 2, out_buf, 2);
         return (signed char)out_buf[0];
     } else {
-        unsigned short wbuf[2];
+        wchar_t wbuf[2];
         MultiByteToWideChar(ltype->cp, 1, buf, 2, wbuf, 2);
         WideCharToMultiByte(__GetDefaultCP(ltype->lcid), 0x220, wbuf, 2, buf, 2, 0, 0);
         LCMapStringA(ltype->lcid, 0x01000200, buf, 2, out_buf, 2);
@@ -107,7 +93,7 @@ int _Locale_tolower(_Locale_ctype_t *ltype, int c)
         LCMapStringA(ltype->lcid, 0x01000100, buf, 2, out_buf, 2);
         return (signed char)out_buf[0];
     } else {
-        unsigned short wbuf[2];
+        wchar_t wbuf[2];
         MultiByteToWideChar(ltype->cp, 1, buf, 2, wbuf, 2);
         WideCharToMultiByte(__GetDefaultCP(ltype->lcid), 0x220, wbuf, 2, buf, 2, 0, 0);
         LCMapStringA(ltype->lcid, 0x01000100, buf, 2, out_buf, 2);

@@ -1,13 +1,13 @@
 // cl: /MD /Oi-
+// platformsdk
 // ?NetworkBufferReadRaw@@YAPADPADPAXI0@Z, retail 0x00447909, 54 bytes.
 // Checked memcpy: copies size bytes from src to dst and returns src+size,
 // or returns src unchanged when the copy would pass limit (null limit always
 // copies). Evidence: unlock lane; callees rowed/pinned (memcpy via _memcpy pin
 // at 0x006291A8); callers at 0x0044794F 0x0044797C 0x004479A8 0x0044865E;
 // landing unblocks 0x0044793F 0x0044796C 0x0044799A 0x00448423.
-extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count);
-extern "C" __declspec(dllimport) unsigned long __stdcall htonl(unsigned long v);
-extern "C" __declspec(dllimport) unsigned short __stdcall htons(unsigned short v);
+#include <WinSock2.h>
+#include <string.h>
 // WorldBuilder NetworkBufferReadRaw, WB VA 0x014A8760 (callsite lead, score 1.0).
 __declspec(noinline) inline char *__cdecl NetworkBufferReadRaw(char *src, void *dst, unsigned int size, char *limit)
 {
