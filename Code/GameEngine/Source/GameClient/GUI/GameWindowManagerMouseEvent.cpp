@@ -25,7 +25,6 @@
 */
 #include "unicode_string.h"
 typedef int Int; typedef unsigned int UnsignedInt; typedef bool Bool;
-#define NULL 0
 #define TRUE true
 #define FALSE false
 #define BitTest(v,m) (((v)&(m))!=0)
@@ -35,6 +34,7 @@ enum GameWindowMessage { GWM_NONE=0, GWM_LEFT_DOWN=5,GWM_LEFT_UP=6,GWM_LEFT_DRAG
 enum { MOUSE_EVENT_NONE=0, WIN_STATUS_ACTIVE=1,WIN_STATUS_DRAGABLE=4,WIN_STATUS_HIDDEN=0x10,WIN_STATUS_ABOVE=0x20,WIN_STATUS_BELOW=0x40,WIN_STATUS_NO_INPUT=0x200,GWS_COMBO_BOX=0x8000 };
 enum WinInputReturnCode { WIN_INPUT_NOT_USED=0, WIN_INPUT_USED=1 };
 enum WindowMsgHandledType { MSG_IGNORED=0, MSG_HANDLED=1 };
+#include <stddef.h>
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 #include "../../../../Libraries/Include/Lib/IRegion2D.h"
 class GameWindow;
@@ -397,7 +397,6 @@ WinInputReturnCode GameWindowManager::winProcessMouseEvent( GameWindowMessage ms
 
 					}  // end while
 
-						
 					// First check to see if m_loneWindow is set if so, close the window
 					if( m_loneWindow && m_loneWindow == oldLoneWindow 
 					&&( msg == GWM_LEFT_UP || msg == GWM_MIDDLE_UP || msg == GWM_RIGHT_UP || gameWindow))

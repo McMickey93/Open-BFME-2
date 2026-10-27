@@ -63,9 +63,6 @@ typedef bool Bool;
 typedef int Int;
 typedef float Real;
 
-#ifndef NULL
-#define NULL 0
-#endif
 #ifndef TRUE
 #define TRUE true
 #endif
@@ -79,6 +76,7 @@ inline NUM sqr(NUM x)
 	return x*x;
 }
 
+#include <stddef.h>
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 
 #include "../../../Libraries/Include/Lib/IRegion2D.h"

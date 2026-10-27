@@ -1,9 +1,11 @@
 // cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // ZH registry setter semantics; retail6C8C60/6C8E50 copy their first
 // HKLM call arguments inline through the rowed two-argument string range
 // initializer8D00. Their HKCU copies use the rowed copy constructor9170.
 // Minimal STLport ABI follows stlport_narrow_string_range_ctors.cpp.
+#include <windows.h>
 namespace _STL {
 void __cdecl free(void *);
 template<class T> class char_traits {};
@@ -35,10 +37,6 @@ public:
 };
 typedef basic_string<char,char_traits<char>,allocator<char> > NStr;
 }
-struct HKEY__;
-typedef HKEY__ *HKEY;
-#define HKEY_CURRENT_USER ((HKEY)0x80000001)
-#define HKEY_LOCAL_MACHINE ((HKEY)0x80000002)
 _STL::NStr buildGameRegistryPath(const char *);
 bool setStringInRegistry(HKEY,_STL::NStr,_STL::NStr,_STL::NStr);
 bool setUnsignedIntInRegistry(HKEY,_STL::NStr,_STL::NStr,unsigned int);

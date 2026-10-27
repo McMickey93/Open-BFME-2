@@ -11,9 +11,8 @@
 // chosen so each lea hits its retail ebp offset. Head/mask share the 0x4C
 // layout (Rva002C7492 int[19] view for merge/build, WeaponTemplateSetHead
 // for out/copy); exact function identity unproven.
-extern "C" void *memset(void *dst, int c, unsigned n);
+#include <string.h>
 
-typedef unsigned size_t;
 inline void *operator new(size_t, void *place)
 {
 	return place;

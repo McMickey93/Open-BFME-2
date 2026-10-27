@@ -2,6 +2,8 @@
 //
 // ShareBufferClass<ShaderClass> copy constructor. Twin of the landed
 // Vector2 body; ShaderClass is one dword so the loop is a raw copy.
+#include <new.h>
+#include <new>
 
 // The compiler-generated vector constructor iterator (??_H) takes the
 // optimization state of the first function that needs it. Retail links one
@@ -15,10 +17,6 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
 #pragma auto_inline(on)
-
-void *operator new[](unsigned int size);
-inline void *operator new(unsigned int, void *place) { return place; }
-extern void __cdecl operator delete[](void *) throw();
 
 class ShaderClass
 {

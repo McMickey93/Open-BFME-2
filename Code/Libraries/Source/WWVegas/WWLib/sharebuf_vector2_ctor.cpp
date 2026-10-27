@@ -11,10 +11,8 @@
 // (retail pushes VA 0x87A6A9); the allocation reaches operator new[] at
 // 0x002FDE0. Sole known caller: Install_UV_Array at 0x0015B960.
 
-void *operator new[](unsigned int size) throw();
-void operator delete[](void *place) throw();
-inline void *operator new(unsigned int, void *place) { return place; }
-
+#include <new.h>
+#include <new>
 #include "../../../../../reference/shims/wwmath/Vector2.h"
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib/refcount.h

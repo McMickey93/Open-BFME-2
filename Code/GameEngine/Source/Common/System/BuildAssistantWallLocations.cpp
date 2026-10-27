@@ -58,9 +58,6 @@ typedef unsigned short UnsignedShort;
 typedef float Real;
 typedef int Color;
 #define GameMakeColor(r, g, b, a) (((a) << 24) | ((r) << 16) | ((g) << 8) | (b))
-#ifndef NULL
-#define NULL 0
-#endif
 #ifndef FALSE
 #define FALSE 0
 #endif

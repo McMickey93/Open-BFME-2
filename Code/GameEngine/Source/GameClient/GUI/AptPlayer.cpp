@@ -4,6 +4,7 @@
 #define sprintf _stlport_hides_sprintf
 #include <utility>
 #include <new>
+#include <mbstring.h>
 #include "ascii_string.h"
 #undef strchr
 #undef sprintf
@@ -410,7 +411,6 @@ void AptPlayer::AddExternHandler(const AsciiString &name,int context,AptRef<AptE
  entry.context=context;
 }
 
-extern "C" char *__cdecl _mbscpy(char *,const char *);
 void AptPlayer::GetExtern(const char *name,char *out)
 {
  if(!name || !out) return;
@@ -418,11 +418,11 @@ void AptPlayer::GetExtern(const char *name,char *out)
  if(*name=='?') {
   ++name;
   Rva0041534BIter found=reinterpret_cast<AptExternTable *>(m_commandMap+0x14)->find(AsciiString(AptUtils::SkipLevelN(name)));
-  if(found.m_node) _mbscpy(out,"extern");
+  if(found.m_node) _mbscpy((unsigned char *)out,(const unsigned char *)"extern");
   else {
    void *commandNode=reinterpret_cast<AptExternTable *>(m_commandMap)->find(AsciiString(name)).m_node;
-   if(commandNode) _mbscpy(out,"fscommand");
-   else _mbscpy(out,"0");
+   if(commandNode) _mbscpy((unsigned char *)out,(const unsigned char *)"fscommand");
+   else _mbscpy((unsigned char *)out,(const unsigned char *)"0");
   }
   return;
  }

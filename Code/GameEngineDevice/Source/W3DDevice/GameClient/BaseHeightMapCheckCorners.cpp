@@ -13,17 +13,13 @@
 // argument and result pass through float, and RAD_TO_DEGF multiplies by 180
 // and divides by WWMATH_PI. Retail calls math.h's float atan2 overload
 // (0x000422CD) and the double fabs (0x00629210); the float fabs overload is
-// MSVC 7.1 <math.h>'s, kept TU-local like the getHeightMapHeight sibling's
-// float CRT wrapper.
+// MSVC 7.1 <math.h>'s.
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
+#include <math.h>
 
 typedef int Int;
 typedef float Real;
 typedef bool Bool;
-
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
-extern "C" double __cdecl fabs(double x);
-inline float __cdecl fabs(float _X) { return ((float)fabs((double)_X)); }
 
 #define MAP_XY_FACTOR 10.0f
 #define WWMATH_PI 3.141592654f

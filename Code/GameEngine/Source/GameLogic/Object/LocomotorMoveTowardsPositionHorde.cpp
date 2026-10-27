@@ -823,7 +823,6 @@ class Rva001E468F
 public:
 	bool rva001E468F(Object *obj);
 };
-extern "C" double __cdecl sin(double);
 float GetGameLogicRandomValueReal(float,float,char*,int);
 class MineshaftPortalBehaviour
 
@@ -836,8 +835,6 @@ class MineshaftPortalBehaviour
 void *Rva00372D3AFind(void *obj);
 Real normalizeAngle(Real angle);
 Real Cos(Real angle);
-extern "C" float atan2f(float y, float x);
-float atan2(float y, float x);
 struct LocomotorTemplate
 {
 	char m_pad00[0x18];

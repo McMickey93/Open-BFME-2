@@ -15,8 +15,9 @@
 //   the four Int* outputs, so x/y/width/height land at [ebp+8]/[ebp+0xC]/
 //   [ebp+0x10]/[ebp+0x14] and the frame is sub esp,0x28. The scaffold caller
 //   below keeps the static emitted with that convention.
-// - strtok rides the msvcr71 import at 0xBBA5EC (dllimport decl -> mov esi,
-//   ds:0xBBA5EC then call esi); seps " ,:=\n\r\t" lives at 0xC0C25C.
+// - strtok rides the msvcr71 import at 0xBBA5EC (<string.h> declares it
+//   dllimport under /MD: mov esi, ds:0xBBA5EC then call esi); seps
+//   " ,:=\n\r\t" lives at 0xC0C25C.
 // - TheDisplay is at 0xDFE9D8; getWidth is vtable slot 0x40 and getHeight slot
 //   0x44, both returning UnsignedInt (retail emits the test/jge/fadd 2^32
 //   unsigned-to-Real fixup).
@@ -30,14 +31,11 @@ typedef unsigned int UnsignedInt;
 typedef float Real;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
 #ifndef TRUE
 #define TRUE true
 #endif
 
+#include <string.h>
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 
 #include "../../../../Libraries/Include/Lib/IRegion2D.h"
@@ -46,8 +44,6 @@ class GameWindow;
 
 extern GameWindow *peekWindow(void);
 extern Int scanInt(const char *source, Int &val);
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 class Display
 {

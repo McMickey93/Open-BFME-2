@@ -78,6 +78,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 // Keep this consumer on that verified body rather than instantiate the stock copy.
 #include <vector>
 #include <map>
+#include <math.h>
 // Declare before W3DModelDraw.h instantiates the PristineBone map lifetime.
 struct PristineBoneInfo;
 namespace _STL {
@@ -202,10 +203,6 @@ namespace _STL { template <> bool bitset<116>::test(unsigned int) const; }
 // Suppress this TU's non-retail copy of ?_Unchecked_test@?$bitset@$0HE@@_STL@@QBE_NI@Z:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 namespace _STL { template <> bool bitset<116>::_Unchecked_test(unsigned int) const; }
-
-// CRT imports (no COMDATs); used by the manual Y-rotation post-multiply below.
-extern "C" double __cdecl sin(double);
-extern "C" double __cdecl cos(double);
 
 #ifdef _INTERNAL
 // for occasional debugging...

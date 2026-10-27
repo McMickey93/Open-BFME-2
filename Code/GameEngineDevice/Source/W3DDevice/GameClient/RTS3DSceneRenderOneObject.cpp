@@ -41,7 +41,6 @@ typedef float Real;
 typedef bool Bool;
 #define TRUE true
 #define FALSE false
-#define NULL 0
 
 class Vector3
 {
@@ -314,6 +313,7 @@ enum CellShroudStatus
 	OBJECTSHROUD_SHROUDED
 };
 
+#include <stddef.h>
 #include "../../../../GameEngine/Source/Common/GameLogicObjectLookupView.h"
 
 class Object

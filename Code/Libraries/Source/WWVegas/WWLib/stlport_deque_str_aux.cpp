@@ -1,7 +1,7 @@
 // cl: /O1 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // stlport
 // ?rva0005800A@Rva0005800A@@QAEXABVRva0036CA00Str@@@Z @0x0005800A 132B: deque<Rva0036CA00Str> push_back slow path aux; tCopy plus reserve_map_at_back plus 0x80 byte node allocate plus construct plus set_node plus Release_Ref dtor; caller 0x00058BB4 in 0x00058B90; callees rowed copyCtor reserve allocate Release_Ref.
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
+#include <new.h>
 class OpaqueRefCounted { public: void Release_Ref(); };
 class Rva0036CA00Str {
 	void *m_item;
@@ -15,8 +15,6 @@ inline Rva0036CA00Str::~Rva0036CA00Str()
 	if (m_item)
 		((OpaqueRefCounted *)m_item)->Release_Ref();
 }
-inline void *operator new(unsigned int, void *p) { return p; }
-inline void operator delete(void *, void *) { }
 class Rva0005800A;
 namespace _STL {
 template <class T> class allocator {

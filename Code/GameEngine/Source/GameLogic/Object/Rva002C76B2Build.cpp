@@ -1,12 +1,8 @@
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // ?Rva002C76B2Build@@YAPAVWeaponTemplateSetHead@@PAV1@HH@Z retail 0x002C76B2 204B
 // Bitset builder returning out for WeaponTemplateSetHead 0x4C: memset 0 then set 1<<bit from four condition tables, copy-construct out. Evidence: calls memset import 0x6291AE and rowed copy ctor 0x45455; tables g_00DBC46C g_00C00960 g_00C00948 g_00C00930; callers 0x28DC8F 0x28FCB2 need unlock; free cdecl with EAX-out return per lever 31 and inline placement new precedent.
-extern "C" void *memset(void *dst, int c, unsigned n);
-typedef unsigned size_t;
-inline void *operator new(size_t, void *place)
-{
-	return place;
-}
+#include <string.h>
+#include <new.h>
 extern void *g_00DBC46C[];
 extern int g_00C00960[];
 // g_00C00960 and the per-b row table g_00DBC46C have this function as their
