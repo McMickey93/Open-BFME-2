@@ -36,25 +36,16 @@ struct BfmeE12
 	float x, y, z;
 };
 
+#include <vector>
+
+// The rowed out-of-line size (0x005D5847) and erase (0x0002CCFC): explicit
+// specialization declarations keep the calls instead of inlining STLport's
+// in-class bodies.
 namespace _STL
 {
-template <class T> class allocator
-{
-};
-
-template <class T, class A = allocator<T> > class vector
-{
-public:
-	typedef T *iterator;
-	unsigned int size() const;
-	iterator erase(iterator first, iterator last);
-	iterator begin() { return m_start; }
-	iterator end() { return m_finish; }
-
-	T *m_start;
-	T *m_finish;
-	T *m_end;
-};
+template <> unsigned int vector<BfmeE12, allocator<BfmeE12> >::size() const;
+template <> vector<AsciiString, allocator<AsciiString> >::iterator
+vector<AsciiString, allocator<AsciiString> >::erase(iterator first, iterator last);
 }
 
 class INIFileTable
@@ -87,41 +78,61 @@ public:
 // The clear routine and reader share this pointer without naming its runtime class.
 void *g_00DDF57C = 0;
 
+// The 0x34-byte helper at INI +0x838 (INIHelperRva00601BBC_Rva00601BBCHelper.cpp);
+// readLine reads it as the INIFileTable record view.
+class Rva00601BBCHelper
+{
+public:
+	Rva00601BBCHelper();
+	virtual ~Rva00601BBCHelper();
+	void rva00601A8D();
+
+private:
+	char m_body[0x30]; // after the vptr: 0x34 bytes in all
+};
+
+// Member names follow INI.cpp's view of the same offsets: m_readBufferUsed
+// holds the current line index, m_str86C/m_vec870 the token cursor.
 class INI
 {
 protected:
 	void readLine();
 
-private:
+public:
 	void *m_file;
 	AsciiString m_filename;
-	int m_08;
-	int m_0C;
-	int m_lineNum;
+	unsigned int m_readBufferNext;
+	unsigned int m_readBufferUsed;
+	unsigned int m_lineNum;
 	char m_buffer[0x418 - 0x14];
-	char m_pad418[0x430 - 0x418];
+	const char *m_seps;
+	const char *m_sepsPercent;
+	const char *m_sepsColon;
+	const char *m_sepsQuote;
+	const char *m_blockEndToken;
+	const char *m_endScriptToken;
 	unsigned char m_endOfFile;
-	char m_pad431[0x838 - 0x431];
-	INIFileTable m_fileTable;
-	AsciiString m_tokenBuf;
-	_STL::vector<AsciiString> m_tokens;
+	char m_curBlockStart[0x838 - 0x431];
+	Rva00601BBCHelper m_helper;
+	AsciiString m_str86C;
+	_STL::vector<AsciiString> m_vec870;
 };
 
 // ?readLine@INI@@IAEXXZ
 void INI::readLine()
 {
-	if ((unsigned int)m_lineNum < m_fileTable.m_lineVec.size()) {
-		int cur = m_lineNum;
-		m_0C = cur;
+	if (m_lineNum < ((INIFileTable *)&m_helper)->m_lineVec.size()) {
+		unsigned int cur = m_lineNum;
+		m_readBufferUsed = cur;
 		m_lineNum = cur + 1;
-		const char *line = (const char *)m_fileTable.getFileId(cur);
+		const char *line = (const char *)((INIFileTable *)&m_helper)->getFileId(cur);
 		strncpy(m_buffer, line, 0x403);
 		m_buffer[0x403] = 0;
-		_STL::vector<AsciiString> &toks = m_tokens;
+		_STL::vector<AsciiString> &toks = m_vec870;
 		AsciiString *first = toks.begin();
 		AsciiString *last = toks.end();
 		toks.erase(first, last);
-		m_tokenBuf.clear();
+		m_str86C.clear();
 	} else {
 		m_endOfFile = 1;
 		m_buffer[0] = 0;
