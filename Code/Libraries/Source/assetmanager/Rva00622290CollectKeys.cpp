@@ -359,15 +359,6 @@ private:
     void *m_value;
 };
 
-class AssetWorkerHeapScope
-{
-    Rva000309B0 m_scope;
-public:
-    // ?AssetWorkerHeapScope::AssetWorkerHeapScope absent-from-retail
-    __forceinline AssetWorkerHeapScope(unsigned tag) : m_scope(tag) {}
-    // ?AssetWorkerHeapScope::~AssetWorkerHeapScope absent-from-retail
-    __forceinline ~AssetWorkerHeapScope() {}
-};
 
 int bfmeRva0011F600();
 bool BFME_DX8_Thread_Assert();
@@ -583,7 +574,7 @@ void AssetManagerImpl::LoadAsset(Rva009EF0D0Element *asset)
 	}
 
 	asset->m_bfmeQueued = 1;
-	AssetWorkerHeapScope heap(0x61737374);
+	Rva000309B0 heap(0x61737374);
 	if (queue == 7)
 		asset->m_bfmeState = 0;
 

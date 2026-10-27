@@ -222,17 +222,12 @@ class BfmeWordEL
 {
 	void *m_stringStorage;
 };
-// Eight-byte local cleanup adapter; the factory keeps its established return spelling.
 struct BfmePairEL;
-struct INIMacroPairTemporary : MacroPair
-{
-	__forceinline ~INIMacroPairTemporary() {}
-};
 BfmePairEL __cdecl bfmeMakePairEL(const BfmeWordEL &first, const BfmeWordEL &second);
 
-static __forceinline void insertMacroPair(Out0002CA72 *inserted, const INIMacroPairTemporary &factoryPair)
+static __forceinline void insertMacroPair(Out0002CA72 *inserted, const MacroPair &factoryPair)
 {
-	MacroPair pair((const MacroPair &)factoryPair);
+	MacroPair pair(factoryPair);
 	((Rva0002CD2F *)&BfmeINIMacroTableStorage)->rva0002CD2F(inserted, (const Pair0002CA72 *)&pair);
 }
 
@@ -314,7 +309,7 @@ bool INI::prepFile(const AsciiString &filename, INILoadType loadType)
 			}
 
 			Out0002CA72 inserted;
-			typedef INIMacroPairTemporary (__cdecl *MakeMacroPair)(const BfmeWordEL &, const BfmeWordEL &);
+			typedef MacroPair (__cdecl *MakeMacroPair)(const BfmeWordEL &, const BfmeWordEL &);
 			MakeMacroPair makePair=reinterpret_cast<MakeMacroPair>(&bfmeMakePairEL);
 			insertMacroPair(&inserted, makePair(
 				(const BfmeWordEL &)name, (const BfmeWordEL &)value));

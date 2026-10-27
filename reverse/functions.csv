@@ -16507,7 +16507,6 @@ uw_0075c93c,,0x0075C93C,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;obje
 uw_0075c9c8,,0x0075C9C8,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0075c9da,,0x0075C9DA,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3309
 uw_0075c9ef,,0x0075C9EF,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3512
-uw_0075ca9e,,0x0075CA9E,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4078
 uw_0075cbc1,,0x0075CBC1,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
 uw_0075cc20,,0x0075CC20,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4664
 uw_0075cc60,,0x0075CC60,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4404
@@ -18607,10 +18606,8 @@ uw_007a7538,,0x007A7538,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;obje
 uw_007a75a0,,0x007A75A0,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4655
 uw_007a75c0,,0x007A75C0,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4124
 uw_007a75c8,,0x007A75C8,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5347
-uw_007a7600,,0x007A7600,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4367
 uw_007a7620,,0x007A7620,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4133
 uw_007a7628,,0x007A7628,11,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4160
-uw_007a7670,,0x007A7670,11,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4385
 uw_007a76a0,,0x007A76A0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4376
 uw_007a79e6,,0x007A79E6,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9410
 uw_007a7cd0,,0x007A7CD0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4395
@@ -98503,3 +98500,6 @@ $L490,,0x007AB130,8,Code/GameEngine/Source/Common/BfmeCellAt.cpp,matched,gen-fun
 $L1425,,0x007AB150,8,Code/GameEngine/Source/Common/BfmeOwnerCDECount.cpp,matched,gen-funclet;parent=?getCDECount@BfmeOwnerCDE@@QAEHPAX@Z; Matched parent 0x0073D090's EH graph is EXACT (eh_verify) and binds compiler label $L1425 to retail 0x007AB150; replaces generated uw_007ab150
 ??1ColorSurfaceLock@@QAE@XZ,,0x0004D754,7,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptComponentColorPicker.cpp,matched,fold-proof=Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptComponentColorPicker.cpp; compiler-emitted destructor that retail ICF-folded with ?clear@Rva0004D754@@QAEXXZ at 0x0004D754: this unit compiles it to the same whole body; its unwind funclets call 0x0004D754
 $L2867,,0x007AB593,8,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptComponentColorPicker.cpp,matched,gen-funclet;parent=?Render@W3DAptComponentColorPicker@@UAEXHHHH@Z; Matched parent 0x00741152's EH graph is EXACT (eh_verify) and binds compiler label $L2867 to retail 0x007AB593; replaces generated uw_007ab593
+$L1666,,0x0075CA9E,8,Code/GameEngine/Source/Common/System/INI_loadFile.cpp,matched,gen-funclet;parent=?prepFile@INI@@IAE_NABVAsciiString@@W4INILoadType@@@Z; Matched parent 0x0002D2C1's EH graph is EXACT (eh_verify) and binds compiler label $L1666 to retail 0x0075CA9E; replaces generated uw_0075ca9e
+$L10140,,0x007A7600,8,Code/Libraries/Source/assetmanager/Rva0061FFA0.cpp,matched,gen-funclet;parent=?Worker_Thread_00622480@AssetRegistry@@QAEXXZ; Matched parent 0x00622480's EH graph is EXACT (eh_verify) and binds compiler label $L10140 to retail 0x007A7600; replaces generated uw_007a7600
+$L13304,,0x007A7670,11,Code/Libraries/Source/assetmanager/Rva00622290CollectKeys.cpp,matched,gen-funclet;parent=?LoadAsset@AssetManagerImpl@@QAEXPAVRva009EF0D0Element@@@Z; Matched parent 0x00623600's EH graph is EXACT (eh_verify) and binds compiler label $L13304 to retail 0x007A7670; replaces generated uw_007a7670

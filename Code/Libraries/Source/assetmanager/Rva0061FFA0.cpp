@@ -173,14 +173,6 @@ public:
     Rva000309B0(unsigned tag);
     ~Rva000309B0();
 };
-class AssetWorkerHeapScope {
-    Rva000309B0 m_scope;
-public:
-    // ?AssetWorkerHeapScope::AssetWorkerHeapScope absent-from-retail
-    __forceinline AssetWorkerHeapScope(unsigned tag) : m_scope(tag) {}
-    // ?AssetWorkerHeapScope::~AssetWorkerHeapScope absent-from-retail
-    __forceinline ~AssetWorkerHeapScope() {}
-};
 
 struct Rva001408C0Target;
 typedef Rva001408C0Target *Rva001408C0Key;
@@ -238,7 +230,7 @@ typedef char AssetRegistryWorkerLayoutCheck[
 void AssetRegistry::Worker_Thread_00622480()
 {
 	m_threadId = GetCurrentThreadId();
-	AssetWorkerHeapScope heapScope(0x61737374);
+	Rva000309B0 heapScope(0x61737374);
 	while (!m_flag08)
 	{
 		bool enabled = m_flag1f4;
