@@ -55,6 +55,9 @@ void _STLP_alloc_proxy<_List_node<int> *, _List_node<int>, allocator<_List_node<
 class Thing;
 class ModuleData;
 class Object;
+class Weapon;
+
+typedef bool Bool;
 
 enum UpdateSleepTime
 {
@@ -114,16 +117,16 @@ public:
 	virtual UpdateSleepTime update();
 	void Rva0048BDF8Helper(void);
 private:
-	int m_weaponState;					// +0x20
-	_STL::list<int> m_trackedIds;		// +0x24, runtime watch list
-	unsigned char m_weaponsReady;		// +0x28
+	Weapon *m_weapon; // +0x20
+	_STL::list<int> m_entries; // +0x24
+	Bool m_entriesReady; // +0x28
 };
 
 // ??0FireWeaponUpdate@@QAE@PAVThing@@PBVModuleData@@@Z @0x0048C0C5
 FireWeaponUpdate::FireWeaponUpdate(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
-	, m_weaponState(0)
-	, m_weaponsReady(0)
+	, m_weapon(NULL)
+	, m_entriesReady(false)
 {
 	Rva0048BDF8Helper();
 	Object **objSlot = &m_object;
