@@ -3827,7 +3827,7 @@ Remaining / next check: the allocator's nested `GeneralAllocator::Snapshot` is a
 
 Clearance: only the named retained adoptions and their local preview scope are verified; no new linked-unit or headline gain claimed. Census confirmation: pending.
 
-### LINK-096: PropDraw module-data units emit incompatible short tables
+### LINK-098: PropDraw module-data units emit incompatible short tables
 Status: Blocked on shared ModuleData interface and slot-owner reconciliation. Updated: 2026-10-27; inspected revision: 97c23353111e60304b56434c02d20bee3465d83f.
 Evidence / affected units: W3DPropDrawModuleDataCtor.cpp emits a four-slot Snapshot table while W3DPropDraw.cpp emits a nine-slot Zero Hour ModuleData table. The constructor's sole ordinary-preview blocker is `??_7W3DPropDrawModuleData@@6B@`. Retail at RVA 0x007CD420 has 31 function pointers; the next word at 0x007CD49C begins the DistanceFog string, so the data ledger's 136-byte span includes that following literal. Native slot 14 reaches 0x000CED14, already rowed under W3DTreeDrawModuleData; slot 19 reaches the return-this body at 0x0047A6A9. The existing Common/BfmeModuleData.h models 31 generic slots, while the update_modules_bfme2/Common/Module.h view used by the destructor still models the short interface.
 Completed: inspected both emitted tables, native slots, existing row owners and the shared headers. Both constructor-unit rows are exact. Current paired preview retains the constructor L1 and the destructor unit's independent ModuleData/DrawModule blockers. No source trial or shared-header edit is retained.
