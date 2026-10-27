@@ -4274,6 +4274,15 @@ body it ICF-folded onto (`add_match --icf-owner`, `fold-proof=<unit>`, the
 links as before or better (ThingTemplate.cpp did not link before either). Left:
 SaveGameInfoCopyBFME2.cpp (`??1XferMD5CRC` fails the fold verify at 0x0052B497),
 units claimed by other seats or touched in the last 6 h, and the rest not reached.
+Second run (same day): 45 more funclets in 34 units, 42 more fold rows, every unit
+still links. Four more fail the fold verify (unit dtor is not retail's whole body):
+Rva004DCAD2Parse.cpp (`??1Rva004DC920`), InGameUIResourceEntries.cpp
+(`??1ResourceEntryLocal`), ChecklistItemRva0057B383.cpp (`??1Rva0057B383Holder`),
+LivingWorldAIArmyMover.cpp (`??1LivingWorldAutoResolveBattle`); with
+SaveGameInfoCopyBFME2.cpp their 8 funclets are logged `blocked`. Still open: 8 units
+held by other seats (Rva00538E22Ctor, Rva004EE9E9XferVector, Rva003A47F3Parse,
+Rva00427157Ctor, PickAndPlayUnitVoiceResponse, IngameNoticeDisplay, AptOnlineLogin,
+AptMapPreview). Totals: 85 of 103 funclets repointed in 68 units, 75 fold rows.
 
 **uw_gen_009 parent ownership cleanup (2026-10-26):**
 
