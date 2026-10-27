@@ -99,7 +99,8 @@ public:
 	virtual void v00(); virtual void v01();
 	virtual Shadow *addDecal(Shadow::ShadowTypeInfo *shadowInfo);	// +0x08
 };
-extern void *g_00DEC2D4;	// TheProjectedShadowManager
+class AudioManager0029E159;
+extern AudioManager0029E159 *g_00DEC2D4;	// TheProjectedShadowManager (ledger type)
 
 extern float BfmeClientFramesPerMillisecond;	// seconds to frames
 
