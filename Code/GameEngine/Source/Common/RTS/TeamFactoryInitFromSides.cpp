@@ -52,7 +52,7 @@ Rva00148F5ECache TheKey_teamIsSingleton = { NAMEKEY_INVALID, "teamIsSingleton" }
 inline int teamKey(const StaticNameKey &key){return ((Rva00148F5ECache*)&key)->get();}
 inline int teamKey(Rva00148F5ECache &key){return key.get();}
 
-class Player {public:bool rva002AA245()const;char unknown00[0x4c];AsciiString playerName;};
+class Player {public:bool rva002AA245()const;char unknown00[0x4c];AsciiString m_playerName;};
 class Team;
 class TeamFactory;
 
@@ -131,7 +131,7 @@ void TeamFactory::initFromSides(SidesList *sides)
  if(!player)return;
  for(unsigned i=0;i<40;++i) {
   AsciiString name;name.format("DummyAITeam%u",i);
-  TeamPrototype *team=new TeamPrototype(this,player->playerName,name,player,false,0,++m_uniqueTeamPrototypeID);
+  TeamPrototype *team=new TeamPrototype(this,player->m_playerName,name,player,false,0,++m_uniqueTeamPrototypeID);
   m_dummyTeams[i]=team;
  }
 }

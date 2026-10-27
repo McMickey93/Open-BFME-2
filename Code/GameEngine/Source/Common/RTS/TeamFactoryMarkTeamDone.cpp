@@ -75,7 +75,9 @@ public:
 	Player *getControllingPlayer() const;
 	const AsciiString &getName() const
 	{
-		return m_proto == 0 ? AsciiString::TheEmptyString : m_proto->m_name;
+		// Read through this unit's prototype view: it is complete here even
+		// where a merged unit's TeamPrototype is not yet.
+		return m_proto == 0 ? AsciiString::TheEmptyString : ((const TeamPrototypeDoneView *)m_proto)->m_name;
 	}
 private:
 	unsigned char m_pad00[0x30];
