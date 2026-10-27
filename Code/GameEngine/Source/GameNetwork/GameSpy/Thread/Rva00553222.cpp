@@ -6,7 +6,7 @@
 // 0x0009990D plus Stop 0x006105F0 plus delete 0x0002FD60; caller at 0x00557CEA.
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
-void __cdecl operator delete(void *p);
+#include <new>
 struct Rva0009990D { void clear(); };
 struct ThreadClass {
 	void Stop();
