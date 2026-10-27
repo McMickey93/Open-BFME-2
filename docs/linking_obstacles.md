@@ -1154,8 +1154,13 @@ Whole-unit clearance and census confirmation remain pending.
   initializer bytes and four native DIR32 targets are verified. Normal
   controls retain all three bodies (1,829 bytes). Source work finalized at
   t=8 minutes with no new coverage, name, pin, value or source-path change.
-  The fixed one-source comparison against `d8d65b08cc` is pending; no
-  prospective credit or current-master census gain is claimed.
+  The authoritative fixed comparison `d8d65b08cc` to `dc81d055af` gains
+  **2,877 placed closed-strict bytes** in 3 rows, with zero losses.
+  Exactly one of 23,460 canonical objects changes; independent reconstruction
+  reproduces all 98,202 rows and the 1,708,093-byte credit, with 25 forced roots.
+  The process exits zero after 3471 seconds, with zero final drift or new
+  unresolved references. This subset is cleared in the fixed comparison;
+  no current-master census or runtime gain is claimed (LINK-008/017).
 - **LargeGroupAudio key-tree follow-up (2026-10-26, `e5c5a1787c`):**
   [the whole key-list repair](../reverse/attempt_support/largegroup-keylist-erase-link-20261026.md)
   preserves its 191-byte parent and verifies all 15 rows of the native erase

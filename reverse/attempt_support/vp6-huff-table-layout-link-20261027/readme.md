@@ -30,8 +30,19 @@ three existing bodies (1,829 bytes) and all three data rows. The parent is
 The body record is made once; no new function coverage is claimed. The source
 repair finalized at t=8 minutes; full measurement time is separate.
 
-The fixed one-source comparison against d8d65b08cc is pending. No prospective
-credit, current-master census, image-ownership or runtime gain is claimed.
+At source-commit time the fixed one-source comparison against d8d65b08cc was
+pending; no prospective credit was claimed. Its completed result follows below.
+No current-master census, image-ownership or runtime gain is claimed.
 The unchanged snapshot baseline has a verified receipt with 1,705,216 placed
 closed-strict bytes; the production reference inputs were verified separately.
 LINK-008/017 and the complete no-FORCE/no-stubs/runtime exit test remain open.
+
+The fixed receipt still records five forced duplicate symbols (ten diagnostics); the complete no-FORCE/no-stubs/runtime exit test is not met. No runtime or image-ownership receipt is claimed.
+
+The completed authoritative comparison d8d65b08cc -> dc81d055af changes unique placed closed-strict credit from 1,705,216 to 1,708,093 bytes: 2,877 gained in 3 rows, with zero losses and zero new function coverage. Exactly one of 23,460 canonical objects changes; the other 23,459 agree.
+
+The actual process exits zero after 3471 seconds. Final drift and new unresolved references are zero; no missing objects, failed compiles or stale warm start are admitted. Each gaining row has its former failure path and complete passing closure retained in beneficiary-closure.json. This is a fixed-comparison receipt, not a new current-master census.
+
+upstream-closure-witness.json retains the before/after failure paths for all six higher callers in the fixed graph. Any remaining motion-vector, tone-coefficient and neighbour-offset storage failures are separate prerequisites; no whole-decoder closure is claimed.
+
+The three gaining rows are VP6_ReadHuffTokens (1,661 bytes), VP6_DecodeBlock (511) and VP6_DecodeMacroBlock (705). The two caller objects are unchanged. Independent reconstruction reproduces all 98,202 link-status rows and the 1,708,093-byte credit, with 25 additionally forced closure roots. The controlled comparison keeps reference 32774ab03393709a7f14331ba8d98d281a55ffd9 in both states; the ordinary source gates passed against production reference 4fa9d591641a743b86f2320343b7a276585b814b. No inputs were silently substituted.
