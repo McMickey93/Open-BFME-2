@@ -20419,8 +20419,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03E4C,4,.data,global,?TheSubObjectsUpgradePoolKey@?1??rva0004B4D1E@SubObjectsUpgrade@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp,owned,,1,2
 0x00A03E50,4,.data,global,?g_Va00E03E50@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp,provisional,?$S1@?1??rva0004B4D1E@SubObjectsUpgrade@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp;?g_Va00E03E50@@3IA,2,4
 0x00A03E54,4,.data,global,_s_rva007B2078,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03E58,4,.data,global,?TheStealthUpgradePoolKey@?1??rva0004B5333@StealthUpgrade@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Upgrade/StealthUpgrade.cpp,owned,,1,2
-0x00A03E5C,4,.data,global,?g_Va00E03E5C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp,provisional,?$S1@?1??rva0004B5333@StealthUpgrade@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Upgrade/StealthUpgrade.cpp;?g_Va00E03E5C@@3IA,2,4
+0x00A03E58,4,.data,global,?TheStealthUpgradePoolKey@?1??getModuleNameKey@StealthUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Upgrade/StealthUpgrade.cpp,owned,,1,2
+0x00A03E5C,4,.data,global,?$S1@?1??getModuleNameKey@StealthUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Upgrade/StealthUpgrade.cpp,owned,,1,4
 0x00A03E60,4,.data,global,_s_rva007B20A2,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03E64,4,.data,global,?TheUnpauseSpecialPowerUpgradePoolKey@?1??rva0004B5405@UnpauseSpecialPowerUpgrade@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Upgrade/UnpauseSpecialPowerUpgrade.cpp,owned,,1,2
 0x00A03E68,4,.data,global,?g_Va00E03E68@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp,provisional,?$S1@?1??rva0004B5405@UnpauseSpecialPowerUpgrade@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Upgrade/UnpauseSpecialPowerUpgrade.cpp;?g_Va00E03E68@@3IA,2,4
