@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 //
 // BFME2's lobby clans panel (the AptMpGameSetup panel's +0x190 member) Apt
@@ -7,6 +8,8 @@
 // registration 0x0057FAB0 (recovered below); that binding is their only
 // reference. The class is named for the strings' prefix.
 
+#include <string.h>
+#include <windows.h>
 #include "unicode_string.h"
 #include "ascii_string.h"
 #include <vector>
@@ -21,9 +24,6 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
                               const _List_iterator<_IterTp, _RightTraits> &b)
 { return a._M_node != b._M_node; }
 }
-
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" __declspec(dllimport) void *__stdcall ShellExecuteW(void *window, const unsigned short *operation, const unsigned short *file, const unsigned short *parameters, const unsigned short *directory, int show);
 
 class GameWindow;
 

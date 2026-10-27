@@ -1,4 +1,5 @@
 // cl: /GX- /MD /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 //
 // STLport 4.5.3 _Filebuf_base, the Win32 half of basic_filebuf. The handle,
@@ -9,40 +10,7 @@
 
 #include <stddef.h>
 #include <string.h>
-
-extern "C" __declspec(dllimport) int __stdcall WriteFile(
-	void *handle, const void *buffer, unsigned long bytes,
-	unsigned long *written, void *overlapped);
-extern "C" __declspec(dllimport) int __stdcall ReadFile(
-	void *handle, void *buffer, unsigned long bytes,
-	unsigned long *read, void *overlapped);
-extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(
-	void *handle, long low, long *high, unsigned long method);
-
-extern "C" __declspec(dllimport) int __stdcall UnmapViewOfFile(const void *base);
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void *handle);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetFileSize(
-		void *handle, unsigned long *high);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError(void);
-extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(
-		void *handle, long low, long *high, unsigned long method);
-
-struct _System_info
-{
-	unsigned long _M_oem_id;
-	unsigned long _M_page_size;
-	void *_M_minimum_application_address;
-	void *_M_maximum_application_address;
-	unsigned long *_M_active_processor_mask;
-	unsigned long _M_number_of_processors;
-	unsigned long _M_processor_type;
-	unsigned long _M_allocation_granularity;
-	unsigned short _M_processor_level;
-	unsigned short _M_processor_revision;
-};
-
-extern "C" __declspec(dllimport) void __stdcall GetSystemInfo(
-		_System_info *info);
+#include <windows.h>
 
 namespace _STL
 {
@@ -94,10 +62,10 @@ _Filebuf_base::_Filebuf_base()
 {
 	if (_M_page_size == 0)
 	{
-		_System_info info;
+		SYSTEM_INFO info;
 
 		GetSystemInfo(&info);
-		_M_page_size = info._M_page_size;
+		_M_page_size = info.dwPageSize;
 	}
 
 	_M_view_id = 0;

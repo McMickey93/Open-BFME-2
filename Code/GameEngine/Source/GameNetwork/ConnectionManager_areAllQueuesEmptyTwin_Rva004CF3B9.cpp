@@ -1,4 +1,5 @@
 // cl: -DNDEBUG -MD -EHsc -Ireference/open-bfme-1/game/GameEngine/Source/GameNetwork
+// platformsdk
 //
 // readable body of ?areAllQueuesEmpty@ConnectionManager@@QAE_NXZ: game/GameEngine/Source/GameNetwork/ConnectionManager.cpp
 // Open-BFME: ConnectionManager::areAllQueuesEmpty, retail 0x00662DF0. This is
@@ -10,13 +11,11 @@
 // direct (non-virtual) Connection::isQueueEmpty(). Independent TU: does not
 // touch the landed native_connection_timing.cpp ConnectionManager class.
 
+#include <windows.h>
+
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
-#define TRUE 1
-#define FALSE 0
-
-extern "C" __declspec(dllimport) UnsignedInt __stdcall timeGetTime(void);
 
 class Connection
 {

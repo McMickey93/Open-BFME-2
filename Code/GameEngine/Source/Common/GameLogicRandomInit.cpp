@@ -9,6 +9,9 @@
 // seedRandom body at 0x00233F3A: VC7.1 passes its arguments in eax/ecx and
 // preserves edx only while the implementation is visible. An extern declaration
 // changes the ABI to stack arguments and breaks all three existing bodies.
+
+#include <time.h>
+
 typedef unsigned int UnsignedInt;
 
 static UnsignedInt theGameAudioSeed[6] =
@@ -97,7 +100,6 @@ void InitGameLogicRandom(UnsignedInt seed)
 // supplies the time(0) seeding role. BFME2 delegates to its existing seeded
 // overload, preserving that overload's frame-override behavior.
 // Retail 0x0023424C..0x0023425D: time import, InitRandom(seed), RET (17B).
-extern "C" __declspec(dllimport) long __cdecl time(long *timer);
 void InitRandom()
 {
     InitRandom((UnsignedInt)time(0));

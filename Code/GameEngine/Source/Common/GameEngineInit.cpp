@@ -29,6 +29,8 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 #include <map>
 #include <hash_map>
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
@@ -401,9 +403,6 @@ extern void *TheLivingWorldAutoResolveReinforcementScheduleStore;
 extern Rva0022C316Subsystem *TheLivingWorldAutoResolveResourceBonusScheduleStore;
 extern Rva0022C38BSubsystem *TheLivingWorldAutoResolveSciencePurchasePointBonusScheduleStore;
 
-extern "C" __declspec(dllimport) char *__cdecl getenv(const char *name);
-extern "C" __declspec(dllimport) long __cdecl time(long *timer);
-extern "C" __declspec(dllimport) __declspec(noreturn) void __cdecl _exit(int status);
 extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void *hwnd, const char *text, const char *caption, unsigned int type);
 extern "C" __declspec(dllimport) int __stdcall MessageBoxW(void *hwnd, const unsigned short *text, const unsigned short *caption, unsigned int type);
 extern "C" __declspec(dllimport) int __stdcall SetWindowPos(void *hwnd, void *after, int x, int y, int cx, int cy, unsigned int flags);

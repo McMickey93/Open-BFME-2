@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /Oy-
+// platformsdk
 //
 // Debug::CrashDone, retail 0x0003AED0 (1132 bytes incl. its switch table,
 // ret 4). Debug vtable (RVA 0x7BE810) slot 0x4C.
@@ -20,37 +21,14 @@
 // - The exit path releases the Debug critical section and decrements
 //   disableAssertsEtc with InterlockedDecrement.
 
-
-extern "C" __declspec(dllimport) int __cdecl wsprintfA(char *out, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void *owner, const char *text,
-	const char *caption, unsigned int type);
-extern "C" __declspec(dllimport) int __stdcall ShowWindow(void *window, int command);
-extern "C" __declspec(dllimport) int __stdcall EnumThreadWindows(unsigned long threadId,
-	int(__stdcall *callback)(void *, long), long param);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId(void);
-extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile *value);
-extern "C" __declspec(dllimport) void *__stdcall CreateFileA(const char *fileName,
-	unsigned long access, unsigned long shareMode, void *security,
-	unsigned long disposition, unsigned long flags, void *templateFile);
-extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(void *file,
-	long distance, long *distanceHigh, unsigned long method);
-extern "C" __declspec(dllimport) int __stdcall WriteFile(void *file, const void *buffer,
-	unsigned long bytes, unsigned long *written, void *overlapped);
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void *handle);
-extern "C" __declspec(dllimport) void __stdcall RaiseException(unsigned long code,
-	unsigned long flags, unsigned long argCount, const unsigned long *args);
-extern "C" __declspec(dllimport) __declspec(noreturn) void __cdecl exit(int code);
-extern "C" __declspec(dllimport) __declspec(noreturn) void __cdecl _exit(int code);
-extern "C" size_t strlen(const char *text);
-extern "C" char *strcpy(char *dest, const char *src);
-extern "C" char *strcat(char *dest, const char *src);
+#include <windows.h>
+#include <string.h>
+#include <stdlib.h>
 
 struct DebugCriticalSection
 {
 	unsigned char m_data[0x18];
 };
-
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(DebugCriticalSection *lock);
 
 // g_bfmeCsDWC: matched references place it at VA 0xde0884 (zero-filled; a plain-data view).
 DebugCriticalSection g_bfmeCsDWC;
@@ -247,7 +225,7 @@ bool Debug::CrashDone(int mode)
 						break;
 					case 3:
 						curFrameEntry = 0;
-						LeaveCriticalSection(&g_bfmeCsDWC);
+						LeaveCriticalSection((LPCRITICAL_SECTION)&g_bfmeCsDWC);
 						exit(1);
 					case 5:
 						{
@@ -287,7 +265,7 @@ bool Debug::CrashDone(int mode)
 		{
 			if (m_logErrorsToFile)
 			{
-				void *file = CreateFileA("errors.txt", 0x40000000, 0, 0, 4, 0x80, 0);
+				HANDLE file = CreateFileA("errors.txt", 0x40000000, 0, 0, 4, 0x80, 0);
 				SetFilePointer(file, 0, 0, 2);
 				unsigned long written;
 				const char *separator =
@@ -301,14 +279,14 @@ bool Debug::CrashDone(int mode)
 		{
 			((Rva0088A1F0Owner *)this)->broadcast();
 
-			void *window = 0;
-			EnumThreadWindows(GetCurrentThreadId(), EnumThreadWndProc, (long)&window);
+			HWND window = 0;
+			EnumThreadWindows(GetCurrentThreadId(), (WNDENUMPROC)EnumThreadWndProc, (long)&window);
 			if (window)
 				ShowWindow(window, 6);
 			MessageBoxA(0, help, "Game crash", 0x11010);
 
 			curFrameEntry = 0;
-			LeaveCriticalSection(&g_bfmeCsDWC);
+			LeaveCriticalSection((LPCRITICAL_SECTION)&g_bfmeCsDWC);
 			((Rva0088A1F0Owner *)this)->broadcast();
 			RaiseException(0x04560123, 0, 0, 0);
 			_exit(1);
@@ -316,7 +294,7 @@ bool Debug::CrashDone(int mode)
 	}
 
 	curFrameEntry = 0;
-	LeaveCriticalSection(&g_bfmeCsDWC);
+	LeaveCriticalSection((LPCRITICAL_SECTION)&g_bfmeCsDWC);
 	InterlockedDecrement(&disableAssertsEtc);
 	return false;
 }

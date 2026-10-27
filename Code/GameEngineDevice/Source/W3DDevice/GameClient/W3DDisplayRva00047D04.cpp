@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 //
 // ?rva00047D04@W3DDisplay@@QAEXH@Z, retail 0x00047D04..0x00047F79 (629 bytes,
 // thiscall RET 4): the static-image frame pass of W3DDisplay. Under the DX8
@@ -20,6 +21,7 @@
 // (the sibling Reset_D3D_Device view). The three function statics are the
 // retail data cells 0x009E1B44 (frame-counter switch), 0x009E1B48 (counter
 // display string) and 0x009E1C6C/0x009E1C78 (black colour and its guard word).
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
@@ -58,7 +60,6 @@ public:
 };
 
 extern void *ApplicationHWnd;
-extern "C" __declspec(dllimport) int __stdcall IsIconic(void *window);
 
 class GameFont;
 
@@ -226,7 +227,7 @@ void W3DDisplay::rva00047D04(int mode)
 	static bool showFrame;
 	static DisplayString *frameString;
 
-	if (ApplicationHWnd && IsIconic(ApplicationHWnd))
+	if (ApplicationHWnd && IsIconic((HWND)ApplicationHWnd))
 		return;
 	DX8DeviceGuard guard;
 	if (!WW3D::Prepare_Render_New_Frame())

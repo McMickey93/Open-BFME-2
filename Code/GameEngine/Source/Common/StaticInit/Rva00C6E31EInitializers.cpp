@@ -1,8 +1,8 @@
 // cl: /Oi /MD
 // ATL's four-entry device-context cache initializer.
+#include <stdlib.h>
 #include <string.h>
 
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 void rva007B9B0A();
 void Rva00C6E31EInitialize();
 struct HDC__;

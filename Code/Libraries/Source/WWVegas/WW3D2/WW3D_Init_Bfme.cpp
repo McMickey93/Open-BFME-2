@@ -1,5 +1,8 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // Retail 0x008FD640: BFME WW3D initialisation stores the static sort-list pair.
+
+#include <windows.h>
 
 class DX8Wrapper
 {
@@ -25,7 +28,6 @@ struct WW3DStaticSortGlobals
 };
 
 WW3DStaticSortGlobals g_WW3D_StaticSortGlobals;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeBeginPeriod(unsigned long period);
 
 class WW3D
 {

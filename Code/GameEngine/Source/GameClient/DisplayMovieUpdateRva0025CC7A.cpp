@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?rva0025CC7A@Display@@QAE_N_N@Z, retail 0x0025CC7A..0x0025CEEF (629B),
 // thiscall ret 4.
@@ -25,6 +26,8 @@
 // the rowed one-byte setter 0x001DBB82, StringBase::set 0x000055F5, the
 // AsciiString copy 0x000365F0 and release 0x00036410. Literals at 0x007F5D88
 // 0x007C8994 0x007F5D6C 0x007F5D58. The method name stays address-derived.
+#include <stdio.h>
+#include <windows.h>
 #include "ascii_string.h"
 
 typedef int Int;
@@ -297,9 +300,6 @@ Bool Display::rva0025CC7A(Bool skip)
 
 // BFME 1 MovieFrame0040E9E0 guides stream advance and the trace loop; this
 // target dispatcher additionally finishes fade-out or expires two timers.
-extern "C" __declspec(dllimport) int __cdecl sprintf(char*,const char*,...);
-extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA(const char*);
-extern "C" __declspec(dllimport) unsigned __stdcall timeGetTime();
 extern __int64 g_bfmeVM0Total;
 extern double g_bfmeVM0Scale;
 VideoStreamInterface *MovieFrameStream;

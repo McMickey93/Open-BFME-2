@@ -12,13 +12,7 @@
 
 #include <map>
 #include <stdlib.h>
-
-struct _iobuf;
-typedef struct _iobuf FILE;
-extern "C" __declspec(dllimport) FILE *__cdecl _wfopen(const unsigned short *name, const unsigned short *mode);
-extern "C" __declspec(dllimport) int __cdecl fprintf(FILE *fp, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __cdecl fclose(FILE *fp);
-extern "C" __declspec(dllimport) char *__cdecl fgets(char *buf, int n, FILE *fp);
+#include <string.h>
 
 typedef bool Bool;
 typedef int Int;
@@ -392,8 +386,6 @@ Int GameModePreferences::rva0044D88C(void)
 		return ThePlayerTemplateStore->m_map.begin()->first;
 	return v;
 }
-
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *s1, const char *s2);
 
 // ?rva0044D940@GameModePreferences@@QAE_NXZ @0x0044D940 70B
 Bool GameModePreferences::rva0044D940(void)
