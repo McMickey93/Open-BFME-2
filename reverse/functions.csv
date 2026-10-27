@@ -25169,7 +25169,7 @@ __Locale_wchar_toupper,,0x00020AC0,39,Code/Libraries/Source/WWVegas/WWLib/Rva008
 ?Rva00740A60Get@@YAHABV?$StringBase@D@@@Z,,0x00740A60,54,Code/GameEngine/Source/Common/Rva00740A60Get.cpp,matched,table walk compareNoCase returns index else 0 caller 0x740E49 table 0x9DDF68
 ?Rva00239D02Insert@@YGPAPAXPAPAXPAX0@Z,,0x00239D02,37,Code/GameEngine/Source/Common/Rva00239D02Insert.cpp,matched,freelist node insert via rowed alloc 0x00239BD8 same pool as 0x00239380
 ??0Rva005F4AD7@@QAE@ABU0@@Z,,0x005F4AB9,30,Code/GameEngine/Source/Common/Rva005F4AD7Dtor.cpp,matched,unlock lane copy-ctor abutting dtor 0x5F4AD7 via shared double-deref plus inc
-??0Rva0037D076@@QAE@XZ,,0x0037D076,33,Code/GameEngine/Source/Common/Rva0037D076Ctor.cpp,matched,list at plus4 int minus1 bytes zero caller 0x0037D2CC
+??0Rva0037D076@@QAE@XZ,,0x0037D076,33,Code/GameEngine/Source/Common/Recorder.cpp,matched,list at plus4 int minus1 bytes zero caller 0x0037D2CC
 ?SetFrame@Rva007401A3@@QAEXHH@Z,,0x007401A3,66,Code/GameEngine/Source/Common/Rva007401A3Set.cpp,matched,setter caches two ints notifies slot B4 with float callers 0x740AAB 0x740BA7
 ?Rva000FDCD7Get@@YAHXZ,,0x000FDCD7,26,Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva000FDCD7Get.cpp,matched,chain of 0x000F630C al-test xor-false global 0x009E1F50 to 0x009B5BD4
 ?Rva00740EA1DistanceSquared@@YAHPBE0@Z,,0x00740EA1,77,Code/GameEngine/Source/Common/Rva00740EA1Distance.cpp,matched,squared distance of two 4-byte vectors caller 0x741459
@@ -33475,9 +33475,9 @@ _rva0062AF4AD3DXVec4Transform@12,,0x0062AF4A,6,Code/GameEngine/Source/Common/Rva
 ?rva0050C395@Rva0050C2E6@@QAEXAAV1@@Z,,0x0050C395,177,Code/GameEngine/Source/GameNetwork/Rva0050C2E6Copy.cpp,matched,reverse copier same class via rowed set
 ?rva0050C807@Rva0050C807@@QBE?AVAsciiString@@H@Z,,0x0050C807,66,Code/GameEngine/Source/Common/Rva0050C807Get.cpp,matched,bounds-checked string getter via rowed copy
 ?xfer@GhostObjectManager@@MAEXPAVXfer@@@Z,,0x0030594D,31,Code/GameEngine/Source/Common/GhostObjectManager_xfer.cpp,matched,GhostObjectManager::xfer: slot 3 of ??_7GhostObjectManager@@6B@ 0x008078F0; base call of W3DGhostObjectManager::xfer; m_localPlayer +4
-?reset@Rva0037B3D1@@QAEXXZ,,0x0037B3D1,38,Code/GameEngine/Source/Common/System/Rva0037B3D1.cpp,matched,fclose plus rowed releaseBuffer then slot1 tail via clear
+?reset@Rva0037B3D1@@QAEXXZ,,0x0037B3D1,38,Code/GameEngine/Source/Common/Recorder.cpp,matched,fclose plus rowed releaseBuffer then slot1 tail via clear
 ?rva0037B5A0@Rva0037B5A0@@QAE?AVUnicodeString@@XZ,,0x0037B5A0,40,Code/GameEngine/Source/Common/Recorder.cpp,matched,conditional string copy via rowed wide copyctor and TheEmptyString
-?rva0037B3F7@Rva0037B3F7@@QAEXXZ,,0x0037B3F7,54,Code/GameEngine/Source/Common/System/Rva0037B3F7.cpp,matched,fclose clear then MessageStream v18 0x1D unless E70 set
+?rva0037B3F7@Rva0037B3F7@@QAEXXZ,,0x0037B3F7,54,Code/GameEngine/Source/Common/Recorder.cpp,matched,fclose clear then MessageStream v18 0x1D unless E70 set
 ?rva0037B7C7@Rva0037B7C7@@QAEXXZ,,0x0037B7C7,47,Code/GameEngine/Source/Common/System/Rva0037B7C7.cpp,matched,fread IAT plus rowed 0x0037B3F7 tail-jmp
 ?Rva0037BA48Get@@YA?AVUnicodeString@@XZ,,0x0037BA48,26,Code/GameEngine/Source/Common/System/Rva0037BA48Get.cpp,matched,rowed StringBase ctor 0x00037E30 plus wide global 0x0081875C
 ?rva00276641@Drawable@@QAE_NPAVUnicodeString@@@Z,,0x00276641,109,Code/GameEngine/Source/GameClient/Drawable_rva00276641.cpp,matched,Drawable wide label via rowed 0x00274CB2 plus TheGameText fetch plus wide set
