@@ -20476,10 +20476,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_00687ccc@@YAXXZ,,0x00687CCC,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA7D4;dll=tapi32.dll;import=lineShutdown;target=lineShutdown
 ?ji_00687cd2@@YAXXZ,,0x00687CD2,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA7DC;dll=tapi32.dll;import=lineGetDevCaps;target=lineGetDevCaps
 ?ji_00687cd8@@YAXXZ,,0x00687CD8,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA768;dll=netapi32.dll;import=Netbios;target=Netbios
-?ji_00687cde@@YAXXZ,,0x00687CDE,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA92C;dll=ws2_32.dll;import=listen;target=listen
-?ji_00687ce4@@YAXXZ,,0x00687CE4,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA938;dll=ws2_32.dll;import=accept;target=accept
-?ji_00687cea@@YAXXZ,,0x00687CEA,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA930;dll=ws2_32.dll;import=getpeername;target=getpeername
-?ji_00687cf0@@YAXXZ,,0x00687CF0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA934;dll=ws2_32.dll;import=WSAIoctl;target=WSAIoctl
 ?ji_00687d98@@YAXXZ,,0x00687D98,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA138;dll=kernel32.dll;import=CreateToolhelp32Snapshot;target=CreateToolhelp32Snapshot
 ?ji_00687e40@@YAXXZ,,0x00687E40,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA244;dll=kernel32.dll;import=Thread32Next;target=Thread32Next
 ?ji_00687e4c@@YAXXZ,,0x00687E4C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA24C;dll=kernel32.dll;import=Thread32First;target=Thread32First
@@ -98521,3 +98517,7 @@ _sendto@24,,0x006556E2,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,mat
 _recv@16,,0x006556E8,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__recv@16 using VS2003 __identifier; retail IAT slot 0x00BBA948 names wsock32.dll!recv (gen-import row); complete 6B tail
 ___WSAFDIsSet@8,,0x006556EE,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp____WSAFDIsSet@8 using VS2003 __identifier; retail IAT slot 0x00BBA944 names wsock32.dll!__WSAFDIsSet (gen-import row); complete 6B tail
 _inet_ntoa@4,,0x0075B4CC,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__inet_ntoa@4 using VS2003 __identifier; retail IAT slot 0x00BBA9A0 names wsock32.dll!inet_ntoa (gen-import row); complete 6B tail
+_listen@8,,0x00687CDE,6,Code/Libraries/Source/Win32/Ws2_32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__listen@8 using VS2003 __identifier; retail IAT slot 0x00BBA92C names ws2_32.dll!listen (gen-import row); complete 6B tail
+_accept@12,,0x00687CE4,6,Code/Libraries/Source/Win32/Ws2_32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__accept@12 using VS2003 __identifier; retail IAT slot 0x00BBA938 names ws2_32.dll!accept (gen-import row); complete 6B tail
+_getpeername@12,,0x00687CEA,6,Code/Libraries/Source/Win32/Ws2_32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__getpeername@12 using VS2003 __identifier; retail IAT slot 0x00BBA930 names ws2_32.dll!getpeername (gen-import row); complete 6B tail
+_WSAIoctl@36,,0x00687CF0,6,Code/Libraries/Source/Win32/Ws2_32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__WSAIoctl@36 using VS2003 __identifier; retail IAT slot 0x00BBA934 names ws2_32.dll!WSAIoctl (gen-import row); complete 6B tail
