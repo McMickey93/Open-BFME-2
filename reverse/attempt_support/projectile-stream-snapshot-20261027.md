@@ -58,3 +58,29 @@ image-ownership improvement is claimed by this prerequisite.
 Scratch receipts: build/codexb5-projectile-prerequisite-facts.json and
 build/sol-b5-projectile-composition.json, -composed-bindings.json and
 -composed-selection.json. No source path changes occur in this prerequisite.
+
+## Applied merge and path audit
+
+The supported --merge operation absorbed ModuleDataDtor.cpp, repointing its four
+function rows and two existing TU-map source cells. It did not regenerate the
+committed map. The resulting TU passes all 14 rows, its data row, one literal,
+one empty-string reference and all three exception graphs. find_declared_unmatched
+passes. The donor has no protected-register keys, hatches, header-queue entries
+or data globals to transfer; the seed's surviving data debt remains owned.
+
+The entire outgoing batch has one absorbed path, ModuleDataDtor.cpp to the seed.
+Searches of tools, hooks, workflows, Code, docs and reverse find no active path
+consumer requiring repair. Remaining old-path mentions are historical source
+provenance, functions.csv notes, the census-owned link_status.csv snapshot, a
+GpuDrawModuleInfoDtor example comment and banked evidence. Keep those histories.
+The planner was regenerated after the merge. Active ledger sources are tracked,
+and queued blocked donors remain intact. The scope loses one source file and
+claims no additional byte or census coverage.
+
+Before the final commit, upstream was rebased through e7da23e761 and the revised
+AGENTS.md read. The prerequisite is now de531e7601 (the starting handoff is
+ dc72bb7347); all 14 rows pass again after the rebase. The earlier shadow batch
+audit was inconclusive against bf3dd31211 with 15 missing current receipts,
+first DetachableRiderDataRva004AEB84.cpp. The updated audit requires a committed
+tip; its result must be recorded separately. None of these input limitations is
+a clean whole-batch link verdict or authority to re-run the census.
