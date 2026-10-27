@@ -48,6 +48,10 @@ def run(label, args, stdin=None, env=None, allowed=(0,), quiet=False):
             process.stdin.close()
         last = time.monotonic()
         for line in process.stdout:
+            if label in ("native-renewal-record", "tool-generated-release") and line.strip():
+                metadata = json.loads(line.decode("utf-8"))
+                metadata.pop("host", None)
+                line = (json.dumps(metadata, sort_keys=True) + "\n").encode("utf-8")
             stream.write(line)
             if not quiet:
                 sys.stdout.buffer.write(line)
@@ -293,18 +297,39 @@ def qualified(bash):
         message = EVIDENCE / ("message-%d.txt" % index)
         message.write_text(group["message"], encoding="utf-8", newline="\n")
         git("normal-native-commit-" + str(index), "commit", "--file", message, quiet=True)
-    for retry in range(4):
+    for retry in range(12):
         verify_scope(base)
+        # Preserve normal native commits even if a concurrent upstream move
+        # refuses their publication. These artifacts are explicitly unqualified.
+        unfinished = EVIDENCE / ("unqualified-%d.bundle" % retry)
+        git("preserve-unqualified-native-commits", "bundle", "create", unfinished,
+            base + ".." + LOCAL_REF, quiet=True)
+        (EVIDENCE / ("unqualified-%d.json" % retry)).write_text(json.dumps(
+            {"status": "not-push-qualified", "base": base, "commit": rev("HEAD"),
+             "tree": rev("HEAD^{tree}"), "local_ref": LOCAL_REF, "claim": DATA["claim"]},
+            indent=2) + "\n", encoding="utf-8")
         claims("before-actual-push-gate")
         if master() == base:
             head = rev("HEAD")
             refs = ("%s %s refs/heads/master %s\n" % (LOCAL_REF, head, base)).encode()
-            run("ordinary-actual-official-pre-push", [bash, ".githooks/pre-push", "origin", DATA["upstream"]],
-                stdin=refs, quiet=True)
-            claims("after-actual-push-gate")
-            if master() == base:
-                break
-        require(retry < 3, "Official master kept moving: qualified objects retained for a reviewed rebase")
+            gate_output = run("ordinary-actual-official-pre-push",
+                              [bash, ".githooks/pre-push", "origin", DATA["upstream"]],
+                              stdin=refs, quiet=True, allowed=(0, 1))
+            gate_code = RECEIPT["commands"][-1]["exit_code"]
+            advertised = master()
+            if gate_code:
+                refusals = [line.split("PRE-PUSH FAILED:", 1)[1].strip()
+                            for line in gate_output.decode("utf-8", errors="replace").splitlines()
+                            if "PRE-PUSH FAILED:" in line]
+                require(refusals == ["origin/master moved past this push's base; pull --rebase before running the full gate"]
+                        and advertised != base,
+                        "Ordinary pre-push failed for a reason other than a proven concurrent master advance")
+                print("CONCURRENT_MASTER_REFUSAL: ordinary rebase and recheck required", flush=True)
+            else:
+                claims("after-actual-push-gate")
+                if advertised == base:
+                    break
+        require(retry < 11, "Official master kept moving: qualified objects retained for a reviewed rebase")
         new_base = master(fetch=True)
         # Ordinary rebase/post-rewrite hooks remain enabled.
         git("ordinary-rebase", "-c", "submodule.recurse=false", "rebase", new_base, quiet=True)
@@ -323,6 +348,10 @@ def qualified(bash):
                                  **({"scope": info.get("scope", ""), "locks": info.get("locks", ())}
                                     if DATA["project"] == 2 else {}))
     release_raw = git("tool-generated-release", "show", "-s", "--format=%B", release_sha, quiet=True).decode().strip()
+    # Omit machine identifiers from published coordination metadata.
+    release_info = json.loads(release_raw)
+    release_info.pop("host", None)
+    release_raw = json.dumps(release_info, sort_keys=True)
     head = rev("HEAD")
     files = []
     for name in sorted(set(filter(None, git("export-paths", "diff", "--name-only", "-z", base, "HEAD", quiet=True).decode().split("\0")))):
@@ -399,12 +428,31 @@ def transfer(bash):
     save()
     print("TRANSFERRED_QUALIFIED_COMMIT " + json.dumps(manifest), flush=True)
 
+def renewal():
+    os.environ["BFME_CLAIM_NS"] = DATA["claim_namespace"]
+    os.environ["BFME_CLAIM_OWNER"] = DATA["claim"]["owner"]
+    sys.path.insert(0, str(SOURCE / "tools"))
+    module, key, token, info = claims("before-native-lease-renewal")
+    made = module._record(DATA["claim"]["owner"], 4,
+                          "Continue the already verified AptOptions cleanup through current-master publication",
+                          lease=DATA["claim"]["lease"], since=info.get("since"),
+                          scope=info.get("scope", ""), locks=info.get("locks", ()))
+    raw = git("native-renewal-record", "show", "-s", "--format=%B", made, quiet=True).decode().strip()
+    record = json.loads(raw)
+    record.pop("host", None)
+    public = {"ref": module.ref_of(key), "expected_token": token, "record": record}
+    RECEIPT.update(status="native-renewal-prepared", renewal=public)
+    save()
+    print("NATIVE_CLAIM_RENEWAL " + json.dumps(public, sort_keys=True), flush=True)
+
 try:
     bash = validate_context()
     if sys.argv[1:] == ["qualify"]:
         qualified(bash)
     elif sys.argv[1:] == ["transfer"]:
         transfer(bash)
+    elif sys.argv[1:] == ["renewal"]:
+        renewal()
     else:
         raise RuntimeError("Choose qualify or transfer")
 except BaseException as error:
