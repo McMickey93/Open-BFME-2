@@ -985,9 +985,25 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-006: compiler emission and the selected copy still disagree with retail
 
-**Status: Open. Updated: 2026-10-25.**
+**Status: Open. Updated: 2026-10-27.**
 
 **DefaultDraw table follow-up (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `T1Base005F3750Ctor.cpp` still disagrees with the first `DefaultDrawModuleInfo` table in `FXParticleSystem.cpp`. The native table at RVA 0081BAC0 has four slots (003A7ABD, 000B3FD0, 003A6127 and 00306A9B); the current first emitter has three slots, and T1's four-slot copy puts its name getter in slot 1 instead of slot 2. `build/c136-common2/provider-details.log` records the raw retail words and both COFF relocation lists. Matching the first emitter's shorter table would retain a non-retail contract, so no such trial was made. Next: reconcile the actual Snapshot interface and all emitting views, retaining every row, then recheck the family. The T1 destructor identity prerequisite remains separate under LINK-004. Clearance and census confirmation remain pending.
+
+- **Old-reference full control (2026-10-27, frozen `47d8342e4c`):**
+  [the completed control and native witnesses](../reverse/attempt_support/bfme1-reference-08400aa3-20261027/readme.md)
+  verify 98,522/98,522 function rows but finish with actual exit 1: six
+  inconsistent vftable symbols plus one unproven camera data-size row.
+  A read-only 304-row inspection reproduces all six table-base pairs at
+  18 native operands. Several involve destructor `fold-proof` rows and their
+  constructor/caller views; base/derived contracts and resolved data identity
+  need verification before these folds can be accepted. The ProjectedShadow
+  constructor views also need their actual table owners. These are versioned
+  findings on the old inputs, not a current-master census or a proved
+  replacement hierarchy. BFME 1 revision `08400aa3` was not adopted; the
+  checkout remains `e74410b3`, the success stamp is unchanged and the claim
+  is released. Check current master before repairing these sites; investigate
+  the camera sizeof probe separately. No verifier, whitelist or source change
+  was made and no new linked-byte gain is claimed.
 
 - **Polygon renderer consolidation subset (2026-10-26, inspected cdf6e90a59):**
   [the scoped provider prerequisite](../reverse/attempt_support/sol-b5-polygon-provider-20261026.md)
