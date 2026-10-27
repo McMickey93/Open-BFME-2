@@ -1,6 +1,8 @@
 // cl: /MD /EHsc
 // ??1AptTranslator@@QAE@XZ, retail 0x0043283C, 28 bytes.
 // Dtor stores derived vtable 0x00C3CA28, clears singleton 0x00E032C8 if it holds this, stores base vtable 0x00BDBA74. Evidence: caller 0x00432A1F deleting dtor, base vtable RVA 0x007DBA74 matches BfmeOwnVVD base, singleton matches g_Va00E032C8.
+#include <string.h>
+
 class Rva0043283CBase
 {
 public:
@@ -54,7 +56,6 @@ private:
 };
 
 extern int g_Va00E032C8;
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
 
 // ??0AptTranslator@@QAE@XZ, retail 0x00432987..0x00432A1F (152 bytes, EH):
 // WorldBuilder's AptTranslator::AptTranslator (AptTranslator.cpp, which asserts

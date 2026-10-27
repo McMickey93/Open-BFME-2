@@ -56,7 +56,6 @@ RadarEventRefSlot RadarWindowOverrideSource::rva002D508B(const char*text){return
 // The 205B formatting provider is visible in this TU as in the original
 // shared family. With only its declaration, MSVC schedules the sx store
 // before the owner push; the implementation restores the native order.
-extern "C" double __cdecl fabs(double);
 #define inline static inline
 #include <math.h>
 #undef inline

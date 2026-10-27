@@ -9,7 +9,7 @@
 // returns lenA - lenB. Retail picks the chunk size with cmovl, which MSVC 7.1
 // emits only under /arch:SSE. Original class and function names are unknown.
 
-extern "C" int __cdecl memcmp(const void *, const void *, unsigned int);
+#include <string.h>
 
 class Rva002AADB6Reader
 {

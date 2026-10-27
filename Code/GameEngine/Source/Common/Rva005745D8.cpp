@@ -33,7 +33,6 @@ class Rva002E063B
 public:
 	int get() const;
 };
-extern "C" __declspec(dllimport) double __cdecl floor(double v);
 extern float g_Va00BBB8D8;
 struct Virt04
 {

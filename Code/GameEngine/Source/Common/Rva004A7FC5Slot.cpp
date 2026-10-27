@@ -3,6 +3,8 @@
 // ?loadPostProcess@Rva004A7D55@@UAEXXZ @0x004A7FC5 43B virtual slot 1 of vtable 0x00853790 class of ??1Rva004A7D55.
 // Target evidence: vslot 1 plus call DockUpdate loadPostProcess 0x00589909 plus Thing getDrawable 0x005508E2 plus broadcast 0x0027164E with m_04+0x10 and m_88; sibling slot5 Rva004A7E43Slot pattern.
 
+#include <math.h>
+
 class Rva004A7D55;
 
 class DockUpdate
@@ -39,8 +41,6 @@ public:
 };
 
 extern GlobalData *TheWritableGlobalData;
-
-extern "C" __declspec(dllimport) double __cdecl ceil(double v);
 
 class Rva004A7D55
 {

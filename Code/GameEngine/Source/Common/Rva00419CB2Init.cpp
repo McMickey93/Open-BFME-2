@@ -4,9 +4,8 @@
 // 0 then bitwise-NOT the dword (sets to -1). Evidence: call to rowed memset
 // thunk 0x006291AE with pushes 4 0 ptr; caller 0x00419CC8 passes global
 // 0x00E030D0; unblocks 0x00419CC8.
+#include <string.h>
 #pragma function(memset)
-
-extern "C" void *memset(void *dst, int value, unsigned int size);
 
 void __cdecl Rva00419CB2Init(void *p)
 {

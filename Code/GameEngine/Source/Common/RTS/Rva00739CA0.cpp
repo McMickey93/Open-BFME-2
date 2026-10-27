@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /DBFME_STLP_NODE_ALLOC /D_STLP_NO_EXCEPTIONS /Ireference/shims/stlp_nodealloc
 // ?rva00739CA0@Rva00739CA0@@QAEXPAUFloatRect0073CE30@@HI@Z 229B @0x00739CA0: world-to-cell rect via floor then rowed Gen wrapper 0x0073CE30. Computes cell floats as (float)(int)floor((double)((world-origin)*scale)) with Gen originX@+4 originY@+8 scale@+0x20 then calls gen->rva0073CE30 with extra mask passthrough. Layout caller Gen* at +0x10. Evidence: 4x floor plus fistp/fild plus rowed 0x0073CE30 plus callers at 0x00357926 0x003C01A0.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 static __forceinline float fast_floor(float f)
 {

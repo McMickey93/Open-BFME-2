@@ -5,7 +5,7 @@
 // packed +8 fields 0x3ff/0xff/0xfff. Evidence: same +0x70/+0x78/+0x7c and 0x14 stride
 // as Rva00285D34Cell/Rva00285DC5Paint, g_Va007C26F0 0x007C26F0, INV 0x007C2424,
 // caller at 0x00048D15.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 __forceinline long FloatToLong(float f)
 {

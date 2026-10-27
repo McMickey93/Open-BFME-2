@@ -20,6 +20,7 @@
 //   0x005A9923  slot 7: while running (+0x10), stop (0x004ED748(1, 0)) when
 //               0x004ED169 says so or the +0x20 record is flagged at +0x18
 #include "ascii_string.h"
+#include <math.h>
 
 // Retail's initializer calls AsciiString's out-of-line const char * ctor
 // (0x0000654A) rather than expanding it, so inline expansion is off here.
@@ -28,8 +29,6 @@ AsciiString AIBasePenetrationTroopsTactic_IsRunning("AIBasePenetrationTroopsTact
 #pragma inline_depth()
 
 // The engine's float helpers (fast_float_floor / fast_float2long_round).
-extern "C" __declspec(dllimport) double __cdecl floor(double);
-
 static __forceinline float fast_floor(float f)
 {
 	return (float)floor((double)f);

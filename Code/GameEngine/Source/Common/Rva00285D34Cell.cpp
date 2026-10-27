@@ -6,9 +6,9 @@
 // leading int of the 20-byte cell. Evidence: this+0x70 row-pointer table
 // with row/col counts, imul 0x14 stride, IAT floor twice, caller 0x00098573
 // comparing the result against 1 and 2; owner unproven so honest Rva class.
-typedef int Int;
+#include <math.h>
 
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+typedef int Int;
 
 extern float g_Va007C26F0;
 

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 //
 // ??1Rva005CF9FF@@UAE@XZ @0x005CF9FF 68B, ??1Rva005CFA43@@UAE@XZ @0x005CFA43
 // 68B and ??1Rva005CFA87@@UAE@XZ @0x005CFA87 68B: three sibling dtors,
@@ -13,7 +14,7 @@
 
 #include "ascii_string.h"
 #include "unicode_string.h"
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+#include <windows.h>
 class GameTextInterface {public:
  virtual ~GameTextInterface(){};
  virtual void s00()=0;virtual void s04()=0;virtual void s08()=0;virtual void s0c()=0;virtual void s10()=0;virtual void s14()=0;virtual void s18()=0;virtual void s1c()=0;virtual void s20()=0;virtual void s24()=0;virtual void s28()=0;virtual void s2c()=0;virtual void s30()=0;

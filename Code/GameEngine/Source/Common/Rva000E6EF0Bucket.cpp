@@ -9,7 +9,7 @@
 // matched Bfme5CeilCellExtent.cpp helper writes it.
 // Structural inference: each scaled axis is its own float local before the
 // floor call, which pops the argument before the fstp as retail does.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 __forceinline long FloatToLong(float f)
 {

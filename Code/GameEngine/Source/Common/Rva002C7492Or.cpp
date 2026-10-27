@@ -8,6 +8,7 @@
 // arg is the 19-dword mask built by 0x002C760B. Same family as
 // Rva00263546Overlap.cpp (19-dword overlap with sub eax ecx shape) and
 // Rva00271C8ALoop.cpp (19-dword merge with push 0x13 pop dec-jne).
+#include <string.h>
 
 class Rva002C7492
 {
@@ -18,8 +19,6 @@ public:
 private:
 	int m_mask[19];
 };
-
-extern "C" void *memset(void *dst, int c, unsigned n);
 
 void Rva002C7492::rva002C7492(const Rva002C7492 *other)
 {

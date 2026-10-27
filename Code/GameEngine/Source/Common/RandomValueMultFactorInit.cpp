@@ -7,10 +7,11 @@
 // time through the C powf (0x00116DC0) with the float constants 2.0 and
 // 32.0. As in the other static-init strips, the compiler-local initializer
 // is written as an explicit address-named function storing the global.
+#include <math.h>
+
 typedef float Real;
 typedef unsigned int UnsignedInt;
 
-extern "C" float __cdecl powf(float x, float y);
 inline Real Rva007ADBFFPow(Real x, Real y) { return powf(x, y); }
 
 // The native initializer and three real-value readers share this writable

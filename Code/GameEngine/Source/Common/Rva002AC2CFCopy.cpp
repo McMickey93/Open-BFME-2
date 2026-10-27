@@ -8,7 +8,7 @@
 // The first copy returns immediately when no bytes remain. The old bank
 // incorrectly continued to the second memcpy on that path.
 
-extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int count);
+#include <string.h>
 
 struct Rva002AC2CFStringView
 {

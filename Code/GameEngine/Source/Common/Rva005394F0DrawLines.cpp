@@ -15,11 +15,10 @@
 // and field names are address-derived.
 #include "string_base.h"
 #include "../../../Libraries/Include/Lib/Coord2D.h"
+#include <math.h>
 
 typedef float Real;
 typedef int Int;
-
-extern "C" __declspec(dllimport) double __cdecl floor(double);
 
 // BaseType.h's inline fld/fistp rounding; retail floors through msvcr71.
 __forceinline long fast_float2long_round(float f)

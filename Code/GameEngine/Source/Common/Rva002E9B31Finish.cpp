@@ -7,7 +7,7 @@
 // .rdata 0xBC28F4 0xBC2428 0xBC5CCC 0xBBAEAC 0xBC2424 0xBCCB3C; floor via
 // msvcr71 IAT 0xBBA570; unblocks 0x002EBCA7 0x002EBCD6 0x002EBBFB 0x002EC479
 // 0x005852DF.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 static __forceinline float fast_floor(float f)
 {

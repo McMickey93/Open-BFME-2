@@ -10,7 +10,7 @@
 // options and objectives buttons are the +0x04/+0x18 subobjects whose
 // listener lists sit at +0x08/+0x1C. The class name is unknown.
 #include "ascii_string.h"
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva00578A60Listener
 {
