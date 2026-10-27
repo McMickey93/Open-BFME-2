@@ -23,11 +23,11 @@ public:
 	static void Init();
 };
 
-extern bool bfmeDynamicVBInUse[15];
+extern bool BfmeDynamicDX8VertexBufferInUse[15];
 BfmeDynamicVB *bfmeDynamicVBs[15];
 // bfmeDynamicVBSizes: matched references place it at VA 0xdf2a64 (zero-filled).
 unsigned short bfmeDynamicVBSizes[15] = { 0 };
-extern unsigned short bfmeDynamicVBOffsets[15];
+extern unsigned short BfmeDynamicDX8VertexBufferOffset[15];
 extern unsigned bfmeDynamicFVFs[15];
 BfmeFVFDescriptor bfmeDynamicFVFDescs[15];
 extern bool BfmeDynamicSortingVertexArrayInUse;
@@ -49,9 +49,9 @@ void DynamicVBAccessClass::_Deinit()
 			bfmeDynamicVBs[i] = (BfmeDynamicVB *)n;
 		}
 		unsigned fvf = bfmeDynamicFVFs[i];
-		bfmeDynamicVBInUse[i] = (char)n;
+		BfmeDynamicDX8VertexBufferInUse[i] = (char)n;
 		bfmeDynamicVBSizes[i] = 5000;
-		bfmeDynamicVBOffsets[i] = (unsigned short)n;
+		BfmeDynamicDX8VertexBufferOffset[i] = (unsigned short)n;
 		bfmeDynamicFVFDescs[i].Initialize(fvf, n, (bool)n, n);
 	}
 
@@ -81,14 +81,9 @@ void DynamicVBAccessClass::Init()
 			bfmeDynamicVBs[i] = (BfmeDynamicVB *)n;
 		}
 		unsigned fvf = bfmeDynamicFVFs[i];
-		bfmeDynamicVBInUse[i] = (char)n;
+		BfmeDynamicDX8VertexBufferInUse[i] = (char)n;
 		bfmeDynamicVBSizes[i] = 5000;
-		bfmeDynamicVBOffsets[i] = (unsigned short)n;
+		BfmeDynamicDX8VertexBufferOffset[i] = (unsigned short)n;
 		bfmeDynamicFVFDescs[i].Initialize(fvf, n, (bool)n, n);
 	}
 }
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?bfmeDynamicVBInUse@@3PA_NA=?BfmeDynamicDX8VertexBufferInUse@@3PA_NA")
-#pragma comment(linker, "/alternatename:?bfmeDynamicVBOffsets@@3PAGA=?BfmeDynamicDX8VertexBufferOffset@@3PAGA")
