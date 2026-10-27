@@ -6,33 +6,33 @@
 // Cftp's vtable (0x00CE8A38) itself; Cftp::Cftp (ftp_constructor.cpp) and
 // its vtable's deleting destructor reach this body by that name.
 extern "C" int __stdcall closesocket( int );
-extern "C" __declspec(dllimport) int __cdecl fclose( void* );
+#include <stdio.h>
 
 class Cftp
 {
 public:
 	virtual ~Cftp();
-	int m_socket4;
-	int m_socket8;
+	int m_iCommandSocket; // +0x04
+	int m_iDataSocket; // +0x08
 	char padC[0x3AC];
-	void* m_file3B8;
+	FILE *m_pfLocalFile; // +0x3B8
 };
 
 Cftp::~Cftp()
 {
-	if ( m_socket8 )
+	if ( m_iDataSocket )
 	{
-		closesocket( m_socket8 );
-		m_socket8 = 0;
+		closesocket( m_iDataSocket );
+		m_iDataSocket = 0;
 	}
-	if ( m_socket4 )
+	if ( m_iCommandSocket )
 	{
-		closesocket( m_socket4 );
-		m_socket4 = 0;
+		closesocket( m_iCommandSocket );
+		m_iCommandSocket = 0;
 	}
-	if ( m_file3B8 )
+	if ( m_pfLocalFile )
 	{
-		fclose( m_file3B8 );
-		m_file3B8 = 0;
+		fclose( m_pfLocalFile );
+		m_pfLocalFile = 0;
 	}
 }
