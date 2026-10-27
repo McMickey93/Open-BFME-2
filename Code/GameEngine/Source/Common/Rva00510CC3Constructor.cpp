@@ -17,7 +17,7 @@
 // the dead argument homes [ebp+0xC]/[ebp+8] like retail.
 #include "ascii_string.h"
 
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 struct DelegateDesc {
 	template <class T, class M> DelegateDesc(T *object, M method) : m_object(object), m_method(*(void **)&method) {}

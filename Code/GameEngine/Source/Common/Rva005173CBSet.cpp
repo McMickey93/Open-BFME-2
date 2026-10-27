@@ -22,7 +22,7 @@ struct Rva00517345
 	Rva00517345(const Rva0051732A &other);
 };
 
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 struct Rva005173CB
 {

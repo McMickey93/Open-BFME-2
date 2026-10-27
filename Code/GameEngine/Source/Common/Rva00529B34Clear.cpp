@@ -8,7 +8,7 @@ public:
 	~Rva0052936C();
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva00529B34
 {
