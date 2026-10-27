@@ -16,7 +16,7 @@ public:
 	int rva00222B19(void *level, const char *prefix, const char *function, int argc, const char *a0, void *a1, void *a2, void *a3, void *a4);
 };
 
-extern Rva00222A8BTarget *TheRva00222A8BTarget;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 struct Rva005F2FEFTeam
 {
@@ -106,14 +106,14 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::ShowMemberName(const UnicodeStrin
 {
 	if (!(m_flags58 & 1)) {
 		const char *team = m_team0C ? m_team0C->m_name : "";
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, m_level08, team, "SetMemberNameState", "_show");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level08, team, "SetMemberNameState", "_show");
 		m_flags58 |= 1;
 	}
 	if (text.compare(m_cached48) != 0) {
 		AsciiString key;
 		const char *team = m_team0C ? m_team0C->m_name : "";
 		key.format("APT:_level%u.%s_MemberName", m_level08, team);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, text, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, text, false);
 		m_cached48.set(text);
 	}
 }
@@ -122,14 +122,14 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::rva005F2897()
 {
 	if (m_flags58 & 1) {
 		const char *team = m_team0C ? m_team0C->m_name : "";
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, m_level08, team, "SetMemberNameState", "_hide");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level08, team, "SetMemberNameState", "_hide");
 		m_flags58 &= ~1;
 	}
 	if (!m_cached48.isEmpty()) {
 		AsciiString key;
 		const char *team = m_team0C ? m_team0C->m_name : "";
 		key.format("APT:_level%u.%s_MemberName", m_level08, team);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, UnicodeString::TheEmptyString, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, UnicodeString::TheEmptyString, false);
 		m_cached48.set(UnicodeString::TheEmptyString);
 	}
 }
@@ -138,7 +138,7 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::HideMemberRank()
 {
 	if (m_flags58 & 2) {
 		const char *team = m_team0C ? m_team0C->m_name : "";
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, m_level08, team, "SetMemberRankState", "_hide");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level08, team, "SetMemberRankState", "_hide");
 		m_flags58 &= ~2;
 	}
 }
@@ -147,7 +147,7 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::HideMemberRankProgress()
 {
 	if (m_flags58 & 4) {
 		const char *team = m_team0C ? m_team0C->m_name : "";
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, m_level08, team, "SetMemberRankProgressBarState", "_hide");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level08, team, "SetMemberRankProgressBarState", "_hide");
 		m_flags58 &= ~4;
 	}
 }
@@ -156,7 +156,7 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::HideCommandPoints()
 {
 	if (m_flags58 & 8) {
 		const char *team = m_team0C ? m_team0C->m_name : "";
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, m_level08, team, "SetCommandPointsState", "_hide");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level08, team, "SetCommandPointsState", "_hide");
 		m_flags58 &= ~8;
 	}
 }
@@ -243,12 +243,12 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::ShowMemberRank(int rank)
 		AsciiString key;
 		const char *team = m_team0C ? m_team0C->m_name : "";
 		key.format("APT:_level%u.%s_MemberRank", m_level08, team);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, rankText, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, rankText, false);
 		m_rank4C = rank;
 	}
 	if (!(m_flags58 & 2)) {
 		const char *team = m_team0C ? m_team0C->m_name : "";
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, m_level08, team, "SetMemberRankState", "_show");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level08, team, "SetMemberRankState", "_show");
 		m_flags58 |= 2;
 	}
 }
@@ -265,12 +265,12 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::ShowCommandPoints(int val)
 		AsciiString key;
 		const char *team = m_team0C ? m_team0C->m_name : "";
 		key.format("APT:_level%u.%s_CommandPoints", m_level08, team);
-		((BfmeAptWindowManager *)TheRva00222A8BTarget)->bfmeSetText(key, commandPointsText, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, commandPointsText, false);
 		m_cmdPts54 = val;
 	}
 	if (!(m_flags58 & 8)) {
 		const char *team = m_team0C ? m_team0C->m_name : "";
-		Rva005FB5E6AptCall(TheRva00222A8BTarget, m_level08, team, "SetCommandPointsState", "_show");
+		Rva005FB5E6AptCall(((Rva00222A8BTarget *)g_bfmeAptWindowManager), m_level08, team, "SetCommandPointsState", "_show");
 		m_flags58 |= 8;
 	}
 }
@@ -285,7 +285,7 @@ void StrategicHUD::ArmyDetailsMovieClip::notifyIconListBackgroundClicked() {}
 // _OnBackButtonRollOut / _OnIconListBackgroundClicked" (retail strings).
 void StrategicHUD::ArmyDetailsMovieClip::Impl::OnBackButtonClicked(const char *path)
 {
-	if (((AptWindowManager *)TheRva00222A8BTarget)->m_mode == 0)
+	if (((AptWindowManager *)g_bfmeAptWindowManager)->m_mode == 0)
 		m_owner->notifyBackButtonClicked();
 }
 
@@ -301,7 +301,7 @@ void StrategicHUD::ArmyDetailsMovieClip::Impl::OnBackButtonRollOut(const char *p
 
 void StrategicHUD::ArmyDetailsMovieClip::Impl::OnIconListBackgroundClicked(const char *path)
 {
-	if (((AptWindowManager *)TheRva00222A8BTarget)->m_mode == 0)
+	if (((AptWindowManager *)g_bfmeAptWindowManager)->m_mode == 0)
 		m_owner->notifyIconListBackgroundClicked();
 }
 

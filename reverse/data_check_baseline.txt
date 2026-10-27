@@ -16,10 +16,6 @@ Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E1807
 Code/GameEngine/Source/Common/D008791E0HandleTableRemove.cpp	wrong-name	?Rva008791E0Handles@@3URva008791E0Table@@A	0x00A226E0
 Code/GameEngine/Source/Common/GameAudioRandomValue_getValueReal.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
 Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp	duplicate-def	_theGameClientSeed	0x009BA3A0
-Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?AudioSubsystem@@3PAVClientSubsystem@@A	0x009FE6E8
-Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?InputLockSubsystem@@3PAVClientSubsystem@@A	0x009FE720
-Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?Radar@@3PAVRadarSubsystem@@A	0x009FF070
-Code/GameEngine/Source/Common/GameEngineClientSubsystems.cpp	wrong-name	?WindowManagerSubsystem@@3PAVClientSubsystem@@A	0x009FE4CC
 Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
 Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameClientSeed	0x009BA3A0
 Code/GameEngine/Source/Common/GameLogicRandomSeedCRC_get.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
@@ -71,10 +67,6 @@ Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	wrong-name	?g_Va009FEDF0@@3P
 Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	wrong-name	?g_Va00A01E48@@3PAUGlobalA01E48@@A	0x00A01E48
 Code/GameEngine/Source/Common/Rva00515921Permuted.cpp	wrong-name	?$S1@?1??goodCampaignRva00515921@@YAHM_N@Z@4IA	0x00A04900
 Code/GameEngine/Source/Common/Rva00515921Permuted.cpp	wrong-name	?campaign@?1??goodCampaignRva00515921@@YAHM_N@Z@4VAsciiString@@A	0x00A048FC
-Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
-Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va009FE4CC@@3PAVRva00222479ByteOneSetter@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A01E48@@3PAUGlobalA01E48@@A	0x00A01E48
-Code/GameEngine/Source/Common/Rva0051AF0BEnable.cpp	wrong-name	?g_Va00A04910@@3PAUGlobalA04910@@A	0x00A04910
 Code/GameEngine/Source/Common/Rva0052906BUpdate.cpp	wrong-name	?$S1@?1??Rva0052906BUpdate@@YAXH@Z@4IA	0x00A04988
 Code/GameEngine/Source/Common/Rva00598CBC.cpp	wrong-name	?g_00E063D4@@3VAsciiString@@A	0x00A063D4
 Code/GameEngine/Source/Common/Rva005C7889Init.cpp	wrong-name	?$S1@?1??Rva005C7889Init@@YAXXZ@4IA	0x00A065DC

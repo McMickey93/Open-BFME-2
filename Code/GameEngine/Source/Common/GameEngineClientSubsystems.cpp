@@ -127,9 +127,11 @@ private:
 extern GameLogic *TheGameLogic;
 class ClientFrameSubsystem; extern class GameClient *TheGameClient;
 // TheGameClient (0x009FE77C) is GameClient.cpp's global; this unit reads it through its own view.
-extern ClientSubsystem *WindowManagerSubsystem;
-extern RadarSubsystem *Radar;
-extern MessageStream *TheMessageStream;	// 0x00A00950, MessageStream.cpp's global
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
+class Radar;
+extern Radar *TheRadar;
+extern MessageStream *MessageStreamSubsystem;	// 0x00A00950, MessageStream.cpp's global
 extern class Keyboard *TheKeyboard;
 extern class InGameUI *TheInGameUI;
 extern class Mouse *TheMouse;
@@ -171,7 +173,7 @@ void GameEngine::_bfme_updateClientSubsystems(void)
         ((ClientFrameSubsystem *)TheGameClient)->setFrame(((ClientFrameSubsystem *)TheGameClient)->getFrame() + 1);
     }
 
-    WindowManagerSubsystem->update();
+    ((ClientSubsystem *)g_bfmeAptWindowManager)->update();
     if (_bfme_shouldSkipClientFrame())
     {
         ++SkippedClientFrames;
@@ -180,9 +182,9 @@ void GameEngine::_bfme_updateClientSubsystems(void)
     }
 
     BFMEDesyncCheck desyncCheck;
-    Radar->m_update.update();
+    ((RadarSubsystem *)TheRadar)->m_update.update();
     ((ClientFrameSubsystem *)TheGameClient)->update();
-    TheMessageStream->propagateMessages();
+    MessageStreamSubsystem->propagateMessages();
 
     unsigned int timedOps = _bfme_updateTimedOps();
     int inputLocked = timedOps & 1;
@@ -213,10 +215,3 @@ void GameEngine::_bfme_updateClientSubsystems(void)
     if (TheNetwork != 0)
         TheNetwork->liteupdate(0);
 }
-
-// ?Radar@@3PAVRadarSubsystem@@A: the global at this VA is ?TheRadar@@3PAVRadar@@A; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?Radar@@3PAVRadarSubsystem@@A=?TheRadar@@3PAVRadar@@A")
-// ?WindowManagerSubsystem@@3PAVClientSubsystem@@A: the global at VA 0xdfe4cc is ?g_bfmeAptWindowManager@@3PAVBfmeAptWindowManager@@A.
-#pragma comment(linker, "/alternatename:?WindowManagerSubsystem@@3PAVClientSubsystem@@A=?g_bfmeAptWindowManager@@3PAVBfmeAptWindowManager@@A")
-// ?Radar@@3PAVRadarSubsystem@@A: the global at VA 0xdff070 is ?TheRadar@@3PAVRadar@@A.
-#pragma comment(linker, "/alternatename:?Radar@@3PAVRadarSubsystem@@A=?TheRadar@@3PAVRadar@@A")
