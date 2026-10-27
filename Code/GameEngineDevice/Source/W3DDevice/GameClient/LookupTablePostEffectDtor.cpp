@@ -23,7 +23,6 @@ struct RefCounted
 struct Field08
 {
     RefCounted *m_ptr;
-// ??1Field08@@QAE@XZ present-unmatched
     ~Field08()
     {
         RefCounted *refCounted = m_ptr;
