@@ -43,7 +43,7 @@ public:
 private:
 	Rva0034149BMember *m_20;
 };
-void __cdecl operator delete(void *);
+#include <new>
 Rva0034149B::~Rva0034149B()
 {
 	if (m_20) {
