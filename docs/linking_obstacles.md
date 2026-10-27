@@ -3222,6 +3222,17 @@ Remaining / next check: carry the removed-provider audit and the retained six-by
 Clearance: cleared in ordinary-preview scope; census confirmation pending.
 Census confirmation: awaiting the next normal census; no headline change claimed.
 
+**Persistence-remnant follow-up (2026-10-26, inspected `ff45f96b14`):**
+[Paired object evidence](../reverse/attempt_support/light-persistence-followup-20261026/readme.md)
+confirms the factory was already absent, but the donor `LightClass::Save`
+and `LightClass::Load` bodies remained. Removed those two bodies and retired
+their two unmatched exemptions. The complete six-byte `Chunk_ID` row stays
+exact and the actual before/after objects both preview LINKS. The removed
+methods have no indexed incoming edge from an outside provider; the third
+removed definition has another provider. No retained COMDAT digest changes
+or newly wrong selected provider appears. `Load_W3D` and `Save_W3D` remain
+separate debt. This follow-up claims zero new linked bytes; census confirmation
+remains pending.
 
 ### LINK-054: pair sweep units instantiate unrelated whole containers
 

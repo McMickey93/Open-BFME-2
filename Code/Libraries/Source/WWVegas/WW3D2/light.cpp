@@ -125,19 +125,6 @@ uint32 LightPersistFactoryClass::Chunk_ID(void) const
     return WW3D_PERSIST_CHUNKID_LIGHT;
 }
 
-/*
-** Chunk ID's used by LightClass's save-load support (different from the W3D file format...)
-*/
-enum 
-{
-	LIGHT_CHUNK_W3DFILE						= 0x02157100,			// (w3d format light)
-	LIGHT_CHUNK_VARIABLES,												// other state not stored in the w3d format
-
-	LIGHT_VARIABLE_TRANSFORM				= 0x00,					// transform for the light
-};
-
-
-
 /***********************************************************************************************
  * LightClass::LightClass -- Constructor                                                       *
  *                                                                                             *
@@ -443,79 +430,3 @@ WW3DErrorType LightClass::Save_W3D(ChunkSaveClass & csave)
 	
 	return WW3D_ERROR_OK;
 }
-
-
-/***********************************************************************************************
- * LightClass::Save -- persistant object support                                               *
- *                                                                                             *
- * INPUT:                                                                                      *
- *                                                                                             *
- * OUTPUT:                                                                                     *
- *                                                                                             *
- * WARNINGS:                                                                                   *
- *                                                                                             *
- * HISTORY:                                                                                    *
- *   9/23/99    GTH : Created.                                                                 *
- *=============================================================================================*/
-// ?Save@LightClass@@QAE_NAAVChunkSaveClass@@@Z present-unmatched
-bool LightClass::Save (ChunkSaveClass &csave)
-{
-	csave.Begin_Chunk(LIGHT_CHUNK_W3DFILE);
-	Save_W3D(csave);
-	csave.End_Chunk();
-
-	Matrix3D tm = Get_Transform();
-	csave.Begin_Chunk(LIGHT_CHUNK_VARIABLES);
-	WRITE_MICRO_CHUNK(csave,LIGHT_VARIABLE_TRANSFORM,tm);
-	csave.End_Chunk();
-
-	return true;
-}
-
-
-/***********************************************************************************************
- * LightClass::Load -- persistant object support                                               *
- *                                                                                             *
- * INPUT:                                                                                      *
- *                                                                                             *
- * OUTPUT:                                                                                     *
- *                                                                                             *
- * WARNINGS:                                                                                   *
- *                                                                                             *
- * HISTORY:                                                                                    *
- *   9/23/99    GTH : Created.                                                                 *
- *=============================================================================================*/
-// ?Load@LightClass@@QAE_NAAVChunkLoadClass@@@Z present-unmatched
-bool LightClass::Load (ChunkLoadClass &cload)
-{
-	Matrix3D tm(1);
-	while (cload.Open_Chunk()) {
-		switch (cload.Cur_Chunk_ID()) {
-
-			case LIGHT_CHUNK_W3DFILE:
-				// The W3D code is non-symmetrical, the Save function writes a W3D_LIGHT chunk
-				// but the load function expects the external user to have opened it.  So open it here...
-				cload.Open_Chunk();
-				Load_W3D(cload);
-				cload.Close_Chunk();
-				break;
-
-			case LIGHT_CHUNK_VARIABLES:
-				while (cload.Open_Micro_Chunk()) {
-					switch(cload.Cur_Micro_Chunk_ID()) {
-						READ_MICRO_CHUNK(cload,LIGHT_VARIABLE_TRANSFORM,tm);
-					}
-					cload.Close_Micro_Chunk();	
-				}
-				break;
-
-			default:
-				WWDEBUG_SAY(("Unhandled Chunk: 0x%X File: %s Line: %d\r\n",__FILE__,__LINE__));
-				break;
-		}
-		cload.Close_Chunk();
-	}
-	Set_Transform(tm);
-	return true;
-}
-
