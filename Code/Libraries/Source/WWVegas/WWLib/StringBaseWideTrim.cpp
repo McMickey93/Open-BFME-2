@@ -68,7 +68,7 @@ void StringBase<WideChar>::trim()
             while (index > 0)
             {
                 --index;
-                if (iswspace((int)(unsigned short)(m_data ? m_data->data[index] : 0)))
+                if (_imp__iswspace((int)(unsigned short)(m_data ? m_data->data[index] : 0)))
                 {
                     removeLastChar();
                 }
