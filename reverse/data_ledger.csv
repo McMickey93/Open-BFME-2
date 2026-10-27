@@ -686,12 +686,12 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x007BB854,120,.rdata,string,??_C@_01GPOEFGEJ@?7?$AA@,,literal,,0,1
 0x007BB8CC,4,.rdata,float,__real@42652ee0,,literal,,0,7
 0x007BB8D0,4,.rdata,float,__real@3c8efa35,,literal,_RADS_PER_DEGREE@Code/GameEngine/Source/Common/Rva00214F14Init.cpp;_RADS_PER_DEGREE@Code/GameEngine/Source/Common/System/INI_parseAngleReal.cpp;__real@3c8efa35,2,21
-0x007BB8D4,4,.rdata,float,__real@3e800000,,literal,?DefaultOpacity@?1???0BoxRenderObjClass@@QAE@ABUW3dBoxStruct@@@Z@4MB@Code/Libraries/Source/WWVegas/WW3D2/BoxRenderObjClassCtor.cpp;__real@3e800000;_length_estimate_factor;_length_estimate_factor@Code/Libraries/Source/WWVegas/WWMath/coord3d.cpp;_length_estimate_factor@Code/Libraries/Source/WWVegas/WWMath/coord3d_lengthestimate.cpp,3,52
+0x007BB8D4,4,.rdata,float,__real@3e800000,,literal,?DefaultOpacity@?1???0BoxRenderObjClass@@QAE@ABUW3dBoxStruct@@@Z@4MB@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp;__real@3e800000;_length_estimate_factor;_length_estimate_factor@Code/Libraries/Source/WWVegas/WWMath/coord3d.cpp;_length_estimate_factor@Code/Libraries/Source/WWVegas/WWMath/coord3d_lengthestimate.cpp,3,52
 0x007BB8D8,4,.rdata,float,__real@3f800000,,literal,?g_007BB8D8@@3MA;?g_00BBB8D8@@3MA;?g_Va00BBB8D8@@3MA;?g_Va00BBB8D8@@3MB;?one@?N@??triggerRevival@RespawnUpdate@@QAEXPAVObject@@@Z@4MB@Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateTriggerRevival.cpp;?rva00094B08One@@3MB;__real@3f800000;_g_bfmeDefaultBU@Code/GameEngine/Source/Common/Bfme/T_009F4FB0.cpp;_kDefaultDimension@Code/GameEngine/Source/Common/System/GeometryInfoCalcBoundingStuff.cpp;_kZero@Code/GameEngine/Source/GameLogic/Object/Update/SpyVisionUpdateCtor.cpp,5,1145
 0x007BB8DC,4,.rdata,float,__real@ff7fffff,,literal,?g_00BBB8DC@@3MA;__real@ff7fffff,0,7
 0x007BB8E0,8,.rdata,float,__real@7f7fffff,,literal,?g_Va00BBB8E0@@3MA;__real@7f7fffff,1,61
 0x007BB8E8,8,.rdata,float,__real@406fe00000000000,,literal,,0,3
-0x007BB8F0,4,.rdata,float,__real@3b808081,,literal,?Inv255@?1???0BoxRenderObjClass@@QAE@ABUW3dBoxStruct@@@Z@4MB@Code/Libraries/Source/WWVegas/WW3D2/BoxRenderObjClassCtor.cpp;?g_00BBB8F0@@3MB;__real@3b808081,1,77
+0x007BB8F0,4,.rdata,float,__real@3b808081,,literal,?Inv255@?1???0BoxRenderObjClass@@QAE@ABUW3dBoxStruct@@@Z@4MB@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp;?g_00BBB8F0@@3MB;__real@3b808081,1,77
 0x007BB8F4,4,.rdata,string,??_C@_01LBDDMOBJ@?$FN?$AA@,,literal,,0,2
 0x007BB8F8,4,.rdata,string,??_C@_02KEGNLNML@?0?5?$AA@,,literal,,0,12
 0x007BB8FC,4,.rdata,string,??_C@_01OHGJGJJP@?$FL?$AA@,,literal,,0,2
@@ -16899,7 +16899,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009B6378,72,.data,global,__BoxFaces,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,2
 0x009B63C0,96,.data,global,__BoxVerts,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,24
 0x009B6420,96,.data,global,__BoxVertexNormals,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,24
-0x009B6480,8,.data,global,__BoxShader,Code/Libraries/Source/WWVegas/WW3D2/BoxRenderObjInit.cpp,provisional,__BoxShader@Code/Libraries/Source/WWVegas/WW3D2/BoxRenderObjInit.cpp;__BoxShader@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,2,2
+0x009B6480,8,.data,global,__BoxShader,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,provisional,__BoxShader@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp;__BoxShader@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,2,2
 0x009B6488,16,.data,global,?compressed_size@PointGroupClass@@0V?$VectorClass@M@@A,Code/Libraries/Source/WWVegas/WW3D2/pointgr.cpp,provisional,?compressed_size@PointGroupClass@@0V?$VectorClass@M@@A;?g_rva00DB6488@@3URvaVectorClass@@A,2,11
 0x009B6498,16,.data,global,?compressed_orient@PointGroupClass@@0V?$VectorClass@E@@A,Code/Libraries/Source/WWVegas/WW3D2/pointgr.cpp,provisional,?compressed_orient@PointGroupClass@@0V?$VectorClass@E@@A;?g_rva00DB6498@@3URvaVectorClass@@A,2,11
 0x009B64A8,112,.data,global,?compressed_frame@PointGroupClass@@0V?$VectorClass@E@@A,Code/Libraries/Source/WWVegas/WW3D2/pointgr.cpp,provisional,?compressed_frame@PointGroupClass@@0V?$VectorClass@E@@A;?g_rva00DB64A8@@3URvaVectorClass@@A,2,11
@@ -18520,7 +18520,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009F6FC8,4,.data,global,?g_Va00DF6FC8@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DEAxxx.cpp,owned,,1,4
 0x009F6FCC,4,.data,global,?IsInitted@BoxRenderObjClass@@1_NA,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,3
 0x009F6FD0,4,.data,global,?DisplayMask@BoxRenderObjClass@@1HA,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,provisional,?DisplayMask@BoxRenderObjClass@@1HA;?g_Va00DF6FD0@@3HA,2,3
-0x009F6FD4,4,.data,global,__BoxMaterial,Code/Libraries/Source/WWVegas/WW3D2/BoxRenderObjInit.cpp,provisional,__BoxMaterial@Code/Libraries/Source/WWVegas/WW3D2/BoxRenderObjInit.cpp;__BoxMaterial@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,2,9
+0x009F6FD4,4,.data,global,__BoxMaterial,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,provisional,__BoxMaterial@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp;__BoxMaterial@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,2,9
 0x009F6FD8,96,.data,global,?verts@?6??render_box@BoxRenderObjClass@@IAEXAAVRenderInfoClass@@ABVVector3@@1@Z@4PAV4@A,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,49
 0x009F7038,4,.data,global,?g_Va00DF7038@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFxx.cpp,provisional,?$S9@?6??render_box@BoxRenderObjClass@@IAEXAAVRenderInfoClass@@ABVVector3@@1@Z@4IA@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp;?g_Va00DF7038@@3IA,2,4
 0x009F703C,4,.data,global,?hWnd@DX8WebBrowser@@2PAUHWND__@@A,Code/GameEngine/Source/Common/BfmeConv804.cpp,owned,,1,3
