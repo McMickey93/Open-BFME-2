@@ -3921,6 +3921,7 @@ Census confirmation: not claimed.
 ### LINK-104: placeholder deleting destructors still emit nonretail complete destructors
 
 ### LINK-109: placeholder deleting destructors still emit nonretail complete destructors
+
 Status: Blocked on class and row identity reconciliation. Updated: 2026-10-27; inspected revision: 40d8eced18722ddcee26c59ddc4f3fb8d157d887.
 Evidence / affected units: Code/Libraries/Source/WWVegas/WWLib/Rva00170C0Siblings.cpp retains L10/S10 in current-provider ordinary preview against index 5ce093a71a (2026-10-26 19:02, retail-truth-4). Each blocker is its empty Rva<target>Dtor complete-destructor definition. The native deleting rows call existing nonempty matched bodies under different names. This is related to the complete-destructor prerequisite in LINK-012, not evidence of ten missing native matches.
 Completed: inspected every deleting row's native call and its current callee row. All 12 deleting rows remain exact; declaration, EH and shadow data checks pass. No destructor source trial or ledger change is retained. The existing names at the call targets are owner facts, not proof that the placeholder class has that identity.
