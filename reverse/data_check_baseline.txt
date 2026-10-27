@@ -182,8 +182,6 @@ Code/GameEngine/Source/Common/SmallGaps/Rva00826840ResetTables.cpp	wrong-name	?R
 Code/GameEngine/Source/Common/SmallGaps/Rva00826840ResetTables.cpp	wrong-name	?Rva00826740SmallInit@@3URva00826740Small@@B	0x009D9D80
 Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp	wrong-name	?g_rva0134FB38@@3URva0134FB38Storage@@A	0x00A09E50
 Code/GameEngine/Source/Common/System/ArmorUpgradePoolKey.cpp	wrong-name	?$S1@?1??rva0004B3423@ArmorUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03DB8
-Code/GameEngine/Source/Common/System/AtlModuleInit.cpp	duplicate-def	?g_initGDIPlusAtE09E30@@3VCInitGDIPlus@CImage@ATL@@A	0x00A09E30
-Code/GameEngine/Source/Common/System/AtlModuleInit.cpp	wrong-name	?g_initGDIPlusAtE09E30@@3VCInitGDIPlus@CImage@ATL@@A	0x00A09E30
 Code/GameEngine/Source/Common/System/AttributeModifierUpgradePoolKey.cpp	wrong-name	?$S1@?1??rva0004B66D9@AttributeModifierUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03ED4
 Code/GameEngine/Source/Common/System/BaseUpgradePoolKey.cpp	wrong-name	?$S1@?1??rva0004B3653@BaseUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03DC4
 Code/GameEngine/Source/Common/System/BuildableHeroListUpgradePoolKey.cpp	wrong-name	?$S1@?1??rva0004B82CB@BuildableHeroListUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F30
