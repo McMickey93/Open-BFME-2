@@ -11,7 +11,7 @@
 // Rva00516E92Enable.cpp's 0x00516E92.
 void Rva00516E92Enable();
 
-extern "C" int __cdecl strcmp(const char *left, const char *right);
+#include <string.h>
 
 #include "ascii_string.h"
 class GameWindow {public:int winGetSize(int*,int*);};
