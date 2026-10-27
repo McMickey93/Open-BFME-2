@@ -61,11 +61,19 @@ struct Rva00959410Ptr
 	}
 };
 
-extern Rva00959410Ptr Rva00959410Dispatch;
+// The dispatch object: the data ledger's g_bfmeObjECF at 0x009F7040
+// (BfmeConv804.cpp), read through this unit's smart-pointer view.
+struct BfmeObjECF;
+extern BfmeObjECF *g_bfmeObjECF;
+
+static inline Rva00959410Ptr &dispatch()
+{
+	return *reinterpret_cast<Rva00959410Ptr *>(&g_bfmeObjECF);
+}
 
 // ?bfmeEndSceneTouch00958910@@YAXPAX@Z
 void bfmeEndSceneTouch00958910(void *argument)
 {
-	if (Rva00959410Dispatch.m_p != 0)
-		Rva00959410Dispatch->invoke(argument);
+	if (dispatch().m_p != 0)
+		dispatch()->invoke(argument);
 }

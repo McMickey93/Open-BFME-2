@@ -658,7 +658,6 @@ Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	wrong-name	_g_Rva013
 Code/Libraries/Source/DirtySock/Y4TextToValue.c	wrong-name	_g_Rva0112A310Class	0x008E1B60
 Code/Libraries/Source/DirtySock/Y4TextToValue.c	wrong-name	_g_Rva012C391CSeparator	0x009D8074
 Code/Libraries/Source/WWVegas/WW3D2/DX8WebBrowserInitialize.cpp	wrong-name	__GUID_00000000_0000_0000_c000_000000000046	0x007D4E4C
-Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperEndSceneHelper.cpp	wrong-name	?Rva00959410Dispatch@@3URva00959410Ptr@@A	0x009F7040
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_count	0x009EE8E0
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_lightmap_texture_memory	0x009EE8A8
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTexture.cpp	duplicate-def	_procedural_texture_count	0x009EE8FC
