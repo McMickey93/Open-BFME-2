@@ -6,7 +6,7 @@
 // g_00DFEB88/8C/90/94, flag g_00DFEB6C; unblocks 0x002797BD; prev/next flags.
 #include "ascii_string.h"
 
-void *__cdecl operator new[](unsigned int size);
+#include <new>
 
 class Image;
 class ImageCollection

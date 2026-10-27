@@ -4,7 +4,7 @@
 // operator delete 0x0002FD60 when the new pointer differs and old is non-null.
 // Evidence: caller 0x002D48B0 in unclaimed 0x002D4748; same /O1 as neighbour
 // 0x002D3850; callee ??3@YAXPAX@Z rowed in mem_ops.cpp.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva002D387A
 {
