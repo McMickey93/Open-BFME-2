@@ -166,7 +166,6 @@ unsigned g_Va00DFE49C;	// retail RVA 0x009FE49C (.bss), defined here
 class Rva00575674;
 extern Rva00575674 g_00DFE4C4;	// retail RVA 0x009FE4C4 (.bss), defined in Rva002220DCInit.cpp
 unsigned g_Va00DFE6DC;	// retail RVA 0x009FE6DC (.bss), defined here
-unsigned g_Va00DFE72C;	// retail RVA 0x009FE72C (.bss), defined here
 unsigned g_Va00DFE940;	// retail RVA 0x009FE940 (.bss), defined here
 struct BfmeUiResourceEntryState;
 extern BfmeUiResourceEntryState BfmeUiResourceEntryCollectorState;
@@ -282,13 +281,6 @@ void __cdecl rva007B7718()
 {
 	Rva000AD6F4 *receiver = (Rva000AD6F4 *)&g_Va00DFE6DC;
 	receiver->clear();
-}
-
-// ?rva007B7736@@YAXXZ @ 0x007B7736 (10B): ecx=&g_Va00DFE72C, tail-jump to rowed ??1UnicodeString@@QAE@XZ (0x005B804E)
-void __cdecl rva007B7736()
-{
-	UnicodeString *receiver = (UnicodeString *)&g_Va00DFE72C;
-	receiver->~UnicodeString();
 }
 
 // ?rva007B7768@@YAXXZ @ 0x007B7768 (10B): ecx=&g_Va00DFE940, tail-jump to rowed ??1AsciiString@@QAE@XZ (0x0048BA39)

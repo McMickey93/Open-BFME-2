@@ -168,7 +168,6 @@ extern unsigned g_Va00DFE49C;	// retail RVA 0x009FE49C (.bss), defined in Rva007
 class Rva00575674;
 extern Rva00575674 g_00DFE4C4;	// retail RVA 0x009FE4C4 (.bss), defined in Rva002220DCInit.cpp
 extern unsigned g_Va00DFE6DC;	// retail RVA 0x009FE6DC (.bss), defined in Rva007B6A00AtexitThunks.cpp
-extern unsigned g_Va00DFE72C;	// retail RVA 0x009FE72C (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned char g_00DFE7A8;	// canonical byte owner, Rva003B9EC4.cpp
 extern unsigned g_Va00DFE940;	// retail RVA 0x009FE940 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 struct BfmeUiResourceEntryState;
@@ -243,8 +242,6 @@ void __cdecl rva007B76FA();
 void __cdecl rva007B770E();
 
 void __cdecl rva007B7718();
-
-void __cdecl rva007B7736();
 
 void __cdecl rva007B7768();
 
