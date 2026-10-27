@@ -8,7 +8,7 @@
 // teardown via releaseBuffer 0x36410. Caller at 0x0041196E passes hidden
 // return plus path; PBD ctor is rowed 0x37BA0.
 
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *dest, const char *source, unsigned int count);
+#include <string.h>
 
 
 #include "ascii_string.h"

@@ -32,7 +32,7 @@ typedef void (__cdecl *GameWinTooltipFunc)(GameWindow *window, WinInstanceData *
 void __cdecl GadgetListBoxReset(GameWindow *window);
 void __cdecl GadgetTextEntrySetValidationFlags(GameWindow *window, int value);
 void __cdecl GadgetTextEntrySetMaxChars(BfmeKeyLC *k, unsigned short w);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 class GameWindow
 {

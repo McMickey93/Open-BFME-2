@@ -23,7 +23,7 @@ public:
 	bool bfmeAllows(BfmeNodeDX *node) const;
 };
 
-extern "C" unsigned int __cdecl strlen(const char *text);
+#include <string.h>
 
 #pragma intrinsic(strlen)
 
