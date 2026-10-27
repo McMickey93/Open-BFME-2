@@ -114,6 +114,38 @@ private:
 	int m_bfme10;
 };
 
+// Address-owned storage at 0x00DB67D8; the original global name is unknown.
+float bfme2AdaptiveDeltaFilterTable[256] = { 0.00000001f, 0.0000001f, 0.000001f, 0.00001f, 0.0001f, 0.001f, 0.01f, 0.1f, 1.0f, 10.0f, 100.0f, 1000.0f, 10000.0f, 100000.0f, 1000000.0f, 10000000.0f };
+
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+// Donor: BFME1 WW3D2/motchan.cpp. Target 0x195FF0 reads the same 16-byte
+// channel header but stores data in its 0x1C-byte object without donor caches.
+// Field+10 holds bytes; allocation reserves that count plus one extra dword.
+// Declare the array operators (not <new>, whose placement bodies collide in
+// motchan.cpp) so MSVC keeps new[] on the target array allocator.
+
+void * __cdecl operator new[](unsigned int);
+
+void __cdecl operator delete[](void *);
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/motchan.cpp
+
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/motchan.cpp
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/motchan.cpp
@@ -1144,6 +1176,79 @@ bool BitChannelClass::Load_W3D(ChunkLoadClass & cload)
 	return true;
 }
 
-// tu-skeleton: 0x00195F60 133B ??0AdaptiveDeltaMotionChannelClass@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaMotionChannelFinish.cpp (not merged yet)
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaMotionChannelFinish.cpp
 
-// tu-skeleton: 0x00195FF0 183B ?Load_W3D@AdaptiveDeltaMotionChannelClass@@QAE_NAAVChunkLoadClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaLoadW3D.cpp (not merged yet)
+// ??0AdaptiveDeltaMotionChannelClass@@QAE@XZ @0x00195F60 133B.
+//
+// Constructor for the 0x1C-byte channel read_channel allocates at 0x0018F230
+// (a sibling body matched in hcanim.cpp).
+// The address is pinned in reverse/symbols.csv from the retail REL32 at
+// 0x0018F261, and this body confirms the 0x1C layout the matched loader
+// (AdaptiveDeltaLoadW3D.cpp) already reads: the seven fields zeroed through
+// +0x18, then the one-time filter-table build.
+//
+// Two codegen facts this body depends on, both read off the retail bytes:
+// the flag load may not be hoisted above the member stores (retail loads it at
+// 0x195F80, after the last store at 0x195F7F), and the loop closes on a SIGNED
+// `jl` back-edge. See the comments at each site.
+
+AdaptiveDeltaMotionChannelClass::AdaptiveDeltaMotionChannelClass()
+{
+    PivotIdx = 0;
+    Type = 0;
+    VectorLen = 0;
+    NumFrames = 0;
+    DataByteCount = 0;
+    Scale = 0.0f;
+    Data = 0;
+
+    // Read the flag through a volatile byte so the load cannot be hoisted above
+    // the member stores: retail stores all seven fields first (0x195F6A..0x195F7F)
+    // and only then loads the flag and branches (0x195F80). MSVC's scheduler
+    // otherwise sinks the stores below the independent flag load.
+    volatile char *const flag = (volatile char *)&table_valid;
+    if (0 == *flag) {
+        float ratio = 0.0f;
+        // Retail walks edx from table+16 up to table+256 and closes
+        // the loop with a SIGNED `jl` back-edge (0x195FD8, 7c cb). Comparing two
+        // POINTERS makes MSVC emit the unsigned `jb` (72 cb) instead, which was
+        // the last mismatching byte in this body; comparing the same two values
+        // as int keeps the identical `cmp edx,0xDB6BD8` and yields the signed
+        // form retail has.
+        float *const end = bfme2AdaptiveDeltaFilterTable + 256;
+        float *entry = bfme2AdaptiveDeltaFilterTable + 16;
+        do {
+            *entry = 1.0f - WWMath::Sin(DEG_TO_RADF(0.375f * ratio));
+            ratio += 1.0f;
+            ++entry;
+        } while ((const int)entry < (const int)end);
+        table_valid = true;
+    }
+}
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaLoadW3D.cpp
+
+bool AdaptiveDeltaMotionChannelClass::Load_W3D(ChunkLoadClass &cload)
+{
+    unsigned long size = cload.Cur_Chunk_Length();
+    unsigned long datasize = size - sizeof(W3dAdaptiveDeltaAnimChannelStruct);
+    unsigned long numInts = (datasize / sizeof(unsigned long)) + 1;
+    W3dAdaptiveDeltaAnimChannelStruct chan;
+    if (cload.Read(&chan, sizeof(W3dAdaptiveDeltaAnimChannelStruct)) != sizeof(W3dAdaptiveDeltaAnimChannelStruct)) {
+        return false;
+    }
+    VectorLen = chan.VectorLen;
+    Type = chan.Flags;
+    PivotIdx = chan.Pivot;
+    NumFrames = chan.NumFrames;
+    Scale = chan.Scale;
+    Data = new unsigned long[numInts + 1];
+    DataByteCount = numInts * sizeof(unsigned long);
+    Data[0] = chan.Data[0];
+    if (cload.Read(Data + 1, datasize) != datasize) {
+        delete[] Data;
+        Data = 0;
+        return false;
+    }
+    return true;
+}

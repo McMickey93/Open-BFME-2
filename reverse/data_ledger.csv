@@ -16908,7 +16908,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009B66F8,96,.data,global,_s_matrixSuffixes,Code/Libraries/Source/WWVegas/WW3D2/FXShaderStandardSemantics.cpp,owned,,1,2
 0x009B6758,64,.data,global,_s_otherSemantics,Code/Libraries/Source/WWVegas/WW3D2/FXShaderStandardSemantics.cpp,owned,,1,1
 0x009B6798,64,.data,global,_s_otherAddresses,Code/Libraries/Source/WWVegas/WW3D2/FXShaderStandardSemantics.cpp,owned,,1,1
-0x009B67D8,1024,.data,global,?bfme2AdaptiveDeltaFilterTable@@3PAMA,Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaMotionChannelFinish.cpp,owned,,1,3
+0x009B67D8,1024,.data,global,?bfme2AdaptiveDeltaFilterTable@@3PAMA,Code/Libraries/Source/WWVegas/WW3D2/motchan.cpp,owned,,1,3
 0x009B6BD8,8,.data,global,?DefaultRemoveOnComplete@ParticleEmitterClass@@0_NA,Code/Libraries/Source/WWVegas/WW3D2/part_emt.cpp,owned,,1,1
 0x009B6BE0,72,.data,global,?LODMaxScreenSizes@ParticleBufferClass@@1PAMA,Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp,owned,,1,3
 0x009B6C28,1036,.data,global,?filtertable@@3PAMA,Code/Libraries/Source/WWVegas/WW3D2/BFME2EncodingFilterTableInit.cpp,provisional,?filtertable@@3PAMA;?filtertable@BFME2StreamMotionTables@@3PAMA,1,5
@@ -18543,7 +18543,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FC4F0,2504,.data,global,?rand4@@3VRandom4Class@@A,Code/Libraries/Source/WWVegas/WW3D2/mapper.cpp,owned,,1,16
 0x009FCEB8,4,.data,global,?g_gapFillerAuxiliarySource@@3PAURva00174753ReleaseView@@A,,unowned,,0,4
 0x009FCEBC,4,.data,global,?g_00DFCEBC@@3HA,Code/GameEngine/Source/Common/Rva0018C0F1Clear.cpp,owned,,1,2
-0x009FCEC0,4,.data,global,_table_valid,Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaMotionChannelFinish.cpp,owned,,1,2
+0x009FCEC0,4,.data,global,_table_valid,Code/Libraries/Source/WWVegas/WW3D2/motchan.cpp,owned,,1,2
 0x009FCEC4,4,.data,global,?Allocator@?$AutoPoolClass@VHAnimComboDataClass@@$0BAA@@@0V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A,Code/Libraries/Source/WWVegas/WW3D2/hanim.cpp,provisional,?Allocator@?$AutoPoolClass@VHAnimComboDataClass@@$0BAA@@@0V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A;?TheHAnimComboDataPool@@3V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A,0,5
 0x009FCEC8,16,.data,global,?g_chainHeadAtDFCEC8@@3PAURvaCleanupNode@@A,Code/GameEngine/Source/Common/System/GlobalChainCleanup.cpp,owned,,1,2
 0x009FCED8,16,.data,global,?InheritedWorldSpaceEmitterVel@@3VVector3@@A,Code/Libraries/Source/WWVegas/WW3D2/part_emt.cpp,owned,,1,8
