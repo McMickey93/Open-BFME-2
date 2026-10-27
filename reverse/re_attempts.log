@@ -89831,3 +89831,18 @@ Coord3D-header-coord3d	0x000050BA	103	blocked	Ledger rows encode class Coord3D u
 Coord3D-header-coord3d_crossproduct	0x00003C70	97	blocked	CrossProduct row returns class Coord3D through AAV1 but the canonical header defines struct Coord3D and omits CrossProduct; adoption would rename the ledger row and require a header addition. t=0.44 model=gpt-6.1-sol
 Coord3D-header-matrix4d	0x00004BBF	23	blocked	Eight Matrix4D rows explicitly encode VCoord3D but the canonical header defines struct Coord3D; adoption would rename those ledger rows. t=0.94 model=gpt-6.1-sol
 Region3D-header-region	0x000036D1	49	blocked	Three Region3D rows encode VCoord3D arguments but Region3D.h includes canonical struct Coord3D; adoption would rename these ledger rows and change the separate streamer-provider binding. t=0.59 model=gpt-6.1-sol
+GameLogic-header-BfmeConv939Call939D	0x0023C6FD	75	blocked	Canonical GameLogic lacks the rowed char rva0023C6FD() declaration; its existing public m_110 can replace m_gameMode only after that member is supplied. t=1.39 model=gpt-6.1-sol
+GameLogic-header-GameEngineNetworkHelpers	0x00225A0C	19	blocked	Canonical GameLogic lacks byte +0x9D and virtual update(int) at slot 13; public m_110 and getFrame() cover only the existing mode and frame reads. t=0.77 model=gpt-6.1-sol
+GameLogic-header-GameEngineSlots	0x00225AD5	42	blocked	Canonical GameLogic lacks bool rva0024877A(), required by the exact GameEngine::rva00225AFF row. t=0.67 model=gpt-6.1-sol
+GameLogic-header-GameLogic_QueueForNotifyPathfindCellChanged	0x00241C25	80	blocked	Canonical GameLogic lacks QueueForNotifyPathfindCellChanged(Object*), the +0x6E guard and the +0x164 vector required by its rowed body. t=0.67 model=gpt-6.1-sol
+GameLogic-header-Rva000B2CBDGet	0x000B2CBD	40	blocked	Canonical GameLogic lacks a member or accessor for the byte at +0x70 read by Rva000B2CBDGet. t=0.59 model=gpt-6.1-sol
+GameLogic-header-Rva00245EDFLookup	0x00245EDF	53	blocked	Canonical GameLogic lacks the rowed bool rva00245EDF(void*,int*) member declaration. t=0.62 model=gpt-6.1-sol
+GameLogic-header-Rva0025E4CDDtor	0x0025DF01	160	blocked	Canonical GameLogic lacks void rva0023D17D(), called after the exact connection-manager initialization sequence. t=0.63 model=gpt-6.1-sol
+GameLogic-header-Rva002B2AFDSelect	0x002B2AFD	48	blocked	Canonical GameLogic lacks a member or accessor for the integer at +0x118 returned by rva002B2AFD. t=0.60 model=gpt-6.1-sol
+GameLogic-header-Rva002B8860	0x002B8860	140	blocked	Canonical GameLogic lacks void DoExitMap(bool), required by the LivingWorldLogic::rva002B88EC tail. t=0.59 model=gpt-6.1-sol
+GameLogic-header-Rva002BED10	0x002BED10	89	blocked	Canonical GameLogic lacks the offset-zero clear receiver or equivalent member for the rowed Rva0023D2D8DwordClearer::clear call. t=0.75 model=gpt-6.1-sol
+GameLogic-header-Rva002E10BDFind	0x002E10BD	65	blocked	Canonical GameLogic lacks void rva0023D007(int), required by both rowed removal forwarders. t=0.59 model=gpt-6.1-sol
+GameLogic-header-Rva002E21D1Clear	0x002E21D1	84	blocked	Canonical GameLogic lacks void rva0023D007(int), required for each element removed by rva002E21D1. t=0.62 model=gpt-6.1-sol
+GameLogic-header-ThingTemplate_getBuildable	0x0033A632	44	blocked	Canonical GameLogic lacks bool rva00245EDF(void*,int*), required by ThingTemplate::getBuildable. t=0.80 model=gpt-6.1-sol
+GameLogic-header-Rva003560EDDtor	0x003560ED	112	blocked	Canonical GameLogic lacks a writable member or setter for the byte at +0x78 cleared by the Rva003560ED destructor. t=0.85 model=gpt-6.1-sol
+GameLogic-header-Rva003561BEDtor	0x003561BE	198	blocked	Canonical GameLogic lacks a writable member or setter for the byte at +0x78 cleared by the Rva003561BE destructor. t=0.82 model=gpt-6.1-sol

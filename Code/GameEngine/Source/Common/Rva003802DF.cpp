@@ -18,13 +18,7 @@ class RankInfoStore;
 extern RankInfoStore *TheRankInfoStore;
 class Rva002BA8F1Logic;
 
-class GameLogic
-{
-public:
-    char m_pad[0x110];
-    int m_gameMode;
-    bool isInMultiplayerGame();
-};
+#include "GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 class Rva00380200Base
 {
@@ -61,7 +55,7 @@ int Rva00380200::rva003802DF()
     else if (m_04)
     {
         GameLogic *logic = TheGameLogic;
-        if (logic->m_gameMode == 2 || logic->isInMultiplayerGame())
+        if (logic->m_110 == 2 || logic->isInMultiplayerGame())
         {
             int maxRank = ((Rva003B0FC6SarAvgField *)TheRankInfoStore)->get();
             int b = m_04->m_maxLevelMP;

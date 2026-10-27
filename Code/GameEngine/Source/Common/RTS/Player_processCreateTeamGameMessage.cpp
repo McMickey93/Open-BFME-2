@@ -4,10 +4,7 @@
 // matches Rva002AA191 m_entries; callees Clear 0x004D6C29 getArgument 0x0030F4EA
 // findObjectByID 0x00049DC5 Find 0x002AA1BF Add 0x004D6C7C TheGameLogic; caller 0x00377BD7.
 class Object;
-enum ObjectID
-{
-	OBJECTID_INVALID = 0
-};
+#include "../GameLogicObjectLookupView.h"
 
 union GameMessageArgumentType
 {
@@ -24,11 +21,6 @@ private:
 	unsigned char m_argCount;
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 extern GameLogic *TheGameLogic;
 
 class Rva004D6C29

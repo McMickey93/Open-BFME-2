@@ -42,10 +42,6 @@ static inline bool operator!=(const _List_iterator<T, LeftTraits>& a,
 { return a._M_node != b._M_node; }
 }
 
-enum ObjectID
-{
-	OBJECTID_NONE = 0
-};
 
 class Drawable
 {
@@ -61,15 +57,7 @@ class BfmeWorldRV { public: void rva0031AA4B(int); };
 
 extern ControlBar *TheControlBar;
 
-class GameLogic
-{
-public:
-	__declspec(dllimport) __forceinline unsigned int getFrame() { return m_frame; }
-
-private:
-	unsigned char m_unmodelled000[0x40];
-	unsigned int m_frame;
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 

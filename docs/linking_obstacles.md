@@ -717,6 +717,8 @@ Whole-unit clearance and census confirmation remain pending.
   acceptance tool retires three header-queue rows; the shared header is unchanged.
   These already-linked consumers gain no census bytes. Other consumers and
   full class-layout reconciliation remain open.
+
+  The assigned GameLogic package audit (2026-10-27, inspected `e610a85d28d7a89414872c97da048b68ff67cd1f`, ordinary-preview index `5ce093a71a`, `retail-truth-4`) adopts `InGameUIDeselectDrawable.cpp`, `RTS/Player_processCreateTeamGameMessage.cpp`, `Rva0023C7F5Get.cpp`, `Rva00359D42.cpp` and `Rva003802DF.cpp` through the existing canonical header and its public mode/frame surface. Original and final byte gates, link previews, acceptance receipts and declaration/EH/shadow-data checks are indexed in local `build/header-report.md` and `build/header-hg1-logic/`. The other assigned sources are restored exactly and retain their queue entries, with one blocked verdict each in `reverse/re_attempts.log`. Remaining prerequisites are the missing multiplayer-gate, network-update, queue, lookup, exit and removal declarations, plus the unexposed fields at +0x6E, +0x70, +0x78, +0x9D, +0x118 and +0x164. The class owner must reconcile that surface and verify dependents before these consumers can adopt. The shared header, reference shims, ledger rows, pins and compiler settings are unchanged. Clearance is limited to the accepted header-debt scope and preserved ordinary link predictions; no census gain is claimed.
 - **AI Xfer header subset (2026-10-26, `a1ee5c1f39`):**
   [the flank-route, AIUpgrade and harvest-state adoptions](../reverse/attempt_support/ai-xfer-header-adoption-20261026.md)
   replace private Xfer declarations with the registered header. Seven function

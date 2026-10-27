@@ -6,14 +6,7 @@
 // Evidence: callers show ret 8 stdcall; TheGameLogic/TheNetwork names in use;
 // retail shape xor/inc and push 3/pop indicates /O1.
 
-class GameLogic
-{
-public:
-	char _pad0[0x40];
-	unsigned int m_0040;
-	char _pad1[0x110 - 0x40 - 4];
-	int m_0110;
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -80,10 +73,10 @@ extern NetworkInterface *TheNetwork;
 int __stdcall Rva0023C7F5Get(int a, int b)
 {
 	int result = 1;
-	int mode = TheGameLogic->m_0110;
+	int mode = TheGameLogic->m_110;
 	if ((mode == 1 || mode == 5) && (TheNetwork ? TheNetwork->isReady() : true)) {
 		result = 3;
-	} else if (TheGameLogic->m_0040 >= 6) {
+	} else if (TheGameLogic->getFrame() >= 6) {
 		result = 3;
 	}
 	return result;
