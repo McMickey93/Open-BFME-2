@@ -360,7 +360,7 @@ Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp	wrong-na
 Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp	wrong-name	?$S1@?1??rva0004BD60C@CivilianSpawnCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04084
 Code/GameEngine/Source/GameLogic/Object/Die/CreateCrateDie.cpp	wrong-name	?$S1@?1??rva0004854AB@CreateCrateDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03828
 Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofOnDie.cpp	wrong-name	?$S1@?1??onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z@4IA	0x00A03844
-Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofPoolKey.cpp	wrong-name	?$S1@?1??rva000485A2F@CreateObjectDieIfEldestKindof@@SA?AW4NameKeyType@@XZ@4IA	0x00A0383C
+Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp	wrong-name	?$S1@?1??rva000485A2F@CreateObjectDieIfEldestKindof@@SA?AW4NameKeyType@@XZ@4IA	0x00A0383C
 Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDiePoolKey.cpp	wrong-name	?$S1@?1??rva0004859EA@CreateObjectDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03834
 Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp	wrong-name	?$S1@?1??rva000486155@CrushDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03858
 Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDiePoolKey.cpp	wrong-name	?$S1@?1??rva000485EFD@DamageFilteredCreateObjectDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03850

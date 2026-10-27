@@ -2601,8 +2601,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0045D39EDerived.cpp	_vtbl_00C49D7
 alternatename	Code/GameEngine/Source/Common/Rva00464984.cpp	?rva0046444E@Rva0046444E@@QAE?AVRva00464984Iterator@@V2@ABVRva00464984Pair@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00470222Xfer.cpp	?_CxxThrowException@@YGXPAX0@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00470222Xfer.cpp	?g_rva008ffd18ThrowInfo@@3HA	1
-alternatename	Code/GameEngine/Source/Common/Rva0048593DDerived.cpp	?f1@Rva0048593D_Mid@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/Common/Rva0048593DDerived.cpp	?f2@Rva0048593D_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0048C200StringOwnerCtor.cpp	??1Rva0048C200String@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp	?f2@Rva004C2656_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp	?f2@Rva004C29BB_B2@@UAEXXZ	1
@@ -3723,6 +3721,8 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cp
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	?loadPostProcess@LockWeaponCreate@@MAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	?onCreate@LockWeaponCreate@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/SpawnedModelConditionCreateCtor.cpp	_vtbl_00BEF9C0	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp	?f1@Rva0048593D_Mid@@UAEXXZ	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp	?f2@Rva0048593D_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDieModuleDataCtor.cpp	_vtbl_00C4ED70	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp	?f2@Rva0045CE6D_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp	?f2@Rva004851FE_B2@@UAEXXZ	1

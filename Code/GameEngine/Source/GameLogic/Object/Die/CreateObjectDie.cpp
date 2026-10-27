@@ -1,13 +1,122 @@
-// cl: /Ireference/shims/diemodule_link /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /MD /O1 /GX /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/bfme_namekey /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/shims -ICode/Libraries/Source/Compression/LZHCompress/CompLibHeader /Ireference/shims/bfme2htree /Ireference/shims/bfme2renderobj /Ireference/shims/bfmecamera /Ireference/shims/bfmelight /Ireference/shims/bfmeparticlehandle /Ireference/shims/bfmeparticleload /Ireference/shims/bfmeparticlequat /Ireference/shims/bfmeparticlesave /Ireference/shims/bfmeparticleline /Ireference/shims/bfme2ray /Ireference/shims/bfme2scene -D_STLP_USE_STATIC_LIB -DNDEBUG -DWIN32 -D_WINDOWS /Ireference/shims/bfmefrustum
+// cl: /FIzh_ascii.h /MD /GX /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE -D_STLP_USE_STATIC_LIB -DNDEBUG -DWIN32 -D_WINDOWS /Ireference/shims/diemodule_link /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/bfme_namekey /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/shims -ICode/Libraries/Source/Compression/LZHCompress/CompLibHeader /Ireference/shims/bfme2htree /Ireference/shims/bfme2renderobj /Ireference/shims/bfmecamera /Ireference/shims/bfmelight /Ireference/shims/bfmeparticlehandle /Ireference/shims/bfmeparticleload /Ireference/shims/bfmeparticlequat /Ireference/shims/bfmeparticlesave /Ireference/shims/bfmeparticleline /Ireference/shims/bfme2ray /Ireference/shims/bfme2scene /Ireference/shims/bfmefrustum /Ireference/shims/moduledata /I.
 // stlport
+// TU Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
+#define BFME_ZH_INLINE_FINDOBJECTBYID
+#define Matrix4x4 Matrix4  // BFME renamed it
+#define __PLACEMENT_VEC_NEW_INLINE  // always.h/GameMemory.h define array placement-new themselves
+#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
+#define DEFINE_OBJECT_STATUS_NAMES
+#include "GameLogic/Module/AIUpdate.h"
+#include "Common/ThingFactory.h"
+#include "Common/Xfer.h"
+#include "GameLogic/GameLogic.h"
+#include "GameLogic/Module/CreateObjectDie.h"
+#include "GameLogic/Object.h"
+#include "GameLogic/ObjectCreationList.h"
+#include "GameLogic/Module/BodyModule.h"
+#ifdef _INTERNAL
+// for occasional debugging...
+//#pragma optimize("", off)
+//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
+
+#endif
+#pragma comment(linker, "/alternatename:?f1@Rva0048593D_Mid@@UAEXXZ=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
+#pragma comment(linker, "/alternatename:?f2@Rva0048593D_B2@@UAEXXZ=?onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z")
+
+//
+// Opaque single-inheritance destructor tail-calling Rva0048593D::~
+// Rva0048593D at 0x0048593D (matched opaque MI base dtor in
+// DieModuleDerived.cpp: DieModule root plus shared and own empty bases,
+// vptrs +0x00/+0x0C/+0x10; only declared here so the tail-call resolves to
+// the ledger address instead of a same-TU definition). The class below
+// derives singly from the MI base (inheriting its three-vptr layout) and
+// overrides all three vptrs (0xC4A8D4/+0x0C 0xC4A818/+0x10 0xC4A810, DIR32
+// auto-patches) before tail-calling the base destructor. Owner identities
+// are unproven (opaque Rva names). One ledger row per destructor, landed one
+// commit at a time.
+
+class Rva0048593D_Root
+{
+public:
+	virtual ~Rva0048593D_Root();
+
+private:
+	char m_pad04[8];
+};
+
+class Rva0048593D_Mid
+{
+public:
+	virtual void f1();
+};
+
+class Rva0048593D_B2
+{
+public:
+	virtual void f2();
+};
+
+class Rva0048593D : public Rva0048593D_Root, public Rva0048593D_Mid, public Rva0048593D_B2
+{
+public:
+	virtual ~Rva0048593D();
+};
+
+class Rva00485983 : public Rva0048593D
+{
+public:
+	virtual ~Rva00485983();
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class CreateObjectDieIfEldestKindof
+{
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
+// tu-skeleton: 0x00485975 14B ?cacheGameLogicFrame@StatusBitsEldestFrame@@QAEPAU1@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsEldestFrameCache.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva0048593DDerived.cpp
+
+Rva00485983::~Rva00485983()
+{
+}
+
+// Placeholder virtuals in this unit's vftables: in retail, every vftable that holds
+// each one has the same function in that slot (vftable addresses from matched vptr
+// stores). Bind them to the rows at those functions.
+
+// Placeholder virtuals this unit's vftables hold.  In retail each such slot
+// holds a rowed function; the vftable's address is proven by the vptr stores in
+// the matched destructors, so bind the placeholder to that row's name.
+
+// tu-skeleton: 0x0048599C 6B ?name@Rva0048599CNamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
+
+// tu-skeleton: 0x004859A2 72B ?func@findEldest@@SAHPAVObject@@PAX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieFindEldest.cpp (not merged yet)
+
+// tu-skeleton: 0x004859EA 69B ?rva0004859EA@CreateObjectDie@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDiePoolKey.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofPoolKey.cpp
+
+// ?getModuleNameKey@CreateObjectDieIfEldestKindof@@UBE?AW4NameKeyType@@XZ
+NameKeyType CreateObjectDieIfEldestKindof::getModuleNameKey() const
+{
+	static NameKeyType TheCreateObjectDieIfEldestKindofPoolKey =
+		TheNameKeyGenerator->nameToKey("CreateObjectDieIfEldestKindof");
+	return TheCreateObjectDieIfEldestKindofPoolKey;
+}
+
+// tu-skeleton: 0x00485A74 34B ?buildFieldParse@CreateObjectDieModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp
+
 // Ported verbatim from the Generals Zero Hour reference (GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp); this unit had no counterpart under Code/.
 
 // GameLogic.h (sweep shim): inline findObjectByID body (the vector<Object*>::size
 // row now lives in SquadGetAllObjectsAndRemoveDead.cpp, which emits the same copy).
-#define BFME_ZH_INLINE_FINDOBJECTBYID
-#define Matrix4x4 Matrix4  // BFME renamed it
-#define __PLACEMENT_VEC_NEW_INLINE  // always.h/GameMemory.h define array placement-new themselves
-// stlport
+
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -36,24 +145,6 @@
 // Author: Michael S. Booth, January 2002
 // Desc:   Create an object upon this object's death
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
-
-#define DEFINE_OBJECT_STATUS_NAMES
-#include "GameLogic/Module/AIUpdate.h"
-#include "Common/ThingFactory.h"
-#include "Common/Xfer.h"
-#include "GameLogic/GameLogic.h"
-#include "GameLogic/Module/CreateObjectDie.h"
-#include "GameLogic/Object.h"
-#include "GameLogic/ObjectCreationList.h"
-#include "GameLogic/Module/BodyModule.h"
-
-#ifdef _INTERNAL
-// for occasional debugging...
-//#pragma optimize("", off)
-//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
-#endif
 
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
@@ -93,7 +184,9 @@ void CreateObjectDie::crc( Xfer *xfer )
 	// extend base class
 	DieModule::crc( xfer );
 
-}  // end crc
+}
+
+  // end crc
 
 // ------------------------------------------------------------------------------------------------
 /** Xfer method
@@ -112,7 +205,9 @@ void CreateObjectDie::xfer( Xfer *xfer )
 	// extend base class
 	DieModule::xfer( xfer );
 
-}  // end xfer
+}
+
+  // end xfer
 
 // ------------------------------------------------------------------------------------------------
 /** Load post process */
@@ -124,4 +219,60 @@ void CreateObjectDie::loadPostProcess( void )
 	// extend base class
 	DieModule::loadPostProcess();
 
-}  // end loadPostProcess
+}
+
+  // end loadPostProcess
+
+// tu-skeleton: 0x00485AC0 28B ??_GRva0048593D@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp (not merged yet)
+
+// tu-skeleton: 0x00485ADC 84B ??0Rva00485ADCFilter@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00485ADCFilterCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00485B30 27B ?buildFieldParse@CreateObjectDieIfEldestKindofModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofModuleDataParse.cpp (not merged yet)
+
+// tu-skeleton: 0x00485B4B 53B ??0CreateObjectDieIfEldestKindof@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00485B9C 28B ??0Rva00485B9C@@QAE@HABH@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE22.cpp (not merged yet)
+
+// tu-skeleton: 0x00485BB8 28B ?xfer@Rva00485BB8@@QAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/Rva00485BB8Xfer.cpp (not merged yet)
+
+// tu-skeleton: 0x00485BD4 69B ?xfer@Rva00485BD4@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/Rva00485BD4Xfer.cpp (not merged yet)
+
+// tu-skeleton: 0x00485C19 109B ?rva00485C19@StatusBitsEldestFrame@@QAE_NPAVObject@@PBURva00485C19Data@@PBW4NameKeyType@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsEldestFrameCheck.cpp (not merged yet)
+
+// tu-skeleton: 0x00485C86 139B ?onDie@CreateObjectDie@@UAEXPBVDamageInfo@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/Rva00485C86Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x00485D11 119B ?onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofOnDie.cpp (not merged yet)
+
+// tu-skeleton: 0x00485D88 82B ??0CreateObjectDieModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00485DDA 63B ??1CreateObjectDieModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00485E19 55B ??0CreateObjectDieIfEldestKindofModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00485E88 59B ??1CreateObjectDieIfEldestKindofModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BF90 13B $L306 -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDiePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BF9D 10B __ehhandler$?rva0004859EA@CreateObjectDie@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDiePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BFBE 8B Unwind@00b8bfbe -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00485ADCFilterCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BFC6 10B __ehhandler$??0Rva00485ADCFilter@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00485ADCFilterCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BFD0 13B $L424 -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofOnDie.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BFDD 10B __ehhandler$?onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofOnDie.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BFE7 8B $L4826 -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BFEF 11B Unwind@00b8bfef -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BFFA 11B uw_0078bffa -- matched in Code/gen_small/uw_gen_009.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C005 10B __ehhandler$??0CreateObjectDieModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C00F 8B Unwind@00b8c00f -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C017 11B Unwind@00b8c017 -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078C022 10B __ehhandler$??1CreateObjectDieModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieModuleDataDtor.cpp (not merged yet)
