@@ -1,7 +1,7 @@
 // cl: /MD
 // AptObject slot 7 in retail vtable 0x008EA264 returns the registerClass value.
 // The name comparison at 0x006D3230 and the value global retain their rowed spellings.
-extern "C" int __cdecl strcmp(const char *, const char *);
+#include <string.h>
 struct Rva008A4570Owner {
     void *m_data;
     bool nameEquals(const char *text);

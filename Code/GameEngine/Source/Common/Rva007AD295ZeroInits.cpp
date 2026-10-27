@@ -8,7 +8,7 @@
 // owning TUs are unrecovered, so each copy keeps an honest address name and
 // its static stays TU-local here.
 
-extern "C" void * __cdecl memset(void *, int, unsigned int);
+#include <string.h>
 
 struct Rva007AD295ZeroInits
 {
