@@ -4,7 +4,7 @@
 // a nonnull saved pointer to the independently verified scalar operator
 // delete at 2FD60 (mem_ops.cpp). Only this one-pointer prefix is known;
 // the original owner, payload type and allocation extent are unknown.
-void __cdecl operator delete(void *);
+#include <new>
 struct Rva002D3869OwnedPrefix {
     void *data;
     void release();

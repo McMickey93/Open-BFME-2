@@ -19,7 +19,7 @@ size_t vector<void *>::size() const { return this->_M_finish - this->_M_start; }
 template <> __declspec(dllimport) __forceinline
 void *&vector<void *>::operator[](size_t n) { return this->_M_start[n]; }
 }
-void __cdecl operator delete(void *block);
+#include <new>
 class Rva001E7E25Elem
 {
 public:
