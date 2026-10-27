@@ -1,0 +1,22 @@
+{
+  "fork": "McMickey93/Open-BFME-2",
+  "control_branch": "codex/20261027-bfme2-download-transfer-final-2",
+  "result_branch": "codex/20261027-bfme2-download-verified",
+  "branch": "refs/heads/codex/20261027-one-header-cleanup",
+  "base": "c0499137124d03fb70446f0e48adcd14c1644b99",
+  "commit": "5249f368f3b9b1b24828714e862aa157b9ee370f",
+  "tree": "187e8c957439d02d918c25b225f910e1b1d586d8",
+  "files": [
+    "Code/Libraries/Source/WWVegas/WWDownload/Download.cpp",
+    "reverse/attempt_support/20261027-download-ms-headers.md"
+  ],
+  "sha256": "569f342e8676c30ce379c68e82d89414b9e32cb56c62f28a886e951c20e35b15",
+  "agents_blob": "43a21b639c94eba6538b14a8b7eb117adecd10c3",
+  "normal_precommit_passed": true,
+  "normal_official_prepush_passed": true,
+  "transport_expected": "e43a9aad407db70fb483dcdf61241e676eebb7d3",
+  "claim_ref": "refs/heads/claims/file/67846727c820db7d",
+  "claim_owner": "github:McMickey93:bfme2:one-cleanup-20261027",
+  "claim_lease": "f518fb5b13da4248badbba5f3329af7d",
+  "checkpoint_prefix": "codex/20261027-bfme2-download-checkpoint"
+}
