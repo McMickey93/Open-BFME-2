@@ -7,14 +7,13 @@ public:
 	int m_bfmeVal;
 };
 
-void bfmeCopyCEB(char *dest, const char *text, unsigned int size);
+// The copy is msvcr71's strncpy (import thunk 0x0062983E), from <string.h>
+// with _CRTIMP empty (the header's own guard) so the call is direct.
+#define _CRTIMP
+#include <string.h>
 
 void BfmeThingCEB::bfmeGoCEB(const char *text, int value)
 {
-	bfmeCopyCEB(m_bfmeBuf, text, 0x40);
+	strncpy(m_bfmeBuf, text, 0x40);
 	m_bfmeVal = value;
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:?bfmeCopyCEB@@YAXPADPBDI@Z=?ji_0062983e@@YAXXZ")

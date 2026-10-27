@@ -72,7 +72,10 @@ public:
 };
 
 void *Rva007F93E0( void *message, void *route, void *owner );
-char * __cdecl ji_009f70ba( char *dest, const char *src, unsigned count );
+// The copy is msvcr71's strncpy (import thunk 0x0062983E), from <string.h>
+// with _CRTIMP empty (the header's own guard) so the call is direct.
+#define _CRTIMP
+#include <string.h>
 
 class LanTheaterEmulator
 {
@@ -89,7 +92,7 @@ void LanTheaterEmulator::notifyAddress( Rva00809500Entry *entry )
 	Rva00809500Sink *sink = reinterpret_cast< Rva00809010Finder * >( this )->find( entry );
 	message.m_1c = entry->m_length;
 	message.m_20 = (int)0xC0000000;
-	ji_009f70ba( message.m_10, entry->m_text, message.m_14 );
+	strncpy( message.m_10, entry->m_text, message.m_14 );
 	char address[ 0x20 ];
 	reinterpret_cast< Rva007E8760Addr * >( sink )->format( address, sizeof( address ) );
 	message.m_04 = sink->m_value04;
@@ -101,10 +104,6 @@ void LanTheaterEmulator::notifyAddress( Rva00809500Entry *entry )
 	Rva007F93E0( &message, (void *)"->L", m_field10 );
 	reinterpret_cast< Gen_007e86c0 * >( &message )->m();
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:?ji_009f70ba@@YAPADPADPBDI@Z=?ji_0062983e@@YAXXZ")
 
 // ?rva0066F740@Rva0066F740@@QAEXPAURva00809500Entry@@@Z @0x0066F740 8B member
 // forwarder to rowed ?notifyAddress@LanTheaterEmulator@@QAEXPAURva00809500Entry@@@Z

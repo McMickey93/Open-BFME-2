@@ -98,7 +98,10 @@ public:
 };
 
 void *Rva007F93E0( void *message, void *route, void *owner );
-char * __cdecl ji_009f70ba( char *dest, const char *src, unsigned count );
+// The copy is msvcr71's strncpy (import thunk 0x0062983E), from <string.h>
+// with _CRTIMP empty (the header's own guard) so the call is direct.
+#define _CRTIMP
+#include <string.h>
 
 void Rva00655700(char *dest, unsigned int capacity, const char *source);
 
@@ -114,7 +117,7 @@ private:
 
 void Rva00808900Owner::copy(char *source)
 {
-	ji_009f70ba(m_dest, source, 0x20);
+	strncpy(m_dest, source, 0x20);
 }
 
 class Rva00808AC0Owner
@@ -129,7 +132,7 @@ private:
 
 void Rva00808AC0Owner::copy(char *source)
 {
-	ji_009f70ba(m_dest, source, 0x80);
+	strncpy(m_dest, source, 0x80);
 }
 
 // The BFME1 donor also defines Rva00808AF0Owner::copy here, but BFME2 range
@@ -146,7 +149,3 @@ public:
 };
 
 // LanTheaterEmulator::notifyAddress: defined in Y4FeslFavGameAddress_notify.cpp (its row's unit).
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:?ji_009f70ba@@YAPADPADPBDI@Z=?ji_0062983e@@YAXXZ")

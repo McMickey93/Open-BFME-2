@@ -20071,7 +20071,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_0062921c@@YAXXZ,,0x0062921C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA69C;dll=msvcr71.dll;import=sqrt;target=sqrt
 ?ji_00629506@@YAXXZ,,0x00629506,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA688;dll=msvcr71.dll;import=memmove;target=memmove
 ?ji_006297ea@@YAXXZ,,0x006297EA,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA65C;dll=msvcr71.dll;import=realloc;target=realloc
-?ji_0062983e@@YAXXZ,,0x0062983E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA620;dll=msvcr71.dll;import=strncpy;target=strncpy
 ?ji_0062988c@@YAXXZ,,0x0062988C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5E8;dll=msvcr71.dll;import=_mbscat;target=_mbscat
 ?ji_00629892@@YAXXZ,,0x00629892,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5E4;dll=msvcr71.dll;import=sscanf;target=sscanf
 ?ji_006298b0@@YAXXZ,,0x006298B0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5D0;dll=msvcr71.dll;import=_CIacos;target=_CIacos
@@ -98832,3 +98831,4 @@ _memcmp,,0x0062929E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,
 _vsprintf,,0x00629A7E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__vsprintf import pointer; retail IAT slot 0x00BBA4E0 names msvcr71.dll!vsprintf (gen-import row); complete 6B tail
 _atof,,0x00629970,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__atof import pointer; retail IAT slot 0x00BBA550 names msvcr71.dll!atof (gen-import row); complete 6B tail
 _isdigit,,0x00629982,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__isdigit import pointer; retail IAT slot 0x00BBA544 names msvcr71.dll!isdigit (gen-import row); complete 6B tail
+_strncpy,,0x0062983E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strncpy import pointer; retail IAT slot 0x00BBA620 names msvcr71.dll!strncpy (gen-import row); complete 6B tail

@@ -5415,9 +5415,7 @@ name,address,notes
 ?bfmeCloseUDC@BfmeSrcUDC@@QAEXXZ,0x0061ED10
 ?bfmeCmpRE@BfmeOtherRE@@QAEDHH@Z,0x00655F90,address read from the retail REL32 in bfmeGoRE at 0x006560F0; BFME1 pin twin at 0x007E8F20
 ?bfmeConvertUVB@@YAHPADPAPAX@Z,0x00673AE0
-?bfmeCopyBZD@@YAXPADPBDI@Z,0x0062983E
 ?bfmeCopyCD@@YAPAUBfmeElemCD@@PBU1@0PAU1@ABUBfmeFalseCD@@@Z,0x006BEEC0,retail 6BF6F0 verified call graph; alias to existing native copy/fill/string body; dispatch tag unused
-?bfmeCopyCEB@@YAXPADPBDI@Z,0x0062983E
 ?bfmeCopyChV24@@YAXPAD0@Z,0x00013270
 ?bfmeCopyOneCDF@BfmePartCDF@@QAEXPAU1@@Z,0x0021C21B
 ?bfmeCopyTwoCDF@BfmePartCDF@@QAEXPAU1@@Z,0x0026F4F4
@@ -5436,7 +5434,6 @@ name,address,notes
 ?bfmeDoBJE@BfmeSubBJE@@QAE_NPAX@Z,0x0016F8F0
 ?bfmeDoBKG@BfmeSubBKG@@QAEXPAX0@Z,0x00655960
 ?bfmeDoBLA@@YGXH@Z,0x002C94F5,callee read from the retail REL32 in placed BFME1-donor body ?bfmeGoBLA@BfmeThingBLA@@QAEXPAX_N@Z (0x0028AA55)
-?bfmeDoBLF@@YAXPAUBfmeSubBLF@@PAXH@Z,0x0062983E
 ?bfmeDoBPB@BfmeSubBPB0064C6C0@@QAEXPAX00@Z,0x0038BBF0,callee read from the retail REL32 in placed BFME1-donor body ?bfmeGoBPB0064C6C0@@YAXPAX00HHPAVBfmeSubBPB0064C6C0@@@Z (0x0038D4AA)
 ?bfmeDoBPB@BfmeSubBPB@@QAEXPAX00@Z,0x001F08D3,callee read from the retail REL32 in placed BFME1-donor body ?update@Rva002D6EB0@@QAEXXZ (0x004B4204)
 ?bfmeDoBPC@@YGXPAVBfmeThingBPC@@PAX@Z,0x00478C2C,callee read from the retail REL32 in placed BFME1-donor body ?bfmeGoBPC@@YGXPAVBfmeThingBPC@@PAX@Z (0x0047DB95)
@@ -6650,7 +6647,6 @@ name,address,notes
 ?ji_0081bda8@@YAXXZ,0x00687CA8,address read from the REL32 displacement in DirtySock Rva00813100ConnectionSetup at 0x0067F000; indirect-call slot cast to function in BFME1 source; body not yet converted
 ?ji_00879190@@YAXXZ,0x006B8A30,address read from the REL32 displacement at a placed body
 ?ji_008793a0@@YAXXZ,0x006B8C30,address read from the REL32 displacement at a placed body
-?ji_009f70ba@@YAPADPADPBDI@Z,0x0062983E
 ?ji_009facad@@YAXXZ,0x0062AF26,callee read from the retail REL32 in placed BFME1-donor body ?bfmeGoVKH@BfmeThingVKH@@QAE?AUBfmeMat4VKH@@H@Z (0x00075295)
 ?key@StaticNameKey@@QBE?AW4NameKeyType@@XZ,0x00148F5E,callee of ?updateTeam@Rva0019BE80TeamRec@@QAEXH@Z at retail 0x0032D103 read from its REL32 displacement; ICF alias onto ?get@Rva00148F5ECache@@QAE?AW4NameKeyType@@XZ (matched)
 ?kill@Object@@QAEXW4DamageType@@W4DeathType@@@Z,0x002984D4,address read from the retail REL32 at 0x002984D4 in SpawnBehavior::onSpawnDeath; owner->kill(8 0) per BFME1 donor; coexists with bfmeDoBGB pin at same address

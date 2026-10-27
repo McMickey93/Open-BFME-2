@@ -204,6 +204,13 @@ int __cdecl atoi(const char * str) {
  return _imp__atoi(str);
 }
 
+// _strncpy
+typedef char * (__cdecl *PFN_strncpy)(char *, const char *, size_t);
+extern PFN_strncpy _imp__strncpy;
+char * __cdecl strncpy(char * strDest, const char * strSource, size_t count) {
+ return _imp__strncpy(strDest, strSource, count);
+}
+
 // _strcspn
 typedef size_t (__cdecl *PFN_strcspn)(const char *, const char *);
 extern PFN_strcspn _imp__strcspn;

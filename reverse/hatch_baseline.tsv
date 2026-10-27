@@ -1828,10 +1828,7 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv2008.cpp	?bfmeExpandEAN@Bfme
 alternatename	Code/GameEngine/Source/Common/BfmeConv2131.cpp	?bfmeOneCDE@BfmeOwnerCDE@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv443.cpp	?bfmeCbVJM@@YGXXZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv479.cpp	?bfmeDoBLA@@YGXH@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv487.cpp	?bfmeDoBLF@@YAXPAUBfmeSubBLF@@PAXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv487.cpp	?bfmeNoteVJI@BfmeSubVJI@@QAEXPBD@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv559.cpp	?bfmeCopyBZD@@YAXPADPBDI@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv585.cpp	?bfmeCopyCEB@@YAXPADPBDI@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv606.cpp	?addInt@BfmeMsg803A00@@QAEXPBDH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv606.cpp	?addInt@BfmeMsg803B60@@QAEXPBDH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv606.cpp	?addInt@BfmeMsg803BF0@@QAEXPBDH@Z	1
@@ -3744,13 +3741,11 @@ alternatename	Code/GameEngine/Source/GameNetwork/Rva00809050LanGameEntry.cpp	??1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva00809050LanGameEntry.cpp	??1Rva00808CB0LanGameEntry@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva008097D0LanTheaterRemove.cpp	??1Gen00809750@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva00809E40FeslAdmission.cpp	??1BfmeC994@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva00809E40FeslAdmission.cpp	?ji_009f70ba@@YAPADPADPBDI@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080A110Route.cpp	??1BfmeC994@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080A280FeslHandler.cpp	??1BfmeC994@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080A3C0FeslDispatcher.cpp	??1BfmeC994@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080A3C0FeslDispatcher.cpp	??1Rva007E8810Message@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva0080AA80LanTheater.cpp	??1BfmeC994@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva0080AA80LanTheater.cpp	?bfmeCopyBZD@@YAXPADPBDI@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl_ctor.cpp	?v0@ServiceHubImpl@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/ServiceHubImpl_dtor.cpp	??1Gen007EB140@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/SkirmishGameInfoXfer.cpp	?xfer@SkirmishGameInfo@@MAEXPAVXfer@@@Z	1
@@ -3776,8 +3771,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/Y2FeslBufferAndChain.cpp	?bfmeS
 alternatename	Code/GameEngine/Source/GameNetwork/Y2FeslDemanglerConnectReply.cpp	?onConnectReply@Rva00800E50Owner@@QAEXPAVRva007E8810Message@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y2FeslServiceList.cpp	?bfmeAddVMO@BfmeListVMO@@QAEXPAVBfmeSvcVMO@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y2FeslServiceList.cpp	?bfmeRemoveVMO@BfmeListVMO@@QAEXPAVBfmeSvcVMO@@@Z	1
-alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslFavGameAddress.cpp	?ji_009f70ba@@YAPADPADPBDI@Z	1
-alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslFavGameAddress_notify.cpp	?ji_009f70ba@@YAPADPADPBDI@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslGameRecords.cpp	?bfmeBaseVHC@BfmeThingVHC@@QAEXPAVBfmeMsgVHC@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslGameRecords.cpp	?bfmeBaseVHD@BfmeThingVHD@@QAEXPAVBfmeMsgVHC@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslGameRecords.cpp	?rva007FBE80@Rva007FBC60Game@@QAE_NPBDPADI@Z	1
@@ -10455,7 +10448,7 @@ pin	reverse/symbols.csv	0x00629780	1
 pin	reverse/symbols.csv	0x006297A0	1
 pin	reverse/symbols.csv	0x006297EA	1
 pin	reverse/symbols.csv	0x00629838	1
-pin	reverse/symbols.csv	0x0062983E	5
+pin	reverse/symbols.csv	0x0062983E	1
 pin	reverse/symbols.csv	0x0062984A	1
 pin	reverse/symbols.csv	0x00629850	1
 pin	reverse/symbols.csv	0x0062987A	1

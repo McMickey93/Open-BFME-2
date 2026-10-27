@@ -23,8 +23,10 @@
 // Declared, never defined: the DIR32 slot is a relocation the comparison masks,
 // which is how an absolute-address operand is reproduced (AGENTS.md).
 
-char *__cdecl ji_009f70ba( char *destination, const char *source,
-	unsigned int count );
+// The copy is msvcr71's strncpy (import thunk 0x0062983E), from <string.h>
+// with _CRTIMP empty (the header's own guard) so the call is direct.
+#define _CRTIMP
+#include <string.h>
 
 class Rva007E86B0Base
 {
@@ -251,7 +253,7 @@ void Rva00809E40Owner::rva00809E40( Rva007E8810Message *input )
 		{
 			char second[ 0x20 ];
 			input->getString( (const char *)"IP", second, 0x20 );
-			ji_009f70ba( record->m_field18, second, 0x20 );
+			strncpy( record->m_field18, second, 0x20 );
 		}
 
 		BfmeC994 request( buffer, 0x40 );
@@ -297,10 +299,6 @@ void Rva0066CC40Owner::rva0066CC40( void *message )
 {
 	Rva007F93E0( message, (void *)"->D", m_routeOwner );
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:?ji_009f70ba@@YAPADPADPBDI@Z=?ji_0062983e@@YAXXZ")
 
 // Existing thiscall teardown pin at RVA 0x655780 names the matched
 // seven-byte base-vptr reinstall worker; no receiver adjustment is needed.

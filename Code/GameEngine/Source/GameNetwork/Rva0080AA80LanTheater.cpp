@@ -59,7 +59,10 @@ public:
 	char m_tail24[ 0x10 ];
 };
 
-void bfmeCopyBZD( char *dest, const char *source, unsigned int size );
+// The copy is msvcr71's strncpy (import thunk 0x0062983E), from <string.h>
+// with _CRTIMP empty (the header's own guard) so the call is direct.
+#define _CRTIMP
+#include <string.h>
 
 class BfmeMsgVJJ
 {
@@ -108,17 +111,13 @@ void Rva00803620Sink::rva0080AA80( Rva00809500Entry *entry )
 		Rva007E8810Message *message = reinterpret_cast< Rva007E8810Message * >( incoming );
 		reply.m_category = message->m_category;
 		reply.m_field20 = 0xC0000000;
-		bfmeCopyBZD( reply.m_buffer, message->m_payload, reply.m_capacity );
+		strncpy( reply.m_buffer, message->m_payload, reply.m_capacity );
 		reinterpret_cast< BfmeThingVJJ * >( sink )->bfmeGoVJJ(
 			reinterpret_cast< BfmeMsgVJJ * >( &reply ) );
 		reply.addString( "NAME", m_name );
 		Rva007F93E0( &reply, "->L", m_field10 );
 	}
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:?bfmeCopyBZD@@YAXPADPBDI@Z=?ji_0062983e@@YAXXZ")
 
 // Existing thiscall teardown pin at RVA 0x655780 names the matched
 // seven-byte base-vptr reinstall worker; no receiver adjustment is needed.
