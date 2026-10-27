@@ -1680,8 +1680,9 @@ clearance or linking gain is claimed.
 
 ### LINK-009: split-identity destructors; the alias route needs an admission path
 
-**Status: Blocked on an identity merge or a maintainer admission decision.
-Updated: 2026-10-25; inspected revision: `4e835ab16a6`.**
+**Status: The six original units link (census `73061d9452`); the remaining
+split pairs are blocked on an identity merge or a maintainer admission decision.
+Updated: 2026-10-27; inspected revision: `d16a31e4dc`.**
 
 - **Evidence / scope:** constructors matched under one class name whose retail
   destructor is matched under a second, address-derived name, so the unit's
@@ -1736,6 +1737,58 @@ blocker and no linked-byte gain. All 18 retained external COMDATs have identical
 relocation-aware digests. WeatherData callback and complete-destructor identities
 remain prerequisites. Generated unwind 0x0077A838 is held by another worker;
 its row is untouched. Census confirmation remains pending.
+
+**Current-state audit (2026-10-27, seat halilkkaya-lk2, inspected `d16a31e4dc`, index `73061d9452`):**
+
+- **Completed (census-confirmed):** the six units in the evidence above link in
+  the census (`link_check.py`: 661 B, 668 B with current objects). 878194d833
+  and 59267bce0d bound them; the bindings now come from respelled rows, not
+  aliases. Of the wider handoff table, DozerAIUpdateCtor (8,003 B),
+  WorkerAIUpdateCtor (4,736 B), BaseHeightMapConstructor (1,166 B) and
+  ExperienceTrackerXfer_ExperienceTracker (208 B) also link. GameLogicInit.cpp
+  links with current objects (0 -> 28,191 B, repaired by e40e476d69 through
+  theLogicRandomLogFile, not a destructor merge) and awaits the census.
+  Rva00415704Ctor.cpp links with current objects (0 -> 90 B, a83d26d19a).
+- **Remaining, each needing a class merge that `rename.py class` refuses (it
+  rejects a new name that already exists; `rename.py function` refuses special
+  members; `add_match.py --replace-rva` takes scaffold rows only):**
+  - `GlobalWeatherSystemCtorDeferred.cpp` (133 B): `??1GlobalWeatherSystem` is
+    `??1Rva00318637` (table 0x00C0C734 slot 0 0x0031861B calls 0x00318637).
+    Its other two names, `??0WeatherData`/`??1WeatherData`, are the ehvec
+    callbacks 0x00318329 (rowed as the byte-identical `??0IPEnumeration`, which
+    sits in the GlobalWeatherSystem block) and 0x0010F149; inline WWLib-style
+    member bodies there would emit them without rows.
+  - `WeaponStore.cpp` (47 B): `??1Rva002CCD56` is WeaponStore's destructor
+    (table 0x00C02114 slot 0 0x002CD5E0); Weapon.cpp also defines a strong
+    non-retail `??1WeaponStore@@UAE@XZ` and a second `??_7WeaponStore`, and
+    WeaponStore.cpp declares the destructor protected with a fake
+    `Rva002CC20EBase::unused` slot, so three views need one table.
+  - `Rva006DE1A0Finish.cpp` (117 B): tables 0x00CEA228/0x00CEB150 share slot 0
+    0x006DCAC0 and the unwind funclet 0x007A8DA0 jumps to 0x006D6340; an Apt
+    class-family reconciliation, not a single pair.
+  - New pair, `Scripts.cpp` (512 B): `??1OrCondition@@MAE@XZ` is
+    `??1Rva003B262E@@MAE@XZ` (0x003B262E stores 0x00C1F3F4, the table the
+    matched `??0OrCondition@@QAE@XZ` installs; slot 0 is 0x003B331E, which
+    calls it). OrConditionCtor.cpp papers over the split with an
+    `/alternatename`. Scripts.cpp has a second, independent blocker: its
+    BFME 1 MemoryPoolObject view gives `??_7OrCondition@@6B@` a second slot
+    (getObjectMemoryPool) that retail's one-slot table lacks, and all 13
+    `??_7MemoryPoolObject@@6B@` copies share that two-slot shape.
+  - New pair, `MultiplayerSettingsCtor.cpp` (159 B): the ledger rows
+    `??1MultiplayerSettings@@QAE@XZ` (0x00381293) and
+    `??_GMultiplayerSettings@@QAEPAXI@Z` (0x00381277) are non-virtual, but
+    table 0x00C191B8, which the constructor installs, has 0x00381277 in slot 0
+    and SubsystemSlot's destructor 0x00226CEB deletes the object through
+    `call [eax]`: the destructor is virtual (UAE). The constructor's
+    non-virtual SubsystemInterface view leaves `??1SubsystemInterface@@QAE@XZ`
+    unresolved and stores the table through the address global `g_00C191B8`.
+    Retail's 14 slots match subsystem_interface.h with init/reset/update
+    overridden by empty bodies (0x000B3FD0).
+- **Next check:** a maintainer decision or a `rename.py` merge mode for
+  placeholder-to-real class merges unblocks GlobalWeather, WeaponStore and
+  OrCondition; MultiplayerSettings needs the QAE -> UAE respell of its two rows
+  (a signature change rename.py cannot express) plus the 14-slot view in the
+  constructor. No source change, alias or pin was landed by this audit.
 
 ### LINK-010: folded STL table bases need the actual native predecessor
 
@@ -2037,7 +2090,7 @@ confirmation remain pending.
 
 ### LINK-015: naming `VectorClass<Vector3>`'s deleting destructor proved the consumers' inlined copies wrong
 
-**Status: Census-confirmed for the four repaired units; two teardown units remain blocked. Updated: 2026-10-26; inspected revision: c01848c0b1.**
+**Status: Census-confirmed for the four repaired units; the two teardown units have a verified repair blocked on a claim and a row move. Updated: 2026-10-27; inspected revision: d16a31e4dc.**
 
 - **Evidence / scope:** 4e0bfa8260 named retail 0x000F1CF7 as
   `??_G?$VectorClass@VVector3@@@@UAEPAXI@Z` (34 B: vptr store, call to the kept
@@ -2091,6 +2144,29 @@ confirmation remain pending.
 **Inline-depth trial (2026-10-27, inspected `87e6100d33`, index `bf3dd31211`):** a trailing `#pragma inline_depth` in `Rva007B7280Siblings.cpp` (not a counted hatch) applies to the whole unit, teardowns included, not only to the compiler-generated `??_G` emitted at its end. `inline_depth(1)` stops the teardowns inlining the destructor (`./build.sh` 0/6); `inline_depth(2)` keeps 6/6 but the `??_G` still inlines `Clear` (same `wrong` digest `ac2be0dc8c7c`). Reverted; do not repeat. The vtable-owner or TU prerequisite above stands (0x007B7280/0x007B7400 have no approved TU in `reverse/tu_map.csv`).
 
 **Flag and auto_inline trials (2026-10-27, inspected `06e31393de`):** retail's 34-byte `??_G?$VectorClass@VVector3@@@@UAEPAXI@Z` at 0x000F1CF7 is the /O1 shape (vptr store, out-of-line `Clear`, `pop ecx` after `operator delete`), so any /O2 unit that inlines the destructor emits a losing copy, as retail's own /O2 consumers must have. Building `Rva007B7280Siblings.cpp` with `/G7 /O1` makes its `??_G` that 34-byte shape but fails the teardown bodies (`./build.sh` FAIL); a trailing `#pragma auto_inline(off)` makes the `??_G` call `??1` out of line (not retail either) and also fails them. Both reverted; do not repeat. The unit links only through the vtable-owner/TU prerequisite above or a census keep-rule that tolerates a loser retail itself carried.
+
+**Vtable-identity repair, verified but not landed (2026-10-27, seat halilkkaya-lk2, inspected `d16a31e4dc`, index `73061d9452`):**
+[The handoff and patch](../reverse/attempt_support/link015-vector3-vtable-identity-20261027/readme.md)
+resolve the table-slot prerequisite above. Retail's 0x00BCEFAC is
+VectorClass<Vector3>'s table (the teardowns and the 0x000F0D2F constructor
+store it), and its slots 1, 4 and 5 are 0x000F1C16, 0x000F0DC5 and 0x000F0E20:
+the owner unit's own flags compile VectorClass<Vector3>::operator==,
+ID(T const &) and ID(T const *) to exactly those bodies (masked compare EXACT;
+the TCBClass rows there are their ICF twin). The 0x001298B0 row that spells
+`?ID@?$VectorClass@VVector3@@@@UAEHPBVVector3@@@Z` is
+VectorClass<TextureStatisticsStruct>::ID(T const *): only slot 5 of the two
+TextureStatistics tables 0x00BD1274/0x00BD14EC reaches it, it lies in the
+statistics.cpp block, and that misnamed row is what makes RetailTruth judge
+the owner's table wrong at slot 5, so the owner's `??_G` stays `unknown`.
+With the owner emitting the three virtuals, pointgr/collect/DX8Skin/teardowns
+declaring them decl-only, and the row renamed into TextureStatisticsVectorID.cpp
+(two `/alternatename` lines dropped there), `./build.sh` passes 91/91 across
+the seven sources and `link_check.py` over 19 units links both teardowns
+(0 -> 353 B, 0 -> 59 B; total 30,747 -> 31,159 B) with no peer regression.
+Not landed: pointgr.cpp is file-locked by another seat's RVA claims, and moving
+a matched row to a new name and source has no admitted tool path for this seat.
+Next check: once pointgr.cpp is free, apply the patch with the row move and
+rerun the 19-unit preview listed in the handoff.
 
 ### LINK-016: folded bodies whose consumers declare them decl-only, with no provider
 
