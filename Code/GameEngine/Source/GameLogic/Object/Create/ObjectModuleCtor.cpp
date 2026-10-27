@@ -6,7 +6,7 @@
 // call locally).
 //
 // BFME1 reference (reference/open-bfme-1/Code/GameEngine/Source/Common/Thing/Module.cpp,
-// marked present-unmatched there): base Module init plus a null-moduleData
+// retained as an unrowed definition there): base Module init plus a null-moduleData
 // throw plus m_object = AsObject(thing). Three BFME2 deltas:
 //  - Module is slim single-inheritance here (retail stores only one vptr and
 //    makes no base call), so the TU carries a TU-local Module view (4-byte
@@ -31,9 +31,6 @@ public:
 	virtual void opaqueSlot4(); // slot 4 (unproven)
 	virtual Object *asObjectMeth(); // slot 8 (BFME1 name, position from retail)
 };
-
-// Friend-style helper matching BFME1 Thing.h: null-guarded virtual dispatch.
-static Object *AsObject(Thing *thing) { return thing ? thing->asObjectMeth() : 0; }
 
 class Module
 {
@@ -75,5 +72,5 @@ ObjectModule::ObjectModule(Thing *thing, const ModuleData *moduleData)
 	if (!moduleData) {
 		throw INIException(3, "module data may not be null\n");
 	}
-	m_object = AsObject(thing);
+	m_object = thing ? thing->asObjectMeth() : 0;
 }

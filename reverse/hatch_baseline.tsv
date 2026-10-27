@@ -18766,7 +18766,6 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Contain/SiegeEngineCon
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	CreateModule::crc	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	CreateModule::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	CreateModule::~CreateModule	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/DrawableModuleCtor.cpp	?	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/GrantUpgradeCreate.cpp	1GrantUpgradeCreate@@MAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/GrantUpgradeCreate.cpp	crc@GrantUpgradeCreate@@MAEXPAVXfer@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/GrantUpgradeCreate.cpp	loadPostProcess@GrantUpgradeCreate@@MAEXXZ	1
@@ -18775,7 +18774,6 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/GrantUpgradeCre
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/GrantUpgradeCreate.cpp	onCreate@GrantUpgradeCreate@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/GrantUpgradeCreate.cpp	xfer@GrantUpgradeCreate@@MAEXPAVXfer@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	1LockWeaponCreate@@MAE@XZ	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/ObjectModuleCtor.cpp	marked	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreateConstructor.cpp	1PreorderCreate@@MAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/SpecialPowerCreateConstructor.cpp	1SpecialPowerCreate@@MAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Create/SupplyCenterCreateConstructor.cpp	1SupplyCenterCreate@@MAE@XZ	1

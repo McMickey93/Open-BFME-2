@@ -6,7 +6,7 @@
 //
 // Identity evidence (converging, cf. commit note):
 //  - BFME1 reference (reference/open-bfme-1/.../Thing/Module.cpp,
-//    present-unmatched there) has exactly one other ctor of this shape:
+//    retained as an unrowed definition there) has exactly one other ctor of this shape:
 //    DrawableModule with AsDrawable(thing) in place of AsObject.
 //  - Retail calls Thing slot 0x10 here vs slot 8 in the landed ObjectModule
 //    twin (AsObject, proven) -- a different AsX helper as the donor demands.
@@ -34,9 +34,6 @@ public:
 	virtual void opaqueSlotC(); // slot 0xC (unproven)
 	virtual Drawable *asDrawableMeth(); // slot 0x10 (BFME1 name, position from retail)
 };
-
-// Friend-style helper matching BFME1 Thing.h: null-guarded virtual dispatch.
-static Drawable *AsDrawable(Thing *thing) { return thing ? thing->asDrawableMeth() : 0; }
 
 class Module
 {
@@ -80,5 +77,5 @@ DrawableModule::DrawableModule(Thing *thing, const ModuleData *moduleData)
 	if (!moduleData) {
 		throw INIException(3, "module data may not be null\n");
 	}
-	m_drawable = AsDrawable(thing);
+	m_drawable = thing ? thing->asDrawableMeth() : 0;
 }
