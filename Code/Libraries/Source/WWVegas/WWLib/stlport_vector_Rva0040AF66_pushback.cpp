@@ -60,4 +60,14 @@ namespace _STL
 template <> void _Construct<Rva0040AF66, Rva0040AF66>(Rva0040AF66 *, const Rva0040AF66 &);
 }
 
+// _M_clear's range destroy is retail's rowed _Destroy<Rva0040AFF3*>
+// (0x0040B547, stlport_destroy_range_0040B547.cpp); forward to it so the
+// _M_clear copy calls its owner.
+struct Rva0040AFF3;
+namespace _STL {
+template <> void _Destroy<Rva0040AFF3 *>(Rva0040AFF3 *, Rva0040AFF3 *);
+template <> __declspec(dllimport) __forceinline void _Destroy<Rva0040AF66 *>(Rva0040AF66 *__first, Rva0040AF66 *__last)
+{ _Destroy(reinterpret_cast<Rva0040AFF3 *>(__first), reinterpret_cast<Rva0040AFF3 *>(__last)); }
+}
+
 template void _STL::vector<Rva0040AF66>::push_back(const Rva0040AF66 &);

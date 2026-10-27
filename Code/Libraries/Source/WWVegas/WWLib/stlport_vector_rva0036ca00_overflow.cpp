@@ -32,6 +32,15 @@ template <> void _Construct<Rva0036CA00Str, Rva0036CA00Str>(Rva0036CA00Str *, co
 template <> __declspec(dllimport) __forceinline void _Destroy(Rva0036CA00Str *__pointer) { __pointer; __pointer->~Rva0036CA00Str(); }
 }
 
+// _M_clear's range destroy is retail's rowed _Destroy<OpaqueRefElement4*>
+// (0x00054F94, StlportOwnedDeque.cpp); forward to it so _M_clear calls its owner.
+struct OpaqueRefElement4;
+namespace _STL {
+template <> void _Destroy<OpaqueRefElement4 *>(OpaqueRefElement4 *, OpaqueRefElement4 *);
+template <> __declspec(dllimport) __forceinline void _Destroy<Rva0036CA00Str *>(Rva0036CA00Str *__first, Rva0036CA00Str *__last)
+{ _Destroy(reinterpret_cast<OpaqueRefElement4 *>(__first), reinterpret_cast<OpaqueRefElement4 *>(__last)); }
+}
+
 template void _STL::vector<Rva0036CA00Str>::_M_insert_overflow(
     Rva0036CA00Str *,
     const Rva0036CA00Str &,
