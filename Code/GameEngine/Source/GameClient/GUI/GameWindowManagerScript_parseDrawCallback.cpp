@@ -13,7 +13,7 @@ typedef int Int;
 typedef bool Bool;
 
 #ifndef NULL
-#define NULL 0
+#include <stddef.h>
 #endif
 
 enum NameKeyType
@@ -62,7 +62,7 @@ extern AsciiString g_drawCallbackName;
 
 class WinInstanceData;
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
+#include <string.h>
 
 // ?parseDrawCallback@@YA_NPADPAVWinInstanceData@@0PAX@Z
 Bool parseDrawCallback(char *token, WinInstanceData *instData, char *buffer, void *data)

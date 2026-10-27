@@ -21,7 +21,7 @@ class PlayerList;
 class AIGroup;
 #include "Code/Libraries/Include/Lib/Coord3D.h"
 
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 template<int N> class BitFlags
 {
 public:

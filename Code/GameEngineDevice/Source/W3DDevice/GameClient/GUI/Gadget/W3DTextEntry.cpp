@@ -1,4 +1,5 @@
 // cl: /O1 /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // W3DGadgetTextEntryDraw 0x000A03BF (450B) and W3DGadgetTextEntryImageDraw
 // 0x000A0581 (748B): Zero Hour's W3DTextEntry.cpp through BFME1's banked
 // reconstructions of the same two callbacks (Open-BFME-1 targets/game/reverse/
@@ -233,8 +234,8 @@ inline Int BitTest( UnsignedInt bits, UnsignedInt mask )
 }
 
 #define WIN_DRAW_LINE_WIDTH 1.0f
-#define FALSE 0
-#define NULL 0
+#define NOMINMAX
+#include <windows.h>
 
 #define GadgetTextEntryGetEnabledColor( window ) ( (window)->m_enabledDrawData[ 0 ].color )
 #define GadgetTextEntryGetEnabledBorderColor( window ) ( (window)->m_enabledDrawData[ 0 ].borderColor )
@@ -265,7 +266,6 @@ public:
 
 extern GameWindowManager *TheWindowManager;
 extern IMEManager *TheIMEManager;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime( void );
 
 // Inverts a colour's RGB and keeps its alpha (color_ops.cpp).
 Color Rva0009FE01Get( Color color );
