@@ -8,7 +8,10 @@
 struct RvaVec4B { float x; float y; float z; float w; };
 struct RvaVec3B { float x; float y; float z; };
 struct RvaDE4880Owner { unsigned char m_pad[0x84]; RvaVec4B m_84; unsigned char m_pad94[0xD4 - 0x94]; RvaVec3B m_D4; float m_E0; };
-static RvaDE4880Owner *g_00DE4880;
+// The pointer global at 0x009E4880 is the data ledger's ?g_get_00710fb0@@3HA
+// (defined in Gen006E2310Ctor.cpp); read it through this unit's owner view.
+extern int g_get_00710fb0;
+#define g_00DE4880 (*reinterpret_cast<RvaDE4880Owner **>(&g_get_00710fb0))
 float __stdcall rva00094D44(float a, float b, float c)
 {
 	RvaDE4880Owner *g = g_00DE4880;

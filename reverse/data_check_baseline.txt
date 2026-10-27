@@ -275,7 +275,6 @@ Code/GameEngine/Source/GameClient/MapUtil.cpp	duplicate-def	_m_supplyPositions	0
 Code/GameEngine/Source/GameClient/MapUtil.cpp	duplicate-def	_m_techPositions	0x009FF148
 Code/GameEngine/Source/GameClient/MapUtil.cpp	wrong-name	_m_supplyPositions	0x009FF144
 Code/GameEngine/Source/GameClient/MapUtil.cpp	wrong-name	_m_techPositions	0x009FF148
-Code/GameEngine/Source/GameClient/Rva00094D44Func.cpp	wrong-name	_g_00DE4880	0x009E4880
 Code/GameEngine/Source/GameClient/Rva002D46AD.cpp	wrong-name	?$S1@?1??Rva002D46ADSet@@YAXH@Z@4IA	0x009FF040
 Code/GameEngine/Source/GameClient/Rva004110DCGet.cpp	duplicate-def	?g_Va00E02FF8@@3URva004110DCGlobalTable@@A	0x00A02FF8
 Code/GameEngine/Source/GameClient/Rva004110DCGet.cpp	wrong-name	?g_Va00E02FF8@@3URva004110DCGlobalTable@@A	0x00A02FF8
