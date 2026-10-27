@@ -11,7 +11,7 @@
 // /O1 body at 0x00001423. Instantiate it first in an unemitted anchor (the
 // lookuptable.cpp pattern) so this unit's copy is that body.
 #pragma optimize("gsy", on)
-static void bfmeVciAnchor()
+static void bfmeVciAnchorSpiralReverse()
 {
     struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
     BfmeVciAnchorElem anchor[2];

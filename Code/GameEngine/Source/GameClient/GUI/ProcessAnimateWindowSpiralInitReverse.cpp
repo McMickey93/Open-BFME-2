@@ -12,7 +12,7 @@
 // change nothing else in this unit, but if a function added later that builds
 // an array will not match, try it without this block.
 #pragma optimize("gsy", on)
-static void bfmeVciAnchor()
+static void bfmeVciAnchorSpiralInitReverse()
 {
     struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
     BfmeVciAnchorElem anchor[2];
