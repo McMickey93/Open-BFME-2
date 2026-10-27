@@ -22,12 +22,12 @@ template<> class Rva00463509After45<0>:public Rva00463509Slot44 {};
 class Rva00463509:public Rva00463509After45<13> {
 public:
     virtual bool contains(Object *);
-    void rva00463509(Object *,bool);
+    void removeFromContain(Object *,bool);
 };
 // The shared debug prefix supplies the first three operations. This call's
 // final diagnostic kind is the native integer2; its enum identity is unknown.
 class Rva00463509DebugFinish:public Rva00463509Slots<19> { public: virtual void finish(int); };
-void Rva00463509::rva00463509(Object *rider,bool expose)
+void Rva00463509::removeFromContain(Object *rider,bool expose)
 {
     if (!rider) return;
     if (!contains(rider)) {

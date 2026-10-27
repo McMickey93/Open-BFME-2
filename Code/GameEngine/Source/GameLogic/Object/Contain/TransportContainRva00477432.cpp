@@ -98,7 +98,7 @@ void Rva00477432::rva00477432(Object *obj, int /*unused*/)
 class Rva00463509
 {
 public:
-    void rva00463509(Object *object, bool flag);
+    void removeFromContain(Object *object, bool flag);
 };
 
 class Rva00467AB8
@@ -131,7 +131,7 @@ void Rva00477432Outer::rva00477365(Object *object)
 {
     Rva00463509 *base = reinterpret_cast<Rva00463509 *>(
         reinterpret_cast<char *>(this) + 0x20);
-    base->rva00463509(object, false);
+    base->removeFromContain(object, false);
     reinterpret_cast<Rva00467AB8 *>(base)->onRemoving(object);
     object->clearWeaponSetFlag((WeaponSetType)20);
 
@@ -152,7 +152,7 @@ void Rva00477432Outer::rva00477365(Object *object)
 void Rva00477432Outer::rva004770DE(Object *object)
 {
     reinterpret_cast<Rva00463509 *>(reinterpret_cast<char *>(this) + 0x20)
-        ->rva00463509(object, false);
+        ->removeFromContain(object, false);
     object->clearWeaponSetFlag((WeaponSetType)20);
     reinterpret_cast<Rva0047A040Base9E0 *>(reinterpret_cast<char *>(this) + 0x11D)
         ->rva00588E20(object);

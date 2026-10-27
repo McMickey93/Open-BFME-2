@@ -3671,3 +3671,4 @@ $L784,0x007A8288,Renumbered compiler label: the matched parent ?insert@Rva006CE6
 ?rva00577E43@Rva00577E43@@QAEXXZ,0x00577E43,"Renamed to ?rva00577E43@AptRadialMenuImpl@@QAEXXZ by tools/rename.py (inferred)"
 ?rva0014D887@Rva0014D887This@@QAEXPAVRva0014D887Outer@@PAX@Z,0x0014D887,"Renamed to ?SetPosition@Rva0014D887This@@QAEXPAVRva0014D887Outer@@PAX@Z by tools/rename.py (inferred)"
 ?rva0048B9D0@Rva0048B9D0@@QAEXPBVWeaponTemplate@@@Z,0x0048B9D0,"Renamed to ?rva0048B9D0@FireWeaponUpdate@@QAEXPBVWeaponTemplate@@@Z: sole caller 0x005093C6 calls it on findModule(nameToKey(""FireWeaponUpdate"")), a retail module class (module_factory_registrations.csv #101); method name unknown"
+?rva00463509@Rva00463509@@QAEXPAVObject@@_N@Z,0x00463509,"Renamed to ?removeFromContain@Rva00463509@@QAEXPAVObject@@_N@Z by tools/rename.py (canonical:string)"

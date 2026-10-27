@@ -2754,3 +2754,4 @@ member,Rva00201DC4LODInfo::word18,Rva00201DC4LODInfo::m_waterLOD,inferred,agree:
 member,Rva00201DC4LODInfo::word34,Rva00201DC4LODInfo::m_animationDetail,inferred,agree:nl-e35bc94f6ce7,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
 member,Rva00201DC4LODInfo::word38,Rva00201DC4LODInfo::m_shaderLOD,inferred,agree:nl-93ad2f7413e7,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
 member,Rva00201DC4LODInfo::flag3C,Rva00201DC4LODInfo::m_shaderMaterialReplacement,inferred,agree:nl-7844de36dace,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
+function,?rva00463509@Rva00463509@@QAEXPAVObject@@_N@Z,?removeFromContain@Rva00463509@@QAEXPAVObject@@_N@Z,canonical:string,"string_xrefs: ""OpenContain::removeFromContain: Trying to remove an object from a container that does not currently contain it."" referenced by 0x463509",Code/GameEngine/Source/GameLogic/Object/Contain/OpenContainRemoveFromContain.cpp,0x00463509

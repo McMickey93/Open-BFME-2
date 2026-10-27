@@ -9,7 +9,7 @@ class Object;
 
 class Rva00463509 {
 public:
-	void rva00463509(Object *object, bool flag);
+	void removeFromContain(Object *object, bool flag);
 };
 
 class Rva0047A040Base9E0 {
@@ -24,6 +24,6 @@ public:
 
 void Rva00479BA1::rva00479BA1(Object *object)
 {
-	((Rva00463509 *)((char *)this + 0x20))->rva00463509(object, false);
+	((Rva00463509 *)((char *)this + 0x20))->removeFromContain(object, false);
 	((Rva0047A040Base9E0 *)((char *)this + 0x9E0))->rva00588E20(object);
 }

@@ -32,7 +32,7 @@ class AI {public:char pad[0x10];Pathfinder *pathfinder;};extern AI *TheAI;
 extern GameLogic *TheGameLogic;
 extern int BfmeLogicFramesPerSecond;
 class Rva004C5772CmpBoolField {public:bool get() const;};
-class Rva00463509 {public:void rva00463509(Object*,bool);};
+class Rva00463509 {public:void removeFromContain(Object*,bool);};
 class HordeTransportContain {public:virtual void exitObjectViaDoor(Object*,ExitDoorType);};
 template<int N>class ExitSlots:public ExitSlots<N-1>{public:virtual void gap(char(*)[N]);};template<>class ExitSlots<0>{};
 class ExitInterface:public ExitSlots<41>{public:virtual void remove(Object*,bool);};
@@ -45,7 +45,7 @@ void HordeSiegeEngineContain::rva0047D53A(Object *rider,ExitDoorType arg)
  Object *me=owner;
  SiegeContainData *md=data;
  if(md->filter.accepts(rider,me->getControllingPlayer()) && md->active>0){
-  ((Rva00463509*)((char*)this+0x20))->rva00463509(rider,false);
+  ((Rva00463509*)((char*)this+0x20))->removeFromContain(rider,false);
   Coord3D destination;destination.x=rider->position.x;destination.y=rider->position.y;destination.z=rider->position.z;
   { Coord3D delta;delta.x=destination.x-me->position.x;delta.y=destination.y-me->position.y;delta.z=destination.z-me->position.z;
   delta.normalize();
