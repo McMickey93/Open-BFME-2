@@ -18,6 +18,9 @@ public:
     // Out of line in retail: 0x00329F5E (row in subsystem/SubsystemInterfaceCopy.cpp); an
     // implicit copy would be emitted as a second COMDAT definition beside that row's.
     SubsystemInterface(const SubsystemInterface &that);
+    // Out of line in retail: 0x00329880 (row in subsystem/SubsystemInterfaceCopy.cpp); the
+    // implicit assignment would likewise be a second COMDAT definition.
+    SubsystemInterface &operator=(const SubsystemInterface &that);
     // Out of line in retail: 0x0006F3CC (row in subsystem/SubsystemInterfaceSetName.cpp).
     void setName(AsciiString name);
     bool m_flag;
