@@ -27,7 +27,7 @@ public:
 };
 
 WindowMsgHandledType __cdecl GadgetListBoxInput(GameWindow *win, UnsignedInt a, WindowMsgData b, WindowMsgData c);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 struct ListBoxTeardownData
 {

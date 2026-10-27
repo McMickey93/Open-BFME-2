@@ -30,7 +30,7 @@
 // No new class view: reuses HandlerGroups/GroupTotalFrames 0x18 TransitionWindow and TransitionGroup views;
 // AsciiString canonical untouched (no private copy; offsets hardcoded per ControlBar g_0080D720 precedent).
 // TU-scoped shims only, no shared-header edits. Single-local esi, nothrow ctor to avoid EH/ebp frame.
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 typedef void (*INIFieldParseProc)(class INI *ini, void *instance, void *store, const void *userData);
 struct FieldParse

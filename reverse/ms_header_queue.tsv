@@ -712,7 +712,6 @@ Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetTextEntrySystem.cpp	drop-in c
 Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetUserDataHelpers_Rva0032857F.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameClient/GUI/Gadget/Rva00445172TextEntryInput.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<ctype.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_WCTYPE_INLINE_DEFINED:same
 Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EA91CompareSet.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
-Code/GameEngine/Source/GameClient/GUI/GadgetListBoxDisableInput.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/GameClient/GUI/GameWindowCursorSearch.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript_copyGadgetDrawData.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
 Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript_parseText.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
@@ -722,8 +721,6 @@ Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript_scanBool.cpp	drop-
 Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript_scanInt.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sscanf:same
 Code/GameEngine/Source/GameClient/GUI/GameWindowManager_enableWindowsInRange.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoMessageBox.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
-Code/GameEngine/Source/GameClient/GUI/GameWindowManager_processDestroyList.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsParseWindow.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/GameClient/GUI/GameWindow_winSetText.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameClient/GUI/ImageCtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameClient/GUI/InGame/AptRadialMenu.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same

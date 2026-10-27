@@ -53,7 +53,7 @@ private:
 	ModalWindow *m_modalHead;
 	GameWindow *m_grabWindow;
 };
-void __cdecl operator delete(void *p);
+#include <new>
 void GameWindowManager::processDestroyList()
 {
 	GameWindow *cur = m_destroyList;
