@@ -1064,6 +1064,20 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   the camera sizeof probe separately. No verifier, whitelist or source change
   was made and no new linked-byte gain is claimed.
 
+- **Particle info lifetime prerequisite (2026-10-27, inspected `eba54d7587`):**
+  [the bounded native/table handoff](../reverse/attempt_support/particle-info-base-link-20261027/readme.md)
+  tests the canonical Snapshot base for Rva0056224FCtor.cpp. All seven rows
+  remain exact and the scoped DIR32 conflict clears, while the same-index
+  ordinary preview preserves LINKS, 480 -> 480 bytes. The candidate's
+  16-byte info table still emits three `__purecall` entries in place of native
+  post-process, name and transfer handlers; its secondary emitter table also
+  needs the actual overrides. The native getter returns
+  `RenderObjectParticleUpdateModuleInfo`; a folded BoxEmissionVolumeInfo
+  destructor name does not establish that constructor identity. The candidate
+  is banked, production source/cache restored and claims released. Recover
+  the complete class/table contracts and existing getter/transfer owners before
+  retrying. This fixes no production unit and claims no new linking credit.
+
 - **Polygon renderer consolidation subset (2026-10-26, inspected cdf6e90a59):**
   [the scoped provider prerequisite](../reverse/attempt_support/sol-b5-polygon-provider-20261026.md)
   found a 9/9-byte-exact merge changing the earliest scoped vector-constructor
