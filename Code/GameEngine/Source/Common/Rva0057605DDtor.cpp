@@ -29,6 +29,7 @@ private:
 	int m_04;
 };
 
+#include <new.h>
 #include "../../Include/Common/Rva0057605DSecond.h"
 // ??0Rva0057605DSecond@@QAE@XZ @0x002B251A 9B: the default constructor, storing the
 // class's own vtable (VA 0x00C77F44) and returning this.
@@ -38,7 +39,6 @@ __declspec(noinline) inline Rva0057605DSecond::Rva0057605DSecond()
 {
 }
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // ?bfmeAnchorRva0057605DSecond absent-from-retail
 void *bfmeAnchorRva0057605DSecond(void *where)
 {

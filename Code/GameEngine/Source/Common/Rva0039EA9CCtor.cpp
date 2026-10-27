@@ -5,6 +5,9 @@
 // after the zero and 1 stores) even though plain int initialisers schedule
 // it first; a +0x14 member sub-object with its own inline -1 constructor
 // gives exactly that order.
+
+#include <new.h>
+
 struct Rva0039EA9CHandle
 {
 	int m_value;
@@ -23,7 +26,6 @@ private:
 	int m_10;
 	Rva0039EA9CHandle m_14;
 };
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva0039EA9C::Rva0039EA9C() : m_00(0), m_04(0), m_08(1), m_0c(0), m_10(0)
@@ -35,4 +37,3 @@ void *bfmeAnchorRva0039EA9C(void *where)
 {
 	return new (where) Rva0039EA9C();
 }
-

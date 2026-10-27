@@ -1,5 +1,8 @@
 // cl: /MD
 // ??0Rva004691A5@@QAE@XZ 0x004691A5 18B evidence: and-or inc O1 idioms plus movss; caller 0x474431 constructs 0x1C-byte stack record
+
+#include <new.h>
+
 class Rva004691A5
 {
 public:
@@ -33,7 +36,6 @@ private:
 	int m_0C;
 };
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva00469155::Rva00469155() : m_0C(0)

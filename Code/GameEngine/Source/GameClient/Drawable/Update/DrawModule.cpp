@@ -14,7 +14,8 @@
 // Zero Hour's inline DrawModule ctor to these same 28 bytes. Formerly rowed as
 // the address-named Rva000B19A1.
 
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 class Thing;
 class ModuleData;
 

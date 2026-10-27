@@ -7,6 +7,7 @@
 // Evidence: callers at 0x002411BF 0x00241DA1 0x00242195, prev 0x00240DF1 next 0x002418E2.
 #include "ascii_string.h"
 #include <math.h>
+#include <string.h>
 #define _OPERATOR_NEW_DEFINED_
 #include "vector3.h"
 #include <set>
@@ -40,7 +41,6 @@ extern GlobalData *TheWritableGlobalData;
 
 void __cdecl bfmeMergeReceiverKeys(int value);
 
-extern "C" void *__cdecl memset(void *,int,unsigned int);
 #pragma function(memset)
 
 struct CreateMask

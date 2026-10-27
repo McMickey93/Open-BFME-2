@@ -7,6 +7,8 @@
 // The class, argument types and field meanings remain unknown. In
 // particular this is not Gdiplus::Image, whose vtable is VA 0x00BBB524.
 
+#include <new.h>
+
 class Rva0059B7CB
 {
 public:
@@ -39,7 +41,6 @@ private:
 	unsigned int m_field08;
 };
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva00359853::Rva00359853(unsigned int field04, unsigned int field08)

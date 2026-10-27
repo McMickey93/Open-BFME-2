@@ -10,7 +10,8 @@
 // the compiler emits resolves in this unit. The owning classes are not
 // recovered, so each keeps its address.
 
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 struct RvaSmallVtableZeroBase
 {
 	void *m_04;

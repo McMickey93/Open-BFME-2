@@ -8,7 +8,7 @@
 // 0x0007DEEF then two UnicodeStrings at +0xC +0x10 via 0x00036E70. Precedent
 // Rva005F918DDtor for holder plus Release shape and Rva005D3AF2Method.
 // Evidence: deleting dtors at 0x005CB301 0x005CB31D 0x005CB337 call it.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
 #include "unicode_string.h"
 
 class Rva005CB260

@@ -12,6 +12,8 @@
 // operation; its linker alias binds to the byte-verified private constructor.
 // cl: /O2 /Ob1 /G6 /GX-
 
+#include <new.h>
+
 // The 0x24-byte element's member group at +0x10: the three dwords the matched
 // siblings Rva0087EAA0Copy.cpp and Rva0087E9B0Fill.cpp spell BfmeCoordXX m_10,
 // then the StringBase<char> tail whose copy ctor is the one out-of-line call
@@ -24,12 +26,6 @@
 // nesting here is what the byte-verified body witnesses, not a free choice.
 
 #pragma comment(linker, "/alternatename:??0BfmeTailBE@@QAE@ABU0@@Z=??0?$StringBase@D@@AAE@ABV0@@Z")
-
-// ??2@YAPAXIPAX@Z absent-from-retail
-inline void *operator new(unsigned int, void *p)
-{
-	return p;
-}
 
 struct BfmeFalseBE
 {

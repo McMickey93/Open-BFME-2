@@ -8,6 +8,8 @@
 // The final +48 field receives the fourth argument, independently distinct
 // from the key count spilled into the dead context argument during the loop.
 
+#include <new.h>
+
 struct Rva00802A90Query
 {
 	int m_lid;
@@ -130,7 +132,6 @@ public:
 };
 class Rva007E8760Addr { public: void parse(const char *, int); };
 class Rva00801570 { public: void allocate(int); };
-inline void *operator new(unsigned, void *place) { return place; }
 
 struct Rva00802A90Elem
 {
