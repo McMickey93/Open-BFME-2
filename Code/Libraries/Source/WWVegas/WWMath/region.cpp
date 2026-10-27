@@ -147,24 +147,7 @@ void IntRange::combine(IntRange &that)
     max = high;
 }
 
-struct Region2D
-{
-    Region2D();
-    ~Region2D();
-    Region2D(const Region2D &that);
-    Region2D(const Coord2D &lower_left, const Coord2D &upper_right);
-
-    float width() const;
-    float height() const;
-    bool isInside(const Coord2D &point) const;
-    bool IsExactlyEqualTo(const Region2D &that) const;
-    void expandBy(const Coord2D &point);
-
-    float x_min;
-    float y_min;
-    float x_max;
-    float y_max;
-};
+#include "../../../Include/Lib/Region2D.h"
 
 // BFME 2 exports ??0LineSegment2D@@QAE@ABVCoord2D@@0@Z at 0x00004C06, the
 // address of Region2D's ctor above: /OPT:ICF folded the two endpoint ctors.
@@ -209,10 +192,10 @@ bool IRegion2D::operator==(const IRegion2D &that) const
 
 Region2D::Region2D(const Coord2D &lower_left, const Coord2D &upper_right)
 {
-    x_min = lower_left.x;
-    y_min = lower_left.y;
-    x_max = upper_right.x;
-    y_max = upper_right.y;
+    lo.x = lower_left.x;
+    lo.y = lower_left.y;
+    hi.x = upper_right.x;
+    hi.y = upper_right.y;
 }
 
 LineSegment2D::LineSegment2D(const Coord2D &start, const Coord2D &end)
@@ -221,66 +204,38 @@ LineSegment2D::LineSegment2D(const Coord2D &start, const Coord2D &end)
     m_end = end;
 }
 
-// Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
-// the anchor keeps the noinline body emitted.
-__declspec(noinline) inline float Region2D::width() const
-{
-    return x_max - x_min;
-}
-
-// ?bfmeAnchorRegion2DWidth absent-from-retail
-float bfmeAnchorRegion2DWidth(const Region2D *p)
-{
-	return p->width();
-}
-
-
-// Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
-// the anchor keeps the noinline body emitted.
-__declspec(noinline) inline float Region2D::height() const
-{
-    return y_max - y_min;
-}
-
-// ?bfmeAnchorRegion2DHeight absent-from-retail
-float bfmeAnchorRegion2DHeight(const Region2D *p)
-{
-	return p->height();
-}
-
-
 bool Region2D::isInside(const Coord2D &point) const
 {
-    return point.x > x_min &&
-        point.x < x_max &&
-        point.y > y_min &&
-        point.y < y_max;
+    return point.x > lo.x &&
+        point.x < hi.x &&
+        point.y > lo.y &&
+        point.y < hi.y;
 }
 
 bool Region2D::IsExactlyEqualTo(const Region2D &that) const
 {
-    return that.x_min == x_min &&
-        that.y_min == y_min &&
-        that.x_max == x_max &&
-        that.y_max == y_max;
+    return that.lo.x == lo.x &&
+        that.lo.y == lo.y &&
+        that.hi.x == hi.x &&
+        that.hi.y == hi.y;
 }
 
 void Region2D::expandBy(const Coord2D &point)
 {
     float x = point.x;
 
-    if (x < x_min) {
-        x_min = x;
-    } else if (x > x_max) {
-        x_max = x;
+    if (x < lo.x) {
+        lo.x = x;
+    } else if (x > hi.x) {
+        hi.x = x;
     }
 
     float y = point.y;
 
-    if (y < y_min) {
-        y_min = y;
-    } else if (y > y_max) {
-        y_max = y;
+    if (y < lo.y) {
+        lo.y = y;
+    } else if (y > hi.y) {
+        hi.y = y;
     }
 }
 
@@ -455,7 +410,7 @@ Debug &operator<<(Debug &debug, const RealRange &range)
 
 Debug &operator<<(Debug &debug, const Region2D &region)
 {
-    debug << *(const Coord2D *)&region.x_min << " - " << *(const Coord2D *)&region.x_max;
+    debug << region.lo << " - " << region.hi;
     return debug;
 }
 
@@ -472,19 +427,11 @@ RealRange::RealRange()
 {
 }
 
-inline Region2D::Region2D()
-{
-}
-
 inline Region3D::Region3D()
 {
 }
 
 IRegion3D::IRegion3D()
-{
-}
-
-inline Region2D::~Region2D()
 {
 }
 
@@ -506,12 +453,12 @@ RealRange &RealRange::operator=(const RealRange &that)
     return *this;
 }
 
-Region2D::Region2D(const Region2D &that)
+Region2D::Region2D(const Region2D &that) throw()
 {
-    x_min = that.x_min;
-    y_min = that.y_min;
-    x_max = that.x_max;
-    y_max = that.y_max;
+    lo.x = that.lo.x;
+    lo.y = that.lo.y;
+    hi.x = that.hi.x;
+    hi.y = that.hi.y;
 }
 
 // The generated assignments, forced out by naming them. Each is a movsd run
@@ -538,7 +485,7 @@ void _bfmeRegion3DInlineAnchor(Region3D *r, Region2D *q, Coord3D *c)
     r->Region3D::Region3D();
     q->Region2D::Region2D();
     r->Region3D::Region3D(*r);
-    c->scale(r->width() + r->height());
+    c->scale(r->width() + r->height() + q->width() + q->height());
     r->Region3D::~Region3D();
     q->Region2D::~Region2D();
 }

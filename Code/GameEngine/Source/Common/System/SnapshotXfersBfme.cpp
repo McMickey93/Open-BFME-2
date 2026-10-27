@@ -275,8 +275,14 @@ public:
 };
 
 // Retail ctor 0x000D1AF3 builds the slot array through rowed vector_constructor_iterator
-// (0x1423) with the 3-byte folded empty ctor VA 0x87A6A9 (Region2D shares it; stride 0x10).
-#include "../../../../Libraries/Include/Lib/Region2D.h"
+// (0x1423) with the 3-byte folded empty ctor VA 0x87A6A9 (stride 0x10). The slot has no
+// destructor (retail takes ??_H, not ??_L), so it is not Region2D, whose empty dtor retail
+// exports at 0x000B3FD0; an opaque four-float row with an empty inline ctor stands in.
+struct TBuffSlot
+{
+	TBuffSlot() {}
+	float m_value[ 4 ];
+};
 // Source argument views: +0x441 flag, float getter 0x000788D3 (+0x200), position getter
 // 0x002763E6 (rowed under the address-derived Drawable name).
 class Rva000788D3FloatField
@@ -307,7 +313,7 @@ private:
 	UnsignedInt m_bfmeRaw08;																									///< 0x08, 4 raw bytes
 	Real m_bfmeReal0C;																												///< 0x0C
 	char m_bfmeByte10;																												///< 0x10
-	Region2D m_bfmeSlots14[ 3 ];																							///< 0x14, three 16-byte slots
+	TBuffSlot m_bfmeSlots14[ 3 ];																							///< 0x14, three 16-byte slots
 	Bool m_bfmeFlag44;																												///< 0x44
 	char m_bfmeByte45;																												///< 0x45
 	Coord3DBase m_bfmePosition48;																							///< 0x48
