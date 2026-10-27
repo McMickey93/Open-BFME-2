@@ -6323,3 +6323,13 @@ Remaining / next check: ordinary preview cannot inspect the new path because it 
 Post-commit identity evidence: the normal hook reports shadow `wrong`/`extent` findings in unwind rows 0x00776B2F and 0x00776B3D, which name the member destructors for retail forwarder targets 0x002BF776 and 0x002BFB28. The original donor's cached complete bodies and relocation records equal the merged object's EH-verified bodies. These inherited bindings remain a separate member-cleanup/forwarder identity prerequisite; no register entry is added or retired.
 
 Clearance: byte verification and the merge guard's bounded scope only. Census confirmation: awaiting the next census; no new linked bytes, runtime result or image ownership claimed.
+
+### BeaconClientUpdate preserved-work reconciliation (2026-10-28)
+
+Upstream `d1ad85b05a` reconciled the shared module and module-data views,
+and `4b5c353408` absorbed the constructor and other clean donors into
+BeaconClientUpdate.cpp. Keep those current owners and declarations; do not
+restore CleanupHazardUpdateCtor.cpp. The standalone guard clearer was also
+retired by `e58affe130`. The saved checkout's earlier bounded checks remain
+in [its historical handoff](../reverse/attempt_support/beacon-client-update-consolidation-20261027-codexb4.md).
+No additional source-file or census gain is claimed during recovery.
