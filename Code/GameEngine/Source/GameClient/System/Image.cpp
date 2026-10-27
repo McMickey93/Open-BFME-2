@@ -197,8 +197,8 @@ unsigned int Image::setStatus(unsigned int bit)
 
 // Image::clearStatus, retail 0x002D8E72 (17B).
 // Ported from Open-BFME-1 Code/GameEngine/Source/GameClient/System/Image.cpp
-// (BFME1 0x005D1C30). Member offsets follow the proven ImageCtor TU in this
-// directory (m_status at +0x30).
+// (BFME1 0x005D1C30). Member offsets follow the proven Image constructor in this
+// file (m_status at +0x30).
 
 // ?clearStatus@Image@@QAEII@Z, retail 0x002D8E72 (17B).
 unsigned int Image::clearStatus(unsigned int bit)
@@ -360,7 +360,7 @@ void Image::bfmeSetTexture(const BfmeMapPictureTexture &texture)
 // Image::~Image, retail 0x002D91CC (94B) plus its scalar deleting
 // destructor 0x002D9262 (28B).
 //
-// Member layout follows the proven ImageCtor TU in this directory
+// Member layout follows the proven Image constructor in this file
 // (vptr 0xC037B8; m_name +0x04; m_filename +0x08; texture size +0x0C;
 // UV coords +0x14; image size +0x24; texture holder +0x2C;
 // m_status +0x30). The +0x2C holder is the 4-byte BfmeMapPictureTexture

@@ -8,7 +8,7 @@
 // stlport
 // Reference BF1 f98983a7d and ZH Image.cpp establish Image filename/status.
 // Target 0x002D937E..0x002D9457 supplies the lazy texture setup and registry;
-// no original method name is asserted. ImageCtor/ImageDtor independently prove
+// no original method name is asserted. Image.cpp's ctor/dtor independently prove
 // filename +8, holder +2C, status +30. Existing helper names denote ABI views.
 #define _BFME_RETAIL_TREE_INSERT_LAYOUT
 #include <set>

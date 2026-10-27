@@ -32,7 +32,7 @@ public:
 };
 
 class AI;
-extern AI *TheAI;	// 0x009FF0F8, ai_Rva002FD791.cpp's global
+extern AI *TheAI;	// 0x009FF0F8, AI/ai.cpp's global
 
 class Rva004E8FF6
 {
