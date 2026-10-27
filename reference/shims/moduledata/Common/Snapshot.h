@@ -47,6 +47,9 @@ friend class Xfer;
 friend class XferLoad;
 friend class XferSave;
 friend class XferCRC;
+// Xfer::operator&(Snapshot &) (export, 0x0060B8C6) is a member of the
+// Xfer base itself and calls the protected slot-3 transfer directly.
+friend class Xfer;
 
 public:
 	
