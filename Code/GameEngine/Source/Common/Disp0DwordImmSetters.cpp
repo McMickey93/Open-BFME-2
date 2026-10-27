@@ -23,8 +23,7 @@ extern "C" const void *const vtbl_00BC6F20[];  // folded, 7 classes; via ??_7Rva
 #pragma comment(linker, "/alternatename:_vtbl_00BC6F20=??_7Rva0007DF07@@6B@")
 extern "C" const void *const vtbl_00BCEFA0[];  // folded, 3 classes; via ??_7BfmeShadowBufferOwnerBase@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BCEFA0=??_7BfmeShadowBufferOwnerBase@@6B@")
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 9 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const vtbl_00BE3990[];  // folded, 2 classes; via ??_7Rva00203E76@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BE3990=??_7Rva00203E76@@6B@")
 extern "C" const void *const vtbl_00BFBCBC[];  // folded, 2 classes; via ??_7Rva005F6941Base@@6B@
@@ -594,7 +593,7 @@ public:
 
 void Rva0005D2EA1DwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00BE2B78);
+	m_value = ((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 }
 
 class Rva00078274DwordImmSetter

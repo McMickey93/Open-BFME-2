@@ -17,8 +17,7 @@
 // Zero new pins (base ctor resolves via its row; setWakeFrame resolves via
 // the existing IAEX Object-uint pin at 0x44DF71).
 
-extern "C" const void *const vtbl_00BEFF90[];  // folded, 80 classes; via ??_7AIGateUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BEFF90=??_7AIGateUpdate@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C4DB14[];  // ??_7Rva0049188D@@6BRva0049188D_B2@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C4DB14=??_7Rva0049188D@@6BRva0049188D_B2@@@")
@@ -96,7 +95,7 @@ AttachUpdate::AttachUpdate(Thing *thing, const ModuleData *moduleData)
 	m_24(-1)
 {
 	m_vtable = (const void *)((unsigned int)vtbl_00C4DB20);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00BEFF90);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C4DB14);
 	setWakeFrame(m_object, (UpdateSleepTime)UPDATE_SLEEP_NONE);
 }

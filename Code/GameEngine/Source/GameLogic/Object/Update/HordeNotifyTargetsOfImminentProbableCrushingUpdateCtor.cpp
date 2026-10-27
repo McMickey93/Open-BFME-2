@@ -14,8 +14,7 @@
 // DIR32-masked in comparison). Zero new pins (base resolves via the
 // rowed UpdateModule spelling).
 
-extern "C" const void *const vtbl_00BEFF90[];  // folded, 80 classes; via ??_7AIGateUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BEFF90=??_7AIGateUpdate@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00BF17EC[];  // ??_7Rva00253E19@@6BRva00253E19_B2@@@
 #pragma comment(linker, "/alternatename:_vtbl_00BF17EC=??_7Rva00253E19@@6BRva00253E19_B2@@@")
@@ -68,7 +67,7 @@ HordeNotifyTargetsOfImminentProbableCrushingUpdate::HordeNotifyTargetsOfImminent
 	UpdateModule(thing, moduleData)
 {
 	*(unsigned int *)this = ((unsigned int)vtbl_00BF17F8);
-	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)vtbl_00BEFF90);
+	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
 	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00BF17EC);
 }
 

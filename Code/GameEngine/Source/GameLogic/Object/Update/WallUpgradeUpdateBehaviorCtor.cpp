@@ -23,8 +23,7 @@
 // /GX for the EH prologue plus the single mid-body state store; the
 // declared-only base dtor arms it with no emitted code.
 
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 9 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const vtbl_00C49800[];  // folded, 4 classes; via ??_7FlammableUpdate@@6BBehaviorModuleOther@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C49800=??_7FlammableUpdate@@6BBehaviorModuleOther@@@")
 
@@ -86,7 +85,7 @@ WallUpgradeUpdate::WallUpgradeUpdate(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
 {
 	int *wakeSlot20 = (int *)&m_secondary20;
-	*wakeSlot20 = (int)((unsigned int)vtbl_00BE2B78);
+	*wakeSlot20 = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	int *wakeSlot24 = (int *)&m_secondary24;
 	*wakeSlot24 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	m_vtable = (const void *)((unsigned int)vtbl_00C54780);

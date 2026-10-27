@@ -17,8 +17,7 @@
 // IAEX Object-uint spelling resolves via the existing pin at 0x44DF71).
 // Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 9 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const vtbl_00C495A0[];  // folded, 2 classes; via ??_7FireWeaponWhenDamagedBehavior@@6BBehaviorModuleOther@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C495A0=??_7FireWeaponWhenDamagedBehavior@@6BBehaviorModuleOther@@@")
 
@@ -101,7 +100,7 @@ AutoHealBehavior::AutoHealBehavior(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData), m_20()
 {
 	int *slot28 = (int *)&m_28;
-	*slot28 = (int)((unsigned int)vtbl_00BE2B78);
+	*slot28 = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	const AutoHealBehaviorModuleData *data = (const AutoHealBehaviorModuleData *)m_moduleData;
 	m_2C &= 0;
 	m_vtable = (const void *)((unsigned int)vtbl_00C3FCDC);

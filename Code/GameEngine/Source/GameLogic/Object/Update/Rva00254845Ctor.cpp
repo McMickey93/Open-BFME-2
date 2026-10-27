@@ -3,8 +3,7 @@
 // ??0Rva00254845@@QAE@XZ, retail 0x00254845, 18 bytes.
 // Frameless ctor over the rowed OpenContain base (0x253487) at offset 0: calls
 // the base ctor, then stores folded vtable 0x00BF2558 at +0. No own members.
-extern "C" const void *const vtbl_00BF2558[];  // ??_7WeaponSetUpgradeModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF2558=??_7WeaponSetUpgradeModuleData@@6B@")
+extern "C" const void *const __identifier("??_7WeaponSetUpgradeModuleData@@6B@")[];  // vftable 0x00BF2558
 
 class ModuleData;
 class MultiIniFieldParse;
@@ -47,7 +46,7 @@ public:
 
 Rva00254845::Rva00254845()
 {
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00BF2558));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7WeaponSetUpgradeModuleData@@6B@")));
 }
 
 class Rva0025480BData : public Rva00253487Base
@@ -55,7 +54,7 @@ class Rva0025480BData : public Rva00253487Base
 public:
 	__forceinline Rva0025480BData()
 	{
-		m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00BF2558));
+		m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7WeaponSetUpgradeModuleData@@6B@")));
 	}
 };
 

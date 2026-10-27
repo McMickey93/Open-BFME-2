@@ -12,8 +12,7 @@
 // Mineshaft ModuleData pin; the FakePathfind pin at the same address is left
 // in place as the fold alias.
 
-extern "C" const void *const vtbl_00BF2558[];  // ??_7WeaponSetUpgradeModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF2558=??_7WeaponSetUpgradeModuleData@@6B@")
+extern "C" const void *const __identifier("??_7WeaponSetUpgradeModuleData@@6B@")[];  // vftable 0x00BF2558
 
 class __declspec(novtable) Rva00253487Base
 {
@@ -73,7 +72,7 @@ private:
 MineshaftPortalBehaviourModuleData::MineshaftPortalBehaviourModuleData()
 	: Rva00253487Base()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00BF2558);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7WeaponSetUpgradeModuleData@@6B@"));
 	m_trailingFlag0 = false;
 	m_trailingFlag1 = false;
 }

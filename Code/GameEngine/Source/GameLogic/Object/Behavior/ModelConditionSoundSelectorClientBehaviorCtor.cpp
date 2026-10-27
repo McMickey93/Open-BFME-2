@@ -18,8 +18,7 @@ char g_00BF3220;
 // where this ctor ends plus name getter rowed at 0x00254BF1; the instance
 // factory at 0x00255C26 is the sole raw caller).
 
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 9 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -52,7 +51,7 @@ ModelConditionSoundSelectorClientBehavior::ModelConditionSoundSelectorClientBeha
 	// direct store to the same member survives while direct-direct would
 	// be eaten by the dead-store eliminator.
 	const void **p0C = &m_p0C;
-	*p0C = reinterpret_cast<const void *>(((unsigned int)vtbl_00BE2B78));
+	*p0C = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7DamageModuleInterface@@6B@")));
 	m_vtable = reinterpret_cast<const void *>((void *)&g_00BF3220);
 	m_p0C = reinterpret_cast<const void *>((void *)&g_00BF3210);
 }

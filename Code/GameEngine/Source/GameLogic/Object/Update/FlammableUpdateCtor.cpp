@@ -13,8 +13,7 @@
 // spelling resolves via the existing pin at 0x44DF71). Row supersedes the
 // ctor pin.
 
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 9 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const vtbl_00C49800[];  // folded, 4 classes; via ??_7FlammableUpdate@@6BBehaviorModuleOther@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C49800=??_7FlammableUpdate@@6BBehaviorModuleOther@@@")
 
@@ -85,7 +84,7 @@ FlammableUpdate::FlammableUpdate(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
 {
 	int *slot20 = (int *)&m_20;
-	*slot20 = (int)((unsigned int)vtbl_00BE2B78);
+	*slot20 = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	int zero = 0;
 	m_24 = zero;
 	m_28 = zero;

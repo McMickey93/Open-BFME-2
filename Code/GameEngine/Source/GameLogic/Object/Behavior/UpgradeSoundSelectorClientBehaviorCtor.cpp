@@ -20,8 +20,7 @@ char g_00BEFEB0;
 // emits identical mov bytes). Zero new pins (base resolves via the rowed
 // Rva00252B68 spelling).
 
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 9 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -42,7 +41,7 @@ public:
 UpgradeSoundSelectorClientBehavior::UpgradeSoundSelectorClientBehavior(Thing *thing, const ModuleData *moduleData) :
 	Rva00252B68(thing, moduleData)
 {
-	*(unsigned int volatile *)((char *)this + 0xC) = ((unsigned int)vtbl_00BE2B78);
+	*(unsigned int volatile *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	*(unsigned int *)this = (unsigned int)&g_00BEFEB0;
 	*(unsigned int *)((char *)this + 0xC) = (unsigned int)&g_00BEFEA4;
 }

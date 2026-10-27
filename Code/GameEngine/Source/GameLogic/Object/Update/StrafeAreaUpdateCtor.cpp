@@ -22,8 +22,7 @@
 // state store; the declared-only base dtor arms it with no emitted code.
 // Row supersedes the ctor pin (surgical delete, same commit).
 
-extern "C" const void *const vtbl_00BEFF90[];  // folded, 80 classes; via ??_7AIGateUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BEFF90=??_7AIGateUpdate@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C1B158[];  // ??_7Rva003A4CAE@@6BRva003A4CAE_B2@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C1B158=??_7Rva003A4CAE@@6BRva003A4CAE_B2@@@")
@@ -111,7 +110,7 @@ StrafeAreaUpdate::StrafeAreaUpdate(Thing *thing, const ModuleData *moduleData)
 	int zero = 0;
 	float *fromSlot = &m_strafeFromX;
 	m_vtable = (const void *)((unsigned int)vtbl_00C1B164);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00BEFF90);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C1B158);
 	m_sweepOffset = fzero;
 	m_strafeMode = zero;

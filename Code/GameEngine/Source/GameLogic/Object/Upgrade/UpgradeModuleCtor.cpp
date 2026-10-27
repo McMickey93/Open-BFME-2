@@ -16,8 +16,7 @@ char g_00C42768;
 // so no vtable is emitted here; the first +0x18 store is volatile so the
 // later overwrite does not dead-store-eliminate it).
 
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 9 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const vtbl_00C57328[];  // folded, 41 classes; via ??_7AllowBannerSpawnUpgrade@@6BBehaviorModuleInterface@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C57328=??_7AllowBannerSpawnUpgrade@@6BBehaviorModuleInterface@@@")
 extern "C" const void *const vtbl_00C58790[];  // folded, 55 classes; via ??_7AODHordeContain@@6BIface2C@@@
@@ -71,7 +70,7 @@ private:
 UpgradeModule::UpgradeModule(Thing *thing, const ModuleData *moduleData)
 	: BehaviorModule(thing, moduleData), m_mux()
 {
-	*(void * volatile *)&m_18 = (void *)((unsigned int)vtbl_00BE2B78);
+	*(void * volatile *)&m_18 = (void *)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	*(void **)&m_mux = (void *)((unsigned int)vtbl_00C42720);
 	*(void **)this = (void *)(unsigned int)&g_00C42768;
 	*(void **)((char *)this + 0xC) = (void *)((unsigned int)vtbl_00C57328);

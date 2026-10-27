@@ -60,8 +60,7 @@ extern "C" const void *const vtbl_00C408EC[];  // ??_7BridgeBehavior@@6BDieModul
 extern "C" const void *const vtbl_00C40818[];  // folded, 7 classes; via ??_7BfmeCtor001B3A20@@6BBfmeCtorFirstBase001B3A20@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C40818=??_7BfmeCtor001B3A20@@6BBfmeCtorFirstBase001B3A20@@@")
 
-extern "C" const void *const vtbl_00BE2B78[];  // folded, 10 classes; via ??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE2B78=??_7ClearanceTestingSlowDeathBehaviorIface5@@6B@")
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (10 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -141,7 +140,7 @@ BridgeBehavior::BridgeBehavior(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
 {
 	*(volatile unsigned int *)((char *)this + 0x20) = ((unsigned int)vtbl_00C40818);
-	*(volatile unsigned int *)((char *)this + 0x24) = ((unsigned int)vtbl_00BE2B78);
+	*(volatile unsigned int *)((char *)this + 0x24) = ((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	int *p28 = (int *)((char *)this + 0x28);
 	*p28 = ((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	void *context = (void *)((char *)&moduleData + 3);

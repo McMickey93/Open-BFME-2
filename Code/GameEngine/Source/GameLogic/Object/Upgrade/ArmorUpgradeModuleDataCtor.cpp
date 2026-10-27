@@ -10,8 +10,7 @@
 // is the sole raw caller). Recipe: ReflectDamageModuleDataCtor (flat
 // TU-local class, explicit vtable slot, no virtuals emitted).
 
-extern "C" const void *const vtbl_00BF2558[];  // ??_7WeaponSetUpgradeModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF2558=??_7WeaponSetUpgradeModuleData@@6B@")
+extern "C" const void *const __identifier("??_7WeaponSetUpgradeModuleData@@6B@")[];  // vftable 0x00BF2558
 
 class Rva00253487Base
 {
@@ -40,7 +39,7 @@ private:
 // ??0ArmorUpgradeModuleData@@QAE@XZ @0x254556
 ArmorUpgradeModuleData::ArmorUpgradeModuleData()
 {
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00BF2558));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7WeaponSetUpgradeModuleData@@6B@")));
 	m_killArmorUpgrade = false;
 	m_ignoreArmorUpgrade = false;
 	m_armorSetFlag = 3;

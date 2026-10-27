@@ -43,8 +43,7 @@ extern "C" const void *const vtbl_00C424DC[13] = {
 extern "C" const void *const vtbl_00C424D0[];  // ??_7StancesBehavior@@6BStancesBehaviorInterfaceB@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C424D0=??_7StancesBehavior@@6BStancesBehaviorInterfaceB@@@")
 
-extern "C" const void *const vtbl_00BEFF90[];  // folded, 80 classes; via ??_7AIGateUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BEFF90=??_7AIGateUpdate@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -84,6 +83,6 @@ StancesBehavior::StancesBehavior(Thing *thing, const ModuleData *moduleData)
 {
 	m_30 = 0;
 	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00C424DC));
-	m_p0C = reinterpret_cast<const void *>(((unsigned int)vtbl_00BEFF90));
+	m_p0C = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")));
 	m_p10 = reinterpret_cast<const void *>(((unsigned int)vtbl_00C424D0));
 }
