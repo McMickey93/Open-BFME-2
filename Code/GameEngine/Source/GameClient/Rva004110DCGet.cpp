@@ -43,19 +43,11 @@ public:
 	void *rva00056F61(const AsciiString *key);
 };
 
-struct Rva004110DCGlobalTable
-{
-	void *m_unused;
-	void **m_beginBuckets;
-	void **m_endBuckets;
-	void **m_capacity;
-	unsigned int m_numElements;
-};
-
-// g_Va00E02FF8: VA 0x00E02FF8 (.data/bss); retail's 0x14-byte bucket-table
-// header is zero-filled. Find reads begin/end at +4/+8; the rowed insert view
+// g_Va00E02FF8: VA 0x00E02FF8 (.data/bss), defined by its data-row owner
+// Rva004121B2HashMapInits.cpp. Retail's 0x14-byte bucket-table header is
+// zero-filled; Find reads begin/end at +4/+8 and the rowed insert view
 // establishes capacity/count at +0xC/+0x10.
-Rva004110DCGlobalTable g_Va00E02FF8;
+extern unsigned g_Va00E02FF8;
 
 void * __cdecl Rva004110DCGet(const char *key)
 {

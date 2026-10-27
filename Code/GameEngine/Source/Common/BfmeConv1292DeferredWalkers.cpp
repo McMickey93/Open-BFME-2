@@ -155,10 +155,9 @@ class Rva004110BETree { public: ~Rva004110BETree(); };
 
 
 struct Rva00411112GlobalTable;
-struct Rva004110DCGlobalTable;
 struct Rva004114EFGlobalTable;
 extern Rva00411112GlobalTable g_Va00E0300C;
-extern Rva004110DCGlobalTable g_Va00E02FF8;
+extern unsigned g_Va00E02FF8;	// VA 0x00E02FF8, defined by Rva004121B2HashMapInits.cpp
 // VA 0x00E02FE4: the component-window table AptComponentWindowLookup.cpp owns.
 extern unsigned int AptComponentWindowDataTableStorage[5];
 extern unsigned int g_rva00E02FC0Bits;
