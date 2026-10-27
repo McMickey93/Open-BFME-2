@@ -1,10 +1,14 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // ?reset@W3DDisplay@@UAEXXZ, retail 0x00043418..0x00043511 (249 bytes), W3DDisplay vtable
 // 0x007C3C80 slot 9 (WB 0x00966600). Zero Hour's W3DDisplay::reset spine: the base display
 // reset (rowed 0x0025D9E3), then every render object leaves m_3DScene through a scene
 // iterator; BFME 2 also clears the global +0xBBD flag and +0x98 value, the clip flag at
 // +0x17C and two display globals, and under the DX8 thread lock evicts managed resources,
 // clears the texture cache (rowed 0x0012641F) and re-inits the streak renderer.
+#include <d3d9.h>
+
 typedef bool Bool;
 typedef float Real;
 
@@ -25,11 +29,9 @@ public:
 	static void Init(bool flag);
 };
 
-struct IDirect3DDevice8
-{
-	virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04();
-	virtual long __stdcall EvictManagedResources();
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (EvictManagedResources, vtable slot 5).
+struct IDirect3DDevice8;
 
 class DX8Wrapper
 {
@@ -128,7 +130,7 @@ void W3DDisplay::reset()
 	g_Va00DB3BDC = -1;
 
 	BFMEDX8DeviceLock lock;
-	long hr = DX8Wrapper::D3DDevice->EvictManagedResources();
+	HRESULT hr = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->EvictManagedResources();
 	if (hr)
 		Log_DX8_ErrorCode(hr);
 	Rva0012641FClear();

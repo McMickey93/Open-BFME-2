@@ -1,62 +1,21 @@
 // cl: /Ireference/shims/bfmecamera /DNDEBUG /MD /EHsc /Ireference/open-bfme-1/Code/GameEngineDevice/Source/W3DDevice/GameClient
+// dxsdk
+// platformsdk
+
+#include <d3d9.h>
 
 typedef int Int;
 typedef unsigned long UnsignedLong;
 
+// The rectangle and surface types keep the names this unit's decorations carry
+// (getBackBufferSurface006e, copySurfaceRects006e, W3DRadarResetSurface), but
+// the objects are a RECT and an IDirect3DSurface9 (AddRef slot 1, Release 2).
 struct BfmeRect;
-
-class SurfaceResource
-{
-public:
-	virtual void unused00();
-	virtual UnsignedLong __stdcall addRef();
-	virtual UnsignedLong __stdcall release();
-};
-
-class BfmeD3DDevice
-{
-public:
-	virtual void unused00();
-	virtual void unused01();
-	virtual void unused02();
-	virtual void unused03();
-	virtual void unused04();
-	virtual void unused05();
-	virtual void unused06();
-	virtual void unused07();
-	virtual void unused08();
-	virtual void unused09();
-	virtual void unused10();
-	virtual void unused11();
-	virtual void unused12();
-	virtual void unused13();
-	virtual void unused14();
-	virtual void unused15();
-	virtual void unused16();
-	virtual void unused17();
-	virtual UnsignedLong __stdcall getBackBuffer(
-		unsigned swapChain, unsigned backBuffer, unsigned type, SurfaceResource **surface);
-	virtual void unused19();
-	virtual void unused20();
-	virtual void unused21();
-	virtual void unused22();
-	virtual void unused23();
-	virtual void unused24();
-	virtual void unused25();
-	virtual void unused26();
-	virtual void unused27();
-	virtual void unused28();
-	virtual void unused29();
-	virtual void unused30();
-	virtual void unused31();
-	virtual void unused32();
-	virtual void unused33();
-	virtual void __stdcall copySurfaceRects(SurfaceResource *source, const BfmeRect *sourceRect,
-		SurfaceResource *destination, const BfmeRect *destinationRect, Int mode);
-};
+class SurfaceResource;
 
 // The device at 0x00DEDA34 is DX8Wrapper's protected D3DDevice (defined in
-// dx8wrapper.cpp), read through its public inline accessor.
+// dx8wrapper.cpp), read through its public inline accessor. It keeps its D3D8
+// type name but is a Direct3D 9 device (GetBackBuffer slot 18, StretchRect 34).
 struct IDirect3DDevice8;
 
 class DX8Wrapper
@@ -69,9 +28,9 @@ protected:
 };
 
 // This unit's view of that device.
-static __forceinline BfmeD3DDevice *backBufferDevice()
+static __forceinline IDirect3DDevice9 *backBufferDevice()
 {
-	return (BfmeD3DDevice *)DX8Wrapper::_Get_D3D_Device8();
+	return reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 }
 extern unsigned number_of_DX8_calls;
 
@@ -84,7 +43,7 @@ public:
 	__forceinline W3DRadarResetSurface(const W3DRadarResetSurface &other) : m_surface(other.m_surface)
 	{
 		if (m_surface)
-			m_surface->addRef();
+			reinterpret_cast<IDirect3DSurface9 *>(m_surface)->AddRef();
 	}
 
 	~W3DRadarResetSurface();
@@ -101,13 +60,14 @@ private:
 W3DRadarResetSurface getBackBufferSurface006e(Int index)
 {
 	SurfaceResource *surface = 0;
-	backBufferDevice()->getBackBuffer(0, index, 0, &surface);
+	backBufferDevice()->GetBackBuffer(0, index, D3DBACKBUFFER_TYPE_MONO,
+		reinterpret_cast<IDirect3DSurface9 **>(&surface));
 	++number_of_DX8_calls;
 
 	if (surface)
 	{
 		W3DRadarResetSurface result(surface);
-		surface->release();
+		reinterpret_cast<IDirect3DSurface9 *>(surface)->Release();
 		surface = 0;
 		return result;
 	}
@@ -118,7 +78,9 @@ W3DRadarResetSurface getBackBufferSurface006e(Int index)
 void copySurfaceRects006e(W3DRadarResetSurface source, const BfmeRect *sourceRect,
 	W3DRadarResetSurface destination, const BfmeRect *destinationRect, Int mode)
 {
-	backBufferDevice()->copySurfaceRects(
-		source.getSurface(), sourceRect, destination.getSurface(), destinationRect, mode);
+	backBufferDevice()->StretchRect(
+		reinterpret_cast<IDirect3DSurface9 *>(source.getSurface()), reinterpret_cast<const RECT *>(sourceRect),
+		reinterpret_cast<IDirect3DSurface9 *>(destination.getSurface()), reinterpret_cast<const RECT *>(destinationRect),
+		(D3DTEXTUREFILTERTYPE)mode);
 	++number_of_DX8_calls;
 }

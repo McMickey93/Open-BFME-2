@@ -1,10 +1,12 @@
+// dxsdk
 // platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // ?rva000685E2@BaseHeightMapRenderObjClass@@QAEXXZ @0x000685E2 272B
 // Bulk DX8 texture-stage + render-state reset. Retail is 4x
-// Set_DX8_Texture_Stage_State, 2x direct SetTextureStageState slot
-// 0x114 with counter bumps, 6x wrapper, 2x direct, 2x wrapper, 3x
-// Set_DX8_Render_State. Evidence: unlock lane; callees rowed
+// Set_DX8_Texture_Stage_State, 2x direct IDirect3DDevice9::SetSamplerState
+// (slot 69, +0x114: the D3D8 texture-stage ADDRESSU/ADDRESSV states are
+// sampler states in D3D9) with counter bumps, 6x wrapper, 2x direct, 2x
+// wrapper, 3x Set_DX8_Render_State. Evidence: unlock lane; callees rowed
 // 0x000661DD 0x0006615F; data VAs 0x009EDA34 0x009EDA98 0x009EDA68
 // with extern names in use; neighbours Disp32DwordClearers2.cpp and
 // Rva000687B8.cpp share // cl: /O1; no args ret.
@@ -15,81 +17,11 @@
 // stage-0/1 reset matches ZH CloudMapTerrainTextureClass::restore, which
 // BFME 1's FlatHeightMap Render calls at the same points.
 
-#include <windows.h>
+#include <d3d9.h>
 
-struct IDirect3DDevice8
-{
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void v06();
-	virtual void v07();
-	virtual void v08();
-	virtual void v09();
-	virtual void v10();
-	virtual void v11();
-	virtual void v12();
-	virtual void v13();
-	virtual void v14();
-	virtual void v15();
-	virtual void v16();
-	virtual void v17();
-	virtual void v18();
-	virtual void v19();
-	virtual void v20();
-	virtual void v21();
-	virtual void v22();
-	virtual void v23();
-	virtual void v24();
-	virtual void v25();
-	virtual void v26();
-	virtual void v27();
-	virtual void v28();
-	virtual void v29();
-	virtual void v30();
-	virtual void v31();
-	virtual void v32();
-	virtual void v33();
-	virtual void v34();
-	virtual void v35();
-	virtual void v36();
-	virtual void v37();
-	virtual void v38();
-	virtual void v39();
-	virtual void v40();
-	virtual void v41();
-	virtual void v42();
-	virtual void v43();
-	virtual void v44();
-	virtual void v45();
-	virtual void v46();
-	virtual void v47();
-	virtual void v48();
-	virtual void v49();
-	virtual void v50();
-	virtual void v51();
-	virtual void v52();
-	virtual void v53();
-	virtual void v54();
-	virtual void v55();
-	virtual void v56();
-	virtual void v57();
-	virtual void v58();
-	virtual void v59();
-	virtual void v60();
-	virtual void v61();
-	virtual void v62();
-	virtual void v63();
-	virtual void v64();
-	virtual void v65();
-	virtual void v66();
-	virtual void v67();
-	virtual void v68();
-	virtual HRESULT __stdcall SetTextureStageState(unsigned stage, unsigned long state, unsigned value);
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device.
+struct IDirect3DDevice8;
+#define DEVICE9 (reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice))
 class BaseHeightMapRenderObjClass;
 class DX8Wrapper
 {
@@ -110,31 +42,31 @@ public:
 
 void BaseHeightMapRenderObjClass::rva000685E2(void)
 {
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 2, 2);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 3, 0);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 1, 4);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 4, 1);
-	DX8Wrapper::D3DDevice->SetTextureStageState(0, 1, 1);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
+	DEVICE9->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);
 	number_of_DX8_calls++;
 	DX8Wrapper::texture_stage_state_changes++;
-	DX8Wrapper::D3DDevice->SetTextureStageState(0, 2, 1);
+	DEVICE9->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);
 	number_of_DX8_calls++;
 	DX8Wrapper::texture_stage_state_changes++;
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 11, 0);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 24, 0);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 2, 2);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 3, 0);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 1, 4);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 4, 1);
-	DX8Wrapper::D3DDevice->SetTextureStageState(1, 1, 1);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_TEXCOORDINDEX, 0);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_COLOROP, D3DTOP_MODULATE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
+	DEVICE9->SetSamplerState(1, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);
 	number_of_DX8_calls++;
 	DX8Wrapper::texture_stage_state_changes++;
-	DX8Wrapper::D3DDevice->SetTextureStageState(1, 2, 1);
+	DEVICE9->SetSamplerState(1, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);
 	number_of_DX8_calls++;
 	DX8Wrapper::texture_stage_state_changes++;
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 11, 1);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 24, 0);
-	DX8Wrapper::Set_DX8_Render_State(27, 0);
-	DX8Wrapper::Set_DX8_Render_State(19, 5);
-	DX8Wrapper::Set_DX8_Render_State(20, 6);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_TEXCOORDINDEX, 1);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ALPHABLENDENABLE, FALSE);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 }

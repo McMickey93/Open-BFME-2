@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // Retail 0x000F8735 (279B, [0xF8735,0xF884C)): vtable 0x7CF254 slot6 reset.
 // Target facts (retail bytes, independent of donor):
 // - vtable 0x7CF254 slot6 == 0xF8735 (raw decode: F6D4F/F70EB/F6D56/F7187/5CB9FA/F816E/F8735;
@@ -20,30 +22,13 @@
 // unproven); TU-scoped names only, donor layout never copied. Original Westwood class name
 // unknown (same caveat as rowed shutdown/set TUs).
 
-// Canonical COM base for cached textures (donor-grounded, not invented):
-// - Target fact (retail bytes): Release via [ecx+8] => vtable slot2, 0-arg stdcall.
-// - Donor fact: reference/shims/d3d8_shim_validated.h:199-202 (IUnknown_D3D
-//   QueryInterface slot0/AddRef slot1/Release slot2) + :244-249 (struct
-//   IDirect3DBaseTexture8 inherits that prefix); struct tag U matches home TU
-//   mangling ?Textures@DX8Wrapper@@1PAPAUIDirect3DBaseTexture8@@A and the real
-//   d3d8.h header home dx8wrapper.cpp builds against.
-// - Code precedent (matched 139B): BfmeApplyTextureRef_Apply.cpp:19-27 class
-//   IUnknown8 + empty IDirect3DBaseTexture8 derived (same slot0-2 order); home
-//   call sites dx8wrapper.cpp:825-828 + 4829-4832 prove Textures[a]->Release()
-//   goes through this slot. Only the slot0-2 prefix is load-bearing here;
-//   the fuller D3DRESOURCE tail is unobserved by this body and omitted per the
-//   established minimal-replica practice, not as a new type claim.
-// - Home header is reference/shims/bfmestages/dx8wrapper.h (MAX_TEXTURE_STAGES=16)
-//   via Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp:58; home storage is
-//   dx8wrapper.cpp:172 `IDirect3DBaseTexture8 *DX8Wrapper::Textures[16]`.
-struct IDirect3DBaseTexture8
-{
-public:
-	virtual long __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-};
+#include <d3d9.h>
 
+// The cached textures and the device keep their D3D8 type names (the decorations of
+// ?Textures@DX8Wrapper@@1PAPAUIDirect3DBaseTexture8@@A and
+// ?D3DDevice@DX8Wrapper@@1PAUIDirect3DDevice8@@A, defined in dx8wrapper.cpp), but are
+// Direct3D 9 objects: texture Release is slot 2, SetTexture slot 65, SetPixelShader slot 107.
+struct IDirect3DBaseTexture8;
 struct IDirect3DDevice8;
 
 class Rva007D6B70;
@@ -61,25 +46,14 @@ protected:
 	static unsigned texture_changes;
 };
 
-typedef long (__stdcall *BfmeFilterSetTextureFn)(void *device, unsigned long stage, void *texture);
-typedef long (__stdcall *BfmeFilterSetPixelShaderFn)(void *device, void *shader);
-
-enum
+static __forceinline void filterSetTexture(unsigned long stage, IDirect3DBaseTexture9 *texture)
 {
-	BFME_FILTER_SET_TEXTURE_SLOT = 65,
-	BFME_FILTER_SET_PIXEL_SHADER_SLOT = 107
-};
-
-static __forceinline void filterSetTexture(unsigned long stage, void *texture)
-{
-	void *device = DX8Wrapper::_Get_D3D_Device8();
-	(*(BfmeFilterSetTextureFn **)device)[BFME_FILTER_SET_TEXTURE_SLOT](device, stage, texture);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetTexture(stage, texture);
 }
 
-static __forceinline void filterSetPixelShader(void *shader)
+static __forceinline void filterSetPixelShader(IDirect3DPixelShader9 *shader)
 {
-	void *device = DX8Wrapper::_Get_D3D_Device8();
-	(*(BfmeFilterSetPixelShaderFn **)device)[BFME_FILTER_SET_PIXEL_SHADER_SLOT](device, shader);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetPixelShader(shader);
 }
 
 // Retail data VAs (ImageBase 0x400000; RVA = VA - 0x400000):
@@ -122,7 +96,7 @@ void Rva007D6B70::reset(void)
 {
 	if (DX8Wrapper::Textures[0])
 	{
-		DX8Wrapper::Textures[0]->Release();
+		reinterpret_cast<IDirect3DBaseTexture9 *>(DX8Wrapper::Textures[0])->Release();
 		DX8Wrapper::Textures[0] = 0;
 		filterSetTexture(0, 0);
 		++number_of_DX8_calls;
@@ -130,7 +104,7 @@ void Rva007D6B70::reset(void)
 	}
 	if (DX8Wrapper::Textures[1])
 	{
-		DX8Wrapper::Textures[1]->Release();
+		reinterpret_cast<IDirect3DBaseTexture9 *>(DX8Wrapper::Textures[1])->Release();
 		DX8Wrapper::Textures[1] = 0;
 		filterSetTexture(1, 0);
 		++number_of_DX8_calls;
@@ -138,7 +112,7 @@ void Rva007D6B70::reset(void)
 	}
 	if (DX8Wrapper::Textures[2])
 	{
-		DX8Wrapper::Textures[2]->Release();
+		reinterpret_cast<IDirect3DBaseTexture9 *>(DX8Wrapper::Textures[2])->Release();
 		DX8Wrapper::Textures[2] = 0;
 		filterSetTexture(2, 0);
 		++number_of_DX8_calls;
@@ -146,7 +120,7 @@ void Rva007D6B70::reset(void)
 	}
 	if (DX8Wrapper::Textures[3])
 	{
-		DX8Wrapper::Textures[3]->Release();
+		reinterpret_cast<IDirect3DBaseTexture9 *>(DX8Wrapper::Textures[3])->Release();
 		DX8Wrapper::Textures[3] = 0;
 		filterSetTexture(3, 0);
 		++number_of_DX8_calls;
@@ -154,7 +128,7 @@ void Rva007D6B70::reset(void)
 	}
 	if (DX8Wrapper::Textures[4])
 	{
-		DX8Wrapper::Textures[4]->Release();
+		reinterpret_cast<IDirect3DBaseTexture9 *>(DX8Wrapper::Textures[4])->Release();
 		DX8Wrapper::Textures[4] = 0;
 		filterSetTexture(4, 0);
 		++number_of_DX8_calls;

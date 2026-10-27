@@ -1,4 +1,5 @@
 // cl: /O1 /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// dxsdk
 // platformsdk
 //
 // ?Set_DX8_Render_State@DX8Wrapper@@SAXKI@Z, retail 0x0006615F, 126 bytes.
@@ -17,9 +18,11 @@
 // string temp, sixteen texture stages, and the deferred snapshot-name
 // resolvers (0x121A10 / 0x120B90 pins).
 
-#include <windows.h>
+#include <d3d9.h>
 
 typedef int Int;
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (SetRenderState slot 57, SetTextureStageState slot 67).
 struct IDirect3DDevice8;
 
 class StringClass
@@ -53,9 +56,6 @@ class WW3D
 };
 extern unsigned number_of_DX8_calls;
 
-typedef HRESULT (__stdcall *SetRenderStateFn)(void *device, unsigned long state, unsigned value);
-typedef HRESULT (__stdcall *SetTextureStageStateFn)(void *device, unsigned stage, unsigned long state, unsigned value);
-
 // ?Set_DX8_Render_State@DX8Wrapper@@SAXKI@Z
 inline void DX8Wrapper::Set_DX8_Render_State(unsigned long state, unsigned value)
 {
@@ -68,7 +68,7 @@ inline void DX8Wrapper::Set_DX8_Render_State(unsigned long state, unsigned value
 	}
 
 	RenderStates[state] = value;
-	(*(SetRenderStateFn **)D3DDevice)[57](D3DDevice, state, value);
+	reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)state, value);
 	number_of_DX8_calls++;
 	render_state_changes++;
 }
@@ -77,7 +77,7 @@ inline void DX8Wrapper::Set_DX8_Render_State(unsigned long state, unsigned value
 inline void DX8Wrapper::Set_DX8_Texture_Stage_State(unsigned stage, unsigned long state, unsigned value)
 {
 	if (stage >= 16) {
-		(*(SetTextureStageStateFn **)D3DDevice)[67](D3DDevice, stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)state, value);
 		number_of_DX8_calls++;
 		return;
 	}
@@ -91,7 +91,7 @@ inline void DX8Wrapper::Set_DX8_Texture_Stage_State(unsigned stage, unsigned lon
 	}
 
 	TextureStageStates[stage][state] = value;
-	(*(SetTextureStageStateFn **)D3DDevice)[67](D3DDevice, stage, state, value);
+	reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)state, value);
 	number_of_DX8_calls++;
 	texture_stage_state_changes++;
 }
