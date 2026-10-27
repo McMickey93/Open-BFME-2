@@ -12,15 +12,7 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 
-class GameLogic
-{
-public:
-    bool rva0042219(void);
-    bool isInMultiplayerGame(void);
-    unsigned int getCRC(int mode);
-    unsigned char m_pad000[0x40];
-    unsigned int m_frame;
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 class BFMEDesyncCheck
 {

@@ -42,7 +42,7 @@ class PickAndPlayInfo { public:
 };
 typedef _STL::list<Drawable*> SelectedDrawableList;
 union GameMessageArgumentType { int integer; unsigned drawableID; ICoord2D pixel; IRegion2D pixelRegion; Coord3D location; };
-enum ObjectID { OBJECTID_NONE=0 };
+#include "../../Common/GameLogicObjectLookupView.h"
 class GameMessage { public:
  enum Type { MSG_INVALID=0, MSG_CREATE_SELECTED_GROUP=0x3e9 };
  char pad00[0x10]; Type m_type;
@@ -112,10 +112,6 @@ class Player { public: char pad00[4]; PlayerTemplate* m_playerTemplate;
 };
 class PlayerList { public: char pad00[0xc]; Player* m_localPlayer; Player* getLocalPlayer() const { return m_localPlayer; } };
 class ControlBar { public: void rva0031AD94(); const CommandButton* findCommandButton(const AsciiString&); void togglePurchaseScience(); };
-class GameLogic { public: char pad00[0x91]; bool m_showBehindBuildingMarkers; char pad92[0x7a]; int m_mode;
- bool rva0042219();char rva0023C6FD();
- bool isInMultiplayerGame(); bool rva000652A0() const; bool isInReplayGame() const { return m_mode==3; }
-};
 // TU-local field view of retail's GlobalData; the one writable global at
 // 0x012ED5C8 is declared with EA's own class below and cast at each use.
 class RvaGlobalDataView { public:
@@ -916,11 +912,11 @@ GameMessage::Type CommandTranslator::evaluateContextCommand(Drawable*draw,const 
     case CONTEXT_NEUTRAL:if(!(contextButton(command)->getOptions()&4)){draw=originalDraw=0;obj=originalObject=0;}break;
     }
    }
-   bool currentlyValid=false;ObjectID objectID=obj?obj->getID():OBJECTID_NONE;
+   bool currentlyValid=false;ObjectID objectID=obj?obj->getID():INVALID_OBJECT_ID;
    switch(contextButton(command)->type) {
    case 11:currentlyValid=TheInGameUI->rva0029AEF9((Rva0029AEF9Item*)command,(int)obj,(int)pos,0,contextButton(command)->getOptions(),0);break;
    case 23:currentlyValid=TheInGameUI->canSelectedObjectsEffectivelyUseWeapon(command,obj,pos,InGameUI::CONTEXT_ANY);break;
-   case 24:currentlyValid=TheInGameUI->canSelectedObjectsDoSpecialPower(command,*(Object*const volatile*)&originalObject,pos,InGameUI::CONTEXT_ANY,contextButton(command)->getOptions(),0);if(currentlyValid){objectID=originalObject?originalObject->getID():OBJECTID_NONE;obj=originalObject;draw=originalDraw;}break;
+   case 24:currentlyValid=TheInGameUI->canSelectedObjectsDoSpecialPower(command,*(Object*const volatile*)&originalObject,pos,InGameUI::CONTEXT_ANY,contextButton(command)->getOptions(),0);if(currentlyValid){objectID=originalObject?originalObject->getID():INVALID_OBJECT_ID;obj=originalObject;draw=originalDraw;}break;
    case 26:currentlyValid=!obj?true:TheInGameUI->canSelectedObjectsDoAction((InGameUI::ActionType)15,obj,InGameUI::CONTEXT_ANY,false);break;
    case 29:currentlyValid=TheInGameUI->canSelectedObjectsDoAction((InGameUI::ActionType)10,obj,InGameUI::CONTEXT_ANY,false);break;
    case 30:currentlyValid=TheInGameUI->canSelectedObjectsDoAction((InGameUI::ActionType)11,obj,InGameUI::CONTEXT_ANY,false);break;
@@ -955,7 +951,7 @@ GameMessage::Type CommandTranslator::evaluateContextCommand(Drawable*draw,const 
      if(button) {
       GameMessage*gameMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);
       gameMessage->appendIntegerArgument(((const ContextPower*)contextButton(button)->special->friend_getFinalOverride())->id);
-      gameMessage->appendObjectIDArgument(originalObject->getID());gameMessage->appendIntegerArgument(contextButton(button)->options);gameMessage->appendObjectIDArgument(OBJECTID_NONE);gameMessage->appendLocationArgument(*originalObject->getPosition());
+      gameMessage->appendObjectIDArgument(originalObject->getID());gameMessage->appendIntegerArgument(contextButton(button)->options);gameMessage->appendObjectIDArgument(INVALID_OBJECT_ID);gameMessage->appendLocationArgument(*originalObject->getPosition());
       PickAndPlayInfo info;info.m_drawTarget=((Thing*)originalObject)->getDrawable();info.m_specialPowerType=(int)contextButton(button)->special;info.m_position=*pos;
       pickAndPlayUnitVoiceResponse((const DrawableList*)contextUI()->selected(),(GameMessage::Type)msgType,(PickAndPlayInfo*)&info);
      }
@@ -963,7 +959,7 @@ GameMessage::Type CommandTranslator::evaluateContextCommand(Drawable*draw,const 
    } else {msgType=0xa7;hintMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);hintMessage->appendObjectIDArgument(originalObject->getID());}
   }
   else if(TheInGameUI->canSelectedObjectsOverrideSpecialPowerDestination(pos,InGameUI::CONTEXT_ANY,CONTEXT_POWER_NONE)) {
-   if(type==CONTEXT_COMMAND||type==CONTEXT_EVALUATE) {msgType=0x441;if(type==CONTEXT_COMMAND){GameMessage*gameMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);gameMessage->appendLocationArgument(*pos);gameMessage->appendIntegerArgument(0);gameMessage->appendObjectIDArgument(OBJECTID_NONE);}}
+   if(type==CONTEXT_COMMAND||type==CONTEXT_EVALUATE) {msgType=0x441;if(type==CONTEXT_COMMAND){GameMessage*gameMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);gameMessage->appendLocationArgument(*pos);gameMessage->appendIntegerArgument(0);gameMessage->appendObjectIDArgument(INVALID_OBJECT_ID);}}
    else {msgType=0xbd;TheMessageStream->appendMessage((GameMessage::Type)msgType);}
   }
   else if(draw&&!contextUI()->getForceAttack()&&TheInGameUI->canSelectedObjectsDoAction((InGameUI::ActionType)7,obj,(InGameUI::SelectionRules)0,false)) {
@@ -1052,14 +1048,14 @@ GameMessage::Type CommandTranslator::evaluateContextCommand(Drawable*draw,const 
   }
   else if(draw&&contextUI()->selectedCount()==1&&TheInGameUI->canSelectedObjectsDoAction((InGameUI::ActionType)16,draw->getObject(),InGameUI::CONTEXT_ALL,false)) {
    if(type==CONTEXT_COMMAND||type==CONTEXT_EVALUATE) {
-    msgType=0x423;if(type==CONTEXT_COMMAND){GameMessage*gameMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);Object*target=!draw?0:draw->getObject();ObjectID id=!target?OBJECTID_NONE:target->getID();gameMessage->appendObjectIDArgument(id);PickAndPlayInfo info;if(target){info.m_drawTarget=((Thing*)target)->getDrawable();info.m_position=*target->getPosition();}pickAndPlayUnitVoiceResponse((const DrawableList*)contextUI()->selected(),(GameMessage::Type)msgType,(PickAndPlayInfo*)&info);}
+    msgType=0x423;if(type==CONTEXT_COMMAND){GameMessage*gameMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);Object*target=!draw?0:draw->getObject();ObjectID id=!target?INVALID_OBJECT_ID:target->getID();gameMessage->appendObjectIDArgument(id);PickAndPlayInfo info;if(target){info.m_drawTarget=((Thing*)target)->getDrawable();info.m_position=*target->getPosition();}pickAndPlayUnitVoiceResponse((const DrawableList*)contextUI()->selected(),(GameMessage::Type)msgType,(PickAndPlayInfo*)&info);}
    }else {msgType=0x7d7;hintMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);hintMessage->appendObjectIDArgument(obj->getID());}
   }
   else if((pos&&!draw&&TheInGameUI->canSelectedObjectsDoAction((InGameUI::ActionType)14,0,InGameUI::CONTEXT_ALL,false))||(draw&&obj&&TheInGameUI->canSelectedObjectsDoAction((InGameUI::ActionType)14,obj,InGameUI::CONTEXT_ANY,false))) {
    msgType=0x413;
    if(type==CONTEXT_COMMAND) {
     const SelectedDrawableList*selected=contextUI()->selected();
-    for(SelectedDrawableList::const_iterator it=selected->begin();it!=selected->end();++it){Drawable*drawable=*it;if(drawable&&drawable->getObject()){GameMessage*gameMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);gameMessage->appendObjectIDArgument(drawable->getObject()->getID());gameMessage->appendLocationArgument(*pos);bool queue=TheKeyboard->isShift()&&!draw;gameMessage->appendBooleanArgument(queue);gameMessage->appendObjectIDArgument(obj?obj->getID():OBJECTID_NONE);}}
+    for(SelectedDrawableList::const_iterator it=selected->begin();it!=selected->end();++it){Drawable*drawable=*it;if(drawable&&drawable->getObject()){GameMessage*gameMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);gameMessage->appendObjectIDArgument(drawable->getObject()->getID());gameMessage->appendLocationArgument(*pos);bool queue=TheKeyboard->isShift()&&!draw;gameMessage->appendBooleanArgument(queue);gameMessage->appendObjectIDArgument(obj?obj->getID():INVALID_OBJECT_ID);}}
    }else if(type==CONTEXT_HINT){msgType=0xbc;hintMessage=TheMessageStream->appendMessage((GameMessage::Type)msgType);hintMessage->appendLocationArgument(*pos);}
   }
   else if(draw&&result==1&&(!originalObject||!contextKind(obj,60)||contextKind(obj,150))) {

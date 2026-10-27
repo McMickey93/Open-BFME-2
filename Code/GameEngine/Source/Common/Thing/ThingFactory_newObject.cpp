@@ -29,7 +29,7 @@ int GetGameLogicRandomValue(int low, int high, char *file, int line);
 #define THINGFACTORY_FILE "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\Common\\Thing\\ThingFactory.cpp"
 
 typedef int Int;
-enum ObjectID { INVALID_OBJECT_ID=0 };
+#include "../GameLogicObjectLookupView.h"
 
 class ThingTemplate
 {
@@ -109,11 +109,6 @@ private:
 
 typedef char NativeObjectAllocationSize[sizeof(Object)==0x4D8?1:-1];
 
-class GameLogic
-{
-public:
-	Object *friend_createObject(const ThingTemplate *tmplate, const CreateMask *mask, Team *team, ObjectID id);
-};
 extern GameLogic *TheGameLogic;
 
 class ThingFactory

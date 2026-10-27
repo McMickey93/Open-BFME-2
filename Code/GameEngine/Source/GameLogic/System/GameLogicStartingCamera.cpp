@@ -10,12 +10,7 @@ class GameInfo;
 class GameSlot;
 class AsciiString;
 
-class GameLogic
-{
-public:
-	void bfmePopulateGameReport(GameInfo *game, int *localSlot);
-	void formatPlayerStartWaypointName(AsciiString *out);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 class GameInfo
 {

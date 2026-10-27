@@ -33,11 +33,7 @@ public:
 	void rva001B4FE9();
 };
 
-class GameLogic
-{
-public:
-	Bool rva0024877A();
-};
+#include "GameLogicObjectLookupView.h"
 
 class RecorderClass
 {

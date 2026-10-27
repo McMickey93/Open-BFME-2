@@ -7,11 +7,7 @@
 // Evidence: mov ecx,[0x00DFE78C] test ecx je ret jmp 0x003BA5DD ret 4; chain
 // from just-landed 0x003BA5DD; sole caller 0x003CD546 in ScriptActions dispatch.
 
-class GameLogic
-{
-public:
-	void rva003BA5DD(int value);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 

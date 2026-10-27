@@ -63,11 +63,7 @@ public:
 	Int m_id;				// +0x78
 };
 
-class GameLogic
-{
-public:
-	void rva0023D007(Int armyID);		// 0x0023D007
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 

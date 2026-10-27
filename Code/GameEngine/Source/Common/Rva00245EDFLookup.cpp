@@ -19,11 +19,7 @@ public:
 	Rva0041534BIter rva0041534B(const AsciiString *key);
 };
 
-class GameLogic
-{
-public:
-	bool rva00245EDF(void *arg1, int *out);
-};
+#include "GameLogicObjectLookupView.h"
 
 bool GameLogic::rva00245EDF(void *arg1, int *out)
 {

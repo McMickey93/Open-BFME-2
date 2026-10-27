@@ -59,9 +59,7 @@ public:
 	bool rva002034E9();
 };
 
-class GameLogic : public Rva002034E9Host
-{
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 class MessageStream
 {
@@ -109,7 +107,7 @@ public:
 
 void ScriptEngine::rva00203BE9()
 {
-	if (TheGameLogic->rva002034E9())
+	if (reinterpret_cast<Rva002034E9Host *>(TheGameLogic)->rva002034E9())
 	{
 		if (((Rva00203BE9Mode *)TheCampaignManager)->enabled)
 			TheMessageStream->appendType(0x7D9);

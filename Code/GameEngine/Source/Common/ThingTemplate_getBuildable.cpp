@@ -6,11 +6,7 @@
 // GameLogic::rva00245EDF(this,&out) true return out else sign-extended
 // byte at +0x5F2. Evidence: TheGameLogic extern plus rowed 0x00245EDF
 // plus movsx fallback plus 7 callers.
-class GameLogic
-{
-public:
-	bool rva00245EDF(void *arg1, int *out);
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 

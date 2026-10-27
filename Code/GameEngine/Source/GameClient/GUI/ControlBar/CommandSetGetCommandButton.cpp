@@ -15,11 +15,7 @@ typedef bool Bool;
 class ThingTemplate { public: void GetAssetList(int,int); };
 class CommandButton { public: const ThingTemplate *rva0035B570() const; };
 
-class GameLogic
-{
-public:
-	Bool rva00246F8E(const AsciiString &setName, Int slot, const CommandButton **button);
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class CommandSet

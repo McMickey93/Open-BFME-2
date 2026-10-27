@@ -76,11 +76,7 @@ private:
 	Rva0020E6B7RegionManager *m_regionManager;
 };
 
-class GameLogic
-{
-public:
-	Rva003F468DParticipant *GetLivingWorldTacticalVictor();
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 Rva003F468DParticipant *GameLogic::GetLivingWorldTacticalVictor()
 {

@@ -22,12 +22,7 @@ public:
 };
 extern class BfmeAptWindowManager *g_bfmeAptWindowManager;
 
-class GameLogic
-{
-public:
-	void rva00376D49();
-	void DoExitMap(bool selfDestruct);
-};
+#include "GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 struct TreeHintRef00217D4C

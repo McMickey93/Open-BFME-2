@@ -87,15 +87,7 @@ public:
 	DisconnectManager *m_12100;			// +0x12100
 };
 
-class GameLogic
-{
-public:
-	void rva0023D201(Int a, Int b);
-	UnsignedInt getFrame() const { return m_frame; }
-private:
-	char m_pad00[0x40];
-	UnsignedInt m_frame; // +0x40
-};
+#include "GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class Rva0025E4CD

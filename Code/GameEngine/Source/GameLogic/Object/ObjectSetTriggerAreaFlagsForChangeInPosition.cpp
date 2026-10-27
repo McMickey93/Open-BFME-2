@@ -13,7 +13,6 @@
 // at +0x3C0 with a null-trigger guard, and entered/exited events go to Lua
 // (TheLuaScriptEngine 0x003360D2 with the trigger name) and to the trigger
 // (0x002E3777 / 0x002E3794).
-// class-gate: allow GameLogic canonical view lacks QueueForNotifyPathfindCellChanged (0x00241C25) and the +0x180 trigger-change frame this body writes
 // Keep MSVC's float math overloads local, preserving their inlined operations.
 #define inline static inline
 #include <math.h>
@@ -30,18 +29,7 @@ struct Coord3D;
 
 #include "../../../../Libraries/Include/Lib/ICoord3D.h"
 
-class GameLogic
-{
-public:
-	UnsignedInt getFrame() const { return m_frame; }
-	void updateObjectsChangedTriggerAreas() { m_frameObjectsChangedTriggerAreas = m_frame; }
-	void QueueForNotifyPathfindCellChanged(Object *obj);	// 0x00241C25
-private:
-	char m_pad00[0x40];
-	UnsignedInt m_frame;	// +0x40
-	char m_pad44[0x180 - 0x44];
-	UnsignedInt m_frameObjectsChangedTriggerAreas;	// +0x180
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 template <int N> class Rva00291EB1Slots : public Rva00291EB1Slots<N - 1>

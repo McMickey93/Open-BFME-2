@@ -82,26 +82,7 @@ public:
 	void rva0040E0B7();
 };
 
-class GameLogic
-{
-public:
-	void rva0023D007(int value);
-	void rva0023D028();
-	void rva0023D033();
-	int rva0023D0A1(int value);
-	// noinline: Rva002B293F below tail-jumps it as retail does.
-	__declspec(noinline) void rva0023D03E();
-	void rva0023D054(int a, int b, Rva0040D2FDVec *out);
-	const AsciiString *rva0023D05F(int value);
- const AsciiString *rva0023D06A(int value);
-	int rva0023D075(int value);
-	void rva0023D080(int value);
-	int rva0023D08B(int value);
-	float rva0023D096(int value);
-	int rva0023D0AC(int value);
-	int rva0023D0B7();
-	void rva0023D0C2(Object *obj, int value);
-};
+#include "GameLogicObjectLookupView.h"
 
 class Object
 {
@@ -241,7 +222,8 @@ int GameLogic::rva0023D0A1(int value)
 // ?rva0023D03E@GameLogic@@QAEXXZ, native 0x0023D03E..0x0023D049 (11B): the
 // GameLogic+0x184 ArmySummarySystem adjustment and a tail jump to its rowed
 // argument-less 0x0040D2C3 member. Outer method name unknown.
-void GameLogic::rva0023D03E()
+// noinline: Rva002B293F below tail-jumps it as retail does.
+__declspec(noinline) void GameLogic::rva0023D03E()
 {
 	((ArmySummarySystem *)((char *)this + 0x184))->rva0040D2C3();
 }

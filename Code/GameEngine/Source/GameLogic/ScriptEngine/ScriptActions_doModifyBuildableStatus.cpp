@@ -18,11 +18,7 @@ enum BuildableStatus
 {
 	BUILDABLE_STATUS_UNKNOWN = 0
 };
-class GameLogic
-{
-public:
-	void setBuildableStatusOverride(const ThingTemplate *tt, BuildableStatus bs);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 void ScriptActions::doModifyBuildableStatus(const AsciiString &name, int status)

@@ -53,12 +53,7 @@ public:
 class LuaScriptEngine;
 extern LuaScriptEngine *TheLuaScriptEngine;
 
-class GameLogic
-{
-public:
-	void rva0023FABE(Object *obj);
-	void bindObjectAndDrawable(Object *obj, Drawable *draw);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 void GameLogic::rva0023FABE(Object *obj)
 {

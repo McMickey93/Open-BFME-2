@@ -43,11 +43,7 @@ private:
 	UnsignedInt m_localPort;		// +0x12054
 };
 
-class GameLogic
-{
-public:
-	void rva0023D17D(void);
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 

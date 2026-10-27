@@ -2,11 +2,7 @@
 // stlport
 #include "../../../Include/GameLogic/ScriptActionsBFME2.h"
 // ?Rva003BD108SetGamePaused@ScriptActions@@QAEXXZ, retail 0x003BD108 14B. Identity is address-named; packet shows TheGameLogic followed by GameLogic::SetGamePaused(true).
-class GameLogic
-{
-public:
-	void DoExitMap(bool paused);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 void ScriptActions::Rva003BD108SetGamePaused()

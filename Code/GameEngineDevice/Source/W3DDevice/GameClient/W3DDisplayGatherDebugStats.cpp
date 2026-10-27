@@ -575,7 +575,7 @@ struct NativeDebugDisplayFont { AsciiString name; int size; bool bold; };
 class GlobalLanguage { public: char m_pad[0xC8]; NativeDebugDisplayFont m_nativeDebugDisplay; };
 class GlobalData { public: char m_pad0[0x26]; bool m_useFpsLimit; char m_pad27; int m_framesPerSecondLimit; char m_pad2c[0x9C7 - 0x2C]; bool m_constantDebugUpdate; };
 // class-gate: allow GameLogic canonical view lacks getObjectCount (rowed 0x0023CFCE) that this body calls and keeps the +0x38/+0x40 words private
-class GameLogic { public: unsigned int getObjectCount(); int getTimestamp() const { return m_session; } int getFrame() const { return m_frame; } char m_pad[0x38]; int m_session; int m_pad3c; int m_frame; };
+#include "../../../../GameEngine/Source/Common/GameLogicObjectLookupView.h"
 class Keyboard { public: bool isShift(); bool isCtrl(); bool isAlt(); char m_pad[0xC]; unsigned char m_modifiers; };
 class Mouse { public: char m_pad[0x4F0C]; MouseIO m_currMouse; };
 class ExperienceTracker { public: char m_pad[0x10]; float m_experience; char m_pad14[0x24 - 0x14]; int m_level; };

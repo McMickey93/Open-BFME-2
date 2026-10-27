@@ -20,12 +20,7 @@ public:
 class ScriptEngine;
 extern ScriptEngine *TheScriptEngine;
 
-class GameLogic
-{
-public:
-	int rva0023D0B7();
-	void rva0023D0C2(Object *obj, int v);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class ScriptActions

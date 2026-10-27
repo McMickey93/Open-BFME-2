@@ -26,11 +26,7 @@ private:
 	char m_pad[0x121AC];
 };
 
-class GameLogic
-{
-public:
-	void rva0023D17D();
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 extern unsigned long g_00DFEA2C;

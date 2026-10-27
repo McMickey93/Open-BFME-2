@@ -7,18 +7,13 @@
 // Target evidence: TheGameLogic is the global at 0x00DFE78C; with the real
 // extern the compiler loads the argument first as retail does (the banked
 // attempt read the global through a literal-address macro).
-class GameLogic
-{
-public:
-	char m_pad00[0x98];
-	bool m_flag98; // +0x98
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
 void ScriptActions::Rva003BB700(bool v)
 {
-	TheGameLogic->m_flag98 = v;
+	TheGameLogic->enableScoring(v);
 }
 
 // Member ABI proved at each native executeAction3CA4BE call site: ECX=this.

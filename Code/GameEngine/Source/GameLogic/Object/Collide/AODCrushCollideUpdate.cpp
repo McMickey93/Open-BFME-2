@@ -132,15 +132,7 @@ protected:
 	int m_18;
 	int m_1C;
 };
-class GameLogic
-{
-public:
-	unsigned int getFrame() const { return m_frame; }
- void friend_awakenUpdateModule(Object *,UpdateModule *,unsigned int);
-private:
-	unsigned char m_pad[0x40];
-	unsigned int m_frame;
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 class AODCrushCollideIface20
 {

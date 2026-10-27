@@ -31,12 +31,7 @@ public:
 	GameMessage *m_firstMessage;
 };
 
-class GameLogic
-{
-public:
-	void processCommandList(void);
-	void logicMessageDispatcher(GameMessage *message, void *userData);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 extern CommandList *TheCommandList;
 

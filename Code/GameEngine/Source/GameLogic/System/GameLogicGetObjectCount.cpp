@@ -20,22 +20,19 @@ private:
 	Object *m_next; // +0x8C
 };
 
-class GameLogic
-{
-public:
-	UnsignedInt getObjectCount();
-	Object *getFirstObject() { return m_firstObject; }
+#include "../../Common/GameLogicObjectLookupView.h"
 
-private:
-	unsigned char m_pad[0xAC];
-	Object *m_firstObject; // +0xAC
-};
+// ?getFirstObject@GameLogic@@QAEPAVObject@@XZ @0x0023CAD2, 7B: the object list head.
+Object *GameLogic::getFirstObject()
+{
+	return m_firstObject;
+}
 
 UnsignedInt GameLogic::getObjectCount()
 {
 	UnsignedInt totalObjects = 0;
 	Object *obj;
-	for (obj = getFirstObject(); obj; obj = obj->getNextObject()) {
+	for (obj = m_firstObject; obj; obj = obj->getNextObject()) {
 		++totalObjects;
 	}
 	return totalObjects;

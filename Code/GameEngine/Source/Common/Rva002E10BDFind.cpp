@@ -20,11 +20,7 @@ public:
 };
 }
 
-class GameLogic
-{
-public:
-	void rva0023D007(int x);
-};
+#include "GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 struct Rva002E10BDVec

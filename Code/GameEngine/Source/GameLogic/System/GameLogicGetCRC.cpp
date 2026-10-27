@@ -199,14 +199,7 @@ extern class Rva002A8F24 *TheSkirmishAIManager;
 #define TheSkirmishAIManager (*(SkirmishAIManager * *)&TheSkirmishAIManager)
 extern class AI *TheAI;
 
-class GameLogic
-{
-public:
-	unsigned int getCRC(int mode);
-private:
-	char m_pad[0xAC];
-	Object *m_first;
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 unsigned int GameLogic::getCRC(int mode)
 {
@@ -219,7 +212,7 @@ unsigned int GameLogic::getCRC(int mode)
 		((Rva002CEC0A *)theLogicRandomLogFile)->rva002CED26((Xfer *)&writer);
 	if (TheLiteCRC != 0 || g_00E02D7C == 0)
 	{
-		for (Object *obj = m_first; obj != 0; obj = obj->getNextObject())
+		for (Object *obj = m_firstObject; obj != 0; obj = obj->getNextObject())
 			xfer->xferSnapshot(obj);
 	}
 	unsigned int seed = GetGameLogicRandomSeedCRC();

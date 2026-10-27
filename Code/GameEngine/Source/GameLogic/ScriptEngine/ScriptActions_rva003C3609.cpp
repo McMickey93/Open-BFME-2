@@ -26,12 +26,7 @@ class Object;
 
 // TheGameLogic's forwarders to its +0x184 member (0x0023D0B7 returns a
 // handle, 0x0023D0C2 applies it to an object); pinned from this body.
-class GameLogic
-{
-public:
-	int rva0023D0B7();
-	void rva0023D0C2(Object *obj, int handle);
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class Team

@@ -68,11 +68,7 @@ public:
 
 extern NetworkInterface *TheNetwork;
 
-class GameLogic
-{
-public:
-	void processProgress(int a, int b);
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 

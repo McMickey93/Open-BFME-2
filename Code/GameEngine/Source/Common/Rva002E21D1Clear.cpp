@@ -24,11 +24,7 @@ void *&vector<void*>::operator[](size_t __n)
 { return *(begin() + __n); }
 }
 
-class GameLogic
-{
-public:
-	void rva0023D007(int x);
-};
+#include "GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class Rva002E21D1Elem
