@@ -72,19 +72,17 @@ struct AptFrameStackHash : AptValueWithHash
 {
     static AptNativeHash &Of(AptFrameStack *pFrame) { return static_cast<AptFrameStackHash *>(static_cast<AptValueWithHash *>(pFrame))->mNativeHash; }
 };
-#define DF2_PARAM(i) (static_cast<const AptDefineFunction2Param *>(mpFunction->aszParams)[i])
 void AptScriptFunction2::SetArgument(AptValue *pValue, int nIndex)
 {
-    if (DF2_PARAM(nIndex).nRegister) {
-        AptScriptFunctionBase::SetRegisterValue(DF2_PARAM(nIndex).nRegister, pValue);
+    if (static_cast<const AptDefineFunction2Param *>(mpFunction->aszParams)[nIndex].nRegister) {
+        AptScriptFunctionBase::SetRegisterValue(static_cast<const AptDefineFunction2Param *>(mpFunction->aszParams)[nIndex].nRegister, pValue);
         return;
     }
     if (!spFrameStack)
         rva006FBED0();
-    EAStringC name(DF2_PARAM(nIndex).szName);
+    EAStringC name(static_cast<const AptDefineFunction2Param *>(mpFunction->aszParams)[nIndex].szName);
     AptFrameStackHash::Of(spFrameStack).Set(&name, pValue);
 }
-#undef DF2_PARAM
 // PC vtable8EE938 slot22, full129B 709C10..709C91 RET8: DefineFunction
 // parameters are plain names at mpFunction+08, always defined on the frame hash.
 void AptScriptFunction1::SetArgument(AptValue *pValue, int nIndex)
