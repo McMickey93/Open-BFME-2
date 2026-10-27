@@ -4543,6 +4543,15 @@ Completed: inspected every deleting row's native call and its current callee row
 | 0x007581C0 | 0x0075A080 | Rva009A4620CollisionData::~Rva009A4620CollisionData, Common/System/Rva009A4620Destructor.cpp. |
 
 Remaining / next check: reconcile each actual class, base/member lifetime and deleting-row identity with these existing owners through the naming lane, preserving the two distinct GenericNode deleting extents and the conflicting first vector evidence. Removing the empty definitions alone would also stop the compiler from emitting the rowed deleting destructors. Renaming or moving those rows, changing pins, or adding new bodies is outside this worker's scope. No admissible new fold pin or missing native match was established.
+Current-input follow-up (2026-10-27, `0f2cabf5a8`): all 12 rows (360 bytes)
+still pass the normal build; ordinary preview against `bf3dd31211` retains the
+same ten COMDAT/selected conflicts. The supported identity retirement refuses
+without changing the register: the current scan additionally finds the
+0x00188320 deleting row's `??1Rva001880D0Dtor@@UAE@XZ` binding to native
+0x001880D0, already owned by the string cleanup forwarder above. Resolve that
+class/operation identity before attempting to retire the source's obsolete
+keys; do not add the finding to the shrink-only register. No source trial,
+new match or linking gain in this follow-up.
 Clearance: none for this unit; current-provider preview still reports L10/S10.
 Census confirmation: pending; no census gain claimed.
 
