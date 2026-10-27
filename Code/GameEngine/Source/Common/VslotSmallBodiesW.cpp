@@ -245,14 +245,20 @@ class Rva00406B39
 {
 public:
 	Int rva00406B39();
-	Int rva004059F6();
 };
 Int Rva00406B39::rva00406B39()
 {
 	static Int s_id = g_00DFEE18++;
 	return s_id;
 }
-Int Rva00406B39::rva004059F6()
+// 0x004059F6 is slot 5 of the middle table 0x00C38958 its constructor
+// 0x00405A45 installs, inherited by OldSchoolHelpBoxContentSource.
+class Rva00405A45
+{
+public:
+	virtual Int rva004059F6();
+};
+Int Rva00405A45::rva004059F6()
 {
 	static Int s_id = g_00DFEE18++;
 	return s_id;

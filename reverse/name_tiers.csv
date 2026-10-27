@@ -11231,14 +11231,11 @@ _rva0060E7F0,0x00211245,address,placeholder
 ?rva00405684@Rva00404D70@@QAEPAUBfmeStringRecord00404BF3@@ABVAsciiString@@@Z,0x00405684,address,placeholder
 ?Rva0040596CGet@@YAHXZ,0x0040596C,address,placeholder
 ?get@Rva00405972LeaField@@QBEPAXXZ,0x00405972,address,placeholder
-?get@Rva004C1160@@QAEHXZ,0x004059BE,address,placeholder
-?bfmeEquals@Gen_004c1180@@QBEHPBV1@@Z,0x004059CF,address,placeholder
-?rva004059F6@Rva00406B39@@QAEHXZ,0x004059F6,address,placeholder
+?rva004059F6@Rva00405A45@@UAEHXZ,0x004059F6,address,placeholder
 ??0Rva00405A45@@QAE@H@Z,0x00405A45,address,placeholder
 ?rva00405A50@Rva00405A50@@QAEXXZ,0x00405A50,address,placeholder
 ?rva00405AA7@Rva00405AA7@@QAEXXZ,0x00405AA7,address,placeholder
 ?dup_00405ac9@@YAXXZ,0x00405AC9,address,placeholder
-??0Rva00405B60@@QAE@ABV0@@Z,0x00405B60,address,placeholder
 ?Rva00405B8DTest@@YG_NPAVObject@@PAUUpgradeRange@@_N@Z,0x00405B8D,address,placeholder
 ?rva004C1B60@ControlBar@@QAEXPAVGameWindow@@PAX@Z,0x00405DBC,address,placeholder
 ?rva00406B39@Rva00406B39@@QAEHXZ,0x00406B39,address,placeholder

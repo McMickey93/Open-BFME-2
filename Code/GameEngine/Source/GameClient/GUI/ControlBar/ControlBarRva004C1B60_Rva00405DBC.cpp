@@ -1,37 +1,42 @@
 // cl: -DNDEBUG -DWIN32 -MD -EHsc -Ireference/open-bfme-1/game/GameEngine/Source/GameClient/GUI/ControlBar
-// Retail RVA 004C1B60 /156. Named UI callers establish the ControlBar
-// receiver (the BfmeConv1022 caller loads VA012F33F8/TheControlBar); the method and temporary adapter retain address-derived names.
-// The adapter installs vtable VA10FD964 with six slots. Its base table
-// VA10EDAA0 contains a scalar destructor followed by five pure virtuals.
-// Existing PartitionFilterPossibleToAttack labels on this table do not prove
-// this UI adapter identity and are deliberately not used here.
-// EH cleanupC290E0 reaches base destructor4C1150 installing10EDAA0.
+// Retail 0x00405DBC /129 (BFME 1 0x004C1B60). Named UI callers establish the ControlBar
+// receiver (the BfmeConv1022 caller loads VA012F33F8/TheControlBar); the method keeps an address-derived name.
 class GameWindow { public: unsigned winGetStyle(); };
 void *GadgetButtonGetData(GameWindow *);
 struct BfmeMsgDN;
-// The non-destructor slots are placeholders in this partial ABI view. This
-// TU never calls them; their retail targets are 4C1AE0, 4C1160, 4C1C30,
-// 4C1180 and 4C1240, in order. No semantic method identities are claimed.
-class Rva004C1150AdapterBase {
+// The temporary is an OldSchoolHelpBoxContentSource: its constructor
+// 0x00405A25 installs table 0x00838970, whose slot 3 is the WorldBuilder-named
+// OldSchoolHelpBoxContentSource::createContent 0x00405E3D. Slots 1, 2 and 4
+// are its clone 0x00405D7C, getter 0x004059BE and comparator 0x004059CF; slot
+// 5 is inherited from the middle class whose table 0x00838958 (installed by
+// ctor 0x00405A45) supplies the id getter 0x004059F6. The root table
+// 0x007E5838 is the destructor and five pure virtuals. Method names other
+// than createContent stay placeholders; only the slot owners are proven.
+// The middle class is not modelled here: its implicit default constructor
+// would be emitted beside the strong ??0Rva00405A45@@QAE@XZ (0x004059ED) in
+// Rva00405A45Ctor.cpp, so slot 5 is declared on the leaf and stays unresolved
+// until both share their retail TU (docs/linking_obstacles.md LINK-087).
+namespace _STL { template <class T> struct auto_ptr; }
+class BfmeThingGX {
 public:
- virtual ~Rva004C1150AdapterBase() {}
- virtual void slot04() = 0;
- virtual void slot08() = 0;
- virtual void slot0C() = 0;
- virtual void slot10() = 0;
- virtual void slot14() = 0;
+ virtual ~BfmeThingGX() {}
+ virtual _STL::auto_ptr<BfmeThingGX> clone() = 0;
+ virtual int get() = 0;
+ virtual struct TreeHintRef00217D4C createContent() = 0;
+ virtual int bfmeEquals(const BfmeThingGX *other) const = 0;
+ virtual int rva004059F6() = 0;
 };
 class ControlBar;
-class Rva004C1B60Adapter:public Rva004C1150AdapterBase {
+class OldSchoolHelpBoxContentSource:public BfmeThingGX {
 public:
- Rva004C1B60Adapter(ControlBar *owner,GameWindow *window,void *data)
+ OldSchoolHelpBoxContentSource(ControlBar *owner,GameWindow *window,void *data)
   :m_owner(owner),m_window(window),m_data(data) {}
- virtual ~Rva004C1B60Adapter() {}
- virtual void slot04();
- virtual void slot08();
- virtual void slot0C();
- virtual void slot10();
- virtual void slot14();
+ virtual ~OldSchoolHelpBoxContentSource() {}
+ virtual _STL::auto_ptr<BfmeThingGX> clone();
+ virtual int get();
+ virtual struct TreeHintRef00217D4C createContent();
+ virtual int bfmeEquals(const BfmeThingGX *other) const;
+ virtual int rva004059F6();
  ControlBar *m_owner;GameWindow *m_window;void *m_data;
 };
 class ControlBar {
@@ -54,6 +59,6 @@ void ControlBar::rva004C1B60(GameWindow *window,void *data)
    if(!data) return;
   } else if(!(window->winGetStyle()&0x200) && !(window->winGetStyle()&0x80)) return;
  }
- Rva004C1B60Adapter adapter(this,window,data);
+ OldSchoolHelpBoxContentSource adapter(this,window,data);
  bfmeShowDN((BfmeMsgDN *)&adapter);
 }

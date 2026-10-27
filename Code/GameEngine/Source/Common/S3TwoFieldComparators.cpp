@@ -8,7 +8,7 @@
 // bodies are defined here; the donor's Gen_000970a0::bfmeEquals and
 // Gen_00477d30::bfmeDispatch stay out, so the unmatched-definition gate passes.
 //
-//  ?bfmeEquals@Gen_004c1180@@QBEHPBV1@@Z 0x004059CF, 30 bytes
+//  ?bfmeEquals@OldSchoolHelpBoxContentSource@@UBEHPBVBfmeThingGX@@@Z 0x004059CF, 30 bytes
 //  ?bfmeEquals@Gen_004b2190@@QBEHPBV1@@Z 0x00567720, 30 bytes
 //
 // Donor bodies the ledger had split three ways -- a comparison, an eight-byte
@@ -34,13 +34,18 @@ private:
 	int m_bfme0008;							// +0x08
 };
 
-class Gen_004c1180
+// Slot 4 of vtable 0x00838970 (OldSchoolHelpBoxContentSource, named by its
+// WB createContent slot 3); the argument is the root interface the slot
+// declares, and the bytes take it as this class unadjusted.
+class BfmeThingGX;
+
+class OldSchoolHelpBoxContentSource
 {
 public:
-	int bfmeEquals(const Gen_004c1180 *other) const;
+	virtual int bfmeEquals(const BfmeThingGX *other) const;
 
 private:
-	char m_bfmeHead[0x08];
+	char m_bfmeHead[0x04];
 	int m_bfme0008;							// +0x08
 	int m_bfme000C;							// +0x0C
 };
@@ -54,9 +59,10 @@ int Gen_004b2190::bfmeEquals(const Gen_004b2190 *other) const
 	return 0;
 }
 
-// ?bfmeEquals@Gen_004c1180@@QBEHPBV1@@Z 0x004059CF
-int Gen_004c1180::bfmeEquals(const Gen_004c1180 *other) const
+// ?bfmeEquals@OldSchoolHelpBoxContentSource@@UBEHPBVBfmeThingGX@@@Z 0x004059CF
+int OldSchoolHelpBoxContentSource::bfmeEquals(const BfmeThingGX *otherBase) const
 {
+	const OldSchoolHelpBoxContentSource *other = (const OldSchoolHelpBoxContentSource *)otherBase;
 	if (m_bfme0008 == other->m_bfme0008 && m_bfme000C == other->m_bfme000C)
 		return 1;
 

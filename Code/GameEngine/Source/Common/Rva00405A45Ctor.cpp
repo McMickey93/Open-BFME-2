@@ -9,7 +9,7 @@
 extern "C" {
 void __identifier("??_GRva00406B1DRecord@@QAEPAXI@Z")();
 int __cdecl _purecall(void);
-void __identifier("?rva004059F6@Rva00406B39@@QAEHXZ")();
+void __identifier("?rva004059F6@Rva00405A45@@UAEHXZ")();
 }
 extern const void *const g_00C38958[6] = {
 	(const void *)&__identifier("??_GRva00406B1DRecord@@QAEPAXI@Z"), // slot 0 0x00406B1D
@@ -17,7 +17,7 @@ extern const void *const g_00C38958[6] = {
 	(const void *)&__identifier("_purecall"), // slot 2 0x0003B810
 	(const void *)&__identifier("_purecall"), // slot 3 0x0003B810
 	(const void *)&__identifier("_purecall"), // slot 4 0x0003B810
-	(const void *)&__identifier("?rva004059F6@Rva00406B39@@QAEHXZ"), // slot 5 0x004059F6
+	(const void *)&__identifier("?rva004059F6@Rva00405A45@@UAEHXZ"), // slot 5 0x004059F6
 };
 
 class Rva00405A45

@@ -141,14 +141,15 @@ void Rva00405A50::rva00405C04(BfmeThingGX *hint)
 	}
 }
 
-// ?clone@Rva00405B60@@UAE?AU?$auto_ptr@VBfmeThingGX@@@_STL@@XZ @0x00405D7C
+// ?clone@OldSchoolHelpBoxContentSource@@UAE?AU?$auto_ptr@VBfmeThingGX@@@_STL@@XZ @0x00405D7C
 // (64B, RET 4): slot 1 of vtable 0x00838970 (the class of the rowed copy
 // constructor 0x00405B60, 0x10 bytes): a heap copy of itself handed back in
-// an STLport auto_ptr, the clone 0x00405C04 stores. Class name address-derived.
-class Rva00405B60 : public BfmeThingGX
+// an STLport auto_ptr, the clone 0x00405C04 stores. Class named by its WB createContent slot
+// (vtable 0x00838970).
+class OldSchoolHelpBoxContentSource : public BfmeThingGX
 {
 public:
-	Rva00405B60(const Rva00405B60 &o) throw();
+	OldSchoolHelpBoxContentSource(const OldSchoolHelpBoxContentSource &o) throw();
 	virtual std::auto_ptr<BfmeThingGX> clone();
 private:
 	int m_4;
@@ -156,9 +157,9 @@ private:
 	int m_c;
 };
 
-std::auto_ptr<BfmeThingGX> Rva00405B60::clone()
+std::auto_ptr<BfmeThingGX> OldSchoolHelpBoxContentSource::clone()
 {
-	std::auto_ptr<BfmeThingGX> copy(new Rva00405B60(*this));
+	std::auto_ptr<BfmeThingGX> copy(new OldSchoolHelpBoxContentSource(*this));
 	return copy;
 }
 

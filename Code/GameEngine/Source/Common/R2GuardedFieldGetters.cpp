@@ -1,30 +1,30 @@
-// ?get@Rva004C1160@@QAEHXZ, retail 0x004059BE (17B).
+// ?get@OldSchoolHelpBoxContentSource@@UAEHXZ, retail 0x004059BE (17B).
 // Ported from Open-BFME-1 Code/GameEngine/Source/Common/R2GuardedFieldGetters.cpp
-// (BFME1 0x004C1160). Guarded field read: null pointee returns zero, else one
-// int field at +0x1C8 of the pointee reached via the pointer at +0x08.
-// The donor defines 22 further siblings the sweep did not place, so only the
-// placed body is instantiated here.
+// (BFME1 0x004C1160). Slot 2 of vtable 0x00838970, whose slot 3 is the
+// WB-named OldSchoolHelpBoxContentSource::createContent. Guarded field read:
+// a null window returns zero, else the int at +0x1C8 of the window held at
+// +0x08. The donor defines 22 further siblings the sweep did not place, so
+// only the placed body is defined here.
 
 struct IntAt1C8h { char m_leading[ 0x1C8 ]; int m_value; };
 
-#define R2_GUARDED_FIELD_GET( NAME, OFF, POINTEE, TYPE )  \
-	class NAME                                          \
-	{                                                   \
-	public:                                             \
-		char m_leading[ OFF ];                          \
-		POINTEE *m_pointee;                             \
-		TYPE get();                                     \
-	};                                                  \
-	TYPE NAME::get()                                    \
-	{                                                   \
-		if ( m_pointee )                                \
-		{                                               \
-			return m_pointee->m_value;                  \
-		}                                               \
-		return 0;                                       \
-	}
+class OldSchoolHelpBoxContentSource
+{
+public:
+	virtual int get();
+private:
+	void *m_owner;
+	IntAt1C8h *m_window;
+};
 
-R2_GUARDED_FIELD_GET( Rva004C1160, 0x8, IntAt1C8h, int )
+int OldSchoolHelpBoxContentSource::get()
+{
+	if ( m_window )
+	{
+		return m_window->m_value;
+	}
+	return 0;
+}
 
 // Four further complete retail leaves, found by compiling the clean BFME1
 // 9cbfb551fe20dae985f91f2319d8997287b6a705 donor under /O1 /arch:SSE /G7
