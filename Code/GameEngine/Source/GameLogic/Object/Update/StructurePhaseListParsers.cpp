@@ -1,4 +1,5 @@
 // cl: /GX /MD /DNDEBUG /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // Phase-indexed FX/OCL list FieldParse procs of three structure modules. Each
@@ -27,12 +28,11 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #include <vector>
+#include <windows.h>
 // Suppress this TU's non-retail copy of ?_M_clear@?$vector@PBVFXList@@V?$allocator@PBVFXList@@@_STL@@@_STL@@IAEXXZ:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 class FXList;
 namespace _STL { template <> void vector<FXList const *,allocator<FXList const *> >::_M_clear(); }
-
-#define NULL 0
 
 class INI
 {

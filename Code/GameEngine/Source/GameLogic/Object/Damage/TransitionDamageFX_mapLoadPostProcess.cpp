@@ -16,7 +16,7 @@
 #include "Lib/Coord3D.h"
 #include "ascii_string.h"
 #include "Common/PartitionRangeQueryCallView.h"
-extern "C" void*memset(void*,int,unsigned);
+#include <string.h>
 class Matrix3D;class ObjectCreationList;class Dict;
 namespace _STL {template<class T>class allocator{};template<class T,class A>class vector{public:T*begin;T*end;T*cap;const T*getBegin()const{return begin;}const T*getEnd()const{return end;}bool empty()const{return begin==end;}~vector();void push_back(const T&);};}
 class Thing {public:void convertBonePosToWorldPos(const Coord3D*,const Matrix3D*,Coord3D*,Matrix3D*)const;};

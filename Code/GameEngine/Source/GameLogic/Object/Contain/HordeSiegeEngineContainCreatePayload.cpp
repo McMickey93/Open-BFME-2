@@ -17,11 +17,10 @@
 
 #include <string.h>
 #include "ascii_string.h"
+#include <stdio.h>
 
 typedef int Int;
 typedef float Real;
-
-extern "C" __declspec(dllimport) int __cdecl sprintf( char *buffer, const char *format, ... );
 
 extern int BfmeLogicFramesPerSecond;
 

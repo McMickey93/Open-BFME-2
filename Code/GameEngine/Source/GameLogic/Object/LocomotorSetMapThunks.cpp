@@ -17,6 +17,7 @@
 
 #include <map>
 #include <vector>
+#include <stdlib.h>
 
 class LocomotorTemplate;
 
@@ -91,8 +92,6 @@ void __cdecl Rva00500CB8Destroy(Rva00501E3FElement *first, Rva00501E3FElement *l
 	for (; first != last; ++first)
 		first->~Rva00501E3FElement();
 }
-
-extern "C" void __cdecl free(void *block);
 
 // ?rva00501356@Rva00501356@@QAEXXZ @0x00501356 30B: vector storage helper.
 // Destroys [m_first, m_last) via rowed 0x00500CB8 then frees m_first.

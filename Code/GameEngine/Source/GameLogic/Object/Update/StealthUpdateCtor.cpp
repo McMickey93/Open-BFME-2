@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX
+// platformsdk
 //
 // ??0StealthUpdate@@QAE@PAVThing@@PBVModuleData@@@Z, retail 0x00374B02,
 // 198 bytes. Zero Hour's StealthUpdate::StealthUpdate (GeneralsMD
@@ -19,10 +20,11 @@
 // frame, pulse phase and granted-by-special-power sleep; the bytes at
 // +0x2C, +0x31..+0x34 and +0x44..+0x47 are BFME 2 additions without ZH
 // names.
+#include <windows.h>
+
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
-#define NULL 0
 
 class Thing;
 class ModuleData;

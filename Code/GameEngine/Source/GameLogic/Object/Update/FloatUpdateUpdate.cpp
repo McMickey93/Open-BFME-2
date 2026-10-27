@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /GX /ICode/Libraries/Include
+// platformsdk
 //
 // FloatUpdate::update (BFME 2), from the Generals Zero Hour FloatUpdate.cpp.
 //
@@ -24,7 +25,6 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define TRUE 1
 #define INT_TO_REAL(x) ((Real)(x))
 
 class Thing;
@@ -190,6 +190,7 @@ public:
 extern TerrainLogic *TheTerrainLogic;
 
 #include "../../../Common/GameLogicObjectLookupView.h"
+#include <windows.h>
 
 extern GameLogic *TheGameLogic;
 

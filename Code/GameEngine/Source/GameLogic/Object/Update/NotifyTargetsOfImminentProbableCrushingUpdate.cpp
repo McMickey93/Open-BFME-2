@@ -26,6 +26,7 @@ struct NotifyCoord:Coord3D{
  float estimate()const{return GetLengthEstimate2D();}
 };
 #include "Lib/Region2D.h"
+#include <math.h>
 struct Rva0087E650Bounds{NotifyCoord lo,hi;};
 enum GeometryType{GEOMETRY_SPHERE,GEOMETRY_CYLINDER,GEOMETRY_BOX};
 class GeometryInfo{public:
@@ -58,7 +59,6 @@ struct NotifyRegion3D{NotifyCoord lo,hi;};
 class BfmeWideForwardB{public:BfmeWideResult bfmeForwardWideB(int,int,int,int);};
 extern PartitionManager *ThePartitionManager;
 int GetGameLogicRandomValue(int,int,char*,int);
-extern "C" float __cdecl atan2f(float y, float x);	// math.h's atan2f body, retail 0x000422A0
 enum UpdateSleepTime{UPDATE_SLEEP_NONE=1};
 class Rva004CE700Notifier{public:bool rva004CE700(Object*,const int*,UpdateSleepTime*);};
 template<class T>inline const T& nmin(const T&lhs,const T&rhs){return lhs<rhs?lhs:rhs;}

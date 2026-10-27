@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD /Ireference/shims/moduledata
+// platformsdk
 //
 // ??0BoneFXUpdateModuleData@@QAE@XZ, retail 0x00487797, 196 bytes.
 //
@@ -25,9 +26,8 @@
 
 typedef int Int;
 
-#define NULL 0
-
 #include "ascii_string.h"
+#include <windows.h>
 
 class GameClientRandomVariable
 {

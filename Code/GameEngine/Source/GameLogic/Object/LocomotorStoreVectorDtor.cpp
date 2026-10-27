@@ -4,10 +4,10 @@
 // Vector-like holder dtor stride 0xC: derived calls rowed 0x00220AEB then
 // base frees via rowed free 0x00030830. Chain from destroy landing; caller
 // 0x00220CD4. Base-dtor split gives retail EH state 0. No vtable.
+#include <stdlib.h>
+
 class LocomotorStore;
 void __cdecl Rva00220AEBDestroy(LocomotorStore *first, LocomotorStore *last);
-
-extern "C" void __cdecl free(void *block);
 
 template <class T> struct RvaVectorBuffer
 {

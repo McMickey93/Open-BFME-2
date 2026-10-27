@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /arch:SSE
+// platformsdk
 //
 // ?chooseGoodLocomotorFromCurrentSet@AIUpdateInterface@@QAEXXZ, retail 0x00263fa7, 194 bytes. Banked partial (score 0.98) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
@@ -19,9 +20,9 @@
 
 typedef int Int;
 typedef unsigned int UnsignedInt;
-#define NULL 0
 
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
+#include <windows.h>
 
 enum PathfindLayerEnum
 {

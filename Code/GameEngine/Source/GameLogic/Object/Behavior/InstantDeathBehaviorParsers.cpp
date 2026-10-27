@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /MD /DNDEBUG /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // InstantDeathBehaviorModuleData FieldParse procs, BFME 2 layout. The table
@@ -25,8 +26,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 #include <vector>
 #include "ascii_string.h"
-
-#define NULL 0
+#include <windows.h>
 
 class INI
 {
@@ -109,4 +109,3 @@ void InstantDeathBehaviorModuleData::parseWeapon(INI *ini, void *instance, void 
 		self->m_weapons.push_back(wt);
 	}
 }
-

@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /GX /DNDEBUG /MD
+// platformsdk
 //
 // Object-record FieldParse procs (names address-derived):
 //   0x003F341E 113B ConnectsTo (0x00C36640): for every token (separators
@@ -15,8 +16,7 @@
 //       0x004DFCB0).
 
 #include "ascii_string.h"
-
-#define NULL 0
+#include <windows.h>
 
 struct FieldParse;
 

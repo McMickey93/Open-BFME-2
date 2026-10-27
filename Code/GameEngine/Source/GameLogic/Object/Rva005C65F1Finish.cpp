@@ -13,7 +13,7 @@
 // Manhattan test inline in the `if` makes the compiler evaluate the operands
 // left to right and pick edi as the accumulator, which is retail's shape.
 
-extern "C" int __cdecl abs(int value);
+#include <stdlib.h>
 
 class Rva005C65F1
 {

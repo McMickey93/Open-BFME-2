@@ -6,8 +6,6 @@
 typedef int Int;
 typedef float Real;
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
-
 template <typename T> struct BfmeStringData;
 
 #include "ascii_string.h"
@@ -31,6 +29,7 @@ public:
 }
 
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
+#include <string.h>
 
 class INI
 {

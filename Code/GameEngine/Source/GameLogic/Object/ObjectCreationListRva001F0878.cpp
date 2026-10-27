@@ -19,6 +19,7 @@ template <typename T> struct BfmeStringData
 };
 
 #include "ascii_string.h"
+#include <stdlib.h>
 
 class ObjectCreationNugget
 {
@@ -39,8 +40,6 @@ public:
 };
 
 extern ObjectCreationListStore *TheObjectCreationListStore;
-
-extern "C" void __cdecl free(void *p);
 
 struct Rva001F0468Node
 {

@@ -1,4 +1,5 @@
 // cl: /MD /DNDEBUG
+// platformsdk
 //
 // ??0LaserUpdateModuleData@@QAE@XZ, retail 0x00363147,
 // 31 bytes. Frameless store-only ctor over table 0xC17208
@@ -16,6 +17,8 @@
 // Retail VA 0x00C17120 (.rdata): a 31-slot vftable no unit emits. Defined here as
 // data with retail's slot pointers, each bound to the ledger name at its
 // target (tools/vftable_map.py); its installers store this table.
+#include <windows.h>
+
 extern "C" void vfn_00065212();
 extern "C" void vfn_000B3FD0();
 extern "C" void vfn_000B69A1();
@@ -65,8 +68,6 @@ extern "C" const void *const vtbl_00C17120[] = {
 	(const void *)&vfn_000D43D0,
 	(const void *)&vfn_0050B5C6
 };
-
-#define NULL 0
 
 class LaserUpdateModuleData
 {

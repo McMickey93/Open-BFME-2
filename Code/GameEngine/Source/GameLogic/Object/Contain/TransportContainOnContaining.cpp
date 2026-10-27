@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /ICode/Libraries/Include/Lib /O1 /DNDEBUG /MD /D_CRTIMP= /arch:SSE /EHs /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /G7
+// platformsdk
 // stlport
 // ?rva0046781F@Rva0046781F@@QAEXPAVObject@@_N@Z retail 0x0046781F..0x00467AB8
 // (665 bytes) under the pinned placeholder spelling. WorldBuilder twin
@@ -35,6 +36,7 @@ template <> _List_base<int, allocator<int> >::~_List_base();
 }
 #include "Coord3D.h"
 #include "../../../Common/GameLogicObjectLookupView.h"
+#include <windows.h>
 
 // list<int> destruction otherwise instantiates per-TU deallocate
 // COMDATs (one byte shape per TU flags); explicit dllimport+forceinline
@@ -60,8 +62,6 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
                               const _List_iterator<_IterTp, _RightTraits> &b)
 { return a._M_node != b._M_node; }
 }
-
-#define NULL 0
 
 typedef unsigned int UnsignedInt;
 

@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /GX /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /D_STLP_USE_MALLOC /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // SlowDeathBehaviorModuleData FieldParse procs: Zero Hour's
@@ -39,12 +40,11 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #include <vector>
+#include <windows.h>
 // Suppress this TU's non-retail copy of ?_M_clear@?$vector@PBVFXList@@V?$allocator@PBVFXList@@@_STL@@@_STL@@IAEXXZ:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 class FXList;
 namespace _STL { template <> void vector<FXList const *,allocator<FXList const *> >::_M_clear(); }
-
-#define NULL 0
 
 class INI
 {
@@ -269,4 +269,3 @@ void SlowDeathBehaviorModuleData::rva0045E8A9(INI *ini, void *instance, void * /
 			self->m_maskOfLoadedEffects |= HAS_SOUND;
 	}
 }
-

@@ -10,7 +10,7 @@
 // compiler's __ftol truncation sequence. No retail body is lifted.
 #include "unicode_string.h"
 #include "Lib/Coord3D.h"
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 __forceinline long fast_float2long_round(float value)
 {
  long result;

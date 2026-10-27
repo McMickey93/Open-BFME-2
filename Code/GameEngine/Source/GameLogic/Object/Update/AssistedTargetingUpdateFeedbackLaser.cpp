@@ -5,8 +5,8 @@
 // Native486F35..487010 RET12; static key LaserUpdate nativeguardE038B8.
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../Common/GameLogicObjectLookupView.h"
+#include <string.h>
 #pragma function(memset)
-extern "C" void *memset(void *,int,unsigned);
 class Team;class ThingTemplate;class Drawable;class ClientUpdateModule;
 class Player {public:char pad[0x2EC];Team *team;};
 class Thing {public:Drawable *getDrawable()const;};

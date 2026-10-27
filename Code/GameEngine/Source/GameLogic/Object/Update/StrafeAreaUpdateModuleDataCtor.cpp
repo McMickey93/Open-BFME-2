@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS /Ireference/shims/moduledata
+// platformsdk
 //
 // ??0StrafeAreaUpdateModuleData@@QAE@XZ, retail 0x003A4E5A, 117 bytes.
 //
@@ -22,11 +23,10 @@ extern "C" const void *const vtbl_00C1B268[];  // ??_7StrafeAreaUpdateModuleData
 
 typedef int Int;
 
-#define NULL 0
-
 #include "ascii_string.h"
 
 #include "Common/Snapshot.h"
+#include <windows.h>
 
 class UpdateModuleData
 {

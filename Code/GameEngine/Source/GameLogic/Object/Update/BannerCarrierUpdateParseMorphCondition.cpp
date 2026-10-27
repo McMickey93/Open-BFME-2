@@ -19,7 +19,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #include <vector>
-extern "C" int __cdecl strcmp(const char *,const char *);
+#include <string.h>
 class INI { public:
  const char *getNextToken(const char *);const char *getNextTokenOrNull(const char *);int scanInt(const char *);
  char pad00[0x420];const char *colon,*quote;

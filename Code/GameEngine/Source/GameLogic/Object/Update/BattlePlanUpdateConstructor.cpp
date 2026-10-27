@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX
+// platformsdk
 //
 // ??0BattlePlanUpdate@@QAE@PAVThing@@PBVModuleData@@@Z, retail 0x00497ED0,
 // 261 bytes. Zero Hour's BattlePlanUpdate::BattlePlanUpdate (GeneralsMD
@@ -19,11 +20,12 @@
 // pointer, element dtor 0x0010F149 releases it, both through __ehvec_ctor)
 // and adds an int at +0x84 initialised to 1, the value the rowed dtor
 // passes to TheAudio.
+#include <windows.h>
+
 typedef bool Bool;
 typedef float Real;
 typedef int Int;
 typedef unsigned int UnsignedInt;
-#define NULL 0
 
 class Thing;
 class ModuleData;

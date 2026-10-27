@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /GX /ICode/Libraries/Include
+// platformsdk
 //
 // FireSpreadUpdate::update (BFME 2), from the Generals Zero Hour
 // FireSpreadUpdate.cpp.
@@ -17,13 +18,12 @@
 //   range, resolved to an object by TerrainLogic 0x00283D70, is the candidate.
 // - calcNextSpreadDelay is the rowed 0x0048B7D9.
 #include "Lib/Coord3D.h"
+#include <windows.h>
 
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-
-#define NULL 0
 
 class ModuleData;
 class Module;

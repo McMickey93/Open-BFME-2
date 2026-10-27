@@ -13,6 +13,7 @@
 #include "ascii_string.h"
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 #include <list>
+#include <string.h>
 // bfme link decl-only begin
 namespace _STL { template <> _STL::_List_node<int> * list<int,_STL::allocator<int> >::_M_create_node(int const &); }
 namespace _STL { template <> _STL::_List_node<int> * _STLP_alloc_proxy<_STL::_List_node<int> *,_STL::_List_node<int>,_STL::allocator<_STL::_List_node<int> > >::allocate(unsigned int); }
@@ -30,8 +31,6 @@ void _Construct<int, int>(int *p, const int &value) { new (p) int(value); }
 }
 
 #pragma function(memset)
-extern "C" void *memset(void *dst, int value, unsigned int size);
-
 
 class Team;
 class ThingTemplate;

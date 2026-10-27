@@ -6,6 +6,7 @@
 // Evidence: retail add ecx 4 plus jmp; callee notes name true vector dtor
 // at 0x004613EB; callers at 0x0032E92F 0x0032EAA1.
 #include <vector>
+#include <stdlib.h>
 
 struct DynamicPortalLink
 {
@@ -36,7 +37,6 @@ void Rva0032E83ADelete(Rva0032E83A *p) { delete p; }
 // Evidence: retail push [esi+0xc] plus self-call, mov edi [esi+8],
 // lea ecx [esi+0x10] plus call 0x0032E83A, push esi plus call 0x00030830;
 // caller at 0x0032EB5E passes the root and re-inits the header.
-extern "C" void free(void *p);
 
 struct Rva0032EAA1Node
 {
