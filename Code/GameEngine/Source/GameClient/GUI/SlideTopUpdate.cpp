@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G6 /Oy- /MD /ICode/Libraries/Include/Lib
+#include <windows.h>
 // Reference: BF1 f98983a7d / GeneralsMD ProcessAnimateWindowSlideFromTop.
 // Target boundary 0x005C6106..0x005C61EE; offsets and ordering are retail facts.
 // Constructor5C55A5 and C74884 slot3 prove the target virtual method.
@@ -17,7 +18,7 @@ public:
  GameWindow *window; RvaTopVelocity m_velocity;
  unsigned startTime,endTime; int animType; bool needsFinish,finished;
 };
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+
 class ProcessAnimateWindowSlideFromTop {
 public:
  virtual ~ProcessAnimateWindowSlideFromTop();

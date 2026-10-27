@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G6 /Oy- /MD /ICode/Libraries/Include/Lib
+#include <windows.h>
 // Reference: BF1 f98983a7d / GeneralsMD ProcessAnimateWindowSlideFromLeft.
 // Target boundary 0x005C53DD..0x005C54BC; offsets and ordering are retail facts.
 // Matched ctor0x005C52CE installs C7486C; slots3/4 prove Left update/reverse.
@@ -17,7 +18,7 @@ public:
  GameWindow *window; RvaLeftVelocity m_velocity;
  unsigned startTime,endTime; int animType; bool needsFinish,finished;
 };
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+
 class ProcessAnimateWindowSlideFromLeft {
 public:
  virtual ~ProcessAnimateWindowSlideFromLeft();
