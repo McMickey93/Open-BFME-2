@@ -17,14 +17,11 @@
 // Donor: none (BFME2-only; the gadget names are the Zero Hour
 // GameWindowManagerScript.cpp set). The method name is address-derived.
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef unsigned int UnsignedInt;
-
-#ifndef NULL
-#define NULL 0
-#endif
-
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
 
 void *getDataTemplate(char *type, Int *sizeOut);
 

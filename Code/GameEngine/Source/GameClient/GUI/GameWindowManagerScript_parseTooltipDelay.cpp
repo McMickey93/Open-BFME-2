@@ -17,12 +17,11 @@
 // - m_tooltipDelay sits at instData+0x198 (retail add ecx,0x198); the
 //   TU-local replica pads to that offset (TurretAI-shim precedent).
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class WinInstanceData
 {
@@ -35,8 +34,6 @@ public:
 // Declared extern (not static: MSVC rejects defined-never statics with
 // C2129); the decoration is identical and the pin resolves the address.
 Int scanInt(const char *source, Int &val);
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseTooltipDelay@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseTooltipDelay(char *token, WinInstanceData *instData, char *buffer, void *data)

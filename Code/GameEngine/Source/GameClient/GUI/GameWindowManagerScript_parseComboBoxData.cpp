@@ -21,12 +21,11 @@
 //   with 0x715146 (entries are name@+0/fn@+4; the walker at 0x31701C
 //   compares names and calls [eax+4]).
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class WinInstanceData;
 
@@ -47,8 +46,6 @@ struct ComboBoxData
 // pins resolve the addresses.
 Int scanInt(const char *source, Int &val);
 Int scanBool(const char *source, Bool &val);
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseComboBoxData@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseComboBoxData(char *token, WinInstanceData *instData, char *buffer, void *data)

@@ -14,12 +14,11 @@
 //   the import to esi across the four calls like retail).
 // - seps " :,\n\r\t" lives at 0xC0C254.
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class WinInstanceData;
 
@@ -33,8 +32,6 @@ struct SliderData
 // Declared extern (not static: MSVC rejects defined-never statics with
 // C2129); the decoration is identical and the pin resolves the address.
 Int scanInt(const char *source, Int &val);
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseSliderData@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseSliderData(char *token, WinInstanceData *instData, char *buffer, void *data)

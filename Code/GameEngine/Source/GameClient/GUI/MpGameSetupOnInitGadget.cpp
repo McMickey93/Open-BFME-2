@@ -17,8 +17,8 @@
 // (AptMpGameSetup::InitGadgets dispatch names in .rdata); the method name is
 // the BFME1 donor identity for this same role and gadget-name set.
 
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
+#include <string.h>
+#include <stdio.h>
 
 class WinInstanceData;
 

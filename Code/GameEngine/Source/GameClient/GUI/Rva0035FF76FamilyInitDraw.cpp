@@ -26,15 +26,12 @@ typedef float Real;
 typedef unsigned char UnsignedByte;
 typedef int Color;
 
-#ifndef FALSE
-#define FALSE 0
-#define TRUE 1
-#endif
-
 inline Color GameMakeColor(UnsignedByte red, UnsignedByte green, UnsignedByte blue, UnsignedByte alpha)
 {
 	return (alpha << 24) | (red << 16) | (green << 8) | (blue);
 }
+
+#include <windows.h>
 
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 

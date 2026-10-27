@@ -20,12 +20,11 @@
 //   'STATICTEXTDATA' with 0x715283 (entries are name@+0/fn@+4; the walker
 //   at 0x31701C compares names and calls [eax+4]).
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class WinInstanceData;
 
@@ -39,8 +38,6 @@ struct TextData
 // Declared extern (not static: MSVC rejects defined-never statics with
 // C2129); the decoration is identical and the pin resolves the address.
 Int scanBool(const char *source, Bool &val);
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseStaticTextData@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseStaticTextData(char *token, WinInstanceData *instData, char *buffer, void *data)

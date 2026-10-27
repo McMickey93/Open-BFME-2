@@ -6,13 +6,10 @@
 // No winHide unlike FullFade/TextOnFrame updates. Evidence: vtable 0x0081670C
 // slot 2 plus rowed neighbours plus FadeColor init 0x0035FF85 in same class.
 
+#include <windows.h>
+
 typedef int Int;
 typedef bool Bool;
-
-#ifndef FALSE
-#define FALSE 0
-#define TRUE 1
-#endif
 
 class GameWindow;
 

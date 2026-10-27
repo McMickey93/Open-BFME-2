@@ -21,14 +21,13 @@
 typedef int Int;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
 enum NameKeyType
 {
 	NAMEKEY_INVALID = 0
 };
+
+#include <windows.h>
+#include <string.h>
 
 #include "ascii_string.h"
 
@@ -56,7 +55,6 @@ extern AsciiString g_systemCallbackName;
 
 class WinInstanceData;
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseWinClass@@YA_NPADPAVWinInstanceData@@0PAX@Z
 Bool parseWinClass(char *token, WinInstanceData *instData, char *buffer, void *data)

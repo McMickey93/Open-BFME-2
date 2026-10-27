@@ -21,12 +21,11 @@
 //   with 0x715367 (entries are name@+0/fn@+4; the walker at 0x31701C
 //   compares names and calls [eax+4]).
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class WinInstanceData;
 class GameWindow;
@@ -54,8 +53,6 @@ struct TabControlData
 // pins resolve the addresses.
 Int scanInt(const char *source, Int &val);
 Int scanBool(const char *source, Bool &val);
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseTabControlData@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseTabControlData(char *token, WinInstanceData *instData, char *buffer, void *data)

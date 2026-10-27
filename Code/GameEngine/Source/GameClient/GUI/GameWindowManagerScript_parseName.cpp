@@ -20,14 +20,13 @@
 //   with 0x716355 (entries are name@+0/fn@+4; the walker at 0x31701C
 //   compares names and calls [eax+4]).
 
+#include <windows.h>
+#include <string.h>
+
 #include <assert.h>
 
 typedef int Int;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 enum NameKeyType
 {
@@ -54,7 +53,6 @@ public:
 	AsciiString m_decoratedNameString;  // +0x18C
 };
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseName@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseName(char *token, WinInstanceData *instData, char *buffer, void *data)

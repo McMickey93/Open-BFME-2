@@ -34,12 +34,11 @@ typedef unsigned int UnsignedInt;
 typedef bool Bool;
 typedef unsigned short wchar_t;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
 class AsciiString;
 class UnicodeString;
+
+#include <windows.h>
+#include <string.h>
 
 #include "ascii_string.h"
 
@@ -129,7 +128,6 @@ extern AsciiString g_drawCallbackName;
 
 GameWindow *createGadget(char *type, void *data, GadgetCreateView *view, GameWindow *source);
 
-extern "C" Int __cdecl strcmp(const char *a, const char *b);
 
 void GadgetButtonSetText(GameWindow *window, UnicodeString text);
 void GadgetRadioSetText(GameWindow *window, UnicodeString text);

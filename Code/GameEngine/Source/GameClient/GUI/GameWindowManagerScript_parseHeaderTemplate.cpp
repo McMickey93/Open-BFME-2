@@ -20,9 +20,8 @@
 typedef int Int;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
+#include <string.h>
 
 #include "ascii_string.h"
 
@@ -34,7 +33,6 @@ public:
 	AsciiString m_headerTemplateName;
 };
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
 
 // ?parseHeaderTemplate@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseHeaderTemplate(char *token, WinInstanceData *instData, char *buffer, void *data)

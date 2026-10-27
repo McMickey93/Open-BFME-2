@@ -11,6 +11,8 @@
 // handed to TheAudio slot 25; buttonTriggersOnMouseDown is 0x00327C39; the
 // repeat delay is user data +0x24 and the last repeat time a file static
 // (0x00E01D4C) read against timeGetTime; manager slots 42/43 (tab) and 58.
+#include <windows.h>
+
 #include "Common/BfmeAudioEventPrefix136.h"
 
 typedef int Int;
@@ -51,12 +53,6 @@ enum { KEY_STATE_UP = 0x01, KEY_STATE_DOWN = 0x02, KEY_STATE_LSHIFT = 0x10 };
 #define BitTest(x, i) (((x) & (i)) != 0)
 #define BitSet(x, i) ((x) |= (i))
 #define BitClear(x, i) ((x) &= ~(i))
-
-#ifndef NULL
-#define NULL 0
-#endif
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 class GameWindow;
 

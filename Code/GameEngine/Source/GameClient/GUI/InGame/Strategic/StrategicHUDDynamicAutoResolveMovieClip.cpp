@@ -15,6 +15,9 @@
 // (the leading digit of the path). The panel handlers take the owner slot as
 // a member pointer (the folded vcall thunks 0x005CB26A..0x005CB279). Owner
 // slot names follow the bound callbacks (inference).
+#include <ctype.h>
+#include <stdlib.h>
+
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "Common/BfmeAudioEventPrefix136.h"
@@ -258,8 +261,6 @@ struct Rva005FBED8LivingWorld
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
 
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 
 class Rva005FBEBA { public: void rva005FBEBA(); };
 class Rva005FC1CA { public: void clear(); };
