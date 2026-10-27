@@ -55,7 +55,7 @@ public:
  void invoke();
  FunctorBinding m_binding;
 };
-void *__cdecl operator new(unsigned int size);
+#include <new>
 // The holder constructor (row 0x0057BC63) visible, never inlined: retail's
 // compiler knew it only reads the binding (AptOptionsConstructor.cpp).
 struct Rva0057BC63FunctorHolder {

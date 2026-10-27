@@ -144,7 +144,7 @@ class GameWindowManager;
 extern GameWindowManager *TheWindowManager;
 void _bfme_closeAptScreen(const AsciiString&);
 void Rva00511F73Run();
-void __cdecl operator delete(void*);
+#include <new>
 class Member004443E7
 {
 public:
