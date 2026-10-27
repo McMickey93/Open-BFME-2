@@ -53,24 +53,32 @@ class ScriptEngine
 
 extern ScriptEngine *TheScriptEngine;
 
+// The production condition and execute-actions flag of the prototype's team
+// template (+0x12C), as the Team.cpp seed's TeamTemplateInfo names them.
+struct TeamTemplateProductionView
+{
+	unsigned char m_pad000[0x110];
+	AsciiString m_productionCondition; // +0x110, prototype +0x23C
+	bool m_executeActions; // +0x114, prototype +0x240
+};
+
 class TeamPrototype
 {
 public:
 	bool getIsSingleton() const { return (m_flags & 1) != 0; }
 	Team *getFirstItemIn_TeamInstanceList() const { return m_dlinkhead_TeamInstanceList; }
 	const AsciiString &getOwnerName() const { return m_owner; }
-	const AsciiString &getProductionCondition() const { return m_productionCondition; }
-	bool getExecuteActions() const { return m_executeActions; }
+	const AsciiString &getProductionCondition() const { return m_teamTemplate.m_productionCondition; }
+	bool getExecuteActions() const { return m_teamTemplate.m_executeActions; }
 
 private:
 	unsigned char m_pad00[0x10];
 	AsciiString m_owner; // +0x10
 	unsigned char m_pad14[0x18 - 0x14];
 	int m_flags; // +0x18
-	unsigned char m_pad1C[0x23C - 0x1C];
-	AsciiString m_productionCondition; // +0x23C
-	bool m_executeActions; // +0x240
-	unsigned char m_pad241[0x334 - 0x241];
+	unsigned char m_pad1C[0x12C - 0x1C];
+	TeamTemplateProductionView m_teamTemplate; // +0x12C
+	unsigned char m_pad244[0x334 - 0x244];
 	Team *m_dlinkhead_TeamInstanceList; // +0x334
 };
 
@@ -91,7 +99,7 @@ public:
 
 private:
 	unsigned char m_pad00[0xC0];
-	int m_uniqueTeamID; // +0xC0
+	unsigned int m_uniqueTeamID; // +0xC0
 };
 
 Team *TeamFactory::createInactiveTeam(const AsciiString &owner, const AsciiString &name)

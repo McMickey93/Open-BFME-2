@@ -24,15 +24,23 @@ inline void concatChar(AsciiString &asciiString, char c)
 
 enum { MAX_GENERIC_SCRIPTS = 32 };
 
+// The generic script names of the prototype's team template (+0x12C), as
+// the Team.cpp seed's TeamTemplateInfo names them.
+struct TeamTemplateGenericScriptsView
+{
+	unsigned char m_pad000[0x118];
+	AsciiString m_teamGenericScripts[MAX_GENERIC_SCRIPTS]; // +0x118, prototype +0x244
+};
+
 class TeamPrototype
 {
 public:
 	Script *getGenericScript(int scriptToRetrieve, AsciiString *outName);
-	const AsciiString &getGenericScriptName(int i) const { return m_teamGenericScripts[i]; }
+	const AsciiString &getGenericScriptName(int i) const { return m_teamTemplate.m_teamGenericScripts[i]; }
 
 private:
-	unsigned char m_pad000[0x244];
-	AsciiString m_teamGenericScripts[MAX_GENERIC_SCRIPTS]; // +0x244
+	unsigned char m_pad000[0x12C];
+	TeamTemplateGenericScriptsView m_teamTemplate; // +0x12C
 };
 
 class Team
