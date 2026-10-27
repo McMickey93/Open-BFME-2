@@ -34,4 +34,11 @@ struct Rva0052D742Record {
 private: char bytes[184];
 };
 namespace _STL { template<> inline void _Construct<Rva0052D742Record,Rva0052D742Record>(Rva0052D742Record*p,const Rva0052D742Record&v) { _STLP_PLACEMENT_NEW ((void*)p) Rva0056616B(*(const Rva0056616B*)&v); } }
+// _M_clear's range destroy is the rowed Rva0052C24EDestroyRange (0x0052C24E,
+// Rva0052BF33DestroyTagged.cpp); forward to it so the kept _M_clear copy
+// calls that owner.
+struct Rva0052BCE7Elem;
+void __cdecl Rva0052C24EDestroyRange(Rva0052BCE7Elem *, Rva0052BCE7Elem *);
+namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<Rva0052D742Record *>(Rva0052D742Record *__first, Rva0052D742Record *__last)
+{ Rva0052C24EDestroyRange(reinterpret_cast<Rva0052BCE7Elem *>(__first), reinterpret_cast<Rva0052BCE7Elem *>(__last)); } }
 template void _STL::vector<Rva0052D742Record>::_M_insert_overflow(Rva0052D742Record*,const Rva0052D742Record&,const _STL::__false_type&,unsigned int,bool);

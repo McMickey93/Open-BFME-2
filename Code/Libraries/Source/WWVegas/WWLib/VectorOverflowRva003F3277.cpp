@@ -22,4 +22,13 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 struct Rva003F3277Record { Rva003F3277Record(); Rva003F3277Record(const Rva003F3277Record&); ~Rva003F3277Record(); Rva003F3277Record&operator=(const Rva003F3277Record&); private: char bytes[12]; };
 namespace _STL {template<> void _Construct<Rva003F3277Record,Rva003F3277Record>(Rva003F3277Record*,const Rva003F3277Record&);}
+// _M_clear's range destroy is retail's 12-byte _Destroy rowed as
+// _Destroy<DynamicPortalLink*> (0x003F29F8); forward to that row's name so the
+// kept _M_clear copy calls its owner.
+struct DynamicPortalLink;
+namespace _STL {
+template <> void _Destroy<DynamicPortalLink *>(DynamicPortalLink *, DynamicPortalLink *);
+template <> __declspec(dllimport) __forceinline void _Destroy<Rva003F3277Record *>(Rva003F3277Record *__first, Rva003F3277Record *__last)
+{ _Destroy(reinterpret_cast<DynamicPortalLink *>(__first), reinterpret_cast<DynamicPortalLink *>(__last)); }
+}
 template void _STL::vector<Rva003F3277Record>::_M_insert_overflow(Rva003F3277Record*,const Rva003F3277Record&,const _STL::__false_type&,unsigned int,bool);
