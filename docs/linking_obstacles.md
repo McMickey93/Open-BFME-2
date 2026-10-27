@@ -3998,3 +3998,11 @@ Completed: `SubObjectsUpgrade.cpp` declares `protected: virtual ~UpgradeModule()
 Remaining / next check: other units whose only unresolved name is a placeholder base destructor reached from an implicit inline dtor; check the object's emitting COMDAT (often referenced only by `.debug$F`) and declare the rowed owner's destructor instead of providing the placeholder.
 Clearance: SubObjectsUpgrade.cpp ordinary-preview LINKS at the revision above; no other unit claimed.
 Census confirmation: awaiting the next census.
+
+### LINK-111: a placeholder-named placement-copy row hides the `_Construct` instantiation its consumer references
+Status: Blocked on a reviewed row retraction and re-add (RVAs claimed by another worker). Updated: 2026-10-27; inspected revision: 7ed44e8ffd; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.
+Evidence / affected units: `Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp` (1,101 B) still has `??$_Construct@UQuantityModifier@@U1@@_STL@@YAXPAUQuantityModifier@@ABU1@@Z` as its only unresolved name in a current-object `link_check.py`. The body at 0x0049DD0B (45 B, EH) is rowed as the placeholder `?Rva0049DD0BConstruct@@YAXPAXPBX@Z` in `stlport_construct_stl_types.cpp`; a scan of retail `.text` finds only four callers, all `vector<QuantityModifier>` helpers (0x49DD46 `__uninitialized_copy`, 0x49DD71 `__uninitialized_fill_n`, 0x49F77C `_M_insert_overflow`, 0x49FDD4 `push_back`), so the row is structurally `_Construct<QuantityModifier, QuantityModifier>` delegating to the `ConstructProbePair` copy.
+Completed: diagnosis only; no source or ledger change. Attempt evidence: `reverse/re_attempts.log` (blocked, 0x0049DD0B).
+Remaining / next check: emit that explicit specialization (the existing `Rva0039A48EElement` pattern in the same file) and move the parent row, its `$L6605` funclet (0x0078D8B3) and `__ehhandler$` row (0x0078D8C1) to the new name. `rename.py` refuses the signature change and `add_match.py --replace-rva` takes scaffold rows only, so retract the three rows in their own reviewed commit and re-add them with `add_match.py`; then `link_check.py` ProductionUpdate.cpp together with stlport_construct_stl_types.cpp.
+Clearance: pending.
+Census confirmation: not claimed.
