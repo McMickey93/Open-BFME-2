@@ -1,4 +1,4 @@
-// cl: -DNDEBUG -MD -EHsc -Ireference/open-bfme-1/game/GameEngine/Source/GameClient/GUI/Palantir
+// cl: /DBFME_ASCII_DTOR_DECL /Ireference/shims/bfme2_ascii -DNDEBUG -MD -EHsc -Ireference/open-bfme-1/game/GameEngine/Source/GameClient/GUI/Palantir
 //
 // BFME2 literal fix: retail's two statics name "NonCommand_MultiplayerOptions"
 // (VA 0x00C02D90, the observer-active arm) and "NonCommand_Options" (VA
@@ -9,13 +9,11 @@
 // 228 bytes.  Same two-static shape as 0x0058ECA0, but the selector is a live
 // observer plus a predicate call rather than a flag bit.
 
-class AsciiStringYU
-{
-public:
-	AsciiStringYU(const char *text);
-
-	~AsciiStringYU(void);
-};
+// The two function-local statics are real AsciiStrings: retail constructs them
+// through the StringBase C-string ctor (0x00037BA0) and registers atexit
+// cleanups 0x007B79BF / 0x007B79B5 (ecx=static, jmp ??1AsciiString 0x0048BA39),
+// which this unit emits as _$E2 / _$E3.
+#include "ascii_string.h"
 
 #include "../../../Common/GameLogicObjectLookupView.h"
 
@@ -37,30 +35,23 @@ extern ControlBar *TheControlBar;			// retail 0x012F33F8
 // can prove a mangle; renaming changes only the linker label, not bytes.
 void __stdcall bfmeApplyYU(int unused)
 {
-	AsciiStringYU *name;
+	AsciiString *name;
 
 	if (TheGameLogic != 0 && TheGameLogic->isInMultiplayerGame())
 	{
-		static AsciiStringYU s_bfmeObjectivesYU("NonCommand_MultiplayerOptions");
+		static AsciiString s_bfmeObjectivesYU("NonCommand_MultiplayerOptions");
 
 		name = &s_bfmeObjectivesYU;
 	}
 	else
 	{
-		static AsciiStringYU s_bfmeOtherYU("NonCommand_Options");
+		static AsciiString s_bfmeOtherYU("NonCommand_Options");
 
 		name = &s_bfmeOtherYU;
 	}
 
-	const CommandButton *entry = TheControlBar->findCommandButton(*(const AsciiString *)name);
+	const CommandButton *entry = TheControlBar->findCommandButton(*name);
 
 	if (entry != 0)
 		TheControlBar->rva004C1B60(0, (void *)entry);
 }
-
-// Placeholder names this unit's own object settles.  In retail each one holds
-// what the unit's matched code references or installs: the rowed function of
-// the vftable slot it occupies, or the function or datum the instruction
-// reaches, so bind the placeholder to that row's name.
-#pragma comment(linker, "/alternatename:??0AsciiStringYU@@QAE@PBD@Z=??0?$StringBase@D@@AAE@PBD@Z")
-#pragma comment(linker, "/alternatename:??1AsciiStringYU@@QAE@XZ=??1?$list@URva0036ADF9Element@@V?$allocator@URva0036ADF9Element@@@_STL@@@_STL@@QAE@XZ")

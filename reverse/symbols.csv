@@ -1631,7 +1631,6 @@ name,address,notes
 ??0AsciiStringWI@@QAE@ABV0@@Z,0x000365F0,callee of 0Gen_003BEA30 (0x002B59AA) at the site its BFME1 donor calls it; may be an ICF alias
 ??0AsciiStringWN@@QAE@ABV0@@Z,0x000365F0,callee of 0Gen_004E9FD0 (0x00415FAB) at the site its BFME1 donor calls it; may be an ICF alias
 ??0AsciiStringYI@@QAE@PBD@Z,0x00037BA0,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
-??0AsciiStringYU@@QAE@PBD@Z,0x00037BA0,callee of ?bfmeApplyYU@@YGXH@Z at retail 0x002D4F6B and 0x002D4F9A read from its REL32 displacements; donor TU-local AsciiStringYU const-char ctor view folding the rowed AsciiString/StringBase ctor at this address
 ??0AssaultTransportAIUpdate@@QAE@PAVThing@@PBVModuleData@@@Z,0x0048F5A3,Behavior ctor installing the 6 rowed-dtor vtables plus 0xA at 0x43C; sole raw caller is the instance factory 0x24D263 which news 0x444; poolkey plus name plus beginAssault rowed in cluster
 ??0AttackObjectGroupOrder@@QAE@ABV0@@Z,0x00546F2F,callee read from retail REL32 at a given-back caller; byte-verified in the solo fork as Code/GameEngine/Source/GameLogic/AI/AttackObjectGroupOrderCtor.cpp (row not yet given back)
 ??0AttackObjectGroupOrder@@QAE@XZ,0x00546F03,callee read from retail REL32 at a given-back caller; byte-verified in the solo fork as Code/GameEngine/Source/GameLogic/AI/AttackObjectGroupOrderCtor.cpp (row not yet given back)
