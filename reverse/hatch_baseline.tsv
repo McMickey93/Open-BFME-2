@@ -10882,8 +10882,8 @@ pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameFont.cpp	"s",off	2
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameFont.cpp	"t",on	2
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript.cpp	"",on	2
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript.cpp	"s",on	2
-pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp	"",on	2
-pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp	"t",on	2
+pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp	"",on	1
+pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/MapMetaData_MPPositionWriters.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/MapMetaData_MPPositionWriters.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindow.cpp	"",on	9
