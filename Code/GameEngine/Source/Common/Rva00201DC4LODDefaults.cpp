@@ -10,27 +10,27 @@
 struct Rva00201DC4LODInfo
 {
     Rva00201DC4LODInfo();
-    int word00, word04, m_maxParticleCount;
+    int m_modelLOD, m_effectsLOD, m_maxParticleCount;
     bool flag0C, flag0D, m_useShadowMapping;
-    int word10;
+    int m_shadowLOD;
     bool m_useTerrainNormalMap, m_useDistanceDependantTerrainTextures;
-    int word18;
+    int m_waterLOD;
     bool m_showSoftWaterEdge;
     int m_maxTankTrackEdges, m_maxTankTrackOpaqueEdges, m_maxTankTrackFadeDelay, m_textureReduction;
     bool flag30;
-    int word34, word38;
-    bool flag3C, flag3D;
+    int m_animationDetail, m_shaderLOD;
+    bool m_shaderMaterialReplacement, flag3D;
     int m_decalLOD, word44, word48;
 };
 
 Rva00201DC4LODInfo::Rva00201DC4LODInfo()
 {
-    word00=2; word04=3; m_maxParticleCount=2500;
+    m_modelLOD=2; m_effectsLOD=3; m_maxParticleCount=2500;
     flag0C=true; flag0D=true; m_useShadowMapping=false;
-    word10=3; m_useTerrainNormalMap=true; m_useDistanceDependantTerrainTextures=true; word18=2;
+    m_shadowLOD=3; m_useTerrainNormalMap=true; m_useDistanceDependantTerrainTextures=true; m_waterLOD=2;
     m_showSoftWaterEdge=true; m_maxTankTrackEdges=100; m_maxTankTrackOpaqueEdges=25; m_maxTankTrackFadeDelay=300000;
-    m_textureReduction=0; flag30=true; word34=3; word38=0;
-    flag3C=false; flag3D=false; m_decalLOD=2; word44=1; word48=1;
+    m_textureReduction=0; flag30=true; m_animationDetail=3; m_shaderLOD=0;
+    m_shaderMaterialReplacement=false; flag3D=false; m_decalLOD=2; word44=1; word48=1;
 }
 
 // The same native manager passes VA0x00601E2B with count5, stride0x10,
