@@ -18,7 +18,7 @@
 
 // Declared so the array path frees through operator delete[] (0x0002FD80)
 // as retail does; left undeclared, cl falls back to scalar operator delete.
-void operator delete[](void *p);
+#include <new>
 
 
 // These base views describe subobjects and do not own standalone vtables.

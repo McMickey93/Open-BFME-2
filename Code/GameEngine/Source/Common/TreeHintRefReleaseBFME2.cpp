@@ -5,5 +5,5 @@
 // This release is called by the mapped value in pair destructor0x2175CE.
 // The original application object type remains unknown.
 struct TargetRef00217D4C { virtual void *destroy(unsigned flags); int references; };
-void operator delete(void *p);
+#include <new>
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *p) { if (--p->references <= 0) ::operator delete(p->destroy(0)); }
