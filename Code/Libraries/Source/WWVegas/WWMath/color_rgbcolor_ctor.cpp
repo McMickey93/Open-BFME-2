@@ -10,16 +10,8 @@
 // the ascii_string.cpp run at 0x0000654A rather than beside the rest of
 // color.cpp, so it came from another unit that merely included the header.
 
-struct RGBColor
-{
-    RGBColor(int color);
-
-    void setFromInt(int color);
-
-    float red;
-    float green;
-    float blue;
-};
+#define RGBCOLOR_VIEW_INT_CTOR
+#include "../../../Include/Lib/RGBColor.h"
 
 RGBColor::RGBColor(int color)
 {

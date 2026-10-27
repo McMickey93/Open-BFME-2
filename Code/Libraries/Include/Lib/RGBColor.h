@@ -11,6 +11,11 @@ struct RGBColor {
     // Byte-verified owners in color.cpp (0x4EDF/76 and 0x4EA7/56).
     void setFromInt(int value) throw();
     int getAsInt() const throw();
+#ifdef RGBCOLOR_VIEW_INT_CTOR
+    // Native out-of-line constructor 0x00006538/18, owner color_rgbcolor_ctor.cpp; it forwards
+    // to setFromInt. Select before the first include; other units keep aggregate construction.
+    RGBColor(int color);
+#endif
 };
 
 #endif // CANONICAL_RGBCOLOR_H
