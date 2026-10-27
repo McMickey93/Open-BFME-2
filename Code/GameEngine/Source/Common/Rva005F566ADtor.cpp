@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc /Ob2
 // ??1Rva005F566A@@UAE@XZ @0x005F566A 14B: dtor sets vptr then tail-jmps to rowed clear 0x005F55FA; caller deleting dtor 0x005F5678
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 class Rva005F566A;
 class Rva0057C394;
