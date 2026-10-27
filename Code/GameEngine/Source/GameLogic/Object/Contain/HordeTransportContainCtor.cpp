@@ -30,13 +30,10 @@ char g_00C45EB8;
 class Thing;
 class ModuleData;
 
-struct Coord2D
-{
-	Coord2D();
-
-	float x;
-	float y;
-};
+// Retail's Coord2D with its out-of-line empty default constructor (0x0047A6A9)
+// and no destructor, so the member adds no unwind state.
+#define COORD2D_VIEW_EXTERN_CTOR
+#include "../../../../../Libraries/Include/Lib/Coord2DCtorView.h"
 
 #pragma pack(push, 1)
 class TransportContain

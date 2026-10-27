@@ -5,13 +5,10 @@
 // 0x47A6A9, ICF twin with Region2D/Region3D), count 3, stride 8, and calls
 // rowed vector_constructor_iterator at 0x1423. Precedent Rva0007671FCtor
 // (22B, 4x0x10 Region2D) same recipe. Evidence: unlock lane, caller 0xAB5D7.
-class Coord2D
-{
-public:
-	Coord2D();
-	float x;
-	float y;
-};
+// Retail's Coord2D with its out-of-line empty default constructor (0x0047A6A9),
+// which the array member's vector_constructor_iterator calls.
+#define COORD2D_VIEW_EXTERN_CTOR
+#include "../../../Libraries/Include/Lib/Coord2DCtorView.h"
 class Rva000A953B
 {
 public:
