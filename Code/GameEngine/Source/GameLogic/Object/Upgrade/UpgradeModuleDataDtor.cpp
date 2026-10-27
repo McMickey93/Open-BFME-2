@@ -10,7 +10,8 @@
 // calls 0x255A42, and ??1GrantScienceUpgradeModuleData @0x25637D (matched)
 // calls it as its base dtor after destroying its own +0x60 string.
 
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 class AsciiStringMember
 {
 public:

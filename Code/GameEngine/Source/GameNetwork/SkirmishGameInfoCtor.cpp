@@ -10,7 +10,8 @@
 // the matched destructor 0x0022C516 tears down. Unlike that destructor (which
 // stores no vftable), the constructor installs one, so the class is not
 // novtable here.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 typedef int Int;
 
 enum { MAX_SLOTS = 8 };

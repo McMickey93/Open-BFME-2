@@ -35,6 +35,8 @@
 // under two different call sites; the bytes do not say the two owners are
 // related.  All names here are address-derived.
 
+#include <new.h>
+
 class GenAlloc
 {
 public:
@@ -105,8 +107,6 @@ struct Rva00802D00Element
 	int m_value38;
 	int m_value3c;
 };
-
-inline void *operator new( unsigned int, void *where ) { return where; }
 
 // -------------------------------------------------- plain release-and-clear
 class Rva007F6CF0Block

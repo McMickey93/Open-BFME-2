@@ -8,7 +8,8 @@
 // six floats at +0x08..+0x1C via movss, ints/bytes at +0x20..+0x32, byte +0x32=1.
 // Caller at 0x0025425E. Finish from banked 0.97 stash: xor ecx early vs late
 // only diff; try literals for ints so xor lands late like retail.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 

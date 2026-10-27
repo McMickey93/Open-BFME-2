@@ -6,7 +6,8 @@
 // 0x0084ED70, sets +0x3C to 1. Evidence: leaf lane; vtable store;
 // base size 0x38 from DestroyDieModuleDataCtor TU; flags from neighbours;
 // explicit-vtable pattern from ToggleHiddenSpecialAbilityUpdateCtor TU.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 

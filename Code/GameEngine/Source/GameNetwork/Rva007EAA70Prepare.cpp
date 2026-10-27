@@ -1,6 +1,8 @@
 // cl: /O2
 // 0x007EAA70 / 0x007EAB40: lazy-init the FESL service pair at +0x268/+0x284.
 
+#include <new.h>
+
 class BfmeThingUNB
 {
 public:
@@ -34,11 +36,6 @@ int Rva00668100Get(void);
 int Rva00669530Get(void);
 Rva007FBB20Object *Rva007FBB20(void *payload);
 Rva007FCF80Object *Rva007FCF80(void *payload);
-
-inline void *operator new(unsigned int, void *p)
-{
-	return p;
-}
 
 class Rva007EAA70Owner
 {

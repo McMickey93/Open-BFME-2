@@ -372,17 +372,13 @@ Code/GameEngine/Source/GameClient/GUI/ControlBar/Rva0031DCF0ControlBarDtor.cpp	u
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroPowers.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/ControlBarPopupDescription.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMessageBox.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<windows.h>	yes	yes	hand			FALSE:unverified
-Code/GameEngine/Source/GameClient/GUI/Rva00575F38Dtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/GameClient/InGameUISuperweapons.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIArmyUnitIconLifetime.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIBuildQueueIconSelect.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		free:unverified
 Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIResolveBattlesBehavior.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameClient/MapUtilGetDefaultMap.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemInfoCopyCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
-Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleTerrainCollisionUpdate.cpp	unverified	unverified	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand	27: reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib/always.h:61 malloc(unknown); reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib/always.h:62 calloc(unknown); reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib/always.h:63 realloc(unknown)		atan2:unknown
-Code/GameEngine/Source/GameClient/System/ParticleSystemConstructor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/AI/AIMoveAndEvacuateStateUpdate.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<windows.h>	yes	yes	hand			FALSE:unverified
-Code/GameEngine/Source/GameLogic/AI/PartitionFilterCtorCopies.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudio.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioAudioMap.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioSoundKeyPair.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
@@ -395,20 +391,12 @@ Code/GameEngine/Source/GameLogic/Map/TerrainLogicCtor.cpp	unverified	unverified	
 Code/GameEngine/Source/GameLogic/Map/TerrainLogicDeleter.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/Map/W3DTerrainLogic.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorRva00398E9A.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
-Code/GameEngine/Source/GameLogic/Object/Behavior/Rva004FAC6BCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<windows.h>	yes	yes	hand			FALSE:unverified
 Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainRva00475F61.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand	3: reference/open-bfme-1/inputs/vendor/stlport/stl/_algobase.h:51 stl/_pair.h(unknown); reference/open-bfme-1/inputs/vendor/stlport/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/open-bfme-1/inputs/vendor/stlport/stl/_algobase.h:575 stl/_algobase.c(unknown)		free:unverified
-Code/GameEngine/Source/GameLogic/Object/Die/FXListDieModuleData.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
-Code/GameEngine/Source/GameLogic/Object/GenericObjectCreationNuggetDoStuffToObj.cpp	unverified	unverified	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	27: reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:61 malloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:62 calloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:63 realloc(unknown)		memset:same
-Code/GameEngine/Source/GameLogic/Object/GenericObjectCreationNuggetDtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<windows.h>	yes	yes	hand			TRUE:unverified
 Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdateModuleDataCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
-Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyCenterDockUpdate.cpp	unverified	unverified	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand	27: reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:61 malloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:62 calloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:63 realloc(unknown)		ceil:same
-Code/GameEngine/Source/GameLogic/Object/Update/QueueProductionExitUpdateModuleData.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdateUpdate.cpp	unverified	unverified	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	27: reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:61 malloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:62 calloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:63 realloc(unknown)		max:unknown
 Code/GameEngine/Source/GameLogic/Object/Upgrade/RemoveUpgradeUpgradeImplementation.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
-Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataDtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
-Code/GameEngine/Source/GameLogic/ScriptEngine/OrConditionCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_writeOutINI.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListRva003B7167Dtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListRva003B766BDtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
@@ -422,12 +410,6 @@ Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva003F6A91Dtor.cpp	unverifi
 Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadLookupStat.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	2	<excpt.h>,<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadStats.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	2	<excpt.h>,<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadStats_PackStatKey.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	2	<excpt.h>,<crtdbg.h>	no	yes	hand			free:unverified
-Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
-Code/GameEngine/Source/GameNetwork/Rva007EAA70Prepare.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
-Code/GameEngine/Source/GameNetwork/Rva00801B70FeslAlloc.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
-Code/GameEngine/Source/GameNetwork/Rva00801BD0FeslAlloc.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
-Code/GameEngine/Source/GameNetwork/SkirmishGameInfoCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
-Code/GameEngine/Source/GameNetwork/V2FeslArrayBlocks.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
 Code/GameEngine/Source/GameNetwork/createServiceHubImpl.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/Rva000C433AAttachment.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/Libraries/Source/WWVegas/WW3D2/Render2DClassReset.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		realloc:unverified

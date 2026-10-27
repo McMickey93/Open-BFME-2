@@ -12,7 +12,7 @@
 // Inline row Set operations preserve native EH state4 after first matrix row.
 // Row16 ctor is a3-byte twin of retail's empty constructor47A6A9: the
 // native array-iterator arguments independently prove16-byte rows/count3.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
 #include "ascii_string.h"
 class ParticleSystemTemplate;
 class ParticleSystem;

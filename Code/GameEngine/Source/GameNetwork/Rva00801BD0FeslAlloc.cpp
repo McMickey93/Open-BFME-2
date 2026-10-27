@@ -2,6 +2,8 @@
 // Allocate counted 0x38-stride array: clear, Gen007EFFC0 acquire, placement-new
 // Rva00802680Owner per slot. Sibling of clear@Rva00801600 at 0x00801600.
 
+#include <new.h>
+
 class GenAlloc
 {
 public:
@@ -18,8 +20,6 @@ class Rva00802680Owner
 public:
 	Rva00802680Owner();
 };
-
-inline void *operator new( unsigned int, void *where ) { return where; }
 
 class Rva00801600
 {

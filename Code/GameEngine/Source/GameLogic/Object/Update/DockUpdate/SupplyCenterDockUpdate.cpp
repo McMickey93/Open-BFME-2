@@ -282,7 +282,7 @@ public:
  virtual void addFloatingText(const UnicodeString &, const Coord3D *, unsigned int);
 };
 extern InGameUI *TheInGameUI;
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 #include "wwmath.h"
 __forceinline long fast_float2long_round(float f) {return WWMath::Float_To_Long(f);}
 struct SupplyCenterDockUpdateModuleData { char pad[0x10]; float m_valueMultiplier; int m_bonusScience; float m_bonusScienceMultiplier; };

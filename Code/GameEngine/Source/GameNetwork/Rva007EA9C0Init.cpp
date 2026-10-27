@@ -2,6 +2,8 @@
 // 0x007EA9C0: start NetConn if needed, then lazy-init the FESL service pair
 // at +0x250 the same way 0x007EAA70 does for +0x268.
 
+#include <new.h>
+
 class BfmeThingUNB
 {
 public:
@@ -33,11 +35,6 @@ void *Gen007F0130(unsigned int size);
 int Rva006655E0Get(void);
 BfmeThingDGG *bfmeGoDGG(void *a);
 int Rva007EB380Startup(char *params);
-
-inline void *operator new(unsigned int, void *p)
-{
-	return p;
-}
 
 class Rva007EA9C0Owner
 {

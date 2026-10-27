@@ -4,7 +4,6 @@
 #include <math.h>
 #include "Lib/Coord3D.h"
 #include "matrix3d.h"
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 class FXList {public:static void doFXPos(const FXList*,const Coord3D*,const Matrix3D*,float,const Coord3D*);};
 class CollisionTerrainView {public:virtual void f0();virtual void f1();virtual void f2();virtual void f3();virtual void f4();virtual void f5();virtual float height(float,float,void*);};
 class TerrainLogic;

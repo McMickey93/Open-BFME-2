@@ -6,6 +6,7 @@
 #include "matrix3d.h"
 #include "../../Common/GameLogicObjectLookupView.h"
 #include "ascii_string.h"
+#include <string.h>
 
 // GenericObjectCreationNugget::doStuffToObj, retail 0x001F22A8..0x001F2EAB
 // (3075 B, ret 0x20; eight arguments: BFME 2 adds the radial index used by
@@ -403,7 +404,6 @@ extern TerrainLogic *TheTerrainLogic;
 
 extern GameLogic *TheGameLogic;
 
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
 Int GetGameLogicRandomValue(Int lo, Int hi, char *file, Int line);
 Real GetGameLogicRandomValueReal(Real lo, Real hi, char *file, Int line);
 Real normalizeAngle(Real angle);

@@ -16,6 +16,7 @@
 // full scalar map.
 
 #include "ascii_string.h"
+#include <new.h>
 
 class PoolMember
 {
@@ -63,7 +64,6 @@ public:
 };
 // ??0ObjectCreationNugget@@QAE@XZ @0x001F0102 9B: the default constructor, storing the
 // class's own vtable (VA 0x00BE09D0) and returning this.
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline ObjectCreationNugget::ObjectCreationNugget()

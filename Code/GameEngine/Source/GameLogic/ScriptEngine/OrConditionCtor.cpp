@@ -8,6 +8,8 @@
 // two members the body touches are modelled; MemoryPoolObject contributes
 // just the vptr here. Skeleton twin of the 0x0031454D base constructor.
 
+#include <new.h>
+
 class Condition;
 
 class OrCondition
@@ -25,7 +27,6 @@ __declspec(noinline) inline OrCondition::OrCondition() : m_nextOr(0), m_firstAnd
 {
 }
 
-inline void *operator new(unsigned int, void *p) { return p; }
 static void anchorOrConditionCtor(void *p) { new (p) OrCondition(); }
 namespace { void (*kAnchorOrConditionCtor)(void *) = &anchorOrConditionCtor; }
 

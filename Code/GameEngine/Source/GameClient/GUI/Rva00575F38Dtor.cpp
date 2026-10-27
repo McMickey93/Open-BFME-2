@@ -28,7 +28,8 @@
 // receives one saved owner->m_04 receiver and the +0x0C base pointer. All
 // out-of-line callees already have matched bodies; no constructor pin is needed.
 
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 enum GameMessageDisposition { KEEP_MESSAGE, DESTROY_MESSAGE };
 class GameMessage;
 class LivingWorldLogic;

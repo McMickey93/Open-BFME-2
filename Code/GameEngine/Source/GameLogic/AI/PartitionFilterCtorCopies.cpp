@@ -7,7 +7,7 @@
 // what the constructors touch). Retail keeps these copies out of line beside
 // their callers; here each constructor is select-any like every other unit's
 // inline copy, and an anchor keeps the noinline body emitted.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
 
 class Object;
 class Player;
