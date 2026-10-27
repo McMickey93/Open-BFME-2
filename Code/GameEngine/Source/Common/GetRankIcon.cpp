@@ -5,7 +5,6 @@
 #include "ascii_string.h"
 #include <stdio.h>
 
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
 
 class Image;
 class ImageCollection

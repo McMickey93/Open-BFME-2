@@ -8,7 +8,7 @@
 // winGetStatus row 0x30F45F mov eax [ecx+8], winEnable row 0x313BEC,
 // empty string 0xBBAC1C, caller 0x411413, prev 0x4105A8 next 0x410688.
 
-extern "C" __declspec(dllimport) int __cdecl strncmp(const char *s1, const char *s2, unsigned int n);
+#include <string.h>
 
 
 struct AsciiHeader

@@ -11,7 +11,7 @@
 // (0x00BBB5C4) plus L"true" (0x00BBC418). The owning TUs and the globals' names are not established; the
 // RVA names stand in for them. /O2: retail drops the two stack words with
 // `add esp, 8`, where /O1 emits `pop ecx` twice.
-extern "C" int __cdecl atexit( void ( __cdecl * )( void ) );
+#include <stdlib.h>
 
 namespace _STL
 {
