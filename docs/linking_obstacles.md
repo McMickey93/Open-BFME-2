@@ -5157,3 +5157,17 @@ which `reverse/data_ledger.csv` and dx8wrapper.cpp define as
 destructor thunk, now names it through a minimal DX8Wrapper view that befriends
 the thunk. Builds 909/909 matched; `link_check.py` predicts LINKS 0 -> 9,050 B
 (census confirmation pending).
+
+Blocked (claude2, same pass): LANAPICallbacks.cpp (5,570 B) and
+LANAPILobbyMenuForwarders.cpp (105 B) have the sole blocker
+`?g_Va00E03354@@3PAURva004469D1Receiver@@A`, a second, typed name for the LAN
+menu pointer at VA 0x00E03354. Every other consumer binds the ledger owner
+`extern int g_Va00A03354;` (Rva0050E9D3Enable.cpp). Rebinding both units to it
+and casting to their views built 50/50 and 4/4 matched, and `link_check.py`
+predicted 2/2 LINKS, 0 -> 5,675 B. `hatch_counters` refused the commit:
+moving 9 + 7 address_global occurrences from key g_Va00E03354 to key
+g_Va00A03354 counts as growth, and `--update` cannot move them across keys.
+Reverted and recorded as a false reject in `reverse/re_attempts.log`. Next: a
+tooling seat lets `--update` move a same-address rename between keys, or the
+global's real name is recovered (no BFME 1 or WorldBuilder name found; BFME 1
+also uses an address name).
