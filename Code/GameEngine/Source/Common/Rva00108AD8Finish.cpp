@@ -40,6 +40,16 @@ public:
 };
 // ?Is_Done@HashTableIteratorClass@@QAE_NXZ present-unmatched
 inline bool HashTableIteratorClass::Is_Done() { return m_cur == 0; }
+// The loop walks the table through the texture manager's iterator subclass
+// (target facts): the inline ctor stores VA 0x00BCF9AC, the one-slot table
+// whose deleting dtor 0x00108D17 calls 0x00108650, and that destructor stores
+// HashTableIteratorClass's own table 0x00BCEF9C (Rva000F1AD8Clear.cpp gives
+// the evidence). Zero Hour and BFME 1 spell it W3DShadowTextureManagerIterator.
+class W3DShadowTextureManagerIterator : public HashTableIteratorClass
+{
+public:
+	W3DShadowTextureManagerIterator(HashTableClass *hashTable) : HashTableIteratorClass(hashTable) {}
+};
 class Base8
 {
 public:
@@ -63,7 +73,7 @@ public:
 void Rva00108AD8::invalidateCachedLightPositions()
 {
 	HashTableClass *hashTable = m_table;
-	HashTableIteratorClass it(hashTable);
+	W3DShadowTextureManagerIterator it(hashTable);
 	it.First();
 	while (!it.Is_Done())
 	{

@@ -34,6 +34,24 @@ public:
  bool Is_Done() { return m_cur == 0; }
  HashableClass *Get_Current() { return m_cur; }
 };
+// The loops below walk their tables through WWLib's per-manager iterator
+// subclasses, not HashTableIteratorClass itself (target facts): each inline
+// ctor stores VA 0x00BCF9AC, whose one slot is the deleting dtor 0x00108D17
+// calling the destructor 0x00108650, and that destructor stores VA 0x00BCEF9C:
+// the subclass's own store is dead behind the expanded empty base destructor.
+// 0x00BCEF9C is HashTableIteratorClass's one-slot table, emitted beside
+// HashableClass's 0x00BCEF94 (deleting dtor, pure Get_Key) and stored by the
+// iterator ctor 0x000EF9F3 with the table at +4. Zero Hour and BFME 1 derive
+// W3DShadowGeometryManagerIterator and W3DShadowTextureManagerIterator from
+// HashTableIteratorClass with no members of their own; ICF leaves one table.
+class W3DShadowGeometryManagerIterator : public HashTableIteratorClass {
+public:
+ W3DShadowGeometryManagerIterator(HashTableClass *hashTable) : HashTableIteratorClass(hashTable) {}
+};
+class W3DShadowTextureManagerIterator : public HashTableIteratorClass {
+public:
+ W3DShadowTextureManagerIterator(HashTableClass *hashTable) : HashTableIteratorClass(hashTable) {}
+};
 struct W3DShadowGeometryManager {
  HashTableClass *m_00;
  void rva000F1AD8();
@@ -41,7 +59,7 @@ struct W3DShadowGeometryManager {
 void W3DShadowGeometryManager::rva000F1AD8()
 {
  HashTableClass *hashTable = m_00;
- HashTableIteratorClass it(hashTable);
+ W3DShadowGeometryManagerIterator it(hashTable);
  it.First();
  while (!it.Is_Done()) {
  HashableClass *hashable = it.Get_Current();
@@ -71,7 +89,7 @@ public:
 void BfmeSub928F::bfmeTail928F()
 {
     HashTableClass *hashTable = m_texturePtrTable;
-    HashTableIteratorClass it(hashTable);
+    W3DShadowTextureManagerIterator it(hashTable);
     it.First();
     while (!it.Is_Done())
     {
