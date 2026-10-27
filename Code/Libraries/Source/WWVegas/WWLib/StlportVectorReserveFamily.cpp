@@ -50,5 +50,13 @@ template <> void _Destroy<Rva003328B6Element *>(Rva003328B6Element *, Rva003328B
 template <> void _Construct<Rva004F6352, Rva004F6352>(Rva004F6352 *, const Rva004F6352 &);
 template <> void _Destroy<Rva004F6352 *>(Rva004F6352 *, Rva004F6352 *);
 }
+// The 12-byte _M_clear is the rowed ??1Rva0026E5B9 (0x0026E5B9), reached through
+// the forwarder StlportVectorInsertOverflowFamily.cpp uses, so this unit emits
+// no unrowed _M_clear/_Destroy copy for it.
+class Rva0026E5B9 { public: ~Rva0026E5B9(); };
+namespace _STL {
+template <> __declspec(dllimport) __forceinline void vector<Rva003328B6Element, allocator<Rva003328B6Element> >::_M_clear()
+{ ((Rva0026E5B9 *)this)->Rva0026E5B9::~Rva0026E5B9(); }
+}
 template void _STL::vector<Rva003328B6Element>::reserve(unsigned int);
 template void _STL::vector<Rva004F6352>::reserve(unsigned int);
