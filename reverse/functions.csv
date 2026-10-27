@@ -17545,7 +17545,6 @@ uw_00784cf1,,0x00784CF1,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;obje
 uw_00784d1b,,0x00784D1B,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_00784d73,,0x00784D73,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L9640
 uw_00784d85,,0x00784D85,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4168
-uw_00784ec4,,0x00784EC4,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L885
 uw_00784ed6,,0x00784ED6,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L921
 uw_00784efa,,0x00784EFA,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L5178
 uw_00785056,,0x00785056,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2327
@@ -98525,3 +98524,4 @@ $L577,,0x007846D0,8,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldArm
 $L492,,0x00784E2D,8,Code/GameEngine/Source/Common/Rva004051BC.cpp,matched,gen-funclet;parent=?rva004051BC@Rva004051BC@@QAEXHPBUCoord3D@@@Z; Matched parent 0x004051BC's EH graph is EXACT (eh_verify) and binds compiler label $L492 to retail 0x00784E2D; its callee ??1Rva004051BCFilter@@UAE@XZ is rowed at its ICF fold 0x0049C38A; replaces generated uw_00784e2d
 ??1BfmeStringRecord00404BF3@@QAE@XZ,,0x0048BA39,5,Code/GameEngine/Source/Common/Rva00404D70Init.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva00404D70Init.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$StringBase@D@@AAE@XZ at 0x0048BA39: this unit compiles it to the same whole body; its unwind funclets call 0x0048BA39
 $L1248,,0x00784EB2,8,Code/GameEngine/Source/Common/Rva00404D70Init.cpp,matched,gen-funclet;parent=?init@VictorySystem@@UAEXXZ; Matched parent 0x004055F2's EH graph is EXACT (eh_verify) and binds compiler label $L1248 to retail 0x00784EB2; its callee ??1BfmeStringRecord00404BF3@@QAE@XZ is rowed at its ICF fold 0x0048BA39; replaces generated uw_00784eb2
+$L1248,,0x00784EC4,8,Code/GameEngine/Source/Common/Rva00404D70FindOrCreate.cpp,matched,gen-funclet;parent=?rva00405684@Rva00404D70@@QAEPAUBfmeStringRecord00404BF3@@ABVAsciiString@@@Z; Matched parent 0x00405684's EH graph is EXACT (eh_verify) and binds compiler label $L1248 to retail 0x00784EC4; its callee ??1BfmeStringRecord00404BF3@@QAE@XZ is rowed at its ICF fold 0x0048BA39; replaces generated uw_00784ec4
