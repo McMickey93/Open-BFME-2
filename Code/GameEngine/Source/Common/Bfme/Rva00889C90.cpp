@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHs-c- /Oy-
 
-extern "C" __declspec(dllimport) void* __cdecl memmove( void*, const void*, unsigned int );
+#include <string.h>
 
 struct Element {
 	int val0;

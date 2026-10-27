@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHs-c- /Oy-
 
-extern "C" __declspec(dllimport) char * __cdecl strncpy(char *, const char *, unsigned int);
+#include <string.h>
 
 class Rva00889780Class
 {
