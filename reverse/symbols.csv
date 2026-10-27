@@ -4581,7 +4581,6 @@ name,address,notes
 ?TheStancesStore@@3PAVRva00425F10@@A,0x00A031D4,TheStancesStore global pointer at 0x00E031D4
 ?TrimRight@EAStringC@@QAEAAV1@PBD@Z,0x006D5B50,SetTarget native call with slash set; original EAString header signature; target scans backward through chars via strchr then substring assignment; old Pathfinder pin refuted in re_log1244 remains historical; helper unrowed
 ?UnregisterCreateAHeroAtRva0021A624@@YAXPAVCreateAHeroData@@@Z,0x0021A624,Full45B pointer registry removal at VA DFE358; find20E873 then erase1FF51F only when present; CreateAHeroData pointer from verified copy registration
-?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z,0x0070B2C0,Native Set null-value branch; original source method; existing191B erase provider alias
 ?UpdateFrameStatus@Debug@@AAEXAAUFrameHashEntry@1@@Z,0x00039A60,Debug name for the matched Rva0088A7E0Debug body at same address; address read from REL32 in GetFrameEntry at 0x0003A1B0+0x4F; lets caller verify while callee stays under its sweep name
 ?Update_Sub_Object_Transforms@Animatable3DObjClass@@MAEXXZ,0x001A5900,HLod Update_Sub_Object_Transforms call19D649; matched Animatable constructors1A4900/1A5C50 install table7D6D10 slotA8 pointing directly here; target parent-hierarchy and motion-mode update dispatch independently supports donor method identity
 ?Use@Rva005B5C02Entry@@QAEXPAX@Z,0x00409359,wrapper-call spelling for the 0x5B5C02 entry use (thiscall 1 arg callee cleanup); target REL32 from retail call at 0x005B5C5A
@@ -5467,7 +5466,6 @@ name,address,notes
 ?bfmeDtorTWC@BfmeHeadTWC@@QAEXXZ,0x00655780
 ?bfmeEnd1100@BfmeZ1100@@QAEXH@Z,0x001EE5BE,callee of ?rva00565170@@YAHH_N@Z at retail 0x003FEBE7 read from its REL32 displacement; ICF alias of the matched ?_bfme_setEngineVisibility@Mouse@@QAEX_N@Z body at this address
 ?bfmeEnter@Glo012F1024Item@@QAEXXZ,0x0056696F,callee of ?j_00019eca@Glo012F1024Item@@QAEXXZ at retail 0x00566A20 read from its REL32 displacement; the donor Glo012F1024Item enter dispatcher trimmed out of this TU; body unrowed
-?bfmeErase1279@BfmeLookup1279@@QAEXAAUBfmeKey1279@@@Z,0x0070B2C0,TU spelling for BfmeQueryProcess1279 callee; retail E8 at 0x6F7275; erase-by-key
 ?bfmeErase@BfmeSlotVecG@@QAEXPAPAX0@Z,0x0031BD55,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 ?bfmeErase@BfmeVecAG@@QAEXPAH@Z,0x001FF51F,inlined-vector erase called by the placed ?bfmeRemove@Gen_0039BE00 0x00421176; REL32 read off retail at 0x0042119D
 ?bfmeErase@BfmeVecAW@@QAEXPAH0@Z,0x0031BD55,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1

@@ -3857,7 +3857,6 @@ alternatename	Code/Libraries/Source/Apt/AptMovieFrameControls.cpp	?rva00700090@R
 alternatename	Code/Libraries/Source/Apt/AptMovieFrameControls.cpp	?rva007002C0@Rva007002C0@@QAEXHPAXH0@Z	1
 alternatename	Code/Libraries/Source/Apt/AptMovieFrameControls.cpp	?rva00706950@Rva00706950@@QAEXPAXPAURva00700090Info@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptNativeHash.cpp	??1AptNativeHash@@QAE@XZ	1
-alternatename	Code/Libraries/Source/Apt/AptNativeHash.cpp	?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptNativeHash.cpp	?add@Rva8D0D80Table@@QAEXPAVRva8D0D80String@@PAVRva8D0D80Value@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptNativeHash.cpp	?handle@Gen0089C880@@QAEXXZ	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	??0AptNativeFunction@@QAE@P6APAVAptValue@@PAV1@H@Z@Z	1
@@ -10822,7 +10821,6 @@ pin	reverse/symbols.csv	0x00709730	1
 pin	reverse/symbols.csv	0x00709B80	3
 pin	reverse/symbols.csv	0x0070A840	3
 pin	reverse/symbols.csv	0x0070A8B0	2
-pin	reverse/symbols.csv	0x0070B2C0	2
 pin	reverse/symbols.csv	0x0070B380	3
 pin	reverse/symbols.csv	0x0070B410	1
 pin	reverse/symbols.csv	0x0070B590	1

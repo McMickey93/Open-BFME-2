@@ -23,7 +23,7 @@ struct BfmeKey1279
 	void *m_keyPtr;
 };
 
-class BfmeLookup1279;
+class AptNativeHash;
 
 class BfmeProvider1279
 {
@@ -31,7 +31,7 @@ public:
 	virtual void reserved0() = 0;
 	virtual void reserved1() = 0;
 	virtual void reserved2() = 0;
-	virtual BfmeLookup1279 *bfmeGetLookup1279() = 0;
+	virtual AptNativeHash *bfmeGetLookup1279() = 0;
 };
 
 class BfmeNode1279
@@ -45,11 +45,10 @@ public:
 	BfmeProvider1279 *m_provider;
 };
 
-class BfmeLookup1279
+class AptNativeHash
 {
 public:
-	BfmeNode1279 *bfmeLookup1279(BfmeKey1279 &key);
-	void bfmeErase1279(BfmeKey1279 &key);
+	void Unset(const EAStringC *const);
 };
 
 class Rva0070B380
@@ -76,12 +75,12 @@ void AptDisplayList::bfmeProcess1279(void *value)
 		if (!((BfmeAptValue006DCD20 *)node)->isUndefined()) {
 			BfmeProvider1279 *provider = node->m_provider;
 			if (provider != 0) {
-				BfmeLookup1279 *lookup = provider->bfmeGetLookup1279();
+				AptNativeHash *lookup = provider->bfmeGetLookup1279();
 				BfmeKey1279 &key = node->m_key;
 				if (!((EAStringC *)&key)->IsEmpty()) {
 				if (lookup != 0) {
 					if (((Rva0070B380 *)lookup)->lookup(*(EAStringC *)&key) == node)
-						lookup->bfmeErase1279(key);
+						lookup->Unset((EAStringC *)&key);
 				}
 				}
 			}

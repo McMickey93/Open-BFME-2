@@ -18,7 +18,7 @@ class EAStringC {void *data;public:__declspec(nothrow) EAStringC &clear();__decl
 // default-ctor COMDAT is emitted; the locals are plain EAStringC, so their
 // unwind funclets call ~EAStringC directly, as retail's do.
 class AsciiString;
-class AptNativeHash {public:struct Entry;AsciiString *rva0070AA40();Entry *rva0070AAA0(Entry *);};
+class AptNativeHash {public:struct Entry;AsciiString *rva0070AA40();Entry *rva0070AAA0(Entry *);void Unset(const EAStringC *const);};
 class AptValue {public:virtual void slot0();virtual void slot1();virtual void slot2();virtual AptNativeHash *GetNativeHashVirtual();void SetString(const char *);void toString(EAStringC &)const;EAStringC rva006ddde0();};
 class BfmeAptValue006DCD20 {public:void setGCRootCount(unsigned int);BfmeAptValue006DCD20 *rva006DD2E0();};
 class AptBasePtrStack {public:BfmeAptValue006DCD20 *At(int);};
@@ -103,8 +103,6 @@ AptValue *AptLoadVars::sMethod_send(AptValue *value,int nParams)
  return AptBoolean::Create(true);
 }
 
-struct BfmeKey1279;
-class BfmeLookup1279 {public:void bfmeErase1279(BfmeKey1279 &);};
 EAStringC *Rva0070B4F0GetString(int);
 AptValue *AptLoadVars::sMethod_sendAndLoad(AptValue *value,int nParams)
 {
@@ -132,7 +130,7 @@ AptValue *AptLoadVars::sMethod_sendAndLoad(AptValue *value,int nParams)
  for(AsciiString *key=hash->rva0070AA40();key;key=reinterpret_cast<AsciiString *>(hash->rva0070AAA0(reinterpret_cast<AptNativeHash::Entry *>(key)))) {
   EAStringC *str=reinterpret_cast<EAStringC *>(key);
   if(str->IsEqualTo(Rva0070B4F0GetString(0))||str->IsEqualTo(Rva0070B4F0GetString(0x78)))continue;
-  reinterpret_cast<BfmeLookup1279 *>(hash)->bfmeErase1279(*reinterpret_cast<BfmeKey1279 *>(key));
+  hash->Unset(str);
  }
  g_aptDateInterpreter.loadVariables(targetValue,0,0);
  *reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<BfmeAptValue006DCD20 *>(value)->rva006DD2E0())+0x20)=1;
@@ -151,7 +149,7 @@ AptValue *AptLoadVars::sMethod_load(AptValue *value,int nParams)
  for(AsciiString *key=hash->rva0070AA40();key;key=reinterpret_cast<AsciiString *>(hash->rva0070AAA0(reinterpret_cast<AptNativeHash::Entry *>(key)))) {
   EAStringC *str=reinterpret_cast<EAStringC *>(key);
   if(str->IsEqualTo(Rva0070B4F0GetString(0))||str->IsEqualTo(Rva0070B4F0GetString(0x78)))continue;
-  reinterpret_cast<BfmeLookup1279 *>(hash)->bfmeErase1279(*reinterpret_cast<BfmeKey1279 *>(key));
+  hash->Unset(str);
  }
  g_aptDateInterpreter.loadVariables(value,0,&url);
  *reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<BfmeAptValue006DCD20 *>(value)->rva006DD2E0())+0x20)=1;

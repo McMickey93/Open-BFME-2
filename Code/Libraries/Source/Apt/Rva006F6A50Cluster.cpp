@@ -302,6 +302,7 @@ class AptNativeHash
 public:
 	AptNativeHash(int size);
  void Set(const EAStringC*const,AptValue*const);
+	void Unset(const EAStringC *const);
 
 	static void *operator new(unsigned int size)
 	{
@@ -566,9 +567,9 @@ void AptDisplayList::rva006F76B0()
 	}
 }
 
-// ?clear@AptDisplayList@@QAEX_N@Z @0x006F80C0 202B chain from bfmeErase1279.
+// ?clear@AptDisplayList@@QAEX_N@Z @0x006F80C0 202B chain from AptNativeHash::Unset.
 // Walks m_query list via +0x54 saving next; v0 then skip undefined; provider
-// slot 3 lookup compare erase via 0x70B380/BfmeLookup; unlink+finish; flag
+// slot 3 lookup compare erase via 0x70B380/AptNativeHash::Unset; unlink+finish; flag
 // clears GC root + AptCIH 1; release-vector GC check; v1 then next.
 // Evidence: chain lane; callee 0x0070B2C0 just landed; LINK pin name.
 
@@ -581,11 +582,6 @@ class Rva0070B380
 public:
 	void *lookup(const EAStringC &key);
 };
-class BfmeLookup1279
-{
-public:
-	void bfmeErase1279(BfmeKey1279 &key);
-};
 class BfmeNestedBE;
 BfmeNestedBE *bfmeUnlinkNestedBE(BfmeNestedBE *item);
 class BfmeProvider1279
@@ -594,7 +590,7 @@ public:
 	virtual void reserved0() = 0;
 	virtual void reserved1() = 0;
 	virtual void reserved2() = 0;
-	virtual BfmeLookup1279 *bfmeGetLookup1279() = 0;
+	virtual AptNativeHash *bfmeGetLookup1279() = 0;
 };
 class BfmeNode1279 : public BfmeAptValue006DCD20
 {
@@ -635,13 +631,13 @@ void AptDisplayList::clear(bool flag)
 		if (!cur->isUndefined()) {
 			BfmeProvider1279 *prov = cur->m_provider;
 			if (prov != 0) {
-				BfmeLookup1279 *lookup = prov->bfmeGetLookup1279();
+				AptNativeHash *lookup = prov->bfmeGetLookup1279();
 				EAStringC &skey = (EAStringC &)cur->m_key;
 				if (!skey.IsEmpty()) {
 					if (lookup != 0) {
 						void *found = ((Rva0070B380 *)lookup)->lookup(skey);
 						if (found == cur)
-							((BfmeLookup1279 *)lookup)->bfmeErase1279(cur->m_key);
+							lookup->Unset(&skey);
 					}
 				}
 			}

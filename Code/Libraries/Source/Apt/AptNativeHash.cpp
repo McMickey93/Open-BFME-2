@@ -20,7 +20,6 @@ extern int g_bfmeAptBreakOnAssertAtDDC01C;
 #pragma intrinsic(__debugbreak)
 #pragma comment(linker, "/alternatename:?handle@Gen0089C880@@QAEXXZ=?DestroyGCPointers@AptNativeHash@@QAEXXZ")
 #pragma comment(linker, "/alternatename:??1AptNativeHash@@QAE@XZ=??1Rva0070A840@@QAE@XZ")
-#pragma comment(linker, "/alternatename:?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z=?bfmeErase1279@BfmeLookup1279@@QAEXAAUBfmeKey1279@@@Z")
 #pragma comment(linker, "/alternatename:?add@Rva8D0D80Table@@QAEXPAVRva8D0D80String@@PAVRva8D0D80Value@@@Z=?Set@AptNativeHash@@QAEXQBVEAStringC@@QAVAptValue@@@Z")
 
 void __debugbreak();
@@ -636,7 +635,7 @@ Rva0070A840::~Rva0070A840()
 
 // tu-skeleton: 0x0070B220 145B ?rva0070B220@AptNativeHash@@QAEXPAX@Z -- matched in Code/Libraries/Source/Apt/AptNativeHashMark.cpp (not merged yet)
 
-// tu-skeleton: 0x0070B2C0 191B ?bfmeErase1279@BfmeLookup1279@@QAEXAAUBfmeKey1279@@@Z -- matched in Code/Libraries/Source/Apt/BfmeLookupErase1279.cpp (not merged yet)
+// tu-skeleton: 0x0070B2C0 191B ?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/BfmeLookupErase1279.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/Apt/Rva0070B380Cluster.cpp
 
