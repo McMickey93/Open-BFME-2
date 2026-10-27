@@ -4077,6 +4077,35 @@ uw_00786ccf, uw_00782cfb (`blocked` rows in re_attempts.log). Open: duplicate ge
 can drop them; a land run at 33654788c9 failed its full gate and reverted) and
 Rva00622290CollectKeys.cpp (0x007A75C0/0x007A75C8 stale + duplicate, plus 4 neighbours;
 locked by another seat). AIGuardStates `$L2547`/`$L2874` stay: two labels land on each address.
+**ICF fold rows for uw_gen_000/001/002/012 (K7, 2026-10-27):**
+
+Completed: 0b345a3247, a24b87c903, 4a1457394f, 7adb476338, 015808a08e.
+In these units, the funclet's only missing callee is an element dtor. The
+parent unit emits that dtor with the whole retail body of a matched row at the
+fold address. Each dtor is rowed as an ICF twin
+(`add_match.py --icf-owner`, `fold-proof=<parent unit>`, as in 3eee2106d6).
+Then the funclet is repointed with `--replace-rva`. Result: 183 funclets and
+159 dtor rows. Every parent unit that linked before still links (+8.0 KB).
+Three were logged `blocked`:
+- pathfinder.cpp `??1ZoneQueue`: the fold failed byte verify.
+- SidesListTeamsInfoRecAddTeam.cpp: touching the unit trips the code identity
+  gate on its existing `$L4762` catch row.
+- BfmeFiveArgCtorWI.cpp and Rva0022BD9ASubsystem.cpp: the fold failed byte
+  verify.
+
+Remaining: in 96 blocked funclets, the parent's dtor size differs from the row
+at the fold address.
+- 78 of them follow one pattern. The parent's view type is a wrapper, e.g.
+  `INIMacroPairTemporary : MacroPair` with a `__forceinline` empty dtor. The
+  unit emits that wrapper dtor out of line as a 5-byte `jmp X`, where X is
+  exactly the matched owner row at retail's target. Retail's funclet calls X
+  directly, so retail's local has X's type, not the wrapper.
+- This is a source fix, made per unit. The local or temporary must take X's
+  type, or the wrapper must have no dtor of its own. Re-verify the parent's
+  bytes each time. A ledger row cannot fix it.
+- The other 18 are a mix of different element bodies (e.g. the
+  `_BoolNameStorage` dtor and the `Lock` dtor at 0x000317C0, 23 B vs 21 B).
+  Each needs its own investigation.
 
 **uw_gen_009 parent ownership cleanup (2026-10-26):**
 
