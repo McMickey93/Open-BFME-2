@@ -3,6 +3,7 @@
 
 #define _STLP_NO_EXCEPTIONS 1
 #include <map>
+#include <string.h>
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.
 namespace _STL {
@@ -12,7 +13,6 @@ static inline bool operator!=(const _Rb_tree_iterator<T, LeftTraits>& a,
 { return a._M_node != b._M_node; }
 }
 
-extern "C" int __cdecl memcmp(const void *buf1, const void *buf2, unsigned int count);
 #pragma intrinsic(memcmp)
 
 #include "string_base.h"

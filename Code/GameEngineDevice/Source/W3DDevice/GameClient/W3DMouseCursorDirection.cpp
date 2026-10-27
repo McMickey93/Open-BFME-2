@@ -14,15 +14,12 @@
 
 // Retail calls math.h's float atan2 overload 0x000422CD out of line; this unit's
 // math.h copies of it and of atan2f (0x000422A0) are retail's bodies.
+#define _USE_MATH_DEFINES
 #include <math.h>
-
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 
 typedef int Int;
 typedef float Real;
 typedef bool Bool;
-
-#define M_PI 3.14159265358979323846
 
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 

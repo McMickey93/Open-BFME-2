@@ -17,6 +17,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 
 #include <vector>
+#include <stdlib.h>
 
 #include "../../../Libraries/Include/Lib/Coord3D.h"
 // bfme link decl-only begin
@@ -71,7 +72,6 @@ public:
 	void *rva004ED3A2(void *pos);
 };
 
-extern "C" void __cdecl free(void *p);
 extern float g_Va00BBB8D8;
 extern float g_00BC26EC;
 

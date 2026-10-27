@@ -1,4 +1,5 @@
 // cl: /O1 /Oy- /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 // ?InitializeAssetManager@@YA_NVAsciiString@@0_N@Z @0x0012CFA0 757B
 // Evidence: WB 009D6590 InitializeAssetManager (assetinit.cpp:318..327);
 // retail confirms two by-value AsciiString inputs (char releaseBuffer calls at
@@ -14,11 +15,7 @@
 #undef __forceinline
 #include <stdio.h>
 #include <string.h>
-// The only Winsock surface used here is the native32-bit stdcall import.
-// Declare that ABI directly so this source does not need a Platform SDK header.
-extern "C" __declspec(dllimport) unsigned long __stdcall htonl(unsigned long);
-#undef _strcmpi
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
+#include <WinSock2.h>
 extern AsciiString g_00DEE93C;
 extern bool AssetInitRunTextureBuilder; // native VA DB61E8
 extern bool AssetInitRunModelBuilder;   // native VA DB61E9
@@ -81,4 +78,3 @@ bool InitializeAssetManager(AsciiString directory,AsciiString archive,bool skipT
  Rva0012CA49Run();
  return true;
 }
-

@@ -68,6 +68,12 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include "vp.h"
 #include "vector3i.h"
 #include "sortingrenderer.h"
+// <new>'s nothrow global deletes: with throwing declarations the
+// SimpleDynVecClass member teardown stays an out-of-line call; declared
+// throw() the derived-plus-base guarded deletes inline with per-level vptr
+// stores (DX8MeshRendererClassDtor.cpp precedent).
+#define __PLACEMENT_VEC_NEW_INLINE	// always.h defines array placement-new itself
+#include <new>
 // bfme link decl-only begin
 template <> bool SimpleDynVecClass<Vector3>::Add(Vector3 const &, int);
 template <> bool SimpleDynVecClass<Vector3>::Resize(int);
@@ -75,13 +81,6 @@ template <> bool SimpleVecClass<Vector3>::Uninitialised_Grow(int);
 // bfme link decl-only end
 
 static SegLineRendererClass _LineRenderer;
-
-// Nothrow global deletes: with the default throwing declarations the
-// SimpleDynVecClass member teardown stays an out-of-line call; declared
-// throw() the derived-plus-base guarded deletes inline with per-level vptr
-// stores (DX8MeshRendererClassDtor.cpp precedent).
-void __cdecl operator delete(void *) throw();
-void __cdecl operator delete[](void *) throw();
 
 // Keep SimpleVec operations inline; their out-of-line owners use the retail size-built copies.
 

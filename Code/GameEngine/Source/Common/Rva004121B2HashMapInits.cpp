@@ -31,6 +31,7 @@ namespace _STL {
 template <> bool less<unsigned int>::operator()(const unsigned int &a, const unsigned int &b) const;
 }
 #include <cstddef>
+#include <stdlib.h>
 // Keep the inlined STLport __malloc_alloc<0>::deallocate without emitting an
 // optimised out-of-line copy that would shadow retail's /Od body at 0x23A70
 // (STLMallocAlloc0Deallocate.cpp).
@@ -133,8 +134,6 @@ private:
 };
 
 Rva004121B2::Rva004121B2() : m_table(100, ArmorHasher004121B2(), ArmorEqual004121B2(), ArmorAlloc004121B2()) {}
-
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
 
 void __cdecl rva007B8247();
 void __cdecl rva007B821F();

@@ -1,7 +1,7 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
 
-extern "C" char *__cdecl _strlwr(char *);
-extern "C" char *__cdecl _strupr(char *);
+#define _CRTIMP	// the game links these CRT bodies and calls them directly
+#include <string.h>
 
 class EAStringC
 {

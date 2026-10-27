@@ -10,9 +10,7 @@
 #include <new.h>
 #include <assert.h>
 #include "nstrdup.h"
-
-extern void *__cdecl operator new[](size_t size);
-extern void __cdecl operator delete[](void *pointer);
+#include <new>
 
 // upstream layout: reference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2/hanim.h
 // (nested scope replica; public here for access, which changes no bytes)

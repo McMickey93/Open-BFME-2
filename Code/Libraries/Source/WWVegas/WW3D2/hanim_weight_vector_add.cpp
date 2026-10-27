@@ -24,9 +24,8 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include <assert.h>
 #include "nstrdup.h"
 #include "vector.h"
-
-extern void *__cdecl operator new[](size_t size);
-extern void __cdecl operator delete[](void *pointer);
+#define __PLACEMENT_VEC_NEW_INLINE	// always.h defines array placement-new itself
+#include <new>
 
 // upstream layout: reference/open-bfme-1/game/Libraries/Source/WWVegas/WW3D2/hanim.h
 // (nested scope replica; public here for access, which changes no bytes)

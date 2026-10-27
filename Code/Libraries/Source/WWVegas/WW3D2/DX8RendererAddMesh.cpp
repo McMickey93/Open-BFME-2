@@ -89,10 +89,11 @@ ShareBufferClass<unsigned>::ShareBufferClass(int count, const char *msg, int ali
 template <> ShareBufferClass<unsigned int>::~ShareBufferClass();
 #include "vector2.h"
 #include "vector3.h"
-// Standard nothrow array delete: the split table's inline destructor adds no
+#include <string.h>
+// <new>'s nothrow array delete: the split table's inline destructor adds no
 // EH state to Add_Mesh (retail sets none before it).
-extern "C" void *memcpy(void *, const void *, unsigned int);
-void __cdecl operator delete[](void*) throw();
+#define __PLACEMENT_VEC_NEW_INLINE	// always.h defines array placement-new itself
+#include <new>
 
 // MeshModelClass::Peek_Texture (hidden RefCountPtr return, 0x00143560) is
 // matched as Rva006FD440::bfmeGet (Rva006FD510MeshMatDescGetTexture.cpp);

@@ -15,8 +15,8 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
-void __cdecl operator delete[](void *) throw();
-void __cdecl operator delete(void *) throw();
+#define __PLACEMENT_VEC_NEW_INLINE	// always.h defines array placement-new itself
+#include <new>
 #define Matrix4x4 Matrix4  // BFME renamed it
 #include "decalmsh.h"
 #include "decalsys.h"
