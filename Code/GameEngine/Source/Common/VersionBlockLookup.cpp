@@ -1,7 +1,7 @@
 // cl: /Oy- /DNDEBUG /MD /EHsc
 // Version-block lookup over the 0x18-byte records. The search helper
 // writes the found record pointer into a local output slot.
-extern "C" void *__cdecl memset(void *, int, unsigned);
+#include <string.h>
 #pragma intrinsic(memset)
 
 struct VersionBlockEntry
