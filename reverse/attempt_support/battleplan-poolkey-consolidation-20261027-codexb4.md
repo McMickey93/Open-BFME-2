@@ -49,17 +49,43 @@ trials or infer a new regression from their incompatible private views.
 - `link_check.py --prepare-current` verifies the final destination and writes
   its strict reusable receipt. It changes no census, index or link status.
 
-The carried data key still uses the getter's obsolete static placeholder name;
-the guard's data-index row still names a deleted standalone clearer. Repair the
-two index identities from the current generator output, then retire the carried
-key through `repair_queue.py retire data` in a separate commit.
+The merge commit preserves the carried data key under the getter's obsolete
+static placeholder name, and the guard's data-index row still names a deleted
+standalone clearer. The separate follow-up repairs these stale identities.
+
+`data_ledger.py --out build/battleplan-consolidation-20261027/data-ledger.csv`
+generates the current rows. Only its two complete, unmodified rows for RVAs
+0x00A03ACC and 0x00A03AD0 are adopted into the index. Their current symbols are
+`?TheBattlePlanUpdatePoolKey@?1??getModuleNameKey@BattlePlanUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A`
+and `?$S1@?1??getModuleNameKey@BattlePlanUpdate@@UBE?AW4NameKeyType@@XZ@4IA`.
+Both are four-byte globals, status owned, with one definition and two collected
+relocation sites. Cached generator facts show the merged destination as their
+only definition and matched referrer, with static COMDAT definitions in .bss.
+The generator reports zero missing objects; this is still a scoped index repair,
+not independent byte-verified data ownership or a whole-tree data verification.
+The renumbered rollback is checked separately by the byte and EH gates. Neither
+address has an independently verified data_rows or data_converged entry.
+
+After the repair, `data_check.py` reports zero findings. Retirement uses
+`repair_queue.py retire data` on the destination, after the merge commit, rather
+than deleting the protected key by hand: PASS, one key retired, zero still found.
+No source or function row changes in this follow-up.
+
+The first publication attempt rebases cleanly, then the outgoing retirement
+check refuses the original donor key: over the complete batch the transfer and
+retirement cancel out, leaving neither the old source nor a destination key in
+the final register. AGENTS.md's vanished-source accounting therefore applies.
+The retirement commit carries a per-key Debt-Retired trailer containing the
+full original literal key, the vanished donor path, and the merge/retirement
+evidence. The destination's tool verdict remains the retirement proof; the
+trailer accounts for the original source across the outgoing range.
 
 ## Outgoing path-consumer audit
 
-The complete pending batch also repoints six unwind rows out of uw_gen_011.cpp
-to three existing C++ parents, and the 0x004BA324 copy-range row out of
-TransitionDamageFX.cpp to Common/Rva004BA324CopyRange.cpp. Both old mixed
-sources still exist. These moves and the pool-key absorption were searched
+After fetching origin/master at `3e1e5f6d6a`, the outgoing range has common base
+`4fef76d824` and includes merge commit `491af4031f`. The pending batch also
+repoints six unwind rows out of uw_gen_011.cpp to three existing C++ parents;
+that old mixed source still exists. These moves and the pool-key absorption were searched
 together by full path and basename across source, tools, hooks, workflows,
 configuration, documentation and reverse registers. No directory moves occur.
 
@@ -67,7 +93,9 @@ Remaining pool-key path mentions are its destination provenance comment,
 historical link-status row, deleted-row explanation, attempt log and prior
 handoffs. Keep them. The uw_gen_011 and TransitionDamageFX references still
 describe surviving rows, original EA path strings, fixtures or historical
-evidence. The narrow-string fixture still names an existing owner. Active
+evidence. A TransitionDamageFX copy-range move appearing in a direct comparison
+against newer upstream was also inspected, but is outside this outgoing range.
+The narrow-string fixture still names an existing owner. Active
 function/data/register/map bindings resolve to current sources; no active
 tool, hook, workflow or include needs a path repair. Raw audit output is under
 ignored build/battleplan-consolidation-20261027/.

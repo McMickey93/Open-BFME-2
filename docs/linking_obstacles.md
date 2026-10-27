@@ -1939,8 +1939,9 @@ separate strict receipt limitation encountered there.
   TU after reconciling its compiler-supplied vptr. All 15 destination rows and
   both parent EH graphs are exact; before/after code identity has zero wrong
   bindings. The final-object merge guard passes against `bf3dd31211`, and the
-  destination has a strict current receipt. One data key is transferred for
-  separate index repair and tool-driven retirement. Eight other donors retain
+  destination has a strict current receipt. The merge transfers one data key;
+  its separate follow-up repairs two stale index identities and uses the data
+  retirement lane. Eight other donors retain
   their declaration/settings prerequisites. This clears only this bounded
   composition; exact-base batch closure and census confirmation remain pending.
   No new linked bytes or image-ownership result is claimed.
