@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /EHs /MD /arch:SSE /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // AptMapPreview.cpp -- AptMapPreview members recovered from WorldBuilder
 // leads (reverse/wb_name_leads.csv): WB's debug build names the function;
@@ -410,10 +411,8 @@ public:
 	void rva0004D6B3(Image *image, float x0, float y0, float x1, float y1, int color, int mode);
 };
 
-extern "C" __declspec(dllimport) int __stdcall IsBadReadPtr(const void *address, unsigned int size);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
-extern "C" void *__cdecl memset(void *destination, int value, unsigned int count);
+#include <windows.h>
+#include <string.h>
 
 // AptCallbackAdders.cpp's by-value callback reference (defined below).
 template <class T> class AptRef;

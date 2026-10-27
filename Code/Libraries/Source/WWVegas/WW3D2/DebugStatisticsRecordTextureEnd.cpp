@@ -12,8 +12,7 @@
 
 #include <string.h>
 
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer,
-		unsigned int count, const char *format, ...);
+#include <stdio.h>
 
 // Minimal StringClass view: the out-of-line operators this TU calls
 // (operator+= twice, Format) must stay calls, so the full wwstring.h inline

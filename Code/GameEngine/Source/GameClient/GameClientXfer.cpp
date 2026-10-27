@@ -1,4 +1,5 @@
 // cl: /I. /ICode/GameEngine/Source/GameClient /O1 /G7 /DNDEBUG /MD /EHs /arch:SSE /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata
+// platformsdk
 // stlport
 //
 // GameClient::xfer (0x0023B509, 1806 bytes, ret 4), after ZH GameClient.cpp
@@ -246,7 +247,7 @@ public:
 	long volatile m_references; // +0x04
 };
 
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *value);
+#include <windows.h>
 
 class AudioEventInfoRef
 {
