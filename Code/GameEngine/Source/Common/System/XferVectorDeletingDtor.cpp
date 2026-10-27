@@ -16,9 +16,10 @@
 // address (0x00005422) sorts after Xfer.cpp (0x000053DE), so Xfer.cpp's copy is
 // the one kept; V07, whose ModuleTemplate body sorts first, could not host it.
 
-// Declared so the array path frees through operator delete[] (0x0002FD80)
-// as retail does; left undeclared, cl falls back to scalar operator delete.
-void operator delete[](void *p);
+// <new> declares operator delete[] so the array path frees through it
+// (0x0002FD80) as retail does; left undeclared, cl falls back to scalar
+// operator delete.
+#include <new>
 
 class Snapshot;
 class AsciiString;

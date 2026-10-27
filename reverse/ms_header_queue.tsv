@@ -1,5 +1,4 @@
 file	class	worst	defs	same	source	unknown	unverified	mangle	abi	fwd	impl	collision	config	headers	platformsdk	md	owner	closure	note	names
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayDraw.cpp	drop-in candidate	same	4	2	0	0	0	0	0	2	0	0	0	<new>,<adoctint.h>,<stdio.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	operator new [ ]:same,operator delete [ ]:same
 Code/Libraries/Source/Compression/ZLib/zconf.h	drop-in candidate	same	4	4	0	0	0	0	0	0	0	0	1	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	FAR:same,SEEK_SET:same,SEEK_CUR:same,SEEK_END:same
 Code/GameEngine/Source/Common/RTS/PlayerInitFromDict.cpp	drop-in candidate	same	3	3	0	0	0	0	0	0	0	0	0	<string.h>,<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same,memset:same,memcmp:same
 Code/Libraries/Source/WWVegas/WWLib/mmsys.h	drop-in candidate	same	3	3	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same,timeBeginPeriod:same,timeEndPeriod:same
@@ -10,7 +9,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.
 Code/stlport/FileSizeHelper.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	GetFileSize:same,GetLastError:same
 Code/stlport/NarrowFilebufInputError.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	UnmapViewOfFile:same,CloseHandle:same
 Code/GameEngine/Source/Common/BfmeIntVecG.h	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
-Code/GameEngine/Source/Common/System/XferVectorDeletingDtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/Common/ThrowingNewHelpers.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/VslotSmallBodiesAG_Rva00131CF2.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/GameClient/Drawable_rva002736BA.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same

@@ -13,8 +13,7 @@
 // [capturePending]. Its other writer, the 0x0004538C callback, therefore lives
 // here too. Evidence: reverse/attempt_support/w1-4bef2-20261020.md,
 // w6-4bef2-20261020.md, w8-4bef2-20261019.md.
-void *__cdecl operator new[](unsigned int);
-void __cdecl operator delete[](void *) throw();
+#include <new>
 #include "ascii_string.h"
 #include "GameLogicObjectLookupView.h"
 #include <windows.h>
