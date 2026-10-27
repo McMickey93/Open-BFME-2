@@ -109,6 +109,28 @@ a fresh constructor receipt after the comment change.
 
 
 Publication correction: upstream already allocated LINK-115 while this scoped
-work was running. The current handoff is LINK-116; earlier commit messages and
+work was running. The initial corrected handoff was LINK-116; earlier commit messages and
 the append-only blocked verdict retain their historical LINK-115 spelling.
 No source or verification result changes with the renumbering.
+
+
+## Preparation recovery
+
+The seven preserved commits were rebased onto `49fd3676a3` on 2026-10-27.
+Both sides of the independent obstacle-register additions were retained. No
+commit was skipped; the recovery record names no stash to restore. The retained
+backup ref is `refs/runner/preparation/1793099834699369325`. The recovered game
+sources equal that backup, and no additional reconstruction was attempted.
+
+Upstream also assigned LINK-116 during the publication wait. The current
+ShellMenuScheme handoff is LINK-117; historical append-only verdicts keep
+LINK-115 and LINK-116, followed by a correction recorded with re_log.py.
+
+The first recovered push dry run passed 57/57 scoped functions, both data rows,
+eight EXACT EH graphs and converged data (zero second names or unjudged rows).
+Its batch link audit was inconclusive: the `bf3dd31211` index predates the
+outgoing base and four objects lack current receipts (first Eva.cpp). These
+remain census freshness prerequisites, with no new linking or ownership claim.
+The complete path-consumer audit still finds 17 historical/provenance mentions
+and no active tool, include, registry or root build/configuration consumer of
+either absorbed donor. Normal publication rechecks the newly rebased inputs.

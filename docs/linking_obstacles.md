@@ -4565,7 +4565,7 @@ Remaining / next check: `TeamRelationMap` (dtor 0x003A2563, deleter) uses the sa
 Clearance: preview only, index `bf3dd31211`.
 Census confirmation: awaiting.
 
-### LINK-116: ShellMenuScheme consolidation needs native string and list contracts
+### LINK-117: ShellMenuScheme consolidation needs native string and list contracts
 
 Status: Three-file subset consolidated with the link guard; remaining donors retained. Updated: 2026-10-27; inspected revision: e400cac241; published preview index: bf3dd31211 (2026-10-27 00:39, retail-truth-4).
 
@@ -4576,6 +4576,8 @@ Completed: explicitly load the existing BFME 2 string compatibility view before 
 Applied subset: tu_skeleton.py merged the three accepted files into the 10-row destination; all 31 original rows across six surviving files and all seven EH graphs verify. Shadow and converged data checks pass. Protected keys transfer with totals kept, and only three TU-map source cells change. The ordinary preview retains both deleted donor objects and reports destination duplicates; the apply-time link guard evaluates their removals together. Carry that index freshness limitation into the next census.
 
 Cleanup: eight constructor-file markers attached only to obsolete comments are removed through hatch_counters.py --update; all three source rows still verify. The four markers attached to actual merged definitions remain. The supported identity retirement refuses on three missing other ledger objects, so all transferred keys remain registered. The final outgoing path audit finds no active consumer of either deleted donor.
+
+Recovery follow-up (2026-10-27): the seven preserved commits were rebased onto `49fd3676a3`, retaining both upstream and local handoffs. Upstream also assigned LINK-116, so this entry now uses LINK-117; earlier append-only verdicts retain their historical numbers. The first recovery push dry run passed all 57 scoped rows, both data rows and eight EH graphs. Its batch link audit remained inconclusive against the older `bf3dd31211` index and four objects without current receipts (first `Eva.cpp`); carry those freshness limits into the next scheduled census.
 
 Remaining / next check: keep ImageConstructor's canonical ICoord2D and private StringBase collision, Dtor's private base/integer-list view, addImage's integer-to-pointer-list mismatch, Parse's byte failure, and the constructor's externally consumed allocator-copy conflict as prerequisites. Resolve each in its own verified commit before another merge. LINK-095 separately tracks the constructor's generated unwind callee binding.
 
