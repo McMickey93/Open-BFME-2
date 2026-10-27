@@ -286,6 +286,15 @@ Completed: the two tree units now instantiate only their rowed `_Rb_tree` destru
 
 Remaining / next check: perform coherent type/allocator and row-name reconciliation with the listed provider homes. Replacing a real member call with an address placeholder, adding an alias/pin, changing the ledger, or casting a container to another instantiation was outside this worker's permitted repair scope. All native direct callees listed above already have matched owners. No new match or pin with independent fold proof was established. Clearance remains pending for all seven units; the bounded emission cleanup does not clear their required COMDATs. Census confirmation is pending.
 
+Served 00054EBE follow-up (2026-10-27, inspected `3641be0d80`, index
+`bf3dd31211`): both current rows remain exact, but the int-keyed `_M_find`
+copy still loses. Newer existing MilesAudioManager evidence and fold-proven
+pins already identify 00053FD2/00054EBE as the request set's pointer-keyed
+hashtable operations. The next step is now owner/template-row reconciliation,
+including the 00055811 outer wrapper, rather than rediscovering the hash or
+copying the ABI union. No source change or clearance is claimed. See the
+[scoped handoff](../reverse/attempt_support/audio-request-find-identity-prerequisite-20261027-codex.md).
+
 Served-unit recheck (2026-10-27, inspected `0bd2b98a1e`, index `bf3dd31211`): `StlSweepW4Rva000E0225.cpp` still selects its own `_M_find<int>`, which is not the retail two-word XOR find at 0x000E01B0. That find is rowed opaquely as `Rva000E01B0::rva000E01B0`, and E0584 and the E0298 insert reach the same table. `StlSweepW4Rva001DF2D3.cpp` keeps unresolved `??1`/`??4Rva001DF2D3Element`. Both names exist only as pins: the destructor at 0x001DDEC3 is rowed as `??1Rva00414BDBElement`, whose fake-STL view disagrees with the copy constructor layout at 0x001DE878, and the assignment at 0x001DE727 is rowed as `??4Rva001DE727`. Its selected-wrong overflow at 0x001DF21C is rowed under `vector<Rva001DF3F1Element>`, the same vector as push_back 0x001DF3F1. Both units need the one record identity reconciled across these rows in the naming and class lanes. Blocked verdicts were recorded and no source changed.
 
 - **Bounded identity audit (2026-10-26, inspected `896af21680`, index `d1f046749a`):** `build/link-report.md` and `build/link-worker-20261026/` retains the unchanged failures for `Rva00056da2Finish.cpp`, `StlSweepR3Rva00058A86.cpp`, `StlSweepR3Rva000AF1C2.cpp` and `StlSweepR3Rva00218FC2.cpp`. Native callees are respectively `0x000558AD` (the copy auxiliary, not uninitialized construction), `0x00057FC1` (the rowed pair-key hashtable clear), `0x000ADF1B` (a range-copy forwarder) and `0x00218E09`/`0x0021889A` (the GameFont sort family). Their emitting template identities disagree with the existing row owners. No suppressed unresolved helper, type-punned container, row rename or pin is retained. Next check: reconcile each native algorithm and element identity with those owners before changing emission. Clearance and census confirmation remain pending.
