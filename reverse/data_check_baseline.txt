@@ -496,7 +496,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/InvisibilityUpdatePoolKey.cpp	wro
 Code/GameEngine/Source/GameLogic/Object/Update/LargeGroupAudioUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004AB897@LargeGroupAudioUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03CDC
 Code/GameEngine/Source/GameLogic/Object/Update/LargeGroupBonusUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00048FFD4@LargeGroupBonusUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A0398C
 Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000363102@LaserUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A01E8C
-Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A028E4
+Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp	wrong-name	?$S1@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A028E4
 Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A7699@MissileUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C68
 Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000490D96@ModelConditionSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039B0
 Code/GameEngine/Source/GameLogic/Object/Update/ModuleUpdateDtors.cpp	duplicate-def	_s_dummyDFD4	0x0084DFD4

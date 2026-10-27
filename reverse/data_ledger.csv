@@ -19365,8 +19365,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A028D4,4,.data,global,?g_Va00E028D4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E028xx.cpp,provisional,?$S1@?1??rva0003A4358@FadeAndDieOrnamentUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/FadeAndDieOrnamentUpdatePoolKey.cpp;?g_Va00E028D4@@3IA,2,4
 0x00A028D8,4,.data,global,_s_rva007AF369,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A028DC,4,.data,global,_s_rva007AF393,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A028E0,4,.data,global,?TheLifetimeUpdatePoolKey@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp,owned,,1,2
-0x00A028E4,4,.data,global,?g_Va00E028E4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E028xx.cpp,provisional,?$S1@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp;?g_Va00E028E4@@3IA,2,4
+0x00A028E0,4,.data,global,?TheLifetimeUpdatePoolKey@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp,owned,,1,2
+0x00A028E4,4,.data,global,?g_Va00E028E4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E028xx.cpp,provisional,?$S1@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp;?g_Va00E028E4@@3IA,2,4
 0x00A028E8,4,.data,global,?TheStrafeAreaUpdatePoolKey@?1??rva0003A4CCD@StrafeAreaUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdatePoolKey.cpp,owned,,1,2
 0x00A028EC,4,.data,global,?g_Va00E028EC@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E028xx.cpp,provisional,?$S1@?1??rva0003A4CCD@StrafeAreaUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdatePoolKey.cpp;?g_Va00E028EC@@3IA,2,4
 0x00A028F0,4,.data,global,_s_rva007AF3D7,Code/GameEngine/Source/Common/Rva007AD295ZeroInits.cpp,owned,,1,1

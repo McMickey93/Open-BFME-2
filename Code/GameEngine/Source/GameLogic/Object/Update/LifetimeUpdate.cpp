@@ -72,6 +72,40 @@ private:
 	int m_updateState; // +0x1C
 };
 #include "LifetimeUpdateModuleDataView.h"
+#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+#pragma inline_depth(0)
+#pragma inline_depth()
+//
+// ?xfer@Rva003A49D1@@MAEXPAVXfer@@@Z, retail 0x003A4AFA, 94 bytes. Virtual
+// slot 3 (offset 0x0C) of vtable 0x0081B038 (class of rowed dtor
+// ??1Rva003A49D1@@UAE@XZ in Rva0024A797Derived.cpp): base UpdateModule xfer
+// via rowed 0x0044DF9F then IsLightCRC early-out via Xfer slot 0x10 then
+// Version(1,2) via Xfer slot 0x28 then uints at +0x20/+0x24 via Xfer slot
+// 0x78 then version-gated bool at +0x28 via Xfer slot 0x90. Layout is
+// UpdateModule base 0x20 giving +0x20 start (cf. rowed dtor). Identity is
+// slot 3 plus the UpdateModule base call; class name stays honest Rva
+// address name.
+
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+#include "../../../../Include/Common/BfmeXfer.h"
+#pragma comment(linker, "/alternatename:?behaviorSlot@BehaviorModuleInterface@@UAEXXZ=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
+
 // LifetimeUpdateModuleData's constructor, retail 0x00297E90. No base constructor call at
 // all - the class writes its own vftable pointer at +0x00 and leaves the base's
 // word at +0x04 alone, which is what an implicit base constructor looks like.
@@ -81,9 +115,6 @@ private:
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/LifetimeUpdate.h
 extern "C" const void *const vtbl_00C4ED70[];
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
-#pragma inline_depth(0)
-#pragma inline_depth()
 
 extern GameLogic *TheGameLogic;
 
@@ -201,6 +232,45 @@ private:
 
 int GetGameLogicRandomValue(int lo, int hi, char *file, int line);
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class Xfer::Version
+{
+public:
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
+
+	unsigned char m_current;
+	unsigned char m_minimum;
+};
+
+class Rva003A49D1 : public UpdateModule
+{
+protected:
+	virtual void xfer(Xfer *xfer);
+
+private:
+	unsigned int m_20;
+	unsigned int m_24;
+	bool m_28;
+};
+
+// Retail 0x003A4B58 reads GameLogic +0xA0. Keep this codegen view local:
+// extending the shared class changes PlaceEventTranslator's stack allocation.
+struct GameLogicHulkLifetimeView
+{
+	unsigned char m_pad00[0xA0];
+	Int m_hulkMaxLifetimeOverride;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCalcSleepDelay.cpp
 
 UnsignedInt LifetimeUpdate::calcSleepDelay(UnsignedInt minFrames, UnsignedInt maxFrames)
@@ -212,10 +282,6 @@ UnsignedInt LifetimeUpdate::calcSleepDelay(UnsignedInt minFrames, UnsignedInt ma
 	m_dieFrame = frame + delay;
 	return delay;
 }
-
-// tu-skeleton: 0x003A4A27 69B ?getModuleNameKey@LifetimeUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x003A4A6C 17B ?buildFieldParse@LifetimeUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateModuleDataConstructor.cpp
 
@@ -240,8 +306,6 @@ void _bfmeLifetimeUpdateModuleDataInlineAnchor(LifetimeUpdateModuleData *lifetim
 {
     lifetimeUpdateModuleData->LifetimeUpdateModuleData::LifetimeUpdateModuleData();
 }
-
-// tu-skeleton: 0x003A4A97 28B ??_GRva003A49D1@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp
 
@@ -309,14 +373,59 @@ UpdateSleepTime LifetimeUpdate::update()
 	return UPDATE_SLEEP_FOREVER;
 }
 
-// tu-skeleton: 0x003A4AFA 94B ?xfer@Rva003A49D1@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/Rva003A49D1Xfer.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp
 
-// tu-skeleton: 0x003A4B58 165B ??0LifetimeUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCtor.cpp (not merged yet)
+// ?getModuleNameKey@LifetimeUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType LifetimeUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheLifetimeUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("LifetimeUpdate");
+	return TheLifetimeUpdatePoolKey;
+}
 
-// tu-skeleton: 0x00781B83 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp (not merged yet)
+// tu-skeleton: 0x003A4A6C 17B ?buildFieldParse@LifetimeUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
-// tu-skeleton: 0x00781B90 10B __ehhandler$?getModuleNameKey@LifetimeUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp (not merged yet)
+// tu-skeleton: 0x003A4A97 28B ??_GRva003A49D1@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
 
-// tu-skeleton: 0x00781B9A 8B Unwind@00b81b9a -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva003A49D1Xfer.cpp
 
-// tu-skeleton: 0x00781BA2 10B __ehhandler$??0LifetimeUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCtor.cpp (not merged yet)
+void Rva003A49D1::xfer(Xfer *xfer)
+{
+	UpdateModule::xfer(xfer);
+	if (xfer->IsLightCRC())
+		return;
+	Xfer::Version version(1, 2);
+	*xfer == version;
+	*xfer == m_20;
+	*xfer == m_24;
+	if (version.m_minimum >= 2) {
+		*xfer == m_28;
+	}
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCtor.cpp
+
+LifetimeUpdate::LifetimeUpdate(Thing *thing, const ModuleData *moduleData)
+	: UpdateModule(thing, moduleData), m_dieFrame(0), m_birthFrame(0), m_disabled(false)
+{
+	const LifetimeUpdateModuleData *data = (const LifetimeUpdateModuleData *)getModuleData();
+	Bool startDisabled = data->m_startDisabled;
+	m_disabled = startDisabled;
+	if (startDisabled == true)
+	{
+		setWakeFrame(getObject(), UPDATE_SLEEP_FOREVER);
+	}
+	else
+	{
+		UnsignedInt delay;
+		if (getObject()->isHulkKind() && ((const GameLogicHulkLifetimeView *)TheGameLogic)->m_hulkMaxLifetimeOverride != -1)
+			delay = calcSleepDelay(((const GameLogicHulkLifetimeView *)TheGameLogic)->m_hulkMaxLifetimeOverride, ((const GameLogicHulkLifetimeView *)TheGameLogic)->m_hulkMaxLifetimeOverride);
+		else
+			delay = calcSleepDelay(data->m_minFrames, data->m_maxFrames);
+		setWakeFrame(getObject(), (UpdateSleepTime)delay);
+	}
+}
+
+// Placeholder virtuals in this unit's vftables: in retail, every vftable that holds
+// each one has the same function in that slot (vftable addresses from matched vptr
+// stores). Bind them to the rows at those functions.

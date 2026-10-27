@@ -4052,8 +4052,8 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdateModuleDa
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdateModuleDataCtor.cpp	_vfn_0047A699	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdateModuleDataCtor.cpp	_vfn_0047A69C	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdateModuleDataCtor.cpp	_vfn_0050B5C6	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp	?behaviorSlot@BehaviorModuleInterface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp	_vtbl_00C4ED70	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCtor.cpp	?behaviorSlot@BehaviorModuleInterface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MarkerTypeUpdateModuleDataCtor.cpp	_vtbl_00C5EDF8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdateCtor.cpp	_vtbl_00C53530	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdateCtor.cpp	_vtbl_00C53548	1
