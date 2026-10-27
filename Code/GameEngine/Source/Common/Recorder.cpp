@@ -475,6 +475,10 @@ public:
 public:
 	bool isMultiplayer();
 public:
+	void logCRCMismatch();
+public:
+	void logGameEnd();
+public:
 	void initControls();
 	RecorderModeType getMode() { return (RecorderModeType)m_mode; }
 	friend class Rva0037B7C7;
