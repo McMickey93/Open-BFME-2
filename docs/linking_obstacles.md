@@ -1222,6 +1222,16 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-27.**
 
+- **FX default-module guard index follow-up (2026-10-27, control `38e60a3ba930`):**
+  [The current-owner check](../reverse/attempt_support/fx-default-guard-data-index-20261027-codex.md)
+  refreshes twelve generated guard-index rows left stale by the earlier
+  standalone-clearer retirement. All 72 function rows and twelve parent EH
+  graphs verify; both data checks pass with zero findings. The owning
+  retirement tool removes all twelve source keys. Ordinary previews retain
+  LINKS and 1,900 authored bytes against index `73061d9452`. This clears
+  FXParticleSystemDefaults.cpp's registered data debt; broader storage closure
+  and census confirmation remain open. No new linked-byte gain is claimed.
+
 - **Shader filter storage and stale shutdown debt (2026-10-27, control c5dc2d6968):**
   [The three-unit binding check](../reverse/attempt_support/shader-filter-data-identity-20261027-codex.md)
   binds the merged manager's two free helpers to its existing protected
