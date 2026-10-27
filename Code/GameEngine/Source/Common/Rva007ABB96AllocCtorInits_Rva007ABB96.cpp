@@ -79,7 +79,6 @@ unsigned g_00DFE358;	// retail RVA 0x009FE358 (.bss), defined here
 class BfmeItemKA;
 extern BfmeItemKA **g_bfmeBegKA;
 extern unsigned g_Va00DFF134;
-extern unsigned g_Va00E031A8;
 // RVA 0x00A04484: Rva004E9B70Finish.cpp's RvaVector g_00E04484.
 struct RvaVector;
 extern RvaVector g_00E04484;

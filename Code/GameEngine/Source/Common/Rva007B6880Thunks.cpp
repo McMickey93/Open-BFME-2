@@ -6073,13 +6073,14 @@ public:
 }
 
 struct BfmeE12;
-extern unsigned g_Va00E031A8;
-unsigned int g_Va00E031A8;
+// 0x00A031A8: the deque stlport_deque_e12_findnode.cpp defines, spelled as its leading start iterator.
+namespace _STL { template <class T> struct _Nonconst_traits; template <class T, class Traits> struct _Deque_iterator; }
+extern _STL::_Deque_iterator<BfmeE12, _STL::_Nonconst_traits<BfmeE12> > g_00E031A8;
 
-// ?rva007B82E7@@YAXXZ @ 0x007B82E7 (10B). Global deque<BfmeE12> dtor thunk: ecx=&g_Va00E031A8 then tail-jmp to rowed ??1?$deque@UBfmeE12@@V?$allocator@UBfmeE12@@@_STL@@@_STL@@QAE@XZ (0x005858F3).
+// ?rva007B82E7@@YAXXZ @ 0x007B82E7 (10B). Global deque<BfmeE12> dtor thunk: ecx=&g_00E031A8 then tail-jmp to rowed ??1?$deque@UBfmeE12@@V?$allocator@UBfmeE12@@@_STL@@@_STL@@QAE@XZ (0x005858F3).
 void __cdecl rva007B82E7()
 {
-	_STL::deque<BfmeE12, _STL::allocator<BfmeE12> > *receiver = (_STL::deque<BfmeE12, _STL::allocator<BfmeE12> > *)&g_Va00E031A8;
+	_STL::deque<BfmeE12, _STL::allocator<BfmeE12> > *receiver = (_STL::deque<BfmeE12, _STL::allocator<BfmeE12> > *)&g_00E031A8;
 	return receiver->~deque();
 }
 
