@@ -23,7 +23,6 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-#define NULL 0
 #define TRUE true
 #define FALSE false
 

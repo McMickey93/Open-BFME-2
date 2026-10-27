@@ -21,10 +21,10 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-#define NULL 0
 #define TRUE true
 #define FALSE false
 
+#include <stddef.h>
 #include <list>
 #include "../../../../Include/GameLogic/ContainmentListView.h"
 

@@ -32,7 +32,6 @@ public:
 
 // ??0Rva00108475@@QAE@XZ @0x00108657 9B: the default constructor, storing the
 // class's own vtable (VA 0x00BCF994) and returning this.
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva00108475::Rva00108475()

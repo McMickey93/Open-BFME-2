@@ -37,11 +37,12 @@
 //   0x003EE711  0x00C363B8  Rva003EE711
 //   C37298 lifetime now has its complete registry-base provider.
 
+#include <new.h>
+
 struct EmitVtableTag;
 // This synthetic overload only emits this view's table. Its tag must not
 // collide with another view's synthetic constructor of the same class.
 struct C01VtableEmissionTag;
-inline void *operator new(unsigned int, void *p) { return p; }
 
 class Rva00051E4D
 {

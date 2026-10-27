@@ -7,6 +7,8 @@
 // make this TU emit each vtable and with it the deleting destructor. Owner
 // identities and layouts are not recovered.
 
+#include <new.h>
+
 struct EmitVtableTag;
 
 // ??_GRva00657670@@UAEPAXI@Z @0x00657670 31B: slot 0 of the vtable it stores, VA 0x00CE1354
@@ -175,7 +177,6 @@ Rva006655B0::~Rva006655B0()
 
 // ??0Rva006655B0@@QAE@XZ @0x006655F0 9B: the default constructor, storing the
 // class's own vtable (VA 0x00CE3168) and returning this.
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva006655B0::Rva006655B0()
