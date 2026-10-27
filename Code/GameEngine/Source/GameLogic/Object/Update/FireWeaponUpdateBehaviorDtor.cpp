@@ -63,6 +63,8 @@ class Thing;
 class ModuleData;
 class Object;
 
+typedef bool Bool;
+
 template <int NUMBITS> class BitFlags;
 enum UpdateSleepTime;
 
@@ -105,18 +107,24 @@ protected:
 	int m_indexInLogic;					// +0x18
 	int m_reserved1C;					// +0x1C
 };
-struct FireWeaponTracked
+#include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
+
+// The fired weapon; its virtual destructor is Snapshot's slot 0.
+class Weapon : public Snapshot
 {
-	virtual void *deleteInstance(int flags);
 };
+
+struct Rva0048B95FTracked;
+
 // The watch-list value; its dtor is rowed at 0x0048B95F (Rva0048B95FDtor.cpp).
 class Rva0048B95F
 {
 public:
 	~Rva0048B95F();
 private:
-	FireWeaponTracked *m_tracked;	// +0
+	Rva0048B95FTracked *m_tracked;	// +0
 };
+
 class FireWeaponUpdate : public UpdateModule
 {
 public:
@@ -124,15 +132,15 @@ public:
 	virtual ~FireWeaponUpdate();
 	virtual UpdateSleepTime update();
 private:
-	FireWeaponTracked *m_tracked;		// +0x20
-	_STL::list<int> m_trackedIds;		// +0x24
-	unsigned char m_weaponsReady;		// +0x28
+	Weapon *m_weapon; // +0x20
+	_STL::list<int> m_entries; // +0x24
+	Bool m_entriesReady; // +0x28
 };
 
 // ??1FireWeaponUpdate@@UAE@XZ @0x0048BD11
 FireWeaponUpdate::~FireWeaponUpdate()
 {
-	_STL::list<int> *trackedIds = &m_trackedIds;
+	_STL::list<int> *trackedIds = &m_entries;
 	_STL::list<int>::iterator it = trackedIds->begin();
 	while (it != trackedIds->end()) {
 		int trackedValue = *it;
@@ -143,7 +151,6 @@ FireWeaponUpdate::~FireWeaponUpdate()
 		}
 		trackedIds->remove(trackedValue);
 	}
-	if (m_tracked != 0) {
-		::operator delete(m_tracked->deleteInstance(0));
-	}
+	if (m_weapon != NULL)
+		::delete m_weapon;
 }
