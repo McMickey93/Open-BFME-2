@@ -40,10 +40,14 @@ template <> void _Construct<Rva0052BD59, Rva0052BD59>(Rva0052BD59 *, const Rva00
 template <> __declspec(dllimport) __forceinline void _Construct<BfmePod40, BfmePod40>(BfmePod40 *p, const BfmePod40 &v)
 { _Construct((Rva0052BD59 *)p, (const Rva0052BD59 &)v); }
 }
-// Suppress this TU's non-retail copy of ??$_Destroy@PAUBfmePod40@@@_STL@@YAXPAUBfmePod40@@0@Z:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
+// _M_clear's range destroy is retail's rowed Rva0052C266DestroyRange
+// (0x0052C266, Rva0052BF33DestroyTagged.cpp); forward to it so this TU's
+// _M_clear copy calls its owner rather than an unaddressed _Destroy<BfmePod40*>.
 struct BfmePod40;
-namespace _STL { template <> void _Destroy<BfmePod40 *>(BfmePod40 *,BfmePod40 *); }
+struct Rva0052BF4DElem;
+void __cdecl Rva0052C266DestroyRange(Rva0052BF4DElem *, Rva0052BF4DElem *);
+namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<BfmePod40 *>(BfmePod40 *__first, BfmePod40 *__last)
+{ Rva0052C266DestroyRange(reinterpret_cast<Rva0052BF4DElem *>(__first), reinterpret_cast<Rva0052BF4DElem *>(__last)); } }
 // Suppress this TU's non-retail copy of ??$__destroy_aux@PAUBfmePod40@@@_STL@@YAXPAUBfmePod40@@0ABU__false_type@0@@Z:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 struct BfmePod40;
