@@ -5,7 +5,7 @@
 // 8-subobject MI shape partagee with HordeWorkerAIUpdateDtor.cpp whose DBase block is copied verbatim below.
 // Layout note: the +0x3E4 tail is reached by the rowed Rva004A99F6 method which observes Worker +0x4CC at its own +0xE8;
 // the worker TU only needs the call so the tail stays empty here and +0x4CC is plain padding.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Thing;
 class ModuleData;
