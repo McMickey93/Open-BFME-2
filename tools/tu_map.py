@@ -28,7 +28,9 @@ Signals, strongest first (one letter each in the `by` and `evidence` columns):
      and only once `--validate` shows it agreeing with F (the game's own strings)
      at >= 99%. Where W and Z/S differ it is BFME 2's reorganised tree against
      Zero Hour's (Pathfinder/pathfinder*.cpp vs AI/AIPathfind.cpp), so Z/S are not
-     its test.
+     its test. A lead never anchors the row whose name it supplied (the row's notes
+     cite WorldBuilder, or it took the lead's class after the lead was cut): that
+     row's hint is the lead's path again, so the TU needs an independent anchor.
   C  address contiguity: the nearest assigned rows on both sides agree and are
      within 0x3000 bytes (retail object order keeps a TU contiguous).
   K  placeholder-class propagation (`??1Rva...` follows its `??_GRva...`).
@@ -494,8 +496,29 @@ def file_strings(layout, paths, owner):
     return out
 
 
+# A ledger note citing a WorldBuilder lead (`WB15D2AF0 names ...`, `named from WorldBuilder`).
+WB_CITED = re.compile(r"\bWB[0-9A-Fa-f]{6,}\b|WorldBuilder|wb_name_leads|\bWB lead", re.I)
+
+
+def wb_class(name):
+    """The class of a `Class::method` (a lead's wb_name or its snapshot name), or None."""
+    return name.rpartition("::")[0] or None if name and "::" in name else None
+
+
+def wb_self(lead, row):
+    """True when `row`'s naming is the lead's own: its ledger notes cite a WorldBuilder lead,
+    or it now carries the lead's class where the lead's snapshot (tools/wb_match.py's
+    current_name; none for an UNROWED body) had another. Such a row's N hint is the lead's
+    path again, so the lead cannot corroborate it."""
+    if WB_CITED.search(row.get("notes") or ""):
+        return True
+    cls = wb_class(lead.get("wb_name"))
+    before = None if lead.get("current_kind") == "UNROWED" else wb_class(lead.get("current_name"))
+    return bool(cls and row.get("cls") == cls and before != cls)
+
+
 def wb_files(layout, paths):
-    """{rva: TU} from WB_LEADS: the .cpp/.c whose path a WorldBuilder function's own strings
+    """{rva: (TU, lead)} from WB_LEADS: the .cpp/.c whose path a WorldBuilder function's own strings
     name (BFME 2's tree, `C:\\Projects\\bfme2\\Code\\...`), for the game function
     tools/wb_match.py paired it with. Headers name no TU."""
     out = {}
@@ -506,7 +529,7 @@ def wb_files(layout, paths):
         except ValueError:
             continue
         if m:
-            out.setdefault(rva, paths.repo(m.group(1)))
+            out.setdefault(rva, (paths.repo(m.group(1)), r))
     return out
 
 
@@ -597,7 +620,8 @@ def evidence_rows(layout, ledger=None):
             size = int(r["target_size"])
         except (TypeError, ValueError):
             size = 0
-        rows.append(dict(rva=rva, size=size, kind="code", name=r["name"], source=r["source"]))
+        rows.append(dict(rva=rva, size=size, kind="code", name=r["name"], source=r["source"],
+                         notes=r.get("notes") or ""))
     for g in read_csv(layout.path("ghidra_functions.csv")):
         try:
             rva = int(g["rva"], 16)
@@ -623,7 +647,8 @@ def evidence_rows(layout, ledger=None):
     for r in rows:
         r["cls"], r["meth"] = demangle(r["name"]) if r["name"] else (None, None)
         r["F"] = F.get(r["rva"])
-        r["W"] = W.get(r["rva"])
+        r["W"], lead = W.get(r["rva"], (None, None))
+        r["Wself"] = bool(lead and wb_self(lead, r))
         r["Z"] = zmeth.get((r["cls"], r["meth"])) if r["cls"] else None
     z_anchors = sorted((r["rva"], r["Z"]) for r in rows if r["Z"])   # out-of-line ZH definitions
     z_rvas = [a for a, _ in z_anchors]
@@ -663,8 +688,10 @@ def build(layout, ledger=None):
                                             sum(1 for x in c if not COMDAT.match(x["name"])), len(c)))
         if not any(x["hard"] or not COMDAT.match(x["name"]) for x in best):
             continue
-        # an anchor: a row's own F/Z/S, or a WorldBuilder lead naming this very path (W)
-        if any(x["hard"] and x["hard"].lower() == key or use_w and same(x["W"], key) for x in best):
+        # an anchor: a row's own F/Z/S, or a WorldBuilder lead naming this very path (W) on a
+        # row whose naming did not come from that lead (else the lead confirms itself)
+        if any(x["hard"] and x["hard"].lower() == key or use_w and same(x["W"], key) and not x["Wself"]
+               for x in best):
             anchored.add(key)
         for x in best:
             main[id(x)] = key

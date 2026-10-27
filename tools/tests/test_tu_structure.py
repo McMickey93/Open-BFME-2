@@ -159,21 +159,23 @@ def test_a_file_string_row_is_never_an_island(tmp_path):
 WB_HEADER = "target_rva,current_name,current_kind,wb_name,wb_file,score,evidence\n"
 
 
-def _wb(tmp_path, monkeypatch, foo_lead, bar_lead="Bar.cpp"):
+def _wb(tmp_path, monkeypatch, foo_lead, bar_lead="Bar.cpp", foo_name="X::f", foo_was="",
+        foo_kind="PLACEHOLDER", foo_notes=""):
     """Foo.cpp is a TU only naming proposes (N, no ZH definition); Bar.cpp's row pushes its
     own __FILE__ (F), the test of the WorldBuilder leads (W)."""
     monkeypatch.setattr(tu_map, "W_MIN", 1)
     (tmp_path / "reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/X").mkdir(parents=True)
     (tmp_path / "reverse").mkdir()
     (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join([
-        row("?a@Foo@@QAEXXZ", 0x1000, 16, "Code/X/FooA.cpp"),
+        row("?a@Foo@@QAEXXZ", 0x1000, 16, "Code/X/FooA.cpp", notes=foo_notes),
         row("?b@Foo@@QAEXXZ", 0x1100, 16, "Code/X/FooB.cpp"),
         row("?rva00008000@Rva00008000@@QAEXXZ", 0x8000, 16, "Code/X/Rva00008000.cpp"),
     ]))
     (tmp_path / "reverse/string_xrefs.tsv").write_text("C:\\bfme2\\Code\\X\\Bar.cpp\t0x8004\n")
     (tmp_path / "reverse/wb_name_leads.csv").write_text(WB_HEADER + "".join(
-        f"0x{rva:08X},,PLACEHOLDER,X::f,C:\\Projects\\bfme2\\Code\\X\\{f},3.0,callgraph\n"
-        for rva, f in ((0x1000, foo_lead), (0x8000, bar_lead))))
+        f"0x{rva:08X},{was},{kind},{name},C:\\Projects\\bfme2\\Code\\X\\{f},3.0,callgraph\n"
+        for rva, was, kind, name, f in ((0x1000, foo_was, foo_kind, foo_name, foo_lead),
+                                        (0x8000, "", "PLACEHOLDER", "X::f", bar_lead))))
     return {int(r["rva"], 16): r for r in tu_map.build(tu_map.Layout(tmp_path))}
 
 
@@ -182,6 +184,27 @@ def test_worldbuilder_lead_naming_the_hinted_path_anchors_the_tu(tmp_path, monke
     for rva in (0x1000, 0x1100):
         assert (out[rva]["tu"], out[rva]["by"], out[rva]["confidence"]) == ("Code/X/Foo.cpp", "N", "approved")
     assert "W=Code/X/Foo.cpp" in out[0x1000]["evidence"]
+
+
+@pytest.mark.parametrize("was,kind,notes", [
+    ("Rva00001000::rva00001000", "PLACEHOLDER", ""),   # the row took the lead's class after the lead
+    ("", "UNROWED", ""),                               # the row was created from the lead
+    ("Foo::rva00001000", "PIN_ONLY", "WB15D2AF0 names Foo::a in Foo.cpp"),   # its notes cite the lead
+])
+def test_worldbuilder_lead_does_not_corroborate_the_name_it_supplied(tmp_path, monkeypatch, was, kind, notes):
+    """BuildPhase::update (0x005DCCFB) took its name and path from its WB lead: that lead
+    naming the same path again is no independent anchor for the TU."""
+    out = _wb(tmp_path, monkeypatch, "Foo.cpp", foo_name="Foo::a", foo_was=was, foo_kind=kind,
+              foo_notes=notes)
+    assert "W=Code/X/Foo.cpp" in out[0x1000]["evidence"]
+    for rva in (0x1000, 0x1100):
+        assert (out[rva]["tu"], out[rva]["confidence"]) == ("Code/X/Foo.cpp", "proposed"), hex(rva)
+
+
+def test_worldbuilder_lead_corroborates_a_class_named_before_it(tmp_path, monkeypatch):
+    out = _wb(tmp_path, monkeypatch, "Foo.cpp", foo_name="Foo::a", foo_was="Foo::rva00001000",
+              foo_kind="PIN_ONLY")
+    assert out[0x1000]["confidence"] == out[0x1100]["confidence"] == "approved"
 
 
 def test_worldbuilder_lead_naming_another_path_anchors_nothing(tmp_path, monkeypatch):
