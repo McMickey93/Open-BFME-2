@@ -545,6 +545,13 @@ handoff's reported matched-byte values.
 
 ### Data-ownership follow-up outside the blocked shortlist
 
+2026-10-27, control `eb4237832a`: the FESL constructor and destructor share
+the existing owner at RVA 0x008E3F08, removing duplicate destructor storage and
+retiring two data keys. Both rows and all eight executable sections verify;
+paired ordinary previews preserve LINKS (200 authored bytes). The placeholder
+owner still needs a complete native vtable; no census gain is claimed.
+[Evidence](../reverse/attempt_support/fesl-secondary-data-20261027.md), LINK-007.
+
 2026-10-27, `8b5a8a815e`: twelve standalone draw cached-key units preserve
 LINKS (946 authored bytes) while their key/guard index rows catch up with the
 already-landed guard cleanup and getter renames. The owning tool retires twelve

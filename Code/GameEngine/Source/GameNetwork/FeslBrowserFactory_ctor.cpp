@@ -12,7 +12,11 @@
 
 static int Rva00803890SecondaryVTableAnchor;
 static int Rva00803890PrimaryVTableAnchor;
-static int Rva00803890SecondaryFinalVTableAnchor;
+// Shared with the destructor; keep the data ledger's C symbol spelling.
+extern "C"
+{
+	int Rva00803890SecondaryFinalVTableAnchor;
+}
 
 struct BfmeOwnerUNC
 {

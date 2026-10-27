@@ -1138,6 +1138,18 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-27.**
 
+- **FESL secondary-vtable anchor ownership (2026-10-27, control `eb4237832a`):**
+  [The two-unit binding check](../reverse/attempt_support/fesl-secondary-data-20261027.md)
+  removes the destructor's private anchor at RVA 0x008E3F08 by exposing the
+  existing constructor-owned symbol with external C linkage. Both matched rows
+  pass, all eight executable sections preserve their bytes, and both sources
+  have zero data findings. The owning tool retires two destructor data keys.
+  Paired ordinary previews preserve LINKS for 200 authored bytes against
+  `bf3dd31211`; no new census gain is claimed. This clears duplicate storage
+  and binding debt only: the existing four-byte placeholder still needs the
+  complete native secondary vtable and reconciled class identity before full
+  data ownership can be claimed.
+
 - **StatusBitsUpgrade / WeaponBonusUpgrade guard cleanup (2026-10-27):**
   [Exact parent EH ownership](../reverse/attempt_support/upgrade-guard-rollbacks-20261027-codex.md)
   replaces the last two synthetic standalone clearers with their parents'

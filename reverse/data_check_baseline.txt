@@ -552,8 +552,6 @@ Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_pi
 Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piSettingData	0x00A0C104
 Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	wrong-name	_piNextID	0x00A0C0EC
 Code/GameEngine/Source/GameNetwork/LANAPILobbyMenuForwarders.cpp	wrong-name	?g_Va00E03354@@3PAURva004469D1Receiver@@A	0x00A03354
-Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	duplicate-def	_Rva00803890Vt2Anchor	0x008E3F08
-Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	wrong-name	_Rva00803890Vt2Anchor	0x008E3F08
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DLaserDrawBfmeDoDraw.cpp	wrong-name	?$S17@?1??doDrawModule@W3DLaserDraw@@UAEXPBVMatrix3D@@@Z@4IA	0x009EBB5C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp	wrong-name	?$S1@?3??doDrawModule@W3DProjectileStreamDraw@@UAEXPBVMatrix3D@@@Z@4IA	0x009EBC24
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DDebrisDrawPoolKey.cpp	wrong-name	?$S1@?1??rva0000B1C97@W3DDebrisDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EA2FC
