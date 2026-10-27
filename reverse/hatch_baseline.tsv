@@ -4664,7 +4664,6 @@ asm_bytes	Code/gen_asm/d_0047ba10.asm	*	89
 asm_bytes	Code/gen_asm/d_004ff207.asm	*	135
 asm_bytes	Code/gen_asm/d_005c33dd.asm	*	74
 asm_bytes	Code/gen_asm/d_005e9687.asm	*	77
-class_gate_allow	Code/GameEngine/Source/Common/Audio/Rva000527FB.cpp	BfmeAudioEventPrefix136	1
 class_gate_allow	Code/GameEngine/Source/Common/GapBodiesGE31.cpp	GameLogic	1
 class_gate_allow	Code/GameEngine/Source/Common/Glo012F1024Entry_bfmeStep_Rva005669c2.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva00285C88Assign.cpp	ICoord2D	1

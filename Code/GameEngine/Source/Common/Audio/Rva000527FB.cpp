@@ -5,24 +5,7 @@
 // player's shroud status at the resolved position is not clear. Deeply nested
 // guards route every false to the shared end block; the unsigned-char return
 // with int literals selects the branchy mov-al-1 tail over setne.
-// class-gate: allow BfmeAudioEventPrefix136 POD caller-view: the canonical header's user-defined ctors force a return-temp plus memcpy for rva002DA1CC, retail builds the 12B view in place
-struct BfmeEventPositionView
-{
-	float x;
-	float y;
-	float z;
-};
-
-struct BfmeAudioEventPrefix136
-{
-private:
-	char m_pad0[8];
-public:
-	void *m_sub8;
-	char m_padC[0x30 - 0xC];
-	int m_int30;
-	BfmeEventPositionView rva002DA1CC(bool &valid);
-};
+#include "Common/BfmeAudioEventPrefix136.h"
 
 enum CellShroudStatus
 {
@@ -51,7 +34,7 @@ unsigned char MilesAudioManager::slot108(BfmeAudioEventPrefix136 *ev)
 {
 	if (ev->m_int30 == 0)
 	{
-		void *sub = ev->m_sub8;
+		void *sub = *(void **)&ev->m_pool08;
 		if ((*(unsigned char *)((char *)sub + 0x48) & 4) != 0)
 		{
 			bool valid;
