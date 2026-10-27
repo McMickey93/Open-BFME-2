@@ -183,9 +183,11 @@ extern unsigned g_Va00DDEEFC;
 extern unsigned g_Va00DDEF14;
 extern unsigned g_Va00DDEEE4;
 extern unsigned g_Va00DDEF38;
-unsigned g_Va00DDEEF0;	// retail RVA 0x009DEEF0 (.bss), defined here
-unsigned g_Va00DDEF20;	// retail RVA 0x009DEF20 (.bss), defined here
-unsigned g_Va00DDEF2C;	// retail RVA 0x009DEF2C (.bss), defined here
+// RVA 0x009DEEF0, 0x009DEF20, 0x009DEF2C: the 12-byte wide string storage
+// Rva00017B00StringInit.cpp defines.
+extern unsigned char g_009DEEF0Static[12];
+extern unsigned char g_00DDEF20Static[12];
+extern unsigned char g_00DDEF2CStatic[12];
 
 // ?rva007B68C0@@YAXXZ @ 0x007B68C0 (10B). Global string dtor thunk: ecx=&_STL::_Nameless then tail-jmp to rowed ??1?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@QAE@XZ (0x00142D70).
 void __cdecl rva007B68C0()
@@ -194,24 +196,24 @@ void __cdecl rva007B68C0()
 	return receiver->~basic_string();
 }
 
-// ?rva007B6A00@@YAXXZ @ 0x007B6A00 (10B). Global wide string dtor thunk: ecx=&g_Va00DDEEF0 then tail-jmp to rowed ??1?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@XZ (0x0000B3C0).
+// ?rva007B6A00@@YAXXZ @ 0x007B6A00 (10B). Global wide string dtor thunk: ecx=g_009DEEF0Static then tail-jmp to rowed ??1?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@XZ (0x0000B3C0).
 void __cdecl rva007B6A00()
 {
-	StlWideString *receiver = (StlWideString *)&g_Va00DDEEF0;
+	StlWideString *receiver = (StlWideString *)g_009DEEF0Static;
 	return receiver->~basic_string();
 }
 
-// ?rva007B6A10@@YAXXZ @ 0x007B6A10 (10B). Global wide string dtor thunk: ecx=&g_Va00DDEF20 then tail-jmp to rowed ??1?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@XZ (0x0000B3C0).
+// ?rva007B6A10@@YAXXZ @ 0x007B6A10 (10B). Global wide string dtor thunk: ecx=g_00DDEF20Static then tail-jmp to rowed ??1?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@XZ (0x0000B3C0).
 void __cdecl rva007B6A10()
 {
-	StlWideString *receiver = (StlWideString *)&g_Va00DDEF20;
+	StlWideString *receiver = (StlWideString *)g_00DDEF20Static;
 	return receiver->~basic_string();
 }
 
-// ?rva007B6A40@@YAXXZ @ 0x007B6A40 (10B). Global wide string dtor thunk: ecx=&g_Va00DDEF2C then tail-jmp to rowed ??1?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@XZ (0x0000B3C0).
+// ?rva007B6A40@@YAXXZ @ 0x007B6A40 (10B). Global wide string dtor thunk: ecx=g_00DDEF2CStatic then tail-jmp to rowed ??1?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@QAE@XZ (0x0000B3C0).
 void __cdecl rva007B6A40()
 {
-	StlWideString *receiver = (StlWideString *)&g_Va00DDEF2C;
+	StlWideString *receiver = (StlWideString *)g_00DDEF2CStatic;
 	return receiver->~basic_string();
 }
 
@@ -1007,7 +1009,7 @@ void __cdecl rva007B6FAC()
 unsigned g_Va00DEAF20;	// retail RVA 0x009EAF20 (.bss), defined here
 extern unsigned BfmeLiveCameraModeNameStorage;
 extern unsigned g_Va00DEC3B8;
-unsigned g_Va00DEE93C;	// retail RVA 0x009EE93C (.bss), defined here
+extern AsciiString g_00DEE93C;	// RVA 0x009EE93C, defined in Rva0012CAC3Run.cpp
 
 // ?rva007B6D09@@YAXXZ @ 0x007B6D09 (10B). Global AsciiString dtor thunk: ecx=&g_Va00DEAF20 then tail-jmp to rowed ??1AsciiString@@QAE@XZ (0x0048BA39).
 void __cdecl rva007B6D09()
@@ -1030,10 +1032,10 @@ void __cdecl rva007B6F98()
 	return receiver->~AsciiString();
 }
 
-// ?rva007B707A@@YAXXZ @ 0x007B707A (10B). Global AsciiString dtor thunk: ecx=&g_Va00DEE93C then tail-jmp to rowed ??1AsciiString@@QAE@XZ (0x0048BA39).
+// ?rva007B707A@@YAXXZ @ 0x007B707A (10B). Global AsciiString dtor thunk: ecx=&g_00DEE93C then tail-jmp to rowed ??1AsciiString@@QAE@XZ (0x0048BA39).
 void __cdecl rva007B707A()
 {
-	AsciiString *receiver = (AsciiString *)&g_Va00DEE93C;
+	AsciiString *receiver = &g_00DEE93C;
 	return receiver->~AsciiString();
 }
 

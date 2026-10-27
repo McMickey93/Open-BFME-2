@@ -54,17 +54,6 @@ Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?$S3@?7??rva005F2D41
 Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva005F632AFormat.cpp	wrong-name	?$S1@?4??Rva005F632AFormat@@YA?AVUnicodeString@@H@Z@4IA	0x00A06930
 Code/GameEngine/Source/Common/Rva00627AA0Call.cpp	wrong-name	?g_rva00627AA0@@3PAURva00627AA0Obj@@A	0x00A05FBC
-Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEB2C@@3IA	0x009DEB2C
-Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEEFC@@3IA	0x009DEEFC
-Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF08@@3IA	0x009DEF08
-Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF2C@@3IA	0x009DEF2C
-Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF38@@3IA	0x009DEF38
-Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00DEC008@@3IA	0x009EC008
-Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00DEE93C@@3IA	0x009EE93C
-Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E01CF0@@3IA	0x00A01CF0
-Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E01CF4@@3IA	0x00A01CF4
-Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E0447C@@3IA	0x00A0447C
-Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	wrong-name	?g_Va00E06634@@3IA	0x00A06634
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00DE1E98@@3IA	0x009E1E98
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00DFF14C@@3IA	0x009FF14C
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00DFF4F8@@3IA	0x009FF4F8
