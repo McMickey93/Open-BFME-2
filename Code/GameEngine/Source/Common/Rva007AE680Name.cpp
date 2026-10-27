@@ -6,8 +6,7 @@
 //   ?setName@Rva007AE680Name@@QAEXPBD@Z 0x00108596 (30B)
 // Callee addresses are read off retail call sites (reverse/symbols.csv).
 
-extern "C" __declspec(dllimport) char *__cdecl strncpy( char *destination, const char *source,
-	unsigned int count );
+#include <string.h>
 
 class Rva007AE680Name
 {

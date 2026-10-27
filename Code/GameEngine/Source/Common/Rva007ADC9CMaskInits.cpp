@@ -11,7 +11,7 @@
 // memset length. The owning TUs are unrecovered, so each initializer keeps
 // an honest address name.
 
-extern "C" void * __cdecl memset(void *, int, unsigned int);
+#include <string.h>
 
 template <int N>
 class BitFlags;
