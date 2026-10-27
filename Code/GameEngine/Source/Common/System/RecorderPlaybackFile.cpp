@@ -14,34 +14,34 @@
 #include "../GameLogicObjectLookupView.h"
 class Rva0037B5DF {public:
  ~Rva0037B5DF();
- int startTime,endTime;unsigned int duration;int interval,mode;bool quitEarly,discons[8];char gap1D[3];
- AsciiString options20;int player24;UnicodeString filename28;bool forPlayback2C;char gap2D[3];
- UnicodeString name30;char time34[16];UnicodeString version44,versionTime48;unsigned int iniCRC4C;
- bool desync50;char gap51[3];unsigned int tail54;UnicodeString string58;
+ int start,end,frame,crcInterval,mode;bool quitEarly,disconnected[8];char pad1D[3];
+ AsciiString options;int localIndex;UnicodeString filename;bool forPlayback;char pad2D[3];
+ UnicodeString name;char time[16];UnicodeString version,versionTime;unsigned int crc4C;
+ bool flag50;char pad51[3];int word54;UnicodeString str58;
 };
 class Rva0037BBED {public:bool rva0037CBB6(Rva0037B5DF &);};
 class Rva0037B7C7 {public:void rva0037B7C7();};
 class Rva0037D076 {public:
- Rva0037D076();unsigned char mismatch,skipped;char gap02[2];void *list04;int localPlayer08;
+ Rva0037D076();unsigned char m_b0,m_b1;char m_pad2[2];void *m_list;int m_i8;
 };
 class GameInfo {public:
  AsciiString getMap()const;
- char unknown00[0xc];int crcInterval;char unknown10[0x50-0x10];
- unsigned int seed;char unknown54[0xe3c-0x54];
+ char unknown00[0xc];int m_crcInterval;char unknown10[0x50-0x10];
+ unsigned int m_seed;char unknown54[0xe3c-0x54];
 };
 class GlobalData {public:
- char unknown00[0xac0];AsciiString pendingFile;
- char unknownAC4[0x1100-0xac4];unsigned char flag1100;char unknown1101[3];int value1104;
+ char p0[0xac0];AsciiString pendingFile;
+ char pAC4[0x1100-0xac4];bool field1100;char p1101[3];int field1104;
 };
 class GameMessage {public:
- enum Type {NEW_GAME=0x1e};void appendIntegerArgument(int);
+ enum Type {MSG_NEW_GAME=0x1e};void appendIntegerArgument(int v);
 };
 class MessageStream {public:
 #define V(n) virtual void v##n();
  V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08)
  V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17)
 #undef V
- virtual GameMessage *appendMessage(GameMessage::Type);
+ virtual GameMessage *v18(int type);
 };
 extern GlobalData *TheWritableGlobalData;
 extern GameLogic *TheGameLogic;
@@ -49,52 +49,52 @@ extern GameInfo *TheGameInfo;
 extern MessageStream *TheMessageStream;
 int REPLAY_CRC_INTERVAL;
 static int recorderSavedGlobalValue;
-static unsigned char recorderSavedGlobalFlag;
+static bool recorderSavedGlobalFlag;
 void InitRandom(unsigned int);
 class RecorderClass {public:
  bool playbackFile(UnicodeString filename);
  void rva0037AEE2();
- char unknown00[0xc];Rva0037D076 *crcInfo;FILE *file;
- UnicodeString path14;char unknown18[4];int mode;UnicodeString currentReplayFilename;
- GameInfo gameInfo;int interval,originalMode,playerCount,localPlayer;
- bool doingAnalysis;char unknownE71[3];int recordedMode;
+ char pad004[0xc];Rva0037D076 *m_crcInfo;FILE *m_file;
+ UnicodeString m_fileName;int field0018;int m_mode;UnicodeString m_currentReplayFilename;
+ GameInfo m_gameInfo;int field0e60,field0e64;char padE68[8];
+ bool m_doingAnalysis;char padE71[3];int m_gameMode;
 };
 bool RecorderClass::playbackFile(UnicodeString filename)
 {
- if(!doingAnalysis)TheGameLogic->clearGameData(false,false);
- mode=1;
+ if(!m_doingAnalysis)TheGameLogic->clearGameData(false,false);
+ m_mode=1;
  Rva0037B5DF header;
- header.forPlayback2C=true;header.filename28=filename;
+ header.forPlayback=true;header.filename=filename;
  bool success=reinterpret_cast<Rva0037BBED *>(this)->rva0037CBB6(header);
  if(!success)return false;
- recorderSavedGlobalFlag=TheWritableGlobalData->flag1100;
- recorderSavedGlobalValue=TheWritableGlobalData->value1104;
- TheWritableGlobalData->flag1100=header.desync50;
- TheWritableGlobalData->value1104=header.tail54;
- TheWritableGlobalData->pendingFile=gameInfo.getMap();
- crcInfo=new Rva0037D076;
- crcInfo->localPlayer08=header.player24;
- REPLAY_CRC_INTERVAL=gameInfo.crcInterval;
- int difficulty=0;fread(&difficulty,4,1,file);
- fread(&recordedMode,4,1,file);
- int rankPoints=0;fread(&rankPoints,4,1,file);
- int maxFPS=0;fread(&maxFPS,4,1,file);
+ recorderSavedGlobalFlag=TheWritableGlobalData->field1100;
+ recorderSavedGlobalValue=TheWritableGlobalData->field1104;
+ TheWritableGlobalData->field1100=header.flag50;
+ TheWritableGlobalData->field1104=header.word54;
+ TheWritableGlobalData->pendingFile=m_gameInfo.getMap();
+ m_crcInfo=new Rva0037D076;
+ m_crcInfo->m_i8=header.localIndex;
+ REPLAY_CRC_INTERVAL=m_gameInfo.m_crcInterval;
+ int difficulty=0;fread(&difficulty,4,1,m_file);
+ fread(&m_gameMode,4,1,m_file);
+ int rankPoints=0;fread(&rankPoints,4,1,m_file);
+ int maxFPS=0;fread(&maxFPS,4,1,m_file);
  reinterpret_cast<Rva0037B7C7 *>(this)->rva0037B7C7();
- if(!doingAnalysis){
-  TheGameInfo=&gameInfo;
-  GameMessage *message=TheMessageStream->appendMessage(GameMessage::NEW_GAME);
+ if(!m_doingAnalysis){
+  TheGameInfo=&m_gameInfo;
+  GameMessage *message=TheMessageStream->v18(GameMessage::MSG_NEW_GAME);
   message->appendIntegerArgument(3);
   message->appendIntegerArgument(difficulty);
   message->appendIntegerArgument(rankPoints);
   if(maxFPS!=0)message->appendIntegerArgument(maxFPS);
-  InitRandom(gameInfo.seed);
+  InitRandom(m_gameInfo.m_seed);
  }
- currentReplayFilename=filename;
+ m_currentReplayFilename=filename;
  return true;
 }
 
 void RecorderClass::rva0037AEE2()
 {
- TheWritableGlobalData->flag1100=recorderSavedGlobalFlag;
- TheWritableGlobalData->value1104=recorderSavedGlobalValue;
+ TheWritableGlobalData->field1100=recorderSavedGlobalFlag;
+ TheWritableGlobalData->field1104=recorderSavedGlobalValue;
 }

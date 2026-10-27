@@ -30,7 +30,7 @@ public:
 extern GameTextInterface *TheGameText;
 class Version { public: UnicodeString getFullUnicodeVersion(); UnicodeString getUnicodeBuildTime(); };
 extern Version *TheVersion;
-class GlobalData {public:AsciiString rva002360DE() const;char p0[0xb04];unsigned int field0b04;char pB08[0x1100-0xb08];bool field1100;char p1101[3];int field1104;};
+class GlobalData {public:AsciiString rva002360DE() const;char p0[0xac0];AsciiString pendingFile;char pAC4[0xb04-0xac4];unsigned int field0b04;char pB08[0x1100-0xb08];bool field1100;char p1101[3];int field1104;};
 extern GlobalData *TheWritableGlobalData;
 struct BfmeNetAddress { unsigned int address,port;bool Rva00248CBF(const BfmeNetAddress*) const;};
 // Target compares the complete address through rowed248CBF; donor IP-only
@@ -44,6 +44,8 @@ public:
     virtual void slot3(); virtual void slot4(); virtual void slot5(); virtual void slot6(); virtual void slot7(); virtual void slot8(); virtual void slot9(); virtual void reset();virtual void startGame(int);virtual void slot12();virtual int getLocalSlotNum();
     int field0004;int field0008; int m_crcInterval;
     char pad010[0x38-0x10]; BfmeNetAddress address;
+    char pad040[0x50-0x40]; unsigned int m_seed;
+    AsciiString getMap() const;
     GameSlot *getSlot(int);const GameSlot *getConstSlot(int) const;void enterGame();void endGame();
     void setCRCInterval(int n) { m_crcInterval = n < 100 ? n : 100; }
 };
@@ -405,6 +407,7 @@ enum RecorderModeType {
 	RECORDERMODETYPE_NONE
 };
 
+class Rva0037D076;
 class RecorderClass {
 public:
 	virtual void slot0();
@@ -427,7 +430,9 @@ public:
 public:
 	virtual void reset();
 public:
-	char pad004[0x10-4];
+	char pad004[0xC-4];
+public:
+	Rva0037D076 *m_crcInfo;
 public:
 	FILE*m_file;
 public:
@@ -437,7 +442,7 @@ public:
 public:
 	int m_mode;
 public:
-	int field0020;
+	UnicodeString m_currentReplayFilename;
 public:
 	GameInfo m_gameInfo;
 public:
@@ -480,6 +485,8 @@ public:
 	void logGameEnd();
 public:
 	void initControls();
+	bool playbackFile(UnicodeString filename);
+	void rva0037AEE2();
 	RecorderModeType getMode() { return (RecorderModeType)m_mode; }
 	friend class Rva0037B7C7;
 };
@@ -564,6 +571,7 @@ class Rva0037D076
 	int m_i8;
 public:
 	Rva0037D076();
+	friend class RecorderClass;
 };
 
 extern GameLogic *TheGameLogic;
