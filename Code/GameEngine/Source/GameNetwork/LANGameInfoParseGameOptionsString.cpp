@@ -145,9 +145,7 @@ class LANGameSlot:public GameSlot {public:
  unsigned char beforeHeard[0x1cc-0x34]; UnsignedInt m_lastHeard;
  void setLastHeard(UnsignedInt now){m_lastHeard=now;}
 };
-class LANGameInfo:public GameInfo {public:
- LANGameSlot *getLANSlot(int i){return (LANGameSlot*)((Rva00447773*)this)->rva00447773(i);}
-};
+class LANGameInfo:public GameInfo {};
 
 // Only the two entries this body calls are named; the rest keep the retail
 // order so RequestHasMap stays at +0x3c and AmIHost at +0xb8.
@@ -240,7 +238,7 @@ Bool ParseGameOptionsString(LANGameInfo *game, AsciiString options,
     Int i;
     for (i = 0; i < MAX_SLOTS; ++i)
     {
-        LANGameSlot *slot = game->getLANSlot(i);
+        LANGameSlot *slot = (LANGameSlot*)((Rva00447773*)game)->rva00447773(i);
         if (slot && slot->isHuman())
         {
             oldLogins[slot->getName()] = slot->getUser()->m_login;
@@ -272,7 +270,7 @@ Bool ParseGameOptionsString(LANGameInfo *game, AsciiString options,
         UnsignedInt now = timeGetTime();
         for (i = 0; i < MAX_SLOTS; ++i)
         {
-            LANGameSlot *slot = game->getLANSlot(i);
+            LANGameSlot *slot = (LANGameSlot*)((Rva00447773*)game)->rva00447773(i);
             if (slot->isHuman())
             {
                 slot->setLastHeard(now);

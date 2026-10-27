@@ -344,7 +344,6 @@ class Rva00447773 : public GameInfo
 public:
 	void *rva00447773( Int index );			// getLANSlot
 
-	LANGameSlot *getLANSlot( Int index ) { return (LANGameSlot *)rva00447773( index ); }
 	const BfmeNetAddress *getSlotAddress( Int index ) const { return &m_slots[index].m_address; }
 };
 
@@ -830,7 +829,7 @@ void LANAPI::OnHasMap( const BfmeNetAddress *ip, Bool status )
 	{
 		if( game->getSlotAddress( i )->Rva00248CBF( ip ) )
 		{
-			game->getLANSlot( i )->setMapAvailability( status );
+			((LANGameSlot *)game->rva00447773( i ))->setMapAvailability( status );
 			break;
 		}
 	}
@@ -854,10 +853,10 @@ void LANAPI::OnHasMap( const BfmeNetAddress *ip, Bool status )
 		UnicodeString text;
 		if( willTransfer )
 			text.format( TheGameText->fetchPointer( "GUI:PlayerNoMapWillTransfer", 0 ),
-				m_currentGame->getLANSlot( i )->getName().str(), mapDisplayName.str() );
+				((LANGameSlot *)m_currentGame->rva00447773( i ))->getName().str(), mapDisplayName.str() );
 		else
 			text.format( TheGameText->fetchPointer( "GUI:PlayerNoMap", 0 ),
-				m_currentGame->getLANSlot( i )->getName().str(), mapDisplayName.str() );
+				((LANGameSlot *)m_currentGame->rva00447773( i ))->getName().str(), mapDisplayName.str() );
 		OnChat( UnicodeString( L"SYSTEM" ), getLocalAddress(), text, LANAPIInterface::LANCHAT_SYSTEM );
 	}
 	Rva00248D84Enable();
@@ -1130,7 +1129,7 @@ void LANAPI::OnGameOptions( const BfmeNetAddress &sender, Int playerSlot, AsciiS
 		AsciiString munkee = options;
 		munkee.nextToken( &key, "=" );
 
-		LANGameSlot *slot = m_currentGame->getLANSlot( playerSlot );
+		LANGameSlot *slot = ((LANGameSlot *)m_currentGame->rva00447773( playerSlot ));
 		if( !slot )
 			return;
 
@@ -1162,7 +1161,7 @@ void LANAPI::OnGameOptions( const BfmeNetAddress &sender, Int playerSlot, AsciiS
 		options.nextToken( &key, "=" );
 		Int val = atoi( options.str() + 1 );
 
-		GameSlot *slot = m_currentGame->getLANSlot( playerSlot );
+		GameSlot *slot = ((LANGameSlot *)m_currentGame->rva00447773( playerSlot ));
 		if( !slot )
 			return;
 
@@ -1198,7 +1197,7 @@ void LANAPI::OnGameOptions( const BfmeNetAddress &sender, Int playerSlot, AsciiS
 				{
 					for( Int i = 0; i < MAX_SLOTS; i++ )
 					{
-						GameSlot *checkSlot = m_currentGame->getLANSlot( i );
+						GameSlot *checkSlot = ((LANGameSlot *)m_currentGame->rva00447773( i ));
 						if( val == checkSlot->getStartPos() && slot != checkSlot )
 						{
 							startPosAvailable = false;
