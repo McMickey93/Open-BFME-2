@@ -7183,7 +7183,6 @@ name,address,notes
 ?rva00513B94@Rva00513B94Target@@QAEXXZ,0x00513B94,"method a vtable-slot forwarder tail-jumps to (ret 0); opaque address name"
 ?rva00517EA2@Rva00517EA2@@QAEXXZ,0x00517EA2,address-derived callee of matched slot 0x005B800A; retail jmp rel32 targets 0x00517EA2; Ghidra FUN bounds 137 bytes; thiscall no args ret; callee body remains unclaimed; no named identity inferred
 ?rva0051B09B@Rva0051BED7@@QAEXXZ,0x0051B09B,this-shaped call site in the 0x0051BED7 poll (mov ecx,esi with no stack args); rowed free fn Rva0051B09BEnable lives here; address from retail REL32
-?rva0051DE3D@State0051E262@@QAEXXZ,0x0051DE3D,thiscall tail of 0x0051E262 score-screen init (REL32 at 0x0051E2AE); Ghidra 1061B EH body unrecovered; address name
 ?rva0051ED7E@AptTimeLine@@QAEXXZ,0x0051ED7E,unrowed 345B thiscall (Ghidra FUN_0091ed7e) on the time line screen; REL32 read at AptTimeLine::OnButtonContinue 0x0051F6D7 with ECX=this; address name
 ?rva005288BD@Rva002D363E90@@QAEXXZ,0x005288BD,pin for 0x2D363E thiscall void () on +0x90
 ?rva0052B003@Rva0052B278@@QAEX_N@Z,0x0052B003,thiscall bool callee of 0x004E063F read from its REL32 displacement; body unrowed

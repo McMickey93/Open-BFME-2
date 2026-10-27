@@ -34,7 +34,6 @@ struct State0051E262
 	int m_280; // +0x280
 	char m_pad284[4];
 	int m_288; // +0x288
-	void rva0051DE3D();
 };
 class AptOptions
 {
