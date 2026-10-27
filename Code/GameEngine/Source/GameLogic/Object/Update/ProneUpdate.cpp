@@ -103,8 +103,24 @@ class UpdateModuleInterface
 public:
 	virtual UpdateSleepTime update() = 0;
 };
+class Xfer;
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+// Primary vftable slots as retail's ProneUpdate one (0x00C5191C) and
+// UpdateModule's own (0x00BF004C) hold them: 0 the scalar deleting dtor,
+// 1 loadPostProcess (0x0058B03E in UpdateModule's), 2 GetSnapshotName
+// (0x002533CD), 3 xfer (0x0044DF9F), 4 getModuleNameKey (__purecall in
+// UpdateModule's, 0x0049FE9A in ProneUpdate's).
 class UpdateModule : public BehaviorModule, public BehaviorModuleInterface, public UpdateModuleInterface
 {
+protected:
+	virtual void loadPostProcess();				// slot 1
+	virtual const char *GetSnapshotName() const;		// slot 2
+public:
+	virtual void xfer(Xfer *xfer);				// slot 3
+	virtual NameKeyType getModuleNameKey() const = 0;	// slot 4
 protected:
 	unsigned int m_14;
 	int m_18;
@@ -115,6 +131,7 @@ class ProneUpdate : public UpdateModule
 public:
 	void goProne(const DamageInfo *damageInfo);
 	virtual UpdateSleepTime update();
+	virtual NameKeyType getModuleNameKey() const;
 protected:
 	const ProneUpdateModuleData *getProneUpdateModuleData() const
 	{
