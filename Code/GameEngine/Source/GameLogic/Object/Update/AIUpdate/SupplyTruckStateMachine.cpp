@@ -64,7 +64,8 @@ class SupplyTruckAIInterface
 {
 public:
 	virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-	virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+	virtual Bool isAvailableForSupplying() const; // slot 4 (+0x10), ownerAvailableForSupplying
+	virtual void v05(); virtual void v06(); virtual void v07();
 	virtual void v08(); virtual void v09(); virtual void v10();
 	virtual void setForceWantingState(Bool v); // +0x2C
 	virtual Bool isForcedIntoWantingState() const; // +0x30
@@ -100,6 +101,12 @@ public:
 	virtual void v088(); virtual void v089(); virtual void v090(); virtual void v091();
 	virtual void v092(); virtual void v093(); virtual void v094();
 	virtual SupplyTruckAIInterface *getSupplyTruckAIInterface(); // slot 95 (+0x17C)
+	virtual void v096(); virtual void v097(); virtual void v098(); virtual void v099();
+	virtual void v100(); virtual void v101(); virtual void v102(); virtual void v103();
+	virtual void v104(); virtual void v105(); virtual void v106(); virtual void v107();
+	virtual void v108(); virtual void v109();
+	virtual Bool isIdle(); // slot 110 (+0x1B8)
+	Int getCurrentStateID() const; // rowed 0x00262FC3
 };
 
 // The AI module pointer is read as a member: an inline getAIUpdateInterface
