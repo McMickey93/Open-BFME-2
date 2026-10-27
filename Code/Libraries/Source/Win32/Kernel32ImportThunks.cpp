@@ -3,11 +3,13 @@
 // import-pointer symbols, as D3DX9ImportThunks.cpp does for d3dx9. VS2003
 // __identifier names the actual decorated __imp__ symbol; no alias, address
 // pin, inline assembly, emitted bytes or replacement datum is used.
-// Signatures: the VS2003 Platform SDK headers (WinBase.h, WinNls.h, WinCon.h),
-// included with WINBASEAPI empty so these definitions are not dllimport.
+// Signatures: the VS2003 Platform SDK headers (WinBase.h, WinNls.h, WinCon.h,
+// TlHelp32.h), included with WINBASEAPI empty so these definitions are not
+// dllimport.
 // Each retail six-byte thunk's IAT slot names the export (row notes).
 #define WINBASEAPI
 #include <windows.h>
+#include <tlhelp32.h>
 extern "C" {
 // _InterlockedExchange@8
 typedef LONG (WINAPI *PFN_InterlockedExchange)(LONG volatile *, LONG);
@@ -1204,5 +1206,54 @@ typedef int (WINAPI *PFN_MulDiv)(int, int, int);
 extern PFN_MulDiv __identifier("_imp__MulDiv@12");
 int WINAPI MulDiv(int nNumber, int nNumerator, int nDenominator) {
  return __identifier("_imp__MulDiv@12")(nNumber, nNumerator, nDenominator);
+}
+
+// _Module32Next@8
+typedef BOOL (WINAPI *PFN_Module32Next)(HANDLE, LPMODULEENTRY32);
+extern PFN_Module32Next __identifier("_imp__Module32Next@8");
+BOOL WINAPI Module32Next(HANDLE hSnapshot, LPMODULEENTRY32 lpme) {
+ return __identifier("_imp__Module32Next@8")(hSnapshot, lpme);
+}
+
+// _Module32First@8
+typedef BOOL (WINAPI *PFN_Module32First)(HANDLE, LPMODULEENTRY32);
+extern PFN_Module32First __identifier("_imp__Module32First@8");
+BOOL WINAPI Module32First(HANDLE hSnapshot, LPMODULEENTRY32 lpme) {
+ return __identifier("_imp__Module32First@8")(hSnapshot, lpme);
+}
+
+// _CreateToolhelp32Snapshot@8
+typedef HANDLE (WINAPI *PFN_CreateToolhelp32Snapshot)(DWORD, DWORD);
+extern PFN_CreateToolhelp32Snapshot __identifier("_imp__CreateToolhelp32Snapshot@8");
+HANDLE WINAPI CreateToolhelp32Snapshot(DWORD dwFlags, DWORD th32ProcessID) {
+ return __identifier("_imp__CreateToolhelp32Snapshot@8")(dwFlags, th32ProcessID);
+}
+
+// _Thread32Next@8
+typedef BOOL (WINAPI *PFN_Thread32Next)(HANDLE, LPTHREADENTRY32);
+extern PFN_Thread32Next __identifier("_imp__Thread32Next@8");
+BOOL WINAPI Thread32Next(HANDLE hSnapshot, LPTHREADENTRY32 lpte) {
+ return __identifier("_imp__Thread32Next@8")(hSnapshot, lpte);
+}
+
+// _Thread32First@8
+typedef BOOL (WINAPI *PFN_Thread32First)(HANDLE, LPTHREADENTRY32);
+extern PFN_Thread32First __identifier("_imp__Thread32First@8");
+BOOL WINAPI Thread32First(HANDLE hSnapshot, LPTHREADENTRY32 lpte) {
+ return __identifier("_imp__Thread32First@8")(hSnapshot, lpte);
+}
+
+// _WriteConsoleOutputA@20
+typedef BOOL (WINAPI *PFN_WriteConsoleOutputA)(HANDLE, CONST CHAR_INFO *, COORD, COORD, PSMALL_RECT);
+extern PFN_WriteConsoleOutputA __identifier("_imp__WriteConsoleOutputA@20");
+BOOL WINAPI WriteConsoleOutputA(HANDLE hConsoleOutput, CONST CHAR_INFO * lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, PSMALL_RECT lpWriteRegion) {
+ return __identifier("_imp__WriteConsoleOutputA@20")(hConsoleOutput, lpBuffer, dwBufferSize, dwBufferCoord, lpWriteRegion);
+}
+
+// _SetConsoleScreenBufferSize@8
+typedef BOOL (WINAPI *PFN_SetConsoleScreenBufferSize)(HANDLE, COORD);
+extern PFN_SetConsoleScreenBufferSize __identifier("_imp__SetConsoleScreenBufferSize@8");
+BOOL WINAPI SetConsoleScreenBufferSize(HANDLE hConsoleOutput, COORD dwSize) {
+ return __identifier("_imp__SetConsoleScreenBufferSize@8")(hConsoleOutput, dwSize);
 }
 }

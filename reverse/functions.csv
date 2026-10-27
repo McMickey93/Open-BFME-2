@@ -20462,9 +20462,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_00655682@@YAXXZ,,0x00655682,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA98C;dll=wsock32.dll;import=htons;target=htons
 ?ji_006556b8@@YAXXZ,,0x006556B8,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA968;dll=wsock32.dll;import=htons;target=htons
 ?ji_00687cd8@@YAXXZ,,0x00687CD8,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA768;dll=netapi32.dll;import=Netbios;target=Netbios
-?ji_00687d98@@YAXXZ,,0x00687D98,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA138;dll=kernel32.dll;import=CreateToolhelp32Snapshot;target=CreateToolhelp32Snapshot
-?ji_00687e40@@YAXXZ,,0x00687E40,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA244;dll=kernel32.dll;import=Thread32Next;target=Thread32Next
-?ji_00687e4c@@YAXXZ,,0x00687E4C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA24C;dll=kernel32.dll;import=Thread32First;target=Thread32First
 ?ji_006b8a30@@YAXXZ,,0x006B8A30,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA688;dll=msvcr71.dll;import=memmove;target=memmove
 ?ji_006b8c30@@YAXXZ,,0x006B8C30,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA418;dll=msvcr71.dll;import=clock;target=clock
 ?ji_0075ac08@@YAXXZ,,0x0075AC08,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6FC;dll=msvcr71.dll;import=isprint;target=isprint
@@ -78306,10 +78303,6 @@ uw_0079b44d,,0x0079B44D,8,Code/GameEngine/Source/Common/Rva005765D1Ctor.cpp,matc
 ?ji_00654796@@YAXXZ,,0x00654796,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA054;dll=avifil32.dll;import=AVIFileOpen;target=AVIFileOpen
 ?ji_00655652@@YAXXZ,,0x00655652,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA924;dll=wintrust.dll;import=WinVerifyTrust;target=WinVerifyTrust
 ?ji_00655658@@YAXXZ,,0x00655658,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA90C;dll=wininet.dll;import=InternetCrackUrlA;target=InternetCrackUrlA
-?ji_00687d8c@@YAXXZ,,0x00687D8C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA130;dll=kernel32.dll;import=Module32Next;target=Module32Next
-?ji_00687d92@@YAXXZ,,0x00687D92,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA134;dll=kernel32.dll;import=Module32First;target=Module32First
-?ji_00687ea6@@YAXXZ,,0x00687EA6,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA288;dll=kernel32.dll;import=WriteConsoleOutputA;target=WriteConsoleOutputA
-?ji_00687eca@@YAXXZ,,0x00687ECA,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA2A8;dll=kernel32.dll;import=SetConsoleScreenBufferSize;target=SetConsoleScreenBufferSize
 ?ji_00687f54@@YAXXZ,,0x00687F54,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA304;dll=kernel32.dll;import=lstrcpy;target=lstrcpy
 ?ji_00687f5a@@YAXXZ,,0x00687F5A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA308;dll=kernel32.dll;import=lstrcpyn;target=lstrcpyn
 ?ji_00688062@@YAXXZ,,0x00688062,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA7EC;dll=user32.dll;import=wsprintfA;target=wsprintfA
@@ -98521,3 +98514,10 @@ _VariantChangeType@16,,0x0068828A,6,Code/Libraries/Source/Win32/Oleaut32ImportTh
 _VariantInit@4,,0x00688290,6,Code/Libraries/Source/Win32/Oleaut32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__VariantInit@4 using VS2003 __identifier; retail IAT slot 0x00BBA77C names oleaut32.dll!VariantInit (gen-import row); complete 6B tail
 _SetErrorInfo@8,,0x00688296,6,Code/Libraries/Source/Win32/Oleaut32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__SetErrorInfo@8 using VS2003 __identifier; retail IAT slot 0x00BBA780 names oleaut32.dll!SetErrorInfo (gen-import row); complete 6B tail
 _CreateErrorInfo@4,,0x0068829C,6,Code/Libraries/Source/Win32/Oleaut32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__CreateErrorInfo@4 using VS2003 __identifier; retail IAT slot 0x00BBA784 names oleaut32.dll!CreateErrorInfo (gen-import row); complete 6B tail
+_Module32Next@8,,0x00687D8C,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__Module32Next@8 using VS2003 __identifier; retail IAT slot 0x00BBA130 names kernel32.dll!Module32Next (gen-import row); complete 6B tail
+_Module32First@8,,0x00687D92,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__Module32First@8 using VS2003 __identifier; retail IAT slot 0x00BBA134 names kernel32.dll!Module32First (gen-import row); complete 6B tail
+_CreateToolhelp32Snapshot@8,,0x00687D98,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__CreateToolhelp32Snapshot@8 using VS2003 __identifier; retail IAT slot 0x00BBA138 names kernel32.dll!CreateToolhelp32Snapshot (gen-import row); complete 6B tail
+_Thread32Next@8,,0x00687E40,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__Thread32Next@8 using VS2003 __identifier; retail IAT slot 0x00BBA244 names kernel32.dll!Thread32Next (gen-import row); complete 6B tail
+_Thread32First@8,,0x00687E4C,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__Thread32First@8 using VS2003 __identifier; retail IAT slot 0x00BBA24C names kernel32.dll!Thread32First (gen-import row); complete 6B tail
+_WriteConsoleOutputA@20,,0x00687EA6,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__WriteConsoleOutputA@20 using VS2003 __identifier; retail IAT slot 0x00BBA288 names kernel32.dll!WriteConsoleOutputA (gen-import row); complete 6B tail
+_SetConsoleScreenBufferSize@8,,0x00687ECA,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__SetConsoleScreenBufferSize@8 using VS2003 __identifier; retail IAT slot 0x00BBA2A8 names kernel32.dll!SetConsoleScreenBufferSize (gen-import row); complete 6B tail
