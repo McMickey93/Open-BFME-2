@@ -636,7 +636,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DTankDrawPoolKey.cp
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DTornadoDrawPoolKey.cpp	wrong-name	?$S1@?1??rva000D1866@W3DTornadoDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBC30
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DTruckDrawPoolKey.cpp	wrong-name	?$S1@?1??rva0000CB578@W3DTruckDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBB94
 Code/GameEngineDevice/Source/W3DDevice/GameClient/ScreenCrossFadeFilterUpdateFadeLevel.cpp	wrong-name	?TheTacticalView@@3PAVTacticalView@@A	0x009FEA3C
-Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DBufferManager_Slots.cpp	wrong-name	_SlotFVFTypeIndexList	0x009B5F30
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	wrong-name	_mutex	0x009E4B34
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	wrong-name	_threadMutex	0x009E5DA0
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp	wrong-name	?ScreenTextureStageStateChanges@@3IA	0x009EDA68

@@ -965,6 +965,16 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-26.**
 
+- **Buffer-slot FVF table identity (2026-10-27, control `1710ea0aea`):**
+  [The current-owner repair](../reverse/attempt_support/buffer-slot-fvf-data-20261027-codexb4.md)
+  replaces the slot allocator's private table with the existing unsigned-array
+  owner in W3DBufferManager_ReAcquireResources.cpp. All sixteen cohort rows and
+  both slot-unit EH graphs pass; all ten executable sections retain their bytes.
+  The owning retirement tool removes one data-identity key with zero findings.
+  Paired ordinary previews preserve all three sources' 1,268 authored bytes
+  against index `bf3dd31211`. This subset's binding is verified; wider storage
+  closure, census confirmation and image-ownership receipts remain unclaimed.
+
 - **Particle-editor loader ownership (2026-10-26, control `665f50f7cf`):**
   [The scoped repair](../reverse/attempt_support/particle-editor-owner-20261026.md)
   replaces the cleanup TU's four-byte placeholder with a reference to the

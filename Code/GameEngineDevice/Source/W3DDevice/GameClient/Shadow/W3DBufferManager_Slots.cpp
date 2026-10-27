@@ -334,12 +334,9 @@ void W3DBufferManager::releaseSlot(W3DIndexBufferSlot *ibSlot)
 	m_W3DIndexBufferSlots[sizeIndex]=ibSlot;
 }
 
-static int SlotFVFTypeIndexList[ W3DBufferManager::MAX_FVF ] =
-{
-	0x002, 0x042, 0x102, 0x142, 0x202, 0x242,
-	0x012, 0x052, 0x112, 0x152, 0x212, 0x252,
-	0x004, 0x044, 0x104, 0x144, 0x204, 0x244
-};
+// The FVF table at RVA 0x009B5F30 is owned by
+// W3DBufferManager_ReAcquireResources.cpp.
+extern unsigned g_00DB5F30[];
 
 W3DBufferManager::W3DVertexBufferSlot *W3DBufferManager::allocateSlotStorage(
 	VBM_FVF_TYPES fvfType, Int size )
@@ -382,7 +379,7 @@ W3DBufferManager::W3DVertexBufferSlot *W3DBufferManager::allocateSlotStorage(
 
 		Int vbSize = size < 16384 ? 16384 : size;
 		pVB->m_DX8VertexBuffer = new DX8VertexBufferClass(
-			SlotFVFTypeIndexList[ fvfType ], (unsigned short)vbSize,
+			g_00DB5F30[ fvfType ], (unsigned short)vbSize,
 			DX8VertexBufferClass::USAGE_DEFAULT );
 		pVB->m_format = fvfType;
 		pVB->m_startFreeIndex = size;
