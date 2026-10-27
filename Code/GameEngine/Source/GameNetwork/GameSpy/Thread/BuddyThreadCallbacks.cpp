@@ -171,8 +171,6 @@ extern GameSpyBuddyMessageQueueInterface *TheGameSpyBuddyMessageQueue;
 
 extern "C" char *__cdecl _mbscpy(char *dst, const char *src);
 
-struct Rva00627AA0Obj;
-extern Rva00627AA0Obj *g_rva00627AA0;
 
 class BuddyThreadClass
 {
@@ -266,7 +264,7 @@ void BuddyThreadClass::messageCallback(GPConnection *connection,
 
 // ?rva00550720@BuddyThreadClass@@QAEXPAVGPConnection@@PAUGPRecvBuddyRequestArg@@@Z @0x00550720 79B.
 // Forwards a buddy request arg as a type-7 BuddyResponse via rowed _mbscpy
-// 0x00629176 and the queue's addResponse slot 0x20 (global g_rva00627AA0 at
+// 0x00629176 and the queue's addResponse slot 0x20 (global TheGameSpyBuddyMessageQueue at
 // VA 0x00A05FBC). Evidence: caller dispatch at 0x00551FDF passes this in ECX
 // with (GPConnection*, arg) like statusCallback; stack 0x864 is BuddyResponse;
 // +4 profile, +12 date, strcpy to +16 nick from inline reason at arg+8.
@@ -278,6 +276,6 @@ void BuddyThreadClass::rva00550720(GPConnection *connection,
 	response.profile = arg->profile;
 	response.arg.message.date = arg->date;
 	_mbscpy(response.arg.message.nick, arg->reason);
-	((GameSpyBuddyMessageQueueInterface *)g_rva00627AA0)->addResponse(response);
+	TheGameSpyBuddyMessageQueue->addResponse(response);
 }
 

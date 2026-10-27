@@ -586,7 +586,6 @@ Code/GameEngine/Source/GameLogic/Object/Upgrade/TooltipUpgradePoolKey.cpp	wrong-
 Code/GameEngine/Source/GameLogic/Object/Upgrade/UnpauseSpecialPowerUpgrade.cpp	wrong-name	?$S1@?1??rva0004B5405@UnpauseSpecialPowerUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03E68
 Code/GameEngine/Source/GameLogic/ScriptEngine/Rva003E4921Finish.cpp	wrong-name	?$S1@?3??rva003E4921@ScriptConditions@@QAE_NPAVParameter@@@Z@4IA	0x00A02E18
 Code/GameEngine/Source/GameLogic/ScriptEngine/Rva003E4B83Siege.cpp	wrong-name	?$S1@?3??Rva003E4B83Get@@YG_NPAVParameter@@@Z@4IA	0x00A02E20
-Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActionsRva003BBAD3.cpp	wrong-name	?g_bfmeWorldRV@@3PAUBfmeWorldRV@@A	0x00A01CFC
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C30D9.cpp	wrong-name	?$S1@?3??Rva003C30D9Do@@YGXABVAsciiString@@_N@Z@4IA	0x00A02DC4
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C3175.cpp	wrong-name	?$S1@?3??Rva003C3175Do@@YGXABVAsciiString@@_N@Z@4IA	0x00A02DCC
 Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C31F3.cpp	wrong-name	?$S1@?3??Rva003C31F3Do@@YGXABVAsciiString@@0_N@Z@4IA	0x00A02DD4
@@ -602,7 +601,6 @@ Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva002BA8F1AddPlayer.cpp	wro
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchor	0x008E3018
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchorH4	0x008E3010
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	wrong-name	_BfmeThingDGDVTableAnchorH8	0x008E3008
-Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp	wrong-name	?g_rva00627AA0@@3PAURva00627AA0Obj@@A	0x00A05FBC
 Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	wrong-name	_matchbotProfileID	0x00A02698
 Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c	duplicate-def	_ciLocalIP	0x00A0BE00
 Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c	wrong-name	_ciLocalIP	0x00A0BE00
