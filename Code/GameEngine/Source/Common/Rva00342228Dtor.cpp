@@ -9,7 +9,7 @@
 // at 0x00342FB1. Layout is base 0x0C plus pad to +0x20 plus pointer. Uses the
 // inside-if shape that gives pop-before-or.
 
-void __cdecl operator delete(void *ptr);
+#include <new>
 
 class Rva0049B47C
 {

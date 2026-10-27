@@ -13,7 +13,7 @@
 // evidence-backed. Family context (TurretStateMachine members at +0x18/+0x20)
 // per Rva00341E70VSlot.cpp.
 
-void __cdecl operator delete(void *ptr);
+#include <new>
 
 class Rva00341F99Slot5Member
 {
