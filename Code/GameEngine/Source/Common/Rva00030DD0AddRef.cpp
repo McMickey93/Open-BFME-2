@@ -1,3 +1,4 @@
+// platformsdk
 // ?Rva00030DD0AddRef@@YAHPAURva00030DD0Lock@@@Z @ 0x00030DD0 21B
 // Critical-section addref: enters the +0x00 section and increments the +0x18
 // refcount, returning the new count. Evidence: IAT EnterCriticalSection at
@@ -6,22 +7,20 @@
 // (dec + LeaveCriticalSection) at 0x00030DF0. Honest address-derived name:
 // identity unproven from 21 bytes. No // cl: line (defaults match the
 // frameless push/call/inc shape, CriticalSectionDeleteWrapper precedent).
+
+#include <windows.h>
+
 struct Rva00030DD0Lock
 {
 	Rva00030DD0Lock();
 	~Rva00030DD0Lock();
-	unsigned char m_cs[0x18];
+	CRITICAL_SECTION m_cs;
 	int m_ref;
 };
 
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(void *cs);
-
 int Rva00030DD0AddRef(Rva00030DD0Lock *lock)
 {
-	EnterCriticalSection(lock);
+	EnterCriticalSection(&lock->m_cs);
 	return ++lock->m_ref;
 }
 
@@ -34,7 +33,7 @@ int Rva00030DF0Release(Rva00030DD0Lock *lock)
 {
 	int old = lock->m_ref;
 	lock->m_ref = old - 1;
-	LeaveCriticalSection(lock);
+	LeaveCriticalSection(&lock->m_cs);
 	return old - 1;
 }
 
@@ -48,7 +47,7 @@ Rva00030DD0Lock *Rva00030D90Init(Rva00030DD0Lock *lock)
 	Rva00030DD0Lock *result = 0;
 	if (lock != 0) {
 		lock->m_ref = 0;
-		InitializeCriticalSection(lock);
+		InitializeCriticalSection(&lock->m_cs);
 		result = lock;
 	}
 	return result;
@@ -60,7 +59,7 @@ Rva00030DD0Lock *Rva00030D90Init(Rva00030DD0Lock *lock)
 // 0x00030D90 and 0x00030DD0 same TU defaults. __thiscall ret 4.
 inline Rva00030DD0Lock::~Rva00030DD0Lock()
 {
-	DeleteCriticalSection(this);
+	DeleteCriticalSection(&m_cs);
 }
 void famgenDelete(Rva00030DD0Lock *p) { delete p; }
 
@@ -68,16 +67,11 @@ void famgenDelete(Rva00030DD0Lock *p) { delete p; }
 // Free function returning SYSTEM_INFO dwPageSize (+4) via IAT
 // GetSystemInfo at 0xBBA3AC. Same TU defaults frameless sub/push/call.
 // Honest address-derived name, DWORD return.
-extern "C" __declspec(dllimport) void __stdcall GetSystemInfo(void *info);
 unsigned long Rva00030EF0Get()
 {
-	struct SysInfo
-	{
-		unsigned long m_00[9];
-	};
-	SysInfo info;
+	SYSTEM_INFO info;
 	GetSystemInfo(&info);
-	return info.m_00[1];
+	return info.dwPageSize;
 }
 
 // ??0Rva00030DD0Lock@@QAE@XZ @0x00030D60 21B.
@@ -87,7 +81,7 @@ unsigned long Rva00030EF0Get()
 Rva00030DD0Lock::Rva00030DD0Lock()
 {
 	m_ref = 0;
-	InitializeCriticalSection(this);
+	InitializeCriticalSection(&m_cs);
 }
 
 // ??1Rva00030DD0Lock@@QAE@XZ @0x00030D80 8B: the out-of-line copy of the

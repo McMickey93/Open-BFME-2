@@ -1,3 +1,6 @@
+// platformsdk
+#include <windows.h>
+
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 // ?rva00031010@Rva00031010@@QAEXPAURva00031010Node@@_N@Z @0x00031010 66B evidence EA GeneralAllocator large-bin insert beside GetLargeBinIndex plus caller 0x000333ED plus head at +0x440 plus bin at +0x30
@@ -52,22 +55,6 @@ void Rva00031010::rva00031010(Rva00031010Node *node, bool flag)
 // 0x00031010 insert above. Without a core it allocates page-rounded core
 // through 0x00032B00 and installs it as the top chunk inline. Callers:
 // 0x00033700 forwards all six arguments. Field labels are descriptive.
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
-struct Rva000332D0MemoryInfo
-{
-	void *m_baseAddress;
-	void *m_allocationBase;
-	unsigned long m_allocationProtect;
-	unsigned int m_regionSize;
-	unsigned long m_state;
-	unsigned long m_protect;
-	unsigned long m_type;
-};
-extern "C" __declspec(dllimport) unsigned int __stdcall VirtualQuery(const void *address, Rva000332D0MemoryInfo *info, unsigned int length);
-
-extern "C" __declspec(dllimport) void *__stdcall VirtualAlloc(void *address, unsigned int size, unsigned long type, unsigned long protect);
-
 namespace EA
 {
 namespace Allocator
@@ -128,7 +115,7 @@ private:
 	};
 	struct Lock
 	{
-		unsigned char m_pad[0x18];
+		CRITICAL_SECTION m_cs;
 		int volatile m_count;
 	};
 	unsigned char m_pad000[0x30];
@@ -166,7 +153,7 @@ bool GeneralAllocator::rva000332D0(void *core, unsigned int size, bool freeCore,
 	Lock *lock = m_4E4;
 	if (lock != 0)
 	{
-		EnterCriticalSection(lock);
+		EnterCriticalSection(&lock->m_cs);
 		++lock->m_count;
 	}
 	if (core)
@@ -194,10 +181,10 @@ bool GeneralAllocator::rva000332D0(void *core, unsigned int size, bool freeCore,
 			block->m_next->m_prev = block;
 			if (!releaseFunction)
 			{
-				Rva000332D0MemoryInfo info;
-				info.m_baseAddress = block;
+				MEMORY_BASIC_INFORMATION info;
+				info.BaseAddress = block;
 				VirtualQuery(block, &info, sizeof(info));
-				if (info.m_state == 0x2000)
+				if (info.State == 0x2000)
 					block->m_size = 0;
 			}
 			unsigned int *chunk = (unsigned int *)block->m_firstChunk;
@@ -212,7 +199,7 @@ bool GeneralAllocator::rva000332D0(void *core, unsigned int size, bool freeCore,
 			if (lock != 0)
 			{
 				--lock->m_count;
-				LeaveCriticalSection(lock);
+				LeaveCriticalSection(&lock->m_cs);
 			}
 			return true;
 		}
@@ -226,7 +213,7 @@ bool GeneralAllocator::rva000332D0(void *core, unsigned int size, bool freeCore,
 			if (lock != 0)
 			{
 				--lock->m_count;
-				LeaveCriticalSection(lock);
+				LeaveCriticalSection(&lock->m_cs);
 			}
 			return true;
 		}
@@ -234,7 +221,7 @@ bool GeneralAllocator::rva000332D0(void *core, unsigned int size, bool freeCore,
 	if (lock != 0)
 	{
 		--lock->m_count;
-		LeaveCriticalSection(lock);
+		LeaveCriticalSection(&lock->m_cs);
 	}
 	return false;
 }

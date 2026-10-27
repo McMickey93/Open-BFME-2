@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHa /Oy-
+// platformsdk
 //
 // Debug::Debug, retail 0x00038440 (408 bytes). Called only from
 // Debug::PreStaticInit (0x000385F0) on a DebugAllocMemory(0x9F68) block.
@@ -15,16 +16,8 @@
 // - The "\\errors.txt" copy is the strcpy MSVC inlines as three dword
 //   moves; "errors.txt" in the working directory is the fallback.
 
+#include <windows.h>
 #include <string.h>
-
-typedef void *HANDLE;
-
-extern "C" __declspec(dllimport) HANDLE __stdcall CreateMutexA(void *, int, const char *);
-extern "C" __declspec(dllimport) void *__stdcall SetUnhandledExceptionFilter(void *);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetModuleFileNameA(
-	void *, char *, unsigned long);
-extern "C" __declspec(dllimport) int __stdcall DeleteFileA(const char *);
-extern "C" __declspec(dllimport) char *__cdecl strrchr(const char *, int);
 
 class DebugExceptionhandler
 {

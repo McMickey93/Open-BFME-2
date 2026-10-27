@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /O1
+// platformsdk
 //
 // LANAPI message handlers, Zero Hour's GameNetwork/LANAPIhandlers.cpp, as
 // LANAPI::update (slot 10, 0x0044AAED) dispatches them by message type
@@ -117,6 +118,9 @@
 // does. Either way the sender is (re)added to the lobby players exactly as
 // handleLobbyAnnounce does it.
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
 typedef unsigned char UnsignedByte;
@@ -124,12 +128,7 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef unsigned short WideChar;
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime( void );
-extern "C" __declspec(dllimport) unsigned short * __cdecl wcsncpy( unsigned short *dest, const unsigned short *source, unsigned int count );
-extern "C" void * __cdecl memcpy( void *dest, const void *source, unsigned int count );
 #pragma function(memcpy)
-extern "C" __declspec(dllimport) int __cdecl strncmp( const char *left, const char *right, unsigned int count );
-extern "C" int __cdecl strcmp( const char *left, const char *right );
 extern "C" void MD5Print( unsigned char digest[16], char output[33] );
 
 #include "ascii_string.h"

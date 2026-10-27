@@ -1,19 +1,18 @@
+// platformsdk
 // Open-BFME5 conversions, BFME2 repair: retail imports InterlockedDecrement
 // and SysFreeString directly (IAT slots 0xBBA21C/0xBBA78C); the donor's
 // bfmeLockVGP/bfmeReleaseVGP wrappers name the same imports.
 
-extern "C" __declspec(dllimport) int __stdcall InterlockedDecrement(int *p);
-extern "C" __declspec(dllimport) void __stdcall SysFreeString(void *p);
-void __cdecl operator delete[](void *p);
-void __cdecl operator delete(void *p);
+#include <windows.h>
+#include <new>
 
 class BfmeThingVGP
 {
 public:
 	int bfmeGoVGP();
-	void *m_bfme00;
+	BSTR m_bfme00;
 	void *m_bfme04;
-	int m_bfme08;
+	LONG m_bfme08;
 };
 
 int BfmeThingVGP::bfmeGoVGP()

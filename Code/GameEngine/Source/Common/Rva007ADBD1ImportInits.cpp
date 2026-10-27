@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 //
 // Static-initializer strip: file-scope globals initialized from a Win32
 // import at startup. Each is one translation unit's compiler-generated
@@ -9,10 +10,7 @@
 // each global the name the ledger already uses for it or an address-named
 // extern.
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-extern "C" __declspec(dllimport) unsigned int __stdcall GetDoubleClickTime(void);
-extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void *owner, const char *text, const char *caption, unsigned int type);
-extern "C" __declspec(dllimport) int __stdcall MessageBoxW(void *owner, const unsigned short *text, const unsigned short *caption, unsigned int type);
+#include <windows.h>
 
 // NetworkInterfaceFrameAdvance.cpp's frame-advance timestamps.
 extern unsigned long g_00DFEA2C;

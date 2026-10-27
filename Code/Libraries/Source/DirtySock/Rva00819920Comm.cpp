@@ -1,5 +1,8 @@
 // _Rva00819920
 // cl: /Od /GZ /GS /MD /DNDEBUG
+// platformsdk
+
+#include <windows.h>
 
 struct Rva00819920Comm;
 
@@ -15,9 +18,9 @@ struct Rva00819920Message
 struct Rva00819920Comm
 {
 	char m_head[ 0xa4 ];
-	void *m_event1;
+	HANDLE m_event1;
 	char m_gapA8[ 0x10 ];
-	void *m_event2;
+	HANDLE m_event2;
 	char m_gapBC[ 0x0c ];
 	int m_threadId;
 	int m_state;
@@ -30,7 +33,7 @@ struct Rva00819920Comm
 	int m_streamLength;
 	char m_gap1914[ 8 ];
 	unsigned int m_lastTick;
-	char m_lock[ 0x18 ];
+	CRITICAL_SECTION m_lock;
 	int m_depth;
 	int m_flags;
 	void ( __cdecl *m_callback )( struct Rva00819920Comm *comm, int flags );
@@ -38,15 +41,6 @@ struct Rva00819920Comm
 
 extern "C"
 {
-	__declspec( dllimport ) void __stdcall EnterCriticalSection( void *lock );
-	__declspec( dllimport ) void __stdcall LeaveCriticalSection( void *lock );
-	__declspec( dllimport ) void __stdcall Sleep( unsigned long interval );
-	__declspec( dllimport ) unsigned int __stdcall GetTickCount( void );
-	__declspec( dllimport ) unsigned int __stdcall WaitForSingleObject(
-		void *handle, unsigned int timeout );
-	__declspec( dllimport ) unsigned int __stdcall WaitForMultipleObjects(
-		unsigned int count, void **handles, int waitAll, unsigned int timeout );
-
 	int Rva00819F50( struct Rva00819920Comm *comm,
 		struct Rva00819920Message *message );
 	int Rva0081A3B0( struct Rva00819920Comm *comm, void *record );
@@ -68,7 +62,7 @@ extern "C" int Rva00819920( struct Rva00819920Comm *parameter )
 	unsigned int tick;
 	Rva00819920Comm *comm;
 	int eventCount;
-	void *hlist[ 2 ];
+	HANDLE hlist[ 2 ];
 
 	comm = parameter;
 
@@ -82,9 +76,9 @@ extern "C" int Rva00819920( struct Rva00819920Comm *parameter )
 		{
 			if ( comm->m_state == 7 && comm->m_streamLength > 0 )
 			{
-				EnterCriticalSection( comm->m_lock );
+				EnterCriticalSection( &comm->m_lock );
 				Rva0081A3B0( comm, 0 );
-				LeaveCriticalSection( comm->m_lock );
+				LeaveCriticalSection( &comm->m_lock );
 				Sleep( 0x19 );
 				continue;
 			}
@@ -111,7 +105,7 @@ extern "C" int Rva00819920( struct Rva00819920Comm *parameter )
 		Rva00819F50( comm, &packet );
 		tick = GetTickCount();
 
-		EnterCriticalSection( comm->m_lock );
+		EnterCriticalSection( &comm->m_lock );
 		Rva0081A3B0( comm, 0 );
 
 		if ( comm->m_state == 4 && tick - comm->m_lastTick > 0xafc8 )
@@ -176,7 +170,7 @@ resetMessage:
 			comm->m_lastTick = GetTickCount();
 		}
 
-		LeaveCriticalSection( comm->m_lock );
+		LeaveCriticalSection( &comm->m_lock );
 
 		if ( comm->m_flags != 0 )
 		{

@@ -1,4 +1,5 @@
 // cl: /Ob0
+// platformsdk
 // Near-miss donor from Open-BFME-1 BfmeConv1435.cpp
 // (?bfmeTickVM0@Display@@QAEXXZ @0x0040FE40):
 // retail predicate virtual is at slot +0x114 (not +0xF0).
@@ -8,11 +9,7 @@
 // unit; then two mutexes plus a worker thread are created and the first
 // mutex is polled at 1ms until the wait times out.
 
-extern "C" __declspec(dllimport) void *__stdcall CreateMutexA(void *attrs, int owned, void *name);
-extern "C" __declspec(dllimport) void *__stdcall CreateThread(void *attrs, unsigned long stack, unsigned long (__stdcall *start)(void *), void *param, unsigned long flags, unsigned long *tid);
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void *handle, unsigned long timeout);
-extern "C" __declspec(dllimport) int __stdcall ReleaseMutex(void *handle);
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long ms);
+#include <windows.h>
 
 // Watcher thread armed by StartRenderThread. Retail's body returns with a plain
 // ret: it is cdecl, cast to CreateThread's stdcall start type.
@@ -133,8 +130,8 @@ public:
 	char m_pad04[0x34];
 	BfmeVM0Timer *m_timer;
 	char m_pad3C[0x4];
-	void * volatile m_firstMutex;
-	void * volatile m_secondMutex;
+	HANDLE volatile m_firstMutex;
+	HANDLE volatile m_secondMutex;
 	char m_pad48[0x18];
 	int m_mode;
 	char m_pad64[0xD8];

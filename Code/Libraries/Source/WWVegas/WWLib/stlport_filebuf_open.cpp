@@ -1,4 +1,5 @@
 // cl: /GX- /MD /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 //
 // Modified STLport 4.5.3 Win32 file-opening reconstruction, from src/fstream.cpp
@@ -36,12 +37,9 @@
  */
 #include <fstream>
 #include <stddef.h>
+#include <windows.h>
+#include <io.h>
 typedef char _AssertFilebufSize[sizeof(_STL::_Filebuf_base)==16?1:-1];
-extern "C" __declspec(dllimport) unsigned long __stdcall GetFileType(void*);
-extern "C" __declspec(dllimport) void *__stdcall CreateFileA(const char*,unsigned long,unsigned long,void*,unsigned long,unsigned long,void*);
-extern "C" __declspec(dllimport) int __stdcall SetEndOfFile(void*);
-extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(void*,long,long*,unsigned long);
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void*);
 namespace _SgI {
 __declspec(noinline) bool __is_regular_file(void* file) {
  return (GetFileType(file)&~0x8000UL)==1;
@@ -91,7 +89,7 @@ int _get_osfflags(int fd,void* oshandle) {
 namespace _STL {
 bool _Filebuf_base::_M_open(const char *name, int openmode, long permission)
 {
-	void *file_no;
+	HANDLE file_no;
 
 	if (_M_is_open)
 		return false;
@@ -148,8 +146,6 @@ bool _Filebuf_base::_M_open(const char *name, int openmode, long permission)
 	return _M_is_open;
 }
 }
-
-extern "C" __declspec(dllimport) long __cdecl _get_osfhandle(int);
 
 namespace _STL {
 bool _Filebuf_base::_M_open(int file_no,int init_mode) {

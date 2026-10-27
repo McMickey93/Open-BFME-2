@@ -1,9 +1,6 @@
 // cl: /DNDEBUG /MD /EHs-c-
 
-extern "C" __declspec(dllimport) void* __cdecl fopen( const char*, const char* );
-extern "C" __declspec(dllimport) int __cdecl fseek( void*, int, int );
-extern "C" __declspec(dllimport) int __cdecl ftell( void* );
-extern "C" __declspec(dllimport) int __cdecl fclose( void* );
+#include <stdio.h>
 
 class Rva00886A20Class
 {
@@ -27,15 +24,15 @@ int Rva00886A20Class::d_00886a20( const char* name, int dummy )
 	char buf[256];
 	((Cftp *)this)->d_008859d0( name, buf );
 
-	int file = (int)fopen( buf, "rb" );
+	FILE *file = fopen( buf, "rb" );
 	if ( !file )
 	{
-		m_size2C = file;
-		return file;
+		m_size2C = (int)file;
+		return (int)file;
 	}
 
-	fseek( (void*)file, 0, 2 );
-	m_size2C = ftell( (void*)file );
-	fclose( (void*)file );
+	fseek( file, 0, 2 );
+	m_size2C = ftell( file );
+	fclose( file );
 	return m_size2C;
 }

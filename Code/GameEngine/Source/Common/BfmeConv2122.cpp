@@ -1,19 +1,7 @@
 // cl: /Oy-
-struct BfmeRectAAS
-{
-	int m_bfmeLeftAAS;
-	int m_bfmeTopAAS;
-	int m_bfmeRightAAS;
-	int m_bfmeBottomAAS;
-};
+// platformsdk
 
-extern "C"
-{
-	__declspec(dllimport) unsigned long __stdcall GetCurrentThreadId(void);
-	__declspec(dllimport) int __stdcall EnumThreadWindows(unsigned long id, int (__stdcall *fn)(void *, long), long param);
-	__declspec(dllimport) long __stdcall GetWindowLongA(void *hwnd, int index);
-	__declspec(dllimport) int __stdcall GetWindowRect(void *hwnd, BfmeRectAAS *rect);
-}
+#include <windows.h>
 
 int __stdcall EnumThreadWndProc(void *hwnd, long param);
 
@@ -33,9 +21,9 @@ bool BfmeHostAAS::bfmeProbeAAS()
 	if (state != 0)
 		return state > 0;
 
-	void *found = 0;
+	HWND found = 0;
 
-	EnumThreadWindows(GetCurrentThreadId(), EnumThreadWndProc, (long)&found);
+	EnumThreadWindows(GetCurrentThreadId(), (WNDENUMPROC)EnumThreadWndProc, (long)&found);
 
 	if (found == 0)
 		return true;
@@ -45,11 +33,11 @@ bool BfmeHostAAS::bfmeProbeAAS()
 	if ((GetWindowLongA(found, -0x10) & 0xc00000) != 0)
 		m_bfme9F55AAS = 1;
 
-	BfmeRectAAS r;
+	RECT r;
 
 	if (GetWindowRect(found, &r) != 0)
 	{
-		if (r.m_bfmeRightAAS - r.m_bfmeLeftAAS < r.m_bfmeBottomAAS - r.m_bfmeTopAAS)
+		if (r.right - r.left < r.bottom - r.top)
 			m_bfme9F55AAS = 1;
 	}
 

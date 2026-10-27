@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /MD /EHsc /DNDEBUG /Ireference/shims/bfme2_ascii /ICode/GameEngine/Include
+// platformsdk
 // ?update@LANAPI@@UAEXXZ retail 0x0044AAED (1938 bytes incl. the 80-byte
 // switch table at 0x0084B22F): LANAPI::update, vtable slot 10.
 // Provenance: Open-BFME-1 f98983a7d lanapi.cpp (Zero Hour's LANAPI::update)
@@ -120,6 +121,9 @@
 // does. Either way the sender is (re)added to the lobby players exactly as
 // handleLobbyAnnounce does it.
 
+#include <windows.h>
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
 typedef unsigned char UnsignedByte;
@@ -127,11 +131,7 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef unsigned short WideChar;
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime( void );
-extern "C" __declspec(dllimport) unsigned short * __cdecl wcsncpy( unsigned short *dest, const unsigned short *source, unsigned int count );
-extern "C" void * __cdecl memcpy( void *dest, const void *source, unsigned int count );
 #pragma function(memcpy)
-extern "C" int __cdecl strcmp( const char *left, const char *right );
 extern "C" void MD5Print( unsigned char digest[16], char output[33] );
 
 #include "GameNetwork/Transport.h"
@@ -576,7 +576,6 @@ extern LANAPI *TheLAN;
 extern Bool LANbuttonPushed;
 Bool LANSocketErrorDetected=false;
 
-extern "C" __declspec(dllimport) WideChar *__cdecl wcsncpy(WideChar*,const WideChar*,unsigned);
 class Rva004482B7 {public:UnicodeString rva004482B7(Int);};
 class GameTextInterface {public:
  virtual void s0();virtual void s1();virtual void s2();virtual void s3();virtual void s4();

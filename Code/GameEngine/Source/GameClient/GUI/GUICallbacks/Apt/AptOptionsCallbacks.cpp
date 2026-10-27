@@ -47,11 +47,6 @@ public:
 	bool rva00595D95();
 };
 
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *left, const char *right);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
-
 extern const char g_00BBFDE0[];
 extern const char g_00BBFDDC[];
 
@@ -79,6 +74,9 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <vector>
 #include <map>
 #include "ascii_string.h"
@@ -280,8 +278,6 @@ void Rva00518658Parse(const AsciiString &text, OptionPreferences *prefs);
 
 class GameSpyInfoInterface;
 extern GameSpyInfoInterface *TheGameSpyInfo;
-
-extern "C" __declspec(dllimport) int __cdecl _wtoi(const unsigned short *text);
 
 // StringBase's header-defined isEmpty as retail expands it in
 // AptOptions::Save: no buffer or a zero length. The shared header keeps

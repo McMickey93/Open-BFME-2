@@ -1,13 +1,12 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 // ?Thread_Function@Watchdog@@UAEXXZ @0x002254CA 227B
 // Evidence: vtable slot 2 of 0x007E6FD8; BFME1 donor Code/GameEngine/Source/Common/Watchdog_Thread_Function.cpp; callees rowed Mutex LockClass; virtual call slot 3 reportWatchdog.
 
-typedef unsigned int UnsignedInt;
+#include <windows.h>
+#include <time.h>
 
-extern "C" __declspec(dllimport) long __cdecl time(long *value);
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(void *section);
+typedef unsigned int UnsignedInt;
 
 class MutexClass
 {
@@ -36,16 +35,16 @@ class WatchdogCriticalSection
 public:
 	void enter()
 	{
-		EnterCriticalSection(this);
+		EnterCriticalSection(&m_storage);
 	}
 
 	void leave()
 	{
-		LeaveCriticalSection(this);
+		LeaveCriticalSection(&m_storage);
 	}
 
 private:
-	char m_storage[0x18];
+	CRITICAL_SECTION m_storage;
 };
 
 class ScopedWatchdogLock
@@ -123,7 +122,7 @@ void Watchdog::Thread_Function()
 			suppressionCount = m_suppressionCount;
 		}
 
-		long now;
+		time_t now;
 		time(&now);
 		if (suppressionCount < 0 && now >= m_nextWarning)
 		{
