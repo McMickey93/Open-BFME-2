@@ -8,27 +8,8 @@
 // its own /Oy- unit. BFME1 vector2.h shape verbatim;
 // Inv_Sqrt resolves to the matched ?Inv_Sqrt@WWMath@@SIMM@Z row.
 
-class WWMath { public: static float __fastcall Inv_Sqrt(float); };
+#include "../../../../../reference/shims/wwmath/Vector2.h"
 
-class Vector2
-{
-public:
-	float X;
-	float Y;
-	float Length2() const { return X * X + Y * Y; }
-	void Normalize();
-};
-
-// ?Normalize@Vector2@@QAEXXZ
-inline void Vector2::Normalize()
-{
-	float len2 = Length2();
-	if (len2 != 0.0f) {
-		float oolen = WWMath::Inv_Sqrt(len2);
-		X *= oolen;
-		Y *= oolen;
-	}
-}
 
 // Header inlines that the units including the header emit as select-any
 // copies, which plain definitions here collided with. The anchor keeps this

@@ -7,6 +7,7 @@
 // Evidence: unlock; TheGameText fetch slot 0x3C STRATEGICHUD:ArmyUnitSwapperCP; UnicodeString format 0x006CB5D0; releaseBuffer 0x00036E70; copy ctor 0x00037050; caller 0x005D3966
 typedef unsigned short wchar_t;
 typedef bool Bool;
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 template <typename T> class StringBase;
 class UnicodeString;
@@ -17,58 +18,7 @@ namespace StrategicHUD
 	void SetCommandPointsString(int level, Rva005D2FD0Outer *outer, int a, int b);
 }
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	friend class UnicodeString;
-	friend UnicodeString StrategicHUD::FormatCommandPointsString(int, int);
-
-	StringBase(const StringBase<T> &that);
-	void releaseBuffer();
-
-public:
-	StringBase() { m_data = 0; }
-	~StringBase() { releaseBuffer(); }
-
-private:
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
-
-// Retail narrow cleanup calls the releaseBuffer worker directly.
-// Keep the forwarding destructor inline without emitting a competing copy.
-template <> __declspec(dllimport) __forceinline
-StringBase<char>::~StringBase() { releaseBuffer(); }
-
-
-class UnicodeString
-{
-	friend UnicodeString StrategicHUD::FormatCommandPointsString(int, int);
-public:
-	UnicodeString() {}
-	UnicodeString(const UnicodeString &that) : m_data(that.m_data) {}
-	~UnicodeString() {}
-	void __cdecl format(const wchar_t *fmt, ...);
-private:
-	StringBase<wchar_t> m_data;
-};
-
-class AsciiString
-{
-public:
-	AsciiString() {}
-	~AsciiString() {}
-	void __cdecl format(const char *fmt, ...);
-private:
-	StringBase<char> m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 struct Rva005D2FD0Inner
 {
@@ -119,7 +69,7 @@ UnicodeString StrategicHUD::FormatCommandPointsString(int a, int b)
 		Bool exists;
 		UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:ArmyUnitSwapperCP", &exists);
 		if (exists) {
-			const wchar_t *fmt = fetched.m_data.m_data ? fetched.m_data.m_data->data : L"";
+			const wchar_t *fmt = fetched.str();
 			tmp.format(fmt, a, b);
 		}
 	}

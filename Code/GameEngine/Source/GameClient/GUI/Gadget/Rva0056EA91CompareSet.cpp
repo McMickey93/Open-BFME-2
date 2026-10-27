@@ -10,40 +10,8 @@ typedef int Int;
 #define NULL 0
 #endif
 
-template <typename T>
-class StringBase
-{
-	friend class UnicodeString;
-public:
-	int compare(const StringBase<T> &other) const;
-	void set(const StringBase<T> &src);
-	void trim();
-private:
-	StringBase() : m_data(0) {}
-	StringBase(const StringBase<T> &that);
-	void releaseBuffer();
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-class UnicodeString
-{
-public:
-	static UnicodeString TheEmptyString;
-	UnicodeString() {}
-	UnicodeString(const UnicodeString &that) : m_data(that.m_data) {}
-	~UnicodeString() { m_data.releaseBuffer(); }
-	UnicodeString &operator=(const UnicodeString &that) { m_data.set(that.m_data); return *this; }
-	void trim() { m_data.trim(); }
-public:
-	StringBase<wchar_t> m_data;
-};
 
 class GameWindow;
 
@@ -64,7 +32,7 @@ bool Rva0056EA91::rva0056F495(const UnicodeString &text)
 {
 	bool ok = false;
 	UnicodeString cur = rva0056EA91();
-	if (cur.m_data.compare(text.m_data) != 0)
+	if (cur.compare(text) != 0)
 	{
 		if (m_combo != NULL)
 		{

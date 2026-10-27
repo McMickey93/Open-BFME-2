@@ -22,48 +22,8 @@ namespace StrategicHUD
 	UnicodeString FormatResourceMultiplierText(float v);
 }
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	friend class UnicodeString;
-	friend UnicodeString StrategicHUD::FormatBonusText(int);
-	friend UnicodeString StrategicHUD::FormatCommandPointsText(int, int);
-	friend UnicodeString StrategicHUD::FormatResourceMultiplierText(float);
-	friend UnicodeString StrategicHUD::FormatPowerPointsText(int);
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-	StringBase(const StringBase<T> &that);
-	void releaseBuffer();
-
-public:
-	StringBase() { m_data = 0; }
-	~StringBase() { releaseBuffer(); }
-
-private:
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
-
-class UnicodeString
-{
-	friend UnicodeString StrategicHUD::FormatBonusText(int);
-	friend UnicodeString StrategicHUD::FormatCommandPointsText(int, int);
-	friend UnicodeString StrategicHUD::FormatResourceMultiplierText(float);
-	friend UnicodeString StrategicHUD::FormatPowerPointsText(int);
-public:
-	UnicodeString() {}
-	UnicodeString(const UnicodeString &that) : m_data(that.m_data) {}
-	~UnicodeString() {}
-	void __cdecl format(const wchar_t *fmt, ...);
-private:
-	StringBase<wchar_t> m_data;
-};
 
 class GameTextInterface
 {
@@ -95,7 +55,7 @@ UnicodeString StrategicHUD::FormatBonusText(int a)
 	Bool exists;
 	UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:StatsBonus", &exists);
 	if (exists) {
-		const wchar_t *fmt = fetched.m_data.m_data ? fetched.m_data.m_data->data : (const wchar_t *)&g_Va007BB5C4;
+		const wchar_t *fmt = fetched.str();
 		tmp.format(fmt, a);
 	}
 	return tmp;
@@ -107,7 +67,7 @@ UnicodeString StrategicHUD::FormatCommandPointsText(int a, int b)
 	Bool exists;
 	UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:StatsCommandPoints", &exists);
 	if (exists) {
-		const wchar_t *fmt = fetched.m_data.m_data ? fetched.m_data.m_data->data : (const wchar_t *)&g_Va007BB5C4;
+		const wchar_t *fmt = fetched.str();
 		tmp.format(fmt, a, b);
 	}
 	return tmp;
@@ -119,7 +79,7 @@ UnicodeString StrategicHUD::FormatResourceMultiplierText(float v)
 	Bool exists;
 	UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:StatsResourceMultiplier", &exists);
 	if (exists) {
-		const wchar_t *fmt = fetched.m_data.m_data ? fetched.m_data.m_data->data : (const wchar_t *)&g_Va007BB5C4;
+		const wchar_t *fmt = fetched.str();
 		tmp.format(fmt, v);
 	}
 	return tmp;

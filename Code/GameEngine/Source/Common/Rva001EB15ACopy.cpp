@@ -10,36 +10,9 @@
 // forms the member address before pushing the source, which a direct
 // StringBase copy-ctor call orders the other way (the banked 0.96 attempt).
 typedef unsigned short WideChar;
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-template <typename T>
-class StringBase
-{
-public:
-	__forceinline StringBase() : m_data(0) {}
-	StringBase<T> &operator=(const StringBase<T> &src);
-	~StringBase();
-private:
-	StringBase(const StringBase<T> &src);
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-	friend struct Rva001EB15A;
-	friend class UnicodeString;
-};
-class UnicodeString
-{
-public:
-	__forceinline UnicodeString() : m_data() {}
-	UnicodeString(const UnicodeString &unicodeString) : m_data(unicodeString.m_data) {}
-	~UnicodeString();
-private:
-	StringBase<WideChar> m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 struct Rva001EB15A
 {
@@ -47,7 +20,7 @@ struct Rva001EB15A
 	int m_04;
 	int m_08;
 	UnicodeString m_wstr0C;
-	StringBase<char> m_str10;
+	AsciiString m_str10;
 	unsigned char m_14;
 	Rva001EB15A();
 	Rva001EB15A(const Rva001EB15A &other);

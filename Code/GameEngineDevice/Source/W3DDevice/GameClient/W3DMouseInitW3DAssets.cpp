@@ -50,19 +50,8 @@ typedef bool Bool;
 #define FALSE 0
 #define TRUE 1
 
-class Vector2
-{
-public:
-	Vector2( float x, float y ) { X = x; Y = y; }
-	float X;
-	float Y;
-};
+#include "../../../../../reference/shims/wwmath/Vector2.h"
 
-class WWMath
-{
-public:
-	static float __fastcall Inv_Sqrt( float a );
-};
 
 class Vector3
 {
@@ -120,8 +109,6 @@ public:
 extern "C" double __cdecl cos( double x );
 extern "C" double __cdecl sin( double x );
 float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
-inline float __cdecl cosf( float _X ) { return ((float)cos((double)_X)); }
-inline float __cdecl sinf( float _X ) { return ((float)sin((double)_X)); }
 
 #define M_PI 3.14159265358979323846
 

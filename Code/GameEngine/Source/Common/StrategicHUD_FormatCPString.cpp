@@ -14,42 +14,8 @@ typedef bool Bool;
 template <typename T> class StringBase;
 class UnicodeString;
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	friend class UnicodeString;
-	friend UnicodeString StrategicHUD::FormatCPString(int, int);
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-	StringBase(const StringBase<T> &that);
-	void releaseBuffer();
-
-public:
-	StringBase() { m_data = 0; }
-	~StringBase() { releaseBuffer(); }
-
-private:
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
-
-class UnicodeString
-{
-	friend UnicodeString StrategicHUD::FormatCPString(int, int);
-public:
-	UnicodeString() {}
-	UnicodeString(const UnicodeString &that) : m_data(that.m_data) {}
-	~UnicodeString() {}
-	void __cdecl format(const wchar_t *fmt, ...);
-private:
-	StringBase<wchar_t> m_data;
-};
 
 class GameTextInterface
 {
@@ -79,7 +45,7 @@ UnicodeString StrategicHUD::FormatCPString(int commandPoints, int maxCommandPoin
 	UnicodeString cpString;
 	if (maxCommandPoints > 0) {
 		UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:ArmyUnitSwapperCP", 0);
-		const wchar_t *fmt = fetched.m_data.m_data ? fetched.m_data.m_data->data : L"";
+		const wchar_t *fmt = fetched.str();
 		cpString.format(fmt, commandPoints, maxCommandPoints);
 	}
 	return cpString;

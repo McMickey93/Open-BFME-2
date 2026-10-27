@@ -222,8 +222,7 @@ virtual unsigned slot31();
 class ParabolicEase {public:void rva0030E51F(float,float,float);};
 
 // lookAt support views (WW3D2 camera, ray test and vector math as ZH defines them).
-class WWMath { public: static float __fastcall Inv_Sqrt(float val); };
-class Vector2 { public: Real X, Y; Vector2(Real x, Real y) : X(x), Y(y) {} };
+#include "../../../../../reference/shims/wwmath/Vector2.h"
 class Vector3
 {
 public:

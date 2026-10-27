@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /EHsc /DNDEBUG /MD /Ireference/shims/bfme2_ascii /ICode/GameEngine/Include
+// cl: /O1 /G7 /arch:SSE /EHsc /DNDEBUG /MD /Ireference/shims/bfme2_ascii /ICode/GameEngine/Include /ICode/Libraries/Source/WWVegas/WWLib
 // ?rva0021193B@Rva0021193B@@QAEXUICoord2D@@@Z
 // Retail 0x0021193B..0x00211C68 (813 bytes, ret 8, EH frame for the
 // sound event temporary). Element lists are STLport-shaped vectors whose
@@ -30,39 +30,10 @@ typedef float Real;
 
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 
-class WWMath
-{
-public:
-	static Real Random_Float();
-	static Real Random_Float(Real min, Real max) { return (Random_Float() * (max - min)) + min; }
-	static Real __fastcall Inv_Sqrt(Real value);
-};
+#include <stddef.h>
+#include "../../../../reference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath/wwmath.h"
+#include "../../../../reference/shims/wwmath/Vector2.h"
 
-class Vector2
-{
-public:
-	Vector2() {}
-	Real &operator[](int i) { return (&X)[i]; }
-	const Real &operator[](int i) const { return (&X)[i]; }
-	Vector2 &operator*=(Real k) { X *= k; Y *= k; return *this; }
-	// LINK: same-body helper under a TU-unique name (identical inlined
-	// bytes). This TU's operator*= copy is not retail's; the call below
-	// inlines it but still emits the loser COMDAT. Rebinding there emits only
-	// this unique (trivially kept) copy. No flags touched.
-	Vector2 &bfme_scale(Real k) { X *= k; Y *= k; return *this; }
-	Real Length2() const { return X * X + Y * Y; }
-	__forceinline void Normalize()
-	{
-		Real len2 = Length2();
-		if (len2 != 0.0f)
-		{
-			Real oolen = WWMath::Inv_Sqrt(len2);
-			X *= oolen;
-			Y *= oolen;
-		}
-	}
-	Real X, Y;
-};
 
 class RenderObjClass
 {
@@ -198,7 +169,7 @@ void Rva0021193B::rva0021193B(ICoord2D pos)
 					dir[0] = WWMath::Random_Float(-1.0f, 1.0f);
 					dir[1] = WWMath::Random_Float(-1.0f, 1.0f);
 					dir.Normalize();
-					dir.bfme_scale((Real)radius);
+					dir *= (Real)radius;
 					screen.x += (Int)dir[0];
 					screen.y += (Int)dir[1];
 					startFrame = (Int)(WWMath::Random_Float(0.8f, 1.0f) * delay);
