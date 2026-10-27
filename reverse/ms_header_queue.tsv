@@ -1210,7 +1210,6 @@ Code/Libraries/Source/WWVegas/WWLib/stlport_prereq_destroy_3b46c7.cpp	drop-in ca
 Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_treekey00242F5E_dtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_treekey00242F5E_erase.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_rva005ec594_clear.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
-Code/Libraries/Source/WWVegas/WWLib/stlport_string_delete_00423FBD.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_target_list_73eee0.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_tree_erase_004e1f97.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_partition_s4sortelem20.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcmp:same
@@ -1219,7 +1218,6 @@ Code/Libraries/Source/WWVegas/WWLib/stlport_vector_float4_469c61_assign.cpp	drop
 Code/Libraries/Source/WWVegas/WWLib/stlport_vector_opaque_mclear.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva0027EA49_dtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva002E2690_dtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
-Code/Libraries/Source/WWVegas/WWLib/stlport_vector_stringrecord_5de5b5_dtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_vector_voidptr_alloc.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	1	<new>,<new.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_wide_get_formatted_time.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<time.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	tm:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_wide_put_integer.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stddef.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	ptrdiff_t:same

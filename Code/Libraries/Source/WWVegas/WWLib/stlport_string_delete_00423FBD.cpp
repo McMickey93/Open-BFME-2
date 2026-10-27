@@ -19,7 +19,7 @@ public:
 };
 }
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva00423FBDThis
 {

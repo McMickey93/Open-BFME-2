@@ -78,7 +78,7 @@ void Rva005DE952Destroy(Rva005DE5B5 *start, Rva005DE5B5 *end)
 		start->~Rva005DE5B5();
 }
 
-void operator delete(void *ptr);
+#include <new>
 
 // Retail 0x005DE782 (28B): flag-guarded teardown calling the 0x005DE5B5
 // dtor then operator delete, returning this. Chain lane: callees are
