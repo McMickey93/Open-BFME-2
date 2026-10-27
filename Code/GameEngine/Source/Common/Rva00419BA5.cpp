@@ -5,7 +5,7 @@
 // cmp ecx eax je, mov edx [ecx] push eax call [edx], push eax call delete.
 // Evidence: virtual call [edx] with 0 arg plus delete 0x0002FD60, callers 4
 // including 0x00362570 0x0036261C, LINK 1 file 41B.
-void __cdecl operator delete(void *);
+#include <new>
 class Rva00419BA5
 {
 public:

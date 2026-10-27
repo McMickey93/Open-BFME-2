@@ -38,7 +38,7 @@ public:
 	void rva00421EEA();
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 extern unsigned int g_Va00E03168;
 extern unsigned int g_Va00E03174;
