@@ -2058,6 +2058,21 @@ separate strict receipt limitation encountered there.
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 377ffd1724.**
 
+- **Projectile-stream bounded composition (2026-10-27, input `e7da23e761`):**
+  [The scoped audit](../reverse/attempt_support/projectile-stream-snapshot-20261027.md)
+  records the Snapshot-view prerequisite and absorption of the module-data
+  destructor donor into W3DProjectileStreamDraw.cpp. All 14 rows, its data row
+  and three parent EH graphs remain exact; the destination has a strict current
+  receipt. The supported merge guard and bounded provider/binding comparisons
+  pass. Two stale generated data-index identities are refreshed, and the owning
+  retirement tool removes one data-debt key. Three whole donors still need
+  declaration reconciliation; mixed-source rows need separate supported splits.
+  After fetching the available index again, the revised batch audit remains
+  INCONCLUSIVE: `bf3dd31211` predates the source base and lacks per-object
+  consumer names. Whole-batch link closure remains unverified pending complete
+  inputs in the next normal census. No linked-byte or image-ownership gain is
+  claimed.
+
 - **BattlePlanUpdate bounded composition (2026-10-27, input `0edebea3b9`):**
   [The consolidation audit](../reverse/attempt_support/battleplan-poolkey-consolidation-20261027-codexb4.md)
   records absorption of the pool-key donor into the approved BattlePlanUpdate

@@ -1,6 +1,6 @@
 # Projectile-stream module-data composition, 2026-10-27
 
-Seat codexb5; starting revision ca91099184. Destination:
+Seat codexb5; initial upstream revision 0f2cabf5a8. Destination:
 `Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDraw.cpp`.
 
 ## Verified prerequisite
@@ -79,8 +79,35 @@ claims no additional byte or census coverage.
 
 Before the final commit, upstream was rebased through e7da23e761 and the revised
 AGENTS.md read. The prerequisite is now de531e7601 (the starting handoff is
- dc72bb7347); all 14 rows pass again after the rebase. The earlier shadow batch
+dc72bb7347); all 14 rows pass again after the rebase. The earlier shadow batch
 audit was inconclusive against bf3dd31211 with 15 missing current receipts,
 first DetachableRiderDataRva004AEB84.cpp. The updated audit requires a committed
 tip; its result must be recorded separately. None of these input limitations is
 a clean whole-batch link verdict or authority to re-run the census.
+
+## Data-index follow-up and current batch limit
+
+The earlier data retirement refusal was caused by stale index identities, not a
+second current source definition. The official data-ledger generator, run to
+scratch with no missing source objects, identifies one owned TU-static definition
+and two references in this TU for each of 0x009EBC18 and 0x009EBC1C. Copy only
+those two unmodified generated rows into the committed index: the current getter's
+local pool key and initialization guard replace obsolete rva0000D140A spellings
+and the retired GlobalFlagClearers guard provider. No current Code source retains
+those old names. The old external guard clearer already has its deleted-row
+receipt; the getter's compiler-owned rollback at 0x00762992 remains EH-exact.
+
+Ordinary data checking now has zero findings, and repair_queue.py retire data
+removes the seed's one data-debt key. Converged checking still covers ten
+addresses with no second names or unjudged rows. This repairs the scoped index
+and retires that register key; it adds no source, pin, data-row or independently
+verified data-ownership claim. The rejected module donor's debt remains.
+
+The merged seed has a strict current receipt and passes the new-variants check.
+After refreshing the available link index, the revised link_batch_audit against
+base e7da23e761 and the committed source tip still returns INCONCLUSIVE: index
+bf3dd31211 predates the outgoing base and lacks per-object consumer names. The
+refresh imported 19,526 compiled objects without changing that published index.
+The bounded provider/binding and merge-guard evidence above remains valid for
+its stated scope. Whole-batch link closure is unverified and needs the next
+normal census with complete consumer inputs; no census or smoke run was started.
