@@ -1,9 +1,9 @@
+// platformsdk
 // Ported from the BFME1 audio-event reconstruction.  The constructor's body
 // is independently located and byte-verified in BFME2 at RVA 0x00051914.
+#include <windows.h>
+#include <new.h>
 typedef long Long;
-
-extern "C" __declspec(dllimport) Long __stdcall InterlockedIncrement(
-	Long volatile *addend);
 
 class AudioEventInfo
 {
@@ -20,7 +20,6 @@ public:
 	const AudioEventInfo *m_info;
 };
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline AudioEventInfoRef::AudioEventInfoRef(const AudioEventInfo *info)
@@ -35,4 +34,3 @@ void *bfmeAnchorAudioEventInfoRef(void *where, const AudioEventInfo *info)
 {
 	return new (where) AudioEventInfoRef(info);
 }
-

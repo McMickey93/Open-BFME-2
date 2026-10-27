@@ -13,6 +13,7 @@ public:
 // g_pathNodePool: defined in PathDtor.cpp (VA 0xe01e94).
 extern Rva00065964ObjectPool g_pathNodePool;
 
+#include <new.h>
 #include "vector3.h"
 #include "Coord2D.h"
 #include "vector2.h"
@@ -63,10 +64,6 @@ inline __declspec(noinline) PathNode::PathNode(const Coord3D *position, Pathfind
 	m_canOptimize = false;
 	m_id20 = 0x7fffffff;
 }
-
-inline void *__cdecl operator new(size_t, void *p) { return p; }
-inline void __cdecl operator delete(void *, void *) { }
-
 
 class Path
 {

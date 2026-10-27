@@ -4,7 +4,7 @@
 // 18 bytes. Dedicated TU so ThingTemplate.cpp cannot see this body.
 // Null-checks the destination then thiscall-copy-constructs into it.
 
-typedef unsigned int size_t;
+#include <stddef.h>
 
 inline void *operator new(size_t, void *place)
 {

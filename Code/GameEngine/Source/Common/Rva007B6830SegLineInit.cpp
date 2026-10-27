@@ -7,6 +7,8 @@
 // TU is unrecovered, so the storage keeps its address-named extern (defined in
 // Rva007B6880Thunks.cpp beside its cleanup thunk).
 
+#include <stdlib.h>
+
 class SegLineRendererClass
 {
 public:
@@ -21,8 +23,6 @@ inline void *operator new(unsigned int, void *where)
 extern unsigned int g_Va00A1F4E8;
 
 void __cdecl rva007B9CC0();
-
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 
 void rva007B6830()
 {

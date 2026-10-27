@@ -24,7 +24,7 @@
 // No data addresses or lifted code.
 #include "ascii_string.h"
 #include "unicode_string.h"
-void* __cdecl operator new(unsigned int);
+#include <new>
 class AptCommandTarget {};
 struct DelegateDesc {template<class T> DelegateDesc(T*o,void(T::*m)(void*)):object((AptCommandTarget*)o),method(reinterpret_cast<void(AptCommandTarget::*)(void*)>(m)){} AptCommandTarget*object;void(AptCommandTarget::*method)(void*);};
 class Rva00579E47{public:Rva00579E47(const DelegateDesc&);void*ptr;};

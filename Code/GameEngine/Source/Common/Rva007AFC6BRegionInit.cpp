@@ -13,8 +13,7 @@ inline void *operator new(unsigned int, void *where)
 	return where;
 }
 
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
-
+#include <stdlib.h>
 #include "../../../Libraries/Include/Lib/Coord2D.h"
 #include "../../../Libraries/Include/Lib/Region2D.h"
 

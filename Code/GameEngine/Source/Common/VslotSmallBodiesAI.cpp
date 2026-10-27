@@ -382,7 +382,6 @@ class Rva00575674
 public:
 	void rva00575674(Object *p);
 };
-void *__cdecl operator new(unsigned int size);
 inline void *__cdecl operator new(unsigned int size, void *place)
 {
 	return place;

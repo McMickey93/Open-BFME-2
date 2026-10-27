@@ -32,9 +32,6 @@
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
-#ifndef NULL
-#define NULL 0
-#endif
 #ifndef FALSE
 #define FALSE false
 #endif
@@ -44,6 +41,7 @@ class GameFont;
 class GameWindow;
 class WinInstanceData;
 
+#include <stddef.h>
 #include "ascii_string.h"
 
 // The out-of-line emptiness test (0x00001E2F, AsciiString.cpp), visible here.

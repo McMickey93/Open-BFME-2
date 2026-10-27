@@ -163,11 +163,6 @@ static inline SubtitleDisplayFactoryView *theDisplayStringManagerView()
 	return (SubtitleDisplayFactoryView *)TheDisplayStringManager;
 }
 
-extern "C" __declspec(dllimport) WideChar *__cdecl wcscpy(
-	WideChar *destination, const WideChar *source);
-extern "C" __declspec(dllimport) WideChar *__cdecl wcstok(
-	WideChar *string, const WideChar *control);
-
 class GameSubTitle : public SubtitleEntry
 {
 public:

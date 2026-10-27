@@ -6,6 +6,7 @@
 
 typedef int Int;
 typedef short Short;
+#include <new.h>
 #include "../../Include/Common/Rva0028C6D6.h"
 
 // Retail RVA 0x003AE20D, 93 bytes.
@@ -121,8 +122,6 @@ public:
 // Retail 0x00318D63 (18B): null-guarded copy-construct of one Rva00318B5C
 // (vptr + three ints, 0x10 bytes) via its rowed copy ctor. Callers are the
 // 0x10-stride loops at 0x00318D83 0x00318DAE 0x00319FAD 0x0031A13B.
-inline void *__cdecl operator new(unsigned int, void *p) { return p; }
-inline void __cdecl operator delete(void *, void *) {}
 void Rva00318D63Copy(Rva00318B5C *dest, const Rva00318B5C &src)
 {
 	if (dest)
