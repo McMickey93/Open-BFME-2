@@ -26,9 +26,8 @@ typedef int Int;
 typedef unsigned char UnsignedByte;
 typedef bool Bool;
 
-extern "C" int __cdecl memcmp(const void *, const void *, unsigned int);
-extern "C" void * __cdecl memcpy(void *, const void *, unsigned int);
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <string.h>
+#include <math.h>
 #pragma intrinsic(memcpy)
 
 enum CompressionType

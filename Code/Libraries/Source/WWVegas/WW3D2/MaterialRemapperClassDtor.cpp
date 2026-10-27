@@ -1,4 +1,5 @@
 // cl: /G7 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // ??1MaterialRemapperClass@@QAE@XZ
 // retail 0x0016F170, 169 bytes. Dedicated TU.
 //
@@ -15,10 +16,9 @@
 // TU-local replicas mangle identically to the real instantiations, so the
 // texture element destructor and the Release_Ref calls resolve with no pins.
 
-typedef unsigned int size_t;
-void __cdecl operator delete[](void *ptr);
-
-#define NULL 0
+#include <string.h>
+#include <new>
+#include <windows.h>
 
 class TextureBaseClass
 {

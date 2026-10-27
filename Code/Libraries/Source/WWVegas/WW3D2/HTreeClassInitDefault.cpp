@@ -25,14 +25,9 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
 
-extern "C" char *strcpy(char *destination, const char *source);
+#include <new>
+#include <string.h>
 #pragma intrinsic(strcpy)
-
-// Without this declaration MSVC routes `new T[n]` to the scalar ??2@YAPAXI@Z;
-// retail allocates the pivot through the array form ??_U@YAPAXI@Z, and its
-// unwind funclet frees through ??_V@YAXPAX@Z, so declare that one as well.
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
 
 // One of the pivot's two transform blocks.
 struct BfmePivotTransform

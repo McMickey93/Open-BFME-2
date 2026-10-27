@@ -60,8 +60,8 @@ private:
 	unsigned char m_data[0x58];
 };
 
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
+#include <new>
+#include <string.h>
 
 class HTreeClass
 {
@@ -80,7 +80,6 @@ private:
 	float ScaleFactor;
 };
 
-extern "C" void *memcpy(void *destination, const void *source, unsigned int count);
 #pragma intrinsic(memcpy)
 
 int HTreeClass::Load_W3D(ChunkLoadClass &cload)

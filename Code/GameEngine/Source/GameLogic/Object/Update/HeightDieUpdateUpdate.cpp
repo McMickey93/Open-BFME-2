@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /GX /ICode/Libraries/Include
+// platformsdk
 //
 // HeightDieUpdate::update (BFME 2), from the Generals Zero Hour
 // HeightDieUpdate.cpp.
@@ -18,6 +19,9 @@
 // - destroyAttachedSystems is ParticleSystemManager 0x001F5BBE (its rowed
 //   body destroys every system whose attached object ID is the object's).
 // - The object's container is at +0x274, its GeometryInfo at +0xA8.
+#define UINT_MAX 0xffffffff
+#include <windows.h>
+#include <limits.h>
 #include "Lib/Coord3D.h"
 
 typedef bool Bool;
@@ -25,10 +29,6 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define TRUE 1
-#define FALSE 0
-#define UINT_MAX 0xffffffff
-#define NULL 0
 
 class ModuleData;
 class Object;

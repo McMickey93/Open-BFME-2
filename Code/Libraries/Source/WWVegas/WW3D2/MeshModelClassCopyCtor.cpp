@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 //
 // ??0MeshModelClass@@QAE@ABV0@@Z at retail 0x00172940 (361 bytes).
 //
@@ -35,10 +36,9 @@
 // the game operator new. The state-1 unwind destroys the list member via
 // the 0x144690 list-dtor pin; the base unwind uses the 0x16CCC0 pin.
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t bytes);
-
-#define NULL 0
+#include <string.h>
+#include <new>
+#include <windows.h>
 
 class W3DMPO
 {

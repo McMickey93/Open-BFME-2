@@ -1,3 +1,4 @@
+// platformsdk
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -30,12 +31,11 @@
 // The seven StaticNameKey globals have retail zero caches and full matching
 // key strings at DBDC3C/44/4C/54/5C and DBDD7C/94, independently inspected.
 
+#include <new>
+#include <windows.h>
 #include "Lib/Coord3D.h"
 #include "Lib/RGBColor.h"
 #include "ascii_string.h"
-void *__cdecl operator new(unsigned);
-void __cdecl operator delete(void *);
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 class Vector3
 {
   public:

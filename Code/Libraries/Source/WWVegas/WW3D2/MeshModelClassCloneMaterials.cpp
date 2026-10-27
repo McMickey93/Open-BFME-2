@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 //
 // MeshModelClass::clone_materials, retail 0x001881C0 (202 bytes).
 // BFME1 meshmdlio.cpp clone_materials port (their 203B row): the release
@@ -13,10 +14,9 @@
 // Remapper ctor/dtor plus Remap_Mesh and the MaterialInfoClass copy resolve
 // to pins (matinfo.cpp holds the future row bodies).
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t bytes);
-
-#define NULL 0
+#include <string.h>
+#include <new>
+#include <windows.h>
 
 class MeshMatDescClass;
 

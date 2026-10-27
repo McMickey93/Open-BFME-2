@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 //
 // ??1MeshModelClass@@UAE@XZ at retail 0x00172AB0 (306 bytes).
 //
@@ -32,10 +33,10 @@
 // the shared 0x144690 list-dtor pin, the 0x16CCC0 base-dtor pin and the
 // matched scalar operator delete.
 
-typedef unsigned int size_t;
-void __cdecl operator delete(void *block);
+#include <string.h>
+#include <new>
+#include <windows.h>
 
-#define NULL 0
 #define SKIN_BIT_INDEX 10
 
 class W3DMPO

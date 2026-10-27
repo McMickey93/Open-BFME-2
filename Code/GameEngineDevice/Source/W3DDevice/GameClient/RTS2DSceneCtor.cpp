@@ -8,11 +8,9 @@
 // SubsystemInterface at +0x108. W3DStatusCircle is the 0xE8-byte object
 // built by the matched ctor at 0x8E54F. BFME 2 zeroes m_camera (+0x118)
 // after the publish.
+#include <new>
+#include <string.h>
 #include "ascii_string.h"
-
-typedef unsigned int size_t;
-void *operator new(size_t size);
-void operator delete(void *p);
 
 class RenderObjClass;
 

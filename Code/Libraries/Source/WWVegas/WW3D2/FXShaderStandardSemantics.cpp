@@ -1,4 +1,5 @@
 // cl: /O1 /MD
+// platformsdk
 //
 // ?Rva00190F8E_BindStandardSemantics@@YAXPAVFXShaderParameterBinder@@@Z @
 // 0x00190F8E (217 bytes), called only from FXShaderParameterBinder::Init
@@ -12,12 +13,8 @@
 // to "Sas.Time.Now" and "Sas.AmbientLight[0].Color" (0x00DB6798). The name
 // keeps the address token: the owner is unproven.
 
-extern "C" {
-char *__cdecl strcpy(char *d, const char *s);
-char *__cdecl strcat(char *d, const char *s);
-}
-
-typedef long HRESULT;
+#include <string.h>
+#include <windows.h>
 typedef const char *D3DXHANDLE;
 
 #define FX_SLOT(n) virtual HRESULT __stdcall slot##n()

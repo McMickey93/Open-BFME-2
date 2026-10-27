@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 //
 // ??0MeshModelClass@@QAE@XZ at retail 0x001727E0 (335 bytes).
 //
@@ -18,10 +19,9 @@
 // 0x1708D0, the game operator new and the 0x144690 list-dtor pin shared
 // with the copy ctor.
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t bytes);
-
-#define NULL 0
+#include <string.h>
+#include <new>
+#include <windows.h>
 
 class W3DMPO
 {

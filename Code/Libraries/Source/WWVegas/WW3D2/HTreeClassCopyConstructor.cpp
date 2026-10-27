@@ -28,15 +28,9 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
 #pragma auto_inline(on)
-extern "C" void *memcpy(void *destination, const void *source, unsigned int count);
+#include <new>
+#include <string.h>
 #pragma intrinsic(memcpy)
-
-// Without this declaration MSVC routes `new T[n]` to the scalar ??2@YAPAXI@Z
-// (0x0002FDA0); retail allocates the pivots through the array form ??_U@YAPAXI@Z
-// at 0x0002FDE0. Its unwind funclet frees through the array form too, so
-// operator delete[] (??_V@YAXPAX@Z, 0x0002FD80) is declared beside it.
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/htree.h
 struct PivotClass
