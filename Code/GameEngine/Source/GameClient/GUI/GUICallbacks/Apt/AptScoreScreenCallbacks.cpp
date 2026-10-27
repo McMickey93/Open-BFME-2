@@ -435,7 +435,7 @@ public:
 	void Externs(int query, char *value, bool set);
 	// Retail 0x0051DA24: fills the persistent-unit list box.
 	bool PopulatePersistentUnitsListbox();
-	void rva0051DE3D();
+	void CollectGameData();
 
 private:
 	int m_state; // +0x27C
@@ -639,7 +639,7 @@ void AptScoreScreen::Externs(int query, char *value, bool set)
 }
 
 // Retail 0x0051DE3D, 1061 B: objectives, hero icons and region bonuses.
-void AptScoreScreen::rva0051DE3D()
+void AptScoreScreen::CollectGameData()
 {
 	if (!m_objectives)
 		return;

@@ -580,7 +580,7 @@ private:
 public:
 	static bool OpenScreen(int a1, int a2);
 public:
-	void rva0051DE3D();
+	void CollectGameData();
 };
 
 // tu-skeleton: 0x0051BF75 38B ?OnInitialized@AptScoreScreen@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp (not merged yet)
@@ -911,7 +911,7 @@ AsciiString Rva0051D009::rva0051D009(int value)
 
 // tu-skeleton: 0x0051DA24 1049B ?PopulatePersistentUnitsListbox@AptScoreScreen@@QAE_NXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp (not merged yet)
 
-// tu-skeleton: 0x0051DE3D 1061B ?rva0051DE3D@AptScoreScreen@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp (not merged yet)
+// tu-skeleton: 0x0051DE3D 1061B ?CollectGameData@AptScoreScreen@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/AptScoreScreen_OpenScreen.cpp
 
@@ -926,7 +926,7 @@ bool AptScoreScreen::OpenScreen(int a1, int a2)
 	((Shell *)(*(GlobalA01E48 **)&TheShell))->push(AsciiString("ScoreScreen.apt"), false);
 	((State0051E262 *)g_00E04914)->m_280 = a1;
 	((State0051E262 *)g_00E04914)->m_288 = a2;
-	((AptScoreScreen *)g_00E04914)->rva0051DE3D();
+	((AptScoreScreen *)g_00E04914)->CollectGameData();
 	return true;
 }
 
@@ -1016,4 +1016,4 @@ bool AptScoreScreen::OpenScreen(int a1, int a2)
 
 // tu-skeleton: 0x00795E9B 8B eh_0051de3d_00795e9b -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp (not merged yet)
 
-// tu-skeleton: 0x00795EA3 10B __ehhandler$?rva0051DE3D@AptScoreScreen@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp (not merged yet)
+// tu-skeleton: 0x00795EA3 10B __ehhandler$?CollectGameData@AptScoreScreen@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp (not merged yet)

@@ -3673,3 +3673,5 @@ $L784,0x007A8288,Renumbered compiler label: the matched parent ?insert@Rva006CE6
 ?rva0048B9D0@Rva0048B9D0@@QAEXPBVWeaponTemplate@@@Z,0x0048B9D0,"Renamed to ?rva0048B9D0@FireWeaponUpdate@@QAEXPBVWeaponTemplate@@@Z: sole caller 0x005093C6 calls it on findModule(nameToKey(""FireWeaponUpdate"")), a retail module class (module_factory_registrations.csv #101); method name unknown"
 ?rva00463509@Rva00463509@@QAEXPAVObject@@_N@Z,0x00463509,"Renamed to ?removeFromContain@Rva00463509@@QAEXPAVObject@@_N@Z by tools/rename.py (canonical:string)"
 ?rva00396C43@Rva00396E4A@@QAEXPAVObject@@@Z,0x00396C43,"Renamed to ?onTriggerEntered@Rva00396E4A@@QAEXPAVObject@@@Z by tools/rename.py (canonical:string)"
+?rva0051DE3D@AptScoreScreen@@QAEXXZ,0x0051DE3D,"Renamed to ?CollectGameData@AptScoreScreen@@QAEXXZ by tools/rename.py (canonical:wb)"
+__ehhandler$?rva0051DE3D@AptScoreScreen@@QAEXXZ,0x00795EA3,"Renamed to __ehhandler$?CollectGameData@AptScoreScreen@@QAEXXZ by tools/rename.py (canonical:wb)"
