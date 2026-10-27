@@ -8,11 +8,12 @@
 // view above and parseWeatherData (0x0031842A, five 8-byte WeatherData at
 // +0x30) address. Target facts: base SubsystemInterface 0x001B4E63 then the
 // Snapshot base; +0x10 weather 0, +0x14 audio handle 1, +0x18 0; the +0x1C
-// filter handle (rowed ctor 0x003623E5); +0x20/+0x28/+0x2C cleared; the
+// filter handle (rowed ctor 0x003623E5); +0x20 string/+0x28/+0x2C cleared; the
 // WeatherData array through `eh vector constructor iterator' (element ctor
 // 0x00318329, dtor 0x0010F149); the +0x58 bit flags (rowed ctor 0x003B31AD).
 // The +0x18..+0x2C field roles are unknown; EH state 3 before the array
-// shows +0x20 is an object with a destructor.
+// shows +0x20 is an object with a destructor; its cleanup target establishes
+// the AsciiString lifetime (the string's purpose remains unknown).
 typedef bool Bool;
 #include "subsystem_interface.h"
 #include "Common/Snapshot.h"
@@ -30,14 +31,6 @@ template <int NUMBITS> class BitFlags
 public:
 	BitFlags() throw();
 	unsigned int m_bits[(NUMBITS + 31) / 32];
-};
-
-// A cleared handle with its own teardown (EH state 3 in retail).
-struct Rva00318588Handle
-{
-	Rva00318588Handle() : m_ptr(0) {}
-	~Rva00318588Handle();
-	void *m_ptr;
 };
 
 struct WeatherData
@@ -65,7 +58,9 @@ private:
 	int m_audioHandle;		// +0x14
 	int m_18;
 	Rva003623E5Member m_1C;
-	Rva00318588Handle m_20;
+	// Retail unwind 0x0077A838 calls the existing AsciiString cleanup at
+	// 0x0048BA39; the complete destructor at 0x00318637 uses the same member.
+	AsciiString m_20;
 	int m_24;
 	int m_28;
 	int m_2C;

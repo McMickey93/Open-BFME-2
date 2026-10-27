@@ -1701,6 +1701,17 @@ Updated: 2026-10-25; inspected revision: `4e835ab16a6`.**
 
 **GlobalWeather current-owner audit (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `GlobalWeatherSystemCtorDeferred.cpp` still has four unresolved names. Native primary table RVA 0x0080C734 slot zero reaches deleting destructor 0x0031861B, which calls the complete 110-byte destructor at 0x00318637. Both, plus the secondary thunk at 0x00318613, now have rows in `Code/GameEngine/Source/Common/Rva00318637Dtor.cpp` under `Rva00318637`; this is an existing split identity, not a needed destructor match. The constructor's element callbacks reach the ten-byte `IPEnumeration` constructor at 0x00318329 and the counted-reference destructor at 0x0010F149. The native cleanup at 0x0077A838 destroys member +0x20 through 0x0048BA39 (the rowed AsciiString/StringBase cleanup). Preserve their distinct lifetimes and resolve the identities through the naming lane. No source change, alias trial or pin was made. Raw proof: `build/c136-logic/weather-native.log`, `weather-owners.log`, `native-references.log` and the full report. Clearance and census confirmation remain pending.
 
+**GlobalWeather string-member repair (2026-10-27, inspected `818311dee7`):**
+[The bounded lifetime repair](../reverse/attempt_support/weather-string-lifetime-20261027/readme.md)
+replaces the constructor's opaque +0x20 handle with the existing AsciiString
+type already used by its complete destructor. All five rows and the parent
+EH graph remain exact. Against index `73061d9452`, the ordinary preview's
+unresolved names drop from four to three, with no new COMDAT/selected-copy
+blocker and no linked-byte gain. All 18 retained external COMDATs have identical
+relocation-aware digests. WeatherData callback and complete-destructor identities
+remain prerequisites. Generated unwind 0x0077A838 is held by another worker;
+its row is untouched. Census confirmation remains pending.
+
 ### LINK-010: folded STL table bases need the actual native predecessor
 
 **Status: Blocked on supported native data-placement / ownership reconciliation.
