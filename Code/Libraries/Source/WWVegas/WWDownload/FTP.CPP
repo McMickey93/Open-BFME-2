@@ -28,6 +28,15 @@
 #define NULL 0
 #define AF_INET 2
 #pragma intrinsic(memset)
+#pragma intrinsic(memcpy)
+//
+// Cftp::~Cftp, retail 0x006CA600, 81 bytes (BFME1 donor Rva00885AF0;
+// Zero Hour WWDownload ftp.cpp): close the data and control sockets and the
+// transfer file. Written as the real virtual destructor, the compiler stores
+// Cftp's vtable (0x00CE8A38) itself; Cftp::Cftp (ftp_constructor.cpp) and
+// its vtable's deleting destructor reach this body by that name.
+extern "C" int __stdcall closesocket( int );
+#include <stdio.h>
 
 typedef long HRESULT;
 
@@ -118,12 +127,6 @@ enum
 	FTPREPLY_OPENASCII = 150,
 	FTPREPLY_COMPLETE = 226,
 	FTPREPLY_FILESTATUS = 213
-};
-
-class Rva00885980Class
-{
-public:
-	void d_00885960(void);
 };
 
 // The size the server reported for the file FindFile last located, -1 when
@@ -261,6 +264,39 @@ int __stdcall resolveHostAddress(const char *name);
 
 extern int Rva00885430Resolved;
 
+extern "C" int __stdcall closesocket( int s );
+
+class Rva00885980Class
+{
+public:
+	char m_pad0[4];
+	int m_socket; // at 0x4
+	int m_socket8; // at 0x8
+
+	int d_00885980( void );
+	void d_00885960( void );
+};
+
+// ?resolveHostAddress@@YGHPBD@Z
+extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
+
+// Rva00885430Resolved: matched references place it at VA 0xe0c78c (zero-filled .bss).
+int Rva00885430Resolved;
+
+// Rva00885430Address: matched references place it at VA 0xe0c780; zero-filled at retail, sized to the
+// 0xc-byte gap before the next known global there.
+char Rva00885430Address[12];
+
+extern "C" int __stdcall accept( int, void*, void* );
+
+extern "C" int __stdcall WSAGetLastError( void );
+
+extern "C" __declspec(dllimport) char* __cdecl _mbsdup( const char* );
+
+extern "C" __declspec(dllimport) int __cdecl sprintf( char*, const char*, ... );
+
+extern "C" __declspec(dllimport) void __cdecl free( void* );
+
 class Cftp
 {
 public:
@@ -335,9 +371,40 @@ public:
 	HRESULT ConnectToServer(LPCSTR serverName);
 public:
 	int AsyncGetHostByName(char *name, sockaddr_in &address);
+public:
+	int d_00885530( const char* command, int size );
 };
 
-// tu-skeleton: 0x006C9EA0 45B ?d_00885390@Cftp@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Bfme/Rva00885980.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Bfme/Rva00885980.cpp
+
+// ?Rva00885980Class::d_00885980 present-unmatched
+int Rva00885980Class::d_00885980( void )
+{
+	closesocket( m_socket );
+	return 0;
+}
+
+void Rva00885980Class::d_00885960( void )
+{
+	closesocket( m_socket8 );
+	m_socket8 = 0;
+}
+
+void Cftp::d_00885390( void )
+{
+	if ( m_iDataSocket )
+	{
+		closesocket( m_iDataSocket );
+		m_iDataSocket = 0;
+	}
+	if ( m_iCommandSocket )
+	{
+		closesocket( m_iCommandSocket );
+		m_iCommandSocket = 0;
+	}
+}
+
+// ---- from Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP
 
 // ---- from Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP
 
@@ -1328,8 +1395,6 @@ HRESULT Cftp::ConnectToServer(LPCSTR serverName)
 	return FTP_FAILED;
 }
 
-// tu-skeleton: 0x006C9F40 73B ?resolveHostAddress@@YGHPBD@Z -- matched in Code/GameEngine/Source/Common/SmallGaps/resolveHostAddress.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWDownload/CftpAsyncGetHostByName.cpp
 
 int Cftp::AsyncGetHostByName(char *name, sockaddr_in &address)
@@ -1364,12 +1429,72 @@ int Cftp::AsyncGetHostByName(char *name, sockaddr_in &address)
 	return FTP_TRYING;
 }
 
-// tu-skeleton: 0x006CA430 59B ?d_00885920@Cftp@@QAEHXZ -- matched in Code/GameEngine/Source/Common/Bfme/Rva00885920.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/SmallGaps/resolveHostAddress.cpp
 
-// tu-skeleton: 0x006CA470 21B ?d_00885960@Rva00885980Class@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Bfme/Rva00885980.cpp (not merged yet)
+int __stdcall resolveHostAddress(const char* name)
+{
+	struct hostent *host = gethostbyname(name);
+	Rva00885430Resolved = 1;
+	if (host)
+		memcpy(Rva00885430Address, host->h_addr_list[0], host->h_length);
+	else
+		Rva00885430Address[0] = 0;
+	return 0;
+}
 
-// tu-skeleton: 0x006CA4E0 93B ?d_008859d0@Cftp@@QAEXPBDPAD@Z -- matched in Code/GameEngine/Source/Common/Bfme/Rva008859D0.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Bfme/Rva00885920.cpp
+
+int Cftp::d_00885920( void )
+{
+	if ( !m_iDataSocket )
+	{
+		return 0x80040001;
+	}
+	int s = accept( m_iDataSocket, 0, 0 );
+	if ( s < 0 )
+	{
+		return ( WSAGetLastError() == 10035 ) ? 0x80040002 : 0x80040001;
+	}
+	m_iDataSocket = s;
+	return 0;
+}
+
+// ---- from Code/GameEngine/Source/Common/Bfme/Rva008859D0.cpp
+
+void Cftp::d_008859d0( const char* name, char* outBuf )
+{
+	char* dupName = _mbsdup( name );
+	for ( char* p = dupName; *p; ++p )
+	{
+		if ( *p == '\\' || *p == '.' || *p == ' ' )
+		{
+			*p = '_';
+		}
+	}
+
+	sprintf( outBuf, "download\\%s_%d.tmp", dupName, m_iFileSize );
+	free( dupName );
+}
 
 // tu-skeleton: 0x006CA5E0 18B ??0Cftp@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWDownload/ftp_constructor.cpp (not merged yet)
 
-// tu-skeleton: 0x006CA600 81B ??1Cftp@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Bfme/Cftp.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Bfme/Cftp.cpp
+
+Cftp::~Cftp()
+{
+	if ( m_iDataSocket )
+	{
+		closesocket( m_iDataSocket );
+		m_iDataSocket = 0;
+	}
+	if ( m_iCommandSocket )
+	{
+		closesocket( m_iCommandSocket );
+		m_iCommandSocket = 0;
+	}
+	if ( m_pfLocalFile )
+	{
+		fclose( m_pfLocalFile );
+		m_pfLocalFile = 0;
+	}
+}

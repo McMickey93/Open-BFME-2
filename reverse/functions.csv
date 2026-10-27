@@ -6032,8 +6032,8 @@ _VP6_EncodeBool2,,0x001BCEB0,47,Code/Libraries/Source/VP6/BoolCoderEnc.cpp,match
 ?get@Rva00489360@@QBEHXZ,,0x001DBB42,18,Code/GameEngine/Source/Common/Bfme/Rva00489360GuardedAdd.cpp,matched,bfme1 Bfme sweep exact placement; verbatim source import
 ?rva_004097F0@Rva00409850SubObject@@QAEXE@Z,,0x00362647,23,Code/GameEngine/Source/Common/Bfme/Rva00409930SlotArray.cpp,matched,bfme1 Bfme sweep exact placement; verbatim source import
 ?checkAndSet@Rva0034FF50@@QAEXXZ,,0x003B27F8,12,Code/GameEngine/Source/GameLogic/ScriptEngine/Rva003b6d92Finish.cpp,matched,bfme1 Bfme sweep exact placement; verbatim source import; row moved home from Rva0034FF50SmallHelpers.cpp
-?d_00885390@Cftp@@QAEXXZ,,0x006C9EA0,45,Code/GameEngine/Source/Common/Bfme/Rva00885980.cpp,matched,bfme1 Bfme sweep exact placement; verbatim source import
-?d_00885960@Rva00885980Class@@QAEXXZ,,0x006CA470,21,Code/GameEngine/Source/Common/Bfme/Rva00885980.cpp,matched,bfme1 Bfme sweep exact placement; verbatim source import
+?d_00885390@Cftp@@QAEXXZ,,0x006C9EA0,45,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,bfme1 Bfme sweep exact placement; verbatim source import
+?d_00885960@Rva00885980Class@@QAEXXZ,,0x006CA470,21,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,bfme1 Bfme sweep exact placement; verbatim source import
 ??0CriticalSectionLock@@QAE@PAUBfmeCriticalSection@@@Z,,0x0061FC40,22,Code/GameEngine/Source/Common/Bfme/CriticalSectionLock.cpp,matched,bfme1 Bfme sweep exact placement; verbatim source import
 ?commitPendingCursor@Mouse@@AAEXXZ,,0x001EDDFF,39,Code/GameEngine/Source/GameClient/MouseSetEngineVisibility.cpp,matched,strict relocations from its own object
 ?Convert_Color@DX8Wrapper@@SAIABVVector4@@@Z,,0x00139290,177,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp,matched,strict relocations from its own object
@@ -9293,7 +9293,7 @@ _ScaleOrCenter,,0x001BB330,126,Code/Libraries/Source/VP6/ScaleOrCenter.cpp,match
 ?bfmeAssignV14@BfmeStrV14@@QAEPAV1@PAD0ID@Z,,0x000297D0,119,Code/GameEngine/Source/Common/BfmeConv1453.cpp,matched,BFME1 byte-identical donor; b1 0x00830030
 ?d_00889d70@Rva00889D70Class@@QAE_NPAX0@Z,,0x00038E40,85,Code/GameEngine/Source/Common/Bfme/Rva00889D70.cpp,matched,BFME1 donor; alloc callee is matched DebugAllocMemory (no pin); b1 0x00889D70
 ?bfmeFindQW@BfmeThingQW@@QAEHEI@Z,,0x00027830,107,Code/GameEngine/Source/Common/BfmeThreeHundredFive.cpp,matched,BFME1 byte-identical donor; b1 0x0082E2E0
-??1Cftp@@UAE@XZ,,0x006CA600,81,Code/GameEngine/Source/Common/Bfme/Cftp.cpp,matched,BFME1 donor; vtable imm 0xCE8A38; closesocket via existing true pin (sweep ji pin stale); b1 0x00885AF0
+??1Cftp@@UAE@XZ,,0x006CA600,81,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,BFME1 donor; vtable imm 0xCE8A38; closesocket via existing true pin (sweep ji pin stale); b1 0x00885AF0
 ?d_00889d20@Rva00889D20Class@@QAE_NPAX00@Z,,0x00038DF0,78,Code/GameEngine/Source/Common/Bfme/Rva00889D20.cpp,matched,BFME1 donor; alloc callee is matched DebugAllocMemory; unserved d_00889d70 twin def dropped (landed at 0x38E40); b1 0x00889D20
 ??A?$hash_map@U?$pair@HH@_STL@@HURva00928590Hash@@URva00928590Eq@@V?$allocator@U?$pair@$$CBU?$pair@HH@_STL@@H@_STL@@@2@@_STL@@QAEAAHABU?$pair@HH@1@@Z,,0x0016E2C0,76,Code/Libraries/Source/WWVegas/WWLib/RvaHashIndex00928620.cpp,matched,BFME1 byte-identical donor; b1 0x00928620
 ?Rva007F72D0@BfmeThingZI@@QAEXPAVRva007E8810Message@@@Z,,0x006639C0,123,Code/GameEngine/Source/GameNetwork/Rva007F72D0GameBrowserEntryReply.cpp,matched,BFME1 byte-identical donor; b1 0x007F72D0; 2 DIR32 string literal(s) agree
@@ -9372,7 +9372,7 @@ _CreatePostProcInstance,,0x001B6890,63,Code/Libraries/Source/VP6/PostProcInstanc
 ?Rva006E9160Init@@YGXPAUGen_006e9160_Triple@@@Z,,0x00043F99,32,Code/GameEngineDevice/Source/W3DDevice/GameClient/Gen_006e9160_Init.cpp,matched,BFME1 byte-identical donor; b1 0x006E9160
 ?bfmeGoCFF@BfmeThingCFF@@QAEXPAVBfmeOwnerCFF@@@Z,,0x0039D704,41,Code/GameEngine/Source/Common/BfmeConv593.cpp,matched,BFME1 byte-identical donor; b1 0x000EC860
 ?aptKeyCode@@YAPAVAptValue@@XZ,,0x006E8C30,41,Code/GameEngine/Source/Common/SmallGaps/aptKeyCode.cpp,matched,BFME1 byte-identical donor; b1 0x008A5330
-?d_00885920@Cftp@@QAEHXZ,,0x006CA430,59,Code/GameEngine/Source/Common/Bfme/Rva00885920.cpp,matched,BFME1 donor subset; b1 0x00885920; sibling claimed elsewhere so omitted
+?d_00885920@Cftp@@QAEHXZ,,0x006CA430,59,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,BFME1 donor subset; b1 0x00885920; sibling claimed elsewhere so omitted
 _VP6_bitread,,0x001BCF40,40,Code/Libraries/Source/VP6/BitReader.cpp,matched,Clean-room spec 001bcf40; VP6_bitread: cdecl reading equiprobable bools most significant first; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001bcf40.md and retail only
 ?bfmeGoDSE@BfmeThingDSE@@QAEXXZ,,0x0055A614,19,Code/GameEngine/Source/Common/BfmeConv771.cpp,matched,BFME1 byte-identical donor; b1 0x000B7420
 ?bfmeGoDSF@BfmeThingDSF@@QAEXXZ,,0x00270221,19,Code/GameEngine/Source/Common/BfmeConv771.cpp,matched,BFME1 byte-identical donor; b1 0x00410B40
@@ -9425,7 +9425,7 @@ _vp6_showinfo2,,0x001BB5F0,121,Code/Libraries/Source/VP6/ShowInfo.cpp,matched,Cl
 ?bfmeGoVJM@BfmeThingVJM@@QAEXHH@Z,,0x00663140,92,Code/GameEngine/Source/Common/BfmeConv1390.cpp,matched,BFME1 byte-identical donor; b1 0x007F69B0
 ?bfmeGo@Rva00800B70Owner@@QAEPAXE@Z,,0x0066CF50,90,Code/GameEngine/Source/GameNetwork/Rva00800B70FeslDtor.cpp,matched,BFME1 byte-identical donor; b1 0x00800B70
 ?FreeMemory@@YAXPAXPAH@Z,,0x006B8D50,58,Code/GameEngine/Source/Common/FreeMemory.cpp,matched,BFME1 byte-identical donor; b1 0x008794C0
-?d_008859d0@Cftp@@QAEXPBDPAD@Z,,0x006CA4E0,93,Code/GameEngine/Source/Common/Bfme/Rva008859D0.cpp,matched,BFME1 donor with format-literal repair; b1 0x008859D0; plus0x34 layout proves class
+?d_008859d0@Cftp@@QAEXPBDPAD@Z,,0x006CA4E0,93,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,BFME1 donor with format-literal repair; b1 0x008859D0; plus0x34 layout proves class
 _luaO_equalObj,,0x0074E0C0,92,Code/Libraries/Source/Lua/lobject.c,matched,BFME1 byte-identical donor; b1 0x00996F60
 _DeblockFrameInterlaced,,0x001BFD10,368,Code/Libraries/Source/VP6/DeblockFrameInterlaced.cpp,matched,Clean-room spec 001bfd10; DeblockFrameInterlaced: deblocks a frame as two Y fields plus U and V planes after building the bounding array; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001bfd10.md and retail only
 ?deallocate@?$__malloc_alloc@$0A@@_STL@@SAXPAXI@Z,,0x00023A70,18,Code/Libraries/Source/WWVegas/WWLib/STLMallocAlloc0Deallocate.cpp,matched,BFME1 byte-identical donor; b1 0x0082B100
@@ -9668,7 +9668,7 @@ _luaB_print,,0x0074B700,155,Code/Libraries/Source/Lua/luaB_print.cpp,matched,BFM
 ?Rva006CD6C0Delete@@YIPAVRva006CD6C0SizedDeleting@@PAV1@HI@Z,,0x006CD6C0,33,Code/GameEngine/Source/Common/SizedDeleteDestructors.cpp,matched,Native6CD6C0..6CD6E1 scalar deletion with ECX receiver and stack flags RET4; explicit C++ wrapper retains whole33B original BFME1 near-sibling shape and28B sized free. Old virtual class view refuted by constructor6CBC60 and destructor6CC4C0; original class/helper names unresolved
 ?InsertAllObjects@BfmeThing912C@@QAEXXZ,,0x006276B0,34,Code/GameEngine/Source/Common/BfmeConv912.cpp,matched,BFME1 near-miss donor; b1 0x009F4F80; immediate-only drift
 ?getGeometryShape@BfmeObjE15@@QAEPAUBfmeShapeE15@@H@Z,,0x006BD980,60,Code/GameEngine/Source/Common/Rva0087E150At.cpp,matched,BFME1 near-miss donor; b1 0x0087E150; immediate-only drift
-?resolveHostAddress@@YGHPBD@Z,,0x006C9F40,73,Code/GameEngine/Source/Common/SmallGaps/resolveHostAddress.cpp,matched,BFME1 near-miss donor; b1 0x00885430; immediate-only drift
+?resolveHostAddress@@YGHPBD@Z,,0x006C9F40,73,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,BFME1 near-miss donor; b1 0x00885430; immediate-only drift
 ??0Gen001811E0@@QAE@PAX@Z,,0x001811E0,73,Code/GameEngine/Source/Common/P8ZeroingCtors.cpp,matched,BFME1 near-miss donor Gen0090BE20; scope-table retarget; init pin 0x001810D0 same batch
 ??0Rva00947170SkinContainer@@QAE@_N0@Z,,0x001455B0,84,Code/GameEngine/Source/Common/SmallGaps/Rva00947170SkinContainerCtor.cpp,matched,BFME1 near-miss donor; b1 0x00947170; immediate-only drift
 ?bfmeIndexES@BfmeHostES@@QAEIM@Z,,0x00627020,101,Code/GameEngine/Source/Common/BfmeConv2040.cpp,matched,BFME1 near-miss donor verbatim incl fld/fistp; b1 0x009F4750; head +0x30 (inv +0x118 count +0x11C); floor is msvcr71 import at 0xBBA570 with no new pins
