@@ -11,7 +11,7 @@
 // free-function form emits a bare `ret`); the while-loop spelling is what
 // emits retail's `test esi,esi / mov eax,esi / jne +0x10` latch instead of an
 // early-out. IDENTITY IS NOT RECOVERED.
-void __cdecl operator delete(void *) throw();
+#include <new>
 
 struct Rva00758C20Node
 {

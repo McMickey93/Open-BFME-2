@@ -6,7 +6,7 @@ class Rva001732C6 {
 public:
   ~Rva001732C6();
 };
-void operator delete(void *p);
+#include <new>
 class MeshModelClass {
 public:
   char m_pad[0xBC];

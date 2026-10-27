@@ -24,7 +24,7 @@ int vftable_01129CB4 = 10846896;
 
 void Rva007EB830Release(void);
 void Rva007F0060();
-void __cdecl operator delete(void *block);
+#include <new>
 
 void *Rva007EB310Owner::destroy(unsigned int flags)
 {
