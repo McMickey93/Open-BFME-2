@@ -50,7 +50,7 @@ class ArmySummary {
 public: void rva0040CA09();
 char pad[0x2c]; int state;
 };
-class Rva003F498ACallback { public: virtual bool invoke(int)=0; };
+class Rva003F498ACallback { public: virtual bool invoke(int)=0; ~Rva003F498ACallback() {} };
 // ??0Rva002B31DB@@QAE@XZ, retail 0x002B31D2 (9B): this class's implicit
 // default constructor, emitted out of line here as in retail (the uncalled
 // copy right before invoke; it only installs vtable 0x007FE090).

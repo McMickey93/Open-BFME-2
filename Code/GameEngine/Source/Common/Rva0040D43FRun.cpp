@@ -8,11 +8,19 @@
 // EH prolog and state 0 need a destructible temp; an inline-empty
 // destructor supplies it without emitting a call on the normal path.
 
-class Rva003F498ACallback;
-
 struct Rva0040E0C5Arg;
 
-class Rva0040CFFF
+// The callback root: ??1Rva0040CFFF is the shared 0x005FED52, which stores
+// table 0x00C1C780, so the temp derives from it as LivingWorldBattle's
+// other callbacks do. Same single slot as Rva0040CFFF's override.
+class Rva003F498ACallback
+{
+public:
+	virtual bool rva0040E0C5(Rva0040E0C5Arg *arg) = 0;
+	~Rva003F498ACallback() {}
+};
+
+class Rva0040CFFF : public Rva003F498ACallback
 {
 public:
 	virtual bool rva0040E0C5(Rva0040E0C5Arg *arg);
