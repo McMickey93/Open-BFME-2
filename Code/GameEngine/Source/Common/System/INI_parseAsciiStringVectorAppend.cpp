@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// stlport
 // INI::parseAsciiStringVectorAppend (retail 0x002E896, 169 bytes). BFME2
 // growth of the BFME1 donor: each token is macro-expanded, and expansions
 // differing from the token are split on the fly (nextToken with null seps)
@@ -14,21 +15,13 @@ template <typename T> struct BfmeStringData;
 #include "ascii_string.h"
 
 
+#include <vector>
+
+// The pinned out-of-line push_back (0x002DBE6): an explicit specialization
+// declaration keeps the call instead of inlining STLport's in-class body.
 namespace _STL
 {
-template <typename T> class allocator
-{
-};
-
-template <typename T, typename A = allocator<T> > class vector
-{
-public:
-	void push_back(const T &value);
-
-	T *m_start;
-	T *m_finish;
-	T *m_end;
-};
+template <> void vector<AsciiString, allocator<AsciiString> >::push_back(const AsciiString &value);
 }
 
 class INI
