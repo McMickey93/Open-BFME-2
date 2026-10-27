@@ -31,7 +31,6 @@ int Rva00083B7BGet(void)
 	return WW3D::SyncTime;
 }
 
-extern int g_Va00DB47EC;
 // g_Va00DB47EC: matched references place it at VA 0xdb47ec (retail .data initial value 2).
 int g_Va00DB47EC = 2;
 
@@ -51,7 +50,6 @@ int Rva0014D241Get(void)
 	return (int)DX8Wrapper::Light_Environment;
 }
 
-extern int g_Va00DFE348;
 // g_Va00DFE348: matched references place it at VA 0xdfe348 (zero-filled .bss).
 int g_Va00DFE348;
 
@@ -77,7 +75,6 @@ int Rva0023C54CGet(void)
 	return (int)AptSaveLoad::s_instance;
 }
 
-extern int g_Va00E0333C;
 // g_Va00E0333C: matched references place it at VA 0xe0333c (zero-filled .bss).
 int g_Va00E0333C;
 
@@ -99,7 +96,6 @@ int Rva00248D66Get(void)
 	return g_Va00A03354;
 }
 
-extern int g_Va00DBB708;
 // g_Va00DBB708: matched references place it at VA 0xdbb708 (retail .data initial value 1073741824).
 int g_Va00DBB708 = 1073741824;
 
@@ -121,7 +117,6 @@ int Rva0029A26FGet(void)
 	return g_Va00E04450;
 }
 
-extern int g_Va00E04478;
 // g_Va00E04478: matched references place it at VA 0xe04478 (zero-filled .bss).
 int g_Va00E04478;
 
@@ -133,7 +128,6 @@ int Rva0031AA00Get(void)
 	return g_Va00E04478;
 }
 
-extern int g_Va00E032C8;
 // g_Va00E032C8: matched references place it at VA 0xe032c8 (zero-filled .bss).
 int g_Va00E032C8;
 
@@ -194,7 +188,6 @@ int Rva00376D23Get(void)
 	return (int)AptStrategicMessageBox::s_instance;
 }
 
-extern int g_Va00E032FC;
 // g_Va00E032FC: matched references place it at VA 0xe032fc (zero-filled .bss).
 int g_Va00E032FC;
 
@@ -236,7 +229,6 @@ int Rva00415E8AGet(void)
 	return g_Va00E04904;
 }
 
-extern int g_Va00E0330C;
 // g_Va00E0330C: matched references place it at VA 0xe0330c (zero-filled .bss).
 int g_Va00E0330C;
 
@@ -258,7 +250,6 @@ int Rva0044C5C1Get(void)
 	return g_Va00E06398;
 }
 
-extern int BfmeLogicFramesPerSecond;
 // BfmeLogicFramesPerSecond: matched references place it at VA 0xdba4e4 (retail .data initial value 5).
 int BfmeLogicFramesPerSecond = 5;
 
@@ -270,7 +261,6 @@ int Rva004B879DGet(void)
 	return BfmeLogicFramesPerSecond;
 }
 
-extern int g_currentAptOnlineCustomMatch;
 // Current AptOnlineCustomMatch: its ctor005A5BC7 stores this, and dtor005A0009
 // clears this same value. Preserve the existing 32-bit address storage ABI.
 int g_currentAptOnlineCustomMatch;
@@ -283,7 +273,6 @@ int Rva004FDA11Get(void)
 	return g_currentAptOnlineCustomMatch;
 }
 
-extern int g_Va00DFEFD8;
 // g_Va00DFEFD8: matched references place it at VA 0xdfefd8 (zero-filled .bss).
 int g_Va00DFEFD8;
 
@@ -295,7 +284,6 @@ int Rva0050B426Get(void)
 	return g_Va00DFEFD8;
 }
 
-extern int g_Va00E06394;
 // g_Va00E06394: matched references place it at VA 0xe06394 (zero-filled .bss).
 int g_Va00E06394;
 
@@ -307,7 +295,6 @@ int Rva005114B7Get(void)
 	return g_Va00E06394;
 }
 
-extern int g_Va00E06544;
 // g_Va00E06544: matched references place it at VA 0xe06544 (zero-filled .bss).
 int g_Va00E06544;
 
@@ -319,7 +306,6 @@ int Rva00516E0AGet(void)
 	return g_Va00E06544;
 }
 
-extern int g_Va00E06548;
 // g_Va00E06548: matched references place it at VA 0xe06548 (zero-filled .bss).
 int g_Va00E06548;
 
@@ -331,7 +317,6 @@ int Rva00516E48Get(void)
 	return g_Va00E06548;
 }
 
-extern int g_Va00E0492C;
 // g_Va00E0492C: matched references place it at VA 0xe0492c (zero-filled .bss).
 int g_Va00E0492C;
 
@@ -343,7 +328,6 @@ int Rva0051AEE9Get(void)
 	return g_Va00E0492C;
 }
 
-extern int g_Va00E046BC;
 // g_Va00E046BC: matched references place it at VA 0xe046bc (zero-filled .bss).
 int g_Va00E046BC;
 
@@ -355,7 +339,6 @@ int Rva005AE5E8Get(void)
 	return g_Va00E046BC;
 }
 
-extern int g_Va00E06480;
 // g_Va00E06480: matched references place it at VA 0xe06480 (zero-filled .bss).
 int g_Va00E06480;
 
@@ -367,7 +350,6 @@ int Rva005B901EGet(void)
 	return g_Va00E06480;
 }
 
-extern int g_Va00E06550;
 // g_Va00E06550: matched references place it at VA 0xe06550 (zero-filled .bss).
 int g_Va00E06550;
 
