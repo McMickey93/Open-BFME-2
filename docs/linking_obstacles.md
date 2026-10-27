@@ -4242,6 +4242,19 @@ LINKS). A blocked-row scan for funclets jumping to 0x0049B47C still lists ~40, e
 `Rva000E59D3Base`, `Rva000E6AC0Base`, `Rva002105A6Snapshot`, `WeaponSetSnapshotBase`,
 `TurretAISnapshotBase`, `SaveMapPreview`; `Snapshot78` (novtable over RegionBonusInfo) and the
 `*ModuleData` bases are not simple swaps.
+Batch 2 (K7, 2026-10-27): WeaponSetDtor.cpp (0x00776F70), TurretAICtor.cpp (0x00791212),
+Rva000E6AC0Ctor.cpp (0x007634C3, 0x0076354A), TunnelTrackerDtor.cpp (0x00792F88) take the
+canonical Snapshot; every touched unit and its vtable partners keep LINKS. Where another unit
+already emits the derived `??_7X@@6BSnapshot@@`, declare the same slot overrides and spelling
+(`BFME_SNAPSHOT_NAME_SLOT` for TunnelTracker); base-only previewed 112 -> 0. Not swaps, left as
+leads: derived classes with members whose own dtor folds to 0x0049B47C (Rva00318B5C,
+PrimaryBase, Rva0059B7CB, Rva0056224F, the `*ModuleData*Base` family: fold rows);
+`EmptyBase` + hand vptr member views (Rva0037DF2CCopy, Rva0052BDE6/BE33CopyCtor,
+GroupOrderHolderCtor) and novtable hand-restore views (Rva00359E13Ctor: retail ctor never
+stores 0x00BBB554, so the canonical inline ctor would add a store; Rva002105A6Dtor,
+Rva003A59C3Ctor) need a class reconciliation first. Pre-existing, not from this batch:
+W3DTreeBuffer.cpp previews duplicates of four `W3DTreeBuffer::rva000EA*` bodies with
+VslotNullCheckedForwarders3.cpp after 85a69439e9.
 
 **Renumbered-label relabel (2026-10-27, K9):** 166 parent-emitted `$L` rows in 16 units
 verified only through the renumbered-label fallback and held the names their gen_uw
