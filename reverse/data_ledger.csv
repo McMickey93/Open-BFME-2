@@ -18114,7 +18114,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009EBB78,4,.data,global,?TheW3DRopeDrawPoolKey@?1??rva000CA7F6@W3DRopeDraw@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DRopeDraw.cpp,owned,,1,2
 0x009EBB7C,4,.data,global,?$S1@?1??rva000CA7F6@W3DRopeDraw@@SA?AW4NameKeyType@@XZ@4IA,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DRopeDraw.cpp,owned,,1,2
 0x009EBB80,4,.data,global,_s_rva007AC3E9,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x009EBB84,4,.data,global,?TheW3DSupplyDrawPoolKey@?1??rva0000CAE7B@W3DSupplyDraw@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDraw.cpp,owned,,1,2
+0x009EBB84,4,.data,global,?TheW3DSupplyDrawPoolKey@?1??getModuleNameKey@W3DSupplyDraw@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDraw.cpp,owned,,1,2
 0x009EBB88,4,.data,global,?g_Va00DEBB88@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DEAFxx.cpp,provisional,?$S1@?1??rva0000CAE7B@W3DSupplyDraw@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDraw.cpp;?g_Va00DEBB88@@3IA,2,4
 0x009EBB8C,4,.data,global,_s_rva007AC413,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x009EBB90,4,.data,global,?TheW3DTruckDrawPoolKey@?1??getModuleNameKey@W3DTruckDraw@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DTruckDrawPoolKey.cpp,owned,,1,2
@@ -18521,7 +18521,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009F6FD0,4,.data,global,?DisplayMask@BoxRenderObjClass@@1HA,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,provisional,?DisplayMask@BoxRenderObjClass@@1HA;?g_Va00DF6FD0@@3HA,2,3
 0x009F6FD4,4,.data,global,__BoxMaterial,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,provisional,__BoxMaterial@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp;__BoxMaterial@Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,2,9
 0x009F6FD8,96,.data,global,?verts@?6??render_box@BoxRenderObjClass@@IAEXAAVRenderInfoClass@@ABVVector3@@1@Z@4PAV4@A,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,49
-0x009F7038,4,.data,global,?$S10@?6??render_box@BoxRenderObjClass@@IAEXAAVRenderInfoClass@@ABVVector3@@1@Z@4IA,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,2
+0x009F7038,4,.data,global,?$S13@?6??render_box@BoxRenderObjClass@@IAEXAAVRenderInfoClass@@ABVVector3@@1@Z@4IA,Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp,owned,,1,2
 0x009F703C,4,.data,global,?hWnd@DX8WebBrowser@@2PAUHWND__@@A,Code/GameEngine/Source/Common/BfmeConv804.cpp,owned,,1,3
 0x009F7040,4,.data,global,?g_bfmeObjECF@@3PAUBfmeObjECF@@A,Code/GameEngine/Source/Common/BfmeConv804.cpp,provisional,?Rva00959410Dispatch@@3URva00959410Ptr@@A;?Rva0134B280Browser@@3V?$_com_ptr_t@V?$_com_IIID@UIFEBrowserEngine2@@$1?_GUID_ee883b17_0778_4b18_a12b_e44c0d298412@@3U__s_GUID@@B@@@@A;?g_bfmeObjECF@@3PAUBfmeObjECF@@A;?g_bfmeObjECF@@3VBfmeObjECFPtr@@A,1,34
 0x009F7044,4,.data,global,?Rva009F7044@@3PAVRva00177860Ref@@A,Code/Libraries/Source/WWVegas/WW3D2/Rva00177860Dtor.cpp,owned,,1,5
@@ -19955,8 +19955,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03650,4,.data,global,_s_rva007B0D8C,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03654,4,.data,global,?TheHealContainPoolKey@?1??getModuleNameKey@HealContain@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp,owned,,1,2
 0x00A03658,4,.data,global,?$S1@?1??getModuleNameKey@HealContain@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp,owned,,1,4
-0x00A0365C,4,.data,global,?TheTransportContainPoolKey@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp,owned,,1,2
-0x00A03660,4,.data,global,?g_Va00E03660@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E036xx.cpp,provisional,?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp;?g_Va00E03660@@3IA,2,4
+0x00A0365C,4,.data,global,?TheTransportContainPoolKey@?1??getModuleNameKey@TransportContain@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp,owned,,1,2
+0x00A03660,4,.data,global,?$S1@?1??getModuleNameKey@TransportContain@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp,owned,,1,2
 0x00A03664,4,.data,global,_s_rva007B0DB6,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03668,4,.data,global,?key@?1??Rva00468E26Get@@YGPAVModule@@PAVObject@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/Rva00468E26Get.cpp,owned,,1,2
 0x00A0366C,4,.data,global,?$S1@?1??Rva00468E26Get@@YGPAVModule@@PAVObject@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Update/Rva00468E26Get.cpp,owned,,1,4
@@ -20217,7 +20217,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03B04,4,.data,global,_s_rva007B182B,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03B08,4,.data,global,?TheSpecialEnemySenseUpdatePoolKey@?1??getModuleNameKey@SpecialEnemySenseUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdatePoolKey.cpp,owned,,1,2
 0x00A03B0C,4,.data,global,?$S1@?1??getModuleNameKey@SpecialEnemySenseUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdatePoolKey.cpp,owned,,1,4
-0x00A03B10,4,.data,global,?TheAutoDepositUpdatePoolKey@?1??rva00049A1CA@AutoDepositUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp,owned,,1,2
+0x00A03B10,4,.data,global,?TheAutoDepositUpdatePoolKey@?1??getModuleNameKey@AutoDepositUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp,owned,,1,2
 0x00A03B14,4,.data,global,?g_Va00E03B14@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp,provisional,?$S1@?1??rva00049A1CA@AutoDepositUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp;?g_Va00E03B14@@3IA,2,4
 0x00A03B18,4,.data,global,?TheHordeAIUpdatePoolKey@?1??getModuleNameKey@HordeAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/HordeAIUpdatePoolKey.cpp,owned,,1,2
 0x00A03B1C,4,.data,global,?$S1@?1??getModuleNameKey@HordeAIUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/HordeAIUpdatePoolKey.cpp,owned,,1,4
@@ -20525,7 +20525,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04000,4,.data,global,?$S1@?1??getModuleNameKey@CallHelpOnDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp,owned,,1,4
 0x00A04004,4,.data,global,?TheFireWeaponCollidePoolKey@?1??getModuleNameKey@FireWeaponCollide@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollide.cpp,owned,,1,2
 0x00A04008,4,.data,global,?$S1@?1??getModuleNameKey@FireWeaponCollide@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollide.cpp,owned,,1,2
-0x00A0400C,4,.data,global,?TheSquishCollidePoolKey@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp,owned,,1,2
+0x00A0400C,4,.data,global,?TheSquishCollidePoolKey@?1??getModuleNameKey@SquishCollide@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp,owned,,1,2
 0x00A04010,8,.data,global,?g_Va00E04010@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp;?g_Va00E04010@@3IA,2,4
 0x00A04018,4,.data,global,?g_Va00E04018@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,owned,,1,2
 0x00A0401C,4,.data,global,_s_rva007B25AC,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
@@ -20546,7 +20546,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04058,4,.data,global,?$S1@?1??getModuleNameKey@MoneyCrateCollide@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/MoneyCrateCollide.cpp,owned,,1,2
 0x00A0405C,4,.data,global,?TheShroudCrateCollidePoolKey@?1??getModuleNameKey@ShroudCrateCollide@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/ShroudCrateCollidePoolKey.cpp,owned,,1,2
 0x00A04060,4,.data,global,?$S1@?1??getModuleNameKey@ShroudCrateCollide@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/ShroudCrateCollidePoolKey.cpp,owned,,1,4
-0x00A04064,4,.data,global,?TheUnitCrateCollidePoolKey@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp,owned,,1,2
+0x00A04064,4,.data,global,?TheUnitCrateCollidePoolKey@?1??getModuleNameKey@UnitCrateCollide@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp,owned,,1,2
 0x00A04068,4,.data,global,?g_Va00E04068@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp;?g_Va00E04068@@3IA,2,4
 0x00A0406C,4,.data,global,_s_rva007B26EC,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A04070,4,.data,global,?TheVeterancyCrateCollidePoolKey@?1??getModuleNameKey@VeterancyCrateCollide@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/VeterancyCrateCollidePoolKey.cpp,owned,,1,2
@@ -20556,14 +20556,14 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04080,4,.data,global,?TheCivilianSpawnCollidePoolKey@?1??getModuleNameKey@CivilianSpawnCollide@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp,owned,,1,2
 0x00A04084,4,.data,global,?$S1@?1??getModuleNameKey@CivilianSpawnCollide@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp,owned,,1,4
 0x00A04088,4,.data,global,_s_rva007B274A,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A0408C,4,.data,global,?TheInactiveBodyPoolKey@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp,owned,,1,2
+0x00A0408C,4,.data,global,?TheInactiveBodyPoolKey@?1??getModuleNameKey@InactiveBody@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp,owned,,1,2
 0x00A04090,32,.data,global,?g_Va00E04090@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp;?g_Va00E04090@@3IA,2,4
 0x00A040B0,4,.data,global,?g_Va00E040B0@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_08.cpp,owned,,1,14
 0x00A040B4,4,.data,global,?TheActiveBodyPoolKey@?1??getModuleNameKey@ActiveBody@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp,owned,,1,2
 0x00A040B8,4,.data,global,?$S1@?1??getModuleNameKey@ActiveBody@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp,owned,,1,4
 0x00A0411C,4,.data,global,?$S1@?CC@??attemptDamage@ActiveBody@@UAEXPAVDamageInfo@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp,owned,,1,6
 0x00A04120,4,.data,global,_s_rva007B2774,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A04124,4,.data,global,?TheHighlanderBodyPoolKey@?1??rva004C07CA@HighlanderBody@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp,owned,,1,2
+0x00A04124,4,.data,global,?TheHighlanderBodyPoolKey@?1??getModuleNameKey@HighlanderBody@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp,owned,,1,2
 0x00A04128,4,.data,global,?g_Va00E04128@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,provisional,?$S1@?1??rva004C07CA@HighlanderBody@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp;?g_Va00E04128@@3IA,2,4
 0x00A0412C,4,.data,global,?TheImmortalBodyPoolKey@?1??getModuleNameKey@ImmortalBody@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyPoolKey.cpp,owned,,1,2
 0x00A04130,4,.data,global,?$S1@?1??getModuleNameKey@ImmortalBody@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyPoolKey.cpp,owned,,1,4
@@ -20674,7 +20674,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04328,4,.data,global,?TheSwayClientUpdatePoolKey@?1??getModuleNameKey@SwayClientUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameClient/Drawable/Update/SwayClientUpdate.cpp,owned,,1,2
 0x00A0432C,4,.data,global,?$S2@?1??getModuleNameKey@SwayClientUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameClient/Drawable/Update/SwayClientUpdate.cpp,owned,,1,2
 0x00A04330,4,.data,global,_s_rva007B2B8A,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A04334,4,.data,global,?TheBeaconClientUpdatePoolKey@?1??rva004C9607@BeaconClientUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp,owned,,1,2
+0x00A04334,4,.data,global,?TheBeaconClientUpdatePoolKey@?1??getModuleNameKey@BeaconClientUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp,owned,,1,2
 0x00A04338,4,.data,global,?g_Va00E04338@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E043xx.cpp,provisional,?$S1@?1??rva004C9607@BeaconClientUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp;?g_Va00E04338@@3IA,2,4
 0x00A0433C,4,.data,global,_s_rva007B2BB4,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A04340,4,.data,global,?TheEvaAnnounceClientCreatePoolKey@?1??getModuleNameKey@EvaAnnounceClientCreate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameClient/Drawable/Update/EvaAnnounceClientCreatePoolKey.cpp,owned,,1,2

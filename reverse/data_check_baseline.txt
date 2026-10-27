@@ -86,7 +86,6 @@ Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp	wrong-nam
 Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp	wrong-name	?$S1@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04090
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp	wrong-name	?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04068
 Code/GameEngine/Source/GameLogic/Object/Contain/Rva00588D24.cpp	wrong-name	?g_bfmeWorldRV@@3PAUBfmeWorldRV@@A	0x00A01CFC
-Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp	wrong-name	?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03660
 Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp	wrong-name	?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04010
 Code/GameEngine/Source/GameLogic/Object/Rva00220DCDInit.cpp	wrong-name	?g_00DFE490@@3VRva00575674@@A	0x009FE490
 Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp	wrong-name	?$S1@?1??rva00049A1CA@AutoDepositUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B14
@@ -151,9 +150,6 @@ Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	__Ver
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	__VertexBufferTotalVertices	0x009F2A84
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	_bfmeSortingVB	0x009F2A8C
 Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	wrong-name	_bfmeSortingVBOffset	0x009F2A94
-Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp	duplicate-def	__BoxMaterial	0x009F6FD4
-Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp	duplicate-def	__BoxShader	0x009B6480
-Code/Libraries/Source/WWVegas/WW3D2/boxrobj.cpp	wrong-name	?$S9@?6??render_box@BoxRenderObjClass@@IAEXAAVRenderInfoClass@@ABVVector3@@1@Z@4IA	0x009F7038
 Code/Libraries/Source/WWVegas/WW3D2/dx8caps.cpp	duplicate-def	_CapsWorkString	0x009EE938
 Code/Libraries/Source/WWVegas/WW3D2/dx8caps.cpp	wrong-name	_CapsWorkString	0x009EE938
 Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	wrong-name	?BfmeResetMeshRendererInstance@@3PAUBfmeResetMeshRenderer@@A	0x009F363C
