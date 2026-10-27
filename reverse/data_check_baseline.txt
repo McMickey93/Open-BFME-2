@@ -418,7 +418,7 @@ Code/GameEngine/Source/GameLogic/Object/SpecialPower/UntamedAllegianceSpecialPow
 Code/GameEngine/Source/GameLogic/Object/Update/AIGateUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004B087C@AIGateUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D88
 Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004B2ED4@AISpecialPowerUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03DB0
 Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp	wrong-name	?$S130@?1??privateGoProne@AIUpdateInterface@@MAEXPBVDamageInfo@@W4CommandSourceType@@@Z@4IA	0x009FEAE0
-Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004A90A7@TransportAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C9C
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp	wrong-name	?$S1@?1??rva004A90A7@TransportAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C9C
 Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004A9384@WanderAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03CA4
 Code/GameEngine/Source/GameLogic/Object/Update/AnimalAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00047EC1A@AnimalAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A0374C
 Code/GameEngine/Source/GameClient/Drawable/Update/AnimatedParticleSysBoneClientUpdate.cpp	wrong-name	?$S1@?1??rva0004C900E@AnimatedParticleSysBoneClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04320

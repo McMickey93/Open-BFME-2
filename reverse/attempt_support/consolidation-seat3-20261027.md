@@ -1,0 +1,12 @@
+Mechanical consolidation seat handoff, 2026-10-27.
+
+Accepted: `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp` absorbed unchanged `TransportAIUpdatePoolKey.cpp` (three rows: parent, EH handler and `$L310` funclet). The merge link guard passed; `./build.sh` passed 3/3 matched; `find_declared_unmatched.py` and `check_csv.py` passed. Tool carried one data-baseline key and two ledger rows; staged code-identity check found no new finding, converged data check found no duplicate name, and hatch totals did not change. The two wrong-name data findings for the function-local static are retained; no debt retirement is claimed.
+
+Rejected candidates (no source edits):
+- `ObjectTypes.cpp`: dry run accepted `Rva00376A62Contains.cpp`, but apply refused because another worker held `ObjectCreationTemplatePredicate.cpp` and `ObjectTypesDtor.cpp`. All claims acquired for this trial were released.
+- `FireWeaponCollide.cpp`: no donor accepted. `CollideModuleCtor.cpp` lacked base `CollideModule` (C2504); `FireWeaponCollidePoolKey.cpp` lacked `getModuleNameKey` (C2039); `FireWeaponCollideOnCollide.cpp` lacked `ObjectModule`/`CollideModuleInterface` (C2504); `FireWeaponCollideXfer.cpp` lacked `xfer` (C2039); `FireWeaponCollideShouldFireWeapon.cpp` had a syntax/type error at the `g_` member declaration (C2143/C2501). Link guard reported the existing unit as census-linked.
+- `AssistedTargetingUpdate.cpp`: no donor accepted. Pool-key donor lacked `rva000486E31` (C2039); ctor donor lacked `m_vtable`/`m_secondary0C` (C2065); feedback-laser donor redefined `Coord3D` (C2011). Link guard reported census-linked units.
+- `MaxHealthUpgrade.cpp`: no donor accepted. Both module and implementation donors require missing `MaxHealthUpgrade::getModuleNameKey` (C2039). Link guard reported census-linked units.
+- `RiderChangeContain.cpp`: no donor accepted. Donor blockers included missing `TransportContain` default constructor (C2512), duplicate `getModuleNameKey` body (C2084), `Xfer` redefinition and missing `Version1`, `AsciiString` redefinitions, `Module::m_moduleData` private access (C2248), missing `Rva047E59EDamage8`, and an internal compiler error C1001 in the module-data parse donor. Link guard reported census-linked units.
+
+The outgoing path audit, provider/consumer comparison and pre-push link batch audit remain to be run for the complete unpublished range before publication. The previous ModelConditionUpgrade handoff records its stale-index provisional findings.
