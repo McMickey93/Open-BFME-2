@@ -8,7 +8,7 @@
 // [esi+8] 0 plus and [esi] 0 plus ret, callers at 0x002A2625 0x002A2B4C
 // 0x003920A2 0x00392282 0x0039228D 0x00393200 0x00596EA4 0x00596ED8.
 
-void operator delete[](void *p);
+#include <new>
 
 class Rva004D9A3C
 {

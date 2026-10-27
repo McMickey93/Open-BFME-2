@@ -23,7 +23,7 @@ struct Rva002E36D5Node
 };
 
 void __cdecl Rva002E3714Unlink(Rva002E36D5Node *node);
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct Elem
 {
