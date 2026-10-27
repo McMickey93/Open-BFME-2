@@ -10,12 +10,11 @@
 // msvcr71 sscanf import at 0xBBA5E4, so it lives here (callee-visibility
 // split: GetFrameEntry/AddFrameEntry precedent).
 // BFME2 facts (all retail-measured):
-// - sscanf via explicit dllimport decl (FF15, not the E8 thunk).
 // - "%d" literal at 0xBBE164.
 
-typedef int Int;
+#include <stdio.h>
 
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
+typedef int Int;
 
 // ?scanInt@@YAHPBDAAH@Z
 Int scanInt(const char *source, Int &val)

@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// platformsdk
 //
 // ??0Image@@QAE@XZ, retail 0x002D8FE4, 122 bytes. Dedicated TU.
 //
@@ -12,8 +13,7 @@
 
 typedef int Int;
 
-#define NULL 0
-
+#include <windows.h>
 #include "ascii_string.h"
 
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"

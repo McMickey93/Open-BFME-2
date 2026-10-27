@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
+// platformsdk
 // ?rva0056EBA1@Rva0056EBA1@@QAE_NABVUnicodeString@@@Z @0x0056EBA1 47B.
 // Chain of just-landed GadgetComboBoxSetText 0x322D63: null member +0xA4 guard
 // then SetText with text copy. Retail calls 0x00037050 StringBase copy then
@@ -6,10 +7,7 @@
 typedef unsigned short wchar_t;
 typedef int Int;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
+#include <windows.h>
 #include "unicode_string.h"
 
 

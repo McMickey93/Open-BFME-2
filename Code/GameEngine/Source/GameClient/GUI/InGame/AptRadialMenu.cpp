@@ -5,6 +5,7 @@
 // 0x00577E94 (ret 8), slots 2 and 3 of the vtable at 0x0086EA28, forward to button i of the Impl's button shell array
 // (+0x44): ButtonShell::EnableInput 0x00577D93 and ButtonShell::Move
 // 0x00577CC5 (WorldBuilder names, pinned), the positions passed by value.
+#include <new>
 #include "../../../../../Libraries/Include/Lib/Coord2D.h"
 #include <vector>
 // Suppress this TU's non-retail copy of ??$__uninitialized_copy@PAURva00578425Element@@PAU1@@_STL@@YAPAURva00578425Element@@PAU1@0:
@@ -90,7 +91,6 @@ void AptRadialMenu::Impl::ButtonShell::EnableInput(bool enable)
         m_enabled=requested;
     }
 }
-void *__cdecl operator new(unsigned int) throw();
 struct TargetRef00217D4C;
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 struct Rva00578425Element {

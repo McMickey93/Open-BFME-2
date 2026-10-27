@@ -1,10 +1,13 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
+// platformsdk
 
 // ?GadgetButtonGetData@@YAPAXPAVGameWindow@@@Z, retail 0x00327D56 (24B).
 // Ported from Open-BFME-1 Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetPushButton.cpp
 // (BFME1 0x004BBEE0). PushButtonData keeps its ZH field order up to userData;
 // winGetUserData resolves through the ledger. The native display-string
 // toggle below extends the same PushButtonData view through +0x30.
+
+#include <windows.h>
 
 typedef int Int;
 typedef bool Bool;
@@ -53,10 +56,6 @@ public:
 	unsigned int winSetStatus(unsigned int);
 	unsigned int winClearStatus(unsigned int);
 };
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 // ?GadgetButtonGetData@@YAPAXPAVGameWindow@@@Z
 void *GadgetButtonGetData(GameWindow *button)

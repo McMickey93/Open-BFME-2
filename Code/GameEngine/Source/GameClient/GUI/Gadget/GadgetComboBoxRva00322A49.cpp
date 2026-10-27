@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /ICode/GameEngine/Include /O1 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?OnComboBoxClick@@YAXPAVGameWindow@@@Z @0x00322A49 476B (Ghidra boundary,
 // EH frame). The combo box drop-down toggle that GadgetComboBoxInput
 // (0x00322C25) calls on GWM_LEFT_UP; ZH/BFME1 donor GadgetComboBox.cpp keeps
@@ -29,6 +30,7 @@
 // eaten; GWM_CHAR (21) turns a pressed KEY_TAB (0xF) into winPrevTab /
 // winNextTab (slots 43/42) by TheKeyboard's shift bit (+0xC & 0x10) and sends
 // every other key to the edit box through winSendInputMsg (slot 59).
+#include <windows.h>
 #include "Common/BfmeAudioEventPrefix136.h"
 
 typedef int Int;
@@ -53,10 +55,6 @@ enum { GGM_LEFT_DRAG = 0x4000 };
 enum { GWS_MOUSE_TRACK = 0x400 };
 enum { KEY_TAB = 0x0F };
 enum { KEY_STATE_DOWN = 0x02, KEY_STATE_LSHIFT = 0x10 };
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 #include "../../../../../Libraries/Include/Lib/ICoord2D.h"
 

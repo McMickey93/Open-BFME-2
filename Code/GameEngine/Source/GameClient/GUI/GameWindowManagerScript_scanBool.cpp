@@ -9,10 +9,10 @@
 // and the setne/materialize tail stores through the Bool reference.
 // "%d" literal at 0xBBE164.
 
+#include <stdio.h>
+
 typedef int Int;
 typedef bool Bool;
-
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
 
 // ?scanBool@@YAHPBDAA_N@Z
 Int scanBool(const char *source, Bool &val)

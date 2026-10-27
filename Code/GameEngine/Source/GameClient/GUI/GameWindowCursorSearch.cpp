@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /ICode/GameEngine/Include /MD /EHsc /DNDEBUG
+// platformsdk
 // Reference: ZH GameWindow::winPointInChild through open-bfme-1 revision
 // 6d9434269164392c5ba62aaa7c15a86b5b020d76. Target boundary3141BC-3142E1
 // independently proves status+8, size+C/+10, region+14..20, next1F8,
@@ -7,9 +8,9 @@
 // is unknown. Disabled-click sound uses native MiscAudio reference+88 and
 // shared136-byte event; constructor value30=2 purpose remains unproven.
 // Window/manager view names disclaim original owner identity and full sizes.
+#include <windows.h>
 #include "Common/BfmeAudioEventPrefix136.h"
 typedef int Int; typedef bool Bool;
-#define NULL 0
 #define BitTest(value,mask) (((value)&(mask))!=0)
 enum { WIN_STATUS_ABOVE=0x20, WIN_STATUS_BELOW=0x40, WIN_STATUS_ENABLED=8, WIN_STATUS_NO_INPUT=0x200 };
 enum { WIN_STATUS_HIDDEN = 0x10 };

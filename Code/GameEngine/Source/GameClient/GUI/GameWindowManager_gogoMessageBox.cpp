@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // ?gogoMessageBox@GameWindowManager@@UAEPAVGameWindow@@HHHHGVUnicodeString@@0P6AXXZ111@Z @0x002C187D 137B
 // GameWindowManager::gogoMessageBox 11-arg forwarder to 12-arg with FALSE; BFME1 donor GameWindowManagerMessageBox.cpp; vtable 0x7C7C90 slot 18 calls slot 17 (+0x44); UnicodeString by-value via StringBase<G> pins 0x37050/0x36E70.
 
@@ -7,12 +8,9 @@ typedef unsigned short wchar_t;
 typedef unsigned short UnsignedShort;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
 class UnicodeString;
 
+#include <windows.h>
 #include "unicode_string.h"
 
 

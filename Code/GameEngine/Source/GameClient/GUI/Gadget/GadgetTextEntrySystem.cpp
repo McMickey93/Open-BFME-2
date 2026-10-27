@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 // ?GadgetTextEntrySystem@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z
 // @0x003207F5 694B (Ghidra boundary, EH frame): the text entry system
 // callback, slot 0x84 of the system table 0x9BC9DC. Reference semantics:
@@ -14,6 +15,7 @@
 // 48 (winGetFocus) and 58 (winSendSystemMsg). On destroy a set +0x14 byte
 // passes 2 to the click-through handler's setter 0x00432AEB. The focused
 // window is kept in a file static (0x00E01D44) stored after unrelated loads.
+#include <windows.h>
 #include "unicode_string.h"
 
 typedef int Int;
@@ -47,10 +49,6 @@ enum
 
 #define BitSet(x, i) ((x) |= (i))
 #define BitClear(x, i) ((x) &= ~(i))
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class WinInstanceData
 {

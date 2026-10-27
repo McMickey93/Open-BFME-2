@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 // ?GadgetTextEntryInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z
 // @0x00320DA9 1607B (Ghidra boundary): the text entry input callback, slot
 // 0x84 of the input table 0x9BCAD8. Reference semantics: the ZH/Open-BFME-1
@@ -20,6 +21,7 @@
 // one character first; Tab with shift tabs backwards. Mouse entering and
 // leaving pass 0x2C and 2 to the click-through handler's setter 0x00432AEB
 // and set and clear the +0x14 byte the system callback tests on destroy.
+#include <windows.h>
 #include "unicode_string.h"
 
 typedef int Int;
@@ -103,10 +105,6 @@ enum
 #define BitTest(x, i) (((x) & (i)) != 0)
 #define BitSet(x, i) ((x) |= (i))
 #define BitClear(x, i) ((x) &= ~(i))
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class WinInstanceData
 {

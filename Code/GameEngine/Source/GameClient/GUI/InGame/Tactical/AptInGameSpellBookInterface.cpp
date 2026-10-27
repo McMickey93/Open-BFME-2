@@ -1,6 +1,7 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
 // WorldBuilder retains AptInGameSpellBookInterface.cpp and helper identities.
 // Twenty-four20B button caches start50. WB and retail agree on level4/string8.
+#include <stdlib.h>
 #include "ascii_string.h"
 class Rva00222A8BTarget;
 class BfmeAptWindowManager;
@@ -280,7 +281,6 @@ __forceinline void SetSpellWindowWidth(int count)
  ((Rva0029A767FloatField *)TheInGameUI)->set(width);
  
 }
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *);
 struct SpellAptModeView {char prefix00[0x318];int mode318;};
 class CommandSet;
 class Rva0031D5F8 {public:void *rva0031D5F8(const AsciiString *);};

@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /DNDEBUG /MD
+// platformsdk
 // ?Rva003249D2@@YAXPAVGameWindow@@_N@Z @0x003249D2 275B: the list box slider
 // refresh run after every display change (0x00324AE5 and
 // GadgetListBoxSetBottomVisibleEntry call it). Reference semantics: the
@@ -21,10 +22,6 @@ typedef UnsignedInt WindowMsgData;
 
 enum { GSM_SET_SLIDER = 0x400D };
 
-#ifndef NULL
-#define NULL 0
-#endif
-
 class GameWindow
 {
 public:
@@ -34,6 +31,7 @@ public:
 	GameWindow *winGetChild();
 };
 
+#include <windows.h>
 #include "../../../../../Libraries/Include/Lib/ICoord2D.h"
 
 struct SliderData

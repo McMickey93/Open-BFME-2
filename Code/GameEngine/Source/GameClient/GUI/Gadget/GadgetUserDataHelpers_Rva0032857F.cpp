@@ -1,4 +1,5 @@
 // cl: /Ob0
+// platformsdk
 
 // ?Rva0032857F@@YAXPAVGameWindow@@H@Z, retail 0x0032857F (43B).
 // Dedicated TU.
@@ -18,16 +19,14 @@
 //   winSetUserData (0x002B2210, via the existing pin) all resolve from the
 //   ledger, so every call stays direct E8.
 
+#include <windows.h>
+
 class GameWindow
 {
 public:
 	void *winGetUserData();
 	void winSetUserData(void *data);
 };
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 struct _PushButtonData;
 extern _PushButtonData *getNewPushButtonData(void);

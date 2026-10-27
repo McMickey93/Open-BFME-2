@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /Oy- /DNDEBUG /MD /EHsc /Oi-
+// platformsdk
 //
 // ?parseTooltipText@@YA_NPADPAVWinInstanceData@@0PAX@Z, retail 0x00315CFD, 112 bytes.
 // Dedicated TU.
@@ -25,6 +26,7 @@
 //   with 0x715CFD (entries are name@+0/fn@+4; the walker at 0x31701C
 //   compares names and calls [eax+4]).
 
+#include <windows.h>
 #include <string.h>
 #include <assert.h>
 
@@ -36,10 +38,6 @@
 typedef int Int;
 typedef bool Bool;
 typedef unsigned short wchar_t;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class UnicodeString;
 class AsciiString;

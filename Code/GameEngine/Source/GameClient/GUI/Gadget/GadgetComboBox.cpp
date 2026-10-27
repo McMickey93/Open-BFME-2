@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 
 // Text-color family from clean Open-BFME-1 6d9434269164392c5ba62aaa7c15a86b5b020d76.
 // Retail independently proves four distinct color-pair stores and the
@@ -12,6 +13,8 @@
 // Ported from Open-BFME-1 Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetComboBox.cpp
 // (BFME1 0x004B3980/0x004B39B0). ComboBoxData/EntryData keep their ZH order
 // here; winGetUserData resolves through the ledger (no new pins).
+
+#include <windows.h>
 
 typedef int Int;
 typedef bool Bool;
@@ -69,10 +72,6 @@ public:
 	void winSetIMECompositeTextColors(int, int);
 	void *winGetUserData(void);
 };
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 typedef Int Color;
 class BfmeKeyLC;

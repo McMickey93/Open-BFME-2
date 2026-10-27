@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?winSetText@GameWindow@@UAEHVUnicodeString@@@Z, retail 0x0031484A, 88 bytes.
 //
@@ -19,10 +20,7 @@
 typedef int Int;
 typedef unsigned short wchar_t;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
+#include <windows.h>
 #include "unicode_string.h"
 
 

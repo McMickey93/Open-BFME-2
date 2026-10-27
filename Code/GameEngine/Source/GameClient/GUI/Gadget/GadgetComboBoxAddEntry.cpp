@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // ?GadgetComboBoxAddEntry@@YAHPAVGameWindow@@VUnicodeString@@H@Z @0x00322DC5 84B.
 // ZH donor GadgetComboBox.cpp GadgetComboBoxAddEntry: null -> -1,
 // GCM_ADD_ENTRY 0x4022 via TheWindowManager at 0x9FEF1C slot 58 0xE8 with &text and color.
@@ -18,6 +19,7 @@ enum WindowMsgHandledType
 class UnicodeString;
 class AsciiString;
 
+#include <windows.h>
 #include "unicode_string.h"
 
 
@@ -43,10 +45,6 @@ public:
 };
 
 extern GameWindowManager *TheWindowManager;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 Int GadgetComboBoxAddEntry(GameWindow *comboBox, UnicodeString text, Color color)
 {

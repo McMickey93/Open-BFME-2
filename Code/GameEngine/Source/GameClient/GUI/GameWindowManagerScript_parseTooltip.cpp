@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /Oi-
+// platformsdk
 //
 // ?parseTooltip@@YA_NPADPAVWinInstanceData@@0PAX@Z, retail 0x00315BA3, 82 bytes.
 // Dedicated TU.
@@ -25,12 +26,9 @@ typedef int Int;
 typedef bool Bool;
 typedef unsigned short wchar_t;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
 class UnicodeString;
 
+#include <windows.h>
 #include "unicode_string.h"
 
 

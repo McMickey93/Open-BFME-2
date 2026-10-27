@@ -4,6 +4,8 @@
 // Evidence: calls rowed hashtable clear 0x001DBCDC with this and frees bucket
 // start at +4 via member dtor (rowed _free 0x00030830); EH states guard clear.
 // Caller 0x00427374 in 0x00427311 passes esi+0x0c; landing unblocks 0x00427311.
+#include <stdlib.h>
+
 enum NameKeyType { NAMEKEY_DUMMY };
 class ArmorTemplate;
 namespace rts { template <class T> struct hash; }
@@ -19,7 +21,6 @@ public:
 	void clear();
 };
 }
-extern "C" void __cdecl free(void *);
 struct BucketVec004271D9
 {
 	void *_start;

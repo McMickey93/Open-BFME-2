@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
+// platformsdk
 // ?GadgetComboBoxGetText@@YA?AVUnicodeString@@PAVGameWindow@@@Z @0x00322D21 66B.
 // ZH donor GadgetComboBox.cpp GadgetComboBoxGetText: null -> empty,
 // GWS_COMBO_BOX 0x8000 check via winGetStyle, else TextEntryGetText of child.
@@ -8,9 +9,7 @@ typedef unsigned short wchar_t;
 typedef unsigned int UnsignedInt;
 #define BitTest(x, i) (((x) & (i)) != 0)
 #define GWS_COMBO_BOX 0x00008000
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 #include "unicode_string.h"
 class GameWindow
 {

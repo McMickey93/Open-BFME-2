@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 // ?GadgetComboBoxSystem@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z
 // @0x00322E6D 1803B (Ghidra boundary, EH frame): the combo box system
 // callback. Reference semantics: ZH/BFME1 donor GadgetComboBox.cpp
@@ -21,6 +22,7 @@
 // TheWindowManager before clearing the lone window. Retail lays the shared
 // MSG_HANDLED exit between delete-all and the row-text case, which the
 // row-text case's own return reproduces.
+#include <windows.h>
 #include "unicode_string.h"
 
 typedef int Int;
@@ -72,10 +74,6 @@ enum { WIN_STATUS_ENABLED = 0x08 };
 #define BitTest(x, i) (((x) & (i)) != 0)
 #define BitSet(x, i) ((x) |= (i))
 #define BitClear(x, i) ((x) &= ~(i))
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 #include "../../../../../Libraries/Include/Lib/ICoord2D.h"
 

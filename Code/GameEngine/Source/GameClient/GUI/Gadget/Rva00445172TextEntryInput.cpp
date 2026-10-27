@@ -17,7 +17,7 @@
 // Rva004BE120TextEntryInput.cpp does.
 
 // Retail calls the CRT iswalnum import, not wchar.h's inline iswctype wrapper.
-#define _WCTYPE_INLINE_DEFINED
+#include <ctype.h>
 #include <wchar.h>
 #include "unicode_string.h"
 

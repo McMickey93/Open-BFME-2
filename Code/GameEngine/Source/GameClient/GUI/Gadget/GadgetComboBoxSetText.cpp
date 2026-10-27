@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // ?GadgetComboBoxSetText@@YAXPAVGameWindow@@VUnicodeString@@@Z @0x00322D63 98B.
 // BFME1 donor GadgetComboBoxAccessors.cpp GadgetComboBoxSetText: null guard then
 // ListBoxSetSelected(listBox -1) then TextEntrySetText(entry text).
@@ -8,10 +9,7 @@
 typedef unsigned short wchar_t;
 typedef int Int;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
+#include <windows.h>
 #include "unicode_string.h"
 
 

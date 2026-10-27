@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 // ?Rva003229C5Hide@@YAXPAVGameWindow@@@Z @0x003229C5 132B.
 // ZH/BFME1 donor GadgetComboBox.cpp HideListBox: null listBox guard then
 // winIsHidden then winHide TRUE then entry size and combo size then
@@ -10,10 +11,7 @@
 typedef int Int;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
+#include <windows.h>
 #include "../../../../../Libraries/Include/Lib/ICoord2D.h"
 
 class GameWindow;
