@@ -1533,6 +1533,7 @@ def _header_fixture(tmp_path, monkeypatch):
     monkeypatch.setattr(hal, "registered", lambda: {"Coord3D": "Code/Include/Coord3D.h"})
     monkeypatch.setattr(rq, "_head_header_verdict", lambda name, source: hal.verdict(name, source))
     monkeypatch.setattr(hal, "gate_one", lambda source: None)               # the byte gate passes
+    monkeypatch.setattr(hal, "link_ok", lambda sources: dict.fromkeys(sources, True))
     return rq, rev, git, hal
 
 
@@ -1553,6 +1554,23 @@ def test_a_header_row_leaves_the_queue_only_when_acceptance_passes(tmp_path, mon
     assert "AsciiString\tCode/GameEngine/Loco.cpp" in queue.read_text()
     git("add", "-A")
     assert rq.verify_removed_debt(build_cmd=[sys.executable, "-c", "pass"]) == []
+
+
+@pytest.mark.parametrize("linked", [False, None])
+def test_header_debt_hook_refuses_lost_linking_or_missing_preview(tmp_path, monkeypatch, linked):
+    rq, rev, git, hal = _header_fixture(tmp_path, monkeypatch)
+    source = "Code/GameEngine/Body.cpp"
+    (tmp_path / source).write_text('#include "../Include/Coord3D.h"\n')
+    queue = rev / "header_queue.tsv"
+    original = queue.read_text()
+    monkeypatch.setattr(hal, "link_ok", lambda sources: dict.fromkeys(sources, linked))
+    assert hal.accept("Coord3D", [source]) == 1
+    assert queue.read_text() == original
+    queue.write_text("\n".join(line for line in original.splitlines()
+                               if not line.startswith("Coord3D\t")) + "\n")
+    git("add", "reverse/header_queue.tsv", source)
+    failures = rq.verify_removed_debt(build_cmd=[sys.executable, "-c", "pass"])
+    assert any("link_check" in failure for failure in failures), failures
 
 
 def test_a_hand_deleted_header_row_is_refused(tmp_path, monkeypatch):

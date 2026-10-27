@@ -2,6 +2,7 @@
 import csv
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -48,6 +49,7 @@ def constructor_companion(tmp_path, monkeypatch, request):
     monkeypatch.setattr(lane, "tracked_headers", lambda: [header, companion])
     calls = []
     monkeypatch.setattr(lane, "gate_one", lambda source: calls.append(source))
+    monkeypatch.setattr(lane, "link_ok", lambda sources: dict.fromkeys(sources, True))
     return name, source, header, companion, body, queue, calls
 
 
@@ -215,3 +217,75 @@ def test_generated_header_orders_destructor_last():
                 "bases": [], "fields": []}
     text = lane.generate(contract, "data+methods", methods, None)
     assert text.index("Delete_This") < text.rindex("~RefCountClass")
+
+
+def preview(source, before, after, clean=True):
+    return (f"{source}: {'LINKS' if clean else 'does not link'}  "
+            f"LINKED {before:,} -> {after:,} bytes (census 2026-10-27 at bf3dd31211; "
+            f"file's own bytes {max(before, after):,})\n")
+
+
+@pytest.mark.parametrize("output,code,expected", [
+    (preview("Code/FX.cpp", 5649, 5649), 0, True),
+    (preview("Code/FX.cpp", 5649, 0, False), 1, False),
+    (preview("Code/FX.cpp", 0, 42), 0, True),
+    (preview("Code/FX.cpp", 0, 0, False), 1, True),
+    ("Code/FX.cpp(3): error C2259: cannot instantiate abstract class\n", 1, None),
+    ("Code/FX.cpp: UNKNOWN (missing object)\n", 1, None),
+    (preview("Code/Other.cpp", 5649, 5649), 0, None),
+    (preview("Code/FX.cpp", 5649, 5649) * 2, 0, None),
+    (preview("Code/FX.cpp", 5649, 5649), 2, None),
+])
+def test_link_guard_requires_explicit_per_unit_coverage(output, code, expected, tmp_path, monkeypatch):
+    monkeypatch.setattr(lane, "ROOT", tmp_path)
+    (tmp_path / "tools").mkdir()
+    (tmp_path / "tools/link_check.py").touch()
+
+    def run(command, **kwargs):
+        assert command == [sys.executable, "tools/link_check.py", "./Code/FX.cpp"]
+        assert kwargs["cwd"] == tmp_path
+        return SimpleNamespace(stdout=output, stderr="", returncode=code)
+
+    monkeypatch.setattr(lane.subprocess, "run", run)
+    assert lane.link_ok(["./Code/FX.cpp"]) == {"./Code/FX.cpp": expected}
+
+
+@pytest.mark.parametrize("output,code,passes", [
+    (preview("Code/FX.cpp", 5649, 0, False), 1, False),
+    ("Code/FX.cpp: UNKNOWN (missing object)\n", 1, False),
+    (preview("Code/FX.cpp", 5649, 5649), 0, True),
+    (preview("Code/FX.cpp", 0, 0, False), 1, True),
+])
+def test_header_acceptance_keeps_debt_unless_linked_bytes_are_preserved(output, code, passes, tmp_path, monkeypatch):
+    monkeypatch.setattr(lane, "ROOT", tmp_path)
+    (tmp_path / "Code").mkdir()
+    (tmp_path / "Code/FX.cpp").write_text('#include "../Snapshot.h"\n')
+    (tmp_path / "Snapshot.h").write_text("class Snapshot {};\n")
+    (tmp_path / "tools").mkdir()
+    (tmp_path / "tools/link_check.py").touch()
+    queue = tmp_path / "header_queue.tsv"
+    original = "class\tsource\nSnapshot\tCode/FX.cpp\n"
+    queue.write_text(original)
+    monkeypatch.setattr(lane, "QUEUE", queue)
+    monkeypatch.setattr(lane.subprocess, "run", lambda *args, **kwargs: SimpleNamespace(
+        stdout=output, stderr="", returncode=code))
+
+    assert lane.accept("Snapshot", ["Code/FX.cpp"], "Snapshot.h", gate=lambda source: None) == (not passes)
+    assert queue.read_text() == ("class\tsource\n" if passes else original)
+
+
+def test_link_guard_has_no_verdict_without_checker(tmp_path, monkeypatch):
+    monkeypatch.setattr(lane, "ROOT", tmp_path)
+    assert lane.link_ok(["Code/FX.cpp"]) == {"Code/FX.cpp": None}
+
+
+def test_bad_byte_gate_does_not_run_link_preview(tmp_path, monkeypatch):
+    monkeypatch.setattr(lane, "ROOT", tmp_path)
+    (tmp_path / "FX.cpp").write_text('#include "Snapshot.h"\n')
+    (tmp_path / "Snapshot.h").touch()
+
+    def unexpected(sources):
+        raise AssertionError("link preview ran after byte failure")
+
+    monkeypatch.setattr(lane, "link_ok", unexpected)
+    assert lane.verdict("Snapshot", "FX.cpp", "Snapshot.h", gate=lambda source: "bytes differ") == ["bytes differ"]

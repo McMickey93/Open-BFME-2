@@ -28,7 +28,8 @@ PIPELINE (per class, in DEPENDENCY_ORDER):
 
 ACCEPTANCE (the queue item's pass test, `accept`): the unit has no private
 body for the class, includes the header (or its evidenced constructor companion),
-every ledger row in it still byte-matches, and link_check does not lose the unit; a batch additionally
+every ledger row in it still byte-matches, and link_check predicts no loss of
+its census-linked bytes (an explicit per-unit result is required); a batch additionally
 compares link_cycle's closed_strict rows before/after (`closure-diff`).
 
 GATE COST. Changing a registered header re-verifies only its dependents
@@ -471,14 +472,32 @@ def register(name, header, note):
 
 
 def link_ok(sources):
-    """{source: True/False/None} from tools/link_check.py (None: no verdict)."""
+    """Whether each ordinary preview preserves its census-linked bytes.
+
+    A previously blocked unit may remain blocked (0 -> 0). Missing evidence,
+    including a source merely mentioned in a compile error, is no verdict.
+    This preview is a retirement guard, never a new census measurement.
+    """
     if not (ROOT / "tools" / "link_check.py").exists():
         return {s: None for s in sources}
     done = subprocess.run([sys.executable, "tools/link_check.py", *sources], cwd=ROOT, capture_output=True,
                           text=True, errors="replace", env=dict(os.environ, MSYS_NO_PATHCONV="1"))
+    if done.returncode not in (0, 1):
+        return {s: None for s in sources}
     out = done.stdout + done.stderr
-    return {s: (None if s not in out else not re.search(re.escape(s) + r".*(unresolved|duplicate|FAIL|not link)", out))
-            for s in sources}
+    results = {}
+    for source in sources:
+        normalized = (ROOT / source).resolve().relative_to(ROOT.resolve()).as_posix()
+        matches = re.findall(r"^" + re.escape(normalized)
+                             + r": (?:LINKS|does not link)  LINKED ([0-9]+(?:,[0-9]{3})*)"
+                             + r" -> ([0-9]+(?:,[0-9]{3})*) bytes \(census [^\n]+\)$",
+                             out, re.M)
+        if len(matches) != 1:
+            results[source] = None
+        else:
+            before, after = (int(n.replace(",", "")) for n in matches[0])
+            results[source] = after >= before
+    return results
 
 
 COMMENTS = re.compile(r"//[^\n]*|/\*.*?(?:\*/|\Z)", re.S)
@@ -566,6 +585,12 @@ def verdict(name, source, header=None, gate=None):
     why = (gate or gate_one)(source)
     if why:
         problems.append(why)
+    if not problems:
+        linked = link_ok([source])[source]
+        if linked is False:
+            problems.append("link_check predicts a loss of census-linked bytes")
+        elif linked is None:
+            problems.append("link_check produced no usable per-unit verdict")
     return problems
 
 

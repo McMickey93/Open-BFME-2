@@ -5430,6 +5430,21 @@ This clears this unit's header prerequisite only. The other FX-info surfaces,
 allocator-name collision, Xfer access and constructor prerequisites above remain.
 No new linked-byte or census gain is claimed.
 
+**FXParticleSystem surface follow-up (2026-10-27, inspected `ec06a82135`):**
+[The controlled trial](../reverse/attempt_support/fxparticle-snapshot-header-20261027-codexb4.md)
+replaces the private Snapshot with the canonical base and declaration-only
+capitalized slot overrides. All 368 function checks and the data row pass,
+but the ordinary preview loses 5,649 authored bytes to 18 unresolved
+LoadPostProcess/DoXfer callbacks across nine info classes (index `bf3dd31211`).
+Existing export leads and provider rows are mapped in the handoff; their
+real virtual surfaces and provider signatures must be reconciled before
+adoption. The complete source and queue row are restored; the normal rebuild
+and preview preserve LINKS 5,649 -> 5,649 bytes. This remains blocked.
+The trial also exposed that header acceptance never called its documented
+link guard. Acceptance now requires an explicit per-unit preview preserving
+census-linked bytes; lost or unknown results retain the debt. The repair
+retires no header debt and claims no census gain.
+
 **RemoveUpgrade destructor follow-up (2026-10-27, inspected `a5bffaa9a9`):**
 [The bounded adoption](../reverse/attempt_support/removeupgrade-snapshot-header-20261027-codexb4.md)
 removes the false oversized Snapshot definition from
