@@ -30,8 +30,11 @@ private:
 	int m_value;
 };
 
-extern float g_00DD00A8;
-extern float g_00DD00AC;
+// 0x009D00A8/0x009D00AC hold float constants, but their ledger owner
+// (Rva004E57E6Method.cpp) defines and copies them as int: read the same
+// globals through a float view.
+extern int g_00DD00A8;
+extern int g_00DD00AC;
 extern float g_00C623C8;
 
 class Rva004E5A24 : public BFME2NativeNetwork
@@ -54,12 +57,8 @@ Rva004E5A24::Rva004E5A24()
 	  m_vec10(_STL::allocator<BfmeE16>()),
 	  m_1C(0),
 	  m_20(0),
-	  m_28(g_00DD00A8),
-	  m_2C(g_00DD00AC),
+	  m_28(*(float *)&g_00DD00A8),
+	  m_2C(*(float *)&g_00DD00AC),
 	  m_30(g_00C623C8)
 {
 }
-// ?g_00DD00AC@@3MA: the global at VA 0xdd00ac is ?g_00DD00AC@@3HA.
-#pragma comment(linker, "/alternatename:?g_00DD00AC@@3MA=?g_00DD00AC@@3HA")
-// ?g_00DD00A8@@3MA: the global at VA 0xdd00a8 is ?g_00DD00A8@@3HA.
-#pragma comment(linker, "/alternatename:?g_00DD00A8@@3MA=?g_00DD00A8@@3HA")
