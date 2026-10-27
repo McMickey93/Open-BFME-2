@@ -41,7 +41,9 @@ public:
 	void bfmeSetText(const AsciiString &a, const UnicodeString &u, bool b);
 };
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
-extern const char *BfmeLODLevelNames[];
+// The LOD level-name table 0x009B95F4 is defined as rva00202B6CNames in
+// Rva00202B6CGet.cpp; bind that one symbol.
+extern const char *rva00202B6CNames[];
 class AptOptions
 {
 	char m_pad[0x310];
@@ -53,7 +55,7 @@ void AptOptions::rva005189CF()
 {
 	AsciiString key;
 	if (m_310 >= 0 && m_310 <= 5)
-		key.format("APT:MasterOption_%s", BfmeLODLevelNames[m_310]);
+		key.format("APT:MasterOption_%s", rva00202B6CNames[m_310]);
 	UnicodeString u;
 	if (!key.isEmpty())
 	{
