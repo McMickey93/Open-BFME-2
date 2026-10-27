@@ -1,5 +1,6 @@
 // ?gatherSkirmishAIStats@W3DDisplay@@QAEXXZ
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /EHsc /MD /DNDEBUG
+// platformsdk
 // W3DDisplay::gatherSkirmishAIStats, retail 0x0004AA4A..0x0004B180 (1846 B,
 // RET 0). WorldBuilder 0x00966C80 names it (W3DDevice/GameClient/W3DDisplay.cpp,
 // the "Failed to create DisplayString" assert at line 1339) and gives the
@@ -10,6 +11,7 @@
 // 25-character columns. Retail keeps one display string at +0x1CC (the
 // debug build's one-element array loop unrolled). Callee and field names are
 // target evidence where rowed, address-derived otherwise.
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "../../../../GameEngine/Source/Common/PartitionRangeQueryCallView.h"
@@ -18,13 +20,6 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
-#ifndef FALSE
-#define FALSE 0
-#endif
 
 struct Coord3D;
 class GameFont;

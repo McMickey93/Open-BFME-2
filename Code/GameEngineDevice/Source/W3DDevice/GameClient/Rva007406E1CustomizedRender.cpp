@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // Address-derived scene CustomizedRender, retail 0x007406E1..0x00740A45
 // (868 bytes, EH, ret 4, WB 0x017EEF90 names View3D::CustomizedRender).
@@ -11,8 +12,8 @@
 // ZWRITE off / ZENABLE off, render the +0x60 list, flush 0x001173F0, then
 // restore ZWRITE on / ZFUNC ALWAYS. Callees are the rowed DX8Wrapper and
 // LightEnvironmentClass providers; no new pins.
-typedef unsigned long DWORD;
-typedef long HRESULT;
+#include <windows.h>
+
 typedef DWORD D3DRENDERSTATETYPE;
 typedef int Int;
 

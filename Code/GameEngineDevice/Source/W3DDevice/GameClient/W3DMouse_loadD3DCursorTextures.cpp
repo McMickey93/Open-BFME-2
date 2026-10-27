@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /MD
+// platformsdk
 
 // ?loadD3DCursorTextures@W3DMouse@@AAE_NW4MouseCursor@@@Z, retail 0x000999CE,
 // 417 bytes. BFME2's cursor-texture loader: same algorithm as BFME1
@@ -6,10 +7,6 @@
 // BFME2-new layout and glue — the texture table is a global of counted
 // holders, cursor info rides in 84-byte records behind the vptr, and textures
 // arrive through the cached free loader (no WW3DAssetManager instance).
-
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *fmt, ...);
-
-#define NULL 0
 
 class TextureBaseClass
 {
@@ -64,6 +61,8 @@ struct CursorTextureSlot
 	W3DRadarResetSurface Get_Surface_Level();
 };
 
+#include <stdio.h>
+#include <windows.h>
 #include "ascii_string.h"
 
 enum MouseCursor

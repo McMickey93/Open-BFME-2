@@ -1,4 +1,5 @@
 // cl: /ICode/GameEngine/Source/Common /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // retail 0x000D2301..0x000D28FA (1529 bytes, ret 0x10) and its only caller
 // 0x000D28FA..0x000D3940 (4166 bytes, RET 8, EH).
@@ -43,14 +44,13 @@
 // 0xE4 frame). ZH's Set_Transform switch with the Transpose temporaries
 // gives retail's texture-transform code and loop induction.
 
+#include <windows.h>
 #include <set>
 
 #include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
-typedef unsigned long DWORD;
-typedef long HRESULT;
 typedef DWORD D3DRENDERSTATETYPE;
 typedef DWORD D3DTEXTURESTAGESTATETYPE;
 

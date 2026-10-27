@@ -6,6 +6,9 @@
 // Evidence: sole matched caller Create_Render_Obj 0x136175 passes its
 // PBD name here; IAT sprintf; strlen-style len check; buffer at +0x9C.
 
+#include <string.h>
+#include <stdio.h>
+
 class Rva0013BE70Host
 {
 public:
@@ -14,9 +17,6 @@ private:
 	unsigned char m_pad[0x9C];
 	char m_name[0x20];
 };
-
-extern "C" unsigned int __cdecl strlen(const char *s);
-extern "C" int __declspec(dllimport) __cdecl sprintf(char *dst, const char *fmt, ...);
 
 void Rva0013BE70Host::opaqueCall(const char *name)
 {

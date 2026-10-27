@@ -10,8 +10,8 @@
 // 0x00916BA0: reference min/max helpers over the bone counts, the bone-prefix
 // str() inline in both calls and a bool hide flag. Class and method keep
 // address-derived names; target identity of the receiver is unproven.
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
+#include <stdio.h>
+#include <math.h>
 
 struct Coord3D;
 class Matrix3D;

@@ -22,6 +22,8 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+#include <new>
+#include <math.h>
 #include <vector>
 #include "../../../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../../../Libraries/Include/Lib/RGBColor.h"
@@ -77,10 +79,6 @@ public:
 private:
 	unsigned char m_pad04[0x144 - 4];
 };
-
-void *operator new(unsigned int size);
-
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
 
 float Cos(float value);
 float Sin(float value);

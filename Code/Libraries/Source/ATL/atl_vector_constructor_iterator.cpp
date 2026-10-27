@@ -4,9 +4,8 @@
 // user supplied constructor and no destructor.  ATL's headers use this same
 // compiler helper for the non-throwing array paths.
 
-typedef unsigned int size_t;
-
-extern void *__cdecl operator new[](size_t size);
+#include <string.h>
+#include <new>
 
 class CAtlVectorConstructorElement
 {

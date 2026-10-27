@@ -17,9 +17,6 @@ typedef float Real;
 typedef bool Bool;
 typedef unsigned short UnsignedShort;
 
-// VC7's inline floorf implementation is used only within this unit.
-// Give it internal linkage while retaining the header's exact float boundary.
-extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include <stdlib.h>
 
@@ -47,7 +44,6 @@ __forceinline long fast_float2long_round(Real f)
 }
 
 #define REAL_TO_INT_FLOOR(x) (fast_float2long_round(fast_float_floor(x)))
-#define __max(a,b) (((a) > (b)) ? (a) : (b))
 
 #define MAP_XY_FACTOR 10.0f
 #define MAP_HEIGHT_SCALE 0.0390625f

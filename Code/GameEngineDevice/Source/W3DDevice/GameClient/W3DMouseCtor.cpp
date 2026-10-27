@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // Native EH action 0x76050D destroys the destructor lifetime of 21 D3D surface references at +0x6028 with stride4; the complete parent EH graph proves this 24B lifetime.
 // Native EH action 0x760489 destroys the constructor lifetime of 21 D3D surface references at +0x6028 with stride4; the complete parent EH graph proves this 24B lifetime.
 //
@@ -29,14 +30,12 @@ typedef int Int;
 typedef float Real;
 typedef bool Bool;
 
-#define NULL 0
-#define FALSE 0
-
 class TextureBaseClass;
 class RenderObjClass;
 class HAnimClass;
 class CameraClass;
 
+#include <windows.h>
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 
 struct BfmeResetTextureRef

@@ -6,9 +6,8 @@
  * -3, unknown month -1, otherwise setDay. Own TU so setDay stays a call.
  */
 
-extern "C" int __cdecl sscanf(const char *buffer, const char *format, ...);
-
-extern "C" int strcmp(const char *first, const char *second);
+#include <stdio.h>
+#include <string.h>
 
 struct Rva007FF700Date
 {

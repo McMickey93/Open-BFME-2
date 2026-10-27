@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // getButtonTextColors 0x000A4999 (92B), drawButtonText 0x000A49F5 (248B),
 // W3DGadgetPushButtonImageDrawThree 0x000A4B7C (1184B), Rva000A52AEDrawNumber
 // 0x000A52AE (304B) and W3DGadgetPushButtonDraw 0x000A53DE (783B): Zero Hour's
@@ -31,6 +32,7 @@
 // float-coordinate Display members, and the clock reset goes back through
 // winSetUserData.
 
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
@@ -315,8 +317,6 @@ inline Int BitTest( UnsignedInt bits, UnsignedInt mask )
 
 #define WIN_DRAW_LINE_WIDTH 1.0f
 #define RADIAL_CLOCK_SCALE ( 46.0f / 48.0f )
-#define FALSE 0
-#define NULL 0
 
 extern GameWindowManager *TheWindowManager;
 extern Display *TheDisplay;
