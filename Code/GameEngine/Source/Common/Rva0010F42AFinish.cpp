@@ -1,4 +1,4 @@
-// ?execute@Rva0010F42A@@QAEXXZ
+// ?execute@SetStreamPlaybackRateCommand@@QAEXXZ
 // cl: /MD
 #include "../../Include/Common/Rva00041004Lock.h"
 // Guarded Miles stream operations, each the only slot (slot 1) of its own
@@ -91,7 +91,7 @@ struct Rva0010F28DGuard
     if (g.m_locked != 0) \
         ((Rva0010F26E *)&g)->rva0010F26E()
 
-class Rva0010F42A
+class SetStreamPlaybackRateCommand
 {
 public:
     void execute();
@@ -101,7 +101,7 @@ private:
     float m_scale0C; // +0x0C
 };
 
-void Rva0010F42A::execute()
+void SetStreamPlaybackRateCommand::execute()
 {
     RVA0010F28D_LOCK(g);
     void *stream = m_inner->m_stream;
