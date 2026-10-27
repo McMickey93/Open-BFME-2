@@ -8,7 +8,7 @@
 // is unused. Targets from retail REL32; strcmp via plain C decl reusing
 // the existing thunk pin; the two table names are retail's string literals
 // ("SavedHeroList" 0x00C73640, "SavedHeroStats" 0x00C73630).
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 // Retail compares arg1 against two .rdata string cells (VA 0x00C73640 /
 // 0x00C73630 = RVA 0x00873640 / 0x00873630, from the decoded push immediates).
 extern const char g_rva00873640[];

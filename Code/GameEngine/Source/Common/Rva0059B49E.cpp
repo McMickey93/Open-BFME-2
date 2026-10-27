@@ -17,7 +17,7 @@ public:
 	void rva002AC2CF(int a0, int a1, int a2);
 };
 
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
+#include <string.h>
 
 class Rva0059B49E
 {

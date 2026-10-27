@@ -6,7 +6,7 @@
 // at +0x54 names (rowed 0x00606220) and clear the byte at +0x58. The owner
 // is an XferSave-based writer whose name is not established; names are
 // address-derived.
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
+#include <string.h>
 
 struct MD5_CTX;
 void MD5Init(MD5_CTX *context);
