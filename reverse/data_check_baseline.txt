@@ -184,7 +184,6 @@ Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineShellCallbacks.c
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSkirmishCallbacks.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/GeneralsExpPoints_Rva0050dd9f.cpp	wrong-name	?$S22@?8??GeneralsExpPointsSystem@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z@4IA	0x00A04608
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/MapSelectMenu.cpp	duplicate-def	_isShuttingDown	0x00A045C4
-Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionPreferences_getStaticGameDetail.cpp	wrong-name	?TheRva00DFE144@@3PAURva00DFE144Globals@@A	0x009FE144
 Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp	wrong-name	?$S1@?1??OnBttnSpellStore@AptPalantir@@QAEXPBD@Z@4IA	0x009FF038
 Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp	wrong-name	?$S2@?4??rva002D4DD0@AptPalantir@@QAEXPBD@Z@4IA	0x009FF04C
 Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp	wrong-name	?$S5@?4??rva002D4E71@AptPalantir@@QAEXPBD@Z@4IA	0x009FF058
