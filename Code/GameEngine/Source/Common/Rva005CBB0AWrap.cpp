@@ -8,7 +8,7 @@
 // Native 5CBB4A consumes the returned pointer and 2C025A forwards it.
 // Both wrappers preserve the canonical 2BFDE6 pointer argument and result.
 //
-// The payload derives from Rva002BED74 (target facts): its
+// Both payloads derive from Rva002BED74 (target facts): their shared
 // destructor 0x002BEDA4 is mov [ecx],0x00BFE4EC / ret, the table of
 // Rva002BED74 ([??_G 0x002BED74, __purecall]), whose ctor 0x002BEDB5 and
 // deleting dtor 0x002BED74 store it too; the payload tables 0x00C74DFC and
@@ -47,7 +47,7 @@ void *Rva005CBB0A::rva005CBB0A(void *arg, const int *src)
 
 // Twin at 0x002C00E0: byte-identical shape with the 12-byte object's vtable
 // 0x00BFE4F4 instead; the callee takes the object as an opaque pointer.
-class Rva002C00E0Obj
+class Rva002C00E0Obj : public Rva002BED74
 {
 public:
 	virtual ~Rva002C00E0Obj() {}
