@@ -9,6 +9,8 @@
 // bytes). As in VslotSmallBodiesA-AF, classes and methods are
 // address-derived and model only what each body touches.
 
+#include <new>
+
 typedef int Int;
 typedef float Real;
 
@@ -401,7 +403,6 @@ void RecorderClass::update()
 		reinterpret_cast<Rva0037B7C7 *>(this)->rva0037BC65();
 }
 
-#include <new>
 namespace FXParticleSystem
 {
 class CPUParticle

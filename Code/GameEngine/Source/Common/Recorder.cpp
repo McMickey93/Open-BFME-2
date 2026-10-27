@@ -12,6 +12,7 @@
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 #include "../../../Libraries/Include/Lib/IRegion2D.h"
 #include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
+typedef int Int;
 void __cdecl operator delete[](void*);
 void* __cdecl operator new[](unsigned int);
 void __cdecl operator delete(void*);
@@ -297,8 +298,6 @@ extern "C" __declspec(dllimport) unsigned int __cdecl fwrite(const void *buf, un
 // fgetwc import, the 2048-byte zero-filled wide buffer and the rowed
 // StringBase<wchar> ctor 0x00037E30, copy 0x00037050 and release 0x00036E70.
 // The name is carried from the donor; retail keeps no symbol for it.
-
-typedef int Int;
 
 typedef unsigned int UnsignedInt;
 
@@ -647,6 +646,8 @@ public:
 	virtual void slot8();
 public:
 	virtual void reset();
+public:
+	virtual void update();
 public:
 	char pad004[0xC-4];
 public:
