@@ -5571,7 +5571,6 @@ class_gate_allow	Code/GameEngine/Source/GameClient/DrawableXfer.cpp	Coord3D	1
 class_gate_allow	Code/GameEngine/Source/GameClient/GUI/ControlBar/Rva0031DCF0ControlBarDtor.cpp	ControlBarSchemeManager	1
 class_gate_allow	Code/GameEngine/Source/GameClient/MapUtil_ParseObjectsDataChunk_Thunk_Rva00302b06.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/GameClient/MessageStream/SelectionXlatTranslateGameMessage.cpp	ICoord2D	1
-class_gate_allow	Code/GameEngine/Source/GameLogic/Map/SidesList_validateSides.cpp	Coord3D	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/ObjectInitObject.cpp	GameLogic	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/ObjectSetTriggerAreaFlagsForChangeInPosition.cpp	GameLogic	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/Object/ScoredKillTrackerCopyCtor.cpp	ScoredKillTracker	1
