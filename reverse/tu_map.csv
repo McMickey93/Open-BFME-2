@@ -10846,14 +10846,14 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001A30F0,21,code,,displaced,-,S=Code/Libraries/Source/WWVegas/WW3D2/rendobj.cpp N=Code/Libraries/Source/WWVegas/WW3D2/RenderObjClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/RenderObjCollision.cpp
 0x001A3110,46,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,S,S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A3140,80,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/BfmeHelper71BA0.cpp,Code/Libraries/Source/WWVegas/WW3D2/BfmeHelper71BA0.cpp
-0x001A3190,262,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefFindSubobject.cpp
+0x001A3190,262,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A32A0,162,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
-0x001A3350,164,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefLoadW3D.cpp
+0x001A3350,164,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A3400,95,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadHeader.cpp
-0x001A3460,104,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadInfo.cpp
-0x001A34D0,139,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadSubobject.cpp
+0x001A3460,104,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
+0x001A34D0,139,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A3560,49,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeThingVFC.cpp,Code/GameEngine/Source/Common/BfmeConv1351.cpp
-0x001A35A0,80,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveW3D.cpp
+0x001A35A0,80,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A35F0,116,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveClassInfo.cpp
 0x001A3670,32,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,C,C=0x001A35F0..0x001A3690,Code/GameEngine/Source/Common/BfmeConv1340.cpp
 0x001A3690,62,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveClassInfo.cpp
@@ -10861,7 +10861,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001A3720,178,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,C,C=0x001A3690..0x001A37E0,Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp
 0x001A37E0,75,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,C,C=0x001A3690..0x001A3830,Code/Libraries/Source/WWVegas/WW3D2/hanim_vector_float_ctor.cpp
 0x001A3830,70,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
-0x001A3880,87,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefAttachSubobjects.cpp
+0x001A3880,87,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A38E0,71,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A3930,40,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,S,S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefRva001A3930.cpp
 0x001A3960,101,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveInfo.cpp
@@ -10881,7 +10881,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001A3ED0,105,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A3F40,30,code,,displaced,-,N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A3F60,162,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
-0x001A4010,1039,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefBuildSubobjectList.cpp
+0x001A4010,1039,code,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp S=Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp N=Code/Libraries/Source/WWVegas/WW3D2/AggregateDefClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x001A441F,58,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/W3d_Shader_Reset.cpp
 0x001A4459,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/w3d_util.cpp
 0x001A4464,12,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/w3d_util.cpp
@@ -59474,8 +59474,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00768DEE,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_build_definition.cpp
 0x00768DF9,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_build_definition.cpp
 0x00768E10,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
-0x00768E30,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefBuildSubobjectList.cpp
-0x00768E38,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/AggregateDefBuildSubobjectList.cpp
+0x00768E30,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
+0x00768E38,8,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 0x00768E4A,10,code-unledgered,,,-,,
 0x00768E54,10,code-unledgered,,,-,,
 0x00768E5E,10,code-unledgered,,,-,,

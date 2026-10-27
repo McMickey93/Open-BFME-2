@@ -1,4 +1,5 @@
-// cl: /arch:SSE /G7 /DNDEBUG /DWIN32 /D_WINDOWS /MT /EHsc /Ireference/shims/bfme2_aggdef /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/sweep
+// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MT /EHsc /Ireference/shims/bfme2_aggdef /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfme2renderobj /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/game/Libraries/Source/Compression
+// TU Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
 // Ported from the Generals Zero Hour reference
 // (Libraries/Source/WWVegas/WW3D2/agg_def.cpp); this unit had no counterpart under Code/.
 // The class is BFME 1's shape (reference/shims/bfme2_aggdef/agg_def.h): bool
@@ -15,15 +16,10 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
-
 // Retail treats array delete as nothrow: ~AggregateDefClass (0x001A3C90) has
 // no EH state store between its body and the member vector's teardown, which
 // the compiler drops only when delete[] cannot throw.
 void __cdecl operator delete[](void *) throw();
-
-// BFME 2 has no W3D memory pools (see Code/Libraries/Source/WWVegas/WWLib/always.h).
-// RefCountClass's inline members and deleting destructor are retail's
-// size-optimised bodies: compile them for size, as hlod.cpp does.
 #pragma optimize("s", on)
 #include "refcount.h"
 #pragma optimize("", on)
@@ -31,6 +27,119 @@ void __cdecl operator delete[](void *) throw();
 #undef W3DMPO_GLUE
 #define W3DMPO_GLUE(ARGCLASS)
 #include "rendobj.h"	// the bfmerendobj shim has to win the include guard
+#include "agg_def.h"
+#include "htree.h"
+#include "w3derr.h"
+#include "chunkio.h"
+#include "wwdebug.h"
+#include "assetmgr.h"
+#include "matinfo.h"
+#include "texture.h"
+#include "wwstring.h"
+#include <windows.h>
+#pragma optimize("gsy", on)
+#pragma optimize("", on)
+#include "rendobj.h"
+#include <string.h>
+#pragma intrinsic(memset)
+#pragma optimize("gsy", on)
+#pragma optimize("", on)
+#pragma optimize("gsy", on)
+#pragma optimize("", on)
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//	Local constants
+//
+const char * const EMPTY_STRING			= "";
+
+// Rowed global factory at 0x00136175: BFME2 calls it directly; its
+// AggregateDefClass has no ZH Create_Render_Object/Load_Assets virtuals.
+RenderObjClass * __cdecl Create_Render_Obj (const char *name);
+
+// BFME2 reads the sub-object-LOD flag as a direct bit extract instead of the
+// ZH virtual query (retail: ([param+0x10] >> 0x14) & 1 into Flags). TU-local
+// reader so the shared RenderObjClass shim stays untouched.
+class RenderObjFlagReader : public RenderObjClass
+{
+public:
+	unsigned long Read_Subobj_Lod_Bit (void) const	{ return ((Bits >> 0x14) & 1); }
+};
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//	Global variable initialization
+//
+AggregateLoaderClass	_AggregateLoader;
+
+// LINK: offset-mirror for RefCountClass's private NumRefs (vtable +0, NumRefs
+// +4: proven by this TU's own Add_Ref copy `add [ecx+4],1` and retail's dtor
+// `dec [ecx+4]` with Delete_This via slot 0). This TU's Add_Ref/Release_Ref
+// const copies lose to the first copies in link order (33/62 emitters, flag-
+// shape fork); the mirror rebinds our 3 call sites with identical inlined
+// bytes so neither loser COMDAT emits. No header touched.
+struct BfmeRefCountMirror
+{
+	void *vtable;
+	mutable int numRefs;
+};
+
+class ChunkSaveClass;
+
+class RenderObjClass;
+
+template <class T> class DynamicVectorClass;
+
+//
+// ?Save_W3D@AggregateDefClass@@UAE_NAAVChunkSaveClass@@@Z, retail 0x001A35A0,
+// 83 bytes. Dedicated TU: BFME2 keeps the aggregate Save family as plain
+// success flags (retail checks cmp al,1 and returns mov al,bl), while the
+// Zero Hour reference header declares WW3DErrorType. Declared locally with
+// bool returns in BFME1 virtual order so the Save_Header/Info/Class_Info
+// slots (+0x1C/+0x20/+0x28) reproduce the retail calls; byte-identical to the
+// BFME1 donor at 0x00980590.
+
+class ChunkLoadClass;
+
+struct W3dAggregateSubobjectStruct;
+
+struct RenderObjClassPlaceholder;
+
+template <class T> class DynamicVectorPlaceholder;
+
+class AggregateSubobjectCalls { public:
+virtual void slot0()=0;
+virtual void slot1()=0;
+virtual void slot2()=0;
+virtual void slot3()=0;
+virtual void slot4()=0;
+virtual void slot5()=0;
+virtual void slot6()=0;
+virtual void slot7()=0;
+virtual void slot8()=0;
+virtual void slot9()=0;
+virtual void slot10()=0;
+virtual void slot11()=0;
+virtual void slot12()=0;
+virtual void slot13()=0;
+virtual void slot14()=0;
+virtual bool Is_Object_In_List(const char *, DynamicVectorClass<RenderObjClass *> &)=0;
+};
+
+// BFME1 donor revision 5cae4bdffcc0fb2dd6f0a2a6c1a7328bd0fb0cfc,
+// game/Libraries/Source/WWVegas/WW3D2/agg_def.cpp.
+// Target RVA0x001A3880 87B: aggregate vtable VA0x00BD6C70 slot0x2C.
+// Target factory is the rowed global Create_Render_Obj RVA0x00136175.
+// Target attachment uses RenderObj slot0x94 with trailing null offset;
+// target inline release decrements +4 and calls slot0 at zero.
+RenderObjClass * __cdecl Create_Render_Obj(const char *);
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
+
+// BFME 2 has no W3D memory pools (see Code/Libraries/Source/WWVegas/WWLib/always.h).
+// RefCountClass's inline members and deleting destructor are retail's
+// size-optimised bodies: compile them for size, as hlod.cpp does.
+
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -65,47 +174,6 @@ void __cdecl operator delete[](void *) throw();
  *                                                                                             *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
-#include "agg_def.h"
-#include "htree.h"
-#include "w3derr.h"
-#include "chunkio.h"
-#include "wwdebug.h"
-#include "assetmgr.h"
-#include "matinfo.h"
-#include "texture.h"
-#include "wwstring.h"
-
-#include <windows.h>
-
-
-///////////////////////////////////////////////////////////////////////////////////
-//
-//	Local constants
-//
-const char * const EMPTY_STRING			= "";
-
-// Rowed global factory at 0x00136175: BFME2 calls it directly; its
-// AggregateDefClass has no ZH Create_Render_Object/Load_Assets virtuals.
-RenderObjClass * __cdecl Create_Render_Obj (const char *name);
-
-// BFME2 reads the sub-object-LOD flag as a direct bit extract instead of the
-// ZH virtual query (retail: ([param+0x10] >> 0x14) & 1 into Flags). TU-local
-// reader so the shared RenderObjClass shim stays untouched.
-class RenderObjFlagReader : public RenderObjClass
-{
-public:
-	unsigned long Read_Subobj_Lod_Bit (void) const	{ return ((Bits >> 0x14) & 1); }
-};
-
-
-///////////////////////////////////////////////////////////////////////////////////
-//
-//	Global variable initialization
-//
-AggregateLoaderClass	_AggregateLoader;
-
-
 ///////////////////////////////////////////////////////////////////////////////////
 //
 //	AggregateDefClass
@@ -120,7 +188,6 @@ AggregateDefClass::AggregateDefClass (void)
 	m_MiscInfo.OriginalClassID = RenderObjClass::CLASSID_HLOD;
 	return ;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -139,7 +206,6 @@ AggregateDefClass::AggregateDefClass (const AggregateDefClass &src)
 	return ;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////
 //
 //	AggregateDefClass
@@ -155,7 +221,6 @@ AggregateDefClass::AggregateDefClass (RenderObjClass &base_model)
 	Initialize (base_model);
 	return ;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -174,7 +239,6 @@ AggregateDefClass::~AggregateDefClass (void)
 	Free_Subobject_List ();
 	return ;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -218,7 +282,6 @@ AggregateDefClass::operator= (const AggregateDefClass &src)
 	return *this;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////
 //
 //	Free_Subobject_List
@@ -238,7 +301,6 @@ AggregateDefClass::Free_Subobject_List (void)
 	m_SubobjectList.Delete_All ();
 	return ;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -267,7 +329,6 @@ AggregateDefClass::Create (void)
 	// Return a pointer to the new aggregate
 	return pmodel;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -319,8 +380,6 @@ AggregateDefClass::Initialize (RenderObjClass &base_model)
 	return ;
 }
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////
 //
 //	Build_Subobject_List
@@ -357,7 +416,6 @@ AggregateDefClass::Is_Object_In_List
 	return retval;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////
 //
 //	Add_Subobject
@@ -374,7 +432,6 @@ AggregateDefClass::Add_Subobject (const W3dAggregateSubobjectStruct &subobj_info
 	m_SubobjectList.Add (pnew_entry);
 	return ;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -397,7 +454,6 @@ AggregateDefClass::Read_Class_Info (ChunkLoadClass &chunk_load)
 	// Return the true/false result code
 	return ret_val;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -423,7 +479,6 @@ AggregateDefClass::Save_Subobject
 	// Return the true/false result code
 	return ret_val;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -456,3 +511,430 @@ AggregateLoaderClass::Load_W3D (ChunkLoadClass &chunk_load)
     // Return a pointer to the prototype
 	 return pprototype;
 }
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefFindSubobject.cpp
+
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// BFME1 donor revision 5cae4bdffcc0fb2dd6f0a2a6c1a7328bd0fb0cfc,
+// game/Libraries/Source/WWVegas/WW3D2/agg_def.cpp.
+// Target RVA0x001A3190 262B: aggregate vtable VA0x00BD6C70 slot0x30.
+// Target establishes RenderObj slots0x18/0x80/0x84/0x88/0xC8 and
+// inline refcount at +4. Names and traversal algorithm derive from donor.
+RenderObjClass *
+AggregateDefClass::Find_Subobject
+(
+	RenderObjClass &model,
+	const char mesh_path[MESH_PATH_ENTRIES][MESH_PATH_ENTRY_LEN],
+	const char bone_path[MESH_PATH_ENTRIES][MESH_PATH_ENTRY_LEN]
+)
+{
+	RenderObjClass *parent_model = &model;
+	((BfmeRefCountMirror *)parent_model)->numRefs++;
+
+	// Loop through all the models in our "path" until we've either failed
+	// or found the exact mesh we were looking for...
+	for (int index = 1;
+		  (mesh_path[index][0] != 0) && (parent_model != NULL);
+		  index ++) {
+
+		// Look one level deeper into the subobject chain...
+		RenderObjClass *sub_obj = NULL;
+		if (bone_path[index][0] == 0) {
+			sub_obj = parent_model->Get_Sub_Object_By_Name (mesh_path[index]);
+		} else {
+
+			int bone_index = parent_model->Get_Bone_Index (bone_path[index]);
+			int subobj_count = parent_model->Get_Num_Sub_Objects_On_Bone (bone_index);
+
+			// Loop through all the subobjects on this bone
+			for (int subobj_index = 0; (subobj_index < subobj_count) && (sub_obj == NULL); subobj_index ++) {
+
+				// Is this the subobject we were looking for?
+				RenderObjClass *ptemp_obj = parent_model->Get_Sub_Object_On_Bone (subobj_index, bone_index);
+				if (::lstrcmpi (ptemp_obj->Get_Name (), mesh_path[index]) == 0) {
+					sub_obj = ptemp_obj;
+				} else {
+					if (ptemp_obj) { ((BfmeRefCountMirror *)ptemp_obj)->numRefs--; if (((BfmeRefCountMirror *)ptemp_obj)->numRefs == 0) ptemp_obj->Delete_This(); ptemp_obj = NULL; }
+				}
+			}
+		}
+
+		if (parent_model) { ((BfmeRefCountMirror *)parent_model)->numRefs--; if (((BfmeRefCountMirror *)parent_model)->numRefs == 0) parent_model->Delete_This(); parent_model = NULL; }
+
+		// The parent for the next iteration is the subobject on this one.
+		parent_model = sub_obj;
+	}
+
+	// Return a pointer to the subobject
+	return parent_model;
+}
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefLoadW3D.cpp
+
+bool AggregateDefClass::Load_W3D(ChunkLoadClass &chunk_load)
+{
+    W3dTextureReplacerHeaderStruct header = { 0 };
+    while (chunk_load.Open_Chunk()) {
+        bool error = true;
+        switch (chunk_load.Cur_Chunk_ID()) {
+        case 0x601: error = Read_Header(chunk_load); break;
+        case 0x602: error = Read_Info(chunk_load); break;
+        // The donor only uses this read result in WWDEBUG_SAY, elided by
+        // the release configuration. Retail preserves the read itself.
+        case 0x603: chunk_load.Read(&header, sizeof(header)); break;
+        case 0x604: error = Read_Class_Info(chunk_load); break;
+        }
+        chunk_load.Close_Chunk();
+        if (error != true) return error;
+    }
+    return true;
+}
+
+// tu-skeleton: 0x001A3400 95B ?Read_Header@AggregateDefClass@@MAE_NAAVChunkLoadClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadHeader.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadInfo.cpp
+
+/*
+ * Command & Conquer Generals Zero Hour(tm)
+ * Copyright 2025 Electronic Arts Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+// AggregateDefClass::Read_Info, ported from BFME1 donor revision
+// 5cae4bdffcc0fb2dd6f0a2a6c1a7328bd0fb0cfc,
+// game/Libraries/Source/WWVegas/WW3D2/agg_def.cpp.
+// Target vtable VA 0x00BD6C70 slot +0x10 names retail RVA 0x001A3460.
+// Target independently confirms info +0x20 (36 bytes), unsigned count +0x40,
+// bool result, and Read_Subobject dispatch through slot +0x14. The last
+// ret 4 ends at RVA 0x001A34C8, followed by eight padding int3 bytes.
+// Field names and the read-loop algorithm are carried from the donor.
+
+bool AggregateDefClass::Read_Info(ChunkLoadClass &chunk_load)
+{
+    bool ret_val = false;
+    ::memset(&m_Info, 0, sizeof(m_Info));
+    if (chunk_load.Read(&m_Info, sizeof(m_Info)) == sizeof(m_Info)) {
+        ret_val = true;
+        for (unsigned isubobject = 0;
+             isubobject < m_Info.SubobjectCount && ret_val == true;
+             ++isubobject) {
+            ret_val = Read_Subobject(chunk_load);
+        }
+    }
+    return ret_val;
+}
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadSubobject.cpp
+
+// ?Read_Subobject@AggregateDefClass@@MAE_NAAVChunkLoadClass@@@Z
+bool AggregateDefClass::Read_Subobject(ChunkLoadClass &chunk_load)
+{
+	// BFME returns a byte-sized success result.
+	bool ret_val = false;
+
+	// Read the subobject information from the file
+	W3dAggregateSubobjectStruct subobj_info = { 0 };
+	if (chunk_load.Read(&subobj_info, sizeof(subobj_info)) == sizeof(subobj_info)) {
+
+		// Add this subobject to our list
+		Add_Subobject(subobj_info);
+
+		// Success!
+		ret_val = true;
+	}
+
+	return ret_val;
+}
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveW3D.cpp
+
+// ?Save_W3D@AggregateDefClass@@UAE_NAAVChunkSaveClass@@@Z
+bool AggregateDefClass::Save_W3D(ChunkSaveClass &chunk_save)
+{
+	bool ret_val = false;
+
+	if (chunk_save.Begin_Chunk(0x600) == true) {
+		if (Save_Header(chunk_save) == true) {
+			if (Save_Info(chunk_save) == true) {
+				bool class_ok = Save_Class_Info(chunk_save);
+				if (class_ok == true) {
+					ret_val = class_ok;
+				}
+			}
+		}
+		chunk_save.End_Chunk();
+	}
+
+	return ret_val;
+}
+
+// tu-skeleton: 0x001A35F0 116B ?Save_Header@AggregateDefClass@@MAE_NAAVChunkSaveClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveClassInfo.cpp (not merged yet)
+
+// tu-skeleton: 0x001A3690 62B ?Save_Class_Info@AggregateDefClass@@MAE_NAAVChunkSaveClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveClassInfo.cpp (not merged yet)
+
+// tu-skeleton: 0x001A3720 178B ?Resize@?$VectorClass@PAVFontCharsBuffer@@@@UAE_NHPBQAVFontCharsBuffer@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassConstructorBFME.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefBuildSubobjectList.cpp
+
+// Share the retail size context with the RefCountClass release declaration.
+
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/***********************************************************************************************
+ ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
+ ***********************************************************************************************
+ *                                                                                             *
+ *                 Project Name : WW3D                                                         *
+ *                                                                                             *
+ *                     $Archive:: /Commando/Code/ww3d2/agg_def.cpp          $*
+ *                                                                                             *
+ *                       Author:: Patrick Smith
+ *                                                                                             *
+ *                     $Modtime:: 4/05/01 10:21a                                              $*
+ *                                                                                             *
+ *                    $Revision:: 5                                                           $*
+ *                                                                                             *
+ * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+void
+AggregateDefClass::Build_Subobject_List
+(
+	RenderObjClass &original_model,
+	RenderObjClass &model
+)
+{
+	extern RenderObjClass * Create_Render_Obj (const char *passet_name);
+	int index;
+
+	// Loop through all the bones in this render obj
+	int bone_count = model.Get_Num_Bones ();
+	for (int bone_index = 0; bone_index < bone_count; bone_index ++) {
+		const char *pbone_name = model.Get_Bone_Name (bone_index);
+
+		// Build a list of nodes that are contained in the vanilla model
+		DynamicVectorClass <RenderObjClass *> orig_node_list;
+		for (index = 0;
+			  index < original_model.Get_Num_Sub_Objects_On_Bone (bone_index);
+			  index ++) {
+			RenderObjClass *psubobj = original_model.Get_Sub_Object_On_Bone (index, bone_index);
+			if (psubobj != NULL) {
+				orig_node_list.Add (psubobj);
+			}
+		}
+
+		// Build a list of nodes that are contained in this bone
+		DynamicVectorClass <RenderObjClass *> node_list;
+		for (index = 0;
+			  index < model.Get_Num_Sub_Objects_On_Bone (bone_index);
+			  index ++) {
+			RenderObjClass *psubobj = model.Get_Sub_Object_On_Bone (index, bone_index);
+			if (psubobj != NULL) {
+				node_list.Add (psubobj);
+			}
+		}
+
+		register int node_count = node_list.Count ();
+		if (node_count > 0) {
+
+			// Loop through the subobjects and add each one to our internal list
+			W3dAggregateSubobjectStruct subobj_info = { 0 };
+			for (int node_index = 0; node_index < node_count; node_index ++) {
+				RenderObjClass *psubobject = node_list[node_index];
+				WWASSERT (psubobject != NULL);
+
+				// Is this subobject new?  (i.e. not in a 'vanilla' instance?)
+				const char *prototype_name = psubobject->Get_Name ();
+				if (psubobject != NULL &&
+					 (reinterpret_cast<AggregateSubobjectCalls *>(this)->Is_Object_In_List (prototype_name, orig_node_list) == false)) {
+
+					// Add this subobject to our list
+					::lstrcpy (subobj_info.SubobjectName, prototype_name);
+					::lstrcpy (subobj_info.BoneName, pbone_name);
+					Add_Subobject (subobj_info);
+					m_Info.SubobjectCount ++;
+
+					// Attach this render object to the 'original' model (this is done
+					// so we can do texture compares later)
+					// Target attachment is a nonthrowing virtual call at +0x94.
+					// Keep this call view local; other slots are not identified here.
+					class __declspec (novtable) RetailRenderObjCallView {
+					public:
+						virtual void slot00 (void) = 0;
+						virtual void slot01 (void) = 0;
+						virtual void slot02 (void) = 0;
+						virtual void slot03 (void) = 0;
+						virtual void slot04 (void) = 0;
+						virtual void slot05 (void) = 0;
+						virtual void slot06 (void) = 0;
+						virtual void slot07 (void) = 0;
+						virtual void slot08 (void) = 0;
+						virtual void slot09 (void) = 0;
+						virtual void slot10 (void) = 0;
+						virtual void slot11 (void) = 0;
+						virtual void slot12 (void) = 0;
+						virtual void slot13 (void) = 0;
+						virtual void slot14 (void) = 0;
+						virtual void slot15 (void) = 0;
+						virtual void slot16 (void) = 0;
+						virtual void slot17 (void) = 0;
+						virtual void slot18 (void) = 0;
+						virtual void slot19 (void) = 0;
+						virtual void slot20 (void) = 0;
+						virtual void slot21 (void) = 0;
+						virtual void slot22 (void) = 0;
+						virtual void slot23 (void) = 0;
+						virtual void slot24 (void) = 0;
+						virtual void slot25 (void) = 0;
+						virtual void slot26 (void) = 0;
+						virtual void slot27 (void) = 0;
+						virtual void slot28 (void) = 0;
+						virtual void slot29 (void) = 0;
+						virtual void slot30 (void) = 0;
+						virtual void slot31 (void) = 0;
+						virtual void slot32 (void) = 0;
+						virtual void slot33 (void) = 0;
+						virtual void slot34 (void) = 0;
+						virtual void slot35 (void) = 0;
+ virtual void slot36(void) = 0;
+						virtual int Add_Sub_Object_To_Bone (RenderObjClass *, const char *, const Vector3 *) throw () = 0;
+						static __forceinline void Attach (RenderObjClass *model, RenderObjClass *subobj, const char *bone)
+						{
+							((RetailRenderObjCallView *)model)->Add_Sub_Object_To_Bone (subobj, bone, NULL);
+						}
+					};
+					RenderObjClass *prender_obj = Create_Render_Obj (prototype_name);
+					RetailRenderObjCallView::Attach (&original_model, prender_obj, pbone_name);
+					if (prender_obj != NULL) {
+						prender_obj->Release_Ref ();
+					}
+				}
+			}
+		}
+
+		// Free our hold on the render objs in the original node list
+		for (index = 0; index < orig_node_list.Count (); index ++) {
+			RenderObjClass *p_orig_node = orig_node_list[index];
+			if (p_orig_node != NULL) {
+				p_orig_node->Release_Ref ();
+				orig_node_list[index] = NULL;
+			}
+		}
+		orig_node_list.Delete_All ();
+
+		// Free our hold on the render objs in the node list
+		for (index = 0; index < node_list.Count (); index ++) {
+			RenderObjClass *p_node = node_list[index];
+			if (p_node != NULL) {
+				p_node->Release_Ref ();
+				node_list[index] = NULL;
+			}
+		}
+		node_list.Delete_All ();
+	}
+
+	return ;
+}
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefAttachSubobjects.cpp
+
+// Share the retail size context with the RefCountClass release declaration.
+
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+void
+AggregateDefClass::Attach_Subobjects (RenderObjClass &base_model)
+{
+	// Now loop through all the subobjects and attach them to the appropriate bone
+	for (int index = 0; index < m_SubobjectList.Count (); index ++) {
+		W3dAggregateSubobjectStruct *psubobj_info = m_SubobjectList[index];
+		if (psubobj_info != NULL) {
+
+			// Now create this subobject and attach it to its bone.
+			RenderObjClass *prender_obj = ::Create_Render_Obj (psubobj_info->SubobjectName);
+			if (prender_obj != NULL) {
+
+				// Attach this object to the requested bone
+				if (base_model.Add_Sub_Object_To_Bone (prender_obj, psubobj_info->BoneName) == false) {
+					WWDEBUG_SAY (("Unable to attach %s to %s.\r\n", psubobj_info->SubobjectName, psubobj_info->BoneName));
+				}
+
+				// Release our hold on this pointer
+				prender_obj->Release_Ref ();
+			} else {
+				WWDEBUG_SAY (("Unable to load aggregate subobject %s.\r\n", psubobj_info->SubobjectName));
+			}
+		}
+	}
+
+	return ;
+}
+
+// tu-skeleton: 0x001A3930 40B ?rva001A3930@AggregateDefClass@@QBEHXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefRva001A3930.cpp (not merged yet)
+
+// tu-skeleton: 0x001A3960 101B ?Save_Info@AggregateDefClass@@MAE_NAAVChunkSaveClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveInfo.cpp (not merged yet)
+
+// tu-skeleton: 0x001A3A60 77B ?Add@?$DynamicVectorClass@PAVFontCharsBuffer@@@@QAE_NABQAVFontCharsBuffer@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp (not merged yet)
+
+// tu-skeleton: 0x001A3AE0 94B ??0?$DynamicVectorClass@PAD@@QAE@IPBQAD@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/collect.cpp (not merged yet)
+
+// tu-skeleton: 0x001A3B90 71B ??_G?$VectorClass@URendererDataStruct@Render2DSentenceClass@@@@UAEPAXI@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp (not merged yet)

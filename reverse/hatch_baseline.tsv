@@ -17144,12 +17144,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AABoxRenderObjFromDef.cpp	"g
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AABoxRenderObjFromDef.cpp	"s",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AABoxUpdateCachedBox.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AABoxUpdateCachedBox.cpp	"gsy",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AggregateDefAttachSubobjects.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AggregateDefAttachSubobjects.cpp	"gsy",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AggregateDefBuildSubobjectList.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AggregateDefBuildSubobjectList.cpp	"gsy",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AggregateDefFindSubobject.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AggregateDefFindSubobject.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/Animatable3DObjRelease.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/Animatable3DObjRelease.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/AnimatableGetBoneTransform.cpp	"",on	1
@@ -17477,8 +17471,8 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/aabtree.cpp	"",on	2
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/aabtree.cpp	"s",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/aabtreebuilder.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/aabtreebuilder.cpp	"gsy",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp	"",on	2
-pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp	"gsy",on	1
+pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp	"",on	5
+pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp	"gsy",on	4
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp	"s",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/animobj.cpp	"",on	4
 pragma_optimize	Code/Libraries/Source/WWVegas/WW3D2/animobj.cpp	"gsy",on	3
