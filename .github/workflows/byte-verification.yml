@@ -26,7 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
+          # Keep this non-recursive: BFME 1 references BFME 2, which references BFME 1.
+          # Recursing nests both repositories and hits Windows filename limits.
+          submodules: true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
