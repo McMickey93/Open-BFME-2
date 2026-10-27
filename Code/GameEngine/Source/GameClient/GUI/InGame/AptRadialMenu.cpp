@@ -12,14 +12,6 @@
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 struct Rva00578425Element;
 namespace _STL { template <> Rva00578425Element * __uninitialized_copy<Rva00578425Element *,Rva00578425Element *>(Rva00578425Element *,Rva00578425Element *,Rva00578425Element *,__false_type const &); }
-// Suppress this TU's non-retail copy of ??$_Destroy@PAURva00578425Element@@@_STL@@YAXPAURva00578425Element@@0@Z:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
-struct Rva00578425Element;
-namespace _STL { template <> void _Destroy<Rva00578425Element *>(Rva00578425Element *,Rva00578425Element *); }
-// Suppress this TU's non-retail copy of ??$__destroy_aux@PAURva00578425Element@@@_STL@@YAXPAURva00578425Element@@0ABU__false_type@:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
-struct Rva00578425Element;
-namespace _STL { template <> void __destroy_aux<Rva00578425Element *>(Rva00578425Element *,Rva00578425Element *,__false_type const &); }
 // Declaration-only: retail keeps one _STL::max<unsigned int> (17-byte jae
 // shape); this TU's flags would emit a private copy.
 namespace _STL {
