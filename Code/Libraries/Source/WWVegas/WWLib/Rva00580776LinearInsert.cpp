@@ -50,7 +50,7 @@ void __cdecl unguardedInsertionSort(void **first, void **last, Rva000795C1Record
 	unguardedInsertionSortAux(first, last, (void **)0, compare);
 }
 
-void __cdecl Rva005809DBLinearInsert(void **first, void **last, void *val, Rva000795C1Record compare)
+void __cdecl linearInsert(void **first, void **last, void *val, Rva000795C1Record compare)
 {
 	if (compare.compareRva005803C0(val, *first))
 	{
@@ -68,5 +68,5 @@ void __cdecl insertionSort(void **first, void **last, Rva000795C1Record compare)
 	if (first == last)
 		return;
 	for (void **current = first + 1; current != last; ++current)
-		Rva005809DBLinearInsert(first, current, *current, compare);
+		linearInsert(first, current, *current, compare);
 }

@@ -117,7 +117,7 @@ void *ThingFactory::newDrawable(void *thingTemplate, int statusBits, int randomV
 // uses the same import in its 99-byte manager dispatch. No new data/pin is needed.
 // ECX and stack arguments are never read; the original member/free owner,
 // name and guard meaning remain unknown. This is the minimal void contract.
-void Rva002CEF02ConditionalSleep()
+void yieldIfLoading()
 {
     if (isLoadingMap)
         Sleep(0);

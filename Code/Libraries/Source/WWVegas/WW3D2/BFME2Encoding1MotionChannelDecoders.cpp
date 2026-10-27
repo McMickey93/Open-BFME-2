@@ -65,10 +65,10 @@ void BFME2Encoding1MotionChannel::rva001B230A(unsigned int *state, unsigned int 
             float filter = filtertable[*packet] * Scale;
             unsigned char *deltaData = packet + 1 + (startFrame >> 1);
             for (unsigned int fi = startFrame; fi < 16; ++fi) {
-                unsigned int f = from + fi;
-                if (f == frame)
+                unsigned int currentFrame = from + fi;
+                if (currentFrame == frame)
                     ((float *)value0)[vi] = ((float *)&last)[vi];
-                else if (f == frame + 1) {
+                else if (currentFrame == frame + 1) {
                     ((float *)value1)[vi] = ((float *)&last)[vi];
                     break;
                 }
@@ -106,10 +106,10 @@ void BFME2Encoding1MotionChannel::rva001B2450(unsigned int *state, unsigned int 
             float filter = filtertable[*packet] * Scale;
             unsigned char *p = packet + 1 + (fi0 >> 1);
             for (unsigned int fi = fi0; fi < 16; ++fi) {
-                unsigned int f = from + fi;
-                if (f == frame)
+                unsigned int currentFrame = from + fi;
+                if (currentFrame == frame)
                     ((float *)quaternion)[vi] = ((float *)&last)[vi];
-                else if (f == frame + 1) {
+                else if (currentFrame == frame + 1) {
                     ((float *)value1)[vi] = ((float *)&last)[vi];
                     break;
                 }

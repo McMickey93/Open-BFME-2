@@ -52,10 +52,10 @@ public:
 	virtual SpecialPowerTemplate *s6();
 	float rva0049355E();
 	unsigned int m_4;
-	unsigned int m_8;
+	unsigned int m_availableOnFrame;
 	int m_c;
 	char m_gap[4];
-	float m_14;
+	float m_pausedPercent;
 	unsigned char m_blocked;
 };
 
@@ -66,12 +66,12 @@ float Rva0049355E::rva0049355E()
 	if (s1())
 		return 1.0f;
 	if (m_c > 0)
-		return m_14;
+		return m_pausedPercent;
 	Rva0049355EHolder *holder = *(Rva0049355EHolder **)((char *)this - 0xC);
 	if (holder->m_ov == 0)
 		return 0.0f;
 	Object *obj = *(Object **)((char *)this - 8);
-	unsigned int value = m_8;
+	unsigned int value = m_availableOnFrame;
 	if (obj != 0)
 	{
 		Player *player = obj->getControllingPlayer();
