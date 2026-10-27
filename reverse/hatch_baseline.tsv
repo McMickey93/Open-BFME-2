@@ -12868,9 +12868,6 @@ present_unmatched	Code/GameEngine/Source/Common/TimedOperationNodeBFME2.h	TreeHi
 present_unmatched	Code/GameEngine/Source/Common/VectorPod88CopyConstructor.cpp	vector<Pod88Vector>::_M_insert_overflow	1
 present_unmatched	Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp	1Rva0074011F@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/W3SmallValueInitializers.cpp	copyTo@Rva000643F0Value@@	1
-present_unmatched	Code/GameEngine/Source/Common/Watchdog.cpp	resumeTimeouts@Watchdog@@QAEXXZ	1
-present_unmatched	Code/GameEngine/Source/Common/Watchdog.cpp	suppressTimeouts@Watchdog@@QAEXXZ	1
-present_unmatched	Code/GameEngine/Source/Common/Watchdog.cpp	update@Watchdog@@QAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/bezier_segment.cpp	BezierSegment::BezierSegment	5
 present_unmatched	Code/GameEngine/Source/Common/bezier_segment.cpp	BezierSegment::evaluateBezSegmentAtT	1
 present_unmatched	Code/GameEngine/Source/Common/bezier_segment.cpp	BezierSegment::getApproximateLength	1

@@ -2,36 +2,12 @@
 
 typedef unsigned long UnsignedInt;
 
-extern "C" UnsignedInt __stdcall GetCurrentThreadId(void);
-extern "C" __declspec(dllimport) long __cdecl time(long *value);
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *criticalSection);
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(void *criticalSection);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *criticalSection);
 
 class WatchdogCriticalSection
 {
-public:
-	void enter(void) { EnterCriticalSection(this); }
-	void leave(void) { LeaveCriticalSection(this); }
-
 private:
 	char m_storage[0x18];
-};
-
-class ScopedWatchdogLock
-{
-public:
-	ScopedWatchdogLock(WatchdogCriticalSection &criticalSection) : m_criticalSection(criticalSection)
-	{
-		m_criticalSection.enter();
-	}
-	~ScopedWatchdogLock()
-	{
-		m_criticalSection.leave();
-	}
-
-private:
-	WatchdogCriticalSection &m_criticalSection;
 };
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib/thread.h
@@ -79,9 +55,6 @@ class Watchdog : public ThreadClass
 public:
 	Watchdog(int timeout, int warningInterval, int warningDelay);
 	virtual ~Watchdog();
-	void suppressTimeouts(void);
-	void update(void);
-	void resumeTimeouts(void);
 	virtual void start(void);
 	virtual void Thread_Function(void);
 	virtual void reportWatchdog(void);
@@ -125,45 +98,9 @@ Watchdog::Watchdog(int timeout, int warningInterval, int warningDelay) :
 	InitializeCriticalSection(&m_criticalSection);
 }
 
-// ?suppressTimeouts@Watchdog@@QAEXXZ present-unmatched
-void Watchdog::suppressTimeouts(void)
-{
-	ScopedWatchdogLock suppressionLock(m_criticalSection);
-	++*(volatile int *)&m_suppressionCount;
-}
-
-// ?update@Watchdog@@QAEXXZ present-unmatched
-void Watchdog::update(void)
-{
-	long now;
-	UnsignedInt currentThread = GetCurrentThreadId();
-	if (currentThread == m_parentThreadId)
-	{
-		time(&now);
-		ScopedWatchdogLock lock(m_criticalSection);
-		m_lastHeartbeat = now;
-	}
-}
-
-// ?resumeTimeouts@Watchdog@@QAEXXZ present-unmatched
-void Watchdog::resumeTimeouts(void)
-{
-	long now;
-	UnsignedInt currentThread = GetCurrentThreadId();
-	if (currentThread == m_parentThreadId)
-	{
-		time(&now);
-		ScopedWatchdogLock heartbeatLock(m_criticalSection);
-		m_lastHeartbeat = now;
-	}
-
-	ScopedWatchdogLock suppressionLock(m_criticalSection);
-	volatile int &suppressionCount = *(volatile int *)&m_suppressionCount;
-	if (suppressionCount > 0)
-	{
-		suppressionCount--;
-	}
-}
-
-
+// Counter suppression and heartbeat refresh are already rowed in
+// Main/BfmeDfe6e4_M_rva00625476.cpp (0x00225476),
+// Main/BfmeDfe6e4_rva00225492.cpp (0x00225492), and
+// Main/BfmeDfe6e4_M_rva00625699.cpp (0x00225699).
+// Their placeholder class identity remains to be reconciled with Watchdog.
 // Watchdog::stop: defined in WatchdogThreadFunction.cpp (its row's unit).
