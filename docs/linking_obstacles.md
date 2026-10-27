@@ -5126,3 +5126,26 @@ Remaining: the two slides still need canonical coordinate/private animation decl
   replacing that chain, not adding a header. No source was changed.
 - **Clearance:** none.
 - **Census confirmation:** not claimed.
+
+### LINK-121: address-named log-file extern instead of `theLogicRandomLogFile`
+
+Status: two consumers repaired; alternate-name hatches remain. Updated: 2026-10-27; preview index: 73061d9452.
+
+Evidence: `tools/link_rank.py` listed `?g_00DFEFF0@@3PAXA` as the sole blocker of
+GameLogicInit.cpp (28,160 B) and ThingFactory_newObject.cpp (344 B). Both declared
+`extern void *g_00DFEFF0;`, a second, C++-mangled name for the global at VA
+0x00DFEFF0, while every linking consumer declares `extern "C" void
+*theLogicRandomLogFile;` (the `_theLogicRandomLogFile` name `reverse/data_ledger.csv`
+records for 0x009FEFF0).
+
+Completed (claude2): both units now declare and use `theLogicRandomLogFile`.
+GameLogicInit.cpp builds 195/195 and ThingFactory_newObject.cpp 2/2 matched with
+string, float and import refs verified. `link_check.py` against the 73061d9452
+index: 2 of 2 LINKS, LINKED 0 -> 28,504 B (prediction only; census confirmation
+pending).
+
+Remaining: the `?g_00DFEFF0@@3PAXA` pin (`reverse/symbols.csv`) and the two
+`/alternatename:_theLogicRandomLogFile=?g_00DFEFF0@@3PAXA` hatches in
+Rva00395F57CanUnpack.cpp and Rva0054467AFinish.cpp (held by another seat at the
+time) still bind the address name. Once no source references it, remove those
+hatches through the hatch path and rename the pin to the real name.

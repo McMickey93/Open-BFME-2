@@ -4833,7 +4833,7 @@ extern bool TheLiteCRC;
 // Owned here: toggled around the lite-CRC computation below; retail .data
 // starts it at 0 (VA 0x00A02D87).
 bool TheLiteCRC = false;
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 extern GlobalWeatherSystem *TheGlobalWeatherSystem;
 class BuildAssistant;
 extern BuildAssistant *TheBuildAssistant;
@@ -4958,8 +4958,8 @@ void GameLogic::update(int phase)
 			else
 				ProcessCRC(crc, player, m_40, msg, false, stream);
 		}
-		if (g_00DFEFF0)
-			((Rva002CEC0A *)g_00DFEFF0)->rva002CEC34();
+		if (theLogicRandomLogFile)
+			((Rva002CEC0A *)theLogicRandomLogFile)->rva002CEC34();
 	}
 
 	if (g_00E032F8 && first)

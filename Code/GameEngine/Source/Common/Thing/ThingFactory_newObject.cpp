@@ -22,7 +22,7 @@ struct FprintfTarget
 	char m_pad[4];
 };
 extern "C" void fprintf(FprintfTarget *target, const char *format, ...);
-extern void *g_00DFEFF0;
+extern "C" void *theLogicRandomLogFile;
 extern unsigned char isLoadingMap;
 
 int GetGameLogicRandomValue(int low, int high, char *file, int line);
@@ -165,8 +165,8 @@ Object *ThingFactory::newObject(const ThingTemplate *thingTemplate, Team *team, 
 	if (isLoadingMap)
 		Sleep(0);
 
-	if (g_00DFEFF0)
-		fprintf((FprintfTarget *)g_00DFEFF0, "newObj %s id %i", thingTemplate->getName().str(), obj->getID());
+	if (theLogicRandomLogFile)
+		fprintf((FprintfTarget *)theLogicRandomLogFile, "newObj %s id %i", thingTemplate->getName().str(), obj->getID());
 
 	return obj;
 }
