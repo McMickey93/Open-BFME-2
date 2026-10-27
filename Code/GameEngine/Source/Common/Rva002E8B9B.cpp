@@ -14,7 +14,9 @@ MixFileInfoBuffer *Rva002E8B7AInit(MixFileInfoBuffer **pp, int a, In002E6BA1 *in
 
 void Rva0052DBCDInit(void);
 
-extern MixFileInfoBuffer *g_00A049D0;
+// 0x00A049D0: the pool head the data ledger names TheMixFileInfoPool (an int
+// there; this unit reads it as the buffer-list head pointer).
+extern int TheMixFileInfoPool;
 
 class MixFileInfoBuffer
 {
@@ -32,12 +34,10 @@ MixFileInfoBuffer *Rva002E8B9B::rva002E8B9B(In002E6BA1 *in)
 {
 	MixFileInfoBuffer *node = m_node;
 	if (node == 0) {
-		if (g_00A049D0 == m_node)
+		if (*(MixFileInfoBuffer **)&TheMixFileInfoPool == m_node)
 			Rva0052DBCDInit();
-		return (m_node = Rva002E8B7AInit(&g_00A049D0, (int)this, in));
+		return (m_node = Rva002E8B7AInit((MixFileInfoBuffer **)&TheMixFileInfoPool, (int)this, in));
 	}
 	*(int *)((char *)node + 0x0C) &= 0;
 	return node;
 }
-// ?g_00A049D0@@3PAVMixFileInfoBuffer@@A: the global at VA 0xe049d0 is ?TheMixFileInfoPool@@3HA.
-#pragma comment(linker, "/alternatename:?g_00A049D0@@3PAVMixFileInfoBuffer@@A=?TheMixFileInfoPool@@3HA")
