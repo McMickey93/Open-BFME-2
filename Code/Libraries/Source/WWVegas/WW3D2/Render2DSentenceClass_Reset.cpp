@@ -29,7 +29,7 @@ public:
 	~Render2DClass();
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 void __cdecl BFME_DX8_Thread_Lock();
 bool __cdecl BFME_DX8_Thread_Assert();

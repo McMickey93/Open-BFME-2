@@ -7,7 +7,7 @@
 // (operator-new immediate). Callees resolve by name to the ledger row (new),
 // the MeshMatDesc default-ctor pin and the Is_Empty / Init_Alternate pins.
 
-extern void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class MeshMatDescClass
 {

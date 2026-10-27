@@ -8,7 +8,7 @@
 // dtor ??1 is pinned at 0x001212F0 (dup row, gen-uw-pin). Deleting dtor
 // calls ??1 then deletes this if flag&1 and returns this; callees via pin
 // and rowed ??3 0x0002FD60. Emitted via delete helper (famgen precedent).
-void __cdecl operator delete(void *place);
+#include <new>
 
 class Gen_uw_001212f0
 {
