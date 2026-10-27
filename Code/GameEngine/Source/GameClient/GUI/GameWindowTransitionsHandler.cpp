@@ -137,8 +137,8 @@ public:
 	GameWindowTransitionsHandler();
 	virtual ~GameWindowTransitionsHandler();
 	void init() { }
-	void reset();	// 0x001DBE6E, defined in GameWindowTransitionsHandlerState.cpp
-	void update();	// 0x001DBEB6, defined in GameWindowTransitionsHandlerState.cpp
+	void reset();	// 0x001DBE6E, defined in GameWindowTransitions.cpp
+	void update();	// 0x001DBEB6, defined in GameWindowTransitions.cpp
 
 private:
 	typedef std::list<TransitionGroup *> TransitionGroupList;
