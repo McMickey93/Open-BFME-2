@@ -4567,12 +4567,14 @@ Census confirmation: awaiting.
 
 ### LINK-115: ShellMenuScheme consolidation needs native string and list contracts
 
-Status: Partially cleared in a guarded dry run; remaining donors retained. Updated: 2026-10-27; inspected revision: e400cac241; published preview index: bf3dd31211 (2026-10-27 00:39, retail-truth-4).
+Status: Three-file subset consolidated with the link guard; remaining donors retained. Updated: 2026-10-27; inspected revision: e400cac241; published preview index: bf3dd31211 (2026-10-27 00:39, retail-truth-4).
 
 Evidence / affected units: the eight-file ShellMenuScheme group approved by the current in-memory TU map; [scoped evidence and remaining prerequisites](../reverse/attempt_support/shell-menu-scheme-consolidation-20261027-codex5.md). All 31 original rows and seven EH graphs verify; all eight ordinary previews are LINKS (1,239 authored bytes). The naming planner supplies no original retail-path xref for these rows; donor paths are routing evidence only.
 
 Completed: explicitly load the existing BFME 2 string compatibility view before PreRTS in the seed. Both authored rows and all 15 external code providers keep identical bytes and relocations. The supported dry run accepts the seed, Rva002004FDDtor.cpp and ShellMenuScheme_Rva002008c8.cpp: 10 rows, with census-linked units and their external copies protected.
 
-Remaining / next check: apply and verify that accepted subset through tu_skeleton.py. Keep ImageConstructor's canonical ICoord2D and private StringBase collision, Dtor's private base/integer-list view, addImage's integer-to-pointer-list mismatch, Parse's byte failure, and the constructor's externally consumed allocator-copy conflict as prerequisites. Resolve each in its own verified commit before another merge. LINK-095 separately tracks the constructor's generated unwind callee binding.
+Applied subset: tu_skeleton.py merged the three accepted files into the 10-row destination; all 31 original rows across six surviving files and all seven EH graphs verify. Shadow and converged data checks pass. Protected keys transfer with totals kept, and only three TU-map source cells change. The ordinary preview retains both deleted donor objects and reports destination duplicates; the apply-time link guard evaluates their removals together. Carry that index freshness limitation into the next census.
+
+Remaining / next check: keep ImageConstructor's canonical ICoord2D and private StringBase collision, Dtor's private base/integer-list view, addImage's integer-to-pointer-list mismatch, Parse's byte failure, and the constructor's externally consumed allocator-copy conflict as prerequisites. Resolve each in its own verified commit before another merge. LINK-095 separately tracks the constructor's generated unwind callee binding.
 
 Clearance: string composition only; no new linked-byte or ownership gain is claimed. Census confirmation: pending the next scheduled census.

@@ -3245,8 +3245,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x007E2704,324,.rdata,vtable,??_7Rva0022CA74@@6B@,,literal,,0,1
 0x007E2848,232,.rdata,string,??_C@_0CC@PIPAAOPL@Ranks?5must?5increase?5monotonicall@,,literal,,0,1
 0x007E2930,188,.rdata,string,??_C@_0BK@OLGMDFMI@Rank?5not?5found?5in?5map?4ini?$AA@,,literal,,0,1
-0x007E29EC,84,.rdata,global,?m_shellMenuSchemeFieldParseTable@ShellMenuSchemeManager@@2QBUFieldParse@@B,Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva002008c8.cpp,owned,,1,1
-0x007E2A40,96,.rdata,global,?myFieldParse@?1??parseImagePart@ShellMenuSchemeManager@@SAXPAVINI@@PAX1PBX@Z@4QBUFieldParse@@B,Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva002008c8.cpp,owned,,1,1
+0x007E29EC,84,.rdata,global,?m_shellMenuSchemeFieldParseTable@ShellMenuSchemeManager@@2QBUFieldParse@@B,Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cpp,owned,,1,1
+0x007E2A40,96,.rdata,global,?myFieldParse@?1??parseImagePart@ShellMenuSchemeManager@@SAXPAVINI@@PAX1PBX@Z@4QBUFieldParse@@B,Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cpp,owned,,1,1
 0x007E2AA0,96,.rdata,global,?g_00BE2AA0@@3QBUFieldParse@@B,,unowned,,0,1
 0x007E2B00,8,.rdata,string,??_C@_06IINFAHFO@?$CFs?5?$CFs?6?$AA@,,literal,,0,1
 0x007E2B08,60,.rdata,string,??_C@_0CI@IBMODCNP@Unable?5to?5find?5water?5texture?5typ@,,literal,,0,1

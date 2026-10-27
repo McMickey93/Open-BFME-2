@@ -33,3 +33,45 @@ data-before.log, identity-before.log, seed-provider-comparison.json,
 dry-run-ascii.log, dry-run-explicit-ascii.log and link-explicit-ascii.log.
 The normal gates and committed source/ledger remain the durable verification;
 these ignored scratch logs are a local investigation aid.
+
+
+## Applied subset and register audit
+
+`tu_skeleton.py --merge` applied the same three-file, 10-row subset. Eight
+rows moved; the two pre-existing seed rows stayed. The two absorbed files are
+removed, and all 31 original rows still byte-verify across six surviving files.
+Seven EH graphs remain EXACT, including three compiler-label renumberings in
+the merged TU proven by their parent EH graphs. Final source whitespace cleanup
+does not change line count or authored code.
+
+Two data owners (0x007E29EC, 0x007E2A40), two existing identity keys and four
+existing marker hatches transfer to the destination. The committed TU-map diff
+only repoints three source cells; it is not a regenerated map. The merge calls
+the header and MS-header queue owners; neither queue needs a change. No debt
+key disappears. The fresh six-source identity verdict still reports five rows
+with wrong bindings; these remain registered. Shadow data finds zero issues;
+converged data judges all 31 rows with zero second names or unjudged rows.
+All six surviving providers have fresh strict receipts from `link_check.py
+--prepare-current`. The final seed receipt was refreshed after whitespace
+cleanup; audit checks ran after compilation completed.
+
+The ordinary after-preview is intentionally not treated as clearance: five of
+six sources are LINKS, while the destination reports duplicates against the
+two now-deleted donor objects retained by the published index. The apply-time
+link guard evaluated the selected set with donor removals together and protected
+their linked status and external copies. Carry current-input freshness and the
+published index's deleted providers into the next scheduled census; no headline
+linked-byte or image-ownership result is claimed.
+
+## Path consumers
+
+The complete unpublished source-path changes are these two absorptions into
+ShellMenuScheme.cpp. A combined old-path/basename search covers tools, hooks,
+workflows, source/header includes, root build/configuration files, registries and
+documentation. No active tool or include uses either removed file. Remaining
+mentions are provenance comments, attempt history and the last census's
+`reverse/link_status.csv`; the census file must remain historical. A stale
+comment in the constructor donor is identified for the separate marker cleanup.
+The merge repoints the active function/map/data/debt owners; no affected active
+consumer requires a code change. Raw search: `path-consumer-audit.log` in the
+local evidence directory.
