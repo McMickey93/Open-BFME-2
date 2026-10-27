@@ -53761,7 +53761,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x006E6B40,187,code,Code/Libraries/Source/Apt/AptCharacterAnimation.cpp,proposed,N,N=Code/Libraries/Source/Apt/AptCharacterAnimation.cpp noncontiguous,Code/Libraries/Source/Apt/AptMovieFrameControls.cpp
 0x006E6C00,137,code,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,approved,N,N=Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,Code/Libraries/Source/Apt/AptValue/AptValueVectorReleaseBFME2.cpp
 0x006E6C90,56,code,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,approved,N,N=Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,Code/Libraries/Source/Apt/AptValue/AptValueVectorReleaseBFME2.cpp
-0x006E6CD0,17,code,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,approved,C,C=0x006E6C90..0x006E6CF0,Code/GameEngine/Source/Common/SmallGaps/Rva008981E0AptTypeChecks.cpp
+0x006E6CD0,17,code,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,approved,C,C=0x006E6C90..0x006E6CF0,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp
 0x006E6CF0,82,code,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,approved,N,N=Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,Code/Libraries/Source/Apt/AptValue/AptValueVectorReleaseBFME2.cpp
 0x006E6D50,64,code,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,approved,F,F=Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp N=Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,Code/Libraries/Source/Apt/AptValue/AptValueVectorReleaseBFME2.cpp
 0x006E6D90,134,code,Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,approved,F,F=Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp N=Code/Libraries/Source/Apt/AptValue/AptValueVector.cpp,Code/Libraries/Source/Apt/AptValue/AptValueVectorReleaseBFME2.cpp
