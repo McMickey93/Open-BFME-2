@@ -14,6 +14,7 @@ float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x0004
 #include "ascii_string.h"
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../../../reference/shims/bfme_matrix3d_copy_link/matrix3d_copy_link.h"
+#include "../../../Common/GameLogicObjectLookupView.h"
 #pragma function(memset)
 extern "C" void *memset(void *,int,unsigned);
 float normalizeAngle(float);float Cos(float);float Sin(float);
@@ -96,7 +97,6 @@ void ToppleUpdate::applyTopplingForce(const Coord3D *toppleDirection,float toppl
  }
 }
 
-#include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 class GeometryInfo {public:float getMaxHeightAbovePosition()const;};
 void Rva004A82BAAttemptDamage(Object *);
