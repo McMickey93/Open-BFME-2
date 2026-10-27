@@ -604,6 +604,40 @@ namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<c
 
 struct Rva005FA197Element;
 namespace _STL { template <> __declspec(dllimport) __forceinline void vector<Rva005FA197Element,allocator<Rva005FA197Element> >::_M_clear() { ((Rva002B9062ClearAccess *)this)->clearWorker(); } }
+// _M_clear of these vectors is retail's shared clear worker of another vector
+// (ICF), the same forwarders StlportVectorInsertOverflowFamily.cpp uses: this
+// unit's growth-path copies then match the kept ones and reference no unrowed
+// _Destroy instance (that unit no longer emits one).
+struct Rva005F8F96;
+struct BfmeStringRecord00426A5B;
+class CameraMarker;
+struct Rva002BB6BE20Rec;
+class Rva0026E5B9 { public: ~Rva0026E5B9(); };
+class Rva00399800 { public: ~Rva00399800(); };
+struct Rva005F120F { void rva005F120F(); };
+template <> void _STL::vector<Rva005F8F96>::_M_clear();
+template <> void _STL::vector<BfmeStringRecord00426A5B>::_M_clear();
+template <> void _STL::vector<CameraMarker>::_M_clear();
+template <> void _STL::vector<Rva002BB6BE20Rec>::_M_clear();
+template <class _Tp> struct ClearOwner : _STL::vector<_Tp> { public: using _STL::vector<_Tp>::_M_clear; };
+namespace _STL
+{
+#define BFME_CLEAR_FORWARD(T, CALL) \
+    template <> __declspec(dllimport) __forceinline void vector<T, allocator<T> >::_M_clear() { CALL; }
+BFME_CLEAR_FORWARD(Rva00153A27Element, ((ClearOwner<Rva005F8F96> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva001DAAF2Element, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva002898ACElement, ((ClearOwner<CameraMarker> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva002B72C9, ((ClearOwner<Rva002BB6BE20Rec> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva00318203Element, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva003328B6Element, ((Rva0026E5B9 *)this)->Rva0026E5B9::~Rva0026E5B9())
+BFME_CLEAR_FORWARD(Rva0039A48EElement, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva004C3F09Element, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva00578425Element, ((Rva002B9062ClearAccess *)this)->clearWorker())
+BFME_CLEAR_FORWARD(Rva005E2B0EElement, ((Rva002B9062ClearAccess *)this)->clearWorker())
+BFME_CLEAR_FORWARD(Rva005F13E6Element, ((Rva005F120F *)this)->rva005F120F())
+BFME_CLEAR_FORWARD(BfmeStringRecord00395E75, ((Rva00399800 *)this)->Rva00399800::~Rva00399800())
+#undef BFME_CLEAR_FORWARD
+}
 // Suppress this TU's non-retail copy of ??$_Destroy@PAURva004C3F09Element@@@_STL@@YAXPAURva004C3F09Element@@0@Z:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 struct Rva004C3F09Element;

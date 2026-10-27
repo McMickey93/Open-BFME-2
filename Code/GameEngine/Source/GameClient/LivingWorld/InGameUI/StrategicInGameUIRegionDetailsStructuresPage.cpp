@@ -21,18 +21,6 @@ namespace _STL { template <> unsigned int const & max<unsigned int>(unsigned int
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 struct Rva005E2B0EElement;
 namespace _STL { template <> Rva005E2B0EElement * _STLP_alloc_proxy<Rva005E2B0EElement *,Rva005E2B0EElement,allocator<Rva005E2B0EElement> >::allocate(unsigned int); }
-// Suppress this TU's non-retail copy of ?deallocate@?$allocator@URva005E2B0EElement@@@_STL@@QBEXPAURva005E2B0EElement@@I@Z:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
-struct Rva005E2B0EElement;
-namespace _STL { template <> void allocator<Rva005E2B0EElement>::deallocate(Rva005E2B0EElement *,unsigned int) const; }
-// Suppress this TU's non-retail copy of ??$_Destroy@PAURva005E2B0EElement@@@_STL@@YAXPAURva005E2B0EElement@@0@Z:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
-struct Rva005E2B0EElement;
-namespace _STL { template <> void _Destroy<Rva005E2B0EElement *>(Rva005E2B0EElement *,Rva005E2B0EElement *); }
-// Suppress this TU's non-retail copy of ??$__destroy_aux@PAURva005E2B0EElement@@@_STL@@YAXPAURva005E2B0EElement@@0ABU__false_type@:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
-struct Rva005E2B0EElement;
-namespace _STL { template <> void __destroy_aux<Rva005E2B0EElement *>(Rva005E2B0EElement *,Rva005E2B0EElement *,__false_type const &); }
 // Keep __node_alloc<true,0>::deallocate inline-only: every call here is inlined,
 // and this TU's /O1 COMDAT copy differs from the copy the link keeps.
 namespace _STL {
@@ -118,7 +106,13 @@ struct Rva005E2B0EElement {
  ~Rva005E2B0EElement() { ReleaseTreeHintRef00217D4C((TargetRef00217D4C *)pointer); }
  int *pointer;
 };
-namespace _STL { template <> void vector<Rva005E2B0EElement>::_M_clear(); }
+// _M_clear is retail's shared 4-byte clear worker 0x00577EF1 (ICF), rowed as
+// vector<Rva002B9062Element>::_M_clear; the same inline forwarder as
+// StlportVectorInsertOverflowFamily.cpp, so this unit's growth-path copy matches it.
+struct Rva002B9062Element;
+namespace _STL { template <> void vector<Rva002B9062Element>::_M_clear(); }
+struct Rva002B9062ClearAccess : _STL::vector<Rva002B9062Element> { __forceinline void clearWorker() { _M_clear(); } };
+namespace _STL { template <> __declspec(dllimport) __forceinline void vector<Rva005E2B0EElement>::_M_clear() { ((Rva002B9062ClearAccess *)this)->clearWorker(); } }
 namespace StrategicInGameUI {
 class RegionDetailsStructuresPage::Impl : public StrategicHUD::RegionDetailsStructuresMovieClip {
 public:

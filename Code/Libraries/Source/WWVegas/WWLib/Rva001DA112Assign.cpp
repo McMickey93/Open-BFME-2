@@ -11,6 +11,10 @@
 struct Rva001DAAF2Element {char bytes[8];Rva001DAAF2Element(const Rva001DAAF2Element&);~Rva001DAAF2Element();};
 struct FXBoneInfo {char bytes[8]; FXBoneInfo&operator=(const FXBoneInfo&);};
 struct RvaPair0032C0CA {char bytes[8];};
+// _M_clear is retail's shared 8-byte clear worker 0x004C3D8B (ICF), rowed as
+// vector<BfmeStringRecord00426A5B>::_M_clear; StlportVectorInsertOverflowFamily.cpp
+// reaches it the same way.
+struct BfmeStringRecord00426A5B;
 void Rva0032C0CADestroyPairs(RvaPair0032C0CA*,RvaPair0032C0CA*);
 class Rva001DA112;
 namespace _STL {
@@ -32,7 +36,7 @@ void Rva001DA112::rva001DA112(int firstArg,int lastArg,char*){
  unsigned len=last-first;
  if(len>capacity()){
   Rva001DAAF2Element*tmp=((_STL::vector<Rva001DAAF2Element>*)this)->_M_allocate_and_copy(len,first,last);
-  ((_STL::vector<Rva001DAAF2Element>*)this)->_M_clear(); _M_start=tmp;_M_finish=tmp+len;end=tmp+len;
+  ((_STL::vector<BfmeStringRecord00426A5B>*)this)->_M_clear(); _M_start=tmp;_M_finish=tmp+len;end=tmp+len;
  }else if(size()>=len){
   Rva001DAAF2Element*finish=(Rva001DAAF2Element*)_STL::copy((FXBoneInfo*)first,(FXBoneInfo*)last,(FXBoneInfo*)_M_start);
   Rva0032C0CADestroyPairs((RvaPair0032C0CA*)finish,(RvaPair0032C0CA*)_M_finish);
