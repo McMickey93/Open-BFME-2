@@ -4,7 +4,8 @@
 // The caller (NetPacket.cpp) pushes a fifth argument, the message type, which the
 // body never reads ([ebp+0x18] is untouched); declaring it keeps both sides on one
 // name, so the link resolves the call.
-extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int n);
+
+#include <string.h>
 
 enum GameMessageArgumentDataType
 {

@@ -19,6 +19,7 @@
 
 #include "ascii_string.h"
 #include <list>
+#include <string.h>
 
 namespace _STL {
 template <> __declspec(dllimport) __forceinline
@@ -33,8 +34,6 @@ void _STLP_alloc_proxy<_List_node<AsciiString>*,_List_node<AsciiString>,allocato
 }
 
 #pragma function(memset)
-
-extern "C" void *memset(void *dst, int value, unsigned int size);
 
 class Rva0024C7B3Member
 {

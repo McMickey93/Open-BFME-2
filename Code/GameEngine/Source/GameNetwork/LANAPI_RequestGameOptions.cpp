@@ -14,8 +14,6 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
 
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *dst, const char *src, UnsignedInt n);
-
 template <typename T> struct StringInlineData
 {
 	int m_refCount;
@@ -23,6 +21,7 @@ template <typename T> struct StringInlineData
 	T m_text[1];
 };
 
+#include <string.h>
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class AsciiString;

@@ -68,8 +68,6 @@ void TableFree(HashTable table);
 /* BFME2 links the CRT directly here (retail import slot is msvcr71!_strcmpi);
    same strcasecmp->_strcmpi mapping as the landed peerRoomsInit sibling. */
 #define strcasecmp _strcmpi
-extern __declspec(dllimport) int __cdecl _strcmpi(const char *left,
-	const char *right);
 /* BFME2 links the CRT directly here (retail import slot is msvcr71!strncpy);
    same Gamespy->CRT mapping as strcasecmp above: the 0x40-length copies in
    this TU are followed by an explicit nick[0x3F] = '\0', making strncpy

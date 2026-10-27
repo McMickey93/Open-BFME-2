@@ -22,6 +22,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 #include <vector>
 #include <map>
+#include <stdlib.h>
 // Keep inlined node and integer comparisons without conflicting external
 // library copies, as in the LivingWorld tally and picker unit.
 namespace _STL {
@@ -197,7 +198,6 @@ public:__declspec(nothrow) Rva004F5FD8(const Rva004F5FD8&);virtual ~Rva004F5FD8(
 private:int words[10];
 };
 namespace _STL {template<> void _Destroy<TreeHintRef00217D4C *>(TreeHintRef00217D4C *,TreeHintRef00217D4C *);}
-extern "C" void __cdecl free(void *);
 struct BattleUnitStorageBase {
  Rva004F87BCElement *start,*finish,*capacity;
  ~BattleUnitStorageBase(){if(start) free(start);}

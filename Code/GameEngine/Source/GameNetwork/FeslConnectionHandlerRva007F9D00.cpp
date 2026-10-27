@@ -24,6 +24,8 @@
 // packets use the existing TXN dispatch. The diagnostic literals anchor
 // those paths independently of the donor's interpretation.
 
+#include <string.h>
+
 struct Rva00800E50Header
 {
 	unsigned m_type;
@@ -48,7 +50,6 @@ struct Rva007EB810Diag
 
 Rva007EB810Diag *Rva007EB810Get();
 
-extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
 #pragma intrinsic(memcpy)
 
 class Rva007E8810Message

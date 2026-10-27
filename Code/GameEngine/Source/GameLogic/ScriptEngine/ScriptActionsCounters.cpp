@@ -30,10 +30,9 @@
 
 #define _STLP_NO_EXCEPTIONS 1
 #include <map>
+#include <string.h>
 #include "StringInline.h"
 
-extern "C" int __cdecl memcmp(const void *left, const void *right,
-	unsigned int count);
 #pragma intrinsic(memcmp)
 
 typedef bool Bool;

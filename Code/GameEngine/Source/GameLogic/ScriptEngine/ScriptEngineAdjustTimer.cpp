@@ -8,8 +8,7 @@
 // float literal 1000.0f (retail VA 0x00BBE358), IAT ceil. Identity: ScriptEngine::adjustTimer
 // (action, millisecondTimer, add) from class declaration in ScriptEngine.cpp.
 #include "ascii_string.h"
-
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 
 extern float g_parseDurationMsecScale;
 
@@ -73,7 +72,7 @@ void ScriptEngine::adjustTimer(ScriptAction *action, bool millisecondTimer, bool
 			value = -value;
 		float prod = g_parseDurationMsecScale * value;
 		prod *= 1e+03f;
-		float tmp = (float)ceil(prod);
+		float tmp = (float)ceil((double)prod);
 		counter->m_value += fast_float2long_round(tmp);
 	} else {
 		int value = action->getParameter(0)->m_int;

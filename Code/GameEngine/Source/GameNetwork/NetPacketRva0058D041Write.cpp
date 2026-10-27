@@ -4,12 +4,13 @@
 // ?Rva0058D041Write@@YAXPAEPAVNetCommandRef@@@Z @0x0058D041 161B.
 // NetPacket wrapper serialize T S F R P C D plus getData pointer.
 // Evidence: leaf lane plus donor TSRFPCD markers plus caller 0x00592BC5.
+
+#include <string.h>
+
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
-
-extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count);
 
 class NetCommandMsg
 {

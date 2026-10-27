@@ -17,6 +17,7 @@
 // ceil import and narrowed by BaseType.h's fast_float2long_round (retail's
 // fstp dword / fld / fistp dword; a C cast emits _ftol2).
 #include "StringInline.h"
+#include <math.h>
 
 class Parameter
 {
@@ -58,7 +59,6 @@ public:
 };
 extern ScriptEngine *TheScriptEngine;
 
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
 extern float g_parseDurationMsecScale;
 
 __forceinline long fast_float2long_round(float f)
@@ -108,7 +108,7 @@ bool ScriptConditions::evaluateCounterSeconds(Condition *pCondition)
 	if (counter)
 		count = counter->m_value;
 	float frames = g_parseDurationMsecScale * pCondition->getParameter(2)->getReal() * 1000.0f;
-	int value = fast_float2long_round((float)ceil(frames));
+	int value = fast_float2long_round((float)ceil((double)frames));
 	switch (pCondition->getParameter(1)->m_integer) {
 	case 0: return count < value;
 	case 1: return count <= value;

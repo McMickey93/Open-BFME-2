@@ -1,16 +1,18 @@
 // cl: /O1 /EHsc /MD /arch:SSE
+// platformsdk
 // PortNegotiationSchema.cpp -- schema members recovered from WorldBuilder
 // leads (reverse/wb_name_leads.csv): WB's debug build names the function;
 // retail supplies the bytes. A valid slot (below 8) first resets the schema
 // (0x005DB9E4, unnamed), then records the slot list at +0x8B8 and the slot
 // at +0x14.
 
+#include <windows.h>
+
 typedef unsigned short UnsignedShort;
 typedef int Int;
 
 enum { MAX_PORT_SLOTS = 8 };
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 unsigned int g_Va00DD35D0 = 30000; // Native four-byte timeout storage at RVA 0x009D35D0.
 class Rva005DBE6AListener { public: virtual void notify(void *, int, int); };
 class Rva00281A15Listener { public: virtual void notify(); };

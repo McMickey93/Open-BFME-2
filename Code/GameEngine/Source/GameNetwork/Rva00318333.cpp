@@ -86,7 +86,7 @@ class Rva003186EE
 public:
 	void rva003186EE(int a, int b, int c);
 };
-extern "C" void *__cdecl memset(void *dst, int c, unsigned int count);
+#include <string.h>
 #include "../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 void Rva00318333::rva00318333(Object *obj, bool flag)

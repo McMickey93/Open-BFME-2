@@ -21,8 +21,6 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 
-extern "C" void * __cdecl memset( void *, int, unsigned int );
-
 class Rva00248CDD
 {
 public:
@@ -32,6 +30,7 @@ private:
 	UnsignedShort m_key4;
 };
 
+#include <string.h>
 #include "../../Include/GameNetwork/Transport.h"
 
 class LANGameInfo

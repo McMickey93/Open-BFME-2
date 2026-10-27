@@ -3,6 +3,7 @@
 // Evidence: leaf free stdcall ret 8 two Parameter args; caller 0x003EBEC7; prev/next same cl;
 // calls rowed getUnitNamed 0x003588E7 via g_Va009FE16C plus StringBase copy 0x365F0 plus releaseBuffer 0x36410 plus IAT strcmpi; isEmpty plus str plus strcmpi==0 shape.
 #include "ascii_string.h"
+#include <string.h>
 
 class Parameter
 {
@@ -26,8 +27,6 @@ public:
     unsigned char m_pad[0x264];
     void *m_ptr264;
 };
-
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 
 class ScriptConditions
 {

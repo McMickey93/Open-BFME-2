@@ -1,6 +1,7 @@
 // cl: /O1 /G7 /MD /EHsc /DNDEBUG /Ireference/shims/bfme2_ascii /ICode/GameEngine/Source
 // stlport
 #include <vector>
+#include <string.h>
 #include "ascii_string.h"
 enum NameKeyType { NAMEKEY_INVALID=0 };
 // GetRandomPlayablePlayerTemplateIndex: native 0x0052BBF3..0x0052BCAB (184B).
@@ -16,7 +17,6 @@ enum NameKeyType { NAMEKEY_INVALID=0 };
 // target evidence; existing callee/type labels retain their ledger evidence.
 // Private EAX input is target evidence from the same-TU CreatePlayers caller.
 // Offsets, 7-bit faction mask, randomized retry loop and exact path are retail evidence.
-extern "C" void *memset(void *,int,unsigned int);
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 // GameSlotHeroInfo reuses the target-owned slot view from GameLogicInit.cpp.

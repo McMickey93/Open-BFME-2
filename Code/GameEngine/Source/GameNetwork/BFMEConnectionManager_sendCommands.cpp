@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // BFMEConnectionManager's periodic senders: the keep-alive pass, the two
 // FRAMEINFO builders and the packet-router fallback broadcast.
 //
@@ -31,8 +32,6 @@ typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
 typedef bool Bool;
 typedef float Real;
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 enum NetCommandType
 {
@@ -115,6 +114,7 @@ private:
 	UnsignedInt m_lastTimeSent;
 };
 
+#include <windows.h>
 #include "../Common/GameLogicObjectLookupView.h"
 
 class GameClient

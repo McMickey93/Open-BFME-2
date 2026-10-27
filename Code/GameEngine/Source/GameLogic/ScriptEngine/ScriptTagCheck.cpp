@@ -11,10 +11,10 @@
 // memcmp import thunk (rowed ji_0062929e plus the _memcmp pin), and an
 // intrinsic would inline to rep cmpsb instead.
 
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
-
-extern "C" int __cdecl memcmp(const void *left, const void *right, unsigned int count);
 
 // ?equalTag_Rva003B31C7@@YA_NPBX0H@Z
 Bool equalTag_Rva003B31C7(const void *record, const void *tag, Int /*unused*/)
