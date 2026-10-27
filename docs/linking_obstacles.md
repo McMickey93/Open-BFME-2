@@ -987,6 +987,14 @@ Whole-unit clearance and census confirmation remain pending.
   against index `bf3dd31211`. This subset's binding is verified; wider storage
   closure, census confirmation and image-ownership receipts remain unclaimed.
 
+  Recovery batch audit (2026-10-27, outgoing base `e1a73387fd`): the push-hook
+  dry run passes 70/70 function rows, two data rows and eight EXACT EH graphs
+  across eight sources. The link batch audit is INCONCLUSIVE: its index is
+  `bf3dd31211`, older than the outgoing base, and seven source objects lack
+  current receipts (first Rva0025DDD2Float.cpp). Selected-provider and lost-byte
+  conclusions are unavailable for this batch; carry this freshness scope into
+  the next census. This does not extend the earlier paired-preview clearance.
+
 - **Particle-editor loader ownership (2026-10-26, control `665f50f7cf`):**
   [The scoped repair](../reverse/attempt_support/particle-editor-owner-20261026.md)
   replaces the cleanup TU's four-byte placeholder with a reference to the
