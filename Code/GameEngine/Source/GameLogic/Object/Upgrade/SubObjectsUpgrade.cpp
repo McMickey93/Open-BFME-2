@@ -207,6 +207,8 @@ public:
 	void rva004CE4A8();
 public:
 	UpgradeModule(Thing *thing, const ModuleData *moduleData);
+protected:
+	virtual ~UpgradeModule(); // retail ??1UpgradeModule@@MAE@XZ, 0x0046089D
 };
 
 class SubObjectsUpgrade : public UpgradeModule
