@@ -26,7 +26,7 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define NULL 0
+#include <stddef.h>
 
 class Object;
 class Player;

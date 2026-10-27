@@ -34,7 +34,6 @@ typedef int Int;
 typedef short Short;
 typedef float Real;
 
-#define NULL 0
 
 extern Real Cos(Real);
 extern Real Sin(Real);

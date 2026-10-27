@@ -10,7 +10,7 @@ typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
 typedef UnsignedInt ObjectID;
-#define NULL 0
+#include <stddef.h>
 class Object;
 struct StateConditionInfo
 {

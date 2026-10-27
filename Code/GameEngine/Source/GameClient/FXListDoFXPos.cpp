@@ -13,7 +13,7 @@
 
 typedef int Int;
 
-#define NULL 0
+#include <stddef.h>
 
 #include "../../../Libraries/Include/Lib/Coord3D.h"
 
