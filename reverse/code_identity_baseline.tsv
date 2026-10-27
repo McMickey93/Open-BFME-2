@@ -235,7 +235,6 @@ Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	?Resize@?$VectorClass@VRender
 Code/Libraries/Source/WWVegas/WW3D2/hanim_vector_hanimcombo_ctor.cpp	??_G?$DynamicVectorClass@PAVHAnimComboDataClass@@@@UAEPAXI@Z	??1?$DynamicVectorClass@PAVHAnimComboDataClass@@@@UAE@XZ	0x00196B50	wrong
 Code/Libraries/Source/WWVegas/WW3D2/mapper.cpp	??_GTextureMapperClass@@UAEPAXI@Z	??1TextureMapperClass@@UAE@XZ	0x00724510	wrong
 Code/Libraries/Source/WWVegas/WW3D2/meshgeometry.cpp	?Cast_AABox@AABTreeClass@@QAE_NAAVAABoxCollisionTestClass@@@Z	?Cast_AABox_Recursive@AABTreeClass@@AAE_NPAUCullNodeStruct@1@AAVAABoxCollisionTestClass@@@Z	0x00198730	wrong
-Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp	?Get_Formatted_Text_Extents@Render2DSentenceClass@@QAE?AVVector2@@PBG@Z	?Build_Sentence_Not_Centered@Render2DSentenceClass@@AAE?AVVector2@@PBGPAH1_N@Z	0x00159700	unowned
 Code/Libraries/Source/WWVegas/WW3D2/static_sort_list.cpp	??0DefaultStaticSortListClass@@QAE@XZ	??0?$RefMultiListClass@VRenderObjClass@@@@QAE@XZ	0x0006E518	divergent
 Code/Libraries/Source/WWVegas/WW3D2/static_sort_list.cpp	??0DefaultStaticSortListClass@@QAE@XZ	??1?$RefMultiListClass@VRenderObjClass@@@@UAE@XZ	0x0006F29B	divergent
 Code/Libraries/Source/WWVegas/WW3D2/static_sort_list.cpp	??1DefaultStaticSortListClass@@UAE@XZ	??1?$RefMultiListClass@VRenderObjClass@@@@UAE@XZ	0x0006F29B	divergent
