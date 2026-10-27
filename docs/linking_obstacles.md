@@ -4184,6 +4184,14 @@ Clearance: a paired current-object link_check.py call covers 115 previewable sou
 
 2026-10-27 caller confirmation at e1a73387fd: the picker still serves Code/GameEngine/Source/Common/Rva007E3C20Vp6StreamDtor.cpp against the same census. Its current object alone retains the stale-index wrong-selected BFME_DX8_Thread_Lock result; including the current BfmeDX8ThreadLock.cpp provider clears it. After replacing handwritten memcpy declarations with <string.h> in that caller and Rva007E3C20Vp6StreamDtor_~Rva007E3C20Vp6Stream.cpp, the three-source ordinary preview is 3/3 LINKS (1,460 + 375 + 247 authored bytes). Both consumer objects preserve all executable-section bytes and relocation targets; their seven matched rows and both EH parents verify. A scoped ms_header_audit refresh removes the two clean queue entries. This confirms the existing repair and retires header-copy debt; it adds no census or headline gain.
 
+2026-10-27 caller confirmation at 9fef84f164: the picker also serves
+Code/GameEngine/Source/Common/Rva001517DEDtor.cpp. Its six matched rows pass
+the byte gate, including the two funclets verified through their parent's EH
+data after label renumbering. Its sole ordinary-preview blocker is the old
+BFME_DX8_Thread_Lock provider. Supplying the current BfmeDX8ThreadLock.cpp
+clears both units (192 and 247 authored bytes). No source change was needed;
+this is confirmation of the existing repair, with census confirmation pending.
+
 Remaining / next check: no match, pin, rename or shared-header prerequisite remains for the assigned sources. Keep the GameWindow table issue in its separate repair scope. Confirm the repaired wrapper bindings and their caller closure in the next normal maintainer census; no census or headline gain is claimed here.
 
 Census confirmation: pending.
