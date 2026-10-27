@@ -25,7 +25,7 @@
 
 typedef int Int;
 
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 class INI
 {

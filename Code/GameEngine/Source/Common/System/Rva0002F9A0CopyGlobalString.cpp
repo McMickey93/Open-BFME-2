@@ -5,7 +5,7 @@
 
 extern char *g_registryBlockDir;
 
-extern "C" char *__cdecl strcpy(char *, const char *);
+#include <string.h>
 #pragma intrinsic(strcpy)
 
 void __cdecl Rva0002F9A0CopyGlobalString(const char *source)
