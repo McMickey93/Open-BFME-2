@@ -76,12 +76,9 @@ namespace _STL {
 
 // Coord3D: shared header/view; no private copy.
 #include "../../../Libraries/Include/Lib/Coord3DCtorView.h"
-class Rva000E6AC0Base
-{
-public:
-    Rva000E6AC0Base() {}
-    virtual ~Rva000E6AC0Base() {}
-};
+// The base is the canonical Snapshot (vtable 0x00BBB554): retail unwind
+// funclets destroy it through the folded Snapshot destructor 0x0049B47C.
+#include "../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 struct Global9FE710
 {
@@ -92,7 +89,7 @@ struct Global9FE710
 class GameEngine;
 extern GameEngine *TheGameEngine;
 
-class Rva000E6AC0 : public Rva000E6AC0Base
+class Rva000E6AC0 : public Snapshot
 {
 public:
     Rva000E6AC0();
