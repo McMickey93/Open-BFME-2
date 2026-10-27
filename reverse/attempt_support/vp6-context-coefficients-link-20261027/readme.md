@@ -29,9 +29,16 @@ control passes the unchanged 556-byte entropy-decoder caller as well: two bodies
 body exactly once, with zero new function coverage. Source work finalized at
 t=8 minutes; automated full-measurement time is separate.
 
-The fixed comparison against dc81d055af is pending. It must contain only this
-source change and the single newly proven data row, with every other comparison
-input held fixed. No prospective credit, current-master census, image-ownership
-or runtime gain is claimed. The previous receipt has 1,708,093 placed
+At source-commit time the fixed comparison against dc81d055af was pending;
+no prospective credit was claimed. Its completed result follows below. No
+current-master census, image-ownership or runtime gain is claimed. The previous receipt has 1,708,093 placed
 closed-strict bytes. Motion-vector/default-table storage prerequisites remain
 separate; the complete no-FORCE/no-stubs/runtime exit test is not met.
+
+The completed authoritative comparison dc81d055af -> a150087a1c changes unique placed closed-strict credit from 1,708,093 to 1,708,980 bytes: 887 gained in 2 rows, with zero losses and zero new function coverage. Exactly one of 23,460 canonical objects changes; the other 23,459 agree.
+
+The actual process exits zero after 3437 seconds. Final drift and new unresolved references are zero; no missing objects, failed compiles or stale warm start are admitted. Each gaining row has its former failure path and complete passing closure retained in beneficiary-closure.json. This is a fixed-comparison receipt, not a new current-master census.
+
+upstream-closure-witness.json retains the before/after failure paths for all higher callers in the fixed graph. Any remaining motion-vector/default-table and neighbour-offset storage failures are separate prerequisites; no whole-decoder closure is claimed.
+
+The gaining rows are VP6_ConfigureContexts (331 bytes) and VP6_ConfigureEntropyDecoder (556); the caller object is unchanged. Independent reconstruction reproduces all 98,202 status rows and 1,708,980 credit bytes, plus 25 forced closure roots. The full process exits zero after 3,437 seconds. The fixed receipt still contains five forced duplicate symbols (ten diagnostics); the complete no-FORCE/no-stubs/runtime exit test remains unproven. The comparison keeps reference 32774ab03393709a7f14331ba8d98d281a55ffd9 fixed in both states; normal source controls pass against production reference 4fa9d591641a743b86f2320343b7a276585b814b.

@@ -1192,9 +1192,14 @@ Whole-unit clearance and census confirmation remain pending.
   agree with retail; the same symbol, type and bound are retained. Normal
   controls pass the 331-byte context function and its unchanged 556-byte
   entropy-decoder caller, plus six data rows. Source work finalized at t=8
-  minutes with no new function coverage, name, pin or alias. The fixed comparison
-  against `dc81d055af` is pending; no prospective credit or current-master
-  census gain is claimed. Other motion-vector storage prerequisites remain.
+  minutes with no new function coverage, name, pin or alias. The authoritative
+  fixed comparison `dc81d055af` to `a150087a1c` gains **887 placed closed-strict
+  bytes** in 2 rows, with zero losses. Exactly one of 23,460 canonical objects
+  changes; independent reconstruction reproduces all 98,202 rows and the
+  1,708,980-byte credit, with 25 additional forced roots. The process exits
+  zero after 3437 seconds, with zero final drift or new unresolved references.
+  This coefficient subset is cleared in the fixed comparison. Other motion-vector
+  storage prerequisites and current-master census confirmation remain open.
 - **LargeGroupAudio key-tree follow-up (2026-10-26, `e5c5a1787c`):**
   [the whole key-list repair](../reverse/attempt_support/largegroup-keylist-erase-link-20261026.md)
   preserves its 191-byte parent and verifies all 15 rows of the native erase
