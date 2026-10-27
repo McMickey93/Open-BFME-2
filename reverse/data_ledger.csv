@@ -19233,7 +19233,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A01ED0,4,.data,global,?g_00E01ED0@@3PAEA,,unowned,,0,3
 0x00A01ED4,4,.data,global,_s_rva007AEE5B,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A01ED8,4,.data,global,_s_rva007AEE6B,Code/GameEngine/Source/Common/Rva007ABC6FFrameRateInits.cpp,owned,,1,1
-0x00A01EDC,4,.data,global,?g_Va00E01EDC@@3PAXA,Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp,owned,,1,5
+0x00A01EDC,4,.data,global,?TheMineshaftPortalNetworkManager@@3PAXA,Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp,owned,,1,7
 0x00A01EE0,4,.data,global,_s_rva007AEEAF,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A01EE4,4,.data,global,?s_key@?1??Rva00372D3AFind@@YAPAXPAX@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourFind.cpp,owned,,1,2
 0x00A01EE8,4,.data,global,?$S1@?1??Rva00372D3AFind@@YAPAXPAX@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourFind.cpp,owned,,1,4
@@ -19732,7 +19732,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A030CC,4,.data,global,?DISABLEDMASK_NONE@@3V?$BitFlags@$0L@@@A,Code/GameEngine/Source/Common/System/BitFlags11Any.cpp,owned,,1,2
 0x00A030D0,4,.data,global,?DISABLEDMASK_ALL@@3V?$BitFlags@$0L@@@A,Code/GameEngine/Source/Common/System/BitFlags11Any.cpp,provisional,?DISABLEDMASK_ALL@@3V?$BitFlags@$0L@@@A;?g_rva004AB9D5Value@@3VBfmeFixedStorage002CF0F0@@A,1,4
 0x00A030D4,4,.data,global,?TheGameResultsQueue@@3PAVGameResultsInterface@@A,,unowned,,0,1
-0x00A030D8,4,.data,global,?g_Va00E030D8@@3PAXA,Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp,owned,,1,4
+0x00A030D8,4,.data,global,?TheGameStateMap@@3PAXA,Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp,owned,,1,5
 0x00A030DC,4,.data,global,_s_rva007B0115,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A030E0,4,.data,global,?g_Va00E030E0@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E030xx.cpp,provisional,?$S1@?4??clearScratchPadMaps@GameStateMap@@QAEXXZ@4IA@Code/GameEngine/Source/Common/Rva0041AD08Read.cpp;?g_Va00E030E0@@3IA,2,4
 0x00A030E4,4,.data,global,?g_Va00E030E4@@3IA,,unowned,?g_Va00E030E4@@3IA;?suffix@?4??clearScratchPadMaps@GameStateMap@@QAEXXZ@4VUnicodeString@@A@Code/GameEngine/Source/Common/Rva0041AD08Read.cpp,1,2

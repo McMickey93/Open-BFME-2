@@ -5964,9 +5964,9 @@ Bool Pathfinder::MoveAllies(Object *obj, Path *path, Bool force)
 // Hierarchical search views: native2F71A6 and the complete WB D4FAE0 body
 // establish these accessed fields; ZH/BF1 supply the search algorithm only.
 class MineshaftPortalNetworkManager { public: Bool hasUsableNetwork(void *); };
-// The sole datum owner is GameStateInit.cpp g_Va00E01EDC (data_ledger A01EDC).
-// GameEngineInit.cpp registration literal independently identifies its role.
-void * g_Va00E01EDC;	// retail RVA 0x00A01EDC (.bss), defined here
+// GameStateInit.cpp defines TheMineshaftPortalNetworkManager (0x00A01EDC); the
+// GameEngineInit.cpp registration literal names it.
+extern void *TheMineshaftPortalNetworkManager;
 class HierarchyTerrain : public PathfinderNativeSlots<33> { public: virtual Waypoint *getFirstWaypoint(); };
 class Rva002E6ECA { public: Int get() const; };
 Int isGroundOrBridgeLayer(Int);
@@ -6042,7 +6042,7 @@ Path *Pathfinder::internal_findHierarchicalPath(Bool isHuman,
  m_isTunneling=false;
  Bool useMineshaft=false;
  HierarchyPoint originalTo(adjustTo);
- if(((MineshaftPortalNetworkManager *)g_Va00E01EDC)->hasUsableNetwork(obj->getControllingPlayer())) {
+ if(((MineshaftPortalNetworkManager *)TheMineshaftPortalNetworkManager)->hasUsableNetwork(obj->getControllingPlayer())) {
   float startDistance=0.0f,endDistance=0.0f;
   for(Waypoint *way=((HierarchyTerrain *)TheTerrainLogic)->getFirstWaypoint();way;way=way->next) {
    switch(way->type) { case 8: if((unsigned char)((Rva002E6ECA *)way)->get() && way->isValidUnitType(obj)) {

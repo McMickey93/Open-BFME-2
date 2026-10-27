@@ -47,11 +47,6 @@ Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	duplicate-def	?g_rva00E08D3C
 Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	wrong-name	?g_rva00E08D3CString@@3VStringClass@@A	0x00A08D3C
 Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp	wrong-name	?g_rva0134FB38@@3URva0134FB38Storage@@A	0x00A09E50
 Code/GameEngine/Source/GameLogic/Object/Upgrade/ModelConditionUpgrade.cpp	wrong-name	?$S1@?1??rva0004B63E3@ModelConditionUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03EC8
-Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?TheRva002D3627Host@@3PAVRva002D3627Host@@A	0x009FF028
-Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
-Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?g_00DFEC68@@3PAVRva00285D34@@A	0x009FEC68
-Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?g_Rva0023D607Holder@@3PAURva0023D607Holder@@A	0x009FDC8C
-Code/GameEngine/Source/Common/System/SaveGame/GameStateInit.cpp	wrong-name	?g_Va00E01E18@@3PAXA	0x00A01E18
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Source@@3VAsciiString@@A	0x00A01CF0
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Target@@3VAsciiString@@A	0x00A01CF4
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva004AB9D5Value@@3VBfmeFixedStorage002CF0F0@@A	0x00A030D0
