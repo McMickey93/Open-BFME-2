@@ -83,16 +83,7 @@ void _STLP_CALL __node_alloc<true, 0>::deallocate(void *__p, size_t __n)
 typedef int Int;
 typedef unsigned int UnsignedInt;
 
-class AsciiString
-{
-public:
-	AsciiString(int zero) : m_data(reinterpret_cast<void *>(zero)) {}
-	~AsciiString();
-	void set(const char *str);
-
-private:
-	void *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 struct FXBoneInfo
 {
@@ -206,7 +197,7 @@ private:
 inline StructureToppleUpdateModuleData::StructureToppleUpdateModuleData()
 	: UpdateModuleData()
 	, m_vtable(reinterpret_cast<const void *>((unsigned int)&g_00BF43A8))
-	, m_crushingWeaponName(0)
+	, m_crushingWeaponName()
 {
 	m_minToppleDelay = 0;
 	m_maxToppleDelay = 0;

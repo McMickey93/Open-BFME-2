@@ -21,16 +21,7 @@ class AsciiString;
 
 
 
-class AsciiString
-{
-	friend void __cdecl StrategicHUD::SetCommandPointsString(int, struct Rva005EF096Outer *, int, int);
-public:
-	AsciiString() {}
-	~AsciiString() {}
-	void __cdecl format(const char *fmt, ...);
-private:
-	StringBase<char> m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 struct Rva005EF096Inner
 {

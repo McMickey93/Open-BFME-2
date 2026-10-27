@@ -4824,7 +4824,6 @@ class_gate_allow	Code/GameEngine/Source/Common/Rva005CD31C.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva005CD378.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva005E5942Chain.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva0075A4DCCluster.cpp	Video	1
-class_gate_allow	Code/GameEngine/Source/Common/Rva007ABBB3CtorInits.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva007ABBB3CtorInits_Rva007ADCAE.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/Common/RvaHelperThenMemberForwarders.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/System/MessageStreamCommandName.cpp	AsciiString	1
@@ -4857,7 +4856,6 @@ class_gate_allow	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorld
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildPlot_Unresolved.cpp	Snapshot	1
 class_gate_allow	Code/GameEngine/Source/Main/Win32GameEngineFactories.cpp	GameLogic	1
 class_gate_allow	Code/GameEngineDevice/Source/MilesAudioDevice/MilesAudioManager.cpp	Coord2D	1
-class_gate_allow	Code/GameEngineDevice/Source/MilesAudioDevice/Rva006AD9B0GetAllowAudioReinitialize.cpp	AsciiString	1
 class_gate_allow	Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva0009C18ACameraBounds.cpp	Region3D	1
 class_gate_allow	Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp	StringBase	1
 class_gate_allow	Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowTextureUpdateBounds.cpp	Region3D	1

@@ -4,8 +4,8 @@
 //
 // Guarded format-and-append sibling of _fprintf in FprintfAppendLine.cpp:
 // when the TheGameLogic byte at +0x70 is set and format is non-null, the
-// args format through msvcr71 _vsnprintf into a 1000-byte frame buffer, a
-// StringBase temp takes the buffer through the rowed const-char
+// args format through msvcr71 _vsnprintf into a 1000-byte frame buffer, an
+// AsciiString temp takes the buffer through the rowed const-char
 // constructor at 0x37BA0, and the line appends to the target's vector at
 // +4 through the same BfmeVector<AsciiString>::push_back spelling the
 // _fprintf TU lands, before the temp tears down through the 0x36410 fold.
@@ -16,29 +16,7 @@
 
 #include <stdio.h>
 
-template <typename T>
-class StringBase
-{
-public:
-	StringBase(const T *text);
-	~StringBase();
-
-private:
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-
-	Header *m_data;
-};
-
-class AsciiString : public StringBase<char>
-{
-private:
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 template <typename T>
 class BfmeVector
@@ -77,7 +55,7 @@ void AppendInLogicUpdateOnly(Rva002CECAETarget *target, const char *format, ...)
 		va_start(args, format);
 		_vsnprintf(buffer, sizeof(buffer), format, args);
 		va_end(args);
-		StringBase<char> tmp(buffer);
-		target->m_lines.push_back((const AsciiString &)tmp);
+		AsciiString tmp(buffer);
+		target->m_lines.push_back(tmp);
 	}
 }

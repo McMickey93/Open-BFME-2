@@ -16,7 +16,7 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 // Modified for BFME2: local CRT declaration and original-binary compiler flags.
-// cl: /Ireference/shims/bfme2_ascii /EHsc
+// cl: /Ireference/shims/bfme2_ascii /EHsc /MD
 //
 // /EHsc (VC's /GX) lets the extern "C" Win32 imports count as non-throwing.
 // Retail initializeAppWindows keeps its title UnicodeString temporary alive
@@ -1162,39 +1162,7 @@ private:
 };
 }
 
-// The engine's reference-counted narrow string: str() over the shared empty
-// literal. The destructor is declaration-only so this TU does not emit its
-// own select-any copy: calls reach the kept copy in ascii_string.cpp
-// (jmp releaseBuffer), not this TU's old jmp to ~StringBase.
-template <>
-class StringBase<char>
-{
-	friend class AsciiString;
-
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		char data[1];
-	};
-
-public:
-	~StringBase();
-
-private:
-	Header *m_data;
-};
-
-class AsciiString
-{
-public:
-	~AsciiString();
-	const char *str() const { return m_data.m_data ? m_data.m_data->data : ""; }
-
-private:
-	StringBase<char> m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 AsciiString GetRegistryLanguage();
 

@@ -7,40 +7,13 @@
 
 class AsciiString;
 
-template <typename T>
-class StringBase
-{
-private:
-	friend class AsciiString;
-	friend void *__cdecl Rva004110DCGet(const char *key);
-	void releaseBuffer();
-	StringBase(const T *text);
-	StringBase(const StringBase<T> &that);
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
-
-class AsciiString
-{
-public:
-	AsciiString(const char *text)
-	{
-		((StringBase<char> *)this)->StringBase<char>::StringBase(text);
-	}
-private:
-	char *m_text;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class Rva00056F61
 {
 public:
-	void *rva00056F61(const AsciiString *key);
+	// Retail keeps no unwind state for the key temporary across this call.
+	void *rva00056F61(const AsciiString *key) throw();
 };
 
 // g_Va00E02FF8: VA 0x00E02FF8 (.data/bss), defined by its data-row owner
@@ -51,9 +24,11 @@ extern unsigned g_Va00E02FF8;
 
 void * __cdecl Rva004110DCGet(const char *key)
 {
-	AsciiString tmp(key);
-	void *node = reinterpret_cast<Rva00056F61 *>(&g_Va00E02FF8)->rva00056F61(&tmp);
-	((StringBase<char> *)&tmp)->releaseBuffer();
+	void *node;
+	{
+		AsciiString tmp(key);
+		node = reinterpret_cast<Rva00056F61 *>(&g_Va00E02FF8)->rva00056F61(&tmp);
+	}
 	if (node != 0)
 		return *(void **)((char *)node + 8);
 	return 0;

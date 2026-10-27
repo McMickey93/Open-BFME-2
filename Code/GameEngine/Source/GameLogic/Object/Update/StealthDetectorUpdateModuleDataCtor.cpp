@@ -9,19 +9,14 @@
 // (news 0x70) is the sole caller; the table at 0xC52188 is DetectionRate-led
 // with ExtraRequiredKindOf at +0x30 and ExtraForbiddenKindOf at +0x4C. Row
 // supersedes the ctor pin.
-class AsciiString
-{
-public:
-	AsciiString() : m_data(0) {}
-
-private:
-	void *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class Rva0024C7B3Member
 {
 public:
-	Rva0024C7B3Member();
+	// Retail builds the AsciiString members ahead of these two with no unwind
+	// state: this constructor is compiled as non-throwing.
+	Rva0024C7B3Member() throw();
 
 	unsigned char m_data[0x1C];
 };

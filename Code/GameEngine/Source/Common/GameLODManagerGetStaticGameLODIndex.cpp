@@ -8,12 +8,11 @@
 // miss. No debug-reporting tail; the by-value parameter is destroyed here at
 // the end (MSVC callee-destroys rule), which is the trailing releaseBuffer
 // call. Retail facts:
-// - compareNoCase is DECLARED-only (retail calls the StringBase<char> 1-arg
-//   out-of-line body at 0x00037980; defining it inline would fold the call
-//   away). AsciiString befriends GameLODManager for the private-base access.
-// - The parameter destruction routes through the DECLARED-only StringBase
-//   destructor (rowed 0x36410); the implicit AsciiString dtor inlines to that
-//   single call (sibling precedent: declared-only dtor keeps 0x36410).
+// - compareNoCase: the canonical AsciiString forwards to the declared-only
+//   StringBase<char> 1-arg body (retail calls 0x00037980), declared throw()
+//   below.
+// - The parameter destruction is the canonical ~AsciiString's single
+//   releaseBuffer call (rowed 0x36410).
 // - The table base (retail 0xDB969C) is DIR32-masked, so any extern spelling
 //   verifies; the entry values never enter .text. Retail strings:
 //   VeryLow/Low/Medium/High/VeryHigh.
@@ -24,34 +23,11 @@
 typedef int Int;
 typedef bool Bool;
 
-template <typename T> struct BfmeStringData
-{
-	int refCount;
-	unsigned short length;
-	unsigned short capacity;
-	T text[1];
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-template <typename T> class StringBase
-{
-	friend class AsciiString;
-	friend class GameLODManager;
-public:
-	// throw() (findTerrain precedent): a throwing leaf callee forces an
-	// `and [ebp-4],0` state init retail lacks; the leaf compare cannot
-	// throw, so the unwind state is omitted while the frame stays.
-	Int compareNoCase(const char *other) const throw();
-	~StringBase();
-private:
-	BfmeStringData<T> *m_data;
-};
-
-class AsciiString : private StringBase<char>
-{
-	friend class GameLODManager;
-public:
-	~AsciiString();
-};
+// throw(): a throwing leaf callee forces an `and [ebp-4],0` state init
+// retail lacks; the leaf compare (0x00037980) cannot throw.
+template <> int StringBase<char>::compareNoCase(const char *other) const throw();
 
 class GameLODManager
 {

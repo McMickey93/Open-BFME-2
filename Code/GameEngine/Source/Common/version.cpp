@@ -13,21 +13,15 @@ class AsciiString;
 
 #include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-class AsciiString
-{
-public:
-    AsciiString(const AsciiString &that) : m_data(that.m_data) {}
-    // The member's inline ~StringBase releases the buffer.
-    ~AsciiString() {}
-    // StringBase::getCharAt is out of line; retail expands the read here.
-    __declspec(dllimport) __forceinline char getCharAt(int index) const
-    {
-        return m_data.m_data ? m_data.m_data->data[index] : 0;
-    }
-private:
-    StringBase<char> m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
+// StringBase<char>::getCharAt is out of line (0x00035720); retail expands the
+// read here: AsciiString's one pointer is the StringBase header, its text at +8.
+static __forceinline char inlineCharAt(const AsciiString &text, int index)
+{
+    const char *const *header = (const char *const *)&text;
+    return *header ? (*header)[8 + index] : 0;
+}
 
 // Retail fetch call uses vtable offset 0x3c. The fourteen preceding
 // non-destructor methods have not yet been reconstructed in this TU.
@@ -105,7 +99,7 @@ UnicodeString Version::getFullUnicodeVersion()
         version.format(TheGameText->fetch("Version:Format3").str(), m_major, m_minor, m_buildNum);
     else
         version.format(TheGameText->fetch("Version:Format4").str(), m_major, m_minor, m_buildNum, m_localBuildNum,
-            m_buildUser.getCharAt(0), m_buildUser.getCharAt(1));
+            inlineCharAt(m_buildUser, 0), inlineCharAt(m_buildUser, 1));
 
     return version;
 }

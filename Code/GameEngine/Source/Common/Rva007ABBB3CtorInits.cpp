@@ -56,13 +56,7 @@ typedef _STL::map<unsigned char, int, _STL::less<unsigned char>, _STL::allocator
 typedef _STL::map<AsciiString, TreeHintOpaque0043671B, _STL::less<AsciiString>, _STL::allocator<_STL::pair<const AsciiString, TreeHintOpaque0043671B> > > AsciiHintMap;
 typedef _STL::map<int, BfmePod24, _STL::less<int>, _STL::allocator<_STL::pair<const int, BfmePod24> > > IntPod24Map;
 
-// class-gate: allow AsciiString retail calls the out-of-line folded default ctor at 0x00326BE6; the shared header's inline m_text(0) ctor would store inline instead of emitting that call
-class AsciiString
-{
-public:
-	AsciiString();
-	static const AsciiString TheEmptyString;	// VA 0x00DE0878
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 #include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
@@ -229,6 +223,11 @@ struct Rva007ABBB3CtorInits
 	static void rva007B063B();
 	static void rva007B3486();
 };
+
+// Each initializer calls its class's default constructor out of line, as
+// retail does (AsciiString's is the folded null-first-word body at 0x00326BE6);
+// the canonical AsciiString() would otherwise expand to an inline store.
+#pragma inline_depth(0)
 
 // 0x007ABBB3 (22B): ??0INIMacroTable@@QAE@XZ on VA 0x00DDF58C, atexit(0x007B6A6E)
 void Rva007ABBB3CtorInits::rva007ABBB3()
@@ -440,3 +439,4 @@ void Rva007ABBB3CtorInits::rva007AC8E0()
 	atexit( rva007B6EC2 );
 }
 
+#pragma inline_depth()

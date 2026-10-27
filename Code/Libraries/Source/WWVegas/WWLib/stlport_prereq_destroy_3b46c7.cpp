@@ -2,14 +2,7 @@
 // stlport
 // ?Rva003B46C7Destroy@@YAXPAUPrereqUnitRec@ProductionPrerequisite@@0@Z @0x003B46C7 25B destroy range over 0x14-byte PrereqUnitRec via rowed dtor 0x00577998 callers 0x003B6846 0x003B7057
 #include <stdlib.h>
-class AsciiString
-{
-public:
-	~AsciiString();
-private:
-	char *m_data;
-	char m_pad[8];
-};
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 class ProductionPrerequisite
 {
 public:
@@ -18,6 +11,9 @@ public:
 		unsigned int m_first;
 		unsigned int m_second;
 		AsciiString m_name;
+		// The 0x14-byte stride: two more dwords follow the name (unread here).
+		unsigned int m_unknown0C;
+		unsigned int m_unknown10;
 		~PrereqUnitRec();
 	};
 };

@@ -12,35 +12,8 @@
 // Owner unproven so honest-address class Rva0041811D.
 class AsciiString;
 
-template <typename T>
-class StringBase
-{
-private:
-	friend class AsciiString;
-	friend class Rva0041811D;
-	void releaseBuffer();
-	StringBase(const T *text);
-	StringBase(const StringBase<T> &that);
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-class AsciiString
-{
-public:
-	AsciiString(const char *text)
-	{
-		((StringBase<char> *)this)->StringBase<char>::StringBase(text);
-	}
-private:
-	char *m_text;
-};
 class Rva00056F61;
 struct Rva0041534BIter
 {
@@ -55,7 +28,8 @@ public:
 class Rva0041811D
 {
 public:
-	void *rva0041811D(const AsciiString *key);
+	// The default getters keep no unwind state for their key temporary.
+	void *rva0041811D(const AsciiString *key) throw();
 	void *rva00418825();
 	void *rva00419154();
 	void *rva004196F8();
@@ -73,9 +47,7 @@ void *Rva0041811D::rva0041811D(const AsciiString *key)
 void *Rva0041811D::rva00418825()
 {
 	AsciiString tmp("AutoResolve_DefaultBody");
-	void *res = rva0041811D(&tmp);
-	((StringBase<char> *)&tmp)->releaseBuffer();
-	return res;
+	return rva0041811D(&tmp);
 }
 // ?rva00419154@Rva0041811D@@QAEPAXXZ, retail 0x00419154, 46 bytes. Default
 // CombatChain getter via rowed 0x0041811D with DefaultCombatChain string.
@@ -84,9 +56,7 @@ void *Rva0041811D::rva00418825()
 void *Rva0041811D::rva00419154()
 {
 	AsciiString tmp("AutoResolve_DefaultCombatChain");
-	void *res = rva0041811D(&tmp);
-	((StringBase<char> *)&tmp)->releaseBuffer();
-	return res;
+	return rva0041811D(&tmp);
 }
 // ?rva004196F8@Rva0041811D@@QAEPAXXZ, retail 0x004196F8, 46 bytes. Default
 // Weapon getter via rowed 0x0041811D with DefaultWeapon string. Evidence:
@@ -94,7 +64,5 @@ void *Rva0041811D::rva00419154()
 void *Rva0041811D::rva004196F8()
 {
 	AsciiString tmp("AutoResolve_DefaultWeapon");
-	void *res = rva0041811D(&tmp);
-	((StringBase<char> *)&tmp)->releaseBuffer();
-	return res;
+	return rva0041811D(&tmp);
 }

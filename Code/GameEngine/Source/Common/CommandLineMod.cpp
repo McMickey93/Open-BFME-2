@@ -16,16 +16,7 @@ class UnicodeString;
 #define BFME_STRINGBASE_PUBLIC_DTOR
 #include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-// Retail narrow cleanup calls the releaseBuffer worker directly.
-// Keep the forwarding destructor inline without emitting a competing copy.
-template <> __declspec(dllimport) __forceinline
-StringBase<char>::~StringBase() { releaseBuffer(); }
-
-class AsciiString:public StringBase<char> {
-public:
-    AsciiString(const char *s):StringBase<char>(s){}
-    AsciiString& operator=(const UnicodeString&);
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 struct BFME2WideConcatPair {
     const UnicodeString *a,*b;
     BFME2WideConcatPair(const UnicodeString& unicodeString,const UnicodeString& y){b=&y;a=&unicodeString;}

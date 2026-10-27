@@ -42,30 +42,10 @@
 // after an early return; together they give the two strings separate slots,
 // which a named key in a nested block (sharing the value's slot) does not.
 
-template <typename T> class StringBase
-{
-	friend class AsciiString;
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-public:
-	int compareNoCase(const T *text) const throw();
-
-private:
-	StringBase(const T *text);
-	StringBase(const StringBase &other);
-	void releaseBuffer();
-
-	void *m_data;
-};
-
-// class-gate: allow AsciiString the donor's own view; the placed bodies are byte-exact under it
-class AsciiString : private StringBase<char>
-{
-public:
-	AsciiString(const char *s) : StringBase<char>(s) {}
-	AsciiString(const AsciiString &that) : StringBase<char>(that) {}
-	~AsciiString() { releaseBuffer(); }
-
-};
+// Retail calls the rowed StringBase text comparator with no unwind state.
+template <> int StringBase<char>::compareNoCase(const char *text) const throw();
 
 class PreferenceMap;
 
