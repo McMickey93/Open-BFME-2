@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "purpose": "verified-cleanup",
+  "expected_cpp_delta": 0,
+  "project": 2,
+  "fork": "McMickey93/Open-BFME-2",
+  "upstream": "https://github.com/Open-BFME/Open-BFME-2.git",
+  "base": "fc0fa653f6625f78f615d7ca2c98148facf65853",
+  "agents_blob": "43a21b639c94eba6538b14a8b7eb117adecd10c3",
+  "control_branch": "codex/20261027-bfme2-cleanup-qualification",
+  "result_branch": "codex/20261027-bfme2-qualified-apt-header",
+  "reference_path": "reference/open-bfme-1",
+  "new_reference": "39e371392398a33a30e1a6b3af67e5662a745bb1",
+  "compiler": "reference/open-bfme-1/inputs/toolchains/vs2003/Program Files/Microsoft Visual Studio .NET 2003/Vc7/bin/cl.exe",
+  "compiler_sha256": "2ecf86a3edfd3deae498e08298e210e984537ce9e11759930561e43f40bd2515",
+  "claim": {
+    "key": "file/7dec02d806ee6f77",
+    "owner": "github:McMickey93:bfme2:next-round-20261026",
+    "lease": "2864338d05254e1087f0b1b2f20fd826"
+  },
+  "consumers": [
+    "Code/GameEngine/Source/Common/Rva00518769Dtor.cpp"
+  ],
+  "providers": [
+    "Code/GameEngine/Source/Common/System/GameMemoryFree.cpp"
+  ],
+  "immutable_ledgers": [
+    "reverse/functions.csv",
+    "reverse/symbols.csv",
+    "reverse/gate_baseline.txt",
+    "reverse/eh_baseline.csv"
+  ],
+  "groups": [
+    {
+      "refresh_reference": true,
+      "files": [
+        {
+          "path": "reverse/attempt_support/20261027-bfme1-reference-refresh-apt.md",
+          "kind": "new",
+          "base_blob": null,
+          "text": "# Native BFME 1 input refresh for the AptOptions header task\n\nThe original qualification request starts from BFME 2 official\nfc0fa653f6625f78f615d7ca2c98148facf65853 with reference/open-bfme-1 at\nff101f03e2e533d73b130c24af64ac9760ea70a9. The reviewed new input is BFME 1\nofficial master 39e371392398a33a30e1a6b3af67e5662a745bb1.\n\nThe completion workflow captures the actual official BFME 2 parent and old\nreference checkout. It initializes only reference/open-bfme-1, without the\nnested reference back to BFME 2, and checks the original MSVC 7.1 executable.\nA full native byte gate runs before and after the reference update, at the\nsame BFME 2 source revision and before applying the AptOptions source edit.\nIt records success only after both gates finish; an interrupted run does not\nqualify this commit or write a success stamp.\n\nThe reviewed 35-commit BFME 1 delta changes game sources, ledgers, evidence\nand a repair-queue tool; it changes no shared input header or toolchain path.\nThe native build's dependency receipts determine recompilation. No existing\ndonor placement or source trial cache is imported into this fresh checkout.\nNo fallback include directory, new binary baseline or verifier exception is\nintroduced. The pointer accompanies this evidence so other checkouts receive\nthe same verified inputs.\n\nNative command logs and the exact parent, tree and artifact manifest are\nretained by the contributor-fork qualification workflow. This documentation\nis committed only through its successful ordinary native commit hook.\nNew C++ coverage: +0 bytes.\n\nAutonomous implementation and measurements: OpenAI Codex.\n"
+        }
+      ],
+      "message": "Refresh BFME 1 inputs after complete native before-and-after gates\n\nInitialize only the direct cross-project reference and preserve the original\ncompiler context. Compare full native BFME 2 verification at the same source\nrevision before applying the AptOptions header edit; no partial check or\nimported cache can stamp this refresh successful.\n\nReference: 39e371392398a33a30e1a6b3af67e5662a745bb1\nNew exact C++ bytes: +0.\n\nAgent-Authored: OpenAI Codex\n"
+    },
+    {
+      "files": [
+        {
+          "path": "Code/GameEngine/Source/Common/Rva00518769Dtor.cpp",
+          "kind": "replace",
+          "base_blob": "4ac7aa45fab994866984e2dfc33c71e7d6f7a76b",
+          "replacements": [
+            {
+              "old": "// cl: /MD /EHsc\n",
+              "new": "// cl: /MD /EHsc /EHc- /D_CRTIMP=\n"
+            },
+            {
+              "old": "#include \"../../../../reference/shims/bfme2_ascii/ascii_string.h\"\n",
+              "new": "#include \"../../../../reference/shims/bfme2_ascii/ascii_string.h\"\n#include <stdlib.h>\n"
+            },
+            {
+              "old": "void __cdecl free(void *p);\n",
+              "new": ""
+            }
+          ]
+        },
+        {
+          "path": "docs/recipes.md",
+          "kind": "append",
+          "text": "\n\n## Game free through the CRT header without losing EH states (2026-10-26)\n\nFor Rva00518769Dtor.cpp, replacing the local C++ free(void *) prototype with\n<stdlib.h> requires both /D_CRTIMP= and /EHc- after /EHsc. The first keeps\na direct call to the game's C _free provider; the second preserves retail's\nexception visibility after the linkage change. The header-only trial failed;\nthe combined change passes all nine consumer/provider rows and the complete\nEH graph under MSVC 7.1. This is a measured per-TU setting, not permission to\nredirect other callers to this allocator.\nEvidence: reverse/attempt_support/20261026-apt-options-crt-free.md.\n"
+        },
+        {
+          "path": "reverse/attempt_support/20261026-apt-options-crt-free.md",
+          "kind": "new",
+          "base_blob": null,
+          "text": "# AptOptions destructor: use the CRT free declaration\n\n## Scope and callee identity\n\nTarget: AptOptions::~AptOptions at RVA 0x00518769, 297 bytes, in\nCode/GameEngine/Source/Common/Rva00518769Dtor.cpp. The whole translation unit,\nits deleting destructor and five unwind funclets are part of verification.\nThe initial local trial used BFME 2 base\n69fe964ceac1befa94d9f5aaf17023a21d7ef745; the native completion workflow\nrecords the current official parent actually qualified.\n\nThe intended C _free provider is the game's 17-byte wrapper at RVA 0x00030830\n(VA 0x00430830), in Common/System/GameMemoryFree.cpp:\nit forwards to __gameMemFreePtr(block, 3).\nThe CRT IAT entry at 0x00BBA6E8 is not this target.\nConsumer and provider are verified together; no pin or alias is added.\n\n## Minimal measured compiler context\n\nReplace the local C++ free(void *) prototype with <stdlib.h>.\nThe existing /MD /EHsc context also requires /D_CRTIMP= and /EHc- after\n/EHsc. Disabling _CRTIMP prevents an imported CRT call; /EHc- preserves the\nexception visibility and state graph after free acquires C linkage.\n\nHeader plus _CRTIMP alone failed the parent and was reverted. The combined\nsettings pass all nine consumer/provider rows and the complete EH graph\nunder native MSVC 7.1. The normal verifier resolves five renumbered unwind\nlabels from parent data; no handwritten funclet pin is needed.\nSee also ai-countmap-native-lifecycle-seat2-20261023.md for the prior mechanism.\n\n## Header and whole-file checks\n\nThe completed local SDK audit indexed 954 headers and 223,083 names.\nBefore the edit the file was classified conflicting, including the local\nC++ free versus the header's C declaration. Afterwards it was clean and\nhad no local free occurrence. The native completion workflow rebuilds the\nindex and repeats show/check, declared-body, byte and EH verification.\n\nThe actual game Shell class and forward declaration remain: their collision\nwith an SDK typedef is not evidence that the game class should be replaced.\nNo reconstruction body changes, new C++ coverage or debt-register retirement\nare claimed. This is declaration and ABI cleanup, +0 new C++ bytes.\n\nAutonomous implementation and measurements: OpenAI Codex.\n"
+        }
+      ],
+      "message": "Use the CRT free declaration in the AptOptions destructor unit\n\nInclude stdlib.h in place of the TU-local C++ free prototype. Keep a direct\ncall to the verified game _free wrapper with /D_CRTIMP=, and preserve the\nretail exception-state graph with /EHc- after /EHsc.\n\nVerify the complete consumer and its provider together: nine byte-exact rows,\ncomplete exact EH graph, declared-body check and Microsoft-header audit.\nThe real game Shell class remains. No new pin, function row, code coverage\nor debt-register retirement is claimed; new exact C++ bytes are +0.\n\nClaim-Lease: file/7dec02d806ee6f77=2864338d05254e1087f0b1b2f20fd826\nAgent-Authored: OpenAI Codex\n"
+    }
+  ]
+}
