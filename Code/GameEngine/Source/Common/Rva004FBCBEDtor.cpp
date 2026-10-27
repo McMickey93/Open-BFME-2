@@ -26,7 +26,6 @@ public:
  int m_04;
 };
 
-// ??1Rva004FBCBEBase@@UAE@XZ present-unmatched
 inline Rva004FBCBEBase::~Rva004FBCBEBase()
 {
 	*(const void **)this = __identifier("??_7Secondary005E7ED7@@6B@");
