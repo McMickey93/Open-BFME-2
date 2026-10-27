@@ -204,6 +204,17 @@ authored-byte previews or commit-title gains into a projected headline.
 - **Clearance / census confirmation:** graphics ordinary-preview scope cleared
   at the revision above; other families and census confirmation remain pending.
   Keep individual repair previews separate from later census confirmation.
+- **mixfile identity follow-up (2026-10-27, inspected `babdf75191`):**
+  [The bounded caller/provider check](../reverse/attempt_support/mixfile-identity-20261027-codex.md)
+  retires six stale element-lifetime keys and binds the dynamic resize's
+  native base call to its existing 0x00155690 owner, retiring a seventh key.
+  All 11 paired rows verify; 100 external definitions retain bytes and
+  linkage, with only the caller's one relocation changing. Ordinary previews
+  preserve 2/2 LINKS and 1,142 authored bytes against index `73061d9452`.
+  The FileOffsetStruct destructor's wrong extent at 0x00042FF8 remains
+  registered: reconcile its StringClass layout with the native raw-array
+  lifetime contract and all emitted copies before retirement. No new
+  census-linked-byte or ownership gain is claimed.
 - **Consolidation outgoing-batch audit (2026-10-26, `a590d451c6`):** the
   outgoing source diff contains 42 paths. `tools/link_batch_audit.py --base
   origin/master --tip HEAD` is inconclusive: its provider index is at

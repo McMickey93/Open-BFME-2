@@ -101,6 +101,36 @@ struct FileOffsetStruct {
 		unsigned long Offset;
 };
 
+// The native base resize at 0x00155690 is already owned by this vector
+// instantiation. Both views carry an eight-byte element with a reference-
+// counted surface at +4; keep the qualified base call bound to that owner.
+class EnumParameterClass
+{
+public:
+	struct _ENUM_VALUE;
+};
+template <> bool VectorClass<EnumParameterClass::_ENUM_VALUE>::operator==(
+	const VectorClass<EnumParameterClass::_ENUM_VALUE> &) const;
+template <> int VectorClass<EnumParameterClass::_ENUM_VALUE>::ID(
+	const EnumParameterClass::_ENUM_VALUE *);
+template <> int VectorClass<EnumParameterClass::_ENUM_VALUE>::ID(
+	const EnumParameterClass::_ENUM_VALUE &);
+template <> bool VectorClass<EnumParameterClass::_ENUM_VALUE>::Resize(
+	int newsize, const EnumParameterClass::_ENUM_VALUE *array);
+template <> inline bool
+DynamicVectorClass<MixFileFactoryClass::AddInfoStruct>::Resize(
+	int newsize, const MixFileFactoryClass::AddInfoStruct *array)
+{
+	if (((VectorClass<EnumParameterClass::_ENUM_VALUE> *)this)
+		->VectorClass<EnumParameterClass::_ENUM_VALUE>::Resize(newsize,
+			(const EnumParameterClass::_ENUM_VALUE *)array))
+	{
+		if (Length() < ActiveCount) ActiveCount = Length();
+		return true;
+	}
+	return false;
+}
+
 // Retail has no MixFileFactoryClass bodies (no row; nothing imports the
 // GetFileAttributesA/MoveFileA/_stricmp the Zero Hour ones call, and no
 // MixFileCreator member exists). Only the template members below are
