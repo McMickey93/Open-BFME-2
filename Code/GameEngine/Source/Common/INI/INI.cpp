@@ -217,11 +217,15 @@ template _STL::hashtable<_STL::pair<int const, Rva0002D281Element>, int, _STL::h
 
 class MultiIniFieldParse
 {
-	const void *m_fieldParse[16];
-	unsigned m_extraOffset[16];
-	int m_count;
-
 public:
+	enum { MAX_MULTI_FIELDS = 16 };
+	const FieldParse *m_fieldParse[MAX_MULTI_FIELDS];
+	unsigned m_extraOffset[MAX_MULTI_FIELDS];
+	int m_count;
+	inline int getCount() const { return m_count; }
+	inline const FieldParse *getNthFieldParse(int i) const { return m_fieldParse[i]; }
+	inline unsigned getNthExtraOffset(int i) const { return m_extraOffset[i]; }
+
 	MultiIniFieldParse();
 	void add(const FieldParse *fields, unsigned extraOffset);
 };
@@ -266,6 +270,7 @@ class Rva00601BBCHelper
 public:
 	Rva00601BBCHelper();
 	virtual ~Rva00601BBCHelper();
+	void rva00601A8D();
 
 private:
 	char m_body[0x30]; // after the vptr: 0x34 bytes in all
@@ -304,10 +309,52 @@ template <> void _STLP_alloc_proxy<AsciiString*, AsciiString, allocator<AsciiStr
 template <> void allocator<AsciiString>::deallocate(AsciiString*, size_t) const;
 }
 
+class Xfer;
+
+enum INILoadType
+{
+	INI_LOAD_INVALID,
+	INI_LOAD_OVERWRITE,
+	INI_LOAD_CREATE_OVERRIDES,
+	INI_LOAD_MULTIFILE
+};
+
+typedef void (*INIBlockParse)(class INI *ini);
+
+struct BlockParse
+{
+	BlockParse *next;
+	const char *token;
+	INIBlockParse parse;
+};
+
+extern BlockParse *theBlockParseList;
+
 class INI
 {
 public:
 	enum { MAX_CHARS_PER_LINE = 1028 };
+public:
+	void load(AsciiString filename, INILoadType loadType, Xfer *pXfer, INIBlockParse parse);
+protected:
+	bool prepFile(const AsciiString &filename, INILoadType loadType);
+	void unPrepFile();
+	void readLine();
+public:
+	void parseLine(AsciiString &filename);
+	__forceinline INIBlockParse findBlockParse(const char *token)
+	{
+		for (BlockParse *blockParse = theBlockParseList; blockParse; blockParse = blockParse->next)
+		{
+			const char *name = blockParse->token;
+			if (strcmp(name, token) == 0)
+				return blockParse->parse;
+		}
+		return 0;
+	}
+	static void parseAsciiString(INI *ini, void *instance, void *store, const void *userData);
+	int rva0002BBDE() const;		// line number
+	AsciiString rva0002BFE5() const;	// file name
 public:
 	const char *getNextTokenOrNull(const char *seps);
 public:
@@ -428,6 +475,7 @@ public:
 	INI();
 public:
 	~INI();
+	void rva0002CBCC(const AsciiString &text, char separator);
 public:
 	AsciiString getNextAsciiString();
 public:

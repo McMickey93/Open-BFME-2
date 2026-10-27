@@ -5,7 +5,7 @@
 // their normal and catch(...) exits after prepFile 0x0002D2C1, where BFME 1's
 // ini.cpp calls unPrepFile; its stores (line list clear, filename "None",
 // zeroed counters and end-of-file flag, null file-level global) follow that
-// donor body. The member names stay offset-derived.
+// donor body. The member names are INI.cpp's view of the same offsets.
 #include "ascii_string.h"
 class Rva00601BBCHelper
 {
@@ -18,26 +18,27 @@ class INI
 {
 protected:
 	void unPrepFile();
-private:
-	char m_pad00[4];
-	AsciiString m_04;
-	int m_08;
-	int m_0c;
-	int m_10;
-	char m_pad14[0x430 - 0x14];
-	bool m_430;
-	char m_pad431[0x838 - 0x431];
-	Rva00601BBCHelper m_838;
+public:
+	void *m_file;
+	AsciiString m_filename;
+	unsigned int m_readBufferNext;
+	unsigned int m_readBufferUsed;
+	unsigned int m_lineNum;
+	char m_buffer[0x418 - 0x14];
+	char m_pad418[0x430 - 0x418];
+	unsigned char m_endOfFile;
+	char m_curBlockStart[0x838 - 0x431];
+	Rva00601BBCHelper m_helper;
 };
 
 void INI::unPrepFile()
 {
-	m_838.rva00601A8D();
-	((StringBase<char> *)&m_04)->set("None");
+	m_helper.rva00601A8D();
+	((StringBase<char> *)&m_filename)->set("None");
 	((StringBase<char> *)&BfmeINICurrentFilename)->set(*(const StringBase<char> *)&AsciiString::TheEmptyString);
-	m_08 = 0;
-	m_0c = 0;
-	m_10 = 0;
-	m_430 = false;
+	m_readBufferNext = 0;
+	m_readBufferUsed = 0;
+	m_lineNum = 0;
+	m_endOfFile = false;
 	g_00DDF57C = 0;
 }
