@@ -5,7 +5,7 @@
 // cl: /Ireference/shims/bfme2_ascii /MD
 struct TargetRef00217D4C { virtual void *destroy(unsigned int); int references; };
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
-void operator delete(void *);
+#include <new>
 struct Rva005F0647Holder { char pad[4]; TargetRef00217D4C target; };
 struct Rva005F0647 { Rva005F0647Holder *holder; void *rva005F0647(unsigned int); };
 void *Rva005F0647::rva005F0647(unsigned int flags)

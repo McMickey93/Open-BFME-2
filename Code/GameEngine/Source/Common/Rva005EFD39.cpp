@@ -3,7 +3,7 @@
 // ?rva005EFD39@Rva005EFD39@@QAEXXZ @0x005EFD39 26B: clear of StrategicHUD::RegionDetailsArmiesMovieClip::Impl* at +0.
 // Evidence: calls rowed dtor 0x005EFB05 plus rowed operator delete 0x0002FD60; caller 0x005EFDE4 tail-jmp after vtable store plus add ecx 4.
 #include "RegionDetailsArmiesClipImplView.h"
-void __cdecl operator delete(void *);
+#include <new>
 class Rva005EFD39
 {
 public:
