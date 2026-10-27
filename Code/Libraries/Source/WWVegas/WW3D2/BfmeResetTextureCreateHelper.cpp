@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /MD
+// dxsdk
+// platformsdk
 //
 // ?Rva00120720CreateTexture@@YAPAXHHHHHH@Z, retail
 // 0x00120720 (137 bytes). Cdecl D3DX texture creator behind the backend
@@ -9,9 +11,10 @@
 // log on the usage-1 path. Callees are the D3DXCreateTexture import plus
 // the rowed Log_DX8_ErrorCode; the device comes from the 0xDEDA34 global.
 
-extern "C" long __stdcall D3DXCreateTexture(
-	void *device, unsigned width, unsigned height, unsigned mipLevels,
-	unsigned long usage, int format, int pool, void **texture);
+// D3DXCreateTexture comes from the vendored SDK's d3dx9tex.h; the device,
+// format, pool and texture keep this unit's backend types and are cast at
+// the call.
+#include <d3dx9tex.h>
 
 void Log_DX8_ErrorCode(unsigned code);
 
@@ -36,16 +39,18 @@ void *Rva00120720CreateTexture(
 	long result;
 	if (usage == 1) {
 		result = D3DXCreateTexture(
-			DX8Wrapper::_Get_D3D_Device8(), width, height, mipLevels, 1,
-			format, pool, &texture);
+			reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8()), width, height,
+			mipLevels, 1, (D3DFORMAT)format, (D3DPOOL)pool,
+			reinterpret_cast<IDirect3DTexture9 **>(&texture));
 		if (result < 0)
 			return 0;
 	} else {
 		if (pool == 1 && usage == 0x200)
 			usage = 0;
 		result = D3DXCreateTexture(
-			DX8Wrapper::_Get_D3D_Device8(), width, height, mipLevels, usage,
-			format, pool, &texture);
+			reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8()), width, height,
+			mipLevels, usage, (D3DFORMAT)format, (D3DPOOL)pool,
+			reinterpret_cast<IDirect3DTexture9 **>(&texture));
 	}
 	if (result != 0)
 		Log_DX8_ErrorCode(result);

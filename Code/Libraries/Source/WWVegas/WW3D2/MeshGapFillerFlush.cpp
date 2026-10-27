@@ -1,9 +1,13 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD
+// dxsdk
+// platformsdk
 // Ghidra 00174BA6..00174C17, 113B, RET0. The existing caller 001173F0
 // establishes the DF6F94 receiver identity and its address-derived method.
 // Retail compares three pointer ranges at +0/+4, +C/+10, +18/+1C, calls
 // each range worker, then invalidates textures and clears both D3D shaders.
 // Range-worker original names and element types are not established.
+#include <d3d9.h>
+
 struct IDirect3DDevice8;
 class Rva00DF6F94GapFillerContext;
 class DX8Wrapper
@@ -47,12 +51,11 @@ void Rva00DF6F94GapFillerContext::rva174ba6()
         reinterpret_cast<Rva00174A57 *>(this)->rva00174A57();
         Rva00125430(false);
         DX8WrapperStageHelper::Rva0011CC60InvalidateTextureStages();
-        typedef long (__stdcall *ClearShader)(IDirect3DDevice8 *, void *);
-        IDirect3DDevice8 *device = DX8Wrapper::D3DDevice;
-        reinterpret_cast<ClearShader>((*reinterpret_cast<void ***>(device))[0x170/4])(device, 0);
+        // The device is a Direct3D 9 device: SetVertexShader is slot 92 (+0x170),
+        // SetPixelShader slot 107 (+0x1AC).
+        reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetVertexShader(0);
         ++number_of_DX8_calls;
-        device = DX8Wrapper::D3DDevice;
-        reinterpret_cast<ClearShader>((*reinterpret_cast<void ***>(device))[0x1AC/4])(device, 0);
+        reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetPixelShader(0);
         ++number_of_DX8_calls;
     }
 }

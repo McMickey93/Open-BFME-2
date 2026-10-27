@@ -1,10 +1,14 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
+// dxsdk
+// platformsdk
 //
 // Slot 6 (vftable 0x007CF348) of the screen filter the ledger calls
 // Rva007D85C0: drop the pixel shader (device slot 107), unbind texture stage
 // 0 through Zero Hour's inline Set_DX8_Texture and invalidate the cached
 // render states. ScreenHilightFilter's vftable shares the body at 0x007CF32C,
 // so it may be a common base's method; the slot is proven, the name is not.
+
+#include <d3d9.h>
 
 struct IDirect3DBaseTexture8
 {
@@ -15,8 +19,6 @@ struct IDirect3DBaseTexture8
 
 struct IDirect3DDevice8;
 
-typedef long (__stdcall *BfmeSetTextureFn)(IDirect3DDevice8 *, unsigned long, IDirect3DBaseTexture8 *);
-typedef long (__stdcall *BfmeSetShaderFn)(IDirect3DDevice8 *, void *);
 
 class DX8Wrapper
 {
@@ -32,9 +34,12 @@ protected:
 
 extern unsigned int number_of_DX8_calls;
 
-static inline void *deviceSlot(int slot)
+// The device keeps its D3D8 type name but is a Direct3D 9 device (SetTexture
+// slot 65, SetPixelShader slot 107); the cached textures keep their D3D8
+// type name too and are cast at the call.
+static inline IDirect3DDevice9 *device9()
 {
-	return (*(void ***)DX8Wrapper::_Get_D3D_Device8())[slot];
+	return reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 }
 
 // BFME2's inline DX8Wrapper::Set_DX8_Texture: Zero Hour's cached path plus the
@@ -44,7 +49,7 @@ static inline void *deviceSlot(int slot)
 __forceinline void DX8Wrapper::Set_DX8_Texture(unsigned int stage, IDirect3DBaseTexture8 *texture)
 {
 	if (stage >= 16) {
-		((BfmeSetTextureFn)deviceSlot(65))(_Get_D3D_Device8(), stage, texture);
+		device9()->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		return;
 	}
@@ -55,7 +60,7 @@ __forceinline void DX8Wrapper::Set_DX8_Texture(unsigned int stage, IDirect3DBase
 	Textures[stage] = texture;
 	if (Textures[stage])
 		Textures[stage]->AddRef();
-	((BfmeSetTextureFn)deviceSlot(65))(_Get_D3D_Device8(), stage, texture);
+	device9()->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 	number_of_DX8_calls++;
 	texture_changes++;
 }
@@ -69,7 +74,7 @@ public:
 // ?rva000FB0BC@Rva007D85C0@@UAEXXZ @0x000FB0BC
 void Rva007D85C0::rva000FB0BC()
 {
-	((BfmeSetShaderFn)deviceSlot(107))(DX8Wrapper::_Get_D3D_Device8(), 0);
+	device9()->SetPixelShader(0);
 	number_of_DX8_calls++;
 	DX8Wrapper::Set_DX8_Texture(0, 0);
 	DX8Wrapper::Invalidate_Cached_Render_States();
