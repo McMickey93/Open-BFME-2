@@ -171,7 +171,7 @@ extern GameLogic *TheGameLogic;
 class Rva00396E4A
 {
 public:
-	void rva00396C43(Object *obj);
+	void onTriggerEntered(Object *obj);
 	void rva00396E4A(Object *obj);
 private:
 	char m_pad00[0x38];
@@ -195,7 +195,7 @@ void Rva00396E4A::rva00396E4A(Object *obj)
 	m_map8c.erase(it);
 }
 
-// ?rva00396C43@Rva00396E4A@@QAEXPAVObject@@@Z @0x00396C43 519B: the enter
+// ?onTriggerEntered@Rva00396E4A@@QAEXPAVObject@@@Z @0x00396C43 519B: the enter
 // twin of rva00396E4A, reached through the same dispatcher 0x00397CEB. An
 // object without kindof bit 0x2F gets status 0x55 and its ID inserted into
 // the +0x8C set (rowed set<int>::insert 0x000BC15D). Otherwise, when the
@@ -203,7 +203,7 @@ void Rva00396E4A::rva00396E4A(Object *obj)
 // in slot 0, it paths the entrant 150 units directly away from that object.
 // The three CritterDesync lines are the WB twin's (0x00EB94B0, which names
 // the routine CastleBehavior::onTriggerEntered in its first line).
-void Rva00396E4A::rva00396C43(Object *obj)
+void Rva00396E4A::onTriggerEntered(Object *obj)
 {
 	if (obj == 0)
 		return;

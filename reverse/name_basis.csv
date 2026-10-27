@@ -2758,3 +2758,4 @@ function,?rva00463509@Rva00463509@@QAEXPAVObject@@_N@Z,?removeFromContain@Rva004
 local,Rva001F51DC::rva001F51DC::a,Rva001F51DC::rva001F51DC::xValue,inferred,agree:nl-eca4174e905f,Code/GameEngine/Source/Common/Rva001F51DC.cpp,0x001F51DC
 local,Rva001F51DC::rva001F51DC::b,Rva001F51DC::rva001F51DC::yValue,inferred,agree:nl-67171282b6b1,Code/GameEngine/Source/Common/Rva001F51DC.cpp,0x001F51DC
 param,Rva002BEFE5::rva002BEFE5::a2,Rva002BEFE5::rva002BEFE5::zoom,inferred,agree:nl-793ec6610912,Code/GameEngine/Source/Common/Rva002BEFE5.cpp,0x002BEFE5
+function,?rva00396C43@Rva00396E4A@@QAEXPAVObject@@@Z,?onTriggerEntered@Rva00396E4A@@QAEXPAVObject@@@Z,canonical:string,"string_xrefs: ""CritterDesync:  CastleBehavior::onTriggerEntered called with animal %s"" referenced by 0x396c43",Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00396E4ARemove.cpp,0x00396C43

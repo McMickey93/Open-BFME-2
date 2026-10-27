@@ -12,7 +12,7 @@ class Object;
 class Rva00396E4A
 {
 public:
-	void rva00396C43(Object *obj);
+	void onTriggerEntered(Object *obj);
 	void rva00396E4A(Object *obj);
 };
 
@@ -24,7 +24,7 @@ void Rva00372BA0ConditionalDispatcher(void *first, void *second, bool enabled)
 	{
 		if (enabled)
 		{
-			secondValue->rva00396C43((Object *)firstValue);
+			secondValue->onTriggerEntered((Object *)firstValue);
 			return;
 		}
 		secondValue->rva00396E4A((Object *)firstValue);
