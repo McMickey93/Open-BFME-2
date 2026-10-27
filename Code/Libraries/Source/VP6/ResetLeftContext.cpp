@@ -4,7 +4,7 @@
 // VP6_ResetLeftContext retail 0x001BC1A0 (135 bytes): zeroes the four 16-byte
 // left block contexts (left Y row 0, left Y row 1, left U, left V), then sets
 // the mode of each to -1 and the frame of each to 4.
-extern "C" void *__cdecl memset(void *block, int value, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memset)
 
 struct LeftBlockContext

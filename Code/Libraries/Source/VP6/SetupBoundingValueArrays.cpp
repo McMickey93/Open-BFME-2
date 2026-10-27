@@ -6,7 +6,7 @@
 // and return the centre: SetupDeblockValueArray_Generic (retail 0x001BD590,
 // deblock table at +0x3C) and SetupBoundingValueArray_Generic (retail
 // 0x001BFE80, filter table at +0x34).
-extern "C" void * __cdecl memset(void *, int, unsigned int);
+#include <string.h>
 #pragma intrinsic(memset)
 
 struct DeblockBoundingInstance

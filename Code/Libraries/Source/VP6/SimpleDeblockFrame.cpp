@@ -10,7 +10,7 @@
 // are dispatch slots 9 (VA 0x00E22FA0) and 25 (VA 0x00E22FE0) of the codec
 // dispatch table at VA 0x00E22F7C.
 
-extern "C" void * __cdecl memcpy(void *, const void *, unsigned int);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct Rva009B3800Context
