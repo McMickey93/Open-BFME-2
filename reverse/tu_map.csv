@@ -2001,7 +2001,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00038440,408,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,Z,Z=Code/Libraries/Source/debug/debug_debug.cpp S=Code/Libraries/Source/debug/debug_debug.cpp N=Code/Libraries/Source/WWVegas/WWDebug/Debug.cpp noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugConstructor.cpp
 0x000385E0,14,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,C,C=0x00038440..0x000385F0 noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugIsWindowedWrapper.cpp
 0x000385F0,114,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,Z,Z=Code/Libraries/Source/debug/debug_debug.cpp S=Code/Libraries/Source/debug/debug_debug.cpp N=Code/Libraries/Source/WWVegas/WWDebug/Debug.cpp noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugPreStaticInit.cpp
-0x00038670,70,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,S,S=Code/Libraries/Source/debug/debug_cmd.cpp N=Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebug.cpp noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebugCtor.cpp
+0x00038670,70,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,S,S=Code/Libraries/Source/debug/debug_cmd.cpp N=Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebug.cpp noncontiguous,Code/Libraries/Source/debug/debug_cmd.cpp
 0x000386C0,20,code,,displaced,-,Z=Code/Libraries/Source/debug/debug_io_flat.cpp S=Code/Libraries/Source/debug/debug_io_flat.cpp N=Code/Libraries/Source/WWVegas/WWDebug/DebugIOFlat.cpp,Code/Libraries/Source/WWVegas/WWDebug/debug_io_flat.cpp
 0x000386E0,35,code,,,-,,Code/Libraries/Source/debug/debug_debug.cpp
 0x00038710,66,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,Z,Z=Code/Libraries/Source/debug/debug_debug.cpp S=Code/Libraries/Source/debug/debug_debug.cpp N=Code/Libraries/Source/WWVegas/WWDebug/Debug.cpp noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugDestructorThunk.cpp
@@ -2041,13 +2041,13 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x000395D0,137,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,Z,Z=Code/Libraries/Source/debug/debug_debug.cpp S=Code/Libraries/Source/debug/debug_debug.cpp N=Code/Libraries/Source/debug/Debug.cpp noncontiguous,Code/Libraries/Source/debug/debug_debug.cpp
 0x00039660,186,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,C,C=0x000395D0..0x00039720 noncontiguous,Code/Libraries/Source/WWVegas/WW3D2/Log_DX8_ErrorCode.cpp
 0x00039720,173,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,S,S=Code/Libraries/Source/debug/debug_debug.cpp N=Code/Libraries/Source/debug/Debug.cpp noncontiguous,Code/Libraries/Source/debug/Debug_FrameCommands.cpp
-0x000397D0,169,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,U,N=Code/GameEngine/Source/Common/BfmeHostAAS.cpp noncontiguous,Code/GameEngine/Source/Common/BfmeConv2122.cpp
+0x000397D0,169,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,U,N=Code/GameEngine/Source/Common/BfmeHostAAS.cpp noncontiguous,Code/Libraries/Source/debug/debug_cmd.cpp
 0x00039880,25,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,C,C=0x000397D0..0x000398A0 noncontiguous,Code/GameEngine/Source/Common/Bfme5TinyThree.cpp
-0x000398A0,80,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,C,C=0x000397D0..0x000398F0 noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugHeapAbort.cpp
-0x000398F0,42,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,C,C=0x000397D0..0x00039980 noncontiguous,Code/GameEngine/Source/Common/BfmeFormatBuffer88A640.cpp
+0x000398A0,80,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,C,C=0x000397D0..0x000398F0 noncontiguous,Code/Libraries/Source/debug/debug_cmd.cpp
+0x000398F0,42,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,C,C=0x000397D0..0x00039980 noncontiguous,Code/Libraries/Source/debug/debug_cmd.cpp
 0x00039920,33,code,,displaced,-,N=Code/Libraries/Source/WWVegas/WWDebug/Debug.cpp,Code/Libraries/Source/WWVegas/WWDebug/DebugDestructorThunk.cpp
-0x00039950,33,code,,displaced,-,N=Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebug.cpp,Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebugCtor.cpp
-0x00039980,55,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,S,S=Code/Libraries/Source/debug/debug_cmd.cpp N=Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebug.cpp noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebugCtor.cpp
+0x00039950,33,code,,displaced,-,N=Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebug.cpp,Code/Libraries/Source/debug/debug_cmd.cpp
+0x00039980,55,code,Code/Libraries/Source/debug/debug_cmd.cpp,proposed,S,S=Code/Libraries/Source/debug/debug_cmd.cpp N=Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebug.cpp noncontiguous,Code/Libraries/Source/debug/debug_cmd.cpp
 0x000399C0,147,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,Z,Z=Code/Libraries/Source/debug/debug_debug.cpp S=Code/Libraries/Source/debug/debug_debug.cpp N=Code/Libraries/Source/WWVegas/WWDebug/Debug.cpp noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/DebugStaticExit.cpp
 0x00039A60,194,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,C,C=0x000399C0..0x00039B30 noncontiguous,Code/Libraries/Source/WWVegas/WWDebug/Rva0088A7E0UpdateFrameStatus.cpp
 0x00039B30,58,code,Code/Libraries/Source/debug/debug_debug.cpp,proposed,Z,Z=Code/Libraries/Source/debug/debug_debug.cpp S=Code/Libraries/Source/debug/debug_debug.cpp N=Code/Libraries/Source/debug/Debug.cpp noncontiguous,Code/Libraries/Source/debug/debug_debug.cpp
@@ -56111,7 +56111,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0075CCE0,8,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StringBaseWideReleaseBuffer.cpp
 0x0075CD00,8,code,,,-,,Code/gen_small/uw_gen_000.cpp
 0x0075CD20,8,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/AsciiFromUnicode.cpp
-0x0075CD40,8,code,,,-,,Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebugCtor.cpp
+0x0075CD40,8,code,,,-,,Code/Libraries/Source/debug/debug_cmd.cpp
 0x0075CD60,14,code,,,-,,Code/Libraries/Source/WWVegas/WWDebug/DebugDestructorThunk.cpp
 0x0075CD80,17,code,,,-,,Code/Libraries/Source/WWVegas/WWDebug/DebugPreStaticInit.cpp
 0x0075CDA0,8,code,,,-,,Code/Libraries/Source/WWVegas/WWDebug/DebugIOOdsCtor.cpp
