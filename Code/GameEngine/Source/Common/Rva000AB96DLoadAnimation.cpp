@@ -32,7 +32,7 @@ public:
 	File *openFile(const char *filename, int access, int unk);
 };
 extern FileSystem *TheFileSystem;
-extern "C" __declspec(dllimport) char *__cdecl strchr(const char *, int);
+#include <string.h>
 
 // Native DAT temporary is destroyed without an extra unwind state; the
 // already-owned render-data parser also carries this helper exception contract.
