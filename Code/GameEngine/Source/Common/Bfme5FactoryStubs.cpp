@@ -28,18 +28,18 @@ struct AriesUdp
 AriesUdp * __cdecl bfme5MakeObj18(void)
 {
 	void *memory = Gen007F0130::operator new(0x18);
-	AriesUdp *p;
+	AriesUdp *instance;
 
 	if (memory) {
-		p = (AriesUdp *)memory;
-		*(void *volatile *)&p->m_listenerVtable = __identifier("??_7Rva006613E0@@6B@");
-		*(void *volatile *)&p->m_ownerVtable = __identifier("??_7Gen007F4D00@@6BGen007F4D00Owner@@@");
-		*(void *volatile *)&p->m_listenerVtable = __identifier("??_7Gen007F4D00@@6BGen007F4D00Listener@@@");
-		p->m_bfme08 = 0;
-		p->m_bfme0c = 0;
-		p->m_bfme10 = 0;
-		p->m_bfme14 = 0;
-		return p;
+		instance = (AriesUdp *)memory;
+		*(void *volatile *)&instance->m_listenerVtable = __identifier("??_7Rva006613E0@@6B@");
+		*(void *volatile *)&instance->m_ownerVtable = __identifier("??_7Gen007F4D00@@6BGen007F4D00Owner@@@");
+		*(void *volatile *)&instance->m_listenerVtable = __identifier("??_7Gen007F4D00@@6BGen007F4D00Listener@@@");
+		instance->m_bfme08 = 0;
+		instance->m_bfme0c = 0;
+		instance->m_bfme10 = 0;
+		instance->m_bfme14 = 0;
+		return instance;
 	}
 
 	return 0;

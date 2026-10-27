@@ -11,7 +11,7 @@ public:
 	void bfmeSet2VJF(const char *k, void *a, void *b);
 	void bfmeSet3VJF(const char *k, int v);
 	char m_bfmePad[0x1c];
-	int m_bfme1c;
+	int m_category;
 };
 
 struct FeslUserId
@@ -29,7 +29,7 @@ void __stdcall bfmeGoVJF(BfmeMsgVJF *m, FeslUserId *arr, int n)
 	char buf[0x10];
 	void *txn = g_bfmeVJF;
 	m->bfmeRunVJF();
-	m->m_bfme1c = 0x6664626b;
+	m->m_category = 0x6664626b;
 	m->bfmeSetVJF("TXN", txn);
 	for (int i = 0; i < n; ++i)
 	{

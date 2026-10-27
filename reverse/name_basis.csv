@@ -2766,3 +2766,7 @@ member,Rva0049355E::m_14,Rva0049355E::m_pausedPercent,inferred,agree:nl-8293d9dc
 local,BFME2Encoding1MotionChannel::rva001B230A::f,BFME2Encoding1MotionChannel::rva001B230A::currentFrame,inferred,agree:nl-22f148adebbe,Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelDecoders.cpp,0x001B230A
 local,BFME2Encoding1MotionChannel::rva001B2450::f,BFME2Encoding1MotionChannel::rva001B2450::currentFrame,inferred,agree:nl-b292e817bd50,Code/Libraries/Source/WWVegas/WW3D2/BFME2Encoding1MotionChannelDecoders.cpp,0x001B2450
 function,?Rva005809DBLinearInsert@@YAXPAPAX0PAXVRva000795C1Record@@@Z,?linearInsert@@YAXPAPAX0PAXVRva000795C1Record@@@Z,inferred,agree:nl-999ce8a2f7bc,Code/Libraries/Source/WWVegas/WWLib/Rva00580776LinearInsert.cpp,0x005809DB
+local,bfme5MakeObj18::p,bfme5MakeObj18::instance,inferred,agree:nl-f893c6e11db8,Code/GameEngine/Source/Common/Bfme5FactoryStubs.cpp,0x006617F0
+member,BfmeMsgVJF::m_bfme1c,BfmeMsgVJF::m_category,inferred,agree:nl-3955e64ad3d6,Code/GameEngine/Source/Common/BfmeConv1384.cpp,
+local,Team::rva0039DDC2::b3,Team::rva0039DDC2::isAwaitingConstruction,inferred,agree:nl-685f392dffe3,Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp,0x0039DDC2
+local,Team::rva0039DDC2::b4,Team::rva0039DDC2::isPartiallyConstructed,inferred,agree:nl-4c70633556aa,Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp,0x0039DDC2
