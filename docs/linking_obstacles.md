@@ -1013,6 +1013,17 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-26.**
 
+- **RiderChangeContain local-static index repair (2026-10-27, `67587e56fd`):**
+  [The current-owner check](../reverse/attempt_support/rider-poolkey-data-retirement-20261027-codexb4.md)
+  refreshes two tool-generated data-index rows after the existing method rename
+  and standalone guard-clearer retirement. The current parent owns its cached
+  key and compiler rollback guard; all three function rows and the parent EH
+  graph verify. The owning retirement tool removes one stale data-identity key
+  with zero remaining source findings. Its ordinary preview preserves LINKS
+  against index `bf3dd31211`; no new census gain is claimed. The broader
+  consolidation remains blocked on private class views and native containment
+  interfaces; no unchanged broad composition trial was repeated.
+
 - **Buffer-slot FVF table identity (2026-10-27, control `1710ea0aea`):**
   [The current-owner repair](../reverse/attempt_support/buffer-slot-fvf-data-20261027-codexb4.md)
   replaces the slot allocator's private table with the existing unsigned-array

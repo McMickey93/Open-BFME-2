@@ -19994,8 +19994,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03728,4,.data,global,?TheTunnelContainPoolKey@?1??rva00047DB43@TunnelContain@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainPoolKey.cpp,owned,,1,2
 0x00A0372C,4,.data,global,?g_Va00E0372C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E037xx.cpp,provisional,?$S1@?1??rva00047DB43@TunnelContain@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainPoolKey.cpp;?g_Va00E0372C@@3IA,2,4
 0x00A03730,4,.data,global,_s_rva007B0F4A,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03734,4,.data,global,?TheRiderChangeContainPoolKey@?1??rva00047E2E0@RiderChangeContain@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/RiderChangeContainPoolKey.cpp,owned,,1,2
-0x00A03738,4,.data,global,?g_Va00E03738@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E037xx.cpp,provisional,?$S1@?1??rva00047E2E0@RiderChangeContain@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Contain/RiderChangeContainPoolKey.cpp;?g_Va00E03738@@3IA,2,4
+0x00A03734,4,.data,global,?TheRiderChangeContainPoolKey@?1??getModuleNameKey@RiderChangeContain@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/RiderChangeContainPoolKey.cpp,owned,,1,2
+0x00A03738,4,.data,global,?$S1@?1??getModuleNameKey@RiderChangeContain@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/RiderChangeContainPoolKey.cpp,owned,,1,4
 0x00A0373C,4,.data,global,?$S1@?1??buildFieldParse@RiderChangeContainModuleData@@SAXAAVMultiIniFieldParse@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/RiderChangeContainModuleDataParse.cpp,owned,,1,2
 0x00A03740,5,.data,global,_s_rva007B0F74,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03745,3,.data,global,?g_00E03745@@3EA,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AIUpdateInterfaceIgnoreObstacle.cpp,owned,,1,162
