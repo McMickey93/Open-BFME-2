@@ -43,6 +43,7 @@ typedef int Int;
 #include <windows.h>
 #include <new>
 #include <string.h>
+#include <stdio.h>
 
 class Xfer;
 
@@ -172,6 +173,8 @@ private:
 };
 
 class INI;
+
+// ---- from Code/GameEngine/Source/GameClient/System/Image.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/Image_setStatus.cpp
 
@@ -318,8 +321,6 @@ ImageCollection::ImageCollection()
 {
 }
 
-// tu-skeleton: 0x002D8FB7 45B ?_M_erase@?$_Rb_tree@URva002D8FB7Element@@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@U?$less@URva002D8FB7Element@@@3@V?$allocator@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@@_STL@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D8FB7.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/GUI/ImageCtor.cpp
 
 // ??0Image@@QAE@XZ
@@ -353,10 +354,6 @@ void Image::bfmeSetTexture(const BfmeMapPictureTexture &texture)
 	*m_texture = texture;
 }
 
-// tu-skeleton: 0x002D908D 249B ?load@ImageCollection@@QAEXH@Z -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionLoad.cpp (not merged yet)
-
-// tu-skeleton: 0x002D9186 41B ?clear@?$_Rb_tree@URva002D9186Element@@U?$pair@$$CBURva002D9186Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@U?$less@URva002D9186Element@@@3@V?$allocator@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D9186.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/GUI/ImageDtor.cpp
 
 //
@@ -389,6 +386,27 @@ Image::~Image()
 	}
 }
 
+// tu-skeleton: 0x002D8FB7 45B ?_M_erase@?$_Rb_tree@URva002D8FB7Element@@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@U?$less@URva002D8FB7Element@@@3@V?$allocator@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@@_STL@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D8FB7.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/System/ImageCollectionLoad.cpp
+
+// ?load@ImageCollection@@QAEXH@Z @ 0x002D908D 249B
+// Evidence: BFME1 donor ImageCollectionLoad.cpp trimmed (no userData block); same 5 strings TextureSize_%d HandCreated AptImages ParticleTextures TransitionImages in order; same loadDirectory TRUE OVERWRITE NULL 0; ret 4 single int arg; callers 0x0023A2F1; neighbours ImageBfmeSetTexture and stlport map.
+
+void ImageCollection::load(int textureSize)
+{
+	char buffer[260];
+	INI ini;
+	sprintf(buffer, "Data\\INI\\MappedImages\\TextureSize_%d", textureSize);
+	ini.loadDirectory(AsciiString(buffer), true, INI_LOAD_OVERWRITE, (Xfer *)0, 0);
+	ini.loadDirectory("Data\\INI\\MappedImages\\HandCreated", true, INI_LOAD_OVERWRITE, (Xfer *)0, 0);
+	ini.loadDirectory("Data\\INI\\MappedImages\\AptImages", true, INI_LOAD_OVERWRITE, (Xfer *)0, 0);
+	ini.loadDirectory("Data\\INI\\MappedImages\\ParticleTextures", true, INI_LOAD_OVERWRITE, (Xfer *)0, 0);
+	ini.loadDirectory("Data\\INI\\MappedImages\\TransitionImages", true, INI_LOAD_OVERWRITE, (Xfer *)0, 0);
+}
+
+// tu-skeleton: 0x002D9186 41B ?clear@?$_Rb_tree@URva002D9186Element@@U?$pair@$$CBURva002D9186Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@U?$less@URva002D9186Element@@@3@V?$allocator@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D9186.cpp (not merged yet)
+
 // tu-skeleton: 0x002D922A 56B (unledgered) -- unmatched, no code, never credited
 
 // tu-skeleton: 0x002D927E 5B ?rva002D927ECleanup@Rva002D927EImageTree@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/Rva002D927EImageMapCleanup.cpp (not merged yet)
@@ -400,10 +418,6 @@ Image::~Image()
 // tu-skeleton: 0x002D937E 217B ?rva002D937E@Image@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/ImageRva002D937E.cpp (not merged yet)
 
 // tu-skeleton: 0x002D9457 48B ?addImage@ImageCollection@@QAEXPAVImage@@@Z -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionFindImage.cpp (not merged yet)
-
-// tu-skeleton: 0x00777AAC 11B Unwind@00b77aac -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionLoad.cpp (not merged yet)
-
-// tu-skeleton: 0x00777AB7 10B __ehhandler$?load@ImageCollection@@QAEXH@Z -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionLoad.cpp (not merged yet)
 
 // tu-skeleton: 0x00777AC1 8B $L5516 -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_string_pair_cleanup.cpp (not merged yet)
 
