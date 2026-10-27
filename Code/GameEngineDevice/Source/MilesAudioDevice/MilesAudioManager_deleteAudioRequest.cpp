@@ -9,7 +9,7 @@ public:
 	virtual ~Rva00A86CE();
 };
 
-void operator delete(void *p);
+#include <new>
 
 class MilesAudioManager
 {
