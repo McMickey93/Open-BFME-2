@@ -29,6 +29,7 @@
 #include <stl/_fstream.h>
 #include <stdio_streambuf>
 #include "aligned_buffer.h"
+extern "C" long __identifier("?_S_count@_Loc_init@ios_base@_STL@@2JA");
 // bfme link decl-only begin
 namespace _STL { template <> _Node_Alloc_Lock<1, 0>::~_Node_Alloc_Lock(); }
 namespace _STL { template <> void * __node_alloc<1, 0>::_S_refill(unsigned int); }
@@ -174,16 +175,13 @@ void _STLP_CALL ios_base::_S_uninitialize()
   _Destroy(ptr_wcerr);
   _Destroy(ptr_wclog);
 # endif
-  if (_Loc_init::_S_count > 0)
+  if (::__identifier("?_S_count@_Loc_init@ios_base@_STL@@2JA") > 0)
     locale::_S_uninitialize();
   --Init::_S_count;
 }
 
 _STLP_END_NAMESPACE
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?_S_count@_Loc_init@ios_base@_STL@@0JA=?_S_count@_Loc_init@ios_base@_STL@@2JA")
 
 _STLP_BEGIN_NAMESPACE
 bool ios_base::_S_was_synced = true;
@@ -198,7 +196,7 @@ void  _STLP_CALL ios_base::_S_initialize()
 
   // Run constructors for the four narrow stream objects.
   // check with locale system
-  if (_Loc_init::_S_count == 0) {
+  if (::__identifier("?_S_count@_Loc_init@ios_base@_STL@@2JA") == 0) {
     locale::_S_initialize();
   }
   istream* ptr_cin  = new((void*)&cin)  istream(0);

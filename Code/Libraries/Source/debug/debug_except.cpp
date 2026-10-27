@@ -30,7 +30,6 @@
 #define ListView_InsertItem(list, item) SendMessageA((list), 0x1007, 0, (long)(item))
 #define ListView_SetItem(list, item) SendMessageA((list), 0x1006, 0, (long)(item))
 #pragma comment(linker, "/alternatename:??6@YAAAVDebug@@AAV0@ABUSignature@DebugStackwalk@@@Z=??6@YAAAVDebug@@AAV0@ABVSignature@DebugStackwalk@@@Z")
-#pragma comment(linker, "/alternatename:?g_crashAttachments@@3PAUCrashAttachment@@A=?g_debugTypedLogs@@3PAUDebugTypedLog@@A")
 
 extern "C" __declspec(dllimport) int __cdecl wsprintfA(
     char *, const char *, ...);
@@ -351,10 +350,10 @@ struct Rva0088A1F0Owner
 };
 
 // One entry of the crash attachment list packed into the report blob.
-struct CrashAttachment
+struct DebugTypedLog
 {
-	DWORD id;
-	const void *data;
+	unsigned tag;
+	void *data;
 	unsigned size;
 };
 
@@ -389,8 +388,7 @@ static char g_exceptionVersionInfo[256];
 static DebugStackwalk::Signature g_exceptionStackSignature;
 
  // 0x00DE0E08
-// ?g_crashAttachments@@3PAUCrashAttachment@@A: the global at this VA is ?g_debugTypedLogs@@3PAUDebugTypedLog@@A; this name is an alias for it.
-extern CrashAttachment * g_crashAttachments;
+extern DebugTypedLog *g_debugTypedLogs;
 
 extern unsigned g_debugTypedLogCount;
 
@@ -1165,7 +1163,7 @@ long __stdcall DebugExceptionhandler::ExceptionFilter(_EXCEPTION_POINTERS *pExPt
 	// pack the crash attachments for the dump
 	unsigned size = 8;
 	for (unsigned k = 0; k < g_debugTypedLogCount; k++)
-		size += g_crashAttachments[k].size + 8;
+		size += g_debugTypedLogs[k].size + 8;
 	char *blob = (char *)_alloca(size);
 	if (blob)
 	{
@@ -1173,10 +1171,10 @@ long __stdcall DebugExceptionhandler::ExceptionFilter(_EXCEPTION_POINTERS *pExPt
 		blob += 4;
 		for (unsigned i = 0; i < g_debugTypedLogCount; i++)
 		{
-			*(DWORD *)blob = g_crashAttachments[i].id;
+			*(DWORD *)blob = g_debugTypedLogs[i].tag;
 			blob += 4;
-			memcpy(blob, g_crashAttachments[i].data, g_crashAttachments[i].size);
-			blob += g_crashAttachments[i].size;
+			memcpy(blob, g_debugTypedLogs[i].data, g_debugTypedLogs[i].size);
+			blob += g_debugTypedLogs[i].size;
 			*(DWORD *)blob = 0x2D2D2D2D; // "----"
 			blob += 4;
 		}

@@ -15,6 +15,7 @@
 #include <new>
 #include <objbase.h>
 #include <comip.h>
+extern GUID g_bfmeIidTSA;
 extern void __stdcall _com_issue_errorex(HRESULT,IUnknown *,const IID &);
 struct __declspec(uuid("ee883b17-0778-4b18-a12b-e44c0d298412")) IFEBrowserEngine2 : IDispatch {
     virtual HRESULT __stdcall raw_Initialize(long *) = 0;
@@ -38,10 +39,14 @@ struct __declspec(uuid("ee883b17-0778-4b18-a12b-e44c0d298412")) IFEBrowserEngine
     virtual HRESULT __stdcall put_MouseBusyFileName(BSTR) = 0;
     void Initialize(long *device) {
         HRESULT hr=raw_Initialize(device);
-        if (hr<0) _com_issue_errorex(hr,this,__uuidof(IFEBrowserEngine2));
+        if (hr<0) _com_issue_errorex(hr,this,g_bfmeIidTSA);
     }
 };
 struct __declspec(uuid("2b2cc8b0-2dc0-48c6-b6fd-c07820a6477e")) FEBrowserEngine2;
+template <> inline const IID &_com_IIID<IFEBrowserEngine2,&__uuidof(IFEBrowserEngine2)>::GetIID() throw()
+{
+    return g_bfmeIidTSA;
+}
 typedef _com_ptr_t<_com_IIID<IFEBrowserEngine2,&__uuidof(IFEBrowserEngine2)> > IFEBrowserEngine2Ptr;
 // The browser smart pointer lives at retail 0x009F7040, the global
 // BfmeConv804.cpp owns as g_bfmeObjECF; this unit views it as the COM pointer.
