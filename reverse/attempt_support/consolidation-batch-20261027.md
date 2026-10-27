@@ -70,3 +70,25 @@ there: (unplaced) 1`). The other three mixed sources were inspected with
 `--split FILE`; no manual declaration, path or flag repair was attempted.
 No claims or source changes were made for this candidate. Continue with a
 separate allocated TU; leave these donors for the prerequisite owner.
+
+## Allocated `Geometry.cpp` candidate refused
+
+`Geometry.cpp` passed its allocation check and the planner snapshot was current.
+The plan had 35 approved rows and 13 donors (11 mixed). The merge dry run
+accepted no donor and reported `blocked: the TU file's own rows do not match
+under the verifier`. The five rejected clean donors had these exact blockers:
+
+- `GeometryInfoExpandFootprint.cpp`: its `-O2` flag override is not the carried
+  empty override.
+- `GeometryInfoRva006BD9C0.cpp`: its `-Ox -G6` override is not the carried
+  empty override.
+- `GeometryInfoRva0087E370.cpp`: its `-O2 -G6` override is not the carried
+  empty override.
+- `GeometryInfoSet.cpp`: its `-O2` override is not the carried empty override.
+- `Geometry.cpp`: no baseline match.
+
+The dry run lists 13 census-linked units under LinkGuard; it did not report a
+link regression, but it could not establish a merged composition because the
+seed itself failed byte verification. No source/flag repairs or split trials
+were attempted. Leave the task for prerequisite repair and continue with a
+separate allocated TU.
