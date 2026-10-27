@@ -2583,7 +2583,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0041F042OwnerDtor.cpp	??1Rva0022B
 alternatename	Code/GameEngine/Source/Common/Rva0041FE0ECtor.cpp	_vtbl_00C3B988	1
 alternatename	Code/GameEngine/Source/Common/Rva00420110Method.cpp	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	1
 alternatename	Code/GameEngine/Source/Common/Rva004246BDObjListPush.cpp	?_M_create_node@?$list@PAVRva004246BDObj@@V?$allocator@PAVRva004246BDObj@@@_STL@@@_STL@@IAEPAU?$_List_node@PAVRva004246BDObj@@@2@ABQAVRva004246BDObj@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva004296EESlot.cpp	?translateGameMessage@Rva0042CBB6@@UAEHPBX@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0042CBB6Ctor.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0042D4B3ScalarDeletor.cpp	??1Rva0042D4B3@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0042D5DDUpdate.cpp	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	1
@@ -3246,6 +3245,7 @@ alternatename	Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicIn
 alternatename	Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldIconSubObjectCtor.cpp	?rva003FCCC9@Rva003FB65C@@QAEXE@Z	1
 alternatename	Code/GameEngine/Source/GameClient/MapMetaDataCopy.cpp	??1Rva00078460Elem@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/MapMetaDataCopyDeferred.cpp	??0TreeHintOpaque00304573@@QAE@ABU0@@Z	1
+alternatename	Code/GameEngine/Source/GameClient/MessageStream/CommandXlat.cpp	?translateGameMessage@Rva0042CBB6@@UAEHPBX@Z	1
 alternatename	Code/GameEngine/Source/GameClient/MessageStream/HotKey.cpp	?clear@?$_Rb_tree@HU?$pair@$$CBHURva00358E26Record@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00358E26Record@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00358E26Record@@@_STL@@@2@@_STL@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/MessageStream/HotKey.cpp	?clear@?$_Rb_tree@HU?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@_STL@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/MessageStream/HotKey.cpp	?erase@?$_Rb_tree@HU?$pair@$$CBHURva00358E26Record@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00358E26Record@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00358E26Record@@@_STL@@@2@@_STL@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBHURva00358E26Record@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHURva00358E26Record@@@_STL@@@2@@2@@Z	1

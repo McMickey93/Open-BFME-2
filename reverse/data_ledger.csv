@@ -10151,7 +10151,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0083C688,8,.rdata,wstring,??_C@_17CHLIBJCN@?$AA?$CF?$AAd?$AA?3?$AA?$AA@,,literal,,0,1
 0x0083C690,8,.rdata,wstring,??_C@_17IEPMGMID@?$AA0?$AA0?$AA?3?$AA?$AA@,,literal,,0,1
 0x0083C698,20,.rdata,string,??_C@_07MHAJFMLB@?$HM?$HMVER1?$HM?$AA@,,literal,,0,1
-0x0083C6AC,36,.rdata,global,_Rva005A7A90VTableAnchor,Code/GameEngine/Source/Common/Rva005A7A90Ctor.cpp,owned,,1,1
+0x0083C6AC,36,.rdata,global,_Rva005A7A90VTableAnchor,Code/GameEngine/Source/GameClient/MessageStream/CommandXlat.cpp,owned,,1,1
 0x0083C6D0,28,.rdata,vtable,??_7Rva00574A8A@@6B@,,literal,,0,2
 0x0083C6EC,8,.rdata,vtable,??_7Rva0042C833@@6B@,,literal,,0,1
 0x0083C6F4,12,.rdata,global,?g_00C3C6F4@@3QBQBXB,,unowned,,0,1
