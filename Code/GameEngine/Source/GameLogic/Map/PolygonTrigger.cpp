@@ -39,9 +39,9 @@ public:
 	PolygonTrigger *m_head;
 };
 
-// g_Va00DBD0F4 is only an alias of the owned global g_Va00DBD0F4 (ledger names column); this unit reads the owner through its own view type.
+// The holder global owned by Common/Rva002E373CClear.cpp, declared with its
+// owner's type.
 extern struct Rva002E373CHolder *g_Va00DBD0F4;
-#define g_Va00DBD0F4 (*(Rva002E373CHolder * *)&g_Va00DBD0F4)
 
 class PolygonTrigger
 {
