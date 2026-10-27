@@ -1,35 +1,18 @@
 // cl: /DNDEBUG /MD /EHsc /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/sweep
-// BFME's Direct3D device keeps the D3D8 type name but uses the D3D9 render-target
-// slots, so this local ABI slice avoids changing the shared legacy SDK shim.
+// dxsdk
+// platformsdk
+// BFME's Direct3D device keeps the D3D8 type name but is a Direct3D 9 device:
+// the calls below use IDirect3DDevice9's render-target slots (37..40) and
+// IDirect3DSurface9's AddRef/Release from the vendored SDK, casting the
+// DX8-spelled members at each call.
+#include <d3d9.h>
 
 struct IDirect3DSurface8;
 struct IDirect3DDevice8;
 
-struct IDirect3DSurface8Vtbl
-{
-	void *QueryInterface;
-	long (__stdcall *AddRef)(IDirect3DSurface8 *self);
-	long (__stdcall *Release)(IDirect3DSurface8 *self);
-};
-
-struct IDirect3DSurface8
-{
-	IDirect3DSurface8Vtbl *lpVtbl;
-};
-
-struct IDirect3DDevice8Vtbl
-{
-	void *reserved[37];
-	long (__stdcall *SetRenderTarget)(IDirect3DDevice8 *self, unsigned int index, IDirect3DSurface8 *renderTarget);
-	long (__stdcall *GetRenderTarget)(IDirect3DDevice8 *self, unsigned int index, IDirect3DSurface8 **renderTarget);
-	long (__stdcall *SetDepthStencilSurface)(IDirect3DDevice8 *self, IDirect3DSurface8 *depthStencil);
-	long (__stdcall *GetDepthStencilSurface)(IDirect3DDevice8 *self, IDirect3DSurface8 **depthStencil);
-};
-
-struct IDirect3DDevice8
-{
-	IDirect3DDevice8Vtbl *lpVtbl;
-};
+#define DEVICE9 (reinterpret_cast<IDirect3DDevice9 *>(D3DDevice))
+#define SURFACE9(surface) (reinterpret_cast<IDirect3DSurface9 *>(surface))
+#define SURFACE9_OUT(slot) (reinterpret_cast<IDirect3DSurface9 **>(slot))
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.h
 class DX8Wrapper
@@ -65,54 +48,54 @@ void DX8Wrapper::Set_Render_Target(IDirect3DSurface8 *renderTarget, bool useDefa
 {
 	if (renderTarget == 0 || renderTarget == DefaultRenderTarget) {
 		if (DefaultRenderTarget != 0) {
-			D3DDevice->lpVtbl->SetRenderTarget(D3DDevice, 0, DefaultRenderTarget);
+			DEVICE9->SetRenderTarget(0, SURFACE9(DefaultRenderTarget));
 			++number_of_DX8_calls;
-			D3DDevice->lpVtbl->SetDepthStencilSurface(D3DDevice, DefaultDepthBuffer);
+			DEVICE9->SetDepthStencilSurface(SURFACE9(DefaultDepthBuffer));
 			++number_of_DX8_calls;
-			DefaultRenderTarget->lpVtbl->Release(DefaultRenderTarget);
+			SURFACE9(DefaultRenderTarget)->Release();
 			DefaultRenderTarget = 0;
 			if (DefaultDepthBuffer != 0) {
-				DefaultDepthBuffer->lpVtbl->Release(DefaultDepthBuffer);
+				SURFACE9(DefaultDepthBuffer)->Release();
 				DefaultDepthBuffer = 0;
 			}
 		}
 
 		if (CurrentRenderTarget != 0) {
-			CurrentRenderTarget->lpVtbl->Release(CurrentRenderTarget);
+			SURFACE9(CurrentRenderTarget)->Release();
 			CurrentRenderTarget = 0;
 		}
 		if (CurrentDepthBuffer != 0) {
-			CurrentDepthBuffer->lpVtbl->Release(CurrentDepthBuffer);
+			SURFACE9(CurrentDepthBuffer)->Release();
 			CurrentDepthBuffer = 0;
 		}
 	} else if (renderTarget != CurrentRenderTarget) {
 		if (DefaultDepthBuffer == 0) {
-			D3DDevice->lpVtbl->GetDepthStencilSurface(D3DDevice, &DefaultDepthBuffer);
+			DEVICE9->GetDepthStencilSurface(SURFACE9_OUT(&DefaultDepthBuffer));
 			++number_of_DX8_calls;
 		}
 		if (DefaultRenderTarget == 0) {
-			D3DDevice->lpVtbl->GetRenderTarget(D3DDevice, 0, &DefaultRenderTarget);
+			DEVICE9->GetRenderTarget(0, SURFACE9_OUT(&DefaultRenderTarget));
 			++number_of_DX8_calls;
 		}
 
 		if (CurrentRenderTarget != 0) {
-			CurrentRenderTarget->lpVtbl->Release(CurrentRenderTarget);
+			SURFACE9(CurrentRenderTarget)->Release();
 			CurrentRenderTarget = 0;
 		}
 		if (CurrentDepthBuffer != 0) {
-			CurrentDepthBuffer->lpVtbl->Release(CurrentDepthBuffer);
+			SURFACE9(CurrentDepthBuffer)->Release();
 			CurrentDepthBuffer = 0;
 		}
 
 		CurrentRenderTarget = renderTarget;
-		CurrentRenderTarget->lpVtbl->AddRef(CurrentRenderTarget);
+		SURFACE9(CurrentRenderTarget)->AddRef();
 		if (useDefaultDepthBuffer) {
-			D3DDevice->lpVtbl->SetRenderTarget(D3DDevice, 0, CurrentRenderTarget);
+			DEVICE9->SetRenderTarget(0, SURFACE9(CurrentRenderTarget));
 			++number_of_DX8_calls;
-			D3DDevice->lpVtbl->SetDepthStencilSurface(D3DDevice, DefaultDepthBuffer);
+			DEVICE9->SetDepthStencilSurface(SURFACE9(DefaultDepthBuffer));
 			++number_of_DX8_calls;
 		} else {
-			D3DDevice->lpVtbl->SetRenderTarget(D3DDevice, 0, CurrentRenderTarget);
+			DEVICE9->SetRenderTarget(0, SURFACE9(CurrentRenderTarget));
 			++number_of_DX8_calls;
 		}
 	}
