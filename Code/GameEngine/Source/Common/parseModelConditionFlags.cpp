@@ -26,7 +26,7 @@ public:
     int scanIndexList(const char *, const char *const *);
 };
 extern const char *const ModelConditionNames[];
-extern "C" __declspec(dllimport) int __cdecl _strnicmp(const char *,const char *,unsigned);
+#include <string.h>
 void parseModelConditionFlags(INI *ini, WeaponTemplateSetHead *all, WeaponTemplateSetHead *positive)
 {
     all->clear();

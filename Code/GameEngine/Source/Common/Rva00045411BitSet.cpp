@@ -6,7 +6,7 @@
 // while the first is never read (callers pass 0 or an ignored value).
 // Plain-extern memset keeps the retail E8-to-thunk call shape.
 
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 struct Rva00045411BitSet
 {
