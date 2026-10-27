@@ -1,7 +1,7 @@
 // cl: /O1 /MD /DNDEBUG /Ireference/shims/bfme2_ascii
 // MpGameRules defaults: WB GetDefaults at 0x013FC240 and AptMpGameRules callers.
 // Descriptor and option tables reproduce retail data; preserve the existing caller ABI.
-extern "C" void *__cdecl memset(void *, int, unsigned int);
+#include <string.h>
 
 struct RuleChoice {
     const char *label;
