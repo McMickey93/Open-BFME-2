@@ -91,9 +91,14 @@ class Rva0040A7D5 {public:int GetStatNameKey(int) const;};
 namespace _STL {template<class I> void sort(I,I);}
 struct Rva0040C0C7Element {char bytes[40];};
 class Rva0040AF66 {char bytes[104];};
+// The range destroy is retail's rowed _Destroy<Rva0040AFF3*> (0x0040B547,
+// stlport_destroy_range_0040B547.cpp); forward to it as the vector units do.
+struct Rva0040AFF3;
 namespace _STL {
 template<> void _Destroy(Rva0040AF66 *);
-template<> void _Destroy(Rva0040AF66 *,Rva0040AF66 *);
+template <> void _Destroy<Rva0040AFF3 *>(Rva0040AFF3 *, Rva0040AFF3 *);
+template <> __declspec(dllimport) __forceinline void _Destroy<Rva0040AF66 *>(Rva0040AF66 *__first, Rva0040AF66 *__last)
+{ _Destroy(reinterpret_cast<Rva0040AFF3 *>(__first), reinterpret_cast<Rva0040AFF3 *>(__last)); }
 template<> void _Destroy(Rva0040C0C7Element *,Rva0040C0C7Element *);
 template<> __declspec(noinline) _Vector_base<Rva0040C0C7Element,allocator<Rva0040C0C7Element> >::_Vector_base(const allocator<Rva0040C0C7Element> &a)
  : _M_start(0),_M_finish(0),_M_end_of_storage(a,0) {}
