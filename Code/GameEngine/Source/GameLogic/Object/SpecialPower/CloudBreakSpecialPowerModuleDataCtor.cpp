@@ -20,54 +20,46 @@
 // Retail VA 0x00C5D468 (.rdata): a 31-slot vftable no unit emits. Defined here as
 // data with retail's slot pointers, each bound to the ledger name at its
 // target (tools/vftable_map.py); its installers store this table.
-extern "C" void vfn_00065212();
-extern "C" void vfn_000B3FD0();
-extern "C" void vfn_000B69A1();
-extern "C" void vfn_000D43D0();
-extern "C" void vfn_0047A699();
-extern "C" void vfn_0047A69C();
-extern "C" void vfn_004C47D7();
-extern "C" void vfn_0050B5C6();
-#pragma comment(linker, "/alternatename:_vfn_00065212=?GetSnapshotName@ModuleData@@UBEPBDXZ")
-#pragma comment(linker, "/alternatename:_vfn_000B3FD0=??1Coord2D@@QAE@XZ")
-#pragma comment(linker, "/alternatename:_vfn_000B69A1=?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z")
-#pragma comment(linker, "/alternatename:_vfn_000D43D0=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
-#pragma comment(linker, "/alternatename:_vfn_0047A699=?IsCRC@Xfer@@UBE_NXZ")
-#pragma comment(linker, "/alternatename:_vfn_0047A69C=?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")
-#pragma comment(linker, "/alternatename:_vfn_004C47D7=??_GCloudBreakSpecialPowerModuleData@@UAEPAXI@Z")
-#pragma comment(linker, "/alternatename:_vfn_0050B5C6=?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")
+extern "C" void __identifier("?GetSnapshotName@ModuleData@@UBEPBDXZ")();
+extern "C" void __identifier("??1Coord2D@@QAE@XZ")();
+extern "C" void __identifier("?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z")();
+extern "C" void __identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")();
+extern "C" void __identifier("?IsCRC@Xfer@@UBE_NXZ")();
+extern "C" void __identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")();
+extern "C" void __identifier("??_GCloudBreakSpecialPowerModuleData@@UAEPAXI@Z")();
+extern "C" void __identifier("?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")();
 extern "C" const void *const vtbl_00C5D468[] = {
-	(const void *)&vfn_004C47D7,
-	(const void *)&vfn_000B3FD0,
-	(const void *)&vfn_00065212,
-	(const void *)&vfn_0047A69C,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_000B69A1,
-	(const void *)&vfn_0047A699,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_000D43D0,
-	(const void *)&vfn_0050B5C6
+	(const void *)&__identifier("??_GCloudBreakSpecialPowerModuleData@@UAEPAXI@Z"),
+	(const void *)&__identifier("??1Coord2D@@QAE@XZ"),
+	(const void *)&__identifier("?GetSnapshotName@ModuleData@@UBEPBDXZ"),
+	(const void *)&__identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")
 };
 
 class SpecialPowerModuleData
