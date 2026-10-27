@@ -8,8 +8,7 @@
 // Real STLport vector definitions expose the growth/copy call graph and let
 // MSVC reuse the dead area argument for the counted temporary.
 // Observer/base offsets are target-derived; original member spelling is unknown.
-void *__cdecl operator new(unsigned int size);
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct TargetRef00217D4C;
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *p);
