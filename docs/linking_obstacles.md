@@ -1256,6 +1256,16 @@ Whole-unit clearance and census confirmation remain pending.
   retirement only; no census or image-ownership gain is claimed. PropDraw's
   separate ModuleData/DrawModule prerequisites (LINK-102) remain open.
 
+- **Special-power cached-key index follow-up (2026-10-27, control `afd6ba6febe2`):**
+  [The current-object verification](../reverse/attempt_support/specialpower-guard-data-index-20261027-codex.md)
+  refreshes eight getters' generated key/guard index entries after the existing
+  standalone clearer retirement and five getter renames. All 24 function rows,
+  eight literals and eight EH graphs pass. The owning tool retires eight stale
+  data-identity keys with zero source findings; ordinary previews preserve all
+  eight units' 629 authored bytes against index `73061d9452`. This subset's
+  index repair is verified; broader data closure and census confirmation remain
+  open. No new census or image-ownership gain is claimed.
+
 - **Buffer-slot FVF table identity (2026-10-27, control `1710ea0aea`):**
   [The current-owner repair](../reverse/attempt_support/buffer-slot-fvf-data-20261027-codexb4.md)
   replaces the slot allocator's private table with the existing unsigned-array
