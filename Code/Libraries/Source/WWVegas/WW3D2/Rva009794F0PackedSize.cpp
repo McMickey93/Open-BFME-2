@@ -1,7 +1,7 @@
 // cl: /Ireference/shims/bfmecamera /DNDEBUG /MD /EHsc /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2
 // The owner remains address-derived. Retail counts HLOD array payload bytes.
 
-extern "C" unsigned int __cdecl strlen(const char *text);
+#include <string.h>
 #pragma intrinsic(strlen)
 
 struct Rva009794F0SubObjectArray

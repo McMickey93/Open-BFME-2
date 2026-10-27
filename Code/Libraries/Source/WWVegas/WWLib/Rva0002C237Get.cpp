@@ -1,9 +1,9 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // stlport
 // ?Rva0002C237Get@@YAXPAVINI@@@Z @0x0002C237 144B: GetCurrentDirectoryA + INI::rva0002BFE5 filename + rva0002BBDE line + AsciiString::format into local.
+#include <windows.h>
 #include "ascii_string.h"
-
-extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentDirectoryA(unsigned long nBufferLength, char *lpBuffer);
 
 // Retail's own 92-byte literal at RVA 0x007BDC80 (.rdata, file offset
 // 0x007BD8C0): the INI error banner the rowed body below formats into the

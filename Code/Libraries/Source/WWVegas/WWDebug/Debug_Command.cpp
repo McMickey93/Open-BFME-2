@@ -11,7 +11,7 @@
 // `xor al, al` and a saved byte into al before `ret 8`.
 
 
-extern "C" unsigned int strlen(const char *text);
+#include <string.h>
 
 class Debug
 {

@@ -10,9 +10,9 @@
 // and the free four-bit body at 0x0006EEBC (109B). Callers pass the result
 // to Thing::isAnyKindOf at 0x0030ADC7 and to the twin-memcpy ctor at
 // 0x0004584D. Address-derived name stays honest pending a real BitFlags
-// pin. Plain-extern memset keeps the retail E8-to-thunk call shape.
+// pin.
 
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 struct Rva0006EE7A
 {

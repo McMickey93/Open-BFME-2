@@ -6,6 +6,7 @@
 // at +4/+8/+0xC by lea (objects, not pointers) and runs its vtable slot 1
 // with (m_ext, a2, a3). Members are address-derived; slot 0 unproven but
 // required to place slot 1 at +4.
+#include <string.h>
 struct Rva001530E9Parts {
     char m_name[64];
     bool m_hasStar;
@@ -15,7 +16,6 @@ struct Rva001530E9Parts {
     const char *m_ext;
 };
 void __cdecl Rva001530E9Parse(const char *src, void *volatile dstRaw);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 struct Rva001F4A90Sel {
     virtual void v0();
     virtual void v1(const char *ext, int a2, int a3);

@@ -14,6 +14,8 @@
 // translation, the translation through its own copy constructor) and the name
 // last; that shape needs the block to be one sub-object with a copy constructor.
 
+#include <string.h>
+
 // An identity rotation (0,0,0,1) and a zero translation, by the values the
 // constructor stores.  Both assign member by member: retail's operator= copies
 // every float with its own move, where a compiler-generated block assignment
@@ -42,7 +44,6 @@ struct BfmePivotBlock
 	BfmePivotTranslation T;
 };
 
-extern "C" void *memcpy(void *destination, const void *source, unsigned int count);
 #pragma intrinsic(memcpy)
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/htree.h

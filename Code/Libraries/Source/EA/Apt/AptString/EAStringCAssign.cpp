@@ -3,7 +3,7 @@
 // Target: 0x006D6250 calls ChangeBuffer and SetSize; uses length/hash at +2/+6
 // and payload at +8. Preserve the donor copy operation with that SetSize call.
 
-extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
+#include <string.h>
 
 int __cdecl utf8EncodedLength(int c);
 

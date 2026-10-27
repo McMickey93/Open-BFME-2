@@ -3,8 +3,7 @@
  * identified RSA arithmetic helpers now live in cryptrsa.c; see
  * docs/reconstruction/dirtysdk-crypto.md for their donor and target evidence. */
 
-/* Used by the retained RSA padding body below. */
-void *memcpy( void *dest, const void *src, unsigned int count );
+#include <string.h>
 
 /* RC4 STATE.  The two indices sit at +0x00 and +0x01 and the permutation
  * follows at +0x02, so the object is 258 bytes.  The layout is read from the

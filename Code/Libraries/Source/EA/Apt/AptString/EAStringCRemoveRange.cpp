@@ -5,7 +5,7 @@
 // start clamped to 0; end clamped to size; start==0 and end==size fast paths via
 // ChangeBuffer; general path ChangeBuffer then memcpy tail with null.
 // Callers 0x006EC50D 0x00708EBD unclaimed. Neighbour Mid shares flags and rows.
-extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 class EAStringC

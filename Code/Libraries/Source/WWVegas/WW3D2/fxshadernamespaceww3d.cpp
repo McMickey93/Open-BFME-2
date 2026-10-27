@@ -7,6 +7,8 @@
 // The callback handle's inline conversion is shared with the byte-matched
 // water binder; 0x00080221 constructs it from the callback argument's address.
 
+#include <string.h>
+
 typedef const char *D3DXHANDLE;
 // WWMath Vector4 memberwise copy semantics (BFME 1 874e38488 vector4.h).
 // A trivial struct copy introduces a second temporary and MOVSD copies;
@@ -103,7 +105,6 @@ struct Rva001530E9Path {
     const char *m_rest;
 };
 void __cdecl Rva001530E9Parse(const char *name, void *volatile path);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 
 void Rva0018BDB8FogIsEnabled(ID3DXEffect *effect, D3DXHANDLE handle);
 void Rva0018BDCFFogColor(ID3DXEffect *effect, D3DXHANDLE handle);

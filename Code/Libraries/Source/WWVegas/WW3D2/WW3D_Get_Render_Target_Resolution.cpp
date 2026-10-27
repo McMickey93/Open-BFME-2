@@ -12,10 +12,10 @@
 // DX8 lock pair replace the reference names; every global rides a DIR32
 // relocation copied from retail.
 
+#include <stddef.h>
+
 typedef int Int;
 typedef bool Bool;
-
-#define NULL 0
 
 void BFME_DX8_Thread_Lock(void); // retail 0x0011F520
 bool BFME_DX8_Thread_Assert(void); // retail 0x00120F50

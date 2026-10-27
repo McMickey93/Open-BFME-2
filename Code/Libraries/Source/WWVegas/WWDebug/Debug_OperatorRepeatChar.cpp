@@ -10,7 +10,7 @@
 // [c+4]).
 
 
-extern "C" void *memset(void *dest, int value, unsigned int count);
+#include <string.h>
 
 class Debug
 {

@@ -16,7 +16,7 @@
 // Reference search at open-bfme-1 d6db6bfa4fd3bd86c1d7ca4a5ab882d7c453a92c
 // found no corresponding clean C++ initializer; this reconstruction uses
 // target control flow, literals and the recovered EAStringC operations.
-extern "C" void *memset(void *,int,unsigned int);
+#include <string.h>
 #pragma intrinsic(memset)
 void __debugbreak();
 #pragma intrinsic(__debugbreak)

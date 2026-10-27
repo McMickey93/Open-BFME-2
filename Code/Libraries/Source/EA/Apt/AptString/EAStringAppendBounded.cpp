@@ -1,7 +1,7 @@
 // ?bfmeAppendVKG@BfmeBufVKG@@QAEPAV1@PBDI@Z
 // cl: /DNDEBUG /MD
 
-extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct BfmeStringDataVKG

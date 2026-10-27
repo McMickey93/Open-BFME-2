@@ -1,5 +1,5 @@
 // cl: /O1 /EHsc /MD
-extern "C" void* __cdecl memset(void*,int,unsigned);
+#include <string.h>
 struct Rva00151248String { 
  // ?Rva00151248String::Rva00151248String present-unmatched
  Rva00151248String():data(0){} ~Rva00151248String(); void*data; void clear(); void assign(const char*); };

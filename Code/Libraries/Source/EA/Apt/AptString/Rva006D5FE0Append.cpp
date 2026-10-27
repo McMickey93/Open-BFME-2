@@ -11,9 +11,9 @@
 // copy pattern with a byte limit. Retail target evidence supplies the
 // codepoint-count adaptation here; donor layout is not treated as target fact.
 
+#include <string.h>
+
 extern const char *rva006d4280(const char *pBuffer, int *pUnicode);
-extern "C" void *__cdecl memcpy(void *destination, const void *source,
-	unsigned int count);
 #pragma intrinsic(memcpy)
 
 class EAStringC

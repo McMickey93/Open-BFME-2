@@ -1,4 +1,5 @@
 // cl: /O2 /arch:SSE /G7 /MD /EHsc
+// platformsdk
 //
 // texturefilter.cpp -- TextureFilterClass: the per-stage min/mag/mip filter
 // tables every texture's filter indexes when it is applied.
@@ -19,7 +20,7 @@
 // loops close on unsigned compares). The constant 1 stays in a register for
 // the whole body (/G7 adds it to the counters and the stage index).
 
-typedef unsigned long DWORD;
+#include <windows.h>
 
 struct IDirect3DDevice8
 {

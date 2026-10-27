@@ -3,9 +3,9 @@
 // Retail stores three words per entry and asks the object to remove an
 // existing function and user pair through virtual slot 31 before insertion.
 
-extern void *DebugReAllocMemory(void *, unsigned);
+#include <string.h>
 
-extern "C" __declspec(dllimport) void *__cdecl memmove(void *, const void *, unsigned);
+extern void *DebugReAllocMemory(void *, unsigned);
 
 struct Rva00889BF0Entry
 {

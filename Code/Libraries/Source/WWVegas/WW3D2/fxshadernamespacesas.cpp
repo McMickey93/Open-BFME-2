@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // fxshadernamespacesas.cpp -- the "Sas" FX parameter source: the DirectX
@@ -31,8 +32,8 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #include <vector>
+#include <windows.h>
 
-typedef long HRESULT;
 typedef const char *D3DXHANDLE;
 
 struct D3DXPARAMETER_DESC

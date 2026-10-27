@@ -5,12 +5,13 @@
 // callers at 0x006DC9E7/0x006DCA07 push one int index and consume the return as EAStringC this;
 // 0x0070A740 asserts StringPool::GetString(SC___proto__)->GetLength and UpdateHashValue.
 
+#include <string.h>
+
 extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char *, const char *, int);
 extern int g_bfmeAptBreakOnAssertAtDDC01C;
 void __debugbreak();
 #pragma intrinsic(__debugbreak)
 
-extern "C" unsigned int __cdecl strlen(const char *);
 #pragma intrinsic(strlen)
 
 class EAStringC
