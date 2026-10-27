@@ -1,4 +1,5 @@
-// cl: /DNDEBUG /MD
+// cl: /DNDEBUG /MD /Ireference/shims/bfme2_thread /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib
+#include "thread.h"
 
 // BFME_DX8_Thread_Lock at 0x0011F520.  BFME guards DX8 buffer access with a
 // real device mutex where Zero Hour had a thread assert that compiles to
@@ -8,17 +9,15 @@
 // 0x00DEDA88/0x00DEDA8C under the critical section at 0x00DEC540.  The
 // release half is BFME_DX8_Thread_Assert at 0x00120F50, in dx8wrapper.cpp.
 //
-// The imports are declared by hand: WaitForSingleObject and the critical
-// section pair go through the import table, while GetCurrentThreadId is called
-// through its direct thunk at 0x006105D0, which a dllimport declaration would
-// not reach.  /G7 is the tell (add eax,1 for the recursion count).
+// WaitForSingleObject and the critical-section pair use the import table.
+// The thread ID comes from the WWLib wrapper at 0x006105D0.
+// /G7 is the tell (add eax,1 for the recursion count).
 
 extern "C" {
 __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void *handle, unsigned long milliseconds);
 __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
 __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
 __declspec(dllimport) int __stdcall ReleaseMutex(void *handle);
-unsigned long __stdcall GetCurrentThreadId(void);
 }
 
 enum { BFME_WAIT_TIMEOUT = 0x102 };
@@ -94,7 +93,7 @@ void BFME_DX8_Thread_Lock(void)
 		}
 	}
 	EnterCriticalSection(bfmeDX8DeviceSection);
-	bfmeDX8DeviceOwner = GetCurrentThreadId();
+	bfmeDX8DeviceOwner = ThreadClass::_Get_Current_Thread_ID();
 	++bfmeDX8DeviceRecursion;
 	LeaveCriticalSection(bfmeDX8DeviceSection);
 }
@@ -107,7 +106,7 @@ bool bfmeRva0011F5B0(unsigned long milliseconds)
 	if (WaitForSingleObject(bfmeDX8DeviceMutex, milliseconds) == BFME_WAIT_TIMEOUT)
 		return false;
 	EnterCriticalSection(bfmeDX8DeviceSection);
-	bfmeDX8DeviceOwner = GetCurrentThreadId();
+	bfmeDX8DeviceOwner = ThreadClass::_Get_Current_Thread_ID();
 	++bfmeDX8DeviceRecursion;
 	LeaveCriticalSection(bfmeDX8DeviceSection);
 	return true;
@@ -117,7 +116,7 @@ bool bfmeRva0011F5B0(unsigned long milliseconds)
 // compares unsigned (jbe).  Address-derived name.
 int bfmeRva0011F600()
 {
-	if (GetCurrentThreadId() == bfmeDX8DeviceOwner && (unsigned)bfmeDX8DeviceRecursion > 0)
+	if (ThreadClass::_Get_Current_Thread_ID() == bfmeDX8DeviceOwner && (unsigned)bfmeDX8DeviceRecursion > 0)
 		return 1;
 	return 0;
 }

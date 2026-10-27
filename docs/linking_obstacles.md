@@ -3907,3 +3907,60 @@ Remaining / next check: MessageStreamCommandName needs the native constructor in
 Clearance: the retained adoptions are verified only within the stated ordinary-preview scope. The remaining constructor, accessor and lifetime contracts are open; canonical headers and reference shims are unchanged.
 
 Census confirmation: not claimed.
+
+### LINK-104: placeholder deleting destructors still emit nonretail complete destructors
+Status: Blocked on class and row identity reconciliation. Updated: 2026-10-27; inspected revision: 40d8eced18722ddcee26c59ddc4f3fb8d157d887.
+Evidence / affected units: Code/Libraries/Source/WWVegas/WWLib/Rva00170C0Siblings.cpp retains L10/S10 in current-provider ordinary preview against index 5ce093a71a (2026-10-26 19:02, retail-truth-4). Each blocker is its empty Rva<target>Dtor complete-destructor definition. The native deleting rows call existing nonempty matched bodies under different names. This is related to the complete-destructor prerequisite in LINK-012, not evidence of ten missing native matches.
+Completed: inspected every deleting row's native call and its current callee row. All 12 deleting rows remain exact; declaration, EH and shadow data checks pass. No destructor source trial or ledger change is retained. The existing names at the call targets are owner facts, not proof that the placeholder class has that identity.
+
+| Native deleting row | Complete-destructor target | Existing row owner and home |
+| --- | --- | --- |
+| 0x00122110 | 0x00120FB0 | VectorClass<FontCharsBuffer*>::~VectorClass, WW3D2/render2dsentence.cpp; the earlier naming attempt separately records conflicting ResolutionDesc vtable neighbors. |
+| 0x00156840 | 0x00155330 | VectorClass<HLodClass::ModelNodeClass>::~VectorClass, WW3D2/hlod.cpp. |
+| 0x00157110 | 0x00156750 | VectorClass<MixFileFactoryClass::AddInfoStruct>::~VectorClass, WWLib/mixfile.cpp. |
+| 0x00157E60 | 0x00157C20 | VectorClass<Render2DSentenceClass::PendingSurfaceStruct>::~VectorClass, WW3D2/render2dsentence.cpp. |
+| 0x00188320 | 0x001880D0 | Rva001880D0StringCleanupForward::cleanup, WWLib/wwstring_free_string.cpp; the five-byte body jumps to StringClass::Free_String at 0x00610A40. |
+| 0x00616490 | 0x006162B0 | GenericNode::~GenericNode, WW3D2/layer.cpp; its named deleting destructor is separately rowed at 0x006162E0, so the call target alone does not establish a rename. |
+| 0x00626D90 | 0x00625800 | BfmeThingZU::bfmeUnhookZU, Common/BfmeOneHundredSixtyTwo.cpp. |
+| 0x00663410 | 0x0066C730 | Rva00800290Buffer::reset, GameNetwork/Y2FeslBufferAndChain.cpp. |
+| 0x0073AAC0 | 0x0073A900 | BfmeThingCDE::bfmeDtorCDE, Common/BfmeThingCDEDestructor.cpp. |
+| 0x007581C0 | 0x0075A080 | Rva009A4620CollisionData::~Rva009A4620CollisionData, Common/System/Rva009A4620Destructor.cpp. |
+
+Remaining / next check: reconcile each actual class, base/member lifetime and deleting-row identity with these existing owners through the naming lane, preserving the two distinct GenericNode deleting extents and the conflicting first vector evidence. Removing the empty definitions alone would also stop the compiler from emitting the rowed deleting destructors. Renaming or moving those rows, changing pins, or adding new bodies is outside this worker's scope. No admissible new fold pin or missing native match was established.
+Clearance: none for this unit; current-provider preview still reports L10/S10.
+Census confirmation: pending; no census gain claimed.
+
+### LINK-103: opaque hash bodies need visible vector operations and distinct native key identities
+Status: Open (bounded emission repair verified). Updated: 2026-10-27; inspected revision: 40d8eced18722ddcee26c59ddc4f3fb8d157d887.
+Evidence / affected units: Code/Libraries/Source/WWVegas/WWLib/stlport_pod_hash_bodies.cpp reproduces L7/S7 against index 5ce093a71a (2026-10-26 19:02, retail-truth-4). Its declaration-only vector<void*> subobject constructors and destructors hide the canonical STLport lifetime operations, and its declaration-only subscript hides native bucket access. The remaining record/key identity conflicts also fall under LINK-002.
+Completed: reveal the existing STLport default vector/base constructors and vector/base/proxy/allocator destructors, and retain subscript's header operation through a dllimport/forceinline specialization without an unused external subscript copy. The two erase-bucket copies now have retail verdicts at 0x00053EE8 (58 bytes) and 0x00053F22 (76 bytes), as does the insertion helper at 0x002E037F (112 bytes). The hashtable constructor changes from the wrong 77-byte body to the native 64-byte instruction shape; its recursive verdict remains unknown rather than a full retail proof. The unit's eight matched rows remain exact, declaration/EH/shadow data checks pass, and its preview improves to L3/S3. A 262-source current-provider/consumer comparison preserves all 244 initially linking units and adds no blocker. This is a partial repair, not a unit clearance.
+Failed trial / stopping condition: additionally revealing the count constructors/allocation and generic vector/proxy swap cleared the Pod72 resize blocker but made previously linking stlport_hashtable_asciistring.cpp acquire selected-wrong ??0?$_STLP_alloc_proxy@PAPAXPAXV?$allocator@PAX@_STL@@@_STL@@QAE@ABV01@@Z. Those extra edits were reversed, and the consumer links again. Do not repeat that generic-swap trial without resolving its copy-constructor provider. The narrower lifetime/subscript repair remains.
+Remaining / next check: the Pod44 _Construct name is pinned to 0x0041072F, whose existing owner is _Construct<pair<const AsciiString,Rva0045EF90Object>> in stlport_pair_asciistring_twins.cpp and calls pair copy 0x004105C4; the emitted trivial integer-key copy is 32 bytes rather than that 45-byte EH body. The integer-table resize name is pinned to the 199-byte AsciiString-key grower at 0x00212858 in Rva00212858Resize.cpp, whose native loop calls hash 0x00055041. These require coherent existing-row key/element identity reconciliation. Pod72 resize reaches the existing 184-byte fold at 0x0053F1EC, owned by Armor.cpp and proven typed fold owners; use its native vector lifetime/swap context together with the actual allocator-proxy copy provider. Suppression alone has no replacement provider for the old Pod44/integer-resize spellings. No new match or independently justified fold pin was identified.
+Clearance: only the four removed blocker pairs are cleared in ordinary-preview scope; census confirmation pending. The unit remains blocked by Pod44 construction and both resize copies (L3/S3).
+Census confirmation: pending; no linked-byte gain claimed for this unit.
+
+### LINK-105: GameLogic canonical-header surface prerequisites
+
+Status: Blocked for the remaining assigned consumers; compatible adoptions preserve ordinary-preview links. Updated: 2026-10-27; inspected revision: e610a85d28d7a89414872c97da048b68ff67cd1f.
+
+Evidence / affected units: [the local GameLogic header handoff](../build/header-report.md) maps each original, trial and restored source to raw byte gates, link previews against index 5ce093a71a (retail-truth-4), acceptance receipts and tool-recorded blocked verdicts in build/header-hg5/. No canonical header or reference shim changes are retained.
+
+Completed: compatible frame, weapon, invisibility, aura, spawn-point, creation-upgrade, fire-wrapper, Lua, broadcast and cower consumers include the canonical GameLogic header. PartitionManager and BfmeWideResult dependency views are also replaced where present. Existing public getters preserve the accessed prefixes. A named volatile leech-frame read preserves the weapon comparison order, and a cached logic receiver preserves the cower callback without its private inline lookup. The obsolete Rva005892F6 class-gate exception and its hatch register key are removed. Only header_adopt_lane.py accept retires queue rows.
+
+Remaining / next check: ObjectSetTriggerAreaFlagsForChangeInPosition needs QueueForNotifyPathfindCellChanged and the frame-update operation at +0x180. Object_setID needs addObjectToLookupTable, removeObjectFromLookupTable, SwapObjectIDs and compatible access to its lookup receiver at +0xB4. Rva003BD108SetGamePaused needs DoExitMap(bool). UpdateModuleSetWakeFrame needs friend_awakenUpdateModule. Rva0023C8DA needs its rowed method declaration and the embedded ArmySummarySystem receiver at +0x184. ScriptActions_doModifyBuildableStatus needs setBuildableStatusOverride. Rva003BC8F0Set needs a public setter and storage for the native +0x9F byte. The class owner must reconcile these surfaces and re-gate dependents before those sources are retried; every stopped source is restored exactly.
+
+Clearance: retained adoptions preserve their existing byte and ordinary-preview link results only. Census confirmation: pending; no new linked-byte or headline gain claimed.
+
+### LINK-106: thread-wrapper calls used the Win32 import thunk's name
+
+Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-27; inspected revision: a0b82f68445de8ab0254437ef7e97332ce48cfb0.
+
+Evidence / affected units: Code/Libraries/Source/WWVegas/WW3D2/BfmeDX8ThreadLock.cpp emitted wrong copies of ?BFME_DX8_Thread_Lock@@YAXXZ, ?bfmeRva0011F5B0@@YA_NK@Z and ?bfmeRva0011F600@@YAHXZ. Code/Libraries/Source/WWVegas/WW3D2/BfmeDX8ThreadCheck.cpp emitted the wrong ?Rva0011F500@@YAHXZ copy, and Code/GameEngine/Source/Main/BfmeDfe6e4_rva00225492.cpp emitted the wrong ?rva00225492@BfmeDfe6e4@@QAEXXZ copy. All five native calls target RVA 0x006105D0, already rowed as ThreadClass::_Get_Current_Thread_ID in Code/Libraries/Source/WWVegas/WWLib/thread.cpp. Commit e53f7b13020672350e4244facf694217e855f9af introduced the distinct _GetCurrentThreadId@0 row at RVA 0x00687E0A. Census identity resolution then preferred that row over the old pin at 0x006105D0. Both entries contain FF 25 20 A2 BB 00, but their native entry addresses differ. The inspected preview index identifies itself as bf3dd31211 (2026-10-27 00:39, retail-truth-4).
+
+Completed: the three consumers include the existing reference/shims/bfme2_thread/thread.h and call its ThreadClass::_Get_Current_Thread_ID declaration. Include directories are added only to the existing cl lines. The provider, import thunks, shared headers, pins and ledgers are unchanged. All emitted COMDAT names, bytes and extents remain identical; exactly five REL32 referent names change from _GetCurrentThreadId@0 to ?_Get_Current_Thread_ID@ThreadClass@@SAIXZ. All seven matched rows pass ordinary byte verification. Per-source declaration, EH and shadow data checks pass; the data checks report zero findings. check_csv.py and pin_consistency.py --check pass. Four DX8 code verdicts improve from wrong to unknown because of their separate unplaced data names; the timestamp body is retail. No stronger retail-verdict claim is made for the DX8 bodies.
+
+Clearance: a paired current-object link_check.py call covers 115 previewable sources, comprising every source that spells an affected body or the thread-wrapper name and the Win32 import provider. It changes 16 to 114 LINKS, preserves every previously linking source and adds no blocker to any source. All three assigned sources and all eight named sample callers now LINKS. This subset is cleared in ordinary-preview scope; census confirmation pending. The only remaining failure in this cohort is the unchanged ??_7GameWindow@@6B@ first-copy conflict in Code/GameEngine/Source/GameClient/GUI/GameWindowDtor.cpp. The additional spelling hit W3DSnowResourceView.h is a header rather than a census unit.
+
+Remaining / next check: no match, pin, rename or shared-header prerequisite remains for the assigned sources. Keep the GameWindow table issue in its separate repair scope. Confirm the repaired wrapper bindings and their caller closure in the next normal maintainer census; no census or headline gain is claimed here.
+
+Census confirmation: pending.
