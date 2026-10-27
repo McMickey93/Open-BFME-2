@@ -1,7 +1,7 @@
 // cl: /O2 /G6 /DNDEBUG /MD
 // Clean room: reverse/vp6_cleanroom/specs/001ba3a0.md 001b9bf0.md 001b8e70.md
 // plus retail only. No decoder source was consulted.
-extern "C" void *__cdecl memcpy(void *destination, const void *source, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 // RVA 0x001BA3A0: copy row zero into the row one pitch below, per column.

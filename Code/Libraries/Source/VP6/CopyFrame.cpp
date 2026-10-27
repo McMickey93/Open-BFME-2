@@ -7,7 +7,7 @@
 // plus the Y recon offset, then the U and V planes likewise, and the frame
 // border is updated last.
 
-extern "C" void * __cdecl memcpy(void *destination, const void *source, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct CopyFrameConfig

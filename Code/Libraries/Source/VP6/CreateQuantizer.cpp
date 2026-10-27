@@ -64,7 +64,7 @@ static int AllocateQuantizerBuffers(QUANTIZER *pbi)
 	return 1;
 }
 
-extern "C" void *__cdecl memset(void *dest, int value, unsigned int count);
+#include <string.h>
 extern "C" void __cdecl VP6_DeleteQuantizer(void **quantizer);
 
 // RVA 0x001B7990
