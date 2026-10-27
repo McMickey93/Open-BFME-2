@@ -16701,14 +16701,12 @@ uw_00766ff3,,0x00766FF3,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;obj
 uw_007670b6,,0x007670B6,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9640
 uw_007670cc,,0x007670CC,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9703
 uw_007670da,,0x007670DA,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4596
-uw_007670fb,,0x007670FB,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9660
 uw_00767106,,0x00767106,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9640
 uw_00767140,,0x00767140,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4983
 uw_00767170,,0x00767170,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4985
 uw_00767c40,,0x00767C40,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9560
 uw_00767c6a,,0x00767C6A,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4969
 uw_00767c7c,,0x00767C7C,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4967
-uw_00767ca2,,0x00767CA2,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L5771
 uw_00767cb4,,0x00767CB4,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4968
 uw_0076804b,,0x0076804B,17,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L7479
 uw_007680c6,,0x007680C6,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L7273
@@ -17292,7 +17290,6 @@ uw_00783cc6,,0x00783CC6,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obje
 uw_00783d5d,,0x00783D5D,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L9748
 uw_00783e39,,0x00783E39,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4782
 uw_00783faa,,0x00783FAA,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7312
-uw_00783fbc,,0x00783FBC,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L9856
 uw_00783fce,,0x00783FCE,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
 uw_00783fe3,,0x00783FE3,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
 uw_00783fee,,0x00783FEE,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12445
@@ -98941,3 +98938,6 @@ $L1750,,0x007A2323,8,Code/GameEngine/Source/Common/Rva005D3C2BCtor.cpp,matched,g
 $L5363,,0x0077A838,11,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemCtorDeferred.cpp,matched,gen-funclet;parent=??0GlobalWeatherSystem@@QAE@XZ; Matched parent 0x00318588's EH graph is EXACT (eh_verify) and binds compiler label $L5363 to retail Unwind@00b7a838 0x77A838; replaces generated uw_0077a838
 ??1?$DynamicVectorClass@UPendingSurfaceStruct@Render2DSentenceClass@@@@UAE@XZ,,0x00157C20,67,Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp,matched,fold-proof=Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$VectorClass@UPendingSurfaceStruct@Render2DSentenceClass@@@@UAE@XZ at 0x00157C20: this unit compiles it to the same whole 67B body; 2 retail unwind funclets in 2 unit(s) call 0x00157C20 for it
 $L1606,,0x007670AB,11,Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp,matched,gen-funclet;parent=??1Render2DSentenceClass@@QAE@XZ; Matched parent 0x00157C70's EH graph is EXACT (eh_verify) and binds compiler label $L1383 to retail Unwind@00b670ab 0x7670AB; replaces generated uw_007670ab
+$L4298,,0x00767CA2,8,Code/Libraries/Source/WWVegas/WWLib/stlport_bfmeassignrecord32_sort.cpp,matched,gen-funclet;parent=??$swap@UBfmeAssignRecord32@@@_STL@@YAXAAUBfmeAssignRecord32@@0@Z; Matched parent 0x00173878's EH graph is EXACT (eh_verify) and binds compiler label $L4298 to retail Unwind@00b67ca2 0x767CA2; replaces generated uw_00767ca2
+$L1814,,0x007670FB,11,Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceConstructorBFME2.cpp,matched,gen-funclet;parent=??0Render2DSentenceClass@@QAE@XZ; Matched parent 0x00157E80's EH graph is EXACT (eh_verify) and binds compiler label $L1814 to retail Unwind@00b670fb 0x7670FB; replaces generated uw_007670fb
+$L4705,,0x00783FBC,8,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva003F53DA.cpp,matched,gen-funclet;parent=?_M_fill_insert@?$vector@URva003F53DAElement@@V?$allocator@URva003F53DAElement@@@_STL@@@_STL@@QAEXPAURva003F53DAElement@@IABU3@@Z; Matched parent 0x003F53DA's EH graph is EXACT (eh_verify) and binds compiler label $L4705 to retail Unwind@00b83fbc 0x783FBC; replaces generated uw_00783fbc
