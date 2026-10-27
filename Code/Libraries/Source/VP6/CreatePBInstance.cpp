@@ -35,8 +35,7 @@ int g_bfmeSharedJX;
 
 class BfmeThingJT;
 
-extern "C" void *__cdecl memcpy(void *d, const void *s, unsigned int n);
-extern "C" void *__cdecl memset(void *d, int c, unsigned int n);
+#include <string.h>
 
 struct CodecState;
 

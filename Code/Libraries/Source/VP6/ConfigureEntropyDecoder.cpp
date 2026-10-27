@@ -41,8 +41,7 @@ struct Vp6ProbUpdate {
 		return v + (v == 0);
 	}
 };
-extern "C" void *memset(void *, int, unsigned);
-extern "C" void *memcpy(void *, const void *, unsigned);
+#include <string.h>
 #pragma intrinsic(memset, memcpy)
 // g_vp6DcUpdateProbs (VA 0x00BD9210, retail .rdata contents): the DC update probabilities, 2 planes of 11.
 extern const unsigned char g_vp6DcUpdateProbs[2][11] = {
