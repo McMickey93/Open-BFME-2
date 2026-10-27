@@ -22,7 +22,7 @@
 typedef int Int;
 typedef unsigned int UInt;
 
-void *operator new( UInt size );
+#include <new>
 
 class INIException
 {
