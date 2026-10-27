@@ -8,7 +8,7 @@
 // this+offsets match Rva000687B8 layout.
 typedef unsigned int Uint;
 typedef unsigned short UShort;
-void *__cdecl operator new(Uint s);
+#include <new>
 class RefCountClass
 {
 public:
