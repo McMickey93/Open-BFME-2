@@ -1296,6 +1296,19 @@ Whole-unit clearance and census confirmation remain pending.
   zero after 3437 seconds, with zero final drift or new unresolved references.
   This coefficient subset is cleared in the fixed comparison. Other motion-vector
   storage prerequisites and current-master census confirmation remain open.
+- **MV update-table bytes and endpoint handoff (2026-10-27, `b8e318a126`):**
+  [the native/coff proof](../reverse/attempt_support/vp6-mv-table-link-20261027/readme.md)
+  corrects two copied probability values (flat 13: 250 -> 254; flat 31:
+  254 -> 251), restoring all 34 native bytes on the same owner. The complete
+  331-byte function and six data operands remain exact; non-debug allocation
+  and relocation layout is unchanged. End comparisons at table+35/+36/+43
+  still require native padding/defaultMvShort provider reconciliation.
+  That table's decodembs.cpp scope was held by davidrazidlo-claude and was not
+  edited. The stale TU map is not move approval. Ordinary preview against
+  `bf3dd31211` preserves 330 -> 330 bytes; no additional strict credit,
+  current-master census gain or whole-MV closure is claimed. Source work
+  finalized at t=13 minutes. Resume through approved storage ownership without
+  artificial prefixes, extra rows, new pins or verifier exceptions.
 - **LargeGroupAudio key-tree follow-up (2026-10-26, `e5c5a1787c`):**
   [the whole key-list repair](../reverse/attempt_support/largegroup-keylist-erase-link-20261026.md)
   preserves its 191-byte parent and verifies all 15 rows of the native erase
