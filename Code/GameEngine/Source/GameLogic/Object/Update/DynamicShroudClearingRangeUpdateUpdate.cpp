@@ -11,14 +11,14 @@
 // 0x0048B067, xfer 0x0048B505 and animateGridDecals 0x0048B256 use them. The
 // module data holds ShrinkTime +0xC, GrowTime +0x14, FinalVision +0x18,
 // ChangeInterval +0x1C, GrowInterval +0x20 and the grid decal template +0x28.
+#define NOMINMAX
+#include <windows.h>
 #include "Lib/Coord3D.h"
 
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-
-#define TRUE 1
 
 class Thing;
 class ModuleData;
