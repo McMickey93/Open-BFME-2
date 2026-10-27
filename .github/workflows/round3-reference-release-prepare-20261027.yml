@@ -1,0 +1,48 @@
+name: Prepare BFME2 reference scope release metadata 20261027
+
+on:
+  create:
+permissions:
+  contents: read
+
+jobs:
+  release:
+    if: >-
+      github.repository == 'McMickey93/Open-BFME-2' &&
+      github.event.repository.fork == true &&
+      github.event.repository.private == false &&
+      github.ref == 'refs/heads/codex/20261027-round3-reference-release-prepare' &&
+      github.event.ref_type == 'branch'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BFME_CLAIM_NS: refs/heads/claims/
+      BFME_CLAIM_OWNER: github:McMickey93:bfme2:round3-20261027
+      GIT_TERMINAL_PROMPT: '0'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: McMickey93/Open-BFME-2
+          ref: ${{ github.sha }}
+          path: control
+          sparse-checkout: .github/qualification/round3-reference-release-prepare-20261027
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+          submodules: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: Open-BFME/Open-BFME-2
+          ref: a32b57717fbed592c703a13bfd0661cf9a28a94e
+          path: source
+          sparse-checkout: tools/claims.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: false
+      - name: Produce the original expired marker after a single-ref ownership fence
+        working-directory: source
+        env:
+          BFME_TRANSFER_TOKEN: ${{ github.token }}
+        run: python3 ../control/.github/qualification/round3-reference-release-prepare-20261027/release.py

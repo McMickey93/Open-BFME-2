@@ -1,0 +1,12 @@
+{
+  "fork": "McMickey93/Open-BFME-2",
+  "cleanup_branch": "codex/20261027-round3-reference-release-prepare",
+  "release_branch": "codex/20261027-round3-reference-release-prepared",
+  "generation_revision": "a32b57717fbed592c703a13bfd0661cf9a28a94e",
+  "agents_blob": "922001686b9b38567dd6ef67d16d46cb68320a1b",
+  "claims_blob": "0215edeb6038ebafe3754fb51911841aecb825b2",
+  "qualification_run": 40579777763,
+  "claim_ref": "refs/heads/claims/file/5635fb671f614ba9",
+  "claim_owner": "github:McMickey93:bfme2:round3-20261027",
+  "claim_lease": "322194ce322d4593aeac0dbce1c499c5"
+}
