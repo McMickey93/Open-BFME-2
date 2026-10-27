@@ -76,8 +76,6 @@ public:
 	void *rva00447773(int index);
 };
 
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-
 class LANGameInfo;
 
 class GameTextInterface

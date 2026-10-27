@@ -12,7 +12,7 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 
-extern "C" void *__cdecl memset(void *destination, int value, unsigned int count);
+#include <string.h>
 
 class GameWindow
 {
