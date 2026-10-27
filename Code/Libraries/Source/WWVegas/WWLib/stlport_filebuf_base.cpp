@@ -84,10 +84,9 @@ protected:
 	unsigned char _M_should_close;
 	unsigned char _M_regular_file;
 
-	static unsigned long _M_page_size;
+	// size_t, as STLport declares it; defined in stlport_narrow_filebuf.cpp.
+	static unsigned int _M_page_size;
 };
-
-unsigned long _Filebuf_base::_M_page_size;
 
 _Filebuf_base::_Filebuf_base()
 	: _M_file_id(reinterpret_cast<void *>(-1)), _M_openmode(0),

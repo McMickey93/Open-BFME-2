@@ -795,7 +795,5 @@ Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?obj@?1
 Code/Libraries/Source/WWVegas/WWLib/stlport_classic_locale.cpp	duplicate-def	__Null_messages	0x009DEB24
 Code/Libraries/Source/WWVegas/WWLib/stlport_classic_locale.cpp	wrong-name	__Null_messages	0x009DEB24
 Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	wrong-name	?_S_count@_Loc_init@ios_base@_STL@@0JA	0x009DEB20
-Code/Libraries/Source/WWVegas/WWLib/stlport_filebuf_base.cpp	duplicate-def	?_M_page_size@_Filebuf_base@_STL@@1KA	0x009A6CC8
-Code/Libraries/Source/WWVegas/WWLib/stlport_filebuf_base.cpp	wrong-name	?_M_page_size@_Filebuf_base@_STL@@1KA	0x009A6CC8
 Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_init_002213D9.cpp	wrong-name	?$S1@?1??Rva002213D9Get@@YAPAV?$map@HPAXU?$less@H@_STL@@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@XZ@4IA	0x009FE4B8
 Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_init_002213D9.cpp	wrong-name	?s_map@?1??Rva002213D9Get@@YAPAV?$map@HPAXU?$less@H@_STL@@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@XZ@4V23@A	0x009FE4AC
