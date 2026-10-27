@@ -1,49 +1,7 @@
-// cl: /O1 /Ireference/shims/zh_outofline /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /G7 /arch:SSE /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims
-// platformsdk
-// dxsdk
+// cl: /FIzh_ascii.h /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/zh_outofline /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims -Ireference/open-bfme-1/game/GameEngine/Source/Common /Ireference/open-bfme-1/inputs/reference/shims/sweep /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /ICode/GameEngine/Source/GameClient/GUI
 // stlport
-// Ported verbatim from the Generals Zero Hour reference
-// (GameEngine/Source/GameClient/GUI/GameWindowManager.cpp); this unit had no counterpart under Code/.
-/*
-**	Command & Conquer Generals Zero Hour(tm)
-**	Copyright 2025 Electronic Arts Inc.
-**
-**	This program is free software: you can redistribute it and/or modify
-**	it under the terms of the GNU General Public License as published by
-**	the Free Software Foundation, either version 3 of the License, or
-**	(at your option) any later version.
-**
-**	This program is distributed in the hope that it will be useful,
-**	but WITHOUT ANY WARRANTY; without even the implied warranty of
-**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-**	GNU General Public License for more details.
-**
-**	You should have received a copy of the GNU General Public License
-**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-////////////////////////////////////////////////////////////////////////////////
-//																																						//
-//  (c) 2001-2003 Electronic Arts Inc.																				//
-//																																						//
-////////////////////////////////////////////////////////////////////////////////
-
-// FILE: GameWindowManager.cpp ////////////////////////////////////////////////////////////////////
-// Created:   Colin Day, June 2001
-//						Dean Iverson, March 1998 (Original window code)
-// Desc:      The game window manager is the singleton class that we interface
-//						with to interact with the game windowing system.
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
+// TU Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
 #include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
-
-// Retail's DisplayString vtable calls getText at slot 2 (0x8), proven by the
-// rowed getTooltipText at 0x002C1FA0; the Zero Hour donor DisplayString.h
-// derives from MemoryPoolObject, whose extra virtual puts getText at slot 3,
-// so this unit emitted a deviant getTooltipText copy and lost the COMDAT.
-// TU-local view with retail's slot order (same as WinInstanceDataDisplayStrings.cpp).
-// The donor UnicodeString header is pulled explicitly since the blocked header
-// was this unit's carrier for it.
 #include "Common/UnicodeString.h"
 #define __DISPLAYSTRING_H_
 class GameFont;
@@ -61,15 +19,6 @@ public:
 	virtual void setWordWrap(Int wordWrap) = 0;
 	virtual void setWordWrapCentered(Bool isCentered) = 0;
 };
-
-// The donor WinInstanceData.h inline bodies for the four text accessors expand
-// here to deviant copies (DisplayString slot 3, ZH UnicodeString copy), and
-// the link then keeps this unit's getTooltipText instead of the rowed body at
-// 0x002C1FA0. TU-local class view, verbatim from the donor header except those
-// four stay declared-only so uses reach the rowed out-of-line bodies
-// (getTooltipText 0x002C1FA0, getTooltipTextLength 0x002C027B, getText
-// 0x003148F1, getTextLength 0x000A3DCC). Members are untouched, so layout and
-// the GameWindow.h member-access inlines compile to the same bytes.
 #include "Lib/BaseType.h"
 #include "Common/AsciiString.h"
 #include "GameClient/Color.h"
@@ -77,30 +26,25 @@ class Image;
 class GameWindow;
 class VideoBuffer;
 #define __WININSTANCEDATA_H_
-
 #define WIN_STATE_HILITED 	0x00000002
 #define WIN_STATE_SELECTED	0x00000004
-
 enum
 {
 	MAX_WINDOW_NAME_LEN = 64,
 	MAX_DRAW_DATA = 9,
 	MAX_TEXT_LABEL = 128
 };
-
 struct WinDrawData
 {
 	const Image *image;
 	Color color;
 	Color borderColor;
 };
-
 struct TextDrawData
 {
 	Color color;
 	Color borderColor;
 };
-
 class WinInstanceData
 {
 public:
@@ -145,7 +89,6 @@ public:
 	DisplayString *m_tooltip;
 	VideoBuffer *m_videoBuffer;
 };
-
 #include "Common/Debug.h"
 #include "Common/Language.h"
 #include "GameClient/Display.h"
@@ -168,19 +111,18 @@ public:
 #include "GameClient/GlobalLanguage.h"
 #include "GameClient/GameWindowTransitions.h"
 #include "Common/NameKeyGenerator.h"
-
-// PUBLIC DATA ////////////////////////////////////////////////////////////////////////////////////
-GameWindowManager *TheWindowManager = NULL;
-UnsignedInt WindowLayoutCurrentVersion = 2;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// PRIVATE FUNCTIONS //////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #ifdef _INTERNAL
 // for occasional debugging...
 //#pragma optimize("", off)
 //#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
+
 #endif
+#include "PreRTS.h"
+
+// PUBLIC DATA ////////////////////////////////////////////////////////////////////////////////////
+GameWindowManager *TheWindowManager = NULL;
+
+UnsignedInt WindowLayoutCurrentVersion = 2;
 
 //
 // with this statis set to true, the window system will propogate mouse position
@@ -225,6 +167,82 @@ public:
 	virtual WindowMsgHandledType winSendSystemMsg( GameWindow *window, UnsignedInt msg, WindowMsgData mData1, WindowMsgData mData2 );
 };
 
+// Three more: a constructor seeded from three globals, a two-level
+// comparator, and an angle from an inline arctangent.
+
+class BfmeItemEG
+{
+public:
+	int m_bfmeHead[5];					// +0x00
+	int m_bfmeMinor;					// +0x14
+	int m_bfmeMajor;					// +0x18
+};
+
+// Clean BFME1 GameWindowManager donor6d943426; native hierarchy view only.
+// Manager class declarations come from shared reference headers. Native33/33/58
+// and independent GameWindow leaf walkers prove status8 and links1F8/1FC/200/204.
+struct BfmeManagerWindowLinks { char opaque00[8]; unsigned status; char opaque0C[0x1EC]; BfmeManagerWindowLinks *next,*prev,*parent,*child; };
+
+// tu-skeleton: 0x002C08EF 137B ?processDestroyList@GameWindowManager@@IAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_processDestroyList.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp
+
+// platformsdk
+// dxsdk
+// Ported verbatim from the Generals Zero Hour reference
+// (GameEngine/Source/GameClient/GUI/GameWindowManager.cpp); this unit had no counterpart under Code/.
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+//																																						//
+//  (c) 2001-2003 Electronic Arts Inc.																				//
+//																																						//
+////////////////////////////////////////////////////////////////////////////////
+
+// FILE: GameWindowManager.cpp ////////////////////////////////////////////////////////////////////
+// Created:   Colin Day, June 2001
+//						Dean Iverson, March 1998 (Original window code)
+// Desc:      The game window manager is the singleton class that we interface
+//						with to interact with the game windowing system.
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Retail's DisplayString vtable calls getText at slot 2 (0x8), proven by the
+// rowed getTooltipText at 0x002C1FA0; the Zero Hour donor DisplayString.h
+// derives from MemoryPoolObject, whose extra virtual puts getText at slot 3,
+// so this unit emitted a deviant getTooltipText copy and lost the COMDAT.
+// TU-local view with retail's slot order (same as WinInstanceDataDisplayStrings.cpp).
+// The donor UnicodeString header is pulled explicitly since the blocked header
+// was this unit's carrier for it.
+
+// The donor WinInstanceData.h inline bodies for the four text accessors expand
+// here to deviant copies (DisplayString slot 3, ZH UnicodeString copy), and
+// the link then keeps this unit's getTooltipText instead of the rowed body at
+// 0x002C1FA0. TU-local class view, verbatim from the donor header except those
+// four stay declared-only so uses reach the rowed out-of-line bodies
+// (getTooltipText 0x002C1FA0, getTooltipTextLength 0x002C027B, getText
+// 0x003148F1, getTextLength 0x000A3DCC). Members are untouched, so layout and
+// the GameWindow.h member-access inlines compile to the same bytes.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// PRIVATE FUNCTIONS //////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 //-------------------------------------------------------------------------------------------------
 /** Generic function to simply propagate only button press messages to parent and let it deal with it */
 //-------------------------------------------------------------------------------------------------
@@ -249,7 +267,9 @@ WindowMsgHandledType PassSelectedButtonsToParentSystem( GameWindow *window, Unsi
 	
 	return MSG_IGNORED;
 
-}  // end PassSelectedButtonsToParentSystem
+}
+
+  // end PassSelectedButtonsToParentSystem
 
 //-------------------------------------------------------------------------------------------------
 /** Generic function to simply propagate only button press messages to parent and let it deal with it */
@@ -270,7 +290,9 @@ WindowMsgHandledType PassMessagesToParentSystem( GameWindow *window, UnsignedInt
 	
 	return MSG_IGNORED;
 
-}  // end PassSelectedButtonsToParentSystem
+}
+
+  // end PassSelectedButtonsToParentSystem
 
 
 // GameWindowManager::reset: defined in GameWindowManagerModal.cpp (its row's unit).
@@ -336,3 +358,278 @@ WindowMsgHandledType PassMessagesToParentSystem( GameWindow *window, UnsignedInt
 // GameWindowManager::winPrevTab: defined in GameWindowManager_winPrevTab.cpp (its row's unit).
 
 // GameWindowManager::registerTabList: defined in GameWindowManager_registerTabList.cpp (its row's unit).
+
+// tu-skeleton: 0x002C0A0F 77B ?init@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_init.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0A5C 24B ?reset@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0A74 21B ?update@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0A89 136B ?linkWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0B11 129B ?insertWindowAheadOf@GameWindowManager@@QAEXPAVGameWindow@@0@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0B92 69B ?unlinkWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0BD7 110B ?unlinkChildWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Bfme5SixtyNine.cpp
+
+// ?bfmeLess@@YA_NPBVBfmeItemEG@@0@Z
+bool __cdecl bfmeLess(const BfmeItemEG *first, const BfmeItemEG *second)
+{
+	if (first->m_bfmeMajor < second->m_bfmeMajor)
+		return true;
+
+	if (first->m_bfmeMajor > second->m_bfmeMajor)
+		return false;
+
+	return first->m_bfmeMinor < second->m_bfmeMinor;
+}
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowManagerParentLinks.cpp
+
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+Bool GameWindowManager::isEnabled(GameWindow *win)
+{
+ BfmeManagerWindowLinks *w=(BfmeManagerWindowLinks *)win;
+ if(w==0) return false;
+ do { if((w->status&8)==0) return false; w=w->parent; } while(w);
+ return true;
+}
+
+Bool GameWindowManager::isHidden(GameWindow *win)
+{
+ BfmeManagerWindowLinks *w=(BfmeManagerWindowLinks *)win;
+ if(w==0) return true;
+ do { if(w->status&0x10) return true; w=w->parent; } while(w);
+ return false;
+}
+
+void GameWindowManager::addWindowToParent(GameWindow *window,GameWindow *parent)
+{
+ BfmeManagerWindowLinks *w=(BfmeManagerWindowLinks *)window;
+ BfmeManagerWindowLinks *p=(BfmeManagerWindowLinks *)parent;
+ if(p) { w->prev=0; w->next=p->child; if(p->child) p->child->prev=w; p->child=w; w->parent=p; }
+}
+
+// tu-skeleton: 0x002C0CED 80B ?addWindowToParentAtEnd@GameWindowManager@@UAEXPAVGameWindow@@0@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_enableWindowsInRange.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0D3D 95B ?windowHiding@GameWindowManager@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0D9C 52B ?hideWindowsInRange@GameWindowManager@@UAEXPAVGameWindow@@HH_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_enableWindowsInRange.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0DD0 52B ?enableWindowsInRange@GameWindowManager@@UAEXPAVGameWindow@@HH_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_enableWindowsInRange.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0E04 23B ?winCapture@GameWindowManager@@UAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0E1B 18B ?winRelease@GameWindowManager@@UAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0E2D 80B ?winGetWindowFromId@GameWindowManager@@UAEPAVGameWindow@@PAV2@H@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_enableWindowsInRange.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0E7D 44B ?winSendSystemMsg@GameWindowManager@@UAE?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerSendMsg.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0EA9 44B ?winSendInputMsg@GameWindowManager@@UAE?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerSendMsg.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0ED5 147B ?winSetFocus@GameWindowManager@@UAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winSetFocus.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0F68 97B ?rva002C0F68@GameWindowManager@@UAEH_N0@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_enableWindowsInRange.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0FC9 198B ?drawWindow@GameWindowManager@@IAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_drawWindow_Thunk.cpp (not merged yet)
+
+// tu-skeleton: 0x002C108F 185B ?rva002C108F@Rva0008FF12Host@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0008FF12HostRva002C108F.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1148 43B ?dumpWindow@GameWindowManager@@IAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_dumpWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1173 217B ?winDestroy@GameWindowManager@@UAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C124C 46B ?winDestroyAll@GameWindowManager@@UAEHXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winDestroyAll.cpp (not merged yet)
+
+// tu-skeleton: 0x002C127A 9B ??0Rva002C1283@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1283 29B ??_GRva002C1283@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/InlineDtorDeletingDtorsC01.cpp (not merged yet)
+
+// tu-skeleton: 0x002C12A0 60B ?winUnsetModal@GameWindowManager@@UAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C12DC 51B ?winSetLoneWindow@GameWindowManager@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winSetLoneWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1395 240B ?gogoGadgetListBox@GameWindowManager@@UAEPAVGameWindow@@PAVGadgetCreateView@@PAU_ListboxData@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetListBox.cpp (not merged yet)
+
+// tu-skeleton: 0x002C17EB 66B ?GadgetTextEntrySetText@@YAXPAVGameWindow@@VUnicodeString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetTextEntrySetText.cpp (not merged yet)
+
+// tu-skeleton: 0x002C182D 80B ?winSetModal@GameWindowManager@@UAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C187D 137B ?gogoMessageBox@GameWindowManager@@UAEPAVGameWindow@@HHHHGVUnicodeString@@0P6AXXZ111@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1C74 633B ?gogoGadgetTextEntry@GameWindowManager@@UAEPAVGameWindow@@PAVGadgetCreateView@@PAU_EntryData@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetTextEntry.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1EED 130B ?winTextLabelToText@GameWindowManager@@QAE?AVUnicodeString@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winTextLabelToText.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1F6F 16B ?rva002C1F6F@Rva002C1F6F@@QAE?AURva002C1F6FIterator@@H@Z -- matched in Code/GameEngine/Source/Common/GapBodiesSeat1B.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1F7F 33B ??$__unguarded_insertion_sort_aux@PAPAXPAXP6A_NPAX0@Z@_STL@@YAXPAPAX00P6A_NPAX1@Z@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_funptr_value_sort.cpp (not merged yet)
+
+// tu-skeleton: 0x002C1FD5 1374B ?winProcessMouseEvent@GameWindowManager@@UAE?AW4WinInputReturnCode@@W4GameWindowMessage@@PAUICoord2D@@PAX@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMouseEvent.cpp (not merged yet)
+
+// tu-skeleton: 0x002C2533 263B ?winCreate@GameWindowManager@@QAEPAVGameWindow@@PAURva0047EDE0CreateInfo@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_dumpWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C263A 1214B ?gogoMessageBox@GameWindowManager@@UAEPAVGameWindow@@HHHHGVUnicodeString@@0P6AXXZ111_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x002C2AF8 999B ?gogoGadgetComboBox@GameWindowManager@@UAEPAVGameWindow@@PAVGadgetCreateView@@PAU_ComboBoxData@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetComboBox.cpp (not merged yet)
+
+// tu-skeleton: 0x002C2EDF 9094B ?assignDefaultGadgetLook@GameWindowManager@@UAEXPAVGameWindow@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5265 8B ?rva002C5265@Rva002C5265Forwarder@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMemberForwarders.cpp (not merged yet)
+
+// tu-skeleton: 0x002C526D 48B ??$_M_insert_dispatch@U?$_List_iterator@HU?$_Const_traits@H@_STL@@@_STL@@@?$list@HV?$allocator@H@_STL@@@_STL@@QAEXU?$_List_iterator@HU?$_Nonconst_traits@H@_STL@@@1@U?$_List_iterator@HU?$_Const_traits@H@_STL@@@1@1ABU__false_type@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_int_o1.cpp (not merged yet)
+
+// tu-skeleton: 0x002C529D 67B ??$__unguarded_partition@PAHHP6A_NHH@Z@_STL@@YAPAHPAH0HP6A_NHH@Z@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_partition_int_funptr.cpp (not merged yet)
+
+// tu-skeleton: 0x002C52E0 41B ?Rva002C52E0PopHeap@@YAXPAPAX00PAXP6A_N11@Z@Z -- matched in Code/GameEngine/Source/Common/Rva002198ECAdjustHeap.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5309 18B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x002C531B 25B ?Rva002C531BWrap@@YAXPAPAX0P6A_NPAX1@Z@Z -- matched in Code/GameEngine/Source/Common/Rva002198ECAdjustHeap.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5334 100B ??0Rva002C5398@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5398 112B ??1Rva002C5398@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5408 107B ?winNextTab@GameWindowManager@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winPrevTab.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5473 123B ?winPrevTab@GameWindowManager@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winPrevTab.cpp (not merged yet)
+
+// tu-skeleton: 0x002C54EE 104B ??4?$list@HV?$allocator@H@_STL@@@_STL@@QAEAAV01@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_int_o1.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5556 58B ?Rva002C5556SortHeap@@YAXPAPAX0P6A_NPAX1@Z@Z -- matched in Code/GameEngine/Source/Common/Rva002C5556SortHeap.cpp (not merged yet)
+
+// tu-skeleton: 0x002C5590 28B ??_GRva002C5398@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x002C55AC 63B ?registerTabList@GameWindowManager@@UAEXV?$list@PAVGameWindow@@V?$allocator@PAVGameWindow@@@_STL@@@_STL@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_registerTabList.cpp (not merged yet)
+
+// tu-skeleton: 0x00776B55 10B uw_00776b55 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_init.cpp (not merged yet)
+
+// tu-skeleton: 0x00776B5F 10B __ehhandler$?init@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_init.cpp (not merged yet)
+
+// tu-skeleton: 0x00776B7E 8B Unwind@00b76b7e -- matched in Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetTextEntrySetText.cpp (not merged yet)
+
+// tu-skeleton: 0x00776B86 10B __ehhandler$?GadgetTextEntrySetText@@YAXPAVGameWindow@@VUnicodeString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetTextEntrySetText.cpp (not merged yet)
+
+// tu-skeleton: 0x00776B90 8B Unwind@00b76b90 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776B98 8B Unwind@00b76b98 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776BA0 8B uw_00776ba0 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776BA8 10B __ehhandler$?gogoMessageBox@GameWindowManager@@UAEPAVGameWindow@@HHHHGVUnicodeString@@0P6AXXZ111@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776BD6 11B Unwind@00b76bd6 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetTextEntry.cpp (not merged yet)
+
+// tu-skeleton: 0x00776BE1 8B Unwind@00b76be1 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetTextEntry.cpp (not merged yet)
+
+// tu-skeleton: 0x00776BE9 10B __ehhandler$?gogoGadgetTextEntry@GameWindowManager@@UAEPAVGameWindow@@PAVGadgetCreateView@@PAU_EntryData@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetTextEntry.cpp (not merged yet)
+
+// tu-skeleton: 0x00776BF3 8B Unwind@00b76bf3 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winTextLabelToText.cpp (not merged yet)
+
+// tu-skeleton: 0x00776BFB 25B $L1434 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winTextLabelToText.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C14 8B Unwind@00b76c14 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winTextLabelToText.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C1C 10B __ehhandler$?winTextLabelToText@GameWindowManager@@QAE?AVUnicodeString@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winTextLabelToText.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C26 8B Unwind@00b76c26 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C2E 8B Unwind@00b76c2e -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C36 8B Unwind@00b76c36 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C3E 8B Unwind@00b76c3e -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C46 10B __ehhandler$?gogoMessageBox@GameWindowManager@@UAEPAVGameWindow@@HHHHGVUnicodeString@@0P6AXXZ111_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerMessageBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C50 11B $L1900 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetComboBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C5B 10B __ehhandler$?gogoGadgetComboBox@GameWindowManager@@UAEPAVGameWindow@@PAVGadgetCreateView@@PAU_ComboBoxData@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetComboBox.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C65 13B $L82692 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C72 13B $L82693 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C7F 13B $L82694 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C8C 13B $L82695 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776C99 13B $L82696 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776CA6 13B $L82697 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776CB3 13B $L82698 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776CC0 13B $L82699 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776CCD 14B $L82700 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776CDB 14B $L82701 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776CE9 14B $L82702 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776CF7 14B $L82703 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D05 14B $L82704 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D13 14B $L82705 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D21 14B $L82706 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D2F 14B $L82707 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D3D 16B $L82708 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D4D 16B $L82709 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D5D 16B $L82710 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D6D 16B $L82711 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D7D 16B $L82712 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D8D 16B $L82713 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776D9D 16B $L82714 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DAD 16B $L82715 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DBD 16B $L82716 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DCD 10B __ehhandler$?assignDefaultGadgetLook@GameWindowManager@@UAEXPAVGameWindow@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerAssignDefaultGadgetLook.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DD7 8B Unwind@00b76dd7 -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DDF 10B __ehhandler$??0Rva002C5398@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DE9 8B Unwind@00b76de9 -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DF1 11B uw_00776df1 -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00776DFC 10B __ehhandler$??1Rva002C5398@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva002C5398Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00776E06 8B $L4753 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_registerTabList.cpp (not merged yet)
+
+// tu-skeleton: 0x00776E0E 10B __ehhandler$?registerTabList@GameWindowManager@@UAEXV?$list@PAVGameWindow@@V?$allocator@PAVGameWindow@@@_STL@@@_STL@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_registerTabList.cpp (not merged yet)
