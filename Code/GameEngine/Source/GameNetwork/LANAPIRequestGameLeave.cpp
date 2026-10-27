@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /O1
+// platformsdk
 //
 // LANAPI::RequestGameLeave, retail 0x0044A0CF (325 bytes): slot 18 of the
 // LANAPI vtable 0x0083E680, between the rowed slot-17 join (0x00449FE8) and
@@ -51,10 +52,8 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef unsigned short WideChar;
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime( void );
-extern "C" __declspec(dllimport) WideChar * __cdecl wcsncpy(
-	WideChar *, const WideChar *, unsigned int );
-
+#include <windows.h>
+#include <string.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 

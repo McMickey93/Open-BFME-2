@@ -1,15 +1,16 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 //
 // BFME2's native network vtable stores the concrete pacing query at +0x58.
 // The fields below are deliberately laid out from the constructor and the
 // retail body; no network policy is changed by exposing this query.
 
+#include <windows.h>
+
 extern class CommandList *TheCommandList;
 extern class GameLogic *TheGameLogic;
 
 extern int BfmeLogicFramesPerSecond;
-
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceCounter(__int64 *counter);
 
 struct GameLogicFrame
 {
@@ -97,16 +98,16 @@ int NetworkInterface::getFramePacingStatus(void)
 		return m_connectionManager->frameCeiling
 			- *(const int *)((const char *)TheGameLogic + 0x40);
 
-	__int64 now;
+	LARGE_INTEGER now;
 	QueryPerformanceCounter(&now);
-	m_accumulator += now - m_lastCounter;
-	m_lastCounter = now;
+	m_accumulator += now.QuadPart - m_lastCounter;
+	m_lastCounter = now.QuadPart;
 
-	now = m_frequency / LogicFramesPerSecond;
-	if (m_accumulator < now)
+	now.QuadPart = m_frequency / LogicFramesPerSecond;
+	if (m_accumulator < now.QuadPart)
 		return 0;
 
-	if ((float)m_accumulator < (float)now * OneAndHalf)
+	if ((float)m_accumulator < (float)now.QuadPart * OneAndHalf)
 		return 1;
 
 	return 2;

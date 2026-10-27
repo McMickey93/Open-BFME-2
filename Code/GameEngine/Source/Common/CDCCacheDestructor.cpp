@@ -1,8 +1,9 @@
+// platformsdk
 // Open-BFME5: clean C++ conversion of the four-entry CDC cache destructor.
 
 // g_destroy is the import slot __imp__DeleteDC@4 (data ledger); call the
 // import directly so nothing dangles.
-extern "C" __declspec(dllimport) int __stdcall DeleteDC(void *hdc);
+#include <windows.h>
 
 class CDCCache
 {
@@ -10,7 +11,7 @@ public:
 	~CDCCache();
 
 private:
-	void *m_allocations[4];
+	HDC m_allocations[4];
 };
 
 CDCCache::~CDCCache()

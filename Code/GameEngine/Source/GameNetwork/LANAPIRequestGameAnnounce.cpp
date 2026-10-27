@@ -14,6 +14,8 @@
 // address (vslot 64), and 16 bytes from the game at +0xCC are copied into
 // the message tail at +0x1C8 before sending.
 
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
 typedef unsigned char UnsignedByte;
@@ -21,9 +23,6 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef unsigned short WideChar;
 
-extern "C" __declspec(dllimport) WideChar * __cdecl wcsncpy(
-	WideChar *, const WideChar *, unsigned int );
-extern "C" void * __cdecl memcpy( void *, const void *, unsigned int );
 #pragma function(memcpy)
 
 class UnicodeStringData

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX-
+// platformsdk
 // Split from MilesAudioManagerSmallSlots.cpp: these definitions reference a callee with no matched body yet,
 // so they are kept apart from the unit's bodies that already link.
 //
@@ -15,6 +16,8 @@
 // 0x00045837 query is called here for a bool result. Method names stay
 // address derived: the bytes prove the hops, offsets and argument counts only.
 
+#include <windows.h>
+
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
@@ -24,9 +27,6 @@ extern "C" __declspec(dllimport) int __stdcall AIL_get_preference(
 extern "C" __declspec(dllimport) void __stdcall AIL_set_preference(
 	unsigned int preference, int value);
 extern "C" __declspec(dllimport) void __stdcall AIL_serve(void);
-
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
 
 // The subtitle window (destructor row 0x00260A3C, nonvirtual) and its state
 // query 0x00045837, both rowed under these names.
@@ -55,7 +55,7 @@ struct Rva0005185EBlock
 struct Rva00053281Lock
 {
 	char m_pad00[0x40];
-	char m_section[0x18];	// +0x40, handed to Enter/LeaveCriticalSection
+	CRITICAL_SECTION m_section;	// +0x40, handed to Enter/LeaveCriticalSection
 	Bool m_58;
 };
 

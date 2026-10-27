@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX-
+// platformsdk
 //
 // Small MilesAudioManager vtable slots (vtable VA 0x00BC55B0, which also holds
 // stopAudio and the rows of MilesAudioManagerRva0005168C.cpp) that had no
@@ -13,6 +14,8 @@
 // 0x00045837 query is called here for a bool result. Method names stay
 // address derived: the bytes prove the hops, offsets and argument counts only.
 
+#include <windows.h>
+
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
@@ -22,9 +25,6 @@ extern "C" __declspec(dllimport) int __stdcall AIL_get_preference(
 extern "C" __declspec(dllimport) void __stdcall AIL_set_preference(
 	unsigned int preference, int value);
 extern "C" __declspec(dllimport) void __stdcall AIL_serve(void);
-
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
 
 // The subtitle window (destructor row 0x00260A3C, nonvirtual) and its state
 // query 0x00045837, both rowed under these names.
@@ -53,7 +53,7 @@ struct Rva0005185EBlock
 struct Rva00053281Lock
 {
 	char m_pad00[0x40];
-	char m_section[0x18];	// +0x40, handed to Enter/LeaveCriticalSection
+	CRITICAL_SECTION m_section;	// +0x40, handed to Enter/LeaveCriticalSection
 	Bool m_58;
 };
 
@@ -174,14 +174,14 @@ Bool MilesAudioManager::rva000531F6()
 void MilesAudioManager::rva00053281()
 {
 	if (m_b90 && !m_b90->m_58)
-		EnterCriticalSection(m_b90->m_section);
+		EnterCriticalSection(&m_b90->m_section);
 }
 
 // vtable 0x00BC55B0#102
 void MilesAudioManager::rva0005329C()
 {
 	if (m_b90 && !m_b90->m_58)
-		LeaveCriticalSection(m_b90->m_section);
+		LeaveCriticalSection(&m_b90->m_section);
 }
 
 

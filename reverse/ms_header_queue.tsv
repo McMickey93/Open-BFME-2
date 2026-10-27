@@ -680,14 +680,7 @@ Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiTransfer.c	adapt	unknown	2	2	0	
 Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_server.c	adapt	unknown	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_server.c:17 sb_internal.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_server.c:25 ../stringutil.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_server.c:26 sb_ascii.h(unknown)		ntohl:source,ntohs:source
 Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_serverlist.c	adapt	unknown	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_serverlist.c:16 sb_serverbrowsing.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_serverlist.c:17 sb_internal.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/serverbrowsing/sb_serverlist.c:18 sb_ascii.h(unknown)		ntohl:source,ntohs:source
 Code/GameEngine/Source/GameNetwork/GenerateGameOptionsString.cpp	adapt	unknown	2	0	0	2	0	0	0	0	0	0	0	<WinSock2.h>	yes	yes	hand			htonl:unknown,htons:unknown
-Code/GameEngine/Source/GameNetwork/LANAPIRequestGameAnnounce.cpp	adapt	source	2	1	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand			wcsncpy:source,memcpy:same
-Code/GameEngine/Source/GameNetwork/LANAPIRequestGameLeave.cpp	adapt	source	2	1	1	0	0	0	0	0	0	0	0	<windows.h>,<string.h>	yes	yes	hand			wcsncpy:source,timeGetTime:same
-Code/GameEngine/Source/GameNetwork/LANAPI_RequestGameJoinDirectConnect.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<string.h>,<windows.h>	yes	yes	hand			wcsncpy:source,timeGetTime:source
 Code/GameEngine/Source/GameNetwork/Network.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			QueryPerformanceFrequency:source,QueryPerformanceCounter:source
-Code/GameEngineDevice/Source/MilesAudioDevice/MilesAudioManagerSmallSlots.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source,LeaveCriticalSection:source
-Code/GameEngineDevice/Source/MilesAudioDevice/MilesAudioManagerSmallSlots_Rva0005DABB.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source,LeaveCriticalSection:source
-Code/GameEngineDevice/Source/W3DDevice/GameClient/Add_Prototype.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source,LeaveCriticalSection:source
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayRva0004300D.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			QueryPerformanceCounter:source,QueryPerformanceFrequency:source
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouseCursorDirection.cpp	adapt	unknown	2	0	0	2	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown,M_PI:unknown
 Code/Libraries/Source/Apt/AptMovieFrameControls.cpp	adapt	source	2	1	1	0	0	0	0	0	0	0	0	<string.h>,<tchar.h>	no	yes	hand			strstr:source,strcmp:same
 Code/Libraries/Source/COM/ComInvokeError.cpp	adapt	source	2	2	0	0	0	0	0	0	1	0	0	<windows.h>,<invkprxy.h>	yes	yes	hand	1: Code/Libraries/Source/COM/ComError.h:11 _com_error(source)		IID_IErrorInfo:same,IID_IDispatch:same
@@ -699,21 +692,11 @@ Code/Libraries/Source/WWVegas/WW3D2/SimpleVecResize0096E1B0.cpp	adapt	unknown	2	
 Code/Libraries/Source/WWVegas/WW3D2/hanim_weight_vector_add.cpp	adapt	unknown	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand	2: Code/Libraries/Source/WWVegas/WW3D2/hanim_weight_vector_add.cpp:25 nstrdup.h(unknown); Code/Libraries/Source/WWVegas/WW3D2/hanim_weight_vector_add.cpp:26 vector.h(unknown)		operator new [ ]:same,operator delete [ ]:same
 Code/Libraries/Source/WWVegas/WW3D2/hanim_weight_vector_resize.cpp	adapt	unknown	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand	1: Code/Libraries/Source/WWVegas/WW3D2/hanim_weight_vector_resize.cpp:12 nstrdup.h(unknown)		operator new [ ]:same,operator delete [ ]:same
 Code/Libraries/Source/WWVegas/WW3D2/segline.cpp	adapt	unknown	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand	23: Code/Libraries/Source/WWVegas/WW3D2/segline.cpp:7 refcount.h(unknown); Code/Libraries/Source/WWVegas/WW3D2/segline.cpp:58 segline.h(unknown); Code/Libraries/Source/WWVegas/WW3D2/segline.cpp:59 ww3d.h(unknown)		operator delete:same,operator delete [ ]:same
-Code/Libraries/Source/WWVegas/WWDebug/Debug_FrameStatus.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source,LeaveCriticalSection:source
 Code/Libraries/Source/WWVegas/WWLib/Rva004525B0TreeEqual.cpp	adapt	unknown	2	1	0	1	0	0	0	0	0	0	0	<string.h>,<windows.h>	yes	yes	hand			operator==:unknown,memcmp:same
-Code/Libraries/Source/WWVegas/WWLib/Utf8Conversions.cpp	adapt	source	2	0	2	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			MultiByteToWideChar:source,WideCharToMultiByte:source
-Code/Libraries/Source/WWVegas/WWLib/stlport_LocaleWctomb.c	adapt	source	2	1	1	0	0	0	0	0	0	0	0	<wchar.h>,<windows.h>	yes	no	hand			WideCharToMultiByte:source,mbstate_t:same
-Code/Libraries/Source/WWVegas/WWLib/stlport_mutex_spin.cpp	adapt	source	2	1	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			InterlockedExchange:source,Sleep:same
 Code/GameEngine/Include/Common/BfmeAudioEventPrefix136.h	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand	1: Code/GameEngine/Include/Common/BfmeAudioEventPrefix136.h:11 ascii_string.h(unknown)		InterlockedIncrement:same
-Code/GameEngine/Source/Common/CDCCacheDestructor.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand			DeleteDC:source
-Code/GameEngine/Source/Common/CreateAHeroManagerRva0021F5F8.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			DeleteFileW:source
-Code/GameEngine/Source/Common/CriticalSectionDeleteWrapper.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand			DeleteCriticalSection:source
 Code/GameEngine/Source/Common/DamageFX_hashtableNewNode.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			operator==:unknown
 Code/GameEngine/Source/Common/DamageFX_mapEraseRange.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			operator==:unknown
 Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<time.h>	no	yes	hand			time:source
-Code/GameEngine/Source/Common/GapBodiesGE49.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source
-Code/GameEngine/Source/Common/Mutex.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateMutexA:source
-Code/GameEngine/Source/Common/NetworkInterfaceFramePacing.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			QueryPerformanceCounter:source
 Code/GameEngine/Source/Common/Rva0010414CGet.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/Common/Rva00289ABDCtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		operator==:unknown
 Code/GameEngine/Source/Common/Rva004121B2HashMapInits.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand	1: Code/GameEngine/Source/Common/Rva004121B2HashMapInits.cpp:18 stl/_algobase.h(unknown)		atexit:same

@@ -1,5 +1,8 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs-c-
+// platformsdk
 // ?RequestGameJoinDirectConnect@LANAPI@@UAEXPAX@Z @0x00449FE8 231B evidence: vslot 17 of LANAPI vtable 0x0083E680; type-0x12 message via fillInLANMessage slot 0xe4 send via Rva004495A2; slots 0x88 0x100; wcsncpy game name; timeGetTime; state at +0x28
+#include <string.h>
+#include <windows.h>
 #include "unicode_string.h"
 
 typedef int Int;
@@ -7,10 +10,6 @@ typedef bool Bool;
 typedef unsigned char UnsignedByte;
 typedef unsigned int UnsignedInt;
 typedef unsigned short WideChar;
-
-extern "C" __declspec(dllimport) WideChar *__cdecl wcsncpy(WideChar *, const WideChar *, unsigned int);
-extern "C" __declspec(dllimport) unsigned int __stdcall timeGetTime();
-
 
 class LANGameInfo2
 {

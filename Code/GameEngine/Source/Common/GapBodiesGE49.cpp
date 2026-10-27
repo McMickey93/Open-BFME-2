@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /DNDEBUG
+// platformsdk
 // Small bodies from .text gaps no Ghidra function covers (forty-ninth
 // batch; see GapBodiesGE01.cpp), all from /O1 retail regions between
 // 0x00167E5A and 0x001DFFFF (reverse/retail_inventory/flag_regions.csv).
@@ -7,9 +8,9 @@
 // each keeps an address-derived name and a view of only the members it
 // touches. Callees use the ledger's existing spellings.
 
-class AsciiString;
+#include <windows.h>
 
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
+class AsciiString;
 
 // --- 0x00167E77 (15B): the +0xE8 word returned as a one-word handle; 0x00167F26 (17B): store a
 // word's truth into the +0x104 flag.
@@ -145,7 +146,7 @@ private:
 
 Rva001DBA85::Rva001DBA85(void *section) : m_section(section)
 {
-	EnterCriticalSection(section);
+	EnterCriticalSection((CRITICAL_SECTION *)section);
 }
 
 // --- 0x001DFE98 (18B): hold a counted object (+0x2C count).

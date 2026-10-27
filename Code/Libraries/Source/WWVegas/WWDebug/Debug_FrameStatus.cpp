@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHs-c- /Oy-
+// platformsdk
 //
 // Debug::frameStatus, retail 0x0003A6A0 (175 bytes).
 // Ported from Open-BFME-1 WWDebug/Debug_frameStatus.cpp: fast-path check at
@@ -7,8 +8,7 @@
 // UpdateFrameStatus when Unknown, true only for status 1.
 // Dedicated TU with frame pointer (retail has ebp frame).
 
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *critsec);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *critsec);
+#include <windows.h>
 
 struct DebugCriticalSection;
 extern DebugCriticalSection g_bfmeCsDWC;
@@ -64,28 +64,28 @@ bool Debug::frameStatus(unsigned int addr, bool reset)
 	if (m_fastPath != 0)
 		return true;
 
-	EnterCriticalSection((void *)&g_bfmeCsDWC);
+	EnterCriticalSection((CRITICAL_SECTION *)&g_bfmeCsDWC);
 	m_lastLookedUpAddress = (int)addr;
 	FrameHashEntry *entry = LookupFrame(addr);
 	if (reset)
 	{
 		if (entry != 0)
 			entry->status = 0;
-		LeaveCriticalSection((void *)&g_bfmeCsDWC);
+		LeaveCriticalSection((CRITICAL_SECTION *)&g_bfmeCsDWC);
 		return false;
 	}
 	if (entry == 0)
 	{
-		LeaveCriticalSection((void *)&g_bfmeCsDWC);
+		LeaveCriticalSection((CRITICAL_SECTION *)&g_bfmeCsDWC);
 		return false;
 	}
 	if (entry->status == 2 || entry->status == 3)
 	{
-		LeaveCriticalSection((void *)&g_bfmeCsDWC);
+		LeaveCriticalSection((CRITICAL_SECTION *)&g_bfmeCsDWC);
 		return false;
 	}
 	if (entry->status == 0)
 		UpdateFrameStatus(*entry);
-	LeaveCriticalSection((void *)&g_bfmeCsDWC);
+	LeaveCriticalSection((CRITICAL_SECTION *)&g_bfmeCsDWC);
 	return entry->status == 1;
 }

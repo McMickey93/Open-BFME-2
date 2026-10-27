@@ -1,4 +1,5 @@
 // cl: /DBFME_ASCII_DTOR_DECL /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_CRTIMP= /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // ?rva0021F5F8@CreateAHeroManager@@QAEXXZ, retail 0x0021F5F8..0x0021F797
@@ -19,6 +20,7 @@
 // this/EBX, iterator/hero EDI allocation, which the hand-written views and
 // direct member reads mirrored. Owner class and method names are unknown.
 #include <vector>
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
@@ -78,7 +80,6 @@ public:
 	const UnicodeString *m_left;
 	const UnicodeString *m_right;
 };
-extern "C" __declspec(dllimport) int __stdcall DeleteFileW(const unsigned short *path);
 
 class CreateAHeroManager
 {

@@ -1,18 +1,15 @@
+// platformsdk
 // STLport 4.5.3 Win32 _Locale_wctomb (retail 0x00020D50, 92B).
 // Distinct TU under WWLib: Code/stlport/ is not an allowed root for a new
 // source. Donor-verbatim; T1 clean transfer.
+#include <wchar.h>
+#include <windows.h>
+
 typedef struct _Locale_ctype_t
 {
     unsigned long lcid;
     unsigned int cp;
 } _Locale_ctype_t;
-
-typedef int mbstate_t;
-
-__declspec(dllimport) int __stdcall WideCharToMultiByte(
-    unsigned int codePage, unsigned long flags, const unsigned short *source,
-    int sourceCount, char *destination, int destinationCount,
-    const char *defaultChar, int *usedDefaultChar);
 
 unsigned int _Locale_wctomb(_Locale_ctype_t *ltype, char *to, unsigned int n,
     const unsigned short c, mbstate_t *st)

@@ -1,4 +1,5 @@
 // cl: /EHsc /MD /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 //
 // STLport 4.5.3 _STLP_mutex_spin<0>::_M_do_lock, the spin lock behind
@@ -10,11 +11,9 @@
 // _S_nsec_sleep is folded in rather than called: retail's second loop tests
 // the log against 20 and reaches Sleep directly.
 
-typedef long __stl_atomic_t;
+#include <windows.h>
 
-extern "C" __declspec(dllimport) long __stdcall InterlockedExchange(
-		long *target, long value);
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
+typedef long __stl_atomic_t;
 
 namespace _STL
 {
