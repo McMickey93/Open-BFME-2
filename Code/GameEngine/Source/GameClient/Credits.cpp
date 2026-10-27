@@ -7,6 +7,7 @@
 #include "unicode_string.h"
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 #include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 // _List_iterator comparisons otherwise instantiate the base-class
 // operator!= COMDAT (one byte shape per TU flags); exact-match free
@@ -97,16 +98,6 @@ public:
  virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
  virtual void v12(); virtual void v13(); virtual void v14();
  virtual void getSize(int *, int *);
-};
-
-class DisplayStringManager {
-public:
- virtual ~DisplayStringManager();
- virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
- virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
- virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
- virtual DisplayString *newDisplayString();
- virtual void freeDisplayString(DisplayString *);
 };
 
 extern class DisplayStringManager *TheDisplayStringManager;
@@ -213,12 +204,6 @@ public:
 	Rva0040C1F0() throw();
 	int m_00;
 	char m_pad[0x24];
-};
-
-class Rva005B72E7
-{
-public:
-	~Rva005B72E7();
 };
 
 // Declaration-only: retail keeps one copy of this STLport member (rowed elsewhere); this unit calls it
@@ -357,6 +342,49 @@ private:
 	Int m_displayWidth;
 	Int m_displayHeight;
 };
+
+class DisplayString;
+
+class DisplayStringManager
+{
+public:
+	virtual ~DisplayStringManager() {}
+	virtual void managerSlot04() = 0;
+	virtual void managerSlot08() = 0;
+	virtual void managerSlot0C() = 0;
+	virtual void managerSlot10() = 0;
+	virtual void managerSlot14() = 0;
+	virtual void managerSlot18() = 0;
+	virtual void managerSlot1C() = 0;
+	virtual void managerSlot20() = 0;
+	virtual void managerSlot24() = 0;
+	virtual void managerSlot28() = 0;
+	virtual void managerSlot2C() = 0;
+	virtual void managerSlot30() = 0;
+	virtual void managerSlot34() = 0;
+	virtual DisplayString *newDisplayString();
+	virtual void freeDisplayString(DisplayString *s);
+};
+
+class Rva005B72E7 {
+public:
+	~Rva005B72E7();
+private:
+	int m_0;
+	UnicodeString m_4;
+	UnicodeString m_8;
+	int m_C;
+	DisplayString *m_10;
+	DisplayString *m_14;
+};
+
+namespace _STL
+{
+// Keep the established out-of-line list<int>::push_back provider.
+template <> void list<int, allocator<int> >::push_back(const int &value);
+}
+
+// ---- from Code/GameEngine/Source/GameClient/Credits.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/Credits.cpp
 
@@ -761,8 +789,31 @@ void BfmeSinkBOE::bfmeDoBOE(void *one, void *two)
 
 // tu-skeleton: 0x005B72BE 41B ??0Rva0040C1F0@@QAE@XZ -- matched in Code/GameEngine/Source/Common/R3ScalarFieldConstructors3.cpp (not merged yet)
 
-// tu-skeleton: 0x005B72E7 107B ??1Rva005B72E7@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva005B72E7Dtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva005B72E7Dtor.cpp
+
+// ??1Rva005B72E7@@QAE@XZ @0x005B72E7 107B.
+// Dtor frees DisplayString ptrs +0x10 +0x14 via manager 0x00DFEAD8 slot 0x3C then wide Strings +4 +8 via 0x36E70.
+// Evidence: deleting-dtor caller 0x005B7352 28B; list-dtor caller 0x005B77F1 151B; and-zero plus EH frame.
+
+Rva005B72E7::~Rva005B72E7()
+{
+	if (m_10 != 0)
+		TheDisplayStringManager->freeDisplayString(m_10);
+	if (m_14 != 0)
+		TheDisplayStringManager->freeDisplayString(m_14);
+	m_10 = 0;
+	m_14 = 0;
+}
 
 // tu-skeleton: 0x005B7426 17B ?rva005B7426@Rva005B7426@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesG.cpp (not merged yet)
 
-// tu-skeleton: 0x005B7DC3 54B ?Run@Rva005B7DC3Box@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva005B7DC3Box.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva005B7DC3Box.cpp
+
+void Rva005B7DC3Box::Run()
+{
+	Rva0040C1F0 *p = (Rva0040C1F0 *)::operator new(0x28);
+	p = (p != 0) ? new (p) Rva0040C1F0 : 0;
+	int out = (int)p;
+	p->m_00 = 4;
+	m_0C.push_back(out);
+}
