@@ -12,9 +12,7 @@
 // the ebp frame retail carries is the one MSVC forces on any function that
 // contains an __asm block.
 
-extern "C" double __cdecl sin(double angle);
-extern "C" double __cdecl cos(double angle);
-
+#include <math.h>
 #include "../../../Include/Lib/Coord2D.h"
 
 Coord2D &Coord2D::Rotate(const Coord2D &that, float angle)
@@ -47,8 +45,8 @@ Coord2D &Coord2D::Rotate(float angle)
         float sine;
     } trig;
 
-    trig.sine = (float)sin(angle);
-    trig.cosine = (float)cos(angle);
+    trig.sine = (float)sin((double)angle);
+    trig.cosine = (float)cos((double)angle);
 
     __asm
     {

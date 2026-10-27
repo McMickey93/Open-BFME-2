@@ -21,6 +21,9 @@
 //   landed INI_parseDurationUnsignedInt.cpp.
 // Table procs are the identity; no new pins invented.
 
+#include <string.h>
+#include <math.h>
+
 typedef int Int;
 typedef float Real;
 
@@ -36,9 +39,7 @@ private:
 	const char *m_sepsColon;
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 extern float g_parseDurationMsecScale;
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
 
 typedef int (__cdecl *StrCmpFn)(const char *, const char *);
 
@@ -75,8 +76,8 @@ void WeaponTemplate::parseShotDelay(INI *ini, void *instance, void * /*store*/, 
 		*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF4) = *reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF0);
 	}
 
-	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF0) = (Int)ceil(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF0));
-	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF4) = (Int)ceil(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF4));
+	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF0) = (Int)ceil((double)(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF0)));
+	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF4) = (Int)ceil((double)(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xF4)));
 }
 
 // ?parseClipReloadTime@WeaponTemplate@@SAXPAVINI@@PAX1PBX@Z @0x002C9136 225B
@@ -105,6 +106,6 @@ void WeaponTemplate::parseClipReloadTime(INI *ini, void *instance, void * /*stor
 		*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xEC) = *reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xE8);
 	}
 
-	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xE8) = (Int)ceil(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xE8));
-	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xEC) = (Int)ceil(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xEC));
+	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xE8) = (Int)ceil((double)(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xE8)));
+	*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xEC) = (Int)ceil((double)(g_parseDurationMsecScale * (Real)*reinterpret_cast<Int *>(reinterpret_cast<char *>(instance) + 0xEC)));
 }

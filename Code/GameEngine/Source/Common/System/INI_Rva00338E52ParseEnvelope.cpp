@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?Rva00338E52_ParseEnvelope@INI@@SAXPAV1@PAX1PBX@Z, retail 0x00338E52, 605 bytes.
 // INI FieldParse callback in the INI.cpp run between parseDeathTypeFlags
@@ -9,7 +10,9 @@
 // the same scale/ceil/__ftol2 shape as parseDurationUnsignedInt. Target-only
 // (no Zero Hour counterpart); the callback name stays address-derived.
 
-#define NULL 0
+#include <windows.h>
+#include <math.h>
+#include <string.h>
 
 class INI
 {
@@ -38,11 +41,8 @@ struct OpacityEnvelope
 // Retail value at 0x00DBA4EC owned by INI_parseDurationUnsignedShort.cpp.
 extern float g_parseDurationMsecScale;
 
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
-
 #define MSECS_TO_FRAMES(ini) \
-	((unsigned int)ceil(g_parseDurationMsecScale * (float)(ini)->scanUnsignedInt((ini)->getNextToken(NULL))))
+	((unsigned int)ceil((double)(g_parseDurationMsecScale * (float)(ini)->scanUnsignedInt((ini)->getNextToken(NULL)))))
 
 // ?Rva00338E52_ParseEnvelope@INI@@SAXPAV1@PAX1PBX@Z
 void INI::Rva00338E52_ParseEnvelope(INI *ini, void *instance, void *store, const void *userData)

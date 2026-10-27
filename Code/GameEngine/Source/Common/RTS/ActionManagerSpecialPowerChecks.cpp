@@ -17,6 +17,7 @@
 // filter (PartitionFilter::link 0x00625790), then each filter's members;
 // address-derived names after allow (slot 1), the ctors being inline.
 
+#include <math.h>
 #include "../../../../../reference/open-bfme-1/game/GameEngine/Source/GameLogic/command_source_type.h"
 // Preserve the independently rowed Object getter's ABI spelling. Its target
 // numeric status threshold 3 corresponds to the reference's object fog state.
@@ -1177,8 +1178,6 @@ bool ActionManager::canDockAt(const Object *obj, const Object *dockDest, Command
 // canFireWeaponAtLocation's views: the weapon set at Object+0x330, the
 // weapon's template at +4 with its float at +0x2C, and the Coord3D overload
 // of Weapon::isWithinAttackRange.
-extern "C" double __cdecl fabs(double);
-
 struct ActionWeaponTemplateView
 {
 	char m_pad00[0x2C];
@@ -1229,7 +1228,7 @@ bool ActionManager::canFireWeaponAtLocation(const Object *obj, const Coord3D *lo
 
 	float arc = weapon->m_template->m_2C;
 	if (arc > 0.0f && (actionTemplate(obj)[0x108] & 4)) {
-		double angle = fabs(obj->GetRelativeAngle(loc));
+		double angle = fabs((double)obj->GetRelativeAngle(loc));
 		if (angle > arc)
 			return false;
 	}

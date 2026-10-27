@@ -13,7 +13,7 @@
 // stlport
 #define _STLP_NO_EXCEPTIONS 1
 #include <vector>
-extern "C" double __cdecl fabs(double);
+#include <math.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 struct SplineRecord {float duration;float steps[10];Coord3D samples[10];Coord3D point;unsigned tail[2];};
 struct SplineState {char pad[0x18];float time,segmentBegin;unsigned segment;bool enabled;char pad25[7];_STL::vector<SplineRecord> records;unsigned pad38;float sampleBegin;int sample;unsigned pad44;Coord3D result;};
@@ -42,7 +42,7 @@ static __forceinline bool splineGetActive(SplineState *splineState,bool notify,f
  Coord3D p;
  p.x=p0.x+(p1.x-p0.x)*fraction;p.y=p0.y+(p1.y-p0.y)*fraction;p.z=p0.z+(p1.z-p0.z)*fraction;
  splineState->result=p;
- if(out) {float a=splineState->records[splineState->segment].steps[0],b=splineState->records[splineState->segment].steps[9],time=splineState->time;float first=(float)fabs(a-time);float second=(float)fabs(b-time);*out=(float)fabs(first-second);}
+ if(out) {float a=splineState->records[splineState->segment].steps[0],b=splineState->records[splineState->segment].steps[9],time=splineState->time;float first=(float)fabs((double)(a-time));float second=(float)fabs((double)(b-time));*out=(float)fabs((double)(first-second));}
  return true;
 }
 

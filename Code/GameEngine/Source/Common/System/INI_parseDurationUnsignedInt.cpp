@@ -12,7 +12,7 @@
 // the pinned __ftol2 helper. Name proven by seventy-five FieldParse tables
 // (RespawnTime/BuildTime/... millisecond fields).
 
-#define NULL 0
+#include <math.h>
 
 class INI
 {
@@ -26,13 +26,11 @@ public:
 // declared here so uses keep the same name without a second definition.
 extern float g_parseDurationMsecScale;
 
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
-
 // ?parseDurationUnsignedInt@INI@@SAXPAV1@PAX1PBX@Z
 void INI::parseDurationUnsignedInt(INI *ini, void *instance, void *store, const void *userData)
 {
 	unsigned int val = ini->scanUnsignedInt(ini->getNextToken(0));
-	*(unsigned int *)store = (unsigned int)ceil(g_parseDurationMsecScale * (float)val);
+	*(unsigned int *)store = (unsigned int)ceil((double)(g_parseDurationMsecScale * (float)val));
 	(void)instance;
 	(void)userData;
 }

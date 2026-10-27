@@ -9,6 +9,7 @@
 
 typedef int Int;
 typedef float Real;
+#include <math.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
 extern Int TheW3DFrameLengthInMsec;
@@ -138,7 +139,6 @@ static void normAngle(Real &angle)
 }
 #pragma auto_inline(on)
 
-extern "C" double __cdecl fabs(double);
 class GameClient;
 extern GameClient *TheGameClient;
 struct GameClientCameraLocks { char m_pad00[0xC0]; bool m_lockC0; bool m_lockC1; };
@@ -163,7 +163,7 @@ void W3DView::setAngle(Real angle)
 		return;
 	normAngle(angle);
 	Real delta = angle - reinterpret_cast<W3DViewAngleSlots *>(this)->getAngle();
-	m_angleTravelled += (Real)fabs(delta);
+	m_angleTravelled += (Real)fabs((double)delta);
 	reinterpret_cast<View *>(this)->View::setAngle(angle);
 	m_flag1DC = false;
 	m_zcInfo.doingZoomCamera = false;

@@ -8,7 +8,7 @@
 // to int using the x87 rounding path. The first pure C++ /QIfist trial
 // instead emits a qword FISTP and removes the float narrowing. This two-
 // instruction helper is the donor's established x87 codegen blocker.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 
 static __forceinline long fast_float2long_round(float value)
 {
@@ -43,8 +43,8 @@ private:
 bool Rva002E6EFFGrid::rva002E6EFF(const Rva002E6EFFPosition *position,
     unsigned int unused)
 {
-    int x = fast_float2long_round((float)floor((position->x + 0.5f) * 0.1f));
-    int y = fast_float2long_round((float)floor((position->y + 0.5f) * 0.1f));
+    int x = fast_float2long_round((float)floor(static_cast<double>((position->x + 0.5f) * 0.1f)));
+    int y = fast_float2long_round((float)floor(static_cast<double>((position->y + 0.5f) * 0.1f)));
     if (x < 0 || x >= width || y < 0 || y >= height)
         return false;
     return columns[x][y].value06 > 0;
@@ -56,8 +56,8 @@ bool Rva002E6EFFGrid::rva002E6EFF(const Rva002E6EFFPosition *position,
 // the original class and method names remain unknown.
 unsigned int Rva002E6EFFGrid::rva00285860(const Rva002E6EFFPosition *position)
 {
-    int x = fast_float2long_round((float)floor((position->x + 0.5f) * 0.1f));
-    int y = fast_float2long_round((float)floor((position->y + 0.5f) * 0.1f));
+    int x = fast_float2long_round((float)floor(static_cast<double>((position->x + 0.5f) * 0.1f)));
+    int y = fast_float2long_round((float)floor(static_cast<double>((position->y + 0.5f) * 0.1f)));
     if (x < 0 || x >= width || y < 0 || y >= height)
         return 0;
     return columns[x][y].value06;

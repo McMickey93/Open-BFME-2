@@ -9,7 +9,7 @@
 // 0xDBA4EC, double ceil import, __ftol2 truncation). Name by family convention
 // with the uint twin (same B1 source pair, same retail twin shape).
 
-#define NULL 0
+#include <math.h>
 
 class INI
 {
@@ -23,13 +23,11 @@ public:
 // parseDurationReal TU's scale global.
 float g_parseDurationMsecScale = 0.005f;
 
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
-
 // ?parseDurationUnsignedShort@INI@@SAXPAV1@PAX1PBX@Z
 void INI::parseDurationUnsignedShort(INI *ini, void *instance, void *store, const void *userData)
 {
 	unsigned int val = ini->scanUnsignedInt(ini->getNextToken(0));
-	*(unsigned short *)store = (unsigned short)ceil(g_parseDurationMsecScale * (float)val);
+	*(unsigned short *)store = (unsigned short)ceil((double)(g_parseDurationMsecScale * (float)val));
 	(void)instance;
 	(void)userData;
 }
