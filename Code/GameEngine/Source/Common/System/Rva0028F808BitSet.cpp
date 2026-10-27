@@ -4,7 +4,7 @@
 // (f09) with (buf, 0xD). Zeroes local via CRT memset thunk 0x006291AE,
 // tests m_bits[i>>5] & (1<<(i&31)), sets buf[i/8] |= 1<<(i%8) via idiv
 // divmod. Caller 0x002914AF. Prev V3Poly neighbours are address-only.
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 struct Iface0028F808
 {

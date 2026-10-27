@@ -7,7 +7,7 @@
 // StringBase<char>::set 0x366F0 on +4 with AsciiString::TheEmptyString
 // 0x9E0878, then ANDs +8 to 0; unblocks 0x0033B0EF MyRecord ctor; LINK BONUS
 // via 0x0033B0EF. Layout {4, string, 4} matches MyRecord/BfmeContainerRecord.
-extern "C" void *memset(void *dst, int val, unsigned int n);
+#include <string.h>
 
 class Rva0033A865
 {

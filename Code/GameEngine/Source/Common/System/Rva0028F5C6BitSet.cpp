@@ -4,7 +4,7 @@
 // 0x4C bytes, one bit) and Rva0028F633 at 0x0028F633. Zeroes the object via
 // CRT memset import thunk 0x006291AE then sets four bits; first parameter
 // never read. Callers at 0x0028FE3E and 0x004A4996. Prev/next same dir.
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 struct Rva0028F5C6
 {
