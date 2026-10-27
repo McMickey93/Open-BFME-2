@@ -45,6 +45,9 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 #include <string>
 #include <vector>
 #include <math.h>
+// Retail calls _mbscpy and _mbscat through the msvcr71 import thunks at
+// 0x00629176 and 0x0062988C; it never imports strcpy or strcat.
+#include <mbstring.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
@@ -2286,26 +2289,26 @@ void GameLogic::startNewGame(bool loadingSaveGame)
 	((Rva0021B3FA *)TheHeroManager)->rva0021B3FA();
 
 	if (TheWritableGlobalData->m_123d) {
-		strcpy(g_00E09B08, "assetload ");
+		_mbscpy(reinterpret_cast<unsigned char *>(g_00E09B08), reinterpret_cast<const unsigned char *>("assetload "));
 		const char *mapName = TheWritableGlobalData->m_mapName.str();
 		const char *slash = _imp__strrchr(mapName, '\\');
-		strcat(g_00E09B08, slash ? slash + 1 : mapName);
+		_mbscat(reinterpret_cast<unsigned char *>(g_00E09B08), reinterpret_cast<const unsigned char *>(slash ? slash + 1 : mapName));
 		if (TheGameLODManager) {
 			switch (TheGameLODManager->getStaticLODLevel()) {
 			case 0:
 			case 1:
-				strcat(g_00E09B08, " (low)");
+				_mbscat(reinterpret_cast<unsigned char *>(g_00E09B08), reinterpret_cast<const unsigned char *>(" (low)"));
 				break;
 			case 2:
-				strcat(g_00E09B08, " (medium)");
+				_mbscat(reinterpret_cast<unsigned char *>(g_00E09B08), reinterpret_cast<const unsigned char *>(" (medium)"));
 				break;
 			case 3:
 			case 4:
-				strcat(g_00E09B08, " (high)");
+				_mbscat(reinterpret_cast<unsigned char *>(g_00E09B08), reinterpret_cast<const unsigned char *>(" (high)"));
 				break;
 			}
 		}
-		strcat(g_00E09B08, ".csv");
+		_mbscat(reinterpret_cast<unsigned char *>(g_00E09B08), reinterpret_cast<const unsigned char *>(".csv"));
 		g_00E09A00 = 0;
 	}
 }
@@ -3644,10 +3647,10 @@ void GameLogic::loadMapINI(AsciiString mapName)
 	char fullFledgeFilename[260];
 
 	memset(filename, 0, 260);
-	strcpy(filename, mapName.str());
+	_mbscpy(reinterpret_cast<unsigned char *>(filename), reinterpret_cast<const unsigned char *>(mapName.str()));
 
 	if (((Rva002DC7C1 *)TheGameState)->rva002DC7C1(UnicodeString(AsciiString(filename))))
-		strcpy(filename, TheGameState->m_pristineMapName.str());
+		_mbscpy(reinterpret_cast<unsigned char *>(filename), reinterpret_cast<const unsigned char *>(TheGameState->m_pristineMapName.str()));
 
 	int length = strlen(filename);
 	if (length < 4)
@@ -3698,10 +3701,10 @@ void GameLogic::rva0023E628(AsciiString mapName)
 	char fullFledgeFilename[260];
 
 	memset(filename, 0, 260);
-	strcpy(filename, mapName.str());
+	_mbscpy(reinterpret_cast<unsigned char *>(filename), reinterpret_cast<const unsigned char *>(mapName.str()));
 
 	if (((Rva002DC7C1 *)TheGameState)->rva002DC7C1(UnicodeString(AsciiString(filename))))
-		strcpy(filename, TheGameState->m_pristineMapName.str());
+		_mbscpy(reinterpret_cast<unsigned char *>(filename), reinterpret_cast<const unsigned char *>(TheGameState->m_pristineMapName.str()));
 
 	int length = strlen(filename);
 	if (length < 4)
@@ -5093,14 +5096,14 @@ void GameLogic::update(int phase)
 			if (TheWritableGlobalData->m_d45 && TheWritableGlobalData->m_d48 > 0) {
 				if (m_40 <= TheWritableGlobalData->m_d48) {
 					char path[260];
-					strcpy(path, TheWritableGlobalData->m_mapName.str());
+					_mbscpy(reinterpret_cast<unsigned char *>(path), reinterpret_cast<const unsigned char *>(TheWritableGlobalData->m_mapName.str()));
 					int length = strlen(path);
 					if (length >= 4) {
 						char *p = path + length - 4;
 						while (p > path && *p != '\\' && *p != '/')
 							--p;
 						*p = 0;
-						strcat(path, "\\scenecapture.dat");
+						_mbscat(reinterpret_cast<unsigned char *>(path), reinterpret_cast<const unsigned char *>("\\scenecapture.dat"));
 						if (m_40 == 1)
 							_imp___unlink(path);
 						File *file = TheFileSystem->openFile(path, 0x4b, 0);
