@@ -1,6 +1,7 @@
 // cl: /EHs /MD /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC /D_CRTIMP=
 // ??1Rva005982AC@@QAE@XZ @0x005982AC 57B via Armor hashtable clear plus bucket free
 // Evidence: thiscall ret0 non-virtual dtor; rowed hashtable clear 0x001DBCDC at +0; frees +4 via BucketVec dtor through rowed _free 0x00030830; same 57B shape as rowed ??1Rva002BF6D6 0x002BF6D6; caller dtor 0x00598CFD at +0x18
+#include <stdlib.h>
 enum NameKeyType { NAMEKEY_DUMMY };
 class ArmorTemplate;
 namespace rts { template <class T> struct hash; }
@@ -16,7 +17,6 @@ public:
 	void clear();
 };
 }
-extern "C" void __cdecl free(void *);
 struct BucketVec
 {
 	void *_start;

@@ -1,4 +1,5 @@
 // cl: /MD /DNDEBUG /EHsc
+// platformsdk
 //
 // ?rva006C33D0@Rva006C1F60@@QAEXHH@Z @ 0x006C33D0 643B, ret 8
 //
@@ -19,10 +20,10 @@
 // variable first zeroed, and only that spelling gives retail's register
 // choice for the chunk and data pointers there. Names are address-derived.
 
+#include <windows.h>
 struct Rva00030DD0Lock;
 int Rva00030DD0AddRef(Rva00030DD0Lock *);
 int Rva00030DF0Release(Rva00030DD0Lock *);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount();
 
 namespace EA { namespace Allocator {
 class GeneralAllocator

@@ -1,4 +1,5 @@
 // cl: /O2 /MD /DNDEBUG /EHsc
+// platformsdk
 // Split from Rva006C33D0Purge.cpp. The report wrappers now call their
 // recovered allocator owners; the lower-level free body remains unrowed.
 //
@@ -21,10 +22,10 @@
 // variable first zeroed, and only that spelling gives retail's register
 // choice for the chunk and data pointers there. Names are address-derived.
 
+#include <windows.h>
 struct Rva00030DD0Lock;
 int Rva00030DD0AddRef(Rva00030DD0Lock *);
 int Rva00030DF0Release(Rva00030DD0Lock *);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount();
 
 namespace EA { namespace Allocator {
 class GeneralAllocator

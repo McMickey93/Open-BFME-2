@@ -12,8 +12,7 @@
 // pool clear 0x001EAF7B), and the pool itself is the one the matched
 // Rva0029FB3BMember::init pops from.
 
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
-
+#include <stdlib.h>
 struct Rva007AB800PoolInits;
 
 class FreelistPool

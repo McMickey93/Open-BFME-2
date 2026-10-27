@@ -7,6 +7,7 @@
 // AsciiString vector member at +0x08 runs the rowed dtor 0x0002CC70.
 // The class is Rva0059E920 (was named Rva0059EA42 here): its ctor 0x0059E920
 // (Rva0059E920Ctor.cpp) installs that same vtable 0x00C71138.
+#include <stdlib.h>
 class AsciiString;
 
 namespace _STL
@@ -31,8 +32,6 @@ public:
 	int m_compare;
 };
 }
-
-extern "C" void __cdecl free(void *);
 
 struct Rva0059EA42Record
 {

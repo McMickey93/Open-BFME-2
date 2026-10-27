@@ -12,6 +12,7 @@
 // xorps and movss float zeroing.
 extern int BfmeLogicFramesPerSecond;
 
+#include <new>
 #include <math.h>
 struct Rva0027D5E0Box
 {
@@ -344,7 +345,6 @@ void W3DTerrainLogic::Rva0027D960(void *water, float *out)
 // Follows 0x0027D960 in retail (0x27D960+248=0x27DA58), same TU flags.
 // delete[] at +0x24 then null. Pad split preserves +0x68 entries.
 // Callers 0x23E795 0x2817FD 0x2835F7.
-void __cdecl operator delete[](void *p);
 void W3DTerrainLogic::Rva0027DA58()
 {
 	operator delete[](m_arr24);

@@ -14,6 +14,7 @@ template <typename T> class StringBase;
 class UnicodeString;
 class AsciiString;
 
+#include <stdio.h>
 #include "ascii_string.h"
 
 #include "unicode_string.h"
@@ -48,8 +49,6 @@ public:
 
 extern GameTextInterface *TheGameText;
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
-
-extern "C" __declspec(dllimport) int __cdecl swprintf(wchar_t *buffer, const wchar_t *format, ...);
 
 // WB 0x0156BCA0 saves ECX as this; native doFileTransfer passes the
 // popup receiver for this one-argument member (RET4). No instance fields

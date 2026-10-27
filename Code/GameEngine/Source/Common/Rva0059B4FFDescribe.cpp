@@ -11,8 +11,7 @@
 // No direct caller or vtable reference in retail; the class name is
 // address-derived.
 
-extern "C" __declspec(dllimport) char *__cdecl _itoa(int value, char *buffer, int radix);
-
+#include <stdlib.h>
 template <class T> class StringBase;
 template <> class StringBase<char>
 {

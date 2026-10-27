@@ -1,4 +1,5 @@
 // cl: /O2 /arch:SSE /DNDEBUG /MD
+// platformsdk
 //
 // ?rva006C3D30@GeneralAllocatorDebug@@QAE_NPAURva006C2270Record@@PAX_N@Z @ 0x006C3D30 903B, ret 0xC
 //
@@ -28,10 +29,9 @@
 // keeping them in registers; the two reads go through a volatile reference
 // helper (the unit's only deviation from plain C++).
 
+#include <windows.h>
 #include <string.h>
 template<class T> inline volatile T &__vref(T &x){return *(volatile T *)&x;}
-
-extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);
 
 struct Rva006C2270Slot {unsigned total,length,mode;};
 struct Rva006C2270Record {

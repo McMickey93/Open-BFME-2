@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // ?rva005FEC0C@Rva005FA854Inner@@QAEXXZ @0x005FEC0C 240B
 // Countdown-timer display refresh (class built by Rva005FEB01's constructor: keys
 // show/seconds/minutes at +0/+4/+8, owner +C, last whole second +10, deadline +14,
@@ -6,10 +7,9 @@
 // rowed invoke 0x00222A8B (int-return), timeGetTime, UnicodeString::format 0x006CB5D0
 // ("%02d"), bfmeSetText pin 0x00225301, releaseBuffer 0x00036E70.
 // The meaning of the +18 flag (first-call visibility query) is inferred from the WB body.
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 class BfmeAptWindowManager
 {

@@ -1,13 +1,13 @@
 // cl: -O1 -GR- -EHsc-
+// platformsdk
 // ?Run@Rva005A0D61@@QAEXH@Z @0x005A0D61 97B: flag-gated refresh with time.
 // If the byte arg is nonzero goto tail; else if m_4AC is nonzero, snapshot
 // timeGetTime, compare m_4AC+0x3E8 against it, and goto tail unless above;
 // run the +0x450 sub-object check (rowed 0x580172), and unless it passes,
 // run the GameSpyInfo slot-0xB8 virtual; if that is false return, else tail.
 // Tail refreshes via pinned 0x5A061B, snapshots timeGetTime, stamps m_4AC.
-// timeGetTime via explicit dllimport (mov-ebx CSE, call-ebx twice).
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 
+#include <windows.h>
 class Rva00580172
 {
 public:
@@ -103,4 +103,3 @@ tail:
 		m_4AC = (int)t;
 	}
 }
-

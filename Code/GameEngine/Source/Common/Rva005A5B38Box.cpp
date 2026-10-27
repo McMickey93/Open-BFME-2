@@ -1,13 +1,14 @@
 // cl: -GR- -EHsc-
+// platformsdk
 // ?Run@Rva005A5B38Box@@QAE_NXZ @0x005A5B38 119B: flag-gated refresh toggle.
 // When +0x4A0 is set, clear it, resolve the display name through the box's
 // own slot-0x28 virtual, and issue the rowed AptCall (manager global, the
 // +0x274 key, the name, the opaque runtime constant); else refresh through
 // the pinned thiscall 0x5A51B9, stamp +0x488, snapshot timeGetTime, set
 // +0x4A0 and return true.
+#include <windows.h>
 class Rva00222A8BTarget;
 extern class BfmeAptWindowManager *g_bfmeAptWindowManager;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 int __cdecl Rva00524EF4AptCall(Rva00222A8BTarget *t, void *a1, const char *a2, const char *a3);
 // g_rva005A5B38Const was the retail address alias (RVA 0x008711C8) of the constant "ClosePassword"; the literal is the source.
 

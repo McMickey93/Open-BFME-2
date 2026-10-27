@@ -5,9 +5,9 @@
 // path1 via 0x5B045D plus rowed 0x00219D52, path0 manual sar5, both to
 // rowed _snprintf 0xff. Callers none; chain via 0x00219D52.
 // Honest-address method on AptCreateAHero::Class with +4 outer pointer.
+#include <stdio.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *fmt, ...);
 struct OuterElem32 { char m_00[32]; };
 struct Vec32 { OuterElem32 *m_start; OuterElem32 *m_finish; OuterElem32 *m_end; };
 class CreateAHeroManager {

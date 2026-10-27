@@ -8,6 +8,7 @@
 // from landed siblings Rva005DAAB6Slot15.cpp and Rva0059734BCtor.cpp;
 // owner identity unproven so honest address name.
 
+#include <new>
 #include "ascii_string.h"
 
 class PooledString;
@@ -119,7 +120,6 @@ int Rva005970ED::rva0059710E(int x)
 // The virtual destructor 0x597147..0x59717F calls that helper, then the
 // rowed AIUpgrade base destructor at 0x59734B. The existing slot0 deleting
 // destructor at 0x597315 already names this derived destructor.
-void operator delete(void *);
 void Rva005970ED::rva00597123()
 {
  Rva0059710EHelper *child = m_38;

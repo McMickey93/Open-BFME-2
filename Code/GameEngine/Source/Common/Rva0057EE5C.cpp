@@ -1,5 +1,6 @@
 // cl: /DNDEBUG /MD /GX /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
 // stlport
+#include <stdlib.h>
 #include <vector>
 enum ObjectID{INVALID_OBJECT_ID=0};
 // Native170B ctor57EDB2 and matched150B sibling57F486 establish the
@@ -13,8 +14,6 @@ enum ObjectID{INVALID_OBJECT_ID=0};
 // Evidence: unlock dtor stores vtable 0x0086F4F0 frees +0xB4 +0x7C +0x70 +0x64 via rowed _free 0x00030830 releases +0x58 via rowed fastcall ReleaseTreeHintRef 0x0007DEEF then pinned base dtor 0x005248D0. Callers 0x0044227B 0x0057EEF1 0x0043DAC3. Prev VectorObjectIDFillInsert next Rva0057F2DE.
 struct TargetRef00217D4C {void *vtable;int refs;};
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *p);
-
-extern "C" void __cdecl free(void *ptr);
 
 struct FreeHolder0057EE5C
 {
@@ -83,4 +82,3 @@ void Rva0057EE5C::rva0057F002(int arg)
 	vslot1(10, 0);
 	reinterpret_cast<AptMpGameRules *>(this)->rva0057EF18();
 }
-

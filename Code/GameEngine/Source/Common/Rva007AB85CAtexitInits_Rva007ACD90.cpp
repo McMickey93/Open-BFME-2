@@ -12,9 +12,8 @@
 // are defined here: zero-filled 4-byte slots holding the AsciiString pointer.
 // The live camera mode slot has a descriptive name; its original name is unknown.
 
+#include <stdlib.h>
 #include "ascii_string.h"
-
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
 
 void __cdecl rva007B6C9B();
 void __cdecl rva007B6F5C();

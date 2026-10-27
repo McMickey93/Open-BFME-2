@@ -1,8 +1,10 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX /Op
+// platformsdk
 //
 // ??0FirewallHelperClass@@QAE@XZ, retail 0x00594cdd, 154 bytes. Banked partial (score 0.92) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
 // Evidence: vtable 0x00870A2C at [this]; layout matches ZH FirewallHelper.h (spareSockets 8x8 at +0x14, manglers 4 at +0x54, sparePorts/mangledPorts at +0x68/+0x78, packetID +0x88, messages 8x30 at +0x8A length at +0x14, state/timeouts at +0x17C..+0x18C); timeGetTime IAT + div/div static m_sourcePortPool; caller 0x00595143.
+#include <windows.h>
 class UDP;
 
 #pragma pack(push, 1)
@@ -33,8 +35,6 @@ struct SpareSocketStruct
 	UDP *udp;
 	unsigned short port;
 };
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 class FirewallHelperClass
 {

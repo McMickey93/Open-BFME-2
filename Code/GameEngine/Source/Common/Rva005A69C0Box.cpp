@@ -1,4 +1,5 @@
 // cl: -Oy- -GR- -EHsc-
+// platformsdk
 // NAT::reconnectPlayers @0x005A69C0 140B (WorldBuilder name, its
 // __FUNCTION__ string "NAT::reconnectPlayers"; WB calls GameSlot::isHuman
 // and PortNegotiationSchema::reconnectPlayers as retail does): two-slot validated swap
@@ -8,6 +9,7 @@
 // +0x10 stamps 1 while the byte table clears the non-current index. All
 // call targets read from retail REL32; true identities unproven.
 // GameSlot::isHuman is rowed at 0x003FF0F1 (GameSlotHumanSaveoff.cpp).
+#include <windows.h>
 class GameSlot
 {
 public:
@@ -58,7 +60,6 @@ struct NAT
 	void rva005A6D47();
 };
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 // 0x009D35C8 (.data): the ping-age limit the pair scan compares against;
 // nothing else defines it, so it is defined here at its retail value.
 int g_pingTimeout = 12000;

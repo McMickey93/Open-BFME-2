@@ -4,8 +4,8 @@
 // Intrusive list clear with recursive child at +0x0C and next at +0x08
 // via game free at 0x00030830. Evidence: self-call at 0x00599FBC,
 // free row, ret-4 single pointer arg, 2 callers, address-derived name.
-extern "C" void __cdecl free(void *);
 
+#include <stdlib.h>
 struct Node00599FAA
 {
 	void *m_pad00;

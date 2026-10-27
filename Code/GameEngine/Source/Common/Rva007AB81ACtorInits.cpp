@@ -8,8 +8,7 @@
 // initializer; the owning TUs are unrecovered, so each keeps an honest address
 // name and its global an address-named extern.
 
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
-
+#include <stdlib.h>
 namespace ATL
 {
 	class CAtlWinModule

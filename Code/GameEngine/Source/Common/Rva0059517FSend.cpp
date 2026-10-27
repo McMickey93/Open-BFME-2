@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD
+// platformsdk
 // ?sendToManglerFromPort@Rva0059517F@@QAE_NKGGG_N@Z @0x0059517F 148B: GameNetwork packet send via Rva00594DC0 convert plus CRC plus FirewallHelper search plus Rva00594C12 write. Evidence: rowed Convert 0x00594DC0 with ecx plus Msg arg; CRC over Msg+4 len 0x10 seed 0 then htonl into m_00; rowed Search 0x00594D77 by port; Write 0x00594C12 with buf len 0x14; ret 0x14 with 5 stack args and bool result.
 // ?rva00595213@Rva0059517F@@QAE_NPAVUDP@@KGG_N@Z @0x00595213 177B: BFME 2's
 // UDP-socket variant of the same mangler request (no ZH counterpart). Target
@@ -6,9 +7,9 @@
 // pinned UDP::getLocalAddr whose port becomes the packet's original port,
 // the same memset/convert/CRC/htonl sequence, the rowed UDP write 0x00594C12
 // to (address, port), the packet ID stored at +0x88, ret 0x14.
+#include <WinSock2.h>
 #include <string.h>
 
-extern "C" __declspec(dllimport) unsigned long __stdcall htonl(unsigned long hostlong);
 unsigned int __cdecl ComputeCRC(const unsigned char *data, unsigned int len, unsigned int seed);
 
 struct Rva00594DC0Msg

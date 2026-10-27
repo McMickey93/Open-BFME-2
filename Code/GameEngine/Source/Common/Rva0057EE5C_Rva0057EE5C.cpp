@@ -2,6 +2,7 @@
 // stlport
 // Split from Rva0057EE5C.cpp: these definitions reference a callee with no matched body yet,
 // so they are kept apart from the unit's bodies that already link.
+#include <stdlib.h>
 #include <vector>
 enum ObjectID{INVALID_OBJECT_ID=0};
 // The fill constructor calls retail's out-of-line uninitialized_fill_n, as its provider VectorObjectIDFillInsert.cpp compiles it.
@@ -17,8 +18,6 @@ namespace _STL { template <> ObjectID *uninitialized_fill_n<ObjectID *, unsigned
 // Evidence: unlock dtor stores vtable 0x0086F4F0 frees +0xB4 +0x7C +0x70 +0x64 via rowed _free 0x00030830 releases +0x58 via rowed fastcall ReleaseTreeHintRef 0x0007DEEF then pinned base dtor 0x005248D0. Callers 0x0044227B 0x0057EEF1 0x0043DAC3. Prev VectorObjectIDFillInsert next Rva0057F2DE.
 struct TargetRef00217D4C {void *vtable;int refs;};
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *p);
-
-extern "C" void __cdecl free(void *ptr);
 
 struct FreeHolder0057EE5C
 {

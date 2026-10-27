@@ -77,8 +77,6 @@ struct Rva00A063B0Obj
 
 extern struct Rva00A063B0Obj *g_a063b0;
 
-extern "C" __declspec(dllimport) char *__cdecl _itoa(int value, char *buffer, int radix);
-
 void Rva00595E46Save(void)
 {
 	OptionPreferences prefs;
