@@ -13,6 +13,18 @@
 	} while (0)
 #pragma intrinsic(strcmp)
 #include <cstring>
+#include "AptObject/AptScriptFunction.h"
+#pragma comment(linker, "/alternatename:??0AptValue@@IAE@W4AptVirtualFunctionTable_Indices@@@Z=??0BfmeAptValue006DCD20@@QAE@H@Z")
+#pragma comment(linker, "/alternatename:??1AptArray@@MAE@XZ=??1Rva006DA560@@UAE@XZ")
+#pragma comment(linker, "/alternatename:?GetNativeHashVirtual@AptValueWithHash@@UAEPAUAptNativeHash@@XZ=?GetData@AptValueVector@@QAEPAPAPAVAptValue@@XZ")
+#pragma comment(linker, "/alternatename:?ContainsNativeHashVirtual@AptValueWithHash@@UBE_NXZ=?do_always_noconv@?$codecvt@DDH@_STL@@MBE_NXZ")
+#pragma comment(linker, "/alternatename:?getHasClass@AptObject@@UBEHXZ=?getBit8@Rva008993E0Owner@@QAEHXZ")
+#pragma comment(linker, "/alternatename:?setHasClass@AptObject@@UAEXH@Z=?setBit8@Rva008993E0Owner@@QAEXH@Z")
+#pragma comment(linker, "/alternatename:?objectMemberSet@AptArray@@UAE_NQAVAptValue@@QBVEAStringC@@0@Z=?rva006D9780@BfmeAptValue006DCD20@@QAE_NPAV1@PAVEAStringC@@0@Z")
+#pragma comment(linker, "/alternatename:?DeleteThis@AptValue@@UAEXXZ=?rva006CBCF0@Rva006CBCF0@@QAEXXZ")
+#pragma comment(linker, "/alternatename:?PreDestroy@AptValue@@UAEXXZ=?DX8_Assert@@YAXXZ")
+#pragma comment(linker, "/alternatename:?IsGarbageCollected@AptValueGC@@UBE_NXZ=?do_always_noconv@?$codecvt@DDH@_STL@@MBE_NXZ")
+#pragma comment(linker, "/alternatename:?RegisterReferences@AptArray@@UBEXXZ=?rva006D94A0@BfmeAptValue006DCD20@@QAEXXZ")
 
 // AptArray::~AptArray at retail 0x006D9220 (188 bytes); rowed here under the
 // existing opaque pin ??1Rva006DA560@@UAE@XZ because the class name itself is
@@ -103,18 +115,6 @@ extern "C" int __cdecl strcmp(const char *left, const char *right);
 // _rva006D9D70Comparator. Keep C linkage in its declaration so the
 // definition follows the complete value view during TU composition.
 extern "C" int __cdecl rva006D9D70Comparator(const void *a, const void *b);
-int __cdecl rva006D9D70Comparator(const void *a, const void *b)
-{
-	BfmeAptValue006DCD20 *left = *(BfmeAptValue006DCD20 **)a;
-	BfmeAptValue006DCD20 *right = *(BfmeAptValue006DCD20 **)b;
-
-	EAStringC leftKey;
-	EAStringC rightKey;
-	left->rva006DD6C0(&leftKey);
-	right->rva006DD6C0(&rightKey);
-
-	return strcmp(leftKey.rva00620090(), rightKey.rva00620090());
-}
 
 // ?rva006D9500@Rva006D9500@@QAEXH@Z
 // Apt array reserve: grow 4-byte elements to next pow2 >= requested (min 8)
@@ -155,7 +155,155 @@ private:
 
 extern "C" int __cdecl atoi(const char *text);
 
-// tu-skeleton: 0x006D91B0 103B ??0AptArray@@QAE@XZ -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor_Unresolved.cpp (not merged yet)
+extern AptValue *gpUndefinedValue;
+
+class AptArray : public AptObject {
+public:
+    AptArray();
+    static void CleanNativeFunctions();
+    void set(int,AptValue*);
+    void _reserve(int);
+    void toString(EAStringC &,const char * = ",");
+    void rva006DA590(char *out,const char *szSeparator);
+    void SetAt(int,AptValue*);
+    static void *operator new(unsigned int n) { return g_pChainBlockAllocatorF4->allocBlock(n); }
+    static AptValue *sMethod_concat(AptValue *,int);
+    static AptValue *sMethod_join(AptValue *,int);
+    static AptValue *sMethod_pop(AptValue *,int);
+    static AptValue *sMethod_push(AptValue *,int);
+    static AptValue *sMethod_shift(AptValue *,int);
+    static AptValue *sMethod_unshift(AptValue *,int);
+    static AptValue *sMethod_reverse(AptValue *,int);
+    static AptValue *sMethod_sort(AptValue *,int);
+    static AptValue *sMethod_splice(AptValue *,int);
+    static AptValue *sMethod_slice(AptValue *,int);
+    static AptValue *sMethod_sortOn(AptValue *,int);
+
+    AptValue *At(int);
+    AptValue *get(int i) { if(i>=0 && i<mnLength) { AptValue *aptValue=At(i); if(!aptValue) aptValue=gpUndefinedValue; return aptValue; } return gpUndefinedValue; }
+    static void operator delete(void *p,unsigned int n) { g_pChainBlockAllocatorF4->freeBlock(p,n); }
+    virtual AptValue *objectMemberLookup(AptValue *const,const EAStringC *const) const;
+    virtual bool objectMemberSet(AptValue *const,const EAStringC *const,AptValue *const);
+    virtual void RegisterReferences() const;
+    virtual void DestroyGCPointers();
+protected:
+    virtual ~AptArray();
+private:
+    AptValue **mpValues;
+    int mnCapacity,mnLength;
+};
+
+class Rva008B8B80Releasable
+{
+public:
+	virtual void unused(void) = 0;
+	virtual void release(void) = 0;
+};
+
+extern Rva008B8B80Releasable *g_rva008B8B80_0;
+
+// g_rva008B8B80_0: matched references place it at VA 0xe1802c (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_0;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_1;
+
+// g_rva008B8B80_1: matched references place it at VA 0xe18030 (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_1;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_2;
+
+// g_rva008B8B80_2: matched references place it at VA 0xe18034 (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_2;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_3;
+
+// g_rva008B8B80_3: matched references place it at VA 0xe18038 (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_3;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_4;
+
+// g_rva008B8B80_4: matched references place it at VA 0xe1803c (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_4;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_5;
+
+// g_rva008B8B80_5: matched references place it at VA 0xe18040 (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_5;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_6;
+
+// g_rva008B8B80_6: matched references place it at VA 0xe18054 (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_6;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_7;
+
+// g_rva008B8B80_7: matched references place it at VA 0xe1804c (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_7;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_8;
+
+// g_rva008B8B80_8: matched references place it at VA 0xe18058 (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_8;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_9;
+
+// g_rva008B8B80_9: matched references place it at VA 0xe1805c (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_9;
+
+extern Rva008B8B80Releasable *g_rva008B8B80_10;
+
+// g_rva008B8B80_10: matched references place it at VA 0xe18050 (zero-filled .bss).
+Rva008B8B80Releasable * g_rva008B8B80_10;
+
+class AptValue;
+
+// ---- from Code/Libraries/Source/Apt/AptObject/AptArrayConstructor_Unresolved.cpp
+
+// Split from AptArrayConstructor.cpp: these definitions reference a callee with no matched body yet,
+// so they are kept apart from the unit's bodies that already link.
+// AptArray default constructor: target InitArray702860 allocates44B and calls
+// 6D91B0. Native ctor103B sets type22, native hash+8, array vtableCEA778,
+// capacity+24, pointer+20 and length+28. Existing array accessors independently
+// confirm these fields; later AptArray.cpp4416f7dfadc1781e supplies initializer
+// order. Original AptValue.h504032fc6593aab6 gives protected value constructors.
+// Reuse canonical base layouts. Inline base initializers reproduce the target
+// compiler's inlining, including the temporary native-hash-base vtable store.
+
+// ?AptValueGC::AptValueGC present-unmatched
+inline AptValueGC::AptValueGC(AptVirtualFunctionTable_Indices type) : AptValue(type) {}
+
+// ?AptValueWithHash::AptValueWithHash present-unmatched
+inline AptValueWithHash::AptValueWithHash(AptVirtualFunctionTable_Indices type,int n) : AptValueGC(type),mNativeHash(n) {}
+
+// ?AptObject::AptObject present-unmatched
+inline AptObject::AptObject(AptVirtualFunctionTable_Indices type,int n) : AptValueWithHash(type,n)
+{
+    mnImplementedObjects=0;
+    mbHasClass=0;
+    mbIsInMainInst=0;
+}
+
+AptArray::AptArray() : AptObject((AptVirtualFunctionTable_Indices)22)
+{
+    mnCapacity=0;
+    mpValues=0;
+    mnLength=0;
+}
+
+// ---- from Code/Libraries/Source/Apt/AptArray.cpp
+
+int __cdecl rva006D9D70Comparator(const void *a, const void *b)
+{
+	BfmeAptValue006DCD20 *left = *(BfmeAptValue006DCD20 **)a;
+	BfmeAptValue006DCD20 *right = *(BfmeAptValue006DCD20 **)b;
+
+	EAStringC leftKey;
+	EAStringC rightKey;
+	left->rva006DD6C0(&leftKey);
+	right->rva006DD6C0(&rightKey);
+
+	return strcmp(leftKey.rva00620090(), rightKey.rva00620090());
+}
 
 // ---- from Code/GameEngine/Source/Common/Rva006D9220Cluster.cpp
 
@@ -174,10 +322,6 @@ Rva006DA560::~Rva006DA560()
 		if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
 	}
 }
-
-// tu-skeleton: 0x006D92E0 236B ?CleanNativeFunctions@AptArray@@SAXXZ -- matched in Code/GameEngine/Source/Common/Rva008B8B80ReleaseAll.cpp (not merged yet)
-
-// tu-skeleton: 0x006D93D0 195B ?DestroyGCPointers@AptArray@@UAEXXZ -- matched in Code/GameEngine/Source/Common/AptArray_DestroyGCPointers.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/Apt/AptValue/Rva006D9500Finish.cpp
 
@@ -221,12 +365,6 @@ void Rva006D9500::rva006D9500(int requested)
     m_array20 = mem;
 }
 
-// tu-skeleton: 0x006D95E0 92B ?rva006D95E0@BfmeAptValue006DCD20@@QAEXHPAV1@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
-
-// tu-skeleton: 0x006D9640 31B ?get@AptArray@@QAEPAVAptValue@@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
-
-// tu-skeleton: 0x006D9660 249B ?toString@AptArray@@QAEXAAVEAStringC@@PBD@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/EA/Apt/Rva008B8F80AtoiOrZero.cpp
 
 static int rva008B8F80AtoiOrZero(const char *text)
@@ -244,6 +382,77 @@ int rva008B8F80AtoiOrZeroCaller(const char *text)
 	return 0;
 }
 
+// ---- from Code/Libraries/Source/Apt/AptValue/Rva006D9D70Cluster.cpp
+
+// ---- from Code/GameEngine/Source/Common/Rva008B8B80ReleaseAll.cpp
+
+void AptArray::CleanNativeFunctions(void)
+{
+	if (g_rva008B8B80_0 != 0)
+	{
+		g_rva008B8B80_0->release();
+		g_rva008B8B80_0 = 0;
+	}
+	if (g_rva008B8B80_1 != 0)
+	{
+		g_rva008B8B80_1->release();
+		g_rva008B8B80_1 = 0;
+	}
+	if (g_rva008B8B80_2 != 0)
+	{
+		g_rva008B8B80_2->release();
+		g_rva008B8B80_2 = 0;
+	}
+	if (g_rva008B8B80_3 != 0)
+	{
+		g_rva008B8B80_3->release();
+		g_rva008B8B80_3 = 0;
+	}
+	if (g_rva008B8B80_4 != 0)
+	{
+		g_rva008B8B80_4->release();
+		g_rva008B8B80_4 = 0;
+	}
+	if (g_rva008B8B80_5 != 0)
+	{
+		g_rva008B8B80_5->release();
+		g_rva008B8B80_5 = 0;
+	}
+	if (g_rva008B8B80_6 != 0)
+	{
+		g_rva008B8B80_6->release();
+		g_rva008B8B80_6 = 0;
+	}
+	if (g_rva008B8B80_7 != 0)
+	{
+		g_rva008B8B80_7->release();
+		g_rva008B8B80_7 = 0;
+	}
+	if (g_rva008B8B80_8 != 0)
+	{
+		g_rva008B8B80_8->release();
+		g_rva008B8B80_8 = 0;
+	}
+	if (g_rva008B8B80_9 != 0)
+	{
+		g_rva008B8B80_9->release();
+		g_rva008B8B80_9 = 0;
+	}
+	if (g_rva008B8B80_10 != 0)
+	{
+		g_rva008B8B80_10->release();
+		g_rva008B8B80_10 = 0;
+	}
+}
+
+// tu-skeleton: 0x006D93D0 195B ?DestroyGCPointers@AptArray@@UAEXXZ -- matched in Code/GameEngine/Source/Common/AptArray_DestroyGCPointers.cpp (not merged yet)
+
+// tu-skeleton: 0x006D95E0 92B ?rva006D95E0@BfmeAptValue006DCD20@@QAEXHPAV1@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x006D9640 31B ?get@AptArray@@QAEPAVAptValue@@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x006D9660 249B ?toString@AptArray@@QAEXAAVEAStringC@@PBD@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
 // tu-skeleton: 0x006D9780 145B ?rva006D9780@BfmeAptValue006DCD20@@QAE_NPAV1@PAVEAStringC@@0@Z -- matched in Code/Libraries/Source/Apt/AptValue/Rva006D9780Finish.cpp (not merged yet)
 
 // tu-skeleton: 0x006D9820 571B ?sMethod_concat@AptArray@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
@@ -258,8 +467,6 @@ int rva008B8F80AtoiOrZeroCaller(const char *text)
 
 // tu-skeleton: 0x006D9CE0 143B ?rva006D9CE0@@YAPAVBfmeAptValue006DCD20@@PAV1@H@Z -- matched in Code/GameEngine/Source/Common/Rva006D94A0AptCluster.cpp (not merged yet)
 
-// ---- from Code/Libraries/Source/Apt/AptValue/Rva006D9D70Cluster.cpp
-
 // tu-skeleton: 0x006D9E40 181B _rva006D9E40Comparator -- matched in Code/GameEngine/Source/Common/Rva006D94A0AptCluster.cpp (not merged yet)
 
 // tu-skeleton: 0x006D9F00 103B ?rva006D9F00@@YAPAVBfmeAptValue006DCD20@@PAV1@H@Z -- matched in Code/GameEngine/Source/Common/Rva006D94A0AptCluster.cpp (not merged yet)
@@ -268,7 +475,35 @@ int rva008B8F80AtoiOrZeroCaller(const char *text)
 
 // tu-skeleton: 0x006DA0C0 97B ?rva006DA0C0@@YAPAVBfmeAptValue006DCD20@@PAV1@H@Z -- matched in Code/GameEngine/Source/Common/Rva006D94A0AptCluster.cpp (not merged yet)
 
-// tu-skeleton: 0x006DA130 104B ?rva006DA130@@YAPAVBfmeAptValue006DCD20@@PAV1@@Z -- matched in Code/GameEngine/Source/Common/Rva006D94A0Cluster.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva006D94A0Cluster.cpp
+
+// ?rva006DA130@@YAPAVBfmeAptValue006DCD20@@PAV1@@Z @0x006DA130 (104 bytes).
+// In-place reversal of the array's element vector: swap element i with
+// mnLength-1-i for i < mnLength/2, returning the original value; a non-array
+// returns the shared undefined singleton. Evidence: rowed isArray 0x006DC3A0
+// and checked array cast 0x006DCFA0; layout shared with AptValueArrayAt.cpp.
+BfmeAptValue006DCD20 *rva006DA130(BfmeAptValue006DCD20 *pValue)
+{
+	if (static_cast<unsigned char>(pValue->isArray()))
+	{
+		BfmeAptValue006DCD20 *array = pValue->rva006DCFA0();
+
+		for (int i = 0; i < array->mnLength / 2; ++i)
+		{
+			BfmeAptValue006DCD20 **data = array->m_data;
+			BfmeAptValue006DCD20 *temp = data[i];
+			data[i] = data[array->mnLength - i - 1];
+			array->m_data[array->mnLength - i - 1] = temp;
+		}
+
+		return pValue;
+	}
+
+	return (*(BfmeAptValue006DCD20 * *)&gpUndefinedValue);
+}
+
+// Setter6D95E0 now lives in AptObject/AptArrayConstructor.cpp, where native
+// callbacks inline it. Its historical symbol aliases the canonical provider.
 
 // tu-skeleton: 0x006DA1A0 500B ?sMethod_splice@AptArray@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
 
@@ -279,3 +514,45 @@ int rva008B8F80AtoiOrZeroCaller(const char *text)
 // tu-skeleton: 0x006DA590 158B ?rva006DA590@AptArray@@QAEXPADPBD@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
 
 // tu-skeleton: 0x006DA630 1944B ?objectMemberLookup@AptArray@@UBEPAVAptValue@@QAV2@QBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8AC0 8B Unwind@00ba8ac0 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8AC8 8B Unwind@00ba8ac8 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8AD0 10B __ehhandler$?toString@AptArray@@QAEXAAVEAStringC@@PBD@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8AE0 8B Unwind@00ba8ae0 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8AE8 8B Unwind@00ba8ae8 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8AF0 10B __ehhandler$?sMethod_join@AptArray@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8B60 8B Unwind@00ba8b60 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8B68 10B __ehhandler$?rva006DA590@AptArray@@QAEXPADPBD@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8B80 15B uw_007a8b80 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8B8F 15B uw_007a8b8f -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8B9E 15B uw_007a8b9e -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8BAD 15B uw_007a8bad -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8BBC 15B uw_007a8bbc -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8BCB 15B uw_007a8bcb -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8BDA 15B uw_007a8bda -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8BE9 15B uw_007a8be9 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8BF8 15B uw_007a8bf8 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8C07 15B uw_007A8C07 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8C16 15B uw_007A8C16 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8C25 15B uw_007A8C25 -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x007A8C34 10B __ehhandler$?objectMemberLookup@AptArray@@UBEPAVAptValue@@QAV2@QBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp (not merged yet)
