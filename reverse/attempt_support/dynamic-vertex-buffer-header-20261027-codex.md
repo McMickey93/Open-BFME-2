@@ -44,3 +44,14 @@ documented in [the previous handoff](dynamic-vertex-buffer-data-20261026.md).
 This change retires a header queue entry while retaining matched coverage and
 the current ordinary-preview link result. It makes no strict-link receipt,
 census, image-ownership or runtime claim.
+
+Publication: the runner rebased and pushed this cleanup as `c2ec6b636d`.
+The normal push gate passed 84/84 rows across its four-source scope and all
+18 EH graphs. Its mandatory link audit remained INCONCLUSIVE: index
+`bf3dd31211` predates outgoing base
+`324eb34f541bc40b41e67d73532e40aea44eea62`, and four scoped objects lacked
+current receipts (first `Code/GameEngine/Source/GameClient/Eva.cpp`). The
+hook explicitly reported linking UNVERIFIED. This is neither a proven loss
+nor a clean current-master link result. Carry the publication scope and this
+unit's thread-provider cohort into the next normal census/current-index audit;
+complete the strict receipt prerequisites under LINK-008 before strict reuse.

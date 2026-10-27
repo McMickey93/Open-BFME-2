@@ -1502,6 +1502,16 @@ clearance or linking gain is claimed.
   path; no claim is made that all of them are uncacheable. The refusal is retained
   in the evidence, and no gate was relaxed. LINK-001's destructor preview result
   does not establish strict closure.
+- **Dynamic vertex-buffer header cleanup publication (2026-10-27,
+  `c2ec6b636d`):** the normal push gate passed 84/84 rows and 18 exact EH
+  graphs across four sources. Its link audit remains inconclusive: index
+  `bf3dd31211` predates outgoing base `324eb34f54`, and four scoped objects
+  lack current receipts (first `Code/GameEngine/Source/GameClient/Eva.cpp`).
+  Carry this publication scope and LINK-106's dynamic-buffer caller cohort to
+  the next normal census/current-index audit; complete strict receipt
+  prerequisites before strict reuse. The separate three-source ordinary
+  preview remains LINKS; it does not clear this current-master audit.
+  [Publication evidence](../reverse/attempt_support/dynamic-vertex-buffer-header-20261027-codex.md).
 - **BFME 1 refresh publication scope (2026-10-27):** three rebased pre-push
   gates passed for 1,301, 1,314 and 1,322 sources, including upstream header
   consumers since the local pre-rebase full-gate receipt `6803d7df5b`. This
