@@ -5072,7 +5072,7 @@ Remaining: the two slides still need canonical coordinate/private animation decl
 - **Clearance:** build verification only.
 - **Census confirmation:** pending.
 
-### LINK-068: W3DPropDraw's vftables disagree between units and with retail
+### LINK-120: W3DPropDraw's vftables disagree between units and with retail
 
 **Status: Open. Updated: 2026-10-26; inspected revision: `60d0fc0a50`.**
 
