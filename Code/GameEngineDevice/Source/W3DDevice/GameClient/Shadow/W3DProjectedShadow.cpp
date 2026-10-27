@@ -207,7 +207,7 @@ public:
 	void rva00109236();
 };
 
-void __cdecl operator delete(void *pointer);
+#include <new>
 
 void Rva00109236::rva00109236()
 {

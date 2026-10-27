@@ -34,7 +34,7 @@ void Rva00437E84(int owner, const UnicodeString &title, const UnicodeString &mes
 
 // The callback wrapper (rowed ctor 0x00211E75, 53B, impl vtable VA 0xBE5128;
 // moved here from Rva00080221Ctor.cpp) and its forwarding by-value form.
-void *__cdecl operator new(unsigned int size);
+#include <new>
 struct Rva00080221RefImpl
 {
 	virtual ~Rva00080221RefImpl() {}

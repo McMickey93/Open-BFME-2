@@ -283,7 +283,7 @@ public:
 private:
 	void *object;
 };
-void __cdecl operator delete(void *);
+#include <new>
 
 void Rva000A8856::rva000A8856(Rva000A8903AudioDevice *device)
 {

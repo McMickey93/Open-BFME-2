@@ -5,7 +5,7 @@
 // callers at 0x000A7FCF 0x000A8064 in 0x000A7EFA.
 #include "../../Include/Common/Rva0010EDC2Resource.h"
 extern "C" __declspec(dllimport) void __stdcall AIL_mem_free_lock(void *memory);
-void operator delete[](void *memory);
+#include <new>
 class Rva0010ED3D
 {
 public:
