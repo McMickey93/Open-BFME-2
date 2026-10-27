@@ -21,7 +21,6 @@ struct SlotVals
 	int y;
 };
 #define NULL 0
-
 // Zero Hour's UDP socket wrapper; AllowBroadcasts is rowed at 0x00594B2E.
 struct sockaddr_in
 {
@@ -73,6 +72,15 @@ struct TransportAddr
 	unsigned short m_port;
 };
 #include "GameNetwork/Transport.h"
+// ?rva004D5046@Transport@@QBEMXZ @0x004D5046 68B: Transport unsigned average
+// over m_stats5[30] at +0x410CC skipping index m_int40E6C. Sums via fild
+// with 2^32 fixup at 0x007C26EC for high-bit values then fmul by
+// 0x008601E0. Evidence: retail lea/count/array plus fild/test/jge/fadd plus
+// 30-iteration loop plus fmul; layout per Transport.cpp m_int40E6C and six
+// 30-int stats with target at +0x410CC; caller at 0x0025DDE9.
+extern float g_007C26EC;
+// g_008601E0: matched references place it at VA 0xc601e0 (retail .rdata value 0.03448276f).
+float g_008601E0 = 0.03448276f;
 
 // ?rva004D50CE@Rva004D50CE@@QAEMXZ
 // partial score=0.96 date=2026-09-30
@@ -136,6 +144,8 @@ struct TransportAddress
 void *__cdecl operator new(unsigned int);
 
 void __cdecl operator delete(void *);
+
+// ---- from Code/GameEngine/Source/GameNetwork/Transport.cpp
 
 // ---- from Code/GameEngine/Source/GameNetwork/TransportCtor.cpp
 
@@ -439,10 +449,6 @@ bool Transport::doSend()
     return retval;
 }
 
-// tu-skeleton: 0x004D4A8E 50B ?encryptBuf@@YAXPAEH@Z -- matched in Code/GameEngine/Source/GameNetwork/Transport_encryptBuf.cpp (not merged yet)
-
-// tu-skeleton: 0x004D4AC0 50B ?decryptBuf@@YAXPAEH@Z -- matched in Code/GameEngine/Source/GameNetwork/Transport_decryptBuf.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameNetwork/Transport_queueSend.cpp
 
 //
@@ -518,15 +524,10 @@ found:
 // Uses the shared byte-verified Transport layout. The obfuscation helper
 // consumes the serialized word buffer; it does not need a private message view.
 
-// tu-skeleton: 0x004D4F7A 68B ?rva004D4F7A@Transport@@QBEMXZ -- matched in Code/GameEngine/Source/GameNetwork/TransportRva004D5046.cpp (not merged yet)
 
-// tu-skeleton: 0x004D4FBE 68B ?rva004D4FBE@Transport@@QBEMXZ -- matched in Code/GameEngine/Source/GameNetwork/TransportRva004D5046.cpp (not merged yet)
 
-// tu-skeleton: 0x004D5002 68B ?rva004D5002@Transport@@QBEMXZ -- matched in Code/GameEngine/Source/GameNetwork/TransportRva004D5046.cpp (not merged yet)
 
-// tu-skeleton: 0x004D5046 68B ?rva004D5046@Transport@@QBEMXZ -- matched in Code/GameEngine/Source/GameNetwork/TransportRva004D5046.cpp (not merged yet)
 
-// tu-skeleton: 0x004D508A 68B ?rva004D508A@Transport@@QBEMXZ -- matched in Code/GameEngine/Source/GameNetwork/TransportRva004D5046.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameNetwork/Rva004D50CE.cpp
 
@@ -658,6 +659,72 @@ bool Transport::init(const TransportAddress *addr)
 	m_int40E6C = 0;
 	m_int40E70 = (int)timeGetTime();
 	return true;
+}
+
+// tu-skeleton: 0x004D4A8E 50B ?encryptBuf@@YAXPAEH@Z -- matched in Code/GameEngine/Source/GameNetwork/Transport_encryptBuf.cpp (not merged yet)
+
+// tu-skeleton: 0x004D4AC0 50B ?decryptBuf@@YAXPAEH@Z -- matched in Code/GameEngine/Source/GameNetwork/Transport_decryptBuf.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameNetwork/TransportRva004D5046.cpp
+
+float Transport::rva004D5046() const
+{
+	float sum = 0.0f;
+	for (int i = 0; i < 30; ++i)
+	{
+		if (i == m_int40E6C)
+			continue;
+		sum += (float)(unsigned int)m_stats5[i];
+	}
+	return sum * g_008601E0;
+}
+
+float Transport::rva004D5002() const
+{
+	float sum = 0.0f;
+	for (int i = 0; i < 30; ++i)
+	{
+		if (i == m_int40E6C)
+			continue;
+		sum += (float)(unsigned int)m_stats2[i];
+	}
+	return sum * g_008601E0;
+}
+
+float Transport::rva004D508A() const
+{
+	float sum = 0.0f;
+	for (int i = 0; i < 30; ++i)
+	{
+		if (i == m_int40E6C)
+			continue;
+		sum += (float)(unsigned int)m_stats1[i];
+	}
+	return sum * g_008601E0;
+}
+
+float Transport::rva004D4FBE() const
+{
+	float sum = 0.0f;
+	for (int i = 0; i < 30; ++i)
+	{
+		if (i == m_int40E6C)
+			continue;
+		sum += (float)(unsigned int)m_stats3[i];
+	}
+	return sum * g_008601E0;
+}
+
+float Transport::rva004D4F7A() const
+{
+	float sum = 0.0f;
+	for (int i = 0; i < 30; ++i)
+	{
+		if (i == m_int40E6C)
+			continue;
+		sum += (float)(unsigned int)m_stats0[i];
+	}
+	return sum * g_008601E0;
 }
 
 // tu-skeleton: 0x004D5534 95B ?init@Transport@@QAE_NVAsciiString@@G@Z -- matched in Code/GameEngine/Source/GameNetwork/Transport_init_AsciiString_Rva004d5534.cpp (not merged yet)

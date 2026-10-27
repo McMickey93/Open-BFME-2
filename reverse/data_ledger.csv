@@ -11660,7 +11660,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x008601C0,16,.rdata,vtable,??_7ConnectionManager@@6B@,,literal,,0,2
 0x008601D0,12,.rdata,string,??_C@_08NFGGAFKO@NULLGAME?$AA@,,literal,,0,1
 0x008601DC,4,.rdata,vtable,??_7Rva004D376A@@6B@,,literal,,0,3
-0x008601E0,4,.rdata,global,?g_008601E0@@3MA,Code/GameEngine/Source/GameNetwork/TransportRva004D5046.cpp,owned,,1,6
+0x008601E0,4,.rdata,global,?g_008601E0@@3MA,Code/GameEngine/Source/GameNetwork/Transport.cpp,owned,,1,6
 0x008601E4,16,.rdata,vtable,??_7NetGameCommandMsg@@6B@,,literal,,0,3
 0x008601F4,16,.rdata,vtable,??_7NetAckBothCommandMsg@@6B@,,literal,,0,2
 0x00860204,16,.rdata,vtable,??_7NetAckStage1CommandMsg@@6B@,,literal,,0,2
