@@ -4214,7 +4214,13 @@ parents' labels (EH EXACT, unmasked build 6/6 and 5/5). Change every unit that e
 the derived vtable together, or `??_7` COMDATs disagree (Rva00243177.cpp previewed
 154 -> 0 with only one side changed; both together keep LINKS 154). Next check: other
 blocked rows naming a private `*PoolObject`/`*SnapshotBase` dtor whose retail target is
-0x0049B47C can take the same canonical base instead of a fold row.
+0x0049B47C can take the same canonical base instead of a fold row. Done the same way for
+`Rva00355B61Ctor.cpp` (69f73790f8, `uw_0077d4d0`; its private SnapshotBase + alternatename
+dropped; consumers Rva00355141Clear/Rva00355155Find/Rva000E0AE2ObjectRegistration keep
+LINKS). A blocked-row scan for funclets jumping to 0x0049B47C still lists ~40, e.g.
+`Rva000E59D3Base`, `Rva000E6AC0Base`, `Rva002105A6Snapshot`, `WeaponSetSnapshotBase`,
+`TurretAISnapshotBase`, `SaveMapPreview`; `Snapshot78` (novtable over RegionBonusInfo) and the
+`*ModuleData` bases are not simple swaps.
 
 **Renumbered-label relabel (2026-10-27, K9):** 166 parent-emitted `$L` rows in 16 units
 verified only through the renumbered-label fallback and held the names their gen_uw
