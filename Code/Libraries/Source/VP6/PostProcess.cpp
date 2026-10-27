@@ -13,7 +13,7 @@
 // byte-identical Open-BFME-1 project donor; the context view is a scoped view
 // of the offsets the retail body reads.
 
-extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct BfmeGridZJ;

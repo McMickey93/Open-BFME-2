@@ -2,7 +2,7 @@
 // Clean room: reverse/vp6_cleanroom/specs/001b68d0.md 001b6890.md 001b6930.md
 // 001bff20.md 001bd630.md plus retail only. No decoder source was consulted.
 // Post-processor instance (0xC8 bytes): create, delete and per-frame setup.
-extern "C" void *__cdecl memset(void *block, int value, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memset)
 
 struct POSTPROC_INSTANCE;

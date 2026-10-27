@@ -94,7 +94,7 @@ extern "C" void __cdecl SetDeInterlaceMode(PostProcInstance *postProc, int mode)
 extern "C" int __cdecl VP6_bitread(BoolCoder *coder, int bits);
 extern "C" int __cdecl VP6_InitFrameDetails(PbInstance *pbi);
 extern "C" int __cdecl VP6_DecodeBool(BoolCoder *coder, int probability);
-extern "C" void *__cdecl memset(void *block, int value, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memset)
 
 // RVA 0x001BD050
