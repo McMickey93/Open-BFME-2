@@ -15,7 +15,27 @@ extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7Bea
 
 extern int BfmeLogicFramesPerSecond;
 
+// The module data spells CommandButtonHuntUpdate.cpp's view (the TU this
+// ctor joins): the two parsed fields take their INI names.
+
+typedef float Real;
+
 class MultiIniFieldParse;
+
+// 0x10 bytes (the module data factory news 0x10). The ctor (0x0049529F)
+// installs vftable 0x00C4ED70 itself and fills the two parsed fields;
+// buildFieldParse's table names them (ScanRate +0x08, ScanRange +0x0C).
+struct CommandButtonHuntUpdateModuleData
+{
+	CommandButtonHuntUpdateModuleData();
+	static void buildFieldParse(MultiIniFieldParse &parse);
+
+	const void *m_vtable;			// +0x00
+	unsigned int m_pad04;			// +0x04
+	int m_scanRate;				// +0x08
+	Real m_scanRange;			// +0x0C
+};
+
 class INI;
 typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
 struct FieldParse
@@ -46,30 +66,13 @@ public:
 	void add(const FieldParse *parseTable, unsigned int extraOffset);
 };
 
-class CommandButtonHuntUpdateModuleData
-{
-public:
-	CommandButtonHuntUpdateModuleData();
-	static void buildFieldParse(MultiIniFieldParse &parse);
-
-private:
-	// +0x00 vtable (installed explicitly below; no base, no virtuals here).
-	const void *m_vtable;
-	// +0x04 opaque pad (untouched by this ctor).
-	unsigned int m_pad04;
-	// +0x08 word from the global.
-	int m_scanFrames;
-	// +0x0C cap value.
-	float m_cap;
-};
-
 // ??0CommandButtonHuntUpdateModuleData@@QAE@XZ @0x0049529F
 CommandButtonHuntUpdateModuleData::CommandButtonHuntUpdateModuleData()
 {
 	float cap = 9999.0f;
 	*(unsigned int *)this = ((unsigned int)vtbl_00C4ED70);
-	m_scanFrames = BfmeLogicFramesPerSecond;
-	m_cap = cap;
+	m_scanRate = BfmeLogicFramesPerSecond;
+	m_scanRange = cap;
 }
 
 // ?buildFieldParse@CommandButtonHuntUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z @0x004952BE
