@@ -1,9 +1,13 @@
 // cl: /Ireference/shims/bfme2_ascii /ICode/GameEngine/Source/Common /O1 /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?embedPristineMap@@YAXVAsciiString@@PAVXfer@@@Z (WorldBuilder name), retail 0x0041AD08, 248 bytes.
 // Evidence: unlock lane, callers at 0x0041B35F/0x0041B3CA in 0x0041AFDA, callee openFile 0x00600C34,
 // _bfmeFormatText 0x0060C36E, new[] 0x0002FDE0, delete[] 0x0002FD80, releaseBuffer 0x00036410,
 // EmptyString g_Rva0107301CEmptyString, TheFileSystem, PristineMap literal, guard throw info.
 // Static with TU-local caller for private register convention (ctx in edi from entry, shape lever 462).
+#define NOMINMAX
+#include <windows.h>
+#include <new>
 #include "ascii_string.h"
 
 class File
@@ -59,8 +63,6 @@ struct BfmeFormattedText
 
 extern "C" BfmeFormattedText *__cdecl bfmeFormatText(BfmeFormattedText *result, int tag, const char *format, ...);
 extern "C" void __stdcall _CxxThrowException(void *pExceptionObject, const _s__ThrowInfo *pThrowInfo);
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *p);
 
 static void __cdecl embedPristineMap(AsciiString path, Xfer *xfer)
 {
@@ -242,8 +244,6 @@ class SkirmishGameInfo; extern SkirmishGameInfo *TheSkirmishGameInfo;
 extern GameInfo*TheGameInfo;
 void XferObjectID(Xfer*,ObjectID*);
 void XferDrawableID(Xfer*,int*);
-void*__cdecl operator new(unsigned int);
-void __cdecl operator delete(void*);
 class GameStateMap {public:void DoXfer(Xfer*);void clearScratchPadMaps();};
 // Target identity: WB132D380 GameStateMap.cpp357 and native41AFDA..41B603.
 // BFME1 GameStateMap::xfer at874e38488 supplies save/load structure; target
@@ -374,7 +374,6 @@ public:
  operator UnicodeString();
  const UnicodeString *left,*right;
 };
-extern "C" __declspec(dllimport) int __stdcall DeleteFileW(const unsigned short*);
 // Native397B boundary41B603..41B790. Constructor41AC6A and destructor41B790
 // share primary vtableC3ADD8 and Snapshot vtableC3ADC8: the latter carries
 // the GameStateMap name getter41AC8A and DoXfer41AFDA. This independently
