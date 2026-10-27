@@ -15,8 +15,6 @@ enum KindOfType
 typedef BitFlags<KINDOF_COUNT>	KindOfMaskType;
 #define MAKE_KINDOF_MASK(k) KindOfMaskType(KindOfMaskType::kInit, (k))
 #define CLEAR_KINDOFMASK(m) ((m).clear())
-// PreRTS.h reaches Common/Overridable.h (through Science.h), so the BFME view
-// below has to come first; these are PreRTS.h's own leading includes, in its order.
 #include <windows.h>
 #include "Lib/BaseType.h"
 #include "Common/STLTypedefs.h"
@@ -26,13 +24,6 @@ typedef BitFlags<KINDOF_COUNT>	KindOfMaskType;
 #include "Common/SubsystemInterface.h"
 #include "Common/GameCommon.h"
 #include "Common/GameMemory.h"
-// BFME's Overridable is 0x10 bytes where Zero Hour's is 0x0C. CrateTemplate's
-// ctor (0x0035CC36) inlines the base ctor as +0x04 = NULL, +0x08 = false and
-// +0x0C = -1, its assignment (0x0035CE52) and every member access put the
-// name at +0x10, and the destructor 0x001E3624 is public (??1Overridable@@UAE@XZ).
-// Nothing in this TU reads +0x0C, so it carries no name. getFinalOverride and
-// deleteOverrides are out of line in retail (0x001E35DF, 0x001E35ED), and so is
-// the 5-byte base assignment (0x001FD28E).
 #define _OVERRIDABLE_H_
 class Overridable : public MemoryPoolObject
 {
@@ -106,6 +97,33 @@ const FieldParse CrateTemplate::TheCrateTemplateFieldParseTable[7] = {
 #include "Common/BitFlagsIO.h"
 #include <list>
 #include <memory>
+#define Matrix4x4 Matrix4  // BFME renamed it
+#define __PLACEMENT_VEC_NEW_INLINE
+#define __KINDOF_H_
+#define MAKE_KINDOF_MASK(k) KindOfMaskType(KindOfMaskType::kInit, (k))
+#define CLEAR_KINDOFMASK(m) ((m).clear())
+#define _OVERRIDABLE_H_
+#undef MEMORY_POOL_GLUE_WITHOUT_GCMP
+#define MEMORY_POOL_GLUE_WITHOUT_GCMP(ARGCLASS) \
+protected: \
+	virtual ~ARGCLASS(); \
+public: \
+	enum ARGCLASS##MagicEnum { ARGCLASS##_GLUE_NOT_IMPLEMENTED = 0 }; \
+public: \
+	inline void *operator new(size_t s, ARGCLASS##MagicEnum e DECLARE_LITERALSTRING_ARG2) \
+	{ return MP_GLUE_ALLOCATE(ARGCLASS); } \
+public: \
+	inline void operator delete(void *p, ARGCLASS##MagicEnum e DECLARE_LITERALSTRING_ARG2) \
+	{ BfmePoolGlue::free(p); } \
+protected: \
+	inline void *operator new(size_t s) { return ::operator new(s); } \
+	inline void operator delete(void *p) { ::operator delete(p); } \
+private: \
+	virtual MemoryPool *getObjectMemoryPool() { return ARGCLASS::getClassMemoryPool(); } \
+public:
+#define DEFINE_VETERANCY_NAMES				// for TheVeterancyNames[]
+#include <stdio.h>
+#include "Common/INIException.h"
 
 extern CrateSystem *TheCrateSystem;
 
@@ -187,33 +205,37 @@ template void _STL::list<crateCreationEntry, _STL::allocator<crateCreationEntry>
 
 // tu-skeleton: 0x0035CB8D 37B ?insert@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAE?AU?$_List_iterator@UcrateCreationEntry@@U?$_Nonconst_traits@UcrateCreationEntry@@@_STL@@@2@U32@ABUcrateCreationEntry@@@Z -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListInsert.cpp (not merged yet)
 
+// ---- from Code/GameEngine/Source/GameLogic/System/CrateSystem.cpp
+
+// PreRTS.h reaches Common/Overridable.h (through Science.h), so the BFME view
+// below has to come first; these are PreRTS.h's own leading includes, in its order.
+
+// BFME's Overridable is 0x10 bytes where Zero Hour's is 0x0C. CrateTemplate's
+// ctor (0x0035CC36) inlines the base ctor as +0x04 = NULL, +0x08 = false and
+// +0x0C = -1, its assignment (0x0035CE52) and every member access put the
+// name at +0x10, and the destructor 0x001E3624 is public (??1Overridable@@UAE@XZ).
+// Nothing in this TU reads +0x0C, so it carries no name. getFinalOverride and
+// deleteOverrides are out of line in retail (0x001E35DF, 0x001E35ED), and so is
+// the 5-byte base assignment (0x001FD28E).
+
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0035CBB2.cpp
 
 // STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
 // Element identity and unconstrained fields remain address-derived structural inference.
 
-// tu-skeleton: 0x0035CBE2 28B ??_GCrateSystem@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp (not merged yet)
 
-// tu-skeleton: 0x0035CBFE 26B ?push_back@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAEXABUcrateCreationEntry@@@Z -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListInsert.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0035CC18.cpp
 
 // STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
 // Element identity and unconstrained fields remain address-derived structural inference.
 
-// tu-skeleton: 0x0035CC36 148B ??0CrateTemplate@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0035CCCA 89B ??1CrateTemplate@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0035CD23 188B ?parseCrateCreationEntry@CrateTemplate@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/System/INI_parseCrateCreationEntry.cpp (not merged yet)
 
-// tu-skeleton: 0x0035CDDF 115B ??4?$list@UBfmeStringRecord000B757D@@V?$allocator@UBfmeStringRecord000B757D@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_b757d_insert.cpp (not merged yet)
 
-// tu-skeleton: 0x0035CE52 84B ??4CrateTemplate@@QAEAAV0@ABV0@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateAssign.cpp (not merged yet)
 
-// tu-skeleton: 0x0035CEA6 106B ?newCrateTemplateOverride@CrateSystem@@QAEPAVCrateTemplate@@PAV2@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
 
-// tu-skeleton: 0x0035CF2C 190B ?newCrateTemplate@CrateSystem@@QAEPAVCrateTemplate@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/System/CrateSystem.cpp
 
@@ -307,3 +329,104 @@ void CrateSystem::parseCrateTemplateDefinition(INI* ini)
 	// parse the ini weapon definition
 	ini->initFromINI(crateTemplate, crateTemplate->getFieldParse());
 }
+
+// tu-skeleton: 0x0035CBE2 28B ??_GCrateSystem@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp (not merged yet)
+
+// tu-skeleton: 0x0035CBFE 26B ?push_back@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAEXABUcrateCreationEntry@@@Z -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListInsert.cpp (not merged yet)
+
+// tu-skeleton: 0x0035CC36 148B ??0CrateTemplate@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0035CCCA 89B ??1CrateTemplate@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateDtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/INI_parseCrateCreationEntry.cpp
+
+// PreRTS.h reaches Common/Overridable.h (through Science.h), so the BFME view
+// below has to come first; these are PreRTS.h's own leading includes, in its order.
+
+// BFME's Overridable is 0x10 bytes where Zero Hour's is 0x0C. CrateTemplate's
+// ctor (0x0035CC36) inlines the base ctor as +0x04 = NULL, +0x08 = false and
+// +0x0C = -1, its assignment (0x0035CE52) and every member access put the
+// name at +0x10, and the destructor 0x001E3624 is public (??1Overridable@@UAE@XZ).
+// Nothing in this TU reads +0x0C, so it carries no name. getFinalOverride and
+// deleteOverrides are out of line in retail (0x001E35DF, 0x001E35ED), and so is
+// the 5-byte base assignment (0x001FD28E).
+
+// ?parseCrateCreationEntry@CrateTemplate@@SAXPAVINI@@PAX1PBX@Z, retail
+// 0x0035CD23, 188 bytes. Serves the CrateObject entry of the table at
+// 0x8162A0. Zero Hour CrateSystem.cpp proves the name and shape: read two
+// tokens, build an AsciiString crate name, sscanf a float crate value
+// (INIException(3, ...) plus _CxxThrowException on failure, scanReal
+// precedent), fill a crateCreationEntry and push it onto the
+// list<crateCreationEntry> m_possibleCrates at instance+0x3c (ZH
+// CrateSystem.h: crateCreationEntryList). The store push lowers to the
+// list push_back at 0x0035CBFE (sole caller). The prelude above is
+// CrateSystem.cpp's own (its BFME Overridable and KindOfMaskType views), so
+// the real CrateTemplate, crateCreationEntry and list types serve this body
+// and the file compiles as part of that TU.
+
+// ?parseCrateCreationEntry@CrateTemplate@@SAXPAVINI@@PAX1PBX@Z
+void CrateTemplate::parseCrateCreationEntry(INI *ini, void *instance, void *, const void *)
+{
+	CrateTemplate *self = (CrateTemplate *)instance;
+
+	const char *token = ini->getNextToken();
+	AsciiString crateName = token;
+
+	token = ini->getNextToken();
+	Real crateValue;
+	if (sscanf(token, "%f", &crateValue) != 1) {
+		throw INIException(3, "Floating point value expected instead of '%s'", token);
+	}
+
+	crateCreationEntry newEntry;
+	newEntry.crateName = crateName;
+	newEntry.crateChance = crateValue;
+
+	self->m_possibleCrates.push_back(newEntry);
+}
+
+// tu-skeleton: 0x0035CDDF 115B ??4?$list@UBfmeStringRecord000B757D@@V?$allocator@UBfmeStringRecord000B757D@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_b757d_insert.cpp (not merged yet)
+
+// tu-skeleton: 0x0035CE52 84B ??4CrateTemplate@@QAEAAV0@ABV0@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateAssign.cpp (not merged yet)
+
+// tu-skeleton: 0x0035CEA6 106B ?newCrateTemplateOverride@CrateSystem@@QAEPAVCrateTemplate@@PAV2@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
+
+// tu-skeleton: 0x0035CF2C 190B ?newCrateTemplate@CrateSystem@@QAEPAVCrateTemplate@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DCF8 14B $L6530 -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD06 10B __ehhandler$?Rva0035CA02Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD22 8B $L1486 -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD2A 11B uw_0077dd2a -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD35 10B __ehhandler$??1CrateSystem@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD3F 8B Unwind@00b7dd3f -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD47 11B Unwind@00b7dd47 -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD52 11B $L5065 -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD5D 10B __ehhandler$??0CrateTemplate@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD67 8B Unwind@00b7dd67 -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD6F 11B Unwind@00b7dd6f -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD7A 11B uw_0077dd7a -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD85 10B __ehhandler$??1CrateTemplate@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/CrateTemplateDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DD97 8B uw_0077dd97 -- matched in Code/gen_small/uw_gen_003.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DDA9 10B $L1646 -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DDB3 10B __ehhandler$?newCrateTemplateOverride@CrateSystem@@QAEPAVCrateTemplate@@PAV2@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DDBD 8B $L1797 -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DDC5 10B uw_0077ddc5 -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DDCF 10B __ehhandler$?newCrateTemplate@CrateSystem@@QAEPAVCrateTemplate@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameLogic/System/CrateSystemNewCrateTemplate.cpp (not merged yet)
