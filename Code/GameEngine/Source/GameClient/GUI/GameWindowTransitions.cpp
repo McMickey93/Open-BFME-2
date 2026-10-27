@@ -5,6 +5,11 @@
 #include "ascii_string.h"
 #include <list>
 #include <new>
+class Rva001DBC77
+{
+public:
+	~Rva001DBC77();
+};
 
 class Xfer;
 
@@ -425,6 +430,8 @@ public:
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp
 
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp
+
 // platformsdk
 
 // The unwind funclet keeps an out-of-line ~CriticalSectionLock COMDAT; retail's
@@ -725,32 +732,6 @@ void GameWindowTransitionsHandler::rva001DC57C(_STL::list<int, _STL::allocator<i
 		((Rva001DC0EC *)m_secondaryDrawGroup)->rva001DC1B3(dest);
 }
 
-// tu-skeleton: 0x001DC01C 98B ?findGroup@GameWindowTransitionsHandler@@AAEPAVTransitionGroup@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC0EC 120B ??1Rva001DC0EC@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Rva001DC0ECDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC164 59B ?rva001DC164@Rva001DBDA4@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Bfme/Rva00489360GuardedAdd.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC1E1 28B ??_GRva001DC0EC@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC1FD 85B ?bfmeGetGroupTotalFrames@GameWindowTransitionsHandler@@QAEHVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsGroupTotalFrames_Rva001dc1fd.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC252 243B ?setGroup@GameWindowTransitionsHandler@@QAEXVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC345 231B ?reverse@GameWindowTransitionsHandler@@QAEXVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC42C 166B ?remove@GameWindowTransitionsHandler@@QAEXVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC4D2 170B ?getNewGroup@GameWindowTransitionsHandler@@QAEPAVTransitionGroup@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC636 57B ??1?$hashtable@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC66F 112B ?parseWindowTransitions@INI@@SAXPAV1@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC6DF 5B ??1?$hash_map@W4NameKeyType@@P6APAVTransition@@XZU?$hash@W4NameKeyType@@@rts@@U?$equal_to@W4NameKeyType@@@4@V?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
-
-// tu-skeleton: 0x001DC6E4 225B ??1GameWindowTransitionsHandler@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsParseWindow.cpp
 
 // ?parseWindow@GameWindowTransitionsHandler@@SAXPAVINI@@PAX1PBX@Z, retail 0x001DCB2F, 53 bytes.
@@ -799,17 +780,55 @@ void GameWindowTransitionsHandler::parseWindow(INI *ini, void *instance, void *s
 	((TransitionGroup *)instance)->addWindow(transWin);
 }
 
+// tu-skeleton: 0x001DC01C 98B ?findGroup@GameWindowTransitionsHandler@@AAEPAVTransitionGroup@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Rva001DC0ECDtor.cpp
+
+//
+// ??1Rva001DC0EC@@QAE@XZ @0x001DC0EC 120B. Dtor: deletes Rva001DBC77 items
+// out of list<int> at +0 via erase loop then AsciiString at +0xC then the
+// list base. Evidence: deleting-dtor caller 0x001DC1E1 item dtor row
+// 0x001DBC77 erase row 0x00438539 releaseBuffer row 0x00036410 and
+// list-base dtor row 0x004EC395. Honest address name.
+
+Rva001DC0EC::~Rva001DC0EC()
+{
+	_STL::list<int, _STL::allocator<int> >::iterator it = m_list.begin();
+	while (it._M_node != m_list.end()._M_node) {
+		Rva001DBC77 *p = (Rva001DBC77 *)*it;
+		if (p != 0)
+			delete p;
+		it = m_list.erase(it);
+	}
+}
+
+// tu-skeleton: 0x001DC164 59B ?rva001DC164@Rva001DBDA4@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Bfme/Rva00489360GuardedAdd.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC1E1 28B ??_GRva001DC0EC@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC1FD 85B ?bfmeGetGroupTotalFrames@GameWindowTransitionsHandler@@QAEHVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsGroupTotalFrames_Rva001dc1fd.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC252 243B ?setGroup@GameWindowTransitionsHandler@@QAEXVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC345 231B ?reverse@GameWindowTransitionsHandler@@QAEXVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC42C 166B ?remove@GameWindowTransitionsHandler@@QAEXVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC4D2 170B ?getNewGroup@GameWindowTransitionsHandler@@QAEPAVTransitionGroup@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC636 57B ??1?$hashtable@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC66F 112B ?parseWindowTransitions@INI@@SAXPAV1@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC6DF 5B ??1?$hash_map@W4NameKeyType@@P6APAVTransition@@XZU?$hash@W4NameKeyType@@@rts@@U?$equal_to@W4NameKeyType@@@4@V?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
+
+// tu-skeleton: 0x001DC6E4 225B ??1GameWindowTransitionsHandler@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
+
 // tu-skeleton: 0x001DCB64 64B ??0?$hashtable@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@@_STL@@QAE@IABU?$hash@W4NameKeyType@@@rts@@ABU?$equal_to@W4NameKeyType@@@3@ABV?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@1@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
 
 // tu-skeleton: 0x001DCBA4 31B ??0?$hash_map@W4NameKeyType@@P6APAVTransition@@XZU?$hash@W4NameKeyType@@@rts@@U?$equal_to@W4NameKeyType@@@4@V?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
 
 // tu-skeleton: 0x001DCBC3 124B ??0GameWindowTransitionsHandler@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
-
-// tu-skeleton: 0x007698B4 8B uw_007698b4 -- matched in Code/GameEngine/Source/GameLogic/Object/Rva001DC0ECDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x007698BC 11B Unwind@00b698bc -- matched in Code/GameEngine/Source/GameLogic/Object/Rva001DC0ECDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x007698C7 10B __ehhandler$??1Rva001DC0EC@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Rva001DC0ECDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x007698EB 8B Unwind@00b698eb -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
 
