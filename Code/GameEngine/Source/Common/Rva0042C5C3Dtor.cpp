@@ -55,7 +55,7 @@ public:
 };
 
 class Rva0057417E { public: ~Rva0057417E(); };
-void __cdecl operator delete(void *);
+#include <new>
 
 class Rva0042C1DF
 {

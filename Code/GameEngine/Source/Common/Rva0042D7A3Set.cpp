@@ -19,7 +19,7 @@ private:
 	StrategicHUD::EndTurnButtonImpl *m_00;
 };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva0042D7A3::rva0042D7A3(StrategicHUD::EndTurnButtonImpl *newPtr)
 {

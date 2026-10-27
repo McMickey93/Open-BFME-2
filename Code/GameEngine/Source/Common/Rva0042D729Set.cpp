@@ -16,7 +16,7 @@ private:
 	Rva00577DE1OwningCell *m_00;
 };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva0042D729::rva0042D729(Rva00577DE1OwningCell *newPtr)
 {
