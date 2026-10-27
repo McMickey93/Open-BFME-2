@@ -100,8 +100,6 @@ class TextureClass;
 
 template <> RefCountPtr<TextureClass>::~RefCountPtr();
 
-extern "C" void __cdecl free(void *block);
-
 template <class E> struct RvaVectorFamilyBase
 {
 	E *m_start;

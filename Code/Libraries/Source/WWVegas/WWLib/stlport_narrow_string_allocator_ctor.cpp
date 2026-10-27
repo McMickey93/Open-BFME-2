@@ -8,6 +8,8 @@
 // basic_string. The decorated signature identifies the narrow STLport
 // specialization, and the retail body matches that source structure.
 
+#include <new.h>
+
 namespace _STL
 {
 
@@ -98,8 +100,6 @@ basic_string<CharT, Traits, Alloc>::basic_string(const allocator_type &a)
 }
 
 }
-
-inline void *operator new(unsigned int, void *place) { return place; }
 
 void BfmeNarrowStringAllocatorAnchor(void *storage,
 	const _STL::allocator<char> &alloc)

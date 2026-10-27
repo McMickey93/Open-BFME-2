@@ -10,7 +10,7 @@
 // destructor (0x005FAA31) that calls the destructor (0x004E84A4) out of
 // line; /GX- would inline it, so each impl names its destructor noinline
 // and this unit emits the same copies as the /EHsc units.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
 
 struct Rva00080221RefImpl
 {

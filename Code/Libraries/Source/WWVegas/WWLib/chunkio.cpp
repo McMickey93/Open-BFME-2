@@ -193,8 +193,6 @@ struct BFMEChunkLoadLayout
 // exactly once in game.dat by masked byte search.
 // Retail 0x009E12B0: initialize the two 256-entry tables and scalar flags.
 // The native owner is unknown, so the address stays in the class identity.
-extern "C" void* __cdecl memset(void*, int, unsigned int);
-
 extern "C" void _ReadWriteBarrier(void);
 
 struct Rva009E12B0Pair { int m_a; int m_b; };

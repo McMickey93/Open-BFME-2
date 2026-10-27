@@ -8,7 +8,7 @@
 // full layout (RefCountClass NumRefs plus raw/aligned buffer, count, alignment);
 // only the members this ctor touches are declared here.
 
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
 #include <string.h>
 
 class RefCountClass

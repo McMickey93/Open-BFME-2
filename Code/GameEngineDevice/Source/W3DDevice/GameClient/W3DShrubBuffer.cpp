@@ -4,6 +4,7 @@
 #pragma comment(linker, "/alternatename:??0Rva000E9C1DType@@QAE@XZ=??0Rva00735D80TreeType@@QAE@XZ")
 #pragma comment(linker, "/alternatename:??1Rva000E9C1DType@@QAE@XZ=??1Rva000E86B8@@QAE@XZ")
 #pragma comment(linker, "/alternatename:?tailB@Rva00066A9ASub@@QAEXXZ=?rva000E6FC8@Rva000E6FC8@@QAEXXZ")
+#include <math.h>
 #include "matrix3d.h"
 #include "sphere.h"
 #include "../../../../Libraries/Include/Lib/Region2D.h"
@@ -365,10 +366,6 @@ struct Rva000E72B3Type
 };
 
 typedef short Short;
-
-extern "C" __declspec(dllimport) double floor(double);
-
-extern "C" __declspec(dllimport) double ceil(double);
 
 struct Rva000E7734GlobalData
 {

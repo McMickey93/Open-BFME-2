@@ -3,7 +3,7 @@
 // Existing Rva001EB984Init.cpp establishes the one-word sentinel and the
 // unused allocator argument; this is its typed STLport constructor spelling.
 // The strong exact copy supplies callers built with different frame flags.
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
 class Object;
 // Native DB8FEC freelist policy is distinct from the generic 41B allocator.
 template<class T>class Rva001EB984PoolAllocator {};

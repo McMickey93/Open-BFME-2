@@ -16,9 +16,9 @@
 //   0x00176940  0x00BD4E24  StaticSortListClass
 //   0x00191120  0x00BD5E38  Rva00191120
 
-struct EmitVtableTag;
+#include <new.h>
 
-inline void *operator new(unsigned int, void *p) { return p; }
+struct EmitVtableTag;
 
 class DebugCmdInterface
 {
