@@ -1,0 +1,27 @@
+{
+  "fork": "McMickey93/Open-BFME-2",
+  "control_branch": "codex/20261027-round3-reference-refresh-transfer",
+  "result_branch": "codex/20261027-round3-reference-refresh-verified",
+  "checkpoint_prefix": "codex/20261027-round3-reference-refresh-checkpoint",
+  "completion_branch": "codex/20261027-round3-reference-refresh-completed",
+  "branch": "refs/heads/codex/20261027-round3-reference-refresh",
+  "base": "a32b57717fbed592c703a13bfd0661cf9a28a94e",
+  "agents_blob": "922001686b9b38567dd6ef67d16d46cb68320a1b",
+  "old_reference": "e74410b3738a2bb75d626085d9ebfd3406a43ff7",
+  "new_reference": "eb60756a8aa6ba1648edd234b16bcc778fcbbe7b",
+  "source": "reference/open-bfme-1",
+  "source_blob": "eb60756a8aa6ba1648edd234b16bcc778fcbbe7b",
+  "evidence": "reverse/attempt_support/20261027-bfme1-reference-refresh.md",
+  "files": [
+    "reference/open-bfme-1",
+    "reverse/attempt_support/20261027-bfme1-reference-refresh.md"
+  ],
+  "reviewed_blobs": {
+    "reference/open-bfme-1": "eb60756a8aa6ba1648edd234b16bcc778fcbbe7b"
+  },
+  "transport_expected": "a32b57717fbed592c703a13bfd0661cf9a28a94e",
+  "claim_ref": "refs/heads/claims/file/5635fb671f614ba9",
+  "claim_owner": "github:McMickey93:bfme2:round3-20261027",
+  "claim_lease": "322194ce322d4593aeac0dbce1c499c5",
+  "native_preparation": true
+}
