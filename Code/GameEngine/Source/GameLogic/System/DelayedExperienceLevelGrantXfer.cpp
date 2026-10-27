@@ -29,45 +29,26 @@ extern ExperienceLevelSystem *TheExperienceLevelSystem;  // defined in DelayedEx
 enum ObjectID { INVALID_ID = 0 };
 class Xfer;
 void XferObjectID(Xfer *, ObjectID *);
-struct GrantVersion { GrantVersion(unsigned char a,unsigned char b):minimum(a),current(b){} unsigned char minimum,current; };
-class Xfer { public: virtual ~Xfer();
-virtual bool IsLoading() const;
-virtual void slot2();
-virtual void slot3();
-virtual void slot4();
-virtual void slot5();
-virtual void slot6();
-virtual void slot7();
-virtual void slot8();
-virtual void slot9();
-virtual Xfer &xferVersion(GrantVersion *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual void slot24();
-virtual void slot25();
-virtual void slot26();
-virtual Xfer &xferAsciiString(AsciiString *);
-virtual void slot28();
-virtual void slot29();
-virtual void slot30();
-virtual Xfer &xferInt(int *);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version { public: Version(unsigned char a,unsigned char b):minimum(a),current(b){} unsigned char minimum,current; };
 // Reuse the ledger-owned 12-byte list footprint (push_back at 0x00420DF3).
 struct BfmePod12 { ObjectID object; const Overridable *level; bool grant; };
 template<> void _STL::list<BfmePod12>::push_back(const BfmePod12 &);
@@ -82,33 +63,33 @@ private:
     bool loading;
 };
 void DelayedExperienceLevelGrantSystem::xfer(Xfer *xfer) {
-    GrantVersion version(1,1);
-    xfer->xferVersion(&version);
+    Xfer::Version version(1,1);
+    xfer->operator==(version);
     if (xfer->IsLoading()) {
         // Retail uses the already-owned folded int list clear at 0x0023DAA5.
         reinterpret_cast<_STL::_List_base<int,_STL::allocator<int> > *>(&entries)->clear();
         loading = true;
         int count;
-        xfer->xferInt(&count);
+        xfer->operator==(count);
         while (count > 0) {
             BfmePod12 entry;
             XferObjectID(xfer,&entry.object);
-            xfer->xferBool(&entry.grant);
+            xfer->operator==(entry.grant);
             AsciiString name;
-            xfer->xferAsciiString(&name);
+            xfer->operator==(name);
             entry.level = reinterpret_cast<Rva0028951F *>(TheExperienceLevelSystem)->rva0028951F(TheNameKeyGenerator->nameToKey(name));
             if (entry.level) entries.push_back(entry);
             --count;
         }
     } else {
         int count = entries.size();
-        xfer->xferInt(&count);
+        xfer->operator==(count);
         _STL::list<BfmePod12>::iterator end=entries.end();
         for (_STL::list<BfmePod12>::iterator it=entries.begin();it._M_node!=end._M_node;) {
             XferObjectID(xfer,&it->object);
-            xfer->xferBool(&it->grant);
+            xfer->operator==(it->grant);
             AsciiString name(reinterpret_cast<const GrantLevelNameView *>(it->level)->name);
-            xfer->xferAsciiString(&name);
+            xfer->operator==(name);
             ++it;
         }
     }

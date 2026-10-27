@@ -8,14 +8,24 @@
 // Version1 block), otherwise through the rowed Rva00291440 packer with the
 // Xfer as its byte sink (the second caller of that row besides 0x002977F8).
 typedef bool Bool;
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual void slot01(); virtual void slot02(); virtual void slot03();
-	virtual Bool slot04();
-	void Version1();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 enum ObjectID
 {
 	INVALID_ID = 0
@@ -50,7 +60,7 @@ void SlaveWatcherBehavior::xfer(Xfer *xfer)
 {
 	xfer->Version1();
 	UpdateModule::xfer(xfer);
-	Bool viaHelper = !xfer->slot04();
+	Bool viaHelper = !xfer->IsLightCRC();
 	XferObjectID(xfer, &m_watchedID);
 	if (viaHelper)
 		xferUpgradeMask(xfer, &m_bits);

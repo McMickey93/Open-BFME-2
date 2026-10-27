@@ -165,17 +165,26 @@ public:
     static _Rb_tree_node_base *_M_increment(_Rb_tree_node_base *);
 };
 }
-class Xfer
-{
-public:
-    struct Version { unsigned char a, b; Version(unsigned char x, unsigned char y) : a(x), b(y) {} };
-    virtual void slot00();
-    virtual bool IsLoading() const;
-    virtual void slot02(); virtual void slot03(); virtual void slot04();
-    virtual void slot05(); virtual void slot06(); virtual void slot07();
-    virtual void slot08(); virtual void slot09();
-    virtual Xfer &xferVersion(Version &);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version { public: unsigned char a, b; Version(unsigned char x, unsigned char y) : a(x), b(y) {} };
 class Rva003732BFSubsystem { public: virtual ~Rva003732BFSubsystem(); char pad04[8]; };
 class Rva003732BFSnapshot
 {
@@ -196,7 +205,7 @@ public:
 void MineshaftPortalNetworkManager::xfer(Xfer *xfer)
 {
     Xfer::Version version(1, 1);
-    xfer->xferVersion(version);
+    *xfer == version;
     if (xfer->IsLoading()) {
         _STL::_Rb_tree_node_base *header = (_STL::_Rb_tree_node_base *)map.header;
         for (Rva003732BFNode *node = (Rva003732BFNode *)header->_M_left; node != header;

@@ -20,12 +20,6 @@
 typedef unsigned char UnsignedByte;
 typedef unsigned int UnsignedInt;
 
-struct XferVersion
-{
-	UnsignedByte m_version;
-	UnsignedByte m_currentVersion;
-	unsigned short m_pad;
-};
 
 class UnicodeString;
 class PooledString;
@@ -44,58 +38,15 @@ class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
 
-class Xfer
+class AsciiString;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	class Version;
-
-	Xfer();
-	virtual ~Xfer();
-
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-
-	virtual void slot05() = 0;
-	virtual void slot06() = 0;
-	virtual void slot07() = 0;
-	virtual void slot08();
-	virtual void slot09();
-
-	virtual Xfer &xferVersion(XferVersion *version);
-
-	virtual void slot11() = 0;
-	virtual void slot12() = 0;
-	virtual void slot13() = 0;
-	virtual void slot14() = 0;
-	virtual void slot15() = 0;
-	virtual void slot16() = 0;
-	virtual void slot17() = 0;
-	virtual void slot18() = 0;
-	virtual void slot19() = 0;
-	virtual void slot20() = 0;
-	virtual void slot21() = 0;
-	virtual void slot22() = 0;
-	virtual void slot23() = 0;
-	virtual void slot24() = 0;
-	virtual void slot25() = 0;
-	virtual void slot26() = 0;
-
-	virtual Xfer &xferAsciiString(AsciiString &value);
-
-	virtual Xfer &xferReal(float &value);
-	virtual void slot29() = 0;
-
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-	virtual Xfer &xferInt(int &value);
-
-	virtual void slot32() = 0;
-	virtual void slot33() = 0;
-	virtual void slot34() = 0;
-	virtual void slot35() = 0;
-
-	virtual Xfer &xferBool(bool &value);
+	UnsignedByte m_version;
+	UnsignedByte m_currentVersion;
+	unsigned short m_pad;
 };
 
 class Thing;
@@ -198,17 +149,17 @@ private:
 
 void RebuildHoleBehavior::xfer(Xfer *xfer)
 {
-	XferVersion version;
+	Xfer::Version version;
 	version.m_version = 1;
 	version.m_currentVersion = 3;
-	xfer->xferVersion(&version);
+	*xfer == version;
 	UpdateModule::xfer(xfer);
 	XferObjectID(xfer, &m_workerID);
 	XferObjectID(xfer, &m_reconstructingID);
 	XferObjectID(xfer, &m_spawnerObjectID);
-	xfer->xferUnsignedInt(m_workerWaitCounter);
+	*xfer == m_workerWaitCounter;
 	AsciiString tmp1(m_workerTemplate ? m_workerTemplate->m_name : AsciiString::TheEmptyString);
-	xfer->xferAsciiString(tmp1);
+	*xfer == tmp1;
 	if (xfer->IsLoading()) {
 		if (tmp1.compare(AsciiString::TheEmptyString) != 0)
 			m_workerTemplate = TheThingFactory->findTemplate(tmp1);
@@ -216,13 +167,13 @@ void RebuildHoleBehavior::xfer(Xfer *xfer)
 			m_workerTemplate = 0;
 	}
 	AsciiString tmp2(m_rebuildTemplate ? m_rebuildTemplate->m_name : AsciiString::TheEmptyString);
-	xfer->xferAsciiString(tmp2);
+	*xfer == tmp2;
 	if (xfer->IsLoading()) {
 		m_rebuildTemplate = 0;
 		if (tmp2.compare(AsciiString::TheEmptyString) != 0)
 			m_rebuildTemplate = TheThingFactory->findTemplate(tmp2);
 	}
-	xfer->xferBool(m_44);
+	*xfer == m_44;
 	if (version.m_currentVersion >= 3)
-		xfer->xferReal(m_40);
+		*xfer == m_40;
 }

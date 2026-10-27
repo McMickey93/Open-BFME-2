@@ -214,27 +214,31 @@ void Rva00583794::rva00583933(Object *)
 // address-derived. The four-byte version local preserves the observed
 // EBP-14 version / EBP-10 string placement; only its first two bytes are
 // transferred. Plain strings reproduce both native cleanup funclets.
-struct XferVersion
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
+public:
     unsigned char version;
     unsigned char current;
     unsigned char pad[2];
-};
-class Xfer
-{
-public:
-    virtual void slot0(); virtual void slot1(); virtual void slot2();
-    virtual void slot3(); virtual void slot4(); virtual void slot5();
-    virtual void slot6(); virtual void slot7(); virtual void slot8();
-    virtual void slot9();
-    virtual Xfer &xferVersion(XferVersion *version);
-    virtual void slot11(); virtual void slot12(); virtual void slot13();
-    virtual void slot14(); virtual void slot15(); virtual void slot16();
-    virtual void slot17(); virtual void slot18(); virtual void slot19();
-    virtual void slot20(); virtual void slot21(); virtual void slot22();
-    virtual void slot23(); virtual void slot24(); virtual void slot25();
-    virtual void slot26();
-    virtual Xfer &slot27(AsciiString *name);
 };
 class XferException
 {
@@ -245,19 +249,19 @@ public:
     char *text;
     int tag;
 };
-static __forceinline const char *TransferHordeVersion(Xfer *xfer, XferVersion &version)
+static __forceinline const char *TransferHordeVersion(Xfer *xfer, Xfer::Version &version)
 {
     version.version = 1;
     version.current = 1;
-    xfer->xferVersion(&version);
+    *xfer == version;
     return "HordeMeleeHoldGround";
 }
 void HordeMeleeHoldGround::rva005837F0(Xfer *xfer)
 {
-    XferVersion version;
+    Xfer::Version version;
     AsciiString expected(TransferHordeVersion(xfer, version));
     AsciiString actual(expected);
-    xfer->slot27(&actual);
+    *xfer == actual;
     if (actual.compare(expected) != 0)
         throw XferException(4, "Xfer data saved by %s is now being loaded by %s", actual.str(), expected.str());
 }

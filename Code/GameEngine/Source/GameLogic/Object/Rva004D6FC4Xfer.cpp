@@ -7,35 +7,34 @@
 // in EAX. Field types behind the numbered slots are not established.
 typedef unsigned char UnsignedByte;
 
-class XferVersion
-{
-public:
-	XferVersion(UnsignedByte first, UnsignedByte version) : m_first(first), m_version(version) {}
-	UnsignedByte m_first;
-	UnsignedByte m_version;
-};
 
 enum ObjectID { INVALID_ID = 0 };
 
-class Xfer
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	virtual ~Xfer();
-	virtual bool slot1(); virtual bool slot2(); virtual bool slot3();
-	virtual bool isLightCRC();
-	virtual void slot5(); virtual void slot6(); virtual void slot7(); virtual void slot8(); virtual void slot9();
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual void slot11(); virtual void slot12(); virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18(); virtual void slot19(); virtual void slot20();
-	virtual void slot21(); virtual void slot22(); virtual void slot23();
-	virtual Xfer &xferSlot24(void *value);
-	virtual void slot25(); virtual void slot26(); virtual void slot27();
-	virtual Xfer &xferSlot28(void *value);
-	virtual void slot29();
-	virtual Xfer &xferSlot30(void *value);
-	virtual void slot31(); virtual void slot32(); virtual void slot33();
-	virtual void slot34(); virtual void slot35();
-	virtual Xfer &xferSlot36(void *value);
+	Version(UnsignedByte first, UnsignedByte version) : m_first(first), m_version(version) {}
+	UnsignedByte m_first;
+	UnsignedByte m_version;
 };
 
 void XferObjectID(Xfer *xfer, ObjectID *id);
@@ -71,28 +70,28 @@ private:
 void Rva004D6FC4::rva004D6FC4(void *context)
 {
 	Xfer *xfer = static_cast<Xfer *>(context);
-	if (xfer->isLightCRC())
+	if (xfer->IsLightCRC())
 		return;
-	XferVersion version(1, 3);
+	Xfer::Version version(1, 3);
 	Xfer *x = ((XferHelperFn)XferDeathType)(
 		((XferHelperFn)XferDamageSubType)(
 			((XferHelperFn)XferDamageFXType)(
 				((XferHelperFn)XferDamageType)(
-					&((XferHelperFn)XferObjectID)(&xfer->xferVersion(&version), &m_04)->xferSlot30(&m_08),
+					&((XferHelperFn)XferObjectID)(&xfer->operator==(version), &m_04)->operator==(reinterpret_cast<unsigned &>(m_08)),
 					&m_0C),
 				&m_10),
 			&m_14),
 		&m_18);
-	x = &x->xferSlot28(&m_1C);
-	x = &x->xferSlot36(&m_20);
-	x = ((XferHelperFn)XferObjectID)(((XferHelperFn)XferFXTrigger)(&x->xferSlot28(&m_24), &m_28), &m_2C);
-	x = &x->xferSlot24(&m_30);
-	x = &x->xferSlot28(&m_3C);
-	x = &x->xferSlot28(&m_40);
-	x = &x->xferSlot28(&m_44);
-	x = &x->xferSlot28(&m_48);
+	x = &x->operator==(reinterpret_cast<float &>(m_1C));
+	x = &x->operator==(reinterpret_cast<bool &>(m_20));
+	x = ((XferHelperFn)XferObjectID)(((XferHelperFn)XferFXTrigger)(&x->operator==(reinterpret_cast<float &>(m_24)), &m_28), &m_2C);
+	x = &x->operator==(reinterpret_cast<Coord3DBase &>(m_30));
+	x = &x->operator==(reinterpret_cast<float &>(m_3C));
+	x = &x->operator==(reinterpret_cast<float &>(m_40));
+	x = &x->operator==(reinterpret_cast<float &>(m_44));
+	x = &x->operator==(reinterpret_cast<float &>(m_48));
 	if (version.m_version >= 2)
-		xfer->xferSlot36(&m_21);
+		xfer->operator==(reinterpret_cast<bool &>(m_21));
 	if (version.m_version >= 3)
-		xfer->xferSlot28(&m_64);
+		xfer->operator==(reinterpret_cast<float &>(m_64));
 }

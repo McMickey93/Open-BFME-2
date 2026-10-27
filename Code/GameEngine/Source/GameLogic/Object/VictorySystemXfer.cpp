@@ -30,51 +30,34 @@ struct XferVersionFields
 	UnsignedByte m_currentVersion;
 };
 
-union XferVersion
-{
-	XferVersionFields m_fields;
-	UnsignedInt m_value;
-};
 
 class Snapshot;
 
-class Xfer
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	virtual void slot00();
-	virtual Bool IsLoading() const;
-	virtual Bool IsStoring() const;
-	virtual void slot03();
-	virtual Bool IsLightCRC() const;
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void xferUser(void *data, UnsignedInt size);
-	virtual void xferVersion(XferVersion *version);
-	virtual void slot11();
-	virtual void xferSnapshot(Snapshot *snapshot);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void xferReal(Real *value);
-	virtual void slot29();
-	virtual void xferUnsignedInt(UnsignedInt *value);
- virtual void xferInt(Int *value);
- virtual void slot32(); virtual void slot33(); virtual void slot34(); virtual void slot35();
- virtual void xferBool(Bool *value);
+	union {
+		XferVersionFields m_fields;
+		UnsignedInt m_value;
+	};
 };
 extern Debug *theDebug;
 class VictoryTransferStreamView {public:
@@ -156,21 +139,21 @@ private:
 void VictorySystem::DoXfer(Xfer *xfer)
 {
 	UnsignedInt gridCount;
-	XferVersion version;
+	Xfer::Version version;
 	version.m_fields.m_version = 1;
 	version.m_fields.m_currentVersion = 1;
-	xfer->xferVersion(&version);
+	xfer->operator==(version);
 
-	xfer->xferBool(&m_initialized);
-	xfer->xferReal(&m_cellSize);
-	xfer->xferUnsignedInt(&m_field10);
-	xfer->xferReal(&m_firstScale);
-	xfer->xferReal(&m_secondScale);
-	xfer->xferReal(&m_field1c);
-	xfer->xferReal(&m_field20);
+	xfer->operator==(m_initialized);
+	xfer->operator==(m_cellSize);
+	xfer->operator==(m_field10);
+	xfer->operator==(m_firstScale);
+	xfer->operator==(m_secondScale);
+	xfer->operator==(m_field1c);
+	xfer->operator==(m_field20);
 
 	m_rootCell.rva00404AB1(xfer);
-	xfer->xferUser(m_playerParameterIndex, 0x50);
+	xfer->XferRawBytes(m_playerParameterIndex, 0x50);
 
 	if (xfer->IsLightCRC())
 		return;
@@ -182,7 +165,7 @@ void VictorySystem::DoXfer(Xfer *xfer)
   parameters.erase(parameters.begin(), parameters.end());
 
 		UnsignedInt parameterCount = 0;
-		xfer->xferUnsignedInt(&parameterCount);
+		xfer->operator==(parameterCount);
 		for (UnsignedInt index = 0; index < parameterCount; ++index)
 		{
 			BfmeStringRecord00404BF3 parameters;
@@ -194,7 +177,7 @@ void VictorySystem::DoXfer(Xfer *xfer)
 	else if (xfer->IsStoring())
 	{
 		UnsignedInt parameterCount = m_factionVictoryParameters.size();
-		xfer->xferUnsignedInt(&parameterCount);
+		xfer->operator==(parameterCount);
 		for (UnsignedInt index = 0;
 				index < m_factionVictoryParameters.size(); ++index)
 		{
@@ -204,7 +187,7 @@ void VictorySystem::DoXfer(Xfer *xfer)
 	}
 
 	gridCount = 2;
-	xfer->xferUnsignedInt(&gridCount);
+	xfer->operator==(gridCount);
 	if (gridCount != 2)
 	{
 		_bfme_debugRecordCallsite(1);

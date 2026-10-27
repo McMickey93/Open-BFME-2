@@ -28,12 +28,6 @@ class Object;
 
 typedef unsigned int UnsignedInt;
 
-struct XferVersion
-{
-	unsigned char m_version;
-	unsigned char m_currentVersion;
-	unsigned short m_pad;
-};
 
 struct XferException
 {
@@ -41,56 +35,31 @@ struct XferException
 	int tag;
 };
 
-class Xfer
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	Xfer();
-	virtual ~Xfer();
-
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-
-	virtual void slot05() = 0;
-	virtual void slot06() = 0;
-	virtual void slot07() = 0;
-	virtual void slot08();
-	virtual void slot09();
-
-	virtual Xfer &xferVersion(XferVersion *version);
-
-	virtual void slot11() = 0;
-	virtual void slot12() = 0;
-	virtual void slot13() = 0;
-	virtual void slot14() = 0;
-	virtual void slot15() = 0;
-	virtual void slot16() = 0;
-	virtual void slot17() = 0;
-	virtual void slot18() = 0;
-	virtual void slot19() = 0;
-	virtual void slot20() = 0;
-	virtual void slot21() = 0;
-	virtual void slot22() = 0;
-	virtual void slot23() = 0;
-	virtual void slot24() = 0;
-	virtual void slot25() = 0;
-	virtual void slot26() = 0;
-
-	virtual Xfer &xferAsciiString(AsciiString &value);
-
-	virtual void slot28() = 0;
-	virtual void slot29() = 0;
-
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-	virtual Xfer &xferInt(int &value);
-
-	virtual void slot32() = 0;
-	virtual void slot33() = 0;
-	virtual void slot34() = 0;
-	virtual void slot35() = 0;
-
-	virtual Xfer &xferBool(bool &value);
+	unsigned char m_version;
+	unsigned char m_currentVersion;
+	unsigned short m_pad;
 };
 
 class Rva00297360Element
@@ -223,10 +192,10 @@ namespace _STL { template <> void vector<Rva00297360Element,_STL::allocator<Rva0
 void AttributeModifierPoolUpdate::xfer(Xfer *xfer)
 {
 	int storeCount;
-	XferVersion version;
+	Xfer::Version version;
 	version.m_version = 1;
 	version.m_currentVersion = 3;
-	xfer->xferVersion(&version);
+	xfer->operator==(version);
 	if (xfer->IsLoading()) {
 		Rva002983DAVector *vec = reinterpret_cast<Rva002983DAVector *>(&m_modifiers);
 
@@ -234,7 +203,7 @@ void AttributeModifierPoolUpdate::xfer(Xfer *xfer)
 		Rva00297360Element *first = vec->m_start;
 		vec->EraseRange(first, last);
 		int count = 0;
-		xfer->xferInt(count);
+		xfer->operator==(count);
 		for (int i = 0; i < count; ++i) {
 			Rva00368270 tmp(0, AsciiString(""));
 			reinterpret_cast<Rva004031F3 *>(&tmp)->rva004031F3(
@@ -244,7 +213,7 @@ void AttributeModifierPoolUpdate::xfer(Xfer *xfer)
 	} else {
 		{
 		storeCount = (int)(m_modifiers.end()-m_modifiers.begin());
-		xfer->xferInt(storeCount);
+		xfer->operator==(storeCount);
 		}
 		Rva002983DAVector *vec = reinterpret_cast<Rva002983DAVector *>(&m_modifiers);
 		for (Rva00297360Element *cur = vec->m_start; cur != vec->m_finish; ++cur) {
@@ -257,8 +226,8 @@ void AttributeModifierPoolUpdate::xfer(Xfer *xfer)
 		unsigned int *tail = reinterpret_cast<unsigned int *>(m_poolCounts);
 		int n = 15;
 		do {
-			xfer->xferUnsignedInt(*reinterpret_cast<UnsignedInt *>((char *)tail - 0x3C));
-			xfer->xferInt(*reinterpret_cast<int *>(tail));
+			xfer->operator==(*reinterpret_cast<UnsignedInt *>((char *)tail - 0x3C));
+			xfer->operator==(*reinterpret_cast<int *>(tail));
 			++tail;
 		} while (--n != 0);
 	}

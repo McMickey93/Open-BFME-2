@@ -12,30 +12,32 @@
 // slot (+8) the way retail does.
 typedef unsigned char UnsignedByte;
 
-class XferVersion
+
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	XferVersion(UnsignedByte first, UnsignedByte version) : m_first(first), m_version(version) {}
+	Version(UnsignedByte first, UnsignedByte version) : m_first(first), m_version(version) {}
 	UnsignedByte m_first;
 	UnsignedByte m_version;
-};
-
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool slot1(); virtual bool slot2(); virtual bool slot3();
-	virtual bool isLightCRC();
-	virtual void slot5(); virtual void slot6(); virtual void slot7(); virtual void slot8(); virtual void slot9();
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual void slot11(); virtual void slot12(); virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18(); virtual void slot19(); virtual void slot20();
-	virtual void slot21(); virtual void slot22(); virtual void slot23(); virtual void slot24(); virtual void slot25();
-	virtual void slot26(); virtual void slot27();
-	virtual Xfer &xferSlot28(void *value);
-	virtual void slot29(); virtual void slot30(); virtual void slot31(); virtual void slot32(); virtual void slot33();
-	virtual void slot34(); virtual void slot35();
-	virtual Xfer &xferSlot36(void *value);
 };
 
 class UpdateModule
@@ -65,12 +67,12 @@ private:
 void SpecialDisguiseUpdate::xfer(Xfer *xfer)
 {
 	UpdateModule::xfer(xfer);
-	if (xfer->isLightCRC())
+	if (xfer->IsLightCRC())
 		return;
-	XferVersion version(1, 2);
-	xfer->xferVersion(&version);
-	xfer->xferSlot36(&m_90);
-	xfer->xferSlot28(&m_8C);
+	Xfer::Version version(1, 2);
+	xfer->operator==(version);
+	xfer->operator==(reinterpret_cast<bool &>(m_90));
+	xfer->operator==(reinterpret_cast<float &>(m_8C));
 	if (version.m_version >= 2)
 		SpecialAbilityUpdate::xfer(xfer);
 }

@@ -52,6 +52,7 @@ class FXList;
 // Coord3D: shared header/view; no private copy.
 #define COORD3D_VIEW_INLINE
 #include "../../../../../Libraries/Include/Lib/Coord3DCtorView.h"
+#include "../../../../../Libraries/Include/Lib/Coord3DBase.h"
 // bfme link decl-only begin
 namespace _STL { template <> Coord3D * __copy_backward<Coord3D *, Coord3D *, int>(Coord3D *, Coord3D *, Coord3D *, random_access_iterator_tag const &, int *); }
 namespace _STL { template <> void fill<Coord3D *, Coord3D>(Coord3D *, Coord3D *, Coord3D const &); }
@@ -96,52 +97,8 @@ class Snapshot;
 
 // MSVC lists a virtual's overloads in reverse declaration order, so
 // operator==(Version &) is slot 0x28 and operator==(bool &) slot 0x90.
-class Xfer
-{
-public:
-	class Version;
-
-	virtual ~Xfer();
-
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-
-	virtual void v5() = 0;
-	virtual void v6() = 0;
-	virtual void v7() = 0;
-
-	virtual void SkipBadBlock(Snapshot &snapshot, unsigned int size);
-	virtual Xfer &XferRawBytes(void *data, unsigned int size);
-	virtual Xfer &operator==(bool &value);
-	virtual Xfer &operator==(char &value);
-	virtual Xfer &operator==(unsigned char &value);
-	virtual Xfer &operator==(short &value);
-	virtual Xfer &operator==(unsigned short &value);
-	virtual Xfer &operator==(int &value);
-	virtual Xfer &operator==(unsigned int &value);
-	virtual Xfer &operator==(__int64 &value);
-	virtual Xfer &operator==(float &value);
-	virtual Xfer &operator==(AsciiString &value);
-	virtual Xfer &operator==(UnicodeString &value);
-	virtual Xfer &operator==(PooledString &value);
-	virtual Xfer &operator==(Coord3D &value);
-	virtual Xfer &operator==(ICoord3D &value);
-	virtual Xfer &operator==(Region3D &value);
-	virtual Xfer &operator==(IRegion3D &value);
-	virtual Xfer &operator==(Coord2D &value);
-	virtual Xfer &operator==(ICoord2D &value);
-	virtual Xfer &operator==(Region2D &value);
-	virtual Xfer &operator==(IRegion2D &value);
-	virtual Xfer &operator==(RealRange &value);
-	virtual Xfer &operator==(RGBColor &value);
-	virtual Xfer &operator==(RGBAColorReal &value);
-	virtual Xfer &operator==(RGBAColorInt &value);
-	virtual Xfer &operator==(Snapshot &value);
-	virtual Xfer &operator==(XferUnknown11 &value) = 0;
-	virtual Xfer &operator==(Version &value);
-};
+struct Coord3DBase;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class Xfer::Version
 {
@@ -343,7 +300,7 @@ void OilSpillUpdate::xfer(Xfer *xfer)
 	{
 		Coord3D pos;
 		pos.set(&crumbs[i]);
-		*xfer == pos;
+		*xfer == asBase(pos);
 		if (xfer->IsLoading())
 			crumbs[i] = pos;
 	}

@@ -33,53 +33,32 @@ enum ObjectID
 
 // Version block (read-back version then the writer's version); retail's
 // frame places it as a four-byte object (BFME 1 donor note).
-struct XferVersionBlock
+
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
+public:
 	unsigned char m_version;
 	unsigned char m_currentVersion;
 	unsigned short m_unmodelled02;
-};
-
-class Xfer
-{
-public:
-	virtual void v00();
-	virtual Bool isLoading();			// +0x04
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void v06();
-	virtual void v07();
-	virtual void v08();
-	virtual void v09();
-	virtual void xferVersion(XferVersionBlock *version);	// +0x28
-	virtual void v11();
-	virtual void v12();
-	virtual void v13();
-	virtual void v14();
-	virtual void v15();
-	virtual void v16();
-	virtual void v17();
-	virtual void v18();
-	virtual void v19();
-	virtual void v20();
-	virtual void v21();
-	virtual void v22();
-	virtual void v23();
-	virtual void xferCoord3D(Coord3D *value);	// +0x60
-	virtual void v25();
-	virtual void v26();
-	virtual void xferAsciiString(AsciiString *value);	// +0x6C
-	virtual void xferReal(Real *value);		// +0x70
-	virtual void v29();
-	virtual void xferUnsignedInt(UnsignedInt *value);	// +0x78
-	virtual void xferInt(Int *value);		// +0x7C
-	virtual void v32();
-	virtual void v33();
-	virtual void v34();
-	virtual void v35();
-	virtual void xferBool(Bool *value);		// +0x90
 };
 
 void XferAICommandType(Xfer *xfer, int *value);
@@ -232,27 +211,27 @@ private:
 
 void Rva0026AFDAMember::doXfer(Xfer *xfer)
 {
-	XferVersionBlock version;
+	Xfer::Version version;
 	version.m_version = 1;
 	version.m_currentVersion = 2;
-	xfer->xferVersion(&version);
+	xfer->operator==(version);
 
 	XferAICommandType(xfer, &m_cmd);
 	XferCommandSourceType(xfer, &m_cmdSource);
-	xfer->xferCoord3D(&m_pos);
+	xfer->operator==(reinterpret_cast<Coord3DBase &>(m_pos));
 	XferObjectID(xfer, &m_obj);
 	XferObjectID(xfer, &m_otherObj);
-	xfer->xferAsciiString(&m_teamName);
-	xfer->xferAsciiString(&m_teamOwner);
+	xfer->operator==(m_teamName);
+	xfer->operator==(m_teamOwner);
 	Int numCoords = m_coords.size();
-	xfer->xferInt(&numCoords);
+	xfer->operator==(numCoords);
 	Int i;
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		for (i = 0; i < numCoords; i++)
 		{
 			Coord3D pos;
-			xfer->xferCoord3D(&pos);
+			xfer->operator==(reinterpret_cast<Coord3DBase &>(pos));
 			m_coords.push_back(pos);
 		}
 	}
@@ -264,43 +243,43 @@ void Rva0026AFDAMember::doXfer(Xfer *xfer)
 			pos.x = m_coords[i].x;
 			pos.y = m_coords[i].y;
 			pos.z = m_coords[i].z;
-			xfer->xferCoord3D(&pos);
+			xfer->operator==(reinterpret_cast<Coord3DBase &>(pos));
 		}
 	}
 
 	UnsignedInt id = INVALID_WAYPOINT_ID;
 	if (m_waypoint)
 		id = m_waypoint->getID();
-	xfer->xferUnsignedInt(&id);
-	Bool loading = xfer->isLoading();
+	xfer->operator==(id);
+	Bool loading = xfer->IsLoading();
 	if (loading && id != INVALID_WAYPOINT_ID)
 		m_waypoint = TheTerrainLogic->getWaypointByID(id);
 
 	AsciiString triggerName;
 	if (m_polygon)
 		triggerName = m_polygon->getTriggerName();
-	xfer->xferAsciiString(&triggerName);
-	if (xfer->isLoading())
+	xfer->operator==(triggerName);
+	if (xfer->IsLoading())
 	{
 		if (!triggerName.isEmpty())
 			m_polygon = TheTerrainLogic->getTriggerAreaByName(triggerName);
 	}
 
-	xfer->xferInt(&m_intValue);
+	xfer->operator==(m_intValue);
 	if (version.m_currentVersion >= 2)
-		xfer->xferReal(&m_real3C);
+		xfer->operator==(m_real3C);
 
 	m_damage.xfer(xfer);
 
 	AsciiString cmdName;
 	if (m_commandButton)
 		cmdName = m_commandButton->getName();
-	xfer->xferAsciiString(&cmdName);
+	xfer->operator==(cmdName);
 	if (!cmdName.isEmpty() && m_commandButton == 0)
 		m_commandButton = TheControlBar->findCommandButton(cmdName);
 
 	Bool hasPath = m_path != 0;
-	xfer->xferBool(&hasPath);
+	xfer->operator==(hasPath);
 	if (hasPath && m_path == 0)
 		m_path = new Path;
 	if (hasPath)

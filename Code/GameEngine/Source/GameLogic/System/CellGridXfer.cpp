@@ -18,46 +18,33 @@ struct XferVersionFields
 	UnsignedByte m_currentVersion;
 };
 
-union XferVersion
-{
-	XferVersionFields m_fields;
-	UnsignedInt m_value;
-};
 
-class Xfer
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	virtual void slot00();
-	virtual Bool IsLoading() const;
-	virtual Bool IsStoring() const;
-	virtual void slot03();
-	virtual Bool IsLightCRC() const;
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void xferUser(void *data, UnsignedInt size);
-	virtual void xferVersion(XferVersion *version);
-	virtual void slot11();
-	virtual void xferSnapshot(void *snapshot);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(void *value);
-	virtual void xferReal(Real *value);
-	virtual void slot29();
-	virtual void xferUnsignedInt(UnsignedInt *value);
+	union {
+		XferVersionFields m_fields;
+		UnsignedInt m_value;
+	};
 };
 
 class Rva00404781
@@ -102,10 +89,10 @@ private:
 
 Bool CellGrid::rva0056C50E(Xfer *xfer)
 {
-	XferVersion version;
+	Xfer::Version version;
 	version.m_fields.m_version = 1;
 	version.m_fields.m_currentVersion = 1;
-	xfer->xferVersion(&version);
+	xfer->operator==(version);
 
 	UnsignedInt cellCount = m_cellCount;
 	UnsignedInt cellIndex;
@@ -117,11 +104,11 @@ Bool CellGrid::rva0056C50E(Xfer *xfer)
 		Real cellSize = m_cellSize;
 		Real offset = m_offset;
 
-		xfer->xferUnsignedInt(reinterpret_cast<UnsignedInt *>(&width));
-		xfer->xferUnsignedInt(reinterpret_cast<UnsignedInt *>(&height));
-		xfer->xferUnsignedInt(&cellCount);
-		xfer->xferReal(&cellSize);
-		xfer->xferReal(&offset);
+		xfer->operator==(*reinterpret_cast<UnsignedInt *>(&width));
+		xfer->operator==(*reinterpret_cast<UnsignedInt *>(&height));
+		xfer->operator==(cellCount);
+		xfer->operator==(cellSize);
+		xfer->operator==(offset);
 
 		mismatch = m_width != width || m_height != height ||
 			m_cellCount != cellCount || m_cellSize != cellSize ||
@@ -129,11 +116,11 @@ Bool CellGrid::rva0056C50E(Xfer *xfer)
 	}
 	else
 	{
-		xfer->xferUnsignedInt(reinterpret_cast<UnsignedInt *>(&m_width));
-		xfer->xferUnsignedInt(reinterpret_cast<UnsignedInt *>(&m_height));
-		xfer->xferUnsignedInt(&m_cellCount);
-		xfer->xferReal(&m_cellSize);
-		xfer->xferReal(&m_offset);
+		xfer->operator==(*reinterpret_cast<UnsignedInt *>(&m_width));
+		xfer->operator==(*reinterpret_cast<UnsignedInt *>(&m_height));
+		xfer->operator==(m_cellCount);
+		xfer->operator==(m_cellSize);
+		xfer->operator==(m_offset);
 	}
 
 	if (mismatch)
@@ -142,11 +129,11 @@ Bool CellGrid::rva0056C50E(Xfer *xfer)
 		{
 			for (Int playerIndex = 0; playerIndex < 20; ++playerIndex)
 			{
-				xfer->xferReal(&m_cells[0].m_first[0]);
-				xfer->xferReal(&m_cells[0].m_second[0]);
+				xfer->operator==(m_cells[0].m_first[0]);
+				xfer->operator==(m_cells[0].m_second[0]);
 			}
-			xfer->xferUnsignedInt(&m_cells[0].m_firstMask);
-			xfer->xferUnsignedInt(&m_cells[0].m_secondMask);
+			xfer->operator==(m_cells[0].m_firstMask);
+			xfer->operator==(m_cells[0].m_secondMask);
 		}
 	}
 	else
@@ -155,11 +142,11 @@ Bool CellGrid::rva0056C50E(Xfer *xfer)
 		{
 			for (Int playerIndex = 0; playerIndex < 20; ++playerIndex)
 			{
-				xfer->xferReal(&m_cells[cellIndex].m_first[playerIndex]);
-				xfer->xferReal(&m_cells[cellIndex].m_second[playerIndex]);
+				xfer->operator==(m_cells[cellIndex].m_first[playerIndex]);
+				xfer->operator==(m_cells[cellIndex].m_second[playerIndex]);
 			}
-			xfer->xferUnsignedInt(&m_cells[cellIndex].m_firstMask);
-			xfer->xferUnsignedInt(&m_cells[cellIndex].m_secondMask);
+			xfer->operator==(m_cells[cellIndex].m_firstMask);
+			xfer->operator==(m_cells[cellIndex].m_secondMask);
 		}
 
 		if (xfer->IsLoading())

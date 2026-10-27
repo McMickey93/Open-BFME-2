@@ -9,48 +9,26 @@
 // in EDX before assigning the address-taken transfer local.
 #include <map>
 typedef bool Bool;
-struct XferVersion {unsigned char version,current;};
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferInt(int *value);
-	virtual void slot31();
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual Xfer &xferSlot90(int *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version { public:unsigned char version,current;};
 enum ObjectID
 {
 	INVALID_ID = 0
@@ -65,15 +43,15 @@ __forceinline unsigned listSize(InvisibilityListNode*head){unsigned n=0;for(Invi
 class Rva00439E0C {public:void rva00438FF4(Xfer*);unsigned word0;InvisibilityTreeNode*header;int count;};
 void Rva00439E0C::rva00438FF4(Xfer*xfer){
  int size=count;
- xfer->xferInt(&size);
+ xfer->operator==(reinterpret_cast<unsigned &>(size));
  for(InvisibilityTreeNode*i=header->left;i!=header;i=(InvisibilityTreeNode*)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base*)i)){
   ObjectID id=i->id;
   XferObjectID(xfer,&id);
-  xfer->xferInt(&i->expiry);
-  xfer->xferInt(&i->refresh);
-  xfer->xferInt(&i->other);
+  xfer->operator==(reinterpret_cast<unsigned &>(i->expiry));
+  xfer->operator==(reinterpret_cast<unsigned &>(i->refresh));
+  xfer->operator==(reinterpret_cast<unsigned &>(i->other));
   int n=listSize(i->list);
-  xfer->xferInt(&n);
+  xfer->operator==(reinterpret_cast<unsigned &>(n));
   for(InvisibilityListNode*j=i->list->next;j!=i->list;j=j->next)
    reinterpret_cast<Rva004382FC*>(j+1)->rva00438758(reinterpret_cast<Rva00438758Interface*>(xfer));
  }

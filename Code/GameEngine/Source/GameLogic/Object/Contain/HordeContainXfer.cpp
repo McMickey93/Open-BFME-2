@@ -67,6 +67,7 @@ static inline bool operator!=(const _List_iterator<T, Traits>& a,
 #include <vector>
 #include "ascii_string.h"
 #include "Lib/Coord3D.h"
+#include "Lib/Coord3DBase.h"
 // vector<int> fill/insert otherwise instantiates the _Construct<int,int>
 // COMDAT (one byte shape per TU flags); a file-static overload takes those
 // calls instead so this TU emits no external copy.
@@ -124,52 +125,9 @@ class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
 
-class Xfer
-{
-public:
-	class Version;
-
-	virtual ~Xfer();
-
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-
-	virtual void v5() = 0;
-	virtual void v6() = 0;
-	virtual void v7() = 0;
-
-	virtual void SkipBadBlock(Snapshot &snapshot, unsigned int size);
-	virtual Xfer &XferRawBytes(void *data, unsigned int size);
-	virtual Xfer &operator==(bool &value);
-	virtual Xfer &operator==(char &value);
-	virtual Xfer &operator==(unsigned char &value);
-	virtual Xfer &operator==(short &value);
-	virtual Xfer &operator==(unsigned short &value);
-	virtual Xfer &operator==(int &value);
-	virtual Xfer &operator==(unsigned int &value);
-	virtual Xfer &operator==(__int64 &value);
-	virtual Xfer &operator==(float &value);
-	virtual Xfer &operator==(AsciiString &value);
-	virtual Xfer &operator==(UnicodeString &value);
-	virtual Xfer &operator==(PooledString &value);
-	virtual Xfer &operator==(Coord3D &value);
-	virtual Xfer &operator==(ICoord3D &value);
-	virtual Xfer &operator==(Region3D &value);
-	virtual Xfer &operator==(IRegion3D &value);
-	virtual Xfer &operator==(Coord2D &value);
-	virtual Xfer &operator==(ICoord2D &value);
-	virtual Xfer &operator==(Region2D &value);
-	virtual Xfer &operator==(IRegion2D &value);
-	virtual Xfer &operator==(RealRange &value);
-	virtual Xfer &operator==(RGBColor &value);
-	virtual Xfer &operator==(RGBAColorReal &value);
-	virtual Xfer &operator==(RGBAColorInt &value);
-	virtual Xfer &operator==(Snapshot &value);
-	virtual Xfer &operator==(XferUnknown11 &value) = 0;
-	virtual Xfer &operator==(Version &value);
-};
+class AsciiString;
+struct Coord3DBase;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class Xfer::Version
 {
@@ -501,7 +459,7 @@ void HordeContain::xfer(Xfer *xfer)
 	*xfer == m_27C;
 	*xfer == m_280;
 	*xfer == m_284;
-	(*xfer == m_2B8) == m_2C4;
+	(*xfer == asBase(m_2B8)) == m_2C4;
 	*xfer == m_290;
 	*xfer == m_294;
 	m_124.xfer(xfer);
@@ -515,7 +473,7 @@ void HordeContain::xfer(Xfer *xfer)
 			Int id = (*it).first;
 			Rva00469155 info = (*it).second;
 			XferObjectID(xfer, (ObjectID *)&id);
-			*xfer == info.m_pos;
+			*xfer == asBase(info.m_pos);
 			*xfer == info.m_value;
 		}
 	}
@@ -528,7 +486,7 @@ void HordeContain::xfer(Xfer *xfer)
 			Rva00469155 info;
 			Int id;
 			XferObjectID(xfer, (ObjectID *)&id);
-			*xfer == info.m_pos;
+			*xfer == asBase(info.m_pos);
 			*xfer == info.m_value;
 			m_1A0.rva00473F81(id) = info;
 		}
@@ -615,7 +573,7 @@ void HordeContain::xfer(Xfer *xfer)
 	if (version.m_minimum >= 6)
 	{
 		*xfer == m_304;
-		*xfer == m_2F8;
+		*xfer == asBase(m_2F8);
 	}
 	if (version.m_minimum >= 7)
 		XferObjectID(xfer, &m_2F0);
