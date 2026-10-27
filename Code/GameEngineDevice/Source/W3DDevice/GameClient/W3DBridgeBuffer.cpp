@@ -80,6 +80,7 @@ struct BridgeTriangle
 class Rva0027C36A
 {
 public:
+	Rva0027C36A();
 	Coord3D from; // +0x00
 	Coord3D to; // +0x0C
 	float bridgeWidth; // +0x18
@@ -225,7 +226,47 @@ class Dict;
 // The verified target clear methods locate it at +0x104 in a 0x114-byte bridge.
 typedef bool Bool;
 
-class BfmeDynamicNativeVB
+extern void BFME_DX8_Thread_Lock(void);
+extern void BFME_DX8_Thread_Assert(void);
+
+class BFMEDX8DeviceLock
+{
+public:
+	BFMEDX8DeviceLock() { BFME_DX8_Thread_Lock(); }
+	~BFMEDX8DeviceLock() { BFME_DX8_Thread_Assert(); }
+};
+
+class IndexBufferClass
+{
+public:
+	class WriteLockClass
+	{
+		BFMEDX8DeviceLock device_lock;
+		unsigned short *indices;
+		IndexBufferClass *index_buffer;
+	public:
+		WriteLockClass(IndexBufferClass *index_buffer, int flags = 0);
+		~WriteLockClass();
+		unsigned short *Get_Index_Array() { return indices; }
+	};
+};
+
+class VertexBufferClass
+{
+public:
+	class WriteLockClass
+	{
+		BFMEDX8DeviceLock device_lock;
+		void *Vertices;
+		VertexBufferClass *VertexBuffer;
+	public:
+		WriteLockClass(VertexBufferClass *vertex_buffer, int flags = 0);
+		~WriteLockClass();
+		void *Get_Vertex_Array() { return Vertices; }
+	};
+};
+
+class BfmeDynamicNativeVB : public VertexBufferClass
 {
 public:
 	BfmeDynamicNativeVB(unsigned int fvf, unsigned short count, unsigned int usage, unsigned int size);
@@ -233,7 +274,7 @@ private:
 	unsigned char m_pad[0x20];
 };
 
-class DX8IndexBufferClass
+class DX8IndexBufferClass : public IndexBufferClass
 {
 public:
 	enum UsageType
@@ -406,8 +447,9 @@ public:
 #define G(n) virtual void gap##n();
 	G(00) G(01) G(02) G(03) G(04) G(05) G(06) G(07) G(08) G(09) G(0A) G(0B) G(0C) G(0D) G(0E) G(0F)
 	G(10) G(11) G(12) G(13) G(14) G(15) G(16) G(17) G(18) G(19) G(1A) G(1B) G(1C) G(1D) G(1E) G(1F)
-	G(20) G(21) G(22) G(23) G(24) G(25) G(26) G(27) G(28) G(29) G(2A) G(2B) G(2C) G(2D) G(2E) G(2F)
-	G(30)
+	G(20) G(21) G(22) G(23) G(24) G(25) G(26) G(27) G(28) G(29) G(2A) G(2B) G(2C) G(2D)
+	virtual void addBridgeToLogic(Rva0027C36A *pInfo, Dict *props, const AsciiString &bridgeTemplateName); // +0xB8
+	G(2F) G(30)
 #undef G
 	virtual void updateBridgeDamageStates(void); // +0xC4
 };
@@ -421,19 +463,19 @@ public:
 	void addBridge(Vector3 fromLeft, Vector3 fromRight, AsciiString name, W3DTerrainLogic *pTerrainLogic, Dict *props);
 	void loadBridges(W3DTerrainLogic *pTerrainLogic, bool saveGame);
 private:
-	void *m_vertexBridge;
+	BfmeDynamicNativeVB *m_vertexBridge; // +0x00
 private:
-	void *m_indexBridge;
+	DX8IndexBufferClass *m_indexBridge; // +0x04
 private:
-	int m_08;
+	int m_curNumBridgeVertices; // +0x08
 private:
-	int m_c;
+	int m_curNumBridgeIndices; // +0x0C
 private:
 	W3DBridge m_bridges[200];
 private:
 	int m_numBridges;
 private:
-	unsigned char m_padD7B4;
+	bool m_initialized; // +0xD7B4
 private:
 	unsigned char m_d7b5;
 private:
@@ -484,7 +526,7 @@ void W3DBridgeBuffer::clearAllBridges(void)
 {
 	for (Int i = 0; i < m_numBridges; ++i)
 		m_bridges[i].clearBridge();
-	m_c = 0;
+	m_curNumBridgeIndices = 0;
 	m_numBridges = 0;
 }
 
@@ -597,7 +639,7 @@ int W3DBridge::getModelIndices(unsigned short *destination_ib, int curIndex, int
 void W3DBridgeBuffer::rva000DF745(int first, int second)
 {
 	rva000DD878(first);
-	if (m_d7b6 != 0 || m_c == 0)
+	if (m_d7b6 != 0 || m_curNumBridgeIndices == 0)
 		loadBridgesInVertexAndIndexBuffers((RefRenderObjListIterator *)second);
 	m_d7b5 = 0;
 }
@@ -657,8 +699,8 @@ void W3DBridgeBuffer::allocateBridgeBuffers()
 		((Rva0074011F *)this)->rva0074011F();
 	m_vertexBridge = new BfmeDynamicNativeVB(0x152, 0x1F44, 1, 0);
 	m_indexBridge = new DX8IndexBufferClass(0x3E84, DX8IndexBufferClass::USAGE_DYNAMIC);
-	m_08 = 0;
-	m_c = 0;
+	m_curNumBridgeVertices = 0;
+	m_curNumBridgeIndices = 0;
 }
 
 // tu-skeleton: 0x000DD97F 239B ??0W3DBridge@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeCtor.cpp (not merged yet)
@@ -675,15 +717,15 @@ void W3DBridgeBuffer::allocateBridgeBuffers()
 
 W3DBridgeBuffer::W3DBridgeBuffer()
 {
-	m_padD7B4 = 0;
+	m_initialized = false;
 	m_vertexBridge = 0;
 	m_indexBridge = 0;
-	m_08 = 0;
-	m_c = 0;
+	m_curNumBridgeVertices = 0;
+	m_curNumBridgeIndices = 0;
 	m_numBridges = 0;
 	clearAllBridges();
 	allocateBridgeBuffers();
-	m_padD7B4 = 1;
+	m_initialized = true;
 }
 
 // tu-skeleton: 0x000DE59C 27B ?rva000DE59C@Rva000DE59C@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp (not merged yet)
