@@ -1,4 +1,4 @@
-// cl: /MD
+// cl: /MD /D_CRTIMP=
 // ?rva002CFD61@Rva002CFD61@@QAEXPAURva002CFD61Node@@@Z @0x002CFD61 53B.
 // Tree erase with string cleanup: recurse right via +0xC, clear AsciiString
 // at +0x10 via rowed 0x0048BA39, free node via rowed _free 0x00030830,
@@ -13,7 +13,9 @@ public:
 
 typedef StringBase<char> AsciiString;
 
-extern "C" void __cdecl free(void *block);
+// Retail calls the game's _free at RVA 0x00030830 directly. Keep the CRT
+// header's declaration without dllimport so /MD does not select __imp__free.
+#include <stdlib.h>
 
 struct Rva002CFD61Node
 {
