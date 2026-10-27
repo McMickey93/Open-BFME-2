@@ -1,5 +1,8 @@
-// cl: /Ivendor /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS -Ireference/open-bfme-1/game/GameEngine/Source/Common
+// cl: /Ivendor /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS -Ireference/open-bfme-1/game/GameEngine/Source/Common /Ireference/shims/bfme2_ascii
 // stlport
+extern "C" void _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
+#include "ascii_string.h"
 #include <stlport/stl/_algobase.h>
 #include <vector>
 // Eight element copy loops.
@@ -15,25 +18,34 @@
 // across the eight bodies -- 0x38, 0x5C, 0x70, 0x8C, 0xB4 and 0xB8 -- and the
 // three that need a dword displacement for that add are the six bytes longer.
 
-extern "C" void _ReadWriteBarrier(void);
-#pragma intrinsic(_ReadWriteBarrier)
+// The two 12-byte members are vector<Rva0006447DRecord> (0x0006447D) and
+// vector<MixFileCreator::FileInfoStruct> (0x0006454B), whose assignments
+// W3DGhostObject.cpp instantiates. The element views below are spelled as that
+// TU spells them, so this file folds into it unchanged.
+struct Rva00063BB2Element {Rva00063BB2Element();Rva00063BB2Element(const Rva00063BB2Element&);Rva00063BB2Element&operator=(const Rva00063BB2Element&);~Rva00063BB2Element(){}char bytes[36]; bool operator==(const Rva00063BB2Element&)const;};
 
-// LINK: the two 12-byte members are rowed as vector<Rva0006447DRecord> (0x0006447D)
-// and vector<MixFileCreator::FileInfoStruct> (0x0006454B) assignments.
-struct Rva0006447DRecord;
+struct Rva00255D17 { ~Rva00255D17(); };
+
+struct Rva0006447DRecord { Rva0006447DRecord(); Rva0006447DRecord(const Rva0006447DRecord&);
+ __declspec(dllimport) __forceinline ~Rva0006447DRecord() { reinterpret_cast<Rva00255D17*>(this)->~Rva00255D17(); }
+ __declspec(dllimport) __forceinline Rva0006447DRecord&operator=(const Rva0006447DRecord&x) { reinterpret_cast<Rva00063BB2Element*>(this)->operator=(reinterpret_cast<const Rva00063BB2Element&>(x)); return *this; }
+ char bytes[36]; };
+
 class MixFileCreator
 {
 public:
-	struct FileInfoStruct;
+	struct FileInfoStruct
+	{
+		FileInfoStruct();
+		FileInfoStruct(const FileInfoStruct &src);
+		FileInfoStruct &operator=(const FileInfoStruct &src);
+		unsigned long CRC;
+		unsigned long Offset;
+		unsigned long Size;
+		AsciiString Filename;
+	};
 };
-// The assignments are supplied by the existing matched vector units.
-namespace _STL
-{
-template <> vector<Rva0006447DRecord, allocator<Rva0006447DRecord> > &
-vector<Rva0006447DRecord, allocator<Rva0006447DRecord> >::operator=(const vector &);
-template <> vector<MixFileCreator::FileInfoStruct, allocator<MixFileCreator::FileInfoStruct> > &
-vector<MixFileCreator::FileInfoStruct, allocator<MixFileCreator::FileInfoStruct> >::operator=(const vector &);
-}
+
 typedef _STL::vector<Rva0006447DRecord, _STL::allocator<Rva0006447DRecord> > BfmeCopySubA;
 typedef _STL::vector<MixFileCreator::FileInfoStruct, _STL::allocator<MixFileCreator::FileInfoStruct> > BfmeCopySubB;
 
