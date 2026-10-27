@@ -33,6 +33,9 @@ struct BfmeAssignRecord32 {
 // The rowed range erase 0x173FB6 and vector destructor 0x173EBA: called, never emitted here.
 namespace _STL { template <> BfmeAssignRecord32 *vector<BfmeAssignRecord32>::erase(BfmeAssignRecord32 *, BfmeAssignRecord32 *); }
 namespace _STL { template <> vector<BfmeAssignRecord32>::~vector(); }
+// The record's alloc_proxy deallocate has no retail row; its other copies call _free
+// directly, so call the shared copy rather than emit one bound to the 30830 alias.
+namespace _STL { template <> void _STLP_alloc_proxy<BfmeAssignRecord32 *, BfmeAssignRecord32, allocator<BfmeAssignRecord32> >::deallocate(BfmeAssignRecord32 *, size_t); }
 struct Rva00174350MeshView { char opaque00[0x310]; unsigned *slot310; };
 void __cdecl Rva00030830FreeAllocation(void *);
 struct Rva00174753Allocation : private _STL::_Vector_base<int,_STL::allocator<int> > { __declspec(noinline) Rva00174753Allocation() throw(); ~Rva00174753Allocation() {} };
