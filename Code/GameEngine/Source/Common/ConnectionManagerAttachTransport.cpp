@@ -5,8 +5,7 @@
 // the new pointer.
 
 #include "../../Include/GameNetwork/Transport.h"
-
-void __cdecl operator delete(void *block);
+#include <new>
 
 class BFMEConnectionManager
 {

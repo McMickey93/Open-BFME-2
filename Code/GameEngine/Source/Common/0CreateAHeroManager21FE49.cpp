@@ -27,6 +27,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <stdlib.h>
 
 // _Rb_tree_iterator comparisons otherwise instantiate the base-class
 // operator!= COMDAT (one byte shape per TU flags); exact-match free
@@ -184,7 +185,6 @@ public:
     unsigned int m_crc;
     unsigned char m_pad138[8];
 };
-extern "C" void __cdecl free(void *);
 class Rva0040A3F9
 {
 public:

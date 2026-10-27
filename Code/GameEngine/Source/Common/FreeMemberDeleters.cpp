@@ -7,7 +7,7 @@
 // unproven (opaque Rva names). One ledger row per destructor, landed one
 // commit at a time.
 
-extern "C" void free(void *ptr);
+#include <stdlib.h>
 
 class Rva0025BFE3
 {
@@ -171,4 +171,3 @@ void Rva004FCD68::rva004FCD68()
 {
 	((Rva004FCAF6 *)this)->~Rva004FCAF6();
 }
-

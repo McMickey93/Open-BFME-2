@@ -1,4 +1,4 @@
-extern "C" double sqrt(double x);
+#include <math.h>
 
 #pragma intrinsic(sqrt)
 
@@ -36,7 +36,7 @@ float bfmeSignedEJ(const BfmePosEJ *p, BfmeObjEJ *o)
 
 	BfmeDataEJ *b = o->bfmeDataEJ();
 
-	float d = (float)sqrt(s) - b->m_bfmeRadiusEJ;
+	float d = (float)sqrt((double)s) - b->m_bfmeRadiusEJ;
 
 	if (d < 0.0f)
 		return -(d * d);

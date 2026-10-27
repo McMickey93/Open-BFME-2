@@ -6,6 +6,7 @@
 // name and a view of only the members it touches. Callees and globals use the
 // ledger's existing spellings, including private/protected statics reached
 // through a friend view.
+#include <math.h>
 
 class AsciiString;
 struct Coord3D;
@@ -115,11 +116,9 @@ bool rva000628E5()
 }
 
 // --- 0x0006607A (17B): float tangent through the msvcr71 tan thunk.
-extern "C" double __cdecl tan(double x);
-
 float rva0006607A(float x)
 {
-	return (float)tan(x);
+	return (float)tan((double)x);
 }
 
 // --- 0x0006614F (10B) / 0x00066159 (6B): DX8Wrapper's cleanup-hook store

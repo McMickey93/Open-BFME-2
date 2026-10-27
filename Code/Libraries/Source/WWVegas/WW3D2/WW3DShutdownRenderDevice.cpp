@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // BFME1 6583b3c1 WW3D_Shutdown_Bfme.cpp and ZH ww3d.cpp semantic donors.
 // Native1180E0..118166 returns bool and holds the rowed DX8 device lock
 // only around DX8Wrapper::Shutdown125DC0. Movie cleanup117A10 is rowed.
@@ -6,6 +7,9 @@
 // original target public function name remains unproven. Class/global
 // spellings follow the donor while capture/Lite/init slots and cleanup
 // behavior are independently established from target calls and accesses.
+#include <new>
+#include <windows.h>
+
 class FrameGrabClass { public: virtual ~FrameGrabClass(); };
 class StaticSortListClass { public: virtual ~StaticSortListClass(); };
 class RvaWW3DDestroySlot0 { public: virtual void *release(int); };
@@ -18,8 +22,6 @@ public:
 extern unsigned char g_WW3D_Lite;
 struct WW3DStaticSortGlobals { StaticSortListClass *defaultList; StaticSortListClass *currentList; };
 extern WW3DStaticSortGlobals g_WW3D_StaticSortGlobals;
-void __cdecl operator delete(void *);
-extern "C" __declspec(dllimport) unsigned int __stdcall timeEndPeriod(unsigned int);
 void BFME_DX8_Thread_Lock();
 bool BFME_DX8_Thread_Assert();
 struct BfmeDeviceGuard { BfmeDeviceGuard() { BFME_DX8_Thread_Lock(); }

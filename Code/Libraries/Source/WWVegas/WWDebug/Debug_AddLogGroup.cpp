@@ -3,9 +3,6 @@
 
 #include <string.h>
 
-extern "C" __declspec(dllimport) char * __cdecl strrchr(const char *, int);
-extern "C" __declspec(dllimport) char * __cdecl _strlwr(char *);
-
 extern void *DebugAllocMemory(unsigned);
 
 class Debug

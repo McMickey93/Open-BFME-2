@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfmecamera /DNDEBUG /MD /EHsc /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2
+// platformsdk
 // readable body of ?Create_Additional_Swap_Chain@DX8Wrapper@@: Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp
 // readable body of ?_Create_DX8_Surface@DX8Wrapper@@: Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp
 // readable body of ?_Get_DX8_Front_Buffer@DX8Wrapper@@: Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp
@@ -13,6 +14,7 @@
 // they sit together because they need the SAME one -- three of them index the
 // device vtable and one indexes the interface vtable.
 #include <string.h>
+#include <windows.h>
 
 enum WW3DFormat
 {
@@ -24,9 +26,6 @@ enum _D3DPOOL
 	D3DPOOL_DEFAULT_00904CE0
 };
 typedef _D3DPOOL D3DPOOL;
-
-typedef unsigned int UINT;
-typedef long HRESULT;
 
 enum _D3DFORMAT {};
 

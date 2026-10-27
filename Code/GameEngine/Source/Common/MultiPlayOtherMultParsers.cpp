@@ -5,10 +5,10 @@
 // The four array setters are out of line in PC, unlike the money parser.
 // Xbox schemas corroborate roles only; PC bytes and complete ranges are proof.
 // MultiPlayMults is a descriptive donor facade, not a recovered type spelling.
+#include <string.h>
+
 typedef int Int;
 typedef float Real;
-
-extern "C" __declspec(dllimport) int __cdecl _strcmpi( const char *, const char * );
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/INI.h
 class INI

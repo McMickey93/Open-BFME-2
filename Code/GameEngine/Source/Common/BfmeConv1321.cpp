@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 extern void *g_bfmeVftTDA[];
 
 class BfmeSinkTQD
@@ -23,8 +25,6 @@ public:
 	void *m_bfmeItem;
 	unsigned int m_bfmeField10;
 };
-
-extern "C" int __cdecl printf(const char *format, ...);
 
 // Retail 0x006587B0 (13 bytes, int3-bracketed): overwrites its first stack
 // argument with the "%s" literal (0x00BBE494) and tail-jumps to the printf

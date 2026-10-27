@@ -9,9 +9,9 @@
 // callees rowed findObjectByID 0x00049DC5 and isKindOf, IAT floor.
 #include <vector>
 #include <list>
+#include <math.h>
 
 extern float g_Va007C26F0;
-extern "C" __declspec(dllimport) double __cdecl floor(double);
 
 // BaseType.h verbatim: C cast emits out-of-line __ftol2 plus qword shape;
 // retail holds inline fld/fistp so the helper is load-bearing (shape-levers

@@ -8,10 +8,8 @@
 // This address-labelled stdcall view preserves the 12B callee stack pop
 // and comparison result in EAX; ECX is unused. Original name, member/free
 // distinction, return contract and reachability remain unknown.
-// These declarations preserve the two actual call forms: the existing
-// case-insensitive worker calls its IAT, while memcmp uses the CRT thunk.
-extern "C" __declspec(dllimport) int __cdecl _memicmp(const void *, const void *, unsigned);
-extern "C" int __cdecl memcmp(const void *, const void *, unsigned);
+#include <string.h>
+
 int __stdcall rva0000532CCompareBytes(const void *left, const void *right, unsigned count)
 {
  return _memicmp(left, right, count);

@@ -4,7 +4,7 @@
 // the owning classes are not recovered, so each keeps an address-derived name
 // and a view of only the members it touches. Callees are the ledger's
 // existing rows under their current spellings.
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 // --- 0x000B3F75 (15B): address of element `index` in the 0xFC-byte record
 // array whose base pointer is at +0.
