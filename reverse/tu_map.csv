@@ -25862,7 +25862,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0037AF05,131,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037AE4E..0x0037AF88,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037AF88,446,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037AE4E..0x0037B146,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037B146,70,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037AE4E..0x0037B18C,Code/GameEngine/Source/Common/System/Rva0037B146Cleanup.cpp
-0x0037B18C,110,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/System/RecorderClass.cpp,Code/GameEngine/Source/Common/System/RecorderIsMultiplayer.cpp
+0x0037B18C,110,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/System/RecorderClass.cpp,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037B1FA,141,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/RecorderClass.cpp,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037B287,159,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/System/RecorderClass.cpp,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037B326,171,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037B287..0x0037B3D1,Code/GameEngine/Source/Common/Rva0037BCC4.cpp
@@ -25875,9 +25875,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0037B5DF,105,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037B461..0x0037B648,Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp
 0x0037B648,194,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037B461..0x0037B70A,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037B70A,189,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037B461..0x0037B7C7,Code/GameEngine/Source/Common/Rva0037BCC4.cpp
-0x0037B7C7,47,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037B461..0x0037B7F6,Code/GameEngine/Source/Common/System/Rva0037B7C7.cpp
+0x0037B7C7,47,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,C,C=0x0037B461..0x0037B7F6,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037B7F6,478,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/RecorderClass.cpp,Code/GameEngine/Source/Common/Recorder.cpp
-0x0037B9D4,116,code,,,-,,Code/GameEngine/Source/Common/Rva0037B9D4Get.cpp
+0x0037B9D4,116,code,,,-,,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037BA48,26,code,,,-,,Code/GameEngine/Source/Common/System/Rva0037BA48Get.cpp
 0x0037BA62,53,code,,,-,,Code/GameEngine/Source/Common/System/RecorderGetLastReplayDisplayName.cpp
 0x0037BA97,43,code,,,-,,Code/GameEngine/Source/Common/System/Rva0037BA97Finish.cpp
@@ -25887,7 +25887,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0037BB53,69,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,K,K=Rva0037BB53,Code/GameEngine/Source/Common/Rva0037BB53Dtor.cpp
 0x0037BB98,85,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,K,K=Rva0037BBED,Code/GameEngine/Source/Common/Rva0037BCC4.cpp
 0x0037BBED,120,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,K,K=Rva0037BBED,Code/GameEngine/Source/Common/Rva0037BBEDDtor.cpp
-0x0037BC65,67,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,K,K=Rva0037B7C7,Code/GameEngine/Source/Common/System/Rva0037B7C7.cpp
+0x0037BC65,67,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,K,K=Rva0037B7C7,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037BCA8,28,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,K,K=Rva0037BBED,Code/GameEngine/Source/Common/Rva0037BCA8.cpp
 0x0037BCC4,53,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,C,C=0x0037BCA8..0x0037BCF9,Code/GameEngine/Source/Common/Rva0037BCC4.cpp
 0x0037BCF9,22,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,C,C=0x0037BCA8..0x0037BD0F,Code/Libraries/Source/WWVegas/WWLib/stlport_list_int_o1.cpp
@@ -25895,7 +25895,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0037BD2B,29,code,,displaced,-,S=Code/GameEngine/Source/Common/System/FileSystem.cpp N=Code/GameEngine/Source/GameClient/FileSystem.cpp,Code/GameEngine/Source/GameClient/Rva0037BD2BGet.cpp
 0x0037BD48,28,code,Code/GameEngine/Source/Common/Recorder.cpp,proposed,K,K=Rva0037BBED,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB07.cpp
 0x0037BD64,29,code,,displaced,-,S=Code/GameEngine/Source/GameClient/FXList.cpp N=Code/GameEngine/Source/GameClient/FXList.cpp,Code/GameEngine/Source/GameClient/FXListRva0037BD64.cpp
-0x0037BD81,111,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/System/RecorderClass.cpp,Code/GameEngine/Source/Common/System/RecorderInitControls.cpp
+0x0037BD81,111,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/System/RecorderClass.cpp,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037BDF0,37,code,Code/GameEngine/Source/Common/System/BFME2WideConcatTriple.cpp,proposed,N,N=Code/GameEngine/Source/Common/System/BFME2WideConcatTriple.cpp noncontiguous,Code/GameEngine/Source/Common/System/WideConcatPair.cpp
 0x0037BE15,1897,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,S,S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/RecorderClass.cpp,Code/GameEngine/Source/Common/Recorder.cpp
 0x0037C57E,1592,code,Code/GameEngine/Source/Common/Recorder.cpp,approved,Z,Z=Code/GameEngine/Source/Common/Recorder.cpp S=Code/GameEngine/Source/Common/Recorder.cpp N=Code/GameEngine/Source/Common/RecorderClass.cpp,Code/GameEngine/Source/Common/Recorder.cpp

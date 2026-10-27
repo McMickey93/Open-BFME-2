@@ -77,6 +77,7 @@ struct RGBAColorReal;
 struct RGBAColorInt;
 #include "../../Include/Common/BfmeXfer.h"
 #include <list>
+enum { MAX_SLOTS = 8 };
 
 // Bind the close calls to the existing whole 45-byte provider at RVA 0x0060C8CD.
 class Gen009D6DD0 { public: void bfmeClose(); };
@@ -559,11 +560,85 @@ public:
 	Rva0037D076();
 };
 
+extern GameLogic *TheGameLogic;
+
+class Rva0037B7C7
+{
+public:
+	void rva0037B7C7();
+	void rva0037BC65();
+private:
+	char m_pad00[0x10]; // +0x00..+0x0F
+	FILE *m_file10; // +0x10
+	UnicodeString m_str14; // +0x14
+	char m_pad18[0xE70 - 0x18]; // +0x18..+0xE6F
+	unsigned char m_flagE70; // +0xE70
+	char m_padE71[0xE78 - 0xE71]; // +0xE71..+0xE77
+	int m_valE78; // +0xE78
+};
+
+// Retail extent 0x0037BC65..0x0037BCA8, 67 bytes, thiscall RET 0.
+// This uses the same +0xE70/+0xE78 state as the read-next-frame helper above.
+// It clears pending commands, consumes records for the selected frame, then
+// advances the file's frame value. The original method name is unknown.
+// TheGameLogic's +0x40 value and all three calls are read from this body;
+// /arch:SSE enables the retail conditional move when the mode byte is set.
+class GameLogic;
+
+struct RecorderFrameView { char opaque00[0x40]; int frame40; };
+
+class Rva0037B146 { public: void rva0037B146(); };
+
+// Retail's own 20-byte wide string at RVA 0x00818798 (.rdata, file offset
+// 0x00817BD8): "Replays\" in UTF-16 followed by the terminating NUL and the
+// NUL that keeps the array's ten words on retail's own alignment - 20 bytes is
+// the ledger's bound, and the ASCII bytes that follow ("GUI") belong to retail's
+// next literal. The rowed body below concatenates it onto the save-game
+// directory the global data supplies, which is why the suffix is a string and
+// not a code view.
+// Symbol ?g_00C18798@@3QBGB, transcribed below.
+extern const WideChar g_00C18798[] = { 'R', 'e', 'p', 'l', 'a', 'y', 's', '\\', 0, 0 };
+
+class NameKeyGenerator {
+public:
+	NameKeyType nameToKey(const AsciiString &);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class GameWindow {
+public:
+	int winHide(bool);
+};
+
+class GameWindowManager {
+public:
+#define GWM_SLOT(N) virtual void slot##N() = 0;
+	GWM_SLOT(00) GWM_SLOT(01) GWM_SLOT(02) GWM_SLOT(03) GWM_SLOT(04)
+	GWM_SLOT(05) GWM_SLOT(06) GWM_SLOT(07) GWM_SLOT(08) GWM_SLOT(09)
+	GWM_SLOT(10) GWM_SLOT(11) GWM_SLOT(12) GWM_SLOT(13) GWM_SLOT(14)
+	GWM_SLOT(15) GWM_SLOT(16) GWM_SLOT(17) GWM_SLOT(18) GWM_SLOT(19)
+	GWM_SLOT(20) GWM_SLOT(21) GWM_SLOT(22) GWM_SLOT(23) GWM_SLOT(24)
+	GWM_SLOT(25) GWM_SLOT(26) GWM_SLOT(27) GWM_SLOT(28) GWM_SLOT(29)
+	GWM_SLOT(30) GWM_SLOT(31) GWM_SLOT(32) GWM_SLOT(33) GWM_SLOT(34)
+	GWM_SLOT(35) GWM_SLOT(36) GWM_SLOT(37) GWM_SLOT(38) GWM_SLOT(39)
+	GWM_SLOT(40) GWM_SLOT(41) GWM_SLOT(42) GWM_SLOT(43) GWM_SLOT(44)
+	GWM_SLOT(45) GWM_SLOT(46) GWM_SLOT(47) GWM_SLOT(48) GWM_SLOT(49)
+	GWM_SLOT(50) GWM_SLOT(51) GWM_SLOT(52) GWM_SLOT(53) GWM_SLOT(54)
+	GWM_SLOT(55) GWM_SLOT(56) GWM_SLOT(57) GWM_SLOT(58) GWM_SLOT(59)
+#undef GWM_SLOT
+	virtual GameWindow *winGetWindowFromId(GameWindow *window, NameKeyType id) = 0;
+};
+
+extern GameWindowManager *TheWindowManager;
+
 // tu-skeleton: 0x0037ADB6 152B ?logCRCMismatch@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
 
 // tu-skeleton: 0x0037AE4E 148B ?logGameEnd@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
 
 // tu-skeleton: 0x0037AEE2 35B ?rva0037AEE2@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
 // ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
@@ -1223,12 +1298,6 @@ bool Rva0037D96B(const UnicodeString &src, const UnicodeString &dst, const Unico
 	return true;
 }
 
-// tu-skeleton: 0x0037B146 70B ?rva0037B146@Rva0037B146@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B146Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B18C 110B ?isMultiplayer@RecorderClass@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/System/RecorderIsMultiplayer.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B326 171B ?init@Rva0037BBED@@UAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/System/Rva0037B3D1.cpp
 
 // ?reset@Rva0037B3D1@@QAEXXZ retail 0x0037B3D1 38B.
@@ -1263,24 +1332,6 @@ void Rva0037B3F7::rva0037B3F7()
 	TheMessageStream->v18(0x1D);
 }
 
-// tu-skeleton: 0x0037B42D 52B ?stopRecording@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B5DF 105B ??1Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B70A 189B ?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B7C7 47B ?rva0037B7C7@Rva0037B7C7@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B7C7.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B9D4 116B ?Rva0037B9D4Get@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037B9D4Get.cpp (not merged yet)
-
-// tu-skeleton: 0x0037BD81 111B ?initControls@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderInitControls.cpp (not merged yet)
-
-// tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0037CF51 52B (unledgered) -- unmatched, no code, never credited
-
 // ---- from Code/GameEngine/Source/Common/Rva0037D076Ctor.cpp
 
 //
@@ -1297,6 +1348,114 @@ Rva0037D076::Rva0037D076()
 	m_b1 = 0;
 	m_b0 = 0;
 }
+
+// tu-skeleton: 0x0037B146 70B ?rva0037B146@Rva0037B146@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B146Cleanup.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/RecorderIsMultiplayer.cpp
+
+// ?isMultiplayer@RecorderClass@@QAE_NXZ
+Bool RecorderClass::isMultiplayer(void)
+{
+	if (m_mode == RECORDERMODETYPE_PLAYBACK)
+	{
+		for (Int i = 0; i < MAX_SLOTS; ++i)
+		{
+			GameSlot *slot = m_gameInfo.getSlot(i);
+			if (slot && slot->isOccupied())
+				return true;
+		}
+	}
+	GameLogic *game = TheGameLogic;
+	Int mode = game->m_110;
+	if (mode == 0 || mode == 6)
+		return false;
+	if (game->rva00085124())
+		return false;
+	if (game->m_114 != 3)
+		return true;
+	if (TheNetwork || (*(GameInfo * *)&TheSkirmishGameInfo))
+		return true;
+	return false;
+}
+
+// tu-skeleton: 0x0037B326 171B ?init@Rva0037BBED@@UAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
+
+// tu-skeleton: 0x0037B42D 52B ?stopRecording@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
+
+// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
+
+// tu-skeleton: 0x0037B5DF 105B ??1Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0037B70A 189B ?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/Rva0037B7C7.cpp
+
+// ?rva0037B7C7@Rva0037B7C7@@QAEXXZ retail 0x0037B7C7 47B.
+// Fread-into-+0xE78 helper: fread 4x1 from FILE at +0x10 into int at +0xE78; on success return else set -1 and tail-jmp rowed 0x0037B3F7.
+// Evidence: IAT fread plus rowed 0x0037B3F7 callee; callers 0x0037BC98 0x0037D337; neighbours Rva0037B5DFDtor and Rva0037B9D4Get same flags.
+
+void Rva0037B7C7::rva0037B7C7()
+{
+	if (fread(&m_valE78, 4, 1, m_file10) == 1)
+		return;
+	m_valE78 = -1;
+	return ((Rva0037B3F7 *)this)->rva0037B3F7();
+}
+
+	// 0x0037B7F6
+void Rva0037B7C7::rva0037BC65()
+{
+    int frame = reinterpret_cast<const RecorderFrameView *>(TheGameLogic)->frame40;
+    reinterpret_cast<Rva0037B146 *>(this)->rva0037B146();
+    if (m_valE78 == -1) return;
+    if (m_flagE70) frame = m_valE78;
+    while (m_valE78 == frame) {
+        reinterpret_cast<RecorderClass *>(this)->appendNextCommand();
+        rva0037B7C7();
+    }
+}
+
+// ---- from Code/GameEngine/Source/Common/Rva0037B9D4Get.cpp
+
+UnicodeString Rva0037B9D4Get()
+{
+    UnicodeString wtmp(TheWritableGlobalData->rva002360DE());
+    wtmp.concat(g_00C18798);
+    return wtmp;
+}
+
+// ---- from Code/GameEngine/Source/Common/System/RecorderInitControls.cpp
+
+// RecorderClass::initControls, retail 0x0037BD81 (111 B): show or hide the
+// replay controls. Zero Hour Recorder.cpp text; BFME 1 recovers the same body
+// as RecorderClass::initControls (RecorderInitControls_Thunk.cpp, m_mode at
+// +0x18).
+//
+// Target evidence: the only caller, GameLogic at 0x00248307, loads ecx from
+// 0x00A02290 (TheRecorder, created by createRecorder 0x0037BCC4), and the
+// body hides the "ReplayControl.wnd:ParentReplayControl" window unless the
+// dword at this+0x1C is 1 (RECORDERMODETYPE_PLAYBACK). Retail reads the mode
+// field directly, so getMode() is inline here.
+//
+// The GameWindowManager call goes through vtable +0xF0 (winGetWindowFromId)
+// with (parent=0, key); only that slot is modelled.
+
+void RecorderClass::initControls()
+{
+	NameKeyType parentReplayControlID;
+	{
+		AsciiString name("ReplayControl.wnd:ParentReplayControl");
+		parentReplayControlID = TheNameKeyGenerator->nameToKey(name);
+	}
+	GameWindow *parentReplayControl = TheWindowManager->winGetWindowFromId(0, parentReplayControlID);
+
+	if (parentReplayControl != 0)
+		parentReplayControl->winHide(getMode() != RECORDERMODETYPE_PLAYBACK);
+}
+
+// tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0037CF51 52B (unledgered) -- unmatched, no code, never credited
 
 // tu-skeleton: 0x0037D0A7 72B ?rva0037D0A7@Rva0037BBED@@QAEXIH_NI@Z -- matched in Code/GameEngine/Source/Common/Rva0037BCC4DeferredCtorCRC.cpp (not merged yet)
 
@@ -1329,18 +1488,6 @@ Rva0037D076::Rva0037D076()
 // tu-skeleton: 0x0077ED38 25B ?rva0077ed38@@YAXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
 
 // tu-skeleton: 0x0077ED51 10B __ehhandler$?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ED79 8B Unwind@00b7ed79 -- matched in Code/GameEngine/Source/Common/Rva0037B9D4Get.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ED81 8B Unwind@00b7ed81 -- matched in Code/GameEngine/Source/Common/Rva0037B9D4Get.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ED89 25B $L1427 -- matched in Code/GameEngine/Source/Common/Rva0037B9D4Get.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EDA2 10B __ehhandler$?Rva0037B9D4Get@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037B9D4Get.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EE5A 8B $L1288 -- matched in Code/GameEngine/Source/Common/System/RecorderInitControls.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EE62 10B __ehhandler$?initControls@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderInitControls.cpp (not merged yet)
 
 // tu-skeleton: 0x0077EF54 8B uw_0077ef54 -- matched in Code/gen_small/uw_gen_000.cpp (not merged yet)
 
