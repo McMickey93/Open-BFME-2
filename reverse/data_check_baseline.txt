@@ -545,7 +545,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdate.cpp	wrong
 Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A429F@StructureCollapseUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C0C
 Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterDockUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A0E4C@SupplyCenterDockUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B98
 Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A6569@SupplyCenterProductionExitUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C48
-Code/GameEngine/Source/GameLogic/Object/Update/SupplyTruckAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A6DE4@SupplyTruckAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C50
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp	wrong-name	?$S1@?1??rva0004A6DE4@SupplyTruckAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C50
 Code/GameEngine/Source/GameLogic/Object/Update/SupplyWarehouseDockUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004A7DA5@SupplyWarehouseDockUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C74
 Code/GameEngine/Source/GameLogic/Object/Update/TeleportSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000492CB0@TeleportSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039F4
 Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004CC659@TemporarilyDefectUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04388
