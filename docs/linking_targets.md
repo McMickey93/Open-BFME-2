@@ -198,7 +198,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleModuleInfoCopyCtors.cpp` | 1,455 | 28 (U=28) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/texture.cpp` | 1,429 | 21 (U=21) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/W3DModelDrawModuleData.cpp` | 1,361 | 11 (U=10, C=1) | 2026-10-26, `1a919cef47`: repair landed / awaiting census. The ten opaque `Rva*Wrap` vector members became declare-only `_STL::vector<T>` views resolving to the rowed dtors/erase/push_back and the folded `_Vector_base<int>` ctor (0x00211E58); the vtable COMDAT lost to `W3DDrawModuleDeletingDtors.cpp`'s one-slot scaffold view, which now derives from the canonical Snapshot base so both copies are identical. 41/41 + 6/6 rows exact; link_check (index d1f046749a): LINKS 0 -> 911 B, DeletingDtors and the Truck/Tank/Supply/FriendNew partners still link. |
-| `Code/Libraries/Source/STLport/Rva008312E0StringReplace.cpp` | 1,351 | 4 (C=2, S=2) | Open |
+| `Code/Libraries/Source/STLport/Rva008312E0StringReplace.cpp` | 1,351 | 4 (C=2, S=2) | 2026-10-27 at `8a9e65cafe`: current-provider preview C1/S1 after erase binding repair; two identity keys and pins retired across the pair. replaceBase owner/frame prerequisite remains (LINK-006). [Evidence](../reverse/attempt_support/string-erase-binding-20261027.md); no census gain. |
 | `Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp` | 1,299 | 6 (U=2, C=2, S=2) | Open |
 | `Code/gen_small/uw_gen_005.cpp` | 1,251 | 72 (U=72) | Open |
 | `Code/GameEngine/Source/GameClient/MapUtil.cpp` | 1,182 | 24 (U=12, C=7, S=5) | 2026-10-27 at `97c23353111e`: U14/L6/S4; native ownership prerequisites (LINK-005) |
@@ -223,7 +223,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameClient/EvaMessageVectorAssign.cpp` | 538 | 6 (U=2, C=2, S=2) | 2026-10-26 at `2a45addda180`: U2/L2/S2 with current record providers. Assignment and fill-insert retain distinct element chains; row reconciliation required. LINK-002 and `build/link-report.md`; census pending. |
 | `Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp` | 517 | 9 (U=5, C=2, S=2) | Open |
 | `Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleModuleTemplateClones.cpp` | 501 | 6 (U=6) | Open |
-| `Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp` | 499 | 4 (C=2, S=2) | Open |
+| `Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp` | 499 | 4 (C=2, S=2) | 2026-10-27 at `8a9e65cafe`: current-provider preview C1/S1 after erase binding repair; two identity keys and pins retired across the pair. replaceBase owner/frame prerequisite remains (LINK-006). [Evidence](../reverse/attempt_support/string-erase-binding-20261027.md); no census gain. |
 | `Code/GameEngine/Source/Common/Rva005F422CDtor.cpp` | 495 | 9 (U=9) | Open |
 | `Code/GameEngine/Source/Common/V3PolyDeferredCopyCtors.cpp` | 491 | 13 (U=12, C=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0039C415.cpp` | 457 | 11 (C=5, S=6) | 2026-10-26 at `58598f540f`: Current-provider preview retains the COMDAT/selected blockers; reconcile native element/provider names and preserve the existing failed-trial boundaries (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |

@@ -8287,8 +8287,6 @@ name,address,notes
 ?erase@Rva005EE06CVector@@AAEPAURva005EE06CRecord@@PAU2@0@Z,0x005EDA8A,Native108B resize scoped20B record ABI view; fullrowedprovider51B verified; consumedcallsite5EE09A
 ?erase@Rva005FE974Vector@@AAEPAURva005FE974Record@@PAU2@0@Z,0x005FE4E2,Native108B resize scoped12B record ABI view; fullrowedprovider51B verified; consumedcallsite5FE9A2
 ?erase@Rva006DF050Slot@@QAEIABH@Z,0x000D3BFD,callee read from the retail REL32 in placed BFME1-donor body ?eraseKey@Rva006DF050@@QAEXH@Z (0x000D3C4B)
-?erase@Rva008312E0String@@QAEPADPAD0@Z,0x00012150
-?erase@Rva008314E0String@@QAEPADPAD0@Z,0x00012150,donor Rva008314E0StringReplace calls its out-of-line erase; retail site +0xB3 lands on 0x00012150 where the ledger row is basic_string erase (folded thunk); fold-proof=Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp
 ?erase@RvaVector@@QAEPAPAXPAPAX0@Z,0x0031BD55,ICF twin of rowed voidptr erase at same address 4-byte elements fold
 ?erase@SidesInfoStringVector@@QAEPAVAsciiString@@PAV2@0@Z,0x0002CCFC,retail REL32 from SidesInfo init 0x32CDE2; TU vector stand-in erase; same body as matched AsciiString vector erase
 ?erasePrereqVec@Rva0033EB77Vec@@QAEPAXPAX0@Z,0x0033EB77,prereq-vector erase at the CREATE_OVERRIDES clear site in parsePrerequisites 0x33EBB5 (takes begin plus end; finish-store plus destroy-range body); true class unknown so address-tokenized holder

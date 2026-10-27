@@ -1,5 +1,5 @@
 // cl: /Od /Ob1 /DNDEBUG /MD
-// STLport-style string range replace at retail 0x008312E0 that handles a source range inside the string.
+// STLport 4.5.3 string range replace at BFME 2 RVA 0x0002AE50, including aliased ranges.
 // The inline helpers are defined so /Ob1 reserves retail's frame slots, including those of calls it declines to inline.
 
 #include <string.h>
@@ -135,13 +135,18 @@ inline void advance(_InputIterator &__i, _Distance __n)
 	__advance(__i, __n, Rva008312E0Tag());
 }
 
-class Rva008312E0String
+// A TU-local view of STLport 4.5.3 basic_string<char>. Sharing its erase owner
+// binds the range view to the rowed retail body at 0x00012150. The visible
+// inline body preserves /Ob1 analysis and the matched caller's stack slots.
+namespace _STL
+{
+template <class _CharT, class _Traits, class _Alloc>
+class basic_string;
+
+template <>
+class basic_string<char, char_traits<char>, allocator<char> >
 {
 public:
-	Rva008312E0String &bfmeReplaceAliasedRange(char *first, char *last,
-		char *sourceFirst, char *sourceLast, const Rva008312E0Tag &tag);
-
-	// Out of line in retail (thunk 0x00007C1B); the body mirrors STLport's erase.
 	char *erase(char *__first, char *__last)
 	{
 		if (__first != __last)
@@ -152,6 +157,23 @@ public:
 		}
 		return __first;
 	}
+
+	static char *move(char *s1, const char *s2, size_t n)
+	{
+		return n == 0 ? s1 : (char *)memmove(s1, s2, n);
+	}
+
+	char *m_start;
+	char *m_finish;
+	char *m_end;
+};
+}
+
+class Rva008312E0String : public _STL::basic_string<char, _STL::char_traits<char>, _STL::allocator<char> >
+{
+public:
+	Rva008312E0String &bfmeReplaceAliasedRange(char *first, char *last,
+		char *sourceFirst, char *sourceLast, const Rva008312E0Tag &tag);
 
 	// Forward-iterator insert at retail 0x000284D0 (BFME 1 0x008300B0).
 	void insertRange(char *position, char *first, char *last, const Rva008312E0Tag &tag);
@@ -192,20 +214,12 @@ public:
 	{
 		insertDispatch(position, first, last, Rva008312E0FalseType());
 	}
-	static char *move(char *s1, const char *s2, size_t n)
-	{
-		return n == 0 ? s1 : (char *)memmove(s1, s2, n);
-	}
 	size_t size() const { return m_finish - m_start; }
 	char *allocate(size_t n) const { return n != 0 ? _STL::allocator<char>::allocate(n, 0) : 0; }
 	void deallocate(char *p, size_t) const { if (p != 0) free(p); }
 	void deallocateBlock() { deallocate(m_start, m_end - m_start); }
 	void constructNullAux(char *p, const _STL::__true_type &) { *p = 0; }
 	void constructNull(char *p) { constructNullAux(p, _STL::__true_type()); }
-
-	char *m_start;
-	char *m_finish;
-	char *m_end;
 };
 
 Rva008312E0String &Rva008312E0String::bfmeReplaceAliasedRange(char *first, char *last,

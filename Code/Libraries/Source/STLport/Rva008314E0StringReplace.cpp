@@ -134,13 +134,18 @@ inline void advance(_InputIterator &__i, _Distance __n)
 	__advance(__i, __n, BfmeRangeTag());
 }
 
-class Rva008314E0String
+// A TU-local view of STLport 4.5.3 basic_string<char>. Sharing its erase owner
+// binds the range view to the rowed retail body at 0x00012150. The visible
+// inline body preserves /Ob1 analysis and the matched caller's stack slots.
+namespace _STL
+{
+template <class _CharT, class _Traits, class _Alloc>
+class basic_string;
+
+template <>
+class basic_string<char, char_traits<char>, allocator<char> >
 {
 public:
-	Rva008314E0String &replaceRange(char *first, char *last,
-		char *sourceFirst, char *sourceLast, const BfmeRangeTag &tag);
-
-	// Erase at RVA 0x00012150; the body mirrors STLport's erase.
 	char *erase(char *__first, char *__last)
 	{
 		if (__first != __last)
@@ -151,6 +156,23 @@ public:
 		}
 		return __first;
 	}
+
+	static char *move(char *s1, const char *s2, size_t n)
+	{
+		return n == 0 ? s1 : (char *)memmove(s1, s2, n);
+	}
+
+	char *m_start;
+	char *m_finish;
+	char *m_endOfStorage;
+};
+}
+
+class Rva008314E0String : public _STL::basic_string<char, _STL::char_traits<char>, _STL::allocator<char> >
+{
+public:
+	Rva008314E0String &replaceRange(char *first, char *last,
+		char *sourceFirst, char *sourceLast, const BfmeRangeTag &tag);
 
 	// Forward-range insertion at RVA 0x00028820. The two source-range copies use
 	// the const-char overload's direct __copy_trivial call; four buffer copies use POD dispatch.
@@ -254,18 +276,11 @@ public:
 	{
 		insertDispatch(position, first, last, BfmeRangeFalseType());
 	}
-	static char *move(char *s1, const char *s2, size_t n)
-	{
-		return n == 0 ? s1 : (char *)memmove(s1, s2, n);
-	}
 	static char *copy(char *s1, const char *s2, size_t n)
 	{
 		return n == 0 ? s1 : (char *)memcpy(s1, s2, n);
 	}
 
-	char *m_start;
-	char *m_finish;
-	char *m_endOfStorage;
 };
 
 Rva008314E0String &Rva008314E0String::replaceRange(char *first, char *last,
