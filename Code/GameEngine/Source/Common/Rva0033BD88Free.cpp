@@ -1,4 +1,8 @@
-// cl: /EHs /MD
+// cl: /EHs /MD /D_CRTIMP=
+// Retail calls the game allocator at RVA 0x00030830 directly; use the CRT
+// declaration without dllimport to preserve that call under /MD.
+#include <stdlib.h>
+
 // ??1Rva0033BD88@@QAE@XZ @0x0033BD88 56B.
 // Scalar dtor over a two-word holder: body calls the rowed 0x002CF7DE clear
 // on this then the inlined member dtor frees m_begin.p via the rowed C free
@@ -10,7 +14,6 @@ struct Rva002CF7DE
 	int m_size;
 	void rva002CF7DE();
 };
-extern "C" void free(void *block);
 
 struct Rva0033BD88Begin
 {
