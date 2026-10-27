@@ -11978,9 +11978,6 @@ rva009C7380WeightPairs,0x009B84E0
 ?get_allocator@?$vector@URva005048B5Record@@V?$allocator@URva005048B5Record@@@_STL@@@_STL@@QBE?AV?$allocator@URva005048B5Record@@@2@XZ,0x0021983A
 ??0?$_Vector_base@URva005048B5Record@@V?$allocator@URva005048B5Record@@@_STL@@@_STL@@QAE@IABV?$allocator@URva005048B5Record@@@1@@Z,0x00421D73
 ??$__uninitialized_copy@PBURva005048B5Record@@PAU1@@_STL@@YAPAURva005048B5Record@@PBU1@0PAU1@ABU__false_type@0@@Z,0x00504755
-?resize@?$hashtable@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@URva00212A16Record@@U?$hash@URva00212A16Record@@@2@U?$_Select1st@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@@2@U?$equal_to@URva00212A16Record@@@2@V?$allocator@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@@2@@_STL@@QAEXI@Z,0x00212858
-?_M_bkt_num_key@?$hashtable@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@URva00212A16Record@@U?$hash@URva00212A16Record@@@2@U?$_Select1st@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@@2@U?$equal_to@URva00212A16Record@@@2@V?$allocator@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@@2@@_STL@@ABEIABURva00212A16Record@@@Z,0x00223149
-?_M_new_node@?$hashtable@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@URva00212A16Record@@U?$hash@URva00212A16Record@@@2@U?$_Select1st@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@@2@U?$equal_to@URva00212A16Record@@@2@V?$allocator@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@@2@@_STL@@AAEPAU?$_Hashtable_node@U?$pair@$$CBURva00212A16Record@@U1@@_STL@@@2@ABU?$pair@$$CBURva00212A16Record@@U1@@2@@Z,0x00212354
 ??$_Destroy@PAURva00214B22Record@@@_STL@@YAXPAURva00214B22Record@@0@Z,0x00214B09
 ??$_Destroy@PAURva0022DCDARecord@@@_STL@@YAXPAURva0022DCDARecord@@0@Z,0x0022D941
 ??$_Destroy@PAURva003615E5Record@@@_STL@@YAXPAURva003615E5Record@@0@Z,0x003615CD

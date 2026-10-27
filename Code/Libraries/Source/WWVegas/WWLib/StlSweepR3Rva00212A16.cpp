@@ -2,43 +2,40 @@
 // Element spelling/layout is donor inference; opaque records have address-derived identity.
 // cl: /O1 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
 // stlport
-// The emitted unsigned max copy must match retail RVA 0x00013740.
-// Define it for speed, then restore this unit's flags for its own bodies.
-#include <stl/_algobase.h>
-#pragma optimize("s", off)
-#pragma optimize("t", on)
-namespace _STL {
-static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
-{
-    return a < b ? b : a;
-}
-}
-#pragma optimize("", on)
-
 #include <hash_map>
 // Bind to the kept retail copy instead of emitting this unit's own.
-namespace _STL { template <> __declspec(dllimport) __forceinline bool less<unsigned int>::operator()(unsigned int const &x,unsigned int const &y)const  { return x < y; } }
-// Bind to the kept retail copy instead of emitting this unit's own.
 namespace _STL { template <> __declspec(dllimport) __forceinline void * & vector<void *,allocator<void *> >::operator[](unsigned int n) { return *(this->_M_start + n); } }
-// bfme link decl-only begin
-namespace _STL { template <> void swap<_STLP_alloc_proxy<void **, void *, allocator<void *> > >(_STLP_alloc_proxy<void **, void *, allocator<void *> > &, _STLP_alloc_proxy<void **, void *, allocator<void *> > &); }
-namespace _STL { template <> _Vector_base<void *, allocator<void *> >::_Vector_base(unsigned int, allocator<void *> const &); }
-namespace _STL { template <> vector<void *, allocator<void *> >::vector(unsigned int, void *const &, allocator<void *> const &); }
-namespace _STL { template <> _STLP_alloc_proxy<void **, void *, allocator<void *> >::~_STLP_alloc_proxy(); }
-namespace _STL { template <> _Vector_base<void *, allocator<void *> >::~_Vector_base(); }
-namespace _STL { template <> vector<void *, allocator<void *> >::~vector(); }
-namespace _STL { template <> void ** allocator<void *>::allocate(unsigned int, void const *) const; }
-namespace _STL { template <> allocator<void *> vector<void *, allocator<void *> >::get_allocator() const; }
-namespace _STL { template <> unsigned int vector<void *, allocator<void *> >::size() const; }
-namespace _STL { template <> void vector<void *, allocator<void *> >::swap(vector<void *, allocator<void *> > &); }
-namespace _STL { template <> allocator<void *>::~allocator(); }
-// bfme link decl-only end
 
+struct Rva00212A16Record { char bytes[1]; };
 
-
-struct Rva00212A16Record { Rva00212A16Record(); Rva00212A16Record(const Rva00212A16Record&); ~Rva00212A16Record(); Rva00212A16Record&operator=(const Rva00212A16Record&); char bytes[1]; bool operator==(const Rva00212A16Record&) const; bool operator<(const Rva00212A16Record&) const; };
-namespace _STL {template<> void _Construct<Rva00212A16Record,Rva00212A16Record>(Rva00212A16Record*,const Rva00212A16Record&); template<>struct hash<Rva00212A16Record> { unsigned int operator()(const Rva00212A16Record&) const; };}
-
-
-// Instantiate the recovered member; retain only its required template dependencies.
-template _STL::pair<Rva00212A16Record const, Rva00212A16Record> & _STL::hashtable<_STL::pair<Rva00212A16Record const, Rva00212A16Record>, Rva00212A16Record, _STL::hash<Rva00212A16Record>, _STL::_Select1st<_STL::pair<Rva00212A16Record const, Rva00212A16Record> >, _STL::equal_to<Rva00212A16Record>, _STL::allocator<_STL::pair<Rva00212A16Record const, Rva00212A16Record> > >::_M_insert(_STL::pair<Rva00212A16Record const, Rva00212A16Record> const &);
+// Retail 0x00212A16 resizes through 0x00212858, hashes the key through 0x00223149
+// and allocates the node through 0x00212354, all rowed as Rva000427195 methods
+// (Rva00212858Resize.cpp, PlayerXferStringMaps.cpp, Rva00212354NewNode.cpp; the
+// same three calls as the rowed twin Rva000A7A63Insert.cpp). Instantiating
+// _M_insert over this unit's record emitted non-retail resize/_M_bkt_num_key/
+// _M_new_node copies and left the record's hash, copy ctor and dtor unresolved,
+// so _M_insert is defined here as an explicit specialization that calls those rows.
+class AsciiString;
+class Rva000427195
+{
+public:
+    void rva00212858(unsigned int count);
+    int bucketIndex(const AsciiString *name);
+    void *rva00212354(const void *src);
+};
+namespace _STL {
+typedef pair<Rva00212A16Record const, Rva00212A16Record> Rva00212A16Pair;
+template <>
+Rva00212A16Pair &hashtable<Rva00212A16Pair, Rva00212A16Record, hash<Rva00212A16Record>, _Select1st<Rva00212A16Pair>, equal_to<Rva00212A16Record>, allocator<Rva00212A16Pair> >::_M_insert(const value_type &obj)
+{
+    Rva000427195 *self = (Rva000427195 *)this;
+    self->rva00212858(_M_num_elements._M_data + 1);
+    const size_type n = self->bucketIndex((const AsciiString *)&obj);
+    _Node *first = (_Node *)_M_buckets[n];
+    _Node *tmp = (_Node *)self->rva00212354(&obj);
+    tmp->_M_next = first;
+    _M_buckets[n] = tmp;
+    ++_M_num_elements._M_data;
+    return tmp->_M_val;
+}
+}
