@@ -306,8 +306,11 @@ Rva004CE03D::~Rva004CE03D()
 	m_p20 = &s_dummyFD98;
 }
 
-static int s_dummy5198;
-static int s_dummy5188;
+extern "C"
+{
+	int s_dummy5198;
+	int s_dummy5188;
+}
 
 class Rva004AD9B0 : public Rva0044EF5E
 {

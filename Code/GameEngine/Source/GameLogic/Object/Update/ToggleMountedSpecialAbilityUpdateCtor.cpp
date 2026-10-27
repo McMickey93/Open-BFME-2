@@ -3,10 +3,10 @@
 // ??0ToggleMountedSpecialAbilityUpdate@@QAE@PAVThing@@PBVModuleData@@@Z, retail 0x004ADAB5, 74 bytes.
 // ToggleMountedSpecialAbilityUpdate behavior ctor over the pinned Rva0044EF5E
 // intermediate base (0x44EF5E, thing plus data): sets the +0x88 slot from its
-// base form to its final form (address-of TU-local dummies, DIR32-masked;
+// base form to its final form (DIR32-masked provisional table symbols;
 // the barrier pins both stores so retail keeps the lea plus double through-
 // eax shape), then re-stores the primary vtable slot and the +0x0C/+0x10/
-// +0x20 secondary slots (address-of TU-local dummies, DIR32-masked), then
+// +0x20 secondary slots (provisional table addresses, DIR32-masked), then
 // clears a flag at +0x8C. The rowed name getter at 0x4ADA70 and ModuleData
 // factory 0x24F6C5 prove the class; the rowed instance factory 0x24F68A is
 // the sole raw caller. Row supersedes the ctor pin.
@@ -18,11 +18,17 @@ extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
 static int s_slotBase;
-static int s_slotFinal;
 static int s_vtable;
-static int s_secondary0C;
 static int s_secondary10;
-static int s_secondary20;
+
+// The data ledger assigns these provisional table symbols to ModuleUpdateDtors.
+// Share those definitions rather than allocating another datum for each table.
+extern "C"
+{
+	extern int s_dummy5188;
+	extern int s_dummy5198;
+	extern const void *const s_dummy62D8[47];
+}
 
 // Opaque intermediate base; ctor resolves to its pin. The explicit m_vtable
 // member stands in for the inherited vptr so body order is source order.
@@ -62,10 +68,10 @@ ToggleMountedSpecialAbilityUpdate::ToggleMountedSpecialAbilityUpdate(Thing *thin
 {
 	m_slotBase = &s_slotBase;
 	_ReadWriteBarrier();
-	m_slotFinal = &s_slotFinal;
+	m_slotFinal = &s_dummy5188;
 	m_vtable = &s_vtable;
-	m_p0C = &s_secondary0C;
+	m_p0C = s_dummy62D8;
 	m_p10 = &s_secondary10;
-	m_p20 = &s_secondary20;
+	m_p20 = &s_dummy5198;
 	m_flag = false;
 }
