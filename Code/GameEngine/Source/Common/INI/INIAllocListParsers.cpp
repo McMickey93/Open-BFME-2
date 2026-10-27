@@ -115,7 +115,7 @@ struct Rva0041F524Army
 	_STL::vector<const ModuleData *, _STL::allocator<const ModuleData *> > m_members;	// +0x04
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 // ?Rva0048E022Parse@@YAXPAVINI@@PAX1PBX@Z
 void Rva0048E022Parse(INI *ini, void *instance, void *, const void *)

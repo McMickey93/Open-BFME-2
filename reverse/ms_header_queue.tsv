@@ -336,7 +336,6 @@ Code/GameEngine/Source/Common/HostClass005C908B.cpp	drop-in candidate	same	1	1	0
 Code/GameEngine/Source/Common/INI/AudioEventInfoParseDefinition.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same
 Code/GameEngine/Source/Common/INI/AudioEventInfoParseMultisound.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same
 Code/GameEngine/Source/Common/INI/AudioEventInfoParseVolumeSliderMultiplier.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same
-Code/GameEngine/Source/Common/INI/INIAllocListParsers.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/INI/INIFindBlockParse.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strcmp:same
 Code/GameEngine/Source/Common/INI/INIParseFXListVec.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same
 Code/GameEngine/Source/Common/INI/INIThinFieldParsersEH.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
