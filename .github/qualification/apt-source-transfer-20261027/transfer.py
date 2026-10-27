@@ -98,6 +98,10 @@ def main():
                                    "https://github.com/Open-BFME/Open-BFME-2.git"], stdin=wire)
     claim()
     run("required-progress", [sys.executable, "tools/progress.py", "origin/master"])
+    git("preseed-fast-forward-lineage", "merge-base", "--is-ancestor", DATA["base"], tip)
+    RESULT.update(status="qualified", base=base, commit=tip, tree=rev("HEAD^{tree}"), normal_official_prepush_passed=True, new_cpp_bytes=0)
+    save()
+    print("QUALIFIED_SOURCE " + json.dumps(RESULT), flush=True)
     url = "https://github.com/McMickey93/Open-BFME-2.git"
     target = "refs/heads/" + DATA["result_branch"]
     env = dict(os.environ)
@@ -106,7 +110,7 @@ def main():
     env.update({"GIT_CONFIG_COUNT": str(count + 1), "GIT_CONFIG_KEY_" + str(count): "http." + url + ".extraheader",
                 "GIT_CONFIG_VALUE_" + str(count): auth, "GIT_TERMINAL_PROMPT": "0"})
     git("normal-hook-fork-push", "-c", "core.hooksPath=.githooks", "push", "--porcelain",
-        "--force-with-lease=" + target + ":", url, "HEAD:" + target, env=env)
+        "--force-with-lease=" + target + ":" + DATA["base"], url, "HEAD:" + target, env=env)
     readback = git("fork-readback", "ls-remote", "--exit-code", url, target).decode().split()
     require(readback == [tip, target], "Fork readback differs")
     RESULT.update(status="transferred", base=base, commit=tip, tree=rev("HEAD^{tree}"),
