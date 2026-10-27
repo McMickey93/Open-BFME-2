@@ -5489,3 +5489,28 @@ On this tree that search found only the `_strcat` users and Rva000F0F2BFinish.cp
 Remaining / next check: the next census should confirm the three units. W3DBridgeLoad.cpp still waits on TerrainLogic.cpp (merged, not previewable; cd2bf1dd60). `_strcpy` still resolves only through leftover `/alternatename:_strcpy=?ji_00629176@@YAXXZ` pragmas in GameWindowManagerScript.cpp and AptScoreScreenCallbacks.cpp. Before retiring the last of them, convert every remaining `strcpy` caller to `_mbscpy`, or those callers lose the name.
 
 Clearance: ordinary current-object preview only. Census confirmation: awaiting.
+
+### LINK-125: AptSkirmish callbacks bind a second Apt manager global
+
+Status: Cleared for this consumer's data bindings. Updated: 2026-10-27;
+inspected revision: 2eab7a67c3; ordinary-preview index: 73061d9452.
+
+`AptSkirmishCallbacks.cpp` used `TheRva00222A8BTarget` for the Apt manager
+at RVA 0x009FE4CC. It now declares the ledger owner
+`BfmeAptWindowManager *g_bfmeAptWindowManager` and casts at each call site.
+The fresh-object retirement verdict also exposed `TheMessageStream` at
+0x00A00950: the explicit `data_rows.csv` owner overrides the provisional
+`data_ledger.csv` spelling there and names `MessageStreamSubsystem`. Both
+message appends now use that owner.
+
+Verification: all 54 rows byte-match; frozen-file and data checks pass with
+zero data findings. `repair_queue.py retire data` retires the one registered
+key through its own fresh-object verdict. The ordinary link preview retains
+LINKS, 4,008 -> 4,008 bytes. This is debt retirement, with no linked-byte or
+image-ownership gain claimed.
+
+Remaining: other consumers and the two MessageStream definitions retain their
+existing ownership work. The separate `Rva005F2FEFApt.cpp` debt remains blocked
+by its previously recorded compiler-guard ownership findings at 0x00A068D8/E0;
+its 43 rows still match, and no source or register change was made for it.
+Census confirmation of this edit remains pending.

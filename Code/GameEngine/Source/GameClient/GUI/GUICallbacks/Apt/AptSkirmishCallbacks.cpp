@@ -81,7 +81,8 @@ public:
 extern int g_00E04930;
 
 class Rva00222A8BTarget;
-extern class Rva00222A8BTarget *TheRva00222A8BTarget;
+class BfmeAptWindowManager;
+extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // MpGameSetupSlots.cpp's 0x0043DB23 runs an Apt function on a movie.
 int Rva0043DB23(Rva00222A8BTarget *target, void *owner, const char *name);
@@ -173,7 +174,7 @@ void Rva00521643Enable()
 {
 	if (g_00E04930 == 0)
 		return;
-	((Rva00222479ByteOneSetter *)TheRva00222A8BTarget)->enable();
+	((Rva00222479ByteOneSetter *)g_bfmeAptWindowManager)->enable();
 }
 
 // Retail 0x00521741, 13 bytes: "AptSkirmish::OnInitialized".
@@ -439,7 +440,7 @@ void AptSkirmish::rva00522556()
 	if (count == 0)
 	{
 		void *movie = m_274;
-		Rva0043DB23(TheRva00222A8BTarget, movie, "PopupSelectBttnDisable");
+		Rva0043DB23((Rva00222A8BTarget *)g_bfmeAptWindowManager, movie, "PopupSelectBttnDisable");
 	}
 	GadgetListBoxSetSelected(m_profiles, selected);
 }
@@ -620,7 +621,7 @@ int AptSkirmish::rva005231B0(int message, unsigned int data1, unsigned int data2
 				if (!m_6c2)
 				{
 					void *movie = m_274;
-					Rva0043DB23(TheRva00222A8BTarget, movie,
+					Rva0043DB23((Rva00222A8BTarget *)g_bfmeAptWindowManager, movie,
 						"PopupSelectBttnDisable");
 					m_6c2 = true;
 				}
@@ -628,7 +629,7 @@ int AptSkirmish::rva005231B0(int message, unsigned int data1, unsigned int data2
 			else if (m_6c2)
 			{
 				void *movie = m_274;
-				Rva0043DB23(TheRva00222A8BTarget, movie,
+				Rva0043DB23((Rva00222A8BTarget *)g_bfmeAptWindowManager, movie,
 					"PopupSelectBttnEnable");
 				m_6c2 = false;
 			}
@@ -746,7 +747,7 @@ class MessageStream {public:
  virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
  virtual GameMessage *append(int);
 };
-extern MessageStream *TheMessageStream;
+extern MessageStream *MessageStreamSubsystem;
 
 // Native 0x00521CFF..0x00521E65 and WB 0x01466D30
 // StartGameAfterCDCheck. Keep the existing target-address method identity.
@@ -760,20 +761,20 @@ void AptSkirmish::StartGameAfterCDCheck() {
  InitGameLogicRandom(((StartGameInfoView *)(*(GameInfo * *)&TheSkirmishGameInfo))->seed);
  if(g_00E04930) {
   if(*(int *)(g_00E04930+0x304)==1) {
-   ((AptPlayer *)TheRva00222A8BTarget)->PopFocus((AptFocusTarget *)-1);
-   TheRva00222A8BTarget->rva00222F55(false);
+   ((AptPlayer *)g_bfmeAptWindowManager)->PopFocus((AptFocusTarget *)-1);
+   ((Rva00222A8BTarget *)g_bfmeAptWindowManager)->rva00222F55(false);
    TheShell->rva0035BF4C(true);
    TheDisplay->flag=true;
    TheVideoPlayer->stopAll();
    TheGameLogic->clearGameData(false,false);
    ((Rva002D3627Host *)TheLivingWorld)->enable(true);
-   GameMessage *msg=TheMessageStream->append(31);
+   GameMessage *msg=MessageStreamSubsystem->append(31);
    if(msg) {msg->appendIntegerArgument(((StartGameInfoView *)(*(GameInfo * *)&TheSkirmishGameInfo))->scenario);msg->wb00EC9680(0);}
   } else {
    bool official=true;
    const MapMetaData *map=TheMapCache->findMap((*(GameInfo * *)&TheSkirmishGameInfo)->getMap());
    if(map) official=map->official;
-   GameMessage *msg=TheMessageStream->append(30);
+   GameMessage *msg=MessageStreamSubsystem->append(30);
    msg->appendIntegerArgument(official ? 2 : 0);
    msg->appendIntegerArgument(1);msg->appendIntegerArgument(0);
   }
