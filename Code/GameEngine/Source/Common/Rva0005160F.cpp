@@ -1,4 +1,4 @@
-// cl: /Oy- /MD
+// cl: /Oy- /MD /Ireference/shims/bfme2_ascii
 //
 // ?Rva0005160FGet@MilesAudioManager@@QAE?AUBfmeEventPositionView@@PAVAudioEventRTS@@AA_N@Z @0x0005160F 64B
 // Returns owner position view and validity: non-positional events get zeros
@@ -9,25 +9,12 @@
 // The first four caller sites restore their manager receiver in ECX before
 // the call. Preserve that thiscall ABI although this body does not use it.
 // Original method name and const qualification remain unresolved.
-struct BfmeEventPositionView
-{
-	float x, y, z;
-	BfmeEventPositionView() {}
-	// Inlined at its one use; suppress the out-of-line COMDAT, which this unit's
-	// /Oy- would frame differently from the other emitters' copies.
-	__declspec(dllimport) __forceinline BfmeEventPositionView(float a, float b, float c) : x(a), y(b), z(c) {}
-};
+#include "../../Include/Common/BfmeAudioEventPrefix136.h"
 
 class AudioEventRTS
 {
 public:
 	bool isPositionalAudio() const;
-};
-
-class BfmeAudioEventPrefix136
-{
-public:
-	BfmeEventPositionView rva002DA1CC(bool &valid);
 };
 
 class MilesAudioManager
