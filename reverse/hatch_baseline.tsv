@@ -4040,10 +4040,7 @@ alternatename	Code/Libraries/Source/Apt/AptObject/AptFactoryConstructors_AptErro
 alternatename	Code/Libraries/Source/Apt/AptObject/AptObjectDoesImplement.cpp	?GetAt@AptArray@@QBEPAVAptValue@@H@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptObjectDoesImplement.cpp	?Lookup@AptNativeHash@@QBEPAVAptValue@@QBVEAStringC@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptObjectDoesImplement.cpp	?c_array@AptValue@@QBEPAVAptArray@@XZ	1
-alternatename	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies.cpp	??0AptPrototype@@QAE@XZ	1
-alternatename	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies.cpp	??1AptObject@@MAE@XZ	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies.cpp	?gpGlobalGlobalObject@@3PAVAptValue@@A	1
-alternatename	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies.cpp	?isCIH@AptValue@@QBE_N_N@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies_AptScriptFunctionBase.cpp	??0AptPrototype@@QAE@XZ	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies_AptScriptFunctionBase.cpp	??1AptObject@@MAE@XZ	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies_AptScriptFunctionBase.cpp	??1AptScriptFunctionBase@@MAE@XZ	1
@@ -20061,7 +20058,6 @@ present_unmatched	Code/Libraries/Source/Apt/AptObject/AptKeyLookup_ObjectMemberL
 present_unmatched	Code/Libraries/Source/Apt/AptObject/AptKeyLookup_Unresolved.cpp	AptObject::AptObject	1
 present_unmatched	Code/Libraries/Source/Apt/AptObject/AptKeyLookup_Unresolved.cpp	AptValueGC::AptValueGC	1
 present_unmatched	Code/Libraries/Source/Apt/AptObject/AptKeyLookup_Unresolved.cpp	AptValueWithHash::AptValueWithHash	1
-present_unmatched	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies.cpp	AptObject::AptObject	1
 present_unmatched	Code/Libraries/Source/Apt/AptObject/AptScriptFunctionBodies_AptScriptFunctionBase.cpp	AptObject::AptObject	1
 present_unmatched	Code/Libraries/Source/Apt/AptValue/Rva006DA4D0Finish.cpp	Rva006DA4D0::Rva006DA4D0	1
 present_unmatched	Code/Libraries/Source/Compression/LZHCompress/CompLibSource/Huff.cpp	1HuffStat@@QAE@XZ	1

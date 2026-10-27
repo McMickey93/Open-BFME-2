@@ -96,43 +96,9 @@ void AptScriptFunction2::SetupBeforeExecution(_AptScriptFunctionState *pState, A
 // Existing providers own the predicate and the zero-initialized global storage.
 #pragma comment(linker, "/alternatename:?gpGlobalGlobalObject@@3PAVAptValue@@A=?g_00E18650@@3VEAStringC@@A")
 
-#define CHECK_AT(c,s,f,l) if(!(c)) { g_bfmeAptAssertAtE17734(s,f,l); if(g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak(); }
-class AptCIH : public AptValue
-{
-public:
-    AptCIH *GetRootAnimation();
-    void IncZombieCount() {
-        CHECK_AT(nZombieCounter < 65536, "nZombieCounter < 65536", "c:\\projects\\bfme2patch103\\bfme2\\code\\libraries\\source\\apt\\AptCIH.h", 0x53);
-        nZombieCounter=nZombieCounter+1;
-    }
-private:
-    // Native CIH adds four bytes before this field versus the original donor.
-    // PC ctor709870 accesses the 16-bit zombie count at+5C, not donor+58.
-    char remaining[0x5c-8];
-    unsigned int nZombieCounter : 16;
-};
-class Rva006D2A60 { public: void *allocBlock(int); void freeBlock(void *, int); };
-extern Rva006D2A60 *g_pChainBlockAllocatorF4;
-class AptPrototype : public AptValueWithHash
-{
-public:
-    AptPrototype();
-    static void *operator new(unsigned int n) { return g_pChainBlockAllocatorF4->allocBlock(n); }
-    static void operator delete(void *, unsigned int);
-private:
-    AptValue *mp__constructor__;
-};
-AptCIH *_AptGetAnimationAtLevel(int);
-// Native E180F0 is zero-filled and has no existing provider.
+// The base constructors and their private views live in
+// AptScriptFunctionBodies_AptScriptFunctionBase.cpp. Keep their shared storage
+// here without reintroducing those constructors' unused inline helpers.
+class AptPrototype;
+// Native E180F0 is zero-filled; this unit owns the storage.
 AptPrototype *gpObjectPrototype;
-// ?AptObject::AptObject present-unmatched
-inline AptObject::AptObject(AptVirtualFunctionTable_Indices t, int n) : AptValueWithHash(t,n), mnImplementedObjects(0), mbHasClass(0), mbIsInMainInst(0) {}
-inline void AptNativeHash::SetPrototype(AptValue *aptValue) { if(aptValue) aptValue->AddRef(); if(mpPrototype) mpPrototype->Release(); mpPrototype=aptValue; }
-inline void AptNativeHash::Set__Proto__(AptValue *aptValue) { if(aptValue) aptValue->AddRef(); if(mp__proto__) mp__proto__->Release(); mp__proto__=aptValue; }
-
-
-
-#undef CHECK_AT
-#pragma comment(linker, "/alternatename:??0AptPrototype@@QAE@XZ=??0Rva006DE1A0@@QAE@XZ")
-#pragma comment(linker, "/alternatename:?isCIH@AptValue@@QBE_N_N@Z=?isCIH@BfmeAptValue006DCD20@@QBE_N_N@Z")
-#pragma comment(linker, "/alternatename:??1AptObject@@MAE@XZ=??1Rva006D6470Owner@@UAE@XZ")
