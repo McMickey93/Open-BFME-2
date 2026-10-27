@@ -30,13 +30,13 @@ public:
 extern GameTextInterface *TheGameText;
 class Version { public: UnicodeString getFullUnicodeVersion(); UnicodeString getUnicodeBuildTime(); };
 extern Version *TheVersion;
-class GlobalData {public:char p0[0xb04];unsigned int field0b04;char pB08[0x1100-0xb08];bool field1100;char p1101[3];int field1104;};
+class GlobalData {public:AsciiString rva002360DE() const;char p0[0xb04];unsigned int field0b04;char pB08[0x1100-0xb08];bool field1100;char p1101[3];int field1104;};
 extern GlobalData *TheWritableGlobalData;
 struct BfmeNetAddress { unsigned int address,port;bool Rva00248CBF(const BfmeNetAddress*) const;};
 // Target compares the complete address through rowed248CBF; donor IP-only
 // comparison would omit the port. Native GameSlot/GameInfo address is38.
 class CreateAHeroData;
-class GameSlot { public: char pad000[0x38]; BfmeNetAddress address;char pad40[0x60-0x40];bool heroPresent;char pad61[3];void rva0037AD8D(const CreateAHeroData&); };
+class GameSlot { public: char pad000[0x38]; BfmeNetAddress address;char pad40[0x60-0x40];bool heroPresent;char pad61[3];void rva0037AD8D(const CreateAHeroData&);bool isOccupied() const; };
 ;
 class GameInfo {
 public:
@@ -396,6 +396,12 @@ enum DrawableID
 	DID_ZERO = 0
 };
 
+enum RecorderModeType {
+	RECORDERMODETYPE_RECORD,
+	RECORDERMODETYPE_PLAYBACK,
+	RECORDERMODETYPE_NONE
+};
+
 class RecorderClass {
 public:
 	virtual void slot0();
@@ -463,6 +469,12 @@ protected:
 	void startRecording(int difficulty,int gameMode,int rankPoints,int maxFPS);
 public:
 	void logPlayerDisconnect(UnicodeString arg, int slot);
+public:
+	bool isMultiplayer();
+public:
+	void initControls();
+	RecorderModeType getMode() { return (RecorderModeType)m_mode; }
+	friend class Rva0037B7C7;
 };
 
 class Rva0037B5A0
