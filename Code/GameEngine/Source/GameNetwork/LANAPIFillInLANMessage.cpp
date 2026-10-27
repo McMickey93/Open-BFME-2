@@ -5,14 +5,13 @@
 // String data uses +8-or-default (Unicode 0xBBB5C4 Ascii 0xBBAC1C). Evidence:
 // vslot lane slot 57 of 0x0083E680; class/offsets copied from
 // LANAPICompleteDestructor TU; str pattern from LANAPIRequestAccept TU.
+#include <string.h>
+
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
-typedef unsigned short WideChar;
+typedef wchar_t WideChar;
 typedef unsigned char UnsignedByte;
 typedef bool Bool;
-
-extern "C" __declspec(dllimport) WideChar *__cdecl wcsncpy(WideChar *, const WideChar *, unsigned int);
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *destination, const char *source, unsigned int count);
 
 template <typename T> class StringBase;
 class UnicodeStringData

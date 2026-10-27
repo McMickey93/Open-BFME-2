@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfmelist /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // GameWindowTransitionsHandler::findGroup (0x001DC01C, 98B), getNewGroup
@@ -29,6 +30,7 @@
 // INI::parseWindowTransitions (0x001DC66F, 112B) is the "WindowTransition"
 // block parser (retail table entry at 0x009B8CF0); the handler singleton is
 // read from 0x00DFDC14 and the field table is the static at 0x00BDBBCC.
+#include <windows.h>
 #include <list>
 
 // vector<int> fill/insert otherwise instantiates the _Construct<int,int>
@@ -65,9 +67,6 @@ public:
 	void setTemplateName(AsciiString name); // folded AsciiString setter
 };
 
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *cs);
-
 typedef bool Bool;
 
 // BFME 2 guards the handler's group pointers with a critical section at
@@ -75,10 +74,10 @@ typedef bool Bool;
 class BfmeTransitionsLock
 {
 public:
-	BfmeTransitionsLock(void *cs) : m_cs(cs) { EnterCriticalSection(cs); }
+	BfmeTransitionsLock(void *cs) : m_cs((CRITICAL_SECTION *)cs) { EnterCriticalSection((CRITICAL_SECTION *)cs); }
 	~BfmeTransitionsLock() { LeaveCriticalSection(m_cs); }
 private:
-	void *m_cs;
+	CRITICAL_SECTION *m_cs;
 };
 
 // TheDisplay's two size queries at vslots 0x40 and 0x44 (BFME 2 layout).

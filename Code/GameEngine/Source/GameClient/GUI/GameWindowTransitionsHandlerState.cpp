@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // ?isFinished@GameWindowTransitionsHandler@@QAE_NXZ @0x001DBFEE 46B
 //
 // Zero Hour's GameWindowTransitionsHandler::isFinished (current group's
@@ -8,8 +9,7 @@
 // this address isFinished. Callee row ?rva001DBD83@Rva001DBDA4@@QBE_NXZ
 // (TransitionGroup); offsets from retail lea/mov. The class is the one whose
 // ctor 0x001DCBC3 installs vftable 0x00BDBC30; slots 9 and 12 follow.
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *);
+#include <windows.h>
 
 class GameMessage
 {
@@ -36,10 +36,10 @@ extern class MessageStream *TheMessageStream;
 class HandlerLock
 {
 public:
-	HandlerLock(void *cs) : m_cs(cs) { EnterCriticalSection(m_cs); }
+	HandlerLock(void *cs) : m_cs((CRITICAL_SECTION *)cs) { EnterCriticalSection(m_cs); }
 	~HandlerLock() { LeaveCriticalSection(m_cs); }
 private:
-	void *m_cs;
+	CRITICAL_SECTION *m_cs;
 };
 
 struct GroupView
@@ -57,16 +57,6 @@ public:
 	void rva001DBE17();
 	void rva001DBE51();
 	void rva001DBD5D();
-};
-
-struct AudioLock
-{
-	int m_00;
-	int m_04;
-	int m_08;
-	int m_0C;
-	int m_10;
-	int m_14;
 };
 
 // reset, update and draw are slots 9, 10 and 12 of the
@@ -87,7 +77,7 @@ private:
 	Rva001DBDA4 *m_2C;
 	Rva001DBDA4 *m_30;
 	char m_pad34[0x4];
-	AudioLock m_38;
+	CRITICAL_SECTION m_38;
 	char m_pad50;
 	bool m_unk51;
 	char m_pad52[0x17];

@@ -1,6 +1,9 @@
+// platformsdk
 // ?rva00032830@GeneralAllocator@Allocator@EA@@QAE_NPBXH@Z
 // ?rva00032830@GeneralAllocator@Allocator@EA@@QAE_NPBXH@Z
 // ?rva00032830@GeneralAllocator@Allocator@EA@@QAE_NPBXH@Z
+#include <windows.h>
+
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 // ?rva00032830@GeneralAllocator@Allocator@EA@@QAE_NPBXH@Z
@@ -31,8 +34,6 @@ extern "C" void _ReadWriteBarrier(void);
 //   (mov bl,1 + test mem,bl) into the range result and is overwritten by
 //   sete bl on the equality arm; low byte of addressType tested directly
 //   (sibling Rva006C1E20 tag spelling) for the cmp-byte-on-stack-slot form.
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
 
 namespace EA
 {
@@ -61,7 +62,7 @@ private:
 	// +0x4E4 with the use count at +0x18 of the wrapper.
 	struct Lock
 	{
-		unsigned char m_pad[0x18];
+		CRITICAL_SECTION m_section;
 		int volatile m_count;
 	};
 	unsigned char m_pad468[0x4E4 - (0x448 + sizeof(ListNode))];
@@ -74,7 +75,7 @@ bool GeneralAllocator::rva00032830(const void *block, int addressType)
 	Lock *lock = self->m_4E4;
 	if (lock != 0)
 	{
-		EnterCriticalSection(lock);
+		EnterCriticalSection(&lock->m_section);
 		++lock->m_count;
 	}
 	ListNode *cur = self->m_sentinel.m_next;
@@ -120,7 +121,7 @@ found:
 			{
 				_ReadWriteBarrier();
 				--lock->m_count;
-				LeaveCriticalSection(lock);
+				LeaveCriticalSection(&lock->m_section);
 			}
 			return eq;
 		}
@@ -133,7 +134,7 @@ found:
 			if (lock != 0)
 			{
 				--lock->m_count;
-				LeaveCriticalSection(lock);
+				LeaveCriticalSection(&lock->m_section);
 			}
 			return valid;
 		}
@@ -142,7 +143,7 @@ fail:
 	if (lock != 0)
 	{
 		--lock->m_count;
-		LeaveCriticalSection(lock);
+		LeaveCriticalSection(&lock->m_section);
 	}
 	return false;
 }

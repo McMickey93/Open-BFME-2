@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // ?reset@GameInfo@@UAEXXZ @0x003FFF8F (267B):
 // GameInfo::reset, virtual slot 10 (+0x28) of vtable 0x008193C8 (rowed copy
 // ctor ??0GameInfo@@QAE@ABV0@@Z sets it; slot 13 getLocalSlotNum rowed,
@@ -12,6 +13,8 @@
 // releaseBuffer narrow 0x36410, GetTickCount IAT, rand IAT, TreeHint dtor
 // 0x229840, operator delete 0x2FD60, memset thunk 0x6291AE, MpGameRules::GetDefaults pin.
 // Callers 0x00400A07 (ctor) and 0x004FDC73.
+#include <windows.h>
+#include <stdlib.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
@@ -20,8 +23,6 @@ typedef int Int;
 // g_00DBC800 is only an alias of the owned global NET_CRC_INTERVAL (ledger names column); this unit reads the owner through its own view type.
 extern int NET_CRC_INTERVAL;
 #define g_00DBC800 (*(int *)&NET_CRC_INTERVAL)
-extern "C" __declspec(dllimport) unsigned int __stdcall GetTickCount(void);
-extern "C" __declspec(dllimport) int __cdecl rand(void);
 class MpGameRules
 {
 public:

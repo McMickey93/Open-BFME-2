@@ -10,6 +10,7 @@
 // Scale is min(AptPlayer slot15 x/y); descriptor fields0/4/8/C are target
 // facts from rowed getter/copy providers. Slots9/10 retain neutral names
 // since ZH's corresponding declarations differ from the target call arity.
+#include <ctype.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 struct ScalePair {float x,y;};
@@ -163,8 +164,6 @@ int InGameSimpleHelp::Impl::rva0053973F(int width){
 // Original constructor spelling is inferred from these owner/call facts.
 // The implicit AsciiStringPlusString conversion preserves the native single
 // returned temporary and prefix lifetime; explicit casts introduce a copy.
-extern "C" __declspec(dllimport) int __cdecl iswalnum(unsigned short);
-extern "C" __declspec(dllimport) unsigned short __cdecl towupper(unsigned short);
 __declspec(noinline) static unsigned short Rva0056C89B(UnicodeString &str){
  int length=str.getLength();
  struct Header {int count;unsigned short length,capacity;unsigned short data[1];};
@@ -175,7 +174,7 @@ __declspec(noinline) static unsigned short Rva0056C89B(UnicodeString &str){
  unsigned short key=0;
  UnicodeString out(UnicodeString(header?header->data:(const unsigned short*)L""),0,i);
  for(;i<length;++i){
-  unsigned short c=str.getCharAt(i);
+  wchar_t c=str.getCharAt(i);
   if(c=='&'){
    if(++i>=length)break;
    c=str.getCharAt(i);

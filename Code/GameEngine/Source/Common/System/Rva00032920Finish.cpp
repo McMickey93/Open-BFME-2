@@ -1,4 +1,5 @@
 // cl: /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // ?rva00032920@GeneralAllocator@Allocator@EA@@QAE_NPBX@Z @0x00032920 (190B):
 // owns-address test. Header at block-4: bit1 selects the small-list scan, else
 // the intrusive search. Lock at +0x4E4 with the use count at +0x18 of the
@@ -36,8 +37,7 @@
 // je +0x64. A goto-based convergence of the two false paths is the same
 // shape but 192B, two over. A flag variant of the scan's empty-list early
 // return (the previous pass's best) is byte-identical to the bank.
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
+#include <windows.h>
 
 namespace EA
 {
@@ -67,7 +67,7 @@ private:
 	// +0x4E4 with the use count at +0x18 of the wrapper.
 	struct Lock
 	{
-		unsigned char m_pad[0x18];
+		CRITICAL_SECTION m_section;
 		int volatile m_count;
 	};
 	// Small-block list proven by 0x00032920: sentinel at +0x49C with its next
@@ -106,7 +106,7 @@ bool GeneralAllocator::rva00032920(const void *block)
 	unsigned int header = *(const unsigned int *)(p8 + 4);
 	if (lock != 0)
 	{
-		EnterCriticalSection(lock);
+		EnterCriticalSection(&lock->m_section);
 		++lock->m_count;
 	}
 	if ((header & 2) != 0)
@@ -125,7 +125,7 @@ bool GeneralAllocator::rva00032920(const void *block)
 					if (lock != 0)
 					{
 						--lock->m_count;
-						LeaveCriticalSection(lock);
+						LeaveCriticalSection(&lock->m_section);
 					}
 					return true;
 				}
@@ -138,14 +138,14 @@ bool GeneralAllocator::rva00032920(const void *block)
 		if (lock != 0)
 		{
 			--lock->m_count;
-			LeaveCriticalSection(lock);
+			LeaveCriticalSection(&lock->m_section);
 		}
 		return true;
 	}
 	if (lock != 0)
 	{
 		--lock->m_count;
-		LeaveCriticalSection(lock);
+		LeaveCriticalSection(&lock->m_section);
 	}
 	return false;
 }

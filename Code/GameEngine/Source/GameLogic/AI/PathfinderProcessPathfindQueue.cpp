@@ -1,4 +1,5 @@
 // cl: /ICode/Libraries/Include /ICode/GameEngine/Source/Common /O1 /DNDEBUG /MD /arch:SSE /G7 /EHsc
+// platformsdk
 // ?ProcessPathfindQueue@Pathfinder@@QAEXXZ (existing pin: callee of GameLogic::update)
 // Retail 0x002F0F07..0x002F11A1 (666 bytes), thiscall void. WorldBuilder twin
 // 0x00D30070 is Pathfinder::ProcessPathfindQueue (pathfinder.cpp asserts
@@ -14,12 +15,11 @@
 // math.h's inline floorf (as the WB twin's floorf/fast_float2long_round
 // parameter stores show); that shape is what places retail's floor-result
 // stores and the quota spill.
+#include <windows.h>
 #include "GameLogicObjectLookupView.h"
 #include "Lib/Coord3D.h"
 #include "../../../../Libraries/Source/profile/profile.h"
 #include <math.h>
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceFrequency(__int64 *);
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceCounter(__int64 *);
 __forceinline long fast_float2long_round(float f)
 {
 	long i;
@@ -233,14 +233,15 @@ void Pathfinder::ProcessPathfindQueue()
   if(obj) {
    AIUpdateInterface *ai=((QueueObjectView *)obj)->ai;
    if(ai) {
-    __int64 startTime=0,endTime=0,freq=0;
+    LARGE_INTEGER startTime,endTime,freq;
+    startTime.QuadPart=0;endTime.QuadPart=0;freq.QuadPart=0;
     if(TheWritableGlobalData->limitMs) {QueryPerformanceFrequency(&freq);QueryPerformanceCounter(&startTime);}
     Profile::StartRange("pathfind");
     ai->slot230(this);
     Profile::StopRange("pathfind");
     if(TheWritableGlobalData->limitMs) {
      QueryPerformanceCounter(&endTime);
-     double elapsed=(double)(endTime-startTime)*1000.0/(double)freq;
+     double elapsed=(double)(endTime.QuadPart-startTime.QuadPart)*1000.0/(double)freq.QuadPart;
      if(elapsed>=TheWritableGlobalData->limitMs)Rva002EBD99(obj,0);
     }
    }

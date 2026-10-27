@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_CRTIMP= /Ireference/shims/bfmealloc
+// platformsdk
 //
 // ?rva005B977B@OnlineHome@AptOnline@@QAEXXZ @0x005B977B 366B
 // Online home screen time-zone refresh, called from the screen constructor
@@ -8,6 +9,7 @@
 // converted zone name inside each branch; spelling the two translate calls
 // that way gives retail's frame homes and argument order (bank 0.96 -> exact).
 
+#include <windows.h>
 #include "unicode_string.h"
 #include "ascii_string.h"
 
@@ -31,12 +33,7 @@ private:
 // buffer measured from native Win32 arguments. BF1 9cb wholehome has
 // same zone abbreviation loop, embedded in a larger player-stat refresh.
 // Target resets12 ticker rows and calls the separately rowed PS request.
-struct HomeSystemTime { unsigned short field[8]; };
-struct HomeTimeZone { long bias; unsigned short standardName[32]; HomeSystemTime standardDate;
- long standardBias; unsigned short daylightName[32]; HomeSystemTime daylightDate; long daylightBias; };
-typedef char HomeZoneSize[sizeof(HomeTimeZone)==172 ? 1:-1];
-extern "C" __declspec(dllimport) unsigned long __stdcall GetTimeZoneInformation(HomeTimeZone *);
-extern "C" __declspec(dllimport) int __stdcall WideCharToMultiByte(unsigned,unsigned long,const unsigned short *,int,char *,int,const char *,int *);
+typedef char HomeZoneSize[sizeof(TIME_ZONE_INFORMATION)==172 ? 1:-1];
 class Rva005B9378 { public: void rva005B9378(int,const UnicodeString &); };
 class BfmeAptWindowManager { public: void bfmeSetText(const AsciiString &,const UnicodeString &,bool); };
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
@@ -52,14 +49,14 @@ void AptOnline::OnlineHome::rva005B977B()
 {
  for(int i=0;i<12;++i)
   reinterpret_cast<Rva005B9378 *>(this)->rva005B9378(i,L"-");
- HomeTimeZone zone;
+ TIME_ZONE_INFORMATION zone;
  unsigned long result=GetTimeZoneInformation(&zone);
  UnicodeString zoneText;
  char buffer[512];
  if(result==0xffffffff) zoneText.format(UnicodeString::TheEmptyString.str());
  else {
-  if(result==2) { WideCharToMultiByte(0,0,zone.daylightName,-1,buffer,512,0,0); zoneText.translate(buffer); }
-  else { WideCharToMultiByte(0,0,zone.standardName,-1,buffer,512,0,0); zoneText.translate(buffer); }
+  if(result==2) { WideCharToMultiByte(0,0,zone.DaylightName,-1,buffer,512,0,0); zoneText.translate(buffer); }
+  else { WideCharToMultiByte(0,0,zone.StandardName,-1,buffer,512,0,0); zoneText.translate(buffer); }
  }
  UnicodeString token,initials;
  while(zoneText.nextToken(&token,L" ")) {

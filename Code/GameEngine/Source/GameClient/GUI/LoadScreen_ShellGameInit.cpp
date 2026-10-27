@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /MD /EHsc
+// platformsdk
 // ?init@Rva00355DC5@@UAEXPAVGameInfo@@@Z @0x00356541 455B: Zero Hour's
 // ShellGameLoadScreen::init (LoadScreen.cpp), vslot 2 of vtable 0x00814E74
 // (class of ??1Rva00355DC5@@UAE@XZ, so the class keeps its address name).
@@ -10,6 +11,7 @@
 // 31) takes two more pointer arguments, passed null here; the donor's
 // function-static firstLoad (TRUE) is data at 0x009BFAA4. BFME2 also runs
 // the FadeWholeScreen transition in reverse once the title image is set.
+#include <windows.h>
 #include "ascii_string.h"
 
 class GameWindow;
@@ -97,9 +99,6 @@ public:
 	virtual void update(int percent);
 };
 
-extern "C" __declspec(dllimport) unsigned int __stdcall timeGetTime();
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long ms);
-
 class ProgressIndicator
 {
 public:
@@ -129,7 +128,7 @@ void Rva00355DC5::init(GameInfo *game)
 {
 	static int firstLoad = 1;
 	GameWindow *win = 0;
-	unsigned int showTime = 0;
+	DWORD showTime = 0;
 	m_win = TheWindowManager->winCreateFromScript(AsciiString("Menus/ShellGameLoadScreen.wnd"));
 	m_win->winHide(false);
 	m_win->winBringToTop();

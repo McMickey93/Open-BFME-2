@@ -1,4 +1,5 @@
 // cl: /EHsc
+// platformsdk
 // ?rva002DC681@Rva002DC267@@QBE_NXZ, retail 0x002DC681, 201 bytes.
 //
 // Save-dir disk-space check via rva002DC267 + GetDiskFreeSpaceExW. Retail
@@ -22,7 +23,7 @@
 // the pair into a single test/ja, dropping the `jb` and the two bytes with it.
 // Written as one disjunction both arms survive and the body is byte-exact:
 //
-//   ok = ((unsigned)(freeBytes >> 32) > 0u) || (freeBytes >= 0xF00000);
+//   ok = ((unsigned)(freeBytes.QuadPart >> 32) > 0u) || (freeBytes.QuadPart >= 0xF00000);
 //
 // Everything else in the bank was already correct: the UnicodeString temporary,
 // the isEmpty guard that only calls set() when the string has data, and the
@@ -30,12 +31,8 @@
 
 typedef int Int;
 typedef unsigned short WideChar;
-#define NULL 0
+#include <windows.h>
 #include "../../../../../../reference/shims/bfme2_ascii/unicode_string.h"
-
-
-extern "C" __declspec(dllimport) Int __stdcall GetDiskFreeSpaceExW(
-	const WideChar *dir, void *freeAvail, void *totalBytes, void *totalFree);
 
 class Rva002DC267
 {
@@ -51,10 +48,11 @@ bool Rva002DC267::rva002DC681() const
 	if (has) {
 		path.set(rva002DC267());
 	}
-	unsigned long long freeBytes = 0;
+	ULARGE_INTEGER freeBytes;
+	freeBytes.QuadPart = 0;
 	bool ok;
 	if (GetDiskFreeSpaceExW(path.str(), &freeBytes, 0, 0) != 0) {
-		ok = ((unsigned)(freeBytes >> 32) > 0u) || (freeBytes >= 0xF00000);
+		ok = ((unsigned)(freeBytes.QuadPart >> 32) > 0u) || (freeBytes.QuadPart >= 0xF00000);
 	} else {
 		ok = true;
 	}
