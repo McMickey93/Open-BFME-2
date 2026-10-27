@@ -3527,7 +3527,7 @@ Clearance: ordinary preview LINKS for the consumer at index 73061d9452; scope is
 Census confirmation: awaiting next census.
 
 ### LINK-060: one address rowed twice; the non-linking copy is an over-claim
-Status: Open (11 retired, leads below). Updated: 2026-10-26; inspected revision: b1071e9a26; index d1f046749a.
+Status: Open (14 retired, leads below). Updated: 2026-10-27; inspected revision: b1071e9a26; index d1f046749a.
 Evidence / affected units: a scan of `reverse/functions.csv` for `matched` rows sharing a `target_rva`
 (notes without alias/ICF/fold/dup-of/object-symbol) against `reverse/link_status.csv` finds addresses
 where one row's unit links and a second row's unit never did. The second row is usually an older
@@ -3553,6 +3553,12 @@ Completed (each `./build.sh` exact on the surviving owner, link_check LINKS for 
 - 0x0020F0B8 `StlSweepW5Rva0020F0B8.cpp` (owner `ParticleSystemDebugDisplay.cpp`, pair<AsciiString, int>
   ctor; ICF aliases in `Rva002214A6Dtor.cpp`, `ParticleSystemManagerRva001FCF11.cpp`) c1775868b0; its
   element copy-ctor pin dropped.
+- 0x00594976 `UDPNonBlocking.cpp` and 0x00594B2E `UDPBroadcast.cpp` (owner `udp.cpp`, ZH
+  SetBlocking/AllowBroadcasts). 0x00594A06 `UDPErrorMap.cpp` was retracted after its two callers
+  (`Transport.cpp`, `Rva0059517FSend.cpp`) were respelled to `UDP::GetStatus`; `udp.cpp` now rows
+  the ZH body itself (commit "Row UDP::GetStatus at 0x00594A06"), dropping its `/alternatename`
+  and the 0x00594A06 pin. link_check 2026-10-27: udp.cpp 1,000 B, Transport.cpp 2,730 B,
+  Rva0059517FSend.cpp 325 B, all LINKS.
 Remaining / next check:
 - 0x0057621A `Rva0057621ACtor.cpp` (4 rows): owner `Rva00575F38Dtor.cpp` rows the Impl ctor and
   funclets $L1049..$L1055, but `__ehhandler` 0x0079B403 and funclets 0x0079B3ED/0x0079B3F8 are rowed
