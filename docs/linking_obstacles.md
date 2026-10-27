@@ -1185,6 +1185,16 @@ Whole-unit clearance and census confirmation remain pending.
   The process exits zero after 3471 seconds, with zero final drift or new
   unresolved references. This subset is cleared in the fixed comparison;
   no current-master census or runtime gain is claimed (LINK-008/017).
+- **Context coefficient initialization (2026-10-27, control `fd9943a126`):**
+  [the native coefficient proof](../reverse/attempt_support/vp6-context-coefficients-link-20261027/readme.md)
+  replaces the existing owner's zero-filled storage with its fifteen native
+  slope/bias pairs. All 120 initialized bytes and eleven data-reference targets
+  agree with retail; the same symbol, type and bound are retained. Normal
+  controls pass the 331-byte context function and its unchanged 556-byte
+  entropy-decoder caller, plus six data rows. Source work finalized at t=8
+  minutes with no new function coverage, name, pin or alias. The fixed comparison
+  against `dc81d055af` is pending; no prospective credit or current-master
+  census gain is claimed. Other motion-vector storage prerequisites remain.
 - **LargeGroupAudio key-tree follow-up (2026-10-26, `e5c5a1787c`):**
   [the whole key-list repair](../reverse/attempt_support/largegroup-keylist-erase-link-20261026.md)
   preserves its 191-byte parent and verifies all 15 rows of the native erase

@@ -21,8 +21,14 @@ extern Rva009B64A0Coef g_bfmeToneCoef[15];		// image 0x00BD9430
 // fills with ClearMmx or the empty generic routine.
 extern void *g_bfmeSlotB48;
 
-// g_bfmeToneCoef: sole definition so this file links (no other TU defines it).
-Rva009B64A0Coef g_bfmeToneCoef[15];
+// Retail's five DC-node equations, three contexts per node.
+Rva009B64A0Coef g_bfmeToneCoef[15] = {
+	{122, 133}, {133, 51}, {142, -16},
+	{0, 1}, {0, 1}, {0, 1},
+	{78, 171}, {169, 71}, {221, -30},
+	{139, 117}, {214, 44}, {246, -3},
+	{168, 79}, {210, 38}, {203, 17},
+};
 
 #define DC_CONTEXT(dstIndex, srcIndex, tap)						\
 	{															\
