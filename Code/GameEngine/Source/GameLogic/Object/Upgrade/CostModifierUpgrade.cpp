@@ -375,7 +375,7 @@ CostModifierUpgradeModuleData::CostModifierUpgradeModuleData()
 
 // tu-skeleton: 0x004B5CE9 34B ?buildFieldParse@CostModifierUpgradeModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataGetterBuildFieldParse.cpp (not merged yet)
 
-// tu-skeleton: 0x0078ED59 13B ?Rva0078ED59ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp (not merged yet)
+// tu-skeleton: 0x0078ED59 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078ED66 10B __ehhandler$?getModuleNameKey@CostModifierUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradePoolKey.cpp (not merged yet)
 

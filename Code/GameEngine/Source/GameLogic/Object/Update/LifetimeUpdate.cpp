@@ -270,7 +270,7 @@ UpdateSleepTime LifetimeUpdate::update()
 
 // tu-skeleton: 0x003A4B58 165B ??0LifetimeUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00781B83 13B ?Rva00781B83ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E028xx.cpp (not merged yet)
+// tu-skeleton: 0x00781B83 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x00781B90 10B __ehhandler$?getModuleNameKey@LifetimeUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdatePoolKey.cpp (not merged yet)
 

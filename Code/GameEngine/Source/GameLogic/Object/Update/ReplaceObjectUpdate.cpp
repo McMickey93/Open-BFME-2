@@ -536,7 +536,7 @@ void ReplaceObjectUpdate::rva004B2C00(Object *obj, Rva004B2A9D *entry)
 
 // tu-skeleton: 0x004B2E5D 28B ??_GReplaceObjectUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdateModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078E9AF 13B ?Rva0078E9AFClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Dxx.cpp (not merged yet)
+// tu-skeleton: 0x0078E9AF 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E9BC 10B __ehhandler$?getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp (not merged yet)
 

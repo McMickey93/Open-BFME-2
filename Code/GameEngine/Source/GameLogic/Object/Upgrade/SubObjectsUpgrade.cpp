@@ -495,7 +495,7 @@ void __cdecl rva004B5293(INI *ini, void *instance, void *store, const void *user
 
 // tu-skeleton: 0x004B52EB 34B ?buildFieldParse@SubObjectsUpgradeModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
 
-// tu-skeleton: 0x0078EC73 13B ?Rva0078EC73ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp (not merged yet)
+// tu-skeleton: 0x0078EC73 13B $L310 -- matched in Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078EC80 10B __ehhandler$?getModuleNameKey@SubObjectsUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp (not merged yet)
 

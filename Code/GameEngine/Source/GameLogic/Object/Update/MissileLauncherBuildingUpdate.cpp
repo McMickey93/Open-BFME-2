@@ -345,7 +345,7 @@ void StoreObjectsSpecialPower::triggerAbilityEffect()
 		throw 1;
 }
 
-// tu-skeleton: 0x00790A3D 13B ?Rva00790A3DClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E043xx.cpp (not merged yet)
+// tu-skeleton: 0x00790A3D 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/StoreObjectsSpecialPowerPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x00790A4A 10B __ehhandler$?getModuleNameKey@StoreObjectsSpecialPower@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/StoreObjectsSpecialPowerPoolKey.cpp (not merged yet)
 

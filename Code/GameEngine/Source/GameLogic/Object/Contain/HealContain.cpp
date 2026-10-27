@@ -272,6 +272,6 @@ int Rva00466B3FGet(void)
 
 // tu-skeleton: 0x00466BE9 27B ?xfer@HealContain@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/HealContainXfer.cpp (not merged yet)
 
-// tu-skeleton: 0x0078AD20 13B ?Rva0078AD20ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E036xx.cpp (not merged yet)
+// tu-skeleton: 0x0078AD20 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078AD2D 10B __ehhandler$?getModuleNameKey@HealContain@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp (not merged yet)
