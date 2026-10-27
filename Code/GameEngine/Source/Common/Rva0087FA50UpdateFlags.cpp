@@ -3,7 +3,7 @@
 typedef int Int;
 typedef unsigned short UnsignedShort;
 
-extern "C" int __cdecl memcmp(const void *buf1, const void *buf2, unsigned int count);
+#include <string.h>
 
 
 struct BfmeAsciiDataF9

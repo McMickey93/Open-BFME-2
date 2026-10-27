@@ -5,7 +5,7 @@
 #include <new>
 // stlport
 #include <vector>
-extern "C" void * __cdecl memset(void*,int,unsigned int);
+#include <string.h>
 // WB name lead5BFD35 identifies StatsReporter::ProcessStrategicSinglePlayerGame.
 // Target bytes establish the player guard3C5, lost flag3C4, side owner40,
 // scorekeeper2C8, logic players8C and frameFC. Unknown counter fields retain
