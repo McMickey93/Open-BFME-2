@@ -195,12 +195,12 @@ class DynamicVectorClass : public VectorClass<T>
 {
 };
 
-static int texture_memory;
-static int texture_count;
-static int lightmap_texture_memory;
-static int lightmap_texture_count;
-static int procedural_texture_memory;
-static int procedural_texture_count;
+extern "C" int texture_memory;
+extern "C" { int texture_count; }
+extern "C" int lightmap_texture_memory;
+extern "C" int lightmap_texture_count;
+extern "C" int procedural_texture_memory;
+extern "C" int procedural_texture_count;
 static int record_count;
 static int texture_change_count;
 static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;

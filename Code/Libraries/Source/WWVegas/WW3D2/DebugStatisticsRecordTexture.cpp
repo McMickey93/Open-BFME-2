@@ -207,16 +207,19 @@ public:
 	static void Record_Texture(RefCountPtr<TextureClass> const &t);
 };
 
-static int procedural_texture_memory;
+// Share the six current-frame texture counters with their reset/reporting
+// owners. C linkage preserves the existing data-ledger names. The separate
+// record/change counters still need their native load ordering reconciled.
+extern "C" int procedural_texture_memory;
 static int texture_change_count;
-static int lightmap_texture_memory;
+extern "C" int lightmap_texture_memory;
 static int record_count;
-static int texture_count;
-static int texture_memory;
-static int lightmap_texture_count;
+extern "C" int texture_count;
+extern "C" int texture_memory;
+extern "C" int lightmap_texture_count;
 // Shared with the mode setter/getter in statistics.cpp (retail RVA 0x009EE8F4).
 extern Debug_Statistics::RecordTextureMode record_texture_mode;
-static int procedural_texture_count;
+extern "C" int procedural_texture_count;
 static RefCountPtr<TextureClass> latest_texture;
 static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
 

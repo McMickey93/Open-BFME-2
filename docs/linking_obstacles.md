@@ -1110,6 +1110,18 @@ Whole-unit clearance and census confirmation remain pending.
   Eva's macro/parent-traversing include inventory, the LINK-008 prerequisite.
   No verifier or include-path change is made in this scalar repair.
 
+  Follow-up (2026-10-27, control `83f299b390`): the reset provider and both
+  consumers now share six current-frame counters through their existing
+  data-ledger definitions. [Scoped evidence](../reverse/attempt_support/texture-current-frame-data-20261027.md)
+  records twelve owning-tool retirements, 31/31 matched rows, four EXACT EH
+  graphs and all 58 executable sections unchanged in bytes and relocation
+  names. Three strict preparation receipts pass; ordinary previews preserve
+  all 2,502 authored bytes against `bf3dd31211`. Sharing record/change counters
+  changes the recording parent's load ordering; both failed trials were
+  restored. Those two counters and vector/handle/string lifetime ownership
+  remain prerequisites. This clears only the six-counter binding subset,
+  without family closure, census gain or an image-ownership claim.
+
 - **Evidence / scope:** the [linking handoff](../reverse/attempt_support/link-seat-20261025-final.md)
   identifies missing shader/filter root objects and the unowned 52-byte
   ScreenBWFilter group at `0x009B5B54`. Complete native objects and vtables are
@@ -1985,6 +1997,18 @@ separate strict receipt limitation encountered there.
   their declaration/settings prerequisites. This clears only this bounded
   composition; exact-base batch closure and census confirmation remain pending.
   No new linked bytes or image-ownership result is claimed.
+
+- **Current-frame texture-counter probe (2026-10-27, `83f299b390`):**
+  [The scoped audit](../reverse/attempt_support/texture-current-frame-data-20261027.md)
+  has three strict current receipts, but index `bf3dd31211` predates the source
+  base. Its current-ledger overlay retires 293 indexed objects and reports
+  1,663 provisional provider disappearances plus one wrong selected hashtable
+  provider, with no lost-byte lines. The `003A37FA` constructor is now rowed in
+  Team.cpp; the old indexed STLSweepW5 provider is retired and the bounded
+  overlay selects ArmorHashMapCtor003A393A.cpp. No hashtable definition or
+  source path changes in the counter patch. Sample disappeared methods remain
+  rowed in CommandXlat.cpp and PoisonedBehavior.cpp. Reconcile the full current
+  provider set in the next census; this probe cannot establish wider closure.
 
 - **Camera-shake bounded composition (2026-10-26, input `6db4bffb3e`):**
   [The consolidation audit](../reverse/attempt_support/camera-shake-consolidation-20261026-codexb4.md)
@@ -4427,6 +4451,14 @@ keys are retired. Existing shadow data findings and LINK-008's strict-receipt
 prerequisite remain. [Scoped evidence](../reverse/attempt_support/shadow-marker-cleanup-20261027-codexb4.md).
 This confirms the landed repair for this caller; census confirmation remains
 pending, with no new linked-byte gain claimed.
+
+Follow-up verification (2026-10-27, `83f299b390`): the default queue served
+W3DUtility.cpp's historical thread-wrapper selected-copy blocker. All five
+utility rows byte-verify. Paired with the current BfmeDX8ThreadLock.cpp and
+BfmeDX8ThreadCheck.cpp providers, all three preview LINKS (1,502, 247 and 31
+authored bytes). [Scoped checks](../reverse/attempt_support/texture-current-frame-data-20261027.md)
+confirm this caller needs no further source repair; census confirmation remains
+pending.
 
 ### LINK-110: a class view omits its base's out-of-line destructor, so an unused implicit inline dtor references an unprovided grand-base
 Status: Open (SubObjectsUpgrade subset repaired). Updated: 2026-10-27; inspected revision: 952d800df1; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.
