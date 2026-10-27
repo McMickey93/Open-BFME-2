@@ -12372,7 +12372,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x008686BC,8,.rdata,vtable,??_7Rva0052B668@@6B@,,literal,??_7Rva0052B668@@6B@;_vtbl_00C686BC,0,3
 0x008686C4,36,.rdata,string,??_C@_0CB@HENHCICK@Unknown?5BuildingNugget?5type?5?8?$CFs?8@,,literal,,0,1
 0x008686E8,24,.rdata,string,??_C@_0M@DENCONKF@LWPlayerDef?$AA@,,literal,,0,1
-0x00868700,128,.rdata,global,_s_file,Code/GameEngine/Source/Common/System/Rva0052C06CGet.cpp,owned,,1,1
+0x00868700,128,.rdata,global,_s_file,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,owned,,1,1
 0x00868780,16,.rdata,vtable,??_7Rva0052CFB1@@6B@,,literal,,0,1
 0x00868790,280,.rdata,string,??_C@_0BE@NJOBCHPG@LivingWorldCampaign?$AA@,,literal,,0,1
 0x008688A8,240,.rdata,global,?LivingWorldCampaignFields@@3QBUFieldParse@@B,,unowned,,0,1

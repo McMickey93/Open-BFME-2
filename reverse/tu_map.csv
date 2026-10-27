@@ -40853,7 +40853,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0052BA0A,161,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldPlayer.cpp,proposed,K,K=Rva002E0A0A noncontiguous,Code/GameEngine/Source/Common/Rva002E0A0AXfer.cpp
 0x0052BAAB,7,code,,,-,,Code/GameEngine/Source/Common/Disp32ByteGetters.cpp
 0x0052BAB2,15,code,,,-,,Code/GameEngine/Source/Common/Rva0052BAB2Getter.cpp
-0x0052BAC1,61,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,U,N=Code/GameEngine/Source/Common/LivingWorldCampaign.cpp noncontiguous,Code/GameEngine/Source/Common/LivingWorldCampaign_AdjustStartingPositionForScenario.cpp
+0x0052BAC1,61,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,U,N=Code/GameEngine/Source/Common/LivingWorldCampaign.cpp noncontiguous,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp
 0x0052BAFE,42,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BAC1..0x0052BB28 noncontiguous,Code/GameEngine/Source/Common/LivingWorldCampaign_xfer.cpp
 0x0052BB28,12,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BAC1..0x0052BB34 noncontiguous,Code/GameEngine/Source/Common/Disp8DivAvgDwordGetters.cpp
 0x0052BB34,57,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BAC1..0x0052BB6D noncontiguous,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp
@@ -40882,7 +40882,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0052BFB5,26,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052BFE1 noncontiguous,Code/GameEngine/Source/Common/System/Rva0052BF33DestroyTagged.cpp
 0x0052BFE1,85,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052C036 noncontiguous,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp
 0x0052C036,54,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052C06C noncontiguous,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp
-0x0052C06C,92,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052C0C8 noncontiguous,Code/GameEngine/Source/Common/System/Rva0052C06CGet.cpp
+0x0052C06C,92,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052C0C8 noncontiguous,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp
 0x0052C0C8,81,code-unledgered,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052C119 noncontiguous,
 0x0052C119,72,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052C161 noncontiguous,Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva0052C119CurrentEntry.cpp
 0x0052C161,117,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp,proposed,C,C=0x0052BBF3..0x0052C1D6 noncontiguous,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionCampaignInitPathfinder.cpp
