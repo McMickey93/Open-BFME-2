@@ -40308,8 +40308,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0051904F,280,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp
 0x00519167,911,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsRva00519167.cpp
 0x005194F6,2344,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp
-0x00519E1E,2123,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsInitGadgets.cpp
-0x0051A669,293,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsResolutionText.cpp
+0x00519E1E,2123,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp
+0x0051A669,293,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptions.cpp
 0x0051A78E,1877,code-unledgered,,,-,,
 0x0051AEE3,6,code,,,-,,Code/GameEngine/Source/Common/ConstIntGetters4Addr.cpp
 0x0051AEE9,6,code,,,-,,Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp
