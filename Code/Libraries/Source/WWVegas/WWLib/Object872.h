@@ -6,7 +6,7 @@
 #include <vector>
 #include <stddef.h>
 
-extern "C" void *memcpy(void *, const void *, unsigned);
+#include <string.h>
 
 class BfmeObject872Header
 {
