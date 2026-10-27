@@ -655,7 +655,6 @@ Code/GameEngine/Source/Common/VtableSlotBodiesR3.cpp	drop-in candidate	same	1	1	
 Code/GameEngine/Source/Common/namekey_hash_lowercase.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<ctype.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	tolower:same
 Code/GameEngine/Source/Common/parseModelConditionFlags.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strnicmp:same
 Code/GameEngine/Source/Common/rva00420254Rva00420254Farm.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
-Code/GameEngine/Source/Common/w3dAllocateString.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/GameClient/CameraMarkerListFind.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcmp:same
 Code/GameEngine/Source/GameClient/DisplayMovieOpenRva0025C97E.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameClient/Drawable_rva002736BA.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same

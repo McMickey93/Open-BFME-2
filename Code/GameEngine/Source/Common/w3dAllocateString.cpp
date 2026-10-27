@@ -8,7 +8,7 @@
 // Honest address-derived names; boundary verified (push esi at 0xAAD88,
 // xor/pop/ret at end).
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class Rva000A97A9
 {
