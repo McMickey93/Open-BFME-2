@@ -1,4 +1,7 @@
-// cl: -Ireference/open-bfme-1/game/GameEngine/Source/Common
+// cl: /Ivendor /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS -Ireference/open-bfme-1/game/GameEngine/Source/Common
+// stlport
+#include <stlport/stl/_algobase.h>
+#include <vector>
 // Eight element copy loops.
 //
 // Each turns a pointer range into a count, walks it, and hands every source
@@ -23,15 +26,13 @@ class MixFileCreator
 public:
 	struct FileInfoStruct;
 };
+// The assignments are supplied by the existing matched vector units.
 namespace _STL
 {
-template <class T> class allocator;
-template <class T, class A> class vector
-{
-public:
-	vector &operator=(const vector &that);
-	char m_bfmeBytes[0x0C];
-};
+template <> vector<Rva0006447DRecord, allocator<Rva0006447DRecord> > &
+vector<Rva0006447DRecord, allocator<Rva0006447DRecord> >::operator=(const vector &);
+template <> vector<MixFileCreator::FileInfoStruct, allocator<MixFileCreator::FileInfoStruct> > &
+vector<MixFileCreator::FileInfoStruct, allocator<MixFileCreator::FileInfoStruct> >::operator=(const vector &);
 }
 typedef _STL::vector<Rva0006447DRecord, _STL::allocator<Rva0006447DRecord> > BfmeCopySubA;
 typedef _STL::vector<MixFileCreator::FileInfoStruct, _STL::allocator<MixFileCreator::FileInfoStruct> > BfmeCopySubB;

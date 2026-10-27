@@ -32,3 +32,12 @@ BFME 1 official upstream was fetched: checked-out clean e74410b3738a versus
 upstream 9116bca34d71, three source-only commits ahead. The reference scope is
 held by another worker, so pinned inputs were retained and no freshness success
 receipt was written. No maintainer-only runner or GitHub API was invoked.
+
+## Common donor prerequisite
+
+Replace its private 12-byte vector with STLport and declaration-only assignment
+specializations. Both native assignment calls retain their original names.
+./build.sh donor: 1/1 exact; declared-unmatched clean; ordinary preview retains
+LINKS 112 -> 112 B. The object defines only the existing 112-byte copy body
+(digest 62dd9c09fcc7), and references only the two existing vector assignments.
+No emitted helper/provider, source-path or protected-register growth.
