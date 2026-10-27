@@ -326,6 +326,8 @@ Evidence / affected units: the unchanged W4 fill-insert units `000C225D`, `00152
 
 Completed: all listed units were checked with their current native provider objects, and all assigned rows pass the normal byte gate. No vector source edit is retained. The recorded `/Ob0` forwarder, overflow-suppression and 0x00587C40 exception-contract failures were not repeated. Remaining / next check: reconcile each native element and its existing row owners together through the naming lane, then recheck the whole family. Preserve the three distinct 0x0014F4xx classes. No missing native match, admissible new fold pin or shared-header-only repair was established. Clearance and census confirmation remain pending.
 
+**`StlSweepW4Rva003F53DA.cpp` element is ArmySummary (2026-10-28, seat halilkkaya-lk3, inspected `91fe563172`):** with 0x003F40EF now rowed as `swap<ArmySummary>` (LINK-083), the 104-byte family behind 0x003F53DA is identified by its own callees, not by stride alone. Target facts: 0x003F53DA calls the ArmySummary copy constructor 0x0040E96D and virtual destructor 0x0040E499; its `fill` 0x003F4146 calls `ArmySummary::operator=` 0x0040EAED; its `__copy_backward_ptrs` 0x003F447F reaches `__copy_backward` 0x003F41BE; its `__uninitialized_copy` 0x003F417E and `uninitialized_fill_n` 0x003F4163 reach `_Construct` 0x003B8AD8 (which calls 0x0040E96D) and `__uninitialized_fill_n` 0x003B8B05; and its `_M_insert_overflow` 0x003B9184 calls the same 0x003F417E/0x003B8AD8/0x003B8B05 helpers plus `_M_clear` 0x003B90BD. These rows are spelled over `BfmePod104`, `BfmeAssignRecord104` and `Rva003F53DAElement`; they are one `vector<ArmySummary>` family. Remaining: one family respell to `ArmySummary` (rows, sources, the folded const/non-const `__uninitialized_copy` at 0x003F417E needs both names), then instantiate `vector<ArmySummary>::_M_fill_insert` in the sweep unit. No row changed in this pass.
+
 #### Assigned R3 container identities, 2026-10-26
 
 Status: Blocked on coherent element and row-name reconciliation. Inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`; ordinary-preview index `d1f046749a`, rules `retail-truth-4`. The current-provider checks and native REL32 evidence are in `build/c136-r3sweep/before-expanded-cohort.log`, `after-expanded-cohort.log`, `native-evidence-03.log` and `native-rows.json`; [the worker handoff](../build/link-report.md) maps the full scope and gates.
@@ -2012,7 +2014,11 @@ Updated: 2026-10-25; inspected revision: `4f111811802`.**
 - **Historical remaining / next check:** the next census confirms the six units. INI.cpp's own link
   also depends on the separate `__lower_bound` provider repair.
 - **Clearance:** preview scope only (five of six units against the f995f30157 index).
-- **Census confirmation:** awaiting the next census.
+- **Census confirmation:** confirmed by the census at `73061d9452` (2026-10-27 14:34,
+  `reverse/link_status.csv`): INI.cpp, SidesListDataChunks.cpp and the three nocase-set
+  owner units (`stlport_nocase_asciistring_set_insert.cpp`, `..._set_touch.cpp`,
+  `stlport_rb_tree_insert_unique_nocase.cpp`) are linked. Checked 2026-10-28 by seat
+  halilkkaya-lk3; `Rva006047F3Family.cpp` no longer exists under that path.
 
 ### LINK-014: the census at f995f30157's other lost units (htree, SpecialPower, FX, BfmeE8, INI _M_find, BfmeConv499)
 
@@ -2064,7 +2070,12 @@ Updated: 2026-10-25; inspected revision: `4f111811802`.**
   repaired scopes in the next normal census. OCL's seven unmatched donor
   methods remain separate reconstruction debt.
 - **Clearance:** preview scope only (the units listed above and the 14 ports).
-- **Census confirmation:** awaiting the next census.
+- **Census confirmation:** confirmed by the census at `73061d9452` (2026-10-27 14:34):
+  htree.cpp, SpecialPowerModuleCtor.cpp, SpecialPowerModuleDtor_Unresolved.cpp,
+  OCLSpecialPower.cpp, WeaponModeSpecialPowerUpdateCtorThunk.cpp,
+  FXParticleSystemDefaultTemplateDtor.cpp, the three `stlport_vector_e8_*` units,
+  StlSweepR3Rva0002CB7D.cpp and BfmeConv499.cpp are linked; no special-power port
+  appears among the 217 census-unlinked units. Checked 2026-10-28 by seat halilkkaya-lk3.
 
 #### Current-provider follow-up, 2026-10-25
 
@@ -2980,7 +2991,10 @@ Remaining / next check:
 - The `_Destroy<RvaNRecord *>` pins in `reverse/symbols.csv` for the six repaired units (incl.
   `_Destroy<Rva00214B22Record *>` at 0x00214B09) look unreferenced now; check every object before dropping them through the register's path.
 Clearance: the five units preview LINKS against index 47e030bafc with current objects; 0x00214B22 previews
-LINKS against index d1f046749a with current objects. Census confirmation: awaiting.
+LINKS against index d1f046749a with current objects. Census confirmation: all six repaired units
+(0x004F7D7F, 0x005F9813, 0x00577EB2, 0x005E2857, 0x0022DCDA, 0x00214B22) are linked in the census at
+`73061d9452` (2026-10-27 14:34); `StlSweepR3Rva000B0298.cpp` was retired as a LINK-060 duplicate
+(78f462d97d). Checked 2026-10-28 by seat halilkkaya-lk3.
 
 **Assigned `_M_clear` recheck (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `StlSweepR3Rva000B0298.cpp` remains U5/L1/S1 with current providers. Its 30-byte row still calls 0x000AFF52, whose 25-byte owner remains spelled `__destroy_aux<Rva00111B25Record*>`; the second 0x000B0298 row in Rva000B0298Clear.cpp remains present. Both provider and duplicate owner preview LINKS. No source edit or repeat of the failed forced-inline forwarding recipe was made. Raw native evidence and paired previews are in `build/c136-r3sweep/`; `build/link-report.md` maps the receipts. Resolve the duplicate row and destroy signature together before the next repair; clearance and census confirmation remain pending.
 
@@ -3056,6 +3070,17 @@ BfmeAssignRecord52 --dry-run` refuses: BfmeAssignRecord52 is itself a placeholde
 needs a real element name (or a sanctioned merge path) first. No edit made.
 
 **Assigned-family confirmation (2026-10-26, inspected `58598f540fd3c84610304b3659ed382a4c05acca`):** both `StlSweepW4Rva001EBEAB.cpp` and `StlSweepW4Rva002BC47D.cpp` remain U3/L1/S1 with current native providers against index `d1f046749a`. Their retail calls still reach the CarryoverUnit and split 52-byte-record owners documented above. No source change or repeat of the failed forwarder/overflow-suppression trials was made. `build/c136-w4sweep/native-evidence.log`, `provider-rows.json` and the paired ordinary-preview logs retain the native references and row homes; all their rows pass `final-all-assigned-build.log`. Next check remains coherent element/row reconciliation, including the real `CarryoverUnit` name where independently supported, rather than adding more same-address placeholder names. Clearance and census confirmation remain pending.
+
+**Scope check (2026-10-28, seat halilkkaya-lk3, inspected `91fe563172`, index `73061d9452`):**
+StlSweepW4Rva001EBEAB.cpp and StlSweepW4Rva002BC47D.cpp are still unlinked in the census (U3/C1/S1
+each). The `vector<CarryoverUnit>` respell was not attempted: one of its source homes,
+`stlport_pod_vector_bodies.cpp` (the `BfmePod172` push_back, allocate, `__uninitialized_copy`,
+`__uninitialized_fill_n` and `uninitialized_fill_n` rows), is file-claimed by another seat. The plan
+needs one more fact than the entry above lists: the generic `_M_fill_insert` instantiation calls the
+non-const `__uninitialized_copy<CarryoverUnit *, CarryoverUnit *>`, while 0x001EBA30 is rowed as the
+const-first instantiation that `_M_allocate_and_copy<const T *>` uses, so the respell must give the folded body both names
+(fold-proof, not a hand pin). The same shape now applies to the 104-byte `vector<ArmySummary>` family
+(LINK-002, 0x003F53DA), whose element is established by the real-named `swap<ArmySummary>` row.
 
 ### LINK-041: 23 units lost `TheSkirmishGameInfo` after their declarations were respelled `GameInfo *`
 
@@ -3588,6 +3613,13 @@ funclets) together with 0x0052C823, then point `Rva0056616BCopyDeferred.cpp`'s `
 `vector<Rva003A6F70>`; re-check the BfmePod28 `selected` names in the same provider the same way.
 Clearance: pending.
 Census confirmation: not claimed.
+
+**Census check (2026-10-28, seat halilkkaya-lk3):** the census at `73061d9452` (2026-10-27 14:34)
+records `Rva0056616BCopyDeferred.cpp`, `Rva0056616BCopy.cpp` and `stlport_pod_noexc_deferred_copies.cpp`
+as linked, so the Rva003A6F70 retyping inherited by `docs/linking_targets.md` (2026-10-26) is
+census-confirmed for those three units. The entry stays open only for the BfmePod28 `selected` names
+noted above (`stlport_pod28_vector_resize_value.cpp` is still unresolved on
+`vector<BfmePod28>::_M_fill_insert`).
 
 ### LINK-070: stlport_float_format keeps its own 279-byte narrow forward-iterator append
 
@@ -4264,7 +4296,9 @@ no new census result or missing retail body is claimed.
   (`basic_string<char>::erase`) and 0x0002A610 / 0x0002A730 (`BfmeStrV24::bfmeReplaceV24`, last
   parameter spelled `int` where the caller passes a tag reference). Calling those rows by type means
   stubbing `basic_string<char>` in a unit that stubs its own STL; frame-slot effects under /Ob1 untested.
-- **Census confirmation:** awaiting the next census.
+- **Census confirmation:** the K9 repairs (00218FC2, 00058A86, 0002CCC3, 002BFA86, 003F318C,
+  00332613, 00337D21, 00212A16) are linked in the census at `73061d9452` (2026-10-27 14:34);
+  0051F7AD (below) was still unlinked there and previews LINKS. Checked 2026-10-28.
 
 **Assigned R3 emission cleanup (2026-10-27, inspected `97c23353111e60304b56434c02d20bee3465d83f`, ordinary-preview index `5ce093a71a`, retail-truth-4):** `StlSweepR3Rva003F40EF.cpp` now instantiates only its rowed `swap` instead of uninitialized-copy, fill, sort and heap algorithms. Both existing rows remain exact, including the 75-byte parent and its 10-byte EH handler; EH is EXACT. Its unrelated `_Construct` and comparison unresolveds disappear, changing U5 to U3. The remaining native callees are the already rowed ArmySummary copy at 0x0040E96D (384 B), assignment at 0x0040EAED (399 B) and destructor at 0x0040E499 (155 B), so the row and consumer names need a coordinated naming-lane repair. `StlSweepR3Rva00627B10.cpp` now instantiates only its rowed comparator `make_heap`, retaining its 28-byte row and U4/L1/S1. Its native callee 0x006279B0 is already rowed as `push_heap<S4SortElem24 *, S4Cmp009F4BF0>` (93 B); the opaque record/algorithm family is still unresolved. Both units and `StlSweepR3Rva0051F7AD.cpp` drop their unused unsigned-max optimization blocks, removing nine pragma occurrences. The vector-assignment unit retains its original early `_algobase.h` include: removing that include changes the 206-byte row, whereas removing only the unused optimization block preserves it. Its U3/L2/S2 and native 0x004EE233, 0x004EE540, 0x0051EC31, 0x0052C37A and 0x004EE1E2 provider prerequisites remain. No row, pin or cross-instantiation cast changed. The 153-unit current-provider comparison adds no blocker and preserves every previously linking unit. Only the two unrelated swap blocker names are cleared in ordinary-preview scope; census confirmation pending. No assigned unit is fully cleared.
 
