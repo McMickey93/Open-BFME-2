@@ -107,8 +107,17 @@ are the four animation donors. Combined old-path/basename searches find no
 active tools, hooks, workflow, include, build/configuration or source-registry
 consumer. The remaining seed provenance comments, old census source records
 and spiral-math attempt evidence are historical references and remain intact.
-All repointed ledger sources are tracked. Final publication-range audit is
-recorded with the publication handoff if rebasing changes that range.
+All repointed ledger sources are tracked. Final publication audit after the clean rebase covers
+`75b39b52832cbbec8327db99b454d656d6c1586c..3939a7047c36f019527ece58e18951209702ac10`
+(all 11 pending commits, including the inherited data repairs). There are
+exactly four source removals and no other path move in that range. The same
+combined old-path/basename search includes root build/configuration files;
+the only additional occurrence is a historical re_attempts.log entry. No
+active consumer needs an edit. The pulled source, build and merger inputs
+for this animation group are unchanged, and check_csv passes after rebase.
+AGENTS.md changed upstream; it was reread immediately. Its added source-file
+headline makes this four-file reduction source-recovery progress; linked and
+ownership figures still await their normal measurements.
 
 No census, linked-byte or image-ownership gain is claimed. No nightly, link
 cycle or smoke runner was started.
