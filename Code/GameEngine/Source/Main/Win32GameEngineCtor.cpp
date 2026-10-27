@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ??0Win32GameEngine@@QAE@XZ
 // retail 0x00041D41, 29 bytes. Dedicated shard.
@@ -9,7 +10,7 @@
 // SetErrorMode resolves via its kernel32 import. Shard (not graft into
 // CreateGameEngine.cpp) so the landed parent keeps calling out-of-line.
 
-extern "C" __declspec(dllimport) unsigned int __stdcall SetErrorMode(unsigned int mode);
+#include <windows.h>
 
 class GameEngine
 {

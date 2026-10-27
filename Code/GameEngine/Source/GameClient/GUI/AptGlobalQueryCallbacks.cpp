@@ -8,8 +8,6 @@
 // The same registration binds the global callbacks ("CloseWindow",
 // "PlaySound", "OnClickThroughPress" ...) through the holder 0x0023E8D8.
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-
 // TheGlobalData's +0x9D4 (the demo kind the queries compare against).
 class GlobalData;
 extern class GlobalData *TheWritableGlobalData;
@@ -24,6 +22,7 @@ struct AptGlobalQueryData
 extern unsigned char g_Va00E0302C;
 
 #include "Common/BfmeAudioEventPrefix136.h"
+#include <string.h>
 
 // The Apt window manager's rowed byte setter 0x00222479 (closing the
 // current window).

@@ -1,4 +1,5 @@
 // cl: /Oi- /Ob1 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 // Donor: reference/open-bfme-1/Code/GameEngineDevice/Source/MilesAudioDevice/
 // MilesAudioManagerStopAudio.cpp supplies stopAudio identity and three-list structure.
@@ -15,6 +16,7 @@
 // Ref assignment exactly shares the already recovered 0x239099 body.
 
 #include <list>
+#include <windows.h>
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.
 namespace _STL {
@@ -31,9 +33,6 @@ extern "C" __declspec(dllimport) void __stdcall AIL_stop_sample(void *sample);
 extern "C" __declspec(dllimport) void *__stdcall AIL_register_3D_EOS_callback(
 	void *sample, void *callback);
 extern "C" __declspec(dllimport) void __stdcall AIL_stop_3D_sample(void *sample);
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(
-	long volatile *value);
-
 enum AudioAffect
 {
 	AudioAffect_Music = 0x01,

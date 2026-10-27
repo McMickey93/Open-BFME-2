@@ -12,8 +12,7 @@
 // loop induction variable in EBX and the array base in EDI so the allocator
 // saves EBX and spills the base exactly as retail does.
 #include <string.h>
-
-extern "C" int sprintf(char *buffer, const char *format, ...);
+#include <stdio.h>
 
 // g_00C63E7C was the retail address alias (RVA 0x00863E7C) of the constant "V"; the literal is the source.
 // g_00CE3648 was the retail address alias (RVA 0x008E3648) of the constant "N"; the literal is the source.

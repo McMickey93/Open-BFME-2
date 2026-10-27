@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX
+// platformsdk
 //
 // ?popQueue0@BFMENetwork@@UAE_NPAVBFMENetworkQueueItem@@@Z
 // retail 0x00557D98, 99 bytes. Dedicated TU ported from the Open-BFME-1
@@ -8,6 +9,7 @@
 // unclaimed .text). Only the placed body is defined here; the donor's
 // other definitions are omitted.
 #include <new>
+#include <windows.h>
 
 typedef bool Bool;
 
@@ -390,8 +392,6 @@ class BFMENetworkDestructorShim
 public:
 	void destroy();
 };
-
-extern "C" __declspec(dllimport) int __stdcall ReleaseMutex(void *handle);
 
 class BfmeAwakenDebug;
 extern BfmeAwakenDebug *TheBfmeAwakenDebug;

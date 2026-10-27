@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // Retail 0x00449745, 167 bytes. LANAPI vtable slot 24 (vtable 0x0083E680,
 // class of ??1LANAPI@@UAE@XZ).
 // ?RequestGameStartTimer@LANAPI@@UAEXI@Z
@@ -13,8 +14,6 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef bool Bool;
 typedef unsigned char UnsignedByte;
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 struct BfmeNetAddress
 {
@@ -32,6 +31,7 @@ private:
 };
 
 #include "../../Include/GameNetwork/Transport.h"
+#include <windows.h>
 
 #pragma pack(push, 1)
 struct LANMessage

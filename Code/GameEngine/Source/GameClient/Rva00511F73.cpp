@@ -2,6 +2,7 @@
 // ?Rva00511F73Run@@YAXXZ @0x00511F73 141B evidence: calls Save 0x00511730 StringBase ctor releaseBuffer RemoveCommandMap RemoveExternHandler Get 0x00381452 erase 0x002B7250; strings AptMessenger OnMessengerBttn IsOpen; global TheRva00222A8BTarget; g_00E048C4
 // Free function saving gadget then AptMessenger lookups via AsciiString locals then erase via Get.
 #include "ascii_string.h"
+#include <new>
 void __cdecl Rva00511730(int unused);
 class Rva00224455
 {
@@ -55,7 +56,6 @@ void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C*);
 // only read the function pointer, so the pointer temporary and the argument
 // save slot are shared by both registrations (frame 0x10); declared out of
 // line, cl keeps them apart (frame 0x14).
-void *__cdecl operator new(unsigned int);
 struct Rva00080221RefImpl { virtual ~Rva00080221RefImpl() {} int m_ref; Rva00080221RefImpl() : m_ref(0) {} };
 class Rva0023E8D8Impl : public Rva00080221RefImpl { public: void *m_func; Rva0023E8D8Impl(void *p) { m_func = *(void **)p; } };
 class Rva0023E8D8 { Rva0023E8D8Impl *m_ptr; public: __declspec(noinline) Rva0023E8D8(void *p) { Rva0023E8D8Impl *q = new Rva0023E8D8Impl(p); m_ptr = q; if (q) ++q->m_ref; } };

@@ -1,6 +1,7 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 // ?rva00594976@UDP@@QAEHH@Z @ 0x00594976 53B evidence: UDP ioctlsocket FIONBIO 0x8004667e via IAT wsock32; neighbours udp UDPErrorMap share flags; caller 0x00594C05 pushes 0
-extern "C" __declspec(dllimport) int __stdcall ioctlsocket(unsigned int s, long cmd, unsigned long *argp);
+#include <WinSock2.h>
 
 class UDP
 {

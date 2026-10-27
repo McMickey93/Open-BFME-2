@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /MD /EHsc /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS
+// platformsdk
 // stlport
 // ?rva000A8437@AudioFileCache@@QAEKXZ @0x000A8437 238B: Miles cache loader thread. Under the cache mutex it takes the next
 // pending file by priority 2..0, makes its sample resident (eraseFromUnusedList when its count is 0), keeps a handle to it, pops the
@@ -7,6 +8,7 @@
 // Codegen: the count read in a named int local keeps the native compare-against-zero form.
 #include <set>
 #include <list>
+#include <windows.h>
 
 // Declaration-only: retail keeps one copy of this STLport member (rowed elsewhere); this unit calls it
 // rather than emitting its own.
@@ -74,8 +76,6 @@ class Rva00691040Handle {
 public: Rva00691040Handle &operator=(const Rva00691040Handle &);
 private: Gen0002857E *m_target;
 };
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long);
-
 extern "C" __declspec(dllimport) int __stdcall AIL_WAV_info(const void *,int *);
 extern "C" __declspec(dllimport) int __stdcall AIL_decompress_ADPCM(const int *,void **,unsigned int *);
 class AudioFileCache {

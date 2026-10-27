@@ -14,9 +14,10 @@
 // buildProviderList follows the donor; WB names selectProvider and its
 // recovered bool ABI agrees with this UseEAX3-fed native call.
 
+#include <time.h>
+
 typedef bool Bool;
 typedef __int64 Time64;
-extern "C" __declspec(dllimport) Time64 __cdecl _time64(Time64 *);
 extern "C" __declspec(dllimport) void __stdcall AIL_set_redist_directory(const char *);
 extern "C" __declspec(dllimport) void __stdcall AIL_startup();
 extern "C" __declspec(dllimport) int __stdcall AIL_quick_startup(int,int,int,int,int);

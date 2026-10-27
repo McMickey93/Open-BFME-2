@@ -16,8 +16,7 @@
 //   at the call site instead of BFME1's pointer-returning declaration.
 
 #include <string.h>
-
-extern "C" int sprintf(char *buffer, const char *format, ...);
+#include <stdio.h>
 
 struct Rva007EB810Diag
 {

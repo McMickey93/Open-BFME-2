@@ -3,9 +3,9 @@
 
 // cl: /GS
 
-typedef __int64 FeslInt64;
+#include <stdio.h>
 
-extern "C" int __cdecl sprintf(char *buffer, const char *format, ...);
+typedef __int64 FeslInt64;
 
 class Rva007E8810Message
 {

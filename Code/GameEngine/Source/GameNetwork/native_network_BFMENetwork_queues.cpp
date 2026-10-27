@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX
+// platformsdk
 //
 // BFMENetwork's other three queue members, vtable 0x00C6B318 slots 4, 6 and 7
 // (popQueue0 is slot 5, native_network_BFMENetwork_popQueue0.cpp). Ported from
@@ -12,6 +13,7 @@
 // rowed), not the donor's inline fast path. The bodies call those rows, the
 // record assignments and pop_fronts, and the lock by their owners' names.
 #include <new>
+#include <windows.h>
 
 typedef bool Bool;
 
@@ -395,8 +397,6 @@ class BFMENetworkDestructorShim
 public:
 	void destroy();
 };
-
-extern "C" __declspec(dllimport) int __stdcall ReleaseMutex(void *handle);
 
 class BfmeAwakenDebug;
 extern BfmeAwakenDebug *TheBfmeAwakenDebug;

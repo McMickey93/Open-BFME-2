@@ -2,6 +2,8 @@
 // 0x007E90C0 / 0x007E91D0 / 0x007E9240 / 0x007E9130 / 0x007E8F20:
 // sprintf indexed keys then getString/getInt on a FESL message.
 
+#include <stdio.h>
+
 class Rva007E8810Message;
 
 class BfmeThingUPB
@@ -15,8 +17,6 @@ class BfmeThingRF
 public:
 	void *bfmeGoRF(void *key, void *defaultValue);
 };
-
-extern "C" int __cdecl sprintf(char *buf, const char *fmt, ...);
 
 class Rva007E90C0Names
 {

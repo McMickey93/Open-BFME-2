@@ -1,12 +1,12 @@
 // cl: /O1 /G7 /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // Clean BFME 1 donor NAT_attachSlotList_BFME.cpp at 9cbfb551 supplies
 // transport allocation, local-IP setup and starting-port calculation.
 // WB 0x014DBB90 names attachSlotList and its five arguments;
 // retail 0x005A6B14..0x005A6C90 includes the missing 20-byte prologue.
 #include "unicode_string.h"
 #include "../../Include/GameNetwork/Transport.h"
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-
+#include <windows.h>
 struct TransportAddress
 {
     unsigned int ip;

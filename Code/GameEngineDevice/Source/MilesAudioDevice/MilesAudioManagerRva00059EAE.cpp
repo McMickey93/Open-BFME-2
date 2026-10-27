@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 // ?rva00059EAE@MilesAudioManager@@QAE?AVRva00051ADA@@PBVAsciiString@@@Z @0x00059EAE 206B
 //
 // Reference-counted audio-event-info lookup: under the manager's mutex guard
@@ -18,6 +19,7 @@
 // reads the reference it is given makes the release test read memory
 // (cmp [ebp+0xC], edi) as retail does.
 #include "ascii_string.h"
+#include <windows.h>
 
 class MilesMutexGuard
 {
@@ -28,8 +30,6 @@ private:
 	void *m_mutex;
 	bool m_held;
 };
-
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *value);
 
 class OpaqueRefCounted
 {

@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /Ireference/shims/bfme2_ascii /DNDEBUG /EHsc /MD
+// platformsdk
 //
 // ?sendPings@NAT@@QAEXXZ
 // retail 0x005A6EF2..0x005A7171 (640 bytes) thiscall RET 0.
@@ -17,8 +18,7 @@
 // the NAT siblings (Rva005A69C0Box.cpp and NATSendNegotiationRequests.cpp).
 #include "ascii_string.h"
 #include "../../Include/GameNetwork/Transport.h"
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 
 class GameSlot
 {
