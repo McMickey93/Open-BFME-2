@@ -38,11 +38,12 @@ class Rva004F56FC
 {
 public:
 	void rva004F56FC(Object *obj);
+	bool rva004F571B(const Object *dead);
 private:
 	char m_pad0[8];
-	_STL::list<ObjectID> m_list;
+	_STL::list<int> m_list; // +0x08, tunnel IDs
 	char m_pad1[16];
-	int m_count;
+	unsigned int m_count; // +0x1C
 };
 
 void Rva004F56FC::rva004F56FC(Object *obj)
