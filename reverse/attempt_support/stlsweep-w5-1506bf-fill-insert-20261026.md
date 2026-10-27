@@ -50,6 +50,114 @@ whose name still mangles to the rowed one only if the bytes it emits equal
 0x0014F8E4 (then the COMDAT is retail's), or find what makes cl colour the
 `__x` slot first.
 
+## Same wall in StlSweepW4Rva000C225D.cpp (254/260 B)
+
+`vector<Rva000C225DElement>::_M_fill_insert` (260 B, plus the 5-byte `insert` forwarder at
+0x000C3712) is the same body over BfmeStringRecord000B94D2 (EH: the copy has a dtor). Callees
+are rowed: 0x000B94D2 copy ctor, 0x000B6CF1 dtor, 0x000BBAA1
+`__uninitialized_copy<const BfmeStringRecord000B94D2*, BfmeStringRecord000B94D2*>`, 0x000BBCD4
+`uninitialized_fill_n`, 0x000C0C2F `vector<BfmeStringRecord000B94D2>::_M_insert_overflow`, and
+0x000B67D9 / 0x000B67F6 `copy_backward` / `fill` over Rva00B6CF1. The same stub-vector draft is
+exact except 6 bytes: the `_M_finish - __n` spill goes to [ebp+0x10] (the `__x` slot) where
+retail uses [ebp+0x0C] (the `__n` slot), and both `__uninitialized_copy` tags sit one byte
+below that spill (0x0F instead of 0x0B). The copy_backward and overflow tags already match.
+Here the CSE local is not needed (retail reloads `_M_finish`). Same outcome with: an empty
+base class instead of the declared operator=, a named tag, a named `__src` local, a cast
+function-pointer call to 0x000BBAA1, a reference local for `__x`, and `size_type(...)` casts.
+The rule seems to be: the tag temporary goes one byte below the spill slot, so only the
+spill-slot choice (`__n` vs `__x` home) is left. This looks like the wall for the whole
+`StlSweepW4`/`W5` `_M_fill_insert` group (001524F9, 0017422D, 00215949, 003F53DA, 005205DA,
+0039C415 have the same row and unresolved list).
+
+### W4 draft (254/260 B)
+
+```cpp
+// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
+// Element identity and unconstrained fields remain address-derived structural inference.
+// cl: /O1 /Ob0 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
+// stlport
+//
+// 0x000C225D is vector<Rva000C225DElement>::_M_fill_insert (STLport 4.5.3 _vector.c) over the
+// 8-byte BfmeStringRecord000B94D2 records; 0x000C3712 is the insert(pos, n, x) forwarder. The
+// callees are rowed under their own spellings: 0x000B94D2 / 0x000B6CF1 the record's copy ctor and
+// dtor (StringRecordCopyBFME2.cpp, StringRecordDtors.cpp), 0x000BBAA1
+// __uninitialized_copy<const BfmeStringRecord000B94D2*>, 0x000BBCD4 uninitialized_fill_n and 0x000C0C2F
+// vector<BfmeStringRecord000B94D2>::_M_insert_overflow, and 0x000B67D9 / 0x000B67F6
+// copy_backward / fill over Rva00B6CF1. Instantiating _M_fill_insert over the address-derived
+// element emitted non-retail copies of them and left its ctor/dtor/operator= unresolved, so this
+// unit spells only the vector shape it needs (StlSweepR3Rva003F318C.cpp) and calls the rows by
+// their own types. Retail passes copy_backward its __false_type tag as a fourth argument, hence
+// the tag-taking cast. The declared operator= keeps __false_type non-POD: cl 7.1 zero-fills an
+// empty POD temporary passed to an opaque callee, and retail does not.
+struct Rva000C225DElement { char bytes[8]; };
+struct BfmeStringRecord000B94D2
+{
+	BfmeStringRecord000B94D2(const BfmeStringRecord000B94D2 &);
+	~BfmeStringRecord000B94D2();
+	char bytes[8];
+};
+struct Rva00B6CF1;
+
+namespace _STL {
+struct __false_type { __false_type &operator=(const __false_type &); };
+template <class T> class allocator {};
+template <class T, class A> class vector
+{
+	template <class U, class B> friend class vector;
+public:
+	typedef T *pointer;
+	typedef T *iterator;
+	typedef unsigned int size_type;
+	void insert(iterator pos, size_type n, const T &x) { _M_fill_insert(pos, n, x); }
+	void _M_fill_insert(iterator pos, size_type n, const T &x);
+protected:
+	void _M_insert_overflow(pointer pos, const T &x, const __false_type &, size_type fill_len, bool atend = false);
+	T *_M_start;
+	T *_M_finish;
+	T *_M_end_of_storage;
+};
+template <class I, class F> F __uninitialized_copy(I first, I last, F result, const __false_type &);
+template <class F, class S, class T> F uninitialized_fill_n(F first, S n, const T &x);
+template <class B1, class B2> B2 copy_backward(B1 first, B1 last, B2 result);
+template <class F, class T> void fill(F first, F last, const T &x);
+}
+
+typedef Rva00B6CF1 *(__cdecl *Rva000B67D9Fn)(Rva00B6CF1 *, Rva00B6CF1 *, Rva00B6CF1 *);
+typedef Rva00B6CF1 *(__cdecl *Rva000B67D9TagFn)(Rva00B6CF1 *, Rva00B6CF1 *, Rva00B6CF1 *, const _STL::__false_type &);
+
+namespace _STL {
+typedef BfmeStringRecord000B94D2 Rva000C225DRecord;
+typedef vector<Rva000C225DRecord, allocator<Rva000C225DRecord> > Rva000C225DRecordVector;
+template <>
+void vector<Rva000C225DElement, allocator<Rva000C225DElement> >::_M_fill_insert(iterator __position, size_type __n, const Rva000C225DElement &__x)
+{
+	if (__n != 0) {
+		if (size_type(_M_end_of_storage - _M_finish) >= __n) {
+			Rva000C225DRecord __x_copy(*(const Rva000C225DRecord *)&__x);
+			const size_type __elems_after = _M_finish - __position;
+			pointer __old_finish = _M_finish;
+			if (__elems_after > __n) {
+				__uninitialized_copy((const Rva000C225DRecord *)(_M_finish - __n), (const Rva000C225DRecord *)_M_finish, (Rva000C225DRecord *)_M_finish, __false_type());
+				_M_finish += __n;
+				((Rva000B67D9TagFn)(Rva000B67D9Fn)&copy_backward<Rva00B6CF1 *, Rva00B6CF1 *>)((Rva00B6CF1 *)__position, (Rva00B6CF1 *)(__old_finish - __n), (Rva00B6CF1 *)__old_finish, __false_type());
+				fill((Rva00B6CF1 *)__position, (Rva00B6CF1 *)(__position + __n), *(const Rva00B6CF1 *)&__x_copy);
+			}
+			else {
+				uninitialized_fill_n((Rva000C225DRecord *)_M_finish, __n - __elems_after, __x_copy);
+				_M_finish += __n - __elems_after;
+				__uninitialized_copy((const Rva000C225DRecord *)__position, (const Rva000C225DRecord *)__old_finish, (Rva000C225DRecord *)_M_finish, __false_type());
+				_M_finish += __elems_after;
+				fill((Rva00B6CF1 *)__position, (Rva00B6CF1 *)__old_finish, *(const Rva00B6CF1 *)&__x_copy);
+			}
+		}
+		else
+			((Rva000C225DRecordVector *)this)->_M_insert_overflow((Rva000C225DRecord *)__position, *(const Rva000C225DRecord *)&__x, __false_type(), __n);
+	}
+}
+}
+template void _STL::vector<Rva000C225DElement, _STL::allocator<Rva000C225DElement> >::insert(Rva000C225DElement *, unsigned int, Rva000C225DElement const &);
+```
+
 ## Draft source (212/222 B)
 
 ```cpp
