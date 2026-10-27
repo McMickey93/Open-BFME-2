@@ -9,12 +9,12 @@
 // copy. Materializing the template-name reference before _itoa reproduces
 // native evaluation order. Existing sole global owner and callees are reused.
 template<class T> struct StringInlineData {int m_refCount,m_length;T m_text[1];};
+#include <stdlib.h>
 #include "ascii_string.h"
 struct AsciiStringRef { const AsciiString *m_string; };
 class Rva000B3F84Pair { public: Rva000B3F84Pair() {} const char *m_ptr; int m_len; };
 struct AsciiStringPlusText : AsciiStringRef { operator AsciiString(); Rva000B3F84Pair m_right; };
 AsciiStringPlusText operator+(const AsciiString&,const char*);
-extern "C" __declspec(dllimport) char *__cdecl _itoa(int,char*,int);
 class Rva002D3627Host {public: int rva002BED69();};
 class LivingWorld; extern LivingWorld *TheLivingWorld;
 struct IconTemplateName {char pad[0x18]; AsciiString name;};

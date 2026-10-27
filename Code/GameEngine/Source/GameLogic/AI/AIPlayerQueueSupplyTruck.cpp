@@ -1,4 +1,5 @@
 // cl: /I. /O1 /Ob1 /G7 /arch:SSE /Oy- /Ireference/shims/moduledata /ICode/GameEngine/Source/Common /ICode/Libraries/Include /Ireference/shims/bfme2_ascii /DNDEBUG /MD /GX /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /Ow
+// platformsdk
 // stlport
 // AIPlayer::queueSupplyTruck, RVA 0x004F37B0..0x004F3DB1.
 // ZH donor logic with BFME2 layouts, three temporary filters and native call order.
@@ -6,6 +7,7 @@
 // See reverse/attempt_support/queue-supply-truck-20261023-max/readme.md.
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
+#include <windows.h>
 #include <list>
 #include <vector>
 
@@ -14,8 +16,6 @@ extern "C" void _ReadWriteBarrier(void);
 typedef bool Bool;
 typedef int Int;
 typedef float Real;
-#define NULL 0
-
 #include "Lib/Coord3D.h"
 #include "Lib/Coord2D.h"
 #include <math.h>

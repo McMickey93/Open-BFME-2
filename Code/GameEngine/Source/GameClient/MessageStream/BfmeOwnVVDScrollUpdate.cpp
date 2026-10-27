@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /ICode/Libraries/Include/Lib
+// platformsdk
 //
 // ?rva0042F213@BfmeOwnVVD@@QAEXXZ, retail 0x0042F213 1958B.
 // The per-frame camera scroll update of the BFME 2 look-at translator (the
@@ -13,6 +14,7 @@
 // angle); apply the held rotate/zoom flags (+0x154..+0x157); post the replay
 // camera message 0x447; then drop key flags whose keys are released.
 // Identities beyond the rowed callees stay address-derived.
+#include <windows.h>
 #include "Coord2D.h"
 #include "Coord3D.h"
 #include <math.h>
@@ -233,8 +235,6 @@ extern GameLogic *TheGameLogic;
 extern MessageStream *TheMessageStream;
 class LivingWorld; extern LivingWorld *TheLivingWorld;
 extern bool scrollDir[4];
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
-
 void BfmeOwnVVD::rva0042F213()
 {
 	ScrollOffset offset;

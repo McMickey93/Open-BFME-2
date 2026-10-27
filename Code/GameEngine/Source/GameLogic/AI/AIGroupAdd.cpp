@@ -7,6 +7,7 @@
 // KindOf mask memset 0x1C plus three ORs, list push_back, enterGroup, dirty at +0x0C);
 // callees rowed memset thunk 0x6291AE plus Thing::isAnyKindOf 0x30ADC7 plus list<int>::push_back 0x5548F
 // plus Object::enterGroup 0x28E5CA; neighbours AIGroupRemove.cpp same flags and layout.
+#include <string.h>
 #include <list>
 
 // vector<int> fill/insert otherwise instantiates the _Construct<int,int>
@@ -17,8 +18,6 @@ namespace _STL {
 static inline void _Construct(int *__p, const int &__val)
 { new (__p) int(__val); }
 }
-
-extern "C" void *memset(void *dst, int val, unsigned size);
 
 template<int N>
 class BitFlags

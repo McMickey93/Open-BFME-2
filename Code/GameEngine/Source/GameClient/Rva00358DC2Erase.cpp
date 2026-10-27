@@ -3,8 +3,8 @@
 // Rb erase-one: rebalance-for-erase then destroy Rva00358B65 value at +16 and free.
 // Evidence: calls 0x00025620 rebalance-erase plus 0x00358B65 dtor plus _free 0x00030830;
 // same 59B shape as Rva00383F9C erase 0x00383F9C.
-extern "C" void __cdecl free(void *block);
 
+#include <stdlib.h>
 namespace _STL
 {
 typedef bool _Rb_tree_Color_type;

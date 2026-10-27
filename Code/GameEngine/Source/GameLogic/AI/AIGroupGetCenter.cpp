@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
+// platformsdk
 // stlport
 //
 // ?getCenter@AIGroup@@QAE_NPAUCoord3D@@@Z, retail 0x0036D035, 282B.
@@ -11,6 +12,7 @@
 // Object gate 0x002907A1 before the AI test; retail divides each axis by the
 // count (one reciprocal, three multiplies). Callers: 11 matched rows already
 // reference this name.
+#include <windows.h>
 #include <list>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
@@ -29,10 +31,6 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 inline Real sqr(Real x) { return x * x; }
 

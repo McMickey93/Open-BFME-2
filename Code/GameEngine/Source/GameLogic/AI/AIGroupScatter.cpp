@@ -1,8 +1,10 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /ICode/Libraries/Include/Lib
+// platformsdk
 // stlport
 // AIGroup::groupRotateFiringarc, native 003706C8..00370795 (205 bytes).
 // groupScatter (0x0036F757) lives in AIGroupRva00372571.cpp beside the strong
 // getMinMaxAndCenter it calls.
+#include <windows.h>
 #include <list>
 
 // Keep the typed node comparison local; these flags otherwise emit an
@@ -21,10 +23,6 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 inline Real sqr(Real x) { return x * x; }
 

@@ -17,13 +17,12 @@
 // (rowed Rva00300419 constructor 0x00300419) that fills the record's +0x54
 // positions; its base destructor (vftable 0x007C9574) unregisters through
 // DataChunkInput's 0x00306D7B.
+#include <stdlib.h>
 #include <string.h>
 #include "ascii_string.h"
 
 typedef int Int;
 typedef bool Bool;
-
-#define _MAX_PATH 260
 
 enum ErrorCode
 {

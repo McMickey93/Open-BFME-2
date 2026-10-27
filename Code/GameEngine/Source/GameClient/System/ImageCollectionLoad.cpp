@@ -1,11 +1,8 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
 // ?load@ImageCollection@@QAEXH@Z @ 0x002D908D 249B
 // Evidence: BFME1 donor ImageCollectionLoad.cpp trimmed (no userData block); same 5 strings TextureSize_%d HandCreated AptImages ParticleTextures TransitionImages in order; same loadDirectory TRUE OVERWRITE NULL 0; ret 4 single int arg; callers 0x0023A2F1; neighbours ImageBfmeSetTexture and stlport map.
+#include <stdio.h>
 #include "ascii_string.h"
-
-extern "C" {
-__declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
-}
 
 class Xfer;
 enum INILoadType

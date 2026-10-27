@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD
+// platformsdk
 // ?cohereAttackState@AIGroup@@QAEXXZ, retail 0x003705C2, 190 bytes.
 // AIGroup order-issuing walk over the raw member list at +4 (same ListNode
 // idiom as AIGroupRva0036DF92): phase 1 keeps the first
@@ -9,11 +10,8 @@
 // passes the slot-110 virtual (rowed AIUpdateInterface::isIdle, +0x1B8):
 // its +0x20 Rva00295A0FCommands run rowed Rva00295A0FCommand (0x295A0F) with
 // the victim position at found+0x38, 0x7FFFFFFF and CMD_FROM_AI.
+#include <windows.h>
 typedef bool Bool;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 template <int N>
 class BfmeVirtualSlots : public BfmeVirtualSlots<N - 1>

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // Zero Hour's AIAttackMoveStateMachine and the three states that own one,
 // from GameEngine/Source/GameLogic/AI/AIStates.cpp (GeneralsMD tree vendored
@@ -36,7 +37,7 @@ typedef float Real;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
-#define NULL 0
+#include <windows.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 class Object;
 class AttackExitConditionsInterface;

@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /Ireference/shims/bfme2_ascii
+// platformsdk
 // stlport
 //
 // InGameUI's structure-placement anchor: setPlacementStart (vftable 0x7FD410
@@ -18,8 +19,7 @@
 // TheTacticalView->worldToScreen (0x00050F29) when the pending template
 // has the kind-of bit at +0x11F & 0x10 (template kind-of bits at +0x108).
 
-#define NULL 0
-
+#include <windows.h>
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 #include "../../../Libraries/Include/Lib/Coord3D.h"
 

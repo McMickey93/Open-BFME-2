@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // AIDock state bodies ported from Zero Hour's GameEngine/Source/GameLogic/AI/
 // AIDock.cpp (GeneralsMD tree vendored under reference/open-bfme-1/inputs/
@@ -32,7 +33,7 @@
 // Rva00544B13Callback.
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
-#define NULL 0
+#include <windows.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 enum StateExitType
 {

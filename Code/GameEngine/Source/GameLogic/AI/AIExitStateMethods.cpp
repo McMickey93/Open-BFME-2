@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // AIExitState::onEnter, retail 0x00341B11 (61 bytes), onExit, retail
 // 0x0035118A (63 bytes), and update, retail 0x00341B4E (171 bytes): slots 4,
@@ -20,8 +21,8 @@
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
-#define NULL 0
 #define INVALID_STATE_ID 999999
+#include <windows.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 enum StateExitType
 {

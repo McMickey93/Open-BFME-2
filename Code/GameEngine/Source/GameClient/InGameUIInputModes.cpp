@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /Ireference/shims/bfme2_ascii
+// platformsdk
 // stlport
 //
 // InGameUI's mouse and input modes (vftable 0x7FD410), from ZH
@@ -40,8 +41,7 @@
 // endAreaSelectHint (slot 27) with FALSE/NULL, setRadiusCursorNone, then
 // clears the same mode flags. Its name is unknown, so it keeps its address.
 
-#define NULL 0
-
+#include <windows.h>
 #include "../../../Libraries/Include/Lib/Coord2D.h"
 
 class SpecialPowerTemplate;

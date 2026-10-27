@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?setTooltipText@WinInstanceData@@QAEXVUnicodeString@@@Z, retail 0x00322352, 97 bytes.
 // New file-unit TU (sibling setters init/setText to follow).
@@ -25,10 +26,7 @@ typedef int Int;
 typedef bool Bool;
 typedef unsigned short wchar_t;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
+#include <windows.h>
 #include "unicode_string.h"
 
 

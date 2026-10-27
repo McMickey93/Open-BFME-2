@@ -7,9 +7,7 @@
 // buf1, buf2, 0, 0) through the pinned target/owner. Evidence: caller
 // 0x005C65D0 pushes (ptr, float, float) __cdecl; IAT snprintf cached in esi;
 // literals link; invoke declared to the landed UiCallbackFirers shape.
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *fmt, ...);
-
-
+#include <stdio.h>
 class Rva00222A8BTarget
 {
 public:

@@ -10,6 +10,7 @@
 // of existing stdcall owner 001F63C9: unlink, handle destruction at 4CCFF,
 // free and hidden iterator result; ECX is unused by that native body.
 // Donor revision f98983a7d; field widths independently follow native access.
+#include <stdlib.h>
 #include <list>
 #include <algorithm>
 
@@ -25,7 +26,6 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
 class RvaSmartPtr12 {public:void *ptr,*prev,*next;};
 class Rva0004CCFF {public:void *destroyDelete(unsigned);void *ptr,*prev,*next;};
 struct Rva001F63C9Node {void *next,*prev;Rva0004CCFF handle;};
-extern "C" void __cdecl free(void*);
 class Rva001F63C9List {public:_STL::list<void*>::iterator erase(_STL::list<void*>::iterator);};
 _STL::list<void*>::iterator Rva001F63C9List::erase(_STL::list<void*>::iterator position) {
  Rva001F63C9Node *node=(Rva001F63C9Node*)position._M_node;

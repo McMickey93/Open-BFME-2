@@ -4,6 +4,7 @@
 // global owner. Retail passes (owner, callback, 1, arg, 0, 0, 0, 0) with the
 // target in ecx; the BFME1 donor has owner and target swapped.
 
+#include <stdio.h>
 class Rva00222A8BTarget
 {
 public:
@@ -128,8 +129,6 @@ void setPlayerPowerCapState(bool ring)
 {
 	(*(Rva00222A8BTarget **)&g_bfmeAptWindowManager)->invoke(TheRva009C1A0COwner, "SetPlayerPowerCapState", 1, ring ? "_ring" : "_evenstar", 0, 0, 0, 0);
 }
-
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
 
 void setPlayerMagicProgress(int progress)
 {

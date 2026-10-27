@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 // WB15B80C0 names WaitForBattleStateHandler::Update, StrategicInGameUIBattleResolver.cpp656.
 // Native5D08FD..5D0A67 supplies complete362B boundary. Native vtable
 // C75538 slots0/1 hold rowed scalar-delete5D08E1 and this update. Matched
@@ -9,8 +10,8 @@
 // The12B wide compose node's43B builder is a complete byte-and-relocation
 // twin of Rva0037BA97Init at37BA97: two copied words plus string pointer.
 // Its16-bit char and string views follow the target Unicode materializer98.
+#include <windows.h>
 #include "unicode_string.h"
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 class Rva0056A989{public:bool rva0056A989();};
 class Rva005CFA87{public:Rva005CFA87(void*,bool);char data[16];};
 class Object;

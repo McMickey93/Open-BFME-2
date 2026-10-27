@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // AIGuardRetaliateMachine::AIGuardRetaliateMachine, retail 0x0054551F (196
 // bytes; pinned under this name). Zero Hour's AIGuardRetaliate.cpp machine:
@@ -7,12 +8,12 @@
 // aggressor-check condition table. BFME 2 builds the base from the rowed
 // StateMachine constructor 0x004D79E1 with the name key 0xD5DFA9B7 and
 // creates the states with plain operator new and their rowed constructors.
+#include <windows.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
 typedef UnsignedInt ObjectID;
-#define NULL 0
 class Object;
 struct StateConditionInfo
 {

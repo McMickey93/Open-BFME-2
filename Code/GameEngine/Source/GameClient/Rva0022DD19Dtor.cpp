@@ -4,8 +4,8 @@
 // Evidence: chain lane calls rowed clear 0x0022DD19; layout matches rowed
 // ??1Rva0022DB29 0x0022DC62 and twin clear ?rva0022DD19 0x0022DD19; callers at
 // 0x004189D0 and jmp at 0x0022DF6F; unblocks 0x004189B2.
-extern "C" void __cdecl free(void *block) throw(...);
 
+#include <stdlib.h>
 struct Rva0022D9B7Node;
 struct Rva0022DD19BucketHandle
 {

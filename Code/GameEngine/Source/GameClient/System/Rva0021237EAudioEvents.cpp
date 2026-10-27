@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /EHsc /MD /D_STLP_USE_STATIC_LIB /D_CRTIMP= /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // ?rva0021237E@Rva0021237E@@QAEXXZ @0x0021237E 64B
 // The target walks the four-byte range at this+0x2CC, passes each word to
@@ -7,6 +8,7 @@
 // caller invokes this body at +0x48B. The handle interpretation follows the
 // target call and AudioManager's established removeAudioEvent slot; the owning
 // class identity remains address-derived.
+#include <windows.h>
 #include <vector>
 #include "ascii_string.h"
 #include "unicode_string.h"
@@ -167,7 +169,6 @@ class GameInfo { public: void setMap(AsciiString); }; class SkirmishGameInfo; ex
 class GlobalData;
 extern GlobalData *TheWritableGlobalData;
 void InitGameLogicRandom(unsigned);
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 class GameMessage { public: void appendIntegerArgument(int); };
 class MessageStream { public:
 virtual void v00();virtual void v04();virtual void v08();virtual void v0C();virtual void v10();virtual void v14();virtual void v18();virtual void v1C();virtual void v20();virtual void v24();virtual void v28();virtual void v2C();virtual void v30();virtual void v34();virtual void v38();virtual void v3C();virtual void v40();virtual void v44();virtual GameMessage *append(int);
