@@ -324,12 +324,10 @@ void SkirmishPreferences::Rva0043BFDB(const UnicodeString &user, int profileInde
 	m_profileIndex = saved;
 }
 
-static UnicodeString g_emptyUserName;
-
 UnicodeString SkirmishPreferences::Rva0043BB88(void)
 {
 	if (m_userNames.empty())
-		return g_emptyUserName;
+		return UnicodeString::TheEmptyString;
 	return m_userNames.front();
 }
 
