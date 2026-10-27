@@ -22,13 +22,11 @@
 // +0x48 texturing flag, the pinned Add_Tri, the _sin/_cos thunks and
 // __imp__ceil, and the 0/100/0.01/2pi/4.0 constants. WB twin 0x00971EC0
 // (vtable evidence, 3355 bytes) is unnamed.
+#include <math.h>
+
 typedef unsigned int UnsignedInt;
 typedef float Real;
 typedef int Int;
-
-extern "C" double __cdecl sin(double x);
-extern "C" double __cdecl cos(double x);
-extern "C" __declspec(dllimport) double __cdecl ceil(double x);
 
 #define WWMATH_TWO_PI 6.283185307f
 
@@ -128,7 +126,7 @@ void W3DDisplay::rva00045990(Real startX, Real startY, Real width, Real height, 
 	m_2DRender->Enable_Texturing(false);
 	Vector2 prev(halfWidth, 0.0f);
 	Real radius = (halfWidth > halfHeight) ? halfWidth : halfHeight;
-	Int segments = WWMath::Float_To_Long(ceil(radius * 4.0f));
+	Int segments = WWMath::Float_To_Long(ceil(static_cast<double>(radius * 4.0f)));
 	Real step = WWMATH_TWO_PI / (Real)segments;
 	Real angle = 0.0f;
 
@@ -146,8 +144,8 @@ void W3DDisplay::rva00045990(Real startX, Real startY, Real width, Real height, 
 			if (i < segments)
 			{
 				angle += step;
-				cur.X = cos(angle) * halfWidth;
-				cur.Y = sin(angle) * halfHeight;
+				cur.X = cos((double)angle) * halfWidth;
+				cur.Y = sin((double)angle) * halfHeight;
 			}
 			else
 			{
@@ -328,7 +326,7 @@ void W3DDisplay::drawRemainingRectClock(Real startX, Real startY, Real width, Re
 	percent = 1.0f - (0.01f * percent);
 	Real sweep = percent * WWMATH_TWO_PI;
 	Real radius = (halfWidth > halfHeight) ? halfWidth : halfHeight;
-	Int segments = WWMath::Float_To_Long(ceil(radius * percent * 4.0f));
+	Int segments = WWMath::Float_To_Long(ceil(static_cast<double>(radius * percent * 4.0f)));
 	Real step = sweep / (Real)segments;
 	Real angle = 0.0f;
 
@@ -346,8 +344,8 @@ void W3DDisplay::drawRemainingRectClock(Real startX, Real startY, Real width, Re
 			Vector2 cur;
 			if (angle > 0.0f && angle < WWMATH_TWO_PI)
 			{
-				cur.X = -(sin(angle) * halfWidth);
-				cur.Y = -(cos(angle) * halfHeight);
+				cur.X = -(sin((double)angle) * halfWidth);
+				cur.Y = -(cos((double)angle) * halfHeight);
 			}
 			else
 			{

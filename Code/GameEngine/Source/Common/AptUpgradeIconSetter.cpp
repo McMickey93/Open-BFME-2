@@ -12,12 +12,11 @@
 // and store the image at +0x3c[index]. Caller 0x005F4917 passes
 // (count image). Prev/next share /O1.
 #include "ascii_string.h"
+#include <ctype.h>
+#include <stdlib.h>
 #pragma intrinsic(memset)
 
 class Image;
-
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 
 class Rva005FC75BAddDwordField
 {

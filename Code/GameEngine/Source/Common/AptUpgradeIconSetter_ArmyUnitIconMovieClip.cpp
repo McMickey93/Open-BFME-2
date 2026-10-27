@@ -18,9 +18,6 @@
 
 class Image;
 
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
-
 class Rva005FC75BAddDwordField
 {
 public:

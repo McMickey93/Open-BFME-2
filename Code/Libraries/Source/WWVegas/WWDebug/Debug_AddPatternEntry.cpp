@@ -7,9 +7,7 @@
 // strlen/strcpy are intrinsics (byte loops, no calls); _strlwr is the only
 // import call. Dedicated TU to keep its frame codegen isolated.
 
-extern "C" unsigned int __cdecl strlen(const char *str);
-extern "C" char *__cdecl strcpy(char *dest, const char *src);
-extern "C" __declspec(dllimport) char *__cdecl _strlwr(char *str);
+#include <string.h>
 
 extern void *DebugAllocMemory(unsigned int size);
 
