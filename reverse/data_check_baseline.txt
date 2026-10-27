@@ -99,9 +99,7 @@ Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp	wrong-name	?$S1@?1
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp	wrong-name	?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04068
 Code/GameEngine/Source/GameLogic/Object/Contain/Rva00588D24.cpp	wrong-name	?g_bfmeWorldRV@@3PAUBfmeWorldRV@@A	0x00A01CFC
 Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp	wrong-name	?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03660
-Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofOnDie.cpp	wrong-name	?$S1@?1??onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z@4IA	0x00A03844
 Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp	wrong-name	?$S1@?1??rva000485A2F@CreateObjectDieIfEldestKindof@@SA?AW4NameKeyType@@XZ@4IA	0x00A0383C
-Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDiePoolKey.cpp	wrong-name	?$S1@?1??rva0004859EA@CreateObjectDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03834
 Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp	wrong-name	?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04010
 Code/GameEngine/Source/GameLogic/Object/Rva00220DCDInit.cpp	wrong-name	?g_00DFE490@@3VRva00575674@@A	0x009FE490
 Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp	wrong-name	?$S1@?1??rva004A90A7@TransportAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C9C
@@ -136,7 +134,6 @@ Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_pi
 Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piSettingData	0x00A0C104
 Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	wrong-name	_piNextID	0x00A0C0EC
 Code/GameEngine/Source/GameNetwork/LANAPILobbyMenuForwarders.cpp	wrong-name	?g_Va00E03354@@3PAURva004469D1Receiver@@A	0x00A03354
-Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp	wrong-name	?$S1@?3??doDrawModule@W3DProjectileStreamDraw@@UAEXPBVMatrix3D@@@Z@4IA	0x009EBC24
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDraw.cpp	wrong-name	?$S1@?1??rva0000CAE7B@W3DSupplyDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBB88
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	wrong-name	_mutex	0x009E4B34
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	wrong-name	_threadMutex	0x009E5DA0
