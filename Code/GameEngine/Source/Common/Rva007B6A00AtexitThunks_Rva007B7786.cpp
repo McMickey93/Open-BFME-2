@@ -180,7 +180,6 @@ extern unsigned g_Va00DFEDCC;	// retail RVA 0x009FEDCC (.bss), defined in Rva007
 extern unsigned g_Va00DFEDD8;	// retail RVA 0x009FEDD8 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 struct BfmeUiResourceEntryState;
 extern BfmeUiResourceEntryState BfmeUiResourceEntryCollectorState;
-extern unsigned g_Va00DFEE20;	// retail RVA 0x009FEE20 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DFF030;
 extern unsigned g_Va00DFF044;	// retail RVA 0x009FF044 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DFF048;	// retail RVA 0x009FF048 (.bss), defined in Rva007B6A00AtexitThunks.cpp
@@ -285,8 +284,6 @@ void __cdecl rva007B7874();
 void __cdecl rva007B787E();
 
 void __cdecl rva007B789C();
-
-void __cdecl rva007B78A6();
 
 void __cdecl rva007B7979();
 
