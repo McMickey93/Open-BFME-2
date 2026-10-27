@@ -3736,6 +3736,24 @@ Census confirmation: not claimed.
 
 **Assigned R3 emission cleanup (2026-10-27, inspected `97c23353111e60304b56434c02d20bee3465d83f`, ordinary-preview index `5ce093a71a`, retail-truth-4):** `StlSweepR3Rva003F40EF.cpp` now instantiates only its rowed `swap` instead of uninitialized-copy, fill, sort and heap algorithms. Both existing rows remain exact, including the 75-byte parent and its 10-byte EH handler; EH is EXACT. Its unrelated `_Construct` and comparison unresolveds disappear, changing U5 to U3. The remaining native callees are the already rowed ArmySummary copy at 0x0040E96D (384 B), assignment at 0x0040EAED (399 B) and destructor at 0x0040E499 (155 B), so the row and consumer names need a coordinated naming-lane repair. `StlSweepR3Rva00627B10.cpp` now instantiates only its rowed comparator `make_heap`, retaining its 28-byte row and U4/L1/S1. Its native callee 0x006279B0 is already rowed as `push_heap<S4SortElem24 *, S4Cmp009F4BF0>` (93 B); the opaque record/algorithm family is still unresolved. Both units and `StlSweepR3Rva0051F7AD.cpp` drop their unused unsigned-max optimization blocks, removing nine pragma occurrences. The vector-assignment unit retains its original early `_algobase.h` include: removing that include changes the 206-byte row, whereas removing only the unused optimization block preserves it. Its U3/L2/S2 and native 0x004EE233, 0x004EE540, 0x0051EC31, 0x0052C37A and 0x004EE1E2 provider prerequisites remain. No row, pin or cross-instantiation cast changed. The 153-unit current-provider comparison adds no blocker and preserves every previously linking unit. Only the two unrelated swap blocker names are cleared in ordinary-preview scope; census confirmation pending. No assigned unit is fully cleared.
 
+
+**Vector-assignment provider repair (2026-10-27, inspected `ad2bb03703`,
+ordinary-preview index `bf3dd31211`):**
+[The native-provider proof](../reverse/attempt_support/vector-51f7ad-provider-link-20261027-codexb4.md)
+clears `StlSweepR3Rva0051F7AD.cpp` in the nine-source ordinary-preview scope:
+U3/L2/S2 becomes LINKS, 0 -> 206 authored bytes. Its explicit C++ specialization
+calls the existing owners at 0x004EE233, 0x004EE540, 0x0051EC31, 0x0052C37A
+and 0x004EE1E2 without recovering a new element name. All 41 cohort rows and
+two EH graphs remain exact; all seven previously clean units stay clean.
+The target has six owner bindings and no wrong-binding findings, and has a
+strict reusable byte-verification receipt. Six obsolete pins and their hatch
+occurrences are retired. The ProductionPrerequisite TU keeps its separate
+blockers and identity debt; its rowed copy worker is not a whole-unit clearance.
+The element remains opaque: the earlier PrereqUnitRec identification is not
+proved by shared callees. Remaining: reconcile that identity and downstream
+provider contracts; confirm strict recursive closure and the next census.
+No census-linked-byte or image-ownership gain is claimed.
+
 ### LINK-069: the four-byte merge sweep combines a string buffer with opaque record helpers
 
 Status: Blocked on algorithm, element and provider-name reconciliation. Updated: 2026-10-26; inspected revision: `58598f540fd3c84610304b3659ed382a4c05acca`.
