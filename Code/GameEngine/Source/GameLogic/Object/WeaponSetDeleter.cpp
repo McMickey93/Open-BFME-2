@@ -12,13 +12,23 @@
 // the dummy tag constructor (no retail counterpart) only makes this TU emit
 // the vtable and with it the deleting destructor.
 
+// The base is the canonical Snapshot (vtable 0x00BBB554), and WeaponSet's
+// three Snapshot overrides are declared as in WeaponSetDtor.cpp and
+// WeaponSetXfer.cpp, so every ??_7WeaponSet copy agrees.
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
+
 struct EmitVtableTag;
 
-class WeaponSet
+class WeaponSet : public Snapshot
 {
 public:
 	WeaponSet(EmitVtableTag *);
 	virtual ~WeaponSet();
+
+protected:
+	virtual void crc(Xfer *xfer);
+	virtual void xfer(Xfer *xfer);
+	virtual void loadPostProcess(void);
 };
 
 // ?<WeaponSet::WeaponSet> absent-from-retail

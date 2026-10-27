@@ -13,16 +13,19 @@ public:
 	virtual ~WeaponSetSlot();
 };
 
-class WeaponSetSnapshotBase
-{
-public:
-	virtual ~WeaponSetSnapshotBase() {}
-};
+// The base is the canonical Snapshot (vtable 0x00BBB554): retail unwind
+// funclets destroy it through the folded Snapshot destructor 0x0049B47C.
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
-class WeaponSet : public WeaponSetSnapshotBase
+class WeaponSet : public Snapshot
 {
 public:
 	virtual ~WeaponSet();
+
+protected:
+	virtual void crc(Xfer *xfer);
+	virtual void xfer(Xfer *xfer);
+	virtual void loadPostProcess(void);
 
 private:
 	int m_04;

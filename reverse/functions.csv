@@ -17081,7 +17081,6 @@ uw_00776a36,,0x00776A36,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;obje
 uw_00776a3e,,0x00776A3E,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
 uw_00776bb2,,0x00776BB2,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2911
 uw_00776ebd,,0x00776EBD,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2603
-uw_00776f70,,0x00776F70,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_0077701a,,0x0077701A,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2598
 uw_00777025,,0x00777025,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2601
 uw_007770d9,,0x007770D9,11,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2882
@@ -98780,3 +98779,4 @@ $L4266,,0x0078A597,8,Code/GameEngine/Source/GameLogic/Object/Behavior/InstantDea
 $L1389,,0x0078CCFF,8,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDataCtor.cpp,matched,gen-funclet;parent=??0SpecialPowerModuleData@@QAE@XZ; Matched parent 0x004930A0's EH graph is EXACT (eh_verify) and binds compiler label $L1389 to retail 0x0078CCFF; its callee ??1SpecialPowerModuleDataBase@@QAE@XZ is rowed at its ICF fold 0x0049B47C; replaces generated uw_0078ccff
 ??1UpdateBase@@QAE@XZ,,0x0049B47C,7,Code/GameEngine/Source/GameLogic/Object/Update/AttributeModifierAuraUpdateModuleDataCtor.cpp,matched,fold-proof=Code/GameEngine/Source/GameLogic/Object/Update/AttributeModifierAuraUpdateModuleDataCtor.cpp; compiler-emitted destructor that retail ICF-folded with ??1BoxEmissionVolumeInfo@FXParticleSystem@@UAE@XZ at 0x0049B47C: this unit compiles it to the same whole body; its unwind funclets call 0x0049B47C
 $L4194,,0x0078D712,8,Code/GameEngine/Source/GameLogic/Object/Update/AttributeModifierAuraUpdateModuleDataCtor.cpp,matched,gen-funclet;parent=??0AttributeModifierAuraUpdateModuleData@@QAE@XZ; Matched parent 0x0049BBD5's EH graph is EXACT (eh_verify) and binds compiler label $L4194 to retail 0x0078D712; its callee ??1UpdateBase@@QAE@XZ is rowed at its ICF fold 0x0049B47C; replaces generated uw_0078d712
+$L382,,0x00776F70,8,Code/GameEngine/Source/GameLogic/Object/WeaponSetDtor.cpp,matched,gen-funclet;parent=??1WeaponSet@@UAE@XZ; Matched parent 0x002C7311 EH graph is EXACT (eh_verify) and binds compiler label $L382 to retail 0x00776F70; whole 8B destroys the base through ??1Snapshot@@UAE@XZ at its rowed fold 0x0049B47C now that the unit derives the canonical Snapshot; replaces generated uw_00776f70
