@@ -8,7 +8,7 @@
 // and Rva00045473Equal at 0x00045473 with identical shape and /O1 flags.
 typedef bool Bool;
 
-extern "C" int __cdecl memcmp(const void *left, const void *right, unsigned int count);
+#include <string.h>
 
 Bool Rva0037DC8AEqual(const void *a, const void *b)
 {

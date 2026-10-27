@@ -4,7 +4,7 @@
 // Evidence: unlock lane, rowed ji_0062929e memcmp, callers at 0x00360EBC/D3
 // 0x005079F7 0x00508738; neg/sbb/inc not idiom proves unsigned char.
 
-extern "C" int __cdecl memcmp(const void *a, const void *b, unsigned int n);
+#include <string.h>
 
 class Rva00360C1FEqualHolder
 {

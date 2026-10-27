@@ -3,7 +3,7 @@
 // memcpy 0x28 bytes from src arg into this+0x60. Evidence: unlock lane; callee
 // memcpy via _memcpy pin at 0x006291A8 (ji_006291A8 row); callers at 0x00383997
 // 0x0043E87A 0x0043FC9D; prev stlport_vector_stringrecord next DispDwordFieldGetters.
-extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count);
+#include <string.h>
 
 struct Rva00381CED
 {
