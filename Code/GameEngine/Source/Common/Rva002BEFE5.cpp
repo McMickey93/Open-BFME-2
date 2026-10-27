@@ -59,10 +59,10 @@ public:
 	float m_moveRate;
 	float m_80;
 	float m_84;
-	void rva002BEFE5(const Rva002BEFE5Vec *position, float a1, float a2, unsigned int duration);
+	void rva002BEFE5(const Rva002BEFE5Vec *position, float a1, float zoom, unsigned int duration);
 };
 
-void Rva002BEFE5::rva002BEFE5(const Rva002BEFE5Vec *position, float a1, float a2, unsigned int duration)
+void Rva002BEFE5::rva002BEFE5(const Rva002BEFE5Vec *position, float a1, float zoom, unsigned int duration)
 {
 	TheMouse->rva001EEA6D(UnicodeString(UnicodeString::TheEmptyString), 0, 0, 1.0f);
 	v29(m_startPosition);
@@ -74,6 +74,6 @@ void Rva002BEFE5::rva002BEFE5(const Rva002BEFE5Vec *position, float a1, float a2
 	m_targetZ = 0.0f;
 	m_84 = a1;
 	m_startZoom = v25();
-	float t = a2;
+	float t = zoom;
 	m_targetZoom = t < 0.0f ? 0.0f : (t > 1.0f ? 1.0f : t);
 }

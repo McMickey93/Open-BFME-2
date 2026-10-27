@@ -41,15 +41,15 @@ private:
 
 void Rva001F51DC::rva001F51DC(Vec2001F51DC *out)
 {
-	float a = 0.0f;
-	float b = 0.0f;
+	float xValue = 0.0f;
+	float yValue = 0.0f;
 	Provider001F51DC *provider = m_ptr;
 	if (provider != 0)
 	{
 		const Data001F51DC *coordinates = provider->fetch();
-		a = coordinates->x;
-		b = coordinates->y;
+		xValue = coordinates->x;
+		yValue = coordinates->y;
 	}
-	out->x = a;
-	out->y = b;
+	out->x = xValue;
+	out->y = yValue;
 }

@@ -2755,3 +2755,6 @@ member,Rva00201DC4LODInfo::word34,Rva00201DC4LODInfo::m_animationDetail,inferred
 member,Rva00201DC4LODInfo::word38,Rva00201DC4LODInfo::m_shaderLOD,inferred,agree:nl-93ad2f7413e7,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
 member,Rva00201DC4LODInfo::flag3C,Rva00201DC4LODInfo::m_shaderMaterialReplacement,inferred,agree:nl-7844de36dace,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
 function,?rva00463509@Rva00463509@@QAEXPAVObject@@_N@Z,?removeFromContain@Rva00463509@@QAEXPAVObject@@_N@Z,canonical:string,"string_xrefs: ""OpenContain::removeFromContain: Trying to remove an object from a container that does not currently contain it."" referenced by 0x463509",Code/GameEngine/Source/GameLogic/Object/Contain/OpenContainRemoveFromContain.cpp,0x00463509
+local,Rva001F51DC::rva001F51DC::a,Rva001F51DC::rva001F51DC::xValue,inferred,agree:nl-eca4174e905f,Code/GameEngine/Source/Common/Rva001F51DC.cpp,0x001F51DC
+local,Rva001F51DC::rva001F51DC::b,Rva001F51DC::rva001F51DC::yValue,inferred,agree:nl-67171282b6b1,Code/GameEngine/Source/Common/Rva001F51DC.cpp,0x001F51DC
+param,Rva002BEFE5::rva002BEFE5::a2,Rva002BEFE5::rva002BEFE5::zoom,inferred,agree:nl-793ec6610912,Code/GameEngine/Source/Common/Rva002BEFE5.cpp,0x002BEFE5
