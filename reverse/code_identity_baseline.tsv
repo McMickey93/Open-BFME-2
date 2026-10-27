@@ -196,7 +196,6 @@ Code/GameEngine/Source/GameNetwork/Transport_init_AsciiString_Rva004d5534.cpp	?i
 Code/GameEngine/Source/GameNetwork/native_network_BFMENetwork_Ctor.cpp	??0BFMENetwork@@QAE@XZ	??0BFMENetworkQueue1@@QAE@XZ	0x00558D56	wrong
 Code/GameEngine/Source/Main/WinMain.cpp	_WinMain@16	??1AsciiString@@QAE@XZ	0x00036410	divergent
 Code/GameEngineDevice/Source/MilesAudioDevice/Rva00052B3D.cpp	??0Rva00052B3D@@QAE@XZ	??0Elem4@@QAE@XZ	0x0047A6A9	wrong
-Code/GameEngineDevice/Source/W3DDevice/Common/System/W3DRadar.cpp	?clearShroud@W3DRadar@@UAEXXZ	?getSurfaceLevel@W3DRadarResetTexture@@QAE?AVW3DRadarResetSurface@@XZ	0x00132D70	wrong
 Code/GameEngineDevice/Source/W3DDevice/GameClient/DisplayRegisterVideoBuffer.cpp	?Rva006F2890RegisterVideoBuffer@Display@@QAEXPAVVideoBuffer@@@Z	?push_back@?$vector@PAVVideoBuffer@@V?$allocator@PAVVideoBuffer@@@_STL@@@_STL@@QAEXABQAVVideoBuffer@@@Z	0x004DFCB0	wrong
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DAnimationInfoVectorInsert.cpp	?insert@?$vector@VW3DAnimationInfo@@V?$allocator@VW3DAnimationInfo@@@_STL@@@_STL@@QAEPAVW3DAnimationInfo@@PAV3@ABV3@@Z	??$_Construct@VW3DAnimationInfo@@V1@@_STL@@YAXPAVW3DAnimationInfo@@ABV1@@Z	0x00469C61	divergent
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DAnimationInfoVectorInsert.cpp	?insert@?$vector@VW3DAnimationInfo@@V?$allocator@VW3DAnimationInfo@@@_STL@@@_STL@@QAEPAVW3DAnimationInfo@@PAV3@ABV3@@Z	??0W3DAnimationInfo@@QAE@ABV0@@Z	0x0004254E	wrong
