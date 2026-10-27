@@ -42,11 +42,13 @@ class BehaviorModuleInterface
 public:
 	virtual void behaviorSlot();
 };
+template <int NUMBITS> class BitFlags;
+typedef BitFlags<11> DisabledMaskType;
 class UpdateModuleInterface
 {
 public:
 	virtual UpdateSleepTime update();
-	virtual void disabledTypesSlot();
+	virtual DisabledMaskType getDisabledTypesToProcess() const = 0;
 	// BFME 2's wake slot (rowed UpdateModule default 0x0044DF8D).
 	virtual void rva0044DF8D(UpdateSleepTime wakeDelay);
 };
@@ -58,6 +60,8 @@ public:
 	// tail-jumps on; the implicit one here compiled to a 5-byte jmp the link could keep.
 	virtual ~UpdateModule();
 	void xfer(Xfer *xfer);
+	// UpdateModuleInterface slot 1 (rowed 0x00253376).
+	virtual DisabledMaskType getDisabledTypesToProcess() const;
 
 protected:
 	void setWakeFrame(Object *obj, UpdateSleepTime wakeDelay);
