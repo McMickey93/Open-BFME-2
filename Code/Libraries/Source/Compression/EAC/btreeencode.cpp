@@ -1,4 +1,4 @@
-// cl: /DNDEBUG
+// cl: /DNDEBUG /MD
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -22,10 +22,7 @@
 #ifndef __BTRWRITE
 #define __BTRWRITE 1
 
-// BFME2 imports the CRT allocators directly (PE malloc/free entries).
-extern "C" __declspec(dllimport) void * __cdecl malloc(unsigned int);
-extern "C" __declspec(dllimport) void __cdecl free(void *);
-
+#include <stdlib.h>
 #include <string.h>
 #include "codex.h"
 #include "btreecodex.h"
