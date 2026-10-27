@@ -1467,6 +1467,17 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   and folded-method identities, wider storage closure and census confirmation
   remain open; no new census-linked bytes or ownership receipt is claimed.
 
+- **WW3D window/default-sort bindings (2026-10-27, `0054abc1930e`):**
+  [Scoped owner verification](../reverse/attempt_support/ww3d-window-sort-data-20261027-codexb4.md)
+  binds the screenshot/window getter and default-list reset to the existing
+  initialization unit's globals. All 36 cohort rows and both EH graphs pass;
+  all 78 consumer executable sections retain their bytes. Data findings fall
+  from ten to six, with none outside the register; the owning retirement tool
+  removes two window-storage debt keys. The six Movie/PixelCenter keys remain.
+  Ordinary previews preserve the init owner's LINKS and the consumer's existing
+  stale-provider obstacles (LINK-017). Only scoped data-debt reduction is claimed;
+  census and image-ownership confirmation remain pending.
+
 - **AllowBannerSpawnUpgrade local-static index repair (2026-10-27, `dbce5d0f8e`):**
   [The current-owner check](../reverse/attempt_support/banner-poolkey-data-retirement-20261027-codexb4.md)
   refreshes two generated index rows after the existing getter rename and
@@ -5620,6 +5631,13 @@ previews LINKS (229 and 247 authored bytes) against `bf3dd31211`.
 confirms the existing repair; census confirmation remains pending.
 
 Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-27; inspected revision: a0b82f68445de8ab0254437ef7e97332ce48cfb0.
+
+Additional caller confirmation (2026-10-27, `0054abc1930e`):
+WaterRenderObjInit.cpp passes all four matched rows and its shader data row.
+Paired with the current BfmeDX8ThreadLock.cpp, both ordinary previews LINKS
+(297 and 247 authored bytes), clearing the stale-index selected-copy result.
+No source change was needed; [scoped checks](../reverse/attempt_support/ww3d-window-sort-data-20261027-codexb4.md)
+confirm the existing repair without a census or headline gain.
 
 Evidence / affected units: Code/Libraries/Source/WWVegas/WW3D2/BfmeDX8ThreadLock.cpp emitted wrong copies of ?BFME_DX8_Thread_Lock@@YAXXZ, ?bfmeRva0011F5B0@@YA_NK@Z and ?bfmeRva0011F600@@YAHXZ. Code/Libraries/Source/WWVegas/WW3D2/BfmeDX8ThreadCheck.cpp emitted the wrong ?Rva0011F500@@YAHXZ copy, and Code/GameEngine/Source/Main/BfmeDfe6e4_rva00225492.cpp emitted the wrong ?rva00225492@BfmeDfe6e4@@QAEXXZ copy. All five native calls target RVA 0x006105D0, already rowed as ThreadClass::_Get_Current_Thread_ID in Code/Libraries/Source/WWVegas/WWLib/thread.cpp. Commit e53f7b13020672350e4244facf694217e855f9af introduced the distinct _GetCurrentThreadId@0 row at RVA 0x00687E0A. Census identity resolution then preferred that row over the old pin at 0x006105D0. Both entries contain FF 25 20 A2 BB 00, but their native entry addresses differ. The inspected preview index identifies itself as bf3dd31211 (2026-10-27 00:39, retail-truth-4).
 

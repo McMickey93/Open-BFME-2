@@ -192,7 +192,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlportVectorEraseRangeDeferred.cpp` | 2,464 | 3 (U=3) | Cleared (LINK-036, link_check 2,464B) |
 | `Code/gen_small/uw_gen_006.cpp` | 2,448 | 103 (U=103) | Open |
 | `Code/gen_small/uw_gen_012.cpp` | 2,227 | 100 (U=100) | Open |
-| `Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp` | 1,750 | 20 (U=16, C=2, S=2) | Open |
+| `Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp` | 1,750 | 20 (U=16, C=2, S=2) | Open; 2026-10-27 window/default-sort consumer bindings repaired, two data keys retired (LINK-007). Paired current-object preview retains ten duplicate names and selected Stop_Movie_Capture against bf3dd31211 (LINK-017); census confirmation pending. |
 | `Code/gen_small/uw_gen_004.cpp` | 1,644 | 6 (U=6) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp` | 1,499 | 8 (U=2, C=4, S=2) | 2026-10-26 at `2a45addda1`: current-provider preview U2, L4, S2. Payload construction/destruction call the existing 0x004F6A52/0x005F85C8 owners under incompatible element names; canonical type/provider reconciliation remains (LINK-006). Evidence: `build/c136-logic/final-cohort-after.log`, `build/link-report.md`; census confirmation pending. |
 | `Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleModuleInfoCopyCtors.cpp` | 1,455 | 28 (U=28) | Open |
