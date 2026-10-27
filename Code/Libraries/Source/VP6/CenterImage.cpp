@@ -6,7 +6,7 @@
 // frame (frame width by height) into the middle of the output YUV buffer,
 // Y rows then U and V rows at half size.
 
-extern "C" void * __cdecl memcpy(void *destination, const void *source, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct Rva009AA750Context

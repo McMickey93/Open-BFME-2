@@ -7,7 +7,7 @@
 // is the caller's cleanup. The vector body is inline assembly inside an
 // ordinary C function, as ReconMmx.cpp does.
 
-extern "C" void *__cdecl memset(void *block, int value, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memset)
 
 // RVA 0x001D76E0: output words = (reference1 + reference2) >> 1, 8x8.

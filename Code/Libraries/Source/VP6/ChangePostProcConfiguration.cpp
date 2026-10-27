@@ -7,8 +7,7 @@
 // fragment counts (width and height shifted right 3), plane and unit fragment
 // totals, the motion-vector border and the reconstruction Y, U and V data
 // offsets. All divisions are unsigned shifts.
-extern "C" void *__cdecl memcpy(void *destination, const void *source,
-	unsigned int bytes);
+#include <string.h>
 
 struct PostProcPlaneRecord
 {
