@@ -3732,3 +3732,51 @@ Evidence / affected units:
   and `JetAIUpdate.cpp` also miss their machines' xfer, among many other blockers.
 Clearance: pending.
 Census confirmation: awaiting the next census.
+
+### LINK-097: units linked at the 08:28 census and unlinked at 19:02 (consolidation window)
+
+**Status: Open (2 repaired here; 2 fixed upstream; 4 held by other workers). Updated: 2026-10-26; inspected revision: `acfc3c889a`; census index `5ce093a71a` (2026-10-26 19:02).**
+
+- **Evidence / affected units:** comparing `reverse/link_status.csv` from the 08:28
+  recorder `d1f046749a` (measured tree `47e030bafc`) with the 19:02 recorder
+  `bf3dd31211` leaves 43 path-stable units that linked and no longer did, 95,344
+  bytes by current `target_size`. 223 further linked paths disappeared into
+  consolidation merges and cannot be compared by path; 75 consolidation-created
+  TUs are not in the census and `link_check.py` refuses to preview them
+  ("not in census ... not previewable") until the next census. Current-object
+  previews against the 19:02 index: 38 of the 43 link cleanly (86,849 bytes),
+  and `ObjectCreationListStore.cpp`'s 312 bytes also links when checked with
+  its ctor unit (the 43-batch still reports it because it uses the census's
+  ctor object). Four remain: `SidesList_sidesInfo.cpp` (1,817 B, duplicate
+  `??4SubsystemInterface@@QAEAAV0@ABV0@@Z`), `Common/Rva005189CFText.cpp`
+  (279 B, unresolved `?BfmeLODLevelNames@@3PAPBDA`),
+  `subsystem/SubsystemInterfaceCopy.cpp` (68 B, the same duplicate) and
+  `W3DPropDrawModuleDataCtor.cpp` (33 B, vtable first-copy).
+- **Completed (this pass):**
+  - `GameLogicDestructor.cpp` (887 B, commit `link: restore GameLogicDestructor's 13-slot SubsystemInterface view`): `de67bc5003` adopted the
+    one-slot canonical `SubsystemInterface.h` here while `GameLogicInit.cpp`
+    keeps its 13-slot private view, so the secondary vtable
+    `??_7GameLogic@@6BSubsystemInterface@@@` lost by link order (no retail
+    address). Restored the 13-virtual view; the adoption PASS compared function
+    bytes but not emitted COMDAT vtables. `./build.sh` OK 30/30,
+    `link_check.py` 0 -> 887 B.
+  - `ObjectCreationListStore.cpp` (312 B, commit `link: give ObjectCreationListStore the canonical SubsystemInterface base`): `Rva001F092ACtor.cpp`
+    derived from a private `BFME2NativeNetwork` base with an inline virtual
+    dtor, emitting a second `??_7ObjectCreationListStore@@6B@` whose dtor slot
+    was not the canonical out-of-line 0x001B4E74. Derive from the canonical
+    12-byte `SubsystemInterface` instead; `./build.sh` OK 7/7 across both
+    units, ctor stays 118 B.
+  - `AptValue/Rva006DF470Initialize.cpp` (1,374 B) was fixed independently
+    upstream by `5581a2a2cf`; `DozerAIUpdateCtor.cpp` (8,003 B) by the fix
+    recorded in LINK-096.
+- **Remaining / next check:** the four held units above. `SidesList_sidesInfo.cpp`
+  and `SubsystemInterfaceCopy.cpp` share one cause: the canonical out-of-line
+  copy assignment COMDAT does not agree with the unit's own declaration.
+  `Rva005189CFText.cpp` needs a coordinated data-name pass: the LOD table is
+  defined as `?rva00202B6CNames@@3PAPBDA` in `Rva00202B6CGet.cpp` and five other
+  consumers use that spelling, while the ledger's provisional name is
+  `BfmeLODLevelNames`; a consumer-only edit would break the other five.
+- **Census confirmation:** awaiting. The 19:02 census's 7,569,166 B omits the
+  43 units' 95,344 B; the current preview relinks 87,161 B of that
+  (86,849 + 312), so a fresh census should measure above the 08:28 peak's
+  7,614,012 B if nothing else moves.
