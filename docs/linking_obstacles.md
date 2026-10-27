@@ -1048,6 +1048,16 @@ Whole-unit clearance and census confirmation remain pending.
   consolidation remains blocked on private class views and native containment
   interfaces; no unchanged broad composition trial was repeated.
 
+- **Draw cached-key index follow-up (2026-10-27, control `8b5a8a815e`):**
+  [The current-object verification](../reverse/attempt_support/draw-poolkey-data-index-20261027.md)
+  refreshes twelve standalone draw getters' key/guard index entries after the
+  already-landed guard cleanup and getter renames. All 36 function rows,
+  twelve literals and twelve EH graphs pass. The owning tool retires twelve
+  stale data-debt keys with zero source findings; ordinary previews preserve
+  all twelve units' 946 authored bytes against index `bf3dd31211`. This is debt
+  retirement only; no census or image-ownership gain is claimed. PropDraw's
+  separate ModuleData/DrawModule prerequisites (LINK-102) remain open.
+
 - **Buffer-slot FVF table identity (2026-10-27, control `1710ea0aea`):**
   [The current-owner repair](../reverse/attempt_support/buffer-slot-fvf-data-20261027-codexb4.md)
   replaces the slot allocator's private table with the existing unsigned-array

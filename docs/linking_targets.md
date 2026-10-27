@@ -545,6 +545,14 @@ handoff's reported matched-byte values.
 
 ### Data-ownership follow-up outside the blocked shortlist
 
+2026-10-27, `8b5a8a815e`: twelve standalone draw cached-key units preserve
+LINKS (946 authored bytes) while their key/guard index rows catch up with the
+already-landed guard cleanup and getter renames. The owning tool retires twelve
+stale data-debt keys; 36 rows, twelve literals and twelve EH graphs pass.
+[Evidence](../reverse/attempt_support/draw-poolkey-data-index-20261027.md),
+LINK-007. PropDraw's separate module-data prerequisites remain open (LINK-102).
+No census gain is claimed.
+
 2026-10-27, `e1a73387fd`: `UpgradeDie.cpp` preserves LINKS (120 authored bytes)
 while its stale local key/guard index is refreshed after the already landed
 rename and separate-clearer removal. The owning tool retires one data-debt key;
