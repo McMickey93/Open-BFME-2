@@ -17953,7 +17953,6 @@ uw_0078b580,,0x0078B580,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obj
 $L1430,,0x0078B5C7,8,Code/GameEngine/Source/GameLogic/Object/Contain/SiegeEngineContainCreatePayload.cpp,matched,gen-funclet;parent=?createPayload@SiegeEngineContain@@UAEXXZ; Matched parent 0x0047BBA7's EH graph is EXACT (eh_verify) and binds compiler label $L1430 to retail Unwind@00b8b5c7 0x78B5C7; replaces generated uw_0078b5c7
 $L1632,,0x0078B6CF,8,Code/GameEngine/Source/GameLogic/Object/Contain/HordeSiegeEngineContainCreatePayload.cpp,matched,gen-funclet;parent=?createPayload@HordeSiegeEngineContain@@UAEXXZ; Matched parent 0x0047CB89's EH graph is EXACT (eh_verify) and binds compiler label $L1632 to retail Unwind@00b8b6cf 0x78B6CF; replaces generated uw_0078b6cf
 uw_0078ba91,,0x0078BA91,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11994
-uw_0078babb,,0x0078BABB,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0078bb78,,0x0078BB78,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10886
 uw_0078bcac,,0x0078BCAC,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10886
 uw_0078bcef,,0x0078BCEF,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1491
@@ -18019,7 +18018,6 @@ uw_0078d712,,0x0078D712,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;obje
 uw_0078d725,,0x0078D725,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3420
 uw_0078d7e3,,0x0078D7E3,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10886
 uw_0078d85a,,0x0078D85A,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1455
-uw_0078d979,,0x0078D979,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0078d9b4,,0x0078D9B4,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9221
 uw_0078da96,,0x0078DA96,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L305
 uw_0078dade,,0x0078DADE,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1446
@@ -18076,7 +18074,6 @@ uw_0078f848,,0x0078F848,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;obje
 uw_0078f949,,0x0078F949,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L6642
 uw_0078f9cc,,0x0078F9CC,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
 uw_0078fdd9,,0x0078FDD9,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2579
-uw_0078ff7e,,0x0078FF7E,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0078ffad,,0x0078FFAD,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L320
 uw_00790218,,0x00790218,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L5926
 uw_00790280,,0x00790280,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
@@ -18090,7 +18087,6 @@ uw_007905dd,,0x007905DD,11,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;obj
 uw_007905fd,,0x007905FD,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0079060f,,0x0079060F,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_00790639,,0x00790639,11,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L2440
-uw_0079067b,,0x0079067B,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_007906b4,,0x007906B4,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L2251
 uw_007906d8,,0x007906D8,14,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3450
 uw_007906e6,,0x007906E6,14,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3452
@@ -18219,7 +18215,6 @@ uw_00793e97,,0x00793E97,11,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;obj
 uw_007940f3,,0x007940F3,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5870
 uw_0079410d,,0x0079410D,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5253
 uw_00794115,,0x00794115,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2598
-uw_007941cb,,0x007941CB,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_00794248,,0x00794248,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1337
 uw_00794583,,0x00794583,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_007947df,,0x007947DF,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5048
@@ -98300,3 +98295,13 @@ $L1621,,0x0076B68A,11,Code/GameEngine/Source/GameClient/System/FXParticleSystem/
 $L1688,,0x0076B758,11,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerDtor.cpp,matched,gen-funclet;parent=??0Rva001F9D98@@QAE@XZ; Matched parent 0x001FA69F's EH graph is EXACT (eh_verify) and binds compiler label $L1688 to retail 0x0076B758; its callee ??1Rva001F81EC@@QAE@XZ is rowed at its ICF fold 0x001F8922; replaces generated uw_0076b758
 $L1689,,0x0076B763,11,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerDtor.cpp,matched,gen-funclet;parent=??0Rva001F9D98@@QAE@XZ; Matched parent 0x001FA69F's EH graph is EXACT (eh_verify) and binds compiler label $L1689 to retail 0x0076B763; its callee ??1Rva001F9D98Handle@@QAE@XZ is rowed at its ICF fold 0x002115C5; replaces generated uw_0076b763
 $L1625,,0x0076B6BF,8,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerDtor.cpp,matched,gen-funclet;parent=??1Rva001F9D98@@UAE@XZ; Matched parent 0x001F9D98's EH graph is EXACT (eh_verify) and binds compiler label $L1625 to retail 0x0076B6BF; its callee ??1DX8ThreadLockScope@@QAE@XZ is rowed at its ICF fold 0x00042F8C; replaces generated uw_0076b6bf
+??1?$_Vector_base@URva0048130E@@V?$allocator@URva0048130E@@@_STL@@@_STL@@QAE@XZ,,0x0007FAB3,14,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,fold-proof=Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$vector@HV?$allocator@H@_STL@@@_STL@@QAE@XZ at 0x0007FAB3: this unit compiles it to the same whole body; its unwind funclets call 0x0007FAB3
+??1?$_Vector_base@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@QAE@XZ,,0x0007FAB3,14,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,fold-proof=Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$vector@HV?$allocator@H@_STL@@@_STL@@QAE@XZ at 0x0007FAB3: this unit compiles it to the same whole body; its unwind funclets call 0x0007FAB3
+??1?$_Vector_base@URvaPair004C3D4C@@V?$allocator@URvaPair004C3D4C@@@_STL@@@_STL@@QAE@XZ,,0x0007FAB3,14,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,fold-proof=Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$vector@HV?$allocator@H@_STL@@@_STL@@QAE@XZ at 0x0007FAB3: this unit compiles it to the same whole body; its unwind funclets call 0x0007FAB3
+??1?$_Vector_base@UBfmeObject544@@V?$allocator@UBfmeObject544@@@_STL@@@_STL@@QAE@XZ,,0x0007FAB3,14,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,fold-proof=Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$vector@HV?$allocator@H@_STL@@@_STL@@QAE@XZ at 0x0007FAB3: this unit compiles it to the same whole body; its unwind funclets call 0x0007FAB3
+??1?$_Vector_base@UMade002CC5E1DamageScalar@@V?$allocator@UMade002CC5E1DamageScalar@@@_STL@@@_STL@@QAE@XZ,,0x0007FAB3,14,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,fold-proof=Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$vector@HV?$allocator@H@_STL@@@_STL@@QAE@XZ at 0x0007FAB3: this unit compiles it to the same whole body; its unwind funclets call 0x0007FAB3
+$L15727,,0x0078BABB,8,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,gen-funclet;parent=??1?$vector@URva0048130E@@V?$allocator@URva0048130E@@@_STL@@@_STL@@QAE@XZ; Matched parent 0x004815AE's EH graph is EXACT (eh_verify) and binds compiler label $L15727 to retail 0x0078BABB; its callee ??1?$_Vector_base@URva0048130E@@V?$allocator@URva0048130E@@@_STL@@@_STL@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_0078babb
+$L16201,,0x0078D979,8,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,gen-funclet;parent=??1?$vector@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@QAE@XZ; Matched parent 0x0049E274's EH graph is EXACT (eh_verify) and binds compiler label $L16201 to retail 0x0078D979; its callee ??1?$_Vector_base@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_0078d979
+$L15631,,0x0078FF7E,8,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,gen-funclet;parent=??1?$vector@URvaPair004C3D4C@@V?$allocator@URvaPair004C3D4C@@@_STL@@@_STL@@QAE@XZ; Matched parent 0x004C3D4C's EH graph is EXACT (eh_verify) and binds compiler label $L15631 to retail 0x0078FF7E; its callee ??1?$_Vector_base@URvaPair004C3D4C@@V?$allocator@URvaPair004C3D4C@@@_STL@@@_STL@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_0078ff7e
+$L15583,,0x0079067B,8,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,gen-funclet;parent=??1?$vector@UBfmeObject544@@V?$allocator@UBfmeObject544@@@_STL@@@_STL@@QAE@XZ; Matched parent 0x004CAE89's EH graph is EXACT (eh_verify) and binds compiler label $L15583 to retail 0x0079067B; its callee ??1?$_Vector_base@UBfmeObject544@@V?$allocator@UBfmeObject544@@@_STL@@@_STL@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_0079067b
+$L14536,,0x007941CB,8,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp,matched,gen-funclet;parent=??1?$vector@UMade002CC5E1DamageScalar@@V?$allocator@UMade002CC5E1DamageScalar@@@_STL@@@_STL@@QAE@XZ; Matched parent 0x00507BD0's EH graph is EXACT (eh_verify) and binds compiler label $L14536 to retail 0x007941CB; its callee ??1?$_Vector_base@UMade002CC5E1DamageScalar@@V?$allocator@UMade002CC5E1DamageScalar@@@_STL@@@_STL@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_007941cb
