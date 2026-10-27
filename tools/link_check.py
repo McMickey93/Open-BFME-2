@@ -184,7 +184,9 @@ def index_tables(present, facts, selection, references=None):
             alternates[alias].append((index, target))
     tables = {"objects": [obj.name for obj in present], "strong": dict(strong), "comdat": dict(comdat),
               "selection": selection, "common": dict(common), "common_schema": COMMON_SCHEMA,
-              "alternates": dict(alternates)}
+              "alternates": dict(alternates),
+              "touches": {obj.name: link_census.touched_names(fact) | set(common)
+                          for obj, fact, common in zip(present, facts, common_facts)}}
     if references is not None:
         tables["references"] = {"schema": REFERENCES_SCHEMA, "edges": dict(references["edges"]),
                                 "referenced": set(references["referenced"])}
@@ -428,6 +430,7 @@ def forget(index, names):
         del index["blockers"][source]
     for name in gone:
         index.get("digests", {}).pop(name, None)
+        index.get("touches", {}).pop(name, None)
 
 
 def census_tree_clean():
@@ -543,6 +546,8 @@ def refresh(index, objects, truth):
             if any(at(entry) in positions for entry in entries):
                 index[table][name] = [entry for entry in entries if at(entry) not in positions]
     for position, (common, fact, alternates) in replacements.items():
+        if "touches" in index:
+            index["touches"][index["objects"][position]] = link_census.touched_names(fact) | set(common)
         for alias, target in alternates.items():
             index["alternates"].setdefault(alias, []).append((position, target))
         copies, defined, _, _ = fact

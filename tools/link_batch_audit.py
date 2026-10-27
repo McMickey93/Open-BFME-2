@@ -1,11 +1,12 @@
-"""Report linking regressions once for an outgoing push, using verified objects.
+"""Check linking regressions once for an outgoing push, using verified objects.
 
-This is a shadow audit. A census index at the pushed base supplies the before
-state; the byte gate supplies current objects for the changed source scope.
+Exit 1 for proven regressions, 2 for inconclusive evidence. A census index at
+the pushed base supplies the before state; the byte gate supplies current objects.
 """
 
 import argparse
 import collections
+import csv
 import subprocess
 import sys
 from pathlib import Path
@@ -23,6 +24,34 @@ def git(*args):
 def changed_sources(base, tip):
     names = git("diff", "--name-only", base, tip, "--", "Code").splitlines()
     return {name for name in names if Path(name).suffix.lower() in (".cpp", ".c", ".asm")}
+
+
+def changed_identities(base, tip):
+    """Names whose address/owner may change, including ledger-only edits."""
+    diff = git("diff", "--no-ext-diff", "--unified=0", base, tip, "--",
+               "reverse/functions.csv", "reverse/symbols.csv",
+               "reverse/data_rows.csv", "reverse/dir32_addresses.csv")
+    names = set()
+    for line in diff.splitlines():
+        if line[:1] in ("+", "-") and not line.startswith(("+++", "---")):
+            row = next(csv.reader([line[1:]]), [])
+            if row and row[0] != "name":
+                names.add(row[0])
+            for field in row:
+                for token in field.split(";"):
+                    if token.strip().startswith("object-symbol="):
+                        names.add(token.strip().split("=", 1)[1])
+    return names
+
+
+def affected_sources(index, names):
+    """Definition owners and direct consumers, including unchanged sources."""
+    touches = index.get("touches")
+    if touches is None or any(obj not in touches for obj in index["objects"]
+                              if obj not in index.get("forgotten", ())):
+        raise ValueError("census index lacks per-object consumer names; fetch a current index")
+    return {source for source, entry in index["blockers"].items()
+            if names.intersection(touches.get(entry.get("object"), ()))}
 
 
 def definitions(index, name, rank):
@@ -56,6 +85,8 @@ def overlay(index, replacements, removed, truth):
     updated = dict(index)
     for key in ("strong", "comdat", "common", "alternates", "blockers", "digests"):
         updated[key] = dict(index[key])
+    if "touches" in index:
+        updated["touches"] = dict(index["touches"])
     updated["objects"] = list(index["objects"])
     updated["forgotten"] = set(index.get("forgotten", ()))
     if "references" in index:
@@ -71,18 +102,40 @@ def overlay(index, replacements, removed, truth):
     return updated
 
 
+def reorder(index, rank):
+    """check_object compares numeric positions; use the new link order."""
+    old = index["objects"]
+    positions = sorted((i for i, obj in enumerate(old) if obj in rank), key=lambda i: rank[old[i]])
+    moved = {old_i: new_i for new_i, old_i in enumerate(positions)}
+    for table in ("comdat", "common", "alternates"):
+        index[table] = {name: sorted((moved[i], *rest) for i, *rest in entries if i in moved)
+                        for name, entries in index[table].items()}
+    index["strong"] = {name: sorted(moved[i] for i in entries if i in moved)
+                       for name, entries in index["strong"].items()}
+    index["selection"] = {**index["selection"], "exceptions": {
+        name: moved[i] if i is not None else None
+        for name, i in index["selection"]["exceptions"].items() if i is None or i in moved}}
+    index["objects"] = [old[i] for i in positions]
+
+
 def audit(base, tip, verified):
     changes = changed_sources(base, tip)
-    if not changes and not verified:
+    identities = changed_identities(base, tip)
+    if not changes and not verified and not identities:
         print("link batch audit: no changed source objects")
-        return
+        return 0
+    if git("diff", "--name-only", tip, "--", *link_census.CENSUS_INPUTS):
+        raise ValueError("working-tree compiler/identity inputs differ from the pushed commit")
     if not link_check.INDEX.exists():
         print("link batch audit: INCONCLUSIVE: census index missing; fetch with link_check.py --fetch-index")
-        return
+        return 2
     index = link_check.load_index()
     meta = index.get("meta", {})
-    exact_base = bool(meta.get("commit") and base.startswith(meta["commit"]) and
-                      meta.get("clean_tree", True))
+    # Census publication changes status/history, not compiler inputs. Accept
+    # those commits without requiring a new census of its own publication.
+    exact_base = bool(meta.get("commit") and meta.get("clean_tree", True) and not git(
+        "diff", "--name-only", meta["commit"], base, "--", *link_census.CENSUS_INPUTS,
+        *("tools/" + name for name in link_census.TOOL_FILES)))
     if not exact_base:
         print(f"link batch audit: INCONCLUSIVE baseline: index at {meta.get('commit', '?')}, "
               f"outgoing base {base}; findings below are provisional since-index changes")
@@ -90,11 +143,15 @@ def audit(base, tip, verified):
         link_check.require_common_index(index)
     except SystemExit as exc:
         print(f"link batch audit: INCONCLUSIVE: {exc}")
-        return
+        return 2
     rows = link_census.ledger()
     truth = link_census.RetailTruth(rows)
     sources = {row["source"] for row in rows} | {row["source"] for row in link_census.data_ledger()}
     scope = (changes | set(verified)) & sources
+    # Rejudge unchanged copies when a ledger/pin changes their own or a
+    # relocation's identity. Their cached census verdict is no longer current.
+    if identities:
+        scope |= affected_sources(index, identities) & sources
     old_by_source = {source: entry["object"] for source, entry in index["blockers"].items()
                      if "object" in entry}
     removed = {old_by_source[source] for source in changes if source in old_by_source and source not in sources}
@@ -109,7 +166,7 @@ def audit(base, tip, verified):
     if missing:
         print(f"link batch audit: INCONCLUSIVE: {len(missing)} source object(s) lack current receipts; "
               f"first: {missing[0]}")
-        return
+        return 2
     # A changed ledger may remove an object without deleting its source path.
     current_objects = {build.obj_path(link_check.ROOT / source).name for source in sources}
     removed |= {obj for source, obj in old_by_source.items() if source not in sources and obj not in current_objects}
@@ -126,29 +183,55 @@ def audit(base, tip, verified):
     for name, entries in index["strong"].items():
         if any(index["objects"][i] in changed_objects for i in entries):
             touched.add(name)
+    for name, entries in index["common"].items():
+        if any(index["objects"][i] in changed_objects for i, _ in entries):
+            touched.add(name)
     for obj in replacements:
         copies, strong, _, _ = link_census.object_facts(obj, truth)
         touched.update(name for name, _, _, _ in copies)
         touched.update(strong)
+        touched.update(link_census.common_definitions(obj))
+    # A provider edit can break a caller whose source did not change. Read
+    # those current objects too; never treat missing/stale consumers as clean.
+    consumers = (affected_sources(index, touched) & sources) - scope if touched else set()
+    for source in sorted(consumers):
+        obj = build.obj_path(link_check.ROOT / source)
+        if not obj.is_file() or not link_census.object_current(link_check.ROOT / source, obj):
+            print(f"link batch audit: INCONCLUSIVE: affected consumer lacks current receipt: {source}")
+            return 2
     findings = []
     for name in sorted(touched):
         old_holder, old_verdict = selected(index, name, before_rank)
         new_holder, new_verdict = selected(updated, name, after_rank)
-        if old_holder != new_holder and old_verdict != "wrong" and new_verdict == "wrong":
+        if old_holder and old_verdict != "wrong" and new_verdict == "wrong":
             findings.append((name, old_holder, new_holder, "wrong selected provider"))
         elif old_holder and not new_holder and old_verdict != "wrong":
             findings.append((name, old_holder, None, "provider disappeared"))
+    reorder(updated, after_rank)
+    # A new destination must preserve the linked donors it absorbed too.
+    retired_clean = {entry["object"]: source for source, entry in index["blockers"].items()
+                     if source not in sources and entry.get("linked")}
+    inherited = collections.defaultdict(set)
+    if retired_clean:
+        for row in rows:
+            for owner in index["selection"]["owners"].get(row.get("name"), ()):
+                if owner in retired_clean:
+                    inherited[row["source"]].add(retired_clean[owner])
     lost = collections.Counter()
-    for source in sorted(scope):
+    for source in sorted(scope | consumers):
         prior = index["blockers"].get(source, {})
-        if not prior.get("linked"):
+        if not prior.get("linked") and not inherited[source]:
             continue
+        credited = inherited[source] | ({source} if prior.get("linked") else set())
         obj = build.obj_path(link_check.ROOT / source)
         result = link_check.check_object(obj, updated, truth, source)
-        for name in result["unresolved"]:
-            before, _ = selected(index, name, before_rank)
-            after, _ = selected(updated, name, after_rank)
-            lost[(name, before, after, "unresolved in " + source)] += index["bytes"].get(source, 0)
+        for kind in ("unresolved", "duplicates", "comdat", "selected", "addresses"):
+            for entry in result.get(kind, ()):
+                name = entry[0] if isinstance(entry, (tuple, list)) else entry
+                before, _ = selected(index, name, before_rank)
+                after, _ = selected(updated, name, after_rank)
+                lost[(name, before, after, kind + " in " + source)] += sum(
+                    index["bytes"].get(s, 0) for s in credited)
     print(f"link batch audit: {len(replacements)} current object(s), {len(removed)} retired; "
           f"index {meta.get('date', '?')} at {base}")
     for name, before, after, reason in findings:
@@ -158,12 +241,15 @@ def audit(base, tip, verified):
         label = "LOST" if exact_base else "POSSIBLE LOSS"
         print(f"  {label} {byte_count:,} previously linked source bytes: {reason}: {name}; "
               f"provider {before or '(none)'} -> {after or '(none)'}")
-    if findings or lost:
-        print("link batch audit: SHADOW findings; verify affected consumers and record repairs")
+    if lost:
+        print("link batch audit: " + ("FAILED" if exact_base else "INCONCLUSIVE") +
+              "; verify affected consumers and record repairs")
+        return 1 if exact_base else 2
     elif not exact_base:
         print("link batch audit: INCONCLUSIVE: no provisional finding from the older index")
     else:
-        print("link batch audit: no selected-provider change or changed-unit unresolved blocker found")
+        print("link batch audit: no linking regression found in the checked scope")
+    return 0 if exact_base else 2
 
 
 def main():
@@ -173,16 +259,16 @@ def main():
     parser.add_argument("--sources-from", metavar="FILE", required=True,
                         help="NUL-delimited byte-verified source paths")
     args = parser.parse_args()
-    raw = Path(args.sources_from).read_bytes()
-    if raw and not raw.endswith(b"\0"):
-        raise ValueError("unterminated verified source list")
-    verified = [part.decode("utf-8") for part in raw.split(b"\0") if part]
     try:
-        audit(args.base, args.tip, verified)
-    except (OSError, ValueError, KeyError, SystemExit, subprocess.CalledProcessError,
+        raw = Path(args.sources_from).read_bytes()
+        if raw and not raw.endswith(b"\0"):
+            raise ValueError("unterminated verified source list")
+        verified = [part.decode("utf-8") for part in raw.split(b"\0") if part]
+        return audit(args.base, args.tip, verified)
+    except (OSError, ValueError, KeyError, csv.Error, SystemExit, subprocess.CalledProcessError,
             link_census.MissingObject) as exc:
         print(f"link batch audit: INCONCLUSIVE: {exc}")
-    return 0  # reporting mode
+    return 2
 
 
 if __name__ == "__main__":
