@@ -51,13 +51,7 @@ static inline bool operator!=(const _Rb_tree_iterator<T, LeftTraits>& a,
 }
 #include <stdlib.h>
 
-struct _iobuf;
-typedef struct _iobuf FILE;
-extern "C" __declspec(dllimport) FILE *__cdecl _wfopen(const unsigned short *name, const unsigned short *mode);
-extern "C" __declspec(dllimport) int __cdecl fprintf(FILE *fp, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __cdecl fclose(FILE *fp);
-extern "C" __declspec(dllimport) char *__cdecl fgets(char *buf, int n, FILE *fp);
-extern "C" __declspec(dllimport) int __cdecl _wunlink(const unsigned short *path);
+#include <stdio.h>
 
 typedef bool Bool;
 typedef int Int;
