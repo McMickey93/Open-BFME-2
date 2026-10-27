@@ -133,7 +133,7 @@ private:
 	TerrainType *m_head;
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 // This view uses the external retail table throughout its lifetime; no
 // separate table for the partial method declarations belongs in the link.

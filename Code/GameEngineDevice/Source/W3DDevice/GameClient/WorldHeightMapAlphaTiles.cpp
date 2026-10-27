@@ -46,7 +46,7 @@ public:
 	void updateMips();
 };
 
-extern "C" void *__cdecl memset(void *,int,unsigned int);
+#include <string.h>
 struct TBlendTileInfo { int blendNdx; unsigned char horiz,vert,rightDiagonal,leftDiagonal,inverted,longDiagonal; int customBlendEdgeClass; };
 class WorldHeightMap {
  friend void Rva000AC6F9SetupAlphaTiles();

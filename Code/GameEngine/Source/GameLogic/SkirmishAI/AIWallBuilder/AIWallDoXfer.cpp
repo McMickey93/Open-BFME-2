@@ -81,7 +81,7 @@ struct WallOrderRange {
 };
 enum NameKeyType { NAMEKEY_INVALID=0 };
 Xfer &__cdecl Rva00149101XferNameKey(Xfer &,NameKeyType &);
-void *operator new(unsigned int);
+#include <new>
 // Reuse the owned serial-counter provider in Rva004EB583Ctor.cpp.
 extern int g_00E044A0;
 // WB 0x0137E7C0 names AIWall::DoXfer in AIWall.cpp (assert lines 611..633).

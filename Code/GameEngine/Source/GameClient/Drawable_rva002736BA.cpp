@@ -42,7 +42,7 @@ private:
 	unsigned char m_pad[0x34];
 };
 
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 class Drawable
 {

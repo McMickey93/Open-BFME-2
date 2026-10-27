@@ -427,7 +427,7 @@ private:
 };
 
 
-void __cdecl operator delete(void *p);
+#include <new>
 namespace FXParticleSystem
 {
 class CPUParticle

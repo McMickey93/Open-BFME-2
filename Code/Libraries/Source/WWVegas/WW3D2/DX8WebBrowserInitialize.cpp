@@ -16,7 +16,7 @@
 #include <objbase.h>
 #include <comip.h>
 extern GUID g_bfmeIidTSA;
-extern void __stdcall _com_issue_errorex(HRESULT,IUnknown *,const IID &);
+#include <comdef.h>
 struct __declspec(uuid("ee883b17-0778-4b18-a12b-e44c0d298412")) IFEBrowserEngine2 : IDispatch {
     virtual HRESULT __stdcall raw_Initialize(long *) = 0;
     virtual void __stdcall slot08() = 0;

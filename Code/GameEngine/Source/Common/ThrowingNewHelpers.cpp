@@ -266,7 +266,7 @@ Rva005CEE07::~Rva005CEE07(){
  ((Rva00319B0AOwner*)m_army)->rva00319B31();
 }
 
-void __cdecl operator delete(void *);
+#include <new>
 // Owning-member cleanup: complete 26-byte and relocation twin of clear5CE21C.
 // Keep the pointee's rowed 5E893E thunk distinct from its inner cleanup helper.
 Rva005CE236::~Rva005CE236()
