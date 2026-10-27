@@ -1467,6 +1467,19 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   and folded-method identities, wider storage closure and census confirmation
   remain open; no new census-linked bytes or ownership receipt is claimed.
 
+- **Sorting-renderer alias cleanup (2026-10-27, control `25d156a07f`):**
+  [The scoped verification and storage prerequisite](../reverse/attempt_support/sorting-renderer-data-aliases-20261027-codexb4.md)
+  replaces three data aliases with existing DX8Wrapper declarations and removes
+  four alternatename occurrences. All 26 rows and the parent EH graph pass;
+  all 77 non-label code symbols retain identical bytes. Ordinary previews
+  preserve LINKS and 13,227 authored bytes against index `bf3dd31211`.
+  The owning retirement tool refuses on five pre-existing outside-register
+  findings: three static-storage duplicates with sortingrenderer.cpp and two
+  list identities. All five original data-baseline keys remain. Next reconcile
+  shared sorting storage and the native list owners before retrying retirement.
+  Only hatch reduction is claimed; broader storage closure and census
+  confirmation remain open.
+
 - **DetachableRiderBody local-static index repair (2026-10-27, `408c38abc0`):**
   [The current-owner check](../reverse/attempt_support/detachable-rider-poolkey-data-retirement-20261027-codexb4.md)
   refreshes two generated data-index rows left stale by the existing method

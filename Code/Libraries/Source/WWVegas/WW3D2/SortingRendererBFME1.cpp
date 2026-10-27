@@ -181,7 +181,13 @@ template <> RefCountPtr<TextureClass>::RefCountPtr();
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
-extern unsigned char *BfmeCurrentCaps;
+// Access only: retain DX8Wrapper's protected data symbols, without defining
+// another copy of its state or claiming a retail derived class.
+struct SortingDeviceStateAccess : DX8Wrapper
+{
+	using DX8Wrapper::matrix_changes;
+	using DX8Wrapper::render_state_changed;
+};
 
 // BFME stores the eight texture references in RenderStateStruct as owning
 // handles.  The Zero Hour header exposes them as raw pointers, which has the
@@ -448,7 +454,7 @@ void Release_Refs(SortingNodeStruct* state)
 	}
 	BFME_RELEASE_REFS(state->sorting_state.index_buffer);
 	BFME_RELEASE_REFS(state->sorting_state.material);
-	for (i=0;i<*(const int *)(BfmeCurrentCaps+0x2b0);++i)
+	for (i=0;i<*(const int *)((const unsigned char *)DX8Wrapper::Get_Current_Caps()+0x2b0);++i)
 	{
 		state->sorting_state.Textures[i].Clear();
 	}
@@ -533,19 +539,13 @@ static void Apply_Render_State(RenderStateStruct& render_state)
 // ----------------------------------------------------------------------------
 // ?Rva0012D4D0Apply@@YAXAAURenderStateStruct@@@Z @0x0012D4D0 387B. BFME2
 // owning-handle apply: Set_Shader, manual material REF_PTR_SET with
-// TheBoxTextureDirtyMask, BFME2Set_Texture loop over BfmeCurrentCaps+0x2b0,
+// render_state_changed, BFME2Set_Texture loop over CurrentCaps+0x2b0,
 // looped Set_DX8_Light with break, direct world/view SetTransform.
 // Evidence: rowed Set_Shader 0x000662E5, rowed BFME2Set_Texture 0x0011F4B0,
 // BFME1 donor sortingrenderer.cpp Rva009391B0::apply loop+break shape.
 struct BFME2TextureRef { void *Ptr; };
 void BFME2Set_Texture(unsigned stage, const struct BFME2TextureRef &texture);
-extern unsigned TheBoxTextureDirtyMask;
-// ?g_00DEE5DC@@3PAVVertexMaterialClass@@A: the global at this VA is ?ScreenMaterial@@3PAVVertexMaterialClass@@A; this name is an alias for it.
 extern class VertexMaterialClass *ScreenMaterial;
-extern unsigned g_00DEDA4C;
-// ?g_00DEDA4C@@3IA: the global at this VA is ?matrix_changes@DX8Wrapper@@1IA; this name is an alias for it.
-extern unsigned int g_00DEDA4C;
-#pragma comment(linker, "/alternatename:?g_00DEDA4C@@3IA=?matrix_changes@DX8Wrapper@@1IA")
 extern unsigned number_of_DX8_calls;
 
 void Rva0012D4D0Apply(RenderStateStruct &render_state)
@@ -556,7 +556,7 @@ void Rva0012D4D0Apply(RenderStateStruct &render_state)
 		mat->Add_Ref();
 	if (ScreenMaterial)
 		ScreenMaterial->Release_Ref();
-	TheBoxTextureDirtyMask |= 0x4000;
+	SortingDeviceStateAccess::render_state_changed |= 0x4000;
 	ScreenMaterial = mat;
 	for (int i = 0; i < *(const int *)((const unsigned char *)DX8Wrapper::Get_Current_Caps() + 0x2b0); ++i)
 		BFME2Set_Texture(i, reinterpret_cast<const struct BFME2TextureRef &>(render_state.Textures[i]));
@@ -569,10 +569,10 @@ void Rva0012D4D0Apply(RenderStateStruct &render_state)
 			DX8Wrapper::Set_DX8_Light(i, &render_state.Lights[i]);
 		}
 	}
-	++g_00DEDA4C;
+	++SortingDeviceStateAccess::matrix_changes;
 	DX8Wrapper::_Get_D3D_Device8()->SetTransform(D3DTS_WORLD, reinterpret_cast<const D3DMATRIX *>(&render_state.world));
 	++number_of_DX8_calls;
-	++g_00DEDA4C;
+	++SortingDeviceStateAccess::matrix_changes;
 	DX8Wrapper::_Get_D3D_Device8()->SetTransform(D3DTS_VIEW, reinterpret_cast<const D3DMATRIX *>(&render_state.view));
 	++number_of_DX8_calls;
 }
@@ -593,7 +593,7 @@ static __forceinline bool RenderStatesDifferRva0012D660(RenderStateStruct& rende
 {
 	if (renderState.shader != b.shader) return true;
 	if (renderState.material != b.material) return true;
-	for (int i=0;i<*(const int *)(BfmeCurrentCaps+0x2b0);++i) {
+	for (int i=0;i<*(const int *)((const unsigned char *)DX8Wrapper::Get_Current_Caps()+0x2b0);++i) {
 		if (renderState.Textures[i] != b.Textures[i]) return true;
 	}
 	if (renderState.material->Get_Lighting()) {
@@ -921,14 +921,6 @@ void SortingRendererClass::Insert_VolumeParticle(
 	}
 	if (!node) sorted_list.Add_Tail(state);
 }
-
-// ?TheBoxTextureDirtyMask@@3IA: the global at this VA is ?render_state_changed@DX8Wrapper@@1IA; this name is an alias for it.
-extern unsigned int TheBoxTextureDirtyMask;
-#pragma comment(linker, "/alternatename:?TheBoxTextureDirtyMask@@3IA=?render_state_changed@DX8Wrapper@@1IA")
-// ?TheBoxTextureDirtyMask@@3IA: the global at VA 0xdec4f4 is ?render_state_changed@DX8Wrapper@@1IA.
-#pragma comment(linker, "/alternatename:?TheBoxTextureDirtyMask@@3IA=?render_state_changed@DX8Wrapper@@1IA")
-// ?BfmeCurrentCaps@@3PAEA: the global at VA 0xdeda7c is ?CurrentCaps@DX8Wrapper@@1PAVDX8Caps@@A.
-#pragma comment(linker, "/alternatename:?BfmeCurrentCaps@@3PAEA=?CurrentCaps@DX8Wrapper@@1PAVDX8Caps@@A")
 
 // Retail 0x0012FE00..0x001303F0, 1520 bytes, ending at RET (no padding).
 // BFME1 sortingrenderer.cpp at d6db6bfa4fd3 provides the sorted-insertion
