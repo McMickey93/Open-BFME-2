@@ -206,7 +206,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/Rva0020EE29Clear.cpp` | 938 | 24 (U=23, C=1) | Open |
 | `Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldLogicCtorBfme.cpp` | 913 | 9 (U=6, C=3) | 2026-10-26 at `2a45addda1`: current-provider preview U6, L3. Observer callbacks and update/reset all reach existing rows with incompatible names or signatures. Shared observer/table reconciliation is required (LINK-004). Evidence: `build/c136-logic/final-cohort-after.log`, `build/link-report.md`; census confirmation pending. |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp` | 899 | 17 (U=12, C=2, S=3) | 2026-10-27 at `97c23353111e`: U12/L2/S3; shared GUI and BuddyInfo interfaces (LINK-005) |
-| `Code/GameEngine/Source/Common/UserPreferencesDeferredIgnores.cpp` | 897 | 5 (C=3, S=2) | Open |
+| `Code/GameEngine/Source/Common/UserPreferencesDeferredIgnores.cpp` | 897 | 5 (C=3, S=2) | 2026-10-27 at `6f3fa807a0`, index `73061d9452`: C3/S2 retained. Exact pair-destructor fold and funclet repoint regress PeerDefs unless its thunk-targeted copy is reconciled; declarations do not suppress it. Trials reverted, restored 164/164. LINK-064 / LINK-095; [evidence](../reverse/attempt_support/ignore-pair-destructor-20261027-codex.md). |
 | `Code/GameEngine/Source/Common/RTS/PlayerCtorBFME2.cpp` | 841 | 6 (U=4, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/Thing/ThingTemplate.cpp` | 800 | 22 (U=10, C=8, S=4) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/DozerAIUpdate.cpp` | 749 | 14 (U=12, C=2) | Open |

@@ -3777,6 +3777,20 @@ shape outside the module tree, is recorded under LINK-065.)
 
 **2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** The current-provider cohort confirms the deferred ignore-family prerequisite. `getIgnores` at 0x003B224D has its tree-copy REL32 at body offset 174 targeting native 0x003B1EBB, while its decorated `_Rb_tree<int,pair<const int,AsciiString> >` constructor currently owns 0x0052D25D. The former is already rowed under `_Rb_tree<Rva003B1EBBElement>` in `StlSweepW4Rva003B1EBB.cpp`; 0x00383BAC is rowed as the int/int `_M_insert_00383BAC` and 0x00383EB2 as `Rva00383A28` destruction in `Rva0046A93EDtor.cpp`. These current owners preview LINKS, but the ignore unit retains L3/S2. The two pair-destructor digests remain split between WOLBuddyOverlay/PeerDefs and the deferred ignore/assign units. No consumer was rebound to a placeholder and no row or pin was changed. Next: reconcile those existing tree/value identities and the folded pair destructor before retrying suppression. No clearance or census gain is claimed.
 
+**2026-10-27 codex pair-destructor follow-up, inspected `6f3fa807a0`, index
+`73061d9452` (14:34):** Native pair cleanup 0x0077FA71 and its exact parent
+graph prove the eight-byte destructor fold at 0x0029D7C2. Both proposed rows
+pass unmasked byte verification, but admitting the destructor identity alone
+regresses the currently linking `PeerDefs.cpp` (7,181 bytes). Its copy and
+WOLBuddyOverlay's jump to the AsciiString destructor thunk; the ignore and
+assign copies jump directly to releaseBuffer. Plain specialized destructor
+declarations do not suppress MSVC's implicit copies. All source and ledger
+trials were reverted; restored builds pass 164/164 and the paired four-provider
+preview preserves the original linking status. Reconcile the destructor's
+four providers before repointing the cleanup. The copy/insertion and two
+distinct placeholder-value families remain open. No clearance or census gain.
+Evidence: `reverse/attempt_support/ignore-pair-destructor-20261027-codex.md`.
+
 ### LINK-084: audio lookup emits an unrowed owner and an untyped tree-worker trampoline
 Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
 Evidence / affected units: `Audio/AudioManagerAdjustPriorityAndVolume.cpp` owns the 33-byte lookup at 0x00059238 and two five-byte destructor forwarders. The lookup's REL32 at +0xE targets the existing 78-byte `AsciiString` tree worker at 0x001F8437; its `pair<const AsciiString,int>` and `pair<const AsciiString,float>` rows are in `GameClient/System/ParticleSystemDebugDisplay.cpp`, while `OptionPreferences_mapFind.cpp` supplies the existing string/string spelling. Its former setter references were emitted only by an unrowed owner body, whose prior 0x000592B3 placement is explicitly refuted in `reverse/re_attempts.log`.
@@ -4311,6 +4325,15 @@ the two wrong-callee units, align the element type with retail's dtor. Then
 re-run the repoint with an unmasked `./build.sh` before staging. A relocation-
 masked sweep alone over-reports.
 uw_gen_000/001 (2026-10-26, K7 r14): of 596 generated funclets, 474 have one EXACT parent (120 have several candidate parents and were skipped as ambiguous). 133 now name their parent label (73 in uw_gen_000, 60 in uw_gen_001). 300 are blocked rows in `reverse/re_attempts.log`: 292 name a dtor with no row or pin, and 8 name every callee but still fail the byte verify. The remaining rows were held by locks or recently touched files. Four rows (0x007650D0, 0x0076B8FD, 0x007A7CD0, 0x007A7D30) already have a real parent-label row next to the generated row, so `--replace-rva` refuses them. Retire those generated twins with `tools/gen_uw.py land`.
+uw_gen_001 ignore cleanup (2026-10-27, codex): 0x0077FA71 can byte-match its
+exact parent label after adding the pair destructor fold at 0x0029D7C2, but
+that identity exposes a wrong-callee copy in currently linking PeerDefs.cpp.
+Plain explicit destructor declarations leave the conflicting copies emitted.
+Both rows and all source trials were reverted. Keep the generated row until
+the four-provider prerequisite in LINK-064 is repaired; full receipts and
+restored 164/164 build are in
+`reverse/attempt_support/ignore-pair-destructor-20261027-codex.md`.
+
 uw_gen_011 shared graphs (2026-10-27): six existing placeholders (51 bytes)
 now name emitted labels in three verified parent sources, including shared
 graphs previously skipped by single-parent selection. Retail FuncInfo unwind
