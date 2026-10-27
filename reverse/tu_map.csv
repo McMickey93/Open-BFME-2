@@ -11546,23 +11546,23 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001D9611,64,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001D9611.cpp
 0x001D9651,31,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001D9651.cpp
 0x001D9670,124,code,,,-,,Code/GameEngine/Source/Common/GameEngineInit.cpp
-0x001D96EC,4,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp
-0x001D96F0,4,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp
-0x001D96F4,4,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp
-0x001D96F8,7,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp
+0x001D96EC,4,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001D96F0,4,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001D96F4,4,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001D96F8,7,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
 0x001D96FF,10,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D96F8..0x001D9709 noncontiguous,Code/GameEngine/Source/Common/Disp8DwordMaskClearers.cpp
 0x001D9709,12,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D96F8..0x001D972B noncontiguous,Code/GameEngine/Source/Common/Disp8DwordMaskClearers.cpp
 0x001D972B,17,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D96F8..0x001D973C noncontiguous,Code/GameEngine/Source/Common/Disp32FloatFieldSetters.cpp
-0x001D973C,50,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D96F8..0x001D976E noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001D973C.cpp
+0x001D973C,50,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D96F8..0x001D976E noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
 0x001D976E,19,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D96F8..0x001D9781 noncontiguous,Code/GameEngine/Source/Common/R1SmallFieldInitialisersOs.cpp
 0x001D9781,88,code-unledgered,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D96F8..0x001D982B noncontiguous,
-0x001D982B,60,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp
-0x001D9867,86,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp
-0x001D98BD,79,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9867..0x001D990C noncontiguous,Code/GameEngine/Source/Common/Thing/Rva001D98BD.cpp
-0x001D990C,105,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9867..0x001D9975 noncontiguous,Code/GameEngine/Source/Common/Thing/Rva001D990C.cpp
-0x001D9975,27,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,U,N=Code/Libraries/Source/WWVegas/WWLib/BfmeStringTailRecord156.cpp noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_construct_tailrecord156_copy.cpp
+0x001D982B,60,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001D9867,86,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,S,S=Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp N=Code/GameEngine/Source/Common/Audio/AudioEventInfo.cpp noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001D98BD,79,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9867..0x001D990C noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001D990C,105,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9867..0x001D9975 noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001D9975,27,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,U,N=Code/Libraries/Source/WWVegas/WWLib/BfmeStringTailRecord156.cpp noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
 0x001D9990,27,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D99AB noncontiguous,Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp
-0x001D99AB,16,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D99BB noncontiguous,Code/GameEngine/Source/Common/Rva00436290StrideDifference.cpp
+0x001D99AB,16,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D99BB noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
 0x001D99BB,16,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9A00 noncontiguous,Code/GameEngine/Source/Common/Rva004362B0StrideAdd.cpp
 0x001D99CB,28,code,,displaced,-,N=Code/GameEngine/Source/Common/BfmeStringTailRecord156.cpp,Code/GameEngine/Source/Common/FamilyDeletingDtors2.cpp
 0x001D9A00,79,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9A4F noncontiguous,Code/GameEngine/Source/Common/Thing/Rva001D9A00Finish.cpp
@@ -11572,7 +11572,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001D9AAC,45,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9AD9 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_tailrecord156_allocate_copy.cpp
 0x001D9AD9,45,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9B0F noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_e8_allocate_copy.cpp
 0x001D9B0F,45,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9B3C noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp
-0x001D9B3C,38,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9B62 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva001D9B3C.cpp
+0x001D9B3C,38,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9B62 noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
 0x001D9B62,37,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9B87 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepW6Rva001D9B62.cpp
 0x001D9B87,29,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9BA4 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlportVectorEraseRangeFamily.cpp
 0x001D9BA4,47,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9975..0x001D9BD3 noncontiguous,Code/GameEngine/Source/Common/Rva000A8CAEAssign.cpp
@@ -11599,11 +11599,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001DA73E,22,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DA754 noncontiguous,Code/GameEngine/Source/Common/EbpParamForwarders.cpp
 0x001DA754,28,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DA770 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/Rva001DA2D5Finish.cpp
 0x001DA770,528,code-unledgered,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DA980 noncontiguous,
-0x001DA980,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DA9CA noncontiguous,Code/GameEngine/Source/Common/INI/Rva001DA980AudioParsers.cpp
-0x001DA9CA,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAA14 noncontiguous,Code/GameEngine/Source/Common/INI/Rva001DA980AudioParsers.cpp
-0x001DAA14,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAA5E noncontiguous,Code/GameEngine/Source/Common/INI/Rva001DA980AudioParsers.cpp
-0x001DAA5E,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAAA8 noncontiguous,Code/GameEngine/Source/Common/INI/Rva001DA980AudioParsers.cpp
-0x001DAAA8,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAAF2 noncontiguous,Code/GameEngine/Source/Common/INI/Rva001DA980AudioParsers.cpp
+0x001DA980,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DA9CA noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001DA9CA,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAA14 noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001DAA14,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAA5E noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001DAA5E,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAAA8 noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
+0x001DAAA8,74,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAAF2 noncontiguous,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp
 0x001DAAF2,55,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAB29 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackFamily.cpp
 0x001DAB29,22,code,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DAB3F noncontiguous,Code/GameEngine/Source/Common/EbpParamForwarders.cpp
 0x001DAB3F,50,code-unledgered,Code/GameEngine/Source/Common/INI/INIAudioEventInfo.cpp,proposed,C,C=0x001D9E91..0x001DABB6 noncontiguous,
