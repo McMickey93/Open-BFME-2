@@ -56,7 +56,7 @@ void Rva003B9433(bool flag)
 
 // --- 0x003BD52F (61B, cdecl): the index of the name in the table at VA
 // 0x00DBE9B0 (case-insensitive), 6 when absent.
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 extern const char *g_rva0033A3F4Table[];
 
 int Rva003BD52F(const char *name)

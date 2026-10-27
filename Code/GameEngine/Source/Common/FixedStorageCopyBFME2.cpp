@@ -3,7 +3,7 @@
 // exactly 0x1C or 4 bytes through memcpy; application type names are unknown.
 // As with the BFME1-derived WeaponTemplateSetHead copy, keep these helpers
 // separate from their owning records so callers preserve the out-of-line ABI.
-extern "C" void *memcpy(void *, const void *, unsigned);
+#include <string.h>
 
 class BfmeFixedStorage0004543D {
     char m_bytes[28];

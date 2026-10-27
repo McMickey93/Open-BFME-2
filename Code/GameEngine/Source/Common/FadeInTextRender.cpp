@@ -7,7 +7,7 @@
 // Virtual base destructor is the same empty view as the existing matched dtor TU.
 // cl: /O1 /G7 /arch:SSE /MD /EHsc /Ireference/shims/bfme2_ascii
 #include "ascii_string.h"
-extern "C" void *memset(void *,int,unsigned);
+#include <string.h>
 extern int BfmeClientFramesPerSecond;
 class __declspec(novtable) Rva0059675ABase {public:
 // ??1Rva0059675ABase@@UAE@XZ is rowed (its deleting dtor 0x005966C0) in
