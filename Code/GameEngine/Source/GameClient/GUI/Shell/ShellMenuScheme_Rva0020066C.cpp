@@ -1,11 +1,5 @@
 // cl: /Ireference/shims/bfmealloc /D_CRTIMP= /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii -DNDEBUG -DWIN32 -D_WINDOWS -MD -EHsc -D_STLP_USE_STATIC_LIB -Ireference/open-bfme-1/inputs/reference/shims/sweep -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /O1 -Ireference/open-bfme-1/game/GameEngine/Source/GameClient/GUI/Shell
 // stlport
-// Both constructors used to live in ShellMenuSchemeCtor.cpp purely for the
-// STLport link mode: retail calls __new_alloc::allocate directly and without
-// /D_STLP_USE_STATIC_LIB the header declares it dllimport, so the node
-// allocation comes out as `call [__imp_...]` instead of `call`. Adding the
-// define here re-verified all 24 rows this file already had, which is what the
-// split was avoiding.
 #define Matrix4x4 Matrix4  // BFME renamed it
 /*
 **	Command & Conquer Generals Zero Hour(tm)
@@ -72,37 +66,7 @@
 //-----------------------------------------------------------------------------
 // PUBLIC FUNCTIONS ///////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
-// ?parseShellMenuSchemeDefinition@INI@@SAXPAV1@@Z
-// Body is MASM exact-byte dump (game/masm_dumps/INI_parseShellMenuSchemeDefinition_581790.asm).
-// Retail @ 0x581790; C++ blocked on AsciiString::set vs StringBase::set(s,len) shape.
-// ??1ShellMenuSchemeLine@@QAE@XZ present-unmatched
-
-// ??1ShellMenuSchemeImage@@QAE@XZ present-unmatched
-// Defined in ShellMenuScheme_Rva002008c8.cpp; a second copy here is a duplicate at link.
-
 ShellMenuScheme::ShellMenuScheme( void )
 {
 	
 }
-
-// byte-exact reconstruction: game/GameEngine/Source/Common/ShellMenuSchemeDestructor.cpp
-// ??1ShellMenuScheme@@QAE@XZ present-unmatched
-
-// ?addLine@ShellMenuScheme@@QAEXPAVShellMenuSchemeLine@@@Z present-unmatched
-
-
-
-// byte-exact reconstruction: game/GameEngine/Source/Common/ShellMenuSchemeManager_parseImagePart_Thunk.cpp
-// ?parseImagePart@ShellMenuSchemeManager@@ present-unmatched
-
-// byte-exact reconstruction: game/GameEngine/Source/Common/ShellMenuSchemeManager_parseLinePart_Thunk.cpp
-// ?parseLinePart@ShellMenuSchemeManager@@ present-unmatched
-
-// byte-exact reconstruction: game/GameEngine/Source/Common/ShellMenuSchemeManager_newShellMenuScheme_Thunk.cpp
-// ?newShellMenuScheme@ShellMenuSchemeManager@@QAEPAVShellMenuScheme@@VAsciiString@@@Z present-unmatched
-
-// byte-exact reconstruction: game/GameEngine/Source/GameClient/ShellMenuScheme_set.cpp
-// ?setShellMenuScheme@ShellMenuSchemeManager@@QAEXVAsciiString@@@Z present-unmatched
-//-----------------------------------------------------------------------------
-// PRIVATE FUNCTIONS //////////////////////////////////////////////////////////
-//-----------------------------------------------------------------------------

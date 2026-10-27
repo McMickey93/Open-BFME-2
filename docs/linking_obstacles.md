@@ -4575,6 +4575,8 @@ Completed: explicitly load the existing BFME 2 string compatibility view before 
 
 Applied subset: tu_skeleton.py merged the three accepted files into the 10-row destination; all 31 original rows across six surviving files and all seven EH graphs verify. Shadow and converged data checks pass. Protected keys transfer with totals kept, and only three TU-map source cells change. The ordinary preview retains both deleted donor objects and reports destination duplicates; the apply-time link guard evaluates their removals together. Carry that index freshness limitation into the next census.
 
+Cleanup: eight constructor-file markers attached only to obsolete comments are removed through hatch_counters.py --update; all three source rows still verify. The four markers attached to actual merged definitions remain. The supported identity retirement refuses on three missing other ledger objects, so all transferred keys remain registered. The final outgoing path audit finds no active consumer of either deleted donor.
+
 Remaining / next check: keep ImageConstructor's canonical ICoord2D and private StringBase collision, Dtor's private base/integer-list view, addImage's integer-to-pointer-list mismatch, Parse's byte failure, and the constructor's externally consumed allocator-copy conflict as prerequisites. Resolve each in its own verified commit before another merge. LINK-095 separately tracks the constructor's generated unwind callee binding.
 
 Clearance: string composition only; no new linked-byte or ownership gain is claimed. Census confirmation: pending the next scheduled census.

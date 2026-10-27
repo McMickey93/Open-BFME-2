@@ -70,8 +70,39 @@ ShellMenuScheme.cpp. A combined old-path/basename search covers tools, hooks,
 workflows, source/header includes, root build/configuration files, registries and
 documentation. No active tool or include uses either removed file. Remaining
 mentions are provenance comments, attempt history and the last census's
-`reverse/link_status.csv`; the census file must remain historical. A stale
-comment in the constructor donor is identified for the separate marker cleanup.
+`reverse/link_status.csv`; the census file must remain historical. The stale
+constructor-donor comment is removed in the separate marker cleanup.
 The merge repoints the active function/map/data/debt owners; no affected active
 consumer requires a code change. Raw search: `path-consumer-audit.log` in the
 local evidence directory.
+
+
+## Final marker cleanup and publication audit
+
+The constructor donor has one C++ definition plus its emitted EH rows. Its eight
+remaining marker entries were attached only to comments about bodies elsewhere;
+none guarded a definition in this file. Removing those stale comments and the
+obsolete 24-row provenance paragraph changes no C++ body or ledger row. The
+constructor's three rows byte-verify, the declaration scan now reports no
+unclaimed definitions, and `hatch_counters.py --update` removes exactly eight
+keys (present_unmatched 3,825 -> 3,817). The four definition-backed markers
+transferred to the merged TU remain protected.
+
+The required post-merge identity retirement was attempted through
+`repair_queue.py retire identity`. It refused without removing a key because
+three other ledger objects are missing (first INIAudioEventInfo.obj), preventing
+judgment of kept copies. No broad rebuild or manual retirement was substituted;
+the two transferred keys stay registered along with the remaining donor debt.
+
+Final path audit covers the complete outgoing range from merge base
+ca6cd763a3c99767a84a586b90e0ac8d609360eb through 01ba75fcd8 plus the final marker
+cleanup. Both source deletions are the absorbed donors; the earlier queued
+StructureCollapse and data-index commits add no source-path move. The combined
+search was refreshed after removing the stale constructor comment. All 17
+remaining mentions are historical/provenance or census records, with no active
+tool, hook, workflow, include or build consumer to update. Raw outgoing-range
+inventory and search are outgoing-path-audit.txt and
+path-consumer-audit-final.log in the local evidence directory. Final seven EH
+graphs are EXACT; converged data again judges all 31 rows with no second names
+or unjudged rows. Six current strict provider receipts are prepared, including
+a fresh constructor receipt after the comment change.

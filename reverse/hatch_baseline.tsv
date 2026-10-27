@@ -18609,14 +18609,6 @@ present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cp
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cpp	1ShellMenuSchemeLine@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cpp	addLine@ShellMenuScheme@@QAEXPAVShellMenuSchemeLine@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cpp	parseLinePart@ShellMenuSchemeManager@@	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	1ShellMenuScheme@@QAE@XZ	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	1ShellMenuSchemeImage@@QAE@XZ	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	1ShellMenuSchemeLine@@QAE@XZ	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	addLine@ShellMenuScheme@@QAEXPAVShellMenuSchemeLine@@@Z	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	newShellMenuScheme@ShellMenuSchemeManager@@QAEPAVShellMenuScheme@@VAsciiString@@@Z	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	parseImagePart@ShellMenuSchemeManager@@	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	parseLinePart@ShellMenuSchemeManager@@	1
-present_unmatched	Code/GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme_Rva0020066C.cpp	setShellMenuScheme@ShellMenuSchemeManager@@QAEXVAsciiString@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/WinInstanceData.cpp	setVideoBuffer@WinInstanceData@@QAEXPAVVideoBuffer@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/WindowVideoHashtableDtor.cpp	0WindowVideoHashtableHolder@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/WindowVideoHashtableDtor.cpp	1WindowVideoHashtableHolder@@QAE@XZ	1
