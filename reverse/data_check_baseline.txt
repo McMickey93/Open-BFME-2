@@ -497,7 +497,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/PartTheHeavensUpdatePoolKey.cpp	w
 Code/GameEngine/Source/GameLogic/Object/Update/PickupStuffUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000491DF2@PickupStuffUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039D0
 Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049E15E@ProductionUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B60
 Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0033EE84@ProjectileStreamUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A01DE0
-Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049FE9A@ProneUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B78
+Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdate.cpp	wrong-name	?$S1@?1??rva00049FE9A@ProneUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B78
 Code/GameEngine/Source/GameLogic/Object/Update/QueueProductionExitUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A00C2@QueueProductionExitUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B84
 Code/GameEngine/Source/GameLogic/Object/Update/RadarUpdate.cpp	wrong-name	?$S1@?1??rva0004A0C2D@RadarUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B8C
 Code/GameEngine/Source/GameLogic/Object/Update/RadiateFearUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049BFDD@RadiateFearUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B40

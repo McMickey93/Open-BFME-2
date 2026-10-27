@@ -4082,7 +4082,7 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdat
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateModuleDataCtor.cpp	_vtbl_00C515F0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdateCtor.cpp	?unused@BehaviorModuleBase@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdateCtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdateModuleDataCtor.cpp	_vtbl_00C4ED70	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdate.cpp	_vtbl_00C4ED70	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/QueueProductionExitUpdateCtor.cpp	_vtbl_00C430B4	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/QueueProductionExitUpdateCtor.cpp	_vtbl_00C4B1F0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/QueueProductionExitUpdateCtor.cpp	_vtbl_00C5198C	1
