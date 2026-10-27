@@ -10,6 +10,7 @@
 // The inlined Snapshot base stores vtable 0x00BBB554. /EHs preserves the
 // native cleanup-state transition before the bucket allocation is freed.
 
+#define BFME_SNAPSHOT_NAME_SLOT
 #include "Common/Snapshot.h"
 
 // Shared scalar-payload bucket clear, already rowed at 0x001DBCDC.
@@ -62,6 +63,9 @@ class PlayerRelationMap : public Snapshot
 {
 protected:
 	virtual ~PlayerRelationMap();
+	virtual void loadPostProcess();
+	virtual const char *GetSnapshotName() const;
+	virtual void xfer(Xfer *xfer);
 
 	BfmePlayerRelationMapMember m_map;
 };

@@ -477,7 +477,6 @@ void PlayerRelationMap::crc( Xfer *xfer )
 // ------------------------------------------------------------------------------------------------
 /** Load post process */
 // ------------------------------------------------------------------------------------------------
-// ?loadPostProcess@PlayerRelationMap@@MAEXXZ present-unmatched
 void PlayerRelationMap::loadPostProcess( void )
 {
 

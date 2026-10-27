@@ -5,7 +5,7 @@
 // this body on it, storing the result at Team+0x11C next to the rowed
 // TeamRelationMap ctor 0x003A3959 (+0x118); the body arms EH state 0 for an
 // unwindable base, stores vtable 0x00BFDD90 and constructs the rowed
-// hash_map<int, Rva002AF625Element> at +4 (0x002AF625). Donor: ZH Player.h
+// hash_map<int, Rva002AF438Element> at +4 (0x002AF625). Donor: ZH Player.h
 // PlayerRelationMap (Snapshot-derived relation map; BFME2 keys a hash_map).
 // The class name is carried from the donor; the element type stays address-named.
 // vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
@@ -30,6 +30,7 @@ template <> size_t vector<void*>::size() const;
 template <> void **vector<void*>::begin();
 template <> void **vector<void*>::end();
 }
+#define BFME_SNAPSHOT_NAME_SLOT
 #include "Common/Snapshot.h"
 // bfme link decl-only begin
 namespace _STL { template <> _STLP_alloc_proxy<void **, void *, allocator<void *> >::~_STLP_alloc_proxy(); }
@@ -46,7 +47,7 @@ namespace _STL { template <> void vector<void *, allocator<void *> >::insert(voi
 namespace _STL { template <> void vector<void *, allocator<void *> >::reserve(unsigned int); }
 // bfme link decl-only end
 
-struct Rva002AF625Element {Rva002AF625Element();Rva002AF625Element(const Rva002AF625Element&);Rva002AF625Element&operator=(const Rva002AF625Element&);~Rva002AF625Element(){}char bytes[8]; bool operator==(const Rva002AF625Element&)const;};
+struct Rva002AF438Element {Rva002AF438Element();Rva002AF438Element(const Rva002AF438Element&);Rva002AF438Element&operator=(const Rva002AF438Element&);~Rva002AF438Element(){}char bytes[8]; bool operator==(const Rva002AF438Element&)const;};
 
 class PlayerRelationMap : public Snapshot
 {
@@ -57,10 +58,10 @@ protected:
 public:
 protected:
 	virtual void loadPostProcess();
-	virtual void crc(Xfer *xfer);
+	virtual const char *GetSnapshotName() const;
 	virtual void xfer(Xfer *xfer);
 private:
-	_STL::hash_map<int, Rva002AF625Element> m_map;
+	_STL::hash_map<int, Rva002AF438Element> m_map;
 };
 
 PlayerRelationMap::PlayerRelationMap()

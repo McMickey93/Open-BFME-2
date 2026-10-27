@@ -12,9 +12,13 @@
 // through the global operator delete, so the class is modelled with none.
 // The destructor is declared, not defined, so the call resolves to the pin;
 // the dummy tag constructor (no retail counterpart) only makes this TU emit
-// the vtable and with it the deleting destructor.
+// the vtable and with it the deleting destructor. Slots 1-3 are the Snapshot
+// overrides loadPostProcess (shared empty ret 0x000B3FD0), GetSnapshotName
+// (0x002AD0C0) and xfer (0x002ADEBE), declared alike in every unit that
+// emits this vtable so the copies agree.
 
 struct EmitVtableTag;
+class Xfer;
 
 class PlayerRelationMap
 {
@@ -22,10 +26,9 @@ public:
 	PlayerRelationMap(EmitVtableTag *);
 protected:
 	virtual ~PlayerRelationMap();
-public:
-	virtual void bfmeVtSlot1() = 0; // __purecall in every copy of this vtable
-	virtual void bfmeVtSlot2() = 0; // __purecall in every copy of this vtable
-	virtual void bfmeVtSlot3() = 0; // __purecall in every copy of this vtable
+	virtual void loadPostProcess();
+	virtual const char *GetSnapshotName() const;
+	virtual void xfer(Xfer *xfer);
 };
 
 // ?<PlayerRelationMap::PlayerRelationMap> absent-from-retail

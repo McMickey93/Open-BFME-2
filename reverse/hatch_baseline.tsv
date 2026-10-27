@@ -9346,7 +9346,6 @@ pin	reverse/symbols.csv	0x002AF0C5	1
 pin	reverse/symbols.csv	0x002AF1EC	1
 pin	reverse/symbols.csv	0x002AF236	1
 pin	reverse/symbols.csv	0x002AF33B	1
-pin	reverse/symbols.csv	0x002AF438	1
 pin	reverse/symbols.csv	0x002AF505	1
 pin	reverse/symbols.csv	0x002AF729	1
 pin	reverse/symbols.csv	0x002AFCDF	1
@@ -18578,7 +18577,6 @@ present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	isScienceHidden@P
 present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	isSupplySourceAttacked@Player@@QAE_NXZ	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	killPlayer@Player@@QAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	loadPostProcess@Player@@MAEXXZ	1
-present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	loadPostProcess@PlayerRelationMap@@MAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	onUpgradeCompleted@Player@@QAEXPBVUpgradeTemplate@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	recruitSpecificTeam@Player@@QAEXPAVTeamPrototype@@M@Z	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Player.cpp	removeKindOfProductionCostChange@Player@@QAEXV?$BitFlags@$0HE@@@M@Z	1

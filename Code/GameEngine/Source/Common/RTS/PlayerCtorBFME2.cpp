@@ -92,7 +92,7 @@ public:
 };
 class Rva004F599E : public Snapshot {public:Rva004F599E();virtual ~Rva004F599E();virtual void loadPostProcess();virtual const char*GetSnapshotName()const;virtual void xfer(Xfer*);int words[42];};
 struct Rva001FEAB2Element {char bytes[1];};
-struct Rva002AF625Element {char bytes[8];Rva002AF625Element();Rva002AF625Element(const Rva002AF625Element&);~Rva002AF625Element(){} };
+struct Rva002AF438Element {char bytes[8];Rva002AF438Element();Rva002AF438Element(const Rva002AF438Element&);~Rva002AF438Element(){} };
 #include "Code/Libraries/Include/Lib/BfmeE16.h"
 // bfme link decl-only begin
 namespace _STL { template <> _STLP_alloc_proxy<void **, void *, allocator<void *> >::~_STLP_alloc_proxy(); }
@@ -162,7 +162,7 @@ public:
  void*buildList;int unknown27C;unsigned color,nightColor;
  _STL::map<int,void*>cost;
  _STL::hash_map<int,Rva001FEAB2Element>time,scratchTime;
- _STL::hash_map<int,Rva002AF625Element>timeCounts;
+ _STL::hash_map<int,Rva002AF438Element>timeCounts;
  _STL::map<int,void*>veterancy;
  void*ai,*defaultTeam,*resources,*tunnel;int unknown2EC;
  _STL::vector<unsigned>sciences,disabled,hidden;float bounty;
