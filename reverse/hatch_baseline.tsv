@@ -2368,8 +2368,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0017480CVectorRva0017480C.cpp	??1
 alternatename	Code/GameEngine/Source/Common/Rva0017480CVectorRva0017480C.cpp	?erase@Rva0017480CVector@@AAEPAURva0017480CRecord@@PAU2@0@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0017480CVectorRva0017480C.cpp	?fill@Rva0017480CVector@@AAEXPAURva0017480CRecord@@IABU2@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00174A8AAdapter.cpp	?rva0017480C@Rva0017480C@@QAEXHUBfmeAssignRecord32@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00181450ReturnThis.cpp	??0CDEArraySlot@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/Rva00181450ReturnThis.cpp	??0Rva0027C36ASix@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva001DBBAD.cpp	?regainFocus@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva001DD0A0Copy.cpp	??0BfmePod52@@QAE@ABU0@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva001DD8C9Alloc.cpp	?rva001DD8C9@Rva001DE556@@QAEPAXABU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@Z	1
@@ -4964,6 +4962,8 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	??
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	??0WriteLock@BfmeSortingVBAccess@@QAE@PAU1@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	??1WriteLock@BfmeSortingVBAccess@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8caps.cpp	?Is_Valid_Display_Format@BfmeEnumerationCaps@@QAE_NHHW4_D3DFORMAT@@@Z	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp	??0CDEArraySlot@@QAE@XZ	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp	??0Rva0027C36ASix@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8indexbuffer.cpp	??0BfmeSortingIBAccess@@QAE@GG@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8indexbuffer.cpp	??1BfmeSortingIBAccess@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8renderer.cpp	??1Rva00145000@@UAE@XZ	1

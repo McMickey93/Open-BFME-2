@@ -1,52 +1,21 @@
-// cl: /DBFME_WWSTRING_NATIVE_CSTR_ASSIGN /Ireference/shims/wwstring_teardown/zhmd /arch:SSE /G7 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/sweep
-// dxsdk
-// platformsdk
-// Adapted from the Generals Zero Hour reference
-// (Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp); this unit had no counterpart under Code/.
-/*
-**	Command & Conquer Generals Zero Hour(tm)
-**	Copyright 2025 Electronic Arts Inc.
-**
-**	This program is free software: you can redistribute it and/or modify
-**	it under the terms of the GNU General Public License as published by
-**	the Free Software Foundation, either version 3 of the License, or
-**	(at your option) any later version.
-**
-**	This program is distributed in the hope that it will be useful,
-**	but WITHOUT ANY WARRANTY; without even the implied warranty of
-**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-**	GNU General Public License for more details.
-**
-**	You should have received a copy of the GNU General Public License
-**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-/***********************************************************************************************
- ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
- ***********************************************************************************************
- *                                                                                             *
- *                 Project Name : ww3d                                                         *
- *                                                                                             *
- *                     $Archive:: /Commando/Code/ww3d2/dx8fvf.h                               $*
- *                                                                                             *
- *              Original Author:: Jani Penttinen                                               *
- *                                                                                             *
- *                      $Author:: Kenny Mitchell                                               * 
- *                                                                                             * 
- *                     $Modtime:: 06/26/02 5:06p                                             $*
- *                                                                                             *
- *                    $Revision:: 7                                                          $*
- *                                                                                             *
- * 06/26/02 KM VB Vertex format update for shaders                                       *
- * 07/17/02 KM VB Vertex format update for displacement mapping                               *
- * 08/01/02 KM VB Vertex format update for cube mapping                               *
- *---------------------------------------------------------------------------------------------*
- * Functions:                                                                                  *
- * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
+// cl: /DBFME_WWSTRING_NATIVE_CSTR_ASSIGN /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/shims/wwstring_teardown/zhmd /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmealloc /ICode/Libraries/Include
+// TU Code/Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
 #include "always.h"
 #include "wwstring.h"
 #include <d3dx9core.h>
+#pragma comment(linker, "/alternatename:??0Rva0027C36ASix@@QAE@XZ=?get@Rva00181450ReturnThis@@QBEPAXXZ")
+#pragma comment(linker, "/alternatename:??0CDEArraySlot@@QAE@XZ=?get@Rva00181450ReturnThis@@QBEPAXXZ")
+#define BFME_DISP0_DWORD_GETTER(NAME) \
+	class NAME \
+	{ \
+	public: \
+		int get() const; \
+		int m_value; \
+	}; \
+	int NAME::get() const \
+	{ \
+		return m_value; \
+	}
 
 // These declarations retain the Zero Hour FVF layout used by Get_FVF_Name.
 // Keep them local so the reference header need not bring in its DX8 stand-in.
@@ -102,6 +71,104 @@ public:
 	inline void Set_FVF_Size(unsigned size) const { fvf_size=size; }
 };
 
+// BFME2's extended descriptor is a distinct 96-byte layout. The retained
+// Generals FVFInfoClass above has the older layout and two-argument constructor.
+// Recovered roles and complete caller/table evidence are documented in
+// docs/reconstruction/dx8fvf-descriptor.md.
+unsigned bfmeKnownFVFFormats[15]={
+ DX8_FVF_XYZ,DX8_FVF_XYZN,DX8_FVF_XYZNUV1,DX8_FVF_XYZNUV2,
+ DX8_FVF_XYZNDUV1,DX8_FVF_XYZNDUV2,DX8_FVF_XYZDUV1,DX8_FVF_XYZDUV2,
+ DX8_FVF_XYZUV1,DX8_FVF_XYZUV2,DX8_FVF_XYZNDUV1TG3,DX8_FVF_XYZNUV2DMAP,
+ DX8_FVF_XYZNDCUBEMAP,D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX3,
+ D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX4
+};
+
+struct BfmeFVFDescriptor {
+ unsigned fvf;                       // 0x00
+ bool additionalBasis;              // 0x04
+ unsigned extensionCount;           // 0x08
+ unsigned stride;                   // 0x0C
+ unsigned locationOffset;           // 0x10
+ unsigned extensionOffset;          // 0x14
+ unsigned normalOffset;             // 0x18
+ unsigned extensionEnd;             // 0x1C
+ unsigned blendOffset;              // 0x20
+ unsigned textureOffsets[8];        // 0x24
+ unsigned diffuseOffset;            // 0x44
+ unsigned specularOffset;           // 0x48
+ unsigned basisOffset;              // 0x4C
+ unsigned basisSecondOffset;        // 0x50
+ unsigned basisEnd;                 // 0x54
+ unsigned extensionDataOffset;      // 0x58
+ unsigned formatIndex;              // 0x5C
+ BfmeFVFDescriptor(unsigned,unsigned,bool,unsigned);
+ __declspec(noinline) void Initialize(unsigned,unsigned,bool,unsigned);
+};
+
+typedef char BfmeFVFDescriptorSize[(sizeof(BfmeFVFDescriptor)==96)?1:-1];
+
+// Return-this callback at game.dat 0x181450: `mov eax,ecx / ret`.
+// Thirteen `push 0x581450` sites across the image register this address as a
+// function pointer, so it is a genuine tiny method rather than a shared
+// tail, even though it has no direct E8 callers. It returns its own `this`
+// pointer with no displacement, the zero-offset sibling of the disp8 LEA
+// getter family (kept in its own unit because the shape and the spelling
+// differ). Owner unproven: the holder class is TU-local and address-derived.
+// No // cl: line (defaults match the frameless three-byte shape).
+class Rva00181450ReturnThis
+{
+public:
+	void *get() const;
+};
+
+BFME_DISP0_DWORD_GETTER(Rva001816E0DwordField)
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp
+
+// dxsdk
+// platformsdk
+// Adapted from the Generals Zero Hour reference
+// (Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp); this unit had no counterpart under Code/.
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/***********************************************************************************************
+ ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
+ ***********************************************************************************************
+ *                                                                                             *
+ *                 Project Name : ww3d                                                         *
+ *                                                                                             *
+ *                     $Archive:: /Commando/Code/ww3d2/dx8fvf.h                               $*
+ *                                                                                             *
+ *              Original Author:: Jani Penttinen                                               *
+ *                                                                                             *
+ *                      $Author:: Kenny Mitchell                                               * 
+ *                                                                                             * 
+ *                     $Modtime:: 06/26/02 5:06p                                             $*
+ *                                                                                             *
+ *                    $Revision:: 7                                                          $*
+ *                                                                                             *
+ * 06/26/02 KM VB Vertex format update for shaders                                       *
+ * 07/17/02 KM VB Vertex format update for displacement mapping                               *
+ * 08/01/02 KM VB Vertex format update for cube mapping                               *
+ *---------------------------------------------------------------------------------------------*
+ * Functions:                                                                                  *
+ * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 static unsigned Get_FVF_Vertex_Size(unsigned FVF)
 {
@@ -163,39 +230,6 @@ void FVFInfoClass::Get_FVF_Name(StringClass& fvfname) const
 	}
 }
 
-// BFME2's extended descriptor is a distinct 96-byte layout. The retained
-// Generals FVFInfoClass above has the older layout and two-argument constructor.
-// Recovered roles and complete caller/table evidence are documented in
-// docs/reconstruction/dx8fvf-descriptor.md.
-unsigned bfmeKnownFVFFormats[15]={
- DX8_FVF_XYZ,DX8_FVF_XYZN,DX8_FVF_XYZNUV1,DX8_FVF_XYZNUV2,
- DX8_FVF_XYZNDUV1,DX8_FVF_XYZNDUV2,DX8_FVF_XYZDUV1,DX8_FVF_XYZDUV2,
- DX8_FVF_XYZUV1,DX8_FVF_XYZUV2,DX8_FVF_XYZNDUV1TG3,DX8_FVF_XYZNUV2DMAP,
- DX8_FVF_XYZNDCUBEMAP,D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX3,
- D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX4
-};
-struct BfmeFVFDescriptor {
- unsigned fvf;                       // 0x00
- bool additionalBasis;              // 0x04
- unsigned extensionCount;           // 0x08
- unsigned stride;                   // 0x0C
- unsigned locationOffset;           // 0x10
- unsigned extensionOffset;          // 0x14
- unsigned normalOffset;             // 0x18
- unsigned extensionEnd;             // 0x1C
- unsigned blendOffset;              // 0x20
- unsigned textureOffsets[8];        // 0x24
- unsigned diffuseOffset;            // 0x44
- unsigned specularOffset;           // 0x48
- unsigned basisOffset;              // 0x4C
- unsigned basisSecondOffset;        // 0x50
- unsigned basisEnd;                 // 0x54
- unsigned extensionDataOffset;      // 0x58
- unsigned formatIndex;              // 0x5C
- BfmeFVFDescriptor(unsigned,unsigned,bool,unsigned);
- __declspec(noinline) void Initialize(unsigned,unsigned,bool,unsigned);
-};
-typedef char BfmeFVFDescriptorSize[(sizeof(BfmeFVFDescriptor)==96)?1:-1];
 void BfmeFVFDescriptor::Initialize(unsigned format,unsigned vertex_size,bool basis,unsigned count)
 {
  fvf=format;
@@ -249,3 +283,46 @@ BfmeFVFDescriptor::BfmeFVFDescriptor(unsigned format,unsigned vertex_size,bool b
 {
  Initialize(format,vertex_size,basis,count);
 }
+
+// ---- from Code/GameEngine/Source/Common/Rva00181450ReturnThis.cpp
+
+void *Rva00181450ReturnThis::get() const
+{
+	return (void *)this;
+}
+
+// Callers elsewhere reach bodies in this unit through other spellings; retail's
+// call sites in their matched rows land on these addresses (same ABI). Bind them.
+
+// tu-skeleton: 0x00181460 33B ?allocate@?$allocator@UICoord2D@@@_STL@@QBEPAUICoord2D@@IPBX@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/BfmeFVFDescriptorVertexDeclaration.cpp (not merged yet)
+
+// tu-skeleton: 0x00181490 5B ??0Rva00181490@@QAE@H@Z -- matched in Code/GameEngine/Source/Common/GapLeavesSeat8.cpp (not merged yet)
+
+// tu-skeleton: 0x001814A0 43B ??$__uninitialized_copy@PBU?$pair@HH@_STL@@PAU12@@_STL@@YAPAU?$pair@HH@0@PBU10@0PAU10@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_pair.cpp (not merged yet)
+
+// tu-skeleton: 0x001814D0 41B ??$__uninitialized_fill_n@PAUAngleFXInfo@@IU1@@_STL@@YAPAUAngleFXInfo@@PAU1@IABU1@ABU__false_type@0@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00181500 78B ??$_M_allocate_and_copy@PAUAngleFXInfo@@@?$vector@UAngleFXInfo@@V?$allocator@UAngleFXInfo@@@_STL@@@_STL@@IAEPAUAngleFXInfo@@IPAU2@0@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00181500Finish.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Disp0DwordFieldGetters.cpp
+
+// Disp0 dword getters: three-byte __thiscall members with one shape:
+//
+//     mov eax,[ecx] / ret
+//
+// One dword is read at offset zero from `this` and returned. Members after
+// the accessed one are not witnessed here. Identity is not recovered: every
+// name is derived from its address.
+// No // cl: line (defaults match the frameless three-byte shape).
+
+// tu-skeleton: 0x001816F0 116B ?reserve@?$vector@UAngleFXInfo@@V?$allocator@UAngleFXInfo@@@_STL@@@_STL@@QAEXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AngleFXInfoVectorInsertOverflow.cpp (not merged yet)
+
+// tu-skeleton: 0x00181770 259B ?_M_insert_overflow@?$vector@UICoord2D@@V?$allocator@UICoord2D@@@_STL@@@_STL@@IAEXPAUICoord2D@@ABU3@ABU__false_type@2@I_N@Z -- matched in Code/GameEngine/Source/GameClient/MapUtil.cpp (not merged yet)
+
+// tu-skeleton: 0x00181880 58B ?push_back@?$vector@UICoord2D@@V?$allocator@UICoord2D@@@_STL@@@_STL@@QAEXABUICoord2D@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/BfmeFVFDescriptorVertexDeclaration.cpp (not merged yet)
+
+// tu-skeleton: 0x001818C0 1705B ?rva001818C0@BfmeFVFDescriptor@@QAEPAXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/BfmeFVFDescriptorVertexDeclaration.cpp (not merged yet)
+
+// tu-skeleton: 0x00768480 8B uw_00768480 -- matched in Code/gen_small/uw_gen_000.cpp (not merged yet)
+
+// tu-skeleton: 0x00768488 10B __ehhandler$?rva001818C0@BfmeFVFDescriptor@@QAEPAXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/BfmeFVFDescriptorVertexDeclaration.cpp (not merged yet)

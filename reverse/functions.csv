@@ -12866,7 +12866,7 @@ $L979,,0x007A927C,11,Code/Libraries/Source/Apt/AptAnimationPoolDataCtor.cpp,matc
 ?get@Rva00108430DwordField@@QBEHXZ,,0x00108430,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva004CEE9CWordField@@QBEGXZ,,0x004CEE9C,5,Code/GameEngine/Source/Common/Disp8WordFieldGetters.cpp,matched,Disp8 word getter
 ?get@Rva00568645WordField@@QBEGXZ,,0x00568645,5,Code/GameEngine/Source/Common/Disp8WordFieldGetters.cpp,matched,Disp8 word getter
-?get@Rva001816E0DwordField@@QBEHXZ,,0x001816E0,3,Code/GameEngine/Source/Common/Disp0DwordFieldGetters.cpp,matched,Disp0 dword getter
+?get@Rva001816E0DwordField@@QBEHXZ,,0x001816E0,3,Code/Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp,matched,Disp0 dword getter
 ?Rva00083B7BGet@@YAHXZ,,0x00083B7B,6,Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp,matched,Global dword getter reading 0x00DEC3CC
 ?Rva00094B87Get@@YAHXZ,,0x00094B87,6,Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp,matched,Global dword getter reading 0x00DB47EC
 ?Rva0014D241Get@@YAHXZ,,0x0014D241,6,Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp,matched,Global dword getter reading 0x00DEDA14
@@ -20102,7 +20102,7 @@ _VP60D_GetVersionNumber,,0x001B5830,6,Code/Libraries/Source/VP6/PbAccessors.cpp,
 ?get@Rva0066E430LeaField@@QBEPAXXZ,,0x0066E430,4,Code/GameEngine/Source/Common/Disp8LeaFieldGetters.cpp,matched,Disp8 LEA getter with vtable witness
 ?get@Rva00723140LeaField@@QBEPAXXZ,,0x00723140,4,Code/GameEngine/Source/Common/Disp8LeaFieldGetters.cpp,matched,Disp8 LEA getter with vtable witness
 ??_GTransport@@QAEPAXI@Z,,0x00449586,28,Code/GameEngine/Source/Common/ConnectionManagerAttachTransport.cpp,matched,scalar deleting dtor; TU already emits byte-exact body (explain_mismatch exact); landed attachTransport 0x4CF113 delete-calls it; ~Transport pinned 0x494BA; ghidra boundary+size 28
-?get@Rva00181450ReturnThis@@QBEPAXXZ,,0x00181450,3,Code/GameEngine/Source/Common/Rva00181450ReturnThis.cpp,matched,Return-this callback with 13 push-site witnesses
+?get@Rva00181450ReturnThis@@QBEPAXXZ,,0x00181450,3,Code/Libraries/Source/WWVegas/WW3D2/dx8fvf.cpp,matched,Return-this callback with 13 push-site witnesses
 ?buildFieldParse@AutoHealBehaviorModuleData@@SAXAAVMultiIniFieldParse@@@Z,,0x00256929,34,Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp,matched,Table-first double-add with own table 0x00BF3CE0 holding healing fields at +0x118 and rowed getter 0x4CE29D at offset 8 and factory 0x25694B pushes this proc
 ?newBenchProfile@RetailBenchProfileAllocator@@QAEPAUBenchProfile@@XZ,,0x0020200D,30,Code/GameEngine/Source/Common/GameLODNewBenchProfile.cpp,matched,BFME1 GameLOD donor with BFME2 layout; count at 0x17C0 array at 0x1614; returns incremented slot without DEBUG_CRASH; G7 imul shape
 ?friend_newModuleData@AutoHealBehaviorModuleData@@SAPAVModuleData@@PAVINI@@@Z,,0x0025694B,52,Code/GameEngine/Source/GameLogic/Object/Behavior/AutoHealBehaviorModuleDataFriendNew.cpp,matched,News 0x160 plus pinned sole-caller ctor 0x254DE7 plus rowed proc 0x256929 and frameless shape needs /GX-
