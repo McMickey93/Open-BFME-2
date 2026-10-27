@@ -1,5 +1,6 @@
 // cl: /I. /O1 /arch:SSE /G7 /DNDEBUG /MD /GX /DBFME_ASCII_DTOR_DECL /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmelist /Ireference/shims/bfmealloc /ICode/Libraries/Include /Ireference/shims/bfme2_ascii  /D_CRTIMP=
 // stlport
+// platformsdk
 //
 // ProductionUpdate queue members (BFME 2), from the Generals Zero Hour
 // ProductionUpdate.cpp and ProductionUpdate.h.
@@ -49,6 +50,11 @@ extern "C" void _ReadWriteBarrier(void);
 #include "unicode_string.h"
 #include "Lib/Coord3D.h"
 #include <string.h>
+// Preserve the local STLport max overload below.
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <windows.h>
 #include <bitset>
 enum UpdateSleepTime { UPDATE_SLEEP_NONE=1 };
 enum ModelConditionFlagType { MODEL_NONE=0 };
@@ -62,9 +68,6 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define TRUE 1
-#define FALSE 0
-#define NULL 0
 
 class Thing;
 class ModuleData;
