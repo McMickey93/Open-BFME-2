@@ -24,7 +24,7 @@ private:
 	HeldSlot0 *m_2c;
 };
 
-void __cdecl operator delete(void *);
+#include <new>
 
 Rva005C1A36::~Rva005C1A36()
 {

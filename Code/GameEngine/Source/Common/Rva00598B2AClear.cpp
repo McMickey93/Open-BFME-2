@@ -28,7 +28,7 @@ template <> void _STLP_alloc_proxy<AsciiString*, AsciiString, allocator<AsciiStr
 template <> void allocator<AsciiString>::deallocate(AsciiString*, size_t) const;
 template <> AsciiString *vector<AsciiString, allocator<AsciiString> >::erase(AsciiString*, AsciiString*);
 }
-void __cdecl operator delete(void *p);
+#include <new>
 class Rva005980F3
 {
 public:

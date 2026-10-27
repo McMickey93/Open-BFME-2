@@ -16,7 +16,7 @@
 // remain unproven for the first two children. Native005FF675 independently
 // proves the third child is the named Impl and its last word is an AsciiString
 // reference; the owner factory retains its existing neutral signature.
-void *__cdecl operator new(unsigned int s) throw();
+#include <new>
 
 class Rva005C802B;
 
