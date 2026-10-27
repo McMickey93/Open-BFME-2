@@ -7,15 +7,15 @@
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 #pragma inline_depth(0)
 #pragma inline_depth()
-#pragma optimize("s", off)
-#pragma optimize("t", on)
+extern "C" void _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
+
 namespace _STL {
 static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
 {
     return a < b ? b : a;
 }
 }
-#pragma optimize("", on)
 
 // ?rva000635AB@Rva000635AB@@QAEXHH@Z @0x000635AB 77B
 //
@@ -228,6 +228,78 @@ template<> __declspec(dllimport) __forceinline void _Construct<Rva0006447DRecord
 // Instantiate the recovered member; retain only its required template dependencies.
 template _STL::vector<Rva0006447DRecord, _STL::allocator<Rva0006447DRecord> > & _STL::vector<Rva0006447DRecord, _STL::allocator<Rva0006447DRecord> >::operator=(_STL::vector<Rva0006447DRecord, _STL::allocator<Rva0006447DRecord> > const &);
 
+typedef _STL::vector<Rva0006447DRecord, _STL::allocator<Rva0006447DRecord> > BfmeCopySubA;
+
+typedef _STL::vector<MixFileCreator::FileInfoStruct, _STL::allocator<MixFileCreator::FileInfoStruct> > BfmeCopySubB;
+
+struct BfmeCopyWords
+{
+	int m_bfmeFirst;
+	int m_bfmeSecond;
+	int m_bfmeThird;
+};
+
+struct BfmeCopyTail
+{
+	int m_bfmeFirst;
+	int m_bfmeSecond;
+	int m_bfmeThird;
+};
+
+struct BfmeCopyElementA
+{
+	int m_bfmeHead;
+	unsigned char m_bfme04;
+	int m_bfme08;
+	int m_bfme0c;
+	int m_bfme10;
+	int m_bfme14;
+	BfmeCopyWords m_bfme18;
+	int m_bfme24;
+	int m_bfme28;
+	BfmeCopySubA m_bfme2c;
+	BfmeCopySubB m_bfme38;
+	BfmeCopyTail m_bfme44;
+	BfmeCopyWords m_bfme50;
+
+	BfmeCopyElementA *bfmeAssign(BfmeCopyElementA *source);		// retail 0x00003828
+};
+
+struct BfmeCopyElementB
+{
+	void bfmeAssign(BfmeCopyElementB *source);		// retail 0x0000D4CC
+
+	char m_bfmeBytes[0x8C];
+};
+
+struct BfmeCopyElementC
+{
+	void bfmeAssign(BfmeCopyElementC *source);		// retail 0x000470F0
+
+	char m_bfmeBytes[0xB4];
+};
+
+struct BfmeCopyElementD
+{
+	void bfmeAssign(BfmeCopyElementD *source);		// retail 0x00024BA9
+
+	char m_bfmeBytes[0xB8];
+};
+
+struct BfmeCopyElementE
+{
+	void bfmeAssign(BfmeCopyElementE *source);		// retail 0x0001F753
+
+	char m_bfmeBytes[0x70];
+};
+
+struct BfmeCopyElementF
+{
+	void bfmeAssign(BfmeCopyElementF *source);		// retail 0x0001B1D5
+
+	char m_bfmeBytes[0x38];
+};
+
 // tu-skeleton: 0x000633E5 48B ??1W3DGhostObject@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp (not merged yet)
 
 // tu-skeleton: 0x00063415 6B ?GetSnapshotName@W3DGhostObject@@MBEPBDXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp (not merged yet)
@@ -249,6 +321,14 @@ template _STL::vector<Rva0006447DRecord, _STL::allocator<Rva0006447DRecord> > & 
 // tu-skeleton: 0x00063531 6B ?GetSnapshotName@W3DGhostObjectManager@@MBEPBDXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp (not merged yet)
 
 // tu-skeleton: 0x00063537 116B ?setLocalPlayerIndex@W3DGhostObjectManager@@UAEXH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp
+
+#pragma optimize("s", off)
+
+#pragma optimize("t", on)
+
+#pragma optimize("", on)
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp
 
@@ -368,6 +448,31 @@ void _bfmeFileInfoVectorAssignInlineAnchor()
 	*vector = *vector;
 }
 
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00063BB2.cpp
+
+// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
+// Element identity and unconstrained fields remain address-derived structural inference.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0006447D.cpp
+
+// STLport 4.5.3 reference instantiation. Target boundary and byte comparison prove operation shape.
+// Element spelling/layout is donor inference; opaque records have address-derived identity.
+// The emitted unsigned max copy must match retail RVA 0x00013740.
+// Define it for speed, then restore this unit's flags for its own bodies.
+
 // tu-skeleton: 0x000635F8 47B ??$__copy@PAUGeometryRecord@@PAU1@H@_STL@@YAPAUGeometryRecord@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z -- matched in Code/GameEngine/Source/Common/System/GeometryRecordVector.cpp (not merged yet)
 
 // tu-skeleton: 0x000636B3 22B ??0Material_Override@RenderObjClass@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankTruckDraw.cpp (not merged yet)
@@ -393,11 +498,6 @@ void _bfmeFileInfoVectorAssignInlineAnchor()
 // tu-skeleton: 0x00063A77 167B ?removeGhostObject@W3DGhostObjectManager@@QAEXPAVGhostObject@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp (not merged yet)
 
 // tu-skeleton: 0x00063B1E 148B ?addGhostObject@W3DGhostObjectManager@@UAEPAVGhostObject@@PAVObject@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp (not merged yet)
-
-// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00063BB2.cpp
-
-// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
-// Element identity and unconstrained fields remain address-derived structural inference.
 
 // tu-skeleton: 0x00063BE4 79B ??0BfmeStringRecord00063BE4@@QAE@ABU0@@Z -- matched in Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp (not merged yet)
 
@@ -425,14 +525,42 @@ void _bfmeFileInfoVectorAssignInlineAnchor()
 
 // tu-skeleton: 0x0006445F 30B ?_M_clear@?$vector@URva00255D17@@V?$allocator@URva00255D17@@@_STL@@@_STL@@IAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00255d17_destroy.cpp (not merged yet)
 
-// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0006447D.cpp
+// ---- from Code/GameEngine/Source/Common/S3StrideCopyLoops_Rva00064605.cpp
 
-// STLport 4.5.3 reference instantiation. Target boundary and byte comparison prove operation shape.
-// Element spelling/layout is donor inference; opaque records have address-derived identity.
-// The emitted unsigned max copy must match retail RVA 0x00013740.
-// Define it for speed, then restore this unit's flags for its own bodies.
+BfmeCopyElementA *BfmeCopyElementA::bfmeAssign(BfmeCopyElementA *source)
+{
+	m_bfme04 = source->m_bfme04;
+	m_bfme08 = source->m_bfme08;
+	m_bfme0c = source->m_bfme0c;
+	m_bfme10 = source->m_bfme10;
+	m_bfme14 = source->m_bfme14;
+	m_bfme18 = source->m_bfme18;
+	m_bfme24 = source->m_bfme24;
+	m_bfme28 = source->m_bfme28;
+	m_bfme2c = source->m_bfme2c;
+	m_bfme38 = source->m_bfme38;
+	m_bfme44 = source->m_bfme44;
+	// Retail finishes this aggregate copy before scheduling the final tail copy.
+	_ReadWriteBarrier();
+	m_bfme50 = source->m_bfme50;
+	return this;
+}
 
-// tu-skeleton: 0x00064605 112B ?bfmeAssign@BfmeCopyElementA@@QAEPAU1@PAU1@@Z -- matched in Code/GameEngine/Source/Common/S3StrideCopyLoops_Rva00064605.cpp (not merged yet)
+// ?bfmeCopy_00138800@@YAPAUBfmeCopyElementA@@PAU1@00@Z
+
+// ?bfmeCopy_00146720@@YAPAUBfmeCopyElementA@@PAU1@00@Z
+
+// ?bfmeCopy_00193AF0@@YAPAUBfmeCopyElementB@@PAU1@00@Z
+
+// ?bfmeCopy_00362250@@YAPAUBfmeCopyElementC@@PAU1@00@Z
+
+// ?bfmeCopy_003622F0@@YAPAUBfmeCopyElementC@@PAU1@00@Z
+
+// ?bfmeCopy_003A1450@@YAPAUBfmeCopyElementD@@PAU1@00@Z
+
+// ?bfmeCopy_0049D5D0@@YAPAUBfmeCopyElementE@@PAU1@00@Z
+
+// ?bfmeCopy_0075EAA0@@YAPAUBfmeCopyElementF@@PAU1@00@Z
 
 // tu-skeleton: 0x00064675 320B ?snapShot@W3DGhostObject@@UAEXH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp (not merged yet)
 

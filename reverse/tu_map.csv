@@ -3288,7 +3288,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0006445F,30,code,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp,approved,C,C=0x000642F1..0x0006447D,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00255d17_destroy.cpp
 0x0006447D,206,code,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp,approved,C,C=0x000642F1..0x0006454B,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp
 0x0006454B,186,code,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp,approved,C,C=0x000642F1..0x00064605,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp
-0x00064605,112,code,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeCopyElementA.cpp,Code/GameEngine/Source/Common/S3StrideCopyLoops_Rva00064605.cpp
+0x00064605,112,code,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeCopyElementA.cpp,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp
 0x00064675,320,code,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp,approved,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp
 0x000647B5,25,code,,,-,,Code/GameEngine/Source/Common/Rva000647B5Ctor.cpp
 0x000647CE,6,code,,,-,,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp
