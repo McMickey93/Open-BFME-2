@@ -62,16 +62,7 @@ enum GameMode
 	GAME_INTERNET = 5
 };
 
-class GameLogic
-{
-public:
-	Bool isInLanGame() const { return m_gameMode == GAME_LAN; }
-	Bool isInInternetGame() const { return m_gameMode == GAME_INTERNET; }
-
-private:
-	char m_unmodelled_00[0x110];
-	int m_gameMode;								// +0x110
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 extern HWND ApplicationHWnd;
 extern LANAPI *TheLAN;
@@ -95,7 +86,7 @@ void Win32GameEngine::update()
 				TheLAN->update();
 			}
 
-			if (TheGameEngine->getQuitting() || TheGameLogic->isInInternetGame() || TheGameLogic->isInLanGame())
+			if (TheGameEngine->getQuitting() || (TheGameLogic->m_110 == GAME_INTERNET) || (TheGameLogic->m_110 == GAME_LAN))
 				break;
 		}
 	}

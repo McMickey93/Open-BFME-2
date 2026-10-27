@@ -89,12 +89,7 @@ public:
 	virtual const char *getAuthSecretText();
 };
 
-class GameLogic
-{
-public:
-	char m_pad00[0x38];
-	UnsignedInt m_timestampFrame;
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 extern GameSpyBuddyMessageQueueInterface *TheGameSpyBuddyMessageQueue;
 extern GameLogic *TheGameLogic;
@@ -132,7 +127,7 @@ void BFMEConnectionManager::sendGameSpyStatsAuthKey(void *command)
 	free(secret);
 	Rva004D65DC *msg = new Rva004D65DC;
 	msg->setPlayerID(m_localSlot);
-	msg->setTimestamp(TheGameLogic->m_timestampFrame);
+	msg->setTimestamp(TheGameLogic->getTimestamp());
 	msg->setExecutionFrame((UnsignedInt)-1);
 	if (DoesCommandRequireACommandID(msg->getNetCommandType()))
 		msg->setID(GenerateNextCommandID());

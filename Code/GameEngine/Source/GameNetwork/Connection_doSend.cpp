@@ -115,14 +115,7 @@ public:
 	UnsignedInt m_networkRunAheadSlack;
 };
 
-class GameLogic
-{
-public:
-	char m_pad00[0x38];
-	UnsignedInt m_timestampFrame;
-	char m_pad3C[4];
-	UnsignedInt m_frame;
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 extern GlobalData *TheWritableGlobalData;
 extern GameLogic *TheGameLogic;
@@ -195,9 +188,9 @@ UnsignedInt Connection::doSend(Bool throttle)
 						else
 							frame = cmd->getExecutionFrame();
 
-						if ((timestamp < TheGameLogic->m_timestampFrame &&
-								TheGameLogic->m_frame > TheWritableGlobalData->m_networkRunAheadSlack) ||
-							(frame != -1 && frame + TheWritableGlobalData->m_networkRunAheadSlack < TheGameLogic->m_frame)) {
+						if ((timestamp < TheGameLogic->getTimestamp() &&
+								TheGameLogic->getFrame() > TheWritableGlobalData->m_networkRunAheadSlack) ||
+							(frame != -1 && frame + TheWritableGlobalData->m_networkRunAheadSlack < TheGameLogic->getFrame())) {
 							m_netCommandList->removeMessage(msg);
 							delete msg;
 						}

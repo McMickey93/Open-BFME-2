@@ -46,12 +46,7 @@ public:
 	void setDisconnectSlot(UnsignedByte slot);
 };
 
-class GameLogic
-{
-public:
-	char m_pad00[0x38];
-	UnsignedInt m_frame;
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -81,7 +76,7 @@ void ConnectionManager::rva004D0A0A()
 {
 	Rva004D5795 *cmd = new Rva004D5795();
 	((NetDisconnectPlayerCommandMsg *)cmd)->setDisconnectSlot(m_slotByte);
-	cmd->m_timestamp = TheGameLogic->m_frame;
+	cmd->m_timestamp = TheGameLogic->getTimestamp();
 	cmd->m_executionFrame = (UnsignedInt)-1;
 	if (DoesCommandRequireACommandID(cmd->m_commandType))
 		cmd->m_id = GenerateNextCommandID();

@@ -18,12 +18,7 @@
 // Element workers 0x003EDC31/16/44/69/D8 are unrowed/unpinned: declared
 // here and pinned from the emitted spellings. The strict element type, the
 // +0x39 byte, the +0x18..0x37 gap and the base size are unproven.
-class GameLogic
-{
-public:
-	unsigned char m_pad00[0x40];
-	unsigned int m_frame;
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -84,7 +79,7 @@ void Rva0020DXXX::rva0020D7F9()
 	m_3A = 0;
 	GameLogic *gameLogic = TheGameLogic;
 	if (gameLogic != 0)
-		m_3C = gameLogic->m_frame;
+		m_3C = gameLogic->getFrame();
 	else
 		m_3C = 0;
 }
@@ -97,7 +92,7 @@ void Rva0020DXXX::rva0020D834()
 	m_3A = 0;
 	GameLogic *gameLogic = TheGameLogic;
 	if (gameLogic != 0)
-		m_3C = gameLogic->m_frame;
+		m_3C = gameLogic->getFrame();
 	else
 		m_3C = 0;
 }
@@ -106,7 +101,7 @@ void Rva0020DXXX::updateSubject(int x)
 {
 	if (m_38 != 0)
 		return;
-	if (TheGameLogic->m_frame == (unsigned int)m_3C)
+	if (TheGameLogic->getFrame() == (unsigned int)m_3C)
 		return;
 	void **fin = m_vec10.m_end;
 	for (void **i = m_vec10.m_begin; i != fin; ++i)
@@ -117,7 +112,7 @@ void Rva0020DXXX::registerSubject(int x)
 {
 	if (m_38 != 0)
 		return;
-	if (TheGameLogic->m_frame == (unsigned int)m_3C)
+	if (TheGameLogic->getFrame() == (unsigned int)m_3C)
 		return;
 	void **fin = m_vec10.m_end;
 	for (void **i = m_vec10.m_begin; i != fin; ++i)
@@ -128,7 +123,7 @@ void Rva0020DXXX::rva0020D959(int x)
 {
 	if (m_38 != 0)
 		return;
-	if (TheGameLogic->m_frame == (unsigned int)m_3C)
+	if (TheGameLogic->getFrame() == (unsigned int)m_3C)
 		return;
 	void **fin = m_vec10.m_end;
 	for (void **i = m_vec10.m_begin; i != fin; ++i)

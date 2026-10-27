@@ -84,14 +84,7 @@ public:
 	UnsignedInt m_networkRunAheadSlack;
 };
 
-class GameLogic
-{
-public:
-	char m_pad00[0x38];
-	UnsignedInt m_timestampFrame;
-	char m_pad3C[4];
-	UnsignedInt m_frame;
-};
+#include "../Common/GameLogicObjectLookupView.h"
 
 extern GlobalData *TheWritableGlobalData;
 extern GameLogic *TheGameLogic;
@@ -128,20 +121,20 @@ void BFMEConnectionManager::processInformPlayerLeaveFrameCommand(void *command)
 		return;
 	UnsignedInt leaveFrame = (UnsignedInt)msg->getData();
 	UnsignedShort leavingPlayer = (UnsignedShort)msg->getDataLength();
-	UnsignedInt frame = TheGameLogic->m_frame;
+	UnsignedInt frame = TheGameLogic->getFrame();
 	UnsignedInt slack = TheWritableGlobalData->m_networkRunAheadSlack;
 	if (leaveFrame < slack + frame)
 	{
 		if (msg->getPlayerID() < 8)
 			m_playerLatestFrame[msg->getPlayerID()] = frameMaximum(leaveFrame, m_playerLatestFrame[msg->getPlayerID()]);
 	}
-	if (TheGameLogic->m_frame < leaveFrame && leavingPlayer != m_localSlot)
+	if (TheGameLogic->getFrame() < leaveFrame && leavingPlayer != m_localSlot)
 	{
 		Rva004D5A30 *request = new Rva004D5A30;
 		request->setPlayerID(m_localSlot);
-		request->setTimestamp(TheGameLogic->m_timestampFrame);
+		request->setTimestamp(TheGameLogic->getTimestamp());
 		request->setExecutionFrame((UnsignedInt)-1);
-		((Rva004D57AE *)request)->setPlayerIndex(TheGameLogic->m_frame + 1);
+		((Rva004D57AE *)request)->setPlayerIndex(TheGameLogic->getFrame() + 1);
 		((BFMENetInformPlayerLeaveFrameCommandMsg *)request)->setLeavingPlayerID(leaveFrame);
 		if (DoesCommandRequireACommandID(request->getNetCommandType()))
 			request->setID(GenerateNextCommandID());
