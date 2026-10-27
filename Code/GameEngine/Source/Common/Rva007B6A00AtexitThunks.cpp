@@ -193,7 +193,6 @@ extern unsigned g_Va00E02D94;
 extern unsigned g_Va00E02E70;
 extern unsigned g_Va00E02E74;
 unsigned g_Va00E03080;	// retail RVA 0x00A03080 (.bss), defined here
-unsigned g_Va00E030E4;	// retail RVA 0x00A030E4 (.bss), defined here
 unsigned g_Va00E03238;	// retail RVA 0x00A03238 (.bss), defined here
 extern unsigned g_Va00E032E8;
 unsigned g_Va00E03318;	// retail RVA 0x00A03318 (.bss), defined here
@@ -480,13 +479,6 @@ void __cdecl rva007B8265()
 {
 	Rva002390CB *receiver = (Rva002390CB *)&g_Va00E03080;
 	receiver->~Rva002390CB();
-}
-
-// ?rva007B8283@@YAXXZ @ 0x007B8283 (10B): ecx=&g_Va00E030E4, tail-jump to rowed ??1UnicodeString@@QAE@XZ (0x005B804E)
-void __cdecl rva007B8283()
-{
-	UnicodeString *receiver = (UnicodeString *)&g_Va00E030E4;
-	receiver->~UnicodeString();
 }
 
 // ?rva007B8369@@YAXXZ @ 0x007B8369 (10B): ecx=&g_Va00E03238, tail-jump to rowed ??1BfmeStringTailRecord144@@UAE@XZ (0x002D9A43)
