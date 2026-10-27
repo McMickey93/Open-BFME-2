@@ -15,7 +15,7 @@
 // Retail's array branch frees through the vector delete operator; MSVC only
 // routes the call through ??_V when a vector-delete is declared in the TU.
 // The declaration emits no code.
-void operator delete[](void *p);
+#include <new>
 
 // Retail 0x00141780 (BfmeNonRefSceneList_dtor.cpp): vtable + 0x14-byte head.
 class BfmeNonRefSceneList

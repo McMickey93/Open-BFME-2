@@ -29,7 +29,7 @@ public:
     virtual void *v04(int);
 };
 
-void operator delete(void *p);
+#include <new>
 
 class Rva00131BE5 : public BfmeThingUB
 {

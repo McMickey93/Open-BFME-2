@@ -1108,8 +1108,6 @@ Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp	drop-in 
 Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/Libraries/Source/WWVegas/WW3D2/Rva001101D7Draw.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	fabs:same
 Code/Libraries/Source/WWVegas/WW3D2/Rva00131BE5Ctor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
-Code/Libraries/Source/WWVegas/WW3D2/Rva00131BE5Dtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/Libraries/Source/WWVegas/WW3D2/Rva00141D00VectorDeletingDtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/Libraries/Source/WWVegas/WW3D2/Rva0014D078LoadAnim.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strchr:same
 Code/Libraries/Source/WWVegas/WW3D2/Rva0015148DGetter.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/Libraries/Source/WWVegas/WW3D2/Rva001514D0Getter.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
