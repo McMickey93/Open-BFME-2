@@ -2680,6 +2680,16 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
     0 -> 1,758 B; `MixFileCreatorFileInfoStructAssign.cpp`, `stlport_int_algorithm_bodies.cpp`
     stay linked. The copy ctor still binds through the file's existing `/alternatename`
     (renaming the record to `MixFileCreator::FileInfoStruct` would retire it; not done).
+    **Identity cleanup 2026-10-27:** the current scan already accepts `bfmeEachQR`'s
+    copy binding as a fold. Its source-wide retirement was blocked by two opaque
+    sort-helper bindings. An explicit STLport introsort specialization now calls
+    the existing 0x00217AB0 partition and 0x00218BD4 partial-sort owners. All 26
+    GameFont rows (38 with the partition provider) still byte-match; identity is
+    63 references, zero wrong bindings. The owning tool retired one registered
+    identity key; two no-longer-emitted helper pins were removed and their hatch
+    counts lowered. Preview at bf3dd31211 stays 1,758 + 357 B, with no new census
+    gain claimed. The existing copy alias and opaque record name remain.
+    [Evidence](../reverse/attempt_support/gamefont-sort-identity-20261027.md).
   - `statistics.cpp` (986 B), 01a7f0d9ba: absorbed `Rva001296F0Destroy.cpp`, which never
     linked (`extern "C" textureStatisticsString`, while the string is a file static in
     `DebugStatisticsRecordTextureEnd.cpp`; non-retail `??1Rva001880D0Dtor` copy).

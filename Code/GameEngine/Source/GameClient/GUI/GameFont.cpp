@@ -592,6 +592,48 @@ struct Rva00218E09Record
 	AsciiString Filename;
 };
 
+// The native partition and partial-sort callees already have rowed owners.
+// Keep STLport 4.5.3's introsort loop, binding those calls to those owners.
+// Retail retains the unused comparator word after the by-value pivot; the
+// partition worker consumes the same sixteen-byte value and ignores that word.
+MixFileCreator::FileInfoStruct *Rva00217AB0Partition(
+	MixFileCreator::FileInfoStruct *, MixFileCreator::FileInfoStruct *,
+	MixFileCreator::FileInfoStruct);
+void __cdecl Rva00218BD4Sort(Rva004748F0Element *, Rva004748F0Element *,
+	Rva004748F0Element *, Rva004748F0Compare);
+
+typedef Rva00218E09Record *(__cdecl *FileInfoPartitionCall)(
+	Rva00218E09Record *, Rva00218E09Record *, Rva00218E09Record,
+	_STL::less<Rva00218E09Record>);
+typedef void (__cdecl *FileInfoPartialSortCall)(
+	Rva00218E09Record *, Rva00218E09Record *, Rva00218E09Record *,
+	_STL::less<Rva00218E09Record>);
+
+namespace _STL
+{
+template <>
+void __introsort_loop<Rva00218E09Record *, Rva00218E09Record, int,
+	less<Rva00218E09Record> >(
+	Rva00218E09Record *first, Rva00218E09Record *last,
+	Rva00218E09Record *, int depth, less<Rva00218E09Record> comp)
+{
+	while (last - first > 16)
+	{
+		if (depth == 0)
+		{
+			((FileInfoPartialSortCall)Rva00218BD4Sort)(first, last, last, comp);
+			return;
+		}
+		--depth;
+		Rva00218E09Record *cut = ((FileInfoPartitionCall)Rva00217AB0Partition)(
+			first, last, Rva00218E09Record(__median(*first,
+				*(first + (last - first) / 2), *(last - 1), comp)), comp);
+		__introsort_loop(cut, last, (Rva00218E09Record *)0, depth, comp);
+		last = cut;
+	}
+}
+}
+
 template void _STL::sort(Rva00218E09Record*,Rva00218E09Record*);
 
 // tu-skeleton: 0x002173FA 79B ?unlinkFont@FontLibrary@@IAEXPAVGameFont@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/FontLibraryFontList.cpp (not merged yet)
