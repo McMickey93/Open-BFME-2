@@ -178,7 +178,6 @@ unsigned g_Va00DFF0A0;	// retail RVA 0x009FF0A0 (.bss), defined here
 unsigned g_Va00DFF0A4;	// retail RVA 0x009FF0A4 (.bss), defined here
 extern unsigned g_Va00DFF0C4;
 unsigned g_Va00DFF168;	// retail RVA 0x009FF168 (.bss), defined here
-unsigned g_Va00E02158;	// retail RVA 0x00A02158 (.bss), defined here
 unsigned g_Va00E021F8;	// retail RVA 0x00A021F8 (.bss), defined here
 extern unsigned g_Va00E022E8;
 extern unsigned g_Va00E028C4;
@@ -366,13 +365,6 @@ void __cdecl rva007B7C87()
 {
 	ATL::CAtlWinModule *receiver = (ATL::CAtlWinModule *)&g_00DDE0AC;
 	receiver->Term();
-}
-
-// ?rva007B7D3B@@YAXXZ @ 0x007B7D3B (10B): ecx=&g_Va00E02158, tail-jump to rowed ??1BfmeStringTailRecord144@@UAE@XZ (0x002D9A43)
-void __cdecl rva007B7D3B()
-{
-	BfmeStringTailRecord144 *receiver = (BfmeStringTailRecord144 *)&g_Va00E02158;
-	receiver->BfmeStringTailRecord144::~BfmeStringTailRecord144();
 }
 
 // ?rva007B7D45@@YAXXZ @ 0x007B7D45 (10B): ecx=&g_Va00E021F8, tail-jump to rowed ??1BfmeStringTailRecord144@@UAE@XZ (0x002D9A43)
