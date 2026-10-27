@@ -1051,8 +1051,13 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   admission and its dependent unwind are withdrawn in a reviewable commit;
   the remaining 12 rows and data row pass. Readmission of the existing
   Rva00155940Element specialization and parent-derived unwind follows.
-  Before-preview is 3/3 LINKS and 1477 authored bytes; no incremental census
-  gain is claimed. Broader legacy template identities remain open.
+  Readmission now passes all 14 rows through add_match without new pins.
+  The official DIR32 check on 25 current rows passes 13 symbols with zero
+  inconsistencies; the proved lifetime conflict is cleared in that scope.
+  The paired three-source preview retains 1477 authored bytes, and the
+  wider five-source cohort is 5/5 LINKS with 17790 bytes. No incremental
+  census gain is claimed. Broader legacy template identities, the other
+  native-gate conflicts and reference-refresh qualification remain open.
 
 **Status: Open. Updated: 2026-10-27.**
 

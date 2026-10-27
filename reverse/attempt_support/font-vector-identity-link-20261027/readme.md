@@ -41,3 +41,31 @@ LINKS, retaining 1477 authored nonpadding bytes against index 73061d9452
 (2026-10-27 14:34). The printed historical 1432-to-1477 comparison predates
 this repair and is not its gain. Post-admission verification is pending.
 No new census-linked bytes, source-file recovery or runtime result is claimed.
+
+## Verified readmission
+
+The normal add_match path admits the existing opaque-pointer dynamic destructor
+at 0x00155330 as a whole-body alias of the existing 45-byte extent, then the
+actual compiler-emitted parent funclet $L3075 at 0x00767063. Both admissions
+pass ordinary byte verification. All 14 rows and the data row are restored;
+net unique matched-byte change is zero. The old wrong names remain tombstoned.
+The withdrawal commit is 33382dfa51; its normal hooks passed 965/965 rows
+across seven affected units and six EXACT EH graphs.
+
+The official verify_dir32_consistency check on 25 current rows passes:
+13 symbols, zero whitelisted and zero inconsistencies. This includes the
+separate 0x00120FB0 base destructor and the 0x00155330 fold extent. The newly
+admitted lifetime uses the BD3B98 specialization; the FontCharsBuffer base
+symbol now has only its separately established BD0D68 operand in this scope.
+
+All five ordinary previews pass together: constructor 850 bytes, opaque-vector
+provider 240, FontChars destructor 387, render2dsentence 1249, hlod 15064.
+The three-source before/after scope preserves exactly 1477 authored bytes.
+The wider after scope retains 17790 bytes; its historical 17745-to-17790
+printout is not an incremental gain from this repair. The same published index
+73061d9452 is used throughout. No new census or runtime check was started.
+
+This clears the proved two-address DIR32 lifetime conflict in the stated
+25-row scope. Other legacy type names, the remaining global native-gate
+conflicts, current census verification and the BFME 1 reference refresh remain
+separate work. No new pins or baseline/whitelist entries were added.
