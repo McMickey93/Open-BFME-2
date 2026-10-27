@@ -2225,6 +2225,23 @@ Remaining prerequisites: the shared AIUpdate layout puts clearWaypointQueue's fi
 
 Rejected trials: a getCurrentStateID attribute macro also expands the nested getter call in AIUpdate.h and fails C2061/C2039/C2232. A precise-Z dllimport/forceinline attribute macro still emits an import reference from an unrowed donor body, adding unresolved `__imp_?setUsePreciseZPos@Locomotor@@QAEX_N@Z`. Both trials were reversed. Do not repeat them without resolving those declaration/call contexts. Next check: reconcile the native receiver/layout/signature contracts and placeholder owners in a lane that can edit shared headers and names, then repeat the complete provider/consumer preview and await the normal census.
 
+### LINK-122: StateMachine view split, ICF twins and forwardable callees (2026-10-24 Opus pass)
+Status: Open. Updated: 2026-10-27; inspected revision: d37c84f6c3.
+Evidence / affected units: `link_check.py --refresh` over the 543 census-blocked units (index 7e43384268), then per-unit rechecks.
+Completed (each verified with `./build.sh` and `link_check.py --refresh`; census confirmation pending):
+- 47da7755f1: 0x004D750F is `StateMachine::setGoalObject(const Object *)` (slot 14 of 25 StateMachine vtables), 0x004D7435 its worker `internalSetGoalObject`; rows renamed, the `/alternatename` alias removed. `DozerAIUpdateCtor.cpp` and `WorkerAIUpdateCtor.cpp` LINK (0 -> 12,691 B).
+- 5882084a63: `StrategicHUDBattlePromptMovieClip.cpp` forwards both page vectors' `_M_clear` to the shared 4-byte clear worker 0x00577EF1 (0 -> 2,249 B).
+- 7506232830: `_Destroy<BfmeAssignRecord104 *>` forwards its loop to `Rva003B8B61Destroy` (0x003B8B61), so `stlport_asciistring_record_bodies.cpp` emits retail's 0x003B8E13 shape; `StlportVectorDtorDeferredOwners.cpp` LINKS (0 -> 145 B).
+- 579941b25f: ActiveBody's damage-creation vector copy (call 0x004BF6A1) forwards to the rowed `vector<BfmeE12>::operator=` 0x004BF4CE (0xC stride); the base ctor stays the BfmeE16 row 0x00211E58 retail calls. `ActiveBodyConstructor.cpp` LINKS (0 -> 432 B).
+Remaining / next check:
+- `Rva003444CEStates.cpp` (184 B) stopped linking with 47da7755f1: its dtor-only StateMachine view must now declare the virtual, so its `??_7BackAwayAndCowerStateMachine` copy (2 slots) differs from `Rva004D759CDerived.cpp`'s (1 slot). `Rva004D759CDerived.cpp` emits 16 StateMachine-derived vtables, each also emitted by 1-2 other units; the fix is one StateMachine slot list (`reference/shims/bfme2_statemachine/StateMachineView.h`) adopted by all of them.
+- `IntFloatMapSubscript.cpp` (698 B): retail keeps two unfolded copies of `map<int,float>`'s plain `insert_unique` (rowed here at 0x005DFD8D; the hinted insert 0x003590C9 calls the twin 0x005C6AFD, rowed as `map<int,Rva005C6AFDElement>::insert_unique`). One name cannot serve both; `_M_create_node` alone is forwardable (0x005C6728).
+- Constructor wall: a callee ctor folded onto another element type's row cannot be forwarded without changing the rowed caller (`CrateCreationEntryList.cpp`: `_List_base<crateCreationEntry>` ctor -> 0x00288978 rowed for BfmePod264, used by 5 other units; `AptPlayerTooltipMap.cpp`: hashtable ctor -> the Rva002249ADElement row).
+- `Rva008312E0StringReplace.cpp`: the inline `erase`/`replaceBase` bodies reserve retail's /Od frame (0x9C; forwarders shrink it to 0x54), so they cannot become forwarders.
+Clearance: the four completed units, per-unit previews only.
+Census confirmation: awaiting.
+
+
 ## Investigation-specific validation limitation
 
 The initial investigation preserved a pre-existing BFME 1 checkout at
