@@ -1,7 +1,6 @@
 // cl: /EHsc /DNDEBUG /MD /D_STLP_USE_STATIC_LIB
 // stlport
 // ?rva00595D95@Rva00595D95@@QAE_NXZ @0x00595D95 177B evidence: FirewallNeedToRefresh TRUE strings plus TheWritableGlobalData firewallBehavior+0xA4C via OptionPreferences find; callers 0x005182DE 0x00519C83 0x00572506; nonthrowing compare preserves the temporary cleanup state
-#pragma optimize("t", on)
 #include <map>
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.
@@ -11,7 +10,6 @@ static inline bool operator!=(const _Rb_tree_iterator<T, LeftTraits>& a,
                               const _Rb_tree_iterator<T, RightTraits>& b)
 { return a._M_node != b._M_node; }
 }
-#pragma optimize("", on)
 #include <stdlib.h>
 
 typedef bool Bool;

@@ -16835,8 +16835,6 @@ pragma_optimize	Code/GameEngine/Source/Common/Rva004FD4C1.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva005055DECopy.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva005055DECopy.cpp	"s",off	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva005055DECopy.cpp	"t",on	1
-pragma_optimize	Code/GameEngine/Source/Common/Rva00595D95Firewall.cpp	"",on	1
-pragma_optimize	Code/GameEngine/Source/Common/Rva00595D95Firewall.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva005A0B4CListAppend.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva005A0B4CListAppend.cpp	"s",off	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva005A0B4CListAppend.cpp	"t",on	1
