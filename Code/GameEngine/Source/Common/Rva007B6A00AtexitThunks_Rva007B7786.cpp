@@ -181,7 +181,6 @@ extern unsigned g_Va00DFF0A0;	// retail RVA 0x009FF0A0 (.bss), defined in Rva007
 extern unsigned g_Va00DFF0A4;	// retail RVA 0x009FF0A4 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DFF0C4;
 extern unsigned g_Va00DFF168;	// retail RVA 0x009FF168 (.bss), defined in Rva007B6A00AtexitThunks.cpp
-extern unsigned g_Va00E021F8;	// retail RVA 0x00A021F8 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00E022E8;
 extern unsigned g_Va00E028C4;
 extern unsigned g_Va00E02D68;
@@ -272,8 +271,6 @@ void __cdecl rva007B7A19();
 void __cdecl rva007B7AA5();
 
 void __cdecl rva007B7C87();
-
-void __cdecl rva007B7D45();
 
 void __cdecl rva007B7DB3();
 
