@@ -4753,6 +4753,18 @@ identity prerequisites remain in the prior data handoff. [Scoped evidence](../re
 This extends the existing repair's caller evidence; census confirmation remains
 pending, with no new linked-byte gain claimed.
 
+Follow-up water declaration repair (2026-10-27, `b3ff5cb28fb`):
+the picker serves W3DWaterRva0007F0FB.cpp's historical lock-provider blocker.
+Paired with current BfmeDX8ThreadLock.cpp, both preview LINKS before and after
+the repair (1,930 and 247 authored bytes). The water source now declares the
+release helper with its rowed bool return type, replacing two void-alias
+references with direct owner references. All five rows, the EH graph, and every
+byte in its 19 executable sections are preserved; shadow data has no findings.
+[Scoped evidence](../reverse/attempt_support/water-release-owner-binding-20261027-bce2/README.md)
+records the exact two relocation-name changes. The shared alias remains for
+other callers. This is caller binding cleanup; census confirmation of the
+earlier provider repair is still pending, and no new linked-byte gain is claimed.
+
 ### LINK-110: a class view omits its base's out-of-line destructor, so an unused implicit inline dtor references an unprovided grand-base
 Status: Open (SubObjectsUpgrade subset repaired). Updated: 2026-10-27; inspected revision: 952d800df1; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.
 Evidence / affected units: under `/GX` a constructor makes the front end emit its base's implicit destructor for the unwind path even when the optimized body needs no frame. `SubObjectsUpgrade.cpp`'s private `UpgradeModule` view declared no destructor, so the object carried an unreferenced inline `??1UpgradeModule@@UAE@XZ` that jumps to the placeholder `??1ObjectModuleBase@@UAE@XZ`, which nothing provides (census: sole blocker, 1,108 B). Retail's owner is the rowed protected virtual `??1UpgradeModule@@MAE@XZ` at 0x0046089D (UpgradeModuleDtor.cpp), which ten other upgrade units already declare.

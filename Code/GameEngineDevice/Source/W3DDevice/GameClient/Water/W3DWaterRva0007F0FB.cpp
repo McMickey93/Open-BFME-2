@@ -134,7 +134,7 @@ extern "C" D3DXMATRIX *__stdcall D3DXMatrixInverse(D3DXMATRIX *,float *,const D3
 extern "C" D3DXMATRIX *__stdcall D3DXMatrixTranspose(D3DXMATRIX *,const D3DXMATRIX *);
 extern "C" Vector4 *__stdcall rva0062AF4AD3DXVec4Transform(Vector4 *,const Vector4 *,const D3DXMATRIX *);
 void BFME_DX8_Thread_Lock();
-void BFME_DX8_Thread_Assert();
+bool BFME_DX8_Thread_Assert(); // The rowed release reports whether this was the last unlock.
 struct DeviceLock {
  DeviceLock(){BFME_DX8_Thread_Lock();}
  ~DeviceLock(){BFME_DX8_Thread_Assert();}
