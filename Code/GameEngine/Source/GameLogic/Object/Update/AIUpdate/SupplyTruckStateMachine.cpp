@@ -34,6 +34,16 @@
 // machine's dtor is the rowed 0x004A6C59 (11 bytes, vtable store and jmp to
 // the base dtor) and is only declared here. State is a struct in this view
 // because the rowed defineState is spelled with one.
+//
+// The class views are the union the TU's other condition, state and helper
+// bodies need (SupplyTruckAIUpdate.cpp consolidation): the supply truck
+// interface's box count (slot 0), availability (slot 4) and slot 6 test, the
+// AI module's idle test (slot 110), current state id and command interface
+// (+0x20), the player's type (+0x5C) and gathering manager (+0x2E4), and the
+// object's protected findModule, which the dock-delay helper reaches as a
+// friend.
+
+#include "../../../../../../Libraries/Include/Lib/Coord3D.h"
 
 typedef bool Bool;
 typedef int Int;
@@ -63,14 +73,29 @@ enum
 class SupplyTruckAIInterface
 {
 public:
-	virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+	virtual Int getNumberBoxes() const; // slot 0
+	virtual void v01(); virtual void v02(); virtual void v03();
 	virtual Bool isAvailableForSupplying() const; // slot 4 (+0x10), ownerAvailableForSupplying
-	virtual void v05(); virtual void v06(); virtual void v07();
+	virtual void v05();
+	virtual Bool v06() const; // slot 6 (+0x18)
+	virtual void v07();
 	virtual void v08(); virtual void v09(); virtual void v10();
 	virtual void setForceWantingState(Bool v); // +0x2C
 	virtual Bool isForcedIntoWantingState() const; // +0x30
 	virtual void setForceBusyState(Bool v); // +0x34
 	virtual Bool isForcedIntoBusyState() const; // +0x38
+};
+
+enum CommandSourceType
+{
+	CMD_FROM_AI = 2
+};
+
+class AICommandInterface
+{
+public:
+	void aiDock(Object *obj, CommandSourceType cmdSource);
+	void aiHarvest(const Coord3D *pos, CommandSourceType cmdSource);
 };
 
 class AIUpdateInterface
@@ -107,7 +132,30 @@ public:
 	virtual void v108(); virtual void v109();
 	virtual Bool isIdle(); // slot 110 (+0x1B8)
 	Int getCurrentStateID() const; // rowed 0x00262FC3
+
+	char m_pad04[0x20 - 0x04];
+	AICommandInterface m_commands; // +0x20
 };
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class ResourceGatheringManager;
+
+class Player
+{
+public:
+	ResourceGatheringManager *getResourceGatheringManager() const { return m_resourceGatheringManager; }
+
+	char m_pad[0x5C];
+	int m_playerType; // +0x5C
+	char m_pad60[0x2E4 - 0x60];
+	ResourceGatheringManager *m_resourceGatheringManager; // +0x2E4
+};
+
+class Module;
 
 // The AI module pointer is read as a member: an inline getAIUpdateInterface
 // here would emit a COMDAT under the name the Zero Hour-header units define
@@ -117,6 +165,10 @@ class Object
 public:
 	unsigned char m_pad000[0x258];
 	AIUpdateInterface *m_ai; // +0x258
+	Player *getControllingPlayer() const;
+protected:
+	Module *findModule(NameKeyType key) const;
+	friend class Rva004A6F0A;
 };
 
 struct State;
