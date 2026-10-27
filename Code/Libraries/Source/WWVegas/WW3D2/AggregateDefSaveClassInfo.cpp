@@ -25,8 +25,21 @@ extern "C" __declspec(dllimport) char * __stdcall lstrcpyn(char *, const char *,
 
 struct W3dAggregateHeaderStruct
 {
-	unsigned m_version; // W3D_CURRENT_AGGREGATE_VERSION is 0x10003
-	char m_name[16];
+	unsigned Version; // W3D_CURRENT_AGGREGATE_VERSION is 0x10003
+	char Name[16];
+};
+
+struct W3dAggregateInfoStruct
+{
+	char BaseModelName[32];
+	unsigned SubobjectCount;
+};
+
+struct W3dAggregateMiscInfo
+{
+	unsigned OriginalClassID;
+	unsigned Flags;
+	unsigned reserved[3];
 };
 
 class ChunkSaveClass
@@ -60,14 +73,11 @@ protected:
 	virtual void Build_Subobject_List(RenderObjClass &original_model, RenderObjClass &model);
 
 private:
-	int m_version; // +4
-	unsigned char m_subobjectList[0x18]; // +8, 24-byte vector head (untouched here)
-	char m_infoBaseModelName[32]; // +0x20
-	int m_infoSubobjectCount; // +0x40
-	unsigned m_miscOriginalClassID; // +0x44
-	unsigned m_miscFlags; // +0x48
-	unsigned char m_miscReserved[12]; // +0x4C
-	char *m_name; // +0x58
+	unsigned long m_Version; // +4
+	unsigned char m_SubobjectList[0x18]; // +8, 24-byte vector head (untouched here)
+	W3dAggregateInfoStruct m_Info; // +0x20
+	W3dAggregateMiscInfo m_MiscInfo; // +0x44
+	char *m_pName; // +0x58
 };
 
 // ?Save_Class_Info@AggregateDefClass@@MAE?AW4WW3DErrorType@@AAVChunkSaveClass@@@Z @0x1A3690
@@ -80,7 +90,7 @@ bool AggregateDefClass::Save_Class_Info(ChunkSaveClass &chunk_save)
 	if (chunk_save.Begin_Chunk(0x604) == true) {
 
 		// Write the class information structure out to the chunk
-		if (chunk_save.Write(&m_miscOriginalClassID, 0x14) == 0x14) {
+		if (chunk_save.Write(&m_MiscInfo, sizeof(m_MiscInfo)) == sizeof(m_MiscInfo)) {
 			// Success!
 			ret_val = true;
 		}
@@ -104,9 +114,9 @@ bool AggregateDefClass::Save_Header(ChunkSaveClass &chunk_save)
 
 		// Fill the header structure
 		W3dAggregateHeaderStruct header = { 0 };
-		header.m_version = 0x10003;
-		::lstrcpyn(header.m_name, m_name, sizeof(header.m_name));
-		header.m_name[sizeof(header.m_name) - 1] = 0;
+		header.Version = 0x10003;
+		::lstrcpyn(header.Name, m_pName, sizeof(header.Name));
+		header.Name[sizeof(header.Name) - 1] = 0;
 
 		// Write the header out to the chunk
 		if (chunk_save.Write(&header, sizeof(header)) == sizeof(header)) {
