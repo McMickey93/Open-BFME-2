@@ -4,7 +4,7 @@
 // memset(this 0 0x10) then sets five bits. First param unread at all call
 // sites (caller 0x0045E293 passes 0 0x1F 0x20 0x21 0x22 0x23). Shape follows
 // Rva00045411BitSet 2-arg ctor precedent. Unsigned shift gives shr.
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 struct Rva0045D887
 {

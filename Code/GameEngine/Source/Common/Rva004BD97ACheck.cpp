@@ -12,7 +12,7 @@
 // 0x006291AE is the rowed memset import thunk; 0x002CF0F0 is the rowed
 // BfmeFixedStorage002CF0F0 copy constructor.
 #pragma function(memset)
-extern "C" void *memset(void *dst, int value, unsigned int size);
+#include <string.h>
 
 class BfmeFixedStorage002CF0F0
 {
