@@ -16,7 +16,7 @@
 // routes the call through ??_V when a vector-delete is declared in the TU
 // (probe-proven: without this declaration cl emits ??3 in both branches).
 // The declaration emits no code.
-void operator delete[](void *p);
+#include <new>
 
 class Rva0073B700
 {

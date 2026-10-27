@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc
 
-void * __cdecl operator new(unsigned int);
+#include <new>
 void Add_Prototype(void *prototype);
 
 class GenBase009EB7D0
