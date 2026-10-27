@@ -1508,10 +1508,20 @@ Updated: 2026-10-25; inspected revision: `4f111811802`.**
   `SpecialPowerModule` vtable or dtor bytes. `./build.sh` passes 5/5 rows;
   `tools/link_check.py` links the dtor unit for 222 B and all 14
   `??1SpecialPowerModule@@UAE@XZ` consumers for 1,212 B (0 -> 1,434 B).
-- **Remaining / next check:** `OCLSpecialPower.cpp` still fails on its private
-  protected dtor spelling, an unresolved `PartitionManager::findPositionAround`
-  and a `FindPositionOptions` constructor copy. It was not one of the 14
-  public-spelling ports.
+- **OCL remainder repaired (2026-10-26, inspected `eec2395dbd`):**
+  [The paired native-call-view check](../reverse/attempt_support/ocl-native-call-views-20261026/readme.md)
+  clears the three blockers in `OCLSpecialPower.cpp`, which was outside the
+  original fourteen ports. The existing BFME2 SpecialPower shim supplies the
+  public destructor declaration; the existing native query view supplies the
+  static ring-search ABI; the options constructor is declared out of line to
+  bind its existing 55-byte owner. All 110 cohort rows and eleven EH graphs
+  verify. The actual before/after preview changes OCL from blocked to LINKS
+  for 40 authored bytes; all eleven cohort units then link. No new harmful
+  COMDAT variant, wrong selected provider or indexed outside incoming edge
+  to a removed definition is found. No pins, rows or shared headers change.
+- **Remaining / next check:** confirm the OCL forty-byte gain and the earlier
+  repaired scopes in the next normal census. OCL's seven unmatched donor
+  methods remain separate reconstruction debt.
 - **Clearance:** preview scope only (the units listed above and the 14 ports).
 - **Census confirmation:** awaiting the next census.
 
