@@ -9,8 +9,7 @@
 // Structural inference: the doubling is a + a on the float result, which
 // pops one argument dword before the fadd as retail does.
 
-extern "C" double __cdecl atan(double value);
-extern "C" double __cdecl tan(double value);
+#include <math.h>
 
 // ?Rva004D6B3A@@YAMM@Z @0x004D6B3A 52B, callers 0x0025EDA9 and 0x004D6BB1:
 // the inverse of 0x004D6B6E, 12 / tan(value / 2), or the pooled 1e10 at
@@ -22,7 +21,7 @@ extern "C" double __cdecl tan(double value);
 float __cdecl Rva004D6B3A(float value)
 {
 	float half = value * 0.5f;
-	float t = (float)tan(half);
+	float t = (float)tan((double)half);
 	if (t != 0.0f)
 		return 12.0f / t;
 	return 1.0e10f;
@@ -32,7 +31,7 @@ float __cdecl Rva004D6B6E(float value)
 {
 	if (value > 0.0f)
 	{
-		float a = (float)atan(12.0f / value);
+		float a = (float)atan((double)(12.0f / value));
 		return a + a;
 	}
 	return 1.5707964f;

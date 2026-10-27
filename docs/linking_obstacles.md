@@ -4848,6 +4848,13 @@ Clearance: retained adoptions preserve their existing byte and ordinary-preview 
 
 ### LINK-106: thread-wrapper calls used the Win32 import thunk's name
 
+Follow-up verification (2026-10-27, `b8156cd386`): the default picker served
+Rva000E6B99FreeBuffers.cpp's historical selected-copy blocker. All four
+unchanged rows byte-verify. With current BfmeDX8ThreadLock.cpp, both ordinary
+previews LINKS (229 and 247 authored bytes) against `bf3dd31211`.
+[Scoped evidence](../reverse/attempt_support/angle-math-headers-20261027-codex.md)
+confirms the existing repair; census confirmation remains pending.
+
 Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-27; inspected revision: a0b82f68445de8ab0254437ef7e97332ce48cfb0.
 
 Evidence / affected units: Code/Libraries/Source/WWVegas/WW3D2/BfmeDX8ThreadLock.cpp emitted wrong copies of ?BFME_DX8_Thread_Lock@@YAXXZ, ?bfmeRva0011F5B0@@YA_NK@Z and ?bfmeRva0011F600@@YAHXZ. Code/Libraries/Source/WWVegas/WW3D2/BfmeDX8ThreadCheck.cpp emitted the wrong ?Rva0011F500@@YAHXZ copy, and Code/GameEngine/Source/Main/BfmeDfe6e4_rva00225492.cpp emitted the wrong ?rva00225492@BfmeDfe6e4@@QAEXXZ copy. All five native calls target RVA 0x006105D0, already rowed as ThreadClass::_Get_Current_Thread_ID in Code/Libraries/Source/WWVegas/WWLib/thread.cpp. Commit e53f7b13020672350e4244facf694217e855f9af introduced the distinct _GetCurrentThreadId@0 row at RVA 0x00687E0A. Census identity resolution then preferred that row over the old pin at 0x006105D0. Both entries contain FF 25 20 A2 BB 00, but their native entry addresses differ. The inspected preview index identifies itself as bf3dd31211 (2026-10-27 00:39, retail-truth-4).
