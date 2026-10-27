@@ -66,47 +66,23 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool IsLoading();
-	virtual Bool IsStoring();
-	virtual Bool IsCRC();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void xferUser(void *data, UnsignedInt size);
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void xferSnapshot(Snapshot *snapshot);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void xferReal(Real *value);
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt *value);
-	virtual void xferInt(Int *value);
-	virtual void xferUnsignedShort(UnsignedShort *value);
-	virtual void xferShort(Short *value);
-	virtual void xferUnsignedByte(UnsignedByte *value);
-	virtual void slot35();
-	virtual void xferBool(Bool *value);
-};
+// Operand declarations precede the shared interface; their layouts are not
+// needed by this unit's virtual transfers.
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 // Native constructor 0x0060C36E and throw type CFFD18 identify the real class.
 class XferException
@@ -396,16 +372,16 @@ static __forceinline UnsignedInt asciiListSize(const ListAsciiString *list)
 Xfer *Rva0020700FXfer(Xfer *xfer, ListAsciiString *list)
 {
 	XferVersion version(1, 1);
-	xfer->xferVersion(&version);
+	xfer->operator==((Xfer::Version &)version);
 
 	UnsignedInt count = asciiListSize(list);
-	xfer->xferTypeName("std::list").xferUnsignedInt(&count);
+	xfer->operator==("std::list").operator==(count);
 
 	if (xfer->IsStoring()) {
 		ListAsciiString::_Node *sentinel = (ListAsciiString::_Node *)list->_M_node._M_data;
 		ListAsciiString::_Node *node = (ListAsciiString::_Node *)sentinel->_M_next;
 		while (node != sentinel) {
-			xfer->xferAsciiString(&node->_M_data);
+			xfer->operator==(node->_M_data);
 			node = (ListAsciiString::_Node *)node->_M_next;
 		}
 	} else {
@@ -415,7 +391,7 @@ Xfer *Rva0020700FXfer(Xfer *xfer, ListAsciiString *list)
 		AsciiString value;
 		while (count != 0) {
 			--count;
-			xfer->xferAsciiString(&value);
+			xfer->operator==(value);
 			list->push_back(value);
 		}
 		--count;
@@ -429,10 +405,10 @@ void Rva00203D6AChain(Rva00203D6AA *a, void *b);
 Xfer *Rva00207F91XferList(Xfer *xfer, ListAsciiStringValue *list)
 {
 	XferVersion version(1, 1);
-	xfer->xferVersion(&version);
+	xfer->operator==((Xfer::Version &)version);
 
 	UnsignedInt count = (UnsignedInt)list->size();
-	xfer->xferTypeName("std::list").xferUnsignedInt(&count);
+	xfer->operator==("std::list").operator==(count);
 
 	if (xfer->IsStoring())
 	{
@@ -471,13 +447,13 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		return;
 
 	XferVersion version(1, 5);
-	xfer->xferVersion(&version);
-	xfer->xferBool(&m_freezeByScript);
-	xfer->xferAsciiString(&m_currentTrackName);
+	xfer->operator==((Xfer::Version &)version);
+	xfer->operator==(m_freezeByScript);
+	xfer->operator==(m_currentTrackName);
 
 	// sequential scripts
 	UnsignedShort sequentialScriptCount = m_sequentialScripts.size();
-	xfer->xferUnsignedShort(&sequentialScriptCount);
+	xfer->operator==(sequentialScriptCount);
 	SequentialScript *sequentialScript;
 	if (xfer->IsStoring())
 	{
@@ -485,7 +461,7 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		for (it = m_sequentialScripts.begin(); it != m_sequentialScripts.end(); ++it)
 		{
 			sequentialScript = *it;
-			xfer->xferSnapshot((Snapshot *)sequentialScript);
+			xfer->operator==(*((Snapshot *)sequentialScript));
 		}
 	}
 	else
@@ -496,22 +472,22 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		{
 			sequentialScript = new SequentialScript;
 			m_sequentialScripts.push_back(sequentialScript);
-			xfer->xferSnapshot((Snapshot *)sequentialScript);
+			xfer->operator==(*((Snapshot *)sequentialScript));
 		}
 	}
 
 	// counters
 	UnsignedShort countersSize = m_counters.size();
-	xfer->xferUnsignedShort(&countersSize);
+	xfer->operator==(countersSize);
 	if (xfer->IsStoring())
 	{
 		ScriptCounterMap::iterator end = m_counters.end();
 		for (ScriptCounterMap::iterator it = m_counters.begin(); it != end; ++it)
 		{
-			xfer->xferAsciiString(&const_cast<ScriptKey &>(it->first).first);
-			xfer->xferAsciiString(&const_cast<ScriptKey &>(it->first).second);
-			xfer->xferInt(&it->second.m_value);
-			xfer->xferBool(&it->second.m_isCountdownTimer);
+			xfer->operator==(const_cast<ScriptKey &>(it->first).first);
+			xfer->operator==(const_cast<ScriptKey &>(it->first).second);
+			xfer->operator==(it->second.m_value);
+			xfer->operator==(it->second.m_isCountdownTimer);
 		}
 	}
 	else
@@ -520,26 +496,26 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		for (i = 0; i < countersSize; ++i)
 		{
 			ScriptKey key;
-			xfer->xferAsciiString(&key.first);
-			xfer->xferAsciiString(&key.second);
+			xfer->operator==(key.first);
+			xfer->operator==(key.second);
 			ScriptCounter counter;
-			xfer->xferInt(&counter.m_value);
-			xfer->xferBool(&counter.m_isCountdownTimer);
+			xfer->operator==(counter.m_value);
+			xfer->operator==(counter.m_isCountdownTimer);
 			m_counters.insert(_STL::make_pair(key, counter));
 		}
 	}
 
 	// flags
 	UnsignedShort flagsSize = m_flags.size();
-	xfer->xferUnsignedShort(&flagsSize);
+	xfer->operator==(flagsSize);
 	if (xfer->IsStoring())
 	{
 		ScriptFlagMap::iterator end = m_flags.end();
 		for (ScriptFlagMap::iterator it = m_flags.begin(); it != end; ++it)
 		{
-			xfer->xferAsciiString(&const_cast<ScriptKey &>(it->first).first);
-			xfer->xferAsciiString(&const_cast<ScriptKey &>(it->first).second);
-			xfer->xferBool(&it->second.m_value);
+			xfer->operator==(const_cast<ScriptKey &>(it->first).first);
+			xfer->operator==(const_cast<ScriptKey &>(it->first).second);
+			xfer->operator==(it->second.m_value);
 		}
 	}
 	else
@@ -548,10 +524,10 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		for (i = 0; i < flagsSize; ++i)
 		{
 			ScriptKey key;
-			xfer->xferAsciiString(&key.first);
-			xfer->xferAsciiString(&key.second);
+			xfer->operator==(key.first);
+			xfer->operator==(key.second);
 			ScriptFlag flag;
-			xfer->xferBool(&flag.m_value);
+			xfer->operator==(flag.m_value);
 			m_flags.insert(_STL::make_pair(key, flag));
 		}
 	}
@@ -562,7 +538,7 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		Int count;
 		if (xfer->IsLoading())
 		{
-			xfer->xferInt(&count);
+			xfer->operator==(count);
 			while (count > 0)
 			{
 				ScriptKey key;
@@ -572,17 +548,17 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 				m_armies.insert(ScriptDefaultIntMap::value_type(key, army));
 				--count;
 			}
-			xfer->xferInt(&count);
+			xfer->operator==(count);
 			while (count > 0)
 			{
 				ScriptKey key;
 				Rva00203D4EChain((Rva00203D4EA *)xfer, &key);
 				AsciiString value;
-				xfer->xferAsciiString(&value);
+				xfer->operator==(value);
 				m_strings.insert(ScriptStringMap::value_type(key, AsciiString(value)));
 				--count;
 			}
-			xfer->xferInt(&count);
+			xfer->operator==(count);
 			while (count > 0)
 			{
 				ScriptKey key;
@@ -596,7 +572,7 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		else
 		{
 			count = m_armies.size();
-			xfer->xferInt(&count);
+			xfer->operator==(count);
 			ScriptDefaultIntMap::iterator it = m_armies.begin();
 			ScriptDefaultIntMap::iterator end = m_armies.end();
 			while (it != end)
@@ -608,7 +584,7 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 				++it;
 			}
 			count = m_strings.size();
-			xfer->xferInt(&count);
+			xfer->operator==(count);
 			ScriptStringMap::iterator sit = m_strings.begin();
 			ScriptStringMap::iterator send = m_strings.end();
 			while (sit != send)
@@ -616,11 +592,11 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 				ScriptKey key(sit->first);
 				Rva00203D4EChain((Rva00203D4EA *)xfer, &key);
 				AsciiString value(sit->second);
-				xfer->xferAsciiString(&value);
+				xfer->operator==(value);
 				++sit;
 			}
 			count = m_players.size();
-			xfer->xferInt(&count);
+			xfer->operator==(count);
 			ScriptDefaultIntMap::iterator pit = m_players.begin();
 			ScriptDefaultIntMap::iterator pend = m_players.end();
 			while (pit != pend)
@@ -642,18 +618,18 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 
 	// attack priority info
 	UnsignedShort attackPriorityInfoSize = m_numAttackInfo;
-	xfer->xferUnsignedShort(&attackPriorityInfoSize);
+	xfer->operator==(attackPriorityInfoSize);
 	if (attackPriorityInfoSize > MAX_ATTACK_PRIORITIES)
 		throw XferException(5, 0);
 	for (i = 0; i < attackPriorityInfoSize; ++i)
-		xfer->xferSnapshot(&m_attackPriorityInfo[i]);
-	xfer->xferInt(&m_numAttackInfo);
-	xfer->xferInt(&m_endGameTimer);
-	xfer->xferInt(&m_closeWindowTimer);
+		xfer->operator==(m_attackPriorityInfo[i]);
+	xfer->operator==(m_numAttackInfo);
+	xfer->operator==(m_endGameTimer);
+	xfer->operator==(m_closeWindowTimer);
 
 	// named objects
 	UnsignedShort namedObjectsCount = m_namedObjects.size();
-	xfer->xferUnsignedShort(&namedObjectsCount);
+	xfer->operator==(namedObjectsCount);
 	AsciiString namedObjectName;
 	Object *obj;
 	ObjectID objectID;
@@ -663,7 +639,7 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		for (it = m_namedObjects.begin(); it != m_namedObjects.end(); ++it)
 		{
 			namedObjectName = it->key;
-			xfer->xferAsciiString(&namedObjectName);
+			xfer->operator==(namedObjectName);
 			obj = it->obj;
 			objectID = obj ? obj->getID() : INVALID_OBJECT_ID;
 			XferObjectID(xfer, &objectID);
@@ -676,7 +652,7 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		named.erase(named.begin(), named.end());
 		for (UnsignedShort i = 0; i < namedObjectsCount; ++i)
 		{
-			xfer->xferAsciiString(&namedObjectName);
+			xfer->operator==(namedObjectName);
 			XferObjectID(xfer, &objectID);
 			obj = TheGameLogic->findObjectByID(objectID);
 			if (obj == 0 && objectID != INVALID_OBJECT_ID)
@@ -688,15 +664,15 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 	}
 
 	// fade
-	xfer->xferBool(&m_firstUpdate);
-	xfer->xferUser(&m_fade, sizeof(m_fade));
-	xfer->xferReal(&m_minFade);
-	xfer->xferReal(&m_maxFade);
-	xfer->xferReal(&m_curFadeValue);
-	xfer->xferInt(&m_curFadeFrame);
-	xfer->xferInt(&m_fadeFramesIncrease);
-	xfer->xferInt(&m_fadeFramesHold);
-	xfer->xferInt(&m_fadeFramesDecrease);
+	xfer->operator==(m_firstUpdate);
+	xfer->XferRawBytes(&m_fade, sizeof(m_fade));
+	xfer->operator==(m_minFade);
+	xfer->operator==(m_maxFade);
+	xfer->operator==(m_curFadeValue);
+	xfer->operator==(m_curFadeFrame);
+	xfer->operator==(m_fadeFramesIncrease);
+	xfer->operator==(m_fadeFramesHold);
+	xfer->operator==(m_fadeFramesDecrease);
 
 	// lists saved by name before version 5, by CRC since
 	if (xfer->IsLoading() && version.m_currentVersion < 5)
@@ -882,31 +858,31 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		xferList2069F0(xfer, &m_toppleDirections);
 
 	// breeze
-	xfer->xferReal(&m_breezeDirection);
-	xfer->xferReal(&m_breezeDirectionX);
-	xfer->xferReal(&m_breezeDirectionY);
-	xfer->xferReal(&m_breezeIntensity);
-	xfer->xferReal(&m_breezeLean);
-	xfer->xferReal(&m_breezeRandomness);
-	xfer->xferShort(&m_breezePeriod);
-	xfer->xferShort(&m_breezeVersion);
+	xfer->operator==(m_breezeDirection);
+	xfer->operator==(m_breezeDirectionX);
+	xfer->operator==(m_breezeDirectionY);
+	xfer->operator==(m_breezeIntensity);
+	xfer->operator==(m_breezeLean);
+	xfer->operator==(m_breezeRandomness);
+	xfer->operator==(m_breezePeriod);
+	xfer->operator==(m_breezeVersion);
 	XferGameDifficulty(xfer, &m_gameDifficulty);
-	xfer->xferBool(&m_bool1A4D4);
+	xfer->operator==(m_bool1A4D4);
 
 	// named reveals
 	UnsignedShort namedRevealCount = m_namedReveals.size();
-	xfer->xferUnsignedShort(&namedRevealCount);
-	xfer->xferUnsignedInt(&m_unknown1A15C);
-	xfer->xferUnsignedInt(&m_unknown1A160);
+	xfer->operator==(namedRevealCount);
+	xfer->operator==(m_unknown1A15C);
+	xfer->operator==(m_unknown1A160);
 	if (xfer->IsStoring())
 	{
 		VecNamedReveal::iterator it;
 		for (it = m_namedReveals.begin(); it != m_namedReveals.end(); ++it)
 		{
-			xfer->xferUnsignedInt((UnsignedInt *)&it->word0);
-			xfer->xferAsciiString(&it->text0);
-			xfer->xferReal(&it->word1);
-			xfer->xferAsciiString(&it->text1);
+			xfer->operator==(*((UnsignedInt *)&it->word0));
+			xfer->operator==(it->text0);
+			xfer->operator==(it->word1);
+			xfer->operator==(it->text1);
 		}
 	}
 	else
@@ -917,23 +893,23 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		for (UnsignedShort i = 0; i < namedRevealCount; ++i)
 		{
 			if (version.m_currentVersion >= 5)
-				xfer->xferUnsignedInt((UnsignedInt *)&reveal.word0);
+				xfer->operator==(*((UnsignedInt *)&reveal.word0));
 			else
 			{
 				AsciiString name;
-				xfer->xferAsciiString(&name);
+				xfer->operator==(name);
 				reveal.word0 = Rva003ECA13Get(name);
 			}
-			xfer->xferAsciiString(&reveal.text0);
-			xfer->xferReal(&reveal.word1);
-			xfer->xferAsciiString(&reveal.text1);
+			xfer->operator==(reveal.text0);
+			xfer->operator==(reveal.word1);
+			xfer->operator==(reveal.text1);
 			m_namedReveals.push_back(reveal);
 		}
 	}
 
 	// object type lists
 	UnsignedShort allObjectTypesCount = m_allObjectTypeLists.size();
-	xfer->xferUnsignedShort(&allObjectTypesCount);
+	xfer->operator==(allObjectTypesCount);
 	if (xfer->IsStoring())
 	{
 		AllObjectTypes::iterator it;
@@ -941,7 +917,7 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		for (it = m_allObjectTypeLists.begin(); it != m_allObjectTypeLists.end(); ++it)
 		{
 			objectTypes = *it;
-			xfer->xferSnapshot(objectTypes);
+			xfer->operator==(*(objectTypes));
 		}
 	}
 	else
@@ -952,13 +928,13 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		for (UnsignedShort i = 0; i < allObjectTypesCount; ++i)
 		{
 			objectTypes = new ObjectTypes;
-			xfer->xferSnapshot(objectTypes);
+			xfer->operator==(*(objectTypes));
 			m_allObjectTypeLists.push_back(objectTypes);
 		}
 	}
 
-	xfer->xferBool(&m_objectsShouldReceiveDifficultyBonus);
-	xfer->xferBool(&m_ChooseVictimAlwaysUsesNormal);
+	xfer->operator==(m_objectsShouldReceiveDifficultyBonus);
+	xfer->operator==(m_ChooseVictimAlwaysUsesNormal);
 
 	if (xfer->IsLoading())
 	{
@@ -982,13 +958,13 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		{
 			((Rva002065FD *)&m_objectIDs)->rva00206F19();
 			UnsignedInt count = 0;
-			xfer->xferUnsignedInt(&count);
+			xfer->operator==(count);
 			for (UnsignedInt i = 0; i < count; ++i)
 			{
 				AsciiString first;
 				AsciiString second;
-				xfer->xferAsciiString(&first);
-				xfer->xferAsciiString(&second);
+				xfer->operator==(first);
+				xfer->operator==(second);
 				ObjectID id;
 				XferObjectID(xfer, &id);
 				ScriptKey key(first, second);
@@ -997,15 +973,15 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 			}
 			((Rva00206632 *)&m_values)->rva00206F42();
 			count = 0;
-			xfer->xferUnsignedInt(&count);
+			xfer->operator==(count);
 			for (UnsignedInt j = 0; j < count; ++j)
 			{
 				AsciiString first;
 				AsciiString second;
-				xfer->xferAsciiString(&first);
-				xfer->xferAsciiString(&second);
+				xfer->operator==(first);
+				xfer->operator==(second);
 				UnsignedInt value;
-				xfer->xferUnsignedInt(&value);
+				xfer->operator==(value);
 				ScriptKey key(first, second);
 				_STL::pair<ScriptDefaultIntMap::iterator, bool> result = m_values.insert(_STL::make_pair(key, 0));
 				result.first->second = value;
@@ -1014,24 +990,24 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		else if (xfer->IsStoring())
 		{
 			UnsignedInt count = m_objectIDs.size();
-			xfer->xferUnsignedInt(&count);
+			xfer->operator==(count);
 			for (ScriptDefaultIntMap::iterator it = m_objectIDs.begin(); it != m_objectIDs.end(); ++it)
 			{
 				ScriptKey key(it->first);
 				ObjectID id = (ObjectID)it->second;
-				xfer->xferAsciiString(&key.first);
-				xfer->xferAsciiString(&key.second);
+				xfer->operator==(key.first);
+				xfer->operator==(key.second);
 				XferObjectID(xfer, &id);
 			}
 			count = m_values.size();
-			xfer->xferUnsignedInt(&count);
+			xfer->operator==(count);
 			for (ScriptDefaultIntMap::iterator vit = m_values.begin(); vit != m_values.end(); ++vit)
 			{
 				ScriptKey key(vit->first);
 				UnsignedInt value = vit->second;
-				xfer->xferAsciiString(&key.first);
-				xfer->xferAsciiString(&key.second);
-				xfer->xferUnsignedInt(&value);
+				xfer->operator==(key.first);
+				xfer->operator==(key.second);
+				xfer->operator==(value);
 			}
 		}
 	}
@@ -1042,26 +1018,26 @@ void ScriptEngine::DoXfer(Xfer *xfer)
 		if (xfer->IsStoring())
 		{
 			UnsignedInt count = m_byteFlags.size();
-			xfer->xferUnsignedInt(&count);
+			xfer->operator==(count);
 			for (ScriptByteMap::iterator it = m_byteFlags.begin(); it != m_byteFlags.end(); ++it)
 			{
 				AsciiString name(it->first);
 				unsigned char value = it->second;
-				xfer->xferAsciiString(&name);
-				xfer->xferBool((Bool *)&value);
+				xfer->operator==(name);
+				xfer->operator==(*((Bool *)&value));
 			}
 		}
 		else if (xfer->IsLoading())
 		{
 			((Rva00206667 *)&m_byteFlags)->rva00206F6B();
 			UnsignedInt count = 0;
-			xfer->xferUnsignedInt(&count);
+			xfer->operator==(count);
 			while (count > 0)
 			{
 				AsciiString name;
 				unsigned char value = 0;
-				xfer->xferAsciiString(&name);
-				xfer->xferBool((Bool *)&value);
+				xfer->operator==(name);
+				xfer->operator==(*((Bool *)&value));
 				m_byteFlags.insert(_STL::make_pair(name, value));
 				--count;
 			}

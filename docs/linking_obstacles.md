@@ -316,6 +316,19 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-004: missing or incompatible shared providers and declarations
 
+- **ScriptEngine whole-source Xfer follow-up (2026-10-27, inspected `e43a9aad40`):**
+  [The retained adoption](../reverse/attempt_support/script-engine-xfer-header-20261027-codex5.md)
+  replaces ScriptEngineDoXfer.cpp's private Xfer with the canonical interface.
+  All 79 rows and four EH graphs pass; all 434 external COMDAT digests and
+  undefined references are identical before/after. The owning header tool
+  retires one queue row, and the ordinary preview preserves LINKS for 7,117
+  authored bytes against index `bf3dd31211`. SaveGameInfoCopyBFME2.cpp's
+  restored trial instead exposes abstract MD5/CRC writer views: their native
+  block, container-name and data-transfer overrides need reconciliation.
+  Its 53 rows and 2,435-byte preview pass again after restoration; its queue
+  entry and LINK-095 unwind prerequisites remain. Only the ScriptEngine
+  header prerequisite is cleared; no census or new linked-byte gain claimed.
+
 **Status: Open. Updated: 2026-10-27.**
 
 - **PlaceEventTranslator GameLogic member-count blocker (2026-10-27, base
