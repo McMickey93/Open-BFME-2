@@ -42221,7 +42221,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005507B0,24,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/BuddyResponseDequePushBackAux.cpp
 0x005507C8,31,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp
 0x005507E7,23,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/BuddyRequestDequePushBackAux.cpp
-0x005507FE,31,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_pod2148_allocator.cpp
+0x005507FE,31,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
 0x0055081D,23,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/BuddyResponseDequePushBackAux.cpp
 0x00550834,36,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_noexc_bodies.cpp
 0x00550858,36,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp
@@ -42230,11 +42230,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005508CE,20,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_o1.cpp
 0x005508E2,7,code,,displaced,-,S=Code/GameEngine/Source/GameLogic/Map/SidesList.cpp N=Code/GameEngine/Source/GameLogic/AI/BuildListInfo.cpp,Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp
 0x005508E9,7,code,Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp,approved,S,S=Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp N=Code/Libraries/Source/WWVegas/WW3D2/RigidDecalMeshClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp
-0x005508F0,20,code,,,-,,Code/GameEngine/Source/Common/S1PointerOrDefaultGetters.cpp
-0x00550904,20,code,,,-,,Code/GameEngine/Source/Common/S1PointerOrDefaultGetters.cpp
+0x005508F0,20,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
+0x00550904,20,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
 0x00550921,116,code-unledgered,,,-,,
-0x00550995,26,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/Rva00550995LockCleanup.cpp
-0x005509AF,35,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/Rva00550995LockCleanup.cpp
+0x00550995,26,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
+0x005509AF,35,code,,,-,,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
 0x005509D2,131,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_noexc_bodies.cpp
 0x00550A55,46,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp
 0x00550A83,131,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp
@@ -42273,8 +42273,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0055197E,5,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551983 noncontiguous,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
 0x00551983,5,code-unledgered,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551988 noncontiguous,
 0x00551988,126,code-unledgered,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551A06 noncontiguous,
-0x00551A06,21,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551A1B noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_queue_buddyrequest_ctor.cpp
-0x00551A1B,21,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551A30 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_queue_buddyresponse_ctor.cpp
+0x00551A06,21,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551A1B noncontiguous,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
+0x00551A1B,21,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551A30 noncontiguous,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
 0x00551A30,50,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551A62 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp
 0x00551A62,50,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,C,C=0x005513E9..0x00551A94 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp
 0x00551A94,110,code,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp,proposed,Z,Z=Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp S=Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp N=Code/GameEngine/Source/GameNetwork/GameSpy/Thread/GameSpyBuddyMessageQueue.cpp noncontiguous,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp

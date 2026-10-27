@@ -2712,7 +2712,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v02@Rva0053ED1A
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v03@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v04@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0054467AFinish.cpp	_theLogicRandomLogFile	1
-alternatename	Code/GameEngine/Source/Common/Rva0055133FDtor.cpp	??1Gen_uwm_00610480@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0055EFE1Ctor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/Common/Rva0055EFE1Ctor.cpp	_vtbl_00C1D2C0	1
 alternatename	Code/GameEngine/Source/Common/Rva0055F218Ctor.cpp	?g_00C1D1F4@@3QBQBXB	1
@@ -4354,6 +4353,7 @@ alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/LoadSavedIgnoreListRva0
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/PeerOperationsComplete.cpp	_piIsOperationFinished	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Rva00386374Copy.cpp	??1Gen_uw_00385371@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Rva00386374Dtor.cpp	??1GameSpyInfo@@UAE@XZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp	??1Gen_uwm_00610480@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	??0PeerRequest@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	??1PeerRequest@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	__imp__htonl	1
