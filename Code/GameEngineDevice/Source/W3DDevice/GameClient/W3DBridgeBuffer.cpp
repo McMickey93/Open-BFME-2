@@ -4,25 +4,12 @@
 #include "Code/Libraries/Include/Lib/Coord3D.h"
 #include "ascii_string.h"
 #define BRIDGE_FLOAT_AMT (0.25f)
-
-// ?getBridgeInfo@W3DBridge@@QAEXPAVRva0027C36A@@@Z, retail 0x000DDB94, 639 bytes.
-// Zero Hour's W3DBridge::getBridgeInfo (W3DBridgeBuffer.cpp): endpoints by
-// struct copy, width (maxY-minY)*scale, the normalized XY normal of end-start
-// and the four corner points. BFME 2 additions read off retail: the corner
-// products are spelled maxY*scale*N and scale*N*minY (target operand order),
-// a deck quad at +0x6C filled through an inline Coord3D set helper (fromLeft,
-// fromRight, toRight, toLeft) and two triangles of corner indices at +0x9C.
-// BridgeInfo keeps the ledger's view name Rva0027C36A (pinned spelling).
-//
-// W3DBridge::getBridgeInfo, Zero Hour's body. BFME 2's BridgeInfo (the
-// ledger's Rva0027C36A) also carries the deck quad at +0x6C (fromLeft,
-// fromRight, toRight, toLeft) and its two triangles' corner indices at +0x9C.
-
-class WWMath
-{
-public:
-	static float __fastcall Inv_Sqrt(float val);
-};
+typedef float Real;
+typedef unsigned char UnsignedByte;
+#include "../../../../../reference/shims/wwmath/Vector2.h"
+#include "../../../../Libraries/Include/Lib/Coord3D.h"
+#define TheGlobalLighting ((const BridgeLightingGlobals *)TheWritableGlobalData)
+#include "../../../../Libraries/Include/Lib/Region3D.h"
 
 class Vector3
 {
@@ -57,41 +44,9 @@ public:
 	__forceinline friend Vector3 operator + (const Vector3 &a, const Vector3 &b);
 };
 
-__forceinline Vector3 operator * (float k, const Vector3 &a)
-{
-	return Vector3((a.X * k),(a.Y * k),(a.Z * k));
-}
-
-__forceinline Vector3 operator + (const Vector3 &a,const Vector3 &b)
-{
-	return Vector3(
-		a.X+b.X,
-		a.Y+b.Y,
-		a.Z+b.Z
-	);
-}
-
 struct BridgeTriangle
 {
 	unsigned short corner[3];
-};
-
-// Zero Hour's BridgeInfo.
-class Rva0027C36A
-{
-public:
-	Rva0027C36A();
-	Coord3D from; // +0x00
-	Coord3D to; // +0x0C
-	float bridgeWidth; // +0x18
-	Coord3D fromLeft; // +0x1C
-	Coord3D fromRight; // +0x28
-	Coord3D toLeft; // +0x34
-	Coord3D toRight; // +0x40
-	int bridgeIndex; // +0x4C
-	char m_pad50[0x6C - 0x50];
-	Coord3D deck[4]; // +0x6C
-	BridgeTriangle triangle[2]; // +0x9C
 };
 
 // W3DBridge index copier; the 0x000DF11E caller passes this in ECX.
@@ -117,9 +72,13 @@ struct TriIndex { unsigned short I, J, K; };
 // second when byte +0xD7B6 is set or dword +0xC is zero. Clears +0xD7B5.
 
 class RenderObjClass;
+
 class MeshClass;
+
 class BaseHeightMapRenderObjClass;
+
 class Matrix3D;
+
 struct VertexFormatXYZNDUV1;
 
 template <class T> class RefMultiListIterator;
@@ -227,6 +186,7 @@ class Dict;
 typedef bool Bool;
 
 extern void BFME_DX8_Thread_Lock(void);
+
 extern void BFME_DX8_Thread_Assert(void);
 
 class BFMEDX8DeviceLock
@@ -312,62 +272,6 @@ public:
 	TextureClass *m_ptr;
 };
 
-class W3DBridge
-{
-public:
-	W3DBridge();
-	void getBridgeInfo(Rva0027C36A *pInfo);
-private:
-	Vector3 m_start;
-private:
-	Vector3 m_end;
-private:
-	float m_scale;
-private:
-	char m_pad1C[0x34 - 0x1C];
-	TextureRef m_bridgeTexture; // +0x34, verified destructor member
-private:
-	MeshClass *m_leftMesh;
-private:
-	char m_pad3C[0x6C - 0x3C];
-private:
-	float m_minY;
-private:
-	float m_maxY;
-private:
-	unsigned char m_pad74[0x7C - 0x74];
-private:
-	MeshClass *m_sectionMesh;
-private:
-	unsigned char m_pad80[0xB8 - 0x80];
-private:
-	MeshClass *m_rightMesh;
-private:
-	unsigned char m_padBC[0x104 - 0xBC];
-public:
-	bool m_visible;
-private:
-	unsigned char m_pad105[0x108 - 0x105];
-	AsciiString m_templateName; // +0x108, verified init donor
-	int m_curDamageState;
-	bool m_enabled;
-	unsigned char m_pad111[0x114 - 0x111];
-protected:
-	int getModelVertices(VertexFormatXYZNDUV1 *destination_vb, int curVertex, float xOffset,
-		Vector3 &vec, Vector3 &vecNormal, Vector3 &vecZ, Vector3 &offset,
-		const Matrix3D &mtx, MeshClass *pMesh, RefRenderObjListIterator *pLightsIterator);
-	friend void _bfmeW3DBridgeGetModelVerticesAnchor();
-	int getModelIndices(unsigned short *, int, int, MeshClass *);
-public:
-	~W3DBridge();
-public:
-	void clearBridge(void);
-public:
-	bool cullBridge(CameraClass *camera);
-public:
-	void init(Vector3 fromLoc, Vector3 toLoc, AsciiString name);
-};
-
 class BfmeRetBWF
 {
 public:
@@ -414,12 +318,6 @@ public:
 
 extern BfmeMapObjectListHolder *BfmeTheMapObjectListHolder;
 
-class BaseHeightMapRenderObjClass
-{
-public:
-	virtual void gap(char (*)[1]);
-};
-
 extern BaseHeightMapRenderObjClass *TheTerrainRenderObject;
 
 // TheTerrainRenderObject's height query, slot +0x244.
@@ -441,6 +339,142 @@ public:
 	virtual float getHeightMapHeight(float x, float y, void *normal); // +0x244
 };
 
+class Vector4
+{
+public:
+	Real X, Y, Z, W;
+	__forceinline Real &operator[](int i) { return (&X)[i]; }
+	__forceinline const Real &operator[](int i) const { return (&X)[i]; }
+};
+
+class Matrix3D
+{
+public:
+	__forceinline Vector4 &operator[](int i) { return Row[i]; }
+	__forceinline const Vector4 &operator[](int i) const { return Row[i]; }
+
+	static __forceinline void Transform_Vector(const Matrix3D &matrix3D, const Vector3 &in, Vector3 *out)
+	{
+		Vector3 tmp;
+		Vector3 *v;
+		if (out == &in) { tmp = in; v = &tmp; } else { v = (Vector3 *)&in; }
+		out->X = (matrix3D[0][0] * v->X + matrix3D[0][1] * v->Y + matrix3D[0][2] * v->Z + matrix3D[0][3]);
+		out->Y = (matrix3D[1][0] * v->X + matrix3D[1][1] * v->Y + matrix3D[1][2] * v->Z + matrix3D[1][3]);
+		out->Z = (matrix3D[2][0] * v->X + matrix3D[2][1] * v->Y + matrix3D[2][2] * v->Z + matrix3D[2][3]);
+	}
+	static __forceinline void Rotate_Vector(const Matrix3D &matrix3D, const Vector3 &in, Vector3 *out)
+	{
+		Vector3 tmp;
+		Vector3 *v;
+		if (out == &in) { tmp = in; v = &tmp; } else { v = (Vector3 *)&in; }
+		out->X = (matrix3D[0][0] * v->X + matrix3D[0][1] * v->Y + matrix3D[0][2] * v->Z);
+		out->Y = (matrix3D[1][0] * v->X + matrix3D[1][1] * v->Y + matrix3D[1][2] * v->Z);
+		out->Z = (matrix3D[2][0] * v->X + matrix3D[2][1] * v->Y + matrix3D[2][2] * v->Z);
+	}
+	Vector4 Row[3];
+};
+
+struct VertexFormatXYZDUV2
+{
+	Real x, y, z;
+	unsigned int diffuse;
+	Real u1, v1, u2, v2;
+};
+
+typedef VertexFormatXYZDUV2 VERTEX_FORMAT;
+
+struct VertexFormatXYZNDUV1
+{
+	Real x, y, z;
+	Real nx, ny, nz;
+	unsigned int diffuse;
+	Real u1, v1;
+};
+
+template <class ObjectType> class RefMultiListIterator;
+
+template <class T> class ShareBufferClass
+{
+public:
+	__forceinline T *Get_Array() { return Array; }
+private:
+	char m_pad00[0x0C];
+	T *Array;				// +0x0C
+};
+
+class MeshMatDescClass
+{
+public:
+	Vector2 *Get_UV_Array_By_Index(Int index, Bool create);
+};
+
+class MeshGeometryClass
+{
+public:
+	__forceinline Int Get_Vertex_Count() const { return VertexCount; }
+	__forceinline Vector3 *Get_Vertex_Array() { return Vertex->Get_Array(); }
+	const Vector3 *Get_Vertex_Normal_Array(Bool create);
+private:
+	char m_pad00[0x28];
+	Int VertexCount;			// +0x28
+	char m_pad2C[0x30 - 0x2C];
+	ShareBufferClass<Vector3> *Vertex;	// +0x30
+};
+
+class MeshModelClass : public MeshGeometryClass
+{
+public:
+	__declspec(dllimport) __forceinline const Vector2 *Get_UV_Array_By_Index(Int index) { return CurMatDesc->Get_UV_Array_By_Index(index, false); }
+private:
+	char m_pad34[0x94 - 0x34];
+	MeshMatDescClass *CurMatDesc;		// +0x94
+};
+
+class GlobalData;
+
+extern GlobalData *TheWritableGlobalData;
+
+struct BridgeLightingGlobals
+{
+	char m_pad000[0x920];
+	Coord3D m_terrainLightPos[3];		// +0x920
+	char m_pad944[0x988 - 0x944];
+	Int m_numGlobalLights;			// +0x988
+};
+
+class BaseHeightMapRenderObjClass
+{
+public:
+	virtual void gap(char (*)[1]);
+public:
+	void doTheLight(VERTEX_FORMAT *vb, Vector3 *light, Vector3 *normal, RefRenderObjListIterator *pLightsIterator, UnsignedByte alpha, Bool skipFirstLight);
+};
+
+class Rva0027C36ASix
+{
+public:
+	Rva0027C36ASix();
+	char m_d[6];
+};
+
+// Zero Hour's BridgeInfo.
+class Rva0027C36A
+{
+public:
+	Rva0027C36A();
+	Coord3D from; // +0x00
+	Coord3D to; // +0x0C
+	float bridgeWidth; // +0x18
+	Coord3D fromLeft; // +0x1C
+	Coord3D fromRight; // +0x28
+	Coord3D toLeft; // +0x34
+	Coord3D toRight; // +0x40
+	int bridgeIndex; // +0x4C
+	char m_pad50[0x6C - 0x50];
+	Coord3D deck[4]; // +0x6C
+	BridgeTriangle triangle[2]; // +0x9C
+};
+
 class W3DTerrainLogic
 {
 public:
@@ -452,6 +486,77 @@ public:
 	G(2F) G(30)
 #undef G
 	virtual void updateBridgeDamageStates(void); // +0xC4
+};
+
+enum BodyDamageType
+{
+	BODY_PRISTINE
+};
+
+class W3DBridge
+{
+public:
+	W3DBridge();
+public:
+	void getBridgeInfo(Rva0027C36A *pInfo);
+private:
+	Vector3 m_start;
+private:
+	Vector3 m_end;
+private:
+	float m_scale;
+private:
+	char m_pad1C[0x34 - 0x1C];
+private:
+	TextureRef m_bridgeTexture;
+private:
+	MeshClass *m_leftMesh;
+private:
+	char m_pad3C[0x6C - 0x3C];
+private:
+	float m_minY;
+private:
+	float m_maxY;
+private:
+	unsigned char m_pad74[0x7C - 0x74];
+private:
+	MeshClass *m_sectionMesh;
+private:
+	unsigned char m_pad80[0xB8 - 0x80];
+private:
+	MeshClass *m_rightMesh;
+private:
+	unsigned char m_padBC[0x104 - 0xBC];
+public:
+	bool m_visible;
+private:
+	unsigned char m_pad105[0x108 - 0x105];
+private:
+	AsciiString m_templateName;
+private:
+	int m_curDamageState;
+private:
+	bool m_enabled;
+private:
+	unsigned char m_pad111[0x114 - 0x111];
+protected:
+	int getModelVertices(VertexFormatXYZNDUV1 *destination_vb, int curVertex, float xOffset,
+		Vector3 &vec, Vector3 &vecNormal, Vector3 &vecZ, Vector3 &offset,
+		const Matrix3D &mtx, MeshClass *pMesh, RefRenderObjListIterator *pLightsIterator);
+protected:
+	friend void _bfmeW3DBridgeGetModelVerticesAnchor();
+protected:
+	int getModelIndices(unsigned short *, int, int, MeshClass *);
+public:
+	~W3DBridge();
+public:
+	void clearBridge(void);
+public:
+	bool cullBridge(CameraClass *camera);
+public:
+	void init(Vector3 fromLoc, Vector3 toLoc, AsciiString name);
+public:
+	bool load(BodyDamageType curDamageState);
 };
 
 class W3DBridgeBuffer
@@ -491,6 +596,22 @@ public:
 public:
 	void clearAllBridges(void);
 };
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBuffer.cpp
+
+__forceinline Vector3 operator * (float k, const Vector3 &a)
+{
+	return Vector3((a.X * k),(a.Y * k),(a.Z * k));
+}
+
+__forceinline Vector3 operator + (const Vector3 &a,const Vector3 &b)
+{
+	return Vector3(
+		a.X+b.X,
+		a.Y+b.Y,
+		a.Z+b.Z
+	);
+}
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBuffer.cpp
 
@@ -703,16 +824,6 @@ void W3DBridgeBuffer::allocateBridgeBuffers()
 	m_curNumBridgeIndices = 0;
 }
 
-// tu-skeleton: 0x000DD97F 239B ??0W3DBridge@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x000DDA6E 73B ??1W3DBridge@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeDestructor.cpp (not merged yet)
-
-// tu-skeleton: 0x000DDAB7 96B ?renderBridge@W3DBridge@@QAEXPAVRenderingMethod@FXShader@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
-
-// tu-skeleton: 0x000DDE13 1179B ?getModelVertices@W3DBridge@@IAEHPAUVertexFormatXYZNDUV1@@HMAAVVector3@@111ABVMatrix3D@@PAVMeshClass@@PAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeGetModelVertices.cpp (not merged yet)
-
-// tu-skeleton: 0x000DE2AE 573B ?getModelVerticesFixed@W3DBridge@@IAEHPAUVertexFormatXYZNDUV1@@HABVMatrix3D@@PAVMeshClass@@PAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeGetModelVerticesFixed.cpp (not merged yet)
-
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferCtor.cpp
 
 W3DBridgeBuffer::W3DBridgeBuffer()
@@ -727,20 +838,6 @@ W3DBridgeBuffer::W3DBridgeBuffer()
 	allocateBridgeBuffers();
 	m_initialized = true;
 }
-
-// tu-skeleton: 0x000DE59C 27B ?rva000DE59C@Rva000DE59C@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp (not merged yet)
-
-// tu-skeleton: 0x000DE5B7 27B ?rva000DE5B7@Rva000DE5B7@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp (not merged yet)
-
-// tu-skeleton: 0x000DE648 2774B ?load@W3DBridge@@QAE_NW4BodyDamageType@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeLoad.cpp (not merged yet)
-
-// tu-skeleton: 0x000DF11E 1038B ?getIndicesNVertices@W3DBridge@@QAEXPAGPAUVertexFormatXYZNDUV1@@PAH2PAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeGetModelVerticesFixed.cpp (not merged yet)
-
-// tu-skeleton: 0x000DF52C 230B ?loadBridgesInVertexAndIndexBuffers@W3DBridgeBuffer@@QAEXPAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferLoadBridgesInVertexAndIndexBuffers.cpp (not merged yet)
-
-// tu-skeleton: 0x000DF612 307B ?addBridge@W3DBridgeBuffer@@QAEXVVector3@@0VAsciiString@@PAVW3DTerrainLogic@@PAVDict@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferAddBridge.cpp (not merged yet)
-
-// tu-skeleton: 0x000DF776 966B ?drawBridges@W3DBridgeBuffer@@QAEXAAVRenderInfoClass@@V?$RefCountPtr@VRenderingMethod@FXShader@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferLoadBridges.cpp
 
@@ -783,3 +880,171 @@ void W3DBridgeBuffer::loadBridges(W3DTerrainLogic *pTerrainLogic, bool saveGame)
 	if (pTerrainLogic)
 		pTerrainLogic->updateBridgeDamageStates();
 }
+
+// tu-skeleton: 0x000DD97F 239B ??0W3DBridge@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeCtor.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeDestructor.cpp
+
+// upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/AsciiString.h
+
+W3DBridge::~W3DBridge(void)
+{
+	clearBridge();
+}
+
+// tu-skeleton: 0x000DDAB7 96B ?renderBridge@W3DBridge@@QAEXPAVRenderingMethod@FXShader@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeGetModelVertices.cpp
+
+// The fixed-bridge unit needs its donor body visible for caller codegen.
+// Keep this retail provider inline so its out-of-line copy can fold; MSVC
+// 7.1 makes an inline function with __declspec(noinline) NODUPLICATES.
+inline Int W3DBridge::getModelVertices(VertexFormatXYZNDUV1 *destination_vb, Int curVertex, Real xOffset,
+																Vector3 &vec, Vector3 &vecNormal, Vector3 &vecZ, Vector3 &offset,
+																const Matrix3D &mtx,
+																MeshClass *pMesh, RefRenderObjListIterator *pLightsIterator)
+{
+	if (pMesh == 0)
+		return(0);
+
+	Int i;
+	MeshModelClass *model = pMesh->bridgeModel();
+	Int numVertex = model->Get_Vertex_Count();
+	Vector3 *pVert = model->Get_Vertex_Array();
+	const Vector3 *pNormal = model->Get_Vertex_Normal_Array(false);
+
+	// If we happen to have too many bridges, stop.
+	if (curVertex + numVertex + 2 >= 8000) {
+		return(0);
+	}
+
+	Vector3 lightRay[3];
+	const Coord3D *lightPos;
+
+	for (Int lightIndex = 0; lightIndex < TheGlobalLighting->m_numGlobalLights; lightIndex++)
+	{
+		lightPos = &TheGlobalLighting->m_terrainLightPos[lightIndex];
+		lightRay[lightIndex].Set(-lightPos->x, -lightPos->y, -lightPos->z);
+		lightRay[lightIndex].Normalize();
+	}
+
+	const Vector2 *uvs = pMesh->bridgeModel()->Get_UV_Array_By_Index(0);
+	VertexFormatXYZNDUV1 *curVb = destination_vb + curVertex;
+
+	for (i = 0; i < numVertex; i++) {
+		curVb->u1 = uvs[i].U;
+		curVb->v1 = uvs[i].V;
+
+		Vector3 vLoc;
+		Vector3 vertex;
+		Matrix3D::Transform_Vector(mtx, pVert[i], &vertex);
+		vLoc = (vertex.X + xOffset) * vec + vertex.Y * vecNormal + vertex.Z * vecZ;
+
+		vLoc.X += m_start.X;
+		vLoc.Y += m_start.Y;
+		vLoc.Z += m_start.Z;
+
+		curVb->x = vLoc.X;
+		curVb->y = vLoc.Y;
+		curVb->z = vLoc.Z;
+
+		VERTEX_FORMAT vb;
+		vb.x = vLoc.X;
+		vb.y = vLoc.Y;
+		vb.z = vLoc.Z;
+
+		Vector3 normal;
+		Matrix3D::Rotate_Vector(mtx, pNormal[i], &normal);
+		// The three named locals are load-bearing: they move cl's tie-break for
+		// the inlined Transform_Vector / Rotate_Vector sums to retail's.
+		Real nx = normal.X;
+		Real ny = normal.Y;
+		Real nz = normal.Z;
+		curVb->nx = nx;
+		curVb->ny = ny;
+		curVb->nz = nz;
+		curVb->diffuse = 0xFF000000;
+		normal = normal.X * vec + normal.Y * vecNormal + normal.Z * vecZ;
+		normal.Normalize();
+		TheTerrainRenderObject->doTheLight(&vb, lightRay, &normal, 0, 1, true);
+		curVb->diffuse = vb.diffuse | 0xFF000000;
+		curVb++;
+	}
+	return(numVertex);
+}
+
+// Emits the select-any body above; not retail code.
+// ?_bfmeW3DBridgeGetModelVerticesAnchor@@YAXXZ absent-from-retail
+void _bfmeW3DBridgeGetModelVerticesAnchor()
+{
+	((W3DBridge *)0)->getModelVertices(0, 0, 0.0f, *(Vector3 *)0, *(Vector3 *)0, *(Vector3 *)0,
+		*(Vector3 *)0, *(const Matrix3D *)0, 0, 0);
+}
+
+// tu-skeleton: 0x000DE2AE 573B ?getModelVerticesFixed@W3DBridge@@IAEHPAUVertexFormatXYZNDUV1@@HABVMatrix3D@@PAVMeshClass@@PAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeGetModelVerticesFixed.cpp (not merged yet)
+
+// tu-skeleton: 0x000DE59C 27B ?rva000DE59C@Rva000DE59C@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp (not merged yet)
+
+// tu-skeleton: 0x000DE5B7 27B ?rva000DE5B7@Rva000DE5B7@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp (not merged yet)
+
+// tu-skeleton: 0x000DE648 2774B ?load@W3DBridge@@QAE_NW4BodyDamageType@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeLoad.cpp (not merged yet)
+
+// tu-skeleton: 0x000DF11E 1038B ?getIndicesNVertices@W3DBridge@@QAEXPAGPAUVertexFormatXYZNDUV1@@PAH2PAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeGetModelVerticesFixed.cpp (not merged yet)
+
+// tu-skeleton: 0x000DF52C 230B ?loadBridgesInVertexAndIndexBuffers@W3DBridgeBuffer@@QAEXPAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferLoadBridgesInVertexAndIndexBuffers.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferAddBridge.cpp
+
+//
+// W3DBridgeBuffer::addBridge, Zero Hour's body. BFME 2's terrain logic takes
+// the bridge template name by reference (retail pushes &name to its slot at
+// +0xB8). BridgeInfo is the ledger's Rva0027C36A (0xA8 bytes, bridgeIndex at
+// +0x4C); bridges are 0x114 bytes from +0x10 with the count at +0xD7B0.
+
+// ?addBridge@W3DBridgeBuffer@@QAEXVVector3@@0VAsciiString@@PAVW3DTerrainLogic@@PAVDict@@@Z @0x000DF612
+void W3DBridgeBuffer::addBridge(Vector3 fromLeft, Vector3 fromRight, AsciiString name, W3DTerrainLogic *pTerrainLogic, Dict *props)
+{
+	if (m_numBridges >= MAX_BRIDGES) {
+		return;
+	}
+	if (!m_initialized) {
+		return;
+	}
+	m_bridges[m_numBridges].init(fromLeft, fromRight, name);
+	if (m_bridges[m_numBridges].load(BODY_PRISTINE)) {
+		W3DBridge *pBridge = &m_bridges[m_numBridges];
+		if (pTerrainLogic) {
+			Rva0027C36A info;
+			pBridge->getBridgeInfo(&info);
+			info.bridgeIndex = m_numBridges;
+			pTerrainLogic->addBridgeToLogic(&info, props, name);
+		}
+		m_numBridges++;
+	}
+}
+
+// tu-skeleton: 0x000DF776 966B ?drawBridges@W3DBridgeBuffer@@QAEXAAVRenderInfoClass@@V?$RefCountPtr@VRenderingMethod@FXShader@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
+
+// tu-skeleton: 0x00762E2C 11B $L1249 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00762E37 10B __ehhandler$??0W3DBridge@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00762E9C 8B $L1941 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeLoad.cpp (not merged yet)
+
+// tu-skeleton: 0x00762EA4 10B __ehhandler$?load@W3DBridge@@QAE_NW4BodyDamageType@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeLoad.cpp (not merged yet)
+
+// tu-skeleton: 0x00762EAE 8B uw_00762eae -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferLoadBridgesInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x00762EB6 8B Unwind@00b62eb6 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferLoadBridgesInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x00762EBE 8B Unwind@00b62ebe -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferLoadBridgesInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x00762EC6 10B __ehhandler$?loadBridgesInVertexAndIndexBuffers@W3DBridgeBuffer@@QAEXPAV?$RefMultiListIterator@VRenderObjClass@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferLoadBridgesInVertexAndIndexBuffers.cpp (not merged yet)
+
+// tu-skeleton: 0x00762ED0 8B Unwind@00b62ed0 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
+
+// tu-skeleton: 0x00762ED8 8B Unwind@00b62ed8 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
+
+// tu-skeleton: 0x00762EE0 8B Unwind@00b62ee0 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
+
+// tu-skeleton: 0x00762EE8 10B __ehhandler$?drawBridges@W3DBridgeBuffer@@QAEXAAVRenderInfoClass@@V?$RefCountPtr@VRenderingMethod@FXShader@@@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeBufferDrawBridges.cpp (not merged yet)
