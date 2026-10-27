@@ -202,7 +202,7 @@ private:
 	DLNodeClass<T> *tail;
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 static DLListClass<SortingNodeStruct> clean_list;
 
