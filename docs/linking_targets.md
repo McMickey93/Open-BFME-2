@@ -332,7 +332,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/Rva00415704Ctor.cpp` | 100 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/stlport_introsort_loop_s4sortelem20.cpp` | 98 | 3 (U=3) | Repair landed / awaiting census (2026-10-26, 797d6cd0f5): placeholder tail ctor/dtor/set replaced by the rowed vector<Rva00332217Record>::operator= (0x332217) and out-of-line element ctor/dtor; link_check LINKS 0 -> 90 B against index d1f046749a, all 8 S4SortElem20 units checked, none drops |
 | `Code/GameEngine/Source/Common/System/SaveGame/Rva0052CD81Finish.cpp` | 96 | 4 (C=2, S=2) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_istream.cpp` | 90 | 3 (U=1, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_istream.cpp` | 90 | 3 (U=1, C=1, S=1) | 2026-10-27 at `a89d0627df`: five rows exact; paired current-provider preview retains U1/L1/S1 while the actual construction worker LINKS (241 B). Existing wrapper-identity prerequisite remains; LINK-058. No source change or census gain. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003F40EF.cpp` | 85 | 5 (U=5) | 2026-10-27 at `97c23353111e`: U5 to U3; narrowed to swap; ArmySummary rename needed (LINK-083) |
 | `Code/GameEngine/Source/Common/ConstIntGettersAddr.cpp` | 84 | 1042 (A=1042) | Open |
 | `Code/GameEngine/Source/Common/BfmeConv1879.cpp` | 82 | 5 (U=5) | Cleared (LINK-022, link_check 82B) |

@@ -3812,6 +3812,15 @@ Remaining / next check: recover the construction wrapper's real template/type sp
 Clearance: pending.
 Census confirmation: not claimed.
 
+Current-input recheck (2026-10-27, `a89d0627df`, index `bf3dd31211`):
+normal `./build.sh stlport_narrow_istream.cpp` passes all five rows. Paired
+ordinary `link_check.py` with Rva006BE840Construction.cpp preserves the same
+U1/L1/S1 blockers in the istream unit and LINKS for the 241-byte construction
+provider. No source trial was repeated. The picker now has a unit-level blocked
+verdict at 0x00007120 so this existing identity prerequisite is visible before
+serving the unit again. Wrapper identity reconciliation remains the next step;
+no new census result or missing retail body is claimed.
+
 ### LINK-065: Zero Hour port units still define ZH bodies that BFME 2 rows elsewhere or lacks
 
 **Status: Repair landed / awaiting census (DamageFX.cpp). Updated: 2026-10-26; inspected revision: 6533919013.**
