@@ -9,7 +9,6 @@
 // non-retail inline helper COMDAT copies do not cost that unit its link. Address-derived name.
 #define _STLP_NO_EXCEPTIONS 1
 #include <vector>
-extern "C" double __cdecl fabs(double);
 // math.h's float sqrt/sqrtf overloads take wwmath.cpp's dllimport forceinline form, so the
 // visible length body below calls _sqrt as retail's 0x00003571 does and no _sqrtf copy is
 // emitted.

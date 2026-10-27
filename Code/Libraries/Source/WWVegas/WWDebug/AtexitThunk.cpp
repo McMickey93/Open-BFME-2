@@ -5,11 +5,9 @@
 // 0 or -1. The neg/sbb/neg/dec tail is how MSVC 7.1 materialises that ternary
 // without a branch.
 
-typedef void (__cdecl *_PVFV)(void);
-typedef int (__cdecl *_onexit_t)(void);
+#include <stdlib.h>
 
-extern "C" _onexit_t __cdecl _onexit(_onexit_t func);
-extern "C" int __cdecl atexit(_PVFV func);
+typedef void (__cdecl *_PVFV)(void);
 
 extern "C" int __cdecl atexit(_PVFV func)
 {

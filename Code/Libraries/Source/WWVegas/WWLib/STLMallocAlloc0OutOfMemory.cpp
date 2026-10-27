@@ -1,9 +1,8 @@
 // cl: /DNDEBUG /MD /EHsc /Od
 // STLport's unoptimized allocation helpers retain stack locals in retail.
 
-extern "C" __declspec(dllimport) void *__cdecl malloc(unsigned int);
-extern "C" __declspec(dllimport) int __cdecl puts(const char *);
-extern "C" __declspec(dllimport) __declspec(noreturn) void __cdecl exit(int);
+#include <stdlib.h>
+#include <stdio.h>
 
 namespace _STL
 {

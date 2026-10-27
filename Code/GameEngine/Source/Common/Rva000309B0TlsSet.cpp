@@ -1,15 +1,16 @@
 // cl: /GX-
+// platformsdk
 // ??1Rva000309B0@@QAE@XZ @ 0x000309B0 21B
 // TLS heap-id setter: if the TLS index at 0x00DB35A4 is not -1, stores this
 // object's +0x00 pointer into that TLS slot via TlsSetValue. Evidence: IAT
 // TlsSetValue at 0x00BBA198, TLS index 0x00DB35A4 holding the calling
 // thread's heap id, callers at 0x0062265B 0x0062214F load ecx then call.
 // Honest address-derived name: owner unproven. No STL.
+#include <windows.h>
+
 // MemoryPool::g_heapTlsIndex: the TLS slot index at VA 0xdb35a4 (retail .data initial value 0xffffffffu),
 // set by MemoryPool init via TlsAlloc; the name is retail's own namespace MemoryPool spelling.
 namespace MemoryPool { unsigned long g_heapTlsIndex = 0xffffffffu; }
-extern "C" __declspec(dllimport) int __stdcall TlsSetValue(unsigned long index, void *value);
-extern "C" __declspec(dllimport) void *__stdcall TlsGetValue(unsigned long index);
 
 class Rva000309B0
 {

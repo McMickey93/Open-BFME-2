@@ -7,6 +7,9 @@
 // array-delete helper. Its Ghidra body has no source row, so the member call
 // uses an address pin for that helper.
 
+#include <math.h>
+#include <new>
+
 struct RectCOI;
 struct ShroudManagerImpl008FBA40ElementLayout
 {
@@ -23,7 +26,6 @@ struct RectCOI
 };
 float Cos(float angle);
 float Sin(float angle);
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
 // Native REAL_TO_INT uses FISTP with the current x87 rounding control;
 // reuse the verified manager conversion helper rather than a truncating C++ cast.
 __forceinline int rectInteger(float value)
@@ -182,7 +184,6 @@ BfmeThingCDE::BfmeThingCDE(void *what, void *owner, void *head)
 #pragma comment(linker, "/alternatename:?ArrayDeleteHelperBodyThunk@@YGXPAXII0@Z=??_M@YGXPAXIHP6EX0@Z@Z")
 
 void __stdcall ArrayDeleteHelperBodyThunk(void *, unsigned, unsigned, void *);
-extern void __cdecl operator delete[](void *);
 // Retail's empty array-element destructor: the shared 1-byte RET at 0x0069E440,
 // rowed as ?DX8_Assert@@YAXXZ (dx8wrapper.cpp). Referencing it by name emits
 // the same push-imm32 through a DIR32 relocation instead of the hard-coded

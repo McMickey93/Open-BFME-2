@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // ?Rva00289C24Parse@@YAXPAVINI@@PAX1PBX@Z, retail 0x00289C24 (199B): the
 // LevelUpFx FieldParse proc (row 0x00BFBB10). Expects the token "FX"
@@ -7,9 +8,9 @@
 // the entry to the vector at instance + 0x3C (rowed push_back 0x002898AC).
 // Separators come from the INI's +0x420 field. Name address-derived.
 
+#include <windows.h>
+#include <string.h>
 #include "ascii_string.h"
-
-#define NULL 0
 
 class FXList;
 
@@ -34,8 +35,6 @@ public:
 	INIException(const INIException &other);
 	~INIException();
 };
-
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 struct Rva002898ACElement
 {

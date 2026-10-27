@@ -1,12 +1,11 @@
+// platformsdk
 // A handle closed and cleared (trimmed from a three-body donor; the other
 // two are declared-only here).
 //
 // The donor names the import bfmeCloseDWE, but the body reaches the real
 // DeleteObject, so the declaration names the real import.
 
-typedef void *HGDIOBJ;
-
-extern "C" __declspec(dllimport) int __stdcall DeleteObject(HGDIOBJ object);
+#include <windows.h>
 
 struct BfmeThingDWE
 {

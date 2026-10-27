@@ -4,10 +4,9 @@
 // shape; owning classes are not recovered unless named, so each keeps an
 // address-derived name and a view of only the members it touches. Callees and
 // globals use the ledger's existing spellings.
+#include <ctype.h>
+#include <stdlib.h>
 #include "ascii_string.h"
-
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 
 // --- 0x0056FAC4 / 0x0056FAD6 / 0x0056FAE8 / 0x0056FAF9: forward one value
 // as both arguments of the rowed hooks (the third from a short).

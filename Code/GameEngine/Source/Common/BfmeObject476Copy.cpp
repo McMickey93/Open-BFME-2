@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE2 /D_STLP_USE_MALLOC /MD /EHsc /Ireference/shims/bfme2_ascii /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // Reference shape: ZH PlayerTemplate's automatic member copy, reconciled
 // against target1FE352/957 and PlayerTemplate store/vector476-byte callers.
@@ -14,6 +15,8 @@
 #include <hash_map>
 #include "../../../Libraries/Include/Lib/Coord3D.h"
 #include <vector>
+#include <windows.h>
+#include <string.h>
 
 // map/set<unsigned> internals otherwise instantiate the less<unsigned>::operator()
 // COMDAT (one byte shape per TU flags); a declaration-only specialization
@@ -158,7 +161,6 @@ extern BitFlags<116> KINDOFMASK_NONE;
 struct Rva003623E5Member {void initFromStorages(BfmeFixedStorage0004543D,BfmeFixedStorage0004543D);};
 struct Rva00360D26Member {Rva00360D26Member();~Rva00360D26Member();unsigned word;};
 void __cdecl Rva00030830GameFree(void *);
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
 class OpaqueRefCounted {public:virtual ~OpaqueRefCounted();void Release_Ref();long refs;};
 struct Rva0010F149Handle {
  __forceinline Rva0010F149Handle():referent(0){}
@@ -250,7 +252,6 @@ void S3Money::loadPostProcess() {}
 const char *S3Money::GetSnapshotName() const {return "Money";}
 void S3Money::xfer(Xfer *xfer) {xfer->Version1();*xfer == *(unsigned int*)&words[0];}
 
-extern "C" void * __cdecl memset(void*,int,unsigned);
 BfmeObject476::BfmeObject476():unknown10(0),unknown148(0),unknown150(false),unknown151(false),unknown1bc(false) {
 unknown18="";unknown44="";unknown138="";unknown13c="";unknown140="";unknown144="";unknown14c="";
 unknown38.x=unknown38.y=unknown38.z=0;

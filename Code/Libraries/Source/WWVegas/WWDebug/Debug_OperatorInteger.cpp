@@ -14,9 +14,8 @@
 // char *) at slot 0x38.
 
 
-extern "C" unsigned int strlen(const char *text);
-extern "C" __declspec(dllimport) char *__cdecl _itoa(int value, char *buffer, int radix);
-extern "C" __declspec(dllimport) char *__cdecl _ultoa(unsigned long value, char *buffer, int radix);
+#include <stdlib.h>
+#include <string.h>
 
 class Debug
 {

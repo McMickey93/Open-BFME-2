@@ -1,8 +1,7 @@
 // cl: /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /DBFME_STLP_NODE_ALLOC /D_STLP_NO_EXCEPTIONS /Ireference/shims/stlp_nodealloc
 // ?rva00739BE0@Rva00739BE0@@QAEXPAUPair00739BE0@@MH@Z @0x00739BE0 179B
 // Evidence: world-to-cell via ceil then 2x floor with Gen originX@+4 originY@+8 scale@+0x20 and rowed Gen wrapper shape; callers at 0x00357955 0x003BB942 pass (ptr float mask) with this=TheShroudManager PartitionManager; callee pinned 0x0073CCC0 ShroudManagerImpl; siblings 0x00739AF0 0x00739CA0 same Gen layout.
-extern "C" __declspec(dllimport) double __cdecl floor(double);
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
+#include <math.h>
 
 static __forceinline float fast_floor(float f)
 {

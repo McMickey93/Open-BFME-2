@@ -1,6 +1,9 @@
 // Four more small ones (trimmed to the placed push body; the other three are
 // declared-only here).
 
+// platformsdk
+#include <windows.h>
+
 class Gen_0015A260
 {
 public:
@@ -83,13 +86,6 @@ unsigned int __cdecl rva00306B85(unsigned int bits)
     return bits & 0xff;
 }
 #pragma optimize("", on)
-
-// The shipped VS2003 WinBase.h declares VOID WINAPI LeaveCriticalSection
-// (LPCRITICAL_SECTION). This opaque tag preserves that actual import ABI
-// without claiming any CRITICAL_SECTION fields or receiver lifetime.
-struct _RTL_CRITICAL_SECTION;
-extern "C" __declspec(dllimport) void __stdcall
-LeaveCriticalSection(_RTL_CRITICAL_SECTION *section);
 
 // Three whole BFME1 donor units at5cc75ddda6455c338a5068307e587a793f96d6b3
 // place their differently named cleanup members at native Ghidra1DBA9B/9:

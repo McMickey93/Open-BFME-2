@@ -6,6 +6,7 @@
 #include <map>
 #include <set>
 #include <string.h>
+#include <new>
 #include "ascii_string.h"
 // bfme link decl-only begin
 namespace _STL { template <> _Rb_tree_base<pair<int const, void *>, allocator<pair<int const, void *> > >::_Rb_tree_base(allocator<pair<int const, void *> > const &); }
@@ -182,8 +183,6 @@ __declspec(noinline) inline ConnectionManager::ConnectionManager()
 		m_120a0[i] = 1;
 	}
 }
-
-void __cdecl operator delete(void *p);
 
 void ConnectionManager::init()
 {

@@ -1,4 +1,5 @@
 // cl: /GX- /DNDEBUG /MD
+// platformsdk
 //
 // More thin FieldParse procs (original names unproven; address names):
 //   0x004DC674 34B ModelConditions / ModelConditionsClear (0x00C61480 /
@@ -14,7 +15,8 @@
 //       ctor 0x002004A5; no unwinding), fills it from table 0x00BE2AA0 and
 //       hands it to the rowed guarded list push 0x002007A7.
 
-#define NULL 0
+#include <windows.h>
+#include <new>
 
 typedef void (*FieldParseProc)(class INI *, void *, void *, const void *);
 struct FieldParse { const char *token; FieldParseProc parse; const void *userData; int offset; };
@@ -98,8 +100,6 @@ class Gen_00581350
 public:
 	void m(void *line);
 };
-
-void *__cdecl operator new(unsigned int size);
 
 // ?Rva004DC674Parse@@YAXPAVINI@@PAX1PBX@Z
 void Rva004DC674Parse(INI *ini, void *, void *store, const void *)

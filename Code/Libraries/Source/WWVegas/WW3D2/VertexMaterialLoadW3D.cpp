@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?Load_W3D@VertexMaterialClass@@QAE_NAAVChunkLoadClass@@@Z,
 // retail 0x0013E8B0 (274 bytes).
@@ -16,12 +17,8 @@
 // Parse callees resolve via harvested pins; new[]/delete[]/String-assign
 // via matched rows.
 
-#ifndef NULL
-#define NULL 0
-#endif
-
-void *operator new[](unsigned int size);
-void operator delete[](void *ptr);
+#include <new>
+#include <windows.h>
 
 class ChunkLoadClass
 {

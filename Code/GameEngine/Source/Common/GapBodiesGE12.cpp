@@ -5,8 +5,8 @@
 // of only the members it touches. Callees and globals use the ledger's
 // existing spellings.
 
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
+#include <ctype.h>
+#include <stdlib.h>
 
 // --- 0x0030BE5D (57B): a non-zero 2D offset goes to the +0x68 strip (rowed
 // QuadStrip2D 0x005382F4), then virtual slot 10.

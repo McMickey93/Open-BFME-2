@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /DNDEBUG
+// platformsdk
 // Small heap-allocator bodies from .text gaps no Ghidra function covers
 // (twenty-third batch; see GapBodiesGE01.cpp), all inside the run of
 // memory_pool.cpp's EA::Allocator::GeneralAllocator rows (0x00030D10..
@@ -10,8 +11,7 @@
 // heap's own member names are not recovered, so each body keeps an
 // address-derived name and the view below holds only the members they touch.
 
-extern "C" __declspec(dllimport) void *__stdcall VirtualAlloc(void *address, unsigned long size, unsigned long type, unsigned long protect);
-extern "C" __declspec(dllimport) int __stdcall VirtualFree(void *address, unsigned long size, unsigned long type);
+#include <windows.h>
 
 struct GapChunk
 {

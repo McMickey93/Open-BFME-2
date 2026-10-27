@@ -11,7 +11,7 @@
 // stlport
 #define _STLP_NO_EXCEPTIONS 1
 #include <vector>
-extern "C" double __cdecl fabs(double);
+#include <math.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 struct SplineRecord {float duration;float steps[10];Coord3D samples[10];Coord3D point;unsigned tail[2];};
 struct SplineState {char pad[0x18];float time,segmentBegin;unsigned segment;bool enabled;char pad25[7];_STL::vector<SplineRecord> records;unsigned pad38;float sampleBegin;int sample;unsigned pad44;Coord3D result;};
