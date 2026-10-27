@@ -57,7 +57,7 @@ template<> TreeHintPayload00217DE3 &TreeHintMap00217DE3::operator[](const AsciiS
 }
 struct BfmeVectorRecord00319C84;
 template _STL::_Vector_base<BfmeVectorRecord00319C84, _STL::allocator<BfmeVectorRecord00319C84> >::_Vector_base(const _STL::allocator<BfmeVectorRecord00319C84> &);
-void *operator new(unsigned int);
+#include <new>
 class Rva00218C2B {
 public:
 	int rva00218C2B(const AsciiString &key);
