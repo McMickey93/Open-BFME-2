@@ -23,7 +23,7 @@ template <> __declspec(dllimport) __forceinline
 void vector<void *>::clear() { erase(begin(), end()); }
 }
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct Rva0041E7F2Deleter
 {

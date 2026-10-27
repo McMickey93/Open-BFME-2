@@ -4,7 +4,7 @@
 // whose existing provider is donor-named XferSave; original derived name unknown.
 // The pointer at+54 is scalar-deleted before the native tail jump into base.
 // Base storage extent0x40 follows its matched destructor view; gap40..54 opaque.
-void __cdecl operator delete(void *) throw();
+#include <new>
 class XferSave {
 public: virtual ~XferSave() throw();
 private: char storage[0x40-4];
