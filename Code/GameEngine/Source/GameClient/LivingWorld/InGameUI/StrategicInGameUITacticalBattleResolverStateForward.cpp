@@ -13,7 +13,8 @@ class Rva005D1035{public:Rva005D1035(void*p):owner(p){}virtual ~Rva005D1035(){}v
 class StrategicVeterancy{public:bool Show();};
 class Rva005D10F9:public Rva005D1035{public:Rva005D10F9(void*,void*);virtual ~Rva005D10F9();virtual void slot1();Rva005EC422 view;};
 
-void*__cdecl operator new(unsigned);void*__cdecl rva005ED198(const void*);
+#include <new>
+void*__cdecl rva005ED198(const void*);
 class LivingWorldLogic;extern LivingWorldLogic*TheLivingWorldLogic;
 class Object;
 class Rva00575674{public:void rva00575674(Object*);};

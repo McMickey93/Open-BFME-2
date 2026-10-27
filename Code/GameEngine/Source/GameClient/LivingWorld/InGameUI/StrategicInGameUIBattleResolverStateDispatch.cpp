@@ -14,7 +14,7 @@ class Object;class Rva00575674{public:void rva00575674(Object*);Rva005D1255State
 struct Rva005CFF0FOwner{char pad[0x18];void*data;Rva00575674 state;};
 class Rva005CFFB8:public Rva005CF872{public:Rva005CFFB8(void*,void*);virtual~Rva005CFFB8();virtual void Update();void*view;};
 class Rva005CFEDF:public Rva005CF872{public:virtual~Rva005CFEDF();virtual void Update();void*view;};
-void*__cdecl operator new(unsigned);
+#include <new>
 void Rva005CFEDF::Update(){
  ((Rva005EB8CA*)&view)->rva005EB8CA();
  if(((Rva005EB87A*)&view)->rva005EB87A())return;

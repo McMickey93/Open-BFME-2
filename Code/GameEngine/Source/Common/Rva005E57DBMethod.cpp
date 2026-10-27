@@ -3,7 +3,7 @@
 // Evidence: slot 15 of 0x00877D90 class of 0x005E5A38; virtual slot 2 predicate on [[this+8]+0x38] with outer arg; new 12 for 0x005E569A ctor; Set 0x00575674 with new object; caller none; prev/next Vslot same flags.
 typedef unsigned int UnsignedInt;
 
-void *__cdecl operator new(UnsignedInt n) throw();
+#include <new>
 
 class VirtPred
 {
