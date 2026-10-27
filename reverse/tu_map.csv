@@ -31918,13 +31918,13 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0042FD1C,57,code-unledgered,,,-,,
 0x0042FD55,73,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Rva0042FD55.cpp
 0x0042FD9E,129,code-unledgered,,,-,,
-0x0042FE1F,28,code,,,-,,Code/GameEngine/Source/Common/FamilyDeletingDtors_Rva0042FCE6.cpp
-0x0042FE3B,5,code,,,-,,Code/GameEngine/Source/Common/Rva0042FE3B.cpp
+0x0042FE1F,28,code,,,-,,Code/GameEngine/Source/GameClient/MessageStream/SelectionXlat.cpp
+0x0042FE3B,5,code,,,-,,Code/GameEngine/Source/GameClient/MessageStream/SelectionXlat.cpp
 0x0042FE40,63,code,,,-,,Code/GameEngine/Source/GameClient/MessageStream/SelectionXlat_areAllSelected.cpp
 0x0042FE7F,321,code-unledgered,,,-,,
-0x0042FFC0,64,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0042FFC0.cpp
+0x0042FFC0,64,code,,,-,,Code/GameEngine/Source/GameClient/MessageStream/SelectionXlat.cpp
 0x00430000,29,code,,,-,,Code/GameEngine/Source/GameClient/MessageStream/SelectionXlat_selectFriendsWrapper.cpp
-0x0043001D,31,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva0043001D.cpp
+0x0043001D,31,code,,,-,,Code/GameEngine/Source/GameClient/MessageStream/SelectionXlat.cpp
 0x0043003C,4054,code-unledgered,,,-,,
 0x00431012,69,code-unledgered,,,-,,
 0x00431057,336,code-unledgered,,,-,,
