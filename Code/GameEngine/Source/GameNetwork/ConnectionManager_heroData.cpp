@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // ConnectionManager's handler for command type 20, retail 0x004CF1AD,
 // 328 bytes including its catch-all funclet 0x004CF2CA.
 //
@@ -37,11 +38,11 @@ typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
 typedef bool Bool;
 
-#define TRUE 1
+#include <windows.h>
 
 // Declared so delete[] calls the array form 0x0002FD80, as retail does; MSVC
 // 7.1 otherwise lowers it to the scalar operator delete.
-void operator delete[](void *p);
+#include <new>
 
 class Snapshot;
 class AsciiString;
