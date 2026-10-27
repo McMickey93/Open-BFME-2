@@ -27,7 +27,7 @@ class AptPlayer { public: void RemoveOverButtonHandler(const AsciiString&); };
 class BfmeAptWindowManager;
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 void _bfme_closeAptScreen(const AsciiString&);
-void __cdecl operator delete(void*);
+#include <new>
 class AptSkirmish : public _bfme_AptGameWindow, public AptSkirmishSecondaryView, public Rva004444D2 {
 public: virtual ~AptSkirmish();
 private:

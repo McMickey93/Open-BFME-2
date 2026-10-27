@@ -71,7 +71,7 @@ public:
 	void invoke();
 	FunctorBinding m_binding;
 };
-void *__cdecl operator new(unsigned int size);
+#include <new>
 class Rva0057BC63FunctorHolder
 {
 public:
