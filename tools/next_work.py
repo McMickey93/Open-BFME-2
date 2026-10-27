@@ -1526,29 +1526,32 @@ TIER_LABELS = dict(zip(DEBT_TIERS, DEBT_LABELS))
 #     were naming and 67 were TU merges; Code/ grew from 23,278 to 23,292 files in a
 #     week; 15,529 of 91,361 tu_map rows were approved and 22,045 proposed; and the
 #     strict whole-program link still needed 1,810 stubs.
-#   link 30        the census's LINKED/LINKING is the headline figure: still the largest
+#   link 26        the census's LINKED/LINKING is the headline figure: still the largest
 #                  share, but no longer half of every seat.
-#   stubs 15       the exit test is a link with no stubs; 1,810 stubbed symbols, about
+#   stubs 12       the exit test is a link with no stubs; 1,810 stubbed symbols, about
 #                  1,580 of them class members (one class claim closes a group).
 #   header 15      one definition per class is a prerequisite of both linking and
 #                  merging (a rejected merge donor is usually a private class view);
 #                  728 queued units.
-#   consolidate 7  tu_skeleton --queue: only ~31 approved TUs a merge can shrink, each
-#                  removing up to ~28 files. Small, so it drains; the share keeps it drained.
-#   tu-approval 5  16,858 proposed code rows in ~1,640 TUs: approval feeds the merge queue.
+#   consolidate 20 tu_skeleton --queue: 346 approved TUs a merge can shrink (2026-10-27,
+#                  after the tu_map coverage work; 31 when this was 7), ~5,400 donor files.
+#                  At 7 the fleet merged ~7 files an hour against ~85 commits; Code/ file
+#                  count is the source-recovery figure, so it takes the second-largest share.
+#                  Taken from link 4, stubs 3, data 2 and one each from the small tiers.
+#   tu-approval 4  16,858 proposed code rows in ~1,640 TUs: approval feeds the merge queue.
 #   tu-evidence 3  8,398 sources (2026-10-25) no tu_map row places at all, in unmapped
 #                  address runs; the retail layouts (tools/tu_evidence.py) reach few of
 #                  them, so a seat finds the anchor. Taken from tu-approval's 8.
-#   data 10        2,229 data-identity keys, a link prerequisite (one name per datum),
-#                  halved from 20 to pay for the structural tiers.
-#   identity 5     844 code-identity keys, reported in shadow; halved from 10.
-#   ms-headers 5   3,421 audited files; mechanical, byte-gated, file-local.
-#   dx 5           33 servable units; bounded and mechanical.
+#   data 8         2,229 data-identity keys, a link prerequisite (one name per datum),
+#                  cut from 20 to 10, then 8, to pay for the structural tiers.
+#   identity 4     844 code-identity keys, reported in shadow; halved from 10.
+#   ms-headers 4   3,421 audited files; mechanical, byte-gated, file-local.
+#   dx 4           33 servable units; bounded and mechanical.
 # Naming is not a default tier (it never was): --wb and tools/name_lane.py serve it on
 # request. BFME_TIER_WEIGHTS="link=30,stubs=15,..." overrides any subset; a tier at 0 is
 # still tried, last.
-TIER_WEIGHTS = {"link": 30, "stubs": 15, "header": 15, "consolidate": 7, "tu-approval": 5, "tu-evidence": 3,
-                "data": 10, "identity": 5, "ms-headers": 5, "dx": 5}
+TIER_WEIGHTS = {"link": 26, "stubs": 12, "header": 15, "consolidate": 20, "tu-approval": 4, "tu-evidence": 3,
+                "data": 8, "identity": 4, "ms-headers": 4, "dx": 4}
 BUILT = []                  # debt queues this run built, in order (lazy: tests read it)
 _DEBT = {}
 
