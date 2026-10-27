@@ -833,6 +833,20 @@ Whole-unit clearance and census confirmation remain pending.
 
 **2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** Two provider-spelling repairs are cleared in ordinary-preview scope; census confirmation pending. `Common/Watchdog.cpp` now calls the existing `ThreadClass::_Get_Current_Thread_ID` row at 0x006105D0 from its constructor, matching the native REL32 at 0x0022563A. The former `_GetCurrentThreadId@0` reference selected the distinct import-thunk row at 0x00687E0A. All six Watchdog rows remain exact; Watchdog, WatchdogDtor, WatchdogThreadFunction and `WWLib/thread.cpp` all preview LINKS together. `AptOnlineHomeStatistics.cpp` declares the six existing globals at RVAs 0x00A06484 through 0x00A06524 as `FactionStatBlock`, matching their definitions in `Common/Rva005B947DTicker.cpp` and both existing consumers, while retaining the existing parameter ABI and block-copy views. Its one 100-byte row remains exact and it now previews LINKS; the ticker and refresh providers retain LINKS. The expanded 31-unit current-object preview also retains both clearances. The unchanged `Rva007B6880Thunks.cpp` has an independent unresolved `?g_lgaKeyRecords@@3PAIA` both before and after. Changed-source declaration, EH and shadow data checks, CSV integrity and pin consistency pass. Next: confirm both repaired units in the next normal census; the broader entry remains open.
 
+- **BfmeE16 header subset (2026-10-27, inspected `7ed44e8ffd`):**
+  [The parent-EH and parser-view repair](../reverse/attempt_support/bfmee16-header-adoption-20261027.md)
+  removes the private class definitions in Rva003F86F9Ctor.cpp and
+  Rva00579731Dtor.cpp. The former's existing cleanup row gains its proven
+  machine-readable parent token, letting the supported EH resolver locate
+  its renumbered label without changing the hint. The latter separates
+  FieldParse accesses from the existing vector storage identity. All 26 rows,
+  two data rows and five EH graphs remain exact; the ordinary preview retains
+  both units' 1,099 authored bytes against index `bf3dd31211`. The owning
+  acceptance tool retires both header-queue entries. This clears the two-unit
+  adoption prerequisite; the wider placeholder element identity, strict
+  closure and census confirmation remain separate work. No new linking gain
+  is claimed.
+
 ### LINK-005: units blocked by several incompatible dependencies
 
 **Status: Open. Updated: 2026-10-25.**

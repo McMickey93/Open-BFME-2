@@ -10,7 +10,7 @@
 // base-before-vtable order proves 2-int base; ret 8 with ecx=this proves HH.
 #include <vector>
 
-struct BfmeE16 { float x, y, z, w; };
+#include "../../../Libraries/Include/Lib/BfmeE16.h"
 
 struct Base003F86F9
 {

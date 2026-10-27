@@ -12,6 +12,7 @@
 // resets no vptr, so it is the implicit one, virtual through the base.
 #include "ascii_string.h"
 #include "unicode_string.h"
+#include "../../../Libraries/Include/Lib/BfmeE16.h"
 // vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
 // overload takes the call instead, so this TU emits no external max COMDAT.
 namespace _STL {
@@ -32,9 +33,9 @@ public:
 	static void parseAsciiString(INI *ini, void *instance, void *store, const void *userData);
 };
 
-// The 16-byte FieldParse record the table vector holds, under the element
-// name the ledger gives the shared vector<BfmeE16> helpers.
-struct BfmeE16
+// The table's native record. Its vector retains the ledger's BfmeE16 storage
+// identity; only the field accesses use this parser view of the 16 bytes.
+struct FieldParse
 {
 	const char *token;
 	void (*parse)(INI *ini, void *instance, void *store, const void *userData);
@@ -167,7 +168,7 @@ void Rva00579731::rva0057A09F(INI *ini)
 	names.reserve(12);
 	_STL::vector<BfmeE16> table;
 	table.reserve(13);
-	BfmeE16 field;
+	FieldParse field;
 	field.offset = 0;
 	field.parse = parseStatString;
 	for (int i = 0; i < 6; i++)
@@ -175,11 +176,11 @@ void Rva00579731::rva0057A09F(INI *ini)
 		names.push_back(Rva00108B93Make(s_statNames[i]) + "RowTitle");
 		field.token = names.back().str();
 		field.userData = &m_at8[i].m_title;
-		table.push_back(field);
+		table.push_back(*(const BfmeE16 *)&field);
 		names.push_back(Rva00108B93Make(s_statNames[i]) + "RowHelp");
 		field.token = names.back().str();
 		field.userData = &m_at8[i].m_help;
-		table.push_back(field);
+		table.push_back(*(const BfmeE16 *)&field);
 	}
 	table.push_back(*(const BfmeE16 *)g_emptyFieldParseTable);
 	ini->initFromINI(this, (const FieldParse *)&table[0]);
