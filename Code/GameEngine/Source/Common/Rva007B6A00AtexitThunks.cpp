@@ -220,7 +220,6 @@ unsigned g_Va00E08D48;	// retail RVA 0x00A08D48 (.bss), defined here
 unsigned g_Va00E09E50;	// retail RVA 0x00A09E50 (.bss), defined here
 extern unsigned g_Va00E09E60;
 extern unsigned GeometryContactSphere;
-unsigned g_Va00E176A0;	// retail RVA 0x00A176A0 (.bss), defined here
 
 // ?rva007B6AE7@@YAXXZ @ 0x007B6AE7 (10B): ecx=&g_Va00DDE0AC, tail-jump to rowed ?Term@CAtlWinModule@ATL@@QAEXXZ (0x00006AF1)
 void __cdecl rva007B6AE7()
@@ -677,11 +676,4 @@ void __cdecl rva007B9BF0()
 // ?rva007B9C00@@YAXXZ @ 0x007B9C00 (1B). Empty stub: ret.
 void __cdecl rva007B9C00()
 {
-}
-
-// ?rva007B9C20@@YAXXZ @ 0x007B9C20 (10B): ecx=&g_Va00E176A0, tail-jump to rowed ??1Rva00041004@@UAE@XZ (0x00040FE5)
-void __cdecl rva007B9C20()
-{
-	Rva00041004 *receiver = (Rva00041004 *)&g_Va00E176A0;
-	receiver->Rva00041004::~Rva00041004();
 }

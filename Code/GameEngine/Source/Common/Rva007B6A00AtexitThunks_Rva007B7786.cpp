@@ -222,7 +222,6 @@ extern unsigned g_Va00E08D48;	// retail RVA 0x00A08D48 (.bss), defined in Rva007
 extern unsigned g_Va00E09E50;	// retail RVA 0x00A09E50 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00E09E60;
 extern unsigned GeometryContactSphere;
-extern unsigned g_Va00E176A0;
 
 void __cdecl rva007B6DFA();
 
@@ -372,6 +371,3 @@ void __cdecl rva007B9B28();
 void __cdecl rva007B9BF0();
 
 void __cdecl rva007B9C00();
-
-void __cdecl rva007B9C20();
-
