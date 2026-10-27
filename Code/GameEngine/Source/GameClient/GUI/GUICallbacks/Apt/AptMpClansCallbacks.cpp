@@ -155,7 +155,7 @@ public:
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 // "MpClans::Initialized" is bound to the chat panel's query, the rowed
-// AptMpChat::rva0057FDBF (AptMpChatCallbacks.cpp).
+// AptMpChat::rva0057FDBF (AptMpChat.cpp).
 class AptMpChat
 {
 public:
