@@ -64832,12 +64832,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077ABD8,14,code-unledgered,,,-,,
 0x0077ABF0,8,code,,,-,,Code/gen_small/uw_gen_002.cpp
 0x0077ABF8,8,code,,,-,,Code/gen_small/uw_gen_003.cpp
-0x0077AC0A,13,code,,,-,,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp
-0x0077AC17,13,code,,,-,,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp
-0x0077AC24,13,code,,,-,,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp
-0x0077AC3B,13,code,,,-,,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp
-0x0077AC48,13,code,,,-,,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp
-0x0077AC55,13,code,,,-,,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp
+0x0077AC0A,13,code,,,-,,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
+0x0077AC17,13,code,,,-,,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
+0x0077AC24,13,code,,,-,,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
+0x0077AC3B,13,code,,,-,,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
+0x0077AC48,13,code,,,-,,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
+0x0077AC55,13,code,,,-,,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
 0x0077AC6C,10,code-unledgered,,,-,,
 0x0077AC76,8,code,,,-,,Code/gen_small/uw_gen_003.cpp
 0x0077AC7E,8,code,,,-,,Code/gen_small/uw_gen_004.cpp
@@ -64856,7 +64856,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077AD10,25,code-unledgered,,,-,,
 0x0077AD29,25,code-unledgered,,,-,,
 0x0077AD42,25,code-unledgered,,,-,,
-0x0077AD65,13,code,,,-,,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp
+0x0077AD65,13,code,,,-,,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
 0x0077AD7C,8,code,,,-,,Code/gen_small/uw_gen_002.cpp
 0x0077AD84,8,code,,,-,,Code/gen_small/uw_gen_003.cpp
 0x0077AD8C,8,code,,,-,,Code/gen_small/uw_gen_003.cpp

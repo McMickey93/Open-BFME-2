@@ -68,6 +68,61 @@ This diagnostic writes no source or ledger and is not an applied merge.
 
 The initial full dry-run rejections are retained in the adjacent TSV. They
 predate the qualified-read prerequisite; do not treat its former clearer
-byte refusal as current. Other standalone donors remain untouched. Normal
-merger application is the next step; mixed sources are not split by hand.
-No measured linked-byte, ownership or source-file gain is claimed here.
+byte refusal as current. Other standalone donors remained untouched at this prerequisite stage. Normal
+merger application was the next step; mixed sources are not split by hand.
+The prerequisite alone claimed no linked-byte, ownership or source-file gain.
+
+
+## Applied merge and audit
+
+Prerequisite commit: 50bf968e01. Each clearer binds its address-named global
+once through a local reference, so the qualified read adds no hatch occurrence.
+The normal merger then accepts precisely ControlBar.cpp and the clearer donor:
+51 matched rows, seven code-row repoints, one data-row repoint and one source
+file removed. All 48 other donor refusals are identical to the initial TSV;
+the nine mixed sources remain intact. No rejected donor was forced through.
+
+Normal ./build.sh on the written TU verifies 51/51 functions, one data row,
+22 renumbered funclet pins through parent EH data, 37 string literals and two
+empty-string references. Declared-unmatched and check_csv pass. Comparison with
+the retained premerge objects preserves all 74 external COMDAT providers
+(digest, size and selection), all three ordinary data definitions and their
+bytes/layout, all 71 unresolved external names and the absence of weak aliases.
+The merger's full link guard accepts the pair.
+
+Ordinary link_check still cannot give a clean result against 73061d9452:
+its duplicate list grows from 17 to 27 solely because the census still includes
+the removed clearer object's seven functions and three data symbols. The
+merged file owns 4,565 bytes, versus the seed's 4,474 plus the clearers' 91.
+This stale-object preview is not new census evidence or a claimed link gain.
+The next census must confirm this merge and the seed's older absorbed owners.
+
+The three data-ledger owner cells and three hatch keys (counts 5/5/3) follow
+the donor into the TU. No identity/data debt-register key applies to either
+file. The header queue has no affected entry; the merger refreshes the Microsoft
+header queue, preserving its three existing unknown findings (row order only).
+The committed TU map changes only seven source cells: approvals come from the
+fresh in-memory map, and no regenerated assignments or confidence are staged.
+Fold proofs and other active path columns have no remaining donor reference.
+
+The merger's owning hatch_counters --update also prunes inherited stale keys
+outside this scope: 14 alternatename occurrences across six Upgrade sources
+and three address-global occurrences in Common/Rva00789900Init.cpp. Each source
+is byte-for-byte unchanged from HEAD, and hatch_counters.scan on its HEAD text
+already counts zero for the removed key. Those 17 inventory corrections are
+not hatch removals implemented by this merge; the clearers' counts stay equal.
+No register was hand-edited and no escape hatch was added.
+
+The full outgoing-path audit uses merge base
+743e3157581be2ce924c0f55022205ef7af5d3d0 through 50bf968e01 plus this staged
+merge, after fetching origin/master at 8ec7ab3413. The only removed source in
+that range is the clearer donor. Combined full-path/basename search covers
+tools, hooks, workflows, source/header includes, shims, configs, registries and
+docs. No active consumer needs an edit. The three remaining mentions are the
+TU's absorbed-source provenance comment, the historical census link_status
+row and the initial-rejection TSV. They intentionally retain the old path.
+
+progress.py reports SOURCE FILES 22,451 (-1), TU-APPROVED 10,846 (+0), and
+BYTE-MATCHED 100%. Census LINKED/LINKING and image ownership are not remeasured.
+Remaining work is the private-declaration/STL reconciliation described above,
+plus census confirmation. No nightly, link_cycle or smoke runner was invoked.

@@ -143,9 +143,6 @@ address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_DFxx.cpp	g_Va00D
 address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_DFxx.cpp	g_Va00DFF04C	1
 address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E0102xx.cpp	g_Va00E02820	3
 address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E0102xx.cpp	g_Va00E02F24	1
-address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp	g_Va00E01D24	5
-address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp	g_Va00E01D34	5
-address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E01Dxx.cpp	g_Va00E01D3C	3
 address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E027xx.cpp	g_Va00E027EC	3
 address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E027xx.cpp	g_Va00E027F4	2
 address_global	Code/GameEngine/Source/Common/GlobalFlagClearers_E028xx.cpp	g_Va00E0282C	4
@@ -980,6 +977,9 @@ address_global	Code/GameEngine/Source/GameClient/GUI/AptMpGameSetupRva00440BDF.c
 address_global	Code/GameEngine/Source/GameClient/GUI/AptWotrPanelCallbacks.cpp	g_Rva0107301CEmptyString	2
 address_global	Code/GameEngine/Source/GameClient/GUI/AptWotrPanelCallbacks.cpp	g_Va00E06360	2
 address_global	Code/GameEngine/Source/GameClient/GUI/BfmeAptScreenInGameChatDestructor.cpp	g_Va00E04478	3
+address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp	g_Va00E01D24	5
+address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp	g_Va00E01D34	5
+address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp	g_Va00E01D3C	3
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarReloadNotice.cpp	g_Va00E01D0C	6
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarSwitchContext.cpp	g_Va00E04478	2
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0031B99A.cpp	g_Rva005127A0InGameChat	2
