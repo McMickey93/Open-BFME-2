@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /GR
+// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
 // ??1GameWindow@@MAE@XZ @0x00314A0C 184B
 // GameWindow dtor: vtable 0x0080BBCC slot0 deleting dtor at 0x00314AC4 calls here.
 // Evidence: BFME1 GameWindowDestructorThunk donor (global check, inputData/editData deletes,
@@ -81,12 +81,25 @@ public:
 	~BFMEDX8DeviceLock() { BFME_DX8_Thread_Assert(); }
 };
 
+class GameFont;
+
+// GameWindow.cpp's virtual list, so both units emit the same ??_7GameWindow.
 class GameWindow
 {
 protected:
   virtual ~GameWindow();
 public:
-  virtual void winDrawBorder( void ) = 0;
+  virtual void vslot1() = 0;
+  virtual void vslot2() = 0;
+  virtual int draw( void * );
+  virtual void vslot4() = 0;
+  virtual int rva0009FD78();
+  virtual void vslot6() = 0;
+  virtual void *fetchCreateInstance() = 0;
+  virtual void vslot8() = 0;
+  virtual void vslot9() = 0;
+  virtual void vslot10() = 0;
+  virtual void winSetFont( GameFont * );
 private:
 	GameWindowAnchor *m_anchor;
 	int m_status;

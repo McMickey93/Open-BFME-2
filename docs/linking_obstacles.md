@@ -838,6 +838,14 @@ Whole-unit clearance and census confirmation remain pending.
   then verify the table owner, parent bodies and consumers together.
   [Native slot evidence](../reverse/attempt_support/link-regression-clusters-20261025.md#gamewindow-native-table-prerequisite).
   No GameWindow source trial was applied during this follow-up.
+- **GameWindowDtor.cpp view aligned (2026-10-27, against index 73061d9452):**
+  its `??_7GameWindow` lost for two reasons: the unit compiled with `/GR`, so its
+  table section carried an RTTI locator slot (52 B against GameWindow.cpp's 48 B;
+  retail has no locator before `0x0080BBCC`), and its view declared only the
+  destructor and a pure `winDrawBorder`. Dropping `/GR` and declaring
+  GameWindow.cpp's 12-slot virtual list keeps all 6 rows byte-exact and makes
+  link_check report LINKS (0 -> 249 B). Both views still declare 12 slots against
+  retail's 11; that reconciliation remains open. Census confirmation pending.
 - **INI bucket initializer repaired (2026-10-25, control `349db6dc10`):**
   [the scoped provider repair](../reverse/attempt_support/ini-bucket-provider-link-20261025/readme.md)
   makes INI emit the retail 59-byte initializer at `0x00148DDF` and applies its
