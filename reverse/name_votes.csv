@@ -8607,3 +8607,5 @@ Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp|param|Rva0006EE7A::Rva
 Code/GameEngine/Source/Common/Rva001F51DC.cpp|local|Rva001F51DC::rva001F51DC|a,720823d5e21e31a7c9ab7aff,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-27
 Code/GameEngine/Source/Common/Rva001F51DC.cpp|local|Rva001F51DC::rva001F51DC|b,e29d7f1b6902f138d19e1de4,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-27
 Code/GameEngine/Source/Common/Rva002BEFE5.cpp|param|Rva002BEFE5::rva002BEFE5|a2,793ec66109127c3586e6fa71,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp|member|Rva00495A2B_H04|m_wt08,b0adba24a6887e707b7bd2cf,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-27
+Code/GameEngine/Source/Common/VtableSlotBodiesR3.cpp|member|Rva00203665Data|m_valueAC8,d7d841c165bd6c5a86528973,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-27
