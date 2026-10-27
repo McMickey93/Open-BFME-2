@@ -18,6 +18,25 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 
 
-struct Rva0073E4C0Record { Rva0073E4C0Record(); Rva0073E4C0Record(const Rva0073E4C0Record&); ~Rva0073E4C0Record(); Rva0073E4C0Record&operator=(const Rva0073E4C0Record&); private: char bytes[8]; };
-namespace _STL {template<> void _Construct<Rva0073E4C0Record,Rva0073E4C0Record>(Rva0073E4C0Record*,const Rva0073E4C0Record&);}
-template void _STL::deque<Rva0073E4C0Record>::push_back(const Rva0073E4C0Record&);
+// Element: retail's push_back reaches 0x0073E290, rowed as
+// deque<Gen_t_008fb570_p8pod>::_M_push_back_aux_v
+// (Rva008FB570DequePushBackAux.cpp), so this deque holds the same 8-byte POD.
+struct Gen_t_008fb570_p8pod
+{
+	int value[2];
+};
+
+namespace _STL {
+// Retail's 0x0060C9D9 is the rowed two-word copy _Construct<pair<const int, int> >;
+// an inline forwarder reaches it with the same pushes, as in the provider unit.
+template <> void _Construct<pair<const int, int>, pair<const int, int> >(
+	pair<const int, int> *, const pair<const int, int> &);
+template <> __declspec(dllimport) __forceinline void _Construct<Gen_t_008fb570_p8pod, Gen_t_008fb570_p8pod>(
+	Gen_t_008fb570_p8pod *destination, const Gen_t_008fb570_p8pod &source)
+{
+	_Construct((pair<const int, int> *)destination, *(const pair<const int, int> *)&source);
+}
+// Defined by Rva008FB570DequePushBackAux.cpp (0x0073E290).
+template <> void deque<Gen_t_008fb570_p8pod>::_M_push_back_aux_v(const Gen_t_008fb570_p8pod &);
+}
+template void _STL::deque<Gen_t_008fb570_p8pod>::push_back(const Gen_t_008fb570_p8pod &);

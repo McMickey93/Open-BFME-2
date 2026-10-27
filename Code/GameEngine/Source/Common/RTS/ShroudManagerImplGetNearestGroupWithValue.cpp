@@ -11,7 +11,7 @@
 // stores y first; the horizontal neighbours keep the aggregate form. The elements
 // pointer is formed before the running value is zeroed. The result z is an integer
 // zero store (the region default is SSE, which would otherwise zero it via xorps).
-// BfmeE8 and Rva0073E4C0Record names are existing opaque8B views, not recovered retail types.
+// BfmeE8 and Gen_t_008fb570_p8pod names are existing opaque8B views, not recovered retail types.
 // Donor semantic lead: BF1 cee35b7d8ca077d7255f1c39cb69e9fd9627aa85 ZH
 // PartitionManager getNearestGroupWithValue/iterateCellsBreadthFirst. Native differs
 // in mask/value-index/threshold and left,right,up,down ordering; donor names/layouts
@@ -29,16 +29,16 @@ namespace _STL { template <> _Bit_iter<_Bit_reference, _Bit_reference *> _Bit_it
 namespace _STL { template <> _Bit_iter<_Bit_reference, _Bit_reference *> & _Bit_iter<_Bit_reference, _Bit_reference *>::operator+=(int); }
 // bfme link decl-only end
 struct BfmeE8 { int a,b; };
-struct Rva0073E4C0Record { Rva0073E4C0Record(); Rva0073E4C0Record(const Rva0073E4C0Record&); ~Rva0073E4C0Record(); Rva0073E4C0Record&operator=(const Rva0073E4C0Record&); private: char bytes[8]; };
+struct Gen_t_008fb570_p8pod { int value[2]; };  // deque<>::push_back 0x0073E4C0's element
 namespace _STL {
 template<> vector<bool>::vector(unsigned,bool,const allocator<bool>&);
 template<> deque<BfmeE8>::~deque();
 template<> void _Deque_base<BfmeE8,allocator<BfmeE8> >::_M_initialize_map(unsigned);
-template<> void deque<Rva0073E4C0Record>::push_back(const Rva0073E4C0Record&);
+template<> void deque<Gen_t_008fb570_p8pod>::push_back(const Gen_t_008fb570_p8pod&);
 }
-static __forceinline void pushXY(_STL::deque<BfmeE8>& q,unsigned a,unsigned b){BfmeE8 p;p.a=a;p.b=b;((_STL::deque<Rva0073E4C0Record>*)&q)->push_back(*(const Rva0073E4C0Record*)&p);}
+static __forceinline void pushXY(_STL::deque<BfmeE8>& q,unsigned a,unsigned b){BfmeE8 p;p.a=a;p.b=b;((_STL::deque<Gen_t_008fb570_p8pod>*)&q)->push_back(*(const Gen_t_008fb570_p8pod*)&p);}
 static __forceinline void pushShroudCell(_STL::deque<BfmeE8>& q,const BfmeE8& p) {
-    ((_STL::deque<Rva0073E4C0Record>*)&q)->push_back(*(const Rva0073E4C0Record*)&p);
+    ((_STL::deque<Gen_t_008fb570_p8pod>*)&q)->push_back(*(const Gen_t_008fb570_p8pod*)&p);
 }
 class Gen_008F7CD0 { public: int bfmeCellX(float)const; int bfmeCellY(float)const; };
 struct ShroudCell { void *nodes; unsigned short playerStates[20][4]; unsigned trailing; };

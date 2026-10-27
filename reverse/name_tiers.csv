@@ -22108,7 +22108,7 @@ _gpiProcessOperation,0x00739640,evidence,vendored
 ??0?$deque@UGen_t_008fb350_p12pod@@V?$allocator@UGen_t_008fb350_p12pod@@@_STL@@@_STL@@QAE@ABV?$allocator@UGen_t_008fb350_p12pod@@@1@@Z,0x0073D580,address,placeholder
 ?updatePlayerCells450_Rva0073D860@ShroudManager@@QAEXH@Z,0x0073D860,address,placeholder
 ?_M_push_back_aux_v@?$deque@UGen_t_008fb570_p8pod@@V?$allocator@UGen_t_008fb570_p8pod@@@_STL@@@_STL@@IAEXABUGen_t_008fb570_p8pod@@@Z,0x0073E290,address,placeholder
-?push_back@?$deque@URva0073E4C0Record@@V?$allocator@URva0073E4C0Record@@@_STL@@@_STL@@QAEXABURva0073E4C0Record@@@Z,0x0073E4C0,address,placeholder
+?push_back@?$deque@UGen_t_008fb570_p8pod@@V?$allocator@UGen_t_008fb570_p8pod@@@_STL@@@_STL@@QAEXABUGen_t_008fb570_p8pod@@@Z,0x0073E4C0,address,placeholder
 ?getPlayerStatus_Rva0073EA40@ShroudManagerImpl008FBA40Element@@QAEHH@Z,0x0073EA40,address,placeholder
 ?rva0073ea90@@YAPAVXfer@@PAV1@PAG@Z,0x0073EA90,address,placeholder
 ?Rva0073EB00Xfer@@YAPAVXfer@@PAV1@PAG@Z,0x0073EB00,address,placeholder
