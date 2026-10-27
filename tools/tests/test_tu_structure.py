@@ -104,11 +104,11 @@ def test_noncontiguous_tu_is_not_approved(tmp_path):
     assert out[0x1000]["confidence"] == "proposed" and "noncontiguous" in out[0x1000]["evidence"]
 
 
-def _islands(tmp_path, ledger, strings=""):
+def _islands(tmp_path, ledger, strings="", zh_b="fg"):
     zh = tmp_path / "reference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/X"
     zh.mkdir(parents=True)
     (zh / "A.cpp").write_text("".join(f"void A::{m}()\n{{\n}}\n" for m in "fghi"))
-    (zh / "B.cpp").write_text("void B::f()\n{\n}\nvoid B::g()\n{\n}\n")
+    (zh / "B.cpp").write_text("".join(f"void B::{m}()\n{{\n}}\n" for m in zh_b))
     (tmp_path / "reverse").mkdir()
     (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join(
         row(f"?{m}@{c}@@QAEXXZ", rva, 16, f"Code/X/{c}{m}.cpp") for c, m, rva in ledger))
@@ -117,8 +117,10 @@ def _islands(tmp_path, ledger, strings=""):
 
 
 def test_short_run_of_another_tu_inside_a_span_is_an_island(tmp_path):
+    # B::f has no ZH definition of its own: only its class site (S) places it in B.cpp
     out = _islands(tmp_path, [("A", "f", 0x1000), ("A", "g", 0x1100), ("B", "f", 0x1200),
-                              ("A", "h", 0x1300), ("A", "i", 0x1400)])
+                              ("A", "h", 0x1300), ("A", "i", 0x1400)], zh_b="g")
+    assert out[0x1200]["by"] == "S"
     for rva in (0x1000, 0x1100, 0x1300, 0x1400):
         assert (out[rva]["tu"], out[rva]["confidence"]) == ("Code/X/A.cpp", "approved"), hex(rva)
     island = out[0x1200]
@@ -132,6 +134,18 @@ def test_island_needs_longer_runs_of_one_tu_on_both_sides(tmp_path):
                               ("B", "g", 0x1300), ("A", "h", 0x1400)])
     assert all(r["confidence"] == "proposed" and "island" not in r["evidence"]
                for r in out.values() if r["tu"])
+
+
+def test_an_out_of_line_definition_is_never_an_island(tmp_path):
+    """A(F) A(Z) B(Z) A A: B::f is defined out of line in B.cpp, so B's run is no header
+    COMDAT and the A rows after it must not be approved for A on naming around it."""
+    out = _islands(tmp_path, [("A", "f", 0x1000), ("A", "g", 0x1100), ("B", "f", 0x1200),
+                              ("A", "h", 0x1300), ("A", "i", 0x1400)],
+                   strings="C:\\bfme2\\Code\\X\\A.cpp\t0x1004\n")
+    assert (out[0x1000]["by"], out[0x1200]["by"]) == ("F", "Z")
+    assert "island" not in out[0x1200]["evidence"]
+    for rva in (0x1300, 0x1400):
+        assert out[rva]["confidence"] == "proposed" and "noncontiguous" in out[rva]["evidence"], hex(rva)
 
 
 def test_a_file_string_row_is_never_an_island(tmp_path):

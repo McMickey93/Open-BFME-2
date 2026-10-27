@@ -89,7 +89,7 @@ Confidence:
             span. A TU's span is the extent of its own F/Z/S/N/U rows (every
             row that could be approved for it lies within): a K row emitted
             far from its class's TU does not stretch it, and neither does an
-            island (`islands()`: at most ISLAND rows of one TU, none F, between
+            island (`islands()`: at most ISLAND rows of one TU, none F or Z, between
             longer runs of one other TU; a header COMDAT emitted in the host's
             object or a row named for the wrong class): it breaks no span and
             is itself never approved. A run of C rows is
@@ -817,13 +817,15 @@ def islands(assigned, roots):
     (an anchored TU's, by F/Z/S/N/U/C) form runs of one TU each; a run of at most ISLAND
     rows, none of them F, shorter than the runs of one other TU on both sides of it, is
     an island: a header body emitted as a COMDAT in the host's object, or a row this repo
-    named for the wrong class. It neither breaks the host's span nor counts in its own."""
+    named for the wrong class. It neither breaks the host's span nor counts in its own.
+    A run holding an F or Z row (an out-of-line definition in its own TU) is never an
+    island: naming around it must not override it."""
     seq = [r for r in assigned if r["A"].lower() in roots and r["by"] in SPAN_BREAKERS]
     runs = [list(g) for _, g in itertools.groupby(seq, key=lambda r: r["A"].lower())]
     out = set()
     for a, run, b in zip(runs, runs[1:], runs[2:]):
         if (len(run) <= ISLAND and len(run) < min(len(a), len(b)) and a[0]["A"].lower() == b[0]["A"].lower()
-                and not any(x["by"] == "F" for x in run)):
+                and not any(x["by"] in ("F", "Z") for x in run)):
             out.update(id(x) for x in run)
     return out
 
