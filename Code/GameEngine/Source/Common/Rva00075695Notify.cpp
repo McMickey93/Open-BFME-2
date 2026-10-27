@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX- /GS-
-// ?Rva00075695Notify@@YAXH@Z 0x00075695 42B: free function indexed via g_00DE1F24 null check then virtual slot 1 call gated and cleared by g_00DE1F54; sibling Rva00075725Check.cpp pattern
+// Notifies the indexed shader through virtual slot 1 and clears the current-shader latch.
 class Rva00075695Item
 {
 public:
@@ -9,14 +9,19 @@ public:
 
 class ShaderInterface;
 extern ShaderInterface *W3DShaders[];
-extern int g_00DE1F54;
+class W3DShaderManager
+{
+	friend void Rva00075695Notify(int index);
+protected:
+	static int m_currentShader;
+};
 
 void __cdecl Rva00075695Notify(int index)
 {
-	if (g_00DE1F54 != 0) {
+	if (W3DShaderManager::m_currentShader != 0) {
 		Rva00075695Item * volatile *slot = (Rva00075695Item * volatile *)&W3DShaders[index];
 		if (*slot != 0)
 			(*slot)->f1();
-		g_00DE1F54 = 0;
+		W3DShaderManager::m_currentShader = 0;
 	}
 }
