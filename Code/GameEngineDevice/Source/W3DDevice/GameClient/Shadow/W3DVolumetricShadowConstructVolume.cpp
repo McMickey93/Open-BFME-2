@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?constructVolume@W3DVolumetricShadow@@IAEXPAVVector3@@MHH@Z @0x000EFDF6 1115B.
 // ?constructVolumeVB@W3DVolumetricShadow@@IAEXPAVVector3@@MHH@Z @0x000F0251 1277B.
 // ?SetPolygonIndex@Geometry@@QAEHJPAF@Z @0x000EFCB7 55B.
@@ -23,12 +24,13 @@
 // and constructVolumeVB (0x007B8980), themselves the ZH bodies; BFME 2
 // takes them unchanged apart from inlining Geometry::SetVertex and the
 // layout above.
+#include <windows.h>
+
 typedef float Real;
 typedef int Int;
 typedef short Short;
 typedef unsigned short UnsignedShort;
 
-#define NULL 0
 #define MAX_SHADOW_LIGHTS		1
 #define MAX_SHADOW_CASTER_MESHES	160
 

@@ -1,8 +1,11 @@
 // cl: /O1 /G7 /arch:SSE /MD /EHsc
+// platformsdk
 // WB8A5780 names W3DAptAux::PreDraw; nativeA8F98..A9071 RET0 supplies exact
 // allocation/lifetime and throttled-clock behavior. BF1 renderer ctor453B
 // and existing PostDraw supply E0 renderer and private sync static views.
 // New observedElapsed name describes target role, not original spelling.
+#include <windows.h>
+
 void Rva000A8F98();
 class BfmeHub982;
 class W3DAptAux {friend void Rva000A8F98();private:template<class T> friend struct DataRowPrivateProbe;static BfmeHub982 *s_renderer;static unsigned s_syncTime0,s_syncTime1;};
@@ -22,7 +25,6 @@ void Rva00118990();
 extern float g_Va00DEC49C;
 extern unsigned char g_aptHostStateStorage[32];
 extern unsigned long g_00DE617C,g_00DE6180;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 void Rva000A8F98() {
  if(!W3DAptAux::s_renderer)W3DAptAux::s_renderer=(BfmeHub982*)new Rva00785FD0Renderer;
  if(W3DAptAux::s_renderer) {

@@ -1,8 +1,10 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // BF1 2f243e26d WaterRenderObjInit.cpp supplies setup order and purpose.
 // BFME2 removes the old light/material/caustic/sky mesh branches; native
 // 7FC38..7FD57 still initializes four settings and the track system.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+#include <windows.h>
+
 void BFME_DX8_Thread_Lock();
 bool BFME_DX8_Thread_Assert();
 struct BFMEDX8DeviceLock {

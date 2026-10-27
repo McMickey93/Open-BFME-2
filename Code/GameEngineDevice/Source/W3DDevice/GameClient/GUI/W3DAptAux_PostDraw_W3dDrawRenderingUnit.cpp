@@ -26,6 +26,7 @@
 #undef _CRTIMP
 #define _CRTIMP
 #include <list>
+#include <math.h>
 
 // _List_iterator comparisons otherwise instantiate the base-class
 // operator!= COMDAT (one byte shape per TU flags); exact-match free
@@ -259,7 +260,6 @@ struct AptSizePair {
 extern AptSizePair g_aptLastStageSize,g_aptLastDeviceSize; // DE61B8 and DE61C0, zero-filled
 extern AptRenderTransform g_aptTransformBeforeLinearScale; // DE6130, before the linear scale
 void Rva006CD6F0Get(void **,void **);
-extern "C" double __cdecl fabs(double);
 static __forceinline bool aptFar(float value) {
  float magnitude=fabs(value);
  return magnitude>0.0001f;

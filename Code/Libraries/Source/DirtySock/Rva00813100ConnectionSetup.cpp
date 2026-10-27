@@ -1,4 +1,5 @@
 // cl: /Od /GZ /GS /MD /DNDEBUG
+// platformsdk
 
 /*
  * The generated row at 0x00813100 is the six-word callback used by the
@@ -15,6 +16,8 @@
  * receives this same live object from both parser callers; it does not own a
  * temporary one-byte flag.
  */
+
+#include <windows.h>
 
 /* The two TAPI address formats, retail .data 0x009D91A8 and 0x009D91B0
  * (8 bytes each); this body is their only reference (data_xrefs). */
@@ -59,9 +62,6 @@ extern "C" int Rva0081B9D0( void *transport );
 extern void ji_0081bda8();
 typedef int ( __stdcall *Rva0081BDA8Answer )( int address, int first,
 	int second );
-
-extern "C" __declspec(dllimport) int __cdecl wsprintfA(
-	char *destination, const char *format, ... );
 
 extern "C" void __stdcall Rva00813100( int port, int kind,
 	Rva00813100Comm *comm, int size, int unusedA, int unusedB )

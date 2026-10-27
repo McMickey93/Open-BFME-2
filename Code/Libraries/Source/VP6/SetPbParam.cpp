@@ -7,7 +7,7 @@
 // percentage, the clamps, the de-interlace and add-noise modes, or the
 // reference frames of a decoder instance.
 
-extern "C" double __cdecl sqrt(double);
+#include <math.h>
 #pragma intrinsic(sqrt)
 struct Rva009A9070Context;
 struct Rva009A9070Source;

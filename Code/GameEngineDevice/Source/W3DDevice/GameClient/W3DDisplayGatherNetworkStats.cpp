@@ -1,10 +1,12 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 // W3DDisplay::gatherNetworkStats, retail 0x00049271..0x00049B3A (2249 bytes).
 // The WorldBuilder twin (W3DDisplay.cpp, assert line 2407) names it and gives
 // the statement order; everything else is read from retail: seventeen network
 // debug display strings at +0x234, the native debug font of the language data
 // (+0xC8 name, +0xCC size, +0xD0 bold) through the pointer-taking BFME2
 // FontLibrary::getFont, and the NetworkInterface slots the lines read.
+#include <windows.h>
 #include "unicode_string.h"
 #include "ascii_string.h"
 #include "../../../../GameEngine/Source/Common/GameLogicObjectLookupView.h"
@@ -146,8 +148,6 @@ extern float g_Va00DBA2F8;			// VA 0x00DBA2F8, GameEngine.cpp's logic time scale
 Real BfmeAverageFPSRatio = 0;		// VA 0x00DE1B2C
 Int BfmeLastRunAheadCeilingHits = 0;		// VA 0x00DE1C9C
 extern unsigned int BfmeNetworkRunAheadChangeFrame;		// VA 0x00DE1B30, frame of the last run-ahead change
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 enum { NETWORK_DEBUG_LINES = 17 };
 

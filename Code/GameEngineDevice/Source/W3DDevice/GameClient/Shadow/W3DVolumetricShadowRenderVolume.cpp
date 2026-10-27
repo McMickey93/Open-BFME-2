@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 // ?RenderVolume@W3DVolumetricShadow@@IAEXHH@Z @0x000F49D0 231B.
 // W3DVolumetricShadow::RenderVolume(int meshIndex, int lightIndex): refresh
 // the robj transform from its drawable when present (Get_User_Data /
@@ -13,6 +14,8 @@
 // mesh record/flag30/identity-matrix/DYNAMIC-branch); target prologue and
 // slot numbers differ (Get_User_Data 87, Set_Transform 21, Peek 139,
 // Class_ID 3, Validate 20).
+
+#include <windows.h>
 
 class Matrix3D;
 class Vector3
@@ -134,10 +137,6 @@ protected:
 	char m_unmodelled74[0xc];
 	void *m_shadowVolume[160];
 };
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 void W3DVolumetricShadow::RenderVolume(int meshIndex, int lightIndex)
 {

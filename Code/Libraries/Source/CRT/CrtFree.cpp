@@ -4,7 +4,7 @@
 // CrtFree is this project's typed name for that import veneer, distinguishing
 // it from the game's memory-pool free at 00030830. No original C++ name is
 // inferred. The generated placeholder's complete six-byte body is preserved.
-extern "C" __declspec(dllimport) void __cdecl free(void *block);
+#include <stdlib.h>
 
 void __cdecl CrtFree(void *block)
 {

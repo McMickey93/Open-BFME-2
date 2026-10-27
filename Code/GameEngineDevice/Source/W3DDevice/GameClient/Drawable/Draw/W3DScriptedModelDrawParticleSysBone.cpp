@@ -17,7 +17,6 @@ public:
  const char *separators() const {return m_separators;}
 private:char unmodelled[0x420];const char *m_separators;
 };
-extern "C" int __cdecl strcmp(const char *,const char *);
 class Rva00704980 {
 public:
  Rva00704980();

@@ -1,4 +1,5 @@
 // cl: /ICode/Libraries/Include/Lib /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 // BF1 clean W3DModelDrawGetPristineBonePositionsForConditionState donor
 // rev9cbfb551 preserves the seven-argument query and missing-bone fallback.
@@ -16,6 +17,7 @@
 // Native byte-copy assignments require the WWMath row assignments visible
 // and forced inline; CRT sprintf/tolower remain imported as in retail.
 #define _STLP_NO_EXCEPTIONS 1
+#include <windows.h>
 #include <map>
 #include <vector>
 #include <ctype.h>
@@ -25,8 +27,6 @@
 typedef int Int;
 typedef float Real;
 typedef unsigned char UnsignedByte;
-
-#define NULL 0
 
 enum NameKeyType
 {

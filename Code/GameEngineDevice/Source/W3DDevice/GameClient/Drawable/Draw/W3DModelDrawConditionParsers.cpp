@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
+// platformsdk
 //
 // ModelConditionInfo FieldParse procs from the W3DModelDraw condition-state
 // table at VA 0x00BCAB20 (BFME 2 layout).
@@ -20,7 +21,7 @@
 //   0x000B2DE3 ShadowOverrideLODVisibility        parseBool
 // Names of the BFME 2 procs stay address-derived.
 
-#define NULL 0
+#include <windows.h>
 
 typedef float Real;
 

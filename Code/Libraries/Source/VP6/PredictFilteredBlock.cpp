@@ -17,7 +17,7 @@
 // prediction filter mode (0x692) size threshold (0x693) and variance
 // threshold (0x694 via 0x001D8A30). Chroma always uses bilinear.
 
-extern "C" int __cdecl abs(int);
+#include <stdlib.h>
 #pragma intrinsic(abs)
 
 struct Rva009C84D0Vp6Context;

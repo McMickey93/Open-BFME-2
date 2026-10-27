@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?loadRoadsAndBridges@BaseHeightMapRenderObjClass@@QAEXPAVW3DTerrainLogic@@_N@Z
 // retail 0x00067800, 102 bytes. Zero Hour BaseHeightMap.cpp verbatim (with
@@ -8,8 +9,9 @@
 // road buffer (+0x386C, rowed W3DRoadBuffer::loadRoads) and the bridge
 // buffer (+0x3870, W3DBridgeBuffer::loadBridges 0x000DFB3C).
 
+#include <windows.h>
+
 typedef bool Bool;
-typedef long HRESULT;
 #define D3D_OK 0
 
 void __cdecl BFME_DX8_Thread_Lock(void);

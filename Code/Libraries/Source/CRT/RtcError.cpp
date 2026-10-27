@@ -1,4 +1,5 @@
 // cl: /O1 /G6 /Zc:wchar_t /Oi /Ob1 /MD /GX- /GS- /I"reference/open-bfme-1/inputs/toolchains/vs2003/Program Files/Microsoft Visual Studio .NET 2003/Vc7/PlatformSDK/Include"
+// platformsdk
 // Complete native error.obj reporting logic, independently authored from
 // retail bytes, native COFF identities/call relationships and public declarations.
 // No Microsoft implementation source read. Private optimized calling conventions
@@ -10,7 +11,6 @@
 #include <rtcapi.h>
 #include <string.h>
 #include <malloc.h>
-extern "C" void *_ReturnAddress();
 #pragma intrinsic(_ReturnAddress)
 int _RTC_ErrorLevels[4]={1,1,1,1};
 extern "C" {

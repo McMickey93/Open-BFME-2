@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/shims/bfme2_ascii /ICode/Libraries/Include/Lib /Ireference/shims/iniexception
+// platformsdk
 // stlport
 // ?getProjectileLaunchOffset@W3DScriptedModelDraw@@UBE_NABVModelConditionFlags@@W4WeaponSlotType@@HPAVMatrix3D@@W4WhichTurretType@@PAUCoord3D@@4@Z
 // retail 0x000C3DDA..0x000C4069 (655 bytes).
@@ -21,6 +22,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 // bfme link decl-only begin
 namespace _STL { template <> void * __node_alloc<1,0>::allocate(unsigned int); }
 namespace _STL { template <> void __node_alloc<1,0>::deallocate(void *,unsigned int); }
@@ -63,8 +65,6 @@ typedef int Int;
 typedef float Real;
 typedef bool Bool;
 typedef unsigned char UnsignedByte;
-
-#define NULL 0
 
 enum WeaponSlotType { PRIMARY_WEAPON = 0 };
 enum WhichTurretType { TURRET_INVALID = -1 };

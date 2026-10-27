@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?Update@W3DVolumetricShadow@@QAEX_N@Z @0x000F4017 736B.
 //
 // W3DVolumetricShadow::Update: rebuilds this caster's shadow volumes when it
@@ -25,13 +26,12 @@ typedef float Real;
 typedef int Int;
 typedef bool Bool;
 
-#define NULL 0
-
 #define AIRBORNE_UNIT_GROUND_DELTA	2.0f
 #define MAX_SHADOW_LENGTH_EXTRA_AIRBORNE_SCALE_FACTOR	1.5f
 #define SHADOW_EXTRUSION_BUFFER	0.1f
 
 #include <math.h>
+#include <windows.h>
 
 class Vector3
 {

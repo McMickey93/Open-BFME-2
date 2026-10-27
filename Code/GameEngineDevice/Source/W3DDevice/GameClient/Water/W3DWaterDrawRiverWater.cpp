@@ -21,6 +21,7 @@
 // the by-value argument; the pass count lives in a block opened before the
 // push, which lets it share the diffuse slot as retail's frame does.
 #include <vector>
+#include <math.h>
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 
 // The unit is /O1, but the vector<Coord3D> const indexer copy the link keeps
@@ -39,8 +40,6 @@ typedef bool Bool;
 typedef float Real;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
-
-extern "C" double __cdecl sqrt(double);
 
 class RefCountClass
 {

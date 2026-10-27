@@ -11,6 +11,7 @@
 // +3C/+80/+BC). The TerrainRoadType string getters are called by the rowed
 // spellings of their identical-code-folded addresses.
 #include <string.h>
+#include <float.h>
 #include "ascii_string.h"
 
 enum BodyDamageType
@@ -292,8 +293,6 @@ protected:
 	bool m_visible;
 	AsciiString m_templateName;
 };
-
-#define FLT_MAX 3.402823466e+38F
 
 bool W3DBridge::load(BodyDamageType curDamageState)
 {

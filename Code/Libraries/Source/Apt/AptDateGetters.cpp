@@ -6,10 +6,11 @@
 // Fields are a target access view; unused prefix/words are not donor layouts.
 // getTime returns integer zero in retail and shares its callback with setTime.
 // Evidence: reverse/godfather_disk_evidence.json, apt_date_getters.
+#include <stdlib.h>
+
 class AptValue;
 class BfmeAptValue006DCD20 { public: BfmeAptValue006DCD20 *rva006DD160(); };
 class AptInteger { public: static AptValue *Create(int); };
-extern "C" int __cdecl abs(int);
 #pragma intrinsic(abs)
 class AptDate {
     char prefix[0x20];

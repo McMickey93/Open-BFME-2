@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /EHsc /MD /DNDEBUG
+// platformsdk
 // ?rva0010082F@Rva0010082F@@QAEXXZ, retail 0x0010082F, 338 bytes (ends RET at 0x100980).
 // Per-frame update of a water render object (water cluster beside W3DWaterDepthShader getter
 // 0x00100981, same object family): elapsed milliseconds from a function-local static
@@ -7,7 +8,7 @@
 // of every object in two pointer ranges (+0x108..+0x10C, +0x118..+0x11C); then two texture
 // scroll offsets (+0x12C, +0x130) advance by 8.25e-5 / 1.65e-4 and wrap into [-1, 1].
 // Identity of the owning class is not established; the name is address-derived.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 
 class GlobalData { public: char pad[0xD45]; bool m_D45; };
 extern GlobalData *TheWritableGlobalData; // 0x00DFE758

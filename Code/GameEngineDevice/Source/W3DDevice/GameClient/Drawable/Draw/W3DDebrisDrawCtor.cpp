@@ -20,6 +20,8 @@
 // classes throughout keep the body frameless. Factory news 0x48 fits the
 // +0x44 tail. Zero new pins (base resolves via the existing DrawModule pin).
 
+#include <string.h>
+
 extern "C" const void *const vtbl_00C6FFFC[];  // folded, 10 classes; via ??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C6FFFC=??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@")
 
@@ -30,7 +32,6 @@ extern "C" const void *const vtbl_00BC97A8[];  // ??_7W3DDebrisDraw@@6BDrawableM
 
 class Thing;
 class ModuleData;
-extern "C" void *memset(void *, int, unsigned int);
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 

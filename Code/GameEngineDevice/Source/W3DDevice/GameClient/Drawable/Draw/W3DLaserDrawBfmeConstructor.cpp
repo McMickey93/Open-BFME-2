@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /Ireference/shims/bfme2_ascii /I.
+// platformsdk
 // stlport
 // BFME1 donor f98983a7d: W3DLaserDrawBfmeConstructor.cpp supplies laser setup,
 // texture acquisition and beam interpolation. Target factory 0x6492A calls
@@ -18,8 +19,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #include <vector>
-
-#define TRUE 1
+#include <windows.h>
 
 typedef char Char;
 typedef int Int;

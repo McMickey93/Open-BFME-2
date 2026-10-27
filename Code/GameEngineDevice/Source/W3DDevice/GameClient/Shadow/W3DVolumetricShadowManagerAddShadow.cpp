@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // ?addShadow@W3DVolumetricShadowManager@@QAEPAVW3DVolumetricShadow@@PAVRenderObjClass@@PAUShadowTypeInfo@Shadow@@PAVDrawable@@@Z @0x000F2BB9 323B.
 // W3DVolumetricShadowManager::addShadow(RenderObjClass *robj,
 // Shadow::ShadowTypeInfo *shadowInfo, Drawable *draw): stencil + robj +
@@ -206,10 +207,7 @@ extern GlobalData *TheWritableGlobalData; // 0x00DFE758
 #define TheGlobalData TheWritableGlobalData
 
 #include <math.h>
-
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 #define SHADOW_EXTRUSION_BUFFER 0.1f
 #define DEG_TO_RAD (3.14159265358979323846f / 180.0f)

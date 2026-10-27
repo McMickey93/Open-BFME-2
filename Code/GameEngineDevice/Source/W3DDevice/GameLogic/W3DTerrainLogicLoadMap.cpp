@@ -10,6 +10,7 @@
 // +0x14 vector is copied to +0x30 and +0x3C is cleared. Extents +0x1C/+0x20,
 // height range +0x191C/+0x1920.
 #include <string.h>
+#include <stdlib.h>
 #include "ascii_string.h"
 
 typedef int Int;
@@ -17,7 +18,6 @@ typedef float Real;
 typedef bool Bool;
 typedef unsigned short UnsignedShort;
 
-#define _MAX_PATH 260
 #define MAP_HEIGHT_SCALE (10.0f / 256.0f)
 
 struct BfmePod8 { int a[2]; };
