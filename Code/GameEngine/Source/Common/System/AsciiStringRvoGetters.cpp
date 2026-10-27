@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /Oy- /DNDEBUG /MD /GX
+// platformsdk
 //
 // Value-returning AsciiString getters with the RVO idiom proven by
 // GlobalDataRva002360DE.cpp (retail 0x002360DE, 30 bytes):
@@ -11,8 +12,7 @@
 typedef int Int;
 typedef unsigned short WideChar;
 
-#define NULL 0
-
+#include <windows.h>
 #include "ascii_string.h"
 
 

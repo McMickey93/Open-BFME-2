@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD
+// platformsdk
 //
 // ?Rva0021A1E1DumpTemplates@@YAXXZ retail 0x0021A1E1 (470B): a debugger-output
 // listing of TheThingFactory's templates (first at +0x0C, next at +0x484) by
@@ -7,9 +8,8 @@
 // and MACHINE), each matching template giving one OutputDebugStringA line of
 // " <LABEL>\t SIDE: <side>\t<name>\n" from the +0x6C side and +0x64 name
 // strings. The function and the template view keep address-derived names.
+#include <windows.h>
 #include "ascii_string.h"
-
-extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA(const char *text);
 
 class Rva0021A1E1Template
 {

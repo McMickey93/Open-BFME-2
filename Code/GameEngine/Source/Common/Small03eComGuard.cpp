@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // Ported from Open-BFME-1 GameEngine/Source/Common/Small03eComGuard.cpp
 // (donor revision 6d9434269164392c5ba62aaa7c15a86b5b020d76, donor flags plus /O1). Compiled that way each body
@@ -13,10 +14,8 @@
 // (void __stdcall _com_issue_error(HRESULT) at the 0x00AFD540 pin), so the
 // reference carries its defining name and links.
 // IDENTITY IS NOT RECOVERED: the owner keeps its address token.
-// comutil.h declares `void __stdcall _com_issue_error(HRESULT)`; the sweep
-// comutil.h shim does not, so the declaration is repeated here under its
-// exact defining spelling (?_com_issue_error@@YGXJ@Z).
-extern void __stdcall _com_issue_error(long);
+
+#include <comdef.h>
 
 class Rva00958730Box
 {

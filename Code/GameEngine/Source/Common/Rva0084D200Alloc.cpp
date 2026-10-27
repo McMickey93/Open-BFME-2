@@ -14,11 +14,8 @@
 // IDENTITY IS NOT RECOVERED: no caller, string or vtable names the holder,
 // so the record and function names are derived from the address.
 
+#include <stdlib.h>
 #include <string.h>
-
-// BFME2 retail slot 0x00BBA6EC is msvcr71!malloc (import-ref verified), so the
-// declaration needs C linkage; the donor's C++-decorated import fails that check.
-extern "C" __declspec(dllimport) void *__cdecl malloc(unsigned int);
 
 struct Rva0084D200Rec
 {

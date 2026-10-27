@@ -11,9 +11,8 @@
 // to the base 0x00221635, pinned with that signature from 0x005EA635); the
 // ledger row's int spelling predates them. The owning TUs and the globals'
 // names are not established; the RVA names stand in for them.
+#include <stdlib.h>
 #include "ascii_string.h"
-
-extern "C" int __cdecl atexit( void ( __cdecl * )( void ) );
 
 void __cdecl rva007B9734();
 void __cdecl rva007B9979();

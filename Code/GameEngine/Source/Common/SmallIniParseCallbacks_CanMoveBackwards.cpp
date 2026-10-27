@@ -12,14 +12,14 @@
 // ABI __cdecl 4-arg (ini, instance-unused, store-int, userData-unused), int
 // store (4-byte mov [ecx],eax; cf 1-byte bool store in INI_parseBool.cpp).
 
+#include <stdlib.h>
+
 class INI
 {
 public:
 	const char *getNextToken( const char *seps = 0 );
 	bool scanBool( const char *token );
 };
-
-extern "C" __declspec( dllimport ) int __cdecl atoi( const char * );
 
 // ?parseCanMoveBackwards@@YAXPAVINI@@PAX1PBX@Z
 void parseCanMoveBackwards( INI *ini, void *, void *store, const void * )

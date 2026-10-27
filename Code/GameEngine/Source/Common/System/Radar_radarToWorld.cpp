@@ -1,4 +1,5 @@
 // cl: /I. /O1 /G7 /arch:SSE /DNDEBUG /MD
+// platformsdk
 // Radar conversions and event initialization. Native2D8395..2D84F6 and
 // named createEvent callers establish the new353B member and50-byte records.
 // The visible inline+noinline worldToRadar body keeps its own99B exact and
@@ -7,11 +8,10 @@
 // fade multiplier below has target-observed initial0.5 and current usage;
 // its descriptive name is not an original identifier claim.
 
+#include <windows.h>
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 
 #include "Code/Libraries/Include/Lib/Coord3D.h"
-
-#define NULL 0
 
 class BfmeTerrainHeightView
 {

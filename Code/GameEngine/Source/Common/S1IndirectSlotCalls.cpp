@@ -1,3 +1,4 @@
+// platformsdk
 // Two bodies whose call goes through a DWORD SLOT (FF 15 + DIR32 into .idata).
 //
 // BFME1 byte-identical donor (reference/open-bfme-1
@@ -6,7 +7,8 @@
 // native slots as winmm!timeGetTime (BBA918) and mss32!_AIL_lock_mutex@0
 // (BBAAC4), so use those imports rather than the donor's slot globals.
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+#include <windows.h>
+
 extern "C" __declspec(dllimport) void __stdcall AIL_lock_mutex();
 
 // Constructor: call a different slot, then set one byte at offset 0.

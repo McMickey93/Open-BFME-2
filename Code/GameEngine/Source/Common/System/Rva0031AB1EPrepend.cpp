@@ -4,9 +4,8 @@
 // via the scopetable), copy the arg string into +0x10, then swing the
 // +0x2C head through the node returning it. Reuses the rowed new,
 // delete (via placement scope) and StringBase set.
+#include <new>
 #include "ascii_string.h"
-
-void *operator new(unsigned int size);
 
 class Rva0031AB1ENode
 {

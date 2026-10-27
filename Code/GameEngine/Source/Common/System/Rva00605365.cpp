@@ -5,7 +5,8 @@
 // parent scan. No donor; honest address name.
 // Evidence: four callers in 0x00603C5F-0x00604783 band; callee tolower via
 // IAT; sits between Rva00605324 and Rva006053AD with the same flags.
-extern "C" __declspec(dllimport) int __cdecl tolower(int c);
+#include <ctype.h>
+
 char *Rva00605365(char *p)
 {
     char *s = p;

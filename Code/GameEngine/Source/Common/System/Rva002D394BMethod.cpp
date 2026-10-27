@@ -3,7 +3,8 @@
 // list/tree free: child at +0xC recursed with same this, next at +0x8 freed
 // in a loop via rowed free 0x00030830. Evidence: callers 0x002D395D self and
 // 0x002D43D4 in 0x002D43C6 which passes [header+4] then resets header links.
-extern "C" void __cdecl free(void *block);
+
+#include <stdlib.h>
 
 class Rva002D394B
 {

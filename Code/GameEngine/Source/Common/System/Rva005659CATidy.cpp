@@ -1,14 +1,14 @@
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // ?rva005659CA@Rva005659CA@@QAEXXZ retail 0x005659CA 30B: tidy destroying [m_00,m_04) via 0x005A6EDA then freeing m_00. Callers include 0x0015031B.
 
+#include <stdlib.h>
+
 struct Rva0052BF33Elem
 {
 	virtual ~Rva0052BF33Elem();
 };
 
 void Rva005A6EDADestroyRange(Rva0052BF33Elem *first, Rva0052BF33Elem *last);
-
-extern "C" void __cdecl free(void *block);
 
 class Rva005659CA
 {

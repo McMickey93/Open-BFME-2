@@ -12,6 +12,7 @@
 // the entry name slot, inline PBD delegates to the rowed StringBase
 // ctor at 0x0037BA0, teardown/assign ride the pinned 0x36410/0x366F0).
 
+#include <stdio.h>
 #include "ascii_string.h"
 
 
@@ -61,8 +62,6 @@ public:
 	INIException(const INIException &that);
 	~INIException();
 };
-
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
 
 // ?parseCrateCreationEntry@CrateTemplate@@SAXPAVINI@@PAX1PBX@Z
 void CrateTemplate::parseCrateCreationEntry(INI *ini, void *instance, void *, const void *)

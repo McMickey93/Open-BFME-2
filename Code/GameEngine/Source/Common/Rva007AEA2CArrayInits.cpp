@@ -25,7 +25,7 @@
 //                            body around 0x0055DDF8 builds under guard bit
 //                            0x00E06220 (ctor 0x0047A6A9, empty dtor 0x000B3FD0)
 
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
+#include <stdlib.h>
 
 typedef void (__thiscall *ElemFn)(void *);
 void __stdcall __ehvec_ctor(void *, unsigned, int, ElemFn, ElemFn);

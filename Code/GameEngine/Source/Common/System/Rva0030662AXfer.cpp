@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /EHsc
+// platformsdk
 // Retail 0x0030662A 217B: Xfer-string plus audio-tag helper next to 0x3064CB.
 // Evidence: Rva0036CA00Str copy row 0x000A8C7C, StringBase copy row 0x000365F0,
 // Xfer AsciiString slot 0x6C plus IsLoading slot 0x04, TheAudio ?TheAudio,
@@ -9,6 +10,7 @@
 // inlined destructor: cl only proves the copy does not escape when the copy
 // constructor (0x000A8C7C) body is visible, so it is defined here out of
 // line, byte-identical to its retail body.
+#include <windows.h>
 #include "ascii_string.h"
 class Xfer;
 class AsciiString;
@@ -29,7 +31,6 @@ class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
 #include "../../../Include/Common/BfmeXfer.h"
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *value);
 class OpaqueRefCounted
 
 {

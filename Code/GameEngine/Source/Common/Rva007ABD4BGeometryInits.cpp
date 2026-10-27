@@ -9,7 +9,8 @@
 // GeometryInfo's destructor on the same global. GEOMETRY_SPHERE as type 0
 // follows the donor enum. The owning TU and the globals' names are not
 // established; the RVA names stand in for them.
-extern "C" int __cdecl atexit( void ( __cdecl * )( void ) );
+
+#include <stdlib.h>
 
 enum GeometryType
 {

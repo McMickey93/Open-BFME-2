@@ -1,3 +1,4 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 //
 // Ported from Open-BFME-1 GameEngine/Source/Common/Rva007E4AD0Vp6Update.cpp
@@ -8,7 +9,7 @@
 // ?update@Rva007E4AD0Vp6Stream@@QAEXXZ [retail body 0x007E4AD0]
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHs-c-
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 
 class Rva007E3410Target
 {

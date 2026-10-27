@@ -7,7 +7,7 @@
 // out-of-line. The anchor wrapper is absent from retail; it only forces the
 // emission.
 
-extern "C" __declspec(dllimport) int __cdecl isspace(int c);
+#include <ctype.h>
 
 static char *skipWhitespace(char *p)
 {

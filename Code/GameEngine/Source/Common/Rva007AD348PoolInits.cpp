@@ -10,7 +10,7 @@
 // members of a friend holder and the cleanups as free functions in the
 // style of Rva007B6880Thunks.cpp.
 
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
+#include <stdlib.h>
 
 struct Rva007AD348PoolInits;
 

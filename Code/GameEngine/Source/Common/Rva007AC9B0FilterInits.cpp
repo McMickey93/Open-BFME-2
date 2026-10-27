@@ -13,7 +13,8 @@
 //               0x00DEC1F0, cleanup 0x007B6F27, a lone `ret` (empty dtor).
 // The owning TU and the objects' names are not established; the RVA names
 // stand in for them, and the objects keep their ledger globals.
-extern "C" int __cdecl atexit( void ( __cdecl * )( void ) );
+
+#include <stdlib.h>
 
 class Rva000FC63DFilter
 {

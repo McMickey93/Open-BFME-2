@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /arch:SSE
+// platformsdk
 // Radar.cpp: Radar bodies retail links from this TU (tu_map approved), folded
 // from six split units that shared these exact flags. The canonical Snapshot
 // base and retained field view preserve every verified Radar offset:
@@ -11,8 +12,8 @@ typedef bool Bool;
 typedef int Int;
 typedef float Real;
 
-#define NULL 0
 #define BFME_SNAPSHOT_NAME_SLOT
+#include <windows.h>
 #include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"

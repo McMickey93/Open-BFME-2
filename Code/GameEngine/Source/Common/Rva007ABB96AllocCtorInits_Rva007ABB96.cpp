@@ -1,5 +1,6 @@
 // Split from Rva007ABB96AllocCtorInits.cpp: these definitions reference a callee with no matched body yet,
 // so they are kept apart from the unit's bodies that already link.
+#include <stdlib.h>
 #include "../GameLogic/SkirmishAI/AIEconomyBuilder/AIEconomyBuilderFarmLibrary.h"
 // cl: /MD
 //
@@ -12,8 +13,6 @@
 // cleanup thunk's tail-jump target is noted beside it. The owning TUs are
 // unrecovered, so each initializer keeps an honest address name and its global
 // an address-named extern.
-
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
 
 struct BfmeE16;
 struct BfmeE12;

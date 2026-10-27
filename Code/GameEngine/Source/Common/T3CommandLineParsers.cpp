@@ -40,10 +40,10 @@
 // is what makes it safe to read the rest of it. A key BFME added and Zero Hour
 // has no member for stays an offset name, with the key in its comment.
 
+#include <stdlib.h>
+
 typedef int Int;
 typedef unsigned int UnsignedInt;
-
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *);
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/GlobalData.h
 class GlobalData
@@ -171,4 +171,3 @@ Int Rva000613F0_parse(char *args[], int num)
 	}
 	return 1;
 }
-

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // ?screenPixelToWorld@Radar@@QAE_NPBUICoord2D@@PAUCoord3D@@@Z,
 // retail 0x002D82E4, 106 bytes. Dedicated TU.
@@ -11,9 +12,8 @@
 // helpers. BFME2 keeps the radar window at Radar+0x1430 (proven by the
 // landed Radar::newMap); the 20-byte delta is under investigation.
 
+#include <windows.h>
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
-
-#define NULL 0
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 

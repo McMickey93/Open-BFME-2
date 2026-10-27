@@ -3,14 +3,14 @@
 // ?rva0021887C@Rva0021887C@@QAEXXZ @0x0021887C 30B: destroy GeometryRecord range then free storage.
 // Evidence: pushes [this+4]/[this] to rowed _Destroy<GeometryRecord*> 0x00217B1E; reloads [this] and frees via rowed free 0x00030830; callers 0x00218B20/0x0006454B.
 // ?rva0021887C@Rva0021887C@@QAEXXZ @0x0021887C present-unmatched
+#include <stdlib.h>
+
 struct GeometryRecord;
 
 namespace _STL
 {
 template <class T> void _Destroy(T first, T last);
 }
-
-extern "C" void __cdecl free(void *ptr);
 
 class Rva0021887C
 {

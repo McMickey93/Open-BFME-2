@@ -13,9 +13,8 @@
 // order retail has (the Rva005E16DA.cpp finding, read the other way round).
 // The owning TU, class and member names are not established; the RVA names
 // stand in for them.
+#include <stdlib.h>
 #include "ascii_string.h"
-
-extern "C" int __cdecl atexit( void ( __cdecl * )( void ) );
 
 void __cdecl rva007B94AA();
 void __cdecl rva007B94B4();

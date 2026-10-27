@@ -1,10 +1,13 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 //
 // Two memory-pool slot forwarders after the replaced C free (0x00030830).
 // The slots are the MemoryPool exports Rva00030730Init resolves with
 // GetProcAddress: VA 0x00DE03F4 is ?_GetBlockSize@MemoryPool@@YAIPAXI@Z and
 // VA 0x00DE03EC is ?_VerifyIntegrity@MemoryPool@@YAXXZ. Names stay
 // address-derived; the shapes come from the retail bytes.
+
+#include <windows.h>
 
 void * g_00DE03F4;	// retail RVA 0x009E03F4 (.bss), defined here
 void * g_00DE03EC;	// retail RVA 0x009E03EC (.bss), defined here
@@ -29,7 +32,6 @@ void rva00030880()
 
 // --- 0x00031420 (12B): forward a message to OutputDebugStringA. Its address
 // is taken at 0x00033D37 (a GeneralAllocator trace-callback store).
-extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA(const char *text);
 
 void rva00031420(const char *text)
 {
