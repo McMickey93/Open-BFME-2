@@ -3893,3 +3893,17 @@ Completed: canonical adoptions in SpellRechargeModifierUpgradeModuleDataCtor.cpp
 Remaining / next check: the class owner must resolve the missing hasData API and the nonthrowing compareNoCase(text) contract before retrying those users. The other stopped units require native lifetime, CRT declaration or element-identity reconciliation: private strings occupy different sizes or supply trivial copy/assignment where the canonical class owns a reference-counted buffer. Resolve the owning record and pair identities before changing layouts; LINK-064 already tracks the placeholder tree-value family. All failed source trials are restored exactly; no header growth or shallow-copy workaround is proposed.
 Clearance: limited to preserving the existing ordinary-preview links of the adopted units. Remaining private-view blockers stay open. No new linked-byte gain is claimed.
 Census confirmation: pending the next normal maintainer census; no census run or index update in this pass.
+
+### LINK-100: remaining AsciiString constructor and lifetime contracts
+
+Status: Blocked for the remaining consumers; compatible consumer adoptions verified. Updated: 2026-10-27; inspected revision: b2098ee19b936ee456d5cf7d6ec0c8c6a5468e63.
+
+Evidence / affected units: the assigned AsciiString package has per-unit original, trial and restored byte checks, ordinary link previews and acceptance receipts in local `build/header-report.md` and `build/header-ha2-ascii/`. The supplied preview index is the published `5ce093a71a` census under retail-truth-4. Stopped sources are restored exactly and retain their queue entries; their verdicts were recorded through `re_log.py`.
+
+Completed: compatible file scanners, registry and save-path builders, FX getters, AutoAbility comparisons and module-data constructors use the canonical string headers and public operations while retaining their matched rows and original link-clean previews. RegistryAsciiPath also uses canonical UnicodeString and StringBase. BoneFXUpdateParse preserves its existing CRT import calls by loading the string header with the CRT's normal import declarations and then restoring its original `_CRTIMP` macro. Missile and Production retain outlined string destruction through the header's existing declaration option. Only `header_adopt_lane.py accept` removes queue rows.
+
+Remaining / next check: MessageStreamCommandName needs the native constructor inline-budget shape; version.cpp needs inline character access; Rva004110DCGet and Rva0041811DGet need their temporary lifetime and callee exception contracts reconciled without introducing EH prologues. Rva003F9FA9Ctor and Rva00402BE3Ctor need the outer AsciiString copy-constructor call retained. AttributeModifierPoolUpdateCtor needs a non-releasing reset and its native member lifetime. Rva0049D1B1 needs the native late null-buffer store retained rather than moving it into early default construction. Review the raw failed rows before changing a shared header, and preserve the existing consumer byte and link checks.
+
+Clearance: the retained adoptions are verified only within the stated ordinary-preview scope. The remaining constructor, accessor and lifetime contracts are open; canonical headers and reference shims are unchanged.
+
+Census confirmation: not claimed.

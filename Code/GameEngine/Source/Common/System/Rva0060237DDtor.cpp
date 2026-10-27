@@ -1,27 +1,12 @@
-// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
 // ??1Rva0060237D@@UAE@XZ @0x0060237D 68B evidence: vtable VA 0x0087A7B8 at +0; delete[] at +0x14 via 0x0002FD80; StringBase char releaseBuffer at +0x24 via 0x00036410; base File dtor via 0x006025CE row; unblocks deleting dtor 0x006023F6
 
 void __cdecl operator delete[](void *) throw();
 
 typedef void *FileHandle;
 
-template <typename T>
-class StringBase
-{
-	friend class Rva0060237D;
-private:
-	void releaseBuffer();
-	void *m_data;
-};
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-class AsciiString
-{
-public:
-	void set(const char *str);
-	void clear();
-private:
-	StringBase<char> m_base;
-};
 
 class File
 {
@@ -59,13 +44,12 @@ public:
 private:
 	char *m_14;
 	char m_pad18[0x0C];
-	StringBase<char> m_24;
+	AsciiString m_24;
 };
 
 Rva0060237D::~Rva0060237D()
 {
 	delete[] m_14;
-	m_24.releaseBuffer();
 }
 
 // Placeholder virtuals in this unit's vftables: in retail, every vftable that holds

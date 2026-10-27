@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
 //
 // ?rva0045A6FE@AutoAbilityBehavior@@QAEXPAX@Z, retail 0x0045A6FE, 74 bytes.
 // If src is null or its byte at +0x10C is clear, or its string at +0x10
@@ -10,21 +10,8 @@
 
 class Object;
 
-template <typename T>
-class StringBase
-{
-public:
-	int compare(const StringBase<T> &other) const;
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-private:
-	void *m_data;
-};
-
-class AsciiString
-{
-public:
-	StringBase<char> m_impl;
-};
 
 enum UpdateSleepTime
 {
@@ -63,7 +50,7 @@ private:
 void AutoAbilityBehavior::rva0045A6FE(void *src)
 {
 	Rva0045A6FEArg *s = (Rva0045A6FEArg *)src;
-	if (!s || !s->m_flag10C || s->m_str10.m_impl.compare(m_str20.m_impl) == 0) {
+	if (!s || !s->m_flag10C || s->m_str10.compare(m_str20) == 0) {
 		rva0045A413();
 		((UpdateModule *)this)->setWakeFrame(m_obj8, UPDATE_SLEEP_FOREVER);
 		return;

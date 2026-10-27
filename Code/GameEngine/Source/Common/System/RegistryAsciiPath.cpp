@@ -15,7 +15,7 @@
 **	You should have received a copy of the GNU General Public License
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-// cl: /EHsc
+// cl: /Ireference/shims/bfme2_ascii /EHsc
 // October 2026 EH ownership: native parent bytes and every associative EH
 // code/data relocation verify for this whole unit. Cleanup entry identities
 // come from unwind-map references; interior return labels are excluded.
@@ -37,71 +37,15 @@ extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int written
 
 class AsciiString;
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	StringBase(const T *text);
-	StringBase(const StringBase &src);
-	void releaseBuffer();
-
-public:
-	StringBase() : m_data(0) {}
-	T *getBufferForRead(int len);
-	void set(const StringBase &src);
-
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-
-protected:
-	Header *m_data;
-};
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include "../../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 class UnicodeString;
 
-class AsciiString : public StringBase<char>
-{
-public:
-	~AsciiString() { releaseBuffer(); }
-	AsciiString() {}
-	AsciiString(const char *text) : StringBase<char>(text) {}
-	AsciiString(const AsciiString &src) : StringBase<char>(src) {}
-	AsciiString &operator=(const AsciiString &src);
-
-	int getLength() const { return m_data ? m_data->length : 0; }
-	const char *str() const { return m_data ? m_data->data : ""; }
-	void translate(const UnicodeString &src);
-};
 
 // The wide string, as far as the registry readers reach it: its storage
 // releases inline, and it converts from an AsciiString out of line.
-template <>
-class StringBase<unsigned short>
-{
-	friend class UnicodeString;
-	void releaseBuffer();
 
-public:
-	StringBase() : m_data(0) {}
-	StringBase(const StringBase<unsigned short> &source);
-	~StringBase() { releaseBuffer(); }
-	unsigned short *getBufferForRead(int length);
-
-private:
-	void *m_data;
-};
-
-class UnicodeString : public StringBase<unsigned short>
-{
-public:
-	UnicodeString() {}
-	UnicodeString(const AsciiString &src);
-};
 
 // The (pointer, length) text reference shared with the wide builders.
 class Rva000B3F84Pair
@@ -245,7 +189,7 @@ int AsciiStringPlusText::write(char *dst)
 AsciiStringPlusText::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -255,7 +199,7 @@ AsciiStringPlusText::operator UnicodeString()
 {
 	UnicodeString tmp;
 	Rva002DCD9A *pair = (Rva002DCD9A *)this;
-	pair->copyToBuffer(tmp.getBufferForRead(length()));
+	pair->copyToBuffer(static_cast<StringBase<unsigned short> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -276,7 +220,7 @@ int AsciiStringCharPlusText::write(char *dst)
 AsciiStringCharPlusText::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -297,7 +241,7 @@ inline __declspec(noinline) int AsciiStringPlusString::write(char *dst)
 AsciiStringPlusString::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -373,7 +317,7 @@ int Rva005D3311::write(char *dst)
 Rva005D3311::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -409,7 +353,7 @@ int Rva005F9852::write(char *dst)
 Rva005F9852::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -418,7 +362,7 @@ Rva0050F23E::operator AsciiString()
 {
 	AsciiString tmp;
 	int extra = m_text.m_len;
-	write(tmp.getBufferForRead(extra + AsciiStringPlusString::length() + 1));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(extra + AsciiStringPlusString::length() + 1));
 	return tmp;
 }
 
@@ -427,7 +371,7 @@ inline __declspec(noinline) AsciiStringPlusStringText::operator AsciiString()
 {
 	AsciiString tmp;
 	int extra = m_text.m_len;
-	write(tmp.getBufferForRead(extra + AsciiStringPlusString::length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(extra + AsciiStringPlusString::length()));
 	return tmp;
 }
 
@@ -482,7 +426,7 @@ int Rva002226E5TextPlusString::write(char *dst)
 Rva002226E5TextPlusString::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -709,7 +653,7 @@ int Rva0020F58E::write(char *dst)
 Rva0020F58E::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -729,7 +673,7 @@ struct WinMainTitlePair : Rva000B3F84Pair
 WinMainTitlePair::operator AsciiString()
 {
 	AsciiString tmp;
-	write(tmp.getBufferForRead(length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
 	return tmp;
 }
 
@@ -753,7 +697,7 @@ Rva00238C34::operator AsciiString()
 {
 	AsciiString tmp;
 	int extra = m_text2.m_len;
-	write(tmp.getBufferForRead(extra + Rva0020F58E::length()));
+	write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(extra + Rva0020F58E::length()));
 	return tmp;
 }
 
@@ -780,7 +724,7 @@ AsciiString Rva000BDC6D::rva000BDC6D()
 {
 	AsciiString tmp;
 	int extra = m_extra18;
-	((Rva000BD268 *)this)->write(tmp.getBufferForRead(extra + ((Rva000B65FD *)this)->rva000B65FD()));
+	((Rva000BD268 *)this)->write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(extra + ((Rva000B65FD *)this)->rva000B65FD()));
 	return tmp;
 }
 
@@ -801,7 +745,7 @@ Rva0059B2EC::operator AsciiString()
 {
 	AsciiString tmp;
 	int extra = m_extra10;
-	((Rva0059B1A2 *)this)->copyToBuffer(tmp.getBufferForRead(extra + ((AsciiStringPlusText *)this)->length()));
+	((Rva0059B1A2 *)this)->copyToBuffer(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(extra + ((AsciiStringPlusText *)this)->length()));
 	return tmp;
 }
 
@@ -823,7 +767,7 @@ int Rva005EF5CA::length() const
 Rva005EF5CA::operator AsciiString()
 {
  AsciiString tmp;
- write(tmp.getBufferForRead(length()));
+ write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(length()));
  return tmp;
 }
 
@@ -892,7 +836,7 @@ Rva005F9877::~Rva005F9877() {}
 inline __declspec(noinline) AsciiStringRefWithChar::operator AsciiString()
 {
  AsciiString tmp;
- write(tmp.getBufferForRead(m_string->getLength() + 1));
+ write(reinterpret_cast<StringBase<char> *>(&tmp)->getBufferForRead(m_string->getLength() + 1));
  return tmp;
 }
 

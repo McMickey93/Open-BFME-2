@@ -1,4 +1,4 @@
-// cl: /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// cl: /Ireference/shims/bfme2_ascii /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // Identity: ModuleFactory registers this data class under "ActiveBody" (addModule
 // pairs the name with this factory); formerly misnamed SupplyTruckAIUpdateModuleData.
 // stlport
@@ -22,20 +22,7 @@ extern "C" const void *__identifier("??_7ActiveBodyModuleData@@6B@")[];
 // bfme link decl-only BfmeE16
 namespace _STL { template <> vector<BfmeE16, allocator<BfmeE16> >::~vector(); }
 
-class AsciiString
-{
-public:
-	AsciiString() : m_data(0) {}
-	void clear();
-	~AsciiString();
-
-	void set(const char *str);
-	bool isEmpty() const;
-	const char *c_str() const { return m_data ? (const char *)m_data + 8 : ""; }
-
-private:
-	void *m_data;
-};
+#include "../../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class UpdateModuleData
 {
@@ -125,6 +112,6 @@ ActiveBodyModuleData::ActiveBodyModuleData()
 	m_damagedAttr.clear();
 	m_reallyDamagedAttr.clear();
 	AsciiString &healingDefault = TheWritableGlobalData->m_healingBuff;
-	if (!healingDefault.isEmpty())
-		m_healingBuffFx = TheFXListStore->findFXList(healingDefault.c_str());
+	if (!reinterpret_cast<const StringBase<char> *>(&healingDefault)->isEmpty())
+		m_healingBuffFx = TheFXListStore->findFXList(healingDefault.str());
 }

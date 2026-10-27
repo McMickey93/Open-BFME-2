@@ -1,4 +1,4 @@
-// cl: -DNDEBUG -MD -EHsc -Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib -Ireference/open-bfme-1/game/GameEngine/Source/GameClient
+// cl: /Ireference/shims/bfme2_ascii -DNDEBUG -MD -EHsc -Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib -Ireference/open-bfme-1/game/GameEngine/Source/GameClient
 // Open-BFME5: lift the ParseObjectsDataChunk MASM dump to clean C++.
 //
 // Zero Hour's version is MapUtil.cpp:178 and BFME kept the shape, but changed
@@ -18,12 +18,7 @@ class UserParser;
 
 // class-gate: allow AsciiString the donor's TU-local StringBase-derived view; retail reuses the dead first-parameter slot for this temporary, so its constructor and destructor must be exactly this inline pair
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/AsciiString.h
-class AsciiString : public StringBase<char>
-{
-public:
-	AsciiString(const char *s) : StringBase<char>(s) {}
-	~AsciiString() {}
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 typedef bool (*DataChunkParser)(DataChunkInput &file, DataChunkInfo *info, void *userData);
 

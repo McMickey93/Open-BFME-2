@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
 // ?getEventFX@LifeEventModuleInfo@FXParticleSystem@@QAEPBVFXList@@XZ @0x0056410F 46B.
 // Lazy FXList cache: on first call resolves the event name (m_data at +4
 // with the +8 header skip, else the pinned empty string at 0x00BBAC1C)
@@ -8,11 +8,7 @@
 // getEventFX). Callers at 0x00564197 and 0x00564249; unblocks 0x0056413D
 // and 0x005641ED.
 
-class AsciiString
-{
-public:
-	char *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class FXList
 {
@@ -46,7 +42,7 @@ const FXList *FXParticleSystem::LifeEventModuleInfo::getEventFX()
 {
 	if (m_cached == 0)
 	{
-		const char *name = m_eventName.m_data != 0 ? (const char *)m_eventName.m_data + 8 : "";
+		const char *name = m_eventName.str();
 		m_cached = TheFXListStore->findFXList(name);
 	}
 	return m_cached;

@@ -1,4 +1,4 @@
-// cl: /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// cl: /Ireference/shims/bfme2_ascii /MD /DNDEBUG /DWIN32 /D_WINDOWS
 // ??0Rva003ECD60Object@@QAE@ABVAsciiString@@E@Z @0x003ECD60 (87B): heap
 // object ctor that constructs the 20-element 0x44 array via ??_H with the
 // rowed element ctor 0x003ECA4B copies the +0x550 name via the pinned
@@ -7,17 +7,8 @@
 // Called from Xfer 0x003ECED5 plus two 0x002C5xxx sites. No donor name.
 class Rva003ECD60Object;
 
-template <class T> class StringBase
-{
-	friend class Rva003ECD60Object;
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-private:
-	StringBase(const StringBase &other);
-};
-
-class AsciiString : public StringBase<char>
-{
-};
 
 class Rva003ECA4BElement
 {
@@ -73,7 +64,7 @@ public:
 
 private:
 	Rva003ECA4BElement m_elems[20];
-	StringBase<char> m_name;
+	AsciiString m_name;
 	float m_f554;
 	float m_f558;
 	float m_f55C;
@@ -83,7 +74,7 @@ private:
 };
 
 Rva003ECD60Object::Rva003ECD60Object(const StringBase<char> &name, bool flag)
-	: m_name(name)
+	: m_name(reinterpret_cast<const AsciiString &>(name))
 {
 	float *p = &m_f554;
 	p[0] = 0.0f;

@@ -1,4 +1,4 @@
-// cl: /EHsc
+// cl: /Ireference/shims/bfme2_ascii /EHsc
 // ?packPortableMapPath@GameState@@QBE?AVAsciiString@@ABV2@@Z, retail 0x002DCB9C, 351 bytes.
 // Retyped 2026-10-01 from the stdcall free function ?Rva002DCB9C@@YG?AVAsciiString@@ABV1@@Z:
 // its caller 0x004007B4 (Rva00400783PortableMapPath.cpp) loads TheGameState
@@ -12,38 +12,8 @@
 // 0x004007C2. Neighbours Rva002DC802BaseName and rva002DCCFB same flags.
 typedef unsigned int UInt;
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	StringBase(const T *text);
-	StringBase(const StringBase<T> &other);
-	void releaseBuffer();
-public:
-	StringBase() : m_data(0) {}
-	bool startsWithNoCase(const T *text) const;
-	void set(const T *text);
-	void set(const StringBase<T> &other);
-	void concat(const T *text);
-	void concat(const StringBase<T> &other);
-	void toLower();
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-class AsciiString : public StringBase<char>
-{
-public:
-	AsciiString() {}
-	__forceinline AsciiString(const AsciiString &other) : StringBase<char>(other) {}
-	__forceinline ~AsciiString() { releaseBuffer(); }
-};
 
 extern const char *g_00DBD054;
 extern const char *g_00DBD058;
@@ -68,19 +38,19 @@ AsciiString GameState::packPortableMapPath(const AsciiString &in) const
 	AsciiString out;
 	if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD054)) {
 		((StringBase<char> *)&out)->set(g_00DBD064);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD054));
 	} else if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD058)) {
 		((StringBase<char> *)&out)->set(g_00DBD068);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD058));
 	} else if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD05C)) {
 		((StringBase<char> *)&out)->set(g_00DBD06C);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD05C));
 	} else if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD060)) {
 		((StringBase<char> *)&out)->set(g_00DBD070);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD060));
 	} else {
 		((StringBase<char> *)&out)->set(g_00DBD074);
@@ -99,22 +69,22 @@ AsciiString GameState::unpackPortableMapPath(const AsciiString &in) const
 	AsciiString out;
 	if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD064)) {
 		((StringBase<char> *)&out)->concat(g_00DBD054);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD064));
 	} else if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD068)) {
 		((StringBase<char> *)&out)->concat(g_00DBD058);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD068));
 	} else if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD06C)) {
 		((StringBase<char> *)&out)->concat(g_00DBD05C);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD06C));
 	} else if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD070)) {
 		((StringBase<char> *)&out)->concat(g_00DBD060);
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD070));
 	} else if (((const StringBase<char> &)in).startsWithNoCase(g_00DBD074)) {
-		const char *s = in.m_data ? &in.m_data->data[0] : "";
+		const char *s = in.str();
 		((StringBase<char> *)&out)->concat(s + strlen(g_00DBD074));
 	} else {
 		((StringBase<char> *)&out)->set((const StringBase<char> &)in);

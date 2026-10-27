@@ -1,4 +1,4 @@
-// cl: /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS /Ireference/shims/moduledata
+// cl: /Ireference/shims/bfme2_ascii /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS /Ireference/shims/moduledata
 //
 // ??0MissileUpdateModuleData@@QAE@XZ, retail 0x004A77B8, 149 bytes.
 // ModuleData ctor over table 0xC53470 (FuelLifetime through DetonateOnNoFuel
@@ -38,16 +38,8 @@ public:
 	unsigned char m_data[0x1C];
 };
 
-class AsciiString
-{
-public:
-	AsciiString(int zero) : m_data(reinterpret_cast<void *>(zero)) {}
-	~AsciiString();
-	void set(const char *str);
-
-public:
-	void *m_data;
-};
+#define BFME_ASCII_DTOR_DECL
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class MissileUpdateModuleData : public BezierProjectileBehaviorModuleData
 {
@@ -73,7 +65,7 @@ private:
 // ??0MissileUpdateModuleData@@QAE@XZ @0x4A77B8
 MissileUpdateModuleData::MissileUpdateModuleData()
 	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C53668)))
-	, m_exhaust(0)
+	, m_exhaust()
 {
 	m_fuelLifetime = 0;
 	m_ignitionDelay = 0;

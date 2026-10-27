@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS
 // stlport
 //
 // ?rva0045A748@AutoAbilityBehavior@@QAEXPAX_N@Z, retail 0x0045A748, 71 bytes.
@@ -11,21 +11,8 @@
 
 class Object;
 
-template <typename T>
-class StringBase
-{
-public:
-	int compare(const StringBase<T> &other) const;
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-private:
-	void *m_data;
-};
-
-class AsciiString
-{
-public:
-	StringBase<char> m_impl;
-};
 
 enum UpdateSleepTime
 {
@@ -63,7 +50,7 @@ private:
 void AutoAbilityBehavior::rva0045A748(void *src, bool flag)
 {
 	Rva0045A748Arg *s = (Rva0045A748Arg *)src;
-	if (!s || s->m_str10.m_impl.compare(m_str20.m_impl) != 0 || flag != false) {
+	if (!s || s->m_str10.compare(m_str20) != 0 || flag != false) {
 		rva0045A421(s);
 		return;
 	}

@@ -1,4 +1,4 @@
-// cl: /Oy- /DNDEBUG /MD /GX-
+// cl: /Ireference/shims/bfme2_ascii /Oy- /DNDEBUG /MD /GX-
 //
 // ?doFXPos@FXList@@QBEXPBUCoord3D@@PBVMatrix3D@@M0@Z
 // retail 0x001E296E, 168 bytes. Dedicated TU.
@@ -39,11 +39,7 @@ extern PartitionManager *TheShroudManager;
 // TheShroudManager: matched references place it at VA 0xdfe74c (zero-filled .bss).
 PartitionManager * TheShroudManager;
 
-class AsciiString
-{
-public:
-	void *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class FXList;
 
@@ -128,7 +124,7 @@ void FXList::doFXPos(const Coord3D *pos, const Matrix3D *mtx, float speed, const
 {
 	const FXList *list = this;
 	while (list->m_hasAlias) {
-		const char *alias = list->m_aliasName.m_data != NULL ? (const char *)list->m_aliasName.m_data + 8 : "";
+		const char *alias = list->m_aliasName.str();
 		const FXList *found = TheFXListStore->findFXList(alias);
 		if (found == NULL)
 			break;
@@ -156,7 +152,7 @@ void FXList::doFXObj(const Object *primary, const Object *secondary) const
 {
 	const FXList *list = this;
 	while (list->m_hasAlias) {
-		const char *alias = list->m_aliasName.m_data != NULL ? (const char *)list->m_aliasName.m_data + 8 : "";
+		const char *alias = list->m_aliasName.str();
 		const FXList *found = TheFXListStore->findFXList(alias);
 		if (found == NULL)
 			break;

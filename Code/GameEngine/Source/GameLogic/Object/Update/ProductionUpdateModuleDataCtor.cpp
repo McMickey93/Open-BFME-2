@@ -1,4 +1,4 @@
-// cl: /EHsc /DNDEBUG /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// cl: /Ireference/shims/bfme2_ascii /EHsc /DNDEBUG /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // stlport
 //
 // ??0ProductionUpdateModuleData@@QAE@XZ, retail 0x0049F7DB, 178 bytes.
@@ -62,16 +62,8 @@ void _STLP_alloc_proxy<_List_node<int> *, _List_node<int>, allocator<_List_node<
 typedef int Int;
 typedef unsigned int UnsignedInt;
 
-class AsciiString
-{
-public:
-	AsciiString(int zero) : m_data(reinterpret_cast<void *>(zero)) {}
-	~AsciiString();
-	void set(const char *str);
-
-private:
-	void *m_data;
-};
+#define BFME_ASCII_DTOR_DECL
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 struct QuantityModifier
 {
@@ -160,8 +152,8 @@ namespace _STL { template <> vector<QuantityModifier,_STL::allocator<QuantityMod
 ProductionUpdateModuleData::ProductionUpdateModuleData()
 	: UpdateModuleData()
 	, m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C515F0)))
-	, m_bonusForType(0)
-	, m_speedBonusAudioLoop(0)
+	, m_bonusForType()
+	, m_speedBonusAudioLoop()
 {
 	m_numDoorAnimations = 0;
 	m_doorOpeningTime = 0;

@@ -1,6 +1,6 @@
 char g_00BF4028;
 
-// cl: /O1 /arch:SSE /GX /Oy- /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// cl: /Ireference/shims/bfme2_ascii /O1 /arch:SSE /GX /Oy- /MD /DNDEBUG /DWIN32 /D_WINDOWS
 //
 // ??0StructureBodyModuleData@@QAE@XZ, retail 0x00257006, 101 bytes.
 // Structure-body module data: the rowed StructureBody pool key at
@@ -17,20 +17,7 @@ char g_00BF4028;
 // precedent); the base leaves +0x48 alone so no zero store precedes the
 // guarded fill.
 
-class AsciiString
-{
-public:
-	AsciiString() : m_data(0) {}
-	void clear();
-	~AsciiString();
-
-	void set(const char *str);
-	bool isEmpty() const;
-	const char *c_str() const { return m_data ? (const char *)m_data + 8 : ""; }
-
-private:
-	void *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class GlobalData
 {
@@ -72,8 +59,8 @@ inline StructureBodyModuleData::StructureBodyModuleData()
 {
 	*(const void **)this = reinterpret_cast<const void *>((unsigned int)&g_00BF4028);
 	AsciiString &healingDefault = TheWritableGlobalData->m_healingBuff;
-	if (!healingDefault.isEmpty())
-		m_healingBuffFx = TheFXListStore->findFXList(healingDefault.c_str());
+	if (!reinterpret_cast<const StringBase<char> *>(&healingDefault)->isEmpty())
+		m_healingBuffFx = TheFXListStore->findFXList(healingDefault.str());
 }
 
 // Header inlines that the units including the header emit as select-any

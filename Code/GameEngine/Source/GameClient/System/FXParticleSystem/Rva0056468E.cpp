@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
 // ?rva0056468E@Rva0056468E@@QAEPBVFXList@@XZ, retail 0x0056468E, 46 bytes.
 // Lazy FXList cache twin of LifeEventModuleInfo::getEventFX @0x0056410F (same
 // 46B shape, same callees): on first call resolves the event name (m_data at
@@ -8,11 +8,7 @@
 // Evidence: callers at 0x00564719 and 0x0056495A; unblocks 0x005646BC/135
 // and 0x005648FE/157.
 
-class AsciiString
-{
-public:
-	char *m_data;
-};
+#include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 class FXList
 {
@@ -41,7 +37,7 @@ const FXList *Rva0056468E::rva0056468E()
 {
 	if (m_cached == 0)
 	{
-		const char *name = m_eventName.m_data != 0 ? (const char *)m_eventName.m_data + 8 : "";
+		const char *name = m_eventName.str();
 		m_cached = TheFXListStore->findFXList(name);
 	}
 	return m_cached;

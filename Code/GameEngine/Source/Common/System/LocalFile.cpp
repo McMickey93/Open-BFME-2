@@ -1,4 +1,4 @@
-// cl: /O1 /DNDEBUG /MD /EHsc /G7 /arch:SSE
+// cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /MD /EHsc /G7 /arch:SSE
 // Open-BFME5: LocalFile, retail vtable 0x01143D38.
 //
 // File.cpp already pins this class by construction: 0x009D23E0 installs
@@ -51,50 +51,9 @@
 // direct call, which is exactly what an import stub gives.
 #define NULL 0
 
-// The scanner owns a real AsciiString temporary.  Keep this ABI shim local to
-// the TU: its one data pointer is the retail object layout, while concat and
-// releaseBuffer remain the shared out-of-line StringBase bodies.
-template <typename T> class StringBase
-{
-    friend class AsciiString;
+// Scanning uses the shared AsciiString layout and StringBase buffer operations.
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-private:
-    struct Header
-    {
-        int refCount;
-        unsigned short length;
-        unsigned short capacity;
-        T data[1];
-    };
-
-    Header *m_data;
-
-    StringBase() : m_data(0) {}
-    void releaseBuffer();
-
-public:
-    void concat(const T *text, int length);
-};
-
-class AsciiString : private StringBase<char>
-{
-public:
-	AsciiString() : StringBase<char>() {}
-	~AsciiString() { releaseBuffer(); }
-
-	void clear();
-	AsciiString &operator=(const AsciiString &other);
-
-	void concat(const char *text, int length)
-	{
-		StringBase<char>::concat(text, length);
-	}
-
-	const char *str() const
-	{
-		return m_data ? m_data->data : "";
-	}
-};
 
 extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 extern "C" __declspec(dllimport) double __cdecl atof(const char *text);
@@ -613,7 +572,7 @@ bool LocalFile::scanInt( int &newInt )
 	do {
 		char value[2];
 		value[0] = c;
-		tempstr.concat( value, 1 );
+		reinterpret_cast<StringBase<char> *>(&tempstr)->concat( value, 1 );
 		val = _read( m_handle, &c, 1 );
 	} while ((val != 0) && (c >= '0') && (c <= '9'));
 
@@ -645,7 +604,7 @@ bool LocalFile::scanString( AsciiString &newString )
 	do {
 		char value[2];
 		value[0] = c;
-		newString.concat( value, 1 );
+		reinterpret_cast<StringBase<char> *>(&newString)->concat( value, 1 );
 		val = _read( m_handle, &c, 1 );
 	} while ((val != 0) && (!isspace(c)));
 
@@ -677,7 +636,7 @@ bool LocalFile::scanReal( float &newReal )
 	do {
 		char value[2];
 		value[0] = c;
-		tempstr.concat(value, 1);
+		reinterpret_cast<StringBase<char> *>(&tempstr)->concat(value, 1);
 		if (c == '.') {
 			sawDec = true;
 		}

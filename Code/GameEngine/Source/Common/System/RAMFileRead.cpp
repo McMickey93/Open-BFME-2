@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
 // ?read@RAMFile@@UAEHPAXH@Z @ 0x00605564 (70B): slot 3 (offset 0xC) of vtable
 // 0x0087AA00. ZH GameEngine RAMFile::read verbatim: null m_data returns -1,
 // clamp to m_size-m_pos via cmovg, memcpy when bytes>0 and buffer set,
@@ -13,50 +13,8 @@ extern "C" __declspec(dllimport) int __cdecl isspace(int c);
 extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 extern "C" __declspec(dllimport) double __cdecl atof(const char *text);
 
-template <typename T> class StringBase
-{
-	friend class AsciiString;
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-private:
-	struct Header
-	{
-		int refCount;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-
-	Header *m_data;
-
-	StringBase() : m_data(0) {}
-	void releaseBuffer();
-
-public:
-	void concat(const T *text, int length);
-	void set(const StringBase<T> &other);	// rowed 0x000366F0
-};
-
-class AsciiString : private StringBase<char>
-{
-public:
-	AsciiString() : StringBase<char>() {}
-	~AsciiString() { releaseBuffer(); }
-
-	void clear();
-	// Inline, as retail expands it: openFromArchive calls StringBase<char>::set (0x000366F0)
-	// directly, not the out-of-line copy at 0x00001733 (link census, 2026-10-06).
-	AsciiString &operator=(const AsciiString &other) { set(other); return *this; }
-
-	void concat(const char *text, int length)
-	{
-		StringBase<char>::concat(text, length);
-	}
-
-	const char *str() const
-	{
-		return m_data ? m_data->data : "";
-	}
-};
 
 void *__cdecl operator new[](unsigned int s);
 void __cdecl operator delete[](void *block);
@@ -210,7 +168,7 @@ bool RAMFile::scanString(AsciiString &newString)
 	do {
 		char value[4];
 		value[0] = m_data[m_pos];
-		newString.concat(value, 1);
+		reinterpret_cast<StringBase<char> *>(&newString)->concat(value, 1);
 		++m_pos;
 	} while ((m_pos < m_size) && (!isspace(m_data[m_pos])));
 
@@ -271,7 +229,7 @@ bool RAMFile::scanInt(int &newInt)
 	do {
 		char value;
 		value = m_data[m_pos];
-		tempstr.concat(&value, 1);
+		reinterpret_cast<StringBase<char> *>(&tempstr)->concat(&value, 1);
 		++m_pos;
 	} while ((m_pos < m_size) &&
 		((m_data[m_pos] >= '0') && (m_data[m_pos] <= '9')));
@@ -303,7 +261,7 @@ bool RAMFile::scanReal(float &newReal)
 	do {
 		char value[2];
 		value[0] = m_data[m_pos];
-		tempstr.concat(value, 1);
+		reinterpret_cast<StringBase<char> *>(&tempstr)->concat(value, 1);
 		if (m_data[m_pos] == '.') {
 			sawDec = true;
 		}
