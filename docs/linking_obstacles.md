@@ -168,6 +168,16 @@ authored-byte previews or commit-title gains into a projected headline.
   remaining findings. This source is already census-linked; no linked-byte
   gain is claimed. The earlier forwarding casts and its separate header
   prerequisite remain unchanged.
+- **Vector resize callback identity (2026-10-27, `8d40677f30`):**
+  [The native-lifetime check](../reverse/attempt_support/vector-ft-lifetime-identity-20261027.md)
+  repairs VectorClassBfmeThingFTResize.cpp's empty element callbacks by
+  composing the existing surface holder. The complete null-first-word
+  constructor and surface-release destructor thunk now prove as retail folds;
+  all three rows and the EH graph remain exact. The owning retirement tool
+  removes one identity key, with zero wrong bindings. The paired ordinary
+  preview with the existing surface destructor retains LINKS for 371 authored
+  bytes against `bf3dd31211`; no new census gain is claimed. The original
+  record name remains unrecovered.
 - **Clearance / census confirmation:** graphics ordinary-preview scope cleared
   at the revision above; other families and census confirmation remain pending.
   Keep individual repair previews separate from later census confirmation.

@@ -19,19 +19,30 @@
 
 #include <new>
 
-class BfmeItemFT;
+// The first word owns the same surface holder used by the native cleanup.
+class W3DRadarResetSurface
+{
+public:
+	__declspec(dllimport) __forceinline W3DRadarResetSurface() : m_surface(0) {}
+	~W3DRadarResetSurface();
+
+private:
+	void *m_surface;
+};
 
 // upstream layout: Code/GameEngine/Source/Common/BfmeOneHundredNinetyEight.cpp
 class BfmeThingFT
 {
 public:
+	// Native array callbacks: null-first-word ctor 0x006CE7D0; dtor thunk
+	// 0x00001DAC tail-calling W3DRadarResetSurface's destructor at 0x00176CB0.
 	BfmeThingFT() {}
 	~BfmeThingFT() {}
 
 	BfmeThingFT &bfmeTakeFT(const BfmeThingFT *from);
 
 private:
-	BfmeItemFT *m_bfmeItem;			// 0x00
+	W3DRadarResetSurface m_bfmeItem;	// 0x00
 	int m_bfmeFirst;			// 0x04
 	int m_bfmeSecond;			// 0x08
 	int m_bfmeThird;			// 0x0c
