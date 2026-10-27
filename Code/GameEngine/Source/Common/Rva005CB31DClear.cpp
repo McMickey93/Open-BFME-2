@@ -10,7 +10,7 @@ public:
 	virtual ~Rva005E0B0F();
 };
 
-void __cdecl operator delete(void *);
+#include <new>
 
 class Rva005CB31D
 {
