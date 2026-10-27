@@ -438,7 +438,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/FoundationAIUpdatePoolKey.cpp	wro
 Code/GameEngine/Source/GameLogic/Object/Update/GiantBirdAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00036B89B@GiantBirdAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A01EB8
 Code/GameEngine/Source/GameLogic/Object/Update/GiveUpgradeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049C471@GiveUpgradeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B4C
 Code/GameEngine/Source/GameLogic/Object/Update/GloriousChargeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004AD5CE@GloriousChargeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D20
-Code/GameEngine/Source/GameLogic/Object/Update/HeightDieUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00048FC30@HeightDieUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03984
+Code/GameEngine/Source/GameLogic/Object/Update/HeightDieUpdate.cpp	wrong-name	?$S1@?1??rva00048FC30@HeightDieUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03984
 Code/GameEngine/Source/GameLogic/Object/Update/HeroModeSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004921D0@HeroModeSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039D8
 Code/GameEngine/Source/GameLogic/Object/Update/HijackerUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A4010@HijackerUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C00
 Code/GameEngine/Source/GameLogic/Object/Update/HordeAIUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049A67C@HordeAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B1C
