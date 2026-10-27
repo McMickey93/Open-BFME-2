@@ -699,7 +699,7 @@ void RandomSoundSelectorClientBehaviorModuleData::buildFieldParse(MultiIniFieldP
 
 void RandomSoundSelectorClientBehavior::xfer(Xfer *xfer)
 {
-	ObjectModule::xfer(xfer);
+	((ObjectModule *)this)->xfer(xfer);
 	xfer->Version1();
 	*xfer == m_randomSelection;
 	*xfer == m_lastFrame;

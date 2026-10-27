@@ -67,16 +67,37 @@ protected:
 	Object *m_object;
 };
 
-class SoundSelectorSecondary
+// The ctor's base call is the rowed opaque intermediate ctor 0x00252B68 and
+// its state-0 funclet unwinds through the rowed ??1Rva00252B68@@UAE@XZ; xfer's
+// base call is the rowed ObjectModule::xfer (0x00560AE1) on the same 0x0C
+// prefix. The ctor stores both vptrs itself, so both classes are novtable.
+class __declspec(novtable) Rva00252B68
+{
+public:
+	Rva00252B68(Thing *thing, const ModuleData *moduleData);
+	virtual ~Rva00252B68();
+
+protected:
+	const ModuleData *m_moduleData;
+	Object *m_object;
+};
+
+class __declspec(novtable) SoundSelectorSecondary
 {
 public:
 	virtual bool getSelectedValue(unsigned int *value);
 };
 
-class RandomSoundSelectorClientBehavior : public ObjectModule, public SoundSelectorSecondary
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class __declspec(novtable) RandomSoundSelectorClientBehavior : public Rva00252B68, public SoundSelectorSecondary
 {
 public:
 	RandomSoundSelectorClientBehavior(Thing *thing, const ModuleData *moduleData);
+	virtual NameKeyType getModuleNameKey() const;
 	virtual bool getSelectedValue(unsigned int *value);
 
 protected:

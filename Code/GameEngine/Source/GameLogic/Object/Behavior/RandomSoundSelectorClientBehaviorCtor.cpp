@@ -60,25 +60,15 @@ extern const void *const g_00C5F368[3] = {
 
 class ClientFrameSubsystem; extern class GameClient *TheGameClient;
 
-class Thing;
-class ModuleData;
+#include "../../../GameClient/Drawable/Behavior/RandomSoundSelectorClientBehaviorView.h"
 
 typedef float Real;
 Real GetGameClientRandomValueReal(Real lo, Real hi, char *file, int line);
 
 // Retail's state-0 funclet 0x00790791 unwinds the base through 0x00254C4B,
 // the rowed virtual ??1Rva00252B68@@UAE@XZ (Rva0049B47CDerived.cpp). The
-// vptr is the implicit one; novtable on both classes keeps the compiler from
-// storing vtables, which the ctor below stores itself.
-class __declspec(novtable) Rva00252B68
-{
-public:
-	Rva00252B68(Thing *thing, const ModuleData *moduleData);
-	virtual ~Rva00252B68();
-
-protected:
-	unsigned char m_pad[0x0C - 4];
-};
+// vptrs are the implicit ones; the view's novtable classes keep the compiler
+// from storing vtables, which the ctor below stores itself.
 
 class Rva00DFE77CHolder
 {
@@ -95,29 +85,19 @@ public:
 
 #define TheRva00DFE77C (*(Rva00DFE77CHolder **)&TheGameClient)
 
-class __declspec(novtable) RandomSoundSelectorClientBehavior : public Rva00252B68
-{
-public:
-	RandomSoundSelectorClientBehavior(Thing *thing, const ModuleData *moduleData);
-
-private:
-	const void *m_0C;
-	float m_10;
-	int m_14;
-};
-
 // ??0RandomSoundSelectorClientBehavior@@QAE@PAVThing@@PBVModuleData@@@Z @0x004CBC2B
 RandomSoundSelectorClientBehavior::RandomSoundSelectorClientBehavior(Thing *thing, const ModuleData *moduleData)
 	: Rva00252B68(thing, moduleData)
 {
-	int *slot0C = (int *)&m_0C;
+	// The SoundSelectorSecondary vptr at +0x0C (a base conversion would add a null test).
+	int *slot0C = (int *)((char *)this + 0x0C);
 	*slot0C = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	*(const void **)this = g_00C5F378;
-	m_0C = g_00C5F368;
-	m_10 = GetGameClientRandomValueReal(0.0f, 1.0f, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameClient\\Drawable\\Behavior\\RandomSoundSelectorClientBehavior.cpp", 0x62);
+	*(const void **)((char *)this + 0x0C) = g_00C5F368;
+	m_randomSelection = GetGameClientRandomValueReal(0.0f, 1.0f, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameClient\\Drawable\\Behavior\\RandomSoundSelectorClientBehavior.cpp", 0x62);
 	Rva00DFE77CHolder *holder = TheRva00DFE77C;
 	if (holder != 0)
-		m_14 = holder->slot1F();
+		m_lastFrame = holder->slot1F();
 	else
-		m_14 = 0;
+		m_lastFrame = 0;
 }
