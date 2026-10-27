@@ -197,6 +197,8 @@ def _preview(monkeypatch, tmp_path, names):
     ix = index(blockers={"a.cpp": {"object": "a.obj", "linked": False, "unresolved": [], "duplicates": [],
                                    "losers": [], "addresses": 0}}, sizes={"a.cpp": 100})
     monkeypatch.setattr(C, "load_index", lambda: ix)
+    monkeypatch.setattr(C, "ROOT", tmp_path)
+    (tmp_path / "a.cpp").write_text("")  # the census unit still exists in this tree
     monkeypatch.setattr(C, "resolve", lambda path, _: (path.replace(".obj", ".cpp"), tmp_path / path))
     monkeypatch.setattr(link_census, "ledger", lambda: None)
     monkeypatch.setattr(link_census, "RetailTruth", lambda _: None)
@@ -773,3 +775,25 @@ def test_prepare_requires_exact_canonical_object_mapping(preparation, monkeypatc
     with pytest.raises(SystemExit, match="object mapping differs"):
         C.prepare_current([source])
     assert len(calls) == 1
+
+
+def test_deleted_source_second_copies_are_dropped_but_real_duplicates_and_sole_providers_kept(
+        tmp_path, monkeypatch):
+    """A deleted unit's (b.obj) copy of a name another object defines is
+    dropped; a name only it defines keeps it as provider; two existing units'
+    definitions still collide."""
+    monkeypatch.setattr(C, "ROOT", tmp_path)
+    for name in ("kept.cpp", "other.cpp"):
+        (tmp_path / name).write_text("")
+    entry = {"linked": True, "unresolved": [], "duplicates": [], "losers": [], "addresses": 0}
+    ix = index(strong={"moved": [1, 0], "only": [1], "real": [0, 2]},
+               comdat={"inl": [(1, "x", None), (0, "y", "retail")]},
+               blockers={"kept.cpp": dict(entry, object="a.obj"), "gone.cpp": dict(entry, object="b.obj"),
+                         "other.cpp": dict(entry, object="c.obj")})
+    assert C.forget_deleted_sources(ix) == {"b.obj"}
+    assert ix["strong"]["moved"] == [0] and ix["comdat"]["inl"] == [(0, "y", "retail")]
+    assert ix["strong"]["only"] == [1]                       # sole provider kept
+    assert ix["strong"]["real"] == [0, 2]                    # untouched
+    assert not C.duplicate("moved", 0, True, 0, ix)          # no longer a duplicate of its leftover
+    assert C.duplicate("real", 2, True, 2, ix)               # a real second definition is still charged
+    assert C.in_census(ix, "b.obj")

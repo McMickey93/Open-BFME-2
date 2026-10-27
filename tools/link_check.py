@@ -433,6 +433,32 @@ def forget(index, names):
         index.get("touches", {}).pop(name, None)
 
 
+def forget_deleted_sources(index):
+    """Drop a deleted unit's second copies. The census can still hold the
+    object of a unit this tree no longer has (a merge's deleted donor); its
+    definition of a name that another census object also defines is a
+    leftover, never a duplicate of or a rival to the surviving copy, so it is
+    dropped from "strong" and "comdat". A name only such an object defines
+    keeps it as its provider: the unit that absorbed the body may be newer
+    than the census, and dropping it would turn every consumer's reference
+    into a false unresolved name. Objects of existing units, objects with no
+    recorded source, and every other table are left untouched. Returns the
+    deleted units' objects."""
+    gone = {entry["object"] for source, entry in index["blockers"].items()
+            if entry.get("object") and not (ROOT / source).exists()}
+    positions = {position for position, name in enumerate(index["objects"]) if name in gone}
+    if not positions:
+        return gone
+    for table, at in (("strong", lambda entry: entry), ("comdat", lambda entry: entry[0])):
+        for name, entries in index[table].items():
+            kept = [entry for entry in entries if at(entry) not in positions]
+            if kept and len(kept) < len(entries) and (
+                    any(entry not in positions for entry in index["strong"].get(name, ()))
+                    or any(entry[0] not in positions for entry in index["comdat"].get(name, ()))):
+                index[table][name] = kept
+    return gone
+
+
 def census_tree_clean():
     return not subprocess.run(["git", "status", "--porcelain", "-uno", "--", *link_census.CENSUS_INPUTS],
                               cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
@@ -1416,6 +1442,9 @@ def main(argv=None):
                          f"(the next census measures it): {', '.join(outside)}")
     if not args.census_only:
         refresh(index, [obj for _, obj in resolved], truth)
+    # After the checked (and --refresh'd) objects are in: a body a merge moved
+    # into one of them is then defined twice, once by the deleted donor.
+    forget_deleted_sources(index)
     now = source_bytes({source for source, _ in resolved if source})
     clean, before, after = [], 0, 0
     for source, obj in resolved:
