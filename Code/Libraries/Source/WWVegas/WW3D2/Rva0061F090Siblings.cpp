@@ -12,15 +12,14 @@ public:
 	int forward();
 };
 
-extern "C" Rva00620DA0 *g_bfme00E09C0C;
+// The singleton at 0x00E09C0C: the data ledger's TheQ1Receiver
+// (q1_registry_forwards.cpp), read through this unit's forwarding view.
+class Q1Receiver0134FAAC;
+extern Q1Receiver0134FAAC *TheQ1Receiver;
 
 int __cdecl rva0061F090()
 {
-	if (g_bfme00E09C0C)
-		return g_bfme00E09C0C->forward();
+	if (TheQ1Receiver)
+		return ((Rva00620DA0 *)TheQ1Receiver)->forward();
 	return 100;
 }
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:_g_bfme00E09C0C=?TheQ1Receiver@@3PAVQ1Receiver0134FAAC@@A")

@@ -680,7 +680,6 @@ Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTextureEnd.cpp	duplicat
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTextureEnd.cpp	duplicate-def	_texture_memory	0x009EE8CC
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTextureEnd.cpp	wrong-name	_recordTextureMode	0x009EE8F4
 Code/Libraries/Source/WWVegas/WW3D2/DebugStatisticsRecordTextureEnd.cpp	wrong-name	_textureStatisticsString	0x009EE91C
-Code/Libraries/Source/WWVegas/WW3D2/Rva0061F090Siblings.cpp	wrong-name	_g_bfme00E09C0C	0x00A09C0C
 Code/Libraries/Source/WWVegas/WW3D2/ShroudTexture_getFilter.cpp	wrong-name	?$S1@?4??getFilter@ShroudTexture@@QAEPAVShroudFilter@@XZ@4IA	0x009F2970
 Code/Libraries/Source/WWVegas/WW3D2/SortingRendererBFME1.cpp	wrong-name	?BfmeCurrentCaps@@3PAEA	0x009EDA7C
 Code/Libraries/Source/WWVegas/WW3D2/SortingRendererBFME1.cpp	wrong-name	?TheBoxTextureDirtyMask@@3IA	0x009EC4F4
