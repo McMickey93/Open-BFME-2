@@ -66,7 +66,7 @@ private:
     char unknown00[0x750];
     Rva002A44D5Tree tree;
 };
-void __cdecl operator delete(void *pointer);
+#include <new>
 
 void Rva002A44D5::rva002A44D5(const AsciiString &key)
 {
