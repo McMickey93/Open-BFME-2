@@ -3628,6 +3628,18 @@ Remaining / next check: the Vslot unit retains two empty-fold provider names, th
 Clearance: the six named unresolved blockers are cleared in ordinary-preview scope; census confirmation pending. No newly linking assigned unit or headline gain is claimed.
 Census confirmation: pending.
 
+### LINK-115: RGBColor header adoption and inline conversion ownership
+
+Status: Blocked; source trial restored. Updated: 2026-10-27; inspected revision: 6b62f0f97e.
+
+Evidence / affected units: color.cpp owns the matched copy assignment at RVA 0x0000353A (18 bytes), and color_rgbcolor_ctor.cpp owns RGBColor(int) at RVA 0x00006538 (18 bytes). The canonical Lib/RGBColor.h lacks both declarations. Earlier RGBColor-canonical-operator evidence records dependent code-generation changes when assignment is declared. The [attempt handoff](../reverse/attempt_support/rgbcolor-header-prerequisites-20261027-codexb4.md) separates those prior findings from this pass's emission trial.
+
+Completed: both units initially preview LINKS against index bf3dd31211 (2026-10-27 00:39, retail-truth-4), preserving 674 predicted bytes. Removing color.cpp's synthetic bfmeEmitcolor anchor and outlining both conversions preserves all 14 matched rows but introduces a duplicate setFromInt symbol against DrawableFlashAsSelected.cpp's inline definition. That trial was restored in full, and the restored source again passes all 14 rows and reference gates. No header or queue change is retained. Recovery verifies all 15 rows across both restored color units; the saved restored-link log is empty, so no restored-preview verdict is claimed. The handoff was reconstructed from the saved notes and receipts because its stashed file was empty; LINK-109 was already used upstream.
+
+Remaining / next check: reconcile the class's assignment and constructor contracts across existing dependent copies and aggregate initializers, then verify the full dependent set before adopting either unit. Anchor retirement also requires compatible COMDAT selection with the existing inline setter provider; byte verification alone did not preserve linking.
+
+Clearance: none; no source change or new link gain is retained. Census confirmation: not claimed.
+
 ### LINK-096: consolidation guard retains a private constant after its seed references change
 
 Status: Blocked on a separate LinkGuard verifier repair. Updated: 2026-10-26; inspected revision: `71f28db691`.
