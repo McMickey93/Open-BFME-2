@@ -19,7 +19,7 @@ public:
 	virtual void *f2(int x);
 };
 
-void operator delete(void *p);
+#include <new>
 
 void _bfme_closeAptScreen(const AsciiString &name);
 
