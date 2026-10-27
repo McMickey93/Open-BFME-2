@@ -4010,3 +4010,14 @@ Completed: diagnosis only; no source or ledger change. Attempt evidence: `revers
 Remaining / next check: emit that explicit specialization (the existing `Rva0039A48EElement` pattern in the same file) and move the parent row, its `$L6605` funclet (0x0078D8B3) and `__ehhandler$` row (0x0078D8C1) to the new name. `rename.py` refuses the signature change and `add_match.py --replace-rva` takes scaffold rows only, so retract the three rows in their own reviewed commit and re-add them with `add_match.py`; then `link_check.py` ProductionUpdate.cpp together with stlport_construct_stl_types.cpp. After the rename, return the forwarder in ProductionUpdate.cpp to a plain declaration.
 Clearance: ProductionUpdate.cpp, current-object ordinary preview; the naming rename is pending.
 Census confirmation: not claimed.
+
+### LINK-112: identity leads found while triaging the bf3dd31211 link queue
+Status: Open (leads; no source change). Updated: 2026-10-27; inspected revision: 08d99b62ed; preview index: bf3dd31211, retail-truth-4.
+Evidence / affected units:
+- Rva00415704Ctor.cpp (90 B) is blocked by the unresolved `??1Rva0022A809Subsystem@@UAE@XZ`. Its constructor 0x00415704 installs vftable RVA 0x0083A288. Slot 0 of that table is the rowed `??_GRva00415CAB@@UAEPAXI@Z` at 0x00415E6E (OpaqueScalarDeletingDtorsB10.cpp), which calls the rowed `??1Rva00415CAB@@UAE@XZ` at 0x00415CAB (Rva00415CABDtor.cpp). `Rva0022A809Subsystem` (the type of `TheCrowdResponseStore`) and `Rva00415CAB` are therefore one class. rename.py cannot merge two existing class names, so this needs a class reconciliation commit.
+- Watchdog.cpp (203 B): `??0Watchdog@@QAE@HHH@Z` fails on the LINK-106 cause (thread-wrapper callee). Its REL32 to `_GetCurrentThreadId@0` lands on 0x006105D0, ThreadClass::_Get_Current_Thread_ID. The unit's `update` and `resumeTimeouts` declarations use the same callee. `?rva00225492@BfmeDfe6e4@@QAEXXZ` (0x00225492) has the body of Watchdog's present-unmatched `update`: the thread id at +0x50, time(), and the critical section at +0x70. The two critical-section helpers at 0x00225460/0x0022546B sit beside it. At inspection Watchdog.cpp was claimed by another fleet's link seat.
+- PlayerRelationMapCtor.cpp (81 B) emits `??_7PlayerRelationMap@@6B@` from its Snapshot-derived view. The deleter and destructor units instead agree on a [`??_G`, three `__purecall`] table. Retail's table at 0x007FDD90 is [`??_G` 0x002ADE55, 0x000B3FD0, 0x002AD0C0, `xfer` 0x002ADEBE], so neither copy is retail's. All three views need the real four-slot contract.
+Completed: none. Each lead was found by tracing current objects against retail relocations.
+Remaining / next check: reconcile each identity in its own lane, then rerun link_check for the named units together with their providers.
+Clearance: pending.
+Census confirmation: not claimed.
