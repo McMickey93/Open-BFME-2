@@ -408,6 +408,7 @@ enum RecorderModeType {
 };
 
 class Rva0037D076;
+
 class RecorderClass {
 public:
 	virtual void slot0();
@@ -656,11 +657,133 @@ class CommandList;
 
 extern CommandList *TheCommandList;
 
-// tu-skeleton: 0x0037ADB6 152B ?logCRCMismatch@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
+extern MessageStream *TheMessageStream;
 
-// tu-skeleton: 0x0037AE4E 148B ?logGameEnd@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
+int REPLAY_CRC_INTERVAL;
 
-// tu-skeleton: 0x0037AEE2 35B ?rva0037AEE2@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
+static int recorderSavedGlobalValue;
+
+static bool recorderSavedGlobalFlag;
+
+void InitRandom(unsigned int);
+
+// ---- from Code/GameEngine/Source/Common/System/RecorderClass.cpp
+
+// ?logCRCMismatch@RecorderClass@@QAEXXZ @0x0037ADB6 152B: recorder file patch via ftell fseek fwrite rows plus globals NET_CRC_INTERVAL and TheGameLogic+0x40 into members +0xe60 +0xe64. Evidence: null FILE at +0x10 early out plus IAT ftell fseek fwrite plus fixed offsets 0x14 0x18 plus restore ftell pos; same FILE+0x10 family as Rva0037B287Write; caller 0x00240225.
+
+void RecorderClass::logCRCMismatch()
+{
+	if (m_file == 0)
+		return;
+	field0e60 = (int)NET_CRC_INTERVAL;
+	field0e64 = TheGameLogic->getFrame();
+	long pos = ftell(m_file);
+	if (fseek(m_file, 0x14, 0) == 0)
+		fwrite(&field0e60, 4, 1, m_file);
+	if (fseek(m_file, 0x18, 0) == 0)
+		fwrite(&field0e64, 4, 1, m_file);
+	fseek(m_file, pos, 0);
+}
+
+// RecorderClass::logGameEnd, retail 0x0037AE4E (148 bytes): Zero Hour's
+// Recorder.cpp body (WB names it): the end time goes to offset 0x0C and the
+// frame count to 0x10 of the replay header, then the stream returns to its
+// end.
+void RecorderClass::logGameEnd()
+{
+	if (m_file == 0)
+		return;
+
+	long t;
+	time(&t);
+	unsigned int duration = TheGameLogic->getFrame();
+	unsigned int fileSize = ftell(m_file);
+	// move to appropriate offset
+	if (!fseek(m_file, 0x0c, 0))
+	{
+		// save off end time
+		fwrite(&t, sizeof(long), 1, m_file);
+	}
+	// move to appropriate offset
+	if (!fseek(m_file, 0x10, 0))
+	{
+		// save off duration
+		fwrite(&duration, sizeof(unsigned int), 1, m_file);
+	}
+	// move back to end of stream
+	fseek(m_file, fileSize, 0);
+}
+
+// RecorderClass::stopRecording, retail 0x0037B42D (52 bytes): Zero Hour's
+// Recorder.cpp body, as the quit menu's restart (0x0051B90B) calls it while
+// recording: logs the game end, drops the mismatch frame in a network
+// game, closes the replay and forgets its name.
+void RecorderClass::stopRecording()
+{
+	logGameEnd();
+	if (TheNetwork)
+		field0e64 = -1;
+	if (m_file != 0)
+	{
+		fclose(m_file);
+		m_file = 0;
+	}
+	m_fileName.clear();
+}
+
+// ---- from Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp
+
+// BFME1 9cbfb551 System/RecorderPlaybackFile.cpp semantic lead.
+// Native37D1E6..37D3C9,483B; Unicode by-value filename is witnessed at
+// GameEngine::init and the existing playbackFile pin. BFME1 supplies purpose
+// and sequence; retail supplies fields24/C/E70/E74, seed74, MessageStream48,
+// TheGameInfo assignment and saved GlobalData1100/1104 values. Unknown
+// callee identities retain their existing address-derived ABI views.
+// Header5C has the six inline null string slots and existing out-of-line dtor.
+// CRC state constructor37D076 consumes12B; only local-player field08 is used.
+// Saved values are TU statics, independently inferred from the native stores.
+
+bool RecorderClass::playbackFile(UnicodeString filename)
+{
+ if(!m_doingAnalysis)TheGameLogic->clearGameData(false,false);
+ m_mode=1;
+ Rva0037B5DF header;
+ header.forPlayback=true;header.filename=filename;
+ bool success=reinterpret_cast<Rva0037BBED *>(this)->rva0037CBB6(header);
+ if(!success)return false;
+ recorderSavedGlobalFlag=TheWritableGlobalData->field1100;
+ recorderSavedGlobalValue=TheWritableGlobalData->field1104;
+ TheWritableGlobalData->field1100=header.flag50;
+ TheWritableGlobalData->field1104=header.word54;
+ TheWritableGlobalData->pendingFile=m_gameInfo.getMap();
+ m_crcInfo=new Rva0037D076;
+ m_crcInfo->m_i8=header.localIndex;
+ REPLAY_CRC_INTERVAL=m_gameInfo.m_crcInterval;
+ int difficulty=0;fread(&difficulty,4,1,m_file);
+ fread(&m_gameMode,4,1,m_file);
+ int rankPoints=0;fread(&rankPoints,4,1,m_file);
+ int maxFPS=0;fread(&maxFPS,4,1,m_file);
+ reinterpret_cast<Rva0037B7C7 *>(this)->rva0037B7C7();
+ if(!m_doingAnalysis){
+  TheGameInfo=&m_gameInfo;
+  GameMessage *message=TheMessageStream->v18(GameMessage::MSG_NEW_GAME);
+  message->appendIntegerArgument(3);
+  message->appendIntegerArgument(difficulty);
+  message->appendIntegerArgument(rankPoints);
+  if(maxFPS!=0)message->appendIntegerArgument(maxFPS);
+  InitRandom(m_gameInfo.m_seed);
+ }
+ m_currentReplayFilename=filename;
+ return true;
+}
+
+void RecorderClass::rva0037AEE2()
+{
+ TheWritableGlobalData->field1100=recorderSavedGlobalFlag;
+ TheWritableGlobalData->field1104=recorderSavedGlobalValue;
+}
+
+// ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
 // ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
@@ -1488,12 +1611,6 @@ advance:
 	}
 }
 
-// tu-skeleton: 0x0037B326 171B ?init@Rva0037BBED@@UAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B42D 52B ?stopRecording@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp
 
 // ??1Rva0037B5DF@@QAE@XZ retail 0x0037B5DF 105B.
@@ -1507,6 +1624,10 @@ Rva0037B5DF::~Rva0037B5DF()
 {
 }
 
+// tu-skeleton: 0x0037B326 171B ?init@Rva0037BBED@@UAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
+
+// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
+
 // tu-skeleton: 0x0037B70A 189B ?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
 
 // tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
@@ -1516,8 +1637,6 @@ Rva0037B5DF::~Rva0037B5DF()
 // tu-skeleton: 0x0037D0A7 72B ?rva0037D0A7@Rva0037BBED@@QAEXIH_NI@Z -- matched in Code/GameEngine/Source/Common/Rva0037BCC4DeferredCtorCRC.cpp (not merged yet)
 
 // tu-skeleton: 0x0037D0EF 247B ?rva0037D0EF@Rva0037BBED@@QAE_NVUnicodeString@@@Z -- matched in Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp (not merged yet)
-
-// tu-skeleton: 0x0037D1E6 483B ?playbackFile@RecorderClass@@QAE_NVUnicodeString@@@Z -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
 
 // tu-skeleton: 0x0037D3C9 98B ??BBFME2WideConcatTriple@@QAE?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/System/WideConcatPair.cpp (not merged yet)
 
@@ -1540,16 +1659,6 @@ Rva0037B5DF::~Rva0037B5DF()
 // tu-skeleton: 0x0077EF6E 8B uw_0077ef6e -- matched in Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp (not merged yet)
 
 // tu-skeleton: 0x0077EF76 10B __ehhandler$?rva0037D0EF@Rva0037BBED@@QAE_NVUnicodeString@@@Z -- matched in Code/GameEngine/Source/Common/Rva0037BCC4_Unresolved.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EF80 8B Unwind@00b7ef80 -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EF88 8B uw_0077ef88 -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EF90 8B Unwind@00b7ef90 -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EF98 10B uw_0077ef98 -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFA2 10B __ehhandler$?playbackFile@RecorderClass@@QAE_NVUnicodeString@@@Z -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
 
 // tu-skeleton: 0x0077EFAC 8B Unwind@00b7efac -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
 

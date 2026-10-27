@@ -17354,7 +17354,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009BFDC8,552,.data,global,?g_00DBFDC8@@3GA,,unowned,,0,1
 0x009BFFF0,328,.data,global,?DamageFXDamageTypeNames@@3QBQBDB,Code/GameEngine/Source/Common/DamageFXParseCommon.cpp,owned,,1,1
 0x009C0138,1160,.data,global,?g_00DC0138@@3PAUBuffTypeConfig@@A,,unowned,,0,3
-0x009C05C0,4,.data,global,?REPLAY_CRC_INTERVAL@@3HA,Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp,owned,,1,1
+0x009C05C0,4,.data,global,?REPLAY_CRC_INTERVAL@@3HA,Code/GameEngine/Source/Common/Recorder.cpp,owned,,1,1
 0x009C05C4,220,.data,global,?lastFrame@?1??updateRecord@RecorderClass@@IAEXXZ@4HA,Code/GameEngine/Source/Common/Recorder.cpp,owned,,1,2
 0x009C06A0,136,.data,global,?TheRva00222A8BOwner@@3PAXA,Code/GameEngine/Source/Common/TooltipHide_muse-f8cb.cpp,owned,,1,6
 0x009C0728,48,.data,global,?ignoredChars@@3PAGA,Code/GameEngine/Source/GameClient/LanguageFilterUnHaxor.cpp,owned,,1,1
@@ -19262,8 +19262,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A021E0,24,.data,global,?g_Va00E021E0@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E0102xx.cpp,owned,,1,2
 0x00A021F8,136,.data,global,?g_Va00E021F8@@3IA,,unowned,,0,1
 0x00A02280,4,.data,global,?g_Va00E02280@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E01Exx.cpp,owned,,1,12
-0x00A02284,4,.data,global,_recorderSavedGlobalValue,Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp,owned,,1,1
-0x00A02288,4,.data,global,_recorderSavedGlobalFlag,Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp,owned,,1,1
+0x00A02284,4,.data,global,_recorderSavedGlobalValue,Code/GameEngine/Source/Common/Recorder.cpp,owned,,1,1
+0x00A02288,4,.data,global,_recorderSavedGlobalFlag,Code/GameEngine/Source/Common/Recorder.cpp,owned,,1,1
 0x00A0228C,4,.data,global,_startTime,Code/GameEngine/Source/Common/Recorder.cpp,owned,,1,1
 0x00A02290,4,.data,global,?TheRecorder@@3PAVRecorderClass@@A,Code/GameEngine/Source/Common/BfmeConv939Call939D.cpp,owned,,1,48
 0x00A02294,4,.data,global,_s_rva007AEFE5,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
