@@ -12,15 +12,11 @@
 // Six native-function caches retain the real Rva008B2BD0ReleaseGlobals owner.
 // Original source has a null-send check, absent in native: native sends directly
 // after its assertion; all source behavior follows the witnessed retail body.
-class EAStringC {void *data;public:__declspec(nothrow) EAStringC &clear();~EAStringC();const char *rva00620090()const;bool IsEqualTo(const EAStringC *)const;unsigned int rva006D3750()const;bool rva006D3510(const char *)const;};
+class EAStringC {void *data;public:__declspec(nothrow) EAStringC &clear();__declspec(dllimport) __forceinline EAStringC(){clear();}~EAStringC();const char *rva00620090()const;bool IsEqualTo(const EAStringC *)const;unsigned int rva006D3750()const;bool rva006D3510(const char *)const;};
 // The retail clear16B is a plain singleton store/increment: it cannot throw.
-// A TU-local lifetime wrapper avoids emitting the legacy divergent external
-// EAStringC default-ctor COMDAT; native bytes and every unwind state stay exact.
-namespace {
-class LoadVarsScopedString : public EAStringC {
-public:__forceinline LoadVarsScopedString(){clear();}
-};
-}
+// The default ctor is dllimport __forceinline so no divergent EAStringC
+// default-ctor COMDAT is emitted; the locals are plain EAStringC, so their
+// unwind funclets call ~EAStringC directly, as retail's do.
 class AsciiString;
 class AptNativeHash {public:struct Entry;AsciiString *rva0070AA40();Entry *rva0070AAA0(Entry *);};
 class AptValue {public:virtual void slot0();virtual void slot1();virtual void slot2();virtual AptNativeHash *GetNativeHashVirtual();void SetString(const char *);void toString(EAStringC &)const;EAStringC rva006ddde0();};
@@ -86,14 +82,14 @@ AptValue *AptLoadVars::sMethod_send(AptValue *value,int nParams)
 {
  if(nParams<=0||nParams>3)return AptBoolean::Create(false);
  AptValue *aptValue=reinterpret_cast<AptValue *>(g_aptDateInterpreter.stack.At(0));
- LoadVarsScopedString url;
+ EAStringC url;
  aptValue->toString(url);
- LoadVarsScopedString target;
+ EAStringC target;
  if(nParams>1) {
   AptValue *targetValue=reinterpret_cast<AptValue *>(g_aptDateInterpreter.stack.At(1));
   targetValue->toString(target);
  }
- LoadVarsScopedString method;
+ EAStringC method;
  if(nParams>2) {
   AptValue *methodValue=reinterpret_cast<AptValue *>(g_aptDateInterpreter.stack.At(2));
   methodValue->toString(method);
@@ -115,12 +111,12 @@ AptValue *AptLoadVars::sMethod_sendAndLoad(AptValue *value,int nParams)
  *reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<BfmeAptValue006DCD20 *>(value)->rva006DD2E0())+0x20)=0;
  if(nParams<=0||nParams>3)return AptBoolean::Create(false);
  AptValue *aptValue=reinterpret_cast<AptValue *>(g_aptDateInterpreter.stack.At(0));
- LoadVarsScopedString url;
+ EAStringC url;
  aptValue->toString(url);
  AptValue *targetValue=0;
- LoadVarsScopedString target;
+ EAStringC target;
  if(nParams>1)targetValue=reinterpret_cast<AptValue *>(g_aptDateInterpreter.stack.At(1));
- LoadVarsScopedString method;
+ EAStringC method;
  if(nParams>2) {
   AptValue *methodValue=reinterpret_cast<AptValue *>(g_aptDateInterpreter.stack.At(2));
   methodValue->toString(method);
@@ -148,7 +144,7 @@ AptValue *AptLoadVars::sMethod_load(AptValue *value,int nParams)
  *reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<BfmeAptValue006DCD20 *>(value)->rva006DD2E0())+0x20)=0;
  if(nParams<=0||nParams>1)return AptBoolean::Create(false);
  AptValue *aptValue=reinterpret_cast<AptValue *>(g_aptDateInterpreter.stack.At(0));
- LoadVarsScopedString url;
+ EAStringC url;
  aptValue->toString(url);
  AptNativeHash *hash=value->GetNativeHashVirtual();
  if(!hash)return AptBoolean::Create(false);

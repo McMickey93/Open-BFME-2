@@ -18510,12 +18510,6 @@ uw_007a8dc0,,0x007A8DC0,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;obje
 uw_007a8dc8,,0x007A8DC8,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L7402
 uw_007a8de0,,0x007A8DE0,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4297
 uw_007a9180,,0x007A9180,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L6204
-uw_007a92f0,,0x007A92F0,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4307
-uw_007a92f8,,0x007A92F8,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4316
-uw_007a9300,,0x007A9300,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2981
-uw_007a9320,,0x007A9320,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4316
-uw_007a9328,,0x007A9328,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4297
-uw_007a9330,,0x007A9330,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4325
 uw_007a9740,,0x007A9740,11,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L7412
 uw_007a9820,,0x007A9820,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4307
 uw_007a9828,,0x007A9828,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2981
@@ -98619,3 +98613,9 @@ $L13312,,0x007A7628,11,Code/Libraries/Source/assetmanager/AssetManagerImplRefres
 $L4548,,0x007AB35E,8,Code/Libraries/Source/WWVegas/WWLib/AsyncServiceQueueRemoval.cpp,matched,gen-funclet;parent=?rva0073F231@AsyncServiceQueue@@QAE?AVRva0036CA00Str@@U?$_List_iterator@URva0073EEE0ListValue@@U?$_Nonconst_traits@URva0073EEE0ListValue@@@_STL@@@_STL@@K@Z; Matched parent 0x0073F231's EH graph is EXACT (eh_verify) and binds compiler label $L4548 to retail 0x007AB35E; replaces generated uw_007ab35e
 ??1?$map@PAURva009A2FE0Sub@@IU?$less@PAURva009A2FE0Sub@@@_STL@@V?$allocator@U?$pair@QAURva009A2FE0Sub@@I@_STL@@@3@@_STL@@QAE@XZ,,0x00759D20,5,Code/GameEngine/Source/Common/RTS/BfmeThingCGDRva0075A1A0.cpp,matched,fold-proof=Code/GameEngine/Source/Common/RTS/BfmeThingCGDRva0075A1A0.cpp; compiler-emitted destructor that retail ICF-folded with ?release@Rva00759D20TreeRelease@@QAEXXZ at 0x00759D20: this unit compiles it to the same whole body; its unwind funclets call 0x00759D20
 $L6608,,0x007AB7C0,8,Code/GameEngine/Source/Common/RTS/BfmeThingCGDRva0075A1A0.cpp,matched,gen-funclet;parent=?rva0075A1A0@CollisionManagerImpl@@QAEXXZ; Matched parent 0x0075A1A0's EH graph is EXACT (eh_verify) and binds compiler label $L6608 to retail 0x007AB7C0; replaces generated uw_007ab7c0
+$L759,,0x007A92F0,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_send@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E9110's EH graph is EXACT (eh_verify) and binds compiler label $L759 to retail 0x007A92F0; replaces generated uw_007a92f0
+$L760,,0x007A92F8,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_send@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E9110's EH graph is EXACT (eh_verify) and binds compiler label $L760 to retail 0x007A92F8; replaces generated uw_007a92f8
+$L761,,0x007A9300,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_send@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E9110's EH graph is EXACT (eh_verify) and binds compiler label $L761 to retail 0x007A9300; replaces generated uw_007a9300
+$L786,,0x007A9320,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_sendAndLoad@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E92B0's EH graph is EXACT (eh_verify) and binds compiler label $L786 to retail 0x007A9320; replaces generated uw_007a9320
+$L787,,0x007A9328,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_sendAndLoad@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E92B0's EH graph is EXACT (eh_verify) and binds compiler label $L787 to retail 0x007A9328; replaces generated uw_007a9328
+$L788,,0x007A9330,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_sendAndLoad@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E92B0's EH graph is EXACT (eh_verify) and binds compiler label $L788 to retail 0x007A9330; replaces generated uw_007a9330
