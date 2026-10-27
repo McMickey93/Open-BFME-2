@@ -6,7 +6,7 @@
 #define APT_ASSERT(c,t,n) if(!(c)) { g_bfmeAptAssertAtE17734(t,"C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptValue.cpp",n); if(g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak(); }
 #define B(v) ((BfmeAptValue006DCD20 *)(v))
 #define I ((FindChildInterpreterView *)&g_aptDateInterpreter)
-#define GLOBAL (*(AptValue **)&g_00E18650)
+#define GLOBAL gpGlobalGlobalObject
 
 struct R4Word { const char *name; int value; };
 
@@ -44,7 +44,7 @@ class Rva00898D60Target;
 
 extern Rva00898D60Target *g_Rva01337A20;
 
-extern EAStringC g_00E18650;
+extern AptValue *gpGlobalGlobalObject;
 
 extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char *,const char *,int);
 
