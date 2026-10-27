@@ -48,13 +48,7 @@ struct TransportAddress
 	UnsignedShort m_port;
 };
 
-class Transport
-{
-public:
-	void Rva004D5496( void );
-	Bool init( const TransportAddress *address );
-	Bool allowBroadcasts( Bool value );
-};
+#include "../../Include/GameNetwork/Transport.h"
 
 class LANGameInfo;
 

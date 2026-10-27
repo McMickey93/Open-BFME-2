@@ -308,7 +308,19 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-004: missing or incompatible shared providers and declarations
 
-**Status: Open. Updated: 2026-10-26.**
+**Status: Open. Updated: 2026-10-27.**
+
+- **Transport consumer header adoption (2026-10-27, `3626999202`):**
+  [The bounded consumer check](../reverse/attempt_support/transport-consumer-header-adoption-20261027-codexb4.md)
+  replaces three private Transport views with the existing canonical header;
+  the owning acceptance tool retires three header-queue rows. All eight
+  changed-source rows remain exact. Paired five-consumer ordinary previews
+  against index bf3dd31211 preserve LINKS and all 1,506 authored bytes.
+  The unchanged relay still needs a public receive-buffer/message contract;
+  the unchanged AsciiString initializer needs its overload declaration and
+  preserved outlined string lifetime. Both queue rows remain. The earlier
+  Transport composition/provider obstacles are retained in the linked handoff;
+  no merge or census-linked-byte gain is claimed.
 
 - **ControlBarScheme manager prerequisite (2026-10-26):**
   [Canonical manager adoption](../reverse/attempt_support/consolidation-controlbar-manager-prerequisite-20261026-codex4.md)

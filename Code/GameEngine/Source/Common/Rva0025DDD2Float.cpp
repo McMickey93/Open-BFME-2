@@ -4,15 +4,7 @@
 // per BFMEConnectionManager layout; null at either step yields 0.0f.
 // Evidence: retail mov/test/je chain plus rowed call 0x004D5046 plus
 // fstp/xorps/movss/fld tails; owner unproven so honest address name.
-class Transport
-{
-public:
-	float rva004D5046() const;
-	float rva004D5002() const;
-	float rva004D508A() const;
-	float rva004D4FBE() const;
-	float rva004D4F7A() const;
-};
+#include "../../Include/GameNetwork/Transport.h"
 
 class Rva004D50CE
 {
