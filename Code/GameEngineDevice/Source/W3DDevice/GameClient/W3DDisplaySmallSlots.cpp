@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX-
+// dxsdk
+// platformsdk
 //
 // Small W3DDisplay vtable slots (vtable VA 0x00BC3C80, which also holds
 // testMinSpecRequirements and the rows of W3DDisplayRva000433AC.cpp) that had
@@ -14,6 +16,7 @@ typedef int Int;
 typedef bool Bool;
 
 #include <new>
+#include <d3d9.h>
 
 #define VSLOTS4(p) virtual void p##0(); virtual void p##1(); virtual void p##2(); virtual void p##3();
 #define VSLOTS16(p) VSLOTS4(p##0) VSLOTS4(p##1) VSLOTS4(p##2) VSLOTS4(p##3)
@@ -107,13 +110,9 @@ public:
 	virtual void rva000467A5Slot();	// slot 12
 };
 
-struct IDirect3DDevice8
-{
-	virtual void s00();
-	virtual void s01();
-	virtual void s02();
-	virtual long __stdcall TestCooperativeLevel() = 0;	// slot 3 (+0x0C)
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (TestCooperativeLevel, vtable slot 3, +0x0C).
+struct IDirect3DDevice8;
 
 class DX8Wrapper
 {
@@ -220,7 +219,7 @@ void W3DDisplay::rva000450CE(Int x, Int y)
 void W3DDisplay::rva000453AC()
 {
 	TheLivingWorldManager->rva000453B4Slot();
-	if (DX8Wrapper::_Get_D3D_Device8() && DX8Wrapper::_Get_D3D_Device8()->TestCooperativeLevel() == 0)
+	if (DX8Wrapper::_Get_D3D_Device8() && reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->TestCooperativeLevel() == D3D_OK)
 		TheParticleSystemManager->rva000453D2Slot();
 }
 

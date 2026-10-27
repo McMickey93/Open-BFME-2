@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
+// dxsdk
+// platformsdk
 //
 // ScreenHilightFilter::preRender, slot 2 of its vftable (0x007CF31C, after
 // the rowed shutdown 0x000FB8EB). Zero Hour's preRender contract (clear
@@ -8,6 +10,7 @@
 // current surface of the pair at +0x30 (a square of side +0x0C); otherwise
 // rendering is redirected to the target at +0x2C and cleared.
 #include <string.h>
+#include <d3dx9tex.h>
 
 class Vector3
 {
@@ -30,79 +33,21 @@ protected:
 	static struct IDirect3DDevice8 *D3DDevice;
 };
 
-// IDirect3DSurface9::GetDesc is slot 12; IDirect3DDevice9::StretchRect is 34.
-struct BfmeD3DSurfaceDesc
-{
-	unsigned int Format;
-	unsigned int Type;
-	unsigned int Usage;
-	unsigned int Pool;
-	unsigned int MultiSampleType;
-	unsigned int MultiSampleQuality;
-	unsigned int Width;
-	unsigned int Height;
-};
-
-struct BfmeD3DSurface
-{
-	virtual long __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-	virtual void __stdcall s3() = 0; virtual void __stdcall s4() = 0; virtual void __stdcall s5() = 0;
-	virtual void __stdcall s6() = 0; virtual void __stdcall s7() = 0; virtual void __stdcall s8() = 0;
-	virtual void __stdcall s9() = 0; virtual void __stdcall s10() = 0; virtual void __stdcall s11() = 0;
-	virtual long __stdcall GetDesc(BfmeD3DSurfaceDesc *desc) = 0;
-};
-
-struct BfmeRect
-{
-	long left;
-	long top;
-	long right;
-	long bottom;
-};
-
-struct IDirect3DDevice8
-{
-#define G(n) virtual void __stdcall s##n() = 0;
-	G(00) G(01) G(02) G(03) G(04) G(05) G(06) G(07) G(08) G(09) G(10) G(11) G(12) G(13) G(14) G(15)
-	G(16) G(17) G(18) G(19) G(20) G(21) G(22) G(23) G(24) G(25) G(26) G(27) G(28) G(29) G(30) G(31)
-	G(32) G(33)
-#undef G
-	virtual long __stdcall StretchRect(BfmeD3DSurface *src, const BfmeRect *srcRect, BfmeD3DSurface *dst, const BfmeRect *dstRect, int filter) = 0;
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device: StretchRect
+// is slot 34 and CreateTexture slot 23. The back buffer and render targets are
+// IDirect3DSurface9 objects (GetDesc, slot 12) and IDirect3DTexture9 objects
+// (GetSurfaceLevel, slot 18; Release, slot 2).
 
 class W3DRadarResetSurface
 {
 public:
 	~W3DRadarResetSurface();
-	BfmeD3DSurface *peek() const { return m_surface; }
+	IDirect3DSurface9 *peek() const { return m_surface; }
 private:
-	BfmeD3DSurface *m_surface;
+	IDirect3DSurface9 *m_surface;
 };
 W3DRadarResetSurface getBackBufferSurface006e(int index);
 
-// COM call views used by the BFME 1 initializer at donor f98983a7.
-struct BfmeGlowTexture;
-struct BfmeGlowTextureVtable
-{
-	char pad00[8];
-	unsigned long (__stdcall *Release)(BfmeGlowTexture *);
-	char pad0C[0x48 - 12];
-	long (__stdcall *GetSurfaceLevel)(BfmeGlowTexture *, unsigned, IDirect3DSurface8 **);
-};
-struct BfmeGlowTexture { BfmeGlowTextureVtable *v; };
-struct BfmeGlowDevice;
-struct BfmeGlowDeviceVtable
-{
-	char pad[0x5C];
-	long (__stdcall *CreateTexture)(BfmeGlowDevice *, unsigned, unsigned, unsigned,
-		unsigned, unsigned, unsigned, BfmeGlowTexture **, void *);
-};
-struct BfmeGlowDevice { BfmeGlowDeviceVtable *v; };
-extern "C" long __stdcall D3DXLoadSurfaceFromMemory(IDirect3DSurface8 *,
- const void *, const BfmeRect *, const void *, unsigned, unsigned,
- const void *, const BfmeRect *, unsigned, unsigned);
 long __cdecl Rva00077C19Load(const char *, unsigned *);
 long __cdecl Rva00077D0FLoad(const char *, unsigned long *);
 class W3DFilterInterface;
@@ -167,7 +112,7 @@ private:
 	int m_current; // +0x10
 	bool m_14; // +0x14
 	int m_kernel[3]; // +0x18
-	BfmeGlowTexture *m_textures[2]; // +0x24
+	IDirect3DTexture9 *m_textures[2]; // +0x24
 	IDirect3DSurface8 *m_surfaces[2]; // +0x2C / +0x30
 };
 
@@ -187,24 +132,24 @@ bool ScreenHilightFilter::preRender(bool &skipRender, CustomScenePassModes &scen
 		g_bfmeDirtyCU = false;
 	}
 	if (TheWritableGlobalData && ((BfmeHilightGlobalDataView *)TheWritableGlobalData)->m_D34) {
-		BfmeD3DSurface *dest = (BfmeD3DSurface *)m_surfaces[m_current + 1];
-		BfmeD3DSurface *backBuffer = getBackBufferSurface006e(0).peek();
-		IDirect3DDevice8 *device = (IDirect3DDevice8 *)DX8Wrapper::_Get_D3D_Device8();
-		BfmeD3DSurfaceDesc desc;
+		IDirect3DSurface9 *dest = reinterpret_cast<IDirect3DSurface9 *>(m_surfaces[m_current + 1]);
+		IDirect3DSurface9 *backBuffer = getBackBufferSurface006e(0).peek();
+		IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
+		D3DSURFACE_DESC desc;
 		memset(&desc, 0, sizeof(desc));
 		if (backBuffer)
 			backBuffer->GetDesc(&desc);
-		BfmeRect srcRect;
+		RECT srcRect;
 		srcRect.right = desc.Width;
 		srcRect.bottom = desc.Height;
 		srcRect.top = 0;
 		srcRect.left = 0;
-		BfmeRect dstRect;
+		RECT dstRect;
 		dstRect.top = 0;
 		dstRect.left = 0;
 		dstRect.bottom = m_size;
 		dstRect.right = m_size;
-		device->StretchRect(backBuffer, &srcRect, dest, &dstRect, 2);
+		device->StretchRect(backBuffer, &srcRect, dest, &dstRect, D3DTEXF_LINEAR);
 		m_current++;
 		if (m_current == 1)
 			m_current = 0;
@@ -237,36 +182,37 @@ int ScreenHilightFilter::init()
 		return 0;
 	}
 	m_size = ((BfmeGaussianSettings *)Rva00309E4BGet())->m_size;
-	if (reinterpret_cast<BfmeGlowDevice *>(DX8Wrapper::_Get_D3D_Device8())->v->CreateTexture(
-		reinterpret_cast<BfmeGlowDevice *>(DX8Wrapper::_Get_D3D_Device8()),
-		m_size, m_size, 1, 1, 21, 0, &m_textures[0], 0) < 0) {
+	if (FAILED(reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->CreateTexture(
+		m_size, m_size, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT, &m_textures[0], 0))) {
 		shutdown();
 		return 0;
 	}
-	if (m_textures[0]->v->GetSurfaceLevel(m_textures[0], 0, &m_surfaces[0]) != 0) {
+	if (m_textures[0]->GetSurfaceLevel(0, reinterpret_cast<IDirect3DSurface9 **>(&m_surfaces[0])) != D3D_OK) {
 		if (m_textures[0])
-			m_textures[0]->v->Release(m_textures[0]);
+			m_textures[0]->Release();
 		m_textures[0] = 0;
 		m_surfaces[0] = 0;
 	}
 	for (int i = 0; i < 1; ++i) {
-		BfmeGlowDevice *dev = reinterpret_cast<BfmeGlowDevice *>(DX8Wrapper::_Get_D3D_Device8());
-		if (dev->v->CreateTexture(dev, m_size, m_size, 1, 1, 21, 0, &m_textures[i + 1], 0) < 0) {
+		IDirect3DDevice9 *dev = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
+		if (FAILED(dev->CreateTexture(m_size, m_size, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R8G8B8,
+				D3DPOOL_DEFAULT, &m_textures[i + 1], 0))) {
 			shutdown();
 			return 0;
 		}
-		if (m_textures[i + 1]->v->GetSurfaceLevel(m_textures[i + 1], 0, &m_surfaces[i + 1]) != 0) {
-			m_textures[i + 1]->v->Release(m_textures[i + 1]);
+		if (m_textures[i + 1]->GetSurfaceLevel(0, reinterpret_cast<IDirect3DSurface9 **>(&m_surfaces[i + 1])) != D3D_OK) {
+			m_textures[i + 1]->Release();
 			m_textures[i + 1] = 0;
 			m_surfaces[i + 1] = 0;
 		} else {
 			unsigned color = 0;
-			BfmeRect rect;
+			RECT rect;
 			rect.top = 0;
 			rect.left = 0;
 			rect.bottom = 1;
 			rect.right = 1;
-			D3DXLoadSurfaceFromMemory(m_surfaces[i + 1], 0, 0, &color, 21, 4, 0, &rect, 2, 0);
+			D3DXLoadSurfaceFromMemory(reinterpret_cast<IDirect3DSurface9 *>(m_surfaces[i + 1]), 0, 0, &color,
+				D3DFMT_A8R8G8B8, 4, 0, &rect, D3DX_FILTER_POINT, 0);
 		}
 	}
 	BfmeGaussianParams params;

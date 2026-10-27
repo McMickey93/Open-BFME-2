@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // set is slot 5 of the same native table as the existing shutdown:
 // 0x007CF270, entries 0x007CF274 -> F884C and 0x007CF284 -> F9989.
 // The complete set body is F9989..F9BD7, 590B, ending RET4; the next
@@ -11,6 +13,8 @@
 // The established neutral owner spelling is retained; this partial view
 // has explicit vptr storage, so its body methods are declared nonvirtual.
 // Original filter and global identifiers remain unknown.
+
+#include <d3d9.h>
 
 typedef int Int;
 typedef float Real;
@@ -86,40 +90,11 @@ struct BFME2TextureRef
 };
 void BFME2Set_Texture(unsigned stage, const BFME2TextureRef &texture);
 
-struct IDirect3DBaseTexture8
-{
-	virtual long __stdcall QueryInterface(const void *, void **) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-};
-
-struct IDirect3DDevice8
-{
-	virtual long __stdcall QueryInterface(const void *, void **) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-#define S(n) virtual void __stdcall slot##n() = 0;
-	S(03) S(04) S(05) S(06) S(07) S(08) S(09) S(10) S(11) S(12) S(13) S(14) S(15) S(16) S(17)
-	S(18) S(19) S(20) S(21) S(22) S(23) S(24) S(25) S(26) S(27) S(28) S(29) S(30) S(31) S(32)
-	S(33) S(34) S(35) S(36) S(37) S(38) S(39) S(40) S(41) S(42) S(43) S(44) S(45) S(46) S(47)
-	S(48) S(49) S(50) S(51) S(52) S(53) S(54) S(55) S(56)
-	virtual long __stdcall SetRenderState(unsigned long state, unsigned long value) = 0; // 57
-	S(58) S(59) S(60) S(61) S(62)
-	S(63) S(64)
-	virtual long __stdcall SetTexture(unsigned stage, IDirect3DBaseTexture8 *texture) = 0;	// 65
-	S(66) S(67) S(68)
-	virtual long __stdcall SetSamplerState(unsigned sampler, unsigned type, unsigned value) = 0;	// 69
-	S(70) S(71) S(72) S(73) S(74) S(75) S(76) S(77) S(78) S(79) S(80) S(81) S(82) S(83) S(84)
-	S(85) S(86)
-	virtual long __stdcall SetVertexDeclaration(unsigned decl) = 0;	// 87
-	S(88) S(89) S(90) S(91)
-	virtual long __stdcall SetVertexShader(unsigned shader) = 0;	// 92
-	S(93) S(94) S(95) S(96) S(97) S(98) S(99) S(100) S(101) S(102) S(103) S(104) S(105) S(106)
-	virtual long __stdcall SetPixelShader(unsigned shader) = 0;	// 107
-	S(108)
-	virtual long __stdcall SetPixelShaderConstantF(unsigned reg, const void *data, unsigned count) = 0;	// 109
-#undef S
-};
+// The device and cached textures keep their D3D8 type names (DX8Wrapper's static
+// decorations) but are Direct3D 9 objects: SetRenderState slot 57, SetTexture 65,
+// texture AddRef / Release 1 / 2.
+struct IDirect3DBaseTexture8;
+struct IDirect3DDevice8;
 
 extern unsigned number_of_DX8_calls;
 
@@ -135,18 +110,20 @@ public:
 	static __forceinline void Set_DX8_Texture(unsigned stage, IDirect3DBaseTexture8 *texture)
 	{
 		if (stage >= 16) {
-			_Get_D3D_Device8()->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTexture(stage,
+				reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 			number_of_DX8_calls++;
 			return;
 		}
 		if (Textures[stage] == texture)
 			return;
 		if (Textures[stage])
-			Textures[stage]->Release();
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
 		if (Textures[stage])
-			Textures[stage]->AddRef();
-		_Get_D3D_Device8()->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->AddRef();
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTexture(stage,
+				reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		texture_changes++;
 	}
@@ -165,7 +142,7 @@ public:
    Get_DX8_Render_State_Value_Name(value_name, state, value);
   }
   RenderStates[state] = value;
-  _Get_D3D_Device8()->SetRenderState(state, value);
+  reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetRenderState((D3DRENDERSTATETYPE)state, value);
   number_of_DX8_calls++;
   render_state_changes++;
  }
@@ -276,8 +253,8 @@ Int Rva007DB820::set(FilterModes mode) {
   DX8Wrapper::Set_Dot3_Shader(ShaderClass::_PresetOpaqueShader);
   { BFME2TextureRef texture; BFME2Set_Texture(0, texture); }
   DX8Wrapper::Apply_Render_State_Changes();
-  DX8Wrapper::Set_Dot3_Render_State(23,8);
-  DX8Wrapper::Set_Dot3_Render_State(14,0);
+  DX8Wrapper::Set_Dot3_Render_State(D3DRS_ZFUNC,D3DCMP_ALWAYS);
+  DX8Wrapper::Set_Dot3_Render_State(D3DRS_ZWRITEENABLE,FALSE);
   DX8Wrapper::Apply_Render_State_Changes();
   return true;
  }

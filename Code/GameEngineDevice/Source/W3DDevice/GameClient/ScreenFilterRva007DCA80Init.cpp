@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 //
 // preRender is slot 2, native 0x000F9C9D..0x000F9D94 (247B; RET8).
 // Clean donor: BFME 1 f98983a7 game/GameEngineDevice/Source/W3DDevice/
@@ -32,6 +34,8 @@
 // 0x00132856 ShroudTexture::getFilter, 0x00077C19/0x00077D0F shader loads,
 // 0x00309E4B settings getter; 0x000F630C is called by its pinned bool name
 // (callers test AL) and 0x000780BC createGaussianVector by its pin.
+
+#include <d3d9.h>
 
 class TextureClass
 {
@@ -109,31 +113,10 @@ struct BfmeGaussianParams
 	float m_1C;
 };
 
-// IDirect3DTexture9::GetSurfaceLevel is slot 18; IDirect3DDevice9::
-// CreateTexture is slot 23.
-struct BfmeD3DSurface;
-struct BfmeD3DTexture
-{
-	virtual long __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-#define G(n) virtual void __stdcall s##n() = 0;
-	G(03) G(04) G(05) G(06) G(07) G(08) G(09) G(10) G(11) G(12) G(13) G(14)
-	G(15) G(16) G(17)
-#undef G
-	virtual long __stdcall GetSurfaceLevel(unsigned int level, BfmeD3DSurface **surface) = 0;
-};
-
-struct IDirect3DDevice8
-{
-#define G(n) virtual void __stdcall s##n() = 0;
-	G(00) G(01) G(02) G(03) G(04) G(05) G(06) G(07) G(08) G(09) G(10) G(11)
-	G(12) G(13) G(14) G(15) G(16) G(17) G(18) G(19) G(20) G(21) G(22)
-#undef G
-	virtual long __stdcall CreateTexture(unsigned int width, unsigned int height,
-		unsigned int levels, unsigned long usage, int format, int pool,
-		BfmeD3DTexture **texture, void **sharedHandle) = 0;
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (CreateTexture, slot 23); the render targets are IDirect3DTexture9 objects
+// (GetSurfaceLevel, slot 18) and their level-0 IDirect3DSurface9s.
+struct IDirect3DDevice8;
 
 struct IDirect3DSurface8;
 class Vector3
@@ -189,8 +172,8 @@ private:
 	bool m_restoreTarget; // +0x30
 	char m_pad31[3];
 	char m_kernel[0x0C]; // +0x34
-	BfmeD3DTexture *m_texture[3]; // +0x40
-	BfmeD3DSurface *m_surface[3]; // +0x4C
+	IDirect3DTexture9 *m_texture[3]; // +0x40
+	IDirect3DSurface9 *m_surface[3]; // +0x4C
 	RefCountPtr<TextureClass> m_vapor1; // +0x58
 	RefCountPtr<TextureClass> m_vapor2; // +0x5C
 };
@@ -217,21 +200,23 @@ int Rva007DCA80::init(void)
 	}
 
 	m_size = ((BfmeGaussianSettings *)Rva00309E4BGet())->m_size;
-	if (DX8Wrapper::_Get_D3D_Device8()->CreateTexture(m_size, m_size, 1, 1, 0x15, 0, &m_texture[0], 0) < 0) {
+	if (FAILED(reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->CreateTexture(m_size, m_size, 1,
+			D3DUSAGE_RENDERTARGET, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT, &m_texture[0], 0))) {
 		shutdown();
 		return 0;
 	}
-	if (m_texture[0]->GetSurfaceLevel(0, &m_surface[0]) != 0) {
+	if (m_texture[0]->GetSurfaceLevel(0, &m_surface[0]) != D3D_OK) {
 		if (m_texture[0])
 			m_texture[0]->Release();
 		m_texture[0] = 0;
 		m_surface[0] = 0;
 	}
-	if (DX8Wrapper::_Get_D3D_Device8()->CreateTexture(m_size, m_size, 1, 1, 0x15, 0, &m_texture[1], 0) < 0) {
+	if (FAILED(reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->CreateTexture(m_size, m_size, 1,
+			D3DUSAGE_RENDERTARGET, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT, &m_texture[1], 0))) {
 		shutdown();
 		return 0;
 	}
-	if (m_texture[1]->GetSurfaceLevel(0, &m_surface[1]) != 0) {
+	if (m_texture[1]->GetSurfaceLevel(0, &m_surface[1]) != D3D_OK) {
 		if (m_texture[1])
 			m_texture[1]->Release();
 		m_texture[1] = 0;
@@ -269,7 +254,7 @@ bool Rva007DCA80::preRender(bool &skipRender, int &scenePassMode)
 	W3DShaderManager::createGaussianVector(m_kernel, &params);
 	m_glowActive = ((BfmeSmokeGlobalDataView *)TheWritableGlobalData)->m_glowActive;
 	((BfmeSmokeGlobalDataView *)TheWritableGlobalData)->m_glowActive = false;
-	DX8Wrapper::Set_Render_Target((IDirect3DSurface8 *)m_surface[0], true);
+	DX8Wrapper::Set_Render_Target(reinterpret_cast<IDirect3DSurface8 *>(m_surface[0]), true);
 	Vector3 black;
 	black.X = 0.0f;
 	black.Y = 0.0f;
