@@ -5,6 +5,7 @@
 #include "ascii_string.h"
 #include <list>
 #include <new>
+
 class Rva001DBC77
 {
 public:
@@ -430,6 +431,10 @@ public:
 	int m_14;
 };
 
+class TransitionGroup;
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp
+
 // ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp
@@ -782,8 +787,6 @@ void GameWindowTransitionsHandler::parseWindow(INI *ini, void *instance, void *s
 	((TransitionGroup *)instance)->addWindow(transWin);
 }
 
-// tu-skeleton: 0x001DC01C 98B ?findGroup@GameWindowTransitionsHandler@@AAEPAVTransitionGroup@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Rva001DC0ECDtor.cpp
 
 //
@@ -804,11 +807,27 @@ Rva001DC0EC::~Rva001DC0EC()
 	}
 }
 
+// tu-skeleton: 0x001DC01C 98B ?findGroup@GameWindowTransitionsHandler@@AAEPAVTransitionGroup@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
+
 // tu-skeleton: 0x001DC164 59B ?rva001DC164@Rva001DBDA4@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Bfme/Rva00489360GuardedAdd.cpp (not merged yet)
 
 // tu-skeleton: 0x001DC1E1 28B ??_GRva001DC0EC@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
 
-// tu-skeleton: 0x001DC1FD 85B ?bfmeGetGroupTotalFrames@GameWindowTransitionsHandler@@QAEHVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsGroupTotalFrames_Rva001dc1fd.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsGroupTotalFrames_Rva001dc1fd.cpp
+
+// The inline forwarders over StringBase are what put retail's EH saved-esp
+// store ahead of the in-place ctor `this` (EH transposition).
+
+// Return the duration of a named transition group, or zero when absent.
+// ?bfmeGetGroupTotalFrames@GameWindowTransitionsHandler@@QAEHVAsciiString@@@Z
+int GameWindowTransitionsHandler::bfmeGetGroupTotalFrames( AsciiString groupName )
+{
+	int totalFrames = 0;
+	TransitionGroup *group = findGroup( groupName );
+	if (group)
+		totalFrames = ((Rva001DBDA4 *)group)->rva001DBDA4();
+	return totalFrames;
+}
 
 // tu-skeleton: 0x001DC252 243B ?setGroup@GameWindowTransitionsHandler@@QAEXVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandlerGroups.cpp (not merged yet)
 

@@ -7,7 +7,7 @@
 // 231B), ported from Zero Hour's GameClient/GUI/GameWindowTransitions.cpp;
 // reverse/symbols.csv pins findGroup, getNewGroup and setGroup at these
 // addresses. The total-frames query between them (0x001DC1FD) is
-// bfmeGetGroupTotalFrames, rowed in GameWindowTransitionsGroupTotalFrames_Rva001dc1fd.cpp.
+// bfmeGetGroupTotalFrames, rowed in GameWindowTransitions.cpp.
 // Target evidence: by-value AsciiString params with EH_prolog and the
 // releaseBuffer row 0x00036410; isEmpty early-outs (null plus length
 // check); the STLport group list at +0x20; compareNoCase (row 0x00006A00)
