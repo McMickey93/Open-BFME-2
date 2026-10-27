@@ -42,10 +42,6 @@ void __cdecl operator delete[](void *) throw();
 #include "rendobj.h"
 #include <string.h>
 #pragma intrinsic(memset)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
@@ -133,6 +129,44 @@ virtual bool Is_Object_In_List(const char *, DynamicVectorClass<RenderObjClass *
 // Target attachment uses RenderObj slot0x94 with trailing null offset;
 // target inline release decrements +4 and calls slot0 at zero.
 RenderObjClass * __cdecl Create_Render_Obj(const char *);
+
+//
+// ?Read_Header@AggregateDefClass@@MAE_NAAVChunkLoadClass@@@Z, retail 0x001A3400,
+// 95 bytes. Dedicated TU: BFME2 keeps the aggregate Read family as plain
+// success flags (retail returns mov al,1 / mov al,bl), while the Zero Hour
+// reference header declares WW3DErrorType. Declared locally with bool returns
+// in BFME1 virtual order so slot 3 (+0xC) reproduces the retail virtual call;
+// byte-identical to the BFME1 donor at open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp.
+// Vtable 0x007D6C70 slot 3; members mirror ZH layout: version +4, name +0x58.
+
+extern "C" char * __cdecl strdup(const char *);
+
+// Kernel32 string import (sweep/winbase_shim.h idiom, kept TU-local so this
+// self-contained unit needs no include chain): retail calls the IAT slot
+// directly.
+extern "C" __declspec(dllimport) char * __stdcall lstrcpyn(char *, const char *, int);
+
+struct AggregateSubobjectListView {
+    void *VTable;
+    W3dAggregateSubobjectStruct **Vector;
+    int VectorMax;
+    bool IsValid;
+    bool IsAllocated;
+    int ActiveCount;
+    int GrowthStep;
+    int Count() const { return ActiveCount; }
+    W3dAggregateSubobjectStruct *&operator[](int index) { return Vector[index]; }
+};
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
+
+#pragma optimize("gsy", on)
+
+#pragma optimize("", on)
+
+#pragma optimize("gsy", on)
+
+#pragma optimize("", on)
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/agg_def.cpp
 
@@ -607,8 +641,6 @@ bool AggregateDefClass::Load_W3D(ChunkLoadClass &chunk_load)
     return true;
 }
 
-// tu-skeleton: 0x001A3400 95B ?Read_Header@AggregateDefClass@@MAE_NAAVChunkLoadClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadHeader.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadInfo.cpp
 
 /*
@@ -695,12 +727,6 @@ bool AggregateDefClass::Save_W3D(ChunkSaveClass &chunk_save)
 
 	return ret_val;
 }
-
-// tu-skeleton: 0x001A35F0 116B ?Save_Header@AggregateDefClass@@MAE_NAAVChunkSaveClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveClassInfo.cpp (not merged yet)
-
-// tu-skeleton: 0x001A3690 62B ?Save_Class_Info@AggregateDefClass@@MAE_NAAVChunkSaveClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveClassInfo.cpp (not merged yet)
-
-// tu-skeleton: 0x001A3720 178B ?Resize@?$VectorClass@PAVFontCharsBuffer@@@@UAE_NHPBQAVFontCharsBuffer@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassConstructorBFME.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefBuildSubobjectList.cpp
 
@@ -929,9 +955,104 @@ AggregateDefClass::Attach_Subobjects (RenderObjClass &base_model)
 	return ;
 }
 
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefReadHeader.cpp
+
+bool AggregateDefClass::Read_Header(ChunkLoadClass &chunk_load)
+{
+	// BFME keeps the byte-sized success result in a callee-saved register.
+	bool ret_val = false;
+
+	// Is this the header chunk?
+	W3dAggregateHeaderStruct header = { 0 };
+	if (chunk_load.Read(&header, sizeof(header)) == sizeof(header)) {
+
+		// Copy the name from the header structure
+		m_pName = ::strdup(header.Name);
+		m_Version = header.Version;
+
+		// Success!
+		ret_val = true;
+	}
+
+	return ret_val;
+}
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveClassInfo.cpp
+
+// ?Save_Class_Info@AggregateDefClass@@MAE?AW4WW3DErrorType@@AAVChunkSaveClass@@@Z @0x1A3690
+bool AggregateDefClass::Save_Class_Info(ChunkSaveClass &chunk_save)
+{
+	// Assume error
+	bool ret_val = false;
+
+	// Begin a chunk that identifies the texture replacer header
+	if (chunk_save.Begin_Chunk(0x604) == true) {
+
+		// Write the class information structure out to the chunk
+		if (chunk_save.Write(&m_MiscInfo, sizeof(m_MiscInfo)) == sizeof(m_MiscInfo)) {
+			// Success!
+			ret_val = true;
+		}
+
+		// End the class info chunk
+		chunk_save.End_Chunk();
+	}
+
+	// Return the success flag
+	return ret_val;
+}
+
+// ?Save_Header@AggregateDefClass@@MAE_NAAVChunkSaveClass@@@Z @0x1A35F0
+bool AggregateDefClass::Save_Header(ChunkSaveClass &chunk_save)
+{
+	// Assume error
+	bool ret_val = false;
+
+	// Begin a chunk that identifies the aggregate
+	if (chunk_save.Begin_Chunk(0x601) == true) {
+
+		// Fill the header structure
+		W3dAggregateHeaderStruct header = { 0 };
+		header.Version = 0x10003;
+		::lstrcpyn(header.Name, m_pName, sizeof(header.Name));
+		header.Name[sizeof(header.Name) - 1] = 0;
+
+		// Write the header out to the chunk
+		if (chunk_save.Write(&header, sizeof(header)) == sizeof(header)) {
+			// Success!
+			ret_val = true;
+		}
+
+		// End the header chunk
+		chunk_save.End_Chunk();
+	}
+
+	// Return the success flag
+	return ret_val;
+}
+
+// tu-skeleton: 0x001A3720 178B ?Resize@?$VectorClass@PAVFontCharsBuffer@@@@UAE_NHPBQAVFontCharsBuffer@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassConstructorBFME.cpp (not merged yet)
+
 // tu-skeleton: 0x001A3930 40B ?rva001A3930@AggregateDefClass@@QBEHXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefRva001A3930.cpp (not merged yet)
 
-// tu-skeleton: 0x001A3960 101B ?Save_Info@AggregateDefClass@@MAE_NAAVChunkSaveClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveInfo.cpp (not merged yet)
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/AggregateDefSaveInfo.cpp
+
+bool AggregateDefClass::Save_Info(ChunkSaveClass &chunk_save)
+{
+    bool ret_val = false;
+    if (chunk_save.Begin_Chunk(0x602) == true) {
+        if (chunk_save.Write(&m_Info, sizeof(m_Info)) == sizeof(m_Info)) {
+            ret_val = true;
+            for (int isubobject = 0;
+                 isubobject < m_SubobjectList.Count() && ret_val == true;
+                 ++isubobject) {
+                ret_val = Save_Subobject(chunk_save, m_SubobjectList[isubobject]);
+            }
+        }
+        chunk_save.End_Chunk();
+    }
+    return ret_val;
+}
 
 // tu-skeleton: 0x001A3A60 77B ?Add@?$DynamicVectorClass@PAVFontCharsBuffer@@@@QAE_NABQAVFontCharsBuffer@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp (not merged yet)
 
