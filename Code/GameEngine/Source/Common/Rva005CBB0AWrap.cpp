@@ -7,7 +7,24 @@
 // class names are address-derived; layout is read from the retail stores.
 // Native 5CBB4A consumes the returned pointer and 2C025A forwards it.
 // Both wrappers preserve the canonical 2BFDE6 pointer argument and result.
-class Rva005CBB0AObj
+//
+// The payload derives from Rva002BED74 (target facts): its
+// destructor 0x002BEDA4 is mov [ecx],0x00BFE4EC / ret, the table of
+// Rva002BED74 ([??_G 0x002BED74, __purecall]), whose ctor 0x002BEDB5 and
+// deleting dtor 0x002BED74 store it too; the payload tables 0x00C74DFC and
+// 0x00BFE4F4 both start with the deleting dtor 0x005CBAEE, which calls
+// 0x002BEDA4. With the empty base destructor expanded, each payload's own
+// table store dies and only the base's remains; the funclets 0x007A1395 and
+// 0x00776AFF call that body. The view matches InlineDtorDeletingDtorsC01.cpp's
+// (inline ctor and dtor, one slot), so both units emit the same COMDATs.
+class Rva002BED74
+{
+public:
+	Rva002BED74() {}
+	virtual ~Rva002BED74() {}
+};
+
+class Rva005CBB0AObj : public Rva002BED74
 {
 public:
 	virtual ~Rva005CBB0AObj() {}

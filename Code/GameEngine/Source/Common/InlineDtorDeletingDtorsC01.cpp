@@ -362,6 +362,10 @@ Rva00215E42::~Rva00215E42()
 {
 }
 
+// Rva002BED74's constructor and destructor are inline (select-any COMDATs):
+// Rva005CBB0AWrap.cpp derives its two wrapper payloads from this class, and
+// expands both there, emitting identical copies (their destructors fold to
+// 0x002BEDA4, which stores this class's table 0x00BFE4EC).
 class Rva002BED74
 {
 public:
@@ -372,7 +376,7 @@ public:
 
 // ??0Rva002BED74@@QAE@XZ @0x002BEDB5 9B: the default constructor, storing the
 // class's own vtable and returning this.
-Rva002BED74::Rva002BED74()
+inline Rva002BED74::Rva002BED74()
 {
 }
 
@@ -383,9 +387,20 @@ Rva002BED74::Rva002BED74(EmitVtableTag *)
 
 // ??1Rva002BED74@@UAE@XZ @0x002BEDA4 7B: the empty dtor, restoring the vtable;
 // the deleting dtor still expands it inline.
-Rva002BED74::~Rva002BED74()
+inline Rva002BED74::~Rva002BED74()
 {
 }
+
+// Keeps this unit's emission of the two inline bodies above: compiled without
+// inlining, the anchor calls both out of line.
+#pragma inline_depth(0)
+// ?bfmeAnchorC01Rva002BED74 absent-from-retail
+void bfmeAnchorC01Rva002BED74(void *where)
+{
+	((Rva002BED74 *)where)->Rva002BED74::Rva002BED74();
+	((Rva002BED74 *)where)->Rva002BED74::~Rva002BED74();
+}
+#pragma inline_depth()
 
 class Rva002C1283
 {
