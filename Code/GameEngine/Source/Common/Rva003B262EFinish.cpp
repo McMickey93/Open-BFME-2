@@ -23,7 +23,7 @@ public:
 	Rva003B262EOr *m_next;
 };
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class Rva003B262E
 {

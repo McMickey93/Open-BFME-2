@@ -1,7 +1,7 @@
 // cl: /MD
 // ?rva003F7BE9@Rva003F7BE9@@QAEXPBVModuleData@@@Z, retail 0x003F7BE9 (35B).
 // Evidence: leaf lane; caller 0x003F9291 Rva003F9258Parse stores new ModuleData; callee operator delete 0x0002FD60 rowed; virtual slot0 with 0 then delete; same shape as 0x003F7C0C setter.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class ModuleData;
 

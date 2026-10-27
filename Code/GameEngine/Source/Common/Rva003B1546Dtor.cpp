@@ -31,7 +31,7 @@ void *&vector<void*>::operator[](size_t __n)
 { return *(begin() + __n); }
 }
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class AsciiStringMember {
 public:
