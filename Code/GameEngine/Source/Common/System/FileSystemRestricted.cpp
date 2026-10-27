@@ -6,6 +6,8 @@
 // Existing _M_find, string-pool and insertion owners are retained as ABI views;
 // the comparator/mapped template names do not assert application element types.
 // BFME1 9cbfb55 FileSystem.cpp was checked; restricted lists are target-specific.
+#include <new>
+#include <string.h>
 namespace _STL {
 template<class T> struct _Identity {};
 template<class T> struct less {};
@@ -87,9 +89,7 @@ extern FileSystem *TheFileSystem;
 class FilePathGate { public: unsigned char treeHeader[12]; bool inclusion; };
 extern FilePathGate *TheFilePathGate;
 class Rva0060146B { public: Rva0060146B(); unsigned char bytes[16]; };
-void *__cdecl operator new(unsigned int);
 void __cdecl Rva006005D5RTrim(char *);
-extern "C" int __cdecl strcmp(const char *,const char *);
 
 // WB16449A0 and native601572..6016AC prove a static cdecl taking one path.
 // First line sets inclusion mode; +group lines change the nested tree; other

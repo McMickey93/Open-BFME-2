@@ -9,6 +9,8 @@
 // Target facts: the call-site shape (receiver slot first, pair copied inline by
 // the rowed copy ctor 0x0044BD00) and the string labels; the class name is the
 // ledger's vftable owner (the screen class itself is not named).
+#include <new>
+#include <stdio.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
@@ -74,7 +76,6 @@ class AptMessenger { public: static void OpenScreen(); static AptMessenger *s_in
 // releases its by-value handles).
 struct TargetRef00217D4C { void *m_vtbl; int references; };
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
-void *__cdecl operator new(unsigned int size);
 class Rva0044BC76 {
 public:
     Rva0044BC76(const int *);
@@ -113,7 +114,6 @@ extern "C" void __cdecl Rva00437F61(int,const UnicodeString &,const UnicodeStrin
 
 void CloseWindow(const char *);
 class DebugDisplayInterface;
-struct _iobuf;
 void __cdecl rva000B3FD0DebugDisplay(DebugDisplayInterface *, void *, _iobuf *);
 
 class Rva00517345;

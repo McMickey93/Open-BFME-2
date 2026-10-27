@@ -7,10 +7,9 @@
 
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
+#include <string.h>
 #include "unicode_string.h"
 #include "ascii_string.h"
-
-extern "C" int __cdecl strcmp(const char *left, const char *right);
 
 class GameWindow
 {

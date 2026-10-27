@@ -1,8 +1,8 @@
 // Ported from BFME1; the body is independently byte-verified in BFME2 at
 // RVA 0x00759360.
-extern "C" void *__cdecl memcpy(void *d, const void *s, unsigned int n);
-void *__cdecl operator new(unsigned int bytes);
 
+#include <string.h>
+#include <new>
 struct Rva009A3770Node
 {
 	unsigned char m_head[0x2c];

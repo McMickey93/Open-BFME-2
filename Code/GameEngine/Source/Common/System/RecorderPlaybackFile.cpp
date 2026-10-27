@@ -8,11 +8,10 @@
 // Header5C has the six inline null string slots and existing out-of-line dtor.
 // CRC state constructor37D076 consumes12B; only local-player field08 is used.
 // Saved values are TU statics, independently inferred from the native stores.
+#include <stdio.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "../GameLogicObjectLookupView.h"
-struct FILE;
-extern "C" __declspec(dllimport) unsigned int __cdecl fread(void *,unsigned int,unsigned int,FILE *);
 class Rva0037B5DF {public:
  ~Rva0037B5DF();
  int startTime,endTime;unsigned int duration;int interval,mode;bool quitEarly,discons[8];char gap1D[3];
@@ -99,4 +98,3 @@ void RecorderClass::rva0037AEE2()
  TheWritableGlobalData->flag1100=recorderSavedGlobalFlag;
  TheWritableGlobalData->value1104=recorderSavedGlobalValue;
 }
-

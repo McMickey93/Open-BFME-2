@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?findFXList@FXListStore@@QBEPBVFXList@@PBD@Z,
 // retail 0x001E281A, 69 bytes. Dedicated TU.
@@ -10,11 +11,9 @@
 // through the matched nameToKey row and the map find through the 0x2888D4
 // pin, returning the stored list or null.
 
+#include <windows.h>
+#include <string.h>
 typedef int Int;
-
-#define NULL 0
-
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 enum NameKeyType
 {

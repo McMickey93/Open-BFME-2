@@ -3,6 +3,8 @@
 // WB157DCE0 names Manager::PopulateHeroList; native5B6755..5B692F.
 // Target prefixes and the comparator words are measured from retail.
 #define _STLP_BFME_COPY_TRIVIAL_EXTERN  // call retail's one __copy_trivial (vendor/stlport/stl/_algobase.h)
+#include <stdlib.h>
+#include <new>
 #include <vector>
 #include "ascii_string.h"
 #include "unicode_string.h"
@@ -38,7 +40,6 @@ struct Rva005B61B3Less: Rva005B61B3 {Rva005B61B3Less(int a,int b){key0=a;key1=b;
 namespace _STL {template<class I,class C> void sort(I,I,C);}
 struct HeroListScreenPrefix {char prefix[0x284];UnicodeString selectedName;};
 struct Rva005B5C70Box {void Run(int);};
-extern "C" void __cdecl free(void *);
 struct HeroListScratch {
  unsigned *first,*last,*limit;
  __forceinline HeroListScratch(const Rva0040A3F9 &source){reinterpret_cast<_STL::vector<unsigned> *>(this)->_STL::vector<unsigned>::vector(*reinterpret_cast<const _STL::vector<unsigned> *>(&source));}
@@ -171,7 +172,6 @@ void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 struct DelegateDesc {void *m_object;void *m_method;DelegateDesc(void *o,void *m):m_object(o),m_method(m){}};
 static __forceinline DelegateDesc MakeDelegate(void *object,void *method){return DelegateDesc(object,method);}
 
-void *__cdecl operator new(unsigned int size);
 struct ImplBase {virtual ~ImplBase(){} int m_ref;ImplBase():m_ref(0){}};
 struct Impl:ImplBase {virtual void rva005b4c73(const char*);void *m_object,*m_method;Impl(const DelegateDesc&d):m_object(d.m_object),m_method(d.m_method){}};
 class Rva00579E47 {public:Rva00579E47(const DelegateDesc &);private:void *m_ptr;};

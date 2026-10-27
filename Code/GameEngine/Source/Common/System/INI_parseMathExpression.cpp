@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /Oy- /DNDEBUG /MD /GX /Oi-
+// platformsdk
 //
 // BFME2-only INI math expressions: a value token starting with '#'
 // (scanInt/scanUnsignedInt/scanReal, rowed in INI_scan*.cpp) is evaluated
@@ -25,11 +26,9 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#define NULL 0
-
+#include <windows.h>
+#include <string.h>
 #include "ascii_string.h"
-
-extern "C" int __cdecl strcmp(const char *a, const char *b);
 
 class INI
 {

@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?calcPhysicsXformTreads@Drawable@@IAEXPBVLocomotor@@AAUPhysicsXformInfo@1@@Z
 // retail 0x00270817..0x00270B0F (760 bytes) thiscall RET 8.
@@ -19,6 +20,7 @@
 // and HOVER as in the donor). Target facts: offsets m_locoInfo
 // +0x13C and m_object +0xFC; the method name, the airborne meaning of bit 0
 // and the +0x258 (AI) meaning are carried from the donor. WB's twin is unnamed.
+#include <windows.h>
 #include <math.h>
 
 typedef float Real;
@@ -204,13 +206,6 @@ void Drawable::calcPhysicsXformTreads(const Locomotor *locomotor, PhysicsXformIn
 
 	info.m_totalZ = 0.0f;
 }
-
-#ifndef max
-#define max(a,b) (((a) > (b)) ? (a) : (b))
-#endif
-#ifndef min
-#define min(a,b) (((a) < (b)) ? (a) : (b))
-#endif
 
 // Retail 0x00270B0F..0x00270BA8 (153 bytes) thiscall RET 8, right after
 // calcPhysicsXformTreads: the appearance switch of calcPhysicsXform

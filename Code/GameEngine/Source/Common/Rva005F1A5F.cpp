@@ -2,11 +2,11 @@
 // StrategicHUD::GetBonusTypeFromParam @0x005F1A5F 150B (WorldBuilder name,
 // StrategicHUDRegionDetailsTerritoryMovieClip.cpp lines 260..272): free cdecl bool const-char plus int-out with index GetParam plus empty plus isdigit plus atoi 0-5.
 // Evidence: unlock lane; string index plus atoi plus releaseBuffer; pin Rva004128F0GetParam plus IAT isdigit atoi; extern g_Rva0107301CEmptyString; callers 0x005F1B02 0x005F1B25.
+#include <ctype.h>
+#include <stdlib.h>
 #include "ascii_string.h"
 
 bool __cdecl Rva004128F0GetParam(const char *params, const char *key, AsciiString &value);
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 
 __forceinline const char *GetStr005F1A5F(const AsciiString &asciiString)
 {

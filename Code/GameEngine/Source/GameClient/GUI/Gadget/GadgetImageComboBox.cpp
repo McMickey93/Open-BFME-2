@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /ICode/GameEngine/Include /DNDEBUG /MD /EHsc /O1 /arch:SSE /G7
+// platformsdk
 // ?GadgetImageComboBoxInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z
 // @0x0032386A 497B (Ghidra boundary, EH frame): the image combo box input
 // callback, slot 0x54 of the input table 0x9BCAD8. Reference semantics:
@@ -17,6 +18,8 @@
 // by TheKeyboard's shift bit. The switch tree pivots on 19, so the two wheel
 // cases reach "handled" through different labels; which case returns
 // directly is not recoverable (any split of 19 from 20 compiles the same).
+#include <string.h>
+#include <windows.h>
 #include "Common/BfmeAudioEventPrefix136.h"
 #include "unicode_string.h"
 
@@ -64,12 +67,6 @@ enum { WIN_STATE_HILITED = 0x02 };
 enum { GWS_PUSH_BUTTON = 0x01, GWS_SCROLL_LISTBOX = 0x20, GWS_MOUSE_TRACK = 0x400 };
 enum { KEY_TAB = 0x0F };
 enum { KEY_STATE_DOWN = 0x02, KEY_STATE_LSHIFT = 0x10 };
-
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 #include "../../../../../Libraries/Include/Lib/ICoord2D.h"
 

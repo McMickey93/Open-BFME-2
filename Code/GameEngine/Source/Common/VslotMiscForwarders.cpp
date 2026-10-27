@@ -4,6 +4,7 @@
 // class, method and callee is address-derived unless the ledger already
 // names the callee; the bytes prove only the shapes described per group.
 
+#include <new>
 typedef int Int;
 typedef bool Bool;
 
@@ -84,7 +85,6 @@ void Rva00351949Host::rva00351949() { ((AIAttackAimAtTargetState *)this)->update
 // modeled on the byte-proven neighbor 0x00107152 (`delete p->rvaFoo(0)`)
 // with honest address-derived node names; manager/owner identities beyond
 // the caller ABI (thiscall void*(owner), ret 4) remain unclaimed.
-void __cdecl operator delete(void *p);
 class Rva000F0A75Node
 {
 public:

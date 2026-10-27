@@ -1,5 +1,7 @@
 // cl: /O1 /arch:SSE /G7 /Oy- /DNDEBUG /MD /GX- /Oi-
 // ?Rva00339D74ParseCurve@@YAXPAVINI@@PAX1PBX@Z @0x00339D74 167B evidence: REF Radius Opacity Angle slots; calls getNextToken erase sscanf Curve-set FunctionCurve-parse INIException.
+#include <stdio.h>
+#include <string.h>
 struct BfmePod16 { int a[4]; };
 namespace _STL
 {
@@ -42,8 +44,6 @@ public:
 	INIException(const INIException &that);
 	~INIException();
 };
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buffer, const char *format, ...);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
 // ?Rva00339D74ParseCurve@@YAXPAVINI@@PAX1PBX@Z
 void Rva00339D74ParseCurve(INI *ini, void *instance, void *store, const void *userData)
 {
