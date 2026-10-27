@@ -3,6 +3,11 @@
 class Thing;
 class ModuleData;
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/BehaviorModule.h
 class BehaviorModule
 {
@@ -42,6 +47,7 @@ class PreorderCreate : public CreateModule
 {
 public:
 	PreorderCreate( Thing *thing, const ModuleData *moduleData );
+	virtual NameKeyType getModuleNameKey() const;
 protected:
 	virtual ~PreorderCreate();
 };
