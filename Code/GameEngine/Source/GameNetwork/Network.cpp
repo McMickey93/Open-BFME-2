@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /EHsc /MD /arch:SSE
+// platformsdk
 // Network.cpp -- Network members recovered from WorldBuilder leads
 // (reverse/wb_name_leads.csv): WB's debug build names the function (vtable
 // pairing) and the member m_pConMgr at +0x0C (assert at Network.cpp:69);
@@ -81,8 +82,8 @@ public:
 
 extern class MessageStream *TheMessageStream;
 
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceFrequency(__int64 *frequency);
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceCounter(__int64 *counter);
+#define NOMINMAX
+#include <windows.h>
 
 // Retail keeps the vtable at +0 and m_pConMgr at +0x0C although the class
 // holds 64-bit QPC fields; 4-byte packing reproduces that layout.
@@ -180,8 +181,8 @@ void Network::SetLocalAddr(const NetLocalAddress &addr)
 // Retail's field offsets past +0x2C sit 8 bytes below WB's debug layout.
 void Network::startNewSession(void)
 {
-	QueryPerformanceFrequency(&m_performanceFrequency);
-	QueryPerformanceCounter(&m_lastPerformanceCounter);
+	QueryPerformanceFrequency((LARGE_INTEGER *)&m_performanceFrequency);
+	QueryPerformanceCounter((LARGE_INTEGER *)&m_lastPerformanceCounter);
 	m_accumulator = 0;
 	m_stallTimerRunning = false;
 	m_stallCount = 0;

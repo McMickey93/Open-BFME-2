@@ -1,4 +1,5 @@
 // cl: /ICode/Libraries/Include/Lib /O1 /EHsc /MD /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /arch:SSE /Ireference/shims/sweep
+// platformsdk
 // stlport
 //
 // ?loadDockPositions@DockUpdate@@IAEXXZ, retail 0x005897FB, 270 bytes.
@@ -17,10 +18,8 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
 
-#ifndef TRUE
-#define TRUE 1
-#define FALSE 0
-#endif
+#define NOMINMAX
+#include <windows.h>
 
 #include "Coord3D.h"
 
