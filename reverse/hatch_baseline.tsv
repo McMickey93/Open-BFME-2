@@ -19655,7 +19655,6 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.c
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.cpp	getFriendlyOpacity@StealthUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.cpp	receiveGrant@StealthUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateModuleDataCtor.cpp	Rva004CEE6EMemberTracked::~Rva004CEE6EMemberTracked	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdate.cpp	StructureCollapseUpdate::doPhaseStuff	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdate.cpp	StructureCollapseUpdate::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdate.cpp	StructureToppleUpdate::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdate.cpp	StructureToppleUpdate::~StructureToppleUpdate	1

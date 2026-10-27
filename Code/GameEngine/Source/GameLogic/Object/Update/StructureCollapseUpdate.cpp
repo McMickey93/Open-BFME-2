@@ -141,7 +141,6 @@ static void buildNonDupRandomIndexList(Int range, Int count, Int idxList[])
 
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
-// ?StructureCollapseUpdate::doPhaseStuff present-unmatched
 void StructureCollapseUpdate::doPhaseStuff(StructureCollapsePhaseType scphase, const Coord3D *target)
 {
 	DEBUG_LOG(("Firing phase %d on frame %d\n", scphase, TheGameLogic->getFrame()));
