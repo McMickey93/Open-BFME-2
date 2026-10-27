@@ -559,7 +559,6 @@ Code/GameEngine/Source/GameLogic/Object/Upgrade/ExperienceScalarUpgrade.cpp	wron
 Code/GameEngine/Source/GameLogic/Object/Upgrade/GrantUpgradeCreatePoolKey.cpp	wrong-name	?$S1@?1??rva004B8FAB@GrantUpgradeCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F84
 Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp	wrong-name	?$S1@?1??rva004B9471@InheritUpgradeCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03FA4
 Code/GameEngine/Source/GameLogic/Object/Upgrade/LockWeaponCreatePoolKey.cpp	wrong-name	?$S1@?1??rva004B8C57@LockWeaponCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F6C
-Code/GameEngine/Source/GameLogic/Object/Upgrade/ObjectCreationUpgradeVslot8.cpp	wrong-name	?$S1@?5??rva004B463C@ObjectCreationUpgrade@@QAEXXZ@4IA	0x00A03E10
 Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp	wrong-name	?$S1@?1??rva004B92A0@PreorderCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F94
 Code/GameEngine/Source/GameLogic/Object/Create/SpecialPowerCreate.cpp	wrong-name	?$S1@?1??rva004B938E@SpecialPowerCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F9C
 Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeIfEldestKindofSlot2.cpp	wrong-name	?$S1@?1??rva004CE2B0@StatusBitsUpgradeIfEldestKindof@@UAE_NPAVRva00406F9C@@@Z@4IA	0x00A03E38
@@ -608,7 +607,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DLightDrawPoolKey.c
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDraw.cpp	wrong-name	?$S1@?1??rva0000D140A@W3DProjectileStreamDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBC1C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DPropDrawPoolKey.cpp	wrong-name	?$S1@?1??rva000CEEE6@W3DPropDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBBC4
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DQuadrupedDrawPoolKey.cpp	wrong-name	?$S1@?1??rva0000CA0CE@W3DQuadrupedDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBB70
-Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DRopeDrawPoolKey.cpp	wrong-name	?$S1@?1??rva000CA7F6@W3DRopeDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBB7C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DSailModelDrawPoolKey.cpp	wrong-name	?$S1@?1??rva0000D07CB@W3DSailModelDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBBF4
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DScriptedModelDrawPoolKey.cpp	wrong-name	?$S1@?1??rva0000C1201@W3DScriptedModelDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EAF2C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DStreakDrawPoolKey.cpp	wrong-name	?$S1@?1??rva000D004C@W3DStreakDraw@@SA?AW4NameKeyType@@XZ@4IA	0x009EBBE8
