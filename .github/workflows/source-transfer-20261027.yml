@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: bfme2-source-transfer-final-20261027
+  group: bfme2-source-stable-20261027
   cancel-in-progress: false
 
 env:
@@ -35,7 +35,7 @@ jobs:
       github.repository == 'McMickey93/Open-BFME-2' &&
       github.event.repository.fork == true &&
       github.event.repository.private == false &&
-      github.ref == 'refs/heads/codex/20261027-bfme2-source-transfer-final' &&
+      github.ref == 'refs/heads/codex/20261027-bfme2-source-stable' &&
       github.event.ref_type == 'branch'
     permissions:
       contents: write

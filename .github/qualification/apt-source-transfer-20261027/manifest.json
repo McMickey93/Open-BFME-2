@@ -13,10 +13,11 @@
   "normal_precommit_passed": true,
   "normal_official_prepush_passed": true,
   "fork": "McMickey93/Open-BFME-2",
-  "control_branch": "codex/20261027-bfme2-source-transfer-final",
+  "control_branch": "codex/20261027-bfme2-source-stable",
   "result_branch": "codex/20261027-bfme2-source-qualified-final",
   "agents_blob": "43a21b639c94eba6538b14a8b7eb117adecd10c3",
   "claim_ref": "refs/heads/claims/file/7dec02d806ee6f77",
   "claim_owner": "github:McMickey93:bfme2:apt-header-final-20261027",
-  "claim_lease": "c8e3810caadf4a9bbde5b80107881959"
+  "claim_lease": "c8e3810caadf4a9bbde5b80107881959",
+  "transport_expected": "2f31589515e63dcf061994dfcb5257c2eede1c55"
 }

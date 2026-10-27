@@ -79,45 +79,63 @@ def main():
     original_source = rev("HEAD:Code/GameEngine/Source/Common/Rva00518769Dtor.cpp")
     git("public-author", "config", "user.name", "McMickey93")
     git("public-email", "config", "user.email", "347452154+McMickey93@users.noreply.github.com")
-    git("normal-rebase", "pull", "--rebase", "origin", "master")
-    require(rev("HEAD:AGENTS.md") == DATA["agents_blob"], "AGENTS changed: review required")
-    require(rev("HEAD:Code/GameEngine/Source/Common/Rva00518769Dtor.cpp") == original_source, "Reviewed consumer changed")
-    base, tip = rev("origin/master"), rev("HEAD")
-    changed = set(subprocess.check_output(["git", "diff", "--name-only", "-z", base, tip], cwd=ROOT).decode().strip("\0").split("\0"))
-    require(changed == set(DATA["files"]), "Unexpected outgoing paths")
-    require(subprocess.check_output(["git", "rev-list", "--count", base + ".." + tip], cwd=ROOT, text=True).strip() == "1", "Not one source commit")
-    git("reference-inputs", "-c", "submodule.recurse=false", "submodule", "update", "--init", "--depth=1", "--", "reference/open-bfme-1")
-    run("verification-requirements", [sys.executable, "-m", "pip", "install", "--disable-pip-version-check", "-r",
-                                    "reference/open-bfme-1/tools/requirements.txt"])
-    bash = os.environ["BFME_QUALIFICATION_BASH"]
-    require(Path(bash).is_file(), "Real Git Bash missing")
-    run("normal-hook-setup", [bash, "tools/setup_hooks.sh"])
-    claim()
-    wire = (DATA["branch"] + " " + tip + " refs/heads/master " + base + "\n").encode()
-    run("actual-official-pre-push", [bash, ".githooks/pre-push", "origin",
-                                   "https://github.com/Open-BFME/Open-BFME-2.git"], stdin=wire)
-    claim()
-    run("required-progress", [sys.executable, "tools/progress.py", "origin/master"])
-    git("preseed-fast-forward-lineage", "merge-base", "--is-ancestor", DATA["base"], tip)
-    RESULT.update(status="qualified", base=base, commit=tip, tree=rev("HEAD^{tree}"), normal_official_prepush_passed=True, new_cpp_bytes=0)
-    save()
-    print("QUALIFIED_SOURCE " + json.dumps(RESULT), flush=True)
-    url = "https://github.com/McMickey93/Open-BFME-2.git"
-    target = "refs/heads/" + DATA["result_branch"]
-    env = dict(os.environ)
-    count = int(env.get("GIT_CONFIG_COUNT", "0"))
-    auth = "AUTHORIZATION: basic " + base64.b64encode(("x-access-token:" + token).encode()).decode()
-    env.update({"GIT_CONFIG_COUNT": str(count + 1), "GIT_CONFIG_KEY_" + str(count): "http." + url + ".extraheader",
-                "GIT_CONFIG_VALUE_" + str(count): auth, "GIT_TERMINAL_PROMPT": "0"})
-    git("normal-hook-fork-push", "-c", "core.hooksPath=.githooks", "push", "--porcelain",
-        "--force-with-lease=" + target + ":" + DATA["base"], url, "HEAD:" + target, env=env)
-    readback = git("fork-readback", "ls-remote", "--exit-code", url, target).decode().split()
-    require(readback == [tip, target], "Fork readback differs")
-    RESULT.update(status="transferred", base=base, commit=tip, tree=rev("HEAD^{tree}"),
-                  source_blob=original_source, normal_official_prepush_passed=True,
-                  normal_fork_push_passed=True, files=sorted(changed), new_cpp_bytes=0)
-    save()
-    print("SOURCE_TRANSFER_COMPLETE " + json.dumps(RESULT), flush=True)
+    installed = False
+    expected = DATA["transport_expected"]
+    for attempt in range(8):
+        print("PUBLICATION_ATTEMPT " + str(attempt + 1), flush=True)
+        git("normal-rebase", "pull", "--rebase", "origin", "master")
+        require(rev("HEAD:AGENTS.md") == DATA["agents_blob"], "AGENTS changed: review required")
+        require(rev("HEAD:Code/GameEngine/Source/Common/Rva00518769Dtor.cpp") == original_source, "Reviewed consumer changed")
+        base, tip = rev("origin/master"), rev("HEAD")
+        changed = set(subprocess.check_output(["git", "diff", "--name-only", "-z", base, tip], cwd=ROOT).decode().strip("\0").split("\0"))
+        require(changed == set(DATA["files"]), "Unexpected outgoing paths")
+        require(subprocess.check_output(["git", "rev-list", "--count", base + ".." + tip], cwd=ROOT, text=True).strip() == "1", "Not one source commit")
+        git("reference-inputs", "-c", "submodule.recurse=false", "submodule", "update", "--init", "--depth=1", "--", "reference/open-bfme-1")
+        bash = os.environ["BFME_QUALIFICATION_BASH"]
+        require(Path(bash).is_file(), "Real Git Bash missing")
+        if not installed:
+            run("verification-requirements", [sys.executable, "-m", "pip", "install", "--disable-pip-version-check", "-r",
+                                            "reference/open-bfme-1/tools/requirements.txt"])
+            run("normal-hook-setup", [bash, "tools/setup_hooks.sh"])
+            installed = True
+        claim()
+        wire = (DATA["branch"] + " " + tip + " refs/heads/master " + base + "\n").encode()
+        run("actual-official-pre-push", [bash, ".githooks/pre-push", "origin",
+                                       "https://github.com/Open-BFME/Open-BFME-2.git"], stdin=wire)
+        claim()
+        git("refresh-before-transfer", "fetch", "-q", "--no-tags", "--recurse-submodules=no", "origin", "master")
+        if rev("origin/master") != base:
+            print("UPSTREAM_MOVED: rebase and run the normal gate again", flush=True)
+            continue
+        run("required-progress", [sys.executable, "tools/progress.py", "origin/master"])
+        git("preseed-fast-forward-lineage", "merge-base", "--is-ancestor", DATA["base"], tip)
+        RESULT.update(status="qualified", base=base, commit=tip, tree=rev("HEAD^{tree}"),
+                      normal_official_prepush_passed=True, new_cpp_bytes=0)
+        save()
+        print("QUALIFIED_SOURCE " + json.dumps(RESULT), flush=True)
+        url = "https://github.com/McMickey93/Open-BFME-2.git"
+        target = "refs/heads/" + DATA["result_branch"]
+        env = dict(os.environ)
+        count = int(env.get("GIT_CONFIG_COUNT", "0"))
+        auth = "AUTHORIZATION: basic " + base64.b64encode(("x-access-token:" + token).encode()).decode()
+        env.update({"GIT_CONFIG_COUNT": str(count + 1), "GIT_CONFIG_KEY_" + str(count): "http." + url + ".extraheader",
+                    "GIT_CONFIG_VALUE_" + str(count): auth, "GIT_TERMINAL_PROMPT": "0"})
+        git("normal-hook-fork-push", "-c", "core.hooksPath=.githooks", "push", "--porcelain",
+            "--force-with-lease=" + target + ":" + expected, url, "HEAD:" + target, env=env)
+        expected = tip
+        readback = git("fork-readback", "ls-remote", "--exit-code", url, target).decode().split()
+        require(readback == [tip, target], "Fork readback differs")
+        git("refresh-after-transfer", "fetch", "-q", "--no-tags", "--recurse-submodules=no", "origin", "master")
+        if rev("origin/master") != base:
+            print("UPSTREAM_MOVED: native objects banked; rebase and qualify the new parent", flush=True)
+            continue
+        RESULT.update(status="transferred", base=base, commit=tip, tree=rev("HEAD^{tree}"),
+                      source_blob=original_source, normal_official_prepush_passed=True,
+                      normal_fork_push_passed=True, files=sorted(changed), new_cpp_bytes=0)
+        save()
+        print("SOURCE_TRANSFER_COMPLETE " + json.dumps(RESULT), flush=True)
+        return
+    raise RuntimeError("Upstream did not settle within eight verified attempts; native objects remain banked")
 
 try:
     main()
