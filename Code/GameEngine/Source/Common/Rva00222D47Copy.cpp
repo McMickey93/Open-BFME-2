@@ -5,7 +5,7 @@
 // this+4 via the rowed memcpy import thunk. The existing address-derived pin
 // supplies the member/three-int call shape; higher-level identity is unknown.
 
-extern "C" void *__cdecl memcpy(void *destination, const void *source, unsigned int count);
+#include <string.h>
 
 class Rva00222D47Target
 {

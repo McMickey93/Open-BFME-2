@@ -6,7 +6,7 @@
 // Copies three floats from this+0xF8/+0x108/+0x118 (via sub at +0xEC
 // with +0xC/+0x1C/+0x2C) to out (12B) when out is non-null.
 
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct Rva001F385ASub

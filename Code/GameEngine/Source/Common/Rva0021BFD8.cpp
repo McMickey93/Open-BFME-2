@@ -65,7 +65,7 @@ yes:
 // (0x000B6AF5), each view converted and assigned back, and return the copy.
 extern const char *g_CreateAHeroFilenamePrefix;
 extern const char *g_CreateAHeroFilenameExtension;
-extern "C" unsigned int __cdecl strlen(const char *);
+#include <string.h>
 Rva000B6AA9Rec *__cdecl Rva000B6AA9Build(Rva000B6AA9Rec *dest, void **srcpp, int val);
 
 AsciiString __cdecl Rva0021C12FStripName(const AsciiString &name)
