@@ -4107,6 +4107,26 @@ at the fold address.
   `_BoolNameStorage` dtor and the `Lock` dtor at 0x000317C0, 23 B vs 21 B).
   Each needs its own investigation.
 
+Wrapper-dtor follow-up (K7, 2026-10-27). Completed: d4c7eddd03, 9ea23c8eea.
+The pure wrappers are gone: INIMacroPairTemporary and the three
+AssetWorkerHeapScope copies. PlayerListValidateTeam.cpp's BfmePairEL
+temporary now comes through a pair-returning pointer to the same factory.
+5 funclets moved; all five units stay byte-exact and LINK.
+
+Remaining: the other 73 are split identities. The wrapper's constructor and
+destructor are rowed under two different class names, so the local cannot
+take one real type. Examples:
+- FXParameter and ShadowColorParameter (`BfmeAssignRecord36` ctor,
+  `Rva0007BB16Record` dtor; 16 funclets).
+- ScriptedModelConditionInfo, ModifierPendingNames and Rva0002C4FD.
+- PathfinderAttackHandle and Rva00041D03, where X is a method
+  (`?rva002EAD62`, `?rva00041D03`) rather than a dtor.
+- Implicit derived dtors over a rowed base (e.g. `Rva0060C5FA : Xfer`,
+  `Rva0044EF5E`, `RadiusDecalTemplate`).
+
+Each one needs naming work that unifies ctor and dtor on one class (rename
+an owner row), not a source tweak.
+
 **uw_gen_009 parent ownership cleanup (2026-10-26):**
 
 Status: Open, partially cleaned. Updated: 2026-10-26; inspected revision: `39e752ed5b`; census index `5ce093a71a` (2026-10-26 19:02).
