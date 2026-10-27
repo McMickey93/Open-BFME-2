@@ -4127,6 +4127,20 @@ This clears this unit's header prerequisite only. The other FX-info surfaces,
 allocator-name collision, Xfer access and constructor prerequisites above remain.
 No new linked-byte or census gain is claimed.
 
+**RemoveUpgrade destructor follow-up (2026-10-27, inspected `a5bffaa9a9`):**
+[The bounded adoption](../reverse/attempt_support/removeupgrade-snapshot-header-20261027-codexb4.md)
+removes the false oversized Snapshot definition from
+RemoveUpgradeUpgradeModuleDataDtor.cpp. The constructor-evidenced opaque
+inherited prefix remains explicit in the destructor-only derived view, keeping
+the vectors at +0x118 and +0x124 without claiming the intermediate hierarchy.
+All four rows (79 bytes), the one EH graph, all four COMDAT digests and all
+external definitions/references remain exact or identical. Shadow data checks
+report zero findings. The owning header tool retires one queue row. The paired
+ordinary preview with the constructor preserves LINKS for both (79 and 95
+authored bytes, index `bf3dd31211`). This clears this destructor unit's header
+prerequisite only; the full ModuleData hierarchy and other Snapshot consumers
+retain their separate prerequisites. No new linked-byte or census gain claimed.
+
 Clearance: only the named retained adoptions and their local preview scope are verified; no new linked-unit or headline gain claimed. Census confirmation: pending.
 
 ### LINK-108: PropDraw module-data units emit incompatible short tables
