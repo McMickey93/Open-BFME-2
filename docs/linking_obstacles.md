@@ -915,6 +915,19 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Status: Open. Updated: 2026-10-25.**
 
+- **BuddyThread consolidation prerequisite (2026-10-27):**
+  [the scoped handoff](../reverse/attempt_support/buddy-thread-base-cleanup-20261027-codex3.md)
+  records the normal merger's refusal of all ten standalone donors: conflicting
+  STL declarations and private receiver views, combined-byte failures, and
+  unresolved response-deque and deleting-destructor providers. No merge was
+  applied. The seed now uses its existing ThreadClass base directly, removing
+  one placeholder destructor alias while preserving all 23 rows, four EXACT
+  EH graphs and the destructor's 170 raw bytes. This clears only that alias
+  debt. Reconcile the listed donor views and existing providers before retrying.
+  Ordinary before/after previews retain the same five duplicates against
+  `bf3dd31211`: the historical index still supplies three deleted donor objects
+  absorbed by earlier consolidation `ea4412ec3a` (LINK-001), not new duplicates
+  introduced here. Census and runtime confirmation remain pending.
 - **Evidence / scope:** the historical blocker lists contain ConnectionManager
   (51 names), particle-module copy constructors (28), MapUtil (26), `texture.cpp`
   (21) and `ww3d.cpp` (20). These counts overlap the causes above and are not

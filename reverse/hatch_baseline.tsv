@@ -3675,7 +3675,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/LoadSavedIgnoreListRva0
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/PeerOperationsComplete.cpp	_piIsOperationFinished	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Rva00386374Copy.cpp	??1Gen_uw_00385371@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Rva00386374Dtor.cpp	??1GameSpyInfo@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp	??1Gen_uwm_00610480@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	??0PeerRequest@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	??1PeerRequest@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	__imp__htonl	1

@@ -57,7 +57,6 @@ private:
 struct BfmePod2148 { int a[537]; };
 #include <memory>
 #include "../../../../../Libraries/Source/WWVegas/WWLib/mutex.h"
-#pragma comment(linker, "/alternatename:??1Gen_uwm_00610480@@QAE@XZ=??1ThreadClass@@UAE@XZ")
 namespace _STL {
 static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
 {
@@ -284,13 +283,6 @@ public:
 
 void __cdecl Rva00030830GameFree(void *);
 
-class Gen_uwm_00610480
-{
-public:
-	virtual void s0();
-	~Gen_uwm_00610480();
-};
-
 struct Gen_uwm_00142d70
 {
 	~Gen_uwm_00142d70() { if (m_start) Rva00030830GameFree(m_start); }
@@ -311,12 +303,12 @@ public:
 	~Rva00550995Owner() { clearLock(); }
 };
 
-class __declspec(novtable) Rva0055133F : public Gen_uwm_00610480
+class __declspec(novtable) Rva0055133F : public ThreadClass
 {
 public:
 	virtual ~Rva0055133F();
 private:
-	unsigned char m_pad04[0x60 - 4];
+	unsigned char m_pad50[0x60 - 0x50];
 	Gen_uwm_00142d70 m_60;
 	Gen_uwm_00142d70 m_6C;
 	Gen_uwm_00142d70 m_78;
