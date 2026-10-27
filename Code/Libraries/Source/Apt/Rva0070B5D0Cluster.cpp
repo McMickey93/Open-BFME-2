@@ -19,7 +19,6 @@ struct Rva008B4260StringRef
 };
 
 extern "C" EAStringC bfmeObjDAE[178];
-extern EAStringC g_00E18650;
 
 bool Rva0070B5D0Check()
 {
@@ -36,7 +35,7 @@ bool Rva0070B5D0Check()
 				return false;
 		}
 		++eAStringC;
-	} while ((int)eAStringC < (int)&g_00E18650);
+	} while ((int)eAStringC < (int)&bfmeObjDAE[178]);
 	return true;
 }
 

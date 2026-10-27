@@ -170,7 +170,7 @@ void StringPool::Teardown()
 		}
 		p->rva006D3470();
 		++p;
-	} while ((int)p < (int)&g_00E18650);
+	} while ((int)p < (int)&bfmeObjDAE[178]);
 }
 
 // tu-skeleton: 0x0070DBB0 527B ?Rva0070DBB0Intern@@YAPAUStringNode0070D9F0@@PBD@Z -- matched in Code/Libraries/Source/EA/Apt/Rva0070DBB0StringPool.cpp (not merged yet)
