@@ -199,7 +199,6 @@ private:
 
 // 0x00604A1E: creates the named directory (kernel32 CreateDirectoryW, no
 // security attributes) unless the name is NULL or empty.
-extern "C" __declspec(dllimport) int __stdcall CreateDirectoryW(const unsigned short *path, void *security);
 class Rva00604A1E
 {
 public:

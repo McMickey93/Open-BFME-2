@@ -1,4 +1,5 @@
 // cl: /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 //
 // EA GeneralAllocator (retail 0x00032DF0, 194 bytes): allocate a fresh 4 KB-rounded VirtualAlloc
 // mapping for a large request, align the 8-byte header to 8, link the end node into the mapped list.
@@ -6,7 +7,8 @@
 // misalignment pad, node constants 0x13 and the list layout come from the retail bytes.
 // Closing lever (0x32DF0 nd1, SIB base/index of the pad add): pad is declared at function scope WITH an
 // initializer, which gives it the earlier definition and flips the base/index order of the lea.
-extern "C" __declspec(dllimport) void *__stdcall VirtualAlloc(void *address, unsigned int size, unsigned long type, unsigned long protect);
+
+#include <windows.h>
 
 namespace EA
 {

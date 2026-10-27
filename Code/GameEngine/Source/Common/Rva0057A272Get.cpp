@@ -1,8 +1,9 @@
 // cl: /MD
+// platformsdk
 // ?Rva0057A272Get@@YAPAGXZ @0x0057A272 62B
 // Time separator one-time init via GetLocaleInfoW with ':' fallback.
 // Evidence: GetLocaleInfoW(0x800 0x1E) into 5-WCHAR buffer at 0x00E06354 flag at 0x00E0635E caller 0x0057A62B.
-extern "C" __declspec(dllimport) int __stdcall GetLocaleInfoW(unsigned long, unsigned long, unsigned short *, int);
+#include <windows.h>
 // g_00E06354: matched references place it at VA 0xe06354 (zero-filled).
 unsigned short g_00E06354[5] = { 0 };
 extern unsigned char g_00E0635E;

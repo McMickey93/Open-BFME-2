@@ -3,6 +3,8 @@
 // ?rva004EE037@LivingWorldScoreKeeper@@QAEIXZ retail 0x004EE037 12B unsigned div.
 // Evidence: [ecx+0x74] div by LogicFramesPerSecond 0x009BA4E4; callers 0x005BE3D6 0x005BFDE4.
 
+#include <time.h>
+
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
 extern int BfmeLogicFramesPerSecond;
@@ -26,7 +28,6 @@ public:
 // type; the local view below only describes the target's +0xFC integer read.
 class Rva002BA8F1Logic;
 
-extern "C" __declspec(dllimport) long __cdecl time(long *value);
 namespace _STL
 {
 struct _Rb_tree_node_base

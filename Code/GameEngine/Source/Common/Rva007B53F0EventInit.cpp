@@ -1,4 +1,5 @@
 // cl: /O2 /MD
+// platformsdk
 //
 // Static-initializer strip: the startup event BFMEPoolYield.cpp waits on is
 // created by this translation unit's dynamic initializer through the
@@ -8,10 +9,10 @@
 // initializer keeps an honest address name; the handle is WWLib thread.cpp
 // test_event, the one definition at VA 0x00E07C00.
 
-extern "C" __declspec(dllimport) void * __stdcall CreateEventA(void *attributes, int manualReset, int initialState, const char *name);
+#include <windows.h>
 
 // Read by the rowed BFMEPoolYield (0x006105C1).
-extern void *test_event;
+extern HANDLE test_event;
 
 struct Rva007B53F0EventInit
 {

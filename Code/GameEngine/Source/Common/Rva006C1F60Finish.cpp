@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?rva006C1F60@Rva006C1F60@@QAEHI@Z @ 0x006C1F60 113B chain of 0x00030DF0
 // Release. AddRef at +0x4e4 Release guarded float clamp via __ftol2 returning
 // clamped int. Evidence: calls AddRef 0x00030DD0 Release 0x00030DF0 __ftol2
@@ -67,6 +68,7 @@ int Rva006C1F60::rva006C1F60(unsigned int v)
 // The fills are the intrinsic memset. Method name address-derived.
 
 #include <string.h>
+#include <windows.h>
 #pragma intrinsic(memset)
 #pragma intrinsic(memcpy)
 
@@ -144,7 +146,6 @@ struct GeneralAllocatorMetricCounters
 	unsigned __int64 currentBytes, totalAllocBytes, peakBytes;
 	unsigned __int64 totalFreeCount, totalFreeBytes;
 };
-extern "C" __declspec(dllimport) unsigned int __stdcall GetTickCount(void);
 
 class GeneralAllocatorDebug : public EA::Allocator::GeneralAllocator
 {

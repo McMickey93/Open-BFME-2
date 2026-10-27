@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs-
+// platformsdk
 //
 // BFME2's online login screen link buttons "AptOnline::Login::OfficialSite",
 // "::GameSpy" and "::ServiceTerms", 0x0056E998 onward, bound by those names
@@ -7,8 +8,7 @@
 // minimizes the game window.
 
 #include "unicode_string.h"
-
-extern "C" __declspec(dllimport) void *__stdcall ShellExecuteW(void *window, const unsigned short *operation, const unsigned short *file, const unsigned short *parameters, const unsigned short *directory, int show);
+#include <windows.h>
 
 class GameTextInterface
 {

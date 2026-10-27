@@ -1,3 +1,4 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 //
 // GetTickCount-based seconds counter. The indirect call reaches the IAT slot at
@@ -5,7 +6,7 @@
 // the reciprocal multiply (0x10624DD3, shr edx,6) is the unsigned divide-by-1000
 // idiom. Free function; identity is this image's address.
 
-extern "C" __declspec(dllimport) unsigned int __stdcall GetTickCount(void);
+#include <windows.h>
 
 // ?Rva006C1790@@YAIXZ @ 0x006C1790 (21B)
 unsigned int Rva006C1790(void)

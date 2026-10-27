@@ -714,35 +714,15 @@ Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	adapt	source	1	0	1	0	0	0	0
 Code/GameEngine/Source/Common/GapBodiesGE49.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			EnterCriticalSection:source
 Code/GameEngine/Source/Common/Mutex.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateMutexA:source
 Code/GameEngine/Source/Common/NetworkInterfaceFramePacing.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			QueryPerformanceCounter:source
-Code/GameEngine/Source/Common/RTS/Player_ScaleMoney.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand			ceil:source
-Code/GameEngine/Source/Common/Rva00041078Wait.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			WaitForMultipleObjects:source
 Code/GameEngine/Source/Common/Rva0010414CGet.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/Common/Rva00289ABDCtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		operator==:unknown
 Code/GameEngine/Source/Common/Rva004121B2HashMapInits.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand	1: Code/GameEngine/Source/Common/Rva004121B2HashMapInits.cpp:18 stl/_algobase.h(unknown)		atexit:same
-Code/GameEngine/Source/Common/Rva0041FE63.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			timeGetTime:source
-Code/GameEngine/Source/Common/Rva004ABDC3Ctor.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			atexit:source
-Code/GameEngine/Source/Common/Rva004E67B3Stamp.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand			timeGetTime:source
 Code/GameEngine/Source/Common/Rva004EDDD3.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		free:same
-Code/GameEngine/Source/Common/Rva004EE037Div.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<time.h>	no	yes	hand			time:source
 Code/GameEngine/Source/Common/Rva004EE5D2Erase.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<time.h>	no	yes	hand			time:source
-Code/GameEngine/Source/Common/Rva00515633Delete.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand			DeleteFileW:source
-Code/GameEngine/Source/Common/Rva0057A272Get.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			GetLocaleInfoW:source
-Code/GameEngine/Source/Common/Rva006C1790Cluster.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand			GetTickCount:source
-Code/GameEngine/Source/Common/Rva006C1F60Finish.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			GetTickCount:source
-Code/GameEngine/Source/Common/Rva007B53F0EventInit.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateEventA:source
-Code/GameEngine/Source/Common/SmallGaps/Rva008792A0CloseFile.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fclose:source
-Code/GameEngine/Source/Common/SmallGaps/Rva009F2FA0PopSqrt.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<math.h>	no	no	hand			sqrt:source
 Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			atexit:source
-Code/GameEngine/Source/Common/System/Rva000317C0Cluster.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand			LeaveCriticalSection:source
-Code/GameEngine/Source/Common/System/Rva00032DF0Allocate.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			VirtualAlloc:source
 Code/GameEngine/Source/Common/System/SkipWhitespaceW.c	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<ctype.h>	no	no	hand			iswspace:unknown
-Code/GameEngine/Source/Common/VslotSmallBodiesT.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateDirectoryW:source
-Code/GameEngine/Source/Common/VslotSmallBodiesT_Rva005E16A7.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateDirectoryW:source
-Code/GameEngine/Source/Common/WatchdogDtor.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			DeleteCriticalSection:source
 Code/GameEngine/Source/Common/renderRva000E0856Farm.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/Common/renderRva000E0856Farm.cpp:6 stl/_hashtable.h(unknown)		timeGetTime:source
 Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarCommandProcessing.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			MSG:unknown
-Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMainMenuConstructor.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			GetModuleFileNameW:source
-Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLoginCallbacks.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			ShellExecuteW:source
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadDeleteFile.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			DeleteFileW:source
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoad_SetDefaultFileName.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			_wsplitpath:source
 Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		DeleteCriticalSection:source

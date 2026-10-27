@@ -1,9 +1,11 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 // ??1Watchdog@@UAE@XZ @0x0022576A 99B
 // Evidence: vtable 0x007E6FD8 slot implied by ctor 0x00225616 and deleting dtor 0x002257CD; BFME1 donor Code/GameEngine/Source/Common/WatchdogDestructor.cpp; callees rowed stop 0x00225716 and Mutex 0x00613A20 plus pinned clear 0x0009990D and ThreadClass dtor 0x00610480; caller is deleting dtor at 0x002257D0.
-typedef unsigned int UnsignedInt;
 
-extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(void *section);
+#include <windows.h>
+
+typedef unsigned int UnsignedInt;
 
 class MutexClass
 {
@@ -90,5 +92,5 @@ private:
 Watchdog::~Watchdog()
 {
 	stop();
-	DeleteCriticalSection(&m_criticalSection);
+	DeleteCriticalSection((CRITICAL_SECTION *)&m_criticalSection);
 }

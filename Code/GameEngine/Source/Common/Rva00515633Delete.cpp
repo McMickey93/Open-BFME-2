@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /EHsc
+// platformsdk
 // ?rva00515633@AptMainMenu@@QAEXXZ @ 0x00515633 108B (was ?Rva00515633Delete@@YAXXZ):
 // AptMainMenu's callers reach it as a member with the menu in ECX (pinned
 // thiscall spelling); the body ignores ECX.
@@ -7,6 +8,7 @@
 typedef unsigned short WideChar;
 
 #include "unicode_string.h"
+#include <windows.h>
 
 
 class Rva002DC74A
@@ -17,7 +19,6 @@ public:
 
 class GameState;
 extern GameState *TheGameState;
-extern "C" __declspec(dllimport) int __stdcall DeleteFileW(const WideChar *lpFileName);
 
 class AptMainMenu
 {

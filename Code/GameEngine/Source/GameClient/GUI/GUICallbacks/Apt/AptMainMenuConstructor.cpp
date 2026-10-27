@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /O1 /G6 /arch:SSE
+// platformsdk
 // stlport
 //
 // AptMainMenu::AptMainMenu, retail 0x00516211 (2802 bytes).
@@ -15,6 +16,7 @@
 #include <vector>
 #include "unicode_string.h"
 #include "ascii_string.h"
+#include <windows.h>
 
 class GameWindow
 {
@@ -241,8 +243,6 @@ class Rva0051569FMainMenuFields
 public:
 	void access(int query, char *value, bool set);
 };
-
-extern "C" __declspec(dllimport) unsigned long __stdcall GetModuleFileNameW(void *module, unsigned short *path, unsigned long size);
 
 extern int g_Va00E048DC; // the first main menu
 

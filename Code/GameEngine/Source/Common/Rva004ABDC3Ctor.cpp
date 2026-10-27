@@ -4,6 +4,7 @@
 // Retail 4ABE53 restores the same vtable; sets +11; destroys the registry.
 // C549F0 slot zero is key collection4ABDDC; destruction is nonvirtual.
 #include <set>
+#include <stdlib.h>
 class Rva003ED658;
 struct Rva004ABDDCEntry;
 #include "../../Include/Common/ModuleKeyRegistry.h"
@@ -24,7 +25,6 @@ Rva004ABE53Dtor::~Rva004ABE53Dtor() { m_destroying = 1; }
 #include "../../Include/Common/ModuleKeyRegistryStorage.h"
 BfmeModuleKeyRegistryStorage BfmeLargeGroupAudioRegistry;
 typedef char RegistryStorageMatchesClass[sizeof(Rva004ABE53Dtor) == sizeof(BfmeModuleKeyRegistryStorage) ? 1 : -1];
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 // Preserve the initializer's nonallocating placement operation. The standard
 // void* placement-delete pair adds a non-retail EH cleanup with this compiler.
 inline void *operator new(unsigned int, BfmeModuleKeyRegistryStorage *where) { return where; }

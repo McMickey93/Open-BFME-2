@@ -1,9 +1,12 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // Small vtable-slot bodies with no ledger owner and no Ghidra entry (sized
 // from their bytes), batch T. As in VslotSmallBodiesA-S, each class and
 // method is address-derived unless the ledger already names it, and models
 // only what its body touches. Meanings are not recovered.
+
+#include <windows.h>
 
 typedef int Int;
 typedef unsigned int UnsignedInt;
@@ -200,7 +203,6 @@ void Rva005F84F7::rva005F84F7(Int i)
 
 // 0x00604A1E: creates the named directory (kernel32 CreateDirectoryW, no
 // security attributes) unless the name is NULL or empty.
-extern "C" __declspec(dllimport) int __stdcall CreateDirectoryW(const unsigned short *path, void *security);
 class Rva00604A1E
 {
 public:

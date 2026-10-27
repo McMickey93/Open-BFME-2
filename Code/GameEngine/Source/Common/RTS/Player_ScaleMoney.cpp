@@ -10,14 +10,7 @@
 
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
-// LINK: hide math.h's inline float ceil wrapper (r3 LK4 recipe; dllimport
-// extern keeps math.h's indirect-call shape). This TU's ?ceil@@YAMM@Z/_ceilf
-// copies lose (first-copy); the calls inline but still emit loser COMDATs.
-// No flags touched.
-#define ceil bfme_hidden_ceil
 #include <math.h>
-#undef ceil
-extern "C" __declspec(dllimport) double __cdecl ceil(double x);
 
 class Rva002034E9Host
 {
@@ -67,7 +60,8 @@ int Player::ScaleMoney(int value)
 			int level = ((Rva002E0C2B *)entry)->rva002E0C2B();
 			float factor = level * 0.01f + 1.0f;
 			float amount = (float)value;
-			float scaled = (float)ceil(amount * factor);
+			// ceil(double) directly: the float overload emits ceil/ceilf COMDATs that lose the link.
+			float scaled = (float)ceil((double)(amount * factor));
 			return Rva002A9E36RealToInt(scaled);
 		}
 	}
