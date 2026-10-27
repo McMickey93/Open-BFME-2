@@ -6,11 +6,10 @@
 // constructor/dtor COMDATs at 0x00355B42 and 0x00355257, not local instantiations.
 #include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
-class SnapshotBase
-{
-public:
-	virtual ~SnapshotBase();
-};
+// The second base is the canonical Snapshot: the ctor stores its vtable
+// 0x00BBB554 at +0x0C, and unwind funclet 0x0077D4D0 destroys it through the
+// folded Snapshot destructor 0x0049B47C.
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 class ArmorTemplateMap
 {
@@ -22,7 +21,7 @@ private:
 	char m_pad[0x14];
 };
 
-class Rva00355B61 : public SubsystemInterface, public SnapshotBase
+class Rva00355B61 : public SubsystemInterface, public Snapshot
 {
 public:
 	Rva00355B61();
@@ -43,5 +42,3 @@ Rva00355B61::Rva00355B61()
 // Destructor names this unit's vftable and unwind reference, bound to the rows the retail bytes lead to:
 // ??1Rva00355B61@@UAE@XZ: the deleting destructor 0x00355BBE calls 0x00355BDA
 #pragma comment(linker, "/alternatename:??1Rva00355B61@@UAE@XZ=??1Rva00355BDA@@UAE@XZ")
-// ??1SnapshotBase@@UAE@XZ: that destructor finishes by calling ~SubsystemInterface (0x001B4E74), its base
-#pragma comment(linker, "/alternatename:??1SnapshotBase@@UAE@XZ=??1SubsystemInterface@@UAE@XZ")
