@@ -92,6 +92,13 @@ wchar_t * __cdecl wcscpy(wchar_t * strDestination, const wchar_t * strSource) {
  return _imp__wcscpy(strDestination, strSource);
 }
 
+// _memcmp
+typedef int (__cdecl *PFN_memcmp)(const void *, const void *, size_t);
+extern PFN_memcmp _imp__memcmp;
+int __cdecl memcmp(const void * buf1, const void * buf2, size_t count) {
+ return _imp__memcmp(buf1, buf2, count);
+}
+
 // __memicmp
 typedef int (__cdecl *PFN__memicmp)(const void *, const void *, size_t);
 extern PFN__memicmp _imp___memicmp;

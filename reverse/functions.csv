@@ -20069,7 +20069,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_00629210@@YAXXZ,,0x00629210,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A4;dll=msvcr71.dll;import=fabs;target=fabs
 ?ji_00629216@@YAXXZ,,0x00629216,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A0;dll=msvcr71.dll;import=sin;target=sin
 ?ji_0062921c@@YAXXZ,,0x0062921C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA69C;dll=msvcr71.dll;import=sqrt;target=sqrt
-?ji_0062929e@@YAXXZ,,0x0062929E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA694;dll=msvcr71.dll;import=memcmp;target=memcmp
 ?ji_00629506@@YAXXZ,,0x00629506,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA688;dll=msvcr71.dll;import=memmove;target=memmove
 ?ji_006297ea@@YAXXZ,,0x006297EA,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA65C;dll=msvcr71.dll;import=realloc;target=realloc
 ?ji_0062983e@@YAXXZ,,0x0062983E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA620;dll=msvcr71.dll;import=strncpy;target=strncpy
@@ -98832,3 +98831,4 @@ $L38872,,0x00798AB1,8,Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThr
 $L542,,0x007997EF,11,Code/GameEngine/Source/GameClient/System/FXParticleSystem/Rva0055BCF1ColorModuleCtor.cpp,matched,gen-funclet;parent=??0Rva0055BCF1@@QAE@IPBUColorModuleTemplate@@@Z; Matched parent 0x0055BCF1's EH graph is EXACT (eh_verify) and binds compiler label $L542 to retail 0x007997EF; its callee ??1Rva0055BC8B@@UAE@XZ is rowed at its ICF fold 0x0049B47C; replaces generated uw_007997ef
 _strlen,,0x00629170,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strlen import pointer; retail IAT slot 0x00BBA6D4 names msvcr71.dll!strlen (gen-import row); complete 6B tail
 _strcmp,,0x006291C6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strcmp import pointer; retail IAT slot 0x00BBA6B0 names msvcr71.dll!strcmp (gen-import row); complete 6B tail
+_memcmp,,0x0062929E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__memcmp import pointer; retail IAT slot 0x00BBA694 names msvcr71.dll!memcmp (gen-import row); complete 6B tail
