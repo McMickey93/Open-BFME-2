@@ -30,6 +30,10 @@ public:
 extern unsigned int g_Va00E01CF0;
 // Bind to the existing data-ledger owner; keep the retail access view local.
 extern unsigned int g_Va00E01CF4;
+// The two Sunbeam strings at 0x00A01CF0 (source) and 0x00A01CF4 (target),
+// viewed as AsciiString wherever this unit touches them.
+static inline AsciiString &sunbeamSource() { return *(AsciiString *)&g_Va00E01CF0; }
+static inline AsciiString &sunbeamTarget() { return *(AsciiString *)&g_Va00E01CF4; }
 // Complete native table C0C78C..C0C7AC: the named string field and terminator.
 // The dispatcher and table establish this shared string role; no object layout
 // beyond the parsed offset zero is inferred from its address-derived name.
@@ -57,10 +61,10 @@ extern CloudBreakEffectManager *TheCloudBreakEffectManager;
 
 void parseCloudBreakEffectDefinition(INI *ini)
 {
-	(*(AsciiString *)&g_Va00E01CF4) = (*(AsciiString *)&g_Va00E01CF0);
-	ini->initFromINI(&(*(AsciiString *)&g_Va00E01CF4), TheRva00318ABBSunbeam);
+	sunbeamTarget() = sunbeamSource();
+	ini->initFromINI(&sunbeamTarget(), TheRva00318ABBSunbeam);
 	if (ini->m_08 != 2 && ini->m_08 != 4)
-		(*(AsciiString *)&g_Va00E01CF0) = (*(AsciiString *)&g_Va00E01CF4);
+		sunbeamSource() = sunbeamTarget();
 	if (TheCloudBreakEffectManager != 0)
 		return ((Rva00318ABBTarget *)TheCloudBreakEffectManager)->t14();
 }
@@ -76,7 +80,21 @@ private:
 
 void Rva00318A87::rva00318A87()
 {
-	m_0C = *(AsciiString *)&g_Va00E01CF4;
+	m_0C = sunbeamTarget();
+}
+
+// slots at VA 0x00BC82BC and 0x00BC82F8: copies the source string over the
+// target (inline AsciiString assignment, the rowed StringBase<char>::set).
+// Moved from VslotSmallBodiesK.cpp, whose own AsciiString copies of the two
+// strings were second definitions of 0x00A01CF0/0x00A01CF4.
+class Rva00318A95
+{
+public:
+	void rva00318A95();
+};
+void Rva00318A95::rva00318A95()
+{
+	sunbeamTarget() = sunbeamSource();
 }
 
 
