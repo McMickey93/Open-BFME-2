@@ -6,17 +6,11 @@
 // out-of-line (ZH inlines it); 43 image-wide callers including
 // ScienceStore::getSciencePurchaseCost. Leaf, no pins.
 
-class GameLogic
-{
-	char m_pad[0x110];
-public:
-	int m_gameMode;
-	bool isInMultiplayerGame();
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 // ?isInMultiplayerGame@GameLogic@@QAE_NXZ
 inline __declspec(noinline) bool GameLogic::isInMultiplayerGame()
 {
-	return m_gameMode == 1 || m_gameMode == 5;
+	return m_110 == 1 || m_110 == 5;
 }
 static bool (GameLogic::*s_anchor_isInMultiplayerGame)() = &GameLogic::isInMultiplayerGame;
