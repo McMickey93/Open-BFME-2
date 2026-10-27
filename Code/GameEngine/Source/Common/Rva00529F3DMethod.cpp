@@ -28,22 +28,42 @@ public:
 
 struct BfmeMsgDN;
 
-// The class is compiled without inlining: its scalar deleting destructor
-// (retail 0x00406B1D, shared) calls ~Rva004E7392 (0x004059AC) out of line,
-// while the bodies below still expand the inline destructor.
-#pragma inline_depth(0)
-struct Rva004E7392
+// Rva004E7392 sits below the root of table 0x00BE5838 (target facts): that
+// table is [??_G 0x00215E42, five __purecall slots], and slot 0 of
+// 0x00BFD010 is the shared deleting dtor 0x00406B1D, which calls 0x004059AC:
+// mov [ecx],0x00BE5838 / ret. With the empty base destructor expanded, the
+// own table store dies and only the root's remains. (Its copy ctor 0x004E7392
+// first runs the base copy 0x004E72C0, storing 0x00BFCFF8, another dead
+// intermediate store; Rva004E7392Copy.cpp models that step, this view does
+// not.) The root takes InGameUICreateMouseoverHint.cpp's spelling, which binds
+// the same table to the same class (its TooltipRecord); C01's Rva00215E42
+// defines its ctor and dtor out of line, so an inline view under that name
+// would duplicate them.
+class TooltipBase
 {
-	Rva004E7392(int a, int b)
-	{
-		m_04 = a;
-		m_08 = b;
-	}
-	virtual ~Rva004E7392() {}
+public:
+	virtual ~TooltipBase() {}
+};
+
+// The class is compiled without inlining: its scalar deleting destructor
+// (retail 0x00406B1D, shared) calls ~Rva004E7392 (0x004059AC) out of line.
+// The ctor and destructor are defined after the region, so the bodies still
+// expand them and the destructor expands the base's.
+#pragma inline_depth(0)
+struct Rva004E7392 : public TooltipBase
+{
+	Rva004E7392(int a, int b);
+	virtual ~Rva004E7392();
 	int m_04;
 	int m_08;
 };
 #pragma inline_depth()
+inline Rva004E7392::Rva004E7392(int a, int b)
+{
+	m_04 = a;
+	m_08 = b;
+}
+inline Rva004E7392::~Rva004E7392() {}
 
 class ControlBar
 {
