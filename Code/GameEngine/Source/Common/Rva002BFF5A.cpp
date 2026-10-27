@@ -26,7 +26,7 @@ struct Rva002BFF5ANode { void *next; void *key; Rva002BFF5AEntry *value; };
 class Rva002BFF5A {
 public:
     Rva002BFF5AEntry *rva002BFF5A(int key);
-    void rva002BFF9F();
+    void update();
     void rva002BFFD4(Rva002BFFD4Template *,int kind,unsigned word);
 private:
     char unknown[0xac];
@@ -89,7 +89,7 @@ void Rva002BFF5A::rva002BFFD4(Rva002BFFD4Template *entry,int kind,unsigned word)
 // Complete native53B2BFF9F..2BFFD4 RET0; same tableAC and node payload8
 // as the owned lookup above. The optional value is the36B glow object
 // established by this unit's creation path; its359B tick is now owned.
-void Rva002BFF5A::rva002BFF9F()
+void Rva002BFF5A::update()
 {
  Rva000411084 it;
  table.first(&it);

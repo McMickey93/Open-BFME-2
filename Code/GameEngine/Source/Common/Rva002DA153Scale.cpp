@@ -79,11 +79,11 @@ float Rva002DA153::rva002DA153()
 			Object *obj = TheGameLogic->findObjectByID(m_34);
 			if (obj != 0)
 			{
-				unsigned int v = (unsigned int)obj->m_98;
-				v >>= 0x14;
-				unsigned char c = (unsigned char)v;
-				c = (unsigned char)~c;
-				if ((c & 1) == 0)
+				unsigned int objectFlags = (unsigned int)obj->m_98;
+				objectFlags >>= 0x14;
+				unsigned char invertedFlags = (unsigned char)objectFlags;
+				invertedFlags = (unsigned char)~invertedFlags;
+				if ((invertedFlags & 1) == 0)
 					return 0.0f;
 			}
 		}

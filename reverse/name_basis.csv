@@ -2770,3 +2770,10 @@ local,bfme5MakeObj18::p,bfme5MakeObj18::instance,inferred,agree:nl-f893c6e11db8,
 member,BfmeMsgVJF::m_bfme1c,BfmeMsgVJF::m_category,inferred,agree:nl-3955e64ad3d6,Code/GameEngine/Source/Common/BfmeConv1384.cpp,
 local,Team::rva0039DDC2::b3,Team::rva0039DDC2::isAwaitingConstruction,inferred,agree:nl-685f392dffe3,Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp,0x0039DDC2
 local,Team::rva0039DDC2::b4,Team::rva0039DDC2::isPartiallyConstructed,inferred,agree:nl-4c70633556aa,Code/GameEngine/Source/Common/RTS/TeamRva0039DDC2.cpp,0x0039DDC2
+member,Rva00201DC4LODInfo::flag0C,Rva00201DC4LODInfo::m_useShadowVolumes,inferred,agree:nl-6cf376073eaf,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
+member,Rva00201DC4LODInfo::flag0D,Rva00201DC4LODInfo::m_useShadowDecals,inferred,agree:nl-45e528e87cf3,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
+member,Rva00201DC4LODInfo::word44,Rva00201DC4LODInfo::m_minParticlePriority,inferred,agree:nl-309ca8959ba5,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
+member,Rva00201DC4LODInfo::word48,Rva00201DC4LODInfo::m_minParticleSkipPriority,inferred,agree:nl-08762c072154,Code/GameEngine/Source/Common/Rva00201DC4LODDefaults.cpp,
+function,?rva002BFF9F@Rva002BFF5A@@QAEXXZ,?update@Rva002BFF5A@@QAEXXZ,inferred,agree:nl-d353d0dfb8c9,Code/GameEngine/Source/Common/Rva002BFF5A.cpp,0x002BFF9F
+local,Rva002DA153::rva002DA153::v,Rva002DA153::rva002DA153::objectFlags,inferred,agree:nl-6735e77e5b8a,Code/GameEngine/Source/Common/Rva002DA153Scale.cpp,0x002DA153
+local,Rva002DA153::rva002DA153::c,Rva002DA153::rva002DA153::invertedFlags,inferred,agree:nl-504402e4b664,Code/GameEngine/Source/Common/Rva002DA153Scale.cpp,0x002DA153

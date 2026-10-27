@@ -31,7 +31,7 @@ extern class LivingWorldManager *TheLivingWorldManager;
 #define g_00DFE1C8 (*(Rva00DFE1C8Host * *)&TheLivingWorldManager)
 
 // Rows 0x002BFF9F (Rva002BFF5A::rva002BFF9F) and 0x002BF77B (Rva002BF77B).
-class Rva002BFF5A { public: void rva002BFF9F(); };
+class Rva002BFF5A { public: void update(); };
 class Rva002BF77B { public: void rva002BF77B(); };
 
 class Rva002C021A
@@ -53,7 +53,7 @@ void Rva002C021A::rva002C021A()
 		return;
 	if (!m_18)
 		return;
-	((Rva002BFF5A *)this)->rva002BFF9F();
+	((Rva002BFF5A *)this)->update();
 	((Rva002BF77B *)this)->rva002BF77B();
 	g_00DFE1C8->slot28();
 	if (m_78)

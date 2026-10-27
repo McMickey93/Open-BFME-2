@@ -11,7 +11,7 @@ struct Rva00201DC4LODInfo
 {
     Rva00201DC4LODInfo();
     int m_modelLOD, m_effectsLOD, m_maxParticleCount;
-    bool flag0C, flag0D, m_useShadowMapping;
+    bool m_useShadowVolumes, m_useShadowDecals, m_useShadowMapping;
     int m_shadowLOD;
     bool m_useTerrainNormalMap, m_useDistanceDependantTerrainTextures;
     int m_waterLOD;
@@ -20,17 +20,17 @@ struct Rva00201DC4LODInfo
     bool flag30;
     int m_animationDetail, m_shaderLOD;
     bool m_shaderMaterialReplacement, flag3D;
-    int m_decalLOD, word44, word48;
+    int m_decalLOD, m_minParticlePriority, m_minParticleSkipPriority;
 };
 
 Rva00201DC4LODInfo::Rva00201DC4LODInfo()
 {
     m_modelLOD=2; m_effectsLOD=3; m_maxParticleCount=2500;
-    flag0C=true; flag0D=true; m_useShadowMapping=false;
+    m_useShadowVolumes=true; m_useShadowDecals=true; m_useShadowMapping=false;
     m_shadowLOD=3; m_useTerrainNormalMap=true; m_useDistanceDependantTerrainTextures=true; m_waterLOD=2;
     m_showSoftWaterEdge=true; m_maxTankTrackEdges=100; m_maxTankTrackOpaqueEdges=25; m_maxTankTrackFadeDelay=300000;
     m_textureReduction=0; flag30=true; m_animationDetail=3; m_shaderLOD=0;
-    m_shaderMaterialReplacement=false; flag3D=false; m_decalLOD=2; word44=1; word48=1;
+    m_shaderMaterialReplacement=false; flag3D=false; m_decalLOD=2; m_minParticlePriority=1; m_minParticleSkipPriority=1;
 }
 
 // The same native manager passes VA0x00601E2B with count5, stride0x10,
