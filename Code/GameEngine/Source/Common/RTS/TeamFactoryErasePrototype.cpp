@@ -63,7 +63,7 @@ public:
 	void removeTeamPrototypeFromList(TeamPrototype *tp);
 private:
 	unsigned char m_pad00[0xB0];
-	Rva0039EA4E m_mapB0;
+	Rva0039EA4E m_prototypes;
 };
 
 void TeamFactory::removeTeamPrototypeFromList(TeamPrototype *tp)
@@ -74,10 +74,10 @@ void TeamFactory::removeTeamPrototypeFromList(TeamPrototype *tp)
 	Rva0039D8FBKey key;
 	key.m_first = keyA;
 	key.m_second = keyB;
-	Rva0039EA4ENode *node = m_mapB0.rva0039EA4E(key);
-	if (node != m_mapB0.m_header00) {
+	Rva0039EA4ENode *node = m_prototypes.rva0039EA4E(key);
+	if (node != m_prototypes.m_header00) {
 		typedef _STL::pair<const int, void *> V;
 		typedef _STL::_Rb_tree<int, V, _STL::_Select1st<V>, _STL::less<int>, _STL::allocator<V> > Tree;
-		((Tree *)&m_mapB0)->erase(Tree::iterator((Tree::_Link_type)node));
+		((Tree *)&m_prototypes)->erase(Tree::iterator((Tree::_Link_type)node));
 	}
 }

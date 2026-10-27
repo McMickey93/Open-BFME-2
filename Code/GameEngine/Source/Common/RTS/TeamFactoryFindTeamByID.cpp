@@ -8,23 +8,11 @@
 // TeamPrototype::findTeamByID (0x0039D92A). Callers: getTeamNamed 0x003584E9,
 // the CaveContain/GarrisonContain/TurretAI xfers and
 // AIGuardAttackAggressorState::update with ecx = TheTeamFactory.
-namespace _STL
-{
-struct _Rb_tree_node_base
-{
-	bool _M_color;
-	_Rb_tree_node_base *_M_parent;
-	_Rb_tree_node_base *_M_left;
-	_Rb_tree_node_base *_M_right;
-};
-template <class Dummy> class _Rb_global
-{
-public:
-	static _Rb_tree_node_base *__cdecl _M_increment(_Rb_tree_node_base *);
-};
-}
+// The prototype map as the Team.cpp seed spells it: lower_bound's header and
+// node (Rva0039EA4E, 0x0039EA4E) with the TeamPrototype value at +0x18.
+#include <map>
 class Team;
-struct TeamFactoryFindTeamByIDKey
+struct Rva0039D8FBKey
 {
 	int m_first;
 	int m_second;
@@ -34,10 +22,20 @@ class TeamPrototype
 public:
 	Team *findTeamByID(unsigned int id);
 };
-struct TeamFactoryFindTeamByIDNode : public _STL::_Rb_tree_node_base
+struct Rva0039EA4ENode
 {
-	TeamFactoryFindTeamByIDKey m_key10;
+	int m_color00;
+	Rva0039EA4ENode *m_parent04;
+	Rva0039EA4ENode *m_left08;
+	Rva0039EA4ENode *m_right0C;
+	Rva0039D8FBKey m_key10;
 	TeamPrototype *m_value18;
+};
+class Rva0039EA4E
+{
+public:
+	Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
+	Rva0039EA4ENode *m_header00;
 };
 class TeamFactory
 {
@@ -45,20 +43,20 @@ public:
 	Team *findTeamByID(unsigned int id);
 private:
 	unsigned char m_pad00[0xB0];
-	TeamFactoryFindTeamByIDNode *m_mapB0;
+	Rva0039EA4E m_prototypes; // +0xB0
 };
 Team *TeamFactory::findTeamByID(unsigned int id)
 {
 	if (id == 0)
 		return 0;
-	TeamFactoryFindTeamByIDNode *node = (TeamFactoryFindTeamByIDNode *)m_mapB0->_M_left;
-	if (node != m_mapB0) {
+	Rva0039EA4ENode *node = m_prototypes.m_header00->m_left08;
+	if (node != m_prototypes.m_header00) {
 		do {
 			Team *team = node->m_value18->findTeamByID(id);
 			if (team)
 				return team;
-			node = (TeamFactoryFindTeamByIDNode *)_STL::_Rb_global<bool>::_M_increment(node);
-		} while (node != m_mapB0);
+			node = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)node);
+		} while (node != m_prototypes.m_header00);
 	}
 	return 0;
 }

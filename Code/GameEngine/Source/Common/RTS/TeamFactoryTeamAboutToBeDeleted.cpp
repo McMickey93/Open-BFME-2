@@ -15,21 +15,9 @@
 // as TeamPrototype::teamAboutToBeDeleted: it walks the prototype's +0x334
 // team list), and tail-calls ThePlayerList (0x00DFEEE8) member 0x002A7AFE
 // when the list exists.
-namespace _STL
-{
-struct _Rb_tree_node_base
-{
-	bool _M_color;
-	_Rb_tree_node_base *_M_parent;
-	_Rb_tree_node_base *_M_left;
-	_Rb_tree_node_base *_M_right;
-};
-template <class Dummy> class _Rb_global
-{
-public:
-	static _Rb_tree_node_base *__cdecl _M_increment(_Rb_tree_node_base *);
-};
-}
+// The prototype map as the Team.cpp seed spells it: lower_bound's header and
+// node (Rva0039EA4E, 0x0039EA4E) with the TeamPrototype value at +0x18.
+#include <map>
 
 class Team;
 
@@ -39,16 +27,27 @@ public:
 	void teamAboutToBeDeleted(Team *team);
 };
 
-struct TeamPrototypeMapKey
+struct Rva0039D8FBKey
 {
 	int m_first;
 	int m_second;
 };
 
-struct TeamPrototypeMapNode : public _STL::_Rb_tree_node_base
+struct Rva0039EA4ENode
 {
-	TeamPrototypeMapKey m_key; // +0x10
-	TeamPrototype *m_value; // +0x18
+	int m_color00;
+	Rva0039EA4ENode *m_parent04;
+	Rva0039EA4ENode *m_left08;
+	Rva0039EA4ENode *m_right0C;
+	Rva0039D8FBKey m_key10;
+	TeamPrototype *m_value18;
+};
+
+class Rva0039EA4E
+{
+public:
+	Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
+	Rva0039EA4ENode *m_header00;
 };
 
 class PlayerList
@@ -66,15 +65,15 @@ public:
 
 private:
 	unsigned char m_pad00[0xB0];
-	TeamPrototypeMapNode *m_prototypes; // +0xB0, map header
+	Rva0039EA4E m_prototypes; // +0xB0
 };
 
 void TeamFactory::teamAboutToBeDeleted(Team *team)
 {
-	for (TeamPrototypeMapNode *it = (TeamPrototypeMapNode *)m_prototypes->_M_left; it != m_prototypes;
-		it = (TeamPrototypeMapNode *)_STL::_Rb_global<bool>::_M_increment(it))
+	for (Rva0039EA4ENode *it = m_prototypes.m_header00->m_left08; it != m_prototypes.m_header00;
+		it = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)it))
 	{
-		it->m_value->teamAboutToBeDeleted(team);
+		it->m_value18->teamAboutToBeDeleted(team);
 	}
 	if (ThePlayerList)
 		ThePlayerList->rva002A7AFE(team);

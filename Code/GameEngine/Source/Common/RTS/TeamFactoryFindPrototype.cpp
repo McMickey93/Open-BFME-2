@@ -54,7 +54,7 @@ public:
 	TeamPrototype *findTeamPrototype(const AsciiString &a, const AsciiString &b);
 private:
 	unsigned char m_pad00[0xB0];
-	Rva0039EA4E m_mapB0;
+	Rva0039EA4E m_prototypes;
 };
 
 TeamPrototype *TeamFactory::findTeamPrototype(const AsciiString &asciiString, const AsciiString &b)
@@ -64,8 +64,8 @@ TeamPrototype *TeamFactory::findTeamPrototype(const AsciiString &asciiString, co
 	Rva0039D8FBKey key;
 	key.m_first = keyA;
 	key.m_second = keyB;
-	Rva0039EA4ENode *node = m_mapB0.rva0039EA4E(key);
-	if (node != m_mapB0.m_header00)
+	Rva0039EA4ENode *node = m_prototypes.rva0039EA4E(key);
+	if (node != m_prototypes.m_header00)
 		return node->m_value18;
 	return 0;
 }

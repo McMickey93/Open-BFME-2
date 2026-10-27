@@ -10,8 +10,10 @@
 #include "Common/Snapshot.h"
 #define BFME_SNAPSHOT_NAME_SLOT
 #include <string.h>
+#include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 class TeamFactory;
 class Player;
+class PlayerList;
 class Script;
 #include <stl/_algobase.h>
 #pragma optimize("s", off)
@@ -952,24 +954,56 @@ public:
 	void rva003A2D53(int key, Object *val);
 };
 
-class TeamFactory
+class SidesList;
+
+// TeamFactory as this TU's units read it, one view for every factory body.
+// Bases: SubsystemInterface (12 bytes, rowed ctor 0x001B4E63) and Snapshot
+// at +0x0C, whose vptr TeamFactoryCtor.cpp and TeamFactoryDtor.cpp store
+// (tables 0x0081AE2C / 0x0081AE1C); the virtuals are the ones those two
+// units override. Members, with Zero Hour's Team.h names: the forty dummy AI
+// prototypes at +0x10 (TeamFactoryCtor/Clear/InitFromSides memset and fill
+// them; "DummyAITeam%u"), the prototype map at +0xB0 read through its header
+// pointer by the finds and walkers (lower_bound 0x0039EA4E, _M_increment
+// 0x00024250), its node count at +0xB4 (TeamFactory::xfer checks it against
+// the saved count), and the unique prototype and team ids at +0xBC/+0xC0
+// (reset zeroes both; initTeam and createInactiveTeam pre-increment them).
+// Overloads are spelled here: the merge adds a donor's method only by name.
+class TeamFactory : public SubsystemInterface, public Snapshot
 {
 public:
+	virtual ~TeamFactory();
+	virtual void init();
+	virtual void reset();
+	virtual void update();
+	void clear();
 	Team *createEmptyTeam(Player *player);
-private:
-	unsigned char m_pad00[0xBC];
-private:
-	int m_uniqueTeamPrototypeID;
-private:
-	int m_uniqueTeamID;
-public:
 	Team *createTeamOnPrototype(TeamPrototype *prototype, bool activate);
-public:
 	void initTeam(const AsciiString &name, const AsciiString &owner, bool isSingleton, Dict *d);
-public:
 	Team *createInactiveTeam(const AsciiString &owner, const AsciiString &name);
-public:
 	TeamPrototype *findTeamPrototype(const AsciiString &owner, const AsciiString &name);
+	TeamPrototype *findTeamPrototype(const AsciiString &qualifiedName);
+	Team *findTeam(const AsciiString &owner, const AsciiString &name);
+	Team *findTeam(const AsciiString &qualifiedName);
+	TeamPrototype *findTeamPrototypeByID(unsigned int id);
+	Team *findTeamByID(unsigned int id);
+	void removeTeamPrototypeFromList(TeamPrototype *team);
+	void markTeamDoneForTacticalAI(Team *team);
+	void teamAboutToBeDeleted(Team *team);
+	void initFromSides(SidesList *sides);
+	void rva003A262C();
+
+protected:
+	virtual void loadPostProcess();
+	virtual const char *GetSnapshotName() const;
+	virtual void xfer(Xfer *xfer);
+
+public:
+	TeamPrototype *m_dummyTeams[40];	// +0x10
+	Rva0039EA4E m_prototypes;			// +0xB0, map header
+	unsigned int m_prototypeCount;		// +0xB4, map node count
+	unsigned char m_padB8[0xBC - 0xB8];
+	int m_uniqueTeamPrototypeID;		// +0xBC
+	int m_uniqueTeamID;					// +0xC0
 };
 
 class Rva003A3CBBOwner
