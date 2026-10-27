@@ -87,7 +87,7 @@ private:
 	int m_20;
 };
 bool __cdecl Render_Obj_Exists(const char *name);
-void *__cdecl operator new(unsigned int size);
+#include <new>
 void __cdecl Add_Prototype(void *p);
 
 void __cdecl Rva001800B2Create(const char *name, int a, int b)

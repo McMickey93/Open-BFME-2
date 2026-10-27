@@ -10,7 +10,7 @@ public:
 	virtual void slot4(float);
 };
 
-void operator delete(void *);
+#include <new>
 
 class Rva001A1BF0
 {

@@ -6,7 +6,7 @@
 // ref at +0x08 via Release_Ref. Evidence is caller 0x003F845C deleting dtor
 // plus rowed callees plus neighbour dtor flags.
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class OpaqueRefCounted
 {
