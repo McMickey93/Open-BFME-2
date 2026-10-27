@@ -1,4 +1,5 @@
-// cl: /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata /O1 /DNDEBUG /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata /O1 /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// stlport
 // ?xfer@TeamFactory@@MAEXPAVXfer@@@Z, retail 0x003A308A (527 bytes).
 // Identity (target): WorldBuilder's debug Team.cpp TeamFactory::DoXfer
 // (callgraph lead) and Zero Hour's TeamFactory::xfer share retail's order:
@@ -16,8 +17,10 @@
 // re-set up on load through 0x003A2C0D (owner, name, singleton, no Dict)
 // and, from version 3, moved as a snapshot. Zero Hour's unused
 // prototypeName local survives as the constructed-and-released string.
+#include <map>
 #include "ascii_string.h"
 #include "Common/Snapshot.h"
+#include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 class AsciiString;
 class UnicodeString;
@@ -50,22 +53,6 @@ public:
 };
 
 
-
-namespace _STL
-{
-struct _Rb_tree_node_base
-{
-	bool _M_color;
-	_Rb_tree_node_base *_M_parent;
-	_Rb_tree_node_base *_M_left;
-	_Rb_tree_node_base *_M_right;
-};
-template <class Dummy> class _Rb_global
-{
-public:
-	static _Rb_tree_node_base *__cdecl _M_increment(_Rb_tree_node_base *);
-};
-}
 
 class XferException
 {
@@ -121,26 +108,33 @@ private:
 	int m_flags; // +0x18
 };
 
-struct TeamPrototypeKey
+// The prototype map as the Team.cpp seed spells it: lower_bound's header and
+// node (Rva0039EA4E, 0x0039EA4E) with the TeamPrototype value at +0x18.
+struct Rva0039D8FBKey
 {
 	int m_first;
 	int m_second;
 };
 
-struct TeamPrototypeMapNode : public _STL::_Rb_tree_node_base
+struct Rva0039EA4ENode
 {
-	TeamPrototypeKey m_key; // +0x10
-	TeamPrototype *m_value; // +0x18
+	int m_color00;
+	Rva0039EA4ENode *m_parent04;
+	Rva0039EA4ENode *m_left08;
+	Rva0039EA4ENode *m_right0C;
+	Rva0039D8FBKey m_key10;
+	TeamPrototype *m_value18;
 };
 
-struct TeamPrototypeMap
+class Rva0039EA4E
 {
-	_STL::_Rb_tree_node_base *m_header; // +0x00
-	unsigned int m_nodeCount; // +0x04
-	unsigned int size() const { return m_nodeCount; }
+public:
+	Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
+	unsigned int size() const { return m_nodeCount04; }
+	Rva0039EA4ENode *m_header00;
+	unsigned int m_nodeCount04;
 };
 
-#include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 enum { TEAM_FACTORY_PROTOTYPE_SLOTS = 40 };
 
@@ -155,9 +149,10 @@ public:
 	TeamPrototype *findTeamPrototypeByID(unsigned int id);
 
 private:
-	TeamPrototype *m_prototypeSlots[TEAM_FACTORY_PROTOTYPE_SLOTS]; // +0x10
-	TeamPrototypeMap m_prototypes; // +0xB0
-	unsigned char m_padB8[0xC0 - 0xB8];
+	TeamPrototype *m_dummyTeams[TEAM_FACTORY_PROTOTYPE_SLOTS]; // +0x10
+	Rva0039EA4E m_prototypes; // +0xB0, map header and node count
+	unsigned char m_padB8[0xBC - 0xB8];
+	unsigned int m_uniqueTeamPrototypeID; // +0xBC
 	unsigned int m_uniqueTeamID; // +0xC0
 };
 
@@ -181,10 +176,10 @@ void TeamFactory::xfer(Xfer *xfer)
 	AsciiString prototypeName;
 	if (xfer->IsStoring())
 	{
-		for (_STL::_Rb_tree_node_base *it = m_prototypes.m_header->_M_left; it != m_prototypes.m_header;
-			it = _STL::_Rb_global<bool>::_M_increment(it))
+		for (Rva0039EA4ENode *it = m_prototypes.m_header00->m_left08; it != m_prototypes.m_header00;
+			it = (Rva0039EA4ENode *)_STL::_Rb_global<bool>::_M_increment((_STL::_Rb_tree_node_base *)it))
 		{
-			teamPrototype = ((TeamPrototypeMapNode *)it)->m_value;
+			teamPrototype = it->m_value18;
 			teamPrototypeID = teamPrototype->getID();
 			*xfer == teamPrototypeID;
 			*xfer == *teamPrototype;
@@ -204,13 +199,13 @@ void TeamFactory::xfer(Xfer *xfer)
 
 	if (version.m_minimum >= 2)
 	{
-		bool hasSlots = m_prototypeSlots[0] != 0;
+		bool hasSlots = m_dummyTeams[0] != 0;
 		*xfer == hasSlots;
 		if (hasSlots)
 		{
 			for (int i = 0; i < TEAM_FACTORY_PROTOTYPE_SLOTS; ++i)
 			{
-				TeamPrototype *slot = m_prototypeSlots[i];
+				TeamPrototype *slot = m_dummyTeams[i];
 				AsciiString name(slot->getName());
 				*xfer == name;
 				int playerIndex = slot->getControllingPlayer() ? slot->getControllingPlayer()->getPlayerIndex() : -1;

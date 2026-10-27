@@ -285,8 +285,10 @@ class Rva0039EA4E
 public:
     Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
     Rva0039F5C8Iterator rva0039F5C8(const Rva0039D8FBKey &key);
+    unsigned int size() const { return m_nodeCount04; }
 
     Rva0039EA4ENode *m_header00;
+    unsigned int m_nodeCount04; // TeamFactory::xfer checks it against the saved count
 };
 
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
@@ -683,7 +685,11 @@ private:
 public:
 	AsciiString m_playerName;
 private:
-	unsigned char m_pad50[0x2EC - 0x50];
+	unsigned char m_pad50[0x54 - 0x50];
+public:
+	int m_playerIndex;		// +0x54, TeamFactory::xfer's inlined getPlayerIndex
+private:
+	unsigned char m_pad58[0x2EC - 0x58];
 private:
 	Team *m_defaultTeam;
 public:
@@ -964,8 +970,8 @@ class SidesList;
 // prototypes at +0x10 (TeamFactoryCtor/Clear/InitFromSides memset and fill
 // them; "DummyAITeam%u"), the prototype map at +0xB0 read through its header
 // pointer by the finds and walkers (lower_bound 0x0039EA4E, _M_increment
-// 0x00024250), its node count at +0xB4 (TeamFactory::xfer checks it against
-// the saved count), and the unique prototype and team ids at +0xBC/+0xC0
+// 0x00024250) with its node count at +0xB4 (TeamFactory::xfer checks it
+// against the saved count), and the unique prototype and team ids at +0xBC/+0xC0
 // (reset zeroes both; initTeam and createInactiveTeam pre-increment them).
 // Overloads are spelled here: the merge adds a donor's method only by name.
 class TeamFactory : public SubsystemInterface, public Snapshot
@@ -999,11 +1005,10 @@ protected:
 
 public:
 	TeamPrototype *m_dummyTeams[40];	// +0x10
-	Rva0039EA4E m_prototypes;			// +0xB0, map header
-	unsigned int m_prototypeCount;		// +0xB4, map node count
+	Rva0039EA4E m_prototypes;			// +0xB0, map header and node count
 	unsigned char m_padB8[0xBC - 0xB8];
-	int m_uniqueTeamPrototypeID;		// +0xBC
-	int m_uniqueTeamID;					// +0xC0
+	unsigned int m_uniqueTeamPrototypeID;	// +0xBC, Zero Hour TeamPrototypeID
+	unsigned int m_uniqueTeamID;		// +0xC0, Zero Hour TeamID
 };
 
 class Rva003A3CBBOwner
