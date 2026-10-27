@@ -29,7 +29,7 @@ public:
 Rva00548B97Helper *G00A05F88[9];
 
 void __cdecl Rva003B3371Call(int index);
-void operator delete(void *p);
+#include <new>
 
 enum GSOverlayType;
 
