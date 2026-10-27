@@ -239,9 +239,15 @@ private:
 	AIUpdateInterface *m_ai;	// +0x258
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class BattlePlanUpdate
 {
 public:
+	virtual NameKeyType getModuleNameKey() const;
 	BattlePlanStatus getActiveBattlePlan() const;
  void createVisionObject();
  void rva00497AE8(BattlePlanStatus); // native status transition's army-bonus helper; original name uncertain
@@ -257,7 +263,7 @@ private:
 	Object *getObject() { return m_object; }
  const BattlePlanUpdateModuleData *getBattlePlanUpdateModuleData() const { return data; }
 
-	void *m_vtable; // +0x00
+	// The virtual getter supplies the compiler-owned vptr at +0x00.
 	BattlePlanUpdateModuleData *data; // +0x04 (unmapped Module base member)
 	Object *m_object; // +0x08
 	char m_pad0C[0x24 - 0x0C];
