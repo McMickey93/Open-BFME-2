@@ -14,9 +14,8 @@ void Rva0080B070Destroy( void *object );
 // 0x007F0030, the one-argument release the rest of this directory uses.
 void Rva007F0030Free( void *block );
 
-// An import thunk the ledger already names; the C spelling is what this call
-// site needs.
-extern "C" void Rva0081BDE4( void );
+// wsock32's WSACleanup, reached through its import thunk at 0x006556AC.
+extern "C" int __stdcall WSACleanup( void );
 
 extern "C" __declspec(dllimport) void __stdcall Sleep( unsigned int ms );
 
@@ -605,7 +604,7 @@ void Rva00806580( Rva00806580Record *record )
 		Rva0080B070Destroy( record->m_field00 );
 
 	Sleep( 50 );
-	Rva0081BDE4();
+	WSACleanup();
 
 	if( record->m_field7C != 0 )
 		Rva007F0030Free( record->m_field7C );
@@ -1580,10 +1579,6 @@ extern "C" void Rva0080AD00( unsigned char *data, int length, void *state )
 		Rva0080F300( state, data, length );
 	}
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_Rva0081BDE4=?ji_006556ac@@YAXXZ")
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.

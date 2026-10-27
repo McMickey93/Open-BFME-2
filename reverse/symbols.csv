@@ -7582,7 +7582,6 @@ _Rva0081B9B0,0x006878B0,address read from the REL32 displacement in DirtySock Y4
 _Rva0081B9D0,0x006878D0,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00813F90 at 0x0067FE90; BFME1 Y4CommTickIdle names this callee; body not yet converted
 _Rva0081BA60,0x00687960,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00814040 at 0x0067FF40; BFME1 Y4CommTickIdle names this callee; body not yet converted
 _Rva0081BC80,0x00687B80,address from masked placement of the same-TU body; forward reference pending conversion; body not yet converted
-_Rva0081BDE4,0x006556AC,address read from the REL32 displacement in DirtySock Y2Rva00806580Module at 0x006725B0; BFME1 names this callee; body not yet converted
 _Rva0084DE40Tail,0x000210C0,STLport locale tail helper called via tail-jmp from the retail REL32 in Rva0084ECA0 at 0x00021E68 and Rva0084ECE0 at 0x00021EA8; donor name from BFME1 LocaleCodePageQueries
 _Rva008504C0,0x00023650,STLport locale date-time-format getter: GetLocaleInfoA(locale 0x1f) into the .data buffer 0x00DDF368 with a 0x104 length then __ConvertFromACP of 0x50 bytes from the object's codePage; reached by the tail call at +519 of _Init_timeinfo 0x000193A0 -- b1 0x008504C0
 _Rva00850560,0x000236F0,STLport locale long-date-time-format getter: same shape as _Rva008504C0 with type 0x20 and the .data buffer 0x00DDEF58; reached by the tail call at +621 of _Init_timeinfo 0x000193A0 -- b1 0x00850560

@@ -4015,7 +4015,6 @@ alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	?bfmeFreeR
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	?bfmeFreeTMB@@YAXPAX@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	?bfmeMakeRecUNB@@YAPAXH@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	?bfmeSendVFA@@YAHPAXHHHH@Z	1
-alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	_Rva0081BDE4	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva00807900Module.cpp	?bfmeConvertUVB@@YAHPADPAPAX@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y2ScalarDeleters.cpp	?slot0@Gen0080ACD0@@UAEXXZ	1
 alternatename	Code/Libraries/Source/DirtySock/Y2ScalarDeleters.cpp	?slot1@Gen0080ACD0@@UAEXXZ	1
@@ -4043,7 +4042,6 @@ alternatename	Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	?Rva00
 alternatename	Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	?Rva007FEAA0ListReset@@YAXPAX@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	?Rva007FEBD0Lock@@YAXPAX@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	?Rva007FECB0Unlock@@YAXPAX@Z	1
-alternatename	Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	_Rva0081BDE4	1
 alternatename	Code/Libraries/Source/DirtySock/Y4TextToValue.c	?bfmeFormatUPB@@YAXPAXPAD0PBD@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y4TextToValue.c	?bfmeTwoRF@@YAPAXPAX0@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y4TextToValue.c	_g_Rva0112A210Fold	1
@@ -10397,7 +10395,6 @@ pin	reverse/symbols.csv	0x00654B20	3
 pin	reverse/symbols.csv	0x0065565E	2
 pin	reverse/symbols.csv	0x00655670	1
 pin	reverse/symbols.csv	0x00655682	1
-pin	reverse/symbols.csv	0x006556AC	1
 pin	reverse/symbols.csv	0x006556B8	1
 pin	reverse/symbols.csv	0x00655700	1
 pin	reverse/symbols.csv	0x00655770	4

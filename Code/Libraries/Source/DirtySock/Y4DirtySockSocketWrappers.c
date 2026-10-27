@@ -837,7 +837,8 @@ void Rva007FD170(struct Rva007FD4E0Socket *listHead)
 	Rva007FECB0(0);
 }
 
-void Rva0081BDE4(void);
+/* wsock32's WSACleanup, reached through its import thunk at 0x006556AC. */
+int __stdcall WSACleanup(void);
 
 void Rva007FD270(void)
 {
@@ -849,7 +850,7 @@ void Rva007FD270(void)
 
 	Rva007FD170(&g_Rva0130AB58Head);
 	Rva007FE670();
-	Rva0081BDE4();
+	WSACleanup();
 }
 
 struct WsaStartupData
@@ -1109,7 +1110,6 @@ int Rva007FEF80(void)
 
 // Retail's call sites in this unit's matched rows land on bodies rowed under
 // other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_Rva0081BDE4=?ji_006556ac@@YAXXZ")
 #pragma comment(linker, "/alternatename:?Rva007FDA50Recv@@YAHPAXPADHH1PAH@Z=_Rva007FDA50")
 #pragma comment(linker, "/alternatename:?Rva007FDE80SetCallback@@YAHPAXHI00@Z=_Rva007FDE80")
 #pragma comment(linker, "/alternatename:?Rva007FEA20ListInit@@YAXPAX@Z=_Rva007FEA20")
