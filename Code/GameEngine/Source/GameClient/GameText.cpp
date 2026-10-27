@@ -34,6 +34,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #include <string.h>
+#include <ctype.h>
 struct AsciiStringHeader
 {
 	int m_ref;
@@ -54,14 +55,6 @@ namespace _STL { template <> void _STLP_alloc_proxy<AsciiString *, AsciiString, 
 namespace _STL { template <> void allocator<AsciiString>::deallocate(AsciiString *, unsigned int) const; }
 
 // bfme link decl-only end
-extern "C" __declspec(dllimport) char *__cdecl strchr(const char *, int);
-
-extern "C" __declspec(dllimport) int __cdecl isspace(int);
-
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *, const char *, unsigned int);
-
-extern "C" __declspec(dllimport) unsigned short *__cdecl wcsncpy(unsigned short *, const unsigned short *, unsigned int);
-
 extern "C" __declspec(dllimport) int __stdcall SetWindowTextW(void *hwnd, const unsigned short *text);
 
 // File (vtable slots read from the calls below) and the FileSystem calls.

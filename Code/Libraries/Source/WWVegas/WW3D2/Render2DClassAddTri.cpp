@@ -149,7 +149,6 @@ void Render2DClass::Add_Tri(const Vector2 &v0, const Vector2 &v1, const Vector2 
 #include "../../../Include/Lib/ICoord2D.h"
 #include "../../../Include/Lib/IRegion2D.h"
 #include <stdlib.h>
-float atan2(float, float);
 
 class TextureClass
 {

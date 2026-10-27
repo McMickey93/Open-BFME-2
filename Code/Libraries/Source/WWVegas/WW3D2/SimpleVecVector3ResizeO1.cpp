@@ -19,7 +19,7 @@
 #include "vp.h"
 #include "meshmatdesc.h"
 #include <stdlib.h>
-void __cdecl operator delete[](void *block) throw();
+#include <new>
 #define SHATTER_DEBUG_LOG_ENABLED	0
 #if (SHATTER_DEBUG_LOG_ENABLED)
 #define SHATTER_DEBUG_SAY(x)			WWDEBUG_SAY(x)

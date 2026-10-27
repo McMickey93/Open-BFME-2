@@ -8,12 +8,12 @@
 #define __PLACEMENT_VEC_NEW_INLINE  // always.h/GameMemory.h define array placement-new themselves
 #include "Common/Debug.h"
 #include "W3DDevice/GameClient/W3DBufferManager.h"
+#include <stddef.h>
 #define MAX_VB_SIZES 512
 #define MAX_NUMBER_SLOTS 4096
 #define MAX_VERTEX_BUFFERS_CREATED 32
 #define MAX_IB_SIZES 1024
 #define MAX_INDEX_BUFFERS_CREATED 32
-#define NULL 0
 
 W3DBufferManager *TheW3DBufferManager=NULL;
 

@@ -8,6 +8,7 @@
 #include <map>
 #define _STLP_BFME_TREE_NODE_BASE_O2  // emit retail's _Rb_tree_node_base::_S_minimum/_S_maximum (vendor/stlport/stl/_tree.h)
 #include <stl/_alloc.h>
+#include <string.h>
 #pragma comment(linker, "/alternatename:??RRva006038D4Less@@QBE_NPBD0@Z=?Rva0006038D4CStrLess@@YG_NPBD0@Z")
 
 class Rva0060426C;
@@ -94,8 +95,6 @@ struct Rva00603E50 {
 };
 
 typedef bool Bool;
-
-extern "C" char *__cdecl strcpy(char *, const char *);
 
 class File
 {
@@ -220,13 +219,10 @@ class Rva00604465 { public: virtual int rva00603C5F(const char *a); };
 // partial score=0.95 date=2026-09-29
 // ?rva00603CA3@Rva00603C0F@@QAE_NPBDPAUOut603CA3@@@Z
 // partial score=0.95 date=2026-09-29
-extern "C" char *__cdecl strcpy(char *dest, const char *src);
 
 char *__cdecl Rva00605365(char *);
 
 struct Out603CA3 { unsigned int m_a; unsigned int m_b; unsigned int m_c; unsigned int m_d; };
-
-	
 
 class Rva00603C0F
 {

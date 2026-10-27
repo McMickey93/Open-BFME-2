@@ -19,6 +19,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 #pragma comment(linker, "/alternatename:?clear@?$_Rb_tree@HU?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@_STL@@QAEXXZ=?rva00358F7C@Rva00358E6A@@QAEXXZ")
 #pragma comment(linker, "/alternatename:?erase@?$_Rb_tree@HU?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@_STL@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@2@@Z=?rva00358DC2@Rva00358DC2@@QAEXPAURva00358DC2Node@@@Z")
 #include <set>
+#include <stdlib.h>
 
 // map/set<int> internals otherwise instantiate the less<int>::operator()
 // COMDAT (one byte shape per TU flags); an explicit dllimport+forceinline
@@ -272,8 +273,6 @@ namespace _STL { template<> Pair358C60::pair(const AsciiString &,const TreeHintR
 // Identity via dtor 0x00358B65 plus free 0x00030830 plus self recursion;
 // unblocks 41B; same /O1 /GX- /arch:SSE2 as neighbours.
 
-extern "C" void free(void *p);
-
 class Rva00358B65
 {
 public:
@@ -312,7 +311,6 @@ private:
 // step to +0x8 next. Same this preserved in ebx across calls.
 // Evidence: self-call 0x00358D74; callees rowed 0x0027EA49 0x00030830;
 // callers 0x00358D74 0x00358E0B; unblocks 0x00358DFD.
-extern "C" void __cdecl free(void *block);
 
 struct Rva0027EA49
 {
