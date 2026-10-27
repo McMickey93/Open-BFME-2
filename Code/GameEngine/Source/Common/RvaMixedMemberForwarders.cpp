@@ -1,4 +1,5 @@
 #include "../GameClient/BuffManager.h"
+#include "GameLogicObjectLookupView.h"
 // cl: /DNDEBUG /MD
 //
 // Member forwarders, address-named except where an existing pin already
@@ -137,16 +138,7 @@ public:
 	int GetArmyIDOfFirstWalkOnArmy();
 };
 
-class GameLogic
-{
-public:
-	int rva0023D0B7();
-private:
-	char m_lead[0x184];
-	ArmySummarySystem m_member;
-};
-
 int GameLogic::rva0023D0B7()
 {
-	return m_member.GetArmyIDOfFirstWalkOnArmy();
+	return ((ArmySummarySystem *)((char *)this + 0x184))->GetArmyIDOfFirstWalkOnArmy();
 }
