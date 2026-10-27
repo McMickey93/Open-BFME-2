@@ -1,4 +1,6 @@
 // cl: /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // DX8Wrapper::Create_Render_Target retail 0x0011E120 (289 B).
 // Donor: reference/open-bfme-1/game/Libraries/Source/WWVegas/WW3D2/
 // Rva00905140CreateRenderTarget.cpp (BFME 1 0x00905140), which already
@@ -19,31 +21,19 @@ int __cdecl Find_POT(int size);
 
 typedef enum { WW3D_FORMAT_UNKNOWN = 0 } WW3DFormat;
 
-struct D3DDISPLAYMODE { unsigned Width, Height, RefreshRate, Format; };
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (EvictManagedResources slot 5, GetDisplayMode slot 8), cast at each call.
+#include <d3d9.h>
 
 struct IDirect3DDevice8;
-struct IDirect3DDevice8Vtbl
-{
-	void *reserved0[5];
-	long (__stdcall *EvictManagedResources)(IDirect3DDevice8 *self);
-	void *reserved6[2];
-	long (__stdcall *GetDisplayMode)(IDirect3DDevice8 *self, unsigned swapChain, D3DDISPLAYMODE *mode);
-};
-struct IDirect3DDevice8 { IDirect3DDevice8Vtbl *lpVtbl; };
+#define DEVICE9 (reinterpret_cast<IDirect3DDevice9 *>(D3DDevice))
 
 extern unsigned number_of_DX8_calls;
-
-struct D3DCapsPrefix
-{
-	unsigned char reserved[0x58];
-	unsigned int MaxTextureWidth;
-	unsigned int MaxTextureHeight;
-};
 
 class DX8Caps
 {
 public:
-	const D3DCapsPrefix &Get_DX8_Caps() const { return Caps; }
+	const D3DCAPS9 &Get_DX8_Caps() const { return Caps; }
 	__declspec(dllimport) __forceinline bool Support_Render_To_Texture_Format(WW3DFormat format) const
 	{
 		return format >= 0 && format < 0x76 && SupportRenderToTextureFormat[format];
@@ -52,8 +42,8 @@ public:
 private:
 	int MaxDisplayWidth;
 	int MaxDisplayHeight;
-	D3DCapsPrefix Caps;
-	unsigned char m_layoutGap[0x1B9 - 8 - sizeof(D3DCapsPrefix)];
+	D3DCAPS9 Caps;
+	unsigned char m_layoutGap[0x1B9 - 8 - sizeof(D3DCAPS9)];
 	bool SupportRenderToTextureFormat[0x76];
 };
 
@@ -112,7 +102,7 @@ RefCountPtr<TextureClass> DX8Wrapper::Create_Render_Target(int width, int height
 	// Use the current display format if format isn't specified
 	if (format == WW3D_FORMAT_UNKNOWN) {
 		D3DDISPLAYMODE mode;
-		D3DDevice->lpVtbl->GetDisplayMode(D3DDevice, 0, &mode);
+		DEVICE9->GetDisplayMode(0, &mode);
 		number_of_DX8_calls++;
 		format = (WW3DFormat)mode.Format;
 	}
@@ -122,11 +112,11 @@ RefCountPtr<TextureClass> DX8Wrapper::Create_Render_Target(int width, int height
 		return RefCountPtr<TextureClass>();
 	}
 
-	D3DDevice->lpVtbl->EvictManagedResources(D3DDevice);
+	DEVICE9->EvictManagedResources();
 	number_of_DX8_calls++;
 
 	//	Note: We're going to force the width and height to be powers of two and equal
-	const D3DCapsPrefix &dx8caps = CurrentCaps->Get_DX8_Caps();
+	const D3DCAPS9 &dx8caps = CurrentCaps->Get_DX8_Caps();
 	int size = width;
 	if (height > 0 && height < width) {
 		size = height;
