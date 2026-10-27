@@ -1,3 +1,4 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // WWLib Base64 encoder/decoder, verbatim from the Generals reference, by way
 // of the conversion Open-BFME-1 already landed for the same file - the two
@@ -11,9 +12,7 @@
 // This tree carries no base64.h,
 // so the two prototypes stand here instead of an include.
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 int Base64_Encode(void const *source, int slen, void *dest, int dlen);
 int Base64_Decode(void const *source, int slen, void *dest, int dlen);

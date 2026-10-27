@@ -7,7 +7,7 @@
 // there for the two members that own storage - the locale at 0x20 and the
 // cached grouping string at 0x48.
 
-extern "C" __declspec(dllimport) void __cdecl free(void *block);
+#include <stdlib.h>
 
 // The SECOND spelling of free, and the reason the body needs two. Retail
 // frees the three raw arrays through the import above (`ff d7`, hoisted into
@@ -16,7 +16,6 @@ extern "C" __declspec(dllimport) void __cdecl free(void *block);
 // headers declare, and that call carries the null check and the state store.
 // Declaring it inside _STL keeps it distinct from the extern "C" import; the
 // array frees below are qualified ::free so they still reach the import.
-
 
 namespace _STL
 {

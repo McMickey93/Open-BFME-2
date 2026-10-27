@@ -7,6 +7,8 @@
 // then freeing via rowed _free 0x00030830 ret 4. Prev TreeHint family so
 // same flags. Caller at 0x004E220C plus self recursion. Owner unknown so
 // honest address-derived names.
+#include <stdlib.h>
+
 template <typename T>
 class StringBase
 {
@@ -15,7 +17,6 @@ public:
 private:
 	void *m_data;
 };
-extern "C" void __cdecl free(void *p);
 struct Rva004E1F97Node
 {
 	char m_pad00[8];

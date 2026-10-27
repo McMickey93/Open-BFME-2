@@ -5,7 +5,7 @@
 // 0x00603AA8. Evidence: chain lane caller of clear; neighbours 0x000A7AA7 and
 // 0x000A7C50 share the same tree flags. Base holds the header so the derived
 // clear plus inlined base free reproduces the STL _Rb_tree_base EH pattern.
-extern "C" void __cdecl free(void *p);
+#include <stdlib.h>
 
 class Rva000A79CEBase
 {

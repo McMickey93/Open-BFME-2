@@ -10,6 +10,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+#include <stdlib.h>
 #include <vector>
 // Suppress this TU's non-retail copy of ?_M_clear@?$vector@UBfmePod36@@V?$allocator@UBfmePod36@@@_STL@@@_STL@@IAEXXZ:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
@@ -32,7 +33,6 @@ namespace _STL { template <> void _Construct<BfmePod36,BfmePod36>(BfmePod36 *,co
 // is an /O1 body with size, max, the allocator proxy, the old storage's release and
 // _M_set expanded inline. This /Ob0 unit expands nothing, so spell the STLport 4.5.3
 // algorithm out with those steps written in place; the TU's copy is then retail's.
-extern "C" void __cdecl free(void *);
 namespace _STL {
 template <> void vector<BfmePod36>::_M_insert_overflow(BfmePod36 *position, const BfmePod36 &value,
     const __false_type &, unsigned int fillLength, bool atEnd)

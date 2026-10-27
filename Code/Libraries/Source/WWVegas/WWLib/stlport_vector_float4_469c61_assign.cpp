@@ -7,6 +7,7 @@
 // no distance) folding to the rowed Region2D wrapper family 0x7BF5A/0x7BF77; prev Destroy 0x7C2D7 and next
 // Rva007C454Ctor 0x7C3CD; flags follow stlport_vector_BfmeRecord0040B61A_assign.cpp (no STATIC_LIB so no
 // distance push per its comment); element name from stlport_vector_float4_469c61.cpp.
+#include <stdlib.h>
 #include <vector>
 // Suppress this TU's non-retail copy of ?allocate@?$_STLP_alloc_proxy@PAUBfmeFloat4Record00469C61@@U1@V?$allocator@UBfmeFloat4Reco:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
@@ -33,7 +34,6 @@ struct BfmeFloat4Record00469C61 {
 };
 // Bind to the kept retail copy instead of emitting this unit's own.
 namespace _STL { template <> __declspec(dllimport) __forceinline void _Construct<BfmeFloat4Record00469C61,BfmeFloat4Record00469C61>(BfmeFloat4Record00469C61 *p,BfmeFloat4Record00469C61 const &v) { new (p) BfmeFloat4Record00469C61(v); } }
-extern "C" void __cdecl free(void *p);
 namespace _STL {
 template<>
 _STL::vector<BfmeFloat4Record00469C61, _STL::allocator<BfmeFloat4Record00469C61> > &

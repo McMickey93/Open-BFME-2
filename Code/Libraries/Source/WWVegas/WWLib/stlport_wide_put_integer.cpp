@@ -1,8 +1,9 @@
 // cl: /EHs /EHc- /MD /D_STLP_USE_STATIC_LIB
 // stlport
 
+#include <stddef.h>
+
 typedef unsigned short wchar_t;
-typedef int ptrdiff_t;
 
 namespace _STL
 {

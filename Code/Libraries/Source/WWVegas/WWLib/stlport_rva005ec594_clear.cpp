@@ -7,6 +7,8 @@
 // Element owner unproven (0x18 stride with string head, a different family
 // from Rva005DE5B5) so honest address-derived struct and free-function names.
 // Flags copy the prev neighbour uninitialized_copy TU (no EH frame).
+#include <stdlib.h>
+
 template <typename T>
 class StringBase
 {
@@ -31,8 +33,6 @@ void Rva005EC594Clear(Rva005EC594 *first, Rva005EC594 *last)
 // the [m_00,m_04) range through the row above, then frees m_00 through rowed
 // _free at 0x00030830 when non-null; frameless, ret. Caller at 0x005ECBC1 in
 // 0x005ECB28. Owner unknown so honest address-derived names.
-extern "C" void free(void *);
-
 class Rva005EC9F9
 {
 public:

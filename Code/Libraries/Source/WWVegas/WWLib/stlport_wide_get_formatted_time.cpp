@@ -43,6 +43,8 @@
 // row being rewritten, because a pin is additive and a rename would be a
 // claim the bytes cannot support.
 
+#include <time.h>
+
 namespace _STL
 {
 
@@ -154,19 +156,6 @@ typedef istreambuf_iterator<unsigned short, char_traits<unsigned short> > wide_i
 struct __false_type {};
 
 }
-
-struct tm
-{
-	int tm_sec;
-	int tm_min;
-	int tm_hour;
-	int tm_mday;
-	int tm_mon;
-	int tm_year;
-	int tm_wday;
-	int tm_yday;
-	int tm_isdst;
-};
 
 namespace _STL
 {

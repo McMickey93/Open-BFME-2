@@ -9,7 +9,7 @@
 // _free at 0x00030830. Same 53B shape as Rva0032EAA1 at 0x0032EAA1 and the
 // BfmeRecord001DD3BC erase at 0x001DD894. Caller 0x000A79DC in 0x000A79CE
 // clear passes the root; landing this unblocks 0x000A79CE.
-extern "C" void free(void *p);
+#include <stdlib.h>
 
 struct TreeKey00242F5E
 {

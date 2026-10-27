@@ -1,13 +1,10 @@
 // cl: /MD
 // STLport 4.5.3 ios_base callback-array grow (retail 0x0001BEC0, 147B).
 // Distinct TU under WWLib: Code/stlport/ is not an allowed root for a new
-// source. Donor-verbatim except for the import repair the sweep packet
-// requires: the donor declares u2_import_01359474 but the body reaches
-// realloc, so the declaration names realloc directly (same cdecl
-// void*-(void*, unsigned) shape). The live zero-valued Callback temporary
+// source. The live zero-valued Callback temporary
 // is intentional: it preserves the retail register allocation through the
 // callback-pair tail fill.
-extern "C" __declspec(dllimport) void *__cdecl realloc(void *p, unsigned int bytes);
+#include <stdlib.h>
 
 namespace _STL
 {

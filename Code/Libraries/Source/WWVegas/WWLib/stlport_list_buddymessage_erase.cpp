@@ -1,6 +1,7 @@
 // cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // stlport
 // Retail 0x004168D3 unlinks a message node and calls the rowed BuddyMessage cleanup.
+#include <stdlib.h>
 #include <list>
 
 class BuddyMessage
@@ -15,8 +16,6 @@ struct BfmeStringRecord00415F34
 {
     BuddyMessage message;
 };
-
-extern "C" void __cdecl free(void *block);
 
 namespace _STL
 {

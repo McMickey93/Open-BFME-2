@@ -2,7 +2,7 @@
 
 // Open-BFME5: STLport ios_base auxiliary word-array growth for iword and pword.
 
-extern "C" __declspec(dllimport) void *__cdecl realloc(void *p, unsigned int bytes);
+#include <stdlib.h>
 
 namespace _STL
 {

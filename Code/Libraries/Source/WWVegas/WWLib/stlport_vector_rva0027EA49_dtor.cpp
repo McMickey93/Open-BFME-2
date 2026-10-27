@@ -7,6 +7,7 @@
 // @0x00281AD4 with (m_start, m_finish) at +0 +4 then frees m_start via
 // rowed _free @0x00030830; caller @0x00282906 in 0x00282870; same 30B recipe
 // as rowed ??1Rva000C20A3 @0x000C20A3.
+#include <stdlib.h>
 #include <vector>
 
 struct Rva0027EA49
@@ -18,8 +19,6 @@ namespace _STL
 {
 template <> void _Destroy<Rva0027EA49 *>(Rva0027EA49 *first, Rva0027EA49 *last);
 }
-
-extern "C" void __cdecl free(void *block);
 
 class Rva00308C13
 {

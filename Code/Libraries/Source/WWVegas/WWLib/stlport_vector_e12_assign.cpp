@@ -2,6 +2,8 @@
 // stlport
 // ??4?$vector@UBfmeE12@@V?$allocator@UBfmeE12@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z @0x004BF4CE 209B
 // Evidence: calls rowed E12 allocate_and_copy 0x0029B297 plus __copy_ptrs 0x000B6569 plus __uninitialized_copy 0x000766F5 plus _free 0x00030830; caller ActiveBody ctor 0x004BF779.
+#include <stdlib.h>
+
 struct BfmeE12 { float x, y, z; };
 namespace _STL {
 struct __false_type { __false_type() {} };
@@ -28,7 +30,6 @@ private:
 template <class InputIter, class OutputIter> OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type &tag);
 template <class InputIter, class OutputIter> OutputIter __uninitialized_copy(InputIter first, InputIter last, OutputIter result, const __false_type &tag);
 }
-extern "C" void __cdecl free(void *);
 template <class Type, class Allocator>
 _STL::vector<Type, Allocator> &_STL::vector<Type, Allocator>::operator=(const vector &x)
 {

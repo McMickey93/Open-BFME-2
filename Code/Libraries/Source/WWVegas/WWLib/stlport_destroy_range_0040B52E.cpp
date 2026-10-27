@@ -5,6 +5,7 @@
 // 25 bytes. Unlock lane: destroy range over 16-byte elements with narrow
 // string at +0 via rowed BasicStringCharDtor_dup 0x0007FAB3. Unblocks
 // 0x0040B560, 0x0040B5DE, 0x0040B61A.
+#include <stdlib.h>
 #include <string>
 #include <cstddef>
 // bfme link decl-only begin
@@ -23,8 +24,6 @@ struct DestroyElem0040B52E
 	_STL::basic_string<char, _STL::char_traits<char>, _STL::allocator<char> > m_str;
 	int m_pad;
 };
-
-extern "C" void __cdecl free(void *p);
 
 class Rva0040B5DE
 {
