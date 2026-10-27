@@ -1,6 +1,4 @@
 # source	check	symbol	address -- shrink-only; written by tools/data_check.py
-Code/GameEngine/Source/Common/Bfme/Rva004E65CFLeaf.cpp	wrong-name	?g_00DEC2D4@@3PAVRva004E65CFMgr@@A	0x009EC2D4
-Code/GameEngine/Source/Common/BfmeConv803O1.cpp	wrong-name	?g_bfmeObjEBL@@3VBfmeObjEBL@@A	0x00A01E68
 Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	wrong-name	?g_bfmeThingUCHead@@3PAVBfmeNodeUC@@A	0x00A0ABB0
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	duplicate-def	?g_Va00DF6FD0@@3HA	0x009F6FD0
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00DBA4E4@@3HA	0x009BA4E4
@@ -13,7 +11,6 @@ Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0490
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E062EC@@3HA	0x00A062EC
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0ABB0@@3HA	0x00A0ABB0
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E18078@@3HA	0x00A18078
-Code/GameEngine/Source/Common/D008791E0HandleTableRemove.cpp	wrong-name	?Rva008791E0Handles@@3URva008791E0Table@@A	0x00A226E0
 Code/GameEngine/Source/Common/GameAudioRandomValue_getValueReal.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
 Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp	duplicate-def	_theGameClientSeed	0x009BA3A0
 Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
@@ -25,7 +22,6 @@ Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E03314@@
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E09FA4@@3HA	0x00A09FA4
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F24@@3RCRAVRva00075695Item@@C	0x009E1F24
 Code/GameEngine/Source/Common/Rva00075695Notify.cpp	wrong-name	?g_00DE1F54@@3HA	0x009E1F54
-Code/GameEngine/Source/Common/Rva0009A2CDDispatch.cpp	wrong-name	?g_00DEC2CC@@3PAV?$StringBase@G@@A	0x009EC2CC
 Code/GameEngine/Source/Common/Rva001518D1Get.cpp	wrong-name	?empty@?3??rva001518D1@Rva001518D1@@QAEPAV?$vector@UBfmeE16@@V?$allocator@UBfmeE16@@@_STL@@@_STL@@XZ@4V34@A	0x009F6F10
 Code/GameEngine/Source/Common/Rva00202B6CGet.cpp	duplicate-def	?rva00202B6CNames@@3PAPBDA	0x009B95F4
 Code/GameEngine/Source/Common/Rva00202B6CGet.cpp	wrong-name	?rva00202B6CNames@@3PAPBDA	0x009B95F4
@@ -42,10 +38,8 @@ Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp	wrong-name	?$S7@?1??rva002
 Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp	wrong-name	?$S9@?1??rva0021AFEA@Rva00219B9E@@QAEPAXI@Z@4IA	0x009FE40C
 Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp	wrong-name	?err@?1??rva0021ADF8@Rva00219B9E@@QAEPAXI@Z@4VAsciiString@@A	0x009FE3E8
 Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp	wrong-name	?err@?1??rva0021B13A@Rva00219B9E@@QAEPAXII@Z@4VAsciiString@@A	0x009FE420
-Code/GameEngine/Source/Common/Rva002B2E77Finish.cpp	wrong-name	?Glo00A00950@@3PAVGlobalHolder@@A	0x00A00950
 Code/GameEngine/Source/Common/Rva0030062CGet.cpp	wrong-name	?$S1@?1??Rva0030062CGet@@YAPAVAsciiString@@XZ@4IA	0x009FF158
 Code/GameEngine/Source/Common/Rva00300678Get.cpp	wrong-name	?$S1@?1??Rva00300678Get@@YAPAVAsciiString@@XZ@4IA	0x009FF160
-Code/GameEngine/Source/Common/Rva0031FA40Create.cpp	wrong-name	?g_0080D720@@3UFieldParse@@B	0x0080D720
 Code/GameEngine/Source/Common/Rva0038153BListenerWalks.cpp	duplicate-def	?g_00E02310@@3VRva003818B0List@@A	0x00A02310
 Code/GameEngine/Source/Common/Rva0038153BListenerWalks.cpp	wrong-name	?g_00E02310@@3VRva003818B0List@@A	0x00A02310
 Code/GameEngine/Source/Common/Rva00381C82AddChatText.cpp	wrong-name	?g_00E02310@@3VRva0038188BList@@A	0x00A02310

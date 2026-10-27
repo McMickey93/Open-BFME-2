@@ -4,7 +4,7 @@
 // Evidence: chain from 0x0031F7AB landing; rowed ctor 0x0031F7AB plus new 0x0002FDA0
 // plus initFromINI 0x0002DE78; caller none; free-function cdecl (ret 0).
 struct FieldParse;
-extern const struct FieldParse g_0080D720;
+extern const struct FieldParse g_0080D720[];
 class INI {
 public: void initFromINI(void *what, const struct FieldParse *table);
 };
@@ -35,6 +35,6 @@ struct Rva0031FA40Out {
 void Rva0031FA40Create(INI *ini, Rva0031FA40Out *out)
 {
 	Rva0031F7AB *p = new Rva0031F7AB;
-	ini->initFromINI(p, &g_0080D720);
+	ini->initFromINI(p, g_0080D720);
 	out->m_obj = p;
 }

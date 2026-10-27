@@ -40,21 +40,17 @@ public:
 };
 
 extern class W3DVolumetricShadowManager *TheW3DVolumetricShadowManager;
-extern StringBase<unsigned short> *g_00DEC2CC;
+extern class W3DProjectedShadowManager *TheW3DProjectedShadowManager;
 extern class Rva0007DA23ResourceManager *Rva00DE1FF8Manager;
 
 void Rva0009A2CDRun()
 {
 	if ((*(Rva000F278F **)&TheW3DVolumetricShadowManager) != 0)
 		(*(Rva000F278F **)&TheW3DVolumetricShadowManager)->rva000F278F();
-	if (g_00DEC2CC != 0)
-		g_00DEC2CC->validate();
+	if (TheW3DProjectedShadowManager != 0)
+		((StringBase<unsigned short> *)TheW3DProjectedShadowManager)->validate();
 	if ((*(R2GlobalReceiver **)&Rva00DEC2D8Manager) != 0)
 		((BfmeThing928F *)(*(R2GlobalReceiver **)&Rva00DEC2D8Manager))->bfmeGo928F();
 	if ((*(Rva0007BA35 **)&Rva00DE1FF8Manager) != 0)
 		(*(Rva0007BA35 **)&Rva00DE1FF8Manager)->rva0007BA35();
 }
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00DEC2CC@@3PAV?$StringBase@G@@A=?TheW3DProjectedShadowManager@@3PAVW3DProjectedShadowManager@@A")

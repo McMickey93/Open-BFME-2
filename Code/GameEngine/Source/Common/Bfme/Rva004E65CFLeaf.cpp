@@ -85,7 +85,8 @@ public:
 	virtual Rva00330995 *play(Shadow::ShadowTypeInfo *ev) = 0;
 };
 
-extern Rva004E65CFMgr *g_00DEC2D4;
+class AudioManager0029E159;
+extern AudioManager0029E159 *g_00DEC2D4;
 extern float g_Va00BC28F4;
 // g_Va00BC28F4: matched references place it at VA 0xbc28f4 (retail .rdata value 2.0f).
 float g_Va00BC28F4 = 2.0f;
@@ -152,7 +153,7 @@ void PlaceTerrainResourceClaimantFeedback::Impl::createPotentialClaimDecal()
 	Shadow::ShadowTypeInfo ev;
 	ev.m_first = m_04->m_sound;
 	Rva004E65CFFloatSrc *p = m_0C;
-	Rva004E65CFMgr *mgr = g_00DEC2D4;
+	Rva004E65CFMgr *mgr = (Rva004E65CFMgr *)g_00DEC2D4;
 	ev.m_byte25 = 0;
 	ev.m_byte26 = 1;
 	ev.m_type = 0x2000;
@@ -172,8 +173,6 @@ void PlaceTerrainResourceClaimantFeedback::Impl::createPotentialClaimDecal()
 		((Shadow *)m_1C)->setOpacity(0x80);
 	}
 }
-// ?g_00DEC2D4@@3PAVRva004E65CFMgr@@A: the global at VA 0xdec2d4 is ?g_00DEC2D4@@3PAVAudioManager0029E159@@A.
-#pragma comment(linker, "/alternatename:?g_00DEC2D4@@3PAVRva004E65CFMgr@@A=?g_00DEC2D4@@3PAVAudioManager0029E159@@A")
 
 class Mouse;
 class View;

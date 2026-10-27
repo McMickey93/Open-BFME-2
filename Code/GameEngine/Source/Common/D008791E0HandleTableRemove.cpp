@@ -6,20 +6,21 @@ struct Rva008791E0Table
 	int m_count;
 };
 
-extern Rva008791E0Table Rva008791E0Handles;
+extern unsigned long mem_array[2][20];
+extern int mem_array_ents;
 
 int __cdecl Rva008791E0Remove(void *key, void **out)
 {
 	int i;
 
-	for (i = 0; i < Rva008791E0Handles.m_count; i++)
+	for (i = 0; i < mem_array_ents; i++)
 	{
-		if (Rva008791E0Handles.m_keys[i] == key)
+		if (((Rva008791E0Table *)mem_array)->m_keys[i] == key)
 		{
-			*out = Rva008791E0Handles.m_vals[i];
+			*out = ((Rva008791E0Table *)mem_array)->m_vals[i];
 
-			void **p = &Rva008791E0Handles.m_vals[i];
-			int count = Rva008791E0Handles.m_count;
+			void **p = &((Rva008791E0Table *)mem_array)->m_vals[i];
+			int count = mem_array_ents;
 
 			i++;
 			if (i < count)
@@ -33,7 +34,7 @@ int __cdecl Rva008791E0Remove(void *key, void **out)
 				} while (i < count);
 			}
 
-			Rva008791E0Handles.m_count = count - 1;
+			mem_array_ents = count - 1;
 			return 0;
 		}
 	}
@@ -45,13 +46,11 @@ int __cdecl Rva008791E0Remove(void *key, void **out)
 // ?Rva008791B0Add@@YAHPAX0@Z
 int __cdecl Rva008791B0Add(void *a, void *b)
 {
-	int i = Rva008791E0Handles.m_count;
+	int i = mem_array_ents;
 	if (i >= 20)
 		return -1;
-	Rva008791E0Handles.m_vals[i] = a;
-	Rva008791E0Handles.m_keys[i] = b;
-	Rva008791E0Handles.m_count = i + 1;
+	((Rva008791E0Table *)mem_array)->m_vals[i] = a;
+	((Rva008791E0Table *)mem_array)->m_keys[i] = b;
+	mem_array_ents = i + 1;
 	return 0;
 }
-// ?Rva008791E0Handles@@3URva008791E0Table@@A: the global at VA 0xe226e0 is ?mem_array@@3PAY0BE@KA.
-#pragma comment(linker, "/alternatename:?Rva008791E0Handles@@3URva008791E0Table@@A=?mem_array@@3PAY0BE@KA")

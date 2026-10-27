@@ -41,7 +41,8 @@ public:
 	void *m_bfmeB;
 };
 
-extern BfmeObjEBL g_bfmeObjEBL;
+extern unsigned char *g_validityBegin;
+extern unsigned char *g_validityEnd;
 
 // LINK: the call is rowed as Rva00361624::rva00361624 (0x00361624), which also
 // returns its first argument; the result is unused here.
@@ -54,7 +55,7 @@ public:
 
 void bfmeGoEBL()
 {
-	((Rva00361624 *)&g_bfmeObjEBL)->rva00361624((Rva0036105B *)g_bfmeObjEBL.m_bfmeA, (Rva0036105B *)g_bfmeObjEBL.m_bfmeB);
+	((Rva00361624 *)&g_validityBegin)->rva00361624((Rva0036105B *)g_validityBegin, (Rva0036105B *)g_validityEnd);
 }
 
 char bfmeCmpEBMa(void *a, void *b);
@@ -74,7 +75,3 @@ class BfmeObjEBN
 public:
 	BfmeSubEBN *bfmeGetEBN();
 };
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_bfmeObjEBL@@3VBfmeObjEBL@@A=?g_validityBegin@@3PAEA")
