@@ -27,6 +27,51 @@ template <> __declspec(dllimport) __forceinline
 void *__node_alloc<true, 0>::allocate(size_t __n)
 { return (__n > (size_t)_MAX_BYTES) ? __stl_new(__n) : _M_allocate(__n); }
 }
+
+// Declaration-only: retail keeps one copy of this STLport member (rowed elsewhere); this unit calls it
+// rather than emitting its own.
+namespace _STL {
+template <> _List_base<int, allocator<int> >::_List_base(const allocator<int> &);
+}
+
+// Declaration-only: retail keeps one copy of this STLport member (rowed elsewhere); this unit calls it
+// rather than emitting its own.
+namespace _STL {
+template <> void _List_base<int, allocator<int> >::clear();
+}
+
+// Declaration-only: retail keeps one copy of this STLport member (rowed elsewhere); this unit calls it
+// rather than emitting its own.
+namespace _STL {
+template <> _List_base<int, allocator<int> >::~_List_base();
+}
+
+// Declaration-only: retail keeps one copy of this STLport member (rowed elsewhere); this unit calls it
+// rather than emitting its own.
+namespace _STL {
+template <> list<int, allocator<int> >::iterator list<int, allocator<int> >::erase(list<int, allocator<int> >::iterator);
+}
+
+// list<int> destruction otherwise instantiates per-TU deallocate
+// COMDATs (one byte shape per TU flags); explicit dllimport+forceinline
+// specializations take those calls inline so this TU emits no external copy.
+namespace _STL {
+template <> __declspec(dllimport) __forceinline
+void allocator<_List_node<int> >::deallocate(_List_node<int>* __p, size_t __n) const {
+  _STLP_ASSERT( (__p == 0) == (__n == 0) )
+    if (__p != 0) __sgi_alloc::deallocate((void*)__p, __n * sizeof(value_type));
+}
+template <> __declspec(dllimport) __forceinline
+void _STLP_alloc_proxy<_List_node<int> *, _List_node<int>, allocator<_List_node<int> > >::deallocate(_List_node<int> *__p, size_t __n) {
+  allocator<_List_node<int> >().deallocate(__p, __n);
+}
+}
+
+// Declare ~AsciiString only (the shim's per-unit switch): the module data's
+// nugget teardown calls retail's out-of-line copy.
+#ifndef BFME_ASCII_DTOR_DECL
+#define BFME_ASCII_DTOR_DECL
+#endif
 #include "ascii_string.h"
 // class-gate: allow Coord3D update calls the out-of-line Coord3D::lengthSqr (rowed 0x00065A1A, WB 0x403FBC), absent from the canonical data-only header, and adds through the inline set/add; same three floats
 #define CANONICAL_COORD3D_H
@@ -213,25 +258,28 @@ struct FireWeaponNugget
 	Coord3D m_offset; // +0x0C Offset
 };
 
-class FireWeaponUpdateModuleData
+// The nugget list holds FireWeaponNugget pointers through the rowed list<int>
+// bodies, as the entry list does.
+class FireWeaponUpdateModuleData : public Snapshot
 {
 public:
-	char m_unknown00[0x08];
-	_STL::list<FireWeaponNugget *> m_nuggets; // +0x08
+	virtual ~FireWeaponUpdateModuleData();
+	int m_unk04; // +4
+	_STL::list<int> m_nuggets; // +0x08
 	Bool m_heroModeTrigger; // +0x0C
 	Bool m_chargingModeTrigger; // +0x0D
 	Bool m_aliveOnly; // +0x0E
 };
 
-// Coord3D::zero for the canonical data-only Coord3D. Spelled as a call, the
-// zero register is materialized after the frame store, as retail has it.
-inline void zeroCoord(Coord3D &c) { c.x = 0.0f; c.y = 0.0f; c.z = 0.0f; }
-
 // One FireWeaponNugget instance (0x18 bytes, built by 0x0048BDF8). Its name is
-// unknown; the address-derived one reflects that retail folded this list's
-// push_back into list<int>'s (0x0005548F).
+// unknown; the entry list appends it through the rowed list<int> push_back
+// (0x0005548F).
 struct Rva0048BDF8Entry
 {
+	// Coord3D::zero for the canonical data-only Coord3D. Spelled as a call, the
+	// zero register is materialized after the frame store, as retail has it.
+	static void zeroCoord(Coord3D &c) { c.x = 0.0f; c.y = 0.0f; c.z = 0.0f; }
+
 	Rva0048BDF8Entry() : m_weapon(NULL), m_nextFireFrame(0xFFFFFFFF), m_oneShot(false)
 	{
 		zeroCoord(m_offset);
@@ -243,47 +291,66 @@ struct Rva0048BDF8Entry
 	Coord3D m_offset; // +0x0C
 };
 
-class BehaviorModuleBase
+template <int NUMBITS> class BitFlags;
+
+enum NameKeyType
 {
-public:
-	virtual void behaviorModuleBaseAnchor();
-	const ModuleData *m_moduleData;
-	Object *m_object;
+	NK_UNKNOWN = 0
 };
 
-class BehaviorModuleOther
+// Zero Hour's UpdateModule shape: ObjectModule at +0, BehaviorModuleInterface
+// at +0xC (retail's folded table) and UpdateModuleInterface at +0x10, whose
+// table 0x00C4C18C is the rowed update 0x0048BEE8 then UpdateModule's rowed
+// getDisabledTypesToProcess 0x00253376 and 0x0044DF8D. The compiler installs
+// all three after the pinned UpdateModule ctor.
+class ObjectModule
 {
 public:
-	virtual void behaviorModuleOtherAnchor();
-};
-
-class BehaviorModule : public BehaviorModuleBase, public BehaviorModuleOther
-{
-public:
+	virtual void objectModuleAnchor();
 	Object *getObject() const { return m_object; }
+protected:
+	const ModuleData *m_moduleData;		// +4
+	Object *m_object;					// +8
+};
+
+class BehaviorModuleInterface
+{
+public:
+	virtual void behaviorModuleInterfaceAnchor();
 };
 
 class UpdateModuleInterface
 {
 public:
-	virtual UpdateSleepTime update();
+	virtual UpdateSleepTime update() = 0;
+	virtual BitFlags<11> getDisabledTypesToProcess() const = 0;
+	virtual void rva0044DF8D(UpdateSleepTime frame) = 0;
 };
 
-class UpdateModule : public BehaviorModule, public UpdateModuleInterface
+class UpdateModule : public ObjectModule, public BehaviorModuleInterface, public UpdateModuleInterface
 {
 public:
+	UpdateModule(Thing *thing, const ModuleData *moduleData);
+	virtual ~UpdateModule();
+	virtual BitFlags<11> getDisabledTypesToProcess() const;
+	virtual void rva0044DF8D(UpdateSleepTime frame);
 	void xfer(Xfer *xfer);
-
 protected:
-	unsigned m_nextCallFrameAndPhase;
-	int m_indexInLogic;
-	int m_bfmeReserved;
+	void setWakeFrame(Object *object, UpdateSleepTime frame);
+	unsigned int m_nextCallFrameAndPhase;	// +0x14
+	int m_indexInLogic;					// +0x18
+	int m_reserved1C;					// +0x1C
 };
 
+// The entry list holds Rva0048BDF8Entry pointers; retail runs it through the
+// rowed list<int> bodies (construct, clear, erase, push_back, destroy).
 class FireWeaponUpdate : public UpdateModule
 {
 public:
+	FireWeaponUpdate(Thing *thing, const ModuleData *moduleData);
+	virtual ~FireWeaponUpdate();
 	virtual UpdateSleepTime update();
+	virtual NameKeyType getModuleNameKey() const;
 	void Rva0048BDF8Helper();
 
 protected:
@@ -296,7 +363,7 @@ protected:
 
 private:
 	Weapon *m_weapon; // +0x20
-	_STL::list<Rva0048BDF8Entry *> m_entries; // +0x24
+	_STL::list<int> m_entries; // +0x24
 	Bool m_entriesReady; // +0x28
 };
 
@@ -308,9 +375,9 @@ private:
 UpdateSleepTime FireWeaponUpdate::rva0048BA3E()
 {
 	UnsignedInt next = 0xFFFFFFFF;
-	for (_STL::list<Rva0048BDF8Entry *>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
+	for (_STL::list<int>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
 	{
-		Rva0048BDF8Entry *entry = *it;
+		Rva0048BDF8Entry *entry = (Rva0048BDF8Entry *)*it;
 		UnsignedInt frame = maxOf(entry->m_nextFireFrame, entry->m_weapon->getPossibleNextShotFrame());
 		next = _STL::min(frame, next);
 	}
@@ -348,9 +415,9 @@ UpdateSleepTime FireWeaponUpdate::update()
 	else
 	{
 		UnsignedInt now = TheGameLogic->getFrame();
-		for (_STL::list<Rva0048BDF8Entry *>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
+		for (_STL::list<int>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
 		{
-			Rva0048BDF8Entry *entry = *it;
+			Rva0048BDF8Entry *entry = (Rva0048BDF8Entry *)*it;
 			if (now > entry->m_nextFireFrame && entry->m_weapon->getStatus() == READY_TO_FIRE)
 			{
 				Object *me = getObject();
@@ -402,9 +469,9 @@ void FireWeaponUpdate::xfer(Xfer *xfer)
 		*xfer == m_entriesReady;
 		if (xfer->IsLoading())
 		{
-			for (_STL::list<Rva0048BDF8Entry *>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
+			for (_STL::list<int>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
 			{
-				Rva0048BDF8Entry *entry = *it;
+				Rva0048BDF8Entry *entry = (Rva0048BDF8Entry *)*it;
 				*xfer == entry->m_oneShot;
 				*xfer == entry->m_nextFireFrame;
 				*xfer == (Coord3DBase &)entry->m_offset;
@@ -413,9 +480,9 @@ void FireWeaponUpdate::xfer(Xfer *xfer)
 		}
 		else if (xfer->IsStoring())
 		{
-			for (_STL::list<Rva0048BDF8Entry *>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
+			for (_STL::list<int>::iterator it = m_entries.begin(); it != m_entries.end(); ++it)
 			{
-				Rva0048BDF8Entry *entry = *it;
+				Rva0048BDF8Entry *entry = (Rva0048BDF8Entry *)*it;
 				*xfer == entry->m_oneShot;
 				*xfer == entry->m_nextFireFrame;
 				*xfer == (Coord3DBase &)entry->m_offset;
@@ -436,9 +503,9 @@ void FireWeaponUpdate::Rva0048BDF8Helper()
 {
 	const FireWeaponUpdateModuleData *data = getFireWeaponUpdateModuleData();
 	UnsignedInt now = TheGameLogic ? TheGameLogic->getFrame() : 0;
-	for (_STL::list<FireWeaponNugget *>::const_iterator it = data->m_nuggets.begin(); it != data->m_nuggets.end(); ++it)
+	for (_STL::list<int>::const_iterator it = data->m_nuggets.begin(); it != data->m_nuggets.end(); ++it)
 	{
-		const FireWeaponNugget *nugget = *it;
+		const FireWeaponNugget *nugget = (const FireWeaponNugget *)*it;
 		const WeaponTemplate *weaponTemplate = TheWeaponStore->findWeaponTemplate(nugget->m_weaponName);
 		if (weaponTemplate)
 		{
@@ -449,7 +516,7 @@ void FireWeaponUpdate::Rva0048BDF8Helper()
 			entry->m_weapon = TheWeaponStore->allocateNewWeapon(weaponTemplate, PRIMARY_WEAPON);
 			entry->m_weapon->setOwnerID(getObject()->getID());
 			entry->m_weapon->loadAmmoNow(getObject());
-			m_entries.push_back(entry);
+			m_entries.push_back((int &)entry);
 		}
 	}
 	m_entriesReady = true;
