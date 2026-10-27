@@ -1,6 +1,8 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /MD /EHsc /G7
 // ?AddHeroArmyPanel@Impl@BattlePromptPlayerPageMovieClip@StrategicHUD@@QAEHABUTreeHintRef00217D4C@@@Z @0x005FFCCB 172B: append TreeHint plus CreateArmyPanel Apt via rowed AptCall 0x0050E9FE with hero format. Evidence: callers jmp 0x005FFEE8 plus TheRva00222A8BTarget plus g_Rva0107301CEmptyString plus strings hero CreateArmyPanel plus TreeHint assign 0x002174A4 plus format 0x00038150.
 #include "ascii_string.h"
+#include <ctype.h>
+#include <stdlib.h>
 
 struct TreeHintRef00217D4C
 {
@@ -297,9 +299,6 @@ struct Rva005FFA60AptMode
 	unsigned char m_pad000[0x318];
 	int m_mode; // +0x318
 };
-
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 
 // BfmePathLeafAfterMarker.cpp's path helpers (pinned).
 namespace AptUtils { const char *__cdecl SkipLevelN(const char *path); }

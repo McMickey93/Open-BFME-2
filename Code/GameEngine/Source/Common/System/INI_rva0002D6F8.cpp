@@ -5,6 +5,7 @@
 // IAT strtok _strcmpi plus caller 0x0002DE3C hidden-pointer return pattern
 // plus INI layout from neighbour INI_readLine.cpp and ZH seps blockEnd order.
 #include "ascii_string.h"
+#include <string.h>
 class INI
 {
 protected:
@@ -25,8 +26,6 @@ private:
 public:
 	AsciiString rva0002D6F8();
 };
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delim);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 AsciiString INI::rva0002D6F8()
 {
 	AsciiString acc;

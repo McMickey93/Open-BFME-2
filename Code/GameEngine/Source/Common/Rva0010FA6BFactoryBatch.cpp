@@ -1,4 +1,5 @@
 // cl: /MD /EHsc /O1 /G7 /Ireference/shims/bfme2_ascii
+// platformsdk
 // Three caller-identified EH factories. 0x000A8AA6 forwards one integer to
 // 0x0010FA6B; the null-guarded float forwards at 0x000A8AD8 and 0x000A8AEE
 // call 0x0010FC58 and 0x0010FCDB. Each body retains its source object through
@@ -8,8 +9,8 @@
 // and broader event semantics remain unproven.
 
 #include "ascii_string.h"
-
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
+#include <windows.h>
 
 class AudioEventInfo
 {
@@ -314,8 +315,6 @@ void Rva0010FBDE::rva0010FBDE()
 // Miles stream user-data0 when the input is zero. Stream08 is reread before
 // the imported API call. The20B event records the input and address24 via
 // rowed ctor10EF8B; the original record and owner identities remain unknown.
-extern "C" __declspec(dllimport) long __stdcall InterlockedExchange(
-	volatile long *target, long value);
 extern "C" __declspec(dllimport) void __stdcall AIL_set_stream_user_data(
 	void *stream, unsigned int index, int value);
 

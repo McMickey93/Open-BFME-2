@@ -26,6 +26,8 @@
 // Evidence: callees rowed releaseBuffer narrow/wide plus rowed dtors, manager 0x009FEAD8 slot 0x3C.
 #include "ascii_string.h"
 #include "unicode_string.h"
+#include <math.h>
+#include <stdlib.h>
 
 struct FloatPair { float x,y; };
 class GameFont;
@@ -215,7 +217,6 @@ void Rva005D40A6::rva000B3FD0Slot08() {}
 void Rva005D40A6::rva000B3FD0Slot0C() {}
 void Rva005D40A6::rva000B3FD0Slot10() {}
 
-extern "C" __declspec(dllimport) double __cdecl floor(double);
 static __forceinline int checklistRound(float value) {
  int result;
  __asm { fld [value] }
@@ -245,7 +246,6 @@ class AptSingleExternHandlerAdder { public:
  AptSingleExternHandlerAdder(const AsciiString &,int,AptRef<AptExternHandler>);
  ~AptSingleExternHandlerAdder(); AsciiString name;
 };
-extern "C" __declspec(dllimport) double __cdecl atof(const char *);
 namespace StrategicHUD {
 static __declspec(noinline) bool RetrieveTextWidth(const AsciiString &path,int level,int *output) {
  AsciiString value; bool ready=false;

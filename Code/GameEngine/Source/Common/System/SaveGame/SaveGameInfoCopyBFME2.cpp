@@ -6,6 +6,7 @@
 // String semantics follow BFME1 AsciiString/UnicodeString: the inline derived
 // copies call StringBase<char>0x365F0 or StringBase<unsigned short>0x37050.
 #include <memory>
+#include <string.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
@@ -344,8 +345,6 @@ public:
 	unsigned int m_crc;
 };
 extern bool TheLiteCRC;
-extern "C" void *__cdecl memset(void *, int, unsigned int);
-extern "C" void *__cdecl memcpy(void *, const void *, unsigned int);
 
 // Retail 0x002DDEC0, 1105 bytes: SaveGameInfo's xfer (vtable 0x007E7560 slot
 // 3). Version 3; the file type, map, date, description and label, an
