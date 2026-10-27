@@ -17991,9 +17991,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002889A4,23,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x002889BB,Code/GameEngine/Source/Common/System/CrateCreationEntryList.cpp
 0x002889BB,41,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x002889E4,Code/GameEngine/Source/Common/RvaTreeEraseClearFamily.cpp
 0x002889E4,45,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288A11,Code/Libraries/Source/WWVegas/WWLib/stlport_construct_game_structs.cpp
-0x00288A11,38,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288A37,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00288A11.cpp
-0x00288A37,37,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288A5C,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00288A37.cpp
-0x00288A5C,29,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288A88,Code/Libraries/Source/WWVegas/WWLib/Rva00288A5CAssign.cpp
+0x00288A11,38,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288A37,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
+0x00288A37,37,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288A5C,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
+0x00288A5C,29,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288A88,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
 0x00288A88,52,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x002887D1..0x00288ABC,Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp
 0x00288ABC,54,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,N,N=Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
 0x00288AF2,67,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,N,N=Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
@@ -18005,7 +18005,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00288B9E,28,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288AF2..0x00288BBA,Code/GameEngine/Source/Common/FamilyDeletingDtors11.cpp
 0x00288BBA,58,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288AF2..0x00288BF4,Code/GameEngine/Source/Common/Rva00288BBACtor.cpp
 0x00288BF4,5,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288AF2..0x00288BF9,Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp
-0x00288BF9,59,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288AF2..0x00288C34,Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp
+0x00288BF9,59,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288AF2..0x00288C34,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
 0x00288C34,52,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,N,N=Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
 0x00288C68,62,code-unledgered,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288C34..0x00288CA6,
 0x00288CA6,84,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,N,N=Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
@@ -18014,7 +18014,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00288D88,153,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,U,N=Code/GameEngine/Source/Common/ExperienceLevelStore.cpp,Code/GameEngine/Source/Common/Rva0028867DCheck.cpp
 0x00288E21,108,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,U,N=Code/GameEngine/Source/Common/ExperienceLevelStore.cpp,Code/GameEngine/Source/Common/Rva0028867DCheck.cpp
 0x00288E8D,344,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288E21..0x00288FEE,Code/GameEngine/Source/Common/System/CrateCreationEntryList.cpp
-0x00288FEE,28,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288E21..0x0028900A,Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp
+0x00288FEE,28,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288E21..0x0028900A,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
 0x0028900A,199,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288E21..0x00289139,Code/GameEngine/Source/Common/System/Rva0028900AParse.cpp
 0x002890D1,104,code,,displaced,-,N=Code/GameEngine/Source/Common/INI/INI.cpp,Code/GameEngine/Source/Common/INI/INIUpgradeListParsers.cpp
 0x00289139,14,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelStore.cpp,proposed,C,C=0x00288E21..0x00289147,Code/GameEngine/Source/Common/System/CrateCreationEntryListInsert.cpp

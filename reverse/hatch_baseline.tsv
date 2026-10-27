@@ -2360,7 +2360,6 @@ alternatename	Code/GameEngine/Source/Common/Rva002606AFErase.cpp	??1Rva002606AFD
 alternatename	Code/GameEngine/Source/Common/Rva00261D2EFilter.cpp	?allow@Rva00391667@@UAE_NPAVObject@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00263653Ctor.cpp	_kF7C	1
 alternatename	Code/GameEngine/Source/Common/Rva0026E836Derived.cpp	?f1@Rva0026E836_M1@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00289ABDCtor.cpp	?g_Va00BBB8D8@@3MB	1
 alternatename	Code/GameEngine/Source/Common/Rva002A75DAErase.cpp	??$__copy_ptrs@PBUBfmeE12@@PAU1@@_STL@@YAPAUBfmeE12@@PBU1@0PAU1@ABU__false_type@0@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva002ACFD6NewNode.cpp	?rva002ACFD6@Rva000427195@@QAEPAXPBX@Z	1
@@ -3614,6 +3613,8 @@ alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetC
 alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	??0?$_Vector_base@PAVCrateTemplate@@V?$allocator@PAVCrateTemplate@@@_STL@@@_STL@@QAE@ABV?$allocator@PAVCrateTemplate@@@1@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	?erase@?$vector@PAVCrateTemplate@@V?$allocator@PAVCrateTemplate@@@_STL@@@_STL@@QAEPAPAVCrateTemplate@@PAPAV3@0@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	?erase@?$vector@PAVCrateTemplate@@V?$allocator@PAVCrateTemplate@@@_STL@@@_STL@@QAEPAPAVCrateTemplate@@PAPAV3@@Z	1
+alternatename	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
+alternatename	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	?Rva00288A5CAssign@@YAPAVCameraMarker@@PAV1@00PAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot1@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot2@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot3@XferSave@@UAEXXZ	1
@@ -4379,7 +4380,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00207E26VectorDtor.cpp	??1R
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00212354NewNode.cpp	?rva00212354@Rva000427195@@QAEPAXPBX@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00222F55Background.cpp	?g_00BBFDDC@@3QBDB	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002299F1MetadataConstructors.cpp	??0RvaMapCacheProxy0014F3C4@@QAE@ABURvaMapCacheEmptyAllocator@@PAURvaMapCacheNodeHeader@@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00288A5CAssign.cpp	?Rva00288A5CAssign@@YAPAVCameraMarker@@PAV1@00PAX@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0028C58B.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002A8FE0Finish.cpp	?Free@Rva002A8FE0@@QAEXPAURva002A8D2DNode@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002ABBBEBitCopy.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
@@ -17928,9 +17928,6 @@ present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	loadIniFiles
 present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	reset@CreateAHeroManager	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	update@CreateAHeroManager	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00261790Ctor.cpp	dummy@Rva00261790@@UAEXXZ	1
-present_unmatched	Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp	Rva00288BF9AllocationLifetime::~Rva00288BF9AllocationLifetime	1
-present_unmatched	Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp	Rva00288BF9Record::destroy	1
-present_unmatched	Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp	Rva00288BF9Record::~Rva00288BF9Record	1
 present_unmatched	Code/GameEngine/Source/Common/Rva002A1316.cpp	Rva002A1316Iterator::Rva002A1316Iterator	2
 present_unmatched	Code/GameEngine/Source/Common/Rva002A1316.cpp	Rva002A1B6FNativeList::end	1
 present_unmatched	Code/GameEngine/Source/Common/Rva002CD4A6Dtor.cpp	Rva002CD4A6FreePtrDtor	1
@@ -19546,6 +19543,9 @@ present_unmatched	Code/GameEngine/Source/GameLogic/ScriptEngine/SequentialScript
 present_unmatched	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/AITactic.cpp	Rva004ECDC8::operator=	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ArmySummary.h	ArmySummary::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ArmySummaryCopyBFME2.cpp	ArmySummary::loadPostProcess	1
+present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9AllocationLifetime::~Rva00288BF9AllocationLifetime	1
+present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9Record::destroy	1
+present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9Record::~Rva00288BF9Record	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldLogic.cpp	LivingWorldLogic::rva002B4B83	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegion.cpp	LivingWorldRegion::rva003F0588	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegion.cpp	LivingWorldRegion::rva003F1053	1
