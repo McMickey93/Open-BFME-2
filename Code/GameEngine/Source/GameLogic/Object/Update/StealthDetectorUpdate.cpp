@@ -21,6 +21,49 @@
 		return TEXT; \
 	}
 #pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// StealthDetectorUpdate::xfer, ported from Zero Hour's GameEngine/Source/
+// GameLogic/Object/Update/StealthDetectorUpdate.cpp (GeneralsMD tree vendored
+// under reference/open-bfme-1/inputs/reference): slot 3 of the vftable whose
+// slot-2 name getter returns StealthDetectorUpdate. BFME 2 is at version 3
+// and has dropped ZH's m_enabled: saves older than version 3 still carry
+// the flag, so it is read into a local and discarded.
+
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+struct Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 // Small GameEngine bodies from .text gaps no Ghidra function covers (tenth
 // batch; see GapBodiesGE01.cpp). Retail bytes establish every shape; owning
@@ -156,10 +199,13 @@ public:
 // The module's class views spell the StealthDetectorUpdate TU's union
 // (the xfer and pool key join it).
 class Object;
+
 class Xfer;
+
 struct StealthDetectorUpdateModuleData;
 
 enum UpdateSleepTime { UPDATE_SLEEP_NONE = 1, UPDATE_SLEEP_FOREVER = 0x3fffffff };
+
 enum NameKeyType { NAMEKEY_INVALID = 0 };
 
 class NameKeyGenerator
@@ -167,6 +213,7 @@ class NameKeyGenerator
 public:
 	NameKeyType nameToKey(const char *name);
 };
+
 extern NameKeyGenerator *TheNameKeyGenerator;
 
 // The module data and object pointers sit at +0x04/+0x08 under the primary
@@ -183,8 +230,11 @@ public:
 	const StealthDetectorUpdateModuleData *m_data;	// +0x04
 	Object *m_object;				// +0x08
 };
+
 class DetectorOther { public: virtual void other(); };
+
 class UpdateModuleInterface { public: virtual UpdateSleepTime update() = 0; };
+
 class UpdateModule : public DetectorPrimary, public DetectorOther, public UpdateModuleInterface
 {
 protected:
@@ -196,6 +246,7 @@ public:
 protected:
 	void setWakeFrame(Object *object, UpdateSleepTime wakeTime);	// rowed 0x0044DF71
 };
+
 class StealthDetectorUpdate : public UpdateModule
 {
 public:
@@ -234,7 +285,25 @@ public:
 // vtables; no callers; sole callee is the rowed ji_006291ae import.
 void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
 
+class Xfer::Version
+{
+public:
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
+
+	unsigned char m_current;
+	unsigned char m_minimum;
+};
+
+typedef bool Bool;
+
+typedef int Int;
+
+typedef unsigned int UnsignedInt;
+
 // tu-skeleton: 0x004A2BD1 25B ??1StealthDetectorUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateCtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp
 
@@ -273,14 +342,6 @@ bool Rva004A2BF0::allow(Object *obj)
 	return false;
 }
 
-// tu-skeleton: 0x004A2C30 68B ?xfer@StealthDetectorUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x004A2C74 69B ?getModuleNameKey@StealthDetectorUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x004A2CB9 116B ??0StealthDetectorUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004A2D2D 28B ??_GStealthDetectorUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateCtor.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva004A2D49.cpp
 
 void Rva004A2D49::rva004A2D49(bool enabled)
@@ -298,13 +359,52 @@ void *__stdcall Rva004A2D67Init(void *p)
 	return p;
 }
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateXfer.cpp
+
+// ------------------------------------------------------------------------------------------------
+/** Xfer method
+	* Version Info:
+	* 1: Initial version
+	* 3: BFME 2, enabled flag removed */
+// ------------------------------------------------------------------------------------------------
+void StealthDetectorUpdate::xfer( Xfer *xfer )
+{
+
+	// version
+	Xfer::Version version( 1, 3 );
+	*xfer == version;
+
+	// extend base class
+	UpdateModule::xfer( xfer );
+
+	// enabled (obsolete)
+	if( version.m_minimum < 3 )
+	{
+		Bool enabled = false;
+		*xfer == enabled;
+	}
+
+}
+
+  // end xfer
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp
+
+// ?getModuleNameKey@StealthDetectorUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType StealthDetectorUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheStealthDetectorUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("StealthDetectorUpdate");
+	return TheStealthDetectorUpdatePoolKey;
+}
+
+// tu-skeleton: 0x004A2CB9 116B ??0StealthDetectorUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004A2D2D 28B ??_GStealthDetectorUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateCtor.cpp (not merged yet)
+
 // tu-skeleton: 0x004A2D82 17B ?buildFieldParse@StealthDetectorUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
 // tu-skeleton: 0x004A2D93 1579B ?update@StealthDetectorUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x0078DBB6 13B $L380 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078DBC3 10B __ehhandler$?getModuleNameKey@StealthDetectorUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078DBCD 8B Unwind@00b8dbcd -- matched in Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdateCtor.cpp (not merged yet)
 

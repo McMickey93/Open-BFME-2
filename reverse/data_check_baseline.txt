@@ -525,7 +525,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdateCtor.cpp	wro
 Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004B018E@SpecialDisguiseUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D78
 Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000499F64@SpecialEnemySenseUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B0C
 Code/GameEngine/Source/GameLogic/Object/Update/SpecialPowerTimerRefreshPoolKey.cpp	wrong-name	?$S1@?1??rva00251C31@SpecialPowerTimerRefreshSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x009FE998
-Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A2C74@StealthDetectorUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03BC4
+Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp	wrong-name	?$S1@?1??rva0004A2C74@StealthDetectorUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03BC4
 Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000373CCA@StealthUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A01EF8
 Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0003A4CCD@StrafeAreaUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A028EC
 Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdate.cpp	wrong-name	?$S80@?1??doCollapseDoneStuff@StructureCollapseUpdate@@IAEXXZ@4IA	0x00A03C28

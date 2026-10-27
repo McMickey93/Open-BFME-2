@@ -20260,8 +20260,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03BB4,4,.data,global,?g_Va00E03BB4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp,provisional,?$S1@?1??rva0004A1875@SlavedUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdatePoolKey.cpp;?g_Va00E03BB4@@3IA,2,4
 0x00A03BB8,4,.data,global,_s_rva007B1A17,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03BBC,4,.data,global,?g_Va00E03BBC@@3HA,Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdateRepair.cpp,owned,,1,2
-0x00A03BC0,4,.data,global,?TheStealthDetectorUpdatePoolKey@?1??rva0004A2C74@StealthDetectorUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp,owned,,1,2
-0x00A03BC4,8,.data,global,?g_Va00E03BC4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp,provisional,?$S1@?1??rva0004A2C74@StealthDetectorUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdatePoolKey.cpp;?g_Va00E03BC4@@3IA,2,4
+0x00A03BC0,4,.data,global,?TheStealthDetectorUpdatePoolKey@?1??rva0004A2C74@StealthDetectorUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp,owned,,1,2
+0x00A03BC4,8,.data,global,?g_Va00E03BC4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp,provisional,?$S1@?1??rva0004A2C74@StealthDetectorUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp;?g_Va00E03BC4@@3IA,2,4
 0x00A03BCC,4,.data,global,?g_Va00E03BCC@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp,owned,,1,2
 0x00A03BD0,4,.data,global,_s_rva007B1A52,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03BD4,4,.data,global,?TheBroadcastStealthUpdatePoolKey@?1??rva0004A34C6@BroadcastStealthUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpdatePoolKey.cpp,owned,,1,2
