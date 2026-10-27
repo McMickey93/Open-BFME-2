@@ -2,6 +2,9 @@
 // 0x007EB920 / 0x007EB9C0: FESL debug.cpp assert/error formatters. sprintf
 // into a 0x180-byte stack buffer, fail if strlen >= sizeof(buf), emit vslot 1.
 
+#include <stdio.h>
+#include <string.h>
+
 struct Rva007EB810Diag
 {
 	virtual void v0();
@@ -11,12 +14,6 @@ struct Rva007EB810Diag
 };
 
 extern int g_FeslDiagReporter;
-
-extern "C"
-{
-	int __cdecl sprintf(char *buf, const char *fmt, ...);
-	unsigned int __cdecl strlen(const char *string);
-}
 
 #pragma intrinsic(strlen)
 

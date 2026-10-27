@@ -13,6 +13,8 @@
 // ?rva000E2BCF@BaseHeightMapRenderObjClass@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ @0x000E2BCF 31B (+0x381C)
 // ?rva000E28A7@Rva000E28A7@@QAE?AV?$RefCountPtr@VTextureClass@@@@XZ               @0x000E28A7 28B (+0x1C)
 
+#include <string.h>
+
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
 class TextureClass
@@ -263,8 +265,6 @@ struct Rva001530E9Path
 	const char *m_rest;
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
-
 class Rva00080221
 {
 public:
@@ -308,9 +308,6 @@ void Rva000E2409ScaleOffset(ID3DXEffect *effect, const char *name);
 void Rva000E249DObjectShroudStatus(ID3DXEffect *effect, const char *name);
 
 typedef void (*Rva000E236DCallback)(ID3DXEffect *effect, D3DXHANDLE handle);
-
-// Retail 7BA518 is the existing _strcmpi IAT slot, not a second global.
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 
 void Rva000E26CFIsEnabled(ID3DXEffect *, const char *);
 void Rva000E2700Offset(ID3DXEffect *, const char *);

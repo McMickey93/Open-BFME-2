@@ -8,9 +8,7 @@
 
 #include "unicode_string.h"
 #include "ascii_string.h"
-
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
+#include <string.h>
 
 class GameWindow;
 

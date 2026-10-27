@@ -1,6 +1,8 @@
 // cl: /DNDEBUG /MD -Ireference/shims/gamespy
 // Upstream: GameSpy Peer SDK peerRooms.c, 2004 release.
 
+#include <string.h>
+
 typedef int PEERBool;
 typedef int RoomType;
 
@@ -44,15 +46,11 @@ typedef piConnection *PEER;
 /* BFME2 links the CRT directly here (retail import slot is msvcr71!_strcmpi);
    same strcasecmp->_strcmpi mapping as the landed chat/serverbrowsing siblings. */
 #define strcasecmp _strcmpi
-extern __declspec(dllimport) int __cdecl _strcmpi(const char *left,
-	const char *right);
 /* BFME2 links the CRT directly here (retail import slot is msvcr71!strncpy);
    same Gamespy->CRT mapping as strcasecmp above: the 0x200-length copy in
    this TU is followed by an explicit name[0x1FF] = '\0', making strncpy
    byte-identical to the bounded copy retail inlined. */
 #define strzcpy strncpy
-extern __declspec(dllimport) char *__cdecl strncpy(char *dest,
-	const char *source, unsigned int count);
 int piParseFlags(const char *flags);
 void chatSetChannelKeysA(void *chat, const char *channel, const char *user,
 	int num, const char **keys, const char **values);

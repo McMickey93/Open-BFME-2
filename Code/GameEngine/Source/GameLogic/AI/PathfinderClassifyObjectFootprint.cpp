@@ -47,8 +47,6 @@ class PathfindCell {public:
 class Rva0052E001{public:bool rva0052E001(bool);};
 class Rva0052E02F{public:bool rva0052E02F(bool);};
 class PathfindZoneManager{public:void MarkDirty(int,int);};
-extern "C" __declspec(dllimport)double __cdecl floor(double);
-extern "C" __declspec(dllimport)double __cdecl ceil(double);
 float Sin(float);float Cos(float);
 static __forceinline long float2long(float f){long i;__asm{
  fld f

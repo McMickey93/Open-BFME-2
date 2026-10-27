@@ -18,6 +18,7 @@
 
 #include "../../../../GameEngine/Include/GameClient/Rva0008990CArrayOwner.h"
 #include "../../../../GameEngine/Source/GameClient/Rva000869CF.h"
+#include <math.h>
 
 typedef int Int;
 typedef bool Bool;
@@ -25,9 +26,6 @@ typedef Rva00089894Point Coord3D;
 
 class GlobalData;
 extern GlobalData *TheWritableGlobalData;
-
-extern "C" __declspec(dllimport) double __cdecl floor(double);
-extern "C" double __cdecl fabs(double);
 
 // The +0x24C8 member fills the camera offset through its slot 18.
 #define BFME_OFFSET_SLOT(n) virtual void slot##n();
@@ -197,13 +195,13 @@ void W3DView::moveAlongWaypointPath(Int milliseconds)
 	normAngle(angle);
 	Real deltaAngle = angle - m_angle;
 	normAngle(deltaAngle);
-	fabs(deltaAngle); // Zero Hour's "Huh." debug check, compiled out
+	fabs((double)deltaAngle); // Zero Hour's "Huh." debug check, compiled out
 	m_angle += avgFactor*deltaAngle;
 	normAngle(m_angle);
 
 	Real timeMultiplier = (Real)m_mcwpInfo.m_filled[m_mcwpInfo.m_20] +
 		((Real)m_mcwpInfo.m_filled[m_mcwpInfo.m_20 + 1] - (Real)m_mcwpInfo.m_filled[m_mcwpInfo.m_20])*factor;
-	m_timeMultiplier = fast_float2long_round((float)floor(0.5f + timeMultiplier));
+	m_timeMultiplier = fast_float2long_round((float)floor(static_cast<double>(0.5f + timeMultiplier)));
 
 	m_groundLevel = interpolate(m_mcwpInfo.m_groundStart, m_mcwpInfo.m_groundEnd, ease);
 	m_cameraOffsetProvider.getCameraOffset(&m_cameraOffset, 0);

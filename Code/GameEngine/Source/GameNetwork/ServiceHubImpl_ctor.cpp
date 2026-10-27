@@ -2,6 +2,8 @@
 // 0x007EAE30: ServiceHubImpl constructor. Three Snapshot-shaped members,
 // bounded copies from fesl/internal/util.h, then NetConn init.
 
+#include <string.h>
+
 struct Rva007EB810Diag
 {
 	virtual void v0();
@@ -11,9 +13,6 @@ struct Rva007EB810Diag
 };
 
 Rva007EB810Diag *Rva007EB810Get();
-
-extern "C" unsigned int __cdecl strlen(const char *string);
-extern "C" char *__cdecl strncpy(char *dest, const char *source, unsigned int count);
 
 #pragma intrinsic(strlen)
 

@@ -7,10 +7,8 @@
 // (AptOnlineShellCallbacks.cpp views the same object). The shell's Apt
 // variables "OnlineShellStartScreen" and "OnlineAdvMode" share 0x00517207.
 
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-
 #include "ascii_string.h"
+#include <string.h>
 
 namespace _STL
 {

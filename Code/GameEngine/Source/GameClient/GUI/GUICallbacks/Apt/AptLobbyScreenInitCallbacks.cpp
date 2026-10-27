@@ -6,9 +6,7 @@
 // reference. Each class is a one-method view named for its string's prefix.
 
 #include "unicode_string.h"
-
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
+#include <string.h>
 
 // TheLivingWorldCampaignManager (Rva002B256EThunk.cpp's g_00E02D6C); +0x2C
 // is set for the evil side.

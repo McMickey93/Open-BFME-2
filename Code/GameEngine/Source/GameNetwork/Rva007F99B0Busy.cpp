@@ -2,8 +2,7 @@
 // 0x007F99B0: copy the argument into a new chain node at +0x6AC, with the
 // string at +0x10 inlined after a 0x34-byte header.
 
-extern "C" unsigned int __cdecl strlen(const char *s);
-extern "C" char *__cdecl strncpy(char *dest, const char *src, unsigned int n);
+#include <string.h>
 #pragma intrinsic(strlen)
 
 class Rva00800550Chain

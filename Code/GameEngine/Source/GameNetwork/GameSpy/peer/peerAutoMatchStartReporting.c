@@ -66,10 +66,6 @@ void piQRAddErrorCallback(void);
    strz* job, so map to the plain CRT calls with no added stores. */
 #define strzcpy strncpy
 #define strzcat strncat
-extern __declspec(dllimport) char *__cdecl strncpy(char *dest,
-	const char *source, unsigned int len);
-extern __declspec(dllimport) char *__cdecl strncat(char *dest,
-	const char *source, unsigned int len);
 
 PEERBool piStartAutoMatchReporting(PEER peer)
 {
