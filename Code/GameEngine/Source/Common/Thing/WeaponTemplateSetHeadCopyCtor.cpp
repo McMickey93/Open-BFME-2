@@ -3,7 +3,7 @@
 // WeaponTemplateSetHead copy ctor, retail 0x00045455, 24 bytes.
 // Dedicated TU so WeaponTemplateSetCopyCtor.cpp cannot inline this memcpy.
 
-extern "C" void *memcpy(void *dst, const void *src, unsigned n);
+#include <string.h>
 
 class WeaponTemplateSetHead
 {

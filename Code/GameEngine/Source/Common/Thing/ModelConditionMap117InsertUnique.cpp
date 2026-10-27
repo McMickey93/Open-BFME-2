@@ -3,7 +3,7 @@
 #define _STLP_NO_EXCEPTIONS
 #define _BFME_RETAIL_TREE_INSERT_LAYOUT
 #include <map>
-extern "C" void *memcpy(void *, const void *, unsigned);
+#include <string.h>
 // STLport map instantiation for the ModelCondition SparseMatchFinder.
 // Target identity: rowed findBestInfo at 0x0033D46A calls operator[] at
 // 0x0033D142; its tree calls the rowed lower_bound at 0x0033B798 and the
