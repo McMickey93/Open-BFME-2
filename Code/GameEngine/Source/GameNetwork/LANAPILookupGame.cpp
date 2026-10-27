@@ -9,32 +9,11 @@
 typedef unsigned char UnsignedByte;
 typedef unsigned short WideChar;
 
-class UnicodeString;
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-template <typename T> class StringBase
-{
-friend class UnicodeString;
-
-public:
-	int compare( const StringBase<T> &other ) const throw();
-
-protected:
-	~StringBase();
-
-private:
-	StringBase( const StringBase<T> &other );
-	void releaseBuffer( void );
-	void *m_data;
-};
-
-class UnicodeString : public StringBase<WideChar>
-{
-public:
-	__forceinline UnicodeString( const UnicodeString &other )
-		: StringBase<WideChar>( other ) {}
-	~UnicodeString();
-	int compare( const UnicodeString &other ) const;
-};
+// The native search keeps the getName temporary live across compare without
+// another EH state. Preserve that nonthrowing contract for this instantiation.
+template <> int StringBase<WideChar>::compare(const StringBase<WideChar> &) const throw();
 
 class LANGameInfo
 {

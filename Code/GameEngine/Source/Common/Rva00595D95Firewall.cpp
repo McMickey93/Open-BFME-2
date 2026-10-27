@@ -1,6 +1,6 @@
 // cl: /EHsc /DNDEBUG /MD /D_STLP_USE_STATIC_LIB
 // stlport
-// ?rva00595D95@Rva00595D95@@QAE_NXZ @0x00595D95 177B evidence: FirewallNeedToRefresh TRUE strings plus TheWritableGlobalData firewallBehavior+0xA4C via OptionPreferences find; callers 0x005182DE 0x00519C83 0x00572506; private StringBase kept: shared header emits wrappers plus extra EH states; throw lever plus early-return spelling
+// ?rva00595D95@Rva00595D95@@QAE_NXZ @0x00595D95 177B evidence: FirewallNeedToRefresh TRUE strings plus TheWritableGlobalData firewallBehavior+0xA4C via OptionPreferences find; callers 0x005182DE 0x00519C83 0x00572506; nonthrowing compare preserves the temporary cleanup state
 #pragma optimize("t", on)
 #include <map>
 
@@ -17,42 +17,12 @@ static inline bool operator!=(const _Rb_tree_iterator<T, LeftTraits>& a,
 typedef bool Bool;
 typedef int Int;
 
-template <typename T> struct BfmeStringData
-{
-	int refCount;
-	unsigned short length;
-	unsigned short capacity;
-	T text[1];
-};
+#define BFME_ASCII_DTOR_DECL
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-template <typename T> class StringBase
-{
-	friend class AsciiString;
-	StringBase(const T *text);
-	StringBase(const StringBase<T> &other);
-	void releaseBuffer();
-public:
-	StringBase() : m_data(0) {}
-	~StringBase();
-	Int compareNoCase(const char *other) const throw();
-protected:
-	BfmeStringData<T> *m_data;
-};
-
-class AsciiString : public StringBase<char>
-{
-public:
-	AsciiString() {}
-	AsciiString(const char *text) : StringBase<char>(text) {}
-	AsciiString(const AsciiString &other) : StringBase<char>(other) {}
-	~AsciiString();
-};
-
-class UnicodeString : public StringBase<unsigned short>
-{
-public:
-	UnicodeString() {}
-};
+// Retail compares the temporary TRUE value without another EH state.
+template <> int StringBase<char>::compareNoCase(const char *) const throw();
 
 bool operator<(const AsciiString &left, const AsciiString &right) throw();
 

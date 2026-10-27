@@ -16909,9 +16909,6 @@ pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/Options
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionsMenu.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLGameSetupMenu.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLGameSetupMenu.cpp	"gsy",on	1
-pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GadgetListBoxAddEntryTextLines.cpp	"",on	1
-pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GadgetListBoxAddEntryTextLines.cpp	"s",off	1
-pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GadgetListBoxAddEntryTextLines.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameFont.cpp	"",on	2
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameFont.cpp	"s",off	2
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GameFont.cpp	"t",on	2
