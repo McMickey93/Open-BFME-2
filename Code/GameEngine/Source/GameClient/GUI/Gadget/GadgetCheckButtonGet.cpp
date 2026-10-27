@@ -1,14 +1,13 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 // ?Rva00327DD8Get@@YAPAXPAVGameWindow@@@Z @0x00327DD8 30B
 // Null-guarded user-data field reader: returns the pointer at +0x2C when the
 // flag byte at +0x28 is set. Evidence: GameWindow::winGetUserData row 0x005C4ACD;
 // sibling ?GadgetButtonGetData@@YAPAXPAVGameWindow@@@Z at 0x00327D56.
 
-typedef bool Bool;
+#include <windows.h>
 
-#ifndef NULL
-#define NULL 0
-#endif
+typedef bool Bool;
 
 class GameWindow
 {

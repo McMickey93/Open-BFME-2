@@ -1,6 +1,7 @@
 // cl: /Oy- /MD
 // ?getFileInfo@FileSystem@@QBE_NPBDPAUFileInfo@@@Z @0x00600E3A 289B: FileSystem::getFileInfo(const char *, FileInfo *) via gate archive lang English local. Evidence: callers 0x00077BF8 (the AsciiString overload, forwarding ECX), 0x002E5D62 and 0x002E698B load TheFileSystem into ECX; the second argument is zeroed as 16 bytes, the size of ZH's FileInfo; callees rowed pinned; vtable offsets 0x28 0x10.
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *fmt, ...);
+
+#include <stdio.h>
 
 void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
 #pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")

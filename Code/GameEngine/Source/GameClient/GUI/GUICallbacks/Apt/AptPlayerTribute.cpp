@@ -2,6 +2,7 @@
 // Native tribute row callbacks. Shared339B update bodies remain in their
 // existing Rva0050FF7FMethod and VslotSmallBodiesS provider homes after the
 // concurrent recovery. This home owns row creation468B, debit65B and send179B.
+#include <stdlib.h>
 #include "ascii_string.h"
 class Player;
 class PlayerList {public: char unknown00[0x10]; Player *localPlayer;};
@@ -16,7 +17,6 @@ class Rva0050F5A6 { public:
  struct Entry { Player *player;Rva0050F041 *object; };
  Entry *entries() { return reinterpret_cast<Entry *>((char *)this+0x24); }
 };
-extern "C" __declspec(dllimport) int __cdecl atoi(const char*);
 bool Rva004128F0GetParam(const char*,const char*,AsciiString&);
 namespace AptUtils { int LevelIndexFromTarget(const char*); const char *SkipLevelN(const char*); }
 
@@ -110,4 +110,3 @@ void Rva0050F5A6::rva0050EB0A(const char *unused){
   }
  }
 }
-

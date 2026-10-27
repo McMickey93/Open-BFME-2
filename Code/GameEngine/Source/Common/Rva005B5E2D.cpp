@@ -4,10 +4,9 @@
 // vector TheAwardSystemManager lookup then TheGameText fetch at slot 0x38 then
 // bfmeSetText; fallback builds wide from g_00BC26DC. Callers none.
 // Honest-address method.
+#include <stdlib.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
-
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 
 class Rva00222A8BTarget
 {

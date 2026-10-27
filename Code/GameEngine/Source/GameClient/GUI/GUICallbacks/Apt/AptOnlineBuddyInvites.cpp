@@ -3,6 +3,7 @@
 // Native5177EB..51795C RET0. WB145D6E0 identifies
 // AptOnlineShell::OnYesToInvite; target callers bind this answer callback.
 // Neutral receiver name preserves the unreconciled shell class spelling.
+#include <new>
 #include <map>
 #include "ascii_string.h"
 #include "unicode_string.h"
@@ -22,7 +23,6 @@ typedef void(FunctorTarget::*FunctorMethod)();
 struct FunctorBinding {FunctorBinding(FunctorMethod m,FunctorTarget *t):target(t),method(m){} FunctorTarget *target;unsigned pad;FunctorMethod method;};
 class FunctorWrapperHead { public: FunctorWrapperHead():m_refCount(0) {} virtual void anchor(); int m_refCount; };
 class Rva0057BC63FunctorWrapper:public FunctorWrapperHead { public: Rva0057BC63FunctorWrapper(const FunctorBinding&binding):m_binding(binding) {} void invoke(); FunctorBinding m_binding; };
-void *__cdecl operator new(unsigned int);
 struct Rva0057BC63FunctorHolder {__declspec(noinline) Rva0057BC63FunctorHolder(const FunctorBinding &binding) { Rva0057BC63FunctorWrapper *p=new Rva0057BC63FunctorWrapper(binding);ptr=(TargetRef00217D4C*)p;if(p)++p->m_refCount; }Rva0057BC63FunctorHolder(const Rva0057BC63FunctorHolder &o):ptr(o.ptr){if(ptr)++ptr->references;}TargetRef00217D4C *ptr;};
 struct Rva004F6986Member : Rva0057BC63FunctorHolder {
  __forceinline Rva004F6986Member(const FunctorBinding &binding):Rva0057BC63FunctorHolder(binding){}

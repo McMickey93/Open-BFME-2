@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?method@Rva0054CBEFTarget@@QAEXH@Z retail 0x0054CBEF, 8 B, and
 // ??1Rva0057417E@@QAE@XZ retail 0x0057417E, 20 B.
@@ -10,6 +11,7 @@
 // +0x04 is set (no null test, unlike the 0x005CF9FF siblings). The forwarder
 // is noinline so the destructor calls it as retail does. The +0x04 object's
 // class and the destructor's owner are address-named.
+#include <windows.h>
 #include "unicode_string.h"
 
 class Rva0057417E;
@@ -104,7 +106,6 @@ public:
 	virtual UnicodeString fetch(const char *label, bool *exists);
 };
 extern GameTextInterface *TheGameText;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 class Rva0054D2DDTarget
 {
 public:

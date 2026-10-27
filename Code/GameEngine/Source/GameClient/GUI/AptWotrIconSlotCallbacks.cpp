@@ -20,8 +20,6 @@
 // manager's +0x318 mode; roll-outs and roll-overs go to the following
 // slots. The listener types are unknown and viewed by slot.
 
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *format, ...);
-
 class Rva00222A8BTarget;
 extern class BfmeAptWindowManager *g_bfmeAptWindowManager;
 
@@ -33,6 +31,7 @@ struct Rva005EEE74AptMode
 
 // A render callback's position and size: two floats each (the type is
 // inferred from use).
+#include <stdio.h>
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 
 // TheDisplay, through Rva000A4826Call.cpp's view.

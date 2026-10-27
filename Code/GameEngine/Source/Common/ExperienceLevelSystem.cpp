@@ -3,12 +3,11 @@
 // ??1Rva00289ABD@@UAE@XZ, retail 0x00289D7A, 239 bytes.
 // Dtor: vptr, delete m_rva20 Record, delete the record-pointer vector's elements + erase, slot9 cleanup, delete hash tables, tree dtor, free vec storage, base dtor.
 // Evidence: pin ??1Rva00289ABD; callee rows 0x00288BF9 0x0002FD60 0x0031BD55 0x00289180 0x002895BF 0x00288B51 0x00030830 0x001B4E74; caller 0x00289E99 deleting dtor; layout mirrors ctor Rva00289ABDCtor.cpp.
+#include <stdlib.h>
 #include "ascii_string.h"
 #include <vector>
 
 #include <cstddef>
-
-extern "C" void __cdecl free(void *block);
 
 struct Rva00288BF9Record
 {

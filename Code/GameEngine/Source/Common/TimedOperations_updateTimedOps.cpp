@@ -1,3 +1,4 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 //
 // _bfme_updateTimedOps, retail 0x003FE74B (71 bytes), and
@@ -16,8 +17,7 @@
 // operation object (a direct thiscall into the pinned helper, which owns
 // the null check). BFME2 drops the reference FatalError path.
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-
+#include <windows.h>
 class TimedOperationRef
 {
 public:

@@ -6,6 +6,7 @@
 // (owner name 2 bufX bufY 0 0 0) matching HideToolTip pattern in TooltipHide. Callers
 // 0x001EF23A. Prev Hide proves target owner globals and invoker pin; honest-address
 // free-function name with float params MM.
+#include <stdio.h>
 class Rva00222A8BTarget
 {
 public:
@@ -35,8 +36,6 @@ public:
 	virtual void g3C() = 0;
 	virtual void *getScale() = 0;
 };
-
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buf, unsigned int n, const char *fmt, ...);
 
 class AptGuiFX
 {

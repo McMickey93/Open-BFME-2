@@ -1,4 +1,5 @@
 // cl: /O1 /GX /MD /D_CRTIMP= /Ireference/shims/bfme2_ascii
+// platformsdk
 //
 // Message-box movie clip state machine at its WorldBuilder home. WB's
 // AptMessageBoxMovieClip.cpp names 0x0054CFB8 AptMessageBoxMovieClip::Impl::
@@ -34,6 +35,7 @@ struct TreeHintRef00217D4C {
    ReleaseTreeHintRef00217D4C(m_ptr);
  }
 };
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 class Rva000B3F84Pair { public: Rva000B3F84Pair() {} Rva000B3F84Pair *init(const char *src); const char *m_ptr; int m_len; };
@@ -141,7 +143,6 @@ class Rva00222A8BTarget;
 int __cdecl Rva0054C83FAptCall(Rva00222A8BTarget *, void *, const char *, const char *, const char **, bool *);
 void __cdecl Rva005277D9Fire(Rva00222A8BTarget *, void *, const char *, const char *, bool *);
 int __cdecl Rva0050E9FEAptCall(Rva00222A8BTarget *, void *, const char *, const char *, const char **);
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 // Native [54CA4A,54CBB0)358B thiscall plain RET. Pending transition
 // previous14: 2 releases g_Va00E032C8's 432AEB(2) and calls the movie's

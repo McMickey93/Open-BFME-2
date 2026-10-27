@@ -7,7 +7,7 @@
 // LanguageFilterInit 0x38873F; vtable offsets from sibling doesFileExist
 // 0x00600D7D (local +0xC, archive +0x14); donor BFME1 FileSystem_openFile.
 
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *fmt, ...);
+#include <stdio.h>
 
 template <typename T> class StringBase
 {

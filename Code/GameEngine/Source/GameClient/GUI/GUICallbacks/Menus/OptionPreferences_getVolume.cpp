@@ -18,11 +18,11 @@
 // ctor/releaseBuffer pair, the Custom find aliases the pinned _M_find
 // worker, atof is the msvcrt import.
 
+#include <stdlib.h>
+
 typedef int Int;
 typedef unsigned char UnsignedByte;
 typedef float Real;
-
-extern "C" __declspec(dllimport) double __cdecl atof(const char *str);
 
 // 20-byte volume preference keys at retail 0x00DBD190 (SFX/Voice/Music/
 // Ambient/MovieVolume in index order).

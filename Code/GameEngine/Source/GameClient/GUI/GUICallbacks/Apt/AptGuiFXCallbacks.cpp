@@ -42,6 +42,7 @@ void AptGuiFX::OnInitialized(const char *unused)
 // semantics come from the clean BFME1 donor, with BFME2 dimensions and slots.
 // The donor's compiler barrier retains the native final receiver-load order;
 // it emits no machine instructions. All365 retail bytes are independently gated.
+#include <stdio.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 class GameFont;
@@ -84,7 +85,6 @@ class Rva00222A8BTarget {
 public: int invoke(void *,const char *,int,const char *,void *,void *,void *,void *);
 };
 void HideToolTip();
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *,unsigned int,const char *,...);
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 // WorldBuilder AptGuiFX::ShowToolTip, WB VA 0x00F65460 (strings lead, score 1.0).

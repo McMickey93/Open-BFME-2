@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // Straight-line vtable slot bodies below 0x00400000 that tools/vftable_map.py
 // reports with no ledger owner (--unclaimed): each is reached only through a
@@ -14,6 +15,7 @@
 // masked with and eax,1): 0x003F7133, 0x00090F7D, 0x00094DA8, 0x002614DF,
 // 0x002611AF, 0x0026119D and 0x002611DD (recorded blocked).
 
+#include <windows.h>
 class GameLogic;
 class GlobalData;
 extern GameLogic *TheGameLogic;					// VA 0x00DFE78C
@@ -807,10 +809,6 @@ private:
 	char m_pad00[0x18];
 	IDirect3DSurface8 *m_surface; // +0x1C
 };
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 bool Rva000F6D56Filter::preRender(bool &skip, int &mode)
 {

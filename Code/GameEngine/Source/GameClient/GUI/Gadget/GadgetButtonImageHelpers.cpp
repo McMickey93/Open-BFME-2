@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 
 // Gadget push-button image helpers (retail 0x002C0433..0x002C0505, 6x42B).
 // Each sets one button image slot and clears two overlay slots. Callees are
@@ -6,6 +7,8 @@
 // and ?winSetHiliteImage (0x31448F) in GameWindowFields.cpp. The 0/5/6 trio
 // serves the main button face; the 1/2/3 trio serves the secondary face.
 // Names carry the retail address (no donor defines these BFME2-new slots).
+#include <windows.h>
+
 class Image;
 
 class GameWindow
@@ -15,10 +18,6 @@ public:
 	int winSetDisabledImage(int index, const Image *image);
 	int winSetHiliteImage(int index, const Image *image);
 };
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 // ?GadgetButtonSetEnabledImage_Rva002C0433@@YAXPAVGameWindow@@PBVImage@@@Z
 void GadgetButtonSetEnabledImage_Rva002C0433(GameWindow *win, const Image *image)

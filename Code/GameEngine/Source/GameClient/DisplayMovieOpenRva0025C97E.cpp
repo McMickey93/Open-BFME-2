@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?rva0025C97E@Display@@UAE_NVAsciiString@@HHH@Z
 // retail 0x0025C97E..0x0025CC79 (764 bytes) thiscall RET 0x10.
@@ -18,14 +19,13 @@
 // (start), 17 (rate) and 9 (frame count), the transitions' slot 9 reset,
 // reverse 0x001DC345 and bfmeGetGroupTotalFrames 0x001DC1FD, timeGetTime.
 // The method name stays address-derived.
+#include <windows.h>
 #include "ascii_string.h"
 
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 typedef bool Bool;
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 class GameFont;
 

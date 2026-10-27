@@ -4,7 +4,7 @@
 // Dedicated TU. BFME2 checks a path gate, local (+0xC), archive (+0x14),
 // then optional "%s\%s" under TheLangDir and "lang\%s\%s" / English.
 
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *fmt, ...);
+#include <stdio.h>
 
 class FilePathGate
 {

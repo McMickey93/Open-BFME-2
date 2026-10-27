@@ -1,5 +1,6 @@
 // ?rva00420254@VictoryConditions@@QAEXABVAsciiString@@_N00@Z
 // cl: /O1 /EHsc /MD /arch:SSE /GF- /Ireference/shims/bfme2_ascii
+// platformsdk
 // d3 seat6 w2: /GF- (two "" uses compiled as separate literals: suffix stays in ECX,
 // state in EDI as retail) + the fetchName result passed as a temporary, equal-arm
 // name.str() hack removed: 254/255, only residue is cl packing the UnicodeString
@@ -15,6 +16,7 @@
 
 // Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
 
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
@@ -81,7 +83,6 @@ class VictoryTextPrefix {public:
  virtual UnicodeString fetchName(const AsciiString *,bool *);
 };
 class Display;extern Display *TheDisplay;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 // BF1 575ba2 VictoryConditionsUpdate supplies the four-argument banner ABI
 // and state/timer guide; native420254..420353 proves BF2's fields10/14,
 // key/text temporary lifetimes, slot14 and literal arguments independently.

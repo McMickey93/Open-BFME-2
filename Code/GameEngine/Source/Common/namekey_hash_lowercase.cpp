@@ -4,8 +4,8 @@
 // this twin folds every byte through the CRT tolower import and retail
 // multiplies by 0x21 with imul, so it lives in its own /O2 TU.
 // nameToLowercaseKey calls it for every lookup (pinned Rva0061FCA0Hash).
-extern "C" __declspec(dllimport) int tolower(int c);
 
+#include <ctype.h>
 __declspec(noinline) unsigned int calcHashForLowercaseString(const char *p)
 {
 	unsigned int result = 0;

@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /O1 /G7 /MD /EHs /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC
+// platformsdk
 // stlport
 // ChatWindowsInGame player-list row insertion, retail5AFDC5..5AFE3F.
 // WB1518C40 is unnamed; named PopulatePlayerList WB1514620 calls this
@@ -17,6 +18,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+#include <windows.h>
 #include <vector>
 #include "ascii_string.h"
 #include "unicode_string.h"
@@ -278,7 +280,6 @@ bool ChatWindowsInGame::rva005B00C8(int message,unsigned int window,unsigned int
     return false;
 }
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 // Native5AFCB4..5AFCEC RET4 bool; WB1518930 unnamed confirms the signed
 // tick comparison, force flag and virtual refresh. Existing window attachment
 // clears time14. Refresh only with window10 and force or now>time14+5000.

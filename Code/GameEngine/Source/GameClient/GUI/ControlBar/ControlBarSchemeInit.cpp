@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /Oy- /MD
+// platformsdk
 // ?init@ControlBarScheme@@QAEXXZ
 // Native boundary: Ghidra FUN_0071ed2c, 0x0031ED2C..0x0031F743 (ret at F742).
 // Donor: Open-BFME-1 6583b3c1ff21db4a561285717028fdafc780b7db,
@@ -14,8 +15,8 @@
 // Only the virtual slots observed by this body are declared in the call views.
 typedef int Int;
 typedef int Color;
-#define NULL 0
 #define INT_TO_REAL(x) ((float)(x))
+#include <windows.h>
 #include "../../../../../Libraries/Include/Lib/ICoord2D.h"
 #include "../../../../../Libraries/Include/Lib/Coord2D.h"
 #include "ascii_string.h"
@@ -452,4 +453,3 @@ void ControlBarScheme::init(void)
 		win->winSetSize((self->m_uAttackLR.x - self->m_uAttackUL.x)*resMultiplier.x+ COMMAND_BAR_SIZE_OFFSET,(self->m_uAttackLR.y - self->m_uAttackUL.y)*resMultiplier.y+ COMMAND_BAR_SIZE_OFFSET);
 	}
 }
-

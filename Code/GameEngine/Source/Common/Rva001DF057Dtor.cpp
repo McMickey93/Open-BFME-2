@@ -11,6 +11,7 @@
 // ??1Rva000427195 0x001FDEDB) then two vectors of Rva001DEF38Element at
 // +0x28/+0x1C via rowed 0x001DEEF9 then tree Rva001DD70F at +0x10 via rowed
 // 0x001DD9BB. Caller is ??_G at 0x001DF3D5 in OpaqueScalarDeletingDtorsB03.
+#include <stdlib.h>
 #include <vector>
 #include <list>
 
@@ -40,8 +41,6 @@ void _STLP_alloc_proxy<_List_node<int> *, _List_node<int>, allocator<_List_node<
   allocator<_List_node<int> >().deallocate(__p, __n);
 }
 }
-
-extern "C" void __cdecl free(void *block) throw(...);
 
 #include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 

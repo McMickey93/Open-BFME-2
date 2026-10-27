@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // Zero Hour's GUICallbacks/MessageBox.cpp window system for the generic WND
 // message box: retail 0x0044BA8B, 491B. BFME2 leaves GWM_CREATE to the
@@ -6,15 +7,13 @@
 // (guard bits at VA 0x00E0337C) and each button runs its callback, if any,
 // before the box is destroyed.
 
+#include <windows.h>
 #include "ascii_string.h"
 
 typedef int Int;
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef unsigned int WindowMsgData;
-#ifndef NULL
-#define NULL 0
-#endif
 
 enum NameKeyType { NAMEKEY_INVALID = 0 };
 class NameKeyGenerator

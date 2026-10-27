@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // BFME2's online custom match screen Apt callbacks, 0x0059EC65 onward,
@@ -27,6 +28,7 @@ template <> __declspec(dllimport) __forceinline bool less<int>::operator()(const
 #include <map>
 #include <string>
 #include <vector>
+#include <windows.h>
 // bfme link decl-only begin
 namespace _STL { template <> basic_string<char, char_traits<char>, allocator<char> > & basic_string<char, char_traits<char>, allocator<char> >::operator=(char const *); }
 namespace _STL { template <> void basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >::_M_construct_null(unsigned short *); }
@@ -878,7 +880,6 @@ void GadgetTextEntrySetText(GameWindow *, UnicodeString);
 // AptOnlineCustomMatch::FillGameNameTextEntry is rowed in its home unit; this copy was a duplicate definition.
 
 extern int g_Va00E063F0;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 void __cdecl Rva00381C2DClear(unsigned int value);
 void GSMessageBoxOk(UnicodeString title, UnicodeString message, void (*okFunc)());
 class Rva005170CD { public: void rva005170CD(); };
