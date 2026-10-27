@@ -3415,7 +3415,6 @@ _IDct1,0x001D6C60,evidence,vendored
 ?rva001DC164@Rva001DBDA4@@QAEXXZ,0x001DC164,address,placeholder
 ?rva001DC1B3@Rva001DC0EC@@QAEXPAV?$list@HV?$allocator@H@_STL@@@_STL@@@Z,0x001DC1B3,address,placeholder
 ??_GRva001DC0EC@@QAEPAXI@Z,0x001DC1E1,address,placeholder
-?rva001DC1FD@GameWindowTransitionsHandler@@QAEHVAsciiString@@@Z,0x001DC1FD,address,placeholder
 ?rva001DC57C@GameWindowTransitionsHandler@@QAEXPAV?$list@HV?$allocator@H@_STL@@@_STL@@@Z,0x001DC57C,address,placeholder
 ?rva001DC5EC@GameWindowTransitionsHandler@@QAEXXZ,0x001DC5EC,address,placeholder
 ?Rva001DCAED_ParseTransition@INI@@SAXPAV1@PAX1PBX@Z,0x001DCAED,address,placeholder

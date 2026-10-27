@@ -6,9 +6,8 @@
 // (0x001DC4D2, 170B), setGroup (0x001DC252, 243B) and reverse (0x001DC345,
 // 231B), ported from Zero Hour's GameClient/GUI/GameWindowTransitions.cpp;
 // reverse/symbols.csv pins findGroup, getNewGroup and setGroup at these
-// addresses. 0x001DC1FD (85B) is a BFME 2-only handler query with an
-// address name: the named group's total frames (TransitionGroup row
-// 0x001DBDA4), or 0.
+// addresses. The total-frames query between them (0x001DC1FD) is
+// bfmeGetGroupTotalFrames, rowed in GameWindowTransitionsGroupTotalFrames_Rva001dc1fd.cpp.
 // Target evidence: by-value AsciiString params with EH_prolog and the
 // releaseBuffer row 0x00036410; isEmpty early-outs (null plus length
 // check); the STLport group list at +0x20; compareNoCase (row 0x00006A00)
@@ -97,7 +96,6 @@ extern Display *TheDisplay;
 class Rva001DBDA4
 {
 public:
-	int rva001DBDA4() const; // getTotalFrames
 	void rva001DBDC6();      // reverse
 	void rva001DBE17();      // BFME 2's step after skip
 	void rva001DBE34();      // skip
@@ -111,7 +109,6 @@ public:
 	void reverse() { ((Rva001DBDA4 *)this)->rva001DBDC6(); }
 	void skip() { ((Rva001DBDA4 *)this)->rva001DBE34(); }
 	void bfmeAfterSkip() { ((Rva001DBDA4 *)this)->rva001DBE17(); }
-	__declspec(dllimport) __forceinline int getTotalFrames() { return ((Rva001DBDA4 *)this)->rva001DBDA4(); }
 	Bool isReversed() { return m_directionMultiplier < 0; }
 	Bool isFireOnce() { return m_fireOnce; }
 	char m_pad[4];
@@ -148,7 +145,6 @@ public:
 	void setGroup( AsciiString groupName, Bool immidiate );
 	void reverse( AsciiString groupName );
 	void remove( AsciiString groupName, Bool skipPending = false );
-	int rva001DC1FD( AsciiString groupName );
 	static void parseWindow(INI *ini, void *instance, void *store, const void *userData);	// rowed 0x001DCB2F
 	TransitionGroup *getNewGroup( AsciiString name );
 private:
@@ -206,15 +202,6 @@ TransitionGroup *GameWindowTransitionsHandler::findGroup( AsciiString groupName 
 		it++;
 	}
 	return NULL;
-}
-
-int GameWindowTransitionsHandler::rva001DC1FD( AsciiString groupName )
-{
-	int frames = 0;
-	TransitionGroup *transitionGroup = findGroup(groupName);
-	if(transitionGroup)
-		frames = transitionGroup->getTotalFrames();
-	return frames;
 }
 
 void GameWindowTransitionsHandler::setGroup(AsciiString groupName, Bool immidiate )
