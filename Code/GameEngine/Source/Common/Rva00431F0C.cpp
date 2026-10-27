@@ -37,7 +37,7 @@ public:
 	int rva00431F0C(GameMessage *msg);
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 int Rva00431F0C::rva00431F0C(GameMessage *msg)
 {

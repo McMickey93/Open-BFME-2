@@ -35,7 +35,7 @@ public:
 	int HandleButtonUp(void *p);
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 int Rva00431E95::HandleButtonUp(void *p)
 {

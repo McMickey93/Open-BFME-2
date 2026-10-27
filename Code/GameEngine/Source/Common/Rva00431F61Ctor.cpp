@@ -40,7 +40,7 @@ class FormationTranslator;
 // g_00E0322C: matched references place it at VA 0xe0322c (retail .data initial value 0).
 FormationTranslator * g_00E0322C = 0;
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 FormationTranslator::FormationTranslator()
 {
