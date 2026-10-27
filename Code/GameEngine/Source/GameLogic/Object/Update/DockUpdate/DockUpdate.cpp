@@ -18,7 +18,7 @@ public:
 	Rva001E4912 *rva001E4912(int unused, unsigned int first, unsigned int second);
 	unsigned int m_bits[19];
 };
-#include <string.h>
+extern "C" void *memset(void *dst, int value, unsigned int size);
 class RvaDockClearMask
 {
 public:

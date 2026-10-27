@@ -82,7 +82,7 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
 
-#include <string.h>
+extern "C" void *__cdecl memset(void *dest, int value, unsigned int count);
 
 class AsciiString;
 class UnicodeString;
