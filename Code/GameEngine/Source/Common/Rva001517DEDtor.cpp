@@ -6,9 +6,8 @@
 // +0x18 via rowed free 0x00030830, tears down +0x0C vector via rowed
 // 0x0007C5D5. Caller 0x00151899 deleting dtor proves ??1. Layout mirrors
 // holder plus vector plus strdup shape.
+#include <stdlib.h>
 #include <vector>
-
-extern "C" void __cdecl free(void *block);
 
 class Rva001517DEString
 {

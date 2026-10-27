@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /O1 /G7
+// platformsdk
 //
 // ?rva0010F8D0@Rva0010F8D0@@QAEXPAVRva001164D3@@@Z at 0x0010F8D0, 146 bytes.
 // RET 4 submission helper called by the ten event factories in
@@ -21,6 +22,8 @@
 // therefore written below with its real body as an in-class never-inlined
 // definition (it still emits the retail 29-byte body of 0x00051914 and stays a
 // call, as in retail).
+
+#include <windows.h>
 
 class CriticalSection;
 
@@ -62,7 +65,6 @@ public:
 };
 
 typedef long Long;
-extern "C" __declspec(dllimport) Long __stdcall InterlockedIncrement(Long volatile *addend);
 
 class AudioEventInfo
 {

@@ -7,6 +7,7 @@
 // Layout from rowed ctor 0x002B644A (vtable 0x7FE280, BfmeE16 vector +8,
 // ints +4/-1 +0x14/0 +0x18/-1 +0x1C/0). Evidence: vtable stores, pin, caller,
 // callees all rowed or pinned.
+#include <stdlib.h>
 #include <vector>
 
 // __malloc_alloc<0> allocate/deallocate otherwise instantiate per-TU
@@ -32,8 +33,6 @@ class Rva00DFE1C8Host
 public:
 	void rva00212655(int value);	// 0x00212655
 };
-
-extern "C" void __cdecl free(void *);
 
 // The Snapshot base (vftable 0x00BBB554, restored at the end).
 #define BFME_SNAPSHOT_NAME_SLOT

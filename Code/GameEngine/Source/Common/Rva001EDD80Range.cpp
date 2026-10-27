@@ -4,7 +4,8 @@
 // at VA 0x00DFDCA0 and calls this body at 0x0042EBDF with two pixel pairs.
 // The original method name and pair type spelling remain unknown.
 // Range check via abs dx/dy vs +0x12E8. Evidence: callees pinned _abs at 0x00629952(x2); callers in 0043/0042 bodies.
-extern "C" int __cdecl abs(int value);
+
+#include <stdlib.h>
 
 struct Rva001EDD80Pair
 {

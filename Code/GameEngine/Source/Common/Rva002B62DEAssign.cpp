@@ -10,6 +10,7 @@
 class Rva002B5558;
 #define private friend class ::Rva002B5558; private
 #define _M_copy _M_copy_002B61FB
+#include <stdlib.h>
 #include <map>
 #undef private
 
@@ -17,8 +18,6 @@ class Rva002B5558;
 // call through the rowed 0x002B61FB body (no local emission).
 template <>
 _STL::_Rb_tree<int, _STL::pair<const int, int>, _STL::_Select1st<_STL::pair<const int, int> >, _STL::less<int>, _STL::allocator<_STL::pair<const int, int> > >::_Link_type _STL::_Rb_tree<int, _STL::pair<const int, int>, _STL::_Select1st<_STL::pair<const int, int> >, _STL::less<int>, _STL::allocator<_STL::pair<const int, int> > >::_M_copy(_Link_type, _Link_type);
-
-extern "C" void __cdecl free(void *block);
 
 struct Node002B43BA
 {

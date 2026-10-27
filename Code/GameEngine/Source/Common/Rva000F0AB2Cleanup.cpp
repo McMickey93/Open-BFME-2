@@ -1,6 +1,7 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD
 // ?rva000F0AB2@Rva000F0AB2@@QAEXXZ RVA 0x000F0AB2 size 37 evidence caller 0x0009A314, virtual call slot0 with 0 plus operator delete 0x0002FD60, next-pointer at +0x68
-void __cdecl operator delete(void *p);
+
+#include <new>
 
 struct Rva000F0AB2Node
 {

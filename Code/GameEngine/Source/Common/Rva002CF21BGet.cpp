@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?newDrawable@ThingFactory@@QAEPAXPAXHH@Z @0x002CF21B 99B.
 // Manager dispatch: null arg returns 0, else virtual slot 0x70 on the global
 // at 0x009FE77C with 3 args, then walk the pointer array at result+0x154;
@@ -8,7 +9,8 @@
 // ThingFactory::newDrawable: the same TheGameClient slot 0x70 create, the
 // Sleep(0) spin on the same flag and the slot 0x40 call per element; retail
 // takes three arguments (ret 12) where Zero Hour's takes two.
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long ms);
+#include <windows.h>
+
 class ClientFrameSubsystem; extern class GameClient *TheGameClient;
 
 // g_00DFF004: VA 0x00dff004 (.data/bss); retail zero-filled.

@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?rva00368004@Rva00368004@@QAE_NXZ @0x00368004 17B
 // Null-checked virtual forward: if +0x3C pointer is null return false else
 // tail-jmp to its virtual slot 0x48 (19th virtual returning bool).
@@ -22,8 +23,8 @@
 typedef float Real;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt TeamID;
-#define NULL 0
 
+#include <windows.h>
 #include "GameLogicObjectLookupView.h"
 
 #include "../../../Libraries/Include/Lib/Coord3D.h"

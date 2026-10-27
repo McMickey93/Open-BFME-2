@@ -3,7 +3,8 @@
 // cl: /DNDEBUG /MD /EHsc
 // ?rva00118CC0@Render2DRawArray@@QAEPAXH@Z 0x00118CC0 121 unlock
 // Render2DRawArray grow of 44-byte elements via realloc caller 0x0011BD80
-extern "C" __declspec(dllimport) void *__cdecl realloc(void *ptr, unsigned int size);
+
+#include <stdlib.h>
 
 struct Raw44
 {

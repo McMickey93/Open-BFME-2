@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // ?rva000FE1AC@WaterTracksRenderSystem@@QAEXXZ @0x000FE1AC 91B.
 // Container at +0x10 tail iterated via FeNode +0xb0 next; +0x3c flag selects
@@ -6,6 +7,8 @@
 // g_00DEC220 with timeGetTime IAT; caller 0x00100068; callee
 // ?releaseTrack@WaterTracksRenderSystem rowed. _ReadWriteBarrier is reconstruction shaping
 // to keep sub mem + add mem (without it cl folds to mov [mem],eax).
+
+#include <windows.h>
 
 struct FeNode
 {
@@ -38,7 +41,6 @@ unsigned int g_waterTracksTimeInitialized;
 extern unsigned long g_00DEC220;
 // g_00DEC220: matched references place it at VA 0xdec220 (zero-filled .bss).
 unsigned long g_00DEC220;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 

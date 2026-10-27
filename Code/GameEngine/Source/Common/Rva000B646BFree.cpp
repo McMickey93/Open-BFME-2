@@ -4,7 +4,8 @@
 // recursing on node+0xc then freeing the node via rowed _free 0x00030830 and
 // advancing to node+8. Self-recursive call at 0x000B647D; caller 0x000B9309
 // passes [eax+4] with this preserved. Honest address name.
-extern "C" void __cdecl free(void *block);
+
+#include <stdlib.h>
 
 struct Rva000B646BNode
 {

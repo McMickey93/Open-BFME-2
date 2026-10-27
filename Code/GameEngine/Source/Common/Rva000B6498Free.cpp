@@ -4,7 +4,8 @@
 // recursing on node+0xc then freeing the node via rowed _free 0x00030830 and
 // advancing to node+8. Twin of rowed 0x000B646B (same 45B shape). Self call at
 // 0x000B64AA; caller 0x000B9332. Honest address name.
-extern "C" void __cdecl free(void *block);
+
+#include <stdlib.h>
 
 struct RedBlackTreeNode
 {

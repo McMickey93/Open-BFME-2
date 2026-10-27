@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /Oy- /DNDEBUG /MD
+// platformsdk
 //
 // ?rva00090FE0@Rva00090FE0@@QAEHI@Z, retail 0x00090FE0, 224 bytes.
 // Elapsed units from timeGetTime (IAT 0x00BBA918): (int)(now - start@+0x50) scaled by the
@@ -8,7 +9,7 @@
 // with a min() that evaluates the time expression twice, as the retail double read shows.
 // Evidence: target bytes and the rowed __allmul/__alldiv; field names are neutral views.
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 
 // Flag byte (data_ledger RVA 0x9E4498, zero .data, unowned); defined here,
 // nothing else defines it.

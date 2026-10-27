@@ -8,6 +8,7 @@
 // 0x30830, then base ??1Overridable.
 // Evidence: ecx-first thiscall with vptr store; EH states 0x15-0x0; callers
 // 0x001DB060 0x0035BCBE; unwind funclet at 0x007697D9.
+#include <stdlib.h>
 #include <vector>
 
 #include "ascii_string.h"
@@ -24,8 +25,6 @@ public:
     ~Rva002390CB();
     char m_pad[8];
 };
-
-extern "C" void __cdecl free(void *);
 
 struct RvaFreePtr {
     char *m_ptr;

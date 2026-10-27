@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // Rva0037B9D4Get, retail 0x0037B9D4, 116 bytes. Returns a UnicodeString
 // built from the narrow string that the rowed GlobalData::rva002360DE
 // 0x002360DE returns for TheWritableGlobalData, converted through the rowed
@@ -10,7 +11,7 @@
 // by hand and missed state 1.
 typedef int Int;
 typedef unsigned short WideChar;
-#define NULL 0
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 class GlobalData

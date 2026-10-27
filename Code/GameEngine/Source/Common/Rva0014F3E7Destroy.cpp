@@ -1,6 +1,8 @@
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // ?Rva0014F3E7Destroy@@YAXPAVRva0014F3E7@@0PAX@Z retail 0x0014F3E7 26B: destroy range stepping 0x4C calling vtable[0] with 0. Caller 0x0014F8BC dispatcher with tag. Element size matches Rva0014F699 0x4C.
 
+#include <stdlib.h>
+
 class Rva0014F3E7
 {
 public:
@@ -36,8 +38,6 @@ void __cdecl Rva0014F8AEDestroy(Rva0014F3E7 *first, Rva0014F3E7 *last)
 	char tag;
 	Rva0014F3E7Destroy(first, last, (void *)&tag);
 }
-
-extern "C" void __cdecl free(void *block);
 
 class Rva0014F8C6
 {

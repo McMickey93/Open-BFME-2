@@ -5,9 +5,8 @@
 // Vector clear-and-free over ScienceType at +0: erase via rowed
 // vector erase 0x00532803 then _free 0x00030830 the start when non-null.
 // Callers 0x00373422 0x003734D9 unblock 2. Flags from vector owner.
+#include <stdlib.h>
 #include <vector>
-
-extern "C" void __cdecl free(void *p);
 
 enum ScienceType
 {

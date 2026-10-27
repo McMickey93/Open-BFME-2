@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?rva0010F110@Rva0010F110@@QAEXXZ @0x0010F110 12B.
 // ?rva0010F11C@Rva0010F110@@QAE_NH@Z @0x0010F11C 45B.
 // Infinite wait on the +0x18 handle via kernel32 WaitForSingleObject, plus
@@ -8,7 +9,8 @@
 // 0x0010F11F and 0x000A8B73 and 0x000A8B63, push -1 (INFINITE) and volatile
 // memory-direct cmp/push shape per precedent Rva0010F0C4Dtor. Honest address
 // names: 0x0010F11C calls 0x0010F110 with the same this.
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void *handle, unsigned long timeout);
+#include <windows.h>
+
 extern "C" __declspec(dllimport) int __stdcall AIL_stream_loop_count(void *stream);
 
 typedef void *HSTREAM;

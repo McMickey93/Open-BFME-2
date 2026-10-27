@@ -3,6 +3,8 @@
 // Vector-dtor shape over Rva00268B04 via rowed destroy 0x0026E1DE plus game free.
 // Evidence: pushes [esi+4] plus [esi] to destroy then frees [esi]; callers at 0x0026E802 plus 0x003325E3 plus 0x003327A7.
 
+#include <stdlib.h>
+
 class PoolMember
 {
 public:
@@ -21,7 +23,6 @@ private:
 };
 
 void __cdecl Rva0026E1DEDestroy(Rva00268B04 *first, Rva00268B04 *last);
-extern "C" void __cdecl free(void *);
 
 class Rva0026E5B9
 {

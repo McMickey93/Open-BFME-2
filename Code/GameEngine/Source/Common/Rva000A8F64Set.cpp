@@ -1,11 +1,13 @@
 // cl: /MD
+// platformsdk
 // ?Rva000A8F64Set@@YAX_N@Z @0x000A8F64 52B leaf.
 // Pause-style timer flag: byte flag at 0x009B4CE0, time base at 0x009E6180,
 // accumulated at 0x009E617C via winmm timeGetTime. Same-value early return,
 // then set flag and record or accumulate.
 // Evidence: mov al [esp+4] cmp [0xDB4CE0] al je test al mov [0xDB4CE0] al
 // je IAT timeGetTime mov [0xDE6180] eax ret call sub add; caller 0x00062A2D.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
+
 extern unsigned char g_aptHostStateStorage[32];
 // Existing consumers also use +8 and +10..+1C. Provide the complete observed
 // DB4CE0..DB4D00 storage, with the exact retail .data initial bytes. Original

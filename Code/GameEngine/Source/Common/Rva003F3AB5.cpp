@@ -3,9 +3,8 @@
 // ?rva003F3AB5@Rva003F3AB5@@QAEXIUDynamicPortalLink@@@Z @0x003F3AB5 115B. Index-or-append over 12B DynamicPortalLink array.
 // True branch forwards to rowed 0x003F3159, false to rowed vector fill-insert 0x003F35E3, then frees owned block via rowed free 0x00030830.
 // Evidence: rowed callees, unblocks 0x003F3B28, ret 0x10 with index plus 12B value.
+#include <stdlib.h>
 #include <vector>
-
-extern "C" void __cdecl free(void *block);
 
 struct DynamicPortalLink
 {
