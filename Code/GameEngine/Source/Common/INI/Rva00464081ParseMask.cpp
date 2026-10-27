@@ -8,7 +8,7 @@
 // that the field was given. The field and owner names are not known; no
 // WorldBuilder twin was matched.
 
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
+#include <string.h>
 
 class INI;
 
