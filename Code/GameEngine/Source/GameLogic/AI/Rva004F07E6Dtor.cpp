@@ -13,7 +13,7 @@ public:
 	virtual ~AIPlayer();
 	void clearTeamsInQueue();
 };
-void __cdecl operator delete(void *p);
+#include <new>
 AIPlayer::~AIPlayer()
 {
 	clearTeamsInQueue();

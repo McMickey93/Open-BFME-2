@@ -9,7 +9,7 @@
 // its return to operator delete, so slot 0 is modelled as destroy(flag).
 #include "ascii_string.h"
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 class StateMachine
 {
