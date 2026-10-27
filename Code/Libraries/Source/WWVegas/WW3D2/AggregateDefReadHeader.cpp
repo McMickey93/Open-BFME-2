@@ -22,6 +22,19 @@ struct W3dAggregateHeaderStruct
 	char Name[16];
 };
 
+struct W3dAggregateInfoStruct
+{
+	char BaseModelName[32];
+	unsigned SubobjectCount;
+};
+
+struct W3dAggregateMiscInfo
+{
+	unsigned OriginalClassID;
+	unsigned Flags;
+	unsigned reserved[3];
+};
+
 class RenderObjClass;
 class ChunkSaveClass;
 struct W3dAggregateSubobjectStruct;
@@ -50,13 +63,10 @@ protected:
 	virtual void Build_Subobject_List(RenderObjClass &original_model, RenderObjClass &model);
 
 private:
-	int m_version; // +4
-	unsigned char m_subobjectList[0x18]; // +8
-	char m_infoBaseModelName[32]; // +0x20
-	int m_infoSubobjectCount; // +0x40
-	unsigned m_miscOriginalClassID; // +0x44
-	unsigned m_miscFlags; // +0x48
-	unsigned char m_miscReserved[12]; // +0x4C
+	unsigned long m_Version; // +4
+	unsigned char m_SubobjectList[0x18]; // +8
+	W3dAggregateInfoStruct m_Info; // +0x20
+	W3dAggregateMiscInfo m_MiscInfo; // +0x44
 	char *m_pName; // +0x58
 };
 
@@ -71,7 +81,7 @@ bool AggregateDefClass::Read_Header(ChunkLoadClass &chunk_load)
 
 		// Copy the name from the header structure
 		m_pName = ::strdup(header.Name);
-		m_version = header.Version;
+		m_Version = header.Version;
 
 		// Success!
 		ret_val = true;
