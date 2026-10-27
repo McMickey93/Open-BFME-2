@@ -69,8 +69,11 @@ public:
 
 extern PlayerList *ThePlayerList; // ?ThePlayerList@@3PAVPlayerList@@A
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 struct Payload00497A4B
 {
@@ -104,7 +107,7 @@ void BattlePlanUpdate::createVisionObject()
 	if (player == 0)
 		return;
 	CreateMask mask;
-	ji_006291ae(&mask, 0, 0x10);
+	memset(&mask, 0, 0x10);
 	Team *team = player->m_team;
 	Object *newObj = TheThingFactory->newObject((const ThingTemplate *)tmpl, team, &mask, (ObjectID)0);
 	if (newObj == 0)

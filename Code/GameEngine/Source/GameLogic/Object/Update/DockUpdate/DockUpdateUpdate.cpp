@@ -66,8 +66,11 @@ public:
 
 extern GameLogic *TheGameLogic;
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 struct Rva0028F59A
 {
@@ -174,7 +177,7 @@ UpdateSleepTime DockUpdate::update()
 			if (docker != 0 && (docker->m_template->m_kind0 & 0x4000) != 0 && (docker->m_template->m_kind0 & 0x10000) != 0)
 			{
 				Rva00263546 test;
-				ji_006291ae(&test, 0, 0x4c);
+				memset(&test, 0, 0x4c);
 				((unsigned char *)&test)[10] |= 4;
 				if (test.rva00263546(&docker->m_flags))
 				{

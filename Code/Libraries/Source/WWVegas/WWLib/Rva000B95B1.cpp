@@ -2,8 +2,11 @@
 // ?rva000B95B1@Rva000B95B1@@QAEXPAX@Z 0x000B95B1 100B
 // Evidence: unlock lane; contiguous after 0x000B9596; bitfield loop 0x24F over dword array at this, byte buf[74] via idiv /8 %8, then vcall slot 0x24 with (buf, 0x4A); caller 0x000BB710 unclaimed.
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 struct Rva000B95B1Slot
 {
@@ -30,7 +33,7 @@ private:
 void Rva000B95B1::rva000B95B1(void *arg)
 {
 	unsigned char buf[74];
-	ji_006291ae(buf, 0, 0x4a);
+	memset(buf, 0, 0x4a);
 	for (int i = 0; i < 0x24f; ++i)
 	{
 		if (m_bits[((unsigned int)i >> 5)] & (1 << (i & 31)))

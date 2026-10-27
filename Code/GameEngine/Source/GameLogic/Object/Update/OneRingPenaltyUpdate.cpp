@@ -61,7 +61,11 @@ const float PI = 3.14159265359f;
 float GetGameLogicRandomValueReal(float lo, float hi, char *file, int line);
 float Cos(float value);
 float Sin(float value);
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 class ModuleData
 {
 public:
@@ -353,7 +357,7 @@ void OneRingPenaltyUpdate::rva00499AFD()
 			} overlay;
 		};
 		MaskPos u;
-		ji_006291ae(&u.mask, 0, sizeof(u.mask));
+		memset(&u.mask, 0, sizeof(u.mask));
 		Object *newObj = TheThingFactory->newObject(thingTemplate, team, &u.mask, (ObjectID)0);
 		if (!newObj)
 			return;

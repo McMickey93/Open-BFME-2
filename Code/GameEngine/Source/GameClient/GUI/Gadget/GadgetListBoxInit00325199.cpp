@@ -31,8 +31,11 @@ public:
 
 #include <new>
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 WindowMsgHandledType GadgetListBoxMultiInput(GameWindow *, UnsignedInt, WindowMsgData, WindowMsgData);
 
@@ -61,7 +64,7 @@ void GadgetListBoxAddMultiSelect(GameWindow *window)
 		operator delete[](data->m_old);
 		return;
 	}
-	ji_006291ae(buf, -1, (unsigned int)(data->m_count * 4));
+	memset(buf, -1, (unsigned int)(data->m_count * 4));
 	data->m_flag = 1;
 	window->winSetInputFunc(GadgetListBoxMultiInput);
 }

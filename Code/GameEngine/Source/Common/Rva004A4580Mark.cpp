@@ -4,8 +4,11 @@
 // Ignores this. Zeroes the first dword of the argument through the rowed
 // memset thunk, then sets bit 1 and returns the same pointer.
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class Rva004A4580
 {
@@ -15,7 +18,7 @@ public:
 
 void *Rva004A4580::rva004A4580(void *p)
 {
-	ji_006291ae(p, 0, 4);
+	memset(p, 0, 4);
 	*(unsigned int *)p |= 2;
 	return p;
 }

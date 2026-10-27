@@ -7702,7 +7702,6 @@ _lua_type,0x007470A0
 _lua_typename,0x007470D0
 _memcpy,0x006291A8,CRT memcpy import thunk; retail target of the BI_BITFIELDS copy in ATL CImage::CreateEx
 _memmove,0x00629506,address read from the REL32 displacements in DirtySock Y4TextToValue Rva007EC780 at 0x006596B0; static CRT callee; body not yet converted
-_memset,0x006291AE,CRT memset import thunk; Ghidra labels the retail call target at 0x6291AE
 _ntohl@4,0x0065565E,address read from the REL32 displacement at placed _piStagingRoomHash 0x006A79E0
 _peerCreateStagingRoomWithSocketA,0x0069A190,
 _peerJoinStagingRoomA,0x0069A130,GameSpy SDK C export peerJoinStagingRoomA (ANSI; PeerThread.cpp maps peerJoinStagingRoom to it as the BFME 2 SDK header does): PeerThread.cpp declares the sweep Peer.h with C linkage, and Thread_Function 0x0038EDD7 / doQuickMatch 0x0038E684 call this body where the Zero Hour source calls peerJoinStagingRoom

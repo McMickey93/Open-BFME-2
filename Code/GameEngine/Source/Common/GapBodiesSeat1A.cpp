@@ -1355,8 +1355,11 @@ private:
 
 // --- 0x0028C59F (14B): zeroes twenty bytes of this through the CRT memset
 // thunk 0x006291AE.
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class Rva0028C59F
 {
@@ -1368,7 +1371,7 @@ private:
 
 void Rva0028C59F::rva0028C59F()
 {
-	ji_006291ae(this, 0, 0x14);
+	memset(this, 0, 0x14);
 }
 
 // --- 0x0028D611 (111B): unless the other object shares this one's +0x484

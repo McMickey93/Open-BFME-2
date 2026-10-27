@@ -18,8 +18,11 @@ public:
 // Out-of-line StringBase<char>::isEmpty is the matched row 0x00001E2F.
 #include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 template <unsigned N>
 class BitFlags
@@ -27,7 +30,7 @@ class BitFlags
 public:
 	BitFlags() { clear(); }
 	bool setBitByName(const char *token);
-	void clear() { ji_006291ae(m_words, 0, sizeof(m_words)); }
+	void clear() { memset(m_words, 0, sizeof(m_words)); }
 private:
 	unsigned m_words[19];
 };

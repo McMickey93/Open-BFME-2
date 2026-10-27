@@ -20,7 +20,6 @@
 	{ \
 		return TEXT; \
 	}
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -283,7 +282,11 @@ public:
 // bit 3 (*p |= 8) and return p. Evidence: slot 19 refs in the
 // AutoHealBehavior (0x0083FC88) and ReplenishUnitsBehavior (0x00849F20)
 // vtables; no callers; sole callee is the rowed ji_006291ae import.
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class Xfer::Version
 {
@@ -354,7 +357,7 @@ void Rva004A2D49::rva004A2D49(bool enabled)
 
 void *__stdcall Rva004A2D67Init(void *p)
 {
-	ji_006291ae(p, 0, 4);
+	memset(p, 0, 4);
 	*(int *)p |= 8;
 	return p;
 }

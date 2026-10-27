@@ -8,8 +8,11 @@
 // ??0Rva00265254@@QAE@IIIIIIIIIIII@Z retail 0x00265366 243B.
 // Leaf: memset 0x4c plus eleven bit sets; first arg ignored like siblings.
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class Rva00265254
 {
@@ -23,7 +26,7 @@ private:
 
 Rva00265254::Rva00265254(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 {
-	ji_006291ae(this, 0, 0x4c);
+	memset(this, 0, 0x4c);
 	m_bits[a2 >> 5] |= 1u << (a2 & 31);
 	m_bits[a3 >> 5] |= 1u << (a3 & 31);
 	m_bits[a4 >> 5] |= 1u << (a4 & 31);
@@ -31,7 +34,7 @@ Rva00265254::Rva00265254(unsigned int a1, unsigned int a2, unsigned int a3, unsi
 
 Rva00265254::Rva00265254(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8, unsigned int a9)
 {
-	ji_006291ae(this, 0, 0x4c);
+	memset(this, 0, 0x4c);
 	m_bits[a2 >> 5] |= 1u << (a2 & 31);
 	m_bits[a3 >> 5] |= 1u << (a3 & 31);
 	m_bits[a4 >> 5] |= 1u << (a4 & 31);
@@ -44,7 +47,7 @@ Rva00265254::Rva00265254(unsigned int a1, unsigned int a2, unsigned int a3, unsi
 
 Rva00265254::Rva00265254(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8, unsigned int a9, unsigned int a10, unsigned int a11, unsigned int a12)
 {
-	ji_006291ae(this, 0, 0x4c);
+	memset(this, 0, 0x4c);
 	m_bits[a2 >> 5] |= 1u << (a2 & 31);
 	m_bits[a3 >> 5] |= 1u << (a3 & 31);
 	m_bits[a4 >> 5] |= 1u << (a4 & 31);

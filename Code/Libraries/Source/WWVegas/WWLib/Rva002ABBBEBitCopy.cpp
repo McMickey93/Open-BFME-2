@@ -3,8 +3,11 @@
 // ?rva002ABBBE@Rva002ABBBE@@QAEXPAX@Z, RVA 0x002ABBBE, size 100: dword-bitset to byte-bitset then virtual call.
 // Evidence: memset 28B via ji_006291ae row; 218-iter bit loop; virtual call +0x24; callers 0x002AC09F 0x0039D6EC.
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class Other002ABBBE
 {
@@ -31,7 +34,7 @@ public:
 void Rva002ABBBE::rva002ABBBE(void *other)
 {
 	unsigned char dest[28];
-	ji_006291ae(dest, 0, 28);
+	memset(dest, 0, 28);
 	for (int i = 0; i < 0xDA; ++i) {
 		if (m_bits[((unsigned int)i >> 5)] & (1 << (i & 31))) {
 			dest[i / 8] |= (unsigned char)(1 << (i % 8));

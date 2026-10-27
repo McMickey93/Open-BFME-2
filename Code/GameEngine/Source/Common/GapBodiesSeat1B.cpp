@@ -177,12 +177,15 @@ int Rva002C74C0::rva002C74C0(int index) const
 
 // --- 0x002C751E (17B, cdecl): zeroes a 0x1C-byte record through the CRT
 // memset thunk 0x006291AE.
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 void Rva002C751E(Rva002C74CBRecord *record)
 {
-	ji_006291ae(record, 0, 0x1C);
+	memset(record, 0, 0x1C);
 }
 
 // --- 0x002C92B8 (36B) and 0x002C92DC (30B): the rowed 0x002C9217 with the
@@ -995,7 +998,7 @@ bool Rva003182BC::rva003182BC() const
 
 void Rva003182BC::rva003182E1()
 {
-	ji_006291ae(this, 0, 4);
+	memset(this, 0, 4);
 }
 
 Rva0023D2D8DwordClearer *Rva003182BC::rva00318B3F()

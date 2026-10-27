@@ -160,7 +160,11 @@ public:
 class ThingFactory;
 extern ThingFactory *TheThingFactory;
 
-void __cdecl ji_006291ae();
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 struct CreateMask
 {
@@ -300,7 +304,7 @@ UpdateSleepTime HijackerUpdate::update(void)
 				if (putInContainerTmpl)
 				{
 					CreateMask mask;
-					((void (__cdecl *)(void *, int, UnsignedInt))&ji_006291ae)(&mask, 0, 0x10);
+					memset(&mask, 0, 0x10);
 					Object *container = TheThingFactory->newObject(
 						putInContainerTmpl, obj->getTeam(), &mask, (ObjectID)0);
 					((Thing *)container)->setPosition(&m_ejectPos);

@@ -11,8 +11,11 @@
 // 0x003C2F9C; globals g_Va009FE16C ThePlayerList; StringBase copy 0x000365F0.
 #include "ascii_string.h"
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 #pragma comment(linker, "/alternatename:??0?$BitFlags@$0HE@@@QAE@ABV0@@Z=??0BfmeFixedStorage0004543D@@QAE@ABV0@@Z")
 
 class ScriptEngine;
@@ -81,11 +84,11 @@ void ScriptActions::Rva003C2EC9Do(const void *a1, const void *a2, const void *a3
 		return;
 	BitFlags<116> mustBeClear;
 	BitFlags<116> mustBeSet;
-	ji_006291ae(&mustBeSet, 0, sizeof(mustBeSet));
+	memset(&mustBeSet, 0, sizeof(mustBeSet));
 	unsigned kind = *(const unsigned *)((const char *)a2 + 8);
 	mustBeSet.m_words[kind >> 5] |= (1u << (kind & 31));
-	ji_006291ae(&mustBeClear, 0, sizeof(mustBeClear));
-	ji_006291ae(&mustBeClear, 0, sizeof(mustBeClear));
+	memset(&mustBeClear, 0, sizeof(mustBeClear));
+	memset(&mustBeClear, 0, sizeof(mustBeClear));
 	int v = counts->rva0039BF67(mustBeSet, mustBeClear);
 	ScriptCounter *c = TheScriptEngine->bfmeCounter((AsciiString &)s3);
 	c->m_value = v;

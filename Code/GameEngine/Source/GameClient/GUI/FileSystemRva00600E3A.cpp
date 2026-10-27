@@ -3,8 +3,11 @@
 
 #include <stdio.h>
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 struct FileInfo;
 
@@ -63,7 +66,7 @@ bool FileSystem::getFileInfo(const char *a, FileInfo *fileInfo) const
 		if (!TheFilePathGate->allow(a))
 			return false;
 	}
-	ji_006291ae((void *)fileInfo, 0, 0x10);
+	memset((void *)fileInfo, 0, 0x10);
 	if (!BFME2PreferLocalFiles)
 		goto try_local;
 	if (TheArchiveFileSystem == 0)

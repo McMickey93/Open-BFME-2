@@ -13,8 +13,11 @@
 // 128B via memset only when the bit word is non-zero then clearing the word.
 // Callers 0x00533F3D 0x00534031 0x005341B9 in 0x00533BEC 1759B unclaimed.
 // Neighbours Disp32FloatGetters/Disp8ByteOneSetters carry no // cl: line so defaults apply.
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 #include <new>
 
 class BooleanBitmapSet
@@ -47,7 +50,7 @@ void BooleanBitmapSet::rva00530FC5()
 		--bitsEnd;
 		end -= 32;
 		if (*bitsEnd != 0) {
-			ji_006291ae(end, 0, 128);
+			memset(end, 0, 128);
 			*bitsEnd = 0;
 		}
 		if (bitsEnd == m_summaryBits)
@@ -73,8 +76,8 @@ BooleanBitmapSet::BooleanBitmapSet(int numBits)
 	m_numBitsDiv32 = c;
 	m_bits = new int[c];
 	m_summaryBits = new unsigned int[m_numBitsDiv32 >> 5];
-	ji_006291ae(m_bits, 0, m_numBitsDiv32 << 2);
-	ji_006291ae(m_summaryBits, 0, (m_numBitsDiv32 >> 5) * 4);
+	memset(m_bits, 0, m_numBitsDiv32 << 2);
+	memset(m_summaryBits, 0, (m_numBitsDiv32 >> 5) * 4);
 }
 
 // BooleanBitmapSet::SetBit @ 0x00531008 (57B): __thiscall two-level bit set m_bits at +4 and m_summaryBits at +8; callers in 0x005329C8 0x00532FEA.

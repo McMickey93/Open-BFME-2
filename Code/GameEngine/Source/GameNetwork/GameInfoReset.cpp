@@ -28,8 +28,11 @@ class MpGameRules
 public:
 	static void GetDefaults(int mode, void *rules);
 };
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class Version
 {
@@ -113,7 +116,7 @@ private:
 
 GameInfo::GameInfo() : m_38(0), m_3C(0)
 {
-	ji_006291ae(m_CC, 0, 0x10);
+	memset(m_CC, 0, 0x10);
 	for (Int i = 0; i < 8; ++i)
 		m_slot[i] = 0;
 	m_C8 = 0;
@@ -157,5 +160,5 @@ void GameInfo::reset()
 		delete m_C8;
 		m_C8 = 0;
 	}
-	ji_006291ae(m_CC, 0, 0x10);
+	memset(m_CC, 0, 0x10);
 }

@@ -21,8 +21,11 @@ public:
 
 class LivingWorldManager; extern LivingWorldManager *TheLivingWorldManager;
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class LivingWorldBuilding
 {
@@ -39,7 +42,7 @@ void LivingWorldBuilding::createGhostObject()
 		return;
 	m_2c->clear();
 	int val;
-	ji_006291ae(&val, 0, 4);
+	memset(&val, 0, 4);
 	val |= 1;
 	((Rva0021294A *)TheLivingWorldManager)->m_264->rva003FA681((int)m_2c, val);
 	m_2c = 0;

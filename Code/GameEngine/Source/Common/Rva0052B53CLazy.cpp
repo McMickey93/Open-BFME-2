@@ -19,8 +19,11 @@ public:
 	virtual void XferEnum(void *context, const void *bytes, unsigned int count);
 	char m_pad[0x40 - 4];
 };
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 typedef int Int;
 
@@ -47,7 +50,7 @@ XferMD5CRC::XferMD5CRC(unsigned char v)
 	m_0040 = v;
 	m_ctx = new MD5_CTX;
 	m_done = 0;
-	ji_006291ae(m_digest, 0, 0x10);
+	memset(m_digest, 0, 0x10);
 	MD5Init(m_ctx);
 }
 void XferMD5CRC::rva0052B53C()

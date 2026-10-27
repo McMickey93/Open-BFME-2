@@ -3,8 +3,11 @@
 // Zero 0x4C local via ji_006291ae then Object::rva0028CFB2 with buffer and arg.
 // Evidence: 31 callers; rowed memset thunk 0x006291AE;
 // rowed Object callee 0x0028CFB2 taking two const int star.
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class Object
 {
@@ -20,7 +23,7 @@ struct Rva001E431E
 void Rva001E431E::rva001E431E(const int *x)
 {
 	int buf[19];
-	ji_006291ae(buf, 0, 0x4C);
+	memset(buf, 0, 0x4C);
 	((Object *)this)->rva0028CFB2(buf, x);
 }
 

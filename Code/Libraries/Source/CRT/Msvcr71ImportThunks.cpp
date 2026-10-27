@@ -64,6 +64,13 @@ char * __cdecl strpbrk(const char * str, const char * strCharSet) {
  return _imp__strpbrk(str, strCharSet);
 }
 
+// _memset
+typedef void * (__cdecl *PFN_memset)(void *, int, size_t);
+extern PFN_memset _imp__memset;
+void * __cdecl memset(void * dest, int c, size_t count) {
+ return _imp__memset(dest, c, count);
+}
+
 // _atol
 typedef long (__cdecl *PFN_atol)(const char *);
 extern PFN_atol _imp__atol;

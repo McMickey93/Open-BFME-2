@@ -4,7 +4,11 @@ class AsciiString;
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 class ThingTemplate;
 enum ObjectID; extern class ThingFactory *TheThingFactory;
-void __cdecl ji_006291ae();
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 class ThingTemplate;
 class Team;
 struct CreateMask { char m_pad[0x10]; };
@@ -17,7 +21,7 @@ void __stdcall Rva004C45CFCreate(const Coord3D *pos, const AsciiString *name)
     if (tmpl == 0)
         return;
     CreateMask mask;
-    ((void (__cdecl *)(void *, int, unsigned int))&ji_006291ae)(&mask, 0, 0x10);
+    memset(&mask, 0, 0x10);
     Object *obj = TheThingFactory->newObject((const ThingTemplate *)tmpl, 0, &mask, (ObjectID)0);
     if (obj == 0)
         return;
@@ -39,7 +43,7 @@ void CloudBreakSpecialPower::rva004C45CF(const Coord3D *pos, const AsciiString *
     if (tmpl == 0)
         return;
     CreateMask mask;
-    ((void (__cdecl *)(void *, int, unsigned int))&ji_006291ae)(&mask, 0, 0x10);
+    memset(&mask, 0, 0x10);
     Object *obj = TheThingFactory->newObject((const ThingTemplate *)tmpl, 0, &mask, (ObjectID)0);
     if (obj == 0)
         return;

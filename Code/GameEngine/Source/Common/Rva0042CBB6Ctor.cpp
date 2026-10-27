@@ -1,8 +1,11 @@
 // cl: /EHsc /MD
 // ??0Rva0042CBB6@@QAE@XZ @0x0042CBB6 101B via zeroing ctor with memset tail plus global store
 // Evidence: thiscall returns this; vtable g_00C3C6F4 at +0 plus +0xC=2 plus +0x38=1; memset thunk 0x006291AE of +0x3A len 4; global g_00E03210 stores this; caller 0x0023A4C3
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 // The retail table at RVA 0x0083C6F4: 2 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
@@ -68,6 +71,6 @@ Rva0042CBB6::Rva0042CBB6()
 	m_28 = 0;
 	m_30 = 0;
 	m_34 = 0;
-	ji_006291ae(m_3A, 0, 4);
+	memset(m_3A, 0, 4);
 	g_00E03210 = this;
 }

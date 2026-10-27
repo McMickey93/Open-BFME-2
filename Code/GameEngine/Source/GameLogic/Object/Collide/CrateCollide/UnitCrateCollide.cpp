@@ -59,7 +59,11 @@ enum ObjectID;
 
  extern class ThingFactory *TheThingFactory;
 
-void __cdecl ji_006291ae();
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 class ThingFactory
 {
@@ -254,7 +258,7 @@ bool UnitCrateCollide::executeCrateBehavior(Object *other)
 	{
 		Team *creationTeam = other->getControllingPlayer()->getDefaultTeam();
 		CreateMask mask;
-		((void (__cdecl *)(void *, int, unsigned int))&ji_006291ae)(&mask, 0, 0x10);
+		memset(&mask, 0, 0x10);
 		Object *newObj = TheThingFactory->newObject((const ThingTemplate *)tmpl, creationTeam, &mask, (ObjectID)0);
 		if (newObj != 0)
 		{

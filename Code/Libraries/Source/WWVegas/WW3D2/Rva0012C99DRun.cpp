@@ -23,8 +23,11 @@ struct PROCESS_INFORMATION
 	DWORD dwThreadId;
 };
 
-void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
-#pragma comment(linker, "/alternatename:?ji_006291ae@@YAPAXPAXHI@Z=?ji_006291ae@@YAXXZ")
+// memset is msvcr71's, called through its import thunk at 0x006291AE
+// rather than expanded inline: <string.h>'s memset with
+// #pragma function(memset).
+#include <string.h>
+#pragma function(memset)
 
 extern "C" __declspec(dllimport) unsigned short *__cdecl wcscpy(unsigned short *dst, const unsigned short *src);
 extern "C" __declspec(dllimport) int __stdcall CreateProcessW(
@@ -46,7 +49,7 @@ bool __cdecl RunShaderAssetBuilder()
 	DWORD exitCode;
 	bool ok = false;
 
-	ji_006291ae(&startup, 0, sizeof(startup));
+	memset(&startup, 0, sizeof(startup));
 	startup.cb = sizeof(startup);
 	wcscpy(command, L"ShaderAssetBuilder.exe");
 	if (CreateProcessW(0, command, 0, 0, 0, 0x8000000, 0, 0, &startup, &info)) {
@@ -69,7 +72,7 @@ bool __cdecl ExecuteTextureAssetBuilder(const unsigned short *currentDirectory)
 	DWORD exitCode;
 	bool ok = false;
 
-	ji_006291ae(&startup, 0, sizeof(startup));
+	memset(&startup, 0, sizeof(startup));
 	startup.cb = sizeof(startup);
 	wcscpy(command, L"TextureAssetBuilder.exe");
 	if (CreateProcessW(0, command, 0, 0, 0, 0x8000000, 0, currentDirectory, &startup, &info)) {
