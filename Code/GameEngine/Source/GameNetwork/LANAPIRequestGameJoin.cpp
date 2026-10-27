@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /O1
+// platformsdk
 //
 // LANAPI::RequestGameJoin, retail 0x00449E9A (334 bytes), slot 16 of the
 // LANAPI vtable 0x0083E680 (OnGameJoin's headless timeout retry dispatches
@@ -19,9 +20,8 @@ typedef unsigned char UnsignedByte;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 
-extern "C" __declspec(dllimport) char *__cdecl strncpy( char *dest, const char *source, UnsignedInt count );
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime( void );
-
+#include <string.h>
+#include <windows.h>
 #include "ascii_string.h"
 
 Bool GetStringFromRegistry( AsciiString path, AsciiString key, AsciiString &val );

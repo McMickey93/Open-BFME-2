@@ -1,13 +1,12 @@
 // cl: /DNDEBUG /MD /GX
+// platformsdk
 #include <string.h>
+#include <windows.h>
 // stlport
 // Use the native CRT declarations both alone and beside thread.cpp.
 #include <stl/_config.h>
 #include _STLP_NATIVE_C_HEADER(process.h)
 
-extern "C" __declspec(dllimport) int __stdcall SetThreadPriority(void *, int);
-extern "C" __declspec(dllimport) unsigned long __stdcall ResumeThread(void *);
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void *, unsigned long);
 extern "C" unsigned int __stdcall BFMENetworkBackendThreadStart(void *);
 
 class ThreadClass
