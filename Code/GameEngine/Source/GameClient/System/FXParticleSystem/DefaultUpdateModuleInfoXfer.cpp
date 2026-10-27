@@ -3,7 +3,9 @@
 // Evidence: vtable slot 3 of 0x0081BCE0 (DefaultUpdateModuleInfo) DoXfer;
 //   8 GameClientRandomVariable plus rotation-typed extra at +0x40.
 
-class Snapshot;
+#define BFME_SNAPSHOT_NAME_SLOT
+#define BFME_SNAPSHOT_NONCONST_NAME_SLOT
+#include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
 class AsciiString;
 class UnicodeString;
 class PooledString;
@@ -43,20 +45,15 @@ void XferRotationType(Xfer *xfer, int *value);
 namespace FXParticleSystem
 {
 
-class Snapshot
-{
-public:
-	virtual ~Snapshot();
-	virtual void crc();
-	virtual void loadPostProcess();
-	virtual void xfer(Xfer *xfer);
-};
-
 class DefaultUpdateModuleInfo : public Snapshot
 {
 public:
 	DefaultUpdateModuleInfo();
 	virtual ~DefaultUpdateModuleInfo();
+	// Complete the canonical Snapshot contract for the embedded info below.
+	// This TU owns only transfer bodies; the other slots remain out of line.
+	virtual void loadPostProcess();
+	virtual const char *GetSnapshotName();
 	virtual void xfer(Xfer *xfer);
 private:
 	GameClientRandomVariable m_var0;

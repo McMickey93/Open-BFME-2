@@ -4115,6 +4115,18 @@ Completed: `ModuleInfoVectorDeletingDtors.cpp` and `ParticleSystemInfoCopyCtor.c
 
 Remaining / next check: the allocator's nested `GeneralAllocator::Snapshot` is a distinct heap-report struct and must not be replaced with engine `::Snapshot`. Xfer needs authorized access to Snapshot's protected transfer. FX info virtual surfaces, the ParticleSystemInfo constructor vtable and RemoveUpgrade's real ModuleData base hierarchy need reconciliation. The LivingWorldBattle and LivingWorldBuildPlot constructors need an evidenced Snapshot constructor surface that emits no base-vptr store before the list-base call. Coord2D's registered header lacks the constructors, destructor, conversions and arithmetic members these remaining consumers require; AnimateWindow getVel and setVel rows also encode the other class-key. Rva00062B17Init is a stale queue item with no remaining Coord2D view or use. Preserve all stopped sources; the handoff records their exact restoration and next-owner evidence. Money's existing record-identity prerequisite remains LINK-092.
 
+**DefaultUpdate transfer follow-up (2026-10-27, inspected `a228582538`):**
+[The bounded adoption](../reverse/attempt_support/defaultupdate-snapshot-header-20261027-codexb4.md)
+removes the private Snapshot from DefaultUpdateModuleInfoXfer.cpp. Declaration-only
+overrides complete the embedded info's canonical base contract and avoid the
+previous abstract-class failure. The header tool retires its one queue row.
+All four rows (357 bytes), four complete object digests, external definitions and
+references remain identical before/after; no vtable or helper body is added.
+The unit remains ordinary-preview LINKS (357 -> 357 bytes, index `bf3dd31211`).
+This clears this unit's header prerequisite only. The other FX-info surfaces,
+allocator-name collision, Xfer access and constructor prerequisites above remain.
+No new linked-byte or census gain is claimed.
+
 Clearance: only the named retained adoptions and their local preview scope are verified; no new linked-unit or headline gain claimed. Census confirmation: pending.
 
 ### LINK-108: PropDraw module-data units emit incompatible short tables
@@ -4270,6 +4282,11 @@ Status: Consumer repair landed / awaiting census (ordinary preview LINKS); the r
 Evidence / affected units: `Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp` (1,101 B) still has `??$_Construct@UQuantityModifier@@U1@@_STL@@YAXPAUQuantityModifier@@ABU1@@Z` as its only unresolved name in a current-object `link_check.py`. The body at 0x0049DD0B (45 B, EH) is rowed as the placeholder `?Rva0049DD0BConstruct@@YAXPAXPBX@Z` in `stlport_construct_stl_types.cpp`; a scan of retail `.text` finds only four callers, all `vector<QuantityModifier>` helpers (0x49DD46 `__uninitialized_copy`, 0x49DD71 `__uninitialized_fill_n`, 0x49F77C `_M_insert_overflow`, 0x49FDD4 `push_back`), so the row is structurally `_Construct<QuantityModifier, QuantityModifier>` delegating to the `ConstructProbePair` copy.
 Completed: diagnosis only; no source or ledger change. Attempt evidence: `reverse/re_attempts.log` (blocked, 0x0049DD0B). Follow-up by the seat that held the claim (2026-10-27): ProductionUpdate.cpp replaces its declaration-only `_Construct<QuantityModifier>` with a dllimport+forceinline forwarder to the rowed `Rva0049DD0BConstruct`. The call bytes are unchanged, following the force-inlined forwarders to rowed members in 161406ad2a. `./build.sh` passes 14/14 rows, and the renumbered funclet $L7027 is verified through its parent EH data. find_declared_unmatched is clean. link_check with stlport_construct_stl_types.cpp gives LINKS for both, 0 -> 1,101 B for ProductionUpdate.cpp.
 Remaining / next check: emit that explicit specialization (the existing `Rva0039A48EElement` pattern in the same file) and move the parent row, its `$L6605` funclet (0x0078D8B3) and `__ehhandler$` row (0x0078D8C1) to the new name. `rename.py` refuses the signature change and `add_match.py --replace-rva` takes scaffold rows only, so retract the three rows in their own reviewed commit and re-add them with `add_match.py`; then `link_check.py` ProductionUpdate.cpp together with stlport_construct_stl_types.cpp. After the rename, return the forwarder in ProductionUpdate.cpp to a plain declaration.
+Current-input recheck (2026-10-27, `a228582538`): normal build still passes
+14/14 rows; the paired ordinary preview with stlport_construct_stl_types.cpp
+still reports LINKS (1,101 and 1,791 authored bytes, index `bf3dd31211`). No
+source change or new gain; the picker served the historical blocker. See the
+[follow-up receipt](../reverse/attempt_support/defaultupdate-snapshot-header-20261027-codexb4.md#initial-picker-lead).
 Clearance: ProductionUpdate.cpp, current-object ordinary preview; the naming rename is pending.
 Census confirmation: not claimed.
 
