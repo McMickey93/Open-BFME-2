@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /O1 /arch:SSE /G7
+// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /O1 /arch:SSE /G7 -Ireference/shims/wwmath
 // BF1 donor 575ba2b04743f190f069805fbdc59936123c45da:
 // game/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp.
 // Native caller ScreenCrossFadeFilter::preRender F63FB and debug name establish
@@ -83,12 +83,7 @@ public:
 	float m_minWaterOpacity;
 };
 extern BaseHeightMapRenderObjClass *TheTerrainRenderObject;
-class Vector2
-{
-public:
-	float m_x;
-	float m_y;
-};
+#include "Vector2.h"
 class Vector3
 {
 public:
@@ -139,7 +134,7 @@ protected:
 
 union RenderTargetTemp
 {
-	struct { int pad; Vector2 vector2; } scaleHome;
+	struct { int pad; float x; float y; } scaleHome;
 	Vector3 vector3;
 	struct
 	{
@@ -180,9 +175,9 @@ void W3DShaderManager::startRenderToTexture()
 				if (vmat->m_refs == 0)
 					vmat->Delete_This();
 			}
-			temp.scaleHome.vector2.m_x = 1.0f;
-			temp.scaleHome.vector2.m_y = 1.0f;
-			drawViewport(0x00ffffff | (((int)(TheTerrainRenderObject->m_minWaterOpacity * 255.0f)) << 24), false, &temp.scaleHome.vector2);
+			temp.scaleHome.x = 1.0f;
+			temp.scaleHome.y = 1.0f;
+			drawViewport(0x00ffffff | (((int)(TheTerrainRenderObject->m_minWaterOpacity * 255.0f)) << 24), false, (const Vector2 *)&temp.scaleHome.x);
 			DX8Wrapper::Set_DX8_Render_State(168, 7);
 		}
 		else
