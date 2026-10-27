@@ -25,12 +25,7 @@ bool less<int>::operator()(const int &a, const int &b) const
 { return a < b; }
 }
 
-class GameLogic
-{
-public:
-	char m_pad00[0x40];
-	int m_40;
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 struct Rva00398E4AArg
@@ -55,7 +50,8 @@ void CastleBehavior::rva00398E4A(Rva00398E4AArg *arg)
 	int idx = 0;
 	while (bits != 0) {
 		if ((bits & 1) != 0) {
-			m_map.insert(_STL::map<int, int>::value_type(idx, 0)).first->second = TheGameLogic->m_40;
+			_STL::map<int, int>::iterator entry = m_map.insert(_STL::map<int, int>::value_type(idx, 0)).first;
+			entry->second = TheGameLogic->getFrame();
 		}
 		bits >>= 1;
 		++idx;

@@ -13,10 +13,7 @@
 #define _STLP_NO_EXCEPTIONS 1
 #include <list>
 
-enum ObjectID
-{
-	OBJECTID_NONE = 0
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 struct DamageInfo
 {
@@ -73,13 +70,6 @@ public:
 	float m_evacuationScale;
 };
 
-class GameLogic
-{
-public:
-	unsigned char m_pad[0x40];
-	int m_frame;
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 
@@ -110,7 +100,7 @@ void EvacuateDamage::onDamage(DamageInfo *damageInfo)
 		return;
 	BfmeSpecialPowerTimer8 record;
 	*(float *)&record.m_templateID = damageInfo->m_amount;
-	record.m_readyFrame = TheGameLogic->m_frame;
+	record.m_readyFrame = TheGameLogic->getFrame();
 	m_pendingEvacuations.push_back(record);
 	float health = m_object->m_body->getHealth();
 	if (rva004BADC1() >= health * moduleData->m_evacuationScale)

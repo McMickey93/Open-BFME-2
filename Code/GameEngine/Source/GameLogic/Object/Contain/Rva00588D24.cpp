@@ -21,15 +21,10 @@ public:
 	virtual void e57(); virtual void e58(); virtual void e59(); virtual void e60();
 	virtual bool slotF4();
 	virtual void e62(); virtual void e63();
-	virtual void slot100(void *a);
+	virtual void slot100(unsigned int frame);
 };
 
-class GameLogic
-{
-public:
-	char _00[0x40];
-	void *m_40;
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 struct BfmeWorldRV
@@ -56,7 +51,7 @@ bool Rva0047A040Base9E0::rva00588D24(void *a, Object *object)
 		return false;
 	if (!containEntry->slotF4()) {
 		containEntry->slot20(object);
-		containEntry->slot100(TheGameLogic->m_40);
+		containEntry->slot100(TheGameLogic->getFrame());
 		if (containEntry->slotF4()) {
 			(*(BfmeWorldRV **)&TheControlBar)->m_28 = 1;
 			containEntry->slot100(0);
@@ -76,10 +71,6 @@ bool Rva0047A040Base9E0::rva00588D24(void *a, Object *object)
 // setStatus(3,true); second arm checks +0x454 then testStatus(0x5E) then
 // pinned rva0028BAC0. Layouts follow DrawableRva00276B95, radius-cursor
 // PlayerList, Rva0042F9DAEmit MessageStream/InGameUI and Rva0042FB8F ObjectID.
-enum ObjectID
-{
-	OBJECTID_NONE = 0
-};
 enum ObjectStatusTypes
 {
 	OBJECT_STATUS_DUMMY = 0

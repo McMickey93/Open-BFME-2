@@ -245,13 +245,7 @@ public:
 	bool detected(Object *, Object *, int, int);
 };
 
-class GameLogic
-{
-public:
-	char m_pad00[0x178];
-	Rva00439E0C *m_178;
-	void destroyObject(Object *);
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -443,7 +437,7 @@ void OpenContainActionIface::rva00463138()
 			Rva00373EC6 *helper = rider->rva0028F4BC();
 			if (helper != 0)
 				((StealthUpdate *)helper)->markAsDetected(0, 1, 0, 1);
-			TheGameLogic->m_178->detected(rider, 0, 0, 1);
+			TheGameLogic->getManager178()->detected(rider, 0, 0, 1);
 		}
 	}
 }
@@ -464,7 +458,7 @@ bool OpenContain::rva00464EE7(Object *object)
 				Rva00373EC6 *helper = rider->rva0028F4BC();
 				if (helper != 0)
 					((StealthUpdate *)helper)->markAsDetected(0, 1, 0, 1);
-				TheGameLogic->m_178->detected(rider, 0, 0, 1);
+				TheGameLogic->getManager178()->detected(rider, 0, 0, 1);
 				Object *owner = m_object;
 				AIUpdateInterfaceView *currentAI = (AIUpdateInterfaceView *)rider->m_ai;
 				currentAI->m_command.aiExit(owner, CMD_FROM_AI);

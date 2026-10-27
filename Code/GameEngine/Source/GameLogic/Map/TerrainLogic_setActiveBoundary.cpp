@@ -100,17 +100,7 @@ public:
 	Real m_floatD8; // +0xD8
 };
 
-class GameLogic
-{
-public:
-	Object *getFirstObject();
-
-public:
-	// Padding is retail-measured only at the two consumed offsets (+0xAC in
-	// the matched getFirstObject TU, +0x170 here); the member name is opaque.
-	unsigned char m_pad[0x170];
-	Rva0035A2DC *m_opaque170; // +0x170
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 class Object
 {
@@ -188,7 +178,7 @@ void TerrainLogic::setActiveBoundary(Int newActiveBoundary)
 	TheRadar->newMap(TheTerrainLogic);
 	ThePartitionManager->rva00625300(&region);
 	TheShroudManager->setRegion(&region, 0.0f);
-	TheGameLogic->m_opaque170->rva0035A2DC(&region, (*(Rva00DFE758Holder **)&TheWritableGlobalData)->m_floatD4);
+	((Rva0035A2DC *)TheGameLogic->getTerrainResourceManager())->rva0035A2DC(&region, (*(Rva00DFE758Holder **)&TheWritableGlobalData)->m_floatD4);
 
 	Object *object = TheGameLogic->getFirstObject();
 	while (object != 0)

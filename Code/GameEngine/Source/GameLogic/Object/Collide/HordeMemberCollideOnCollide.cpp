@@ -23,7 +23,7 @@ class ModuleData;
 class Player;
 
 // Zero Hour's GameCommon.h spells the id an enum; retail's 0x00049DC5 row takes it.
-enum ObjectID { INVALID_ID = 0, FORCE_OBJECTID_TO_LONG_SIZE = 0x7ffffff };
+#include "../../../Common/GameLogicObjectLookupView.h"
 enum Relationship { ENEMIES, NEUTRAL, ALLIES };
 
 template <int N> class VSlots : public VSlots<N - 1>
@@ -83,11 +83,6 @@ private:
 	Object *m_containedBy;                    // +0x274
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 
