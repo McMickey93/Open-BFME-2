@@ -25841,11 +25841,11 @@ __Locale_wchar_toupper,,0x00020AC0,39,Code/Libraries/Source/WWVegas/WWLib/Rva008
 ?rva002EB416@Rva002EB416@@QAEXPAU_Rva002EB416Node@@@Z,,0x002EB416,50,Code/Libraries/Source/WWVegas/WWLib/Rva002EB416Release.cpp,matched,recursive free-list release via child and next to pool head
 ?rva002EB46E@Rva002EB46E@@QAEXPAU_Rva002EB46ENode@@@Z,,0x002EB46E,50,Code/Libraries/Source/WWVegas/WWLib/Rva002EB46ERelease.cpp,matched,recursive free-list release via child and next to pool head
 ??0Rva00200D38@@QAE@ABVAsciiString@@@Z,,0x00200D38,72,Code/GameEngine/Source/Common/Thing/Rva00200D38Ctor.cpp,matched,vtable 0x00BE2B78 StringBase copy pin pushback rowed callers ready
-?rva002EE9E0@Rva002EB416@@QAEXXZ,,0x002EE9E0,41,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp,matched,pool block reset via rowed release self-links
+?clear@?$_Rb_tree@HU?$pair@$$CBHURva002F0B8AElement@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva002F0B8AElement@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva002F0B8AElement@@@_STL@@@2@@_STL@@QAEXXZ,,0x002EE9E0,41,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp,matched,STLport4.5.3 _Rb_tree::clear (vendor/stlport/stl/_tree.h:468); callee of map dtor 0x002F0B8A
 ?rva002EEA1D@Rva002EB46E@@QAEXXZ,,0x002EEA1D,41,Code/Libraries/Source/WWVegas/WWLib/Rva002EEA1DReset.cpp,matched,pool block reset via rowed release self-links
 ?rva006E3710@Rva006E3710@@QAE_NPAURva006E3710Node@@@Z,,0x006E3710,39,Code/Libraries/Source/Apt/Rva006E3710Check.cpp,matched,unlock lane list search via plus48 for this plus9c
 ??_GRva00509D4C@@UAEPAXI@Z,,0x00509D30,28,Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-11.cpp,matched,chain from 00509D4C same 28B scalar-deleting shape
-?rva002EEA09@Rva002EB416@@QAEXXZ,,0x002EEA09,20,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp,matched,pool head release to global free list
+??1?$_Rb_tree_base@U?$pair@$$CBHURva002F0B8AElement@@@_STL@@V?$allocator@U?$pair@$$CBHURva002F0B8AElement@@@_STL@@@2@@_STL@@QAE@XZ,,0x002EEA09,20,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp,matched,STLport4.5.3 _Rb_tree_base dtor (vendor/stlport/stl/_tree.h:230); callee of map dtor 0x002F0B8A
 ?rva002EEA46@Rva002EB46E@@QAEXXZ,,0x002EEA46,20,Code/Libraries/Source/WWVegas/WWLib/Rva002EEA1DReset.cpp,matched,pool head release to global free list
 ?rva00535C9D@UserPreferences@@QAEXVAsciiString@@H@Z,,0x00535C9D,71,Code/GameEngine/Source/Common/UserPreferencesRva00535CE4.cpp,matched,UserPreferences Losses-void via slot2C gap
 ?rva00535D2E@UserPreferences@@QAEXVAsciiString@@H@Z,,0x00535D2E,71,Code/GameEngine/Source/Common/UserPreferencesRva00535CE4.cpp,matched,UserPreferences WinStreak via slot2C gap same TU
