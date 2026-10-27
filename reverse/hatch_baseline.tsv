@@ -3700,9 +3700,9 @@ alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerUserChangedNic
 alternatename	Code/GameEngine/Source/GameNetwork/LANGameInfoSlots.cpp	?getConstLANSlot@LANGameInfo@@QBEPBVLANGameSlot@@H@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/NetCommandMsg.cpp	?count@XmlNameSlotList@@QAEHXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/NetCommandMsgCtor.cpp	??1NetKeepAliveCommandMsg@@MAE@XZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/NetPacket_isAckRepeat.cpp	?j_00004935@@YAXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/NetPacket_isAckRepeat.cpp	?j_0001bbd5@@YAXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/NetPacket_isAckRepeat.cpp	?j_00046e89@@YAXXZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/NetPacket.cpp	?j_00004935@@YAXXZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/NetPacket.cpp	?j_0001bbd5@@YAXXZ	1
+alternatename	Code/GameEngine/Source/GameNetwork/NetPacket.cpp	?j_00046e89@@YAXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/NetworkUtilResolveIP.cpp	?ResolveIP@@YAIVAsciiString@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007E90C0Names.cpp	?bfmeCmpRE@BfmeOtherRE@@QAEDHH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp	?init@ServiceHubImpl@@QAEXXZ	1

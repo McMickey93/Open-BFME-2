@@ -148,6 +148,10 @@ enum GameMessageArgumentDataType
 };
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 #include "../../../Libraries/Include/Lib/IRegion2D.h"
+#include <string.h>
+#pragma comment(linker, "/alternatename:?j_0001bbd5@@YAXXZ=?isAckStage1Repeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z")
+#pragma comment(linker, "/alternatename:?j_00004935@@YAXXZ=?isAckStage1Repeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z")
+#pragma comment(linker, "/alternatename:?j_00046e89@@YAXXZ=?isAckBothRepeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z")
 
 union GameMessageArgumentType
 {
@@ -279,20 +283,6 @@ public:
 	UnsignedShort m_wrappedCommandID;
 };
 
-// +0x1C byte getter.
-class NetProgressCommandMsg : public NetCommandMsg
-{
-public:
-	UnsignedByte getPercentage();
-};
-
-// +0x1C word getter.
-class Rva004D5767WordField
-{
-public:
-	UnsignedShort get() const;
-};
-
 // Frame message addFrameCommand serializes: three dwords after the base.
 class NetFrameCommandMsg : public NetCommandMsg
 {
@@ -304,18 +294,6 @@ public:
 	UnsignedInt m_1c;
 	UnsignedInt m_20;
 	UnsignedInt m_24;
-};
-
-class NetCommandRef
-{
-public:
-	NetCommandRef(NetCommandMsg *msg);
-	~NetCommandRef();
-	NetCommandMsg *m_msg;
-	NetCommandRef *m_next;
-	NetCommandRef *m_prev;
-	UnsignedByte m_relay;
-	UnsignedInt m_timeLastSent;
 };
 
 struct NetPacketAddress
@@ -881,6 +859,47 @@ public:
 private:
 	char m_pad[0x20];
 };
+
+class NetProgressCommandMsg : public NetCommandMsg
+{
+public:
+	unsigned char getPercentage();
+};
+
+class Rva004D5767WordField
+{
+public:
+	unsigned short get() const;
+	char m_lead[0x1c];
+	unsigned short m_value;
+};
+
+class NetCommandRef
+{
+public:
+	NetCommandRef(NetCommandMsg *msg);
+	~NetCommandRef();
+	__declspec(dllimport) __forceinline NetCommandMsg *getCommand() { return m_msg; }
+	__declspec(dllimport) __forceinline UnsignedByte getRelay() const { return m_relay; }
+	NetCommandMsg *m_msg;
+	NetCommandRef *m_next;
+	NetCommandRef *m_prev;
+	UnsignedByte m_relay;
+	UnsignedInt m_timeLastSent;
+};
+
+extern void j_00046e89(void);
+
+extern void j_00004935(void);
+
+extern void j_0001bbd5(void);
+
+struct TriInt
+{
+	int a, b, c;
+};
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacket.cpp
 
 // ---- from Code/GameEngine/Source/GameNetwork/NetPacket.cpp
 
@@ -5567,36 +5586,6 @@ NetCommandList *NetPacket::getCommandList()
 	return retval;
 }
 
-// tu-skeleton: 0x0058C459 4B ?Rva0058C459@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C45D 4B ?Rva0058C45D@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C461 4B ?Rva0058C461@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C465 4B ?Rva0058C465@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C469 4B ?Rva0058C469@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C46D 4B ?Rva0058C46D@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C471 4B ?Rva0058C471@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C475 11B ?Rva0058C475@@YAHPBURva0058C475Arg@@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C480 4B ?Rva0058C480@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C484 4B ?rva0058C484@Rva0058C484@@QAEHXZ -- matched in Code/GameEngine/Source/Common/VtableConstantPredicates.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C80F 213B ?Rva0058C80FWrite@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058C80FWrite.cpp (not merged yet)
-
-// tu-skeleton: 0x0058C96C 175B ?Rva0058C96CWrite@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058C96CWrite.cpp (not merged yet)
-
-// tu-skeleton: 0x0058CA1B 175B ?Rva0058CA1BWrite@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CA1BWrite.cpp (not merged yet)
-
-// tu-skeleton: 0x0058CB27 178B ?Rva0058CB27Write@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CB27Write.cpp (not merged yet)
-
-// tu-skeleton: 0x0058CBD9 178B ?Rva0058CBD9Write@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CBD9Write.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameNetwork/Rva0058CCF2Write.cpp
 
 void __cdecl Rva0058CCF2Write(char *dst, NetCommandRef *ref)
@@ -5617,24 +5606,6 @@ void __cdecl Rva0058CCF2Write(char *dst, NetCommandRef *ref)
 	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xc, &id, 2);
 	dst[0xe] = 'D';
 }
-
-// tu-skeleton: 0x0058CD6A 185B ?Rva0058CD6AWrite@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CD6AWrite.cpp (not merged yet)
-
-// tu-skeleton: 0x0058CE23 162B ?Rva0058CE23Write@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CE23Write.cpp (not merged yet)
-
-// tu-skeleton: 0x0058CEC5 190B ?Rva0058CEC5Write@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CEC5Write.cpp (not merged yet)
-
-// tu-skeleton: 0x0058CF83 190B ?Rva0058CF83Write@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CF83Write.cpp (not merged yet)
-
-// tu-skeleton: 0x0058D041 161B ?Rva0058D041Write@@YAXPAEPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacketRva0058D041Write.cpp (not merged yet)
-
-// tu-skeleton: 0x0058E0E2 299B ?readWrapperMessage@NetPacket@@KAPAVNetCommandMsg@@PAEAAH@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacketO1.cpp (not merged yet)
-
-// tu-skeleton: 0x00590924 75B ?isAckRepeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacket_isAckRepeat.cpp (not merged yet)
-
-// tu-skeleton: 0x00590D19 506B ?Rva00590D19Add@@YAXHPAVNetGameCommandMsg@@PBXPAHH@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva00590D19Add.cpp (not merged yet)
-
-// tu-skeleton: 0x00590F13 52B ?rva00590F13@Rva004D62A9@@QAEXVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/Rva004D65F9Set.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva00590F47Get.cpp
 
@@ -5744,18 +5715,6 @@ int Rva00591062Get(Rva00591062Host *p)
 	return l1 + l2 + 0x11;
 }
 
-// tu-skeleton: 0x005910B4 188B ?Rva005910B4Write@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva005910B4Write.cpp (not merged yet)
-
-// tu-skeleton: 0x0059188C 158B ?rva0059188C@NetPacket@@QAEEPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacket_rva0059188C.cpp (not merged yet)
-
-// tu-skeleton: 0x0059192A 133B ?rva0059192A@NetPacket@@QAEEPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacket_rva0059192A.cpp (not merged yet)
-
-// tu-skeleton: 0x005919AF 182B ?rva005919AF@NetPacket@@QAEEPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacket_rva005919AF.cpp (not merged yet)
-
-// tu-skeleton: 0x00591A65 182B ?rva00591A65@NetPacket@@QAEEPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacket_rva00591A65.cpp (not merged yet)
-
-// tu-skeleton: 0x00591D0D 158B ?rva00591D0D@NetPacket@@QAEEPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacket_rva00591D0D.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameNetwork/Rva005922FBRead.cpp
 
 Rva004D6208 *__cdecl Rva005922FBRead(int base, unsigned int *cursor)
@@ -5828,8 +5787,576 @@ class Rva004D64F5 *__cdecl Rva00592496Read(int base, unsigned int *cursor)
 	return obj;
 }
 
+// tu-skeleton: 0x0058C459 4B ?Rva0058C459@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C45D 4B ?Rva0058C45D@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C461 4B ?Rva0058C461@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C465 4B ?Rva0058C465@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C469 4B ?Rva0058C469@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C46D 4B ?Rva0058C46D@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C471 4B ?Rva0058C471@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C475 11B ?Rva0058C475@@YAHPBURva0058C475Arg@@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C480 4B ?Rva0058C480@@YAHXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE02.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C484 4B ?rva0058C484@Rva0058C484@@QAEHXZ -- matched in Code/GameEngine/Source/Common/VtableConstantPredicates.cpp (not merged yet)
+
+// tu-skeleton: 0x0058C80F 213B ?Rva0058C80FWrite@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058C80FWrite.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva0058C96CWrite.cpp
+
+void __cdecl Rva0058C96CWrite(char *dst, NetCommandRef *ref)
+{
+	NetProgressCommandMsg *msg = (NetProgressCommandMsg *)ref->m_msg;
+	dst[0] = 'T';
+	dst[1] = (char)msg->m_commandType;
+	dst[2] = 'R';
+	unsigned char relay = ref->m_relay;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 3, &relay, 1);
+	dst[4] = 'S';
+	unsigned int ts = msg->m_timestamp;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 5, &ts, 4);
+	dst[9] = 'F';
+	unsigned int fr = msg->m_executionFrame;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xa, &fr, 4);
+	dst[0xe] = 'P';
+	dst[0xf] = (char)msg->m_playerID;
+	dst[0x10] = 'C';
+	unsigned short id = msg->m_id;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0x11, &id, 2);
+	dst[0x13] = 'D';
+	unsigned char pct = msg->getPercentage();
+	dst += 0x14;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &pct, 1);
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva0058CA1BWrite.cpp
+
+void __cdecl Rva0058CA1BWrite(char *dst, NetCommandRef *ref)
+{
+	NetWrapperCommandMsg *msg = (NetWrapperCommandMsg *)ref->m_msg;
+	dst[0] = 'T';
+	dst[1] = (char)msg->m_commandType;
+	dst[2] = 'R';
+	unsigned char relay = ref->m_relay;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 3, &relay, 1);
+	dst[4] = 'S';
+	unsigned int ts = msg->m_timestamp;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 5, &ts, 4);
+	dst[9] = 'F';
+	unsigned int fr = msg->m_executionFrame;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xa, &fr, 4);
+	dst[0xe] = 'P';
+	dst[0xf] = (char)msg->m_playerID;
+	dst[0x10] = 'C';
+	unsigned short id = msg->m_id;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0x11, &id, 2);
+	dst[0x13] = 'D';
+	unsigned char *p = msg->getData();
+	dst += 0x14;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &p, 4);
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva0058CB27Write.cpp
+
+void __cdecl Rva0058CB27Write(char *dst, NetCommandRef *ref)
+{
+	NetProgressCommandMsg *msg = (NetProgressCommandMsg *)ref->m_msg;
+	dst[0] = 'T';
+	dst[1] = (char)msg->m_commandType;
+	dst[2] = 'R';
+	unsigned char relay = ref->m_relay;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 3, &relay, 1);
+	dst[4] = 'S';
+	unsigned int ts = msg->m_timestamp;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 5, &ts, 4);
+	dst[9] = 'P';
+	dst[0xa] = (char)msg->m_playerID;
+	dst[0xb] = 'C';
+	unsigned short id = msg->m_id;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xc, &id, 2);
+	dst[0xe] = 'D';
+	unsigned char pct = msg->getPercentage();
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xf, &pct, 1);
+	unsigned int off = ((NetWrapperCommandMsg *)msg)->getDataOffset();
+	dst += 0x10;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &off, 4);
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva0058CBD9Write.cpp
+
+void __cdecl Rva0058CBD9Write(char *dst, NetCommandRef *ref)
+{
+	NetProgressCommandMsg *msg = (NetProgressCommandMsg *)ref->m_msg;
+	dst[0] = 'T';
+	dst[1] = (char)msg->m_commandType;
+	dst[2] = 'R';
+	unsigned char relay = ref->m_relay;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 3, &relay, 1);
+	dst[4] = 'S';
+	unsigned int ts = msg->m_timestamp;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 5, &ts, 4);
+	dst[9] = 'P';
+	dst[0xa] = (char)msg->m_playerID;
+	dst[0xb] = 'C';
+	unsigned short id = msg->m_id;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xc, &id, 2);
+	dst[0xe] = 'D';
+	unsigned char pct = msg->getPercentage();
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xf, &pct, 1);
+	unsigned int len = ((NetWrapperCommandMsg *)msg)->getDataLength();
+	dst += 0x10;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &len, 4);
+}
+
+// tu-skeleton: 0x0058CD6A 185B ?Rva0058CD6AWrite@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva0058CD6AWrite.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva0058CE23Write.cpp
+
+void __cdecl Rva0058CE23Write(char *dst, NetCommandRef *ref)
+{
+	NetWrapperCommandMsg *msg = (NetWrapperCommandMsg *)ref->m_msg;
+	dst[0] = 'T';
+	dst[1] = (char)msg->m_commandType;
+	dst[2] = 'R';
+	dst[3] = (char)ref->m_relay;
+	dst[4] = 'S';
+	unsigned int ts = msg->m_timestamp;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 5, &ts, 4);
+	dst[9] = 'P';
+	dst[0xa] = (char)msg->m_playerID;
+	dst[0xb] = 'C';
+	unsigned short id = msg->m_id;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0xc, &id, 2);
+	dst[0xe] = 'D';
+	unsigned short w = ((const Rva004D5767WordField *)msg)->get();
+	dst += 0xf;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &w, 2);
+	unsigned int len = msg->getDataLength();
+	dst += 2;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &len, 4);
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva0058CEC5Write.cpp
+
+void __cdecl Rva0058CEC5Write(char *dst, NetCommandRef *ref)
+{
+	NetWrapperCommandMsg *msg = (NetWrapperCommandMsg *)ref->m_msg;
+	dst[0] = 'T';
+	dst[1] = (char)msg->m_commandType;
+	dst[2] = 'S';
+	unsigned int ts = msg->m_timestamp;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 3, &ts, 4);
+	dst[7] = 'F';
+	unsigned int fr = msg->m_executionFrame;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 8, &fr, 4);
+	dst[0xc] = 'R';
+	dst[0xd] = (char)ref->m_relay;
+	dst[0xe] = 'P';
+	dst[0xf] = (char)msg->m_playerID;
+	dst[0x10] = 'C';
+	unsigned short id = msg->m_id;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0x11, &id, 2);
+	dst[0x13] = 'D';
+	unsigned int len = msg->getDataLength();
+	dst += 0x14;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &len, 4);
+	unsigned char *data = msg->getData();
+	dst += 4;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &data, 4);
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva0058CF83Write.cpp
+
+void __cdecl Rva0058CF83Write(char *dst, NetCommandRef *ref)
+{
+	NetWrapperCommandMsg *msg = (NetWrapperCommandMsg *)ref->m_msg;
+	dst[0] = 'T';
+	dst[1] = (char)msg->m_commandType;
+	dst[2] = 'S';
+	unsigned int ts = msg->m_timestamp;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 3, &ts, 4);
+	dst[7] = 'F';
+	unsigned int fr = msg->m_executionFrame;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 8, &fr, 4);
+	dst[0xc] = 'R';
+	dst[0xd] = (char)ref->m_relay;
+	dst[0xe] = 'P';
+	dst[0xf] = (char)msg->m_playerID;
+	dst[0x10] = 'C';
+	unsigned short id = msg->m_id;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst + 0x11, &id, 2);
+	dst[0x13] = 'D';
+	unsigned char *data = msg->getData();
+	dst += 0x14;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &data, 4);
+	unsigned int len = msg->getDataLength();
+	dst += 4;
+	((void (__cdecl *)(void *, const void *, int))ji_006291a8)(dst, &len, 4);
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacketRva0058D041Write.cpp
+
+// ?Rva0058D041Write@@YAXPAEPAVNetCommandRef@@@Z
+// partial score=0.97 date=2026-10-01
+// ?Rva0058D041Write@@YAXPAEPAVNetCommandRef@@@Z @0x0058D041 161B.
+// NetPacket wrapper serialize T S F R P C D plus getData pointer.
+// Evidence: leaf lane plus donor TSRFPCD markers plus caller 0x00592BC5.
+
+void Rva0058D041Write(UnsignedByte *dst, NetCommandRef *ref)
+{
+	NetWrapperCommandMsg *cmd = (NetWrapperCommandMsg *)ref->getCommand();
+	dst[0] = 0x54;
+	dst[1] = (UnsignedByte)cmd->getNetCommandType();
+	dst[2] = 0x53;
+	UnsignedInt ts = cmd->getTimestamp();
+	memcpy(dst + 3, &ts, 4);
+	dst[7] = 0x46;
+	UnsignedInt fr = cmd->getExecutionFrame();
+	memcpy(dst + 8, &fr, 4);
+	dst[12] = 0x52;
+	dst[13] = ref->getRelay();
+	dst[14] = 0x50;
+	dst[15] = (UnsignedByte)cmd->getPlayerID();
+	dst[16] = 0x43;
+	UnsignedShort nid = cmd->getID();
+	memcpy(dst + 17, &nid, 2);
+	dst[19] = 0x44;
+	void *data = cmd->getData();
+	memcpy(dst + 20, &data, 4);
+}
+
+// tu-skeleton: 0x0058E0E2 299B ?readWrapperMessage@NetPacket@@KAPAVNetCommandMsg@@PAEAAH@Z -- matched in Code/GameEngine/Source/GameNetwork/NetPacketO1.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacket_isAckRepeat.cpp
+
+// ?isAckRepeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z
+bool NetPacket::isAckRepeat(NetCommandRef *msg)
+{
+	if (m_lastCommand == 0)
+	{
+		return false;
+	}
+	if (m_lastCommand->getCommand()->getNetCommandType() != msg->getCommand()->getNetCommandType())
+	{
+		return false;
+	}
+	if (msg->getCommand()->getNetCommandType() == 0)
+	{
+		AckRepeatCall call;
+		call.free_function = &j_00046e89;
+		return (((AckRepeatReceiver *)this)->*call.member_function)(msg);
+	}
+	if (msg->getCommand()->getNetCommandType() == 1)
+	{
+		AckRepeatCall call;
+		call.free_function = &j_00004935;
+		return (((AckRepeatReceiver *)this)->*call.member_function)(msg);
+	}
+	if (msg->getCommand()->getNetCommandType() == 2)
+	{
+		AckRepeatCall call;
+		call.free_function = &j_0001bbd5;
+		return (((AckRepeatReceiver *)this)->*call.member_function)(msg);
+	}
+	return false;
+}
+
+// Each retail call in this body reads an address the ledger already carries
+// under the rowed name below. Bind the donor spelling to that owner so one
+// address keeps one definition and the unit links.
+//   0x0058D7B6 reads ?isAckStage1Repeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z
+
+//   0x0058D7B6 reads ?isAckStage1Repeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z
+
+//   0x0058D747 reads ?isAckBothRepeat@NetPacket@@IAE_NPAVNetCommandRef@@@Z
+
+// ---- from Code/GameEngine/Source/GameNetwork/Rva00590D19Add.cpp
+
+// ?Rva00590D19Add@@YAXHPAVNetGameCommandMsg@@PBXPAHH@Z @0x00590D19 506B leaf: if-chain on type 0-10 memcpy from base+*off then addArgument
+// evidence: calls rowed memcpy thunk @0x006291A8 with sizes 4 4 1 4 4 4 12 8 16 4 2 plus rowed addArgument @0x004D5A7A; caller 0x00591FF5; prev/next /O1 flags
+// The caller (NetPacket.cpp) pushes a fifth argument, the message type, which the
+// body never reads ([ebp+0x18] is untouched); declaring it keeps both sides on one
+// name, so the link resolves the call.
+
+void __cdecl Rva00590D19Add(int type, NetGameCommandMsg *msg, const void *base, int *off, int /*msgType*/)
+{
+	GameMessageArgumentType arg;
+	if (type == 0)
+	{
+		int v;
+		memcpy(&v, (const char *)base + *off, 4);
+		*off += 4;
+		arg.integer = v;
+		msg->addArgument((GameMessageArgumentDataType)0, arg);
+	}
+	else if (type == 1)
+	{
+		float f;
+		memcpy(&f, (const char *)base + *off, 4);
+		*off += 4;
+		arg.real = f;
+		msg->addArgument((GameMessageArgumentDataType)1, arg);
+	}
+	else if (type == 2)
+	{
+		unsigned char c;
+		memcpy(&c, (const char *)base + *off, 1);
+		*off += 1;
+		arg.b = c;
+		msg->addArgument((GameMessageArgumentDataType)2, arg);
+	}
+	else if (type == 3)
+	{
+		int v;
+		memcpy(&v, (const char *)base + *off, 4);
+		*off += 4;
+		arg.integer = v;
+		msg->addArgument((GameMessageArgumentDataType)3, arg);
+	}
+	else if (type == 4)
+	{
+		int v;
+		memcpy(&v, (const char *)base + *off, 4);
+		*off += 4;
+		arg.integer = v;
+		msg->addArgument((GameMessageArgumentDataType)4, arg);
+	}
+	else if (type == 5)
+	{
+		int v;
+		memcpy(&v, (const char *)base + *off, 4);
+		*off += 4;
+		arg.integer = v;
+		msg->addArgument((GameMessageArgumentDataType)5, arg);
+	}
+	else if (type == 6)
+	{
+		TriInt tmp;
+		memcpy(&tmp, (const char *)base + *off, 12);
+		*off += 12;
+		*(TriInt *)arg.bytes = tmp;
+		msg->addArgument((GameMessageArgumentDataType)6, arg);
+	}
+	else if (type == 7)
+	{
+		int tmp[2];
+		memcpy(tmp, (const char *)base + *off, 8);
+		*off += 8;
+		arg.ints[0] = tmp[0];
+		arg.ints[1] = tmp[1];
+		msg->addArgument((GameMessageArgumentDataType)7, arg);
+	}
+	else if (type == 8)
+	{
+		memcpy(arg.bytes, (const char *)base + *off, 16);
+		*off += 16;
+		msg->addArgument((GameMessageArgumentDataType)8, arg);
+	}
+	else if (type == 9)
+	{
+		int v;
+		memcpy(&v, (const char *)base + *off, 4);
+		*off += 4;
+		arg.integer = v;
+		msg->addArgument((GameMessageArgumentDataType)9, arg);
+	}
+	else if (type == 10)
+	{
+		unsigned short s;
+		memcpy(&s, (const char *)base + *off, 2);
+		*off += 2;
+		arg.w = s;
+		msg->addArgument((GameMessageArgumentDataType)10, arg);
+	}
+}
+
+// tu-skeleton: 0x00590F13 52B ?rva00590F13@Rva004D62A9@@QAEXVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/Rva004D65F9Set.cpp (not merged yet)
+
+// tu-skeleton: 0x005910B4 188B ?Rva005910B4Write@@YAXPADPAVNetCommandRef@@@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva005910B4Write.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacket_rva0059188C.cpp
+
+UnsignedByte NetPacket::rva0059188C(NetCommandRef *msg)
+{
+	Int len = 0;
+	Bool needNewCommandID = false;
+	NetCommandMsg *cmdMsg = msg->getCommand();
+	if (m_lastCommandType != cmdMsg->m_commandType) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+	}
+	if (m_lastRelay != msg->getRelay()) {
+		++len;
+		++len;
+	}
+	if (m_lastTimestamp != cmdMsg->m_timestamp) {
+		len += sizeof(UnsignedInt) + sizeof(UnsignedByte);
+	}
+	if (m_lastPlayerID != cmdMsg->m_playerID) {
+		++len;
+		++len;
+		needNewCommandID = true;
+	}
+	if (((m_lastCommandID + 1) != cmdMsg->m_id) ||
+		(needNewCommandID == true)) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedShort);
+	}
+	++len;
+	Int strLen = ((CDDrive *)cmdMsg)->CDDrive::getPath().getLength();
+	return m_packetLen + strLen + len + 4 <= MAX_PACKET_SIZE;
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacket_rva0059192A.cpp
+
+UnsignedByte NetPacket::rva0059192A(NetCommandRef *msg)
+{
+	Int len = 0;
+	NetCommandMsg *cmdMsg = msg->getCommand();
+	if (m_lastCommandType != cmdMsg->m_commandType) {
+		++len;
+		len += sizeof(UnsignedByte);
+	}
+	if (m_lastRelay != msg->getRelay()) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+	}
+	if (m_lastTimestamp != cmdMsg->m_timestamp) {
+		len += sizeof(UnsignedInt) + sizeof(UnsignedByte);
+	}
+	if (m_lastPlayerID != cmdMsg->m_playerID) {
+		++len;
+		len += sizeof(UnsignedByte);
+	}
+
+	++len;
+	len += sizeof(UnsignedByte);
+	UnsignedByte textLen = ((Rva004D6119 *)cmdMsg)->rva004D6119().getLength();
+	len += textLen * sizeof(UnsignedShort);
+	if ((len + m_packetLen) > MAX_PACKET_SIZE) {
+		return false;
+	}
+	return true;
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacket_rva005919AF.cpp
+
+UnsignedByte NetPacket::rva005919AF(NetCommandRef *msg)
+{
+	Int len = 0;
+	Bool needNewCommandID = false;
+	NetCommandMsg *cmdMsg = msg->getCommand();
+	if (m_lastCommandType != cmdMsg->m_commandType) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+	}
+	if (m_lastTimestamp != cmdMsg->m_timestamp) {
+		len += sizeof(UnsignedInt) + sizeof(UnsignedByte);
+	}
+	if (m_lastFrame != cmdMsg->m_executionFrame) {
+		len += sizeof(UnsignedInt) + sizeof(UnsignedByte);
+	}
+	if (m_lastRelay != msg->getRelay()) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+	}
+	if (m_lastPlayerID != cmdMsg->m_playerID) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+		needNewCommandID = true;
+	}
+	if (((m_lastCommandID + 1) != cmdMsg->m_id) ||
+		(needNewCommandID == true)) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedShort);
+	}
+	len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+	UnsignedByte strLen = ((Rva004D6119 *)cmdMsg)->rva004D6119().getLength();
+	len += strLen * sizeof(UnsignedShort);
+	len += sizeof(Int);
+	if ((len + m_packetLen) > MAX_PACKET_SIZE) {
+		return false;
+	}
+	return true;
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacket_rva00591A65.cpp
+
+UnsignedByte NetPacket::rva00591A65(NetCommandRef *msg)
+{
+	Int len = 0;
+	Bool needNewCommandID = false;
+	NetCommandMsg *cmdMsg = msg->getCommand();
+	if (m_lastCommandType != cmdMsg->m_commandType) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+	}
+	if (m_lastTimestamp != cmdMsg->m_timestamp) {
+		len += sizeof(UnsignedInt) + sizeof(UnsignedByte);
+	}
+	if (m_lastFrame != cmdMsg->m_executionFrame) {
+		len += sizeof(UnsignedInt) + sizeof(UnsignedByte);
+	}
+	if (m_lastRelay != msg->getRelay()) {
+		++len;
+		++len;
+	}
+	if (m_lastPlayerID != cmdMsg->m_playerID) {
+		++len;
+		++len;
+		needNewCommandID = true;
+	}
+	if (((m_lastCommandID + 1) != cmdMsg->m_id) ||
+		(needNewCommandID == true)) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedShort);
+	}
+	++len;
+	++len;
+	UnsignedByte slen = ((Rva0023E928 *)cmdMsg)->rva0023E928().getLength() & 0xFF;
+	len += slen * sizeof(UnsignedShort);
+	len += sizeof(Int) + sizeof(Int);
+	if ((len + m_packetLen) > MAX_PACKET_SIZE) {
+		return false;
+	}
+	return true;
+}
+
+// ---- from Code/GameEngine/Source/GameNetwork/NetPacket_rva00591D0D.cpp
+
+UnsignedByte NetPacket::rva00591D0D(NetCommandRef *msg)
+{
+	Int len = 0;
+	Bool needNewCommandID = false;
+	NetCommandMsg *cmdMsg = msg->getCommand();
+	if (m_lastCommandType != cmdMsg->m_commandType) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedByte);
+	}
+	if (m_lastRelay != msg->getRelay()) {
+		++len;
+		++len;
+	}
+	if (m_lastTimestamp != cmdMsg->m_timestamp) {
+		len += sizeof(UnsignedInt) + sizeof(UnsignedByte);
+	}
+	if (m_lastPlayerID != cmdMsg->m_playerID) {
+		++len;
+		++len;
+		needNewCommandID = true;
+	}
+	if (((m_lastCommandID + 1) != cmdMsg->m_id) ||
+		(needNewCommandID == true)) {
+		len += sizeof(UnsignedByte) + sizeof(UnsignedShort);
+	}
+	++len;
+	Int strLen = ((CDDrive *)cmdMsg)->CDDrive::getPath().getLength();
+	return m_packetLen + strLen + len + 1 <= MAX_PACKET_SIZE;
+}
+
 // tu-skeleton: 0x00592520 194B ?Rva00592520Read@@YAPAVRva004D65DC@@HPAI@Z -- matched in Code/GameEngine/Source/GameNetwork/Rva00592520Read.cpp (not merged yet)
 
 // tu-skeleton: 0x005925E2 37B ?insert@?$list@HV?$allocator@H@_STL@@@_STL@@QAE?AU?$_List_iterator@HU?$_Nonconst_traits@H@_STL@@@2@U32@ABH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_int_insert.cpp (not merged yet)
 
 // tu-skeleton: 0x00594689 88B ??0?$list@FV?$allocator@F@_STL@@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_s_o1.cpp (not merged yet)
+
+// tu-skeleton: 0x0079D17F 8B Unwind@00b9d17f -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_s_o1.cpp (not merged yet)
+
+// tu-skeleton: 0x0079D187 10B __ehhandler$??0?$list@FV?$allocator@F@_STL@@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_s_o1.cpp (not merged yet)
