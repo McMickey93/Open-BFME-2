@@ -9,7 +9,7 @@ typedef unsigned int UnsignedInt;
 typedef float Real;
 typedef bool Bool;
 
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int size);
+#include <string.h>
 
 enum { MAX_COMMANDS_PER_SET = 32 };
 

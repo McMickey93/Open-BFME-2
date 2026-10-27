@@ -18,7 +18,7 @@
 
 typedef int Int;
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/INIException.h
 class INIException
