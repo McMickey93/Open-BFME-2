@@ -92,3 +92,21 @@ link regression, but it could not establish a merged composition because the
 seed itself failed byte verification. No source/flag repairs or split trials
 were attempted. Leave the task for prerequisite repair and continue with a
 separate allocated TU.
+
+## Allocated `DisconnectManager.cpp` candidate deferred
+
+The approved plan had 47 rows, eight donors and two mixed files. The merge dry
+run accepted none. `Rva004D376ACtor.cpp` loses two rows under the carried empty
+flag override; `Rva004D38D8Check.cpp`, `Rva004D3906Clear.cpp`,
+`Rva004D3942Rva004D3942.cpp`, `BFMEDisconnectManager_voterEligibility.cpp`,
+`DisconnectManager_processDisconnectCommand.cpp`, and
+`DisconnectManager_processDisconnectPlayer.cpp` each report `no baseline
+match`. No two-donor composition was verified.
+
+The 27-row carve from `DisconnectManagerO1.cpp` was refused because
+`a namespace/extern "C" block defines something: carve not supported`. The
+one-row carve from `Disp8CmpBoolGetters.cpp` passed its split guard (residual
+101 rows; 5 combined rows verified), but it does not pair with any accepted
+merge, so it would increase source-file count by itself. It was not applied.
+No claims or source edits were made. Leave this candidate for the relevant
+compile/environment prerequisites and continue with a separate allocated TU.
