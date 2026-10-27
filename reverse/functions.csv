@@ -20396,7 +20396,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_00628f80@@YAXXZ,,0x00628F80,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBAA70;dll=gdiplus.dll;import=GdipDrawImageI;target=GdipDrawImageI
 ?ji_00628f86@@YAXXZ,,0x00628F86,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBAA30;dll=gdiplus.dll;import=GdipAlloc;target=GdipAlloc
 ?ji_00628f8c@@YAXXZ,,0x00628F8C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBAA78;dll=gdiplus.dll;import=GdipCloneImage;target=GdipCloneImage
-?ji_00628f92@@YAXXZ,,0x00628F92,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6EC;dll=msvcr71.dll;import=malloc;target=malloc
 ?ji_0062909a@@YAXXZ,,0x0062909A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6D8;dll=msvcr71.dll;import=abs;target=abs
 ?ji_00629170@@YAXXZ,,0x00629170,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6D4;dll=msvcr71.dll;import=strlen;target=strlen
 ?ji_00629176@@YAXXZ,,0x00629176,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6D0;dll=msvcr71.dll;import=_mbscpy;target=_mbscpy
@@ -20406,52 +20405,36 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_006291b4@@YAXXZ,,0x006291B4,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6BC;dll=msvcr71.dll;import=sprintf;target=sprintf
 ?ji_006291c0@@YAXXZ,,0x006291C0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6B4;dll=msvcr71.dll;import=strtoul;target=strtoul
 ?ji_006291c6@@YAXXZ,,0x006291C6,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6B0;dll=msvcr71.dll;import=strcmp;target=strcmp
-?ji_006291cc@@YAXXZ,,0x006291CC,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6AC;dll=msvcr71.dll;import=wcslen;target=wcslen
 ?ji_0062920a@@YAXXZ,,0x0062920A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A8;dll=msvcr71.dll;import=cos;target=cos
 ?ji_00629210@@YAXXZ,,0x00629210,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A4;dll=msvcr71.dll;import=fabs;target=fabs
 ?ji_00629216@@YAXXZ,,0x00629216,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6A0;dll=msvcr71.dll;import=sin;target=sin
 ?ji_0062921c@@YAXXZ,,0x0062921C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA69C;dll=msvcr71.dll;import=sqrt;target=sqrt
 ?ji_0062929e@@YAXXZ,,0x0062929E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA694;dll=msvcr71.dll;import=memcmp;target=memcmp
 ?ji_00629506@@YAXXZ,,0x00629506,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA688;dll=msvcr71.dll;import=memmove;target=memmove
-?ji_0062950c@@YAXXZ,,0x0062950C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA684;dll=msvcr71.dll;import=strncat;target=strncat
 ?ji_006297ea@@YAXXZ,,0x006297EA,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA65C;dll=msvcr71.dll;import=realloc;target=realloc
-?ji_00629838@@YAXXZ,,0x00629838,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA624;dll=msvcr71.dll;import=atoi;target=atoi
 ?ji_0062983e@@YAXXZ,,0x0062983E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA620;dll=msvcr71.dll;import=strncpy;target=strncpy
-?ji_0062984a@@YAXXZ,,0x0062984A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA618;dll=msvcr71.dll;import=strchr;target=strchr
-?ji_00629850@@YAXXZ,,0x00629850,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA614;dll=msvcr71.dll;import=strstr;target=strstr
-?ji_0062987a@@YAXXZ,,0x0062987A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5F8;dll=msvcr71.dll;import=localtime;target=localtime
 ?ji_0062988c@@YAXXZ,,0x0062988C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5E8;dll=msvcr71.dll;import=_mbscat;target=_mbscat
 ?ji_00629892@@YAXXZ,,0x00629892,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5E4;dll=msvcr71.dll;import=sscanf;target=sscanf
-?ji_00629898@@YAXXZ,,0x00629898,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5E0;dll=msvcr71.dll;import=_vsnprintf;target=_vsnprintf
 ?ji_006298b0@@YAXXZ,,0x006298B0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5D0;dll=msvcr71.dll;import=_CIacos;target=_CIacos
 ?ji_006298b6@@YAXXZ,,0x006298B6,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5CC;dll=msvcr71.dll;import=_CIasin;target=_CIasin
-?ji_006298d4@@YAXXZ,,0x006298D4,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5B8;dll=msvcr71.dll;import=tolower;target=tolower
-?ji_006298da@@YAXXZ,,0x006298DA,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5B4;dll=msvcr71.dll;import=toupper;target=toupper
 ?ji_0062992e@@YAXXZ,,0x0062992E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA57C;dll=msvcr71.dll;import=atan2;target=atan2
 ?ji_00629934@@YAXXZ,,0x00629934,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA578;dll=msvcr71.dll;import=ceil;target=ceil
 ?ji_0062993a@@YAXXZ,,0x0062993A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA574;dll=msvcr71.dll;import=tan;target=tan
 ?ji_00629940@@YAXXZ,,0x00629940,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA570;dll=msvcr71.dll;import=floor;target=floor
 ?ji_00629952@@YAXXZ,,0x00629952,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA564;dll=msvcr71.dll;import=abs;target=abs
 ?ji_00629958@@YAXXZ,,0x00629958,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA560;dll=msvcr71.dll;import=exp;target=exp
-?ji_0062995e@@YAXXZ,,0x0062995E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA55C;dll=msvcr71.dll;import=strncmp;target=strncmp
 ?ji_00629964@@YAXXZ,,0x00629964,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA558;dll=msvcr71.dll;import=acos;target=acos
 ?ji_0062996a@@YAXXZ,,0x0062996A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA554;dll=msvcr71.dll;import=fmod;target=fmod
 ?ji_00629970@@YAXXZ,,0x00629970,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA550;dll=msvcr71.dll;import=atof;target=atof
 ?ji_0062997c@@YAXXZ,,0x0062997C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA548;dll=msvcr71.dll;import=log10;target=log10
 ?ji_00629982@@YAXXZ,,0x00629982,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA544;dll=msvcr71.dll;import=isdigit;target=isdigit
 ?ji_006299a0@@YAXXZ,,0x006299A0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA530;dll=msvcr71.dll;import=_CIpow;target=_CIpow
-?ji_006299a6@@YAXXZ,,0x006299A6,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA52C;dll=msvcr71.dll;import=_strlwr;target=_strlwr
 ?ji_00629a2a@@YAXXZ,,0x00629A2A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA518;dll=msvcr71.dll;import=_strcmpi;target=_strcmpi
 ?ji_00629a36@@YAXXZ,,0x00629A36,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA510;dll=msvcr71.dll;import=_CIfmod;target=_CIfmod
-?ji_00629a3c@@YAXXZ,,0x00629A3C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA50C;dll=msvcr71.dll;import=rand;target=rand
-?ji_00629a42@@YAXXZ,,0x00629A42,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA508;dll=msvcr71.dll;import=time;target=time
 ?ji_00629a7e@@YAXXZ,,0x00629A7E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA4E0;dll=msvcr71.dll;import=vsprintf;target=vsprintf
-?ji_00629aba@@YAXXZ,,0x00629ABA,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA760;dll=msvcr71.dll;import=strtol;target=strtol
 ?ji_00629ae4@@YAXXZ,,0x00629AE4,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA4A0;dll=msvcr71.dll;import=atan;target=atan
-?ji_00629af6@@YAXXZ,,0x00629AF6,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA494;dll=msvcr71.dll;import=isalnum;target=isalnum
 ?ji_00629b0e@@YAXXZ,,0x00629B0E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA484;dll=msvcr71.dll;import=log;target=log
 ?ji_00629b14@@YAXXZ,,0x00629B14,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA480;dll=msvcr71.dll;import=printf;target=printf
-?ji_00629b4a@@YAXXZ,,0x00629B4A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA414;dll=msvcr71.dll;import=qsort;target=qsort
 ?ji_00629b6e@@YAXXZ,,0x00629B6E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA42C;dll=msvcr71.dll;import=isxdigit;target=isxdigit
 ?ji_0062af20@@YAXXZ,,0x0062AF20,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA078;dll=dinput8.dll;import=DirectInput8Create;target=DirectInput8Create
 ?ji_0065477e@@YAXXZ,,0x0065477E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA064;dll=avifil32.dll;import=AVIFileRelease;target=AVIFileRelease
@@ -20464,10 +20447,7 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_00687cd8@@YAXXZ,,0x00687CD8,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA768;dll=netapi32.dll;import=Netbios;target=Netbios
 ?ji_006b8a30@@YAXXZ,,0x006B8A30,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA688;dll=msvcr71.dll;import=memmove;target=memmove
 ?ji_006b8c30@@YAXXZ,,0x006B8C30,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA418;dll=msvcr71.dll;import=clock;target=clock
-?ji_0075ac08@@YAXXZ,,0x0075AC08,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6FC;dll=msvcr71.dll;import=isprint;target=isprint
-?ji_0075ac0e@@YAXXZ,,0x0075AC0E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA700;dll=msvcr71.dll;import=gmtime;target=gmtime
 ?ji_0075ac7a@@YAXXZ,,0x0075AC7A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA748;dll=msvcr71.dll;import=_setjmp3;target=setjmp3
-?ji_0075b4f0@@YAXXZ,,0x0075B4F0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5F4;dll=msvcr71.dll;import=_strupr;target=_strupr
 ?init@SidesInfo@@QAEXPBVDict@@@Z,,0x0032CDAA,84,Code/GameEngine/Source/GameLogic/Map/SidesList_sidesInfo.cpp,matched,ZH SidesInfo init; BFME2 target stores ScriptList by value and clears vector at +0x54; /O1 /G7
 ?swap@SidesInfo@@QAEXPAV1@@Z,,0x0032B070,57,Code/GameEngine/Source/GameLogic/Map/SidesList_sidesInfo.cpp,matched,member-wise swap of build list Dict ScriptList and vector; target calls verified callees
 ??0SidesInfo@@QAE@ABV0@@Z,,0x0032C6AD,204,Code/GameEngine/Source/GameLogic/Map/SidesList_sidesInfo.cpp,matched,ZH deep build-list copy moved into target copy ctor; target catch-all deletes partial list and rethrows; extent includes inline handler
@@ -78193,107 +78173,28 @@ uw_0079b44d,,0x0079B44D,8,Code/GameEngine/Source/Common/Rva005765D1Ctor.cpp,matc
 ?ji_00006e26@@YAXXZ,,0x00006E26,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA8CC;dll=user32.dll;import=DefWindowProcA;target=DefWindowProcA
 ?ji_00006e2c@@YAXXZ,,0x00006E2C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA8D0;dll=user32.dll;import=DefWindowProcW;target=DefWindowProcW
 ?ji_00006e6e@@YAXXZ,,0x00006E6E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA8FC;dll=user32.dll;import=LoadImageA;target=LoadImageA
-?ji_00628f9e@@YAXXZ,,0x00628F9E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA6E4;dll=msvcr71.dll;import=_resetstkoflw;target=_resetstkoflw
-?ji_0062917c@@YAXXZ,,0x0062917C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA6CC;dll=msvcr71.dll;import=strpbrk;target=strpbrk
-?ji_006291ba@@YAXXZ,,0x006291BA,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA6B8;dll=msvcr71.dll;import=atol;target=atol
-?ji_00629222@@YAXXZ,,0x00629222,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA698;dll=msvcr71.dll;import=wcscpy;target=wcscpy
-?ji_006292a4@@YAXXZ,,0x006292A4,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA690;dll=msvcr71.dll;import=_memicmp;target=_memicmp
-?ji_006292aa@@YAXXZ,,0x006292AA,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA68C;dll=msvcr71.dll;import=towlower;target=towlower
 ?ji_006297c0@@YAXXZ,,0x006297C0,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA678;dll=msvcr71.dll;import=_finite;target=_finite
 ?ji_006297c6@@YAXXZ,,0x006297C6,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA674;dll=msvcr71.dll;import=_fpclass;target=_fpclass
 ?ji_006297cc@@YAXXZ,,0x006297CC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA670;dll=msvcr71.dll;import=_copysign;target=_copysign
 ?ji_006297d2@@YAXXZ,,0x006297D2,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA66C;dll=msvcr71.dll;import=_isnan;target=_isnan
 ?ji_006297d8@@YAXXZ,,0x006297D8,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA668;dll=msvcr71.dll;import=_ecvt;target=_ecvt
 ?ji_006297de@@YAXXZ,,0x006297DE,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA664;dll=msvcr71.dll;import=_fcvt;target=_fcvt
-?ji_006297e4@@YAXXZ,,0x006297E4,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA660;dll=msvcr71.dll;import=fputs;target=fputs
-?ji_006297f0@@YAXXZ,,0x006297F0,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA658;dll=msvcr71.dll;import=fflush;target=fflush
-?ji_006297f6@@YAXXZ,,0x006297F6,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA654;dll=msvcr71.dll;import=setvbuf;target=setvbuf
-?ji_006297fc@@YAXXZ,,0x006297FC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA650;dll=msvcr71.dll;import=ftell;target=ftell
-?ji_00629802@@YAXXZ,,0x00629802,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA64C;dll=msvcr71.dll;import=feof;target=feof
-?ji_00629808@@YAXXZ,,0x00629808,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA648;dll=msvcr71.dll;import=fgetpos;target=fgetpos
-?ji_0062980e@@YAXXZ,,0x0062980E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA644;dll=msvcr71.dll;import=fseek;target=fseek
-?ji_00629814@@YAXXZ,,0x00629814,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA640;dll=msvcr71.dll;import=fsetpos;target=fsetpos
-?ji_0062981a@@YAXXZ,,0x0062981A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA63C;dll=msvcr71.dll;import=ungetc;target=ungetc
-?ji_0062982c@@YAXXZ,,0x0062982C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA62C;dll=msvcr71.dll;import=_get_osfhandle;target=_get_osfhandle
-?ji_00629832@@YAXXZ,,0x00629832,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA628;dll=msvcr71.dll;import=memchr;target=memchr
-?ji_00629844@@YAXXZ,,0x00629844,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA61C;dll=msvcr71.dll;import=strcspn;target=strcspn
-?ji_0062985c@@YAXXZ,,0x0062985C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA60C;dll=msvcr71.dll;import=abort;target=abort
-?ji_00629862@@YAXXZ,,0x00629862,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA608;dll=msvcr71.dll;import=exit;target=exit
-?ji_00629868@@YAXXZ,,0x00629868,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA604;dll=msvcr71.dll;import=puts;target=puts
-?ji_00629874@@YAXXZ,,0x00629874,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5FC;dll=msvcr71.dll;import=isspace;target=isspace
-?ji_00629880@@YAXXZ,,0x00629880,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5F0;dll=msvcr71.dll;import=_stat;target=_stat
-?ji_00629886@@YAXXZ,,0x00629886,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5EC;dll=msvcr71.dll;import=strtok;target=strtok
-?ji_0062989e@@YAXXZ,,0x0062989E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5DC;dll=msvcr71.dll;import=fclose;target=fclose
-?ji_006298a4@@YAXXZ,,0x006298A4,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5D8;dll=msvcr71.dll;import=fread;target=fread
-?ji_006298aa@@YAXXZ,,0x006298AA,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5D4;dll=msvcr71.dll;import=fopen;target=fopen
-?ji_006298bc@@YAXXZ,,0x006298BC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5C8;dll=msvcr71.dll;import=_mbsdup;target=_mbsdup
 ?ji_006298c2@@YAXXZ,,0x006298C2,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5C4;dll=msvcr71.dll;import=fprintf;target=fprintf
 ?ji_006298c8@@YAXXZ,,0x006298C8,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5C0;dll=msvcr71.dll;import=_snprintf;target=_snprintf
-?ji_006298ce@@YAXXZ,,0x006298CE,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5BC;dll=msvcr71.dll;import=iswspace;target=iswspace
-?ji_006298e0@@YAXXZ,,0x006298E0,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5B0;dll=msvcr71.dll;import=towupper;target=towupper
-?ji_006298ec@@YAXXZ,,0x006298EC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5A8;dll=msvcr71.dll;import=strrchr;target=strrchr
-?ji_006298f8@@YAXXZ,,0x006298F8,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA5A0;dll=msvcr71.dll;import=_ultoa;target=_ultoa
-?ji_006298fe@@YAXXZ,,0x006298FE,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA59C;dll=msvcr71.dll;import=_exit;target=_exit
-?ji_00629904@@YAXXZ,,0x00629904,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA598;dll=msvcr71.dll;import=_itoa;target=_itoa
 ?ji_0062990a@@YAXXZ,,0x0062990A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA594;dll=msvcr71.dll;import=_i64toa;target=_i64toa
 ?ji_00629910@@YAXXZ,,0x00629910,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA590;dll=msvcr71.dll;import=_ui64toa;target=_ui64toa
-?ji_00629916@@YAXXZ,,0x00629916,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA58C;dll=msvcr71.dll;import=_control87;target=_control87
-?ji_00629922@@YAXXZ,,0x00629922,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA584;dll=msvcr71.dll;import=_statusfp;target=_statusfp
-?ji_00629928@@YAXXZ,,0x00629928,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA580;dll=msvcr71.dll;import=_fpreset;target=_fpreset
 ?ji_00629946@@YAXXZ,,0x00629946,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA56C;dll=msvcr71.dll;import=_splitpath;target=_splitpath
-?ji_0062994c@@YAXXZ,,0x0062994C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA568;dll=msvcr71.dll;import=_time64;target=_time64
-?ji_00629976@@YAXXZ,,0x00629976,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA54C;dll=msvcr71.dll;import=fgets;target=fgets
-?ji_00629988@@YAXXZ,,0x00629988,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA540;dll=msvcr71.dll;import=_strnicmp;target=_strnicmp
-?ji_0062998e@@YAXXZ,,0x0062998E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA53C;dll=msvcr71.dll;import=_mbslen;target=_mbslen
-?ji_00629994@@YAXXZ,,0x00629994,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA538;dll=msvcr71.dll;import=srand;target=srand
-?ji_0062999a@@YAXXZ,,0x0062999A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA534;dll=msvcr71.dll;import=fwrite;target=fwrite
-?ji_006299ac@@YAXXZ,,0x006299AC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA528;dll=msvcr71.dll;import=_wfopen;target=_wfopen
 ?ji_006299b2@@YAXXZ,,0x006299B2,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA524;dll=msvcr71.dll;import=_makepath;target=_makepath
-?ji_00629a30@@YAXXZ,,0x00629A30,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA514;dll=msvcr71.dll;import=_access;target=_access
-?ji_00629a48@@YAXXZ,,0x00629A48,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA504;dll=msvcr71.dll;import=getenv;target=getenv
-?ji_00629a4e@@YAXXZ,,0x00629A4E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA500;dll=msvcr71.dll;import=iswalpha;target=iswalpha
 ?ji_00629a54@@YAXXZ,,0x00629A54,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4FC;dll=msvcr71.dll;import=pow;target=pow
-?ji_00629a5a@@YAXXZ,,0x00629A5A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4F8;dll=msvcr71.dll;import=wcscat;target=wcscat
-?ji_00629a60@@YAXXZ,,0x00629A60,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4F4;dll=msvcr71.dll;import=_unlink;target=_unlink
-?ji_00629a66@@YAXXZ,,0x00629A66,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4F0;dll=msvcr71.dll;import=wcstok;target=wcstok
 ?ji_00629a6c@@YAXXZ,,0x00629A6C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4EC;dll=msvcr71.dll;import=_wsplitpath;target=_wsplitpath
-?ji_00629a72@@YAXXZ,,0x00629A72,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4E8;dll=msvcr71.dll;import=wcsncpy;target=wcsncpy
-?ji_00629a78@@YAXXZ,,0x00629A78,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4E4;dll=msvcr71.dll;import=_wunlink;target=_wunlink
-?ji_00629a84@@YAXXZ,,0x00629A84,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4DC;dll=msvcr71.dll;import=wcschr;target=wcschr
-?ji_00629a8a@@YAXXZ,,0x00629A8A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4D8;dll=msvcr71.dll;import=iswalnum;target=iswalnum
-?ji_00629a90@@YAXXZ,,0x00629A90,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4D4;dll=msvcr71.dll;import=iswdigit;target=iswdigit
-?ji_00629a96@@YAXXZ,,0x00629A96,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4D0;dll=msvcr71.dll;import=iswascii;target=iswascii
-?ji_00629a9c@@YAXXZ,,0x00629A9C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4CC;dll=msvcr71.dll;import=fgetwc;target=fgetwc
-?ji_00629aae@@YAXXZ,,0x00629AAE,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4C0;dll=msvcr71.dll;import=fputwc;target=fputwc
 ?ji_00629ab4@@YAXXZ,,0x00629AB4,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4BC;dll=msvcr71.dll;import=fwprintf;target=fwprintf
-?ji_00629ac0@@YAXXZ,,0x00629AC0,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4B8;dll=msvcr71.dll;import=wcsrchr;target=wcsrchr
-?ji_00629ac6@@YAXXZ,,0x00629AC6,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4B4;dll=msvcr71.dll;import=wcsstr;target=wcsstr
-?ji_00629acc@@YAXXZ,,0x00629ACC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4B0;dll=msvcr71.dll;import=strftime;target=strftime
-?ji_00629ad2@@YAXXZ,,0x00629AD2,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4AC;dll=msvcr71.dll;import=_wstat;target=_wstat
-?ji_00629ad8@@YAXXZ,,0x00629AD8,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4A8;dll=msvcr71.dll;import=wcscmp;target=wcscmp
-?ji_00629ade@@YAXXZ,,0x00629ADE,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA4A4;dll=msvcr71.dll;import=asctime;target=asctime
-?ji_00629aea@@YAXXZ,,0x00629AEA,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA49C;dll=msvcr71.dll;import=_mbscmp;target=_mbscmp
-?ji_00629af0@@YAXXZ,,0x00629AF0,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA498;dll=msvcr71.dll;import=_wtoi;target=_wtoi
-?ji_00629afc@@YAXXZ,,0x00629AFC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA490;dll=msvcr71.dll;import=iswgraph;target=iswgraph
 ?ji_00629b02@@YAXXZ,,0x00629B02,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA48C;dll=msvcr71.dll;import=swprintf;target=swprintf
 ?ji_00629b08@@YAXXZ,,0x00629B08,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA488;dll=msvcr71.dll;import=_gcvt;target=_gcvt
-?ji_00629b1a@@YAXXZ,,0x00629B1A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA47C;dll=msvcr71.dll;import=_close;target=_close
 ?ji_00629b20@@YAXXZ,,0x00629B20,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA3F8;dll=msvcr71.dll;import=_open;target=_open
-?ji_00629b26@@YAXXZ,,0x00629B26,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA3FC;dll=msvcr71.dll;import=remove;target=remove
-?ji_00629b2c@@YAXXZ,,0x00629B2C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA400;dll=msvcr71.dll;import=_waccess;target=_waccess
 ?ji_00629b32@@YAXXZ,,0x00629B32,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA404;dll=msvcr71.dll;import=_wopen;target=_wopen
-?ji_00629b38@@YAXXZ,,0x00629B38,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA408;dll=msvcr71.dll;import=_read;target=_read
-?ji_00629b3e@@YAXXZ,,0x00629B3E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA40C;dll=msvcr71.dll;import=_lseek;target=_lseek
-?ji_00629b44@@YAXXZ,,0x00629B44,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA410;dll=msvcr71.dll;import=_write;target=_write
 ?ji_00629b50@@YAXXZ,,0x00629B50,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA418;dll=msvcr71.dll;import=clock;target=clock
 ?ji_00629b56@@YAXXZ,,0x00629B56,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA41C;dll=msvcr71.dll;import=_beginthreadex;target=_beginthreadex
-?ji_00629b5c@@YAXXZ,,0x00629B5C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA420;dll=msvcr71.dll;import=strspn;target=strspn
-?ji_00629b62@@YAXXZ,,0x00629B62,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA424;dll=msvcr71.dll;import=_errno;target=_errno
 ?ji_00629b68@@YAXXZ,,0x00629B68,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA428;dll=msvcr71.dll;import=bsearch;target=bsearch
-?ji_00629b74@@YAXXZ,,0x00629B74,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA430;dll=msvcr71.dll;import=_beginthread;target=_beginthread
-?ji_00629bcc@@YAXXZ,,0x00629BCC,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA444;dll=msvcr71.dll;import=_c_exit;target=_c_exit
-?ji_00629bd8@@YAXXZ,,0x00629BD8,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA44C;dll=msvcr71.dll;import=_ismbblead;target=_ismbblead
-?ji_00629bde@@YAXXZ,,0x00629BDE,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA450;dll=msvcr71.dll;import=_cexit;target=_cexit
 ?ji_00629bea@@YAXXZ,,0x00629BEA,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA45C;dll=msvcr71.dll;import=__getmainargs;target=__getmainargs
 ?ji_00629c90@@YAXXZ,,0x00629C90,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA464;dll=msvcr71.dll;import=__setusermatherr;target=__setusermatherr
 ?ji_00629c96@@YAXXZ,,0x00629C96,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA46C;dll=msvcr71.dll;import=__p__commode;target=__p__commode
@@ -78307,30 +78208,10 @@ uw_0079b44d,,0x0079B44D,8,Code/GameEngine/Source/Common/Rva005765D1Ctor.cpp,matc
 ?ji_00687f5a@@YAXXZ,,0x00687F5A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA308;dll=kernel32.dll;import=lstrcpyn;target=lstrcpyn
 ?ji_00688062@@YAXXZ,,0x00688062,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA7EC;dll=user32.dll;import=wsprintfA;target=wsprintfA
 ?ji_00688068@@YAXXZ,,0x00688068,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA7E8;dll=user32.dll;import=wvsprintfA;target=wvsprintfA
-?ji_0075a590@@YAXXZ,,0x0075A590,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA6F0;dll=msvcr71.dll;import=_fstat;target=_fstat
 ?ji_0075a596@@YAXXZ,,0x0075A596,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA6F4;dll=msvcr71.dll;import=_strcmpi;target=_strcmpi
-?ji_0075a59c@@YAXXZ,,0x0075A59C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA6F8;dll=msvcr71.dll;import=_wcsicmp;target=_wcsicmp
-?ji_0075ac14@@YAXXZ,,0x0075AC14,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA704;dll=msvcr71.dll;import=calloc;target=calloc
-?ji_0075ac1a@@YAXXZ,,0x0075AC1A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA708;dll=msvcr71.dll;import=_atoi64;target=_atoi64
-?ji_0075ac20@@YAXXZ,,0x0075AC20,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA70C;dll=msvcr71.dll;import=rewind;target=rewind
-?ji_0075ac26@@YAXXZ,,0x0075AC26,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA710;dll=msvcr71.dll;import=_mkdir;target=_mkdir
-?ji_0075ac2c@@YAXXZ,,0x0075AC2C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA714;dll=msvcr71.dll;import=_chmod;target=_chmod
-?ji_0075ac32@@YAXXZ,,0x0075AC32,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA718;dll=msvcr71.dll;import=rename;target=rename
-?ji_0075ac38@@YAXXZ,,0x0075AC38,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA71C;dll=msvcr71.dll;import=_getcwd;target=_getcwd
 ?ji_0075ac3e@@YAXXZ,,0x0075AC3E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA720;dll=msvcr71.dll;import=fscanf;target=fscanf
 ?ji_0075ac44@@YAXXZ,,0x0075AC44,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA724;dll=msvcr71.dll;import=frexp;target=frexp
 ?ji_0075ac4a@@YAXXZ,,0x0075AC4A,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA728;dll=msvcr71.dll;import=ldexp;target=ldexp
-?ji_0075ac50@@YAXXZ,,0x0075AC50,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA72C;dll=msvcr71.dll;import=isupper;target=isupper
-?ji_0075ac56@@YAXXZ,,0x0075AC56,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA730;dll=msvcr71.dll;import=ispunct;target=ispunct
-?ji_0075ac5c@@YAXXZ,,0x0075AC5C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA734;dll=msvcr71.dll;import=iscntrl;target=iscntrl
-?ji_0075ac62@@YAXXZ,,0x0075AC62,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA738;dll=msvcr71.dll;import=isalpha;target=isalpha
-?ji_0075ac68@@YAXXZ,,0x0075AC68,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA73C;dll=msvcr71.dll;import=islower;target=islower
-?ji_0075ac6e@@YAXXZ,,0x0075AC6E,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA740;dll=msvcr71.dll;import=system;target=system
-?ji_0075ac74@@YAXXZ,,0x0075AC74,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA744;dll=msvcr71.dll;import=tmpnam;target=tmpnam
-?ji_0075ac80@@YAXXZ,,0x0075AC80,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA74C;dll=msvcr71.dll;import=freopen;target=freopen
-?ji_0075ac86@@YAXXZ,,0x0075AC86,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA750;dll=msvcr71.dll;import=longjmp;target=longjmp
-?ji_0075ac8c@@YAXXZ,,0x0075AC8C,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA754;dll=msvcr71.dll;import=strtod;target=strtod
-?ji_0075ac92@@YAXXZ,,0x0075AC92,6,Code/gen_small/imports_001.cpp,matched,gen-import;slot=0x00BBA758;dll=msvcr71.dll;import=strcoll;target=strcoll
 _ji_00629d1a@0,,0x00629D1A,6,Code/gen_small/imports_002.cpp,matched,gen-import;slot=0x00BBAAC4;dll=mss32.dll;import=_AIL_lock_mutex@0;target=AIL_lock_mutex
 _ji_00629d20@0,,0x00629D20,6,Code/gen_small/imports_002.cpp,matched,gen-import;slot=0x00BBAAC0;dll=mss32.dll;import=_AIL_unlock_mutex@0;target=AIL_unlock_mutex
 _ji_00629d26@4,,0x00629D26,6,Code/gen_small/imports_002.cpp,matched,gen-import;slot=0x00BBAABC;dll=mss32.dll;import=_AIL_start_sample@4;target=AIL_start_sample
@@ -98521,3 +98402,122 @@ _Thread32Next@8,,0x00687E40,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.c
 _Thread32First@8,,0x00687E4C,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__Thread32First@8 using VS2003 __identifier; retail IAT slot 0x00BBA24C names kernel32.dll!Thread32First (gen-import row); complete 6B tail
 _WriteConsoleOutputA@20,,0x00687EA6,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__WriteConsoleOutputA@20 using VS2003 __identifier; retail IAT slot 0x00BBA288 names kernel32.dll!WriteConsoleOutputA (gen-import row); complete 6B tail
 _SetConsoleScreenBufferSize@8,,0x00687ECA,6,Code/Libraries/Source/Win32/Kernel32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__SetConsoleScreenBufferSize@8 using VS2003 __identifier; retail IAT slot 0x00BBA2A8 names kernel32.dll!SetConsoleScreenBufferSize (gen-import row); complete 6B tail
+_malloc,,0x00628F92,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__malloc using VS2003 __identifier; retail IAT slot 0x00BBA6EC names msvcr71.dll!malloc (gen-import row); complete 6B tail
+__resetstkoflw,,0x00628F9E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___resetstkoflw using VS2003 __identifier; retail IAT slot 0x00BBA6E4 names msvcr71.dll!_resetstkoflw (gen-import row); complete 6B tail
+_strpbrk,,0x0062917C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strpbrk using VS2003 __identifier; retail IAT slot 0x00BBA6CC names msvcr71.dll!strpbrk (gen-import row); complete 6B tail
+_atol,,0x006291BA,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__atol using VS2003 __identifier; retail IAT slot 0x00BBA6B8 names msvcr71.dll!atol (gen-import row); complete 6B tail
+_wcslen,,0x006291CC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcslen using VS2003 __identifier; retail IAT slot 0x00BBA6AC names msvcr71.dll!wcslen (gen-import row); complete 6B tail
+_wcscpy,,0x00629222,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcscpy using VS2003 __identifier; retail IAT slot 0x00BBA698 names msvcr71.dll!wcscpy (gen-import row); complete 6B tail
+__memicmp,,0x006292A4,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___memicmp using VS2003 __identifier; retail IAT slot 0x00BBA690 names msvcr71.dll!_memicmp (gen-import row); complete 6B tail
+_towlower,,0x006292AA,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__towlower using VS2003 __identifier; retail IAT slot 0x00BBA68C names msvcr71.dll!towlower (gen-import row); complete 6B tail
+_strncat,,0x0062950C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strncat using VS2003 __identifier; retail IAT slot 0x00BBA684 names msvcr71.dll!strncat (gen-import row); complete 6B tail
+_fputs,,0x006297E4,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fputs using VS2003 __identifier; retail IAT slot 0x00BBA660 names msvcr71.dll!fputs (gen-import row); complete 6B tail
+_fflush,,0x006297F0,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fflush using VS2003 __identifier; retail IAT slot 0x00BBA658 names msvcr71.dll!fflush (gen-import row); complete 6B tail
+_setvbuf,,0x006297F6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__setvbuf using VS2003 __identifier; retail IAT slot 0x00BBA654 names msvcr71.dll!setvbuf (gen-import row); complete 6B tail
+_ftell,,0x006297FC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__ftell using VS2003 __identifier; retail IAT slot 0x00BBA650 names msvcr71.dll!ftell (gen-import row); complete 6B tail
+_feof,,0x00629802,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__feof using VS2003 __identifier; retail IAT slot 0x00BBA64C names msvcr71.dll!feof (gen-import row); complete 6B tail
+_fgetpos,,0x00629808,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fgetpos using VS2003 __identifier; retail IAT slot 0x00BBA648 names msvcr71.dll!fgetpos (gen-import row); complete 6B tail
+_fseek,,0x0062980E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fseek using VS2003 __identifier; retail IAT slot 0x00BBA644 names msvcr71.dll!fseek (gen-import row); complete 6B tail
+_fsetpos,,0x00629814,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fsetpos using VS2003 __identifier; retail IAT slot 0x00BBA640 names msvcr71.dll!fsetpos (gen-import row); complete 6B tail
+_ungetc,,0x0062981A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__ungetc using VS2003 __identifier; retail IAT slot 0x00BBA63C names msvcr71.dll!ungetc (gen-import row); complete 6B tail
+__get_osfhandle,,0x0062982C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___get_osfhandle using VS2003 __identifier; retail IAT slot 0x00BBA62C names msvcr71.dll!_get_osfhandle (gen-import row); complete 6B tail
+_memchr,,0x00629832,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__memchr using VS2003 __identifier; retail IAT slot 0x00BBA628 names msvcr71.dll!memchr (gen-import row); complete 6B tail
+_atoi,,0x00629838,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__atoi using VS2003 __identifier; retail IAT slot 0x00BBA624 names msvcr71.dll!atoi (gen-import row); complete 6B tail
+_strcspn,,0x00629844,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strcspn using VS2003 __identifier; retail IAT slot 0x00BBA61C names msvcr71.dll!strcspn (gen-import row); complete 6B tail
+_strchr,,0x0062984A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strchr using VS2003 __identifier; retail IAT slot 0x00BBA618 names msvcr71.dll!strchr (gen-import row); complete 6B tail
+_strstr,,0x00629850,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strstr using VS2003 __identifier; retail IAT slot 0x00BBA614 names msvcr71.dll!strstr (gen-import row); complete 6B tail
+_abort,,0x0062985C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__abort using VS2003 __identifier; retail IAT slot 0x00BBA60C names msvcr71.dll!abort (gen-import row); complete 6B tail
+_exit,,0x00629862,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__exit using VS2003 __identifier; retail IAT slot 0x00BBA608 names msvcr71.dll!exit (gen-import row); complete 6B tail
+_puts,,0x00629868,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__puts using VS2003 __identifier; retail IAT slot 0x00BBA604 names msvcr71.dll!puts (gen-import row); complete 6B tail
+_isspace,,0x00629874,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__isspace using VS2003 __identifier; retail IAT slot 0x00BBA5FC names msvcr71.dll!isspace (gen-import row); complete 6B tail
+_localtime,,0x0062987A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__localtime using VS2003 __identifier; retail IAT slot 0x00BBA5F8 names msvcr71.dll!localtime (gen-import row); complete 6B tail
+__stat,,0x00629880,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___stat using VS2003 __identifier; retail IAT slot 0x00BBA5F0 names msvcr71.dll!_stat (gen-import row); complete 6B tail
+_strtok,,0x00629886,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strtok using VS2003 __identifier; retail IAT slot 0x00BBA5EC names msvcr71.dll!strtok (gen-import row); complete 6B tail
+__vsnprintf,,0x00629898,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___vsnprintf using VS2003 __identifier; retail IAT slot 0x00BBA5E0 names msvcr71.dll!_vsnprintf (gen-import row); complete 6B tail
+_fclose,,0x0062989E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fclose using VS2003 __identifier; retail IAT slot 0x00BBA5DC names msvcr71.dll!fclose (gen-import row); complete 6B tail
+_fread,,0x006298A4,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fread using VS2003 __identifier; retail IAT slot 0x00BBA5D8 names msvcr71.dll!fread (gen-import row); complete 6B tail
+_fopen,,0x006298AA,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fopen using VS2003 __identifier; retail IAT slot 0x00BBA5D4 names msvcr71.dll!fopen (gen-import row); complete 6B tail
+__mbsdup,,0x006298BC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___mbsdup using VS2003 __identifier; retail IAT slot 0x00BBA5C8 names msvcr71.dll!_mbsdup (gen-import row); complete 6B tail
+_iswspace,,0x006298CE,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__iswspace using VS2003 __identifier; retail IAT slot 0x00BBA5BC names msvcr71.dll!iswspace (gen-import row); complete 6B tail
+_tolower,,0x006298D4,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__tolower using VS2003 __identifier; retail IAT slot 0x00BBA5B8 names msvcr71.dll!tolower (gen-import row); complete 6B tail
+_toupper,,0x006298DA,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__toupper using VS2003 __identifier; retail IAT slot 0x00BBA5B4 names msvcr71.dll!toupper (gen-import row); complete 6B tail
+_towupper,,0x006298E0,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__towupper using VS2003 __identifier; retail IAT slot 0x00BBA5B0 names msvcr71.dll!towupper (gen-import row); complete 6B tail
+_strrchr,,0x006298EC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strrchr using VS2003 __identifier; retail IAT slot 0x00BBA5A8 names msvcr71.dll!strrchr (gen-import row); complete 6B tail
+__ultoa,,0x006298F8,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___ultoa using VS2003 __identifier; retail IAT slot 0x00BBA5A0 names msvcr71.dll!_ultoa (gen-import row); complete 6B tail
+__exit,,0x006298FE,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___exit using VS2003 __identifier; retail IAT slot 0x00BBA59C names msvcr71.dll!_exit (gen-import row); complete 6B tail
+__itoa,,0x00629904,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___itoa using VS2003 __identifier; retail IAT slot 0x00BBA598 names msvcr71.dll!_itoa (gen-import row); complete 6B tail
+__control87,,0x00629916,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___control87 using VS2003 __identifier; retail IAT slot 0x00BBA58C names msvcr71.dll!_control87 (gen-import row); complete 6B tail
+__statusfp,,0x00629922,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___statusfp using VS2003 __identifier; retail IAT slot 0x00BBA584 names msvcr71.dll!_statusfp (gen-import row); complete 6B tail
+__fpreset,,0x00629928,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___fpreset using VS2003 __identifier; retail IAT slot 0x00BBA580 names msvcr71.dll!_fpreset (gen-import row); complete 6B tail
+__time64,,0x0062994C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___time64 using VS2003 __identifier; retail IAT slot 0x00BBA568 names msvcr71.dll!_time64 (gen-import row); complete 6B tail
+_strncmp,,0x0062995E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strncmp using VS2003 __identifier; retail IAT slot 0x00BBA55C names msvcr71.dll!strncmp (gen-import row); complete 6B tail
+_fgets,,0x00629976,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fgets using VS2003 __identifier; retail IAT slot 0x00BBA54C names msvcr71.dll!fgets (gen-import row); complete 6B tail
+__strnicmp,,0x00629988,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___strnicmp using VS2003 __identifier; retail IAT slot 0x00BBA540 names msvcr71.dll!_strnicmp (gen-import row); complete 6B tail
+__mbslen,,0x0062998E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___mbslen using VS2003 __identifier; retail IAT slot 0x00BBA53C names msvcr71.dll!_mbslen (gen-import row); complete 6B tail
+_srand,,0x00629994,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__srand using VS2003 __identifier; retail IAT slot 0x00BBA538 names msvcr71.dll!srand (gen-import row); complete 6B tail
+_fwrite,,0x0062999A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fwrite using VS2003 __identifier; retail IAT slot 0x00BBA534 names msvcr71.dll!fwrite (gen-import row); complete 6B tail
+__strlwr,,0x006299A6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___strlwr using VS2003 __identifier; retail IAT slot 0x00BBA52C names msvcr71.dll!_strlwr (gen-import row); complete 6B tail
+__wfopen,,0x006299AC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___wfopen using VS2003 __identifier; retail IAT slot 0x00BBA528 names msvcr71.dll!_wfopen (gen-import row); complete 6B tail
+__access,,0x00629A30,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___access using VS2003 __identifier; retail IAT slot 0x00BBA514 names msvcr71.dll!_access (gen-import row); complete 6B tail
+_rand,,0x00629A3C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__rand using VS2003 __identifier; retail IAT slot 0x00BBA50C names msvcr71.dll!rand (gen-import row); complete 6B tail
+_time,,0x00629A42,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__time using VS2003 __identifier; retail IAT slot 0x00BBA508 names msvcr71.dll!time (gen-import row); complete 6B tail
+_getenv,,0x00629A48,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__getenv using VS2003 __identifier; retail IAT slot 0x00BBA504 names msvcr71.dll!getenv (gen-import row); complete 6B tail
+_iswalpha,,0x00629A4E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__iswalpha using VS2003 __identifier; retail IAT slot 0x00BBA500 names msvcr71.dll!iswalpha (gen-import row); complete 6B tail
+_wcscat,,0x00629A5A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcscat using VS2003 __identifier; retail IAT slot 0x00BBA4F8 names msvcr71.dll!wcscat (gen-import row); complete 6B tail
+__unlink,,0x00629A60,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___unlink using VS2003 __identifier; retail IAT slot 0x00BBA4F4 names msvcr71.dll!_unlink (gen-import row); complete 6B tail
+_wcstok,,0x00629A66,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcstok using VS2003 __identifier; retail IAT slot 0x00BBA4F0 names msvcr71.dll!wcstok (gen-import row); complete 6B tail
+_wcsncpy,,0x00629A72,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcsncpy using VS2003 __identifier; retail IAT slot 0x00BBA4E8 names msvcr71.dll!wcsncpy (gen-import row); complete 6B tail
+__wunlink,,0x00629A78,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___wunlink using VS2003 __identifier; retail IAT slot 0x00BBA4E4 names msvcr71.dll!_wunlink (gen-import row); complete 6B tail
+_wcschr,,0x00629A84,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcschr using VS2003 __identifier; retail IAT slot 0x00BBA4DC names msvcr71.dll!wcschr (gen-import row); complete 6B tail
+_iswalnum,,0x00629A8A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__iswalnum using VS2003 __identifier; retail IAT slot 0x00BBA4D8 names msvcr71.dll!iswalnum (gen-import row); complete 6B tail
+_iswdigit,,0x00629A90,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__iswdigit using VS2003 __identifier; retail IAT slot 0x00BBA4D4 names msvcr71.dll!iswdigit (gen-import row); complete 6B tail
+_iswascii,,0x00629A96,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__iswascii using VS2003 __identifier; retail IAT slot 0x00BBA4D0 names msvcr71.dll!iswascii (gen-import row); complete 6B tail
+_fgetwc,,0x00629A9C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fgetwc using VS2003 __identifier; retail IAT slot 0x00BBA4CC names msvcr71.dll!fgetwc (gen-import row); complete 6B tail
+_fputwc,,0x00629AAE,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__fputwc using VS2003 __identifier; retail IAT slot 0x00BBA4C0 names msvcr71.dll!fputwc (gen-import row); complete 6B tail
+_strtol,,0x00629ABA,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strtol using VS2003 __identifier; retail IAT slot 0x00BBA760 names msvcr71.dll!strtol (gen-import row); complete 6B tail
+_wcsrchr,,0x00629AC0,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcsrchr using VS2003 __identifier; retail IAT slot 0x00BBA4B8 names msvcr71.dll!wcsrchr (gen-import row); complete 6B tail
+_wcsstr,,0x00629AC6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcsstr using VS2003 __identifier; retail IAT slot 0x00BBA4B4 names msvcr71.dll!wcsstr (gen-import row); complete 6B tail
+_strftime,,0x00629ACC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strftime using VS2003 __identifier; retail IAT slot 0x00BBA4B0 names msvcr71.dll!strftime (gen-import row); complete 6B tail
+__wstat,,0x00629AD2,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___wstat using VS2003 __identifier; retail IAT slot 0x00BBA4AC names msvcr71.dll!_wstat (gen-import row); complete 6B tail
+_wcscmp,,0x00629AD8,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__wcscmp using VS2003 __identifier; retail IAT slot 0x00BBA4A8 names msvcr71.dll!wcscmp (gen-import row); complete 6B tail
+_asctime,,0x00629ADE,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__asctime using VS2003 __identifier; retail IAT slot 0x00BBA4A4 names msvcr71.dll!asctime (gen-import row); complete 6B tail
+__mbscmp,,0x00629AEA,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___mbscmp using VS2003 __identifier; retail IAT slot 0x00BBA49C names msvcr71.dll!_mbscmp (gen-import row); complete 6B tail
+__wtoi,,0x00629AF0,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___wtoi using VS2003 __identifier; retail IAT slot 0x00BBA498 names msvcr71.dll!_wtoi (gen-import row); complete 6B tail
+_isalnum,,0x00629AF6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__isalnum using VS2003 __identifier; retail IAT slot 0x00BBA494 names msvcr71.dll!isalnum (gen-import row); complete 6B tail
+_iswgraph,,0x00629AFC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__iswgraph using VS2003 __identifier; retail IAT slot 0x00BBA490 names msvcr71.dll!iswgraph (gen-import row); complete 6B tail
+__close,,0x00629B1A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___close using VS2003 __identifier; retail IAT slot 0x00BBA47C names msvcr71.dll!_close (gen-import row); complete 6B tail
+_remove,,0x00629B26,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__remove using VS2003 __identifier; retail IAT slot 0x00BBA3FC names msvcr71.dll!remove (gen-import row); complete 6B tail
+__waccess,,0x00629B2C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___waccess using VS2003 __identifier; retail IAT slot 0x00BBA400 names msvcr71.dll!_waccess (gen-import row); complete 6B tail
+__read,,0x00629B38,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___read using VS2003 __identifier; retail IAT slot 0x00BBA408 names msvcr71.dll!_read (gen-import row); complete 6B tail
+__lseek,,0x00629B3E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___lseek using VS2003 __identifier; retail IAT slot 0x00BBA40C names msvcr71.dll!_lseek (gen-import row); complete 6B tail
+__write,,0x00629B44,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___write using VS2003 __identifier; retail IAT slot 0x00BBA410 names msvcr71.dll!_write (gen-import row); complete 6B tail
+_qsort,,0x00629B4A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__qsort using VS2003 __identifier; retail IAT slot 0x00BBA414 names msvcr71.dll!qsort (gen-import row); complete 6B tail
+_strspn,,0x00629B5C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strspn using VS2003 __identifier; retail IAT slot 0x00BBA420 names msvcr71.dll!strspn (gen-import row); complete 6B tail
+__errno,,0x00629B62,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___errno using VS2003 __identifier; retail IAT slot 0x00BBA424 names msvcr71.dll!_errno (gen-import row); complete 6B tail
+__beginthread,,0x00629B74,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___beginthread using VS2003 __identifier; retail IAT slot 0x00BBA430 names msvcr71.dll!_beginthread (gen-import row); complete 6B tail
+__c_exit,,0x00629BCC,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___c_exit using VS2003 __identifier; retail IAT slot 0x00BBA444 names msvcr71.dll!_c_exit (gen-import row); complete 6B tail
+__ismbblead,,0x00629BD8,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___ismbblead using VS2003 __identifier; retail IAT slot 0x00BBA44C names msvcr71.dll!_ismbblead (gen-import row); complete 6B tail
+__cexit,,0x00629BDE,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___cexit using VS2003 __identifier; retail IAT slot 0x00BBA450 names msvcr71.dll!_cexit (gen-import row); complete 6B tail
+__fstat,,0x0075A590,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___fstat using VS2003 __identifier; retail IAT slot 0x00BBA6F0 names msvcr71.dll!_fstat (gen-import row); complete 6B tail
+__wcsicmp,,0x0075A59C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___wcsicmp using VS2003 __identifier; retail IAT slot 0x00BBA6F8 names msvcr71.dll!_wcsicmp (gen-import row); complete 6B tail
+_isprint,,0x0075AC08,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__isprint using VS2003 __identifier; retail IAT slot 0x00BBA6FC names msvcr71.dll!isprint (gen-import row); complete 6B tail
+_gmtime,,0x0075AC0E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__gmtime using VS2003 __identifier; retail IAT slot 0x00BBA700 names msvcr71.dll!gmtime (gen-import row); complete 6B tail
+_calloc,,0x0075AC14,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__calloc using VS2003 __identifier; retail IAT slot 0x00BBA704 names msvcr71.dll!calloc (gen-import row); complete 6B tail
+__atoi64,,0x0075AC1A,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___atoi64 using VS2003 __identifier; retail IAT slot 0x00BBA708 names msvcr71.dll!_atoi64 (gen-import row); complete 6B tail
+_rewind,,0x0075AC20,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__rewind using VS2003 __identifier; retail IAT slot 0x00BBA70C names msvcr71.dll!rewind (gen-import row); complete 6B tail
+__mkdir,,0x0075AC26,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___mkdir using VS2003 __identifier; retail IAT slot 0x00BBA710 names msvcr71.dll!_mkdir (gen-import row); complete 6B tail
+__chmod,,0x0075AC2C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___chmod using VS2003 __identifier; retail IAT slot 0x00BBA714 names msvcr71.dll!_chmod (gen-import row); complete 6B tail
+_rename,,0x0075AC32,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__rename using VS2003 __identifier; retail IAT slot 0x00BBA718 names msvcr71.dll!rename (gen-import row); complete 6B tail
+__getcwd,,0x0075AC38,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___getcwd using VS2003 __identifier; retail IAT slot 0x00BBA71C names msvcr71.dll!_getcwd (gen-import row); complete 6B tail
+_isupper,,0x0075AC50,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__isupper using VS2003 __identifier; retail IAT slot 0x00BBA72C names msvcr71.dll!isupper (gen-import row); complete 6B tail
+_ispunct,,0x0075AC56,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__ispunct using VS2003 __identifier; retail IAT slot 0x00BBA730 names msvcr71.dll!ispunct (gen-import row); complete 6B tail
+_iscntrl,,0x0075AC5C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__iscntrl using VS2003 __identifier; retail IAT slot 0x00BBA734 names msvcr71.dll!iscntrl (gen-import row); complete 6B tail
+_isalpha,,0x0075AC62,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__isalpha using VS2003 __identifier; retail IAT slot 0x00BBA738 names msvcr71.dll!isalpha (gen-import row); complete 6B tail
+_islower,,0x0075AC68,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__islower using VS2003 __identifier; retail IAT slot 0x00BBA73C names msvcr71.dll!islower (gen-import row); complete 6B tail
+_system,,0x0075AC6E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__system using VS2003 __identifier; retail IAT slot 0x00BBA740 names msvcr71.dll!system (gen-import row); complete 6B tail
+_tmpnam,,0x0075AC74,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__tmpnam using VS2003 __identifier; retail IAT slot 0x00BBA744 names msvcr71.dll!tmpnam (gen-import row); complete 6B tail
+_freopen,,0x0075AC80,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__freopen using VS2003 __identifier; retail IAT slot 0x00BBA74C names msvcr71.dll!freopen (gen-import row); complete 6B tail
+_longjmp,,0x0075AC86,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__longjmp using VS2003 __identifier; retail IAT slot 0x00BBA750 names msvcr71.dll!longjmp (gen-import row); complete 6B tail
+_strtod,,0x0075AC8C,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strtod using VS2003 __identifier; retail IAT slot 0x00BBA754 names msvcr71.dll!strtod (gen-import row); complete 6B tail
+_strcoll,,0x0075AC92,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp__strcoll using VS2003 __identifier; retail IAT slot 0x00BBA758 names msvcr71.dll!strcoll (gen-import row); complete 6B tail
+__strupr,,0x0075B4F0,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed SDK cdecl forwarding through the genuine __imp___strupr using VS2003 __identifier; retail IAT slot 0x00BBA5F4 names msvcr71.dll!_strupr (gen-import row); complete 6B tail
