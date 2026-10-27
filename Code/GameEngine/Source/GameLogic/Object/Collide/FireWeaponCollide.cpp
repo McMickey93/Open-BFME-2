@@ -8,10 +8,9 @@
 // verified against: module data +0x04, object +0x08, collide weapon +0x14,
 // ever-fired +0x18; module data template +0x08; object weapon status +0x74;
 // weapon deleteInstance slot 0, status +0x08.
-// shouldFireWeapon stays split: declaring it virtual here changes the
-// vftable this unit emits, which every other unit shares one copy of.
-// The xfer unit stays split: it reaches the weapon as a Snapshot base at +0,
-// which this weapon view (pool object first) cannot also express.
+// shouldFireWeapon stays split: it is primary slot 12 of retail's vftable,
+// and slots 5-11 hold folded bodies no ledger row names as members here.
+// xfer and getModuleNameKey are declared in their retail slots (3 and 4).
 
 class Thing;
 
@@ -48,9 +47,20 @@ public:
 	int m_weaponStatus; // +0x74
 };
 
+class Xfer;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 // Multiple-inheritance layout shared with the split xfer unit, so all units
 // name the three vtables alike (+0x00 ObjectModule, +0x0C
-// BehaviorModuleInterface, +0x10 CollideModuleInterface).
+// BehaviorModuleInterface, +0x10 CollideModuleInterface). Retail's primary
+// vftable (0x00C5A0FC) holds the scalar deleting dtor, the shared
+// loadPostProcess (0x00497805), the name getter (0x004BB6FC), xfer
+// (0x004BB85C) and getModuleNameKey (0x004BB755) in slots 0-4; slots 1-2 are
+// declared on BehaviorModule as its ledger rows spell them.
 class ObjectModule
 {
 public:
@@ -74,6 +84,10 @@ class BehaviorModule : public ObjectModule, public BehaviorModuleInterface
 {
 public:
 	virtual ~BehaviorModule() {}
+
+protected:
+	virtual void loadPostProcess();				// slot 1
+	virtual const char *GetSnapshotName() const;		// slot 2
 };
 
 class CollideModuleInterface
@@ -101,6 +115,12 @@ class FireWeaponCollide : public CollideModule
 public:
 	FireWeaponCollide(Thing *thing, const ModuleData *moduleData);
 	virtual ~FireWeaponCollide();
+
+protected:
+	virtual void xfer(Xfer *xfer);				// slot 3
+
+public:
+	virtual NameKeyType getModuleNameKey() const;		// slot 4
 
 private:
 	const FireWeaponCollideModuleData *getFireWeaponCollideModuleData() const
