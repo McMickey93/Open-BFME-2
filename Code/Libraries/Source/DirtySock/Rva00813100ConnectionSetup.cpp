@@ -50,18 +50,16 @@ extern "C"
 	int Rva0081B010( void *transport, void *argument );
 	int Rva0081B790( void *transport, void *argument );
 	int Rva0081B910( void *transport, void *argument );
-	int __stdcall Rva0081BDAE( unsigned int handle );
+	int __stdcall lineClose( unsigned int handle );
 }
 
 extern "C" int Rva0081B9D0( void *transport );
 
 /* Each 0x100-byte RTC-scoped buffer intentionally uses retail's local name `addr`.
- * The generated import wrapper is the proven body at 0x0081BDA8.  Its
- * stock declaration has no useful parameter list, so only this TU's typed
- * call view supplies the three stack words observed at the caller. */
-extern void ji_0081bda8();
-typedef int ( __stdcall *Rva0081BDA8Answer )( int address, int first,
-	int second );
+ * The answer call reaches tapi32's lineAnswer through its import thunk at
+ * 0x00687CA8, with the three stack words observed at the caller. */
+extern "C" int __stdcall lineAnswer( int call, const char *userUserInfo,
+	int size );
 
 extern "C" void __stdcall Rva00813100( int port, int kind,
 	Rva00813100Comm *comm, int size, int unusedA, int unusedB )
@@ -73,7 +71,7 @@ extern "C" void __stdcall Rva00813100( int port, int kind,
 	{
 		if ( active->m_state == 4 )
 		{
-			Rva0081BDAE( active->m_handle );
+			lineClose( active->m_handle );
 			active->m_handle = (unsigned int)-1;
 			openResult = Rva008136C0( active->m_lineApplication,
 				active->m_port, &active->m_handle,
@@ -82,7 +80,7 @@ extern "C" void __stdcall Rva00813100( int port, int kind,
 		}
 		else if ( active->m_state == 3 )
 		{
-			Rva0081BDAE( active->m_handle );
+			lineClose( active->m_handle );
 			active->m_handle = (unsigned int)-1;
 			openResult = Rva008136C0( active->m_lineApplication,
 				active->m_port,
@@ -96,7 +94,7 @@ extern "C" void __stdcall Rva00813100( int port, int kind,
 				&active->m_address, active->m_hostName, 0 );
 			if ( active->m_result <= 0 )
 			{
-				Rva0081BDAE( active->m_handle );
+				lineClose( active->m_handle );
 				active->m_handle = (unsigned int)-1;
 				active->m_state = 8;
 				return;
@@ -109,7 +107,7 @@ extern "C" void __stdcall Rva00813100( int port, int kind,
 		{
 			active->m_state = 7;
 			Rva0081B010( active->m_transport, 0 );
-			Rva0081BDAE( active->m_handle );
+			lineClose( active->m_handle );
 			active->m_handle = (unsigned int)-1;
 			openResult = Rva008136C0( active->m_lineApplication,
 				active->m_port, &active->m_handle,
@@ -125,7 +123,7 @@ extern "C" void __stdcall Rva00813100( int port, int kind,
 		{
 			active->m_state = 6;
 			Rva0081B010( active->m_transport, 0 );
-			Rva0081BDAE( active->m_handle );
+			lineClose( active->m_handle );
 			active->m_handle = (unsigned int)-1;
 			openResult = Rva008136C0( active->m_lineApplication,
 				active->m_port,
@@ -139,7 +137,7 @@ extern "C" void __stdcall Rva00813100( int port, int kind,
 				&active->m_address, active->m_hostName, 0 );
 			if ( active->m_result <= 0 )
 			{
-				Rva0081BDAE( active->m_handle );
+				lineClose( active->m_handle );
 				active->m_handle = (unsigned int)-1;
 				active->m_state = 8;
 				return;
@@ -152,7 +150,7 @@ extern "C" void __stdcall Rva00813100( int port, int kind,
 		( active->m_state == 4 || active->m_state == 7 ) )
 	{
 		active->m_address = port;
-		active->m_result = ((Rva0081BDA8Answer)ji_0081bda8)(
+		active->m_result = lineAnswer(
 			active->m_address, 0, 0 );
 		if ( active->m_result == 0 )
 			size = 0x100;
@@ -210,8 +208,3 @@ Rva00813100Done:
 	(void)unusedA;
 	(void)unusedB;
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_Rva0081BDAE@4=?ji_00687cae@@YAXXZ")
-#pragma comment(linker, "/alternatename:?ji_0081bda8@@YAXXZ=?ji_00687ca8@@YAXXZ")

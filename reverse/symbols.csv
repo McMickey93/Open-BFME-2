@@ -6642,7 +6642,6 @@ name,address,notes
 ?j_00800660@@YAXXZ,0x0066CA80
 ?ji_006291ae@@YAPAXPAXHI@Z,0x006291AE,twin of rowed YAXXZ same 6B jmp thunk call site 0x00265254 memset
 ?ji_0062af20@@YGJPAXKPBXPAPAX0@Z,0x0062AF20,twin of rowed YAXXZ same 6B jmp thunk call site 0x00098BD4 DirectInput8Create
-?ji_0081bda8@@YAXXZ,0x00687CA8,address read from the REL32 displacement in DirtySock Rva00813100ConnectionSetup at 0x0067F000; indirect-call slot cast to function in BFME1 source; body not yet converted
 ?ji_00879190@@YAXXZ,0x006B8A30,address read from the REL32 displacement at a placed body
 ?ji_008793a0@@YAXXZ,0x006B8C30,address read from the REL32 displacement at a placed body
 ?ji_009facad@@YAXXZ,0x0062AF26,callee read from the retail REL32 in placed BFME1-donor body ?bfmeGoVKH@BfmeThingVKH@@QAE?AUBfmeMat4VKH@@H@Z (0x00075295)
@@ -7583,14 +7582,6 @@ _Rva0081B9B0,0x006878B0,address read from the REL32 displacement in DirtySock Y4
 _Rva0081B9D0,0x006878D0,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00813F90 at 0x0067FE90; BFME1 Y4CommTickIdle names this callee; body not yet converted
 _Rva0081BA60,0x00687960,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00814040 at 0x0067FF40; BFME1 Y4CommTickIdle names this callee; body not yet converted
 _Rva0081BC80,0x00687B80,address from masked placement of the same-TU body; forward reference pending conversion; body not yet converted
-_Rva0081BDA2@20,0x00687CA2,retail call in the TAPI worker at 0x0067EF34 reaches this 6B import thunk (jmp tapi32!lineInitialize slot 0xBBA7BC); BFME1 Y4CommTickIdle names this callee; thunk not a body do not convert here
-_Rva0081BDAE@4,0x00687CAE,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00813780 at 0x0067F680; BFME1 Y4CommTickIdle names this callee; body not yet converted
-_Rva0081BDB4@36,0x00687CB4,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva008136C0 at 0x0067F5C0; call order matches BFME1 source; body not yet converted
-_Rva0081BDBA@24,0x00687CBA,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva008136C0 at 0x0067F5C0; call order matches BFME1 source; body not yet converted
-_Rva0081BDC0@24,0x00687CC0,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva008137C0 at 0x0067F6C0; BFME1 Y4CommTickIdle names this callee; body not yet converted
-_Rva0081BDC6@20,0x00687CC6,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00813890 at 0x0067F790; BFME1 Y4CommTickIdle names this callee; body not yet converted
-_Rva0081BDCC@4,0x00687CCC,retail call in Rva008139A0 at 0x0067F8BE reaches this 6B import thunk (jmp tapi32!lineShutdown slot 0xBBA7D4); BFME1 Y4CommTickIdle names this callee; thunk not a body do not convert here
-_Rva0081BDD2@20,0x00687CD2,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00813A50 at 0x0067F950; call order matches BFME1 source; body not yet converted
 _Rva0081BDE4,0x006556AC,address read from the REL32 displacement in DirtySock Y2Rva00806580Module at 0x006725B0; BFME1 names this callee; body not yet converted
 _Rva0084DE40Tail,0x000210C0,STLport locale tail helper called via tail-jmp from the retail REL32 in Rva0084ECA0 at 0x00021E68 and Rva0084ECE0 at 0x00021EA8; donor name from BFME1 LocaleCodePageQueries
 _Rva008504C0,0x00023650,STLport locale date-time-format getter: GetLocaleInfoA(locale 0x1f) into the .data buffer 0x00DDF368 with a 0x104 length then __ConvertFromACP of 0x50 bytes from the object's codePage; reached by the tail call at +519 of _Init_timeinfo 0x000193A0 -- b1 0x008504C0

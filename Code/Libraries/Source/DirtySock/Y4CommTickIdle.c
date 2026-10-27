@@ -229,7 +229,7 @@ int Rva00814040( struct Rva00814700Comm *comm, const void *payload,
 
 int Rva0081B9D0( void *transport );
 void Rva0081B9B0( void *transport );
-int __stdcall Rva0081BDAE( unsigned int handle );
+int __stdcall lineClose( unsigned int handle );
 
 int Rva00813F20( struct Rva00814700Comm *comm )
 {
@@ -237,7 +237,7 @@ int Rva00813F20( struct Rva00814700Comm *comm )
 		Rva0081B9B0( comm->m_transport );
 
 	if ( comm->m_state == 3 || comm->m_state == 5 || comm->m_state == 8 )
-		Rva0081BDAE( comm->m_handle );
+		lineClose( comm->m_handle );
 
 	return 0;
 }
@@ -440,10 +440,10 @@ struct Rva008136C0ExtensionId
 	int m_words[ 4 ];
 };
 
-int __stdcall Rva0081BDBA( int lineApplication, int deviceId,
+int __stdcall lineNegotiateAPIVersion( int lineApplication, int deviceId,
 	int apiLowVersion, int apiHighVersion, int *apiVersion,
 	struct Rva008136C0ExtensionId *extensionId );
-int __stdcall Rva0081BDD2( int lineApplication, int deviceId,
+int __stdcall lineGetDevCaps( int lineApplication, int deviceId,
 	int apiVersion, int extensionVersion, void *capabilities );
 
 int Rva00813E50( struct Rva00813E50Comm *comm, char *text )
@@ -493,14 +493,14 @@ int Rva00813A50( struct Rva00813E50Comm *comm, const char *text,
 		(unsigned int)iDevice < *(unsigned int *)( (char *)comm + 0x80 );
 		iDevice++ )
 	{
-		iResult = Rva0081BDBA( *(int *)( (char *)comm + 0x84 ), iDevice,
+		iResult = lineNegotiateAPIVersion( *(int *)( (char *)comm + 0x84 ), iDevice,
 			0x10004, 0x20002, &version, &extend );
 		if ( iResult != 0 )
 			continue;
 
 		memset( caps, 0, 0x400 );
 		*(int *)caps = 0x400;
-		iResult = Rva0081BDD2( *(int *)( (char *)comm + 0x84 ), iDevice,
+		iResult = lineGetDevCaps( *(int *)( (char *)comm + 0x84 ), iDevice,
 			version, 0, caps );
 		if ( *(int *)( caps + 0x7C ) == 0 )
 			continue;
@@ -1214,7 +1214,7 @@ int Rva00813780( unsigned int handle )
 	int iResult;
 
 	if ( handle != 0xFFFFFFFF )
-		iResult = Rva0081BDAE( handle );
+		iResult = lineClose( handle );
 	else
 		iResult = 0x8000002B;
 
@@ -1283,7 +1283,7 @@ int Rva00814F70( struct Rva00814700Comm *comm, void *buffer, int size,
 }
 
 unsigned int strlen( const char *text );
-int __stdcall Rva0081BDC6( int line, int address, char *destination,
+int __stdcall lineMakeCall( int line, int address, char *destination,
 	int countryCode, void *callParameters );
 
 int Rva00813890( int line, int address, const char *destination,
@@ -1302,7 +1302,7 @@ int Rva00813890( int line, int address, const char *destination,
 	_mbscpy( (char *)dial + 0x70, destination );
 	*(int *)( dial + 0x38 ) = strlen( (char *)dial + 0x70 );
 
-	return Rva0081BDC6( line, address, (char *)dial + 0x70,
+	return lineMakeCall( line, address, (char *)dial + 0x70,
 		countryCode, dial );
 }
 
@@ -1318,7 +1318,7 @@ char Rva012C4A40[64] = {
 	116, 0, 0, 0, 37, 100, 37, 99,
 	0, 0, 0, 0, 0, 0, 0, 0,
 };
-int __stdcall Rva0081BDC0( int line, int requestMode, int extension,
+int __stdcall lineGetID( int line, int requestMode, int extension,
 	int versionCount, void *capabilities, void *apiVersion );
 
 int Rva008137C0( int line )
@@ -1329,7 +1329,7 @@ int Rva008137C0( int line )
 
 	memset( info, 0, sizeof( info ) );
 	*(int *)info = sizeof( info );
-	iResult = Rva0081BDC0( line, 0, 0, 1, info, Rva012C4A40 );
+	iResult = lineGetID( line, 0, 0, 1, info, Rva012C4A40 );
 
 	if ( iResult != 0 )
 		iReturn = -1;
@@ -1339,7 +1339,7 @@ int Rva008137C0( int line )
 	return iReturn;
 }
 
-int __stdcall Rva0081BDB4( int lineApplication, int deviceId, void *line,
+int __stdcall lineOpen( int lineApplication, int deviceId, void *line,
 	int apiVersion, int extensionVersion, int callbackInstance,
 	int privileges, int mediaModes, void *callParameters );
 
@@ -1351,17 +1351,17 @@ int Rva008136C0( int lineApplication, int deviceId, void *line,
 	struct Rva008136C0ExtensionId extend;
 
 	version = 0;
-	iResult = Rva0081BDBA( lineApplication, deviceId, 0x10004, 0x20002,
+	iResult = lineNegotiateAPIVersion( lineApplication, deviceId, 0x10004, 0x20002,
 		&version, &extend );
 	if ( iResult != 0 )
 		return iResult;
 
-	return Rva0081BDB4( lineApplication, deviceId, line, version, 0,
+	return lineOpen( lineApplication, deviceId, line, version, 0,
 		callbackInstance, privileges, mediaModes, 0 );
 }
 
 void Rva0081ACD0( void *transport );
-void __stdcall Rva0081BDCC( int lineApplication );
+void __stdcall lineShutdown( int lineApplication );
 __declspec(dllimport) int __stdcall PostThreadMessageA(
 	unsigned int workerId, unsigned int message, int first, int second );
 __declspec(dllimport) void __stdcall Sleep( int interval );
@@ -1372,7 +1372,7 @@ __declspec(dllimport) int __stdcall HeapFree( void *heap,
 void Rva008139A0( struct Rva00814700Comm *comm )
 {
 	Rva0081ACD0( comm->m_transport );
-	Rva0081BDCC( *(int *)( comm->m_endpoint + 4 ) );
+	lineShutdown( *(int *)( comm->m_endpoint + 4 ) );
 	comm->m_state = 9;
 	PostThreadMessageA( comm->m_workerId, 0x12, 0, 0 );
 
@@ -1403,7 +1403,7 @@ __declspec(dllimport) int __stdcall TranslateMessage(
 	struct Rva00812FD0Message *message );
 __declspec(dllimport) int __stdcall DispatchMessageA(
 	struct Rva00812FD0Message *message );
-int __stdcall Rva0081BDA2( void *lineApplication, void *module,
+int __stdcall lineInitialize( void *lineApplication, void *module,
 	void *callback, int name, void *deviceCount );
 /* The TAPI line callback: BFME1 spells its own VA 0x00C13100 here, BFME2
  * retail passes 0x00A81A50, i.e. this same connection-setup entry. Declared
@@ -1419,7 +1419,7 @@ int Rva00812FD0( struct Rva00814700Comm *argument )
 
 	comm = argument;
 	PeekMessageA( &msg, 0, 0, 0, 0 );
-	iResult = Rva0081BDA2( comm->m_endpoint + 4,
+	iResult = lineInitialize( comm->m_endpoint + 4,
 		GetModuleHandleA( 0 ), Rva00813100, 0,
 		comm->m_endpoint );
 
@@ -1439,14 +1439,3 @@ int Rva00812FD0( struct Rva00814700Comm *argument )
 	comm->m_state = 1;
 	return 0;
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_Rva0081BDAE@4=?ji_00687cae@@YAXXZ")
-#pragma comment(linker, "/alternatename:_Rva0081BDA2@20=?ji_00687ca2@@YAXXZ")
-#pragma comment(linker, "/alternatename:_Rva0081BDB4@36=?ji_00687cb4@@YAXXZ")
-#pragma comment(linker, "/alternatename:_Rva0081BDBA@24=?ji_00687cba@@YAXXZ")
-#pragma comment(linker, "/alternatename:_Rva0081BDC0@24=?ji_00687cc0@@YAXXZ")
-#pragma comment(linker, "/alternatename:_Rva0081BDC6@20=?ji_00687cc6@@YAXXZ")
-#pragma comment(linker, "/alternatename:_Rva0081BDCC@4=?ji_00687ccc@@YAXXZ")
-#pragma comment(linker, "/alternatename:_Rva0081BDD2@20=?ji_00687cd2@@YAXXZ")
