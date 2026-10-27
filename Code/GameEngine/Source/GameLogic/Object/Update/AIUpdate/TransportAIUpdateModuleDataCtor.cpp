@@ -19,8 +19,7 @@
 // precedent); inline AsciiString at +0x2C plus PBD at +0x44 plus map/vector
 // give the 0->2 state shape.
 
-extern "C" const void *const vtbl_00BFA288[];  // ??_7TransportAIUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BFA288=??_7TransportAIUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7TransportAIUpdateModuleData@@6B@")[];  // vftable 0x00BFA288
 
 #include <map>
 #include <vector>
@@ -105,7 +104,7 @@ extern int BfmeLogicFramesPerSecond;
 
 TransportAIUpdateModuleData::TransportAIUpdateModuleData()
 	: UpdateModuleData()
-	, m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00BFA288)))
+	, m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7TransportAIUpdateModuleData@@6B@"))))
 	, m_moodAttackCheckRate(BfmeLogicFramesPerSecond + BfmeLogicFramesPerSecond)
 	, m_autoAcquire(0)
 	, m_stopChaseDistance(500.0f)

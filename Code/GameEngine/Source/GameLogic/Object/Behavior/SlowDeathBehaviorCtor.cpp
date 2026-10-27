@@ -15,18 +15,13 @@
 // retail is followed. Callers proving class: friend_new 0x24B264 plus Ship
 // 0x45E9AA plus GiantBird 0x461E58 plus ClearanceTesting 0x483D39.
 
-extern "C" const void *const vtbl_00C42030[];  // folded, 5 classes; via ??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface3@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C42030=??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface3@@@")
-extern "C" const void *const vtbl_00C42034[];  // folded, 3 classes; via ??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C42034=??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface2@@@")
-extern "C" const void *const vtbl_00C42DA8[];  // folded, 3 classes; via ??_7Rva0045D39E@@6BRva0024A797_Mid@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C42DA8=??_7Rva0045D39E@@6BRva0024A797_Mid@@@")
+extern "C" const void *const __identifier("??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface3@@@")[];  // folded vftable 0x00C42030 (5 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface2@@@")[];  // folded vftable 0x00C42034 (3 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7Rva0045D39E@@6BRva0024A797_Mid@@@")[];  // folded vftable 0x00C42DA8 (3 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@")[];  // folded vftable 0x00C4EF80 (7 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C42020[];  // ??_7Rva0045D39E@@6BRva0045D39E_E2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C42020=??_7Rva0045D39E@@6BRva0045D39E_E2@@@")
-extern "C" const void *const vtbl_00C42040[];  // ??_7Rva0045D39E@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C42040=??_7Rva0045D39E@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7Rva0045D39E@@6BRva0045D39E_E2@@@")[];  // vftable 0x00C42020
+extern "C" const void *const __identifier("??_7Rva0045D39E@@6BRva0024A797_Root@@@")[];  // vftable 0x00C42040
 
 extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];  // folded vftable 0x00C1C780 (49 classes), by its data-ledger name
 
@@ -125,11 +120,11 @@ SlowDeathBehavior::SlowDeathBehavior(Thing *thing, const ModuleData *moduleData)
 	m_34 = 0;
 	m_40 = false;
 	m_48 = false;
-	m_vtable = (const void *)((unsigned int)vtbl_00C42040);
-	m_p0C = (const void *)((unsigned int)vtbl_00C42DA8);
-	m_p10 = (const void *)((unsigned int)vtbl_00C42034);
-	m_secondary20 = (const void *)((unsigned int)vtbl_00C42030);
-	m_secondary24 = (const void *)((unsigned int)vtbl_00C42020);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva0045D39E@@6BRva0024A797_Root@@@"));
+	m_p0C = (const void *)((unsigned int)__identifier("??_7Rva0045D39E@@6BRva0024A797_Mid@@@"));
+	m_p10 = (const void *)((unsigned int)__identifier("??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface2@@@"));
+	m_secondary20 = (const void *)((unsigned int)__identifier("??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface3@@@"));
+	m_secondary24 = (const void *)((unsigned int)__identifier("??_7Rva0045D39E@@6BRva0045D39E_E2@@@"));
 	m_38 = 1.0f;
 	m_44 = 99999;
 

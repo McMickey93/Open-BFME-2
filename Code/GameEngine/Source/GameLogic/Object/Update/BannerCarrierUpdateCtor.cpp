@@ -14,8 +14,7 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4F82C[];  // ??_7Rva004969FF@@6BRva004969FF_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4F82C=??_7Rva004969FF@@6BRva004969FF_B2@@@")
+extern "C" const void *const __identifier("??_7Rva004969FF@@6BRva004969FF_B2@@@")[];  // vftable 0x00C4F82C
 // The retail table at RVA 0x0084F838: 13 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -66,5 +65,5 @@ BannerCarrierUpdate::BannerCarrierUpdate(Thing *thing, const ModuleData *moduleD
 {
 	*(unsigned int *)this = ((unsigned int)vtbl_00C4F838);
 	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C4F82C);
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7Rva004969FF@@6BRva004969FF_B2@@@"));
 }

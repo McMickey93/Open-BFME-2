@@ -16,14 +16,10 @@
 
 extern "C" const void *const __identifier("??_7Rva005EEF2FBase0@@6B@")[];  // vftable 0x00BFBC9C
 
-extern "C" const void *const vtbl_00C1A690[];  // ??_7Rva00455050@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C1A690=??_7Rva00455050@@6B@")
-extern "C" const void *const vtbl_00C40538[];  // ??_7Rva00455050@@6BRva0024A797_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C40538=??_7Rva00455050@@6BRva0024A797_B2@@@")
-extern "C" const void *const vtbl_00C40548[];  // ??_7Rva00455050@@6BRva0024A797_Mid@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C40548=??_7Rva00455050@@6BRva0024A797_Mid@@@")
-extern "C" const void *const vtbl_00C40608[];  // ??_7Rva00455050@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C40608=??_7Rva00455050@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7CastleBehavior@@6BFoundationAIUpdateInterface@@@")[];  // vftable 0x00C1A690
+extern "C" const void *const __identifier("??_7Rva00455050@@6BRva0024A797_B2@@@")[];  // vftable 0x00C40538
+extern "C" const void *const __identifier("??_7Rva00455050@@6BRva0024A797_Mid@@@")[];  // vftable 0x00C40548
+extern "C" const void *const __identifier("??_7Rva00455050@@6BRva0024A797_Root@@@")[];  // vftable 0x00C40608
 
 class Thing;
 class ModuleData;
@@ -74,10 +70,10 @@ FoundationAIUpdate::FoundationAIUpdate(Thing *thing, const ModuleData *moduleDat
 	*slot20 = (int)((unsigned int)__identifier("??_7Rva005EEF2FBase0@@6B@"));
 	m_28 &= 0;
 	int one = 1;
-	m_vtable = (const void *)((unsigned int)vtbl_00C40608);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C40548);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C40538);
-	m_20 = (const void *)((unsigned int)vtbl_00C1A690);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva00455050@@6BRva0024A797_Root@@@"));
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7Rva00455050@@6BRva0024A797_Mid@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva00455050@@6BRva0024A797_B2@@@"));
+	m_20 = (const void *)((unsigned int)__identifier("??_7CastleBehavior@@6BFoundationAIUpdateInterface@@@"));
 	m_24 = one;
 	m_2C = (unsigned char)one;
 	setWakeFrame(m_object, (UpdateSleepTime)one);

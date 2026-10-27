@@ -17,8 +17,7 @@
 // in decl order, body in retail order: clears first, then the radius,
 // options, factor and distance stores).
 
-extern "C" const void *const vtbl_00C3FF98[];  // ??_7WallHubBehaviorModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C3FF98=??_7WallHubBehaviorModuleData@@6B@")
+extern "C" const void *const __identifier("??_7WallHubBehaviorModuleData@@6B@")[];  // vftable 0x00C3FF98
 
 #include <vector>
 
@@ -68,7 +67,7 @@ private:
 
 // ??0WallHubBehaviorModuleData@@QAE@XZ @0x453020
 WallHubBehaviorModuleData::WallHubBehaviorModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C3FF98)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7WallHubBehaviorModuleData@@6B@"))))
 {
 	m_segmentTemplateNames.clear();
 	m_hubCapTemplateName.clear();

@@ -17,12 +17,9 @@
 extern "C" const void *const __identifier("??_7HordeWorkerAIUpdate@@6BDBaseM1@@@")[];  // folded vftable 0x00C50538 (2 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7DozerAIUpdate@@6BAIUpdateInterface24@@@")[];  // folded vftable 0x00C52F88 (12 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C508B8[];  // ??_7HordeWorkerAIUpdate@@6BDBaseM3@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C508B8=??_7HordeWorkerAIUpdate@@6BDBaseM3@@@")
-extern "C" const void *const vtbl_00C508BC[];  // ??_7HordeWorkerAIUpdate@@6BDBaseB2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C508BC=??_7HordeWorkerAIUpdate@@6BDBaseB2@@@")
-extern "C" const void *const vtbl_00C508C8[];  // ??_7HordeWorkerAIUpdate@@6BDBaseRoot@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C508C8=??_7HordeWorkerAIUpdate@@6BDBaseRoot@@@")
+extern "C" const void *const __identifier("??_7HordeWorkerAIUpdate@@6BDBaseM3@@@")[];  // vftable 0x00C508B8
+extern "C" const void *const __identifier("??_7HordeWorkerAIUpdate@@6BDBaseB2@@@")[];  // vftable 0x00C508BC
+extern "C" const void *const __identifier("??_7HordeWorkerAIUpdate@@6BDBaseRoot@@@")[];  // vftable 0x00C508C8
 extern const void *const g_00C50868[];
 
 class Thing;
@@ -75,10 +72,10 @@ HordeWorkerAIUpdate::HordeWorkerAIUpdate(Thing *thing, const ModuleData *moduleD
 	: HordeAIUpdate(thing, moduleData)
 {
 	int zero = 0;
-	m_vtable = (const void *)((unsigned int)vtbl_00C508C8);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7HordeWorkerAIUpdate@@6BDBaseRoot@@@"));
 	m_p0C = (const void *)((unsigned int)__identifier("??_7HordeWorkerAIUpdate@@6BDBaseM1@@@"));
-	m_p10 = (const void *)((unsigned int)vtbl_00C508BC);
-	m_p20 = (const void *)((unsigned int)vtbl_00C508B8);
+	m_p10 = (const void *)((unsigned int)__identifier("??_7HordeWorkerAIUpdate@@6BDBaseB2@@@"));
+	m_p20 = (const void *)((unsigned int)__identifier("??_7HordeWorkerAIUpdate@@6BDBaseM3@@@"));
 	m_p24 = (const void *)((unsigned int)__identifier("??_7DozerAIUpdate@@6BAIUpdateInterface24@@@"));
 	m_p3E4 = (const void *)g_00C50868;
 	m_3E8 = zero;

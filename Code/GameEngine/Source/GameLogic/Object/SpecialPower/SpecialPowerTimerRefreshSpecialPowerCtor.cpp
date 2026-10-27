@@ -16,8 +16,7 @@ char g_00BEFDB4;
 // rowed SpecialPowerModule spelling).
 
 extern "C" const void *const __identifier("??_7SpecialPowerModule@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00BEFCF8 (38 classes), by its data-ledger name
-extern "C" const void *const vtbl_00C5E080[];  // folded, 2 classes; via ??_7Rva004C7B36@@6BRva004C7B36_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5E080=??_7Rva004C7B36@@6BRva004C7B36_B2@@@")
+extern "C" const void *const __identifier("??_7SpecialPowerModule@@6B@")[];  // folded vftable 0x00C5E080 (2 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -40,5 +39,5 @@ SpecialPowerTimerRefreshSpecialPower::SpecialPowerTimerRefreshSpecialPower(Thing
 {
 	*(unsigned int *)this = (unsigned int)&g_00BEFDB4;
 	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7SpecialPowerModule@@6BBehaviorModuleInterface@@@"));
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C5E080);
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7SpecialPowerModule@@6B@"));
 }

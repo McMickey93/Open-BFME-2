@@ -4,9 +4,6 @@
 #include "ascii_string.h"
 #include "../../../../../Libraries/Include/Lib/Coord3DInline.h"
 #include "../../../Common/GameLogicObjectLookupView.h"
-#pragma comment(linker, "/alternatename:_vtbl_00C50250=??_7Rva00499934@@6B@")
-#pragma comment(linker, "/alternatename:_vtbl_00C50254=??_7Rva00499934@@6BRva0024A797_B2@@@")
-#pragma comment(linker, "/alternatename:_vtbl_00C50260=??_7Rva00499934@@6BRva0024A797_Root@@@")
 typedef float Real;
 typedef int Int;
 class ThingTemplate;
@@ -101,8 +98,7 @@ public:
 // Retail's own INI table at 0x00C503B0 (landed buildFieldParse row) proves the
 // names and offsets; the BFME1 donor proves the store order. Sole caller is
 // the rowed 0x24E42C factory which news 0x24 and pushes the rowed proc.
-extern "C" const void *const vtbl_00C50298[];
-#pragma comment(linker, "/alternatename:_vtbl_00C50298=??_7OneRingPenaltyUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7OneRingPenaltyUpdateModuleData@@6B@")[];
 
 struct BfmeX987
 {
@@ -193,11 +189,11 @@ public:
 
 extern "C" const void *const __identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")[];
 
-extern "C" const void *const vtbl_00C50250[];
+extern "C" const void *const __identifier("??_7Rva00499934@@6B@")[];
 
-extern "C" const void *const vtbl_00C50254[];
+extern "C" const void *const __identifier("??_7Rva00499934@@6BRva0024A797_B2@@@")[];
 
-extern "C" const void *const vtbl_00C50260[];
+extern "C" const void *const __identifier("??_7Rva00499934@@6BRva0024A797_Root@@@")[];
 
 extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];
 
@@ -260,7 +256,7 @@ private:
 
 // ??0OneRingPenaltyUpdateModuleData@@QAE@XZ
 OneRingPenaltyUpdateModuleData::OneRingPenaltyUpdateModuleData()
-	: m_vtable( reinterpret_cast<const void *>(((unsigned int)vtbl_00C50298)) )
+	: m_vtable( reinterpret_cast<const void *>(((unsigned int)__identifier("??_7OneRingPenaltyUpdateModuleData@@6B@"))) )
 {
 	m_discoveredSound = 0;
 	m_timeSpentRoamingAround = 0;
@@ -296,10 +292,10 @@ OneRingPenaltyUpdate::OneRingPenaltyUpdate(Thing *thing, const ModuleData *modul
 	int *slot20 = (int *)&m_20;
 	*slot20 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	int zero = 0;
-	m_vtable = (const void *)((unsigned int)vtbl_00C50260);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva00499934@@6BRva0024A797_Root@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C50254);
-	m_20 = (const void *)((unsigned int)vtbl_00C50250);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva00499934@@6BRva0024A797_B2@@@"));
+	m_20 = (const void *)((unsigned int)__identifier("??_7Rva00499934@@6B@"));
 	m_24 = zero;
 	m_28 = zero;
 	m_2C = fzero;

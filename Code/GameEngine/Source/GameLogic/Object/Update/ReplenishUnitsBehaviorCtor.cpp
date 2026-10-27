@@ -17,14 +17,11 @@
 // tail (protected IAEX Object-uint spelling resolves via the existing pin
 // at 0x44DF71). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C49F20[];  // folded, 2 classes; via ??_7FireWeaponWhenDamagedBehavior@@6BUpgradeMux@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49F20=??_7FireWeaponWhenDamagedBehavior@@6BUpgradeMux@@@")
+extern "C" const void *const __identifier("??_7FireWeaponWhenDamagedBehavior@@6BUpgradeMux@@@")[];  // folded vftable 0x00C49F20 (2 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C49F78 (3 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C49F68[];  // ??_7ReplenishUnitsBehavior@@6BUpdateModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49F68=??_7ReplenishUnitsBehavior@@6BUpdateModule@@@")
-extern "C" const void *const vtbl_00C4A034[];  // ??_7ReplenishUnitsBehavior@@6BBehaviorModuleBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4A034=??_7ReplenishUnitsBehavior@@6BBehaviorModuleBase@@@")
+extern "C" const void *const __identifier("??_7ReplenishUnitsBehavior@@6BUpdateModule@@@")[];  // vftable 0x00C49F68
+extern "C" const void *const __identifier("??_7ReplenishUnitsBehavior@@6BBehaviorModuleBase@@@")[];  // vftable 0x00C4A034
 
 class Thing;
 class ModuleData;
@@ -90,10 +87,10 @@ ReplenishUnitsBehavior::ReplenishUnitsBehavior(Thing *thing, const ModuleData *m
 	: UpdateModule(thing, moduleData), m_20()
 {
 	Object *obj = m_object;
-	m_vtable = (const void *)((unsigned int)vtbl_00C4A034);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7ReplenishUnitsBehavior@@6BBehaviorModuleBase@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C49F68);
-	*(void **)&m_20 = (void *)((unsigned int)vtbl_00C49F20);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7ReplenishUnitsBehavior@@6BUpdateModule@@@"));
+	*(void **)&m_20 = (void *)((unsigned int)__identifier("??_7FireWeaponWhenDamagedBehavior@@6BUpgradeMux@@@"));
 	if (((const ReplenishUnitsModuleData *)m_moduleData)->m_138)
 	{
 		m_20.giveSelfUpgrade();

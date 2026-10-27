@@ -36,8 +36,7 @@
 // init would instead call the 18B vector-alloc thunk). Body order otherwise
 // follows retail.
 
-extern "C" const void *const vtbl_00C4F870[];  // ??_7BannerCarrierUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4F870=??_7BannerCarrierUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7BannerCarrierUpdateModuleData@@6B@")[];  // vftable 0x00C4F870
 
 extern int BfmeLogicFramesPerSecond;
 
@@ -93,7 +92,7 @@ namespace _STL { template <> void allocator<BfmeExpLevelDraw *>::deallocate(Bfme
 namespace _STL { template <> void allocator<BfmeMorphCondition *>::deallocate(BfmeMorphCondition * *,unsigned int) const; }
 // bfme link decl-only end
 BannerCarrierUpdateModuleData::BannerCarrierUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4F870)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7BannerCarrierUpdateModuleData@@6B@"))))
 	, m_upgradeRequired(0)
 {
 	m_idleSpawnRate = LogicFramesPerSecond * 15;

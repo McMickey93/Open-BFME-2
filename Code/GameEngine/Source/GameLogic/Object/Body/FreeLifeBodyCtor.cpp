@@ -11,13 +11,10 @@
 // a false byte at +0x108. The base is declared without virtuals or a dtor
 // so the derived ctor stays frameless. Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C5AD78[];  // folded, 18 classes; via ??_7ActiveBody@@6BActiveBodyB1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5AD78=??_7ActiveBody@@6BActiveBodyB1@@@")
+extern "C" const void *const __identifier("??_7ActiveBody@@6BActiveBodyB1@@@")[];  // folded vftable 0x00C5AD78 (18 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C5BD88[];  // ??_7Rva004C1866@@6BRva004C1866_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5BD88=??_7Rva004C1866@@6BRva004C1866_B2@@@")
-extern "C" const void *const vtbl_00C5BE38[];  // ??_7Rva004C1866@@6BRva004C131B@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5BE38=??_7Rva004C1866@@6BRva004C131B@@@")
+extern "C" const void *const __identifier("??_7Rva004C1866@@6BRva004C1866_B2@@@")[];  // vftable 0x00C5BD88
+extern "C" const void *const __identifier("??_7Rva004C1866@@6BRva004C131B@@@")[];  // vftable 0x00C5BE38
 
 class Thing;
 class ModuleData;
@@ -63,9 +60,9 @@ FreeLifeBody::FreeLifeBody(Thing *thing, const ModuleData *moduleData)
 {
 	const FreeLifeBodyModuleData *data = (const FreeLifeBodyModuleData *)m_moduleData;
 	m_10C |= -1;
-	m_vtable = (const void *)((unsigned int)vtbl_00C5BE38);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C5AD78);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C5BD88);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva004C1866@@6BRva004C131B@@@"));
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7ActiveBody@@6BActiveBodyB1@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva004C1866@@6BRva004C1866_B2@@@"));
 	m_108 = false;
 	m_110 = data->m_freeLifeTime;
 	m_100 = data->m_freeLifeInvincible;

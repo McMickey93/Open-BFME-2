@@ -19,8 +19,7 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4DB14[];  // ??_7Rva0049188D@@6BRva0049188D_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4DB14=??_7Rva0049188D@@6BRva0049188D_B2@@@")
+extern "C" const void *const __identifier("??_7Rva0049188D@@6BRva0049188D_B2@@@")[];  // vftable 0x00C4DB14
 // The retail table at RVA 0x0084DB20: 13 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -96,6 +95,6 @@ AttachUpdate::AttachUpdate(Thing *thing, const ModuleData *moduleData)
 {
 	m_vtable = (const void *)((unsigned int)vtbl_00C4DB20);
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C4DB14);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva0049188D@@6BRva0049188D_B2@@@"));
 	setWakeFrame(m_object, (UpdateSleepTime)UPDATE_SLEEP_NONE);
 }

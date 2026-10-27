@@ -198,9 +198,9 @@ int Rva0052B7F8Owner::fwd(int a, int b)
 // temporary. Result storage is the observed 12B iterator/result area.
 // The owner and registry identities remain unknown; names describe their
 // measured addresses and operations. The base vtable is already provided
-// as vtbl_00C686BC by Disp0DwordImmSettersAddr.cpp's canonical alias.
+// as ??_7Rva0052B668@@6B@, its data-ledger name.
 #include "ascii_string.h"
-extern "C" const void *const vtbl_00C686BC[];
+extern "C" const void *const __identifier("??_7Rva0052B668@@6B@")[];
 extern Rva0052B7F8Owner *rva0052B84F();
 class Rva0052B894Registration
 {
@@ -218,7 +218,7 @@ struct Rva0052B894Entry
 };
 Rva0052B894Registration::Rva0052B894Registration(const AsciiString &name)
 {
-    m_vtable = vtbl_00C686BC;
+    m_vtable = __identifier("??_7Rva0052B668@@6B@");
     Rva0052B894Entry entry(name, this);
     int result[3];
     Rva0052B7F8Owner *registry = rva0052B84F();

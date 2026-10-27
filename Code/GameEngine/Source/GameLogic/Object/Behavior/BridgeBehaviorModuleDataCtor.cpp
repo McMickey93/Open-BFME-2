@@ -15,8 +15,7 @@
 // is load-bearing for the EH state machine (SpawnUnit precedent). /arch:SSE
 // for movss float stores; /EHsc for the __EH_prolog frame.
 
-extern "C" const void *const vtbl_00C40A10[];  // ??_7BridgeBehaviorModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C40A10=??_7BridgeBehaviorModuleData@@6B@")
+extern "C" const void *const __identifier("??_7BridgeBehaviorModuleData@@6B@")[];  // vftable 0x00C40A10
 
 // Match the rowed Coord3D sentinel constructor's BFME allocator ABI.
 #include <list>
@@ -53,7 +52,7 @@ private:
 
 // ??0BridgeBehaviorModuleData@@QAE@XZ @0x457FF1
 BridgeBehaviorModuleData::BridgeBehaviorModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C40A10)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7BridgeBehaviorModuleData@@6B@"))))
 {
 	m_lateralScaffoldSpeed = 1.0f;
 	m_verticalScaffoldSpeed = 1.0f;

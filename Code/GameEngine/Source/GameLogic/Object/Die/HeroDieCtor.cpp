@@ -14,10 +14,8 @@
 
 extern "C" const void *const __identifier("??_7CreateCrateDie@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C4A650 (21 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C5C424[];  // ??_7Rva004C227A@@6BRva004C227A_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5C424=??_7Rva004C227A@@6BRva004C227A_B2@@@")
-extern "C" const void *const vtbl_00C5C428[];  // ??_7Rva004C227A@@6BDieModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5C428=??_7Rva004C227A@@6BDieModule@@@")
+extern "C" const void *const __identifier("??_7Rva004C227A@@6BRva004C227A_B2@@@")[];  // vftable 0x00C5C424
+extern "C" const void *const __identifier("??_7Rva004C227A@@6BDieModule@@@")[];  // vftable 0x00C5C428
 
 class Thing;
 class ModuleData;
@@ -38,7 +36,7 @@ public:
 HeroDie::HeroDie(Thing *thing, const ModuleData *moduleData) :
 	DieModule(thing, moduleData)
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00C5C428);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7Rva004C227A@@6BDieModule@@@"));
 	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7CreateCrateDie@@6BBehaviorModuleInterface@@@"));
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C5C424);
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7Rva004C227A@@6BRva004C227A_B2@@@"));
 }

@@ -14,14 +14,10 @@
 // +0x100 with the module data pointer at +0x04 (FreeLifeBody precedent).
 // Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C5BF00[];  // ??_7Rva004C1BAB@@6BRva004C1BAB_B3@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5BF00=??_7Rva004C1BAB@@6BRva004C1BAB_B3@@@")
-extern "C" const void *const vtbl_00C5BF48[];  // ??_7Rva004C1BAB@@6BRva004C1BAB_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5BF48=??_7Rva004C1BAB@@6BRva004C1BAB_B2@@@")
-extern "C" const void *const vtbl_00C5BFF8[];  // ??_7Rva004C1BAB@@6BMiBase1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5BFF8=??_7Rva004C1BAB@@6BMiBase1@@@")
-extern "C" const void *const vtbl_00C5C0B8[];  // ??_7Rva004C1BAB@@6BRva004BF951@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5C0B8=??_7Rva004C1BAB@@6BRva004BF951@@@")
+extern "C" const void *const __identifier("??_7Rva004C1BAB@@6BRva004C1BAB_B3@@@")[];  // vftable 0x00C5BF00
+extern "C" const void *const __identifier("??_7Rva004C1BAB@@6BRva004C1BAB_B2@@@")[];  // vftable 0x00C5BF48
+extern "C" const void *const __identifier("??_7Rva004C1BAB@@6BMiBase1@@@")[];  // vftable 0x00C5BFF8
+extern "C" const void *const __identifier("??_7Rva004C1BAB@@6BRva004BF951@@@")[];  // vftable 0x00C5C0B8
 
 class Thing;
 class ModuleData;
@@ -71,10 +67,10 @@ DetachableRiderBody::DetachableRiderBody(Thing *thing, const ModuleData *moduleD
 	: ActiveBody(thing, moduleData), m_100()
 {
 	const DetachableRiderBodyModuleData *data = (const DetachableRiderBodyModuleData *)m_moduleData;
-	*(const void **)this = (const void *)((unsigned int)vtbl_00C5C0B8);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C5BFF8);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C5BF48);
-	*(void **)&m_100 = (void *)((unsigned int)vtbl_00C5BF00);
+	*(const void **)this = (const void *)((unsigned int)__identifier("??_7Rva004C1BAB@@6BRva004BF951@@@"));
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7Rva004C1BAB@@6BMiBase1@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva004C1BAB@@6BRva004C1BAB_B2@@@"));
+	*(void **)&m_100 = (void *)((unsigned int)__identifier("??_7Rva004C1BAB@@6BRva004C1BAB_B3@@@"));
 	if (data->m_startsActive)
 		m_100.giveSelfUpgrade();
 }

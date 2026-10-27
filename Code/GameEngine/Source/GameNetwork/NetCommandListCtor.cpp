@@ -9,8 +9,7 @@
 // into the matched FrameData::init; defining it in the Deleter TU would see
 // the defined dtor there instead of the row). Explicit vtable so this TU
 // emits no vtable/??_G copy; the Deleter TU owns those.
-extern "C" const void *const vtbl_00C70A08[];  // ??_7NetCommandList@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C70A08=??_7NetCommandList@@6B@")
+extern "C" const void *const __identifier("??_7NetCommandList@@6B@")[];  // vftable 0x00C70A08
 class NetCommandList
 {
 public:
@@ -24,7 +23,7 @@ private:
 };
 // ??0NetCommandList@@QAE@XZ
 NetCommandList::NetCommandList()
-	: m_vtable(vtbl_00C70A08)
+	: m_vtable(__identifier("??_7NetCommandList@@6B@"))
 {
 	m_first = 0;
 	m_last = 0;

@@ -97,8 +97,7 @@ void Rva004FF207::rva004FF207()
 		((Rva002D3627Host *)TheLivingWorld)->rva002BEDCA(&point, get54()));
 }
 
-extern "C" const void *const vtbl_00C63B34[];  // ??_7Rva004FF2C0@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C63B34=??_7Rva004FF2C0@@6B@")
+extern "C" const void *const __identifier("??_7Rva004FF2C0@@6B@")[];  // vftable 0x00C63B34
 
 // 0x004FBC4D is the rowed Rva004FBCBE constructor and 0x0020E449 the rowed
 // Rva0020E449 copy constructor; both are called in place on raw storage.
@@ -139,7 +138,7 @@ private:
 Rva004FF2C0::Rva004FF2C0(Rva0020E89C *region, Rva003F1241 *army, const UnicodeString &title, const UnicodeString &text, int arg)
 	: Rva004FBCBE(title, text, arg)
 {
-	*(int *)this = ((unsigned int)vtbl_00C63B34);
+	*(int *)this = ((unsigned int)__identifier("??_7Rva004FF2C0@@6B@"));
 	m_28 = region;
 	((Rva0020E449 *)m_2C)->Rva0020E449::Rva0020E449(*(const Rva0020E449 *)army);
 }

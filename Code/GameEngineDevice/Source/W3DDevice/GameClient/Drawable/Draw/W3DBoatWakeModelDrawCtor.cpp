@@ -13,8 +13,7 @@
 // DIR32-masked in comparison). Zero new pins (base resolves via the existing
 // DrawModule pin). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00BCDD70[];  // ??_7W3DBoatWakeModelDraw@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BCDD70=??_7W3DBoatWakeModelDraw@@6B@")
+extern "C" const void *const __identifier("??_7W3DBoatWakeModelDraw@@6B@")[];  // vftable 0x00BCDD70
 
 class Thing;
 class ModuleData;
@@ -49,6 +48,6 @@ W3DBoatWakeModelDraw::W3DBoatWakeModelDraw(Thing *thing, const ModuleData *modul
 	m_flag10 = false;
 	m_14 = 0;
 	m_18 = 0;
-	*(unsigned int *)this = ((unsigned int)vtbl_00BCDD70);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7W3DBoatWakeModelDraw@@6B@"));
 	m_0C = 0.0f;
 }

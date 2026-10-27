@@ -34,8 +34,7 @@
 //   0x0051265C  0x005125ED  0x00C659A0#0
 //   0x0051342D  0x00512E49  0x00C65B6C#0
 
-extern "C" const void *const vtbl_00C65518[];  // ??_7Rva0050FAEC@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C65518=??_7Rva0050FAEC@@6B@")
+extern "C" const void *const __identifier("??_7Rva0050FAEC@@6B@")[];  // vftable 0x00C65518
 
 class Object;
 class StateMachine;
@@ -445,7 +444,7 @@ void _bfme_closeAptScreen(const AsciiString &name);
 class Rva0050FDDCRestore : public Rva005248D0
 {
 public:
-	__forceinline virtual ~Rva0050FDDCRestore() { *(unsigned int *)this = ((unsigned int)vtbl_00C65518); }
+	__forceinline virtual ~Rva0050FDDCRestore() { *(unsigned int *)this = ((unsigned int)__identifier("??_7Rva0050FAEC@@6B@")); }
 };
 
 class Rva0050FC54 : public Rva0050FDDCRestore

@@ -17,10 +17,8 @@
 extern "C" const void *const __identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@")[];  // folded vftable 0x00C6FFFC (10 classes), by its data-ledger name
 
 extern "C" const void *const __identifier("??_7LargeGroupAudioUpdate_B24@@6B@")[];  // vftable 0x00BFB698
-extern "C" const void *const vtbl_00C548B8[];  // ??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B24@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C548B8=??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B24@@@")
-extern "C" const void *const vtbl_00C548E8[];  // ??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B20@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C548E8=??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B20@@@")
+extern "C" const void *const __identifier("??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B24@@@")[];  // vftable 0x00C548B8
+extern "C" const void *const __identifier("??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B20@@@")[];  // vftable 0x00C548E8
 // The retail table at RVA 0x008548F0: 3 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -33,10 +31,8 @@ extern "C" const void *const vtbl_00C548F0[3] = {
 	(const void *)&__identifier("?getDisabledTypesToProcess@Rva004AB9D5@@QAE?AVBfmeFixedStorage002CF0F0@@XZ"), // slot 1 0x004AB9D5
 	(const void *)&__identifier("?rva0044DF8D@UpdateModule@@UAEXW4UpdateSleepTime@@@Z"), // slot 2 0x0044DF8D
 };
-extern "C" const void *const vtbl_00C54900[];  // ??_7LargeGroupAudioUpdate@@6BMiBase1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C54900=??_7LargeGroupAudioUpdate@@6BMiBase1@@@")
-extern "C" const void *const vtbl_00C549BC[];  // ??_7LargeGroupAudioUpdate@@6BRva0049B47C@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C549BC=??_7LargeGroupAudioUpdate@@6BRva0049B47C@@@")
+extern "C" const void *const __identifier("??_7LargeGroupAudioUpdate@@6BMiBase1@@@")[];  // vftable 0x00C54900
+extern "C" const void *const __identifier("??_7LargeGroupAudioUpdate@@6BRva0049B47C@@@")[];  // vftable 0x00C549BC
 
 #include <bitset>
 
@@ -104,15 +100,15 @@ LargeGroupAudioUpdate::LargeGroupAudioUpdate(Thing *thing, const ModuleData *mod
 	int *slotInit24 = (int *)&m_secondary24;
 	*slotInit24 = (int)((unsigned int)__identifier("??_7LargeGroupAudioUpdate_B24@@6B@"));
 	int *vtab = (int *)&m_vtable;
-	*vtab = (int)((unsigned int)vtbl_00C549BC);
+	*vtab = (int)((unsigned int)__identifier("??_7LargeGroupAudioUpdate@@6BRva0049B47C@@@"));
 	int *sec0C = (int *)&m_secondary0C;
-	*sec0C = (int)((unsigned int)vtbl_00C54900);
+	*sec0C = (int)((unsigned int)__identifier("??_7LargeGroupAudioUpdate@@6BMiBase1@@@"));
 	int *sec10 = (int *)&m_secondary10;
 	*sec10 = (int)((unsigned int)vtbl_00C548F0);
 	int *slot20 = (int *)&m_secondary20;
-	*slot20 = (int)((unsigned int)vtbl_00C548E8);
+	*slot20 = (int)((unsigned int)__identifier("??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B20@@@"));
 	int *slot24 = (int *)&m_secondary24;
-	*slot24 = (int)((unsigned int)vtbl_00C548B8);
+	*slot24 = (int)((unsigned int)__identifier("??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B24@@@"));
 	m_state28 = fzero;
 	m_state2C = fzero;
 	CondStore *condStore = &m_condition30;

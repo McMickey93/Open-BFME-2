@@ -26,12 +26,9 @@
 
 extern "C" const void *const __identifier("??_7BattlePlanUpdate@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C4D640 (11 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4E05C[];  // ??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface3@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4E05C=??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface3@@@")
-extern "C" const void *const vtbl_00C4E080[];  // ??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4E080=??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface2@@@")
-extern "C" const void *const vtbl_00C4E090[];  // ??_7WeaponFireSpecialAbilityUpdate@@6BWFS_RootBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4E090=??_7WeaponFireSpecialAbilityUpdate@@6BWFS_RootBase@@@")
+extern "C" const void *const __identifier("??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface3@@@")[];  // vftable 0x00C4E05C
+extern "C" const void *const __identifier("??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface2@@@")[];  // vftable 0x00C4E080
+extern "C" const void *const __identifier("??_7WeaponFireSpecialAbilityUpdate@@6BWFS_RootBase@@@")[];  // vftable 0x00C4E090
 
 class Thing;
 class ModuleData;
@@ -111,10 +108,10 @@ public:
 WeaponFireSpecialAbilityUpdate::WeaponFireSpecialAbilityUpdate(Thing *thing, const ModuleData *moduleData)
 	: Rva0044EF5E(thing, moduleData)
 {
-	*(const void **)this = (const void *)((unsigned int)vtbl_00C4E090);
+	*(const void **)this = (const void *)((unsigned int)__identifier("??_7WeaponFireSpecialAbilityUpdate@@6BWFS_RootBase@@@"));
 	*(const void **)((char *)this + 0x0C) = (const void *)((unsigned int)__identifier("??_7BattlePlanUpdate@@6BBehaviorModuleInterface@@@"));
-	*(const void **)((char *)this + 0x10) = (const void *)((unsigned int)vtbl_00C4E080);
-	*(const void **)((char *)this + 0x20) = (const void *)((unsigned int)vtbl_00C4E05C);
+	*(const void **)((char *)this + 0x10) = (const void *)((unsigned int)__identifier("??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface2@@@"));
+	*(const void **)((char *)this + 0x20) = (const void *)((unsigned int)__identifier("??_7WeaponFireSpecialAbilityUpdate@@6BWFS_Iface3@@@"));
 	m_weapon = 0;
 	AsciiString weaponName(getWeaponFireModuleData()->m_weaponName);
 	const WeaponTemplate *weaponTemplate = TheWeaponStore->findWeaponTemplate(weaponName);

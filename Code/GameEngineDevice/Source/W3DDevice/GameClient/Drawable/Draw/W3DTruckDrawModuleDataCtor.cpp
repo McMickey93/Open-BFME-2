@@ -18,8 +18,7 @@
 // the only out-of-line call is the base ctor and the body stays frameless
 // with no EH states despite the 21 dtor-needing members.
 
-extern "C" const void *const vtbl_00BCC508[];  // ??_7W3DTruckDrawModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BCC508=??_7W3DTruckDrawModuleData@@6B@")
+extern "C" const void *const __identifier("??_7W3DTruckDrawModuleData@@6B@")[];  // vftable 0x00BCC508
 
 #include "ascii_string.h"
 
@@ -68,7 +67,7 @@ private:
 
 // ??0W3DTruckDrawModuleData@@QAE@XZ @0xCB1C9
 W3DTruckDrawModuleData::W3DTruckDrawModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00BCC508)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7W3DTruckDrawModuleData@@6B@"))))
 	, m_cabRotationFactor(1.0f)
 	, m_trailerRotationFactor(1.0f)
 	, m_rotationDampingFactor(1.0f)

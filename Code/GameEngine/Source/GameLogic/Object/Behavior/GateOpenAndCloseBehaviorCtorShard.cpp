@@ -25,17 +25,13 @@
 // /O1 default emits an integer mov); the appendOnce home TU keeps its own
 // flags in a separate shard (same-class-in-2-TUs precedent).
 
-extern "C" const void *const vtbl_00C50178[];  // ??_7GateOpenAndCloseBehavior@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C50178=??_7GateOpenAndCloseBehavior@@6B@")
+extern "C" const void *const __identifier("??_7GateOpenAndCloseBehavior@@6B@")[];  // vftable 0x00C50178
 
-extern "C" const void *const vtbl_00C50144[];  // ??_7GateOpenAndCloseBehavior@@6BBehaviorModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50144=??_7GateOpenAndCloseBehavior@@6BBehaviorModule@@@")
+extern "C" const void *const __identifier("??_7GateOpenAndCloseBehavior@@6BBehaviorModule@@@")[];  // vftable 0x00C50144
 
-extern "C" const void *const vtbl_00C50138[];  // ??_7GateOpenAndCloseBehavior@@6BUpdateModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50138=??_7GateOpenAndCloseBehavior@@6BUpdateModuleInterface@@@")
+extern "C" const void *const __identifier("??_7GateOpenAndCloseBehavior@@6BUpdateModuleInterface@@@")[];  // vftable 0x00C50138
 
-extern "C" const void *const vtbl_00BEF248[];  // ??_7GateProxyBehavior@@6BProxyBaseC@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BEF248=??_7GateProxyBehavior@@6BProxyBaseC@@@")
+extern "C" const void *const __identifier("??_7GateOpenAndCloseBehavior@@6BBehaviorModuleInterface@@@")[];  // vftable 0x00BEF248
 
 class Thing;
 class ModuleData;
@@ -139,10 +135,10 @@ GateOpenAndCloseBehavior::GateOpenAndCloseBehavior(Thing *thing, const ModuleDat
 {
 	m_40 |= -1;
 	const GateOpenAndCloseModuleData *data = *(const GateOpenAndCloseModuleData **)((char *)this + 8);
-	*(unsigned int *)this = ((unsigned int)vtbl_00C50178);
-	*(unsigned int *)((char *)this + 4) = ((unsigned int)vtbl_00C50144);
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00BEF248);
-	*(unsigned int *)((char *)this + 0x14) = ((unsigned int)vtbl_00C50138);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7GateOpenAndCloseBehavior@@6B@"));
+	*(unsigned int *)((char *)this + 4) = ((unsigned int)__identifier("??_7GateOpenAndCloseBehavior@@6BBehaviorModule@@@"));
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7GateOpenAndCloseBehavior@@6BBehaviorModuleInterface@@@"));
+	*(unsigned int *)((char *)this + 0x14) = ((unsigned int)__identifier("??_7GateOpenAndCloseBehavior@@6BUpdateModuleInterface@@@"));
 	m_44 = 1;
 	m_48 = false;
 	m_28 = data->m_openByDefault ? 1 : 3;

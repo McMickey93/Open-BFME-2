@@ -31,14 +31,10 @@ extern "C" const void *const __identifier("??_7DozerAIUpdate@@6BAIUpdateInterfac
 // setWakeFrame resolves via the new Rva0026E9BDBase-spelling alias pin at
 // 0x44DF71 placed alongside).
 
-extern "C" const void *const vtbl_00C50528[];  // ??_7HordeAIUpdate@@6BRva0026E836_M3@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50528=??_7HordeAIUpdate@@6BRva0026E836_M3@@@")
-extern "C" const void *const vtbl_00C5052C[];  // ??_7HordeAIUpdate@@6BRva0026E836_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5052C=??_7HordeAIUpdate@@6BRva0026E836_B2@@@")
-extern "C" const void *const vtbl_00C505F8[];  // ??_7HordeAIUpdate@@6BRva0026E836_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C505F8=??_7HordeAIUpdate@@6BRva0026E836_Root@@@")
-extern "C" const void *const vtbl_00C52EE8[];  // ??_7DockUpdateInterface@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C52EE8=??_7DockUpdateInterface@@6B@")
+extern "C" const void *const __identifier("??_7Rva0049A64B@@6BRva0026E836_M3@@@")[];  // vftable 0x00C50528
+extern "C" const void *const __identifier("??_7Rva0049A64B@@6BRva0026E836_B2@@@")[];  // vftable 0x00C5052C
+extern "C" const void *const __identifier("??_7Rva0049A64B@@6BRva0026E836_Root@@@")[];  // vftable 0x00C505F8
+extern "C" const void *const __identifier("??_7SupplyTruckAIInterface@@6B@")[];  // vftable 0x00C52EE8
 extern const void *const g_00C50868[];
 
 class Thing;
@@ -84,12 +80,12 @@ public:
 HordeAIUpdate::HordeAIUpdate(Thing *thing, const ModuleData *moduleData)
 	: Rva0026E9BDBase(thing, moduleData)
 {
-	*(const void * volatile *)&m_p3E4 = (const void *)((unsigned int)vtbl_00C52EE8);
+	*(const void * volatile *)&m_p3E4 = (const void *)((unsigned int)__identifier("??_7SupplyTruckAIInterface@@6B@"));
 	_ReadWriteBarrier();
-	m_vtable = (const void *)((unsigned int)vtbl_00C505F8);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva0049A64B@@6BRva0026E836_Root@@@"));
 	m_p0C = (const void *)((unsigned int)__identifier("??_7HordeWorkerAIUpdate@@6BDBaseM1@@@"));
-	m_p10 = (const void *)((unsigned int)vtbl_00C5052C);
-	m_p20 = (const void *)((unsigned int)vtbl_00C50528);
+	m_p10 = (const void *)((unsigned int)__identifier("??_7Rva0049A64B@@6BRva0026E836_B2@@@"));
+	m_p20 = (const void *)((unsigned int)__identifier("??_7Rva0049A64B@@6BRva0026E836_M3@@@"));
 	m_p24 = (const void *)((unsigned int)__identifier("??_7DozerAIUpdate@@6BAIUpdateInterface24@@@"));
 	m_p3E4 = (const void *)g_00C50868;
 	setWakeFrame(m_object, UPDATE_SLEEP_NONE);

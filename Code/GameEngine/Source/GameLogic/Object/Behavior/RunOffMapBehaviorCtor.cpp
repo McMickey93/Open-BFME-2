@@ -23,8 +23,7 @@ char g_00C42FC0;
 
 extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];  // folded vftable 0x00C1C780 (35 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C42F1C[];  // ??_7Rva00462151@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C42F1C=??_7Rva00462151@@6B@")
+extern "C" const void *const __identifier("??_7Rva00462151@@6B@")[];  // vftable 0x00C42F1C
 
 class Thing;
 class ModuleData;
@@ -50,5 +49,5 @@ RunOffMapBehavior::RunOffMapBehavior(Thing *thing, const ModuleData *moduleData)
 	*(volatile unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	*(unsigned int *)this = (unsigned int)&g_00C4307C;
 	*(unsigned int *)((char *)this + 0xC) = (unsigned int)&g_00C42FC0;
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C42F1C);
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7Rva00462151@@6B@"));
 }

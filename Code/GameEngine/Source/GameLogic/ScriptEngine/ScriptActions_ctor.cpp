@@ -10,8 +10,7 @@
 // constructor is the pinned 0x001B4E63. Only the final vtable store (0xC1FE48)
 // survives /O1.
 
-extern "C" const void *const vtbl_00C1FD98[];  // ??_7Rva003BA6A9@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C1FD98=??_7Rva003BA6A9@@6B@")
+extern "C" const void *const __identifier("??_7Rva003BA6A9@@6B@")[];  // vftable 0x00C1FD98
 
 extern class TerrainLogic *TheTerrainLogic;
 
@@ -63,7 +62,7 @@ ScriptActions::ScriptActions()
 ScriptActions::~ScriptActions()
 {
 	reset();
-	*(const void **)this = reinterpret_cast<const void *>(((unsigned int)vtbl_00C1FD98));
+	*(const void **)this = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7Rva003BA6A9@@6B@")));
 }
 
 // ScriptActions::reset, SubsystemInterface slot 9 of 0x00C1FE48 (retail

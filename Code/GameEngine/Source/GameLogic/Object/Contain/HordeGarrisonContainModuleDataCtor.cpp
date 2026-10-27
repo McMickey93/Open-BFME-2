@@ -16,8 +16,7 @@
 // Vtable 0x00BF4328 is DIR32-masked (pinned ??_7 for identity; slot0 is the
 // scalar-deleting dtor 0x2579E9).
 
-extern "C" const void *const vtbl_00BF4328[];  // ??_7TunnelContainModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF4328=??_7TunnelContainModuleData@@6B@")
+extern "C" const void *const __identifier("??_7TunnelContainModuleData@@6B@")[];  // vftable 0x00BF4328
 
 class GarrisonContainModuleData
 {
@@ -49,7 +48,7 @@ HordeGarrisonContainModuleData::HordeGarrisonContainModuleData()
 	float *entryPosition;
 	float *exitOffset;
 
-	*(unsigned int *)this = ((unsigned int)vtbl_00BF4328);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7TunnelContainModuleData@@6B@"));
 	entryOffset = m_entryOffset;
 	entryOffset[0] = 0.0f;
 	entryOffset[1] = 0.0f;

@@ -8,8 +8,7 @@
 void *__cdecl Rva0065CEC0Allocate(unsigned int, int);
 void __cdecl Rva0065CED0Release(void *, int);
 
-extern "C" const void *const vtbl_00CE1DFC[];  // ??_7Rva007F0080Owner@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00CE1DFC=??_7Rva007F0080Owner@@6B@")
+extern "C" const void *const __identifier("??_7Rva007F0080Owner@@6B@")[];  // vftable 0x00CE1DFC
 
 struct Rva007F00B0Allocator
 {
@@ -49,7 +48,7 @@ void Rva007F00B0(void *allocate, void *release)
 			goto clear;
 	}
 
-	p->m_vtable = (void *)((unsigned int)vtbl_00CE1DFC);
+	p->m_vtable = (void *)((unsigned int)__identifier("??_7Rva007F0080Owner@@6B@"));
 	if (!release)
 		release = reinterpret_cast<void *>(&Rva0065CED0Release);
 	p->m_release = release;

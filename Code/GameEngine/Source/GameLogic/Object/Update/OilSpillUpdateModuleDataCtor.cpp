@@ -23,8 +23,7 @@
 // while the reg-only xorps plus xor float above the vtable and the float
 // store waits last. 37 of 37.
 
-extern "C" const void *const vtbl_00C4C2F8[];  // ??_7OilSpillUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4C2F8=??_7OilSpillUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7OilSpillUpdateModuleData@@6B@")[];  // vftable 0x00C4C2F8
 
 class FireWeaponUpdateModuleData
 {
@@ -54,7 +53,7 @@ OilSpillUpdateModuleData::OilSpillUpdateModuleData()
 	int *breadcrumbName = &m_breadcrumbName;
 	int *ignitionWeaponName = &m_ignitionWeaponName;
 	int *oilSpillFX = &m_oilSpillFX;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4C2F8);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7OilSpillUpdateModuleData@@6B@"));
 	*breadcrumbName = 0;
 	*ignitionWeaponName = 0;
 	*oilSpillFX = 0;

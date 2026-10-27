@@ -5,8 +5,7 @@
 // stlport
 // vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
 // overload takes the call instead, so this TU emits no external max COMDAT.
-extern "C" const void *const vtbl_00C685E0[];  // ??_7Rva0052B3B2@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C685E0=??_7Rva0052B3B2@@6B@")
+extern "C" const void *const __identifier("??_7Rva0052B3B2@@6B@")[];  // vftable 0x00C685E0
 
 namespace _STL {
 static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
@@ -63,7 +62,7 @@ class Rva0052B278:public Rva00539411 {
 public:Rva0052B278(void *,void *,void *);
 };
 Rva0052B278::Rva0052B278(void *lookup,void *owner,void *point)
- :Rva00539411(lookup,(const int *)&Vector3()),items((m_vtable=((unsigned int)vtbl_00C685E0),_STL::allocator<Rva005C4230 *>())),parent(owner),id(-1)
+ :Rva00539411(lookup,(const int *)&Vector3()),items((m_vtable=((unsigned int)__identifier("??_7Rva0052B3B2@@6B@")),_STL::allocator<Rva005C4230 *>())),parent(owner),id(-1)
 {
 
  const Vector3 *xy=(const Vector3 *)point;

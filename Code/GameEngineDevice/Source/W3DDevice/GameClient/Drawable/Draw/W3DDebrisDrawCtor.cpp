@@ -24,10 +24,8 @@
 
 extern "C" const void *const __identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@")[];  // folded vftable 0x00C6FFFC (10 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00BC97A0[];  // ??_7W3DDebrisDraw@@6BDebrisDrawInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BC97A0=??_7W3DDebrisDraw@@6BDebrisDrawInterface@@@")
-extern "C" const void *const vtbl_00BC97A8[];  // ??_7W3DDebrisDraw@@6BDrawableModuleLayoutBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BC97A8=??_7W3DDebrisDraw@@6BDrawableModuleLayoutBase@@@")
+extern "C" const void *const __identifier("??_7W3DDebrisDraw@@6BDebrisDrawInterface@@@")[];  // vftable 0x00BC97A0
+extern "C" const void *const __identifier("??_7W3DDebrisDraw@@6BDrawableModuleLayoutBase@@@")[];  // vftable 0x00BC97A8
 
 class Thing;
 class ModuleData;
@@ -61,8 +59,8 @@ W3DDebrisDraw::W3DDebrisDraw(Thing *thing, const ModuleData *moduleData) :
 {
 	*(volatile unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@"));
 	_ReadWriteBarrier();
-	*(unsigned int *)this = ((unsigned int)vtbl_00BC97A8);
-	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)vtbl_00BC97A0);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7W3DDebrisDraw@@6BDrawableModuleLayoutBase@@@"));
+	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7W3DDebrisDraw@@6BDebrisDrawInterface@@@"));
 	*(unsigned int *)((char *)this + 0x10) = 0;
 	_ReadWriteBarrier();
 	*(unsigned int *)((char *)this + 0x14) |= 0xFFFFFFFF;

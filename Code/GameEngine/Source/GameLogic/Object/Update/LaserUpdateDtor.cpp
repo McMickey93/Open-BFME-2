@@ -13,8 +13,7 @@
 // rowed ctor TU (opaque 0x0C base plus derived IDs at +0x28/+0x2C); the
 // C170A4 restore is hand-placed so the 95B shape matches with EH states.
 
-extern "C" const void *const vtbl_00C170A4[];  // folded, 2 classes; via ??_7Rva00362EC7@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C170A4=??_7Rva00362EC7@@6B@")
+extern "C" const void *const __identifier("??_7Rva00362EC7@@6B@")[];  // folded vftable 0x00C170A4 (2 classes), by its data-ledger name
 
 enum ParticleSystemID
 {
@@ -62,7 +61,7 @@ LaserUpdate::~LaserUpdate()
 		TheParticleSystemManager->destroyParticleSystemByID(m_particleSystemID);
 	if (m_targetParticleSystemID != INVALID_PARTICLE_SYSTEM_ID)
 		TheParticleSystemManager->destroyParticleSystemByID(m_targetParticleSystemID);
-	*(void **)this = (void *)((unsigned int)vtbl_00C170A4);
+	*(void **)this = (void *)((unsigned int)__identifier("??_7Rva00362EC7@@6B@"));
 }
 
 // BFME1 donor ba7ddda7e8f261163972ddbe23c7e7a12ac5b84f,

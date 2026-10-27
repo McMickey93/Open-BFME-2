@@ -15,10 +15,8 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4A258[];  // ??_7SlaveWatcherBehavior@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4A258=??_7SlaveWatcherBehavior@@6B@")
-extern "C" const void *const vtbl_00C4A264[];  // ??_7SlaveWatcherBehavior@@6BBehaviorModuleBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4A264=??_7SlaveWatcherBehavior@@6BBehaviorModuleBase@@@")
+extern "C" const void *const __identifier("??_7SlaveWatcherBehavior@@6B@")[];  // vftable 0x00C4A258
+extern "C" const void *const __identifier("??_7SlaveWatcherBehavior@@6BBehaviorModuleBase@@@")[];  // vftable 0x00C4A264
 
 class Thing;
 class ModuleData;
@@ -72,9 +70,9 @@ private:
 SlaveWatcherBehavior::SlaveWatcherBehavior(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
 {
-	m_vtable = (const void *)((unsigned int)vtbl_00C4A264);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7SlaveWatcherBehavior@@6BBehaviorModuleBase@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C4A258);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7SlaveWatcherBehavior@@6B@"));
 	m_24.clear80();
 	m_20 &= 0;
 	setWakeFrame(m_object, UPDATE_SLEEP_NONE);

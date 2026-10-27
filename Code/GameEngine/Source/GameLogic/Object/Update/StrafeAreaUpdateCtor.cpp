@@ -24,8 +24,7 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C1B158[];  // ??_7Rva003A4CAE@@6BRva003A4CAE_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C1B158=??_7Rva003A4CAE@@6BRva003A4CAE_B2@@@")
+extern "C" const void *const __identifier("??_7Rva003A4CAE@@6BRva003A4CAE_B2@@@")[];  // vftable 0x00C1B158
 // The retail table at RVA 0x0081B164: 13 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -111,7 +110,7 @@ StrafeAreaUpdate::StrafeAreaUpdate(Thing *thing, const ModuleData *moduleData)
 	float *fromSlot = &m_strafeFromX;
 	m_vtable = (const void *)((unsigned int)vtbl_00C1B164);
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C1B158);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva003A4CAE@@6BRva003A4CAE_B2@@@"));
 	m_sweepOffset = fzero;
 	m_strafeMode = zero;
 	m_strafing = 0;

@@ -10,8 +10,7 @@
 // values are DIR32 auto-patches. Owner identities are unproven (opaque Rva
 // names). One ledger row per destructor, landed one commit at a time.
 
-extern "C" const void *const vtbl_00C49D70[];  // ??_7ClearanceTestingSlowDeathBehavior@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C49D70=??_7ClearanceTestingSlowDeathBehavior@@6B@")
+extern "C" const void *const __identifier("??_7ClearanceTestingSlowDeathBehavior@@6B@")[];  // vftable 0x00C49D70
 
 class Rva0045D39E_Root
 {
@@ -87,7 +86,7 @@ private:
 
 ClearanceTestingSlowDeathBehavior::~ClearanceTestingSlowDeathBehavior()
 {
-	m_extra0050 = ((unsigned int)vtbl_00C49D70);
+	m_extra0050 = ((unsigned int)__identifier("??_7ClearanceTestingSlowDeathBehavior@@6B@"));
 }
 
 // Placeholder virtuals in this unit's vftables: in retail, every vftable that holds

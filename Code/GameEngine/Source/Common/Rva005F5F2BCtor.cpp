@@ -50,7 +50,7 @@ public:
 
 // The listener base's vptr is 0x00C79544, the listener vtable Rva005E4AE2Ctor.cpp
 // names Rva005E4AE2Listener; Rva002BA8F1Listener's own vtable is 0x00C77F44
-// (Rva0057605DCtor.cpp, vtbl_00C77F44), so the list's pointer type is only
+// (Rva0057605DCtor.cpp, ??_7Rva0057605DSecond@@6B@), so the list's pointer type is only
 // declared here and the base is cast to it, as Rva005E4AE2Ctor.cpp does.
 struct Rva002BA8F1Listener;
 #include "../../Include/Common/Rva005E4AE2Listener.h"

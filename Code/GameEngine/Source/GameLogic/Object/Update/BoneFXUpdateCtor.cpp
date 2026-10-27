@@ -21,10 +21,8 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4B164[];  // ??_7BoneFXUpdate@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B164=??_7BoneFXUpdate@@6B@")
-extern "C" const void *const vtbl_00C4B170[];  // ??_7BoneFXUpdate@@6BBehaviorModuleBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B170=??_7BoneFXUpdate@@6BBehaviorModuleBase@@@")
+extern "C" const void *const __identifier("??_7BoneFXUpdate@@6B@")[];  // vftable 0x00C4B164
+extern "C" const void *const __identifier("??_7BoneFXUpdate@@6BBehaviorModuleBase@@@")[];  // vftable 0x00C4B170
 
 #include <vector>
 
@@ -118,9 +116,9 @@ private:
 
 BoneFXUpdate::BoneFXUpdate(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData),
-	m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4B170))),
+	m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7BoneFXUpdate@@6BBehaviorModuleBase@@@")))),
 	m_secondary0C(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")))),
-	m_secondary10(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4B164)))
+	m_secondary10(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7BoneFXUpdate@@6B@"))))
 {
 	int i, j;
 	for (i = 0; i < BODYDAMAGETYPE_COUNT; ++i) {

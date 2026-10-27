@@ -8,8 +8,7 @@
 // rowed init 0x4CE534). Shape follows AttributeModifierAuraUpdateModuleData
 // (explicit vtable plus empty base plus string member).
 
-extern "C" const void *const vtbl_00C58CF8[];  // ??_7AudioLoopUpgradeModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C58CF8=??_7AudioLoopUpgradeModuleData@@6B@")
+extern "C" const void *const __identifier("??_7AudioLoopUpgradeModuleData@@6B@")[];  // vftable 0x00C58CF8
 
 class Rva0025342CMember
 {
@@ -71,7 +70,7 @@ private:
 
 // ??0AudioLoopUpgradeModuleData@@QAE@XZ @0x004B7C00
 AudioLoopUpgradeModuleData::AudioLoopUpgradeModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C58CF8)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AudioLoopUpgradeModuleData@@6B@"))))
 	, m_soundToPlay()
 {
 	m_killAfterMS = 0;

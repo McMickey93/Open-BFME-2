@@ -16,8 +16,7 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00BF1860[];  // ??_7Rva00253EF5@@6BRva00253EF5_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BF1860=??_7Rva00253EF5@@6BRva00253EF5_B2@@@")
+extern "C" const void *const __identifier("??_7Rva00253EF5@@6BRva00253EF5_B2@@@")[];  // vftable 0x00BF1860
 // The retail table at RVA 0x007F186C: 13 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -68,7 +67,7 @@ NotifyTargetsOfImminentProbableCrushingUpdate::NotifyTargetsOfImminentProbableCr
 {
 	*(unsigned int *)this = ((unsigned int)vtbl_00BF186C);
 	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00BF1860);
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7Rva00253EF5@@6BRva00253EF5_B2@@@"));
 }
 
 // Native list merge4CEB14 calls this comparator; sort4CEB76 calls that

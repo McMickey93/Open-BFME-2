@@ -1,5 +1,4 @@
-extern "C" const void *const vtbl_00BBBC30[];  // ??_7?$basic_streambuf@DV?$char_traits@D@_STL@@@_STL@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BBBC30=??_7?$basic_streambuf@DV?$char_traits@D@_STL@@@_STL@@6B@")
+extern "C" const void *const __identifier("??_7?$basic_streambuf@DV?$char_traits@D@_STL@@@_STL@@6B@")[];  // vftable 0x00BBBC30
 
 extern "C" unsigned char bfmeVftTL[];
 
@@ -44,7 +43,7 @@ __declspec(noinline) StdioStreambufBase *StdioStreambufBase::bfmeBaseTL(void *wh
 {
 	void *baseWhat = what;
 	void *baseFlag = reinterpret_cast<void *>(static_cast<unsigned int>(flag));
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00BBBC30));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7?$basic_streambuf@DV?$char_traits@D@_STL@@@_STL@@6B@")));
 	m_get = baseWhat != 0 ? baseWhat : &m_defaultGet.m_head;
 	void *resolvedBaseFlag = baseFlag != 0 ? baseFlag : &m_defaultPut.m_head;
 	__asm { lea ecx, [esi+0x4c] }

@@ -18,17 +18,12 @@
 // Row supersedes the ctor pin.
 
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
-extern "C" const void *const vtbl_00C495A0[];  // folded, 2 classes; via ??_7FireWeaponWhenDamagedBehavior@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C495A0=??_7FireWeaponWhenDamagedBehavior@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7FireWeaponWhenDamagedBehavior@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00C495A0 (2 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C3FC78[];  // ??_7Rva0045232D@@6BRva0045232D_E2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3FC78=??_7Rva0045232D@@6BRva0045232D_E2@@@")
-extern "C" const void *const vtbl_00C3FC88[];  // ??_7Rva0045232D@@6BRva0045232D_E1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3FC88=??_7Rva0045232D@@6BRva0045232D_E1@@@")
-extern "C" const void *const vtbl_00C3FCD0[];  // ??_7Rva0045232D@@6BRva0024A797_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3FCD0=??_7Rva0045232D@@6BRva0024A797_B2@@@")
-extern "C" const void *const vtbl_00C3FCDC[];  // ??_7Rva0045232D@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3FCDC=??_7Rva0045232D@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7Rva0045232D@@6BRva0045232D_E2@@@")[];  // vftable 0x00C3FC78
+extern "C" const void *const __identifier("??_7Rva0045232D@@6BRva0045232D_E1@@@")[];  // vftable 0x00C3FC88
+extern "C" const void *const __identifier("??_7Rva0045232D@@6BRva0024A797_B2@@@")[];  // vftable 0x00C3FCD0
+extern "C" const void *const __identifier("??_7Rva0045232D@@6BRva0024A797_Root@@@")[];  // vftable 0x00C3FCDC
 
 class Thing;
 class ModuleData;
@@ -103,11 +98,11 @@ AutoHealBehavior::AutoHealBehavior(Thing *thing, const ModuleData *moduleData)
 	*slot28 = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	const AutoHealBehaviorModuleData *data = (const AutoHealBehaviorModuleData *)m_moduleData;
 	m_2C &= 0;
-	m_vtable = (const void *)((unsigned int)vtbl_00C3FCDC);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C495A0);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C3FCD0);
-	*(void **)&m_20 = (void *)((unsigned int)vtbl_00C3FC88);
-	m_28 = (unsigned int)((unsigned int)vtbl_00C3FC78);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva0045232D@@6BRva0024A797_Root@@@"));
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7FireWeaponWhenDamagedBehavior@@6BBehaviorModuleOther@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva0045232D@@6BRva0024A797_B2@@@"));
+	*(void **)&m_20 = (void *)((unsigned int)__identifier("??_7Rva0045232D@@6BRva0045232D_E1@@@"));
+	m_28 = (unsigned int)((unsigned int)__identifier("??_7Rva0045232D@@6BRva0045232D_E2@@@"));
 	m_30 = data->m_buttonTriggered;
 	m_34 &= 0;
 	if (data->m_startsActive)

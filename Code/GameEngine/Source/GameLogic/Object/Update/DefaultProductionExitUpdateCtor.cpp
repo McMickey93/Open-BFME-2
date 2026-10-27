@@ -24,10 +24,8 @@ extern "C" const void *const __identifier("??_7ContainIface30@@6B@")[];  // fold
 extern "C" const void *const __identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB3@@@")[];  // folded vftable 0x00C4B1E0 (5 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB2@@@")[];  // folded vftable 0x00C4B1F0 (4 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4B1B0[];  // ??_7Rva00487F3A@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B1B0=??_7Rva00487F3A@@6B@")
-extern "C" const void *const vtbl_00C4B2AC[];  // ??_7Rva00487F3A@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B2AC=??_7Rva00487F3A@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7Rva00487F3A@@6B@")[];  // vftable 0x00C4B1B0
+extern "C" const void *const __identifier("??_7Rva00487F3A@@6BRva0024A797_Root@@@")[];  // vftable 0x00C4B2AC
 
 class Thing;
 class ModuleData;
@@ -80,10 +78,10 @@ DefaultProductionExitUpdate::DefaultProductionExitUpdate(Thing *thing, const Mod
 	*slot20 = (int)((unsigned int)__identifier("??_7ContainIface30@@6B@"));
 	unsigned char *readySlot = &m_exitReady30;
 	Object **objSlot = &m_object;
-	m_vtable = (const void *)((unsigned int)vtbl_00C4B2AC);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva00487F3A@@6BRva0024A797_Root@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB2@@@"));
 	m_secondary10 = (const void *)((unsigned int)__identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB3@@@"));
-	m_secondary20 = (const void *)((unsigned int)vtbl_00C4B1B0);
+	m_secondary20 = (const void *)((unsigned int)__identifier("??_7Rva00487F3A@@6B@"));
 	*readySlot = 0;
 	m_doorDelay24 = fzero;
 	m_queueDelay28 = fzero;

@@ -14,20 +14,14 @@
 // eight bytes so both overlap it), and no setWakeFrame tail. The base
 // runs to +0x11D. Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C441B8[];  // folded, 6 classes; via ??_7AODHordeContain@@6BIface0C@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C441B8=??_7AODHordeContain@@6BIface0C@@@")
-extern "C" const void *const vtbl_00C45CEC[];  // folded, 2 classes; via ??_7TransportContain@@6BB8@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C45CEC=??_7TransportContain@@6BB8@@@")
-extern "C" const void *const vtbl_00C46064[];  // folded, 12 classes; via ??_7CaveContain@@6BB4@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C46064=??_7CaveContain@@6BB4@@@")
-extern "C" const void *const vtbl_00C47834[];  // folded, 5 classes; via ??_7AODHordeContain@@6BIfaceFC@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C47834=??_7AODHordeContain@@6BIfaceFC@@@")
+extern "C" const void *const __identifier("??_7AODHordeContain@@6BIface0C@@@")[];  // folded vftable 0x00C441B8 (6 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7TransportContain@@6BB8@@@")[];  // folded vftable 0x00C45CEC (2 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7HordeSiegeEngineContain@@6BIface24@@@")[];  // folded vftable 0x00C46064 (12 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7AODHordeContain@@6BIfaceFC@@@")[];  // folded vftable 0x00C47834 (5 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7AODHordeContain@@6BIface2C@@@")[];  // folded vftable 0x00C58790 (55 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C45D2C[];  // ??_7HordeSiegeEngineContain@@6BIface28@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C45D2C=??_7HordeSiegeEngineContain@@6BIface28@@@")
-extern "C" const void *const vtbl_00C45EA8[];  // ??_7HordeSiegeEngineContain@@6BIface10@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C45EA8=??_7HordeSiegeEngineContain@@6BIface10@@@")
+extern "C" const void *const __identifier("??_7HordeSiegeEngineContain@@6BIface28@@@")[];  // vftable 0x00C45D2C
+extern "C" const void *const __identifier("??_7HordeSiegeEngineContain@@6BIface10@@@")[];  // vftable 0x00C45EA8
 
 char g_00C45CFC;
 char g_00C45D30;
@@ -84,15 +78,15 @@ HordeTransportContain::HordeTransportContain(Thing *thing, const ModuleData *mod
 	: TransportContain(thing, moduleData), m_11D()
 {
 	m_vtable = (const void *)(unsigned int)&g_00C45EB8;
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C441B8);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C45EA8);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AODHordeContain@@6BIface0C@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7HordeSiegeEngineContain@@6BIface10@@@"));
 	m_20 = (const void *)(unsigned int)&g_00C45D30;
-	m_24 = (const void *)((unsigned int)vtbl_00C46064);
-	m_28 = (const void *)((unsigned int)vtbl_00C45D2C);
+	m_24 = (const void *)((unsigned int)__identifier("??_7HordeSiegeEngineContain@@6BIface24@@@"));
+	m_28 = (const void *)((unsigned int)__identifier("??_7HordeSiegeEngineContain@@6BIface28@@@"));
 	m_2C = (const void *)((unsigned int)__identifier("??_7AODHordeContain@@6BIface2C@@@"));
 	m_30 = (const void *)(unsigned int)&g_00C45CFC;
-	m_34 = (const void *)((unsigned int)vtbl_00C45CEC);
-	m_FC = (const void *)((unsigned int)vtbl_00C47834);
+	m_34 = (const void *)((unsigned int)__identifier("??_7TransportContain@@6BB8@@@"));
+	m_FC = (const void *)((unsigned int)__identifier("??_7AODHordeContain@@6BIfaceFC@@@"));
 	*(int *)((char *)&m_11D + 3) = -1000;
 	*(unsigned char *)((char *)&m_11D + 7) = 0;
 }

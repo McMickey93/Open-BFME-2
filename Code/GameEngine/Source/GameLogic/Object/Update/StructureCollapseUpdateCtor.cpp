@@ -21,12 +21,9 @@
 
 extern "C" const void *const __identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")[];  // folded vftable 0x00C49188 (8 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C52638[];  // ??_7Rva004A4214@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C52638=??_7Rva004A4214@@6B@")
-extern "C" const void *const vtbl_00C5263C[];  // ??_7Rva004A4214@@6BRva0024A797_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5263C=??_7Rva004A4214@@6BRva0024A797_B2@@@")
-extern "C" const void *const vtbl_00C52648[];  // ??_7Rva004A4214@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C52648=??_7Rva004A4214@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7Rva004A4214@@6B@")[];  // vftable 0x00C52638
+extern "C" const void *const __identifier("??_7Rva004A4214@@6BRva0024A797_B2@@@")[];  // vftable 0x00C5263C
+extern "C" const void *const __identifier("??_7Rva004A4214@@6BRva0024A797_Root@@@")[];  // vftable 0x00C52648
 extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];  // folded vftable 0x00C1C780 (49 classes), by its data-ledger name
 
 class Thing;
@@ -83,10 +80,10 @@ StructureCollapseUpdate::StructureCollapseUpdate(Thing *thing, const ModuleData 
 	int *slot20 = (int *)&m_secondary20;
 	*slot20 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	int zero = 0;
-	m_vtable = (const void *)((unsigned int)vtbl_00C52648);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva004A4214@@6BRva0024A797_Root@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C5263C);
-	m_secondary20 = (const void *)((unsigned int)vtbl_00C52638);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva004A4214@@6BRva0024A797_B2@@@"));
+	m_secondary20 = (const void *)((unsigned int)__identifier("??_7Rva004A4214@@6B@"));
 	m_24 = zero;
 	m_2C = zero;
 	m_30 = fzero;

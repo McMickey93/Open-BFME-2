@@ -18,8 +18,7 @@
 // emitted code, so the member init is bracketed by state 0/1 exactly as
 // retail. Body order follows retail.
 
-extern "C" const void *const vtbl_00C1B268[];  // ??_7StrafeAreaUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C1B268=??_7StrafeAreaUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7StrafeAreaUpdateModuleData@@6B@")[];  // vftable 0x00C1B268
 
 typedef int Int;
 
@@ -54,7 +53,7 @@ private:
 };
 
 StrafeAreaUpdateModuleData::StrafeAreaUpdateModuleData()
-	: m_vtable( reinterpret_cast<const void *>(((unsigned int)vtbl_00C1B268)) )
+	: m_vtable( reinterpret_cast<const void *>(((unsigned int)__identifier("??_7StrafeAreaUpdateModuleData@@6B@"))) )
 	, m_weaponName()
 {
 	m_strafeAreaRadius = 150.0f;

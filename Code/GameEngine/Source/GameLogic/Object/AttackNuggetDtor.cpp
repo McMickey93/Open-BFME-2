@@ -7,8 +7,7 @@
 // No derived vptr store (novtable). AttackNugget spelling is donor-carried
 // per the audited pin; the base and member types are unrecovered.
 
-extern "C" const void *const vtbl_00BE09D0[];  // ??_7ObjectCreationNugget@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE09D0=??_7ObjectCreationNugget@@6B@")
+extern "C" const void *const __identifier("??_7ObjectCreationNugget@@6B@")[];  // vftable 0x00BE09D0
 
 class Rva001F0622Base
 {
@@ -19,7 +18,7 @@ public:
 // ?Rva001F0622Base::~Rva001F0622Base present-unmatched
 inline Rva001F0622Base::~Rva001F0622Base()
 {
-	*(const void **)this = reinterpret_cast<const void *>(((unsigned int)vtbl_00BE09D0));
+	*(const void **)this = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ObjectCreationNugget@@6B@")));
 }
 
 class BfmeStringRecord000B94D2

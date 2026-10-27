@@ -17,12 +17,9 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C49F78 (3 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C50F68[];  // ??_7Rva0049BFB7@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C50F68=??_7Rva0049BFB7@@6B@")
-extern "C" const void *const vtbl_00C50FB0[];  // ??_7Rva0049BFB7@@6BRva0024A797_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50FB0=??_7Rva0049BFB7@@6BRva0024A797_B2@@@")
-extern "C" const void *const vtbl_00C50FBC[];  // ??_7Rva0049BFB7@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50FBC=??_7Rva0049BFB7@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7Rva0049BFB7@@6B@")[];  // vftable 0x00C50F68
+extern "C" const void *const __identifier("??_7Rva0049BFB7@@6BRva0024A797_B2@@@")[];  // vftable 0x00C50FB0
+extern "C" const void *const __identifier("??_7Rva0049BFB7@@6BRva0024A797_Root@@@")[];  // vftable 0x00C50FBC
 
 class Thing;
 class ModuleData;
@@ -83,10 +80,10 @@ private:
 RadiateFearUpdate::RadiateFearUpdate(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData), m_20()
 {
-	m_vtable = (const void *)((unsigned int)vtbl_00C50FBC);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva0049BFB7@@6BRva0024A797_Root@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C50FB0);
-	*(void **)&m_20 = (void *)((unsigned int)vtbl_00C50F68);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva0049BFB7@@6BRva0024A797_B2@@@"));
+	*(void **)&m_20 = (void *)((unsigned int)__identifier("??_7Rva0049BFB7@@6B@"));
 	setWakeFrame(m_object, UPDATE_SLEEP_NONE);
 	const RadiateFearUpdateModuleData *data = (const RadiateFearUpdateModuleData *)m_moduleData;
 	if (data->m_initiallyActive)

@@ -17,8 +17,7 @@
 // empty allocator ctor, else MSVC value-initializes the one-byte stack
 // slot with a stosb retail never emits. Row supersedes the pinned ctor.
 
-extern "C" const void *const vtbl_00C4C8C0[];  // ??_7FloodUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4C8C0=??_7FloodUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7FloodUpdateModuleData@@6B@")[];  // vftable 0x00C4C8C0
 
 struct FloodMember;
 
@@ -68,7 +67,7 @@ private:
 
 // ??0FloodUpdateModuleData@@QAE@XZ @0x48DF7A
 FloodUpdateModuleData::FloodUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4C8C0)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7FloodUpdateModuleData@@6B@"))))
 	, m_list(_STL::allocator<struct FloodMember>())
 {
 }

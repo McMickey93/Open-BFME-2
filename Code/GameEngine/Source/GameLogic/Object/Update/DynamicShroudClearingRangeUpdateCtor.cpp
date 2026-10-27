@@ -21,10 +21,8 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4BEB0[];  // ??_7DynamicShroudClearingRangeUpdate@@6BModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4BEB0=??_7DynamicShroudClearingRangeUpdate@@6BModuleInterface@@@")
-extern "C" const void *const vtbl_00C4BEBC[];  // ??_7DynamicShroudClearingRangeUpdate@@6BObjectModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4BEBC=??_7DynamicShroudClearingRangeUpdate@@6BObjectModule@@@")
+extern "C" const void *const __identifier("??_7DynamicShroudClearingRangeUpdate@@6BModuleInterface@@@")[];  // vftable 0x00C4BEB0
+extern "C" const void *const __identifier("??_7DynamicShroudClearingRangeUpdate@@6BObjectModule@@@")[];  // vftable 0x00C4BEBC
 
 class Thing;
 class ModuleData;
@@ -113,9 +111,9 @@ static const T &bfmeMax(const T &left, const T &right)
 DynamicShroudClearingRangeUpdate::DynamicShroudClearingRangeUpdate(
 	Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
-	, m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4BEBC)))
+	, m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7DynamicShroudClearingRangeUpdate@@6BObjectModule@@@"))))
 	, m_secondary0C(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"))))
-	, m_secondary10(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4BEB0)))
+	, m_secondary10(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7DynamicShroudClearingRangeUpdate@@6BModuleInterface@@@"))))
 {
 	const DynamicShroudClearingRangeUpdateModuleData *md =
 		(const DynamicShroudClearingRangeUpdateModuleData *)moduleData;

@@ -16,8 +16,7 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00BF17EC[];  // ??_7Rva00253E19@@6BRva00253E19_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BF17EC=??_7Rva00253E19@@6BRva00253E19_B2@@@")
+extern "C" const void *const __identifier("??_7Rva00253E19@@6BRva00253E19_B2@@@")[];  // vftable 0x00BF17EC
 // The retail table at RVA 0x007F17F8: 13 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -68,7 +67,7 @@ HordeNotifyTargetsOfImminentProbableCrushingUpdate::HordeNotifyTargetsOfImminent
 {
 	*(unsigned int *)this = ((unsigned int)vtbl_00BF17F8);
 	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"));
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00BF17EC);
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7Rva00253E19@@6BRva00253E19_B2@@@"));
 }
 
 // Native4CEB14..4CEB76. STLport4.5.3 _S_merge algorithm, from BFME1

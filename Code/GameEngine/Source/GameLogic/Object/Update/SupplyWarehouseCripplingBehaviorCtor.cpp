@@ -17,12 +17,9 @@
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00C49800 (4 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C49AAC[];  // ??_7Rva004839D3@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C49AAC=??_7Rva004839D3@@6B@")
-extern "C" const void *const vtbl_00C49AB8[];  // ??_7Rva004839D3@@6BRva0024A797_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49AB8=??_7Rva004839D3@@6BRva0024A797_B2@@@")
-extern "C" const void *const vtbl_00C49AC8[];  // ??_7Rva004839D3@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49AC8=??_7Rva004839D3@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7Rva004839D3@@6B@")[];  // vftable 0x00C49AAC
+extern "C" const void *const __identifier("??_7Rva004839D3@@6BRva0024A797_B2@@@")[];  // vftable 0x00C49AB8
+extern "C" const void *const __identifier("??_7Rva004839D3@@6BRva0024A797_Root@@@")[];  // vftable 0x00C49AC8
 
 class Thing;
 class ModuleData;
@@ -71,10 +68,10 @@ SupplyWarehouseCripplingBehavior::SupplyWarehouseCripplingBehavior(Thing *thing,
 	int *slot20 = (int *)&m_20;
 	*slot20 = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	int zero = 0;
-	m_vtable = (const void *)((unsigned int)vtbl_00C49AC8);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva004839D3@@6BRva0024A797_Root@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C49AB8);
-	m_20 = (const void *)((unsigned int)vtbl_00C49AAC);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva004839D3@@6BRva0024A797_B2@@@"));
+	m_20 = (const void *)((unsigned int)__identifier("??_7Rva004839D3@@6B@"));
 	m_24 = zero;
 	m_28 = zero;
 	setWakeFrame(m_object, UPDATE_SLEEP_FOREVER);

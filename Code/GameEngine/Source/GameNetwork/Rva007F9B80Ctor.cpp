@@ -9,12 +9,9 @@ extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSys
 
 extern "C" const void *const __identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@")[];  // folded vftable 0x00C4EF80 (7 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00CE32D0[];  // ??_7Rva007F9C50@@6BRva007F9C50Base8@@@
-#pragma comment(linker, "/alternatename:_vtbl_00CE32D0=??_7Rva007F9C50@@6BRva007F9C50Base8@@@")
-extern "C" const void *const vtbl_00CE32D4[];  // ??_7Rva007F9C50@@6BRva007F9C50Base4@@@
-#pragma comment(linker, "/alternatename:_vtbl_00CE32D4=??_7Rva007F9C50@@6BRva007F9C50Base4@@@")
-extern "C" const void *const vtbl_00CE32E4[];  // ??_7Rva007F9C50@@6BRva007F9C50Base0@@@
-#pragma comment(linker, "/alternatename:_vtbl_00CE32E4=??_7Rva007F9C50@@6BRva007F9C50Base0@@@")
+extern "C" const void *const __identifier("??_7Rva007F9C50@@6BRva007F9C50Base8@@@")[];  // vftable 0x00CE32D0
+extern "C" const void *const __identifier("??_7Rva007F9C50@@6BRva007F9C50Base4@@@")[];  // vftable 0x00CE32D4
+extern "C" const void *const __identifier("??_7Rva007F9C50@@6BRva007F9C50Base0@@@")[];  // vftable 0x00CE32E4
 
 class Rva007F01B0
 {
@@ -45,9 +42,9 @@ Rva007F9B80::Rva007F9B80(void *owner) throw()
 	volatile unsigned int *base = (volatile unsigned int *)this;
 	base[1] = ((unsigned int)__identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@"));
 	base[2] = ((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
-	base[0] = ((unsigned int)vtbl_00CE32E4);
-	base[1] = ((unsigned int)vtbl_00CE32D4);
-	base[2] = ((unsigned int)vtbl_00CE32D0);
+	base[0] = ((unsigned int)__identifier("??_7Rva007F9C50@@6BRva007F9C50Base0@@@"));
+	base[1] = ((unsigned int)__identifier("??_7Rva007F9C50@@6BRva007F9C50Base4@@@"));
+	base[2] = ((unsigned int)__identifier("??_7Rva007F9C50@@6BRva007F9C50Base8@@@"));
 
 	unsigned int *slot = (unsigned int *)((char *)this + 0x28);
 	unsigned int count = 0x20;

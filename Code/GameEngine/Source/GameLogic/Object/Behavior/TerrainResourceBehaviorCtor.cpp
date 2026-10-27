@@ -15,16 +15,12 @@
 // tail (protected IAEX Object-uint spelling resolves via the existing pin
 // at 0x44DF71). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C42B60[];  // folded, 3 classes; via ??_7FakePathfindPortalBehaviour@@6BMiBase1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C42B60=??_7FakePathfindPortalBehaviour@@6BMiBase1@@@")
+extern "C" const void *const __identifier("??_7FakePathfindPortalBehaviour@@6BMiBase1@@@")[];  // folded vftable 0x00C42B60 (3 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@")[];  // folded vftable 0x00C4EF80 (7 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C493E8[];  // ??_7Rva00481F82@@6BRva00481F82_S4@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C493E8=??_7Rva00481F82@@6BRva00481F82_S4@@@")
-extern "C" const void *const vtbl_00C493F8[];  // ??_7Rva00481F82@@6BRva00481F82_S3@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C493F8=??_7Rva00481F82@@6BRva00481F82_S3@@@")
-extern "C" const void *const vtbl_00C493FC[];  // ??_7Rva00481F82@@6BRva00481F82_S2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C493FC=??_7Rva00481F82@@6BRva00481F82_S2@@@")
+extern "C" const void *const __identifier("??_7Rva00481F82@@6BRva00481F82_S4@@@")[];  // vftable 0x00C493E8
+extern "C" const void *const __identifier("??_7Rva00481F82@@6BRva00481F82_S3@@@")[];  // vftable 0x00C493F8
+extern "C" const void *const __identifier("??_7Rva00481F82@@6BRva00481F82_S2@@@")[];  // vftable 0x00C493FC
 // The retail table at RVA 0x00849408: 13 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -108,10 +104,10 @@ TerrainResourceBehavior::TerrainResourceBehavior(Thing *thing, const ModuleData 
 	*slot20 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	*slot24 = (int)((unsigned int)__identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@"));
 	m_vtable = (const void *)((unsigned int)vtbl_00C49408);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C42B60);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C493FC);
-	m_20 = (const void *)((unsigned int)vtbl_00C493F8);
-	m_24 = (const void *)((unsigned int)vtbl_00C493E8);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7FakePathfindPortalBehaviour@@6BMiBase1@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva00481F82@@6BRva00481F82_S2@@@"));
+	m_20 = (const void *)((unsigned int)__identifier("??_7Rva00481F82@@6BRva00481F82_S3@@@"));
+	m_24 = (const void *)((unsigned int)__identifier("??_7Rva00481F82@@6BRva00481F82_S4@@@"));
 	m_28 = false;
 	m_29 = true;
 	m_2C = fzero;

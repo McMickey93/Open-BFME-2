@@ -10,12 +10,9 @@
 // behavior instance factory 0x24C77B news 0x1C (sole caller). Row
 // supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C4A514[];  // ??_7Rva00484F5D@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4A514=??_7Rva00484F5D@@6B@")
-extern "C" const void *const vtbl_00C4A51C[];  // ??_7Rva00484F5D@@6BRva0049B47C@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4A51C=??_7Rva00484F5D@@6BRva0049B47C@@@")
-extern "C" const void *const vtbl_00C70008[];  // ??_7Rva00484F5D@@6BMiBase1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C70008=??_7Rva00484F5D@@6BMiBase1@@@")
+extern "C" const void *const __identifier("??_7Rva00484F5D@@6B@")[];  // vftable 0x00C4A514
+extern "C" const void *const __identifier("??_7Rva00484F5D@@6BRva0049B47C@@@")[];  // vftable 0x00C4A51C
+extern "C" const void *const __identifier("??_7Rva00484F5D@@6BMiBase1@@@")[];  // vftable 0x00C70008
 
 class Thing;
 class ModuleData;
@@ -42,8 +39,8 @@ private:
 PillageModule::PillageModule(Thing *thing, const ModuleData *data)
 	: Rva00588FFA(thing, data)
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4A51C);
-	*(unsigned int *)((char *)this + 0x0C) = ((unsigned int)vtbl_00C70008);
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C4A514);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7Rva00484F5D@@6BRva0049B47C@@@"));
+	*(unsigned int *)((char *)this + 0x0C) = ((unsigned int)__identifier("??_7Rva00484F5D@@6BMiBase1@@@"));
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7Rva00484F5D@@6B@"));
 	m_bfme18 = 0;
 }

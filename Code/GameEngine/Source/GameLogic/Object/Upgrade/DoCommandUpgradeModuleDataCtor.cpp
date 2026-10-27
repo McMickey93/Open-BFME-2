@@ -11,8 +11,7 @@
 // class with explicit vtable slot plus _ReadWriteBarrier pinning the
 // and-stores below the vtable store).
 
-extern "C" const void *const vtbl_00BF3840[];  // ??_7TooltipUpgradeModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF3840=??_7TooltipUpgradeModuleData@@6B@")
+extern "C" const void *const __identifier("??_7TooltipUpgradeModuleData@@6B@")[];  // vftable 0x00BF3840
 
 class Rva00253487Base
 {
@@ -42,7 +41,7 @@ extern "C" void _ReadWriteBarrier(void);
 // ??0DoCommandUpgradeModuleData@@QAE@XZ @0x255795
 inline DoCommandUpgradeModuleData::DoCommandUpgradeModuleData()
 {
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00BF3840));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7TooltipUpgradeModuleData@@6B@")));
 	_ReadWriteBarrier();
 	m_getUpgradeCommandButtonName = 0;
 	m_removeUpgradeCommandButtonName = 0;

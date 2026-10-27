@@ -18,14 +18,10 @@
 
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4D04C[];  // ??_7Rva0048FFB4@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4D04C=??_7Rva0048FFB4@@6B@")
-extern "C" const void *const vtbl_00C4D058[];  // ??_7Rva0048FFB4@@6BRva0024A797_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4D058=??_7Rva0048FFB4@@6BRva0024A797_B2@@@")
-extern "C" const void *const vtbl_00C4D068[];  // ??_7Rva0048FFB4@@6BRva0024A797_Mid@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4D068=??_7Rva0048FFB4@@6BRva0024A797_Mid@@@")
-extern "C" const void *const vtbl_00C4D124[];  // ??_7Rva0048FFB4@@6BRva0024A797_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4D124=??_7Rva0048FFB4@@6BRva0024A797_Root@@@")
+extern "C" const void *const __identifier("??_7Rva0048FFB4@@6B@")[];  // vftable 0x00C4D04C
+extern "C" const void *const __identifier("??_7Rva0048FFB4@@6BRva0024A797_B2@@@")[];  // vftable 0x00C4D058
+extern "C" const void *const __identifier("??_7Rva0048FFB4@@6BRva0024A797_Mid@@@")[];  // vftable 0x00C4D068
+extern "C" const void *const __identifier("??_7Rva0048FFB4@@6BRva0024A797_Root@@@")[];  // vftable 0x00C4D124
 
 class Thing;
 class ModuleData;
@@ -92,10 +88,10 @@ LargeGroupBonusUpdate::LargeGroupBonusUpdate(Thing *thing, const ModuleData *mod
 	int zero = 0;
 	m_28 = zero;
 	m_2A = zero;
-	m_vtable = (const void *)((unsigned int)vtbl_00C4D124);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C4D068);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C4D058);
-	m_20 = (const void *)((unsigned int)vtbl_00C4D04C);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7Rva0048FFB4@@6BRva0024A797_Root@@@"));
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7Rva0048FFB4@@6BRva0024A797_Mid@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7Rva0048FFB4@@6BRva0024A797_B2@@@"));
+	m_20 = (const void *)((unsigned int)__identifier("??_7Rva0048FFB4@@6B@"));
 	m_24 = TheGameLogic->getFrame();
 	m_29 = zero;
 	const LargeGroupBonusUpdateModuleData *data = (const LargeGroupBonusUpdateModuleData *)m_moduleData;

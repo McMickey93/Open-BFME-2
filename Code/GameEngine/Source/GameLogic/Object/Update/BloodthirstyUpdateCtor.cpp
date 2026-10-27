@@ -22,14 +22,10 @@
 
 extern "C" const void *const __identifier("??_7Rva005F0584Base0@@6B@")[];  // folded vftable 0x00BFBCBC (2 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C3EFC4[];  // ??_7BloodthirstyUpdate@@6BBloodthirstyUpdateIface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3EFC4=??_7BloodthirstyUpdate@@6BBloodthirstyUpdateIface@@@")
-extern "C" const void *const vtbl_00C3EFEC[];  // ??_7BloodthirstyUpdate@@6BUpdateModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3EFEC=??_7BloodthirstyUpdate@@6BUpdateModule@@@")
-extern "C" const void *const vtbl_00C3EFF8[];  // ??_7BloodthirstyUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3EFF8=??_7BloodthirstyUpdate@@6BBehaviorModuleOther@@@")
-extern "C" const void *const vtbl_00C3F0B4[];  // ??_7BloodthirstyUpdate@@6BBehaviorModuleBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C3F0B4=??_7BloodthirstyUpdate@@6BBehaviorModuleBase@@@")
+extern "C" const void *const __identifier("??_7BloodthirstyUpdate@@6BBloodthirstyUpdateIface@@@")[];  // vftable 0x00C3EFC4
+extern "C" const void *const __identifier("??_7BloodthirstyUpdate@@6BUpdateModule@@@")[];  // vftable 0x00C3EFEC
+extern "C" const void *const __identifier("??_7BloodthirstyUpdate@@6BBehaviorModuleOther@@@")[];  // vftable 0x00C3EFF8
+extern "C" const void *const __identifier("??_7BloodthirstyUpdate@@6BBehaviorModuleBase@@@")[];  // vftable 0x00C3F0B4
 
 class Thing;
 class ModuleData;
@@ -77,10 +73,10 @@ BloodthirstyUpdate::BloodthirstyUpdate(Thing *thing, const ModuleData *moduleDat
 {
 	int *wakeSlot = (int *)&m_secondary20;
 	*wakeSlot = (int)((unsigned int)__identifier("??_7Rva005F0584Base0@@6B@"));
-	m_vtable = (const void *)((unsigned int)vtbl_00C3F0B4);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C3EFF8);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C3EFEC);
-	m_secondary20 = (const void *)((unsigned int)vtbl_00C3EFC4);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7BloodthirstyUpdate@@6BBehaviorModuleBase@@@"));
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7BloodthirstyUpdate@@6BBehaviorModuleOther@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7BloodthirstyUpdate@@6BUpdateModule@@@"));
+	m_secondary20 = (const void *)((unsigned int)__identifier("??_7BloodthirstyUpdate@@6BBloodthirstyUpdateIface@@@"));
 	m_bestTargetID = 0;
 	m_inRange = 0;
 	m_nextScanFrames = 0;

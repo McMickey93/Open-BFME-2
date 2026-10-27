@@ -20,8 +20,7 @@ extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  
 extern "C" const void *const __identifier("??_7ArmorUpgrade@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C57328 (41 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7AODHordeContain@@6BIface2C@@@")[];  // folded vftable 0x00C58790 (55 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C42720[];  // ??_7UpgradeModule@@6BUpgradeMux@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C42720=??_7UpgradeModule@@6BUpgradeMux@@@")
+extern "C" const void *const __identifier("??_7UpgradeModule@@6BUpgradeMux@@@")[];  // vftable 0x00C42720
 
 class Thing;
 class ModuleData;
@@ -69,7 +68,7 @@ UpgradeModule::UpgradeModule(Thing *thing, const ModuleData *moduleData)
 	: BehaviorModule(thing, moduleData), m_mux()
 {
 	*(void * volatile *)&m_18 = (void *)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
-	*(void **)&m_mux = (void *)((unsigned int)vtbl_00C42720);
+	*(void **)&m_mux = (void *)((unsigned int)__identifier("??_7UpgradeModule@@6BUpgradeMux@@@"));
 	*(void **)this = (void *)(unsigned int)&g_00C42768;
 	*(void **)((char *)this + 0xC) = (void *)((unsigned int)__identifier("??_7ArmorUpgrade@@6BBehaviorModuleInterface@@@"));
 	m_18 = (void *)((unsigned int)__identifier("??_7AODHordeContain@@6BIface2C@@@"));

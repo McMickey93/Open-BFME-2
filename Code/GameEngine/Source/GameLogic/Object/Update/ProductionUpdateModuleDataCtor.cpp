@@ -26,8 +26,7 @@
 // 0xBBAC1C). The class keeps an explicit vtable slot with no virtuals so
 // nothing is emitted, and the +4 word is untouched padding.
 
-extern "C" const void *const vtbl_00C515F0[];  // ??_7ProductionUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C515F0=??_7ProductionUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ProductionUpdateModuleData@@6B@")[];  // vftable 0x00C515F0
 
 #include <list>
 
@@ -151,7 +150,7 @@ namespace _STL { template <> vector<QuantityModifier,_STL::allocator<QuantityMod
 // bfme link decl-only end
 ProductionUpdateModuleData::ProductionUpdateModuleData()
 	: UpdateModuleData()
-	, m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C515F0)))
+	, m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ProductionUpdateModuleData@@6B@"))))
 	, m_bonusForType()
 	, m_speedBonusAudioLoop()
 {

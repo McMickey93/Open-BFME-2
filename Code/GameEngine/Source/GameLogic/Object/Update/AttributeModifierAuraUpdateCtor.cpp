@@ -16,14 +16,11 @@
 // data flag at +0x138 (rowed giveSelfUpgrade 0x45230C). Row supersedes the
 // ctor pin.
 
-extern "C" const void *const vtbl_00C50D2C[];  // ??_7AttributeModifierAuraUpdate@@6BModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50D2C=??_7AttributeModifierAuraUpdate@@6BModule@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6BModule@@@")[];  // vftable 0x00C50D2C
 
-extern "C" const void *const vtbl_00C50D20[];  // ??_7AttributeModifierAuraUpdate@@6BUpdateModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50D20=??_7AttributeModifierAuraUpdate@@6BUpdateModuleInterface@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6BUpdateModuleInterface@@@")[];  // vftable 0x00C50D20
 
-extern "C" const void *const vtbl_00C50CD8[];  // ??_7AttributeModifierAuraUpdate@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C50CD8=??_7AttributeModifierAuraUpdate@@6B@")
+extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6B@")[];  // vftable 0x00C50CD8
 
 extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C49F78 (3 classes), by its data-ledger name
 
@@ -86,10 +83,10 @@ private:
 AttributeModifierAuraUpdate::AttributeModifierAuraUpdate(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData), m_20()
 {
-	m_vtable = (const void *)((unsigned int)vtbl_00C50D2C);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6BModule@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C50D20);
-	*(void **)&m_20 = (void *)((unsigned int)vtbl_00C50CD8);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6BUpdateModuleInterface@@@"));
+	*(void **)&m_20 = (void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6B@"));
 	setWakeFrame(m_object, UPDATE_SLEEP_NONE);
 	const AttributeModifierAuraUpdateModuleData *data = (const AttributeModifierAuraUpdateModuleData *)m_moduleData;
 	if (data->m_startsActive)

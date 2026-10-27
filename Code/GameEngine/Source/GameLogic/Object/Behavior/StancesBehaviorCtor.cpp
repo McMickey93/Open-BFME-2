@@ -40,8 +40,7 @@ extern "C" const void *const vtbl_00C424DC[13] = {
 	(const void *)&__identifier("?getUpdatePhase@UpdateModule@@MBE?AW4SleepyUpdatePhase@@XZ"), // slot 12 0x0022C4CB
 };
 
-extern "C" const void *const vtbl_00C424D0[];  // ??_7StancesBehavior@@6BStancesBehaviorInterfaceB@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C424D0=??_7StancesBehavior@@6BStancesBehaviorInterfaceB@@@")
+extern "C" const void *const __identifier("??_7StancesBehavior@@6BStancesBehaviorInterfaceB@@@")[];  // vftable 0x00C424D0
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
@@ -84,5 +83,5 @@ StancesBehavior::StancesBehavior(Thing *thing, const ModuleData *moduleData)
 	m_30 = 0;
 	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00C424DC));
 	m_p0C = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")));
-	m_p10 = reinterpret_cast<const void *>(((unsigned int)vtbl_00C424D0));
+	m_p10 = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7StancesBehavior@@6BStancesBehaviorInterfaceB@@@")));
 }

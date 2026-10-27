@@ -42,20 +42,16 @@ extern "C" const void *const vtbl_00C409DC[13] = {
 	(const void *)&__identifier("?getUpdatePhase@UpdateModule@@MBE?AW4SleepyUpdatePhase@@XZ"), // slot 12 0x0022C4CB
 };
 
-extern "C" const void *const vtbl_00C40920[];  // ??_7BridgeBehavior@@6BMiBase1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C40920=??_7BridgeBehavior@@6BMiBase1@@@")
+extern "C" const void *const __identifier("??_7BridgeBehavior@@6BMiBase1@@@")[];  // vftable 0x00C40920
 
 extern "C" const void *const vtbl_00C40914[];  // ??_7BridgeBehavior@@6BUpdateModule@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C40914=??_7BridgeBehavior@@6BUpdateModule@@@")
 
-extern "C" const void *const vtbl_00C408FC[];  // ??_7BridgeBehavior@@6BBridgeBehaviorInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C408FC=??_7BridgeBehavior@@6BBridgeBehaviorInterface@@@")
+extern "C" const void *const __identifier("??_7BridgeBehavior@@6BBridgeBehaviorInterface@@@")[];  // vftable 0x00C408FC
 
-extern "C" const void *const vtbl_00C408F0[];  // ??_7BridgeBehavior@@6BDamageModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C408F0=??_7BridgeBehavior@@6BDamageModuleInterface@@@")
+extern "C" const void *const __identifier("??_7BridgeBehavior@@6BDamageModuleInterface@@@")[];  // vftable 0x00C408F0
 
-extern "C" const void *const vtbl_00C408EC[];  // ??_7BridgeBehavior@@6BDieModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C408EC=??_7BridgeBehavior@@6BDieModuleInterface@@@")
+extern "C" const void *const __identifier("??_7BridgeBehavior@@6BDieModuleInterface@@@")[];  // vftable 0x00C408EC
 
 extern "C" const void *const vtbl_00C40818[];  // folded, 7 classes; via ??_7BfmeCtor001B3A20@@6BBfmeCtorFirstBase001B3A20@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C40818=??_7BfmeCtor001B3A20@@6BBfmeCtorFirstBase001B3A20@@@")
@@ -146,11 +142,11 @@ BridgeBehavior::BridgeBehavior(Thing *thing, const ModuleData *moduleData)
 	void *context = (void *)((char *)&moduleData + 3);
 	Rva0029FB3BMember *free = &m_free;
 	*(unsigned int *)this = ((unsigned int)vtbl_00C409DC);
-	*(unsigned int *)((char *)this + 0x0C) = ((unsigned int)vtbl_00C40920);
+	*(unsigned int *)((char *)this + 0x0C) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BMiBase1@@@"));
 	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C40914);
-	*(unsigned int *)((char *)this + 0x20) = ((unsigned int)vtbl_00C408FC);
-	*(unsigned int *)((char *)this + 0x24) = ((unsigned int)vtbl_00C408F0);
-	*(unsigned int *)((char *)this + 0x28) = ((unsigned int)vtbl_00C408EC);
+	*(unsigned int *)((char *)this + 0x20) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BBridgeBehaviorInterface@@@"));
+	*(unsigned int *)((char *)this + 0x24) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BDamageModuleInterface@@@"));
+	*(unsigned int *)((char *)this + 0x28) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BDieModuleInterface@@@"));
 	free->init(context);
 	free->reset();
 	m_FD = false;

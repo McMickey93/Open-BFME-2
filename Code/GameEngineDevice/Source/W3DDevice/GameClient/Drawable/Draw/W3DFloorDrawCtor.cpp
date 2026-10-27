@@ -22,10 +22,8 @@
 // This establishes table contents; it assigns no donor class to the caller.
 extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];
 
-extern "C" const void *const vtbl_00BCD4D8[];  // ??_7W3DFloorDraw@@6BW3DFloorDrawSecondBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BCD4D8=??_7W3DFloorDraw@@6BW3DFloorDrawSecondBase@@@")
-extern "C" const void *const vtbl_00BCD4E0[];  // ??_7W3DFloorDraw@@6BRva000CEB6F@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BCD4E0=??_7W3DFloorDraw@@6BRva000CEB6F@@@")
+extern "C" const void *const __identifier("??_7W3DFloorDraw@@6BW3DFloorDrawSecondBase@@@")[];  // vftable 0x00BCD4D8
+extern "C" const void *const __identifier("??_7W3DFloorDraw@@6BRva000CEB6F@@@")[];  // vftable 0x00BCD4E0
 
 class ModuleData;
 
@@ -67,8 +65,8 @@ W3DFloorDraw::W3DFloorDraw(Thing *thing, const ModuleData *moduleData) :
 {
 	int *slot10 = (int *)&m_10;
 	*slot10 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
-	*(unsigned int *)this = ((unsigned int)vtbl_00BCD4E0);
-	m_10 = (const void *)((unsigned int)vtbl_00BCD4D8);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7W3DFloorDraw@@6BRva000CEB6F@@@"));
+	m_10 = (const void *)((unsigned int)__identifier("??_7W3DFloorDraw@@6BW3DFloorDrawSecondBase@@@"));
 	m_flag14 = false;
 	m_flag15 = false;
 	m_flag16 = false;

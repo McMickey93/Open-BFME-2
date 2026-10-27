@@ -25,8 +25,7 @@
 // in esi, which only named-temp spellings do. The two halves have never
 // been observed together.
 
-extern "C" const void *const vtbl_00C1FAAC[];  // ??_7ScriptList@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C1FAAC=??_7ScriptList@@6B@")
+extern "C" const void *const __identifier("??_7ScriptList@@6B@")[];  // vftable 0x00C1FAAC
 
 class Rva003B761E
 {
@@ -44,7 +43,7 @@ public:
 	{
 		m_firstGroup = 0;
 		m_firstScript = 0;
-		m_vtable = (void *)((unsigned int)vtbl_00C1FAAC);
+		m_vtable = (void *)((unsigned int)__identifier("??_7ScriptList@@6B@"));
 	}
 
 private:

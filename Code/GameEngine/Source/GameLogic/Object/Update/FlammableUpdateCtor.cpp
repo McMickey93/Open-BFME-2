@@ -16,12 +16,9 @@
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00C49800 (4 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C4C3BC[];  // ??_7FlammableUpdate@@6BDamageModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4C3BC=??_7FlammableUpdate@@6BDamageModuleInterface@@@")
-extern "C" const void *const vtbl_00C4C3C8[];  // ??_7FlammableUpdate@@6BUpdateModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4C3C8=??_7FlammableUpdate@@6BUpdateModule@@@")
-extern "C" const void *const vtbl_00C4C3D4[];  // ??_7FlammableUpdate@@6BBehaviorModuleBase@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4C3D4=??_7FlammableUpdate@@6BBehaviorModuleBase@@@")
+extern "C" const void *const __identifier("??_7FlammableUpdate@@6BDamageModuleInterface@@@")[];  // vftable 0x00C4C3BC
+extern "C" const void *const __identifier("??_7FlammableUpdate@@6BUpdateModule@@@")[];  // vftable 0x00C4C3C8
+extern "C" const void *const __identifier("??_7FlammableUpdate@@6BBehaviorModuleBase@@@")[];  // vftable 0x00C4C3D4
 
 class Thing;
 class ModuleData;
@@ -96,10 +93,10 @@ FlammableUpdate::FlammableUpdate(Thing *thing, const ModuleData *moduleData)
 	m_48 = zero;
 	m_4C = zero;
 	const FlammableUpdateModuleData *data = (const FlammableUpdateModuleData *)m_moduleData;
-	m_vtable = (const void *)((unsigned int)vtbl_00C4C3D4);
+	m_vtable = (const void *)((unsigned int)__identifier("??_7FlammableUpdate@@6BBehaviorModuleBase@@@"));
 	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@"));
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C4C3C8);
-	m_20 = (const void *)((unsigned int)vtbl_00C4C3BC);
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7FlammableUpdate@@6BUpdateModule@@@"));
+	m_20 = (const void *)((unsigned int)__identifier("??_7FlammableUpdate@@6BDamageModuleInterface@@@"));
 	m_38 = data->m_flameDamageLimit;
 	setWakeFrame(m_object, UPDATE_SLEEP_FOREVER);
 }
