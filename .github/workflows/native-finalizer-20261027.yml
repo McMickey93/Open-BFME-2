@@ -1,0 +1,100 @@
+name: Integrate preserved native BFME2 cleanup 20261027
+
+on:
+  create:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfme2-native-finalizer-20261027
+  cancel-in-progress: false
+
+env:
+  GIT_CONFIG_COUNT: '3'
+  GIT_CONFIG_KEY_0: core.autocrlf
+  GIT_CONFIG_VALUE_0: 'false'
+  GIT_CONFIG_KEY_1: core.longpaths
+  GIT_CONFIG_VALUE_1: 'true'
+  GIT_CONFIG_KEY_2: submodule.recurse
+  GIT_CONFIG_VALUE_2: 'false'
+  PY_PYTHON: '3.12'
+  PY_PYTHON3: '3.12'
+  PYTHONUTF8: '1'
+  PYTHONUNBUFFERED: '1'
+  BUILD_POOL: '4'
+
+jobs:
+  finalize:
+    if: >-
+      github.repository == 'McMickey93/Open-BFME-2' &&
+      github.event.repository.fork == true &&
+      github.event.repository.private == false &&
+      github.ref == 'refs/heads/codex/20261027-bfme2-native-finalizer' &&
+      github.event.ref_type == 'branch'
+    # The token can write only this contributor fork. It is removed from the
+    # child-process environment and scoped to the fixed fork for Git transport.
+    # No official-repository or claim write credential is available in this job.
+    permissions:
+      contents: write
+      actions: read
+    runs-on: windows-2022
+    timeout-minutes: 180
+    steps:
+      - name: Read immutable integration controls
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: McMickey93/Open-BFME-2
+          ref: ${{ github.sha }}
+          path: control
+          sparse-checkout: .github/qualification/next-round-20261027
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: false
+          lfs: false
+      - name: Select native Windows Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+          architecture: x64
+          check-latest: false
+      - name: Check out the official base separately
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: Open-BFME/Open-BFME-2
+          ref: ff45f96b144ed03d8759cf03c723e00bfb9e2755
+          path: source
+          persist-credentials: false
+          fetch-depth: 128
+          submodules: false
+          lfs: false
+      - name: Read the exact preserved native objects and comparative gate evidence
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        with:
+          repository: McMickey93/Open-BFME-2
+          run-id: 40434097836
+          artifact-ids: 12704464604
+          github-token: ${{ github.token }}
+          path: prior-evidence
+          merge-multiple: true
+      - name: Rebase native commits and run the actual normal official push gate
+        shell: bash
+        working-directory: source
+        env:
+          BFME_TRANSFER_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git_bash="$BASH"
+          [[ "${git_bash,,}" == *.exe ]] || git_bash="${git_bash}.exe"
+          export BFME_QUALIFICATION_BASH="$(cygpath -aw "$git_bash")"
+          sh .githooks/run-python3 -u ../control/.github/qualification/next-round-20261027/qualify.py finish
+      - name: Preserve integration logs, native objects and publication evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: native-integration-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qualification-evidence/
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 9

@@ -445,6 +445,210 @@ def renewal():
     save()
     print("NATIVE_CLAIM_RENEWAL " + json.dumps(public, sort_keys=True), flush=True)
 
+def finish(bash):
+    import urllib.error
+    import urllib.request
+    token = os.environ.pop("BFME_TRANSFER_TOKEN", "")
+    require(token and "\n" not in token and "\r" not in token, "Ephemeral fork token missing")
+    os.environ["BFME_CLAIM_NS"] = DATA["claim_namespace"]
+    os.environ["BFME_CLAIM_OWNER"] = DATA["claim"]["owner"]
+    os.environ["BFME_MODEL"] = "OpenAI-Codex"
+    sys.path.insert(0, str(SOURCE / "tools"))
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            return None
+    opener = urllib.request.build_opener(NoRedirect())
+    def api(method, suffix, body=None, missing=False):
+        require(suffix.startswith("/") and not suffix.startswith("//"), "Invalid fork API path")
+        request = urllib.request.Request(
+            "https://api.github.com/repos/" + DATA["fork"] + suffix,
+            data=None if body is None else json.dumps(body).encode(),
+            method=method, headers={"Authorization": "Bearer " + token,
+            "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "BFME-native-cleanup-finalizer", "Content-Type": "application/json"})
+        try:
+            with opener.open(request, timeout=60) as response:
+                return json.loads(response.read(1024 * 1024))
+        except urllib.error.HTTPError as error:
+            if missing and error.code == 404:
+                return None
+            raise RuntimeError("Fork metadata API refused request: HTTP %d" % error.code) from None
+    prior = DATA["prior"]
+    artifact = api("GET", "/actions/artifacts/%d" % prior["artifact_id"])
+    require(artifact["id"] == prior["artifact_id"] and artifact["expired"] is False
+            and artifact["digest"] == "sha256:" + prior["artifact_digest"]
+            and artifact["workflow_run"]["id"] == prior["run_id"]
+            and artifact["workflow_run"]["head_sha"] == prior["head"], "Prior artifact provenance changed")
+    old = SOURCE.parent / "prior-evidence"
+    proof = json.loads((old / "result.json").read_text(encoding="utf-8"))
+    require(proof["workflow"]["GITHUB_SHA"] == prior["head"]
+            and proof["workflow"]["GITHUB_RUN_ID"] == str(prior["run_id"])
+            and proof["workflow"]["GITHUB_REPOSITORY"] == DATA["fork"], "Wrong prior native job")
+    for label in ("full-before-reference-refresh", "full-after-reference-refresh",
+                  "changed-whole-consumers-and-providers", "complete-eh-graph",
+                  "normal-native-commit-0", "normal-native-commit-1"):
+        require(any(c["label"] == label and c["exit_code"] == 0 for c in proof["commands"]),
+                "Prior native proof missing: " + label)
+    candidate = json.loads((old / "unqualified-0.json").read_text())
+    require(candidate["status"] == "not-push-qualified" and candidate["base"] == prior["base"]
+            and candidate["commit"] == prior["commit"] and candidate["tree"] == prior["tree"]
+            and candidate["local_ref"] == LOCAL_REF and candidate["claim"] == DATA["claim"],
+            "Unpublished native commit manifest differs")
+    git("fetch-prior-base", "fetch", "--no-tags", "--recurse-submodules=no", "origin", prior["base"], quiet=True)
+    git("verify-preserved-native-bundle", "bundle", "verify", old / "unqualified-0.bundle", quiet=True)
+    git("import-preserved-native-commits", "fetch", "--no-tags", "--recurse-submodules=no",
+        old / "unqualified-0.bundle", LOCAL_REF + ":" + LOCAL_REF, quiet=True)
+    require(rev(LOCAL_REF) == prior["commit"] and rev(LOCAL_REF + "^{tree}") == prior["tree"],
+            "Preserved native Git objects changed")
+    git("checkout-preserved-native-commits", "switch", LOCAL_REF.removeprefix("refs/heads/"), quiet=True)
+    verify_scope(prior["base"])
+    init_reference()
+    require(hashlib.sha256(path(DATA["compiler"]).read_bytes()).hexdigest() == DATA["compiler_sha256"],
+            "Original compiler changed")
+    run("native-dependencies", [sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
+                                "-r", DATA["requirements"]], quiet=True)
+    run("normal-hook-setup", [bash, "tools/setup_hooks.sh"], quiet=True)
+    require(git("normal-hooks", "config", "--get", "core.hooksPath", quiet=True).decode().strip() == ".githooks",
+            "Ordinary hooks required")
+    git("public-author", "config", "user.name", "McMickey93", quiet=True)
+    git("public-email", "config", "user.email", "347452154+McMickey93@users.noreply.github.com", quiet=True)
+    git("noninteractive-editor", "config", "core.editor", "true", quiet=True)
+    base = prior["base"]
+    def fetch_base():
+        git("fetch-current-official-master", "fetch", "--no-tags", "--recurse-submodules=no", "origin",
+            "+refs/heads/master:refs/remotes/origin/master", quiet=True)
+        return rev("refs/remotes/origin/master")
+    def history(target_base):
+        incoming = rev(target_base + ":" + DATA["reference_path"])
+        git("fetch-reference-ancestry-without-recursion", "-C", DATA["reference_path"], "fetch",
+            "--depth=256", "--no-tags", "--recurse-submodules=no", "origin",
+            DATA["new_reference"], incoming, quiet=True)
+        return incoming
+    def rebase(target_base):
+        nonlocal base
+        git("official-history-is-forward", "merge-base", "--is-ancestor", base, target_base, quiet=True)
+        history(target_base)
+        out = git("ordinary-rebase", "-c", "submodule.recurse=false", "rebase", target_base,
+                  quiet=True, allowed=(0, 1))
+        if RECEIPT["commands"][-1]["exit_code"]:
+            conflicts = git("rebase-conflict-paths", "diff", "--name-only", "--diff-filter=U",
+                            quiet=True).decode().splitlines()
+            require(conflicts == [DATA["reference_path"]], "Rebase has a non-reference conflict; review required")
+            stages = {}
+            for line in git("reference-conflict-stages", "ls-files", "-u", "--",
+                            DATA["reference_path"], quiet=True).decode().splitlines():
+                fields = line.split()
+                stages[int(fields[2])] = fields[1]
+            require(stages.get(3) == DATA["new_reference"] and SHA.fullmatch(stages.get(2, "")),
+                    "Unexpected submodule conflict")
+            git("fetch-conflict-reference-ancestry", "-C", DATA["reference_path"], "fetch", "--depth=256",
+                "--no-tags", "--recurse-submodules=no", "origin", stages[2], stages[3], quiet=True)
+            git("prove-incoming-reference-ancestor", "-C", DATA["reference_path"], "merge-base",
+                "--is-ancestor", stages[2], stages[3], quiet=True)
+            git("select-proven-forward-reference", "-C", DATA["reference_path"], "checkout", "--detach",
+                stages[3], quiet=True)
+            git("stage-only-proven-reference", "add", "--", DATA["reference_path"], quiet=True)
+            git("continue-ordinary-rebase", "-c", "core.editor=true", "rebase", "--continue", quiet=True)
+        base = target_base
+        selected = rev("HEAD:" + DATA["reference_path"])
+        git("sync-committed-reference", "-C", DATA["reference_path"], "fetch", "--depth=256", "--no-tags",
+            "--recurse-submodules=no", "origin", selected, quiet=True)
+        git("checkout-committed-reference", "-C", DATA["reference_path"], "checkout", "--detach",
+            selected, quiet=True)
+    def entries():
+        result = []
+        names = git("final-changed-files", "diff", "--name-only", "-z", base, "HEAD", quiet=True).decode().split("\0")
+        for name in sorted(filter(None, names)):
+            raw = git("final-tree-entry", "ls-tree", "HEAD", "--", name, quiet=True).decode().strip()
+            mode, kind, rest = raw.split(" ", 2)
+            oid, actual = rest.split("\t", 1)
+            require(actual == name and name in allowed_paths(), "Unreviewed outgoing file")
+            result.append({"path": name, "mode": mode, "kind": kind, "sha": oid})
+        return result
+    def publish_receipt(manifest):
+        # Only this small coordination branch uses the Git data API. Game
+        # commits above are original native commits rebased with normal hooks.
+        ref = DATA["receipt_ref"]
+        existing = api("GET", "/git/ref/" + ref.removeprefix("refs/"), missing=True)
+        parent = existing["object"]["sha"] if existing else DATA["receipt_parent"]
+        blob = api("POST", "/git/blobs", {"encoding": "utf-8",
+                   "content": json.dumps(manifest, indent=2) + "\n"})
+        tree = api("POST", "/git/trees", {"tree": [
+            {"path": "publication.json", "mode": "100644", "type": "blob", "sha": blob["sha"]}]})
+        commit = api("POST", "/git/commits", {"message":
+            "Record the actual native cleanup publication gate\n\nAgent-Authored: OpenAI Codex\n",
+            "tree": tree["sha"], "parents": [parent]})
+        if existing:
+            api("PATCH", "/git/refs/" + ref.removeprefix("refs/"),
+                {"sha": commit["sha"], "force": False})
+        else:
+            api("POST", "/git/refs", {"ref": ref, "sha": commit["sha"]})
+    for attempt in range(12):
+        claims("before-integration-attempt")
+        newest = fetch_base()
+        if newest != base:
+            rebase(newest)
+        verify_scope(base)
+        require(rev("HEAD:AGENTS.md") == DATA["agents_blob"], "Current AGENTS requires a new review")
+        scoped(bash, "integrated-whole-consumers-and-providers")
+        run("integrated-header-check", [sys.executable, "tools/ms_header_audit.py", "check",
+                                      *DATA["consumers"]], quiet=True)
+        eh = EVIDENCE / "integrated-eh.json"
+        run("integrated-complete-eh", [sys.executable, "tools/eh_verify.py",
+                                     *DATA["consumers"], "--json", eh], quiet=True)
+        verdicts = json.loads(eh.read_text())
+        require(verdicts and all(v[0] == "EXACT" for v in verdicts.values()), "Integrated EH graph not exact")
+        measured = progress(base)
+        module, key, claim_token, info = claims("before-official-pre-push")
+        made = module._record(DATA["claim"]["owner"], -1, "Completed cleanup; released after publication",
+                              lease=DATA["claim"]["lease"], since=info.get("since"),
+                              scope=info.get("scope", ""), locks=info.get("locks", ()))
+        release = git("tool-generated-release", "show", "-s", "--format=%B", made, quiet=True).decode().strip()
+        require("host" not in json.loads(release), "Do not export machine identifiers")
+        head, tree, files = rev("HEAD"), rev("HEAD^{tree}"), entries()
+        unfinished = EVIDENCE / ("integration-%d.bundle" % attempt)
+        git("preserve-integrated-native-objects", "bundle", "create", unfinished, base + ".." + LOCAL_REF, quiet=True)
+        refs = ("%s %s refs/heads/master %s\n" % (LOCAL_REF, head, base)).encode()
+        output = run("actual-normal-official-pre-push", [bash, ".githooks/pre-push", "origin", DATA["upstream"]],
+                     stdin=refs, quiet=True, allowed=(0, 1))
+        gate_code = RECEIPT["commands"][-1]["exit_code"]
+        current = master()
+        if gate_code:
+            failures = [x.split("PRE-PUSH FAILED:", 1)[1].strip()
+                        for x in output.decode("utf-8", errors="replace").splitlines()
+                        if "PRE-PUSH FAILED:" in x]
+            require(failures == ["origin/master moved past this push's base; pull --rebase before running the full gate"]
+                    and current != base, "Ordinary gate failed for another reason")
+            continue
+        if current != base:
+            continue
+        claims("after-official-pre-push")
+        branch = "codex/20261027-bfme2-finalized-%s-%s-%d" % (
+            os.environ["GITHUB_RUN_ID"], os.environ["GITHUB_RUN_ATTEMPT"], attempt)
+        target = "refs/heads/" + branch
+        fork_url = "https://github.com/" + DATA["fork"] + ".git"
+        env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_TRACE") and k != "GIT_CURL_VERBOSE"}
+        count = int(env.get("GIT_CONFIG_COUNT", "0"))
+        auth = "AUTHORIZATION: basic " + base64.b64encode(("x-access-token:" + token).encode()).decode()
+        env.update({"GIT_CONFIG_COUNT": str(count + 1),
+                    "GIT_CONFIG_KEY_" + str(count): "http." + fork_url + ".extraheader",
+                    "GIT_CONFIG_VALUE_" + str(count): auth, "GIT_TERMINAL_PROMPT": "0"})
+        run("push-exact-native-objects-to-fresh-fork-branch", ["git", "push", "--porcelain",
+            "--force-with-lease=" + target + ":", fork_url, LOCAL_REF + ":" + target], env=env, quiet=True)
+        manifest = {"schema": 1, "purpose": "verified-cleanup", "fork": DATA["fork"], "base": base,
+                    "commit": head, "tree": tree, "files": files, "result_branch": branch,
+                    "normal_commit_hooks_passed": True, "normal_actual_official_pre_push_passed": True,
+                    "progress": measured, "claim": DATA["claim"], "claim_token": claim_token,
+                    "release_message": release, "prior_native_proof": prior, "workflow": RECEIPT["workflow"]}
+        publish_receipt(manifest)
+        RECEIPT.update(status="ready-for-official-fast-forward", publication=manifest)
+        save()
+        print("READY_FOR_OFFICIAL_FAST_FORWARD " + json.dumps(manifest), flush=True)
+        current = master()
+        if current == base or current == head:
+            return
+    raise RuntimeError("Master kept moving; native objects and full logs preserved")
+
 try:
     bash = validate_context()
     if sys.argv[1:] == ["qualify"]:
@@ -453,6 +657,8 @@ try:
         transfer(bash)
     elif sys.argv[1:] == ["renewal"]:
         renewal()
+    elif sys.argv[1:] == ["finish"]:
+        finish(bash)
     else:
         raise RuntimeError("Choose qualify or transfer")
 except BaseException as error:

@@ -5,9 +5,9 @@
   "project": 2,
   "fork": "McMickey93/Open-BFME-2",
   "upstream": "https://github.com/Open-BFME/Open-BFME-2.git",
-  "base": "43c67625fd3ae68bab4824005f54a1da8448045f",
+  "base": "ff45f96b144ed03d8759cf03c723e00bfb9e2755",
   "agents_blob": "43a21b639c94eba6538b14a8b7eb117adecd10c3",
-  "control_branch": "codex/20261027-bfme2-cleanup-qualification-v5",
+  "control_branch": "codex/20261027-bfme2-native-finalizer",
   "result_branch": "codex/20261027-bfme2-qualified-apt-header",
   "reference_path": "reference/open-bfme-1",
   "new_reference": "e74410b3738a2bb75d626085d9ebfd3406a43ff7",
@@ -80,5 +80,16 @@
     }
   ],
   "requirements": "reference/open-bfme-1/tools/requirements.txt",
-  "claim_namespace": "refs/heads/claims/"
+  "claim_namespace": "refs/heads/claims/",
+  "receipt_ref": "refs/heads/codex/20261027-bfme2-publication-receipt",
+  "receipt_parent": "1c6c83f6ca1c99bfe0fb84aa5462b6fcb6de5606",
+  "prior": {
+    "run_id": 40434097836,
+    "head": "4a8f2862767e6691e449fa77637b0c566bd45ae3",
+    "artifact_id": 12704464604,
+    "artifact_digest": "3be0c4b684a92db8270cc31a4e765c5c11c32f27c084cc0e374a16760edda604",
+    "base": "4a2e0058c1818c9af0fa30224fbb2aabcb819f39",
+    "commit": "d4b09266ca0be26e4a882ed711151bce1f271987",
+    "tree": "3603739e0a693f27d58b9a38d08836d2748505de"
+  }
 }
