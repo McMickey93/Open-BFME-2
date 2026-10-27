@@ -168,6 +168,88 @@ def test_small_scope_neither_asks_for_nor_records_a_receipt(repo):
     assert not calls(repo[0], 'receipt-calls.jsonl')
 
 
+@pytest.mark.parametrize('count,receipted', [(511, False), (512, True), (550, True)])
+def test_medium_bounded_scope_carries_only_after_every_selector_passes(repo, count, receipted):
+    fixture = receipt_log(repo)
+    selected = fixture[1][:count]
+    done = run_hook(fixture, selected)
+    assert done.returncode == 0, done.stderr
+    chunks = calls(fixture[0])
+    assert all(chunks) and [source for chunk in chunks for source in chunk] == selected
+    expected = [['find', fixture[3]], ['record', fixture[3]]] if receipted else []
+    assert calls(fixture[0], 'receipt-calls.jsonl') == expected
+
+
+def medium_receipt_fixture(repo):
+    path, sources, base, _ = repo
+    # Checker outcomes are fixture controls. The real hook must preserve scope,
+    # failure propagation and receipt ordering; real receipt eligibility is
+    # separately covered by test_full_gate_receipt.py.
+    hooks.write(path, 'tools/full_gate_receipt.py', RECORD_RECEIPT + """
+if sys.argv[1:] == ['cross-checks'] and os.environ.get('FAIL_RETRY') == 'cross':
+    raise SystemExit(5)
+""")
+    hooks.write(path, 'tools/delta_sources.py', """import os, sys
+sys.stdout.reconfigure(newline='\\n')
+listing = 'delta-retry.txt' if sys.argv[2] == os.environ.get('CARRY_FROM') else 'delta.txt'
+sys.stdout.write(open(listing, encoding='utf-8').read())
+""")
+    hooks.write(path, 'tools/eh_verify.py', RECORD_EH + """
+import os
+if '--assert-shrink-range' not in sys.argv and os.environ.get('FAIL_RETRY') == 'eh':
+    raise SystemExit(6)
+""")
+    hooks.write(path, 'tools/data_check.py', hooks.RECORD_CONVERGED + """
+import os
+if os.environ.get('FAIL_RETRY') == 'data':
+    raise SystemExit(7)
+""")
+    hooks.git(path, 'add', '--', 'tools/full_gate_receipt.py', 'tools/delta_sources.py',
+              'tools/eh_verify.py', 'tools/data_check.py')
+    hooks.git(path, 'commit', '-qm', 'medium carry checker controls')
+    return path, sources, base, hooks.git(path, 'rev-parse', 'HEAD')
+
+
+@pytest.mark.parametrize('failure', ['build', 'eh', 'data'])
+def test_medium_bounded_failure_never_records_a_receipt(repo, failure):
+    fixture = medium_receipt_fixture(repo)
+    selected = fixture[1][:550]
+    env = {'FAIL_EXTRA': selected[-1]} if failure == 'build' else {'FAIL_RETRY': failure}
+    done = run_hook(fixture, selected, **env)
+    assert done.returncode == 1, done.stderr
+    assert calls(fixture[0], 'receipt-calls.jsonl') == [['find', fixture[3]]]
+    assert [source for chunk in calls(fixture[0]) for source in chunk] == selected
+
+
+@pytest.mark.parametrize('failure', [None, 'build', 'cross', 'eh', 'data'])
+def test_medium_carried_retry_checks_new_delta_and_preserves_failures(repo, failure):
+    fixture = medium_receipt_fixture(repo)
+    path, sources, base, verified = fixture
+    selected = sources[:550]
+    first = run_hook(fixture, selected)
+    assert first.returncode == 0, first.stderr
+    assert calls(path, 'receipt-calls.jsonl') == [['find', verified], ['record', verified]]
+    prior_builds = len(calls(path))
+    source = selected[0]
+    hooks.write(path, source, '// changed after the verified medium gate\n')
+    hooks.git(path, 'add', '--', source)
+    hooks.git(path, 'commit', '-qm', 'incoming source change')
+    pushed = hooks.git(path, 'rev-parse', 'HEAD')
+    hooks.write(path, 'delta-retry.txt', source + '\n')
+    env = {'CARRY_FROM': verified}
+    if failure == 'build':
+        env['FAIL_EXTRA'] = source
+    elif failure:
+        env['FAIL_RETRY'] = failure
+    done = run_hook((path, sources, base, pushed), selected, **env)
+    assert done.returncode == (1 if failure else 0), done.stderr
+    assert calls(path)[prior_builds:] == [[source]]
+    expected = [['find', pushed]]
+    if failure != 'build':
+        expected += [['cross-checks']]
+    assert calls(path, 'receipt-calls.jsonl')[2:] == expected
+
+
 def unbounded_headers(fixture):
     path, sources, base, _ = fixture
     hooks.write(path, 'tools/header_dependents.py', 'raise SystemExit(2)\n')

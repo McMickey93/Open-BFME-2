@@ -409,11 +409,11 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
     # Carried full gate: a commit of this push whose full gate already passed in this
     # clone (a push git rejected because master moved) is verified again only where it
     # differs from that commit, the way a push from it would be (tools/full_gate_receipt.py).
-    # Asked whenever this push could need the full gate: an unbounded dependency change,
-    # or a scope large enough that classify_full_scope below may choose it.
+    # Asked for an unbounded dependency change or at least 512 sources: even a
+    # bounded header scope below the full-build threshold can take minutes on Windows.
     carried=""
     large_scope=0
-    if [ "$header_all" -ne 0 ] || [ "${#verify[@]}" -ge 1024 ]; then
+    if [ "$header_all" -ne 0 ] || [ "${#verify[@]}" -ge 512 ]; then
         large_scope=1
         carried="$(python3 tools/full_gate_receipt.py find "$local_sha")" || carried=""
     fi
@@ -514,9 +514,9 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
     # 10 s), then shadow_cap. Reports, never fails the push.
     shadow_cap python3 tools/replay_check.py --shadow --range "$base" "$local_sha" < /dev/null \
         || echo "pre-push: replay_check shadow check failed to run (ignored)" >&2
-    # A large bounded scope that classify_full_scope left in chunks (a header with
-    # 1,000+ dependents) takes as long as the full gate and loses the same race with
-    # master, so it is recorded too: the rebased retry carries it like a full gate.
+    # A bounded scope of 512+ sources can also lose the race with master while
+    # its chunks run, so it is recorded after all required checks pass. A rebased retry
+    # carries it under the same verifier and dependency guards as a full gate.
     # A carried push records nothing; the commit it carried from stays the receipt.
     if [ "$full_scope" -ne 0 ] || { [ "$large_scope" -ne 0 ] && [ -z "$carried" ]; }; then
         python3 tools/full_gate_receipt.py record "$local_sha" \
