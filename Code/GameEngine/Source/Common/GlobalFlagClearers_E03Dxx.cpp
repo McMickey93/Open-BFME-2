@@ -1,4 +1,4 @@
-// 22 further clearers formerly here are rowed as their matched parents'
+// 23 further clearers formerly here are rowed as their matched parents'
 // /G7 guard-rollback $L funclets (EXACT EH graphs); see reverse/deleted_rows.csv.
 // Twenty-four B2-native flag-word clearers on 24 .data flag words
 // (0x00E03D00-0x00E03DF4):
@@ -17,17 +17,9 @@ unsigned int g_Va00E03D34;
 extern unsigned int g_Va00E03D60;
 // g_Va00E03D60: matched references place it at VA 0xe03d60 (zero-filled .bss).
 unsigned int g_Va00E03D60;
-extern unsigned int g_Va00E03DF4;
-// g_Va00E03DF4: matched references place it at VA 0xe03df4 (zero-filled .bss).
-unsigned int g_Va00E03DF4;
 
 unsigned int Rva0078E61FClearFlag(void)
 {
 	return g_Va00E03D60 &= 0xFFFFFFFEu;
-}
-
-unsigned int Rva0078EB64ClearFlag(void)
-{
-	return g_Va00E03DF4 &= 0xFFFFFFFEu;
 }
 
