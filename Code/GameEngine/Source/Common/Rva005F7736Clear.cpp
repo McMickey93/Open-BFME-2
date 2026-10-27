@@ -3,7 +3,7 @@
 // Clears the single element pointer at +0 via the non-virtual dtor
 // 0x005F75C9 plus rowed operator delete 0x0002FD60. Caller is the 14B
 // dtor 0x005F7750 in Rva005F7750Dtor.cpp.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva005F75C9
 {

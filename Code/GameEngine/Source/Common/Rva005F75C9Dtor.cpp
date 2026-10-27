@@ -51,7 +51,7 @@ public:
 };
 
 
-void __cdecl operator delete(void *);
+#include <new>
 // Native owner cleanup at7A57C5 and normal destruction both target this
 // complete26-byte member teardown at5F74A0, not a forwarding wrapper.
 Rva005F74A0::~Rva005F74A0()
