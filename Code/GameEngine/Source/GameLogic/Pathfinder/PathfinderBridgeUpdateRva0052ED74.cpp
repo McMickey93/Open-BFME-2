@@ -18,8 +18,6 @@
 #include "../../Common/GameLogicObjectLookupView.h"
 static __forceinline float bridgeDelta(float a,float b){return (float)(a-b);}
 #include <math.h>
-extern "C" __declspec(dllimport) double __cdecl floor(double);
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
 static __forceinline int float2long(float f){int i;__asm{fld f
  fistp i}return i;}
 #define FLOOR(x) float2long((float)floor(x))

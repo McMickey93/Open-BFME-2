@@ -18,10 +18,9 @@
 // lifetime and the vector is the entry's own instantiation, whose growth
 // path destroys elements (0x00496292), so no POD stand-in cast.
 
-typedef float Real;
+#include <string.h>
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+typedef float Real;
 
 class INI
 {

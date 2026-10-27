@@ -1,6 +1,4 @@
 // cl: /I. /O1 /G7 /arch:SSE /MD /EHsc /DNDEBUG /Ireference/shims/bfme2_ascii
-extern "C" double __cdecl sin(double);
-extern "C" double __cdecl cos(double);
 
 struct GateOffset {
  float X,Y,Z;

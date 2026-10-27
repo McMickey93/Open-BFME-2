@@ -16,9 +16,9 @@
 // stlport
 // BFME1 HordeContainParseSplitResult.cpp semantic donor. PC table C45530
 // SplitHorde -> 46F288; INI colon separators +420; 12-byte split record.
+#include <string.h>
+#include <stdlib.h>
 #include <vector>
-extern "C" int __cdecl strcmp(const char *, const char *);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *);
 template<class T> class StringBase {
     void *m_data;
 public:

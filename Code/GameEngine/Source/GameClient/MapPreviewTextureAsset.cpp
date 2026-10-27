@@ -8,8 +8,8 @@
 // All offsets below are read from that retail body. The File byte at +0x0D
 // is delete-on-close, consistent with the reference Common/File.h accessor.
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t);
+#include <string.h>
+#include <new>
 
 class File;
 class FileSystem

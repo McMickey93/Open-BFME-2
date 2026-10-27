@@ -3,8 +3,9 @@
 // strings and dispatch. Original callback/receiver names remain unknown.
 // Console virtual +38 writes help text; engine virtual +50 requests exit.
 // Writable global-data byte1100 is set from atoi's nonzero result.
-extern "C" int __cdecl strcmp(const char *,const char *);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *);
+#include <string.h>
+#include <stdlib.h>
+
 class Rva00419AB8Console { public:
 #define V(n) virtual void slot##n();
  V(0) V(1) V(2) V(3) V(4) V(5) V(6) V(7) V(8) V(9) V(10) V(11) V(12) V(13)

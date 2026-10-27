@@ -7,6 +7,8 @@
 // vptr stores match AOD 11-iface layout; member calls name Rva00462D35 tree
 // 0x004636FE plus Rva0046A915/Rva0046AB7D plus int-ptr trees plus list_base
 // plus frees plus TransportContain base 0x00467E61.
+#include <stdlib.h>
+#include <new>
 #include <map>
 #include <list>
 
@@ -37,9 +39,6 @@ void _STLP_alloc_proxy<_List_node<int> *, _List_node<int>, allocator<_List_node<
   allocator<_List_node<int> >().deallocate(__p, __n);
 }
 }
-
-extern "C" void __cdecl free(void *block);
-void __cdecl operator delete(void *p);
 
 class Thing;
 class ModuleData;

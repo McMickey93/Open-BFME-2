@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // ConnectionManager::processNetCommand, retail 0x004D2F04, 614 bytes: the
 // 518-byte body and its 24-entry jump table 0x004D310A.
 //
@@ -21,9 +22,6 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
 typedef bool Bool;
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int size);
 
 enum NetCommandType
 {
@@ -57,6 +55,8 @@ enum
 	MAX_SLOTS = 8
 };
 
+#include <windows.h>
+#include <string.h>
 #include "../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;

@@ -1,15 +1,13 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 // ?initObserverControls@ControlBar@@QAEXXZ @0x0050DE39 597B: observer ControlBar cache init.
 // Evidence: caller 0x0031D201; callees rowed nameToKey 0x00148E1A plus nameToKey_ascii 0x0009FA65 plus format 0x00038150 plus releaseBuffer 0x00036410 plus winGetWindowFromId slot 0xF0; strings ControlBar.wnd Observer/Player/Button/StaticText/WinFlag/Portrait/Cancel; globals buttonPlayerID staticTextPlayerID ObserverPlayerInfoWindow ObserverPlayerListWindow buttonPlayer staticTextPlayer buttonCancelID winFlag winGeneralPortrait staticTextNumberOfUnits staticTextNumberOfBuildings staticTextNumberOfUnitsKilled staticTextNumberOfUnitsLost staticTextPlayerName; neighbour Rva0050E776Send.cpp layout.
+#include <string.h>
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
-extern "C" void *__cdecl memset(void *, int, unsigned int);
 
 typedef int Int;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class Image;
 class GameWindow

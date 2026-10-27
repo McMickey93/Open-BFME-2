@@ -12,13 +12,12 @@
 // Fieldwise Coord3D copy retains value semantics and native SSE scheduling.
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
+#include <stdlib.h>
+#include <string.h>
 #include "ascii_string.h"
 #include <vector>
 #include "../../../Include/GameLogic/ScriptActionsBFME2.h"
 #include "Code/Libraries/Include/Lib/Coord3D.h"
-
-extern "C" void __cdecl free(void *p);
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
 
 #include "Code/GameEngine/Source/Common/GameLogicObjectLookupView.h"
 enum SolutionType { PREFER_FAST_SOLUTION = 0 };

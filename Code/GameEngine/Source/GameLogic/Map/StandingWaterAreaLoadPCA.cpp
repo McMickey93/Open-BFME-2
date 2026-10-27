@@ -6,8 +6,7 @@
 // Record offsets and channel order come from retail; original record type is unknown.
 // The float-returning normalization boundary reproduces native x87 store ordering.
 // Neutral record type: native proves 16 bytes and four float components, not original type name.
-extern "C" __declspec(dllimport) double __cdecl atof(const char*);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char*);
+#include <stdlib.h>
 #include <new>
 #define _STLP_BFME_COPY_TRIVIAL_EXTERN
 #include <string>

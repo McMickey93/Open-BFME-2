@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?Rva004CDF2BParse@@YAXPAVINI@@PAX1PBX@Z, retail 0x004CDF2B (147B): the
 // TriggerSpecialPower FieldParse proc (row 0x00C5FD70). Up to eight
@@ -8,7 +9,8 @@
 // the two names at VA 0x00DCF7E8 (default 1), and the entry is appended
 // through the 8-byte-element push_back fold 0x00539A2E. Name address-derived.
 
-#define NULL 0
+#include <windows.h>
+#include <string.h>
 
 enum NameKeyType
 {
@@ -28,7 +30,6 @@ public:
 	const char *getNextTokenOrNull(const char *seps = 0);
 };
 
-extern "C" int __cdecl strcmp(const char *a, const char *b);
 // The retail table at RVA 0x009CF7E8: 2 string pointers.
 extern const char *g_00DCF7E8[2] = { "TARGETPOS", "OBJECTPOS" };
 

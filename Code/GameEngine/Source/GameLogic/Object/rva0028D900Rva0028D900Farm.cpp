@@ -1,11 +1,7 @@
 // ?rva0028D900@Object@@QAE_NPAM0@Z
 // cl: /O1 /DNDEBUG /MD /arch:SSE
-#ifndef max
-#define max(a,b) (((a) > (b)) ? (a) : (b))
-#endif
-#ifndef min
-#define min(a,b) (((a) < (b)) ? (a) : (b))
-#endif
+// platformsdk
+#include <windows.h>
 struct Sub028D900
 {
     char m_pad[0x10D];

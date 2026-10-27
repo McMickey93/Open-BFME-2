@@ -1,15 +1,11 @@
+// platformsdk
 // ?rva002949AE@Object@@QAEXHHM@Z
 // Object::rva002949AE (0x002949AE, 303 B): apply a model condition to a random
 // fraction of the contained objects, or to this object when it has no contain.
 // The BitFlags-style helper with unsigned bit index keeps retail's in-place test
 // and the late lea for the set path.
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
-#ifndef max
-#define max(a,b) (((a) > (b)) ? (a) : (b))
-#endif
-#ifndef min
-#define min(a,b) (((a) < (b)) ? (a) : (b))
-#endif
+#include <windows.h>
 
 class Object;
 
