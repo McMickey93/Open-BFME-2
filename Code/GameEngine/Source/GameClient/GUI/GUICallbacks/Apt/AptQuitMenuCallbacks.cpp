@@ -247,7 +247,7 @@ public:
 	void appendBooleanArgument(bool arg);
 };
 
-// MessageStreamSubsystem (0x00A00950); appendMessage is vslot 18.
+// TheMessageStream (0x00A00950); appendMessage is vslot 18.
 class MessageStream
 {
 public:
@@ -260,7 +260,7 @@ public:
 	virtual GameMessage *appendMessage(int type);
 };
 
-extern MessageStream *MessageStreamSubsystem;
+extern MessageStream *TheMessageStream;
 
 // The network quit's frame limit (.rdata 0x007ED97C).
 extern unsigned int g_007ED97C;
@@ -756,10 +756,10 @@ AptQuitMenu::~AptQuitMenu()
 				((LivingWorldLocal *)TheLivingWorldLogic)->m_98->m_3c5 = true;
 			if (!((BfmeSelectionState *)TheLivingWorldLogic)->isSelectionLocked())
 			{
-				GameMessage *surrender = MessageStreamSubsystem->appendMessage(0x448);
+				GameMessage *surrender = TheMessageStream->appendMessage(0x448);
 				surrender->appendBooleanArgument(true);
 			}
-			GameMessage *msg = MessageStreamSubsystem->appendMessage(0x6B8);
+			GameMessage *msg = TheMessageStream->appendMessage(0x6B8);
 			msg->appendIntegerArgument(((Rva002B2B66 *)TheLivingWorldLogic)->rva002B2B66());
 		}
 		else
@@ -880,7 +880,7 @@ void restartMissionMenu()
 	else
 	{
 		TheWritableGlobalData->m_pendingFile = mapName;
-		GameMessage *msg = MessageStreamSubsystem->appendMessage(0x1E);
+		GameMessage *msg = TheMessageStream->appendMessage(0x1E);
 		msg->appendIntegerArgument(gameMode);
 		msg->appendIntegerArgument(diff);
 		msg->appendIntegerArgument(rankPointsStartedWith);

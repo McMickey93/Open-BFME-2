@@ -113,7 +113,7 @@ public:
 	virtual void m17();
 	virtual GameMessage *m18(int v);
 };
-extern class MessageStream *MessageStreamSubsystem;
+extern class MessageStream *TheMessageStream;
 struct BfmeWorldRV;
 extern class ControlBar *TheControlBar;
 class Rva00405AA7
@@ -132,7 +132,7 @@ void Rva003BBAD3Set()
 {
 	TheInGameUI->setInputEnabled(false);
 	TheMouse->setVisibility(false);
-	GameMessage *gameMessage = MessageStreamSubsystem->m18(0x3ec);
+	GameMessage *gameMessage = TheMessageStream->m18(0x3ec);
 	gameMessage->appendBooleanArgument(true);
 	TheInGameUI->s68();
 	((char *)TheInGameUI)[0x8b0] = 0;
@@ -153,7 +153,7 @@ void Rva003BBAD3::rva003BBAD3()
 {
 	TheInGameUI->setInputEnabled(false);
 	TheMouse->setVisibility(false);
-	GameMessage *gameMessage = MessageStreamSubsystem->m18(0x3ec);
+	GameMessage *gameMessage = TheMessageStream->m18(0x3ec);
 	gameMessage->appendBooleanArgument(true);
 	TheInGameUI->s68();
 	((char *)TheInGameUI)[0x8b0] = 0;

@@ -19,7 +19,7 @@ public:
 	virtual void s16(); virtual void s17();
 	virtual GameMessage* newMessage(int type);
 };
-extern class MessageStream *MessageStreamSubsystem;
+extern class MessageStream *TheMessageStream;
 class LivingWorldLogic
 {
 public:
@@ -27,6 +27,6 @@ public:
 };
 void LivingWorldLogic::rva002B2E77(int x)
 {
-	GameMessage *msg = (*(GlobalHolder **)&MessageStreamSubsystem)->newMessage(0x6B9);
+	GameMessage *msg = (*(GlobalHolder **)&TheMessageStream)->newMessage(0x6B9);
 	msg->appendIntegerArgument(x);
 }

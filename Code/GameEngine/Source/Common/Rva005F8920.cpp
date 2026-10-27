@@ -6,7 +6,7 @@
 // guards on just-landed __cdecl ?Rva005F88F4Get@@YAHH@Z @0x005F88F4 (m_18) and
 // its result's virtual slot 7 (+0x1C, m_20), then builds count = 1|5 from
 // rowed Keyboard::isShift @0x00232683 over fresh global g_00DFE720 and loops
-// MessageStreamSubsystem->appendMessage(0x6AC) plus two rowed
+// TheMessageStream->appendMessage(0x6AC) plus two rowed
 // GameMessage::appendIntegerArgument @0x0030F936 (m_18, m_20). MessageStream
 // slot-18 view and subsystem name reused from ReloadIniFileNotices.cpp;
 // result-check view is TU-local (slot 7 honest, dummies structural).
@@ -33,7 +33,7 @@ public:
 	virtual GameMessage *appendMessage(int type);	// slot 18 (+0x48)
 };
 
-extern MessageStream *MessageStreamSubsystem;	// VA 0x00E00950
+extern MessageStream *TheMessageStream;	// VA 0x00E00950
 
 extern class Keyboard *TheKeyboard;
 
@@ -74,7 +74,7 @@ void StrategicInGameUI::QueueUnitButton::OnLeftClicked()
 		GameMessage *msg;
 		do
 		{
-			msg = MessageStreamSubsystem->appendMessage(0x6AC);
+			msg = TheMessageStream->appendMessage(0x6AC);
 			msg->appendIntegerArgument(m_18);
 			msg->appendIntegerArgument(m_20);
 		} while (--i);

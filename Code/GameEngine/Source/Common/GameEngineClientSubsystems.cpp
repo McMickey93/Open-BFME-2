@@ -131,7 +131,7 @@ class BfmeAptWindowManager;
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 class Radar;
 extern Radar *TheRadar;
-extern MessageStream *MessageStreamSubsystem;	// 0x00A00950, MessageStream.cpp's global
+extern MessageStream *TheMessageStream;	// 0x00A00950, MessageStream.cpp's global
 extern class Keyboard *TheKeyboard;
 extern class InGameUI *TheInGameUI;
 extern class Mouse *TheMouse;
@@ -184,7 +184,7 @@ void GameEngine::_bfme_updateClientSubsystems(void)
     BFMEDesyncCheck desyncCheck;
     ((RadarSubsystem *)TheRadar)->m_update.update();
     ((ClientFrameSubsystem *)TheGameClient)->update();
-    MessageStreamSubsystem->propagateMessages();
+    TheMessageStream->propagateMessages();
 
     unsigned int timedOps = _bfme_updateTimedOps();
     int inputLocked = timedOps & 1;

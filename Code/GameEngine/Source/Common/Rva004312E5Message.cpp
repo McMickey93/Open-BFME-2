@@ -1,5 +1,5 @@
 // cl: /MD
-// ?Rva004312E5Emit@@YAHPAXPAUICoord2D@@@Z @0x004312E5 72B: screen-point to world then MSG 0x444 with location. Evidence: unlock lane; TacticalView slot 0x168 screenToTerrain per InGameUI_handleRadiusCursor; MessageStream slot 0x48 createMessage per Rva005FA91C; rowed appendLocationArgument 0x0030F9BB; globals TheTacticalView MessageStreamSubsystem.
+// ?Rva004312E5Emit@@YAHPAXPAUICoord2D@@@Z @0x004312E5 72B: screen-point to world then MSG 0x444 with location. Evidence: unlock lane; TacticalView slot 0x168 screenToTerrain per InGameUI_handleRadiusCursor; MessageStream slot 0x48 createMessage per Rva005FA91C; rowed appendLocationArgument 0x0030F9BB; globals TheTacticalView TheMessageStream.
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 
 #include "../../../Libraries/Include/Lib/Coord3D.h"
@@ -34,7 +34,7 @@ public:
 	virtual GameMessage *createMessage(int type);
 };
 
-extern class MessageStream *MessageStreamSubsystem;
+extern class MessageStream *TheMessageStream;
 
 class TacticalView
 {
@@ -140,7 +140,7 @@ int __cdecl Rva004312E5Emit(void *a, ICoord2D *b)
 		return 1;
 	Coord3D pos;
 	((TacticalView *)TheTacticalView)->screenToTerrain(b, &pos, false);
-	GameMessage *msg = MessageStreamSubsystem->createMessage(0x444);
+	GameMessage *msg = TheMessageStream->createMessage(0x444);
 	msg->appendLocationArgument(pos);
 	return 1;
 }

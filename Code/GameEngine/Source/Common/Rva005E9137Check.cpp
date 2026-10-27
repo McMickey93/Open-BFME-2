@@ -42,7 +42,7 @@ unsigned char __cdecl Rva005E9137Check(class Rva00318F42 *a)
 	return 0;
 }
 // ?rva005E917A@Rva005E917A@@QAEXXZ @0x005E917A 47B
-// Evidence: calls Rva005E9137Check then MessageStreamSubsystem slot 0x48 appendType 0x6a9 then GameMessage::appendIntegerArgument.
+// Evidence: calls Rva005E9137Check then TheMessageStream slot 0x48 appendType 0x6a9 then GameMessage::appendIntegerArgument.
 // Chain on 0x005E9137.
 class GameMessage
 {
@@ -72,7 +72,7 @@ public:
 	virtual void v17();
 	virtual class GameMessage *appendType(int type);
 };
-extern class MessageStream *MessageStreamSubsystem;
+extern class MessageStream *TheMessageStream;
 class Rva005E917A
 {
 public:
@@ -84,6 +84,6 @@ void Rva005E917A::rva005E917A()
 {
 	if (Rva005E9137Check(m_14) == 0)
 		return;
-	class GameMessage *msg = MessageStreamSubsystem->appendType(0x6a9);
+	class GameMessage *msg = TheMessageStream->appendType(0x6a9);
 	msg->appendIntegerArgument(m_14->m_20);
 }

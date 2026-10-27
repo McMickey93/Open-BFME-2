@@ -1,5 +1,5 @@
 // cl: /MD
-// ?rva005D1F45@Rva005D1F45@@QAEHPAUIRegion2D@@H@Z @0x005D1F45 142B: click-region handler that ignores drags then emits MSG 0x6a8 with two ints plus world location. Evidence: unlock lane; caller 0x005D1FD3 passes region pointer plus int with ret 8; callees rowed appendIntegerArgument 0x0030F936 appendLocationArgument 0x0030F9BB; globals g_009FEF10 MessageStreamSubsystem; IRegion2D layout from GameMessageStructArgs donor.
+// ?rva005D1F45@Rva005D1F45@@QAEHPAUIRegion2D@@H@Z @0x005D1F45 142B: click-region handler that ignores drags then emits MSG 0x6a8 with two ints plus world location. Evidence: unlock lane; caller 0x005D1FD3 passes region pointer plus int with ret 8; callees rowed appendIntegerArgument 0x0030F936 appendLocationArgument 0x0030F9BB; globals g_009FEF10 TheMessageStream; IRegion2D layout from GameMessageStructArgs donor.
 
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
@@ -37,7 +37,7 @@ public:
 };
 class Rva002BA8F1Logic;
 
-extern MessageStream *MessageStreamSubsystem;
+extern MessageStream *TheMessageStream;
 class ViewConv
 {
 public:
@@ -103,7 +103,7 @@ int Rva005D1F45::rva005D1F45(IRegion2D *region, int unused)
 	cell.x = region->lo.x;
 	cell.y = region->lo.y;
 	m_04->conv(&cell, &pos);
-	GameMessage *msg = MessageStreamSubsystem->appendType(0x6A8);
+	GameMessage *msg = TheMessageStream->appendType(0x6A8);
 	msg->appendIntegerArgument(m_0C->m_20);
 	msg->appendIntegerArgument(sub->m_12C);
 	msg->appendLocationArgument(pos);

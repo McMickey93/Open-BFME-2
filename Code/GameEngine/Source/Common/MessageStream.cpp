@@ -29,12 +29,8 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 /// The singleton message stream for messages going to TheGameLogic
 MessageStream *TheMessageStream = NULL;
 
-// BFME2's name for the same singleton: retail reads VA 0x00E00950 for both
-// spellings (e.g. 0x0029ABDB and 0x0042F9DA); GameEngine::initSubsystems
-// assigns through this one (initSubsystem(MessageStreamSubsystem,
-// "TheMessageStream", ...) in GameEngineInit.cpp). TheMessageStream stays as
-// the ZH-ported spelling other TUs still reference; a future pass should
-// unify the 85 readers onto this name.
+// Second spelling of the same datum (a #define alias in the BFME 1 reference);
+// kept only until its last reader moves to TheMessageStream.
 MessageStream *MessageStreamSubsystem = NULL;
 
 CommandList *TheCommandList = NULL;

@@ -160,7 +160,7 @@ public:
 	virtual GameMessage *appendMessage(GameMessage::Type type) = 0;
 };
 
-extern MessageStream *MessageStreamSubsystem;
+extern MessageStream *TheMessageStream;
 
 class View
 {
