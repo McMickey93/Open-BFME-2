@@ -17537,7 +17537,6 @@ uw_00784591,,0x00784591,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obj
 uw_007845fc,,0x007845FC,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_0078464f,,0x0078464F,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;object-symbol=$L320
 uw_00784685,,0x00784685,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7800
-uw_007846d0,,0x007846D0,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1382
 uw_00784752,,0x00784752,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2950
 uw_00784882,,0x00784882,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L5070
 uw_00784c50,,0x00784C50,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
@@ -98522,3 +98521,5 @@ $L562,,0x0078EC05,13,Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsU
 $L359,,0x0078ED14,13,Code/GameEngine/Source/GameLogic/Object/Upgrade/WeaponBonusUpgrade.cpp,matched,gen-funclet;parent=?getModuleNameKey@WeaponBonusUpgrade@@UBE?AW4NameKeyType@@XZ;EXACT parent 0x004B55EE EH graph binds complete13B local-static guard rollback; retired standalone clearer recorded in reverse/deleted_rows.csv
 ??1?$pair@$$CBVAsciiString@@UBfmePod8@@@_STL@@QAE@XZ,,0x0048BA39,5,Code/GameEngine/Source/GameClient/EvaBucketAdd.cpp,matched,fold-proof=Code/GameEngine/Source/GameClient/EvaBucketAdd.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$StringBase@D@@AAE@XZ at 0x0048BA39: this unit compiles it to the same whole body; its unwind funclets call 0x0048BA39
 $L4206,,0x007841B7,8,Code/GameEngine/Source/GameClient/EvaBucketAdd.cpp,matched,gen-funclet;parent=?rva003F7B59@Rva003F7B59@@QAEPAXPBVAsciiString@@H@Z; Matched parent 0x003F7B59's EH graph is EXACT (eh_verify) and binds compiler label $L4206 to retail 0x007841B7; its callee ??1?$pair@$$CBVAsciiString@@UBfmePod8@@@_STL@@QAE@XZ is rowed at its ICF fold 0x0048BA39; replaces generated uw_007841b7
+??1Rva00318B5C@@UAE@XZ,,0x0049B47C,7,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldArmyIcon.cpp,matched,fold-proof=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldArmyIcon.cpp; compiler-emitted destructor that retail ICF-folded with ??1BoxEmissionVolumeInfo@FXParticleSystem@@UAE@XZ at 0x0049B47C: this unit compiles it to the same whole body; its unwind funclets call 0x0049B47C
+$L577,,0x007846D0,8,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldArmyIcon.cpp,matched,gen-funclet;parent=?rva003FE342@LivingWorldArmyIcon@@QAEXXZ; Matched parent 0x003FE342's EH graph is EXACT (eh_verify) and binds compiler label $L577 to retail 0x007846D0; its callee ??1Rva00318B5C@@UAE@XZ is rowed at its ICF fold 0x0049B47C; replaces generated uw_007846d0
