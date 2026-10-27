@@ -148,3 +148,36 @@ file-name command. Inference: 0x002D9BA6 is an identical-code fold whose kept
 copy lies in AudioEventRTS.cpp's object (first in link order); the CDDrive name
 is one donor-shape candidate among the folded getters, and its Z anchor does not
 place the body.
+
+## Unfinished at session end (2026-10-28, base `8d210eac0a`)
+
+**0x002D9BA6 is AudioEventRTS::getAttackFilename (ready to do, not started).**
+Target facts: `AudioEventRTSClassification.cpp`'s matched AudioEventRTS view
+writes `m_attackName` at +0x1C and `m_decayName` at +0x20 (generatePlayInfo), and
+its matched `?rva002DA867@AudioEventRTS` switches on the play portion: PP_Attack
+calls 0x002D9BA6 (+0x1C getter), PP_Sound calls getFilename 0x002DA838, PP_Decay
+calls 0x002D9BC1 (+0x20 getter). Retail order 0x002D9BA6, 0x002D9BC1, ...,
+hasMoreLoops 0x002D9C07, isPositionalAudio 0x002D9C37 follows Zero Hour
+AudioEventRTS.cpp's getAttackFilename, getDecayFilename, ..., hasMoreLoops,
+isPositionalAudio. Donor fact: ZH `AsciiString AudioEventRTS::getAttackFilename()
+const { return m_attackName; }` and `getDecayFilename` likewise. Inference: the
+two bodies are `?getAttackFilename@AudioEventRTS@@QBE?AVAsciiString@@XZ` and
+`?getDecayFilename@AudioEventRTS@@QBE?AVAsciiString@@XZ`, kept copies of
+identical-code folds (NetPacket helpers and the symbols.csv pins
+`getText1C`/`getText20@BFMENetGameSpyStatsAuthKeyCommandMsg` call the same
+addresses).
+Simulated payoff (rename 0x002D9BA6 only): +95 approved rows, AudioEventRTS.cpp
+0 -> 67 and CDManager.cpp 1 -> 29, nothing lost.
+Plan: define both getters in AudioEventRTSClassification.cpp and call them from
+rva002DA867 directly. Admit getAttackFilename at 0x002D9BA6 with
+`add_match.py --icf-owner '?getPath@CDDrive@@UAE?AVAsciiString@@XZ'`. Keep
+`CDDrive::getPath` as the fold alias: about 25 call sites in NetPacket.cpp,
+BFMEConnectionManager_sendGameSpyStatsAuthKey.cpp,
+MilesAudioManagerGetAudioLengthMS.cpp and others call it by name. tu_map takes
+the first ledger row per address, so the AudioEventRTS row must come before the
+CDDrive row (move that line after the new row; no tombstone, because the same
+(name, rva) stays). 0x002D9BC1 is optional: it is placeholder-named
+(`Rva002D9BC1AsciiField::get`), so tu_map ignores it.
+
+The other leads above (0x004D7ADD StateMachine, dx8wrapper, GameClient,
+LANAPI/LANGameInfo) are unchanged and unclaimed.
