@@ -15,11 +15,6 @@
 
 class Parameter;
 class Drawable;
-enum ObjectID
-{
-	OBJECTID_NONE = 0
-};
-
 class Object
 {
 public:
@@ -51,11 +46,7 @@ public:
 };
 extern PlayerList *ThePlayerList;
 
-class GameLogic
-{
-public:
-	void selectObject(Object *obj, bool createNewGroup, unsigned int playerMask, bool affectClient);	// 0x0023C924 (rowed)
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class GameMessage

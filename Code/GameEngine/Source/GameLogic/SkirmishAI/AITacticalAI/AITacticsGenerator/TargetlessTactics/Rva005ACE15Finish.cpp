@@ -73,19 +73,9 @@ public:
 	unsigned char m_minimum;
 };
 
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "../../../../../Common/GameLogicObjectLookupView.h"
 void XferObjectID(Xfer *xfer, ObjectID *id);
 
-class GameLogic
-{
-public:
-	unsigned int getFrame() const { return m_40; }
-	char m_pad000[0x40];
-	unsigned int m_40;		// +0x40
-};
 extern GameLogic *TheGameLogic;
 
 int GetGameLogicRandomValue(int lo, int hi, char *file, int line);

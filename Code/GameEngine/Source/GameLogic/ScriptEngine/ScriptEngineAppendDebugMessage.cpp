@@ -34,17 +34,7 @@ template <typename T> struct BfmeStringData
 
 #include "ascii_string.h"
 
-class GameLogic
-{
-public:
-	bool rva001DCD1C();
-
-private:
-	char m_pad00[0x40];
-
-public:
-	Int m_frame; // +0x40
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 #define TheRva00DFEF10 (*(void **)&(*(Rva002BA8F1Logic **)&TheLivingWorldLogic))
@@ -67,7 +57,7 @@ void ScriptEngine::AppendDebugMessage(const AsciiString &strToAdd, Bool forcePau
 	AsciiString msg;
 	GameLogic *logic = TheGameLogic;
 	if (!logic->rva001DCD1C())
-		msg.format("%d ", logic->m_frame);
+		msg.format("%d ", logic->getFrame());
 	else
 		msg.format("%d ", *(Int *)((char *)TheRva00DFEF10 + 0xFC));
 	((StringBase<char> *)&msg)->concat(*(const StringBase<char> *)&strToAdd);

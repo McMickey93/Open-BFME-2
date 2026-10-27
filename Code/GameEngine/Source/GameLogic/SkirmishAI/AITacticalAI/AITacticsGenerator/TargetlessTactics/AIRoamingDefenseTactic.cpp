@@ -51,11 +51,6 @@ public:
 	unsigned char m_minimum;
 };
 
-enum ObjectID
-{
-	INVALID_ID = 0
-};
-
 enum ObjectStatusTypes
 {
 	OBJECT_STATUS_5A = 0x5A
@@ -187,14 +182,7 @@ public:
 	int m_304;			// +0x304
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-	unsigned int getFrame() const { return m_40; }
-	char m_pad000[0x40];
-	unsigned int m_40;		// +0x40, the frame
-};
+#include "../../../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 extern int BfmeLogicFramesPerSecond;
 

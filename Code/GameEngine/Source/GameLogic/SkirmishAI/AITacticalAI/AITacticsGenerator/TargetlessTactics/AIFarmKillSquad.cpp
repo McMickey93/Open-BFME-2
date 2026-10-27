@@ -96,10 +96,7 @@ public:
 	unsigned char m_minimum;
 };
 
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "../../../../../Common/GameLogicObjectLookupView.h"
 void XferObjectID(Xfer *xfer, ObjectID *id);
 
 struct Rva005ACCE4Template
@@ -145,14 +142,6 @@ public:
 	DLINK_ITERATOR<Object> iterate_TeamMemberList() const;
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-	unsigned int getFrame() const { return m_40; }
-	char m_pad000[0x40];
-	unsigned int m_40;		// +0x40
-};
 extern GameLogic *TheGameLogic;
 
 class Pathfinder
@@ -380,7 +369,7 @@ void AIFarmKillSquad::update()
 	}
 	if (m_58 != 0 && !rva004ED169()) {
 		if (!TheGameLogic->findObjectByID(m_58))
-			m_58 = INVALID_ID;
+			m_58 = INVALID_OBJECT_ID;
 		return;
 	}
 	if (getFarmFinder()) {

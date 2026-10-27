@@ -18,13 +18,7 @@ extern int st_DebugDLL;
 
 extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(HMODULE module, const char *name);
 
-class GameLogic
-{
-public:
-	char m_pad00[0x40];
-	int m_frameNumber;
-	bool rva001DCD1C();
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class LivingWorldLogic
@@ -87,7 +81,7 @@ void Rva002040E7GetFrameNumber()
 	GameLogic *logic = TheGameLogic;
 	int value;
 	if (!logic->rva001DCD1C())
-		value = logic->m_frameNumber;
+		value = logic->getFrame();
 	else
 		value = TheLivingWorldLogic->m_frameNumber;
 	proc(value);
