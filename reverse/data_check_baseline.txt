@@ -287,7 +287,7 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionSoundSelectorClie
 Code/GameEngine/Source/GameLogic/Object/Behavior/OathbreakersFadeAwayBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva004B89DD@OathbreakersFadeAwayBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F60
 Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000484ADD@PassiveAreaEffectBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03804
 Code/GameEngine/Source/GameLogic/Object/Behavior/PhysicsBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00039085C@PhysicsBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A027A8
-Code/GameEngine/Source/GameLogic/Object/Behavior/PoisonedBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000482F27@PoisonedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037B4
+Code/GameEngine/Source/GameLogic/Object/Behavior/PoisonedBehavior.cpp	wrong-name	?$S1@?1??rva000482F27@PoisonedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037B4
 Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00048191A@PropagandaTowerBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03788
 Code/GameEngine/Source/GameLogic/Object/Behavior/RampageBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000458B0A@RampageBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0344C
 Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004CBCAD@RandomSoundSelectorClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A04370
