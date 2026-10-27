@@ -29,8 +29,7 @@
 // conditional written below, the retail /Od body spills that discarded result
 // to its second compiler temporary after the intrinsic copy.
 
-extern "C" void *__cdecl memcpy(void *dest, const void *source,
-	unsigned int count);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 namespace _STL

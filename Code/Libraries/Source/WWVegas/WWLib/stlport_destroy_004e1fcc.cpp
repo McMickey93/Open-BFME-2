@@ -1,5 +1,6 @@
 // cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // stlport
+#include <stdlib.h>
 
 // ?Rva004E1FCCGet@@YAXPAURva004E1AD5Item@@0@Z, RVA 0x004E1FCC, 24B. Chain lane:
 // forwards first/last plus a 1-byte tag local to rowed 0x004E1AD5; EBP frame
@@ -27,7 +28,6 @@ void __cdecl Rva004E1FCCGet(Rva004E1AD5Item *first, Rva004E1AD5Item *last)
 // first via rowed free 0x00030830 when non-null; push-esi this plus
 // pop-cleaned pushes. Caller at 0x004E3973. Owner unknown so honest
 // address-derived names.
-extern "C" void __cdecl free(void *p);
 struct Rva004E2227
 {
 	Rva004E1AD5Item *m_first;

@@ -2,8 +2,8 @@
 // ?rva00291440@Rva00291440@@QAEXPAVSink00291440@@@Z
 // 0x00291440 111B leaf dword-bitset to byte-bitset plus virtual sink.
 // Evidence: memset 0x80 via ji_006291AE; loop 0x400 test [this+idx>>5] bit 1<<(i&31); set buf[i/8] bit 1<<(i%8) via idiv; virtual [eax+0x24] with buf 0x80; callers 0x002977F8 0x004846BC; prev stlport_pod_list next stlport_copy.
+#include <string.h>
 #pragma function(memset)
-extern "C" void *memset(void *dst, int value, unsigned int size);
 
 class Sink00291440
 {

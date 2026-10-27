@@ -9,6 +9,8 @@
 #include <cstddef>
 #define _STLP_USE_NEWALLOC 1
 #include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 #include <list>
 
 namespace _STL {
@@ -30,8 +32,6 @@ namespace _STL { template <> void XferKeyOffsetTable::resize(unsigned int); }
 // Save-side stream transfer and block finalization. The slot-11 recovery
 // resumes reverse/attempt_support/0x0060ce41-w4-20261020.md; helper identity
 // corrections are documented in xfer-save-60ce41-identity-20261020.md.
-
-extern "C" unsigned int __cdecl strlen(const char *);
 
 class XferException
 {
@@ -327,8 +327,6 @@ template <> void **vector<void*>::begin();
 namespace _STL {
 template <> size_t vector<void*>::size() const;
 }
-
-extern "C" void __cdecl free(void *block) throw(...);
 
 enum NameKeyType
 {

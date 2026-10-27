@@ -9,8 +9,7 @@
 // no sign to place, so its overload stayed small enough that retail inlined
 // the divide loop straight into the body.
 
-extern "C" __declspec(dllimport) void *__cdecl memmove(void *destination,
-		const void *source, unsigned int count);
+#include <string.h>
 
 namespace _STL
 {

@@ -11,8 +11,7 @@
 // at 0x00009170 reaches it as _M_range_initialize(__s._M_start, __s._M_finish),
 // and a const object's `_CharT * const` member deduces to `_CharT *`.
 
-extern "C" __declspec(dllimport) void *__cdecl memmove(void *destination,
-		const void *source, unsigned int count);
+#include <string.h>
 
 namespace _STL
 {

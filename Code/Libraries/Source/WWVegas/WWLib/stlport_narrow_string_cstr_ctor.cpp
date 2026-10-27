@@ -6,6 +6,8 @@
 // the three pointers, char_traits::length is the inline scan retail carries
 // rather than a call, and the range initialiser at 0x00008D00 does the rest.
 
+#include <string.h>
+
 namespace _STL
 {
 
@@ -13,7 +15,6 @@ typedef unsigned int size_t;
 
 }
 
-extern "C" size_t __cdecl strlen(const char *s);
 #pragma intrinsic(strlen)
 
 namespace _STL

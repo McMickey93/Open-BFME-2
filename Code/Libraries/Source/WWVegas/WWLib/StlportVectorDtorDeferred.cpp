@@ -1,13 +1,14 @@
 // cl: /GX /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // Byte-matched vector destructors with independently rowed range-worker owners.
 // The two remaining competing-copy dependencies live in DeferredOwners.cpp.
 #include <vector>
+#include <windows.h>
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 // ??1?$vector@UOpaqueRefElement4@@V?$allocator@UOpaqueRefElement4@@@_STL@@@_STL@@QAE@XZ @0x57994 (_Destroy at 0x54f94)
 // Element view matches StlportOwnedDeque.cpp (kept ??_G at 0x51B1E): 4-byte owning ref.
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
 class OpaqueRefCounted {
 public:
     virtual ~OpaqueRefCounted();

@@ -7,7 +7,6 @@
 
 // Retail keeps the frame pointer here (cf. internal.h in the sibling TU).
 
-extern "C" __declspec(dllimport) void *__cdecl memmove(void *, const void *, unsigned);
 extern void *DebugReAllocMemory(void *, unsigned);
 extern void DebugFreeMemory(void *);
 

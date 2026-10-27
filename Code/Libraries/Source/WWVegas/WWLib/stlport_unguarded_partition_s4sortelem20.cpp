@@ -18,7 +18,7 @@
 // (body 0x002E9E10). The swap is the two-argument helper at ILT 0x0003A76F
 // (body 0x002EA1A0) because the element is not trivially copyable.
 
-extern "C" int memcmp(const void *left, const void *right, unsigned int count);
+#include <string.h>
 #pragma intrinsic(memcmp)
 
 template <class T>

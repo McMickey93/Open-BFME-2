@@ -4,6 +4,7 @@
 // empty fallback then tail-calling rowed compareRangeNoCase; unblocks 41B.
 // Identity via compareRangeNoCase 0x00005841 plus empty string
 // the empty-string literal plus caller 0x0050F210; /O1 frameless.
+#include <string.h>
 
 struct CharCompare
 {
@@ -11,8 +12,6 @@ struct CharCompare
 };
 
 int __cdecl compareRangeNoCase(const char *a, int alen, const char *b, int blen, CharCompare tag);
-extern "C" unsigned int strlen(const char *s);
-
 
 class Rva0050EE23
 {

@@ -5,8 +5,7 @@
 // whole: equal lengths, then a traits compare of the two data pointers, and the
 // trailing sete/mov pair is the negation operator!= wraps around it.
 
-extern "C" int __cdecl memcmp(const void *left, const void *right,
-		unsigned int count);
+#include <string.h>
 
 #pragma intrinsic(memcmp)
 

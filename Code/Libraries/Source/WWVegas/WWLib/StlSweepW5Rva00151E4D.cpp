@@ -3,6 +3,7 @@
 // cl: /O1 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
 // stlport
 #include <vector>
+#include <string.h>
 
 struct Rva00151E4DElement {Rva00151E4DElement();Rva00151E4DElement(const Rva00151E4DElement&);Rva00151E4DElement&operator=(const Rva00151E4DElement&);~Rva00151E4DElement(){}char bytes[36]; bool operator==(const Rva00151E4DElement&)const;};
 
@@ -11,7 +12,6 @@ template Rva00151E4DElement * _STL::__copy<Rva00151E4DElement *, Rva00151E4DElem
 
 // ICF twin of ??4BfmeAssignRecord36@@QAEAAU0@ABU0@@Z (0x00151336, BfmeAssignRecord36Assign.cpp):
 // the same 36-byte record assignment, so the copy loop above binds a definition.
-extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int n);
 
 template <typename T>
 class StringBase

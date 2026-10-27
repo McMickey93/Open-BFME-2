@@ -11,8 +11,8 @@
 // and extra_after collapse to the +24 / +16 constants the inlined
 // __extra_*_chunk helpers produce for value_type=char.
 
+#include <string.h>
 #pragma intrinsic(memset)
-extern "C" void* __cdecl memset(void *, int, unsigned int);
 void* __cdecl bfmeBigAllocPR(unsigned int);
 
 struct __alloc_header {

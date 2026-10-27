@@ -3,7 +3,7 @@
 // The StringLookUp sort family in stlport_sort_stringlookup.cpp calls this
 // thiscall comparator at 0x002E5678. Its fields and ordering expression are
 // independently evidenced by GameTextStringLookUpLess.cpp's rowed comparator.
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *left, const char *right);
+#include <string.h>
 #include "ascii_string.h"
 
 struct StringLookUp

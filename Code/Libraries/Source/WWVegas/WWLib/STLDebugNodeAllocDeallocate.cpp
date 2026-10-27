@@ -1,7 +1,7 @@
 // cl: /DNDEBUG /MD /EHsc /Od /Oi
 
+#include <string.h>
 #pragma intrinsic(memset)
-extern "C" void *__cdecl memset(void *destination, int value, unsigned int bytes);
 
 void bfmeBigFreePM(void *block);
 void bfmeSmallFreePM(void *block, unsigned int bytes);
