@@ -519,6 +519,13 @@ int __cdecl _wunlink(const wchar_t * filename) {
  return _imp___wunlink(filename);
 }
 
+// _vsprintf
+typedef int (__cdecl *PFN_vsprintf)(char *, const char *, va_list);
+extern PFN_vsprintf _imp__vsprintf;
+int __cdecl vsprintf(char * buffer, const char * format, va_list argptr) {
+ return _imp__vsprintf(buffer, format, argptr);
+}
+
 // _wcschr
 typedef wchar_t * (__cdecl *PFN_wcschr)(const wchar_t *, wchar_t);
 extern PFN_wcschr _imp__wcschr;

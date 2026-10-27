@@ -20090,7 +20090,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_006299a0@@YAXXZ,,0x006299A0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA530;dll=msvcr71.dll;import=_CIpow;target=_CIpow
 ?ji_00629a2a@@YAXXZ,,0x00629A2A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA518;dll=msvcr71.dll;import=_strcmpi;target=_strcmpi
 ?ji_00629a36@@YAXXZ,,0x00629A36,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA510;dll=msvcr71.dll;import=_CIfmod;target=_CIfmod
-?ji_00629a7e@@YAXXZ,,0x00629A7E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA4E0;dll=msvcr71.dll;import=vsprintf;target=vsprintf
 ?ji_00629ae4@@YAXXZ,,0x00629AE4,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA4A0;dll=msvcr71.dll;import=atan;target=atan
 ?ji_00629b0e@@YAXXZ,,0x00629B0E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA484;dll=msvcr71.dll;import=log;target=log
 ?ji_00629b14@@YAXXZ,,0x00629B14,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA480;dll=msvcr71.dll;import=printf;target=printf
@@ -98832,3 +98831,4 @@ $L542,,0x007997EF,11,Code/GameEngine/Source/GameClient/System/FXParticleSystem/R
 _strlen,,0x00629170,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strlen import pointer; retail IAT slot 0x00BBA6D4 names msvcr71.dll!strlen (gen-import row); complete 6B tail
 _strcmp,,0x006291C6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strcmp import pointer; retail IAT slot 0x00BBA6B0 names msvcr71.dll!strcmp (gen-import row); complete 6B tail
 _memcmp,,0x0062929E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__memcmp import pointer; retail IAT slot 0x00BBA694 names msvcr71.dll!memcmp (gen-import row); complete 6B tail
+_vsprintf,,0x00629A7E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__vsprintf import pointer; retail IAT slot 0x00BBA4E0 names msvcr71.dll!vsprintf (gen-import row); complete 6B tail
