@@ -37,12 +37,7 @@ public:
 	bool m_157; // +0x157
 };
 
-class GameLogic
-{
-public:
-	char m_pad00[0x40];
-	unsigned int m_frame; // +0x40
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 
@@ -104,7 +99,8 @@ float Weapon::rva002C957E() const
 // Evidence: callers 0x00343EAD 0x00343EC0 in 0x00343DD8; unblocks 0x00343DD8; prev/next Weapon owners; pooled TheGameLogic.
 bool Weapon::rva002C95F0() const
 {
-	return m_50 > TheGameLogic->m_frame;
+	unsigned int leechFrame = m_50;
+	return leechFrame > TheGameLogic->getFrame();
 }
 
 // ?rva002C95DE@Weapon@@QAEXH@Z @0x002C95DE 18B
@@ -112,7 +108,7 @@ bool Weapon::rva002C95F0() const
 // Evidence: same Weapon +0x50 and TheGameLogic +0x40 as rva002C95F0 sibling; prev/next same TU and flags.
 void Weapon::rva002C95DE(int offset)
 {
-	m_50 = TheGameLogic->m_frame + offset;
+	m_50 = TheGameLogic->getFrame() + offset;
 }
 
 // ?rva002C959E@Weapon@@QAEXXZ, retail 0x002C959E, 46 bytes.
@@ -166,7 +162,7 @@ bool Weapon::rva002C969D(const void *a, int b)
 // Evidence: neighbours WeaponIsTooClose TU same flags; layout +0x1C/+0x24 from WeaponDtor TU; callers 0x0028DBFC 0x003538BF 0x0045B2F4; TheGameLogic rowed use.
 bool Weapon::rva002C9586()
 {
-	unsigned int frame = TheGameLogic->m_frame;
+	unsigned int frame = TheGameLogic->getFrame();
 	if (frame < m_whenPreAttackFinished || frame >= m_lastFireFrame)
 		return false;
 	return true;

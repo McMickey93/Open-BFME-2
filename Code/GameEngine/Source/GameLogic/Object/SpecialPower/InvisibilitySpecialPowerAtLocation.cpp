@@ -83,19 +83,8 @@ public:
 	Player *getControllingPlayer() const;	// 0x0028AFA9
 };
 
-struct BfmeWideResult
-{
-	Object *next() throw();	// 0x00045623
-	~BfmeWideResult();	// 0x0004AA28
-	void *m_value;
-};
+#include "../../../Common/PartitionRangeQueryCallView.h"
 
-class PartitionManager
-{
-public:
-	BfmeWideResult iterateObjectsInRange(const Coord3D *pos, float radius, int distCalc,
-		Rva000421C8 *filters, int order);	// 0x00625610
-};
 extern PartitionManager *ThePartitionManager;
 
 struct InvisibilitySpecialPowerModuleData
@@ -114,13 +103,7 @@ public:
 	void rva00439CF7(Object *obj, int value, const void *what);	// 0x00439CF7
 };
 
-class GameLogic
-{
-public:
-	Rva00439CF7 *rva00439CF7Owner() { return m_178; }
-	char m_pad000[0x178];
-	Rva00439CF7 *m_178;		// +0x178
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class ModuleBase
@@ -181,7 +164,7 @@ void InvisibilitySpecialPower::doSpecialPowerAtObject(Object *obj, unsigned int 
 {
 	SpecialPowerModule::doSpecialPowerAtObject(obj, options);
 	const InvisibilitySpecialPowerModuleData *data = getData();
-	TheGameLogic->rva00439CF7Owner()->rva00439CF7(m_object, data->m_duration, data->m_7C);
+	((Rva00439CF7 *)TheGameLogic->getManager178())->rva00439CF7(m_object, data->m_duration, data->m_7C);
 }
 
 void InvisibilitySpecialPower::doSpecialPowerAtLocation(const Coord3D *loc, unsigned int options)
@@ -199,5 +182,5 @@ void InvisibilitySpecialPower::doSpecialPowerAtLocation(const Coord3D *loc, unsi
 	BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(loc, data->m_radius, 0, &first, 1);
 	Object *target;
 	while ((target = hits.next()) != 0)
-		TheGameLogic->rva00439CF7Owner()->rva00439CF7(target, data->m_duration, data->m_7C);
+		((Rva00439CF7 *)TheGameLogic->getManager178())->rva00439CF7(target, data->m_duration, data->m_7C);
 }

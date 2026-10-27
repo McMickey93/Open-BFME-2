@@ -71,12 +71,7 @@ public:
 	virtual void v1B8(const Coord3D *pos) = 0;
 };
 
-class GameLogic
-{
-public:
-	unsigned char m_pad00[0x40];
-	void *m_40;
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -99,8 +94,8 @@ private:
 void Object::teleportTo(const Coord3D *pos, bool flag)
 {
 	((Thing *)this)->setPosition(pos);
-	rva0023D3AF(TheGameLogic->m_40);
-	rva0023D3AF(TheGameLogic->m_40);
+	rva0023D3AF((void *)TheGameLogic->getFrame());
+	rva0023D3AF((void *)TheGameLogic->getFrame());
 	Rva002747F9 *helper = m_84;
 	if (helper != 0)
 		helper->rva002747F9(1);

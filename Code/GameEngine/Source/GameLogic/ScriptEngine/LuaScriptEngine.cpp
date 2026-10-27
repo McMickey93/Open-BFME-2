@@ -73,13 +73,9 @@ public:
 	int m_currentTargetID;	// +0x398, passed to findObjectByID
 };
 
-enum ObjectID { INVALID_OBJECT_ID = 0 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
+
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 class Drawable

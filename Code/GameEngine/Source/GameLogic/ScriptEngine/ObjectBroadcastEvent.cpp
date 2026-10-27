@@ -75,27 +75,12 @@ public:
 };
 
 // Zero Hour's GameCommon.h spells the id an enum; retail's 0x00049DC5 row takes it.
-enum ObjectID { INVALID_ID = 0, FORCE_OBJECTID_TO_LONG_SIZE = 0x7ffffff };
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);	// 0x00049DC5
-};
+
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
-struct BfmeWideResult
-{
-	Object *next() throw();	// 0x00045623
-	~BfmeWideResult();	// 0x0004AA28
-	void *m_value;
-};
+#include "../../Common/PartitionRangeQueryCallView.h"
 
-class PartitionManager
-{
-public:
-	BfmeWideResult iterateObjectsInRange(const Coord3D *pos, float radius, int distCalc,
-		Rva000421C8 *filters, int order);	// 0x00625610
-};
 extern PartitionManager *ThePartitionManager;
 
 class TerrainLogic

@@ -11,14 +11,8 @@
 // and +0x438 bit 0 plus rva0028AE6D and setEffectivelyDead pins from retail.
 
 typedef unsigned int UnsignedInt;
-typedef int ObjectID;
 
-class GameLogic
-{
-public:
-	char m_pad00[0x40];
-	UnsignedInt m_frame; // +0x40
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic; // ?TheGameLogic@@3PAVGameLogic@@A
 
 class ObjectTemplate
@@ -62,7 +56,7 @@ private:
 	void *m_vptr; // +0x00
 	ObjectTemplate *m_template; // +0x04
 	char m_pad08[0x74 - 0x08];
-	int m_id; // +0x74
+	ObjectID m_id; // +0x74
   char m_pad78[0x10C - 0x78];
   union {
     volatile UnsignedInt m_flags10C; // +0x10C
@@ -81,7 +75,7 @@ bool Object::attemptHealingFromSoleBenefactor(float amount, const Object *source
 {
 	if (!source)
 		return false;
-  UnsignedInt curFrame = TheGameLogic->m_frame;
+  UnsignedInt curFrame = TheGameLogic->getFrame();
   ObjectID earlyID = source->m_id;
   if (curFrame <= m_expiration) {
     if (m_benefactor == earlyID)

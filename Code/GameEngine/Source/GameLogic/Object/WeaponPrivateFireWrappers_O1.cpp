@@ -4,8 +4,8 @@
 // and ID +0x74. Address-based method names and control arguments remain neutral.
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 class Object { public: char m_pad[0x38]; Coord3D m_position; char m_pad44[0x30]; int m_id; };
-enum ObjectID { INVALID_ID = 0, FORCE_OBJECTID_TO_LONG_SIZE = 0x7ffffff };
-class GameLogic { public: Object *findObjectByID(ObjectID id); };
+
+#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 extern GameLogic *TheGameLogic;
 class Weapon {

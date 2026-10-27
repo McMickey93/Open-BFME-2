@@ -4,18 +4,11 @@
 // 55 bytes. Dedicated TU so SpawnPointProductionExitUpdate.cpp cannot inline
 // this into reserveDoorForExit. Count at +0x28, occupier ids at +0xCC.
 
-enum ObjectID
-{
-	INVALID_OBJECT_ID = 0
-};
+
 
 class Object;
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
+#include "../../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 

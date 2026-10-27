@@ -13,7 +13,6 @@
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
-typedef int ObjectID;
 
 enum ObjectStatusTypes
 {
@@ -31,12 +30,7 @@ public:
 
 class Object;
 
-class GameLogic
-{
-public:
-	char m_pad00[0x40];
-	int m_unk40;
-};
+#include "../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -113,5 +107,5 @@ void Object::onContainedBy(Object *containedBy)
 		}
 	}
 	m_containedBy = containedBy;
-	m_unk27C = TheGameLogic->m_unk40;
+	m_unk27C = TheGameLogic->getFrame();
 }

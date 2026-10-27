@@ -12,13 +12,7 @@ class GameLogic;
 
 extern GameLogic *TheGameLogic;
 
-// class-gate: allow GameLogic proved codegen view of the +0x40 frame word only; the shared header keeps it private
-class GameLogic
-{
-public:
-	char m_pad00[0x40];
-	int m_40;
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 class Overridable
 {
@@ -91,7 +85,7 @@ float Rva005892F6::rva005892F6()
 		}
 	}
 	GameLogic *gl = TheGameLogic;
-	const float numer = (float)(unsigned int)(frame - gl->m_40);
+	const float numer = (float)(unsigned int)(frame - gl->getFrame());
 	const float denom = (float)(unsigned int)target->m_8->friend_getFinalOverride()->m_20;
 	return 1.0f - numer / denom;
 }

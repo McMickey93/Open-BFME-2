@@ -44,10 +44,7 @@ enum KindOfType
 	KINDOF_0xD6 = 0xD6
 };
 
-enum ObjectID
-{
-	INVALID_ID = -1
-};
+
 
 enum Relationship
 {
@@ -133,32 +130,11 @@ public:
 };
 
 
-struct BfmeWideResult
-{
-	Object *next() throw();	// 0x00045623
-	~BfmeWideResult();	// 0x0004AA28
-	void rva00626630(Object *obj, Real distance);	// 0x00626630
-	void *m_value;
-};
+#include "../../../Common/PartitionRangeQueryCallView.h"
 
-class PartitionManager
-{
-public:
-	BfmeWideResult iterateObjectsInRange(const Coord3D *pos, Real radius, int distCalc,
-		Rva000421C8 *filters, int order);	// 0x00625610
-};
 extern PartitionManager *ThePartitionManager;
 
-class GameLogic
-{
-public:
-	UnsignedInt getFrame() const { return m_frame; }
-	Object *findObjectByID(ObjectID id);
-
-private:
-	char m_unknown00[0x40];
-	UnsignedInt m_frame; // +0x40
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 enum NameKeyType

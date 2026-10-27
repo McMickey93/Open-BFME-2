@@ -59,10 +59,7 @@ enum ModelConditionFlagType
 	MCF_0 = 0
 };
 
-enum ObjectID
-{
-	OID_NONE = -1
-};
+
 
 class Object
 {
@@ -74,11 +71,7 @@ public:
 	void setSpecialModelConditionState(ModelConditionFlagType flag, unsigned value);
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
