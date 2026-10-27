@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "base": "73061d94523711e02a05dde31ddba60f876994b7",
+  "commit": "5ddc2e8930f0c01b9a892e359a888806d38e7396",
+  "tree": "b287971758960f70d55f9983f177e371ccdfa05a",
+  "branch": "refs/heads/codex/20261027-apt-stdlib-header",
+  "sha256": "6cda8b35c3568106dbbfeb1f1c77fbe11acf50cff58319465936ae6caac1062a",
+  "files": [
+    "Code/GameEngine/Source/Common/Rva00518769Dtor.cpp",
+    "docs/recipes.md",
+    "reverse/attempt_support/20261026-apt-options-crt-free.md"
+  ],
+  "normal_precommit_passed": true,
+  "normal_official_prepush_passed": true,
+  "fork": "McMickey93/Open-BFME-2",
+  "control_branch": "codex/20261027-bfme2-source-transfer",
+  "result_branch": "codex/20261027-bfme2-source-verified",
+  "agents_blob": "43a21b639c94eba6538b14a8b7eb117adecd10c3",
+  "claim_ref": "refs/heads/claims/file/7dec02d806ee6f77",
+  "claim_owner": "github:McMickey93:bfme2:apt-header-final-20261027",
+  "claim_lease": "c8e3810caadf4a9bbde5b80107881959"
+}
