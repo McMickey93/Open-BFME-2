@@ -10680,8 +10680,6 @@ pragma_optimize	Code/GameEngine/Source/Common/Bfme/Rva0080EE80Query.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Bfme5SmallTests.cpp	"",on	9
 pragma_optimize	Code/GameEngine/Source/Common/Bfme5SmallTests.cpp	"s",on	8
 pragma_optimize	Code/GameEngine/Source/Common/Bfme5SmallTests.cpp	"t",on	1
-pragma_optimize	Code/GameEngine/Source/Common/Bfme5TinyThree.cpp	"y",off	1
-pragma_optimize	Code/GameEngine/Source/Common/Bfme5TinyThree.cpp	"y",on	1
 pragma_optimize	Code/GameEngine/Source/Common/BfmeConv1137Uninstall.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/BfmeConv1137Uninstall.cpp	"s",on	1
 pragma_optimize	Code/GameEngine/Source/Common/BfmeConv1137Uninstall.cpp	"t",off	1

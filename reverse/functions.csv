@@ -9014,7 +9014,6 @@ _VP6_DecodeMode,,0x001C59F0,270,Code/Libraries/Source/VP6/DecodeMode.cpp,matched
 _vp6_writeframe,,0x001BB3B0,104,Code/Libraries/Source/VP6/WriteFrame.cpp,matched,Clean-room spec 001bb3b0; vp6_writeframe: cdecl dumping the recon planes to a y%04d.raw file; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001bb3b0.md and retail only
 ?bfmeMask@@YAHPAVBfmeThingBW@@@Z,,0x006A45B0,25,Code/GameEngine/Source/Common/Bfme5TinyThree.cpp,matched,BFME1 byte-identical donor; b1 0x008636E0
 ?bfmeScale@@YANI@Z,,0x006B8C60,25,Code/GameEngine/Source/Common/Bfme5TinyThree.cpp,matched,BFME1 byte-identical donor; b1 0x008793D0
-?bfmeSetSign@Gen_0088A5D0@@QAEXE@Z,,0x00039880,25,Code/GameEngine/Source/Common/Bfme5TinyThree.cpp,matched,BFME1 donor with BFME2 sign offset 0x9F55 per retail bytes; b1 0x0088A5D0
 ?bfmeResetVMP@BfmeCtxVMP@@QAEXXZ,,0x00666080,75,Code/GameEngine/Source/Common/BfmeConv1455.cpp,matched,BFME1 byte-identical donor; b1 0x007F9B30
 ?bfmeDelTVC@BfmeThingTVC@@QAEPAXE@Z,,0x00665BD0,55,Code/GameEngine/Source/Common/BfmeConv1324.cpp,matched,BFME1 byte-identical donor; b1 0x007F9660
 ??0BfmeThingTUA@@QAE@XZ,,0x0066CCC0,50,Code/GameEngine/Source/Common/BfmeConv1324.cpp,matched,BFME1 byte-identical donor; b1 0x008008E0
@@ -98942,3 +98941,4 @@ $L3075,,0x00767063,11,Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassConstruc
 ?rva00318A95@Rva00318A95@@QAEXXZ,,0x00318A95,16,Code/GameEngine/Source/Common/System/Rva00318ABBFieldParse.cpp,matched,vtable slots at VA 0x00BC82BC and 0x00BC82F8; copy the global string at 0x00E01CF0 over the one at 0x00E01CF4 (rowed StringBase<char>::set); no Ghidra entry; body moved here from VslotSmallBodiesK.cpp in 3d2fd4f153
 ?rva007B83E1@@YAXXZ,,0x007B83E1,10,Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp,matched,compiler-shaped atexit cleanup thunk: ecx=&global VA 0x00E03318 then tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C); registered by Rva0043C9B3Get in this unit; body moved here from Rva007B6A00AtexitThunks.cpp in 9b744c61f4
 ?rva007B8F26@@YAXXZ,,0x007B8F26,10,Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp,matched,compiler-shaped atexit cleanup thunk: ecx=&global VA 0x00E0445C then tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C); registered by Rva004E4179Get in this unit; body moved here from Rva007B6A00AtexitThunks.cpp in 9b744c61f4
+?bfmeSetSign@Gen_0088A5D0@@QAEXE@Z,,0x00039880,25,Code/Libraries/Source/debug/debug_cmd.cpp,matched,

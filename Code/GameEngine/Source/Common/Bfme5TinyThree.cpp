@@ -1,9 +1,6 @@
-// Three more tiny ones: a masked flag read through two guards, an unsigned
-// count turned into a scaled double, and a sign written as plus or minus one.
-//
-// The last one keeps a frame pointer, which is what the pragma around it is
-// for: retail builds that body without omitting the frame, and everything
-// else about it matches.
+// Two more tiny ones: a masked flag read through two guards and an unsigned
+// count turned into a scaled double. (The third, bfmeSetSign 0x00039880, now
+// lives in its approved unit Code/Libraries/Source/debug/debug_cmd.cpp.)
 
 class BfmeThingBW
 {
@@ -32,23 +29,3 @@ double __cdecl bfmeScale(unsigned int value)
 {
 	return value * 0.001;
 }
-
-class Gen_0088A5D0
-{
-public:
-	void bfmeSetSign(unsigned char value);
-
-private:
-	char m_bfmeHead[0x9F55];				// +0x0000
-	char m_bfmeSign;					// +0x9F49
-};
-
-#pragma optimize("y", off)
-
-// ?bfmeSetSign@Gen_0088A5D0@@QAEXE@Z
-void Gen_0088A5D0::bfmeSetSign(unsigned char value)
-{
-	m_bfmeSign = value ? 1 : -1;
-}
-
-#pragma optimize("y", on)

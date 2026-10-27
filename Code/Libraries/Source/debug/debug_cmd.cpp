@@ -131,7 +131,26 @@ bool BfmeHostAAS::bfmeProbeAAS()
 	return m_bfme9F55AAS > 0;
 }
 
-// tu-skeleton: 0x00039880 25B ?bfmeSetSign@Gen_0088A5D0@@QAEXE@Z -- matched in Code/GameEngine/Source/Common/Bfme5TinyThree.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Bfme5TinyThree.cpp
+
+// A sign written as plus or minus one into the byte bfmeProbeAAS reads at
+// +0x9F55. This unit builds /Oy-, so the kept frame needs no pragma here.
+
+class Gen_0088A5D0
+{
+public:
+	void bfmeSetSign(unsigned char value);
+
+private:
+	char m_bfmeHead[0x9F55];				// +0x0000
+	char m_bfmeSign;					// +0x9F55
+};
+
+// ?bfmeSetSign@Gen_0088A5D0@@QAEXE@Z
+void Gen_0088A5D0::bfmeSetSign(unsigned char value)
+{
+	m_bfmeSign = value ? 1 : -1;
+}
 
 // ---- from Code/Libraries/Source/WWVegas/WWDebug/DebugHeapAbort.cpp
 
