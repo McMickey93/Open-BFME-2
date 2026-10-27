@@ -7,7 +7,7 @@
 // (ctor 0x365F0, teardown 0x36410, both via public-spelling pins); trim
 // resolves to 0x37CF0.
 
-extern "C" __declspec(dllimport) int __cdecl _memicmp(const void *, const void *, unsigned int);
+#include <string.h>
 
 #include "../../Include/GameClient/BfmeVideoRecord.h"
 #include "../../Include/GameClient/BfmeVideoTable.h"
