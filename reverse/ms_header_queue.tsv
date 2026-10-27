@@ -57,7 +57,6 @@ Code/GameEngine/Source/GameLogic/Object/Contain/SiegeEngineContainCreatePayload.
 Code/GameEngine/Source/GameLogic/Object/Pathfinder_ChooseBestLocomotorForPosition.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	floor:same
 Code/GameEngine/Source/GameLogic/Object/Update/AttributeModifierAuraUpdateUpdate.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdateUpdate.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	TRUE:same
-Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdate_update.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sqrt:same
 Code/GameEngine/Source/GameLogic/Object/Update/UpdateModuleSetWakeFrame.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
 Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateScan.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/GameLogic/Object/Update/WoundArrowUpdateUpdate.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sqrt:same
