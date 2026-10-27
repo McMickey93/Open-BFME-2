@@ -18468,8 +18468,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009F2A04,60,.data,global,?bfmeDynamicVBs@@3PAPAVBfmeDynamicVB@@A,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,provisional,?bfmeDynamicVBs@@3PAPAVBfmeDynamicNativeVB@@A;?bfmeDynamicVBs@@3PAPAVBfmeDynamicVB@@A,1,11
 0x009F2A40,4,.data,global,?G009F2A40@@3HA,Code/GameEngine/Source/Common/ConstGlobalGetters2.cpp,provisional,?G009F2A40@@3HA;__VertexBufferCount@Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp,2,5
 0x009F2A44,32,.data,global,?BfmeDynamicDX8VertexBufferOffset@@3PAGA,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,provisional,?BfmeDynamicDX8VertexBufferOffset@@3PAGA;?bfmeDynamicVBOffsets@@3PAGA,1,15
-0x009F2A64,10,.data,global,?bfmeDynamicVBSizes@@3PAGA,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,owned,,1,8
-0x009F2A6E,22,.data,global,?g_Va00DFA2E6@@3GA,Code/GameEngine/Source/Common/GlobalWordGetters.cpp,owned,,1,1
+0x009F2A64,32,.data,global,?bfmeDynamicVBSizes@@3PAGA,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,owned,,1,9
 0x009F2A84,4,.data,global,?G009F2A84@@3HA,Code/GameEngine/Source/Common/ConstGlobalGetters2.cpp,provisional,?G009F2A84@@3HA;__VertexBufferTotalVertices@Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp,2,5
 0x009F2A88,4,.data,global,?BfmeDynamicSortingVertexArrayInUse@@3_NA,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,provisional,?BfmeDynamicSortingVertexArrayInUse@@3_NA;_bfmeSortingVBInUse@Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp,2,3
 0x009F2A8C,4,.data,global,?bfmeSortingVB@@3PAVBfmeDynamicVB@@A,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,provisional,?bfmeSortingVB@@3PAVBfmeDynamicVB@@A;_bfmeSortingVB@Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp,2,6

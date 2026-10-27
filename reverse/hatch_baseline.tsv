@@ -185,7 +185,6 @@ address_global	Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	g_Va00E063A
 address_global	Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	g_Va00E09FA4	3
 address_global	Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	g_Va00E17724	2
 address_global	Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	g_Va0130A588	1
-address_global	Code/GameEngine/Source/Common/GlobalWordGetters.cpp	g_Va00DFA2E6	3
 address_global	Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	g_Va00E0319C	2
 address_global	Code/GameEngine/Source/Common/INI/FormationTemplate.cpp	g_Va00E03168	2
 address_global	Code/GameEngine/Source/Common/INI/FormationTemplate.cpp	g_Va00E03174	2

@@ -2689,7 +2689,6 @@ _Rva0088E1A0ShowAssertCrashDialog,0x0003D880,address,placeholder
 ?Rva00139460Get@@YAHXZ,0x00139460,address,placeholder
 ?Rva00139470Get@@YAHXZ,0x00139470,address,placeholder
 ?bfmeRva0013A7D0@DynamicVBAccessClass@@SAXXZ,0x0013A7D0,address,placeholder
-?Rva0013ABB0Get@@YAGXZ,0x0013ABB0,address,placeholder
 ?opaqueCall@Rva0013BE70Host@@QAEXPBD@Z,0x0013BE70,address,placeholder
 ?Rva0013C650Get@@YAHXZ,0x0013C650,address,placeholder
 ?Rva0013C6C0Get@@YAHXZ,0x0013C6C0,address,placeholder
