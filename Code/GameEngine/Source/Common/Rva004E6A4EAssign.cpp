@@ -12,7 +12,7 @@ public:
 	~Rva004E6A37();
 	Rva004E6A37 &operator=(Rva004E6A37 other);
 };
-void __cdecl operator delete(void *p);
+#include <new>
 Rva004E6A37 &Rva004E6A37::operator=(Rva004E6A37 other)
 {
 	Rva004E6935 *old = m_ptr;

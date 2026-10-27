@@ -33,7 +33,7 @@ void **vector<void*>::end()
 namespace _STL {
 template <> vector<void *, allocator<void *> >::iterator vector<void *, allocator<void *> >::erase(iterator first, iterator last);
 }
-void __cdecl operator delete(void *p);
+#include <new>
 struct Rva002E36D5Node;
 void Rva002E3714Unlink(Rva002E36D5Node *node);
 class Rva0023D661 { public: void rva0023D661(int nodeAddress); };

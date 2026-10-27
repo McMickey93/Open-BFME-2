@@ -14,7 +14,7 @@
 // routes the call through ??_V when a vector-delete is declared in the TU
 // (probe-proven in Rva0073B700VectorDeletingDtor: without this declaration
 // cl emits ??3 in both branches). The declaration emits no code.
-void operator delete[](void *p);
+#include <new>
 
 template <typename T> class StringBase { public: ~StringBase(); private: char m_pad[8]; };
 
