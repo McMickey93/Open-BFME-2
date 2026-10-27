@@ -83,8 +83,9 @@ inline bool operator==(const BfmeStringHeadRecord160 &x, const BfmeStringHeadRec
 // Native184B stride; this algorithm view performs no member accesses.
 struct BfmeStringHeadRecord184 { unsigned char body[184]; ~BfmeStringHeadRecord184(); BfmeStringHeadRecord184 &operator=(const BfmeStringHeadRecord184 &); };
 bool operator==(const BfmeStringHeadRecord184 &x, const BfmeStringHeadRecord184 &y);
-struct BfmeAssignRecord40 { int a[9]; AsciiString s; BfmeAssignRecord40 &operator=(const BfmeAssignRecord40 &); };
-inline bool operator==(const BfmeAssignRecord40 &x, const BfmeAssignRecord40 &y) { return x.s == y.s; }
+// The 40-byte camera-track key; its assignment is rowed at 0x00540053
+// (StlSweepW4Rva00540053.cpp).
+class Rva0054000B { public: Rva0054000B &operator=(const Rva0054000B &other); private: char m_pad[40]; };
 // Forward and backward copies use the same opaque element and assignment.
 struct Rva0051FC54Element { unsigned char bytes[80]; Rva0051FC54Element &operator=(const Rva0051FC54Element &); };
 struct BfmeAssignRecord104 { int a[25]; AsciiString s; BfmeAssignRecord104 &operator=(const BfmeAssignRecord104 &); };
@@ -154,7 +155,7 @@ template BfmeStringHeadRecord184 *__copy_backward<BfmeStringHeadRecord184 *, Bfm
 template void __destroy_aux<BfmeStringHeadRecord184 *>(BfmeStringHeadRecord184 *, BfmeStringHeadRecord184 *, const __false_type &);
 template BfmeAssignRecord172 *__copy_backward<BfmeAssignRecord172 *, BfmeAssignRecord172 *, int>(BfmeAssignRecord172 *, BfmeAssignRecord172 *, BfmeAssignRecord172 *, const random_access_iterator_tag &, int *);
 template BfmeAssignRecord104 *__copy_backward<BfmeAssignRecord104 *, BfmeAssignRecord104 *, int>(BfmeAssignRecord104 *, BfmeAssignRecord104 *, BfmeAssignRecord104 *, const random_access_iterator_tag &, int *);
-template BfmeAssignRecord40 *__copy_backward<BfmeAssignRecord40 *, BfmeAssignRecord40 *, int>(BfmeAssignRecord40 *, BfmeAssignRecord40 *, BfmeAssignRecord40 *, const random_access_iterator_tag &, int *);
+template Rva0054000B *__copy_backward<Rva0054000B *, Rva0054000B *, int>(Rva0054000B *, Rva0054000B *, Rva0054000B *, const random_access_iterator_tag &, int *);
 template Rva0051FC54Element *__copy_backward<Rva0051FC54Element *, Rva0051FC54Element *, int>(Rva0051FC54Element *, Rva0051FC54Element *, Rva0051FC54Element *, const random_access_iterator_tag &, int *);
 template void fill<BfmeAssignRecord172 *, BfmeAssignRecord172>(BfmeAssignRecord172 *, BfmeAssignRecord172 *, const BfmeAssignRecord172 &);
 template void fill<BfmeAssignRecord104 *, BfmeAssignRecord104>(BfmeAssignRecord104 *, BfmeAssignRecord104 *, const BfmeAssignRecord104 &);
@@ -193,7 +194,6 @@ template void vector<BfmeAssignRecord104, allocator<BfmeAssignRecord104> >::clea
 #pragma comment(linker, "/alternatename:??4BfmeAssignRecord104@@QAEAAU0@ABU0@@Z=??4ArmySummary@@QAEAAV0@ABV0@@Z")
 #pragma comment(linker, "/alternatename:??4BfmeAssignRecord24@@QAEAAU0@ABU0@@Z=??4ProductionPrerequisite@@QAEAAV0@ABV0@@Z")
 #pragma comment(linker, "/alternatename:??0BfmeStringHeadRecord148@@QAE@ABU0@@Z=??0Rva0036105B@@QAE@ABV0@@Z")
-#pragma comment(linker, "/alternatename:??4BfmeAssignRecord40@@QAEAAU0@ABU0@@Z=??4Rva0054000B@@QAEAAV0@ABV0@@Z")
 
 // Both ABI aliases preserve the existing native pin endpoints.
 #pragma comment(linker, "/alternatename:??1BfmeStringHeadRecord184@@QAE@XZ=??1RunwayInfo@FlightDeckBehavior@@QAE@XZ")

@@ -5704,7 +5704,7 @@ Census confirmation of this edit remains pending.
 
 ### LINK-126: the camera-track key's assignment at 0x00540053 rowed as a pair copy constructor
 
-**Status: Repair landed / awaiting verification. Updated: 2026-10-27; inspected revision: 6667b3a4f8.**
+**Status: Repair landed / awaiting verification. Updated: 2026-10-27; inspected revision: 472c3b46dc.**
 
 - **Evidence / scope:** `StlSweepW4Rva00540053.cpp` rowed 0x00540053 (29 B) as
   `pair<const int, Rva00540053Element>`'s copy constructor and was unresolved on
@@ -5724,12 +5724,24 @@ Census confirmation of this edit remains pending.
   four sources. `link_check.py` (index 73061d9452): StlSweepW4Rva00540053.cpp
   0 -> 29 B; StlSweepW5Rva00540082.cpp, stlport_asciistring_record_bodies.cpp,
   stlport_vector_rva0054000b_insert.cpp and Rva00540B48Append.cpp keep LINKS.
-- **Remaining / next check:** the helpers over this 40-byte key use three
-  other element spellings besides `Rva0054000B`: `BfmePod40` (`__copy_ptrs` 0x0054014D and the `_Vector_base`
-  0x0053FF92), `BfmeAssignRecord40` (`__copy_backward` 0x005400FF and its ptrs
-  wrapper 0x00540197) and `Rva00540082Element` (`__copy` 0x00540082). Folding them
-  into `Rva0054000B` would retire the two remaining aliases. `BfmeAssignRecord40`
-  also names an int9-plus-AsciiString record in its own unit, so check each of its
-  rows before respelling it.
-- **Clearance:** preview scope (the five units above).
+- **Completed (follow-up):** `__copy` 0x00540082, `__copy_backward` 0x005400FF
+  and the `__copy_backward_ptrs` forwarder 0x00540197 were respelled over
+  `Rva0054000B` in place (tombstones in `deleted_rows.csv`). Retail confirms
+  each element call: 0x00540082 and 0x005400FF call 0x00540053, and 0x00540197
+  calls 0x005400FF. The `BfmeAssignRecord40` and `Rva00540082Element`
+  alternatenames are gone. Five pins went with them: the two retired element
+  assignments, plus three `Rva0054000B` pins that only repeated their rows'
+  names. The `BfmePod40` `__copy_ptrs` forwarder 0x0054014D now names
+  `__copy<Rva0054000B *>`. `./build.sh`: the four edited sources are exact.
+  `link_check.py` (index 73061d9452): all seven units keep LINKS.
+- **Remaining / next check:** `vector<BfmePod40>` rows in this range
+  (`_Vector_base` 0x0053FF92, `__copy_ptrs` 0x0054014D, `erase` 0x005401B4 and
+  0x00540324, `__lower_bound` 0x00540253, `clear` 0x00540672, `reserve`
+  0x0054067D) still use the size-only `BfmePod40` view. Check each one's callers
+  before respelling it, because `BfmePod40` rows elsewhere fold other 40-byte
+  types. The insert unit emits its own `__copy_backward` and
+  `__copy_backward_ptrs<Rva0054000B *>` COMDATs. Declaring them only (so the
+  rows serve them) makes its 0x00540731 body materialise the `__false_type` tag
+  temp, so it no longer matches.
+- **Clearance:** preview scope (the seven units above, including StlSweepW5Rva00540197.cpp and stlport_pod_vector_malloc_bodies.cpp).
 - **Census confirmation:** awaiting the next census.

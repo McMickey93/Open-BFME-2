@@ -85,12 +85,13 @@ struct BfmePod12 { int a[3]; };
 struct BfmePod16 { int a[4]; };
 struct BfmePod40 { int a[10]; };
 // The 0x0054014D forwarder calls the rowed 40-byte nontrivial copy worker
-// at 0x00540082. Keep its record name instead of emitting a raw-int copy.
-struct Rva00540082Element;
+// at 0x00540082, the camera-track key Rva0054000B's copy. Keep its record name
+// instead of emitting a raw-int copy.
+class Rva0054000B;
 namespace _STL {
-template <> Rva00540082Element *__copy<Rva00540082Element *, Rva00540082Element *, int>(Rva00540082Element *, Rva00540082Element *, Rva00540082Element *, const random_access_iterator_tag &, int *);
+template <> Rva0054000B *__copy<Rva0054000B *, Rva0054000B *, int>(Rva0054000B *, Rva0054000B *, Rva0054000B *, const random_access_iterator_tag &, int *);
 template <> __declspec(dllimport) __forceinline BfmePod40 *__copy<BfmePod40 *, BfmePod40 *, int>(BfmePod40 *first, BfmePod40 *last, BfmePod40 *result, const random_access_iterator_tag &tag, int *distance)
-{ return (BfmePod40 *)__copy((Rva00540082Element *)first, (Rva00540082Element *)last, (Rva00540082Element *)result, tag, distance); }
+{ return (BfmePod40 *)__copy((Rva0054000B *)first, (Rva0054000B *)last, (Rva0054000B *)result, tag, distance); }
 }
 // bfme link decl-only BfmePod40
 namespace _STL { template <> vector<BfmePod40, allocator<BfmePod40> >::~vector(); }

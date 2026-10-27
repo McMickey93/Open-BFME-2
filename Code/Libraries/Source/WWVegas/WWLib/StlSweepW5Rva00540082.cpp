@@ -1,15 +1,17 @@
 // STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
-// Element identity and unconstrained fields remain address-derived structural inference.
 // cl: /O1 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
 // stlport
+// The element is the 40-byte camera-track key Rva0054000B: the loop's only call
+// is its assignment, rowed at 0x00540053 (StlSweepW4Rva00540053.cpp).
 #include <vector>
 
-struct Rva00540082Element {Rva00540082Element();Rva00540082Element(const Rva00540082Element&);Rva00540082Element&operator=(const Rva00540082Element&);~Rva00540082Element(){}char bytes[40]; bool operator==(const Rva00540082Element&)const;};
+class Rva0054000B
+{
+public:
+	Rva0054000B &operator=(const Rva0054000B &other);
 
-// Instantiate the recovered operation and its required template dependencies.
-template Rva00540082Element * _STL::__copy<Rva00540082Element *, Rva00540082Element *, int>(Rva00540082Element *, Rva00540082Element *, Rva00540082Element *, _STL::random_access_iterator_tag const &, int *);
+private:
+	char m_pad[40];
+};
 
-// The retail call in this body reads 0x00540053, an address the ledger already
-// carries as ??4Rva0054000B@@QAEAAV0@ABV0@@Z. Bind the donor spelling to that rowed owner so one
-// address keeps one definition and the unit links.
-#pragma comment(linker, "/alternatename:??4Rva00540082Element@@QAEAAU0@ABU0@@Z=??4Rva0054000B@@QAEAAV0@ABV0@@Z")
+template Rva0054000B *_STL::__copy<Rva0054000B *, Rva0054000B *, int>(Rva0054000B *, Rva0054000B *, Rva0054000B *, const _STL::random_access_iterator_tag &, int *);

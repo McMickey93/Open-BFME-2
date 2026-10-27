@@ -333,7 +333,6 @@ name,address,notes
 ??$__copy_backward@PAURva0087FDC0Element@@PAU1@H@_STL@@YAPAURva0087FDC0Element@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x006BE370,retail 6BF800 call graph; emitted worker independently matches existing body; application record identity unknown
 ??$__copy_backward@PAVRva0021915B@@PAV1@H@_STL@@YAPAVRva0021915B@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x002195B7,same body as Rva002195B7CopyBackward rowed here: STLport's sort<Rva0021915B* Rva0021B753> (sort 0x0021F13C) reproduces it and its callers call it
 ??$__copy_backward@PAVRva0040CB11Entry@@PAV1@H@_STL@@YAPAVRva0040CB11Entry@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x0040D251,ICF twin of the rowed Rva0040D251CopyBackward at this address: this TU emits an exact 47B body (relocs resolved); callee read from retail REL32 at 0x0040D67E in __copy_backward_ptrs 0x0040D66B
-??$__copy_backward@PAVRva0054000B@@PAV1@H@_STL@@YAPAVRva0054000B@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x005400FF,callee of vector insert 0x00540731 via wrapper ICF alias onto Bfme row
 ??$__copy_backward@PAVRva0054103E@@PAV1@H@_STL@@YAPAVRva0054103E@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x0054115F,"retail 0x005412C5 (__copy_backward_ptrs<Rva0054103E>) pushes 5 args and calls 0x0054115F, proving the target is this 5-arg random-access __copy_backward instantiation; the ledger row at 0x0054115F carries the RVA placeholder name Rva0054115FCopy with a 3-arg cdecl signature, which is the same 50-byte body because the extra args are never read"
 ??$__copy_backward@PAVRva005D5A7E@@PAV1@H@_STL@@YAPAVRva005D5A7E@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x000CA187,ICF with the 12-byte BfmeE12 body rowed here (bitwise 12-byte records): the Rva005D5A7E sort (sort 0x005D6A1B) calls it
 ??$__copy_backward@PAVRva005EEFD2@@H@_STL@@YAPAVRva005EEFD2@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z,0x005EF000,5-arg worker for 29B wrapper 0x005EF46B call site bytes matched
@@ -352,7 +351,6 @@ name,address,notes
 ??$__copy_backward_ptrs@PAURva005B2FDCItem@@PAU1@@_STL@@YAPAURva005B2FDCItem@@PAU1@00ABU__false_type@0@@Z,0x005B2B1E,ICF alias: __copy_backward_ptrs over Rva005B2FDCItem compiled under the E16 sort family unit's flags is byte-identical to the BfmeE16 row here; called by copy_backward 0x005B3644
 ??$__copy_backward_ptrs@PAVAsciiString@@PAV1@@_STL@@YAPAVAsciiString@@PAV1@00ABU__false_type@0@@Z,0x000B6631,ICF twin of rowed copy_backward at same address; target fill_insert 0xC0697 calls ABU ptrs form per 4-push sequence
 ??$__copy_backward_ptrs@PAVRva0021915B@@PAV1@@_STL@@YAPAVRva0021915B@@PAV1@00ABU__false_type@0@@Z,0x00219947,same body as Rva00219947Forward rowed here: STLport's sort<Rva0021915B* Rva0021B753> (sort 0x0021F13C) reproduces it and its callers call it
-??$__copy_backward_ptrs@PAVRva0054000B@@PAV1@@_STL@@YAPAVRva0054000B@@PAV1@00ABU__false_type@0@@Z,0x00540197,callee of vector insert 0x00540731 read from REL32 ICF alias onto Bfme row
 ??$__copy_backward_ptrs@PAVRva005D5A7E@@PAV1@@_STL@@YAPAVRva005D5A7E@@PAV1@00ABU__false_type@0@@Z,0x000B6813,ICF with the 12-byte BfmeE12 body rowed here (bitwise 12-byte records): the Rva005D5A7E sort (sort 0x005D6A1B) calls it
 ??$__copy_ptrs@PAU?$pair@MH@_STL@@PAU12@@_STL@@YAPAU?$pair@MH@0@PAU10@00ABU__false_type@0@@Z,0x005B09BB,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 ??$__copy_ptrs@PAUBfmeAssignRecord104@@PAU1@@_STL@@YAPAUBfmeAssignRecord104@@PAU1@00ABU__false_type@0@@Z,0x003B8B44,STLport __copy_ptrs for this element view: REL32 read at 0x003B909E in the byte-verified range erase 0x003B908A; ledger spelling there: _Rva003B8B44CopyDispatch
@@ -3408,7 +3406,6 @@ name,address,notes
 ??4BFMERetailAsciiString@@QAEAAV0@ABV0@@Z,0x000366F0,retail 6BF800 call graph; emitted worker independently matches existing body; application record identity unknown
 ??4BfmeAssignRecord104@@QAEAAU0@ABU0@@Z,0x0040EAED,address read from the REL32 displacement at a placed body
 ??4BfmeAssignRecord24@@QAEAAU0@ABU0@@Z,0x0042816E,address read from the REL32 displacement at a placed body; the body there is held under another instantiation name and the two folded
-??4BfmeAssignRecord40@@QAEAAU0@ABU0@@Z,0x00540053,address read from the REL32 displacement at a placed body
 ??4BfmeAssignRecord80@@QAEAAU0@ABU0@@Z,0x0051F972,address read from the REL32 displacement at a placed body
 ??4BfmeIntMap@@QAEAAV0@ABV0@@Z,0x00504496,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 ??4BfmeMapPictureTexture@@QAEAAV0@ABV0@@Z,0x000424D0,ICF with RefCountPtr TextureClass assign; Image::bfmeSetTexture holder copy
@@ -3444,7 +3441,6 @@ name,address,notes
 ??4Rva004748F0Element@@QAEAAU0@ABU0@@Z,0x002174DF,callee of ?bfmeAdjustHeap00474330@@YAXPAURva004748F0Element@@HHU1@URva004748F0Compare@@@Z at retail 0x00217972 and 0x00217995 read from its REL32 displacements; ICF alias of the matched ??4FileInfoStruct@MixFileCreator@@QAEAAU01@ABU01@@Z body at this address
 ??4Rva004F6093Holder@@QAEAAV0@ABV0@@Z,0x002B2F97,address read from the retail REL32 in sort-family bodies of 0x002BBC1C; rowed under another name (Rva002B2F97 operator=)
 ??4Rva004F6966@@QAEAAU0@ABU0@@Z,0x004F64FC,assignment called by retail __adjust_heap 0x004F6D81 and __pop_heap 0x004F728A; ICF alias of the rowed ??4Rva004F64FC body at this address
-??4Rva0054000B@@QAEAAV0@ABV0@@Z,0x00540053,callee of vector insert 0x00540731 read from REL32 ICF alias onto Bfme assign
 ??4Rva0054103E@@QAEAAV0@ABV0@@Z,0x0054103E,"ICF fold with the Rva0054103E copy ctor: retail vector insert 0x00541DDF assigns *__position = __x_copy at 0x00541E4F and its REL32 reads 0x0054103E; same fold pattern as ??4PlaneClass/??4SphereClass at 0x004254E"
 ??4Rva0054107FRecord@@QAEAAU0@ABU0@@Z,0x00541021
 ??4Rva005672C0Map@@QAEAAV0@ABV0@@Z,0x0052274D,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
@@ -7379,7 +7375,6 @@ rva009C7380WeightPairs,0x009B84E0
 ??$_Construct@URva00336AB2Element@@U1@@_STL@@YAXPAURva00336AB2Element@@ABU1@@Z,0x00333283,
 ?_M_insert_overflow@?$vector@URva00336AB2Element@@V?$allocator@URva00336AB2Element@@@_STL@@@_STL@@IAEXPAURva00336AB2Element@@ABU3@ABU__false_type@2@I_N@Z,0x00336101,
 ??4Rva004F4DC0Element@@QAEAAU0@ABU0@@Z,0x002CEFAA,
-??4Rva00540082Element@@QAEAAU0@ABU0@@Z,0x00540053,
 ??4Rva003F421DElement@@QAEAAU0@ABU0@@Z,0x0040EAED,
 ?_M_insert_overflow@?$vector@URva004DFCB0Element@@V?$allocator@URva004DFCB0Element@@@_STL@@@_STL@@IAEXPAURva004DFCB0Element@@ABU3@ABU__false_type@2@I_N@Z,0x002DFCF6,
 ?allocate@?$allocator@URva0022105BElement@@@_STL@@QBEPAURva0022105BElement@@IPBX@Z,0x002226BE,
