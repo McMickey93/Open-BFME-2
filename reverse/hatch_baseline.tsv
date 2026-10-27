@@ -3982,7 +3982,6 @@ alternatename	Code/Libraries/Source/Apt/AptNativeHashBFME2.cpp	??1AptNativeHash@
 alternatename	Code/Libraries/Source/Apt/AptNativeHashBFME2.cpp	?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptNativeHashBFME2.cpp	?add@Rva8D0D80Table@@QAEXPAVRva8D0D80String@@PAVRva8D0D80Value@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptNativeHashBFME2.cpp	?handle@Gen0089C880@@QAEXXZ	1
-alternatename	Code/Libraries/Source/Apt/AptNativeHashBFME2.cpp	?rva0070AF90@Rva0070B380@@QAEPAXABVEAStringC@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	??0AptNativeFunction@@QAE@P6APAVAptValue@@PAV1@H@Z@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	??0AptValue@@IAE@W4AptVirtualFunctionTable_Indices@@@Z	1
 alternatename	Code/Libraries/Source/Apt/AptObject/AptArrayConstructor.cpp	?At@AptArray@@QAEPAVAptValue@@H@Z	1
@@ -15539,7 +15538,6 @@ pin	reverse/symbols.csv	0x00709870	1
 pin	reverse/symbols.csv	0x00709B80	3
 pin	reverse/symbols.csv	0x0070A840	3
 pin	reverse/symbols.csv	0x0070A8B0	2
-pin	reverse/symbols.csv	0x0070AF90	1
 pin	reverse/symbols.csv	0x0070B2C0	2
 pin	reverse/symbols.csv	0x0070B380	3
 pin	reverse/symbols.csv	0x0070B410	1

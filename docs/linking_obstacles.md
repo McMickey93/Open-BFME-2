@@ -4560,6 +4560,19 @@ header, pin or ledger change. Scope and reproduction: `reverse/attempt_support/s
 This clears only that consumer's header prerequisite; remaining LINK-099
 consumers and SidesList consolidation still require their own verification.
 
+**2026-10-27 AptNativeHash prerequisite:** the six-donor consolidation plan
+approves 23 existing rows, but its dry run refuses the event-flag, mark and
+erase donors on incompatible private declarations. The seed and destructor
+also retain the AsciiString `hasData` adoption prerequisite above. No merge is
+retained. The lookup wrapper now calls the existing const `HashFindKey` owner
+directly; its obsolete alternate name and pin are retired. All 23 rows remain
+exact, the changed pair's EH graph is exact, and all six ordinary previews
+retain LINKS (3630 -> 3630 authored bytes, index `bf3dd31211`). This clears
+only that alias dependency, not the class/header prerequisites or the whole
+consolidation. Evidence and remaining diagnostics:
+`reverse/attempt_support/apt-native-hash-alias-cleanup-20261027-codex.md`.
+No census gain is claimed.
+
 ### LINK-100: remaining AsciiString constructor and lifetime contracts
 
 Status: Blocked for the remaining consumers; compatible consumer adoptions verified. Updated: 2026-10-27; inspected revision: b2098ee19b936ee456d5cf7d6ec0c8c6a5468e63.

@@ -1,8 +1,9 @@
 // cl: /MD
 // Address-derived Apt hash lookup helper at 0x0070B380 (133B). The body hashes
 // the key through the rowed ?rva006D3D10@EAStringC@@QBEGXZ (0x006D3D10), and
-// when the +4 map exists looks the key up through the private callee pinned at
-// 0x0070AF90, returning its +4 payload. Otherwise two magic ids (0x699, 0x6bbd)
+// when the +4 map exists looks the key up through the rowed private const
+// AptNativeHash::HashFindKey at 0x0070AF90, returning its +4 payload.
+// Otherwise two magic ids (0x699, 0x6bbd)
 // gate compares against the rowed #Rva0070B4F0GetString table entries 0x78 and
 // 0, returning the +0xc and +8 fields. Names are address-derived.
 
@@ -16,10 +17,17 @@ public:
 class Rva0070B4F0GetString_t;
 EAStringC *Rva0070B4F0GetString(int index);
 
+struct AptHashItem;
+class Rva0070B380;
+class AptNativeHash
+{
+    AptHashItem *HashFindKey(const EAStringC *const) const;
+    friend class Rva0070B380;
+};
+
 class Rva0070B380
 {
 public:
-	void *rva0070AF90(const EAStringC &key);
 	void *lookup(const EAStringC &key);
 
 private:
@@ -34,7 +42,7 @@ void *Rva0070B380::lookup(const EAStringC &key)
 	int id = key.rva006D3D10();
 	if (m_field4)
 	{
-		void **found = (void **)rva0070AF90(key);
+		void **found = (void **)((const AptNativeHash *)this)->HashFindKey(&key);
 		if (found)
 			return found[1];
 	}

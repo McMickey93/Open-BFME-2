@@ -76,6 +76,7 @@ public:
     Entry *rva0070AAA0(Entry *pItem);
 private:
     AptHashItem *HashFindKey(const EAStringC *const) const;
+    friend class Rva0070B380;
     void Expand();
     void HashSet(const EAStringC *const,AptValue *const);
 };
@@ -552,5 +553,3 @@ AptHashItem *AptNativeHash::HashFindKey(const EAStringC *const pKey) const
     }
     return 0;
 }
-
-#pragma comment(linker, "/alternatename:?rva0070AF90@Rva0070B380@@QAEPAXABVEAStringC@@@Z=?HashFindKey@AptNativeHash@@ABEPAUAptHashItem@@QBVEAStringC@@@Z")
