@@ -322,9 +322,6 @@ Code/Libraries/Source/EA/Apt/AptString/EAStringCRemoveRange.cpp	drop-in candidat
 Code/Libraries/Source/EA/Apt/AptString/Rva006D5FE0Append.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
 Code/Libraries/Source/EA/Apt/Rva0070B4F0GetString.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strlen:same
 Code/Libraries/Source/EA/Apt/StringPoolInitialize.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
-Code/Libraries/Source/VP6/DuckMemAlloc.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strcmp:same
-Code/Libraries/Source/VP6/FastDeInterlace.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
-Code/Libraries/Source/VP6/InitQTables.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
 Code/Libraries/Source/VP6/LoadFrameHeader.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/Libraries/Source/VP6/PostProcInstance.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/Libraries/Source/VP6/PostProcess.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same

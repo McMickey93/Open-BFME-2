@@ -8,7 +8,7 @@
 // (above + 2 * row + below + 2) >> 2. The row copies are the compiler's own
 // inline memcpy.
 
-extern "C" void * __cdecl memcpy(void *destination, const void *source, unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 namespace

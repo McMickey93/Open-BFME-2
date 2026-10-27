@@ -36,7 +36,7 @@ void *__cdecl duck_malloc(unsigned int size, int)
 	return duck_malloc(size);
 }
 
-extern "C" int __cdecl strcmp(const char *, const char *);
+#include <string.h>
 #pragma intrinsic(strcmp)
 
 // RVA 0x001B64D0
