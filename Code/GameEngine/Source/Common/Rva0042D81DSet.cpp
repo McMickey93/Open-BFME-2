@@ -9,7 +9,7 @@ public:
 	virtual ~ChecklistUIImpl();
 };
 
-void operator delete(void *p);
+#include <new>
 
 class Rva0042D81D
 {

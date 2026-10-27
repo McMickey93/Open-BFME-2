@@ -11,7 +11,7 @@ public:
 	virtual ~StatsDisplayImpl();
 };
 
-void operator delete(void *p);
+#include <new>
 
 class Rva0042D7E0
 {

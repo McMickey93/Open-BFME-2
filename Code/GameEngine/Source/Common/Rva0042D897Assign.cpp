@@ -7,7 +7,7 @@ public:
 	~Rva0057C04F();
 };
 
-void operator delete(void *p);
+#include <new>
 
 class Rva0042D897
 {
