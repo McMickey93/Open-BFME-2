@@ -5701,3 +5701,35 @@ Census confirmation of this edit remains pending.
 - motchan AdaptiveDelta donors (0x00195F60 ctor, 0x00195FF0 Load_W3D): both bodies need the retail 0x1C layout (`DataByteCount` at +0x10, no caches), but motchan.cpp compiles against the BFME1 `AdaptiveDeltaMotionChannelClass` in the vendored `game/Libraries/Source/WWVegas/WW3D2/motchan.h` (0x24 bytes; `Get_Channel_Memory_Usage` already reads +0x10 through `_bfme_adm_scale2`). Reconciling means editing that vendored header or adding a project shim header for motchan.cpp that overrides it; the `reference/shims/bfmehrawanim/motchan.h` shim has the same BFME1 layout. The `<new>` collision in AdaptiveDeltaLoadW3D.cpp disappears only together with that layout change, since the body's `new unsigned long[numInts + 1]` must stay on the array allocator.
 - udp donors (0x00594976, 0x00594A06, 0x00594B2E): the ZH bodies (`SetBlocking`, `GetStatus`, `AllowBroadcasts`, GeneralsMD udp.cpp:210/330/504) are the obvious names, but `rename.py function --basis canonical:zh` refuses: name_evidence has no zh-body placement at these RVAs (the ZH sweep, 27,011 records, places the UDP COMDATs elsewhere or not at all), and `inferred` needs a two-agent agreement record. udp.cpp's `/alternatename` for GetStatus already reflects the same gap. Not renamed.
 - matpass: the two flag-override donors (MaterialPassClassDestructor `/G7`, MaterialPassInstallMaterials `/O2 /G7 /arch:SSE`) disagree with matpass.cpp's flags, so they cannot share the TU without a per-function optimize pragma; the ctor thunk's placeholder fields `m_28/m_2c/m_30/m_34` (8 stage wrappers then four fields) have no counterpart in the ZH `MaterialPassClass` layout matpass.cpp includes; the two Rva0013EE* donors have no baseline match.
+
+### LINK-126: the camera-track key's assignment at 0x00540053 rowed as a pair copy constructor
+
+**Status: Repair landed / awaiting verification. Updated: 2026-10-27; inspected revision: 6667b3a4f8.**
+
+- **Evidence / scope:** `StlSweepW4Rva00540053.cpp` rowed 0x00540053 (29 B) as
+  `pair<const int, Rva00540053Element>`'s copy constructor and was unresolved on
+  the element copy constructor, pinned onto 0x0053FFCE. That callee is the 9-dword
+  frame assignment (`Rva0053FDE6::operator=`, folded with
+  `SentenceDataStruct::operator=`). The copy constructor 0x00540036 calls
+  0x0053FF5F instead. The callers are the stride-0x28 `__copy` (0x00540082),
+  `__copy_backward` (0x005400FF) and `vector<Rva0054000B>::insert` (0x00540731).
+  All three bound the body through `/alternatename`. The body is
+  `Rva0054000B::operator=`.
+- **Completed:** the row was re-identified as `??4Rva0054000B@@QAEAAV0@ABV0@@Z`
+  in the same file. It calls the frame assignment through the
+  `Render2DSentenceClass::SentenceDataStruct` forwarder that
+  `Rva00540B48Append.cpp` already uses. The insert unit's alternatename is
+  gone; the other two units' aliases now name the new row. The orphaned
+  `??0Rva00540053Element` pin was removed. `./build.sh`: 46/46 exact over the
+  four sources. `link_check.py` (index 73061d9452): StlSweepW4Rva00540053.cpp
+  0 -> 29 B; StlSweepW5Rva00540082.cpp, stlport_asciistring_record_bodies.cpp,
+  stlport_vector_rva0054000b_insert.cpp and Rva00540B48Append.cpp keep LINKS.
+- **Remaining / next check:** the helpers over this 40-byte key use three
+  other element spellings besides `Rva0054000B`: `BfmePod40` (`__copy_ptrs` 0x0054014D and the `_Vector_base`
+  0x0053FF92), `BfmeAssignRecord40` (`__copy_backward` 0x005400FF and its ptrs
+  wrapper 0x00540197) and `Rva00540082Element` (`__copy` 0x00540082). Folding them
+  into `Rva0054000B` would retire the two remaining aliases. `BfmeAssignRecord40`
+  also names an int9-plus-AsciiString record in its own unit, so check each of its
+  rows before respelling it.
+- **Clearance:** preview scope (the five units above).
+- **Census confirmation:** awaiting the next census.

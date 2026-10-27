@@ -1,69 +1,55 @@
-// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
-// Element identity and unconstrained fields remain address-derived structural inference.
-// cl: /O1 /Ob0 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
-// stlport
-// vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
-// overload takes the call instead, so this TU emits no external max COMDAT.
-namespace _STL {
-static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
+// cl: /O1
+//
+// ??4Rva0054000B@@QAEAAV0@ABV0@@Z @0x00540053 29B (ret 4): the camera-track
+// key's copy assignment. Retail stores the int key at +0, then calls the
+// 9-dword frame assignment at 0x0053FFCE on +4 and returns this. Its callers
+// are the stride-0x28 __copy (0x00540082), __copy_backward (0x005400FF) and
+// vector<Rva0054000B>::insert (0x00540731) bodies. The key class and its two
+// constructors (0x0054001B, 0x00540036) are in WW3D2/Rva0053FDE6Init.cpp.
+// Identity is not recovered: names follow those rows.
+
+// Retail calls the 9-dword frame assignment at 0x0053FFCE, rowed as
+// Render2DSentenceClass::SentenceDataStruct::operator= (render2dsentence.cpp),
+// as GameEngine/Source/Common/Rva00540B48Append.cpp does.
+class Render2DSentenceClass
 {
-    return a < b ? b : a;
-}
-}
-#define _STLP_BFME_LOWER_BOUND_EXTERN  // call retail's one __lower_bound<const size_t*> (vendor/stlport/stl/_hashtable.c)
-#include <hash_map>
-#include <cstddef>
-// bfme link decl-only begin
-namespace _STL { template <> void swap<_STLP_alloc_proxy<void **, void *, allocator<void *> > >(_STLP_alloc_proxy<void **, void *, allocator<void *> > &, _STLP_alloc_proxy<void **, void *, allocator<void *> > &); }
-namespace _STL { template <> _Vector_base<void *, allocator<void *> >::_Vector_base(allocator<void *> const &); }
-namespace _STL { template <> _Vector_base<void *, allocator<void *> >::_Vector_base(unsigned int, allocator<void *> const &); }
-namespace _STL { template <> vector<void *, allocator<void *> >::vector(allocator<void *> const &); }
-namespace _STL { template <> vector<void *, allocator<void *> >::vector(unsigned int, void *const &, allocator<void *> const &); }
-namespace _STL { template <> _STLP_alloc_proxy<void **, void *, allocator<void *> >::~_STLP_alloc_proxy(); }
-namespace _STL { template <> _Vector_base<void *, allocator<void *> >::~_Vector_base(); }
-namespace _STL { template <> vector<void *, allocator<void *> >::~vector(); }
-namespace _STL { template <> void vector<void *, allocator<void *> >::_M_clear(); }
-namespace _STL { template <> void vector<void *, allocator<void *> >::_M_fill_insert(void **, unsigned int, void *const &); }
-namespace _STL { template <> void vector<void *, allocator<void *> >::_M_insert_overflow(void **, void *const &, __true_type const &, unsigned int, bool); }
-namespace _STL { template <> void vector<void *, allocator<void *> >::_M_set(void **, void **, void **); }
-namespace _STL { template <> void ** allocator<void *>::allocate(unsigned int, void const *) const; }
-namespace _STL { template <> unsigned int vector<void *, allocator<void *> >::capacity() const; }
-namespace _STL { template <> allocator<void *> vector<void *, allocator<void *> >::get_allocator() const; }
-namespace _STL { template <> void vector<void *, allocator<void *> >::insert(void **, unsigned int, void *const &); }
-namespace _STL { template <> void vector<void *, allocator<void *> >::reserve(unsigned int); }
-namespace _STL { template <> void vector<void *, allocator<void *> >::swap(vector<void *, allocator<void *> > &); }
-namespace _STL { template <> allocator<void *>::~allocator(); }
-// bfme link decl-only end
-// Suppress this TU's non-retail copy of ??A?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QBEABQAXI@Z:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
-namespace _STL { template <> void *const &vector<void *>::operator[](size_t) const; }
-// Suppress this TU's non-retail vector<void*> operator[] copy (family2-LK3 row 25):
-// the retail copy serves the link. Plain declaration-only form (no __imp_).
-namespace _STL {
-template <> void *&_STL::vector<void*>::operator[](size_t);
-}
-// Suppress this TU's non-retail const-begin copy (row 47 family2-LK3): the
-// /Od retail copy in stlport_vector_voidptr.cpp serves the link instead.
-namespace _STL {
-template <> vector<void *>::const_iterator _STL::vector<void *>::begin() const;
-}
+public:
+	struct SentenceDataStruct
+	{
+		SentenceDataStruct &operator=(const SentenceDataStruct &o);
+	};
+};
 
-// map/set<unsigned> internals otherwise instantiate the less<unsigned>::operator()
-// COMDAT (one byte shape per TU flags); a declaration-only specialization
-// stops this TU emitting its copy so callers bind the kept copy.
-// Plain (non-dllimport) form: no __imp_ reference is emitted.
-namespace _STL {
-template <> bool less<unsigned>::operator()(const unsigned &a, const unsigned &b) const;
-}
-// Suppress this TU's non-retail vector<void*> size copy (family2-LK3 row 17):
-// the retail copy serves the link. Plain declaration-only form (no __imp_).
-namespace _STL {
-template <> size_t vector<void*>::size() const;
-template <> void **vector<void*>::begin();
-template <> void **vector<void*>::end();
-}
+class Rva0053FDE6
+{
+public:
+	__declspec(dllimport) __forceinline Rva0053FDE6 &operator=(const Rva0053FDE6 &o)
+	{
+		*(Render2DSentenceClass::SentenceDataStruct *)this = *(const Render2DSentenceClass::SentenceDataStruct *)&o;
+		return *this;
+	}
+	int m_00;
+	float m_04;
+	float m_08;
+	float m_0c;
+	float m_10;
+	float m_14;
+	float m_18;
+	float m_1c;
+	float m_20;
+};
 
-struct Rva00540053Element { Rva00540053Element();Rva00540053Element(const Rva00540053Element&);~Rva00540053Element();Rva00540053Element&operator=(const Rva00540053Element&);char bytes[1]; bool operator<(const Rva00540053Element&)const; bool operator==(const Rva00540053Element&)const; };
-namespace _STL {template<> struct hash<Rva00540053Element> { unsigned operator()(const Rva00540053Element&) const; };}
-template _STL::pair<const int, Rva00540053Element>::pair(
-    const _STL::pair<const int, Rva00540053Element> &);
+class Rva0054000B
+{
+public:
+	Rva0054000B &operator=(const Rva0054000B &o);
+	int m_00;
+	Rva0053FDE6 m_04;
+};
+
+Rva0054000B &Rva0054000B::operator=(const Rva0054000B &o)
+{
+	m_00 = o.m_00;
+	m_04 = o.m_04;
+	return *this;
+}

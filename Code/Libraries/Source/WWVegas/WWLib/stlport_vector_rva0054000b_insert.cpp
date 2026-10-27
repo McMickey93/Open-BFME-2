@@ -8,10 +8,8 @@
 // overload keeps the inlined code and offers the link no second copy.
 #include <stl/_algobase.h>
 
-// The vector's insert copies elements through Rva0054000B's assignment
-// spelling; retail's call lands on the pair copy constructor row at 0x00540053
-// (same thiscall, same one-pointer argument), so bind the two.
-#pragma comment(linker, "/alternatename:??4Rva0054000B@@QAEAAV0@ABV0@@Z=??0?$pair@$$CBHURva00540053Element@@@_STL@@QAE@ABU01@@Z")
+// The vector's insert copies elements through Rva0054000B's assignment,
+// rowed at 0x00540053 (StlSweepW4Rva00540053.cpp).
 namespace _STL {
 static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
 {

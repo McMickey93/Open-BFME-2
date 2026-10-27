@@ -4532,7 +4532,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_e16_o1.cpp	??0A
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_nocasepair_allocate_copy.cpp	?allocate@?$allocator@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@_STL@@QBEPAU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@2@IPBX@Z	2
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_pE12_holder_00423A4A.cpp	??0Rva00423A4A@@QAE@ABU0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00255d17_destroy.cpp	??1GeometryShapeVector@@QAE@XZ	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva0054000b_insert.cpp	??4Rva0054000B@@QAEAAV0@ABV0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_scalar8_assign.cpp	??$_M_allocate_and_copy@PBUBfmeAsciiScalarValue8@@@?$vector@UBfmeAsciiScalarValue8@@V?$allocator@UBfmeAsciiScalarValue8@@@_STL@@@_STL@@IAEPAUBfmeAsciiScalarValue8@@IPBU2@0@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_stringrecord_00204a30_allocate_copy.cpp	??1Rva00207E65Vector@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/stlport_vector_voidptr.cpp	?bfmeGrowV21@BfmeStrV21@@QAEXXZ	1
@@ -9025,7 +9024,7 @@ pin	reverse/symbols.csv	0x0053F1EC	13
 pin	reverse/symbols.csv	0x0053FB33	1
 pin	reverse/symbols.csv	0x0053FCB3	2
 pin	reverse/symbols.csv	0x0053FF92	4
-pin	reverse/symbols.csv	0x0053FFCE	2
+pin	reverse/symbols.csv	0x0053FFCE	1
 pin	reverse/symbols.csv	0x00540053	4
 pin	reverse/symbols.csv	0x00540082	1
 pin	reverse/symbols.csv	0x005400B4	3

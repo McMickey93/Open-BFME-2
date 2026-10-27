@@ -193,7 +193,7 @@ template void vector<BfmeAssignRecord104, allocator<BfmeAssignRecord104> >::clea
 #pragma comment(linker, "/alternatename:??4BfmeAssignRecord104@@QAEAAU0@ABU0@@Z=??4ArmySummary@@QAEAAV0@ABV0@@Z")
 #pragma comment(linker, "/alternatename:??4BfmeAssignRecord24@@QAEAAU0@ABU0@@Z=??4ProductionPrerequisite@@QAEAAV0@ABV0@@Z")
 #pragma comment(linker, "/alternatename:??0BfmeStringHeadRecord148@@QAE@ABU0@@Z=??0Rva0036105B@@QAE@ABV0@@Z")
-#pragma comment(linker, "/alternatename:??4BfmeAssignRecord40@@QAEAAU0@ABU0@@Z=??0?$pair@$$CBHURva00540053Element@@@_STL@@QAE@ABU01@@Z")
+#pragma comment(linker, "/alternatename:??4BfmeAssignRecord40@@QAEAAU0@ABU0@@Z=??4Rva0054000B@@QAEAAV0@ABV0@@Z")
 
 // Both ABI aliases preserve the existing native pin endpoints.
 #pragma comment(linker, "/alternatename:??1BfmeStringHeadRecord184@@QAE@XZ=??1RunwayInfo@FlightDeckBehavior@@QAE@XZ")
