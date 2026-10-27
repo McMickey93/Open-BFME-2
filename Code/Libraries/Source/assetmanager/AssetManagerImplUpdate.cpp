@@ -237,21 +237,13 @@ public:
     Rva000309B0(unsigned tag);
     ~Rva000309B0();
 };
-class AssetWorkerHeapScope {
-    Rva000309B0 m_scope;
-public:
-    // ?AssetWorkerHeapScope::AssetWorkerHeapScope absent-from-retail
-    __forceinline AssetWorkerHeapScope(unsigned tag) : m_scope(tag) {}
-    // ?AssetWorkerHeapScope::~AssetWorkerHeapScope absent-from-retail
-    __forceinline ~AssetWorkerHeapScope() {}
-};
 
 
 void Rva00624130::rva00624130()
 {
 	bool changed = false;
 	Q1Queue009F1510 *queues = m_deques78;
-	AssetWorkerHeapScope heap(0x61737374);
+	Rva000309B0 heap(0x61737374);
 	g_assetUpdateLowQueueBusy = false;
 	for (int q = 0; q < 7; ++q)
 	{

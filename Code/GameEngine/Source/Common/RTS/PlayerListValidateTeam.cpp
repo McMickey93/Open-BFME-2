@@ -108,6 +108,7 @@ class BfmeWordEL
 
 struct BfmePairEL : _STL::pair<const AsciiString, AsciiString> {};
 BfmePairEL __cdecl Rva00194810(const BfmeWordEL &name);
+typedef _STL::pair<const AsciiString, AsciiString> (__cdecl *Rva00194810Pair)(const BfmeWordEL &name);
 
 class Rva0036CA00Str;
 class Rva000DF920
@@ -149,7 +150,7 @@ Team *PlayerList::validateTeam(AsciiString owner, MapObject *mapObject)
 		return team;
 
 	AsciiString playerPart;
-	Rva000DF920(playerPart, owner) = reinterpret_cast<const Rva0036CA00Str *>(&Rva00194810((const BfmeWordEL&)owner));
+	Rva000DF920(playerPart, owner) = reinterpret_cast<const Rva0036CA00Str *>(&reinterpret_cast<Rva00194810Pair>(&Rva00194810)((const BfmeWordEL&)owner));
 	if (((const StringBase<char> *)&playerPart)->startsWith("Plyr", 4)) {
 		AsciiString playerSuffix(playerPart, 4, playerPart.getLength() - 4);
 		for (Int i = 0; i < TheSidesList->getNumSides(); ++i) {

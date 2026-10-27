@@ -17114,7 +17114,6 @@ uw_0077501e,,0x0077501E,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;obje
 uw_0077504a,,0x0077504A,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3309
 uw_0077505f,,0x0077505F,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;object-symbol=$L320
 uw_0077508b,,0x0077508B,8,Code/gen_small/uw_gen_003.cpp,matched,gen-funclet;object-symbol=$L320
-uw_00775727,,0x00775727,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4069
 uw_007757f9,,0x007757F9,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3309
 uw_00775835,,0x00775835,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11254
 uw_007758d9,,0x007758D9,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11264
@@ -18608,7 +18607,6 @@ uw_007a75c0,,0x007A75C0,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;obje
 uw_007a75c8,,0x007A75C8,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5347
 uw_007a7620,,0x007A7620,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4133
 uw_007a7628,,0x007A7628,11,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4160
-uw_007a76a0,,0x007A76A0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4376
 uw_007a79e6,,0x007A79E6,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9410
 uw_007a7cd0,,0x007A7CD0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4395
 uw_007a7d10,,0x007A7D10,11,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4422
@@ -98503,3 +98501,5 @@ $L2867,,0x007AB593,8,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAp
 $L1666,,0x0075CA9E,8,Code/GameEngine/Source/Common/System/INI_loadFile.cpp,matched,gen-funclet;parent=?prepFile@INI@@IAE_NABVAsciiString@@W4INILoadType@@@Z; Matched parent 0x0002D2C1's EH graph is EXACT (eh_verify) and binds compiler label $L1666 to retail 0x0075CA9E; replaces generated uw_0075ca9e
 $L10140,,0x007A7600,8,Code/Libraries/Source/assetmanager/Rva0061FFA0.cpp,matched,gen-funclet;parent=?Worker_Thread_00622480@AssetRegistry@@QAEXXZ; Matched parent 0x00622480's EH graph is EXACT (eh_verify) and binds compiler label $L10140 to retail 0x007A7600; replaces generated uw_007a7600
 $L13304,,0x007A7670,11,Code/Libraries/Source/assetmanager/Rva00622290CollectKeys.cpp,matched,gen-funclet;parent=?LoadAsset@AssetManagerImpl@@QAEXPAVRva009EF0D0Element@@@Z; Matched parent 0x00623600's EH graph is EXACT (eh_verify) and binds compiler label $L13304 to retail 0x007A7670; replaces generated uw_007a7670
+$L8930,,0x007A76A0,8,Code/Libraries/Source/assetmanager/AssetManagerImplUpdate.cpp,matched,gen-funclet;parent=?rva00624130@Rva00624130@@QAEXXZ; Matched parent 0x00624130's EH graph is EXACT (eh_verify) and binds compiler label $L8930 to retail 0x007A76A0; replaces generated uw_007a76a0
+$L5458,,0x00775727,8,Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp,matched,gen-funclet;parent=?validateTeam@PlayerList@@QAEPAVTeam@@VAsciiString@@PAVMapObject@@@Z; Matched parent 0x002A851D's EH graph is EXACT (eh_verify) and binds compiler label $L5458 to retail 0x00775727; replaces generated uw_00775727
