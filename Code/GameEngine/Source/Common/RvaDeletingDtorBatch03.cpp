@@ -21,7 +21,7 @@ class Rva00229487 { public: ~Rva00229487(); };
 class Rva0042C1B7Item { public: ~Rva0042C1B7Item(); };
 class Rva0023A128 { public: ~Rva0023A128(); };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva002189C5_DeleteAnchor(Rva002189C5 *p) { delete p; }
 void Rva00225B63_DeleteAnchor(SubsystemInterfaceList *subsystemInterfaceList) { delete subsystemInterfaceList; }
