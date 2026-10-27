@@ -33,7 +33,7 @@ private:
 	IndexEntry *m_sectionIndex;
 	void *m_filename;
 };
-void __cdecl operator delete(void *);
+#include <new>
 void INIClass::Shutdown()
 {
 	SectionListNode *list = m_sectionList;

@@ -7,7 +7,7 @@ struct Rva00072FE6 {
   void rva00072FE6();
   unsigned char _pad[0x18];
 };
-void __cdecl operator delete[](void *p);
+#include <new>
 struct Rva000731AE {
   unsigned char _00[0x18];
   char *p18;
