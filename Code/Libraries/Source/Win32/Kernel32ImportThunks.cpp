@@ -4,10 +4,11 @@
 // __identifier names the actual decorated __imp__ symbol; no alias, address
 // pin, inline assembly, emitted bytes or replacement datum is used.
 // Signatures: the VS2003 Platform SDK headers (WinBase.h, WinNls.h, WinCon.h,
-// TlHelp32.h), included with WINBASEAPI empty so these definitions are not
-// dllimport.
+// TlHelp32.h), included with _KERNEL32_ defined (WinBase.h's own switch) so
+// WINBASEAPI is empty and these definitions are not dllimport (no C4273
+// /EXPORT directives).
 // Each retail six-byte thunk's IAT slot names the export (row notes).
-#define WINBASEAPI
+#define _KERNEL32_
 #include <windows.h>
 #include <tlhelp32.h>
 extern "C" {
