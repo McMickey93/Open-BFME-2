@@ -1,6 +1,6 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
 // ?rva005768CB@Rva005768CBCall@@QAEXPAX@Z @0x005768CB 123B evidence: caller 0x00576ACB in MemberBaseDtorsB01.cpp calls this-0xC; calls rowed ctor 0x0057664C new 0x18 flag from +0x14 and 0x1e pin AddItem 0x005CD0C2 row Release 0x0007DEEF
-void *operator new(unsigned int);
+#include <new>
 struct TargetRef00217D4C
 {
 	virtual void *destroy(unsigned int flags);

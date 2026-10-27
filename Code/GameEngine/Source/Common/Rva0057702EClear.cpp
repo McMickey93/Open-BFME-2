@@ -4,7 +4,7 @@
 // result at slot 4 with arg 0 or null. Evidence: 7 callers including 115B bodies
 // 0x005775C1/0x00577634 plus tail jmps; shared push-eax tail matches ternary.
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct Rva0057702EBase
 {

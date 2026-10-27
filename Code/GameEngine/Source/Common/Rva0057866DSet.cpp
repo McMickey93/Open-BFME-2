@@ -17,7 +17,7 @@ private:
 	void *m_ptr;
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 void Rva0057866D::rva0057866D(StrategicHUD::CommandUIImpl *p)
 {
