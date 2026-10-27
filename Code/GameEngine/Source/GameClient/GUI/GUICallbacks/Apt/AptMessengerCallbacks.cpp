@@ -15,6 +15,11 @@
 // teardown below; slot 15 answers "ShowPlayerButtons" and slot 16 makes a
 // tab. /EHsc is for the tab factory's new-expression.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "unicode_string.h"
 
 #include <string.h>
@@ -345,9 +350,9 @@ void AptMessenger::IsOpen(int query, char *result, bool skip)
 	{
 		AptMessenger *messenger = (AptMessenger *)AptMessenger::s_instance;
 		if (messenger && !messenger->m_closed)
-			strcpy(result, "1");
+			_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("1"));
 		else
-			strcpy(result, "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("0"));
 	}
 }
 
@@ -404,15 +409,15 @@ void AptMessenger::rva00511AD4(int query, char *value, bool set)
 	{
 	case 0:
 		if (set)
-			strcpy(g_Va00E046C0, value);
+			_mbscpy(reinterpret_cast<unsigned char *>(g_Va00E046C0), reinterpret_cast<const unsigned char *>(value));
 		else
-			strcpy(value, g_Va00E046C0);
+			_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(g_Va00E046C0));
 		break;
 	case 1:
 		if (set)
-			strcpy(g_Va00E047C0, value);
+			_mbscpy(reinterpret_cast<unsigned char *>(g_Va00E047C0), reinterpret_cast<const unsigned char *>(value));
 		else
-			strcpy(value, g_Va00E047C0);
+			_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(g_Va00E047C0));
 		break;
 	case 2:
 		if (set)
@@ -429,17 +434,17 @@ void AptMessenger::rva00511AD4(int query, char *value, bool set)
 			m_29c = true;
 		}
 		else
-			strcpy(value, g_Va00DD13D8 ? "1" : "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(g_Va00DD13D8 ? "1" : "0"));
 		break;
 	case 4:
 		if (!set)
-			strcpy(value, v15() ? "1" : "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(v15() ? "1" : "0"));
 		break;
 	case 5:
 		if (set)
 			m_dragging = atoi(value) != 0;
 		else
-			strcpy(value, m_dragging ? "1" : "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_dragging ? "1" : "0"));
 		break;
 	}
 }
@@ -556,9 +561,6 @@ void AptMessenger::rva005118B2()
 	}
 	m_chatEntry = 0;
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Retail 0x00511CE6, 310 bytes: refreshes the two messenger buttons when the
 // screen is maximized: each takes its text from the "APT:MessengerBttn_%d"

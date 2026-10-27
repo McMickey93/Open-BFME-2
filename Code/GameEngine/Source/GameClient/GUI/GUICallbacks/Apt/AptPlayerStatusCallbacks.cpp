@@ -8,6 +8,11 @@
 // Built /G7 (the bool goes out as mov al without the P6 xor) and without
 // EH (the static's guard carries no frame), as retail.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -135,7 +140,7 @@ void AptPlayerStatus::rva004E4A34(const char *unused)
 // otherwise).
 void AptPlayerStatus::PlayerColor(int slot, char *result, bool set)
 {
-	strcpy(result, "0");
+	_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("0"));
 	if (!set && m_state == 1)
 	{
 		if (!m_colors.empty() && (unsigned int)slot < m_colors.size())
@@ -148,7 +153,7 @@ void AptPlayerStatus::PlayerColor(int slot, char *result, bool set)
 // ("00" otherwise).
 void AptPlayerStatus::Objective(int row, char *result, bool skip)
 {
-	strcpy(result, "00");
+	_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("00"));
 	if (m_state == 0 && row >= 0 && row < 12 && !skip && TheMissionObjectiveTracker)
 	{
 		int index = GetNthVisibleObjectiveIndex(row);
@@ -161,6 +166,3 @@ void AptPlayerStatus::Objective(int row, char *result, bool skip)
 		}
 	}
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

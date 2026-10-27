@@ -21,6 +21,11 @@ struct AptGlobalQueryData
 // The trace flag GlobalByteFlagSetters.cpp's Rva004128E8SetFlag sets.
 extern unsigned char g_Va00E0302C;
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "Common/BfmeAudioEventPrefix136.h"
 #include <string.h>
 
@@ -138,10 +143,10 @@ void __cdecl Rva0041273C(int query, char *result, bool skip)
 	switch (query)
 	{
 	case 1:
-		strcpy(result, ((AptGlobalQueryData *)TheWritableGlobalData)->m_demoKind == 1 ? "1" : "0");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(((AptGlobalQueryData *)TheWritableGlobalData)->m_demoKind == 1 ? "1" : "0"));
 		break;
 	case 2:
-		strcpy(result, ((AptGlobalQueryData *)TheWritableGlobalData)->m_demoKind == 2 ? "1" : "0");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(((AptGlobalQueryData *)TheWritableGlobalData)->m_demoKind == 2 ? "1" : "0"));
 		break;
 	}
 }
@@ -150,18 +155,15 @@ void __cdecl Rva0041273C(int query, char *result, bool skip)
 void __cdecl InGame(int query, char *result, bool skip)
 {
 	if (result && !skip)
-		strcpy(result, "1");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("1"));
 }
 
 // Retail 0x004127A6, 45 bytes: "DoTrace".
 void __cdecl DoTrace(int query, char *result, bool skip)
 {
 	if (result && !skip)
-		strcpy(result, g_Va00E0302C ? "1" : "0");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(g_Va00E0302C ? "1" : "0"));
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Retail 432AA2..432AC5 and432AC5..432AEB: choose press/release records
 // 4/14 and6/16, then emit once. The existing emitter ignores the incoming

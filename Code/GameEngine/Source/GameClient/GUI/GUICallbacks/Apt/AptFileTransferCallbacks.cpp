@@ -6,6 +6,11 @@
 // is named for the string's prefix (the screen whose destructor is the
 // rowed ??1Rva00582FC1).
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include <string.h>
 #include <stdio.h>
 
@@ -52,13 +57,10 @@ void FileTransfer::PlayerColor(int slot, char *result, bool skip)
 {
 	if (skip)
 		return;
-	strcpy(result, "0");
+	_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("0"));
 	if (slot >= 0 && slot < 8)
 	{
 		const GameSlot *gameSlot = m_game->getConstSlot(slot);
 		sprintf(result, "%d", TheMultiplayerSettings->getColor(gameSlot->getApparentColor())->m_color);
 	}
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

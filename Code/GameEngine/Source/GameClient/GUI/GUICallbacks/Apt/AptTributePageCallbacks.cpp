@@ -8,6 +8,8 @@
 // "_TributeEnabled" and "_ReturnToGame"; that binding is their only
 // reference. The methods carry the suffix as their name.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#include <mbstring.h>
 #include <map>
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.
@@ -32,7 +34,6 @@ template <> struct less<AsciiString>
 };
 }
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
 
 // Rva0050E9D3Enable.cpp's one-shot enabler on this screen's instance
 // (g_Va00A046B4, which the destructor clears): AptPlayerTribute::CloseScreen.
@@ -152,7 +153,7 @@ void Rva00510D0C::TributeEnabled(int query, char *result, bool skip)
 	if (query == 0 && result && !skip)
 	{
 		BfmeMemberRV *player = ((AptTributePlayerList *)ThePlayerList)->m_local;
-		strcpy(result, player && player->bfmeAskRV() ? "1" : "0");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(player && player->bfmeAskRV() ? "1" : "0"));
 	}
 }
 
@@ -250,9 +251,6 @@ void Rva00510D0C::OnPageSelected(const char *name)
 		m_page = 0;
 	}
 }
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
-
 // The base slot 0x000910FB is the ICF-folded four-byte body rowed as
 // GameFileClass::Create; the call is spelled through that row.
 class GameFileClass

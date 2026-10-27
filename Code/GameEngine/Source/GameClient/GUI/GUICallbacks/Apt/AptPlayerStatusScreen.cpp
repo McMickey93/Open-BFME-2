@@ -16,6 +16,8 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#include <mbstring.h>
 #include <vector>
 #include "ascii_string.h"
 #include "unicode_string.h"
@@ -363,11 +365,11 @@ void AptPlayerStatus::rva004E434C(int query, char *result, bool set)
 		break;
 	case 1:
 		if (!set)
-			strcpy(result, TheGameLogic && TheGameLogic->m_110 == 2 ? "1" : "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(TheGameLogic && TheGameLogic->m_110 == 2 ? "1" : "0"));
 		break;
 	case 2:
 		if (!set)
-			strcpy(result, TheGameLogic->m_110 != 6 || TheInGameUI->m_16 ? "1" : "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(TheGameLogic->m_110 != 6 || TheInGameUI->m_16 ? "1" : "0"));
 		break;
 	}
 }
@@ -685,6 +687,3 @@ void Rva004E41AB()
 		((AptPlayerStatus *)g_Va00A04450)->m_state = mode;
 	TheInGameUI->slot94(true);
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

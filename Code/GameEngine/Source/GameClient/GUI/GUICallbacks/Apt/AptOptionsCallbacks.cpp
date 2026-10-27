@@ -74,6 +74,11 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -554,7 +559,7 @@ void AptOptions::ExternsLODTemplate(int query, char *value, bool set)
 	value[0] = 0;
 	if (query == 5)
 	{
-		strcpy(value, m_presetText.str());
+		_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_presetText.str()));
 		return;
 	}
 	if (query < 0 || query >= 5)
@@ -563,7 +568,7 @@ void AptOptions::ExternsLODTemplate(int query, char *value, bool set)
 	(*(Rva00DFE144Globals **)&TheGameLODManager)->rva00202244(query, &prefs);
 	AsciiString text;
 	Rva005186E1Format(&prefs, &text);
-	strcpy(value, text.str());
+	_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(text.str()));
 }
 
 // Retail 0x00518D2B, 703 bytes: "AptOptions::Reset", bound by that name in
@@ -898,7 +903,7 @@ void AptOptions::Externs(int query, char *value, bool set)
 		else
 		{
 			if (m_preset == 5)
-				strcpy(value, "Custom");
+				_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>("Custom"));
 			else
 				sprintf(value, "%d", m_preset);
 		}
@@ -911,28 +916,26 @@ void AptOptions::Externs(int query, char *value, bool set)
 	case 4:
 		if (set)
 			return;
-		strcpy(value, m_281 ? g_00BBFDE0 : g_00BBFDDC);
+		_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_281 ? g_00BBFDE0 : g_00BBFDDC));
 		break;
 	case 5:
 		if (set)
 			return;
-		strcpy(value, m_online ? g_00BBFDE0 : g_00BBFDDC);
+		_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_online ? g_00BBFDE0 : g_00BBFDDC));
 		break;
 	case 6:
 		if (set)
 			return;
-		strcpy(value, m_284 ? g_00BBFDE0 : g_00BBFDDC);
+		_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_284 ? g_00BBFDE0 : g_00BBFDDC));
 		break;
 	case 3:
 		if (set)
 			return;
-		strcpy(value, m_282 ? g_00BBFDE0 : g_00BBFDDC);
+		_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_282 ? g_00BBFDE0 : g_00BBFDDC));
 		break;
 	}
 }
 
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 // Retail's 0/1 flag strings at 0x007BFDE0 ("1") and 0x007BFDDC ("0") are the
 // literals the String-ref gate verifies; bind the g_ spellings to them.
 #pragma comment(linker, "/alternatename:?g_00BBFDDC@@3QBDB=??_C@_01GBGANLPD@0?$AA@")

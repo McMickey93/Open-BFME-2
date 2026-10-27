@@ -7,6 +7,11 @@
 // (0x00513382), bound by those names as member pointers by the screen's
 // registration; that binding is their only reference.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "unicode_string.h"
 
 #include <string.h>
@@ -191,8 +196,5 @@ void AptDisconnectScreen::OnBttnEnterText(const char *unused)
 void AptDisconnectScreen::PlayerColor(int slot, char *result, bool skip)
 {
 	if (!skip)
-		strcpy(result, "0xFFFFFFFF");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("0xFFFFFFFF"));
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

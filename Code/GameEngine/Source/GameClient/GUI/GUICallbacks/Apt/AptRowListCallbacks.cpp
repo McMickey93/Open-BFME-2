@@ -5,6 +5,11 @@
 // constructor 0x005103A3 binds "_level<n>._OnRowShown" and "_OnRowHidden",
 // and the indexed query over "NumOfPlayers" and "InSkirmish", as member
 // pointers; that binding is their only reference.
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "ascii_string.h"
 
 #include <string.h>
@@ -327,7 +332,7 @@ void Rva005105D7::rva0050E823(int which, char *result, bool skip)
 		if (!skip)
 		{
 			AptRowListGameLogic *logic = (AptRowListGameLogic *)TheGameLogic;
-			strcpy(result, logic && logic->m_mode == 2 ? "1" : "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(logic && logic->m_mode == 2 ? "1" : "0"));
 		}
 		break;
 	}
@@ -409,6 +414,3 @@ void bfmeAnchorRva005105D7Dtor(Rva005105D7 *p) { p->Rva005105D7::~Rva005105D7();
 // ?bfmeAnchorAptRowListRow absent-from-retail
 void bfmeAnchorAptRowListRow(AptRowListRow *aptRowListRow) { aptRowListRow->AptRowListRow::AptRowListRow(); }
 #pragma inline_depth()
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

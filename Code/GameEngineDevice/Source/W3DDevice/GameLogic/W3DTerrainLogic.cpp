@@ -31,6 +31,8 @@
 // Author: Colin Day, April 2001
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#include <mbstring.h>
 #include "Common/GameMemory.h"
 #include "W3DDevice/GameClient/HeightMap.h"
 #include "W3DDevice/GameLogic/W3DTerrainLogic.h"
@@ -107,7 +109,7 @@ Bool W3DTerrainLogic::loadMap( AsciiString filename , Bool query )
 	char	filenameBuf[_MAX_PATH];
 	int length = 0;
 
-	strcpy(tempBuf, filename.str());
+	_mbscpy(reinterpret_cast<unsigned char *>(tempBuf), reinterpret_cast<const unsigned char *>(filename.str()));
 
 	length = strlen( tempBuf );
 	if( length >= 4 )
@@ -301,10 +303,6 @@ void W3DTerrainLogic::crc( Xfer *xfer )
 /** Load post process */
 // ------------------------------------------------------------------------------------------------
 // W3DTerrainLogic::loadPostProcess (retail 0x00062E4A) is defined in TerrainLogicBridges.cpp.
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // ?rva000DE5B7@Rva000DE5B7@@QAE?AVAsciiString@@XZ 0x000DE5B7 27 callee StringBase copy 0x000365F0 callers 0x000DE648 0x002DB64E
 // 27B AsciiString getter at +0x48 through the rowed StringBase copy ctor; same shape as

@@ -4,6 +4,8 @@
 // (GameEngine/Source/Common/Thing/ModuleFactory.cpp); this unit had no counterpart under Code/.
 // The emitted unsigned max copy must match retail RVA 0x00013740.
 // Define it for speed, then restore this unit's flags for its own bodies.
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#include <mbstring.h>
 #include <stl/_algobase.h>
 #pragma optimize("s", off)
 #pragma optimize("t", on)
@@ -565,7 +567,7 @@ ModuleData* ModuleFactory::newModuleDataFromINI(INI* ini, const AsciiString& nam
 {
 	char tmp[256];
 	tmp[0] = '0' + (int)type;
-	strcpy(&tmp[1], name.str());
+	_mbscpy(reinterpret_cast<unsigned char *>(&tmp[1]), reinterpret_cast<const unsigned char *>(name.str()));
 	return TheNameKeyGenerator->nameToKey(tmp);
 }
 
@@ -691,10 +693,6 @@ void ModuleFactory::xfer( Xfer *xfer )
 void ModuleFactory::loadPostProcess( void )
 {
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.

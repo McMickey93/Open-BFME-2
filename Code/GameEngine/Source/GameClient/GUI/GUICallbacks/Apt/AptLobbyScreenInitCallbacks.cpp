@@ -5,6 +5,11 @@
 // member pointer by its screen's registration; that binding is the only
 // reference. Each class is a one-method view named for its string's prefix.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "unicode_string.h"
 #include <string.h>
 
@@ -163,10 +168,7 @@ void AptCampaignReview::playerSideType(int query, char *result, bool skip)
 		return;
 	AptCampaignReviewCampaign *campaign = (AptCampaignReviewCampaign *)((LivingWorldCampaignManager *)TheCampaignManager);
 	if (campaign && campaign->m_evil)
-		strcpy(result, "evil");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("evil"));
 	else
-		strcpy(result, "good");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("good"));
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

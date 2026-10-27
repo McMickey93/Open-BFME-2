@@ -7,6 +7,11 @@
 // (AptOnlineShellCallbacks.cpp views the same object). The shell's Apt
 // variables "OnlineShellStartScreen" and "OnlineAdvMode" share 0x00517207.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "ascii_string.h"
 #include <string.h>
 
@@ -277,7 +282,7 @@ void AptOnline::ExternFunc(int query, char *value, bool set)
 	{
 	case 0:
 		if (!set)
-			strcpy(value, m_currentName.str());
+			_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_currentName.str()));
 		break;
 	case 1:
 	{
@@ -288,14 +293,11 @@ void AptOnline::ExternFunc(int query, char *value, bool set)
 			prefs.write();
 		}
 		else
-			strcpy(value, prefs.getBool(AsciiString("InAdvMode"), false) ? "1" : "0");
+			_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(prefs.getBool(AsciiString("InAdvMode"), false) ? "1" : "0"));
 		break;
 	}
 	}
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Retail 0x00516D09, 68 bytes: the shell table's factory for a new "Stats" sub-screen unless one is up (0x00E06478).
 AptOnlineSubScreen *__cdecl Rva00516D09(AptOnline *shell)

@@ -62,6 +62,8 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#include <mbstring.h>
 #include <stdio.h>
 #undef _snprintf
 #undef sscanf
@@ -788,38 +790,38 @@ static void updateBuddyStatus( GameSpyBuddyStatus status, Int groupRoom = 0, std
 	{
 		case BUDDY_OFFLINE:
 			req.arg.status.status = GP_OFFLINE;
-			strcpy(req.arg.status.statusString, "Offline");
-			strcpy(req.arg.status.locationString, "");
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.statusString), reinterpret_cast<const unsigned char *>("Offline"));
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.locationString), reinterpret_cast<const unsigned char *>(""));
 			break;
 		case BUDDY_ONLINE:
 			req.arg.status.status = GP_ONLINE;
-			strcpy(req.arg.status.statusString, "Online");
-			strcpy(req.arg.status.locationString, "");
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.statusString), reinterpret_cast<const unsigned char *>("Online"));
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.locationString), reinterpret_cast<const unsigned char *>(""));
 			break;
 		case BUDDY_LOBBY:
 			req.arg.status.status = GP_CHATTING;
-			strcpy(req.arg.status.statusString, "Chatting");
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.statusString), reinterpret_cast<const unsigned char *>("Chatting"));
 			sprintf(req.arg.status.locationString, "%d", groupRoom);
 			break;
 		case BUDDY_STAGING:
 			req.arg.status.status = GP_STAGING;
-			strcpy(req.arg.status.statusString, "Staging");
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.statusString), reinterpret_cast<const unsigned char *>("Staging"));
 			sprintf(req.arg.status.locationString, "%s", gameName.c_str());
 			break;
 		case BUDDY_LOADING:
 			req.arg.status.status = GP_PLAYING;
-			strcpy(req.arg.status.statusString, "Loading");
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.statusString), reinterpret_cast<const unsigned char *>("Loading"));
 			sprintf(req.arg.status.locationString, "%s", gameName.c_str());
 			break;
 		case BUDDY_PLAYING:
 			req.arg.status.status = GP_PLAYING;
-			strcpy(req.arg.status.statusString, "Playing");
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.statusString), reinterpret_cast<const unsigned char *>("Playing"));
 			sprintf(req.arg.status.locationString, "%s", gameName.c_str());
 			break;
 		case BUDDY_MATCHING:
 			req.arg.status.status = GP_ONLINE;
-			strcpy(req.arg.status.statusString, "Matching");
-			strcpy(req.arg.status.locationString, "");
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.statusString), reinterpret_cast<const unsigned char *>("Matching"));
+			_mbscpy(reinterpret_cast<unsigned char *>(req.arg.status.locationString), reinterpret_cast<const unsigned char *>(""));
 			break;
 	}
 	DEBUG_LOG(("updateBuddyStatus %d:%s\n", req.arg.status.status, req.arg.status.statusString));
@@ -2836,8 +2838,8 @@ void PeerThreadClass::connectCallback( PEER peer, PEERBool success )
 	UnsignedInt externalIP = peerGetLocalIP(peer);
 	resp.player.internalIP = htonl(localIP);
 	resp.player.externalIP = htonl(externalIP);
-	strcpy(resp.player.loginTextA, s_loginTextB);
-	strcpy(resp.player.loginTextB, s_loginTextA);
+	_mbscpy(reinterpret_cast<unsigned char *>(resp.player.loginTextA), reinterpret_cast<const unsigned char *>(s_loginTextB));
+	_mbscpy(reinterpret_cast<unsigned char *>(resp.player.loginTextB), reinterpret_cast<const unsigned char *>(s_loginTextA));
 	resp.player.loginComplete = TRUE;
 	TheGameSpyPeerMessageQueue->addResponse(resp);
 
@@ -3539,10 +3541,6 @@ static void listingGamesCallback(PEER peer, PEERBool success, const char * name,
 }
 
 //-------------------------------------------------------------------------
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Address-derived callees read directly from the retail body at 0x00517EA2.
 // Their bodies and semantic names are outside this recovered response pump.

@@ -2012,7 +2012,6 @@ alternatename	Code/GameEngine/Source/Common/INI/INIEmotionCopyFrom.cpp	??0BfmeSt
 alternatename	Code/GameEngine/Source/Common/INI/INIEmotionCopyFrom.cpp	??1BfmeEmotionName@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/INI/INIEmotionCopyFrom.cpp	?bfmeCopyVKC@BfmeThingVKC@@QAEXABV1@@Z	1
 alternatename	Code/GameEngine/Source/Common/INI/INIExceptionCtor.cpp	_rva002f681_fill	1
-alternatename	Code/GameEngine/Source/Common/INI/INIExceptionCtor.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/Common/INI/INI_parseAnim2DDefinition.cpp	?findTemplate@Anim2DCollection@@QAEPAVAnim2DTemplate@@ABVAsciiString@@@Z	1
 alternatename	Code/GameEngine/Source/Common/INI/LivingWorldConnectionParserRva003F348F.cpp	?append@Rva003F309AVector@@QAEXABVLivingWorldRegionConnection@@@Z	1
 alternatename	Code/GameEngine/Source/Common/INI/Rva004DD206TwoTreeConstructor.cpp	??0Rva004DD206TreeView@@QAE@XZ	1
@@ -2759,7 +2758,6 @@ alternatename	Code/GameEngine/Source/Common/System/Rva000ABB87ParserRegistration
 alternatename	Code/GameEngine/Source/Common/System/Rva000ABB87ParserRegistration.cpp	?bfmeSlot0@BfmeParserBindingBaseVE@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/System/Rva000ABB87ParserRegistration.cpp	?bfmeSlot1@BfmeParserBindingBaseVE@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/System/Rva003F1E87DeleteRange.cpp	?doDelete@Rva003F1E87Holder@@QAEXPAVRva003F0C6C@@@Z	1
-alternatename	Code/GameEngine/Source/Common/System/Rva0050FAECDtor.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/Common/System/Rva005D0034Handler.cpp	?c0@Rva005D0034Callback@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/System/Rva005D0034Handler.cpp	?reset@Rva000AD6F4@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/System/Rva005D00A6Ctor.cpp	??0Rva00221635@@QAE@ABVAsciiString@@@Z	1
@@ -2801,7 +2799,6 @@ alternatename	Code/GameEngine/Source/Common/System/Xfer.cpp	?Is_Lightmap@?$RefCo
 alternatename	Code/GameEngine/Source/Common/System/Xfer.cpp	?Is_Procedural@?$RefCountPtr@VTextureClass@@@@QBE_NXZ	1
 alternatename	Code/GameEngine/Source/Common/System/Xfer.cpp	?Use_Alpha_Shader@BFME2ParticleTextureHandle@@QBE_NXZ	1
 alternatename	Code/GameEngine/Source/Common/System/Xfer.cpp	?bfmeReset@Gen009D6E10@@QAEXPAVBfmePeer@@@Z	1
-alternatename	Code/GameEngine/Source/Common/System/XferException.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/Common/T1ReceiverSwappingThunks.cpp	?accept@T1Sink_005C8D40@@QAEPAXPAX0@Z	1
 alternatename	Code/GameEngine/Source/Common/T4VtableSetCtors.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/Common/T4VtableSetCtors.cpp	_vtbl_00C1C780_again	1
@@ -2810,7 +2807,6 @@ alternatename	Code/GameEngine/Source/Common/Thing/IntFloatMapSubscript.cpp	?eras
 alternatename	Code/GameEngine/Source/Common/Thing/Module.cpp	??1Module@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp	?push_back@?$vector@UHordeBannerSlot@@V?$allocator@UHordeBannerSlot@@@_STL@@@_STL@@QAEXABUHordeBannerSlot@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp	?push_back@GateOpenBehaviorList@@QAEXABQAX@Z	1
-alternatename	Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/Common/Thing/ModuleInfoNuggetErase.cpp	?dup_002d028f@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteCtor.cpp	??1TransitionDamageFXSlotA@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteCtor.cpp	??1TransitionDamageFXSlotB@@QAE@XZ	1
@@ -2897,7 +2893,6 @@ alternatename	Code/GameEngine/Source/GameClient/FXParticleSystem.cpp	?v1@LineEmi
 alternatename	Code/GameEngine/Source/GameClient/FXParticleSystem.cpp	?v1@PointEmissionVolumeModuleTemplate@FXParticleSystem@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/FXParticleSystem.cpp	?v1@SphereEmissionVolumeModuleTemplate@FXParticleSystem@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/FXParticleSystemModuleParsers.cpp	?parse@HemisphericalEmissionVelocityModuleTemplate@FXParticleSystem@@QAEXPAVINI@@@Z	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/AptGlobalQueryCallbacks.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/AptPlayerDtor.cpp	?rva0022274A@AptPlayer@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/AptWindowLayoutConstructor.cpp	??1BfmeQuickMatchScreenBase@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/AptWindowLayoutConstructor.cpp	?addWindow@BfmeQuickMatchScreenBase@@UAEXPAVGameWindow@@@Z	1
@@ -2912,31 +2907,17 @@ alternatename	Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBaseCons
 alternatename	Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBaseConstructor.cpp	?bfmeSlot1@BfmeQuickMatchScreenBase@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarRva00320158.cpp	?g_0080D720@@3UFieldParse@@B	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035B03E.cpp	?isValidRelationshipTarget@CommandButton@@QBE_NW4Relationship@@@Z	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenKick.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptFileTransferCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptLobbyScreenInitCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessengerCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpChat.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHeroCtor.cpp	?DoXfer@CreateAHeroData@@UAEXAAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHeroCtor.cpp	?Update@CreateAHeroData@@UAE_NH@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHero_Unresolved.cpp	??1MyHeroBlingBlock@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHero_Unresolved.cpp	?DoXfer@CreateAHeroData@@UAEXAAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHero_Unresolved.cpp	?Update@CreateAHeroData@@UAE_NH@Z	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineShellScreens.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp	?g_00BBFDDC@@3QBDB	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp	?g_00BBFDE0@@3QBDB	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp	?writeFirewallBehavior@FirewallHelperClass@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOptionsCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptPlayerStatusCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptPlayerStatusScreen.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptRowListCallbacks.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadOnButtonSave.cpp	??BBFME2WideConcatPair@@QAE?AVUnicodeString@@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva00435819.cpp	??BBFME2WideConcatPair@@QAE?AVUnicodeString@@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTimeLineCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptTributePageCallbacks.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/ControlBarCallback.cpp	?DebugGetDefaultCommands@@YAPBDXZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionPreferences_mapFind.cpp	?find@CustomPreferenceMapShim@@QAEPAUCustomMapNodeShim@@PAUCustomAsciiStringShim@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/OptionPreferences_mapFind.cpp	?find@SkirmishFindMap@@QBEPAUSkirmishFindNode@@ABVAsciiString@@@Z	1
@@ -2959,7 +2940,6 @@ alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUIUpda
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUIUpdate.cpp	?rva0023D075@GameLogicFwd@@QAEHH@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUIUpdate.cpp	?rva0023D096@GameLogicFwd@@QAEMH@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/BannerUIUpdate.cpp	?rva0023D0AC@GameLogicFwd@@QAEHH@Z	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/Rva00427157Ctor.cpp	?g_00DC85C4@@3PAPBDA	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/Rva0043D1C9Destructor.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/Rva0043D1C9Destructor.cpp	?erase@?$vector@PAURva0043D1C9Entry@@V?$allocator@PAURva0043D1C9Entry@@@_STL@@@_STL@@QAEPAPAURva0043D1C9Entry@@PAPAU3@0@Z	1
@@ -3584,7 +3564,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Rva00386374Dtor.cpp	??1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	??0PeerRequest@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	??1PeerRequest@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	__imp__htonl	1
-alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadLookupStat.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadStats.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadStats_PackStatKey.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
@@ -3781,7 +3760,6 @@ alternatename	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectSce
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp	?slot00@W3DGhostObject@@UAEXXZ	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp	?slot04@W3DGhostObject@@UAEXXZ	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp	?updateOrphanedObjects@GhostObjectManager@@UAEXPAHH@Z	1
-alternatename	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogic.cpp	_strcpy	1
 alternatename	Code/GameEngineDevice/Source/Win32Device/Common/Win32BIGFileSystem.cpp	??RRva006038D4Less@@QBE_NPBD0@Z	1
 alternatename	Code/Libraries/Source/ATL/atlbase.cpp	??0Rva00800630Owner@@QAE@XZ	1
 alternatename	Code/Libraries/Source/ATL/atlbase.cpp	?m@Gen_00800540@@QAEPAXXZ	1
@@ -4005,10 +3983,8 @@ alternatename	Code/Libraries/Source/DirtySock/Rva00673930Siblings.cpp	_Rva008173
 alternatename	Code/Libraries/Source/DirtySock/Rva007F0000Allocator.cpp	?bfmeInit1019@@YAXPAD@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Rva007F0000Allocator.cpp	_Rva007F0000Alloc	1
 alternatename	Code/Libraries/Source/DirtySock/Rva00819920Comm.cpp	?d_00819920@@YAXXZ	1
-alternatename	Code/Libraries/Source/DirtySock/Y2ProtoMangleHelpers.cpp	_strcat	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva007EBAE0Module.cpp	?bfmeFindUPB@@YAPAXPAX0@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva007EBAE0Module.cpp	?bfmeOneRF@@YAPAXPAX0@Z	1
-alternatename	Code/Libraries/Source/DirtySock/Y2Rva007EBAE0Module.cpp	_strcat	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	?bfmeAlloc1053@@YAPAXH@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	?bfmeFreeRecUNA@@YAXPAX@Z	1
 alternatename	Code/Libraries/Source/DirtySock/Y2Rva00806580Module.cpp	?bfmeFreeTMB@@YAXPAX@Z	1
@@ -4174,7 +4150,6 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	?bfmeThrow2V56@
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	?rva001216E7ShutdownPhase@@YAXXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	_bfmeDirectXErrorName@4	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/dx8wrapper.cpp	_bfmeDtorCbDMC	1
-alternatename	Code/Libraries/Source/WWVegas/WW3D2/htree.cpp	_strcpy	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/line3d.cpp	?Class_ID@Line3DClass@@UBEHXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/mapper.cpp	?bfmeInit1039@BfmeC1039@@QAEXPAVBfmeD1039@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/part_buf.cpp	??0ParticleBufferClass@@QAE@PAVParticleEmitterClass@@IAAU?$ParticlePropertyStruct@VVector3@@@@AAU?$ParticlePropertyStruct@M@@22M22VVector3@@MMABVBFME2ParticleTextureHandle@@VShaderClass@@_NHHPBUW3dEmitterLinePropertiesStruct@@@Z	1

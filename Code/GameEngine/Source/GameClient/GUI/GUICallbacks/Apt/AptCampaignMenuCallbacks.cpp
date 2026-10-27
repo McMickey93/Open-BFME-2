@@ -5,9 +5,13 @@
 // the screen's registration; that binding is their only reference. The
 // class is named for the strings' prefix.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "ascii_string.h"
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
 
 class GameMessage;
 
@@ -173,11 +177,8 @@ void AptCampaignMenu::Victorious(int query, char *result, bool skip)
 		result[1] = 0;
 	}
 	if (query == 0 && m_victorious)
-		strcpy(result, "1");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("1"));
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // The primary native campaign-menu vtable C67720 slot1 points here; its
 // constructor installs this table and existing named callbacks establish the

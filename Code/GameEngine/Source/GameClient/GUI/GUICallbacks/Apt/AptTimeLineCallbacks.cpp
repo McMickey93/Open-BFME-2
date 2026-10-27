@@ -10,8 +10,12 @@
 
 extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include <vector>
 
 #include "ascii_string.h"
@@ -301,7 +305,7 @@ void AptTimeLine::PlayerColor(int index, char *value, bool set)
 {
 	if (set)
 		return;
-	strcpy(value, "0");
+	_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>("0"));
 	if (m_players.empty())
 		return;
 	if (index >= 0 && (unsigned int)index < m_players.size())
@@ -317,11 +321,11 @@ void AptTimeLine::PlayerFaction(int index, char *value, bool set)
 {
 	if (set)
 		return;
-	strcpy(value, "");
+	_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(""));
 	if (m_players.empty())
 		return;
 	if (index >= 0 && (unsigned int)index < m_players.size())
-		strcpy(value, m_players[index].m_faction.str());
+		_mbscpy(reinterpret_cast<unsigned char *>(value), reinterpret_cast<const unsigned char *>(m_players[index].m_faction.str()));
 }
 
 
@@ -351,9 +355,6 @@ void AptTimeLine::CaHAwardNumber(const char *value)
 		m_images.rva00524725(AsciiString("TimeLine::CahAwardImage"), image);
 	}
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Complete native51FA13..51FAFC updates each row's name and faction icon;
 // WB's weak CollectAllPlayerData lead names a different larger body, so

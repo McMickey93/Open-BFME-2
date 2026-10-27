@@ -3,6 +3,11 @@
 // constructor. The formatter writes the retail global at VA 0x0130C650 and
 // imports _vsnprintf through IAT VA 0x01359360.
 #include <stdarg.h>
+// Retail copies through the _mbscpy import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include <string.h>
 #include <stdio.h>
 #include <new>
@@ -65,7 +70,7 @@ INIException &INIException::operator=(const INIException &that)
         if (that.mFailureMessage != 0)
         {
             mFailureMessage = new char[strlen(that.mFailureMessage) + 1];
-            strcpy(mFailureMessage, that.mFailureMessage);
+            _mbscpy(reinterpret_cast<unsigned char *>(mFailureMessage), reinterpret_cast<const unsigned char *>(that.mFailureMessage));
         }
         else
             mFailureMessage = 0;
@@ -73,10 +78,6 @@ INIException &INIException::operator=(const INIException &that)
     }
     return *this;
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.

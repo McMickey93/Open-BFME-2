@@ -6,6 +6,11 @@
 // assigns through operator= at 0x0002F6D6. The (tag, format, ...)
 // constructor is the formatter rowed as _bfmeFormatText at 0x0060C36E, and
 // the destructor folds with INIException's: both delete[] the text at +0.
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include <new>
 #include <stdio.h>
 #include <stdarg.h>
@@ -64,7 +69,7 @@ XferException &XferException::operator=(const XferException &that)
 		if (that.text != 0)
 		{
 			text = new char[strlen(that.text) + 1];
-			strcpy(text, that.text);
+			_mbscpy(reinterpret_cast<unsigned char *>(text), reinterpret_cast<const unsigned char *>(that.text));
 		}
 		else
 			text = 0;
@@ -72,7 +77,3 @@ XferException &XferException::operator=(const XferException &that)
 	}
 	return *this;
 }
-
-// Retail's call sites in this unit's matched rows land on bodies rowed under
-// other spellings at the same addresses (same ABI). Bind the spellings used here.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

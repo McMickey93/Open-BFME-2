@@ -3,13 +3,14 @@
 // Trivial dtor: stores vtable 0x00865518 then tail-jmps to pinned base dtor
 // 0x005248D0. Evidence: 11B mov-plus-jmp shape, no EH prolog, caller 0x0050E7C8,
 // unwind funclets at 0x007948B2/0x00794921/0x00794956 reference it.
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#include <mbstring.h>
 class Rva005248D0
 {
 public:
 	virtual ~Rva005248D0();
 };
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
 extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *format, ...);
 
 // The list row built by 0x0050F85D, whose constructor binds
@@ -34,10 +35,7 @@ Rva0050FAEC::~Rva0050FAEC()
 // answering the row's color ("0" when skipped).
 void Rva0050FAEC::color(int query, char *result, bool skip)
 {
-	strcpy(result, "0");
+	_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("0"));
 	if (!skip)
 		_snprintf(result, 0xFF, "%d", m_color);
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

@@ -6,9 +6,13 @@
 // reference. The class is named for the strings' prefix. The rotate and
 // zoom buttons pass "true" while held: only the first character is tested.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "ascii_string.h"
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
 
 // TheGlobalData's +0x9D1 flag.
 class GlobalData;
@@ -146,7 +150,7 @@ void AptCreateAHero::RenderPictureGuard(const void *origin, const void *extent, 
 void AptCreateAHero::CreateAHeroDemo(int query, char *result, bool skip)
 {
 	if (result && query == 0 && !skip)
-		strcpy(result, ((AptCreateAHeroGlobalData *)TheWritableGlobalData)->m_9d1 ? "0" : "1");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(((AptCreateAHeroGlobalData *)TheWritableGlobalData)->m_9d1 ? "0" : "1"));
 }
 
 // Retail 0x00513AF4, 23 bytes: bound as "CreateAHero"; hands the value to
@@ -216,9 +220,6 @@ void AptCreateAHero::OnShowScreen(const char *screen)
 		Rva005B23D7HeroPowersDescription((void *)0, AsciiString::TheEmptyString, AsciiString::TheEmptyString);
 	}
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 
 // Retail 0x00513CDF, 118 bytes: AptCreateAHero::OpenScreen (WorldBuilder,
 // AptCreateAHero.cpp line 202; wb-name-unverified). Pushes CreateAHero.apt,

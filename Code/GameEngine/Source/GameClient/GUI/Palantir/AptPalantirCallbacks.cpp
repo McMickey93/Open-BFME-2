@@ -6,9 +6,13 @@ class AptPlayer { public: bool HideLevel(int); };
 // pointers by the screen's registration; that binding is their only
 // reference. The class is named for the strings' prefix.
 
+// Retail calls _mbscpy through the import thunk at 0x00629176.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
 #include "ascii_string.h"
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
 
 // BfmePathLeafAfterMarker.cpp's path helpers.
 namespace AptUtils { const char *__cdecl SkipLevelN(const char *path); }
@@ -510,7 +514,7 @@ void AptPalantir::OnPlanningModeUIUnloaded(const char *unused)
 void AptPalantir::PalantirMinLOD(int query, char *result, bool skip)
 {
 	if (query == 0 && !skip)
-		strcpy(result, ((AptPalantirLODView *)TheGameLODManager)->m_level <= 1 ? "1" : "0");
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>(((AptPalantirLODView *)TheGameLODManager)->m_level <= 1 ? "1" : "0"));
 }
 
 // Retail 0x002D3D61, 109 bytes. Name unknown. Executes the side's ring or
@@ -582,6 +586,3 @@ void AptPalantir::OnPlanningModeUILoaded(const char *path)
 {
 	((Rva002D390E *)&m_planningModeUI)->reset(new Rva00527FA2(AptUtils::LevelIndexFromTarget(path), AsciiString(AptUtils::SkipLevelN(path))));
 }
-
-// Retail's strcpy call lands on the import thunk rowed as ji_00629176.
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")

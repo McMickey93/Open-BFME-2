@@ -18,7 +18,6 @@
 #define BFME_MOTION_CHANNEL_OUT_OF_LINE
 #include "../../../../../reference/shims/bfmehrawanim/motchan.h"
 #undef BFME_MOTION_CHANNEL_OUT_OF_LINE
-#pragma comment(linker, "/alternatename:_strcpy=?ji_00629176@@YAXXZ")
 #include <new>
 #include <vector>
 #include "../../../../../reference/shims/bfme2htree/htree.h"
