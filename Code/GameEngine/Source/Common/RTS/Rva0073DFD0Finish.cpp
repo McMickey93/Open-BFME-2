@@ -43,8 +43,9 @@ private:
 
 // ?Rva0073DFD0Element::Rva0073DFD0Element present-unmatched
 Rva0073DFD0Element::Rva0073DFD0Element() : cellNodes(0), unknown64(0) {}
-// ?Rva0073DFD0Element::~Rva0073DFD0Element present-unmatched
-Rva0073DFD0Element::~Rva0073DFD0Element() { unknown64 = 0; }
+// Retail's element destructor is the shared empty body at 0x0069E440 (a bare
+// ret): reset's delete[] hands that address to the vector destructor iterator.
+Rva0073DFD0Element::~Rva0073DFD0Element() {}
 
 class ShroudManager
 {
