@@ -85,14 +85,14 @@ public:
 class BfmeRefVGO
 {
 public:
-	BfmeRefVGO &bfmeAssignVGO(const BfmeRefVGO &);
+	BfmeRefVGO &assign(const BfmeRefVGO &);
 	Rva006D0280 *m_object;
 };
 
 int __cdecl Rva006CFDF0DecRef(int *p);
 void __cdecl bfmeDropVGO(void *p);
 class Rva00894D80Accessor { public: static unsigned int increment(unsigned int *p); };
-__declspec(noinline) inline BfmeRefVGO &BfmeRefVGO::bfmeAssignVGO(const BfmeRefVGO &other)
+__declspec(noinline) inline BfmeRefVGO &BfmeRefVGO::assign(const BfmeRefVGO &other)
 {
 	if (&other != this)
 	{
@@ -383,7 +383,7 @@ void AptLinker::Load(const EAStringC &file, EAStringC target)
 	if (!file.isEmpty()) {
 		loaded = ((Rva006D0A30List *)g_rva00893030Manager)->findSpecial(&file);
 		if (!loaded.m_object)
-			((BfmeRefVGO &)loaded).bfmeAssignVGO((const BfmeRefVGO &)((Rva006D0A30List *)g_rva00893030Manager)->rva006D0B40(file));
+			((BfmeRefVGO &)loaded).assign((const BfmeRefVGO &)((Rva006D0A30List *)g_rva00893030Manager)->rva006D0B40(file));
 		else
 			rva006D1450(Rva006D07E0Key(loaded.m_object));
 	}

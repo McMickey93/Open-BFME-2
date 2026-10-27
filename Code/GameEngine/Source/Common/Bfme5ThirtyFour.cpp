@@ -46,7 +46,7 @@ void __cdecl bfmeDropVGO(void *p);
 class BfmeRefVGO
 {
 public:
-	BfmeRefVGO &bfmeAssignVGO(const BfmeRefVGO &other);
+	BfmeRefVGO &assign(const BfmeRefVGO &other);
 	unsigned *m_bfmeP;
 };
 // The ref-counted assign (rowed 0x006CDB10, BfmeConv1355.cpp) is visible
@@ -58,7 +58,7 @@ class Rva00894D80Accessor
 public:
 	static unsigned int increment(unsigned int *p);
 };
-__declspec(noinline) inline BfmeRefVGO &BfmeRefVGO::bfmeAssignVGO(const BfmeRefVGO &o)
+__declspec(noinline) inline BfmeRefVGO &BfmeRefVGO::assign(const BfmeRefVGO &o)
 {
 	if (&o != this)
 	{
@@ -145,7 +145,7 @@ void Rva006D1130::grow(int capacity)
 		Rva006CE3D0Resize((Rva004A9DF3Element *)m_begin, 0, 0);
 	m_begin = newData;
 	const Rva006D1130Item empty;
-	m_begin[m_count].bfmeAssignVGO(empty);
+	m_begin[m_count].assign(empty);
 	__assume(empty.m_bfmeP == 0);
 }
 
@@ -173,7 +173,7 @@ void Rva006D1130::insert(Rva006D1130Item *const &first, Rva006D1130Item *const &
 		if (position.position == end)
 		{
 			Rva006D0460Copy(first, last, end);
-			m_begin[want].bfmeAssignVGO(Rva006D1130Item());
+			m_begin[want].assign(Rva006D1130Item());
 		}
 		else
 		{
@@ -181,7 +181,7 @@ void Rva006D1130::insert(Rva006D1130Item *const &first, Rva006D1130Item *const &
 			Rva006D1130Iterator tail(finish, begin, finish);
 			Rva006D04D0CopyBackward(position, tail, begin + ((position.position - begin) + added));
 			Rva006D0540Copy(first, last, position);
-			m_begin[want].bfmeAssignVGO(Rva006D1130Item());
+			m_begin[want].assign(Rva006D1130Item());
 		}
 		m_count = want;
 	}

@@ -1,6 +1,6 @@
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // BfmeRefVGO copy constructor, retail 0x000A9806 (28B). The BFME1 donor
-// (BfmeConv1355.cpp) only carries bfmeAssignVGO; the copy is the same
+// (BfmeConv1355.cpp) only carries BfmeRefVGO::assign; the copy is the same
 // single-pointer acquire through the shared VGO refcount helpers: copy the
 // pointer, then increment when non-null. Callee resolves through the
 // existing bfmeIncVGO pin at 0x006CFDE0.
@@ -28,7 +28,7 @@ BfmeRefVGO::BfmeRefVGO(const BfmeRefVGO &other)
 }
 
 // ??1BfmeRefVGO@@QAE@XZ, retail 0x000A9822 (30B). Mirror of the release half
-// of bfmeAssignVGO in BfmeConv1355.cpp: decrement, dropping the shared block
+// of BfmeRefVGO::assign in BfmeConv1355.cpp: decrement, dropping the shared block
 // when the count reaches zero. Dec resolves through the rowed Rva006CFDF0DecRef
 // leaf, drop through the bfmeDropVGO pin at 0x006D0440.
 // Rva006CDE50Collect.cpp emits a select-any copy of this same body for its

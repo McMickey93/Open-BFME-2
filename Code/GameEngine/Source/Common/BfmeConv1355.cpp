@@ -1,4 +1,4 @@
-// bfmeAssignVGO, retail 0x006CDB10 (66B).
+// BfmeRefVGO::assign, retail 0x006CDB10 (66B).
 // Ported from Open-BFME-1 Code/GameEngine/Source/Common/BfmeConv1355.cpp
 // (BFME1 0x00892B90). Only the placed ref-counted assign is defined here;
 // the donor's bfmeGoVGM viewport helper stays out (with it goes the donor's
@@ -16,12 +16,12 @@ void __cdecl bfmeDropVGO(void *p);
 class BfmeRefVGO
 {
 public:
-	BfmeRefVGO &bfmeAssignVGO(const BfmeRefVGO &o);
+	BfmeRefVGO &assign(const BfmeRefVGO &o);
 	unsigned *m_bfmeP;
 };
 
-// ?bfmeAssignVGO@BfmeRefVGO@@QAEAAV1@ABV1@@Z, retail 0x006CDB10 (66B).
-__declspec(noinline) inline BfmeRefVGO &BfmeRefVGO::bfmeAssignVGO(const BfmeRefVGO &o)
+// ?assign@BfmeRefVGO@@QAEAAV1@ABV1@@Z, retail 0x006CDB10 (66B).
+__declspec(noinline) inline BfmeRefVGO &BfmeRefVGO::assign(const BfmeRefVGO &o)
 {
 	if (&o != this)
 	{
@@ -47,4 +47,4 @@ void __stdcall Rva006CDB60ClearWord(unsigned int *slot)
 }
 // Select-any: another unit compiles an identical copy; the anchor keeps the rowed body emitted.
 // ?bfmeAnchorBfmeRefVGOAssign absent-from-retail
-void bfmeAnchorBfmeRefVGOAssign(BfmeRefVGO *p) { p->bfmeAssignVGO(*p); }
+void bfmeAnchorBfmeRefVGOAssign(BfmeRefVGO *p) { p->assign(*p); }

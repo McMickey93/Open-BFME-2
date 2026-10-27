@@ -2796,3 +2796,4 @@ member,Record52::player30,Record52::m_playerID,inferred,agree:nl-ce5ff3a46515,Co
 local,StrategicVeterancy::Data::AutoResolve::AutoResolve::e,StrategicVeterancy::Data::AutoResolve::AutoResolve::unitIter,inferred,agree:nl-638e215e0bf0,Code/GameEngine/Source/GameClient/GUI/StrategicVeterancyAutoResolveCtor.cpp,0x005ECE81
 local,SpecialAbilityUpdate::rva0044EDA6::a,SpecialAbilityUpdate::rva0044EDA6::containCount,inferred,agree:nl-c90b8301c5ed,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateSlot8.cpp,0x0044EDA6
 class,BfmeBVJP,Transactor,inferred,agree:nl-6c5370549f54,Code/GameEngine/Source/GameNetwork/BfmeGameBrowserVJP.cpp,
+function,?bfmeAssignVGO@BfmeRefVGO@@QAEAAV1@ABV1@@Z,?assign@BfmeRefVGO@@QAEAAV1@ABV1@@Z,inferred,agree:nl-caf779d6c46d,Code/GameEngine/Source/Common/BfmeConv1355.cpp,0x006CDB10
