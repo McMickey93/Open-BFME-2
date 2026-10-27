@@ -1,3 +1,4 @@
+// platformsdk
 /* STLport 4.5.3 c_locale_win32.c: _Locale_unshift and _Locale_strwcmp.
    Transferred unchanged in code from Open-BFME-1 5cae4bdff
    game/Libraries/Source/STLport/LocaleUnshiftStrwcmp.c (BFME1 0x0084DAF0 63 B,
@@ -6,14 +7,9 @@
    _Locale_wctomb (0x00020D50) exactly as in BFME1. Donor note: in BFME1 neither
    body has a reference left in retail; _Locale_unshift ends at a ret plus int3
    padding and _Locale_strwcmp starts at the next 16-byte boundary. */
-typedef unsigned int size_t;
-typedef unsigned short wchar_t;
-typedef int mbstate_t;
-typedef unsigned long LCID;
-__declspec(dllimport) int __stdcall CompareStringW(LCID, unsigned long, const wchar_t *, int, const wchar_t *, int);
-
-#define CSTR_LESS_THAN 1
-#define CSTR_EQUAL 2
+#include <windows.h>
+#include <string.h>
+#include <wchar.h>
 
 struct _Locale_ctype;
 struct _Locale_collate { LCID lcid; };

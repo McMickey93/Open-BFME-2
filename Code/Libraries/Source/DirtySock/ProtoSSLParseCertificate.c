@@ -124,10 +124,7 @@ void Rva0080D590(const uint8_t *, int, char *);
 void Rva0080D620(const uint8_t *, int, uint8_t *);
 void Rva0080D6C0(struct ProtoSSLCACert *, const void *, int, void *, int);
 void Rva007FE780(const char *, ...);
-void *memset(void *, int, unsigned int);
-void *memcpy(void *, const void *, unsigned int);
-int memcmp(const void *, const void *, unsigned int);
-int strcmp(const char *, const char *);
+#include <string.h>
 
 int Rva0080C960(void *state, struct X509Certificate *cert,
 	const uint8_t *data, int size)

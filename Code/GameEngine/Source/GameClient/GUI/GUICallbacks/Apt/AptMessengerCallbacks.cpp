@@ -17,8 +17,7 @@
 
 #include "unicode_string.h"
 
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-extern "C" int __cdecl strcmp(const char *left, const char *right);
+#include <string.h>
 
 // Rva00511730Save.cpp's g_Va00E048C0, the chat entry's kept text.
 extern UnicodeString g_Va00E048C0;
@@ -39,8 +38,8 @@ void __cdecl Rva005118F3Show(int index, bool clear);
 // 0x005116C2 is AptMessenger::OpenScreen, declared in the class below.
 void __cdecl Rva00511730(int unused);
 
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *format, ...);
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "../../../../Common/GameLogicObjectLookupView.h"
 

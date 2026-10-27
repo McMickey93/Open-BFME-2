@@ -7,9 +7,8 @@
 // is Rva00404781 (float[20]+float[20]+2 uints, ctor 0x00404AA5 via vector ctor,
 // empty dtor folded at 0xB3FD0); callers at 0x00404EF4/0x00404F45.
 
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
-extern "C" void *__cdecl memset(void *dst, int val, unsigned int n);
+#include <new>
+#include <string.h>
 void _bfme_debugRecordCallsite(int kind);
 
 class Rva00404781

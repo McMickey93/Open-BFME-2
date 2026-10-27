@@ -28,8 +28,6 @@ enum ObjectShroudStatus
 	OBJECTSHROUD_SHROUDED
 };
 
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
-extern "C" __declspec(dllimport) double __cdecl floor(double value);
 extern const Real g_bfmeK1253;
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
@@ -55,8 +53,7 @@ __forceinline Real shroudCeil(Real value)
 	return (Real)ceil((double)value);
 }
 
-void *operator new[](unsigned int bytes);
-void operator delete[](void *pointer);
+#include <new>
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include/Lib/BaseType.h
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
