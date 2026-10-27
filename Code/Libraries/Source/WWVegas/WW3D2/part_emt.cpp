@@ -32,13 +32,7 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include "wwprofile.h"
 #include <limits.h>
 #include "gcd_lcm.h"
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 #include "quat.h"
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 
 // Global variable which is only used to communicate the worldspace emitter
 // velocity from ParticleEmitterClass::Create_New_Particles() to

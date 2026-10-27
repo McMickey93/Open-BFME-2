@@ -35,45 +35,7 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include "random.h"
 #include <stdlib.h>
 #pragma comment(linker, "/alternatename:?bfmeInit1039@BfmeC1039@@QAEXPAVBfmeD1039@@@Z=??0GridWSEnvMapperClass@@QAE@ABV0@@Z")
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 #include "../../../../../reference/shims/bfme_matrix3d_link/vector4.h"
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma push_macro("inline")
-#define inline __declspec(dllimport) __forceinline
-#pragma pop_macro("inline")
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma push_macro("inline")
-#define inline __declspec(dllimport) __forceinline
-#pragma pop_macro("inline")
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma push_macro("inline")
-#define inline __declspec(dllimport) __forceinline
-#pragma pop_macro("inline")
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma push_macro("inline")
-#define inline __declspec(dllimport) __forceinline
-#pragma pop_macro("inline")
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma push_macro("inline")
-#define inline __declspec(dllimport) __forceinline
-#pragma pop_macro("inline")
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma push_macro("inline")
-#define inline __declspec(dllimport) __forceinline
-#pragma pop_macro("inline")
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 // math.h's inline floorf gets internal linkage, and the link view keeps Vector4(x,y,z,w) inline, so neither
 // emits a copy that loses to retail's owners (0x0004D649, 0x006D8A30).
 extern "C" { static float __cdecl floorf(float); }

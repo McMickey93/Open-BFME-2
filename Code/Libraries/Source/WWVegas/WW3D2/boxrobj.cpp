@@ -47,35 +47,13 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
-#pragma optimize("s", on)
-#pragma optimize("", on)
 #include "rendobj.h"
 #include <string.h>
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("s", on)
-#pragma optimize("", on)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("s", on)
-#pragma optimize("", on)
 #undef W3DMPO_GLUE
 #define W3DMPO_GLUE(ARGCLASS)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("s", on)
-#pragma optimize("", on)
 #undef W3DMPO_GLUE
 #define W3DMPO_GLUE(ARGCLASS)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 #include "vector3.h"
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 
 // Face Connectivity
 extern "C" TriIndex					_BoxFaces[NUM_BOX_FACES] =

@@ -37,8 +37,6 @@ void __cdecl operator delete[](void *) throw();
 #include "texture.h"
 #include "wwstring.h"
 #include <windows.h>
-#pragma optimize("gsy", on)
-#pragma optimize("", on)
 #include "rendobj.h"
 #include <string.h>
 #pragma intrinsic(memset)
