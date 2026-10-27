@@ -15,7 +15,7 @@
 // an inert int at +0x0C, so its destructor is the same function.
 #include <string>
 
-void operator delete[](void *p);
+#include <new>
 
 class Rva0035A18D
 {

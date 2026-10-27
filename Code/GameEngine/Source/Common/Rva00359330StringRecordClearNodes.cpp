@@ -14,7 +14,7 @@
 // (retail test/store/branch). A do-while lands 51 B, a volatile reload 54 B
 // with the test before the store.
 
-void __cdecl operator delete(void *);
+#include <new>
 
 class BfmeNodeZ
 {
