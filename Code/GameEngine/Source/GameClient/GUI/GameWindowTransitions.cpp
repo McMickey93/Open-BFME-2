@@ -338,10 +338,19 @@ public:
 	~CriticalSectionLock() { LeaveCriticalSection(m_cs); }
 };
 
+// Retail's ~_List_base<int> may throw under /EHsc: the Rva001DC0EC dtor resets
+// its EH state (or [ebp-4],-1) before calling it at 0x004EC395. With clear()'s
+// body visible cl proves the base dtor nothrow and drops that store, so clear
+// stays declared only; it binds the rowed list<int> owner.
+namespace _STL {
+template<> void _List_base<int, allocator<int> >::clear();
+}
+
 class Rva001DC0EC
 {
 public:
 	Rva001DC0EC();
+	~Rva001DC0EC();
 private:
 	_STL::list<int, _STL::allocator<int> > m_list;
 private:
@@ -349,7 +358,7 @@ private:
 private:
 	int m_08;
 private:
-	int m_0C;
+	AsciiString m_0C;
 private:
 	bool m_10;
 public:
@@ -591,7 +600,6 @@ void GameWindowTransitionsHandler::rva001DC5EC()
 
 Rva001DC0EC::Rva001DC0EC()
 {
-	m_0C = 0;
 	m_08 = 0;
 	m_10 = false;
 	m_04 = 1;

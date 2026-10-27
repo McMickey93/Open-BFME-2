@@ -1,4 +1,4 @@
-// cl: /Ireference/shims/bfmelist /EHs /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// cl: /Ireference/shims/bfme2_ascii /Ireference/shims/bfmelist /EHs /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // stlport
 //
 // ??1Rva001DC0EC@@QAE@XZ @0x001DC0EC 120B. Dtor: deletes Rva001DBC77 items
@@ -6,6 +6,7 @@
 // list base. Evidence: deleting-dtor caller 0x001DC1E1 item dtor row
 // 0x001DBC77 erase row 0x00438539 releaseBuffer row 0x00036410 and
 // list-base dtor row 0x004EC395. Honest address name.
+#include "ascii_string.h"
 #include <list>
 
 // Retain bfmealloc's native null-checked free and proxy forwarding inline.
@@ -19,19 +20,13 @@ void _STLP_alloc_proxy<_List_node<int>*, _List_node<int>, allocator<_List_node<i
 { __stl_alloc_rebind(static_cast<_Base&>(*this), (_List_node<int>*)0).deallocate(p, n); }
 }
 
-template <typename T> class StringBase
-{
-public:
-	~StringBase() { releaseBuffer(); }
-private:
-	void releaseBuffer();
-	T *m_data;
-};
-
-// Existing public narrow teardown spelling resolves to the verified
-// 133-byte releaseBuffer worker at RVA 0x36410. Wide teardown is unchanged.
-template <> StringBase<char>::~StringBase();
-
+// Retail's ~_List_base<int> may throw under /EHsc: the Rva001DC0EC dtor resets
+// its EH state (or [ebp-4],-1) before calling it at 0x004EC395. With clear()'s
+// body visible cl proves the base dtor nothrow and drops that store, so clear
+// stays declared only; it binds the rowed list<int> owner.
+namespace _STL {
+template<> void _List_base<int, allocator<int> >::clear();
+}
 
 class Rva001DBC77
 {
@@ -44,11 +39,20 @@ public:
 class Rva001DC0EC
 {
 public:
+	Rva001DC0EC();
 	~Rva001DC0EC();
 private:
 	_STL::list<int, _STL::allocator<int> > m_list;
-	char m_pad04[8];
-	StringBase<char> m_string;
+private:
+	int m_04;
+private:
+	int m_08;
+private:
+	AsciiString m_0C;
+private:
+	bool m_10;
+public:
+	void rva001DC1B3(_STL::list<int, _STL::allocator<int> > *dest);
 };
 
 Rva001DC0EC::~Rva001DC0EC()
