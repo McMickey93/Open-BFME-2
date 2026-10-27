@@ -318,6 +318,27 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Status: Open. Updated: 2026-10-27.**
 
+- **PlaceEventTranslator GameLogic member-count blocker (2026-10-27, base
+  `83f299b390`):**
+  [The symbol-count handoff](../reverse/attempt_support/placeevent-symbol-count-20261027-pet/readme.md)
+  explains why any member added to `GameLogicObjectLookupView.h` swaps the
+  `pendingBuild`/`builderObj` homes ([ebp-0x1C]/[ebp-0x20]) of
+  PlaceEventTranslator::translateGameMessage 0x0043218A. The two split homes
+  tie in the stack packer. The tie is decided by the front-end symbol ids,
+  mod 64, of the function's five static-data symbols: the four `canMakeUnit`
+  message literals and `noCanDoSound`. Every declaration before the function
+  shifts those ids. Locals, temporaries, names and GameLogic's layout are
+  inert, and with those symbols created elsewhere the order is fixed but not
+  retail's. No code-identical spelling of the unit removes the dependence, so
+  no source change was made. A header change keeps the body exact when its
+  net symbol delta mod 64 is in {0, 9..12, 16..19, 29..44}; a field that
+  splits a pad counts two. Trial: the +0x9D field alone (+2) fails. `m_6E`,
+  `m_99`, `m_9b`, `m_9d`, `m_9f`, `m_A0`, `m_118` and `m_11C` together (+9)
+  build 5/5 exact; the header was restored. Batch GameLogic adoptions to a
+  safe delta, or pair them with a matching compensation in this unit. Other
+  dependents of the header still need their own gate. Clearance and census
+  confirmation remain pending.
+
 - **Transport consumer header adoption (2026-10-27, `3626999202`):**
   [The bounded consumer check](../reverse/attempt_support/transport-consumer-header-adoption-20261027-codexb4.md)
   replaces three private Transport views with the existing canonical header;
