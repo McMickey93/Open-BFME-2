@@ -363,7 +363,6 @@ address_global	Code/GameEngine/Source/Common/Rva005794EDDtor.cpp	g_Rva0107301CEm
 address_global	Code/GameEngine/Source/Common/Rva00579676Parse.cpp	g_Va00E0631C	3
 address_global	Code/GameEngine/Source/Common/Rva00579900Fetch.cpp	g_Va007BB5C4	2
 address_global	Code/GameEngine/Source/Common/Rva0057A51CApt.cpp	g_Va007C9260	3
-address_global	Code/GameEngine/Source/Common/Rva0057FECE.cpp	g_Va00E06394	2
 address_global	Code/GameEngine/Source/Common/Rva00583015Destroy.cpp	g_Va00E06398	5
 address_global	Code/GameEngine/Source/Common/Rva005B02B5.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/Rva005B922FDtor.cpp	g_Va00E06480	3
@@ -1015,7 +1014,7 @@ address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMesseng
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessengerCallbacks.cpp	g_Va00E06394	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessengerFriendMenu.cpp	g_Va00E046BC	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessengerOnline.cpp	g_Va00E046BC	2
-address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpChatCallbacks.cpp	g_Va00E06394	2
+address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpChat.cpp	g_Va00E06394	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineBuddyInvites.cpp	g_Va00A04904	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineCustomMatchCallbacks.cpp	g_Va00E063F0	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineCustomMatchCtor.cpp	g_Va00E063F0	2
@@ -2919,7 +2918,7 @@ alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconne
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptFileTransferCallbacks.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptLobbyScreenInitCallbacks.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessengerCallbacks.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpChatCallbacks.cpp	_strcpy	1
+alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpChat.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHeroCtor.cpp	?DoXfer@CreateAHeroData@@UAEXAAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHeroCtor.cpp	?Update@CreateAHeroData@@UAE_NH@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHero_Unresolved.cpp	??1MyHeroBlingBlock@@QAE@XZ	1
