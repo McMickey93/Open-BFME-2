@@ -12,8 +12,6 @@ struct BfmeRect
 	long bottom;
 };
 
-extern "C" __declspec(dllimport) Int __stdcall IsRectEmpty(const BfmeRect *rect);
-
 class SurfaceResource
 {
 public:

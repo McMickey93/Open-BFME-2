@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // ?rva0023CD9E@GameLogic@@QAEX_NH0@Z @0x0023CD9E 327B
 // BFME2 GameLogic 3-arg pause setter, evolution of BFME1
@@ -33,7 +34,8 @@ private:
 	bool m_150; // +0x150
 };
 extern GameLogic *TheGameLogic;
-extern "C" __declspec(dllimport) unsigned int __stdcall timeGetTime(void);
+#define NOMINMAX
+#include <windows.h>
 
 class NetworkInterface;
 extern NetworkInterface *TheNetwork;
