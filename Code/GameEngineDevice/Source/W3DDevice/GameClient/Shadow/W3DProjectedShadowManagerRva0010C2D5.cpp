@@ -21,7 +21,6 @@
 
 class RenderObjClass;
 
-void *operator new(unsigned int size);
 inline void *operator new(unsigned int, void *where) { return where; }
 
 class Shadow

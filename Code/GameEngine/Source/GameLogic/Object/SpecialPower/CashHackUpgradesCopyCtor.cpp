@@ -11,7 +11,7 @@
 // dword-zeroing body; the member's type identity remains unproven.
 #pragma comment(linker, "/alternatename:??0Rva003B31ADMember@@QAE@XZ=??0?$BitFlags@$0L@@@QAE@XZ")
 
-typedef unsigned int size_t;
+#include <stddef.h>
 
 inline void *operator new(size_t, void *place)
 {

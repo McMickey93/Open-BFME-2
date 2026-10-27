@@ -2,6 +2,7 @@
 
 #include "Code/Libraries/Include/Lib/Coord3D.h"
 #include "matrix3d.h"
+#include <math.h>
 
 // Native 0x0028EFB8..0x0028F2C4: thiscall float result, RET 12.
 // WorldBuilder CE52E0 proves active-shape enumeration, Coord3D delta followed
@@ -16,11 +17,6 @@
 
 typedef int Int;
 typedef float Real;
-
-extern "C" double __cdecl fabs(double value);
-extern "C" double __cdecl sqrt(double value);
-
-
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include/Lib/BaseType.h
 struct BfmeShapeE15;

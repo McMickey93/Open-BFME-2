@@ -1,5 +1,7 @@
 // cl: /DNDEBUG /MD /GX-
 // Rva00803080 pool init @ 0x008030C0 (71B).
+#include <string.h>
+#include <new.h>
 
 // The compiler-generated vector constructor iterator (??_H) takes the
 // optimization state of the first function that needs it. Retail links one
@@ -21,13 +23,6 @@ public:
 
 struct Rva00807BA0Ping;
 Rva00807BA0Ping *Rva00807BA0(void);
-
-extern "C" void *memset(void *, int, unsigned);
-
-inline void *operator new(unsigned int, void *where)
-{
-	return where;
-}
 
 class Rva008030C0Elem
 {

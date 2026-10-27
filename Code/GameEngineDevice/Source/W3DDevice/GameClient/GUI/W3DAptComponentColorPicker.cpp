@@ -11,8 +11,7 @@
 // The scale getters retain their existing opaque integer-return ABI;
 // their returned addresses and paired float fields are native evidence.
 #include "ascii_string.h"
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char*,const char*,...);
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char*,unsigned int,const char*,...);
+#include <stdio.h>
 #include "wwmath.h"
 // Keep the same visible operation without emitting an O1 WWMath::Floor copy;
 // lightenvironment.cpp owns the retail O2 body of that public member.

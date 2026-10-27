@@ -33,8 +33,7 @@
 // placement operator new definitions in this unit).
 namespace std { template<class _Ty> inline const _Ty &max(const _Ty &_Left, const _Ty &_Right) { return (_Left < _Right ? _Right : _Left); } }
 #include <math.h>
-#define __max(a,b) (((a)>(b))?(a):(b))
-#define __min(a,b) (((a)<(b))?(a):(b))
+#include <stdlib.h>
 
 // Scoped storage views use the evidenced 12B vector, 8B pair, and 3x4 matrix
 // representations without defining copies of the public math-library methods.

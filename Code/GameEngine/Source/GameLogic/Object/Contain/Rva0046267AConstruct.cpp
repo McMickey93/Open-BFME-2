@@ -6,7 +6,7 @@
 // test/je plus ret (no EH). Dedicated TU so the copy-ctor definition cannot inline.
 // Evidence: single caller 0x004634BA (0x60-byte RB node alloc plus +0x10 construct)
 // unblocks 0x004634BA; prev 0x00462D62 in StringContainerRecordCopyBFME2.
-typedef unsigned int size_t;
+#include <stddef.h>
 inline void *operator new(size_t, void *place)
 {
 	return place;

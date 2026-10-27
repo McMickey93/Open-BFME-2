@@ -1,4 +1,5 @@
 // cl: /O1 /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /DNDEBUG /D_CRTIMP= /MD /EHsc /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 // LANGameInfo.cpp ParseGameOptionsString (Zero Hour GameNetwork/LANGameInfo.cpp, BFME 1 donor
 // LANGameInfoParseGameOptionsString.cpp at f989): native 0x00449258..0x004494AC.
@@ -12,6 +13,7 @@ namespace _STL { void __cdecl free(void *block) throw(...); }
 #include "ascii_string.h"
 #include <map>
 #undef free
+#include <windows.h>
 
 // _Rb_tree_iterator comparisons otherwise instantiate the base-class
 // operator!= COMDAT (one byte shape per TU flags); exact-match free
@@ -216,7 +218,6 @@ extern Bool ParseAsciiStringToGameInfo(GameInfo *, AsciiString, Bool);
 extern Bool ByteBufferToGameInfo(GameInfo *game, const void *buffer, Int length);
 extern void Rva00446A77Enable();
 extern void Rva00248E98Enable();
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 static __forceinline void setSlotLogin(LANGameSlot *slot, UnicodeString value){((Rva00447A5C*)slot)->rva00447A5C(value);}
 static __forceinline void setSlotHost(LANGameSlot *slot, UnicodeString value){((Rva00447A93*)slot)->rva00447A93(value);}
