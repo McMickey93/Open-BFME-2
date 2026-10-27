@@ -29,7 +29,7 @@ retracted in this first commit, not claimed as new recovery.
 Path-consumer audit: the sole removed path is
 Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp. Searches of tools,
 hooks, workflows, includes and doxygen registries find no active dependency.
-The two seed comments will be removed with funclet admission. link_status.csv
+The two stale seed comments are removed with funclet admission. link_status.csv
 and the TU map's old source observations describe their measured inputs and
 are retained; no TU approval is inferred from these historical source cells.
 The current parent graph supplies the compiler ownership evidence.
@@ -40,3 +40,39 @@ verify and its paired current lock-provider preview is 2/2 LINKS (258 + 247
 bytes); Rva005189CFText already previews LINKS (279 bytes). The latter's
 LOD-table provider is held by another worker and was not edited. These checks
 claim no new census-linked bytes or runtime result.
+
+Final admission and retirement
+------------------------------
+
+After retraction commit `dce94b72f0`, add_match_batch.py admits the two actual
+compiler labels with gen-funclet and explicit parent tokens. Both 13-byte
+ranges have exactly one live row. The batch restores the function ledger to
+98,522 rows; no new target bytes are claimed. The two parent source edits only
+replace stale seed comments; their C++ bodies and compiler flags are unchanged.
+
+`./build.sh` passes all 10 rows, both string literals and both EXACT EH graphs.
+Both sources pass find_declared_unmatched.py. The data inventory generator
+writes build/upgrade-guard-data-ledger.csv from current objects; exactly the
+four key/guard rows at 0x00A03E24, 0x00A03E28, 0x00A03E70 and 0x00A03E74 are
+copied to the committed index. The generator reports one unrelated missing
+matched object, so this is a scoped refresh, not an assertion of tree-wide
+inventory freshness. Each of these four generated rows has one owner, the real
+parent. `repair_queue.py retire data SOURCE` passes for each parent and removes
+one registered key per source. Shadow data_check finds zero findings and the
+enforced converged check finds zero second names or unjudged rows.
+
+Ordinary current-object previews against index bf3dd31211 preserve LINKS for
+WeaponBonusUpgrade (118 authored bytes). StatusBitsUpgrade reports a duplicate
+constructor and wrong selected definition: the index still names the removed
+StatusBitsUpgradeConstructor.cpp object as its strong definer and sole retail
+owner. Commit `6ff5daca29` already merged that constructor into the current
+StatusBitsUpgrade.cpp; the old source and old ledger owner are absent. The
+constructor body is unchanged by this cleanup and still byte-verifies. This
+ordinary preview cannot clear the stale-provider obstacle; carry the source
+move into the next normal census. No new census or runtime claim is made.
+
+Immediately before the final commit, the outgoing removed-source audit finds
+no remaining active path consumer: tool, hook, workflow, include and doxygen
+searches are clean. Historical link_status and TU-map source observations are
+retained. No private class view, provider declaration, canonical class, pin,
+shared header or unrelated register key changes in this batch.

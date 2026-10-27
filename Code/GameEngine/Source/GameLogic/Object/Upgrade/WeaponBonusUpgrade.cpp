@@ -64,4 +64,4 @@ WeaponBonusUpgrade::WeaponBonusUpgrade(Thing *thing, const ModuleData *moduleDat
 
 // tu-skeleton: 0x004B5680 11B ?upgradeImplementation@WeaponBonusUpgrade@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/WeaponBonusUpgradeUpgradeImplementation.cpp (not merged yet)
 
-// tu-skeleton: 0x0078ED14 13B ?Rva0078ED14ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp (not merged yet)
+// The 0x0078ED14 static-guard rollback is rowed from this parent's exact EH graph.

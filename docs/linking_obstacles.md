@@ -1097,7 +1097,21 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-007: incomplete data ownership beyond clean symbol resolution
 
-**Status: Open; scoped storage repairs verified. Updated: 2026-10-26.**
+**Status: Open; scoped storage repairs verified. Updated: 2026-10-27.**
+
+- **StatusBitsUpgrade / WeaponBonusUpgrade guard cleanup (2026-10-27):**
+  [Exact parent EH ownership](../reverse/attempt_support/upgrade-guard-rollbacks-20261027-codex.md)
+  replaces the last two synthetic standalone clearers with their parents'
+  emitted funclets, preserving both 13-byte ranges. The empty clearer source
+  and six address-global hatch occurrences are removed. Four generated
+  key/guard index rows now name their current parents; the owning retirement
+  tool removes two stale data-debt keys. All 10 rows, both EH graphs and both
+  data checks pass. WeaponBonusUpgrade preserves ordinary-preview LINKS
+  (118 authored bytes) against bf3dd31211. StatusBitsUpgrade's preview retains
+  the census's removed StatusBitsUpgradeConstructor.cpp as strong definer and
+  sole owner after consolidation commit 6ff5daca29; next-census confirmation
+  remains pending. Its constructor is unchanged and byte-verifies. Broader
+  class/data closure remains open; no census-linked gain is claimed.
 
 - **DetachableRiderBody local-static index repair (2026-10-27, `408c38abc0`):**
   [The current-owner check](../reverse/attempt_support/detachable-rider-poolkey-data-retirement-20261027-codexb4.md)

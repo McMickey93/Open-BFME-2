@@ -83,4 +83,4 @@ StatusBitsUpgrade::StatusBitsUpgrade( Thing *thing, const ModuleData *moduleData
 
 // tu-skeleton: 0x004B4991 28B ??_GRva004B48D3@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp (not merged yet)
 
-// tu-skeleton: 0x0078EC05 13B ?Rva0078EC05ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp (not merged yet)
+// The 0x0078EC05 static-guard rollback is rowed from this parent's exact EH graph.
