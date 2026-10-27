@@ -61,15 +61,15 @@ struct Rva00415CABNode
     Rva00415AE0 *value;
 };
 
-class Rva00415CAB : public SubsystemInterface
+class Rva0022A809Subsystem : public SubsystemInterface
 {
 public:
-    virtual ~Rva00415CAB();
+    virtual ~Rva0022A809Subsystem();
 private:
     Rva00415366 m_table;
 };
 
-Rva00415CAB::~Rva00415CAB()
+Rva0022A809Subsystem::~Rva0022A809Subsystem()
 {
     Rva000411084 iterator;
     Rva000427195 *table = reinterpret_cast<Rva000427195 *>(&m_table);

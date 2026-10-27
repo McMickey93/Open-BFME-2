@@ -1,4 +1,4 @@
-// cl: /EHs /D_STLP_NO_EXCEPTIONS /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// cl: /EHs /D_STLP_NO_EXCEPTIONS /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /Ireference/shims/bfme2_ascii /Ireference/shims/subsystem_bfme2
 // stlport
 // Constructor isolated with its original compiler and STL environment.
 // vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
@@ -61,8 +61,12 @@ class BFME2NativeNetwork
 {
 public:
 };
-// 0x001B4E63 is the rowed SubsystemInterface ctor.
-#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
+// 0x001B4E63 is the rowed SubsystemInterface ctor. The fourteen-slot base view
+// is the one the destructor's unit (Rva00415CABDtor.cpp) and the deleting
+// destructor's (OpaqueScalarDeletingDtorsB10.cpp) compile, so the three units
+// emit one ??_7Rva0022A809Subsystem@@6B@.
+typedef bool Bool;
+#include "subsystem_interface.h"
 
 class Rva0022A809Subsystem : public SubsystemInterface
 {

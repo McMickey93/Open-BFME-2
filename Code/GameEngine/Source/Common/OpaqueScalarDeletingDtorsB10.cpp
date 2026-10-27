@@ -58,16 +58,16 @@ private:
 
 struct EmitVtableTag;
 
-class Rva00415CAB : public SubsystemInterface
+class Rva0022A809Subsystem : public SubsystemInterface
 {
 public:
-	Rva00415CAB(EmitVtableTag *);
+	Rva0022A809Subsystem(EmitVtableTag *);
 public:
-	virtual ~Rva00415CAB();
+	virtual ~Rva0022A809Subsystem();
 };
 
-// ?<Rva00415CAB::Rva00415CAB> absent-from-retail
-Rva00415CAB::Rva00415CAB(EmitVtableTag *)
+// ?<Rva0022A809Subsystem::Rva0022A809Subsystem> absent-from-retail
+Rva0022A809Subsystem::Rva0022A809Subsystem(EmitVtableTag *)
 {
 }
 
