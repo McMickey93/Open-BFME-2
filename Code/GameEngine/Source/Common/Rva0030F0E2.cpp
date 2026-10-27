@@ -78,7 +78,7 @@ struct Rva0030F04AOut
 // The exact mask helper is owned by Rva0030F04AApply.cpp.
 void Rva0030F04AApply(int flags, Rva0030F04AOut *out);
 
-extern "C" void *memset(void *, int, unsigned int);
+#include <string.h>
 unsigned int Rva0030F099(bool alternate);
 class Rva0024C7B3Member {
 public:
