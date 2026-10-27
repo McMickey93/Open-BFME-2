@@ -1933,6 +1933,18 @@ separate strict receipt limitation encountered there.
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 377ffd1724.**
 
+- **BattlePlanUpdate bounded composition (2026-10-27, input `0edebea3b9`):**
+  [The consolidation audit](../reverse/attempt_support/battleplan-poolkey-consolidation-20261027-codexb4.md)
+  records absorption of the pool-key donor into the approved BattlePlanUpdate
+  TU after reconciling its compiler-supplied vptr. All 15 destination rows and
+  both parent EH graphs are exact; before/after code identity has zero wrong
+  bindings. The final-object merge guard passes against `bf3dd31211`, and the
+  destination has a strict current receipt. One data key is transferred for
+  separate index repair and tool-driven retirement. Eight other donors retain
+  their declaration/settings prerequisites. This clears only this bounded
+  composition; exact-base batch closure and census confirmation remain pending.
+  No new linked bytes or image-ownership result is claimed.
+
 - **Camera-shake bounded composition (2026-10-26, input `6db4bffb3e`):**
   [The consolidation audit](../reverse/attempt_support/camera-shake-consolidation-20261026-codexb4.md)
   records absorption of Rva00065E21Method.cpp into its approved camera-shake TU.

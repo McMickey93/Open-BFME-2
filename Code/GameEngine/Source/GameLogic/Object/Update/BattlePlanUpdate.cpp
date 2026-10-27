@@ -244,6 +244,14 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
 class BattlePlanUpdate
 {
 public:
@@ -277,6 +285,8 @@ private:
 };
 
 // tu-skeleton: 0x0049771E 33B ?getCommandOption@BattlePlanUpdate@@UBE?AW4CommandOption@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate_getCommandOption.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate.cpp
 
@@ -376,30 +386,6 @@ bool Rva002857B0Object::equals(int value)
 {
     return value == m_target->getValue();
 }
-
-// tu-skeleton: 0x00497805 5B ?loadPostProcess@Rva00497805@@MAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesU.cpp (not merged yet)
-
-// tu-skeleton: 0x0049780A 153B ??0BattlePlanUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateModuleDataCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004978A3 114B ??1BattlePlanUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva004978A3Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00497915 69B ?getModuleNameKey@BattlePlanUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0049795A 6B ?name@Rva0049795ANamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x00497960 9B ?get@Rva00497960CmpBoolField@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x0049797F 204B ?onObjectCreated@BattlePlanUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate_onObjectCreated.cpp (not merged yet)
-
-// tu-skeleton: 0x00497A4B 157B ?createVisionObject@BattlePlanUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497A4B.cpp (not merged yet)
-
-// tu-skeleton: 0x00497AE8 722B ?rva00497AE8@BattlePlanUpdate@@QAEXW4BattlePlanStatus@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateSetBattlePlan.cpp (not merged yet)
-
-// tu-skeleton: 0x00497DD6 250B ??1BattlePlanUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00497ED0 263B ??0BattlePlanUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateConstructor.cpp (not merged yet)
-
-// tu-skeleton: 0x00497FD7 28B ??_GBattlePlanUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva004978A3Dtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateSetStatusBfme.cpp
 
@@ -566,6 +552,74 @@ void BattlePlanUpdate::setStatus(TransitionStatus newStatus)
     m_status = newStatus;
 }
 
+// tu-skeleton: 0x00497805 5B ?loadPostProcess@Rva00497805@@MAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesU.cpp (not merged yet)
+
+// tu-skeleton: 0x0049780A 153B ??0BattlePlanUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004978A3 114B ??1BattlePlanUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva004978A3Dtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdatePoolKey.cpp
+
+// ?getModuleNameKey@BattlePlanUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType BattlePlanUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheBattlePlanUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("BattlePlanUpdate");
+	return TheBattlePlanUpdatePoolKey;
+}
+
+// tu-skeleton: 0x0049795A 6B ?name@Rva0049795ANamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x00497960 9B ?get@Rva00497960CmpBoolField@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x0049797F 204B ?onObjectCreated@BattlePlanUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate_onObjectCreated.cpp (not merged yet)
+
+// tu-skeleton: 0x00497A4B 157B ?createVisionObject@BattlePlanUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497A4B.cpp (not merged yet)
+
+// tu-skeleton: 0x00497AE8 722B ?rva00497AE8@BattlePlanUpdate@@QAEXW4BattlePlanStatus@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateSetBattlePlan.cpp (not merged yet)
+
+// tu-skeleton: 0x00497DD6 250B ??1BattlePlanUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00497ED0 263B ??0BattlePlanUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x00497FD7 28B ??_GBattlePlanUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva004978A3Dtor.cpp (not merged yet)
+
 // tu-skeleton: 0x00498517 259B ?xfer@BattlePlanUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x0049861A 17B ?buildFieldParse@BattlePlanUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateModuleDataFriendNew.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D286 13B $L489 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateSetBattlePlan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D293 13B $L490 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateSetBattlePlan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2A0 10B __ehhandler$?rva00497AE8@BattlePlanUpdate@@QAEXW4BattlePlanStatus@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateSetBattlePlan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2AA 8B Unwind@00b8d2aa -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2B2 11B $L411 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2BD 11B $L412 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2C8 11B Unwind@00b8d2c8 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2D3 11B $L414 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2DE 11B $L415 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2E9 11B $L416 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2F4 11B $L417 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D2FF 11B Unwind@00b8d2ff -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D30A 11B $L419 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D315 11B $L420 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D320 11B $L421 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D32B 11B Unwind@00b8d32b -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D336 11B $L423 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078D341 10B __ehhandler$??1BattlePlanUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497DD6Dtor.cpp (not merged yet)
