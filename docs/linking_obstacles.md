@@ -1467,6 +1467,16 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   and folded-method identities, wider storage closure and census confirmation
   remain open; no new census-linked bytes or ownership receipt is claimed.
 
+- **AllowBannerSpawnUpgrade local-static index repair (2026-10-27, `dbce5d0f8e`):**
+  [The current-owner check](../reverse/attempt_support/banner-poolkey-data-retirement-20261027-codexb4.md)
+  refreshes two generated index rows after the existing getter rename and
+  standalone guard-clearer retirement. All four function rows, the literal
+  and the parent EH graph verify. The owning tool retires one data-debt key
+  with zero remaining findings; ordinary preview preserves LINKS at 113
+  authored bytes against index `bf3dd31211`. This subset's index repair is
+  verified; broader storage closure and census confirmation remain open.
+  No new linked-byte or image-ownership gain is claimed.
+
 - **Sorting-renderer alias cleanup (2026-10-27, control `25d156a07f`):**
   [The scoped verification and storage prerequisite](../reverse/attempt_support/sorting-renderer-data-aliases-20261027-codexb4.md)
   replaces three data aliases with existing DX8Wrapper declarations and removes
@@ -5722,6 +5732,13 @@ Together with current `BfmeDX8ThreadLock.cpp`, both preview LINKS (2,458 and
 247 authored bytes), and all 18 texture-loader rows pass byte verification.
 No source change was needed; census confirmation remains pending.
 [Scoped checks](../reverse/attempt_support/watchdog-donor-cleanup-20261027.md).
+
+Follow-up verification (2026-10-27, `dbce5d0f8e`): the default queue served
+Rva00081F03Cleanup.cpp's historical thread-lock selected-copy blocker. All
+three rows verify. Paired with the current BfmeDX8ThreadLock.cpp provider,
+both preview LINKS (228 and 247 authored bytes). No source repair was needed;
+[scoped evidence](../reverse/attempt_support/banner-poolkey-data-retirement-20261027-codexb4.md)
+confirms the existing repair for this caller. Census confirmation remains pending.
 
 ### LINK-110: a class view omits its base's out-of-line destructor, so an unused implicit inline dtor references an unprovided grand-base
 Status: Open (SubObjectsUpgrade subset repaired). Updated: 2026-10-27; inspected revision: 952d800df1; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.

@@ -559,6 +559,13 @@ paired ordinary previews preserve LINKS (200 authored bytes). The placeholder
 owner still needs a complete native vtable; no census gain is claimed.
 [Evidence](../reverse/attempt_support/fesl-secondary-data-20261027.md), LINK-007.
 
+2026-10-27, `dbce5d0f8e`: `AllowBannerSpawnUpgradePoolKey.cpp` preserves LINKS
+(113 authored bytes) while two generated local key/guard index rows catch up
+with the existing getter rename and guard-clearer retirement. The owning tool
+retires one stale data-debt key with zero findings; all four rows, its literal
+and one EH graph verify. [Scoped evidence](../reverse/attempt_support/banner-poolkey-data-retirement-20261027-codexb4.md),
+LINK-007. No census gain is claimed.
+
 2026-10-27, `8b5a8a815e`: twelve standalone draw cached-key units preserve
 LINKS (946 authored bytes) while their key/guard index rows catch up with the
 already-landed guard cleanup and getter renames. The owning tool retires twelve
