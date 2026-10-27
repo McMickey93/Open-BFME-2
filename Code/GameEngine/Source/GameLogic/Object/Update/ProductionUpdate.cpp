@@ -410,7 +410,18 @@ public:
 	void rva0049CCF0(int arg);
 };
 
-namespace _STL { template <> void _Construct<QuantityModifier, QuantityModifier>(QuantityModifier *, const QuantityModifier &); }
+// Retail 0x0049DD0B, the element construct every vector<QuantityModifier>
+// worker here calls (push_back, overflow, uninitialized copy and fill), is
+// rowed as the placement-copy owner Rva0049DD0BConstruct in
+// stlport_construct_stl_types.cpp. Force-inline the construct to that owner
+// (same call bytes) so this TU references the rowed body, not an undefined
+// _Construct<QuantityModifier> copy.
+void Rva0049DD0BConstruct(void *dest, const void *source);
+namespace _STL {
+template <> __declspec(dllimport) __forceinline
+void _Construct<QuantityModifier, QuantityModifier>(QuantityModifier *__p, const QuantityModifier &__val)
+{ Rva0049DD0BConstruct(__p, &__val); }
+}
 
 // Instantiate the recovered operation and its required template dependencies.
 template QuantityModifier * _STL::__uninitialized_copy<QuantityModifier *, QuantityModifier *>(QuantityModifier *, QuantityModifier *, QuantityModifier *, _STL::__false_type const &);
