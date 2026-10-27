@@ -1,4 +1,4 @@
-// cl: /EHsc /MD
+// cl: /Ireference/shims/bfme2_ascii /EHsc /MD
 // ?Script_objectTypesFromParam@@YAXPAVParameter@@PAVObjectTypes@@@Z at 0x00566E6C (113B). INI token to ObjectTypes.
 // Zero Hour's Script_objectTypesFromParam takes the script Parameter; its string sits at +0x10.
 // Evidence: temp copy via 0x365F0 plus inlined empty check; global ScriptEngine 0x00DFE16C via getObjectTypes 0x357651;
