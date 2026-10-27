@@ -26934,8 +26934,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0039D4FB,42,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/TeamPrototype_removeAll_TeamInstanceList.cpp
 0x0039D525,7,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D4FB..0x0039D52C noncontiguous,Code/GameEngine/Source/Common/Disp32ByteGetters.cpp
 0x0039D52C,7,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D4FB..0x0039D533 noncontiguous,Code/GameEngine/Source/Common/DispByteFieldGetters.cpp
-0x0039D533,102,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D4FB..0x0039D5A9 noncontiguous,Code/GameEngine/Source/Common/Rva0039D533Method.cpp
-0x0039D5A9,24,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D4FB..0x0039D5C1 noncontiguous,Code/GameEngine/Source/Common/Rva0039D5A9Sum.cpp
+0x0039D533,102,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D4FB..0x0039D5A9 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
+0x0039D5A9,24,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D4FB..0x0039D5C1 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039D5C1,323,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamTemplateInfo.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamTemplateInfoXfer.cpp
 0x0039D704,41,code,Code/GameEngine/Source/Common/BfmeThingCFF.cpp,proposed,N,N=Code/GameEngine/Source/Common/BfmeThingCFF.cpp,Code/GameEngine/Source/Common/BfmeConv593.cpp
 0x0039D72D,13,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp
@@ -26943,8 +26943,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0039D747,13,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp
 0x0039D754,13,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamPrototypeRva0039D73A.cpp
 0x0039D761,8,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D754..0x0039D769 noncontiguous,Code/GameEngine/Source/Common/Disp32DwordClearers2.cpp
-0x0039D769,61,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D754..0x0039D7A6 noncontiguous,Code/GameEngine/Source/Common/Rva0039D769Assign.cpp
-0x0039D7A6,27,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D754..0x0039D7C1 noncontiguous,Code/GameEngine/Source/Common/Rva0039D7A6Setter.cpp
+0x0039D769,61,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D754..0x0039D7A6 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
+0x0039D7A6,27,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D754..0x0039D7C1 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039D7C1,7,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D754..0x0039D7C8 noncontiguous,Code/GameEngine/Source/Common/Disp32ByteGetters.cpp
 0x0039D7C8,7,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D754..0x0039D7CF noncontiguous,Code/GameEngine/Source/Common/DispDwordLeaFieldGetters.cpp
 0x0039D7CF,12,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp
@@ -26954,7 +26954,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0039D889,49,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamRva0039D889.cpp
 0x0039D8BA,18,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamRva0039D8BA.cpp
 0x0039D8D3,40,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamRva0039D8D3.cpp
-0x0039D8FB,36,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D8D3..0x0039D92A noncontiguous,Code/GameEngine/Source/Common/RTS/TeamRva0039D8FB.cpp
+0x0039D8FB,36,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D8D3..0x0039D92A noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039D92A,42,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamPrototypeFindAndCountInstances.cpp
 0x0039D954,42,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamPrototypeFindAndCountInstances.cpp
 0x0039D97E,101,code-unledgered,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039D954..0x0039D9E3 noncontiguous,
@@ -26997,10 +26997,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0039E9A1,63,code-unledgered,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E968..0x0039E9E0 noncontiguous,
 0x0039E9E0,47,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/Team_disband.cpp
 0x0039EA0F,18,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EA21 noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp
-0x0039EA21,45,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EA4E noncontiguous,Code/GameEngine/Source/Common/RTS/Rva0039EA21.cpp
-0x0039EA4E,78,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EA9C noncontiguous,Code/GameEngine/Source/Common/RTS/Rva0039EA4EFinish.cpp
+0x0039EA21,45,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EA4E noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
+0x0039EA4E,78,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EA9C noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039EA9C,27,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EAB7 noncontiguous,Code/GameEngine/Source/Common/Rva0039EA9CCtor.cpp
-0x0039EAB7,54,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EAED noncontiguous,Code/GameEngine/Source/Common/Rva0039EAB7Dtor.cpp
+0x0039EAB7,54,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039E9E0..0x0039EAED noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039EAED,236,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamTemplateInfo.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDtor.cpp
 0x0039EBD9,69,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamPrototypeTeamIterators.cpp
 0x0039EC1E,187,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamPrototypeGetGenericScript.cpp
@@ -27021,11 +27021,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0039F094,62,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/Team_setAttackPriorityName.cpp
 0x0039F0D2,17,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamRva0039F0D2.cpp
 0x0039F0E3,1163,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamUpdateState.cpp
-0x0039F56E,41,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F597 noncontiguous,Code/GameEngine/Source/Common/RTS/Rva0039F56E.cpp
+0x0039F56E,41,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F597 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039F597,49,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F5DC noncontiguous,Code/GameEngine/Source/Common/RTS/Rva0039F597Find.cpp
 0x0039F5DC,34,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F5FE noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_create_nodes2.cpp
 0x0039F5FE,148,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F692 noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp
-0x0039F692,154,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F72C noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0039F692.cpp
+0x0039F692,154,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F72C noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039F72C,53,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F0E3..0x0039F761 noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryFindById.cpp
 0x0039F761,68,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamFactory.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryFindTeamByID.cpp
 0x0039F7A5,127,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamFactory.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryRecomputeIDs.cpp
@@ -27036,7 +27036,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0039FB49,42,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F8F7..0x0039FB87 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_map_bodies.cpp
 0x0039FB87,439,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F8F7..0x0039FD3E noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp
 0x0039FD3E,55,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F8F7..0x0039FD75 noncontiguous,Code/GameEngine/Source/GameClient/GUI/window_video_manager.cpp
-0x0039FD75,30,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F8F7..0x0039FD93 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0039FD75.cpp
+0x0039FD75,30,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F8F7..0x0039FD93 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x0039FD93,5,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039F8F7..0x0039FD98 noncontiguous,Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp
 0x0039FD98,121,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamFactory.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryMarkTeamDone.cpp
 0x0039FE11,91,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x0039FD98..0x0039FE6C noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryErasePrototype.cpp
@@ -27074,14 +27074,14 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x003A261E,6,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A2563..0x003A2659 noncontiguous,Code/GameEngine/Source/Common/SubsystemNameGetters4.cpp
 0x003A2624,8,code,,displaced,-,N=Code/GameEngine/Source/Common/RTS/TeamFactory.cpp,Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp
 0x003A2659,141,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamFactory.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryFindQualifiedPrototype.cpp
-0x003A26E6,399,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamTemplateInfo.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamTemplateInfoInitFromDict.cpp
+0x003A26E6,399,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamTemplateInfo.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x003A2875,6,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A2897 noncontiguous,Code/GameEngine/Source/Common/ConstIntGetters4.cpp
 0x003A287B,28,code,,displaced,-,N=Code/GameEngine/Source/Common/RTS/TeamTemplateInfo.cpp,Code/GameEngine/Source/Common/RTS/TeamTemplateInfoDeleter.cpp
-0x003A2897,86,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A28ED noncontiguous,Code/GameEngine/Source/GameLogic/Object/ArmorRva003A2897.cpp
-0x003A28ED,86,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A2943 noncontiguous,Code/GameEngine/Source/GameLogic/Object/ArmorRva003A28ED.cpp
+0x003A2897,86,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A28ED noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
+0x003A28ED,86,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A2943 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x003A2943,89,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A299C noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryCtorThunk_Rva003a2943.cpp
 0x003A299C,165,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A2A41 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_copy_ctors_bfmealloc.cpp
-0x003A2A41,73,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A2AA6 noncontiguous,Code/GameEngine/Source/GameClient/Rva003A2A41Clear.cpp
+0x003A2A41,73,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A26E6..0x003A2AA6 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x003A2A8A,28,code,,displaced,-,N=Code/GameEngine/Source/Common/RTS/TeamRelationMap.cpp,Code/GameEngine/Source/Common/RTS/TeamRelationMapDeleter.cpp
 0x003A2AA6,210,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamRelationMap.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/RelationMapXfer.cpp
 0x003A2B78,92,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamFactory.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryAddPrototype003A2B78.cpp
@@ -27105,7 +27105,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x003A34AC,158,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamPrototype.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamGetControllingPlayer.cpp
 0x003A354A,5,code-unledgered,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A34AC..0x003A354F noncontiguous,
 0x003A354F,388,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamDtor.cpp
-0x003A36D3,36,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A354F..0x003A36F7 noncontiguous,Code/GameEngine/Source/Common/Rva003A36D3Float.cpp
+0x003A36D3,36,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A354F..0x003A36F7 noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x003A36F7,9,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A354F..0x003A3700 noncontiguous,Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp
 0x003A3700,9,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A354F..0x003A3709 noncontiguous,Code/GameEngine/Source/Common/VtableSlotBodiesR3F.cpp
 0x003A3709,6,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A354F..0x003A370F noncontiguous,Code/GameEngine/Source/Common/ConstIntGetters4.cpp
@@ -27114,7 +27114,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x003A3736,45,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/Team.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamRva003A3717.cpp
 0x003A3763,121,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A3736..0x003A37DC noncontiguous,Code/Libraries/Source/WWVegas/WWLib/AsciiStringTableSubscripts.cpp
 0x003A37DC,30,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A3736..0x003A37FA noncontiguous,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarVideoMapErase.cpp
-0x003A37FA,64,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A3736..0x003A383A noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva003A37FA.cpp
+0x003A37FA,64,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A3736..0x003A383A noncontiguous,Code/GameEngine/Source/Common/RTS/Team.cpp
 0x003A383A,95,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/RTS/Team.cpp S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/RTS/TeamFactory.cpp noncontiguous,Code/GameEngine/Source/Common/RTS/TeamFactoryDtor.cpp
 0x003A3899,5,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,C,C=0x003A383A..0x003A389E noncontiguous,Code/GameEngine/Source/Common/VslotSmallBodiesAJ.cpp
 0x003A389E,19,code,Code/GameEngine/Source/Common/RTS/Team.cpp,proposed,S,S=Code/GameEngine/Source/Common/RTS/Team.cpp N=Code/GameEngine/Source/Common/TeamFactory.cpp noncontiguous,Code/GameEngine/Source/Common/VslotSmallBodiesAM.cpp

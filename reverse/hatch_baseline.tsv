@@ -16784,6 +16784,9 @@ pragma_optimize	Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/ShroudManagerImplGetNearestGroupWithValue.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/ShroudManagerImplGetNearestGroupWithValue.cpp	"s",on	1
+pragma_optimize	Code/GameEngine/Source/Common/RTS/Team.cpp	"",on	1
+pragma_optimize	Code/GameEngine/Source/Common/RTS/Team.cpp	"s",off	1
+pragma_optimize	Code/GameEngine/Source/Common/RTS/Team.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/TeamFactoryList.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/TeamFactoryList.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva000677CAHostRva0006DC8E.cpp	"",on	1
@@ -17905,9 +17908,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00384ED4.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0039629A.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0039629A.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0039629A.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0039F692.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0039F692.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0039F692.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003AFFBE.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003AFFBE.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva003AFFBE.cpp	"t",on	1
