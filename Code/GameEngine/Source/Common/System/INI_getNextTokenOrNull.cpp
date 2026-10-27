@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// stlport
 //
 // ?getNextTokenOrNull@INI@@QAEPBDPBD@Z, retail 0x002DEED, 170 bytes.
 // Dedicated shard TU (same-TU visibility law: grafting into the sibling
@@ -15,39 +16,26 @@
 #include <string.h>
 
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include <vector>
 
-
+// The rowed out-of-line push_back (0x002DBE6): an explicit specialization
+// declaration keeps the call instead of inlining STLport's in-class body.
 namespace _STL
 {
-template <typename T>
-class allocator
-{
-};
-
-template <typename T, typename A = allocator<T> >
-class vector
-{
-public:
-	void push_back(const T &value);
-	T &back() { return *(m_finish - 1); }
-
-	T *m_start;
-	T *m_finish;
-	T *m_end;
-};
+template <> void vector<AsciiString, allocator<AsciiString> >::push_back(const AsciiString &value);
 }
 
+// Member names follow INI.cpp's view of the same offsets.
 class INI
 {
 public:
 	const char *getNextTokenOrNull(const char *seps);
 
-private:
 	char m_pad0[0x418];
 	const char *m_seps;
 	char m_pad1[0x86C - 0x41C];
-	AsciiString m_buffer;
-	_STL::vector<AsciiString> m_tokens;
+	AsciiString m_str86C;
+	_STL::vector<AsciiString> m_vec870;
 };
 
 // ?getNextTokenOrNull@INI@@QAEPBDPBD@Z
@@ -55,14 +43,13 @@ const char *INI::getNextTokenOrNull(const char *seps)
 {
 	if (seps == 0)
 		seps = m_seps;
-	if (!m_buffer.isEmpty()) {
+	if (!m_str86C.isEmpty()) {
 		AsciiString token;
-		if (m_buffer.nextToken(&token, seps)) {
-			m_tokens.push_back(token);
-			AsciiString *finish = m_tokens.m_finish;
-			return finish[-1].str();
+		if (m_str86C.nextToken(&token, seps)) {
+			m_vec870.push_back(token);
+			return m_vec870.back().str();
 		}
-		m_buffer.clear();
+		m_str86C.clear();
 	}
 	return strtok(0, seps);
 }
