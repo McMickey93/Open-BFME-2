@@ -20066,8 +20066,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03848,4,.data,global,_s_rva007B1266,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A0384C,4,.data,global,?TheDamageFilteredCreateObjectDiePoolKey@?1??rva000485EFD@DamageFilteredCreateObjectDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDiePoolKey.cpp,owned,,1,2
 0x00A03850,4,.data,global,?g_Va00E03850@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E038xx.cpp,provisional,?$S1@?1??rva000485EFD@DamageFilteredCreateObjectDie@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDiePoolKey.cpp;?g_Va00E03850@@3IA,2,4
-0x00A03854,4,.data,global,?TheCrushDiePoolKey@?1??rva000486155@CrushDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp,owned,,1,2
-0x00A03858,4,.data,global,?g_Va00E03858@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E038xx.cpp,provisional,?$S1@?1??rva000486155@CrushDie@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp;?g_Va00E03858@@3IA,2,4
+0x00A03854,4,.data,global,?TheCrushDiePoolKey@?1??getModuleNameKey@CrushDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp,owned,,1,2
+0x00A03858,4,.data,global,?$S1@?1??getModuleNameKey@CrushDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp,owned,,1,4
 0x00A0385C,4,.data,global,_s_rva007B12AA,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03860,4,.data,global,?TheDestroyDiePoolKey@?1??rva0004864C9@DestroyDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp,owned,,1,2
 0x00A03864,4,.data,global,?g_Va00E03864@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E038xx.cpp,provisional,?$S1@?1??rva0004864C9@DestroyDie@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp;?g_Va00E03864@@3IA,2,4
