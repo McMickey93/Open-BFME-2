@@ -104,7 +104,7 @@ Rva004921B0::~Rva004921B0()
 	m_p20 = vtbl_00C552A4;
 }
 
-static int s_dummyDFD4;
+extern "C" const void *const s_dummy20[9];
 static int s_dummyEB30;
 static int s_dummyE184;
 static int s_dummyEB0C;
@@ -119,7 +119,7 @@ Rva00492439::~Rva00492439()
 {
 	m_p0C = &s_dummy0C;
 	m_p10 = &s_dummy10;
-	m_p20 = &s_dummyDFD4;
+	m_p20 = s_dummy20;
 }
 
 

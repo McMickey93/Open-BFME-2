@@ -1141,6 +1141,19 @@ Whole-unit clearance and census confirmation remain pending.
   remains pending. Its constructor is unchanged and byte-verifies. Broader
   class/data closure remains open; no census-linked gain is claimed.
 
+- **Nine-slot module interface follow-up (2026-10-27, control `139e5e9393`):**
+  [The complete table repair](../reverse/attempt_support/module-update-interface-data-20261027-codexb5.md)
+  replaces Rva00492402Ctor.cpp's scalar owner at RVA 0x0084DFD4 with its full
+  nine-slot native table. ModuleUpdateDtors.cpp references that shared owner
+  and removes its duplicate scalar. All 29 function rows and three data rows
+  verify; both sources have zero data findings. The owning retirement tool
+  removes the destructor source's two remaining registered keys. The ordinary
+  current-object preview preserves LINKS for both units and their 909 authored
+  bytes against bf3dd31211. This clears only the stated storage/debt subset;
+  original interface identities, other provisional storage, strict dependency
+  closure and census confirmation remain open. No new census-linked bytes or
+  image-ownership receipt is claimed.
+
 - **SpecialDisguiseUpdate interface storage (2026-10-27, control `fb85f43469`):**
   [The native-table repair](../reverse/attempt_support/special-disguise-interface-data-20261027-codexb5.md)
   replaces two scalar dummy owners with complete four-slot and 47-slot
