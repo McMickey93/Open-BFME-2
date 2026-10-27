@@ -3294,6 +3294,18 @@ or newly wrong selected provider appears. `Load_W3D` and `Save_W3D` remain
 separate debt. This follow-up claims zero new linked bytes; census confirmation
 remains pending.
 
+**W3D-remnant follow-up (2026-10-27, inspected `7ed44e8ffd`):**
+[Paired object evidence](../reverse/attempt_support/light-w3d-cleanup-20261027/readme.md)
+checks the remaining donor `LightClass::Load_W3D` and `Save_W3D` bodies.
+Neither has a source caller or an indexed incoming edge from an outside
+provider. Removed both bodies and their two unmatched exemptions; the six-byte
+`Chunk_ID` remains exact. Both actual objects preview LINKS. The removed
+emissions have either another indexed provider or no outside incoming edge;
+no retained COMDAT changes or selected provider becomes wrong. Keep the
+optimization anchor: its removal changed the retained `??_H` helper from the
+34-byte retail body to a wrong 50-byte body. This retires two exemptions,
+adds zero linked bytes and still awaits scheduled census confirmation.
+
 ### LINK-054: pair sweep units instantiate unrelated whole containers
 
 Status: Open (partial emission repair verified). Updated: 2026-10-26; inspected revision: `896af216804e`.
