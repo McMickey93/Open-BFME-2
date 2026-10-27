@@ -3,7 +3,7 @@
 // Refcounted holder ctor: news 0x10 impl with vtable 0x0086F090 and copies 8B arg.
 // Evidence: stores vtable at new obj, callers pass 8B struct ptr with ecx=temp.
 extern const void *const g_00C6F090[];
-void *__cdecl operator new(unsigned int);
+#include <new>
 struct Rva0057ACEBData
 {
 	int m_0;

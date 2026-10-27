@@ -7,7 +7,7 @@ struct TargetRef00217D4C
 	int references;
 };
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *p);
-void operator delete(void *p);
+#include <new>
 class Rva005248D0
 {
 public:
