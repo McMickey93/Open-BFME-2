@@ -12,7 +12,7 @@
 // callback names stay address-derived; the owning struct is BFME2-new
 // (no BFME1 donor).
 
-extern "C" int strcmp(const char *, const char *);
+#include <string.h>
 
 struct INIException
 {

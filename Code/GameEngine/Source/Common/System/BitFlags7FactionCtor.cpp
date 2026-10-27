@@ -4,7 +4,7 @@
 // The target default mask constructor clears four bytes through memset;
 // every byte and relocation must equal the existing BitFlags<11> owner.
 enum FactionType { FACTION_UNKNOWN = -1 };
-extern "C" void *memset(void *, int, unsigned int);
+#include <string.h>
 template<int NUM_BITS, class BitTag> class BitFlags {
 public:
     BitFlags() throw();

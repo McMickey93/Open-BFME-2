@@ -14,7 +14,7 @@
 typedef int Int;
 typedef unsigned int UnsignedInt;
 
-extern "C" void *memset(void *dst, int val, unsigned int n);
+#include <string.h>
 
 template <int NUM_BITS>
 class BitFlags
