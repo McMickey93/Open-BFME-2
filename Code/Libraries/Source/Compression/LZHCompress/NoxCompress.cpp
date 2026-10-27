@@ -2,6 +2,9 @@
 // Recovered from the EA Generals reference.  The three LZH-Light wrapper
 // calls are pinned to the matching retail wrapper bodies in this executable.
 
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef unsigned char UnsignedByte;
@@ -22,17 +25,6 @@ private:
 LZHL_DHANDLE LZHLCreateDecompressor();
 __declspec(noinline) int LZHLDecompress(LZHL_DHANDLE, UnsignedByte *, UnsignedInt *, const UnsignedByte *, UnsignedInt *);
 void LZHLDestroyDecompressor(LZHL_DHANDLE);
-
-struct FILE;
-
-extern "C" __declspec(dllimport) FILE * __cdecl fopen(const char *, const char *);
-extern "C" __declspec(dllimport) int __cdecl fseek(FILE *, long, int);
-extern "C" __declspec(dllimport) long __cdecl ftell(FILE *);
-extern "C" __declspec(dllimport) unsigned int __cdecl fread(void *, unsigned int, unsigned int, FILE *);
-extern "C" __declspec(dllimport) unsigned int __cdecl fwrite(const void *, unsigned int, unsigned int, FILE *);
-extern "C" __declspec(dllimport) int __cdecl fclose(FILE *);
-extern "C" __declspec(dllimport) void * __cdecl malloc(unsigned int);
-extern "C" __declspec(dllimport) void __cdecl free(void *);
 
 template <class T> const T &min(const T &a, const T &b)
 {

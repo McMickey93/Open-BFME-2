@@ -1,10 +1,14 @@
 // cl: /O1 /G7 /arch:SSE /MD /DNDEBUG
+// platformsdk
 // Small bodies from .text gaps no Ghidra function covers (thirty-first
 // batch; see GapBodiesGE01.cpp). Each begins after its neighbour's padding or
 // ret and ends in its own ret. Retail bytes establish every shape; owning
 // classes are not recovered, so each keeps an address-derived name and a view
 // of only the members it touches. Callees and globals use the ledger's
 // existing spellings, private statics reached through a friend view.
+
+#include <math.h>
+#include <windows.h>
 
 // --- 0x00072882 (16B): RefCountClass's inline constructor (vtable 0x00BC650C,
 // one reference); 0x000728B6 (16B): a class deriving from it (vtable
@@ -57,8 +61,6 @@ unsigned __int64 Rva000752D5::rva000752D5()
 
 // --- 0x000752E1 / 0x000852B3 (17B each): float exp / acos through the
 // msvcr71 thunks.
-extern "C" double __cdecl acos(double x);
-extern "C" double __cdecl exp(double x);
 
 float rva000752E1(float x)
 {
@@ -610,7 +612,6 @@ int Rva00051888::rva00051888()
 
 // 0x00042334 (6B), unreferenced: timeGetTime through its winmm import, a
 // tail jump.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 unsigned long rva00042334()
 {

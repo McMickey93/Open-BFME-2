@@ -1,4 +1,5 @@
 // cl: /O1 /EHs /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // fxshadersetup.cpp -- FXShaderSetup, the per-material FX shader binding.
@@ -39,6 +40,8 @@ static inline const int &min(const int &a, const int &b)
     return b < a ? b : a;
 }
 }
+#define NOMINMAX
+#include <windows.h>
 #include <vector>
 #include "ascii_string.h"
 // Suppress this TU's non-retail copy of ?erase@?$vector@VRva00151DAB@@V?$allocator@VRva00151DAB@@@_STL@@@_STL@@QAEPAVRva00151DAB@@:
@@ -84,12 +87,7 @@ template <> void vector<Rva00151DAB>::_M_insert_overflow(Rva00151DAB *, const Rv
 template <> Rva0007BB16Record *uninitialized_fill_n<Rva0007BB16Record *, unsigned int, Rva0007BB16Record>(Rva0007BB16Record *, unsigned int, const Rva0007BB16Record &);
 }
 
-typedef unsigned int UINT;
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef int BOOL;
 typedef const char *D3DXHANDLE;
-#define FAILED(hr) ((HRESULT)(hr) < 0)
 
 struct IDirect3DBaseTexture8;
 

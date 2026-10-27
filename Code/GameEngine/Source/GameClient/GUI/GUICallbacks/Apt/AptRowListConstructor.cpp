@@ -5,11 +5,11 @@
 // constructor 0x005103A3 binds "_level<n>._OnRowShown" and "_OnRowHidden",
 // and the indexed query over "NumOfPlayers" and "InSkirmish", as member
 // pointers; that binding is their only reference.
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <new>
 #include "ascii_string.h"
-
-extern "C" char *__cdecl strcpy(char *destination, const char *source);
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *format, ...);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 
 // BfmePathLeafAfterMarker.cpp's path helpers, and the unrowed 0x004128F0
 // (239 bytes) next to them that reads one "key=value" parameter, pinned by
@@ -116,8 +116,6 @@ public:
 	void invoke();
 	FunctorBinding m_binding;
 };
-
-void *__cdecl operator new(unsigned int size);
 
 // The holder constructor (row 0x0057BC63, Rva0057BC63FunctorHolder.cpp) is
 // defined here inline. Retail's compiler knew
@@ -360,4 +358,3 @@ Rva005105D7::Rva005105D7(int level, const AsciiString &name)
 	}
 	rva0050EEDC();
 }
-

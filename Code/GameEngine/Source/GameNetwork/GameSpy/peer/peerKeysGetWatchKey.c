@@ -1,6 +1,8 @@
 // cl: /DNDEBUG /MD -Ireference/shims/gamespy
 /* GameSpy PEER SDK -- watch-key functions from peerKeys.c. */
 
+#include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 
 typedef void *PEER;
@@ -86,10 +88,6 @@ piPlayer *piGetPlayer(PEER peer, const char *nick);
 /* BFME2 links the CRT directly here (retail import slot is msvcr71!_strcmpi);
    same strcasecmp->_strcmpi mapping as the landed peerPlayersRoomFlags sibling. */
 #define strcasecmp _strcmpi
-extern __declspec(dllimport) int __cdecl _strcmpi(const char *left,
-	const char *right);
-__declspec(dllimport) int __cdecl tolower(int character);
-__declspec(dllimport) void __cdecl free(void *memory);
 char *goastrdup(const char *source);
 void TableEnter(HashTable table, const void *element);
 int TableCount(HashTable table);
@@ -109,7 +107,6 @@ void piAddGlobalKeyChangedCallback(PEER peer, const char *nick, const char *key,
 void piAddRoomKeyChangedCallback(PEER peer, RoomType roomType, const char *nick,
 	const char *key, const char *value);
 PEERBool piRoomToType(PEER peer, const char *room, RoomType *roomType);
-__declspec(dllimport) void *__cdecl malloc(unsigned int size);
 void chatGetGlobalKeysA(CHAT chat, const char *user, int num,
 	const char **keys, void (*callback)(CHAT, CHATBool, const char *, int,
 		const char **, const char **, void *), void *param, CHATBool blocking);

@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /GX /arch:SSE /ICode/GameEngine/Source/Common /ICode/Libraries/Include/Lib /Ireference/shims/bfme2_ascii /ICode/GameEngine/Include
+// platformsdk
 //
 // StealthUpdate logic bodies between retail 0x00373D15 and 0x003758A8, the
 // stretch Zero Hour's StealthUpdate.cpp (GeneralsMD GameLogic/Object/Update)
@@ -9,10 +10,10 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-#define NULL 0
-#define TRUE 1
-#define FALSE 0
 
+#define NOMINMAX
+#include <windows.h>
+#include <math.h>
 #include "GameLogicObjectLookupView.h"
 #include "Coord3D.h"
 #include "PartitionRangeQueryCallView.h"
@@ -676,7 +677,6 @@ public:
 };
 
 extern float g_secondsPerLogicFrame;
-extern "C" double __cdecl fabs(double value);
 
 struct ObjectListNode
 {

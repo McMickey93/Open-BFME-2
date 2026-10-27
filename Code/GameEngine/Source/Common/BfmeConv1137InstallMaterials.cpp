@@ -1,3 +1,4 @@
+// platformsdk
 // BfmeB1137::Install_Materials (0x00095821, 10940 B), with its EH handler 0x007603D0.
 // Stack layout (c2 3077 colouring, traced): the per-mode getter is declared throw(), so its
 // call carries only its scope's alias set instead of the function's last EH-state set (the
@@ -5,6 +6,7 @@
 // scope, so det creates the 8-byte colour at -0xF4 that wind then joins, as retail.
 // Evidence: reverse/attempt_support/0x00095821-det2-stack-colouring-20261020.md.
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+#include <windows.h>
 #include "ascii_string.h"
 class WWMath
 {
@@ -20,9 +22,6 @@ public:
 		return retval;
 	}
 };
-typedef unsigned long DWORD;
-typedef long HRESULT;
-typedef unsigned int UINT;
 typedef DWORD D3DRENDERSTATETYPE;
 typedef DWORD D3DTEXTURESTAGESTATETYPE;
 

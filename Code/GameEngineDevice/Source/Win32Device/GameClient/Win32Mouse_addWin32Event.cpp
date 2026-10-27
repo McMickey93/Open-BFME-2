@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // Win32Mouse::addWin32Event, retail 0x00041A10 (115 bytes).
 //
 // The event ring sits immediately after the 0x5010-byte Mouse base
@@ -7,10 +8,7 @@
 // need not pay a shared-header gate. Same shape as the BFME1 conversion,
 // which matched verbatim apart from the base size.
 
-typedef unsigned int UINT;
-typedef unsigned int WPARAM;
-typedef long LPARAM;
-typedef unsigned long DWORD;
+#include <windows.h>
 
 class Mouse
 {

@@ -1,4 +1,5 @@
 // cl: /G7 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // ??0MaterialRemapperClass@@QAE@PAVMaterialInfoClass@@0@Z
 // retail 0x0016EF20, 503 bytes. Dedicated TU.
 //
@@ -16,11 +17,9 @@
 //   side guards against its own count, like retail).
 // TU-local replicas mangle identically to the real instantiations.
 
-typedef unsigned int size_t;
-void *__cdecl operator new[](size_t bytes);
-void __cdecl operator delete[](void *ptr);
-
-#define NULL 0
+#include <new>
+#include <string.h>
+#include <windows.h>
 
 class TextureBaseClass
 {

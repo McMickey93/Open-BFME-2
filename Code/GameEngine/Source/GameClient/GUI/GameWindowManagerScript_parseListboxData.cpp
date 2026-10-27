@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?parseListboxData@@YA_NPADPAVWinInstanceData@@0PAX@Z, retail 0x0031501A, 300 bytes.
 // Dedicated TU.
@@ -25,27 +26,16 @@
 //   with 0x71501A (entries are name@+0/fn@+4; the walker at 0x31701C
 //   compares names and calls [eax+4]).
 
+#include <windows.h>
+#include <string.h>
+#include <new>
+#include <stdio.h>
+
 typedef int Int;
 typedef short Short;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
-
-#ifndef FALSE
-#define FALSE 0
-#endif
-
-#ifndef TRUE
-#define TRUE 1
-#endif
-
 class WinInstanceData;
-
-// Array-new rides the game vector-new at 0x2FDE0 (matched row). Without this
-// declaration MSVC 7.1 folds trivial-type array-new to scalar new (0x2FDA0).
-void *__cdecl operator new[](unsigned int s);
 
 struct ListboxData
 {
@@ -70,8 +60,6 @@ static Int scanShort(const char *source, Short &val);
 Int scanInt(const char *source, Int &val);
 Int scanBool(const char *source, Bool &val);
 
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buffer, const char *format, ...);
-
 // Local static copy of the 41B sscanf wrapper at 0x00314E6D (rowed from
 // parseTextEntryData_Thunk.cpp, which keeps it static so it emits no global
 // and no other TU can bind to it). Same body as the thunk, so the calls
@@ -85,9 +73,6 @@ static Int scanShort(const char *source, Short &val)
 	val = (Short)temp;
 	return ret;
 }
-
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 // ?parseListboxData@@YA_NPADPAVWinInstanceData@@0PAX@Z
 Bool parseListboxData(char *token, WinInstanceData *instData, char *buffer, void *data)

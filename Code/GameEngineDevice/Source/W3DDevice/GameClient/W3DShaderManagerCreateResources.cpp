@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /EHsc
+// platformsdk
 // W3DShaderManager dependent-resource creation, retail 0x000754DE..0x00075649
 // (363 bytes, plain RET) and its EH handler 0x0075EF58. Original name unknown:
 // W3DShaderManager::init (0x00077F80) calls it with no arguments at +0x0E; WB
@@ -12,8 +13,8 @@
 // with Release_Ref inlined), which keeps the object in EAX and gives retail's
 // mov ecx,eax / add eax,4 counter address.
 
-void *__cdecl operator new(unsigned);
-void __cdecl operator delete(void *) throw();
+#include <windows.h>
+#include <new>
 
 // Native dynamic vertex buffer, constructor rowed at 0x0013AC00 (0x20 bytes).
 class BfmeDynamicNativeVB
@@ -36,10 +37,6 @@ public:
 	bool usesDeclaration;
 	void *buffer;
 };
-
-typedef unsigned long DWORD;
-typedef unsigned int UINT;
-typedef long HRESULT;
 
 struct ShaderD3DSurfaceDesc
 {

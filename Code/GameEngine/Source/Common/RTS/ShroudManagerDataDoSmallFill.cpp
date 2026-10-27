@@ -9,6 +9,8 @@
 // grid's rowed 0x0073A2A0 and the 0xA8 cell / 0x10 COI strides).
 // The row walk returns its end iterator into the row's first-cell slot, which
 // is written back only when the row was non-empty.
+#include <math.h>
+#include <new>
 #include "ascii_string.h"
 
 class Debug
@@ -48,7 +50,6 @@ extern Debug *theDebug;
 
 bool bfmeRva000387C0();
 void _bfme_debugRecordCallsite(int kind);
-extern "C" __declspec(dllimport) double __cdecl floor(double value);
 
 // WWMath::Float_To_Long idiom.
 __forceinline int smallFillInteger(float value)
@@ -200,7 +201,6 @@ bool ShroudManager::Data::DoSmallFill(float x, float y, float radius)
 // the float argument before loading the receiver, as in the donor guide.
 // It has internal linkage; no public grid method or target name is added.
 #include "Lib/Coord3D.h"
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
 struct UpdateOffset { UpdateOffset():x(0),y(0),z(0){} float x,y,z; };
 struct GeometryShape {
  __declspec(dllimport) __forceinline GeometryShape():type(0),height(1),major(1),minor(1),enabled(true),unmodelled21(true){}
@@ -217,7 +217,6 @@ public:virtual void slot00();virtual void cellChanged();virtual void slot08();
  virtual void reveal(unsigned*,float*,float*,float*);
  virtual float change(int,unsigned*,unsigned*);
 };
-void __cdecl operator delete[](void*);
 struct CDEArraySlot {~CDEArraySlot();char storage[16];};
 class BfmeThingCDE {public:void d_008f7ec0();void initializeArray(int);
  bool DoRectFill(float,float,float,float,float);
