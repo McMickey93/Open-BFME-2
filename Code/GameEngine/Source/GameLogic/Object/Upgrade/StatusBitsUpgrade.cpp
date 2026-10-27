@@ -10,6 +10,14 @@ public:
 
 extern NameKeyGenerator *TheNameKeyGenerator;
 
+// readable body of ??0StatusBitsUpgrade@@QAE@PAVThing@@PBVModuleData@@@Z: Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgrade.cpp
+
+class Thing;
+
+class ModuleData;
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgrade.cpp
+
 // ---- from Code/GameEngine/Source/Common/System/StatusBitsUpgradePoolKey.cpp
 
 // ?getModuleNameKey@StatusBitsUpgrade@@UBE?AW4NameKeyType@@XZ @0x4B48F9
@@ -29,12 +37,6 @@ NameKeyType StatusBitsUpgrade::getModuleNameKey() const
 		TheNameKeyGenerator->nameToKey("StatusBitsUpgrade");
 	return TheStatusBitsUpgradePoolKey;
 }
-
-// tu-skeleton: 0x004B493E 34B ?buildFieldParse@StatusBitsUpgradeModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataGetterBuildFieldParse.cpp (not merged yet)
-
-// tu-skeleton: 0x004B4960 49B ??0StatusBitsUpgrade@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeConstructor.cpp (not merged yet)
-
-// tu-skeleton: 0x004B4991 28B ??_GRva004B48D3@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeUpgradeImplementation.cpp
 
@@ -69,5 +71,16 @@ void StatusBitsUpgrade::upgradeRemovalImplementation()
 	object->rva0028CDEB(data->m_statusToClear, true);
 	rva004CE4A8();
 }
+
+// tu-skeleton: 0x004B493E 34B ?buildFieldParse@StatusBitsUpgradeModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataGetterBuildFieldParse.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeConstructor.cpp
+
+StatusBitsUpgrade::StatusBitsUpgrade( Thing *thing, const ModuleData *moduleData )
+	: UpgradeModule( thing, moduleData )
+{
+}
+
+// tu-skeleton: 0x004B4991 28B ??_GRva004B48D3@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp (not merged yet)
 
 // tu-skeleton: 0x0078EC05 13B ?Rva0078EC05ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Exx.cpp (not merged yet)
