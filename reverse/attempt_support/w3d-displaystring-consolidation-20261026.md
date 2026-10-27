@@ -95,3 +95,13 @@ Recovery validation: the seed still passes all three byte rows and the
 frozen-file check, and the ledger passes `check_csv.py`. The consolidation
 refusal above is historical evidence from the saved attempt; recovery does
 not retry the merge or change its guard. No source path or row owner moves.
+
+The recovery batch's pre-push dry run passes 72/72 function rows, three data
+rows and nine EXACT EH graphs across five verified sources. Its shadow link
+batch audit stops at input freshness: the published index is older than the
+outgoing base, and five source objects lack current receipts (first:
+`Code/GameEngine/Source/GameClient/Credits.cpp`). It produces no selected-provider
+or lost-byte verdict. Carry that scope into the next census rather than
+claiming current census closure. The earlier dry-run transfer was rejected
+because upstream moved; the rebased dry run passes. The runner publisher repeats
+the gate after any further rebase.
