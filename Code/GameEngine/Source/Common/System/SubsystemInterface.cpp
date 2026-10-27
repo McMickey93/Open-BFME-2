@@ -238,6 +238,11 @@ public:
 	~SubsystemInterfaceList();
 public:
 	void rva001B51C0();
+public:
+	void rva001B4FE9();
+	void rva001B5018(SubsystemInterface *subsystem);
+	unsigned char rva001B505F();
+	void resetAll();
 private:
 	_STL::vector<BfmePod8> m_00;
 private:
