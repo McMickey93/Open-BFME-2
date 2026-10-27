@@ -2020,6 +2020,18 @@ separate strict receipt limitation encountered there.
   rowed in CommandXlat.cpp and PoisonedBehavior.cpp. Reconcile the full current
   provider set in the next census; this probe cannot establish wider closure.
 
+- **FireWeaponCollide index follow-up (2026-10-27, input `0c436f24b5`):**
+  [The scoped data-index repair](../reverse/attempt_support/fireweaponcollide-data-index-20261027.md)
+  refreshes the existing local key/guard names and retires one data-debt key
+  through the owning tool. All nine rows and three EH graphs pass; data checks
+  have zero findings. The ordinary preview against `bf3dd31211` still counts
+  strong providers from the deleted PoolKey/Xfer fragments absorbed by
+  `bf3ce2314b`, reporting the same duplicates and selected-copy finding before
+  and after this index repair. No source change or link clearance is claimed.
+  The current TU map already approves all 14 rows; the remaining three merge
+  donors still require their recorded class-interface reconciliation. Verify
+  the consolidated provider universe in the next normal census.
+
 - **Camera-shake bounded composition (2026-10-26, input `6db4bffb3e`):**
   [The consolidation audit](../reverse/attempt_support/camera-shake-consolidation-20261026-codexb4.md)
   records absorption of Rva00065E21Method.cpp into its approved camera-shake TU.
