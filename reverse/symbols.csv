@@ -6642,8 +6642,6 @@ name,address,notes
 ?j_00800660@@YAXXZ,0x0066CA80
 ?ji_006291ae@@YAPAXPAXHI@Z,0x006291AE,twin of rowed YAXXZ same 6B jmp thunk call site 0x00265254 memset
 ?ji_0062af20@@YGJPAXKPBXPAPAX0@Z,0x0062AF20,twin of rowed YAXXZ same 6B jmp thunk call site 0x00098BD4 DirectInput8Create
-?ji_0065561c@@YGJPAXK0K@Z,0x0065561C,twin of rowed YAXXZ same 6B jmp thunk call site 0x00232F0C ImmGetCompositionStringW
-?ji_00655622@@YGKPAXK@Z,0x00655622,twin of rowed YAXXZ same 6B jmp thunk call site 0x00232F4F ImmGetProperty
 ?ji_0081bda8@@YAXXZ,0x00687CA8,address read from the REL32 displacement in DirtySock Rva00813100ConnectionSetup at 0x0067F000; indirect-call slot cast to function in BFME1 source; body not yet converted
 ?ji_00879190@@YAXXZ,0x006B8A30,address read from the REL32 displacement at a placed body
 ?ji_008793a0@@YAXXZ,0x006B8C30,address read from the REL32 displacement at a placed body
