@@ -33,3 +33,9 @@ Inspected all four mixed files. Splits from `Bfme5FiftySeven.cpp` were flag-boun
 ## FireWeaponWhenDamagedBehavior accepted trial left for path repair
 
 The allocated `Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDamagedBehavior.cpp` dry run accepted its seed plus unchanged `FireWeaponWhenDamagedBehaviorDtor.cpp` and `StlSweepR3Rva00482A4D.cpp`; `Rva00482641Xfer.cpp`, `FireWeaponWhenDamagedBehaviorPoolKey.cpp`, and `FireWeaponWhenDamagedBehaviorUpdate.cpp` were rejected on missing class declarations. Before applying, the path-consumer search found the deleting donor explicitly listed as an open target in `docs/linking_targets.md:421`. No tool or hook consumes that document, but its current manual target entry must be reconciled by Sol before the deletion. Left the trial unapplied and released the destination, donor, and both RVA claims. No source or ledger changes.
+
+## FloatUpdate allocated trial
+
+`Code/GameEngine/Source/GameLogic/Object/Update/FloatUpdate.cpp` passed allocation and planner checks. The merge dry run accepted no donors: `FloatUpdatePoolKey.cpp` fails because `rva00048D761` is undeclared on the class; `FloatUpdateModuleDataCtor.cpp` fails because `m_vtable` is undeclared. Both are census-linked and preserved as separate objects.
+
+Inspected all four mixed sources. `ModuleNameGetters3.cpp`'s carved getter fails on duplicate `FloatUpdate`; `Rva0024A797Derived.cpp` has no row approved for this TU; `FloatUpdateUpdate.cpp` would grow an escape hatch via a copied helper; and `ModuleDataBuildFieldParse.cpp`'s carved row fails on duplicate `FloatUpdateModuleData`. Nothing was applied.
