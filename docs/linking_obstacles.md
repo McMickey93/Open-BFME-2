@@ -1353,6 +1353,18 @@ clearance or linking gain is claimed.
   with zero losses. The first push was rejected because master advanced;
   only the existing commits are rebased/retried, without repeating any match
   record or full measurement.
+- **Context-coefficient publication cohort (2026-10-27, candidate `3beaccdb21`):**
+  [the retained normal-hook audit](../reverse/attempt_support/vp6-context-coefficients-link-20261027/publication-audit.json)
+  passes 39/39 bodies, three data rows, four exact EH graphs and converged-data
+  enforcement across ConfigureContexts.cpp, Eva.cpp, ThreadClassLifecycle.cpp
+  and thread.cpp. The post-rebase controls also pass against the incoming
+  `e74410b373` reference. The batch audit is inconclusive: index `d1f046749a`
+  predates outgoing base `094c0f30686`, and three objects lack current strict
+  receipts (first Eva). No current-master provider or lost-byte verdict follows;
+  carry these four paths to the next normal census/current-index check. The
+  separate immutable comparison proves the 887-byte gain with zero losses.
+  The first push was rejected because master advanced; only normal rebase/retry
+  follows, without repeating any match record or full measurement.
 - **Remaining / next check:** prove and make the actual include graph
   inventoryable under the existing gates, then repeat bounded strict preparation
   for all affected providers/consumers. A needed verifier repair follows the
