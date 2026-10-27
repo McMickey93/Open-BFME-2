@@ -16328,8 +16328,8 @@ pragma_optimize	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarVideo
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarVideoMapErase.cpp	"y",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/ControlBar/UnitHelpSource.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/ControlBar/UnitHelpSource.cpp	"t",on	1
-pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpGameRulesCallbacks.cpp	"",on	1
-pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpGameRulesCallbacks.cpp	"y",off	1
+pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpGameRules.cpp	"",on	1
+pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpGameRules.cpp	"y",off	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/StrategicPlayerStatusCallbacks.cpp	"y",off	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanGameOptionsMenu.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanGameOptionsMenu.cpp	"gsy",on	1
