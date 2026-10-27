@@ -125,3 +125,13 @@ rejected donors were blocked by compile errors from missing declarations/views,
 including `B0`, `B3`, `m_object`, and `GarrisonContain::rva0047801C`; no repairs
 were attempted. LinkGuard listed 26 census-linked units. No claims or source
 edits were made; leave this for prerequisite repair.
+
+## Allocated `obbox.cpp` candidate deferred
+
+The plan had two approved rows and two donor sources, one mixed. The merge dry
+run accepted none: `OBBoxTransformO1.cpp` reported `no baseline match`, so no
+merge was applicable. I inspected the mixed `Matrix3DO1Inlines.cpp` split plan;
+the one row routed to `obbox.cpp` (`0x000B29D3`) was refused because no definition
+spells its name, and the remaining 13 rows have no approved TU. The split dry run
+carved no rows. No claims or edits were made; leave these rows for name/routing
+prerequisites.
