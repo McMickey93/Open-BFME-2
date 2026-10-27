@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs-c- /O1
+// platformsdk
 //
 // Retail 0x00449BAA, 256 bytes: LANAPI::init, slot 1 of the LANAPI vtable
 // 0x0083E680 (slot 0 is the rowed ??_GLANAPI, slot 9 the rowed reset).
@@ -19,12 +20,11 @@ typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 
-extern "C" __declspec(dllimport) char * __cdecl getenv( const char *name );
-extern "C" __declspec(dllimport) Int __cdecl atoi( const char *text );
-extern "C" char * __cdecl strcpy( char *dest, const char *source );
+#define NOMINMAX
+#include <windows.h>
+#include <stdlib.h>
+#include <string.h>
 #pragma function(strcpy)
-extern "C" __declspec(dllimport) Int __stdcall GetUserNameA( char *buffer, UnsignedInt *size );
-extern "C" __declspec(dllimport) Int __stdcall GetComputerNameA( char *buffer, UnsignedInt *size );
 
 #include "ascii_string.h"
 
@@ -102,7 +102,7 @@ void LANAPI::init( void )
 	BfmeNetAddress noAddress = { 0, 0 };
 	m_directConnectRemoteAddress = noAddress;
 
-	UnsignedInt bufferSize = USER_NAME_BUFFER;
+	DWORD bufferSize = USER_NAME_BUFFER;
 	char userName[USER_NAME_BUFFER];
 	if( !GetUserNameA( userName, &bufferSize ) )
 		strcpy( userName, "unknown" );

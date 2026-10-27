@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 //
 // BFME1 GameNetwork/native_desync_report.cpp donor for the per-frame client CRC
 // guard: the constructor snapshots the current CRC when CRC checking is enabled
@@ -60,17 +61,9 @@ public:
     virtual void message(UnicodeString text, ...);
 };
 
-struct DesyncSystemTime
-{
-    unsigned short year, month, dayOfWeek, day, hour, minute, second, milliseconds;
-};
-struct DesyncFile;
-extern "C" {
-    __declspec(dllimport) DesyncFile *__cdecl fopen(const char *, const char *);
-    __declspec(dllimport) unsigned int __cdecl fwrite(const void *, unsigned int, unsigned int, DesyncFile *);
-    __declspec(dllimport) int __cdecl fclose(DesyncFile *);
-    __declspec(dllimport) void __stdcall GetLocalTime(DesyncSystemTime *);
-}
+#define NOMINMAX
+#include <windows.h>
+#include <stdio.h>
 
 extern unsigned char BfmeClientCRCCheckEnabled;
 // BfmeClientCRCCheckEnabled: matched references place it at VA 0xe02d85 (zero-filled .bss).
@@ -112,13 +105,13 @@ void BFMEDesyncCheck::writeReportIfMismatched()
         AsciiString report;
         IPEnumeration enumeration;
         filename.format("CLIENT_DESYNC_%s.txt", enumeration.getMachineName().str());
-        DesyncFile *file = fopen(filename.str(), "a");
-        DesyncSystemTime time;
+        FILE *file = fopen(filename.str(), "a");
+        SYSTEMTIME time;
         GetLocalTime(&time);
         unsigned int frame = TheGameLogic->m_frame;
         report.format("Desync detected on frame %d on %u-%u-%u %u:%u:%u\n\n",
             frame,
-            time.month, time.day, time.year, time.hour, time.minute, time.second);
+            time.wMonth, time.wDay, time.wYear, time.wHour, time.wMinute, time.wSecond);
         fwrite(report.str(), 1, report.getLength(), file);
         fclose(file);
     }
