@@ -6,18 +6,13 @@
 // dtor 0x00605504. cmov needs /arch:SSE (no /G flag emits it). memcpy is a
 // plain extern E8 to the rowed import thunk 0x006291A8.
 
-#define NULL 0
-
-extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int n);
-extern "C" __declspec(dllimport) int __cdecl isspace(int c);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
-extern "C" __declspec(dllimport) double __cdecl atof(const char *text);
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <new>
 
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-
-void *__cdecl operator new[](unsigned int s);
-void __cdecl operator delete[](void *block);
 
 class File
 {
