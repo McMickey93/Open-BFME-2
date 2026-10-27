@@ -33,7 +33,7 @@ public:
 };
 extern GameLogic *TheGameLogic;
 
-void operator delete[](void *p);
+#include <new>
 class Rva004D9A3C
 {
 public:
