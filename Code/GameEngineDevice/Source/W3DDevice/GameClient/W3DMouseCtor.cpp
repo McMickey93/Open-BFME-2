@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 // Native EH action 0x76050D destroys the destructor lifetime of 21 D3D surface references at +0x6028 with stride4; the complete parent EH graph proves this 24B lifetime.
 // Native EH action 0x760489 destroys the constructor lifetime of 21 D3D surface references at +0x6028 with stride4; the complete parent EH graph proves this 24B lifetime.
@@ -20,7 +21,7 @@
 // freeW3DAssets and initPolygonAssets.
 //
 // The destructor hides the D3D cursor through DX8Wrapper's device (0x009EDA34,
-// IDirect3DDevice8 slot 12 ShowCursor), restores the Win32 arrow (cursor 2)
+// IDirect3DDevice9 slot 12 ShowCursor), restores the Win32 arrow (cursor 2)
 // through the rowed Win32Mouse::setCursor, frees the D3D and W3D assets, then
 // clears BFME 2's extra file-scope holder at 0x009E5DF8 (the object whose
 // atexit cleanup 0x007B6C9B also calls Rva0009990D::clear) before stopping
@@ -35,7 +36,7 @@ class RenderObjClass;
 class HAnimClass;
 class CameraClass;
 
-#include <windows.h>
+#include <d3d9.h>
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 
 struct BfmeResetTextureRef
@@ -64,14 +65,8 @@ enum
 	MAX_2D_CURSOR_ANIM_FRAMES = 21
 };
 
-struct IDirect3DDevice8
-{
-	virtual void __stdcall slot00(); virtual void __stdcall slot01(); virtual void __stdcall slot02();
-	virtual void __stdcall slot03(); virtual void __stdcall slot04(); virtual void __stdcall slot05();
-	virtual void __stdcall slot06(); virtual void __stdcall slot07(); virtual void __stdcall slot08();
-	virtual void __stdcall slot09(); virtual void __stdcall slot10(); virtual void __stdcall slot11();
-	virtual int __stdcall ShowCursor( int bShow );		// slot 12 (+0x30)
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device.
+struct IDirect3DDevice8;
 
 class DX8Wrapper
 {
@@ -174,7 +169,7 @@ W3DMouse::W3DMouse( void )
 
 W3DMouse::~W3DMouse( void )
 {
-	IDirect3DDevice8 *m_pDev=DX8Wrapper::_Get_D3D_Device8();
+	IDirect3DDevice9 *m_pDev=reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 
 	if (m_pDev)
 	{

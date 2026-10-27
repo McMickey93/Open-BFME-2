@@ -1,91 +1,24 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // Target 0x000693AE..0x000694A3, RET 0 (245 bytes). Zero Hour's
 // BaseHeightMapRenderObjClass::drawScorches (BaseHeightMap.cpp) in its BFME2
 // form: updateScorches (0x000678BB, pinned) first, then nothing when no
 // scorch index is staged; otherwise the alpha shader (with hardware fog when
 // the wrapper's fog flag is on), the scorch index/vertex buffers and texture,
-// a depth bias of 1, the render-state flush and two direct texture-stage-0
-// writes (state 1 and 2, value 3) before the draw, and the bias back to 0.
+// a depth bias of 1, the render-state flush and two direct sampler-0 writes
+// (IDirect3DDevice9::SetSamplerState, slot 69: ADDRESSU / ADDRESSV clamp,
+// counted as texture-stage changes) before the draw, and the bias back to 0.
 // Is_Hidden is vtable slot 100 (+0x190); the draw is skipped while hidden.
+
+#include <d3d9.h>
 
 class IndexBufferClass;
 class VertexBufferClass;
 class TextureBaseClass;
 
-struct IDirect3DDevice8
-{
-public:
-	virtual void d00();
-	virtual void d01();
-	virtual void d02();
-	virtual void d03();
-	virtual void d04();
-	virtual void d05();
-	virtual void d06();
-	virtual void d07();
-	virtual void d08();
-	virtual void d09();
-	virtual void d10();
-	virtual void d11();
-	virtual void d12();
-	virtual void d13();
-	virtual void d14();
-	virtual void d15();
-	virtual void d16();
-	virtual void d17();
-	virtual void d18();
-	virtual void d19();
-	virtual void d20();
-	virtual void d21();
-	virtual void d22();
-	virtual void d23();
-	virtual void d24();
-	virtual void d25();
-	virtual void d26();
-	virtual void d27();
-	virtual void d28();
-	virtual void d29();
-	virtual void d30();
-	virtual void d31();
-	virtual void d32();
-	virtual void d33();
-	virtual void d34();
-	virtual void d35();
-	virtual void d36();
-	virtual void d37();
-	virtual void d38();
-	virtual void d39();
-	virtual void d40();
-	virtual void d41();
-	virtual void d42();
-	virtual void d43();
-	virtual void d44();
-	virtual void d45();
-	virtual void d46();
-	virtual void d47();
-	virtual void d48();
-	virtual void d49();
-	virtual void d50();
-	virtual void d51();
-	virtual void d52();
-	virtual void d53();
-	virtual void d54();
-	virtual void d55();
-	virtual void d56();
-	virtual void d57();
-	virtual void d58();
-	virtual void d59();
-	virtual void d60();
-	virtual void d61();
-	virtual void d62();
-	virtual void d63();
-	virtual void d64();
-	virtual void d65();
-	virtual void d66();
-	virtual void d67();
-	virtual void d68();
-	virtual long __stdcall SetTextureStageState(unsigned stage, unsigned long state, unsigned value);
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device.
+struct IDirect3DDevice8;
 
 extern unsigned number_of_DX8_calls;
 
@@ -252,10 +185,10 @@ void BaseHeightMapRenderObjClass::drawScorches()
 	BFME2Set_Texture(0, m_scorchTexture);
 	bfmeSetProjectionDepthBias(1.0f);
 	DX8Wrapper::Apply_Render_State_Changes();
-	DX8Wrapper::D3DDevice->SetTextureStageState(0, 1, 3);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_CLAMP);
 	++number_of_DX8_calls;
 	++DX8Wrapper::texture_stage_state_changes;
-	DX8Wrapper::D3DDevice->SetTextureStageState(0, 2, 3);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
 	++number_of_DX8_calls;
 	++DX8Wrapper::texture_stage_state_changes;
 	DX8Wrapper::Draw_Triangles(0, m_curNumScorchIndices / 3, 0, m_curNumScorchVertices);

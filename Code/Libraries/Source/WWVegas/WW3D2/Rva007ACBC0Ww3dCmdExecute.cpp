@@ -1,4 +1,6 @@
 // cl: /O2 /G7 /arch:SSE /DNDEBUG /MD
+// dxsdk
+// platformsdk
 // ?Execute@Rva007ACBC0CmdInterface@@..., retail 0x00117DC0 (330 B, RET 0x14): the "ww3d"
 // debug command group's Execute (class table 0x00BCFBF0, registered by Rva007ACBC0Ww3dCmdGroup.cpp;
 // WB 0x009C02D0 by its strings). "help" lists or explains sceneanalyst and pixmarker through
@@ -12,6 +14,7 @@
 // the debug log groups through theDebug's command slot 0x8C.
 #include <string.h>
 #include <stdlib.h>
+#include <d3d9.h>
 class Debug;
 
 class DebugCmdInterface
@@ -136,13 +139,9 @@ bool Rva007ACBC0CmdInterface::Execute( Debug &dbg, const char *cmd, CommandMode 
 	return false;
 }
 
-struct IDirect3DDevice8
-{
-	virtual long __stdcall QueryInterface(void *, void **);
-	virtual unsigned long __stdcall AddRef();
-	virtual unsigned long __stdcall Release();
-	virtual long __stdcall TestCooperativeLevel();
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (TestCooperativeLevel, vtable slot 3).
+struct IDirect3DDevice8;
 
 class DX8Wrapper
 {
@@ -170,10 +169,10 @@ bool WW3D::Prepare_Render_New_Frame()
 {
 	if (DX8Wrapper::D3DDevice)
 	{
-		long hr = DX8Wrapper::D3DDevice->TestCooperativeLevel();
-		if (hr != 0)
+		HRESULT hr = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->TestCooperativeLevel();
+		if (hr != D3D_OK)
 		{
-			if (hr != (long)0x88760868 && hr == (long)0x88760869)
+			if (hr != D3DERR_DEVICELOST && hr == D3DERR_DEVICENOTRESET)
 				DX8Wrapper::Reset_Device(true);
 			return false;
 		}

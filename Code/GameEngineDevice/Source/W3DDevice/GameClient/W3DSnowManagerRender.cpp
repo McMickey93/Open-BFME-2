@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /ICode/Libraries/Include/Lib
+// dxsdk
+// platformsdk
 //
 // ?render@W3DSnowManager@@QAEXAAVRenderInfoClass@@@Z
 // Retail 0x0009470F..0x000949D9 (714 bytes), __thiscall, ret 4.
@@ -16,6 +18,7 @@
 // TheSnowManager. Callees renderAsQuads 0x00093CC3 and renderSubBox
 // 0x00093507 (both RET 0x14 with rinfo and four ints) are unrowed.
 // The shader at VA 0x00DB4720 (bits 0x000198B3) has no ledger name.
+#include <d3d9.h>
 #include "Coord3D.h"
 class RenderInfoClass;
 class ShaderClass
@@ -45,23 +48,9 @@ public:
 };
 
 struct IDirect3DVertexBuffer8;
-struct IDirect3DDevice8
-{
-#define S(n) virtual void __stdcall slot##n() = 0;
-	S(00) S(01) S(02) S(03) S(04) S(05) S(06) S(07) S(08) S(09)
-	S(10) S(11) S(12) S(13) S(14) S(15) S(16) S(17) S(18) S(19)
-	S(20) S(21) S(22) S(23) S(24) S(25) S(26) S(27) S(28) S(29)
-	S(30) S(31) S(32) S(33) S(34) S(35) S(36) S(37) S(38) S(39)
-	S(40) S(41) S(42) S(43) S(44) S(45) S(46) S(47) S(48) S(49)
-	S(50) S(51) S(52) S(53) S(54) S(55) S(56) S(57) S(58) S(59)
-	S(60) S(61) S(62) S(63) S(64) S(65) S(66) S(67) S(68) S(69)
-	S(70) S(71) S(72) S(73) S(74) S(75) S(76) S(77) S(78) S(79)
-	S(80) S(81) S(82) S(83) S(84) S(85) S(86) S(87) S(88)
-	virtual long __stdcall SetFVF(unsigned long fvf) = 0;	// 89
-	S(90) S(91) S(92) S(93) S(94) S(95) S(96) S(97) S(98) S(99)
-	virtual long __stdcall SetStreamSource(unsigned int stream, IDirect3DVertexBuffer8 *data, unsigned int offset, unsigned int stride) = 0;	// 100
-#undef S
-};
+// The device and vertex buffer keep their D3D8 type names but are Direct3D 9
+// objects (SetFVF slot 89, SetStreamSource slot 100).
+struct IDirect3DDevice8;
 
 extern unsigned int number_of_DX8_calls;
 
@@ -240,20 +229,21 @@ void W3DSnowManager::render(RenderInfoClass &rinfo)
 		return;
 	}
 	DX8Wrapper::Apply_Render_State_Changes();
-	DX8Wrapper::Set_DX8_Render_State(156, 1);
-	DX8Wrapper::Set_DX8_Render_State(157, 1);
-	DX8Wrapper::Set_DX8_Render_State(154, FtoDW(m_pointSize));
-	DX8Wrapper::Set_DX8_Render_State(155, FtoDW(m_minPointSize));
-	DX8Wrapper::Set_DX8_Render_State(166, FtoDW(m_maxPointSize));
-	DX8Wrapper::Set_DX8_Render_State(158, FtoDW(0.0f));
-	DX8Wrapper::Set_DX8_Render_State(159, FtoDW(0.0f));
-	DX8Wrapper::Set_DX8_Render_State(160, FtoDW(1.0f));
-	DX8Wrapper::_Get_D3D_Device8()->SetStreamSource(0, m_vertexBuffer, 0, 16);
-	DX8Wrapper::_Get_D3D_Device8()->SetFVF(0x42);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSPRITEENABLE, TRUE);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSCALEENABLE, TRUE);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSIZE, FtoDW(m_pointSize));
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSIZE_MIN, FtoDW(m_minPointSize));
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSIZE_MAX, FtoDW(m_maxPointSize));
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSCALE_A, FtoDW(0.0f));
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSCALE_B, FtoDW(0.0f));
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSCALE_C, FtoDW(1.0f));
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetStreamSource(0,
+		reinterpret_cast<IDirect3DVertexBuffer9 *>(m_vertexBuffer), 0, 16);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetFVF(D3DFVF_XYZ | D3DFVF_DIFFUSE);
 	number_of_DX8_calls++;
 	m_dwBase = 4096;
 	m_cullOverscan = m_quadSize + m_amplitude;
 	renderSubBox(rinfo, originX, originY, dimX, dimY);
-	DX8Wrapper::Set_DX8_Render_State(156, 0);
-	DX8Wrapper::Set_DX8_Render_State(157, 0);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSPRITEENABLE, FALSE);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_POINTSCALEENABLE, FALSE);
 }
