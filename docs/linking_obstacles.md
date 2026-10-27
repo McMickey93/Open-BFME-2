@@ -2906,7 +2906,10 @@ Completed (each `./build.sh` exact on the surviving owner, link_check LINKS for 
 - 0x0006047C `Rva0006047CSeq.cpp` (owner `MilesAudioManager.cpp`) dd45d8c862; its two
   `g_Va00BBAB74/78` address globals are gone (`hatch_counters.py --update` not run).
 - 0x004C121B `BfmeConv892_Rva004C121B.cpp` (owner `SymbioticStructuresBodySlots.cpp`) 93ba3a07a8;
-  its `reverse/header_queue.tsv` GameLogic key now names a deleted source.
+  its stale `reverse/header_queue.tsv` GameLogic key is retired on 2026-10-27 through the
+  vanished-source exception. Current history identifies the deletion as `67f241b840`;
+  its sole row is tombstoned, and the surviving owner already includes the canonical
+  GameLogic header. Evidence: `reverse/attempt_support/header-debt-004c121b-20261027/readme.md`.
 - 0x000AF1C2, 0x005243FA, 0x00569450 (2360ac3cf8) and 0x005AE78A (476ee27be8): StlSweepR3
   `uninitialized_fill_n` units (stable_sort over a 1-byte record, `#pragma optimize`); their
   `__uninitialized_fill_n` pins, named only by those units, were dropped.
