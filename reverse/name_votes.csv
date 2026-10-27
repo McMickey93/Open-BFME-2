@@ -8507,3 +8507,15 @@ Code/GameEngine/Source/Common/FamilyDeletingDtors3.cpp|class||Rva00577E43,9c262c
 Code/GameEngine/Source/Common/FamilyDeletingDtors3.cpp|function|0x00577EAA|rva00577EAA,e269e330d63b9d3df85228dc,claude-opus-5-5,w6-10271727-15,w-b0805ec7ca32,2026-10-27
 Code/GameEngine/Source/GameNetwork/BfmeGameBrowserVJQ.cpp|class||BfmeThingVJQ,580c7541e2f598735eaf1316,claude-opus-5-5,w6-10271727-20,w-b0805ec7ca32,2026-10-27
 Code/GameEngine/Source/GameNetwork/BfmeGameBrowserVJQ.cpp|member|BfmeThingVJQ|m_bfme10,9deccee21892217806393139,claude-opus-5-5,w6-10271727-20,w-b0805ec7ca32,2026-10-27
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|class||Rva004F9F39Template,a5c3e3810eea10b01936b42a,drz-k3,drz-k3-1,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|member|Rva004F9F39Unit|m_0c,b96ed130e763074e6cb7e915,drz-k3,drz-k3-1,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|member|Rva004F9F39Unit|m_1c,5026989d526cbb9033b3f72b,drz-k3,drz-k3-1,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|member|Rva004F9F39Unit|m_2c,5405cf47832d9cadee2ac7ed,drz-k3,drz-k3-1,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|local|LivingWorldAutoResolveBattle::rva004F9F39|r,fe9b55662fa1269668f09249,drz-k3,drz-k3-1,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoResolveBattleLeadership.cpp|local|LivingWorldAutoResolveBattle::rva004F9F39|n,ae1abf98317725e99f7ff454,drz-k3,drz-k3-1,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/WeaponRva002CB2D1Range.cpp|class||Rva002CB35CTemplate,02b9bfabba0430ff98aabb18,drz-k3,drz-k3-3,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/WeaponRva002CB2D1Range.cpp|class||Rva002CB35CAIData,07458f18dc3ee8eef0b658ad,drz-k3,drz-k3-3,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|class||Rva00508120ContainView,e90dd1dae89f776255db7adf,drz-k3,drz-k3-25,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|class||Rva00508120WeaponTemplateView,492eaff952c5222ddd84f734,drz-k3,drz-k3-25,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|class||Rva00508120WeaponView,3e6a5880ad8a90112f89ca04,drz-k3,drz-k3-25,w-077d7aeb666b,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|member|Rva00508120WeaponView|template04,1ebc85b281b7099118174e06,drz-k3,drz-k3-25,w-077d7aeb666b,2026-10-27
