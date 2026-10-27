@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX- /GS-
+// dxsdk
+// platformsdk
 //
 // Rva00075A23Draw, retail 0x00075A23, 437 bytes. Banked partial (score 0.97,
 // instruction scheduling) closed by tools/permute.py: statement order, operand
@@ -7,7 +9,7 @@
 // TheGlobalData+0xC60==-1, Set_Vertex_Buffer(NULL,0), AppendLock(VB,index*4,4,
 // DISCARD-if-index-0-else-NOOVERWRITE), NDC positions (-1/1,0,1) with
 // 0.5/w,0.5/h texel UVs (1.0/0.5/-1.0/0.0 literals), unlock, rebind VB,
-// device SetVertexShader slot 0x15C with FVF global, Draw strip (index*4,2),
+// device SetVertexDeclaration slot 0x15C with the declaration global, Draw strip (index*4,2),
 // index=(index+1)%50. Callers 0x00077392/0x0007BDAD/0x000FAC37/0x00111C05 push
 // (w,h) __cdecl void; callees rowed Set_Vertex_Buffer/AppendLock/bfme00120700
 // plus AppendLock-dtor pin; sibling 0x00075746 drawViewport shares VB/index/
@@ -37,6 +39,8 @@ public:
 	};
 };
 
+#include <d3d9.h>
+
 struct IDirect3DDevice8;
 void Rva00075A23Draw(int width, int height);
 class W3DShaderManager;
@@ -46,25 +50,12 @@ class DX8Wrapper
 	friend void Rva00075A23Draw(int width, int height);
 	friend class W3DShaderManager;
 protected:
-	// 0x009EDA34, defined by dx8wrapper.cpp; reached through the DeviceObj view.
+	// 0x009EDA34, defined by dx8wrapper.cpp; the native object is a Direct3D 9
+	// device, so the calls below cast it to IDirect3DDevice9.
 	static IDirect3DDevice8 *D3DDevice;
 public:
 	static void Set_Vertex_Buffer(const VertexBufferClass *vb, unsigned stream);
 	static void bfmeRva00120700(unsigned start, unsigned count);
-};
-
-struct DeviceVtbl
-{
-	void *m_pad[87];
-	long (__stdcall *m_setVertexShader)(void *device, unsigned fvf);
-	void *m_slot88;
-	// Retail drawViewport calls this entry with the 0x144 FVF value.
-	long (__stdcall *m_methodAt164)(void *device, unsigned value);
-};
-
-struct DeviceObj
-{
-	DeviceVtbl *m_vtable;
 };
 
 extern VertexBufferClass *g_vb;
@@ -138,7 +129,8 @@ void Rva00075A23Draw(int width, int height)
 		quadVertex[3].v = 1.0f + invH;
 	}
 	DX8Wrapper::Set_Vertex_Buffer(g_vb, 0);
-	((DeviceObj *)DX8Wrapper::D3DDevice)->m_vtable->m_setVertexShader(((DeviceObj *)DX8Wrapper::D3DDevice), g_fvfShader);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetVertexDeclaration(
+		reinterpret_cast<IDirect3DVertexDeclaration9 *>(g_fvfShader));
 	++number_of_DX8_calls;
 	DX8Wrapper::bfmeRva00120700(g_quadIndex * 4, 2);
 	if (++g_quadIndex >= 50)
@@ -262,7 +254,8 @@ void W3DShaderManager::drawViewport(int color, bool useExplicitDimensions, const
 		quadVertex[3].v = (float)ypos / uvHeight;
 	}
 
-	((DeviceObj *)DX8Wrapper::D3DDevice)->m_vtable->m_methodAt164(((DeviceObj *)DX8Wrapper::D3DDevice), 0x144);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetFVF(
+		D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
 	++number_of_DX8_calls;
 	DX8Wrapper::Set_Vertex_Buffer(g_vb, 0);
 	DX8Wrapper::bfmeRva00120700(g_quadIndex * 4, 2);
