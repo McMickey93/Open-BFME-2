@@ -10,6 +10,7 @@
 #ifndef MIN
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
+#include <new>
 
 // GameWindowTransitionsStyles: FullFadeTransition::FullFadeTransition
 // (0x0035F2B3, 67B). Donor: Open-BFME-1 Code/GameEngine/Source/GameClient/GUI/
@@ -345,12 +346,6 @@ struct FieldParse;
 
 extern const int g_emptyFieldParseTable[4];
 
-class INI
-{
-public:
-	void initFromINI(void *what, const FieldParse *table);
-};
-
 class Rva0035E2E6 : public Rva001DBAA4
 {
 public:
@@ -455,6 +450,93 @@ public:
 	Int m_countState;	// +0x3c
 };
 
+class INI;
+
+typedef void (*INIFieldParseProc)(INI *, void *, void *, const void *);
+
+// upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/INI.h
+struct FieldParse
+{
+	const char *token;
+	INIFieldParseProc parse;
+	const void *userData;
+	int offset;
+};
+
+// upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/ObjectCreationList.h
+class ObjectCreationNugget
+{
+public:
+	virtual void create();
+};
+
+// same layout as BfmeConv1140.cpp's Rva0035D74A -- duplicated here (TU-scoped
+// shim) rather than shared, per repo convention for these small state objects.
+class BfmeBase1140A
+{
+public:
+	BfmeBase1140A(void) throw();
+	char *volatile m_bfme00;
+	volatile int m_bfme04;
+};
+
+class Rva0035D74A : public BfmeBase1140A
+{
+public:
+	Rva0035D74A(void);
+	char m_bfme08;
+	volatile char m_bfme09;
+	char m_bfmePad[2];
+	volatile int m_bfme0c;
+	volatile int m_bfme10;
+	volatile int m_bfme14;
+	volatile int m_bfme18;
+	volatile int m_bfme1c;
+	volatile int m_bfme20;
+	volatile int m_bfme24;
+	volatile int m_bfme28;
+	volatile int m_bfme2c;
+	volatile int m_bfme30;
+	volatile int m_bfme34;
+};
+
+class Rva0059B8F0Nugget : public ObjectCreationNugget
+{
+public:
+	Rva0059B8F0Nugget();
+	virtual void create();
+
+	static void parse(INI *, void *instance, void *store, const void *userData);
+
+private:
+	Rva0035D74A m_bfme;
+};
+
+class Rva0035DA01
+{
+public:
+	Rva0035DA01();
+
+private:
+	unsigned char m_pad[0x40];
+};
+
+class INI
+{
+public:
+	void initFromINI(void *what, const FieldParse *table);
+};
+
+// retail does NOT call ObjectCreationList::addObjectCreationNugget here --
+// the third-arg "instance" gets a plain field store at +0x10 instead, landed
+// as the gen-shim setter Gen_00489270::m (game/gen_small/fun_003.cpp,
+// RVA 0x00489270). Reuse that landed callee rather than pinning the wrong
+// (real, 106-byte) addObjectCreationNugget.
+struct Gen_00489270
+{
+	void m(int a);
+};
+
 // tu-skeleton: 0x0035D4E6 44B ?update@ReverseSoundTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
 
 // tu-skeleton: 0x0035D512 14B ?rva0035D512@Rva0035D512@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesC.cpp (not merged yet)
@@ -466,6 +548,8 @@ public:
 // tu-skeleton: 0x0035D54B 121B ?init@ScoreScaleUpTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/Common/ScoreScaleUpTransition_init.cpp (not merged yet)
 
 // tu-skeleton: 0x0035D5C4 106B ?update@ScoreScaleUpTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp
 
 // ---- from Code/GameEngine/Source/Common/ScoreScaleUpTransition_draw.cpp
 
@@ -482,24 +566,6 @@ void ScoreScaleUpTransition::draw()
 	Int y1 = y + m_30 * m_20;
 	((W3DDisplay *)TheDisplay)->rva0004D6B3((Image *)image, (float)x, (float)y, (float)x1, (float)y1, -1, 2);
 }
-
-// tu-skeleton: 0x0035D6B8 37B ??0ScoreScaleUpTransition@@QAE@XZ -- matched in Code/GameEngine/Source/Common/ScoreScaleUpTransition.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D6F9 81B ?Rva0035D6F9Parse@@YAXPAVINI@@PAVRva0035D6F9Holder@@@Z -- matched in Code/GameEngine/Source/Common/Rva0035D6F9Parse.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D74A 19B ??1Rva0035D74A@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D75D 36B ?update@ControlBarArrowTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D781 8B ?rva0035D781@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D789 72B ??0Rva0035D74A@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035D74AFinish.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D7D1 28B ??_GRva0035D74A@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D7ED 81B ?parse@Rva0059B8F0Nugget@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/Rva0059B8F0NuggetParse.cpp (not merged yet)
-
-// tu-skeleton: 0x0035D83E 230B ?init@ControlBarArrowTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp
 
@@ -841,52 +907,6 @@ TextOnFrameTransition::TextOnFrameTransition(void)
 	m_isForward = true;
 }
 
-// tu-skeleton: 0x0035DA01 15B ??1Rva0035DA01@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DA10 143B ?update@MainMenuSmallScaleDownTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DB3F 71B ??0Rva0035DA01@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/Rva0035DB3FTransitionCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DB86 28B ??_GRva0035DA01@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DBA2 81B ?rva0059EB90@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/Rva0059EB90IniParse_Rva0035DBA2.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DBF3 262B ?init@MainMenuSmallScaleDownTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuSmallScaleDownTransitionInit.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DCF9 15B ??1MainMenuMediumScaleUpTransition@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DD08 148B ?update@MainMenuMediumScaleUpTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DD9C 33B ?Rva0035DD9C@MainMenuMediumScaleUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DDBD 152B ?draw@MainMenuMediumScaleUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DE55 80B ??0MainMenuMediumScaleUpTransition@@QAE@XZ -- matched in Code/GameEngine/Source/Common/MainMenuMediumScaleUpTransition.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DEC1 87B ?s4parse0059E290@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035DEC1.cpp (not merged yet)
-
-// tu-skeleton: 0x0035DF18 247B ?init@MainMenuMediumScaleUpTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuMediumScaleUpTransitionInit.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E00F 15B ??1Rva0035E00F@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E0F7 142B ?update@Rva0035E00F@@UAEXH@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E185 129B ?draw@MainMenuScaleUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E206 86B ??0Rva0035E00F@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E00FFinish.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E25C 28B ??_GRva0035E00F@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E278 87B ?s4parse0059E860@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035E278.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E2CF 15B ??1Rva0035E2E6@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E2DE 8B ?rva0035E2DE@Rva0035E2DE@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesA.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E2E6 37B ??0Rva0035E2E6@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E2E6Ctor.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E30B 28B ??_GRva0035E2E6@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva0035E327Parse.cpp
 
 void __cdecl Rva0035E327Parse(INI *ini, Rva0035E327Holder *holder)
@@ -895,16 +915,6 @@ void __cdecl Rva0035E327Parse(INI *ini, Rva0035E327Holder *holder)
 	ini->initFromINI(obj, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
 	holder->set(obj);
 }
-
-// tu-skeleton: 0x0035E378 15B ??1Rva0035E60B@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E387 636B ?update@ButtonFlashTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/Common/ButtonFlashTransitionUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E603 8B ?rva0035E603@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E60B 41B ??0Rva0035E60B@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E60BCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E634 28B ??_GRva0035E60B@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva0035E650Parse.cpp
 
@@ -915,24 +925,6 @@ void __cdecl Rva0035E650Parse(INI *ini, Rva0035E650Holder *holder)
 	holder->set(obj);
 }
 
-// tu-skeleton: 0x0035E6A1 733B ?PushButtonImageDrawThree@@YAXPAVGameWindow@@H@Z -- matched in Code/GameEngine/Source/Common/ButtonFlashTransitionUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0035E97E 135B ?init@ButtonFlashTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035EA05 909B ?draw@ButtonFlashTransition@@UAEXXZ -- matched in Code/GameEngine/Source/Common/ButtonFlashTransitionUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0035ED92 15B ??1Rva0035EE66@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035EDA1 68B ?rva0035EDA1@Rva0035EE66@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/Common/Rva0035EDA1Init.cpp (not merged yet)
-
-// tu-skeleton: 0x0035EDE5 121B ?update@FlashTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
-
-// tu-skeleton: 0x0035EE5E 8B ?rva0035EE5E@Rva0035EE5E@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesA.cpp (not merged yet)
-
-// tu-skeleton: 0x0035EE66 37B ??0Rva0035EE66@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035EE66Ctor.cpp (not merged yet)
-
-// tu-skeleton: 0x0035EE8B 28B ??_GRva0035EE66@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva0035EEA7Parse.cpp
 
 void __cdecl Rva0035EEA7Parse(INI *ini, Rva0035EEA7Holder *holder)
@@ -942,24 +934,6 @@ void __cdecl Rva0035EEA7Parse(INI *ini, Rva0035EEA7Holder *holder)
 	holder->set(obj);
 }
 
-// tu-skeleton: 0x0035EEF8 728B ?draw@FlashTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F1D0 15B ??1Rva0035F1D0@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F2F6 28B ??_GRva0035F1D0@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F312 87B ?s5parse0059D600@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S5Parse0059D600_Rva0035F312.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F42E 15B ??1Rva0035F4A6@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F43D 97B ?update@FadeTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F49E 8B ?rva0035F49E@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F4A6 37B ??0Rva0035F4A6@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035F4A6Ctor.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F4CB 28B ??_GRva0035F4A6@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva0035F4E7Parse.cpp
 
 void __cdecl Rva0035F4E7Parse(INI *ini, Rva0035F4E7Holder *holder)
@@ -968,18 +942,6 @@ void __cdecl Rva0035F4E7Parse(INI *ini, Rva0035F4E7Holder *holder)
 	ini->initFromINI(obj, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
 	holder->set(obj);
 }
-
-// tu-skeleton: 0x0035F538 224B ?draw@FadeTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F618 35B ?reverse@CountUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F63B 15B ?rva0035F63B@CountUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F64A 74B ??0CountUpTransition@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F694 78B ??1CountUpTransition@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
-
-// tu-skeleton: 0x0035F6E2 87B ?Rva0035F6E2Parse@@YAXPAVINI@@PAVRva003600D6Holder@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/CountUpTransitionInit.cpp
 
@@ -1085,6 +1047,144 @@ void CountUpTransition::update(Int frame)
 	}
 }
 
+// tu-skeleton: 0x0035D6B8 37B ??0ScoreScaleUpTransition@@QAE@XZ -- matched in Code/GameEngine/Source/Common/ScoreScaleUpTransition.cpp (not merged yet)
+
+// tu-skeleton: 0x0035D6F9 81B ?Rva0035D6F9Parse@@YAXPAVINI@@PAVRva0035D6F9Holder@@@Z -- matched in Code/GameEngine/Source/Common/Rva0035D6F9Parse.cpp (not merged yet)
+
+// tu-skeleton: 0x0035D74A 19B ??1Rva0035D74A@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035D75D 36B ?update@ControlBarArrowTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
+
+// tu-skeleton: 0x0035D781 8B ?rva0035D781@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
+
+// tu-skeleton: 0x0035D789 72B ??0Rva0035D74A@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035D74AFinish.cpp (not merged yet)
+
+// tu-skeleton: 0x0035D7D1 28B ??_GRva0035D74A@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva0059B8F0NuggetParse.cpp
+
+// ?parse@Rva0059B8F0Nugget@@SAXPAVINI@@PAX1PBX@Z
+void Rva0059B8F0Nugget::parse(INI *ini, void *instance, void *store, const void *userData)
+{
+	Rva0035D74A *nugget = new Rva0035D74A;
+	ini->initFromINI(nugget, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
+	((Gen_00489270 *)instance)->m((int)nugget);
+}
+
+// tu-skeleton: 0x0035D83E 230B ?init@ControlBarArrowTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DA01 15B ??1Rva0035DA01@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DA10 143B ?update@MainMenuSmallScaleDownTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DB3F 71B ??0Rva0035DA01@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/Rva0035DB3FTransitionCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DB86 28B ??_GRva0035DA01@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva0059EB90IniParse_Rva0035DBA2.cpp
+
+// ?rva0059EB90@@YAXPAVINI@@PAUGen_00489270@@@Z
+void rva0059EB90(INI *ini, Gen_00489270 *store)
+{
+	Rva0035DA01 *item = new Rva0035DA01;
+	ini->initFromINI(item, reinterpret_cast<const FieldParse *>(g_emptyFieldParseTable));
+	store->m((int)item);
+}
+
+// tu-skeleton: 0x0035DBF3 262B ?init@MainMenuSmallScaleDownTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuSmallScaleDownTransitionInit.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DCF9 15B ??1MainMenuMediumScaleUpTransition@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DD08 148B ?update@MainMenuMediumScaleUpTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DD9C 33B ?Rva0035DD9C@MainMenuMediumScaleUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DDBD 152B ?draw@MainMenuMediumScaleUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DE55 80B ??0MainMenuMediumScaleUpTransition@@QAE@XZ -- matched in Code/GameEngine/Source/Common/MainMenuMediumScaleUpTransition.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DEC1 87B ?s4parse0059E290@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035DEC1.cpp (not merged yet)
+
+// tu-skeleton: 0x0035DF18 247B ?init@MainMenuMediumScaleUpTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuMediumScaleUpTransitionInit.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E00F 15B ??1Rva0035E00F@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E0F7 142B ?update@Rva0035E00F@@UAEXH@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E185 129B ?draw@MainMenuScaleUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E206 86B ??0Rva0035E00F@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E00FFinish.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E25C 28B ??_GRva0035E00F@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E278 87B ?s4parse0059E860@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035E278.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E2CF 15B ??1Rva0035E2E6@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E2DE 8B ?rva0035E2DE@Rva0035E2DE@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesA.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E2E6 37B ??0Rva0035E2E6@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E2E6Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E30B 28B ??_GRva0035E2E6@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E378 15B ??1Rva0035E60B@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E387 636B ?update@ButtonFlashTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/Common/ButtonFlashTransitionUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E603 8B ?rva0035E603@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E60B 41B ??0Rva0035E60B@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035E60BCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E634 28B ??_GRva0035E60B@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E6A1 733B ?PushButtonImageDrawThree@@YAXPAVGameWindow@@H@Z -- matched in Code/GameEngine/Source/Common/ButtonFlashTransitionUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x0035E97E 135B ?init@ButtonFlashTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035EA05 909B ?draw@ButtonFlashTransition@@UAEXXZ -- matched in Code/GameEngine/Source/Common/ButtonFlashTransitionUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x0035ED92 15B ??1Rva0035EE66@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035EDA1 68B ?rva0035EDA1@Rva0035EE66@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/Common/Rva0035EDA1Init.cpp (not merged yet)
+
+// tu-skeleton: 0x0035EDE5 121B ?update@FlashTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// tu-skeleton: 0x0035EE5E 8B ?rva0035EE5E@Rva0035EE5E@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesA.cpp (not merged yet)
+
+// tu-skeleton: 0x0035EE66 37B ??0Rva0035EE66@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035EE66Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x0035EE8B 28B ??_GRva0035EE66@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035EEF8 728B ?draw@FlashTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F1D0 15B ??1Rva0035F1D0@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F2F6 28B ??_GRva0035F1D0@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F312 87B ?s5parse0059D600@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S5Parse0059D600_Rva0035F312.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F42E 15B ??1Rva0035F4A6@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F43D 97B ?update@FadeTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F49E 8B ?rva0035F49E@Rva0035D781Self@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotMiscForwarders.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F4A6 37B ??0Rva0035F4A6@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035F4A6Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F4CB 28B ??_GRva0035F4A6@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F538 224B ?draw@FadeTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F618 35B ?reverse@CountUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F63B 15B ?rva0035F63B@CountUpTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/TransitionStyleSlotsBfme2.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F64A 74B ??0CountUpTransition@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F694 78B ??1CountUpTransition@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0035F6E2 87B ?Rva0035F6E2Parse@@YAXPAVINI@@PAVRva003600D6Holder@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
 // tu-skeleton: 0x0035FA2A 15B ??1Rva0035FA2A@@UAE@XZ -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
 
 // tu-skeleton: 0x0035FA39 87B ?s4ParseFieldsRva005A01F0@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/Rva005A01F0AttackNuggetFactory_Rva0035FA39.cpp (not merged yet)
@@ -1104,3 +1204,61 @@ void CountUpTransition::update(Int frame)
 // tu-skeleton: 0x0035FE72 171B ?update@TextTypeTransition@@UAEXH@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
 
 // tu-skeleton: 0x0035FF1D 57B ?draw@TextTypeTransition@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DE39 10B uw_0077de39 -- matched in Code/GameEngine/Source/Common/Rva0035D6F9Parse.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DE43 10B __ehhandler$?Rva0035D6F9Parse@@YAXPAVINI@@PAVRva0035D6F9Holder@@@Z -- matched in Code/GameEngine/Source/Common/Rva0035D6F9Parse.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DE75 8B Unwind@00b7de75 -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuSmallScaleDownTransitionInit.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DE7D 10B __ehhandler$?init@MainMenuSmallScaleDownTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuSmallScaleDownTransitionInit.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DE87 10B uw_0077de87 -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035DEC1.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DE91 10B __ehhandler$?s4parse0059E290@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035DEC1.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DE9B 8B Unwind@00b7de9b -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuMediumScaleUpTransitionInit.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DEA3 10B __ehhandler$?init@MainMenuMediumScaleUpTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/MainMenuMediumScaleUpTransitionInit.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DEAD 10B uw_0077dead -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035E278.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DEB7 10B __ehhandler$?s4parse0059E860@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035E278.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DEE9 8B Unwind@00b7dee9 -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DEF1 10B __ehhandler$?init@ButtonFlashTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/Common/FamilyTailDtors1DBAC3.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DF0F 10B uw_0077df0f -- matched in Code/GameEngine/Source/Common/S5Parse0059D600_Rva0035F312.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DF19 10B __ehhandler$?s5parse0059D600@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/S5Parse0059D600_Rva0035F312.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DF37 8B Unwind@00b7df37 -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DF3F 11B Unwind@00b7df3f -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DF4A 10B __ehhandler$??1CountUpTransition@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DF54 10B uw_0077df54 -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DF5E 10B __ehhandler$?Rva0035F6E2Parse@@YAXPAVINI@@PAVRva003600D6Holder@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/CountUpTransitionDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFA4 10B uw_0077dfa4 -- matched in Code/GameEngine/Source/Common/Rva005A01F0AttackNuggetFactory_Rva0035FA39.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFAE 10B __ehhandler$?s4ParseFieldsRva005A01F0@@YAXPAVINI@@PAUGen_00489270@@@Z -- matched in Code/GameEngine/Source/Common/Rva005A01F0AttackNuggetFactory_Rva0035FA39.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFB8 8B Unwind@00b7dfb8 -- matched in Code/GameEngine/Source/Common/Rva0035FD0ADtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFC0 11B Unwind@00b7dfc0 -- matched in Code/GameEngine/Source/Common/Rva0035FD0ADtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFCB 11B Unwind@00b7dfcb -- matched in Code/GameEngine/Source/Common/Rva0035FD0ADtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFD6 10B __ehhandler$??1Rva0035FD0A@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0035FD0ADtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFE0 10B uw_0077dfe0 -- matched in Code/GameEngine/Source/Common/Rva0035FD0ADtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFEA 10B __ehhandler$?Rva0035FD73Parse@@YAXPAVINI@@PAVRva003600D6Holder@@@Z -- matched in Code/GameEngine/Source/Common/Rva0035FD0ADtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFF4 8B $L40768 -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
+
+// tu-skeleton: 0x0077DFFC 10B __ehhandler$?init@TextTypeTransition@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStylesO1.cpp (not merged yet)
