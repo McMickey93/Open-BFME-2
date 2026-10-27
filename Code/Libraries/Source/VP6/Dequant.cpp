@@ -9,7 +9,7 @@
 // zero-fills the first 32 outputs and then does the first eleven. Both are
 // written out unrolled, as retail has them.
 
-extern "C" void * __cdecl memset(void *destination, int value, unsigned int bytes);
+#include <string.h>
 
 #pragma intrinsic(memset)
 

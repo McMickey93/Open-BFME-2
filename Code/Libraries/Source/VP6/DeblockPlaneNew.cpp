@@ -11,8 +11,7 @@
 // (0x001BE490, DeblockVerticalEdgesInNonFilteredBandNewFilter) finishes with
 // the same seven arguments.
 
-extern "C" void * __cdecl memcpy(void *destination, const void *source,
-	unsigned int bytes);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct Rva009AF200Context;

@@ -31,7 +31,7 @@ typedef void (__cdecl *ClearSysStateFn)();
 // Global decoded-frame counter (VA 0x00DFDA50, zero-filled .bss).
 int g_vp6FrameCounter;
 
-extern "C" void *__cdecl memcpy(void *dest, const void *source, unsigned int count);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 struct QUANTIZER
