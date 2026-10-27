@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <stl/_tree.h>
+#include <new>
 
 // _Rb_tree_iterator comparisons otherwise instantiate the base-class
 // operator!= COMDAT (one byte shape per TU flags); exact-match free
@@ -15,8 +16,6 @@ static inline bool operator!=(const _Rb_tree_iterator<_RbVal, _RbLeft> &a,
                               const _Rb_tree_iterator<_RbVal, _RbRight> &b)
 { return a._M_node != b._M_node; }
 }
-void *__cdecl operator new(unsigned int);
-void __cdecl operator delete(void*);
 struct TargetRef00217D4C {void *vtable; int references;};
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C*);
 class ArmySummaryEntry {public:

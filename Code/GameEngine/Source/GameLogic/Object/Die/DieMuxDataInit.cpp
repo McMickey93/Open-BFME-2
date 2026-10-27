@@ -16,6 +16,7 @@
 // AudioLoopUpgrade 0x4B7C00 and SlowDeath 0x45E386 ctors.
 
 #include <bitset>
+#include <math.h>
 
 namespace _STL {
 template<> bitset<128> &bitset<128>::reset();
@@ -35,8 +36,6 @@ private:
 extern GameLogic *TheGameLogic;
 struct DamageInput { char pad0[8]; ObjectID source; char pad0C[0x1C-0x0C]; int deathType; float amount; };
 class DamageInfo { public: DamageInput in; };
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
-extern "C" double __cdecl fabs(double x);
 float normalizeAngle(float a);
 
 class DieMuxData
@@ -93,7 +92,7 @@ bool DieMuxData::isDieApplicable(const Object *obj, const DamageInfo *damageInfo
   float angle = normalizeAngle(orientation - sourceAngle);
   float midpoint = (*(const volatile float*)&m_angleMax + m_angleMin) * 0.5f;
   float halfRange = m_angleMax - midpoint;
-  if (fabs((this?(normalizeAngle(angle - midpoint)):(normalizeAngle(angle - midpoint)))) > halfRange) return false;
+  if (fabs((double)(this?(normalizeAngle(angle - midpoint)):(normalizeAngle(angle - midpoint)))) > halfRange) return false;
  }
  return true;
 }

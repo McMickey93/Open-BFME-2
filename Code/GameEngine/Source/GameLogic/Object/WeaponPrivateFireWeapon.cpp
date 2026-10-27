@@ -57,22 +57,7 @@ static inline const int &max(const int &a, const int &b)
     return a < b ? b : a;
 }
 }
-// math.h's float sin/cos overloads inline at the scatter rotation, but as
-// plain inlines this unit still emitted their call-_sin/_cos copies, which
-// lose to retail's fsin/fcos ones (0x2FBB0/0x2FBC0). Only those two take
-// wwmath.cpp's dllimport forceinline form: the float atan2 overload stays an
-// out-of-line call to 0x000422CD.
-#define sin bfme_math_h_sin
-#define cos bfme_math_h_cos
 #include <math.h>
-#undef sin
-#undef cos
-extern "C" double __cdecl sin(double);
-extern "C" double __cdecl cos(double);
-__declspec(dllimport) __forceinline float __cdecl sin(float _X)
-        {return ((float)sin((double)_X)); }
-__declspec(dllimport) __forceinline float __cdecl cos(float _X)
-        {return ((float)cos((double)_X)); }
 #include "Lib/Coord2D.h"
 
 struct WeaponScatterPoint : Coord3D
@@ -136,7 +121,6 @@ enum WeaponCollideMaskType
 class Player;
 class Object;
 class FXList;
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 float GetGameLogicRandomValueReal(float, float, char *, int);
 class Drawable
 {
@@ -833,8 +817,10 @@ static Coord3D getLinearPosition(const std::vector<WeaponLinearTarget> &position
     Coord2D point2 = {point.x, point.y};
     float px = point2.x, py = point2.y;
     float angle = object->m_transform.Get_Z_Rotation();
-    float sine = (float)(double)sin(angle);
-    float cosine = (float)(double)cos(angle);
+    // sinf/cosf emit only retail's _sinf/_cosf copies; math.h's sin(float) and
+    // cos(float) would add call-_sin/_cos copies unlike retail's (0x2FBB0/0x2FBC0).
+    float sine = (float)(double)sinf(angle);
+    float cosine = (float)(double)cosf(angle);
     Coord3D rotated;
     rotated.x = cosine * px - sine * py;
     rotated.y = sine * px + cosine * py;

@@ -122,8 +122,6 @@ public:
 
 extern "C" void peerLeaveRoomA(PEER peer, int roomType, const char *msg);
 extern "C" void peerMessagePlayerA(PEER peer, const char *nick, const char *msg, int type);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 class PeerThreadClass
 {

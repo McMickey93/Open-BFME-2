@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /O1 /EHsc /G7
+// platformsdk
 //
 // GenerateGameOptionsString, retail 0x00447C46 (99 bytes): the host's game
 // options string, empty unless TheLAN has a current game that this machine
@@ -18,6 +19,7 @@ typedef bool Bool;
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include <cstring>
+#include <WinSock2.h>
 
 template <int N> class VSlots : public VSlots<N - 1>
 {
@@ -206,8 +208,6 @@ void GameInfoToByteBuffer(LANGameInfo *game,char *data,int size)
 // stack-slot packing. The rules counter is signed (retail jl), the slot
 // counters unsigned (jb); both share one frame slot.
 char *NetworkBufferRead(char*,StringBase<char>*,char*);
-extern "C" __declspec(dllimport) unsigned long __stdcall htonl(unsigned long v);
-extern "C" __declspec(dllimport) unsigned short __stdcall htons(unsigned short v);
 inline __declspec(noinline) char *__cdecl NetworkBufferReadRaw(char *src, void *dst, unsigned int size, char *limit)
 {
 	if (limit != 0) {

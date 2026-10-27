@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX /D_STLP_USE_STATIC_LIB /Ireference/open-bfme-1/game/GameEngine/Source/GameNetwork
+// platformsdk
 //
 // ?getPlayerName@ConnectionManager@@QAE?AVUnicodeString@@H@Z
 // retail 0x004D0198, 61 bytes. Dedicated TU ported from the Open-BFME-1
@@ -13,6 +14,9 @@
 #undef _STLP_DEFAULT_CONSTRUCTOR_BUG
 #include <map>
 #include <string.h>
+#include <windows.h>
+#include <new>
+#include <stdlib.h>
 
 // TU-scoped extension of the canonical StringInline owning ABI for format().
 template <typename T> struct StringInlineData
@@ -56,12 +60,8 @@ typedef std::map<unsigned short, AsciiString> FileCommandMap;
 typedef std::map<unsigned short, unsigned char> FileMaskMap;
 typedef std::map<unsigned short, int> FileProgressMap;
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
-
 typedef bool Bool;
 typedef unsigned short UnsignedShort;
-
-void __cdecl operator delete(void *block) throw();
 
 enum NetCommandType
 {
@@ -475,7 +475,6 @@ public:
 extern GameSpyBuddyMessageQueueInterface *TheGameSpyBuddyMessageQueue;
 extern "C" char *goastrdup(const char *text) throw();
 extern "C" char *GenerateAuthA(char *challenge, char *password, char *response);
-extern "C" __declspec(dllimport) void __cdecl free(void *memory);
 
 class NetChatCommandMsg : public NetCommandMsg
 {

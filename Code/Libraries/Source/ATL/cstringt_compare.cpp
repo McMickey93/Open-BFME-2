@@ -2,7 +2,7 @@
 // Retail uses the legacy unsuffixed ANSI kernel32 string exports.
 // Source supplied by Open-BFME-1 toolchain; local ABI declarations replace headers.
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
-extern "C" void *__cdecl _alloca(unsigned int);
+#include <malloc.h>
 #pragma intrinsic(_alloca)
 extern "C" __declspec(dllimport) int __stdcall lstrlenW(const unsigned short *);
 extern "C" __declspec(dllimport) int __stdcall lstrcmpi(const char *, const char *);

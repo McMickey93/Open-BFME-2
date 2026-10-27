@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /EHsc /MD /DNDEBUG /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC /D_CRTIMP= /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // W3DShroud::interpolateFogLevels, retail 0x00073426..0x00073628 (RET 4) and its
 // EH handler 0x0075EE4A.
@@ -21,6 +22,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 #include <set>
 #include <vector>
+#include <windows.h>
 // Compare typed tree iterators locally; the incidental base comparison
 // COMDAT differs from the selected provider under this unit's flags.
 namespace _STL {
@@ -36,8 +38,6 @@ template <> const unsigned int &max<unsigned int>(const unsigned int &, const un
 }
 typedef float Real;
 typedef bool Bool;
-struct tagRECT; typedef tagRECT RECT;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 class TextureClass;
 struct ShroudTextureHandle { TextureClass *m_p; };
 void Rva00030830GameFree(void *);

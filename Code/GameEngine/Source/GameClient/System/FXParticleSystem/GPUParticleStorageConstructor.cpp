@@ -24,8 +24,7 @@ namespace _STL {static inline const unsigned&max(const unsigned&a,const unsigned
 #include <functional>
 namespace _STL {template<> void push_heap<int*,greater<int> >(int*,int*,greater<int>);}
 #include <string.h>
-void* __cdecl operator new(unsigned);
-void __cdecl operator delete(void*)throw();
+#include <new>
 void BFME_DX8_Thread_Lock();bool BFME_DX8_Thread_Assert();
 class DX8ThreadLock{public:DX8ThreadLock(){BFME_DX8_Thread_Lock();}~DX8ThreadLock(){BFME_DX8_Thread_Assert();}};
 class ParticleSystem{public:unsigned rva001F3C6B();};ParticleSystem*Make001FCBD7();
