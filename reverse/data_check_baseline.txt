@@ -497,11 +497,9 @@ Code/Libraries/Source/WWVegas/WW3D2/sortingrenderer.cpp	wrong-name	_sorted_list	
 Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	duplicate-def	?Movie@WW3D@@0PAVFrameGrabClass@@A	0x009EC3DC
 Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	duplicate-def	?PixelCenterX@WW3D@@0MA	0x009EC4F0
 Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	duplicate-def	?PixelCenterY@WW3D@@0MA	0x009ED9F8
-Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	duplicate-def	__Hwnd	0x009EC408
 Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	wrong-name	?Movie@WW3D@@0PAVFrameGrabClass@@A	0x009EC3DC
 Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	wrong-name	?PixelCenterX@WW3D@@0MA	0x009EC4F0
 Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	wrong-name	?PixelCenterY@WW3D@@0MA	0x009ED9F8
-Code/Libraries/Source/WWVegas/WW3D2/ww3d.cpp	wrong-name	__Hwnd	0x009EC408
 Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	duplicate-def	_g_debugAssertDialogAnswered	0x009E089D
 Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp	wrong-name	_g_debugAssertDialogAnswered	0x009E089D
 Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp	wrong-name	?$S1@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4IA	0x009E084C

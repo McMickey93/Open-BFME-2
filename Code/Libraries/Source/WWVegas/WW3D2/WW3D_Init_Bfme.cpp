@@ -10,7 +10,11 @@ public:
 	static bool Init(void *hwnd, bool lite);
 };
 
-class DefaultStaticSortListClass
+class StaticSortListClass
+{
+};
+
+class DefaultStaticSortListClass : public StaticSortListClass
 {
 public:
 	DefaultStaticSortListClass();
@@ -21,13 +25,6 @@ private:
 
 void *g_WW3D_Hwnd;
 unsigned char g_WW3D_Lite;
-struct WW3DStaticSortGlobals
-{
-	void *defaultList;
-	void *currentList;
-};
-
-WW3DStaticSortGlobals g_WW3D_StaticSortGlobals;
 
 class WW3D
 {
@@ -36,6 +33,8 @@ public:
 
 private:
 	static bool IsInitted;	// 0x00DEC3D4, defined in ww3d.cpp
+	static StaticSortListClass *DefaultStaticSortLists;	// 0x00DEC3F0, defined in ww3d.cpp
+	static StaticSortListClass *CurrentStaticSortLists;	// 0x00DEC3F4, defined in ww3d.cpp
 };
 
 bool WW3D::Init(void *hwnd, char *, bool lite)
@@ -46,8 +45,8 @@ bool WW3D::Init(void *hwnd, char *, bool lite)
 		return false;
 	timeBeginPeriod(1);
 	DefaultStaticSortListClass *list = new DefaultStaticSortListClass;
-	g_WW3D_StaticSortGlobals.defaultList = list;
-	g_WW3D_StaticSortGlobals.currentList = list;
+	DefaultStaticSortLists = list;
+	CurrentStaticSortLists = list;
 	if (!lite)
 		IsInitted = true;
 	return true;

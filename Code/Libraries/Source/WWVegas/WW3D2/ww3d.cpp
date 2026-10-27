@@ -168,7 +168,8 @@ bool														WW3D::IsTexturingEnabled=true;
 
 bool										WW3D::IsColoringEnabled=false;
 
-static HWND												_Hwnd = NULL;
+// 0x00DEC408: the render window handle, defined with WW3D::Init in WW3D_Init_Bfme.cpp.
+extern void *											g_WW3D_Hwnd;
 
 		// Not a member to hide windows from WW3D users
 static int												_TextureReduction = 0;
@@ -285,13 +286,7 @@ bool Rva008FD0E0Wrapper::setRenderDeviceChecked(const char* name, int width, int
 	return ok ? true : false;
 }
 
-// tu-skeleton: 0x00116F00 11B ?Rva00116F00@@YA_NXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperDeviceQueries.cpp (not merged yet)
-
 // tu-skeleton: 0x00116F10 54B ?Set_Render_Device@WW3D@@SA_NHHHHH_N00@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/WW3D_Set_Render_Device.cpp (not merged yet)
-
-// tu-skeleton: 0x00116F50 11B ?Rva00116F50@@YA_NXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperDeviceQueries.cpp (not merged yet)
-
-// tu-skeleton: 0x00116F60 6B ?Rva00116F60Get@@YAHXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperDeviceQueries.cpp (not merged yet)
 
 // tu-skeleton: 0x00116F70 6B ?Rva00116F70GetByte@@YAEXZ -- matched in Code/GameEngine/Source/Common/GlobalByteGetters.cpp (not merged yet)
 
@@ -454,14 +449,13 @@ WW3DErrorType WW3D::Set_Render_Device( const char * dev_name, int width, int hei
  * HISTORY:                                                                                    *
  *   3/24/98    GTH : Created.                                                                 *
  *=============================================================================================*/
-// ?Set_Any_Render_Device@WW3D@@ present-unmatched
-WW3DErrorType WW3D::Set_Any_Render_Device( void )
+bool WW3D::Set_Any_Render_Device( void )
 {
 	bool success = DX8Wrapper::Set_Any_Render_Device();
 	if (success) {
-		return WW3D_ERROR_OK;
+		return true;
 	} else {
-		return WW3D_ERROR_INITIALIZATION_FAILED;
+		return false;
 	}
 }
 
@@ -492,14 +486,13 @@ WW3DErrorType WW3D::Set_Any_Render_Device( void )
  * HISTORY:                                                                                    *
  *   3/26/98    GTH : Created.                                                                 *
  *=============================================================================================*/
-// ?Set_Next_Render_Device@WW3D@@ present-unmatched
-WW3DErrorType WW3D::Set_Next_Render_Device(void)
+bool WW3D::Set_Next_Render_Device(void)
 {
 	bool success = DX8Wrapper::Set_Next_Render_Device();
 	if (success) {
-		return WW3D_ERROR_OK;
+		return true;
 	} else {
-		return WW3D_ERROR_INITIALIZATION_FAILED;
+		return false;
 	}
 }
 
@@ -515,10 +508,9 @@ WW3DErrorType WW3D::Set_Next_Render_Device(void)
  * HISTORY:                                                                                    *
  *   3/28/2001  pds : Created.                                                                 *
  *=============================================================================================*/
-// ?Get_Window@WW3D@@ present-unmatched
 void *WW3D::Get_Window( void )
 {
-	return _Hwnd;
+	return g_WW3D_Hwnd;
 }
 
 /***********************************************************************************************
@@ -1097,7 +1089,7 @@ void WW3D::Make_Screen_Shot( const char * filename_base , const float gamma, con
 	fb->GetDesc(&desc);
 
 	RECT bounds;
-	GetWindowRect(_Hwnd,&bounds);
+	GetWindowRect((HWND)g_WW3D_Hwnd,&bounds);
 
 	D3DLOCKED_RECT lrect;
 
