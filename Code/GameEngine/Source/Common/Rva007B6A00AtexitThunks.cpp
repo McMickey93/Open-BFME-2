@@ -158,7 +158,6 @@ public:
 };
 
 extern unsigned int g_00DDE0AC;
-unsigned g_Va00DE1DC0;	// retail RVA 0x009E1DC0 (.bss), defined here
 unsigned g_Va00DEBC64;	// retail RVA 0x009EBC64 (.bss), defined here
 unsigned g_Va00DEBCA0;	// retail RVA 0x009EBCA0 (.bss), defined here
 unsigned g_Va00DFE490;	// retail RVA 0x009FE490 (.bss), defined here
@@ -229,13 +228,6 @@ void __cdecl rva007B6AE7()
 {
 	ATL::CAtlWinModule *receiver = (ATL::CAtlWinModule *)&g_00DDE0AC;
 	receiver->Term();
-}
-
-// ?rva007B6B05@@YAXXZ @ 0x007B6B05 (10B): ecx=&g_Va00DE1DC0, tail-jump to rowed ??1BfmeStringTailRecord144@@UAE@XZ (0x002D9A43)
-void __cdecl rva007B6B05()
-{
-	BfmeStringTailRecord144 *receiver = (BfmeStringTailRecord144 *)&g_Va00DE1DC0;
-	receiver->BfmeStringTailRecord144::~BfmeStringTailRecord144();
 }
 
 // ?rva007B6DFA@@YAXXZ @ 0x007B6DFA (10B): ecx=&g_Va00DEBC64, tail-jump to rowed ??1TerrainFXShaderParameterSourceNamespace@@UAE@XZ (0x000E19A3)

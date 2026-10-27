@@ -160,7 +160,6 @@ public:
 };
 
 extern unsigned int g_00DDE0AC;
-extern unsigned g_Va00DE1DC0;	// retail RVA 0x009E1DC0 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DEBC64;	// retail RVA 0x009EBC64 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DEBCA0;	// retail RVA 0x009EBCA0 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DFE490;	// retail RVA 0x009FE490 (.bss), defined in Rva007B6A00AtexitThunks.cpp
@@ -225,8 +224,6 @@ extern unsigned g_Va00E09E50;	// retail RVA 0x00A09E50 (.bss), defined in Rva007
 extern unsigned g_Va00E09E60;
 extern unsigned GeometryContactSphere;
 extern unsigned g_Va00E176A0;
-
-void __cdecl rva007B6B05();
 
 void __cdecl rva007B6DFA();
 
