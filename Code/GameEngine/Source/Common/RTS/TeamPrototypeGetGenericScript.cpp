@@ -32,6 +32,14 @@ extern ScriptEngine *TheScriptEngine;
 
 enum { MAX_GENERIC_SCRIPTS = 32 };
 
+// The generic script names of the prototype's team template (+0x12C), as
+// the Team.cpp seed's TeamTemplateInfo names them.
+struct TeamTemplateGenericScriptsView
+{
+	unsigned char m_pad000[0x118];
+	AsciiString m_teamGenericScripts[MAX_GENERIC_SCRIPTS]; // +0x118, prototype +0x244
+};
+
 class TeamPrototype
 {
 public:
@@ -39,13 +47,12 @@ public:
 
 private:
 	unsigned char m_pad00[0x10];
-	AsciiString m_owner; // +0x10
+	AsciiString m_ownerName; // +0x10
 	unsigned char m_pad14[0x28 - 0x14];
 	bool m_retrievedGenericScripts; // +0x28
 	Script *m_genericScriptsToRun[MAX_GENERIC_SCRIPTS]; // +0x2C
 	AsciiString m_genericScriptNames[MAX_GENERIC_SCRIPTS]; // +0xAC
-	unsigned char m_pad12C[0x244 - 0x12C];
-	AsciiString m_teamGenericScripts[MAX_GENERIC_SCRIPTS]; // +0x244
+	TeamTemplateGenericScriptsView m_teamTemplate; // +0x12C
 };
 
 Script *TeamPrototype::getGenericScript(int scriptToRetrieve, AsciiString *outName)
@@ -57,9 +64,9 @@ Script *TeamPrototype::getGenericScript(int scriptToRetrieve, AsciiString *outNa
 		{
 			Script *dup = 0;
 			AsciiString foundName;
-			if (!m_teamGenericScripts[i].isEmpty())
+			if (!m_teamTemplate.m_teamGenericScripts[i].isEmpty())
 			{
-				Script *script = (Script *)((Rva003573C4Owner *)TheScriptEngine)->rva003573C4(m_owner, *(const BfmeRoomZC *)&m_teamGenericScripts[i], &foundName);
+				Script *script = (Script *)((Rva003573C4Owner *)TheScriptEngine)->rva003573C4(m_ownerName, *(const BfmeRoomZC *)&m_teamTemplate.m_teamGenericScripts[i], &foundName);
 				if (script)
 					dup = script->duplicate();
 			}
