@@ -7,8 +7,8 @@
 // Evidence: reserve TU Rva004F60AAReserve layout m_00 m_04 m_08; disassembly
 // mov sub sar mov call mov test jle push push push call add mov pop ret 8.
 
+#include <stdlib.h>
 class AsciiString;
-extern "C" __declspec(dllimport) void __cdecl free(void*);
 struct Rva004F77E0Element {char bytes[4];};
 
 namespace _STL {

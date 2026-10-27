@@ -1,4 +1,5 @@
 // cl: /O1 /G6 /DNDEBUG /MD
+// platformsdk
 // Rva0054C805::rva0054C805, retail 0x0054C805 (49 bytes, RET4).
 // __thiscall timer update: unless the state at +0x14 is 0 or 3, store
 // timeGetTime() - (int)(seconds * -1000.0f) at +0x24. The caller at 0x0054C877
@@ -8,8 +9,8 @@
 // The reference binding is a codegen lever (retail loads the argument before
 // the literal and keeps the receiver in esi); it makes no claim about the
 // original source qualifiers.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 
+#include <windows.h>
 class Rva0054C805
 {
 public:

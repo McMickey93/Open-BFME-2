@@ -2,6 +2,7 @@
 // ?Rva00535087Parse@@YAXPAVINI@@PAX1PBX@Z, retail 0x00535087 (51B): PlayerPosition
 // FieldParse proc (0x00C68C58). 1-based atoi slot selects the 0x14-byte record at
 // instance + 0xB0, filled through initFromINI with the table at 0x00C68D78.
+#include <stdlib.h>
 struct FieldParse;
 class INI
 {
@@ -9,7 +10,6 @@ public:
 	const char *getNextToken(const char *seps = 0);
 	void initFromINI(void *what, const FieldParse *parseTable);
 };
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 
 // The five side-flag parsers retail's PlayerPosition table reaches, all
 // already-rowed bodies in Code/GameEngine/Source/Common/SideFlagsParseCallbacks.cpp

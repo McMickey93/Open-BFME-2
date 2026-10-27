@@ -4,8 +4,8 @@
 // updating current at +0x08 and line at +0x0C. Evidence: retail bytes unlock
 // lane plus seven callers in 0x005424C4 and 0x00542890 plus isspace import.
 // Sibling of landed Rva00542425Skip identifier skip in same page.
-extern "C" __declspec(dllimport) int __cdecl isspace(int c);
 
+#include <ctype.h>
 class Rva005423F0
 {
 public:

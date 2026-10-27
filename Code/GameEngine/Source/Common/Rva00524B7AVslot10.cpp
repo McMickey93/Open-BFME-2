@@ -1,4 +1,5 @@
 // cl: /O1 /MD /arch:SSE
+// platformsdk
 //
 // ?update@Rva00524B7A@@UAEXXZ @ 0x00524AE7 (147B).
 // Virtual slot 10 (offset 0x28) of the MovieWindowPlayback vtable at
@@ -15,10 +16,9 @@
 // structural views of the vtable owner. The two volatile members are a
 // measured scheduling qualifier (they make the compiler emit the target's
 // add-then-sub form of the remaining-time sum), not a target layout fact.
+#include <windows.h>
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 
 class Rva0057CC15Ref
 {

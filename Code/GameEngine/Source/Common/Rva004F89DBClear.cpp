@@ -3,6 +3,7 @@
 // Holder clear: destroy range [first,last) via rowed 0x004F8373 then free first via rowed free 0x00030830.
 // Evidence: chain from 0x004F8373; callers 0x004F8B5C 0x004F8E93; prev vector dtor 0x004F8832 next vector clear 0x004F89F9 same shape.
 
+#include <stdlib.h>
 struct Rva004F6986
 {
 	~Rva004F6986();
@@ -10,7 +11,6 @@ struct Rva004F6986
 };
 
 void __cdecl Rva004F8373Destroy(Rva004F6986 *first, Rva004F6986 *last);
-extern "C" void __cdecl free(void *block);
 
 class Rva004F89DB
 {

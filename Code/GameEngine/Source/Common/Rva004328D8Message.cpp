@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?Rva004328D8Emit@@YGXPAURva004328D8Payload@@@Z, retail 0x004328D8, 89 bytes.
 // Emits two GameMessages once (flag bit0 at +0x14): type 0xC3 then type [esi]
 // via MessageStreamSubsystem slot 0x48 (createMessage), then pixel at +4 via
@@ -13,6 +14,7 @@ public:
 	void appendIntegerArgument(int v);
 };
 
+#include <windows.h>
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 
 class MessageStream
@@ -27,7 +29,6 @@ public:
 };
 
 extern class MessageStream *TheMessageStream;
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 
 struct Rva004328D8Payload
 {

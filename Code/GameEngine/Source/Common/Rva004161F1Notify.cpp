@@ -1,14 +1,14 @@
 // cl: /Ireference/shims/bfme2_ascii /MD /EHsc
+// platformsdk
 // ?Rva004161F1Notify@@YAXVAsciiString@@VUnicodeString@@@Z @0x004161F1 198B
 // Buddy multiple-online notification: TheGameText fetch Buddy string plus set
 // via 0x00037150; releaseBuffer 0x00036E70; UnicodeString format via 0x006CB660;
 // timeGetTime IAT; globals 0x00A04904 0x00A0308C 0x00A03090 0x00A03098
 // 0x00A03094; chat login via rowed 0x00517048; caller 0x004163E1.
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 typedef unsigned short wchar_t;
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 class GameTextInterface
 {

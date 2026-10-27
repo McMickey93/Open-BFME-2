@@ -4,6 +4,7 @@
 // ?rva0040748D@Rva004070D4@@QAEXXZ retail 0x0040748D 41B
 // Evidence: chain via 0x004070D4; reset sentinel same class; caller 0x004075A8.
 // Evidence: unlock lane; same tree-free shape as Rva007590B0 51B but /O1 push-mem plus pop-ecx; callers 0x0040748D plus self; prev CreateAHeroElementCopy same /O1.
+#include <stdlib.h>
 struct Rva004070D4Node
 {
 	char m_pad[8];
@@ -19,7 +20,6 @@ struct Rva004070D4Head
 	Rva004070D4Head *m_other;
 };
 
-
 class Rva004070D4
 {
 public:
@@ -29,8 +29,6 @@ private:
 	Rva004070D4Head *m_head;
 	void *m_state;
 };
-
-extern "C" void __cdecl free(void *block);
 
 void Rva004070D4::rva0040748D()
 {

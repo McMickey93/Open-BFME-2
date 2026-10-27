@@ -1,4 +1,5 @@
 // cl: /EHsc /MD
+// platformsdk
 // stlport
 //
 // ?rva00405C04@Rva00405A50@@QAEXPAVBfmeThingGX@@@Z @0x00405C04 (371B, RET 4):
@@ -13,10 +14,10 @@
 // set: then the holder is cleared (0x000AD6F4) and the override reset
 // (0x002D370A). The pending byte defers a still-running repeat to 0x00405A50. The WorldBuilder twin
 // 0x01079F10 has the same calls; owner and method names stay address-derived.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 // The hint's slot 1 hands over an owning STLport auto_ptr; passing that
 // temporary on by value goes through auto_ptr_ref as retail does.
+#include <windows.h>
 #include <memory>
 class BfmeThingGX
 {

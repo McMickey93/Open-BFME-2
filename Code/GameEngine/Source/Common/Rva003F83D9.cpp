@@ -7,9 +7,8 @@
 // branch t ? t+8 : g_Rva0107301CEmptyString matches Rva004D57AEContents;
 // IAT atof; caller at 0x003F8CF2 in SessionTask::create 0x003F88BC, on
 // its own this.
+#include <stdlib.h>
 #include "ascii_string.h"
-
-extern "C" __declspec(dllimport) double __cdecl atof(const char *str);
 
 class LivingWorldTutorial
 {

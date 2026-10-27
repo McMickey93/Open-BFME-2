@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?clear@MovieWindowPlayback@@QAEXXZ @0x00524A4C (25B): clears the +0x0C interface
 // pointer through its slot-7 virtual then clears the low two flag bits at
 // +0x24. Called by the dtor at 0x00524BB4 and by 0x00524D01 plus a jmp from
@@ -8,7 +9,7 @@
 // +0x2C, sets flag bit2 at +0x24 and -1 at +0x28, then stamps timeGetTime at
 // +0x30. Same MovieWindowPlayback owner proven by shared +0x24/+0x28/+0x2C/+0x30
 // offsets with the ctor/dtor family; caller 0x002D3603. Honest address method.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 extern const float BfmeZeroRange;
 class Rva00524A4CInterface
 {

@@ -8,12 +8,10 @@
 // dtor); caller 0x004FD7E2 passes this in ecx with ret 4 test-low-bit
 // deleting shape; same and/or EH-state plus push-pop free idiom as STLport
 // siblings; neighbours carry /O1 /MD.
+#include <stdlib.h>
 #include <vector>
 
 #include "ascii_string.h"
-
-
-extern "C" void free(void *ptr);
 
 struct Rva004FCE73Holder {
     void *p;

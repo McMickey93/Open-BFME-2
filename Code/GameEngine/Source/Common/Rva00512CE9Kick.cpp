@@ -7,8 +7,7 @@
 // and stores bool to +0x286 indexed array. Callers at 0x4D45F6 etc.
 // Flags /O1 /MD (EBP frame, sprintf IAT, no EH, no STL).
 
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
-
+#include <stdio.h>
 class Rva00222A8BTarget
 {
 public:

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // Split from Rva0057473AMethod.cpp: these definitions reference a callee with no matched body yet,
 // so they are kept apart from the unit's bodies that already link.
 // ?rva0057473A@Rva005746AF@@UAEXXZ retail 0x0057473A 120B
@@ -6,8 +7,8 @@
 // Evidence: vtable slot 1 shared by both ctors; timeGetTime throttle 1000ms on +8; TreeHintRef at +0xC via rowed op= 0x002174A4 and Release 0x0007DEEF;
 // slot 6 (0x18) virtual returning TreeHintRef by value through hidden pointer; second half via rowed get 0x0042D6B4 and forwarder 0x001FF3A9 with TreeHintRef arg.
 // Honest Rva name on proven base class. Row type note: get row declares int but result is used as object pointer; forwarder row declares 0 args but retail passes TreeHintRef const& which its slot0 target pops.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
+#include <windows.h>
 struct TargetRef00217D4C
 {
 	virtual void *destroy(unsigned int flags);
