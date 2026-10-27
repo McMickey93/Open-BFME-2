@@ -11560,7 +11560,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0085D9C0,188,.rdata,vtable,??_7DeflectSpecialPower@@6BDeflectSpecialPowerIface1@@@,,literal,??_7DeflectSpecialPower@@6BDeflectSpecialPowerIface1@@@;??_7Rva0025A390FlatDtor@@6BRva0025A390FlatDtorM0@@@,0,2
 0x0085DA7C,52,.rdata,vtable,??_7DeflectSpecialPower@@6BBehaviorModule@@@,,literal,??_7DeflectSpecialPower@@6BBehaviorModule@@@;??_7Rva0025A390FlatDtor@@6BRva00019565FlatBase@@@,0,2
 0x0085DAB0,296,.rdata,vtable,??_7DeflectSpecialPowerModuleData@@6B@,,literal,??_7DeflectSpecialPowerModuleData@@6B@;_vtbl_00C5DAB0,0,3
-0x0085DBD8,144,.rdata,global,?g_00C5DBD8@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerModuleDataParse.cpp,owned,,1,1
+0x0085DBD8,144,.rdata,global,?g_00C5DBD8@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPower.cpp,owned,,1,1
 0x0085DC68,100,.rdata,vtable,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S4@@@,,literal,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S4@@@;_vtbl_00C5DC68,0,2
 0x0085DCCC,36,.rdata,vtable,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S3@@@,,literal,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S3@@@;_vtbl_00C5DCCC,0,2
 0x0085DCF0,12,.rdata,vtable,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S2@@@,,literal,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S2@@@;_vtbl_00C5DCF0,0,2

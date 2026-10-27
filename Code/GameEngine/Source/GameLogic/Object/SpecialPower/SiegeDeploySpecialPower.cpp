@@ -275,27 +275,103 @@ private:
 	unsigned char m_opaque[0x18 - 4];
 };
 
+//
+// SiegeDeploySpecialPowerModuleData parse-unit.
+//
+// ?buildFieldParse@SiegeDeploySpecialPowerModuleData@@SAXAAVMultiIniFieldParse@@@Z,
+// retail 0x004C569F, 27 bytes. Chained on the Rva005890EDBase proc at
+// 0x5890ED, then the own table at 0x00C5DBD8 (LowerDelay, RaiseDelay,
+// EvacuatePassengersOnDeploy, EvacuateCrewOnDeploy, SkipAdjustPosition,
+// WallSearchDistance, AwayFromWallWaitDist, ExtraWallDistance), through
+// the rowed MultiIniFieldParse::add at 0x2BC6E. The owning factory pushes
+// this proc VA; ModuleFactory registers it under "SiegeDeploySpecialPower".
+// Row supersedes the parse pin.
+
+class MultiIniFieldParse;
+
+class INI;
+
+typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
+
+struct FieldParse
+{
+	const char *token;
+	INIFieldParseProc parse;
+	const void *userData;
+	int offset;
+};
+
+class INI
+{
+public:
+	static void parseBool(INI *ini, void *instance, void *store, const void *userData);
+	static void parseDurationUnsignedInt(INI *ini, void *instance, void *store, const void *userData);
+	static void parseReal(INI *ini, void *instance, void *store, const void *userData);
+};
+
+// Retail VA 0x00C5DBD8 (.rdata): 8 field records and a zero sentinel.
+extern const FieldParse g_00C5DBD8[] = {
+	{ "LowerDelay", &INI::parseDurationUnsignedInt, 0, 0x18 },
+	{ "RaiseDelay", &INI::parseDurationUnsignedInt, 0, 0x1C },
+	{ "EvacuatePassengersOnDeploy", &INI::parseBool, 0, 0x20 },
+	{ "EvacuateCrewOnDeploy", &INI::parseBool, 0, 0x21 },
+	{ "SkipAdjustPosition", &INI::parseBool, 0, 0x22 },
+	{ "WallSearchDistance", &INI::parseReal, 0, 0x24 },
+	{ "AwayFromWallWaitDist", &INI::parseReal, 0, 0x28 },
+	{ "ExtraWallDistance", &INI::parseReal, 0, 0x2C },
+	{ 0, 0, 0, 0 }
+};
+
+class MultiIniFieldParse
+{
+public:
+	void add(const FieldParse *parseTable, unsigned int extraOffset);
+};
+
+class Rva005890EDBase
+{
+public:
+	static void buildFieldParse(MultiIniFieldParse &parse);
+};
+
 class __declspec(novtable) SiegeDeploySpecialPowerModuleData : public AIUpdateModuleData
 {
 public:
 	SiegeDeploySpecialPowerModuleData();
-
 private:
-	int m_int18;	// +0x18
-	int m_int1C;	// +0x1C
-	bool m_flag20;	// +0x20
-	bool m_byte21;	// +0x21
-	bool m_byte22;	// +0x22
-	float m_float24;	// +0x24
-	float m_float28;	// +0x28
-	float m_float2C;	// +0x2C
+	int m_int18;
+private:
+	int m_int1C;
+private:
+	bool m_flag20;
+private:
+	bool m_byte21;
+private:
+	bool m_byte22;
+private:
+	float m_float24;
+private:
+	float m_float28;
+private:
+	float m_float2C;
+public:
+	static void buildFieldParse(MultiIniFieldParse &parse);
 };
 
-// tu-skeleton: 0x004C569F 27B ?buildFieldParse@SiegeDeploySpecialPowerModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerModuleDataParse.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerModuleDataParse.cpp
+
+// ?buildFieldParse@SiegeDeploySpecialPowerModuleData@@SAXAAVMultiIniFieldParse@@@Z @0x004C569F
+void SiegeDeploySpecialPowerModuleData::buildFieldParse(MultiIniFieldParse &parse)
+{
+	Rva005890EDBase::buildFieldParse(parse);
+	parse.add(g_00C5DBD8, 0);
+}
 
 // tu-skeleton: 0x004C56BA 124B ??0SiegeDeploySpecialPower@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004C5736 6B ?Rva004C5736Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPower.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerHelper.cpp
 
@@ -308,8 +384,6 @@ void SiegeDeploySpecialPower::rva004C573C()
 	}
 }
 
-// tu-skeleton: 0x004C5751 14B ?rva004C5751@SiegeDeploySpecialPower@@UAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerSlots.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/BfmeOneHundredFortySeven.cpp
 
 int BfmeThingXT::bfmeOddXT(void) const
@@ -321,12 +395,6 @@ int BfmeThingXT::bfmeOddXT(void) const
 
 	return 0;
 }
-
-// tu-skeleton: 0x004C5772 10B ?get@Rva004C5772CmpBoolField@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x004C577C 69B ?getModuleNameKey@SiegeDeploySpecialPower@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerPoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x004C57C1 84B ??1SiegeDeploySpecialPower@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerModuleDataCtor.cpp
 
@@ -344,20 +412,6 @@ SiegeDeploySpecialPowerModuleData::SiegeDeploySpecialPowerModuleData()
 	m_flag20 = true;
 	m_float2C = 0.0f;
 }
-
-// tu-skeleton: 0x004C585B 28B ??_GSiegeDeploySpecialPower@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004C5877 706B ?computeApproachPoint@SiegeDeploySpecialPower@@QAE?AURva004598F2Point@@PAVObject@@PAU2@PA_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerComputeApproachPoint.cpp (not merged yet)
-
-// tu-skeleton: 0x004C5B39 170B ?xfer@SiegeDeploySpecialPower@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x004C5BE3 606B ?setPhase@SiegeDeploySpecialPower@@AAEXH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPower_setPhase.cpp (not merged yet)
-
-// tu-skeleton: 0x004C5E41 33B ?stopSpecialPower@SiegeDeploySpecialPower@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerSlots.cpp (not merged yet)
-
-// tu-skeleton: 0x004C5E62 30B ?rva004C5E62@SiegeDeploySpecialPower@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerSlots.cpp (not merged yet)
-
-// tu-skeleton: 0x004C5E80 691B ?update@SiegeDeploySpecialPower@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerUpdate.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerInitiate.cpp
 
@@ -442,6 +496,28 @@ void SiegeDeploySpecialPower::initiateIntentToDoSpecialPower(const SpecialPowerT
 	}
 	setWakeFrame(m_object, UPDATE_SLEEP_NONE);
 }
+
+// tu-skeleton: 0x004C5751 14B ?rva004C5751@SiegeDeploySpecialPower@@UAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerSlots.cpp (not merged yet)
+
+// tu-skeleton: 0x004C5772 10B ?get@Rva004C5772CmpBoolField@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x004C577C 69B ?getModuleNameKey@SiegeDeploySpecialPower@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerPoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x004C57C1 84B ??1SiegeDeploySpecialPower@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004C585B 28B ??_GSiegeDeploySpecialPower@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004C5877 706B ?computeApproachPoint@SiegeDeploySpecialPower@@QAE?AURva004598F2Point@@PAVObject@@PAU2@PA_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerComputeApproachPoint.cpp (not merged yet)
+
+// tu-skeleton: 0x004C5B39 170B ?xfer@SiegeDeploySpecialPower@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x004C5BE3 606B ?setPhase@SiegeDeploySpecialPower@@AAEXH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPower_setPhase.cpp (not merged yet)
+
+// tu-skeleton: 0x004C5E41 33B ?stopSpecialPower@SiegeDeploySpecialPower@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerSlots.cpp (not merged yet)
+
+// tu-skeleton: 0x004C5E62 30B ?rva004C5E62@SiegeDeploySpecialPower@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerSlots.cpp (not merged yet)
+
+// tu-skeleton: 0x004C5E80 691B ?update@SiegeDeploySpecialPower@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerUpdate.cpp (not merged yet)
 
 // tu-skeleton: 0x00790124 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerPoolKey.cpp (not merged yet)
 
