@@ -7514,14 +7514,9 @@ G00DEC4A4,0x009EC4A4,Render2DClass ctor 0x0011C0F0 zeroes this dword second; opa
 G00DEC4A8,0x009EC4A8,Render2DClass ctor 0x0011C0F0 zeroes this dword first; opaque address-derived name
 Rva00891FA0SendRecord,0x00A17740
 Rva00891FA0SendText,0x00A17744
-_AVIFileCreateStreamA@12,0x00654790,jmp [IAT 0xBBA068] stub; import table names avifil32!AVIFileCreateStreamA
-_AVIFileInit@0,0x0065479C,jmp [IAT 0xBBA050] stub; import table names avifil32!AVIFileInit
 _AVIFileOpen@16,0x00654796,jmp [IAT 0xBBA054] stub; import table names avifil32!AVIFileOpen
-_AVIFileReadData@16,0x00654778,jmp [IAT 0xBBA058] stub; import table names avifil32!AVIFileReadData
-_AVIMakeCompressedStream@16,0x00654784,jmp [IAT 0xBBA060] stub; import table names avifil32!AVIMakeCompressedStream
 _ArrayLength,0x006989D0,GameSpy dynamic-array length; exact seven-byte source body folded with SBServerGetPublicInetAddress; target corroborated by TableCount and 49 other SDK call sites
 _BfmeAux006FC670,0x006FC670,"callee of the 26B NULL-arg forwarder at 0x006FD040 (same argument shuffle as __unguarded_insertion_sort); address read from the REL32 displacement, body not yet converted"
-_CreateToolhelp32Snapshot@8,0x00687D98
 _D3DXVec3CatmullRom@24,0x0062AFC8,D3DXVec3CatmullRom import thunk rowed as ?ji_0062afc8
 _GSISocketSelect,0x0060A9F0,GameSpy callee already byte-verified in Code/GameEngine/Source/GameNetwork/GameSpy/nonport.c at commit 982a47813b69; direct call from _gpiCheckSocketConnect
 _GdipAlloc@4,0x00628F86,GDI+ flat-API import thunk; retail target of the operator new in Gdiplus::GdiplusBase
@@ -7548,8 +7543,6 @@ _LoadHeader,0x00756B10
 _MD5Final,0x00606D00,RSA MD5 C-linkage alias of existing byte-verified WWLib C++ body; independently compiled entire GameSpy source body and all direct calls agree
 _MD5Init,0x00606220,GameSpy C-linkage alias; all 40 compiled MD5Init bytes exactly equal the held WWLib C++ body at this address including every RFC1321 initialization word; no relocations
 _MD5Update,0x00606C40,RSA MD5 C-linkage alias of existing byte-verified WWLib C++ body; independently compiled entire GameSpy source body and all direct calls agree
-_Module32First@8,0x00687D92
-_Module32Next@8,0x00687D8C
 _Netbios@4,0x00687CD8,address read from the REL32 displacements in DirtySock Y2NetConn at 0x006584C0; netbios LAN adapter API; body not yet converted
 _PeerOperationsComplete,0x0069FF40,
 _Rva00053F6ECopyRecords,0x00053F6E,"Native wrapper00054E23 calls existing ledger worker00053F6E; 5 cdecl arguments first last result empty iterator tag address null distance. Alias binds existing verified source provider; address-derived ABI route only."
@@ -7608,13 +7601,7 @@ _Rva00860380,0x006A1280
 _SBServerGetPrivateInetAddress,0x00030BE0,
 _SBServerGetPublicInetAddress,0x006989D0,GameSpy public IPv4 getter; exact seven-byte source body folded with ArrayLength; server layout and independently matched SDK callers corroborate alias
 _SBServerSetICMPIP,0x006BC320,GameSpy ICMP-address setter; exact twelve-byte source body folded with ghiPostSetAutoFree; server field layout and independently matched SDK callers corroborate alias
-_Thread32First@8,0x00687E4C
-_Thread32Next@8,0x00687E40
 _UCS2ToUTF8StringAlloc,0x0069DC40,GameSpy callee already byte-verified in Code/GameEngine/Source/GameNetwork/GameSpy/stringutil.c at commit 5ba3d5ea032c; direct call from _gpSetTransferDirectoryW
-_WSACleanup@0,0x006556AC,PE-verified FF25 import thunk to wsock32.dll!WSACleanup via IAT 0x00BBA970; independently read from retail import directory
-_WSAGetLastError@0,0x00655694,PE thunk ff2580a9bb00 jumps through IAT 0x00BBA980 to wsock32.dll!WSAGetLastError; Ghidra independently names same thunk
-_WSAIoctl@36,0x00687CF0,PE-verified FF25 import thunk to ws2_32.dll!WSAIoctl via IAT 0x00BBA934; retail REL32 target of Rva007FE310 at 0x66A7E0
-_WSAStartup@8,0x006556B2,PE-verified FF25 import thunk to wsock32.dll!WSAStartup via IAT 0x00BBA96C; independently read from retail import directory
 __CIacos,0x006298B0,MSVCR71 import thunk (jmp [0x00BBA5D0]); the ACos wrapper at 0x0002FB90 loads its float argument with fld and calls straight into it
 __CIasin,0x006298B6,MSVCR71 import thunk (jmp [0x00BBA5CC]); same shape from the ASin wrapper at 0x00711AC0
 __CIfmod,0x00629A36,MSVCR71 import thunk (jmp [0x00BBA510]); the Fmod wrapper calls straight into it
@@ -7625,7 +7612,6 @@ __RTC_CheckEsp,0x0075A5A2
 __RTC_UninitUse,0x0075AB62,address read from the REL32 displacements in DirtySock Y4CivilTime Rva007EDE00 at 0x0065AD30; compiler RTC helper next to RTC_CheckEsp; body not yet converted
 __ReadUCS2CharFromUTF8String,0x0069D8F0,GameSpy UTF8 decoder; independently compiled 174-byte stringutil.c body at this address; direct call in GP UTF8ToUCS2StringLen corroborates identity
 __SEH_prolog,0x00628FA4,CRT SEH frame setup, emitted by cl for every __try; Ghidra names it and sizes it 59. Address is the REL32 in CComCriticalSection::Init
-___WSAFDIsSet@8,0x006556EE,PE-verified FF25 import thunk to wsock32.dll!__WSAFDIsSet via IAT 0x00BBA944; independently read from retail import directory
 __alldiv,0x00629630,MSVCR71 signed 64-bit division helper; address confirmed by retail helper call and Ghidra symbol
 __allmul,0x00629580,MSVCR71 64-bit multiplication helper; address confirmed by retail helper call and Ghidra symbol
 __alloca_probe,0x00629000,MSVC 7.1 stack probe behind _alloca; retail target of the _ATL_SAFE_ALLOCA stack arm in CImage::CreateFromGdiplusBitmap
@@ -7640,15 +7626,11 @@ __mbscpy,0x00629176,retail REL32 from INI getNextQuotedAsciiString 0x002E93F; IA
 __setjmp3,0x0075AC7A,address read from the REL32 displacement at a placed body
 __strcmpi,0x00629A2A,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00813A50 at 0x0067F950; static CRT callee; body not yet converted
 __strdup,0x006C4C70
-__strlwr,0x006299A6
-__strupr,0x0075B4F0
 _abs,0x0062909A,MSVCR71 import thunk identified by official ATL 7.1 call and retail target
 _abs,0x00629952,MSVCR71 abs import thunk variant called by E8 from accumulateOnlineMiscPrefs 0x00384A62; IAT slot 0x00BBA564 per rowed ?ji_00629952@@YAXXZ; twin of pinned 0x0062909A
-_accept@12,0x00687CE4,PE-verified FF25 import thunk to ws2_32.dll!accept via IAT 0x00BBA938; independently read from retail import directory
 _acos,0x00629964,address read from the REL32 displacement at a placed body; the body there is held under another instantiation name and the two folded
 _atan,0x00629AE4,"atan double import thunk (gen-import row ji_00629ae4: msvcr71 slot 0x00BBA4A0 import atan); called by Rva004D6B6E 0x004D6B6E"
 _atan2,0x0062992E,atan2 double import thunk for float adapter 0x422A0
-_atoi,0x00629838,address read from the REL32 displacement in DirtySock Y2ProtoMangleHelpers at 0x006718B0; static CRT callee; body not yet converted
 _bfmeAppend,0x0060D5F2,callee of bfmeEmit (0x0060D7C0) at the site its BFME1 donor calls it; may be an ICF alias
 _bfmeCopy1152,0x00024FC0
 _bfmeCopy1153,0x00024FC0
@@ -7665,13 +7647,10 @@ _bfmeReload1221,0x0070F710
 _bfmeScanYA,0x00629892
 _bfmeVftSF,0x00816778
 _bfmeVftTL,0x007BCCAC
-_bind@12,0x0065567C,PE-verified FF25 import thunk to wsock32.dll!bind via IAT 0x00BBA990; independently read from retail import directory
 _ceil,0x00629934,CRT ceil thunk identified by native PE import slot 0x00BBA578 and target Math.ceil call at 0x006E88A6
 _chatGetUserID,0x006A15F0,address read from the REL32 displacement at placed _peerGetUserID 0x00698A40
 _chatLeaveChannel,0x006A18B0,
 _chatSetLocalIP,0x0069BD40,Thread_Function 0x0038EDD7 passes the chosen IP here where the Zero Hour body calls chatSetLocalIP
-_closesocket@4,0x00655676,PE-verified FF25 import thunk to wsock32.dll!closesocket via IAT 0x00BBA994; independently read from retail import directory
-_connect@12,0x0065569A,PE-verified FF25 import thunk to wsock32.dll!connect via IAT 0x00BBA97C; independently read from retail import directory
 _cos,0x0062920A,CRT import thunk; retail target of the cos call in Coord2D::Rotate(float)
 _cosf,0x0002FBC0
 _fabs,0x00629210,MSVCRT import thunk identified by four retail call targets and Ghidra
@@ -7684,13 +7663,7 @@ _g_pRva003BBEDE,0x009FE16C,global pointer read by global-this forwards 0x003BBED
 _g_pRva003BD424,0x009FF028,global pointer read by global-this forward 0x003BD424; identity unproven
 _g_pRva00437E9C,0x00A032FC,global pointer read by wrapper 0x00437E9C (peer notes same); identity unproven
 _g_pRva007B6890,0x009A6214,global pointer read by singleton virtual forward 0x007B6890; identity unproven
-_gethostbyname@4,0x006556A0,PE-verified FF25 import thunk to wsock32.dll!gethostbyname via IAT 0x00BBA978; independently read from retail import directory
-_gethostname@8,0x006556BE,PE-verified FF25 import thunk to wsock32.dll!gethostname via IAT 0x00BBA964; independently read from retail import directory
-_getpeername@12,0x00687CEA,PE-verified FF25 import thunk to ws2_32.dll!getpeername via IAT 0x00BBA930; retail REL32 target of Rva007FDB60 at 0x66A030
-_getsockname@12,0x006556DC,PE-verified FF25 import thunk to wsock32.dll!getsockname via IAT 0x00BBA950; independently read from retail import directory
-_getsockopt@20,0x006556D6,PE-verified FF25 import thunk to wsock32.dll!getsockopt via IAT 0x00BBA954; independently read from retail import directory
 _ghiSocketSelect,0x0060A9F0,nonport.c explicitly identifies GSISocketSelect as formerly ghiSocketSelect; its release body matches 330 bytes here; corroborated by ghttp send/process calls
-_gmtime,0x0075AC0E,CRT gmtime import thunk; retail REL32 target of Rva007FEF80 at 0x66B450
 _gpiDebug,0x0069E440,GameSpy release gpiDebug compiles to one ret; ICF-folded with held DX8_Assert; direct target corroborated by full gpiSendData and gpiRecvToBuffer bodies
 _gpiDisconnect,0x0072FDF0,GameSpy GP callee; independent unique 424-byte source candidate in gpiConnect.c; direct call from _gpiDeleteProfile corroborates identity
 _gpiInitTransfers,0x00736150,GameSpy GP callee; independent unique 62-byte source candidate in gpiTransfer.c; direct call from _gpiInitialize corroborates identity
@@ -7703,12 +7676,6 @@ _htonl@4,0x0065565E,PE-verified FF25 import thunk to wsock32.dll!htonl via IAT 0
 _htonl@4,0x00655670,PE-verified FF25 import thunk to wsock32.dll!htonl via IAT 0x00BBA998; independently read from retail import directory
 _htons@4,0x00655682,PE-verified FF25 import thunk to wsock32.dll!htons via IAT 0x00BBA98C; independently read from retail import directory
 _htons@4,0x006556B8,PE-verified FF25 import thunk to wsock32.dll!htons via IAT 0x00BBA968; independently read from retail import directory
-_inet_addr@4,0x006556A6,PE-verified FF25 import thunk to wsock32.dll!inet_addr via IAT 0x00BBA974; independently read from retail import directory
-_inet_ntoa@4,0x0075B4CC,PE-verified FF25 import thunk to wsock32.dll!inet_ntoa via IAT 0x00BBA9A0; independently read from retail import directory
-_ioctlsocket@12,0x006556CA,PE-verified FF25 import thunk to wsock32.dll!ioctlsocket via IAT 0x00BBA95C; independently read from retail import directory
-_isprint,0x0075AC08,CRT isprint import thunk FF25 via IAT 0x00BBA6FC; retail REL32 target of Rva007F91D0 at 0x00665770
-_listen@8,0x00687CDE,PE-verified FF25 import thunk to ws2_32.dll!listen via IAT 0x00BBA92C; independently read from retail import directory
-_localtime,0x0062987A,CRT localtime import thunk; retail REL32 target of Rva007FEF80 at 0x66B450
 _log10,0x0062997C,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 _lua_getglobal,0x007476C0
 _lua_gettop,0x00746F30
@@ -7733,7 +7700,6 @@ _lua_tostring,0x007473B0
 _lua_touserdata,0x00747490
 _lua_type,0x007470A0
 _lua_typename,0x007470D0
-_memcmp,0x0062929E,address read from the REL32 displacement in DirtySock Y4TextToValue Rva007EC780 at 0x006596B0 and Y4LookupTables Rva0080D890 at 0x00679790; static CRT callee; body not yet converted
 _memcpy,0x006291A8,CRT memcpy import thunk; retail target of the BI_BITFIELDS copy in ATL CImage::CreateEx
 _memmove,0x00629506,address read from the REL32 displacements in DirtySock Y4TextToValue Rva007EC780 at 0x006596B0; static CRT callee; body not yet converted
 _memset,0x006291AE,CRT memset import thunk; Ghidra labels the retail call target at 0x6291AE
@@ -7761,57 +7727,23 @@ _pingerPing,0x006B2B70,address read from the REL32 displacement at placed _piPin
 _pingerShutdown,0x006B25D0,address read from the REL32 displacement at placed _piPingCleanup 0x006A3710
 _pingerThink,0x006B2B40,address read from the REL32 displacement at placed _piPingThink 0x006A3C20
 _printf,0x00629B14,printf import thunk; retail E8 at 0x0065CEA9 targets thunk rowed as ji_00629b14; CRT printf via msvcr71
-_qsort,0x00629B4A,"msvcr71 qsort reached through the gen-import thunk ?ji_00629b4a@@YAXXZ (slot 0x00BBA414); address read from the REL32 site in the Apt array sort bodies"
-_rand,0x00629A3C
 _read_number,0x00757200
 _realloc,0x0003E4B0,retail REL32 at both allocation sites in DebugLogTyped
-_recv@16,0x006556E8,PE thunk ff2548a9bb00 jumps through IAT 0x00BBA948 to wsock32.dll!recv; Ghidra independently names same thunk
-_recvfrom@24,0x00655664,PE-verified FF25 import thunk to wsock32.dll!recvfrom via IAT 0x00BBA940; independently read from retail import directory
 _rva0007E394CursorEqual,0x0007E394,Typed 8B cursor equality; full29B exact; byte-identical two-DWORD body already covered by dup_0007e394; original template identity unknown
 ?rva00286E33@Rva00286214@@QAE?AURva00287B2AResult@@PBVRva00285672@@@Z,0x00286E33,m_cellsOnFire insert_unique (thiscall hidden pair result) called from insert 0x287B2A with ecx forwarded
 _rva002f681_fill,0x0002F681,variadic INIException {msg;code} filler (vsnprintf into TLS buf + new[] + memcpy); throw-site helper for AI-kind and INI parsers; true name unknown
 _rva006F98C0Call,0x006F98C0,retail call at 0x006F9B84 supplies EAX ECX and two stack dwords with x87 float return; address alias only because the helper identity at this RVA remains refused
 _rva007BA4EC,0x007BA4EC,Address-qualified indirect cdecl call slot at VA 0x00BBA4EC; target callers 0x002DF3B0 0x00434AAE 0x0043684C pass five stack arguments; raw slot value 0x00A7429C is inside another body so operation identity unresolved
-_select@20,0x0065566A,PE-verified FF25 import thunk to wsock32.dll!select via IAT 0x00BBA99C; independently read from retail import directory
-_send@16,0x0065568E,PE thunk ff2584a9bb00 jumps through IAT 0x00BBA984 to wsock32.dll!send; Ghidra independently names same thunk
-_sendto@24,0x006556E2,PE-verified FF25 import thunk to wsock32.dll!sendto via IAT 0x00BBA94C; independently read from retail import directory
-_setsockopt@20,0x006556D0,PE-verified FF25 import thunk to wsock32.dll!setsockopt via IAT 0x00BBA958; independently read from retail import directory
-_shutdown@8,0x006556C4,PE-verified FF25 import thunk to wsock32.dll!shutdown via IAT 0x00BBA960; independently read from retail import directory
 _sin,0x00629216,CRT import thunk; retail target of the sin call in Coord2D::Rotate(float)
 _sinf,0x0002FBB0
-_socket@12,0x00655688,PE-verified FF25 import thunk to wsock32.dll!socket via IAT 0x00BBA988; independently read from retail import directory
-_ImmAssociateContext@8,0x0065560A,PE-verified FF25 import thunk to imm32.dll!ImmAssociateContext via IAT 0x00BBA0E8; called directly by IMEManager
-_ImmSetOpenStatus@8,0x00655610,PE-verified FF25 import thunk to imm32.dll!ImmSetOpenStatus via IAT 0x00BBA114; called directly by IMEManager
-_ImmNotifyIME@16,0x00655616,PE-verified FF25 import thunk to imm32.dll!ImmNotifyIME via IAT 0x00BBA0EC; called directly by IMEManager
-_ImmGetCompositionStringW@16,0x0065561C,PE-verified FF25 import thunk to imm32.dll!ImmGetCompositionStringW via IAT 0x00BBA0F0; called directly by IMEManager
-_ImmGetProperty@8,0x00655622,PE-verified FF25 import thunk to imm32.dll!ImmGetProperty via IAT 0x00BBA0F4; called directly by IMEManager
-_ImmGetCandidateListW@16,0x00655628,PE-verified FF25 import thunk to imm32.dll!ImmGetCandidateListW via IAT 0x00BBA0F8; called directly by IMEManager
-_ImmGetCandidateListCountW@8,0x0065562E,PE-verified FF25 import thunk to imm32.dll!ImmGetCandidateListCountW via IAT 0x00BBA0FC; called directly by IMEManager
-_ImmDestroyContext@4,0x00655634,PE-verified FF25 import thunk to imm32.dll!ImmDestroyContext via IAT 0x00BBA100; called directly by IMEManager
-_ImmReleaseContext@8,0x0065563A,PE-verified FF25 import thunk to imm32.dll!ImmReleaseContext via IAT 0x00BBA104; called directly by IMEManager
-_ImmGetContext@4,0x00655640,PE-verified FF25 import thunk to imm32.dll!ImmGetContext via IAT 0x00BBA108; called directly by IMEManager
-_ImmCreateContext@0,0x00655646,PE-verified FF25 import thunk to imm32.dll!ImmCreateContext via IAT 0x00BBA10C; called directly by IMEManager
-_ImmGetIMEFileNameA@12,0x0065564C,PE-verified FF25 import thunk to imm32.dll!ImmGetIMEFileNameA via IAT 0x00BBA110; called directly by IMEManager
 _sprintf,0x006291B4,address read from the REL32 displacement in DirtySock Y2ProtoMangleHelpers at 0x00670670; direct rel32 to the import stub; body not yet converted
 _sqrt,0x0062921C,MSVCRT import thunk identified by retail call target and Ghidra
 _sscanf,0x00629892,CRT sscanf import thunk; retail REL32 target of Rva007FF700Date parse at 0x66BA00
 _strcat,0x0062988C,address read from the REL32 displacement in DirtySock Y2ProtoMangleHelpers at 0x006720F0; static CRT callee; body not yet converted
-_strchr,0x0062984A,address read from the REL32 displacement in DirtySock Y4CommTickIdle Rva00813E50 at 0x0067FD50; static CRT callee; body not yet converted
-_strcmp,0x006291C6,PE CRT thunk; independent FF25 import thunk at RVA 0x006291C6 resolves the retail strcmp IAT slot
 _strcpy,0x00629176,IAT jmp after _strlen; REL32 from makeDecoratedNameKey
 _strdup,0x006C4C70,address read from the retail REL32 in INIClass::Put_String at 0x00616FB0; the CRT body this unit calls directly where it imports the rest of the CRT
-_strlen,0x00629170,BFME2 retail strlen thunk and call target for StringBase<char>::compare(const char *)
-_strncat,0x0062950C
-_strncmp,0x0062995E,address read from the REL32 displacement in DirtySock Y2ProtoMangleTagField at 0x00671660; static CRT callee; body not yet converted
-_strncpy,0x0062983E,address read from the REL32 displacement in DirtySock Y2Rva00806580Module at 0x00672740; static CRT callee; body not yet converted
-_strstr,0x00629850,address read from the REL32 displacement in DirtySock Y4CommTable Rva00811E20 at 0x0067DD20; static CRT callee; body not yet converted
-_strtol,0x00629ABA,target import thunk for strtol; direct REL32 call from AptValue::toInteger at 0x006DD3CE; import row at 0x00629ABA
 _strtoul,0x006291C0,address read from the REL32 displacement in DirtySock Y2Rva00807900Module at 0x00673A30; static CRT callee; body not yet converted
 _tan,0x0062993A,CRT import thunk; retail target of the tan call in Rva005046B0ScanTangentAngle
-_time,0x00629A42,CRT time import thunk; retail REL32 target of Rva007FEF60 at 0x66B430; PE imports slot 0xBBA508 is msvcr71.dll!time
-_tolower,0x006298D4,CRT tolower import thunk called directly by the EAStringC utf8 lowercase fold 0x006D6100 (symmetric with the existing _toupper pin at 0x006298DA)
-_toupper,0x006298DA
-_vsprintf,0x00629A7E,CRT vsprintf import thunk; retail REL32 target of Rva007FE780 at 0x66AC50
 _xferThreeInts,0x0060BC53,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 rva009C7380WeightPairs,0x009B84E0
 ?rva00628770@Rva00628770Impl@@QAE?AUBfmeWideResult@@PBUCoord3D@@MHHPAVRva000421C8@@H@Z,0x00628770,"PartitionManager range-query implementation (525 bytes, SEH frame) behind +0x10: position, float radius, 0, distance type, filter chain, order; called from iterateObjectsInRange 0x00625610; same address as the int-typed ?bfmeMakeWideResult pin"
@@ -9108,7 +9040,6 @@ ___CxxFrameHandler,0x00629182,callee of __ehhandler$??1Rva005813E@@UAE@XZ
 ?push_back@?$vector@PAVPolygonTrigger@@V?$allocator@PAVPolygonTrigger@@@_STL@@@_STL@@QAEXABQAVPolygonTrigger@@@Z,0x004DFCB0,Native39869E call appends PolygonTrigger pointer to CastleBehavior vector80; typed instantiation must match owner bytes and all recursive relocations; fold-proof=Code/GameEngine/Source/GameLogic/System/CastleBehaviorRegisterOwnedObject.cpp
 ?reserve@?$vector@PBVLivingWorldRegion@@V?$allocator@PBVLivingWorldRegion@@@_STL@@@_STL@@QAEXI@Z,0x002B712E,TeamVictoryCondition native region pointers; fold-proof=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldScenario.cpp
 ?push_back@?$vector@PBVLivingWorldRegion@@V?$allocator@PBVLivingWorldRegion@@@_STL@@@_STL@@QAEXABQBVLivingWorldRegion@@@Z,0x004DFCB0,TeamVictoryCondition native region pointers; fold-proof=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldScenario.cpp
-__vsnprintf,0x00629898,PE msvcr71.dll import _vsnprintf owns IAT BBA5E0; complete6B import thunk629898 is the direct CRT call in EAString format worker6D53F0. C linkage yields __vsnprintf; original ji_629898 row is generated import scaffolding.
 ??0Rva005D1DCB@@QAE@PAXPAVLivingWorldPendingBattle@@@Z,0x005D1DCB,Native visitor callback5766D3 call at57670C: ECX allocation24 and two pointer arguments with callee RET8; WB15B6700 constructor ResolveBattleChecklistItem maps by strings and call graph; opaque first pointer and address-derived class preserve unresolved original ABI types
 ?rva0052A4B5@Rva0052A4B5@@QAEXXZ,0x0052A4B5,callees of small member wrappers
 ?rva001321A7@BfmeThing937B@@QAEXPAX@Z,0x001321A7,callees of small member wrappers
@@ -9721,7 +9652,6 @@ _exp,0x00629958,exp double import thunk (gen-import row ji_00629958: msvcr71 slo
 ??1?$auto_ptr@VRva0052B685Pointee@@@_STL@@QAE@XZ,0x002E3A80,ICF-folded auto_ptr<Rva0052B685Pointee> dtor that the BuildingNugget parser 0x002E012D unwind funclet calls fold-proof=Code/GameEngine/Source/Common/INI/Rva002E012DParseBuildingNugget.cpp
 ??$_M_find@H@?$_Rb_tree@HU?$pair@$$CBHPAVRva0037307F@@@_STL@@U?$_Select1st@U?$pair@$$CBHPAVRva0037307F@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHPAVRva0037307F@@@_STL@@@2@@_STL@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBHPAVRva0037307F@@@_STL@@@1@ABH@Z,0x00388F63,Native addWaypoint calls 373889/3738CC and 3738B9; signed player key and network pointer map at manager+10; fold-proof=Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourNewWaypoint.cpp
 ??A?$map@HPAVRva0037307F@@U?$less@H@_STL@@V?$allocator@U?$pair@$$CBHPAVRva0037307F@@@_STL@@@3@@_STL@@QAEAAPAVRva0037307F@@ABH@Z,0x0028932C,Native addWaypoint calls 373889/3738CC and 3738B9; signed player key and network pointer map at manager+10; fold-proof=Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourNewWaypoint.cpp
-_isalnum,0x00629AF6,msvcr71 isalnum import stub called directly by the URL escaper at 0x006FD4C0 (same stub as the gen-import row)
 ?RegisterExperienceLevels@CreateAHeroHero@@QAE_NXZ,0x00408150,WB107E870 strings lead identifies RegisterExperienceLevels; target408150..4083FF RET0 returns AL0 for null Object and AL1 at successful end; correct Boolean ABI replaces the earlier ignored-return void declaration; existing687B bank reproduces complete caller with unresolved STL provider chain; no body recovery claimed
 ?rva002D937E@Image@@QAEXXZ,0x002D937E,Native217B entry Image filename+8/rawTexture+2C/status+30; WB E764D0 callgraph paired independently; caller35B3E7 null-checks Image* before no-arg thiscall; real semantic method name unresolved.
 ?rva0041541B@Rva0041541B@@QAEABVRva002390CB@@ABVAsciiString@@@Z,0x0041541B,Native97B RET4 lookup in receiver tree1C0 by AsciiString reference; returns existing node payload14 or static default8B atE03080; WB C653D0 confirms reference result and no hidden output; 4D9874 passes returned pointer directly without copy or destruction; address-derived identity
@@ -9744,7 +9674,6 @@ _D3DXMatrixTranslation@16,0x0062AF32,First named PE import thunk: FF25 IAT00BBA9
 ?rva00468E98@AODHordeContain@@QAEPAUAODOffset2D@@PAU2@U2@@Z,0x00468E98,AODHordeContain::initOffsets callees: base init (1 arg; ret 4) and offset rotate (out ptr + by-value Coord2D; ret 0xC); calls read from retail 0x47B6A7 / 0x47B8D3
 ?reserve@?$vector@URva0047B35EElement@@V?$allocator@URva0047B35EElement@@@_STL@@@_STL@@QAEXI@Z,0x0047B35E,vector reserve (24B elements) called from initOffsets 0x47B6C8
 ?rva000A8C2B@Rva000A8C2B@@QAEXPAVXfer@@PAURva0010FFA2Packet@@@Z,0x000A8C2B,thiscall spelling of the placeholder-rowed A8C2B (retail calls it with ecx = playing+0x0C; the body ignores ecx); caller the MilesAudioManager stream xfer 0x0005B256
-_isdigit,0x00629982,Native6F97F0 suffix parser calls PE isdigit import thunk629982 repeatedly; named import ji_00629982 independently identifies msvcr71 isdigit
 ??1DrawableRefSlot@@QAE@XZ,0x0010F149,ICF-folded dtor of Drawable's 3x8-byte ref slot (Release_Ref tail jump) passed to ??_L by the Drawable ctor 0x002797BD fold-proof=Code/GameEngine/Source/GameClient/DrawableConstructor.cpp
 ?rva0006E52A@RTS3DScene@@QAEXPAVLightClass@@H@Z,0x0006E52A,callees of W3DDisplay::init 0x00046A50 (WB-named; ZH/BFME1 W3DDisplay::init order): RTS2DScene ctor (new 0x11C stored to W3DDisplay::m_2DScene); W3DShaderManager::init (static; inside the DX8 lock as in ZH); m_3DScene global-light setters per index; WW3D static setter after Init; GameLODManager level setter fed by findStaticLODLevel; WWMath shutdown after shutdownRenderDevice (folded empty body); third debug-display callback stored to +0x30
 ?rva0006E567@RTS3DScene@@QAEXPAVLightClass@@H@Z,0x0006E567,callees of W3DDisplay::init 0x00046A50 (WB-named; ZH/BFME1 W3DDisplay::init order): RTS2DScene ctor (new 0x11C stored to W3DDisplay::m_2DScene); W3DShaderManager::init (static; inside the DX8 lock as in ZH); m_3DScene global-light setters per index; WW3D static setter after Init; GameLODManager level setter fed by findStaticLODLevel; WWMath shutdown after shutdownRenderDevice (folded empty body); third debug-display callback stored to +0x30
@@ -9769,7 +9698,6 @@ _isdigit,0x00629982,Native6F97F0 suffix parser calls PE isdigit import thunk6299
 ?rva00115DA7@Rva00115DA7@@QAEXHHHH_N@Z,0x00115DA7,five-argument spelling with a bool fifth argument (its whole dword is pushed); caller the tiled height-map update 0x000E3CE1
 ?resize@?$vector@UAptTimeLinePlayer@@V?$allocator@UAptTimeLinePlayer@@@_STL@@@_STL@@QAEXI@Z,0x0052076F,vector<AptTimeLinePlayer>::resize(n) (35B: default row + resize(n x)) called by AptTimeLine::CollectPlayerData 0x00520923 and four more AptTimeLine sites
 ?Rva0056815A@@YA_NXZ,0x0056815A,callee of ?evaluateConditionHelper@ScriptConditions@@IAE_NPAVCondition@@@Z
-_malloc,0x00628F92,CRT malloc import linker thunk (jmp [0xBBA6EC])
 ?push_back@?$list@PAVResizerWindow@@V?$allocator@PAVResizerWindow@@@_STL@@@_STL@@QAEXABQAVResizerWindow@@@Z,0x0005548F,Native newResizerWindow call at 0x001DBA42; full emitted four-byte pointer list helper and nested callees match every owner relocation; fold-proof=Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarResizer.cpp
 _D3DXGetImageInfoFromFileInMemory@12,0x0062AFA4,Named PE import thunk FF25 at0062AFA4; IAT binds D3DXGetImageInfoFromFileInMemory; native PostLoad131E6E REL32 at131E9B targets this exact in-image stdcall12 thunk; image-info seven unsigned fields agree with D3DX9 API and WB
 _D3DXCheckTextureRequirements@28,0x0062AF86,Named d3dx9_27.dll PE import thunk FF25 at in-image RVA0062AF86; native image loader13154B REL32 targets this thunk; stdcall parameter bytes agree with D3DX9 API
@@ -10269,7 +10197,6 @@ _D3DXCheckTextureRequirements@28,0x0062AF86,Named d3dx9_27.dll PE import thunk F
 ?insert@?$list@PAVW3DProjectedShadow@@V?$allocator@PAVW3DProjectedShadow@@@_STL@@@_STL@@QAE?AU?$_List_iterator@PAVW3DProjectedShadow@@U?$_Nonconst_traits@PAVW3DProjectedShadow@@@_STL@@@2@U32@ABQAVW3DProjectedShadow@@@Z,0x005925E2,ICF-folded STLport pointer-list helper called by 0x0010BE72 fold-proof=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp
 ?clear@?$_List_base@PAVW3DProjectedShadow@@V?$allocator@PAVW3DProjectedShadow@@@_STL@@@_STL@@QAEXXZ,0x0023DAA5,ICF-folded STLport pointer-list helper called by 0x0010BE72 fold-proof=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp
 ??1?$_List_base@PAVW3DProjectedShadow@@V?$allocator@PAVW3DProjectedShadow@@@_STL@@@_STL@@QAE@XZ,0x004EC395,ICF-folded STLport pointer-list helper called by 0x0010BE72 fold-proof=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/Rva0010C785TimedDecals.cpp
-_wcslen,0x006291CC,PE-proven msvcr71.dll wcslen import tail FF25 at6291CC through IAT BBA6AC; native ConvertBSTRToString6549DC calls this exact linker-owned cdecl thunk; generated ji placeholder is not a separate identity
 ??1?$hash_set@PAURva00051107AudioRequest@@URva00051B89Hash@@URva00050E1CEqualTo@@V?$allocator@PAURva00051107AudioRequest@@@_STL@@@_STL@@QAE@XZ,0x000581EB,ICF fold of the implicit hash container destructors onto the one jmp to the hashtable dtor 0x56B39 (MilesAudioManager members +0x9C request set and +0xB98-+0xBC0 sample maps); fold-proof=Code/GameEngineDevice/Source/MilesAudioDevice/MilesAudioManager.cpp
 ??1?$hash_map@IPAXURva00056B39Hash@@U?$equal_to@I@_STL@@V?$allocator@U?$pair@$$CBIPAX@_STL@@@3@@_STL@@QAE@XZ,0x000581EB,ICF fold of the implicit hash container destructors onto the one jmp to the hashtable dtor 0x56B39 (MilesAudioManager members +0x9C request set and +0xB98-+0xBC0 sample maps); fold-proof=Code/GameEngineDevice/Source/MilesAudioDevice/MilesAudioManager.cpp
 ?deallocate@?$allocator@I@_STL@@QBEXPAII@Z,0x0046264A,ICF fold onto the rowed allocator<char>::deallocate at 0x46264A; the image only 20-byte _free deallocate body; an allocator<T>::deallocate instantiation that linked shares it; fold-proof=Code/GameEngine/Source/Common/StatsReporterOnlineResults.cpp
