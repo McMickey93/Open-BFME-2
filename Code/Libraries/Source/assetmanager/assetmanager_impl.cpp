@@ -570,12 +570,6 @@ public:
     Rva000309B0(unsigned tag);
     ~Rva000309B0();
 };
-class AssetHeapScope {
-    Rva000309B0 m_slot;
-public:
-    __forceinline AssetHeapScope(unsigned value) : m_slot(value) {}
-    __forceinline ~AssetHeapScope() {}
-};
 
 class BfmeE1024 {
 public:
@@ -648,7 +642,7 @@ void BfmeP1024::bfmeReg1024(BfmeE1024 *item)
 	LeaveCriticalSection(&m_bfmeLock);
 
 	item->m_bfmeFlags &= 0xfdffffff;
-    AssetHeapScope heap(0x61737374);
+    Rva000309B0 heap(0x61737374);
 	if ((item->m_bfmeFlagsShared & 0xff0000) == 0x30000)
 	{
 		m_bfmeCount -= item->slot38();
