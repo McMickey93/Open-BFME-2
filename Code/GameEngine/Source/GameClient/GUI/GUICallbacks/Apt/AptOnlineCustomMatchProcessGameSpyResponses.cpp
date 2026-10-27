@@ -27,6 +27,8 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include <string.h>
+// Retail calls MSVCR71 _mbscat here (thunk 0x0062988C), not strcat.
+extern "C" char *__cdecl _mbscat(char *dest, const char *source);
 #include <stdlib.h>
 #include <stdio.h>
 namespace _STL { void __cdecl free(void *block) throw(...); }
@@ -1365,7 +1367,7 @@ void AptOnlineCustomMatch::ProcessGameSpyResponses()
 								{
 									token.trim();
 									char buf[32] = "0x";
-									strcat(buf, token.str());
+									_mbscat(buf, token.str());
 									Int profileID = 0;
 									CrtIAT::sscanf(buf, "%x", &profileID);
 									slot->m_profileID = profileID;

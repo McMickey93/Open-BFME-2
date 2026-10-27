@@ -14,6 +14,8 @@
 // keeps the address token: the owner is unproven.
 
 #include <string.h>
+// Retail calls MSVCR71 _mbscat here (thunk 0x0062988C), not strcat.
+extern "C" char *__cdecl _mbscat(char *dest, const char *source);
 #include <windows.h>
 typedef const char *D3DXHANDLE;
 
@@ -81,13 +83,13 @@ void __cdecl Rva00190F8E_BindStandardSemantics(FXShaderParameterBinder *binder)
 		for (int j = 0; j < 3; j++) {
 			char semantic[64];
 			strcpy(semantic, s_matrixSemantics[i]);
-			strcat(semantic, s_matrixSuffixes[j]);
+			_mbscat(semantic, s_matrixSuffixes[j]);
 			D3DXHANDLE param = effect->GetParameterBySemantic(0, semantic);
 			if (param != 0) {
 				strcpy(semantic, s_matrixAddresses[i]);
 				if (s_matrixSuffixes[j][0] != 0) {
-					strcat(semantic, ".");
-					strcat(semantic, s_matrixSuffixes[j]);
+					_mbscat(semantic, ".");
+					_mbscat(semantic, s_matrixSuffixes[j]);
 				}
 				binder->ResolveBindings(semantic, param);
 			}

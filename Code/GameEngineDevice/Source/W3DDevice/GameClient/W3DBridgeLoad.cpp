@@ -11,6 +11,8 @@
 // +3C/+80/+BC). The TerrainRoadType string getters are called by the rowed
 // spellings of their identical-code-folded addresses.
 #include <string.h>
+// Retail calls MSVCR71 _mbscat here (thunk 0x0062988C), not strcat.
+extern "C" char *__cdecl _mbscat(char *dest, const char *source);
 #include <float.h>
 #include "ascii_string.h"
 
@@ -343,11 +345,11 @@ bool W3DBridge::load(BodyDamageType curDamageState)
 	char right[260];
 
 	strcpy(left, modelName);
-	strcat(left, ".BRIDGE_LEFT");
+	_mbscat(left, ".BRIDGE_LEFT");
 	strcpy(section, modelName);
-	strcat(section, ".BRIDGE_SPAN");
+	_mbscat(section, ".BRIDGE_SPAN");
 	strcpy(right, modelName);
-	strcat(right, ".BRIDGE_RIGHT");
+	_mbscat(right, ".BRIDGE_RIGHT");
 
 	m_bridgeTexture = reinterpret_cast<const RefCountPtr<TextureClass> &>(TextureAsset::Get(textureFile, 3, 0));
 	m_leftMtx.Make_Identity();

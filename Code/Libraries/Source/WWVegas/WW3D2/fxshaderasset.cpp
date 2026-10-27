@@ -41,7 +41,7 @@ namespace _STL { template <> Rva0007BB16Record *__uninitialized_copy<Rva0007BB16
 
 extern "C" {
 char *__cdecl strcpy(char *d, const char *s);
-char *__cdecl strcat(char *d, const char *s);
+char *__cdecl _mbscat(char *d, const char *s);
 __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 }
 
@@ -295,8 +295,8 @@ void FXShaderAsset::Impl::Load(const char *filename)
 
 	char compiled[260];
 	strcpy(compiled, "Shaders/Compiled/");
-	strcat(compiled, filename);
-	strcat(compiled, "o");
+	_mbscat(compiled, filename);
+	_mbscat(compiled, "o");
 
 	HRESULT hr = -1;
 	if (TheFileSystem->doesFileExist(compiled) && !FXShaderAsset::s_isW3DView) {
@@ -310,7 +310,7 @@ void FXShaderAsset::Impl::Load(const char *filename)
 	} else {
 		char source[260];
 		strcpy(source, "Shaders/");
-		strcat(source, filename);
+		_mbscat(source, filename);
 		hr = D3DXCreateEffectFromFileA(DX8Wrapper::D3DDevice, source, macros, 0, 0, 0, &m_effect, &errors);
 	}
 

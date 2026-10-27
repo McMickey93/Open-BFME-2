@@ -27,7 +27,7 @@ extern "C"
 	__declspec(dllimport) int __cdecl fflush(FILE *file);
 	__declspec(dllimport) FILE *__cdecl fopen(const char *name, const char *mode);
 	char *__cdecl strcpy(char *dest, const char *src);
-	char *__cdecl strcat(char *dest, const char *src);
+	char *__cdecl _mbscat(char *dest, const char *src);
 	unsigned int __cdecl strlen(const char *str);
 }
 
@@ -169,8 +169,8 @@ void Rva0023C641::rva0023D494()
 	}
 
 	strcpy(fileName, "TimingLog");
-	strcat(fileName, dateBuf);
-	strcat(fileName, ".csv");
+	_mbscat(fileName, dateBuf);
+	_mbscat(fileName, ".csv");
 	m_file18 = fopen(fileName, "w");
 	rva0023C641("Full,TotalVerts/Skin/Sort,Less Fill,NoParticles,No Spawn-NoPart,Logic,Thing,Model,Kind,Side,DrawCalls All,DrawCalls NoPart-NoSpawn,DrawCalls NoSpawn\n");
 
