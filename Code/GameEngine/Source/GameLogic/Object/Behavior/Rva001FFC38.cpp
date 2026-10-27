@@ -2,12 +2,10 @@
 // ?Rva001FFC38Copy@@YAPAXPAX000@Z @0x001FFC38 29B: 5-arg forward to rowed 0x00339A8D copy with dummy tag and 0. Evidence: callee row ?Rva00339A8DCopy; callers 0x001FFDE2 0x001FFE02 0x00339E94; neighbours Rva001FFA5A DynamicPortalLinkVector same flags.
 namespace _STL
 {
-template <class T> class allocator
-{
-};
-template <class T, class A> class vector
-{
-};
+// Only pointers cross this wrapper's interface. Keep the library templates
+// incomplete so the definition composes with Science.cpp's STLport headers.
+template <class T> class allocator;
+template <class T, class A> class vector;
 }
 typedef _STL::vector<int, _STL::allocator<int> > SciVec;
 SciVec *__cdecl Rva00339A8DCopy(SciVec *first, SciVec *last, SciVec *dest, void *tag, int extra);

@@ -651,6 +651,16 @@ Whole-unit clearance and census confirmation remain pending.
   redefinitions, superseding the historical 13-row acceptance. Cost fields,
   STL/flag reconciliation and mixed donors remain; no full merge unblock,
   identity debt retirement or census gain is claimed.
+- **Science copy-wrapper composition prerequisite (2026-10-27, `6cdcea926b`):**
+  [the scoped object proof](../reverse/attempt_support/science-copy-wrapper-consolidation-20261027-codex5.md)
+  replaces two empty private STL template definitions with forward declarations
+  in Rva001FFC38.cpp. Its complete non-debug sections, relocations and external
+  bindings remain identical, and its ordinary preview retains LINKS (29 bytes).
+  The supported full dry run now accepts that donor with Science.cpp (15 rows),
+  protecting census-linked units and external providers. All 26 original group
+  rows and one data row verify; all eleven previews are LINKS. Nine rejected
+  donors and eleven mixed donors retain their declaration, STL and byte
+  prerequisites. Merge application and census confirmation remain separate.
 - **Keyboard declaration prerequisites (2026-10-26):**
   [the shared receiver repair](../reverse/attempt_support/consolidation-keyboard-resync-prerequisite-20261026-codex.md)
   first made the seed and 166-byte resync donor compose (13 existing rows).
