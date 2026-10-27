@@ -4874,17 +4874,17 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0009A200,28,code,,,-,,Code/GameEngine/Source/Common/RvaDeletingDtorBatch01.cpp
 0x0009A21C,28,code,,,-,,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtors.cpp
 0x0009A238,28,code,,,-,,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtors.cpp
-0x0009A2CD,61,code,,,-,,Code/GameEngine/Source/Common/Rva0009A2CDDispatch.cpp
+0x0009A2CD,61,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp
 0x0009A338,16,code,,,-,,Code/GameEngine/Source/Common/R2GuardedGlobalCalls.cpp
-0x0009A361,34,code,,,-,,Code/GameEngine/Source/Common/Rva0009A361Guard.cpp
-0x0009A383,91,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManager.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManagerReAcquire.cpp
-0x0009A3DE,61,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,C,C=0x0009A383..0x0009A41B,Code/GameEngine/Source/Common/Rva0009A3DECleanup.cpp
+0x0009A361,34,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp
+0x0009A383,91,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManager.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp
+0x0009A3DE,61,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,C,C=0x0009A383..0x0009A41B,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp
 0x0009A41B,93,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,C,C=0x0009A383..0x0009A497,Code/GameEngine/Source/Common/System/AudioEventRTSAssign.cpp
 0x0009A497,13,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,U,N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClientShadowShim.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClientShadowShimGetLightPosWorld.cpp
 0x0009A4A4,46,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,C,C=0x0009A497..0x0009A4D2,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManagerToggleLists.cpp
 0x0009A4D2,46,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,C,C=0x0009A497..0x0009A500,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManagerToggleLists.cpp
 0x0009A500,135,code-unledgered,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,C,C=0x0009A497..0x0009A587,
-0x0009A587,198,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,U,N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClientShadowShim.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClientShadowShimSetLightPosition.cpp
+0x0009A587,198,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,U,N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClientShadowShim.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp
 0x0009A64D,195,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,U,N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClientShadowShim.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DGameClient_setTimeOfDay.cpp
 0x0009A710,451,code-unledgered,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,C,C=0x0009A64D..0x0009A8D3,
 0x0009A8D3,302,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp,approved,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManager.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManagerAddShadow.cpp

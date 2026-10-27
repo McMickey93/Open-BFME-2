@@ -4953,7 +4953,6 @@ asm_bytes	Code/gen_asm/d_005e9687.asm	*	77
 class_gate_allow	Code/GameEngine/Source/Common/Audio/Rva000527FB.cpp	BfmeAudioEventPrefix136	1
 class_gate_allow	Code/GameEngine/Source/Common/GapBodiesGE31.cpp	GameLogic	1
 class_gate_allow	Code/GameEngine/Source/Common/Glo012F1024Entry_bfmeStep_Rva005669c2.cpp	AsciiString	1
-class_gate_allow	Code/GameEngine/Source/Common/Rva0009A2CDDispatch.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva00285C88Assign.cpp	ICoord2D	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva003193EC.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva003FAAA1RayOverlap.cpp	Region3D	1
@@ -4997,6 +4996,7 @@ class_gate_allow	Code/GameEngine/Source/Main/Win32GameEngineFactories.cpp	GameLo
 class_gate_allow	Code/GameEngineDevice/Source/MilesAudioDevice/MilesAudioManager.cpp	Coord2D	1
 class_gate_allow	Code/GameEngineDevice/Source/MilesAudioDevice/Rva006AD9B0GetAllowAudioReinitialize.cpp	AsciiString	1
 class_gate_allow	Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva0009C18ACameraBounds.cpp	Region3D	1
+class_gate_allow	Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp	StringBase	1
 class_gate_allow	Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowTextureUpdateBounds.cpp	Region3D	1
 class_gate_allow	Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayGatherDebugStats.cpp	GameLogic	1
 class_gate_allow	Code/Libraries/Source/Apt/AptActionInterpreterSetVariable.cpp	AptScriptFunctionBase	1
