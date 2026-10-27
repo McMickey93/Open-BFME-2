@@ -21,46 +21,23 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
 // stream slots and all call ABIs are target evidence. The two opaque helper
 // bindings are full in-image boundaries2BB49C321 RET8 and2B8BFE264 RET4.
 struct Version {unsigned char minimum,current;Version(unsigned char a,unsigned char b):minimum(a),current(b){}};
-class Xfer {public:
-virtual void s0();
-virtual bool IsLoading() const;
-virtual void s2();
-virtual bool IsCRC() const;
-virtual void s4();
-virtual void s5();
-virtual void s6();
-virtual void s7();
-virtual void s8();
-virtual void xferRaw(void*,int);
-virtual void xferVersion(Version*);
-virtual void s11();
-virtual void xferSnapshot(void*);
-virtual void s13();
-virtual void s14();
-virtual void s15();
-virtual void s16();
-virtual void s17();
-virtual void s18();
-virtual void s19();
-virtual void s20();
-virtual void s21();
-virtual void s22();
-virtual void s23();
-virtual void s24();
-virtual void s25();
-virtual void xferWide(UnicodeString*);
-virtual void s27();
-virtual void s28();
-virtual void s29();
-virtual void s30();
-virtual void xferInt(int*);
-virtual void s32();
-virtual void s33();
-virtual void s34();
-virtual void s35();
-virtual void xferBool(bool*);
-virtual void s37();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 class LivingWorldLogic{public:void rva002BB2B7(Xfer*);void rva002B83E5();};extern LivingWorldLogic*TheLivingWorldLogic;
 class Rva002B22AFArg;
 class Rva002B22AF{public:Rva002B22AF():zeroC(0),zero10(0){}void rva002B22AF(Rva002B22AFArg*);char pad[8];int id;int zeroC,zero10,tail14;};
@@ -76,10 +53,10 @@ class Rva002B8106{public:void rva002B8106(const BfmeStringRecord002B4DC1&);};
 class Rva002B8BFE{public:void rva002B8BFE(Xfer*);char pad[0xF0];_STL::list<BfmeStringRecord002B4DC1> records;};
 class Rva002BB5DD {public:void rva002BB5DD(Xfer*);char pad[0xBC];RecVec records;char gap[4];RecVec first,second;};
 void Rva002BB5DD::rva002BB5DD(Xfer*xfer){
- Version v(1,3);xfer->xferVersion(&v);
+ Version v(1,3);*xfer == (Xfer::Version &)v;
  ((LivingWorldLogic*)this)->rva002BB2B7(xfer);
  if(!xfer->IsCRC()){
-  int count=records.end-records.begin;xfer->xferInt(&count);
+  int count=records.end-records.begin;*xfer == count;
   for(int i=0;i<count;++i)records.begin[i]->rva002B22AF((Rva002B22AFArg*)xfer);
  }
  ((Rva002BB49C*)this)->rva002BB49C(xfer,&first);
@@ -102,9 +79,9 @@ extern LivingWorldManager*TheLivingWorldManager;
 // Native2BBA45..2BBB18 RET4 returns the version widened in EAX.
 class Rva002BBA45{public:virtual void slot0();virtual void reset();unsigned int rva002BBA45(Xfer*);char pad[0xBC-4];RecVec records;char gap[4];RecVec first,second;};
 unsigned int Rva002BBA45::rva002BBA45(Xfer*xfer){
- Version v(1,3);xfer->xferVersion(&v);reset();TheLivingWorldLogic->rva002B83E5();
+ Version v(1,3);*xfer == (Xfer::Version &)v;reset();TheLivingWorldLogic->rva002B83E5();
  ((LivingWorldLogic*)this)->rva002BB2B7(xfer);
- int count;xfer->xferInt(&count);
+ int count;*xfer == count;
  for(int i=0;i<count;++i){
   Rva002B22AF*record=new Rva002B22AF;
   const ModuleData* stored=(const ModuleData*)record;
@@ -124,16 +101,16 @@ unsigned int Rva002BBA45::rva002BBA45(Xfer*xfer){
 // Clear borrows the owned UnicodeString-list base: node links and first
 // string destructor are identical and the trailing words are trivial.
 void Rva002B8BFE::rva002B8BFE(Xfer*xfer){
- int count=records.size();xfer->xferInt(&count);
+ int count=records.size();*xfer == count;
  if(xfer->IsLoading()){
   ((WideListBase*)&records)->clear();
   for(int i=0;i<count;++i){BfmeStringRecord002B4DC1 value;
-   xfer->xferWide(&value.text);xfer->xferInt((int*)&value.word0);xfer->xferRaw(&value.word1,4);
+   *xfer == value.text;*xfer == *(int*)&value.word0;xfer->XferRawBytes(&value.word1,4);
    ((Rva002B8106*)&records)->rva002B8106(value);
   }
  }else{
   for(RecordNode*recordNode=((RecordList*)&records)->head->next;recordNode!=((RecordList*)&records)->head;recordNode=recordNode->next){BfmeStringRecord002B4DC1 value=recordNode->value;
-   xfer->xferWide(&value.text);xfer->xferInt((int*)&value.word0);xfer->xferRaw(&value.word1,4);
+   *xfer == value.text;*xfer == *(int*)&value.word0;xfer->XferRawBytes(&value.word1,4);
   }
  }
 }

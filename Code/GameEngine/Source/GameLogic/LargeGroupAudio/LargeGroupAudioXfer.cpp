@@ -32,47 +32,23 @@ struct VersionPair
 	unsigned char minimum, current;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual void slot04();
-	virtual int BeginBlock(const char *);
-	virtual void EndBlock();
-	virtual void SkipBlock(const char *);
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(VersionPair *);
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual Xfer &xferAsciiString(AsciiString *);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual Xfer &xferInt(int *);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 class LargeGroupAudioAudioMap
 {
@@ -120,29 +96,29 @@ void LargeGroupAudio::xfer(Xfer *xfer)
 		return;
 
 	VersionPair version(1, 5);
-	xfer->xferVersion(&version);
+	*xfer == (Xfer::Version &)version;
 
-	xfer->xferBool(&m_waitingForLevelLoad);
+	*xfer == m_waitingForLevelLoad;
 	if (m_waitingForLevelLoad)
 		return;
 
 	if (version.current >= 2)
 	{
-		xfer->xferInt(&m_3C);
-		xfer->xferBool(&m_needsToRegenerateAfterReload);
+		*xfer == m_3C;
+		*xfer == m_needsToRegenerateAfterReload;
 	}
 	if (version.current >= 4)
-		xfer->xferBool(&m_39);
+		*xfer == m_39;
 
 	int count = m_audioMaps.size();
-	xfer->xferInt(&count);
+	*xfer == count;
 	int processed = 0;
 	for (int i = 0; i < count; ++i)
 	{
 		if (xfer->IsLoading())
 		{
 			AsciiString name;
-			xfer->xferAsciiString(&name);
+			*xfer == name;
 			LargeGroupAudioAudioMap *audioMap = findAudioMap(name);
 			if (audioMap == NULL)
 			{
@@ -160,7 +136,7 @@ void LargeGroupAudio::xfer(Xfer *xfer)
 		{
 			LargeGroupAudioAudioMap *audioMap = m_audioMaps[i];
 			AsciiString name(audioMap->m_name);
-			xfer->xferAsciiString(&name);
+			*xfer == name;
 			xfer->BeginBlock("AudioMap");
 			audioMap->rva003EE23C(xfer, &version);
 			xfer->EndBlock();

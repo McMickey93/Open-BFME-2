@@ -79,22 +79,23 @@ struct XferVersion {
 // Xfer view: slot 1 tells a load from a save; +0x78 and +0x90 xfer an
 // unsigned int and a bool (0x0005B256). xfer (0x0005E3E5) also calls
 // slot 3 (+0x0C, CRC pass), 10 (+0x28), 28 (+0x70, float) and 31 (+0x7C, int).
-class Xfer {
-public:
-    virtual ~Xfer();
-    virtual bool isLoading();
-    virtual void slot02(); virtual bool isCRC(); virtual void slot04(); virtual void slot05();
-    virtual void slot06(); virtual void slot07(); virtual void slot08(); virtual void slot09();
-    virtual void xferVersion(XferVersion *version); virtual void slot11(); virtual void xferSnapshot(Snapshot *snapshot); virtual void slot13();
-    virtual void slot14(); virtual void slot15(); virtual void slot16(); virtual void slot17();
-    virtual void slot18(); virtual void slot19(); virtual void slot20(); virtual void slot21();
-    virtual void slot22(); virtual void slot23(); virtual void slot24(); virtual void slot25();
-    virtual void slot26(); virtual void slot27(); virtual Xfer &xferReal(float *value); virtual void slot29();
-    virtual Xfer &xferUnsignedInt(unsigned int *value);
-    virtual Xfer &xferInt(int *value); virtual void slot32(); virtual void slot33(); virtual void slot34();
-    virtual void slot35();
-    virtual Xfer &xferBool(bool *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../GameEngine/Include/Common/BfmeXfer.h"
 enum INILoadType
 {
     INI_LOAD_INVALID,
@@ -2758,18 +2759,18 @@ struct Rva0010FFA2Packet {
 // writes the event's playing handle and the stream position.
 void MilesAudioManager::rva0005B256(Xfer *xfer, PlayingAudioRef &playing, int *unused)
 {
-    if (xfer->isLoading()) {
+    if (xfer->IsLoading()) {
         playing = allocatePlayingAudio();
         playing->m_event.rva00053D26(
             reinterpret_cast<BfmePoolHolder88 *>(new Rva0051D93(OpaqueRefElement4(), 0)));
     }
     reinterpret_cast<Rva002D9F9FOwner *>(playing->m_event.get())->rva002D9F9F(
         reinterpret_cast<Rva002D9F9FArg *>(xfer));
-    xfer->xferBool(&playing->m_at49);
-    if (xfer->isLoading()) {
+    *xfer == playing->m_at49;
+    if (xfer->IsLoading()) {
         rva000592B8(playing->m_event.get());
         unsigned int savedHandle;
-        xfer->xferUnsignedInt(&savedHandle);
+        *xfer == savedHandle;
         Rva0010FFA2Packet resumePosition;
         reinterpret_cast<Rva000A8C2B *>(&playing->m_at0C)->rva000A8C2B(reinterpret_cast<Rva000A8C2BObj *>(xfer), reinterpret_cast<int *>(&resumePosition));
         if (!playing->m_event->m_info) {
@@ -2815,7 +2816,7 @@ void MilesAudioManager::rva0005B256(Xfer *xfer, PlayingAudioRef &playing, int *u
         playAndStoreStream(playing, &resumePosition);
     } else {
         unsigned int handle = playing->m_event->m_playingHandle;
-        xfer->xferUnsignedInt(&handle);
+        *xfer == handle;
         reinterpret_cast<Rva000A8B6D *>(&playing->m_at0C)->rva000A8B79(
             reinterpret_cast<Rva000A8C2BObj *>(xfer));
     }
@@ -4336,7 +4337,7 @@ void MilesAudioManager::rva000563FE(Xfer *xfer, int handle)
         if (playing.get() != 0 && playing->m_at44)
             present = false;
     }
-    xfer->xferBool(&present);
+    *xfer == present;
     if (present) {
         float volume = event->m_at2C;
         if (playing.get() != 0 && playing->m_at40 > 0.0f)
@@ -4604,23 +4605,23 @@ Xfer *xferAsciiStringVector(Xfer *xfer, _STL::vector<AsciiString> *vec);
 // unless m_transferViewType2 is set; version 4 adds the per-view affect masks.
 void MilesAudioManager::xfer(Xfer *transfer)
 {
-    if (transfer->isCRC())
+    if (transfer->IsCRC())
         return;
     MilesMutexGuard guard(&m_mutex, 0);
-    if (transfer->isLoading()) {
+    if (transfer->IsLoading()) {
         m_at6AC = true;
         m_at6B0 = 0;
     }
     XferVersion version;
     version.m_version = 1;
     version.m_currentVersion = 4;
-    transfer->xferVersion(&version);
+    *transfer == (Xfer::Version &)version;
     int oldViewType = m_at678;
     Rva00050C61Dispatch(reinterpret_cast<AudioReceiver *>(transfer), &m_at678);
     if (oldViewType != m_at678)
         m_viewTypeChanged = true;
     Rva00050C79Dispatch(reinterpret_cast<AudioReceiver *>(transfer), &m_at690);
-    transfer->xferBool(&m_at6A7);
+    *transfer == m_at6A7;
     int viewType;
     for (viewType = 0; viewType < 3; ++viewType) {
         if (viewType == 2 && version.m_currentVersion >= 3 && !m_transferViewType2)
@@ -4631,44 +4632,44 @@ void MilesAudioManager::xfer(Xfer *transfer)
         if (version.m_currentVersion >= 4)
             XferAudioAffect(transfer, &m_at6B4[viewType]);
     }
-    if (transfer->isLoading()) {
+    if (transfer->IsLoading()) {
         m_savedTriggerAreas.clear();
         int count;
-        transfer->xferInt(&count);
+        *transfer == count;
         while (count) {
             AudioTriggerAreaSave area;
-            transfer->xferInt(&area.m_triggerID);
-            transfer->xferReal(&area.m_level);
+            *transfer == area.m_triggerID;
+            *transfer == area.m_level;
             m_savedTriggerAreas.push_back(area);
             --count;
         }
         m_retestAreasEveryCall = true;
     } else {
         int count = static_cast<int>(m_triggerAreas.size());
-        transfer->xferInt(&count);
+        *transfer == count;
         for (_STL::vector<AudioTriggerArea>::iterator it = m_triggerAreas.begin(); it != m_triggerAreas.end(); ++it) {
             int triggerID = it->m_trigger->getID();
-            transfer->xferInt(&triggerID);
+            *transfer == triggerID;
             float level = it->m_level;
-            transfer->xferReal(&level);
+            *transfer == level;
         }
     }
-    transfer->xferInt(&m_reverbRoomType);
-    if (transfer->isLoading())
+    *transfer == m_reverbRoomType;
+    if (transfer->IsLoading())
         internalSetReverbRoomType(m_reverbRoomType);
     if (version.m_currentVersion >= 2)
-        transfer->xferUnsignedInt(reinterpret_cast<unsigned int *>(&m_at94));
+        *transfer == *(reinterpret_cast<unsigned int *>(&m_at94));
     else
         m_at94 = -1;
     m_at90 = 0.0f;
-    if (transfer->isLoading()) {
+    if (transfer->IsLoading()) {
         m_cameraPos.x = _STL::numeric_limits<float>::quiet_NaN();
         m_cameraPos.y = _STL::numeric_limits<float>::quiet_NaN();
         m_cameraPos.z = _STL::numeric_limits<float>::quiet_NaN();
     }
-    if (transfer->isLoading()) {
+    if (transfer->IsLoading()) {
         int count;
-        transfer->xferInt(&count);
+        *transfer == count;
         for (int index = 0; index < count; ++index) {
             PlayingAudioRef playing;
             rva0005B256(transfer, playing, reinterpret_cast<int *>(&version));
@@ -4681,7 +4682,7 @@ void MilesAudioManager::xfer(Xfer *transfer)
                 MusicStack &stack = m_musicStack[viewType][musicSystem];
                 int oldSize = static_cast<int>(stack.size());
                 int stackCount;
-                transfer->xferInt(&stackCount);
+                *transfer == stackCount;
                 for (int index = 0; index < stackCount; ++index) {
                     PlayingAudioRef playing;
                     rva0005B256(transfer, playing, reinterpret_cast<int *>(&version));
@@ -4709,7 +4710,7 @@ void MilesAudioManager::xfer(Xfer *transfer)
                 savedStreams.push_back(playing);
         }
         int count = static_cast<int>(savedStreams.size());
-        transfer->xferInt(&count);
+        *transfer == count;
         for (PlayingAudioList::iterator it = savedStreams.begin(); it != savedStreams.end(); ++it) {
             PlayingAudioRef &playing = *it;
             rva0005B256(transfer, playing, reinterpret_cast<int *>(&version));
@@ -4720,7 +4721,7 @@ void MilesAudioManager::xfer(Xfer *transfer)
             for (int musicSystem = 0; musicSystem < 2; ++musicSystem) {
                 MusicStack &stack = m_musicStack[viewType][musicSystem];
                 int stackCount = static_cast<int>(stack.size());
-                transfer->xferInt(&stackCount);
+                *transfer == stackCount;
                 for (MusicStack::iterator it = stack.begin(); it != stack.end(); ++it) {
                     PlayingAudioRef playing = *reinterpret_cast<PlayingAudioRef *>(&*it);
                     rva0005B256(transfer, playing, reinterpret_cast<int *>(&version));
@@ -5673,6 +5674,14 @@ public:
     unsigned char Open(Xfer *file, int a, bool b);
 private:
     char m_data[0x3C];
+public:
+	// A concrete Xfer overrides every pure virtual slot of the base.
+	virtual int BeginBlock(const char *name);
+	virtual void EndBlock();
+	virtual void SkipBlock(const char *name);
+	virtual Xfer &operator==(const char *const &value);
+protected:
+	virtual void XferData(unsigned int type, void *data, unsigned int size);
 };
 // The load-side Xfer: built from three null pointers by 0x0060C5FA, opened by
 // 0x0060C3C3, closed by 0x0060C45E and torn down by the base destructor.
@@ -5681,6 +5690,14 @@ public:
     Rva0060C5FA(void *a1, void *a2, void *a3);
 private:
     unsigned char m_pad04[0x20 - 4];
+public:
+	// A concrete Xfer overrides every pure virtual slot of the base.
+	virtual int BeginBlock(const char *name);
+	virtual void EndBlock();
+	virtual void SkipBlock(const char *name);
+	virtual Xfer &operator==(const char *const &value);
+protected:
+	virtual void XferData(unsigned int type, void *data, unsigned int size);
 };
 struct Rva0060C3C3Stream;
 class XferLoad { public: bool Open(Rva0060C3C3Stream *stream, int *version); };
@@ -5702,7 +5719,7 @@ void MilesAudioManager::rva0006179C(int skipRequestRefresh)
         XferSave xferSave;
         xferSave.Open((Xfer *)writeFile, 0, false);
         Xfer *xfer = &xferSave;
-        xfer->xferSnapshot(this);
+        *xfer == *this;
         ((Gen009D6DD0 *)&xferSave)->bfmeClose();
     } catch (const XferException &xferException) {
         // WorldBuilder reports e here; retail keeps only its catch-object slot.
@@ -5742,7 +5759,7 @@ void MilesAudioManager::rva0006179C(int skipRequestRefresh)
         int version;
         ((XferLoad *)&xferLoad)->Open((Rva0060C3C3Stream *)readFile, &version);
         Xfer *xfer = &xferLoad;
-        xfer->xferSnapshot(this);
+        *xfer == *this;
         ((Rva0060C45E *)&xferLoad)->clear();
         m_at6B0 = 1;
         loadPostProcess();
@@ -6533,28 +6550,28 @@ void MilesAudioManager::friend_xferSubAudioEventRTS(Xfer *xfer, BfmePoolRef10 *e
     XferVersion version;
     version.m_version = 1;
     version.m_currentVersion = 1;
-    xfer->xferVersion(&version);
+    *xfer == (Xfer::Version &)version;
     bool present = *reinterpret_cast<AudioEventRTS *const *>(eventRef) != 0;
-    xfer->xferBool(&present);
+    *xfer == present;
     if (present) {
         unsigned int id = reinterpret_cast<unsigned int>(eventRef->get());
-        xfer->xferInt(reinterpret_cast<int *>(&id));
+        *xfer == *(reinterpret_cast<int *>(&id));
         MilesHandleMap *loaded = reinterpret_cast<MilesHandleMap *>(&atB78);
         {
             MilesHandleMap::iterator found = loaded->find(id);
             // Compare the nodes directly, avoiding an unused external iterator wrapper.
             if (found._M_cur != loaded->end()._M_cur) {
-                if (xfer->isLoading())
+                if (xfer->IsLoading())
                     *eventRef = *reinterpret_cast<const BfmePoolRef10 *>(&found->second);
                 return;
             }
         }
         {
-            if (xfer->isLoading())
+            if (xfer->IsLoading())
                 eventRef->rva00053D26(reinterpret_cast<BfmePoolHolder88 *>(new Rva005813E()));
             unsigned int savedHandle = (*eventRef)->m_playingHandle;
-            xfer->xferUnsignedInt(&savedHandle);
-            if (xfer->isLoading()) {
+            *xfer == savedHandle;
+            if (xfer->IsLoading()) {
                 reinterpret_cast<GameMessage *>(eventRef->get())->friend_setList(reinterpret_cast<GameMessageList *>(allocateNewHandle()));
                 _STL::pair<Rva0005B256HandleMap::iterator, bool> result =
                     reinterpret_cast<Rva0005B256HandleMap *>(&atB6C)->insert(
@@ -6566,7 +6583,7 @@ void MilesAudioManager::friend_xferSubAudioEventRTS(Xfer *xfer, BfmePoolRef10 *e
                 MilesSavedAudioEventMap::value_type(id, *eventRef));
             reinterpret_cast<Rva002D9F9FOwner *>(eventRef->get())->rva002D9F9F(reinterpret_cast<Rva002D9F9FArg *>(xfer));
         }
-    } else if (xfer->isLoading()) {
+    } else if (xfer->IsLoading()) {
         eventRef->rva000519BD();
     }
 }

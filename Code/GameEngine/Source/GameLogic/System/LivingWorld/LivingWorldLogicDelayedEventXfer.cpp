@@ -19,15 +19,23 @@ namespace _STL { template <> __declspec(dllimport) __forceinline const unsigned 
 typedef int Int;
 typedef bool Bool;
 
-class Xfer {public:
-virtual void s0(); virtual bool IsLoading() const; virtual void s2(); virtual bool IsCRC() const;
-virtual void s4(); virtual void s5(); virtual void s6(); virtual void s7(); virtual void s8();
-virtual void s9(); virtual void s10(); virtual void s11(); virtual void s12(); virtual void s13();
-virtual void s14(); virtual void s15(); virtual void s16(); virtual void s17(); virtual void s18();
-virtual void s19(); virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23();
-virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27(); virtual void s28();
-virtual void s29(); virtual void s30(); virtual void xferInt(Int*);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 struct Rva002B2275Obj;
 int __cdecl Rva002B2275Get(Rva002B2275Obj *xfer, void *type);
@@ -109,7 +117,7 @@ class Rva002BB49C {public: void rva002BB49C(Xfer *, RecVec *);};
 void Rva002BB49C::rva002BB49C(Xfer *xfer, RecVec *records)
 {
 	Int count = records->size();
-	xfer->xferInt(&count);
+	*xfer == count;
 	if (xfer->IsLoading())
 	{
 		for (Int i = 0; i < count; ++i)

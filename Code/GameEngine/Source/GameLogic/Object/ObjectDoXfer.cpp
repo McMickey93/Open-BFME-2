@@ -53,58 +53,13 @@ class RGBColor;
 class RGBAColorReal;
 class RGBAColorInt;
 
-class Xfer
-{
-public:
-	class Version;
-
-	Xfer();
-	virtual ~Xfer();
-
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-
-	virtual void BeginBlock(const char *name) = 0;
-	virtual void EndBlock() = 0;
-	virtual void SkipBlock(const char *name) = 0;
-
-	virtual void SkipBadBlock(Snapshot &snapshot, unsigned int size);
-	virtual Xfer &XferRawBytes(void *data, unsigned int size);
-	virtual Xfer &operator==(bool &value);
-	virtual Xfer &operator==(char &value);
-	virtual Xfer &operator==(unsigned char &value);
-	virtual Xfer &operator==(short &value);
-	virtual Xfer &operator==(unsigned short &value);
-	virtual Xfer &operator==(int &value);
-	virtual Xfer &operator==(unsigned int &value);
-	virtual Xfer &operator==(__int64 &value);
-	virtual Xfer &operator==(float &value);
-	virtual Xfer &operator==(AsciiString &value);
-	virtual Xfer &operator==(UnicodeString &value);
-	virtual Xfer &operator==(PooledString &value);
-	virtual Xfer &operator==(Coord3D &value);
-	virtual Xfer &operator==(ICoord3D &value);
-	virtual Xfer &operator==(Region3D &value);
-	virtual Xfer &operator==(IRegion3D &value);
-	virtual Xfer &operator==(Coord2D &value);
-	virtual Xfer &operator==(ICoord2D &value);
-	virtual Xfer &operator==(Region2D &value);
-	virtual Xfer &operator==(IRegion2D &value);
-	virtual Xfer &operator==(RealRange &value);
-	virtual Xfer &operator==(RGBColor &value);
-	virtual Xfer &operator==(RGBAColorReal &value);
-	virtual Xfer &operator==(RGBAColorInt &value);
-	virtual Xfer &operator==(Snapshot &value);
-	virtual Xfer &operator==(XferUnknown11 &value) = 0;
-	virtual Xfer &operator==(Version &value);
-
-	virtual Xfer &XferEnum(const char *name, void *data, unsigned int size);
-
-protected:
-	virtual void XferData(unsigned int type, void *data, unsigned int size) = 0;
-};
+class Snapshot;
+class AsciiString;
+struct Coord3DBase;
+struct ICoord3D;
+class Coord2D;
+struct ICoord2D;
+#include "../../../Include/Common/BfmeXfer.h"
 
 class Xfer::Version
 {
@@ -667,7 +622,7 @@ void Object::xfer(Xfer *xfer)
 				goalPos.y = 0.0f;
 				goalPos.z = 0.0f;
 			}
-			*xfer == goalPos;
+			*xfer == (Coord3DBase &)goalPos;
 		}
 
 		for (int i = 0; i < WEAPONSLOT_COUNT; ++i)
@@ -745,8 +700,8 @@ void Object::xfer(Xfer *xfer)
 	*xfer == m_constructionPercent;
 	*xfer == m_originalTeamName;
 	*xfer == m_indicatorColor;
-	*xfer == m_healthBoxOffset;
-	*xfer == m_field38C;
+	*xfer == (Coord3DBase &)m_healthBoxOffset;
+	*xfer == (Coord3DBase &)m_field38C;
 	XferObjectID(xfer, &m_field398);
 
 	m_unresolvedTriggers.clear();

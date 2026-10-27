@@ -77,42 +77,23 @@ struct VersionPair
 	unsigned char minimum, current;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual void slot04();
-	virtual int BeginBlock(const char *);
-	virtual void EndBlock();
-	virtual void SkipBlock(const char *);
-	virtual void slot08();
-	virtual void slot09();
-	virtual void slot10();
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual Xfer &xferAsciiString(AsciiString *);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual Xfer &xferInt(int *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 // The sound key pair's name getter 0x00568BE2 keeps its ledger spelling.
 class BitRange
@@ -236,7 +217,7 @@ bool LargeGroupAudioAudioMap::rva003EE23C(Xfer *xfer, VersionPair *version)
 {
 	bool complete = true;
 	int count = m_soundKeyPairs.size();
-	xfer->xferInt(&count);
+	*xfer == count;
 
 	if (xfer->IsLoading())
 	{
@@ -246,9 +227,9 @@ bool LargeGroupAudioAudioMap::rva003EE23C(Xfer *xfer, VersionPair *version)
 		for (int i = 0; i < count; ++i)
 		{
 			AsciiString name;
-			xfer->xferAsciiString(&name);
+			*xfer == name;
 			int id;
-			xfer->xferInt(&id);
+			*xfer == id;
 
 			_STL::vector<LargeGroupAudioSoundKeyPair *>::iterator it;
 			for (it = m_soundKeyPairs.begin(); it != m_soundKeyPairs.end(); ++it)
@@ -276,9 +257,9 @@ bool LargeGroupAudioAudioMap::rva003EE23C(Xfer *xfer, VersionPair *version)
 		{
 			LargeGroupAudioSoundKeyPair *pair = *it;
 			AsciiString name = ((BitRange *)pair)->rva00568BE2();
-			xfer->xferAsciiString(&name);
+			*xfer == name;
 			int id = ((Rva005688D2 *)pair)->rva00568991();
-			xfer->xferInt(&id);
+			*xfer == id;
 			xfer->BeginBlock("SoundKeyPair");
 			pair->rva00569BBC(xfer, version);
 			xfer->EndBlock();

@@ -57,11 +57,23 @@ extern "C" __declspec(dllimport) void __stdcall GetLocalTime(SYSTEMTIME *lpSyste
 
 enum SnapshotType { SNAPSHOT_SAVELOAD = 0 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 // Bind the close calls to the existing whole 45-byte provider at RVA 0x0060C8CD.
 class Gen009D6DD0 { public: void bfmeClose(); };
@@ -76,6 +88,14 @@ public:
 
 private:
 	char m_body[0x3C];
+public:
+	// A concrete Xfer overrides every pure virtual slot of the base.
+	virtual int BeginBlock(const char *name);
+	virtual void EndBlock();
+	virtual void SkipBlock(const char *name);
+	virtual Xfer &operator==(const char *const &value);
+protected:
+	virtual void XferData(unsigned int type, void *data, unsigned int size);
 };
 
 class File

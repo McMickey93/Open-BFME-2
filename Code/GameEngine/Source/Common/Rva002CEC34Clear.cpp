@@ -41,24 +41,29 @@ void Rva002CEC0A::rva002CEC34()
 	v->erase(v->m_start, v->m_finish);
 }
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool isLoading();
-	virtual bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05(const char *name);
-	virtual void slot06();
-};
+class Snapshot;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 Xfer *xferAsciiStringVector(Xfer *xfer, _STL::vector<AsciiString> *vec);
 
 void Rva002CEC0A::rva002CED26(Xfer *xfer)
 {
-	xfer->slot05("CRCParameterCheck");
+	xfer->BeginBlock("CRCParameterCheck");
 	xferAsciiStringVector(xfer, &m_04);
-	xfer->slot06();
+	xfer->EndBlock();
 	rva002CEC34();
 }

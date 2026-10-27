@@ -30,45 +30,23 @@ extern "C" __declspec(dllimport) int __stdcall CreateDirectoryW(const unsigned s
 class HeroFile { public: virtual ~HeroFile(); virtual bool open(const char *, int); virtual void close(); };
 class File;
 File *Rva00409892(const AsciiString &name, bool systemFile);
-class Xfer { public:
-virtual void slot00();
-virtual bool load();
-virtual bool save();
-virtual bool checksum();
-virtual void slot04();
-virtual void slot05();
-virtual void slot06();
-virtual void slot07();
-virtual void slot08();
-virtual void slot09();
-virtual void version(void *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual void slot24();
-virtual void slot25();
-virtual void slot26();
-virtual void text(AsciiString *);
-virtual void slot28();
-virtual void slot29();
-virtual void word(unsigned *);
-virtual void slot31();
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual void slot36();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 enum ObjectID { INVALID_ID=0 };
 
 class XferSave {
@@ -970,11 +948,11 @@ bool CreateAHeroHero::rva004098BE(const AsciiString &name, bool isSystem)
 // retain their existing provider spellings; field layouts come from retail.
 void CreateAHeroHero::DoXfer(Xfer &xfer)
 {
-    if(xfer.checksum())return;
+    if(xfer.IsCRC())return;
     Rva00406FBF crc;
     // Retail passes two version bytes in a four-byte-aligned local.
     struct __declspec(align(4)) Version { unsigned char minimum,current; } version={1,8};
-    xfer.version(&version);
+    xfer.operator==((Xfer::Version &)version);
     { AsciiString tag("ID"); Rva00407099Update(&xfer,&m_id,&tag,&crc); }
     { AsciiString tag("Name"); Rva004071AAForward((Rva004071AAVirt*)&xfer,m_name,(int)&tag,(Rva00407137*)&crc); }
     { AsciiString tag("ClassIndex"); Rva0040707EUpdate(&xfer,&m_heroClass,&tag,&crc); }
@@ -986,7 +964,7 @@ void CreateAHeroHero::DoXfer(Xfer &xfer)
     { AsciiString tag("SecondaryColor"); Rva0040707EUpdate(&xfer,&m_green,&tag,&crc); }
     { AsciiString tag("TertiaryColor"); Rva0040707EUpdate(&xfer,&m_blue,&tag,&crc); }
     for(unsigned i=0;i<15;++i)((Rva00407218*)&m_buttons[i])->rva00407218(&xfer,&crc);
-    if(xfer.load()) {
+    if(xfer.IsLoading()) {
         rva00407C6B();
         unsigned count=0;
         { AsciiString tag("BlingCount"); Rva0040707EUpdate(&xfer,&count,&tag,&crc); }
@@ -1018,18 +996,18 @@ void CreateAHeroHero::DoXfer(Xfer &xfer)
         }
     }
     if(version.current>6) {
-        xfer.text(&m_className);
+        xfer.operator==(m_className);
         if(m_flag70 && !m_className.isEmpty()) {
-            if(xfer.load())((CreateAHeroData*)this)->rva00408A55();
-            else if(xfer.save())((CreateAHeroData*)this)->WriteNamedHeroAtRva004074CF();
+            if(xfer.IsLoading())((CreateAHeroData*)this)->rva00408A55();
+            else if(xfer.IsStoring())((CreateAHeroData*)this)->WriteNamedHeroAtRva004074CF();
         }
     }
     if(version.current>7) {
         { AsciiString tag("IsSystemHero"); Rva004070B6Update(&xfer,&m_systemHero,&tag,&crc); }
-        if(xfer.load()) { xfer.word(&m_savedCRC); m_updateAwards=crc.crc==m_savedCRC; }
-        else { m_savedCRC=crc.crc; xfer.word(&m_savedCRC); }
+        if(xfer.IsLoading()) { xfer.operator==(m_savedCRC); m_updateAwards=crc.crc==m_savedCRC; }
+        else { m_savedCRC=crc.crc; xfer.operator==(m_savedCRC); }
     } else { m_updateAwards=true; m_savedCRC=crc.crc; }
-    if(xfer.load())m_state38=0x2ff;
+    if(xfer.IsLoading())m_state38=0x2ff;
 }
 
 // Define the native constructor chain after its callers, keeping their

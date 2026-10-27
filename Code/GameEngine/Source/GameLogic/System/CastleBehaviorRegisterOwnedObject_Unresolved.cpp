@@ -237,47 +237,22 @@ class Rva0039585A { public: void mapLoadPostProcess(int context); };
 // One shared ObjectID temporary preserves native stack-slot reuse.
 class AsciiString;
 struct CastleXferVersion { unsigned char first,second; CastleXferVersion(unsigned char a,unsigned char b):first(a),second(b){} };
-class Xfer {
-public:
- virtual ~Xfer();
- virtual bool isLoading();
- virtual bool isSaving();
- virtual void slot3();
- virtual void slot4();
- virtual void slot5();
- virtual void slot6();
- virtual void slot7();
- virtual void slot8();
- virtual Xfer& raw(void*,unsigned);
- virtual Xfer& version(CastleXferVersion&);
- virtual void slot11();
- virtual void slot12();
- virtual void slot13();
- virtual void slot14();
- virtual void slot15();
- virtual void slot16();
- virtual void slot17();
- virtual void slot18();
- virtual void slot19();
- virtual void slot20();
- virtual void slot21();
- virtual void slot22();
- virtual void slot23();
- virtual void slot24();
- virtual void slot25();
- virtual void slot26();
- virtual Xfer& xferAsciiString(AsciiString&);
- virtual Xfer& real28(float&);
- virtual void slot29();
- virtual Xfer& unsignedInt(unsigned&);
- virtual Xfer& signedInt(int&);
- virtual void slot32();
- virtual void slot33();
- virtual void slot34();
- virtual void slot35();
- virtual Xfer& boolean(bool&);
-
-};
+class Snapshot;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 enum ScienceType { SCIENCE_0=0 };
 Xfer* Rva00398280Xfer(Xfer*,_STL::vector<ScienceType>*);
 void XferObjectID(Xfer*,ObjectID*);
@@ -285,17 +260,17 @@ void XferLivingWorldArmyID(Xfer*,int*);
 void CastleBehavior::DoXfer(Xfer* xfer) {
  CastleXferVersion version(1,2);
  ObjectID id;
- xfer->version(version);
- xfer->raw(&field<int>(this,0x34),4);
+ *xfer == (Xfer::Version &)version;
+ xfer->XferRawBytes(&field<int>(this,0x34),4);
  XferObjectID(xfer,&field<ObjectID>(this,0x38));
- xfer->boolean(field<bool>(this,0x3c));
- xfer->boolean(field<bool>(this,0x3d));
- xfer->real28(field<float>(this,0x40));
+ *xfer == field<bool>(this,0x3c);
+ *xfer == field<bool>(this,0x3d);
+ *xfer == field<float>(this,0x40);
  Rva00398280Xfer(xfer,&field<_STL::vector<ScienceType> >(this,0x50));
  XferLivingWorldArmyID(xfer,&field<int>(this,0x9c));
  unsigned countA=field<_STL::vector<ObjectID> >(this,0x50).size();
- xfer->signedInt((int&)countA);
- if(xfer->isSaving()) {
+ *xfer == (int&)countA;
+ if(xfer->IsStoring()) {
   for(_STL::vector<ObjectID>::iterator it=field<_STL::vector<ObjectID> >(this,0x50).begin();it!=field<_STL::vector<ObjectID> >(this,0x50).end();++it) {
    id=*it;
    XferObjectID(xfer,&id);
@@ -306,8 +281,8 @@ void CastleBehavior::DoXfer(Xfer* xfer) {
   for(unsigned i=0;i<countA;++i) { XferObjectID(xfer,&id); field<_STL::vector<ObjectID> >(this,0x50).push_back(id); }
  }
  unsigned countB=field<_STL::vector<ObjectID> >(this,0x5c).size();
- xfer->signedInt((int&)countB);
- if(xfer->isSaving()) {
+ *xfer == (int&)countB;
+ if(xfer->IsStoring()) {
   for(_STL::vector<ObjectID>::iterator it=field<_STL::vector<ObjectID> >(this,0x5c).begin();it!=field<_STL::vector<ObjectID> >(this,0x5c).end();++it) {
    id=*it; XferObjectID(xfer,&id);
   }
@@ -315,25 +290,25 @@ void CastleBehavior::DoXfer(Xfer* xfer) {
   for(unsigned i=0;i<countB;++i) { XferObjectID(xfer,&id); field<_STL::vector<ObjectID> >(this,0x5c).push_back(id); }
  }
  Rva00398280Xfer(xfer,&field<_STL::vector<ScienceType> >(this,0x68));
- xfer->unsignedInt(field<unsigned>(this,0x48));
- if(version.second>=2) xfer->boolean(field<bool>(this,0x44));
- if(xfer->isLoading() && field<int>(this,0x34)!=0) rva00399370();
+ *xfer == field<unsigned>(this,0x48);
+ if(version.second>=2) *xfer == field<bool>(this,0x44);
+ if(xfer->IsLoading() && field<int>(this,0x34)!=0) rva00399370();
  ((FoundationAIUpdate*)this)->FoundationAIUpdate::xfer(xfer);
  Rva00398280Xfer(xfer,&field<_STL::vector<ScienceType> >(this,0x74));
- xfer->xferAsciiString(field<AsciiString>(this,0x98));
- if(xfer->isSaving()) {
+ *xfer == field<AsciiString>(this,0x98);
+ if(xfer->IsStoring()) {
   unsigned count=field<_STL::map<int,int> >(this,0xa0).size();
-  xfer->signedInt((int&)count);
+  *xfer == (int&)count;
   for(_STL::map<int,int>::iterator it=field<_STL::map<int,int> >(this,0xa0).begin();it!=field<_STL::map<int,int> >(this,0xa0).end();++it) {
-   int key=it->first; xfer->signedInt(key);
-   unsigned value=it->second; xfer->unsignedInt(value);
+   int key=it->first; *xfer == key;
+   unsigned value=it->second; *xfer == value;
   }
  } else {
   unsigned count;
-  xfer->signedInt((int&)count);
+  *xfer == (int&)count;
   while(count) {
    int key; unsigned value;
-   xfer->signedInt(key); xfer->unsignedInt(value);
+   *xfer == key; *xfer == value;
    field<_STL::map<int,int> >(this,0xa0).insert(_STL::pair<const int,int>(key,value));
    --count;
   }

@@ -28,24 +28,22 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
 class Snapshot;
 // Xfer as xferSaveData calls it (slot 2 returns the save/load mode as a bool;
 // each named slot is read off retail 0x002DCE24's call offsets).
-class Xfer
-{
-public:
-    virtual ~Xfer();
-    virtual void v1();
-    virtual bool isSaving();	// slot 2 (+0x08)
-    virtual void v3(); virtual void v4();
-    virtual int beginBlock(const char *name);	// slot 5 (+0x14)
-    virtual void endBlock();	// slot 6 (+0x18)
-    virtual void skipBlock(const char *name);	// slot 7 (+0x1C)
-    virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11();
-    virtual void xferSnapshot(Snapshot *snapshot);	// slot 12 (+0x30)
-    virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16();
-    virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
-    virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
-    virtual void v25(); virtual void v26();
-    virtual void xferAsciiString(AsciiString *asciiStringData);	// slot 27 (+0x6C)
-};
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 // VA 0x00DBD038, ZH's SAVE_FILE_EOF token pointer.
 extern const char *SAVE_FILE_EOF;
 enum SnapshotType { SNAPSHOT_SAVELOAD=0, SNAPSHOT_DEEPCRC_LOGICONLY=1, SNAPSHOT_NATIVE3=3, SNAPSHOT_NATIVE4=4 };
@@ -93,7 +91,7 @@ GameState::SnapshotBlock *GameState::findBlockInfoByToken(AsciiString token, Sna
 // Both catch (...) trys share the rethrow funclet 2DCF62 (inside the extent).
 void GameState::xferSaveData(Xfer *xfer, SnapshotType which)
 {
-    if (xfer->isSaving())
+    if (xfer->IsStoring())
     {
         SnapshotBlock *blockInfo;
         _STL::list<SnapshotBlock>::iterator it;
@@ -102,12 +100,12 @@ void GameState::xferSaveData(Xfer *xfer, SnapshotType which)
         {
             blockInfo = &(*it);
             blockName = blockInfo->blockName;
-            xfer->xferAsciiString(&blockName);
+            *xfer == blockName;
             try
             {
-                xfer->beginBlock("Snapshot");
-                xfer->xferSnapshot(blockInfo->snapshot);
-                xfer->endBlock();
+                xfer->BeginBlock("Snapshot");
+                *xfer == *blockInfo->snapshot;
+                xfer->EndBlock();
             }
             catch (...)
             {
@@ -115,7 +113,7 @@ void GameState::xferSaveData(Xfer *xfer, SnapshotType which)
             }
         }
         AsciiString eofToken = SAVE_FILE_EOF;
-        xfer->xferAsciiString(&eofToken);
+        *xfer == eofToken;
     }
     else
     {
@@ -124,7 +122,7 @@ void GameState::xferSaveData(Xfer *xfer, SnapshotType which)
         SnapshotBlock *blockInfo;
         while (done == false)
         {
-            xfer->xferAsciiString(&token);
+            *xfer == token;
             if (((const StringBase<char> &)(token)).compareNoCase(SAVE_FILE_EOF) == 0)
             {
                 done = true;
@@ -134,14 +132,14 @@ void GameState::xferSaveData(Xfer *xfer, SnapshotType which)
                 blockInfo = findBlockInfoByToken(token, which);
                 if (blockInfo == 0)
                 {
-                    xfer->skipBlock("Snapshot");
+                    xfer->SkipBlock("Snapshot");
                     continue;
                 }
                 try
                 {
-                    xfer->beginBlock("Snapshot");
-                    xfer->xferSnapshot(blockInfo->snapshot);
-                    xfer->endBlock();
+                    xfer->BeginBlock("Snapshot");
+                    *xfer == *blockInfo->snapshot;
+                    xfer->EndBlock();
                 }
                 catch (...)
                 {

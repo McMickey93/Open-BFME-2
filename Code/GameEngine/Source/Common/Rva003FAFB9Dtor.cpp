@@ -32,25 +32,23 @@ struct Rva003FADB5Version {
     unsigned char m_currentVersion;
 };
 
-class Xfer {
-public:
-    virtual ~Xfer();
-    virtual bool IsLoading() const;
-    virtual void slot02(); virtual void slot03(); virtual void slot04();
-    virtual void slot05(); virtual void slot06(); virtual void slot07();
-    virtual void slot08(); virtual void slot09();
-    virtual Xfer &xferVersion(Rva003FADB5Version *version);
-    virtual void slot11();
-    virtual void slot12(); virtual void slot13(); virtual void slot14();
-    virtual void slot15(); virtual void slot16(); virtual void slot17();
-    virtual void slot18(); virtual void slot19(); virtual void slot20();
-    virtual void slot21(); virtual void slot22(); virtual void slot23();
-    virtual void slot24(); virtual void slot25(); virtual void slot26();
-    virtual void slot27(); virtual void slot28(); virtual void slot29();
-    virtual void slot30(); virtual void slot31(); virtual void slot32();
-    virtual void slot33(); virtual void slot34(); virtual void slot35();
-    virtual Xfer &xferByte(unsigned char *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 class AudioManager {
 public:
@@ -118,17 +116,17 @@ Rva003FAFB9::~Rva003FAFB9()
 void Rva003FAFB9::xfer(Xfer *xfer)
 {
     Rva003FADB5Version version = {1, 1};
-    xfer->xferVersion(&version);
+    *xfer == (Xfer::Version &)version;
     if (xfer->IsLoading())
         ((Rva003FAC3F *)this)->rva003FAC3F();
 
     TheAudio->xferAudioEvent(xfer, &m_2c);
-    xfer->xferByte(&m_30);
-    xfer->xferByte(&m_31);
-    xfer->xferByte(&m_32);
+    *xfer == (bool &)m_30;
+    *xfer == (bool &)m_31;
+    *xfer == (bool &)m_32;
 
     unsigned char emitIndex = (unsigned char)(m_2c < 5 ? 0 : 1);
-    xfer->xferByte(&emitIndex);
+    *xfer == (bool &)emitIndex;
     if (xfer->IsLoading() && emitIndex != 0 && m_2c < 5)
         m_2c = TheAudio->slot40();
 }

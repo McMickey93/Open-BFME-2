@@ -20,55 +20,31 @@ template<class T> inline volatile T &__vref(T &x){return *(volatile T *)&x;}
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
-#include <new>
+void __cdecl operator delete(void *pointer);
+void __cdecl operator delete[](void *pointer);
 
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
 
 // The primitive virtual order is measured by the rowed Common/System/Xfer.cpp
 // providers: ICoord2D slot 19, int slot 31, bool slot 36. Version1 is the
 // existing 23-byte provider at 0x000053EE. Other entries are ABI placeholders.
-class Xfer
-{
-public:
-	void Version1();
-	virtual void slot00();
-	virtual void slot01();
-	virtual void slot02();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void slot10();
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual Xfer &xferICoord2D(ICoord2D &value);
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual Xfer &xferInt(int &value);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual Xfer &xferBool(bool &value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 class PathfindCell
 {
@@ -137,17 +113,17 @@ void PathfindLayer::rva003666FD(Xfer *xfer)
 				m_layerCells[x][y].DoXfer(xfer);
 		}
 	}
-	xfer->xferInt(m_width);
-	xfer->xferInt(m_height);
-	xfer->xferInt(m_xOrigin);
-	xfer->xferInt(m_yOrigin);
-	xfer->xferICoord2D(m_startCell);
-	xfer->xferICoord2D(m_endCell);
+	*xfer == m_width;
+	*xfer == m_height;
+	*xfer == m_xOrigin;
+	*xfer == m_yOrigin;
+	*xfer == m_startCell;
+	*xfer == m_endCell;
 	int layer = m_layer;
-	xfer->xferInt(layer);
-	xfer->xferInt(m_zone);
-	xfer->xferBool(m_destroyed);
-	xfer->xferInt(m_triggerObjectID);
+	*xfer == layer;
+	*xfer == m_zone;
+	*xfer == m_destroyed;
+	*xfer == m_triggerObjectID;
 }
 
 // Native 0x00366B77..0x00366CEA, RET0. WB F29A70 names

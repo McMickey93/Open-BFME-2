@@ -93,7 +93,7 @@ public:
 	FunctorBinding m_binding;
 };
 
-#include <new>
+void *__cdecl operator new(unsigned int size);
 
 // The holder constructor (row 0x0057BC63, Rva0057BC63FunctorHolder.cpp) is
 // defined here inline, as in AptOptionsConstructor.cpp: retail's compiler
@@ -267,24 +267,23 @@ union XferVersion
 	unsigned int m_value;
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();				// vslot 1
-	virtual bool isSaving();				// vslot 2
-	virtual bool isCRC();					// vslot 3
-	virtual void slot04(); virtual void slot05(); virtual void slot06();
-	virtual void slot07(); virtual void slot08(); virtual void slot09();
-	virtual void xferVersion(XferVersion *version);	// vslot 10
-#define V(n) virtual void slot##n();
-	V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19) V(20)
-	V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30)
-#undef V
-	virtual void xferInt(int *value);			// vslot 31
-	virtual void slot32(); virtual void slot33(); virtual void slot34(); virtual void slot35();
-	virtual void xferBool(bool *value);			// vslot 36
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 Xfer *Rva002D342AXfer20(Xfer *xfer, bool *flags);
 
@@ -348,6 +347,7 @@ private:
 };
 
 // The three Apt sub-movie holders (rowed clears) and two more owned pointers.
+void __cdecl operator delete(void *pointer);
 class Rva0052710C {public: ~Rva0052710C();};
 
 class Rva002D3894
@@ -395,6 +395,7 @@ public:
 	void *m_movie;
 };
 
+void __cdecl operator delete(void *pointer);
 
 // An owned raw allocation, released and cleared on destruction.
 class AptPalantirOwnedEC
@@ -813,57 +814,57 @@ struct Pad4_value { bool v; unsigned char pad[3]; };
 // dword-aligned slot.
 void AptPalantir::xfer(Xfer *xfer)
 {
-	if (xfer->isCRC())
+	if (xfer->IsCRC())
 		return;
 	XferVersion version;
 	version.m_fields.m_version = 1;
 	version.m_fields.m_currentVersion = 4;
-	xfer->xferVersion(&version);
+	*xfer == (Xfer::Version &)version;
 	m_resourceBar.xfer(xfer, version.m_fields.m_currentVersion);
 	Rva002D342AXfer20(xfer, m_d0);
-	xfer->xferBool(&m_e4);
+	*xfer == m_e4;
 	reinterpret_cast<Rva00525E00 *>(&m_c0)->rva00525E00(xfer);
 	if (version.m_fields.m_currentVersion >= 3)
 	{
-		if (xfer->isSaving())
+		if (xfer->IsStoring())
 		{
 			int count = m_11c.size();
-			xfer->xferInt(&count);
+			*xfer == count;
 			for (Rva002D394B::iterator it = m_11c.begin(); it != m_11c.end(); ++it)
 			{
 				int key = it->first;
-				xfer->xferInt(&key);
-				xfer->xferBool(reinterpret_cast<bool *>(&it->second));
+				*xfer == key;
+				*xfer == *(reinterpret_cast<bool *>(&it->second));
 			}
 		}
 		else
 		{
 			m_11c.rva002D43C6();
 			int count;
-			xfer->xferInt(&count);
+			*xfer == count;
 			for (; count > 0; --count)
 			{
 				int key;
 				Pad4_value value;
 				value.v = false;
-				xfer->xferInt(&key);
-				xfer->xferBool(&value.v);
+				*xfer == key;
+				*xfer == value.v;
 				Rva0046AC52Key entry;
 				entry.m_key = key;
 				entry.m_value = value.v;
 				reinterpret_cast<Rva0046AC52 *>(&m_11c)->rva002D563D(entry);
 			}
 		}
-		xfer->xferBool(&m_e5);
+		*xfer == m_e5;
 	}
-	else if (xfer->isLoading())
+	else if (xfer->IsLoading())
 	{
 		m_11c.rva002D43C6();
 		m_e5 = false;
 	}
 	if (version.m_fields.m_currentVersion >= 4)
-		xfer->xferBool(&m_128);
-	else if (xfer->isLoading())
+		*xfer == m_128;
+	else if (xfer->IsLoading())
 		m_128 = true;
 }
 // Select-any: another unit compiles a copy of the same names; the anchor keeps the rowed bodies emitted.

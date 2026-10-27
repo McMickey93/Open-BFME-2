@@ -101,47 +101,23 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void xferCoord3D(Coord3D *value);
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual void xferReal(Real *value);
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt *value);
-	virtual void xferInt(Int *value);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual void xferBool(Bool *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 extern Xfer &XferObjectID(Xfer *xfer, ObjectID *id);
 
@@ -356,7 +332,7 @@ extern GameLogic *TheGameLogic;
 
 void Rva00547245Xfer(Xfer *xfer, ObjectCoord3DPair *pair)
 {
-	XferObjectID(xfer, &pair->first).xferCoord3D(&pair->second);
+	XferObjectID(xfer, &pair->first).operator==((Coord3DBase &)pair->second);
 }
 
 Xfer *Rva0054755BXfer(Xfer *xfer, ObjectCoord3DMap *map)
@@ -364,12 +340,12 @@ Xfer *Rva0054755BXfer(Xfer *xfer, ObjectCoord3DMap *map)
 	XferVersion version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(&version);
+	*xfer == (Xfer::Version &)version;
 
 	UnsignedInt count = map->size();
-	xfer->xferTypeName("std::hash_map").xferUnsignedInt(&count);
+	xfer->operator==("std::hash_map").operator==(count);
 
-	if (xfer->isSaving()) {
+	if (xfer->IsStoring()) {
 		for (ObjectCoord3DMap::iterator it = map->begin(); it != map->end(); ++it) {
 			ObjectCoord3DPair item(*it);
 			Rva00547245Xfer(xfer, &item);
@@ -437,13 +413,13 @@ void MoveToGroupOrder::xfer(Xfer *xfer)
 	version.m_version = 1;
 	version.m_currentVersion = 2;
 	GroupOrder::xfer(xfer);
-	xfer->xferVersion(&version);
-	xfer->xferCoord3D(&m_destination);
-	xfer->xferBool(&m_flag24);
+	*xfer == (Xfer::Version &)version;
+	*xfer == (Coord3DBase &)m_destination;
+	*xfer == m_flag24;
 	Rva0054755BXfer(xfer, &m_positions);
 	if (version.m_currentVersion >= 2)
-		xfer->xferBool(&m_flag25);
-	else if (xfer->isLoading())
+		*xfer == m_flag25;
+	else if (xfer->IsLoading())
 		m_flag25 = false;
 }
 
@@ -453,13 +429,13 @@ void MoveToFormationGroupOrder::xfer(Xfer *xfer)
 	version.m_version = 1;
 	version.m_currentVersion = 1;
 	GroupOrder::xfer(xfer);
-	xfer->xferVersion(&version);
-	xfer->xferInt(&m_value18);
-	xfer->xferCoord3D(&m_destination);
-	xfer->xferReal(&m_angle);
-	xfer->xferBool(&m_flag2C);
+	*xfer == (Xfer::Version &)version;
+	*xfer == m_value18;
+	*xfer == (Coord3DBase &)m_destination;
+	*xfer == m_angle;
+	*xfer == m_flag2C;
 	Rva0054755BXfer(xfer, &m_positions);
-	xfer->xferBool(&m_flag44);
+	*xfer == m_flag44;
 }
 
 // ?rva0054764C@MoveToGroupOrder@@QAEXPAVObject@@PAVAIUpdateInterface@@PAUCoord3D@@@Z, retail 0x0054764C 124B.

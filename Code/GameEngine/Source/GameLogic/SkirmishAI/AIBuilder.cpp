@@ -44,43 +44,23 @@ struct WallVersion
     WallVersion(unsigned char min, unsigned char cur) : minimum(min), current(cur) {}
     unsigned char minimum, current;
 };
-class Xfer{public:virtual~Xfer();virtual bool IsLoading() const;
-virtual bool IsStoring() const;
-virtual bool IsCRC() const;
-virtual void slot04();
-virtual void slot05();
-virtual void slot06();
-virtual void slot07();
-virtual void slot08();
-virtual void slot09();
-virtual Xfer &xferVersion(WallVersion *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual Xfer &xferCoord3D(struct Coord3D *);
-virtual void slot25();
-virtual void slot26();
-virtual Xfer& xferAsciiString(AsciiString*);
-virtual void slot28();
-virtual void slot29();
-virtual Xfer &xferUnsignedInt(unsigned int *);
-virtual Xfer& xferInt(int*);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 
 // Use STLport 4.5.3's actual list layout. Keep the already-owned lifetime and
@@ -335,9 +315,9 @@ AIBuilder::~AIBuilder()
 }
 void AIBuilder::DoXfer(Xfer *xfer) {
  WallVersion version(1,5);
- xfer->xferVersion(&version);
- if(version.current>=2) xfer->xferUnsignedInt(&value158);
- if(version.current>=5) xfer->xferBool(&flag154);
+ *xfer == (Xfer::Version &)version;
+ if(version.current>=2) *xfer == value158;
+ if(version.current>=5) *xfer == flag154;
  reinterpret_cast<AIDozerManager*>(reinterpret_cast<unsigned char*>(this)+0x140)->DoXfer(xfer);
  reinterpret_cast<AIBaseBuilder*>(reinterpret_cast<unsigned char*>(this)+4)->DoXfer(xfer);
  reinterpret_cast<AIEconomyBuilder*>(reinterpret_cast<unsigned char*>(this)+0xb4)->DoXfer(xfer);

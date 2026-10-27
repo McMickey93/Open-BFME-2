@@ -29,46 +29,23 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual void xferModuleData(const ModuleData *&value);
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt *value);
-	virtual void slot31();
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 // Retail ThrowInfo names the 8-byte XferException class and its rowed
 // copy constructor and destructor (see System/XferException.cpp).
@@ -91,16 +68,16 @@ Xfer *Rva0046EFDBXfer(Xfer *xfer, ModuleDataVector *vec)
 	XferVersion version;
 	version.m_version = 1;
 	version.m_currentVersion = 1;
-	xfer->xferVersion(&version);
+	*xfer == (Xfer::Version &)version;
 
 	UnsignedInt count = vec->size();
-	xfer->xferTypeName("std::vector").xferUnsignedInt(&count);
+	xfer->operator==("std::vector").operator==(count);
 
-	if (xfer->isSaving()) {
+	if (xfer->IsStoring()) {
 		ModuleDataVector::iterator last = vec->end();
 		ModuleDataVector::iterator first = vec->begin();
 		for (; first != last; ++first)
-			xfer->xferModuleData((const ModuleData *&)*first);
+			*xfer == (float &)((const ModuleData *&)*first);
 	} else {
 		if (!vec->empty()) {
 			throw XferException(4, "Vector must be empty on load");
@@ -110,7 +87,7 @@ Xfer *Rva0046EFDBXfer(Xfer *xfer, ModuleDataVector *vec)
 			--count;
 			const ModuleData *moduleData;
 			vec->push_back(moduleData);
-			xfer->xferModuleData(vec->back());
+			*xfer == (float &)vec->back();
 		}
 	}
 	return xfer;

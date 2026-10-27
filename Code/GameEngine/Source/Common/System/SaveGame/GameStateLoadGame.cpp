@@ -78,10 +78,34 @@ class Rva002DCCFB { public: bool rva002DCCFB(UnicodeString); };
 class Rva002DC74A { public: UnicodeString rva002DC74A(const UnicodeString&)const; };
 class GameStateMap { public: void clearScratchPadMaps(); };
 extern void *TheGameStateMap;
-class Xfer { public: virtual ~Xfer(); };
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 class Rva0060C5FA:public Xfer {
  char opaque04[0x1C];
 public: Rva0060C5FA(void*,void*,void*);
+public:
+	// A concrete Xfer overrides every pure virtual slot of the base.
+	virtual int BeginBlock(const char *name);
+	virtual void EndBlock();
+	virtual void SkipBlock(const char *name);
+	virtual Xfer &operator==(const char *const &value);
+protected:
+	virtual void XferData(unsigned int type, void *data, unsigned int size);
 };
 struct Rva0060C3C3Stream;
 class XferLoad { public: bool Open(Rva0060C3C3Stream*,int*); };

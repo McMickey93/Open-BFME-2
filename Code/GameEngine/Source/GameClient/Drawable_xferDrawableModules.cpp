@@ -45,45 +45,23 @@ public:
 
 extern NameKeyGenerator *TheNameKeyGenerator;
 
-class Xfer
-{
-public:
-	Xfer();
-	void Version1();
-	virtual void slot00();
-	virtual void slot01();
-	virtual bool IsStoring() const;
-	virtual void slot03();
-	virtual void slot04();
-	virtual int beginBlock(const char *name);
-	virtual void endBlock();
-	virtual void skipBlock(const char *name);
-	virtual void slot08();
-	virtual void slot09();
-	virtual void xferVersion(void *version);
-	virtual void slot11();
-	virtual void xferSnapshot(Module *module);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slotExtra();
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void slot27();
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual void xferUnsignedShort(UnsignedShort *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 class Drawable
 {
@@ -99,25 +77,25 @@ void Drawable::xferDrawableModules(Xfer *xfer)
 	xfer->Version1();
 	xfer->IsStoring();
 	UnsignedShort moduleTypes = 3;
-	xfer->xferUnsignedShort(&moduleTypes);
+	*xfer == moduleTypes;
 	AsciiString moduleIdentifier;
 	for (UnsignedShort curModuleType = 0; curModuleType < moduleTypes; ++curModuleType) {
 		Module **m;
 		UnsignedShort moduleCount = 0;
 		for (m = m_modules[curModuleType]; m && *m; ++m)
 			++moduleCount;
-		xfer->xferUnsignedShort(&moduleCount);
+		*xfer == moduleCount;
 		if (xfer->IsStoring()) {
 			for (m = m_modules[curModuleType]; m && *m; ++m) {
 				moduleIdentifier = TheNameKeyGenerator->keyToName((*m)->getModuleTagNameKey());
-				xfer->xferAsciiString(&moduleIdentifier);
-				xfer->beginBlock("DrawableModule");
-				xfer->xferSnapshot(*m);
-				xfer->endBlock();
+				*xfer == moduleIdentifier;
+				xfer->BeginBlock("DrawableModule");
+				*xfer == *(Snapshot *)(*m);
+				xfer->EndBlock();
 			}
 		} else {
 			for (UnsignedShort j = 0; j < moduleCount; ++j) {
-				xfer->xferAsciiString(&moduleIdentifier);
+				*xfer == moduleIdentifier;
 				NameKeyType moduleIdentifierKey = TheNameKeyGenerator->nameToKey(moduleIdentifier);
 				Module *module = 0;
 				for (Module **mm = m_modules[curModuleType]; mm && *mm; ++mm) {
@@ -127,11 +105,11 @@ void Drawable::xferDrawableModules(Xfer *xfer)
 					}
 				}
 				if (module == 0) {
-					xfer->skipBlock("DrawableModule");
+					xfer->SkipBlock("DrawableModule");
 				} else {
-					xfer->beginBlock("DrawableModule");
-					xfer->xferSnapshot(module);
-					xfer->endBlock();
+					xfer->BeginBlock("DrawableModule");
+					*xfer == *(Snapshot *)module;
+					xfer->EndBlock();
 				}
 			}
 		}

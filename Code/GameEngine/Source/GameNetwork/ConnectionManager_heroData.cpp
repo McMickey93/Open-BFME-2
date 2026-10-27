@@ -43,11 +43,23 @@ typedef bool Bool;
 // 7.1 otherwise lowers it to the scalar operator delete.
 void operator delete[](void *p);
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 // The stream interface XferLoad::Open reads through.
 struct Rva0060C3C3Stream;
@@ -60,6 +72,14 @@ public:
 
 private:
 	char m_pad04[0x20 - 4];
+public:
+	// A concrete Xfer overrides every pure virtual slot of the base.
+	virtual int BeginBlock(const char *name);
+	virtual void EndBlock();
+	virtual void SkipBlock(const char *name);
+	virtual Xfer &operator==(const char *const &value);
+protected:
+	virtual void XferData(unsigned int type, void *data, unsigned int size);
 };
 
 class XferLoad

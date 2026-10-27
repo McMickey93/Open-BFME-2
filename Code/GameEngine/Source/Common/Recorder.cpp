@@ -89,7 +89,23 @@ extern int NET_CRC_INTERVAL;
 
 AsciiString GameInfoToAsciiString(const GameInfo *, bool=true);
 
-class Xfer { public: virtual ~Xfer();};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 // Bind the close calls to the existing whole 45-byte provider at RVA 0x0060C8CD.
 class Gen009D6DD0 { public: void bfmeClose(); };
@@ -160,7 +176,7 @@ struct Rva0060C3C3Stream;
 
 struct XferLoad {bool Open(Rva0060C3C3Stream*,int*);};
 
-class Rva0060C5FA : public Xfer {public:Rva0060C5FA(void*,void*,void*);char tail[28];};
+class Rva0060C5FA : public Xfer {public:Rva0060C5FA(void*,void*,void*);char tail[28]; public: virtual int BeginBlock(const char *name); virtual void EndBlock(); virtual void SkipBlock(const char *name); virtual Xfer &operator==(const char *const &value); protected: virtual void XferData(unsigned int type, void *data, unsigned int size);};
 
 class Rva0060C45E {public:void clear();};
 

@@ -493,47 +493,23 @@ bool Rva003F0E8A::rva003F0E8A(int index, Pair8 *out)
 
 struct RegionXferVersionFields { unsigned char minimum,current; };
 union RegionXferVersion { RegionXferVersionFields fields; unsigned value; };
-class Xfer {
-public:
-    virtual void slot00();
-    virtual bool IsLoading() const;
-    virtual void slot02();
-    virtual void slot03();
-    virtual void slot04();
-    virtual void slot05();
-    virtual void slot06();
-    virtual void slot07();
-    virtual void slot08();
-    virtual void slot09();
-    virtual void Version(RegionXferVersion *);
-    virtual void slot11();
-    virtual void Snapshot(void *);
-    virtual void slot13();
-    virtual void slot14();
-    virtual void slot15();
-    virtual void slot16();
-    virtual void slot17();
-    virtual void slot18();
-    virtual void slot19();
-    virtual void Coord(Coord2D *);
-    virtual void slot21();
-    virtual void slot22();
-    virtual void slot23();
-    virtual void slot24();
-    virtual void slot25();
-    virtual void slot26();
-    virtual void slot27();
-    virtual void slot28();
-    virtual void slot29();
-    virtual void slot30();
-    virtual void Int(int *);
-    virtual void slot32();
-    virtual void slot33();
-    virtual void slot34();
-    virtual void slot35();
-    virtual void Bool(bool *);
-    virtual void slot37();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 struct Rva003EFE82Obj;
 int Rva003EFE82Get(Rva003EFE82Obj *,void *);
 void XferLivingWorldPlayerID(Xfer *,int *);
@@ -553,19 +529,19 @@ void LivingWorldRegion::DoXfer(Xfer *xfer)
 {
     RegionXferVersion version;
     version.fields.minimum=1; version.fields.current=3;
-    xfer->Version(&version);
+    *xfer == (Xfer::Version &)version;
     Rva003EFE82Get(reinterpret_cast<Rva003EFE82Obj *>(xfer),&m_regionID);
-    xfer->Bool(&flag1A2);
+    *xfer == flag1A2;
     XferLivingWorldPlayerID(xfer,&m_ownerPlayerID);
     XferLivingWorldPlayerID(xfer,&m_player140);
-    if(version.fields.current<2) { int zero=0; xfer->Int(&zero); }
-    xfer->Coord(&m_position);
-    xfer->Bool(&flag1A0);
-    xfer->Bool(&flag1A1);
-    xfer->Int(&value14C);
-    xfer->Int(&value150);
-    xfer->Int(&value154);
-    if(version.fields.current<2) { Coord2D zero={0,0}; xfer->Coord(&zero); }
+    if(version.fields.current<2) { int zero=0; *xfer == zero; }
+    *xfer == m_position;
+    *xfer == flag1A0;
+    *xfer == flag1A1;
+    *xfer == value14C;
+    *xfer == value150;
+    *xfer == value154;
+    if(version.fields.current<2) { Coord2D zero={0,0}; *xfer == zero; }
     Rva003F2394Xfer(xfer,&values164);
     Rva003F2394Xfer(xfer,&values158);
     if(xfer->IsLoading()) {
@@ -573,10 +549,10 @@ void LivingWorldRegion::DoXfer(Xfer *xfer)
         m_plotIndex=0; m_plotFlag=false;
         if(m_ownerPlayerID!=-1) {
             int count;
-            xfer->Int(&count);
+            *xfer == count;
             for(int i=0;i<count;++i) {
                 LivingWorldBuildPlot *plot=new LivingWorldBuildPlot(0,this,RegionPlacementCoordTemporary());
-                xfer->Snapshot(plot);
+                *xfer == *(Snapshot *)plot;
                 m_buildPlots.push_back(plot);
             }
             int buildingID;
@@ -586,14 +562,14 @@ void LivingWorldRegion::DoXfer(Xfer *xfer)
         }
     } else if(m_ownerPlayerID!=-1) {
         int count=m_buildPlots.size();
-        xfer->Int(&count);
-        for(int i=0;i<count;++i) xfer->Snapshot(m_buildPlots[i]);
+        *xfer == count;
+        for(int i=0;i<count;++i) *xfer == *(Snapshot *)m_buildPlots[i];
         int buildingID=(m_plotIndex && m_plotIndex->m_building) ? m_plotIndex->m_building->id : 0;
         Rva004E075FGet(reinterpret_cast<Rva004E075FObj *>(xfer),reinterpret_cast<int>(&buildingID));
     }
-    xfer->Bool(&m_plotFlag);
+    *xfer == m_plotFlag;
     int spots=m_heroSlots.size();
-    xfer->Int(&spots);
+    *xfer == spots;
     if(xfer->IsLoading()) {
         reinterpret_cast<Rva003F3F27 *>(this)->rva003F3B4F();
         ((Rva003F3AB5 *)&m_heroSlots)->rva003F3B28((unsigned int)spots);
@@ -601,7 +577,7 @@ void LivingWorldRegion::DoXfer(Xfer *xfer)
     if(TheLivingWorldLogic) {
         for(int i=0;i<spots;++i) reinterpret_cast<Rva002BA8F1Logic *>(TheLivingWorldLogic)->rva002B8D06(xfer,&m_heroSlots[i].armies);
     }
-    if(version.fields.current>=3) { xfer->Int(&value134); xfer->Int(&value138); }
+    if(version.fields.current>=3) { *xfer == value134; *xfer == value138; }
 }
 
 // WB10413F0 and native3F083A..3F088C RET4: return the plot whose building

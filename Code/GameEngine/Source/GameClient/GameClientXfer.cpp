@@ -58,60 +58,10 @@ class RGBAColorInt;
 // BFME 2's Xfer (as GameLogicInit.cpp): MSVC lays the operator== overloads
 // out in reverse, so AsciiString is slot 27, unsigned int 30, unsigned
 // short 32.
-class Xfer
-{
-public:
-	class Version;
-
-	Xfer();
-	virtual ~Xfer();
-
-	void Version1();
-
-	virtual bool IsLoading() const;
-	virtual bool IsStoring() const;
-	virtual bool IsCRC() const;
-	virtual bool IsLightCRC() const;
-
-	virtual void beginBlock(const char *name) = 0;
-	virtual void endBlock() = 0;
-	virtual void skip(const char *name) = 0;
-
-	virtual void SkipBadBlock(Snapshot &snapshot, unsigned int size);
-	virtual Xfer &XferRawBytes(void *data, unsigned int size);
-	virtual Xfer &operator==(bool &value);
-	virtual Xfer &operator==(char &value);
-	virtual Xfer &operator==(unsigned char &value);
-	virtual Xfer &operator==(short &value);
-	virtual Xfer &operator==(unsigned short &value);
-	virtual Xfer &operator==(int &value);
-	virtual Xfer &operator==(unsigned int &value);
-	virtual Xfer &operator==(__int64 &value);
-	virtual Xfer &operator==(float &value);
-	virtual Xfer &operator==(AsciiString &value);
-	virtual Xfer &operator==(UnicodeString &value);
-	virtual Xfer &operator==(PooledString &value);
-	virtual Xfer &operator==(Coord3DBase &value);
-	virtual Xfer &operator==(ICoord3D &value);
-	virtual Xfer &operator==(Region3D &value);
-	virtual Xfer &operator==(IRegion3D &value);
-	virtual Xfer &operator==(Coord2D &value);
-	virtual Xfer &operator==(ICoord2D &value);
-	virtual Xfer &operator==(Region2D &value);
-	virtual Xfer &operator==(IRegion2D &value);
-	virtual Xfer &operator==(RealRange &value);
-	virtual Xfer &operator==(RGBColor &value);
-	virtual Xfer &operator==(RGBAColorReal &value);
-	virtual Xfer &operator==(RGBAColorInt &value);
-	virtual Xfer &operator==(Snapshot &value);
-	virtual Xfer &operator==(XferUnknown11 &value) = 0;
-	virtual Xfer &operator==(Version &value);
-
-	virtual Xfer &XferEnum(const char *name, void *data, unsigned int size);
-
-protected:
-	virtual void XferData(unsigned int type, void *data, unsigned int size) = 0;
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+#include "../../Include/Common/BfmeXfer.h"
 
 class Xfer::Version
 {
@@ -591,11 +541,11 @@ void GameClient::xfer(Xfer *xfer)
 				throw XferException(5, 0);
 
 			*xfer == tocEntry->id;
-			xfer->beginBlock("Drawable");
+			xfer->BeginBlock("Drawable");
 			objectID = draw->getObject() ? draw->getObject()->getID() : INVALID_OBJECT_ID;
 			XferObjectID(xfer, &objectID);
 			*xfer == *static_cast<Snapshot *>(draw);
-			xfer->endBlock();
+			xfer->EndBlock();
 		}
 	}
 	else
@@ -612,11 +562,11 @@ void GameClient::xfer(Xfer *xfer)
 			thingTemplate = (const ThingTemplate *)TheThingFactory->findTemplate(tocEntry->name);
 			if (thingTemplate == 0)
 			{
-				xfer->skip("Drawable");
+				xfer->SkipBlock("Drawable");
 				continue;
 			}
 
-			xfer->beginBlock("Drawable");
+			xfer->BeginBlock("Drawable");
 			XferObjectID(xfer, &objectID);
 			if (objectID != INVALID_OBJECT_ID)
 			{
@@ -644,7 +594,7 @@ void GameClient::xfer(Xfer *xfer)
 			}
 
 			*xfer == *static_cast<Snapshot *>(draw);
-			xfer->endBlock();
+			xfer->EndBlock();
 		}
 	}
 

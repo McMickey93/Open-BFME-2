@@ -23,44 +23,23 @@ public:
 // them: beginBlock +0x14, endBlock +0x18, xferUser +0x24, xferUnsignedInt +0x78.
 struct XferVersionInfo;
 class GameInfo;
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();
-	virtual bool isStoring();
-	virtual void slot03();
-	virtual void slot04();
-	virtual int beginBlock(const char *name);
-	virtual void endBlock();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void xferUser(void *data, unsigned int size);
-	virtual void xferVersion(XferVersionInfo*);
-	virtual void slot11();
-	virtual void xferSnapshot(GameInfo*);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString*);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void xferUnsignedInt(unsigned int *value);
- virtual void xferInt(int*);
- virtual void slot80();virtual void slot84();virtual void slot88();virtual void slot8C();
- virtual void xferBool(bool*);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../Include/Common/BfmeXfer.h"
 
 class FileSystem
 {
@@ -115,10 +94,10 @@ static void __cdecl embedPristineMap(AsciiString path, Xfer *xfer)
 		__assume(0);
 	}
 	file->close();
-	xfer->beginBlock("PristineMap");
-	xfer->xferUnsignedInt(&size);
-	xfer->xferUser(buf, size);
-	xfer->endBlock();
+	xfer->BeginBlock("PristineMap");
+	*xfer == size;
+	xfer->XferRawBytes(buf, size);
+	xfer->EndBlock();
 	delete[] buf;
 }
 
@@ -174,10 +153,10 @@ static void __cdecl embedInUseMap(AsciiString path, Xfer *xfer)
 		__assume(0);
 	}
 	file->close();
-	xfer->beginBlock("InUseMap");
-	xfer->xferUnsignedInt(&size);
-	xfer->xferUser(buf, size);
-	xfer->endBlock();
+	xfer->BeginBlock("InUseMap");
+	*xfer == size;
+	xfer->XferRawBytes(buf, size);
+	xfer->EndBlock();
 	delete[] buf;
 }
 
@@ -198,17 +177,17 @@ static void __cdecl extractAndSaveMap(AsciiString path, Xfer *xfer)
  File *file=TheFileSystem->openFile(name,0x4a,0);
  if(!file){BfmeFormattedText exceptionText;bfmeFormatText(&exceptionText,5,(const char*)0);
  _CxxThrowException(&exceptionText,(const _s__ThrowInfo*)&g_guardTargetTypeThrowInfo);__assume(0);}
- xfer->beginBlock("EmbeddedMap");
+ xfer->BeginBlock("EmbeddedMap");
  unsigned int size;
- xfer->xferUnsignedInt(&size);
+ *xfer == size;
  char *buf=new char[size];
  if(!buf){BfmeFormattedText exceptionText;bfmeFormatText(&exceptionText,5,(const char*)0);
  _CxxThrowException(&exceptionText,(const _s__ThrowInfo*)&g_guardTargetTypeThrowInfo);__assume(0);}
- xfer->xferUser(buf,size);
+ xfer->XferRawBytes(buf,size);
  int got=file->write(buf,size);
  if(got!=size){delete[]buf;BfmeFormattedText exceptionText;bfmeFormatText(&exceptionText,5,(const char*)0);
  _CxxThrowException(&exceptionText,(const _s__ThrowInfo*)&g_guardTargetTypeThrowInfo);__assume(0);}
- file->close();xfer->endBlock();delete[]buf;
+ file->close();xfer->EndBlock();delete[]buf;
 }
 // ?Rva0041AEF8Caller@@YAXVAsciiString@@PAVXfer@@@Z present-unmatched
 void Rva0041AEF8Caller(AsciiString path,Xfer*xfer){extractAndSaveMap(path,xfer);}
@@ -271,29 +250,29 @@ class GameStateMap {public:void DoXfer(Xfer*);void clearScratchPadMaps();};
 // independently supplies the two mode words, both auxiliary .wak paths,
 // selection/linear-campaign guards, and early object/drawable ID transfers.
 void GameStateMap::DoXfer(Xfer*xfer) {
- if(xfer->isLoading())*(bool*)((char*)TheGameLogic+0x6E)=true;
+ if(xfer->IsLoading())*(bool*)((char*)TheGameLogic+0x6E)=true;
  XferVersionInfo version(1,2);
- xfer->xferVersion(&version);
+ *xfer == (Xfer::Version &)version;
  S6SaveMapRecord *saveGameInfo=&TheGameState->saveGameInfo;
  bool transferMap=true;
  bool firstSave=false;
- if(xfer->isStoring()) {
+ if(xfer->IsStoring()) {
   if((TheLivingWorldLogic && ((BfmeSelectionState*)TheLivingWorldLogic)->isSelectionLocked()) ||
      (TheLinearCampaignManager && ((Rva001EB0B9*)TheLinearCampaignManager)->rva001EB0B9())) {
-   transferMap=false;AsciiString exceptionText;xfer->xferAsciiString(&exceptionText);
+   transferMap=false;AsciiString exceptionText;*xfer == exceptionText;
   } else {
    AsciiString mapLeafName=TheGameState->getMapLeafName(TheWritableGlobalData->m_mapName);
    saveGameInfo->saveGameMapName=AsciiString(((Rva002DC74A*)TheGameState)->rva002DC74A(UnicodeString(mapLeafName)));
-   {AsciiString exceptionText=TheGameState->realMapPathToPortableMapPath(saveGameInfo->saveGameMapName);xfer->xferAsciiString(&exceptionText);}
+   {AsciiString exceptionText=TheGameState->realMapPathToPortableMapPath(saveGameInfo->saveGameMapName);*xfer == exceptionText;}
    if(!((Rva002DC7C1*)TheGameState)->rva002DC7C1(UnicodeString(TheWritableGlobalData->m_mapName))) {
     saveGameInfo->pristineMapName=TheWritableGlobalData->m_mapName;firstSave=true;
    }
-   {AsciiString exceptionText=TheGameState->realMapPathToPortableMapPath(saveGameInfo->pristineMapName);xfer->xferAsciiString(&exceptionText);}
+   {AsciiString exceptionText=TheGameState->realMapPathToPortableMapPath(saveGameInfo->pristineMapName);*xfer == exceptionText;}
   }
-  int gameMode=TheGameLogic->m_110;xfer->xferInt(&gameMode);
-  int gameMode2=TheGameLogic->m_114;xfer->xferInt(&gameMode2);
+  int gameMode=TheGameLogic->m_110;*xfer == gameMode;
+  int gameMode2=TheGameLogic->m_114;*xfer == gameMode2;
  } else {
-  AsciiString exceptionText;xfer->xferAsciiString(&exceptionText);
+  AsciiString exceptionText;*xfer == exceptionText;
   if(exceptionText.isEmpty()) {transferMap=false;TheWritableGlobalData->m_mapName="NOMAP";}
   else {
    saveGameInfo->saveGameMapName=TheGameState->portableMapPathToRealMapPath(exceptionText);
@@ -302,21 +281,21 @@ void GameStateMap::DoXfer(Xfer*xfer) {
     _CxxThrowException(&err,(const _s__ThrowInfo*)&g_guardTargetTypeThrowInfo);__assume(0);
    }
    TheWritableGlobalData->m_mapName=saveGameInfo->saveGameMapName;
-   xfer->xferAsciiString(&saveGameInfo->pristineMapName);
+   *xfer == saveGameInfo->pristineMapName;
    saveGameInfo->pristineMapName=TheGameState->portableMapPathToRealMapPath(saveGameInfo->pristineMapName);
   }
-  int gameMode;xfer->xferInt(&gameMode);TheGameLogic->m_110=gameMode;
-  int gameMode2;xfer->xferInt(&gameMode2);TheGameLogic->m_114=gameMode2;
+  int gameMode;*xfer == gameMode;TheGameLogic->m_110=gameMode;
+  int gameMode2;*xfer == gameMode2;TheGameLogic->m_114=gameMode2;
  }
  if(transferMap) {
-  if(xfer->isStoring()) {
+  if(xfer->IsStoring()) {
    AsciiString auxiliary;
    if(firstSave==true) {
     embedPristineMap(saveGameInfo->pristineMapName,xfer);
     if(version.currentVersion>=2) {
      Rva0041AC98(saveGameInfo->pristineMapName,auxiliary);
      if(!auxiliary.isEmpty()) {
-      bool exists=TheFileSystem->doesFileExist(auxiliary.str());xfer->xferBool(&exists);
+      bool exists=TheFileSystem->doesFileExist(auxiliary.str());*xfer == exists;
       if(exists)embedPristineMap(auxiliary,xfer);
      }
     }
@@ -325,7 +304,7 @@ void GameStateMap::DoXfer(Xfer*xfer) {
     if(version.currentVersion>=2) {
      Rva0041AC98(saveGameInfo->saveGameMapName,auxiliary);
      if(!auxiliary.isEmpty()) {
-      bool exists=TheFileSystem->doesFileExist(auxiliary.str());xfer->xferBool(&exists);
+      bool exists=TheFileSystem->doesFileExist(auxiliary.str());*xfer == exists;
       if(exists)embedInUseMap(auxiliary,xfer);
      }
     }
@@ -334,7 +313,7 @@ void GameStateMap::DoXfer(Xfer*xfer) {
    AsciiString auxiliary;Rva0041AC98(saveGameInfo->saveGameMapName,auxiliary);
    extractAndSaveMap(saveGameInfo->saveGameMapName,xfer);
    if(version.currentVersion>=2 && !auxiliary.isEmpty()) {
-    bool exists=false;xfer->xferBool(&exists);if(exists)extractAndSaveMap(auxiliary,xfer);
+    bool exists=false;*xfer == exists;if(exists)extractAndSaveMap(auxiliary,xfer);
    }
   }
  }
@@ -348,12 +327,12 @@ void GameStateMap::DoXfer(Xfer*xfer) {
    TheGameInfo=(*(GameInfo* *)&TheSkirmishGameInfo);
    (*(GameInfo* *)&TheSkirmishGameInfo)->init();(*(GameInfo* *)&TheSkirmishGameInfo)->clearSlotList();(*(GameInfo* *)&TheSkirmishGameInfo)->reset();
   }
-  xfer->xferSnapshot((*(GameInfo* *)&TheSkirmishGameInfo));
+  *xfer == *(Snapshot *)((*(GameInfo* *)&TheSkirmishGameInfo));
  } else if((*(GameInfo* *)&TheSkirmishGameInfo)) {
   if(TheGameInfo==(*(GameInfo* *)&TheSkirmishGameInfo))TheGameInfo=0;
   ::delete (*(GameInfo* *)&TheSkirmishGameInfo);(*(GameInfo* *)&TheSkirmishGameInfo)=0;
  }
- if(xfer->isLoading()) {
+ if(xfer->IsLoading()) {
   if(TheGameLogic->m_110!=9 && saveGameInfo->saveType!=6 && saveGameInfo->saveType!=4)TheGameLogic->startNewGame(true);
   *(bool*)((char*)TheGameLogic+0x6E)=false;
  }

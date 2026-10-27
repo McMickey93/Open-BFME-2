@@ -28,43 +28,23 @@ struct WallVersion
     WallVersion(unsigned char min, unsigned char cur) : minimum(min), current(cur) {}
     unsigned char minimum, current;
 };
-class Xfer{public:virtual~Xfer();virtual bool IsLoading() const;
-virtual bool IsStoring() const;
-virtual bool IsCRC() const;
-virtual void slot04();
-virtual int BeginBlock(const char*);
-virtual void EndBlock();
-virtual void SkipBlock(const char*);
-virtual void slot08();
-virtual void slot09();
-virtual Xfer &xferVersion(WallVersion *);
-virtual void slot11();
-virtual Xfer &XferSnapshot(void*);
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual Xfer &xferCoord3D(struct Coord3D *);
-virtual void slot25();
-virtual void slot26();
-virtual Xfer& xferAsciiString(AsciiString*);
-virtual void slot28();
-virtual void slot29();
-virtual Xfer &xferUnsignedInt(unsigned int *);
-virtual Xfer& xferInt(int*);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 
 class Rva000AD6F4 {public: void clear();};
@@ -120,14 +100,14 @@ private: unsigned char prefix00[0x10]; CampaignSlot current;
 extern LinearCampaignManager *TheLinearCampaignManager;
 void LinearCampaignManager::DoXfer(Xfer *xfer) {
  WallVersion version(1,1);
- xfer->xferVersion(&version);
+ *xfer == (Xfer::Version &)version;
  bool hasCurrent=current.valid();
- xfer->xferBool(&hasCurrent);
+ *xfer == hasCurrent;
  if(xfer->IsLoading()) reinterpret_cast<Rva000AD6F4*>(&current)->clear();
  if(hasCurrent) {
   if(xfer->IsLoading()) {
    AsciiString name;
-   xfer->xferAsciiString(&name);
+   *xfer == name;
    int difficulty;
    XferGameDifficulty(xfer,&difficulty);
    void *record=reinterpret_cast<Rva001EB8D7*>(this)->rva001EB90C(*reinterpret_cast<const StringBase<char>*>(&name));
@@ -136,16 +116,16 @@ void LinearCampaignManager::DoXfer(Xfer *xfer) {
     xfer->BeginBlock("CurrentCampaign");
     Rva001EBAEA *state=new Rva001EBAEA(reinterpret_cast<int>(record),difficulty);
     reinterpret_cast<Rva00575674*>(&current)->rva00575674(reinterpret_cast<Object*>(state));
-    xfer->XferSnapshot(current.get());
+    *xfer == *(Snapshot *)current.get();
     xfer->EndBlock();
    }
   } else {
    AsciiString name=*current->record4;
    int difficulty=current->argument8;
-   xfer->xferAsciiString(&name);
+   *xfer == name;
    XferGameDifficulty(xfer,&difficulty);
    xfer->BeginBlock("CurrentCampaign");
-   xfer->XferSnapshot(current.get());
+   *xfer == *(Snapshot *)current.get();
    xfer->EndBlock();
   }
  }

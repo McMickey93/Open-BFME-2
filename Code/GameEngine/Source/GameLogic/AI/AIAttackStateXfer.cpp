@@ -36,47 +36,23 @@ enum ObjectID
 	INVALID_OBJECT_ID = 0
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual Bool isLoading() const;
-	virtual Bool isSaving() const;
-	virtual void slot03();
-	virtual Bool isLightCRC() const;
-	virtual int beginBlock(const char *name);
-	virtual void endBlock();
-	virtual void slot07();
-	virtual void slot08(void *machine, int block);
-	virtual Xfer &xferUser(void *data, int size);
-	virtual Xfer &xferVersion(XferVersion *version);
-	virtual void slot11();
-	virtual Xfer &xferSnapshot(void *snapshot);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual Xfer &xferCoord3D(Coord3D *value);
-	virtual void slot25();
-	virtual void slot26();
-	virtual void slot27();
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual void slot31();
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual Xfer &xferBool(Bool *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 class StateMachine
 {
@@ -117,16 +93,16 @@ void XferObjectID(Xfer *, ObjectID *);
 // ?xfer@AIAttackState@@MAEXPAVXfer@@@Z
 void AIAttackState::xfer(Xfer *xfer)
 {
-	if (xfer->isLightCRC())
+	if (xfer->IsLightCRC())
 		return;
 
 	XferVersion version(1, 3);
-	xfer->xferVersion(&version);
+	*xfer == (Xfer::Version &)version;
 
 	Bool hasMachine = m_attackMachine != 0;
-	xfer->xferBool(&hasMachine);
-	xfer->xferCoord3D(&m_originalVictimPos);
-	xfer->xferUser(&m_attackMachineType, sizeof(m_attackMachineType));
+	*xfer == hasMachine;
+	*xfer == (Coord3DBase &)m_originalVictimPos;
+	xfer->XferRawBytes(&m_attackMachineType, sizeof(m_attackMachineType));
 
 	if (hasMachine && m_attackMachine == 0)
 	{
@@ -138,24 +114,24 @@ void AIAttackState::xfer(Xfer *xfer)
 	{
 		if (version.m_currentVersion >= 3)
 		{
-			if (xfer->isSaving())
+			if (xfer->IsStoring())
 			{
-				xfer->beginBlock("AIAttackState_attackMachine");
-				xfer->xferSnapshot(m_attackMachine);
-				xfer->endBlock();
+				xfer->BeginBlock("AIAttackState_attackMachine");
+				*xfer == *(Snapshot *)m_attackMachine;
+				xfer->EndBlock();
 			}
 			else
 			{
 				int block;
 				try
 				{
-					block = xfer->beginBlock("AIAttackState_attackMachine");
-					xfer->xferSnapshot(m_attackMachine);
-					xfer->endBlock();
+					block = xfer->BeginBlock("AIAttackState_attackMachine");
+					*xfer == *(Snapshot *)m_attackMachine;
+					xfer->EndBlock();
 				}
 				catch (...)
 				{
-					xfer->slot08(m_attackMachine, block);
+					xfer->SkipBadBlock(*(Snapshot *)m_attackMachine, block);
 					m_attackMachine = 0;
 					Object *owner = m_machine->m_owner;
 					createAttackMachine(owner);
@@ -164,12 +140,12 @@ void AIAttackState::xfer(Xfer *xfer)
 		}
 		else
 		{
-			xfer->xferSnapshot(m_attackMachine);
+			*xfer == *(Snapshot *)m_attackMachine;
 		}
 	}
 
 	XferObjectID(xfer, &m_objectID44);
-	xfer->xferBool(&m_flag48);
+	*xfer == m_flag48;
 	if (version.m_currentVersion > 1)
-		xfer->xferBool(&m_flag49);
+		*xfer == m_flag49;
 }

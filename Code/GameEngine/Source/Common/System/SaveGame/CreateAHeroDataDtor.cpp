@@ -204,9 +204,23 @@ bool CreateAHeroData::WriteNamedHeroAtRva004074CF() {
 // otherwise the hero's wrapper 0x00406EBF transfers it, flag48 takes the flag,
 // and the byte at +0x71 is the result. Open's version output lands on the
 // parameter slot the name occupied (a dead name's stack slot).
-class Xfer { public: virtual ~Xfer(); };
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 struct Rva0060C3C3Stream;
-class Rva0060C5FA : public Xfer { public: Rva0060C5FA(void *a1, void *a2, void *a3); private: char m_pad04[0x20 - 4]; };
+class Rva0060C5FA : public Xfer { public: Rva0060C5FA(void *a1, void *a2, void *a3); private: char m_pad04[0x20 - 4];  public: virtual int BeginBlock(const char *name); virtual void EndBlock(); virtual void SkipBlock(const char *name); virtual Xfer &operator==(const char *const &value); protected: virtual void XferData(unsigned int type, void *data, unsigned int size);};
 class XferLoad { public: bool Open(Rva0060C3C3Stream *stream, int *version); };
 class Rva0060C45E { public: void clear(); };
 class Rva00406EBF { public: void rva00406EBF(Xfer *x); };

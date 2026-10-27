@@ -16,47 +16,21 @@
 
 class Coord2D;
 class Snapshot;
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();
-	virtual void slot02();
-	virtual bool isCRC();
-	virtual void slot04();
-	virtual void beginBlock(const char *name);
-	virtual void endBlock();
-	virtual void skipBlock(const char *name);
-	virtual void slot08();
-	virtual void slot09();
-	virtual void xferVersion(void *version);
-	virtual void slot11();
-	virtual void xferSnapshot(void *snapshot);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void xferCoord2D(Coord2D *value);
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual void xferInt(int *value);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual void xferBool(bool *value);
-};
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 struct BuildingXferVersion
 {
@@ -151,27 +125,27 @@ void LivingWorldBuilding::DoXfer(Xfer *xfer)
 	BuildingXferVersion version;
 	version.minimum = 1;
 	version.current = 6;
-	xfer->xferVersion(&version);
-	xfer->xferCoord2D((Coord2D *)m_position);
-	xfer->xferInt(&m_1C);
+	*xfer == (Xfer::Version &)version;
+	*xfer == *(Coord2D *)m_position;
+	*xfer == m_1C;
 	if (version.current == 4) {
 		bool flag = false;
-		xfer->xferBool(&flag);
-		if (xfer->isLoading()) {
+		*xfer == flag;
+		if (xfer->IsLoading()) {
 			if (flag)
 				m_20 = -1;
 			else
 				m_20 = m_1C + 1;
 		}
 	} else if (version.current >= 5) {
-		xfer->xferInt(&m_20);
-	} else if (xfer->isLoading()) {
+		*xfer == m_20;
+	} else if (xfer->IsLoading()) {
 		m_20 = m_1C + 1;
 	}
 
-	if (xfer->isLoading()) {
+	if (xfer->IsLoading()) {
 		AsciiString templateName;
-		xfer->xferAsciiString(&templateName);
+		*xfer == templateName;
 		m_template = (const AsciiString *)((Rva0059E647Factory *)TheLivingWorldBuildingTemplateStore)->Lookup((int *)&templateName);
 		if (m_template == 0)
 			m_template = (const AsciiString *)((LivingWorldBuildingTemplateStore *)TheLivingWorldBuildingTemplateStore)->getEmergencyBackupTemplateForBadLoads();
@@ -179,60 +153,60 @@ void LivingWorldBuilding::DoXfer(Xfer *xfer)
 			m_2C->rva0052B17F();
 		if (version.current >= 2) {
 			int count;
-			xfer->xferInt(&count);
+			*xfer == count;
 			for (int i = 0; i < count; ++i) {
 				AsciiString nuggetName;
-				xfer->xferAsciiString(&nuggetName);
+				*xfer == nuggetName;
 				BuildingNuggetView **it = m_nuggetsBegin;
 				BuildingNuggetView **end = m_nuggetsEnd;
 				bool found = false;
 				while (!found && it != end) {
 					BuildingNuggetView *nugget = *it;
 					if (nugget->getTemplate()->m_name.compare(nuggetName) == 0) {
-						xfer->beginBlock("LivingWorldBuildingNuggetBlock");
-						xfer->xferSnapshot(nugget);
-						xfer->endBlock();
+						xfer->BeginBlock("LivingWorldBuildingNuggetBlock");
+						*xfer == *(Snapshot *)nugget;
+						xfer->EndBlock();
 						found = true;
 					} else {
 						++it;
 					}
 				}
 				if (!found)
-					xfer->skipBlock("LivingWorldBuildingNuggetBlock");
+					xfer->SkipBlock("LivingWorldBuildingNuggetBlock");
 			}
 		}
 		rva004E0809();
 	} else {
 		AsciiString templateName(*m_template);
-		xfer->xferAsciiString(&templateName);
+		*xfer == templateName;
 		int count = m_nuggetsEnd - m_nuggetsBegin;
-		xfer->xferInt(&count);
+		*xfer == count;
 		BuildingNuggetView **it = m_nuggetsBegin;
 		BuildingNuggetView **end = m_nuggetsEnd;
 		while (it != end) {
 			BuildingNuggetView *nugget = *it;
 			AsciiString nuggetName(nugget->getTemplate()->m_name);
-			xfer->xferAsciiString(&nuggetName);
-			xfer->beginBlock("LivingWorldBuildingNuggetBlock");
-			xfer->xferSnapshot(nugget);
-			xfer->endBlock();
+			*xfer == nuggetName;
+			xfer->BeginBlock("LivingWorldBuildingNuggetBlock");
+			*xfer == *(Snapshot *)nugget;
+			xfer->EndBlock();
 			++it;
 		}
 	}
 
 	if (version.current >= 3) {
 		bool hasArmyEntry = m_armyEntry.m_ptr != 0;
-		xfer->xferBool(&hasArmyEntry);
-		if (xfer->isLoading()) {
+		*xfer == hasArmyEntry;
+		if (xfer->IsLoading()) {
 			m_armyEntry.rva004E0790();
 			if (hasArmyEntry)
 				m_armyEntry.rva004E08F6((Rva004E0790Inner *)new ArmySummaryEntry);
 		}
 		if (m_armyEntry.m_ptr)
-			xfer->xferSnapshot(m_armyEntry.m_ptr);
+			*xfer == *(Snapshot *)m_armyEntry.m_ptr;
 	}
 
-	if (xfer->isCRC()) {
+	if (xfer->IsCRC()) {
 		Rva004E075FGet((Rva004E075FObj *)xfer, (int)&m_id);
 		if (m_region) {
 			int regionId = m_region->m_id;
@@ -240,9 +214,9 @@ void LivingWorldBuilding::DoXfer(Xfer *xfer)
 		}
 	}
 
-	if (!xfer->isCRC() && version.current >= 6) {
-		xfer->xferBool(&m_51);
-		if (xfer->isLoading())
+	if (!xfer->IsCRC() && version.current >= 6) {
+		*xfer == m_51;
+		if (xfer->IsLoading())
 			rva004E060C(m_51);
 	}
 }

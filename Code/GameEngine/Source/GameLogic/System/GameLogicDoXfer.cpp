@@ -64,39 +64,22 @@ template <> __declspec(dllimport) __forceinline
 void *const &vector<void *>::operator[](size_t n) const { return *(begin() + n); }
 }
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();
-	virtual bool isStoring();
-	virtual bool isCRC();
-	virtual bool isLightCRC();
-	virtual void beginBlock(const char *name);
-	virtual void endBlock();
-	virtual void skipBlock(const char *name);
-	virtual void slot20();
-	virtual void slot24();
-	virtual void xferVersion(XferVersionInfo *version);
-	virtual void slot2C();
-	virtual void xferSnapshot(Snapshot *snapshot);
-	virtual void slot34(); virtual void slot38(); virtual void slot3C(); virtual void slot40();
-	virtual void slot44(); virtual void slot48(); virtual void slot4C(); virtual void slot50();
-	virtual void slot54(); virtual void slot58(); virtual void slot5C();
-	virtual Xfer &xferCoord3D(Coord3DBase *value);
-	virtual void slot64();
-	virtual Xfer &xferUnicodeString(UnicodeString *value);
-	virtual Xfer &xferAsciiString(AsciiString *value);
-	virtual Xfer &slot70();
-	virtual Xfer &slot74();
-	virtual Xfer &xferUnsignedInt(unsigned int *value);
-	virtual Xfer &xferInt(int *value);
-	virtual Xfer &xferUnsignedShort(unsigned short *value);
-	virtual Xfer &slot84();
-	virtual Xfer &slot88();
-	virtual Xfer &slot8C();
-	virtual Xfer &xferBool(bool *value);
-};
+class Snapshot;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+struct IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+struct RealRange;
+struct RGBColor;
+struct RGBAColorReal;
+struct RGBAColorInt;
+#include "../../../Include/Common/BfmeXfer.h"
 
 
 // BFME 2's native lookup at 0x00049DC5 uses the ObjectID enum and a map
@@ -497,18 +480,18 @@ private:
 void GameLogicSnapshot::DoXfer(Xfer *xfer)
 {
 	XferVersionInfo version(1, 8);
-	xfer->xferVersion(&version);
+	*xfer == (Xfer::Version &)version;
 
 	int mode = m_mode;
-	xfer->xferInt(&mode);
+	*xfer == mode;
 	m_mode = mode;
 	int second = m_second;
-	xfer->xferInt(&second);
+	*xfer == second;
 	int curMode = m_mode;
 	m_second = second;
 
 	if (curMode == 2 || second == 0) {
-		if (xfer->isLoading()) {
+		if (xfer->IsLoading()) {
 			if (!TheSkirmishGameInfo) {
 				TheSkirmishGameInfo = new SkirmishGameInfo;
 			} else if (TheSkirmishGameInfo->m_inGame) {
@@ -525,27 +508,27 @@ void GameLogicSnapshot::DoXfer(Xfer *xfer)
 	if (version.m_b >= 4 && m_mode == 2) {
 		SkirmishPreferences prefs(0);
 		UnicodeString name = prefs.Rva0043B9F5();
-		xfer->xferUnicodeString(&name);
-		bool changed = xfer->isLoading() && differs(prefs.Rva0043B9F5(), name);
+		*xfer == name;
+		bool changed = xfer->IsLoading() && differs(prefs.Rva0043B9F5(), name);
 		if (changed) {
 			prefs.setCurrentUserName(name);
 			prefs.write();
 		}
 	}
 
-	if (xfer->isCRC())
-		xfer->xferUnsignedInt(&m_timestamp);
-	xfer->xferUnsignedInt(&m_frame);
-	xfer->xferInt(&m_170);
-	xfer->xferBool(&m_110);
+	if (xfer->IsCRC())
+		*xfer == m_timestamp;
+	*xfer == m_frame;
+	*xfer == m_170;
+	*xfer == m_110;
 
-	if (xfer->isLightCRC()) {
+	if (xfer->IsLightCRC()) {
 		for (ObjectView *obj = m_objList; obj; obj = obj->m_next) {
 			Coord3DBase pos;
 			pos.x = obj->m_position.x;
 			pos.y = obj->m_position.y;
 			pos.z = obj->m_position.z;
-			xfer->xferCoord3D(&pos);
+			*xfer == pos;
 		}
 		return;
 	}
@@ -553,37 +536,37 @@ void GameLogicSnapshot::DoXfer(Xfer *xfer)
 	Rva0004224C guard;
 	GameLogic *logic = (GameLogic *)((char *)this - 0x0C);
 	logic->xferObjectTOC(xfer);
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 		logic->prepareLogicForObjectLoad();
 	unsigned int objectCount = logic->getObjectCount();
-	xfer->xferUnsignedInt(&objectCount);
+	*xfer == objectCount;
 
 	ObjectID id;
 	Team *defaultTeam;
-	if (xfer->isStoring()) {
+	if (xfer->IsStoring()) {
 		for (ObjectView *obj = m_objList; obj; obj = obj->m_next) {
 			ObjectTOCEntry *entry = logic->findTOCEntryByName(*(AsciiString *)((char *)obj->m_template + 0x64));
 			if (entry == 0)
 				throw XferException(5, 0);
-			xfer->xferUnsignedShort((unsigned short *)((char *)entry + 4));
+			*xfer == *((unsigned short *)((char *)entry + 4));
 			id = obj->m_id;
 			XferObjectID(xfer, &id);
-			xfer->beginBlock("Object");
-			xfer->xferSnapshot((Snapshot *)((char *)obj + 0x60));
-			xfer->endBlock();
+			xfer->BeginBlock("Object");
+			*xfer == *((Snapshot *)((char *)obj + 0x60));
+			xfer->EndBlock();
 		}
 	} else {
 		defaultTeam = ThePlayerList->m_neutralPlayer->m_defaultTeam;
 		for (unsigned int i = 0; i < objectCount; ++i) {
 			unsigned short tocID;
-			xfer->xferUnsignedShort(&tocID);
+			*xfer == tocID;
 			AsciiString *entryName = (AsciiString *)((Rva0023E7B4 *)logic)->rva0023E7B4(tocID);
 			if (entryName == 0)
 				throw XferException(5, 0);
 			XferObjectID(xfer, &id);
 			const ThingTemplate *tt = TheThingFactory->findTemplate(*entryName);
 			if (tt == 0) {
-				xfer->skipBlock("Object");
+				xfer->SkipBlock("Object");
 				continue;
 			}
 			AssetLoadMode mode;
@@ -591,37 +574,37 @@ void GameLogicSnapshot::DoXfer(Xfer *xfer)
 			((ThingTemplate *)tt)->GetAssetList((int)&assets, (int)&mode);
 			bfmeMergeReceiverKeys((int)&assets);
 			Object *obj = TheThingFactory->newObject(tt, defaultTeam, &CreateMask(), id);
-			xfer->beginBlock("Object");
-			xfer->xferSnapshot(snapshotAt(obj, 0x60));
-			xfer->endBlock();
+			xfer->BeginBlock("Object");
+			*xfer == *(snapshotAt(obj, 0x60));
+			xfer->EndBlock();
 		}
 	}
 
 	if (version.m_b < 7)
-		xfer->xferSnapshot((Snapshot *)TheLinearCampaignManager);
-	xfer->xferSnapshot(snapshotAt(TheCaveSystem, 0x0C));
-	xfer->xferSnapshot(m_164);
-	xfer->xferSnapshot(m_168);
-	xfer->xferSnapshot(m_16c);
-	xfer->xferSnapshot(snapshotAt(TheLargeGroupAudio, 0x0C));
-	xfer->xferBool(&m_scoring);
-	xfer->xferInt(&m_10c);
+		*xfer == *(Snapshot *)TheLinearCampaignManager;
+	*xfer == *(snapshotAt(TheCaveSystem, 0x0C));
+	*xfer == *m_164;
+	*xfer == *m_168;
+	*xfer == *m_16c;
+	*xfer == *(snapshotAt(TheLargeGroupAudio, 0x0C));
+	*xfer == m_scoring;
+	*xfer == m_10c;
 
-	if (xfer->isStoring()) {
+	if (xfer->IsStoring()) {
 		for (BuildableMap::const_iterator it = m_buildableOverrides.begin(); it != m_buildableOverrides.end(); ++it) {
 			AsciiString name = it->first;
 			int status = it->second;
-			xfer->xferAsciiString(&name);
+			*xfer == name;
 			XferBuildableStatus(xfer, &status);
 		}
 		AsciiString empty;
-		xfer->xferAsciiString(&empty);
+		*xfer == empty;
 	} else {
 		if (!m_buildableOverrides.empty())
 			throw XferException(5, 0);
 		for (;;) {
 			AsciiString name;
-			xfer->xferAsciiString(&name);
+			*xfer == name;
 			if (name.isEmpty())
 				break;
 			int status;
@@ -630,46 +613,46 @@ void GameLogicSnapshot::DoXfer(Xfer *xfer)
 		}
 	}
 
-	xfer->xferBool(&m_8d);
-	xfer->xferBool(&m_8e);
-	xfer->xferBool(&m_8f);
-	xfer->xferInt(&m_94);
+	*xfer == m_8d;
+	*xfer == m_8e;
+	*xfer == m_8f;
+	*xfer == m_94;
 	if (version.m_b >= 3)
 		XferGameDifficulty(xfer, &m_98);
-	xfer->xferUnsignedInt(&m_174);
+	*xfer == m_174;
 
-	if (xfer->isStoring()) {
+	if (xfer->IsStoring()) {
 		for (ControlBarOverrideMap::iterator it = m_controlBarOverrides.begin(); it != m_controlBarOverrides.end(); ++it) {
 			AsciiString value = it->second.m_bits ? *(AsciiString *)(it->second.m_bits + 0x10) : AsciiString::TheEmptyString;
 			int slot = it->first.m_id;
 			AsciiString key = it->first.m_name;
-			xfer->xferInt(&slot).xferAsciiString(&key).xferAsciiString(&value);
+			xfer->operator==(slot).operator==(key).operator==(value);
 		}
 		int end = -1;
-		xfer->xferInt(&end);
+		*xfer == end;
 	} else {
 		if (!m_controlBarOverrides.empty())
 			throw XferException(5, 0);
 		for (;;) {
 			if (version.m_b >= 5) {
 				int slot;
-				xfer->xferInt(&slot);
+				*xfer == slot;
 				if (slot < 0)
 					break;
 				AsciiString key;
 				AsciiString value;
-				xfer->xferAsciiString(&key).xferAsciiString(&value);
+				xfer->operator==(key).operator==(value);
 				const CommandButton *button = 0;
 				if (!value.isEmpty())
 					button = TheControlBar->findCommandButton(value);
 				m_controlBarOverrides[(const TreeKey00242F5E &)_STL::make_pair(slot, key)].m_bits = (unsigned int)button;
 			} else {
 				AsciiString name;
-				xfer->xferAsciiString(&name);
+				*xfer == name;
 				if (name.isEmpty())
 					break;
 				AsciiString value;
-				xfer->xferAsciiString(&value);
+				*xfer == value;
 				const CommandButton *button = 0;
 				if (!value.isEmpty())
 					button = TheControlBar->findCommandButton(value);
@@ -683,11 +666,11 @@ void GameLogicSnapshot::DoXfer(Xfer *xfer)
 		}
 	}
 
-	xfer->xferInt(&m_88);
+	*xfer == m_88;
 	if (version.m_b >= 2)
-		xfer->xferBool(&m_93);
+		*xfer == m_93;
 	if (version.m_b >= 8)
-		xfer->xferSnapshot(snapshotAt(TheDelayedExperienceLevelGrantSystem, 0x0C));
+		*xfer == *(snapshotAt(TheDelayedExperienceLevelGrantSystem, 0x0C));
 	m_158.clear();
 }
 
