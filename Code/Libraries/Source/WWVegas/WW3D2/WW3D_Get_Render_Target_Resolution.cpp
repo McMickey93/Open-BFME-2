@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc /G7
+// dxsdk
+// platformsdk
 //
 // ?Get_Render_Target_Resolution@DX8Wrapper@@KAXAAH00AA_N@Z, retail 0x00121860,
 // 195 bytes. Dedicated TU.
@@ -13,6 +15,7 @@
 // relocation copied from retail.
 
 #include <stddef.h>
+#include <d3d9.h>
 
 typedef int Int;
 typedef bool Bool;
@@ -27,32 +30,9 @@ public:
 	~BFMEDX8DeviceLock() { BFME_DX8_Thread_Assert(); }
 };
 
-struct BfmeDisplayModeInfo
-{
-	char m_bfmeHead[0x18];
-	Int m_width; // +0x18
-	Int m_height; // +0x1C
-};
-
-class BfmeRenderDevice
-{
-public:
-	virtual long __stdcall bfmeSlot00(void) = 0;
-	virtual long __stdcall bfmeSlot04(void) = 0;
-	virtual long __stdcall bfmeSlot08(void) = 0;
-	virtual long __stdcall bfmeSlot0C(void) = 0;
-	virtual long __stdcall bfmeSlot10(void) = 0;
-	virtual long __stdcall bfmeSlot14(void) = 0;
-	virtual long __stdcall bfmeSlot18(void) = 0;
-	virtual long __stdcall bfmeSlot1C(void) = 0;
-	virtual long __stdcall bfmeSlot20(void) = 0;
-	virtual long __stdcall bfmeSlot24(void) = 0;
-	virtual long __stdcall bfmeSlot28(void) = 0;
-	virtual long __stdcall bfmeSlot2C(void) = 0;
-	virtual long __stdcall bfmeGetModeInfo(BfmeDisplayModeInfo *info) = 0; // +0x30
-};
-
-// The render target surface; its slot 0x30 fills the mode struct above.
+// The render target surface. DX8Wrapper keeps the BFME 1 spelling of the
+// member; the native object is a Direct3D 9 surface, whose GetDesc (vtable
+// +0x30) fills the D3DSURFACE_DESC on the stack (Width +0x18, Height +0x1C).
 struct IDirect3DSurface8;
 
 // the WW3D forwarder lives at 0x00116FF0 (5B thunk, already claimed);
@@ -76,12 +56,12 @@ void DX8Wrapper::Get_Render_Target_Resolution(Int &width, Int &height, Int &bitD
 	if (CurrentRenderTarget != NULL)
 	{
 		BFMEDX8DeviceLock guard;
-		BfmeDisplayModeInfo info;
+		D3DSURFACE_DESC info;
 
-		((BfmeRenderDevice *)CurrentRenderTarget)->bfmeGetModeInfo(&info);
+		reinterpret_cast<IDirect3DSurface9 *>(CurrentRenderTarget)->GetDesc(&info);
 
-		width = info.m_width;
-		height = info.m_height;
+		width = info.Width;
+		height = info.Height;
 		bitDepth = BitDepth;
 		windowed = IsWindowed;
 	}
