@@ -4565,7 +4565,7 @@ Remaining / next check: `TeamRelationMap` (dtor 0x003A2563, deleter) uses the sa
 Clearance: preview only, index `bf3dd31211`.
 Census confirmation: awaiting.
 
-### LINK-115: ShellMenuScheme consolidation needs native string and list contracts
+### LINK-116: ShellMenuScheme consolidation needs native string and list contracts
 
 Status: Three-file subset consolidated with the link guard; remaining donors retained. Updated: 2026-10-27; inspected revision: e400cac241; published preview index: bf3dd31211 (2026-10-27 00:39, retail-truth-4).
 

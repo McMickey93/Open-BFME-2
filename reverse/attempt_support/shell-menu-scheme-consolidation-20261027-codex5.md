@@ -106,3 +106,9 @@ path-consumer-audit-final.log in the local evidence directory. Final seven EH
 graphs are EXACT; converged data again judges all 31 rows with no second names
 or unjudged rows. Six current strict provider receipts are prepared, including
 a fresh constructor receipt after the comment change.
+
+
+Publication correction: upstream already allocated LINK-115 while this scoped
+work was running. The current handoff is LINK-116; earlier commit messages and
+the append-only blocked verdict retain their historical LINK-115 spelling.
+No source or verification result changes with the renumbering.
