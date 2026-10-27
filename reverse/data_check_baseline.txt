@@ -284,7 +284,6 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourFind.cp
 Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourPoolKey.cpp	wrong-name	?$S1@?1??rva000373109@MineshaftPortalBehaviour@@SA?AW4NameKeyType@@XZ@4IA	0x00A01EF0
 Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionAudioLoopClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004CBF13@ModelConditionAudioLoopClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0437C
 Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionSoundSelectorClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000254BAC@ModelConditionSoundSelectorClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x009FE9C4
-Code/GameEngine/Source/GameLogic/Object/Behavior/OathbreakersFadeAwayBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva004B89DD@OathbreakersFadeAwayBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F60
 Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000484ADD@PassiveAreaEffectBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03804
 Code/GameEngine/Source/GameLogic/Object/Behavior/PhysicsBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00039085C@PhysicsBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A027A8
 Code/GameEngine/Source/GameLogic/Object/Behavior/PoisonedBehavior.cpp	wrong-name	?$S1@?1??rva000482F27@PoisonedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037B4
@@ -325,9 +324,7 @@ Code/GameEngine/Source/GameLogic/Object/Body/SymbioticStructuresBodyPoolKey.cpp	
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/AODCrushCollidePoolKey.cpp	wrong-name	?$S1@?1??rva0004BBF44@AODCrushCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04038
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/ShroudCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva0004BCBB2@ShroudCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04060
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/VeterancyCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva0004BCE7B@VeterancyCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04074
-Code/GameEngine/Source/GameLogic/Object/Collide/HealCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva00004BC858@HealCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04050
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/MoneyCrateCollide.cpp	wrong-name	?$S1@?1??rva00004BC988@MoneyCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04058
-Code/GameEngine/Source/GameLogic/Object/Collide/SalvageCrateCollidePoolKey.cpp	wrong-name	?$S1@?1??rva00004BD220@SalvageCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A0407C
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp	wrong-name	?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04068
 Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainPoolKey.cpp	wrong-name	?$S1@?1??rva00047B51E@AODHordeContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A036F8
 Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainPoolKey.cpp	wrong-name	?$S1@?1??rva0004663FF@CaveContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A0364C
@@ -381,7 +378,6 @@ Code/GameEngine/Source/GameLogic/Object/SpawnedModelConditionCreatePoolKey.cpp	w
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CDD59@ActivateModuleSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A043C8
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CashHackSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C266F@CashHackSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041A4
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C4521@CloudBreakSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A0423C
-Code/GameEngine/Source/GameLogic/Object/SpecialPower/CombineHordeSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C880D@CombineHordeSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04304
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/CurseSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CCDEB@CurseSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04398
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DarknessSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C4E02@DarknessSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04260
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DefectorSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C29D4@DefectorSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041AC
@@ -389,11 +385,9 @@ Code/GameEngine/Source/GameLogic/Object/SpecialPower/DeflectSpecialPowerPoolKey.
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DevastateSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C8270@DevastateSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042EC
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CC9DF@DominateEnemySpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04390
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C391E@ElvenWoodSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041CC
-Code/GameEngine/Source/GameLogic/Object/SpecialPower/EvacuateGarrisonSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004CDC53@EvacuateGarrisonSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A043C0
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/FellBeastSwoopPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C6C7C@FellBeastSwoopPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A042C0
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/FreezingRainSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C4BEA@FreezingRainSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04254
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/GiveOrRestoreUpgradeSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004CD121@GiveOrRestoreUpgradeSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A043A0
-Code/GameEngine/Source/GameLogic/Object/SpecialPower/GrabPassengerSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C4FCE@GrabPassengerSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A0426C
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/HordeDispatchSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva004C8A34@HordeDispatchSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A04310
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C23D4@InvisibilitySpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A0419C
 Code/GameEngine/Source/GameLogic/Object/SpecialPower/LevelGrantSpecialPowerPoolKey.cpp	wrong-name	?$S1@?1??rva0004C2BC1@LevelGrantSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x00A041B4
@@ -546,13 +540,10 @@ Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdate
 Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004ADA70@ToggleMountedSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D2C
 Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A812E@ToppleUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C80
 Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateFind.cpp	wrong-name	?$S1@?1??rva004AB1F5@WallUpgradeUpdate@@SAPAVModule@@PAVObject@@@Z@4IA	0x00A03CC8
-Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004AB2D2@WallUpgradeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03CD0
 Code/GameEngine/Source/GameLogic/Object/Update/WeaponFireSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000492685@WeaponFireSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039E8
 Code/GameEngine/Source/GameLogic/Object/Update/WeaponModeSpecialPowerUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000494AF3@WeaponModeSpecialPowerUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A18
 Code/GameEngine/Source/GameLogic/Object/Update/WeaponSetSpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000492459@WeaponSetSpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039E0
 Code/GameEngine/Source/GameLogic/Object/Update/WoundArrowUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004C6999@WoundArrowUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A042B4
-Code/GameEngine/Source/GameLogic/Object/Upgrade/AllowBannerSpawnUpgradePoolKey.cpp	wrong-name	?$S1@?1??rva004B8520@AllowBannerSpawnUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F3C
-Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradePoolKey.cpp	wrong-name	?$S1@?1??rva004B59B7@CostModifierUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03E98
 Code/GameEngine/Source/GameLogic/Object/Upgrade/ExperienceScalarUpgrade.cpp	wrong-name	?$S1@?1??rva0004B6142@ExperienceScalarUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03EB0
 Code/GameEngine/Source/GameLogic/Object/Upgrade/GrantUpgradeCreatePoolKey.cpp	wrong-name	?$S1@?1??rva004B8FAB@GrantUpgradeCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03F84
 Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp	wrong-name	?$S1@?1??rva004B9471@InheritUpgradeCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03FA4
