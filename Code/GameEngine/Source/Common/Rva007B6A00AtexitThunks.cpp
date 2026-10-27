@@ -159,7 +159,6 @@ public:
 
 extern unsigned int g_00DDE0AC;
 unsigned g_Va00DEBC64;	// retail RVA 0x009EBC64 (.bss), defined here
-unsigned g_Va00DEBCA0;	// retail RVA 0x009EBCA0 (.bss), defined here
 unsigned g_Va00DFE490;	// retail RVA 0x009FE490 (.bss), defined here
 unsigned g_Va00DFE49C;	// retail RVA 0x009FE49C (.bss), defined here
 class Rva00575674;
@@ -233,13 +232,6 @@ void __cdecl rva007B6DFA()
 {
 	TerrainFXShaderParameterSourceNamespace *receiver = (TerrainFXShaderParameterSourceNamespace *)&g_Va00DEBC64;
 	receiver->TerrainFXShaderParameterSourceNamespace::~TerrainFXShaderParameterSourceNamespace();
-}
-
-// ?rva007B6E36@@YAXXZ @ 0x007B6E36 (10B): ecx=&g_Va00DEBCA0, tail-jump to rowed ?apply@Rva00049C38ADwordImmSetter@@QAEXXZ (0x0049C38A)
-void __cdecl rva007B6E36()
-{
-	Rva00049C38ADwordImmSetter *receiver = (Rva00049C38ADwordImmSetter *)&g_Va00DEBCA0;
-	receiver->apply();
 }
 
 // ?rva007B76E6@@YAXXZ @ 0x007B76E6 (10B): ecx=&g_Va00DFE490, tail-jump to rowed ?clear@Rva000AD6F4@@QAEXXZ (0x000AD6F4)

@@ -161,7 +161,6 @@ public:
 
 extern unsigned int g_00DDE0AC;
 extern unsigned g_Va00DEBC64;	// retail RVA 0x009EBC64 (.bss), defined in Rva007B6A00AtexitThunks.cpp
-extern unsigned g_Va00DEBCA0;	// retail RVA 0x009EBCA0 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DFE490;	// retail RVA 0x009FE490 (.bss), defined in Rva007B6A00AtexitThunks.cpp
 extern unsigned g_Va00DFE49C;	// retail RVA 0x009FE49C (.bss), defined in Rva007B6A00AtexitThunks.cpp
 class Rva00575674;
@@ -224,8 +223,6 @@ extern unsigned g_Va00E09E60;
 extern unsigned GeometryContactSphere;
 
 void __cdecl rva007B6DFA();
-
-void __cdecl rva007B6E36();
 
 void __cdecl rva007B76E6();
 
