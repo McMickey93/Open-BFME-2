@@ -3534,7 +3534,7 @@ Remaining / next check: the same pattern may hold for other Zero Hour inline get
 Clearance: preview (link_check on current objects). Census confirmation: pending.
 
 ### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
-Status: Open. Updated: 2026-10-26; inspected revision: the 44-funclet repoint commit.
+Status: Open. Updated: 2026-10-26; inspected revision: 14ea56bea7 (uw_gen_002/007/008 repoints).
 Evidence / affected units: `Code/gen_small/uw_gen_*.cpp` never links (its
 `gen_uw_ext`/`gen_uw_sink` are undefined by design), so each funclet must move
 to its matched parent's `$L` label. In `uw_gen_003.cpp`, all 69 funclets have a
@@ -3548,6 +3548,16 @@ family and placeholder `??1Rva*` elements. In 2 (`Rva00426F17Xfer.cpp`,
 rel32. The names are in the `blocked` rows of `reverse/re_attempts.log`.
 Completed: "Repoint 44 uw_gen_003 funclets to their EXACT EH parents" moved the 44 verified funclets (414/414 across 41
 sources, EH verify EXACT 84) and left the 25 in `uw_gen_003.cpp` unchanged.
+Completed (K7, 2026-10-26): ddb6835a35 moved 36 funclets out of `uw_gen_007.cpp` (3/3) and
+`uw_gen_008.cpp` (33/34); 14ea56bea7 moved all 66 single-parent funclets of `uw_gen_002.cpp`.
+Unmasked `./build.sh` 149/149 and 308/308 over the parents; link_check unchanged except
+pre-existing duplicates in `GameWindowGlobal.cpp` and `BeaconClientUpdate.cpp` (same on the base
+ledger). In `uw_gen_012.cpp`, 42 of 44 EXACT-parent candidates fail the unmasked byte verify
+(mostly `??0`/`??1` placeholder-class parents), plus 0x007A3734 in `uw_gen_008.cpp`; all 43 are
+`blocked` rows in `reverse/re_attempts.log` (callees not yet itemised).
+Labels: a scan over stale `build/match` objects can name an old `$L` number; build.sh accepts it
+via the parent's EH data ("verified past a renumbered $L label", which lists only five), so take
+the label from a fresh compile of the parent before writing the row.
 Remaining / next check: name or row each missing element dtor at the address
 retail's funclet jumps to (`tools/pin_admission.py --add`, or a real row). For
 the two wrong-callee units, align the element type with retail's dtor. Then
