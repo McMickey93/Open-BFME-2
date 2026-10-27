@@ -10999,7 +10999,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0084EBA0,100,.rdata,vtable,??_7Rva00494F1B@@6B@,,literal,??_7Rva00494F1B@@6B@;_s_vtable@Code/GameEngine/Source/GameLogic/Object/Update/FlingPassengerSpecialAbilityUpdateCtor.cpp,1,2
 0x0084EC04,12,.rdata,vtable,??_7Rva0049506E@@6BRva0049506E_B2@@@,,literal,??_7Rva0049506E@@6BRva0049506E_B2@@@;_s_secondary10@Code/GameEngine/Source/GameLogic/Object/Update/AutoFindHealingUpdateCtor.cpp,1,2
 0x0084EC10,176,.rdata,vtable,??_7Rva0049506E@@6BRva0024A797@@@,,literal,??_7Rva0049506E@@6BRva0024A797@@@;_s_vtable@Code/GameEngine/Source/GameLogic/Object/Update/AutoFindHealingUpdateCtor.cpp,1,2
-0x0084ECC0,48,.rdata,global,?g_00C4ECC0@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateModuleDataCtor.cpp,owned,,1,1
+0x0084ECC0,48,.rdata,global,?g_00C4ECC0@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp,owned,,1,1
 0x0084ECF0,12,.rdata,vtable,??_7CommandButtonHuntUpdate@@6BPB_Iface2@@@,,literal,,0,2
 0x0084ECFC,52,.rdata,vtable,??_7CommandButtonHuntUpdate@@6BPB_DeepBase@@@,,literal,,0,2
 0x0084ED30,12,.rdata,vtable,??_7DemoTrapUpdate@@6BUpdateInterface@@@,,literal,??_7DemoTrapUpdate@@6BUpdateInterface@@@;??_7Rva00495916@@6BRva00495916_B2@@@,0,2
@@ -20186,8 +20186,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03A2C,4,.data,global,?TheAutoFindHealingUpdatePoolKey@?1??rva0004950B4@AutoFindHealingUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AutoFindHealingUpdate.cpp,owned,,1,2
 0x00A03A30,4,.data,global,?g_Va00E03A30@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Axx.cpp,provisional,?$S1@?1??rva0004950B4@AutoFindHealingUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/AutoFindHealingUpdate.cpp;?g_Va00E03A30@@3IA,2,4
 0x00A03A34,4,.data,global,_s_rva007B170B,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03A38,4,.data,global,?TheCommandButtonHuntUpdatePoolKey@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdatePoolKey.cpp,owned,,1,2
-0x00A03A3C,4,.data,global,?g_Va00E03A3C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Axx.cpp,provisional,?$S1@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdatePoolKey.cpp;?g_Va00E03A3C@@3IA,2,4
+0x00A03A38,4,.data,global,?TheCommandButtonHuntUpdatePoolKey@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp,owned,,1,2
+0x00A03A3C,4,.data,global,?g_Va00E03A3C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Axx.cpp,provisional,?$S1@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp;?g_Va00E03A3C@@3IA,2,4
 0x00A03A40,4,.data,global,_s_rva007B1735,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03A44,4,.data,global,?TheDemoTrapUpdatePoolKey@?1??rva000495935@DemoTrapUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdatePoolKey.cpp,owned,,1,2
 0x00A03A48,4,.data,global,?g_Va00E03A48@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Axx.cpp,provisional,?$S1@?1??rva000495935@DemoTrapUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdatePoolKey.cpp;?g_Va00E03A48@@3IA,2,4

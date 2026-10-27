@@ -3928,10 +3928,10 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpd
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpdateDtor.cpp	?getBody@BehaviorModuleInterface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdateCtorThunk.cpp	?slot@PB_Iface1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdateCtorThunk.cpp	?slot@PB_Iface2@@UAEXXZ	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp	_vtbl_00C4ED70	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp	?TheEmptyString@AsciiString@@2V1@A	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp	?slot@PB_Iface1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp	?slot@PB_Iface2@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateModuleDataCtor.cpp	_vtbl_00C4ED70	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DamageFieldUpdateBehaviorCtor.cpp	_vtbl_00BEFF90	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DamageFieldUpdateBehaviorDtor.cpp	_vtbl_00BEFF90	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DefaultProductionExitUpdateCtor.cpp	_vtbl_00C430B4	1

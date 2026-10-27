@@ -446,8 +446,8 @@ Code/GameEngine/Source/GameLogic/Object/Update/BoneFXUpdatePoolKey.cpp	wrong-nam
 Code/GameEngine/Source/GameLogic/Object/Update/BoredUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004966B9@BoredUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A5C
 Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A34C6@BroadcastStealthUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03BD8
 Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00047F97E@CivilianSpawnUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03754
-Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateModuleDataCtor.cpp	wrong-name	?g_Va00DBA4E4@@3HA	0x009BA4E4
-Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A3C
+Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp	wrong-name	?g_Va00DBA4E4@@3HA	0x009BA4E4
+Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp	wrong-name	?$S1@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A3C
 Code/GameEngine/Source/GameLogic/Object/Update/DamageFieldUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000491264@DamageFieldUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A039B8
 Code/GameEngine/Source/GameLogic/Object/Update/DefaultProductionExitUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000487F82@DefaultProductionExitUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A038D8
 Code/GameEngine/Source/GameLogic/Object/Update/DelayedLuaEventUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A8D99@DelayedLuaEventUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C94
