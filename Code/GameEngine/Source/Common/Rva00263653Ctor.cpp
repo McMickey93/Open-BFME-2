@@ -13,7 +13,7 @@ class Rva00263653
 {
 public:
 	Rva00263653();
-	virtual void rva00263653_dummy();
+	virtual void rva004D6FC4(void *context);	// 0x004D6FC4, the vftable's single slot
 
 private:
 	int m_04;
@@ -79,7 +79,3 @@ Rva00263653::Rva00263653()
 }
 // _kF7C: the global at VA 0xbc292c is ?g_objectSpacingDefault@@3MA.
 #pragma comment(linker, "/alternatename:_kF7C=?g_objectSpacingDefault@@3MA")
-// ?rva00263653_dummy@Rva00263653@@UAEXXZ present-unmatched
-void Rva00263653::rva00263653_dummy()
-{
-}

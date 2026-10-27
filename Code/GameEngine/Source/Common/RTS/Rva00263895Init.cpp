@@ -16,7 +16,7 @@ class Rva00263895Member
 {
 public:
 	Rva00263895Member() throw();
-	virtual void rva00263895_dummy();
+	virtual void rva004D6F86(void *arg);	// 0x004D6F86, the vftable's single slot
 
 private:
 	Rva00263653 m_mem;
@@ -33,9 +33,6 @@ Rva00263895Member::Rva00263895Member() throw()
 	  m_b78(0)
 {
 }
-
-// ?rva00263895_dummy@Rva00263895Member@@UAEXXZ present-unmatched
-void Rva00263895Member::rva00263895_dummy() {}
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.

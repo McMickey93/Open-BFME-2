@@ -1,10 +1,10 @@
 // cl: /DNDEBUG /MD /EHsc
 // ??0Rva0043B196@@QAE@ABV0@@Z @0x0043B196 51B
-// Evidence: calls rowed copy ctor ??0Rva0028F68F 0x28F68F; copies +0x7c +0x80 +0x84 then returns this ret4; callers 0x43B250 0x43B26D.
-class Rva0028F68F
+// Evidence: calls rowed copy ctor ??0Rva00263895Member 0x28F68F; copies +0x7c +0x80 +0x84 then returns this ret4; callers 0x43B250 0x43B26D.
+class Rva00263895Member
 {
 public:
-	Rva0028F68F(const Rva0028F68F &other);
+	Rva00263895Member(const Rva00263895Member &other);
 private:
 	char m_data[0x7c];
 };
@@ -14,7 +14,7 @@ class Rva0043B196
 public:
 	Rva0043B196(const Rva0043B196 &src);
 private:
-	Rva0028F68F m_00;
+	Rva00263895Member m_00;
 	unsigned int m_7c;
 	unsigned int m_80;
 	unsigned int m_84;

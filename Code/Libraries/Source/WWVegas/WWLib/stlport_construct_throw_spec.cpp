@@ -34,10 +34,10 @@ public:
 	Rva0036CA00Str(const Rva0036CA00Str &other);
 };
 
-class Rva0028F68F
+class Rva00263895Member
 {
 public:
-	Rva0028F68F(const Rva0028F68F &other);
+	Rva00263895Member(const Rva00263895Member &other);
 };
 
 class Rva002390CB
@@ -75,7 +75,7 @@ template<> inline void _Construct<RvaSmartPtr12, RvaSmartPtr12>(RvaSmartPtr12 *d
 template<> inline void _Construct<AssetReference, AssetReference>(AssetReference *dest, const AssetReference &source) throw() { new (dest) AssetReference(source); }
 template<> void _Construct<WeaponTemplateSetHead, WeaponTemplateSetHead>(WeaponTemplateSetHead *dest, const WeaponTemplateSetHead &source) throw() { new (dest) WeaponTemplateSetHead(source); }
 template<> inline void _Construct<Rva0036CA00Str, Rva0036CA00Str>(Rva0036CA00Str *dest, const Rva0036CA00Str &source) throw() { new (dest) Rva0036CA00Str(source); }
-template<> void _Construct<Rva0028F68F, Rva0028F68F>(Rva0028F68F *dest, const Rva0028F68F &source) throw() { new (dest) Rva0028F68F(source); }
+template<> void _Construct<Rva00263895Member, Rva00263895Member>(Rva00263895Member *dest, const Rva00263895Member &source) throw() { new (dest) Rva00263895Member(source); }
 template<> inline void _Construct<Rva002390CB, Rva002390CB>(Rva002390CB *dest, const Rva002390CB &source) throw() { new (dest) Rva002390CB(source); }
 template<> void _Construct<Gen_005e9a20, Gen_005e9a20>(Gen_005e9a20 *dest, const Gen_005e9a20 &source) throw() { new (dest) Gen_005e9a20(source); }
 template<> inline void _Construct<Rva00064640Record, Rva00064640Record>(Rva00064640Record *dest, const Rva00064640Record &source) throw() { new (dest) Rva00064640Record(source); }

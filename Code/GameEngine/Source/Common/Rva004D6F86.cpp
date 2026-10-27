@@ -1,5 +1,7 @@
 // cl: /Oy- /MD
-// ?rva004D6F86@Rva00263895Member@@QAEXPAX@Z retail 0x004D6F86 62B.
+// ?rva004D6F86@Rva00263895Member@@UAEXPAX@Z retail 0x004D6F86 62B.
+// The single slot of vftable 0x007F9200, which the damage-info ctor 0x00263895 and
+// copy ctor 0x0028F68F install.
 // Leaf via vtable slot 0 of 0x007F9200: if arg cond slot 0x10 is false then call arg slot 0x28
 // with {1,1} temp then call member +0x04 slot0 and ptr +0x6c slot0 with arg.
 // Evidence: member layout Rva00263895Member +0x04 size 0x68 plus ptr +0x6c plus virtual call pattern.
@@ -39,10 +41,8 @@ public:
 class Rva00263895Member
 {
 public:
-	void rva004D6F86(void *arg);
-private:
-	char m_pad04[4];
-public:
+	virtual void rva004D6F86(void *arg);
+
 	Rva00263653View m_mem04;
 	Rva004D6F86Ptr m_obj6C;
 };

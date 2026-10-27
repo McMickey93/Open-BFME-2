@@ -18600,7 +18600,6 @@ present_unmatched	Code/GameEngine/Source/Common/RTS/PlayerList.cpp	PlayerList::x
 present_unmatched	Code/GameEngine/Source/Common/RTS/PlayerO1Shard.cpp	0ClosestKindOfData@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/PlayerRva002AA8EF.cpp	body	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/ProductionPrerequisite.cpp	init@ProductionPrerequisite@@QAEXXZ	1
-present_unmatched	Code/GameEngine/Source/Common/RTS/Rva00263895Init.cpp	rva00263895_dummy@Rva00263895Member@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Rva0073DFD0Finish.cpp	Rva0073DFD0Element::Rva0073DFD0Element	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Rva0073DFD0Finish.cpp	Rva0073DFD0Element::~Rva0073DFD0Element	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Science.cpp	callCreate@ScienceTreeExposer@@SAPAU?$_Rb_tree_node@U?$pair@$$CBW4ScienceType@@_N@_STL@@@_STL@@AAU1@ABU?$pair@$$CBW4ScienceType@@_N@3@@Z	1
@@ -18653,7 +18652,6 @@ present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	loadIniFiles
 present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	reset@CreateAHeroManager	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0021FFEEDtor.cpp	update@CreateAHeroManager	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00261790Ctor.cpp	dummy@Rva00261790@@UAEXXZ	1
-present_unmatched	Code/GameEngine/Source/Common/Rva00263653Ctor.cpp	rva00263653_dummy@Rva00263653@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp	Rva00288BF9AllocationLifetime::~Rva00288BF9AllocationLifetime	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp	Rva00288BF9Record::destroy	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp	Rva00288BF9Record::~Rva00288BF9Record	1

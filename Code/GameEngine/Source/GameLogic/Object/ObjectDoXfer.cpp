@@ -360,9 +360,9 @@ class Rva00263895Member
 {
 public:
 	Rva00263895Member();
-	void rva004D6F86(void *xfer);
+	virtual void rva004D6F86(void *xfer);	// slot 0 of vftable 0x007F9200
 
-	char m_data[0x7C];
+	char m_data[0x78];
 };
 
 class Rva00263895Record

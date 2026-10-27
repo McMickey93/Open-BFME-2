@@ -88,12 +88,12 @@ inline bool operator<(const BfmePod124 &x, const BfmePod124 &y) { return x.a[0] 
 class Gen_005e9a20;
 class Rva004E5012;
 struct BfmeVectorRecord001B4A39;
-class Rva0028F68F;
+class Rva00263895Member;
 namespace _STL {
 template <> void _Construct<Gen_005e9a20, Gen_005e9a20>(Gen_005e9a20 *, const Gen_005e9a20 &);
 template <> void _Construct<Rva004E5012, Rva004E5012>(Rva004E5012 *, const Rva004E5012 &);
 template <> void _Construct<BfmeVectorRecord001B4A39, BfmeVectorRecord001B4A39>(BfmeVectorRecord001B4A39 *, const BfmeVectorRecord001B4A39 &);
-template <> void _Construct<Rva0028F68F, Rva0028F68F>(Rva0028F68F *, const Rva0028F68F &);
+template <> void _Construct<Rva00263895Member, Rva00263895Member>(Rva00263895Member *, const Rva00263895Member &);
 // 0x00421D16
 template <> __declspec(dllimport) __forceinline void _Construct<BfmePod32, BfmePod32>(BfmePod32 *p, const BfmePod32 &v)
 { _Construct((Gen_005e9a20 *)p, (const Gen_005e9a20 &)v); }
@@ -105,7 +105,7 @@ template <> __declspec(dllimport) __forceinline void _Construct<BfmePod72, BfmeP
 { _Construct((BfmeVectorRecord001B4A39 *)p, (const BfmeVectorRecord001B4A39 &)v); }
 // 0x00291608
 template <> __declspec(dllimport) __forceinline void _Construct<BfmePod124, BfmePod124>(BfmePod124 *p, const BfmePod124 &v)
-{ _Construct((Rva0028F68F *)p, (const Rva0028F68F &)v); }
+{ _Construct((Rva00263895Member *)p, (const Rva00263895Member &)v); }
 }
 struct BfmePod196 { int a[49]; };
 inline bool operator==(const BfmePod196 &x, const BfmePod196 &y) { return x.a[0] == y.a[0]; }

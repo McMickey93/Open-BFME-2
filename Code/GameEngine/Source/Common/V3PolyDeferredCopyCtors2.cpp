@@ -1,7 +1,13 @@
 // cl: /DNDEBUG /MD /EHsc
-// Copy constructors split from V3PolyDeferredCopyCtors.cpp: their classes'
-// destructors are still unprovided (0x0028C62B/0x0028F68F await the DamageInfo
-// class reconciliation), so they stay out of the unit that now links.
+// Copy constructors split from V3PolyDeferredCopyCtors.cpp. Neither class has a
+// virtual destructor: each copy ctor installs a one-slot retail vftable whose
+// slot is the record's transfer method, not a deleting destructor (target
+// facts). 0x0028C62B stores 0x007F91FC, the table the default ctor 0x00263653
+// stores (slot 0x004D6FC4), so both are Rva00263653's. 0x0028F68F stores
+// 0x007F9200, the table the default ctor 0x00263895 stores (slot 0x004D6F86),
+// so both are Rva00263895Member's. Its +0x04 member is the 0x0028C62B class
+// and its +0x6C member the 0x0028C6D6 class, which matches the default ctor's
+// layout.
 
 typedef int Int;
 typedef short Short;
@@ -12,11 +18,11 @@ typedef short Short;
 // ten dwords +0x24..+0x48 then byte +0x4C then six dwords +0x50..+0x64.
 // Sits directly before 0x0028C6D6 and the retail caller 0x0028F6A4 builds
 // both subobjects in one tail.
-class Rva0028C62B
+class Rva00263653
 {
 public:
-	Rva0028C62B(const Rva0028C62B &other);
-	virtual ~Rva0028C62B();
+	Rva00263653(const Rva00263653 &other);
+	virtual void rva004D6FC4(void *context);
 
 	Int m_field04;
 	Int m_field08;
@@ -46,7 +52,7 @@ public:
 	Int m_field64;
 };
 
-Rva0028C62B::Rva0028C62B(const Rva0028C62B &other)
+Rva00263653::Rva00263653(const Rva00263653 &other)
 {
 	m_field04 = other.m_field04;
 	m_field08 = other.m_field08;
@@ -82,17 +88,17 @@ Rva0028C62B::Rva0028C62B(const Rva0028C62B &other)
 // stores, so the compiler proves nothrow and stays frameless with two
 // outlined calls, exactly like retail. (The E8 sites sit 21/33 bytes in;
 // the row names the C9-C3 boundary, not the call sites.)
-class Rva0028F68F
+class Rva00263895Member
 {
 public:
-	Rva0028F68F(const Rva0028F68F &other);
-	virtual ~Rva0028F68F();
+	Rva00263895Member(const Rva00263895Member &other);
+	virtual void rva004D6F86(void *arg);
 
-	Rva0028C62B m_member04;
+	Rva00263653 m_member04;
 	Rva0028C6D6 m_member6C;
 };
 
-Rva0028F68F::Rva0028F68F(const Rva0028F68F &other)
+Rva00263895Member::Rva00263895Member(const Rva00263895Member &other)
 	: m_member04(other.m_member04)
 	, m_member6C(other.m_member6C)
 {

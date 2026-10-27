@@ -1,5 +1,6 @@
 // cl: /O1 /arch:SSE /G7 /EHsc /MD
-// ?rva004D6FC4@Rva004D6FC4@@QAEXPAX@Z @0x004D6FC4 273B: xfer of a damage record: nothing for a
+// ?rva004D6FC4@Rva00263653@@UAEXPAX@Z @0x004D6FC4 273B: the single slot of vftable 0x007F91FC,
+// which the damage-record ctor 0x00263653 and copy ctor 0x0028C62B install. xfer of the record: nothing for a
 // light CRC; then a version block (1, 3), an ObjectID at +4, the +8 field, the damage,
 // damage-FX, damage sub and death type enums at +0xC..+0x18, fields at +0x1C..+0x48 (+0x30 through
 // the 0x60 slot), the byte flag at +0x21 from version 2 and the +0x64 field from version 3.
@@ -46,12 +47,11 @@ void XferFXTrigger(Xfer *xfer, int *value);
 
 typedef Xfer *(*XferHelperFn)(Xfer *, void *);
 
-class Rva004D6FC4
+class Rva00263653
 {
 public:
-	void rva004D6FC4(void *context);
+	virtual void rva004D6FC4(void *context);
 private:
-	int m_00;
 	ObjectID m_04;
 	int m_08;
 	int m_0C, m_10, m_14, m_18;
@@ -67,7 +67,7 @@ private:
 	int m_64;
 };
 
-void Rva004D6FC4::rva004D6FC4(void *context)
+void Rva00263653::rva004D6FC4(void *context)
 {
 	Xfer *xfer = static_cast<Xfer *>(context);
 	if (xfer->IsLightCRC())
