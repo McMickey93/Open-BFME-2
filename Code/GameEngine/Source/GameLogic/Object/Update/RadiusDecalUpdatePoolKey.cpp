@@ -9,10 +9,9 @@
 // static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
 // from retail, no pins; nameToKey resolves via its matched row).
 
-enum NameKeyType
-{
-	NK_UNKNOWN = 0
-};
+// The classes come from RadiusDecalUpdateView.h, the view of the
+// RadiusDecalUpdate.cpp TU this body joins.
+#include "RadiusDecalUpdateView.h"
 
 class NameKeyGenerator
 {
@@ -21,12 +20,6 @@ public:
 };
 
 extern NameKeyGenerator *TheNameKeyGenerator;
-
-class RadiusDecalUpdate
-{
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
 
 // ?getModuleNameKey@RadiusDecalUpdate@@UBE?AW4NameKeyType@@XZ
 NameKeyType RadiusDecalUpdate::getModuleNameKey() const
