@@ -22,7 +22,7 @@
 
 // Declared so MSVC lowers the array delete to ??_V@YAXPAX@Z instead of folding
 // it to the scalar form.
-void operator delete[]( void *block );
+#include <new>
 
 class ShdDefClass;
 

@@ -1224,7 +1224,6 @@ Code/Libraries/Source/WWVegas/WWLib/stlport_wide_put_integer.cpp	drop-in candida
 Code/Libraries/Source/WWVegas/WWLib/stlport_wide_time_get_names.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<time.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	tm:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_write_integer_backward.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memmove:same
 Code/Libraries/Source/WWVegas/WWLib/wwstring.h	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<esebcli2.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	WCHAR:same
-Code/Libraries/Source/WWVegas/wwshade/ShdDefFactoryClassDelete.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/Libraries/Source/collisionmanager/collisionmanager_impl.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/Libraries/Source/debug/Debug_FrameCommands.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memmove:same
 reference/shims/sweep/wpaudio/altypes.h	drop-in candidate	same	6	6	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	shim		prove with ./build.sh: byte gate is the authority	BOOL:same,UINT:same,INT:same,NULL:same,TRUE:same,FALSE:same
