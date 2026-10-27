@@ -19,6 +19,6 @@
 
 class Rva005F501E { public: ~Rva005F501E(); };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva005F501E_DeleteAnchor(Rva005F501E *p) { delete p; }

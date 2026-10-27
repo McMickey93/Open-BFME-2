@@ -8,7 +8,7 @@
 // PillageModuleDataDtor precedent for Snapshot+novtable shape.
 #include "ascii_string.h"
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 struct NodeF4
 {

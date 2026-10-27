@@ -18,7 +18,7 @@ class Rva002C5F8E { public: ~Rva002C5F8E(); };
 class Rva002D28FF { public: ~Rva002D28FF(); };
 class Rva002D339F { public: ~Rva002D339F(); };
 
-void operator delete(void *p);
+#include <new>
 
 void Rva002BF17C_DeleteAnchor(Rva002BF17C *p) { delete p; }
 void Rva002C5F72_DeleteAnchor(Rva002C5F72 *p) { delete p; }
