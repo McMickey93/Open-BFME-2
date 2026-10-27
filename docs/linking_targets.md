@@ -503,6 +503,14 @@ existing INI repair; no new source or census gain is claimed. See the
 [AI consumer evidence](../reverse/attempt_support/ai-constructor-current-provider-20261026.md)
 and LINK-004. It is outside the historical snapshot totals below.
 
+An additional historical census lead, `W3DVolumetricShadow.cpp` (348 authored
+bytes), was verified on 2026-10-27 at `f732423015`: paired with the current
+thread-lock provider, both preview LINKS before and after removal of two stale
+manager-destructor exemptions. Four rows and one EH graph remain exact; all
+13 emitted COMDAT digests are unchanged. [Scoped evidence](../reverse/attempt_support/shadow-marker-cleanup-20261027-codexb4.md),
+LINK-106. This retires two hatch keys; census confirmation remains pending and
+no new linking gain is claimed. It is outside the historical snapshot below.
+
 ## Snapshot totals
 
 | Category | Units | Reported matched bytes |

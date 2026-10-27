@@ -195,7 +195,7 @@ private: HashTableClass *GeomPtrTable,*MissingGeomTable;
 struct VolShadowTCBAccess : TCBSpline3DClass { typedef TCBClass Type; };
 extern DynamicVectorClass<VolShadowTCBAccess::Type> g_00DEBE0C;
 extern DynamicVectorClass<VolShadowTCBAccess::Type> g_00DEBE24;
-// ?W3DVolumetricShadowManager::~W3DVolumetricShadowManager present-unmatched
+// W3DVolumetricShadowManager destructor is rowed and byte-verified below.
 W3DVolumetricShadowManager::~W3DVolumetricShadowManager()
 {
  VolShadowDeviceLock guard;
@@ -213,7 +213,7 @@ W3DVolumetricShadowManager::~W3DVolumetricShadowManager()
 // Native60 atF2797; the manager143 deletion and matched constructor fields
 // agree with BFME1's two-table owner. Free_All_Geoms (95B at 0x000F1AD8)
 // keeps its address-derived method name.
-// ?W3DShadowGeometryManager::~W3DShadowGeometryManager present-unmatched
+// W3DShadowGeometryManager destructor is rowed and byte-verified below.
 W3DShadowGeometryManager::~W3DShadowGeometryManager()
 {
  rva000F1AD8();

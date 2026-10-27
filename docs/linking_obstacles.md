@@ -4233,6 +4233,17 @@ authored bytes); all three screenshot-unit rows pass byte verification. No
 source change was needed. [Scoped checks](../reverse/attempt_support/gamespy-pinger-shared-data-20261027.md)
 extend the existing repair's caller evidence; census confirmation remains pending.
 
+Follow-up shadow verification and debt retirement (2026-10-27, `f732423015`):
+the default picker served W3DVolumetricShadow.cpp's historical selected-copy
+blocker. Paired with the current BfmeDX8ThreadLock.cpp provider, both preview
+LINKS before and after cleanup (348 and 247 authored bytes). All four shadow
+rows and its one EH graph remain exact; all 13 emitted COMDAT digests are
+unchanged. Two stale manager-destructor unmatched exemptions and their hatch
+keys are retired. Existing shadow data findings and LINK-008's strict-receipt
+prerequisite remain. [Scoped evidence](../reverse/attempt_support/shadow-marker-cleanup-20261027-codexb4.md).
+This confirms the landed repair for this caller; census confirmation remains
+pending, with no new linked-byte gain claimed.
+
 ### LINK-110: a class view omits its base's out-of-line destructor, so an unused implicit inline dtor references an unprovided grand-base
 Status: Open (SubObjectsUpgrade subset repaired). Updated: 2026-10-27; inspected revision: 952d800df1; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.
 Evidence / affected units: under `/GX` a constructor makes the front end emit its base's implicit destructor for the unwind path even when the optimized body needs no frame. `SubObjectsUpgrade.cpp`'s private `UpgradeModule` view declared no destructor, so the object carried an unreferenced inline `??1UpgradeModule@@UAE@XZ` that jumps to the placeholder `??1ObjectModuleBase@@UAE@XZ`, which nothing provides (census: sole blocker, 1,108 B). Retail's owner is the rowed protected virtual `??1UpgradeModule@@MAE@XZ` at 0x0046089D (UpgradeModuleDtor.cpp), which ten other upgrade units already declare.
