@@ -4306,6 +4306,19 @@ Remaining / next check: the class owner must resolve the missing hasData API and
 Clearance: limited to preserving the existing ordinary-preview links of the adopted units. Remaining private-view blockers stay open. No new linked-byte gain is claimed.
 Census confirmation: pending the next normal maintainer census; no census run or index update in this pass.
 
+**2026-10-27 SidesList prerequisite:** `Rva00194810Split_Rva0032abda.cpp`
+now uses canonical AsciiString and StringBase. Its four-byte `BfmeWordEL`
+wrapper forwards copy and substring construction through AsciiString's public
+constructors. Retaining the existing speed-built accessor definition preserves
+the caller's cached buffer pointer. Both rows (184-byte splitter and 10-byte EH
+handler) and its EH graph remain exact; the splitter, pair factory and lookup
+consumer preview LINKS together (299 -> 299 authored bytes, index `bf3dd31211`).
+The header lane accepted the source and retired its queue item; the removed
+private AsciiString exemption lowers the hatch register by one. No shared
+header, pin or ledger change. Scope and reproduction: `reverse/attempt_support/sideslist-ascii-adoption-20261027-codex3.md`.
+This clears only that consumer's header prerequisite; remaining LINK-099
+consumers and SidesList consolidation still require their own verification.
+
 ### LINK-100: remaining AsciiString constructor and lifetime contracts
 
 Status: Blocked for the remaining consumers; compatible consumer adoptions verified. Updated: 2026-10-27; inspected revision: b2098ee19b936ee456d5cf7d6ec0c8c6a5468e63.
