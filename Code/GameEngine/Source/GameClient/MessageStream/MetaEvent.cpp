@@ -1,4 +1,4 @@
-// cl: /MD /EHsc /Ireference/shims/bfme2_ascii /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib -Ireference/open-bfme-1/inputs/reference/shims/iniexception -Ireference/open-bfme-1/inputs/reference/shims/sweep -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main -Ireference/open-bfme-1/game/GameEngine/Source/GameClient
+// cl: /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/shims/bfme2_ascii /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib -Ireference/open-bfme-1/inputs/reference/shims/iniexception -Ireference/open-bfme-1/inputs/reference/shims/sweep -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main -Ireference/open-bfme-1/game/GameEngine/Source/GameClient /Ireference/shims/bfme2_ascii_zh
 // TU Code/GameEngine/Source/GameClient/MessageStream/MetaEvent.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
 #include "unicode_string.h"
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"
@@ -86,21 +86,6 @@ enum
 enum MappableKeyModState { NONE = 0, CTRL = 4, SHIFT = 16, ALT = 64 };
 
 enum CommandUsableInType { COMMANDUSABLE_SHELL = 1, COMMANDUSABLE_GAME = 2 };
-
-class MetaMapRec
-{
-public:
-	MetaMapRec *m_next;
-	GameMessage::Type m_meta;
-	int m_key;
-	int m_transition;
-	Int m_modState;
-	Int m_usableIn;
-	// The rowed allocator at 0x001DB537 initializes this 0x24-byte record.
-	Int m_category;
-	UnicodeString m_description;
-	UnicodeString m_displayName;
-};
 
 // The rowed constructor/destructor in Common/MetaMap.cpp establish the
 // canonical 12-byte subsystem base and record-list pointer at +0x0C.
@@ -233,6 +218,32 @@ private:
 // landed 0x001DB60F plus vtable slot 0 of 0x007DBA7C plus rowed delete
 // 0x0002FD60. Honest address name on proven owner.
 void __cdecl operator delete(void *p);
+
+class MetaMapRec
+{
+public:
+	MetaMapRec *m_next;
+public:
+	GameMessage::Type m_meta;
+public:
+	int m_key;
+public:
+	int m_transition;
+public:
+	Int m_modState;
+public:
+	Int m_usableIn;
+public:
+	Int m_category;
+public:
+	UnicodeString m_description;
+public:
+	UnicodeString m_displayName;
+public:
+	~MetaMapRec();
+};
+
+// ---- from Code/GameEngine/Source/GameClient/MessageStream/MetaEvent.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/MessageStream/MetaEvent.cpp
 
@@ -446,20 +457,6 @@ Rva001DB4C4Fields *Rva001DB4C4Fields::initialize()
     return this;
 }
 
-// tu-skeleton: 0x001DB3E8 22B ??0MetaMap@@QAE@XZ -- matched in Code/GameEngine/Source/Common/MetaMap.cpp (not merged yet)
-
-// tu-skeleton: 0x001DB3FE 52B ?findGameMessageMetaType@MetaMap@@IAE?AW4Type@GameMessage@@PBD@Z -- matched in Code/GameEngine/Source/GameClient/MessageStream/MetaMapFindGameMessageMetaType.cpp (not merged yet)
-
-// tu-skeleton: 0x001DB432 92B ??0MetaEventTranslator@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GameClientDrawableTOC.cpp (not merged yet)
-
-// tu-skeleton: 0x001DB48E 54B ??1MetaMapRec@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/MessageStream/MetaMapRecDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x001DB4CF 76B ?parseDebugCommandMap@@YAXPAVINI@@@Z -- matched in Code/GameEngine/Source/GameClient/parseDebugCommandMap.cpp (not merged yet)
-
-// tu-skeleton: 0x001DB5A2 109B ?parseMetaMap@MetaMap@@SAXPAVINI@@@Z -- matched in Code/GameEngine/Source/GameClient/MessageStream/MetaMapParseMetaMap.cpp (not merged yet)
-
-// tu-skeleton: 0x001DB60F 91B ??1MetaMap@@UAE@XZ -- matched in Code/GameEngine/Source/Common/MetaMap.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva001DB66ADelete.cpp
 
 void *MetaMap::rva001DB66A(unsigned int flags)
@@ -469,3 +466,41 @@ void *MetaMap::rva001DB66A(unsigned int flags)
 		::operator delete(this);
 	return this;
 }
+
+// tu-skeleton: 0x001DB3E8 22B ??0MetaMap@@QAE@XZ -- matched in Code/GameEngine/Source/Common/MetaMap.cpp (not merged yet)
+
+// tu-skeleton: 0x001DB3FE 52B ?findGameMessageMetaType@MetaMap@@IAE?AW4Type@GameMessage@@PBD@Z -- matched in Code/GameEngine/Source/GameClient/MessageStream/MetaMapFindGameMessageMetaType.cpp (not merged yet)
+
+// tu-skeleton: 0x001DB432 92B ??0MetaEventTranslator@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GameClientDrawableTOC.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/MessageStream/MetaMapRecDtor.cpp
+
+// ??1MetaMapRec@@QAE@XZ @0x001DB48E 54B
+// MetaMapRec dtor: releases two UnicodeStrings at +0x1c/+0x20 via wide releaseBuffer 0x36E70 with EH.
+// Evidence: retail lea ecx [esi+0x20] then [esi+0x1c] both call 0x36E70; 0x24 alloc in 0x1DB537 getMetaMapRec;
+// ZH donor GameEngine/Include/GameClient/MetaEvent.h MetaMapRec layout m_next+0 m_meta+4 m_key+8
+// m_transition+0xC m_modState+0x10 m_usableIn+0x14 m_category+0x18 m_description+0x1C m_displayName+0x20;
+// BFME1 game/GameEngine/Source/GameClient/MessageStream/MetaMapRecDestructorThunks.cpp + MetaMap_getMetaMapRecThunk.cpp
+// pin same +0x1C/+0x20; callers 0x1DB50A 0x1DB51E 0x1DB63D and deleting dtor 0x1DB51B shape; no vptr so non-virtual public QAE.
+
+MetaMapRec::~MetaMapRec()
+{
+}
+
+// tu-skeleton: 0x001DB4CF 76B ?parseDebugCommandMap@@YAXPAVINI@@@Z -- matched in Code/GameEngine/Source/GameClient/parseDebugCommandMap.cpp (not merged yet)
+
+// tu-skeleton: 0x001DB5A2 109B ?parseMetaMap@MetaMap@@SAXPAVINI@@@Z -- matched in Code/GameEngine/Source/GameClient/MessageStream/MetaMapParseMetaMap.cpp (not merged yet)
+
+// tu-skeleton: 0x001DB60F 91B ??1MetaMap@@UAE@XZ -- matched in Code/GameEngine/Source/Common/MetaMap.cpp (not merged yet)
+
+// tu-skeleton: 0x007697E8 8B uw_007697e8 -- matched in Code/gen_small/uw_gen_012.cpp (not merged yet)
+
+// tu-skeleton: 0x007697F0 10B __ehhandler$??0MetaEventTranslator@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GameClientDrawableTOC.cpp (not merged yet)
+
+// tu-skeleton: 0x0076980F 8B uw_0076980f -- matched in Code/GameEngine/Source/GameClient/parseDebugCommandMap.cpp (not merged yet)
+
+// tu-skeleton: 0x00769817 10B __ehhandler$?parseDebugCommandMap@@YAXPAVINI@@@Z -- matched in Code/GameEngine/Source/GameClient/parseDebugCommandMap.cpp (not merged yet)
+
+// tu-skeleton: 0x00769821 8B Unwind@00b69821 -- matched in Code/GameEngine/Source/Common/MetaMap.cpp (not merged yet)
+
+// tu-skeleton: 0x00769829 10B __ehhandler$??1MetaMap@@UAE@XZ -- matched in Code/GameEngine/Source/Common/MetaMap.cpp (not merged yet)
