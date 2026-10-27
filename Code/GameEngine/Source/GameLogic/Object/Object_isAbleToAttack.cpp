@@ -19,16 +19,13 @@
 // testStatus (+0x94 words), isKindOf (+0x10C words) and getContain (+0x190)
 // are already matched and prove the low Object layout this TU extends.
 
+#include <stddef.h>
 #include "Coord3D.h"
 typedef bool Bool;
 enum AbleToAttackType { ABLE_TO_ATTACK_TYPE_0 = 0 };
 enum CanAttackResult { ATTACKRESULT_NOT_POSSIBLE=0 };
 enum CommandSourceType {};
 typedef float Real;
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 enum ObjectStatusTypes
 {

@@ -1,5 +1,6 @@
 // cl: /GX-
 // ?shutdown@AIUpgradeScienceBuilder@@UAEXXZ @0x00597B32 162B: vslot2 of 0x00870C18 clearing two voidptr vectors with slot0+delete then hero remove via TheSkirmishAIManager and ScienceType clear; callers 0x00597BFE
+#include <new>
 #include "../../SkirmishAI/AIUpgrade/AIUpgradeScienceBuilder/ScienceBuilderView.h"
 
 class Player;
@@ -18,8 +19,6 @@ class Elem
 public:
 	virtual void *slot0(int x);
 };
-
-void __cdecl operator delete(void *p);
 
 void AIUpgradeScienceBuilder::shutdown()
 {
