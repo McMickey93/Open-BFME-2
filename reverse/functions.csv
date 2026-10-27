@@ -8445,7 +8445,7 @@ _GetProcessorFlags,,0x001C4390,169,Code/Libraries/Source/VP6/GetProcessorFlags.c
 ?set@Rva004FD9EADwordSlot@@QAEXH@Z,,0x004FD9EA,13,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp,matched,Disp32 dword setter
 ?set@Rva004FD9F7DwordSlot@@QAEXH@Z,,0x004FD9F7,13,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp,matched,Disp32 dword setter
 ?set@Rva004FDA04DwordSlot@@QAEXH@Z,,0x004FDA04,13,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp,matched,Disp32 dword setter
-?Rva00075E3CGet@@YAHXZ,,0x00075E3C,6,Code/GameEngine/Source/Common/Rva00075E36Getters.cpp,matched,Global dword getter reading 0x001FDE58
+?Rva00075E3CGet@@YAHXZ,,0x00075E3C,6,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,matched,Global dword getter reading 0x001FDE58
 ?Rva00078BEEGet@@YAHXZ,,0x00078BEE,6,Code/GameEngine/Source/Common/Rva00078BEEGetters.cpp,matched,Global dword getter reading 0x001FDEB4
 ?Rva00078BF4Get@@YAHXZ,,0x00078BF4,6,Code/GameEngine/Source/Common/Rva00078BEEGetters.cpp,matched,Global dword getter reading 0x001FDEB0
 ?Rva0011009AGet@@YAHXZ,,0x0011009A,6,Code/GameEngine/Source/Common/Rva0011009AGetters.cpp,matched,Global dword getter reading 0x00DB5FD4
@@ -33219,7 +33219,7 @@ _rva0075B4C6D3DXQuaternionSlerp@16,,0x0075B4C6,6,Code/Libraries/Source/WWVegas/W
 ??0Rva005E9FC1@@QAE@PAX@Z,,0x005E9FC1,58,Code/GameEngine/Source/Common/Rva005E9FC1Ctor.cpp,matched,ctor base stores arg at +4 vtable 0x878114 at +0 member 0x57416B at +8 caller 0x5EA15B
 ?rva005E8095@Rva005E8095@@QAEXI@Z,,0x005E8095,104,Code/GameEngine/Source/Common/Bfme/Rva005E8095Reserve.cpp,matched,vector reserve via 0x5E7229 plus clear 0x5E8077 plus allocator
 ?Rva0027DC65Check@@YA_NPAM@Z,,0x0027DC65,141,Code/GameEngine/Source/Common/Rva0027DC65Check.cpp,matched,TheTerrainLogic slots 0x20 0x34 0x4c via bounds and null
-?Rva00075725Check@@YA_NHH@Z,,0x00075725,33,Code/GameEngine/Source/Common/Rva00075725Check.cpp,matched,indexed via g_00DE1F2C null check then virtual slot 4 caller 0x00085F6A tests al
+?Rva00075725Check@@YA_NHH@Z,,0x00075725,33,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,matched,indexed via g_00DE1F2C null check then virtual slot 4 caller 0x00085F6A tests al
 ?rva005EF5C2@Rva005EF5C2@@QAEXABVUnicodeString@@@Z,,0x005EF5C2,8,Code/GameEngine/Source/Common/Rva005EF557ArmyName.cpp,matched,forwarder to 0x005EF557 via inner at plus4
 ?rva005321D1@Rva005321D1@@QAEXGG@Z,,0x005321D1,94,Code/GameEngine/Source/Common/Rva005321D1Union.cpp,matched,union order remap rank via caller 0x00532470
 ?rva00532165@Rva00532165@@QAEXGG@Z,,0x00532165,108,Code/GameEngine/Source/Common/Rva00532165Union.cpp,matched,union by rank via caller 0x0053244C
@@ -33251,7 +33251,7 @@ _rva0075B4C6D3DXQuaternionSlerp@16,,0x0075B4C6,6,Code/Libraries/Source/WWVegas/W
 ?rva007B67C0Initialize@@YAXXZ,,0x007B67C0,39,Code/GameEngine/Source/Common/Rva007B67C0ArrayInit.cpp,matched,object-symbol=_$E1; BFME1 clean C++ donor2791daf5536e4e2147dc3a4aa25c17816828dd69 Rva00C6DC90ArrayInit.cpp; target int3 extent39; native storage E18388 stride4 count178; verified reset6D2F90 dtor6D3010 EH vector ctor629512 cleanup7B9C60 atexit6291F8; original array/type identityunknown structural lifetime view; /O2 /Ob0 /MD /EHsc
 ?rva00075016@Rva0007517F@@UAEXPBMMHHH@Z,,0x00075016,123,Code/GameEngine/Source/Common/System/Rva0007517FCtor.cpp,matched,vslot 19 offset 0x4C vtable 0x7C6620 class Rva0007517F via ctor plus float global
 ?Rva00075695Notify@@YAXH@Z,,0x00075695,42,Code/GameEngine/Source/Common/Rva00075695Notify.cpp,matched,sibling Rva00075725Check pattern slot1 gated by g_00DE1F54
-?Rva000756BFSelect@@YA_NHHH@Z,,0x000756BF,50,Code/GameEngine/Source/Common/Rva000756BFSelect.cpp,matched,indexed via g_00DE1F2C slot2 stores index to g_00DE1F5C
+?Rva000756BFSelect@@YA_NHHH@Z,,0x000756BF,50,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,matched,indexed via g_00DE1F2C slot2 stores index to g_00DE1F5C
 ?rva00276B95@Drawable@@QAEXXZ,,0x00276B95,20,Code/GameEngine/Source/GameClient/DrawableRva00276B95.cpp,matched,unlock flag clear plus tail jmp via rowed 0x00275545 caller 0x0029F34F
 ?rva005D4E6F@Rva005D4E6F@@QAEHXZ,,0x005D4E6F,21,Code/GameEngine/Source/Common/Rva005D4E6FCheck.cpp,matched,leaf predicate over pointee plus0 true if dword at plus0xC or plus0x8 nonzero
 ?Rva00337819Insert@@YAXPAVRva002E9E70@@0VRva003371B1@@H@Z,,0x00337819,118,Code/GameEngine/Source/Common/Rva00337819Insert.cpp,matched,sorted-range insert EH compare plus copy plus insert
@@ -33290,7 +33290,7 @@ _rva0075B4C6D3DXQuaternionSlerp@16,,0x0075B4C6,6,Code/Libraries/Source/WWVegas/W
 ?rva005E0CC7@Rva005E0CC7@@QAEXXZ,,0x005E0CC7,36,Code/GameEngine/Source/Common/Rva005E0CC7Method.cpp,matched,unlock via rowed get plus setter
 ??0Rva003A393A@@QAE@XZ,,0x003A393A,31,Code/GameEngine/Source/Common/RTS/ArmorHashMapCtor003A393A.cpp,matched,Armor hash_map-shape ctor twin of 0x00360B99 same 31B pushes
 ??0Rva003A3959@@QAE@XZ,,0x003A3959,50,Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp,matched,chain outer ctor vtable 81ADFC member 3A393A callers 2AF8BB 3A3AB8
-?Rva000756F1Dispatch@@YA_NHHHHH@Z,,0x000756F1,52,Code/GameEngine/Source/Common/Rva000756F1Dispatch.cpp,matched,free function indexed via g_00DE1F2C null check then virtual slot 3 call with four args clears g_00DE1F5C on null
+?Rva000756F1Dispatch@@YA_NHHHHH@Z,,0x000756F1,52,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,matched,free function indexed via g_00DE1F2C null check then virtual slot 3 call with four args clears g_00DE1F5C on null
 ?rva00085F6A@Rva00085F6A@@QAE_NH@Z,,0x00085F6A,62,Code/GameEngine/Source/Common/Rva00085F6ASet.cpp,matched,thiscall sets m_110 validates via Rva00075725Check restores on false chain
 ?rva000857F2@Rva000857F2@@QAEXXZ,,0x000857F2,35,Code/GameEngine/Source/Common/Rva000857F2Clear.cpp,matched,thiscall clears three floats and five bytes unlocks 0x0008D925
 ??0Rva002768AC@@QAE@PAVDrawable@@@Z,,0x00278869,65,Code/GameEngine/Source/GameClient/Rva002768AC.cpp,matched,ctor via rowed Matrix3D and rowed 0x002768AC and TheGameClient caller 0x002788C7

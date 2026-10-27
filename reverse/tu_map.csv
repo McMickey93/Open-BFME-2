@@ -3841,15 +3841,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x000754DE,363,code-unledgered,,,-,,
 0x00075655,64,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/Rva00075655SetShader.cpp
 0x00075695,42,code,,,-,,Code/GameEngine/Source/Common/Rva00075695Notify.cpp
-0x000756BF,50,code,,,-,,Code/GameEngine/Source/Common/Rva000756BFSelect.cpp
-0x000756F1,52,code,,,-,,Code/GameEngine/Source/Common/Rva000756F1Dispatch.cpp
-0x00075725,33,code,,,-,,Code/GameEngine/Source/Common/Rva00075725Check.cpp
+0x000756BF,50,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
+0x000756F1,52,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
+0x00075725,33,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
 0x00075746,733,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp N=Code/GameEngine/Source/Common/W3DShaderManager.cpp noncontiguous,Code/GameEngine/Source/Common/Rva00075A23Draw.cpp
 0x00075A23,437,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,C,C=0x00075746..0x00075BD8 noncontiguous,Code/GameEngine/Source/Common/Rva00075A23Draw.cpp
 0x00075BD8,378,code-unledgered,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,C,C=0x00075746..0x00075D52 noncontiguous,
 0x00075D52,228,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp noncontiguous,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
-0x00075E36,6,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,C,C=0x00075D52..0x00075E3C noncontiguous,Code/GameEngine/Source/Common/Rva00075E36Getters.cpp
-0x00075E3C,6,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,C,C=0x00075D52..0x00075E42 noncontiguous,Code/GameEngine/Source/Common/Rva00075E36Getters.cpp
+0x00075E36,6,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,C,C=0x00075D52..0x00075E3C noncontiguous,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
+0x00075E3C,6,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,C,C=0x00075D52..0x00075E42 noncontiguous,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp
 0x00075E42,2023,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,C,C=0x00075D52..0x00076629 noncontiguous,Code/GameEngine/Source/Common/Rva00075E42.cpp
 0x00076629,184,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,proposed,Z,Z=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp S=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp noncontiguous,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerRequirements.cpp
 0x000766E1,20,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_o1.cpp
