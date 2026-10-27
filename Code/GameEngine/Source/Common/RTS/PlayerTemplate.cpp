@@ -191,7 +191,7 @@ struct Rva001FD404
 // Tree erase: recurse right via +0xC, free the node via rowed _free 0x00030830,
 // walk left via +0x8, ret 4. Same 45B shape as Rva002CF32FErase precedent.
 // Caller at 0x001FD63E unblocks 0x001FD630.
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 #include "PlayerTemplateTreeView.h"
 // ?rva001FD8DF@Rva001FD42B@@QAEPAU1@ABU1@@Z @0x001FD8DF 115B.
 // Tree assign for the Rva001FD42B node family: self-check, clear via rowed

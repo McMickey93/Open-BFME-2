@@ -95,7 +95,7 @@ private:
 	Rva004BA1C8Triple m_20;
 };
 
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 class Rva004BA3CC {
 	Rva004BA1C8 *m_first;

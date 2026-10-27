@@ -553,8 +553,6 @@ class Rva00395A60 { public: __declspec(noinline) float rva00395A60(); };
 class TerrainLogic { public: void rva00283262(const Coord3D*,float); };
 extern TerrainLogic* TheTerrainLogic;
 class ScriptEngine { public: void rva00357960(const AsciiString&,Object*); };
-extern "C" void *theLogicRandomLogFile;
-extern "C" int __cdecl fprintf(void*,const char*,...);
 static __forceinline void castleUnpackedConditions(Object* owner) {
  CastleConditionView* view=(CastleConditionView*)owner;
  if(view->conditions.test(94)!=0 || view->conditions.test(96)==0) {
