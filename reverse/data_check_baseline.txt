@@ -263,9 +263,6 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeScaffoldBehaviorPoolKey.c
 Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeTowerBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00045876C@BridgeTowerBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03444
 Code/GameEngine/Source/GameLogic/Object/Behavior/BuildingBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004561C1@BuildingBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03424
 Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000398538@CastleBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A02818
-Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorPoolKey2.cpp	wrong-name	?$S1@?1??rva0003955DA@CastleBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A027CC
-Code/GameEngine/Source/GameLogic/Object/Behavior/CastleMemberBehaviorFind.cpp	wrong-name	?$S1@?1??rva000395708@CastleBehavior@@SAPAVModule@@PAVObject@@@Z@4IA	0x00A027D4
-Code/GameEngine/Source/GameLogic/Object/Behavior/CastleMemberBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0003959B5@CastleMemberBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A027DC
 Code/GameEngine/Source/GameLogic/Object/Behavior/ClearanceTestingSlowDeathBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000483CF4@ClearanceTestingSlowDeathBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037E0
 Code/GameEngine/Source/GameLogic/Object/Behavior/ClickReactionBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004595AB@ClickReactionBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0346C
 Code/GameEngine/Source/GameLogic/Object/Behavior/DualWeaponBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00045ADE0@DualWeaponBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A034B0
@@ -285,7 +282,6 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourPoolKey
 Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionAudioLoopClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004CBF13@ModelConditionAudioLoopClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0437C
 Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionSoundSelectorClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000254BAC@ModelConditionSoundSelectorClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x009FE9C4
 Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000484ADD@PassiveAreaEffectBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03804
-Code/GameEngine/Source/GameLogic/Object/Behavior/PhysicsBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00039085C@PhysicsBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A027A8
 Code/GameEngine/Source/GameLogic/Object/Behavior/PoisonedBehavior.cpp	wrong-name	?$S1@?1??rva000482F27@PoisonedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037B4
 Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00048191A@PropagandaTowerBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03788
 Code/GameEngine/Source/GameLogic/Object/Behavior/RampageBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva000458B0A@RampageBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0344C
@@ -295,7 +291,6 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorPoolKey.c
 Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorUpdate.cpp	wrong-name	?$S1@?6??rva004842DD@ReplenishUnitsBehavior@@QAEXPAVObject@@@Z@4IA	0x00A037F0
 Code/GameEngine/Source/GameLogic/Object/Behavior/RunOffMapBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004621B2@RunOffMapBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03620
 Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBehaviorResolver.cpp	wrong-name	?$S1@?5??resolveGateBehavior@Rva00128780GateBehaviorOwner@@QAE_NXZ@4IA	0x009FE9CC
-Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00395C80Check.cpp	wrong-name	?$S1@?1??rva00395C80@@YAHPAVObject@@@Z@4IA	0x00A027E4
 Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00047FE4B@ShareExperienceBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03760
 Code/GameEngine/Source/GameLogic/Object/Behavior/ShipSlowDeathBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00045E9FA@ShipSlowDeathBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A035A4
 Code/GameEngine/Source/GameLogic/Object/Behavior/SiegeDockingBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004599E5@SiegeDockingBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A03478
@@ -490,7 +485,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdate.cpp	wrong-name	?$S1@?
 Code/GameEngine/Source/GameLogic/Object/Update/QueueProductionExitUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A00C2@QueueProductionExitUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B84
 Code/GameEngine/Source/GameLogic/Object/Update/RadarUpdate.cpp	wrong-name	?$S1@?1??rva0004A0C2D@RadarUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B8C
 Code/GameEngine/Source/GameLogic/Object/Update/RadiateFearUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00049BFDD@RadiateFearUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B40
-Code/GameEngine/Source/GameLogic/Object/Update/RadiusDecalUpdate.cpp	wrong-name	?$S1@?1??rva000391445@RadiusDecalUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A027B4
 Code/GameEngine/Source/GameLogic/Object/Update/RainOfFireUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004AC148@RainOfFireUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03CF8
 Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/RepairDockUpdate.cpp	wrong-name	?$S1@?1??rva0004A11F4@RepairDockUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03BA0
 Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004B29FF@ReplaceObjectUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03DA4
