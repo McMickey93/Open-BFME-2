@@ -4897,7 +4897,6 @@ name,address,notes
 ??4?$list@PAVGameWindow@@V?$allocator@PAVGameWindow@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z,0x002C54EE,ICF twin of int list assign per GameWindowManager registerTabList 0x002C55AC call site
 ??4?$list@UCoord3D@@V?$allocator@UCoord3D@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z,0x00301B54,Full107B coordinate-list assignment; three movsd at node8 and established range insert281A58 plus POD erase548267; supply and tech lists corroborated by reference and held copy2820DD
 ??4?$vector@HV?$allocator@H@_STL@@@_STL@@QAEAAV01@ABV01@@Z,0x0021C21B,vector<Int> assign worker for RankInfo m_sciencesGranted; sole caller RankInfo assign 0x200382
-??4?$vector@IV?$allocator@I@_STL@@@_STL@@QAEAAV01@ABV01@@Z,0x0026F4F4,vector uint assign folded 4B ICF-twin of int row via caller 0x002ACD09
 ??4?$vector@U?$pair@W4ObjectID@@I@_STL@@V?$allocator@U?$pair@W4ObjectID@@I@_STL@@@2@@_STL@@QAEAAV01@ABV01@@Z,0x001D9BEE,address read from the REL32 displacement at a placed body; the body there is held under another instantiation name and the two folded
 ??4?$vector@UBfmeE16@@V?$allocator@UBfmeE16@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z,0x004BF4CE,BFME2 ActiveBody ctor 0x004BF6A1 copies the +0x58 BfmeE16 vector to this+0xE0; typed target call and 209B Ghidra boundary
 ??4?$vector@UPrereqUnitRec@ProductionPrerequisite@@V?$allocator@UPrereqUnitRec@ProductionPrerequisite@@@_STL@@@_STL@@QAEAAV01@ABV01@@Z,0x000120C0,address read from the REL32 displacement at a placed body; folded onto the body held there under another instantiation's name; stlport 4.5.3
