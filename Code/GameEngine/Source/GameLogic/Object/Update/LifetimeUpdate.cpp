@@ -14,6 +14,8 @@
 // honest-address wrapper reapplying moduleData min/max through the rowed
 // setLifetimeRange above; moduleData at +0x04 with min at +0x08 max at +0x0C.
 typedef unsigned int UnsignedInt;
+typedef int Int;
+typedef bool Bool;
 class Thing;
 class ModuleData;
 class Object;
@@ -50,8 +52,20 @@ public:
 };
 class UpdateModule : public ObjectModule, public BehaviorModuleInterface, public UpdateModuleInterface
 {
+public:
+	UpdateModule(Thing *thing, const ModuleData *moduleData);
+	// Declared only: retail's ~UpdateModule (0x0024A797, pin) restores the three vtables and
+	// tail-jumps on; the implicit one here compiled to a 5-byte jmp the link could keep.
+	virtual ~UpdateModule();
+	void xfer(Xfer *xfer);
+
 protected:
 	void setWakeFrame(Object *obj, UpdateSleepTime wakeDelay);
+
+private:
+	UnsignedInt m_nextCallFrameAndPhase; // +0x14
+	int m_indexInLogic; // +0x18
+	int m_updateState; // +0x1C
 };
 #include "LifetimeUpdateModuleDataView.h"
 // LifetimeUpdateModuleData's constructor, retail 0x00297E90. No base constructor call at
@@ -129,19 +143,45 @@ public:
 	void report(Object *victim, int amount);
 };
 
-class Object
+class ThingTemplate
+{
+public:
+	unsigned char m_pad00[0x112];
+	unsigned char m_hulkKind; // +0x112 bit 2 (mask 4) is HULK
+};
+
+class Thing
+{
+public:
+	virtual ~Thing();
+
+	const ThingTemplate *getTemplate() const { return m_template; }
+	Bool isHulkKind() const { return (getTemplate()->m_hulkKind & 4) != 0; }
+
+private:
+	const ThingTemplate *m_template; // +0x04
+};
+
+class Object : public Thing
 {
 public:
 	bool isKindOf(KindOfType kind) const;
 	Player *getControllingPlayer() const;
 	void kill(DamageType damageType, DeathType deathType);
-	unsigned char m_pad000[0x254];
+	unsigned char m_pad008[0x254 - 0x08];
 	Rva003A4BFDModule *m_module254;
+};
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
 };
 
 class LifetimeUpdate : public UpdateModule
 {
 public:
+	LifetimeUpdate(Thing *thing, const ModuleData *moduleData);
+	virtual NameKeyType getModuleNameKey() const;
 	virtual UpdateSleepTime update();
 	void setLifetimeRange(UnsignedInt minFrames, UnsignedInt maxFrames);
 	void rva003A4AD2();
@@ -150,10 +190,9 @@ public:
 private:
 	UnsignedInt calcSleepDelay(UnsignedInt minFrames, UnsignedInt maxFrames);
 
-	unsigned char m_pad14[0x20 - 0x14];
 	UnsignedInt m_dieFrame; // +0x20, calcSleepDelay and xfer
 	UnsignedInt m_birthFrame; // +0x24, calcSleepDelay and xfer
-	bool m_28; // +0x28
+	Bool m_disabled; // +0x28, the module data's start-disabled flag
 };
 
 int GetGameLogicRandomValue(int lo, int hi, char *file, int line);
@@ -225,7 +264,7 @@ void LifetimeUpdate::rva0044DF8D(UpdateSleepTime wakeDelay)
 {
 	if (wakeDelay != UPDATE_SLEEP_FOREVER)
 	{
-		m_28 = false;
+		m_disabled = false;
 		rva003A4AD2();
 	}
 }
