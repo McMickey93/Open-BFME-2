@@ -27,6 +27,22 @@
 // so this unit emits the retail 14-slot ImageCollection vtable.
 typedef bool Bool;
 #include "subsystem_interface.h"
+// platformsdk
+//
+// ??0Image@@QAE@XZ, retail 0x002D8FE4, 122 bytes. Dedicated TU.
+//
+// Battle for Middle-earth reference
+// (reference/open-bfme-1/Code/GameEngine/Source/GameClient/System/ImageCtorThunk.cpp,
+// Image::Image): null the texture holder, clear both filename strings, zero
+// the sizes and status, and reset the UVs to the full-texture range. The
+// retail body follows the reference source statement for statement,
+// including the string clears through the 0x36410 pin; the BFME2 deltas are
+// the vtable at 0xC037B8 and the member offsets below.
+
+typedef int Int;
+#include <windows.h>
+#include <new>
+#include <string.h>
 
 class INI
 {
@@ -139,7 +155,24 @@ private:
 	_STL::map<int, void *, _STL::less<int>, _STL::allocator<_STL::pair<const int, void *> > > m_imageMap;
 };
 
-// tu-skeleton: 0x002D8E63 15B ?setStatus@Image@@QAEII@Z -- matched in Code/GameEngine/Source/GameClient/GUI/Image_setStatus.cpp (not merged yet)
+class INI;
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/Image_setStatus.cpp
+
+//
+// Image::setStatus, retail 0x002D8E63, 15 bytes.
+// OR bits into m_status at +0x30 and return the previous value.
+// Kept out of AptMapPreviewPictureImage.cpp so that TU's caller
+// cannot see this body (matching.md callee-visibility trap).
+
+unsigned int Image::setStatus(unsigned int bit)
+{
+	unsigned int old = m_status;
+	m_status |= bit;
+	return old;
+}
+
+// ---- from Code/GameEngine/Source/GameClient/System/Image.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/System/Image.cpp
 
@@ -251,25 +284,15 @@ void Image::parseImageStatus( INI* ini, void *instance, void *store, const void*
 
   // end parseImageStatus
 
-// tu-skeleton: 0x002D8FB7 45B ?_M_erase@?$_Rb_tree@URva002D8FB7Element@@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@U?$less@URva002D8FB7Element@@@3@V?$allocator@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@@_STL@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D8FB7.cpp (not merged yet)
 
-// tu-skeleton: 0x002D8FE4 122B ??0Image@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/ImageCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x002D905E 47B ?bfmeSetTexture@Image@@QAEXABVBfmeMapPictureTexture@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ImageBfmeSetTexture.cpp (not merged yet)
 
-// tu-skeleton: 0x002D908D 249B ?load@ImageCollection@@QAEXH@Z -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionLoad.cpp (not merged yet)
 
-// tu-skeleton: 0x002D9186 41B ?clear@?$_Rb_tree@URva002D9186Element@@U?$pair@$$CBURva002D9186Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@U?$less@URva002D9186Element@@@3@V?$allocator@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D9186.cpp (not merged yet)
 
-// tu-skeleton: 0x002D91CC 94B ??1Image@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/ImageDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x002D922A 56B (unledgered) -- unmatched, no code, never credited
 
-// tu-skeleton: 0x002D927E 5B ?rva002D927ECleanup@Rva002D927EImageTree@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/Rva002D927EImageMapCleanup.cpp (not merged yet)
 
-// tu-skeleton: 0x002D9283 115B ??1ImageCollection@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x002D92F6 53B ?findImageByName@ImageCollection@@QAEPBVImage@@ABVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionFindImage.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/System/ImageCollectionCtor.cpp
 
@@ -278,6 +301,85 @@ ImageCollection::ImageCollection()
 	: SubsystemInterface()
 {
 }
+
+// tu-skeleton: 0x002D8FB7 45B ?_M_erase@?$_Rb_tree@URva002D8FB7Element@@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@U?$less@URva002D8FB7Element@@@3@V?$allocator@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@3@@_STL@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBURva002D8FB7Element@@H@_STL@@@2@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D8FB7.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/ImageCtor.cpp
+
+// ??0Image@@QAE@XZ
+Image::Image()
+{
+	m_texture = NULL;
+	m_name.clear();
+	m_filename.clear();
+	m_textureSize.x = 0;
+	m_textureSize.y = 0;
+	m_UVCoords.lo.x = 0.0f;
+	m_UVCoords.lo.y = 0.0f;
+	m_UVCoords.hi.x = 1.0f;
+	m_UVCoords.hi.y = 1.0f;
+	m_imageSize.x = 0;
+	m_imageSize.y = 0;
+	m_status = 0;
+}
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/ImageBfmeSetTexture.cpp
+
+//
+// Image::bfmeSetTexture, retail 0x002D905E, 47 bytes.
+// Dedicated TU so AptMapPreviewPictureImage.cpp cannot see this body.
+// Allocates a 4-byte holder at this+0x2C if missing then copy-assigns into it.
+
+void Image::bfmeSetTexture(const BfmeMapPictureTexture &texture)
+{
+	if (!m_texture)
+		m_texture = new BfmeMapPictureTexture;
+	*m_texture = texture;
+}
+
+// tu-skeleton: 0x002D908D 249B ?load@ImageCollection@@QAEXH@Z -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionLoad.cpp (not merged yet)
+
+// tu-skeleton: 0x002D9186 41B ?clear@?$_Rb_tree@URva002D9186Element@@U?$pair@$$CBURva002D9186Element@@H@_STL@@U?$_Select1st@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@U?$less@URva002D9186Element@@@3@V?$allocator@U?$pair@$$CBURva002D9186Element@@H@_STL@@@3@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002D9186.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/ImageDtor.cpp
+
+//
+// Image::~Image, retail 0x002D91CC (94B) plus its scalar deleting
+// destructor 0x002D9262 (28B).
+//
+// Member layout follows the proven ImageCtor TU in this directory
+// (vptr 0xC037B8; m_name +0x04; m_filename +0x08; texture size +0x0C;
+// UV coords +0x14; image size +0x24; texture holder +0x2C;
+// m_status +0x30). The +0x2C holder is the 4-byte BfmeMapPictureTexture
+// allocation from Image::bfmeSetTexture in this directory: its first
+// word is the TextureBaseClass whose Release_Ref is the rowed release
+// body at 0x61ED10, then the holder itself is freed.
+//
+// Shape notes, all read off retail:
+// - A named holder local keeps the holder in edi across the Release
+//   call; a bare member re-read uses eax plus a reload and misses.
+// - The filename (+0x08) and name (+0x04) destructions are the implicit
+//   member teardown in reverse declaration order through the rowed
+//   AsciiString pin at 0x36410; the holder block runs under EH state 1.
+
+// ??1Image@@UAE@XZ, retail 0x002D91CC (94B).
+Image::~Image()
+{
+	BfmeMapPictureTexture *holder = m_texture;
+	if (holder) {
+		if (holder->m_texture)
+			holder->m_texture->Release_Ref();
+		delete holder;
+	}
+}
+
+// tu-skeleton: 0x002D922A 56B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x002D927E 5B ?rva002D927ECleanup@Rva002D927EImageTree@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/Rva002D927EImageMapCleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x002D9283 115B ??1ImageCollection@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x002D92F6 53B ?findImageByName@ImageCollection@@QAEPBVImage@@ABVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionFindImage.cpp (not merged yet)
 
 // tu-skeleton: 0x002D937E 217B ?rva002D937E@Image@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/ImageRva002D937E.cpp (not merged yet)
 
@@ -291,7 +393,7 @@ ImageCollection::ImageCollection()
 
 // tu-skeleton: 0x00777AC9 10B __ehhandler$??1?$_Rb_tree@IU?$pair@$$CBIPAVImage@@@_STL@@U?$_Select1st@U?$pair@$$CBIPAVImage@@@_STL@@@2@U?$less@I@2@V?$allocator@U?$pair@$$CBIPAVImage@@@_STL@@@2@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_string_pair_cleanup.cpp (not merged yet)
 
-// tu-skeleton: 0x00777AD3 8B uw_00777ad3 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+// tu-skeleton: 0x00777AD3 8B $L6057 -- matched in Code/GameEngine/Source/GameClient/System/ImageCollectionDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00777ADB 11B uw_00777adb -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
 
@@ -299,6 +401,6 @@ ImageCollection::ImageCollection()
 
 // tu-skeleton: 0x00777B02 8B Unwind@00b77b02 -- matched in Code/GameEngine/Source/GameClient/System/ImageRva002D937E.cpp (not merged yet)
 
-// tu-skeleton: 0x00777B0A 8B uw_00777b0a -- matched in Code/gen_small/uw_gen_000.cpp (not merged yet)
+// tu-skeleton: 0x00777B0A 8B $L4726 -- matched in Code/GameEngine/Source/GameClient/System/ImageRva002D937E.cpp (not merged yet)
 
 // tu-skeleton: 0x00777B12 10B __ehhandler$?rva002D937E@Image@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/ImageRva002D937E.cpp (not merged yet)
