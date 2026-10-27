@@ -19954,7 +19954,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A0364C,4,.data,global,?$S1@?1??getModuleNameKey@CaveContain@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainPoolKey.cpp,owned,,1,4
 0x00A03650,4,.data,global,_s_rva007B0D8C,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03654,4,.data,global,?TheHealContainPoolKey@?1??getModuleNameKey@HealContain@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp,owned,,1,2
-0x00A03658,12,.data,global,?$S1@?1??getModuleNameKey@HealContain@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp,owned,,1,4
+0x00A03658,4,.data,global,?$S1@?1??getModuleNameKey@HealContain@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp,owned,,1,4
 0x00A0365C,4,.data,global,?TheTransportContainPoolKey@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp,owned,,1,2
 0x00A03660,4,.data,global,?g_Va00E03660@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E036xx.cpp,provisional,?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp;?g_Va00E03660@@3IA,2,4
 0x00A03664,4,.data,global,_s_rva007B0DB6,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
@@ -20292,7 +20292,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03C3C,4,.data,global,?g_Va00E03C3C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Cxx.cpp,provisional,?$S2@?1??doToppleDoneStuff@StructureToppleUpdate@@IAEXXZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdateCrushing.cpp;?g_Va00E03C3C@@3IA,2,4
 0x00A03C40,4,.data,global,_s_rva007B1B4E,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03C44,4,.data,global,?TheSupplyCenterProductionExitUpdatePoolKey@?1??getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp,owned,,1,2
-0x00A03C48,24,.data,global,?$S1@?1??getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp,owned,,1,4
+0x00A03C48,4,.data,global,?$S1@?1??getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp,owned,,1,4
 0x00A03C4C,4,.data,global,?TheSupplyTruckAIUpdatePoolKey@?1??rva0004A6DE4@SupplyTruckAIUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp,owned,,1,2
 0x00A03C50,4,.data,global,?g_Va00E03C50@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Cxx.cpp,provisional,?$S1@?1??rva0004A6DE4@SupplyTruckAIUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp;?g_Va00E03C50@@3IA,2,4
 0x00A03C54,4,.data,global,?keyCenter@?3??rva004A6F0A@Rva004A6F0A@@QAEHPAVObject@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp,owned,,1,2
@@ -20311,7 +20311,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03C88,4,.data,global,?g_Va00E03C88@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Cxx.cpp,provisional,?$S3@?8??applyTopplingForce@ToppleUpdate@@QAEXPBUCoord3D@@MI@Z@4IA@Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdate.cpp;?g_Va00E03C88@@3IA,2,4
 0x00A03C8C,4,.data,global,_s_rva007B1C10,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03C90,4,.data,global,?TheDelayedLuaEventUpdatePoolKey@?1??getModuleNameKey@DelayedLuaEventUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/DelayedLuaEventUpdatePoolKey.cpp,owned,,1,2
-0x00A03C94,12,.data,global,?$S1@?1??getModuleNameKey@DelayedLuaEventUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/DelayedLuaEventUpdatePoolKey.cpp,owned,,1,4
+0x00A03C94,4,.data,global,?$S1@?1??getModuleNameKey@DelayedLuaEventUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/DelayedLuaEventUpdatePoolKey.cpp,owned,,1,4
 0x00A03C98,4,.data,global,?TheTransportAIUpdatePoolKey@?1??rva004A90A7@TransportAIUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp,owned,,1,2
 0x00A03C9C,4,.data,global,?g_Va00E03C9C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Cxx.cpp,provisional,?$S1@?1??rva004A90A7@TransportAIUpdate@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp;?g_Va00E03C9C@@3IA,2,4
 0x00A03CA0,4,.data,global,?TheWanderAIUpdatePoolKey@?1??getModuleNameKey@WanderAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUpdatePoolKey.cpp,owned,,1,2
@@ -20522,7 +20522,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03FF4,4,.data,global,?$S1@?1??getModuleNameKey@HordeTransportContainDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/HordeTransportContainDamagePoolKey.cpp,owned,,1,4
 0x00A03FF8,4,.data,global,_s_rva007B2568,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03FFC,4,.data,global,?TheCallHelpOnDamagePoolKey@?1??getModuleNameKey@CallHelpOnDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp,owned,,1,2
-0x00A04000,12,.data,global,?$S1@?1??getModuleNameKey@CallHelpOnDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp,owned,,1,4
+0x00A04000,4,.data,global,?$S1@?1??getModuleNameKey@CallHelpOnDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CallHelpOnDamagePoolKey.cpp,owned,,1,4
 0x00A04004,4,.data,global,?TheFireWeaponCollidePoolKey@?1??getModuleNameKey@FireWeaponCollide@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollide.cpp,owned,,1,2
 0x00A04008,4,.data,global,?$S1@?1??getModuleNameKey@FireWeaponCollide@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollide.cpp,owned,,1,2
 0x00A0400C,4,.data,global,?TheSquishCollidePoolKey@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp,owned,,1,2
