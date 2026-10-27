@@ -2497,7 +2497,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	??1Rva00304D
 alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	??1Rva00304DC7Record@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	?insert@Rva00304DC7Map@@AAE?AU?$_Rb_tree_iterator@URva00304DC7Entry@@U?$_Nonconst_traits@URva00304DC7Entry@@@_STL@@@_STL@@U23@ABURva00304DC7Entry@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	?lower_bound@Rva00304DC7Map@@AAEPAU?$_Rb_tree_node@URva00304DC7Entry@@@_STL@@ABVAsciiString@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00317C68Concat.cpp	?g_00BFDC6C@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva00328A75Ctor.cpp	?g_00C0D8C4@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva003304A4CameraAnimationListWrite.cpp	?visitFree@Rva003304A4AnimationVisitor@@UAEXPAVRva003304A4Animation@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva003304A4CameraAnimationListWrite.cpp	?visitFree@Rva003304A4TypeTagWriter@@UAEXPAVRva003304A4Animation@@@Z	1
@@ -3024,6 +3023,7 @@ alternatename	Code/GameEngine/Source/Common/T1ReceiverSwappingThunks.cpp	?accept
 alternatename	Code/GameEngine/Source/Common/T4VtableSetCtors.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/Common/T4VtableSetCtors.cpp	_vtbl_00C1C780_again	1
 alternatename	Code/GameEngine/Source/Common/T4VtableSetCtors.cpp	_vtbl_00C1D2C0	1
+alternatename	Code/GameEngine/Source/Common/TerrainTypes.cpp	?g_00BFDC6C@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Thing/FXBoneInfoVectorErase.cpp	?erase@?$vector@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@QAEPAUQuantityModifier@@PAU3@0@Z	1
 alternatename	Code/GameEngine/Source/Common/Thing/IntFloatMapSubscript.cpp	?erase@?$_Rb_tree@HU?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@_STL@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@2@@Z	1
 alternatename	Code/GameEngine/Source/Common/Thing/Module.cpp	??1Module@@QAE@XZ	1

@@ -17,6 +17,20 @@
 // view matches Rva00317BBBDtor.cpp's so both units emit the same vtable.
 typedef bool Bool;
 #include "subsystem_interface.h"
+// ?Rva00317C68Append@@YAAAVAsciiString@@AAV1@PBD@Z @0x00317C68 56B: free concat helper appending a global CharSource plus second arg via StringBase concat 0x00036A30 with EH prolog. Evidence: retail mov scope plus EH_prolog plus g_00BFDC6C vtable store plus second-arg store plus concat call plus fs restore; caller 0x00317DF7; same EH shape as 0x00317C34 setter.
+extern const void *const g_00BFDC6C[];
+template <typename T> class StringBase;
+template <typename T>
+class CharSource
+{
+public:
+	virtual int getLength() const = 0;
+	virtual void _gap() const = 0;
+	virtual int getChars(T *dest) const = 0;
+};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#pragma comment(linker, "/alternatename:?g_00BFDC6C@@3QBQBXB=??_7Rva002AAD9C@@6B@")
+
 // BFME2 terrain-type collection lookup. Layout is retail-owned: the list
 // head lives at this+0x0C, TerrainType carries its name at +0x04 and its
 // next link at +0x20 (the +0x00..+0x03 and +0x0C..+0x1F ranges are still
@@ -122,6 +136,26 @@ private:
 
 void __cdecl operator delete(void *p);
 
+// This view uses the external retail table throughout its lifetime; no
+// separate table for the partial method declarations belongs in the link.
+class __declspec(novtable) CharSourceSuffix : public CharSource<char>
+{
+public:
+	CharSourceSuffix(const char *s)
+	{
+		*(const void **)this = g_00BFDC6C;
+		m_arg = s;
+	}
+	virtual ~CharSourceSuffix() { *(const void **)this = g_00BFDC6C; }
+	int getLength() const;
+	void _gap() const;
+	int getChars(char *dest) const;
+private:
+	const char *m_arg;
+};
+
+// ---- from Code/GameEngine/Source/Common/TerrainTypes.cpp
+
 // ---- from Code/GameEngine/Source/Common/TerrainTypes.cpp
 
 // ---- from Code/GameEngine/Source/Common/TerrainTypeCollection.cpp
@@ -205,10 +239,6 @@ AsciiString makeNrmTextureName(const AsciiString &in)
     return in+"_nrm";
 }
 
-// tu-skeleton: 0x00317C68 56B ?Rva00317C68Append@@YAAAVAsciiString@@AAV1@PBD@Z -- matched in Code/GameEngine/Source/Common/Rva00317C68Concat.cpp (not merged yet)
-
-// tu-skeleton: 0x00317CA0 45B ?Rva00317CA0Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/TerrainTypes_findTerrain.cpp
 
 TerrainType *TerrainTypeCollection::findTerrain(AsciiString name)
@@ -222,20 +252,6 @@ TerrainType *TerrainTypeCollection::findTerrain(AsciiString name)
 
 	return 0;
 }
-
-// tu-skeleton: 0x00317D5C 45B ??$_M_allocate_and_copy@PBU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@?$vector@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@V?$allocator@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@2@@_STL@@IAEPAU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@1@IPBU21@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_nocasepair_allocate_copy.cpp (not merged yet)
-
-// tu-skeleton: 0x00317E7C 63B ??1Rva00317E7C@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
-
-// tu-skeleton: 0x00317EBB 180B ??4?$vector@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@V?$allocator@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@2@@_STL@@QAEAAV01@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_nocasepair_assign.cpp (not merged yet)
-
-// tu-skeleton: 0x00317F6F 129B ??0TerrainType@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00317F6FCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00317FF0 93B ??1TerrainType@@UAE@XZ -- matched in Code/GameEngine/Source/Common/TerrainType.cpp (not merged yet)
-
-// tu-skeleton: 0x0031804D 81B ??4TerrainType@@QAEAAV0@ABV0@@Z -- matched in Code/GameEngine/Source/Common/Rva0031804DAssign.cpp (not merged yet)
-
-// tu-skeleton: 0x0031809E 178B ?_M_insert_overflow@?$vector@URva00318203Element@@V?$allocator@URva00318203Element@@@_STL@@@_STL@@IAEXPAURva00318203Element@@ABU3@ABU__false_type@2@I_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorInsertOverflowFamily.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/TerrainTypes_newTerrain.cpp
 
@@ -257,9 +273,35 @@ TerrainType *TerrainTypeCollection::newTerrain(AsciiString name)
 	return terrain;
 }
 
-// tu-skeleton: 0x0077A6ED 8B uw_0077a6ed -- matched in Code/gen_small/uw_gen_006.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva00317C68Concat.cpp
 
-// tu-skeleton: 0x0077A6F5 10B __ehhandler$?Rva00317C68Append@@YAAAVAsciiString@@AAV1@PBD@Z -- matched in Code/GameEngine/Source/Common/Rva00317C68Concat.cpp (not merged yet)
+AsciiString &Rva00317C68Append(AsciiString &dst, const char *src)
+{
+	CharSourceSuffix tmp(src);
+	((StringBase<char> *)&dst)->concat(tmp);
+	return dst;
+}
+
+// The global(s) below are defined elsewhere under another name at the same
+// address (the census owner of that DIR32 target); bind this unit's spelling.
+
+// tu-skeleton: 0x00317CA0 45B ?Rva00317CA0Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
+
+// tu-skeleton: 0x00317D5C 45B ??$_M_allocate_and_copy@PBU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@?$vector@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@V?$allocator@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@2@@_STL@@IAEPAU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@1@IPBU21@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_nocasepair_allocate_copy.cpp (not merged yet)
+
+// tu-skeleton: 0x00317E7C 63B ??1Rva00317E7C@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x00317EBB 180B ??4?$vector@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@V?$allocator@U?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@@2@@_STL@@QAEAAV01@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_nocasepair_assign.cpp (not merged yet)
+
+// tu-skeleton: 0x00317F6F 129B ??0TerrainType@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00317F6FCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00317FF0 93B ??1TerrainType@@UAE@XZ -- matched in Code/GameEngine/Source/Common/TerrainType.cpp (not merged yet)
+
+// tu-skeleton: 0x0031804D 81B ??4TerrainType@@QAEAAV0@ABV0@@Z -- matched in Code/GameEngine/Source/Common/Rva0031804DAssign.cpp (not merged yet)
+
+// tu-skeleton: 0x0031809E 178B ?_M_insert_overflow@?$vector@URva00318203Element@@V?$allocator@URva00318203Element@@@_STL@@@_STL@@IAEXPAURva00318203Element@@ABU3@ABU__false_type@2@I_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorInsertOverflowFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x0077A6ED 8B uw_0077a6ed -- matched in Code/gen_small/uw_gen_006.cpp (not merged yet)
 
 // tu-skeleton: 0x0077A6FF 14B $L6485 -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
 
