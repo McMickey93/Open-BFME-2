@@ -395,13 +395,6 @@ private:
 	char m_pad04[0x1C - 4];
 	Int m_mode;
 };
-void RecorderClass::update()
-{
-	if (m_mode == 0 || m_mode == 2)
-		updateRecord();
-	else if (m_mode == 1)
-		reinterpret_cast<Rva0037B7C7 *>(this)->rva0037BC65();
-}
 
 namespace FXParticleSystem
 {
