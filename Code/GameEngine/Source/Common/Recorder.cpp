@@ -11,6 +11,7 @@
 #include "../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 #include "../../../Libraries/Include/Lib/IRegion2D.h"
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 void __cdecl operator delete[](void*);
 void* __cdecl operator new[](unsigned int);
 void __cdecl operator delete(void*);
@@ -30,7 +31,7 @@ public:
 extern GameTextInterface *TheGameText;
 class Version { public: UnicodeString getFullUnicodeVersion(); UnicodeString getUnicodeBuildTime(); };
 extern Version *TheVersion;
-class GlobalData {public:AsciiString rva002360DE() const;char p0[0xac0];AsciiString pendingFile;char pAC4[0xb04-0xac4];unsigned int field0b04;char pB08[0x1100-0xb08];bool field1100;char p1101[3];int field1104;};
+class GlobalData {public:AsciiString rva002360DE() const;char p0[0xc];AsciiString m_mapName;char p10[0xac0-0x10];AsciiString pendingFile;char pAC4[0xb04-0xac4];unsigned int field0b04;char pB08[0x1100-0xb08];bool field1100;char p1101[3];int field1104;};
 extern GlobalData *TheWritableGlobalData;
 struct BfmeNetAddress { unsigned int address,port;bool Rva00248CBF(const BfmeNetAddress*) const;};
 // Target compares the complete address through rowed248CBF; donor IP-only
@@ -47,6 +48,7 @@ public:
     char pad040[0x50-0x40]; unsigned int m_seed;
     AsciiString getMap() const;
     GameSlot *getSlot(int);const GameSlot *getConstSlot(int) const;void enterGame();void endGame();
+    void clearSlotList(); void setMap(AsciiString s); void setSeed(int);
     void setCRCInterval(int n) { m_crcInterval = n < 100 ? n : 100; }
 };
 class GameSpyStagingRoom : public GameInfo {};
@@ -563,11 +565,49 @@ static bool recorderSavedGlobalFlag;
 
 void InitRandom(unsigned int);
 
-class Rva0037BBED {
+// ZH ReplayGameInfo derives from GameInfo; its ctor/dtor are rowed at 0x0037BADD / 0x0037BB53.
+class Rva0037BB53 : public GameInfo
+{
 public:
- char head[0x10];FILE*m_file;char gap14[0x10];GameInfo m_gameInfo;
- char gap64[0xe60-0x24-sizeof(GameInfo)];int m_crcInterval,m_mode,m_numPlayers,m_localIndex;
- UnicodeString rva0037BCA8();AsciiString rva0037B70A();bool rva0037CBB6(Rva0037B5DF&);
+    Rva0037BB53();
+    virtual ~Rva0037BB53();
+    char m_pad[0xE3C - sizeof(GameInfo)];
+};
+
+class Rva0037D097CRCView
+{
+public:
+    void rva0037D097(unsigned int crc);
+    unsigned int rva0037BD64();
+};
+
+class Rva0037B5DF;
+
+// Recorder: SubsystemInterface base (ctor 0x0037BB98, vtable 0x00C18828).
+// Retail new pushes 0xE7C; the constructor explicitly clears the final +0xE78 word.
+class Rva0037BBED : public SubsystemInterface
+{
+public:
+    Rva0037BBED();
+    virtual ~Rva0037BBED();
+    virtual void init();
+    UnicodeString rva0037BCA8();
+    AsciiString rva0037B70A();
+    bool rva0037CBB6(Rva0037B5DF &header);
+    bool rva0037D0EF(UnicodeString filename);
+    void rva0037D0A7(unsigned int crc, int player, bool fromPlayback, unsigned int frame);
+    Rva0037D097CRCView *m_0c;
+    FILE *m_file;
+    UnicodeString m_14;
+    int m_18;
+    int m_1c;
+    UnicodeString m_20;
+    Rva0037BB53 m_gameInfo;
+    int m_crcInterval, m_mode, m_numPlayers, m_localIndex;
+    unsigned char m_e70;
+    char m_padE71[3];
+    int m_e74;
+    int m_frameE78;
 };
 
 struct Triple12 { Triple12() {} int a, b, c; };

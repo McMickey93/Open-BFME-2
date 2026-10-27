@@ -8,18 +8,75 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "GameLogicObjectLookupView.h"
-template <> int StringBase<unsigned short>::compare(const StringBase<unsigned short> &) const throw();
 
-class Rva0037BB53
+// Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
+#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
+
+struct _iobuf;
+
+typedef _iobuf FILE;
+
+// Recorder.cpp's GameInfo view, spelled as it is there.
+struct BfmeNetAddress { unsigned int address,port;bool Rva00248CBF(const BfmeNetAddress*) const;};
+class CreateAHeroData;
+class GameSlot { public: char pad000[0x38]; BfmeNetAddress address;char pad40[0x60-0x40];bool heroPresent;char pad61[3];void rva0037AD8D(const CreateAHeroData&);bool isOccupied() const; };
+class GameInfo {
+public:
+    virtual void slot0(); virtual void slot1(); virtual void slot2();
+    virtual void slot3(); virtual void slot4(); virtual void slot5(); virtual void slot6(); virtual void slot7(); virtual void slot8(); virtual void slot9(); virtual void reset();virtual void startGame(int);virtual void slot12();virtual int getLocalSlotNum();
+    int field0004;int field0008; int m_crcInterval;
+    char pad010[0x38-0x10]; BfmeNetAddress address;
+    char pad040[0x50-0x40]; unsigned int m_seed;
+    AsciiString getMap() const;
+    GameSlot *getSlot(int);const GameSlot *getConstSlot(int) const;void enterGame();void endGame();
+    void clearSlotList(); void setMap(AsciiString s); void setSeed(int);
+    void setCRCInterval(int n) { m_crcInterval = n < 100 ? n : 100; }
+};
+
+// ZH ReplayGameInfo derives from GameInfo; its ctor/dtor are rowed at 0x0037BADD / 0x0037BB53.
+class Rva0037BB53 : public GameInfo
 {
 public:
     Rva0037BB53();
     virtual ~Rva0037BB53();
-    char m_pad[0xE3C - 4];
+    char m_pad[0xE3C - sizeof(GameInfo)];
 };
 
-// Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
-#include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
+class Rva0037D097CRCView
+{
+public:
+    void rva0037D097(unsigned int crc);
+    unsigned int rva0037BD64();
+};
+
+class Rva0037B5DF;
+
+// Recorder: SubsystemInterface base (ctor 0x0037BB98, vtable 0x00C18828).
+// Retail new pushes 0xE7C; the constructor explicitly clears the final +0xE78 word.
+class Rva0037BBED : public SubsystemInterface
+{
+public:
+    Rva0037BBED();
+    virtual ~Rva0037BBED();
+    virtual void init();
+    UnicodeString rva0037BCA8();
+    AsciiString rva0037B70A();
+    bool rva0037CBB6(Rva0037B5DF &header);
+    bool rva0037D0EF(UnicodeString filename);
+    void rva0037D0A7(unsigned int crc, int player, bool fromPlayback, unsigned int frame);
+    Rva0037D097CRCView *m_0c;
+    FILE *m_file;
+    UnicodeString m_14;
+    int m_18;
+    int m_1c;
+    UnicodeString m_20;
+    Rva0037BB53 m_gameInfo;
+    int m_crcInterval, m_mode, m_numPlayers, m_localIndex;
+    unsigned char m_e70;
+    char m_padE71[3];
+    int m_e74;
+    int m_frameE78;
+};
 
 // The CRC queue's list wrappers at 0x0037D097/0x0037BD64 are rowed (ICF-shared)
 // under FXList's names; bind to those owners and cast at the call.
@@ -30,36 +87,6 @@ public:
     void addFXNugget(FXNugget *nugget);
     int rva0037BD64();
 };
-class Rva0037D097CRCView;
-
-class Rva0037B5DF;
-
-class Rva0037BBED : public SubsystemInterface
-{
-public:
-    Rva0037BBED();
-    virtual ~Rva0037BBED();
-    virtual void init();
-    AsciiString rva0037B70A();
-    bool rva0037CBB6(Rva0037B5DF &header);
-    bool rva0037D0EF(UnicodeString filename);
-    void rva0037D0A7(unsigned int crc, int player, bool fromPlayback, unsigned int frame);
-private:
-    Rva0037D097CRCView *m_0c;
-    void *m_10;
-    UnicodeString m_14;
-    int m_18;
-    int m_1c;
-    UnicodeString m_20;
-    Rva0037BB53 m_24;
-    // Retail new pushes 0xE7C; the constructor explicitly clears the final +0xE78 word.
-    int m_e60, m_e64, m_e68, m_e6c;
-    unsigned char m_e70;
-    char m_padE71[3];
-    int m_e74;
-    int m_frameE78;
-};
-
 class RecorderClass;
 RecorderClass *createRecorder();
 
@@ -74,31 +101,6 @@ Rva0037BBED::Rva0037BBED()
     m_frameE78 = 0;
     init();
 }
-
-// Native Ghidra extent 0x0037B326..0x0037B3D1, 171 bytes, thiscall RET 0.
-// The recorder vtable at VA 0x00C18828 places this method in slot 1.
-// ZH Recorder::init supplies the clear/reset/map/seed sequence; retail proves
-// every receiver/global offset and the additional CRC/analysis state stores.
-// Separate setMap calls preserve retail's two by-value argument temporaries.
-class GlobalData;
-extern GlobalData *TheWritableGlobalData;
-extern int NET_CRC_INTERVAL;
-unsigned int GetGameLogicRandomSeed();
-class GameInfo {
-public:
- virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4();
- virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8(); virtual void v9();
- virtual void reset();
- void clearSlotList(); void setMap(AsciiString s); void setSeed(int);
- char opaque04[0x34];
-};
-
-struct RecorderGlobalView {
-    char opaque00[0x0C];
-    AsciiString map0C;
-    char opaque10[0xAC0-0x10];
-    AsciiString pendingAC0;
-};
 
 class GameLogic;
 extern GameLogic *TheGameLogic;
