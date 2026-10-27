@@ -1100,14 +1100,16 @@ public:
 	~RefCountPtr();
 };
 
-extern unsigned g_Va00DEC008;
+// VA 0x00DEC008: the cross-fade mask texture ScreenCrossFadeFilterUpdateFadeLevel.cpp defines.
+class BfmeSrcUDC;
+extern BfmeSrcUDC *g_bfmeObjUDC;
 unsigned g_Va00DF2974;	// retail RVA 0x009F2974 (.bss), defined here
 unsigned g_Va00DF297C;	// retail RVA 0x009F297C (.bss), defined here
 
-// ?rva007B6E90@@YAXXZ @ 0x007B6E90 (10B). Global RefCountPtr<TextureClass> dtor thunk: ecx=&g_Va00DEC008 then tail-jmp to rowed ??1?$RefCountPtr@VTextureClass@@@@QAE@XZ (0x0017098D).
+// ?rva007B6E90@@YAXXZ @ 0x007B6E90 (10B). Global RefCountPtr<TextureClass> dtor thunk: ecx=&g_bfmeObjUDC then tail-jmp to rowed ??1?$RefCountPtr@VTextureClass@@@@QAE@XZ (0x0017098D).
 void __cdecl rva007B6E90()
 {
-	RefCountPtr<TextureClass> *receiver = (RefCountPtr<TextureClass> *)&g_Va00DEC008;
+	RefCountPtr<TextureClass> *receiver = (RefCountPtr<TextureClass> *)&g_bfmeObjUDC;
 	return receiver->~RefCountPtr();
 }
 

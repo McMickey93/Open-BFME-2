@@ -159,7 +159,9 @@ extern AsciiString BfmeINICurrentFilename;
 extern unsigned g_Va00DE1CCC;
 extern unsigned int g_00DE1CCD;
 extern unsigned g_Va00DE2008;
-unsigned g_Va00DEC008;	// retail RVA 0x009EC008 (.bss), defined here
+// VA 0x00DEC008: the cross-fade mask texture ScreenCrossFadeFilterUpdateFadeLevel.cpp defines.
+class BfmeSrcUDC;
+extern BfmeSrcUDC *g_bfmeObjUDC;
 // VA 0x00DEE93C: the AsciiString Rva0012CAC3Run.cpp defines.
 extern AsciiString g_00DEE93C;
 unsigned g_Va00DFF0C4;	// retail RVA 0x009FF0C4 (.bss), defined here
@@ -277,7 +279,7 @@ void Rva007ABBB3CtorInits::rva007AC022()
 // 0x007AC880 (22B): ??0?$RefCountPtr@VTextureClass@@@@QAE@XZ on VA 0x00DEC008, atexit(0x007B6E90 -> RefCountPtr<TextureClass> dtor 0x0057098D)
 void Rva007ABBB3CtorInits::rva007AC880()
 {
-	( (RefCountPtr<TextureClass> *)&g_Va00DEC008 )->RefCountPtr<TextureClass>::RefCountPtr();
+	( (RefCountPtr<TextureClass> *)&g_bfmeObjUDC )->RefCountPtr<TextureClass>::RefCountPtr();
 	atexit( rva007B6E90 );
 }
 

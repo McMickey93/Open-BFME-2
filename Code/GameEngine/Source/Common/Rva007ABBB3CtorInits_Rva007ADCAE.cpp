@@ -165,7 +165,6 @@ extern unsigned g_Va00DE0878;
 extern unsigned g_Va00DE1CCC;
 extern unsigned int g_00DE1CCD;
 extern unsigned g_Va00DE2008;
-extern unsigned g_Va00DEC008;	// retail RVA 0x009EC008 (.bss), defined in Rva007ABBB3CtorInits.cpp
 extern unsigned g_Va00DEE93C;	// retail RVA 0x009EE93C (.bss), defined in Rva007ABBB3CtorInits.cpp
 extern unsigned g_Va00DFF0C4;	// retail RVA 0x009FF0C4 (.bss), defined in Rva007ABBB3CtorInits.cpp
 extern unsigned g_Va00E01CF0;	// retail RVA 0x00A01CF0 (.bss), defined in Rva007ABBB3CtorInits.cpp
