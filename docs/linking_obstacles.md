@@ -1474,6 +1474,16 @@ clearance or linking gain is claimed.
   separate immutable comparison proves the 887-byte gain with zero losses.
   The first push was rejected because master advanced; only normal rebase/retry
   follows, without repeating any match record or full measurement.
+- **MV probability repair publication (2026-10-27, `777a841df1`):**
+  [the enforced batch audit](../reverse/attempt_support/vp6-mv-table-link-20261027/publication-audit.json)
+  passes 39/39 ordinary bodies, three data rows and four exact EH graphs across
+  ConfigureMvEntropyDecoder.cpp and the additional Eva/thread control cohort.
+  Its index `bf3dd31211` predates outgoing base `fb85f434697` and lacks the
+  per-object consumer names required by the new loss-enforcement audit.
+  The result is explicitly **linking unverified**, not clean: no current-master
+  provider-change or lost-byte conclusion was reached. Preserve the source
+  cohort for the next maintainer-published current-format census index;
+  do not bypass enforcement or reclassify this as new linking credit.
 - **Remaining / next check:** prove and make the actual include graph
   inventoryable under the existing gates, then repeat bounded strict preparation
   for all affected providers/consumers. A needed verifier repair follows the

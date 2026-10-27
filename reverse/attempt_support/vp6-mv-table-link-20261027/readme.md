@@ -49,3 +49,5 @@ It owns defaultMvShort and was not edited. Its separate frame-decoder data-back
 prerequisite remains in the fixed graph. Resume the coupled storage work when
 that scope is available and the destination is approved. This is a real data
 repair plus a bounded linking handoff, not completed MV-decoder closure.
+
+Publication lands as 777a841df1dfc21aeee8f07c73d75447c725064f after all normal gates pass: 39/39 functions, three data rows and four exact EH graphs across four sources. The updated enforced audit reports linking UNVERIFIED: index bf3dd31211 predates outgoing base fb85f434697 and lacks per-object consumer names. It reaches no current-master provider or lost-byte verdict. The exact scope/output are retained in publication-audit.json and publication-gate.txt and recorded under LINK-008. A maintainer-published current-format index remains required; no verifier or index-publisher change is made.
