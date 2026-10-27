@@ -1631,6 +1631,18 @@ sources are restored and all 19 rows pass again. The existing mixed-width
 counter owner and all five registered keys remain prerequisites. No new
 clearance or linking gain is claimed.
 
+**piNextID owner resolution (2026-10-27, `claude`):** the mixed-width counter
+owner is pingerMain.c itself. Its unchanged static `piGetNextID` byte-matches
+0x006B2150/29 in a probe compile (all three DIR32 operands select VA
+0x00E0C0EC), and both `_piGetNextID` and `_piNextID` are COFF static symbols
+there, so RvaSmallLeafTransfers.cpp's `Rva006B2150` and its `g_00E0C0EC` union
+are a second copy of SDK code. The repoint is blocked by tooling: add_match's
+one-name rule sees peer's global `_piGetNextID` at 0x006A0010, and
+`ledger_io.same_function_name` scopes only `_$E<n>` and funclet labels per TU.
+Recorded as a false reject in `reverse/re_attempts.log`. Next check (tooling
+seat): admit TU-scoped C static function names, repoint the row, delete the
+union owner and retire the four piNextID keys. No clearance is claimed.
+
 ### LINK-008: include inventories prevent strict reusable graphics receipts
 
 **Status: Blocked on complete include inventories. Updated: 2026-10-27.**
