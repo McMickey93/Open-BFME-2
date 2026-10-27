@@ -1175,7 +1175,6 @@ address_global	Code/GameEngine/Source/GameClient/GameClientXfer.cpp	g_Va00E00944
 address_global	Code/GameEngine/Source/GameClient/GameText.cpp	g_Va00DFF0C4	3
 address_global	Code/GameEngine/Source/GameClient/InGameUIObserverMessage.cpp	g_Va00A04450	3
 address_global	Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIBuildQueueIconSelect.cpp	g_Va00E06724	4
-address_global	Code/GameEngine/Source/GameClient/Rva00282500Dtor.cpp	g_Va00DBB708	8
 address_global	Code/GameEngine/Source/GameClient/Rva0040AD80ReferenceState_Rva00362c9f.cpp	g_Va00E01E7C	3
 address_global	Code/GameEngine/Source/GameClient/Rva004110DCGet.cpp	g_Va00E02FF8	2
 address_global	Code/GameEngine/Source/GameClient/Rva00411112Get.cpp	g_Va00E0300C	2
@@ -1207,6 +1206,7 @@ address_global	Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioK
 address_global	Code/GameEngine/Source/GameLogic/Map/OldPolygonTrigger.cpp	g_Va00DBD0F4	2
 address_global	Code/GameEngine/Source/GameLogic/Map/PolygonTrigger.cpp	g_Va00DBD0F4	6
 address_global	Code/GameEngine/Source/GameLogic/Map/Rva00282021WaterLookup.cpp	g_Va00DBB710	2
+address_global	Code/GameEngine/Source/GameLogic/Map/TerrainLogic.cpp	g_Va00DBB708	8
 address_global	Code/GameEngine/Source/GameLogic/Map/TerrainLogicWaypointLookups.cpp	g_Va00DBD0F4	2
 address_global	Code/GameEngine/Source/GameLogic/Map/TerrainLogicXfer.cpp	g_Va00DBB708	3
 address_global	Code/GameEngine/Source/GameLogic/Object/ArmorStoreReload.cpp	g_Va00DFDBC8	5
