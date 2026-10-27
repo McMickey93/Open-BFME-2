@@ -24,6 +24,15 @@ class WindowLayout;
 class Rva0023E928;
 class UnicodeString;
 class TerrainResourceManager;
+class UpdateModule;
+class GameInfo;
+class ThingTemplate;
+class Team;
+struct CreateMask;
+struct ObjectTOCEntry;
+struct Rva0040D2FDVec;
+struct Rva003F468DParticipant;
+enum BuildableStatus;
 
 struct ObjectIdNode
 {
@@ -52,13 +61,24 @@ public:
 // GameClient::update (0x0023BEE8) reads the byte at +0x125, next to the pause
 // byte isGamePaused (0x0023CD97) returns from +0x124, and skips the drawable,
 // terrain and display updates while it is set.
+// Object::initObject (0x002934E7) and setTriggerAreaFlagsForChangeInPosition
+// (0x00291EB1) store the current frame at +0x180, as Zero Hour's
+// updateObjectsChangedTriggerAreas stores m_frameObjectsChangedTriggerAreas.
+// The script setters 0x003BB700 and 0x003BCA7B store their bool argument in
+// the scoring byte (+0x98) and the icon-UI byte (+0x9A).
 struct PlayerLeaveStatus;
 class GameLogic
 {
 	char pad[0x38];
 	unsigned int m_timestamp;
 	char pad3C[0x40 - 0x3C];
-	unsigned int m_frame;
+
+public:
+	// Read directly by the network, script-debug and object-finish units
+	// (ConnectionManager_rva004D0A0A, ScriptEngineAppendDebugMessage, ...).
+	unsigned int m_frame; // +0x40, the frame getFrame returns
+
+private:
 	char pad44[0x6D - 0x44];
 
 public:
@@ -90,7 +110,9 @@ private:
 	TerrainResourceManager *m_resourceManager;
 	char pad174[0x178 - 0x174];
 	Rva00439E0C *m_manager178;
-	char pad17C[0x1B8 - 0x17C];
+	char pad17C[0x180 - 0x17C];
+	unsigned int m_frameObjectsChangedTriggerAreas; // +0x180
+	char pad184[0x1B8 - 0x184];
 	// Window cleanup 0x00376D49 owns this layout and clears the pending byte.
 	// BFME1's closeWindows supplies its purpose; offsets are native BFME2.
 	WindowLayout *m_background; // +0x1B8
@@ -138,7 +160,10 @@ public:
 	void setControlBarOverride(const AsciiString &commandSetName, int slot, const CommandButton *commandButton);	// 0x0024792F
 	void ProcessSaveGameCommand(Rva0023E928 *msg, bool frozen);	// 0x00240866, multiplayer save request handler
 	void rva0023D30F(int a, int b, UnicodeString *name);	// 0x0023D30F, thiscall spelling of the stdcall Rva0023D30FCall
+	void enableScoring(bool score) { m_isScoringEnabled = score; }
 	bool isScoringEnabled() const { return m_isScoringEnabled; }
+	void setDrawIconUI(bool setting) { m_drawIconUI = setting; }
+	void updateObjectsChangedTriggerAreas() { m_frameObjectsChangedTriggerAreas = m_frame; }
 	bool getFlag125() const { return m_flag125; }
 	unsigned int getTimestamp() const { return m_timestamp; }
 	unsigned int getFrame() const { return m_frame; }
@@ -146,4 +171,35 @@ public:
 	Rva00439E0C *getManager178() const { return m_manager178; }
 	TerrainResourceManager *getTerrainResourceManager() const { return m_resourceManager; }
 	PlayerLeaveStatus *getPlayerLeaveStatus(int playerIndex); // 0x0023D1E3, verified eight-slot status accessor
+	char rva0023C6FD();	// 0x0023C6FD
+	void processCommandList();	// 0x0023CAA3
+	unsigned int getCRC(int mode);	// 0x0023CB2C
+	unsigned int getObjectCount();	// 0x0023CFCE
+	void rva0023D007(int value);	// 0x0023D007, +0x184 forwarder
+	int rva0023D0B7();	// 0x0023D0B7, +0x184 forwarder
+	void DoExitMap(bool selfDestruct);	// 0x0023D0E3
+	void rva0023D17D();	// 0x0023D17D
+	void rva0023D201(int slotIndex, int status);	// 0x0023D201
+	void processProgress(int playerId, int percentage);	// 0x0023D740
+	void rva0023FABE(Object *obj);	// 0x0023FABE
+	void friend_awakenUpdateModule(Object *obj, UpdateModule *updateModule, unsigned int when);	// 0x0024297F
+	bool rva00245EDF(void *arg1, int *out);	// 0x00245EDF
+	bool rva00246F8E(const AsciiString &setName, int slot, const CommandButton **button);	// 0x00246F8E
+	bool rva0024877A();	// 0x0024877A
+	void rva003BA5DD(int value);	// 0x003BA5DD
+	void rva0023D028();	// 0x0023D028
+	void rva0023D03E();	// 0x0023D03E
+	void rva0023D054(int a, int b, Rva0040D2FDVec *out);	// 0x0023D054
+	int rva0023D075(int value);	// 0x0023D075
+	float rva0023D096(int value);	// 0x0023D096
+	int rva0023D0A1(int value);	// 0x0023D0A1
+	int rva0023D0AC(int value);	// 0x0023D0AC
+	Object *friend_createObject(const ThingTemplate *thingTemplate, const CreateMask *mask, Team *team, ObjectID id);	// 0x0023CAE7
+	ObjectTOCEntry *findTOCEntryByName(AsciiString name);	// 0x00240167
+	void QueueForNotifyPathfindCellChanged(Object *obj);	// 0x00241C25
+	void xferObjectTOC(Xfer *xfer);	// 0x00245F79
+	void setBuildableStatusOverride(const ThingTemplate *thingTemplate, BuildableStatus status);	// 0x00246F71
+	void bfmePopulateGameReport(GameInfo *game, int *localSlot);	// 0x00247378
+	void formatPlayerStartWaypointName(AsciiString *out);	// 0x0024822B
+	Rva003F468DParticipant *GetLivingWorldTacticalVictor();	// 0x0023D884
 };
