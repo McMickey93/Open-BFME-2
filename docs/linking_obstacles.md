@@ -3510,11 +3510,12 @@ Census confirmation: n/a.
 
 ### LINK-072: Zero Hour port units for module classes BFME 2 never had
 
-**Status: Open (3 units repaired). Updated: 2026-10-26.**
+(Formerly a second LINK-063, also headed LINK-045; `reverse/re_attempts.log`
+entries citing LINK-063 for a ZH-port rehome trial mean this entry. Every other
+LINK-063 reference means the `OrCondition` entry. WWLib `wwfont.cpp`, the same
+shape outside the module tree, is recorded under LINK-065.)
 
-**Status: Open (6 units repaired). Updated: 2026-10-26.**
-
-**Status: Open (3 units repaired; inline-only units parked). Updated: 2026-10-26.**
+**Status: Open (6 units repaired; inline-only units parked). Updated: 2026-10-26.**
 
 - **Evidence / scope:** several `Code/` units are verbatim Zero Hour ports of
   module classes that retail BFME 2 does not contain. Test, per class: game.dat
