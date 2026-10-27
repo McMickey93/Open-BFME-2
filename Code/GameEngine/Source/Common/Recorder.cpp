@@ -81,6 +81,7 @@ struct RGBAColorReal;
 struct RGBAColorInt;
 #include "../../Include/Common/BfmeXfer.h"
 #include <list>
+
 template <> int StringBase<unsigned short>::compare(const StringBase<unsigned short> &) const throw();
 
 enum { MAX_SLOTS = 8 };
@@ -735,6 +736,24 @@ public:
     char opaque00[0x71];
     bool crcProcessing71;
 };
+
+// The rowed builder takes Recorder.cpp's volatile aggregate; this caller
+// builds the same eight bytes through constructors, as retail's slot order
+// needs.
+struct Pair8Ctor
+{
+	Pair8Ctor() {}
+	Pair8Ctor(int x, int y) : a(x), b(y) {}
+	int a, b;
+};
+
+class BFME2FileSystemFacade
+{
+public:
+	bool doesWideFileExist(const unsigned short *path);
+};
+
+// ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
 // ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
@@ -1832,12 +1851,6 @@ AsciiString Rva0037BBED::rva0037B70A()
     return retval;
 }
 
-// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
-
-// tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x0037CF51 52B (unledgered) -- unmatched, no code, never credited
-
 // ---- from Code/GameEngine/Source/Common/Rva0037BCC4DeferredCtorCRC.cpp
 
 // Constructor and CRC dispatch retain unresolved provider contracts here.
@@ -1915,28 +1928,57 @@ bool Rva0037BBED::rva0037D0EF(UnicodeString filename)
     return false;
 }
 
+// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
+
+// tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x0037CF51 52B (unledgered) -- unmatched, no code, never credited
+
 // tu-skeleton: 0x0037D3C9 98B ??BBFME2WideConcatTriple@@QAE?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/System/WideConcatPair.cpp (not merged yet)
 
-// tu-skeleton: 0x0037D55E 394B ?Rva0037D55EGet@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva0037D55EGet.cpp
+
+// Retail 0x0037D55E..0x0037D6E8 (394 bytes, RET0 with hidden UnicodeString
+// return). Builds the first free default replay file name: the format text is
+// L"%d" unless TheGameText fetches "GUI:DefaultReplayFileName"; for
+// i = 1..99999998 it formats the name, joins the replay directory
+// (Rva0037B9D4Get), the name and the replay extension (Rva0037BA48Get) through
+// the rowed triple-concat builder (0x0037BA97) and its UnicodeString
+// conversion (0x0037D3C9), and returns the first name whose wide path does not
+// exist (doesWideFileExist 0x0060068A); L"0" when every name is taken.
+// Identity: WorldBuilder twin 0xF5B870 (unnamed, string evidence); the name is
+// address-derived. Target facts: literals, call targets, frame and EH states
+// read off retail. The copy-initialisation from the triple (conversion result
+// copied into the path) is what orders the hidden return push before the
+// builder call as retail does; a direct-initialised ctor from the triple
+// emits it after.
+
+__forceinline Pair8Ctor makePair(const UnicodeString &unicodeString, const UnicodeString &y)
+{
+	Pair8Ctor pair((int)&unicodeString, (int)&y);
+	return pair;
+}
+
+__forceinline const Pair8 *pairPtr(const Pair8Ctor &pair8) { return (const Pair8 *)&pair8; }
+
+__forceinline int widePtr(const UnicodeString &unicodeString) { return (int)&unicodeString; }
+
+UnicodeString Rva0037D55EGet()
+{
+	UnicodeString formatText((const unsigned short *)L"%d");
+	if (TheGameText)
+		formatText = TheGameText->fetch("GUI:DefaultReplayFileName");
+	for (int i = 1; i < 99999999; ++i)
+	{
+		UnicodeString filename;
+		filename.format(&formatText, i);
+		UnicodeString filepath = (BFME2WideConcatTriple &)Rva0037BA97Init(pairPtr(makePair(Rva0037B9D4Get(), filename)), widePtr(Rva0037BA48Get()));
+		if (!((BFME2FileSystemFacade *)TheFileSystem)->doesWideFileExist(filepath.str()))
+			return filename;
+	}
+	return UnicodeString((const unsigned short *)L"0");
+}
 
 // tu-skeleton: 0x0037DC36 28B ?update@RecorderClass@@UAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAG.cpp (not merged yet)
 
 // tu-skeleton: 0x0077EF54 8B uw_0077ef54 -- matched in Code/gen_small/uw_gen_000.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFAC 8B Unwind@00b7efac -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFB4 8B Unwind@00b7efb4 -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFBC 8B Unwind@00b7efbc -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFC4 8B Unwind@00b7efc4 -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFCC 8B Unwind@00b7efcc -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFD4 8B Unwind@00b7efd4 -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFDC 8B Unwind@00b7efdc -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFE4 25B ?rva0077efe4@@YAXXZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077EFFD 10B __ehhandler$?Rva0037D55EGet@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
