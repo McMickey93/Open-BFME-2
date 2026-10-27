@@ -8609,3 +8609,8 @@ Code/GameEngine/Source/Common/Rva001F51DC.cpp|local|Rva001F51DC::rva001F51DC|b,e
 Code/GameEngine/Source/Common/Rva002BEFE5.cpp|param|Rva002BEFE5::rva002BEFE5|a2,793ec66109127c3586e6fa71,claude-opus-5-5,cedric-c,w-553b9b55db02,2026-10-27
 Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp|member|Rva00495A2B_H04|m_wt08,b0adba24a6887e707b7bd2cf,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-27
 Code/GameEngine/Source/Common/VtableSlotBodiesR3.cpp|member|Rva00203665Data|m_valueAC8,d7d841c165bd6c5a86528973,claude-opus-5-5,cedric-e,w-9f0b254d5aa4,2026-10-27
+Code/GameEngine/Source/Common/Rva00262045Unlink.cpp|class||Node00262045,bb94166d4cba4638092e2604,claude-opus-5-5,claude2-20261027-dsm,w-85ac5a290b20,2026-10-27
+Code/GameEngine/Source/Common/Rva00262045Unlink.cpp|function|0x00262045|rva00262045,4913ff90a84ed9a50c55a4e3,claude-opus-5-5,claude2-20261027-dsm,w-85ac5a290b20,2026-10-27
+Code/GameEngine/Source/Common/Rva00262045Unlink.cpp|param|Rva00262045::rva00262045|n,ff5a23de8b66e338b8dd5794,claude-opus-5-5,claude2-20261027-dsm,w-85ac5a290b20,2026-10-27
+Code/GameEngine/Source/Common/Rva00090360Ctor.cpp|function|0x00090381|rva00090381,2e048f04429b288b6da56ecd,claude-opus-5-5,claude2-20261027-dsm3,w-85ac5a290b20,2026-10-27
+Code/GameEngine/Source/Common/Rva00090360Ctor.cpp|param|W3DDisplayStringManager::rva00090381|n,b946e3db67dbb8dd90fac072,claude-opus-5-5,claude2-20261027-dsm3,w-85ac5a290b20,2026-10-27
