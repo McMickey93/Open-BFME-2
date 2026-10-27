@@ -888,11 +888,15 @@ private:
 	unsigned char m_pad0C[0x20 - 0x0C];
 };
 
+enum NameKeyType;
+
 class TransportContain : public TransportContainOpenBase, public TransportPayloadCreator
 {
 public:
 #define V10(n) V(n##0) V(n##1) V(n##2) V(n##3) V(n##4) V(n##5) V(n##6) V(n##7) V(n##8) V(n##9)
-	V(04) V(05) V(06) V(07) V(08)
+	// Primary table 0x00844278 slot 4 calls the rowed getter at 0x00467EE1.
+	virtual NameKeyType getModuleNameKey() const;
+	V(05) V(06) V(07) V(08)
 	virtual void onCapture(int oldOwner, int newOwner);	// slot 9, 0x004672B7
 	virtual bool isExitBusy() const;	// exit interface slot 0, 0x00466DA9
 	V10(1) V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28)
