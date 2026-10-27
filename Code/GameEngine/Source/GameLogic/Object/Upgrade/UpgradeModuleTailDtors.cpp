@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc
 //
-// Upgrade module dtors with the StealthUpgrade shape (StealthUpgradeConstructor.cpp,
+// Upgrade module dtors with the StealthUpgrade shape (StealthUpgrade.cpp,
 // matched 0x004B530D): four compiler vptr restores at +0/+0xC/+0x10/+0x18,
 // then a tail jmp to the UpgradeModule dtor 0x0046089D.
 //
