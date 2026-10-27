@@ -16,7 +16,7 @@
 // movie name share the dead argument homes [ebp+8]/[ebp+0xC] as retail does.
 #include "ascii_string.h"
 
-void *__cdecl operator new(unsigned int size) throw();
+#include <new>
 
 struct DelegateDesc {
 	template <class T, class M> DelegateDesc(T *object, M method) : m_object(object), m_method(*(void **)&method) {}

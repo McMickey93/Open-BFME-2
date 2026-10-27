@@ -76,7 +76,7 @@ void AptRadialMenu::Impl::PositionButton(int button, const Coord2D &position, co
 	m_buttons[button]->Move(position, size);
 }
 
-void *__cdecl operator new(unsigned int) throw();
+#include <new>
 struct TargetRef00217D4C;
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
 struct Rva00578425Element {
