@@ -43,3 +43,30 @@ baseline, or source repair was changed. The exact staged trial is preserved at
 source/ledger changes were restored. The Apt destination, donors and two row
 claims were released. Do not count this trial as a merge or source-file
 reduction.
+
+## Allocated `SlavedUpdate.cpp` candidate refused
+
+The destination passed `consolidation_queue.py --check-tu` and its plan listed
+28 approved rows, six donor files, five mixed files and no statically refused
+files. The unchanged merge dry run accepted no donor and blocked with:
+
+- LinkGuard: `SlavedUpdate.cpp` links at the census, but the merged object would
+  no longer define `??_7SlavedUpdate@@6BBehaviorModuleInterface@@@`,
+  `??_7SlavedUpdate@@6BObjectModule@@@`, and
+  `??_7SlavedUpdate@@6BSlavedUpdateInterface@@@`, all still referenced by the
+  census. The guard lists the SlavedUpdate destination and its five related
+  census-linked units.
+- `SlavedUpdateCtor.cpp`: `error C2039: 'rva0004A1875' : is not a member of
+  'SlavedUpdate'`.
+- `SlavedUpdateMoveToNewRepairSpot.cpp`: the same missing member, plus
+  `error C2039: 'm_modelConditionWo...` (compiler output truncated by the tool).
+
+The 13-row carve from `SlavedUpdateRepair.cpp` was refused because the residual
+would lose matched rows `0x001E3459` and `0x0026C26D` (`blocked: the residual
+loses matched rows (flag region or a shared helper)`). A carve from
+`ModuleNameGetters.cpp` was refused because the destination TU itself holds one
+unplaced row (`blocked: TU path exists and holds rows the map does not place
+there: (unplaced) 1`). The other three mixed sources were inspected with
+`--split FILE`; no manual declaration, path or flag repair was attempted.
+No claims or source changes were made for this candidate. Continue with a
+separate allocated TU; leave these donors for the prerequisite owner.
