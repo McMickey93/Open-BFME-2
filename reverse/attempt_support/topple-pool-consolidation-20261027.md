@@ -90,3 +90,26 @@ source. The merger refreshed header reports; no unrelated queue rows changed.
 Raw planner, trial, ordinary preview and final guard logs remain under ignored
 build/codexb-topple-* paths. Carry the stale-index limitation into the next
 scheduled census and review the normal pre-push batch audit.
+
+### Final batch audit after rebase, 2026-10-27
+
+Rechecked the complete outgoing range from the current origin/master through
+`6f01dd46ce` (six source commits). The only source-path change remains the
+pool-key absorption; the subsequent DX8Caps repair moves no source. A combined
+search of old paths, basenames and the Update directory across tools, hooks,
+workflows, source/includes, documentation and registers found no additional
+active consumer to update. Remaining old donor-path mentions are the TU's
+provenance comment, historical attempts/deletions and the unmodified census.
+The similarly named StructureTopple source is a separate live owner.
+
+Current function/data rows and the transferred data-check key resolve to
+ToppleUpdate.cpp; no code-identity or header-adoption key names the deleted
+donor. A fresh scoped Microsoft-header scan agrees with the destination's
+refreshed queue: two local declarations, one source occurrence and one same
+occurrence, unverified. CSV and whitespace checks pass after the rebase.
+No source conflict or relevant source edit occurred in the rebase, so the
+ordinary build, EH results and final-object guard above remain applicable.
+The normal pre-push batch audit still owns its provider, lost-byte and
+input-freshness verdict; an older census does not establish exact-base closure.
+The shared obstacle document remains held by another worker, so carry this
+bounded result into LINK-017 when its scope becomes available.
