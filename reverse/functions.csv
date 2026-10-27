@@ -20084,7 +20084,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_00629958@@YAXXZ,,0x00629958,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA560;dll=msvcr71.dll;import=exp;target=exp
 ?ji_00629964@@YAXXZ,,0x00629964,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA558;dll=msvcr71.dll;import=acos;target=acos
 ?ji_0062996a@@YAXXZ,,0x0062996A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA554;dll=msvcr71.dll;import=fmod;target=fmod
-?ji_00629970@@YAXXZ,,0x00629970,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA550;dll=msvcr71.dll;import=atof;target=atof
 ?ji_0062997c@@YAXXZ,,0x0062997C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA548;dll=msvcr71.dll;import=log10;target=log10
 ?ji_00629982@@YAXXZ,,0x00629982,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA544;dll=msvcr71.dll;import=isdigit;target=isdigit
 ?ji_006299a0@@YAXXZ,,0x006299A0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA530;dll=msvcr71.dll;import=_CIpow;target=_CIpow
@@ -98832,3 +98831,4 @@ _strlen,,0x00629170,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,
 _strcmp,,0x006291C6,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__strcmp import pointer; retail IAT slot 0x00BBA6B0 names msvcr71.dll!strcmp (gen-import row); complete 6B tail
 _memcmp,,0x0062929E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__memcmp import pointer; retail IAT slot 0x00BBA694 names msvcr71.dll!memcmp (gen-import row); complete 6B tail
 _vsprintf,,0x00629A7E,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__vsprintf import pointer; retail IAT slot 0x00BBA4E0 names msvcr71.dll!vsprintf (gen-import row); complete 6B tail
+_atof,,0x00629970,6,Code/Libraries/Source/CRT/Msvcr71ImportThunks.cpp,matched,Typed CRT cdecl forwarding through the genuine __imp__atof import pointer; retail IAT slot 0x00BBA550 names msvcr71.dll!atof (gen-import row); complete 6B tail

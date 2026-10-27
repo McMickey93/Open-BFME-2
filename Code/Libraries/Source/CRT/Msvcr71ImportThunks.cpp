@@ -400,6 +400,13 @@ int __cdecl strncmp(const char * string1, const char * string2, size_t count) {
  return _imp__strncmp(string1, string2, count);
 }
 
+// _atof
+typedef double (__cdecl *PFN_atof)(const char *);
+extern PFN_atof _imp__atof;
+double __cdecl atof(const char * str) {
+ return _imp__atof(str);
+}
+
 // _fgets
 typedef char * (__cdecl *PFN_fgets)(char *, int, FILE *);
 extern PFN_fgets _imp__fgets;
