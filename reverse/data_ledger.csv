@@ -19956,8 +19956,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03650,4,.data,global,_s_rva007B0D8C,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03654,4,.data,global,?TheHealContainPoolKey@?1??rva000466B88@HealContain@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp,owned,,1,2
 0x00A03658,4,.data,global,?g_Va00E03658@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E036xx.cpp,provisional,?$S1@?1??rva000466B88@HealContain@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Contain/HealContainPoolKey.cpp;?g_Va00E03658@@3IA,2,4
-0x00A0365C,4,.data,global,?TheTransportContainPoolKey@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp,owned,,1,2
-0x00A03660,4,.data,global,?g_Va00E03660@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E036xx.cpp,provisional,?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp;?g_Va00E03660@@3IA,2,4
+0x00A0365C,4,.data,global,?TheTransportContainPoolKey@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp,owned,,1,2
+0x00A03660,4,.data,global,?g_Va00E03660@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E036xx.cpp,provisional,?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp;?g_Va00E03660@@3IA,2,4
 0x00A03664,4,.data,global,_s_rva007B0DB6,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03668,4,.data,global,?key@?1??Rva00468E26Get@@YGPAVModule@@PAVObject@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/Rva00468E26Get.cpp,owned,,1,2
 0x00A0366C,4,.data,global,?g_Va00E0366C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E036xx.cpp,provisional,?$S1@?1??Rva00468E26Get@@YGPAVModule@@PAVObject@@@Z@4IA@Code/GameEngine/Source/GameLogic/Object/Update/Rva00468E26Get.cpp;?g_Va00E0366C@@3IA,2,4

@@ -2344,7 +2344,7 @@ Census confirmation: not claimed.
 
 ### LINK-031: `TransportContain.cpp` predicts a duplicate module-data ctor after its merge
 
-Status: Open. Updated: 2026-10-26; inspected revision: a3e207d553 (index 47e030bafc).
+Status: Open (original ctor diagnostic no longer reproduces; subsequent getter merge awaits index refresh). Updated: 2026-10-27; inspected revision: ae7b59bf7b plus the guarded pool-key merge (index bf3dd31211).
 Evidence / affected units: `link_check TransportContain.cpp` (with or without
 `ContainModuleDeletingDtors.cpp`) reports "does not link", LINKED 1,921 -> 0 B:
 `duplicate` + `selected` on `??0TransportContainModuleData@@QAE@XZ` (row 0x00468301).
@@ -2359,6 +2359,26 @@ Remaining / next check: rerun `link_check TransportContain.cpp` against the next
 if the duplicate persists, find the second definer in the census objects.
 Clearance: pending.
 Census confirmation: not claimed.
+
+**2026-10-27 recheck and consolidation:** before the pool-key merge,
+`link_check TransportContain.cpp` against census index bf3dd31211 (2026-10-27
+00:39) reports LINKS, 2,455 -> 2,455 B; the original module-data ctor duplicate
+is absent in this scope. Retail primary table RVA 0x00844278 slot 4 names the
+already rowed getter 0x00467EE1. Declaring that slot permits `tu_skeleton.py
+--merge` to absorb `TransportContainPoolKey.cpp`, including its EH handler and
+guard rollback funclet: 26/26 rows match, four EH graphs are EXACT, and the
+tool's before/after provider-and-consumer link guard accepts the composition.
+The ordinary post-merge preview now reports duplicate/selected on
+`getModuleNameKey`, because this index still contains the absorbed pool-key
+donor. It is not a new second source definition. Retain this entry until a
+fresh measured index confirms the merged owner. Thirteen other whole-file
+donors remain rejected (class-view conflicts, or destructor byte mismatch).
+Debt is transferred, not retired; the current data check still finds the two
+real getter-local names against the older placeholder names in the data
+ledger. Evidence and remaining prerequisites:
+`reverse/attempt_support/transportcontain-consolidation-20261027.md`.
+Clearance: original ctor preview diagnostic absent at the newer index;
+post-merge getter preview and census clearance pending. No census increase claimed.
 
 ### LINK-035: `StlSweepR3` vector-destructor units instantiated the whole `vector<RecordN>`
 Status: Open (6 of 7 repaired). Updated: 2026-10-26; inspected revision: 018ace6021; index d1f046749a.

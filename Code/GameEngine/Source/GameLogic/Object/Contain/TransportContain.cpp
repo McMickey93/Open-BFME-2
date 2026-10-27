@@ -890,30 +890,6 @@ private:
 
 enum NameKeyType;
 
-class TransportContain : public TransportContainOpenBase, public TransportPayloadCreator
-{
-public:
-#define V10(n) V(n##0) V(n##1) V(n##2) V(n##3) V(n##4) V(n##5) V(n##6) V(n##7) V(n##8) V(n##9)
-	// Primary table 0x00844278 slot 4 calls the rowed getter at 0x00467EE1.
-	virtual NameKeyType getModuleNameKey() const;
-	V(05) V(06) V(07) V(08)
-	virtual void onCapture(int oldOwner, int newOwner);	// slot 9, 0x004672B7
-	virtual bool isExitBusy() const;	// exit interface slot 0, 0x00466DA9
-	V10(1) V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28)
-#undef V10
-	virtual void createPayload();		// slot 29 (0x004670D6)
-	virtual void slot30();
-	virtual UpdateSleepTime update();
-	void UpdateUpgradeCreationTriggers();	// 0x00468045
-	virtual void rva004673C0();
-	virtual Object *createPayloadMember(const ThingTemplate *what, PayloadContainView *contain, Object *parent, const char *name, int initial);	// 0x00466FE0
-private:
-	unsigned int m_extraSlotsInUse;		// +0x100 (ZH name, per the matched xfer 0x00466DBC)
-	unsigned int m_frameExitNotBusy;	// +0x104
-	unsigned int m_payloadFrame;		// +0x108
-	bool m_hiddenState;					// +0x10C
-};
-
 namespace _STL 
 {
  template<> _List_base<int,allocator<int> >::~_List_base();
@@ -1190,6 +1166,7 @@ struct BfmePod8
 namespace _STL { template <> vector<BfmeE16, allocator<BfmeE16> >::~vector(); }
 
 template <int N> class BitFlags;
+
 extern BitFlags<116> KINDOFMASK_NONE;
 
 class BfmeFixedStorage0004543D
@@ -1325,11 +1302,60 @@ public:
 	static void buildFieldParse(MultiIniFieldParse &parse);
 };
 
+// ?getModuleNameKey@TransportContain@@UBE?AW4NameKeyType@@XZ @0x467EE1
+// (69B): cached pool-name key for TransportContain. The class
+// identity comes from the pool-name string the body pushes
+// ("TransportContain"); the body guards a function-local static
+// key fetched once through TheNameKeyGenerator. It is NOT getClassMemoryPool:
+// retail stores nameToKey's return (a key, not a pool pointer) and returns it,
+// and the address carries no getClassMemoryPool row anywhere. /EHsc for the
+// static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
+// from retail, no pins; nameToKey resolves via its matched row).
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class TransportContain : public TransportContainOpenBase, public TransportPayloadCreator
+{
+public:
+#define V10(n) V(n##0) V(n##1) V(n##2) V(n##3) V(n##4) V(n##5) V(n##6) V(n##7) V(n##8) V(n##9)
+	// Primary table 0x00844278 slot 4 calls the rowed getter at 0x00467EE1.
+	virtual NameKeyType getModuleNameKey() const;
+	V(05) V(06) V(07) V(08)
+	virtual void onCapture(int oldOwner, int newOwner);	// slot 9, 0x004672B7
+	virtual bool isExitBusy() const;	// exit interface slot 0, 0x00466DA9
+	V10(1) V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28)
+#undef V10
+	virtual void createPayload();		// slot 29 (0x004670D6)
+	virtual void slot30();
+	virtual UpdateSleepTime update();
+	void UpdateUpgradeCreationTriggers();	// 0x00468045
+	virtual void rva004673C0();
+	virtual Object *createPayloadMember(const ThingTemplate *what, PayloadContainView *contain, Object *parent, const char *name, int initial);	// 0x00466FE0
+private:
+	unsigned int m_extraSlotsInUse;		// +0x100 (ZH name, per the matched xfer 0x00466DBC)
+	unsigned int m_frameExitNotBusy;	// +0x104
+	unsigned int m_payloadFrame;		// +0x108
+	bool m_hiddenState;					// +0x10C
+};
+
 // tu-skeleton: 0x00466DA9 19B ?isExitBusy@TransportContain@@UBE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/Rva00466D93ExitReserve.cpp (not merged yet)
 
 // tu-skeleton: 0x00466DBC 73B ?xfer@TransportContain@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x00466E05 5B ?rva00466E05@Rva00466E05@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp
 
@@ -1740,65 +1766,20 @@ void Rva00467AB8::onRemoving(Object *rider)
  
 }
 
-// tu-skeleton: 0x00466E12 17B ??0Rva00466E12@@QAE@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE22.cpp (not merged yet)
-
-// tu-skeleton: 0x00466E58 12B ?rva00466E58@Rva00466E58@@QBEEH@Z -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAM.cpp (not merged yet)
-
-// tu-skeleton: 0x00466E64 67B ??0BfmeStringRecord00466E64@@QAE@ABU0@@Z -- matched in Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp (not merged yet)
-
-// tu-skeleton: 0x00466EA7 27B ??0?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@QAE@ABU01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_insert_unique_nocase.cpp (not merged yet)
-
-// tu-skeleton: 0x00466EDE 258B ?slot38@TransportContain@@UAE_NPAVObject@@HH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/slot38Rva00466EDEFarm.cpp (not merged yet)
-
-// tu-skeleton: 0x004670D6 214B ?createPayload@TransportContain@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain_createPayload.cpp (not merged yet)
-
-// tu-skeleton: 0x004671AC 267B ?isSpecificRiderFreeToExit@TransportContain@@MAE_NPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
-
-// tu-skeleton: 0x0046731A 166B ?rva0046731A@Rva0046731A@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
-
-// tu-skeleton: 0x0046740C 344B ?rva0046740C@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders_Rva0046740C.cpp (not merged yet)
-
-// tu-skeleton: 0x0046760D 222B ?letRidersUpgradeWeaponSet@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
-
-// tu-skeleton: 0x004676EB 45B ??$_Construct@UBfmeStringRecord00466E64@@U1@@_STL@@YAXPAUBfmeStringRecord00466E64@@ABU1@@Z -- matched in Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp (not merged yet)
-
-// tu-skeleton: 0x00467718 38B ??$__uninitialized_copy@PBUBfmeStringRecord00466E64@@PAU1@@_STL@@YAPAUBfmeStringRecord00466E64@@PBU1@0PAU1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_uninitialized_copy.cpp (not merged yet)
-
-// tu-skeleton: 0x0046773E 37B ??$__uninitialized_fill_n@PAUBfmeStringRecord00466E64@@IU1@@_STL@@YAPAUBfmeStringRecord00466E64@@PAU1@IABU1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_uninitialized_fill_n12.cpp (not merged yet)
-
-// tu-skeleton: 0x00467763 45B ?Rva00467763Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
-
-// tu-skeleton: 0x00467790 9B ??$_Destroy@VRva00466E23@@@_STL@@YAXPAVRva00466E23@@@Z -- matched in Code/GameEngine/Source/Common/DestroyInstances.cpp (not merged yet)
-
-// tu-skeleton: 0x00467799 100B ?rva00467799@Rva00467799@@QAEPAUBfmeStringRecord00466E64@@ABV?$StringBase@D@@@Z -- matched in Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp (not merged yet)
-
-// tu-skeleton: 0x0046781F 665B ?rva0046781F@Rva0046781F@@QAEXPAVObject@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainOnContaining.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva00467DB3ObjListPush.cpp
 
 // The declared node allocation binds to that row (tools/allowed_symbols.py --alternatenames).
 
-// tu-skeleton: 0x00467DE6 123B ?rva00467DE6@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/Rva00467DE6PayloadParse.cpp (not merged yet)
 
-// tu-skeleton: 0x00467E61 128B ??1TransportContain@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00467EE1 69B ?getModuleNameKey@TransportContain@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp (not merged yet)
 
-// tu-skeleton: 0x00467F26 6B ?name@TransportContain@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x00467F2C 7B ?get@Rva00467F2CDwordField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x00467F33 8B ?onCapture@TransportContain@@WCA@AEXHH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00467F3B 145B ?killRidersWhoAreNotFreeToExit@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
 
-// tu-skeleton: 0x00467FCC 63B ??1Rva00467FCC@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
 
-// tu-skeleton: 0x00468029 28B ??_GTransportContain@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00468045 517B ?UpdateUpgradeCreationTriggers@TransportContain@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainUpdateUpgradeCreationTriggers.cpp (not merged yet)
 
-// tu-skeleton: 0x0046824A 183B ?_M_insert_overflow@?$vector@UBfmeStringRecord00466E64@@V?$allocator@UBfmeStringRecord00466E64@@@_STL@@@_STL@@IAEXPAUBfmeStringRecord00466E64@@ABU3@ABU__false_type@2@I_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorInsertOverflowFamily.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainModuleDataCtor.cpp
 
@@ -1863,6 +1844,70 @@ TransportContainModuleData::TransportContainModuleData()
 		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
 
+// tu-skeleton: 0x00466E12 17B ??0Rva00466E12@@QAE@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE22.cpp (not merged yet)
+
+// tu-skeleton: 0x00466E58 12B ?rva00466E58@Rva00466E58@@QBEEH@Z -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAM.cpp (not merged yet)
+
+// tu-skeleton: 0x00466E64 67B ??0BfmeStringRecord00466E64@@QAE@ABU0@@Z -- matched in Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x00466EA7 27B ??0?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@QAE@ABU01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_rb_tree_insert_unique_nocase.cpp (not merged yet)
+
+// tu-skeleton: 0x00466EDE 258B ?slot38@TransportContain@@UAE_NPAVObject@@HH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/slot38Rva00466EDEFarm.cpp (not merged yet)
+
+// tu-skeleton: 0x004670D6 214B ?createPayload@TransportContain@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain_createPayload.cpp (not merged yet)
+
+// tu-skeleton: 0x004671AC 267B ?isSpecificRiderFreeToExit@TransportContain@@MAE_NPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
+
+// tu-skeleton: 0x0046731A 166B ?rva0046731A@Rva0046731A@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
+
+// tu-skeleton: 0x0046740C 344B ?rva0046740C@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders_Rva0046740C.cpp (not merged yet)
+
+// tu-skeleton: 0x0046760D 222B ?letRidersUpgradeWeaponSet@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
+
+// tu-skeleton: 0x004676EB 45B ??$_Construct@UBfmeStringRecord00466E64@@U1@@_STL@@YAXPAUBfmeStringRecord00466E64@@ABU1@@Z -- matched in Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x00467718 38B ??$__uninitialized_copy@PBUBfmeStringRecord00466E64@@PAU1@@_STL@@YAPAUBfmeStringRecord00466E64@@PBU1@0PAU1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_uninitialized_copy.cpp (not merged yet)
+
+// tu-skeleton: 0x0046773E 37B ??$__uninitialized_fill_n@PAUBfmeStringRecord00466E64@@IU1@@_STL@@YAPAUBfmeStringRecord00466E64@@PAU1@IABU1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_uninitialized_fill_n12.cpp (not merged yet)
+
+// tu-skeleton: 0x00467763 45B ?Rva00467763Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
+
+// tu-skeleton: 0x00467790 9B ??$_Destroy@VRva00466E23@@@_STL@@YAXPAVRva00466E23@@@Z -- matched in Code/GameEngine/Source/Common/DestroyInstances.cpp (not merged yet)
+
+// tu-skeleton: 0x00467799 100B ?rva00467799@Rva00467799@@QAEPAUBfmeStringRecord00466E64@@ABV?$StringBase@D@@@Z -- matched in Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x0046781F 665B ?rva0046781F@Rva0046781F@@QAEXPAVObject@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainOnContaining.cpp (not merged yet)
+
+// tu-skeleton: 0x00467DE6 123B ?rva00467DE6@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/Rva00467DE6PayloadParse.cpp (not merged yet)
+
+// tu-skeleton: 0x00467E61 128B ??1TransportContain@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp
+
+// ?getModuleNameKey@TransportContain@@UBE?AW4NameKeyType@@XZ
+NameKeyType TransportContain::getModuleNameKey() const
+{
+	static NameKeyType TheTransportContainPoolKey =
+		TheNameKeyGenerator->nameToKey("TransportContain");
+	return TheTransportContainPoolKey;
+}
+
+// tu-skeleton: 0x00467F26 6B ?name@TransportContain@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x00467F2C 7B ?get@Rva00467F2CDwordField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x00467F33 8B ?onCapture@TransportContain@@WCA@AEXHH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00467F3B 145B ?killRidersWhoAreNotFreeToExit@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
+
+// tu-skeleton: 0x00467FCC 63B ??1Rva00467FCC@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x00468029 28B ??_GTransportContain@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00468045 517B ?UpdateUpgradeCreationTriggers@TransportContain@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainUpdateUpgradeCreationTriggers.cpp (not merged yet)
+
+// tu-skeleton: 0x0046824A 183B ?_M_insert_overflow@?$vector@UBfmeStringRecord00466E64@@V?$allocator@UBfmeStringRecord00466E64@@@_STL@@@_STL@@IAEXPAUBfmeStringRecord00466E64@@ABU3@ABU__false_type@2@I_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorInsertOverflowFamily.cpp (not merged yet)
+
 // tu-skeleton: 0x004684D5 28B ??_GTransportContainModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/ContainModuleDeletingDtors.cpp (not merged yet)
 
 // tu-skeleton: 0x004684F1 104B ??1TransportContainModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainModuleDataDtor.cpp (not merged yet)
@@ -1874,3 +1919,51 @@ TransportContainModuleData::TransportContainModuleData()
 // tu-skeleton: 0x004688D1 55B ?push_back@?$vector@UBfmeStringRecord00466E64@@V?$allocator@UBfmeStringRecord00466E64@@@_STL@@@_STL@@QAEXABUBfmeStringRecord00466E64@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackFamily.cpp (not merged yet)
 
 // tu-skeleton: 0x00468908 215B ?Rva00468908Parse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/Rva00468908Parse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AD73 8B uw_0078ad73 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainOnContaining.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AD7B 10B __ehhandler$?rva0046781F@Rva0046781F@@QAEXPAVObject@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainOnContaining.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AD97 8B uw_0078ad97 -- matched in Code/gen_small/uw_gen_003.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AD9F 10B __ehhandler$?rva00467DE6@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/Rva00467DE6PayloadParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078ADA9 8B Unwind@00b8ada9 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078ADB1 10B __ehhandler$??1TransportContain@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078ADD2 8B $L6630 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
+
+// tu-skeleton: 0x0078ADDA 10B __ehhandler$?killRidersWhoAreNotFreeToExit@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
+
+// tu-skeleton: 0x0078ADE4 8B uw_0078ade4 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+
+// tu-skeleton: 0x0078ADEC 10B __ehhandler$??1Rva00467FCC@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE28 14B uw_0078ae28 -- matched in Code/gen_small/uw_gen_012.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE40 8B Unwind@00b8ae40 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE48 14B Unwind@00b8ae48 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE56 14B $L5215 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE64 14B Unwind@00b8ae64 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE72 10B __ehhandler$??1TransportContainModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE7C 8B Unwind@00b8ae7c -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE84 14B Unwind@00b8ae84 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE92 10B __ehhandler$??0TransportContain@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AE9C 8B Unwind@00b8ae9c -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRva00468657.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AEA4 8B Unwind@00b8aea4 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRva00468657.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AEAC 10B __ehhandler$?rva00468657@Rva00468657@@QAEXPAVObject@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRva00468657.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AEB6 8B uw_0078aeb6 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/Rva00468908Parse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078AEBE 10B __ehhandler$?Rva00468908Parse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/Rva00468908Parse.cpp (not merged yet)
