@@ -23,12 +23,7 @@ private:
 	int m_unk14;
 };
 
-class GameLogic
-{
-public:
-	char m_pad[0x110];
-	int m_gameMode;
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -74,7 +69,7 @@ private:
 void Rva0043D3DA::rva0043C7C9(int unused)
 {
 	(void)unused;
-	if (TheGameLogic->m_gameMode == 6) {
+	if (TheGameLogic->m_110 == 6) {
 		if (TheInGameUI->m_16 == 0)
 			return;
 	}

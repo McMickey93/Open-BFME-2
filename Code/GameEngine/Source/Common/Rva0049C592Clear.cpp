@@ -4,10 +4,7 @@
 // Looks up the id at +0x40. A live object and the object from 0x2931F5
 // both clear status 0x42. The id is then masked to 0.
 
-enum ObjectID
-{
-	OID_NONE = 0
-};
+#include "GameLogicObjectLookupView.h"
 
 enum ObjectStatusTypes
 {
@@ -21,11 +18,6 @@ public:
 	Object *rva002931F5(bool flag);
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 

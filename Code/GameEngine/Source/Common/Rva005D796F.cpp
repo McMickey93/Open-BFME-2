@@ -48,21 +48,13 @@ typedef _Rb_tree<int, int, _Identity<int>, less<int>, allocator<int> > Lk11RbInt
 template <> pair<Lk11RbIntSet::iterator, bool> Lk11RbIntSet::insert_unique(const int &);
 }
 
-enum ObjectID
-{
-	OBJECTID_FIRST = 0
-};
+#include "GameLogicObjectLookupView.h"
 
 class Player;
 class Object;
 #include "../../../Libraries/Include/Lib/Coord3D.h"
 
 class PlayerList;
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 extern GameLogic *TheGameLogic;
 
 class Object

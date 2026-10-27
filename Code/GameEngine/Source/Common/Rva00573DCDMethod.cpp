@@ -5,10 +5,7 @@
 // plus pin 0x0033A69A; globals g_009FF000 and TheGameLogic; fild float return with int arg.
 #include "ascii_string.h"
 
-enum ObjectID
-{
-	OBJECTID_INVALID = 0
-};
+#include "GameLogicObjectLookupView.h"
 
 class Object;
 class AsciiString;
@@ -20,11 +17,6 @@ public:
 	const ThingTemplate *findTemplate(const AsciiString &s);
 };
 
-class GameLogic
-{
-public:
-	class Object *findObjectByID(enum ObjectID id);
-};
 
 class ThingTemplate
 {

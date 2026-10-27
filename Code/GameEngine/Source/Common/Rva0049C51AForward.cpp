@@ -5,18 +5,10 @@
 // five arguments to 0x004500A3 when that object is missing or the byte
 // at +0x69 is clear.
 
-enum ObjectID
-{
-	OBJECT_ID_NONE = 0
-};
 
 class Object;
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 

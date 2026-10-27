@@ -5,10 +5,7 @@
 // 0x0028F4BC returns a module gets 0x00373D23, then the list resets
 // through Rva0029FB3BMember::reset.
 
-enum ObjectID
-{
-	OBJECT_ID_NONE = 0
-};
+#include "GameLogicObjectLookupView.h"
 
 class Object;
 
@@ -30,11 +27,6 @@ public:
 	Rva00373EC6 *rva0028F4BC();
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 

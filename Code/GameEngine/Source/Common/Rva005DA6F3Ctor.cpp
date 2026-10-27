@@ -14,7 +14,7 @@ template <> const unsigned int &max<unsigned int>(const unsigned int &, const un
 
 #include <vector>
 
-enum ObjectID { Rva005DA6F3_ObjectID = 0 };
+#include "GameLogicObjectLookupView.h"
 
 class Rva005DAA36
 {
@@ -83,11 +83,6 @@ public:
  Player *getControllingPlayer() const;
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 

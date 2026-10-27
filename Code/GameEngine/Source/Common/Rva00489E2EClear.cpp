@@ -10,10 +10,6 @@
 // AIUpdateInterface::loadPostProcess and tail-calls 0x00489DE3 when the
 // id is live. A missing object clears the id.
 
-enum ObjectID
-{
-	OBJECT_ID_NONE = 0
-};
 
 class Player;
 
@@ -42,11 +38,7 @@ class Player
 public:
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
+#include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
 
@@ -73,7 +65,7 @@ void AIUpdateInterface::rva00489DE3()
 		return;
 	Object *found = TheGameLogic->findObjectByID(id);
 	if (found == 0)
-		m_id = OBJECT_ID_NONE;
+		m_id = INVALID_OBJECT_ID;
 	else
 	{
 		found->setEffectivelyDead(true);
@@ -95,7 +87,7 @@ void AIUpdateInterface::rva00489E2E()
 	}
 	Object *found = TheGameLogic->findObjectByID(m_id);
 	if (found == 0)
-		m_id = OBJECT_ID_NONE;
+		m_id = INVALID_OBJECT_ID;
 	else
 	{
 		found->m_flag4B0 = 0;

@@ -12,16 +12,8 @@ class Player;
 class Object;
 class AIUpdateInterface;
 
-enum ObjectID
-{
-	OBJECTID_INVALID = 0
-};
+#include "GameLogicObjectLookupView.h"
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 

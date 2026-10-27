@@ -9,10 +9,7 @@
 // callee names are the rowed ones.
 #include "ascii_string.h"
 
-enum ObjectID
-{
-	OBJECTID_NONE = 0
-};
+#include "GameLogicObjectLookupView.h"
 
 class Object;
 
@@ -29,11 +26,6 @@ struct Object00525E07
 	NameHolder00525E07 *getHolder() const { return m_holder; }
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 

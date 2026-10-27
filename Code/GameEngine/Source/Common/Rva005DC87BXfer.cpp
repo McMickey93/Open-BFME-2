@@ -38,10 +38,7 @@ public:
 	unsigned char m_minimum;
 };
 
-enum ObjectID
-{
-	OBJECTID_INVALID = -1
-};
+#include "GameLogicObjectLookupView.h"
 
 void XferObjectID(Xfer *xfer, enum ObjectID *objectID);
 
@@ -77,11 +74,6 @@ public:
 
 class Object;
 
-class GameLogic
-{
-public:
-	class Object *findObjectByID(enum ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 

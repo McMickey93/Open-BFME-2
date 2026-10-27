@@ -1,18 +1,10 @@
 // cl: /GX- /MD /DNDEBUG
 // ?rva004DF3B0@Rva004DF2E2@@QAEXPAX@Z @0x004DF3B0 72B: resolve m_20 via TheGameLogic::findObjectByID then guarded forward via rowed rva004DF2FC else clear; second phase forward m_08 via rowed Rva0028BC05::rva0028BC05 and clear status via rva004DF2E2; caller 0x0028BBEB unblocks 0x0028BBE1
-enum ObjectID
-{
-	OBJECTID_INVALID = 0
-};
+#include "GameLogicObjectLookupView.h"
 
 class Object;
 class BfmeSubBEC;
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 
@@ -43,10 +35,10 @@ private:
 
 void Rva004DF2E2::rva004DF3B0(void *p)
 {
-	if (m_20 != OBJECTID_INVALID) {
+	if (m_20 != INVALID_OBJECT_ID) {
 		Object *obj = TheGameLogic->findObjectByID(m_20);
 		if (obj == 0)
-			m_20 = OBJECTID_INVALID;
+			m_20 = INVALID_OBJECT_ID;
 		else
 			rva004DF2FC((BfmeSubBEC *)obj);
 	}

@@ -31,10 +31,7 @@
 
 typedef int Int;
 
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "GameLogicObjectLookupView.h"
 
 enum CommandSourceType
 {
@@ -120,14 +117,6 @@ public:
 	Rva005AD6C3AI *m_ai;		// +0x258
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-	Object *getFirstObject();
-	char m_pad00[0x40];
-	unsigned int m_frame;
-};
 
 extern GameLogic *TheGameLogic;
 
@@ -194,9 +183,9 @@ void AINavyUnitBattleShip::update()
 	if (m_field08) {
 		Object *target = logic->findObjectByID((ObjectID)m_field08);
 		if (target) {
-			if (logic->m_frame == (unsigned int)m_field0C) {
+			if (logic->getFrame() == (unsigned int)m_field0C) {
 				ship->m_ai->m_commands.rva003C7653(target, CMD_FROM_PLAYER);
-				m_field0C = TheGameLogic->m_frame + 25;
+				m_field0C = TheGameLogic->getFrame() + 25;
 			}
 		} else {
 			m_field08 = 0;
