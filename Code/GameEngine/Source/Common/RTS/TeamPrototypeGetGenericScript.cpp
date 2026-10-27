@@ -17,6 +17,11 @@ class Script
 {
 public:
 	Script *duplicate() const;
+	void *getAction() const { return m_action; }
+
+private:
+	unsigned char m_pad00[0x34];
+	void *m_action; // +0x34
 };
 
 // The (scope; name) script lookup 0x003573C4, rowed under its placeholder owner.

@@ -28,6 +28,7 @@ class TeamFactory;
 class Script
 {
 public:
+	Script *duplicate() const;
 	void *getAction() const { return m_action; }
 
 private:

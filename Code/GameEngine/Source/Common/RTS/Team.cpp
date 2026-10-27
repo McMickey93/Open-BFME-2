@@ -163,6 +163,15 @@ struct TeamHomeLocation : Coord3D { TeamHomeLocation() { x=0.0f; y=0.0f; z=0.0f;
 
 class Dict;
 
+// The record's +0x14 word, -1 on construction: retail stores it after the
+// zero and 1 stores, the order a member sub-object with its own inline
+// constructor gives (Rva0039EA9CCtor.cpp).
+struct Rva0039EA9CHandle
+{
+	int m_value;
+	Rva0039EA9CHandle() : m_value(-1) {}
+};
+
 class Rva0039EA9C
 {
 public:
@@ -175,7 +184,7 @@ public:
 	int m_08;
 	AsciiString m_0c;
 	AsciiString m_10;
-	int m_14;
+	Rva0039EA9CHandle m_14;
 };
 
 class Rva0024C7B3Member
