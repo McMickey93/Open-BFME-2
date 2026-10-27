@@ -33,13 +33,13 @@ private:
     int FirstFrame;
     int LastFrame;
     unsigned char *Bits;
-    // BitChannelClass::Free (motchan.cpp; pinned at the shared body 0x001960C0) inlined as retail
-    // does; a distinct name keeps this copy from emitting a COMDAT under the pinned name.
-    inline void Free_Inline() { delete [] Bits; Bits = 0; }
+    // BitChannelClass::Free (motchan.cpp), inlined as retail does; this view's copy goes
+    // when the body merges into motchan.cpp, where the out-of-line Free is auto-inlined.
+    inline void Free() { delete [] Bits; Bits = 0; }
 };
 bool BitChannelClass::Load_W3D(ChunkLoadClass & cload)
 {
-	Free_Inline();
+	Free();
 
 
 
@@ -67,7 +67,7 @@ bool BitChannelClass::Load_W3D(ChunkLoadClass & cload)
 
 	if (bytesleft > 0) {
 		if (cload.Read(&(Bits[1]),bytesleft) != bytesleft) {
-			Free_Inline();
+			Free();
 			return false;
 		}
 	}
