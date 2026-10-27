@@ -1013,6 +1013,17 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-26.**
 
+- **DetachableRiderBody local-static index repair (2026-10-27, `408c38abc0`):**
+  [The current-owner check](../reverse/attempt_support/detachable-rider-poolkey-data-retirement-20261027-codexb4.md)
+  refreshes two generated data-index rows left stale by the existing method
+  rename and guard-clearer retirement. The verified parent now owns both its
+  cached key and compiler guard in the index. All three function rows and the
+  parent EH graph pass; the owning tool retires one registered data-identity
+  key with zero remaining source findings. The ordinary preview preserves
+  LINKS (79 authored bytes) against index `bf3dd31211`. This subset's index
+  repair is verified; broader data closure and census confirmation remain open.
+  No new linked-byte or image-ownership gain is claimed.
+
 - **RiderChangeContain local-static index repair (2026-10-27, `67587e56fd`):**
   [The current-owner check](../reverse/attempt_support/rider-poolkey-data-retirement-20261027-codexb4.md)
   refreshes two tool-generated data-index rows after the existing method rename

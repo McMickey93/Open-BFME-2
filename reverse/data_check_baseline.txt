@@ -313,7 +313,6 @@ Code/GameEngine/Source/GameLogic/Object/Behavior/WallHubBehaviorPoolKey.cpp	wron
 Code/GameEngine/Source/GameLogic/Object/Behavior/WargBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva00046082D@WargBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A035D0
 Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp	wrong-name	?$S1@?1??rva0004BF848@ActiveBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A040B8
 Code/GameEngine/Source/GameLogic/Object/Body/DelayedDeathBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004C161D@DelayedDeathBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A0415C
-Code/GameEngine/Source/GameLogic/Object/Body/DetachableRiderBodyPoolKey.cpp	wrong-name	?$S1@?1??rva0004C1BE4@DetachableRiderBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A0416C
 Code/GameEngine/Source/GameLogic/Object/Body/FreeLifeBodyPoolKey.cpp	wrong-name	?$S1@?1??rva0004C1885@FreeLifeBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04164
 Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004C07CA@HighlanderBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04128
 Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004C08B7@ImmortalBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04130
