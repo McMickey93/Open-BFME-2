@@ -1,6 +1,10 @@
 // cl: /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // Retail 0x007D81C0, filter vtable 0x01128BAC slot 5.
 // The matched Rva007D85C0 constructor installs this vtable; original class name unknown.
+#include <d3d9.h>
+
 class StringClass {
  char *m_Buffer;
  static char *m_EmptyString; static char m_NullChar;
@@ -25,9 +29,6 @@ class TextureClass { public: void Release_Ref(); };
 class TextureBaseClass;
 class TextureHandle { public: TextureClass *p; TextureHandle():p(0){} ~TextureHandle(){if(p)p->Release_Ref();} };
 void BoxSetTexture(unsigned int,TextureBaseClass*&);
-struct Device;
-struct DeviceVtable {char pad[0xe4]; int (__stdcall *SetRenderState)(Device*,unsigned long,unsigned);};
-struct Device{DeviceVtable *v;};
 extern VertexMaterialClass *ScreenMaterial;
 class Rva007D85C0;
 // ShaderClass / DX8Wrapper statics under the names shader.cpp, ShaderClassApply.cpp and
@@ -45,7 +46,8 @@ struct RenderStateStruct { ShaderClass shader; };
 // DX8Wrapper / WW3D statics under the names dx8wrapper.cpp and ww3d.cpp define (data
 // ledger 0x009ED5F8 / 0x009EDA34 / 0x009EDA64 / 0x009EC3FD), so the out-of-line
 // Set_DX8_Render_State this unit emits is the retail body DX8WrapperSetDX8States.cpp
-// compiles (0x0006615F) relocation for relocation.
+// compiles (0x0006615F) relocation for relocation. The device keeps its D3D8 type
+// name but is a Direct3D 9 device (SetRenderState, slot 57).
 struct IDirect3DDevice8;
 extern unsigned number_of_DX8_calls;
 class WW3D { friend class DX8Wrapper; static bool SnapshotActivated; };
@@ -57,7 +59,7 @@ public:
   if(RenderStates[state]==value)return;
   if(WW3D::SnapshotActivated){StringClass s(0,true);Get_DX8_Render_State_Value_Name(s,state,value);}
   RenderStates[state]=value;
-  ((Device *)D3DDevice)->v->SetRenderState((Device *)D3DDevice,state,value);
+  reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)state,value);
   ++number_of_DX8_calls; ++render_state_changes;
  }
 protected:
@@ -82,8 +84,8 @@ int Rva007D85C0::set(FilterModes mode) {
  {TextureHandle tex;BoxSetTexture(0,(TextureBaseClass*&)tex.p);}
  {TextureHandle tex;BoxSetTexture(1,(TextureBaseClass*&)tex.p);}
  DX8Wrapper::Apply_Render_State_Changes();
- DX8Wrapper::Set_DX8_Render_State(23,8);
- DX8Wrapper::Set_DX8_Render_State(14,0);
+ DX8Wrapper::Set_DX8_Render_State(D3DRS_ZFUNC,D3DCMP_ALWAYS);
+ DX8Wrapper::Set_DX8_Render_State(D3DRS_ZWRITEENABLE,FALSE);
  DX8Wrapper::Apply_Render_State_Changes();
  }
  return true;
