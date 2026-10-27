@@ -27,8 +27,8 @@ PIPELINE (per class, in DEPENDENCY_ORDER):
                 diagnostic and the acceptance command below.
 
 ACCEPTANCE (the queue item's pass test, `accept`): the unit has no private
-body for the class, includes the header, every ledger row in it still
-byte-matches, and link_check does not lose the unit; a batch additionally
+body for the class, includes the header (or its evidenced constructor companion),
+every ledger row in it still byte-matches, and link_check does not lose the unit; a batch additionally
 compares link_cycle's closed_strict rows before/after (`closure-diff`).
 
 GATE COST. Changing a registered header re-verifies only its dependents
@@ -485,6 +485,18 @@ COMMENTS = re.compile(r"//[^\n]*|/\*.*?(?:\*/|\Z)", re.S)
 INCLUDE = re.compile(r"^[ \t]*#[ \t]*include[ \t]*[<\"]([^>\"\n]+)[>\"]", re.M)
 DIRECTIVE = re.compile(r"^[ \t]*#[ \t]*(\w+)(.*)$")
 
+# These existing companions supply retail's non-POD coordinate lifetimes while
+# the registered headers preserve the POD view needed by other matched units.
+# See each companion's retail ctor/dtor evidence and docs/recipes.md. They take
+# the canonical include guard instead of including the POD declaration. Keep
+# exact class/header pairs: a filename suffix or a copied guard proves nothing.
+CONSTRUCTOR_COMPANIONS = {
+    ("Coord2D", "Code/Libraries/Include/Lib/Coord2D.h"):
+        "Code/Libraries/Include/Lib/Coord2DCtorView.h",
+    ("Coord3D", "Code/Libraries/Include/Lib/Coord3D.h"):
+        "Code/Libraries/Include/Lib/Coord3DCtorView.h",
+}
+
 
 def without_disabled(text):
     """`text` with every line of an `#if 0` branch blanked (its #else/#elif branch is
@@ -547,7 +559,9 @@ def verdict(name, source, header=None, gate=None):
     problems = []
     if name in class_layouts.class_bodies((ROOT / source).read_text(encoding="latin-1")):
         problems.append("still declares a private body")
-    if not includes_header(source, header):
+    companion = CONSTRUCTOR_COMPANIONS.get((name, header))
+    if not (includes_header(source, header) or
+            (companion and (ROOT / companion).is_file() and includes_header(source, companion))):
         problems.append(f"does not #include {header}")
     why = (gate or gate_one)(source)
     if why:

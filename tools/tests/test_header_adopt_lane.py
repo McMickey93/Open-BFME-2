@@ -3,6 +3,8 @@ import csv
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import header_adopt_lane as lane  # noqa: E402
 
@@ -23,6 +25,82 @@ void use(Coord3D *c) { c->zero(); }
 CONTRACT = {"class": "Coord3D", "key": "struct", "key_by": "bytes", "size": 12, "size_by": "zh", "bases": [],
             "fields": [{"offset": o, "size": 4, "kind": "f4", "type": "float", "name": n}
                        for o, n in ((0, "x"), (4, "y"), (8, "z"))]}
+
+
+@pytest.fixture(params=["Coord2D", "Coord3D"])
+def constructor_companion(tmp_path, monkeypatch, request):
+    name = request.param
+    directory = "Code/Libraries/Include/Lib"
+    header = f"{directory}/{name}.h"
+    companion = f"{directory}/{name}CtorView.h"
+    for path in (header, companion):
+        full = tmp_path / path
+        full.parent.mkdir(parents=True, exist_ok=True)
+        full.write_text(f"class {name} {{}};\n")
+    source = "Code/Body.cpp"
+    body = tmp_path / source
+    body.write_text(f'#include "Libraries/Include/Lib/{name}CtorView.h"\n')
+    queue = tmp_path / "header_queue.tsv"
+    queue.write_text("class\tsource\theader\n" + f"{name}\t{source}\t{header}\n")
+    monkeypatch.setattr(lane, "ROOT", tmp_path)
+    monkeypatch.setattr(lane, "QUEUE", queue)
+    monkeypatch.setattr(lane, "registered", lambda: {name: header})
+    monkeypatch.setattr(lane, "tracked_headers", lambda: [header, companion])
+    calls = []
+    monkeypatch.setattr(lane, "gate_one", lambda source: calls.append(source))
+    return name, source, header, companion, body, queue, calls
+
+
+def test_constructor_companion_uses_the_same_default_and_explicit_verdict(constructor_companion):
+    name, source, header, companion, body, queue, calls = constructor_companion
+    # The CLI and repair_queue's trusted-base verdict must agree without --header.
+    assert lane.verdict(name, source) == []
+    assert lane.verdict(name, source, header=header) == []
+    assert lane.accept(name, [source]) == 0
+    assert queue.read_text() == "class\tsource\theader\n"
+    assert calls == [source, source, source]
+
+
+def test_constructor_companion_cannot_retire_a_byte_mismatch(constructor_companion, monkeypatch):
+    name, source, header, companion, body, queue, calls = constructor_companion
+    before = queue.read_bytes()
+    monkeypatch.setattr(lane, "gate_one", lambda source: "byte mismatch")
+    assert lane.verdict(name, source) == ["byte mismatch"]
+    assert lane.accept(name, [source]) == 1
+    assert queue.read_bytes() == before
+
+
+@pytest.mark.parametrize("case", ["comment", "disabled", "private", "missing", "ambiguous",
+                                  "unapproved", "other-class", "other-header"])
+def test_constructor_companion_does_not_bypass_adoption_checks(constructor_companion, monkeypatch, case):
+    name, source, header, companion, body, queue, calls = constructor_companion
+    text = body.read_text()
+    explicit = None
+    if case == "comment":
+        body.write_text("/*\n" + text + "*/\n")
+    elif case == "disabled":
+        body.write_text("#if 0\n" + text + "#endif\n")
+    elif case == "private":
+        body.write_text(f"class {name} {{ float x, y; }};\n" + text)
+    elif case == "missing":
+        (lane.ROOT / companion).unlink()
+    elif case == "ambiguous":
+        body.write_text(f'#include "{name}CtorView.h"\n')
+        monkeypatch.setattr(lane, "tracked_headers", lambda: [header, companion, f"Code/Other/{name}CtorView.h"])
+    elif case in ("unapproved", "other-class"):
+        fake = (f"Code/Other/{name}CtorView.h" if case == "unapproved" else
+                "Code/Libraries/Include/Lib/" + ("Coord3D" if name == "Coord2D" else "Coord2D") + "CtorView.h")
+        (lane.ROOT / fake).parent.mkdir(parents=True, exist_ok=True)
+        (lane.ROOT / fake).write_text(f"#define CANONICAL_{name.upper()}_H\nclass {name} {{}};\n")
+        body.write_text(f'#include "{fake.removeprefix("Code/")}"\n')
+    elif case == "other-header":
+        explicit = f"Code/Other/{name}.h"
+        (lane.ROOT / explicit).parent.mkdir(parents=True)
+        (lane.ROOT / explicit).write_text(f"class {name} {{}};\n")
+    problems = lane.verdict(name, source, header=explicit)
+    assert problems, case
+    assert any(("private body" if case == "private" else "does not #include") in p for p in problems)
+    assert calls == [source]  # Even rejected includes still run the byte gate.
 
 
 def test_consolidation_transfers_all_debt_and_only_acceptance_retires_it(tmp_path, monkeypatch):
