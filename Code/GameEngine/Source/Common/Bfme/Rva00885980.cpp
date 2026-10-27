@@ -30,22 +30,22 @@ class Cftp
 {
 public:
 	char m_pad0[4];
-	int m_socket4;
-	int m_socket8;
+	int m_iCommandSocket; // +0x04
+	int m_iDataSocket; // +0x08
 
 	void d_00885390( void );
 };
 
 void Cftp::d_00885390( void )
 {
-	if ( m_socket8 )
+	if ( m_iDataSocket )
 	{
-		closesocket( m_socket8 );
-		m_socket8 = 0;
+		closesocket( m_iDataSocket );
+		m_iDataSocket = 0;
 	}
-	if ( m_socket4 )
+	if ( m_iCommandSocket )
 	{
-		closesocket( m_socket4 );
-		m_socket4 = 0;
+		closesocket( m_iCommandSocket );
+		m_iCommandSocket = 0;
 	}
 }
