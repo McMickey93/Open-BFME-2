@@ -326,7 +326,7 @@ void BezierProjectileBehavior::projectileLaunchAtObjectOrPosition(Object *victim
 // below follow native MOVSS stores; unexplained fields retain offset names.
 // This is the existing shared table alias used by Aim/Physics module data;
 // this unit adds neither an alias definition nor a guessed virtual contract.
-extern "C" const void *const vtbl_00C4ED70[];
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];
 
 class Rva0024C7B3Member
 {
@@ -364,7 +364,7 @@ private:
 };
 
 BezierProjectileBehaviorModuleData::BezierProjectileBehaviorModuleData()
-	: m_vtable(vtbl_00C4ED70), m_firstHeight(0), m_secondHeight(0),
+	: m_vtable(__identifier("??_7ObjectHelperModuleData@@6B@")), m_firstHeight(0), m_secondHeight(0),
 	  m_firstPercentIndent(0), m_secondPercentIndent(0),
 	  m_killInsteadOfDestroy(false), m_flag19(false), m_effectFrame(0),
 	  m_value20(0), m_value24(0), m_value28(0), m_value2C(0), m_value30(0), m_value34(0),

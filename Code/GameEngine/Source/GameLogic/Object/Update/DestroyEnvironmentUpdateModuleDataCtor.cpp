@@ -11,8 +11,7 @@
 // then the 100 default (/O1 keeps the integer zero as the compact and form).
 // Size 0x10 matches the 0x24F474 factory news.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class DestroyEnvironmentUpdateModuleData
 {
@@ -30,6 +29,6 @@ private:
 DestroyEnvironmentUpdateModuleData::DestroyEnvironmentUpdateModuleData()
 {
 	m_startTime = 0;
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_destructionTime = 100;
 }

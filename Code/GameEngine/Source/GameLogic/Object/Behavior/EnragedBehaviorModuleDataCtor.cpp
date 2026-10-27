@@ -8,8 +8,7 @@
 // data factory (news 0x0C, sole caller at 0x24ADE2). Row supersedes the
 // ctor pin.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class MultiIniFieldParse;
 class INI;
@@ -59,7 +58,7 @@ private:
 EnragedBehaviorModuleData::EnragedBehaviorModuleData()
 {
 	float cap = 99999.0f;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4ED70);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"));
 	m_cap = cap;
 }
 

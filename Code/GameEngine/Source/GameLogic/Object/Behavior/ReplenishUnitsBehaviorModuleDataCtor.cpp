@@ -11,8 +11,7 @@
 // and false bytes at +0x138/+0x139. No other globals, two callees. Factory
 // news 0x13C.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 #include <bitset>
 
@@ -52,7 +51,7 @@ private:
 // ??0ReplenishUnitsBehaviorModuleData@@QAE@XZ @0x4841CC
 ReplenishUnitsBehaviorModuleData::ReplenishUnitsBehaviorModuleData()
 {
-	*(void **)this = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+	*(void **)this = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_08.construct();
 	((_STL::bitset<128> *)m_124)->reset();
 	m_138 = false;

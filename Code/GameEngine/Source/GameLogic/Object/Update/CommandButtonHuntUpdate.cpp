@@ -4,7 +4,6 @@
 #include "Code/Libraries/Include/Lib/Coord3D.h"
 #include "../../../Common/PartitionRangeQueryCallView.h"
 #include "ascii_string.h"
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
 class UnicodeString;
 class PooledString;
 struct XferUnknown11;
@@ -329,7 +328,7 @@ enum
 // (news 0x10, sole caller at 0x24DFA8). Row supersedes the ctor pin.
 
 // Global word copied into +8 (absolute VA 0x00DBA4E4, DIR32-masked).
-extern "C" const void *const vtbl_00C4ED70[];
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];
 
 extern int BfmeLogicFramesPerSecond;
 
@@ -417,13 +416,13 @@ private:
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateModuleDataCtor.cpp
 
-  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
+  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 // ??0CommandButtonHuntUpdateModuleData@@QAE@XZ @0x0049529F
 CommandButtonHuntUpdateModuleData::CommandButtonHuntUpdateModuleData()
 {
 	float cap = 9999.0f;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4ED70);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"));
 	m_scanRate = BfmeLogicFramesPerSecond;
 	m_scanRange = cap;
 }

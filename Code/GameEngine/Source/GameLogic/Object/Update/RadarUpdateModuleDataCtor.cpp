@@ -12,8 +12,7 @@
 // is the rowed RadarUpdateModuleData::buildFieldParse proc (single
 // RadarExtendTime field at +8) pushed as the 0x254291 factory immediate.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class RadarUpdateModuleData
 {
@@ -29,6 +28,6 @@ private:
 // ??0RadarUpdateModuleData@@QAE@XZ @0x3ECC80
 RadarUpdateModuleData::RadarUpdateModuleData()
 {
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_radarExtendTime = 0.0f;
 }

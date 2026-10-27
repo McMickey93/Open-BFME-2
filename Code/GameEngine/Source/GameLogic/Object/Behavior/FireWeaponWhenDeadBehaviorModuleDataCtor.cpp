@@ -9,8 +9,7 @@
 // factory 0x2537DC news 0x160 with this ctor as sole caller and pushes the
 // rowed proc. Shape follows SpawnBehavior (empty base, init-listed explicit
 // vtable, rowed construct plus rowed init).
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class Rva0025342CMember
 {
@@ -57,7 +56,7 @@ private:
 
 // ??0FireWeaponWhenDeadBehaviorModuleData@@QAE@XZ @0x00253737
 inline FireWeaponWhenDeadBehaviorModuleData::FireWeaponWhenDeadBehaviorModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"))))
 {
 	m_muxData.construct();
 	m_dieMuxData.init();

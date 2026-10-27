@@ -12,7 +12,6 @@ public:
 };
 extern PartitionManager *ThePartitionManager;
 #include "DemoTrapUpdateModuleDataView.h"
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
 //
 // ?xfer@DemoTrapUpdate@@MAEXPAVXfer@@@Z, retail 0x00495A74, 53 bytes.
 // Slot 3 (offset 0x0C) of vtable 0x0084ED3C (class of rowed dtor ??1Rva00495916
@@ -57,7 +56,7 @@ class Snapshot;
 // DemoTrapUpdate donor (DefaultProximityMode, DetonationWeaponSlot,
 // ProximityModeWeaponSlot, ManualModeWeaponSlot, TriggerDetonationRange,
 // DetonateWhenKilled). Body order is load-bearing and follows retail.
-extern "C" const void *const vtbl_00C4ED70[];
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];
 
 // The module classes spell the DemoTrapUpdate.cpp TU's union view. Vptrs at
 // +0x00, +0x0C and +0x10 (the constructor's three stores). Retail's primary
@@ -208,10 +207,10 @@ NameKeyType DemoTrapUpdate::getModuleNameKey() const
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdateModuleDataCtor.cpp
 
-  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
+  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 DemoTrapUpdateModuleData::DemoTrapUpdateModuleData()
-	: m_vtable( reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70)) )
+	: m_vtable( reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"))) )
 {
 	m_defaultsToProximityMode = false;
 	m_autoDetonationWithFriends = false;

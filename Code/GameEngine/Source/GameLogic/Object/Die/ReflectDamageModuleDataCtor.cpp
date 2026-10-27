@@ -14,8 +14,7 @@
 // /O1 keeps the integer zero as the compact and form). Size 0x14 matches the
 // rowed 0x250DC2 factory news.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class ReflectDamageModuleData
 {
@@ -34,7 +33,7 @@ private:
 ReflectDamageModuleData::ReflectDamageModuleData()
 {
 	m_damageTypesToReflect = 0;
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_reflectDamagePercentage = 0.0f;
 	m_minimumDamageToReflect = 0.0f;
 }

@@ -13,8 +13,7 @@
 // keeps UnsignedInt masks; BFME2 widens both to 128-bit masks and drops the
 // template NULL init, leaving +0x04 unstored).
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 #include <string.h>
 
@@ -47,7 +46,7 @@ private:
 
 inline FireWeaponCollideModuleData::FireWeaponCollideModuleData()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4ED70);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"));
 	m_requiredStatus.reset();
 	m_forbiddenStatus.reset();
 	m_zeroed08 = 0;

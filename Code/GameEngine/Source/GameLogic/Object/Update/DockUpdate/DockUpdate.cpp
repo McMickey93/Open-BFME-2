@@ -61,7 +61,6 @@ public:
 	}
 };
 #include "../../../../Common/GameLogicObjectLookupView.h"
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
 
 extern GameLogic *TheGameLogic;
 
@@ -107,7 +106,7 @@ private:
 // byte 1 at +0xC. Non-virtual with an explicit leading vtable member so no
 // vtable is emitted; source order matches retail (and first, no barrier).
 
-extern "C" const void *const vtbl_00C4ED70[];
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];
 
 class DockUpdateModuleData
 {
@@ -238,13 +237,13 @@ void DockUpdate::cancelDock(Object *docker)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateModuleDataCtor.cpp
 
-  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
+  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 // ??0DockUpdateModuleData@@QAE@XZ
 DockUpdateModuleData::DockUpdateModuleData()
 {
 	m_08 = 0;
-	m_vtable = (void *)((unsigned int)vtbl_00C4ED70);
+	m_vtable = (void *)((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"));
 	m_0C = 1;
 }
 

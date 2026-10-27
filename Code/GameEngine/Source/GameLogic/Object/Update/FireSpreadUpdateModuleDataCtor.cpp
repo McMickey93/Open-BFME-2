@@ -13,8 +13,7 @@
 // /arch:SSE emits float zero as xorps/movss. Vtable 0x00C4ED70 is
 // ICF-folded (DeletionUpdate/SlotToLock/ReflectDamage share).
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class FireSpreadUpdateModuleData
 {
@@ -33,7 +32,7 @@ private:
 // ??0FireSpreadUpdateModuleData@@QAE@XZ @0x48B73C
 FireSpreadUpdateModuleData::FireSpreadUpdateModuleData()
 {
-	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_minSpreadDelay = 0;
 	m_maxSpreadDelay = 0;
 	m_oclEmbers = 0;

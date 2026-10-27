@@ -10,8 +10,7 @@
 // level at 0x00BBB8D4. The 1.0f defaults stay literals: the compiler folds
 // them onto the shared literal at 0x00BBB8D8 per the Prone precedent.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class RainOfFireUpdateModuleData
 {
@@ -38,7 +37,7 @@ RainOfFireUpdateModuleData::RainOfFireUpdateModuleData()
 {
 	m_rainEmitterHeight = 100.0f;
 	m_darknessLevel = 0.25f;
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_startRainTime = 150;
 	m_darknessFadeTime = 120;
 	m_jitterRadius = 0.0f;

@@ -72,7 +72,6 @@ private:
 	int m_updateState; // +0x1C
 };
 #include "LifetimeUpdateModuleDataView.h"
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
 #pragma inline_depth(0)
 #pragma inline_depth()
 //
@@ -114,7 +113,7 @@ class Snapshot;
 // BFME2 retail stores the immediate 0x00C4ED70 as this instance's vftable pointer.
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/LifetimeUpdate.h
-extern "C" const void *const vtbl_00C4ED70[];
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];
 
 extern GameLogic *TheGameLogic;
 
@@ -285,10 +284,10 @@ UnsignedInt LifetimeUpdate::calcSleepDelay(UnsignedInt minFrames, UnsignedInt ma
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdateModuleDataConstructor.cpp
 
-  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
+  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 inline LifetimeUpdateModuleData::LifetimeUpdateModuleData()
-	: m_vtable( (const char *)((unsigned int)vtbl_00C4ED70) ),
+	: m_vtable( (const char *)((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")) ),
 	  m_minFrames( 0 ),
 	  m_maxFrames( 0 ),
 	  m_startDisabled( false ),

@@ -16,8 +16,7 @@
 // Snapshot::~Snapshot (0x0049B47C), rather than destroying DieMuxData.
 #include "Common/Snapshot.h"
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class DieMuxData
 {
@@ -41,6 +40,6 @@ private:
 // ??0DestroyDieModuleData@@QAE@XZ @0x253510
 DestroyDieModuleData::DestroyDieModuleData()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4ED70);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"));
 	m_dieMux.init();
 }

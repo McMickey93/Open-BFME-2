@@ -13,8 +13,7 @@
 // (DeletionUpdate/SlotToLock/ReflectDamage share). Defaults come from the
 // retail pool (-0.05/+0.05/FLT_MAX, float-ref verified).
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 #include <cfloat>
 
@@ -38,6 +37,6 @@ AimWeaponBehaviorModuleData::AimWeaponBehaviorModuleData()
 	m_aimLowThreshold = -0.05f;
 	m_aimHighThreshold = 0.05f;
 	m_aimNearDistance = 0.0f;
-	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_aimFarDistance = FLT_MAX;
 }

@@ -13,8 +13,7 @@
 // precedent. Class identity is the rowed TemporarilyDefectUpdate pool key at
 // 0x4CC659 (ends where the class proc begins) plus the pushed proc VA.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class ModuleData;
 class INI;
@@ -32,7 +31,7 @@ public:
 	TemporarilyDefectUpdateModuleData()
 	{
 		m_defectDuration = 0;
-		m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+		m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	}
 	static void buildFieldParse(MultiIniFieldParse &parse);
 	static ModuleData *friend_newModuleData(INI *ini);
@@ -78,7 +77,7 @@ class Rva002533FCData
 public:
 	Rva002533FCData()
 	{
-		m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+		m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	}
 
 private:

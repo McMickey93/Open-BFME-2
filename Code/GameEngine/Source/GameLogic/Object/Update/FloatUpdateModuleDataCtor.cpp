@@ -11,8 +11,7 @@
 // ICF-folded, so the install proves nothing by itself; table plus size
 // plus stores do.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class FloatUpdateModuleData
 {
@@ -28,6 +27,6 @@ private:
 // ??0FloatUpdateModuleData@@QAE@XZ @0x48D7A6
 FloatUpdateModuleData::FloatUpdateModuleData()
 {
-	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 	m_enabled = false;
 }

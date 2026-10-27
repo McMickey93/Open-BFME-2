@@ -13,8 +13,7 @@
 // (CreationList at +0x38 plus damage-trigger fields) pushed as the
 // factory immediate.
 
-extern "C" const void *const vtbl_00C4ED70[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
 class DestroyDieModuleData
 {
@@ -43,5 +42,5 @@ DamageFilteredCreateObjectDieModuleData::DamageFilteredCreateObjectDieModuleData
 	m_postFilterTriggeredDuration = 0;
 	m_damageTypeTriggersInstantly = 3;
 	m_damageTypeTriggersForDuration = 3;
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
 }
