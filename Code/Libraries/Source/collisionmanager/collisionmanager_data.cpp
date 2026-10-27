@@ -18,14 +18,7 @@ struct Vector3
 	float Z;
 };
 
-// LINK: hide math.h's float fabs overloads (the Rva0055A246Ctor recipe): the
-// unit emitted ?fabs@@YAMM@Z and _fabsf copies that lose to the first copies
-// in link order; /Oi expands fabs inline either way, so the float arguments
-// promote to the intrinsic directly.
-#define fabs bfme_hidden_fabs
 #include <math.h>
-#undef fabs
-extern "C" double __cdecl fabs(double x);
 
 class CollisionObject
 {
@@ -91,8 +84,10 @@ int CollisionManager::Data::UpdateCoord(bool removeAndReInsert)
 	}
 
 	int passes = 1;
-	float dx = fabs(m_maxX - cmax.X);
-	float dy = fabs(m_maxY - cmax.Y);
+	// The double fabs: math.h's float overload would emit ?fabs@@YAMM@Z and
+	// _fabsf copies that lose to the first copies in link order.
+	float dx = fabs((double)(m_maxX - cmax.X));
+	float dy = fabs((double)(m_maxY - cmax.Y));
 	float d = dx > dy ? dx : dy;
 	if (d > 50.0f)
 	{

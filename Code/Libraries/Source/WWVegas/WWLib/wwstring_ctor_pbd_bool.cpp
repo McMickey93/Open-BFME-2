@@ -7,8 +7,7 @@
 // signed-length jle and the flag-first push order fall out of the natural
 // spelling under the assign TU's flags.
 
-extern "C" __declspec(dllimport) unsigned int __cdecl _mbslen(
-	const char *string);
+#include <mbstring.h>
 
 class StringClass
 {
@@ -33,7 +32,7 @@ inline StringClass::StringClass(const char *name, bool flag)
 
 	m_Buffer = m_EmptyString;
 	if (name != 0)
-		len = (int)_mbslen(name);
+		len = (int)_mbslen((const unsigned char *)name);
 	else
 		len = 0;
 	if (flag || len > 0)
