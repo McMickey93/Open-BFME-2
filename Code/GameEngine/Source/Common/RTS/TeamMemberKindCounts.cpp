@@ -48,14 +48,14 @@ class Object
 {
 public:
 	bool testStatus(ObjectStatusTypes bit) const;
-	bool isEffectivelyDead() const { return (m_privateStatus & 1) != 0; }
+	bool isEffectivelyDead() const { return (m_dead & 1) != 0; }
 	const ThingTemplate *getTemplate() const { return m_template; }
 
 private:
 	unsigned char m_pad0[4];
 	ThingTemplate *m_template; // +0x04
 	unsigned char m_pad8[0x438 - 8];
-	unsigned char m_privateStatus; // +0x438
+	unsigned char m_dead; // +0x438
 };
 
 class Team
