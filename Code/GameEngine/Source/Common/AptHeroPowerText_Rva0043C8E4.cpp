@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /MD /EHsc
+// platformsdk
 // Ticker and spell-button display functions; the GameSpy response pump is
 // isolated in AptTickerGameSpyUpdate.cpp until its shared handler is matched.
 // Hero power panel texts. Each builds a UnicodeString through a formatter
@@ -11,13 +12,11 @@
 // ?Rva005B24CDHeroPowerText@@YAXPAXPBDH@Z                      @0x005B24CD 114B
 //   APT:%s_%d keyed by the prefix and the 1-based index
 // Names are address-derived; the keys are the retail strings.
+#include <windows.h>
+
 #include <stdio.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 class BfmeAptWindowManager
 {

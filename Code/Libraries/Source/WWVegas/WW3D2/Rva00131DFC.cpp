@@ -3,8 +3,9 @@
 // Retail 0x00131DFC (86 bytes). The constructor call at +0x37 targets the
 // established Rva00131BE5 constructor at 0x00131B57; the returned 0x3C-byte
 // object is passed to BfmeMapPictureTexture::Set_Texture.
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t bytes);
+
+#include <string.h>
+#include <new>
 
 class GenBase009EB7D0
 {

@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc /Ireference/shims/stlp_nodealloc
+// platformsdk
 // stlport
 // Native73F170..73F231 removes a queued12-byte record under mutex0C.
 // WB queue enqueue plus existing owner/callers establish AsyncServiceQueue;
@@ -7,6 +8,9 @@
 // is native evidence. Visible noinline31B reference copy closes the item and
 // list erase return temporary-home swap; both helpers31/42 are independently
 // byte-and-relocation exact and already owned in their original units.
+#include <windows.h>
+#include <stdlib.h>
+
 #include <memory>
 #include <list>
 #include <utility>
@@ -26,7 +30,6 @@ public:
     ~Rva0036CA00Str() { if (m_item) ((OpaqueRefCounted *)m_item)->Release_Ref(); }
     void *m_item;
 };
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
 inline __declspec(noinline) __declspec(nothrow) Rva0036CA00Str::Rva0036CA00Str(const Rva0036CA00Str &other):m_item(other.m_item){if(m_item)InterlockedIncrement((long volatile*)((char*)m_item+4));}
 struct TargetNestedHandleData { unsigned char Unknown[12]; unsigned int RefCount; };
 struct TargetNestedHandle { TargetNestedHandleData *item; };
@@ -39,7 +42,6 @@ struct Rva0073EEE0ListValue {
     __declspec(noinline) ~Rva0073EEE0ListValue();
 };
 typedef std::list<Rva0073EEE0ListValue> TargetListAt0073EEE0;
-extern "C" void __cdecl free(void *p);
 struct ListNode0073EFFC {
     ListNode0073EFFC *m_next;
     ListNode0073EFFC *m_prev;

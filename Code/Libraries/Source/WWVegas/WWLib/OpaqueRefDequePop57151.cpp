@@ -1,4 +1,5 @@
 // cl: /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // ?rva00057151@Rva00057151@@QAEXHHH@Z @0x00057151 127B
 // Unlock body: pops an owning 4-byte reference from a deque group into a slot.
@@ -6,10 +7,9 @@
 // assignment 0x239099 plus rowed deque pop_back 0x5555F; empty check and
 // pop_back match StlportOwnedDeque TU; float/flag updates at +0x30/+0x44/+0x45
 // and source int at this+0x10->[0x78] read directly from retail immediates.
-#include <deque>
+#include <windows.h>
 
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
-extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile *);
+#include <deque>
 
 class OpaqueRefCounted {
 public:

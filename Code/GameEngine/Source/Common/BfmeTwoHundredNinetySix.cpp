@@ -1,6 +1,6 @@
 // cl: /Od
 
-void *__cdecl operator new(unsigned int size, void *where);
+#include <new.h>
 
 int **bfmeFillQL(int **first, int **last, int **out)
 {

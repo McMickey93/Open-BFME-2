@@ -1,5 +1,7 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD
 
+#include <stdlib.h>
+
 class GlobalData
 {
 public:
@@ -12,8 +14,6 @@ public:
 };
 
 extern GlobalData *TheWritableGlobalData;
-
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *);
 
 // ?Rva003B998EParse@@YAHPAPADH@Z @0x003B998E 29B
 // Target evidence: called with command-line arguments by the adjacent parser;

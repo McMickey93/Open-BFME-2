@@ -9,10 +9,10 @@
 // the ORDER retail calls them in: MSVC 7.1 evaluates the outer max's arguments
 // right to left, so max_length goes first and lands on the 0x1C slot.
 
-typedef unsigned int size_t;
-typedef int streamsize;
+#include <string.h>
+#include <stdlib.h>
 
-extern "C" __declspec(dllimport) void *__cdecl malloc(size_t size);
+typedef int streamsize;
 
 namespace _STL
 {

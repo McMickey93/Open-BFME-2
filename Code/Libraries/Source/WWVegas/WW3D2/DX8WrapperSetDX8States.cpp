@@ -1,4 +1,5 @@
 // cl: /O1 /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// platformsdk
 //
 // ?Set_DX8_Render_State@DX8Wrapper@@SAXKI@Z, retail 0x0006615F, 126 bytes.
 // ?Set_DX8_Texture_Stage_State@DX8Wrapper@@SAXIKI@Z, retail 0x000661DD, 173 bytes.
@@ -16,11 +17,10 @@
 // string temp, sixteen texture stages, and the deferred snapshot-name
 // resolvers (0x121A10 / 0x120B90 pins).
 
-typedef int Int;
-typedef long HRESULT;
-struct IDirect3DDevice8;
+#include <windows.h>
 
-#define NULL 0
+typedef int Int;
+struct IDirect3DDevice8;
 
 class StringClass
 {

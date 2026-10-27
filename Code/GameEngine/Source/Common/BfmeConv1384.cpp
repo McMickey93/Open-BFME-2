@@ -1,7 +1,7 @@
 // cl: /GS
 // Open-BFME5 conversions.
 
-extern "C" int __cdecl sprintf(char *buf, const char *fmt, ...);
+#include <stdio.h>
 
 class BfmeMsgVJF
 {

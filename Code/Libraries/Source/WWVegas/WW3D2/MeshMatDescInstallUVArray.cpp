@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // ?Install_UV_Array@MeshMatDescClass@@QAEXHHPAVVector2@@H@Z,
 // retail 0x0015B960 (413 bytes).
@@ -18,11 +19,10 @@
 // UVSource at +0x30, Shader/ShaderArray at +0x98/+0xF8, Material/MaterialArray
 // at +0xA8/+0xE8, all from the landed sibling TUs).
 
-#include <string.h>
+#include <windows.h>
+#include <new>
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <string.h>
 
 #include "../../../../../reference/shims/wwmath/Vector2.h"
 
@@ -85,8 +85,6 @@ public:
 private:
 	unsigned CRC;
 };
-
-void *operator new(unsigned int size);
 
 class MeshMatDescClass
 {

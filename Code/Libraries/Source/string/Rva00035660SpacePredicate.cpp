@@ -9,8 +9,7 @@
 // msvcr71.dll!iswspace at IAT VA 0x00BBA5BC. That PE identity distinguishes
 // it from other masked-byte matches. Both bodies end before int3 padding.
 
-extern "C" __declspec(dllimport) int __cdecl isspace(int value);
-extern "C" __declspec(dllimport) int __cdecl iswspace(unsigned short value);
+#include <ctype.h>
 
 static bool Rva00035660(char value)
 {

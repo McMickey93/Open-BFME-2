@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // Bodies ported from Open-BFME-1's GameEngine/Source/Common/BfmeConv1038.cpp
 // (donor revision 6d9434269164392c5ba62aaa7c15a86b5b020d76, donor flags plus
@@ -8,6 +9,8 @@
 // retail's call sites (reverse/symbols.csv). Only the placed bodies are
 // carried; the donor's other definitions are omitted.
 // Open-BFME5 conversions.
+
+#include <windows.h>
 
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
@@ -101,7 +104,6 @@ struct Rva007EB810Diag
 	virtual void report(const char *message);
 };
 
-extern "C" __declspec(dllimport) int __stdcall ReleaseMutex(void *h);
 Rva007EB810Diag *Rva007EB810Get(void);
 extern char g_bfmeMsg1038[];
 

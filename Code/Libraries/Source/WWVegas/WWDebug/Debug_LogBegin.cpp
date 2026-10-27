@@ -1,14 +1,12 @@
 // cl: /DNDEBUG /MD /EHs-c- /Oy-
+// platformsdk
 // BFME Debug::LogBegin.  The BFME Debug object keeps the log mutex and
 // current-thread owner at +0x9F50/+0x9F54, while the frame state remains at
 // the Zero Hour Debug offsets.
 
-#include <string.h>
+#include <windows.h>
 
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(
-    void *, unsigned long);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId(
-    void);
+#include <string.h>
 
 struct DebugIOInterface
 {

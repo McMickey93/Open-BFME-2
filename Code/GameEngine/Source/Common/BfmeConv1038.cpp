@@ -1,8 +1,11 @@
+// platformsdk
 // Close a handle and log on failure.
 //
 // BFME1 byte-identical donor (reference/open-bfme-1
 // Code/GameEngine/Source/Common/BfmeConv1038.cpp); trimmed to the single T1
 // body the sweep places.
+
+#include <windows.h>
 
 class BfmeLog1038
 {
@@ -11,7 +14,6 @@ public:
 	virtual void bfmeSay1038(char *m);
 };
 
-extern "C" __declspec(dllimport) int __stdcall ReleaseMutex(void *h);
 struct Rva007EB810Diag; Rva007EB810Diag *Rva007EB810Get();
 
 class BfmeD1038

@@ -1,3 +1,5 @@
+#include <new>
+
 #include <string.h>
 // Retail131965..131A04 volume159B and131A04..131A9D cube153B.
 // Target D3D9 import identities are independently read from the PE import table.
@@ -83,7 +85,6 @@ void Rva0013107A::loadVolumeSlices() {
 // are target-verified. The two handle fields retain native volume then texture
 // stack ordering. right=left+sliceWidth preserves the native single multiply.
 
-void __cdecl operator delete[](void *);
 struct TextureImageInfo {unsigned width,height,depth,mips;int format,type,imageMode;};
 extern "C" long __stdcall D3DXGetImageInfoFromFileInMemory(const void*,unsigned,TextureImageInfo*);
 int Rva00117C00Get();
@@ -163,7 +164,6 @@ void Rva0013107A::PostLoad(const char*name) {
 extern "C" long __stdcall D3DXCheckTextureRequirements(void*,unsigned*,unsigned*,unsigned*,unsigned,int*,int);
 extern "C" long __stdcall D3DXCreateTexture(void*,unsigned,unsigned,unsigned,unsigned,int,int,TextureCOM9**);
 extern "C" long __stdcall D3DXCreateTextureFromFileInMemoryEx(void*,const void*,unsigned,unsigned,unsigned,unsigned,unsigned,int,int,unsigned,unsigned,unsigned,void*,void*,TextureCOM9**);
-extern "C" void *__cdecl memcpy(void*,const void*,unsigned);
 struct TextureLockedRect {int pitch;unsigned char *bits;};
 #pragma pack(push,1)
 struct TextureTgaHeader {unsigned char id,colorMap,type;char rest[9];short width,height;unsigned char bits,flags;};

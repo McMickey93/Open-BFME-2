@@ -1,11 +1,13 @@
+// platformsdk
 // Wait on a handle and log on failure.
 //
 // BFME1 byte-identical donor (reference/open-bfme-1
 // Code/GameEngine/Source/Common/BfmeConv1037.cpp); trimmed to the single T1
-// body the sweep places. The donor declares bfmeWait1037 but retail reaches
-// WaitForSingleObject, so the declaration is renamed to the real import.
+// body the sweep places.
 
 // Matched connection-log bodies use the same getter for their second vtable slot.
+
+#include <windows.h>
 
 class BfmeLog1037
 {
@@ -14,7 +16,6 @@ public:
 	virtual void bfmeSay1037(char *m);
 };
 
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void *, unsigned long);
 struct Rva007EB810Diag; Rva007EB810Diag *Rva007EB810Get();
 
 class BfmeH1037

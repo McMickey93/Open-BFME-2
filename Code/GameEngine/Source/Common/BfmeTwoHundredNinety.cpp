@@ -3,7 +3,7 @@
 // only content. What the choice yields is never read. Built without
 // optimisation; the callee is pinned by address.
 
-void *__cdecl operator new(unsigned int size, void *placement);
+#include <new.h>
 
 class BfmeThingQF
 {

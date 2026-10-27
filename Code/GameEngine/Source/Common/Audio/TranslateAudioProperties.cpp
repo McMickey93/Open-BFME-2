@@ -1,4 +1,5 @@
 // cl: /O1 /Ireference/shims/bfme2_ascii /MD /EHsc /DNDEBUG /Gy
+// platformsdk
 //
 // ?TranslateAudioProperties@@YAXPAVDict@@PAVDrawable@@PAVThingTemplate@@PA_NPAVRva000A8C9B@@3@Z
 // retail 0x00433796, 898 bytes.
@@ -19,6 +20,8 @@
 // The key and setter names are carried from that donor; retail proves only the
 // order and the call targets. BFME 2 adds the +0xB0 != 5 guard before the
 // overrides, which the donor lacks.
+
+#include <windows.h>
 
 #include "ascii_string.h"
 
@@ -52,7 +55,6 @@ extern const StaticNameKey TheKey_objectSoundAmbientMinRange;		// retail 0x00DBD
 extern const StaticNameKey TheKey_objectSoundAmbientMaxRange;		// retail 0x00DBDDF4
 extern const StaticNameKey TheKey_objectSoundAmbientPriority;		// retail 0x00DBDDFC
 
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
 class OpaqueRefCounted
 {
 public:

@@ -105,52 +105,31 @@ Code/Libraries/Source/VP6/MemShim.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0
 Code/Libraries/Source/VP6/ScaleFrame.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memcpy:same,memset:same
 Code/Libraries/Source/VP6/UpdateUMVBorder.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,memcpy:same
 Code/Libraries/Source/VP6/decodembs.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same,memcpy:same
-Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperSetDX8States.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	HRESULT:same,NULL:same
 Code/Libraries/Source/WWVegas/WW3D2/DX8Wrapper_D3DCalls.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	UINT:same,HRESULT:same
 Code/Libraries/Source/WWVegas/WW3D2/HCompressedAnimFree.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete:same,operator delete [ ]:same
-Code/Libraries/Source/WWVegas/WW3D2/MeshMatDescInstallUVArray.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>,<new>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same,operator new:same
-Code/Libraries/Source/WWVegas/WW3D2/Rva00131965TextureLoaders.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>,<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same,memcpy:same
-Code/Libraries/Source/WWVegas/WW3D2/Rva00131DFC.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	size_t:same,operator new:same
 Code/Libraries/Source/WWVegas/WW3D2/WW3DShutdownRenderDevice.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>,<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same,timeEndPeriod:same
-Code/Libraries/Source/WWVegas/WWDebug/DebugCmdInterfaceDebug_Execute.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	Beep:same,wsprintfA:same
 Code/Libraries/Source/WWVegas/WWDebug/Debug_AddLogGroup.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strrchr:same,_strlwr:same
-Code/Libraries/Source/WWVegas/WWDebug/Debug_LogBegin.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	WaitForSingleObject:same,GetCurrentThreadId:same
 Code/Libraries/Source/WWVegas/WWDebug/Rva0088A7E0UpdateFrameStatus.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	wsprintfA:same,wsprintf:same
-Code/Libraries/Source/WWVegas/WWLib/AsyncServiceQueueRemoval.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>,<stdlib.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same,free:same
-Code/Libraries/Source/WWVegas/WWLib/OpaqueRefDequePop57151.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same,InterlockedDecrement:same
-Code/Libraries/Source/WWVegas/WWLib/OpaqueRefOwnership.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same,InterlockedDecrement:same
 Code/Libraries/Source/WWVegas/WWLib/Rva0000234DVectorDeletingDtors.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same,operator delete [ ]:same
 Code/Libraries/Source/WWVegas/WWLib/Rva0000532CCompareBytes.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_memicmp:same,memcmp:same
-Code/Libraries/Source/WWVegas/WWLib/Rva0084DD20SignPositions.c	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>,<stdlib.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	GetLocaleInfoA:same,atoi:same
-Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_filebuf_allocate.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<string.h>,<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	size_t:same,malloc:same
-Code/Libraries/Source/WWVegas/WWLib/stlport_write_formatted_time.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<stdio.h>,<time.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sprintf:same,tm:same
 Code/Libraries/Source/WWVegas/WWMath/coord2d_rotate.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<math.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sin:same,cos:same
-Code/Libraries/Source/string/Rva00035660SpacePredicate.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<ctype.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	isspace:same,iswspace:same
 Code/stlport/FileSizeHelper.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	GetFileSize:same,GetLastError:same
 Code/stlport/NarrowFilebufInputError.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	UnmapViewOfFile:same,CloseHandle:same
 Code/GameEngine/Source/Common/0CreateAHeroManager21FE49.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/Common/AppendInLogicUpdateOnly.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_vsnprintf:same
-Code/GameEngine/Source/Common/AptHeroPowerText_Rva0043C8E4.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/Common/AptOnlineCustomMatch_InitGadgets.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strcmp:same
 Code/GameEngine/Source/Common/AptUtils.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strncpy:same
-Code/GameEngine/Source/Common/Audio/TranslateAudioProperties.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	InterlockedIncrement:same
-Code/GameEngine/Source/Common/Bfme/Rva004E6846Close.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/Common/Bfme/Rva00889780.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	strncpy:same
 Code/GameEngine/Source/Common/Bfme/Rva00889C90.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memmove:same
 Code/GameEngine/Source/Common/Bfme5FiftyFour.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	strlen:same
 Code/GameEngine/Source/Common/Bfme5Ninety.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	strlen:same
 Code/GameEngine/Source/Common/Bfme5SeventySeven.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/BfmeAssignRecord36Assign.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
-Code/GameEngine/Source/Common/BfmeConv1037.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	WaitForSingleObject:same
-Code/GameEngine/Source/Common/BfmeConv1038.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	ReleaseMutex:same
-Code/GameEngine/Source/Common/BfmeConv1038O1.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	ReleaseMutex:same
 Code/GameEngine/Source/Common/BfmeConv1228.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcmp:same
 Code/GameEngine/Source/Common/BfmeConv1229.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcmp:same
 Code/GameEngine/Source/Common/BfmeConv1321.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	printf:same
 Code/GameEngine/Source/Common/BfmeConv1351.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/BfmeConv1374.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/GameEngine/Source/Common/BfmeConv1381.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sprintf:same
-Code/GameEngine/Source/Common/BfmeConv1384.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sprintf:same
 Code/GameEngine/Source/Common/BfmeConv1417.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/BfmeConv1421.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/Common/BfmeConv1422.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
@@ -159,12 +138,8 @@ Code/GameEngine/Source/Common/BfmeConv1447.cpp	drop-in candidate	same	1	1	0	0	0	
 Code/GameEngine/Source/Common/BfmeConv2034.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	sqrt:same
 Code/GameEngine/Source/Common/BfmeIntVecG.h	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/Common/BfmeSubobject00229875Clear.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
-Code/GameEngine/Source/Common/BfmeThreeHundredTwo.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same
-Code/GameEngine/Source/Common/BfmeTwoHundredNinety.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/BfmeTwoHundredNinetyFive.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
-Code/GameEngine/Source/Common/BfmeTwoHundredNinetySix.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/BfmeWideResultTeardown.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
-Code/GameEngine/Source/Common/CommandLineRva003B998E.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	atoi:same
 Code/GameEngine/Source/Common/ConnectionManagerAttachTransport.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/DamageFXParseCommon.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	_strcmpi:same
 Code/GameEngine/Source/Common/EmotionTrackerUpdate_ForceEmotion.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	ceil:same

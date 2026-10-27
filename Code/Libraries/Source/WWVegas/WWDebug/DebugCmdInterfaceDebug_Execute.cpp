@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /Oy-
+// platformsdk
 //
 // DebugCmdInterfaceDebug::Execute, retail 0x0003E570 (3471 bytes, ret
 // 0x14): the "debug" command group. Not recovered in BFME 1.
@@ -13,11 +14,10 @@
 //   now the crashes list.
 // - exit uses exit code 0.
 
+#include <windows.h>
+
 #include <string.h>
 #include <stdlib.h>
-
-extern "C" __declspec(dllimport) int __stdcall Beep(unsigned long frequency, unsigned long duration);
-extern "C" __declspec(dllimport) int __cdecl wsprintfA(char *out, const char *fmt, ...);
 
 void DebugFreeMemory(void *ptr);
 void _bfme_debugRecordCallsite(int kind);

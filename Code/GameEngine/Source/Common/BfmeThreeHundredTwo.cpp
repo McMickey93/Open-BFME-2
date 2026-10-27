@@ -3,7 +3,7 @@
 // its only content. What each choice yields is never read. The place reached is
 // handed back. Built without optimisation; the callee is pinned by address.
 
-void *__cdecl operator new(unsigned int size, void *where);
+#include <new.h>
 
 int **bfmeFillQT(int **out, unsigned int many, int **from)
 {
