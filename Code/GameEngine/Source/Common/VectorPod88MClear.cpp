@@ -3,6 +3,8 @@
 // ?_M_clear@?$vector@V?$vector@UBfmePod88@@V?$allocator@UBfmePod88@@@_STL@@@_STL@@V?$allocator@V?$vector@UBfmePod88@@V?$allocator@UBfmePod88@@@_STL@@@_STL@@@2@@_STL@@IAEXXZ @0x00500EDC 30B: outer vector _M_clear.
 // Evidence: callers 0x00500EFA and 0x0050129F call here as this->_M_clear before _M_set; callees rowed 0x00500AF8 and 0x00030830; shape matches rowed _M_clear 0x003F5EF7.
 
+#include <stdlib.h>
+
 struct BfmePod88
 {
 	char m_body[88];
@@ -16,7 +18,6 @@ struct Rva004FABE2
 };
 
 void __cdecl Rva00500AF8Destroy(Rva004FABE2 *first, Rva004FABE2 *last);
-extern "C" void __cdecl free(void *block);
 
 namespace _STL
 {

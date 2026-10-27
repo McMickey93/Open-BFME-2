@@ -1,4 +1,5 @@
 #include "../GameLogic/SkirmishAI/AIEconomyBuilder/AIEconomyBuilderFarmLibrary.h"
+#include <stdlib.h>
 // cl: /MD
 //
 // Dynamic initializers from the 0x007AB7DA strip that construct a file-scope
@@ -10,8 +11,6 @@
 // cleanup thunk's tail-jump target is noted beside it. The owning TUs are
 // unrecovered, so each initializer keeps an honest address name and its global
 // an address-named extern.
-
-extern "C" int __cdecl atexit(void (__cdecl *)(void));
 
 struct BfmeE16;
 struct BfmeE12;

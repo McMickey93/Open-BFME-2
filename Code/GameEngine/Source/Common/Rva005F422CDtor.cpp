@@ -21,6 +21,7 @@
 // is the existing StrategicInGameUIArmyUnitIconLifetime.cpp layout, with the
 // same real vector<int>, clip reference, interface and out-of-line destructor.
 // Evidence and full-body/provider receipts: W7-R1 r2 build/w7r1r2/diamond.
+#include <new>
 #include <vector>
 struct TargetRef00217D4C;
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *);
@@ -105,7 +106,6 @@ public:
 // composite places it at +0x30.
 // ?<Rva005E426F::Rva005E426F> absent-from-retail
 Rva005E426F::Rva005E426F(EmitVtableTag *):StrategicInGameUI::ArmyUnitIcon(0,0,0){}
-void __cdecl operator delete(void *);
 // The composites' deleting destructors (0x005E41D7, 0x005E4244) are the
 // compiler's own ??_G bodies, emitted with each composite's tables: subtract
 // to the complete object, run the implicit diamond destructor and the shared

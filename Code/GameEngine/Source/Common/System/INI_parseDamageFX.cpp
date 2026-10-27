@@ -15,6 +15,7 @@
 // for the temporary. A TU-local out-of-line `~AsciiString()` transposes the
 // two on every flag tried.
 
+#include <string.h>
 #include "ascii_string.h"
 
 class DamageFX;
@@ -43,8 +44,6 @@ public:
 	const char *getNextToken(const char *seps = 0);
 	static void parseDamageFX(INI *ini, void *instance, void *store, const void *userData);
 };
-
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 void INI::parseDamageFX(INI *ini, void *, void *store, const void *)
 {

@@ -10,6 +10,8 @@
 // the StringBase level so buffer, copy and release resolve to the pinned
 // StringBase bodies.
 
+#include <string.h>
+
 template <typename T>
 class StringBase
 {
@@ -47,8 +49,6 @@ public:
 	UnicodeString(const UnicodeString &src) : StringBase<unsigned short>(src) {}
 	const unsigned short *str() const { return m_data != 0 ? m_data->data : L""; }
 };
-
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
 
 // A nullable wide-string reference: the length and payload both come from
 // the header behind m_data, with the empty literal as the null fallback.

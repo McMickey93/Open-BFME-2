@@ -5,7 +5,7 @@
 // rowed __copy body at 0x000635F8. The name assignment reaches the folded
 // AsciiString copy-assignment pin at 0x000366F0.
 
-extern "C" void *__cdecl memcpy( void *dst, const void *src, unsigned int count );
+#include <string.h>
 #pragma intrinsic( memcpy )
 
 #include "ascii_string.h"
@@ -26,4 +26,3 @@ GeometryRecord &GeometryRecord::operator=( const GeometryRecord &other )
 	m_name = other.m_name;
 	return *this;
 }
-

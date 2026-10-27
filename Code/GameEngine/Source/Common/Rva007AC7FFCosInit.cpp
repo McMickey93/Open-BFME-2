@@ -8,7 +8,7 @@
 // DEG_TO_RADF(0.2) with a double argument folds to exactly these bits, where
 // DEG_TO_RADF(0.2f) does not. The owning TU and the global's name are not
 // established; the RVA name stands in for it.
-extern "C" double __cdecl cos( double );
+#include <math.h>
 
 #define PI 3.14159265359f
 #define DEG_TO_RADF(x) ((x)*PI/180.0f)

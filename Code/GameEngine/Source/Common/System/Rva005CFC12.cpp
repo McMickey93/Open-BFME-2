@@ -2,6 +2,8 @@
 // ?rva005CFC12@Rva005D00A6@@UAEXPAVINI@@@Z @0x005CFC12 163B
 // Slot 1 of vtable 0x00875374 (class Rva005D00A6): INI parse of two floats via table 0x00875344 then floor(1000x+0.5) to m_8/m_c.
 // Evidence: vslot lane slot 1 offset 0x4; donor TU Rva005D00A6Ctor.cpp; callees rowed initFromINI 0x0002DE78 plus IAT floor; BfmeZeroRange 0.0f; 1000.0f at 0x007BE358 and 0.5f at 0x007C26F0 are compiler literals (Rva001DCF82/Rva00285DC5 precedent: extern hoists scale ahead); callers none.
+#include <math.h>
+
 struct FieldParse;
 class INI
 {
@@ -17,9 +19,6 @@ struct FieldParse
 	const void *userData;
 	int offset;
 };
-
-
-extern "C" __declspec(dllimport) double __cdecl floor(double v);
 
 static __forceinline float fast_floor(float f)
 {

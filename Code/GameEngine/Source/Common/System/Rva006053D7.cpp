@@ -5,7 +5,8 @@
 // retail const-char* spelling with strlen guards and self recursion.
 // Evidence: callers in 0x00603FF8 plus self; callees strlen via E8 thunks;
 // sits after Rva006053AD with the same flags.
-extern "C" unsigned int strlen(const char *s);
+#include <string.h>
+
 bool Rva006053D7(const char *str, const char *pat)
 {
     if (strlen(str) == 0) {
