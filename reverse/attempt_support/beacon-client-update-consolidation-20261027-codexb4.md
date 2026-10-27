@@ -54,3 +54,62 @@ BeaconClientUpdate.cpp. The guard clearer was retired by `e58affe130`.
 Keep those changes, which supersede the remaining prerequisites listed above.
 Do not restore the deleted constructor donor or older private class views.
 This handoff retains the original experiment and checks as historical evidence.
+
+## Historical saved merge (superseded by upstream)
+
+The following receipts describe the preserved pre-rebase experiment.
+They do not replace the current upstream composition described above.
+
+## Applied subset and verification
+
+After prerequisite commit `46e96d6de7`, reran the naming planner against the
+changed inputs. The supported applying merger accepts exactly the destination
+and CleanupHazardUpdateCtor.cpp, deletes the latter, and repoints the constructor
+row at 0x004C964C. Only that row's source cell changes in functions.csv and
+in the existing tu_map.csv; no regenerated map is committed. The destination
+has 14 rows; the four surviving files keep all 17 original scoped rows.
+
+- The merger's LinkGuard passes with all five census-linked original inputs
+  protected, including external providers, selected COMDATs and binding context.
+- Normal scoped build: 17/17 rows, one data row, three literals and three float
+  references verified. Five compiler labels resolve through exact parent EH
+  data. The destination has four EXACT EH graphs after compilation.
+- `link_check.py --prepare-current` repeats the normal 14-row destination byte
+  gate and writes its strict reusable receipt without modifying the census.
+- allowed_symbols: 53 references, 41 owner, four EH, four alias, four fold;
+  zero wrong bindings. Staged TU ownership, declared-body and CSV checks pass.
+- Converged data: ten addresses checked, zero second names or unjudged rows.
+  Shadow data retains the same existing getter key/guard wrong-name facts at
+  0x00A04334/38 documented in the 2026-10-26 receiver handoff. The old baseline
+  key stays registered. There is no donor data/code-identity key to transfer.
+- Header and Microsoft-header queues have no entries for either input. The
+  merger refreshes destination header reporting through its owning APIs.
+- The owning hatch tool transfers the one existing empty-destructor marker.
+  Its whole-tree update also drops stale permissions for 14 alternatenames
+  already removed from Upgrade sources and three address-global occurrences
+  already removed from Rva00789900Init.cpp. No source hatch is added; this
+  tightens the register to the existing tree. The merge trailer covers this
+  tool-owned register update.
+
+## Outgoing path-consumer audit
+
+The unpublished range starts at common base `8e3640cb05`; the audit includes
+all earlier queued commits through `46e96d6de7` and this staged merge. There
+is exactly one removed or renamed source in that complete batch:
+CleanupHazardUpdateCtor.cpp -> BeaconClientUpdate.cpp. Other outgoing source
+changes are edits at retained paths. No directory moves occur.
+
+Searched the full old path and basename through source, reverse registers,
+tools, hooks, workflows and documentation. Seven mentions remain: historical
+link status, destination provenance, the original factory-evidence comment in
+CleanupHazardUpdateFriendNew.cpp, prior attempt evidence, and this pass's
+handoffs. None is an active include, build input or path consumer. Preserve
+these history references. No tooling consumer requires a change. Active
+function/map/hatch ownership now resolves to the surviving destination;
+data and code-identity registers retain their existing owner paths.
+
+The ordinary preview retains the census's deleted donor and reports duplicate
+constructor/destructor definitions and a constructor selected-copy mismatch
+after composition. The apply-time guard evaluates the actual donor removal
+with the destination. Carry this index freshness limit and the pending
+runtime/census confirmation into the next scheduled census.
