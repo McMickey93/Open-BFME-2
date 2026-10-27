@@ -19044,7 +19044,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FF0E4,4,.data,global,?g_Va00DFF0E4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFF0xx.cpp,owned,,1,2
 0x009FF0E8,12,.data,global,?pathfinderRegistration@?2???0Pathfinder@@QAE@XZ@4UBlockParse@@A,Code/GameEngine/Source/GameLogic/AI/PathfinderConstructor.cpp,owned,,1,4
 0x009FF0F4,4,.data,global,?$S1@?2???0Pathfinder@@QAE@XZ@4IA,Code/GameEngine/Source/GameLogic/AI/PathfinderConstructor.cpp,owned,,1,2
-0x009FF0F8,8,.data,global,?TheAI@@3PAVAI@@A,Code/GameEngine/Source/GameLogic/AI/ai_Rva002FD791.cpp,provisional,?TheAI@@3PAUAIMid@@A;?TheAI@@3PAUAIView@@A;?TheAI@@3PAVAI@@A;?g_00DFF0F8@@3PAURva002A9A18AI@@A;?g_00DFF0F8@@3PAURva002DFF0F8@@A;?g_00DFF0F8@@3PAXA;?g_Va009FF0F8@@3PAVAI@@A,1,349
+0x009FF0F8,8,.data,global,?TheAI@@3PAVAI@@A,Code/GameEngine/Source/GameLogic/AI/ai.cpp,provisional,?TheAI@@3PAUAIMid@@A;?TheAI@@3PAUAIView@@A;?TheAI@@3PAVAI@@A;?g_00DFF0F8@@3PAURva002A9A18AI@@A;?g_00DFF0F8@@3PAURva002DFF0F8@@A;?g_00DFF0F8@@3PAXA;?g_Va009FF0F8@@3PAVAI@@A,1,349
 0x009FF100,8,.data,global,?g_Va00DFF100@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFxx.cpp,owned,,1,2
 0x009FF108,4,.data,global,?g_Va00DFF108@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFF0xx.cpp,owned,,1,2
 0x009FF10C,4,.data,global,_m_width,,unowned,,0,1
