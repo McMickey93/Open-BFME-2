@@ -2,6 +2,8 @@
 // 0x007EB8B0: FESL debug.cpp vararg log. vsprintf into mVarArgBuffer, emit
 // through vslot 1, then assert the last byte is still NUL.
 
+#include <stdio.h>
+
 struct Rva007EB810Diag
 {
 	virtual void v0();
@@ -11,11 +13,6 @@ struct Rva007EB810Diag
 };
 
 extern int g_FeslDiagReporter;
-
-extern "C"
-{
-	int __cdecl vsprintf(char *buf, const char *fmt, char *args);
-}
 
 class Rva007EB8B0Log
 {

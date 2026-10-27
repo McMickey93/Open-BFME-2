@@ -336,8 +336,6 @@ public:
 	void destroy();
 };
 
-extern "C" __declspec(dllimport) int __stdcall ReleaseMutex(void *handle);
-
 class BfmeAwakenDebug;
 extern BfmeAwakenDebug *TheBfmeAwakenDebug;
 

@@ -6,6 +6,8 @@
 // it to rep-movsd). Same-class-in-2-TUs precedent; the home pair TU keeps
 // its own flags untouched and stays green through the row.
 
+#include <string.h>
+
 class Rva000B3F84Pair
 {
 public:
@@ -14,8 +16,6 @@ public:
 	const char *m_ptr;
 	int m_len;
 };
-
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
 
 // ?copyWchars@Rva000B3F84Pair@@QAEHPAG@Z, retail 0x002342A7, 30 bytes.
 // Copies the m_len wide chars and returns the count. Serve sizes say 28;

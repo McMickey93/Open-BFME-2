@@ -8,6 +8,8 @@
 // Target independently proves pFile+34 and data+10; the final donor uses data+C
 // and must NOT supply that field offset. Release PDB AptFile agrees with data+10.
 // These are partial views; unused file/animation fields and ownership are opaque.
+#include <string.h>
+
 class AptFile {
     unsigned char unaccessed[16];
     void *mAptData;
@@ -41,7 +43,6 @@ int AptCharacterAnimationInst::getSwfVersion()
 // __debugbreak intrinsic folds the flag into a memory comparison. The native
 // assert blocks load/test the flag around stack cleanup; int3 inline assembly
 // retains that proven compiler shape without reproducing the function body.
-extern "C" int __cdecl strcmp(const char*, const char*);
 #pragma intrinsic(strcmp)
 extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char*, const char*, int);
 extern int g_bfmeAptBreakOnAssertAtDDC01C;

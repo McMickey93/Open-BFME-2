@@ -4,7 +4,7 @@
 // payload, fills the real FESL message ABI, and forwards bounded data chunks
 // through the already matched busy operation.
 
-extern "C" unsigned int __cdecl strlen( const char *text );
+#include <string.h>
 #pragma intrinsic( strlen )
 
 class Rva007EFFC0Allocator

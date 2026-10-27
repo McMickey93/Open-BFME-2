@@ -4,6 +4,8 @@
  * neighbourhood; the packer at 0x007EFC20 is its only caller so far found.
  */
 
+#include <string.h>
+
 /* Retail's own name for this on the caller's frame is `tm2`, recovered from
  * the /GZ frame descriptor, and the layout is struct tm exactly -- 36 bytes,
  * fields in the standard order.  It is spelled out here rather than included
@@ -239,11 +241,6 @@ unsigned char g_Rva0112A110Hex[256] =
 	/* 0xE0 */ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	/* 0xF0 */ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
-
-/* Declared rather than included: under /MD the CRT header marks memset
- * dllimport and the call becomes an indirect through the IAT, where retail
- * calls the import stub directly. */
-void * __cdecl memset( void *dest, int c, unsigned int count );
 
 /* The bounded digit scanner, and the current-time helper.
  *

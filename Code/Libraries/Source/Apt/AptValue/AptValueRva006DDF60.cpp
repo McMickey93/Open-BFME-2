@@ -8,7 +8,7 @@
 // AptValue::toString 0x006DD6C0 and EAStringC appends 0x006D4F00 /
 // 0x006D50A0), then trims the trailing "&" (rowed 0x006D5DA0). The result is
 // returned by value. WorldBuilder twin 0x0176E860 (strings lead, unnamed).
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 #pragma intrinsic(strcmp)
 
 class EAStringC

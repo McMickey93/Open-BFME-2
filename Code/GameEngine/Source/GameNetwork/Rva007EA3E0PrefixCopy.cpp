@@ -1,4 +1,4 @@
-extern "C" char *__cdecl strncpy(char *destination, const char *source, unsigned int count);
+#include <string.h>
 
 struct Rva007EA3E0Nested
 {

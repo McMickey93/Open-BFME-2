@@ -1,6 +1,6 @@
 // cl: /Od /GZ /GS /MD /DNDEBUG
 
-int memcmp( const void *first, const void *second, unsigned int count );
+#include <string.h>
 
 struct Rva0080D890Entry
 {

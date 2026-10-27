@@ -11,6 +11,8 @@
  * the locals MD5 and Sha1 (from the /GZ frame descriptors).
  */
 
+#include <string.h>
+
 struct Rva00810060Context
 {
 	unsigned int m_count;
@@ -55,8 +57,6 @@ void Rva0080D620(const unsigned char *data, int length, unsigned char *digest)
 	CryptSha1Update(&Sha1, data, length);
 	CryptSha1Final(&Sha1, digest, 0x14);
 }
-
-void *memcpy(void *dest, const void *src, unsigned int count);
 
 void Rva0080F3D0(unsigned char *state, const void *first, int firstLength,
 	const void *second, int secondLength);

@@ -5,6 +5,8 @@
 // touches. Neighbouring rows (0x006CBC10 getters, 0x006CBD60 clip stack)
 // place them in the Apt runtime.
 
+#include <string.h>
+
 // ?set@Rva006CBC20Flag5@@QAEX_N@Z @ 0x006CBC20 (30B): stores a bool into
 // bit 5 of the +4 flag word (xor/and/xor bitfield insert).
 class Rva006CBC20Flag5
@@ -58,7 +60,6 @@ void Rva006E0180Flag16::set(int value)
 
 // ?clear@Rva006E3C50Table@@QAEXXZ @ 0x006E3C50 (36B): resets the 16-bit
 // count at +0 and zero-fills the +4 slot array over the 16-bit capacity at +2.
-extern "C" void *__cdecl memset(void *, int, unsigned int);
 #pragma intrinsic(memset)
 class Rva006E3C50Table
 {

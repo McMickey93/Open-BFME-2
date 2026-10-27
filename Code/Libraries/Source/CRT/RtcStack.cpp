@@ -5,7 +5,6 @@
 // Its flag-dependent sibling remains assembly in RTC_CheckEsp.asm; no naked
 // C++ or compiler-generated import aliases are used here.
 #include <rtcapi.h>
-extern "C" void *_ReturnAddress();
 #pragma intrinsic(_ReturnAddress)
 void _RTC_StackFailure(void *,const char *);
 

@@ -23,6 +23,8 @@
  * divides are idiv, so every one of these is a signed int.
  */
 
+#include <string.h>
+
 /* The recursive lock helpers this library uses everywhere; the acquire is a
  * TRY, returning zero when the lock is held elsewhere. */
 int Rva007FEB00( void *lock );
@@ -318,9 +320,6 @@ int Rva008155A0( struct Rva00815B50Comm *comm )
 	comm->m_state = 4;
 	return 0;
 }
-
-void *__cdecl memcpy( void *destination, const void *source,
-	unsigned int count );
 
 void Rva00816160( struct Rva00815B50Comm *comm, const void *from );
 

@@ -9,6 +9,8 @@
 // Target signature follows the REL32 call from W3DGameClient::addScorch.
 // The array and state offsets are independently established by target bytes.
 
+#include <math.h>
+
 class Vector3
 {
 public:
@@ -24,8 +26,6 @@ enum Scorches
 {
 	SCORCHES_UNKNOWN = 0
 };
-
-extern "C" double __cdecl fabs(double v);
 
 struct ScorchEntry00067EA3
 {
@@ -55,11 +55,11 @@ void BaseHeightMapRenderObjClass::addScorch(Vector3 pos, float radius, Scorches 
 	for (int i = 0; i < m_count; ++i)
 	{
 		ScorchEntry00067EA3 *entry = &m_entries[i];
-		if (!(fabs(pos.x - entry->position.x) < estimate))
+		if (!(fabs((double)(pos.x - entry->position.x)) < estimate))
 			continue;
-		if (!(fabs(pos.y - entry->position.y) < estimate))
+		if (!(fabs((double)(pos.y - entry->position.y)) < estimate))
 			continue;
-		if (!(fabs(radius - entry->radius) < estimate))
+		if (!(fabs((double)(radius - entry->radius)) < estimate))
 			continue;
 		if (entry->kind != type)
 			continue;

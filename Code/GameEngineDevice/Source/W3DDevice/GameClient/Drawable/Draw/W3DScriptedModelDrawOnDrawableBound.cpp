@@ -28,8 +28,7 @@
 // Field names are not asserted.
 
 #include "ascii_string.h"
-
-extern "C" void *__cdecl memset(void *, int, unsigned int);
+#include <string.h>
 
 class ModelConditionFlags
 {

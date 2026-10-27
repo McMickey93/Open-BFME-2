@@ -5,6 +5,8 @@
 // eight-byte {text,tag} slot.  This neutral host view records that ABI and
 // does not claim an original public spelling.
 
+#include <string.h>
+
 struct Rva007F76F0Slot
 {
 	const char *m_text;
@@ -27,7 +29,6 @@ struct Rva007F76F0Vector
 	}
 };
 
-extern "C" int strcmp( const char *left, const char *right );
 #pragma intrinsic(strcmp)
 
 class Rva00802240Host
