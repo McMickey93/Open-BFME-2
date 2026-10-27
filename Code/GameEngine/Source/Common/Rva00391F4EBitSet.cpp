@@ -11,7 +11,7 @@
 // callers at 0x003942CE 0x00451026 0x0045AB95 0x004833C1 0x004838E4 0x00489FAE
 // 0x0048A32E. Plain-extern memset keeps the retail E8-to-thunk call shape.
 
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 struct Rva00391F4E
 {

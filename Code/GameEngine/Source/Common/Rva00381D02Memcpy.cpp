@@ -3,7 +3,7 @@
 // memcpy 0x10 bytes from src arg into this+0xCC. Evidence: unlock lane; callee
 // memcpy via _memcpy pin at 0x006291A8 (ji_006291A8 row); callers at 0x003838D9
 // 0x0043E88D 0x00581AFB 0x00581C2B 0x0058235D 0x005AF599; sibling 0x00381CED.
-extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count);
+#include <string.h>
 
 struct Rva00381D02
 {

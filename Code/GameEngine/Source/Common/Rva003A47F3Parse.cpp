@@ -12,7 +12,7 @@
 #include "ascii_string.h"
 #include "Common/INIException.h"
 #include <vector>
-extern "C" int __cdecl strcmp(const char *, const char *);
+#include <string.h>
 
 class INI
 {
