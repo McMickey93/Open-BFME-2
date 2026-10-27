@@ -5,7 +5,7 @@
 #include "ascii_string.h"
 #define BFME_SNAPSHOT_NAME_SLOT 1
 #include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
-extern "C" void __cdecl free(void*);
+#include <stdlib.h>
 struct TargetRef00217D4C { void* vtable; int references; };
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C*);
 struct Rva004F69C3Target { unsigned char unknown0[4]; AsciiString templateName; unsigned char opaque[0xAC-8]; TargetRef00217D4C ref; };
