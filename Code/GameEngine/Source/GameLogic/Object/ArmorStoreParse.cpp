@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfmealloc /I. /O1 /G7 /arch:SSE /MD /EHsc /DNDEBUG /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfme2_ascii
+// platformsdk
 // stlport
 // WB ABCAB0 names ArmorStore::parseArmorDefinition; native1D9484..1D9611
 // supplies override/new/template layout and the exact four-entry field table.
@@ -15,6 +16,7 @@
 // slot-5 reload 0x001D93CE; WB ABCAB0 names it. The map at +0x0C and the pending vector at
 // +0x2C are the containers ArmorStoreReload.cpp drains.
 
+#include <windows.h>
 #include <hash_map>
 #include <vector>
 namespace _STL {
@@ -48,8 +50,6 @@ namespace _STL { template <> void * & vector<void *,allocator<void *> >::operato
 // Suppress this TU's non-retail copy of ?size@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QBEIXZ:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 namespace _STL { template <> unsigned int vector<void *,allocator<void *> >::size() const; }
-
-#define NULL 0
 
 enum NameKeyType
 {

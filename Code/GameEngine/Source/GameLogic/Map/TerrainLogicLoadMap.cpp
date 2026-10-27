@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /Ireference/shims/bfme2_ascii /ICode/Libraries/Include /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // TerrainLogic::loadMap (slot 4 of the TerrainLogic vftable 0x007FB2C8), its
 // waypoint chunk callback parseWaypointDataChunk and addWaypoint, from Zero
@@ -23,14 +24,13 @@
 // reads two more keys than Zero Hour (waypointType, waypointTypeOption, by
 // the name strings of the caches at 0x00DBDCB4 and 0x00DBDCBC) and leaves the
 // list linking to Waypoint's constructor, so it discards the new waypoint.
+#include <windows.h>
 #include "ascii_string.h"
 #include "Lib/Coord3D.h"
 
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
-
-#define NULL 0
 
 enum NameKeyType
 {

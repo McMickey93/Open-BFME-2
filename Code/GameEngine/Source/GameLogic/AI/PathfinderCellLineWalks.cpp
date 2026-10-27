@@ -34,9 +34,8 @@
 //   0x002F6C22  0x002F4D8B
 //   0x002F6D22  0x002F600C
 
+#include <stdlib.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
-
-extern "C" int __cdecl abs( int n );
 
 typedef int Int;
 typedef float Real;

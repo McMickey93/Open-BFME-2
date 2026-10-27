@@ -1,16 +1,17 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // Rva00367E26::Rva00367E26, retail 0x36792f: a BFME 2 state machine constructor. The base
 // is the rowed StateMachine constructor 0x004D79E1 with the name key 0x0
 // (its unsigned spelling is pinned); each state comes from plain operator
 // new and its rowed constructor, registered with the IDs and transitions
 // read from the retail call sequence (Zero Hour's defineState pattern).
+#include <windows.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
 typedef UnsignedInt ObjectID;
-#define NULL 0
 class Object;
 struct StateConditionInfo
 {

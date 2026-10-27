@@ -1,4 +1,5 @@
 // cl: /O1 /I. /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // AttackPositionStateMachine::AttackPositionStateMachine, retail 0x3438c7: a
 // BFME 2 state machine constructor. The name is a target fact: the vftable
@@ -9,12 +10,12 @@
 // (its unsigned spelling is pinned); each state comes from plain operator
 // new and its rowed constructor, registered with the IDs and transitions
 // read from the retail call sequence (Zero Hour's defineState pattern).
+#include <windows.h>
 #include "Code/Libraries/Include/Lib/Coord3D.h"
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
 typedef UnsignedInt ObjectID;
-#define NULL 0
 class Object;
 struct StateConditionInfo
 {

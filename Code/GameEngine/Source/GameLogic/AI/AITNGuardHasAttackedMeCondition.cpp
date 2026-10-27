@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?rva00545F10@@YA_NPAUState@@PAX@Z, retail 0x00545F10..0x00545F80 (112
 // bytes): Zero Hour AITNGuard.cpp's hasAttackedMeAndICanReturnFire, the
@@ -17,9 +18,9 @@
 // true. As in the donor there is no isAbleToAttack test (unlike AIGuard's
 // twin 0x005430E7); BFME 2 reads the attacker id once and drops the
 // clearLastAttacker call.
+#include <windows.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 typedef bool Bool;
-#define NULL 0
 enum Relationship
 {
 	ENEMIES = 0,

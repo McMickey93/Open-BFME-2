@@ -11,12 +11,11 @@
 // +0x08/+0x14 plus int at +0x20 plus bytes at +0x24/+0x25, factory news
 // 0x28). novtable suppresses the derived store retail lacks (CivilianSpawn
 // precedent).
+#include <stdlib.h>
 #include <vector>
 #include "Common/Snapshot.h"
 
 #include "ascii_string.h"
-
-extern "C" void free(void *block);
 
 struct TrivialVec08
 {

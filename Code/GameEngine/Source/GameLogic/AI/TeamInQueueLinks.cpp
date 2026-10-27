@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // TeamInQueue's MAKE_DLINK members for TeamBuildQueue and TeamReadyQueue
 // (Zero Hour's GameEngine/Include/Common/GameCommon.h, GeneralsMD tree vendored
@@ -12,8 +13,8 @@
 // Layout (target evidence): build-queue links (prev, next) at +0x04 / +0x08,
 // ready-queue links at +0x0C / +0x10.
 typedef bool Bool;
-#define NULL 0
 
+#include <windows.h>
 #include "TeamInQueue.h"
 
 // ------------------------------------------------------------------------------------------------

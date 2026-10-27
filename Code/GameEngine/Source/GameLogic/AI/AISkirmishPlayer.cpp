@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /GX /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 //
 // AISkirmishPlayer, Zero Hour's AISkirmishPlayer.cpp bodies (GeneralsMD tree
 // vendored under reference/open-bfme-1/inputs/reference) as BFME 2 kept them.
@@ -14,6 +15,7 @@
 // retail's, so they get TU-local names instead of colliding with the rowed bodies.
 #define width width_RV
 #define height height_RV
+#include <windows.h>
 #include "ascii_string.h"
 // The matched trig operations inline; keep surplus CRT float wrappers local.
 #define inline static inline
@@ -22,7 +24,6 @@
 typedef bool Bool;
 typedef int Int;
 typedef float Real;
-#define NULL 0
 #define PI 3.14159265359f
 
 #include "../../Common/GameLogicObjectLookupView.h"

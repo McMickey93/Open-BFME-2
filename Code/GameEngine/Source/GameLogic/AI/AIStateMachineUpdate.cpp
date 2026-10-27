@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS
+// platformsdk
 // stlport
 //
 // AIStateMachine temporary-state bodies, ported from Zero Hour's
@@ -23,13 +24,13 @@
 //    out-of-line 12-byte vector erase 0x002A133B), goal waypoint (+0x48) and
 //    goal squad (+0x4C, deleted here with a global delete) cleared, and the
 //    AI notified (AIUpdateInterface vslot 153).
+#include <windows.h>
 #include <vector>
 
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-#define NULL 0
 
 #include "../../Common/GameLogicObjectLookupView.h"
 enum StateReturnType

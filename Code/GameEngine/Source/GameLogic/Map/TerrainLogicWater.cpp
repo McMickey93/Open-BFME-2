@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /arch:SSE /ICode/Libraries/Include
+// platformsdk
 //
 // TerrainLogic::setWaterHeight, slot 31 of the TerrainLogic vftable
 // (0x007FB2C8; slot 53 of W3DTerrainLogic's at 0x007C5838), from Zero Hour's
@@ -17,6 +18,7 @@
 // The header inlines below are only expanded here (no reloc to them); the COMDATs this unit still emits are not
 // retail's, so they get TU-local names instead of colliding with the rowed bodies.
 #define zero zero_RV
+#include <windows.h>
 #include "Lib/Coord3D.h"
 #include "../../Common/PartitionRangeQueryCallView.h"
 
@@ -25,8 +27,6 @@
 typedef bool Bool;
 typedef int Int;
 typedef float Real;
-
-#define NULL 0
 
 enum ObjectID
 {

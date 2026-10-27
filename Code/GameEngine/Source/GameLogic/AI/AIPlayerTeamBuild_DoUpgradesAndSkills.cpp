@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /GX /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // Split from AIPlayerTeamBuild.cpp: these definitions reference a callee with no matched body yet,
 // so they are kept apart from the unit's bodies that already link.
@@ -144,6 +145,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+#include <windows.h>
 #include <list>
 
 // Keep the inlined node comparison local, as in GameClientXfer.cpp, so
@@ -161,7 +163,6 @@ static inline bool operator!=(const _List_iterator<T, L> &a,
 typedef bool Bool;
 typedef int Int;
 typedef float Real;
-#define NULL 0
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../Libraries/Include/Lib/Coord2D.h"

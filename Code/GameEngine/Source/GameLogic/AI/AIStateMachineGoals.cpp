@@ -1,4 +1,5 @@
 // cl: /MD /DNDEBUG
+// platformsdk
 //
 // AIStateMachine goal setters, ported from Zero Hour's GameEngine/Source/
 // GameLogic/AI/AIStates.cpp (GeneralsMD tree vendored under
@@ -12,8 +13,8 @@
 //    0x00351761). The constructor installs vftable 0x00BF9D60,
 //    whose slot 3 is the rowed Squad::xfer 0x004D6EC4; retail has no unwind
 //    frame around it, hence throw().
+#include <windows.h>
 typedef bool Bool;
-#define NULL 0
 
 class Team;
 class AIGroup;

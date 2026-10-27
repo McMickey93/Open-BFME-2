@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /arch:SSE /EHsc
+// platformsdk
 //
 // AITNGuard (tunnel-network guard) state bodies ported from Zero Hour's
 // GameEngine/Source/GameLogic/AI/AITNGuard.cpp (GeneralsMD tree vendored under
@@ -51,7 +52,7 @@
 // (0x004F5684) are pinned ZH-shaped bodies.
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
-#define NULL 0
+#include <windows.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 enum StateExitType
 {

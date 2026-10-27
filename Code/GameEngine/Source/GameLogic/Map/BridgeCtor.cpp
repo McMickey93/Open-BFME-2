@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /Ireference/shims/bfme2_ascii /ICode/Libraries/Include /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 //
 // Bridge::Bridge (0x0027F882, 810 bytes), after Zero Hour's TerrainLogic.cpp
@@ -26,6 +27,8 @@
 // shares the create mask's slot with the side vector and the outline bounds'
 // slot with the centre, which MSVC 7.1 does only for locals of disjoint
 // scopes, so both sit in their own blocks.
+#define NOMINMAX
+#include <windows.h>
 #include "ascii_string.h"
 #include "Lib/Coord3D.h"
 
@@ -36,8 +39,6 @@ typedef bool Bool;
 typedef int Int;
 typedef float Real;
 typedef unsigned int UnsignedInt;
-
-#define NULL 0
 
 enum ObjectID
 {

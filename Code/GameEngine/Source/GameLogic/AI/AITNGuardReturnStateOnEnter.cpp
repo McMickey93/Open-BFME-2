@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /arch:SSE
+// platformsdk
 //
 // AITNGuardReturnState::onEnter ported from Zero Hour's AITNGuard.cpp.
 // Target evidence: slot 4 of retail vtable 0xC6A1F0 at 0x005465E5.
@@ -8,8 +9,8 @@
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
 typedef float Real;
-#define NULL 0
 
+#include <windows.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 enum StateExitType
 {

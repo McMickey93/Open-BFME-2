@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // TurretStateMachine::TurretStateMachine, retail 0x004D7CE6 (373 bytes), and
 // the five turret state constructors it calls, retail 0x004D7B98..0x004D7C4E.
@@ -15,10 +16,10 @@
 // This unit naturally emits the complete 28-byte helper; its call to the
 // complete destructor resolves through StateGetMachineGoalObject.cpp, without
 // the retired Rva004D7B93 pin or a synthetic vtable-emitting constructor.
+#include <windows.h>
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
-#define NULL 0
 class Object;
 struct StateConditionInfo
 {

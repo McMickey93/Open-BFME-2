@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // TurretAI::updateTurretAI, retail 0x004D8DEA (194 bytes), ported from Zero
 // Hour's GameEngine/Source/GameLogic/AI/TurretAI.cpp (GeneralsMD tree
@@ -14,7 +15,6 @@
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
-#define NULL 0
 
 enum StateReturnType
 {
@@ -47,6 +47,7 @@ enum TurretStateType
 	TURRETAI_HOLD = 5
 };
 
+#include <windows.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 

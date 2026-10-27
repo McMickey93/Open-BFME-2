@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB
+// platformsdk
 // stlport
 //
 // AIStateMachine::AIStateMachine, retail 0x00351C48 (3805 bytes; pinned by
@@ -11,12 +12,12 @@
 // name key (its unsigned spelling is pinned), creates the 75 states with
 // plain operator new and constructs each through its rowed constructor; the
 // classes below are constructor/size views named as those rows are.
+#include <windows.h>
 #include <vector>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
-#define NULL 0
 class Object;
 class Waypoint;
 class Squad;

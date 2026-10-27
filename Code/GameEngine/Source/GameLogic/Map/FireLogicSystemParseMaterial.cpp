@@ -3,6 +3,7 @@
 // The named INI token/table/exception providers and retail Color/Name/Fuel/
 // MaxBurnRate/Decay/Resistance descriptors establish field-parser purpose.
 // A normal local static aggregate owns its compiler-generated lazy guard.
+#include <stdlib.h>
 class INI;
 typedef void (*INIFieldParseProc)(INI *,void *,void *,const void *);
 struct FieldParse {
@@ -27,7 +28,6 @@ public:
  char *message;
  int errorCode;
 };
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *);
 static inline const void *materialMask(unsigned mask) { return reinterpret_cast<const void *>(mask); }
 void Rva00285FA9Parse(INI *ini,void *,void *store,const void *) {
  const char *token=ini->getNextToken(0);

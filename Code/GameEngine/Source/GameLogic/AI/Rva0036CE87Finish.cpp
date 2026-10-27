@@ -10,8 +10,6 @@
 // (same RAII spelling, BFME1 offsets +0x18..+0x30; this body uses BFME2's
 // +0x14 ground path and +0x18/+0x1c/+0x20 float state).
 
-void __cdecl operator delete(void *) throw();
-
 class Path
 {
 public:
@@ -52,6 +50,7 @@ private:
 	void recompute();
 };
 
+#include <new>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
 class Object;

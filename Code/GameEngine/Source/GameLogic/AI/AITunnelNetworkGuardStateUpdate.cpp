@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // AITunnelNetworkGuardState::update, retail 0x00346487 (74 bytes): slot 6 of
 // vtable 0x00C11850, whose slot-2 name getter returns AITunnelNetworkGuardState
@@ -9,8 +10,8 @@
 // its vslot 4, +0x10), machine lock byte +0x38, owner template +4 with the
 // PROJECTILE kind bit at byte +0x10B mask 0x02; isOutOfAmmo is the rowed
 // Object::isOutOfAmmo.
+#include <windows.h>
 typedef bool Bool;
-#define NULL 0
 enum StateExitType
 {
 	EXIT_NORMAL = 0

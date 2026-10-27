@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /GX
+// platformsdk
 //
 // GettingBuiltBehaviorModuleData ctor shard (retail 0x0045324E, 199 bytes).
 // File-unit with GettingBuiltBehaviorModuleDataCtor.cpp (parse proc there).
@@ -14,12 +15,11 @@
 // (twin of Rva003623E5Member) and tears down through the rowed dtor at 0x00360D26.
 // Bytes and ints nulled in retail order.
 
+#include <windows.h>
 #include "ascii_string.h"
 #include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
 #include "../../../../Include/Common/BfmeModuleData.h"
 inline ModuleData::~ModuleData() { reinterpret_cast<Snapshot *>(this)->Snapshot::~Snapshot(); }
-
-extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile *lpAddend);
 
 class RefCountedThing
 {

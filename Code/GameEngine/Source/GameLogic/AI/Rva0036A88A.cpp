@@ -1,4 +1,5 @@
 // cl: /O1 /MD /arch:SSE /Oy- /Op
+// platformsdk
 // Retail 0x0036A88A, 239 bytes. The target guard-state owner is not named;
 // Rva0036A88AOwner remains an address-derived view. Target fields +0x3C/+0x40
 // and calls are supported by retail accesses and REL32 sites; no donor name is
@@ -24,8 +25,8 @@
 typedef float Real;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt TeamID;
-#define NULL 0
 
+#include <windows.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"

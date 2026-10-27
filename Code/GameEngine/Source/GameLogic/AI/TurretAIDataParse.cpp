@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // TurretAIData FieldParse procs from Zero Hour's TurretAI.cpp with the BFME 2
 // six-slot layout: m_turretFireAngleSweep[6] at +0x10 and
@@ -13,8 +14,7 @@
 // at VA 0x00C60B90; AIUpdateModuleData::parseTurret hands it to
 // initFromINIMultiProc.
 
-#define NULL 0
-
+#include <windows.h>
 typedef float Real;
 typedef unsigned int UnsignedInt;
 

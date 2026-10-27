@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /GX /arch:SSE /Ireference/shims/bfme2_ascii /ICode/GameEngine/Source/Common /ICode/Libraries/Include/Lib
+// platformsdk
 //
 // AutoHealBehavior::update (0x0045280B) and the file-static helpers retail
 // places ahead of it (0x00452496..0x0045280B): the stretch BFME 1's
@@ -22,8 +23,8 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-#define NULL 0
 
+#include <windows.h>
 #include "GameLogicObjectLookupView.h"
 #include "Coord3D.h"
 #include "PartitionRangeQueryCallView.h"
