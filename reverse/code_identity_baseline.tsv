@@ -330,13 +330,7 @@ Code/Libraries/Source/WWVegas/WWLib/VectorOverflowRva003F3277.cpp	?_M_insert_ove
 Code/Libraries/Source/WWVegas/WWLib/VectorOverflowRva0052D742.cpp	?_M_insert_overflow@?$vector@URva0052D742Record@@V?$allocator@URva0052D742Record@@@_STL@@@_STL@@IAEXPAURva0052D742Record@@ABU3@ABU__false_type@2@I_N@Z	?_M_clear@?$vector@URva0052D742Record@@V?$allocator@URva0052D742Record@@@_STL@@@_STL@@IAEXXZ	0x0052CAAB	wrong
 Code/Libraries/Source/WWVegas/WWLib/ini.cpp	?Load@INIClass@@QAEHAAVStraw@@@Z	?Add_Index@?$IndexClass@HPAUINIEntry@@@@QAE_NABHABQAUINIEntry@@@Z	0x006166D0	wrong
 Code/Libraries/Source/WWVegas/WWLib/ini.cpp	?Put_String@INIClass@@QAE_NPBD00@Z	?Add_Index@?$IndexClass@HPAUINIEntry@@@@QAE_NABHABQAUINIEntry@@@Z	0x006166D0	wrong
-Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	??0?$VectorClass@UAddInfoStruct@MixFileFactoryClass@@@@QAE@HPBUAddInfoStruct@MixFileFactoryClass@@@Z	??0AddInfoStruct@MixFileFactoryClass@@QAE@XZ	0x00154300	wrong
-Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	??0?$VectorClass@UAddInfoStruct@MixFileFactoryClass@@@@QAE@HPBUAddInfoStruct@MixFileFactoryClass@@@Z	??1AddInfoStruct@MixFileFactoryClass@@QAE@XZ	0x00001E13	wrong
-Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	??1?$VectorClass@UAddInfoStruct@MixFileFactoryClass@@@@UAE@XZ	??1AddInfoStruct@MixFileFactoryClass@@QAE@XZ	0x00001E13	wrong
-Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	??_G?$VectorClass@UAddInfoStruct@MixFileFactoryClass@@@@UAEPAXI@Z	??1AddInfoStruct@MixFileFactoryClass@@QAE@XZ	0x00001E13	wrong
 Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	??_G?$VectorClass@UFileOffsetStruct@@@@UAEPAXI@Z	??1FileOffsetStruct@@QAE@XZ	0x00042FF8	wrong
-Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	?Clear@?$DynamicVectorClass@UAddInfoStruct@MixFileFactoryClass@@@@UAEXXZ	??1AddInfoStruct@MixFileFactoryClass@@QAE@XZ	0x00001E13	wrong
-Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	?Clear@?$VectorClass@UAddInfoStruct@MixFileFactoryClass@@@@UAEXXZ	??1AddInfoStruct@MixFileFactoryClass@@QAE@XZ	0x00001E13	wrong
 Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	?Resize@?$DynamicVectorClass@UAddInfoStruct@MixFileFactoryClass@@@@UAE_NHPBUAddInfoStruct@MixFileFactoryClass@@@Z	?Resize@?$VectorClass@UAddInfoStruct@MixFileFactoryClass@@@@UAE_NHPBUAddInfoStruct@MixFileFactoryClass@@@Z	0x00155690	wrong
 Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_record_bodies.cpp	??$_Construct@UBfmeStringHeadRecord148@@U1@@_STL@@YAXPAUBfmeStringHeadRecord148@@ABU1@@Z	??0BfmeStringHeadRecord148@@QAE@ABU0@@Z	0x0036105B	wrong
 Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_record_bodies.cpp	??$__copy_backward@PAUBfmeAssignRecord24@@PAU1@H@_STL@@YAPAUBfmeAssignRecord24@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z	??4BfmeAssignRecord24@@QAEAAU0@ABU0@@Z	0x0042816E	wrong
