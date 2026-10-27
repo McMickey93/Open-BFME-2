@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 //
 // WWLib INIClass::DuplicateCRCError, the warning Load and Put_String raise
 // when an entry's CRC collides with one already in the file's index.
@@ -16,12 +17,8 @@
 // then the filename the object carries at +0x0C - which is why `entry` is
 // passed before `section` despite being the last parameter.
 
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer,
-		unsigned int count, const char *format, ...);
-extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA(
-		const char *output);
-extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void *owner,
-		const char *text, const char *caption, unsigned int type);
+#include <windows.h>
+#include <stdio.h>
 
 class INIClass
 {

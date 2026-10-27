@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 //
 // The native network allocation path constructs a 0x40-byte object at
 // 0x0065E4A8, then calls this body before invoking the virtual init slot. The
@@ -7,12 +8,10 @@
 // This layout agrees with GameNetwork/Network.cpp; the former
 // BFME2NativeNetwork placeholder also names unrelated subsystem-base views.
 
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceFrequency(__int64 *frequency);
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceCounter(__int64 *counter);
-
 extern "C" const void *const __identifier("??_7Rva0025E4CD@@6B@")[];
 
 // 0x001B4E63 is the rowed SubsystemInterface ctor.
+#include <windows.h>
 #include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 class Network
@@ -26,8 +25,8 @@ private:
 	void *m_connectionManager;
 	int m_state;
 	char m_unknown14[4];
-	__int64 m_performanceFrequency;
-	__int64 m_lastPerformanceCounter;
+	LARGE_INTEGER m_performanceFrequency;
+	LARGE_INTEGER m_lastPerformanceCounter;
 	__int64 m_accumulator;
 	bool m_stallTimerRunning;
 	char m_unknown31[3];

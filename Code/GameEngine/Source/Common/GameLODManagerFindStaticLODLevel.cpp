@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc /Ireference/shims/bfme2_ascii
+// platformsdk
 // stlport
 // ?findStaticLODLevel@GameLODManager@@QAE?AW4StaticGameLODLevel@@XZ
 // Retail 0x00203288..0x002034C4 (572 bytes).
@@ -21,6 +22,8 @@
 // GetVersionExA; BFME 2 deltas against the donor (four preset levels, the
 // two preference setters, GlobalData +0x30) are read from the retail body.
 #include <map>
+#include <windows.h>
+#include <string.h>
 #include "ascii_string.h"
 
 typedef int Int;
@@ -30,14 +33,6 @@ enum StaticGameLODLevel
 {
 	STATIC_GAME_LOD_UNKNOWN = -1
 };
-
-struct BfmeOSVersionInfo
-{
-	unsigned long dwOSVersionInfoSize, dwMajorVersion, dwMinorVersion, dwBuildNumber, dwPlatformId;
-	char szCSDVersion[128];
-};
-extern "C" __declspec(dllimport) int __stdcall GetVersionExA(BfmeOSVersionInfo *info);
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
 
 enum ChipsetType { DC_UNKNOWN = 0 };
 enum CpuType { XX = 0 };
@@ -143,7 +138,7 @@ StaticGameLODLevel GameLODManager::findStaticLODLevel()
 				break;
 		}
 
-		BfmeOSVersionInfo osvi;
+		OSVERSIONINFOA osvi;
 		memset(&osvi, 0, sizeof(osvi));
 		osvi.dwOSVersionInfoSize = sizeof(osvi);
 		if (GetVersionExA(&osvi) &&

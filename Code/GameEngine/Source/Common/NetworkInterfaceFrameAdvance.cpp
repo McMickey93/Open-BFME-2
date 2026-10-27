@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 //
 // BFME2's native-network vtable slot +0x54 decides how many logic frames may
 // advance during the current client tick.  The two branches are deliberately
@@ -7,12 +8,11 @@
 // router uses a QPC accumulator and the same logic-frame quantum as the pacing
 // query at slot +0x58.
 
+#include <windows.h>
+
 extern class GameLogic *TheGameLogic;
 
 extern int BfmeLogicFramesPerSecond;
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceCounter(__int64 *counter);
 
 struct GameLogicFrame
 {
@@ -158,10 +158,10 @@ int NetworkInterface::getFrameAdvanceCount(void)
 		return 0;
 	}
 
-	__int64 now;
+	LARGE_INTEGER now;
 	QueryPerformanceCounter(&now);
-	m_accumulator += now - m_lastCounter;
-	m_lastCounter = now;
+	m_accumulator += now.QuadPart - m_lastCounter;
+	m_lastCounter = now.QuadPart;
 
 	__int64 quantum = m_frequency / LogicFramesPerSecond;
 	if (m_accumulator < quantum)

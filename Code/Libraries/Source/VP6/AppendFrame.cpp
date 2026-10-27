@@ -5,10 +5,7 @@
 // Diagnostic frame dump (retail 0x001BB670): appends the last reconstructed
 // frame (Y plane plus two UV planes) to test.raw.
 
-extern "C" __declspec(dllimport) void *__cdecl fopen(const char *name, const char *mode);
-extern "C" __declspec(dllimport) unsigned int __cdecl fwrite(
-	const void *buffer, unsigned int size, unsigned int count, void *stream);
-extern "C" __declspec(dllimport) int __cdecl fclose(void *stream);
+#include <stdio.h>
 
 struct PB_INSTANCE
 {
@@ -22,7 +19,7 @@ struct PB_INSTANCE
 // RVA 0x001BB670
 extern "C" void __cdecl vp6_appendframe(PB_INSTANCE *pbi)
 {
-	void *file = fopen("test.raw", "ab");
+	FILE *file = fopen("test.raw", "ab");
 	fwrite(pbi->lastReconFrame, pbi->yPlaneSize + pbi->uvPlaneSize * 2, 1, file);
 	fclose(file);
 }

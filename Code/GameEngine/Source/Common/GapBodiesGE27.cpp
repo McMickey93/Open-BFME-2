@@ -1,4 +1,5 @@
 // cl: /O2 /G7 /arch:SSE /MD /DNDEBUG
+// platformsdk
 // Small bodies from .text gaps no Ghidra function covers (twenty-seventh
 // batch; see GapBodiesGE01.cpp), the ones whose retail shape is the /O2 form
 // (byte loads tested in a register, read-modify-write split through a
@@ -7,15 +8,14 @@
 // every shape; owning classes are not recovered, so each keeps an
 // address-derived name and a view of only the members it touches.
 
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
+#include <windows.h>
 
 // --- 0x00032AC0 (64B): under the heap's optional counted lock (+0x4E4: a
 // critical section with a depth word at +0x18), read the chunk size word
 // ahead of a user pointer (allocator run 0x00030D10..0x00031BF0).
 struct GapCountedLock
 {
-	char m_section[0x18];
+	CRITICAL_SECTION m_section;
 	volatile int m_depth;									// +0x18
 };
 
@@ -33,14 +33,14 @@ unsigned int Rva00032AC0::rva00032AC0(const void *p, int unused)
 	GapCountedLock *lock = m_lock;
 	if (lock)
 	{
-		EnterCriticalSection(lock);
+		EnterCriticalSection(&lock->m_section);
 		++lock->m_depth;
 	}
 	unsigned int size = ((const unsigned int *)p)[-1] & 0x7FFFFFF8;
 	if (lock)
 	{
 		--lock->m_depth;
-		LeaveCriticalSection(lock);
+		LeaveCriticalSection(&lock->m_section);
 	}
 	return size;
 }
@@ -54,13 +54,13 @@ public:
 	__forceinline void enter()
 	{
 		if (!m_singleThreaded)
-			EnterCriticalSection(m_section);
+			EnterCriticalSection(&m_section);
 	}
 	void rva000355E0();
 	void rva00035600();
 private:
 	char m_pad00[8];
-	char m_section[0x18];									// +0x08
+	CRITICAL_SECTION m_section;									// +0x08
 	bool m_singleThreaded;									// +0x20
 };
 
@@ -72,7 +72,7 @@ void Rva000355E0::rva000355E0()
 void Rva000355E0::rva00035600()
 {
 	if (!m_singleThreaded)
-		LeaveCriticalSection(m_section);
+		LeaveCriticalSection(&m_section);
 }
 
 class Rva00035880
@@ -116,4 +116,3 @@ void rva00038390(int a, int b, int c)
 {
 	((GapDebugView *)theDebug)->slot27(a, b, c);
 }
-

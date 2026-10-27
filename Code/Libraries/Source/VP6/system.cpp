@@ -1,13 +1,10 @@
 // cl: /O2 /G6 /MD
+// platformsdk
 // Clean-room implementation from reverse/vp6_cleanroom/specs/001b9000.md,
 // 001b9020.md and 001b9030.md. Names come from the reviewed specifications;
 // retail establishes each cdecl boundary, argument and Windows import.
 // No decoder source was consulted.
-extern "C" __declspec(dllimport) int __stdcall MessageBoxA(
-    void *, const char *, const char *, unsigned int);
-extern "C" __declspec(dllimport) void *__stdcall GlobalAlloc(
-    unsigned int, unsigned int);
-extern "C" __declspec(dllimport) void *__stdcall GlobalFree(void *);
+#include <windows.h>
 
 // RVA 0x001B9000..0x001B9015: caller-owned message; task-modal warning.
 extern "C" void __cdecl VP6_IssueWarning(const char *message)

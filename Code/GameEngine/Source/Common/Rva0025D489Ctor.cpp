@@ -1,3 +1,4 @@
+// platformsdk
 // ??0Display@@QAE@XZ
 // partial score=1.0 date=2026-10-13
 // ??0Display@@QAE@XZ
@@ -25,6 +26,7 @@ extern "C" void _ReadWriteBarrier();
 // Evidence: same-this calls at 0x0025D6A4/0x0025D6AB; vtable shared with ctor
 // 0x0025D489 which inits the same D0/E0/E4/C8/CC/F0 fields; base call
 // 0x001B4E74; deleting-dtor caller 0x0025DA57.
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "Code/GameEngine/Source/Common/GameLogicObjectLookupView.h"
@@ -217,11 +219,7 @@ struct Rva0025C18BCoord
 };
 
 class Rva0025C09E {public: Rva0025C09E(); char data[24];};
-// PE import identity at IAT 0xBBA220 is kernel32!GetCurrentThreadId (retail)
-extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId();
-struct DisplayCriticalSection {char data[24];};
-// PE import identity at IAT 0xBBA2E4 is kernel32!QueryPerformanceFrequency (retail)
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceFrequency(DisplayCriticalSection*);
+struct DisplayCriticalSection {LARGE_INTEGER frequency; char data[16];};
 // 0x00DFE9E0 has no tree name; declared here as an address-derived global so the row links
 DisplayCriticalSection g_00DFE9E0;
 struct DisplayVideoConfig {
@@ -367,7 +365,7 @@ word124(0),
  f128(0),f12c(0),f130(0),f134(0),word138(0),word13c(0),flag140(true),flag141(false)
 {
  m_sD0.clear();
- QueryPerformanceFrequency(&g_00DFE9E0);
+ QueryPerformanceFrequency(&g_00DFE9E0.frequency);
  ((W3DDisplay*)this)->rva0025D2F6();
  word124=0;word138=0;f128=0;f12c=0;f130=0;f134=0;
 }

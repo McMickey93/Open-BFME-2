@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?InitFunctionPointers@MemoryPool@@YAXXZ @0x00030730 190B resolves the
 // MemoryPool exports from the running module into the engine's pointer slots.
 // Identity: WorldBuilder's own debug info names this body
@@ -6,8 +7,8 @@
 // 0x6FD840, 492B debug body, 13 export-string matches; the debug asserts
 // compile away under NDEBUG, leaving this 190B extent).
 // Evidence: leaf lane caller at 0x0002FFA0; memory_pool.cpp names retail MemoryPool and 0x00030730 resolver; 13 GetProcAddress stores into 0x00DE03E0..0x00DE0410 with gameMemAllocatePtr 0x00DE0404 gameMemFreePtr 0x00DE03FC g_Va00DE03E8 0x00DE03E8 rowed
-extern "C" __declspec(dllimport) void *__stdcall GetModuleHandleA(const char *name);
-extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(void *hMod, const char *name);
+#include <windows.h>
+
 typedef void (__cdecl *GameFreeFunction)(void *, int);
 typedef void *(__cdecl *GameAllocateFunction)(unsigned int, int, const void *);
 extern "C" GameFreeFunction __gameMemFreePtr;
@@ -28,19 +29,19 @@ namespace MemoryPool
 {
 void InitFunctionPointers()
 {
-	void *hMod = GetModuleHandleA(0);
-	g_00DE0410 = GetProcAddress(hMod, "?_Init@MemoryPool@@YAXXZ");
-	g_00DE040C = GetProcAddress(hMod, "?_Exit@MemoryPool@@YAXXZ");
-	g_00DE0408 = GetProcAddress(hMod, "?_DumpFragmentation@MemoryPool@@YAXPAU_iobuf@@_NPBD@Z");
+	HMODULE hMod = GetModuleHandleA(0);
+	g_00DE0410 = (void *)GetProcAddress(hMod, "?_Init@MemoryPool@@YAXXZ");
+	g_00DE040C = (void *)GetProcAddress(hMod, "?_Exit@MemoryPool@@YAXXZ");
+	g_00DE0408 = (void *)GetProcAddress(hMod, "?_DumpFragmentation@MemoryPool@@YAXPAU_iobuf@@_NPBD@Z");
 	__gameMemAllocatePtr = (GameAllocateFunction)GetProcAddress(hMod, "?_Allocate@MemoryPool@@YAPAXIW4AllocType@1@I@Z");
-	g_00DE0400 = GetProcAddress(hMod, "?_Reallocate@MemoryPool@@YAPAXPAXIW4AllocType@1@I@Z");
+	g_00DE0400 = (void *)GetProcAddress(hMod, "?_Reallocate@MemoryPool@@YAPAXPAXIW4AllocType@1@I@Z");
 	__gameMemFreePtr = (GameFreeFunction)GetProcAddress(hMod, "?_Free@MemoryPool@@YAXPAXW4AllocType@1@@Z");
-	g_00DE03F8 = GetProcAddress(hMod, "?_IsValidBlock@MemoryPool@@YA_NPAXI@Z");
-	g_00DE03F4 = GetProcAddress(hMod, "?_GetBlockSize@MemoryPool@@YAIPAXI@Z");
-	g_00DE03F0 = GetProcAddress(hMod, "?_GetBlockHeap@MemoryPool@@YAIPAX@Z");
-	g_00DE03EC = GetProcAddress(hMod, "?_VerifyIntegrity@MemoryPool@@YAXXZ");
+	g_00DE03F8 = (void *)GetProcAddress(hMod, "?_IsValidBlock@MemoryPool@@YA_NPAXI@Z");
+	g_00DE03F4 = (void *)GetProcAddress(hMod, "?_GetBlockSize@MemoryPool@@YAIPAXI@Z");
+	g_00DE03F0 = (void *)GetProcAddress(hMod, "?_GetBlockHeap@MemoryPool@@YAIPAX@Z");
+	g_00DE03EC = (void *)GetProcAddress(hMod, "?_VerifyIntegrity@MemoryPool@@YAXXZ");
 	g_Va00DE03E8 = (void (__cdecl *)(unsigned int, unsigned int))GetProcAddress(hMod, "?_AddHeap@MemoryPool@@YAXII@Z");
-	g_00DE03E4 = GetProcAddress(hMod, "?_GetHeapAllocator@MemoryPool@@YAPAVGeneralAllocator@Allocator@EA@@I@Z");
-	g_00DE03E0 = GetProcAddress(hMod, "?_GetHeapAllocatorByIndex@MemoryPool@@YAPAVGeneralAllocator@Allocator@EA@@I@Z");
+	g_00DE03E4 = (void *)GetProcAddress(hMod, "?_GetHeapAllocator@MemoryPool@@YAPAVGeneralAllocator@Allocator@EA@@I@Z");
+	g_00DE03E0 = (void *)GetProcAddress(hMod, "?_GetHeapAllocatorByIndex@MemoryPool@@YAPAVGeneralAllocator@Allocator@EA@@I@Z");
 }
 }

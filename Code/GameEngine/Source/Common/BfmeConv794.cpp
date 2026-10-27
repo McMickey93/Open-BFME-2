@@ -1,3 +1,4 @@
+// platformsdk
 // A sub-object call followed by its drop (trimmed from a five-body donor;
 // the other three are declared-only here).
 //
@@ -5,6 +6,9 @@
 // below reaches oleaut32!SysFreeString for the BSTR handle (the donor's
 // bfmeCloseDXK import name) and the ledger's ??_V array-delete helper for
 // the payload (the donor's bfmeFreeDXK).
+
+#include <windows.h>
+#include <new>
 
 class BfmeSubDXH
 {
@@ -45,12 +49,9 @@ struct BfmeThingDXK
 {
 	void bfmeGoDXKa();
 	void bfmeGoDXKb();
-	void *m_bfmeH;
+	BSTR m_bfmeH;
 	void *m_bfmeP;
 };
-
-extern "C" __declspec(dllimport) void __stdcall SysFreeString(void *value);
-void __cdecl operator delete[](void *p);
 
 // ?bfmeGoDXKa@BfmeThingDXK@@QAEXXZ
 //
@@ -66,4 +67,3 @@ void BfmeThingDXK::bfmeGoDXKa()
 	if (p)
 		::operator delete[](p);
 }
-

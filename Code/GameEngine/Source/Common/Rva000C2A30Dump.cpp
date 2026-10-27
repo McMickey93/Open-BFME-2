@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // Bodies ported from Open-BFME-1's
 // GameEngine/Source/Common/Rva000C2A30Dump.cpp (donor revision
@@ -12,9 +13,8 @@
 // vector at +8 into a stack buffer with "%s %s\n" and hands the buffer to the
 // imported reporting call. Nothing names the owner, so it is address-derived.
 
-extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA( void *text );
-
-extern "C" __declspec(dllimport) int __cdecl sprintf( char *, const char *, ... );
+#include <windows.h>
+#include <stdio.h>
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/AsciiString.h
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"

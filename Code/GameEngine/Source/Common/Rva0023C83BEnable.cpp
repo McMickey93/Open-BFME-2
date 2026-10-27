@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // ?rva0023C83B@Rva0023C83B@@QAEPAV1@XZ @0x0023C83B, 35B.
 // Window close enabler returning this: GetSystemMenu on 0x00DDE024 then
@@ -10,10 +11,9 @@
 // ?Rva0023C85EDisable@@YAXXZ at 0x0023C85E (flags 0 vs 1). Imports are IAT
 // so dllimport. Owner unproven so Rva class returning own pointer.
 
-extern void *ApplicationHWnd;
+#include <windows.h>
 
-extern "C" __declspec(dllimport) void *__stdcall GetSystemMenu(void *wnd, int revert);
-extern "C" __declspec(dllimport) int __stdcall EnableMenuItem(void *menu, unsigned id, unsigned flags);
+extern void *ApplicationHWnd;
 
 class Rva0023C83B
 {
@@ -23,7 +23,7 @@ public:
 
 Rva0023C83B *Rva0023C83B::rva0023C83B()
 {
-	void *menu = GetSystemMenu(ApplicationHWnd, 0);
+	HMENU menu = GetSystemMenu((HWND)ApplicationHWnd, 0);
 	EnableMenuItem(menu, 0xF060, 1);
 	return this;
 }
