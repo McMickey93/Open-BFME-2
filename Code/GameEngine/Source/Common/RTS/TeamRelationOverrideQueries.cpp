@@ -30,6 +30,10 @@ enum Relationship
 
 typedef std::hash_map<int, Relationship, std::hash<int>, std::equal_to<int> > TeamRelationMapType;
 
+class TeamRelationMap;
+class PlayerRelationMap;
+
+// Both relation maps are read through this one view.
 struct RetailTeamRelationMap
 {
 	void *m_vtbl;
@@ -43,16 +47,18 @@ public:
 	bool rva003A10DF(int id) const;
 private:
 	char m_pad00[0x118];
-	RetailTeamRelationMap *m_teamRelations;		// +0x118
-	RetailTeamRelationMap *m_playerRelations;	// +0x11C
+	TeamRelationMap *m_teamRelations;		// +0x118
+	PlayerRelationMap *m_playerRelations;	// +0x11C
 };
 
 bool Team::rva003A10C0(int id) const
 {
-	return m_teamRelations->m_map.find(id) != m_teamRelations->m_map.end();
+	RetailTeamRelationMap *map = (RetailTeamRelationMap *)m_teamRelations;
+	return map->m_map.find(id) != map->m_map.end();
 }
 
 bool Team::rva003A10DF(int id) const
 {
-	return m_playerRelations->m_map.find(id) != m_playerRelations->m_map.end();
+	RetailTeamRelationMap *map = (RetailTeamRelationMap *)m_playerRelations;
+	return map->m_map.find(id) != map->m_map.end();
 }

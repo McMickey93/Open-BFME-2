@@ -367,6 +367,7 @@ struct Rva0039EA4ENode
     Rva0039EA4ENode *m_left08;
     Rva0039EA4ENode *m_right0C;
     Rva0039D8FBKey m_key10;
+    TeamPrototype *m_value18;
 };
 
 struct Rva0039F5C8Iterator
@@ -381,7 +382,6 @@ public:
     Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
     Rva0039F5C8Iterator rva0039F5C8(const Rva0039D8FBKey &key);
 
-private:
     Rva0039EA4ENode *m_header00;
 };
 

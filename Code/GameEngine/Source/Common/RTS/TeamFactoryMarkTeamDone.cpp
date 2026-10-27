@@ -32,6 +32,9 @@ struct Rva0039D8FBKey
 	int m_second;
 };
 
+class TeamPrototype;
+
+// The prototype read through its name and the +0x31E byte only.
 struct TeamPrototypeDoneView
 {
 	unsigned char m_pad000[0x14];
@@ -47,7 +50,7 @@ struct Rva0039EA4ENode
 	Rva0039EA4ENode *m_left08;
 	Rva0039EA4ENode *m_right0C;
 	Rva0039D8FBKey m_key10;
-	TeamPrototypeDoneView *m_value18;
+	TeamPrototype *m_value18;
 };
 
 class Rva0039EA4E
@@ -99,5 +102,5 @@ void TeamFactory::markTeamDoneForTacticalAI(Team *team)
 	key.m_second = teamKey;
 	Rva0039EA4ENode *it = m_prototypes.rva0039EA4E(key);
 	if (it != m_prototypes.m_header00)
-		it->m_value18->m_tacticalAIFlag31E = false;
+		((TeamPrototypeDoneView *)it->m_value18)->m_tacticalAIFlag31E = false;
 }
