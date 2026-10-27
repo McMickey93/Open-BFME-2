@@ -1703,7 +1703,6 @@ alternatename	Code/GameEngine/Source/Common/AptUpgradeIconSetter.cpp	??1ArmyMemb
 alternatename	Code/GameEngine/Source/Common/AptUpgradeIconSetter_ArmyUnitIconMovieClip.cpp	??1ArmyMemberIconMovieClip@StrategicHUD@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/AtlSimpleArrayHInstanceAdd.cpp	?realloc@@YAPAXPAXI@Z	1
 alternatename	Code/GameEngine/Source/Common/Bfme/BfmeChainRecord.cpp	??0BfmeRecEQR@@QAE@PAX0PAPAV0@@Z	1
-alternatename	Code/GameEngine/Source/Common/Bfme/Rva003A6360CopyCtor.cpp	?R2Data010EC760@@3HA	1
 alternatename	Code/GameEngine/Source/Common/Bfme/Rva00477DF0OrderPairs.cpp	?orderPairs@GameWindow@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Bfme/Rva004E5CB0Delete.cpp	??RRva004E5CB0Deleter@@QBEXPAVRva004E5A78@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Bfme/T_009F4FB0.cpp	?Rva006276E0@ShroudManager@@QAEXPBURegion3D@@@Z	1
@@ -3507,6 +3506,7 @@ alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.c
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot2@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot3@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot4@XferSave@@UAEXXZ	1
+alternatename	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp	?R2Data010EC760@@3HA	1
 alternatename	Code/GameEngine/Source/GameNetwork/BFMEDisconnectManager_voterEligibility.cpp	?_bfme_slotIsLocalOrLive@ConnectionManager@@QAE_NH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgCtor.cpp	??1BfmeMsg803A00@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgCtor.cpp	??1BfmeMsg803B60@@QAE@XZ	1
@@ -13049,7 +13049,6 @@ present_unmatched	Code/GameEngine/Source/Common/Rva0033D142Permuted.cpp	allocato
 present_unmatched	Code/GameEngine/Source/Common/Rva00359D42.cpp	TheGameLogic@@3PAVGameLogic@@A	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0035A18DVectorDeletingDtor.cpp	Rva0035A18DDeleteArray@@YAXPAVRva0035A18D@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00381F04Assign.cpp	1Rva00381F04@@UAE@XZ	1
-present_unmatched	Code/GameEngine/Source/Common/Rva003A6F70Ctor.cpp	dummy@Rva003A6F70@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva004075E0.cpp	0Rva004075E0Iter@@QAE@PAURva004075E0Node@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/Rva004075E0.cpp	0Rva004075E0Pair@@QAE@PAURva004075E0Node@@_N@Z	1
 present_unmatched	Code/GameEngine/Source/Common/Rva004075E0.cpp	0Rva004075E0Pair@@QAE@URva004075E0Iter@@_N@Z	1
@@ -14647,6 +14646,7 @@ present_unmatched	Code/GameEngine/Source/GameLogic/System/ArmySummaryCopyBFME2.c
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9AllocationLifetime::~Rva00288BF9AllocationLifetime	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9Record::destroy	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9Record::~Rva00288BF9Record	1
+present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp	dummy@Rva003A6F70@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldLogic.cpp	LivingWorldLogic::rva002B4B83	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegion.cpp	LivingWorldRegion::rva003F0588	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegion.cpp	LivingWorldRegion::rva003F1053	1
