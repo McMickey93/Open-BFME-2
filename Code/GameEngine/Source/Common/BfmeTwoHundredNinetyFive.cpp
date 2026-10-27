@@ -1,6 +1,6 @@
 // cl: /Od
 
-extern "C" void *__cdecl memcpy(void *to, const void *from, unsigned int many);
+#include <string.h>
 #pragma intrinsic(memcpy)
 
 class BfmeThingQK

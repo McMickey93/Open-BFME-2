@@ -25,7 +25,7 @@ public:
 	static void parseDurationUnsignedInt(INI *ini, void *instance, void *store, const void *userData);
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 // Name order from the retail .data array at VA 0x00DBFFF0 (RVA 0x009BFFF0).
 static const char damageTypeName00[] = "SWORD_SLASH";

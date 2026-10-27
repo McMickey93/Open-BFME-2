@@ -1,6 +1,6 @@
 // cl: /Od
 
-extern "C" void *memset(void *d, int c, unsigned n);
+#include <string.h>
 #pragma intrinsic(memset)
 
 void bfmeBigFreePM(void *p);
