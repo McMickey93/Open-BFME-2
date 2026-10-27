@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /EHsc /arch:SSE /G7
+// platformsdk
 // ?drawImage@W3DDisplay@@UAEXPAVImage@@MMMMH@Z @ 0x00044E77 (322B)
 // W3DDisplay::drawImage ported from the BFME1 donor
 // game/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayDrawImage.cpp
@@ -9,6 +10,8 @@
 // else beginImageDraw/drawImageCore/endImageDraw at retail slots 53/63/64.
 // Evidence: VTABLE slot 65 of 0x007C3C80; rowed 006e helpers 0x0011E050 and
 // 0x0011DCA0; IsRectEmpty import; donor body.
+#include <windows.h>
+
 typedef int Int;
 typedef float Real;
 
@@ -19,8 +22,6 @@ struct BfmeRect
 	long right;
 	long bottom;
 };
-
-extern "C" __declspec(dllimport) Int __stdcall IsRectEmpty(const BfmeRect *rect);
 
 class SurfaceResource;
 
@@ -110,11 +111,11 @@ void W3DDisplay::drawImage(Image *image, Real x0, Real y0, Real x1, Real y1, Int
 	{
 		W3DRadarResetSurface source = image->getSurface();
 		W3DRadarResetSurface destination = getBackBufferSurface006e(0);
-		BfmeRect sourceRect = { 0, 0, image->width, image->height };
-		BfmeRect destinationRect = { (long)x0, (long)y0, (long)x1, (long)y1 };
+		RECT sourceRect = { 0, 0, image->width, image->height };
+		RECT destinationRect = { (long)x0, (long)y0, (long)x1, (long)y1 };
 
 		if (!IsRectEmpty(&sourceRect) && !IsRectEmpty(&destinationRect))
-			copySurfaceRects006e(source, &sourceRect, destination, &destinationRect, 2);
+			copySurfaceRects006e(source, (const BfmeRect *)&sourceRect, destination, (const BfmeRect *)&destinationRect, 2);
 	}
 	else
 	{

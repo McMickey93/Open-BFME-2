@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /MD /EHsc /DNDEBUG /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc /Ireference/shims/stlp_nodealloc
+// platformsdk
 // stlport
 // Native constructor73F708 starts callback73F6FC with this same16B owner.
 // Its holder4 and event8 establish stop handleC; retain the existing owner name.
@@ -10,7 +11,7 @@
 // the worker and RET4. Existing AsyncServiceQueue enqueue/removal sources
 // prove the 12B owning record and queue fields; native verifies mutex20.
 #include <list>
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForMultipleObjects(unsigned long,void *const*,int,unsigned long);
+#include <windows.h>
 class OpaqueRefCounted {public:void Release_Ref();};
 class Rva0036CA00Str {public:void *m_item;Rva0036CA00Str():m_item(0){}Rva0036CA00Str(const Rva0036CA00Str&);~Rva0036CA00Str(){if(m_item)((OpaqueRefCounted*)m_item)->Release_Ref();}};
 struct TargetNestedHandleData {char pad[12];unsigned count;};
@@ -27,16 +28,16 @@ template<> __declspec(noinline) void WorkList::splice(iterator position,list&,it
 }
 }
 class MilesMutexGuard {public:MilesMutexGuard(void*,int);~MilesMutexGuard();void *mutex;bool held;};
-class Rva0040F9D {public:bool set();bool reset();char pad[4];void *handle;};
+class Rva0040F9D {public:bool set();bool reset();char pad[4];HANDLE handle;};
 class WorkOperation {public:virtual void slot0();virtual void run();};
 struct AsyncQueueWorkerOwner {int active,count;WorkList queued;char mutexC[8];Rva0040F9D available;WorkList secondary;char mutex20[8];Rva0040F9D drained;};
 class Rva0073F708 {
-public:AsyncQueueWorkerOwner *owner;char pad4[8];void *stopHandle;unsigned run();
+public:AsyncQueueWorkerOwner *owner;char pad4[8];HANDLE stopHandle;unsigned run();
 };
 unsigned Rva0073F708::run(){
  for(;;){
-  void *handles[2]={stopHandle,owner->available.handle};
-  unsigned long waitResult=WaitForMultipleObjects(2,handles,0,0xffffffff);
+  HANDLE handles[2]={stopHandle,owner->available.handle};
+  DWORD waitResult=WaitForMultipleObjects(2,handles,0,0xffffffff);
   if(waitResult==0)return 0;
   WorkList pending;
   {

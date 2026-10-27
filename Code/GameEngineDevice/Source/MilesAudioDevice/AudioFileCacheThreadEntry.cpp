@@ -1,4 +1,5 @@
 // cl: /O1 /MD /EHsc /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS
+// platformsdk
 // stlport
 // AudioFileCacheThreadEntry @0x000A8525 12B: the Windows thread callback the AudioFileCache constructor (0x000A8531)
 // hands to CreateThread. It loads the cache argument into ECX, runs the rowed worker 0x000A8437 (AudioFileCacheLoader.cpp)
@@ -12,6 +13,9 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 #define _STLP_BFME_LOWER_BOUND_EXTERN  // call retail's one __lower_bound<const size_t*> (vendor/stlport/stl/_hashtable.c)
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #include <hash_map>
 // map<unsigned> internals otherwise instantiate the less<unsigned>::operator()
 // COMDAT (one byte shape per TU flags); an explicit specialization declaration
@@ -87,8 +91,6 @@ private: Gen0002857E *m_target;
 };
 class Rva000427195 { public: void *rva000A7B3C(const AsciiString *key); };
 
-extern "C" __declspec(dllimport) void *__stdcall CreateThread(void *, unsigned long, unsigned long (__stdcall *)(void *), void *, unsigned long, unsigned long *);
-
 class AudioFileCache : public _STL::hash_map<int, Rva000A7E7AElement>
 {
 public:
@@ -100,13 +102,13 @@ private:
 	_STL::set<AsciiString> m_failed;
 	unsigned int m_activeBytes, m_unusedBytes, m_budget;
 	AudioFileContainer m_bad;
-	void *m_thread;
+	HANDLE m_thread;
 	bool m_quit;
 	void *m_mutex;
 };
 typedef char CacheSize[sizeof(AudioFileCache) == 0x54 ? 1 : -1];
 
-unsigned long __stdcall AudioFileCacheThreadEntry(void *cache)
+DWORD __stdcall AudioFileCacheThreadEntry(void *cache)
 {
 	return ((AudioFileCache *)cache)->rva000A8437();
 }

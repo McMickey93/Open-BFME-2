@@ -1,4 +1,5 @@
 // cl: /Od /GZ /GS /MD /DNDEBUG /Gy
+// platformsdk
 // Open-BFME: DirtySock control-record helper at retail RVA 0x0081A740 (176B).
 
 /* The object prefix is the independently recovered Rva0081BD40Comm layout
@@ -6,6 +7,8 @@
  * pending control value at +0xD0, but retaining the proven prefix keeps the
  * receiver type and offset explicit without changing a shared source/header.
  */
+#include <windows.h>
+
 struct Rva0081BD40Comm
 {
 	unsigned char m_head[ 0x38 ];
@@ -28,7 +31,6 @@ struct Rva0081AA20SendRecord
 	unsigned char m_data[ 4 ];
 };
 
-extern "C" __declspec( dllimport ) unsigned int __stdcall GetTickCount( void );
 extern "C" int Rva0081A3B0( struct Rva0081BD40Comm *comm,
 	struct Rva0081AA20SendRecord *record );
 

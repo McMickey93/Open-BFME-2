@@ -3,7 +3,7 @@
 // Shared ABI is recorded in class_contracts/_com_error.json; source uses
 // canonical SDK declarations, not Microsoft implementation source.
 #include "ComError.h"
-void __cdecl operator delete(void*);
+#include <new>
 _com_error::_com_error(long value,IErrorInfo *error,bool addRef)
  :result(value),info(error),message(0)
 {

@@ -12,8 +12,8 @@
 typedef unsigned short wchar_t;
 #include "string_base.h"
 #define _DLL
-typedef unsigned short WideChar;
-extern "C" __declspec(dllimport) unsigned short __cdecl towlower(unsigned short);
+#include <ctype.h>
+typedef wchar_t WideChar;
 class WideCharCompare {char unused;public:int compareNoCase(const unsigned short*,const unsigned short*,int)const;};
 static __forceinline int compareRangeNoCase(const unsigned short*a,int alen,const unsigned short*b,int blen,WideCharCompare tag){int len=alen<blen?alen:blen;int result=tag.compareNoCase(a,b,len);if(result!=0)return result;return alen-blen;}
 inline int WideCharCompare::compareNoCase(const wchar_t *a, const wchar_t *b, int len) const

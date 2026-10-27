@@ -4,6 +4,8 @@
 // atexit callback (pushed at 0x007B676A) releases the EAStringC at VA
 // 0x00E177D4 through the independently matched destructor 0x006D3010.
 // The one-pointer value layout is shared with EAStringCRefCount.cpp.
+#include <stdlib.h>
+
 class EAStringC
 {
     class StringDataC;
@@ -37,8 +39,6 @@ void rva007B9C40()
 {
     (*reinterpret_cast<EAStringC *>(&g_eaStringAtE18060Storage)).EAStringC::~EAStringC();
 }
-
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 
 // Complete 22B initializer at 0x007B6760. The known reset stores the empty
 // singleton and increments its refcount, then CRT owns the cleanup callback.

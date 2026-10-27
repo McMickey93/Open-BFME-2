@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // ?Reset_D3D_Device@@YAX_N@Z, retail 0x0004312A, 278 bytes.
 // Ported from Open-BFME-1
 // (Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayResetD3DDevice.cpp,
@@ -10,6 +11,8 @@
 // restore_assets passed explicitly (8-arg Set call, add esp,0x20).
 // Human-readable names; the Win9x texture worker (0x1171B0) keeps an opaque
 // address-derived pin (target proven by REL32, semantic identity unproven).
+
+#include <windows.h>
 
 void __cdecl BFME_DX8_Thread_Lock(void);
 bool __cdecl BFME_DX8_Thread_Assert(void);
@@ -83,22 +86,6 @@ private:
 	static bool IsInitted;
 };
 
-// GetVersionExA: KERNEL32 import, same idiom as the neighbouring
-// W3DDisplayClipCursor.cpp (no manual IAT pin needed for a standard import).
-struct BfmeOsVersionInfo
-{
-	unsigned long dwOSVersionInfoSize;
-	unsigned long dwMajorVersion;
-	unsigned long dwMinorVersion;
-	unsigned long dwBuildNumber;
-	unsigned long dwPlatformId;
-	char szCSDVersion[128];
-};
-
-#define BFME_VER_PLATFORM_WIN32_WINDOWS 1
-
-extern "C" __declspec(dllimport) int __stdcall GetVersionExA(BfmeOsVersionInfo *lpVersionInformation);
-
 // ?Reset_D3D_Device@@YAX_N@Z
 void Reset_D3D_Device(bool active)
 {
@@ -111,13 +98,13 @@ void Reset_D3D_Device(bool active)
 			// switch back to desired mode when user alt-tabs back into game
 			if (WW3D_ERROR_OK != WW3D::Set_Render_Device(WW3D::Get_Render_Device(), TheDisplay->getWidth(), TheDisplay->getHeight(), TheDisplay->getBitDepth(), TheDisplay->getWindowed(), true, true, true))
 			{
-				BfmeOsVersionInfo osvi;
-				osvi.dwOSVersionInfoSize = sizeof(BfmeOsVersionInfo);
+				OSVERSIONINFOA osvi;
+				osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
 				if (GetVersionExA(&osvi))
 				{
 					// check if we're running Win9x variant since they have buggy alt-tab
 					// that requires reloading all textures.
-					if (osvi.dwPlatformId == BFME_VER_PLATFORM_WIN32_WINDOWS)
+					if (osvi.dwPlatformId == VER_PLATFORM_WIN32_WINDOWS)
 					{
 						Rva001171B0();
 					}

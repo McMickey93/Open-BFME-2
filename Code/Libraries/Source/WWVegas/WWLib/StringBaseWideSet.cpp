@@ -12,9 +12,9 @@
 // thunk, 2-arg set 0x371E0, releaseBuffer 0x36E70 (private spelling).
 // Shape mirrors the landed StringBaseWideTrim TU in this folder.
 
-extern "C" __declspec(dllimport) unsigned int __cdecl wcslen(const unsigned short *s);
+#include <string.h>
 
-typedef unsigned short WideChar;
+typedef wchar_t WideChar;
 
 template <typename T>
 class StringBase

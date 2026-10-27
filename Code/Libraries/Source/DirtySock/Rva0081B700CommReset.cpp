@@ -1,4 +1,5 @@
 // cl: /Od /GZ /GS /MD /DNDEBUG
+// platformsdk
 // Open-BFME: DirtySock comm-ring reset at retail RVA 0x0081B700 (134 bytes).
 
 /*
@@ -7,6 +8,8 @@
  * Y4CommSequencedRing.c proves the ring fields and their offsets; this TU keeps
  * the reset view local so no shared header or already-landed source changes.
  */
+#include <windows.h>
+
 struct Rva0081BD40Comm
 {
 	unsigned char m_head[ 0x38 ];
@@ -29,10 +32,8 @@ struct Rva0081BD40Comm
 	unsigned char *m_sendBuffer;         /* +0x100 */
 	unsigned int m_sendSequence;         /* +0x104 */
 	unsigned char m_unmodeledTail[ 0x1810 ]; /* +0x108..+0x1917 */
-	unsigned int m_backdatedClock;       /* +0x1918 */
+	DWORD m_backdatedClock;       /* +0x1918 */
 };
-
-extern "C" __declspec( dllimport ) unsigned int __stdcall GetTickCount( void );
 
 /* The retail caller and callee are cdecl: the caller removes this pointer. */
 extern "C" void __cdecl Rva0081B700( struct Rva0081BD40Comm *comm )

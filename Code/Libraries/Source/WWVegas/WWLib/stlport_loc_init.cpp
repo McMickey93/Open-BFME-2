@@ -26,6 +26,8 @@
 // Nothing but the addresses is evidenced; the byte match would hold under any
 // name, so the names are labelled as inferred in symbols.csv too.
 
+#include <stdlib.h>
+
 namespace _STL
 {
 
@@ -163,8 +165,6 @@ void dup_007b68a0()
         --_STL::ios_base::_Loc_init::_S_count;
     }
 }
-
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 
 // Whole BFME1 Rva00C6D830Init.cpp at 6583b3c1ff21db4a561285717028fdafc780b7db
 // supplies the two-call startup lead. Native 007AB870/40 is INT3 delimited

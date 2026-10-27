@@ -1,4 +1,5 @@
 // cl: /MD /DNDEBUG
+// platformsdk
 // ?? method at retail 0x001543E0 (14 B).
 // Register-variant sibling of the rowed ?_Atomic_swap@_STL@@YAJPCJJ@Z
 // 0x00006EF0 (17 B): both are two-operand wrapper calls whose only operand is
@@ -10,18 +11,18 @@
 // exactly the shape the template pushes its two values. Identity unproven (no
 // caller, no symbol), so it is outlined under an honest address-derived name.
 
-extern "C" __declspec(dllimport) void *__stdcall SelectObject(void *hdc, void *object);
+#include <windows.h>
 
 class Rva001543E0
 {
 public:
-	void *Apply();
+	HGDIOBJ Apply();
 private:
-	void *m_hdc;
-	void *m_object;
+	HDC m_hdc;
+	HGDIOBJ m_object;
 };
 
-void *Rva001543E0::Apply()
+HGDIOBJ Rva001543E0::Apply()
 {
 	return SelectObject(m_hdc, m_object);
 }

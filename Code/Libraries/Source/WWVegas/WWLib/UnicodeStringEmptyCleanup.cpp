@@ -5,6 +5,7 @@
 // the rowed UnicodeString destructor at 005B804E with the same object.
 // Keep the address in the helper name: retail's compiler-local name is unknown.
 #include "unicode_string.h"
+#include <stdlib.h>
 
 // Declaration-only ABI view keeps the retail out-of-line destructor call.
 class UnicodeStringCleanup
@@ -21,7 +22,6 @@ void rva007B9C10DestroyEmptyUnicodeString()
 
 // Native 007B6740..007B6756 constructs the same object, then registers
 // its cleanup with atexit. The constructor's folded address is 00326BE6.
-extern "C" int __cdecl atexit(void (__cdecl *function)());
 // AtexitThunk.cpp defines the recovered CRT body as __atexit in COFF.
 #pragma inline_depth(0)
 void rva007B6740InitializeEmptyUnicodeString()
