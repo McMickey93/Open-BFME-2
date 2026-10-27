@@ -3002,7 +3002,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x007DBBCC,68,.rdata,global,?m_gameWindowTransitionsFieldParseTable@GameWindowTransitionsHandler@@0QBUFieldParse@@B,,unowned,,0,1
 0x007DBC10,32,.rdata,vtable,??_7Rva001DBAA4@@6B@,,literal,,0,3
 0x007DBC30,384,.rdata,vtable,??_7GameWindowTransitionsHandler@@6B@,,literal,,0,2
-0x007DBDB0,96,.rdata,global,?myFieldParse@?1??parseWindow@GameWindowTransitionsHandler@@SAXPAVINI@@PAX1PBX@Z@4QBUFieldParse@@B,Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsParseWindow.cpp,owned,,1,1
+0x007DBDB0,96,.rdata,global,?myFieldParse@?1??parseWindow@GameWindowTransitionsHandler@@SAXPAVINI@@PAX1PBX@Z@4QBUFieldParse@@B,Code/GameEngine/Source/GameClient/GUI/GameWindowTransitions.cpp,owned,,1,1
 0x007DBE10,428,.rdata,global,?s_fieldParseTable@DrawGroupInfo@@2QBUFieldParse@@B,,unowned,,0,1
 0x007DBFBC,52,.rdata,string,??_C@_0BH@IIODEJDH@TheDrawGroupInfo?$DN?$DNNULL?$AA@,,literal,,0,1
 0x007DBFF0,88,.rdata,global,_TheEvaMessageNames,Code/GameEngine/Source/GameClient/EvaMessageName.cpp,owned,,1,1
