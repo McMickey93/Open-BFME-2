@@ -1,7 +1,10 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // Native global 0x00DFDC14 is TheTransitionHandler, defined in WinMain.
 // Canonical TheAudio uses 0x00DFE6E8.
 // ?rva001DC07E@GameWindowTransitionsHandler@@QAEXXZ @0x001DC07E 73B: wait loop on TheTransitionHandler->isFinished with WindowManager Display setFPMode Sleep. Evidence: caller at 0x001DC618; callees rowed isFinished 0x001DBFEE setFPMode plus pins.
+
+#include <windows.h>
 
 class GameWindowManager
 {
@@ -42,32 +45,16 @@ class GameWindowTransitionsHandler;
 extern GameWindowTransitionsHandler *TheTransitionHandler;
 extern Display *TheDisplay;
 void __cdecl setFPMode();
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long);
 
-struct CRITICAL_SECTION
-{
-	unsigned char m_data[0x1c];
-};
-
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(
-	CRITICAL_SECTION *lock);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(
-	CRITICAL_SECTION *lock);
-
+// The unwind funclet keeps an out-of-line ~CriticalSectionLock COMDAT; retail's
+// (0x0061FC60, mov eax,[ecx]; push eax) is the favor-speed shape.
 #pragma optimize("t", on)
 class CriticalSectionLock
 {
 public:
-	explicit CriticalSectionLock(int lock) : m_lock(lock)
-	{
-		EnterCriticalSection((CRITICAL_SECTION *)m_lock);
-	}
-	~CriticalSectionLock()
-	{
-		LeaveCriticalSection((CRITICAL_SECTION *)m_lock);
-	}
-
-	int m_lock;
+	CRITICAL_SECTION *m_cs;
+	CriticalSectionLock(CRITICAL_SECTION *cs) : m_cs(cs) { EnterCriticalSection(m_cs); }
+	~CriticalSectionLock() { LeaveCriticalSection(m_cs); }
 };
 #pragma optimize("", on)
 
@@ -79,8 +66,8 @@ public:
 	void rva001DC5EC();
 private:
 	unsigned char m_pad00[0x38];
-	CRITICAL_SECTION m_cs;
-	unsigned char m_pad54[0x10];
+	CRITICAL_SECTION m_lock;
+	unsigned char m_pad50[0x14];
 	unsigned long m_64;
 	unsigned char m_68;
 };
@@ -100,7 +87,7 @@ void GameWindowTransitionsHandler::rva001DC07E()
 // ?rva001DC5EC@GameWindowTransitionsHandler@@QAEXXZ @0x001DC5EC 74B: guarded wait-loop call under lock at +0x38 with reentrancy flag at +0x68. Evidence: same this as callee 0x001DC07E; lock offset matches neighbour 0x001DC57C.
 void GameWindowTransitionsHandler::rva001DC5EC()
 {
-	CriticalSectionLock lock((int)&m_cs);
+	CriticalSectionLock lock(&m_lock);
 	if (m_68 == 0) {
 		m_68 = 1;
 		rva001DC07E();

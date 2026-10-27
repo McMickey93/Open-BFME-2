@@ -77,7 +77,7 @@ private:
 	Rva001DBDA4 *m_2C;
 	Rva001DBDA4 *m_30;
 	char m_pad34[0x4];
-	CRITICAL_SECTION m_38;
+	CRITICAL_SECTION m_lock;
 	char m_pad50;
 	bool m_unk51;
 	char m_pad52[0x17];
@@ -86,13 +86,13 @@ private:
 
 bool GameWindowTransitionsHandler::isFinished()
 {
-	EnterCriticalSection(&m_38);
+	EnterCriticalSection(&m_lock);
 	bool b;
 	if (m_24)
 		b = m_24->rva001DBD83();
 	else
 		b = true;
-	LeaveCriticalSection(&m_38);
+	LeaveCriticalSection(&m_lock);
 	return b;
 }
 
@@ -148,7 +148,7 @@ void GameWindowTransitionsHandler::draw()
 // update phase order; BFME2 deltas are target facts (+4 shifts, lock +0x38, 0x70 vs 0x6D, +0x51/+0x69).
 void GameWindowTransitionsHandler::update()
 {
-	HandlerLock lock(&m_38);
+	HandlerLock lock(&m_lock);
 	if (m_2C != m_24)
 	{
 		if (m_30)
