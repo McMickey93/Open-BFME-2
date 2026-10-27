@@ -214,8 +214,6 @@ extern unsigned g_Va00E062FC;
 extern unsigned g_Va00E0630C;
 extern unsigned g_Va00E0631C;
 unsigned g_Va00E06360;	// retail RVA 0x00A06360 (.bss), defined here
-unsigned g_Va00E063B8;	// retail RVA 0x00A063B8 (.bss), defined here
-unsigned g_Va00E063C0;	// retail RVA 0x00A063C0 (.bss), defined here
 extern unsigned g_Va00E063D4;
 unsigned g_Va00E06458;	// retail RVA 0x00A06458 (.bss), defined here
 extern unsigned g_Va00E065EC;
@@ -622,20 +620,6 @@ void __cdecl rva007B94D2()
 {
 	Rva0057A4E7 *receiver = (Rva0057A4E7 *)&g_Va00E06360;
 	receiver->Rva0057A4E7::~Rva0057A4E7();
-}
-
-// ?rva007B957C@@YAXXZ @ 0x007B957C (10B): ecx=&g_Va00E063B8, tail-jump to rowed ?apply@Rva0005970E6DwordImmSetter@@QAEXXZ (0x005970E6)
-void __cdecl rva007B957C()
-{
-	Rva0005970E6DwordImmSetter *receiver = (Rva0005970E6DwordImmSetter *)&g_Va00E063B8;
-	receiver->apply();
-}
-
-// ?rva007B9586@@YAXXZ @ 0x007B9586 (10B): ecx=&g_Va00E063C0, tail-jump to rowed ?apply@Rva0005970E6DwordImmSetter@@QAEXXZ (0x005970E6)
-void __cdecl rva007B9586()
-{
-	Rva0005970E6DwordImmSetter *receiver = (Rva0005970E6DwordImmSetter *)&g_Va00E063C0;
-	receiver->apply();
 }
 
 // ?rva007B95A4@@YAXXZ @ 0x007B95A4 (10B): ecx=&g_Va00E063D4, tail-jump to rowed ??1AsciiString@@QAE@XZ (0x0048BA39)
