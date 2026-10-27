@@ -32,7 +32,7 @@ jobs:
       github.repository == 'McMickey93/Open-BFME-2' &&
       github.event.repository.fork == true &&
       github.event.repository.private == false &&
-      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification-v3' &&
+      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification-v4' &&
       github.event.ref_type == 'branch'
     permissions:
       contents: read
@@ -104,10 +104,10 @@ jobs:
       github.repository == 'McMickey93/Open-BFME-2' &&
       github.event.repository.fork == true &&
       github.event.repository.private == false &&
-      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification-v3' &&
+      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification-v4' &&
       github.event.ref_type == 'branch'
     # This job imports and transfers the exact objects. It executes only the
-    # immutable control code and official-base hooks, never artifact code.
+    # immutable controls and unchanged ordinary official hooks from outgoing HEAD.
     permissions:
       contents: write
       actions: read

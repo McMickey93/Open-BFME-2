@@ -233,6 +233,7 @@ def progress(base):
     return {"base": base, "head": head, "cpp_exact_before": before, "cpp_exact_after": after, "cpp_exact_delta": 0}
 
 def qualified(bash):
+    os.environ["BFME_CLAIM_NS"] = DATA["claim_namespace"]
     os.environ["BFME_CLAIM_OWNER"] = DATA["claim"]["owner"]
     os.environ["BFME_MODEL"] = "OpenAI-Codex"
     sys.path.insert(0, str(SOURCE / "tools"))
@@ -373,8 +374,9 @@ def transfer(bash):
                                  LOCAL_REF, quiet=True).decode().split("\0")))
     require(actual == {f["path"] for f in manifest["files"]}, "Unreviewed commit content")
     git("fast-forward-lineage", "merge-base", "--is-ancestor", manifest["base"], LOCAL_REF, quiet=True)
-    # Install hooks from the trusted official base, without checking out or
-    # executing artifact code. The real fork push also keeps its normal hook.
+    # Scope excludes tools and hooks. The ordinary hook requires outgoing HEAD.
+    git("checkout-qualified-commit", "switch", LOCAL_REF.removeprefix("refs/heads/"), quiet=True)
+    require(rev("HEAD") == manifest["commit"], "Wrong outgoing checkout")
     init_reference()
     run("transfer-requirements", [sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
                                   "-r", DATA["requirements"]], quiet=True)
