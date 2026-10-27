@@ -8,6 +8,7 @@
 // BF1 packing transition donor874e384 supplies subsystem context, target bytes
 // establish all offsets and calls here. Shared StringBase null char is crucial
 // for the reused empty-name address in the log. All568 bytes and EH exact.
+#include <stdio.h>
 #include <vector>
 #include "ascii_string.h"
 #include "GameLogicObjectLookupView.h"
@@ -26,7 +27,6 @@ extern GameLogic*TheGameLogic;
 // Existing data-ledger owner of the mutable FPS integer, RVA009BA4E8.
 extern int BfmeClientFramesPerSecond;
 extern "C" void*theLogicRandomLogFile;
-extern "C" int __cdecl fprintf(void*,const char*,...);
 enum UpdateSleepTime {UPDATE_SLEEP_NONE=1};
 class CastleObjectModule {public:virtual ~CastleObjectModule();CastleData*data;Object*object;};
 class CastleBehaviorInterface {public:virtual void behaviorSlot();};

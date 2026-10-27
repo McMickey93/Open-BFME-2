@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 //
 // ?processAck@Connection@@QAEPAVNetCommandRef@@GEII@Z @0x0058B9CA (177B):
 // Connection ack retire: walks the pending list at +0x18 via +4 links,
@@ -10,13 +11,13 @@
 // BFME1 donor Connection_processAck.cpp 3-arg processAck plus timestamp,
 // neighbours setQuitting/doRetryMetrics, sole callee rowed plus IAT
 // timeGetTime, caller 0x0058BD71 forwards +0x1C/+0x1E/+0x20/+0x24.
+#include <windows.h>
+
 typedef unsigned char UnsignedByte;
 typedef unsigned short UnsignedShort;
 typedef unsigned int UnsignedInt;
 typedef int Int;
 typedef float Real;
-
-extern "C" __declspec(dllimport) UnsignedInt __stdcall timeGetTime(void);
 
 extern const float g_00BC26EC;
 

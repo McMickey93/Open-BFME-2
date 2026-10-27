@@ -1,5 +1,6 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
-extern "C" __declspec(dllimport) unsigned int __stdcall timeGetTime(void);
+#include <windows.h>
 extern class View *TheTacticalView;
 class Rva0044325Holder
 {
@@ -15,7 +16,7 @@ class Rva0044325
 	float m_fadeLevel;
 	bool m_flag;
 	char m_pad2[3];
-	unsigned int m_time;
+	DWORD m_time;
 public:
 	bool rva000441F7();
 	void f();
@@ -62,4 +63,3 @@ void Rva0044325::rva00044360(bool enable)
 		}
 	}
 }
-

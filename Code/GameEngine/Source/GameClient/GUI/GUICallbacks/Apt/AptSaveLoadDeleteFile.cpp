@@ -1,11 +1,11 @@
 // cl: /Ireference/shims/bfme2_ascii /MD /EHsc
+// platformsdk
 // Retail 0x00434B8A, 179 bytes: the save/load screen's delete step. The selected list row's file name
 // (the item data of the active list, 0x00433F7F) is turned into a full path under the save directory
 // (0x002DC74A) except in mode 4 (replays), where it is already one, and the file is deleted; the screen
 // then goes to state 2. WorldBuilder 0x12AF750 gives the shape.
+#include <windows.h>
 #include "unicode_string.h"
-
-extern "C" __declspec(dllimport) int __stdcall DeleteFileW(const unsigned short *fileName);
 
 class Rva002DC74A
 {

@@ -1,10 +1,13 @@
 // cl: /Ob2 /DNDEBUG /MD
+// platformsdk
 /* GameSpy Peer SDK -- peerSB.c, 2007 callback reconstruction.
    The callback body follows the authentic nitrocaster/GameSpy source.  The
    declarations below are TU-local views of the 2004 retail layouts: the
    callback ABI is SBServerListInit's four-argument callback, while the
    listing operation is at piConnection+0x1790 and its callback fields are
    at offsets 0x0c, 0x10, and 0x18. */
+
+#include <windows.h>
 
 typedef enum
 {
@@ -78,8 +81,6 @@ void piAddListGroupRoomsCallback
 
 void piRemoveOperation(PEER peer, piOperation *operation);
 
-// Retail imports WSOCK32!htonl here (the x86 byte swap is also its inverse).
-unsigned int __stdcall htonl(unsigned int value);
 unsigned int SBServerGetPublicInetAddress(SBServer server);
 const char *SBServerGetStringValueA(SBServer server, const char *key, const char *defaultValue);
 int SBServerGetIntValueA(SBServer server, const char *key, int defaultValue);
@@ -102,6 +103,7 @@ void piSBGroupsListCallback
 	{
 	case slc_serveradded:
 		{
+		// Retail imports WSOCK32!htonl here (the x86 byte swap is also its inverse).
 		int groupID = (int)htonl(SBServerGetPublicInetAddress(server));
 		const char *name = SBServerGetStringValueA(server, "hostname", "(No Name)");
 		int numWaiting = SBServerGetIntValueA(server, "numwaiting", 0);

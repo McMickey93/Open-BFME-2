@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 // 0x000918BC..0x00091A25 (361B): stream vslot 19, independently identified
 // by VideoPlayerRva009111BOpen.cpp's call with path/video/alpha arguments.
 // The existing stream constructor proves parser +1C and frame pointers +14/+18.
@@ -7,6 +8,7 @@
 // All direct callees already have verified ledger bodies. This only performs
 // container-header scanning, frame allocation/configuration, and stream timing.
 // The empty AsciiString path resolves to retail's existing empty literal.
+#include <windows.h>
 #include "ascii_string.h"
 class Rva00090FE0 {public:int rva00090FE0(unsigned int);};
 class Rva007E4AD0Vp6Stream {public:void update();};
@@ -18,7 +20,6 @@ extern "C" int __cdecl VP6_StartDecoder(CodecState **,int,int);
 extern "C" void __cdecl VP6_SetPbParam(void*,unsigned,int);
 void Rva00090714Free(void**);
 void *Rva0009072BAlloc(int,int);
-extern "C" __declspec(dllimport) unsigned __stdcall timeGetTime();
 class Rva00106AC9 {public:bool rva00106AC9(const char*,int,bool);};
 class BfmeB996Range {public:bool rva001068D1(int,unsigned*,char*);void rva0010690D();bool rva0010694B(void**,int*,unsigned*);private:char data[16];};
 struct MovieHeader {int id;unsigned size;int unused;short width,height;int a,maxFrameSize,b;short c;};
@@ -74,7 +75,7 @@ int Rva007E3C20Vp6Stream::rva000911F6( int arg )
 	int targetFrame = ((Rva00090FE0 *)this)->rva00090FE0((unsigned int)arg);
 	if ( g_00DE4498 != 0 || nonBlocking != 0 || ( arg & 0x40 ) != 0 ) {
 		int m44 = c; int m40 = this->b;
-		unsigned int now = timeGetTime();
+		DWORD now = timeGetTime();
 		// Equal-valued divisor alternatives retain this compiler
 		// home for the saved flag; both use the same measured rate.
 		int diff = (int)now - (int)( ( (__int64)( m44 * 1000 ) * targetFrame ) / (nonBlocking ? m40 : m40) );

@@ -7,8 +7,8 @@
 // The constructor's existing int declaration is a one-word ABI view. Retail
 // passes the ADDRESS of an AsciiString temporary, not an integer identifier.
 
+#include <stdlib.h>
 #include "ascii_string.h"
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 
 class Rva005E16DA {
 public:

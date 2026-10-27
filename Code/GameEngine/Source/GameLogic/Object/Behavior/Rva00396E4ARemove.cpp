@@ -8,6 +8,7 @@
 // Evidence: ret 4 thiscall, test ebx null, [ebx+0x74] key, [ecx+0x8c] map,
 // callers unclaimed, callees all rowed. Scoped settings keep EBP; local
 // key copy reproduces retail mov/mov/lea.
+#include <stdio.h>
 #include <map>
 #include <set>
 #include "../../../Common/GameLogicObjectLookupView.h"
@@ -163,9 +164,8 @@ static __forceinline void subCoord(Coord3D &c, const Coord3D *pos) { c.x -= pos-
 static __forceinline void addCoord(Coord3D &c, const Coord3D *pos) { c.x += pos->x; c.y += pos->y; c.z += pos->z; }
 static __forceinline void scaleCoord(Coord3D &c, float s) { c.x *= s; c.y *= s; c.z *= s; }
 
-extern "C" int __cdecl fprintf(void *stream, const char *format, ...);
 extern bool g_bfmeCritterDesyncLog;
-extern "C" void *theLogicRandomLogFile;
+extern "C" FILE *theLogicRandomLogFile;
 extern GameLogic *TheGameLogic;
 
 class Rva00396E4A

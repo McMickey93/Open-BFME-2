@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /DNDEBUG /MD /EHsc
+// platformsdk
+#include <windows.h>
 #include <new>
 //
 // StrategicInGameUI::BattleResolver::Impl (WorldBuilder
@@ -157,7 +159,6 @@ void StrategicInGameUI::BattleResolver::Impl::StartUpStateHandler::Update()
 // Real MI generates native secondary-this owner-8/flag+8 accesses.
 // Code only is credited; existing providers reused, no pins/hatches.
 class Rva005D073A{public:Rva005D073A(void*);virtual ~Rva005D073A();char fields[8];};
-extern "C" __declspec(dllimport) unsigned __stdcall timeGetTime();
 class LivingWorldLogic;extern LivingWorldLogic*TheLivingWorldLogic;
 class Rva002BA8F1Logic{public:int rva002B5256(bool);};
 class GameInfo;extern GameInfo*TheGameInfo;

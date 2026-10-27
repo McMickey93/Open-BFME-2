@@ -16,11 +16,9 @@ typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 typedef bool Bool;
 
+#include <stdio.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
-
-extern "C" __declspec(dllimport) unsigned int __cdecl fwrite(
-	const void *chunkBuffer, unsigned int elementSize, unsigned int elementCount, void *outputFile) throw();
 
 enum NameKeyType
 {
@@ -91,7 +89,7 @@ public:
 
 private:
 	void *m_outputStream;			// +0x00
-	void *m_tmp_file;			// +0x04
+	FILE *m_tmp_file;			// +0x04
 	DataChunkTableOfContents m_contents;	// +0x08
 };
 

@@ -12,9 +12,6 @@ typedef unsigned char UnsignedByte;
 typedef unsigned int UnsignedInt;
 typedef unsigned short WideChar;
 
-extern "C" __declspec(dllimport) WideChar * __cdecl wcsncpy(
-	WideChar *, const WideChar *, unsigned int );
-
 class UnicodeStringData
 {
 public:
@@ -22,6 +19,7 @@ public:
 	WideChar m_data[1];
 };
 
+#include <string.h>
 #include "unicode_string.h"
 
 class LANGameInfo
@@ -57,7 +55,7 @@ struct LANMessage
 {
 	Int type;
 	UnsignedByte m_prefix[0x1E - 4];
-	WideChar gameName[17];
+	wchar_t gameName[17];
 	Bool accepted;
 	UnsignedByte m_remainder[0x1D8 - 0x42];
 };

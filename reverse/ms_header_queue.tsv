@@ -690,25 +690,14 @@ Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp	adapt	sourc
 Code/GameEngine/Source/Common/System/SkipWhitespaceW.c	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<ctype.h>	no	no	hand			iswspace:unknown
 Code/GameEngine/Source/Common/renderRva000E0856Farm.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/Common/renderRva000E0856Farm.cpp:6 stl/_hashtable.h(unknown)		timeGetTime:source
 Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarCommandProcessing.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			MSG:unknown
-Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadDeleteFile.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			DeleteFileW:source
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoad_SetDefaultFileName.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			_wsplitpath:source
 Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		DeleteCriticalSection:source
 Code/GameEngine/Source/GameClient/GUI/Rva007B4874Registrations.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			atexit:source
-Code/GameEngine/Source/GameClient/GUI/Rva007B52E6Global.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			atexit:source
 Code/GameEngine/Source/GameClient/GlobalLanguageDtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/GameClient/GlobalLanguageDtor.cpp:14 stl/_alloc.h(unknown)		operator==:unknown
 Code/GameEngine/Source/GameClient/LanguageFilterUnHaxor.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand			wcsrchr:source
-Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIBattleResolver.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			timeGetTime:source
-Code/GameEngine/Source/GameClient/MouseRva001EEC4B_muse-f8cb.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			timeGetTime:source
-Code/GameEngine/Source/GameClient/MovieBlockingPlayback.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			SendMessageA:source
-Code/GameEngine/Source/GameClient/Rva00085947Method.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand			atexit:source
-Code/GameEngine/Source/GameClient/Vp6StreamOpen.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			timeGetTime:source
 Code/GameEngine/Source/GameLogic/AI/AIGroupMoveFormation.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	1	0	<stdlib.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		free:same
 Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsCtor.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsCtor.cpp:13 stl/_algobase.h(unknown)		operator==:unknown
 Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsInsertDeferred.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsInsertDeferred.cpp:13 stl/_algobase.h(unknown)		operator==:unknown
-Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorInitiatePack.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fprintf:source
-Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorPackedCleanup.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fprintf:source
-Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorPackedCleanup_Update.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fprintf:source
-Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00396E4ARemove.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fprintf:source
 Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorUpdate.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeTransportContain_redeployOccupants.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	1: Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeTransportContain_redeployOccupants.cpp:13 stl/_construct.h(unknown)		memcpy:same
 Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainModuleDataParse.cpp	adapt	unknown	1	1	0	0	0	0	0	0	0	0	1	<excpt.h>,<string.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		strcmp:same
@@ -720,26 +709,17 @@ Code/GameEngine/Source/GameLogic/Object/Update/AIUpdateParseLocomotorSet.cpp	ada
 Code/GameEngine/Source/GameLogic/Object/Update/Rva0016DEE0Cluster.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			operator==:unknown
 Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdate.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/GameLogic/Object/WeaponComputeApproachTarget.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
-Code/GameEngine/Source/GameLogic/Object/WeaponEffects/FireLogicNuggetDoEffectPosition.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand			cos:source
 Code/GameEngine/Source/GameLogic/Object/WeaponTemplateScatterTargetPos.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
-Code/GameEngine/Source/GameLogic/Rva0044325.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand			timeGetTime:source
-Code/GameEngine/Source/GameLogic/ScriptEngine/DataChunkOutputWriteDict.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fwrite:source
 Code/GameEngine/Source/GameLogic/ScriptEngine/iniParseObjectFilter.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		_strcmpi:source
 Code/GameEngine/Source/GameLogic/System/ArmySummary.h	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand	1: Code/GameEngine/Source/GameLogic/System/ArmySummary.h:5 ascii_string.h(unknown)		free:same
-Code/GameEngine/Source/GameLogic/System/CastleBehaviorRegisterOwnedObject.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fprintf:source
 Code/GameEngine/Source/GameLogic/System/CastleBehaviorRegisterOwnedObject_Unresolved.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand			fprintf:source
 Code/GameEngine/Source/GameLogic/System/GameLogicSetGamePaused.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			timeGetTime:source
 Code/GameEngine/Source/GameNetwork/GameSpy/Thread/WideCharStringToMultiByte.cpp	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	3: reference/shims/bfmealloc/stl/_algobase.h:51 stl/_pair.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:55 stl/_iterator_base.h(unknown); reference/shims/bfmealloc/stl/_algobase.h:573 stl/_algobase.c(unknown)		WideCharToMultiByte:source
-Code/GameEngine/Source/GameNetwork/GameSpy/chat/ChatMessagePump.c	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand			_stricmp:source
 Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<SCardSsp.h>	yes	yes	hand	1: Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c:77 nonport.h(unknown)		RESET:unknown
 Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	7: Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c:31 ghttpMain.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c:32 ghttpASCII.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c:33 ghttpConnection.h(unknown)		strdup:source
 Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpPost.c	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	4: Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpPost.c:31 ghttpPost.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpPost.c:32 ghttpMain.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpPost.c:33 ghttpConnection.h(unknown)		strdup:source
 Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpProcess.c	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	5: Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpProcess.c:35 ghttpProcess.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpProcess.c:36 ghttpCallbacks.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpProcess.c:37 ghttpPost.h(unknown)		strdup:source
 Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiConnect.c	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiConnect.c:42 gpi.h(unknown)		ntohs:source
-Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerSBGroupsListCallback.c	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			htonl:source
-Code/GameEngine/Source/GameNetwork/LANAPIRequestAccept.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand			wcsncpy:source
-Code/GameEngine/Source/GameNetwork/LANAPIRequestGameCreate.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			timeGetTime:source
-Code/GameEngine/Source/GameNetwork/Connection_processAck.cpp	adapt	source	1	0	1	0	0	0	0	0	0	1	0	<windows.h>	yes	yes	hand			timeGetTime:source
 Code/GameEngine/Source/GameNetwork/Rva007F91D0DemanglerLog.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<ctype.h>	no	no	hand			isprint:unknown
 Code/GameEngine/Source/GameNetwork/Y2FeslSafeStrCopy.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<tchar.h>	no	yes	hand			strncpy:source
 Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DGameWindow_initBorders.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			FALSE:unknown

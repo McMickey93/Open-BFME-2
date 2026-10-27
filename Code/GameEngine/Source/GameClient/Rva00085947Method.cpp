@@ -10,6 +10,8 @@
 // Owner identity unproven; honest address-derived names. Boundary verified:
 // push ebp prologue at 0x85947, pop edi/esi/ebx + leave + ret at 0x859F0-0x859F4.
 
+#include <stdlib.h>
+
 class BfmeThingBFG { public: void rva0025F3F3(); };
 class Rva0030E8DF { public: void rva0030E8DF(); };
 struct RvaFloatPair { float a; float b; };
@@ -401,7 +403,6 @@ bool Rva00085947::rva000879A9(int v)
 static Vector3 g_00DE2068;
 static int g_00DE2074;
 extern "C" void rva00BB6C15Cleanup();
-extern "C" int __cdecl atexit(void (__cdecl *)());
 Vector3 *Rva00085947::rva00087D42()
 {
 	Vector3 pos = m_p104->Get_Position();

@@ -6,6 +6,7 @@
 // FPS is the existing mutable data-ledger owner; a double local preserves x87.
 // Move helper receives Object* on stack and ignores its ECX receiver in retail.
 // EVA callee396F2C matches WB CastleBehavior::playEvaEventsForCastlePacking.
+#include <stdio.h>
 #include <vector>
 #include "ascii_string.h"
 #include "GameLogicObjectLookupView.h"
@@ -22,8 +23,7 @@ struct LogicLogView {char prefix[0x1B4];int enabled;};
 extern GameLogic*TheGameLogic;
 // Existing data-ledger owner of the mutable FPS integer, RVA009BA4E8.
 extern int BfmeClientFramesPerSecond;
-extern "C" void*theLogicRandomLogFile;
-extern "C" int __cdecl fprintf(void*,const char*,...);
+extern "C" FILE*theLogicRandomLogFile;
 class CastleBehavior {public:void initiatePack();void playEvaEventsForCastlePacking();void rva00397B03(ObjectStatusTypes,bool);
  char prefix[4];CastleData*data;Object*object;char pad0C[0x28];int state34;char pad38[8];float wait40;char pad44[0xC];
  _STL::vector<ObjectID>owned50,owned5C,owned68,owned74;char pad80[0x20];Rva00395CEB mapA0;

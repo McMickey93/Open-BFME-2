@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /O1
+// platformsdk
 //
 // Retail 0x0044B55A, 591 bytes: LANAPI::RequestGameCreate, slot 27 of the
 // LANAPI vtable 0x0083E680 (UnicodeString by value plus Bool, ret 8).
@@ -30,8 +31,7 @@ typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 
-extern "C" __declspec(dllimport) UnsignedInt __stdcall timeGetTime( void );
-
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 

@@ -18,6 +18,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+#include <stdio.h>
 #include <vector>
 #include <map>
 
@@ -563,8 +564,7 @@ float Rva00395A60::rva00395A60() { float value=0.0f; void* data=field<void*>(thi
 class TerrainLogic { public: void rva00283262(const Coord3D*,float); };
 extern TerrainLogic* TheTerrainLogic;
 class ScriptEngine { public: void rva00357960(const AsciiString&,Object*); };
-extern "C" void *theLogicRandomLogFile;
-extern "C" int __cdecl fprintf(void*,const char*,...);
+extern "C" FILE *theLogicRandomLogFile;
 static __forceinline void castleUnpackedConditions(Object* owner) {
  CastleConditionView* view=(CastleConditionView*)owner;
  if(view->conditions.test(94)!=0 || view->conditions.test(96)==0) {
