@@ -7,6 +7,44 @@
 #include "GameClient/GameWindow.h"
 #include "GameClient/Display.h"
 #include "PreRTS.h"
+#pragma optimize("gsy", on)
+static void bfmeVciAnchorSpiralInitReverse()
+{
+    struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
+    BfmeVciAnchorElem anchor[2];
+    (void)anchor;
+}
+#pragma optimize("", on)
+#pragma optimize("y", on)
+#pragma optimize("gsy", on)
+static void bfmeVciAnchorSpiralUpdate()
+{
+    struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
+    BfmeVciAnchorElem anchor[2];
+    (void)anchor;
+}
+#pragma optimize("", on)
+#define inline static inline
+#include <math.h>
+#undef inline
+#pragma optimize("gsy", on)
+static void bfmeVciAnchorSpiralReverse()
+{
+    struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
+    BfmeVciAnchorElem anchor[2];
+    (void)anchor;
+}
+#pragma optimize("", on)
+#define inline static inline
+#undef inline
+#pragma optimize("gsy", on)
+static void bfmeVciAnchorSlideFromRightUpdate()
+{
+    struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
+    BfmeVciAnchorElem anchor[2];
+    (void)anchor;
+}
+#pragma optimize("", on)
 
 // BFME1 donor definitions below remain candidate source only;
 // markers are bookkeeping and do not establish BFME2 byte identity.
@@ -60,6 +98,8 @@ public:
 // tu-skeleton: 0x005C4F88 29B ??_GProcessAnimateWindow@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSpiralCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x005C4FEB 4B ?get@Rva005C4FEBByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/Disp8ByteFieldGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindow.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowDestructors.cpp
 
@@ -733,10 +773,6 @@ Bool ProcessAnimateWindowSlideFromRightFast::reverseAnimateWindow( AnimateWindow
 	return FALSE;
 }
 
-// tu-skeleton: 0x005C50A8 106B ?initReverseAnimateWindow@ProcessAnimateWindowSlideFromRight@@UAEXPAVAnimateWindow@@I@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
-
-// tu-skeleton: 0x005C5112 211B ?initAnimateWindow@ProcessAnimateWindowSlideFromRight@@UAEXPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSlideFromRightReverse.cpp
 
 #pragma optimize("gsy", on)
@@ -794,6 +830,10 @@ Bool ProcessAnimateWindowSlideFromRight::reverseAnimateWindow( AnimateWindow *an
 	return FALSE;
 }
 
+// tu-skeleton: 0x005C50A8 106B ?initReverseAnimateWindow@ProcessAnimateWindowSlideFromRight@@UAEXPAVAnimateWindow@@I@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
+
+// tu-skeleton: 0x005C5112 211B ?initAnimateWindow@ProcessAnimateWindowSlideFromRight@@UAEXPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
+
 // tu-skeleton: 0x005C530D 208B ?initAnimateWindow@ProcessAnimateWindowSlideFromLeft@@UAEXPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
 
 // tu-skeleton: 0x005C53DD 223B ?updateAnimateWindow@ProcessAnimateWindowSlideFromLeft@@UAE_NPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/SlideLeftUpdate.cpp (not merged yet)
@@ -812,13 +852,176 @@ Bool ProcessAnimateWindowSlideFromRight::reverseAnimateWindow( AnimateWindow *an
 
 // tu-skeleton: 0x005C5A38 191B ?initAnimateWindow@ProcessAnimateWindowSlideFromBottomTimed@@UAEXPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
 
-// tu-skeleton: 0x005C5BE2 79B ?initReverseAnimateWindow@ProcessAnimateWindowSpiral@@UAEXPAVAnimateWindow@@I@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSpiralInitReverse.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSpiralInitReverse.cpp
+
+// Shard for Spiral::initReverseAnimateWindow: retail 0x005C5BE2 is a framed
+// manual-prologue body; the home TU builds this family under /G7 and emits a
+// frameless shape, so this body lives here under /O1. Donor-verbatim ZH
+// transcription; getVel is out-of-line (call) and setVel inlines to stores.
+// The compiler-generated vector constructor iterator (??_H) takes the
+// optimization state of the first function that needs it. Retail links one
+// copy, the /O1 body at 0x00001423; this unemitted anchor makes this unit's
+// copy that same body, so it no longer loses to retail's at link time.
+// It can also change how later array constructions here compile; checked to
+// change nothing else in this unit, but if a function added later that builds
+// an array will not match, try it without this block.
+
+#pragma optimize("", on)
+
+// ?initReverseAnimateWindow@ProcessAnimateWindowSpiral@@UAEXPAVAnimateWindow@@I@Z @0x005C5BE2
+void ProcessAnimateWindowSpiral::initReverseAnimateWindow( AnimateWindow *animWin, UnsignedInt maxDelay )
+{
+	if(!animWin)
+	{
+		DEBUG_ASSERTCRASH( animWin, ("animWin was passed into initAnimateWindow as a NULL Pointer... bad bad bad!"));
+		return;
+	}
+	if(animWin->getDelay() > 0)
+		animWin->setStartTime(timeGetTime() + (maxDelay - animWin->getDelay()));
+	Coord2D vel = animWin->getVel();
+	vel.x = 0;
+	vel.y = 0;
+	animWin->setVel( vel );
+
+}
 
 // tu-skeleton: 0x005C5C31 258B ?initAnimateWindow@ProcessAnimateWindowSpiral@@UAEXPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
 
-// tu-skeleton: 0x005C5D33 333B ?updateAnimateWindow@ProcessAnimateWindowSpiral@@UAE_NPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSpiralUpdate.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSpiralUpdate.cpp
 
-// tu-skeleton: 0x005C5E80 261B ?reverseAnimateWindow@ProcessAnimateWindowSpiral@@UAE_NPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSpiralReverse.cpp (not merged yet)
+// Shard for Spiral::updateAnimateWindow: retail 0x005C5D33 is a framed
+// manual-prologue body; the home TU builds this family under /G7 and emits a
+// different shape, so this body lives here under /O1. Donor-verbatim home
+// transcription (matches BFME1 reverse shape); getVel is out-of-line (call)
+// and setVel/setCurPos inline to stores.
+// The matched trig operations inline; keep the CRT float overloads local.
+// The compiler-generated vector constructor iterator (??_H) takes the
+// optimization state of the first function that needs it; retail links the
+// /O1 body at 0x00001423. Instantiate it first in an unemitted anchor (the
+// lookuptable.cpp pattern) so this unit's copy is that body.
+
+// ?updateAnimateWindow@ProcessAnimateWindowSpiral@@UAE_NPAVAnimateWindow@@@Z @0x005C5D33
+Bool ProcessAnimateWindowSpiral::updateAnimateWindow( AnimateWindow *animWin )
+{
+
+	if(!animWin)
+	{
+		DEBUG_ASSERTCRASH( animWin, ("animWin was passed into updateAnimateWindow as a NULL Pointer... bad bad bad!"));
+		return TRUE;
+	}
+
+	// if the window has finished animating into position, return
+	if(animWin->isFinished())
+		return TRUE;
+
+	// if the window hasn't started animating...return that we're not finished
+	if(timeGetTime() < animWin->getStartTime())
+		return FALSE;
+
+	// it's set that the window is passed in as it's current position being it's rest position
+	// so save off the rest position
+	GameWindow *win = animWin->getGameWindow();
+	if(!win)
+	{
+		DEBUG_ASSERTCRASH( win, ("animWin contains a NULL Pointer for it's GameWindow... Whatup wit dat?"));
+		return TRUE;
+	}
+
+	ICoord2D curPos = animWin->getCurPos();
+	ICoord2D endPos = animWin->getEndPos();
+	Coord2D vel = animWin->getVel();
+
+	curPos.x = (vel.y * cos(vel.x)) + endPos.x;
+	curPos.y = (vel.y * sin(vel.x)) + endPos.y;
+
+	vel.x = vel.x + m_deltaTheta;
+	vel.y -=5;
+
+	ICoord2D size;
+	win->winGetSize(&size.x, &size.y);
+	Int halfWidth = size.y / 2;
+	Int halfHeight = size.x / 2;
+	Int *m_max = halfHeight < halfWidth ? &halfHeight : &halfWidth;
+
+	if(vel.y < *m_max)
+	{
+		ICoord2D restPos = animWin->getRestPos();
+		animWin->setFinished( TRUE );
+		win->winSetPosition(restPos.x, restPos.y);
+		return TRUE;
+	}
+	win->winSetPosition(curPos.x, curPos.y);
+	animWin->setCurPos(curPos);
+	Coord2D storedVel = {vel.x, vel.y};
+	animWin->setVel(storedVel);
+	return FALSE;
+}
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSpiralReverse.cpp
+
+// Shard for Spiral::reverseAnimateWindow: retail 0x005C5E80 is a framed
+// manual-prologue body; the home TU builds this family under /G7 and emits a
+// different shape, so this body lives here under /O1. Donor-verbatim home
+// transcription (matches BFME1 update shape); getVel is out-of-line (call)
+// and setVel/setCurPos inline to stores.
+// The matched trig operations inline; keep the CRT float overloads local.
+// The compiler-generated vector constructor iterator (??_H) takes the
+// optimization state of the first function that needs it; retail links the
+// /O1 body at 0x00001423. Instantiate it first in an unemitted anchor (the
+// lookuptable.cpp pattern) so this unit's copy is that body.
+
+// ?reverseAnimateWindow@ProcessAnimateWindowSpiral@@UAE_NPAVAnimateWindow@@@Z @0x005C5E80
+Bool ProcessAnimateWindowSpiral::reverseAnimateWindow( AnimateWindow *animWin )
+{
+
+	if(!animWin)
+	{
+		DEBUG_ASSERTCRASH( animWin, ("animWin was passed into updateAnimateWindow as a NULL Pointer... bad bad bad!"));
+		return TRUE;
+	}
+
+	// if the window has finished animating into position, return
+	if(animWin->isFinished())
+		return TRUE;
+
+
+
+	// it's set that the window is passed in as it's current position being it's rest position
+	// so save off the rest position
+	GameWindow *win = animWin->getGameWindow();
+	if(!win)
+	{
+		DEBUG_ASSERTCRASH( win, ("animWin contains a NULL Pointer for it's GameWindow... Whatup wit dat?"));
+		return TRUE;
+	}
+
+	ICoord2D curPos = animWin->getCurPos();
+	ICoord2D endPos = animWin->getEndPos();
+	Coord2D vel = animWin->getVel();
+
+	curPos.x = (vel.y * cos(vel.x)) + endPos.x;
+	curPos.y = (vel.y * sin(vel.x)) + endPos.y;
+
+	vel.x = vel.x - m_deltaTheta;
+	vel.y +=5;
+
+	ICoord2D size;
+	win->winGetSize(&size.x, &size.y);
+//	Int m_max = min(size.x/2, size.y/2);
+
+	if(vel.y > m_maxR)
+	{
+		//ICoord2D restPos = animWin->getRestPos();
+		animWin->setFinished( TRUE );
+		//win->winSetPosition(restPos.x, restPos.y);
+		return TRUE;
+	}
+	win->winSetPosition(curPos.x, curPos.y);
+	animWin->setCurPos(curPos);
+	Coord2D storedVel = {vel.x, vel.y};
+	animWin->setVel(storedVel);
+	return FALSE;
+}
 
 // tu-skeleton: 0x005C5FC4 102B ?initReverseAnimateWindow@ProcessAnimateWindowSlideFromTopFast@@UAEXPAVAnimateWindow@@I@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
 
@@ -832,4 +1035,76 @@ Bool ProcessAnimateWindowSlideFromRight::reverseAnimateWindow( AnimateWindow *an
 
 // tu-skeleton: 0x005C63CD 241B ?initAnimateWindow@ProcessAnimateWindowSlideFromRightFast@@UAEXPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowRightFastInitReverse.cpp (not merged yet)
 
-// tu-skeleton: 0x005C64BE 219B ?updateAnimateWindow@ProcessAnimateWindowSlideFromRight@@UAE_NPAVAnimateWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSlideFromRightUpdate.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/GUI/ProcessAnimateWindowSlideFromRightUpdate.cpp
+
+// Target boundary 0x005C64BE/219. Identity evidence: the matched
+// ProcessAnimateWindowSlideFromRight constructor at 0x005C5069 installs vptr
+// 0x00C7484C, whose slot +0x0C points here. The class name is carried from the
+// BFME1 donor; the target slot and neighboring method family are retail evidence.
+// The target getVel helper at 0x005C5046 copies two components to a hidden
+// result pointer and returns with ret 4; caller/callee bytes support the
+// Coord2D return ABI. The volatile clamp-home store reproduces retail's write
+// to the getVel result slot when the speed floor is reached.
+// The compiler-generated vector constructor iterator (??_H) takes the
+// optimization state of the first function that needs it; retail links the
+// /O1 body at 0x00001423. Instantiate it first in an unemitted anchor (the
+// lookuptable.cpp pattern) so this unit's copy is that body.
+
+// ?updateAnimateWindow@ProcessAnimateWindowSlideFromRight@@UAE_NPAVAnimateWindow@@@Z @0x005C64BE
+Bool ProcessAnimateWindowSlideFromRight::updateAnimateWindow( AnimateWindow *animWin )
+{
+
+	if(!animWin)
+	{
+		DEBUG_ASSERTCRASH( animWin, ("animWin was passed into updateAnimateWindow as a NULL Pointer... bad bad bad!"));
+		return TRUE;
+	}
+
+	// if the window has finished animating into position, return
+	if(animWin->isFinished())
+		return TRUE;
+
+	// if the window hasn't started animating...return that we're not finished
+	if(timeGetTime() < animWin->getStartTime())
+		return FALSE;
+	// it's set that the window is passed in as it's current position being it's rest position
+	// so save off the rest position
+	GameWindow *win = animWin->getGameWindow();
+	if(!win)
+	{
+		DEBUG_ASSERTCRASH( win, ("animWin contains a NULL Pointer for it's GameWindow... Whatup wit dat?"));
+		return TRUE;
+	}
+
+	ICoord2D curPos = animWin->getCurPos();
+	ICoord2D endPos = animWin->getEndPos();
+	Coord2D vel = animWin->getVel();
+	curPos.x += (Int)vel.x;
+
+	if(curPos.x < endPos.x)
+	{
+		curPos.x = endPos.x;
+		animWin->setFinished( TRUE );
+		return TRUE;
+	}
+	win->winSetPosition(curPos.x, curPos.y);
+	animWin->setCurPos(curPos);
+
+	Real slowedX;
+	if( curPos.x - endPos.x <= m_slowDownThreshold )
+		slowedX = m_slowDownRatio * vel.x;
+	else
+		slowedX = vel.x;
+	if( slowedX >= -1.0f )
+	{
+		*(volatile Real *)&vel.x = -1.0f;
+		slowedX = -1.0f;
+	}
+	Coord2D slowedVel;
+	slowedVel.x = slowedX;
+	slowedVel.y = vel.y;
+	animWin->setVel(slowedVel);
+	return FALSE;
+}
+
+// tu-skeleton: 0x007A0B89 8B uw_007a0b89 -- matched in Code/gen_small/uw_gen_014.cpp (not merged yet)
