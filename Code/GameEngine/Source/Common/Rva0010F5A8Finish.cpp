@@ -1,4 +1,4 @@
-// ?execute@Rva0010F5A8@@QAEXXZ
+// ?execute@SetStreamPositionCommand@@QAEXXZ
 // cl: /MD
 #include "../../Include/Common/Rva00041004Lock.h"
 // Guarded Miles stream operations, each the only slot (slot 1) of its own
@@ -91,7 +91,7 @@ struct Rva0010F28DGuard
     if (g.m_locked != 0) \
         ((Rva0010F26E *)&g)->rva0010F26E()
 
-class Rva0010F5A8
+class SetStreamPositionCommand
 {
 public:
     void execute();
@@ -102,7 +102,7 @@ private:
     int m_endMarginMs; // +0x10
 };
 
-void Rva0010F5A8::execute()
+void SetStreamPositionCommand::execute()
 {
     RVA0010F28D_LOCK(g);
     void *stream = m_inner->m_stream;
