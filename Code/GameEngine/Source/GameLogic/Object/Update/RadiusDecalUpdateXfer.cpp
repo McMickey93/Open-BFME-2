@@ -29,52 +29,9 @@ class Thing;
 class ModuleData;
 class Object;
 #include "../../../../Include/Common/BfmeXfer.h"
-class ObjectModule
-{
-public:
-	ObjectModule(Thing *thing, const ModuleData *moduleData);
-	virtual ~ObjectModule();
-protected:
-	const ModuleData *m_moduleData;
-	Object *m_object;
-};
-class BehaviorModuleInterface { public: virtual void behaviorSlot(); };
-class UpdateModuleInterface { public: virtual void updateSlot(); };
-class UpdateModule : public ObjectModule,
-	public BehaviorModuleInterface, public UpdateModuleInterface
-{
-public:
-	UpdateModule(Thing *thing, const ModuleData *moduleData);
-	virtual ~UpdateModule();
-	void xfer(Xfer *xfer);
-private:
-	unsigned int m_nextCallFrameAndPhase;
-	int m_indexInLogic;
-	int m_updateState;
-};
-class RadiusDecal
-{
-public:
-	RadiusDecal();
-	~RadiusDecal();
-	void clear();
-	void rva00330F7D(Xfer *xfer);
-private:
-	const void *m_template;
-	void *m_decal;
-	unsigned char m_empty;
-	unsigned char m_pad[4];
-};
-class RadiusDecalUpdate : public UpdateModule
-{
-public:
-	RadiusDecalUpdate(Thing *thing, const ModuleData *moduleData);
-protected:
-	virtual void xfer(Xfer *xfer);
-private:
-	RadiusDecal m_deliveryDecal;
-	bool m_30;
-};
+// The classes come from RadiusDecalUpdateView.h, the view of the
+// RadiusDecalUpdate.cpp TU this body joins.
+#include "RadiusDecalUpdateView.h"
 void RadiusDecalUpdate::xfer(Xfer *xfer)
 {
 	UpdateModule::xfer(xfer);
@@ -82,5 +39,5 @@ void RadiusDecalUpdate::xfer(Xfer *xfer)
 		return;
 	xfer->Version1();
 	m_deliveryDecal.rva00330F7D(xfer);
-	*xfer == m_30;
+	*xfer == m_killWhenNoLongerAttacking;
 }
