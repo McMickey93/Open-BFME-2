@@ -953,7 +953,7 @@ struct Rva002D021C
 	Rva002D021C &operator=(const Rva002D021C &that);		// 0x002D021C
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class AsciiStringMember
 {

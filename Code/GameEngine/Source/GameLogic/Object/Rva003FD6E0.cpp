@@ -5,7 +5,7 @@
 // [[ecx]] slot 0 with arg 0; deletes result via rowed ??3@YAXPAX@Z and clears
 // [esi+4]; caller at 0x002115A9 iterates array calling this; neighbours are
 // Rva003FD789 xfer/ctor; callee row mem_ops.cpp.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva003FD6E0Inner
 {

@@ -35,7 +35,7 @@ public:
 	void parseWeaponBonusSet(INI *ini);
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 void __cdecl Rva002CA88BParse(void *iniArg, void *parentArg)
 {
