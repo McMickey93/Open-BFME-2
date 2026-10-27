@@ -198,6 +198,7 @@ public:
 	void rva001DBE17();      // BFME 2's step after skip
 	void rva001DBE34();      // skip
 	void rva001DBE51();      // draw
+	int rva001DBDA4() const; // getTotalFrames
 	void rva001DC164();      // init
 };
 
@@ -392,6 +393,7 @@ public:
 	void remove( AsciiString groupName, Bool skipPending = false );
 	static void parseWindow(INI *ini, void *instance, void *store, const void *userData);	// rowed 0x001DCB2F
 	TransitionGroup *getNewGroup( AsciiString name );
+	int bfmeGetGroupTotalFrames( AsciiString groupName );
 private:
 	static const FieldParse m_gameWindowTransitionsFieldParseTable[];
 	TransitionGroup *findGroup( AsciiString groupName );
