@@ -11,65 +11,9 @@
 // 0x00330F98). It sits between killRadiusDecal (0x0039155F) and xfer
 // (0x003915AE) as in the Zero Hour source.
 
-enum ObjectStatusTypes
-{
-	OBJECT_STATUS_IS_ATTACKING = 0x16
-};
-
-enum UpdateSleepTime
-{
-	UPDATE_SLEEP_NONE = 1,
-	UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
-};
-
-class Object
-{
-public:
-	bool testStatus( ObjectStatusTypes bit ) const;
-};
-
-class RadiusDecal
-{
-public:
-	void clear();
-	void update();
-
-private:
-	const void *m_template;
-	void *m_decal;
-};
-
-class RadiusDecalUpdateModuleBase
-{
-public:
-	virtual ~RadiusDecalUpdateModuleBase();
-
-protected:
-	Object *getObject() const { return m_object; }
-
-private:
-	void *m_moduleData;		///< 0x04
-	Object *m_object;		///< 0x08
-	unsigned int m_unrecovered0C;
-};
-
-class UpdateModuleInterface
-{
-public:
-	virtual UpdateSleepTime update() = 0;
-};
-
-class RadiusDecalUpdate : public RadiusDecalUpdateModuleBase, public UpdateModuleInterface
-{
-public:
-	virtual UpdateSleepTime update();
-
-private:
-	unsigned char m_unrecovered14[ 0x20 - 0x14 ];
-	RadiusDecal m_deliveryDecal;					///< 0x20
-	unsigned char m_unrecovered28[ 0x30 - 0x28 ];
-	bool m_killWhenNoLongerAttacking;				///< 0x30
-};
+// The classes come from RadiusDecalUpdateView.h, the view of the
+// RadiusDecalUpdate.cpp TU this body joins.
+#include "RadiusDecalUpdateView.h"
 
 //-------------------------------------------------------------------------------------------------
 UpdateSleepTime RadiusDecalUpdate::update()
