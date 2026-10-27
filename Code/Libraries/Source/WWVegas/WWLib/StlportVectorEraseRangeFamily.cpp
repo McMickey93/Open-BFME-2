@@ -226,11 +226,19 @@ inline __declspec(noinline) void _STL::_Destroy<RvaSmartPtr12 *>(RvaSmartPtr12 *
 	_STL::__destroy_aux(__first, __last, __trivial);
 }
 
+// The native 0x005F97BC forwarder passes an unused third tag argument to
+// 0x004F72ED. That 27-byte loop is already owned by Rva004F72EDDestroy;
+// its two-pointer declaration consumes the observed range, not the tag.
+// Preserve the caller's cdecl stack arguments without assigning its opaque
+// element view or a second template name to that existing owner.
+void __cdecl Rva004F72EDDestroy(void *, void *);
+
 template <>
 inline __declspec(noinline) void _STL::_Destroy<TreeHintRef00217D4C *>(TreeHintRef00217D4C *__first, TreeHintRef00217D4C *__last)
 {
 	_STL::__false_type __trivial;
-	_STL::__destroy_aux(__first, __last, __trivial);
+	typedef void (__cdecl *NativeRangeDestroy)(void *, void *, const _STL::__false_type &);
+	reinterpret_cast<NativeRangeDestroy>(&Rva004F72EDDestroy)(__first, __last, __trivial);
 }
 
 template <>

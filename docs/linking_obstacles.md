@@ -2722,6 +2722,21 @@ Clearance: `tools/link_check.py Code/Libraries/Source/WWVegas/WWLib/StlportVecto
 reports: LINKS (0 -> 2,464 bytes). Full 59/59 matched rows verified.
 Census confirmation: awaiting the next census.
 
+**Original-family identity follow-up (2026-10-27, inspected `f643d446a0`):**
+[The whole-source check](../reverse/attempt_support/vector-erase-family-identity-20261027.md)
+binds the 24-byte `_Destroy<TreeHintRef00217D4C *>` at 0x005F97BC to
+the existing `Rva004F72EDDestroy` owner at 0x004F72ED, preserving its native
+unused third cdecl argument. All 14 source rows and its EH graph remain
+exact. The owning retirement tool removes 22 source keys (21 stale after
+earlier row moves, one repaired binding), retaining the two wrong copy-helper
+bindings at 0x0007A7AA and 0x003F6975. Inline-forwarding trials for those
+two changed the empty-tag stack layout and were reverted and recorded.
+Next: reconcile visible helper bodies and owner signatures together before
+retrying. The original source and three providers preview LINKS for the
+same 800 authored bytes against index `bf3dd31211`; this retires debt with
+no new census-linked-byte gain. The moved destinations were not changed
+or cleared by this source-scoped retirement.
+
 
 ### LINK-037: PartitionData_friendUpdateCellsTouched linked against stale ZH updateCellsTouched instead of native ShroudManager::Data provider
 Status: Cleared. Updated: 2026-10-26; inspected revision: 7e7941d0cb.

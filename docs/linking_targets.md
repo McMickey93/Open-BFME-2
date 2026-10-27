@@ -30,7 +30,7 @@ The handoff found no earlier served-queue entry for these 16 units. Follow-up:
 | `MeshModelReadVertexMaterials.cpp` | 271 | Wrong selected | Open |
 | `stlport_narrow_string_erase_count.cpp` | 130 | Unresolved | Open |
 | `ElementStrideWalks.cpp` | 90 | Unresolved | Open |
-| `VectorRangeEraseRva003F6975.cpp` | 80 | Unresolved | Open |
+| `VectorRangeEraseRva003F6975.cpp` | 80 | Unresolved | 2026-10-27: current provider unit previews LINKS (80 authored bytes); its separate caller in StlportVectorEraseRangeFamily.cpp retains wrong copy-helper identity. Inline forwarding changes the caller's tag stack layout and was reverted. [Evidence](../reverse/attempt_support/vector-erase-family-identity-20261027.md), LINK-036; census confirmation pending. |
 | `Rva00541913CopyCtor.cpp` | 76 | Wrong selected | Open |
 | `StlportNarrowAppendCStr.cpp` | 58 | COMDAT losers | Open: first copy is stlport_float_format's (LINK-070) |
 | `GrantUpgradeCreate.cpp` | 42 | Unresolved | Open |
