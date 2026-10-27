@@ -44,12 +44,27 @@ typedef int Int;
 #include <new>
 #include <string.h>
 
+class Xfer;
+
+enum INILoadType
+{
+	INI_LOAD_INVALID = 0,
+	INI_LOAD_OVERWRITE = 1,
+	INI_LOAD_CREATE_OVERRIDES = 2
+};
+
 class INI
 {
 public:
+	INI();
+	~INI();
+	bool loadDirectory(AsciiString dirpath, bool recursive, INILoadType loadType, Xfer *xfer, int extra);
 	const char *getNextSubToken(const char *expected);
 	int scanInt(const char *token);
 	static void parseBitString32(INI *ini, void *instance, void *store, const void *userData);
+
+private:
+	char m_unported[0x87C];
 };
 
 // Zero Hour's file-static imageStatusNames table ("ROTATED_90_CLOCKWISE",
@@ -142,6 +157,7 @@ class ImageCollection : public SubsystemInterface
 {
 public:
 	ImageCollection();
+	void load(int textureSize);
 
 public:
 	virtual ~ImageCollection();
