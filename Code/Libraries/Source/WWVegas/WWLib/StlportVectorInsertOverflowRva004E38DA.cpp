@@ -22,10 +22,14 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 
 #include <vector>
-// Suppress this TU's non-retail copy of ??$_Destroy@PAUBfmePod88@@@_STL@@YAXPAUBfmePod88@@0@Z:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
+// _M_clear's range destroy is retail's rowed Rva004E1FCCGet (0x004E1FCC);
+// forward to it so this TU's _M_clear copy calls that owner rather than an
+// unaddressed _Destroy<BfmePod88*>.
 struct BfmePod88;
-namespace _STL { template <> void _Destroy<BfmePod88 *>(BfmePod88 *,BfmePod88 *); }
+struct Rva004E1AD5Item;
+void __cdecl Rva004E1FCCGet(Rva004E1AD5Item *, Rva004E1AD5Item *);
+namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<BfmePod88 *>(BfmePod88 *__first, BfmePod88 *__last)
+{ Rva004E1FCCGet(reinterpret_cast<Rva004E1AD5Item *>(__first), reinterpret_cast<Rva004E1AD5Item *>(__last)); } }
 
 struct BfmePod88 {
 	char opaque[88];
