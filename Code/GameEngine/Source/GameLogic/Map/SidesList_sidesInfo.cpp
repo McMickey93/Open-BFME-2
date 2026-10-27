@@ -49,7 +49,11 @@ private:
 	void *m_data;
 };
 
-class ScriptList
+#define BFME_SNAPSHOT_CAPITALIZED_SLOTS
+#define BFME_SNAPSHOT_NAME_SLOT
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
+
+class ScriptList : public Snapshot
 {
 public:
 	ScriptList();
@@ -57,6 +61,9 @@ public:
 	virtual ~ScriptList();
 	void clear();
 	void swap(ScriptList *other);
+	virtual void LoadPostProcess();
+	virtual const char *GetSnapshotName() const;
+	virtual void DoXfer(Xfer *xfer);
 
 private:
 	char m_body[0x48];
@@ -274,34 +281,31 @@ private:
 // and the Snapshot interface at +0x0C, whose DoXfer runs with this at +0x0C.
 class Xfer;
 
-struct XferVersion
-{
-	XferVersion(unsigned char current) : m_version(current), m_currentVersion(current) {}
-	unsigned char m_version;
-	unsigned char m_currentVersion;
-};
+class Snapshot;
+class UnicodeString;
+class PooledString;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
 
-// The Xfer slots DoXfer calls (BFME 2 order).
-class Xfer
+#include "../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-#define SIDES_XFER_SLOT(n) virtual void slot##n();
-	SIDES_XFER_SLOT(00) SIDES_XFER_SLOT(01) SIDES_XFER_SLOT(02) SIDES_XFER_SLOT(03)
-	virtual bool skipsTransfer();				// +0x10, name unknown: true skips the body
-	SIDES_XFER_SLOT(05) SIDES_XFER_SLOT(06) SIDES_XFER_SLOT(07) SIDES_XFER_SLOT(08)
-	SIDES_XFER_SLOT(09)
-	virtual void xferVersion(XferVersion *version);		// +0x28
-	SIDES_XFER_SLOT(11)
-	virtual void xferSnapshot(void *snapshot);		// +0x30
-	SIDES_XFER_SLOT(13) SIDES_XFER_SLOT(14) SIDES_XFER_SLOT(15) SIDES_XFER_SLOT(16)
-	SIDES_XFER_SLOT(17) SIDES_XFER_SLOT(18) SIDES_XFER_SLOT(19) SIDES_XFER_SLOT(20)
-	SIDES_XFER_SLOT(21) SIDES_XFER_SLOT(22) SIDES_XFER_SLOT(23) SIDES_XFER_SLOT(24)
-	SIDES_XFER_SLOT(25) SIDES_XFER_SLOT(26) SIDES_XFER_SLOT(27) SIDES_XFER_SLOT(28)
-	SIDES_XFER_SLOT(29) SIDES_XFER_SLOT(30)
-	virtual void xferInt(int *value);			// +0x7C
-	SIDES_XFER_SLOT(32) SIDES_XFER_SLOT(33) SIDES_XFER_SLOT(34) SIDES_XFER_SLOT(35)
-	virtual void xferBool(bool *value);			// +0x90
-#undef SIDES_XFER_SLOT
+	Version(unsigned char current) : m_version(current), m_currentVersion(current) {}
+	unsigned char m_version;
+	unsigned char m_currentVersion;
 };
 
 class XferException
@@ -434,15 +438,15 @@ void SidesList::addToFactionBuildListMap(NameKeyType faction, const BfmePod128 &
 // list — skipped when slot +0x10 says so and followed by the cleared flag.
 void SidesList::DoXfer(Xfer *xfer)
 {
-	if (xfer->skipsTransfer())
+	if (xfer->IsLightCRC())
 		return;
 
-	XferVersion version(1);
-	xfer->xferVersion(&version);
+	Xfer::Version version(1);
+	*xfer == version;
 
 	int i;
 	int sideCount = m_numSides;
-	xfer->xferInt(&sideCount);
+	*xfer == sideCount;
 	if (sideCount != m_numSides)
 		throw XferException(XFER_INVALID_DATA, 0);
 
@@ -450,15 +454,15 @@ void SidesList::DoXfer(Xfer *xfer)
 		SidesInfo *sideInfo = getSideInfo(i);
 		ScriptList *scriptList = sideInfo->getScriptList();
 		bool scriptListPresent = scriptList != 0;
-		xfer->xferBool(&scriptListPresent);
+		*xfer == scriptListPresent;
 		if ((scriptList == 0 && scriptListPresent == true) ||
 			(scriptList != 0 && scriptListPresent == false))
 			throw XferException(XFER_INVALID_DATA, 0);
 		if (scriptListPresent)
-			xfer->xferSnapshot(scriptList);
+			*xfer == *scriptList;
 	}
 
-	xfer->xferBool(&m_cleared);
+	*xfer == m_cleared;
 }
 
 // SidesList::LoadPostProcess is the matched empty body in SidesListCtor.cpp.

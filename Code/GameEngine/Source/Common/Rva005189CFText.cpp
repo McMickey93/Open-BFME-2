@@ -1,4 +1,4 @@
-// cl: /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /MD /EHsc
 // ?rva005189CF@AptOptions@@QAEXXZ @0x005189CF 282B
 // Master-option APT text: formats APT:MasterOption_%s from m_310 table when
 // 0..5, builds Unicode via TheGameText fetch slots 0x38/0x3C plus concats,
@@ -9,51 +9,9 @@
 // TheRva00222A8BTarget 0x009FE4CC; literals APT:MasterOption_%s
 // APT:CannotChangeGraphics; table 0x00DB95F4.
 typedef bool Bool;
-template <typename T> struct BfmeStringData
-{
-	int refCount;
-	unsigned short length;
-	unsigned short capacity;
-	T text[1];
-};
-template <typename T> class StringBase
-{
-	friend class AsciiString;
-	friend class UnicodeString;
-	friend class AptOptions;
-	StringBase(const T *text);
-	void releaseBuffer();
-public:
-	StringBase() : m_data(0) {}
-	~StringBase() { releaseBuffer(); }
-	void set(const T *s);
-	void concat(const T *s);
-	void concat(const StringBase<T> &other);
-private:
-	BfmeStringData<T> *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-// Retail narrow cleanup calls the releaseBuffer worker directly.
-// Keep the forwarding destructor inline without emitting a competing copy.
-template <> __declspec(dllimport) __forceinline
-StringBase<char>::~StringBase() { releaseBuffer(); }
-
-class AsciiString : private StringBase<char>
-{
-	friend class AptOptions;
-public:
-	AsciiString() {}
-	AsciiString(const char *text) : StringBase<char>(text) {}
-	~AsciiString() {}
-	void __cdecl format(const char *fmt, ...);
-};
-class UnicodeString : private StringBase<unsigned short>
-{
-	friend class AptOptions;
-public:
-	UnicodeString() {}
-	~UnicodeString() {}
-};
 class GameTextInterface
 {
 public:
@@ -97,12 +55,12 @@ void AptOptions::rva005189CF()
 	if (m_310 >= 0 && m_310 <= 5)
 		key.format("APT:MasterOption_%s", BfmeLODLevelNames[m_310]);
 	UnicodeString u;
-	if (((StringBase<char> &)key).m_data != 0 && ((StringBase<char> &)key).m_data->length != 0)
+	if (!key.isEmpty())
 	{
-		((StringBase<unsigned short> &)u).set(L"(");
-		((StringBase<unsigned short> &)u).concat(TheGameText->fetch(key, 0));
-		((StringBase<unsigned short> &)u).concat(L") - ");
+		u.set(L"(");
+		u.concat(TheGameText->fetch(key, 0));
+		u.concat(L") - ");
 	}
-	((StringBase<unsigned short> &)u).concat(TheGameText->fetch("APT:CannotChangeGraphics", 0));
+	u.concat(TheGameText->fetch("APT:CannotChangeGraphics", 0));
 	g_bfmeAptWindowManager->bfmeSetText(AsciiString("APT:CannotChangeGraphics"), u, false);
 }
