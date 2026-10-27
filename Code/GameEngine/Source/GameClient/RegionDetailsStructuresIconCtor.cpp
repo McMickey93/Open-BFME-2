@@ -25,10 +25,10 @@ class Rva005E261C { public: void rva005E261C(); };
 // Native constructor 0x005E28FE proves a primary vptr/count pair and
 // two four-byte observer bases at +8 and +C. The building-change vtable
 // 0x00C77B04 takes the +C receiver; MSVC supplies that secondary this view.
-// Base names below describe TU-scoped roles, not a canonical class contract.
-class IconCountedBase {
-public: IconCountedBase() : references(0) {} virtual ~IconCountedBase(); int references;
-};
+// The primary base uses the canonical consumed eight-byte lifetime: its
+// constructor zeros +4 and its EH cleanup restores BC6F20 at 0x004E84A4.
+// The observer names below remain TU-scoped roles, not canonical contracts.
+#include "../../Include/Common/Rva0007DF07.h"
 class IconMouseObserver {
 public: ~IconMouseObserver(); virtual void onUnknown(int) = 0; virtual void OnLeft(int) = 0; virtual void OnRight(int) = 0;
 virtual void OnRollOut(int) = 0; virtual void OnRollOver(int) = 0; virtual void OnTypeRollOut(int) = 0; virtual void OnTypeRollOver(int) = 0;
@@ -60,7 +60,7 @@ public:
  class Icon;
  char pad00[0x0c]; Region *region; char pad10[0x20-0x10]; int selected;
 };
-class RegionDetailsStructuresPage::Impl::Icon : public IconCountedBase, public IconMouseObserver, public LivingWorldBuildPlotObserver {
+class RegionDetailsStructuresPage::Impl::Icon : public Rva0007DF07, public IconMouseObserver, public LivingWorldBuildPlotObserver {
 public:
  Icon(Impl &, int); virtual ~Icon(); void Update();
  virtual void OnBuildPlotBuildingChanged(LivingWorldBuildPlot &);

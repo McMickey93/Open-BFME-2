@@ -994,6 +994,18 @@ Whole-unit clearance and census confirmation remain pending.
   closure and census confirmation remain separate work. No new linking gain
   is claimed.
 
+**Region-details icon counted-base follow-up (2026-10-27, inspected
+`9773ede65a`):** [The bounded lifetime repair](../reverse/attempt_support/region-details-icon-counted-base-20261027.md)
+replaces the constructor's private `IconCountedBase` with canonical
+`Rva0007DF07`, matching the eight-byte prefix and native first EH cleanup
+target `004E84A4`. All 3/3 rows and the EH graph remain exact; the three Icon
+tables retain their existing slot bindings. Against ordinary index
+`73061d9452`, unresolved names fall 4 -> 3, while linking contribution remains
+0 -> 0. The actual Icon destructor identity and both observer destructor
+contracts remain open. The first generated cleanup can now bind its destructor,
+but `007A354D` was already claimed by another worker and was left untouched.
+No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
+
 ### LINK-005: units blocked by several incompatible dependencies
 
 **Status: Open. Updated: 2026-10-25.**
@@ -4532,6 +4544,14 @@ Remaining / next check: the same pattern may hold for other Zero Hour inline get
 Clearance: preview (link_check on current objects). Census confirmation: pending.
 
 ### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
+**Region-details first-base prerequisite (2026-10-27):**
+[Canonical counted-base adoption](../reverse/attempt_support/region-details-icon-counted-base-20261027.md)
+preserves the parent's three rows and EXACT EH graph and supplies the existing
+rowed `Rva0007DF07` destructor for its first cleanup at `007A354D`. That
+generated row remains unchanged because another worker holds its claim.
+Repoint only after claiming and unmasked verification; the other two base
+cleanup bindings and the constructor's complete link closure remain open.
+
 Status: Open. Updated: 2026-10-27; inspected revision: b29299d15c.
 Evidence / affected units: `Code/gen_small/uw_gen_*.cpp` never links (its
 `gen_uw_ext`/`gen_uw_sink` are undefined by design), so each funclet must move
