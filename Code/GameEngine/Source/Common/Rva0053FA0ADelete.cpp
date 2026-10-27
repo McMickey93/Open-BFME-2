@@ -27,7 +27,7 @@ public:
   virtual bool updateAnimateWindow(AnimateWindow *);
   virtual bool reverseAnimateWindow(AnimateWindow *);
 };
-void operator delete(void *p);
+#include <new>
 class Rva0053FA0A {
 public:
   virtual void v0();

@@ -48,7 +48,7 @@ private:
 	Rva0053F8E5DwordCounter *m_ptr;
 };
 
-void *operator new(unsigned int size);
+#include <new>
 
 class Rva00540845
 {
