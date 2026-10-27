@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 // W3DShaderManager dependent-resource creation, retail 0x000754DE..0x00075649
 // (363 bytes, plain RET) and its EH handler 0x0075EF58. Original name unknown:
@@ -13,7 +14,7 @@
 // with Release_Ref inlined), which keeps the object in EAX and gives retail's
 // mov ecx,eax / add eax,4 counter address.
 
-#include <windows.h>
+#include <d3d9.h>
 #include <new>
 
 // Native dynamic vertex buffer, constructor rowed at 0x0013AC00 (0x20 bytes).
@@ -38,60 +39,14 @@ public:
 	void *buffer;
 };
 
-struct ShaderD3DSurfaceDesc
-{
-	DWORD Format;
-	DWORD Type;
-	DWORD Usage;
-	DWORD Pool;
-	DWORD MultiSampleType;
-	DWORD MultiSampleQuality;
-	UINT Width;
-	UINT Height;
-};
-
-// Device slots used here (Direct3D 9 layout under the ledger's Direct3D 8
-// spelling): CreateTexture (23, with the shared-handle argument),
-// GetRenderTarget (38) and GetDepthStencilSurface (40).
-struct IDirect3DDevice8
-{
-	virtual void slot00(); virtual void slot01(); virtual void slot02(); virtual void slot03();
-	virtual void slot04(); virtual void slot05(); virtual void slot06(); virtual void slot07();
-	virtual void slot08(); virtual void slot09(); virtual void slot10(); virtual void slot11();
-	virtual void slot12(); virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18(); virtual void slot19();
-	virtual void slot20(); virtual void slot21(); virtual void slot22();
-	virtual HRESULT __stdcall CreateTexture(UINT width, UINT height, UINT levels, DWORD usage,
-		DWORD format, DWORD pool, struct IDirect3DTexture8 **texture, void **sharedHandle);
-	virtual void slot24(); virtual void slot25(); virtual void slot26(); virtual void slot27();
-	virtual void slot28(); virtual void slot29(); virtual void slot30(); virtual void slot31();
-	virtual void slot32(); virtual void slot33(); virtual void slot34(); virtual void slot35();
-	virtual void slot36(); virtual void slot37();
-	virtual HRESULT __stdcall GetRenderTarget(UINT index, struct IDirect3DSurface8 **surface);
-	virtual void slot39();
-	virtual HRESULT __stdcall GetDepthStencilSurface(struct IDirect3DSurface8 **surface);
-};
-
-struct IDirect3DSurface8
-{
-	virtual void slot00(); virtual void slot01();
-	virtual DWORD __stdcall Release();
-	virtual void slot03(); virtual void slot04(); virtual void slot05(); virtual void slot06();
-	virtual void slot07(); virtual void slot08(); virtual void slot09(); virtual void slot10();
-	virtual void slot11();
-	virtual HRESULT __stdcall GetDesc(ShaderD3DSurfaceDesc *desc);
-};
-
-struct IDirect3DTexture8
-{
-	virtual void slot00(); virtual void slot01();
-	virtual DWORD __stdcall Release();
-	virtual void slot03(); virtual void slot04(); virtual void slot05(); virtual void slot06();
-	virtual void slot07(); virtual void slot08(); virtual void slot09(); virtual void slot10();
-	virtual void slot11(); virtual void slot12(); virtual void slot13(); virtual void slot14();
-	virtual void slot15(); virtual void slot16(); virtual void slot17();
-	virtual HRESULT __stdcall GetSurfaceLevel(UINT level, IDirect3DSurface8 **surface);
-};
+// The device, surfaces and render texture keep the ledger's Direct3D 8 spellings
+// (W3DShaderManager's statics decorate with them) but are Direct3D 9 objects:
+// device CreateTexture (23, with the shared-handle argument), GetRenderTarget (38)
+// and GetDepthStencilSurface (40); surface GetDesc (12); texture GetSurfaceLevel
+// (18); Release (2) on both.
+struct IDirect3DDevice8;
+struct IDirect3DSurface8;
+struct IDirect3DTexture8;
 
 class DX8Wrapper
 {
@@ -121,6 +76,11 @@ extern int g_quadIndex;
 #define m_oldDepthSurface (*(IDirect3DSurface8 **)&rva012F9D10)
 #define ShaderQuadBuffer (*(BfmeDynamicNativeVB **)&g_vb)
 
+#define DEVICE9 (reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8()))
+#define SURFACE9(x) (reinterpret_cast<IDirect3DSurface9 *>(x))
+#define SURFACE9_OUT(x) (reinterpret_cast<IDirect3DSurface9 **>(x))
+#define TEXTURE9(x) (reinterpret_cast<IDirect3DTexture9 *>(x))
+
 void __cdecl Rva000754DEInit()
 {
 	if (ShaderQuadBuffer) {
@@ -134,32 +94,32 @@ void __cdecl Rva000754DEInit()
 		m_newRenderSurface || m_oldDepthSurface)
 		return;
 
-	DX8Wrapper::_Get_D3D_Device8()->GetRenderTarget(0, &W3DShaderManager::m_oldRenderSurface);
-	ShaderD3DSurfaceDesc desc;
-	W3DShaderManager::m_oldRenderSurface->GetDesc(&desc);
-	HRESULT hr = DX8Wrapper::_Get_D3D_Device8()->CreateTexture(desc.Width, desc.Height, 1, 1,
-		desc.Format, 0, &W3DShaderManager::m_renderTexture, 0);
-	if (hr != 0) {
+	DEVICE9->GetRenderTarget(0, SURFACE9_OUT(&W3DShaderManager::m_oldRenderSurface));
+	D3DSURFACE_DESC desc;
+	SURFACE9(W3DShaderManager::m_oldRenderSurface)->GetDesc(&desc);
+	HRESULT hr = DEVICE9->CreateTexture(desc.Width, desc.Height, 1, D3DUSAGE_RENDERTARGET,
+		desc.Format, D3DPOOL_DEFAULT, reinterpret_cast<IDirect3DTexture9 **>(&W3DShaderManager::m_renderTexture), 0);
+	if (hr != D3D_OK) {
 		if (W3DShaderManager::m_oldRenderSurface)
-			W3DShaderManager::m_oldRenderSurface->Release();
+			SURFACE9(W3DShaderManager::m_oldRenderSurface)->Release();
 		W3DShaderManager::m_oldRenderSurface = 0;
 		W3DShaderManager::m_renderTexture = 0;
 		return;
 	}
-	hr = W3DShaderManager::m_renderTexture->GetSurfaceLevel(0, &m_newRenderSurface);
-	if (hr != 0) {
+	hr = TEXTURE9(W3DShaderManager::m_renderTexture)->GetSurfaceLevel(0, SURFACE9_OUT(&m_newRenderSurface));
+	if (hr != D3D_OK) {
 		if (W3DShaderManager::m_renderTexture)
-			W3DShaderManager::m_renderTexture->Release();
+			TEXTURE9(W3DShaderManager::m_renderTexture)->Release();
 		m_newRenderSurface = 0;
 		W3DShaderManager::m_renderTexture = 0;
 		return;
 	}
-	hr = DX8Wrapper::_Get_D3D_Device8()->GetDepthStencilSurface(&m_oldDepthSurface);
-	if (hr != 0) {
+	hr = DEVICE9->GetDepthStencilSurface(SURFACE9_OUT(&m_oldDepthSurface));
+	if (hr != D3D_OK) {
 		if (m_newRenderSurface)
-			m_newRenderSurface->Release();
+			SURFACE9(m_newRenderSurface)->Release();
 		if (W3DShaderManager::m_renderTexture)
-			W3DShaderManager::m_renderTexture->Release();
+			TEXTURE9(W3DShaderManager::m_renderTexture)->Release();
 		m_oldDepthSurface = 0;
 		m_newRenderSurface = 0;
 		W3DShaderManager::m_renderTexture = 0;

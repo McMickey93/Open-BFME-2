@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // ?Apply@BfmeApplyTextureRef@@QAEXI@Z @0x132AF8 (139B): per-stage texture apply.
 //
 // Null-resource path is DX8Wrapper::Set_DX8_Texture(stage, pointer) inlined
@@ -14,85 +16,14 @@
 // home dx8wrapper.cpp TU (/G7) emits add-mem -- hence the dedicated TU.
 // Globals are TU-local externs; DIR32 slots patch from retail, no pins.
 
-// d3d8.h declares its interfaces with DECLARE_INTERFACE_, i.e. as structs:
-// every other copy of Set_DX8_Texture spells the parameter PAU.
-struct IDirect3DBaseTexture8
-{
-	virtual long __stdcall QueryInterface(const void *riid, void **ppvObject) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-};
+#include <d3d9.h>
 
-struct IDirect3DDevice8
-{
-	virtual void _V00() = 0;
-	virtual void _V01() = 0;
-	virtual void _V02() = 0;
-	virtual void _V03() = 0;
-	virtual void _V04() = 0;
-	virtual void _V05() = 0;
-	virtual void _V06() = 0;
-	virtual void _V07() = 0;
-	virtual void _V08() = 0;
-	virtual void _V09() = 0;
-	virtual void _V10() = 0;
-	virtual void _V11() = 0;
-	virtual void _V12() = 0;
-	virtual void _V13() = 0;
-	virtual void _V14() = 0;
-	virtual void _V15() = 0;
-	virtual void _V16() = 0;
-	virtual void _V17() = 0;
-	virtual void _V18() = 0;
-	virtual void _V19() = 0;
-	virtual void _V20() = 0;
-	virtual void _V21() = 0;
-	virtual void _V22() = 0;
-	virtual void _V23() = 0;
-	virtual void _V24() = 0;
-	virtual void _V25() = 0;
-	virtual void _V26() = 0;
-	virtual void _V27() = 0;
-	virtual void _V28() = 0;
-	virtual void _V29() = 0;
-	virtual void _V30() = 0;
-	virtual void _V31() = 0;
-	virtual void _V32() = 0;
-	virtual void _V33() = 0;
-	virtual void _V34() = 0;
-	virtual void _V35() = 0;
-	virtual void _V36() = 0;
-	virtual void _V37() = 0;
-	virtual void _V38() = 0;
-	virtual void _V39() = 0;
-	virtual void _V40() = 0;
-	virtual void _V41() = 0;
-	virtual void _V42() = 0;
-	virtual void _V43() = 0;
-	virtual void _V44() = 0;
-	virtual void _V45() = 0;
-	virtual void _V46() = 0;
-	virtual void _V47() = 0;
-	virtual void _V48() = 0;
-	virtual void _V49() = 0;
-	virtual void _V50() = 0;
-	virtual void _V51() = 0;
-	virtual void _V52() = 0;
-	virtual void _V53() = 0;
-	virtual void _V54() = 0;
-	virtual void _V55() = 0;
-	virtual void _V56() = 0;
-	virtual void _V57() = 0;
-	virtual void _V58() = 0;
-	virtual void _V59() = 0;
-	virtual void _V60() = 0;
-	virtual void _V61() = 0;
-	virtual void _V62() = 0;
-	virtual void _V63() = 0;
-	virtual void _V64() = 0;
-	// slot 65 is SetTexture, reached via an explicit __stdcall vtable call
-	// below (retail pushes device/stage/texture and calls [ecx+0x104]).
-};
+// d3d8.h declares its interfaces with DECLARE_INTERFACE_, i.e. as structs:
+// every other copy of Set_DX8_Texture spells the parameter PAU. The texture and
+// device keep those D3D8 names but are Direct3D 9 objects (texture AddRef /
+// Release slots 1 / 2, device SetTexture slot 65, retail's [ecx+0x104]).
+struct IDirect3DBaseTexture8;
+struct IDirect3DDevice8;
 
 extern unsigned int number_of_DX8_calls;
 
@@ -109,11 +40,9 @@ protected:
 public:
 	static __forceinline void Set_DX8_Texture(unsigned int stage, IDirect3DBaseTexture8 *texture)
 	{
-		typedef long (__stdcall *BfmeSetTextureFn)(IDirect3DDevice8 *, unsigned int, IDirect3DBaseTexture8 *);
-
 		if (stage >= MAX_TEXTURE_STAGES) {
-			IDirect3DDevice8 *device = D3DDevice;
-			(*(BfmeSetTextureFn **)device)[65](device, stage, texture);
+			IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(D3DDevice);
+			device->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 			number_of_DX8_calls++;
 			return;
 		}
@@ -122,12 +51,12 @@ public:
 			return;
 
 		if (Textures[stage])
-			Textures[stage]->Release();
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
 		if (Textures[stage])
-			Textures[stage]->AddRef();
-		IDirect3DDevice8 *device = D3DDevice;
-		(*(BfmeSetTextureFn **)device)[65](device, stage, texture);
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->AddRef();
+		IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(D3DDevice);
+		device->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		texture_changes++;
 	}

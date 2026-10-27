@@ -1,9 +1,13 @@
 // cl: /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // Open-BFME5: BfmeB1137's virtual material-pass cleanup at retail 0x006E1EB0.
 // The constructor/destructor neighbors install vtable 0x00D1E23C; slot 3 is
 // this body.  Its witnessed fields are the guard byte at +0x54 and the byte
 // cleared at +0x68.  The state-cache and device names below are TU-local ABI
 // shims; DIR32 relocation verification supplies their retail addresses.
+
+#include <d3d9.h>
 
 class TextureClass
 {
@@ -55,17 +59,9 @@ public:
 	__forceinline ~StringClass(void) { Free_String(); }
 };
 
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (SetTextureStageState, vtable slot 67).
 struct IDirect3DDevice8;
-struct DeviceVtable
-{
-	char m_pad[0x10c];
-	int (__stdcall *SetTextureStageState)(IDirect3DDevice8 *, unsigned int,
-		unsigned long, unsigned int);
-};
-struct IDirect3DDevice8
-{
-	DeviceVtable *v;
-};
 
 class DX8Wrapper;
 class WW3D
@@ -97,7 +93,8 @@ public:
 	{
 		if (stage >= 16)
 		{
-			D3DDevice->v->SetTextureStageState(D3DDevice, stage, state, value);
+			reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTextureStageState(stage,
+				(D3DTEXTURESTAGESTATETYPE)state, value);
 			++number_of_DX8_calls;
 			return;
 		}
@@ -109,7 +106,8 @@ public:
 			Get_DX8_Texture_Stage_State_Value_Name(name, state, value);
 		}
 		TextureStageStates[stage][state] = value;
-		D3DDevice->v->SetTextureStageState(D3DDevice, stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTextureStageState(stage,
+				(D3DTEXTURESTAGESTATETYPE)state, value);
 		++number_of_DX8_calls;
 		++texture_stage_state_changes;
 	}
@@ -146,10 +144,10 @@ void BfmeB1137::UnInstall_Materials(void) const
 		BoxSetTexture(1, texture);
 	}
 
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 0x0b, 0);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 0x18, 0);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 0x0b, 0);
-	DX8Wrapper::Set_DX8_Texture_Stage_State(1, 0x18, 0);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_TEXCOORDINDEX, 0);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_TEXCOORDINDEX, 0);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(1, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
 }
 
 // Inline public teardown calls Free_String directly; the standalone destructor is 0x00065F5B.
