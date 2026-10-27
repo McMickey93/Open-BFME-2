@@ -2077,7 +2077,7 @@ Census confirmation: awaiting the next census.
 
 (Filed as LINK-020 in its `reverse/re_attempts.log` entry for 0x0018D2A0; renumbered on rebase.)
 
-**Status: Open (partial repair landed). Updated: 2026-10-26; inspected revision: 60517e12b1.**
+**Status: Open (constructor emitter cleared; shared views remain). Updated: 2026-10-27; inspected revision: 40d8eced18722ddcee26c59ddc4f3fb8d157d887.**
 
 - **Evidence / scope:** `Code/Libraries/Source/WWVegas/WW3D2/HRawLoadW3D_Unresolved.cpp`
   (149 B, `HRawAnimClass` ctor 0x0018D2A0) lost `??_7HAnimClass@@6BRefCountClass@@@` to
@@ -2101,6 +2101,8 @@ Census confirmation: awaiting the next census.
 - **Remaining / next check:** reconcile `HAnimClass` (and the HRaw/HCompressed overrides) to the
   retail layout above in one shared view for `hcanim.cpp`, `hrawanim.cpp`, `htree.cpp`,
   `HRawLoadW3D*.cpp`, re-verifying every virtual-call offset in their matched bodies.
+
+**Constructor emission follow-up (2026-10-27):** at inspected revision 40d8eced18722ddcee26c59ddc4f3fb8d157d887, the current-object preview reproduces the sole HAnim vtable blocker against index 5ce093a71a (2026-10-26 19:02, retail-truth-4). The object reference graph shows that only the unused standalone HAnimClass constructor copy references that table. Marking that existing inline constructor __declspec(dllimport) __forceinline retains its inlined base initialization and stops both unused external copies. No novtable change is needed. The actual 37-byte HAnim constructor remains rowed in hcanim.cpp at 0x0018D170; the native HRaw constructor has no HAnim vptr store. The 149-byte HRaw row remains exact, its one EH graph is EXACT, and declaration and shadow data checks pass. A paired preview retains LINKS for hcanim.cpp, hrawanim.cpp and hanim.cpp, while HRawLoadW3D_Unresolved.cpp changes from blocked to LINKS. This constructor-emission subset is cleared in ordinary-preview scope; census confirmation pending. The incompatible shared class views documented above remain a separate prerequisite for full ABI reconciliation.
 
 ### LINK-024: `LivingWorldBuildingCtor.cpp` needs placeholder `Rva004E0D67` named `LivingWorldBuilding`
 Status: Open. Updated: 2026-10-26; inspected revision: 896af21680.
@@ -3917,6 +3919,8 @@ Clearance: the retained adoptions are verified only within the stated ordinary-p
 Census confirmation: not claimed.
 
 ### LINK-104: placeholder deleting destructors still emit nonretail complete destructors
+
+### LINK-109: placeholder deleting destructors still emit nonretail complete destructors
 Status: Blocked on class and row identity reconciliation. Updated: 2026-10-27; inspected revision: 40d8eced18722ddcee26c59ddc4f3fb8d157d887.
 Evidence / affected units: Code/Libraries/Source/WWVegas/WWLib/Rva00170C0Siblings.cpp retains L10/S10 in current-provider ordinary preview against index 5ce093a71a (2026-10-26 19:02, retail-truth-4). Each blocker is its empty Rva<target>Dtor complete-destructor definition. The native deleting rows call existing nonempty matched bodies under different names. This is related to the complete-destructor prerequisite in LINK-012, not evidence of ten missing native matches.
 Completed: inspected every deleting row's native call and its current callee row. All 12 deleting rows remain exact; declaration, EH and shadow data checks pass. No destructor source trial or ledger change is retained. The existing names at the call targets are owner facts, not proof that the placeholder class has that identity.
@@ -3972,3 +3976,4 @@ Clearance: a paired current-object link_check.py call covers 115 previewable sou
 Remaining / next check: no match, pin, rename or shared-header prerequisite remains for the assigned sources. Keep the GameWindow table issue in its separate repair scope. Confirm the repaired wrapper bindings and their caller closure in the next normal maintainer census; no census or headline gain is claimed here.
 
 Census confirmation: pending.
+

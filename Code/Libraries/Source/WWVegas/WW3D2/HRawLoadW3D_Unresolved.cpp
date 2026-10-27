@@ -82,7 +82,7 @@ public:
 		CLASSID_LASTANIM		= 0x0000FFFF
 	};
 
-	HAnimClass(void)	{ }
+	__declspec(dllimport) __forceinline HAnimClass(void)	{ }
 	virtual ~HAnimClass(void);
 
 	virtual const char *		Get_Name(void) const = 0;
