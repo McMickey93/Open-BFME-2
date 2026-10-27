@@ -200,8 +200,6 @@ Code/GameEngine/Source/Common/VersionDestructor.cpp	wrong-name	?$S1@?1??initiali
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Source@@3VAsciiString@@A	0x00A01CF0
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Target@@3VAsciiString@@A	0x00A01CF4
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva004AB9D5Value@@3VBfmeFixedStorage002CF0F0@@A	0x00A030D0
-Code/GameEngine/Source/Common/VslotSmallBodiesP.cpp	wrong-name	?g_rva00709E50Pending@@3PAXA	0x00A1835C
-Code/GameEngine/Source/Common/VslotSmallBodiesQ.cpp	wrong-name	?g_rva00709A00Pending@@3PAXA	0x00A1835C
 Code/GameEngine/Source/GameClient/Drawable/Update/AnimationSoundClientBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004C9EF3@AnimationSoundClientBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0435C
 Code/GameEngine/Source/GameClient/Drawable/Update/EvaAnnounceClientCreatePoolKey.cpp	wrong-name	?$S1@?1??rva0004C9A0C@EvaAnnounceClientCreate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04344
 Code/GameEngine/Source/GameClient/Drawable/Update/RadarMarkerClientUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004C9BF3@RadarMarkerClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04350
@@ -257,7 +255,6 @@ Code/GameEngine/Source/GameClient/MapUtil.cpp	wrong-name	_m_techPositions	0x009F
 Code/GameEngine/Source/GameClient/Rva002D46AD.cpp	wrong-name	?$S1@?1??Rva002D46ADSet@@YAXH@Z@4IA	0x009FF040
 Code/GameEngine/Source/GameClient/Rva004110DCGet.cpp	duplicate-def	?g_Va00E02FF8@@3URva004110DCGlobalTable@@A	0x00A02FF8
 Code/GameEngine/Source/GameClient/Rva004110DCGet.cpp	wrong-name	?g_Va00E02FF8@@3URva004110DCGlobalTable@@A	0x00A02FF8
-Code/GameEngine/Source/GameClient/Rva004114EFWalk.cpp	wrong-name	?g_Va00E02FE4@@3URva004114EFGlobalTable@@A	0x00A02FE4
 Code/GameEngine/Source/GameClient/Rva0041811DTokenParsers.cpp	wrong-name	?g_00DC85C4@@3PAPBDA	0x009C85C4
 Code/GameEngine/Source/GameClient/Rva0055C8BCCtor.cpp	wrong-name	?$S1@?1??Rva003A8314Init@@YAXXZ@4IA	0x00A02910
 Code/GameEngine/Source/GameClient/Rva00560135Ctor.cpp	wrong-name	?$S1@?1??Rva003A8354Init@@YAXXZ@4IA	0x00A02918

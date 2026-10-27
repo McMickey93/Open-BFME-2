@@ -150,8 +150,8 @@ Rva00669410Entry *Rva00669410::rva00669410(const Rva00669410Arg *arg)
 
 // slots from VA 0x00CEE928 on: runs the rowed 0x006FBED0 on this object while
 // the pointer at VA 0x00E1835C is NULL.
-extern void *g_rva00709A00Pending;
-class Rva8D0D80Result
+#include "../../../Libraries/Source/Apt/AptObject/AptScriptFunction.h"
+class Rva8D0D80Result : public AptScriptFunctionBase
 {
 public:
 	void rva006FBED0();
@@ -159,7 +159,7 @@ public:
 };
 void Rva8D0D80Result::rva00709A00()
 {
-	if (!g_rva00709A00Pending)
+	if (!spFrameStack)
 		rva006FBED0();
 }
 
@@ -233,6 +233,3 @@ void Rva007581E0::update()
 	m_10->Update();
 	Profile::StopRange("collision");
 }
-
-// Native E1835C is the script-function current frame root. Bind its shared provider.
-#pragma comment(linker, "/alternatename:?g_rva00709A00Pending@@3PAXA=?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A")

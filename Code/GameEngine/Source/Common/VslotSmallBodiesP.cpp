@@ -111,17 +111,14 @@ void Rva00709BF0::rva00709BF0(Rva00709BF0Pair *out)
 
 // slots at VA 0x00CEE91C, 0x00CEE98C and 0x00CEEB3C: hands out and clears the
 // pointer held at VA 0x00E1835C; the second argument is unused.
-extern void *g_rva00709E50Pending;
-class Rva00709E50
+#include "../../../Libraries/Source/Apt/AptObject/AptScriptFunction.h"
+class Rva00709E50 : public AptScriptFunctionBase
 {
 public:
 	void rva00709E50(void **out, Int unused);
 };
 void Rva00709E50::rva00709E50(void **out, Int unused)
 {
-	*out = g_rva00709E50Pending;
-	g_rva00709E50Pending = 0;
+	*out = spFrameStack;
+	spFrameStack = 0;
 }
-
-// Native E1835C is the script-function current frame root. Bind its shared provider.
-#pragma comment(linker, "/alternatename:?g_rva00709E50Pending@@3PAXA=?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A")
