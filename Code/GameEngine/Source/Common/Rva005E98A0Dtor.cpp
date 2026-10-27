@@ -8,7 +8,7 @@
 // reverse/attempts/0x005e98a0.cpp (it was a dtor, not a plain method).
 
 class Rva005E9625 { public: virtual ~Rva005E9625(); };
-void __cdecl operator delete(void *);
+#include <new>
 struct Rva005E971F
 {
     ~Rva005E971F();

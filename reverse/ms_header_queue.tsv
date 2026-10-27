@@ -527,8 +527,6 @@ Code/GameEngine/Source/Common/Rva005D32AA.cpp	drop-in candidate	same	1	1	0	0	0	0
 Code/GameEngine/Source/Common/Rva005DB8F7Set.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/Common/Rva005E57DBMethod.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/Common/Rva005E5823Method.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
-Code/GameEngine/Source/Common/Rva005E971FAssign.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
-Code/GameEngine/Source/Common/Rva005E98A0Dtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/Rva005EB35DDeletingDtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/Rva005EC135Delete.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	no	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/Rva005EFD39.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
