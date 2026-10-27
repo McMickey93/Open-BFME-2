@@ -19,7 +19,7 @@ class Rva000AD6F4
 public:
 	void clear();
 };
-void *__cdecl operator new(unsigned int size);
+#include <new>
 struct TargetRef00217D4C
 {
 	virtual void *destroy(unsigned int flags);

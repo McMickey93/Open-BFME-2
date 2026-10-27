@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHs-c-
 // ?rva00574851@Rva00574815@@UAEXH@Z 83B @0x00574851: slot 16 (0x40) of vtable 0x0086E3E8 (class Rva00574815). Virtual slot-3 check on m_ptr at +0x54 holder, else clear plus new 0x14 plus ctor 0x005747DA plus set 0x00575674. Evidence: vtable slot plus callers none plus callees rowed 0x000AD6F4 0x0002FDA0 0x005747DA 0x00575674.
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class Object
 {

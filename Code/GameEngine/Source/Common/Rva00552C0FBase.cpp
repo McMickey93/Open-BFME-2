@@ -1,6 +1,6 @@
 // cl: /MD
 
-void operator delete(void *);
+#include <new>
 
 class Rva00552C0FBase
 {
