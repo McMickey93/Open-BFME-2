@@ -1,5 +1,5 @@
 // ?copyName@@YGXPAURva00808C20Entry@@PBU1@@Z
-extern "C" char* __cdecl strncpy(char*, const char*, unsigned int);
+#include <string.h>
 struct Rva00808C20Entry {
 	char m_pad[0x10];
 	char* m_name;

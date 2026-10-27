@@ -3,7 +3,7 @@
 // Code/GameEngine/Source/Common/BfmeConv1559.cpp), then fill it from a
 // 12-byte source key struct plus two extra int fields.
 #pragma intrinsic(strcmp)
-extern "C" int strcmp(const char *, const char *);
+#include <string.h>
 
 struct Rva007F9A40Key
 {
