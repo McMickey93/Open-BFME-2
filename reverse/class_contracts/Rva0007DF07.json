@@ -9,7 +9,7 @@
    "constructor": "0x0007DF07 whole 13B; zero word+4 before vptr BC6F20",
    "deleting_destructor": "0x0007E5EE whole 29B; inline vptr restore and unsized delete 0x0002FD60",
    "destructor": "0x004E84A4 whole 7B; restore BC6F20 then RET",
-   "uncertainty": "Neutral existing name and consumed 8B prefix only; original complete identity and word type unknown. Storage helper encodes zero-before-vptr initialization, not an original hierarchy claim.",
+   "uncertainty": "Neutral existing name and consumed 8B prefix only; original complete identity and word type unknown. The +4 word is a plain member initialized in the constructor; cl 13.10 /O1 emits the out-of-line 7DF07 zero store before the vptr store and keeps the vptr store first when the base is constructed inline as a virtual base (5CC5E5).",
    "vtable": "0x007C6F20 whole 4B; slot 0 is deleting destructor 0x0007E5EE"
   },
   "retail_access": {},

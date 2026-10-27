@@ -255,7 +255,7 @@ public:
 	Rva002186EB(int tag);
 
 private:
-	// +0x04 is Rva0007DF07Storage::m_04 (canonical header).
+	// +0x04 is Rva0007DF07::m_04 (canonical header).
 	Rva002186EBRef m_08; // +0x08
 	Rva002177CD m_0C; // +0x0C
 };
