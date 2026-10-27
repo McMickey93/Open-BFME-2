@@ -1182,6 +1182,18 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Assigned table-data audit (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `Rva002D22CAInit.cpp` remains blocked by its seven existing address-named table declarations. The matched row's DIR32 references agree with `reverse/data_ledger.csv` at RVAs 0x009BC890, 0x009BC998, 0x009BC9C0, 0x009BCAC8, 0x009BCBAC, 0x009BCBC4 and 0x009BCBDC, but every ledger entry is unowned. `build/link-worker-w6/row-reference-witnesses.log` records the individual native references. No alternative existing global definer was found and no data definition or hatch was added. Next check: recover and admit those table owners through the data lane. Clearance and census confirmation remain pending.
 
+**Split GameSpy pinger data repair (2026-10-27, inspected `67098f8d8b`, index
+`bf3dd31211`):** peerPing.c and pingerMain.c now share eight globals through
+their existing data-ledger definitions instead of defining private duplicates.
+All 19 rows remain exact, both ordinary previews remain LINKS (2,770 authored
+bytes total), and `repair_queue.py retire data` removes eight duplicate-definition
+keys. The [scoped evidence](../reverse/attempt_support/gamespy-pinger-shared-data-20261027.md)
+records the retained owners and two reversed piSettingData trials. Its remaining
+duplicate changes store scheduling in piProcessTrip2 when made extern; the four
+piNextID keys need reconciliation with RvaSmallLeafTransfers.cpp's existing union
+owner. Those five keys remain registered. Clearance is limited to the eight
+duplicate-definition keys; no census or image-ownership gain is claimed.
+
 ### LINK-008: include inventories prevent strict reusable graphics receipts
 
 **Status: Blocked on complete include inventories. Updated: 2026-10-26.**
@@ -4082,6 +4094,13 @@ current BfmeDfe6e4_rva00225492.cpp provider both preview LINKS (1,395 and 78
 authored bytes), and all five execute-unit rows byte-verify. This confirms the
 existing repair for this additional caller; census confirmation remains pending.
 Checks are recorded in [the scoped evidence](../reverse/attempt_support/upgradedie-data-index-20261027.md).
+
+Follow-up verification (2026-10-27, `67098f8d8b`): the default queue served
+W3DDisplayRva00045213.cpp's historical BFME_DX8_Thread_Lock blocker. Paired with
+the current BfmeDX8ThreadLock.cpp provider, both preview LINKS (383 and 247
+authored bytes); all three screenshot-unit rows pass byte verification. No
+source change was needed. [Scoped checks](../reverse/attempt_support/gamespy-pinger-shared-data-20261027.md)
+extend the existing repair's caller evidence; census confirmation remains pending.
 
 ### LINK-110: a class view omits its base's out-of-line destructor, so an unused implicit inline dtor references an unprovided grand-base
 Status: Open (SubObjectsUpgrade subset repaired). Updated: 2026-10-27; inspected revision: 952d800df1; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.

@@ -52,17 +52,18 @@ typedef struct piQueuedCallback
 	pingerGotPing callback;
 } piQueuedCallback;
 
+/* Externally linked state is shared with peerPing.c through its ledger owner. */
 static PINGERBool piSettingData;
-static SOCKET piSocket = INVALID_SOCKET;
-static PINGERBool piInitialized;
-static pingerGotPing piPingerPinged;
-static void *piPingerPingedParam;
-static pingerSetData piPingerSetData;
-static void *piPingerSetDataParam;
+extern SOCKET piSocket;
+extern PINGERBool piInitialized;
+pingerGotPing piPingerPinged;
+extern void *piPingerPingedParam;
+pingerSetData piPingerSetData;
+void *piPingerSetDataParam;
 static PINGERBool piUDPEnabled;
 static uint16 piNextID;
-static DArray piActivePingList;
-static unsigned int piLastThinkTime;
+extern DArray piActivePingList;
+extern unsigned int piLastThinkTime;
 static DArray piCallbacks;
 
 static uint16 piGetNextID(void)

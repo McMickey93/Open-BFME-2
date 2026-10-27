@@ -591,17 +591,9 @@ Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	wrong-name	_mat
 Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c	duplicate-def	_ciLocalIP	0x00A0BE00
 Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c	wrong-name	_ciLocalIP	0x00A0BE00
 Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerPing.c	duplicate-def	_piNextID	0x00A0C0EC
-Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerPing.c	duplicate-def	_piPingerPinged	0x00A0C0E0
-Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerPing.c	duplicate-def	_piPingerSetData	0x00A0C0FC
-Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerPing.c	duplicate-def	_piPingerSetDataParam	0x00A0C0F0
 Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerPing.c	wrong-name	_piNextID	0x00A0C0EC
-Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piActivePingList	0x00A0C0F8
-Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piInitialized	0x00A0C108
-Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piLastThinkTime	0x00A0C100
 Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piNextID	0x00A0C0EC
-Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piPingerPingedParam	0x00A0C0E8
 Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piSettingData	0x00A0C104
-Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	duplicate-def	_piSocket	0x009DBDEC
 Code/GameEngine/Source/GameNetwork/GameSpy/pinger/pingerMain.c	wrong-name	_piNextID	0x00A0C0EC
 Code/GameEngine/Source/GameNetwork/LANAPILobbyMenuForwarders.cpp	wrong-name	?g_Va00E03354@@3PAURva004469D1Receiver@@A	0x00A03354
 Code/GameEngine/Source/GameNetwork/Rva00803890FeslDtor.cpp	duplicate-def	_Rva00803890Vt2Anchor	0x008E3F08

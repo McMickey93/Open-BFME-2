@@ -1,7 +1,6 @@
 // cl: /DNDEBUG /MD -Ireference/shims/gamespy
-/* GameSpy Peer SDK pinger shutdown path.  The globals are kept TU-local in
-   the original SDK; they are extern here so the matcher can pin their retail
-   addresses while the remainder of peerPing.c is recovered. */
+/* GameSpy Peer SDK pinger shutdown path. The split response-trip unit shares
+   these globals through their existing data-ledger owners. */
 
 #include <winsock.h>
 #include <stdlib.h>
@@ -11,6 +10,7 @@ typedef int GSIBool;
 typedef void *DArray;
 
 typedef void (*pingerGotPing)(unsigned int, unsigned short, int, const char *, int, void *);
+typedef void (*pingerSetData)(unsigned int, unsigned short, char *, int, void *);
 
 typedef struct piQueuedCallback
 {
@@ -36,18 +36,18 @@ typedef struct piActivePing
 	void *replyParam;
 } piActivePing;
 
-static GSIBool piInitialized;
+GSIBool piInitialized;
 static GSIBool piSettingData;
-static SOCKET piSocket = INVALID_SOCKET;
-static DArray piActivePingList;
+SOCKET piSocket = INVALID_SOCKET;
+DArray piActivePingList;
 static DArray piCallbacks;
-static void *piPingerPinged;
-static void *piPingerPingedParam;
-static void *piPingerSetData;
-static void *piPingerSetDataParam;
+extern pingerGotPing piPingerPinged;
+void *piPingerPingedParam;
+extern pingerSetData piPingerSetData;
+extern void *piPingerSetDataParam;
 static GSIBool piUDPEnabled;
 static unsigned short piNextID;
-static int piLastThinkTime;
+unsigned int piLastThinkTime;
 
 int __stdcall closesocket(SOCKET socket);
 void SocketStartUp(void);
@@ -189,8 +189,8 @@ static void piCheckTimeouts(void)
 	}
 }
 
-int pingerInit(register const char *localAddress, register unsigned short localPort, void *pinged,
-	void *pingedParam, void *setData, void *setDataParam)
+int pingerInit(register const char *localAddress, register unsigned short localPort, pingerGotPing pinged,
+	void *pingedParam, pingerSetData setData, void *setDataParam)
 {
 	if (piInitialized)
 		return 0;
