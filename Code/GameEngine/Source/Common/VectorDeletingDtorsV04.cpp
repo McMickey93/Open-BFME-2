@@ -13,7 +13,7 @@
 //   0x003AA02D  0x003A9F8A  0x1C  0x00C1C218#0
 //   0x003AA704  0x003AA6BD  0x48  0x00C1C270#0
 
-void operator delete[](void *p);
+#include <new>
 
 namespace FXParticleSystem
 {
