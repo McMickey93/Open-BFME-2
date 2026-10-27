@@ -7,7 +7,7 @@
 // g_00DFF078 and rowed releaseBuffer 0x00036410; flag +0x60 selects ownership.
 #include "ascii_string.h"
 
-void __cdecl operator delete(void *);
+#include <new>
 
 class Image
 {

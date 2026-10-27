@@ -22,7 +22,7 @@
 struct TargetRef00217D4C {void *vtable;int references;};
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C*);
 
-void *__cdecl operator new(unsigned int);
+#include <new>
 struct Rva00080221RefImpl { virtual ~Rva00080221RefImpl() {} int m_ref; Rva00080221RefImpl() : m_ref(0) {} };
 class Rva0023E8D8Impl : public Rva00080221RefImpl { public: void *m_func; Rva0023E8D8Impl(void *p) { m_func = *(void **)p; } };
 class Rva0023E8D8 { Rva0023E8D8Impl *m_ptr; public: __declspec(noinline) Rva0023E8D8(void *p) { Rva0023E8D8Impl *q = new Rva0023E8D8Impl(p); m_ptr = q; if (q) ++q->m_ref; } };
