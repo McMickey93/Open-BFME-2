@@ -11,7 +11,7 @@
 // default 0x007BAC1C shared for both str() nulls, ret 4. Layout: two
 // StringBases + int + 16B + int + byte = 33, padded to 36.
 
-extern "C" void *__cdecl memcpy(void *dst, const void *src, unsigned int n);
+#include <string.h>
 
 template <typename T>
 class StringBase

@@ -4,7 +4,7 @@
 // Retail-measured BFME2 repair: the four cleared tables bake to their
 // BFME2 absolutes (the donor's externs carry the BFME1 addresses).
 
-extern "C" void * __cdecl memset(void *destination, int value, unsigned int bytes);
+#include <string.h>
 
 #pragma intrinsic(memset)
 

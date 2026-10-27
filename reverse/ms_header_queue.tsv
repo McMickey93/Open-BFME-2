@@ -27,9 +27,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterAreaRenderables.
 Code/Libraries/Source/WWVegas/WWDebug/Rva0088A7E0UpdateFrameStatus.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	wsprintfA:same,wsprintf:same
 Code/stlport/FileSizeHelper.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	GetFileSize:same,GetLastError:same
 Code/stlport/NarrowFilebufInputError.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	UnmapViewOfFile:same,CloseHandle:same
-Code/GameEngine/Source/Common/Bfme5Ninety.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	strlen:same
-Code/GameEngine/Source/Common/Bfme5SeventySeven.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same
-Code/GameEngine/Source/Common/BfmeAssignRecord36Assign.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcpy:same
 Code/GameEngine/Source/Common/BfmeConv1228.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcmp:same
 Code/GameEngine/Source/Common/BfmeConv1229.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memcmp:same
 Code/GameEngine/Source/Common/BfmeConv1351.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	memset:same

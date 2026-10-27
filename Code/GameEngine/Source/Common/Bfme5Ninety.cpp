@@ -4,7 +4,7 @@
 // Code/GameEngine/Source/Common/Bfme5Ninety.cpp); trimmed to the single T1
 // body the sweep places.
 
-extern "C" unsigned int strlen(const char *text);
+#include <string.h>
 #pragma intrinsic(strlen)
 
 // Three markers and something other than a blank behind them.
