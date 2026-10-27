@@ -28,10 +28,16 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 #define _STLP_NO_EXCEPTIONS 1
 #include <vector>
 #include "ascii_string.h"
-// Suppress this TU's non-retail copy of ??$_Destroy@PAUBfmePod128@@@_STL@@YAXPAUBfmePod128@@0@Z:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
+// vector<BfmePod128>::_M_clear's range destroy is retail's rowed
+// _Destroy<Rva0032A3A9Element*> (0x0032B580); forward to it so this TU's
+// _M_clear copy calls that owner rather than an unaddressed _Destroy<BfmePod128*>.
 struct BfmePod128;
-namespace _STL { template <> void _Destroy<BfmePod128 *>(BfmePod128 *,BfmePod128 *); }
+class Rva0032A3A9Element;
+namespace _STL {
+template <> void _Destroy<Rva0032A3A9Element *>(Rva0032A3A9Element *, Rva0032A3A9Element *);
+template <> __declspec(dllimport) __forceinline void _Destroy<BfmePod128 *>(BfmePod128 *__first, BfmePod128 *__last)
+{ _Destroy(reinterpret_cast<Rva0032A3A9Element *>(__first), reinterpret_cast<Rva0032A3A9Element *>(__last)); }
+}
 // Suppress this TU's non-retail copy of ??$__destroy_aux@PAUBfmePod128@@@_STL@@YAXPAUBfmePod128@@0ABU__false_type@0@@Z:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 struct BfmePod128;
@@ -84,6 +90,10 @@ struct BfmeVectorRecord002AF478 { char m_pad[36]; public: BfmeVectorRecord002AF4
 struct BfmeStringRecord0040360E { char m_pad[16]; public: BfmeStringRecord0040360E(const BfmeStringRecord0040360E &); ~BfmeStringRecord0040360E(); };
 // 24-byte element; layout owner StringRecordCopyBFME2.cpp.
 struct BfmeStringRecord00404BF3 { char m_pad[24]; public: BfmeStringRecord00404BF3(const BfmeStringRecord00404BF3 &); ~BfmeStringRecord00404BF3(); };
+// Its _M_clear's range destroy is the rowed Rva00405337Clear (0x00405337).
+void __cdecl Rva00405337Clear(void *, void *);
+namespace _STL { template <> __declspec(dllimport) __forceinline void _Destroy<BfmeStringRecord00404BF3 *>(BfmeStringRecord00404BF3 *__first, BfmeStringRecord00404BF3 *__last)
+{ Rva00405337Clear(__first, __last); } }
 
 // 24-byte element; layout owner NarrowStringRecord00427F75Helpers.cpp.
 struct BfmeNarrowRecord00427F75 { char m_pad[24]; public: BfmeNarrowRecord00427F75(const BfmeNarrowRecord00427F75 &); ~BfmeNarrowRecord00427F75(); };
