@@ -111,10 +111,9 @@ public:
 #include "Common/Xfer.h"
 
 #include "GameLogic/ExperienceTracker.h"
-#include "GameLogic/GameLogic.h"		// for logic frame count
+#include "../Common/GameLogicObjectLookupView.h"
 #include "GameLogic/Object.h"
 #include "GameLogic/Locomotor.h"
-#include "GameLogic/Module/AIUpdate.h"
 #include "GameLogic/Module/BodyModule.h"
 #include "GameLogic/Module/ContainModule.h"
 #include "GameLogic/Module/PhysicsUpdate.h"
