@@ -1785,14 +1785,6 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv1303.cpp	?bfmeFwdSWA@BfmeThi
 alternatename	Code/GameEngine/Source/Common/BfmeConv1316.cpp	?bfmeBaseSJ@BfmeThingSJ@@QAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1316.cpp	?bfmeStepTKD@@YAXNH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1324.cpp	?g_bfmeVftTUA@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1324.cpp	?g_bfmeVftTVA@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1325.cpp	?g_bfmeVftATWA@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1325.cpp	?g_bfmeVftATWB@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1325.cpp	?g_bfmeVftBTWA@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1327.cpp	?g_bfmeVftATYA@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1327.cpp	?g_bfmeVftBTYA@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1338.cpp	?g_bfmeVftBUNA@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1338.cpp	?g_bfmeVftUNC@@3PAPAXA	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1339.cpp	_bfmeGoUPC	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1339_GoUPB.cpp	?bfmeCallEMC@BfmeObjEMC@@QAEXPAX00@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1339_GoUPB.cpp	?bfmeFillURC@BfmeSrcURC@@QAEDPAXPAD0@Z	1
@@ -1800,17 +1792,13 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv1339_GoUPB.cpp	?bfmeGetStrVH
 alternatename	Code/GameEngine/Source/Common/BfmeConv1339_GoUPB.cpp	?bfmeGetStrVJI@BfmeMsgVJI@@QAEDPBDPADH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1339_GoUPB.cpp	?bfmeGetStrVJT@BfmeMsgVJT@@QAEDPBDPADH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1343.cpp	??1Gen008030A0@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1343.cpp	?g_bfmeVftUUA@@3PAPAXA	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1347.cpp	?bfmeGetAUZA@BfmeSubAUZA@@QBE?AUBfmeHandleUZA@@HH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1349.cpp	?bfmeAppendVCB@BfmeBufVCB@@QAEXPBD@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1349.cpp	?bfmeFreeVCC@@YAXPAXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1349.cpp	?clearSlot@Rva007FA2C0@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1369.cpp	??1Rva00801FB0Elem@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1369.cpp	?g_bfmeVftAVHW@@3PAHA	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1385.cpp	?bfmeGoVJH@BfmeOwner803BF0@@QAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1390.cpp	?bfmeUseTFC@BfmeSinkTFC@@QAEXPAX0@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1393.cpp	?g_bfmeVftAVJS@@3PAHA	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1393.cpp	?g_bfmeVftBVJS@@3PAHA	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1417.cpp	?bfmeSetSizeVLR@Rva007EB8B0Log@@QAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1427.cpp	?bfmeAppendVME@BfmeStrVME@@QAEXID@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1427.cpp	?bfmeFwdTwoSVA@BfmeThingSVA@@QAEXHH@Z	1
@@ -2072,7 +2060,6 @@ alternatename	Code/GameEngine/Source/Common/FlatMultiVptrDestructors.cpp	?anchor
 alternatename	Code/GameEngine/Source/Common/FlatMultiVptrDestructors.cpp	?anchor@Rva0025A390FlatDtorM0@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/FunctorNotSetCtor.cpp	_vtbl_00BD3B54	1
 alternatename	Code/GameEngine/Source/Common/GameClient_addIconLayer.cpp	?pushBack@DrawableList@@QAEXAAPBVDrawable@@@Z	1
-alternatename	Code/GameEngine/Source/Common/GameMessageAllocArg.cpp	?g_00C09844@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/GameModePreferences.cpp	??1LANPreferences@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/GapBodiesSeat1A.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/GameEngine/Source/Common/GapBodiesSeat1A_ModuleFactoryDataAt0025464A.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
@@ -2223,7 +2210,6 @@ alternatename	Code/GameEngine/Source/Common/RTS/Rva000D3FA0Destructor.cpp	?loadP
 alternatename	Code/GameEngine/Source/Common/RTS/Rva000D3FA0Destructor.cpp	?xfer@Rva000D3FA0Map@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/Common/RTS/Rva000D3FA0Destructor.cpp	?xfer@Rva000D3FA0PoolObject@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/Common/RTS/Rva00263895Init.cpp	??0AICommandParmsTail@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/RTS/Rva00263895Init.cpp	?g_00BF91AC@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/RTS/Rva00263895Init.cpp	?init@Rva00263895Member@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/RTS/ScienceStoreFriendLookupScience.cpp	?lookupScience@ScienceStore@@QBE?AW4ScienceType@@PBD@Z	1
 alternatename	Code/GameEngine/Source/Common/RTS/ShroudManagerImpl008FBA40.cpp	?getShroudStatusForPlayer@ShroudManager@@QBE?AW4CellShroudStatus@@HPBUCoord3D@@@Z	1
@@ -2307,7 +2293,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0020DAE0.cpp	?g_00DFE1AC@@3V?$vec
 alternatename	Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0021DE75Wrapper.cpp	?rva002191FE@Rva002191FEHost@@QAEPAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0021DE75Wrapper.cpp	?rva0021DAA8@Rva0021DE75Table@@QAEPAXPAX0@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00222C93Concat.cpp	?g_00BE6D5C@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva00224CDCFinish.cpp	?dup_00224c76@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00229811Ctor.cpp	??0TreeHintOpaque0043671B@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00229811Ctor.cpp	??1Rva005B804B@@QAE@XZ	1
@@ -2415,7 +2400,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	??1Rva00304D
 alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	??1Rva00304DC7Record@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	?insert@Rva00304DC7Map@@AAE?AU?$_Rb_tree_iterator@URva00304DC7Entry@@U?$_Nonconst_traits@URva00304DC7Entry@@@_STL@@@_STL@@U23@ABURva00304DC7Entry@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00304DC7Permuted.cpp	?lower_bound@Rva00304DC7Map@@AAEPAU?$_Rb_tree_node@URva00304DC7Entry@@@_STL@@ABVAsciiString@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00328A75Ctor.cpp	?g_00C0D8C4@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva003304A4CameraAnimationListWrite.cpp	?visitFree@Rva003304A4AnimationVisitor@@UAEXPAVRva003304A4Animation@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva003304A4CameraAnimationListWrite.cpp	?visitFree@Rva003304A4TypeTagWriter@@UAEXPAVRva003304A4Animation@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva003304A4CameraAnimationListWrite.cpp	?visitFreeConst@Rva003304A4AnimationVisitor@@UAEXPAVRva003304A4Animation@@@Z	1
@@ -2476,8 +2460,6 @@ alternatename	Code/GameEngine/Source/Common/Rva003AE2CFCopyCtor.cpp	_Rva003AE2CF
 alternatename	Code/GameEngine/Source/Common/Rva003B1F65Derived.cpp	??1RealTimeStatsPreferences@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva003B1F65Derived.cpp	??1StrategicStatsPreferences@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva003C4B2DInsert.cpp	?rva003BD4C3@@YAXPAX00@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva003FCD04Finish.cpp	?g_007FDC60@@3QBQBXB	1
-alternatename	Code/GameEngine/Source/Common/Rva003FCD04Finish.cpp	?g_00837C20@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva003FD14D.cpp	?vbfunc@Rva003FD14DBase@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva003FD14D.cpp	?vfunc@Rva003FD14D@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva003FDCEB.cpp	?rva003FDC46@Rva003FDCEB@@QAEHXZ	1
@@ -2506,7 +2488,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0042D5DDUpdate.cpp	?TheRva00222A8
 alternatename	Code/GameEngine/Source/Common/Rva0042D632Method.cpp	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	1
 alternatename	Code/GameEngine/Source/Common/Rva0042FCE6Dtor.cpp	?rvaSlot0@Rva0042FCE6Base@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00431978.cpp	?rva00431978@Rva00431978@@QAE_NPAUICoord2D@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00431E95.cpp	?g_00C3C9AC@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva00432FA7Ctor.cpp	?g_00C3CA30@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva00451F45Derived.cpp	?f1@Rva00451F45_M1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00452FE0Same.cpp	?bfmeSameSX@@YA_NABUBfmeInnerSX@@0@Z	1
@@ -2568,7 +2549,6 @@ alternatename	Code/GameEngine/Source/Common/Rva004C0D4F.cpp	?bfmeAskDHB@BfmeOute
 alternatename	Code/GameEngine/Source/Common/Rva004C0D4F.cpp	?bfmeAskDHC@BfmeOuterDHC@@QAE_NXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004CE36Dtor.cpp	??0Rva0004CDAFSlot@@QAE@XZ	2
 alternatename	Code/GameEngine/Source/Common/Rva004CE36Dtor.cpp	??1Rva0004CDAFSlot@@QAE@XZ	2
-alternatename	Code/GameEngine/Source/Common/Rva004DF418Finish.cpp	?g_00C61588@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva004E063FFactory.cpp	?rva0052B003@Rva0052B278@@QAEX_N@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva004E0A96Flush.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva004E32D5Ctor.cpp	??0BfmeVNITree@@QAE@XZ	1
@@ -2628,7 +2608,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v02@Rva0053ED1A
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v03@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v04@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0054467AFinish.cpp	_theLogicRandomLogFile	1
-alternatename	Code/GameEngine/Source/Common/Rva0055F218Ctor.cpp	?g_00C1D1F4@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva0056AC26Derived.cpp	?ac26Slot1@Rva0056AC26@@UAE_NXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00576FD3Permuted.cpp	?observerSlot0@SecondBase005D2111@@UAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00576FD3Permuted.cpp	?observerSlot1@SecondBase005D2111@@UAEXPAXI@Z	1
@@ -2638,7 +2617,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00576FD3Permuted.cpp	?observerSlo
 alternatename	Code/GameEngine/Source/Common/Rva00579731Dtor.cpp	??0Rva005796FC@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00579731Dtor.cpp	??1Rva005796FC@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0057A51CApt.cpp	?g_Va007C9260@@3QBGB	1
-alternatename	Code/GameEngine/Source/Common/Rva0057ACEBCtor.cpp	?g_00C6F090@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva0057BCD7Ctor.cpp	?base0@Rva0057BCD7Base0@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00589079Derived.cpp	??1Rva00019565FlatBase@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00589079Derived.cpp	?f2@Rva00481F82_S2@@UAEXXZ	1
@@ -2684,7 +2662,6 @@ alternatename	Code/GameEngine/Source/Common/Rva005CDF6CCtor.cpp	??1Rva005CDF6C@@
 alternatename	Code/GameEngine/Source/Common/Rva005CF8A1Ctor.cpp	??1Rva005CF8A1Base@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005CFFE8.cpp	_vtbl_00C752A8	1
 alternatename	Code/GameEngine/Source/Common/Rva005D1129.cpp	_vtbl_00C755A4	1
-alternatename	Code/GameEngine/Source/Common/Rva005D1A6C.cpp	?g_00C42518@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva005D3B26Portrait.cpp	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	1
 alternatename	Code/GameEngine/Source/Common/Rva005DA831Ctor.cpp	??1Rva005DA831@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005DAC85Dtor.cpp	?Rva0055AED6@Rva0055B0CC@@UAEXPAX0@Z	1
@@ -2736,8 +2713,6 @@ alternatename	Code/GameEngine/Source/Common/Rva006BE840Construction.cpp	??0BfmeT
 alternatename	Code/GameEngine/Source/Common/Rva006BF5E0Overflow.cpp	?releaseBuffer@BfmeTailBE@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva006ECFC0Siblings.cpp	??1Rva006D6360@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00751EFDtor.cpp	??1Rva0007517F@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/Rva00785140HandleCtor.cpp	?g_00BC940C@@3QBQBXB	1
-alternatename	Code/GameEngine/Source/Common/Rva00789900Init.cpp	?g_Rva00789900Table@@3PAPAXA	1
 alternatename	Code/GameEngine/Source/Common/Rva0078F950FactoryDispatch.cpp	?dispatchFactory@Rva0078F770Owner@@QAEPAVGameWindow@@PAURva0078F950Record@@PAURva0078F770Secondary@@HH@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0078F950FactoryDispatch.cpp	?dispatchFactory@Rva0078F830Owner@@QAEHPAURva0078F950Record@@HHH@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0078F950FactoryDispatch.cpp	?flags@Rva0078F830Predicate@@QAEEXZ	1
@@ -2876,10 +2851,6 @@ alternatename	Code/GameEngine/Source/Common/System/Rva000ABB87ParserRegistration
 alternatename	Code/GameEngine/Source/Common/System/Rva000ABB87ParserRegistration.cpp	?bfmeSlot1@BfmeParserBindingBaseVE@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/System/Rva003F1E87DeleteRange.cpp	?doDelete@Rva003F1E87Holder@@QAEXPAVRva003F0C6C@@@Z	1
 alternatename	Code/GameEngine/Source/Common/System/Rva0050FAECDtor.cpp	_strcpy	1
-alternatename	Code/GameEngine/Source/Common/System/Rva0052BD59CopyCtor.cpp	?g_00861A70@@3QBQBXB	1
-alternatename	Code/GameEngine/Source/Common/System/Rva0052BDE6CopyCtor.cpp	?g_00C61DB4@@3QBQBXB	1
-alternatename	Code/GameEngine/Source/Common/System/Rva0052BE33CopyCtor.cpp	?g_00C61B78@@3QBQBXB	1
-alternatename	Code/GameEngine/Source/Common/System/Rva0052BEF0CopyCtor.cpp	?g_00C61DC4@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/System/Rva005D0034Handler.cpp	?c0@Rva005D0034Callback@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/System/Rva005D0034Handler.cpp	?reset@Rva000AD6F4@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/System/Rva005D00A6Ctor.cpp	??0Rva00221635@@QAE@ABVAsciiString@@@Z	1
@@ -2925,7 +2896,6 @@ alternatename	Code/GameEngine/Source/Common/System/XferException.cpp	_strcpy	1
 alternatename	Code/GameEngine/Source/Common/T1ReceiverSwappingThunks.cpp	?accept@T1Sink_005C8D40@@QAEPAXPAX0@Z	1
 alternatename	Code/GameEngine/Source/Common/T4VtableSetCtors.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/Common/T4VtableSetCtors.cpp	_vtbl_00C1C780_again	1
-alternatename	Code/GameEngine/Source/Common/TerrainTypes.cpp	?g_00BFDC6C@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Thing/FXBoneInfoVectorErase.cpp	?erase@?$vector@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@QAEPAUQuantityModifier@@PAU3@0@Z	1
 alternatename	Code/GameEngine/Source/Common/Thing/IntFloatMapSubscript.cpp	?erase@?$_Rb_tree@HU?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@_STL@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBHURva00358FEERecord@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHURva00358FEERecord@@@_STL@@@2@@2@@Z	1
 alternatename	Code/GameEngine/Source/Common/Thing/Module.cpp	??1Module@@QAE@XZ	1
@@ -3266,14 +3236,10 @@ alternatename	Code/GameEngine/Source/GameLogic/AI/AITNGuardAttackAggressorStateC
 alternatename	Code/GameEngine/Source/GameLogic/AI/AITNGuardAttackAggressorStateCtor.cpp	?slot02@State@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/AITNGuardAttackAggressorStateCtor.cpp	?slot03@State@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/AITNGuardInnerStateCtor.cpp	?update@State@@UAE?AW4StateReturnType@@XZ	1
-alternatename	Code/GameEngine/Source/GameLogic/AI/AttackObjectGroupOrderCtor.cpp	?g_0086A420@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/DirectInputKeyboardOpen.cpp	?ji_0062af20@@YGJPAXKPBXPAPAX0@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/AI/GarrisonObjectGroupOrderCtor.cpp	?g_0086A3C4@@3QBQBXB	1
-alternatename	Code/GameEngine/Source/GameLogic/AI/GarrisonObjectGroupOrderHolderCtor.cpp	?g_00C6A3C4@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/PathfinderRemoveUnit.cpp	?removeGoal@Pathfinder@@QAEXPAVObject@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/PathfinderRemoveUnit.cpp	?removePos@Pathfinder@@QAEXPAVObject@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/Rva00265254Ctor.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/AI/Rva0034B952Ctor.cpp	?g_00C122A0@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/GameLogic/Map/Rva0019B780Lookup_Rva0032d0b5.cpp	?Rva00194810@@YA?AURva0019B780Key@@ABVAsciiString@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Map/Rva0019B780Lookup_Rva0032d0b5.cpp	?find@Rva0019B780Tree@@QBEPAURva0019B780Node@@ABURva0019B780Key@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Map/Rva0019B850TeamRecUpdate_Rva0019BE80TeamRec_updateTeam.cpp	?find@Rva0032C07COwner@@QAEPAUTeamMapNode@@AAURva0002C4FD@@@Z	1
@@ -3351,8 +3317,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBe
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBehaviorResolver.cpp	?bfmeAskBJB@BfmeThingBJB@@QAE_NXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBehaviorResolver.cpp	?bfmeAskDSK@BfmeThingDSK@@QAE_NXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva002535A5Mask.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00588FFAFinish.cpp	?g_0084A50C@@3QBQBXB	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00588FFAFinish.cpp	?g_00870008@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorCtorThunk.cpp	?slot@ShareExperienceBehaviorIface1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorCtorThunk.cpp	?slot@ShareExperienceBehaviorIface2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorCtorThunk.cpp	?slot@ShareExperienceBehaviorInterface@@UAEXXZ	1
@@ -3630,7 +3594,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyCe
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyCenterDockUpdateConstructor.cpp	?supplyCenterDockUpdateIface3Anchor@SupplyCenterDockUpdateIface3@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdateModuleDataCtor.cpp	_vtbl_00C4BEF8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/EmotionTrackerUpdateDtor.cpp	?getBody@BehaviorModuleInterface@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/EmotionTrackerUpdateModuleDataCtor.cpp	?g_00C56530@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/EnragedUpdateModuleDataCtor.cpp	_vtbl_00C56980	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/FadeAndDieOrnamentUpdateModuleDataCtor.cpp	_vtbl_00BF3740	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/FireWeaponUpdateModuleDataCtor.cpp	_vtbl_00C4C110	1
@@ -3866,8 +3829,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1DE0DerivedCtors.cpp	?se
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1DE0DerivedCtors.cpp	?secondary@Rva007F2F80Object@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1DE0DerivedCtors.cpp	?secondary@Rva007FAE20Object@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1DE0DerivedCtors.cpp	?secondary@Rva007FC150Object@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007F55F0Teardown.cpp	?g_bfmeVftATWB@@3PAPAXA	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007F55F0Teardown.cpp	?g_bfmeVftBTWB@@3PAPAXA	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F5D10GameBrowser.cpp	?resetHpState@Rva007F5D10HostLookup@@QAEXPAVRva008022A0Owner@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F61E0HostedGameRequest.cpp	?BfmeGameBrowserVJPCallback@@YGXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F65E0GameReply.cpp	?bfmeDoBDB@BfmeSubBDB@@QAEXPAXH@Z	1

@@ -54,7 +54,7 @@ public:
 
 static int s_secondary0C;
 static int s_10;
-extern const void *const g_00C61588[];
+extern "C" const void *const __identifier("??_7Rva004DF324@@6B@")[];
 
 class Rva004DF418 : public ObjectHelper
 {
@@ -73,7 +73,7 @@ private:
 
 Rva004DF418::Rva004DF418(Thing *thing, const ModuleData *moduleData)
 	: ObjectHelper(thing, moduleData)
-	, m_vtable(g_00C61588)
+	, m_vtable(__identifier("??_7Rva004DF324@@6B@"))
 	, m_p0C(&s_secondary0C)
 	, m_p10(&s_10)
 	, m_24((void *)((char *)&moduleData + 3))
@@ -84,4 +84,3 @@ Rva004DF418::Rva004DF418(Thing *thing, const ModuleData *moduleData)
 
 // The global(s) below are defined elsewhere under another name at the same
 // address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00C61588@@3QBQBXB=??_7Rva004DF324@@6B@")

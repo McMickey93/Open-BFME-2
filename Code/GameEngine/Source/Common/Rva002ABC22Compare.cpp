@@ -9,7 +9,7 @@ public:
 };
 
 extern "C" const void *const __identifier("??_7Rva002AAD77@@6B@")[];
-extern const void *const g_00BFDC6C[];
+extern "C" const void *const __identifier("??_7Rva002AAD9C@@6B@")[];
 
 int Rva002AADB6Compare(Rva002AADB6Reader *a, Rva002AADB6Reader *b, int unused);
 
@@ -30,10 +30,10 @@ class __declspec(novtable) ReaderB002ABC22 : public Rva002AADB6Reader
 public:
 	ReaderB002ABC22(const void *p)
 	{
-		*(const void *const **)this = g_00BFDC6C;
+		*(const void *const **)this = __identifier("??_7Rva002AAD9C@@6B@");
 		m_arg = p;
 	}
-	virtual ~ReaderB002ABC22() { *(const void *const **)this = g_00BFDC6C; }
+	virtual ~ReaderB002ABC22() { *(const void *const **)this = __identifier("??_7Rva002AAD9C@@6B@"); }
 	const void *m_arg;
 };
 

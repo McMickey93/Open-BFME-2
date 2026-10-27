@@ -11,8 +11,7 @@ class BfmeParserRegistryVE;
 
 #include <new>
 
-extern const void *const g_00C0D8C4[];
-#pragma comment(linker, "/alternatename:?g_00C0D8C4@@3QBQBXB=??_7Rva00328A75@@6B@")
+extern "C" const void *const __identifier("??_7Rva00328A75@@6B@")[];
 
 class Rva00328C5E
 {
@@ -36,6 +35,6 @@ private:
 
 Rva00328A75::Rva00328A75(int a, int b, int c, BfmeParserRegistryVE *registry, const AsciiString *label)
 {
-	*(const void **)this = g_00C0D8C4;
+	*(const void **)this = __identifier("??_7Rva00328A75@@6B@");
 	m_04 = new Rva00328C5E(reinterpret_cast<int>(this), a, b, c, registry, label);
 }

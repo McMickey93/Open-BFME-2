@@ -44,7 +44,7 @@ BfmeThingTUA::BfmeThingTUA()
 	m_bfme08 = 0;
 }
 
-extern void *g_bfmeVftTVA[];
+extern "C" void *__identifier("??_7Rva00CE12FCMutex@@6B@")[];
 
 // BFME2 releases the TVA handle with CloseHandle (kernel32 slot 0xBBA180)
 // and frees the vector with scalar operator delete (0x2FD60), where BFME1
@@ -64,7 +64,7 @@ public:
 void *BfmeThingTVA::bfmeDelTVA(unsigned char flags)
 {
 	HANDLE h = m_bfmeHandle;
-	m_bfmeVft = g_bfmeVftTVA;
+	m_bfmeVft = __identifier("??_7Rva00CE12FCMutex@@6B@");
 	if (h)
 		CloseHandle(h);
 	reinterpret_cast<Rva00CE1E14Base *>(this)->Rva00CE1E14Base::~Rva00CE1E14Base();
@@ -129,6 +129,3 @@ void *BfmeThingTVC::bfmeDelTVC(unsigned char flags)
 // ?g_bfmeVftTUA@@3PAPAXA: the global at VA 0xce0f20 is ?vftable_011296B0@@3HA.
 #pragma comment(linker, "/alternatename:?g_bfmeVftTUA@@3PAPAXA=?vftable_011296B0@@3HA")
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_bfmeVftTVA@@3PAPAXA=??_7Rva00CE12FCMutex@@6B@")

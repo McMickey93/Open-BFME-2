@@ -2,7 +2,7 @@
 // ?Rva00222C93Append@@YAAAVAsciiString@@AAV1@PBD@Z @0x00222C93 56B
 // Free concat helper wrapping arg as CharSource then StringBase concat.
 // Evidence: EH_prolog plus concat 0x00036A30 plus g_00BE6D5C vtable store plus caller 0x002250F9; same 56B shape as 0x0059B0DD and 0x00317C68.
-extern const void *const g_00BE6D5C[];
+extern "C" const void *const __identifier("??_7Rva00222A19@@6B@")[];
 template <typename T>
 class CharSource
 {
@@ -19,10 +19,10 @@ class __declspec(novtable) CharSourceNarrow00222C93 : public CharSource<char>
 public:
     CharSourceNarrow00222C93(const char *s)
     {
-        *(const void **)this = g_00BE6D5C;
+        *(const void **)this = __identifier("??_7Rva00222A19@@6B@");
         m_str = s;
     }
-    virtual ~CharSourceNarrow00222C93() { *(const void **)this = g_00BE6D5C; }
+    virtual ~CharSourceNarrow00222C93() { *(const void **)this = __identifier("??_7Rva00222A19@@6B@"); }
     int getLength() const;
     void _gap() const;
     int getChars(char *dest) const;
@@ -38,4 +38,3 @@ AsciiString &Rva00222C93Append(AsciiString &dst, const char *src)
 
 // The global(s) below are defined elsewhere under another name at the same
 // address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00BE6D5C@@3QBQBXB=??_7Rva00222A19@@6B@")

@@ -8,7 +8,7 @@
 #include "ascii_string.h"
 
 
-extern const void *const g_00C61DB4[];
+extern "C" const void *const __identifier("??_7Rva004E1B00@@6B@")[];
 
 class EmptyBase
 {
@@ -29,15 +29,12 @@ private:
 };
 
 Rva0052BDE6::Rva0052BDE6(const Rva0052BDE6 &other)
-	: m_vtable(g_00C61DB4)
+	: m_vtable(__identifier("??_7Rva004E1B00@@6B@"))
 	, m_str04(other.m_str04)
 	, m_str08(other.m_str08)
 {
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
 // This existing structural copy view names the same12B native MoveArmy record.
 // Keep its ABI bridge explicit; EmptyBase/manual-vptr type reconciliation is
 // deferred, not claimed solved by following the corrected real Snapshot table.
-#pragma comment(linker, "/alternatename:?g_00C61DB4@@3QBQBXB=??_7Rva004E1B00@@6B@")

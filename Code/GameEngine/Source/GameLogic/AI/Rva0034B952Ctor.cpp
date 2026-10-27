@@ -46,7 +46,7 @@ private:
 	char m_pad[0x28 - 4];
 };
 
-extern const void *const g_00C122A0[];
+extern "C" const void *const __identifier("??_7Rva0034144B@@6B@")[];
 
 class Rva0034B952 : public StateMachine
 {
@@ -58,7 +58,7 @@ private:unsigned char m_allocatedExtent[0x38];
 Rva0034B952::Rva0034B952(Object *owner, unsigned int name)
 	: StateMachine(owner, name, false)
 {
-	*(const void **)this = g_00C122A0;
+	*(const void **)this = __identifier("??_7Rva0034144B@@6B@");
 	AIAttackState *aIAttackState = new AIAttackState((StateMachine *)this, false, true, false, (AttackExitConditionsInterface *)0);
 	((StateMachine *)this)->defineState(0xa, (State *)aIAttackState, 0, 0, (const StateConditionInfo *)0);
 	Rva00342B87 *s1 = new Rva00342B87((StateMachine *)this);
@@ -69,7 +69,6 @@ Rva0034B952::Rva0034B952(Object *owner, unsigned int name)
 
 // The global(s) below are defined elsewhere under another name at the same
 // address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00C122A0@@3QBQBXB=??_7Rva0034144B@@6B@")
 
 class Rva0034BA20Owner {
 public:Rva0034B952*createMachine();

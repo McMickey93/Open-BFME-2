@@ -5,7 +5,7 @@ class AssetReference
 public:
     AssetReference(const AssetReference &that);
 };
-extern const void *const g_00BC940C[];
+extern "C" const void *const __identifier("??_7Rva00785140Handle@@6B@")[];
 class Rva00785140Handle
 {
 public:
@@ -14,10 +14,7 @@ private:
     const void *m_vptr;
     AssetReference m_ref;
 };
-Rva00785140Handle::Rva00785140Handle(const AssetReference &that) : m_vptr(g_00BC940C), m_ref(that)
+Rva00785140Handle::Rva00785140Handle(const AssetReference &that) : m_vptr(__identifier("??_7Rva00785140Handle@@6B@")), m_ref(that)
 {
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00BC940C@@3QBQBXB=??_7Rva00785140Handle@@6B@")

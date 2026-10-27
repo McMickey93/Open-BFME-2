@@ -41,7 +41,7 @@ private:
 extern "C" const void *const __identifier("??_7Rva003ADE58@@6BV3Vt01111D90@@@")[];
 extern "C" const void *const __identifier("??_7Rva003ADE58@@6B@")[];
 extern "C" const void *const __identifier("??_7Snapshot@@6B@")[];
-extern const void *const g_00C1D1F4[];
+extern "C" const void *const __identifier("??_7Rva003ADE98@@6B@")[];
 extern "C" char s_slot3E4first;
 
 struct Src0055F218
@@ -54,7 +54,7 @@ struct Src0055F218
 
 struct Rva0055F218Sub
 {
-	Rva0055F218Sub() : m_v((void *)g_00C1D1F4), m_f(0.0f), m_b14(0), m_b15(0) {}
+	Rva0055F218Sub() : m_v((void *)__identifier("??_7Rva003ADE98@@6B@")), m_f(0.0f), m_b14(0), m_b15(0) {}
 	// Unwind funclet 0x00799A9D destroys this subobject (at +0xC) through the
 	// folded Snapshot destructor 0x0049B47C: restore the Snapshot table.
 	~Rva0055F218Sub() { m_v = (void *)__identifier("??_7Snapshot@@6B@"); }
@@ -83,6 +83,3 @@ Rva0055F218::Rva0055F218(unsigned int a, struct Src0055F218 &src)
 	m_b15 = src.m_3D;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00C1D1F4@@3QBQBXB=??_7Rva003ADE98@@6B@")

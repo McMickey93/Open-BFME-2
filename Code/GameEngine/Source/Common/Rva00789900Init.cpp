@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
 
-extern void *g_Rva00789900Table[];
+extern "C" void *__identifier("??_7W3DAptComponentView3D@@6B@")[];
 
 class Rva00789900Init
 {
@@ -25,7 +25,7 @@ Rva00789900Init::Rva00789900Init(unsigned char flag)
 {
 	m_04 = 0xffffffff;
 	m_08 = 0;
-	m_table = g_Rva00789900Table;
+	m_table = __identifier("??_7W3DAptComponentView3D@@6B@");
 	m_0c = 0;
 	m_10 = 0;
 	m_14 = flag;
@@ -37,6 +37,3 @@ Rva00789900Init::Rva00789900Init(unsigned char flag)
 	m_2c = 0;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_Rva00789900Table@@3PAPAXA=??_7W3DAptComponentView3D@@6B@")

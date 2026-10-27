@@ -8,8 +8,8 @@
 // at 0x0065D030 were already pinned, bfmeDtorATYA at 0x0066D900 rides with
 // this body. The vftable globals are masked DIR32.
 
-extern void *g_bfmeVftATYA[];
-extern void *g_bfmeVftBTYA[];
+extern "C" void *__identifier("??_7Rva00802040Owner@@6B@")[];
+extern "C" void *__identifier("??_7Rva00802040OwnerBase@@6B@")[];
 
 class BfmeSlotTYA
 {
@@ -47,7 +47,7 @@ public:
 
 void *BfmeThingTYA::bfmeDelTYA(unsigned char flags)
 {
-	m_vtable = g_bfmeVftATYA;
+	m_vtable = __identifier("??_7Rva00802040Owner@@6B@");
 	m_bfme04 = 0;
 	m_bfme28 = 0;
 	m_bfme30 = 0;
@@ -56,7 +56,7 @@ void *BfmeThingTYA::bfmeDelTYA(unsigned char flags)
 	m_bfmeA.bfmeDtorATYA();
 	m_bfmeB.bfmeDtorBTYA();
 	m_bfmeC.bfmeDtorBTYA();
-	m_vtable = g_bfmeVftBTYA;
+	m_vtable = __identifier("??_7Rva00802040OwnerBase@@6B@");
 	if (flags & 1)
 		bfmeFreeTYA(this, 0xd8);
 	return this;
@@ -68,7 +68,7 @@ void *BfmeThingTYA::bfmeDelTYA(unsigned char flags)
 // from the same donor, byte-identical; its name keeps the BFME 1 address token.
 void BfmeThingTYA::rva008020D0()
 {
-	m_vtable = g_bfmeVftATYA;
+	m_vtable = __identifier("??_7Rva00802040Owner@@6B@");
 	m_bfme04 = 0;
 	m_bfme28 = 0;
 	m_bfme30 = 0;
@@ -77,13 +77,9 @@ void BfmeThingTYA::rva008020D0()
 	m_bfmeA.bfmeDtorATYA();
 	m_bfmeB.bfmeDtorBTYA();
 	m_bfmeC.bfmeDtorBTYA();
-	m_vtable = g_bfmeVftBTYA;
+	m_vtable = __identifier("??_7Rva00802040OwnerBase@@6B@");
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_bfmeVftATYA@@3PAPAXA=??_7Rva00802040Owner@@6B@")
 
 // The global(s) below are defined elsewhere under another name at the same
 // address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_bfmeVftBTYA@@3PAPAXA=??_7Rva00802040OwnerBase@@6B@")

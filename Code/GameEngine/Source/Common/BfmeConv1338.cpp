@@ -10,7 +10,7 @@
 // BfmeA1053's initialization, now defined there under its existing name.
 typedef void (*Bfme1053Slot)();
 extern "C" Bfme1053Slot const bfmeVft1053A[6];
-extern void *g_bfmeVftBUNA[];
+extern "C" void *__identifier("??_7Rva00666BA0@@6B@")[];
 
 void bfmeFreeRecUNA(void *p);
 void bfmeFreeUNA(void *p, int n);
@@ -30,7 +30,7 @@ void *BfmeThingUNA::bfmeDelUNA(unsigned char flags)
 	bfmeFreeRecUNA(m_bfmeRec);
 	m_bfmeRec = 0;
 	m_bfme04 = 0;
-	m_bfmeVft = g_bfmeVftBUNA;
+	m_bfmeVft = __identifier("??_7Rva00666BA0@@6B@");
 	if (flags & 1)
 		bfmeFreeUNA(this, 0x14);
 	return this;
@@ -63,7 +63,7 @@ BfmeThingUNB *bfmeNewUNB(void)
 	return 0;
 }
 
-extern void *g_bfmeVftUNC[];
+extern "C" void *__identifier("??_7Gen0080ACD0@@6B@")[];
 
 class BfmeThingUNC;
 
@@ -103,7 +103,7 @@ public:
 // ??0BfmeThingUNC@@QAE@HPAUBfmeOwnerUNC@@@Z, retail 0x00674ED0 (62B).
 BfmeThingUNC::BfmeThingUNC(int a, BfmeOwnerUNC *o)
 {
-	m_bfmeVft = g_bfmeVftUNC;
+	m_bfmeVft = __identifier("??_7Gen0080ACD0@@6B@");
 	bfmeBaseUNC();
 	m_bfmeOwner = o;
 	m_bfmeA = a;
@@ -112,7 +112,3 @@ BfmeThingUNC::BfmeThingUNC(int a, BfmeOwnerUNC *o)
 	m_bfmeSink->bfmeRegisterUNC(this);
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_bfmeVftBUNA@@3PAPAXA=??_7Rva00666BA0@@6B@")
-#pragma comment(linker, "/alternatename:?g_bfmeVftUNC@@3PAPAXA=??_7Gen0080ACD0@@6B@")

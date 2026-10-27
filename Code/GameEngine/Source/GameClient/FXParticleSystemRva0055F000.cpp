@@ -110,7 +110,7 @@ struct Rva0055F000Particle
 
 extern const void *const g_00C1D1D4[];
 extern const void *const g_00C1D1E4[];
-extern const void *const g_00C1D1F4[];
+extern "C" const void *const __identifier("??_7Rva003ADE98@@6B@")[];
 extern "C" char s_slot3E4first;
 
 struct Src0055F218
@@ -123,7 +123,7 @@ struct Src0055F218
 
 struct Rva0055F218Sub
 {
-	Rva0055F218Sub() : m_v((void *)g_00C1D1F4), m_f(0.0f), m_b14(0), m_b15(0) {}
+	Rva0055F218Sub() : m_v((void *)__identifier("??_7Rva003ADE98@@6B@")), m_f(0.0f), m_b14(0), m_b15(0) {}
 	~Rva0055F218Sub();
 	void *m_v;
 	float m_f;

@@ -3,8 +3,8 @@
 // bfmeDelTWB are served here; the donor's TWC sibling lives in
 // BfmeConv1325TWC.cpp, so the whole file cannot land as one TU.
 
-extern void *g_bfmeVftATWA[];
-extern void *g_bfmeVftBTWA[];
+extern "C" void *__identifier("??_7BfmeThingTWA@@6BDemanglerPrimary@@@")[];
+extern "C" void *__identifier("??_7BfmeThingTWA@@6BRva00803080@@@")[];
 // 0xCE30A8, the vtable already emitted as ??_7Rva00665030@@6B@ (data ledger).
 extern "C" void *__identifier("??_7Rva00665030@@6B@")[];
 
@@ -30,8 +30,8 @@ public:
 
 void *BfmeThingTWA::bfmeDelTWA(unsigned char flags)
 {
-	m_bfmeVft0 = g_bfmeVftATWA;
-	m_bfmeVft1 = g_bfmeVftBTWA;
+	m_bfmeVft0 = __identifier("??_7BfmeThingTWA@@6BDemanglerPrimary@@@");
+	m_bfmeVft1 = __identifier("??_7BfmeThingTWA@@6BRva00803080@@@");
 	bfmeStepTWA();
 	m_bfmeStr.bfmeDtorTWA();
 	m_bfmeVft0 = __identifier("??_7Rva00665030@@6B@");
@@ -40,8 +40,8 @@ void *BfmeThingTWA::bfmeDelTWA(unsigned char flags)
 	return this;
 }
 
-extern void *g_bfmeVftATWB[];
-extern void *g_bfmeVftBTWB[];
+extern "C" void *__identifier("??_7Rva007F6D60Child@@6B@")[];
+extern "C" void *__identifier("??_7Rva007F6D60ChildBase@@6B@")[];
 
 class BfmeStrTWB
 {
@@ -74,19 +74,14 @@ public:
 // ?bfmeDelTWB@BfmeThingTWB@@QAEPAXE@Z
 void *BfmeThingTWB::bfmeDelTWB(unsigned char flags)
 {
-	m_bfmeVft = g_bfmeVftATWB;
+	m_bfmeVft = __identifier("??_7Rva007F6D60Child@@6B@");
 	m_bfme08 = 0;
 	m_bfmeA.bfmeDtorTWB();
 	m_bfmeB.bfmeDtorTWB();
 	m_bfmeList.bfmeDropTWB();
-	m_bfmeVft = g_bfmeVftBTWB;
+	m_bfmeVft = __identifier("??_7Rva007F6D60ChildBase@@6B@");
 	if (flags & 1)
 		::operator delete(this);
 	return this;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_bfmeVftATWB@@3PAPAXA=??_7Rva007F6D60Child@@6B@")
-#pragma comment(linker, "/alternatename:?g_bfmeVftATWA@@3PAPAXA=??_7BfmeThingTWA@@6BDemanglerPrimary@@@")
-#pragma comment(linker, "/alternatename:?g_bfmeVftBTWA@@3PAPAXA=??_7BfmeThingTWA@@6BRva00803080@@@")

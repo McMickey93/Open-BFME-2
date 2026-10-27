@@ -5,7 +5,7 @@
 // callers 0x004320B1; prev Rva00431C35 next Rva00431F0C same dir same flags.
 void __cdecl Rva004319F2Update();
 
-extern const void *const g_00C3C9AC[];
+extern "C" const void *const __identifier("??_7Rva00431A34@@6B@")[];
 
 struct Rva00431E95Helper
 {
@@ -48,7 +48,7 @@ int Rva00431E95::HandleButtonUp(void *p)
 		void *v = par->m_10;
 		h = (Rva00431E95Helper *)mem;
 		h->m_04 = m_04;
-		h->m_vptr = (void *)g_00C3C9AC;
+		h->m_vptr = (void *)__identifier("??_7Rva00431A34@@6B@");
 		h->m_08 = v;
 	}
 	else
@@ -62,4 +62,3 @@ int Rva00431E95::HandleButtonUp(void *p)
 
 // The global(s) below are defined elsewhere under another name at the same
 // address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00C3C9AC@@3QBQBXB=??_7Rva00431A34@@6B@")

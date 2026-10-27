@@ -20,7 +20,7 @@
 
 template <int N> class BitFlags;
 extern BitFlags<116> KINDOFMASK_NONE;
-extern const void *const g_00C56530[];
+extern "C" const void *const __identifier("??_7EmotionTrackerUpdateModuleData@@6B@")[];
 
 class BfmeFixedStorage0004543D
 {
@@ -80,7 +80,7 @@ private:
 
 // ??0EmotionTrackerUpdateModuleData@@QAE@XZ @0x4B115A
 EmotionTrackerUpdateModuleData::EmotionTrackerUpdateModuleData()
-	: m_vtable( g_00C56530 )
+	: m_vtable( __identifier("??_7EmotionTrackerUpdateModuleData@@6B@") )
 	, m_float08( 0.0f )
 	, m_value0C( 0 )
 	, m_value20( 0.0f )
@@ -103,6 +103,3 @@ EmotionTrackerUpdateModuleData::EmotionTrackerUpdateModuleData()
 		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00C56530@@3QBQBXB=??_7EmotionTrackerUpdateModuleData@@6B@")

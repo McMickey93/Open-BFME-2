@@ -1,6 +1,6 @@
 // Open-BFME5 conversions.
 
-extern void *g_bfmeVftUUA[];
+extern "C" void *__identifier("??_7Gen008030A0@@6B@")[];
 
 class BfmeLogUUA
 {
@@ -26,7 +26,7 @@ public:
 
 void BfmeThingUUA::bfmeGoUUA()
 {
-	m_bfmeVft = g_bfmeVftUUA;
+	m_bfmeVft = __identifier("??_7Gen008030A0@@6B@");
 	if (m_bfmeRef)
 		((BfmeLogUUA *)Rva007EB810Get())->bfmeWarnUUA((char *)"mProtoPingRef == 0", (char *)"\\views\\feslbuild_main\\jabba\\fesl\\source\\gamebrowser\\gamebrowserpinger.cpp", 0x45);
 	if (m_bfmeQueue)
@@ -41,4 +41,3 @@ void BfmeThingUUA::bfmeGoUUA()
 // The vtable this body installs is Gen008030A0's (same 0x14-byte class; the
 // dtor binding above names it). Y2ScalarDeleters emits that vtable; bind this
 // unit's invented global spelling to it so the reference links.
-#pragma comment(linker, "/alternatename:?g_bfmeVftUUA@@3PAPAXA=??_7Gen008030A0@@6B@")

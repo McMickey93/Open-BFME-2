@@ -18,7 +18,7 @@
 typedef bool Bool;
 #include "subsystem_interface.h"
 // ?Rva00317C68Append@@YAAAVAsciiString@@AAV1@PBD@Z @0x00317C68 56B: free concat helper appending a global CharSource plus second arg via StringBase concat 0x00036A30 with EH prolog. Evidence: retail mov scope plus EH_prolog plus g_00BFDC6C vtable store plus second-arg store plus concat call plus fs restore; caller 0x00317DF7; same EH shape as 0x00317C34 setter.
-extern const void *const g_00BFDC6C[];
+extern "C" const void *const __identifier("??_7Rva002AAD9C@@6B@")[];
 template <typename T> class StringBase;
 template <typename T>
 class CharSource
@@ -29,7 +29,6 @@ public:
 	virtual int getChars(T *dest) const = 0;
 };
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
-#pragma comment(linker, "/alternatename:?g_00BFDC6C@@3QBQBXB=??_7Rva002AAD9C@@6B@")
 
 // BFME2 terrain-type collection lookup. Layout is retail-owned: the list
 // head lives at this+0x0C, TerrainType carries its name at +0x04 and its
@@ -143,10 +142,10 @@ class __declspec(novtable) CharSourceSuffix : public CharSource<char>
 public:
 	CharSourceSuffix(const char *s)
 	{
-		*(const void **)this = g_00BFDC6C;
+		*(const void **)this = __identifier("??_7Rva002AAD9C@@6B@");
 		m_arg = s;
 	}
-	virtual ~CharSourceSuffix() { *(const void **)this = g_00BFDC6C; }
+	virtual ~CharSourceSuffix() { *(const void **)this = __identifier("??_7Rva002AAD9C@@6B@"); }
 	int getLength() const;
 	void _gap() const;
 	int getChars(char *dest) const;

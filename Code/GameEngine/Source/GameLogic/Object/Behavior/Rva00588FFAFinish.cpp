@@ -38,8 +38,8 @@ extern const void *const g_008700C4[12] = {
 	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"), // slot 10 0x000D43D0
 	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"), // slot 11 0x000D43D0
 };
-extern const void *const g_00870008[];
-extern const void *const g_0084A50C[];
+extern "C" const void *const __identifier("??_7Rva00484F5D@@6BMiBase1@@@")[];
+extern "C" const void *const __identifier("??_7Rva00484EF4@@6B@")[];
 // The retail table at RVA 0x0086FFFC: 2 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -64,7 +64,7 @@ public:
 	Rva00588FFA(Thing *thing, const ModuleData *data);
 
 private:
-	const void *m_10; // +0x10, init g_0086FFFC then overwritten g_0084A50C
+	const void *m_10; // +0x10, init g_0086FFFC then overwritten ??_7Rva00484EF4@@6B@
 	int m_14; // +0x14, and-zeroed
 };
 
@@ -75,11 +75,9 @@ Rva00588FFA::Rva00588FFA(Thing *thing, const ModuleData *data)
 	_ReadWriteBarrier();
 	m_14 = 0;
 	*(const void **)this = g_008700C4;
-	*(const void **)((char *)this + 0x0C) = g_00870008;
-	*(const void **)((char *)this + 0x10) = g_0084A50C;
+	*(const void **)((char *)this + 0x0C) = __identifier("??_7Rva00484F5D@@6BMiBase1@@@");
+	*(const void **)((char *)this + 0x10) = __identifier("??_7Rva00484EF4@@6B@");
 }
 
 // The global(s) below are defined elsewhere under another name at the same
 // address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_00870008@@3QBQBXB=??_7Rva00484F5D@@6BMiBase1@@@")
-#pragma comment(linker, "/alternatename:?g_0084A50C@@3QBQBXB=??_7Rva00484EF4@@6B@")

@@ -3,7 +3,7 @@
 // Member ctor: vtable g_00BF9200, Rva00263653 ctor at +4, ptr g_00BF91AC at +0x6c, floats 0.0f at +0x70/+0x74, byte 0 at +0x78.
 // Evidence: 40+ callers incl matched attemptHealing (DamageInfo 0x7C view) and AICommandParmsCtor tail; callee Rva00263653 ctor rowed; LINK BONUS init pin is void alias of this ctor body (mov eax esi proves ctor returns this).
 extern const void *const g_00BF9200[];
-extern const void *const g_00BF91AC[];
+extern "C" const void *const __identifier("??_7Rva0028C6D6@@6B@")[];
 
 class Rva00263653
 {
@@ -27,7 +27,7 @@ private:
 };
 
 Rva00263895Member::Rva00263895Member() throw()
-	: m_ptr(g_00BF91AC),
+	: m_ptr(__identifier("??_7Rva0028C6D6@@6B@")),
 	  m_f70(0.0f),
 	  m_f74(0.0f),
 	  m_b78(0)
@@ -39,6 +39,3 @@ Rva00263895Member::Rva00263895Member() throw()
 #pragma comment(linker, "/alternatename:??0AICommandParmsTail@@QAE@XZ=??0Rva00263895Member@@QAE@XZ")
 #pragma comment(linker, "/alternatename:?init@Rva00263895Member@@QAEXXZ=??0Rva00263895Member@@QAE@XZ")
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00BF91AC@@3QBQBXB=??_7Rva0028C6D6@@6B@")

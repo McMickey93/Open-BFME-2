@@ -6,12 +6,12 @@
 
 typedef unsigned char UnsignedByte;
 
-extern const void *const g_00C09844[];
+extern "C" const void *const __identifier("??_7BfmeNetGameMessageArgument@@6B@")[];
 
 class GameMessageArgument
 {
 public:
-	GameMessageArgument() { m_vptr = g_00C09844; }
+	GameMessageArgument() { m_vptr = __identifier("??_7BfmeNetGameMessageArgument@@6B@"); }
 	const void *m_vptr;
 	GameMessageArgument *m_next;
 	char m_bfme_body[0x1C - 0x08];
@@ -48,6 +48,3 @@ GameMessageArgument *GameMessage::allocArg(void)
 	return gameMessageArgument;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00C09844@@3QBQBXB=??_7BfmeNetGameMessageArgument@@6B@")

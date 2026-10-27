@@ -2,7 +2,7 @@
 // ??0Rva0057ACEB@@QAE@PBURva0057ACEBData@@@Z @0x0057ACEB 59B
 // Refcounted holder ctor: news 0x10 impl with vtable 0x0086F090 and copies 8B arg.
 // Evidence: stores vtable at new obj, callers pass 8B struct ptr with ecx=temp.
-extern const void *const g_00C6F090[];
+extern "C" const void *const __identifier("??_7Rva0057AA1F@@6B@")[];
 #include <new>
 struct Rva0057ACEBData
 {
@@ -19,7 +19,7 @@ public:
 	Rva0057ACEBImpl(const Rva0057ACEBData *initialData)
 	{
 		m_ref = 0;
-		*(const void * *)this = g_00C6F090;
+		*(const void * *)this = __identifier("??_7Rva0057AA1F@@6B@");
 		m_a = initialData->m_0;
 		m_b = initialData->m_4;
 	}
@@ -39,6 +39,3 @@ Rva0057ACEB::Rva0057ACEB(const Rva0057ACEBData *initialData)
 		++impl->m_ref;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00C6F090@@3QBQBXB=??_7Rva0057AA1F@@6B@")

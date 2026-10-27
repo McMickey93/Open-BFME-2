@@ -21,7 +21,7 @@ private:
 	unsigned char m_pad04[0x18 - 4];
 };
 
-extern const void *const g_0086A420[];
+extern "C" const void *const __identifier("??_7AttackObjectGroupOrder@@6B@")[];
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 
@@ -41,7 +41,7 @@ AttackObjectGroupOrder::AttackObjectGroupOrder()
 {
 	m_18 = OBJECTID_0;
 	_ReadWriteBarrier();
-	*(const void **)this = g_0086A420;
+	*(const void **)this = __identifier("??_7AttackObjectGroupOrder@@6B@");
 	m_1c = false;
 	m_20[0] = 0.0f;
 	m_20[1] = 0.0f;
@@ -52,7 +52,7 @@ AttackObjectGroupOrder::AttackObjectGroupOrder(Rva0036E346 *holder, int val)
 	: GroupOrder(holder)
 {
 	m_18 = (enum ObjectID)val;
-	*(const void **)this = g_0086A420;
+	*(const void **)this = __identifier("??_7AttackObjectGroupOrder@@6B@");
 	m_1c = false;
 	m_20[0] = 0.0f;
 	m_20[1] = 0.0f;
@@ -64,13 +64,10 @@ AttackObjectGroupOrder::AttackObjectGroupOrder(const AttackObjectGroupOrder &oth
 {
 	m_18 = OBJECTID_0;
 	_ReadWriteBarrier();
-	*(const void **)this = g_0086A420;
+	*(const void **)this = __identifier("??_7AttackObjectGroupOrder@@6B@");
 	m_1c = false;
 	m_20[0] = 0.0f;
 	m_20[1] = 0.0f;
 	m_20[2] = 0.0f;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_0086A420@@3QBQBXB=??_7AttackObjectGroupOrder@@6B@")

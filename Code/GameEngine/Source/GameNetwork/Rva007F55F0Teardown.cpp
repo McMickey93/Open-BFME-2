@@ -2,8 +2,8 @@
 // Converted from Code/gen_asm/d_007f2a50.asm (?d_007f55f0@@YAXXZ).
 // Same teardown as BfmeThingTWB::bfmeDelTWB without the scalar-delete tail.
 
-extern void *g_bfmeVftATWB[];
-extern void *g_bfmeVftBTWB[];
+extern "C" void *__identifier("??_7Rva007F6D60Child@@6B@")[];
+extern "C" void *__identifier("??_7Rva007F6D60ChildBase@@6B@")[];
 
 class BfmeStrTWB
 {
@@ -35,15 +35,11 @@ public:
 
 void Rva007F55F0Host::teardown()
 {
-	m_vft = g_bfmeVftATWB;
+	m_vft = __identifier("??_7Rva007F6D60Child@@6B@");
 	m_08 = 0;
 	m_a.bfmeDtorTWB();
 	m_b.bfmeDtorTWB();
 	m_list.bfmeDropTWB();
-	m_vft = g_bfmeVftBTWB;
+	m_vft = __identifier("??_7Rva007F6D60ChildBase@@6B@");
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_bfmeVftATWB@@3PAPAXA=??_7Rva007F6D60Child@@6B@")
-#pragma comment(linker, "/alternatename:?g_bfmeVftBTWB@@3PAPAXA=??_7Rva007F6D60ChildBase@@6B@")

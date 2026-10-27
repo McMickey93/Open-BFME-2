@@ -9,7 +9,7 @@
 #include "ascii_string.h"
 
 
-extern const void *const g_00C61B78[];
+extern "C" const void *const __identifier("??_7Rva004E179A@@6B@")[];
 
 class EmptyBase
 {
@@ -32,7 +32,7 @@ private:
 };
 
 Rva0052BE33::Rva0052BE33(const Rva0052BE33 &other)
-	: m_vtable(g_00C61B78)
+	: m_vtable(__identifier("??_7Rva004E179A@@6B@"))
 	, m_str04(other.m_str04)
 	, m_str08(other.m_str08)
 	, m_str0C(other.m_str0C)
@@ -40,6 +40,3 @@ Rva0052BE33::Rva0052BE33(const Rva0052BE33 &other)
 {
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00C61B78@@3QBQBXB=??_7Rva004E179A@@6B@")

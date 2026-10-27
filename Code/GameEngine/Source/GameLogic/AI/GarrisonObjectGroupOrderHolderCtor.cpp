@@ -19,7 +19,7 @@ private:
 	unsigned char m_pad04[0x18 - 4];
 };
 
-extern const void *const g_00C6A3C4[];
+extern "C" const void *const __identifier("??_7GarrisonObjectGroupOrder@@6B@")[];
 
 class GarrisonObjectGroupOrder : public GroupOrder
 {
@@ -34,12 +34,9 @@ GarrisonObjectGroupOrder::GarrisonObjectGroupOrder(Rva0036E346 *holder, int val)
 	: GroupOrder(holder)
 {
 	m_18 = (enum ObjectID)val;
-	*(const void **)this = g_00C6A3C4;
+	*(const void **)this = __identifier("??_7GarrisonObjectGroupOrder@@6B@");
 	m_1c[0] = 0.0f;
 	m_1c[1] = 0.0f;
 	m_1c[2] = 0.0f;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00C6A3C4@@3QBQBXB=??_7GarrisonObjectGroupOrder@@6B@")
