@@ -22,11 +22,26 @@ template <> bool StringBase<char>::isEmpty() const throw();
 typedef float Real;
 struct Coord3D;
 
-class Rva001F376E
+// The local record is a Snapshot-derived FX info (Rva001F376ECtor.cpp gives
+// the table evidence). Its destructor, called only by the unwind funclet
+// 0x0076B651, is the Snapshot-family fold 0x0049B47C: the own-table store is
+// dead behind the expanded base destructor, leaving mov [ecx],0x00BBB554.
+#define BFME_SNAPSHOT_CAPITALIZED_SLOTS
+#define BFME_SNAPSHOT_NAME_SLOT
+#define BFME_SNAPSHOT_NONCONST_NAME_SLOT
+#define BFME_SNAPSHOT_REFERENCE_XFER
+#include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
+
+class Rva001F376E : public Snapshot
 {
 public:
 	Rva001F376E();
 	virtual ~Rva001F376E() {}
+	// Table slots 1-3 (0x000B3FD0, 0x001F37BE, 0x001F37C4), declared so the
+	// local can be built; this unit emits no table, so nothing references them.
+	virtual void LoadPostProcess();
+	virtual const char *GetSnapshotName();
+	virtual void DoXfer(Xfer &xfer);
 	float m_04, m_08, m_0c, m_10, m_14, m_18;
 	float m_x;	// +0x1C
 	float m_y;	// +0x20
