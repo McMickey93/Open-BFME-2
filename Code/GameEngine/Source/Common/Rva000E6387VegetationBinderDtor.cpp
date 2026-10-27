@@ -1,4 +1,8 @@
 // cl: /MD /EHsc
+// platformsdk
+#include <windows.h>
+#include <string.h>
+#include <math.h>
 // ??1VegetationFXShaderParameterSourceNamespace@@UAE@XZ @0x000E6387 57B: destructor of the FX parameter
 // binder registered as "Vegetation" (WorldBuilder W3DVegetationBufferBase.cpp
 // VegetationFXShaderParameterSourceNamespace: ResolveBindings 0x000E67E3 is WB
@@ -34,14 +38,8 @@
 
 void __cdecl Rva001532E1Erase(const char *name);
 void __cdecl Rva001530E9Parse(const char *name, void *volatile path);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
-extern "C" __declspec(dllimport) double __cdecl floor(double);
-extern "C" void *__cdecl memset(void *, int, unsigned int);
 
 typedef const char *D3DXHANDLE;
-typedef int BOOL;
-#define FALSE 0
-#define TRUE 1
 
 struct IDirect3DBaseTexture8;
 class DummyPtrType;
@@ -280,7 +278,8 @@ void Rva000E68C5SwayOffsets(ID3DXEffect *effect, D3DXHANDLE handle)
 	{
 		for (int i = 0; i < MAX_SWAY_TYPES; ++i)
 		{
-			int minOffset = FloatToLong((float)floor(buffer->m_curSwayOffset[i]));
+			// Keep the original double overload; the CRT also supplies floor(float).
+			int minOffset = FloatToLong((float)floor((double)buffer->m_curSwayOffset[i]));
 			if (minOffset >= 0 && minOffset + 1 < NUM_SWAY_ENTRIES)
 			{
 				float f2 = buffer->m_curSwayOffset[i] - minOffset;
