@@ -50,6 +50,13 @@ int __cdecl _resetstkoflw(void) {
  return _imp___resetstkoflw();
 }
 
+// _strlen
+typedef size_t (__cdecl *PFN_strlen)(const char *);
+extern PFN_strlen _imp__strlen;
+size_t __cdecl strlen(const char * str) {
+ return _imp__strlen(str);
+}
+
 // _strpbrk
 typedef char * (__cdecl *PFN_strpbrk)(const char *, const char *);
 extern PFN_strpbrk _imp__strpbrk;
