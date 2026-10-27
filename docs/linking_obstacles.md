@@ -1643,6 +1643,15 @@ clearance or linking gain is claimed.
   prerequisites before strict reuse. The separate three-source ordinary
   preview remains LINKS; it does not clear this current-master audit.
   [Publication evidence](../reverse/attempt_support/dynamic-vertex-buffer-header-20261027-codex.md).
+- **Coordinate-checker backlog publication (2026-10-27, `028575016a`):**
+  the normal hook passes 47/47 function rows, two data rows and eight EXACT
+  EH graphs across its eleven-source scope. Its batch audit remains
+  INCONCLUSIVE: index `73061d9452` predates outgoing base `4346b5248b`, and
+  eleven objects lack current receipts, first
+  `Code/GameEngine/Source/Common/Rva0033BD50Free.cpp`. Linking is explicitly
+  UNVERIFIED. Carry this batch into the next scheduled census/current-receipt
+  audit; no selected-provider or lost-byte verdict follows from its byte
+  checks. [Scope and qualification](../reverse/attempt_support/coord2d-companion-adoption-20261027.md#previous-batch-publication-qualification).
 - **BFME 1 refresh publication scope (2026-10-27):** three rebased pre-push
   gates passed for 1,301, 1,314 and 1,322 sources, including upstream header
   consumers since the local pre-rebase full-gate receipt `6803d7df5b`. This
@@ -5042,6 +5051,21 @@ Evidence / affected units: the per-unit before/after builds, ordinary previews a
 Completed: `ModuleInfoVectorDeletingDtors.cpp` and `ParticleSystemInfoCopyCtor.cpp` use the canonical Snapshot with its existing capitalized, non-const name and reference-transfer switches. `CaveSystem.cpp` uses the canonical Snapshot and Xfer headers and their public transfer operators. Their queue entries leave only through `header_adopt_lane.py accept`; the retained cohort preserves every function row and its clean ordinary link previews. The Snapshot exceptions in the destructor and Cave units are removed. No shared header, ledger row, pin or compiler flag changes.
 
 Remaining / next check: the allocator's nested `GeneralAllocator::Snapshot` is a distinct heap-report struct and must not be replaced with engine `::Snapshot`. Xfer needs authorized access to Snapshot's protected transfer. FX info virtual surfaces, the ParticleSystemInfo constructor vtable and RemoveUpgrade's real ModuleData base hierarchy need reconciliation. The LivingWorldBattle and LivingWorldBuildPlot constructors need an evidenced Snapshot constructor surface that emits no base-vptr store before the list-base call. Coord2D's registered header lacks the constructors, destructor, conversions and arithmetic members these remaining consumers require; AnimateWindow getVel and setVel rows also encode the other class-key. Rva00062B17Init is a stale queue item with no remaining Coord2D view or use. Preserve all stopped sources; the handoff records their exact restoration and next-owner evidence. Money's existing record-identity prerequisite remains LINK-092.
+
+**Coord2D companion acceptance follow-up (2026-10-27, checker `028575016a`):**
+The [bounded retirement](../reverse/attempt_support/coord2d-companion-adoption-20261027.md)
+clears six queue entries whose sources already use the evidenced
+Coord2DCtorView.h: Rva000A953BCtor, Rva005CEA1CHolderRva005CEA1C,
+ControlBarScheme_drawLayers, HordeTransportContainCtor, Rva001041D8Dtor and
+Rva0010461FCtor. The separately published checker repair recognizes the
+existing companion without changing the canonical POD header. The owning
+acceptance tool passes all six and removes their rows. The cohort retains
+28/28 matched rows, three EXACT EH graphs and six ordinary LINKS previews
+against index `73061d9452`. No game source, header, ledger row or pin changes;
+no linking gain or census result is claimed. The other six Coord2D queue
+entries retain their stale-use, class-key, conversion and additional member
+prerequisites described above. LINK-008 retains the prior publication batch's
+incomplete strict receipts.
 
 **DefaultUpdate transfer follow-up (2026-10-27, inspected `a228582538`):**
 [The bounded adoption](../reverse/attempt_support/defaultupdate-snapshot-header-20261027-codexb4.md)
