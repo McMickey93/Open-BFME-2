@@ -1,31 +1,50 @@
-// cl: /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /Ireference/open-bfme-1/reference/shims/asciistring_outofline /Ireference/open-bfme-1/reference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main
-// stlport
-#include "Common/AsciiString.h"
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+//
+// The classes spell CommandButtonHuntUpdate.cpp's views (the TU this ctor
+// joins): UpdateModule's vftable slots as read off retail, the module data
+// and the button pointer typed as that unit types them. AsciiString is
+// BFME2's shared class (the zh_ascii force-include gave the same one).
+#include "ascii_string.h"
 
 class Thing;
 class ModuleData;
 class Object;
+class CommandButton;
+struct CommandButtonHuntUpdateModuleData;
+
+class Xfer;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
 
 enum UpdateSleepTime
 {
-    UPDATE_SLEEP_FOREVER = 0x3fffffff
+	UPDATE_SLEEP_FOREVER = 0x3fffffff
 };
 
+// UpdateModule's three vptrs (+0x00, +0x0C, +0x10) are the ones the matched
+// ctor (0x004952CF) and dtor (0x00495389) store. The primary vftable's slots
+// read off retail: UpdateModule's own (0x00BF004C) holds its scalar deleting
+// dtor, loadPostProcess (0x0058B03E), GetSnapshotName (0x002533CD), xfer
+// (0x0044DF9F) and __purecall in slot 4; CommandButtonHuntUpdate's (0x00C4ECFC)
+// holds its xfer (0x004953EE) in slot 3 and getModuleNameKey (0x00495344) in
+// slot 4.
 class PB_DeepBase
 {
 public:
-    PB_DeepBase(Thing *, const ModuleData *);
-    virtual ~PB_DeepBase();
+	PB_DeepBase(Thing *, const ModuleData *);
+	virtual ~PB_DeepBase();
 
 protected:
-    void *m_f04;
-    Object *m_object;
+	const ModuleData *m_moduleData;		// +0x04
+	Object *m_object;			// +0x08
 };
 
 class PB_Iface1 { public: virtual void slot(); };
 class PB_Iface2 { public: virtual void slot(); };
 
-// upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/UpdateModule.h
 class UpdateModule : public PB_DeepBase, public PB_Iface1, public PB_Iface2
 {
 public:
@@ -33,28 +52,42 @@ public:
 	virtual ~UpdateModule();
 
 protected:
-    void setWakeFrame(Object *, UpdateSleepTime);
-    Object *getObject() const { return m_object; }
+	virtual void loadPostProcess();				// slot 1
+	virtual const char *GetSnapshotName() const;		// slot 2
+
+public:
+	virtual void xfer(Xfer *xfer);				// slot 3
+	virtual NameKeyType getModuleNameKey() const = 0;	// slot 4
+
+protected:
+	void setWakeFrame(Object *, UpdateSleepTime);
+	Object *getObject() const { return m_object; }
 
 private:
-    unsigned int m_f14;
-    int m_f18;
-    int m_f1c;
+	unsigned int m_f14;
+	int m_f18;
+	int m_f1c;
 };
 
-// upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/CommandButtonHuntUpdate.h
 class CommandButtonHuntUpdate : public UpdateModule
 {
 public:
-    CommandButtonHuntUpdate(Thing *, const ModuleData *);
+	CommandButtonHuntUpdate(Thing *, const ModuleData *);
+	virtual NameKeyType getModuleNameKey() const;
 
 protected:
-    // Use the rowed destructor's access and symbol in the primary vtable.
-    virtual ~CommandButtonHuntUpdate();
+	virtual ~CommandButtonHuntUpdate();
+	virtual void xfer(Xfer *xfer);
+	Object *scanClosestTarget();
 
 private:
-    AsciiString m_commandButtonName;
-    const void *m_commandButton;
+	const CommandButtonHuntUpdateModuleData *getCommandButtonHuntUpdateModuleData() const
+	{
+		return (const CommandButtonHuntUpdateModuleData *)m_moduleData;
+	}
+
+	AsciiString m_commandButtonName;		// +0x20
+	const CommandButton *m_commandButton;		// +0x24
 };
 
 // ??0CommandButtonHuntUpdate@@QAE@PAVThing@@PBVModuleData@@@Z
