@@ -47,3 +47,42 @@ Scratch receipts: `build/science-before-build.log`, `build/science-dry-run.log`
 and `build/science-consolidation-20261027/` (preserved sources/objects, before
 preview, after dry run and wrapper object comparison). No census, strict global
 closure, new linked bytes or image-ownership gain is claimed.
+
+## Applied consolidation and outgoing path audit
+
+After the separate prerequisite commit, `tu_skeleton.py --merge` accepts only
+Science.cpp and the wrapper, preserves their 15 rows, and deletes the absorbed
+source. Only the wrapper's source cell changes in functions.csv and tu_map.csv;
+the latter is not regenerated. All nine rejected clean donors and eleven mixed
+donors stay intact. The merge refreshes Science.cpp's existing Microsoft-header
+queue item without changing its content. There are no header-adoption, data or
+code-identity keys on either source. The automatic whole-tree hatch refresh
+also proposed unrelated stale-key deletions; those deletions were restored.
+The existing Science hatch keys and all register totals are unchanged.
+
+The normal build verifies all 26 group rows across ten surviving sources (and
+the data row); the frozen-file check passes. Both exception graphs are EXACT.
+Shadow data checking reports zero findings, and converged checking covers ten
+addresses with zero second names or unjudged rows. Strict preparation verifies
+all 15 merged rows and writes a reusable current receipt without modifying the
+census or index. The union of both preserved objects' 51 external code
+definitions has identical digest, size and COMDAT exclusivity after composition;
+the undefined-name set is identical. A read-only current-object overlay omitting
+the retired donor has no unresolved, duplicate, COMDAT, address or selected-body
+blockers. The merge's own link guard protects the eleven census-linked sources
+and external providers. Isolating the merge with the preserved objects and
+current ledger order changes only the wrapper's selected provider from its
+retired object to Science.cpp, retaining an `ok` retail verdict. Older-index
+comparisons remain provisional until the
+next scheduled census; no global link-closure result is asserted.
+
+The complete pending source-path batch is the two commits based on
+`6cdcea926b`, with one absorbed path. A tracked-tree search for the old path and
+basename finds no active tooling, hook, workflow, include or build consumer.
+Remaining mentions are provenance comments, historical attempt evidence and
+the census-owned link_status.csv row, intentionally retained until its runner
+refreshes it. The symbol's consumer declaration in Rva00339E80Finish.cpp still
+uses the same name and ABI. Active function/TU ledgers resolve to Science.cpp;
+protected registers and queues have no orphaned donor key. The pre-push batch
+audit supplies the final selected-provider, lost-byte and freshness report;
+an index older than the outgoing base cannot certify that base's census state.
