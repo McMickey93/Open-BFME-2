@@ -97,7 +97,7 @@ public:
 	virtual void apply(int value);
 	char m_storage[0x108 - 4 - 0];
 };
-void *operator new(unsigned int);
+#include <new>
 
 class BfmeStreakVtable
 {

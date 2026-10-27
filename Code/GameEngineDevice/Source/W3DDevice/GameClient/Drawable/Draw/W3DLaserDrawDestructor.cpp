@@ -90,7 +90,7 @@ protected:
 	Rva000C9A12 m_textureVector;
 };
 
-void __cdecl operator delete[](void *block);
+#include <new>
 
 // ??1W3DLaserDraw@@MAE@XZ
 W3DLaserDraw::~W3DLaserDraw()
