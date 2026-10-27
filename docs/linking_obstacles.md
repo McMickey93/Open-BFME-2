@@ -1913,6 +1913,12 @@ everse/re_attempts.log.
 - **Census confirmation:** n/a (adoption lane; surfaced via the scoped header
   gate, not the link census).
 
+#### Assigned Coord3D package, 2026-10-27
+
+- **Inspected `d01dd5afd355`; ordinary preview index `5ce093a71a`, retail-truth-4:** `FiringTrackerXfer.cpp` adopts the registered Coord3D header and the existing Coord3DBase companion. Its transfers and equality calls use `asBase`; the existing public `zero()` member keeps its inline definition in the unit. The owning acceptance tool retires its Coord3D queue row. All matched rows, exception graphs, declaration and data checks pass, and its clean ordinary link preview is preserved. No census gain is claimed.
+- **Remaining:** 24 assigned units retain their queue rows and exact original source bytes. `Coord3DCopy.cpp` and `Rva0055A246Ctor.cpp` require a coordinated class-key migration. Other stops require constructor, copy or destructor lifetime contracts absent from the canonical POD header; `BridgeObjectCtor.cpp` additionally requires the base relationship and inline base `set`, while `SidesListDataChunks.cpp` requires inline `add` and `sub`. These prerequisites belong with the class owner and dependent recompute above.
+- **Evidence / next check:** per-unit before, rejected-candidate and final build/link outputs, blocked verdicts and final gates are recorded in local `build/header-report.md` and `build/header-h1/`. Final CSV and pin-consistency checks pass. Canonical headers, reference shims and the function and symbol ledgers are unchanged. Resolve each stopped unit's recorded interface or class-key prerequisite before retrying it; broader closure and census confirmation remain open.
+
 #### Region3D adoption: separate Coord3D class-key/provider prerequisite
 
 - **2026-10-26, inspected `c973319b7d3`:** the Region3D queue serves

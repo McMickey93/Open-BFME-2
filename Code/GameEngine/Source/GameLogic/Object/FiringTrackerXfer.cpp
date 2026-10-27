@@ -236,10 +236,11 @@ enum
 // Logic frame rate (5), read where Zero Hour uses LOGICFRAMES_PER_SECOND.
 extern int BfmeLogicFramesPerSecond;
 
-// Coord3D: shared derived view (Coord3DBase base); no private copy.
-#define COORD3D_DV_ZERO
-#define COORD3D_DV_EQUALS
-#include "../../../../Libraries/Include/Lib/Coord3DDerivedView.h"
+// Coord3D: canonical value and base compatibility headers.
+#include "../../../../Libraries/Include/Lib/Coord3D.h"
+#include "../../../../Libraries/Include/Lib/Coord3DBase.h"
+
+inline void Coord3D::zero() { x = 0.0f; y = 0.0f; z = 0.0f; }
 
 // Coord3D::equals (rowed 0x00003702 here), out of line but visible:
 // update's operand order (the Object loaded into ECX before the frame
@@ -473,9 +474,9 @@ void FiringTracker::xfer(Xfer *xfer)
 	*xfer == m_frameToStartCooldown;
 	*xfer == m_frameToForceReload;
 	*xfer == m_lastShotFrame;
-	*xfer == m_lastShotPosition;
+	*xfer == asBase(m_lastShotPosition);
 	*xfer == m_victimIsPosition;
-	*xfer == m_victimPosition;
+	*xfer == asBase(m_victimPosition);
 	if (version.m_minimum >= 2) {
 		*xfer == m_frameToStopLoopingSound;
 	}
@@ -534,7 +535,7 @@ void FiringTracker::shotFired(const Weapon *weaponFired, ObjectID victimID, cons
 			m_victimPosition = *victimPosition;
 			m_victimID = INVALID_OBJECT_ID;
 		}
-		else if (m_victimPosition.equals(*victimPosition))
+		else if (m_victimPosition.equals(asBase(*victimPosition)))
 		{
 			++m_consecutiveShots;
 		}
@@ -609,7 +610,7 @@ UpdateSleepTime FiringTracker::update()
 {
 	UnsignedInt now = TheGameLogic->getFrame();
 
-	if (!getObject()->getPosition()->equals(m_lastShotPosition))
+	if (!getObject()->getPosition()->equals(asBase(m_lastShotPosition)))
 		coolDown(true);
 
 	if (m_frameToForceReload != 0 && now >= m_frameToForceReload)
