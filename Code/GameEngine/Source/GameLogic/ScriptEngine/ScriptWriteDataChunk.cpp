@@ -27,7 +27,7 @@ class DataChunkOutput { public:
  void writeInt(int);
  void closeDataChunk();
 };
-extern "C" int __cdecl memcmp(const void *, const void *, unsigned int);
+#include <string.h>
 // ?equalTag_Rva003B31C7@@YA_NPBX0H@Z present-unmatched
 static __declspec(noinline) bool equalTag_Rva003B31C7(const void *record, const void *tag, int) {
  return memcmp(record,tag,4)==0;
@@ -131,7 +131,6 @@ public:
     UserParser *registerParser(const AsciiString &, const AsciiString &, BfmeScriptParserCallback, void *);
     bool parse(void *);
 };
-extern "C" void *memset(void *, int, unsigned int);
 static __declspec(noinline) BfmeFixedStorage002CF0F0 ReadScriptPlayerMask_Rva003B5918(DataChunkInput &file)
 {
     AsciiString text = file.readAsciiString();

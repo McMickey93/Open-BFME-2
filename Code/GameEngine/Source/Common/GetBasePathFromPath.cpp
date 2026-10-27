@@ -29,7 +29,7 @@ AsciiString GetPicPreviewFromMap(AsciiString path);
 class AsciiString;
 AsciiString GetExtensionFromFile(AsciiString fname);
 
-extern "C" void *memcpy(void *destination, const void *source, unsigned int count);
+#include <string.h>
 
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 

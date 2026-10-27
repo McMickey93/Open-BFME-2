@@ -17,8 +17,7 @@
 
 #include <list>
 
-extern "C" double __cdecl sin(double);
-extern "C" double __cdecl cos(double);
+#include <math.h>
 
 // __node_alloc<1,0>::allocate (STLport list/vector node path) otherwise emits a
 // per-TU COMDAT that loses to another unit's copy in link order; this explicit

@@ -20,8 +20,7 @@ typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;
 
-extern "C" __declspec(dllimport) char * __cdecl getenv( const char *name );
-extern "C" __declspec(dllimport) Int __cdecl atoi( const char *text );
+#include <stdlib.h>
 
 #include "ascii_string.h"
 

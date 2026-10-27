@@ -298,7 +298,7 @@ Rva002C5398::Rva002C5398(EmitVtableTag *)
 
 // Target destructor proves cleanup on this, then free of the vector's first
 // pointer and an external base destructor. Original owner identity is unknown.
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
 // Pointer-only transfer ABI established by native calls and the existing
 // entry serializer. Coordinate temporary lifetime is visible in the EH flags.
 class Snapshot;
