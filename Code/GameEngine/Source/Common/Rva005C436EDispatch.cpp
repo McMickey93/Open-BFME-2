@@ -50,7 +50,7 @@ class Rva005C436E : public Snapshot
 public:
 	virtual ~Rva005C436E();
 	void adjustCommandPoints(int v);
-	void rva005C43AF();
+	void activate();
 private:
 	Inner24 *m_04;
 	Outer08 *m_08;
@@ -81,7 +81,7 @@ Rva005C436E::~Rva005C436E()
 	}
 }
 
-void Rva005C436E::rva005C43AF()
+void Rva005C436E::activate()
 {
 	if (!m_0C) {
 		adjustCommandPoints(m_08->m_0C);

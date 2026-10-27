@@ -3718,3 +3718,4 @@ $L38165,0x00783364,"Identity correction: unwind funclet of the 0x003E5525 destru
 ?Rva007AF9D6InitializeRegionEffectFields@@YAXXZ,0x007AF9D6,"Renamed to ?initializeRegionEffectFields@@YAXXZ by tools/rename.py (inferred)"
 ?rva003FBB80@Rva003FBB80@@QAEXPBURva003FBB80Coord@@@Z,0x003FBB80,"Renamed to ?setPosition@Rva003FBB80@@QAEXPBURva003FBB80Coord@@@Z by tools/rename.py (inferred)"
 ?rva005C3EE0@Rva005C3EE0@@QAEXXZ,0x005C3EE0,"Renamed to ?show@Rva005C3EE0@@QAEXXZ by tools/rename.py (inferred)"
+?rva005C43AF@Rva005C436E@@QAEXXZ,0x005C43AF,"Renamed to ?activate@Rva005C436E@@QAEXXZ by tools/rename.py (inferred)"

@@ -54,7 +54,7 @@ struct S4SortElem8B { void *first; const ThingTemplate *second; };
 struct BfmeE8 { int a, b; };
 class Rva005ECD8C { public: void rva005ECD8C(_STL::vector<S4SortElem8B> *,int); };
 class Rva002B2B66 {public: int rva002B2B66();};
-struct Record52 { char unknown[0x2c]; int m_sideIndex; int player30; };
+struct Record52 { char unknown[0x2c]; int m_sideIndex; int m_playerID; };
 struct Records52 { Record52 *first,*last; };
 class Rva004F92E3 { public: void rva004F92E3(void *); };
 class Rva005ECA91 { public: Rva005ECA91(); protected: virtual ~Rva005ECA91(); private: char observed04[24]; };
@@ -75,14 +75,14 @@ StrategicVeterancy::Data::AutoResolve::AutoResolve(void *a,void *b,void *autoRes
  int index=0;
  Records52 *records=(Records52 *)autoResolveBattle;
  for(Record52 *record=records->first;record!=records->last;++record) {
-  if(record->player30==player) { selected=record->m_sideIndex;break; }
+  if(record->m_playerID==player) { selected=record->m_sideIndex;break; }
   ++index;
  }
  _STL::vector<Rva004F77E0Element> units[2];
  ((Rva004F92E3 *)autoResolveBattle)->rva004F92E3(units);
  _STL::vector<Rva004F77E0Element> &selectedUnits=units[selected];
- for(Rva004F77E0Element *e=selectedUnits.begin();e!=selectedUnits.end();++e) {
-  TreeHintRef00217D4C ref=*(TreeHintRef00217D4C *)e;
+ for(Rva004F77E0Element *unitIter=selectedUnits.begin();unitIter!=selectedUnits.end();++unitIter) {
+  TreeHintRef00217D4C ref=*(TreeHintRef00217D4C *)unitIter;
   if(ref.ptr->index30!=index) continue;
   void *army=ref.ptr->payload;
   const ThingTemplate *thing=TheThingFactory->findTemplate(*(AsciiString *)((char *)army+4));

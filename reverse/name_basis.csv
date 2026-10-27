@@ -2787,3 +2787,10 @@ local,Rva005C394D::go::s,Rva005C394D::go::prefix,inferred,agree:nl-563dd5a40729,
 member,Rva005C3EA5::m_obj00,Rva005C3EA5::m_owner,inferred,agree:nl-c24a8fd4438d,Code/GameEngine/Source/Common/Rva005C3EA5Show.cpp,
 local,Rva005C3EA5::Show::s,Rva005C3EA5::Show::clipName,inferred,agree:nl-c6f4845ba20f,Code/GameEngine/Source/Common/Rva005C3EA5Show.cpp,0x005C3EA5
 function,?rva005C3EE0@Rva005C3EE0@@QAEXXZ,?show@Rva005C3EE0@@QAEXXZ,inferred,agree:nl-50502e0b78ee,Code/GameEngine/Source/Common/Rva005C3EA5Show.cpp,0x005C3EE0
+function,?rva005C43AF@Rva005C436E@@QAEXXZ,?activate@Rva005C436E@@QAEXXZ,inferred,agree:nl-0bc16d90139f,Code/GameEngine/Source/Common/Rva005C436EDispatch.cpp,0x005C43AF
+member,Rva002F1BD5Arg::m_0C,Rva002F1BD5Arg::m_flags,inferred,agree:nl-38a1f7a48e3a,Code/GameEngine/Source/Common/System/Rva002F1BD5Finish.cpp,
+member,Rva0055F4CE::m_10,Rva0055F4CE::m_size,inferred,agree:nl-4f39b3047d29,Code/GameEngine/Source/Common/VslotSmallBodiesSseA.cpp,
+member,Rva0055F4CE::m_1C,Rva0055F4CE::m_angleZ,inferred,agree:nl-e32c934c4931,Code/GameEngine/Source/Common/VslotSmallBodiesSseA.cpp,
+member,Rva0055F4CE::m_2C,Rva0055F4CE::m_angleXY,inferred,agree:nl-0a1765b4deb5,Code/GameEngine/Source/Common/VslotSmallBodiesSseA.cpp,
+member,Record52::player30,Record52::m_playerID,inferred,agree:nl-ce5ff3a46515,Code/GameEngine/Source/GameClient/GUI/StrategicVeterancyAutoResolveCtor.cpp,
+local,StrategicVeterancy::Data::AutoResolve::AutoResolve::e,StrategicVeterancy::Data::AutoResolve::AutoResolve::unitIter,inferred,agree:nl-638e215e0bf0,Code/GameEngine/Source/GameClient/GUI/StrategicVeterancyAutoResolveCtor.cpp,0x005ECE81

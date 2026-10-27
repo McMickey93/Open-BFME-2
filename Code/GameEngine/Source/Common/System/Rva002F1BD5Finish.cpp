@@ -26,7 +26,7 @@ struct Rva002F1BD5Arg
 {
 	Rva002F1BD5Data *m_00;
 	char m_04[8];
-	int m_0C;
+	int m_flags;
 };
 
 struct Rva002F1BD5Mid
@@ -56,7 +56,7 @@ public:
 int Rva002F1BD5Info::cellCallback(PathfindCell *previous, PathfindCell *current, int cellX, int cellY)
 {
 	Rva002F1BD5Arg *cell = (Rva002F1BD5Arg *)current;
-	if ((cell->m_0C & 15) != 4)
+	if ((cell->m_flags & 15) != 4)
 		return 0;
 	Rva002F1BD5Data *cellData = cell->m_00;
 	int id = cellData ? cellData->m_objectID : 0;

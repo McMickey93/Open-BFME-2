@@ -227,17 +227,17 @@ public:
 	void update();
 private:
 	char m_pad00[0x10];
-	DampedValue m_10;
-	DampedValue m_1C;
+	DampedValue m_size;
+	DampedValue m_angleZ;
 	Int m_28;
-	DampedValue m_2C;
+	DampedValue m_angleXY;
 };
 void Rva0055F4CE::update()
 {
-	m_10.value = m_10.value + m_10.rate;
-	m_10.rate = m_10.damping * m_10.rate;
-	m_1C.value = m_1C.rate + m_1C.value;
-	m_1C.rate = m_1C.damping * m_1C.rate;
-	m_2C.value = m_2C.value + m_2C.rate;
-	m_2C.rate = m_2C.damping * m_2C.rate;
+	m_size.value = m_size.value + m_size.rate;
+	m_size.rate = m_size.damping * m_size.rate;
+	m_angleZ.value = m_angleZ.rate + m_angleZ.value;
+	m_angleZ.rate = m_angleZ.damping * m_angleZ.rate;
+	m_angleXY.value = m_angleXY.value + m_angleXY.rate;
+	m_angleXY.rate = m_angleXY.damping * m_angleXY.rate;
 }
