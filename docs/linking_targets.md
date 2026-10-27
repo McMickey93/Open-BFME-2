@@ -316,7 +316,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/Common/DamageFX.cpp` | 126 | 7 (U=4, C=2, S=1) | 2026-10-26, `6533919013`: repair landed / awaiting census. Zero Hour bodies removed: the parse helpers (rowed in DamageFXParseCommon.cpp), the veterancy-indexed lookups (BFME 2 rows 0x003605D5/0x003605E3/0x003608DF) and findDamageFX (retail symbol is ArmorStore::findArmorTemplate 0x00360966); hashtable dtor decl-only so retail 0x0016DEE0 is kept. link_check (index d1f046749a) LINKS 0 -> 126 B; 10 DamageFX/ArmorStore partners still link. |
 | `Code/GameEngine/Source/Common/Rva006C3CC0Cluster.cpp` | 125 | 3 (U=1, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/Rva006DE1A0Finish.cpp` | 125 | 3 (U=3) | Open |
-| `Code/GameEngine/Source/Common/BfmeConv1950.cpp` | 118 | 4 (U=4) | Open |
+| `Code/GameEngine/Source/Common/BfmeConv1950.cpp` | 118 | 4 (U=4) | 2026-10-27 at `2eea4ae57b`: resize consumer previews LINKS (0 -> 100 authored bytes); 3/3 rows and EH exact; one destructor identity key retired. Fill-insert provider retains element/overflow blockers (LINK-002); dependency closure and census confirmation pending. [Evidence](../reverse/attempt_support/resize-record-link-20261027-codex3.md). |
 | `Code/GameEngine/Source/Common/Thing/ThingFactory.cpp` | 85 | 13 (U=6, C=6, S=1) | Open |
 | `Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdate.cpp` | 117 | 6 (U=4, C=1, S=1) | Open |
 | `Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/SkirmishGameOptionsMenu.cpp` | 116 | 61 (U=49, C=6, S=6) | 2026-10-27 at `97c23353111e`: U49/L2/S2; shared GUI interfaces (LINK-005) |
