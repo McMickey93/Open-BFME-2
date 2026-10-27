@@ -80,11 +80,9 @@ class CreateAHeroData { public: bool WriteNamedHeroAtRva004074CF(); };
 // matched _STL::find specialization at 0x0020E873. Their direct callees and
 // member offsets are target evidence; the CreateAHeroData* spelling is only
 // the existing registry specialization's ABI view of the value at +0x1E0.
+// The zero-filled 12-byte .bss registry vector at RVA 0x009FE358 (data ledger
+// primary name), defined with its initializer in Rva007ABB96AllocCtorInits_Rva007ABB96.cpp.
 extern unsigned int g_00DFE358;
-// Defined here: nothing else in the tree did. Retail VA 0x00DFE358
-// (RVA 0x009FE358), the zero-filled 12-byte .bss registry vector; its
-// referencing units spell it as this scalar (data ledger primary name).
-unsigned int g_00DFE358;
 
 class Rva0021937DTarget
 {

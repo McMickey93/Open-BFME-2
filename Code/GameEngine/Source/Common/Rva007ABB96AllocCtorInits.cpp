@@ -71,7 +71,7 @@ extern unsigned g_Va00DDF580;
 extern unsigned g_Va00DF29A8;
 extern unsigned g_Va00DFE174;
 extern unsigned g_Va00DFE1AC;
-extern unsigned g_Va00DFE358;
+extern unsigned g_00DFE358;
 extern unsigned g_Va00DFEA44;
 extern unsigned g_Va00DFF134;
 namespace _STL { template <class T> struct _Nonconst_traits; template <class T, class Traits> struct _Deque_iterator; }

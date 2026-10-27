@@ -75,7 +75,7 @@ extern _STL::vector<const ModuleData *> g_vec00200D38;
 extern unsigned g_Va00DF29A8;
 extern unsigned int g_00DFE174;
 extern unsigned int g_00DFE1AC;
-unsigned g_Va00DFE358;	// retail RVA 0x009FE358 (.bss), defined here
+unsigned g_00DFE358;	// retail RVA 0x009FE358 (.bss), defined here
 class BfmeItemKA;
 extern BfmeItemKA **g_bfmeBegKA;
 extern unsigned g_Va00DFF134;
@@ -141,7 +141,7 @@ void Rva007ABB96AllocCtorInits::rva007AD899()
 // 0x007ADAB5 (29B): vector<BfmeE16> allocator ctor 0x004F710A on VA 0x00DFE358, atexit(0x007B76DC -> 0x0007FAB3)
 void Rva007ABB96AllocCtorInits::rva007ADAB5()
 {
-	( (E16Vector *)&g_Va00DFE358 )->E16Vector::vector();
+	( (E16Vector *)&g_00DFE358 )->E16Vector::vector();
 	atexit( rva007B76DC );
 }
 
