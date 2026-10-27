@@ -40,7 +40,7 @@ namespace _STL {
 template <> vector<void *>::const_iterator _STL::vector<void *>::begin() const;
 }
 
-typedef unsigned int size_t;
+#include <stddef.h>
 
 class AsciiString
 {

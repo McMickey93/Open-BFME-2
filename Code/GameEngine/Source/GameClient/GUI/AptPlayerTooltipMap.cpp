@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /EHsc /D_CRTIMP= /DBFME_ASCII_DTOR_DECL /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfme2_ascii /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 
 // Native224D80..224DFF127B returns the local lazy owning holder's pointer.
@@ -107,7 +108,7 @@ typedef _Rb_tree<AsciiString, AsciiString, _Identity<AsciiString>, less<AsciiStr
 template <> Lk6AsciiSetTree::~_Rb_tree();
 template <> set<AsciiString, less<AsciiString>, allocator<AsciiString> >::set();
 }
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 struct Rva00224C76Element {Rva00224C76Element();Rva00224C76Element(const Rva00224C76Element&);Rva00224C76Element&operator=(const Rva00224C76Element&);~Rva00224C76Element(){}char bytes[8]; bool operator==(const Rva00224C76Element&)const;};
 typedef _STL::hash_map<int, Rva00224C76Element> AptPlayerTable;
 class Rva00224C95 { public: Rva00224C95(); ~Rva00224C95(); private: char m_bytes[0x28]; };

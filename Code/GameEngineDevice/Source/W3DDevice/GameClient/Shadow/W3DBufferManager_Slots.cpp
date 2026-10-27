@@ -61,7 +61,7 @@
 #define MAX_IB_SIZES 1024
 #define MAX_INDEX_BUFFERS_CREATED 32
 
-#define NULL 0
+#include <stddef.h>
 
 typedef int Int;
 

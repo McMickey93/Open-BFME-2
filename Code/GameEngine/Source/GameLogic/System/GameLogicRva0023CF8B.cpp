@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?rva0023CF8B@GameLogic@@QAEXXZ, RVA 0x0023CF8B, 67 bytes.
 // GameLogic method filling timeout array at +0x130 with timeGetTime per
@@ -7,7 +8,7 @@
 // 8 DWORDs ending at +0x150 matches GameLogicSetGamePaused timeouts layout;
 // TheNetwork global 0x009FEA28 with virtual at +0xB4 returning peer count;
 // timeGetTime IAT winmm call; caller 0x0043ADA5.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 
 class NetworkInterface
 {

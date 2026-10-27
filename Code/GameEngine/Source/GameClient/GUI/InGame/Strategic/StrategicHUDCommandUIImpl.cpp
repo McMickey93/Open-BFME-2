@@ -1,4 +1,5 @@
 // The complete native parents and associative EH code/data graphs prove
+// platformsdk
 // the naturally emitted handlers recorded with this unit. Each has one
 // primary owner and its full 10-byte extent.
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /MD /EHsc
@@ -17,7 +18,7 @@
 #define inline static inline
 #include <math.h>
 #undef inline
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+#include <windows.h>
 
 class Rva005D2462
 {

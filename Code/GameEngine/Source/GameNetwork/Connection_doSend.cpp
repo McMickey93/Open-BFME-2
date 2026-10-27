@@ -1,4 +1,5 @@
 // cl: /O1 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // ?doSend@Connection@@QAEI_N@Z, retail 0x0058BB5C 499 bytes through RET 4.
 // Donor: Open-BFME-1 game/GameEngine/Source/GameNetwork/Connection_doSend.cpp
 // (BFME Connection::doSend 0x00661F10), carried with its loop shape and names.
@@ -15,7 +16,7 @@
 // once TheGameLogic+0x40 exceeds the run-ahead slack (TheWritableGlobalData
 // +0xC18).
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+#include <windows.h>
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef unsigned short UnsignedShort;

@@ -70,7 +70,7 @@ extern int g_Va00E0333C;
 
 enum { PLAYERTEMPLATE_RANDOM = -1, MAX_SLOTS = 8 };
 #ifndef NULL
-#define NULL 0
+#include <stddef.h>
 #endif
 enum { FALSE = 0, TRUE = 1 };
 

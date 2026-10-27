@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /DNDEBUG /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // BFME2's online custom match screen Apt callbacks, 0x0059EC65 onward,
@@ -1491,7 +1492,7 @@ void AptOnlineCustomMatch::FillGameNameTextEntry(bool flag)
 }
 
 int g_Va00E063F0;	// retail RVA 0x00A063F0 (.bss), defined here
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+#include <windows.h>
 void __cdecl Rva00381C2DClear(unsigned int value);
 void GSMessageBoxOk(UnicodeString title, UnicodeString message, void (*okFunc)());
 class Rva005170CD { public: void rva005170CD(); };
