@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD
+// cl: /DNDEBUG /MD /D_CRTIMP=
 //
 // ?rva0028F662@Rva0028F662@@QAEXPAURva0028F662Node@@@Z -- retail 0x0028F662, 45 bytes.
 // Tree free: recurses on child at +0xC with the same owner, frees the node
@@ -7,7 +7,7 @@
 // the head afterwards; self-recursion at 0x0028F674 proves the shape.
 // Plain void free(void*) keeps the retail E8-to-row call shape.
 
-extern "C" void __cdecl free(void *block);
+#include <stdlib.h>
 
 struct Rva0028F662Node
 {

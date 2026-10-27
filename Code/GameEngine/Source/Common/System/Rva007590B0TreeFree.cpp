@@ -1,9 +1,11 @@
-// cl: /DNDEBUG /MD /EHsc
+// cl: /DNDEBUG /MD /EHsc /D_CRTIMP=
 //
 // ?rva007590B0@Rva007590B0@@QAEXPAURva007590B0Node@@@Z retail 0x007590B0 51B
 // Evidence: unlock lane; callees rowed self plus _free 0x00030830; callers 0x00759AE0 0x00759B40 0x0075A1A0 plus self; prev Rva009A3300HashTableRemove same dir and flags; sibling 0x00759AE0 same 51B twin.
 // ?rva00759AE0@Rva007590B0@@QAEXXZ retail 0x00759AE0 51B
 // Evidence: chain via 0x007590B0; no callers; same class reset sentinel after tree free.
+#include <stdlib.h>
+
 struct Rva007590B0Node
 {
 	char m_pad[8];
@@ -28,8 +30,6 @@ private:
 	Rva007590B0Head *m_head;
 	void *m_state;
 };
-
-extern "C" void __cdecl free(void *block);
 
 void Rva007590B0::rva007590B0(Rva007590B0Node *node)
 {
