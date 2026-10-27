@@ -4849,6 +4849,16 @@ Evidence / affected units:
   the owner's unit, retire the sweep file and its pin. Blocked because
   `reverse/tu_map.csv` approves no unit for any of the three: 0x005838DC has
   none, and the other two are only proposed. Deferred (re_attempts.log).
+  2026-10-27 link repair (inspected `95cc135fbd`, index `73061d9452`): each
+  sweep unit's record now has a `dllimport __forceinline` destructor that calls
+  the owner's rowed `??1` by its own name (`??1GameSpyBuddyMessageQueue@@UAE@XZ`
+  0x00551988, `??1Rva005838B5@@UAE@XZ` 0x005838F8, `??1Rva005AFE3F@@UAE@XZ`
+  0x005AFE3F; FamilyDeletingDtors2.cpp precedent), so the `??_G` rows no longer
+  reference the pinned `??1Rva...Record` names; those three symbols.csv pins are
+  dropped. `./build.sh` 3/3 exact; `link_check` 0 -> 28 B for each unit
+  (+84 B), owners Rva00587F69Dtor.cpp and Rva005AFE3FDtor.cpp keep linking,
+  BuddyThread_Unresolved.cpp keeps only its own deque/GameSpy blockers. The
+  re-row under the owners' real `??_G` names stays open (tu_map).
 Clearance: pending.
 Census confirmation: awaiting the next census.
 
