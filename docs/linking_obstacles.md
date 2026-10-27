@@ -70,6 +70,17 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **Production queue SDK constants (2026-10-27):**
+  [the bounded header cleanup](../reverse/attempt_support/20261027-production-queue-sdk-constants.md)
+  removes three local Microsoft macro copies while preserving all 47 queue
+  rows. The normal outgoing hook passes 85/85 functions across four sources,
+  two data rows and seven EXACT EH graphs. Its link audit is UNVERIFIED:
+  index 73061d9452 predates outgoing base
+  30de31a686c79263d9806b5f10cb9cd1c2740c99, and four affected objects lack
+  current strict receipts (first Eva.cpp). Carry this scope to the next
+  normal census; no new C++ or census-linked-byte gain is claimed. The
+  source's separate shadow identity/data findings remain unaddressed.
+
 - **Melee approach log ABI (2026-10-27):**
   [the bounded signature cleanup](../reverse/attempt_support/20261027-melee-log-game-abi.md)
   aligns one caller with the existing game append provider and keeps the
