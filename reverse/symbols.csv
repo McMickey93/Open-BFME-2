@@ -1314,7 +1314,6 @@ name,address,notes
 ??0BfmeMsgVJI@@QAE@PADH@Z,0x00655900
 ??0BfmeOpaqueOwnedRecord492@@QAE@ABU0@@Z,0x00389AAA,Target nonvirtual lifetime callee with full 362-byte boundary; copy/cleanup of owned strings and arrays independently inspected; matching deque temporary and element calls establish thiscall ABI; original record name unknown
 ??0BfmePairEL@@QAE@ABVBfmeWordEL@@0@Z,0x0002C4FD,BfmePairEL two-word ctor; BfmeWordEL is the rowed 4-byte StringBase<char> view so this is the same bytes as the matched ??0Rva0002C4FD@@QAE@ABV?$StringBase@D@@0@Z body (cf existing pair@VAsciiString ICF-alias pin); called by the bfmeMakePairEL factory at 0x0002C621
-??0BfmeParserRegistrationVE@@QAE@PAVDataChunkInput@@PAVAsciiString@@1@Z,0x000ABB87,callee of ??0Gen004502D0ParserRegistration@@QAE@PAXPAVDataChunkInput@@PAVAsciiString@@@Z at retail 0x00300397 read from its REL32 displacement; donor-reconstruction base ctor name; body unrowed
 ??0BfmePod104@@QAE@ABU0@@Z,0x0040E96D,element copy constructor: REL32 read at 0x003B8AF4 in the byte-verified _Construct 0x003B8AD8; ledger spelling there: none
 ??0BfmePod196@@QAE@ABU0@@Z,0x00438559,twin of rowed Rva004382FC copy ctor at same address called by _Construct 0x00438E49 size 196 match
 ??0BfmePod340@@QAE@ABU0@@Z,0x001E4DEB,element copy constructor: REL32 read at 0x004D9BB4 in the byte-verified _Construct 0x004D9B98; ledger spelling there: none
