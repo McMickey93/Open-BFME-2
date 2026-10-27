@@ -28,12 +28,10 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 #include <hash_map>
 #pragma comment(linker, "/alternatename:?_M_new_node@?$hashtable@U?$pair@$$CBHURva001FDC0FRecord@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva001FDC0FRecord@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva001FDC0FRecord@@@_STL@@@2@@_STL@@AAEPAU?$_Hashtable_node@U?$pair@$$CBHURva001FDC0FRecord@@@_STL@@@2@ABU?$pair@$$CBHURva001FDC0FRecord@@@2@@Z=?Rva00056E53New@@YGPAUHashNode00056E53@@ABU?$pair@$$CBVAsciiString@@UTreeHintPayload0005808E@@@_STL@@@Z")
-
 namespace _STL {
 static inline void _Construct(int *__p, const int &__val)
 { new (__p) int(__val); }
 }
-
 // _Rb_tree_iterator comparisons otherwise instantiate the base-class
 // operator!= COMDAT (one byte shape per TU flags); exact-match free
 // overloads take those calls instead so this TU emits no external copy.
@@ -43,7 +41,6 @@ static inline bool operator!=(const _Rb_tree_iterator<_RbVal, _RbLeft> &a,
                               const _Rb_tree_iterator<_RbVal, _RbRight> &b)
 { return a._M_node != b._M_node; }
 }
-
 // map/set<int> internals otherwise instantiate the less<int>::operator()
 // COMDAT (one byte shape per TU flags); an explicit dllimport+forceinline
 // specialization takes those calls inline so this TU emits no external copy.
@@ -52,13 +49,9 @@ template <> __declspec(dllimport) __forceinline
 bool less<int>::operator()(const int &a, const int &b) const
 { return a < b; }
 }
-
 class INI;
-
 struct BfmeObject476 { virtual ~BfmeObject476(); unsigned char opaque[472]; BfmeObject476 &operator=(const BfmeObject476 &); };
-
 extern template void _STL::vector<BfmeObject476>::push_back(const BfmeObject476 &);
-
 //
 // Reference guide: BFME1 34f59164f6d1efd413c5fd37f4894ec834c3c0fe
 // game/GameEngine/Source/Common/RTS/PlayerTemplate.cpp parser and the same
@@ -81,7 +74,6 @@ enum NameKeyType
 	NAMEKEY_INVALID = -1,
 	FORCE_NAMEKEYTYPE_LONG = 0x7fffffff
 };
-
 class Overridable
 {
 public:
@@ -93,7 +85,6 @@ public:
     char pad09[3];
 	int m_extra0C;
 };
-
 class PlayerTemplate : public Overridable
 {
 public:
@@ -107,7 +98,6 @@ public:
     bool flag150,flag151;
     char tail152[0x1dc-0x152];
 };
-
 class PlayerTemplateVector
 {
 public:
@@ -119,7 +109,6 @@ public:
     PlayerTemplate *m_capacity;
     void push_back(const PlayerTemplate &pt) { reinterpret_cast<_STL::vector<BfmeObject476> *>(this)->push_back(reinterpret_cast<const BfmeObject476 &>(pt)); }
 };
-
 class PlayerTemplateStore
 {
 public:
@@ -137,23 +126,14 @@ private:
     _STL::set<int> playableIndices;
     int index24;
 };
-
 class INI { public: const char *getNextToken(const char *); static void parseInt(INI *ini, void *instance, void *store, const void *userData); char prefix[8]; int mode; };
-
 class NameKeyGenerator { public: NameKeyType nameToKey(const char *); };
-
 extern NameKeyGenerator *TheNameKeyGenerator;
-
 extern PlayerTemplateStore *ThePlayerTemplateStore;
-
 extern unsigned char g_00E01EA8;
-
 class Rva001FE70F { public: void rva001FE70F(INI *); };
-
 class GlobalData { public: char prefix[0x9d4]; int restriction; };
-
 extern GlobalData *TheWritableGlobalData;
-
 class InGameUI { public:
     virtual void slot00();
     virtual void slot01();
@@ -173,9 +153,7 @@ class InGameUI { public:
     virtual void slot15();
     virtual void ReloadMessage(UnicodeString,...);
 };
-
 extern InGameUI *TheInGameUI;
-
 // ?parseStartMoney@PlayerTemplate@@SAXPAVINI@@PAX1PBX@Z, retail 0x001FD1B7..
 // 0x001FD1E8 (49 bytes): Zero Hour's PlayerTemplate::parseStartMoney. The
 // money is parsed as a plain int (rowed INI::parseInt), the Money object is
@@ -183,7 +161,6 @@ extern InGameUI *TheInGameUI;
 // rowed 0x003B0D7C with no player and its sound flag set. WorldBuilder's twin
 // (0x00A76C10) is unnamed.
 class Rva0039B7AD;
-
 class Rva003B0D7C
 {
 public:
@@ -193,7 +170,6 @@ private:
 	int m_pad00;
 	int m_money;		// +0x04
 };
-
 class Rva001FD2D9
 {
 public:
@@ -203,7 +179,6 @@ private:
 	unsigned char m_pad00[0x70];
 	Coord3D m_arr70[10];
 };
-
 struct Rva001FD404
 {
 	Rva001FD404 *rva001FD404(const Rva001FD404 &that);
@@ -212,20 +187,30 @@ struct Rva001FD404
 	int m_8;
 	int m_c;
 };
-
 // ?rva001FD42B@Rva001FD42B@@QAEXPAURva001FD42BNode@@@Z @0x001FD42B 45B.
 // Tree erase: recurse right via +0xC, free the node via rowed _free 0x00030830,
 // walk left via +0x8, ret 4. Same 45B shape as Rva002CF32FErase precedent.
 // Caller at 0x001FD63E unblocks 0x001FD630.
 extern "C" void __cdecl free(void *block);
-
-// ?rva001FD630@Rva001FD42B@@QAEXXZ @0x001FD630 41B.
-// Tree clear for the Rva001FD42B node family: if the count at +4 is nonzero,
-// erase the root via the rowed rva001FD42B, reset the header sentinel at
-// +0 (left/right to self, parent to 0) and zero the count. Same this flows
-// to the erase call, proving the shared owner. Callers at 0x001FD6D1
-// 0x001FD8EB 0x002AFBB4 and jmp at 0x002ABFFD; unblocks 0x001FD6BC 0x001FD8DF.
 #include "PlayerTemplateTreeView.h"
+// ?rva001FD8DF@Rva001FD42B@@QAEPAU1@ABU1@@Z @0x001FD8DF 115B.
+// Tree assign for the Rva001FD42B node family: self-check, clear via rowed
+// rva001FD630, reset count, copy non-empty trees via rowed rva001FD751,
+// fix leftmost via +8 and rightmost via +0xC, copy count, return this.
+// Callers at 0x001FDBF2 0x001FE84C 0x002AFAB4; unblocks 0x001FE78E.
+struct Rva001FD751Node
+{
+	unsigned char m_color;
+	unsigned char m_pad01[3];
+	Rva001FD751Node *m_parent;
+	Rva001FD751Node *m_left;
+	Rva001FD751Node *m_right;
+	unsigned char m_value[8];
+};
+struct Rva001FD751
+{
+	Rva001FD751Node *rva001FD751(Rva001FD751Node *x, Rva001FD751Node *p);
+};
 
 // ?rva001FD952@Rva001FD458@@QAEPAU1@ABU1@@Z @0x001FD952 115B.
 // Tree assign for the Rva001FD458 node family: self-check, clear via rowed
@@ -358,6 +343,15 @@ namespace _STL { template <> _Hashtable_node<pair<const int,Rva001FDC0FRecord> >
 
 // ---- from Code/GameEngine/Source/Common/RTS/PlayerTemplate.cpp
 
+// ?rva001FD630@Rva001FD42B@@QAEXXZ @0x001FD630 41B.
+// Tree clear for the Rva001FD42B node family: if the count at +4 is nonzero,
+// erase the root via the rowed rva001FD42B, reset the header sentinel at
+// +0 (left/right to self, parent to 0) and zero the count. Same this flows
+// to the erase call, proving the shared owner. Callers at 0x001FD6D1
+// 0x001FD8EB 0x002AFBB4 and jmp at 0x002ABFFD; unblocks 0x001FD6BC 0x001FD8DF.
+
+// ---- from Code/GameEngine/Source/Common/RTS/PlayerTemplate.cpp
+
 // vector<int> fill/insert otherwise instantiates the _Construct<int,int>
 // COMDAT (one byte shape per TU flags); a file-static overload takes those
 // calls instead so this TU emits no external copy.
@@ -478,20 +472,6 @@ void PlayerTemplate::parseStartMoney(INI *ini, void *instance, void *store, cons
 	theMoney->rva003B0D7C(money, 0, true);
 }
 
-// tu-skeleton: 0x001FD1E8 19B ?rva001FD1E8@Rva001FD1E8@@QAEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD1FB 19B ?getFlagWaterMarkImage@PlayerTemplate@@QBEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD20E 19B ?rva001FD20E@Rva001FD1E8@@QAEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD221 19B ?getEnabledImage@PlayerTemplate@@QBEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD234 11B ?rva001FD234@PlayerTemplate@@QBEHXZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD23F 19B ?rva001FD23F@PlayerTemplate@@QBEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD2CA 15B ?getPlayerTemplateCount@PlayerTemplateStore@@QAEHXZ -- matched in Code/GameEngine/Source/GameNetwork/GameSlotApparent.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva001FD2D9ArrayCopy.cpp
 
 // ?rva001FD2D9@Rva001FD2D9@@QAEPAUCoord3D@@PAU2@H@Z @0x001FD2D9 66B.
@@ -514,10 +494,6 @@ Coord3D *Rva001FD2D9::rva001FD2D9(Coord3D *dest, int index)
 	dest->z = src->z;
 	return dest;
 }
-
-// tu-skeleton: 0x001FD348 31B ?rva001FD348@Rva001FD348@@QAEPAUGapRecord1DC@@H@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD367 95B ?rva001FD367@PlayerTemplateStore@@QBE_NHPAH@Z -- matched in Code/GameEngine/Source/Common/PlayerTemplateStoreFactionLookup.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva001FD404Assign.cpp
 
@@ -571,18 +547,6 @@ void Rva001FD458::rva001FD659()
 	}
 }
 
-// tu-skeleton: 0x001FD485 29B ??$__destroy_aux@PAUBfmeObject476@@@_STL@@YAXPAUBfmeObject476@@0ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportObject476Vector.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD4A2 63B ?reset@PlayerTemplateStore@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerTemplateStoreDeleteOverrides.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD4E1 153B ?rva001FD4E1@PlayerTemplateStore@@QAE_NW4NameKeyType@@PAH@Z -- matched in Code/GameEngine/Source/Common/RTS/Rva001FD4E1Find.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD57A 56B ?attemptReload@PlayerTemplateStore@@UAE_NH@Z -- matched in Code/GameEngine/Source/Common/ReloadIniFileNotices.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD5B2 97B ?attemptRefresh@PlayerTemplateStore@@UAE_NXZ -- matched in Code/GameEngine/Source/Common/ReloadIniFileNotices.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD613 29B ?splice@?$list@HV?$allocator@H@_STL@@@_STL@@QAEXU?$_List_iterator@HU?$_Nonconst_traits@H@_STL@@@2@AAV12@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_int_o1.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva001FD42BClear.cpp
 
 void Rva001FD42B::rva001FD630()
@@ -595,34 +559,6 @@ void Rva001FD42B::rva001FD630()
 		m_count = 0;
 	}
 }
-
-// tu-skeleton: 0x001FD682 34B ?_M_create_node@?$list@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@IAEPAU?$_List_node@VAsciiString@@@2@ABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_create_node.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD6A4 24B ??$_Destroy@PAUBfmeObject476@@@_STL@@YAXPAUBfmeObject476@@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportObject476Vector.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD6BC 56B ??1Rva001FD42B@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva001FD42BDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD6F4 56B ??1Rva001FD458@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva001FD458Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD72C 37B ?insert@?$list@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@QAE?AU?$_List_iterator@VAsciiString@@U?$_Nonconst_traits@VAsciiString@@@_STL@@@2@U32@ABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD751 115B ?rva001FD751@Rva001FD751@@QAEPAURva001FD751Node@@PAU2@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva001FD751Copy.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD7C4 115B ?rva001FD7C4@Rva001FD7C4@@QAEPAURva001FD7C4Node@@PAU2@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva001FD7C4Copy.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD837 39B ??$__find@U?$_List_iterator@VAsciiString@@U?$_Const_traits@VAsciiString@@@_STL@@@_STL@@VAsciiString@@@_STL@@YA?AU?$_List_iterator@VAsciiString@@U?$_Const_traits@VAsciiString@@@_STL@@@0@U10@0ABVAsciiString@@ABUinput_iterator_tag@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_find_list_asciistring_rva001fd9c5.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD85E 5B ?rva001FD85E@Rva001FD85E@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD863 5B ?rva001FD863@Rva001FD863@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD868 26B ?push_back@?$list@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@QAEXABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD882 63B ??1?$vector@UBfmeObject476@@V?$allocator@UBfmeObject476@@@_STL@@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD8C1 30B ?_M_clear@?$vector@UBfmeObject476@@V?$allocator@UBfmeObject476@@@_STL@@@_STL@@IAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportObject476Vector.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD8DF 115B ?rva001FD8DF@Rva001FD42B@@QAEPAU1@ABU1@@Z -- matched in Code/GameEngine/Source/Common/Rva001FD42BAssign.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva001FD458Assign.cpp
 
@@ -654,12 +590,6 @@ Rva001FD458 *Rva001FD458::rva001FD952(const Rva001FD458 &other)
 	return this;
 }
 
-// tu-skeleton: 0x001FD9C5 42B ??$find@U?$_List_iterator@VAsciiString@@U?$_Nonconst_traits@VAsciiString@@@_STL@@@_STL@@VAsciiString@@@_STL@@YA?AU?$_List_iterator@VAsciiString@@U?$_Nonconst_traits@VAsciiString@@@_STL@@@0@U10@0ABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_find_list_asciistring_rva001fd9c5.cpp (not merged yet)
-
-// tu-skeleton: 0x001FD9EF 28B ?rva001FD9EF@Rva001FD9EF@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/Rva001FD9EFFree.cpp (not merged yet)
-
-// tu-skeleton: 0x001FDA0B 165B ??0?$_Rb_tree@HU?$pair@$$CBHPAX@_STL@@U?$_Select1st@U?$pair@$$CBHPAX@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_tree_copy.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_tree_copy2.cpp
 
 //
@@ -671,13 +601,9 @@ Rva001FD458 *Rva001FD458::rva001FD952(const Rva001FD458 &other)
 // comparator name keeps the ledger row unique. Base ctor and get_allocator
 // resolve through the existing HPAX pins.
 
-// tu-skeleton: 0x001FDB55 76B ??0PlayerTemplateStore@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva001FDB55Ctor.cpp (not merged yet)
 
-// tu-skeleton: 0x001FDBA1 74B ??1PlayerTemplateStore@@UAE@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateStore.cpp (not merged yet)
 
-// tu-skeleton: 0x001FDBEB 18B ??0Rva001FD42B@@QAE@ABU0@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
 
-// tu-skeleton: 0x001FDBFD 18B ??0Rva001FD458@@QAE@ABU0@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001FDC0F.cpp
 
@@ -691,6 +617,106 @@ Rva001FD458 *Rva001FD458::rva001FD952(const Rva001FD458 &other)
 #pragma optimize("t", on)
 
 #pragma optimize("", on)
+
+// tu-skeleton: 0x001FD1E8 19B ?rva001FD1E8@Rva001FD1E8@@QAEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD1FB 19B ?getFlagWaterMarkImage@PlayerTemplate@@QBEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD20E 19B ?rva001FD20E@Rva001FD1E8@@QAEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD221 19B ?getEnabledImage@PlayerTemplate@@QBEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD234 11B ?rva001FD234@PlayerTemplate@@QBEHXZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD23F 19B ?rva001FD23F@PlayerTemplate@@QBEPBVImage@@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateImageGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD2CA 15B ?getPlayerTemplateCount@PlayerTemplateStore@@QAEHXZ -- matched in Code/GameEngine/Source/GameNetwork/GameSlotApparent.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD348 31B ?rva001FD348@Rva001FD348@@QAEPAUGapRecord1DC@@H@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD367 95B ?rva001FD367@PlayerTemplateStore@@QBE_NHPAH@Z -- matched in Code/GameEngine/Source/Common/PlayerTemplateStoreFactionLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD485 29B ??$__destroy_aux@PAUBfmeObject476@@@_STL@@YAXPAUBfmeObject476@@0ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportObject476Vector.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD4A2 63B ?reset@PlayerTemplateStore@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerTemplateStoreDeleteOverrides.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD4E1 153B ?rva001FD4E1@PlayerTemplateStore@@QAE_NW4NameKeyType@@PAH@Z -- matched in Code/GameEngine/Source/Common/RTS/Rva001FD4E1Find.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD57A 56B ?attemptReload@PlayerTemplateStore@@UAE_NH@Z -- matched in Code/GameEngine/Source/Common/ReloadIniFileNotices.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD5B2 97B ?attemptRefresh@PlayerTemplateStore@@UAE_NXZ -- matched in Code/GameEngine/Source/Common/ReloadIniFileNotices.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD613 29B ?splice@?$list@HV?$allocator@H@_STL@@@_STL@@QAEXU?$_List_iterator@HU?$_Nonconst_traits@H@_STL@@@2@AAV12@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_int_o1.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD682 34B ?_M_create_node@?$list@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@IAEPAU?$_List_node@VAsciiString@@@2@ABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_create_node.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD6A4 24B ??$_Destroy@PAUBfmeObject476@@@_STL@@YAXPAUBfmeObject476@@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportObject476Vector.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD6BC 56B ??1Rva001FD42B@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva001FD42BDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD6F4 56B ??1Rva001FD458@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva001FD458Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD72C 37B ?insert@?$list@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@QAE?AU?$_List_iterator@VAsciiString@@U?$_Nonconst_traits@VAsciiString@@@_STL@@@2@U32@ABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD751 115B ?rva001FD751@Rva001FD751@@QAEPAURva001FD751Node@@PAU2@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva001FD751Copy.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD7C4 115B ?rva001FD7C4@Rva001FD7C4@@QAEPAURva001FD7C4Node@@PAU2@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva001FD7C4Copy.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD837 39B ??$__find@U?$_List_iterator@VAsciiString@@U?$_Const_traits@VAsciiString@@@_STL@@@_STL@@VAsciiString@@@_STL@@YA?AU?$_List_iterator@VAsciiString@@U?$_Const_traits@VAsciiString@@@_STL@@@0@U10@0ABVAsciiString@@ABUinput_iterator_tag@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_find_list_asciistring_rva001fd9c5.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD85E 5B ?rva001FD85E@Rva001FD85E@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD863 5B ?rva001FD863@Rva001FD863@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD868 26B ?push_back@?$list@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@QAEXABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_list_asciistring_insert.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD882 63B ??1?$vector@UBfmeObject476@@V?$allocator@UBfmeObject476@@@_STL@@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD8C1 30B ?_M_clear@?$vector@UBfmeObject476@@V?$allocator@UBfmeObject476@@@_STL@@@_STL@@IAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportObject476Vector.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva001FD42BAssign.cpp
+
+Rva001FD42B *Rva001FD42B::rva001FD8DF(const Rva001FD42B &other)
+{
+	if (this != &other) {
+		rva001FD630();
+		m_count = 0;
+		Rva001FD42BNode *otherRoot = other.m_handle.m_header->m_parent;
+		if (otherRoot == 0) {
+			m_handle.m_header->m_parent = 0;
+			m_handle.m_header->m_left = m_handle.m_header;
+			m_handle.m_header->m_right = m_handle.m_header;
+		} else {
+			Rva001FD751 *self = (Rva001FD751 *)this;
+			Rva001FD42BNode *hdr = m_handle.m_header;
+			hdr->m_parent = (Rva001FD42BNode *)self->rva001FD751((Rva001FD751Node *)otherRoot, (Rva001FD751Node *)hdr);
+			Rva001FD42BNode *x = m_handle.m_header->m_parent;
+			while (x->m_left != 0)
+				x = x->m_left;
+			m_handle.m_header->m_left = x;
+			x = m_handle.m_header->m_parent;
+			while (x->m_right != 0)
+				x = x->m_right;
+			m_handle.m_header->m_right = x;
+			m_count = other.m_count;
+		}
+	}
+	return this;
+}
+
+// tu-skeleton: 0x001FD9C5 42B ??$find@U?$_List_iterator@VAsciiString@@U?$_Nonconst_traits@VAsciiString@@@_STL@@@_STL@@VAsciiString@@@_STL@@YA?AU?$_List_iterator@VAsciiString@@U?$_Nonconst_traits@VAsciiString@@@_STL@@@0@U10@0ABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_find_list_asciistring_rva001fd9c5.cpp (not merged yet)
+
+// tu-skeleton: 0x001FD9EF 28B ?rva001FD9EF@Rva001FD9EF@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/Rva001FD9EFFree.cpp (not merged yet)
+
+// tu-skeleton: 0x001FDA0B 165B ??0?$_Rb_tree@HU?$pair@$$CBHPAX@_STL@@U?$_Select1st@U?$pair@$$CBHPAX@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_tree_copy.cpp (not merged yet)
+
+// tu-skeleton: 0x001FDB55 76B ??0PlayerTemplateStore@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva001FDB55Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x001FDBA1 74B ??1PlayerTemplateStore@@UAE@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateStore.cpp (not merged yet)
+
+// tu-skeleton: 0x001FDBEB 18B ??0Rva001FD42B@@QAE@ABU0@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
+
+// tu-skeleton: 0x001FDBFD 18B ??0Rva001FD458@@QAE@ABU0@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE51.cpp (not merged yet)
 
 // tu-skeleton: 0x001FDCCF 18B ??0?$map@HPAXU?$less@H@_STL@@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@QAE@ABV01@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_o1.cpp (not merged yet)
 
@@ -713,3 +739,23 @@ Rva001FD458 *Rva001FD458::rva001FD952(const Rva001FD458 &other)
 // tu-skeleton: 0x001FF218 11B ?clear@?$vector@UBfmeObject476@@V?$allocator@UBfmeObject476@@@_STL@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorClearForwarders.cpp (not merged yet)
 
 // tu-skeleton: 0x001FF223 95B ?init@PlayerTemplateStore@@UAEXXZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateStore_init.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BAB6 8B $L4641 -- matched in Code/GameEngine/Source/Common/RTS/Rva001FD4E1Find.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BABE 10B __ehhandler$?rva001FD4E1@PlayerTemplateStore@@QAE_NW4NameKeyType@@PAH@Z -- matched in Code/GameEngine/Source/Common/RTS/Rva001FD4E1Find.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BAEC 8B uw_0076baec -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BAF4 11B uw_0076baf4 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BAFF 10B __ehhandler$??0PlayerTemplateStore@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva001FDB55Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BB09 8B Unwind@00b6bb09 -- matched in Code/GameEngine/Source/Common/PlayerTemplateStore.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BB11 11B Unwind@00b6bb11 -- matched in Code/GameEngine/Source/Common/PlayerTemplateStore.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BB1C 10B __ehhandler$??1PlayerTemplateStore@@UAE@XZ -- matched in Code/GameEngine/Source/Common/PlayerTemplateStore.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BB38 25B $L6196 -- matched in Code/Libraries/Source/WWVegas/WWLib/AsciiStringTableSubscripts.cpp (not merged yet)
+
+// tu-skeleton: 0x0076BB51 10B __ehhandler$?rva001FDE3F@Rva001FDE3F@@QAEAAMABVAsciiString@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/AsciiStringTableSubscripts.cpp (not merged yet)
