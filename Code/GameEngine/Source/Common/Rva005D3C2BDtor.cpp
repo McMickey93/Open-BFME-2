@@ -83,7 +83,6 @@ public:
 	virtual ~Rva005D3C2BBase();
 };
 
-// ??1Rva005D3C2BBase@@UAE@XZ present-unmatched
 inline Rva005D3C2BBase::~Rva005D3C2BBase()
 {
 	*(const void **)this = g_00C75908;

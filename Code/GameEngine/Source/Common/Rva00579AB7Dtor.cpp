@@ -155,7 +155,6 @@ public:
 	virtual ~Rva00579AB7Base();
 };
 
-// ??1Rva00579AB7Base@@UAE@XZ present-unmatched
 inline Rva00579AB7Base::~Rva00579AB7Base()
 {
 	*(const void **)this = __identifier("??_7Rva005EEF2FBase0@@6B@");

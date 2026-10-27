@@ -19,7 +19,6 @@ public:
 	virtual ~Rva005D0D85Base();
 };
 
-// ??1Rva005D0D85Base@@UAE@XZ present-unmatched
 inline Rva005D0D85Base::~Rva005D0D85Base()
 {
 }

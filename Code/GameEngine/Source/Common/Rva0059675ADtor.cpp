@@ -36,7 +36,6 @@ struct FadeInTextRender : Rva0059675ABase
 	virtual ~FadeInTextRender();
 	virtual void LoadAssets();
 };
-// ??1Rva0059675ABase@@UAE@XZ present-unmatched
 Rva0059675ABase::~Rva0059675ABase()
 {
 }
