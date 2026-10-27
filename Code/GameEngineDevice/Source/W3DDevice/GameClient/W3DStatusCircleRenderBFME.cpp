@@ -5,6 +5,8 @@
 // The init provider still has the provisional TerrainTracksRenderObjClass owner;
 // use that verified provider without asserting or renaming its identity.
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 
 typedef int Int;
 typedef float Real;
@@ -54,16 +56,11 @@ public:
 
 void BoxSetTexture(unsigned int, TextureBaseClass *&);
 
+#include <d3d9.h>
+
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (SetRenderState, vtable slot 57).
 struct IDirect3DDevice8;
-struct DeviceVtable
-{
-	char pad[0xe4];
-	int (__stdcall *SetRenderState)(IDirect3DDevice8 *, unsigned long, unsigned);
-};
-struct IDirect3DDevice8
-{
-	DeviceVtable *v;
-};
 
 extern VertexMaterialClass *ScreenMaterial;
 extern unsigned number_of_DX8_calls;
@@ -193,7 +190,7 @@ class W3DStatusCircle { public:
 			DX8Wrapper::Get_DX8_Render_State_Value_Name(valueName, (state_), (value_)); \
 		} \
 		DX8Wrapper::RenderStates[(state_)] = (value_); \
-		DX8Wrapper::D3DDevice->v->SetRenderState(DX8Wrapper::D3DDevice, (state_), (value_)); \
+		reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)(state_), (value_)); \
 		++number_of_DX8_calls; \
 		++DX8Wrapper::render_state_changes; \
 	} \
@@ -310,19 +307,19 @@ void W3DStatusCircle::Render(RenderInfoClass &)
 			DX8Wrapper::Draw_Triangles(0, 2, 0, 6);
 			break;
 		case 1:
-			BFME_SET_RS(0xab, 3);
+			BFME_SET_RS(D3DRS_BLENDOP, D3DBLENDOP_REVSUBTRACT);
 			DX8Wrapper::Draw_Triangles(0, 2, 0, 6);
-			BFME_SET_RS(0xab, 1);
+			BFME_SET_RS(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 			break;
 		case 3:
-			BFME_SET_RS(0x13, 9);
-			BFME_SET_RS(0x14, 3);
+			BFME_SET_RS(D3DRS_SRCBLEND, D3DBLEND_DESTCOLOR);
+			BFME_SET_RS(D3DRS_DESTBLEND, D3DBLEND_SRCCOLOR);
 			DX8Wrapper::Draw_Triangles(0, 2, 0, 6);
 			DX8Wrapper::Draw_Triangles(0, 2, 0, 6);
 			break;
 		case 4:
-			BFME_SET_RS(0x13, 1);
-			BFME_SET_RS(0x14, 3);
+			BFME_SET_RS(D3DRS_SRCBLEND, D3DBLEND_ZERO);
+			BFME_SET_RS(D3DRS_DESTBLEND, D3DBLEND_SRCCOLOR);
 			DX8Wrapper::Draw_Triangles(0, 2, 0, 6);
 			break;
 	}

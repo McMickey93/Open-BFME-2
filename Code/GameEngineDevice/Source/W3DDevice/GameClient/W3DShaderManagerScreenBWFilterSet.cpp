@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 //
 // ?set@ScreenBWFilter@@MAEHW4FilterModes@@@Z, retail 0x000FBC67..0x000FC04C
 // (997B), thiscall ret 4; slot 5 (set) of the ScreenBWFilter vtable at
@@ -22,6 +24,7 @@
 // it must be the argument conversion in this body, not a local in a helper.
 
 #include <string.h>
+#include <d3d9.h>
 
 typedef int Int;
 typedef float Real;
@@ -118,27 +121,9 @@ struct BFME2TextureRef
 };
 void BFME2Set_Texture(unsigned stage, const BFME2TextureRef &texture);
 
-#define PAD_STDCALL10(p) \
-	virtual void __stdcall p##0() = 0; virtual void __stdcall p##1() = 0; virtual void __stdcall p##2() = 0; \
-	virtual void __stdcall p##3() = 0; virtual void __stdcall p##4() = 0; virtual void __stdcall p##5() = 0; \
-	virtual void __stdcall p##6() = 0; virtual void __stdcall p##7() = 0; virtual void __stdcall p##8() = 0; \
-	virtual void __stdcall p##9() = 0;
-
-struct IDirect3DDevice8
-{
-	PAD_STDCALL10(d0) PAD_STDCALL10(d1) PAD_STDCALL10(d2) PAD_STDCALL10(d3) PAD_STDCALL10(d4)
-	virtual void __stdcall d50() = 0; virtual void __stdcall d51() = 0; virtual void __stdcall d52() = 0;
-	virtual void __stdcall d53() = 0; virtual void __stdcall d54() = 0; virtual void __stdcall d55() = 0;
-	virtual void __stdcall d56() = 0;
-	virtual long __stdcall SetRenderState(unsigned long state, unsigned long value) = 0;	// slot 57
-	PAD_STDCALL10(e0) PAD_STDCALL10(e1) PAD_STDCALL10(e2) PAD_STDCALL10(e3)
-	virtual void __stdcall f98() = 0; virtual void __stdcall f99() = 0; virtual void __stdcall f100() = 0;
-	virtual void __stdcall f101() = 0; virtual void __stdcall f102() = 0; virtual void __stdcall f103() = 0;
-	virtual void __stdcall f104() = 0; virtual void __stdcall f105() = 0; virtual void __stdcall f106() = 0;
-	virtual long __stdcall SetPixelShader(unsigned long handle) = 0;	// slot 107
-	virtual void __stdcall f108() = 0;
-	virtual long __stdcall SetPixelShaderConstant(unsigned long reg, const void *data, unsigned long count) = 0;	// slot 109
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device: SetRenderState
+// slot 57, SetPixelShader 107, SetPixelShaderConstantF 109.
+struct IDirect3DDevice8;
 
 class Vector4
 {
@@ -205,7 +190,7 @@ public:
 			Get_DX8_Render_State_Value_Name(value_name, state, value);
 		}
 		RenderStates[state] = value;
-		_Get_D3D_Device8()->SetRenderState(state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetRenderState((D3DRENDERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		render_state_changes++;
 	}
@@ -216,7 +201,7 @@ public:
 		if (memcmp(data, &Pixel_Shader_Constants[reg], memsize) == 0)
 			return;
 		memcpy(&Pixel_Shader_Constants[reg], data, memsize);
-		_Get_D3D_Device8()->SetPixelShaderConstant(reg, data, count);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetPixelShaderConstantF(reg, (const float *)data, count);
 		number_of_DX8_calls++;
 	}
 
@@ -301,11 +286,12 @@ Int ScreenBWFilter::set(FilterModes mode)
 		BFME2Set_Texture(0, 0);
 		DX8Wrapper::Apply_Render_State_Changes();	//force update of view and projection matrices
 
-		DX8Wrapper::Set_DX8_Render_State(23, 8);	// D3DRS_ZFUNC, D3DCMP_ALWAYS
-		DX8Wrapper::Set_DX8_Render_State(14, 0);	// D3DRS_ZWRITEENABLE, FALSE
+		DX8Wrapper::Set_DX8_Render_State(D3DRS_ZFUNC, D3DCMP_ALWAYS);
+		DX8Wrapper::Set_DX8_Render_State(D3DRS_ZWRITEENABLE, FALSE);
 		DX8Wrapper::Apply_Render_State_Changes();
 
-		DX8Wrapper::_Get_D3D_Device8()->SetPixelShader(m_dwBWPixelShader);
+		reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetPixelShader(
+			reinterpret_cast<IDirect3DPixelShader9 *>(m_dwBWPixelShader));
 		number_of_DX8_calls++;
 		DX8Wrapper::Set_Pixel_Shader_Constant(0, D3DXVECTOR4(0.3f, 0.59f, 0.11f, 1.0f), 1);
 
@@ -361,8 +347,8 @@ int Rva000FDD1C::rva000FDD1CFirst(int mode)
  DX8Wrapper::Set_Shader(ShaderClass::_PresetOpaqueShader);
  BFME2Set_Texture(0,0);
  DX8Wrapper::Apply_Render_State_Changes();
- DX8Wrapper::Set_DX8_Render_State(23,8);
- DX8Wrapper::Set_DX8_Render_State(14,0);
+ DX8Wrapper::Set_DX8_Render_State(D3DRS_ZFUNC,D3DCMP_ALWAYS);
+ DX8Wrapper::Set_DX8_Render_State(D3DRS_ZWRITEENABLE,FALSE);
  DX8Wrapper::Apply_Render_State_Changes();
  return true;
 }

@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
+// platformsdk
 // Target 0x0006B895..0x0006BBD9, RET 4 (836 bytes), and 0x0006BBD9..0x0006BE05,
 // RET 8 (556 bytes). BaseHeightMapRenderObjClass
 // draw step for the two vegetation buffers: the tree buffer at +0x3850 under a
@@ -17,6 +19,8 @@
 // buff buffer at +0x3874: its draw body 0x000D28FA follows the rowed
 // W3DBuffBuffer fill 0x000D2301 and calls it at 0x000D3744.
 // The target identity of the receiver method names is unknown.
+
+#include <d3d9.h>
 
 typedef int Int;
 typedef float Real;
@@ -52,18 +56,9 @@ public:
 };
 extern VertexMaterialClass *ScreenMaterial;
 
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (SetTransform slot 44, SetRenderState slot 57).
 struct IDirect3DDevice8;
-struct DeviceVtable
-{
-	char pad[0xb0];
-	int (__stdcall *SetTransform)(IDirect3DDevice8 *, int, const void *);
-	char pad_b4[0xe4 - 0xb4];
-	int (__stdcall *SetRenderState)(IDirect3DDevice8 *, unsigned long, unsigned);
-};
-struct IDirect3DDevice8
-{
-	DeviceVtable *v;
-};
 extern unsigned number_of_DX8_calls;
 class Matrix4 { public: float Row[16]; };
 struct Rva00726290Matrix4;
@@ -146,7 +141,7 @@ __forceinline void Rva0006BBD9SetWorld(const Rva00726290Matrix4 &m)
 			DX8Wrapper::Get_DX8_Render_State_Value_Name(valueName, (state_), (value_)); \
 		} \
 		DX8Wrapper::RenderStates[(state_)] = (value_); \
-		DX8Wrapper::D3DDevice->v->SetRenderState(DX8Wrapper::D3DDevice, (state_), (value_)); \
+		reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)(state_), (value_)); \
 		++number_of_DX8_calls; \
 		++DX8Wrapper::render_state_changes; \
 	} \
@@ -230,7 +225,7 @@ __forceinline void BfmeSetTransform(int transform, const BfmeMatrix3D &m)
 {
 	BfmeMatrix4x4 m2(m);
 	switch (transform) {
-	case 256:
+	case D3DTS_WORLD:
 		*(BfmeMatrix4x4 *)&DX8Wrapper::render_state.world = m2.Transpose();
 		DX8Wrapper::render_state_changed |= 1u;
 		DX8Wrapper::render_state_changed &= ~0x40000u;
@@ -238,7 +233,8 @@ __forceinline void BfmeSetTransform(int transform, const BfmeMatrix3D &m)
 	default:
 		DX8Wrapper::matrix_changes++;
 		m2 = m2.Transpose();
-		DX8Wrapper::D3DDevice->v->SetTransform(DX8Wrapper::D3DDevice, transform, &m2);
+		reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->SetTransform((D3DTRANSFORMSTATETYPE)transform,
+			reinterpret_cast<const D3DMATRIX *>(&m2));
 		number_of_DX8_calls++;
 		break;
 	}
@@ -288,7 +284,7 @@ void BaseHeightMapRenderObjClass::rva0006B895(RenderInfoClass &rinfo)
 		world.row[10] = m_transform.row[10];
 		world.row[11] = m_transform.row[11];
 		Rva00726290SetWorld(world);
-		BFME_SET_RS(0x34, 0);
+		BFME_SET_RS(D3DRS_STENCILENABLE, FALSE);
 		m_shrubBuffer->drawShrubs((Int)&rinfo);
 	}
 }
