@@ -1,4 +1,4 @@
-// cl: /GX
+// cl: /GX /MD
 
 // PartitionManager world-to-cell Y converter, retail 0x008F74B0, 44 bytes.
 // Twin of the X converter ?bfmeCellX@Gen_008F7CD0@@QBEHM@Z at 0x008F7480
@@ -7,7 +7,7 @@
 
 typedef float Real;
 
-extern "C" __declspec(dllimport) double __cdecl floor(double value);
+#include <math.h>
 
 __forceinline Real bfmeFloatFloorFD(Real value)
 {

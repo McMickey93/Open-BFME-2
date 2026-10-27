@@ -1,8 +1,8 @@
-// cl: /GX
+// cl: /GX /MD
 // Convert a scaled positive extent to its enclosing cell count.
 typedef float Real;
 
-extern "C" __declspec(dllimport) double __cdecl ceil(double value);
+#include <math.h>
 
 __forceinline long bfmeCeilFloatToLong(Real value)
 {

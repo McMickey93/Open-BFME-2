@@ -746,13 +746,10 @@ Code/GameEngine/Source/Common/AptHeroPowerText.cpp	conflicting	mangle	1	1	0	0	0	
 Code/GameEngine/Source/Common/Bfme/Rva003628A6Free.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdlib.h>	no	yes	hand		do not blanket-replace: verify the callee per body (sampled free callers call the game allocator wrapper at VA 0x430830, not CRT free's IAT entry 0xBBA6E8)	free:abi
 Code/GameEngine/Source/Common/Bfme/Rva00362B22Dtor.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdlib.h>	no	yes	hand		do not blanket-replace: verify the callee per body (sampled free callers call the game allocator wrapper at VA 0x430830, not CRT free's IAT entry 0xBBA6E8)	free:abi
 Code/GameEngine/Source/Common/Bfme/Rva005E8077Clear.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdlib.h>	no	yes	hand		do not blanket-replace: verify the callee per body (sampled free callers call the game allocator wrapper at VA 0x430830, not CRT free's IAT entry 0xBBA6E8)	free:abi
-Code/GameEngine/Source/Common/Bfme5CeilCellExtent.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<math.h>	no	no	hand			ceil:abi
 Code/GameEngine/Source/Common/Bfme5FindAndErase.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<string.h>	no	no	hand			memmove:abi
 Code/GameEngine/Source/Common/BfmeConv1304.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdlib.h>	no	no	hand			abort:abi
 Code/GameEngine/Source/Common/BfmeConv1461.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdlib.h>	no	yes	hand		do not blanket-replace: verify the callee per body (sampled free callers call the game allocator wrapper at VA 0x430830, not CRT free's IAT entry 0xBBA6E8)	free:abi
 Code/GameEngine/Source/Common/BfmeConv1462.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdlib.h>	no	yes	hand		do not blanket-replace: verify the callee per body (sampled free callers call the game allocator wrapper at VA 0x430830, not CRT free's IAT entry 0xBBA6E8)	free:abi
-Code/GameEngine/Source/Common/BfmeConv1570.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<math.h>	no	no	hand			floor:abi
-Code/GameEngine/Source/Common/BfmeConv1572.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<math.h>	no	no	hand			floor:abi
 Code/GameEngine/Source/Common/BfmeConv1671.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdio.h>	no	no	hand			vsprintf:abi
 Code/GameEngine/Source/Common/BfmeConv2008.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<string.h>	no	no	hand			strncpy:abi
 Code/GameEngine/Source/Common/BfmeConv2039.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<math.h>	no	no	hand			floor:abi

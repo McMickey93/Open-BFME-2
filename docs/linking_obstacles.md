@@ -4089,6 +4089,16 @@ Remaining / next check: reconcile the shared StealthUpdate declaration so this e
 Clearance: pending; no production source change is retained for this cause.
 Census confirmation: pending; no gain claimed.
 
+PartitionManager consolidation follow-up (2026-10-27): the current-map dry run
+accepts no donors, preserving all already-linking donor units. Three CRT
+declaration conflicts are separately repaired through `math.h` and `/MD`:
+3/3 rows (129 bytes), all three target import identities, clean header scans
+and unchanged 3/3 LINKS previews. This does not clear LINK-088 or the seed's
+selected `updateCellsTouched` conflict. The unresolved seed providers and
+private-class/flag prerequisites are recorded in the
+[PartitionManager handoff](../reverse/attempt_support/partition-crt-consolidation-20261027-codex5.md).
+No merge or census gain is claimed.
+
 ### LINK-089: SupplyTruckAIUpdateCtor's private interface slots disagree with native callbacks
 Status: Blocked on interface and provider-name reconciliation. Updated: 2026-10-26; inspected revision: 2a45addda1806342ac5c52757f63be902dcd428e.
 Evidence / affected units: `SupplyTruckAIUpdateCtor.cpp` remains U9 against index `d1f046749a`. Its constructor and destructor anchor the interface table at RVA 0x00852F38. Projecting the current private declaration onto that native table maps its gainOneBox slot to the rowed loseOneBox worker at 0x004A6E8E and its getActionDelayForDock slot to the unrelated byte setter at 0x00210CD3. The SupplyTruckStateMachine owner already records later native interface offsets for the force-state accessors. Equal calling-sequence sizes do not establish the current slot names or signatures.
