@@ -5171,3 +5171,11 @@ Reverted and recorded as a false reject in `reverse/re_attempts.log`. Next: a
 tooling seat lets `--update` move a same-address rename between keys, or the
 global's real name is recovered (no BFME 1 or WorldBuilder name found; BFME 1
 also uses an address name).
+
+Also completed (claude2, same pass): Rva0073F895Fade.cpp (2,027 B) had the
+sole blocker `?g_mapperProjectionUpload_009EDBF0@@3VMatrix4@@A`, a stray name for
+VA 0x00DEDBF0, which the ledger and dx8wrapper.cpp define as
+`DX8Wrapper::DeviceProjectionMatrix` (protected static). The TU's shim
+dx8wrapper.h omits that member, so the unit now binds the mangled name the way
+TextureMapperApply.cpp does, with no shared-shim edit. Builds 6/6 matched;
+`link_check.py` predicts LINKS 0 -> 2,027 B (census confirmation pending).

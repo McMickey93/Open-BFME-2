@@ -10,7 +10,9 @@
 long __cdecl Rva00077C19Load(const char *,unsigned int *);
 extern void *g_bfmeObj1AtE1F294;
 extern void *g_bfmeObj2AtE1F298;
-extern Matrix4 g_mapperProjectionUpload_009EDBF0;
+// DX8Wrapper::DeviceProjectionMatrix (VA 0x00DEDBF0, protected static, defined in
+// dx8wrapper.cpp), bound by its mangled name as TextureMapperApply.cpp does.
+extern "C" Matrix4 __identifier("?DeviceProjectionMatrix@DX8Wrapper@@1VMatrix4@@A");
 
 struct IDirect3D9;
 struct D3DCAPS9;
@@ -294,7 +296,7 @@ void W3DGlowOutlineMaterialPassClass::rva0073FA10()
  if(GlowDXOps::ChangeFlags() & (1u<<19)) view.Make_Identity();
  else view=GlowDXOps::View().Transpose();
  D3DXMatrixTranspose(reinterpret_cast<D3DXMATRIX *>(&view),reinterpret_cast<const D3DXMATRIX *>(&view));
- projection=g_mapperProjectionUpload_009EDBF0.Transpose();
+ projection=__identifier("?DeviceProjectionMatrix@DX8Wrapper@@1VMatrix4@@A").Transpose();
  D3DXMatrixTranspose(reinterpret_cast<D3DXMATRIX *>(&projection),reinterpret_cast<const D3DXMATRIX *>(&projection));
  D3DXMatrixMultiply(reinterpret_cast<D3DXMATRIX *>(&combined),reinterpret_cast<const D3DXMATRIX *>(&view),reinterpret_cast<const D3DXMATRIX *>(&projection));
  D3DXMatrixMultiply(reinterpret_cast<D3DXMATRIX *>(&combined),reinterpret_cast<const D3DXMATRIX *>(&world),reinterpret_cast<const D3DXMATRIX *>(&combined));
