@@ -7,9 +7,10 @@
 // then explicit memset of +8. Neighbours StealthDetector/Invisibility
 // friend_new give TU and flags.
 
+#include <string.h>
+
 #pragma function(memset)
 
-extern "C" void *memset(void *dst, int value, unsigned int size);
 extern "C" float kF7C;
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)

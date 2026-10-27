@@ -12,6 +12,8 @@
 // +0x4A enables 2x, +0xEA0 forces it. Group and helper names are
 // address-derived views.
 
+#include <math.h>
+
 class Vector3
 {
 public:
@@ -134,8 +136,6 @@ struct BfmeResetTextureRef
 	void clear();
 };
 
-extern "C" double __cdecl sqrt(double);
-
 class W3DTerrainBackground
 {
 public:
@@ -235,7 +235,7 @@ void W3DTerrainBackground::updateCenter(const Rva00112230CameraGroup &cameraGrou
 	float mip2xDistance = mipDistance + (mipSlop + 25.0f);
 	float mip2xDistanceSqr = mip2xDistance * mip2xDistance;
 
-	m_cameraDistance = (float)sqrt(minDistSqr);
+	m_cameraDistance = (float)sqrt((double)minDistSqr);
 	m_texMultiplier = 1;
 	if (TheGlobalData->m_allowTexture2X
 		&& (minDistSqr < mip2xDistanceSqr || TheGlobalData->m_stretchTerrain)) {

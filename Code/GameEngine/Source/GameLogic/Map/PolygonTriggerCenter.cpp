@@ -21,8 +21,8 @@
 //    else the integer at PolygonTrigger +0x30 (no assert in retail).
 typedef float Real;
 typedef int Int;
-#define NULL 0
 
+#include <stddef.h>
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 

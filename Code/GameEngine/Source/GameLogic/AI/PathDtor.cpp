@@ -1,11 +1,11 @@
 // cl: /DNDEBUG /MD
 
-#define NULL 0
-
 // Path node reclamation and teardown (GameLogic AI pathfinding). Nodes live
 // in the Rva pool behind the global at 0x00E01E94 and are returned through
 // its rowed FreeObject body; the local node type carries its next link at
 // +0x0 (matching the rowed PathNode layout).
+
+#include <stddef.h>
 
 class Rva00065964ObjectPool
 {

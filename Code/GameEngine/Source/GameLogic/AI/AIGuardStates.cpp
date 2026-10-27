@@ -90,9 +90,9 @@
 // +0x304; setTeamTargetObject is the rowed Team::setTeamTargetObject. TeamFactory's
 // findTeamByID is the pinned 0x0039F761 (prototype walk as in Generals).
 typedef bool Bool;
-#define NULL 0
 typedef float Real;
 typedef unsigned int UnsignedInt;
+#include <stddef.h>
 #include "../../Common/GameLogicObjectLookupView.h"
 typedef UnsignedInt TeamID;
 enum

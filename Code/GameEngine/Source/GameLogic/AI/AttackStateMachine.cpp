@@ -11,12 +11,12 @@
 // turreted current weapon); position attacks use the position table. Base:
 // the rowed StateMachine constructor 0x004D79E1 with the name key; states
 // from plain operator new and their rowed constructors.
+#include <stddef.h>
 #include "Coord3D.h"
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
 typedef UnsignedInt ObjectID;
-#define NULL 0
 class Object;
 
 struct StateConditionInfo

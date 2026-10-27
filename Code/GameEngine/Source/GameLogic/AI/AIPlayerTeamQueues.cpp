@@ -26,8 +26,8 @@
 // queues with DLINK_ITERATOR, deleting (virtual destructor, then the global
 // operator delete) each entry whose team (+0x1C) is the dying one and
 // restarting the walk after every removal.
+#include <stddef.h>
 typedef bool Bool;
-#define NULL 0
 class Team;
 
 template <class OBJCLASS> class DLINK_ITERATOR

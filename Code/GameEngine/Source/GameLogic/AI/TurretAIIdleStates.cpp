@@ -58,6 +58,7 @@ typedef int Int;
 typedef bool Bool;
 typedef float Real;
 
+#include <math.h>
 #include "Coord3D.h"
 
 int GetGameLogicRandomValue(int low, int high, char *file, int line);
@@ -282,7 +283,6 @@ extern TerrainLogic *TheTerrainLogic;
 
 Real normalizeAngle(Real angle);
 Real ASin(Real x);
-extern "C" double __cdecl fabs(double);
 
 struct TurretAIData
 {
@@ -737,7 +737,7 @@ StateReturnType TurretAIAimTurretState::update()
 			turret->friend_setPositiveSweep(!turret->friend_getPositiveSweep());
 
 		Real angleDiff = normalizeAngle(relAngle - turret->getTurretAngle());
-		turnAlignedToNemesis = (fabs(angleDiff) < sweep);
+		turnAlignedToNemesis = (fabs((double)angleDiff) < sweep);
 	}
 
 	Bool pitchAlignedToNemesis = true;

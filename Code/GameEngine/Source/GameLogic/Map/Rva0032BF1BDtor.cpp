@@ -6,6 +6,9 @@
 // m_start via rowed _free at 0x00030830 if non-null. Evidence: chain from
 // 0x0032B580 which this session landed; callers at 0x0032C121/0x0032C486;
 // prev 0x0032B7A7 (SidesList) fixes /O1 for the pop-cleanup shape.
+
+#include <stdlib.h>
+
 class Rva0032A3A9Element {
 public:
 	virtual ~Rva0032A3A9Element();
@@ -16,7 +19,6 @@ namespace _STL {
 template <class _ForwardIterator>
 void _Destroy(_ForwardIterator, _ForwardIterator);
 }
-extern "C" void free(void *p);
 class Rva0032BF1B
 {
 public:

@@ -11,6 +11,7 @@
 // TheTerrainLogic is the existing DFEC50 owner and its height slot is +0x18,
 // also established by PolygonTriggerCenter and the ZH TerrainLogic header.
 // No BFME1/ZH clean donor for this BFME-specific grid method was found.
+#include <math.h>
 #include "Lib/Coord3D.h"
 class TerrainLogic {
 public:
@@ -23,7 +24,6 @@ struct Rva005C8876Grid { char unknown00[0x10]; float cellWidth; float speed; };
 struct Rva005C8876Position { float x,y,z; Rva005C8876Position() {} Rva005C8876Position(const Rva005C8876Position &p):x(p.x),y(p.y),z(p.z) {} };
 
 #include "Common/BfmeAudioEventPrefix136.h"
-extern "C" double sqrt(double);
 class Rva002D9508 { public: void rva002D9508(const void *); };
 class AudioManager { public:
 virtual void rvaSlot0();
@@ -148,7 +148,7 @@ void LargeGroupAudioGridCell::update(Rva005C8876Grid *grid)
    if(lengthSq<=maxSpeed*maxSpeed) {
     next=*reinterpret_cast<BfmeEventPositionView *>(&preferred);
    } else {
-    float factor=maxSpeed/(float)sqrt(lengthSq);
+    float factor=maxSpeed/(float)sqrt((double)lengthSq);
     volatile Coord3D &vd=delta; float dx=vd.x, dy=vd.y, dz=vd.z;
     dx*=factor; dy*=factor; dz*=factor;
     next=current;

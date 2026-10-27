@@ -13,9 +13,8 @@
 // diagonal entry still initialised (guard 0x00E049EC bit 0 value
 // 0x00DD1A38) but no slope grade survives: the slope field is cleared
 // through the rowed 0x0052E0A1. Slot names beyond Zero Hour's keep offsets.
+#include <math.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
-
-extern "C" double __cdecl sqrt(double);
 
 typedef bool Bool;
 typedef int Int;

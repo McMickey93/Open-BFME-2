@@ -9,9 +9,10 @@
 // flag10 (stride14). Its actual dtor is rowed Rva00568C4E; append consumes the
 // existing BfmeStringRecord00568CE0 vector spelling. Defaults belong in the
 // constructor: this keeps the float load ahead of the string zero stores.
-// This TU keeps the native imported _strcmpi declaration; the bookkeeping
-// owner uses _CRTIMP= for allocation codegen, which conflicts with that import.
+// This TU calls <string.h>'s imported _strcmpi; the bookkeeping owner uses
+// _CRTIMP= for allocation codegen, which conflicts with that import.
 // No new pin, alias, global, header or compiler override.
+#include <string.h>
 #include "ascii_string.h"
 class INI {
 public:
@@ -37,7 +38,6 @@ public:
  Rva00568C4E():multiplier(1.0f),subject(0),flag(false){}
  ~Rva00568C4E();
 };
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *,const char *);
 void Rva0056A83BParseAudioMap(INI *ini,void *,void *store,const void *)
 {
  Rva00568C4E entry;

@@ -13,7 +13,7 @@
 // counter memset is corroborated by WB, and retains retail's zero scheduling.
 // Callback names remain addresses; native construction operands plus the
 // established AptNativeFunction context/count ABI prove entry/signature.
-extern "C" void *memset(void*,int,unsigned);
+#include <string.h>
 class AptValue{public:virtual void AddRef();virtual void Release();virtual void ForceDelete();virtual void *GetNativeHashVirtual(); unsigned mnLowBits:18;unsigned mnGCRootCount:7;unsigned mnType:7;};
 class Rva006DB160{public:void *allocBlock(int);};
 class Rva006DB270{public:void freeBlock(void*,int);};

@@ -5,12 +5,12 @@
 // (its unsigned spelling is pinned); each state comes from plain operator
 // new and its rowed constructor, registered with the IDs and transitions
 // read from the retail call sequence (Zero Hour's defineState pattern).
+#include <stddef.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
 typedef UnsignedInt ObjectID;
-#define NULL 0
 class Object;
 struct StateConditionInfo
 {

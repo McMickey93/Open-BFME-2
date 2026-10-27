@@ -13,12 +13,12 @@
 // otherwise squish, approach (attackingObject only), 205 0x0033F460, the
 // fire state 0x0033F483 on the attack state's +0x20 interface, and 203.
 // States come from plain operator new and their rowed constructors.
+#include <stddef.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 typedef bool Bool;
 typedef unsigned int UnsignedInt;
 typedef UnsignedInt StateID;
 typedef UnsignedInt ObjectID;
-#define NULL 0
 class Object;
 
 struct StateConditionInfo
