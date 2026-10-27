@@ -3604,6 +3604,7 @@ retail's funclet jumps to (`tools/pin_admission.py --add`, or a real row). For
 the two wrong-callee units, align the element type with retail's dtor. Then
 re-run the repoint with an unmasked `./build.sh` before staging. A relocation-
 masked sweep alone over-reports.
+uw_gen_000/001 (2026-10-26, K7 r14): of 596 generated funclets, 474 have one EXACT parent (120 have several candidate parents and were skipped as ambiguous). 133 now name their parent label (73 in uw_gen_000, 60 in uw_gen_001). 300 are blocked rows in `reverse/re_attempts.log`: 292 name a dtor with no row or pin, and 8 name every callee but still fail the byte verify. The remaining rows were held by locks or recently touched files. Four rows (0x007650D0, 0x0076B8FD, 0x007A7CD0, 0x007A7D30) already have a real parent-label row next to the generated row, so `--replace-rva` refuses them. Retire those generated twins with `tools/gen_uw.py land`.
 Clearance: pending.
 Census confirmation: awaiting.
 
