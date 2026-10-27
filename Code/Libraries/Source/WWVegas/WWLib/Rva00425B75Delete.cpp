@@ -7,7 +7,7 @@ public:
 	~LightPoint();
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 void __stdcall Rva00425B75Delete(LightPoint *lightPoint)
 {

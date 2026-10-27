@@ -15,7 +15,7 @@
 // use so it wins over the primary template, and the deleting destructor
 // needs no source of its own (the compiler emits it once this row lands).
 
-extern void __cdecl operator delete[](void *) throw();
+#include <new>
 
 // Retail's out-of-line RefCountClass deleting-dtor copy is the /O1 form
 // (pop ecx after the delete call, e.g. TileDataGetRGBDataForWidth's TU);
