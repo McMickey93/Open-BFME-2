@@ -1,3 +1,4 @@
+// platformsdk
 // ?rva00032C60@GeneralAllocator@Allocator@EA@@QAEII@Z
 // partial score=0.99308 date=2026-10-13
 // ?rva00032C60@GeneralAllocator@Allocator@EA@@QAEII@Z
@@ -35,9 +36,7 @@
 // See /mnt/titan_nv3/open-bfme2-agent-fleet/normal-restart/meta-9-continue-explain1.txt
 // for the full side-by-side diff (389B, first diff +0x3F, classification
 // instruction/register encoding mismatch).
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
-extern "C" __declspec(dllimport) int __stdcall VirtualFree(void *address, unsigned int size, unsigned long type);
+#include <windows.h>
 
 namespace EA
 {
@@ -72,7 +71,7 @@ private:
 	};
 	struct Lock
 	{
-		unsigned char m_pad[0x18];
+		CRITICAL_SECTION m_cs;
 		int volatile m_count;
 	};
 	unsigned char m_pad0[0x30];
@@ -92,7 +91,7 @@ unsigned int GeneralAllocator::rva00032C60(unsigned int size)
 	Lock *lock = m_lock4E4;
 	if (lock != 0)
 	{
-		EnterCriticalSection(lock);
+		EnterCriticalSection(&lock->m_cs);
 		++lock->m_count;
 	}
 	unsigned int acc = 0;
@@ -159,7 +158,7 @@ unsigned int GeneralAllocator::rva00032C60(unsigned int size)
 	if (lock != 0)
 	{
 		--lock->m_count;
-		LeaveCriticalSection(lock);
+		LeaveCriticalSection(&lock->m_cs);
 	}
 	return acc;
 }

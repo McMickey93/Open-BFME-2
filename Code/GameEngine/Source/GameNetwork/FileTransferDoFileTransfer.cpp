@@ -1,5 +1,6 @@
 // ?doFileTransfer@@YA_NVAsciiString@@H@Z
 // cl: /Oi /O1 /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii
+// platformsdk
 // Ported from Open-BFME-1 a7c38d3b2597121f178ab5190b3062478823257d,
 // game/GameEngine/Source/GameNetwork/FileTransfer_doFileTransfer.cpp.
 // Native 0x0044C5C7..0x0044C872 and WB 0x01448920 establish the complete
@@ -19,6 +20,8 @@ const T &minimum(const T &first, const T &second)
 
 #include "ascii_string.h"
 #include "unicode_string.h"
+#include <windows.h>
+#include <string.h>
 class GameSlot
 {
 public:
@@ -125,10 +128,6 @@ extern GameInfo *TheGameInfo;
 extern GameTextInterface *TheGameText;
 extern int g_Va00E06398;
 
-extern "C" __declspec(dllimport) void __stdcall Sleep(UnsignedInt milliseconds);
-extern "C" __declspec(dllimport) UnsignedInt __stdcall timeGetTime();
-extern "C" void *memset(void *destination, int value, unsigned int count);
-
 bool doFileTransfer(AsciiString filename, int mask)
 {
 	AptFileTransferPopup *screen = (AptFileTransferPopup *)g_Va00E06398;
@@ -141,7 +140,7 @@ bool doFileTransfer(AsciiString filename, int mask)
 	if (mask)
 	{
 		screen->rva005832D0(filename);
-		UnsignedInt startTime = timeGetTime();
+		DWORD startTime = timeGetTime();
 		screen->rva00583202(600);
 		((Rva005830AE *)screen)->rva005830AE(0);
 

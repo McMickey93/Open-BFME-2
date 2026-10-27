@@ -9,17 +9,14 @@
 // Unlike the donors' int results, wide results retain the CRT's 16-bit type:
 // retail has no movzx eax,ax. VC7.1 ctype.h declares a 16-bit wchar_t result.
 
-extern "C" __declspec(dllimport) int __cdecl tolower(int value);
-extern "C" __declspec(dllimport) unsigned short __cdecl towlower(unsigned short value);
-extern "C" __declspec(dllimport) int __cdecl toupper(int value);
-extern "C" __declspec(dllimport) unsigned short __cdecl towupper(unsigned short value);
+#include <ctype.h>
 
 static int Rva000356A0(char value)
 {
     return tolower(value);
 }
 
-static unsigned short Rva000356B0(unsigned short value)
+static wchar_t Rva000356B0(wchar_t value)
 {
     return towlower(value);
 }
@@ -29,14 +26,14 @@ static int Rva000356C0(char value)
     return toupper(value);
 }
 
-static unsigned short Rva000356D0(unsigned short value)
+static wchar_t Rva000356D0(wchar_t value)
 {
     return towupper(value);
 }
 
 // Emission driver only; this helper has no retail claim.
 // ?Rva000356A0Emit absent-from-retail
-void Rva000356A0Emit(char value, unsigned short wide)
+void Rva000356A0Emit(char value, wchar_t wide)
 {
     Rva000356A0(value);
     Rva000356B0(wide);

@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?rva00045213@W3DDisplay@@AAEXPADI@Z @0x00045213 377B, thiscall ret 8.
 // W3DDisplay::captureScreen: copy the client area of the front buffer into a
 // 24-bit image (rowBytes apart), zero-filling the parts of the client area
@@ -16,18 +17,10 @@
 // pointers are taken per row (image + y * rowBytes), and the column/source/
 // destination steps sit in the loop increment, as retail schedules them.
 
-struct BfmeRect {
-	long left, top, right, bottom;
-};
-struct BfmePoint {
-	long x, y;
-};
+#include <windows.h>
+#include <string.h>
 
 extern void *ApplicationHWnd;
-extern "C" __declspec(dllimport) int __stdcall GetClientRect(void *, BfmeRect *);
-extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void *, BfmePoint *);
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long);
-extern "C" void *__cdecl memset(void *, int, unsigned int);
 
 extern void BFME_DX8_Thread_Lock(void);
 extern void BFME_DX8_Thread_Assert(void);
@@ -73,7 +66,7 @@ public:
 	virtual long __stdcall slot28();
 	virtual long __stdcall slot2c();
 	virtual long __stdcall GetDesc(BfmeSurfaceDesc *desc);
-	virtual long __stdcall LockRect(BfmeLockedRect *locked, const BfmeRect *rect, unsigned long flags);
+	virtual long __stdcall LockRect(BfmeLockedRect *locked, const RECT *rect, unsigned long flags);
 };
 
 class DX8Wrapper
@@ -110,17 +103,17 @@ void W3DDisplay::rva00045213(char *image, unsigned int rowBytes)
 	BfmeSurfaceDesc desc;
 	front->GetDesc(&desc);
 
-	BfmeRect bounds;
-	BfmePoint point;
-	GetClientRect(ApplicationHWnd, &bounds);
+	RECT bounds;
+	POINT point;
+	GetClientRect((HWND)ApplicationHWnd, &bounds);
 	point.x = bounds.left;
 	point.y = bounds.top;
-	ClientToScreen(ApplicationHWnd, &point);
+	ClientToScreen((HWND)ApplicationHWnd, &point);
 	bounds.left = point.x;
 	bounds.top = point.y;
 	point.x = bounds.right;
 	point.y = bounds.bottom;
-	ClientToScreen(ApplicationHWnd, &point);
+	ClientToScreen((HWND)ApplicationHWnd, &point);
 	bounds.right = point.x;
 	bounds.bottom = point.y;
 

@@ -1,12 +1,8 @@
 // cl: /DNDEBUG /MD /GX /Od /GZ /GS
+// platformsdk
 
-extern "C" void *memcpy(void *destination, const void *source, unsigned int count);
-extern "C" void *memset(void *destination, int value, unsigned int count);
-
-extern "C" __declspec(dllimport) void *__stdcall CreateThread(
-	void *security, unsigned int stackSize, void *start,
-	void *parameter, unsigned int flags, unsigned int *identifier);
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void *handle);
+#include <string.h>
+#include <windows.h>
 
 void *Rva007F0000Alloc(int size);
 extern "C" void Rva007FE200(const int *value);
@@ -31,8 +27,8 @@ void *Rva007FDFF0Connect(const char *host, int timeout)
 	int value;
 	char *cursor;
 	Rva007FDFF0Request *request;
-	unsigned int pid;
-	void *thread;
+	DWORD pid;
+	HANDLE thread;
 
 	if (timeout < 0)
 		return 0;
@@ -77,7 +73,7 @@ void *Rva007FDFF0Connect(const char *host, int timeout)
 resolve:
 	memcpy((char *)request + 0x10, host, 0x40);
 	((char *)request)[0x4f] = 0;
-	thread = CreateThread(0, 0, (void *)Rva007FE250, request, 0, &pid);
+	thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Rva007FE250, request, 0, &pid);
 	if (thread != 0)
 		CloseHandle(thread);
 	return request;

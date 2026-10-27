@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii /ICode/Libraries/Include/Lib /ICode/GameEngine/Source/Common
+// platformsdk
 //
 // ?rva002431CB@Rva002431CB@@QAEXXZ  retail 0x002431CB..0x00243B48 (2429 bytes).
 // The unit-timings benchmark step GameLogic::update calls each frame (Zero
@@ -13,10 +14,8 @@
 #include "ascii_string.h"
 #include "Coord3D.h"
 #include "GameLogicObjectLookupView.h"
-
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceCounter(__int64 *count);
-extern "C" __declspec(dllimport) int __stdcall QueryPerformanceFrequency(__int64 *frequency);
-extern "C" void *__cdecl memset(void *dest, int value, unsigned int count);
+#include <windows.h>
+#include <string.h>
 
 enum ObjectStatusTypes
 {
@@ -357,9 +356,9 @@ private:
 	int m_unitTypes;                     // +0x24
 	bool m_veryFirstTime;                // +0x28
 	unsigned char m_pad29[0x30 - 0x29];
-	__int64 m_startTime;                 // +0x30
-	__int64 m_endTime;                   // +0x38
-	__int64 m_freq;                      // +0x40
+	LARGE_INTEGER m_startTime;                 // +0x30
+	LARGE_INTEGER m_endTime;                   // +0x38
+	LARGE_INTEGER m_freq;                      // +0x40
 	int m_drawCallTotal;                 // +0x48
 	int m_mode;                          // +0x4C
 	double m_timeAll;                    // +0x50
@@ -402,7 +401,7 @@ void Rva002431CB::rva002431CB()
 
 		m_drawCallTotal = TheDisplay->getLastFrameDrawCalls();
 		QueryPerformanceCounter(&m_endTime);
-		double timeToUpdate = (double)(m_endTime - m_startTime) / (double)m_freq;
+		double timeToUpdate = (double)(m_endTime.QuadPart - m_startTime.QuadPart) / (double)m_freq.QuadPart;
 		Coord3D thePos;
 		thePos.x = 400.0f;
 		thePos.y = 300.0f;

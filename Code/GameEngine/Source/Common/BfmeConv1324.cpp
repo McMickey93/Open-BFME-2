@@ -1,4 +1,8 @@
+// platformsdk
 // Open-BFME5 conversions.
+
+#include <windows.h>
+#include <new>
 
 extern void *g_bfmeVftTUA[];
 
@@ -45,8 +49,6 @@ extern void *g_bfmeVftTVA[];
 // BFME2 releases the TVA handle with CloseHandle (kernel32 slot 0xBBA180)
 // and frees the vector with scalar operator delete (0x2FD60), where BFME1
 // calls its own release/free helpers.
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void *handle);
-
 // The rowed base cleanup restores the base vtable at retail 0x65D180.
 class Rva00CE1E14Base { public: virtual ~Rva00CE1E14Base(); };
 
@@ -56,12 +58,12 @@ public:
 	void *bfmeDelTVA(unsigned char flags);
 	void bfmeDtorTVA();
 	void *m_bfmeVft;
-	void *m_bfmeHandle;
+	HANDLE m_bfmeHandle;
 };
 
 void *BfmeThingTVA::bfmeDelTVA(unsigned char flags)
 {
-	void *h = m_bfmeHandle;
+	HANDLE h = m_bfmeHandle;
 	m_bfmeVft = g_bfmeVftTVA;
 	if (h)
 		CloseHandle(h);
@@ -74,14 +76,11 @@ void *BfmeThingTVA::bfmeDelTVA(unsigned char flags)
 // BFME2 frees the TVB object string with SysFreeString (oleaut32 slot
 // 0xBBA78C), the buffer with array delete (0x2FD80) and the vector with
 // scalar delete (0x2FD60).
-extern "C" __declspec(dllimport) void __stdcall SysFreeString(void *bstr);
-extern void __cdecl operator delete[](void *pointer);
-
 class BfmeThingTVB
 {
 public:
 	void *bfmeDelTVB(unsigned char flags);
-	void *m_bfmeObj;
+	BSTR m_bfmeObj;
 	void *m_bfmeBuf;
 };
 

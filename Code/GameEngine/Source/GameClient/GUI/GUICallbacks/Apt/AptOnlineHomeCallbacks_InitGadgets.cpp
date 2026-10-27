@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
+// platformsdk
 // Split from AptOnlineHomeCallbacks.cpp: these definitions reference a callee with no matched body yet,
 // so they are kept apart from the unit's bodies that already link.
 //
@@ -9,10 +10,9 @@
 // They act on one object, viewed here as the first spelling's class.
 
 #include "unicode_string.h"
-
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" __declspec(dllimport) void *__stdcall ShellExecuteW(void *window, const unsigned short *operation, const unsigned short *file, const unsigned short *parameters, const unsigned short *directory, int show);
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *buffer, unsigned int count, const char *format, ...);
+#include <string.h>
+#include <windows.h>
+#include <stdio.h>
 
 class GameWindow;
 

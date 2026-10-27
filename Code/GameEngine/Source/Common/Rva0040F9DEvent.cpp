@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 // ?set@Rva0040F9D@@QAE_NXZ at 0x00040F9D (24B).
 // Honest address-derived class: vptr at +0 and event handle at +4 match the
 // base-dtor layout at 0x00040EDB (CloseHandle on +4). IAT SetEvent slot
@@ -9,14 +10,12 @@
 // Non-virtual base holds handle at +4 so its inline zero runs before vptr.
 // ?reset@Rva0040F9D@@QAE_NXZ at 0x00040FCD (24B). Same handle layout as set.
 // IAT ResetEvent slot 0x00BBA2D4 with neg/sbb/neg bool normalization.
-extern "C" __declspec(dllimport) int __stdcall SetEvent(void *eventHandle);
-extern "C" __declspec(dllimport) int __stdcall ResetEvent(void *eventHandle);
-extern "C" __declspec(dllimport) void *__stdcall CreateEventA(void *attrs, int manualReset, int initialState, char const *name);
+#include <windows.h>
 
 struct Rva0040F9DBase
 {
 	Rva0040F9DBase() : m_handle(0) {}
-	void *m_handle;
+	HANDLE m_handle;
 };
 
 class Rva0040F9D : public Rva0040F9DBase
@@ -44,5 +43,5 @@ bool Rva0040F9D::reset()
 
 Rva0040F9D::Rva0040F9D(int a1, int a2, char const *a3, void *a4)
 {
-	m_handle = CreateEventA(a4, (a2 == 0), (a1 == 0), a3);
+	m_handle = CreateEventA((LPSECURITY_ATTRIBUTES)a4, (a2 == 0), (a1 == 0), a3);
 }

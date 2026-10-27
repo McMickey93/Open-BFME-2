@@ -10,15 +10,13 @@
 // Retail corrections: guarded resources, complete light colors/transforms and unchecked file reads.
 // Texture ownership and line allocation follow retail; original class identity remains unresolved.
 #include <new>
+#include <stdio.h>
+#include <stdlib.h>
 #define inline static inline
 #include <math.h>
 #undef inline
 #include "ascii_string.h"
 #include "Lib/Coord2D.h"
-extern "C" __declspec(dllimport) void *__cdecl fopen(const char *, const char *);
-extern "C" __declspec(dllimport) char *__cdecl fgets(char *, int, void *);
-extern "C" __declspec(dllimport) double __cdecl atof(const char *);
-extern "C" __declspec(dllimport) int __cdecl fclose(void *);
 
 class Vector3 {
 public:
@@ -219,7 +217,7 @@ void Rva0009C134Host::rva0009CD9B()
         m_c4->ReleaseChild(m_d0);
     }
     ((int *)TheW3DShadowManager)[1]=*(int *)(src+0x1d0);
-    void *fp=fopen("livingworld.txt","rt");
+    FILE *fp=fopen("livingworld.txt","rt");
     if (fp) {
         char line[100];
         for (int i=0;i<3;++i) {

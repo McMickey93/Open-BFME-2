@@ -1,4 +1,5 @@
 // cl: /EHs /MD /D_STLP_USE_STATIC_LIB /D_CRTIMP= /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // ?MultiByteToWideCharSingleLine@@YA?AV?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@_STL@@PBD@Z, retail 0x003288E9 (195B).
@@ -13,6 +14,8 @@
 #define private public
 #include <string>
 #undef private
+#include <string.h>
+#include <windows.h>
 // bfme link decl-only begin
 namespace _STL { template <> basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >::basic_string(basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> > const &); }
 namespace _STL { template <> void basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >::_M_terminate_string(); }
@@ -26,11 +29,6 @@ namespace _STL { template <> void _String_base<unsigned short,allocator<unsigned
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 namespace _STL { template <> unsigned short * _STLP_alloc_proxy<unsigned short *,unsigned short,allocator<unsigned short> >::allocate(unsigned int); }
 
-extern "C" unsigned int __cdecl strlen(const char *s);
-extern "C" void *__cdecl memset(void *dest, int c, unsigned int n);
-extern "C" __declspec(dllimport) int __stdcall MultiByteToWideChar(
-	unsigned int codePage, unsigned long flags, const char *src, int srcLen,
-	unsigned short *dest, int destLen);
 // CRT <string.h> already declares ::wcschr (plain under /D_CRTIMP=); keep the
 // dllimport IAT form retail uses in a separate scope to avoid C2375.
 namespace WcschrIAT
@@ -43,10 +41,10 @@ _STL::wstring MultiByteToWideCharSingleLine(const char *orig)
 {
 	int len = strlen(orig);
 	len += len;
-	unsigned short *dest = new unsigned short[len + 1];
-	memset(dest, 0, (len + 1) * sizeof(unsigned short));
+	wchar_t *dest = new wchar_t[len + 1];
+	memset(dest, 0, (len + 1) * sizeof(wchar_t));
 	MultiByteToWideChar(65001, 0, orig, -1, dest, len);
-	unsigned short *c = 0;
+	wchar_t *c = 0;
 	do {
 		c = WcschrIAT::wcschr(dest, L'\n');
 		if (c)

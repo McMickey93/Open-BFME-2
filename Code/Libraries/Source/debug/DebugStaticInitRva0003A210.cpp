@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /DNDEBUG
+// platformsdk
 // ?rva0003A210@@YAXXZ, retail 0x0003A210..0x0003A24B (59B): a Ghidra-unlisted
 // static-initialiser body of the debug library (reached from the CRT
 // initialiser table). BFME 2's take on Zero Hour's Debug::PreStatic hook: it
@@ -6,12 +7,10 @@
 // exported "?PreStaticInit@Debug@@CAPAV1@XZ" (falling back to the local rowed
 // copy 0x000385F0), stores the instance it returns in theDebug and registers
 // the rowed Debug::StaticExit 0x000399C0 with atexit.
-struct DebugCriticalSection;
+#include <windows.h>
+#include <stdlib.h>
 
-extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(DebugCriticalSection *section);
-extern "C" __declspec(dllimport) void *__stdcall GetModuleHandleA(const char *name);
-extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(void *module, const char *name);
-extern "C" int __cdecl atexit(void (__cdecl *fn)(void));
+struct DebugCriticalSection;
 
 void rva0003A210();
 
@@ -29,8 +28,8 @@ typedef Debug *(*DebugPreStaticInitProc)();
 
 void rva0003A210()
 {
-	InitializeCriticalSection(&g_bfmeCsDWC);
-	void *module = GetModuleHandleA(0);
+	InitializeCriticalSection((LPCRITICAL_SECTION)&g_bfmeCsDWC);
+	HMODULE module = GetModuleHandleA(0);
 	DebugPreStaticInitProc init = (DebugPreStaticInitProc)GetProcAddress(module, "?PreStaticInit@Debug@@CAPAV1@XZ");
 	if (!init)
 		init = &Debug::PreStaticInit;
