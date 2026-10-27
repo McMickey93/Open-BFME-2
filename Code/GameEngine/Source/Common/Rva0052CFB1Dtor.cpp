@@ -6,7 +6,7 @@
 #include "../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 class Xfer;
-void __cdecl operator delete(void *);
+#include <new>
 struct RvaItem0052CFB1 { virtual void *get(int x); };
 struct Rva0052CA2D { void *m_start; void *m_finish; void *m_end; ~Rva0052CA2D(); };
 struct Rva0052CA6C { void *m_start; void *m_finish; void *m_end; ~Rva0052CA6C(); };

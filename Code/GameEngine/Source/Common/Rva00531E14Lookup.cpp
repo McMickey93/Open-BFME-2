@@ -5,7 +5,7 @@
 // ?GetAndUseNew@Rva00531E14@@QAEGXZ @ 0x00531D52 (75B): same class pop/alloc helper; callers at 0x00532AFB 0x00533C4B.
 // ?rva00531D08@Rva00531E14@@QAEAAV1@G@Z @ 0x00531D08 (46B): __thiscall init; stores count at +0/+4 clears +2/+6 new[] ushort table at +8 sized count*2 via rowed ??_U@YAPAXI@Z; caller 0x0053237A pushes 0x5DC0; returns *this.
 // ?ReleaseUse@Rva00531E14@@QAEEG@Z @ 0x00531DAE (51B): __thiscall dec table[idx]; if nonzero return 0 else link idx onto +4 chain; caller at 0x00533167.
-void *__cdecl operator new[](unsigned int size);
+#include <new>
 class Rva00531E14
 {
 public:
