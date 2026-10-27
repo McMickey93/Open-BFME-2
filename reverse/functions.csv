@@ -16973,7 +16973,6 @@ uw_0076ee5e,,0x0076EE5E,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;obje
 uw_0076eea0,,0x0076EEA0,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0076eec5,,0x0076EEC5,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10565
 uw_0076ef50,,0x0076EF50,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9857
-uw_0076efba,,0x0076EFBA,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L885
 uw_0076efd4,,0x0076EFD4,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5861
 uw_0076f052,,0x0076F052,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L6721
 uw_0076f0ec,,0x0076F0EC,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5048
@@ -98503,3 +98502,5 @@ $L10140,,0x007A7600,8,Code/Libraries/Source/assetmanager/Rva0061FFA0.cpp,matched
 $L13304,,0x007A7670,11,Code/Libraries/Source/assetmanager/Rva00622290CollectKeys.cpp,matched,gen-funclet;parent=?LoadAsset@AssetManagerImpl@@QAEXPAVRva009EF0D0Element@@@Z; Matched parent 0x00623600's EH graph is EXACT (eh_verify) and binds compiler label $L13304 to retail 0x007A7670; replaces generated uw_007a7670
 $L8930,,0x007A76A0,8,Code/Libraries/Source/assetmanager/AssetManagerImplUpdate.cpp,matched,gen-funclet;parent=?rva00624130@Rva00624130@@QAEXXZ; Matched parent 0x00624130's EH graph is EXACT (eh_verify) and binds compiler label $L8930 to retail 0x007A76A0; replaces generated uw_007a76a0
 $L5458,,0x00775727,8,Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp,matched,gen-funclet;parent=?validateTeam@PlayerList@@QAEPAVTeam@@VAsciiString@@PAVMapObject@@@Z; Matched parent 0x002A851D's EH graph is EXACT (eh_verify) and binds compiler label $L5458 to retail 0x00775727; replaces generated uw_00775727
+??1?$pair@VAsciiString@@UNoCaseTreeValue4@@@_STL@@QAE@XZ,,0x0048BA39,5,Code/GameEngine/Source/Common/Rva002214A6Dtor.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva002214A6Dtor.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$StringBase@D@@AAE@XZ at 0x0048BA39: this unit compiles it to the same whole body; its unwind funclets call 0x0048BA39
+$L6559,,0x0076EFBA,8,Code/GameEngine/Source/Common/Rva002214A6Dtor.cpp,matched,gen-funclet;parent=??0Rva002214A6@@QAE@ABVAsciiString@@@Z; Matched parent 0x0022141E's EH graph is EXACT (eh_verify) and binds compiler label $L6559 to retail 0x0076EFBA; its callee ??1?$pair@VAsciiString@@UNoCaseTreeValue4@@@_STL@@QAE@XZ is rowed at its ICF fold 0x0048BA39; replaces generated uw_0076efba
