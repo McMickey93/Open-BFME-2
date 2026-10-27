@@ -21,7 +21,7 @@
 typedef int Int;
 typedef float Real;
 
-extern "C" __declspec(dllimport) int __cdecl sprintf( char *buffer, const char *format, ... );
+#include <stdio.h>
 
 extern int BfmeLogicFramesPerSecond;
 

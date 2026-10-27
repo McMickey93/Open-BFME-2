@@ -178,7 +178,7 @@ struct ObjectCrushLevelsView {
 };
 
 #include "Common/BfmeAudioEventPrefix136.h"
-extern "C" void *memset(void*,int,unsigned int);
+#include <string.h>
 class Rva002D9508 {public:void rva002D9508(const void*);};
 class Object; class Player; class RadarWindowOverrideSource;
 class Rva002390CB {public:

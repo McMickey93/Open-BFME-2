@@ -54,7 +54,7 @@ public:
 // BitFlags<11> is DisabledMaskType (BitFlags11DisabilityCtors.cpp); its
 // copy is a 4-byte memcpy call in retail, as its constructors memset.
 #pragma function(memcpy)
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
+#include <string.h>
 
 template <int NUM_BITS>
 class BitFlags

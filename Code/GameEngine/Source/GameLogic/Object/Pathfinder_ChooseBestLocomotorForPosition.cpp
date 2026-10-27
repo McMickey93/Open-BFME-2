@@ -29,7 +29,7 @@ public:
 	void *rva001E48E8(unsigned mask);
 };
 
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 extern unsigned int g_00DBD33C[];
 
 typedef float Real;

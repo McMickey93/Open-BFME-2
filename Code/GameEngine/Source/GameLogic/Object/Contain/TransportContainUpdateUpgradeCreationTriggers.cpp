@@ -6,7 +6,7 @@
 // independently establish this flow; provisional capacity predicate466D50 is not a recovered body.
 #include "ascii_string.h"
 #include "Common/GameLogicObjectLookupView.h"
-extern "C" void *memset(void*,int,unsigned);
+#include <string.h>
 namespace _STL {template<class T>class allocator{};template<class T,class A>class vector {public:T*begin;T*end;T*cap;T*erase(T*,T*);T*getBegin()const{return begin;}unsigned size()const{return (unsigned)(end-begin);} };}
 class Team;class UpgradeTemplate;class ThingTemplate;
 struct CreateMask{unsigned words[4];};

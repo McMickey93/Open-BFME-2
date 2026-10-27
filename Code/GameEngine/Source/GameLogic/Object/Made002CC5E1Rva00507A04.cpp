@@ -8,7 +8,7 @@
 #include "ascii_string.h"
 #include "GameLogicObjectLookupView.h"
 
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
+#include <string.h>
 
 template <class T> inline const T &Made002CC5E1Max(const T &a, const T &b) { return a < b ? b : a; }
 

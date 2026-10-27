@@ -70,7 +70,7 @@ public:
 
 extern GlobalData *TheWritableGlobalData;
 
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 class Rva00290EFE
 {

@@ -17,7 +17,7 @@
 // set(bit, value) is the existing WeaponTemplateSetHead spelling of
 // 0x000B3FA5; GlobalData offsets are retail's.
 
-extern "C" void *__cdecl memset(void *dst, int value, unsigned int count);
+#include <string.h>
 
 #include "../../Common/GameLogicObjectLookupView.h"
 

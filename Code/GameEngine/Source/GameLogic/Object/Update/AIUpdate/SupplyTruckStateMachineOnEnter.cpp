@@ -42,7 +42,7 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-extern "C" void *memset(void *dst, int value, unsigned int count);
+#include <string.h>
 class Object;
 class Player;
 #include "Code/Libraries/Include/Lib/Coord3D.h"

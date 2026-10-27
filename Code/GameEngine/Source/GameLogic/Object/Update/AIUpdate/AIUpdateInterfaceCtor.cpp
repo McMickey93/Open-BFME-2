@@ -14,7 +14,7 @@
 // destructor 0x0026E836 unwinds; unnamed fields keep their offsets.
 #include "ascii_string.h"
 
-extern "C" void *memset(void *, int, unsigned int);
+#include <string.h>
 
 class Thing;
 class ModuleData;
