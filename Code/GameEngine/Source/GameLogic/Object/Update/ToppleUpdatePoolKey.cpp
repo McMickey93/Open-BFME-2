@@ -11,13 +11,13 @@
 
 enum NameKeyType
 {
-	NK_UNKNOWN = 0
+	NAMEKEY_INVALID = 0
 };
 
 class NameKeyGenerator
 {
 public:
-	NameKeyType nameToKey(const char *name);
+	NameKeyType nameToKey(const char *);
 };
 
 extern NameKeyGenerator *TheNameKeyGenerator;

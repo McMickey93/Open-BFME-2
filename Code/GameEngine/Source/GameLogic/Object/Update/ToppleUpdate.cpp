@@ -66,7 +66,7 @@ class BehaviorModuleInterface {public:virtual void behaviorModuleInterfaceSlot()
 class UpdateModuleInterface {public:virtual UpdateSleepTime update()=0;};
 class UpdateModule:public ObjectModule,public BehaviorModuleInterface,public UpdateModuleInterface {public:virtual ~UpdateModule();char pad14[0xC];protected:__forceinline Object *getObject()const{return object;}void setWakeFrame(Object *,UpdateSleepTime);};
 class CollideModuleInterface {public:virtual void onCollide(Object *,const Coord3D *,const Coord3D *)=0;};
-class ToppleUpdate:public UpdateModule,public CollideModuleInterface {public:virtual UpdateSleepTime update();virtual void onCollide(Object *,const Coord3D *,const Coord3D *);void applyTopplingForce(const Coord3D *,float,unsigned);float velocity,acceleration;Coord3D direction;int state;float accumulation,angleDelta;int countDelta;bool bounceFX;unsigned options,stumpID;float state54;};
+class ToppleUpdate:public UpdateModule,public CollideModuleInterface {public:virtual NameKeyType getModuleNameKey()const;virtual UpdateSleepTime update();virtual void onCollide(Object *,const Coord3D *,const Coord3D *);void applyTopplingForce(const Coord3D *,float,unsigned);float velocity,acceleration;Coord3D direction;int state;float accumulation,angleDelta;int countDelta;bool bounceFX;unsigned options,stumpID;float state54;};
 void ToppleUpdate::applyTopplingForce(const Coord3D *toppleDirection,float toppleSpeed,unsigned opts) {
  if(object->status438&1)return;
  const ToppleUpdateModuleData *toppleUpdateModuleData=data;
