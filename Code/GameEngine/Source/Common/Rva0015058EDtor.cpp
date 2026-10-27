@@ -13,7 +13,6 @@ public:
 
 // Same one-slot cleanup view as Rva00150558Dtor.cpp: retail resets
 // vtable 0x00BC6F24, distinct from canonical Snapshot's 0x00BBB554.
-// ??1Rva00BC6F24Base@@UAE@XZ present-unmatched
 inline Rva00BC6F24Base::~Rva00BC6F24Base()
 {
 	*(const void **)this = __identifier("??_7Base@@6B@");
