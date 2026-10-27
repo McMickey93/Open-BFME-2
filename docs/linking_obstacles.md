@@ -1058,6 +1058,11 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   wider five-source cohort is 5/5 LINKS with 17790 bytes. No incremental
   census gain is claimed. Broader legacy template identities, the other
   native-gate conflicts and reference-refresh qualification remain open.
+  Publication passed 78/78 rows in five sources and six EXACT EH graphs,
+  but the outgoing linking-loss audit is **UNVERIFIED**: index 73061d9452
+  predates base 1bce3761a21 and lacks per-object consumer names. Carry this
+  source/consumer cohort to the next normal census; whole-batch closure and
+  absence of losses are not established. See the tracked publication audit.
 
 **Status: Open. Updated: 2026-10-27.**
 

@@ -69,3 +69,15 @@ This clears the proved two-address DIR32 lifetime conflict in the stated
 25-row scope. Other legacy type names, the remaining global native-gate
 conflicts, current census verification and the BFME 1 reference refresh remain
 separate work. No new pins or baseline/whitelist entries were added.
+
+## Publication gate limitation
+
+The source repair and readmission landed as 8de0b1c21816f02f68da15c19db9f34bc2d75c9c
+and f5a2184b8a73f0f1516231472b4f14f75d1627db. The normal pre-push byte
+gate passes 78/78 rows across five sources and six EXACT EH graphs.
+The batch linking-loss audit is explicitly UNVERIFIED: index 73061d9452
+predates outgoing base 1bce3761a210a4c7adc9f9371831e7a4b0b58404 and lacks
+per-object consumer names. It cannot establish whole-batch selected-provider
+closure or absence of losses. Carry the five-source outgoing scope to the next
+normal census with complete consumer metadata; the earlier scoped previews and
+DIR32 result remain the limits of the repair evidence. No gate was bypassed.
