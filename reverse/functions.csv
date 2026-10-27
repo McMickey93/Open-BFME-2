@@ -20463,30 +20463,9 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_0065561c@@YAXXZ,,0x0065561C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA0F0;dll=imm32.dll;import=ImmGetCompositionStringW;target=ImmGetCompositionStringW
 ?ji_00655622@@YAXXZ,,0x00655622,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA0F4;dll=imm32.dll;import=ImmGetProperty;target=ImmGetProperty
 ?ji_0065565e@@YAXXZ,,0x0065565E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA9A4;dll=wsock32.dll;import=htonl;target=htonl
-?ji_00655664@@YAXXZ,,0x00655664,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA940;dll=wsock32.dll;import=recvfrom;target=recvfrom
-?ji_0065566a@@YAXXZ,,0x0065566A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA99C;dll=wsock32.dll;import=select;target=select
 ?ji_00655670@@YAXXZ,,0x00655670,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA998;dll=wsock32.dll;import=htonl;target=htonl
-?ji_00655676@@YAXXZ,,0x00655676,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA994;dll=wsock32.dll;import=closesocket;target=closesocket
-?ji_0065567c@@YAXXZ,,0x0065567C,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA990;dll=wsock32.dll;import=bind;target=bind
 ?ji_00655682@@YAXXZ,,0x00655682,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA98C;dll=wsock32.dll;import=htons;target=htons
-?ji_00655688@@YAXXZ,,0x00655688,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA988;dll=wsock32.dll;import=socket;target=socket
-?ji_0065568e@@YAXXZ,,0x0065568E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA984;dll=wsock32.dll;import=send;target=send
-?ji_00655694@@YAXXZ,,0x00655694,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA980;dll=wsock32.dll;import=WSAGetLastError;target=WSAGetLastError
-?ji_0065569a@@YAXXZ,,0x0065569A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA97C;dll=wsock32.dll;import=connect;target=connect
-?ji_006556a0@@YAXXZ,,0x006556A0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA978;dll=wsock32.dll;import=gethostbyname;target=gethostbyname
-?ji_006556a6@@YAXXZ,,0x006556A6,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA974;dll=wsock32.dll;import=inet_addr;target=inet_addr
-?ji_006556ac@@YAXXZ,,0x006556AC,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA970;dll=wsock32.dll;import=WSACleanup;target=WSACleanup
-?ji_006556b2@@YAXXZ,,0x006556B2,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA96C;dll=wsock32.dll;import=WSAStartup;target=WSAStartup
 ?ji_006556b8@@YAXXZ,,0x006556B8,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA968;dll=wsock32.dll;import=htons;target=htons
-?ji_006556be@@YAXXZ,,0x006556BE,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA964;dll=wsock32.dll;import=gethostname;target=gethostname
-?ji_006556c4@@YAXXZ,,0x006556C4,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA960;dll=wsock32.dll;import=shutdown;target=shutdown
-?ji_006556ca@@YAXXZ,,0x006556CA,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA95C;dll=wsock32.dll;import=ioctlsocket;target=ioctlsocket
-?ji_006556d0@@YAXXZ,,0x006556D0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA958;dll=wsock32.dll;import=setsockopt;target=setsockopt
-?ji_006556d6@@YAXXZ,,0x006556D6,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA954;dll=wsock32.dll;import=getsockopt;target=getsockopt
-?ji_006556dc@@YAXXZ,,0x006556DC,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA950;dll=wsock32.dll;import=getsockname;target=getsockname
-?ji_006556e2@@YAXXZ,,0x006556E2,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA94C;dll=wsock32.dll;import=sendto;target=sendto
-?ji_006556e8@@YAXXZ,,0x006556E8,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA948;dll=wsock32.dll;import=recv;target=recv
-?ji_006556ee@@YAXXZ,,0x006556EE,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA944;dll=wsock32.dll;import=__WSAFDIsSet;target=__WSAFDIsSet
 ?ji_00687ca2@@YAXXZ,,0x00687CA2,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA7BC;dll=tapi32.dll;import=lineInitialize;target=lineInitialize
 ?ji_00687ca8@@YAXXZ,,0x00687CA8,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA7D8;dll=tapi32.dll;import=lineAnswer;target=lineAnswer
 ?ji_00687cae@@YAXXZ,,0x00687CAE,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA7C0;dll=tapi32.dll;import=lineClose;target=lineClose
@@ -20509,7 +20488,6 @@ _DeblockNonFilteredBandNewFilter_MMX,,0x001CA000,4240,Code/Libraries/Source/VP6/
 ?ji_0075ac08@@YAXXZ,,0x0075AC08,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA6FC;dll=msvcr71.dll;import=isprint;target=isprint
 ?ji_0075ac0e@@YAXXZ,,0x0075AC0E,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA700;dll=msvcr71.dll;import=gmtime;target=gmtime
 ?ji_0075ac7a@@YAXXZ,,0x0075AC7A,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA748;dll=msvcr71.dll;import=_setjmp3;target=setjmp3
-?ji_0075b4cc@@YAXXZ,,0x0075B4CC,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA9A0;dll=wsock32.dll;import=inet_ntoa;target=inet_ntoa
 ?ji_0075b4f0@@YAXXZ,,0x0075B4F0,6,Code/gen_small/imports_000.cpp,matched,gen-import;slot=0x00BBA5F4;dll=msvcr71.dll;import=_strupr;target=_strupr
 ?init@SidesInfo@@QAEXPBVDict@@@Z,,0x0032CDAA,84,Code/GameEngine/Source/GameLogic/Map/SidesList_sidesInfo.cpp,matched,ZH SidesInfo init; BFME2 target stores ScriptList by value and clears vector at +0x54; /O1 /G7
 ?swap@SidesInfo@@QAEXPAV1@@Z,,0x0032B070,57,Code/GameEngine/Source/GameLogic/Map/SidesList_sidesInfo.cpp,matched,member-wise swap of build list Dict ScriptList and vector; target calls verified callees
@@ -98521,3 +98499,25 @@ _RegDeleteKeyA@8,,0x0068822A,6,Code/Libraries/Source/Win32/Advapi32ImportThunks.
 _timeGetTime@0,,0x006555F8,6,Code/Libraries/Source/Win32/WinmmImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__timeGetTime@0 using VS2003 __identifier; retail IAT slot 0x00BBA918 names winmm.dll!timeGetTime (gen-import row); complete 6B tail
 _timeBeginPeriod@4,,0x006555FE,6,Code/Libraries/Source/Win32/WinmmImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__timeBeginPeriod@4 using VS2003 __identifier; retail IAT slot 0x00BBA914 names winmm.dll!timeBeginPeriod (gen-import row); complete 6B tail
 _timeEndPeriod@4,,0x00655604,6,Code/Libraries/Source/Win32/WinmmImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__timeEndPeriod@4 using VS2003 __identifier; retail IAT slot 0x00BBA91C names winmm.dll!timeEndPeriod (gen-import row); complete 6B tail
+_recvfrom@24,,0x00655664,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__recvfrom@24 using VS2003 __identifier; retail IAT slot 0x00BBA940 names wsock32.dll!recvfrom (gen-import row); complete 6B tail
+_select@20,,0x0065566A,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__select@20 using VS2003 __identifier; retail IAT slot 0x00BBA99C names wsock32.dll!select (gen-import row); complete 6B tail
+_closesocket@4,,0x00655676,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__closesocket@4 using VS2003 __identifier; retail IAT slot 0x00BBA994 names wsock32.dll!closesocket (gen-import row); complete 6B tail
+_bind@12,,0x0065567C,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__bind@12 using VS2003 __identifier; retail IAT slot 0x00BBA990 names wsock32.dll!bind (gen-import row); complete 6B tail
+_socket@12,,0x00655688,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__socket@12 using VS2003 __identifier; retail IAT slot 0x00BBA988 names wsock32.dll!socket (gen-import row); complete 6B tail
+_send@16,,0x0065568E,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__send@16 using VS2003 __identifier; retail IAT slot 0x00BBA984 names wsock32.dll!send (gen-import row); complete 6B tail
+_WSAGetLastError@0,,0x00655694,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__WSAGetLastError@0 using VS2003 __identifier; retail IAT slot 0x00BBA980 names wsock32.dll!WSAGetLastError (gen-import row); complete 6B tail
+_connect@12,,0x0065569A,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__connect@12 using VS2003 __identifier; retail IAT slot 0x00BBA97C names wsock32.dll!connect (gen-import row); complete 6B tail
+_gethostbyname@4,,0x006556A0,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__gethostbyname@4 using VS2003 __identifier; retail IAT slot 0x00BBA978 names wsock32.dll!gethostbyname (gen-import row); complete 6B tail
+_inet_addr@4,,0x006556A6,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__inet_addr@4 using VS2003 __identifier; retail IAT slot 0x00BBA974 names wsock32.dll!inet_addr (gen-import row); complete 6B tail
+_WSACleanup@0,,0x006556AC,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__WSACleanup@0 using VS2003 __identifier; retail IAT slot 0x00BBA970 names wsock32.dll!WSACleanup (gen-import row); complete 6B tail
+_WSAStartup@8,,0x006556B2,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__WSAStartup@8 using VS2003 __identifier; retail IAT slot 0x00BBA96C names wsock32.dll!WSAStartup (gen-import row); complete 6B tail
+_gethostname@8,,0x006556BE,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__gethostname@8 using VS2003 __identifier; retail IAT slot 0x00BBA964 names wsock32.dll!gethostname (gen-import row); complete 6B tail
+_shutdown@8,,0x006556C4,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__shutdown@8 using VS2003 __identifier; retail IAT slot 0x00BBA960 names wsock32.dll!shutdown (gen-import row); complete 6B tail
+_ioctlsocket@12,,0x006556CA,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__ioctlsocket@12 using VS2003 __identifier; retail IAT slot 0x00BBA95C names wsock32.dll!ioctlsocket (gen-import row); complete 6B tail
+_setsockopt@20,,0x006556D0,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__setsockopt@20 using VS2003 __identifier; retail IAT slot 0x00BBA958 names wsock32.dll!setsockopt (gen-import row); complete 6B tail
+_getsockopt@20,,0x006556D6,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__getsockopt@20 using VS2003 __identifier; retail IAT slot 0x00BBA954 names wsock32.dll!getsockopt (gen-import row); complete 6B tail
+_getsockname@12,,0x006556DC,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__getsockname@12 using VS2003 __identifier; retail IAT slot 0x00BBA950 names wsock32.dll!getsockname (gen-import row); complete 6B tail
+_sendto@24,,0x006556E2,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__sendto@24 using VS2003 __identifier; retail IAT slot 0x00BBA94C names wsock32.dll!sendto (gen-import row); complete 6B tail
+_recv@16,,0x006556E8,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__recv@16 using VS2003 __identifier; retail IAT slot 0x00BBA948 names wsock32.dll!recv (gen-import row); complete 6B tail
+___WSAFDIsSet@8,,0x006556EE,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp____WSAFDIsSet@8 using VS2003 __identifier; retail IAT slot 0x00BBA944 names wsock32.dll!__WSAFDIsSet (gen-import row); complete 6B tail
+_inet_ntoa@4,,0x0075B4CC,6,Code/Libraries/Source/Win32/Wsock32ImportThunks.cpp,matched,Typed SDK stdcall forwarding through the genuine __imp__inet_ntoa@4 using VS2003 __identifier; retail IAT slot 0x00BBA9A0 names wsock32.dll!inet_ntoa (gen-import row); complete 6B tail
