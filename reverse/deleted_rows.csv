@@ -3722,3 +3722,4 @@ $L38165,0x00783364,"Identity correction: unwind funclet of the 0x003E5525 destru
 ?bfmeAssignVGO@BfmeRefVGO@@QAEAAV1@ABV1@@Z,0x006CDB10,"Renamed to ?assign@BfmeRefVGO@@QAEAAV1@ABV1@@Z by tools/rename.py (inferred)"
 ?execute@Rva0010F42A@@QAEXXZ,0x0010F42A,"Renamed to ?execute@SetStreamPlaybackRateCommand@@QAEXXZ by tools/rename.py (inferred)"
 ?execute@Rva0010F5A8@@QAEXXZ,0x0010F5A8,"Renamed to ?execute@SetStreamPositionCommand@@QAEXXZ by tools/rename.py (inferred)"
+?compose@Rva0015FC20TransformPrefix@@QAEXABU1@@Z,0x0015FC20,"Renamed to ?compose@RigidTransform@@QAEXABU1@@Z by tools/rename.py (inferred)"

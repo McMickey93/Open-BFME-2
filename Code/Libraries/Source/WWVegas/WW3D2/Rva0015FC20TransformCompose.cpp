@@ -1,5 +1,5 @@
 // cl: /O2 /G7 /arch:SSE /MD /DNDEBUG
-// ?compose@Rva0015FC20TransformPrefix@@QAEXABU1@@Z, retail 0x0015FC20 (607 bytes, RET 4):
+// ?compose@RigidTransform@@QAEXABU1@@Z, retail 0x0015FC20 (607 bytes, RET 4):
 // a rotation+translation prefix (16-byte quaternion at +0x00, position at +0x10) composed
 // with another: the other position is rotated by this rotation and added, then this
 // rotation is multiplied incrementally by the other's. Target facts: the whole body and
@@ -38,14 +38,14 @@ struct Rva0015FC20Rotation
 	float X, Y, Z, W;
 };
 
-struct Rva0015FC20TransformPrefix
+struct RigidTransform
 {
-	void compose(const Rva0015FC20TransformPrefix &other);
+	void compose(const RigidTransform &other);
 	Rva0015FC20Rotation Rotation;		// +0x00
 	Rva0015FC20Vector Position;		// +0x10
 };
 
-void Rva0015FC20TransformPrefix::compose(const Rva0015FC20TransformPrefix &other)
+void RigidTransform::compose(const RigidTransform &other)
 {
 	Rva0015FC20Vector rotatedPosition;
 	Rotation.Rotate_Vector(other.Position, &rotatedPosition);
