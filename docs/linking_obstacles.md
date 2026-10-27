@@ -4204,6 +4204,17 @@ Full graph, byte and compatibility evidence:
 `reverse/attempt_support/uw_gen_011_shared_eh_20261027.md`.
 Clearance: pending.
 Census confirmation: awaiting.
+Private Snapshot views (K7, 2026-10-27, 52b7056d78): `uw_007881de` and `uw_007713db`
+(uw_gen_013) were blocked on `??1Rva000D3FA0PoolObject@@UAE@XZ`, a private copy of
+Snapshot whose retail body is the folded Snapshot destructor 0x0049B47C. Deriving
+`Rva000D3FA0Map` from the canonical `reference/shims/moduledata/Common/Snapshot.h` in
+both of its vtable-emitting units (`Rva000D3FA0Destructor.cpp`, `Rva00243177.cpp`)
+resolves the jump to the rowed `??1Snapshot@@UAE@XZ`; both funclets moved to their
+parents' labels (EH EXACT, unmasked build 6/6 and 5/5). Change every unit that emits
+the derived vtable together, or `??_7` COMDATs disagree (Rva00243177.cpp previewed
+154 -> 0 with only one side changed; both together keep LINKS 154). Next check: other
+blocked rows naming a private `*PoolObject`/`*SnapshotBase` dtor whose retail target is
+0x0049B47C can take the same canonical base instead of a fold row.
 
 **Renumbered-label relabel (2026-10-27, K9):** 166 parent-emitted `$L` rows in 16 units
 verified only through the renumbered-label fallback and held the names their gen_uw
