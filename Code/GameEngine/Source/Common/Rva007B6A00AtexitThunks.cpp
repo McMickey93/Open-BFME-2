@@ -184,14 +184,12 @@ extern unsigned g_Va00E02D94;
 extern unsigned g_Va00E02E70;
 extern unsigned g_Va00E02E74;
 extern unsigned g_Va00E032E8;
-unsigned g_Va00E03318;	// retail RVA 0x00A03318 (.bss), defined here
 unsigned g_Va00E03324;	// retail RVA 0x00A03324 (.bss), defined here
 unsigned g_Va00E03328;	// retail RVA 0x00A03328 (.bss), defined here
 unsigned g_Va00E0332C;	// retail RVA 0x00A0332C (.bss), defined here
 unsigned g_Va00E03330;	// retail RVA 0x00A03330 (.bss), defined here
 unsigned g_Va00E04444;	// retail RVA 0x00A04444 (.bss), defined here
 unsigned g_Va00E04448;	// retail RVA 0x00A04448 (.bss), defined here
-unsigned g_Va00E0445C;	// retail RVA 0x00A0445C (.bss), defined here
 extern UnicodeString g_00E0447C;	// VA 0x00E0447C, defined in AptLobbyScreenInitCallbacks.cpp
 extern unsigned g_Va00E04490;
 unsigned g_Va00E048F4;	// retail RVA 0x00A048F4 (.bss), defined here
@@ -403,13 +401,6 @@ void __cdecl rva007B83A5()
 	receiver->~UnicodeString();
 }
 
-// ?rva007B83E1@@YAXXZ @ 0x007B83E1 (10B): ecx=&g_Va00E03318, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B83E1()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00E03318;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
-
 // ?rva007B83EB@@YAXXZ @ 0x007B83EB (10B): ecx=&g_Va00E03324, tail-jump to rowed ??1AsciiString@@QAE@XZ (0x0048BA39)
 void __cdecl rva007B83EB()
 {
@@ -450,13 +441,6 @@ void __cdecl rva007B8F1C()
 {
 	AsciiString *receiver = (AsciiString *)&g_Va00E04448;
 	receiver->~AsciiString();
-}
-
-// ?rva007B8F26@@YAXXZ @ 0x007B8F26 (10B): ecx=&g_Va00E0445C, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B8F26()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00E0445C;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
 }
 
 // ?rva007B8F6D@@YAXXZ @ 0x007B8F6D (10B): ecx=&g_00E0447C, tail-jump to rowed ??1UnicodeString@@QAE@XZ (0x005B804E)

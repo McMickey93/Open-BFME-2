@@ -79,7 +79,14 @@ void __stdcall Rva004E40A6Enable(int unused)
 // Callers at 0x004E41BF 0x004E4317 0x004E4321 0x004E432C plus jmp thunk
 // 0x004E4312; caller 0x004E432A uses +4 as flag byte.
 extern "C" int __cdecl atexit(void (__cdecl *routine)(void));
-extern void *g_Va00A0445C;
+namespace FXParticleSystem
+{
+	class OutwardEmissionVelocityInfo
+	{
+	public:
+		virtual ~OutwardEmissionVelocityInfo();
+	};
+}
 // The retail table at RVA 0x008621F0: 4 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -113,6 +120,14 @@ void *Rva004E4179Get(void)
 		atexit(rva007B8F26);
 	}
 	return &g_Va00A0445C;
+}
+
+// ?rva007B8F26@@YAXXZ @ 0x007B8F26 (10B): the atexit cleanup Rva004E4179Get registers for
+// its slot (0x00A0445C): ecx=&g_Va00A0445C, tail-jump to rowed
+// ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C).
+void __cdecl rva007B8F26()
+{
+	((FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00A0445C)->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
 }
 
 // Target identity: GameState::init passes this entry's result for the
@@ -206,7 +221,6 @@ void Rva0043C96FEnable(void)
 // (encoded 0x00C621F0-style 0x00C3D690) and set byte at 0x00A0331C, registering cleanup RVA
 // 0x007B83E1 (encoded 0x00BB83E1) via rowed _atexit, then return address of
 // 0x00A03318. Caller 0x0043CCD1 uses +4 as flag byte. Unlock lane.
-extern void *g_Va00A03318;
 // g_Va00A03318: matched references place it at VA 0xe03318 (zero-filled .bss).
 void * g_Va00A03318;
 extern unsigned char g_Va00A0331C;
@@ -240,6 +254,14 @@ void *Rva0043C9B3Get(void)
 		atexit(rva007B83E1);
 	}
 	return &g_Va00A03318;
+}
+
+// ?rva007B83E1@@YAXXZ @ 0x007B83E1 (10B): the atexit cleanup Rva0043C9B3Get registers for
+// its slot (0x00A03318): ecx=&g_Va00A03318, tail-jump to rowed
+// ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C).
+void __cdecl rva007B83E1()
+{
+	((FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00A03318)->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
 }
 
 // ?Rva0043CCC2Get@@YAPAXXZ @0x0043CCC2 5B: forwards to the singleton getter

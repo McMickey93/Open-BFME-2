@@ -44,9 +44,6 @@ Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp	wrong-name	?g_009FEF10@@3PAV
 Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp	wrong-name	?g_00E04424@@3VRva004E0918@@A	0x00A04424
 Code/GameEngine/Source/Common/Rva004EE5D2Erase.cpp	duplicate-def	?g_00E04424@@3VRva002B7250@@A	0x00A04424
 Code/GameEngine/Source/Common/Rva004EE5D2Erase.cpp	wrong-name	?g_00E04424@@3VRva002B7250@@A	0x00A04424
-Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	wrong-name	?g_Va009FE4CC@@3PAVRva00222479ByteOneSetter@@A	0x009FE4CC
-Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	wrong-name	?g_Va009FEDF0@@3PAUGlobal9FEDF0@@A	0x009FEDF0
-Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	wrong-name	?g_Va00A01E48@@3PAUGlobalA01E48@@A	0x00A01E48
 Code/GameEngine/Source/Common/Rva00515921Permuted.cpp	wrong-name	?$S1@?1??goodCampaignRva00515921@@YAHM_N@Z@4IA	0x00A04900
 Code/GameEngine/Source/Common/Rva00515921Permuted.cpp	wrong-name	?campaign@?1??goodCampaignRva00515921@@YAHM_N@Z@4VAsciiString@@A	0x00A048FC
 Code/GameEngine/Source/Common/Rva0052906BUpdate.cpp	wrong-name	?$S1@?1??Rva0052906BUpdate@@YAXH@Z@4IA	0x00A04988
