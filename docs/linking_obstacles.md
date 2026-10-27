@@ -3304,7 +3304,7 @@ Census confirmation: not claimed.
 
 ### LINK-083: `StlSweepR3` units instantiate a whole algorithm or container over an opaque record whose retail callees are rowed under another type
 
-**Status: Repair landed / awaiting census (7 units); family Open. Updated: 2026-10-26; inspected revision: bf8a1b680e parent d2bfe4bfad; index 5ce093a71a.**
+**Status: Repair landed / awaiting census (8 units, 1 duplicate retired); family Open. Updated: 2026-10-26; inspected revision: 1b06fe6829; index 5ce093a71a.**
 
 - **Evidence / scope:** a `StlSweepR3Rva<rva>.cpp` unit holds one STLport row over an address-named
   record (`Rva<rva>Record`) and writes `template class` / `template void` instantiations to emit it.
@@ -3356,15 +3356,31 @@ Census confirmation: not claimed.
     stlport_sort_s4sortelem20.cpp, Rva00335CFMedian.cpp, Rva003371B1Copy.cpp, Rva003371B1Dtor.cpp,
     stlport_unguarded_partition_s4sortelem20.cpp, stlport_partial_sort_rva00337c55.cpp) still link.
     Preview total for the family now 0 -> 790 B.
+  - 33a4c45d14 `StlSweepR3Rva00212A16.cpp` (`hashtable::_M_insert`, 68 B): calls 0x00212858
+    `Rva000427195::rva00212858` (resize), 0x00223149 `Rva000427195::bucketIndex` and 0x00212354
+    `Rva000427195::rva00212354` (new node), the same three calls as the rowed twin Rva000A7A63Insert.cpp;
+    3 pins and the `max<unsigned>` pragma block dropped. 0 -> 68 B; Rva00212858Resize.cpp,
+    PlayerXferStringMaps.cpp, Rva00212354NewNode.cpp, Rva00212A5AInsert.cpp, Rva000A7A63Insert.cpp and the
+    caller LivingWorldManagerSoundTable.cpp still link. Family preview total 0 -> 858 B.
+  - 1b06fe6829 `StlSweepR3Rva000B0298.cpp` retired as a LINK-060 duplicate: 0x000B0298 is rowed and
+    links as `?rva000B0298@Rva000B0298@@QAEXXZ` (Rva000B0298Clear.cpp, called by
+    VectorOverflowRva000B059B.cpp); the sweep `_M_clear` row was uncalled. Row in deleted_rows.csv; +0 B.
 - **Remaining, same shape (inspected 2026-10-26, no edit):** `StlSweepR3Rva0051F7AD.cpp` (operator=
   over 12-byte `ProductionPrerequisite::PrereqUnitRec`; callees 0x004EE233, 0x004EE540, 0x0051EC31,
   0x0052C37A, 0x004EE1E2 all rowed; draft follows the 003F318C shape) and `StlSweepR3Rva003F40EF.cpp`
   are file-claimed by another seat (StarkillerHDX, link seat w6). `StlSweepR3Rva00627B10.cpp`
-  (`__make_heap`) likewise claimed. `StlSweepR3Rva00212A16.cpp` (hashtable resize/insert, 68 B) not
-  yet inspected. `StlSweepR3Rva000B0298.cpp` is a different cause: 0x000B0298 carries two rows
-  (`?rva000B0298@Rva000B0298@@QAEXXZ` in Rva000B0298Clear.cpp, which VectorOverflowRva000B059B.cpp
-  calls, and this unit's `vector<Rva000B0298Record>::_M_clear`, which nothing calls); a duplicate-row
-  question (LINK-060), not this recipe.
+  (`__make_heap`) likewise claimed. `StlSweepR3Rva00551B02.cpp`, `StlSweepR3Rva005838DC.cpp`,
+  `StlSweepR3Rva005AFEDB.cpp`, `StlSweepR3Rva001DE3E3.cpp` and `StlSweepR3Rva001FDEBC.cpp` were edited by
+  other seats today (f664738191, 7e3d3a672f) and were left alone. Every other R3 unit links in preview
+  (a 2026-10-26 link_check sweep of all 139; StlSweepR3Rva00214B22.cpp needs its partner
+  stlport_vector_rva00214adc_destroy.cpp).
+- **Same shape outside R3 (attempted 2026-10-26, agent K9, no edit landed):** `StlSweepW5Rva001506BF.cpp`
+  (`vector::_M_fill_insert`, 222 B) and its twins `StlSweepW5Rva0015079D.cpp` / `StlSweepW5Rva0015087B.cpp`
+  instantiate over an 8-byte element whose callees are rowed under Rva0014F480 / Rva0014F4A1 /
+  Rva0014F4C2. An explicit specialization over a stub vector reaches 212/222 B; it needs a non-POD
+  `__false_type` (cl zero-fills an empty POD tag temporary passed to an opaque callee) and a pre-copy
+  `_M_finish` local, and 10 bytes of frame-slot colouring remain. Draft and variants:
+  `reverse/attempt_support/stlsweep-w5-1506bf-fill-insert-20261026.md`.
 - **Related leads not done:** `Rva008312E0StringReplace.cpp` / `Rva008314E0StringReplace.cpp`
   (/Od /Ob1) emit `erase`/`replaceBase` COMDATs that retail calls out of line at 0x00012150
   (`basic_string<char>::erase`) and 0x0002A610 / 0x0002A730 (`BfmeStrV24::bfmeReplaceV24`, last
