@@ -18256,7 +18256,6 @@ uw_0079ea32,,0x0079EA32,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;obje
 uw_0079eab6,,0x0079EAB6,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5933
 uw_0079eabe,,0x0079EABE,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L3479
 uw_0079eae2,,0x0079EAE2,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
-uw_0079ec20,,0x0079EC20,8,Code/gen_small/uw_gen_005.cpp,matched,gen-funclet;object-symbol=$L3027
 uw_0079ec3a,,0x0079EC3A,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5861
 uw_0079edb2,,0x0079EDB2,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L5713
 uw_0079f05f,,0x0079F05F,8,Code/gen_small/uw_gen_014.cpp,matched,gen-funclet;object-symbol=$L5865
@@ -98561,3 +98560,5 @@ $L374,,0x0079B1CC,8,Code/GameEngine/Source/Common/Rva005757A5Method.cpp,matched,
 $L471,,0x0079B642,8,Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIPlanRetreatsPhaseBehavior.cpp,matched,gen-funclet;parent=?OnMouseLeftClick@Impl@PlanRetreatsPhaseBehavior@StrategicInGameUI@@UAEHABUIRegion2D@@H@Z; Matched parent 0x0057723C's EH graph is EXACT (eh_verify) and binds compiler label $L471 to retail 0x0079B642; its callee ??1Rva0057709A@@QAE@XZ is rowed at its ICF fold 0x00576FCE; replaces generated uw_0079b642
 ??1Rva0059F479@@QAE@XZ,,0x0051719B,8,Code/GameEngine/Source/Common/Rva0059FC9FFind.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva0059FC9FFind.cpp; compiler-emitted destructor that retail ICF-folded with ??1Rva0051719B@@QAE@XZ at 0x0051719B: this unit compiles it to the same whole body; its unwind funclets call 0x0051719B
 $L522,,0x0079DBE8,8,Code/GameEngine/Source/Common/Rva0059FC9FFind.cpp,matched,gen-funclet;parent=?rva0059FC9F@Rva0059FC9F@@QAEHXZ; Matched parent 0x0059FC9F's EH graph is EXACT (eh_verify) and binds compiler label $L522 to retail 0x0079DBE8; its callee ??1Rva0059F479@@QAE@XZ is rowed at its ICF fold 0x0051719B; replaces generated uw_0079dbe8
+??1Rva005AE7C6Info@@QAE@XZ,,0x0051719B,8,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessenger.cpp,matched,fold-proof=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessenger.cpp; compiler-emitted destructor that retail ICF-folded with ??1Rva0051719B@@QAE@XZ at 0x0051719B: this unit compiles it to the same whole body; its unwind funclets call 0x0051719B
+$L5698,,0x0079EC20,8,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMessenger.cpp,matched,gen-funclet;parent=?OnBttnInvite@AptMessengerOnline@@QAEXXZ; Matched parent 0x005AE7C6's EH graph is EXACT (eh_verify) and binds compiler label $L5698 to retail 0x0079EC20; its callee ??1Rva005AE7C6Info@@QAE@XZ is rowed at its ICF fold 0x0051719B; replaces generated uw_0079ec20
