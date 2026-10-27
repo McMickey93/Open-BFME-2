@@ -5149,3 +5149,11 @@ Remaining: the `?g_00DFEFF0@@3PAXA` pin (`reverse/symbols.csv`) and the two
 Rva00395F57CanUnpack.cpp and Rva0054467AFinish.cpp (held by another seat at the
 time) still bind the address name. Once no source references it, remove those
 hatches through the hatch path and rename the pin to the real name.
+
+Also completed (claude2, same pass): Rva007B6880Thunks.cpp (909 rows, 9,050 B)
+had the sole blocker `?ScreenCurrentShader@@3IA`, a stray name for VA 0x00DEE5D8,
+which `reverse/data_ledger.csv` and dx8wrapper.cpp define as
+`DX8Wrapper::render_state` (protected static). Thunk 0x007B6FD0, the global's
+destructor thunk, now names it through a minimal DX8Wrapper view that befriends
+the thunk. Builds 909/909 matched; `link_check.py` predicts LINKS 0 -> 9,050 B
+(census confirmation pending).

@@ -260,7 +260,15 @@ public:
 extern unsigned g_Va00DEDC80;
 // g_Va00DEDC80: matched references place it at VA 0xdedc80 (zero-filled .bss).
 unsigned int g_Va00DEDC80;
-extern unsigned ScreenCurrentShader;
+// DX8Wrapper::render_state (VA 0x00DEE5D8, protected static, defined in
+// dx8wrapper.cpp): the global the next thunk destroys.
+struct RenderStateStruct;
+class DX8Wrapper
+{
+	friend void __cdecl rva007B6FD0();
+protected:
+	static RenderStateStruct render_state;
+};
 
 // ?rva007B6FC0@@YAXXZ @ 0x007B6FC0 (10B). Global SortingRenderStateStruct dtor thunk: ecx=&g_Va00DEDC80 then tail-jmp to rowed ??1SortingRenderStateStruct@@QAE@XZ (0x0011C5C0). No callers. Same page. Honest address name.
 void __cdecl rva007B6FC0()
@@ -269,10 +277,10 @@ void __cdecl rva007B6FC0()
 	return receiver->~SortingRenderStateStruct();
 }
 
-// ?rva007B6FD0@@YAXXZ @ 0x007B6FD0 (10B). Global SortingRenderStateStruct dtor thunk: ecx=&ScreenCurrentShader then tail-jmp to rowed ??1SortingRenderStateStruct@@QAE@XZ (0x0011C5C0). No callers. Same target as 0x007B6FC0, different global. Honest address name.
+// ?rva007B6FD0@@YAXXZ @ 0x007B6FD0 (10B). Global SortingRenderStateStruct dtor thunk: ecx=&DX8Wrapper::render_state then tail-jmp to rowed ??1SortingRenderStateStruct@@QAE@XZ (0x0011C5C0). No callers. Same target as 0x007B6FC0, different global. Honest address name.
 void __cdecl rva007B6FD0()
 {
-	SortingRenderStateStruct *receiver = (SortingRenderStateStruct *)&ScreenCurrentShader;
+	SortingRenderStateStruct *receiver = (SortingRenderStateStruct *)&DX8Wrapper::render_state;
 	return receiver->~SortingRenderStateStruct();
 }
 
