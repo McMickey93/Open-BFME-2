@@ -29,8 +29,8 @@ class WW3D
 {
 	friend void Rva00118530Start(const char *, float, int, bool);
 	static bool IsCapturing;
-public:
 	static FrameGrabClass *Movie;
+public:
 	static void Stop_Movie_Capture();
 private:
 	static bool PauseRecord;

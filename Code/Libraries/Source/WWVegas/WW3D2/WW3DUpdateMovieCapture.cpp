@@ -4,7 +4,8 @@
 // Donor carries the WW3D movie-copy purpose and class spellings. Native calls
 // prove GetBuffer-first ordering and no trailing Grab; native loop proves
 // flipped RGB rows, hoisted row offsets, and four-byte source pixels.
-// Movie DEC3DC and g_WW3D_Hwnd DEC408 use existing global providers.
+// Movie DEC3DC (ww3d.cpp's private static) and g_WW3D_Hwnd DEC408 use
+// existing global providers.
 // Target gets FrameGrab buffer first, uses D3D9 surface slots12/13,
 // and releases the surface after copying RGB bytes with a flipped row order.
 typedef unsigned int UInt;
@@ -29,8 +30,7 @@ class FrameGrabClass { public: long *GetBuffer(); };
 extern "C" __declspec(dllimport) int __stdcall GetWindowRect(void *,RECT *);
 void Log_DX8_ErrorCode(UInt);
 extern void *g_WW3D_Hwnd;
-class WW3D { public: static FrameGrabClass *Movie; static void Update_Movie_Capture(); };
-FrameGrabClass *WW3D::Movie;
+class WW3D { static FrameGrabClass *Movie; public: static void Update_Movie_Capture(); };
 void WW3D::Update_Movie_Capture()
 {
     char *image=(char *)Movie->GetBuffer();

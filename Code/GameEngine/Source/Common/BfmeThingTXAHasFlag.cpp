@@ -17,7 +17,6 @@ class FrameGrabClass;
 class WW3D
 {
 	friend bool Rva00117AC0HasFlag(void);
-public:
 	static FrameGrabClass *Movie;
 };
 
