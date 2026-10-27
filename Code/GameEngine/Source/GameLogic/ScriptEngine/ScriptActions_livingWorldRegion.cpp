@@ -245,7 +245,7 @@ private:
 };
 extern LinearCampaignManager *TheLinearCampaignManager;
 
-// ObjectTypes::addObjectType is rowed in Rva00376A62Contains.cpp; the
+// ObjectTypes::addObjectType is rowed in GameLogic/Object/ObjectTypes.cpp; the
 // campaign forwarders under their address classes
 // (VslotNullCheckedForwarders3.cpp).
 class Rva001EC9AC
