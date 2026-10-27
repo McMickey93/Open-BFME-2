@@ -36556,7 +36556,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004BA2CD,28,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,C,C=0x004B9D86..0x004BA2E9,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp
 0x004BA2E9,50,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,C,C=0x004B9D86..0x004BA31B,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp
 0x004BA31B,9,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,C,C=0x004B9D86..0x004BA324,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp
-0x004BA324,29,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,C,C=0x004B9D86..0x004BA341,Code/GameEngine/Source/Common/Rva004BA324CopyRange.cpp
+0x004BA324,29,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,C,C=0x004B9D86..0x004BA341,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp
 0x004BA341,25,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,C,C=0x004B9D86..0x004BA35A,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp
 0x004BA35A,63,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WWLib/TensileFormationUpdateMember.cpp,Code/Libraries/Source/WWVegas/WWLib/VectorMemberRecordDtors.cpp
 0x004BA399,51,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,C,C=0x004BA35A..0x004BA3CC,Code/GameEngine/Source/Common/Rva004BA399EraseRange.cpp

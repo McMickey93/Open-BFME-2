@@ -5,6 +5,7 @@
 #include <vector>
 #include <stl/_algobase.h>
 #define _STLP_NO_EXCEPTIONS 1
+#include <stl/_iterator_base.h>
 
 struct BfmeSubFDE
 {
@@ -268,6 +269,18 @@ private:
 	_STL::vector<Rva004BA1C8> m_tail;
 };
 
+class Rva004BA1C8;
+
+// The real STLport tag and the existing out-of-line __copy provider are shared
+// with TransitionDamageFX.cpp. This forwarder needs no private record layout
+// or second template body.
+namespace _STL {
+template <class _RandomAccessIter, class _OutputIter, class _Distance>
+__declspec(noinline) inline _OutputIter
+__copy(_RandomAccessIter __first, _RandomAccessIter __last,
+       _OutputIter __result, const random_access_iterator_tag &, _Distance *);
+}
+
 // tu-skeleton: 0x004B98C6 74B ?xfer@TransitionDamageFX@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/TransitionDamageFXXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x004B9910 7B ??0TPropType@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferCtor.cpp (not merged yet)
@@ -279,6 +292,8 @@ private:
 // tu-skeleton: 0x004B9AC3 107B ?parseObjectCreationList@TransitionDamageFXModuleData@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
 
 // tu-skeleton: 0x004B9B2E 107B ?parseParticleSystem@TransitionDamageFXModuleData@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp
 
@@ -419,21 +434,13 @@ void Rva004BA1C8_Delete(Rva004BA1C8 *p) { delete p; }
 // flags (/G7 /arch:SSE) compile a different copy, and retail kept another unit's. This unit-local
 // overload keeps the inlined code and offers the link no second copy.
 
-// tu-skeleton: 0x004B9C46 7B ?clear@Rva004B9C46ZeroView@@QAEPAV1@XZ -- matched in Code/GameEngine/Source/Common/Disp8DwordClearers.cpp (not merged yet)
 
-// tu-skeleton: 0x004B9C4D 313B ?getLocalEffectPos@@YA?AURva004B9C4DPoint@@PBURva004B9C4DLoc@@PAVDrawable@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
 
-// tu-skeleton: 0x004B9DA9 367B ?rva004B9DA9@TransitionDamageFX@@QAEX_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXRva004B9DA9.cpp (not merged yet)
 
-// tu-skeleton: 0x004B9F18 666B ?onBodyDamageStateChange@TransitionDamageFX@@UAEXPBVDamageInfo@@W4BodyDamageType@@1@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
 
-// tu-skeleton: 0x004BA1B2 22B ??0Rva004BA1B2@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/ManTheWallsSpecialPower.cpp (not merged yet)
 
-// tu-skeleton: 0x004BA219 45B ??$_Construct@VRva004BA1D0@@V1@@_STL@@YAXPAVRva004BA1D0@@ABV1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva_records.cpp (not merged yet)
 
-// tu-skeleton: 0x004BA246 38B ??$__uninitialized_copy@PBVRva004BA1D0@@PAV1@@_STL@@YAPAVRva004BA1D0@@PBV1@0PAV1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva00051AF9FillN.cpp (not merged yet)
 
-// tu-skeleton: 0x004BA26C 37B ??$__uninitialized_fill_n@PAVRva004BA1D0@@IV1@@_STL@@YAPAVRva004BA1D0@@PAV1@IABV1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva00051AF9FillN.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleDataCtor.cpp
 
@@ -485,7 +492,33 @@ TransitionDamageFXModuleData::TransitionDamageFXModuleData()
 	m_damageParticleTypes |= -1;
 }
 
-// tu-skeleton: 0x004BA324 29B ?Rva004BA324CopyRange@@YAPAVRva004BA1C8@@PAV1@00H@Z -- matched in Code/GameEngine/Source/Common/Rva004BA324CopyRange.cpp (not merged yet)
+// tu-skeleton: 0x004B9C46 7B ?clear@Rva004B9C46ZeroView@@QAEPAV1@XZ -- matched in Code/GameEngine/Source/Common/Disp8DwordClearers.cpp (not merged yet)
+
+// tu-skeleton: 0x004B9C4D 313B ?getLocalEffectPos@@YA?AURva004B9C4DPoint@@PBURva004B9C4DLoc@@PAVDrawable@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x004B9DA9 367B ?rva004B9DA9@TransitionDamageFX@@QAEX_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXRva004B9DA9.cpp (not merged yet)
+
+// tu-skeleton: 0x004B9F18 666B ?onBodyDamageStateChange@TransitionDamageFX@@UAEXPBVDamageInfo@@W4BodyDamageType@@1@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x004BA1B2 22B ??0Rva004BA1B2@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/ManTheWallsSpecialPower.cpp (not merged yet)
+
+// tu-skeleton: 0x004BA219 45B ??$_Construct@VRva004BA1D0@@V1@@_STL@@YAXPAVRva004BA1D0@@ABV1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva_records.cpp (not merged yet)
+
+// tu-skeleton: 0x004BA246 38B ??$__uninitialized_copy@PBVRva004BA1D0@@PAV1@@_STL@@YAPAVRva004BA1D0@@PBV1@0PAV1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva00051AF9FillN.cpp (not merged yet)
+
+// tu-skeleton: 0x004BA26C 37B ??$__uninitialized_fill_n@PAVRva004BA1D0@@IV1@@_STL@@YAPAVRva004BA1D0@@PAV1@IABV1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva00051AF9FillN.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva004BA324CopyRange.cpp
+
+// ?Rva004BA324CopyRange@@YAPAVRva004BA1C8@@PAV1@00H@Z, retail 0x004BA324 29B: tag temp plus null distance forwarder.
+// Evidence: same 29B shape as rowed ?Rva002915EBCopyRange at 0x002915EB; callee 0x004BA2E9 is 50B assign loop via rowed assign; caller 0x004BA399 is 51B erase-range like rowed EraseRange at 0x002983DA.
+
+Rva004BA1C8 *Rva004BA324CopyRange(Rva004BA1C8 *first, Rva004BA1C8 *last, Rva004BA1C8 *result, int dummy)
+{
+	_STL::random_access_iterator_tag tag;
+	(void)dummy;
+	return _STL::__copy(first, last, result, tag, (int *)0);
+}
 
 // tu-skeleton: 0x004BA35A 63B ??1TensileFormationUpdateMember@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/VectorMemberRecordDtors.cpp (not merged yet)
 
@@ -506,3 +539,63 @@ TransitionDamageFXModuleData::TransitionDamageFXModuleData()
 // tu-skeleton: 0x004BA817 460B ?NeighborIDSubobjectNameDataAppend@TransitionDamageFXModuleData@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleData_NeighborIDSubobjectNameDataAppend.cpp (not merged yet)
 
 // tu-skeleton: 0x004BA9E4 321B ?mapLoadPostProcess@TransitionDamageFX@@UAEXPBVDict@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX_mapLoadPostProcess.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F330 8B Unwind@00b8f330 -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F338 10B __ehhandler$?parseFXLocInfo@@YAXPAVINI@@PAXPAUFXLocInfo@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F342 22B ?rva0078f342@@YAXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F358 10B __ehhandler$?getLocalEffectPos@@YA?AURva004B9C4DPoint@@PBURva004B9C4DLoc@@PAVDrawable@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F362 13B $L1511 -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXRva004B9DA9.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F36F 10B __ehhandler$?rva004B9DA9@TransitionDamageFX@@QAEX_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXRva004B9DA9.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F379 8B $L2216 -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F381 10B __ehhandler$?onBodyDamageStateChange@TransitionDamageFX@@UAEXPBVDamageInfo@@W4BodyDamageType@@1@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXParse.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F38B 14B $L3044 -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva_records.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F399 10B __ehhandler$??$_Construct@VRva004BA1D0@@V1@@_STL@@YAXPAVRva004BA1D0@@ABV1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva_records.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F3A3 8B uw_0078f3a3 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F3AB 10B __ehhandler$??1TensileFormationUpdateMember@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/VectorMemberRecordDtors.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F3B5 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Die/TransitionDamageFXPoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F3C2 10B __ehhandler$?getModuleNameKey@TransitionDamageFX@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/TransitionDamageFXPoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F3CC 8B Unwind@00b8f3cc -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/TransitionDamageFXDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F3D4 10B __ehhandler$??1TransitionDamageFX@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/TransitionDamageFXDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F45C 14B uw_0078f45c -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F474 8B uw_0078f474 -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F47C 22B uw_0078f47c -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleDataDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F492 24B uw_0078f492 -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleDataDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F4AA 24B uw_0078f4aa -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleDataDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F4C2 24B uw_0078f4c2 -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleDataDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F4DA 24B uw_0078f4da -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleDataDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F4F2 10B __ehhandler$??1TransitionDamageFXModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleDataDestructorThunk.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F4FC 8B uw_0078f4fc -- matched in Code/gen_small/uw_gen_005.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F504 8B $L1421 -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleData_NeighborIDSubobjectNameDataAppend.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F50C 10B __ehhandler$?NeighborIDSubobjectNameDataAppend@TransitionDamageFXModuleData@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFXModuleData_NeighborIDSubobjectNameDataAppend.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F516 8B Unwind@00b8f516 -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX_mapLoadPostProcess.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F51E 11B uw_0078f51e -- matched in Code/gen_small/uw_gen_005.cpp (not merged yet)
+
+// tu-skeleton: 0x0078F529 10B __ehhandler$?mapLoadPostProcess@TransitionDamageFX@@UAEXPBVDict@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX_mapLoadPostProcess.cpp (not merged yet)
