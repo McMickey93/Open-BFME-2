@@ -35,13 +35,11 @@ public:
 int Rva006CD220Get();
 extern "C" long __cdecl strtol(const char *, char **, int);
 
-// Retail calls the six-byte target import thunk at 0x00629982. Its existing
-// ledger pin uses the generated no-argument wrapper name, so call that pinned
-// symbol through the typed ABI the target call site establishes.
-void ji_00629982();
-typedef int (__cdecl *Rva00629982Digit)(int);
-#define digitAt00629982(value) \
-    (reinterpret_cast<Rva00629982Digit>(&ji_00629982)(value))
+// Retail calls the six-byte isdigit import thunk at 0x00629982 directly:
+// <ctype.h>'s isdigit, with _CRTIMP empty (the header's own guard) so the
+// call is not made through __imp__isdigit.
+#define _CRTIMP
+#include <ctype.h>
 
 bool rva006fc370(AptValue *value)
 {
@@ -70,12 +68,12 @@ bool rva006fc370(AptValue *value)
         char last = static_cast<char>(
             string.GetAt(static_cast<int>(string.rva006D3750()) - 1));
         if (last != '-' && last != '+' && last != 'e' && last != '.' &&
-            !digitAt00629982(last))
+            !isdigit(last))
             return true;
 
         if (string.GetAt(0) != '.' && string.GetAt(0) != '-' &&
             string.GetAt(0) != '+' &&
-            !digitAt00629982(string.GetAt(0)))
+            !isdigit(string.GetAt(0)))
             return true;
 
         for (int index = 1;
@@ -101,7 +99,7 @@ bool rva006fc370(AptValue *value)
                     if (exponent == '-' || exponent == '+') {
                         index = next;
                     } else {
-                        if (!digitAt00629982(exponent))
+                        if (!isdigit(exponent))
                             goto invalid_string;
                         index = next;
                     }
@@ -109,7 +107,7 @@ bool rva006fc370(AptValue *value)
                 continue;
             }
 
-            if (!digitAt00629982(string.GetAt(index))) {
+            if (!isdigit(string.GetAt(index))) {
                 goto invalid_string;
             }
         }

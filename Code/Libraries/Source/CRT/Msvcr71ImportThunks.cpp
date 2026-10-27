@@ -414,6 +414,13 @@ char * __cdecl fgets(char * str, int n, FILE * stream) {
  return _imp__fgets(str, n, stream);
 }
 
+// _isdigit
+typedef int (__cdecl *PFN_isdigit)(int);
+extern PFN_isdigit _imp__isdigit;
+int __cdecl isdigit(int c) {
+ return _imp__isdigit(c);
+}
+
 // __strnicmp
 typedef int (__cdecl *PFN__strnicmp)(const char *, const char *, size_t);
 extern PFN__strnicmp _imp___strnicmp;
