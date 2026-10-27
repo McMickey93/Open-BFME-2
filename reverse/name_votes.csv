@@ -8460,3 +8460,4 @@ Code/GameEngine/Source/GameLogic/System/LivingWorld/AutoResolve/LivingWorldAutoR
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawRva000B61AB.cpp|member|Rva000B61ABDrawTemplate|m_flags5E2,ea132bf6cd5245ff332ed985,claude-opus-5-5,cedric-c-L37,w-553b9b55db02,2026-10-26
 Code/GameEngine/Source/Common/Rva000B508A.cpp|member|Rva000B508ATemplate|m_flags108,fab893d76f13460d40b5c6a2,claude-opus-5-5,claude-20261026-185127-3,w-7a37700644b5,2026-10-26
 Code/GameEngine/Source/Common/Rva005A8666Box.cpp|param|NAT::gotTargetMangledPort|a,207a86c2692eae7e85ec4415,claude-opus-5-5,claude-20261026-190537-2,w-7a37700644b5,2026-10-26
+Code/GameEngine/Source/GameClient/Rva0055CFF0Draw.cpp|function|0x0055CFF0|rva0055CFF0,01e0403ad4588a76062f9bba,claude-opus-5-5,k10r16s1,w-88a32c4f7da7,2026-10-26
