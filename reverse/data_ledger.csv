@@ -21105,7 +21105,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A06654,12,.data,global,?g_Va00E06654@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,provisional,?g_00E06654@@3V?$vector@UBfmeE8@@V?$allocator@UBfmeE8@@@_STL@@@_STL@@A;?g_00E06654@@3V?$vector@UBfmePod8@@V?$allocator@UBfmePod8@@@_STL@@@_STL@@A;?g_Va00E06654@@3IA,1,10
 0x00A06660,4,.data,global,?g_00E06660@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AISpecialPowers/AISpellBookPowers/AISpellBookAssistBattle.cpp,owned,,1,2
 0x00A06664,1,.data,global,?g_00E06664@@3IA,,unowned,?g_00E06664@@3IA;?g_Va00E06664@@3IA,0,2
-0x00A06665,3,.data,global,?g_00E06665@@3IA,,unowned,?g_00E06665@@3IA;?g_Va00E06665@@3IA,0,2
+0x00A06665,3,.data,global,?g_00E06665@@3EA,Code/GameEngine/Source/Common/Rva007AB81ACtorInits_Rva007ACC20.cpp,owned,,1,2
 0x00A06668,4,.data,global,?g_00E06668@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AISpecialPowers/AISpellBookPowers/AISpellBookArmyBreaker.cpp,owned,,1,2
 0x00A0666C,4,.data,global,?g_00E0666C@@3HA,Code/GameEngine/Source/GameLogic/SkirmishAI/AISpecialPowers/AISpellBookPowers/AISpellBookArmyBreaker.cpp,owned,,1,2
 0x00A06670,12,.data,global,?g_Va00E06670@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,owned,,1,10
