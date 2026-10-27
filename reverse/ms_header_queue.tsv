@@ -749,7 +749,6 @@ Code/GameEngine/Source/GameClient/Rva0046ED80BackgroundCommand.cpp	drop-in candi
 Code/GameEngine/Source/GameClient/Rva00511F73.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator new:same
 Code/GameEngine/Source/GameClient/System/FXParticleSystem/ModuleInfoVectorDeletingDtors.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete [ ]:same
 Code/GameEngine/Source/GameClient/System/ImageCollectionLoad.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sprintf:same
-Code/GameEngine/Source/GameClient/System/ParticleSystemManagerNewTemplate.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/GameClient/System/ParticleSystemManagerRemove.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/GameClient/System/Rva0021237EAudioEvents.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	timeGetTime:same
 Code/GameEngine/Source/GameClient/UiCallbackFirers.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdio.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	sprintf:same

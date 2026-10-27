@@ -68,7 +68,7 @@ public:
 	InsertRet001F8F2A rva001F93A3(const void *key);
 };
 
-void __cdecl operator delete(void *pointer);
+#include <new>
 
 
 static __forceinline bool InsertPairHelper(Rva000427195 *m, const _STL::pair<AsciiString, int> &made)
