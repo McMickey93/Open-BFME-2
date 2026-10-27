@@ -22,7 +22,7 @@ class Object{public:
 };
 class StateMachine{public:Object*getGoalObject();char pad00[0x14];Object*m_owner;};
 class ActionManager{public:bool Rva0041B94AGet(Object*,Object*,int);};extern ActionManager*TheActionManager;
-extern "C" double __cdecl fabs(double);
+#include <math.h>
 class AICombineState{public:virtual ~AICombineState();StateReturnType internalUpdate();char pad04[0x18-4];StateMachine*m_machine;char pad1c[4];Coord3D m_goalPosition;};
 StateReturnType AICombineState::internalUpdate(){
  Object *owner=m_machine->m_owner;Object *goal=m_machine->getGoalObject();

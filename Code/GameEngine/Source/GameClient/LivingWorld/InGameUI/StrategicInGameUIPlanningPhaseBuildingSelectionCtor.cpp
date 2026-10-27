@@ -363,7 +363,7 @@ public:
  virtual void slot4(); virtual void slot5(); virtual void slot6(); virtual void slot7();
  virtual const Coord3D *getRallyPoint() const;
 };
-extern "C" void *__cdecl memset(void *,int,unsigned int);
+#include <string.h>
 
 class GameWindow {
 public:

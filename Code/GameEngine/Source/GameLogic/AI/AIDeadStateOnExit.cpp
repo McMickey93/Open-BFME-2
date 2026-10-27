@@ -16,7 +16,7 @@
 // Object::rva0028CFB2; the notifier is the rowed 0x002039B6 frame cache.
 // BFME 2 then removes an object whose template has byte +0x109 bit 0 from
 // the pathfind map (pinned Pathfinder::RemoveObjectFromPathfindMap).
-extern "C" void *memset(void *dst, int c, unsigned n);
+#include <string.h>
 enum StateExitType
 {
 	EXIT_NORMAL = 0

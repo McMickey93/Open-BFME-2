@@ -165,7 +165,7 @@ typedef char Rva0039A027VectorSize[(sizeof(_STL::vector<RvaPair0039973B>) == 12 
 typedef char Rva0039A027MapSize[(sizeof(_STL::map<int, BfmeStringRecord004071F7>) == 12) ? 1 : -1];
 typedef char Rva0039A027DataSize[(sizeof(CastleBehaviorModuleData) == 0x78) ? 1 : -1];
 
-extern "C" void *memset(void *, int, unsigned);
+#include <string.h>
 Rva00045411BitSet::Rva00045411BitSet(int unused, int b1, int b2, int b3, int b4, int b5)
 {
     (void)unused;

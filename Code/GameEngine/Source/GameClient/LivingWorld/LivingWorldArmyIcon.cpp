@@ -30,7 +30,7 @@ struct Rva00538E43Pair {
  Rva00538E43Pair(float a,float b):x(a),y(b){}
  ~Rva00538E43Pair(){}
 };
-extern "C" double __cdecl sqrt(double);
+#include <math.h>
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 class LivingWorldLogic;

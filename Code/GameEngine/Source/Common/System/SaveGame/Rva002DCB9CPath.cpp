@@ -24,7 +24,7 @@ extern const char *g_00DBD068;
 extern const char *g_00DBD06C;
 extern const char *g_00DBD070;
 extern const char *g_00DBD074;
-extern "C" unsigned int strlen(const char *s);
+#include <string.h>
 
 class GameState
 {

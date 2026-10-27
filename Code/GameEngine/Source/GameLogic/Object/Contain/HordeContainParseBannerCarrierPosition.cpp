@@ -19,7 +19,7 @@
 // [ebp-0x10]; declared in the same block as the new, the value owns -0x10 and
 // the temporary is pushed to -0x14 (the 1-byte near miss in re_attempts.log).
 #include <vector>
-extern "C" int __cdecl strcmp(const char *, const char *);
+#include <string.h>
 template<class T> class StringBase {
     void *data;
 public:

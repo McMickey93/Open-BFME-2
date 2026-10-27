@@ -27,7 +27,7 @@
 #include "ascii_string.h"
 #include "Common/INIException.h"
 
-extern "C" __declspec( dllimport ) int __cdecl _strcmpi( const char *, const char * );
+#include <string.h>
 
 typedef unsigned int UnsignedInt;
 

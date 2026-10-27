@@ -12,7 +12,7 @@
 // ZH's donor is a plain static strtok wrapper (no buffer/vector), so only
 // the separators default (m_seps at this+0x418, BFME1 +0x414) transfers.
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
+#include <string.h>
 
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 

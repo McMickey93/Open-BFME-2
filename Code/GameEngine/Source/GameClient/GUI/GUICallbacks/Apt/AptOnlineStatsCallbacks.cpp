@@ -5,7 +5,7 @@
 // registration; that binding is its only reference. The scope and class
 // are named for the string.
 
-extern "C" int __cdecl strcmp(const char *left, const char *right);
+#include <string.h>
 
 // 0x005B8EBB (73 bytes; shows the selected tab) is rowed as Rva005B8EBB::Run.
 class Rva005B8EBB

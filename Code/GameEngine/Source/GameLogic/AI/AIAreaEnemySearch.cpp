@@ -34,7 +34,7 @@ class PolygonTrigger;
 
 extern PartitionManager *ThePartitionManager;
 
-extern "C" double __cdecl sqrt(double);
+#include <math.h>
 
 class Rva000421C8
 {

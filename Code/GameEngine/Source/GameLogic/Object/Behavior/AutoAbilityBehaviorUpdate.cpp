@@ -23,7 +23,7 @@ extern "C" void _ReadWriteBarrier(void);
 // A by-value re-read of a data member: the retail range pick loads the module data's
 // value again for the store instead of reusing the compare's register.
 template<class T> static __forceinline T __cp(const T &x) { T t = x; return t; }
-extern "C" void *memset(void *, int, unsigned int);
+#include <string.h>
 
 class Player;
 class Object;

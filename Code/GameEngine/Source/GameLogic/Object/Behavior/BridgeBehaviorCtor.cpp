@@ -107,7 +107,7 @@ public:
 	void *m_head;
 };
 
-extern "C" void *memset(void *dst, int val, unsigned int size);
+#include <string.h>
 
 class BridgeBehavior : public UpdateModule
 {

@@ -299,7 +299,7 @@ Rva00528CEBResult rva00528CEB(Object *obj);
 // records' addresses lets cl hold the result's mode in a register across the
 // panel calls, as retail does.
 extern float g_Va00BC2424;
-extern "C" double __cdecl fabs(double v);
+#include <math.h>
 struct Rva00528B37Key
 {
 	int m_a;

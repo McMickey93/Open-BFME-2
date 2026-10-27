@@ -19,7 +19,7 @@
 #include "ascii_string.h"
 #include "../../../Common/GameLogicObjectLookupView.h"
 
-extern "C" void *memset(void *dst, int val, unsigned size);
+#include <string.h>
 
 enum ObjectStatusTypes { OBJECT_STATUS_NONE = 0 };
 enum WeaponSetType { WEAPONSET_NONE = 0 };

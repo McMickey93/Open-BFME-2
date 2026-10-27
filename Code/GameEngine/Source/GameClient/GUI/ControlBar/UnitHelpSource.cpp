@@ -108,7 +108,7 @@ static int maxHealthOf(const Object *obj)
  return obj->health() ? (int)obj->health()->maxHealth() : 0;
 }
 
-extern "C" __declspec(dllimport) double __cdecl floor(double);
+#include <math.h>
 class ThingTemplate
 {
 public:

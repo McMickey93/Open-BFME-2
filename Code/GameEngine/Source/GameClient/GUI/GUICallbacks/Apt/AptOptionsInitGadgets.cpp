@@ -24,7 +24,7 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 namespace _STL
 {

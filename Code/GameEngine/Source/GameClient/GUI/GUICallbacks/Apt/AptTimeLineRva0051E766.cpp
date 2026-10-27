@@ -13,7 +13,7 @@
 // names are not established.
 #include <vector>
 
-extern "C" char *__cdecl strcpy(char *dst, const char *src);
+#include <string.h>
 #include <stdio.h>
 
 enum ScienceType { SCIENCE_INVALID = -1 };

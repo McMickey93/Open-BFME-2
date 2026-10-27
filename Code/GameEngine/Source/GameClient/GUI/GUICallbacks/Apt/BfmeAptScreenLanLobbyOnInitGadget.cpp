@@ -50,7 +50,7 @@ static inline bool operator!=(const _List_iterator<T, LeftTraits>& a,
 }
 
 
-extern "C" int __cdecl strcmp(const char *left, const char *right);
+#include <string.h>
 
 class LANGameInfo;
 
