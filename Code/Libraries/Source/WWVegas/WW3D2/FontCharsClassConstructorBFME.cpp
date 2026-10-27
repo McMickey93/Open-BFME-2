@@ -11,6 +11,7 @@
 
 struct FontCharsClassCharDataStruct;
 class FontCharsBuffer;
+class Rva00155940Element;
 
 class FontCharsClassGdiState
 {
@@ -77,7 +78,7 @@ public:
 
 	FontCharsClass *m_alternateUnicodeFont;
 	StringClass m_name;
-	DynamicVectorClass<FontCharsBuffer *> m_bufferList;
+	DynamicVectorClass<Rva00155940Element *> m_bufferList;
 	int m_currPixelOffset;
 	int m_charHeight;
 	int m_charAscent;
@@ -123,3 +124,8 @@ FontCharsClass::FontCharsClass()
 
 // ?g_fontCharsGdiState@@3PAVFontCharsClassGdiState@@A: matched references place it at VA 0xdf6f24; also referenced as ?FontScreenDCGlobalsPtr@@3PAUFontScreenDCGlobals@@A.
 FontCharsClassGdiState * g_fontCharsGdiState = 0;
+
+// Preserve the separately rowed FontCharsBuffer template providers.
+template class VectorClass<FontCharsBuffer *>;
+template bool DynamicVectorClass<FontCharsBuffer *>::Resize(int, FontCharsBuffer *const *);
+template int DynamicVectorClass<FontCharsBuffer *>::ID(FontCharsBuffer *const &);

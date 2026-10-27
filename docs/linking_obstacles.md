@@ -1044,6 +1044,16 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 ### LINK-006: compiler emission and the selected copy still disagree with retail
 
+- **Font vector lifetime identity (2026-10-27, inspected `5a987437d9f`):**
+  [the native lifetime and withdrawal evidence](../reverse/attempt_support/font-vector-identity-link-20261027/readme.md)
+  separates the constructor's actual BD3BE8/BD3B98 vector family from the
+  BD0D68 base destructor. The wrong FontCharsBuffer dynamic-destructor
+  admission and its dependent unwind are withdrawn in a reviewable commit;
+  the remaining 12 rows and data row pass. Readmission of the existing
+  Rva00155940Element specialization and parent-derived unwind follows.
+  Before-preview is 3/3 LINKS and 1477 authored bytes; no incremental census
+  gain is claimed. Broader legacy template identities remain open.
+
 **Status: Open. Updated: 2026-10-27.**
 
 **DefaultDraw table follow-up (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`):** `T1Base005F3750Ctor.cpp` still disagrees with the first `DefaultDrawModuleInfo` table in `FXParticleSystem.cpp`. The native table at RVA 0081BAC0 has four slots (003A7ABD, 000B3FD0, 003A6127 and 00306A9B); the current first emitter has three slots, and T1's four-slot copy puts its name getter in slot 1 instead of slot 2. `build/c136-common2/provider-details.log` records the raw retail words and both COFF relocation lists. Matching the first emitter's shorter table would retain a non-retail contract, so no such trial was made. Next: reconcile the actual Snapshot interface and all emitting views, retaining every row, then recheck the family. The T1 destructor identity prerequisite remains separate under LINK-004. Clearance and census confirmation remain pending.
