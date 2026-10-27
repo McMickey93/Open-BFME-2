@@ -4,7 +4,7 @@
 // running pointee dtor 0x005E3585 plus operator delete 0x0002FD60.
 // Evidence: push esi mov esi [ecx] and [ecx] 0 test je call dtor push delete;
 // caller 0x005E364D in ??1Rva005E362F@@UAE@XZ via member +0xC; LINK BONUS name.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva005E3585
 {

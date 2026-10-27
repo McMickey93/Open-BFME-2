@@ -207,5 +207,5 @@ void StrategicHUD::CommandUIImpl::rva005D2664(int i)
 
 int StrategicHUD::CommandUIImpl::rva005D24E5(int i) { Rva005D2575 *slot=reinterpret_cast<Rva005D2575 *>(reinterpret_cast<char *>(this)+(i+1)*0x1C); return slot->help10.ptr || slot->reference0C.ptr; }
 
-void __cdecl operator delete(void *);
+#include <new>
 void *StrategicHUD::CommandUIImpl::rva00578532(unsigned int flags) { this->~CommandUIImpl(); if(flags&1)operator delete(this);return this; }
