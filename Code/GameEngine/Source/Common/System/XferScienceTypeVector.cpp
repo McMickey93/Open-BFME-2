@@ -69,7 +69,7 @@ Xfer *Rva00398280Xfer(Xfer *xfer, ScienceTypeVector *vec)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		ScienceType *end = vec->end();
@@ -111,7 +111,7 @@ Xfer *Rva003F5A72Xfer(Xfer *xfer, void *storage)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		ScienceType *end = vec->end();
@@ -151,7 +151,7 @@ Xfer *Rva001ECA2DXfer(Xfer *xfer, void *storage)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		ScienceType *end = vec->end();
@@ -209,7 +209,7 @@ Xfer *Rva005334DBXfer(Xfer *xfer, void *storage)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		Rva005334A4Element *end = vec->end();

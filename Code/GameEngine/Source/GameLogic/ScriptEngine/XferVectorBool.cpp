@@ -68,7 +68,7 @@ Xfer *Rva0060C253Xfer(Xfer *xfer, VectorBool *vec)
 	xfer->operator==(reinterpret_cast<Xfer::Version &>(head.version));
 
 	head.count = vec->size();
-	xfer->operator==(XferVectorTypeName("std::vector")).operator==(head.count);
+	xfer->operator==("std::vector").operator==(head.count);
 
 	if (xfer->IsStoring())
 	{

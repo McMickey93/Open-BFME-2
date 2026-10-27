@@ -67,7 +67,7 @@ Xfer *xferUnicodeStringVector(Xfer *xfer, UnicodeStringVector *vec)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		UnicodeString *end = vec->end();

@@ -68,7 +68,7 @@ Xfer *Rva00586231Xfer(Xfer *xfer, GenDeque *vec)
 
 	E12Deque *evec = (E12Deque *)vec;
 	UnsignedInt count = (UnsignedInt)evec->size();
-	(*xfer == XferVectorTypeName("std::deque")) == count;
+	(*xfer == "std::deque") == count;
 
 	if (xfer->IsStoring()) {
 		E12Deque::iterator end = evec->end();

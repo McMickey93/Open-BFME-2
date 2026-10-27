@@ -69,7 +69,7 @@ Xfer *Rva0039C4F7XferSnapshotVector(Xfer *xfer, Rva0039C1C3 *vector)
     XferVersion version = {1, 1};
     (*xfer == reinterpret_cast<Xfer::Version &>(version));
     unsigned int count = vector->finish - vector->start;
-    ((*xfer == XferVectorTypeName("std::vector")) == count);
+    ((*xfer == "std::vector") == count);
     if (xfer->IsStoring())
     {
         Rva0039B893 *end = vector->finish;

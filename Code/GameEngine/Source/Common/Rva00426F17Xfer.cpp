@@ -50,7 +50,7 @@ Xfer *Rva00426F17Xfer(Xfer *xfer, BfmeVec *vec)
 	version.m_currentVersion = 1;
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 	if (xfer->IsStoring()) {
 		BfmeStringRecord00426A5B *end = vec->end();
 		BfmeStringRecord00426A5B *cur = vec->begin();

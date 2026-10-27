@@ -74,7 +74,7 @@ Xfer *xferSTLObjectIDList(Xfer *xfer, BridgeBehaviorObjectIDList *list)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = list->size();
-	(*xfer == XferVectorTypeName("std::list")) == count;
+	(*xfer == "std::list") == count;
 
 	if (xfer->IsStoring()) {
 		BridgeBehaviorObjectIDNode *sentinel = list->m_node;

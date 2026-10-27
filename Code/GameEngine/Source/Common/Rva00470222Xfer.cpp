@@ -103,7 +103,7 @@ Xfer *Rva00470222Xfer(Xfer *xfer, IntIntMap *map)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = map->size();
-	(*xfer == XferVectorTypeName("std::map")) == count;
+	(*xfer == "std::map") == count;
 
 	if (xfer->IsStoring()) {
 		IntIntMap::iterator cur = map->begin();

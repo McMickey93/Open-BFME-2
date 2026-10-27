@@ -89,7 +89,7 @@ Xfer *Rva00473FD4Xfer(Xfer *xfer, IntBoolMap *map)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = map->size();
-	(*xfer == XferVectorTypeName("std::map")) == count;
+	(*xfer == "std::map") == count;
 
 	if (xfer->IsStoring()) {
 		IntBoolMap::iterator cur = map->begin();

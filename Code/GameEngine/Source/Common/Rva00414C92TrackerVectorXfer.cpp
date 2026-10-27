@@ -68,7 +68,7 @@ Xfer *Rva00414C92(Xfer *xfer, Rva00414EA1Vector *trackers)
 	version.m_currentVersion = 1;
 	(*xfer == reinterpret_cast<Xfer::Version &>(version));
 	UnsignedInt count = trackers->end - trackers->begin;
-	((*xfer == XferVectorTypeName("std::vector")) == count);
+	((*xfer == "std::vector") == count);
 	if (xfer->IsStoring())
 	{
 		ScoredKillTracker *end = trackers->end;

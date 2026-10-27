@@ -65,7 +65,7 @@ Xfer *Rva004EE9E9XferVector(Xfer *xfer, Rva004EE6D0 *vector)
     XferVersion version = {1, 1};
     *xfer == reinterpret_cast<Xfer::Version &>(version);
     unsigned int count = vector->finish - vector->start;
-    (*xfer == XferVectorTypeName("std::vector")) == count;
+    (*xfer == "std::vector") == count;
     if (xfer->IsStoring())
     {
         Elem003AF8C0 *end = vector->finish;

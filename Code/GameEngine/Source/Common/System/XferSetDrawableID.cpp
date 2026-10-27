@@ -77,7 +77,7 @@ Xfer *Rva000BC559Xfer(Xfer *xfer, SetInt *set)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = set->size();
-	(*xfer == XferVectorTypeName("std::set")) == count;
+	(*xfer == "std::set") == count;
 
 	if (xfer->IsStoring())
 	{
@@ -125,7 +125,7 @@ Xfer *Rva002E208AXfer(Xfer *xfer, SetInt *set)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = set->size();
-	(*xfer == XferVectorTypeName("std::set")) == count;
+	(*xfer == "std::set") == count;
 
 	if (xfer->IsStoring())
 	{
@@ -164,7 +164,7 @@ Xfer *Rva002F1CDDXfer(Xfer *xfer, SetInt *set)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = set->size();
-	(*xfer == XferVectorTypeName("std::set")) == count;
+	(*xfer == "std::set") == count;
 
 	if (xfer->IsStoring())
 	{

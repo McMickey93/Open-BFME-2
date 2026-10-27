@@ -19,13 +19,5 @@ class RealRange;
 struct RGBColor;
 class RGBAColorReal;
 class RGBAColorInt;
-struct XferUnknown11;
-
-// Slot 0x2C receives a reference to a temporary string pointer. Keep that
-// lifetime: a named local pointer changes retail's stack-slot reuse.
-static __forceinline XferUnknown11 &XferVectorTypeName(const char *const &name)
-{
-	return reinterpret_cast<XferUnknown11 &>(const_cast<const char *&>(name));
-}
 
 #endif // XFER_VECTOR_TYPES_H

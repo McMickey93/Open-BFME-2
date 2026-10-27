@@ -43,6 +43,7 @@ struct RGBAColorInt;
 // cl builds the by-product ??_GXfer with the inline state in force where the
 // class definition ends; inline_depth(0) there makes it call ~Xfer, as the
 // ledger's ??_GXfer (0x0060C8B1) does, while bodies below still inline it.
+#define BFME_XFER_INLINE_DTOR
 #pragma inline_depth(0)
 #include "../../../Include/Common/BfmeXfer.h"
 inline Xfer::~Xfer() {}

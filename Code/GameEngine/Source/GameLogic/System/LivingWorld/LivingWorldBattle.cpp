@@ -276,7 +276,7 @@ Xfer *Rva003F5729Xfer(Xfer*xfer, std::vector<ArmySummary>*vec)
  XferVersion version;version.m_version=1;version.m_currentVersion=1;
  (*xfer == reinterpret_cast<Xfer::Version &>(version));
  UnsignedInt count=(UnsignedInt)vec->size();
- (*xfer == XferVectorTypeName("std::vector")) == count;
+ (*xfer == "std::vector") == count;
  if(xfer->IsStoring()) {
   ArmySummary*end=vec->end();ArmySummary*cur=vec->begin();
   while(cur!=end){(*xfer == *reinterpret_cast<Snapshot *>(cur));++cur;}
@@ -308,7 +308,7 @@ Xfer *Rva001EC0A0Xfer(Xfer*xfer, std::vector<CarryoverUnit>*vec)
  XferVersion version;version.m_version=1;version.m_currentVersion=1;
  (*xfer == reinterpret_cast<Xfer::Version &>(version));
  UnsignedInt count=(UnsignedInt)vec->size();
- (*xfer == XferVectorTypeName("std::vector")) == count;
+ (*xfer == "std::vector") == count;
  if(xfer->IsStoring()) {
   CarryoverUnit*end=vec->end();CarryoverUnit*cur=vec->begin();
   while(cur!=end){(*xfer == *reinterpret_cast<Snapshot *>(cur));++cur;}

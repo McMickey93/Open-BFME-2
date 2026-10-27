@@ -57,7 +57,7 @@ Xfer *Rva0040E19DXfer(Xfer *xfer, ScienceTypeVector *vec)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		ScienceType *end = vec->end();

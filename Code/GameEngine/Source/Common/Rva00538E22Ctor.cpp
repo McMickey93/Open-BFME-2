@@ -279,7 +279,7 @@ Xfer *Rva0031A160Xfer(Xfer *xfer, _STL::vector<BfmeVectorRecord00319C84> *record
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 	Rva00318B5C **span = reinterpret_cast<Rva00318B5C **>(records);
 	unsigned int count = span[1] - span[0];
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 	if (xfer->IsStoring()) {
 		Rva00318B5C *end = span[1];
 		Rva00318B5C *it = span[0];

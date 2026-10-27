@@ -56,7 +56,7 @@ Xfer *Rva002AC1A9XferList(Xfer *xfer, ListShort *list)
 	(*xfer == reinterpret_cast<Xfer::Version &>(version));
 
 	count = list->size();
-	((*xfer == XferVectorTypeName("std::list")) == count);
+	((*xfer == "std::list") == count);
 
 	if (xfer->IsStoring())
 	{

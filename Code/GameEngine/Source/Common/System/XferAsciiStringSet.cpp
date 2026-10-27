@@ -77,7 +77,7 @@ Xfer *Rva00058DC6Xfer(Xfer *xfer, AsciiStringSet *set)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = set->size();
-	(*xfer == XferVectorTypeName("std::set")) == count;
+	(*xfer == "std::set") == count;
 
 	if (xfer->IsStoring())
 	{

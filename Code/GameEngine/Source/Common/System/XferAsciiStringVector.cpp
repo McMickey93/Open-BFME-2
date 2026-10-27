@@ -65,7 +65,7 @@ Xfer *xferAsciiStringVector(Xfer *xfer, AsciiStringVector *vec)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		AsciiString *end = vec->end();

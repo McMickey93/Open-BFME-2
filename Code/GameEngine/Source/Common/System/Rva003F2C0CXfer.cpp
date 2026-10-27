@@ -58,7 +58,7 @@ Xfer *Rva003F2C0CXfer(Xfer *xfer, VectorE8 *vec)
 	*xfer == reinterpret_cast<Xfer::Version &>(version);
 
 	UnsignedInt count = (UnsignedInt)vec->size();
-	(*xfer == XferVectorTypeName("std::vector")) == count;
+	(*xfer == "std::vector") == count;
 
 	if (xfer->IsStoring()) {
 		BfmeE8 *end = vec->end();

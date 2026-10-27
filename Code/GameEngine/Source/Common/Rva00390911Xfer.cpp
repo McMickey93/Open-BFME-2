@@ -67,7 +67,7 @@ Xfer * __cdecl Rva00390911XferCoordVector(Xfer *xfer, AICommandCoordVector *vec)
 	version.m_currentVersion = 1;
 	(*xfer == reinterpret_cast<Xfer::Version &>(version));
 	UnsignedInt count = (UnsignedInt)vec->size();
-	((*xfer == XferVectorTypeName("std::vector")) == count);
+	((*xfer == "std::vector") == count);
 	if (xfer->IsStoring()) {
 		Coord3D *end = vec->end();
 		Coord3D *cur = vec->begin();

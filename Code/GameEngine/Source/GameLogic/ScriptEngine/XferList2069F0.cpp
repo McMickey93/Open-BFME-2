@@ -71,7 +71,7 @@ Xfer *xferList2069F0(Xfer *xfer, ListInt *list)
 	xfer->operator==(reinterpret_cast<Xfer::Version &>(version));
 
 	UnsignedInt count = list->size();
-	xfer->operator==(XferVectorTypeName("std::list")).operator==(count);
+	xfer->operator==("std::list").operator==(count);
 
 	if (xfer->IsStoring())
 	{
