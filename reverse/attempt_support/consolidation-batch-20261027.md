@@ -110,3 +110,18 @@ one-row carve from `Disp8CmpBoolGetters.cpp` passed its split guard (residual
 merge, so it would increase source-file count by itself. It was not applied.
 No claims or source edits were made. Leave this candidate for the relevant
 compile/environment prerequisites and continue with a separate allocated TU.
+
+## Allocated `GarrisonContain.cpp` candidate deferred
+
+The current plan had 54 approved rows and 26 donor files, including five mixed
+sources. The dry run ran to completion and accepted no donor. Its seed composition
+was refused by LinkGuard: the census-linked `GarrisonContain.cpp` object would
+lose referenced static-template symbols, including
+`?$S77@?1??getClassMemoryPool@GarrisonContain@@CAPAVMemoryPool@@XZ@4IA` and
+`??$_Construct@UStationPointData@GarrisonContain@@U12@@_STL@@YAXPAUStationPointData@GarrisonContain@@ABU12@@Z`.
+The seed was therefore blocked before any merge could be applied. One donor,
+`GarrisonContainLoadGarrisonPoints.cpp`, failed byte verification. The other
+rejected donors were blocked by compile errors from missing declarations/views,
+including `B0`, `B3`, `m_object`, and `GarrisonContain::rva0047801C`; no repairs
+were attempted. LinkGuard listed 26 census-linked units. No claims or source
+edits were made; leave this for prerequisite repair.
