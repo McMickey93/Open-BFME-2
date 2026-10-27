@@ -137,13 +137,6 @@ public:
  unsigned int crc4C;bool flag50;char pad51[3];int word54;UnicodeString str58;
 };
 
-class Rva0037BBED {
-public:
- char head[0x10];FILE*m_file;char gap14[0x10];GameInfo m_gameInfo;
- char gap64[0xe60-0x24-sizeof(GameInfo)];int m_crcInterval,m_mode,m_numPlayers,m_localIndex;
- UnicodeString rva0037BCA8();AsciiString rva0037B70A();bool rva0037CBB6(Rva0037B5DF&);
-};
-
 class File {public:virtual void p0();virtual void p1();virtual void close();};
 
 File*createMemoryReadFile(char*,int);
@@ -278,20 +271,6 @@ UnicodeString readUnicodeString(FILE *);
 
 struct Pair8 { volatile int a; volatile int b; };
 
-struct Triple12 { Triple12() {} int a, b, c; };
-
-struct BFME2WideConcatPair
-{
-	const UnicodeString *a, *b;
-	operator UnicodeString();
-};
-
-struct BFME2WideConcatTriple
-{
-	const UnicodeString *a, *b, *c;
-	operator UnicodeString();
-};
-
 // ?logPlayerDisconnect@RecorderClass@@QAEXVUnicodeString@@H@Z retail 0x0037B287 159B.
 // File-flag helper: if FILE at +0x10 is null release by-value wide arg and return;
 // else if int arg in [0,8) ftell then fseek to arg+29 SEEK_SET then fwrite one 0x01 byte
@@ -408,91 +387,6 @@ enum RecorderModeType {
 };
 
 class Rva0037D076;
-
-class RecorderClass {
-public:
-	virtual void slot0();
-public:
-	virtual void slot1();
-public:
-	virtual void slot2();
-public:
-	virtual void slot3();
-public:
-	virtual void slot4();
-public:
-	virtual void slot5();
-public:
-	virtual void slot6();
-public:
-	virtual void slot7();
-public:
-	virtual void slot8();
-public:
-	virtual void reset();
-public:
-	char pad004[0xC-4];
-public:
-	Rva0037D076 *m_crcInfo;
-public:
-	FILE*m_file;
-public:
-	UnicodeString m_fileName;
-public:
-	int field0018;
-public:
-	int m_mode;
-public:
-	UnicodeString m_currentReplayFilename;
-public:
-	GameInfo m_gameInfo;
-public:
-	char padGameInfo[0xe60-0x24-sizeof(GameInfo)];
-public:
-	int field0e60,field0e64;
-public:
-	char padE68[8];
-public:
-	bool m_doingAnalysis;
-public:
-	char padE71[3];
-public:
-	int m_gameMode;
-public:
-	void stopRecording();
-public:
-	void writeArgument(int,GameMessageArgumentType);
-public:
-	void readArgument(int,GameMessage*);
-protected:
-	void dumpCommandHistory(CommandDumpFile0037BE15*,unsigned);
-protected:
-	void writeToFile(GameMessage*);
-protected:
-	void appendNextCommand();
-protected:
-	void updateRecord();
-protected:
-	void logGameStart(AsciiString);
-protected:
-	void startRecording(int difficulty,int gameMode,int rankPoints,int maxFPS);
-public:
-	void logPlayerDisconnect(UnicodeString arg, int slot);
-public:
-	bool isMultiplayer();
-public:
-	void logCRCMismatch();
-public:
-	void logGameEnd() throw();
-public:
-	bool copyCurrentRecordingToFile(UnicodeString *name, UnicodeString *title);
-public:
-	void initControls();
-	bool playbackFile(UnicodeString filename);
-	void rva0037AEE2();
-	RecorderModeType getMode() { return (RecorderModeType)m_mode; }
-	friend class Rva0037B7C7;
-};
 
 class Rva0037B5A0
 {
@@ -668,6 +562,114 @@ static int recorderSavedGlobalValue;
 static bool recorderSavedGlobalFlag;
 
 void InitRandom(unsigned int);
+
+class Rva0037BBED {
+public:
+ char head[0x10];FILE*m_file;char gap14[0x10];GameInfo m_gameInfo;
+ char gap64[0xe60-0x24-sizeof(GameInfo)];int m_crcInterval,m_mode,m_numPlayers,m_localIndex;
+ UnicodeString rva0037BCA8();AsciiString rva0037B70A();bool rva0037CBB6(Rva0037B5DF&);
+};
+
+struct Triple12 { Triple12() {} int a, b, c; };
+
+struct BFME2WideConcatPair
+{
+	const UnicodeString *a, *b;
+	operator UnicodeString();
+};
+
+struct BFME2WideConcatTriple
+{
+	const UnicodeString *a, *b, *c;
+	operator UnicodeString();
+};
+
+class RecorderClass {
+public:
+	virtual void slot0();
+public:
+	virtual void slot1();
+public:
+	virtual void slot2();
+public:
+	virtual void slot3();
+public:
+	virtual void slot4();
+public:
+	virtual void slot5();
+public:
+	virtual void slot6();
+public:
+	virtual void slot7();
+public:
+	virtual void slot8();
+public:
+	virtual void reset();
+public:
+	char pad004[0xC-4];
+public:
+	Rva0037D076 *m_crcInfo;
+public:
+	FILE*m_file;
+public:
+	UnicodeString m_fileName;
+public:
+	int field0018;
+public:
+	int m_mode;
+public:
+	UnicodeString m_currentReplayFilename;
+public:
+	GameInfo m_gameInfo;
+public:
+	char padGameInfo[0xe60-0x24-sizeof(GameInfo)];
+public:
+	int field0e60,field0e64;
+public:
+	char padE68[8];
+public:
+	bool m_doingAnalysis;
+public:
+	char padE71[3];
+public:
+	int m_gameMode;
+public:
+	void stopRecording();
+public:
+	void writeArgument(int,GameMessageArgumentType);
+public:
+	void readArgument(int,GameMessage*);
+protected:
+	void dumpCommandHistory(CommandDumpFile0037BE15*,unsigned);
+protected:
+	void writeToFile(GameMessage*);
+protected:
+	void appendNextCommand();
+protected:
+	void updateRecord();
+protected:
+	void logGameStart(AsciiString);
+protected:
+	void startRecording(int difficulty,int gameMode,int rankPoints,int maxFPS);
+public:
+	void logPlayerDisconnect(UnicodeString arg, int slot);
+public:
+	bool isMultiplayer();
+public:
+	void logCRCMismatch();
+public:
+	void logGameEnd() throw();
+public:
+	bool copyCurrentRecordingToFile(UnicodeString *name, UnicodeString *title);
+public:
+	void initControls();
+	bool playbackFile(UnicodeString filename);
+	void rva0037AEE2();
+	RecorderModeType getMode() { return (RecorderModeType)m_mode; }
+	friend class Rva0037B7C7;
+};
+
+// ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
 // ---- from Code/GameEngine/Source/Common/System/RecorderClass.cpp
 
@@ -1644,7 +1646,73 @@ Rva0037B5DF::~Rva0037B5DF()
 
 // tu-skeleton: 0x0037D55E 394B ?Rva0037D55EGet@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
 
-// tu-skeleton: 0x0037D6E8 643B ?copyCurrentRecordingToFile@RecorderClass@@QAE_NPAVUnicodeString@@0@Z -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp
+
+// ?copyCurrentRecordingToFile@RecorderClass@@QAE_NPAVUnicodeString@@0@Z
+// partial score=0.9999 date=2026-10-14
+// ?copyCurrentRecordingToFile@RecorderClass@@QAE_NPAVUnicodeString@@0@Z
+// partial score=0.984 date=2026-10-11
+// ?copyCurrentRecordingToFile@RecorderClass@@QAE_NPAVUnicodeString@@0@Z
+// best 2026-10-11 seat14: 643B/643B, frame 0x10034 exact, every instruction and
+// relocation agrees; 10 one-byte ebp displacements differ (retail: the branch
+// string temporaries at -0x10, bytesRead/bytesWritten spill at -0x18 sharing the
+// triple's Pair8.b; here bytesRead gets -0x10 and the temporaries pack with
+// Pair8 at -0x18). Byte-equal ratio 633/643.
+// RecorderClass::copyCurrentRecordingToFile, retail [0x0037D6E8,0x0037D96B),
+// 643 bytes including the out-of-line success tail at 0x0037D930. BFME1
+// RecorderCopyReplayFile (9cbfb551) is the semantic guide and WB F5BC90 the
+// name: copy the recording being written (the replay header, its title, then
+// the rest in 64K chunks) to a new file named by `name` (the replay directory
+// plus the name, or the default replay name when empty), leave the live file
+// open and positioned as before. The triple-concat builder is the rowed
+// Pair8/Triple12 one at 0x0037BA97, kept visible; the pair's two words are
+// volatile so the branch string temporaries and the spills share the triple's
+// slots as retail does (T1 farm mutation volatile-member-pair, W7-U1 r7 port).
+
+bool RecorderClass::copyCurrentRecordingToFile(UnicodeString *name, UnicodeString *title)
+
+{
+ if (m_file == 0)
+ return false;
+ unsigned int fileSize = ftell(m_file);
+ if (fileSize < 0x25)
+ return false;
+ UnicodeString path;
+ if (!name->isEmpty())
+ path = Rva0037B9D4Get() + *name;
+ else
+ assignConcat(path, Rva0037B9D4Get(), Rva0037D55EGet(), Rva0037BA48Get());
+ FILE *out = _wfopen(path.str(), L"wb");
+ if (!out)
+ return false;
+ int seekRes = fseek(m_file, 0, 0);
+ char buffer[0x10000];
+ unsigned int bytesRead = fread(buffer, 1, 0x25, m_file);
+ unsigned int bytesWritten = fwrite(buffer, 1, 0x25, out);
+ if (seekRes != 0 || bytesRead < 0x25 || bytesWritten < 0x25)
+ return false;
+ UnicodeString oldTitle = ((Rva0037BBED *)this)->rva0037BCA8();
+ fwprintf(out, L"%ws", title->str());
+ fputwc(0, out);
+ do 
+ 
+ {
+  bytesRead = fread(buffer, 1, 0x10000, m_file);
+  bytesWritten = fwrite(buffer, 1, bytesRead, out);
+  
+ }
+ while (bytesRead == 0x10000 && bytesWritten == bytesRead);
+ if (bytesRead != bytesWritten)
+ return false;
+ FILE *saved = m_file;
+ m_file = out;
+ logGameEnd();
+ m_file = saved;
+ fclose(out);
+ fseek(m_file, fileSize, 0);
+ return true;
+ 
+}
 
 // tu-skeleton: 0x0037DC36 28B ?update@RecorderClass@@UAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAG.cpp (not merged yet)
 
@@ -1679,21 +1747,3 @@ Rva0037B5DF::~Rva0037B5DF()
 // tu-skeleton: 0x0077EFE4 25B ?rva0077efe4@@YAXXZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
 
 // tu-skeleton: 0x0077EFFD 10B __ehhandler$?Rva0037D55EGet@@YA?AVUnicodeString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037D55EGet.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F007 8B Unwind@00b7f007 -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F00F 8B Unwind@00b7f00f -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F017 8B Unwind@00b7f017 -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F01F 8B Unwind@00b7f01f -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F027 8B Unwind@00b7f027 -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F02F 8B Unwind@00b7f02f -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F037 8B Unwind@00b7f037 -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F03F 8B Unwind@00b7f03f -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
-
-// tu-skeleton: 0x0077F047 10B __ehhandler$?copyCurrentRecordingToFile@RecorderClass@@QAE_NPAVUnicodeString@@0@Z -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
