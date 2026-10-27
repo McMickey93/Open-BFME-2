@@ -32,7 +32,7 @@ jobs:
       github.repository == 'McMickey93/Open-BFME-2' &&
       github.event.repository.fork == true &&
       github.event.repository.private == false &&
-      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification' &&
+      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification-v2' &&
       github.event.ref_type == 'branch'
     permissions:
       contents: read
@@ -75,12 +75,10 @@ jobs:
         working-directory: source
         run: |
           set -euo pipefail
-          source .githooks/python3.sh
-          require_python3 next-round-native-qualification
           git_bash="$BASH"
           [[ "${git_bash,,}" == *.exe ]] || git_bash="${git_bash}.exe"
           export BFME_QUALIFICATION_BASH="$(cygpath -aw "$git_bash")"
-          python3 -u ../control/.github/qualification/next-round-20261027/qualify.py qualify
+          sh .githooks/run-python3 -u ../control/.github/qualification/next-round-20261027/qualify.py qualify
       - name: Retain the exact qualified Git objects
         id: bundle
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
@@ -106,7 +104,7 @@ jobs:
       github.repository == 'McMickey93/Open-BFME-2' &&
       github.event.repository.fork == true &&
       github.event.repository.private == false &&
-      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification' &&
+      github.ref == 'refs/heads/codex/20261027-bfme2-cleanup-qualification-v2' &&
       github.event.ref_type == 'branch'
     # This job imports and transfers the exact objects. It executes only the
     # immutable control code and official-base hooks, never artifact code.
@@ -157,12 +155,10 @@ jobs:
           BFME_TRANSFER_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          source .githooks/python3.sh
-          require_python3 next-round-object-transfer
           git_bash="$BASH"
           [[ "${git_bash,,}" == *.exe ]] || git_bash="${git_bash}.exe"
           export BFME_QUALIFICATION_BASH="$(cygpath -aw "$git_bash")"
-          python3 -u ../control/.github/qualification/next-round-20261027/qualify.py transfer
+          sh .githooks/run-python3 -u ../control/.github/qualification/next-round-20261027/qualify.py transfer
       - name: Retain the transfer receipt
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9

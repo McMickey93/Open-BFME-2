@@ -162,7 +162,7 @@ def object_definitions(label, expected):
     save()
 
 def scoped(bash, label):
-    run(label, [bash, "build.sh", *DATA["consumers"], *DATA["providers"]], quiet=True)
+    run(label, [sys.executable, "tools/build.py", *DATA["consumers"], *DATA["providers"]], quiet=True)
     for src in DATA["consumers"]:
         run(label + "-declared", [sys.executable, "tools/find_declared_unmatched.py", src], quiet=True)
 
@@ -262,7 +262,7 @@ def qualified(bash):
         run("crt-header-before", [sys.executable, "tools/ms_header_audit.py", "show", *DATA["consumers"]], quiet=True)
         # The BFME1 reference is a build input: compare full native gates at
         # the same BFME2 revision, never stamp a partial or interrupted check.
-        run("full-before-reference-refresh", [bash, "build.sh"], quiet=True)
+        run("full-before-reference-refresh", [sys.executable, "tools/build.py"], quiet=True)
     for index, group in enumerate(DATA["groups"]):
         claims("before-group-" + str(index))
         apply_group(group)
@@ -345,6 +345,8 @@ def qualified(bash):
     print("QUALIFIED_OBJECTS " + json.dumps(manifest), flush=True)
 
 def transfer(bash):
+    os.environ["BFME_CLAIM_OWNER"] = DATA["claim"]["owner"]
+    os.environ["BFME_MODEL"] = "OpenAI-Codex"
     # This job never executes any source or code supplied by the artifact.
     manifest = json.loads((BUNDLE / "manifest.json").read_text(encoding="utf-8"))
     for key in ("schema", "purpose", "fork", "result_branch"):
