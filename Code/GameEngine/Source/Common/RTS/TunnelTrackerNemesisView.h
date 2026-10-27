@@ -60,6 +60,9 @@ public:
 	bool rva002943B2(const Player *viewer);
 	bool isEffectivelyDead() const { return (m_deadFlag & 1) != 0; }
 	int getID() const { return m_id; }
+	void onContainedBy(Object *container);
+	// The tunnel this object is contained by (+0x274).
+	const Object *tunnelContainer() const { return (const Object *)m_274; }
 	char m_pad00[4];
 	void *m_template;
 	char m_pad08[0x74 - 8];

@@ -46,18 +46,28 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
 extern GameLogic *TheGameLogic;
 class Object {public:void onContainedBy(Object*); ObjectID getID()const{return id;} const Object*tunnelContainer()const{return contained;}private:char pad[0x74];ObjectID id;char pad78[0x274-0x78];Object *contained;};
 class Rva00466398 {public:Rva0036AE51ListView rva00466398();};
-class Rva004F56FC {public:bool rva004F571B(const Object*);private:char pad[8];_STL::list<int> ids;char padC[0x1C-0xC];unsigned count;};
+class Rva004F56FC
+{
+public:
+	void rva004F56FC(Object *obj);
+	bool rva004F571B(const Object *dead);
+private:
+	char m_pad0[8];
+	_STL::list<int> m_list; // +0x08, tunnel IDs
+	char m_pad1[16];
+	unsigned int m_count; // +0x1C
+};
 bool Rva004F56FC::rva004F571B(const Object*dead){
- --count;ids.remove((int)dead->getID());
- if(count>0){
-  Object *replacement=TheGameLogic->findObjectByID((ObjectID)ids.front());
+ --m_count;m_list.remove((int)dead->getID());
+ if(m_count>0){
+  Object *replacement=TheGameLogic->findObjectByID((ObjectID)m_list.front());
   const Rva0036AE51ListView &view=((Rva00466398*)this)->rva00466398();ContainmentList *list=view.b;
   for(ContainmentList::iterator it=list->begin();it!=list->end();){
    Object *object=(Object*)containmentFirstWord(*it);++it;
    if(object->tunnelContainer()==dead)object->onContainedBy(replacement);
   }
  }
- return count==0 && (dead?true:true);
+ return m_count==0 && (dead?true:true);
 }
 
 inline __declspec(noinline) Rva0036AE51ListView Rva00466398::rva00466398(){Rva0036AE51ListView out;out.a=this?(void*)((char*)this+4):(void*)0;out.b=(ContainmentList*)((char*)this+16);return out;}
