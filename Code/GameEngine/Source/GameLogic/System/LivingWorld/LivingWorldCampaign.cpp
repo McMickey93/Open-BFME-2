@@ -75,6 +75,7 @@ public:
  virtual void gi28(); virtual void gi2C(); virtual void gi30();
  virtual int getLocalSlotNum() const; // Same existing GameLogicInit pointer view; native vslot 0x34.
  GameSlot *getSlot(int);
+ bool isColorTaken(int color, int ignore) const;
 };
 extern GameInfo *TheGameInfo;
 class SkirmishGameInfo;
@@ -339,9 +340,29 @@ struct CampaignEntry184 {unsigned char opaque[184];};
 
 struct CampaignRange184 {CampaignEntry184 *begin,*end;};
 
+class Rva00564DF2NameView
+{
+public:
+	AsciiString rva00564DF2() const;	// 0x00564DF2
+private:
+	char m_bytes[0xB8];
+};
+
+// The 184-byte records at +0x0C, read as name views by rva0052C7A2.
+struct Rva0052BFE1Records
+{
+	Rva00564DF2NameView *m_start;
+	Rva00564DF2NameView *m_finish;
+	Rva00564DF2NameView *m_endOfStorage;
+
+	unsigned int size() const { return m_finish - m_start; }
+	Rva00564DF2NameView &operator[](unsigned int i) { return m_start[i]; }
+};
+
 class Rva0052BFE1 {
 public: Rva005657FEElement *rva0052BFE1(const StringBase<char>&,const Rva005657FEHolder*);
-private: unsigned char prefix[12];CampaignEntry184 *m_begin,*m_end;
+public: Rva00564DF2NameView *rva0052C7A2(const AsciiString &name);
+private: unsigned char prefix[12];union { struct { CampaignEntry184 *m_begin,*m_end; }; Rva0052BFE1Records m_records; };
 };
 
 // ?rva0052C036@Rva0052C036@@QAE_NXZ @0x0052C036 54B: advance index at +8 toward limit at +18 over 0xB8 stride array at +0xC else clamp and notify.
@@ -368,6 +389,18 @@ public:
 	void rva003F812C();
 };
 
+// AdjustStartingPositionForScenario's +0x1C helper and the +0x12C int of its 0x004FCA0C result.
+struct Res004FCA0C
+{
+	char m_pad[0x12C];
+	int m_12C;
+};
+
+struct Sub0052BAC1
+{
+	Res004FCA0C *Rva004FCA0C(Rva0020E89C *found);
+};
+
 class LivingWorldCampaign {
 public:
  LivingWorldCampaign(const AsciiString &name);
@@ -375,7 +408,7 @@ public:
  static void ParseLivingWorldCampaignBlock(class INI *ini);
  void CreatePlayers(); int AdjustStartingPositionForScenario(int);
  char pad00[0x0c]; LivingWorldCampaignRecords m_records; int m_currentIndex;
- char pad1c[8]; _STL::vector<Rva002E0EF7> players; AsciiString localName;
+ Sub0052BAC1 *m_1C; char pad20[4]; _STL::vector<Rva002E0EF7> players; AsciiString localName;
  char pad34[0x4c-0x34]; unsigned char fromCampaign;
 };
 
