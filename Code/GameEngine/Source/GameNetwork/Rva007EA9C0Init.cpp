@@ -46,7 +46,7 @@ private:
 	void *m_04;
 	unsigned char m_flags;
 	char m_pad09[3];
-	void *m_0C;
+	void *m_feslNaming;
 	char m_pad10[0x240];
 	BfmeThingUNB *m_250;
 	Rva007F9B80 *m_254;
@@ -56,7 +56,7 @@ void Rva007EA9C0Owner::init()
 {
 	if ((m_flags & 1) == 0)
 		Rva007EB380Startup(0);
-	m_0C = bfmeGoDGG(this);
+	m_feslNaming = bfmeGoDGG(this);
 	m_250 = bfmeNewUNB();
 	Rva007F9B80 *service = (Rva007F9B80 *)Gen007F0130(0x6B8);
 	if (service)

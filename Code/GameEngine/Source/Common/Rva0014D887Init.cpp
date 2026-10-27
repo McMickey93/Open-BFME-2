@@ -1,5 +1,5 @@
 // cl: /O1 /DNDEBUG /MD /arch:SSE
-// ?rva0014D887@Rva0014D887This@@QAEXPAVRva0014D887Outer@@PAX@Z retail 0x0014D887 135 bytes. Point-light Center callback. Evidence: same Outer Inner m_fn88 +0x88 and This m_04 +0x04 as sibling Rva0014D722This; global Light_Environment at VA 0x00DEDA14; rowed countPoint 0x0013F750 findPoint 0x0013F780; stride 0x54 lea +0x3c is getPointCenter per LightEnvironmentAccessors; SSE movss xorps; REF constant at 0x0014FEFD callback.
+// ?SetPosition@Rva0014D887This@@QAEXPAVRva0014D887Outer@@PAX@Z retail 0x0014D887 135 bytes. Point-light Center callback. Evidence: same Outer Inner m_fn88 +0x88 and This m_04 +0x04 as sibling Rva0014D722This; global Light_Environment at VA 0x00DEDA14; rowed countPoint 0x0013F750 findPoint 0x0013F780; stride 0x54 lea +0x3c is getPointCenter per LightEnvironmentAccessors; SSE movss xorps; REF constant at 0x0014FEFD callback.
 class LightEnvironmentClass;
 class Rva0014D887This;
 class DX8Wrapper
@@ -33,9 +33,9 @@ class Rva0014D887This {
 public:
 	char m_pad00[4];
 	volatile int m_04;
-	void rva0014D887(Rva0014D887Outer *effect, void *parameter);
+	void SetPosition(Rva0014D887Outer *effect, void *parameter);
 };
-void Rva0014D887This::rva0014D887(Rva0014D887Outer *effect, void *parameter) {
+void Rva0014D887This::SetPosition(Rva0014D887Outer *effect, void *parameter) {
 	float buf[4];
 	Rva0013F6F0LightEnv *le = (Rva0013F6F0LightEnv *)DX8Wrapper::Light_Environment;
 	if (le == 0)

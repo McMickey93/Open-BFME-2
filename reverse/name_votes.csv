@@ -8534,3 +8534,15 @@ Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|clas
 Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|class||Rva00508120WeaponTemplateView,492eaff952c5222ddd84f734,drz-k8,drz-k8-25,w-87ae7cdc64ef,2026-10-27
 Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|class||Rva00508120WeaponView,3e6a5880ad8a90112f89ca04,drz-k8,drz-k8-25,w-87ae7cdc64ef,2026-10-27
 Code/GameEngine/Source/GameLogic/Object/DamageNugget_generateDamageInfo.cpp|member|Rva00508120WeaponView|template04,1ebc85b281b7099118174e06,drz-k8,drz-k8-25,w-87ae7cdc64ef,2026-10-27
+Code/GameEngine/Source/Common/System/Rva002F1BD5Finish.cpp|class||Rva002F1BD5Arg,84266c8383cb501ad251ff81,claude-opus-5-5,w4-10271800-2,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/GameLogic/AI/Rva002EBC59.cpp|param|rva002EBC59|a2,3ee4a511d8c888c5c3ce6d8d,claude-opus-5-5,w4-10271800-4,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/Common/Rva0014D887Init.cpp|class||Rva0014D887Center,fdb0a1a37ad3a907054077fe,claude-opus-5-5,w4-10271800-5,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/Common/Rva0014D887Init.cpp|function|0x0014D887|rva0014D887,cc8e357b606cb95be57791c8,claude-opus-5-5,w4-10271800-5,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/Update/PartTheHeavensUpdateRva004AC9FA.cpp|member|ShadowChild|m_20,3bb143a5488051104f5c6606,claude-opus-5-5,w4-10271800-7,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/GameLogic/Object/Behavior/Rva003F2A11Assign.cpp|class||Rva003F2A11,41811b4709235259d31e2b89,claude-opus-5-5,w4-10271800-9,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/Common/AutoResolveArmorParse.cpp|class||Rva00542B61ThrowInfoAnchor,c7052dfbbc8ba495f84368d1,claude-opus-5-5,w4-10271800-11,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp|class||Rva007EA9C0Owner,c70ff8c0dae1a3bc91c3abfa,claude-opus-5-5,w4-10271800-13,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp|member|Rva007EA9C0Owner|m_0C,665e059150c865a2b924e985,claude-opus-5-5,w4-10271800-13,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp|member|Rva007EA9C0Owner|m_250,7ac56efe6d8c13c8abc3f135,claude-opus-5-5,w4-10271800-13,w-04b70f91aacf,2026-10-27
+Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp|member|Rva007EA9C0Owner|m_254,6f518d23ad0f1257511227fc,claude-opus-5-5,w4-10271800-13,w-04b70f91aacf,2026-10-27
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DPropBufferAddProp.cpp|param|W3DPropBuffer::addProp|bfmeFlag,9ccbbf614feac77080a3a1c6,claude-opus-5-5,w4-10271800-15,w-04b70f91aacf,2026-10-27

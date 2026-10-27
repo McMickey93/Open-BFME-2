@@ -2738,3 +2738,7 @@ class,Rva005D2EA8Listener,RollOverListener,inferred,agree:nl-e74ab198c586,Code/G
 function,?rva005FD4AA@Rva005FD4AA@@QBEPAHH@Z,?getRegionName@Rva005FD4AA@@QBEPAHH@Z,inferred,agree:nl-8f4736b6c3f0,Code/GameEngine/Source/Common/GapBodiesGE12.cpp,0x005FD4AA
 function,?rva005FD4BB@Rva005FD4AA@@QBEPAHH@Z,?getArmyName@Rva005FD4AA@@QBEPAHH@Z,inferred,agree:nl-fcd4d0a34a0a,Code/GameEngine/Source/Common/GapBodiesGE12.cpp,0x005FD4BB
 class,Rva00577E43,AptRadialMenuImpl,inferred,agree:nl-e030637ee591,Code/GameEngine/Source/Common/FamilyDeletingDtors3.cpp,
+function,?rva0014D887@Rva0014D887This@@QAEXPAVRva0014D887Outer@@PAX@Z,?SetPosition@Rva0014D887This@@QAEXPAVRva0014D887Outer@@PAX@Z,inferred,agree:nl-cb2552045ffb,Code/GameEngine/Source/Common/Rva0014D887Init.cpp,0x0014D887
+carry,Rva0014D887This::rva0014D887::effect,Rva0014D887This::SetPosition::effect,inferred,scope renamed by Rename rva0014D887 to SetPosition (inferred),Code/GameEngine/Source/Common/Rva0014D887Init.cpp,0x0014D887
+carry,Rva0014D887This::rva0014D887::parameter,Rva0014D887This::SetPosition::parameter,inferred,scope renamed by Rename rva0014D887 to SetPosition (inferred),Code/GameEngine/Source/Common/Rva0014D887Init.cpp,0x0014D887
+member,Rva007EA9C0Owner::m_0C,Rva007EA9C0Owner::m_feslNaming,inferred,agree:nl-b4cb203e5341,Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp,

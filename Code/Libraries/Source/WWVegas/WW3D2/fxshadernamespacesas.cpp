@@ -475,7 +475,7 @@ class Rva0014D9F3Outer;
 void __cdecl rva0014D522(void *effect, void *parameter);
 class Rva0014D722This { public: void rva0014D722(Rva0014D722Outer *effect, void *parameter); };
 class Rva0014D7D4This { public: void rva0014D7D4(Rva0014D7D4Outer *effect, void *parameter); };
-class Rva0014D887This { public: void rva0014D887(Rva0014D887Outer *effect, void *parameter); };
+class Rva0014D887This { public: void SetPosition(Rva0014D887Outer *effect, void *parameter); };
 class Rva0014D982This { public: void rva0014D982(ID3DXEffect *effect, D3DXHANDLE parameter); };
 class Rva0014D9F3This { public: void rva0014D9F3(Rva0014D9F3Outer *effect, void *parameter); };
 
@@ -1043,7 +1043,7 @@ void FXShaderParameterSourceNamespaceSAS::SourceNamespace_PointLight::ResolveBin
 		Rva001530E9Path t;
 		Rva001530E9Parse(name, &t);
 		if (_strcmpi(t.m_name, "Position") == 0)
-			binder->AddBinding(TreeHintRef00217D4C(DelegateDesc(this, &Rva0014D887This::rva0014D887)), parameter);
+			binder->AddBinding(TreeHintRef00217D4C(DelegateDesc(this, &Rva0014D887This::SetPosition)), parameter);
 		else if (_strcmpi(t.m_name, "Color") == 0)
 			binder->AddBinding(TreeHintRef00217D4C(DelegateDesc(this, &Rva0014D7D4This::rva0014D7D4)), parameter);
 		else if (_strcmpi(t.m_name, "Range") == 0)
