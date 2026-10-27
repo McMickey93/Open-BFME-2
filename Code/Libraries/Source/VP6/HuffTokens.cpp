@@ -84,13 +84,8 @@ struct Vp6HuffTokenInstance
 // addresses into the reading bodies, so each one is defined here from retail's
 // bytes: the bit mask read by Rva001C4FE0ReadBits at VA 0x00BD8D40, the token
 // minimums at VA 0x00BD8B48 and the AC band map at VA 0x00BD8B78.
-extern const unsigned g_vp6LowBitMasks[33] = {
-	0, 1, 3, 7, 15, 31, 63, 127,
-	255, 511, 1023, 2047, 4095, 8191, 16383, 32767,
-	65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607,
-	16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647,
-	-1,
-};
+// Retail keeps the 48-byte minimum table directly before the band map.
+// Preserve that boundary in the emitted data contribution.
 extern const int g_vp6TokenMinimum[12] = {
 	0, 1, 2, 3, 4, 5, 7, 11,
 	19, 35, 67, 0,
@@ -105,6 +100,14 @@ extern const int g_vp6CoeffBandMap[65] = {
 	3, 3, 3, 3, 3, 3, 3, 3,
 	3, 3, 3, 3, 3, 3, 3, 3,
 	3,
+};
+
+extern const unsigned g_vp6LowBitMasks[33] = {
+	0, 1, 3, 7, 15, 31, 63, 127,
+	255, 511, 1023, 2047, 4095, 8191, 16383, 32767,
+	65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607,
+	16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647,
+	-1,
 };
 
 static unsigned Rva001C4FE0ReadBits(Vp6RawBits *state, int bits)

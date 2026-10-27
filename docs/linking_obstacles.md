@@ -1145,6 +1145,17 @@ Whole-unit clearance and census confirmation remain pending.
   its actual witness is retained. No new name, pin, header or data value is
   introduced. This subset is cleared in the fixed comparison; whole-chain
   clearance and a current-master census remain pending (LINK-008/017).
+- **Huffman-table extent repair (2026-10-27, control `9d6c94a6fe`):** the
+  [native table-layout proof](../reverse/attempt_support/vp6-huff-table-layout-link-20261027/readme.md)
+  places the existing 48-byte token-minimum definition directly before its
+  native band-map successor. This removes the four mismatching zero bytes
+  from the inferred minimum contribution; the band's new four-byte tail
+  agrees with native padding. All three complete data contributions, 440
+  initializer bytes and four native DIR32 targets are verified. Normal
+  controls retain all three bodies (1,829 bytes). Source work finalized at
+  t=8 minutes with no new coverage, name, pin, value or source-path change.
+  The fixed one-source comparison against `d8d65b08cc` is pending; no
+  prospective credit or current-master census gain is claimed.
 - **LargeGroupAudio key-tree follow-up (2026-10-26, `e5c5a1787c`):**
   [the whole key-list repair](../reverse/attempt_support/largegroup-keylist-erase-link-20261026.md)
   preserves its 191-byte parent and verifies all 15 rows of the native erase
