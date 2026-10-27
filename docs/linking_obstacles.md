@@ -4299,6 +4299,26 @@ inspected `d16a31e4dc`, index `73061d9452`, retail-truth-4):**
   renumbering); link_check: the unit 0 -> 85 B, LivingWorldBattle.cpp,
   ArmySummaryCopyBFME2.cpp and ArmySummary.cpp still LINKS. The 0x00783FBC
   unwind funclet stays in `uw_gen_001.cpp` (LINK-095 lane).
+- `StlSweepR3Rva00627B10.cpp` is `push_heap<S4SortElem24 *, S4Cmp009F4BF0>`,
+  not `make_heap`. Target facts: 0x00627B10 pushes first, last, the
+  comparator and two zero tags to 0x006279B0, which has no loop: it copies
+  `last[-1]` and calls `__push_heap` 0x00627330 once with hole
+  `(last - first) - 1` and top 0, which is STLport 4.5.3's
+  `__push_heap_aux(first, last, comp, Distance *, Tp *)`, not `__make_heap`.
+  0x006279B0 had been rowed as the three-argument `push_heap` (same bytes:
+  the callee ignores the tags). Both rows are respelled with their real
+  STLport names (`__push_heap_aux<S4SortElem24 *, S4Cmp009F4BF0, int,
+  S4SortElem24>` in `stlport_push_heap_s4sortelem24.cpp`; `push_heap` in the
+  sweep unit, which declares the helper so the call stays out of line as in
+  retail). The `__make_heap<Rva00627B10Record *>` pin is dropped. Neither
+  address has a direct caller; the partition manager's query 0x00628040
+  inlines its own `__push_heap_aux` and still LINKS. `./build.sh` 2/2 exact;
+  link_check: the unit 0 -> 28 B; stlport_push_heap_s4sortelem24.cpp,
+  stlport_heap_s4sortelem24.cpp, stlport_pop_heap_s4sortelem24.cpp and
+  partitionmanager_impl.cpp still LINKS.
+- Remaining R3 units in this family: `00551B02`, `005838DC` and `005AFEDB`
+  stay blocked on TU approval (LINK-078); the 0x001DE3E3/0x001FDEBC hashtable
+  assignments are second claims of linked rows (LINK-060).
 - Census confirmation: awaiting the next census.
 
 ### LINK-069: the four-byte merge sweep combines a string buffer with opaque record helpers

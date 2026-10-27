@@ -1,7 +1,10 @@
 // cl: /DNDEBUG /MD /EHsc
 //
-// _STL::push_heap over S4SortElem24 / S4Cmp009F4BF0. Inlines to a by-value
-// copy of last[-1] and a call to the already-landed __push_heap at 0x009F4BF0.
+// _STL::__push_heap_aux over S4SortElem24 / S4Cmp009F4BF0 (STLport 4.5.3
+// _heap.c): a by-value copy of last[-1] and a call to the already-landed
+// __push_heap at 0x00627330. Its one caller is push_heap at 0x00627B10
+// (StlSweepR3Rva00627B10.cpp), which passes the two null distance/value type
+// tags as the fourth and fifth arguments.
 
 struct S4SortElem24
 {
@@ -21,13 +24,14 @@ template <class RandomAccessIterator, class Distance, class Tp, class Compare>
 void __push_heap(RandomAccessIterator first, Distance holeIndex,
 	Distance topIndex, Tp val, Compare comp);
 
-template <class RandomAccessIterator, class Compare>
-void push_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
+template <class RandomAccessIterator, class Compare, class Distance, class Tp>
+void __push_heap_aux(RandomAccessIterator first, RandomAccessIterator last,
+	Compare comp, Distance *, Tp *)
 {
-	__push_heap(first, (int)(last - first) - 1, 0, *(last - 1), comp);
+	__push_heap(first, Distance((last - first) - 1), Distance(0), Tp(*(last - 1)), comp);
 }
 
-template void push_heap<S4SortElem24 *, S4Cmp009F4BF0>(
-	S4SortElem24 *, S4SortElem24 *, S4Cmp009F4BF0);
+template void __push_heap_aux<S4SortElem24 *, S4Cmp009F4BF0, int, S4SortElem24>(
+	S4SortElem24 *, S4SortElem24 *, S4Cmp009F4BF0, int *, S4SortElem24 *);
 
 }
