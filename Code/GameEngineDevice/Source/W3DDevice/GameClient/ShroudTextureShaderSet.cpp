@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 // ?set@ShroudTextureShader@@EAEHH@Z retail 0x000F5D3B..0x000F630C (1489 bytes).
 // Slot 4 of the shader vftable at 0x007CF1C8: the next slots are reset
@@ -17,45 +18,14 @@
 // transpose; inverse view; draw-origin translation; texel scaling; two
 // D3DXMatrixMultiply temporaries) and the terrain shroud/map fields are the
 // BFME 2 offsets 3878/37C0 proven there.
-#include <windows.h>
-typedef DWORD D3DRENDERSTATETYPE;
-typedef DWORD D3DTEXTURESTAGESTATETYPE;
+#include <d3d9.h>
 
-struct IDirect3DBaseTexture8
-{
-	virtual HRESULT __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual DWORD __stdcall AddRef(void) = 0;
-	virtual DWORD __stdcall Release(void) = 0;
-};
+struct IDirect3DBaseTexture8;
 
-// Direct3D 9 slot order behind the dx8 names: SetTransform +0xB0,
-// SetRenderState +0xE4, SetTexture +0x104, SetTextureStageState +0x10C.
-struct IDirect3DDevice8
-{
-	virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03();
-	virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07();
-	virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11();
-	virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15();
-	virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19();
-	virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23();
-	virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27();
-	virtual void s28(); virtual void s29(); virtual void s30(); virtual void s31();
-	virtual void s32(); virtual void s33(); virtual void s34(); virtual void s35();
-	virtual void s36(); virtual void s37(); virtual void s38(); virtual void s39();
-	virtual void s40(); virtual void s41(); virtual void s42(); virtual void s43();
-	virtual HRESULT __stdcall SetTransform(DWORD state, const void *matrix) = 0;
-	virtual void s45(); virtual void s46(); virtual void s47();
-	virtual void s48(); virtual void s49(); virtual void s50(); virtual void s51();
-	virtual void s52(); virtual void s53(); virtual void s54(); virtual void s55();
-	virtual void s56();
-	virtual HRESULT __stdcall SetRenderState(D3DRENDERSTATETYPE state, DWORD value) = 0;
-	virtual void s58(); virtual void s59();
-	virtual void s60(); virtual void s61(); virtual void s62(); virtual void s63();
-	virtual void s64();
-	virtual HRESULT __stdcall SetTexture(DWORD stage, IDirect3DBaseTexture8 *texture) = 0;
-	virtual void s66();
-	virtual HRESULT __stdcall SetTextureStageState(DWORD stage, D3DTEXTURESTAGESTATETYPE type, DWORD value) = 0;
-};
+// Direct3D 9 objects behind the dx8 names (IDirect3DDevice9 / IDirect3DBaseTexture9
+// from the vendored SDK): SetTransform +0xB0, SetRenderState +0xE4, SetTexture
+// +0x104, SetTextureStageState +0x10C.
+struct IDirect3DDevice8;
 
 class Vector4
 {
@@ -266,8 +236,8 @@ class DX8Wrapper
 public:
 	enum ChangedStates { MATERIAL_CHANGED = 1 << 14, SHADER_CHANGED = 1 << 15 };
 	static void Apply_Render_State_Changes(void);
-	static void Get_DX8_Render_State_Value_Name(StringClass &name, D3DRENDERSTATETYPE state, unsigned value);
-	static void Get_DX8_Texture_Stage_State_Value_Name(StringClass &name, D3DTEXTURESTAGESTATETYPE state, unsigned value);
+	static void Get_DX8_Render_State_Value_Name(StringClass &name, unsigned long state, unsigned value);
+	static void Get_DX8_Texture_Stage_State_Value_Name(StringClass &name, unsigned long state, unsigned value);
 
 	static __forceinline void Set_Material(const VertexMaterialClass *material)
 	{
@@ -285,7 +255,7 @@ public:
 		render_state_changed |= SHADER_CHANGED;
 		StringClass str;
 	}
-	static __forceinline void Set_DX8_Render_State(D3DRENDERSTATETYPE state, unsigned value)
+	static __forceinline void Set_DX8_Render_State(unsigned long state, unsigned value)
 	{
 		if (RenderStates[state] == value) return;
 		if (WW3D::Is_Snapshot_Activated()) {
@@ -293,14 +263,14 @@ public:
 			Get_DX8_Render_State_Value_Name(value_name, state, value);
 		}
 		RenderStates[state] = value;
-		D3DDevice->SetRenderState(state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		render_state_changes++;
 	}
-	static __forceinline void Set_DX8_Texture_Stage_State(unsigned stage, D3DTEXTURESTAGESTATETYPE state, unsigned value)
+	static __forceinline void Set_DX8_Texture_Stage_State(unsigned stage, unsigned long state, unsigned value)
 	{
 		if (stage >= 16) {
-			D3DDevice->SetTextureStageState(stage, state, value);
+			reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)state, value);
 			number_of_DX8_calls++;
 			return;
 		}
@@ -310,7 +280,7 @@ public:
 			Get_DX8_Texture_Stage_State_Value_Name(value_name, state, value);
 		}
 		TextureStageStates[stage][state] = value;
-		D3DDevice->SetTextureStageState(stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)state, value);
 		number_of_DX8_calls++;
 		texture_stage_state_changes++;
 	}
@@ -318,15 +288,15 @@ public:
 	static __forceinline void Set_DX8_Texture(unsigned int stage, IDirect3DBaseTexture8 *texture)
 	{
 		if (stage >= 16) {
-			D3DDevice->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 			number_of_DX8_calls++;
 			return;
 		}
 		if (Textures[stage] == texture) return;
-		if (Textures[stage]) Textures[stage]->Release();
+		if (Textures[stage]) reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
-		if (Textures[stage]) Textures[stage]->AddRef();
-		D3DDevice->SetTexture(stage, texture);
+		if (Textures[stage]) reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->AddRef();
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		texture_changes++;
 	}
@@ -340,7 +310,7 @@ public:
 	static __forceinline void SetMatrix(unsigned state, const D3DXMATRIX &d3DXMATRIX)
 	{
 		++matrix_changes;
-		D3DDevice->SetTransform(state, &d3DXMATRIX);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTransform((D3DTRANSFORMSTATETYPE)state, reinterpret_cast<const D3DMATRIX *>(&d3DXMATRIX));
 		++number_of_DX8_calls;
 	}
 
@@ -381,9 +351,9 @@ int ShroudTextureShader::set(int stage)
 		DX8Wrapper::Set_Shader(ShaderClass::_PresetMultiplicativeSpriteShader);
 	DX8Wrapper::Apply_Render_State_Changes();
 
-	DX8Wrapper::Set_DX8_Texture_Stage_State(stage, 11, 0x20000);	// TEXCOORDINDEX, TCI_CAMERASPACEPOSITION
-	DX8Wrapper::Set_DX8_Texture_Stage_State(stage, 24, 2);		// TEXTURETRANSFORMFLAGS, TTFF_COUNT2
-	DX8Wrapper::Set_DX8_Render_State(23, 3);				// ZFUNC, CMP_EQUAL
+	DX8Wrapper::Set_DX8_Texture_Stage_State(stage, D3DTSS_TEXCOORDINDEX, D3DTSS_TCI_CAMERASPACEPOSITION);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(stage, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_COUNT2);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ZFUNC, D3DCMP_EQUAL);
 
 	Rva00072B3A *shroud;
 	if ((shroud = TheTerrainRenderObject->shroud) != 0)
@@ -409,7 +379,7 @@ int ShroudTextureShader::set(int stage)
 		height = 1.0f / (height * shroud->textureHeight);
 		D3DXMatrixScaling(&scale, width, height, 1);
 		*((D3DXMATRIX *)&curView) = (inv * offset) * scale;
-		DX8Wrapper::SetMatrix(16 + stage, *((D3DXMATRIX *)&curView));
+		DX8Wrapper::SetMatrix(D3DTS_TEXTURE0 + stage, *((D3DXMATRIX *)&curView));
 	}
 	m_stageOfSet = stage;
 	return 1;
@@ -431,7 +401,7 @@ void ShroudTextureShader::rva000F5AD4()
 void ShroudTextureShader::reset()
 {
 	BFME2Set_Texture(m_stageOfSet, AsTextureRef(AssetReference()));
-	DX8Wrapper::Set_DX8_Render_State(23, 4);				// ZFUNC, CMP_LESSEQUAL
-	DX8Wrapper::Set_DX8_Texture_Stage_State(m_stageOfSet, 11, m_stageOfSet);	// TEXCOORDINDEX
-	DX8Wrapper::Set_DX8_Texture_Stage_State(m_stageOfSet, 24, 0);		// TEXTURETRANSFORMFLAGS, TTFF_DISABLE
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(m_stageOfSet, D3DTSS_TEXCOORDINDEX, m_stageOfSet);
+	DX8Wrapper::Set_DX8_Texture_Stage_State(m_stageOfSet, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
 }

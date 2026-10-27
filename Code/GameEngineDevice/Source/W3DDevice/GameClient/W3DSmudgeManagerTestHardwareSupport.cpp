@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /O1 /arch:SSE /G7
+// dxsdk
 // platformsdk
 //
 // W3DSmudgeManager::testHardwareSupport, retail 0x000A648C, 930 bytes.
@@ -25,7 +26,7 @@
 typedef int Int;
 typedef int Bool;
 typedef float Real;
-#include <windows.h>
+#include <d3d9.h>
 
 #define UNIQUE_COLOR (0x12345678)
 #define BLOCK_SIZE (8)
@@ -56,113 +57,17 @@ public:
 	}
 };
 
-struct IDirect3DBaseTexture8
-{
-	virtual HRESULT __stdcall QueryInterface(void) = 0;
-	virtual ULONG __stdcall AddRef(void) = 0;
-	virtual ULONG __stdcall Release(void) = 0;
-};
+struct IDirect3DBaseTexture8 {};
 
 struct IDirect3DTexture8 : public IDirect3DBaseTexture8
 {
 };
 
-// BFME's device retains the D3D9 method positions used by the target body.
-// SetTexture is slot 65, DrawPrimitiveUP slot 83, and SetVertexShader slot 89.
-struct IDirect3DDevice8
-{
-	virtual HRESULT __stdcall unused00(void) = 0;
-	virtual HRESULT __stdcall unused01(void) = 0;
-	virtual HRESULT __stdcall unused02(void) = 0;
-	virtual HRESULT __stdcall unused03(void) = 0;
-	virtual HRESULT __stdcall unused04(void) = 0;
-	virtual HRESULT __stdcall unused05(void) = 0;
-	virtual HRESULT __stdcall unused06(void) = 0;
-	virtual HRESULT __stdcall unused07(void) = 0;
-	virtual HRESULT __stdcall unused08(void) = 0;
-	virtual HRESULT __stdcall unused09(void) = 0;
-	virtual HRESULT __stdcall unused10(void) = 0;
-	virtual HRESULT __stdcall unused11(void) = 0;
-	virtual HRESULT __stdcall unused12(void) = 0;
-	virtual HRESULT __stdcall unused13(void) = 0;
-	virtual HRESULT __stdcall unused14(void) = 0;
-	virtual HRESULT __stdcall unused15(void) = 0;
-	virtual HRESULT __stdcall unused16(void) = 0;
-	virtual HRESULT __stdcall unused17(void) = 0;
-	virtual HRESULT __stdcall unused18(void) = 0;
-	virtual HRESULT __stdcall unused19(void) = 0;
-	virtual HRESULT __stdcall unused20(void) = 0;
-	virtual HRESULT __stdcall unused21(void) = 0;
-	virtual HRESULT __stdcall unused22(void) = 0;
-	virtual HRESULT __stdcall unused23(void) = 0;
-	virtual HRESULT __stdcall unused24(void) = 0;
-	virtual HRESULT __stdcall unused25(void) = 0;
-	virtual HRESULT __stdcall unused26(void) = 0;
-	virtual HRESULT __stdcall unused27(void) = 0;
-	virtual HRESULT __stdcall unused28(void) = 0;
-	virtual HRESULT __stdcall unused29(void) = 0;
-	virtual HRESULT __stdcall unused30(void) = 0;
-	virtual HRESULT __stdcall unused31(void) = 0;
-	virtual HRESULT __stdcall unused32(void) = 0;
-	virtual HRESULT __stdcall unused33(void) = 0;
-	virtual HRESULT __stdcall unused34(void) = 0;
-	virtual HRESULT __stdcall unused35(void) = 0;
-	virtual HRESULT __stdcall unused36(void) = 0;
-	virtual HRESULT __stdcall unused37(void) = 0;
-	virtual HRESULT __stdcall unused38(void) = 0;
-	virtual HRESULT __stdcall unused39(void) = 0;
-	virtual HRESULT __stdcall unused40(void) = 0;
-	virtual HRESULT __stdcall unused41(void) = 0;
-	virtual HRESULT __stdcall unused42(void) = 0;
-	virtual HRESULT __stdcall unused43(void) = 0;
-	virtual HRESULT __stdcall unused44(void) = 0;
-	virtual HRESULT __stdcall unused45(void) = 0;
-	virtual HRESULT __stdcall unused46(void) = 0;
-	virtual HRESULT __stdcall unused47(void) = 0;
-	virtual HRESULT __stdcall unused48(void) = 0;
-	virtual HRESULT __stdcall unused49(void) = 0;
-	virtual HRESULT __stdcall unused50(void) = 0;
-	virtual HRESULT __stdcall unused51(void) = 0;
-	virtual HRESULT __stdcall unused52(void) = 0;
-	virtual HRESULT __stdcall unused53(void) = 0;
-	virtual HRESULT __stdcall unused54(void) = 0;
-	virtual HRESULT __stdcall unused55(void) = 0;
-	virtual HRESULT __stdcall unused56(void) = 0;
-	virtual HRESULT __stdcall unused57(void) = 0;
-	virtual HRESULT __stdcall unused58(void) = 0;
-	virtual HRESULT __stdcall unused59(void) = 0;
-	virtual HRESULT __stdcall unused60(void) = 0;
-	virtual HRESULT __stdcall unused61(void) = 0;
-	virtual HRESULT __stdcall unused62(void) = 0;
-	virtual HRESULT __stdcall unused63(void) = 0;
-	virtual HRESULT __stdcall unused64(void) = 0;
-	virtual HRESULT __stdcall SetTexture(DWORD stage, IDirect3DBaseTexture8 *texture) = 0;
-	virtual HRESULT __stdcall unused66(void) = 0;
-	virtual HRESULT __stdcall unused67(void) = 0;
-	virtual HRESULT __stdcall unused68(void) = 0;
-	virtual HRESULT __stdcall unused69(void) = 0;
-	virtual HRESULT __stdcall unused70(void) = 0;
-	virtual HRESULT __stdcall unused71(void) = 0;
-	virtual HRESULT __stdcall unused72(void) = 0;
-	virtual HRESULT __stdcall unused73(void) = 0;
-	virtual HRESULT __stdcall unused74(void) = 0;
-	virtual HRESULT __stdcall unused75(void) = 0;
-	virtual HRESULT __stdcall unused76(void) = 0;
-	virtual HRESULT __stdcall unused77(void) = 0;
-	virtual HRESULT __stdcall unused78(void) = 0;
-	virtual HRESULT __stdcall unused79(void) = 0;
-	virtual HRESULT __stdcall unused80(void) = 0;
-	virtual HRESULT __stdcall unused81(void) = 0;
-	virtual HRESULT __stdcall unused82(void) = 0;
-	virtual HRESULT __stdcall DrawPrimitiveUP(UINT primitive_type, UINT primitive_count,
-		const void *vertex_data, UINT vertex_stride) = 0;
-	virtual HRESULT __stdcall unused84(void) = 0;
-	virtual HRESULT __stdcall unused85(void) = 0;
-	virtual HRESULT __stdcall unused86(void) = 0;
-	virtual HRESULT __stdcall unused87(void) = 0;
-	virtual HRESULT __stdcall unused88(void) = 0;
-	virtual HRESULT __stdcall SetVertexShader(DWORD shader) = 0;
-};
+// The device and textures keep their D3D8 type names (DX8Wrapper's static
+// decorations) but are Direct3D 9 objects: SetTexture is slot 65,
+// DrawPrimitiveUP slot 83, and the FVF setter ZH spells Set_Vertex_Shader is
+// SetFVF, slot 89; texture AddRef / Release are slots 1 / 2.
+struct IDirect3DDevice8;
 
 class W3DShaderManager
 {
@@ -318,7 +223,7 @@ public:
 
 	static __forceinline void Set_Vertex_Shader(DWORD vertex_shader)
 	{
-		D3DDevice->SetVertexShader(vertex_shader);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetFVF(vertex_shader);
 		++number_of_DX8_calls;
 	}
 
@@ -348,8 +253,8 @@ public:
 	{
 		if (stage >= 8)
 		{
-			IDirect3DDevice8 *device = _Get_D3D_Device8();
-			device->SetTexture(stage, texture);
+			IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8());
+			device->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 			++number_of_DX8_calls;
 			return;
 		}
@@ -357,12 +262,12 @@ public:
 		if (Textures[stage] == texture)
 			return;
 		if (Textures[stage])
-			Textures[stage]->Release();
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
 		if (texture)
-			texture->AddRef();
-		IDirect3DDevice8 *device = _Get_D3D_Device8();
-		device->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DBaseTexture9 *>(texture)->AddRef();
+		IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8());
+		device->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		++number_of_DX8_calls;
 		++texture_changes;
 	}
@@ -478,9 +383,9 @@ bool W3DSmudgeManager::testHardwareSupport(void)
 		v[2].color = UNIQUE_COLOR;
 		v[3].color = UNIQUE_COLOR;
 
-		IDirect3DDevice8 *pDev = DX8Wrapper::_Get_D3D_Device8();
+		IDirect3DDevice9 *pDev = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 		DX8Wrapper::Set_Vertex_Shader(0x144);
-		pDev->DrawPrimitiveUP(5, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
+		pDev->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
 
 		DWORD refData[BLOCK_SIZE * BLOCK_SIZE];
 		memset(refData, 0, sizeof(refData));
@@ -502,7 +407,7 @@ bool W3DSmudgeManager::testHardwareSupport(void)
 		v[2].color = 0xffffffff;
 		v[3].color = 0xffffffff;
 
-		pDev->DrawPrimitiveUP(5, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
+		pDev->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
 		bufSize = copyRect((unsigned char *)testData, sizeof(testData),
 			0, 0, BLOCK_SIZE, BLOCK_SIZE);
 		if (!bufSize)

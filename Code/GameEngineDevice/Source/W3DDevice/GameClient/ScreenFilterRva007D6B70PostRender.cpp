@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /ICode/Libraries/Include
+// dxsdk
+// platformsdk
 //
 // ?postRender@Rva007D6B70@@UAE_NW4FilterModes@@AAVCoord2D@@AA_NPAV3@@Z,
 // retail 0x000F7187..0x000F816E (4071 bytes, thiscall ret 0x10): slot 3 of
@@ -23,6 +25,7 @@
 inline float __cdecl waveSin(float _X)
         {return (sinf(_X)); }
 #include <string.h>
+#include <d3d9.h>
 #include "Lib/Coord2D.h"
 #include "Lib/RGBColor.h"
 
@@ -40,41 +43,11 @@ class Vector4 { public: float X, Y, Z, W; };
 
 struct IDirect3DSurface8;
 struct IDirect3DTexture8;
-struct IDirect3DBaseTexture8
-{
-	virtual long __stdcall QueryInterface(const void *, void **) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-};
+struct IDirect3DBaseTexture8;
 
-struct IDirect3DDevice8
-{
-#define SLOT(n) virtual void __stdcall slot##n() = 0;
-	SLOT(00) SLOT(01) SLOT(02) SLOT(03) SLOT(04) SLOT(05) SLOT(06) SLOT(07) SLOT(08) SLOT(09)
-	SLOT(10) SLOT(11) SLOT(12) SLOT(13) SLOT(14) SLOT(15) SLOT(16) SLOT(17) SLOT(18) SLOT(19)
-	SLOT(20) SLOT(21) SLOT(22) SLOT(23) SLOT(24) SLOT(25) SLOT(26) SLOT(27) SLOT(28) SLOT(29)
-	SLOT(30) SLOT(31) SLOT(32) SLOT(33) SLOT(34) SLOT(35) SLOT(36) SLOT(37) SLOT(38) SLOT(39)
-	SLOT(40) SLOT(41) SLOT(42) SLOT(43) SLOT(44) SLOT(45) SLOT(46) SLOT(47) SLOT(48) SLOT(49)
-	SLOT(50) SLOT(51) SLOT(52) SLOT(53) SLOT(54) SLOT(55) SLOT(56)
-	virtual long __stdcall SetRenderState(unsigned long state, unsigned long value) = 0;	// +0xE4
-	SLOT(58) SLOT(59) SLOT(60) SLOT(61) SLOT(62) SLOT(63) SLOT(64)
-	virtual long __stdcall SetTexture(unsigned long stage, IDirect3DBaseTexture8 *texture) = 0;	// +0x104
-	SLOT(66)
-	virtual long __stdcall SetTextureStageState(unsigned long stage, unsigned long type, unsigned long value) = 0;	// +0x10C
-	SLOT(68)
-	virtual long __stdcall SetSamplerState(unsigned long sampler, unsigned long type, unsigned long value) = 0;	// +0x114
-	SLOT(70) SLOT(71) SLOT(72) SLOT(73) SLOT(74) SLOT(75) SLOT(76) SLOT(77) SLOT(78) SLOT(79)
-	SLOT(80) SLOT(81) SLOT(82)
-	virtual long __stdcall DrawPrimitiveUP(unsigned long type, unsigned count, const void *data, unsigned stride) = 0;	// +0x14C
-	SLOT(84) SLOT(85) SLOT(86) SLOT(87) SLOT(88)
-	virtual long __stdcall SetFVF(unsigned long fvf) = 0;	// +0x164
-	SLOT(90) SLOT(91) SLOT(92) SLOT(93) SLOT(94) SLOT(95) SLOT(96) SLOT(97) SLOT(98) SLOT(99)
-	SLOT(100) SLOT(101) SLOT(102) SLOT(103) SLOT(104) SLOT(105) SLOT(106)
-	virtual long __stdcall SetPixelShader(void *shader) = 0;	// +0x1AC
-	SLOT(108)
-	virtual long __stdcall SetPixelShaderConstant(unsigned long reg, const void *data, unsigned long count) = 0;	// +0x1B4
-#undef SLOT
-};
+// The device, surfaces and textures keep their D3D8 type names (DX8Wrapper's
+// static decorations) but are Direct3D 9 objects from the vendored SDK.
+struct IDirect3DDevice8;
 
 extern unsigned number_of_DX8_calls;
 
@@ -111,14 +84,14 @@ public:
 			Get_DX8_Render_State_Value_Name(value_name, state, value);
 		}
 		RenderStates[state] = value;
-		_Get_D3D_Device8()->SetRenderState(state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetRenderState((D3DRENDERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		render_state_changes++;
 	}
 	static __forceinline void Set_DX8_Texture_Stage_State(unsigned stage, unsigned long state, unsigned value)
 	{
 		if (stage >= 16) {
-			_Get_D3D_Device8()->SetTextureStageState(stage, state, value);
+			reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)state, value);
 			number_of_DX8_calls++;
 			return;
 		}
@@ -129,37 +102,37 @@ public:
 			Get_DX8_Texture_Stage_State_Value_Name(value_name, state, value);
 		}
 		TextureStageStates[stage][state] = value;
-		_Get_D3D_Device8()->SetTextureStageState(stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)state, value);
 		number_of_DX8_calls++;
 		texture_stage_state_changes++;
 	}
 	static __forceinline void Set_DX8_Sampler_State(unsigned stage, unsigned long state, unsigned value)
 	{
-		_Get_D3D_Device8()->SetSamplerState(stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetSamplerState(stage, (D3DSAMPLERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		texture_stage_state_changes++;
 	}
 	static __forceinline void Set_DX8_Texture(unsigned stage, IDirect3DBaseTexture8 *texture)
 	{
 		if (stage >= 16) {
-			_Get_D3D_Device8()->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 			number_of_DX8_calls++;
 			return;
 		}
 		if (Textures[stage] == texture)
 			return;
 		if (Textures[stage])
-			Textures[stage]->Release();
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
 		if (Textures[stage])
-			Textures[stage]->AddRef();
-		_Get_D3D_Device8()->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->AddRef();
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		texture_changes++;
 	}
 	static __forceinline void Set_Pixel_Shader(void *shader)
 	{
-		_Get_D3D_Device8()->SetPixelShader(shader);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetPixelShader(static_cast<IDirect3DPixelShader9 *>(shader));
 		number_of_DX8_calls++;
 	}
 	static __forceinline void Set_Pixel_Shader_Constant(int reg, const void *data, int count)
@@ -168,7 +141,7 @@ public:
 		if (memcmp(data, &Pixel_Shader_Constants[reg], memsize) == 0)
 			return;
 		memcpy(&Pixel_Shader_Constants[reg], data, memsize);
-		_Get_D3D_Device8()->SetPixelShaderConstant(reg, data, count);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetPixelShaderConstantF(reg, (const float *)data, count);
 		number_of_DX8_calls++;
 	}
 protected:
@@ -324,7 +297,7 @@ Bool Rva007D6B70::postRender(FilterModes mode, Coord2D &scrollDelta, Bool &doExt
 	if (!set(mode))
 		return false;
 	doExtraRender = true;
-	IDirect3DDevice8 *pDev = DX8Wrapper::_Get_D3D_Device8();
+	IDirect3DDevice9 *pDev = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 	if (s_glowEnabled)
 		W3DShaderManager::performGlow(0.8f, (const GlowSampleVector *)m_glowSamples, 0x100, m_renderTexture, m_glowSurface, m_glowTexture, m_44);
 
@@ -389,7 +362,7 @@ Bool Rva007D6B70::postRender(FilterModes mode, Coord2D &scrollDelta, Bool &doExt
 		v[i].u1 += m_spread;
 	}
 
-	DX8Wrapper::_Get_D3D_Device8()->SetFVF(0x344);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX3);
 	number_of_DX8_calls++;
 	DX8Wrapper::Set_Pixel_Shader_Constant(0, &D3DXVECTOR4(0.3f, 0.59f, 0.11f, 1.0f), 1);
 	D3DXVECTOR4 color1 = colorConstant(filterSettings()->m_14);
@@ -458,9 +431,9 @@ Bool Rva007D6B70::postRender(FilterModes mode, Coord2D &scrollDelta, Bool &doExt
 		if (s_drawGrid) {
 			DX8Wrapper::Draw_Triangles(0, 200, 0, 202);
 		} else {
-			DX8Wrapper::_Get_D3D_Device8()->SetFVF(0x344);
+			reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX3);
 			number_of_DX8_calls++;
-			pDev->DrawPrimitiveUP(5, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
+			pDev->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
 		}
 	}
 	reset();

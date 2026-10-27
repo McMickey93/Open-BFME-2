@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 // ?renderShadows@W3DVolumetricShadowManager@@QAEXAAVRenderInfoClass@@@Z @0x000F4AB7 4116B.
 //
@@ -23,158 +24,16 @@
 // 0xF, the first getNextVertexBuffer(NULL, ...) of each walk is inlined.
 // Names of the BFME 2 callees without a ZH counterpart are descriptive.
 
-#include <windows.h>
-typedef DWORD D3DRENDERSTATETYPE;
-typedef DWORD D3DTEXTURESTAGESTATETYPE;
+#include <d3d9.h>
 
-// BFME 2 renders through Direct3D 9 behind the dx8* names: retail dispatches
+// BFME 2 renders through Direct3D 9 behind the dx8* names (the vendored SDK's
+// IDirect3DDevice9 / IDirect3DBaseTexture9 here): retail dispatches
 // SetRenderState +0xE4, SetTexture +0x104, SetTextureStageState +0x10C,
 // SetFVF +0x164 and SetVertexShader +0x170, the IDirect3DDevice9 order.
-struct IDirect3DBaseTexture8
-{
-	virtual HRESULT __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual DWORD __stdcall AddRef(void) = 0;
-	virtual DWORD __stdcall Release(void) = 0;
-};
+struct IDirect3DBaseTexture8;
 
-struct IDirect3DDevice8
-{
-	virtual HRESULT __stdcall QueryInterface(const void *riid, void **ppv) = 0;
-	virtual DWORD __stdcall AddRef(void) = 0;
-	virtual DWORD __stdcall Release(void) = 0;
-	virtual HRESULT __stdcall TestCooperativeLevel(void) = 0;
-	virtual UINT __stdcall GetAvailableTextureMem(void) = 0;
-	virtual HRESULT __stdcall EvictManagedResources(void) = 0;
-	virtual HRESULT __stdcall GetDirect3D(void **ppD3D9) = 0;
-	virtual HRESULT __stdcall GetDeviceCaps(void *pCaps) = 0;
-	virtual HRESULT __stdcall GetDisplayMode(UINT iSwapChain, void *pMode) = 0;
-	virtual HRESULT __stdcall GetCreationParameters(void *pParameters) = 0;
-	virtual HRESULT __stdcall SetCursorProperties(UINT x, UINT y, void *pCursorBitmap) = 0;
-	virtual void __stdcall SetCursorPosition(int x, int y, DWORD flags) = 0;
-	virtual int __stdcall ShowCursor(int bShow) = 0;
-	virtual HRESULT __stdcall CreateAdditionalSwapChain(void *pPresentationParameters, void **pSwapChain) = 0;
-	virtual HRESULT __stdcall GetSwapChain(UINT iSwapChain, void **pSwapChain) = 0;
-	virtual UINT __stdcall GetNumberOfSwapChains(void) = 0;
-	virtual HRESULT __stdcall Reset(void *pPresentationParameters) = 0;
-	virtual HRESULT __stdcall Present(const void *pSourceRect, const void *pDestRect, void *hDestWindowOverride, const void *pDirtyRegion) = 0;
-	virtual HRESULT __stdcall GetBackBuffer(UINT iSwapChain, UINT iBackBuffer, DWORD type, void **ppBackBuffer) = 0;
-	virtual HRESULT __stdcall GetRasterStatus(UINT iSwapChain, void *pRasterStatus) = 0;
-	virtual HRESULT __stdcall SetDialogBoxMode(int bEnableDialogs) = 0;
-	virtual void __stdcall SetGammaRamp(UINT iSwapChain, DWORD flags, const void *pRamp) = 0;
-	virtual void __stdcall GetGammaRamp(UINT iSwapChain, void *pRamp) = 0;
-	virtual HRESULT __stdcall CreateTexture(void) = 0;
-	virtual HRESULT __stdcall CreateVolumeTexture(void) = 0;
-	virtual HRESULT __stdcall CreateCubeTexture(void) = 0;
-	virtual HRESULT __stdcall CreateVertexBuffer(void) = 0;
-	virtual HRESULT __stdcall CreateIndexBuffer(void) = 0;
-	virtual HRESULT __stdcall CreateRenderTarget(void) = 0;
-	virtual HRESULT __stdcall CreateDepthStencilSurface(void) = 0;
-	virtual HRESULT __stdcall UpdateSurface(void) = 0;
-	virtual HRESULT __stdcall UpdateTexture(void) = 0;
-	virtual HRESULT __stdcall GetRenderTargetData(void) = 0;
-	virtual HRESULT __stdcall GetFrontBufferData(void) = 0;
-	virtual HRESULT __stdcall StretchRect(void) = 0;
-	virtual HRESULT __stdcall ColorFill(void) = 0;
-	virtual HRESULT __stdcall CreateOffscreenPlainSurface(void) = 0;
-	virtual HRESULT __stdcall SetRenderTarget(void) = 0;
-	virtual HRESULT __stdcall GetRenderTarget(void) = 0;
-	virtual HRESULT __stdcall SetDepthStencilSurface(void) = 0;
-	virtual HRESULT __stdcall GetDepthStencilSurface(void) = 0;
-	virtual HRESULT __stdcall BeginScene(void) = 0;
-	virtual HRESULT __stdcall EndScene(void) = 0;
-	virtual HRESULT __stdcall Clear(void) = 0;
-	virtual HRESULT __stdcall SetTransform(void) = 0;
-	virtual HRESULT __stdcall GetTransform(void) = 0;
-	virtual HRESULT __stdcall MultiplyTransform(void) = 0;
-	virtual HRESULT __stdcall SetViewport(void) = 0;
-	virtual HRESULT __stdcall GetViewport(void) = 0;
-	virtual HRESULT __stdcall SetMaterial(void) = 0;
-	virtual HRESULT __stdcall GetMaterial(void) = 0;
-	virtual HRESULT __stdcall SetLight(void) = 0;
-	virtual HRESULT __stdcall GetLight(void) = 0;
-	virtual HRESULT __stdcall LightEnable(void) = 0;
-	virtual HRESULT __stdcall GetLightEnable(void) = 0;
-	virtual HRESULT __stdcall SetClipPlane(void) = 0;
-	virtual HRESULT __stdcall GetClipPlane(void) = 0;
-	virtual HRESULT __stdcall SetRenderState(D3DRENDERSTATETYPE state, DWORD value) = 0;
-	virtual HRESULT __stdcall GetRenderState(D3DRENDERSTATETYPE state, DWORD *pValue) = 0;
-	virtual HRESULT __stdcall CreateStateBlock(void) = 0;
-	virtual HRESULT __stdcall BeginStateBlock(void) = 0;
-	virtual HRESULT __stdcall EndStateBlock(void) = 0;
-	virtual HRESULT __stdcall SetClipStatus(void) = 0;
-	virtual HRESULT __stdcall GetClipStatus(void) = 0;
-	virtual HRESULT __stdcall GetTexture(DWORD stage, IDirect3DBaseTexture8 **ppTexture) = 0;
-	virtual HRESULT __stdcall SetTexture(DWORD stage, IDirect3DBaseTexture8 *pTexture) = 0;
-	virtual HRESULT __stdcall GetTextureStageState(DWORD stage, D3DTEXTURESTAGESTATETYPE type, DWORD *pValue) = 0;
-	virtual HRESULT __stdcall SetTextureStageState(DWORD stage, D3DTEXTURESTAGESTATETYPE type, DWORD value) = 0;
-	virtual HRESULT __stdcall GetSamplerState(void) = 0;
-	virtual HRESULT __stdcall SetSamplerState(void) = 0;
-	virtual HRESULT __stdcall ValidateDevice(void) = 0;
-	virtual HRESULT __stdcall SetPaletteEntries(void) = 0;
-	virtual HRESULT __stdcall GetPaletteEntries(void) = 0;
-	virtual HRESULT __stdcall SetCurrentTexturePalette(void) = 0;
-	virtual HRESULT __stdcall GetCurrentTexturePalette(void) = 0;
-	virtual HRESULT __stdcall SetScissorRect(void) = 0;
-	virtual HRESULT __stdcall GetScissorRect(void) = 0;
-	virtual HRESULT __stdcall SetSoftwareVertexProcessing(void) = 0;
-	virtual int __stdcall GetSoftwareVertexProcessing(void) = 0;
-	virtual HRESULT __stdcall SetNPatchMode(void) = 0;
-	virtual float __stdcall GetNPatchMode(void) = 0;
-	virtual HRESULT __stdcall DrawPrimitive(void) = 0;
-	virtual HRESULT __stdcall DrawIndexedPrimitive(void) = 0;
-	virtual HRESULT __stdcall DrawPrimitiveUP(void) = 0;
-	virtual HRESULT __stdcall DrawIndexedPrimitiveUP(void) = 0;
-	virtual HRESULT __stdcall ProcessVertices(void) = 0;
-	virtual HRESULT __stdcall CreateVertexDeclaration(void) = 0;
-	virtual HRESULT __stdcall SetVertexDeclaration(void) = 0;
-	virtual HRESULT __stdcall GetVertexDeclaration(void) = 0;
-	virtual HRESULT __stdcall SetFVF(DWORD fvf) = 0;
-	virtual HRESULT __stdcall GetFVF(DWORD *pFVF) = 0;
-	virtual HRESULT __stdcall CreateVertexShader(void) = 0;
-	virtual HRESULT __stdcall SetVertexShader(void *pShader) = 0;
-};
+struct IDirect3DDevice8;
 
-#define D3DRS_ZENABLE			7
-#define D3DRS_SHADEMODE			9
-#define D3DRS_ZWRITEENABLE		14
-#define D3DRS_ALPHATESTENABLE	15
-#define D3DRS_CULLMODE			22
-#define D3DRS_ZFUNC				23
-#define D3DRS_ALPHABLENDENABLE	27
-#define D3DRS_FOGENABLE			28
-#define D3DRS_STENCILENABLE		52
-#define D3DRS_STENCILFAIL		53
-#define D3DRS_STENCILZFAIL		54
-#define D3DRS_STENCILPASS		55
-#define D3DRS_STENCILFUNC		56
-#define D3DRS_STENCILREF		57
-#define D3DRS_STENCILMASK		58
-#define D3DRS_STENCILWRITEMASK	59
-#define D3DRS_LIGHTING			137
-#define D3DRS_COLORWRITEENABLE	168
-
-#define D3DSHADE_FLAT			1
-#define D3DSHADE_GOURAUD		2
-#define D3DCULL_CW				2
-#define D3DCULL_CCW				3
-#define D3DCMP_LESSEQUAL		4
-#define D3DCMP_GREATER			5
-#define D3DCMP_GREATEREQUAL		7
-#define D3DSTENCILOP_KEEP		1
-#define D3DSTENCILOP_DECRSAT	5
-#define D3DSTENCILOP_INCR		7
-
-#define D3DTSS_COLOROP			1
-#define D3DTSS_COLORARG1		2
-#define D3DTSS_COLORARG2		3
-#define D3DTSS_ALPHAOP			4
-#define D3DTSS_TEXCOORDINDEX	11
-#define D3DTA_DIFFUSE			0
-#define D3DTA_TEXTURE			2
-#define D3DTOP_DISABLE			1
-#define D3DTOP_SELECTARG2		3
-
-#define D3DFVF_XYZ				0x002
 
 typedef float Real;
 typedef bool Bool;
@@ -309,8 +168,8 @@ public:
 	static IDirect3DDevice8 *_Get_D3D_Device8(void) { return D3DDevice; }
 	static void Apply_Render_State_Changes(void);
 	static void Invalidate_Cached_Render_States(void);
-	static void Get_DX8_Render_State_Value_Name(StringClass &name, D3DRENDERSTATETYPE state, unsigned value);
-	static void Get_DX8_Texture_Stage_State_Value_Name(StringClass &name, D3DTEXTURESTAGESTATETYPE state, unsigned value);
+	static void Get_DX8_Render_State_Value_Name(StringClass &name, unsigned long state, unsigned value);
+	static void Get_DX8_Texture_Stage_State_Value_Name(StringClass &name, unsigned long state, unsigned value);
 
 	static __forceinline void Set_Material(const VertexMaterialClass *material)
 	{
@@ -332,7 +191,7 @@ public:
 
 	static __forceinline void Set_Texture(unsigned stage, const BFME2TextureRef &texture) { BFME2Set_Texture(stage, texture); }
 
-	static __forceinline void Set_DX8_Render_State(D3DRENDERSTATETYPE state, unsigned value)
+	static __forceinline void Set_DX8_Render_State(unsigned long state, unsigned value)
 	{
 		if (RenderStates[state] == value) return;
 		if (WW3D::Is_Snapshot_Activated()) {
@@ -340,14 +199,14 @@ public:
 			Get_DX8_Render_State_Value_Name(value_name, state, value);
 		}
 		RenderStates[state] = value;
-		D3DDevice->SetRenderState(state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		render_state_changes++;
 	}
 
 	// This renderer only uses stages 0 and 1. Keep these restricted inline
 	// paths here; the callable owners at 661DD and 75412 also handle stage>=16.
-	static __declspec(dllimport) __forceinline void Set_DX8_Texture_Stage_State(unsigned stage, D3DTEXTURESTAGESTATETYPE state, unsigned value)
+	static __declspec(dllimport) __forceinline void Set_DX8_Texture_Stage_State(unsigned stage, unsigned long state, unsigned value)
 	{
 		if (TextureStageStates[stage][state] == value) return;
 		if (WW3D::Is_Snapshot_Activated()) {
@@ -355,7 +214,7 @@ public:
 			Get_DX8_Texture_Stage_State_Value_Name(value_name, state, value);
 		}
 		TextureStageStates[stage][state] = value;
-		D3DDevice->SetTextureStageState(stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)state, value);
 		number_of_DX8_calls++;
 		texture_stage_state_changes++;
 	}
@@ -363,10 +222,10 @@ public:
 	static __declspec(dllimport) __forceinline void Set_DX8_Texture(unsigned int stage, IDirect3DBaseTexture8 *texture)
 	{
 		if (Textures[stage] == texture) return;
-		if (Textures[stage]) Textures[stage]->Release();
+		if (Textures[stage]) reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
-		if (Textures[stage]) Textures[stage]->AddRef();
-		D3DDevice->SetTexture(stage, texture);
+		if (Textures[stage]) reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->AddRef();
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		texture_changes++;
 	}
@@ -383,7 +242,7 @@ protected:
 	static unsigned texture_changes;
 };
 
-#define DX8CALL(x) DX8Wrapper::_Get_D3D_Device8()->x; number_of_DX8_calls++;
+#define DX8CALL(x) reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->x; number_of_DX8_calls++;
 
 class W3DVolumetricShadow;
 
