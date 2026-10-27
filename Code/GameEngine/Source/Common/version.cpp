@@ -11,61 +11,22 @@ class UnicodeString;
 
 class AsciiString;
 
-template <typename T>
-class StringBase
-{
-    friend class AsciiString;
-    friend class UnicodeString;
-
-private:
-    StringBase() : m_data(0) {}
-    StringBase(const StringBase<T> &that);
-
-    struct Header
-    {
-        int ref_count;
-        unsigned short length;
-        unsigned short capacity;
-        T data[1];
-    };
-
-    void releaseBuffer();
-    Header *m_data;
-
-public:
-    __declspec(dllimport) __forceinline char getCharAt(int index) const
-    {
-        return m_data ? m_data->data[index] : 0;
-    }
-    const T *str() const
-    {
-        static const T TheNullChr = 0;
-        return m_data ? &m_data->data[0] : &TheNullChr;
-    }
-};
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 class AsciiString
 {
 public:
     AsciiString(const AsciiString &that) : m_data(that.m_data) {}
     ~AsciiString() { m_data.releaseBuffer(); }
-    __declspec(dllimport) __forceinline char getCharAt(int index) const { return m_data.getCharAt(index); }
+    // StringBase::getCharAt is out of line; retail expands the read here.
+    __declspec(dllimport) __forceinline char getCharAt(int index) const
+    {
+        return m_data.m_data ? m_data.m_data->data[index] : 0;
+    }
 private:
     StringBase<char> m_data;
 };
 
-class UnicodeString
-{
-public:
-    UnicodeString() {}
-    UnicodeString(const UnicodeString &that) : m_data(that.m_data) {}
-    ~UnicodeString() { m_data.releaseBuffer(); }
-    void translate(const AsciiString &that);
-    void __cdecl format(const wchar_t *format, ...);
-    __declspec(dllimport) __forceinline const wchar_t *str() const { return m_data.str(); }
-private:
-    StringBase<wchar_t> m_data;
-};
 
 // Retail fetch call uses vtable offset 0x3c. The fourteen preceding
 // non-destructor methods have not yet been reconstructed in this TU.

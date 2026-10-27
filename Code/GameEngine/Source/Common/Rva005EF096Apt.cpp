@@ -13,47 +13,13 @@ template <typename T> class StringBase;
 class UnicodeString;
 class AsciiString;
 
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	friend class UnicodeString;
-	friend void __cdecl StrategicHUD::SetCommandPointsString(int, struct Rva005EF096Outer *, int, int);
-
-	StringBase(const StringBase<T> &that);
-	void releaseBuffer();
-
-public:
-	StringBase() { m_data = 0; }
-	~StringBase() { releaseBuffer(); }
-
-private:
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-	Header *m_data;
-};
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 // Existing public narrow teardown spelling resolves to the verified
 // 133-byte releaseBuffer worker at RVA 0x36410. Wide teardown is unchanged.
 template <> StringBase<char>::~StringBase();
 
 
-class UnicodeString
-{
-	friend void __cdecl StrategicHUD::SetCommandPointsString(int, struct Rva005EF096Outer *, int, int);
-public:
-	UnicodeString() {}
-	UnicodeString(const UnicodeString &that) : m_data(that.m_data) {}
-	~UnicodeString() {}
-	void __cdecl format(const wchar_t *fmt, ...);
-private:
-	StringBase<wchar_t> m_data;
-};
 
 class AsciiString
 {
@@ -121,7 +87,7 @@ void __cdecl StrategicHUD::SetCommandPointsString(int level, Rva005EF096Outer *o
 	UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:StatsCommandPoints", &exists);
 	if (exists)
 	{
-		const wchar_t *fmt = fetched.m_data.m_data ? fetched.m_data.m_data->data : L"";
+		const wchar_t *fmt = fetched.str();
 		tmp.format(fmt, a, b);
 	}
 	AsciiString key;

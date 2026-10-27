@@ -17,42 +17,21 @@
 typedef bool Bool;
 typedef int Int;
 
-template <typename T> class StringBase
+#include "../../../../../reference/shims/bfme2_ascii/unicode_string.h"
+
+// StringBase keeps m_data private; the empty test reads the buffer header's
+// length field directly (not getLength()), so view the string's one pointer.
+struct UnicodeStringBufferView
 {
-	friend class UnicodeString;
-	friend int GadgetListBoxAddEntryText(class GameWindow *, class UnicodeString, int, int, int, bool);
-public:
-	int getLength() const { return m_data ? m_data->length : 0; }
-	void set(const StringBase<T> &other);
-private:
-	StringBase() { m_data = 0; }
-	StringBase(const StringBase<T> &other);
-	StringBase(const T *text);
-	~StringBase() { releaseBuffer(); }
-	void releaseBuffer();
 	struct Header
 	{
 		int refCount;
 		unsigned short length;
 		unsigned short capacity;
-		T text[1];
 	};
 	Header *m_data;
 };
 
-class UnicodeString : private StringBase<unsigned short>
-{
-	friend int GadgetListBoxAddEntryText(class GameWindow *, UnicodeString, int, int, int, bool);
-public:
-	UnicodeString(const unsigned short *text) : StringBase<unsigned short>(text) {}
-	UnicodeString(const UnicodeString &other) : StringBase<unsigned short>(other) {}
-	~UnicodeString() {}
-	UnicodeString &operator=(const UnicodeString &source)
-	{
-		set(*(const StringBase<unsigned short> *)&source);
-		return *this;
-	}
-};
 
 class GameWindow
 {
@@ -158,7 +137,8 @@ int GadgetListBoxAddEntryText(GameWindow *listbox, UnicodeString text,
 	if (!listbox)
 		return -1;
 
-	if (text.m_data == 0 || text.m_data->length == 0)
+	const UnicodeStringBufferView &buffer = (const UnicodeStringBufferView &)text;
+	if (buffer.m_data == 0 || buffer.m_data->length == 0)
 		text = UnicodeString(L" ");
 
 	AddMessageStruct addInfo;

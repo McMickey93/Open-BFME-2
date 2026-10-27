@@ -12,25 +12,9 @@
 typedef unsigned short Wide;
 class AsciiString;
 class UnicodeString;
-template<class T> class StringBase {
-    friend class AsciiString;
-    friend class UnicodeString;
-    struct Header { int refs; unsigned short length,capacity; T data[1]; };
-    Header *data;
-    StringBase(const T*);
-    StringBase(const StringBase&);
-    void releaseBuffer();
-public:
-    StringBase():data(0){}
-    ~StringBase(){ releaseBuffer(); }
-    const T* find(T) const;
-    bool startsWith(const T*) const;
-    bool endsWith(const T*) const;
-    const T* str() const { static const T TheNullChr = 0; return data ? data->data : &TheNullChr; }
-    void set(const StringBase&);
-    void concat(const T*,int);
-    void concat(T c) { concat(&c,1); }
-};
+// The pair conversion returns a StringBase<Wide> temporary that parseMod destroys.
+#define BFME_STRINGBASE_PUBLIC_DTOR
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 // Retail narrow cleanup calls the releaseBuffer worker directly.
 // Keep the forwarding destructor inline without emitting a competing copy.
@@ -41,12 +25,6 @@ class AsciiString:public StringBase<char> {
 public:
     AsciiString(const char *s):StringBase<char>(s){}
     AsciiString& operator=(const UnicodeString&);
-};
-class UnicodeString:public StringBase<Wide> {
-public:
-    UnicodeString(const AsciiString&);
-    UnicodeString(const UnicodeString& unicodeString):StringBase<Wide>(unicodeString){}
-    UnicodeString& operator=(const UnicodeString& s){set(s);return *this;}
 };
 struct BFME2WideConcatPair {
     const UnicodeString *a,*b;
@@ -79,7 +57,7 @@ int parseMod(char *args[],int num) {
         struct _stat statBuf;
         if(_wstat(modPath.str(),&statBuf)!=0) return 2;
         if(statBuf.st_mode & _S_IFDIR) {
-            if(!modPath.endsWith((const Wide*)L"\\") && !modPath.endsWith((const Wide*)L"/")) modPath.concat('\\');
+            if(!modPath.endsWith((const Wide*)L"\\") && !modPath.endsWith((const Wide*)L"/")) { Wide sep = '\\'; modPath.concat(&sep, 1); }
             TheWritableGlobalData->m_modDir=modPath;
         } else {
             TheWritableGlobalData->m_modBIG=modPath;
