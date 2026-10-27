@@ -247,6 +247,9 @@ def test_medium_carried_retry_checks_new_delta_and_preserves_failures(repo, fail
     expected = [['find', pushed]]
     if failure != 'build':
         expected += [['cross-checks']]
+    if failure is None:
+        # A passed carried retry becomes the nearest receipt for the next retry.
+        expected += [['record', pushed]]
     assert calls(path, 'receipt-calls.jsonl')[2:] == expected
 
 

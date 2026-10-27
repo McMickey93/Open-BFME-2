@@ -517,8 +517,10 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
     # A bounded scope of 512+ sources can also lose the race with master while
     # its chunks run, so it is recorded after all required checks pass. A rebased retry
     # carries it under the same verifier and dependency guards as a full gate.
-    # A carried push records nothing; the commit it carried from stays the receipt.
-    if [ "$full_scope" -ne 0 ] || { [ "$large_scope" -ne 0 ] && [ -z "$carried" ]; }; then
+    # A carried push that passed is recorded too: it verified what changed since its
+    # receipt plus the every-row cross-checks, so the next retry carries from this
+    # nearer commit instead of re-verifying an ever larger delta from an old one.
+    if [ "$full_scope" -ne 0 ] || [ "$large_scope" -ne 0 ]; then
         python3 tools/full_gate_receipt.py record "$local_sha" \
             || echo "pre-push: could not record the full gate for $local_sha (a retry runs it again)" >&2
     fi
