@@ -24,7 +24,7 @@ struct FeNode
 class WaterTracksRenderSystem
 {
 public:
-	FeNode *rva000FE207(const float *a, const float *b, int c);
+	__declspec(noinline) FeNode *rva000FE207(const float *a, const float *b, int c);
 
 private:
 	unsigned char m_pad[0x10];
@@ -32,7 +32,7 @@ private:
 	FeNode *m_head14;
 };
 
-__declspec(noinline) inline FeNode *WaterTracksRenderSystem::rva000FE207(const float *a, const float *b, int c)
+inline FeNode *WaterTracksRenderSystem::rva000FE207(const float *a, const float *b, int c)
 {
 	FeNode *node = m_tail10;
 	while (node != 0)
