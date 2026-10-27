@@ -6,12 +6,6 @@
 // so they are kept apart from the unit's bodies that already link.
 void Rva00576753Func(int a, int b, int c);	// defined in StrategicInGameUIResolveBattlesBehavior.cpp
 #include <stdlib.h>
-// Retail576C39 frees through the existing C++-linkage game allocator30830.
-// Its throwing declaration retains the native exception-state reset.
-namespace _STL { void __cdecl free(void *); }
-#define free _STL::free
-#include <vector>
-#undef free
 //
 // StrategicInGameUI::ResolveBattlesBehavior::Impl (WorldBuilder
 // StrategicInGameUIResolveBattlesBehavior.cpp names its translateGameMessage, vtable match).

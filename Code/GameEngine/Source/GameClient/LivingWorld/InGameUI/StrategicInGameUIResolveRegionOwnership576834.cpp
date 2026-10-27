@@ -6,10 +6,6 @@
 // Codegen: the owner receiver must be a same-valued PHI ((owner?owner:owner)->...) for the two owner->player / owner->ui reads: it
 // closes the native EBX/EDI role swap across the dispute and owner homes (plain owner-> gives 0.89).
 #include <stdlib.h>
-namespace _STL { void __cdecl free(void *); }
-#define free _STL::free
-#include <vector>
-#undef free
 class GameMessage;
 namespace StrategicInGameUI { class ResolveBattlesBehavior { public: class Impl; }; }
 class StrategicInGameUI::ResolveBattlesBehavior::Impl { public: class MyResolveRegionOwnershipChecklistItem; };
