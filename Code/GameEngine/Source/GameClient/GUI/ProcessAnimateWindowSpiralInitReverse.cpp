@@ -11,13 +11,15 @@
 // It can also change how later array constructions here compile; checked to
 // change nothing else in this unit, but if a function added later that builds
 // an array will not match, try it without this block.
-struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
-static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
+static void bfmeVciAnchor()
+{
+    struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
+    BfmeVciAnchorElem anchor[2];
+    (void)anchor;
+}
 #pragma optimize("", on)
 #pragma optimize("y", on)
-#define setVel setVel_RV // bfme link: inlined everywhere, keep the COMDAT out of the link
-#define setStartTime setStartTime_RV // bfme link: inlined everywhere, keep the COMDAT out of the link
 #include "PreRTS.h"
 #include "GameClient/ProcessAnimateWindow.h"
 #include "GameClient/AnimateWindowManager.h"
