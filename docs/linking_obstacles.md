@@ -4065,6 +4065,19 @@ Full graph, byte and compatibility evidence:
 Clearance: pending.
 Census confirmation: awaiting.
 
+**Renumbered-label relabel (2026-10-27, K9):** 166 parent-emitted `$L` rows in 16 units
+verified only through the renumbered-label fallback and held the names their gen_uw
+neighbours needed. Each was retracted (tombstoned) and re-added under the label a fresh
+compile's EXACT parent EH data places at its address; 10 neighbours were then repointed
+(e.g. uw_0076db97 -> `$L4992`, uw_0077cc77 -> `$L660`, uw_00798011 -> `$L548`) and three
+duplicate gen rows retired through `--replace-rva` (0x007650D0, 0x0076B8FD, 0x007A8288).
+Still blocked on an unpinned dtor callee: uw_00791325, uw_00791403, uw_00786cc7,
+uw_00786ccf, uw_00782cfb (`blocked` rows in re_attempts.log). Open: duplicate gen rows at
+0x007A7CD0, 0x007A7D10, 0x007A7D30 (real row's label is current, so only `gen_uw.py land`
+can drop them; a land run at 33654788c9 failed its full gate and reverted) and
+Rva00622290CollectKeys.cpp (0x007A75C0/0x007A75C8 stale + duplicate, plus 4 neighbours;
+locked by another seat). AIGuardStates `$L2547`/`$L2874` stay: two labels land on each address.
+
 **uw_gen_009 parent ownership cleanup (2026-10-26):**
 
 Status: Open, partially cleaned. Updated: 2026-10-26; inspected revision: `39e752ed5b`; census index `5ce093a71a` (2026-10-26 19:02).
