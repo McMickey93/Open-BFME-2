@@ -22,7 +22,7 @@ class Rva005C3EA5
 public:
     void Show();
 private:
-    Inner005C3EA5 *m_obj00;
+    Inner005C3EA5 *m_owner;
     void *m_p04;
     AsciiString m_s08;
     char m_pad0C[0x18 - 0x0C];
@@ -34,24 +34,24 @@ private:
 void Rva005C3EA5::Show()
 {
     char *stringData = *(char **)(void *)&m_s08;
-    const char *s = stringData ? stringData + 8 : "";
-    Rva0052519DFire((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_p04, s, "Show", &m_i1C);
+    const char *clipName = stringData ? stringData + 8 : "";
+    Rva0052519DFire((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_p04, clipName, "Show", &m_i1C);
     m_flag18 = 1;
-    m_obj00->tail();
+    m_owner->tail();
 }
 
-// ?rva005C3EE0@Rva005C3EE0@@QAEXXZ @ 0x005C3EE0 8B.
+// ?show@Rva005C3EE0@@QAEXXZ @ 0x005C3EE0 8B.
 // Forwarder via member at +4 tail-jmp to rowed 0x005C3EA5. Caller call at 0x005680C3.
 class Rva005C3EE0
 {
 public:
-    void rva005C3EE0();
+    void show();
 private:
     char m_pad00[4];
     Rva005C3EA5 *m_p04;
 };
 
-void Rva005C3EE0::rva005C3EE0()
+void Rva005C3EE0::show()
 {
     m_p04->Show();
 }

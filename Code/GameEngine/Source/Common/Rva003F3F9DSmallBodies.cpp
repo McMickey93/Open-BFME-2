@@ -56,14 +56,14 @@ public:
 	virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
 	virtual void v04(); virtual void v05(); virtual void v06();
 	virtual void slot07(const Rva003FBB80Coord *pos);
-	void rva003FBB80(const Rva003FBB80Coord *pos);
+	void setPosition(const Rva003FBB80Coord *pos);
 private:
 	char m_pad04[0x5C - 0x04];
-	Rva003FBB80Coord m_5C;
+	Rva003FBB80Coord m_position;
 };
 
-void Rva003FBB80::rva003FBB80(const Rva003FBB80Coord *pos)
+void Rva003FBB80::setPosition(const Rva003FBB80Coord *pos)
 {
-	m_5C = *pos;
-	slot07(&m_5C);
+	m_position = *pos;
+	slot07(&m_position);
 }

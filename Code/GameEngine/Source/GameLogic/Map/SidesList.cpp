@@ -46,7 +46,7 @@ class Rva0057C22FByteChaseField { public: unsigned char get() const; };
 
 class Rva005C39AA { public: void rva005C39AA(); };
 
-class Rva005C3EE0 { public: void rva005C3EE0(); };
+class Rva005C3EE0 { public: void show(); };
 
 class Rva005C3F02;
 

@@ -51,7 +51,7 @@ public:
 	virtual void s5();
 	virtual SpecialPowerTemplate *s6();
 	float rva0049355E();
-	unsigned int m_4;
+	unsigned int m_reloadTime;
 	unsigned int m_availableOnFrame;
 	int m_c;
 	char m_gap[4];
@@ -78,7 +78,7 @@ float Rva0049355E::rva0049355E()
 		if (player != 0 && holder->m_ov->friend_getFinalOverride()->m_59 != 0)
 			value = ((Rva002AC6B1PlayerTimers *)player)->getOrStart(s6());
 		value -= TheGameLogic->getFrame();
-		return 1.0f - (float)value / (float)m_4;
+		return 1.0f - (float)value / (float)m_reloadTime;
 	}
 	return 0.0f;
 }

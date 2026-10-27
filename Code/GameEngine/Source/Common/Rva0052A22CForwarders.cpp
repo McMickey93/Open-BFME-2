@@ -47,10 +47,10 @@ void __stdcall Rva00525407(Pair005258F8 *pair);
 struct Rva00523DB7;
 const Rva00523DB7 *Rva0052408BFind(const Rva00523DB7 *first, const Rva00523DB7 *last, const Rva00523DB7 *val, int tag);
 
-int Rva005243FA(int a, int b, int searchValue)
+int Rva005243FA(int first, int last, int searchValue)
 {
 	char tag;
-	return (int)Rva0052408BFind((const Rva00523DB7 *)a, (const Rva00523DB7 *)b, (const Rva00523DB7 *)searchValue, (int)&tag);
+	return (int)Rva0052408BFind((const Rva00523DB7 *)first, (const Rva00523DB7 *)last, (const Rva00523DB7 *)searchValue, (int)&tag);
 }
 
 // ?setObject@Rva0052A287@@QAEXPAUObj0052A22C@@@Z @0x0052A287 7B

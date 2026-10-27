@@ -23,6 +23,6 @@ private:
 void Rva005C394D::go()
 {
     char *stringData = *(char **)(void *)&m_s04;
-    const char *s = stringData ? stringData + 8 : "";
-    Rva00524EF4AptCall((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_p00, s, "Go");
+    const char *prefix = stringData ? stringData + 8 : "";
+    Rva00524EF4AptCall((*(Rva00222A8BTarget **)&g_bfmeAptWindowManager), m_p00, prefix, "Go");
 }

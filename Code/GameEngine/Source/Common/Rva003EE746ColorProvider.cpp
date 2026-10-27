@@ -92,7 +92,7 @@ static __forceinline void initializeRegionEffectField(FieldParse &entry,const As
 // CRT initializer pointer at native9A4E24 independently names7AF9D6.
 // Its stores fill the nine runtime entries and the final terminator; retain
 // the existing five constant entries and the same240-byte table storage.
-void Rva007AF9D6InitializeRegionEffectFields() {
+void initializeRegionEffectFields() {
  initializeRegionEffectField(LivingWorldRegionEffectsManager::s_parseTable[5],*(AsciiString*)&g_Va00E02E70);
  initializeRegionEffectField(LivingWorldRegionEffectsManager::s_parseTable[6],*(AsciiString*)&g_Va00E02E74);
  initializeRegionEffectField(LivingWorldRegionEffectsManager::s_parseTable[7],g_Rva00E02E68);

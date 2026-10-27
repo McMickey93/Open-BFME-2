@@ -14,7 +14,7 @@ class Rva00005C357FPtrChaseField { public: int get() const; };
 class Rva00005C39A3PtrChaseField { public: int get() const; };
 class Rva0057C22FByteChaseField { public: unsigned char get() const; };
 class Rva005C39AA { public: void rva005C39AA(); };
-class Rva005C3EE0 { public: void rva005C3EE0(); };
+class Rva005C3EE0 { public: void show(); };
 class Rva005C3F02;
 class Rva005677B9 { public: struct Payload { int v[2]; }; };
 void Rva00567B6DAdd(Rva005C3F02 *,const Rva005677B9::Payload *);

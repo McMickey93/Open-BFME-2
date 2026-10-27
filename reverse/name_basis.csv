@@ -2777,3 +2777,13 @@ member,Rva00201DC4LODInfo::word48,Rva00201DC4LODInfo::m_minParticleSkipPriority,
 function,?rva002BFF9F@Rva002BFF5A@@QAEXXZ,?update@Rva002BFF5A@@QAEXXZ,inferred,agree:nl-d353d0dfb8c9,Code/GameEngine/Source/Common/Rva002BFF5A.cpp,0x002BFF9F
 local,Rva002DA153::rva002DA153::v,Rva002DA153::rva002DA153::objectFlags,inferred,agree:nl-6735e77e5b8a,Code/GameEngine/Source/Common/Rva002DA153Scale.cpp,0x002DA153
 local,Rva002DA153::rva002DA153::c,Rva002DA153::rva002DA153::invertedFlags,inferred,agree:nl-504402e4b664,Code/GameEngine/Source/Common/Rva002DA153Scale.cpp,0x002DA153
+function,?Rva007AF9D6InitializeRegionEffectFields@@YAXXZ,?initializeRegionEffectFields@@YAXXZ,inferred,agree:nl-0811fd1e5c52,Code/GameEngine/Source/Common/Rva003EE746ColorProvider.cpp,0x007AF9D6
+member,Rva003FBB80::m_5C,Rva003FBB80::m_position,inferred,agree:nl-29b3be12edea,Code/GameEngine/Source/Common/Rva003F3F9DSmallBodies.cpp,
+function,?rva003FBB80@Rva003FBB80@@QAEXPBURva003FBB80Coord@@@Z,?setPosition@Rva003FBB80@@QAEXPBURva003FBB80Coord@@@Z,inferred,agree:nl-37281ba8d176,Code/GameEngine/Source/Common/Rva003F3F9DSmallBodies.cpp,0x003FBB80
+member,Rva0049355E::m_4,Rva0049355E::m_reloadTime,inferred,agree:nl-b1c0d8aca0cb,Code/GameEngine/Source/Common/Rva0049355ERatio.cpp,
+param,Rva005243FA::a,Rva005243FA::first,inferred,agree:nl-fc961451c328,Code/GameEngine/Source/Common/Rva0052A22CForwarders.cpp,0x005243FA
+param,Rva005243FA::b,Rva005243FA::last,inferred,agree:nl-3de14d3e5b21,Code/GameEngine/Source/Common/Rva0052A22CForwarders.cpp,0x005243FA
+local,Rva005C394D::go::s,Rva005C394D::go::prefix,inferred,agree:nl-563dd5a40729,Code/GameEngine/Source/Common/Rva005C394DGo.cpp,0x005C394D
+member,Rva005C3EA5::m_obj00,Rva005C3EA5::m_owner,inferred,agree:nl-c24a8fd4438d,Code/GameEngine/Source/Common/Rva005C3EA5Show.cpp,
+local,Rva005C3EA5::Show::s,Rva005C3EA5::Show::clipName,inferred,agree:nl-c6f4845ba20f,Code/GameEngine/Source/Common/Rva005C3EA5Show.cpp,0x005C3EA5
+function,?rva005C3EE0@Rva005C3EE0@@QAEXXZ,?show@Rva005C3EE0@@QAEXXZ,inferred,agree:nl-50502e0b78ee,Code/GameEngine/Source/Common/Rva005C3EA5Show.cpp,0x005C3EE0
