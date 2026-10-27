@@ -5,7 +5,7 @@
 // Identity is not recovered; the name is address-derived. No // cl: line:
 // the default /O2 frameless shape matches.
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva0068A130
 {

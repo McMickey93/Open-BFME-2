@@ -6,7 +6,7 @@
 // Evidence: same globals and flags as Rva0060061A dtor TU, same Archive layout
 // as FileSystemDoesFileExist, rowed ctors, string literal, caller 0x0022E3B7.
 
-void *__cdecl operator new(unsigned int s);
+#include <new>
 
 class Rva00604A5F
 {

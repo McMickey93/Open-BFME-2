@@ -13,7 +13,7 @@ public:
 extern class ArchiveFileSystem *TheArchiveFileSystem;
 extern class LocalFileSystem *TheLocalFileSystem;
 
-void operator delete(void *p);
+#include <new>
 
 class Rva0060061A
 {
