@@ -16401,6 +16401,9 @@ pragma_optimize	Code/GameEngineDevice/Source/W3DDevice/GameClient/WorldHeightMap
 pragma_optimize	Code/GameEngineDevice/Source/W3DDevice/GameClient/WorldHeightMap.cpp	"s",on	4
 pragma_optimize	Code/GameEngineDevice/Source/W3DDevice/GameClient/camerashakesystem_shaker.cpp	"",on	1
 pragma_optimize	Code/GameEngineDevice/Source/W3DDevice/GameClient/camerashakesystem_shaker.cpp	"s",on	1
+pragma_optimize	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp	"",on	1
+pragma_optimize	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp	"s",off	1
+pragma_optimize	Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObject.cpp	"t",on	1
 pragma_optimize	Code/GameEngineDevice/Source/Win32Device/Common/Win32BIGFileSystem.cpp	"",on	1
 pragma_optimize	Code/GameEngineDevice/Source/Win32Device/Common/Win32BIGFileSystem.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/Apt/AptValue/Rva006CDE50Collect.cpp	"",on	1
@@ -17041,9 +17044,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00057FC1.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0005893D.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0005893D.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0005893D.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0006447D.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0006447D.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0006447D.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0007989C.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0007989C.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0007989C.cpp	"t",on	1

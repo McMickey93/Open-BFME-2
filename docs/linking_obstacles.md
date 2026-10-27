@@ -4728,10 +4728,12 @@ Census confirmation remains pending.
 
 ### W3DGhostObject consolidation: private STL declarations
 
-Status: Seed prerequisite cleared; donor reconciliation and merge pending. Updated: 2026-10-27; inspected revision: e1bc047e55; preview index: bf3dd31211.
+Status: Seed and Common declarations reconciled; seven-row subset consolidated. Updated: 2026-10-27; inspected revision: 643681bee4; preview index: bf3dd31211.
 
 Evidence: [scoped handoff](../reverse/attempt_support/ghost-vector-consolidation-20261027-codex3.md). The normal dry run initially rejects all three clean donors on private STL redefinitions. Real STLport vector declarations preserve all four seed rows, but the unspecialized allocate helper emits a wrong 53-byte provider. Declaration-only suppression crashes MSVC 7.1, as recorded in the 2026-10-26 handoff.
 
 Completed: define the allocate specialization with a default-initialized dispatch tag. Its 45-byte provider has the existing owner's relocation-aware digest e88cc41386d2. Seed 4/4 exact and ordinary preview LINKS 359 -> 359 B. Normal dry run now accepts seed/W5/R3 (seven rows), preserving census-linked inputs.
 
-Remaining: reconcile S3StrideCopyLoops_Rva00064605.cpp's private vector before merging that donor. Eight mixed sources remain outside this merge. Census confirmation: no new linked-byte or ownership gain claimed.
+Applied: the normal merger absorbs W5/R3 into the seven-row seed and removes two files. All eight scoped rows verify; all 35 merged external code providers retain premerge digest/size/linkage, with no new undefined names or external data. Ordinary previews retain LINKS 644 + 112 B, equal to the original four-file 756 B. Three optimize hatch keys transfer with totals kept; header queues refresh without changes. The outgoing path audit finds no active consumer of either deleted donor.
+
+Remaining: S3StrideCopyLoops_Rva00064605.cpp now uses real vector declarations and stays exact/LINKS, but the normal composition trials still reject it (view-union syntax errors; final diagnostic filter yields an empty compile reason). The scoped handoff records the unchanged failed trial and reverted intrinsic-order hypothesis. Investigate actual candidate text/compiler output before another attempt; do not bypass the merger. Eight mixed sources remain outside this merge. Census confirmation: no new linked-byte or ownership gain claimed.
