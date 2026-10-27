@@ -559,3 +559,15 @@ The unchanged provider retains its prior index findings. Remaining counter,
 mode-scheduling and object-lifetime prerequisites are recorded in
 [the scoped evidence](../reverse/attempt_support/texture-statistics-data-20261026-bce2/readme.md)
 and LINK-007. No addition to the census totals above is claimed.
+
+### LINK-097 assignment follow-up outside the original snapshot
+
+2026-10-27, control `12b5b45db2`, ordinary-preview index `bf3dd31211`:
+declaring the existing SubsystemInterface assignment in its canonical header
+clears `SidesList_sidesInfo.cpp` (1,714 authored bytes) and
+`SubsystemInterfaceCopy.cpp` (68). All 548 header dependents and the owner
+retain their 4,604 byte-matched rows; the 548-unit preview goes from 484 to
+486 clean units with no regressions or other blocker-list changes.
+[Evidence and remaining scope](../reverse/attempt_support/subsystem-assignment-link-20261027-codex3.md),
+LINK-097. Census confirmation is pending; the original snapshot totals above
+remain unchanged.

@@ -4206,6 +4206,19 @@ Census confirmation: awaiting the next census.
 
 **2026-10-27 `Rva005189CFText.cpp` cleared (ordinary preview, index `bf3dd31211`):** the unit was the only consumer that spelled the LOD level-name table 0x009B95F4 as `BfmeLODLevelNames`, a name no object defines. It now declares the defined `rva00202B6CNames` (Rva00202B6CGet.cpp), the spelling the other five consumers already bind, so no other unit changes. `./build.sh` OK 7/7 and 4 string refs; `link_check.py` 0 -> 279 B. The data ledger row's provisional name is still `BfmeLODLevelNames`; settling the single real name stays with the data lane. Census confirmation: awaiting.
 
+**2026-10-27 assignment repair, control `12b5b45db2`, same ordinary-preview
+index:** the canonical header now declares the existing out-of-line assignment.
+SidesList's implicit definition disappears; the owner's 31-byte row and
+relocation remain unchanged. All 548 header dependents plus the owner pass:
+4,604 function rows, 107 data rows, string/float/import checks, EH (704 EXACT
+and the same three baselined differences) and converged data. The unchanged
+548-unit preview cohort goes from 484 to 486 clean units, with no regressions
+or other blocker-list changes. SidesList clears 1,714 authored bytes and the
+owner 68 (+1,782 preview bytes); this clears the assignment-duplicate pair
+only. The W3DPropDraw prerequisite remains open; the LOD consumer was
+subsequently repaired as recorded above, with its data identity still pending.
+Census confirmation remains pending. [Durable scope and evidence](../reverse/attempt_support/subsystem-assignment-link-20261027-codex3.md).
+
 ### LINK-098: Snapshot and Coord2D header adoption prerequisites
 
 Status: Blocked for the remaining assigned units; retained adoptions verified in ordinary-preview scope. Updated: 2026-10-27; inspected revision: `6c583e82f0c53df8e12b2ac83e1a48206513de5e`.
