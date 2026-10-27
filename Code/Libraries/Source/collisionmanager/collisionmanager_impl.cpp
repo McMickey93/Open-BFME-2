@@ -53,7 +53,7 @@ struct CollisionReverseNormal
 	operator const Coord3D &() const { return value; }
 };
 
-void __cdecl operator delete(void *block);
+#include <new>
 
 namespace CollisionManager
 {
