@@ -29,12 +29,14 @@ struct BfmeStringHeadRecord160 { AsciiString s; int a[39]; };
 
 // The wrapper retail calls at 0x3A454E is the copy-construct of the 160-byte
 // record rowed in StringContainerRecordCopyBFME2.cpp; reach it through that
-// record's own specialization so the call binds the owner's body.
+// record's own specialization so the call binds the owner's body. Import-inline
+// (dllimport+forceinline): every call is inlined, and the unit emits no
+// non-retail jmp-thunk copy of this view's _Construct for the link to weigh.
 struct BfmeContainerRecord003A451B;
 namespace _STL {
 template <> void _Construct<BfmeContainerRecord003A451B, BfmeContainerRecord003A451B>(
 	BfmeContainerRecord003A451B *, const BfmeContainerRecord003A451B &);
-template <> inline void _Construct<BfmeStringHeadRecord160, BfmeStringHeadRecord160>(
+template <> __declspec(dllimport) __forceinline void _Construct<BfmeStringHeadRecord160, BfmeStringHeadRecord160>(
 	BfmeStringHeadRecord160 *p, const BfmeStringHeadRecord160 &v)
 {
 	_Construct((BfmeContainerRecord003A451B *)p, (const BfmeContainerRecord003A451B &)v);
