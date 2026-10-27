@@ -25,16 +25,7 @@ public:
     virtual Debug &operator<<(float value);
 };
 
-struct RGBColor
-{
-    RGBColor &operator=(const RGBColor &that);
-    int getAsInt() const;
-    void setFromInt(int color);
-
-    float red;
-    float green;
-    float blue;
-};
+#include "../../../Include/Lib/RGBColor.h"
 
 struct RGBAColorReal
 {
@@ -56,26 +47,12 @@ struct RGBAColorInt
     unsigned int alpha;
 };
 
-inline int RGBColor::getAsInt() const
+inline int RGBColor::getAsInt() const throw()
 {
     return ((int)(red * 255.0) << 16) | ((int)(green * 255.0) << 8) | ((int)(blue * 255.0) << 0);
 }
 
-// The 12-byte block copy folded with the coordinate assignments at 0x0000353A.
-RGBColor &RGBColor::operator=(const RGBColor &that)
-{
-    struct Raw
-    {
-        unsigned int red;
-        unsigned int green;
-        unsigned int blue;
-    };
-
-    *(Raw *)this = *(const Raw *)&that;
-    return *this;
-}
-
-inline void RGBColor::setFromInt(int color)
+inline void RGBColor::setFromInt(int color) throw()
 {
     red = (float)((color >> 16) & 0xFF) * (1.0f / 255.0f);
     green = (float)((color >> 8) & 0xFF) * (1.0f / 255.0f);
@@ -229,6 +206,11 @@ RandomAlphaKeyframe &RandomAlphaKeyframe::operator=(const RandomAlphaKeyframe &t
 // ?bfmeEmitcolor@@YAXPAURGBColor@@@Z present-unmatched
 void bfmeEmitcolor(RGBColor *rGBColor)
 {
+    // Emit the implicit assignment folded at 0x0000353A without changing
+    // the canonical header's inline copies in other translation units.
+    typedef RGBColor &(RGBColor::*RGBColorAssign)(const RGBColor &);
+    RGBColorAssign assignment = &RGBColor::operator=;
+    (rGBColor->*assignment)(*rGBColor);
     rGBColor->getAsInt();
     rGBColor->setFromInt(0);
 }

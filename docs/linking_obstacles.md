@@ -4493,15 +4493,17 @@ Census confirmation: pending.
 
 ### LINK-115: RGBColor header adoption and inline conversion ownership
 
-Status: Blocked; source trial restored. Updated: 2026-10-27; inspected revision: 6b62f0f97e.
+Status: color.cpp adoption cleared; integer constructor and conversion-anchor cleanup remain blocked. Updated: 2026-10-27; latest inspected revision: 658c11de7b.
 
 Evidence / affected units: color.cpp owns the matched copy assignment at RVA 0x0000353A (18 bytes), and color_rgbcolor_ctor.cpp owns RGBColor(int) at RVA 0x00006538 (18 bytes). The canonical Lib/RGBColor.h lacks both declarations. Earlier RGBColor-canonical-operator evidence records dependent code-generation changes when assignment is declared. The [attempt handoff](../reverse/attempt_support/rgbcolor-header-prerequisites-20261027-codexb4.md) separates those prior findings from this pass's emission trial.
 
 Completed: both units initially preview LINKS against index bf3dd31211 (2026-10-27 00:39, retail-truth-4), preserving 674 predicted bytes. Removing color.cpp's synthetic bfmeEmitcolor anchor and outlining both conversions preserves all 14 matched rows but introduces a duplicate setFromInt symbol against DrawableFlashAsSelected.cpp's inline definition. That trial was restored in full, and the restored source again passes all 14 rows and reference gates. No header or queue change is retained. Recovery verifies all 15 rows across both restored color units; the saved restored-link log is empty, so no restored-preview verdict is claimed. The handoff was reconstructed from the saved notes and receipts because its stashed file was empty; LINK-109 was already used upstream.
 
-Remaining / next check: reconcile the class's assignment and constructor contracts across existing dependent copies and aggregate initializers, then verify the full dependent set before adopting either unit. Anchor retirement also requires compatible COMDAT selection with the existing inline setter provider; byte verification alone did not preserve linking.
+Follow-up at `658c11de7b`: [implicit-assignment adoption](../reverse/attempt_support/rgbcolor-implicit-assignment-adoption-20261027-codex5.md) includes the unchanged canonical header in color.cpp and emits its implicit assignment through the existing helper's member-pointer call. All 14 owner rows remain exact; the owning adoption tool retires one header-queue row. No shared-header declaration, global, pin or hatch is added. The five-unit ordinary preview (owner, constructor, DrawableFlashAsSelected, GlobalDataSetTimeOfDay and W3DRopeDrawInitRopeParms) keeps all five LINKS and 1,282 authored bytes against index `73061d9452`; the final build passes all 20 rows. Shadow and converged data checks pass, and the owner has a strict reusable receipt. The unchanged canonical header also passes the pre-edit 177-dependent scoped gate.
 
-Clearance: none; no source change or new link gain is retained. Census confirmation: not claimed.
+Remaining / next check: reconcile the integer constructor contract across aggregate initializers and default construction before adopting color_rgbcolor_ctor.cpp. Anchor retirement still requires compatible COMDAT selection with the existing inline setter provider; the earlier failed outline trial remains relevant.
+
+Clearance: color.cpp canonical adoption and the stated ordinary-preview scope only; one header debt row retired. No new linked-byte gain claimed. Census confirmation: pending.
 
 ### LINK-096: consolidation guard retains a private constant after its seed references change
 
