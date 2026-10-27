@@ -5124,6 +5124,16 @@ Previously remaining (cleared 2026-10-27, claude2): S3StrideCopyLoops_Rva0006460
 
 Remaining: eight mixed sources stay outside this merge. Tooling note: the dry run's diagnostic filter can report an empty compile reason; trace the compiler output before calling a donor blocked. Census confirmation: no new linked-byte or ownership gain claimed.
 
+### ControlBar consolidation: flag clearers and private class views
+
+Status: flag-clearer prerequisite verified; application pending. Updated: 2026-10-27; inspected revision: adbfff5a89; preview index: 73061d9452.
+
+The normal current-map dry run initially accepts no pair from 50 clean sources (140 matched rows); nine mixed sources stay intact. Most donors conflict with the seed's private declarations or STLport copies. Two byte-matching donors, Rva0031B4D6Load and Rva0031BF1BRemove, are refused on unjudgeable census placement; the latter also changes another unit's allocator copy. The unchanged seed's ordinary preview contains 17 stale duplicate providers from already absorbed census donors. These are verification limits, not a new measured link regression.
+
+Completed: qualified reads preserve each of the seven existing flag clearers' retail load / mask AL / store under both standalone and merged-TU optimization. This source adaptation does not claim original volatile declarations. Standalone 7/7 functions and one data row verify; external providers and symbol bindings are unchanged; ordinary preview retains LINKS 91 -> 91 B. A diagnostic composition matches 51/51 seed-plus-clearer rows and passes the normal merger link guard. No merge or ledger move is credited yet.
+
+Remaining: apply through the normal merger, retain mixed sources, then reconcile private ControlBar/CommandButton/Player layouts and incompatible STLport views in independently verified prerequisites. The older guard placement refusals still require current census evidence. Full evidence and initial per-donor refusals: [ControlBar handoff](../reverse/attempt_support/controlbar-consolidation-20261027-codex.md). Census confirmation remains pending.
+
 ### ProcessAnimateWindow consolidation: compiler anchors and accessor declarations
 
 Status: Four clean donors consolidated; remaining slide declarations remain open. Updated: 2026-10-27; starting revision: f8924e3512; preview index: bf3dd31211.

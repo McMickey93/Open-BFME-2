@@ -7,6 +7,9 @@
 // emit `and eax,imm`). Each body carries a .rdata table slot (0x00923918
 // and on). Identity is not recovered; names derive from addresses,
 // following GlobalFlagClearers_08.cpp.
+// Read before masking so both standalone and size-optimized TU builds keep
+// retail's load / mask AL / store sequence. The qualified reads are a
+// source adaptation, not evidence of the original globals' qualifiers.
 // cl: /G7 /MD /EHsc /DNDEBUG
 
 extern unsigned int g_Va00E01D24;
@@ -21,35 +24,49 @@ unsigned int g_Va00E01D3C;
 
 unsigned int Rva0077AC0AClearFlag(void)
 {
-	return g_Va00E01D24 &= 0xFFFFFFFEu;
+	unsigned int &flag = g_Va00E01D24;
+	const unsigned int flags = static_cast<const volatile unsigned int &>(flag);
+	return flag = flags & 0xFFFFFFFEu;
 }
 
 unsigned int Rva0077AC17ClearFlag(void)
 {
-	return g_Va00E01D24 &= 0xFFFFFFFDu;
+	unsigned int &flag = g_Va00E01D24;
+	const unsigned int flags = static_cast<const volatile unsigned int &>(flag);
+	return flag = flags & 0xFFFFFFFDu;
 }
 
 unsigned int Rva0077AC24ClearFlag(void)
 {
-	return g_Va00E01D24 &= 0xFFFFFFFBu;
+	unsigned int &flag = g_Va00E01D24;
+	const unsigned int flags = static_cast<const volatile unsigned int &>(flag);
+	return flag = flags & 0xFFFFFFFBu;
 }
 
 unsigned int Rva0077AC3BClearFlag(void)
 {
-	return g_Va00E01D34 &= 0xFFFFFFFEu;
+	unsigned int &flag = g_Va00E01D34;
+	const unsigned int flags = static_cast<const volatile unsigned int &>(flag);
+	return flag = flags & 0xFFFFFFFEu;
 }
 
 unsigned int Rva0077AC48ClearFlag(void)
 {
-	return g_Va00E01D34 &= 0xFFFFFFFDu;
+	unsigned int &flag = g_Va00E01D34;
+	const unsigned int flags = static_cast<const volatile unsigned int &>(flag);
+	return flag = flags & 0xFFFFFFFDu;
 }
 
 unsigned int Rva0077AC55ClearFlag(void)
 {
-	return g_Va00E01D34 &= 0xFFFFFFFBu;
+	unsigned int &flag = g_Va00E01D34;
+	const unsigned int flags = static_cast<const volatile unsigned int &>(flag);
+	return flag = flags & 0xFFFFFFFBu;
 }
 
 unsigned int Rva0077AD65ClearFlag(void)
 {
-	return g_Va00E01D3C &= 0xFFFFFFFEu;
+	unsigned int &flag = g_Va00E01D3C;
+	const unsigned int flags = static_cast<const volatile unsigned int &>(flag);
+	return flag = flags & 0xFFFFFFFEu;
 }
