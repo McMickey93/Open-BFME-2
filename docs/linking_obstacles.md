@@ -1141,6 +1141,19 @@ Whole-unit clearance and census confirmation remain pending.
   remains pending. Its constructor is unchanged and byte-verifies. Broader
   class/data closure remains open; no census-linked gain is claimed.
 
+- **SpecialDisguiseUpdate interface storage (2026-10-27, control `fb85f43469`):**
+  [The native-table repair](../reverse/attempt_support/special-disguise-interface-data-20261027-codexb5.md)
+  replaces two scalar dummy owners with complete four-slot and 47-slot
+  pointer tables, preserving their provisional names and using existing code
+  owners for every entry. The constructor now shares both tables; it and the
+  destructor owner also share the existing nine-slot provider. All 30 function
+  rows and three data rows verify. The owning tool retires four constructor
+  data-identity keys with zero remaining constructor findings; the owner's
+  separate `s_dummyDFD4` keys remain. The three-object ordinary preview
+  preserves all 1,005 authored bytes against `bf3dd31211`. Original interface
+  and folded-method identities, wider storage closure and census confirmation
+  remain open; no new census-linked bytes or ownership receipt is claimed.
+
 - **DetachableRiderBody local-static index repair (2026-10-27, `408c38abc0`):**
   [The current-owner check](../reverse/attempt_support/detachable-rider-poolkey-data-retirement-20261027-codexb4.md)
   refreshes two generated data-index rows left stale by the existing method

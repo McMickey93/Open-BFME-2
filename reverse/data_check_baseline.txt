@@ -484,10 +484,6 @@ Code/GameEngine/Source/GameLogic/Object/Update/SiegeAIUpdatePoolKey.cpp	wrong-na
 Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A1875@SlavedUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03BB4
 Code/GameEngine/Source/GameLogic/Object/Update/SpawnPointProductionExitUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva0004A3BD6@SpawnPointProductionExitUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03BF4
 Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva00044F054@SpecialAbilityUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03390
-Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdateCtor.cpp	duplicate-def	_s_secondary0C	0x008562D8
-Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdateCtor.cpp	duplicate-def	_s_slotFinal	0x008562C8
-Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdateCtor.cpp	wrong-name	_s_secondary0C	0x008562D8
-Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdateCtor.cpp	wrong-name	_s_slotFinal	0x008562C8
 Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva004B018E@SpecialDisguiseUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D78
 Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdatePoolKey.cpp	wrong-name	?$S1@?1??rva000499F64@SpecialEnemySenseUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B0C
 Code/GameEngine/Source/GameLogic/Object/Update/SpecialPowerTimerRefreshPoolKey.cpp	wrong-name	?$S1@?1??rva00251C31@SpecialPowerTimerRefreshSpecialPower@@SA?AW4NameKeyType@@XZ@4IA	0x009FE998
