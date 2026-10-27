@@ -9,8 +9,9 @@
 // ??0Rva00540FF6@@QAE@XZ, retail 0x00540FF6 16B: outer ctor with int at +0
 // = 0 and inner Rva00540E82 at +4 via rowed ctor. /Ob1 keeps the inner
 // call from inlining so retail keeps lea ecx,[edx+4] call.
-// ??0Rva00540FDB@@QAE@HABURegion3D@@@Z, retail 0x00540FDB 27B: ctor with
-// int at +0 and Region3D at +4 via rowed copy ctor 0x0009AC04.
+// ??0Rva00540FDB@@QAE@HABVRva00540D94@@@Z, retail 0x00540FDB 27B: ctor with
+// int at +0 and the 24B camera frame data at +4 via its rowed out-of-line
+// copy ctor, ICF-folded with Region3D's at 0x0009AC04.
 // ??0Rva00540E9D@@QAE@ABURva00540E9DSrc@@H@Z, retail 0x00540E9D 32B:
 // ctor with 12B src at +4..+0xC and int at +0.
 // ??0Rva00540D67@@QAE@XZ, retail 0x00540D67 45B: sibling of 0x00540E82
@@ -46,23 +47,11 @@ Rva00540FF6::Rva00540FF6() : m_00(0)
 {
 }
 
-struct Region3D
-{
-	Region3D(const Region3D &that) throw();
- float lower[3],upper[3];
-};
-
-class Rva00540FDB
-{
-public:
-	__declspec(noinline) Rva00540FDB(int v, const Region3D &r);
-	int m_00;
-	Region3D m_04;
-};
-
-Rva00540FDB::Rva00540FDB(int v, const Region3D &region3D) : m_00(v), m_04(region3D)
-{
-}
+// The canonical Region3D (six floats) is not this unit's 24B payload: the
+// camera track below stores CameraAnimationTrack<Rva00540D94> frame data
+// (built by default ctor 0x00540D67, copied through 0x0009AC04, which retail
+// ICF-folded with Region3D's copy ctor).
+#include "../../../Libraries/Include/Lib/Region3D.h"
 
 struct Rva00540E9DSrc
 {
@@ -70,6 +59,29 @@ struct Rva00540E9DSrc
 	int b;
 	int c;
 };
+
+// Retail calls the copy ctor out of line and treats it as opaque (it loads
+// values.begin() before the 0x00540FDB call in 0x00541FCC), so no body here.
+class Rva00540D94
+{
+public:
+	Rva00540D94(const Rva00540D94 &other) throw();
+	int mode;
+	Rva00540E9DSrc position;
+	float scalar10, scalar14;
+};
+
+class Rva00540FDB
+{
+public:
+	__declspec(noinline) Rva00540FDB(int v, const Rva00540D94 &frame);
+	int m_00;
+	Rva00540D94 m_04;
+};
+
+Rva00540FDB::Rva00540FDB(int v, const Rva00540D94 &frame) : m_00(v), m_04(frame)
+{
+}
 
 class Rva00540E9D
 {
@@ -120,7 +132,7 @@ Rva00540FCB::Rva00540FCB() : m_00(0)
 
 // ??0Rva00541006@@QAE@HABURegion2D@@@Z @0x00541006 27B: ctor with int at +0
 // and Region2D at +4 via rowed copy ctor 0x0004254E. Evidence: same shape
-// as sibling ??0Rva00540FDB@@QAE@HABURegion3D@@@Z 27B in this TU; caller at
+// as sibling ??0Rva00540FDB@@QAE@HABVRva00540D94@@@Z 27B in this TU; caller at
 // 0x0054211B passes (int, Region2D) and stores result stride 0x14.
 // Canonical Region2D adopted from Code/Libraries/Include/Lib/Region2D.h.
 #include "../../../Libraries/Include/Lib/Region2D.h"
@@ -167,13 +179,12 @@ Rva00540E9D rva00540EBD(float value, void *arg10, void *arg14,
 // reads count/key/frame triples. CameraAnimationTrack.h WB leads support
 // the LookAt family; original owner/method spellings stay address-derived.
 // Layout facts: listener walk0..10; record-vector10/14/18; cached key index1C.
-// Six-word Region3D and opaque STL element names below are existing
-// copy/storage ABI carriers, not assertions about the application frame type.
+// The opaque STL element names below are existing copy/storage ABI carriers.
 // Retain visible noinline native27/45 constructors: returned-this EAX and
 // preserved ECX are required by these two caller sequences.
 #include <vector>
 #include <new>
-struct Rva00541021 {int m_field0;Region3D m_region;Rva00541021(const Rva00541021&);Rva00541021&operator=(const Rva00541021&);};
+struct Rva00541021 {int m_field0;Rva00540D94 m_frame;Rva00541021(const Rva00541021&);Rva00541021&operator=(const Rva00541021&);};
 namespace _STL {template<> Rva00541021 *vector<Rva00541021>::insert(Rva00541021*,const Rva00541021&);}
 class Rva00541579 {public:bool rva00541579(int);};
 class Rva005414E5Listener {public:
@@ -191,30 +202,28 @@ struct BfmePod28{char bytes[28];};
 struct Rva0054107FRecord{char bytes[28];};
 namespace _STL {template<> BfmePod28 *vector<BfmePod28>::erase(BfmePod28*,BfmePod28*);template<>void vector<Rva00541021>::reserve(unsigned);template<>Rva0054107FRecord *vector<Rva0054107FRecord>::erase(Rva0054107FRecord*,Rva0054107FRecord*);}
 class Rva00542225:public Rva005414E5List {public:
-__declspec(noinline) void rva00541FCC(int,const Region3D&);
+__declspec(noinline) void rva00541FCC(int,const Rva00540D94&);
  bool read(DataChunkInput*,DataChunkInfo*);
 _STL::vector<Rva00541021> values;int hint;
 };
-// ?rva00541FCC@Rva00542225@@QAEXHABURegion3D@@@Z
-void Rva00542225::rva00541FCC(int key,const Region3D &region) {
+// ?rva00541FCC@Rva00542225@@QAEXHABVRva00540D94@@@Z
+void Rva00542225::rva00541FCC(int key,const Rva00540D94 &frame) {
  if(key<0)return;
  if(((Rva00541579*)this)->rva00541579(key)){
   forEach(&Rva005414E5Listener::beforeChange,this,key);
-  (values.begin()+hint)->m_region.Region3D::Region3D(region);
+  (values.begin()+hint)->m_frame.Rva00540D94::Rva00540D94(frame);
   forEach(&Rva005414E5Listener::afterChange,this,key);
  }else{
   forEach(&Rva005414E5Listener::beforeInsert,this,key);
   Rva00541021 *begin=values.begin();
   char entry[28];
-  values.insert(begin+(hint+1),*(const Rva00541021*)new((void*)entry)Rva00540FDB(key,region));
+  values.insert(begin+(hint+1),*(const Rva00541021*)new((void*)entry)Rva00540FDB(key,frame));
   forEach(&Rva005414E5Listener::afterInsert,this,key);
  }
 }
 
 
 
-// The existing24B six-word copy ABI is represented by Region3D here only
-// for the owned copy provider; the camera frame application meaning differs.
 // ?read@Rva00542225@@QAE_NPAVDataChunkInput@@PAUDataChunkInfo@@@Z
 bool Rva00542225::read(DataChunkInput *file,DataChunkInfo *info) {
  _STL::vector<Rva0054107FRecord> &eraseView=*(_STL::vector<Rva0054107FRecord>*)&values;
@@ -225,7 +234,7 @@ bool Rva00542225::read(DataChunkInput *file,DataChunkInfo *info) {
   int key=file->readInt();
   Rva00540D67 value;
   ((Rva00540C0A*)&value)->rva00540C0A(file,info);
-  rva00541FCC(key,*(const Region3D*)&value);
+  rva00541FCC(key,*(const Rva00540D94*)&value);
  }
  return true;
 }
