@@ -6,12 +6,9 @@
 // Same 81B shape as 0x0035E327/0x0035EEA7; vtable 0x00816510 via ctor; chain from 0x0035D6B8.
 // Opaque address-derived names; base layout from Rva001DBAA4Ctor.cpp.
 struct FieldParse;
-extern const struct FieldParse SlaveAttackFieldTable;
-
 // Retail 0x00C6BB18 (RVA 0x0086BB18) is the all-zero 16-byte empty
-// FieldParse entry already defined there as g_emptyFieldParseTable. Keep one
-// storage definition and resolve this consumer's distinct decoration to it.
-#pragma comment(linker, "/alternatename:?SlaveAttackFieldTable@@3UFieldParse@@B=?g_emptyFieldParseTable@@3QBHB")
+// FieldParse entry the data ledger names g_emptyFieldParseTable.
+extern const int g_emptyFieldParseTable[4];
 
 class INI
 {
@@ -54,6 +51,6 @@ public:
 void __cdecl Rva0035D6F9Parse(INI *ini, Rva0035D6F9Holder *holder)
 {
 	ScoreScaleUpTransition *obj = new ScoreScaleUpTransition;
-	ini->initFromINI(obj, &SlaveAttackFieldTable);
+	ini->initFromINI(obj, (const FieldParse *)g_emptyFieldParseTable);
 	holder->set((Rva0035D53C *)obj);
 }

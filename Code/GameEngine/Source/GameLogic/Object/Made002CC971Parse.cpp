@@ -9,7 +9,8 @@
 class Made002CC971;
 
 struct FieldParse;
-extern const FieldParse SlaveAttackFieldTable;
+// 0x0086BB18: the data ledger's all-zero empty FieldParse table.
+extern const int g_emptyFieldParseTable[4];
 
 int Rva00507552Get();
 
@@ -32,6 +33,6 @@ void q4Notify002CC971(void *ini, Made002CC971 *m, int c, int d)
 {
 	MultiIniFieldParse tmp;
 	tmp.add((FieldParse *)Rva00507552Get(), 0);
-	tmp.add(&SlaveAttackFieldTable, 0);
+	tmp.add((const FieldParse *)g_emptyFieldParseTable, 0);
 	((INI *)ini)->initFromINIMulti(m, tmp);
 }

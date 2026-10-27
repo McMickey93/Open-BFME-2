@@ -1,7 +1,7 @@
 // cl: /Ireference/shims/bfme2_ascii /EHs /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /Ireference/shims/bfmealloc /D_BFME_RETAIL_TREE_INSERT_LAYOUT
 // stlport
 // ?Rva002214C5Get@@YAXPAV?$vector@UBfmeE16@@V?$allocator@UBfmeE16@@@_STL@@@_STL@@@Z @0x002214C5 182B
-// Builds FieldParse table (as vector<BfmeE16> 16B pods) from static map<AsciiString,NoCaseTreeValue4> via rowed getter 0x002213D9 plus Vector_base 0x00211E58 plus reserve 0x0022118F plus push_back 0x0059D2A3 plus _M_increment 0x00024250 plus SlaveAttackFieldTable plus swap 0x00567ECD plus _free 0x00030830. Evidence: retail bytes plus caller 0x0022157B plus rowed callees.
+// Builds FieldParse table (as vector<BfmeE16> 16B pods) from static map<AsciiString,NoCaseTreeValue4> via rowed getter 0x002213D9 plus Vector_base 0x00211E58 plus reserve 0x0022118F plus push_back 0x0059D2A3 plus _M_increment 0x00024250 plus g_emptyFieldParseTable plus swap 0x00567ECD plus _free 0x00030830. Evidence: retail bytes plus caller 0x0022157B plus rowed callees.
 // Retail keeps one unsigned max, RVA 0x00013740 (the vendored STLport row). This unit-local
 // overload keeps the inlined code and offers the link no second copy.
 #include <stl/_algobase.h>
@@ -32,7 +32,8 @@ struct BfmeE12 { char m_d[12]; };
 struct FieldParse { const char *token; void *parse; const void *userdata; int offset; };
 class FXList;
 
-extern const struct FieldParse SlaveAttackFieldTable;
+// 0x0086BB18: the data ledger's all-zero empty FieldParse terminator.
+extern const int g_emptyFieldParseTable[4];
 class INI;
 
 // The table entries' parse target: the map value is an object whose first
@@ -69,7 +70,7 @@ void Rva002214C5Get(_STL::vector<BfmeE16, _STL::allocator<BfmeE16> > *out)
         e.offset = 0;
         tmp.push_back(*(const BfmeE16 *)&e);
     }
-    tmp.push_back(*(const BfmeE16 *)&SlaveAttackFieldTable);
+    tmp.push_back(*(const BfmeE16 *)g_emptyFieldParseTable);
     (( _STL::vector<struct BfmeE12, _STL::allocator<struct BfmeE12> > *)out)->swap(*( _STL::vector<struct BfmeE12, _STL::allocator<struct BfmeE12> > *)&tmp);
 }
 
