@@ -3869,7 +3869,7 @@ Remaining / next check: the allocator's nested `GeneralAllocator::Snapshot` is a
 
 Clearance: only the named retained adoptions and their local preview scope are verified; no new linked-unit or headline gain claimed. Census confirmation: pending.
 
-### LINK-098: PropDraw module-data units emit incompatible short tables
+### LINK-108: PropDraw module-data units emit incompatible short tables
 Status: Blocked on shared ModuleData interface and slot-owner reconciliation. Updated: 2026-10-27; inspected revision: 97c23353111e60304b56434c02d20bee3465d83f.
 Evidence / affected units: W3DPropDrawModuleDataCtor.cpp emits a four-slot Snapshot table while W3DPropDraw.cpp emits a nine-slot Zero Hour ModuleData table. The constructor's sole ordinary-preview blocker is `??_7W3DPropDrawModuleData@@6B@`. Retail at RVA 0x007CD420 has 31 function pointers; the next word at 0x007CD49C begins the DistanceFog string, so the data ledger's 136-byte span includes that following literal. Native slot 14 reaches 0x000CED14, already rowed under W3DTreeDrawModuleData; slot 19 reaches the return-this body at 0x0047A6A9. The existing Common/BfmeModuleData.h models 31 generic slots, while the update_modules_bfme2/Common/Module.h view used by the destructor still models the short interface.
 Completed: inspected both emitted tables, native slots, existing row owners and the shared headers. Both constructor-unit rows are exact. Current paired preview retains the constructor L1 and the destructor unit's independent ModuleData/DrawModule blockers. No source trial or shared-header edit is retained.
@@ -3877,7 +3877,7 @@ Remaining / next check: reconcile the shared ModuleData slot names and native ov
 Clearance: pending.
 Census confirmation: not claimed.
 
-### LINK-097: obsolete video-buffer bodies still supply the BFME constructor's table
+### LINK-107: obsolete video-buffer bodies still supply the BFME constructor's table
 Status: Blocked on the complete W3DVideoBuffer table and lifetime contract. Updated: 2026-10-27; inspected revision: 97c23353111e60304b56434c02d20bee3465d83f.
 Evidence / affected units: W3DVideoBuffer.cpp retains U5/L2 beside its exact 11-byte valid() row at 0x00655950. Removing its eight unrowed Zero Hour implementations makes this unit preview LINKS, but the currently linking W3DVideoBufferCtorBfme.cpp then gains unresolved VideoBuffer and W3DVideoBuffer destructors, the obsolete two-argument allocate, free, lock and unlock. The independently rowed BFME allocate is the three-argument body at 0x00072760 (170 B), and its constructor at 0x000726B0 (115 B) takes int rather than the donor enum. Current allocation, state and caller units were checked in the same preview.
 Completed: the removal trial preserved valid() exactly but failed the provider/consumer guard, so every source edit was reversed. The restored source passes byte verification and the final paired preview preserves the constructor and its consumers. Existing valid() aliases were retained throughout.
