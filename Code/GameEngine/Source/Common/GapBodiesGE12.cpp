@@ -148,8 +148,8 @@ struct Rva005FD4AATable
 class Rva005FD4AA
 {
 public:
-	int *rva005FD4AA(int index) const;
-	int *rva005FD4BB(int index) const;
+	int *getRegionName(int index) const;
+	int *getArmyName(int index) const;
 	int getCommandPoints(int index) const;
 	int getMaxCommandPoints(int index) const;
 private:
@@ -157,12 +157,12 @@ private:
 	Rva005FD4AATable *m_04;
 };
 
-int *Rva005FD4AA::rva005FD4AA(int index) const
+int *Rva005FD4AA::getRegionName(int index) const
 {
 	return &m_04->m_records[index].m_00;
 }
 
-int *Rva005FD4AA::rva005FD4BB(int index) const
+int *Rva005FD4AA::getArmyName(int index) const
 {
 	return &m_04->m_records[index].m_04;
 }
