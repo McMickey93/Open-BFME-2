@@ -3626,6 +3626,21 @@ Census confirmation: not claimed.
   `Rva0026E836Derived.cpp` retains its three unresolved secondary-interface
   methods and two address findings in both cases. Scope cleared: this port
   unit's ordinary preview only; wider closure and census confirmation pending.
+- **Rva0026E836Derived cleared (2026-10-27):** the three unresolved
+  secondary-interface methods and both address findings are gone. The six
+  `Rva…` dtor classes are renamed to their module classes. Each dtor stores the
+  root vftable of the rowed ctor of the same class: Animal, AssaultTransport,
+  Siege, Horde, Transport and Wander `AIUpdate`. The secondaries are modelled
+  as real bases (update +0x10, aiDoCommand +0x20, onCollide +0x24, the +0x3E4
+  interfaces). 0x0048F7A7 becomes `AssaultTransportAIUpdate::aiDoCommand`. Its
+  `B2` base must carry a vptr, or MSVC places the `M3` subobject at +0x10
+  instead of +0x20. 0x0047EC5F becomes AnimalAIUpdate's +0x3E4 slot.
+  `Rva0049A64B` → `HordeAIUpdate` is carried through the Horde ctor, the
+  worker dtor and the dock-interface unit. link_check (index `bf3dd31211`,
+  seven objects refreshed): Derived 0 -> 428 B, `AssaultTransportAIUpdate.cpp`
+  0 -> 75 B, and the Dispatch, Disp32 getters, Horde ctor, Horde worker dtor
+  and `Rva0049A64BRva0049A8FA.cpp` units still link (1,149 B). Census
+  confirmation awaiting.
 - **W3DDisplayString seed prerequisite (2026-10-26, inspected `71f28db691`):**
   [the native-layout handoff](../reverse/attempt_support/w3d-displaystring-consolidation-20261026.md)
   replaces its BFME 1 include stack with BFME 2 declarations before consolidation.

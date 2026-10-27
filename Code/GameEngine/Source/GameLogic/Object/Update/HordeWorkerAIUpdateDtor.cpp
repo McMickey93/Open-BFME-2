@@ -5,7 +5,7 @@
 // restores the five vptrs at +0x00/+0x0C/+0x10/+0x20/+0x24 (DBaseRoot/M1/B2/
 // M3/M4 shape, DeployStyleAIUpdateDtor precedent) plus the +0x3E4 word via
 // the inherited extra, then tail-jumps to the rowed base dtor
-// ??1Rva0049A64B@@UAE@XZ at 0x0049A64B. Sole caller is the scalar-deleting
+// ??1HordeAIUpdate@@UAE@XZ at 0x0049A64B. Sole caller is the scalar-deleting
 // dtor at 0x0049AD9B.
 
 // Same complete secondary-interface table installed by both Horde constructors.
@@ -57,17 +57,17 @@ public:
 	virtual ~Rva0026E836();
 };
 
-class Rva0049A64B : public Rva0026E836
+class HordeAIUpdate : public Rva0026E836
 {
 public:
-	virtual ~Rva0049A64B();
+	virtual ~HordeAIUpdate();
 
 protected:
 	char m_pad0028[0x3E4 - 0x28];
 	const void *m_extra03E4;
 };
 
-class HordeWorkerAIUpdate : public Rva0049A64B
+class HordeWorkerAIUpdate : public HordeAIUpdate
 {
 public:
 	virtual ~HordeWorkerAIUpdate();

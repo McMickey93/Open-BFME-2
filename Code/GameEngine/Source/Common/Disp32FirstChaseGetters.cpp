@@ -89,7 +89,6 @@ BFME_DISP32_FIRST_WORDCHASE_ZERO_GETTER(Rva002AAE4FWordChaseField, 0xF6C)
 BFME_DISP32_BACK_PTRCHASE_GETTER(Rva004A6E29PtrChaseField, 0x3E0, 0x64)
 BFME_DISP32_BACK_PTRCHASE_GETTER(Rva004A6FF9PtrChaseField, 0x3E0, 0x7C)
 BFME_DISP32_BACK_PTRCHASE_GETTER(Rva004A9B85PtrChaseField, 0x3E4, 0x64)
-BFME_DISP32_BACK_BYTECHASE_GETTER(Rva0047EC5FByteChaseField, 0x3E0, 0x7C)
 BFME_DISP32_BACK_BYTECHASE_GETTER(Rva004A6FE5ByteChaseField, 0x3E0, 0x74)
 BFME_DISP32_BACK_FLOATCHASE_GETTER(Rva00488C34FloatChaseField, 0x3E0, 0x64)
 BFME_DISP32_BACK_FLOATCHASE_GETTER(Rva00488C3EFloatChaseField, 0x3E0, 0x68)
@@ -97,3 +96,36 @@ BFME_DISP32_BACK_FLOATCHASE_GETTER(Rva004A6FEFFloatChaseField, 0x3E0, 0x78)
 BFME_DISP32_BACK_FLOATCHASE_GETTER(Rva004A964CFloatChaseField, 0x3E0, 0x6C)
 BFME_DISP32_BACK_FLOATCHASE_GETTER(Rva004A9656FloatChaseField, 0x3E0, 0x70)
 BFME_DISP32_FIRST_WORDCHASE_ZERO_GETTER(Rva0023DB89WordChaseField, 0xF50)
+
+// ?rva0047EC5F@AnimalAIUpdate@@UBEEXZ: slot 0 of AnimalAIUpdate's +0x3E4
+// interface vftable 0x00C47B84, which the rowed dtor 0x0047EB78 and ctor
+// 0x0047ECA8 store last. An override of a non-primary base's virtual keeps
+// that base's this, so the module data at +0x04 is read as [ecx-0x3E0]; the
+// slot returns its byte at +0x7C. The slot's name is not established, hence
+// the address name.
+class Rva0047EB78_Interface3E4
+{
+public:
+	virtual unsigned char rva0047EC5F() const = 0;
+};
+
+class AnimalAIUpdateHead
+{
+public:
+	virtual ~AnimalAIUpdateHead();
+
+protected:
+	const unsigned char *m_moduleData;
+	char m_pad08[0x3E4 - 0x08];
+};
+
+class AnimalAIUpdate : public AnimalAIUpdateHead, public Rva0047EB78_Interface3E4
+{
+public:
+	virtual unsigned char rva0047EC5F() const;
+};
+
+unsigned char AnimalAIUpdate::rva0047EC5F() const
+{
+	return m_moduleData[0x7C];
+}

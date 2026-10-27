@@ -33,12 +33,12 @@ extern "C" const void *const vtbl_00C52F88[];  // folded, 12 classes; via ??_7De
 // setWakeFrame resolves via the new Rva0026E9BDBase-spelling alias pin at
 // 0x44DF71 placed alongside).
 
-extern "C" const void *const vtbl_00C50528[];  // ??_7Rva0049A64B@@6BRva0026E836_M3@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C50528=??_7Rva0049A64B@@6BRva0026E836_M3@@@")
-extern "C" const void *const vtbl_00C5052C[];  // ??_7Rva0049A64B@@6BRva0026E836_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C5052C=??_7Rva0049A64B@@6BRva0026E836_B2@@@")
-extern "C" const void *const vtbl_00C505F8[];  // ??_7Rva0049A64B@@6BRva0026E836_Root@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C505F8=??_7Rva0049A64B@@6BRva0026E836_Root@@@")
+extern "C" const void *const vtbl_00C50528[];  // ??_7HordeAIUpdate@@6BRva0026E836_M3@@@
+#pragma comment(linker, "/alternatename:_vtbl_00C50528=??_7HordeAIUpdate@@6BRva0026E836_M3@@@")
+extern "C" const void *const vtbl_00C5052C[];  // ??_7HordeAIUpdate@@6BRva0026E836_B2@@@
+#pragma comment(linker, "/alternatename:_vtbl_00C5052C=??_7HordeAIUpdate@@6BRva0026E836_B2@@@")
+extern "C" const void *const vtbl_00C505F8[];  // ??_7HordeAIUpdate@@6BRva0026E836_Root@@@
+#pragma comment(linker, "/alternatename:_vtbl_00C505F8=??_7HordeAIUpdate@@6BRva0026E836_Root@@@")
 extern "C" const void *const vtbl_00C52EE8[];  // ??_7DockUpdateInterface@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C52EE8=??_7DockUpdateInterface@@6B@")
 extern const void *const g_00C50868[];

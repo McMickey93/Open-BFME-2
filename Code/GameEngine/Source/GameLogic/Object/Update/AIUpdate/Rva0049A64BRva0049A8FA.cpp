@@ -1,8 +1,8 @@
 // cl: /DNDEBUG /MD
 //
-// ?getEnterPosition@Rva0049A64B@@UAEXHPAUCoord3D@@@Z @0x0049A8FA 65B.
+// ?getEnterPosition@HordeAIUpdate@@UAEXHPAUCoord3D@@@Z @0x0049A8FA 65B.
 // Target evidence: the only reference to this body is slot 5 of the vtable
-// 0x00C50868 that the matched Rva0049A64B dtor 0x0049A64B installs at
+// 0x00C50868 that the matched HordeAIUpdate dtor 0x0049A64B installs at
 // +0x3E4, the trailing interface base of this AIUpdate-family class (vptrs
 // at +0, +0xC, +0x10, +0x20, +0x24 as the dtor stores them); the slot's name
 // is not established, hence the address name. cl 7.1 compiles an override of
@@ -91,14 +91,14 @@ public:
 	virtual void s04();
 	virtual void getEnterPosition(int a, Coord3D *out) = 0;
 };
-class Rva0049A64B : public B00, public B0C, public B10, public B20, public B24, public Iface3E4
+class HordeAIUpdate : public B00, public B0C, public B10, public B20, public B24, public Iface3E4
 {
 public:
 	virtual bool isClearToApproach(int docker);
 	virtual bool reserveApproachPosition(int a, Coord3D *pos, int *out);
 	virtual void getEnterPosition(int docker, Coord3D *out);
 };
-void Rva0049A64B::getEnterPosition(int docker, Coord3D *out)
+void HordeAIUpdate::getEnterPosition(int docker, Coord3D *out)
 {
 	int extra;
 	Rva0049A8FAProvider *provider = m_object->m_250->rva7C();
@@ -108,13 +108,13 @@ void Rva0049A64B::getEnterPosition(int docker, Coord3D *out)
 	}
 }
 
-// ?reserveApproachPosition@Rva0049A64B@@UAE_NHPAUCoord3D@@PAH@Z @0x0049A8A1 89B: slot 1
+// ?reserveApproachPosition@HordeAIUpdate@@UAE_NHPAUCoord3D@@PAH@Z @0x0049A8A1 89B: slot 1
 // of the same +0x3E4 table (0x00C50868). No provider from the object's +0x250
 // module (vslot +0x7C): false. Otherwise the provider is asked about the first
 // argument (vslot +0x18) and, if it says no, given it (vslot +0x2C); then
 // slot 5 above fills the position, the out word is cleared and the answer is
 // true. Names stay address-derived.
-bool Rva0049A64B::reserveApproachPosition(int a, Coord3D *pos, int *out)
+bool HordeAIUpdate::reserveApproachPosition(int a, Coord3D *pos, int *out)
 {
 	Rva0049A8FAProvider *provider = m_object->m_250->rva7C();
 	if (!provider)
@@ -130,7 +130,7 @@ bool Rva0049A64B::reserveApproachPosition(int a, Coord3D *pos, int *out)
 // Retail table C50868 slot 0 uses the same +3E4 interface receiver as
 // slots 1 and 5. Its whole 33B span ends at the following slot-1 body.
 // The Object member at +8 is therefore [secondary-this - 3DC].
-bool Rva0049A64B::isClearToApproach(int docker)
+bool HordeAIUpdate::isClearToApproach(int docker)
 {
  Rva0049A8FAProvider *provider = m_object->m_250->rva7C();
  if (!provider) return false;
@@ -142,12 +142,12 @@ bool Rva0049A64B::isClearToApproach(int docker)
 // code owner; folded constant/no-op bodies retain that owner's name without
 // inferring an interface-method identity from the fold. Native C50868..C508B8.
 extern "C" {
-void __identifier("?isClearToApproach@Rva0049A64B@@UAE_NH@Z")();
-void __identifier("?reserveApproachPosition@Rva0049A64B@@UAE_NHPAUCoord3D@@PAH@Z")();
+void __identifier("?isClearToApproach@HordeAIUpdate@@UAE_NH@Z")();
+void __identifier("?reserveApproachPosition@HordeAIUpdate@@UAE_NHPAUCoord3D@@PAH@Z")();
 void __identifier("?rva0049A6D7@Rva0049A6D7@@QAE_NHHH@Z")();
 void __identifier("?_bfme_ro_v50@RenderObjClass@@UAE_NH@Z")();
 void __identifier("?rva0050B5F1@Rva0050B5F1@@QAE_NHH@Z")();
-void __identifier("?getEnterPosition@Rva0049A64B@@UAEXHPAUCoord3D@@@Z")();
+void __identifier("?getEnterPosition@HordeAIUpdate@@UAEXHPAUCoord3D@@@Z")();
 void __identifier("??_9@$BBE@AE")();
 void __identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")();
 void __identifier("?rva0049A973@HordeAIUpdate@@UAE_NPAVObject@@H@Z")();
@@ -156,12 +156,12 @@ void __identifier("?rva005CB9FF@Rva005CB9FF@@QAE_NH@Z")();
 void __identifier("?IsCRC@Xfer@@UBE_NXZ")();
 }
 extern const void *const g_00C50868[20] = {
- (const void *)&__identifier("?isClearToApproach@Rva0049A64B@@UAE_NH@Z"),
- (const void *)&__identifier("?reserveApproachPosition@Rva0049A64B@@UAE_NHPAUCoord3D@@PAH@Z"),
+ (const void *)&__identifier("?isClearToApproach@HordeAIUpdate@@UAE_NH@Z"),
+ (const void *)&__identifier("?reserveApproachPosition@HordeAIUpdate@@UAE_NHPAUCoord3D@@PAH@Z"),
  (const void *)&__identifier("?rva0049A6D7@Rva0049A6D7@@QAE_NHHH@Z"),
  (const void *)&__identifier("?_bfme_ro_v50@RenderObjClass@@UAE_NH@Z"),
  (const void *)&__identifier("?rva0050B5F1@Rva0050B5F1@@QAE_NHH@Z"),
- (const void *)&__identifier("?getEnterPosition@Rva0049A64B@@UAEXHPAUCoord3D@@@Z"),
+ (const void *)&__identifier("?getEnterPosition@HordeAIUpdate@@UAEXHPAUCoord3D@@@Z"),
  (const void *)&__identifier("??_9@$BBE@AE"),
  (const void *)&__identifier("??_9@$BBE@AE"),
  (const void *)&__identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z"),
