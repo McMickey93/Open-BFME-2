@@ -29,7 +29,7 @@ public:
 
 void __stdcall BfmeGameBrowserVJPCallback();
 
-class BfmeBVJP
+class Transactor
 {
 public:
 	virtual void v00() throw();
@@ -46,7 +46,7 @@ public:
 
 	char m_pad00[0x10];
 	BfmeAVJP *m_protocol;
-	BfmeBVJP *m_bfme14;
+	Transactor *m_bfme14;
 	char m_pad18[0x10];
 	int m_bfme28;
 	int m_bfme2c;
