@@ -19,6 +19,7 @@ extern "C" void _ReadWriteBarrier();
 class TeamFactory;
 class Player;
 class PlayerList;
+class NameKeyGenerator;
 class Script;
 #include <stl/_algobase.h>
 #pragma optimize("s", off)
@@ -167,7 +168,8 @@ class Rva0039EA9C
 public:
 	Rva0039EA9C();
 	~Rva0039EA9C();
-private:
+public:
+	// Public as TeamPrototype::rva003A0D0A reads each record's +0x10 name.
 	int m_00;
 	int m_04;
 	int m_08;
@@ -290,6 +292,8 @@ class Rva0039EA4E
 public:
     Rva0039EA4ENode *rva0039EA4E(const Rva0039D8FBKey &key);
     Rva0039F5C8Iterator rva0039F5C8(const Rva0039D8FBKey &key);
+    Rva0039EA4ENode *rva0039F597(const Rva0039D8FBKey &key);
+    Rva0039F5C8Iterator rva0039FB73(const Rva0039D8FBKey &key);
     unsigned int size() const { return m_nodeCount04; }
 
     Rva0039EA4ENode *m_header00;

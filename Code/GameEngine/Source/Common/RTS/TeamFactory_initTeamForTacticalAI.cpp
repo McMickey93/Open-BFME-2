@@ -25,20 +25,28 @@ public:
 };
 extern PlayerList *ThePlayerList;
 
+// The two tactic slots of the prototype's team template (+0x12C), as the
+// Team.cpp seed's TeamTemplateInfo spells them (+0x198 and +0x1AC there).
+struct TeamTemplateTacticView
+{
+	char m_pad000[0x198];
+	int m_unknown198; // prototype +0x2C4, the target id
+	char m_pad19C[0x1AC - 0x19C];
+	int m_unknown1AC; // prototype +0x2D8, the tactic id
+};
+
 class TeamPrototype
 {
 public:
 	void rva003A2C0D(Player *owner, const AsciiString &ownerName, bool singleton, Dict *dict);
 
 public:
-	char m_pad00[0x2c4];
-	int m_2c4; // +0x2c4
-	char m_pad2c8[0x2d8 - 0x2c8];
-	int m_2d8; // +0x2d8
+	char m_pad00[0x12c];
+	TeamTemplateTacticView m_teamTemplate; // +0x12c
 	char m_pad2dc[0x31c - 0x2dc];
-	unsigned char m_31c; // +0x31c
-	unsigned char m_31d; // +0x31d
-	unsigned char m_31e; // +0x31e
+	bool m_byte31C; // +0x31c
+	bool m_byte31D; // +0x31d
+	bool m_byte31E; // +0x31e
 };
 
 struct Rva003A2FD4Proto;
@@ -50,7 +58,7 @@ public:
 
 private:
 	char m_pad00[0x10];
-	TeamPrototype *m_slots[0x28]; // +0x10
+	TeamPrototype *m_dummyTeams[0x28]; // +0x10
 };
 
 Rva003A2FD4Proto *TeamFactory::initTeamForTacticalAI(const AsciiString &asciiString, void *ownerName, int targetID, unsigned int tacticID)
@@ -59,14 +67,14 @@ Rva003A2FD4Proto *TeamFactory::initTeamForTacticalAI(const AsciiString &asciiStr
 	Player *player = ThePlayerList->findPlayerWithNameKey(key);
 	for (unsigned int i = 0; i < 0x28; ++i)
 	{
-		TeamPrototype *cur = m_slots[i];
-		if (cur->m_31e == 0)
+		TeamPrototype *cur = m_dummyTeams[i];
+		if (cur->m_byte31E == 0)
 		{
 			cur->rva003A2C0D(player, asciiString, false, 0);
-			cur->m_2c4 = targetID;
-			cur->m_2d8 = (int)tacticID;
-			cur->m_31e = 1;
-			cur->m_31c = 1;
+			cur->m_teamTemplate.m_unknown198 = targetID;
+			cur->m_teamTemplate.m_unknown1AC = (int)tacticID;
+			cur->m_byte31E = 1;
+			cur->m_byte31C = 1;
 			return (Rva003A2FD4Proto *)cur;
 		}
 	}
