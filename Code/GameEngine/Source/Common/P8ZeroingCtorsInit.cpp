@@ -1,8 +1,10 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // The target pin identifies the shared 36B dec-word-at-+4 release body.
+#include <windows.h>
+
 #pragma comment(linker, "/alternatename:?Release_Ref@TaggedRefObject@@QAEXXZ=?Release_Ref@TextureBaseClass@@QAEXXZ")
 
-#define NULL 0
 //
 // ?bfmeInit@Gen001811E0@@AAEPAV1@PAX@Z at retail 0x001810D0 (83 bytes).
 //

@@ -9,6 +9,7 @@
 // the rep stos memset are the /O2 intrinsic forms. Names stay address-derived
 // except the two operator new overloads, whose ABI is the one Zero Hour's
 // GameMemory.h declares for the file/line forms.
+#include <mbstring.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -83,7 +84,6 @@ wchar_t *rva0002FD10(const wchar_t *s)
 }
 
 // --- 0x0002FD50 (6B): _mbsdup forwarder (tail jump through the import).
-extern "C" __declspec(dllimport) unsigned char *__cdecl _mbsdup(const unsigned char *s);
 
 unsigned char *rva0002FD50(const unsigned char *s)
 {

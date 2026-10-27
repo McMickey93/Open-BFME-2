@@ -11,6 +11,7 @@
 // the unclaimed 0x00384A62 cluster. Class and function names are
 // descriptive; no retail spellings are known.
 
+#include <stdlib.h>
 #include <map>
 
 typedef bool Bool;
@@ -22,7 +23,6 @@ typedef float Real;
 // SkirmishFindMap throw() shim (and its existing 0x001F8437 pin): the
 // node layout retails here reads the value at +0x14, exactly the shim's
 // m_value.
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s) throw();
 
 template <typename T> struct BfmeStringData
 {

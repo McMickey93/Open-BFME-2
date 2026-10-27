@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /Ireference/shims/bfme2_ascii /EHsc /DNDEBUG /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // ?parseMultisoundDefinition@AudioEventInfo@@SAXPAVINI@@@Z, retail 0x001DA4DE, 374 B
 // (WorldBuilder twin 0x00AC05E0). Map-ini rejection, newAudioEventInfo through the
@@ -7,6 +8,7 @@
 // (rowed 0x00239099) is defined here as in its owner unit so cl sees that it
 // does not keep the handle's address: retail then keeps the referent in ESI and
 // releases it at scope end without reloading the handle.
+#include <windows.h>
 #include "ascii_string.h"
 #include <vector>
 class INIException
@@ -34,8 +36,6 @@ private:
 
 extern const struct FieldParse g_00BD9D68[];
 extern const float g_00BDA3E4;
-
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
 
 class OpaqueRefCounted
 {

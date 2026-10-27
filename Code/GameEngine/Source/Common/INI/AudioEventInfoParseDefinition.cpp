@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /Ireference/shims/bfme2_ascii /EHsc /DNDEBUG /MD
+// platformsdk
 //
 // ?helper001DA770@@YAXPAVINI@@HPAVAsciiString@@PBD@Z @0x001DA770 528B.
 // Shared cdecl audio-block parser for the five Default-name wrappers.
@@ -11,6 +12,7 @@
 // reads every field through the event handle's operator->; the rowed handle
 // assignment 0x00239099 is defined here so cl sees the handle's address does
 // not escape and keeps the referent in ESI. Pitch clamps store -99.0f.
+#include <windows.h>
 #include "ascii_string.h"
 
 class INIException
@@ -139,8 +141,6 @@ extern const FieldParse g_00BD9F1C[] =
 	{ "Subsounds", AudioEventInfo::parseSubsoundsList, &theSubsoundsWeightOffset, 0x80 },
 	{ 0, 0, 0, 0 }
 };
-
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
 
 class OpaqueRefCounted
 {

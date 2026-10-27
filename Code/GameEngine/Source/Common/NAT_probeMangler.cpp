@@ -1,3 +1,4 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // ?probeMangler@NAT@@QAEXXZ @0x005A6A83 145B. Firewall NAT probe:
 // pre-check ++m_936==0 skips to open; loop two getNextTemporarySourcePort(0)
@@ -6,6 +7,8 @@
 // stamp +0x938 with timeGetTime()+g_00DD35BC. Evidence: callers 0x005A8511
 // 0x005A8614; callees rowed 0x0059539B/0x00595089/0x0059517F and IAT
 // timeGetTime; globals g_a063b0 (Rva00A063B0Obj *) and g_00DD35BC.
+#include <windows.h>
+
 typedef unsigned short UnsignedShort;
 typedef int Int;
 typedef bool Bool;
@@ -19,7 +22,6 @@ extern Rva00A063B0Obj *g_a063b0;
 // piece was the constant object, not a view of it.
 // Symbol ?g_00DD35BC@@3KA, transcribed below.
 extern UnsignedLong g_00DD35BC = 500;
-extern "C" __declspec(dllimport) UnsignedLong __stdcall timeGetTime(void);
 
 class FirewallHelperClass
 {

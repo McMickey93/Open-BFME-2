@@ -1,4 +1,5 @@
 // cl: /MD /DNDEBUG /Oy-
+// platformsdk
 // Built from the banked attempt reverse/attempts/0x005db885.cpp; fix: 0.5 and
 // 1.0f are compiler literals (retail constants at VA 0x00BC26F8 and
 // 0x00BBB8D8), not extern globals, which is what gives retail's early
@@ -6,7 +7,8 @@
 // Elem005DB98E::rva005DB885 @0x005DB885 95B
 // Elem time smoothing: delta from timeGetTime, 0<delta<10000 gates float update of m_04/m_0C then m_10 stamp.
 // Evidence: caller 0x005DBF09 passes eax from peekPing as this with dword arg; same Elem005DB98E layout and IAT timeGetTime as next 0x005DB8F7.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+
+#include <windows.h>
 
 struct Elem005DB98E
 {

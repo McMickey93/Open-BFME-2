@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /DNDEBUG
+// platformsdk
 // ?rva0023054C@GameEngine@@UAEXXZ, retail 0x0023054C..0x002306B8 (364B): a
 // Ghidra-unlisted slot of GameEngine's table 0x00BE71F0 (between the rowed
 // isMultiplayerSession and createMessageStream entries). Its teardown
@@ -9,6 +10,8 @@
 // through slot 0 with a zero flag and a plain operator delete, as elsewhere in
 // the ledger (ConnectionManager_reset.cpp). Callees and globals use the
 // ledger's existing spellings; the receiver is not touched.
+
+#include <windows.h>
 
 struct BfmePoolDestroyable
 {
@@ -82,8 +85,6 @@ extern FileSystem *TheFileSystem;
 
 void Rva00270190Free();										// 0x00270190
 void Rva00419A99Cleanup();									// 0x00419A99
-
-extern "C" __declspec(dllimport) unsigned int __stdcall timeEndPeriod(unsigned int uPeriod);
 
 class GameEngine
 {

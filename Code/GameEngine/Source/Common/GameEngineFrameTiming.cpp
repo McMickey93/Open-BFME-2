@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 //
 // The GameEngine stores the client-frame period at +0x34, the derived
 // client-frame counter at +0x38, and the interpolation ratio at +0x3c.  These timing
@@ -59,12 +60,11 @@ public:
 };
 extern Debug *theDebug;
 
+#include <windows.h>
 #include "GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 
 void __cdecl Rva00225A0C(int v);
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 #define FramesPerSecond BfmeClientFramesPerSecond
 #define LogicFramesPerSecond BfmeLogicFramesPerSecond

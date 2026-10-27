@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // ?sentAPingPacket@PortNegotiationSchema@@QAE_NGG@Z @0x005DBF2D 95B.
 // PortNegotiationSchema float bump notify: element +8 += 1.0f, stamp
@@ -7,6 +8,8 @@
 // 0x005DB98E/0x005DBE6A/0x001FF3A9; neighbours 0x005DBEEB/0x005DC3C1;
 // same forEach cast shape as Rva005DC3C1.cpp; 1.0f is a compiler
 // literal per Elem precedent, not an extern.
+#include <windows.h>
+
 class Rva005DBE6AListener
 {
 public:
@@ -37,7 +40,6 @@ struct Elem005DB98E
 	float m_08;
 };
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 int g_00DD35C4 = 3000;	// retail RVA 0x009D35C4 (.data, 4 bytes), defined here: nothing else owns it
 
 class PortNegotiationSchema

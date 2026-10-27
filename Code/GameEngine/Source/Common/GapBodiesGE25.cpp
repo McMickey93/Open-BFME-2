@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /DNDEBUG
+// platformsdk
 // Small bodies from .text gaps no Ghidra function covers (twenty-fifth
 // batch; see GapBodiesGE01.cpp). Each begins after its neighbour's padding or
 // ret and ends in its own ret. Retail bytes establish every shape; owning
@@ -6,7 +7,7 @@
 // of only the members it touches. Callees and globals use the ledger's
 // existing spellings.
 
-extern "C" __declspec(dllimport) int __stdcall PulseEvent(void *event);
+#include <windows.h>
 
 // --- 0x00040FB5 (24B): pulse the +4 event handle when there is one.
 class Rva00040FB5

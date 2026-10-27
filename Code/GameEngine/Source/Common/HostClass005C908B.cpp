@@ -1,4 +1,7 @@
 // cl: /O1 /DNDEBUG /MD /EHsc /arch:SSE
+// platformsdk
+#include <windows.h>
+
 class OpaqueRefCounted
 {
 public:
@@ -25,7 +28,6 @@ public:
 };
 
 typedef long Long;
-extern "C" __declspec(dllimport) Long __stdcall InterlockedIncrement(Long volatile *addend);
 
 // Existing 0x00051971 assignment body from stlport_stringtailrecord144_dtor.cpp.
 // Keep the complete noinline provider visible here: VC7.1 then proves the

@@ -1,3 +1,4 @@
+// platformsdk
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // ?rva000685E2@BaseHeightMapRenderObjClass@@QAEXXZ @0x000685E2 272B
 // Bulk DX8 texture-stage + render-state reset. Retail is 4x
@@ -13,7 +14,9 @@
 // in the BaseHeightMap code (0x00066808..0x00069DB1). Semantic donor: the
 // stage-0/1 reset matches ZH CloudMapTerrainTextureClass::restore, which
 // BFME 1's FlatHeightMap Render calls at the same points.
-typedef long HRESULT;
+
+#include <windows.h>
+
 struct IDirect3DDevice8
 {
 	virtual void v00();

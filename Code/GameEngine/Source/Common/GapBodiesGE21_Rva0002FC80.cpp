@@ -11,6 +11,7 @@
 // the rep stos memset are the /O2 intrinsic forms. Names stay address-derived
 // except the two operator new overloads, whose ABI is the one Zero Hour's
 // GameMemory.h declares for the file/line forms.
+#include <mbstring.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -53,14 +54,6 @@ void *rva0002FCA0(void *block, unsigned int size)
 {
 	return ((void *(__cdecl *)(void *, unsigned int, int, int))g_00DE0400)(block, size, 0, 0);
 }
-
-
-
-// --- 0x0002FD50 (6B): _mbsdup forwarder (tail jump through the import).
-extern "C" __declspec(dllimport) unsigned char *__cdecl _mbsdup(const unsigned char *s);
-
-
-
 
 // --- 0x0002FFA0 (25B): run the resolver 0x00030730 (its WorldBuilder
 // identity MemoryPool::InitFunctionPointers), register the slot at

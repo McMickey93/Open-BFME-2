@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /GX
+// platformsdk
 //
 // The first BFME2 connection-manager virtual after the two destructors
 // reinitializes frame data and clears the announced frame horizon.  This is a
@@ -9,9 +10,8 @@ struct FrameDataManager
 	void reset(void);
 };
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-
 class Object;
+#include <windows.h>
 #include "GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;

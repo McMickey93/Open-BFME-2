@@ -4,7 +4,9 @@
 // Rva002AA14DBonuses is the existing BFME2 owner; its named constructor
 // and apply provider already establish this 4C-byte record. Donor purpose
 // and native/WB transition evidence below establish the counter meanings.
-#define __max(a,b) (((a)>(b))?(a):(b))
+
+#include <stdlib.h>
+
 class Rva002AA14DBonuses {public:float m_armorScalar;int m_bombardment,m_searchAndDestroy,m_holdTheLine;float m_sightRangeScalar;unsigned char masks[0x38];};
 typedef Rva002AA14DBonuses BattlePlanBonuses;
 enum BattlePlanStatus {PLANSTATUS_BOMBARDMENT=1,PLANSTATUS_HOLDTHELINE=2,PLANSTATUS_SEARCHANDDESTROY=3};

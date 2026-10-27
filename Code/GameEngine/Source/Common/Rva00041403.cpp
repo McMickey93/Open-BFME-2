@@ -3,6 +3,7 @@
 // INI::parseAudioSettingsDefinition (0x0004171A); the helpers' private
 // register conventions come out only with the caller in the same unit, so
 // it replaces the two source-only absent-from-retail callers that stood in.
+#include <float.h>
 #include "Common/INIException.h"
 
 // Native00041403..00041457, RET0: ECX base and EAX byte offset.
@@ -13,7 +14,7 @@
 // (debug-only "You must specify <name> in the AudioSettings entry"). The name
 // parameter must be declared: only then does 0x000416EC keep pushing its own
 // name argument as retail does while this callee's copy is dropped.
-extern "C" __declspec(dllimport) int __cdecl _isnan(double);
+
 static __forceinline void replaceNan(unsigned &value, const unsigned &replacement)
 {
  if (_isnan(*(const float *)&value)) value = replacement;

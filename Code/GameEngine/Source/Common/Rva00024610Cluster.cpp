@@ -1,5 +1,5 @@
 // cl: /Od
-void *__cdecl operator new(unsigned int, void *p) throw();
+
 //
 // One-off STLport-shaped helpers from the 0x00024610 neighbourhood, sitting
 // between BfmeTwoHundredEightyTwo's bfmeMakePV and the rowed list/swap bodies.
@@ -8,6 +8,8 @@ void *__cdecl operator new(unsigned int, void *p) throw();
 // address-derived because no named caller reaches them. The 0x000248A0 fill
 // loop has no clean C++ shape that reproduces its moved parameter copies, so
 // it is written as the recovered body.
+
+#include <new.h>
 
 namespace _STL
 {

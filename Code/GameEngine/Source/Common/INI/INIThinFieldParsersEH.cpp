@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // Thin FieldParse procs built with unwinding (AsciiString temporaries);
 // original names unproven, so address names:
@@ -11,9 +12,8 @@
 //   0x005096FF 33B WeaponLaunchBoneSlotOverride (0x00C64670): weapon slot index
 //       (member scanIndexList over the VA 0x00DBC284 names) into the store.
 
+#include <windows.h>
 #include "ascii_string.h"
-
-#define NULL 0
 
 class INI
 {

@@ -22,6 +22,7 @@
 // bits 12/13/14), Object::setVisionRange 0x0028BB54. The bonuses record keeps
 // the ledger's address name Rva002AA14DBonuses (layout in Rva002AA14DBonuses.cpp).
 
+#include <stdlib.h>
 #include "unicode_string.h"
 
 typedef int Int;
@@ -43,7 +44,6 @@ enum
 	ALL_PLANS = 1000000
 };
 
-#define __max(a, b) (((a) > (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
 template <int NUMBITS>

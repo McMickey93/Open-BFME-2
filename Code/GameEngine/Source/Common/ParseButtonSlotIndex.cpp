@@ -1,9 +1,9 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
 // ?ParseButtonSlotIndex@@YA_NPBDPAH@Z @0x00529628 112B evidence: free cdecl bool const-char plus int-out like caller 0x005297A0; GetParam index plus atoi 0-5 plus AsciiString temp; pin Rva004128F0GetParam plus IAT atoi plus releaseBuffer; string index; unblocks 6 callers
+#include <stdlib.h>
 #include "ascii_string.h"
 
 bool Rva004128F0GetParam(const char *a, const char *b, AsciiString &out);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 
 bool __cdecl ParseButtonSlotIndex(const char *section, int *out)
 {

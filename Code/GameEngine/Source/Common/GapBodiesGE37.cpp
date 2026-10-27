@@ -6,6 +6,8 @@
 // name and a view of only the members it touches. Callees and globals use the
 // ledger's existing spellings.
 
+#include <mbstring.h>
+
 class AsciiString;
 class Vector2;
 
@@ -236,7 +238,6 @@ void Rva000E43CE::rva00106F71(float value)
 // --- 0x000EF99D (6B): _mbslen forwarder; 0x000EF9A3 (5B): the second
 // argument; 0x000EF9A8 (6B) / 0x000EF9AE (20B): StringClass's header ahead
 // of the buffer and its length store unless the buffer is m_EmptyString.
-extern "C" __declspec(dllimport) unsigned int __cdecl _mbslen(const unsigned char *s);
 
 unsigned int rva000EF99D(const unsigned char *s)
 {
