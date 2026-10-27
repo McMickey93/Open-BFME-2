@@ -557,7 +557,6 @@ address_global	Code/GameEngine/Source/Common/Rva007B49B3ButtonNameInits.cpp	g_Va
 address_global	Code/GameEngine/Source/Common/Rva007B6830SegLineInit.cpp	g_Va00A1F4E8	2
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va009E5DF8	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va009EE920	3
-address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va009EE938	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va009F6F30	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00A1F2B8	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00A1F4E8	3

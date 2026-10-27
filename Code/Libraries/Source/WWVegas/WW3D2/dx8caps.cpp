@@ -61,7 +61,8 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include <windows.h>
 #include <mmsystem.h>
 
-static StringClass CapsWorkString;
+// The cleanup thunk in Rva007B6880Thunks.cpp shares this retail object.
+extern "C" { StringClass CapsWorkString; }
 
 #define DXLOG(n) CapsWorkString.Format n ; CapsLog+=CapsWorkString;
 // Same as DXLOG but appends through the overlay, so the body reaches CapsLog

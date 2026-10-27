@@ -574,6 +574,14 @@ still counts the already deleted PoolKey/Xfer providers, so current linking
 clearance and census confirmation remain pending (LINK-017).
 [Evidence](../reverse/attempt_support/fireweaponcollide-data-index-20261027.md).
 
+2026-10-27, `f3d49bea73`: `dx8caps.cpp` preserves LINKS (8,058 authored bytes)
+while cleanup `007B7070` binds to its existing `CapsWorkString` object rather
+than a separate unsigned placeholder. The existing initializer remains exact;
+932 cohort function rows and 22 data rows pass. The owning tool retires two
+data-debt keys, and one address-global hatch key retires. The cleanup TU's
+separate provider and data prerequisites remain. [Evidence](../reverse/attempt_support/dx8caps-work-string-ownership-20261027.md),
+LINK-007. No census gain is claimed.
+
 2026-10-27, `e1a73387fd`: `UpgradeDie.cpp` preserves LINKS (120 authored bytes)
 while its stale local key/guard index is refreshed after the already landed
 rename and separate-clearer removal. The owning tool retires one data-debt key;

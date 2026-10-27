@@ -1469,6 +1469,18 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   mixed sources stay outside this repair. Broader data closure and census
   confirmation remain open; no new census or ownership gain is claimed.
 
+- **DX8Caps work-string ownership (2026-10-27, control `f3d49bea73`):**
+  [The lifetime-preserving repair](../reverse/attempt_support/dx8caps-work-string-ownership-20261027.md)
+  binds cleanup `007B7070` to dx8caps.cpp's existing StringClass at `009EE938`,
+  replacing the cleanup TU's unsigned placeholder and registering the real
+  four-byte storage. All 932 cohort function rows and 22 data rows pass; the
+  owning tool retires both DX8Caps data keys with zero remaining source findings.
+  One address-global hatch key (three occurrences) retires. Ordinary previews
+  preserve DX8Caps's 8,058 authored bytes and the cleanup TU's separate
+  LargeGroupAudio provider prerequisite. Its other data findings remain open.
+  This subset's storage and lifetime binding is verified; strict closure,
+  census and image-ownership confirmation remain unclaimed.
+
 - **Buffer-slot FVF table identity (2026-10-27, control `1710ea0aea`):**
   [The current-owner repair](../reverse/attempt_support/buffer-slot-fvf-data-20261027-codexb4.md)
   replaces the slot allocator's private table with the existing unsigned-array
