@@ -20,14 +20,32 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 
 struct Rva005C84F1Record { Rva005C84F1Record(); Rva005C84F1Record(const Rva005C84F1Record&); ~Rva005C84F1Record(); Rva005C84F1Record&operator=(const Rva005C84F1Record&); private: char bytes[72]; };
-namespace _STL {template<> void _Construct<Rva005C84F1Record,Rva005C84F1Record>(Rva005C84F1Record*,const Rva005C84F1Record&);}
-template void _STL::vector<Rva005C84F1Record>::reserve(unsigned int);
 
-// Bind this opaque element view to the existing native lifetime providers.
 // reserve calls 5C8445 -> uninitialized_copy 5C83FA -> _Construct 5C83CD;
 // its old storage cleanup calls 5C84D3 -> destroy range 5C847B -> 5C8FBD.
-// Both loops step by 0x48, matching this view. The copy provider takes two
-// cdecl pointers; the destructor takes this in ECX and has no stack arguments.
-// These are the rowed owners, not new identities for the application record.
-#pragma comment(linker, "/alternatename:??$_Construct@URva005C84F1Record@@U1@@_STL@@YAXPAURva005C84F1Record@@ABU1@@Z=??$_Construct@URva005C8624Element@@U1@@_STL@@YAXPAURva005C8624Element@@ABU1@@Z")
-#pragma comment(linker, "/alternatename:??1Rva005C84F1Record@@QAE@XZ=??1Rva005C8FBD@@QAE@XZ")
+// Both loops step by 0x48, matching this view. Forward both helpers to the
+// rowed Rva005C8624Element copy and the two-pointer _Destroy spelling at
+// 5C847B (declared only); these are the owners, not new identities for the
+// application record. The tag is a plain local: a value-initialized
+// __false_type() would add a store retail lacks.
+struct Rva005C8624Element;
+struct Rva005C84D3Element;
+namespace _STL {
+template <> Rva005C8624Element *__uninitialized_copy<Rva005C8624Element *, Rva005C8624Element *>(
+    Rva005C8624Element *, Rva005C8624Element *, Rva005C8624Element *, const __false_type &);
+template <> void _Destroy<Rva005C84D3Element *>(Rva005C84D3Element *, Rva005C84D3Element *);
+template <> __declspec(dllimport) __forceinline Rva005C84F1Record *__uninitialized_copy<Rva005C84F1Record *, Rva005C84F1Record *>(
+    Rva005C84F1Record *__first, Rva005C84F1Record *__last, Rva005C84F1Record *__result, const __false_type &)
+{
+    __false_type __tag;
+    return reinterpret_cast<Rva005C84F1Record *>(__uninitialized_copy(
+        reinterpret_cast<Rva005C8624Element *>(__first), reinterpret_cast<Rva005C8624Element *>(__last),
+        reinterpret_cast<Rva005C8624Element *>(__result), __tag));
+}
+template <> __declspec(dllimport) __forceinline void _Destroy<Rva005C84F1Record *>(Rva005C84F1Record *__first, Rva005C84F1Record *__last)
+{
+    _Destroy(reinterpret_cast<Rva005C84D3Element *>(__first), reinterpret_cast<Rva005C84D3Element *>(__last));
+}
+}
+
+template void _STL::vector<Rva005C84F1Record>::reserve(unsigned int);
