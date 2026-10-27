@@ -5,26 +5,28 @@
 // callees are pinned under address-derived names with the argument counts
 // their own `ret` immediates prove.
 
-// --- 0x0035A97E (22B): both arguments and the +0x08 word to the +0x04
-// object's 0x0035A8D7 (ret 0xC).
+// --- 0x0035A97E (22B): slot 0 of table 0x00C153D4, the data ledger's
+// ??_7Rva00359853@@6B@ that the constructor 0x00359853 and the stack visitor
+// in Rva0035A292::rva0035A005 install: both cell coordinates and the +0x08
+// word to the +0x04 object's 0x0035A8D7 (ret 0xC).
 class Rva0035A8D7
 {
 public:
 	void rva0035A8D7(void *a, void *b, void *c);			// 0x0035A8D7
 };
 
-class Rva0035A97E
+class Rva00359853
 {
 public:
-	virtual void rva0035A97E(void *cellX, void *cellY);
+	virtual void slot00(int cellX, int cellY);
 private:
 	Rva0035A8D7 *m_target;									// +0x04
 	void *m_08;												// +0x08
 };
 
-void Rva0035A97E::rva0035A97E(void *cellX, void *cellY)
+void Rva00359853::slot00(int cellX, int cellY)
 {
-	m_target->rva0035A8D7(cellX, cellY, m_08);
+	m_target->rva0035A8D7((void *)cellX, (void *)cellY, m_08);
 }
 
 // --- 0x004E81DE (33B): when the flag is set, pass the +0x08 word, the first

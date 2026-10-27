@@ -35,7 +35,8 @@ class Rva00359853
 {
 public:
 	Rva00359853(unsigned int field04, unsigned int field08);
-	virtual void slot00() {}
+	// Slot 0 is the rowed 0x0035A97E (GapBodiesS3D.cpp).
+	virtual void slot00(int cellX, int cellY);
 private:
 	unsigned int m_field04;
 	unsigned int m_field08;
