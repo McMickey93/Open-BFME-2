@@ -1,4 +1,6 @@
 // cl: /O1 /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /G7
+#include <string.h>
+
 // ??1Rva007E3C20Vp6Stream@@UAE@XZ, retail 0x00090840..0x000908F6 (182
 // bytes, EH): the VP6 stream's destructor, called by its scalar deleting
 // destructor (??_GRva0090840, call at 0x00091156; table 0x00BC7F20).
@@ -95,7 +97,6 @@ struct VP6YUVConfig
 	unsigned char *yOrigin;
 };
 extern "C" void __cdecl VP6_GetYUVConfig(VP6Instance *instance, VP6YUVConfig *config);
-extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count);
 
 void __cdecl BFME_DX8_Thread_Lock();
 bool __cdecl BFME_DX8_Thread_Assert();
