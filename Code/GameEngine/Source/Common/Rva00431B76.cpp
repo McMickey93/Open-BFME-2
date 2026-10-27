@@ -57,7 +57,7 @@ public:
 	bool IsFirstButtonStillDown();
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 void FormationTranslator::WaitForSecondButtonDownStateHandler::Update()
 {

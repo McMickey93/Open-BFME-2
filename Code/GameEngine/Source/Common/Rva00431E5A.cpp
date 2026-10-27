@@ -26,7 +26,7 @@ public:
 	void rva00431E5A();
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 void Rva00431E5A::rva00431E5A()
 {

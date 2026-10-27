@@ -13,7 +13,7 @@ int __cdecl AreBothButtonsUp();
 extern "C" const void *const __identifier("??_7Rva0043190E@@6B@")[];
 extern "C" const void *const __identifier("??_7Rva004318FC@@6B@")[];
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 struct Rva00431A80Helper
 {
