@@ -8,7 +8,7 @@
 // { strcmp(); }; caller at 0x00404679. Plain extern strcmp (no dllimport)
 // so the call routes through the thunk; /Oi- keeps it a call instead of
 // inlined repz cmpsb. Original method name remains unknown.
-extern "C" int __cdecl strcmp(const char *a, const char *b);
+#include <string.h>
 
 // g_00DC1B68: VA 0x00DC1B68 (.data). Retail's 28 string pointers end at the
 // null sentinel at VA 0x00DC1BD8; strcmp observes text, not literal addresses.

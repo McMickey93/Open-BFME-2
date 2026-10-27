@@ -10,7 +10,7 @@
 // plus /arch:SSE for the chunk-min cmovl (RAMFileRead precedent: no /G flag
 // emits cmov).
 
-extern "C" __declspec(dllimport) int __cdecl _memicmp(const void *, const void *, unsigned int);
+#include <string.h>
 
 class Rva003FC43A
 {
