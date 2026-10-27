@@ -3850,6 +3850,19 @@ Remaining / next check: reconcile the existing row names, operation and receiver
 Clearance: pending.
 Census confirmation: not claimed.
 
+**Served-unit recheck (2026-10-27, `9ac97a4584`, index `bf3dd31211`):**
+`StlSweepW6Rva0016DEC0.cpp` still previews U1/L1/S1 with the current
+`RvaTreeFindGenP12pod00927790.cpp` provider, which retains LINKS (108 B).
+The wrapper remains byte-exact (21 B). The native callee's final reverse
+comparison rejects a non-equal lower-bound candidate, so the operation is
+`find`, not the sweep's `lower_bound`. Its native tree compares three signed
+integer key words, unlike the sweep's string-containing element. The retail
+caller index has no wrapper caller; the outer container and constness remain
+unproven. BFME 1's 0x00927BF0 tree-find instantiation is a structural lead,
+not canonical owner evidence. No source change or repeated suppression trial
+was retained; a blocked verdict defers this candidate pending receiver and
+operation identity reconciliation. Census confirmation remains unclaimed.
+
 ### LINK-056: pointer-copy sweep spelling selects memmove for a native string-copy wrapper
 
 Status: Blocked on template identity reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.
