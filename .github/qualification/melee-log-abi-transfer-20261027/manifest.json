@@ -1,0 +1,35 @@
+{
+  "fork": "McMickey93/Open-BFME-2",
+  "control_branch": "codex/20261027-melee-log-abi-transfer",
+  "result_branch": "codex/20261027-melee-log-abi-verified",
+  "checkpoint_prefix": "codex/20261027-melee-log-abi-checkpoint",
+  "branch": "refs/heads/codex/20261027-next-cleanup",
+  "base": "75b39b52832cbbec8327db99b454d656d6c1586c",
+  "commit": "f75c63c95e106fa73723e15a2b20e08a4dd826e0",
+  "tree": "f490f546aa858f489b960b895146c9d8b959fb48",
+  "files": [
+    "Code/GameEngine/Source/GameLogic/AI/AIAttackMeleeApproachStateOnEnter.cpp",
+    "docs/linking_obstacles.md",
+    "reverse/attempt_support/20261027-melee-log-game-abi.md",
+    "reverse/re_attempts.log"
+  ],
+  "source": "Code/GameEngine/Source/GameLogic/AI/AIAttackMeleeApproachStateOnEnter.cpp",
+  "source_blob": "70999ec9c107f6d9c14a408be969e9cc82d85afd",
+  "agents_blob": "922001686b9b38567dd6ef67d16d46cb68320a1b",
+  "reviewed_blobs": {
+    "Code/GameEngine/Source/GameLogic/AI/AIAttackMeleeApproachStateOnEnter.cpp": "70999ec9c107f6d9c14a408be969e9cc82d85afd",
+    "Code/GameEngine/Source/Common/FprintfAppendLine.cpp": "3d9acca6971aea68681eb7a652802aed6f110c32",
+    "reference/open-bfme-1": "e74410b3738a2bb75d626085d9ebfd3406a43ff7"
+  },
+  "sha256": "205984f775ec9bf5dcfb988412df5a1b85e466bfdf4e6ef56cbec6daf9f40efc",
+  "verify_sources": [
+    "Code/GameEngine/Source/GameLogic/AI/AIAttackMeleeApproachStateOnEnter.cpp",
+    "Code/GameEngine/Source/Common/FprintfAppendLine.cpp"
+  ],
+  "normal_precommit_passed": true,
+  "normal_official_prepush_passed": true,
+  "transport_expected": "75b39b52832cbbec8327db99b454d656d6c1586c",
+  "claim_ref": "refs/heads/claims/file/cc51e3660620a53c",
+  "claim_owner": "github:McMickey93:bfme2:next-one-20261027",
+  "claim_lease": "a34a9c152c2246c2a34cfbf3040f23a3"
+}
