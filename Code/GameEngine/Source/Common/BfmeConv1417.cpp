@@ -1,6 +1,6 @@
 // Open-BFME5 conversions.
 
-extern "C" void *memset(void *d, int c, unsigned n);
+#include <string.h>
 #pragma intrinsic(memset)
 
 class BfmePoolVLR
