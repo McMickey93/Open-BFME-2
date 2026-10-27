@@ -248,8 +248,8 @@ void Rva005C6D4D::rva005C6D9C()
     for (int i = 0; i < count; ++i) {
         if (visit(i)) {
             if (((_STL::map<int,int> *)&tree)->find(i) == ((_STL::map<int,int> *)&tree)->end()) {
-                Rva005C663C *p = new Rva005C663C;
-                ((Rva002BED91 *)&tree[i])->set((TargetRef00217D4C *)p);
+                Rva005C663C *buttonFlash = new Rva005C663C;
+                ((Rva002BED91 *)&tree[i])->set((TargetRef00217D4C *)buttonFlash);
                 flag = true;
             }
         } else {

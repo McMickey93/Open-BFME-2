@@ -2808,3 +2808,4 @@ carry,?execute@Rva0010F5A8@@QAEXXZ,?execute@SetStreamPositionCommand@@QAEXXZ,inf
 carry,Rva0010F5A8::execute::stream,SetStreamPositionCommand::execute::stream,inferred,scope renamed by Rename Rva0010F5A8 to SetStreamPositionCommand (inferred),Code/GameEngine/Source/Common/Rva0010F5A8Finish.cpp,0x0010F5A8
 class,Rva0015FC20TransformPrefix,RigidTransform,inferred,agree:nl-5300797de33d,Code/Libraries/Source/WWVegas/WW3D2/Rva0015FC20TransformCompose.cpp,
 carry,Rva0015FC20TransformPrefix::compose::rotatedPosition,RigidTransform::compose::rotatedPosition,inferred,scope renamed by Rename Rva0015FC20TransformPrefix to RigidTransform (inferred),Code/Libraries/Source/WWVegas/WW3D2/Rva0015FC20TransformCompose.cpp,0x0015FC20
+local,Rva005C6D4D::rva005C6D9C::p,Rva005C6D4D::rva005C6D9C::buttonFlash,inferred,agree:nl-a414175ab5de,Code/GameEngine/Source/Common/Rva005C6CCC.cpp,0x005C6D9C
