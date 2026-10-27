@@ -148,14 +148,14 @@ inline Rva005D3311 operator+(const Rva005D32EC &left,const char *right)
  Rva005D3311 result; static_cast<Rva005D32EC &>(result)=left;
  result.m_text3=text; return result;
 }
-class Rva005D2EA8Listener {
+class RollOverListener {
 public: virtual void notify(void *)=0;
  virtual void slot1()=0; virtual void slot2()=0;
  virtual void rollOut(void *)=0; virtual void rollOver(void *)=0;
 };
 class Rva005D2EA8Base {
-public: virtual Rva005D2EA8Listener *getListener() const=0;
- virtual void setListener(Rva005D2EA8Listener *)=0;
+public: virtual RollOverListener *getListener() const=0;
+ virtual void setListener(RollOverListener *)=0;
  virtual bool getRollOver() const=0;
  // ?Rva005D2EA8BaseDestructor present-unmatched
  virtual ~Rva005D2EA8Base() {}
@@ -164,12 +164,12 @@ class Rva005D2EA8:public Rva005D2EA8Base {
 public:
  Rva005D2EA8(int level,const AsciiString &name,const char *stat);
  virtual ~Rva005D2EA8();
- virtual Rva005D2EA8Listener *getListener() const {return m_listener;}
- virtual void setListener(Rva005D2EA8Listener *listener) {m_listener=listener;}
+ virtual RollOverListener *getListener() const {return m_listener;}
+ virtual void setListener(RollOverListener *listener) {m_listener=listener;}
  virtual bool getRollOver() const {return m_rollOver;}
  void onRollOut(const char *);
  void OnRollOver(const char *);
-private: Rva005D2EA8Listener *m_listener; bool m_rollOver; AptCommandMapAdder m_0C;
+private: RollOverListener *m_listener; bool m_rollOver; AptCommandMapAdder m_0C;
 };
 Rva005D2EA8::Rva005D2EA8(int level,const AsciiString &name,const char *stat):m_listener(0),m_rollOver(false)
 {
