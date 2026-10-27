@@ -24,7 +24,7 @@
 // pointer +0x0C, signed count +0x18, bool status and Save_Subobject slot +0x24.
 // The ret 4 ends at RVA 0x001A39C5, followed by eleven padding int3 bytes.
 // Vector/member names and the save-loop algorithm are carried from the donor.
-// The local storage view expands the donor's inline Count/operator[] accessors;
+// The local storage view spells the donor's inline Count/operator[] accessors;
 // it claims only the target-confirmed vector pointer and active-count offsets.
 class ChunkLoadClass;
 class ChunkSaveClass {
@@ -46,6 +46,8 @@ struct AggregateSubobjectListView {
     bool IsAllocated;
     int ActiveCount;
     int GrowthStep;
+    int Count() const { return ActiveCount; }
+    W3dAggregateSubobjectStruct *&operator[](int index) { return Vector[index]; }
 };
 class AggregateDefClass {
 public:
@@ -72,9 +74,9 @@ bool AggregateDefClass::Save_Info(ChunkSaveClass &chunk_save)
         if (chunk_save.Write(&m_Info, sizeof(m_Info)) == sizeof(m_Info)) {
             ret_val = true;
             for (int isubobject = 0;
-                 isubobject < m_SubobjectList.ActiveCount && ret_val == true;
+                 isubobject < m_SubobjectList.Count() && ret_val == true;
                  ++isubobject) {
-                ret_val = Save_Subobject(chunk_save, m_SubobjectList.Vector[isubobject]);
+                ret_val = Save_Subobject(chunk_save, m_SubobjectList[isubobject]);
             }
         }
         chunk_save.End_Chunk();
