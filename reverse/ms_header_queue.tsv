@@ -210,7 +210,6 @@ Code/Libraries/Source/WWVegas/WWLib/vector_class_resize.cpp	unverified	unverifie
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	unverified	unverified	2	0	0	0	2	0	0	0	0	0	0	<windows.h>	yes	no	hand			TRUE:unverified,FALSE:unverified
 Code/GameEngine/Source/Common/Rva001F8167Dtor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<crtdbg.h>,<new>	no	yes	hand			free:unverified,operator delete:same
 Code/GameEngine/Source/Common/Rva002147D1Get.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,memset:same
-Code/GameEngine/Source/Common/Rva0040CB11EntryCtor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	no	hand			operator new:unverified,size_t:same
 Code/GameEngine/Source/Common/Rva00431AEC.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
 Code/GameEngine/Source/Common/Rva00469BEAConstruct.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
 Code/GameEngine/Source/Common/Rva004F6352Construct.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
