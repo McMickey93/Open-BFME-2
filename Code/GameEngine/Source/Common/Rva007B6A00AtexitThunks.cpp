@@ -168,13 +168,6 @@ extern Rva00575674 g_00DFE4C4;	// retail RVA 0x009FE4C4 (.bss), defined in Rva00
 unsigned g_Va00DFE6DC;	// retail RVA 0x009FE6DC (.bss), defined here
 unsigned g_Va00DFE72C;	// retail RVA 0x009FE72C (.bss), defined here
 unsigned g_Va00DFE940;	// retail RVA 0x009FE940 (.bss), defined here
-unsigned g_Va00DFED90;	// retail RVA 0x009FED90 (.bss), defined here
-unsigned g_Va00DFED9C;	// retail RVA 0x009FED9C (.bss), defined here
-unsigned g_Va00DFEDA8;	// retail RVA 0x009FEDA8 (.bss), defined here
-unsigned g_Va00DFEDB4;	// retail RVA 0x009FEDB4 (.bss), defined here
-unsigned g_Va00DFEDC0;	// retail RVA 0x009FEDC0 (.bss), defined here
-unsigned g_Va00DFEDCC;	// retail RVA 0x009FEDCC (.bss), defined here
-unsigned g_Va00DFEDD8;	// retail RVA 0x009FEDD8 (.bss), defined here
 struct BfmeUiResourceEntryState;
 extern BfmeUiResourceEntryState BfmeUiResourceEntryCollectorState;
 extern unsigned g_Va00DFF030;
@@ -312,55 +305,6 @@ void __cdecl rva007B7768()
 	receiver->~AsciiString();
 }
 
-
-// ?rva007B7842@@YAXXZ @ 0x007B7842 (10B): ecx=&g_Va00DFED9C, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B7842()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00DFED9C;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
-
-// ?rva007B784C@@YAXXZ @ 0x007B784C (10B): ecx=&g_Va00DFEDA8, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B784C()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00DFEDA8;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
-
-// ?rva007B7856@@YAXXZ @ 0x007B7856 (10B): ecx=&g_Va00DFEDB4, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B7856()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00DFEDB4;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
-
-// ?rva007B7860@@YAXXZ @ 0x007B7860 (10B): ecx=&g_Va00DFEDC0, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B7860()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00DFEDC0;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
-
-// ?rva007B786A@@YAXXZ @ 0x007B786A (10B): ecx=&g_Va00DFEDCC, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B786A()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00DFEDCC;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
-
-// ?rva007B7874@@YAXXZ @ 0x007B7874 (10B): ecx=&g_Va00DFEDD8, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B7874()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00DFEDD8;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
-
-// ?rva007B787E@@YAXXZ @ 0x007B787E (10B): ecx=&g_Va00DFED90, tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C)
-void __cdecl rva007B787E()
-{
-	FXParticleSystem::OutwardEmissionVelocityInfo *receiver = (FXParticleSystem::OutwardEmissionVelocityInfo *)&g_Va00DFED90;
-	receiver->FXParticleSystem::OutwardEmissionVelocityInfo::~OutwardEmissionVelocityInfo();
-}
 
 // ?rva007B789C@@YAXXZ @ 0x007B789C (10B): ecx=&BfmeUiResourceEntryCollectorState, tail-jump to rowed ??1Rva004E5654@@UAE@XZ (0x004E5654)
 void __cdecl rva007B789C()
