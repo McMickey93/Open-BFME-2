@@ -52,3 +52,60 @@ match-cache compile. Source/header paths are unchanged in this prerequisite
 commit; active consumers need no repointing. Code/data/header registers contain
 no key for either edited source. No debt retirement or newly authored bytes
 are claimed by the prerequisite.
+
+## Applied merge and publication audit
+
+After prerequisite commit c8ebfe4c97, the supported --merge accepted the seed
+and ReAcquireResources, repointed five functions.csv rows and the existing
+parent's tu_map source cell, and removed the donor. No map regeneration was
+committed. The merge also claims its complete inspected 16-row scope, including
+the unchanged copyRect satellite. An obsolete forward-owner comment and a
+redundant identical draw-size macro were removed from the generated text.
+
+The ordinary build verifies all 15 merged rows and the unchanged copyRect row
+(16/16); three EH graphs remain EXACT, including all renumbered unwind labels.
+Declared-unmatched, class and TU-ownership checks pass. The staged identity
+check reports 15 rows and zero new findings. Shadow data reports zero findings;
+converged enforcement reports zero second names or unjudged rows. All 554
+external definitions in the union of the two prerequisite objects remain in
+the merged object with an identical pre-merge body, extent, relocation identity,
+section flags and COMDAT selection. No new undefined name appears; the prior
+ReAcquireResources reference is now satisfied inside the TU.
+
+A plain link_check call still sees the deleted donor in the older census and
+reports a duplicate ReAcquireResources. A read-only scoped preview uses the
+existing link_batch_audit.overlay API to omit precisely that retired object,
+replace the four current scoped objects and refresh ledger ownership in memory.
+It writes no index or census/status history. This models the actual merge
+rather than leaving a second stale strong definition in the preview. Current
+Smudge, copyRect and thread-lock/check providers all pass this scoped preview.
+Bounded --prepare-current on the two owned Smudge sources passes all 16 rows
+and supplies two strict reusable receipts. The two unchanged thread providers
+retain ordinary source/command/dependency-cache proof; no full strict closure
+or census gain follows from this scoped preview.
+
+The scoped Microsoft-header scanner finds no local Microsoft declarations or
+failed files (one included configuration occurrence). refresh_queue reports no
+tracked queue change after accounting for the removed donor. Neither source
+has canonical-header, identity, data, hatch or flag-override debt keys to
+transfer or retire. No debt is silently dropped.
+
+The complete outgoing origin/master..HEAD plus staged batch was audited against
+origin/master dcf3fc024d09 before final publication. The inherited ScriptEngine
+and EA encoder edits are in place; this merge is its only production path
+removal. A combined old-path/basename search of tools, hooks, workflows, Code,
+shims, docs and reverse registers finds no active tooling/include/build consumer
+requiring repointing. The supported merge updated functions.csv and tu_map.csv;
+no source list or fold-proof entry names the donor. Remaining mentions are the
+historical name_basis record, nightly link_status snapshot, append-only attempt
+log/handoffs and explicit provenance comments in the merged TU. These retain
+their historical meaning. The old Rva000A6176Finish owner comment was removed.
+No unrelated register or tooling path was changed.
+
+Additional receipts: build/codex5-smudge/{merge.txt,merged-build.txt,
+compare-merge.py,compare-merge.txt,merged-identity.txt,merged-ownership.txt,
+merged-ms-header.json,merged-prepare.txt,merged-preview.py,merged-preview.txt,
+pending-path-audit.txt,path-consumers.txt}. File count falls by one; no new
+retail bytes, code/data debt retirement or headline LINKED/ownership gain is
+claimed. The next census must confirm the current provider closure and retired
+object. copyRect's SDK prerequisite and all four mixed satellites remain open.

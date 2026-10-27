@@ -4681,7 +4681,7 @@ Clearance: string composition only; no new linked-byte or ownership gain is clai
 
 ### LINK-118: W3DSmudge consolidation crossed a surface-wrapper and index-buffer view boundary
 
-Status: Prerequisites repaired; verified merge subset available. Updated: 2026-10-27; inspected revision: 51d6830ba1.
+Status: ReAcquireResources subset merged and verified; copyRect remains open. Updated: 2026-10-27; prerequisite revision: c8ebfe4c97.
 
 The current-map W3DSmudge.cpp merge rejected ReAcquireResources: its temporary
 wrapper inherited the seed's engine SurfaceClass, and the seed selected the
@@ -4695,7 +4695,16 @@ the pair. Current-object previews with BfmeDX8ThreadLock/Check give 5/5 LINKS
 for those providers and all three Smudge units, confirming LINK-106's existing
 repair rather than recording a census improvement.
 
-Remaining: apply and verify the supported two-file merge. copyRect still fails
+Clearance: the supported merge removes ReAcquireResources's donor and retains
+all 15 rows in W3DSmudge.cpp, with 554 external definitions unchanged from the
+prerequisite-object union and no new undefined name. The two owned Smudge
+sources pass bounded strict preparation (16/16 rows including copyRect). A
+read-only current-object overlay that omits the retired census donor previews
+4/4 LINKS with current thread providers; their ordinary receipts do not prove
+full strict closure. A plain old-index preview retains the retired strong
+definition and reports a stale duplicate. No census or headline gain follows.
+
+Remaining: copyRect still fails
 at IDirect3DSurface9 because the seed's D3D8 headers suppress the D3D9 SDK
 interface; the previously recorded 0x0900 trial instead duplicates SDK enums.
 Keep that donor and the four mixed files intact. Full evidence and follow-up:

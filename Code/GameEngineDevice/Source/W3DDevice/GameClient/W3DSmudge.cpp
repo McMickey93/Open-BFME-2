@@ -14,7 +14,6 @@
 #include "GameClient/view.h"
 #include "GameClient/display.h"
 #include "WW3D2/texture.h"
-// The qualified Zero Hour include bypasses the BFME count/lock shim.
 #include "../../../../../reference/shims/indexbuffercount/dx8indexbuffer.h"
 #include "dx8wrapper.h"
 #include "WW3D2/rinfo.h"
@@ -25,6 +24,7 @@
 //#pragma optimize("", off)
 //#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
 
+
 #endif
 #define SMUDGE_DRAW_SIZE	500	//draw at most 50 smudges per call. Tweak value to improve CPU/GPU parallelism.
 #define UNIQUE_COLOR	(0x12345678)
@@ -33,8 +33,6 @@
 #define W3DMPO_GLUE(ARGCLASS)
 
 SmudgeManager *TheSmudgeManager=NULL;
-
-// W3DSmudgeManager::ReAcquireResources is defined with its retail-matched body in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva000A6176Finish.cpp (0x000A6176).
 
 /*Copies a portion of the current render target into a specified buffer*/
 // Defined with its retail-matched body in W3DSmudge_copyRect.cpp (0x000A6270); this
@@ -91,6 +89,30 @@ public:
 };
 
 class DX8IndexBufferClass;
+
+extern void BFME_DX8_Thread_Lock();
+
+// Match the existing indexbuffercount shim; the provider's established
+// alternate name resolves this interface to the retail release half.
+extern void BFME_DX8_Thread_Assert();
+
+// The returned wrapper owns one pointer, as in W3DGetBackBufferSurface.cpp
+// and W3DRadarResetSurface_destructor.cpp. It is not the engine SurfaceClass
+// object; keep its storage independent of that class's donor header layout.
+class W3DRadarResetSurface
+{
+public:
+	~W3DRadarResetSurface();
+
+private:
+	void *m_surface;
+};
+
+W3DRadarResetSurface getBackBufferSurface006e(int index);
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudge.cpp
+
+// The qualified Zero Hour include bypasses the BFME count/lock shim.
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerConstructor.cpp
 
@@ -195,7 +217,59 @@ void W3DSmudgeManager::ReleaseResources(void)
 	}
 }
 
-// tu-skeleton: 0x000A6176 250B ?ReAcquireResources@W3DSmudgeManager@@UAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp
+
+// ?ReAcquireResources@W3DSmudgeManager@@UAEXXZ
+// RVA 0x000A6176, size 250. Virtual slot 4 (offset 0x10) of vtable 0x007C92D8
+// (class of ??0W3DSmudgeManager@@QAE@XZ). Evidence: BFME1 donor
+// W3DSmudgeManager_ReAcquireResources.cpp (ReleaseResources call via slot 3,
+// getBackBufferSurface006e, Get_Description, DX8IndexBuffer 0x1770, 500-quad
+// WriteLock fill), BFME2 thread guard BFMEDX8DeviceLock (Lock/Assert) per
+// W3DSmudgeManagerReleaseResources.cpp sibling, m_indexBuffer +0x34,
+// width +0x38 height +0x3C.
+//
+
+void W3DSmudgeManager::ReAcquireResources(void)
+{
+	ReleaseResources();
+
+	BFMEDX8DeviceLock lock;
+
+	W3DRadarResetSurface surface = getBackBufferSurface006e(0);
+	SurfaceClass::SurfaceDescription surface_desc;
+	reinterpret_cast<SurfaceClass *>(&surface)->Get_Description(surface_desc);
+
+	m_backBufferWidth = (int)surface_desc.Width;
+	m_backBufferHeight = (int)surface_desc.Height;
+
+	DX8IndexBufferClass *index_buffer =
+		new DX8IndexBufferClass((unsigned)(SMUDGE_DRAW_SIZE * 4 * 3));
+	m_indexBuffer = index_buffer;
+
+	{
+		IndexBufferClass::WriteLockClass lockIdxBuffer((IndexBufferClass *)index_buffer);
+		unsigned short *ib = lockIdxBuffer.Get_Index_Array();
+		int vbCount = 0;
+		for (int i = 0; i < SMUDGE_DRAW_SIZE; i++)
+		{
+			ib[0] = (unsigned short)vbCount;
+			ib[1] = (unsigned short)(vbCount + 4);
+			ib[2] = (unsigned short)(vbCount + 3);
+			ib[3] = (unsigned short)(vbCount + 3);
+			ib[4] = (unsigned short)(vbCount + 4);
+			ib[5] = (unsigned short)(vbCount + 2);
+			ib[6] = (unsigned short)(vbCount + 2);
+			ib[7] = (unsigned short)(vbCount + 4);
+			ib[8] = (unsigned short)(vbCount + 1);
+			ib[9] = (unsigned short)(vbCount + 1);
+			ib[10] = (unsigned short)(vbCount + 4);
+			ib[11] = (unsigned short)(vbCount + 0);
+
+			vbCount += 5;
+			ib += 12;
+		}
+	}
+}
 
 // tu-skeleton: 0x000A6270 272B ?copyRect@@YAHPAEHHHHH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudge_copyRect.cpp (not merged yet)
 
@@ -209,15 +283,7 @@ void W3DSmudgeManager::ReleaseResources(void)
 
 // tu-skeleton: 0x00760A09 8B uw_00760a09 -- matched in Code/gen_small/uw_gen_000.cpp (not merged yet)
 
-// tu-skeleton: 0x00760A1B 8B uw_00760a1b -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
-
-// tu-skeleton: 0x00760A23 8B $L463 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
-
-// tu-skeleton: 0x00760A2B 10B $L464 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
-
-// tu-skeleton: 0x00760A35 10B __ehhandler$?ReAcquireResources@W3DSmudgeManager@@UAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManager_ReAcquireResources.cpp (not merged yet)
-
-// tu-skeleton: 0x00760A51 8B uw_00760a51 -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+// tu-skeleton: 0x00760A51 8B $L55540 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerTestHardwareSupport.cpp (not merged yet)
 
 // tu-skeleton: 0x00760A59 10B __ehhandler$?testHardwareSupport@W3DSmudgeManager@@QAE_NXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSmudgeManagerTestHardwareSupport.cpp (not merged yet)
 
