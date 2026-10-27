@@ -7,7 +7,7 @@
   "upstream": "https://github.com/Open-BFME/Open-BFME-2.git",
   "base": "fc0fa653f6625f78f615d7ca2c98148facf65853",
   "agents_blob": "43a21b639c94eba6538b14a8b7eb117adecd10c3",
-  "control_branch": "codex/20261027-bfme2-cleanup-qualification-v2",
+  "control_branch": "codex/20261027-bfme2-cleanup-qualification-v3",
   "result_branch": "codex/20261027-bfme2-qualified-apt-header",
   "reference_path": "reference/open-bfme-1",
   "new_reference": "39e371392398a33a30e1a6b3af67e5662a745bb1",
@@ -78,5 +78,6 @@
       ],
       "message": "Use the CRT free declaration in the AptOptions destructor unit\n\nInclude stdlib.h in place of the TU-local C++ free prototype. Keep a direct\ncall to the verified game _free wrapper with /D_CRTIMP=, and preserve the\nretail exception-state graph with /EHc- after /EHsc.\n\nVerify the complete consumer and its provider together: nine byte-exact rows,\ncomplete exact EH graph, declared-body check and Microsoft-header audit.\nThe real game Shell class remains. No new pin, function row, code coverage\nor debt-register retirement is claimed; new exact C++ bytes are +0.\n\nWork-Claim: file/7dec02d806ee6f77 (lease 2864338d05254e1087f0b1b2f20fd826)\nAgent-Authored: OpenAI Codex\n"
     }
-  ]
+  ],
+  "requirements": "reference/open-bfme-1/tools/requirements.txt"
 }

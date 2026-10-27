@@ -243,7 +243,7 @@ def qualified(bash):
     compiler = path(DATA["compiler"])
     require(hashlib.sha256(compiler.read_bytes()).hexdigest() == DATA["compiler_sha256"], "Original compiler changed")
     run("requirements", [sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
-                         "-r", "tools/requirements.txt"], quiet=True)
+                         "-r", DATA["requirements"]], quiet=True)
     run("ordinary-hook-setup", [bash, "tools/setup_hooks.sh"], quiet=True)
     require(git("normal-hooks", "config", "--get", "core.hooksPath", quiet=True).decode().strip() == ".githooks",
             "Normal project hooks required")
@@ -377,7 +377,7 @@ def transfer(bash):
     # executing artifact code. The real fork push also keeps its normal hook.
     init_reference()
     run("transfer-requirements", [sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
-                                  "-r", "tools/requirements.txt"], quiet=True)
+                                  "-r", DATA["requirements"]], quiet=True)
     run("ordinary-transfer-hook-setup", [bash, "tools/setup_hooks.sh"], quiet=True)
     token = os.environ.pop("BFME_TRANSFER_TOKEN", "")
     require(token and "\n" not in token and "\r" not in token, "Ephemeral fork token missing")
