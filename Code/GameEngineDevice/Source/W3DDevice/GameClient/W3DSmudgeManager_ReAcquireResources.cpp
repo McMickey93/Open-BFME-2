@@ -12,7 +12,9 @@
 #define SMUDGE_DRAW_SIZE 500
 
 extern void BFME_DX8_Thread_Lock();
-extern bool BFME_DX8_Thread_Assert();
+// Match the existing indexbuffercount shim; the provider's established
+// alternate name resolves this interface to the retail release half.
+extern void BFME_DX8_Thread_Assert();
 
 class BFMEDX8DeviceLock
 {
@@ -21,13 +23,10 @@ public:
 	~BFMEDX8DeviceLock() { BFME_DX8_Thread_Assert(); }
 };
 
-// Retail reads Width at desc+4 ([ebp-0x1c]) and Height at desc+8 ([ebp-0x18]),
-// so this TU declares a 16-byte description, not the upstream 32-byte one.
-// Retail's constructor (0x0011E050) and destructor (0x00176CB0) treat the
-// first word as a reference-counted handle -- the destructor loads it and
-// enters its table to release -- and Get_Description (0x00116620) is a member
-// reached with `this` = the object at [ebp-0x10]. The base is non-empty, so
-// the object is larger than the four-byte pointer its destructor touches.
+// Retail reads Width at desc+4 ([ebp-0x1c]) and Height at desc+8 ([ebp-0x18]).
+// Keep the three fields consumed here. Get_Description (0x00116620) is
+// reached with `this` = the returned wrapper at [ebp-0x10]. This call view
+// does not establish inheritance from the donor engine's SurfaceClass.
 class SurfaceClass
 {
 public:
@@ -43,10 +42,16 @@ public:
 	void Get_Description(SurfaceDescription &surface_desc);
 };
 
-class W3DRadarResetSurface : public SurfaceClass
+// The returned wrapper owns one pointer, as in W3DGetBackBufferSurface.cpp
+// and W3DRadarResetSurface_destructor.cpp. It is not the engine SurfaceClass
+// object; keep its storage independent of that class's donor header layout.
+class W3DRadarResetSurface
 {
 public:
 	~W3DRadarResetSurface();
+
+private:
+	void *m_surface;
 };
 
 W3DRadarResetSurface getBackBufferSurface006e(int index);
@@ -117,7 +122,7 @@ void W3DSmudgeManager::ReAcquireResources(void)
 
 	W3DRadarResetSurface surface = getBackBufferSurface006e(0);
 	SurfaceClass::SurfaceDescription surface_desc;
-	surface.Get_Description(surface_desc);
+	reinterpret_cast<SurfaceClass *>(&surface)->Get_Description(surface_desc);
 
 	m_backBufferWidth = (int)surface_desc.Width;
 	m_backBufferHeight = (int)surface_desc.Height;

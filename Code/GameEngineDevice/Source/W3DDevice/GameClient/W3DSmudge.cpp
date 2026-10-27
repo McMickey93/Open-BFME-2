@@ -14,7 +14,8 @@
 #include "GameClient/view.h"
 #include "GameClient/display.h"
 #include "WW3D2/texture.h"
-#include "WW3D2/dx8indexbuffer.h"
+// The qualified Zero Hour include bypasses the BFME count/lock shim.
+#include "../../../../../reference/shims/indexbuffercount/dx8indexbuffer.h"
 #include "dx8wrapper.h"
 #include "WW3D2/rinfo.h"
 #include "WW3D2/camera.h"
@@ -68,7 +69,9 @@ typedef int Int;
 void BFME_DX8_Thread_Lock(void);
 
 					// retail 0x00903090
-bool BFME_DX8_Thread_Assert(void);
+// Use the buffer shim's interface; BfmeDX8ThreadLock.cpp already redirects
+// this spelling to the retail bool-returning release half.
+void BFME_DX8_Thread_Assert(void);
 
 					// matched release half at 0x00120F50
 

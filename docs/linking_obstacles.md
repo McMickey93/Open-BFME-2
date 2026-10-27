@@ -4678,3 +4678,26 @@ Recovery follow-up (2026-10-27): the seven preserved commits were rebased onto `
 Remaining / next check: keep ImageConstructor's canonical ICoord2D and private StringBase collision, Dtor's private base/integer-list view, addImage's integer-to-pointer-list mismatch, Parse's byte failure, and the constructor's externally consumed allocator-copy conflict as prerequisites. Resolve each in its own verified commit before another merge. LINK-095 separately tracks the constructor's generated unwind callee binding.
 
 Clearance: string composition only; no new linked-byte or ownership gain is claimed. Census confirmation: pending the next scheduled census.
+
+### LINK-118: W3DSmudge consolidation crossed a surface-wrapper and index-buffer view boundary
+
+Status: Prerequisites repaired; verified merge subset available. Updated: 2026-10-27; inspected revision: 51d6830ba1.
+
+The current-map W3DSmudge.cpp merge rejected ReAcquireResources: its temporary
+wrapper inherited the seed's engine SurfaceClass, and the seed selected the
+Zero Hour unsigned-short index-buffer constructor. The wrapper now owns its
+single pointer independently and the seed explicitly selects the existing
+BFME indexbuffercount shim. Its established void unlock interface resolves
+through the existing BfmeDX8ThreadLock alternate name. All 15 standalone rows
+and three EH graphs verify; emitted definitions and undefined bindings are
+unchanged after only that alias normalization. The supported dry run accepts
+the pair. Current-object previews with BfmeDX8ThreadLock/Check give 5/5 LINKS
+for those providers and all three Smudge units, confirming LINK-106's existing
+repair rather than recording a census improvement.
+
+Remaining: apply and verify the supported two-file merge. copyRect still fails
+at IDirect3DSurface9 because the seed's D3D8 headers suppress the D3D9 SDK
+interface; the previously recorded 0x0900 trial instead duplicates SDK enums.
+Keep that donor and the four mixed files intact. Full evidence and follow-up:
+[Smudge consolidation](../reverse/attempt_support/smudge-reacquire-consolidation-20261027-codex5.md).
+Census confirmation remains pending.
