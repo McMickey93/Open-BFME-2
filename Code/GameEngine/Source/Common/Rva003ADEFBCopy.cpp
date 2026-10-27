@@ -3,14 +3,12 @@
 class V3Vt01111D90
 {
 public:
-	virtual void s0();
 	virtual ~V3Vt01111D90() {}
 	int m04;
 };
 class V3Second08
 {
 public:
-	virtual void s0();
 	virtual ~V3Second08() {}
 };
 class Rva003ADFDB : public V3Vt01111D90, public V3Second08
