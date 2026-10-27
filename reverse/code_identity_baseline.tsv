@@ -291,13 +291,6 @@ Code/Libraries/Source/WWVegas/WWLib/VectorOverflowRva0052D742.cpp	?_M_insert_ove
 Code/Libraries/Source/WWVegas/WWLib/ini.cpp	?Load@INIClass@@QAEHAAVStraw@@@Z	?Add_Index@?$IndexClass@HPAUINIEntry@@@@QAE_NABHABQAUINIEntry@@@Z	0x006166D0	wrong
 Code/Libraries/Source/WWVegas/WWLib/ini.cpp	?Put_String@INIClass@@QAE_NPBD00@Z	?Add_Index@?$IndexClass@HPAUINIEntry@@@@QAE_NABHABQAUINIEntry@@@Z	0x006166D0	wrong
 Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp	??_G?$VectorClass@UFileOffsetStruct@@@@UAEPAXI@Z	??1FileOffsetStruct@@QAE@XZ	0x00042FF8	wrong
-Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	??__Ecerr@_STL@@YAXXZ	_$E8	0x007B68D0	wrong
-Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	??__Eclog@_STL@@YAXXZ	_$E11	0x007B68F0	wrong
-Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	??__Ecout@_STL@@YAXXZ	_$E5	0x007B6970	wrong
-Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	??__Ewcerr@_STL@@YAXXZ	_$E20	0x007B6910	wrong
-Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	??__Ewcin@_STL@@YAXXZ	_$E14	0x007B6990	wrong
-Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	??__Ewclog@_STL@@YAXXZ	_$E23	0x007B6930	wrong
-Code/Libraries/Source/WWVegas/WWLib/stlport_create_filebuf.cpp	??__Ewcout@_STL@@YAXXZ	_$E17	0x007B69B0	wrong
 Code/Libraries/Source/WWVegas/WWLib/stlport_deque_ptr_o1.cpp	?_M_reserve_map_at_back@?$deque@PAXV?$allocator@PAX@_STL@@@_STL@@IAEXI@Z	?_M_reallocate_map@?$deque@PAXV?$allocator@PAX@_STL@@@_STL@@IAEXI_N@Z	0x003B57E5	divergent
 Code/Libraries/Source/WWVegas/WWLib/stlport_introsort_loop_s4sortelem20.cpp	??$swap@US4SortElem20@@@_STL@@YAXAAUS4SortElem20@@0@Z	??0S4SortElem20@@QAE@ABU0@@Z	0x003371B1	wrong
 Code/Libraries/Source/WWVegas/WWLib/stlport_ios_failure_dtor.cpp	??1failure@ios_base@_STL@@UAE@XZ	??1__Named_exception@_STL@@UAE@XZ	0x00023850	wrong
