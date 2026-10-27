@@ -17,7 +17,8 @@ class AsciiString
 {
 public:
     AsciiString(const AsciiString &that) : m_data(that.m_data) {}
-    ~AsciiString() { m_data.releaseBuffer(); }
+    // The member's inline ~StringBase releases the buffer.
+    ~AsciiString() {}
     // StringBase::getCharAt is out of line; retail expands the read here.
     __declspec(dllimport) __forceinline char getCharAt(int index) const
     {

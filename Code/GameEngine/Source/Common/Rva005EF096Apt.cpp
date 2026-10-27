@@ -13,11 +13,11 @@ template <typename T> class StringBase;
 class UnicodeString;
 class AsciiString;
 
+// The public narrow teardown spelling (declared out of line by this switch)
+// resolves to the verified 133-byte releaseBuffer worker at RVA 0x36410.
+// Wide teardown stays inline.
+#define BFME_STRINGBASE_PUBLIC_DTOR
 #include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
-
-// Existing public narrow teardown spelling resolves to the verified
-// 133-byte releaseBuffer worker at RVA 0x36410. Wide teardown is unchanged.
-template <> StringBase<char>::~StringBase();
 
 
 
