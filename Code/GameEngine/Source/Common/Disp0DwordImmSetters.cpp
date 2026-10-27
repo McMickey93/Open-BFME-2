@@ -17,11 +17,9 @@ extern "C" const void *const __identifier("??_7Rva00051E4D@@6B@")[];  // vftable
 
 extern "C" const void *const __identifier("??_7Rva000851F3@@6B@")[];  // vftable 0x00BC745C
 extern "C" const void *const __identifier("??_7Rva0007DF07@@6B@")[];  // folded vftable 0x00BC6F20 (7 classes), by its data-ledger name
-extern "C" const void *const vtbl_00BCEFA0[];  // folded, 3 classes; via ??_7BfmeShadowBufferOwnerBase@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BCEFA0=??_7BfmeShadowBufferOwnerBase@@6B@")
+extern "C" const void *const __identifier("??_7BfmeShadowBufferOwnerBase@@6B@")[];  // folded, 3 classes; via ??_7BfmeShadowBufferOwnerBase@@6B@
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
-extern "C" const void *const vtbl_00BE3990[];  // folded, 2 classes; via ??_7Rva00203E76@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BE3990=??_7Rva00203E76@@6B@")
+extern "C" const void *const __identifier("??_7Rva00203E76@@6B@")[];  // folded, 2 classes; via ??_7Rva00203E76@@6B@
 extern "C" const void *const __identifier("??_7Rva005F0584Base0@@6B@")[];  // folded vftable 0x00BFBCBC (2 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7BfmeCtorVirtualBase001B3A20@@6B@")[];  // folded vftable 0x00C078DC (4 classes), by its data-ledger name
 extern "C" const void *const __identifier("??_7Rva00575E4EBase2@@6B@")[];  // folded vftable 0x00C3702C (4 classes), by its data-ledger name
@@ -188,7 +186,7 @@ public:
 
 Rva00108B4D::~Rva00108B4D()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00BCEFA0);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7BfmeShadowBufferOwnerBase@@6B@"));
 }
 
 // Complete destructor restoring its existing external table owner.
@@ -650,7 +648,7 @@ public:
 
 void Rva00203611DwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00BE3990);
+	m_value = ((unsigned int)__identifier("??_7Rva00203E76@@6B@"));
 }
 
 class Rva00576456DwordImmSetter

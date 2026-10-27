@@ -14,8 +14,7 @@
 // builds through the 0x3623E5 pin and the +0x20 member through the rowed
 // 0x25342C construct.
 
-extern "C" const void *const vtbl_00C50FF0[];  // ??_7RadiateFearUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C50FF0=??_7RadiateFearUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7RadiateFearUpdateModuleData@@6B@")[];  // ??_7RadiateFearUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -79,7 +78,7 @@ private:
 
 // ??0RadiateFearUpdateModuleData@@QAE@XZ @0x0049C06C
 RadiateFearUpdateModuleData::RadiateFearUpdateModuleData()
-	: m_vtable((void *)((unsigned int)vtbl_00C50FF0))
+	: m_vtable((void *)((unsigned int)__identifier("??_7RadiateFearUpdateModuleData@@6B@")))
 	, m_initiallyActive(false)
 	, m_whichSpecialPower(-1)
 	, m_generateTerror(0)

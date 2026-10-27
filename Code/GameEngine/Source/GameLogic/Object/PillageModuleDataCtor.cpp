@@ -59,8 +59,7 @@ public:
 	unsigned char m_data[4];
 };
 
-extern "C" const void *const vtbl_00BF0568[];  // ??_7PillageModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF0568=??_7PillageModuleData@@6B@")
+extern "C" const void *const __identifier("??_7PillageModuleData@@6B@")[];  // ??_7PillageModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -95,7 +94,7 @@ private:
 
 // ??0PillageModuleData@@QAE@XZ @0x00253830
 PillageModuleData::PillageModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00BF0568)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7PillageModuleData@@6B@"))))
 	, m_pillageAmount(0)
 	, m_numDamageEvents(0)
 {

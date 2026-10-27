@@ -14,8 +14,7 @@
 
 #include "ascii_string.h"
 
-extern "C" const void *const vtbl_00BF3298[];  // ??_7RunOffMapBehaviorModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF3298=??_7RunOffMapBehaviorModuleData@@6B@")
+extern "C" const void *const __identifier("??_7RunOffMapBehaviorModuleData@@6B@")[];  // ??_7RunOffMapBehaviorModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -44,7 +43,7 @@ private:
 
 // ??0RunOffMapBehaviorModuleData@@QAE@XZ @0x254ECE
 RunOffMapBehaviorModuleData::RunOffMapBehaviorModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00BF3298)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7RunOffMapBehaviorModuleData@@6B@"))))
 {
 	m_dieOnMap = false;
 	m_runToLocation = 10.0f;

@@ -8,8 +8,7 @@
 // rowed 0x005EB87A predicate, and on the other path allocates an 8-byte link
 // node with vtable 0x00C755A4 before updating the prior object's wrapper.
 
-extern "C" const void *const vtbl_00C755A4[];  // folded, 2 classes; via ??_7Rva005D1052@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C755A4=??_7Rva005D1052@@6B@")
+extern "C" const void *const __identifier("??_7Rva005D1052@@6B@")[];  // folded, 2 classes; via ??_7Rva005D1052@@6B@
 
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
@@ -108,7 +107,7 @@ void Rva005D10F9::slot1()
 	if (node)
 	{
 		node->m_previous = previous;
-		node->m_vtable = ((unsigned int)vtbl_00C755A4);
+		node->m_vtable = ((unsigned int)__identifier("??_7Rva005D1052@@6B@"));
 	}
 	else
 	{

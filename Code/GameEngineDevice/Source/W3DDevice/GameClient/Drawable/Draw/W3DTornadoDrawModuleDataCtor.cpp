@@ -57,8 +57,7 @@ extern const FieldParse BfmeW3DTornadoDrawFields[] = {
 	{ 0, 0, 0, 0 }
 };
 
-extern "C" const void *const vtbl_00BCE198[];  // ??_7W3DTornadoDrawModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BCE198=??_7W3DTornadoDrawModuleData@@6B@")
+extern "C" const void *const __identifier("??_7W3DTornadoDrawModuleData@@6B@")[];  // ??_7W3DTornadoDrawModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -93,7 +92,7 @@ private:
 
 // ??0W3DTornadoDrawModuleData@@QAE@XZ @0x000D16B4
 W3DTornadoDrawModuleData::W3DTornadoDrawModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00BCE198)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7W3DTornadoDrawModuleData@@6B@"))))
 {
 	m_decalCount &= 0;
 	m_decalMaxRadius = 200.0f;

@@ -33,7 +33,6 @@ enum UpdateSleepTime { UPDATE_SLEEP_NONE = 1 };
 #include "Lib/Coord3D.h"
 #include "GameLogicObjectLookupView.h"
 #include "PartitionRangeQueryCallView.h"
-#pragma comment(linker, "/alternatename:_vtbl_00C5DAB0=??_7DeflectSpecialPowerModuleData@@6B@")
 
 class SpecialPowerTemplate;
 
@@ -263,7 +262,7 @@ private:
 // Donor: BFME1 SpecialPower files (BFME2 appends its own int/float tail past
 // the 0x18 base).
 
-extern "C" const void *const vtbl_00C5DAB0[];
+extern "C" const void *const __identifier("??_7DeflectSpecialPowerModuleData@@6B@")[];
 
 class __declspec(novtable) AIUpdateModuleData
 {
@@ -402,7 +401,7 @@ int BfmeThingXT::bfmeOddXT(void) const
 
 SiegeDeploySpecialPowerModuleData::SiegeDeploySpecialPowerModuleData()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00C5DAB0);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7DeflectSpecialPowerModuleData@@6B@"));
 	m_int18 = 0;
 	m_int1C = 0;
 	m_byte21 = false;

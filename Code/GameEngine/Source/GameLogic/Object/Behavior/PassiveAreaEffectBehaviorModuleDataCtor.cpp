@@ -50,8 +50,7 @@ private:
 	int m_handle;
 };
 
-extern "C" const void *const vtbl_00C4A490[];  // ??_7PassiveAreaEffectBehaviorModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4A490=??_7PassiveAreaEffectBehaviorModuleData@@6B@")
+extern "C" const void *const __identifier("??_7PassiveAreaEffectBehaviorModuleData@@6B@")[];  // ??_7PassiveAreaEffectBehaviorModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -87,7 +86,7 @@ private:
 
 // ??0PassiveAreaEffectBehaviorModuleData@@QAE@XZ @0x484DF4
 PassiveAreaEffectBehaviorModuleData::PassiveAreaEffectBehaviorModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4A490)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7PassiveAreaEffectBehaviorModuleData@@6B@"))))
 	, m_effectRadius(200.0f)
 	, m_healPercentPerSecond(0.0f)
 	, m_pingDelay(15)

@@ -7,8 +7,7 @@
 // 0x000365F0, EH 1), then tail floats at +0x20/+0x24/+0x28 and words at
 // +0x04/+0x08 zeroed. Same ModuleData EH recipe as ProductionUpdateModuleDataCtor.
 // Unblocks 0x0021294A and 0x0021219E.
-extern "C" const void *const vtbl_00837D78[];  // ??_7Rva003FD789@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00837D78=??_7Rva003FD789@@6B@")
+extern "C" const void *const __identifier("??_7Rva003FD789@@6B@")[];  // ??_7Rva003FD789@@6B@
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 template <typename T> class StringBase
@@ -49,7 +48,7 @@ private:
 };
 
 Rva003FD789::Rva003FD789(const StringBase<char> &src)
-	: m_vtable(vtbl_00837D78)
+	: m_vtable(__identifier("??_7Rva003FD789@@6B@"))
 	, m_10(false)
 	, m_11(false)
 	, m_14(0.0f)

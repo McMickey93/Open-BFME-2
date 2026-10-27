@@ -9,8 +9,7 @@
 // vtable assigned from the body; the filter member stays stateless here
 // so the single EH state needs no advance). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00BF25D8[];  // ??_7StatusBitsUpgradeIfEldestKindofModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BF25D8=??_7StatusBitsUpgradeIfEldestKindofModuleData@@6B@")
+extern "C" const void *const __identifier("??_7StatusBitsUpgradeIfEldestKindofModuleData@@6B@")[];  // ??_7StatusBitsUpgradeIfEldestKindofModuleData@@6B@
 
 // Retail's state-0 unwind funclet jumps to 0x0049B47C, the ModuleData-family
 // dtor fold that restores the Snapshot vptr 0x00BBB554; the base dtor is
@@ -50,5 +49,5 @@ private:
 StatusBitsUpgradeIfEldestKindofModuleData::StatusBitsUpgradeIfEldestKindofModuleData()
 	: StatusBitsUpgradeModuleData()
 {
-	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00BF25D8));
+	m_vtable = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7StatusBitsUpgradeIfEldestKindofModuleData@@6B@")));
 }

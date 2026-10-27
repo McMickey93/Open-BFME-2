@@ -75,8 +75,7 @@ private:
 	int m_zero;
 };
 
-extern "C" const void *const vtbl_00C184D8[];  // ??_7StealthUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C184D8=??_7StealthUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7StealthUpdateModuleData@@6B@")[];  // ??_7StealthUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -141,7 +140,7 @@ Rva004CEE6EMemberTracked::~Rva004CEE6EMemberTracked()
 }
 
 StealthUpdateModuleData::StealthUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C184D8)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7StealthUpdateModuleData@@6B@"))))
 	, m_flags08(-1)
 	, m_zero0C(0)
 	, m_speed20(0.0f)

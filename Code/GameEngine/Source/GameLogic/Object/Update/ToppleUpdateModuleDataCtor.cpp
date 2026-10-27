@@ -30,8 +30,7 @@ typedef int Int;
 #include <windows.h>
 #include "ascii_string.h"
 
-extern "C" const void *const vtbl_00C538A0[];  // ??_7ToppleUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C538A0=??_7ToppleUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7ToppleUpdateModuleData@@6B@")[];  // ??_7ToppleUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -67,7 +66,7 @@ private:
 };
 
 ToppleUpdateModuleData::ToppleUpdateModuleData()
-	: m_vtable( reinterpret_cast<const void *>(((unsigned int)vtbl_00C538A0)) )
+	: m_vtable( reinterpret_cast<const void *>(((unsigned int)__identifier("??_7ToppleUpdateModuleData@@6B@"))) )
 	, m_stumpName()
 {
 	m_toppleFX = NULL;

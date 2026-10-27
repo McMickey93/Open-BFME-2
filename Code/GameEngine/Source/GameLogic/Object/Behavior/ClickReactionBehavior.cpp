@@ -80,8 +80,7 @@ class ModuleData;
 // rep prefix); the timer and vtable stay body assignments in retail order.
 // Row supersedes the sole-caller pin.
 
-extern "C" const void *const vtbl_00C4ED70[];
-#pragma comment(linker, "/alternatename:_vtbl_00C4ED70=??_7BeaconClientUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7BeaconClientUpdateModuleData@@6B@")[];  // folded, 9 classes; via ??_7BeaconClientUpdateModuleData@@6B@
 #include <cstring>
 
 int GetGameLogicRandomValue(int lo, int hi, char *file, int line);
@@ -208,7 +207,7 @@ void ClickReactionBehavior::rva004596F9()
 // ??0ClickReactionBehaviorModuleData@@QAE@XZ @0x4595F0
 ClickReactionBehaviorModuleData::ClickReactionBehaviorModuleData()
 {
-	m_vtable = reinterpret_cast<const void *>(((unsigned int)vtbl_00C4ED70));
+	m_vtable = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7BeaconClientUpdateModuleData@@6B@")));
 	m_weight = 0x258;
 	memset(m_cooldown, 0, sizeof(m_cooldown));
 }

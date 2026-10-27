@@ -1984,8 +1984,6 @@ alternatename	Code/GameEngine/Source/Common/D3DXTexCLockVolume.cpp	??0TextureCla
 alternatename	Code/GameEngine/Source/Common/D3DXTexCLockVolume.cpp	?b_00025e1e@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Debug_recordCallsite.cpp	?SkipNext@BfmeResetDebug@@SA_N_N@Z	1
 alternatename	Code/GameEngine/Source/Common/DictPairClear.cpp	?bfmeInitUBB@BfmeSubUBB@@QAEXH@Z	1
-alternatename	Code/GameEngine/Source/Common/Disp0DwordImmSetters.cpp	_vtbl_00BCEFA0	1
-alternatename	Code/GameEngine/Source/Common/Disp0DwordImmSetters.cpp	_vtbl_00BE3990	1
 alternatename	Code/GameEngine/Source/Common/Disp0DwordImmSettersAddr.cpp	??1Rva00539926Base@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Disp0DwordImmSettersAddr.cpp	??1Rva005D6FCC@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Disp0DwordImmSettersAddr.cpp	?bfmeTailSF@BfmeThingSF@@QAEXXZ	1
@@ -2539,7 +2537,6 @@ alternatename	Code/GameEngine/Source/Common/Rva004E9B46Ctor.cpp	?v1@Rva004E9B46@
 alternatename	Code/GameEngine/Source/Common/Rva004E9B46Ctor.cpp	?v2@Rva004E9B46@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004E9BC6Dtor.cpp	?v1@Rva004E9B46@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004E9BC6Dtor.cpp	?v2@Rva004E9B46@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/Common/Rva004EE9E9XferVector.cpp	_vtbl_00C62A28	1
 alternatename	Code/GameEngine/Source/Common/Rva004F60AAInit.cpp	??$_Destroy@PAURva004F77E0Element@@@_STL@@YAXPAURva004F77E0Element@@0@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva004FAE34Loop.cpp	?push_back@?$vector@W4EvaMessage@@V?$allocator@W4EvaMessage@@@_STL@@@_STL@@QAEXABW4EvaMessage@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva004FAE34Loop.cpp	?rva002B3325@Rva002B3325@@QAE_NPAUArg54@@0@Z	1
@@ -2642,8 +2639,6 @@ alternatename	Code/GameEngine/Source/Common/Rva005CDDA4Ctor.cpp	?c1@Rva005CDDA4C
 alternatename	Code/GameEngine/Source/Common/Rva005CDDA4Ctor.cpp	?c2@Rva005CDDA4Callback@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005CDF6CCtor.cpp	??1Rva005CDF6C@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005CF8A1Ctor.cpp	??1Rva005CF8A1Base@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/Rva005CFFE8.cpp	_vtbl_00C752A8	1
-alternatename	Code/GameEngine/Source/Common/Rva005D1129.cpp	_vtbl_00C755A4	1
 alternatename	Code/GameEngine/Source/Common/Rva005D3B26Portrait.cpp	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	1
 alternatename	Code/GameEngine/Source/Common/Rva005DA831Ctor.cpp	??1Rva005DA831@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005DAC85Dtor.cpp	?Rva0055AED6@Rva0055B0CC@@UAEXPAX0@Z	1
@@ -2678,8 +2673,6 @@ alternatename	Code/GameEngine/Source/Common/Rva005F2F80ElemDtor.cpp	?Rva005F2F80
 alternatename	Code/GameEngine/Source/Common/Rva005F38D8Forward.cpp	?rva005F3652@Impl@ArmyDetailsMovieClip@StrategicHUD@@QAE?AURva005F38D8Ref@@H@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva005F888CRva005F888C.cpp	??0Rva005F8447@@QAE@ABURva005F888CRef@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva005F888CRva005F888C.cpp	?push_back@?$vector@URva005F8447@@V?$allocator@URva005F8447@@@_STL@@@_STL@@QAEXABURva005F8447@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva005F8E37.cpp	_vtbl_00C79CF8	1
-alternatename	Code/GameEngine/Source/Common/Rva005F8E5A.cpp	_vtbl_00C79D0C	1
 alternatename	Code/GameEngine/Source/Common/Rva005FAD8DCtor.cpp	?f0@Rva005FAD8D@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005FAD8DCtor.cpp	?f0@Rva00875284Base@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005FAD8DCtor.cpp	?f1@Rva005FAD8D@@UAEXXZ	1
@@ -3209,11 +3202,9 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/AutoAbilityBehavi
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BehaviorModuleXfer.cpp	?xfer@BehaviorModule@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BezierProjectileBehaviorDtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorCtor.cpp	_vtbl_00C40818	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorCtor.cpp	_vtbl_00C40914	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorXfer.cpp	?push_back@BridgeBehaviorObjectIDList@@QAEXABW4ObjectID@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BuildingBehaviorCtorThunk.cpp	?slot@BB_Iface1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BuildingBehaviorCtorThunk.cpp	?slot@BB_Iface2@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BuildingBehaviorModuleDataCtor.cpp	_vtbl_00C40798	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorCtor.cpp	??0Rva00395CEB@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorCtor.cpp	??1FoundationAIUpdate@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorDtor.cpp	?f1@Rva0024A797_Mid@@UAEXXZ	1
@@ -3224,7 +3215,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/CastleMemberBehav
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ClickReactionBehaviorCtorThunk.cpp	?slot@ClickReactionBehaviorIface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ClickReactionBehaviorCtorThunk.cpp	?slot@PB_Iface1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ClickReactionBehaviorCtorThunk.cpp	?slot@PB_Iface2@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ClickReactionBehavior.cpp	_vtbl_00C4ED70	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourDtor.cpp	?dynamicPortalExtraA@DynamicPortalExtraA@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourDtor.cpp	?dynamicPortalExtraB@DynamicPortalExtraB@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalLinkVector.cpp	??1DynamicPortalLinkVec@@QAE@XZ	1
@@ -3239,10 +3229,8 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBe
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourCtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourCtor.cpp	?update@UpdateModule@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourModuleDataCtor.cpp	??0FakePathfindPortalBehaviourModuleData@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/OathbreakersFadeAwayBehaviorCtor.cpp	_vtbl_00C59280	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorCtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorDtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorModuleDataCtor.cpp	_vtbl_00C4A490	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorConstructor.cpp	?slot@PB_Iface1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorConstructor.cpp	?slot@PB_Iface2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorConstructor.cpp	?slot@PropagandaTowerBehaviorIface@@UAEXXZ	1
@@ -3255,7 +3243,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBeh
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorDtor.cpp	?slot00@SpawnBehaviorFourthBase@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorDtor.cpp	?slot04@SpawnBehaviorFourthBase@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorDtor.cpp	?slot08@SpawnBehaviorFourthBase@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RunOffMapBehaviorModuleDataCtor.cpp	_vtbl_00BF3298	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBehaviorResolver.cpp	?bfmeAskBJA@BfmeThingBJA@@QAE_NXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBehaviorResolver.cpp	?bfmeAskBJB@BfmeThingBJB@@QAE_NXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBehaviorResolver.cpp	?bfmeAskDSK@BfmeThingDSK@@QAE_NXZ	1
@@ -3289,7 +3276,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainDtor.cp
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainDtor.cpp	?b6@B6@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainDtor.cpp	?caveExtra@CaveExtra@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainModuleDataCtor.cpp	??0HealContainModuleData@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainModuleDataCtor.cpp	_vtbl_00C43F40	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/FilterStringEntryParserRva004816F4.cpp	??1Rva004816F4Entry@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/FilterStringEntryParserRva004816F4.cpp	?push_back@Rva004816F4Vector@@QAEXABURva004816F4Entry@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainDtor.cpp	?b0@B0@@UAEXXZ	1
@@ -3427,7 +3413,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Object_setGeometryInfoZ.cp
 alternatename	Code/GameEngine/Source/GameLogic/Object/PartitionFilterPossibleToAttackAllow.cpp	?allow@Rva00260FD0Filter@@UAE_NPAVObject@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/PartitionFilterSameMapStatusAllow.cpp	?allow@Rva002611BFFilter@@UAE_NPAVObject@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/PartitionFilters_allow_Thunk.cpp	?allow@Rva0026137EFilter@@UAE_NPAVObject@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/PillageModuleDataCtor.cpp	_vtbl_00BF0568	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva000AA867ArmorFind.cpp	?find@Rva00786BD0Owner@@QAEPAXI@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva001E86D0.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva001E86D0.cpp	?rvaClear@Rva001E7087@@AAEXXZ	1
@@ -3441,7 +3426,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0036105BCopyCtor.cpp	?R
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00361594Assign.cpp	?Rva00361594Assign@@YAPAVRva0036105B@@PAV1@00PAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	??0Rva003623E5Filter@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	?construct@Rva003623E5Member@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003FD789Ctor.cpp	_vtbl_00837D78	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0041E764Find.cpp	??$_M_find@W4NameKeyType@@@?$hashtable@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@@2@@_STL@@ABEPAU?$_Hashtable_node@U?$pair@$$CBW4NameKeyType@@PAVArmorTemplate@@@_STL@@@1@ABW4NameKeyType@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/CashHackSpecialPower.cpp	??0InitiateVoiceEntry@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/CashHackSpecialPower.cpp	??0Rva004CEE6EMember@@QAE@XZ	1
@@ -3456,12 +3440,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHo
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerDtor.cpp	?f2@SiegeDeployHordeSpecialPower_S2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerDtor.cpp	?f3@SiegeDeployHordeSpecialPower_S3@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerDtor.cpp	?f4@SiegeDeployHordeSpecialPower_S4@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPower.cpp	_vtbl_00C5DAB0	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C4E998	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C5DC68	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C5DCCC	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C5DCF0	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerCtor.cpp	_vtbl_00C5DCFC	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f1@SiegeDeploySpecialPower_S1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f2@SiegeDeploySpecialPower_S2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerDtor.cpp	?f3@SiegeDeploySpecialPower_S3@@UAEXXZ	1
@@ -3495,16 +3473,12 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUp
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdateParseLocomotorSet.cpp	?_CxxThrowException@@YGXPAX0@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate_AIUpdateInterface_privateFollowWaypointPathAsTeam.cpp	?playMoveVoiceResponse@BFMEMoveVoiceAI@@QAEXPBUCoord3D@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate_AIUpdateInterface_privateFollowWaypointPathAsTeamExact.cpp	?playMoveVoiceResponse@BFMEMoveVoiceAI@@QAEXPBUCoord3D@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AnimationSteeringUpdateModuleDataCtor.cpp	_vtbl_00C5AAB8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ArrowStormUpdateModuleDataCtor.cpp	_vtbl_00C4D5A0	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AttachUpdateModuleDataCtor.cpp	_vtbl_00C4DD18	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AttributeModifierAuraUpdateDtor.cpp	?updateSlot@UpdateModuleInterface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AttributeModifierAuraUpdateDtor.cpp	?upgradeSlot@UpgradeMux@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AttributeModifierPoolUpdateCtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva004978A3Dtor.cpp	?f1@MiBase1004978A3@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateRva00497A4B.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateModuleDataCtor.cpp	_vtbl_00C3F160	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BoneFXUpdateModuleDataCtor.cpp	_vtbl_00C4B0E8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpdateDtor.cpp	?f3@BroadcastStealthUpdate_B3@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/BroadcastStealthUpdateDtor.cpp	?getBody@BehaviorModuleInterface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdateCtorThunk.cpp	?slot@PB_Iface1@@UAEXXZ	1
@@ -3527,11 +3501,8 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/Rva00583
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyCenterDockUpdateConstructor.cpp	?supplyCenterDockUpdateIface1Anchor@SupplyCenterDockUpdateIface1@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyCenterDockUpdateConstructor.cpp	?supplyCenterDockUpdateIface2Anchor@SupplyCenterDockUpdateIface2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyCenterDockUpdateConstructor.cpp	?supplyCenterDockUpdateIface3Anchor@SupplyCenterDockUpdateIface3@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdateModuleDataCtor.cpp	_vtbl_00C4BEF8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/EmotionTrackerUpdateDtor.cpp	?getBody@BehaviorModuleInterface@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/EnragedUpdateModuleDataCtor.cpp	_vtbl_00C56980	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/FadeAndDieOrnamentUpdateModuleDataCtor.cpp	_vtbl_00BF3740	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/FireWeaponUpdateModuleDataCtor.cpp	_vtbl_00C4C110	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdate.cpp	??$_Construct@URva0048D628Record@@U1@@_STL@@YAXPAURva0048D628Record@@ABU1@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/FlammableUpdate.cpp	??$_Destroy@PAURva0048D628Record@@@_STL@@YAXPAURva0048D628Record@@0@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/HeroModeSpecialAbilityUpdateFriendNew.cpp	??0HeroModeSpecialAbilityUpdate@@QAE@PAVThing@@PBVModuleData@@@Z	1
@@ -3543,7 +3514,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LargeGroupAudioUpda
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LargeGroupAudioUpdateDtor.cpp	?f2@Rva0024A797_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdate.cpp	?loadPostProcess@Rva006DCD20@@MAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp	?behaviorSlot@BehaviorModuleInterface@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MissileUpdateModuleDataCtor.cpp	_vtbl_00C53668	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdateFriendNew.cpp	??0ModelConditionSpecialAbilityUpdate@@QAE@PAVThing@@PBVModuleData@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MonitorConditionUpdateDtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/MonsterDockUpdateDtor.cpp	?f1@Rva0058A0F4_M1@@UAEXXZ	1
@@ -3561,7 +3531,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdat
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProductionExitUpdate/QueueProductionExitUpdateQueryRallyOverride.cpp	?allow@Rva00265150RJFilter@@UAE_NPAVObject@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdateCtor.cpp	?unused@BehaviorModuleBase@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ProjectileStreamUpdateCtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RadiateFearUpdateModuleDataCtor.cpp	_vtbl_00C50FF0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RainOfFireUpdateDtor.cpp	?setFloat@Secondary20@@UAEXM@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/Rva002553F6Ctor.cpp	_kF7C	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/Rva00262176Activity.cpp	?rva00262176@Rva003638BA@@QAE_NXZ	1
@@ -3576,15 +3545,9 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUp
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdateCtorThunk.cpp	?slot@SESU_Iface2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StanceTemplateUpdateModuleDataFriendNew.cpp	??0StancesBehaviorModuleData@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp	?ji_006291ae@@YAPAXPAXHI@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateModuleDataCtor.cpp	_vtbl_00C184D8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateXfer.cpp	?g_rva008ffd18ThrowInfo@@3HA	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/TeleportSpecialAbilityUpdateFriendNew.cpp	??0TeleportSpecialAbilityUpdate@@QAE@PAVThing@@PBVModuleData@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateCtor.cpp	_vtbl_00C40818	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateCtor.cpp	_vtbl_00C53848	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateCtor.cpp	_vtbl_00C53860	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateCtor.cpp	_vtbl_00C5386C	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateCtor.cpp	_vtbl_00C5A260	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateModuleDataCtor.cpp	_vtbl_00C538A0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/TurretAI_friendGetTurretTarget.cpp	?getGoalObject@StateMachine@@QAEPAVObject@@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/UpdateModule.cpp	?xfer@UpdateModule@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/UpdateModule.cpp	?xfer@UpdateModule@@UAEXPAVXfer@@@Z	1
@@ -3613,10 +3576,8 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/LevelUpUpgradeModu
 alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/LevelUpUpgradeModuleDataCtor.cpp	_vfn_004A10FD	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/LevelUpUpgradeModuleDataCtor.cpp	_vfn_0050B5C6	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/MaxHealthUpgrade.cpp	_vtbl_00BF2558	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/ModelConditionUpgrade.cpp	_vtbl_00BF2558	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/RadarUpgradeModuleDataCtor.cpp	_vtbl_00BF2558	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeIfEldestKindofCtor.cpp	_vtbl_00C58790	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeIfEldestKindofModuleDataCtor.cpp	_vtbl_00BF25D8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/WeaponLoadAmmoNow.cpp	?Rva002CE1AC@Weapon@@QAEXPAVObject@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Rva0023C8DA.cpp	?rva0040F87E@ArmySummarySystem@@QAE_NXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/BfmeOwnZC_rva00204F3B.cpp	?rva00204E64@BfmeOwnZC@@QAEPAVScriptList@@ABVAsciiString@@@Z	1
@@ -3877,7 +3838,6 @@ alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankDrawDestructor.cpp	??1Rva000C79C9@@UAE@XZ	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankDrawDestructor.cpp	?f2@W3DTankDraw_B2@@UAEXXZ	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankTruckDraw.cpp	??0TreadObjectInfo@W3DTankDraw@@QAE@XZ	1
-alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTornadoDrawModuleDataCtor.cpp	_vtbl_00BCE198	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTruckDrawDtor.cpp	?slot8C@DrawInterface8C@@UAEXXZ	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTruckDrawDtor.cpp	?slotC@DrawInterfaceC@@UAEXXZ	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Find_Asset.cpp	?Rva009EEC60_FindAsset@Rva009EEC60Registry@@QAE?AVRva009EBCE0AssetReference@@PBD@Z	1

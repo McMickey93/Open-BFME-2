@@ -36,8 +36,7 @@ private:
 	unsigned char m_pad[8]; // +0x04, opaque trailing bytes
 };
 
-extern "C" const void *const vtbl_00C40798[];  // ??_7BuildingBehaviorModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C40798=??_7BuildingBehaviorModuleData@@6B@")
+extern "C" const void *const __identifier("??_7BuildingBehaviorModuleData@@6B@")[];  // ??_7BuildingBehaviorModuleData@@6B@
 
 // Retail's state-0 unwind funclet jumps to 0x0049B47C, the ModuleData-family
 // dtor fold that restores the Snapshot vptr 0x00BBB554; the base dtor is
@@ -70,6 +69,6 @@ private:
 
 // ??0BuildingBehaviorModuleData@@QAE@XZ @0x00456489
 BuildingBehaviorModuleData::BuildingBehaviorModuleData()
-	: m_vtable(reinterpret_cast<void *>(((unsigned int)vtbl_00C40798)))
+	: m_vtable(reinterpret_cast<void *>(((unsigned int)__identifier("??_7BuildingBehaviorModuleData@@6B@"))))
 {
 }

@@ -85,8 +85,7 @@ struct BoneParticleSystemInfo
 	const ParticleSystemTemplate *particleSysTemplate;
 };
 
-extern "C" const void *const vtbl_00C4B0E8[];  // ??_7BoneFXUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B0E8=??_7BoneFXUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7BoneFXUpdateModuleData@@6B@")[];  // ??_7BoneFXUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -119,7 +118,7 @@ private:
 };
 
 BoneFXUpdateModuleData::BoneFXUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4B0E8)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7BoneFXUpdateModuleData@@6B@"))))
 {
 	Int i, j;
 	for (i = 0; i < BODYDAMAGETYPE_COUNT; ++i) {

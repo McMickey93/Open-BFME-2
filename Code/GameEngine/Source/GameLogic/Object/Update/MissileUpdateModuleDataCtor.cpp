@@ -16,8 +16,7 @@
 // retail order, and calls set last (AsciiString spelling resolves through the
 // alias pin at 0x55F5).
 
-extern "C" const void *const vtbl_00C53668[];  // ??_7MissileUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C53668=??_7MissileUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7MissileUpdateModuleData@@6B@")[];  // ??_7MissileUpdateModuleData@@6B@
 
 // Retail's state-0 unwind funclet jumps to 0x0049B47C, the ModuleData-family
 // dtor fold that restores the Snapshot vptr 0x00BBB554; the base dtor is
@@ -64,7 +63,7 @@ private:
 
 // ??0MissileUpdateModuleData@@QAE@XZ @0x4A77B8
 MissileUpdateModuleData::MissileUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C53668)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7MissileUpdateModuleData@@6B@"))))
 	, m_exhaust()
 {
 	m_fuelLifetime = 0;

@@ -1,8 +1,7 @@
 // cl: /DNDEBUG /MD
 // Native constructor 0x005F8E37 stores the BattlePrompt owner at +0x3C.
 // Its tab-window base is constructed with the level and AsciiString name.
-extern "C" const void *const vtbl_00C79CF8[];	// ??_7Rva005F8F5A@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C79CF8=??_7Rva005F8F5A@@6B@")
+extern "C" const void *const __identifier("??_7Rva005F8F5A@@6B@")[];	// ??_7Rva005F8F5A@@6B@
 
 class AsciiString;
 namespace StrategicHUD { class BattlePromptMovieClip { public: class Impl; }; }
@@ -20,5 +19,5 @@ Rva005F8E37::Rva005F8E37(StrategicHUD::BattlePromptMovieClip::Impl *owner, int l
 {
 	((Rva005FE7FA *)this)->Rva005FE7FA::Rva005FE7FA(level, name);
 	m_3C = owner;
-	((void **)this)[0] = (void *)vtbl_00C79CF8;
+	((void **)this)[0] = (void *)__identifier("??_7Rva005F8F5A@@6B@");
 }

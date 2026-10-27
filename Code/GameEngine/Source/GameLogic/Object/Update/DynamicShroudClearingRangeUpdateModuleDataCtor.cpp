@@ -21,8 +21,7 @@ private:
 	unsigned char m_data[0x34];
 };
 
-extern "C" const void *const vtbl_00C4BEF8[];  // ??_7DynamicShroudClearingRangeUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4BEF8=??_7DynamicShroudClearingRangeUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7DynamicShroudClearingRangeUpdateModuleData@@6B@")[];  // ??_7DynamicShroudClearingRangeUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -57,7 +56,7 @@ private:
 
 // ??0DynamicShroudClearingRangeUpdateModuleData@@QAE@XZ @0x48B5C6
 DynamicShroudClearingRangeUpdateModuleData::DynamicShroudClearingRangeUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4BEF8)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7DynamicShroudClearingRangeUpdateModuleData@@6B@"))))
 {
 	m_shrinkDelay = 0;
 	m_shrinkTime = 0;

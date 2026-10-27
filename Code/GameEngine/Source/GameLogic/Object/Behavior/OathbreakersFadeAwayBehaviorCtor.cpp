@@ -17,8 +17,7 @@
 
 extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C59280[];  // ??_7OathbreakersFadeAwayBehavior@@6BRva004B89C4_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C59280=??_7OathbreakersFadeAwayBehavior@@6BRva004B89C4_B2@@@")
+extern "C" const void *const __identifier("??_7OathbreakersFadeAwayBehavior@@6BRva004B89C4_B2@@@")[];  // ??_7OathbreakersFadeAwayBehavior@@6BRva004B89C4_B2@@@
 
 class Thing;
 class ModuleData;
@@ -56,7 +55,7 @@ OathbreakersFadeAwayBehavior::OathbreakersFadeAwayBehavior(Thing *thing, const M
 	: UpdateModule(thing, moduleData)
 {
 	m_secondary0C = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")));
-	m_secondary10 = reinterpret_cast<const void *>(((unsigned int)vtbl_00C59280));
+	m_secondary10 = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7OathbreakersFadeAwayBehavior@@6BRva004B89C4_B2@@@")));
 	m_fading = false;
 	m_fadeTimer = 1.0f;
 }

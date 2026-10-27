@@ -14,8 +14,7 @@
 // Identity proof: reloc-named by the ModuleFactory call site; the B8+E8 head
 // is the function's own __EH_prolog (scope 0xB8F889), not a shared fragment.
 
-extern "C" const void *const vtbl_00C5AAB8[];
-#pragma comment(linker, "/alternatename:_vtbl_00C5AAB8=??_7CivilianSpawnCollideModuleData@@6B@")
+extern "C" const void *const __identifier("??_7CivilianSpawnCollideModuleData@@6B@")[];
 
 class Rva003623E5Member
 {
@@ -50,6 +49,6 @@ private:
 // ??0CivilianSpawnCollideModuleData@@QAE@XZ
 CivilianSpawnCollideModuleData::CivilianSpawnCollideModuleData()
 	: ModuleDataBase()
-	, m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C5AAB8)))
+	, m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7CivilianSpawnCollideModuleData@@6B@"))))
 {
 }

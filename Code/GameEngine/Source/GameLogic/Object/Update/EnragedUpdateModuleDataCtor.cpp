@@ -35,8 +35,7 @@ public:
 
 #define LogicFramesPerSecond BfmeLogicFramesPerSecond
 
-extern "C" const void *const vtbl_00C56980[];  // ??_7EntEnragedUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C56980=??_7EntEnragedUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7EntEnragedUpdateModuleData@@6B@")[];  // ??_7EntEnragedUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -71,7 +70,7 @@ private:
 
 // ??0EntEnragedUpdateModuleData@@QAE@XZ @0x4B249D
 EntEnragedUpdateModuleData::EntEnragedUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C56980)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7EntEnragedUpdateModuleData@@6B@"))))
 {
 	m_scanDelayTime = LogicFramesPerSecond;
 	m_scanDistance = 300.0f;

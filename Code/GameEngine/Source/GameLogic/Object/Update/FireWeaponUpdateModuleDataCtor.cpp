@@ -20,8 +20,7 @@
 // never emits. Row supersedes the pin; the OilSpill TU keeps resolving
 // through the row.
 
-extern "C" const void *const vtbl_00C4C110[];  // ??_7FireWeaponUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4C110=??_7FireWeaponUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7FireWeaponUpdateModuleData@@6B@")[];  // ??_7FireWeaponUpdateModuleData@@6B@
 
 struct FloatMember;
 
@@ -73,7 +72,7 @@ private:
 
 // ??0FireWeaponUpdateModuleData@@QAE@XZ @0x0048BC03
 FireWeaponUpdateModuleData::FireWeaponUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4C110)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7FireWeaponUpdateModuleData@@6B@"))))
 	, m_list(_STL::allocator<float>())
 {
 	m_flag0c = false;

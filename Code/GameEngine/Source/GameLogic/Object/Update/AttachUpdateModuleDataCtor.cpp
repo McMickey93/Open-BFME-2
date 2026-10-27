@@ -45,8 +45,7 @@ private:
 	int m_x;
 };
 
-extern "C" const void *const vtbl_00C4DD18[];  // ??_7AttachUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4DD18=??_7AttachUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7AttachUpdateModuleData@@6B@")[];  // ??_7AttachUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -82,7 +81,7 @@ private:
 
 // ??0AttachUpdateModuleData@@QAE@XZ @0x491968
 AttachUpdateModuleData::AttachUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C4DD18)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AttachUpdateModuleData@@6B@"))))
 {
 	((_STL::bitset<128> *)m_parentStatus)->reset();
 	m_scanRange = 10.0f;

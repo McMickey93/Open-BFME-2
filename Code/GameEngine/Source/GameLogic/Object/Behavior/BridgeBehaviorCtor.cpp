@@ -44,8 +44,7 @@ extern "C" const void *const vtbl_00C409DC[13] = {
 
 extern "C" const void *const __identifier("??_7BridgeBehavior@@6BMiBase1@@@")[];  // vftable 0x00C40920
 
-extern "C" const void *const vtbl_00C40914[];  // ??_7BridgeBehavior@@6BUpdateModule@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C40914=??_7BridgeBehavior@@6BUpdateModule@@@")
+extern "C" const void *const __identifier("??_7BridgeBehavior@@6BUpdateModule@@@")[];  // ??_7BridgeBehavior@@6BUpdateModule@@@
 
 extern "C" const void *const __identifier("??_7BridgeBehavior@@6BBridgeBehaviorInterface@@@")[];  // vftable 0x00C408FC
 
@@ -143,7 +142,7 @@ BridgeBehavior::BridgeBehavior(Thing *thing, const ModuleData *moduleData)
 	Rva0029FB3BMember *free = &m_free;
 	*(unsigned int *)this = ((unsigned int)vtbl_00C409DC);
 	*(unsigned int *)((char *)this + 0x0C) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BMiBase1@@@"));
-	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C40914);
+	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BUpdateModule@@@"));
 	*(unsigned int *)((char *)this + 0x20) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BBridgeBehaviorInterface@@@"));
 	*(unsigned int *)((char *)this + 0x24) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BDamageModuleInterface@@@"));
 	*(unsigned int *)((char *)this + 0x28) = ((unsigned int)__identifier("??_7BridgeBehavior@@6BDieModuleInterface@@@"));

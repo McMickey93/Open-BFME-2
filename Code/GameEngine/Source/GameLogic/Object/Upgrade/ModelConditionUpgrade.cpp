@@ -9,8 +9,7 @@
 // vtable store, so auto-init is impossible), 0x4C memsets, or-ff at +0x1B0,
 // float zero at +0x1B4. The owning factory at 0x00250546 (news 0x1B8) is
 // the sole caller. Row supersedes the ctor pin.
-extern "C" const void *const vtbl_00BF2558[];
-#pragma comment(linker, "/alternatename:_vtbl_00BF2558=??_7WeaponSetUpgradeModuleData@@6B@")
+extern "C" const void *const __identifier("??_7WeaponSetUpgradeModuleData@@6B@")[];  // ??_7WeaponSetUpgradeModuleData@@6B@
 #include <cstring>
 
 // ?rva004B65E4@Rva004B65E4@@SAXPAVINI@@PAX1PBX@Z
@@ -227,7 +226,7 @@ ModelConditionUpgradeModuleData::ModelConditionUpgradeModuleData()
 	: Rva00253487Base()
 {
 	CondStore *condStore = &m_addConditionFlags;
-	*(unsigned int *)this = ((unsigned int)vtbl_00BF2558);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7WeaponSetUpgradeModuleData@@6B@"));
 	((Rva0042526Member *)condStore)->Rva0042526Member::Rva0042526Member();
 	CondStore *stor164 = &m_164;
 	((Rva0042526Member *)stor164)->Rva0042526Member::Rva0042526Member();

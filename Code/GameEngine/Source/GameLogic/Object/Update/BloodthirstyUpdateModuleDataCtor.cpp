@@ -39,8 +39,7 @@ public:
 	int m_voiceFlags; // +4, 0
 };
 
-extern "C" const void *const vtbl_00C3F160[];  // ??_7BloodthirstyUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C3F160=??_7BloodthirstyUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7BloodthirstyUpdateModuleData@@6B@")[];  // ??_7BloodthirstyUpdateModuleData@@6B@
 
 #include "Common/Snapshot.h"
 
@@ -68,7 +67,7 @@ private:
 
 // ??0BloodthirstyUpdateModuleData@@QAE@XZ @0x44E2AC
 BloodthirstyUpdateModuleData::BloodthirstyUpdateModuleData()
-	: m_vtable(reinterpret_cast<const void *>(((unsigned int)vtbl_00C3F160)))
+	: m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7BloodthirstyUpdateModuleData@@6B@"))))
 {
 	m_experienceModifier = 1.0f;
 }
