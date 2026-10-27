@@ -18,14 +18,14 @@ class Team;
 class TeamPrototype
 {
 public:
-	Team *getFirstItemIn_TeamInstanceList() const { return m_firstTeam; }
+	Team *getFirstItemIn_TeamInstanceList() const { return m_dlinkhead_TeamInstanceList; }
 	__declspec(dllimport) __forceinline bool getIsSingleton() const { return (m_flags & 1) != 0; }
 
 private:
 	char m_pad00[0x18];
 	unsigned char m_flags; // +0x18
 	char m_pad19[0x334 - 0x19];
-	Team *m_firstTeam; // +0x334
+	Team *m_dlinkhead_TeamInstanceList; // +0x334
 };
 
 class TeamFactory

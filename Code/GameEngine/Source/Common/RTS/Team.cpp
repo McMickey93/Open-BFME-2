@@ -140,7 +140,8 @@ class ThingTemplate;
 class AIUpdateInterface;
 
 // Object as this TU's units read it: one view, the offsets every unit here
-// agrees on (template +0x04, status bytes +0x94 and +0x114, contain module
+// agrees on (template +0x04, position +0x38, producer +0x78, status bytes
+// +0x94 and +0x114, contain module
 // +0x250, AI +0x258, containedBy +0x274, private status +0x438). A unit that
 // reads a slot through its own interface view casts the member.
 class Object
@@ -148,7 +149,11 @@ class Object
 public:
 	unsigned char m_pad00[0x04];
 	ThingTemplate *m_template;			// +0x04
-	unsigned char m_pad08[0x94 - 0x08];
+	unsigned char m_pad08[0x38 - 0x08];
+	Coord3D m_pos;						// +0x38
+	unsigned char m_pad44[0x78 - 0x44];
+	ObjectID m_producerID;				// +0x78
+	unsigned char m_pad7C[0x94 - 0x7C];
 	unsigned char m_status94;			// +0x94
 	unsigned char m_pad95[0x114 - 0x95];
 	unsigned int m_status114;			// +0x114
@@ -169,7 +174,11 @@ class Player
 public:
 	Team *getDefaultTeam() const { return m_defaultTeam; }
 private:
-	unsigned char m_pad00[0x2EC];
+	unsigned char m_pad00[0x4C];
+public:
+	AsciiString m_playerName; // +0x4C
+private:
+	unsigned char m_pad50[0x2EC - 0x50];
 	Team *m_defaultTeam; // +0x2EC
 };
 
@@ -334,7 +343,6 @@ public: // data members (access is not part of their names): every unit here rea
  TeamInitialCoordinate m_coordinate328;Team *m_dlinkhead_TeamInstanceList;
 };
 
-typedef char TeamPrototypeSizeCheck[sizeof(TeamPrototype)==0x338?1:-1];
 
 // ?rva0039EA4E@Rva0039EA4E@@QAEPAURva0039EA4ENode@@ABURva0039D8FBKey@@@Z @0x0039EA4E (78B).
 // RB-tree lower_bound for the TeamFactory prototype map. Callers are the
@@ -1507,6 +1515,9 @@ TeamPrototype::TeamPrototype(TeamFactory*tf,const AsciiString&owner,const AsciiS
  m_teamTemplate(dict),m_byte31C(false),m_byte31D(false),m_byte31E(false),m_frame320(TheGameLogic->getFrame()),
  m_byte324(false),m_coordinate328(),m_dlinkhead_TeamInstanceList(0)
 {
+ // 0x338 bytes; checked here, after every unit's declarations, because a merge
+ // may emit the class where its last reader declares it.
+ typedef char TeamPrototypeSizeCheck[sizeof(TeamPrototype)==0x338?1:-1];
  memset(m_genericScriptsToRun,0,sizeof(m_genericScriptsToRun));
  addToLists();
 }

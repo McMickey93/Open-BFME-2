@@ -8,11 +8,11 @@ class Object
 {
 public:
 	unsigned char m_pad00[0x94];
-	unsigned char m_flag94;
+	unsigned char m_status94;
 	unsigned char m_pad95[0x250 - 0x95];
 	void *m_inner250;
 	unsigned char m_pad254[0x438 - 0x254];
-	unsigned char m_flag438;
+	unsigned char m_dead;
 };
 
 class ObjectLookupMap
@@ -21,6 +21,9 @@ public:
 	Object **findSlot(int *key);
 };
 
+class TeamRelationMap;
+
+// The relation map read through its embedded hash map.
 struct MapWrapper
 {
 	char m_pad[4];
@@ -46,7 +49,7 @@ public:
 	void rva003A2CEB(int key, Object *val);
 private:
 	char m_pad00[0x118];
-	MapWrapper *m_118;
+	TeamRelationMap *m_teamRelations;
 };
 
 class Rva00298C0B
@@ -59,13 +62,13 @@ void Team::rva003A2CEB(int key, Object *val)
 {
 	if (key == 0)
 		return;
-	Object **slot = m_118->m_map.findSlot(&key);
+	Object **slot = ((MapWrapper *)m_teamRelations)->m_map.findSlot(&key);
 	*slot = val;
 	for (DLINK_ITERATOR<Object> iter = iterate_TeamMemberList(); !iter.done(); iter.advance()) {
 		Object *cur = iter.cur();
-		if ((cur->m_flag438 & 1) != 0)
+		if ((cur->m_dead & 1) != 0)
 			continue;
-		if ((cur->m_flag94 & 1) != 0)
+		if ((cur->m_status94 & 1) != 0)
 			continue;
 		if (cur->m_inner250 == 0)
 			continue;

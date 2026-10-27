@@ -8,8 +8,8 @@ class Team
 {
 public:
 	unsigned char m_pad00[0x5D];
-	unsigned char m_active5D;
-	unsigned char m_created5E;
+	bool m_active;
+	bool m_created;
 };
 
 class TeamPrototype;
@@ -30,9 +30,9 @@ public:
 Team *Rva003A3CBBOwner::createInstance(const AsciiString &asciiString, const AsciiString &b)
 {
 	Team *team = ((TeamFactory *)this)->createInactiveTeam(asciiString, b);
-	if (!team->m_active5D) {
-		team->m_created5E = 1;
-		team->m_active5D = 1;
+	if (!team->m_active) {
+		team->m_created = 1;
+		team->m_active = 1;
 	}
 	return team;
 }

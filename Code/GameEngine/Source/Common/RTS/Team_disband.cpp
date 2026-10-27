@@ -10,6 +10,8 @@ class Object
 public:
     void setTeam(Team *t);
 };
+class TeamPrototype;
+
 struct Rva0039Mid
 {
     char m_pad[8];
@@ -26,13 +28,13 @@ public:
     void transferUnitsTo(Team *other);
     void disband();
     char m_pad00[0x30];
-    Rva0039Mid *m30;
+    TeamPrototype *m_proto;
     char m_pad34[4];
-    Object *m38;
+    Object *m_dlinkhead_TeamMemberList;
 };
 void Team::disband()
 {
-    Team *team = m30->m_team08;
+    Team *team = ((Rva0039Mid *)m_proto)->m_team08;
     if (team) {
         Team *u = ((Rva0039Owner *)team)->m_unit;
         if ((Team *)this != u)
@@ -40,7 +42,7 @@ void Team::disband()
     } else {
         Object *object;
         do {
-            object = m38;
+            object = m_dlinkhead_TeamMemberList;
             if (object == 0)
                 break;
             object->setTeam(0);

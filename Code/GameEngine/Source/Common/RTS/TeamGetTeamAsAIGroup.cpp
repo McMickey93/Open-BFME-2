@@ -51,7 +51,7 @@ public:
 	Bool testStatus(ObjectStatusTypes status) const;
 
 	unsigned char m_head[4];
-	struct ThingTemplate *m_template;
+	ThingTemplate *m_template;
 	unsigned char m_mid08[0x78 - 0x08];
 	ObjectID m_producerID;
 };

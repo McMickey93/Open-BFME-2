@@ -25,13 +25,15 @@ public:
     OBJCLASS *cur() const { return m_cur; }
 };
 
+class TeamPrototype;
+
 class Object
 {
 public:
     unsigned char m_pad0[4];
     void *m_template;
     unsigned char m_pad08[0x38 - 0x08];
-    Coord3D m_position;
+    Coord3D m_pos;
     unsigned char m_pad44[0x94 - 0x44];
     unsigned char m_status94;
     unsigned char m_pad95[0x258 - 0x95];
@@ -55,7 +57,7 @@ public:
     Coord3D *rva0039E9A1(Coord3D *out) const;
 private:
     unsigned char m_pad00[0x30];
-    int m_slotBase30;
+    TeamPrototype *m_proto;
 };
 
 Coord3D *Team::rva0039DA2A(Coord3D *out) const
@@ -71,9 +73,9 @@ Coord3D *Team::rva0039DA2A(Coord3D *out) const
             continue;
         if ((cur->m_status94 & 1) != 0)
             continue;
-        sum.x = *(const volatile float *)&sum.x + cur->m_position.x;
-        sum.y += cur->m_position.y;
-        sum.z += cur->m_position.z;
+        sum.x = *(const volatile float *)&sum.x + cur->m_pos.x;
+        sum.y += cur->m_pos.y;
+        sum.z += cur->m_pos.z;
         ++count;
     }
     float ox;
@@ -106,7 +108,7 @@ Coord3D *Team::rva0039DA2A(Coord3D *out) const
 // owner's identity beyond this relation is unresolved.
 Coord3D *Team::rva0039E9A1(Coord3D *out) const
 {
-    const Rva0039E9A1Slot *slot = (const Rva0039E9A1Slot *)(m_slotBase30 + 0x12C);
+    const Rva0039E9A1Slot *slot = (const Rva0039E9A1Slot *)((const char *)m_proto + 0x12C);
     if (slot != 0 && slot->m_flagBC != 0)
     {
         const Coord3D *pos = &slot->m_pos;

@@ -55,12 +55,12 @@ public:
 	TeamPrototype(TeamFactory *tf, const AsciiString &owner, const AsciiString &name,
 		Player *ownerPlayer, bool isSingleton, Dict *d, int id);
 
-	const AsciiString &getOwnerName() const { return m_owner; }
+	const AsciiString &getOwnerName() const { return m_ownerName; }
 	const AsciiString &getName() const { return m_name; }
 
 private:
 	unsigned char m_pad00[0x10];
-	AsciiString m_owner; // +0x10
+	AsciiString m_ownerName; // +0x10
 	AsciiString m_name; // +0x14
 	unsigned char m_pad18[0x338 - 0x18];
 };
