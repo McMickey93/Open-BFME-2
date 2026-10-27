@@ -39,6 +39,7 @@ void __cdecl Rva000BBA47Construct(TreeKey00242F5E *, const TreeKey00242F5E &);
 
 // Placement-copy owners share the target two-pointer cdecl ABI.
 void __cdecl Rva001D9B0FConstruct(void *, const void *);
+void __cdecl Rva0020596AConstruct(void *, const void *);
 void __cdecl Rva00317CA0Construct(void *, const void *);
 void __cdecl Rva0032ACFCConstruct(void *, const void *);
 void __cdecl Rva004C3A9FConstruct(void *, const void *);
@@ -137,7 +138,7 @@ template<> __declspec(noinline) inline void __destroy_aux<Rva004F87BCElement *>(
 // 4-byte element; push_back 0x004F8D92.
 struct Rva004F8D92Element { char m_pad[4]; public: Rva004F8D92Element(const Rva004F8D92Element &); ~Rva004F8D92Element(); };
 // 12-byte element; push_back 0x004F9018.
-class Rva005F8F96 { public: ~Rva005F8F96(); };
+struct Rva005F8F96 { ~Rva005F8F96(); };
 struct Rva004F9018Element { char m_pad[12]; public: Rva004F9018Element(const Rva004F9018Element &); // Destruction is the rowed ??1Rva005F8F96, reached by a qualified call.
 __declspec(dllimport) __forceinline ~Rva004F9018Element() { ((Rva005F8F96 *)this)->Rva005F8F96::~Rva005F8F96(); } };
 // 20-byte element; push_back 0x00501E3F.
@@ -219,6 +220,9 @@ struct BfmeE8;
 enum ScienceType { SCIENCE_INVALID = -1 };
 class Rva004F6093Holder;
 class Object;
+class Rva00193660;
+struct Rva00193660Src;
+void __cdecl Rva0032ACEASet(Rva00193660 *, const Rva00193660Src *);
 void __cdecl Rva0026061AConstruct(BfmeStringRecord005DDD40 *, const BfmeStringRecord005DDD40 &);
 void __cdecl Rva002B2FE2Copy(Rva004F6093Holder *, const Rva004F6093Holder &);
 namespace _STL
@@ -237,7 +241,8 @@ template <> void _Construct<Rva00153A27Element, Rva00153A27Element>(Rva00153A27E
 template <> __declspec(dllimport) __forceinline void _Construct<Rva001DAAF2Element, Rva001DAAF2Element>(Rva001DAAF2Element *__p, const Rva001DAAF2Element &__val)
 { Rva001D9B0FConstruct(__p, &__val); }
 template <> void _Construct<Rva001DF3F1Element, Rva001DF3F1Element>(Rva001DF3F1Element *, const Rva001DF3F1Element &);
-template <> void _Construct<Rva0020A227Element, Rva0020A227Element>(Rva0020A227Element *, const Rva0020A227Element &);
+template <> __declspec(dllimport) __forceinline void _Construct<Rva0020A227Element, Rva0020A227Element>(Rva0020A227Element *__p, const Rva0020A227Element &__val)
+{ Rva0020596AConstruct(__p, &__val); }
 template <> void _Construct<CreateAHeroClass, CreateAHeroClass>(CreateAHeroClass *, const CreateAHeroClass &);
 template <> __declspec(dllimport) __forceinline void _Construct<Rva00260B88Element, Rva00260B88Element>(Rva00260B88Element *__p, const Rva00260B88Element &__val)
 { Rva0026061AConstruct(reinterpret_cast<BfmeStringRecord005DDD40 *>(__p), *reinterpret_cast<const BfmeStringRecord005DDD40 *>(&__val)); }
@@ -280,7 +285,8 @@ template <> void _Construct<Rva00501E3FElement, Rva00501E3FElement>(Rva00501E3FE
 template <> void _Construct<Rva0052BE33, Rva0052BE33>(Rva0052BE33 *, const Rva0052BE33 &);
 template <> void _Construct<Rva005668E9Element, Rva005668E9Element>(Rva005668E9Element *, const Rva005668E9Element &);
 template <> void _Construct<Rva00568A20, Rva00568A20>(Rva00568A20 *, const Rva00568A20 &);
-template <> void _Construct<Rva00578425Element, Rva00578425Element>(Rva00578425Element *, const Rva00578425Element &);
+template <> __declspec(dllimport) __forceinline void _Construct<Rva00578425Element, Rva00578425Element>(Rva00578425Element *__p, const Rva00578425Element &__val)
+{ _Construct(reinterpret_cast<Rva004F87BCElement *>(__p), *reinterpret_cast<const Rva004F87BCElement *>(&__val)); }
 template <> void _Construct<Rva005E1E9BElement, Rva005E1E9BElement>(Rva005E1E9BElement *, const Rva005E1E9BElement &);
 template <> void _Construct<Rva005E2B0EElement, Rva005E2B0EElement>(Rva005E2B0EElement *, const Rva005E2B0EElement &);
 template <> void _Construct<GeometryShape, GeometryShape>(GeometryShape *, const GeometryShape &);
@@ -292,7 +298,8 @@ template <> void _Construct<BfmeContainerRecord002CF46E, BfmeContainerRecord002C
 template <> __declspec(dllimport) __forceinline void _Construct<_STL::Rva007719C0Element, _STL::Rva007719C0Element>(_STL::Rva007719C0Element *__p, const _STL::Rva007719C0Element &__val)
 { Rva000BBA47Construct(reinterpret_cast<TreeKey00242F5E *>(__p), *reinterpret_cast<const TreeKey00242F5E *>(&__val)); }
 template <> void _Construct<BfmePod104, BfmePod104>(BfmePod104 *, const BfmePod104 &);
-template <> void _Construct<BfmeThingUBB, BfmeThingUBB>(BfmeThingUBB *, const BfmeThingUBB &);
+template <> __declspec(dllimport) __forceinline void _Construct<BfmeThingUBB, BfmeThingUBB>(BfmeThingUBB *__p, const BfmeThingUBB &__val)
+{ Rva0032ACEASet(reinterpret_cast<Rva00193660 *>(__p), reinterpret_cast<const Rva00193660Src *>(&__val)); }
 template <> void _Construct<Rva005E71C6Ref, Rva005E71C6Ref>(Rva005E71C6Ref *, const Rva005E71C6Ref &);
 template <> __declspec(dllimport) __forceinline void _Construct<Rva004F93B0Element, Rva004F93B0Element>(Rva004F93B0Element *__p, const Rva004F93B0Element &__val)
 { Rva004F6A52Assign(reinterpret_cast<Rva004C5DD0 *>(__p), reinterpret_cast<const Rva004C5DD0Pair *>(&__val)); }
@@ -307,6 +314,9 @@ struct Rva0046800B { void rva0046800B(); };
 struct ConnectionVec { void Rva00565A24_ScrapStorage(); };
 class Rva001DEF6B { public: ~Rva001DEF6B(); };
 class Rva00308C13 { public: ~Rva00308C13(); };
+class Rva00399800 { public: ~Rva00399800(); };
+class Rva0026E5B9 { public: ~Rva0026E5B9(); };
+struct Rva005F120F { void rva005F120F(); };
 struct Rva0032E7E2 { void rva0032E7E2(); };
 struct Rva00414148 { void rva00414148(); };
 struct Rva004F89DB { void rva004F89DB(); };
@@ -315,6 +325,15 @@ struct Rva0056614DVec { void rva0056614D(); };
 struct Rva002B61DD { void rva002B61DD(); };
 struct BfmeStringRecord00426A5B { char m_pad[8]; };
 struct BfmeAssignRecord44 { char m_pad[44]; };
+struct BfmeAssignRecord104;
+class CameraMarker;
+struct Rva002BB6BE20Rec;
+class Rva00214ADC;
+namespace _STL {
+template <> void _Destroy<Rva00214ADC *>(Rva00214ADC *, Rva00214ADC *);
+template <> __declspec(dllimport) __forceinline void _Destroy<Rva00403927 *>(Rva00403927 *first, Rva00403927 *last)
+{ _Destroy(reinterpret_cast<Rva00214ADC *>(first), reinterpret_cast<Rva00214ADC *>(last)); }
+}
 // The complete clear worker of Rva002B9062Element is owned by StlportVectorClearRva00577EF1.cpp.
 template <> void _STL::vector<Rva002B9062Element>::_M_clear();
 // Likewise owned by stlport_vector_stringrecord_5ddd40_allocate_copy.cpp,
@@ -322,6 +341,10 @@ template <> void _STL::vector<Rva002B9062Element>::_M_clear();
 template <> void _STL::vector<BfmeStringRecord005DDD40>::_M_clear();
 template <> void _STL::vector<BfmeStringRecord00426A5B>::_M_clear();
 template <> void _STL::vector<BfmeAssignRecord44>::_M_clear();
+template <> void _STL::vector<BfmeAssignRecord104>::_M_clear();
+template <> void _STL::vector<Rva005F8F96>::_M_clear();
+template <> void _STL::vector<CameraMarker>::_M_clear();
+template <> void _STL::vector<Rva002BB6BE20Rec>::_M_clear();
 template <class _Tp> struct ClearOwner : _STL::vector<_Tp> { public: using _STL::vector<_Tp>::_M_clear; };
 namespace _STL
 {
@@ -330,6 +353,21 @@ namespace _STL
 BFME_CLEAR_FORWARD(BfmeStringRecord00466E64, ((Rva0046800B *)this)->rva0046800B())
 BFME_CLEAR_FORWARD(LivingWorldRegionConnection, ((ConnectionVec *)this)->Rva00565A24_ScrapStorage())
 BFME_CLEAR_FORWARD(Rva001DF3F1Element, ((Rva001DEF6B *)this)->Rva001DEF6B::~Rva001DEF6B())
+BFME_CLEAR_FORWARD(Rva00153A27Element, ((ClearOwner<Rva005F8F96> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva001DAAF2Element, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva002898ACElement, ((ClearOwner<CameraMarker> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva002B72C9, ((ClearOwner<Rva002BB6BE20Rec> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva00318203Element, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva003328B6Element, ((Rva0026E5B9 *)this)->Rva0026E5B9::~Rva0026E5B9())
+BFME_CLEAR_FORWARD(Rva0039A48EElement, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva004C3F09Element, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva00578425Element, ((ClearOwner<Rva002B9062Element> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva005E1E9BElement, ((ClearOwner<Rva002B9062Element> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva005E2B0EElement, ((ClearOwner<Rva002B9062Element> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(Rva005F13E6Element, ((Rva005F120F *)this)->rva005F120F())
+BFME_CLEAR_FORWARD(Rva007719C0Element, ((ClearOwner<CameraMarker> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(BfmePod104, ((ClearOwner<BfmeAssignRecord104> *)this)->_M_clear())
+BFME_CLEAR_FORWARD(BfmeStringRecord00395E75, ((Rva00399800 *)this)->Rva00399800::~Rva00399800())
 BFME_CLEAR_FORWARD(Rva00260B88Element, ((ClearOwner<BfmeStringRecord005DDD40> *)this)->_M_clear())
 BFME_CLEAR_FORWARD(Rva00308E2CElement, ((Rva00308C13 *)this)->Rva00308C13::~Rva00308C13())
 BFME_CLEAR_FORWARD(Rva0032DC80Element, ((ClearOwner<BfmeStringRecord00426A5B> *)this)->_M_clear())

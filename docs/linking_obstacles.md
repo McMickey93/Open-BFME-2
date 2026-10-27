@@ -70,6 +70,14 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **Vector insert-overflow identity cleanup (2026-10-27):**
+  [the whole-source check](../reverse/attempt_support/vector-overflow-family-identity-20261027/readme.md)
+  verifies all 55 rows in StlportVectorInsertOverflowFamily.cpp and repairs
+  19 caller bindings to existing retail owners. The identity scan has zero
+  wrong bindings; the owning retirement tool removes all 35 source keys.
+  The before/after ordinary previews both preserve 8,480 authored nonpadding
+  bytes against census index `bf3dd31211`. This clears the source's registered
+  identity debt, with no new census-linked bytes or runtime result claimed.
 - **Evidence / scope:** the deleting destructor
   `??_EWeightInfoStruct@NamedPivotMapClass@@QAEPAXI@Z` blocked 34 graphics units;
   it was the sole blocker in 30, holding 45,189 authored nonpadding bytes
