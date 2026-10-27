@@ -79,7 +79,7 @@ private:
 	Rva005D1129Pointer m_08;
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 void Rva005CFFB8::Update()
 {

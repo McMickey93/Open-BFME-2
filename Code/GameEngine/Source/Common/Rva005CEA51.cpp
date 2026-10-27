@@ -6,7 +6,7 @@ public:
 	void rva005E8F6A();
 };
 
-void operator delete(void *p);
+#include <new>
 
 class Rva005CEA51
 {
