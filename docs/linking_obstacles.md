@@ -5301,3 +5301,28 @@ Evidence / affected units: `Code/GameEngine/Source/Common/System/INI_parseCrateC
 Completed: link-tier triage at 73061d9452: 11 of 199 served units already LINK in ordinary preview (35,561 B, awaiting census; largest GameLogicInit.cpp 28,191 B, Rva0073F895Fade.cpp 2,027 B, BannerUI.cpp 1,885 B, SidesList_sidesInfo.cpp 1,714 B). Every remaining non-generated failing unit already has a register, target-checklist or re_attempts entry. LANAPILobbyMenuForwarders.cpp's only blocker is `g_Va00E03354`, whose ledger owner is the address-named `?g_Va00A03354@@3HA` (not repaired: address-named global). PoolDeleteDeletingDtors01.cpp trial logged in re_attempts.log (73898a9634).
 Remaining / next check: census runners should clear objects of sources absent from the census tree before linking (or link_check should forget them, as it does index `forgotten` entries); until then merge previews stay inconclusive and the CrateSystem duplicate is expected.
 Clearance: none. Census confirmation: CrateSystem.cpp linked at 73061d9452.
+
+### LINK-123: LANAPI units bind a second name for the AptLanLobby singleton at 0x00A03354
+
+**Status: Open. Updated: 2026-10-27.**
+
+- **Scope:** `Code/GameEngine/Source/GameNetwork/LANAPILobbyMenuForwarders.cpp` (105 B)
+  and `Code/GameEngine/Source/GameNetwork/LANAPICallbacks.cpp` (5,570 B). Each fails
+  `tools/link_check.py` only on the unresolved
+  `?g_Va00E03354@@3PAURva004469D1Receiver@@A`, a second binding of data 0x00A03354
+  whose ledger symbol (`reverse/data_ledger.csv`) is `?g_Va00A03354@@3HA`, the
+  spelling the linking units (LANAPIOnGameCreate.cpp, AptLanLobbyDestructor.cpp,
+  Rva00444525Init.cpp) declare.
+- **Verified trial (not landed):** declaring `extern int g_Va00A03354;` and casting
+  at each use builds 54/54 rows byte-exact and link_check reports both units LINKS
+  (0 -> 5,675 B). `tools/hatch_counters.py --staged` refuses it: address_global +9 and
+  +7 for token `g_Va00A03354`, because a move must keep each token's total
+  (rule 3a), not the hatch's. The patch is recorded in `reverse/re_attempts.log`
+  (0x00248E2F, blocked).
+- **Remaining / next check:** give 0x00A03354 a real name (the AptLanLobby
+  singleton: its constructor stores `this` when unset, AptLanLobbyDestructor clears
+  it) through `tools/rename.py global` with an agreed or canonical basis; the
+  rename rewrites every consumer, and then the two LANAPI units can declare that
+  name with no hatch growth.
+- **Clearance:** none.
+- **Census confirmation:** not claimed.
