@@ -7298,7 +7298,6 @@ name,address,notes
 ?rva0082ADB0Fill@@YAXPAD0ABD@Z,0x000237C0
 ?rva0082C6E0CopyValues@@YAPAURva0082C6E0Value@@PAU1@00@Z,0x000179B0
 ?rva008AF650Implementation@@YAXHHH@Z,0x006EE6C0
-?rva008AF650Implementation@@YA_NPAVRva008AF650Object@@PAVBfmeStrVKI@@PAVAptValue@@@Z,0x0062929E,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 ?rva00A00062@@YIXPAURva00A00062Sub@@HHH@Z,0x00A00062,fastcall sub method called from 0x005FA98C with fwd-passthrough edx; identity unproven
 ?rva571c40@@YAXPAVRva572670Record@@HHV1@H@Z,0x005B2A8C,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 ?s4First005F36D0@@YAXXZ,0x003AA350,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
