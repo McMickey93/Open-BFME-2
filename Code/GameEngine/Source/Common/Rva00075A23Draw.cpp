@@ -37,8 +37,17 @@ public:
 	};
 };
 
+struct IDirect3DDevice8;
+void Rva00075A23Draw(int width, int height);
+class W3DShaderManager;
+
 class DX8Wrapper
 {
+	friend void Rva00075A23Draw(int width, int height);
+	friend class W3DShaderManager;
+protected:
+	// 0x009EDA34, defined by dx8wrapper.cpp; reached through the DeviceObj view.
+	static IDirect3DDevice8 *D3DDevice;
 public:
 	static void Set_Vertex_Buffer(const VertexBufferClass *vb, unsigned stream);
 	static void bfmeRva00120700(unsigned start, unsigned count);
@@ -58,7 +67,6 @@ struct DeviceObj
 	DeviceVtbl *m_vtable;
 };
 
-extern DeviceObj *g_deviceObj;
 extern VertexBufferClass *g_vb;
 extern int g_quadIndex;
 extern unsigned g_fvfShader;
@@ -130,16 +138,12 @@ void Rva00075A23Draw(int width, int height)
 		quadVertex[3].v = 1.0f + invH;
 	}
 	DX8Wrapper::Set_Vertex_Buffer(g_vb, 0);
-	g_deviceObj->m_vtable->m_setVertexShader(g_deviceObj, g_fvfShader);
+	((DeviceObj *)DX8Wrapper::D3DDevice)->m_vtable->m_setVertexShader(((DeviceObj *)DX8Wrapper::D3DDevice), g_fvfShader);
 	++number_of_DX8_calls;
 	DX8Wrapper::bfmeRva00120700(g_quadIndex * 4, 2);
 	if (++g_quadIndex >= 50)
 		g_quadIndex = 0;
 }
-
-// The global(s) below are defined elsewhere under another name at the same
-// address (the census owner of that DIR32 target); bind this unit's spelling.
-#pragma comment(linker, "/alternatename:?g_deviceObj@@3PAUDeviceObj@@A=?D3DDevice@DX8Wrapper@@1PAUIDirect3DDevice8@@A")
 
 // The target drawViewport takes an optional pair of floating extents.
 #include "../../../../reference/shims/wwmath/Vector2.h"
@@ -258,7 +262,7 @@ void W3DShaderManager::drawViewport(int color, bool useExplicitDimensions, const
 		quadVertex[3].v = (float)ypos / uvHeight;
 	}
 
-	g_deviceObj->m_vtable->m_methodAt164(g_deviceObj, 0x144);
+	((DeviceObj *)DX8Wrapper::D3DDevice)->m_vtable->m_methodAt164(((DeviceObj *)DX8Wrapper::D3DDevice), 0x144);
 	++number_of_DX8_calls;
 	DX8Wrapper::Set_Vertex_Buffer(g_vb, 0);
 	DX8Wrapper::bfmeRva00120700(g_quadIndex * 4, 2);
