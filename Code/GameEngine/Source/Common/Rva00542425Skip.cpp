@@ -7,9 +7,11 @@
 // handoff (mov esi eax). Precedent static intToHexDigit rowed in
 // quoted_printable.cpp and shape-lever EAX-to-ESI handoff. Caller stub keeps the
 // static emitted with EAX ABI for Rva00542449Find.
+#include <ctype.h>
+#include <string.h>
+
 extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
-extern "C" __declspec(dllimport) int __cdecl isalnum(int c);
 
 static char *Rva00542425Skip(char *p)
 {
@@ -66,7 +68,6 @@ char *Rva00542425Caller(char *p)
 // "/>" arm, '>' is consumed; the tag name is NUL-terminated in place with the
 // clobbered byte saved at +0x20/+0x24, and the depth at +0x04 moves by one.
 // Any malformed input returns bfmeFailEAN(-1). Retail bytes and call sites.
-extern "C" __declspec(dllimport) char *__cdecl strncpy(char *,const char *,unsigned int);
 class BfmeLexEAN {public:int bfmeFailEAN(int);int bfmeScanEAN();};
 class Rva005423F0 {public:char *rva005423F0(char *);};
 struct Rva005424C4Attribute {char name[33];char value[64];};

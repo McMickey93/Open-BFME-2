@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /MD /EHsc
+// platformsdk
 //
 // ?ResolveBindings@SourceNamespace_Draw@ParticleFXShaderParameterSourceNamespace@@UAEXPBD0PAVFXShaderParameterBinder@@@Z
 // @0x001F69B1 328B: vtable slot 1 of the "Draw" sub-binder (vtable 0x00BE16E8,
@@ -37,9 +38,10 @@
 // for the first conditional temporary while the second is created, and the
 // handles share one frame slot. Both are declared throw() to say so.
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include <windows.h>
+#include <string.h>
 
 typedef const char *D3DXHANDLE;
-typedef int BOOL;
 
 struct IDirect3DBaseTexture8;
 class DummyPtrType;
@@ -340,7 +342,6 @@ void Rva001F6EB7ColorKeys(ID3DXEffect *effect, D3DXHANDLE handle)
 }
 
 void __cdecl Rva001530E9Parse(const char *name, void *volatile path);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 
 typedef void (*Rva001F69B1Callback)(ID3DXEffect *effect, D3DXHANDLE handle);
 

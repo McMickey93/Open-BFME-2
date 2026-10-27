@@ -1,4 +1,5 @@
 // cl: /MD
+// platformsdk
 //
 // ?rva000A77B3@AudioFileCache@@QAEXXZ, retail 0x000A77B3, 38 bytes.
 // Closes the thread handle at +0x48 after waiting on it, sets byte at +0x4C.
@@ -7,8 +8,7 @@
 // 0x000A7D0F (~AudioFileCache, on its own this); +0x48/+0x4C are the cache's
 // loader thread handle and quit flag.
 
-extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void *handle, unsigned long timeout);
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void *handle);
+#include <windows.h>
 
 class AudioFileCache
 {

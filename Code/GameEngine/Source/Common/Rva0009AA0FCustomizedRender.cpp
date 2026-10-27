@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?Customized_Render@Rva0009AA0F@@MAEXAAVRenderInfoClass@@@Z, retail
 // 0x0009C9DE..0x0009CD9B (957 bytes, EH, ret 4).
@@ -27,8 +28,8 @@
 // render info (push / call / pop): it is WW3D::Flush(RenderInfoClass &)
 //   ?Flush@WW3D@@SAXAAVRenderInfoClass@@@Z -> 0x001173F0
 
-typedef unsigned long DWORD;
-typedef long HRESULT;
+#include <windows.h>
+
 typedef DWORD D3DRENDERSTATETYPE;
 typedef int Int;
 

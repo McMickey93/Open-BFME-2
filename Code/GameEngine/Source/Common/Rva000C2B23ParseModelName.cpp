@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /DNDEBUG /MD
+// platformsdk
 //
 // ?Rva000C2B23_ParseModelName@INI@@SAXPAV1@PAX1PBX@Z, retail 0x000C2B23
 // (174B): the Model row (0x00BCAB20) of the W3DModelDraw condition-state table.
@@ -8,8 +9,8 @@
 // Separators come from the INI's +0x420 field. Name address-derived.
 
 #include "ascii_string.h"
-
-#define NULL 0
+#include <windows.h>
+#include <string.h>
 
 class INI
 {
@@ -22,8 +23,6 @@ private:
 	unsigned char m_unreconstructed_000[0x420];
 	const char *m_separators;		// +0x420
 };
-
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 
 namespace _STL
 {

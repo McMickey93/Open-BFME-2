@@ -15,6 +15,8 @@
 // pointers and emits no vector<void *> destructor copies.
 
 #include <vector>
+#include <stdlib.h>
+#include <new>
 
 // vector<void*> begin/end otherwise instantiate per-TU COMDATs (one byte
 // shape per TU flags); explicit dllimport+forceinline specializations take
@@ -41,8 +43,6 @@ template <> AsciiString *vector<AsciiString, allocator<AsciiString> >::erase(Asc
 }
 
 
-extern "C" void __cdecl free(void *block);
-void __cdecl operator delete(void *block);
 
 struct Rva0041F760FreePtr
 {

@@ -9,8 +9,8 @@
 // retail explicitly does both sin/cos calls then the hardware pair. This
 // bounded x87 codegen blocker was isolated before reconstructing the C++ math.
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
-extern "C" double __cdecl sin(double);
-extern "C" double __cdecl cos(double);
+#include <math.h>
+
 class Rva00468E98Point
 {
 public:

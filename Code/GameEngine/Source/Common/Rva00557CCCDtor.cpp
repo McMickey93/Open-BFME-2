@@ -6,6 +6,8 @@
 // anchor. Member order and offsets below follow the retail cleanup calls;
 // unnamed storage and owned-pointer meanings remain structural inferences.
 #include <deque>
+#include <new>
+#include <stdlib.h>
 
 namespace _STL { }
 
@@ -33,7 +35,6 @@ public:
 	virtual void pure15() = 0;
 };
 struct Rva005562DD { unsigned int unknown[3]; ~Rva005562DD(); };
-void __cdecl operator delete(void *);
 // Existing neutral lock-owner pin at9990D: this unit emits its whole26B
 // null/clear/LockClass613AC0/delete2FD60 teardown equal to the rowed clear
 // provider. The12B member extent follows the parent layout; fields after
@@ -70,8 +71,6 @@ namespace _STL {
 template <> deque<BfmeOpaqueOwnedRecord1432, allocator<BfmeOpaqueOwnedRecord1432> >::~deque();
 template <> deque<BfmeOpaqueOwnedRecord1408, allocator<BfmeOpaqueOwnedRecord1408> >::~deque();
 }
-
-extern "C" void free(void *);
 
 typedef _STL::deque<BfmeOpaqueOwnedRecord1408,
 	_STL::allocator<BfmeOpaqueOwnedRecord1408> > BfmeDeque1408;

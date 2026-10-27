@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /G7 /Oi- /Ireference/shims/bfme2_ascii /Ob2 /EHsc /MD /D_STLP_USE_STATIC_LIB
+// platformsdk
 // ??0Rva005DD772@@QAE@XZ @0x005DD772 81B.
 // Default ctor of an 8-byte UnicodeString+float display record: base UnicodeString
 // from narrow "-" at 0x83DD78 via AsciiString temp then float 0.0f at +4 via xmm.
@@ -12,6 +13,8 @@ class AsciiString;
 class UnicodeString;
 #include "ascii_string.h"
 #include "unicode_string.h"
+#include <stdio.h>
+#include <windows.h>
 class Rva005DD772 : public UnicodeString {
 public:
     float m04;
@@ -97,8 +100,6 @@ int Rva005DD88A::rva005DD88A(GameWindow *win, int a, int b, float f)
 // The original class name is not exposed by the WB lead.
 #include <math.h>
 #pragma function(fabs)
-extern "C" __declspec(dllimport) int __cdecl _snprintf(char *, unsigned int, const char *, ...);
-extern "C" __declspec(dllimport) int __stdcall GetLocaleInfoA(unsigned long, unsigned long, char *, int);
 class Rva005DD8E0 : public Rva005DD772 {
 public:
     Rva005DD8E0(float value, float divisor);

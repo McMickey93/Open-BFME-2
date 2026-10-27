@@ -5,6 +5,10 @@
 // Inference: namespace-scope AptComponents (cdecl, no this) rather than a class static; bytes cannot tell.
 // Evidence: callers at 0x004120E4 with void-star plus char-star plus caller-cleaned 8B; strings _light _frame= _AnimMode plus "%d=%f,%f,%f" plus IAT _strnicmp sscanf atoi isdigit; rowed StringBase compare set releaseBuffer plus pin Rva004128F0GetParam; vtable offsets +0x10 int-float-float-float plus +0x14 int-AsciiString.
 #include "ascii_string.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 class AptView3D
 {
@@ -18,10 +22,6 @@ public:
 };
 
 bool __cdecl Rva004128F0GetParam(const char *params, const char *key, AsciiString &value);
-extern "C" __declspec(dllimport) int __cdecl _strnicmp(const char *a, const char *b, unsigned int n);
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
-extern "C" __declspec(dllimport) int __cdecl isdigit(int c);
 
 namespace AptComponents
 {

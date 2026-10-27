@@ -16,10 +16,8 @@
 // address-derived; the WorldBuilder twin 0x014D66F0 has the same statement
 // order.
 
-extern "C" __declspec(dllimport) char *__cdecl _itoa(int value, char *buffer, int radix);
-extern "C" __declspec(dllimport) char *__cdecl _gcvt(double value, int digits, char *buffer);
-
 #include "ascii_string.h"
+#include <stdlib.h>
 
 struct Rva0059AFC2In { int m_a, m_b, m_c; };
 struct AsciiStringPlusText : Rva0059AFC2In {};

@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /MD /EHsc
+// platformsdk
 // Split from Rva001F73D5ParticlePhysicsUpdateBinder.cpp: these definitions reference a callee with no matched body yet,
 // so they are kept apart from the unit's bodies that already link.
 //
@@ -44,9 +45,10 @@
 
 #include "../../../Libraries/Include/Lib/Coord2D.h"
 #include "../../../Libraries/Include/Lib/RGBColor.h"
+#include <windows.h>
+#include <string.h>
 
 typedef const char *D3DXHANDLE;
-typedef int BOOL;
 
 struct IDirect3DBaseTexture8;
 
@@ -198,7 +200,6 @@ void Rva001F8009ZRotationDamping(ID3DXEffect *effect, D3DXHANDLE handle);
 
 void __cdecl Rva001532E1Erase(const char *name);
 void __cdecl Rva001530E9Parse(const char *name, void *volatile path);
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 
 typedef void (*Rva001F73D5Callback)(ID3DXEffect *effect, D3DXHANDLE handle);
 

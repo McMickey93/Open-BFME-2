@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?sendKeepAlive@Rva004D3942@@QAEXPAVConnectionManager@@@Z, retail 0x004d3942, 156 bytes. Banked partial (score 0.98) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
@@ -6,9 +7,9 @@
 // stamps playerID via rowed getLocalPlayerID gates commandID via rowed Does
 // then rowed Generate plus pin sendLocalCommandDirect plus rowed detach.
 // Evidence: timeGetTime import plus new 0x1c plus caller 0x004D48BE.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
-void *__cdecl operator new(unsigned int size);
+#include <windows.h>
+#include <new>
 
 enum NetCommandType
 {
