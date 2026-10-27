@@ -77,6 +77,7 @@ struct RGBAColorReal;
 struct RGBAColorInt;
 #include "../../Include/Common/BfmeXfer.h"
 #include <list>
+
 enum { MAX_SLOTS = 8 };
 
 // Bind the close calls to the existing whole 45-byte provider at RVA 0x0060C8CD.
@@ -633,11 +634,23 @@ public:
 
 extern GameWindowManager *TheWindowManager;
 
+// ?rva0037B146@Rva0037B146@@QAEXXZ retail 0x0037B146 70B.
+// Cleanup helper: if byte at +0xE70 is set return; else walk TheCommandList
+// first-message chain (+0xC) and delete nodes whose +0x10 id is in (1000,1999)
+// except 1098 via virtual slot0 with 0 plus operator delete 0x0002FD60.
+// Evidence: callees rowed 0x0002FD60; global TheCommandList 0x00A00954 in use;
+// caller 0x0037BC71 shares +0xE70/+0xE78 class; prev/next Recorder neighbours.
+class CommandList;
+
+extern CommandList *TheCommandList;
+
 // tu-skeleton: 0x0037ADB6 152B ?logCRCMismatch@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
 
 // tu-skeleton: 0x0037AE4E 148B ?logGameEnd@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
 
 // tu-skeleton: 0x0037AEE2 35B ?rva0037AEE2@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderPlaybackFile.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
 // ---- from Code/GameEngine/Source/Common/Recorder.cpp
 
@@ -1350,8 +1363,6 @@ Rva0037D076::Rva0037D076()
 	m_b0 = 0;
 }
 
-// tu-skeleton: 0x0037B146 70B ?rva0037B146@Rva0037B146@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B146Cleanup.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/System/RecorderIsMultiplayer.cpp
 
 // ?isMultiplayer@RecorderClass@@QAE_NXZ
@@ -1378,16 +1389,6 @@ Bool RecorderClass::isMultiplayer(void)
 		return true;
 	return false;
 }
-
-// tu-skeleton: 0x0037B326 171B ?init@Rva0037BBED@@UAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B42D 52B ?stopRecording@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B5DF 105B ??1Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0037B70A 189B ?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/System/Rva0037B7C7.cpp
 
@@ -1454,6 +1455,48 @@ void RecorderClass::initControls()
 		parentReplayControl->winHide(getMode() != RECORDERMODETYPE_PLAYBACK);
 }
 
+// ---- from Code/GameEngine/Source/Common/System/Rva0037B146Cleanup.cpp
+
+void Rva0037B146::rva0037B146()
+{
+	if (m_flagE70 != 0)
+		return;
+	for (GameMessage *cur = TheCommandList->first; cur != 0;) {
+		int id = cur->m_type;
+		GameMessage *next = cur->m_next;
+		if (id <= 0x3E8)
+			goto advance;
+		if (id >= 0x7CF)
+			goto advance;
+		if (id == 0x44A)
+			goto advance;
+		::delete cur;
+advance:
+		cur = next;
+	}
+}
+
+// tu-skeleton: 0x0037B326 171B ?init@Rva0037BBED@@UAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
+
+// tu-skeleton: 0x0037B42D 52B ?stopRecording@RecorderClass@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/RecorderClass.cpp (not merged yet)
+
+// tu-skeleton: 0x0037B5C8 23B ??0Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptSaveLoadRva0043684C.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp
+
+// ??1Rva0037B5DF@@QAE@XZ retail 0x0037B5DF 105B.
+// Non-virtual dtor destroying five StringBase<unsigned short> at +0x58 +0x48 +0x44 +0x30 +0x28
+// and one StringBase<char> at +0x20 via rowed releaseBuffer 0x00036E70 and 0x00036410
+// in reverse order with __EH_prolog frame 0x00629188 and states 4-3-2-1-0 then -1.
+// Evidence: callees rowed 0x00036E70 0x00036410; callers 0x0037D1C2 0x0037D3A5 0x00436DC4;
+// neighbours RecorderIsMultiplayer 0x0037B18C and GetLastReplayDisplayName 0x0037BA62 same flags.
+
+Rva0037B5DF::~Rva0037B5DF()
+{
+}
+
+// tu-skeleton: 0x0037B70A 189B ?rva0037B70A@Rva0037BBED@@QAE?AVAsciiString@@XZ -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
+
 // tu-skeleton: 0x0037CAD7 63B (unledgered) -- unmatched, no code, never credited
 
 // tu-skeleton: 0x0037CF51 52B (unledgered) -- unmatched, no code, never credited
@@ -1471,18 +1514,6 @@ void RecorderClass::initControls()
 // tu-skeleton: 0x0037D6E8 643B ?copyCurrentRecordingToFile@RecorderClass@@QAE_NPAVUnicodeString@@0@Z -- matched in Code/GameEngine/Source/Common/RecorderCopyCurrentRecording.cpp (not merged yet)
 
 // tu-skeleton: 0x0037DC36 28B ?update@RecorderClass@@UAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAG.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ECC4 11B Unwind@00b7ecc4 -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ECCF 11B Unwind@00b7eccf -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ECDA 11B Unwind@00b7ecda -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ECE5 11B Unwind@00b7ece5 -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ECF0 11B Unwind@00b7ecf0 -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0077ECFB 10B __ehhandler$??1Rva0037B5DF@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva0037B5DFDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0077ED30 8B $L1648 -- matched in Code/GameEngine/Source/Common/Rva0037BCC4.cpp (not merged yet)
 
