@@ -7,7 +7,7 @@
 // Address-derived owner retained; donor application names are unproven.
 #include "ascii_string.h"
 
-extern "C" __declspec(dllimport) void *__cdecl memmove(void *, const void *, unsigned int);
+#include <string.h>
 // STLport's allocator calls the C++-linkage free owned by GameMemoryFree.cpp.
 // Its existing binding selects the game allocator rather than the CRT thunk.
 namespace _STL { void __cdecl free(void *); }

@@ -9,7 +9,7 @@ struct Rva006C1850Node
 	void *m_value;
 	Rva006C1850Node *m_next;
 };
-extern "C" void *__cdecl memset(void *dst, int c, unsigned int n);
+#include <string.h>
 class Rva006C1850
 {
 public:
