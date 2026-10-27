@@ -3679,7 +3679,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslGameRecords.cpp	?rva007FB
 alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslGameRecords.cpp	?rva007FBFB0@Rva007F5010Player@@QAE_NPBDPADI@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Y4FeslPlayerEnter.cpp	??1BfmeC994@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/native_network_BFMENetwork_Ctor.cpp	??0Pinger@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/GameNetwork/udp.cpp	?GetStatus@UDP@@QAE?AW4sockStat@1@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/udp.cpp	__imp__htonl	1
 alternatename	Code/GameEngine/Source/GameNetwork/udp.cpp	__imp__htons	1
 alternatename	Code/GameEngine/Source/Main/Win32GameEngineCtor.cpp	?m_unknown01@GameEngine@@UAEXXZ	1
@@ -9637,7 +9636,6 @@ pin	reverse/symbols.csv	0x005939EE	2
 pin	reverse/symbols.csv	0x00593F15	1
 pin	reverse/symbols.csv	0x00594689	1
 pin	reverse/symbols.csv	0x005946E1	1
-pin	reverse/symbols.csv	0x00594A06	1
 pin	reverse/symbols.csv	0x0059510D	1
 pin	reverse/symbols.csv	0x00595685	1
 pin	reverse/symbols.csv	0x0059573C	1

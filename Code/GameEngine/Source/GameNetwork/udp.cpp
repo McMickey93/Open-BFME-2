@@ -13,7 +13,6 @@
 #endif // defined(_DEBUG) || defined(_INTERNAL)
 #pragma comment(linker, "/alternatename:__imp__htonl=__imp__htonl@4")
 #pragma comment(linker, "/alternatename:__imp__htons=__imp__htons@4")
-#pragma comment(linker, "/alternatename:?GetStatus@UDP@@QAE?AW4sockStat@1@XZ=?rva00594A06@UDP@@QAEHXZ")
 #define Matrix4x4 Matrix4
 #include "PreRTS.h"
 #include <winsock.h>
@@ -166,8 +165,7 @@ Int UDP::Bind(const char *Host,UnsignedShort port)
 // as htonl/htons too; their distinct COFF IAT spellings avoid merging the
 // calls during compilation, and both bind to the genuine named imports.
 // /G7 preserves the target AX load for the 16-bit port argument.
-// The full118B enum-returning GetStatus was independently verified against
-// this UDP declaration before binding the existing int-returning provider.
+// It calls GetStatus (0x00594A06, the Zero Hour body below) after a failed bind.
 
 Int UDP::Bind(UnsignedInt IP,UnsignedShort Port)
 {
@@ -301,6 +299,41 @@ Int UDP::Read(unsigned char *msg,UnsignedInt len,sockaddr_in *from)
   return(retval);
 }
 
+UDP::sockStat UDP::GetStatus(void)
+{
+	Int status = m_lastError;
+ #ifdef _WINDOWS
+  //int status=WSAGetLastError();
+  if (status==0) return(OK);
+  else if (status==WSAEINTR) return(INTR);
+  else if (status==WSAEINPROGRESS) return(INPROGRESS);
+  else if (status==WSAECONNREFUSED) return(CONNREFUSED);
+  else if (status==WSAEINVAL) return(INVAL);
+  else if (status==WSAEISCONN) return(ISCONN);
+  else if (status==WSAENOTSOCK) return(NOTSOCK);
+  else if (status==WSAETIMEDOUT) return(TIMEDOUT);
+  else if (status==WSAEALREADY) return(ALREADY);
+  else if (status==WSAEWOULDBLOCK) return(WOULDBLOCK);
+  else if (status==WSAEBADF) return(BADF);
+  else     return((UDP::sockStat)status);
+ #else
+  //int status=errno;
+  if (status==0) return(OK);
+  else if (status==EINTR) return(INTR);
+  else if (status==EINPROGRESS) return(INPROGRESS);
+  else if (status==ECONNREFUSED) return(CONNREFUSED);
+  else if (status==EINVAL) return(INVAL);
+  else if (status==EISCONN) return(ISCONN);
+  else if (status==ENOTSOCK) return(NOTSOCK);
+  else if (status==ETIMEDOUT) return(TIMEDOUT);
+  else if (status==EALREADY) return(ALREADY);
+  else if (status==EAGAIN) return(AGAIN);
+  else if (status==EWOULDBLOCK) return(WOULDBLOCK);
+  else if (status==EBADF) return(BADF);
+  else     return(UNKNOWN);
+ #endif
+}
+
 // Set the kernel buffer sizes for incoming, and outgoing packets
 //
 // Linux seems to have a buffer max of 32767 bytes for this,
@@ -363,12 +396,6 @@ Int UDP::AllowBroadcasts(Bool status)
 	else
 		return FALSE;
 }
-
-// tu-skeleton: 0x00594976 53B ?rva00594976@UDP@@QAEHH@Z -- matched in Code/GameEngine/Source/GameNetwork/UDPNonBlocking.cpp (not merged yet)
-
-// tu-skeleton: 0x00594A06 118B ?rva00594A06@UDP@@QAEHXZ -- matched in Code/GameEngine/Source/GameNetwork/UDPErrorMap.cpp (not merged yet)
-
-// tu-skeleton: 0x00594B2E 40B ?rva00594B2E@UDP@@QAE_N_N@Z -- matched in Code/GameEngine/Source/GameNetwork/UDPBroadcast.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameNetwork/Rva00594C12Write.cpp
 

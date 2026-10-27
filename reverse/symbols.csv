@@ -4261,7 +4261,6 @@ name,address,notes
 ?GetRootAnimation@AptCIH@@QAEPAV1@XZ,0x006E0CB0,Original APT ABI and native709870 call or unwind target; existing providers aliased where recovered
 ?GetSource@Id@ProfileFuncLevel@@QBEPBDXZ,0x0065CE90,CSV name/address/source/line operand positions; donor empty-data getter folds with held 32-bit zero body; thiscall no stack args
 ?GetSpriteInstBase@AptCIH@@QBEPAUAptSpriteInstBase@@XZ,0x006CFF40,alias of rowed AptCIH accessor; native Play Stop REL32; accessor assert proves sprite base; alternatename bound to provider
-?GetStatus@UDP@@QAE?AW4sockStat@1@XZ,0x00594A06,Full118B enum-returning body independently exact against shared donor UDP declaration; native bind594B56 reads same error1C and uses EAX status; bind existing address-named int-return provider
 ?GetStringFromRegistry@@YA_NVAsciiString@@0AAV1@@Z,0x00234E0B,callee of GetRegistryLanguage (0x00235029) at the site its BFME1 donor calls it; may be an ICF alias
 ?GetTime@Id@ProfileFuncLevel@@QBE_KI@Z,0x006C8780,CSV total-time calls; native 64-bit zero with ret 4; donor empty-data path folds with GetCalls
 ?GetUnsignedIntFromRegistry@@YA_NV?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@0AAI@Z,0x006C8AE0,callee of ?hasWriteAccess@@YA_NXZ at retail 0x005BC7A4 read from its REL32 displacement; body unrowed
