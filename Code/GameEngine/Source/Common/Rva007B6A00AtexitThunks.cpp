@@ -183,8 +183,6 @@ unsigned g_Va00E02040;	// retail RVA 0x00A02040 (.bss), defined here
 unsigned g_Va00E020C8;	// retail RVA 0x00A020C8 (.bss), defined here
 unsigned g_Va00E02158;	// retail RVA 0x00A02158 (.bss), defined here
 unsigned g_Va00E021F8;	// retail RVA 0x00A021F8 (.bss), defined here
-unsigned g_Va00E022A8;	// retail RVA 0x00A022A8 (.bss), defined here
-unsigned g_Va00E022AC;	// retail RVA 0x00A022AC (.bss), defined here
 extern unsigned g_Va00E022E8;
 extern unsigned g_Va00E028C4;
 extern unsigned g_Va00E02D68;
@@ -408,20 +406,6 @@ void __cdecl rva007B7D45()
 {
 	BfmeStringTailRecord144 *receiver = (BfmeStringTailRecord144 *)&g_Va00E021F8;
 	receiver->BfmeStringTailRecord144::~BfmeStringTailRecord144();
-}
-
-// ?rva007B7D77@@YAXXZ @ 0x007B7D77 (10B): ecx=&g_Va00E022A8, tail-jump to rowed ??1AsciiString@@QAE@XZ (0x0048BA39)
-void __cdecl rva007B7D77()
-{
-	AsciiString *receiver = (AsciiString *)&g_Va00E022A8;
-	receiver->~AsciiString();
-}
-
-// ?rva007B7D81@@YAXXZ @ 0x007B7D81 (10B): ecx=&g_Va00E022AC, tail-jump to rowed ??1AsciiString@@QAE@XZ (0x0048BA39)
-void __cdecl rva007B7D81()
-{
-	AsciiString *receiver = (AsciiString *)&g_Va00E022AC;
-	receiver->~AsciiString();
 }
 
 // ?rva007B7DB3@@YAXXZ @ 0x007B7DB3 (10B): ecx=&g_Va00E022E8, tail-jump to rowed ??1AsciiString@@QAE@XZ (0x0048BA39)
