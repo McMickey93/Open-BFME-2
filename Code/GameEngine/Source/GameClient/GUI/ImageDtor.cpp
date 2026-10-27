@@ -18,9 +18,8 @@
 //   member teardown in reverse declaration order through the rowed
 //   AsciiString pin at 0x36410; the holder block runs under EH state 1.
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t);
-void __cdecl operator delete(void *);
+#include <new>
+#include <string.h>
 
 #include "ascii_string.h"
 

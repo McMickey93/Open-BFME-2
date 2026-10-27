@@ -1,4 +1,5 @@
 // cl: /O1 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 // readable body of ??1DataChunkInput@@QAE@XZ: Code/GameEngine/Source/Common/System/DataChunk.cpp
 // readable body of ?readArrayOfBytes@DataChunkInput@@QAEXPADH@Z: Code/GameEngine/Source/Common/System/DataChunk.cpp
 // readable body of ?readAsciiString@DataChunkInput@@QAE?AVAsciiString@@XZ: Code/GameEngine/Source/Common/System/DataChunk.cpp
@@ -35,10 +36,11 @@ enum NameKeyType
 	NAMEKEY_INVALID = 0
 };
 
-extern "C" int __cdecl memcmp(const void *buf1, const void *buf2, unsigned int count);
+#include <string.h>
+#include <windows.h>
+#include <new>
 #pragma intrinsic(memcmp)
 
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
 
 class GameEngine;
 extern GameEngine *TheGameEngine;
@@ -261,7 +263,6 @@ Bool DataChunkInput::atEndOfChunk(void)
 	return true;
 }
 
-void operator delete(void *ptr);
 
 // Retail 0x00306DCC (20B): reset the stream to just-opened state: drain the
 // chunk stack, then seek the file back to the first-chunk position. ZH

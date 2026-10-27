@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?rva00255D58@Rva00255D58@@QAE_NPBDPA_N1@Z @0x00255D58 308B
 // Single-token KindOf bitstring worker over TheKindOfBitNames at 0x00DBBE18.
@@ -7,7 +8,8 @@
 // KindOf table, two call sites in 0x00256499 driving it per token (false = NONE break).
 // Direct transfer of the landed VeterancyLevel sibling ?rva0033AFBB@Rva0033AFBB (308B, same shape).
 
-#define NULL 0
+#include <string.h>
+#include <windows.h>
 
 typedef int Int;
 typedef unsigned int UnsignedInt;
@@ -36,9 +38,7 @@ private:
 	unsigned m_words[7];
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 extern "C" int rva002bcab_scanIndex(const char *token, ConstCharPtrArray nameList, Bool *found, Bool doThrow);
-extern "C" void *memset(void *dst, Int val, unsigned n);
 
 Bool Rva00255D58::rva00255D58(const char *token, Bool *foundNormal, Bool *foundAddOrSub)
 {

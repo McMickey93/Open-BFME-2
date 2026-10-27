@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?rva003339CE@Rva003339CE@@QAE_NPBDPA_N1@Z @0x003339CE 308B
 // Single-token BodyState bitstring worker. Evidence: the BodyStateNames table
@@ -15,7 +16,8 @@
 // over the 591 ModelCondition names at VA 0xdbaa98 (TOPPLED, FRONTCRUSHED...),
 // clearing 0x4C bytes (19 words); driven per token by 0x0033394D.
 
-#define NULL 0
+#include <string.h>
+#include <windows.h>
 
 typedef int Int;
 typedef unsigned int UnsignedInt;
@@ -64,9 +66,7 @@ private:
 	unsigned m_words[4];
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 extern "C" int rva002bcab_scanIndex(const char *token, ConstCharPtrArray nameList, Bool *found, Bool doThrow);
-extern "C" void *memset(void *dst, Int val, unsigned n);
 
 Bool Rva003339CE::rva003339CE(const char *token, Bool *foundNormal, Bool *foundAddOrSub)
 {

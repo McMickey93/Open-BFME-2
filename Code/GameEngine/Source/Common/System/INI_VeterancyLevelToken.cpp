@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /GX- /Oi-
+// platformsdk
 //
 // ?rva0033AFBB@Rva0033AFBB@@QAE_NPBDPA_N1@Z @0x0033AFBB 308B
 // Single-token VeterancyLevel bitstring worker. Evidence: the pinned
@@ -7,7 +8,8 @@
 // INIException filler-throw matches INI_parseBitString32, and the two call
 // sites in 0x0033B84E drive it per token (false return = NONE break).
 
-#define NULL 0
+#include <string.h>
+#include <windows.h>
 
 typedef int Int;
 typedef unsigned int UnsignedInt;
@@ -60,9 +62,7 @@ private:
 	unsigned m_words[1];
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 extern "C" int rva002bcab_scanIndex(const char *token, ConstCharPtrArray nameList, Bool *found, Bool doThrow);
-extern "C" void *memset(void *dst, Int val, unsigned n);
 
 Bool Rva0033AFBB::rva0033AFBB(const char *token, Bool *foundNormal, Bool *foundAddOrSub)
 {

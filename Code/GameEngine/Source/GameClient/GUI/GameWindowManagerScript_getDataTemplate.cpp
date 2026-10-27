@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?getDataTemplate@@YAPAXPADPAH@Z, retail 0x00315445, 245 bytes.
 // Dedicated TU.
@@ -23,12 +24,9 @@
 
 typedef int Int;
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <string.h>
+#include <windows.h>
 
-extern "C" int strcmp(const char *a, const char *b);
-extern "C" void *memset(void *dst, int val, unsigned int n);
 
 // Template statics. Only the address of each is witnessed by retail (DIR32
 // fill); sizes below mirror the sibling minimal models, the byte counts

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?parseImageOffset@@YA_NPADPAVWinInstanceData@@0PAX@Z,
 // retail 0x00314F99, 66 bytes. Dedicated TU.
@@ -17,9 +18,9 @@
 typedef int Int;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
+#include <string.h>
+#include <stdlib.h>
 
 struct ImageOffset
 {
@@ -34,8 +35,6 @@ public:
 	ImageOffset m_imageOffset; // +0x17C
 };
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *str);
 
 // ?parseImageOffset@@YA_NPADPAVWinInstanceData@@0PAX@Z
 static Bool parseImageOffset(char *token, WinInstanceData *instData, char *buffer, void *data)

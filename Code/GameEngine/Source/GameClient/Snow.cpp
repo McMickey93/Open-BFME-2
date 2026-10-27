@@ -6,6 +6,9 @@
 // Zero Hour/BFME1 Snow.cpp donor, adapted to target layout and initialization.
 // Donor field names are retained through visibility; later fields are offset views.
 // Unidentified virtual slots retain neutral names in this target ABI view.
+#include <new>
+#include <stdlib.h>
+
 class SubsystemInterface {
 public:
     SubsystemInterface();
@@ -83,8 +86,6 @@ typedef char SnowManagerSizeCheck[sizeof(SnowManager) == 0x74 ? 1 : -1];
 
 extern SnowManager *TheSnowManager;
 
-
-extern void * __cdecl operator new[](unsigned int);
 
 void SnowManager::init()
 {
@@ -182,7 +183,6 @@ extern OVERRIDE<WeatherSetting> TheWeatherSetting;
 // (TU view and ZH agree the object is one pointer; the ledger's provisional
 // 12B span has no +4/+8 reader behind it.)
 OVERRIDE<WeatherSetting> TheWeatherSetting;
-extern void __cdecl operator delete[](void *);
 
 // WeatherSetting secondary table VA 0x00BE3064 slot 0 reads the final
 // weather override through Overridable::friend_getFinalOverride.
@@ -202,7 +202,6 @@ void SnowManager::reset()
     updateIniSettings();
 }
 
-extern "C" __declspec(dllimport) int __cdecl rand(void);
 
 // Retail 0x00201165, 685B (vftable slot 14). Zero Hour's random starting
 // height table, then the snow settings copied one override lookup at a

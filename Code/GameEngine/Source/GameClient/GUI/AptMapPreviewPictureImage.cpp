@@ -6,11 +6,10 @@
 // The full body ends at 0x0057CF0B; the inventory stops after its EH prologue.
 
 class AsciiString;
+#include <new>
+#include <string.h>
 #include "ascii_string.h"
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t);
-void __cdecl operator delete(void *);
 
 class GlobalData;
 extern GlobalData *TheWritableGlobalData;

@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?rva0025CF2A@Display@@UAEIH@Z
 // retail 0x0025CF2A..0x0025D10F (485 bytes) thiscall RET 4.
@@ -32,9 +33,8 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
 
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *, const char *, ...);
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long);
-extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA(const char *);
+#include <windows.h>
+#include <stdio.h>
 
 Bool bfmeRva0011F5B0(unsigned long);		// 0x0011F5B0, the device lock
 Bool BFME_DX8_Thread_Assert();			// 0x00120F50, its unlock

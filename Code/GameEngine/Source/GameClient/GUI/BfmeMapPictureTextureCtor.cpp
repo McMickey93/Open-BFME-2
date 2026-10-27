@@ -1,4 +1,5 @@
 // cl: /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS
+// platformsdk
 //
 // ??0BfmeMapPictureTexture@@QAE@PBD@Z,
 // retail 0x002DB93E, 85 bytes. Dedicated TU.
@@ -10,10 +11,10 @@
 
 typedef int Int;
 
-#define NULL 0
+#include <windows.h>
+#include <string.h>
+#include <new>
 
-typedef unsigned int size_t;
-void *__cdecl operator new(size_t bytes);
 
 class BfmeThingJC
 {

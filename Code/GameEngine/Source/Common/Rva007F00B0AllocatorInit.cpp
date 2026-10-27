@@ -22,7 +22,8 @@ typedef void *(__cdecl *Rva007F00B0Allocate)(unsigned int, int);
 
 extern class GenAlloc *g_genAlloc;
 
-void *operator new(unsigned int size);
+#include <stdlib.h>
+#include <new>
 
 void Rva007F00B0(void *allocate, void *release)
 {
@@ -59,8 +60,6 @@ clear:
 	(*(Rva007F00B0Allocator **)&g_genAlloc) = 0;
 }
 
-extern "C" void *__cdecl malloc(unsigned int);
-extern "C" void __cdecl free(void *);
 
 void *__cdecl Rva0065CEC0Allocate(unsigned int size, int)
 {

@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 // GameState save path: the save-file suffix getter 0x002DBC97 (51 bytes,
 // was the free stdcall ?Rva002DBC97Get@@YGPAXH@Z) and GameState::saveGame
 // 0x002DD38D..0x002DD7E6 (1113 bytes including both inline catch funclets;
@@ -26,6 +27,7 @@
 // [ebp+0xC] that retail gives it, which also leaves [ebp+0x18] for the
 // catch's title argument). String literals checked against retail
 // 0x00BEDF7C 0x00C03FC4 0x00C03FD8 0x00BE6A5C 0x00BBB5C4.
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 // Retail expands the header test and str() inline here (str() falling back
@@ -43,17 +45,6 @@ static __forceinline const unsigned short *wideText(const UnicodeString &text)
 }
 
 typedef unsigned short WideChar;
-typedef struct _SYSTEMTIME {
-	unsigned short wYear;
-	unsigned short wMonth;
-	unsigned short wDayOfWeek;
-	unsigned short wDay;
-	unsigned short wHour;
-	unsigned short wMinute;
-	unsigned short wSecond;
-	unsigned short wMilliseconds;
-} SYSTEMTIME;
-extern "C" __declspec(dllimport) void __stdcall GetLocalTime(SYSTEMTIME *lpSystemTime);
 
 enum SnapshotType { SNAPSHOT_SAVELOAD = 0 };
 

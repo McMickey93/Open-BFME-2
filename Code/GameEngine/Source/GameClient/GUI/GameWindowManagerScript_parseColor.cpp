@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?parseColor@@YA_NPAHPAD@Z, retail 0x00314F32, 103 bytes. Dedicated TU.
 //
@@ -20,9 +21,9 @@ typedef bool Bool;
 typedef Int Color;
 typedef unsigned char Byte;
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
+#include <string.h>
+#include <stdlib.h>
 
 class GameWindowManager
 {
@@ -102,8 +103,6 @@ public:
 
 extern GameWindowManager *TheWindowManager;
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *str);
 
 Bool parseColor(Color *color, char *buffer)
 {

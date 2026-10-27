@@ -6,13 +6,12 @@
 // assigns through operator= at 0x0002F6D6. The (tag, format, ...)
 // constructor is the formatter rowed as _bfmeFormatText at 0x0060C36E, and
 // the destructor folds with INIException's: both delete[] the text at +0.
+#include <new>
+#include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
 
 extern char Rva0134D4B8FormatBuffer[2048];
-extern "C" __declspec(dllimport) int __cdecl _vsnprintf(char *, unsigned int, const char *, va_list);
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *block);
 
 class XferException
 {

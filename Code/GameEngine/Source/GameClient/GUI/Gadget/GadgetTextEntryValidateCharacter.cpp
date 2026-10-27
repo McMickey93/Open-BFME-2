@@ -5,9 +5,7 @@
 
 typedef unsigned short WideChar;
 
-extern "C" __declspec(dllimport) int __cdecl iswalnum(WideChar character);
-extern "C" __declspec(dllimport) int __cdecl iswascii(WideChar character);
-extern "C" __declspec(dllimport) int __cdecl iswdigit(WideChar character);
+#include <ctype.h>
 
 // ?GadgetTextEntryValidateCharacter@@YA_NGC@Z
 bool __cdecl GadgetTextEntryValidateCharacter(

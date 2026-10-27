@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?parseTextEntryData@@YA_NPADPAVWinInstanceData@@0PAX@Z, retail 0x003152B2, 181 bytes.
 // Dedicated TU.
@@ -26,9 +27,9 @@ typedef int Int;
 typedef short Short;
 typedef bool Bool;
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
+#include <string.h>
+#include <stdio.h>
 
 class WinInstanceData;
 
@@ -47,8 +48,6 @@ struct EntryData
 // same 41 bytes as retail 0x00314E6D (noinline keeps the call out of line).
 Int scanBool(const char *source, Bool &val);
 
-extern "C" __declspec(dllimport) char *__cdecl strtok(char *str, const char *delimiters);
-extern "C" __declspec(dllimport) int __cdecl sscanf(const char *buf, const char *fmt, ...);
 
 static __declspec(noinline) Int scanShort(const char *source, Short &val)
 {

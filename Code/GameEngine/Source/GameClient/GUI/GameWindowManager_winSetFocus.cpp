@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 // ?winSetFocus@GameWindowManager@@UAEHPAVGameWindow@@@Z @0x002C0ED5 147B
 // GameWindowManager::winSetFocus; vtable 0x7C7C90 slot 49 offset 0xC4; BFME1 donor GameWindowManager.cpp winSetFocus verbatim shape; m_keyboardFocus at +0x20; GWM_INPUT_FOCUS 23 via slot 58 0xE8; NO_FOCUS 0x400 via winGetStatus pin 0x30F45F; parent chain via winGetParent pin 0x3140A4.
 typedef int Int;
@@ -7,13 +8,7 @@ typedef unsigned int UnsignedInt;
 typedef UnsignedInt WindowMsgData;
 enum WindowMsgHandledType { MSG_IGNORED, MSG_HANDLED };
 enum { WIN_ERR_OK = 0, WIN_STATUS_NO_FOCUS = 0x400, GWM_INPUT_FOCUS = 23 };
-#ifndef FALSE
-#define FALSE 0
-#define TRUE 1
-#endif
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 class GameWindow {
 public:
     UnsignedInt winGetStatus();

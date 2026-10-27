@@ -1,13 +1,13 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD
+// platformsdk
 // ?rva005952C4@Rva00594DC0@@QAE_NPAXGPAG@Z, retail 0x005952C4 134B.
 // Chain of landed Rva00594DC0 convert 0x00594DC0: memcpy 20B, CRC16,
 // htonl check, convert, htons key check at +0x88, word extract.
 // Callers 0x004D4D7A, prev 0x0059517F send, next 0x0059534A cleanup.
 // Else after first guard keeps shared false tail early (jne over xor at +0xd).
 
-extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count);
-extern "C" __declspec(dllimport) unsigned long __stdcall htonl(unsigned long hostlong);
-extern "C" __declspec(dllimport) unsigned short __stdcall htons(unsigned short hostshort);
+#include <WinSock2.h>
+#include <string.h>
 unsigned int ComputeCRC(const unsigned char *data, unsigned int length, unsigned int crc);
 
 struct Rva00594DC0Msg
