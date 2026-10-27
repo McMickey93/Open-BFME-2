@@ -5,7 +5,7 @@ class Rva00049C38ADwordImmSetter
 public:
 	void apply();
 };
-void __cdecl operator delete(void *p);
+#include <new>
 class Rva00395A19
 {
 public:

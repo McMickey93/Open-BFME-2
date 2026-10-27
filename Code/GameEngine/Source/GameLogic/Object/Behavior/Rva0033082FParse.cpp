@@ -55,7 +55,7 @@ public:
 	void rva003307F2(const ModuleData *mod) throw();
 };
 
-void *__cdecl operator new(unsigned int size);
+#include <new>
 
 class RvaParseBase
 {
