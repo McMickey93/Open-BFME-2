@@ -32,7 +32,15 @@ struct Rva004E855CState
 	GameWindow * volatile m_window284;
 };
 
-extern Rva004E855CState *g_Va00E04478;
+// The chat window state global (VA 0x00E04478), defined as an int by
+// ColdGlobalDwordGetters.cpp; this unit reads it through its state view.
+extern int g_Va00E04478;
+
+static inline Rva004E855CState *chatState()
+{
+	return (Rva004E855CState *)g_Va00E04478;
+}
+
 extern UnicodeString g_00E0447C;
 class Rva00222A8BTarget;
 class BfmeAptWindowManager;
@@ -40,31 +48,28 @@ extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 
 void __cdecl Rva004E84ABRun();
 
-// ?g_Va00E04478@@3PAURva004E855CState@@A: the global at VA 0xe04478 is ?g_Va00E04478@@3HA.
-#pragma comment(linker, "/alternatename:?g_Va00E04478@@3PAURva004E855CState@@A=?g_Va00E04478@@3HA")
-
 void __cdecl Rva004E855CClose()
 {
-	if (!g_Va00E04478)
+	if (!chatState())
 		return;
-	if (g_Va00E04478->m_state27C == 3)
+	if (chatState()->m_state27C == 3)
 		return;
-	if (g_Va00E04478->m_state27C == 4)
+	if (chatState()->m_state27C == 4)
 		return;
-	if (g_Va00E04478->m_state27C == 0)
+	if (chatState()->m_state27C == 0)
 	{
-		g_Va00E04478->m_state27C = 4;
+		chatState()->m_state27C = 4;
 		return;
 	}
-	if (g_Va00E04478->m_window284)
+	if (chatState()->m_window284)
 	{
-		g_00E0447C.set(GadgetTextEntryGetText(g_Va00E04478->m_window284));
+		g_00E0447C.set(GadgetTextEntryGetText(chatState()->m_window284));
 	}
 	else
 	{
 		g_00E0447C.set(UnicodeString::TheEmptyString);
 	}
-	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(g_Va00E04478->m_level274, "CloseChat", 0, 0, 0, 0, 0, 0);
-	g_Va00E04478->m_state27C = 3;
+	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(chatState()->m_level274, "CloseChat", 0, 0, 0, 0, 0, 0);
+	chatState()->m_state27C = 3;
 	Rva004E84ABRun();
 }
