@@ -1,5 +1,5 @@
 // ??0Rva009A2A20Table@@QAE@XZ
-extern "C" void* __cdecl memset(void*, int, unsigned int);
+#include <string.h>
 #pragma intrinsic(memset)
 struct Rva009A2A20Table {
 	int m_slots[0x2b7b];
