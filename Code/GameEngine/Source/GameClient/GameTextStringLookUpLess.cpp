@@ -1,7 +1,7 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /MD /D_STLP_USE_STATIC_LIB
 // StringLookUp ordering predicate used by the BFME GameTextManager sort.
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *left, const char *right);
+#include <string.h>
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/AsciiString.h
 #include "ascii_string.h"

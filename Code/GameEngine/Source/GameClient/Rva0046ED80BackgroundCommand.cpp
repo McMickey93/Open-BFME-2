@@ -3,7 +3,7 @@
 // Retail 0x0046ED80, 108 bytes. The callback maps the three background
 // commands used by the scripted UI to WindowManager operations.
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
+#include <string.h>
 
 class Rva00222A8BTarget
 {

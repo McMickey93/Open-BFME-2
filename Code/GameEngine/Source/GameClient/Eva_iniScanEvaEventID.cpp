@@ -25,7 +25,7 @@ public:
 	char *mFailureMessage;
 	int m_argCount;
 };
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 class Eva
 {
 public:
