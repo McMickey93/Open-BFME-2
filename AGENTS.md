@@ -16,7 +16,9 @@ a lost row is regression repair; identifying an existing placeholder is cleanup.
 **Exit test** (`docs/verifier_upgrade_plan.md` step 12): the game links with no
 `/FORCE` and no stubs at a non-retail base, and automated runs
 (`tools/boot_smoke.py`, `tools/game_smoke.py`) reach the menu, a skirmish and
-save/load.
+save/load. The phase closes with source recovery done too: `Code/` holds retail's
+translation units, not one file per function, and every code row sits in its
+approved TU (`reverse/tu_map.csv`).
 
 **Headline figures:**
 
@@ -26,14 +28,20 @@ save/load.
 - **Image ownership**: NOT OURS (`tools/image_ownership.py report`), driven to
   zero. Only the nightly workflow (`.github/workflows/nightly-measure.yml`)
   records it.
+- **Source recovery**: SOURCE FILES (`.cpp`/`.c`/`.asm` under `Code/`, driven
+  down from ~22,500 toward the ~2,000 TUs `reverse/tu_map.csv` names) and
+  TU-APPROVED (code rows in an approved TU, which caps what merges can remove),
+  printed by `tools/progress.py`. Merges (`tools/tu_skeleton.py --queue`) lower
+  the first; TU-approval and TU-evidence work raises the second.
 - **Debt**: `reverse/gate_baseline.txt`, the data, code-identity and header
   registers, and the hatch counts in `reverse/hatch_baseline.tsv`.
 
 Progress is `matched` rows in `reverse/functions.csv` backed by real source and
 byte verification; units the census records as linked; debt retired along its
-register's path; and NOT OURS falling, shown only by ownership receipts that
-`image_ownership.py record` accepts into `reverse/image_ownership_history.csv`
-(none yet), with matched and linked coverage kept. Markers and prose are not
+register's path; source files merged into their approved TUs and rows approved;
+and NOT OURS falling, shown only by ownership receipts that `image_ownership.py
+record` accepts into `reverse/image_ownership_history.csv` (none yet), with
+matched and linked coverage kept. Markers and prose are not
 progress.
 
 ## Hard rules

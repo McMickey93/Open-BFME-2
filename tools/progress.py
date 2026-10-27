@@ -13,7 +13,9 @@ libraries and embedded data). LINKING counts executable game code in clean
 files, including generated C++ and assessed reviewed assembly, over the census
 tree's executable game code. Both sides use the same snapshot. Historical
 authored-only totals remain available when inclusive evidence is unavailable.
-LINKED, under them, is linked own source (authored and vendored) in clean
+SOURCE FILES and TU-APPROVED, after them, track source recovery: Code/'s
+file count against the retail translation units reverse/tu_map.csv names, and
+the approved rows a merge may move. LINKED, under them, is linked own source (authored and vendored) in clean
 files over all own source. Every figure counts 0xCC padding out, the way the
 denominator does, so the breakdown under them adds up to them. Total exact, at
 the end, uses the full .text and includes dumps: bounded coverage, not progress.
@@ -984,6 +986,65 @@ def print_headline(padding, denominator, old_split, new_split, old_census, new_c
     print(f"GAME DATA      no aggregate coverage metric  <- {data_denominator():,} bytes of .rdata/.data; individual data-ledger rows are verified")
 
 
+TU_MAP = "reverse/tu_map.csv"
+SOURCE_SUFFIXES = (".cpp", ".c", ".asm")
+
+
+def source_files_at(ref):
+    """Game and library source files under Code/ (.cpp, .c, .asm) at one state
+    (None: the index, which is what the next commit holds)."""
+    cmd = ["git", "ls-files", "Code"] if ref is None else ["git", "ls-tree", "-r", "--name-only", ref, "Code"]
+    out = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True).stdout.splitlines()
+    return {path for path in out if path.lower().endswith(SOURCE_SUFFIXES)}
+
+
+def source_recovery_at(ref):
+    """Source recovery against the committed tu_map.csv: how many source files
+    there are, how many retail TUs the map names, and how far the approved
+    part reaches. A file is homed when every code row it holds is approved; it
+    is at its TU when every such row's approved TU is the file itself."""
+    files = source_files_at(ref)
+    text = _text_at(ref, TU_MAP)
+    if text is None:
+        return {"files": len(files)}
+    named, approved, rows = set(), set(), {}
+    total = approved_rows = 0
+    for row in csv.DictReader(text.splitlines()):
+        if row["kind"] != "code":
+            continue
+        total += 1
+        if row["tu"]:
+            named.add(row["tu"].lower())
+        if row["confidence"] == "approved":
+            approved_rows += 1
+            approved.add(row["tu"].lower())
+        if row["source"]:
+            rows.setdefault(row["source"].lower(), []).append(row)
+    homed = at_tu = 0
+    for source, held in rows.items():
+        if all(r["confidence"] == "approved" for r in held):
+            homed += 1
+            at_tu += all(r["tu"].lower() == source for r in held)
+    return {"files": len(files), "tus": len(named), "approved_tus": len(approved), "rows": total,
+            "approved_rows": approved_rows, "homed": homed, "at_tu": at_tu}
+
+
+def print_source_recovery(old, new):
+    """The source-recovery figure: from one file per function back to retail's
+    translation units (docs/consolidation.md)."""
+    delta = new["files"] - old["files"]
+    if "tus" not in new:
+        print(f"SOURCE FILES   {new['files']:>12,}  ({delta:+,} files)  <- no {TU_MAP} to measure against")
+        return
+    print(f"SOURCE FILES   {new['files']:>12,} files  ({delta:+,} files)  <- .cpp/.c/.asm under Code/; "
+          f"target: the {new['tus']:,} TUs {TU_MAP} names, approved or proposed")
+    print(f"TU-APPROVED    {new['approved_rows']:>12,} rows ({percent(new['approved_rows'], new['rows']):6.2f}%)  "
+          f"({new['approved_rows'] - old.get('approved_rows', 0):+,} rows)  <- code rows in an approved TU "
+          f"({new['approved_tus']:,} of {new['tus']:,} TUs); only approved rows merge")
+    print(f"               {new['homed']:,} files hold only approved rows; {new['at_tu']:,} of them are "
+          f"already their TU (tools/tu_skeleton.py --queue merges the rest)")
+
+
 def marker_delta(ref1, ref2):
     """Net present-unmatched/absent-from-retail markers added between states."""
     cmd = ["git", "diff", ref1] + ([ref2] if ref2 else []) + ["--", "Code"]
@@ -1089,6 +1150,8 @@ def main():
     print_headline(padding, denominator, real_split(old, old_notes, text_start, text_size, old_naked, text_data=old_data),
                    real_split(new, new_notes, text_start, text_size, new_naked, text_data=new_data), old_census, new_census,
                    census_rows_at(ref2))
+    print()
+    print_source_recovery(source_recovery_at(ref1), source_recovery_at(ref2))
     print_scorecard(ref1, label2, old_stats, new_stats)
     if args.details:
         print_details(ref1, ref2, old, new, old_naked, new_naked)
