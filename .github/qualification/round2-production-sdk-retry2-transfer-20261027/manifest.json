@@ -1,0 +1,35 @@
+{
+  "fork": "McMickey93/Open-BFME-2",
+  "control_branch": "codex/20261027-round2-production-sdk-retry2-transfer",
+  "result_branch": "codex/20261027-round2-production-sdk-retry2-verified",
+  "checkpoint_prefix": "codex/20261027-round2-production-sdk-retry2-checkpoint",
+  "branch": "refs/heads/codex/20261027-round2-sdk-cleanup",
+  "base": "30de31a686c79263d9806b5f10cb9cd1c2740c99",
+  "commit": "bb5734aee024962652806db94b9b40e9f7bed813",
+  "tree": "f67a4258cb5af49d86e3f3334cf94d611e426263",
+  "files": [
+    "Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp",
+    "docs/linking_obstacles.md",
+    "reverse/attempt_support/20261027-production-queue-sdk-constants.md",
+    "reverse/ms_header_queue.tsv",
+    "reverse/re_attempts.log"
+  ],
+  "source": "Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp",
+  "source_blob": "496f45d1917d5436e29b4ab78aec0eaf98a79fd0",
+  "verify_sources": [
+    "Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp"
+  ],
+  "reviewed_blobs": {
+    "Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp": "496f45d1917d5436e29b4ab78aec0eaf98a79fd0",
+    "reference/open-bfme-1": "e74410b3738a2bb75d626085d9ebfd3406a43ff7"
+  },
+  "sha256": "e31a32bfa5966faa25ea975805979a0d660239ac8ef501d34a10ed696719f27a",
+  "agents_blob": "922001686b9b38567dd6ef67d16d46cb68320a1b",
+  "normal_precommit_passed": true,
+  "normal_official_prepush_passed": true,
+  "transport_expected": "30de31a686c79263d9806b5f10cb9cd1c2740c99",
+  "claim_ref": "refs/heads/claims/file/dc4e8c2e9d182781",
+  "claim_owner": "github:McMickey93:bfme2:round2-20261027",
+  "claim_lease": "434baf250fa3495092f01adf49e55cf4",
+  "completion_branch": "codex/20261027-round2-production-sdk-retry2-proof"
+}
