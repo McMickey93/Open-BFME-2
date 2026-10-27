@@ -14,7 +14,9 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include <stdlib.h>
-// Retail containers call the CRT free thunk; the UI parsers below use imports.
+#include <math.h>
+#include <string.h>
+// Retail containers call the game allocator wrapper; the UI parsers use imports.
 extern "C" void __cdecl free(void *);
 #include <list>
 #include "Rva00525119.h"
@@ -260,8 +262,6 @@ class Rva00525783
 public:
 	void rva00525783();
 };
-
-extern "C" __declspec(dllimport) double __cdecl floor(double);
 
 static __forceinline long fast_float2long_round(float f)
 {
@@ -605,8 +605,6 @@ void InGameHeroSelectInterface::Impl::SelectNearestBuilder(bool noCamera)
  }
 }
 
-extern "C" __declspec(dllimport) int __cdecl strncmp(const char *,const char *,unsigned int);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *);
 void InGameHeroSelectInterface::Impl::OnButtonPressed(const char *params) {
  if(strncmp(params,"Hero",4))return;
  int index=atoi(params+4)-1;
