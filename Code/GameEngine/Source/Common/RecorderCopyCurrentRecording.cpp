@@ -33,14 +33,7 @@ class Rva0037BBED
  
 }
 ;
-struct Pair8 
-
-{
- volatile int a;
- volatile int b;
- 
-}
-;
+struct Pair8 { volatile int a; volatile int b; };
 struct Triple12 
 
 {
@@ -56,14 +49,12 @@ struct Triple12
 }
 ;
 inline Triple12 Rva0037BA97Init(const Pair8 *src, int c)
-
 {
- Triple12 tmp;
- tmp.a = src->a;
- tmp.b = src->b;
- tmp.c = c;
- return tmp;
- 
+	Triple12 tmp;
+	tmp.a = src->a;
+	tmp.b = src->b;
+	tmp.c = c;
+	return tmp;
 }
 struct BFME2WideConcatPair
 
@@ -82,30 +73,14 @@ struct BFME2WideConcatTriple
 }
 ;
 static __forceinline BFME2WideConcatPair operator+(const UnicodeString &x, const UnicodeString &y)
-
 {
- BFME2WideConcatPair p = 
- 
- {
-  &x, &y 
-  
- }
- ;
- return p;
- 
+	BFME2WideConcatPair p = { &x, &y };
+	return p;
 }
 static __forceinline void assignConcat(UnicodeString &dst, const UnicodeString &unicodeString, const UnicodeString &y, const UnicodeString &z)
-
 {
- Pair8 xy = 
- 
- {
-  (int)&unicodeString, (int)&y 
-  
- }
- ;
- dst = (BFME2WideConcatTriple &)Rva0037BA97Init(&xy, (int)&z);
- 
+	Pair8 xy = { (int)&unicodeString, (int)&y };
+	dst = (BFME2WideConcatTriple &)Rva0037BA97Init(&xy, (int)&z);
 }
 class RecorderClass
 

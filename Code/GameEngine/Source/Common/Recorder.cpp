@@ -276,7 +276,7 @@ UnicodeString Rva0037D55EGet();
 
 UnicodeString readUnicodeString(FILE *);
 
-struct Pair8 { int a, b; };
+struct Pair8 { volatile int a; volatile int b; };
 
 struct Triple12 { Triple12() {} int a, b, c; };
 
@@ -483,7 +483,9 @@ public:
 public:
 	void logCRCMismatch();
 public:
-	void logGameEnd();
+	void logGameEnd() throw();
+public:
+	bool copyCurrentRecordingToFile(UnicodeString *name, UnicodeString *title);
 public:
 	void initControls();
 	bool playbackFile(UnicodeString filename);
@@ -689,7 +691,7 @@ void RecorderClass::logCRCMismatch()
 // Recorder.cpp body (WB names it): the end time goes to offset 0x0C and the
 // frame count to 0x10 of the replay header, then the stream returns to its
 // end.
-void RecorderClass::logGameEnd()
+void RecorderClass::logGameEnd() throw()
 {
 	if (m_file == 0)
 		return;
