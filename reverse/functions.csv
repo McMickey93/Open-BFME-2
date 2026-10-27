@@ -16698,7 +16698,6 @@ uw_00766dd1,,0x00766DD1,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obje
 uw_00766e15,,0x00766E15,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9620
 uw_00766e4e,,0x00766E4E,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5617
 uw_00766ff3,,0x00766FF3,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9630
-uw_007670ab,,0x007670AB,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9660
 uw_007670b6,,0x007670B6,11,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9640
 uw_007670cc,,0x007670CC,14,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L9703
 uw_007670da,,0x007670DA,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4596
@@ -98941,3 +98940,4 @@ $L5471,,0x0079198E,11,Code/GameEngine/Source/GameLogic/System/LivingWorld/Living
 $L1750,,0x007A2323,8,Code/GameEngine/Source/Common/Rva005D3C2BCtor.cpp,matched,gen-funclet;parent=??0Rva005D3C2B@@QAE@HABVAsciiString@@@Z; Matched parent 0x005D3E06's EH graph is EXACT (eh_verify) and binds compiler label $L1750 to retail Unwind@00ba2323 0x7A2323; replaces generated uw_007a2323
 $L5363,,0x0077A838,11,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemCtorDeferred.cpp,matched,gen-funclet;parent=??0GlobalWeatherSystem@@QAE@XZ; Matched parent 0x00318588's EH graph is EXACT (eh_verify) and binds compiler label $L5363 to retail Unwind@00b7a838 0x77A838; replaces generated uw_0077a838
 ??1?$DynamicVectorClass@UPendingSurfaceStruct@Render2DSentenceClass@@@@UAE@XZ,,0x00157C20,67,Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp,matched,fold-proof=Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$VectorClass@UPendingSurfaceStruct@Render2DSentenceClass@@@@UAE@XZ at 0x00157C20: this unit compiles it to the same whole 67B body; 2 retail unwind funclets in 2 unit(s) call 0x00157C20 for it
+$L1606,,0x007670AB,11,Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp,matched,gen-funclet;parent=??1Render2DSentenceClass@@QAE@XZ; Matched parent 0x00157C70's EH graph is EXACT (eh_verify) and binds compiler label $L1383 to retail Unwind@00b670ab 0x7670AB; replaces generated uw_007670ab
