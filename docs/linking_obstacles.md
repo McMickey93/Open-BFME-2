@@ -2023,6 +2023,8 @@ confirmation remain pending.
 
 **Inline-depth trial (2026-10-27, inspected `87e6100d33`, index `bf3dd31211`):** a trailing `#pragma inline_depth` in `Rva007B7280Siblings.cpp` (not a counted hatch) applies to the whole unit, teardowns included, not only to the compiler-generated `??_G` emitted at its end. `inline_depth(1)` stops the teardowns inlining the destructor (`./build.sh` 0/6); `inline_depth(2)` keeps 6/6 but the `??_G` still inlines `Clear` (same `wrong` digest `ac2be0dc8c7c`). Reverted; do not repeat. The vtable-owner or TU prerequisite above stands (0x007B7280/0x007B7400 have no approved TU in `reverse/tu_map.csv`).
 
+**Flag and auto_inline trials (2026-10-27, inspected `06e31393de`):** retail's 34-byte `??_G?$VectorClass@VVector3@@@@UAEPAXI@Z` at 0x000F1CF7 is the /O1 shape (vptr store, out-of-line `Clear`, `pop ecx` after `operator delete`), so any /O2 unit that inlines the destructor emits a losing copy, as retail's own /O2 consumers must have. Building `Rva007B7280Siblings.cpp` with `/G7 /O1` makes its `??_G` that 34-byte shape but fails the teardown bodies (`./build.sh` FAIL); a trailing `#pragma auto_inline(off)` makes the `??_G` call `??1` out of line (not retail either) and also fails them. Both reverted; do not repeat. The unit links only through the vtable-owner/TU prerequisite above or a census keep-rule that tolerates a loser retail itself carried.
+
 ### LINK-016: folded bodies whose consumers declare them decl-only, with no provider
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-26; inspected revision: 856b8bc032.**
