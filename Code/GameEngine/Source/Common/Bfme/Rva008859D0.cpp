@@ -8,7 +8,7 @@ class Cftp
 {
 public:
 	char pad0[0x34];
-	const char* m_dir34;
+	int m_iFileSize; // +0x34
 
 	void d_008859d0( const char* name, char* outBuf );
 };
@@ -24,6 +24,6 @@ void Cftp::d_008859d0( const char* name, char* outBuf )
 		}
 	}
 
-	sprintf( outBuf, "download\\%s_%d.tmp", dupName, m_dir34 );
+	sprintf( outBuf, "download\\%s_%d.tmp", dupName, m_iFileSize );
 	free( dupName );
 }
