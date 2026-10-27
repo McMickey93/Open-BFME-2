@@ -55,7 +55,7 @@ public:
 private:
 	Rva003418EAMember *m_20;
 };
-void __cdecl operator delete(void *);
+#include <new>
 void Rva00341796::onExit(int status)
 {
 	(void)status;
