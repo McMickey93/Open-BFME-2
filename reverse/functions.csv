@@ -17741,7 +17741,6 @@ $L1632,,0x0078B6CF,8,Code/GameEngine/Source/GameLogic/Object/Contain/HordeSiegeE
 uw_0078ba91,,0x0078BA91,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11994
 uw_0078bb78,,0x0078BB78,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10886
 uw_0078bcac,,0x0078BCAC,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10886
-uw_0078bcef,,0x0078BCEF,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1491
 uw_0078bd23,,0x0078BD23,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10886
 uw_0078bdb0,,0x0078BDB0,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1518
 uw_0078be19,,0x0078BE19,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L10886
@@ -98525,3 +98524,5 @@ $L492,,0x00784E2D,8,Code/GameEngine/Source/Common/Rva004051BC.cpp,matched,gen-fu
 ??1BfmeStringRecord00404BF3@@QAE@XZ,,0x0048BA39,5,Code/GameEngine/Source/Common/Rva00404D70Init.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva00404D70Init.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$StringBase@D@@AAE@XZ at 0x0048BA39: this unit compiles it to the same whole body; its unwind funclets call 0x0048BA39
 $L1248,,0x00784EB2,8,Code/GameEngine/Source/Common/Rva00404D70Init.cpp,matched,gen-funclet;parent=?init@VictorySystem@@UAEXXZ; Matched parent 0x004055F2's EH graph is EXACT (eh_verify) and binds compiler label $L1248 to retail 0x00784EB2; its callee ??1BfmeStringRecord00404BF3@@QAE@XZ is rowed at its ICF fold 0x0048BA39; replaces generated uw_00784eb2
 $L1248,,0x00784EC4,8,Code/GameEngine/Source/Common/Rva00404D70FindOrCreate.cpp,matched,gen-funclet;parent=?rva00405684@Rva00404D70@@QAEPAUBfmeStringRecord00404BF3@@ABVAsciiString@@@Z; Matched parent 0x00405684's EH graph is EXACT (eh_verify) and binds compiler label $L1248 to retail 0x00784EC4; its callee ??1BfmeStringRecord00404BF3@@QAE@XZ is rowed at its ICF fold 0x0048BA39; replaces generated uw_00784ec4
+??1Rva00483C9FFilter@@UAE@XZ,,0x0049C38A,7,Code/GameEngine/Source/Common/Rva00483C35Rva00483F19.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva00483C35Rva00483F19.cpp; compiler-emitted destructor that retail ICF-folded with ?apply@Rva00049C38ADwordImmSetter@@QAEXXZ at 0x0049C38A: this unit compiles it to the same whole body; its unwind funclets call 0x0049C38A
+$L2395,,0x0078BCEF,8,Code/GameEngine/Source/Common/Rva00483C35Rva00483F19.cpp,matched,gen-funclet;parent=?rva00483F19@ClearanceTestingSlowDeathBehavior@@UAE_NXZ; Matched parent 0x00483F19's EH graph is EXACT (eh_verify) and binds compiler label $L2395 to retail 0x0078BCEF; its callee ??1Rva00483C9FFilter@@UAE@XZ is rowed at its ICF fold 0x0049C38A; replaces generated uw_0078bcef
