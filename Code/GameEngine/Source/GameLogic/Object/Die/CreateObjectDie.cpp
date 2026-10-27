@@ -19,6 +19,7 @@
 //#pragma optimize("", off)
 //#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
 
+
 #endif
 #pragma comment(linker, "/alternatename:?f1@Rva0048593D_Mid@@UAEXXZ=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
 #pragma comment(linker, "/alternatename:?f2@Rva0048593D_B2@@UAEXXZ=?onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z")
@@ -76,7 +77,39 @@ public:
 	virtual NameKeyType getModuleNameKey() const;
 };
 
+//
+// CreateObjectDieIfEldestKindofModuleData parse-unit.
+//
+// ?buildFieldParse@CreateObjectDieIfEldestKindofModuleData@@SAXAAVMultiIniFieldParse@@@Z,
+// retail 0x00485B30, 27 bytes. Chained on the rowed
+// CreateObjectDieModuleData base proc at 0x485A74, then the own table
+// at 0x00C4A968, through the rowed MultiIniFieldParse::add at 0x2BC6E.
+// The owning factory pushes this proc VA; ModuleFactory registers it
+// under "CreateObjectDieIfEldestKindof". Row supersedes the parse pin.
+
+class MultiIniFieldParse;
+
+class INI;
+
+typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
+
+void iniParseObjectFilter(INI *ini, void *instance, void *store, const void *userData);
+
+// Retail VA 0x00C4A968 (.rdata): 1 field records and a zero sentinel.
+extern const FieldParse g_00C4A968[] = {
+	{ "ObjectFilter", &iniParseObjectFilter, 0, 0x4C },
+	{ 0, 0, 0, 0 }
+};
+
+class CreateObjectDieIfEldestKindofModuleData
+{
+public:
+	static void buildFieldParse(MultiIniFieldParse &parse);
+};
+
 // tu-skeleton: 0x00485975 14B ?cacheGameLogicFrame@StatusBitsEldestFrame@@QAEPAU1@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsEldestFrameCache.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp
 
 // ---- from Code/GameEngine/Source/Common/Rva0048593DDerived.cpp
 
@@ -92,11 +125,8 @@ Rva00485983::~Rva00485983()
 // holds a rowed function; the vftable's address is proven by the vptr stores in
 // the matched destructors, so bind the placeholder to that row's name.
 
-// tu-skeleton: 0x0048599C 6B ?name@Rva0048599CNamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
 
-// tu-skeleton: 0x004859A2 72B ?func@findEldest@@SAHPAVObject@@PAX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieFindEldest.cpp (not merged yet)
 
-// tu-skeleton: 0x004859EA 69B ?rva0004859EA@CreateObjectDie@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDiePoolKey.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofPoolKey.cpp
 
@@ -107,8 +137,6 @@ NameKeyType CreateObjectDieIfEldestKindof::getModuleNameKey() const
 		TheNameKeyGenerator->nameToKey("CreateObjectDieIfEldestKindof");
 	return TheCreateObjectDieIfEldestKindofPoolKey;
 }
-
-// tu-skeleton: 0x00485A74 34B ?buildFieldParse@CreateObjectDieModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp
 
@@ -223,11 +251,26 @@ void CreateObjectDie::loadPostProcess( void )
 
   // end loadPostProcess
 
+// tu-skeleton: 0x0048599C 6B ?name@Rva0048599CNamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
+
+// tu-skeleton: 0x004859A2 72B ?func@findEldest@@SAHPAVObject@@PAX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieFindEldest.cpp (not merged yet)
+
+// tu-skeleton: 0x004859EA 69B ?rva0004859EA@CreateObjectDie@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDiePoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x00485A74 34B ?buildFieldParse@CreateObjectDieModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
+
 // tu-skeleton: 0x00485AC0 28B ??_GRva0048593D@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp (not merged yet)
 
 // tu-skeleton: 0x00485ADC 84B ??0Rva00485ADCFilter@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00485ADCFilterCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00485B30 27B ?buildFieldParse@CreateObjectDieIfEldestKindofModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofModuleDataParse.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofModuleDataParse.cpp
+
+// ?buildFieldParse@CreateObjectDieIfEldestKindofModuleData@@SAXAAVMultiIniFieldParse@@@Z @0x00485B30
+void CreateObjectDieIfEldestKindofModuleData::buildFieldParse(MultiIniFieldParse &parse)
+{
+	CreateObjectDieModuleData::buildFieldParse(parse);
+	parse.add(g_00C4A968, 0);
+}
 
 // tu-skeleton: 0x00485B4B 53B ??0CreateObjectDieIfEldestKindof@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofCtor.cpp (not merged yet)
 

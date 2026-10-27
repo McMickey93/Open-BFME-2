@@ -5700,7 +5700,7 @@ pin	reverse/symbols.csv	0x0007EB6E	1
 pin	reverse/symbols.csv	0x0007EBB1	1
 pin	reverse/symbols.csv	0x0007F0FB	1
 pin	reverse/symbols.csv	0x0007F87C	1
-pin	reverse/symbols.csv	0x0007FAB3	49	allow=5a3ddab5476af30fe8d3fc65e9dc7dcb0295c695
+pin	reverse/symbols.csv	0x0007FAB3	49
 pin	reverse/symbols.csv	0x0007FAEA	2
 pin	reverse/symbols.csv	0x0007FF18	1
 pin	reverse/symbols.csv	0x00080221	1
