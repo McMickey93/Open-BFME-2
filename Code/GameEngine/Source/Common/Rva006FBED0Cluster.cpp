@@ -96,7 +96,8 @@ public:
 	unsigned short m_count; // +0x2C
 };
 
-extern Rva006FBED0Root *g_rva00A1835C;
+class AptFrameStack;
+extern "C" AptFrameStack *__identifier("?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A");
 
 // ?rva006FBED0@Rva8D0D80Result@@QAEXXZ @ 0x006FBED0 (150B)
 void Rva8D0D80Result::rva006FBED0()
@@ -108,11 +109,9 @@ void Rva8D0D80Result::rva006FBED0()
 	// The global is written on both arms and then read back for the virtual
 	// call, which is what keeps the allocation result in eax across the store.
 	if (m_count)
-		g_rva00A1835C = (Rva006FBED0Root *)new Rva006FBC90Owner((AptValue *)m_run, m_count);
+		__identifier("?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A") = (AptFrameStack *)new Rva006FBC90Owner((AptValue *)m_run, m_count);
 	else
-		g_rva00A1835C = (Rva006FBED0Root *)new Rva006FBC90Owner((AptValue *)m_run);
+		__identifier("?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A") = (AptFrameStack *)new Rva006FBC90Owner((AptValue *)m_run);
 
-	g_rva00A1835C->slot0();
+	((Rva006FBED0Root *)__identifier("?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A"))->slot0();
 }
-// Native E1835C is the script-function current frame root. Bind its shared provider.
-#pragma comment(linker, "/alternatename:?g_rva00A1835C@@3PAVRva006FBED0Root@@A=?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A")

@@ -33,7 +33,7 @@ public:
 	virtual GameMessage *appendMessage(int type);	// slot 18 (+0x48)
 };
 
-extern MessageStream *TheMessageStream;	// VA 0x00E00950
+extern MessageStream *MessageStreamSubsystem;	// VA 0x00E00950
 
 extern class Keyboard *TheKeyboard;
 
@@ -74,7 +74,7 @@ void StrategicInGameUI::QueueUnitButton::OnLeftClicked()
 		GameMessage *msg;
 		do
 		{
-			msg = TheMessageStream->appendMessage(0x6AC);
+			msg = MessageStreamSubsystem->appendMessage(0x6AC);
 			msg->appendIntegerArgument(m_18);
 			msg->appendIntegerArgument(m_20);
 		} while (--i);

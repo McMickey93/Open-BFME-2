@@ -18,7 +18,7 @@ struct Rva0130A588State
 	char m_flagD;
 };
 
-extern Rva0130A588State g_Va0130A588;
+extern T_007ea120 *g_Va0130A588;
 
 extern void Rva007EB830Release(void);
 extern void Rva007F0060(void);
@@ -37,20 +37,18 @@ Rva007EB2C0Object::Rva007EB2C0Object()
 
 Rva007EB2C0Object::~Rva007EB2C0Object()
 {
-	if (g_Va0130A588.m_obj)
+	if (g_Va0130A588)
 	{
-		g_Va0130A588.m_obj->m();
-		if (g_Va0130A588.m_obj)
-			g_Va0130A588.m_obj->vslot0(1);
-		g_Va0130A588.m_obj = 0;
+		g_Va0130A588->m();
+		if (g_Va0130A588)
+			g_Va0130A588->vslot0(1);
+		g_Va0130A588 = 0;
 	}
 	_ReadWriteBarrier();
 
-	if (g_Va0130A588.m_flagD)
+	if (((Rva0130A588State *)&g_Va0130A588)->m_flagD)
 		Rva007EB830Release();
 
-	if (g_Va0130A588.m_flagC)
+	if (((Rva0130A588State *)&g_Va0130A588)->m_flagC)
 		Rva007F0060();
 }
-// ?g_Va0130A588@@3URva0130A588State@@A: the global at VA 0xe09fa4 is ?g_Va0130A588@@3PAVT_007ea120@@A.
-#pragma comment(linker, "/alternatename:?g_Va0130A588@@3URva0130A588State@@A=?g_Va0130A588@@3PAVT_007ea120@@A")

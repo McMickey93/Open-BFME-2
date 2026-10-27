@@ -16,7 +16,8 @@ public:
 	bool rva006FBBA0(Rva8D0D80String *name, Rva8D0D80Value *value);
 };
 
-extern Rva8D0D80Result *g_rva00A1835C;
+class AptFrameStack;
+extern "C" AptFrameStack *__identifier("?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A");
 
 // LINK: the list call is rowed as Rva006FBC90Owner::rva006FBBA0 (0x006FBBA0).
 class EAStringC;
@@ -39,11 +40,8 @@ private:
 
 bool Rva006FBE60::rva006FBE60(Rva8D0D80String *name, Rva8D0D80Value *value)
 {
-	Rva8D0D80Result *list = g_rva00A1835C ? g_rva00A1835C : m_list;
+	Rva8D0D80Result *list = __identifier("?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A") ? (Rva8D0D80Result *)__identifier("?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A") : m_list;
 	if (list == 0)
 		return false;
 	return ((Rva006FBC90Owner *)list)->rva006FBBA0((const EAStringC *)name, (AptValue *)value);
 }
-
-// Native E1835C is the script-function current frame root. Bind its shared provider.
-#pragma comment(linker, "/alternatename:?g_rva00A1835C@@3PAVRva8D0D80Result@@A=?spFrameStack@AptScriptFunctionBase@@1PAVAptFrameStack@@A")

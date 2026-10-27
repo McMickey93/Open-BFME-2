@@ -37,7 +37,7 @@ public:
 };
 class Rva002BA8F1Logic;
 
-extern MessageStream *TheMessageStream;
+extern MessageStream *MessageStreamSubsystem;
 class ViewConv
 {
 public:
@@ -103,7 +103,7 @@ int Rva005D1F45::rva005D1F45(IRegion2D *region, int unused)
 	cell.x = region->lo.x;
 	cell.y = region->lo.y;
 	m_04->conv(&cell, &pos);
-	GameMessage *msg = TheMessageStream->appendType(0x6A8);
+	GameMessage *msg = MessageStreamSubsystem->appendType(0x6A8);
 	msg->appendIntegerArgument(m_0C->m_20);
 	msg->appendIntegerArgument(sub->m_12C);
 	msg->appendLocationArgument(pos);

@@ -47,8 +47,6 @@ Code/GameEngine/Source/Common/Rva003FEE43.cpp	wrong-name	?$S1@?1??Rva003FEE43Set
 Code/GameEngine/Source/Common/Rva003FEECB.cpp	wrong-name	?$S1@?1??Rva003FEECBSetPalantirCommandPoints@@YA_NHH@Z@4IA	0x00A02ED4
 Code/GameEngine/Source/Common/Rva003FEF80.cpp	wrong-name	?$S1@?1??Rva003FEF80SetPalantirMultiplier@@YA_NM@Z@4IA	0x00A02EDC
 Code/GameEngine/Source/Common/Rva003FF02EPowerCap.cpp	wrong-name	?$S1@?1??Rva003FF02EPowerCap@@YAXH@Z@4IA	0x00A02EE4
-Code/GameEngine/Source/Common/Rva00444525Init.cpp	wrong-name	?g_Va00A03354@@3PAUOuter00446A77@@A	0x00A03354
-Code/GameEngine/Source/Common/Rva00446A77Enable.cpp	wrong-name	?g_Va00A03354@@3PAUOuter00446A77@@A	0x00A03354
 Code/GameEngine/Source/Common/Rva004A9660Delay.cpp	wrong-name	?$S1@?1??rva004A9660@Rva004A9660@@QAEIPAVObject@@@Z@4IA	0x00A03CB8
 Code/GameEngine/Source/Common/Rva004DF418Finish.cpp	duplicate-def	_s_10	0x0086157C
 Code/GameEngine/Source/Common/Rva004E0ADBFamily.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
@@ -64,17 +62,12 @@ Code/GameEngine/Source/Common/Rva00515921Permuted.cpp	wrong-name	?campaign@?1??g
 Code/GameEngine/Source/Common/Rva0052906BUpdate.cpp	wrong-name	?$S1@?1??Rva0052906BUpdate@@YAXH@Z@4IA	0x00A04988
 Code/GameEngine/Source/Common/Rva00598CBC.cpp	wrong-name	?g_00E063D4@@3VAsciiString@@A	0x00A063D4
 Code/GameEngine/Source/Common/Rva005C7889Init.cpp	wrong-name	?$S1@?1??Rva005C7889Init@@YAXXZ@4IA	0x00A065DC
-Code/GameEngine/Source/Common/Rva005D1F45.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
 Code/GameEngine/Source/Common/Rva005E3AE1.cpp	wrong-name	?g_00C74ED4@@3QBQBXB	0x00874ED4
-Code/GameEngine/Source/Common/Rva005E9137Check.cpp	wrong-name	?g_009FEF10@@3PAVRva002BA8F1Logic@@A	0x009FEF10
 Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?$S1@?7??rva005F2B76@Rva005F2FEF@@QAEXH@Z@4IA	0x00A068D8
 Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?$S3@?7??rva005F2D41@Rva005F2FEF@@QAEXH@Z@4IA	0x00A068E0
 Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva005F632AFormat.cpp	wrong-name	?$S1@?4??Rva005F632AFormat@@YA?AVUnicodeString@@H@Z@4IA	0x00A06930
-Code/GameEngine/Source/Common/Rva005F8920.cpp	wrong-name	?g_009FE720@@3PAVRva0025CEEFHost@@A	0x009FE720
 Code/GameEngine/Source/Common/Rva00627AA0Call.cpp	wrong-name	?g_rva00627AA0@@3PAURva00627AA0Obj@@A	0x00A05FBC
-Code/GameEngine/Source/Common/Rva006FBE60Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva8D0D80Result@@A	0x00A1835C
-Code/GameEngine/Source/Common/Rva006FBED0Cluster.cpp	wrong-name	?g_rva00A1835C@@3PAVRva006FBED0Root@@A	0x00A1835C
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEB2C@@3IA	0x009DEB2C
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEEFC@@3IA	0x009DEEFC
 Code/GameEngine/Source/Common/Rva007AB8D0StringInits.cpp	wrong-name	?g_Va00DDEF08@@3IA	0x009DEF08
@@ -146,7 +139,6 @@ Code/GameEngine/Source/Common/Rva007B68D0Siblings.cpp	wrong-name	?g_007b6930@@3V
 Code/GameEngine/Source/Common/Rva007B68D0Siblings.cpp	wrong-name	?g_007b6970@@3VRva007B6970Obj@@A	0x009DEC10
 Code/GameEngine/Source/Common/Rva007B68D0Siblings.cpp	wrong-name	?g_007b6990@@3VRva007B6990Obj@@A	0x009DEE18
 Code/GameEngine/Source/Common/Rva007B68D0Siblings.cpp	wrong-name	?g_007b69b0@@3VRva007B69B0Obj@@A	0x009DECE0
-Code/GameEngine/Source/Common/Rva007EB2C0ObjectDestructor.cpp	wrong-name	?g_Va0130A588@@3URva0130A588State@@A	0x00A09FA4
 Code/GameEngine/Source/Common/Rva009F66F0.cpp	wrong-name	?$S1@?1??Rva009F66F0@@YAMPBUCoord3D@@PAVRva009F66F0Provider@@M@Z@4IA	0x00A09E2C
 Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	duplicate-def	?g_rva00E08D3CString@@3VStringClass@@A	0x00A08D3C
 Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	wrong-name	?g_rva00E08D3CString@@3VStringClass@@A	0x00A08D3C
