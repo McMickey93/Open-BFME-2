@@ -33,7 +33,7 @@ public:
 	bool isSelectionLocked() const;
 };
 
-extern "C" __declspec(dllimport) long __cdecl time(long *t);
+#include <time.h>
 
 class LivingWorldScoreKeeper
 {

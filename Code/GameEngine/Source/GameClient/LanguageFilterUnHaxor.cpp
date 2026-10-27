@@ -9,7 +9,7 @@
 typedef unsigned short WideChar;
 typedef int Int;
 typedef bool Bool;
-extern "C" __declspec(dllimport) WideChar *__cdecl wcsrchr(const WideChar *, WideChar);
+#include <string.h>
 class UnicodeString;
 #include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 // One-character append, expanded in place: retail pushes the character's
