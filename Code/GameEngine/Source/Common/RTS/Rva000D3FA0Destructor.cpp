@@ -37,18 +37,10 @@ template <> void **vector<void*>::begin();
 template <> void **vector<void*>::end();
 }
 
-class Xfer;
-
-class Rva000D3FA0PoolObject
-{
-public:
-	virtual ~Rva000D3FA0PoolObject() {}
-
-protected:
-	virtual void crc(Xfer *xfer);
-	virtual void xfer(Xfer *xfer);
-	virtual void loadPostProcess();
-};
+// The base is the canonical Snapshot (vtable 0x00BBB554): the parent's unwind
+// funclet 0x007881DE destroys it through the folded Snapshot destructor
+// 0x0049B47C.
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 typedef unsigned int TeamID;
 enum Rva000D3FA0Relationship
@@ -59,15 +51,15 @@ enum Rva000D3FA0Relationship
 typedef _STL::pair<const TeamID, Rva000D3FA0Relationship> Rva000D3FA0MapPair;
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/Team.h
-class Rva000D3FA0Map : public Rva000D3FA0PoolObject
+class Rva000D3FA0Map : public Snapshot
 {
 public:
 	virtual ~Rva000D3FA0Map();
 
 protected:
+	virtual void loadPostProcess();
 	virtual void crc(Xfer *xfer);
 	virtual void xfer(Xfer *xfer);
-	virtual void loadPostProcess();
 
 private:
 	_STL::hash_map<TeamID, Rva000D3FA0Relationship, _STL::hash<TeamID>, _STL::equal_to<TeamID>, _STL::allocator<Rva000D3FA0MapPair> > m_map;
@@ -82,9 +74,6 @@ Rva000D3FA0Map::~Rva000D3FA0Map()
 // Placeholder virtuals in this unit's vftables: in retail, every vftable that holds
 // each one has the same function in that slot (vftable addresses from matched vptr
 // stores). Bind them to the rows at those functions.
-#pragma comment(linker, "/alternatename:?crc@Rva000D3FA0PoolObject@@MAEXPAVXfer@@@Z=__purecall")
-#pragma comment(linker, "/alternatename:?xfer@Rva000D3FA0PoolObject@@MAEXPAVXfer@@@Z=__purecall")
-#pragma comment(linker, "/alternatename:?loadPostProcess@Rva000D3FA0PoolObject@@MAEXXZ=__purecall")
-#pragma comment(linker, "/alternatename:?crc@Rva000D3FA0Map@@MAEXPAVXfer@@@Z=??1Coord2D@@QAE@XZ")
-#pragma comment(linker, "/alternatename:?xfer@Rva000D3FA0Map@@MAEXPAVXfer@@@Z=?name@Rva002431A9Named@@QBEPBDXZ")
-#pragma comment(linker, "/alternatename:?loadPostProcess@Rva000D3FA0Map@@MAEXXZ=__purecall")
+#pragma comment(linker, "/alternatename:?loadPostProcess@Rva000D3FA0Map@@MAEXXZ=??1Coord2D@@QAE@XZ")
+#pragma comment(linker, "/alternatename:?crc@Rva000D3FA0Map@@MAEXPAVXfer@@@Z=?name@Rva002431A9Named@@QBEPBDXZ")
+#pragma comment(linker, "/alternatename:?xfer@Rva000D3FA0Map@@MAEXPAVXfer@@@Z=__purecall")

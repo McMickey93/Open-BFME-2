@@ -40,27 +40,20 @@ public:
 	long lastPlayDate;
 };
 
-class Xfer;
+// The base is the canonical Snapshot (vtable 0x00BBB554): the ctor's unwind
+// funclet 0x007713DB destroys it through the folded Snapshot destructor
+// 0x0049B47C.
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
-class Rva000D3FA0PoolObject
-{
-public:
-	virtual ~Rva000D3FA0PoolObject() {}
-protected:
-	virtual void crc(Xfer *xfer);
-	virtual void xfer(Xfer *xfer);
-	virtual void loadPostProcess();
-};
-
-class Rva000D3FA0Map : public Rva000D3FA0PoolObject
+class Rva000D3FA0Map : public Snapshot
 {
 public:
 	Rva000D3FA0Map();
 	virtual ~Rva000D3FA0Map();
 protected:
+	virtual void loadPostProcess();
 	virtual void crc(Xfer *xfer);
 	virtual void xfer(Xfer *xfer);
-	virtual void loadPostProcess();
 private:
 	_STL::map<long, LadderPref, _STL::less<long>, _STL::allocator<_STL::pair<const long, LadderPref> > > m_map;
 };
