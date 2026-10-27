@@ -3,10 +3,11 @@
 // import-pointer symbols, as D3DX9ImportThunks.cpp does for d3dx9. VS2003
 // __identifier names the actual decorated __imp__ symbol; no alias, address
 // pin, inline assembly, emitted bytes or replacement datum is used.
-// Signatures: the VS2003 Platform SDK WinUser.h, included with WINUSERAPI
-// empty so these definitions are not dllimport.
+// Signatures: the VS2003 Platform SDK WinUser.h, included with _USER32_
+// defined (the header's own switch) so WINUSERAPI is empty and these
+// definitions are not dllimport (no C4273 /EXPORT directives).
 // Each retail six-byte thunk's IAT slot names the export (row notes).
-#define WINUSERAPI
+#define _USER32_
 #include <windows.h>
 extern "C" {
 // _GetWindowRect@8
