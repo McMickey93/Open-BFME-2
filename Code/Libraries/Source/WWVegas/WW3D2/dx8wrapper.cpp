@@ -3712,7 +3712,9 @@ struct BfmeProjectionDevice9 : BfmeResetDevice9 {
     virtual HRESULT __stdcall SetTransform(D3DTRANSFORMSTATETYPE state, const D3DMATRIX *matrix)=0;
 };
 extern float bfmeProjectionBias;
-extern Matrix4x4 bfmeProjectionApplied;
+// The applied projection is DX8Wrapper::DeviceProjectionMatrix (0x009EDBF0),
+// defined in this unit.
+#define bfmeProjectionApplied DX8Wrapper::DeviceProjectionMatrix
 // Recovered BFME2 float depth-bias role; see docs/reconstruction/dx8wrapper-depth-bias.md.
 void bfmeSetProjectionDepthBias(float bias)
 {
@@ -3888,10 +3890,6 @@ float bfmeProjectionBias;
 #pragma comment(linker, "/alternatename:?bfmeLengthErrorQX@BfmeThingQX@@QAEXXZ=?DX8_Assert@@YAXXZ")
 #pragma comment(linker, "/alternatename:??1DebugMember@@QAE@XZ=?DX8_Assert@@YAXXZ")
 #pragma comment(linker, "/alternatename:_bfmeDtorCbDMC=?DX8_Assert@@YAXXZ")
-
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?bfmeProjectionApplied@@3VMatrix4@@A=?g_mapperProjectionUpload_009EDBF0@@3VMatrix4@@A")
 
 // Shutdown follows the readable ZH DX8Wrapper::Shutdown semantic guide at
 // BFME1 6583b3c1. Retail 0x00125DC0..0x00125F98 independently proves the
