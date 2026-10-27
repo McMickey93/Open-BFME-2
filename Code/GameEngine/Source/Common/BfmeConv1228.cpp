@@ -1,6 +1,6 @@
 // Open-BFME5 conversions.
 
-extern "C" int __cdecl memcmp(const void *a, const void *b, unsigned int n);
+#include <string.h>
 
 struct BfmeW1228
 {
