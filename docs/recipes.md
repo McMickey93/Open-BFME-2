@@ -767,3 +767,15 @@ tested together (13 banks, scratch compiles only). Do not retry these:
   `/Ow` nor the source adapters establish the original source or flags, and
   `/Ow` must stay isolated from neighboring bodies it changes. See [the exact
   recovery and controls](../reverse/attempt_support/queue-supply-truck-20261023-max/readme.md).
+
+
+## Game free through the CRT header without losing EH states (2026-10-26)
+
+For Rva00518769Dtor.cpp, replacing the local C++ free(void *) prototype with
+<stdlib.h> requires both /D_CRTIMP= and /EHc- after /EHsc. The first keeps
+a direct call to the game's C _free provider; the second preserves retail's
+exception visibility after the linkage change. The header-only trial failed;
+the combined change passes all nine consumer/provider rows and the complete
+EH graph under MSVC 7.1. This is a measured per-TU setting, not permission to
+redirect other callers to this allocator.
+Evidence: reverse/attempt_support/20261026-apt-options-crt-free.md.

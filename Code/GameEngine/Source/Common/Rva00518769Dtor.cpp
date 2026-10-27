@@ -1,7 +1,8 @@
-// cl: /MD /EHsc
+// cl: /MD /EHsc /EHc- /D_CRTIMP=
 // ??1AptOptions@@UAE@XZ @0x00518769 297B
 // AptOptions dtor: current-window global clear, audio handle release via TheAudio slot 0x70, InitGadgets close, GameClient triple, globals gate Shell, three strings free base AptGameWindow. Evidence: literal AptOptions::InitGadgets 0x0086667C, base pin 0x005126F5, caller 0x00518AE9 deleting dtor.
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#include <stdlib.h>
 
 
 void _bfme_closeAptScreen(const AsciiString &name);
@@ -65,7 +66,6 @@ class Shell;
 extern Shell *TheShell;
 
 extern int g_Va00A04908;
-void __cdecl free(void *p);
 
 struct AptFreePtr
 {
