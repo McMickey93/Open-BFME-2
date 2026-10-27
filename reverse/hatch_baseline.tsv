@@ -18280,14 +18280,12 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/ode.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/plane_set.cpp	"",on	2
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/plane_set.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/plane_set.cpp	"ty",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat.cpp	"gsy",on	1
+pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat.cpp	"",on	2
+pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat.cpp	"gsy",on	2
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat_BuildMatrix3.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat_BuildMatrix3.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat_BuildMatrix4.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/quat_BuildMatrix4.cpp	"gsy",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/slerp_setup.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/slerp_setup.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/tri.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/tri.cpp	"gsy",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWMath/tri_compute_normal.cpp	"",on	2

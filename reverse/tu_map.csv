@@ -54436,9 +54436,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007173E0,116,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WWMath/quat.cpp N=Code/Libraries/Source/WWVegas/WWMath/Quaternion.cpp,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x00717460,119,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WWMath/quat.cpp N=Code/Libraries/Source/WWVegas/WWMath/Quaternion.cpp,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x007174E0,99,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WWMath/quat.cpp N=Code/Libraries/Source/WWVegas/WWMath/Quaternion.cpp,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
-0x00717550,377,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x007176D0,Code/Libraries/Source/WWVegas/WWMath/bfme2_quaternion_nlerp.cpp
+0x00717550,377,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x007176D0,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x007176D0,372,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x00717850,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
-0x00717850,179,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x00717910,Code/Libraries/Source/WWVegas/WWMath/slerp_setup.cpp
+0x00717850,179,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x00717910,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x00717910,294,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x00717A40,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x00717A40,256,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x00717B40,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x00717B40,360,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x007174E0..0x00717CB0,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
@@ -54449,7 +54449,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00718230,272,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WWMath/quat.cpp N=Code/Libraries/Source/WWVegas/WWMath/Quaternion.cpp,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x00718340,272,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WWMath/quat.cpp N=Code/Libraries/Source/WWVegas/WWMath/Quaternion.cpp,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x00718450,130,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,C,C=0x00718340..0x007184E0,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
-0x007184E0,217,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WWMath/quat.cpp N=Code/Libraries/Source/WWVegas/WWMath/Quaternion.cpp,Code/Libraries/Source/WWVegas/WWMath/QuaternionRandomize.cpp
+0x007184E0,217,code,Code/Libraries/Source/WWVegas/WWMath/quat.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WWMath/quat.cpp N=Code/Libraries/Source/WWVegas/WWMath/Quaternion.cpp,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x007185C0,207,code,,displaced,-,N=Code/Libraries/Source/WWVegas/WWMath/WWMath.cpp,Code/Libraries/Source/WWVegas/WWMath/WWMathInit.cpp
 0x00718690,275,code,,,-,,Code/Libraries/Source/WWVegas/WWMath/quat.cpp
 0x007187B0,1080,code,,,-,,Code/Libraries/Source/WWVegas/WWMath/FastSlerp.cpp
