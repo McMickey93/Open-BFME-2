@@ -15,8 +15,7 @@
 // frameless. Factory news 0x38 fits the +0x34 tail. Zero new pins (base
 // resolves via the existing SpecialPowerModule pin).
 
-extern "C" const void *const vtbl_00BEFCF8[];  // folded, 38 classes; via ??_7CashHackSpecialPower@@6BBehaviorModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BEFCF8=??_7CashHackSpecialPower@@6BBehaviorModuleInterface@@@")
+extern "C" const void *const __identifier("??_7SpecialPowerModule@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00BEFCF8 (38 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C5DE08[];  // ??_7Rva004C67A0@@6BRva004C67A0_B2@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C5DE08=??_7Rva004C67A0@@6BRva004C67A0_B2@@@")
@@ -48,6 +47,6 @@ StopSpecialPower::StopSpecialPower(Thing *thing, const ModuleData *moduleData) :
 	m_34(0)
 {
 	*(unsigned int *)this = ((unsigned int)vtbl_00C5DE6C);
-	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)vtbl_00BEFCF8);
+	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7SpecialPowerModule@@6BBehaviorModuleInterface@@@"));
 	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C5DE08);
 }

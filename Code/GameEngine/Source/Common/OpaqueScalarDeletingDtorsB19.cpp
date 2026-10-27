@@ -9,8 +9,7 @@
 // Primary base table C3962C has an existing verified provider; it is not
 // the canonical Snapshot table. Its force-inline restoration adds no row.
 struct EmitVtableTag;
-extern "C" const void *const vtbl_00C3962C[];
-#pragma comment(linker, "/alternatename:_vtbl_00C3962C=??_7Rva0045EF90Base@@6B@")
+extern "C" const void *const __identifier("??_7Rva0045EF90Base@@6B@")[];
 class __declspec(novtable) Rva0074104CBase {
 public:
  // ?Rva0074104CBase::~Rva0074104CBase present-unmatched
@@ -19,7 +18,7 @@ public:
  struct BfmeNoInitB19 {};
  Rva0074104CBase(BfmeNoInitB19) {}
  Rva0074104CBase() {}
- virtual __forceinline ~Rva0074104CBase() {*(const void**)this=vtbl_00C3962C;}
+ virtual __forceinline ~Rva0074104CBase() {*(const void**)this=__identifier("??_7Rva0045EF90Base@@6B@");}
 private: unsigned int unknown04;
 };
 class __declspec(novtable) Rva005248D0 {

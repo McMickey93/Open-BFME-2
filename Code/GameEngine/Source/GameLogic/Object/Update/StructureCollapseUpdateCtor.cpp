@@ -19,8 +19,7 @@
 // no emitted code. Zero new pins (base ctor resolves via its row;
 // setWakeFrame resolves via the existing IAEX Object-uint pin at 0x44DF71).
 
-extern "C" const void *const vtbl_00C49188[];  // folded, 8 classes; via ??_7PropagandaTowerBehavior@@6BPB_Iface1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49188=??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")
+extern "C" const void *const __identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")[];  // folded vftable 0x00C49188 (8 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C52638[];  // ??_7Rva004A4214@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C52638=??_7Rva004A4214@@6B@")
@@ -85,7 +84,7 @@ StructureCollapseUpdate::StructureCollapseUpdate(Thing *thing, const ModuleData 
 	*slot20 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	int zero = 0;
 	m_vtable = (const void *)((unsigned int)vtbl_00C52648);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C49188);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C5263C);
 	m_secondary20 = (const void *)((unsigned int)vtbl_00C52638);
 	m_24 = zero;

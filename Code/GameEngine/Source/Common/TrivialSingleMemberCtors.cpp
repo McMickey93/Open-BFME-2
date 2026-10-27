@@ -8,8 +8,7 @@
 // not recovered beyond the initializer: every name is derived from its
 // address, with the holder verb describing the single-field shape.
 // No // cl: line (defaults match the frameless nine-byte shape).
-extern "C" const void *const vtbl_00BBC8D4[];  // ??_7_Messages@_STL@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BBC8D4=??_7_Messages@_STL@@6B@")
+extern "C" const void *const __identifier("??_7_Messages@_STL@@6B@")[];  // vftable 0x00BBC8D4
 extern "C" const void *const vtbl_00BC7F74[];
 extern "C" const void *const vtbl_00C6573C[];
 
@@ -21,7 +20,7 @@ public:
 };
 Rva00019EB0Holder::Rva00019EB0Holder()
 {
-	m_vtable = (void *)((unsigned int)vtbl_00BBC8D4);
+	m_vtable = (void *)((unsigned int)__identifier("??_7_Messages@_STL@@6B@"));
 }
 class Rva000910D8Holder
 {

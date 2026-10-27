@@ -13,8 +13,7 @@
 // DIR32-masked in comparison). Zero new pins (base resolves via the
 // existing DieModule pin).
 
-extern "C" const void *const vtbl_00C4A650[];  // folded, 21 classes; via ??_7CreateCrateDie@@6BBehaviorModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4A650=??_7CreateCrateDie@@6BBehaviorModuleInterface@@@")
+extern "C" const void *const __identifier("??_7CreateCrateDie@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C4A650 (21 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C41E44[];  // ??_7Rva0045CE6D@@6BRva0045CE6D_B2@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C41E44=??_7Rva0045CE6D@@6BRva0045CE6D_B2@@@")
@@ -41,6 +40,6 @@ InstantDeathBehavior::InstantDeathBehavior(Thing *thing, const ModuleData *modul
 	DieModule(thing, moduleData)
 {
 	*(unsigned int *)this = ((unsigned int)vtbl_00C41E48);
-	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)vtbl_00C4A650);
+	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7CreateCrateDie@@6BBehaviorModuleInterface@@@"));
 	*(unsigned int *)((char *)this + 0x10) = ((unsigned int)vtbl_00C41E44);
 }

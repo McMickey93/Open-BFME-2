@@ -7,8 +7,7 @@
 // This establishes table contents; it assigns no donor class to the caller.
 extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];
 
-extern "C" const void *const vtbl_00C4EF80[];  // folded, 7 classes; via ??_7ContainIface34@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4EF80=??_7ContainIface34@@6B@")
+extern "C" const void *const __identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@")[];  // folded vftable 0x00C4EF80 (7 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00CE32D0[];  // ??_7Rva007F9C50@@6BRva007F9C50Base8@@@
 #pragma comment(linker, "/alternatename:_vtbl_00CE32D0=??_7Rva007F9C50@@6BRva007F9C50Base8@@@")
@@ -44,7 +43,7 @@ private:
 Rva007F9B80::Rva007F9B80(void *owner) throw()
 {
 	volatile unsigned int *base = (volatile unsigned int *)this;
-	base[1] = ((unsigned int)vtbl_00C4EF80);
+	base[1] = ((unsigned int)__identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@"));
 	base[2] = ((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	base[0] = ((unsigned int)vtbl_00CE32E4);
 	base[1] = ((unsigned int)vtbl_00CE32D4);

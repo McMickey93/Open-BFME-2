@@ -13,8 +13,7 @@
 // 0x4C6805 sits in the same cluster (ElvenWood precedent). The owning
 // factory at 0x002522B5 pushes this ctor's address (sole raw caller).
 
-extern "C" const void *const vtbl_00C5E7A8[];  // folded, 2 classes; via ??_7CombineHordeSpecialPowerModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C5E7A8=??_7CombineHordeSpecialPowerModuleData@@6B@")
+extern "C" const void *const __identifier("??_7CombineHordeSpecialPowerModuleData@@6B@")[];  // folded vftable 0x00C5E7A8 (2 classes), by its data-ledger name
 
 class SpecialPowerModuleData
 {
@@ -39,5 +38,5 @@ StopSpecialPowerModuleData::StopSpecialPowerModuleData()
 	: SpecialPowerModuleData()
 {
 	m_stopPowerTemplate = 0;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C5E7A8);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7CombineHordeSpecialPowerModuleData@@6B@"));
 }

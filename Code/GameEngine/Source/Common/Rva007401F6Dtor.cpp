@@ -2,8 +2,7 @@
 // ??1Rva007401F6@@UAE@XZ, retail 0x007401F6, 48 bytes.
 // ModuleData-style dtor: destroys AsciiString at +8 via rowed releaseBuffer then restores base vtable 0x0083962C.
 // Evidence: callers 0x00740229 deleting dtor plus 0x007402AE base call from 0x00740242 vtable 0x008F1600; callee rowed releaseBuffer 0x00036410.
-extern "C" const void *const vtbl_00C3962C[];  // ??_7Rva0045EF90Base@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C3962C=??_7Rva0045EF90Base@@6B@")
+extern "C" const void *const __identifier("??_7Rva0045EF90Base@@6B@")[];  // vftable 0x00C3962C
 
 class Xfer;
 // Base is NOT Snapshot: retail restores vtable 0x00C3962C here, while canonical
@@ -20,7 +19,7 @@ public:
 // ??1Rva007401F6Base@@UAE@XZ present-unmatched
 inline Rva007401F6Base::~Rva007401F6Base()
 {
-	*(const void **)this = reinterpret_cast<const void *>(((unsigned int)vtbl_00C3962C));
+	*(const void **)this = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7Rva0045EF90Base@@6B@")));
 }
 template <typename T>
 class StringBase

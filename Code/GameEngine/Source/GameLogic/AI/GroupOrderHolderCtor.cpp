@@ -20,8 +20,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 }
 }
 
-extern "C" const void *const vtbl_00C6A520[];  // ??_7GroupOrder@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C6A520=??_7GroupOrder@@6B@")
+extern "C" const void *const __identifier("??_7GroupOrder@@6B@")[];  // vftable 0x00C6A520
 
 #include <vector>
 
@@ -105,7 +104,7 @@ private:
 };
 
 GroupOrder::GroupOrder(Rva0036E346 *holder)
-	: m_vtable(reinterpret_cast<void *>(((unsigned int)vtbl_00C6A520)))
+	: m_vtable(reinterpret_cast<void *>(((unsigned int)__identifier("??_7GroupOrder@@6B@"))))
 	, m_sciences()
 {
 	m_id10 = reinterpret_cast<void *>(++g_Va00E05F74);

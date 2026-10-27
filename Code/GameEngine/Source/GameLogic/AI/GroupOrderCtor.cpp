@@ -12,8 +12,7 @@
 // spelling); it is modeled as AsciiString after the SpawnBehavior
 // precedent, which resolves with zero new pins. Six derived group-order
 // ctors call this base (see ChangeStanceGroupOrderCtor.cpp).
-extern "C" const void *const vtbl_00C6A520[];  // ??_7GroupOrder@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C6A520=??_7GroupOrder@@6B@")
+extern "C" const void *const __identifier("??_7GroupOrder@@6B@")[];  // vftable 0x00C6A520
 
 #include <vector>
 
@@ -46,7 +45,7 @@ private:
 
 // ??0GroupOrder@@QAE@XZ @0x5488C5
 GroupOrder::GroupOrder()
-	: m_vtable(reinterpret_cast<void *>(((unsigned int)vtbl_00C6A520)))
+	: m_vtable(reinterpret_cast<void *>(((unsigned int)__identifier("??_7GroupOrder@@6B@"))))
 {
 	m_unused10 = NULL;
 	m_unused14 = NULL;

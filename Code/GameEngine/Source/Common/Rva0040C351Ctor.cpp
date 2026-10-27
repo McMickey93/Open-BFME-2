@@ -13,7 +13,7 @@
 
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
-extern "C" const void *const vtbl_00BC6F20[];  // folded, 7 classes; via ??_7Rva0007DF07@@6B@
+extern "C" const void *const __identifier("??_7Rva0007DF07@@6B@")[];  // folded vftable 0x00BC6F20 (7 classes), by its data-ledger name
 
 class Player;
 class Object;
@@ -28,7 +28,7 @@ private:
 };
 struct MemberAC
 {
-	MemberAC() : m_vtable((void *)((unsigned int)vtbl_00BC6F20)), m_thingTemplate(0) {}
+	MemberAC() : m_vtable((void *)((unsigned int)__identifier("??_7Rva0007DF07@@6B@"))), m_thingTemplate(0) {}
 	void *m_vtable;
 	int m_thingTemplate;
 };

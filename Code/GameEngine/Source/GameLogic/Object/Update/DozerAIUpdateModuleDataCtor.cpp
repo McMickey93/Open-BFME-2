@@ -8,8 +8,7 @@
 // 0x70 proven by the DozerAIUpdate data factory (news 0x70, sole caller at
 // 0x24CDD9). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C4B6C8[];  // folded, 3 classes; via ??_7AnimalAIUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B6C8=??_7AnimalAIUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7AnimalAIUpdateModuleData@@6B@")[];  // folded vftable 0x00C4B6C8 (3 classes), by its data-ledger name
 
 class INI
 {
@@ -83,7 +82,7 @@ DozerAIUpdateModuleData::DozerAIUpdateModuleData()
 	: TransportAIUpdateModuleData()
 {
 	float fzero = 0.0f;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4B6C8);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7AnimalAIUpdateModuleData@@6B@"));
 	m_repairHealthPercentPerSecond = fzero;
 	m_boredTime = fzero;
 	m_boredRange = fzero;

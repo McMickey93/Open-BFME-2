@@ -22,8 +22,7 @@
 
 #include <string.h>
 
-extern "C" const void *const vtbl_00C6FFFC[];  // folded, 10 classes; via ??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C6FFFC=??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@")
+extern "C" const void *const __identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@")[];  // folded vftable 0x00C6FFFC (10 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00BC97A0[];  // ??_7W3DDebrisDraw@@6BDebrisDrawInterface@@@
 #pragma comment(linker, "/alternatename:_vtbl_00BC97A0=??_7W3DDebrisDraw@@6BDebrisDrawInterface@@@")
@@ -60,7 +59,7 @@ private:
 W3DDebrisDraw::W3DDebrisDraw(Thing *thing, const ModuleData *moduleData) :
 	DrawModule(thing, moduleData)
 {
-	*(volatile unsigned int *)((char *)this + 0xC) = ((unsigned int)vtbl_00C6FFFC);
+	*(volatile unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@"));
 	_ReadWriteBarrier();
 	*(unsigned int *)this = ((unsigned int)vtbl_00BC97A8);
 	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)vtbl_00BC97A0);

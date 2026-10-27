@@ -15,8 +15,7 @@
 // SupplyTruckAIUpdateModuleData table verbatim at identical offsets). Sole raw
 // caller is the ModuleData factory 0x24EF11 which news 0x84.
 
-extern "C" const void *const vtbl_00C4B6C8[];  // folded, 3 classes; via ??_7AnimalAIUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B6C8=??_7AnimalAIUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7AnimalAIUpdateModuleData@@6B@")[];  // folded vftable 0x00C4B6C8 (3 classes), by its data-ledger name
 
 class TransportAIUpdateModuleData
 {
@@ -53,7 +52,7 @@ inline SupplyTruckAIUpdateModuleData::SupplyTruckAIUpdateModuleData()
 	m_warehouseScanDistance = 100.0f;
 	m_harvestPreparationTime = 1;
 	m_harvestActionTime = 1;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4B6C8);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7AnimalAIUpdateModuleData@@6B@"));
 	m_harvestActivationRange = 50.0f;
 }
 

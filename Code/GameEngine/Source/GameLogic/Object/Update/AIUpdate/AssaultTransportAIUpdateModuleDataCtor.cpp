@@ -14,8 +14,7 @@
 // 0x24D29E which news 0x6C.
 
 inline void *operator new(unsigned int, void *p) { return p; }
-extern "C" const void *const vtbl_00C4B6C8[];  // folded, 3 classes; via ??_7AnimalAIUpdateModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B6C8=??_7AnimalAIUpdateModuleData@@6B@")
+extern "C" const void *const __identifier("??_7AnimalAIUpdateModuleData@@6B@")[];  // folded vftable 0x00C4B6C8 (3 classes), by its data-ledger name
 
 class __declspec(novtable) TransportAIUpdateModuleData
 {
@@ -42,7 +41,7 @@ private:
 __declspec(noinline) inline AssaultTransportAIUpdateModuleData::AssaultTransportAIUpdateModuleData()
 {
 	m_membersGetHealedAtLifeRatio = 0.0f;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C4B6C8);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7AnimalAIUpdateModuleData@@6B@"));
 	m_clearRangeRequiredToContinueAttackMove = 50.0f;
 }
 

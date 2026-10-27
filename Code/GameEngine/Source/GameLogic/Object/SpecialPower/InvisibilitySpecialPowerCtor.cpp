@@ -16,8 +16,7 @@ char g_00C5C51C;
 // DIR32-masked in comparison). Zero new pins (base resolves via the
 // rowed SpecialPowerModule spelling).
 
-extern "C" const void *const vtbl_00BEFCF8[];  // folded, 38 classes; via ??_7CashHackSpecialPower@@6BBehaviorModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00BEFCF8=??_7CashHackSpecialPower@@6BBehaviorModuleInterface@@@")
+extern "C" const void *const __identifier("??_7SpecialPowerModule@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00BEFCF8 (38 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -39,6 +38,6 @@ InvisibilitySpecialPower::InvisibilitySpecialPower(Thing *thing, const ModuleDat
 	SpecialPowerModule(thing, moduleData)
 {
 	*(unsigned int *)this = (unsigned int)&g_00C5C51C;
-	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)vtbl_00BEFCF8);
+	*(unsigned int *)((char *)this + 0xC) = ((unsigned int)__identifier("??_7SpecialPowerModule@@6BBehaviorModuleInterface@@@"));
 	*(unsigned int *)((char *)this + 0x10) = (unsigned int)&g_00C5C4B8;
 }

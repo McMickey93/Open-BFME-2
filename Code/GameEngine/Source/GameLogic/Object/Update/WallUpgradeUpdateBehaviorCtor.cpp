@@ -24,8 +24,7 @@
 // declared-only base dtor arms it with no emitted code.
 
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
-extern "C" const void *const vtbl_00C49800[];  // folded, 4 classes; via ??_7FlammableUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49800=??_7FlammableUpdate@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00C49800 (4 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C54764[];  // ??_7Rva004AB246@@6BRva004AB246_E2@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C54764=??_7Rva004AB246@@6BRva004AB246_E2@@@")
@@ -89,7 +88,7 @@ WallUpgradeUpdate::WallUpgradeUpdate(Thing *thing, const ModuleData *moduleData)
 	int *wakeSlot24 = (int *)&m_secondary24;
 	*wakeSlot24 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	m_vtable = (const void *)((unsigned int)vtbl_00C54780);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C49800);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C54774);
 	m_secondary20 = (const void *)((unsigned int)vtbl_00C54768);
 	m_secondary24 = (const void *)((unsigned int)vtbl_00C54764);

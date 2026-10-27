@@ -21,12 +21,9 @@
 // resolves via the existing IAEX Object-uint pin at 0x44DF71). Row
 // supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C430B4[];  // folded, 2 classes; via ??_7ContainIface30@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C430B4=??_7ContainIface30@@6B@")
-extern "C" const void *const vtbl_00C4B1E0[];  // folded, 5 classes; via ??_7Rva00452D52@@6BRva0024A797_B2@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B1E0=??_7Rva00452D52@@6BRva0024A797_B2@@@")
-extern "C" const void *const vtbl_00C4B1F0[];  // folded, 4 classes; via ??_7QueueProductionExitUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4B1F0=??_7QueueProductionExitUpdate@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7ContainIface30@@6B@")[];  // folded vftable 0x00C430B4 (2 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB3@@@")[];  // folded vftable 0x00C4B1E0 (5 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB2@@@")[];  // folded vftable 0x00C4B1F0 (4 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C52D00[];  // ??_7Rva004A653D@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C52D00=??_7Rva004A653D@@6B@")
@@ -81,12 +78,12 @@ SupplyCenterProductionExitUpdate::SupplyCenterProductionExitUpdate(Thing *thing,
 {
 	float fzero = 0.0f;
 	int *slot20 = (int *)&m_secondary20;
-	*slot20 = (int)((unsigned int)vtbl_00C430B4);
+	*slot20 = (int)((unsigned int)__identifier("??_7ContainIface30@@6B@"));
 	unsigned char *readySlot = &m_exitReady30;
 	Object **objSlot = &m_object;
 	m_vtable = (const void *)((unsigned int)vtbl_00C52D30);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C4B1F0);
-	m_secondary10 = (const void *)((unsigned int)vtbl_00C4B1E0);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB2@@@"));
+	m_secondary10 = (const void *)((unsigned int)__identifier("??_7SpawnPointProductionExitUpdate@@6BSpawnB3@@@"));
 	m_secondary20 = (const void *)((unsigned int)vtbl_00C52D00);
 	*readySlot = 0;
 	m_doorDelay24 = fzero;

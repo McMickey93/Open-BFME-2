@@ -19,8 +19,7 @@
 
 extern "C" const void *const vtbl_00C49F20[];  // folded, 2 classes; via ??_7FireWeaponWhenDamagedBehavior@@6BUpgradeMux@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C49F20=??_7FireWeaponWhenDamagedBehavior@@6BUpgradeMux@@@")
-extern "C" const void *const vtbl_00C49F78[];  // folded, 3 classes; via ??_7Rva0049BFB7@@6BRva0024A797_Mid@@@ (a provider the tree emits)
-#pragma comment(linker, "/alternatename:_vtbl_00C49F78=??_7Rva0049BFB7@@6BRva0024A797_Mid@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C49F78 (3 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C49F68[];  // ??_7ReplenishUnitsBehavior@@6BUpdateModule@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C49F68=??_7ReplenishUnitsBehavior@@6BUpdateModule@@@")
@@ -92,7 +91,7 @@ ReplenishUnitsBehavior::ReplenishUnitsBehavior(Thing *thing, const ModuleData *m
 {
 	Object *obj = m_object;
 	m_vtable = (const void *)((unsigned int)vtbl_00C4A034);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C49F78);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C49F68);
 	*(void **)&m_20 = (void *)((unsigned int)vtbl_00C49F20);
 	if (((const ReplenishUnitsModuleData *)m_moduleData)->m_138)

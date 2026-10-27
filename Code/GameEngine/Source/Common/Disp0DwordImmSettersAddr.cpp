@@ -24,8 +24,7 @@ extern "C" const void *const vtbl_00BC6EEC[];  // ??_7Rva00082EF5Second@@6B@
 extern "C" const void *const vtbl_00C7A974[];  // ??_7Rva00604A42@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C7A974=??_7Rva00604A42@@6B@")
 
-extern "C" const void *const vtbl_00C7A84C[];  // ??_7Rva00602645@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C7A84C=??_7Rva00602645@@6B@")
+extern "C" const void *const __identifier("??_7Rva00602645@@6B@")[];  // vftable 0x00C7A84C
 
 extern "C" const void *const vtbl_00C780F4[];  // ??_7Rva005E9FA4@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C780F4=??_7Rva005E9FA4@@6B@")
@@ -84,8 +83,7 @@ extern "C" const void *const vtbl_00C44890[];  // ??_7Rva00468A46@@6B@
 extern "C" const void *const vtbl_00BFDF68[];  // ??_7Rva0056B126B2@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BFDF68=??_7Rva0056B126B2@@6B@")
 
-extern "C" const void *const vtbl_00BFBC9C[];  // ??_7Rva005EEF2FBase0@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BFBC9C=??_7Rva005EEF2FBase0@@6B@")
+extern "C" const void *const __identifier("??_7Rva005EEF2FBase0@@6B@")[];  // vftable 0x00BFBC9C
 
 extern "C" const void *const vtbl_00C6AB10[];  // ??_7Rva006609D0Base@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C6AB10=??_7Rva006609D0Base@@6B@")
@@ -495,7 +493,7 @@ public:
 
 void Rva00060263EDwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00C7A84C);
+	m_value = ((unsigned int)__identifier("??_7Rva00602645@@6B@"));
 }
 
 class Rva0005F3EE3DwordImmSetter
@@ -775,7 +773,7 @@ public:
 
 void Rva000579656DwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00BFBC9C);
+	m_value = ((unsigned int)__identifier("??_7Rva005EEF2FBase0@@6B@"));
 }
 class Rva000574265DwordImmSetter
 {

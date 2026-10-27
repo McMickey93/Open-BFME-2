@@ -19,8 +19,7 @@ public:
 	void rva0010F70A(void *owner);
 };
 
-extern "C" const void *const vtbl_00BC5128[];
-#pragma comment(linker, "/alternatename:_vtbl_00BC5128=??_7Rva001DA2D5Base@@6B@")
+extern "C" const void *const __identifier("??_7Rva00051E4D@@6B@")[];
 
 class Rva001164F5Base
 {
@@ -33,7 +32,7 @@ public:
 
 	__forceinline ~Rva001164F5Base()
 	{
-		*(const void **)this = vtbl_00BC5128;
+		*(const void **)this = __identifier("??_7Rva00051E4D@@6B@");
 	}
 
 private:

@@ -131,8 +131,7 @@ extern "C" const void *const vtbl_00C57A20[47] = {
 	(const void *)&__identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z"),
 	(const void *)&__identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z"),
 };
-extern "C" const void *const vtbl_00C58790[];  // folded, 55 classes; via ??_7AODHordeContain@@6BIface2C@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C58790=??_7AODHordeContain@@6BIface2C@@@")
+extern "C" const void *const __identifier("??_7AODHordeContain@@6BIface2C@@@")[];  // folded vftable 0x00C58790 (55 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -180,5 +179,5 @@ StatusBitsUpgradeIfEldestKindof::StatusBitsUpgradeIfEldestKindof(Thing *thing, c
 	int *sec10 = (int *)&m_secondary10;
 	*sec10 = (int)vtbl_00C579D8;
 	int *slot18 = (int *)&m_slot18;
-	*slot18 = (int)((unsigned int)vtbl_00C58790);
+	*slot18 = (int)((unsigned int)__identifier("??_7AODHordeContain@@6BIface2C@@@"));
 }

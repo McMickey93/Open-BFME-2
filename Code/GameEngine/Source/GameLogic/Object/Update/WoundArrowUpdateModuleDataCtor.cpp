@@ -10,8 +10,7 @@
 // (Enraged precedent). Class size 0xD0 proven by the WoundArrowUpdate data
 // factory (news 0xD0, sole caller at 0x252368). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C5F778[];  // folded, 3 classes; via ??_7EvacuateGarrisonSpecialPowerModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C5F778=??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")
+extern "C" const void *const __identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")[];  // folded vftable 0x00C5F778 (3 classes), by its data-ledger name
 
 class MultiIniFieldParse;
 
@@ -86,7 +85,7 @@ WoundArrowUpdateModuleData::WoundArrowUpdateModuleData()
 {
 	float cap = 100.0f;
 	m_wordCC &= 0;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C5F778);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@"));
 	m_capC8 = cap;
 }
 

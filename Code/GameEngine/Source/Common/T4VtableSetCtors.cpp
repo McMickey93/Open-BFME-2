@@ -30,8 +30,7 @@
 extern "C" const void *const vtbl_00C1C780[];
 #pragma comment(linker, "/alternatename:_vtbl_00C1C780=??_7?$CategoryModuleInfo@$00@FXParticleSystem@@6B@")
 
-extern "C" const void *const vtbl_00C1D2C0[];  // ??_7Rva005EA430@@6BV3Vt01111D90@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C1D2C0=??_7Rva005EA430@@6BV3Vt01111D90@@@")
+extern "C" const void *const __identifier("??_7Rva005EA430@@6BV3Vt01111D90@@@")[];  // vftable 0x00C1D2C0
 
 class Rva00563FE1
 {
@@ -52,6 +51,6 @@ Rva00563FE1::Rva00563FE1( unsigned int a )
 	volatile unsigned int *slots = (unsigned int *)this;
 	slots[ 1 ] = a;
 	slots[ 2 ] = ((unsigned int)vtbl_00C1C780);
-	slots[ 0 ] = ((unsigned int)vtbl_00C1D2C0);
+	slots[ 0 ] = ((unsigned int)__identifier("??_7Rva005EA430@@6BV3Vt01111D90@@@"));
 	slots[ 2 ] = (unsigned int)vtbl_00C1C780_again;
 }

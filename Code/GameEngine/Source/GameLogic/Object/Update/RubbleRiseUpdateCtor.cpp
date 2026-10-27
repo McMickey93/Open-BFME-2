@@ -23,8 +23,7 @@
 // (base ctor resolves via its row; setWakeFrame resolves via the existing
 // IAEX Object-uint pin at 0x44DF71). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C49188[];  // folded, 8 classes; via ??_7PropagandaTowerBehavior@@6BPB_Iface1@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49188=??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")
+extern "C" const void *const __identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")[];  // folded vftable 0x00C49188 (8 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C52858[];  // ??_7Rva004A4C19@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C52858=??_7Rva004A4C19@@6B@")
@@ -92,7 +91,7 @@ RubbleRiseUpdate::RubbleRiseUpdate(Thing *thing, const ModuleData *moduleData)
 	Object **objSlot = &m_object;
 	int zero = 0;
 	m_vtable = (const void *)((unsigned int)vtbl_00C52868);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C49188);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C5285C);
 	m_secondary20 = (const void *)((unsigned int)vtbl_00C52858);
 	m_phaseDelay24 = zero;

@@ -10,8 +10,7 @@
 // Evidence: vtable 0x00BC5128 stored at end; caller ??_GRva0010F7EE@@UAEPAXI@Z
 // at 0x0010F7D2; gap between two rows of OpaqueScalarDeletingDtorsB01.cpp.
 
-extern "C" const void *const vtbl_00BC5128[];  // ??_7Rva001DA2D5Base@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BC5128=??_7Rva001DA2D5Base@@6B@")
+extern "C" const void *const __identifier("??_7Rva00051E4D@@6B@")[];  // vftable 0x00BC5128
 
 class OpaqueRefCounted
 {
@@ -35,7 +34,7 @@ class Rva0010F7EEBase
 public:
 	virtual ~Rva0010F7EEBase()
 	{
-		*(const void **)this = reinterpret_cast<const void *>(((unsigned int)vtbl_00BC5128));
+		*(const void **)this = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7Rva00051E4D@@6B@")));
 	}
 };
 

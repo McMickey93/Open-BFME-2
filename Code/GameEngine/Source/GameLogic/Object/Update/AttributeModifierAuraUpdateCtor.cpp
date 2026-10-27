@@ -25,8 +25,7 @@ extern "C" const void *const vtbl_00C50D20[];  // ??_7AttributeModifierAuraUpdat
 extern "C" const void *const vtbl_00C50CD8[];  // ??_7AttributeModifierAuraUpdate@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C50CD8=??_7AttributeModifierAuraUpdate@@6B@")
 
-extern "C" const void *const vtbl_00C49F78[];  // folded, 3 classes; via ??_7Rva0049BFB7@@6BRva0024A797_Mid@@@ (a provider the tree emits)
-#pragma comment(linker, "/alternatename:_vtbl_00C49F78=??_7Rva0049BFB7@@6BRva0024A797_Mid@@@")
+extern "C" const void *const __identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C49F78 (3 classes), by its data-ledger name
 
 class Thing;
 class ModuleData;
@@ -88,7 +87,7 @@ AttributeModifierAuraUpdate::AttributeModifierAuraUpdate(Thing *thing, const Mod
 	: UpdateModule(thing, moduleData), m_20()
 {
 	m_vtable = (const void *)((unsigned int)vtbl_00C50D2C);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C49F78);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7AttributeModifierAuraUpdate@@6BBehaviorModuleInterface@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C50D20);
 	*(void **)&m_20 = (void *)((unsigned int)vtbl_00C50CD8);
 	setWakeFrame(m_object, UPDATE_SLEEP_NONE);

@@ -21,8 +21,7 @@ extern "C" const void *const vtbl_00C42034[];  // folded, 3 classes; via ??_7Cle
 #pragma comment(linker, "/alternatename:_vtbl_00C42034=??_7ClearanceTestingSlowDeathBehavior@@6BClearanceTestingSlowDeathBehaviorIface2@@@")
 extern "C" const void *const vtbl_00C42DA8[];  // folded, 3 classes; via ??_7Rva0045D39E@@6BRva0024A797_Mid@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C42DA8=??_7Rva0045D39E@@6BRva0024A797_Mid@@@")
-extern "C" const void *const vtbl_00C4EF80[];  // folded, 7 classes; via ??_7ContainIface34@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4EF80=??_7ContainIface34@@6B@")
+extern "C" const void *const __identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@")[];  // folded vftable 0x00C4EF80 (7 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C42020[];  // ??_7Rva0045D39E@@6BRva0045D39E_E2@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C42020=??_7Rva0045D39E@@6BRva0045D39E_E2@@@")
@@ -117,7 +116,7 @@ SlowDeathBehavior::SlowDeathBehavior(Thing *thing, const ModuleData *moduleData)
 	int *slot20 = (int *)&m_secondary20;
 	int *slot24 = (int *)&m_secondary24;
 	*slot20 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
-	*slot24 = ((unsigned int)vtbl_00C4EF80);
+	*slot24 = ((unsigned int)__identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@"));
 	m_4C = -1;
 	m_3C = 0;
 	m_28 = 0;

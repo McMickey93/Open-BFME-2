@@ -15,8 +15,7 @@
 
 class LivingWorldLogic;
 extern LivingWorldLogic *TheLivingWorldLogic;
-extern "C" const void *const vtbl_00BC6F20[];  // folded, 7 classes; via ??_7Rva0007DF07@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BC6F20=??_7Rva0007DF07@@6B@")
+extern "C" const void *const __identifier("??_7Rva0007DF07@@6B@")[];  // folded vftable 0x00BC6F20 (7 classes), by its data-ledger name
 extern "C" const unsigned char __identifier("??_7ArmySummaryEntry@@6BCarryoverUnit@@@");
 extern "C" const unsigned char __identifier("??_7ArmySummaryEntry@@6BRva0007DF07@@@");
 
@@ -33,7 +32,7 @@ private:
 };
 struct MemberAC
 {
-	MemberAC() : m_vtable((void *)((unsigned int)vtbl_00BC6F20)), m_04(0) {}
+	MemberAC() : m_vtable((void *)((unsigned int)__identifier("??_7Rva0007DF07@@6B@"))), m_04(0) {}
 	void *m_vtable;
 	int m_04;
 };

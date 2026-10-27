@@ -14,8 +14,7 @@
 // factory at 0x24F61B (news 0xD4) is the only raw caller. Supersedes the
 // 0x4AD4F2 ctor pin (row proves the body).
 
-extern "C" const void *const vtbl_00C5F778[];  // folded, 3 classes; via ??_7EvacuateGarrisonSpecialPowerModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C5F778=??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")
+extern "C" const void *const __identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")[];  // folded vftable 0x00C5F778 (3 classes), by its data-ledger name
 
 class SpecialAbilityUpdateModuleData
 {
@@ -41,7 +40,7 @@ private:
 GloriousChargeUpdateModuleData::GloriousChargeUpdateModuleData()
 	: SpecialAbilityUpdateModuleData()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00C5F778);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@"));
 	m_bonusRadius = 0.0f;
 	m_speechDuration = 0;
 	m_updateInterval = 0;

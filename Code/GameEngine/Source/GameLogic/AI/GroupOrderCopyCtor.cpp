@@ -14,8 +14,7 @@
 // an empty base with declared-only dtor (Topple pattern, zero emitted
 // code); without it this toolchain stays frameless. Split TU because the
 // default-ctor shard must keep its EH-off flags (makeDirty law).
-extern "C" const void *const vtbl_00C6A520[];  // ??_7GroupOrder@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C6A520=??_7GroupOrder@@6B@")
+extern "C" const void *const __identifier("??_7GroupOrder@@6B@")[];  // vftable 0x00C6A520
 
 #include <vector>
 
@@ -72,7 +71,7 @@ private:
 
 // ??0GroupOrder@@QAE@ABV0@@Z @0x5488E9
 GroupOrder::GroupOrder(const GroupOrder &other)
-	: m_vtable(reinterpret_cast<void *>(((unsigned int)vtbl_00C6A520)))
+	: m_vtable(reinterpret_cast<void *>(((unsigned int)__identifier("??_7GroupOrder@@6B@"))))
 	, m_sciences(other.m_sciences)
 {
 	m_unused10 = reinterpret_cast<void *>(++g_Va00E05F74);

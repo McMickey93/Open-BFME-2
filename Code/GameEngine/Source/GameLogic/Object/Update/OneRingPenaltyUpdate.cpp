@@ -4,7 +4,6 @@
 #include "ascii_string.h"
 #include "../../../../../Libraries/Include/Lib/Coord3DInline.h"
 #include "../../../Common/GameLogicObjectLookupView.h"
-#pragma comment(linker, "/alternatename:_vtbl_00C49188=??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")
 #pragma comment(linker, "/alternatename:_vtbl_00C50250=??_7Rva00499934@@6B@")
 #pragma comment(linker, "/alternatename:_vtbl_00C50254=??_7Rva00499934@@6BRva0024A797_B2@@@")
 #pragma comment(linker, "/alternatename:_vtbl_00C50260=??_7Rva00499934@@6BRva0024A797_Root@@@")
@@ -192,7 +191,7 @@ public:
 // Object-uint spelling resolves via the existing pin at 0x44DF71). Row
 // supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C49188[];
+extern "C" const void *const __identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@")[];
 
 extern "C" const void *const vtbl_00C50250[];
 
@@ -298,7 +297,7 @@ OneRingPenaltyUpdate::OneRingPenaltyUpdate(Thing *thing, const ModuleData *modul
 	*slot20 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	int zero = 0;
 	m_vtable = (const void *)((unsigned int)vtbl_00C50260);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C49188);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PropagandaTowerBehavior@@6BPB_Iface1@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C50254);
 	m_20 = (const void *)((unsigned int)vtbl_00C50250);
 	m_24 = zero;

@@ -14,8 +14,7 @@
 // and the setWakeFrame tail (protected IAEX Object-uint spelling resolves
 // via the existing pin at 0x44DF71). Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00BFBC9C[];  // ??_7Rva005EEF2FBase0@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BFBC9C=??_7Rva005EEF2FBase0@@6B@")
+extern "C" const void *const __identifier("??_7Rva005EEF2FBase0@@6B@")[];  // vftable 0x00BFBC9C
 
 extern "C" const void *const vtbl_00C1A690[];  // ??_7Rva00455050@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C1A690=??_7Rva00455050@@6B@")
@@ -72,7 +71,7 @@ FoundationAIUpdate::FoundationAIUpdate(Thing *thing, const ModuleData *moduleDat
 	: UpdateModule(thing, moduleData)
 {
 	int *slot20 = (int *)&m_20;
-	*slot20 = (int)((unsigned int)vtbl_00BFBC9C);
+	*slot20 = (int)((unsigned int)__identifier("??_7Rva005EEF2FBase0@@6B@"));
 	m_28 &= 0;
 	int one = 1;
 	m_vtable = (const void *)((unsigned int)vtbl_00C40608);

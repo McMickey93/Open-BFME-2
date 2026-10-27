@@ -20,8 +20,7 @@
 // groups in program order where plain assignments get clustered. Row
 // supersedes the ctor pin and the banked 0.9 partial.
 
-extern "C" const void *const vtbl_00C6FFFC[];  // folded, 10 classes; via ??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C6FFFC=??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@")
+extern "C" const void *const __identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@")[];  // folded vftable 0x00C6FFFC (10 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C54BA0[];  // ??_7RainOfFireUpdate@@6BSecondary20@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C54BA0=??_7RainOfFireUpdate@@6BSecondary20@@@")
@@ -91,7 +90,7 @@ RainOfFireUpdate::RainOfFireUpdate(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
 {
 	int *slotInit = (int *)&m_slot;
-	*slotInit = (int)((unsigned int)vtbl_00C6FFFC);
+	*slotInit = (int)((unsigned int)__identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@"));
 	const RainOfFireUpdateModuleData *mod =
 		reinterpret_cast<const RainOfFireUpdateModuleData *>(m_moduleData);
 	int *vtab = (int *)&m_vtable;

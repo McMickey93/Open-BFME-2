@@ -1,6 +1,5 @@
 // cl: /GX /DNDEBUG /MD
-extern "C" const void *const vtbl_00BC5128[];  // ??_7Rva001DA2D5Base@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BC5128=??_7Rva001DA2D5Base@@6B@")
+extern "C" const void *const __identifier("??_7Rva00051E4D@@6B@")[];  // vftable 0x00BC5128
 
 #include "../../Include/Common/Rva00041004Lock.h"
 //
@@ -24,7 +23,7 @@ class Rva0010F0C4Base
 public:
 	virtual ~Rva0010F0C4Base()
 	{
-		*(const void **)this = reinterpret_cast<const void *>(((unsigned int)vtbl_00BC5128));
+		*(const void **)this = reinterpret_cast<const void *>(((unsigned int)__identifier("??_7Rva00051E4D@@6B@")));
 	}
 };
 

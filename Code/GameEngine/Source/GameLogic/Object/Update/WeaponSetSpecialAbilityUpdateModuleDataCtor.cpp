@@ -14,8 +14,7 @@
 // and the FellBeast pin stands as its alias. Row supersedes the
 // WeaponSet ctor pin.
 
-extern "C" const void *const vtbl_00C5F778[];  // folded, 3 classes; via ??_7EvacuateGarrisonSpecialPowerModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C5F778=??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")
+extern "C" const void *const __identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")[];  // folded vftable 0x00C5F778 (3 classes), by its data-ledger name
 
 class SpecialAbilityUpdateModuleData
 {
@@ -42,7 +41,7 @@ WeaponSetSpecialAbilityUpdateModuleData::WeaponSetSpecialAbilityUpdateModuleData
 {
 	m_weaponsetEffectDuration = 0;
 	m_whichWeaponSet = 0;
-	*(unsigned int *)this = ((unsigned int)vtbl_00C5F778);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@"));
 }
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's

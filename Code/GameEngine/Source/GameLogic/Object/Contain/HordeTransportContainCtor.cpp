@@ -22,8 +22,7 @@ extern "C" const void *const vtbl_00C46064[];  // folded, 12 classes; via ??_7Ca
 #pragma comment(linker, "/alternatename:_vtbl_00C46064=??_7CaveContain@@6BB4@@@")
 extern "C" const void *const vtbl_00C47834[];  // folded, 5 classes; via ??_7AODHordeContain@@6BIfaceFC@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C47834=??_7AODHordeContain@@6BIfaceFC@@@")
-extern "C" const void *const vtbl_00C58790[];  // folded, 55 classes; via ??_7AODHordeContain@@6BIface2C@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C58790=??_7AODHordeContain@@6BIface2C@@@")
+extern "C" const void *const __identifier("??_7AODHordeContain@@6BIface2C@@@")[];  // folded vftable 0x00C58790 (55 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C45D2C[];  // ??_7HordeSiegeEngineContain@@6BIface28@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C45D2C=??_7HordeSiegeEngineContain@@6BIface28@@@")
@@ -90,7 +89,7 @@ HordeTransportContain::HordeTransportContain(Thing *thing, const ModuleData *mod
 	m_20 = (const void *)(unsigned int)&g_00C45D30;
 	m_24 = (const void *)((unsigned int)vtbl_00C46064);
 	m_28 = (const void *)((unsigned int)vtbl_00C45D2C);
-	m_2C = (const void *)((unsigned int)vtbl_00C58790);
+	m_2C = (const void *)((unsigned int)__identifier("??_7AODHordeContain@@6BIface2C@@@"));
 	m_30 = (const void *)(unsigned int)&g_00C45CFC;
 	m_34 = (const void *)((unsigned int)vtbl_00C45CEC);
 	m_FC = (const void *)((unsigned int)vtbl_00C47834);

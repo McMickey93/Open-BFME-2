@@ -15,8 +15,7 @@
 // ctor pin.
 
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
-extern "C" const void *const vtbl_00C49800[];  // folded, 4 classes; via ??_7FlammableUpdate@@6BBehaviorModuleOther@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C49800=??_7FlammableUpdate@@6BBehaviorModuleOther@@@")
+extern "C" const void *const __identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00C49800 (4 classes), by its data-ledger name
 
 extern "C" const void *const vtbl_00C49AAC[];  // ??_7Rva004839D3@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C49AAC=??_7Rva004839D3@@6B@")
@@ -73,7 +72,7 @@ SupplyWarehouseCripplingBehavior::SupplyWarehouseCripplingBehavior(Thing *thing,
 	*slot20 = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
 	int zero = 0;
 	m_vtable = (const void *)((unsigned int)vtbl_00C49AC8);
-	m_secondary0C = (const void *)((unsigned int)vtbl_00C49800);
+	m_secondary0C = (const void *)((unsigned int)__identifier("??_7PoisonedBehavior@@6BBehaviorModuleOther@@@"));
 	m_secondary10 = (const void *)((unsigned int)vtbl_00C49AB8);
 	m_20 = (const void *)((unsigned int)vtbl_00C49AAC);
 	m_24 = zero;

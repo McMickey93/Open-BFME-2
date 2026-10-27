@@ -12,8 +12,7 @@
 // Ctor inits +0 and +8 plus variable-located slot via offset held at m_04+4.
 extern "C" const void *const __identifier("??_7Rva005CC5E5@@6B0@@")[];
 extern "C" const void *const __identifier("??_7Rva005CC5E5@@6BRva0007DF07@@@")[];
-extern "C" const void *const vtbl_00BC6F20[];
-#pragma comment(linker, "/alternatename:_vtbl_00BC6F20=??_7Rva0007DF07@@6B@")
+extern "C" const void *const __identifier("??_7Rva0007DF07@@6B@")[];
 struct Rva005CC803Off {
 	char m_pad[4];
 	int m_off04;
@@ -31,5 +30,5 @@ Rva005CC803::~Rva005CC803()
 	Rva005CC803Off *p = m_04;
 	int off = p->m_off04;
 	*(void **)((char *)this + off + 4) = (void *)__identifier("??_7Rva005CC5E5@@6BRva0007DF07@@@");
-	m_08 = (void *)vtbl_00BC6F20;
+	m_08 = (void *)__identifier("??_7Rva0007DF07@@6B@");
 }

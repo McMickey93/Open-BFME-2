@@ -23,8 +23,7 @@
 // an array will not match, try it without this block.
 extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];  // folded vftable 0x00C1C780 (49 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00C6FFFC[];  // folded, 10 classes; via ??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C6FFFC=??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@")
+extern "C" const void *const __identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@")[];  // folded vftable 0x00C6FFFC (10 classes), by its data-ledger name
 
 // The retail table at RVA 0x008E3018: 36 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
@@ -194,7 +193,7 @@ public:
 	{
 		// BFME2 vtable VAs measured from retail (BFME1 donor holds 0x01118e58/0x0112b680).
 		*(volatile unsigned *)&m_v4 = ((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
-		*(volatile unsigned *)&m_v8 = ((unsigned int)vtbl_00C6FFFC);
+		*(volatile unsigned *)&m_v8 = ((unsigned int)__identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@"));
 	}
 
 	unsigned m_v0;

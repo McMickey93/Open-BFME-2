@@ -7,8 +7,7 @@
 // factory (news 0xCC, sole caller at 0x24F793); base size 0xC8 inferred from
 // the flag position. Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C5F778[];  // folded, 3 classes; via ??_7EvacuateGarrisonSpecialPowerModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C5F778=??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")
+extern "C" const void *const __identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@")[];  // folded vftable 0x00C5F778 (3 classes), by its data-ledger name
 
 class MultiIniFieldParse;
 class INI;
@@ -68,7 +67,7 @@ private:
 ToggleHiddenSpecialAbilityUpdateModuleData::ToggleHiddenSpecialAbilityUpdateModuleData()
 	: SpecialAbilityUpdateModuleData()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00C5F778);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7EvacuateGarrisonSpecialPowerModuleData@@6B@"));
 	m_flagC8 = false;
 }
 

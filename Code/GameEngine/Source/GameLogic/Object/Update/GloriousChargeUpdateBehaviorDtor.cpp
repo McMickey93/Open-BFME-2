@@ -13,8 +13,7 @@ char g_00C55118;
 // The class is proven by the poolkey, name getter, ModuleData and instance
 // factories plus the ctor installing these same 4 vtables. Zero new pins.
 
-extern "C" const void *const vtbl_00C4D640[];  // folded, 11 classes; via ??_7LevelGrantSpecialPower@@6BSpecialPowerModuleInterface@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C4D640=??_7LevelGrantSpecialPower@@6BSpecialPowerModuleInterface@@@")
+extern "C" const void *const __identifier("??_7BattlePlanUpdate@@6BBehaviorModuleInterface@@@")[];  // folded vftable 0x00C4D640 (11 classes), by its data-ledger name
 // The retail table at RVA 0x008552A4: 9 slots, each a rowed code owner (the next
 // word is not a code address or starts another ledger datum).
 extern "C" {
@@ -81,7 +80,7 @@ GloriousChargeUpdate::~GloriousChargeUpdate()
 {
 	Rva0029FB3BMember *member = (Rva0029FB3BMember *)((char *)this + 0x88);
 	*(const void **)this = (const void *)(unsigned int)&g_00C55118;
-	*(const void **)((char *)this + 0x0C) = (const void *)((unsigned int)vtbl_00C4D640);
+	*(const void **)((char *)this + 0x0C) = (const void *)((unsigned int)__identifier("??_7BattlePlanUpdate@@6BBehaviorModuleInterface@@@"));
 	*(const void **)((char *)this + 0x10) = (const void *)(unsigned int)&g_00C55108;
 	*(const void **)((char *)this + 0x20) = (const void *)((unsigned int)vtbl_00C552A4);
 	member->reset();

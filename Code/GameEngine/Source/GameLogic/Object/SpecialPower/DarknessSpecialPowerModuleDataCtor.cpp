@@ -12,8 +12,7 @@
 // first so the load hoists above the stores. Size 0x84 matches the rowed
 // 0x251FFC factory news. Row supersedes the ctor pin.
 
-extern "C" const void *const vtbl_00C5E7A8[];  // folded, 2 classes; via ??_7CombineHordeSpecialPowerModuleData@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C5E7A8=??_7CombineHordeSpecialPowerModuleData@@6B@")
+extern "C" const void *const __identifier("??_7CombineHordeSpecialPowerModuleData@@6B@")[];  // folded vftable 0x00C5E7A8 (2 classes), by its data-ledger name
 
 class SpecialPowerModuleData
 {
@@ -41,6 +40,6 @@ DarknessSpecialPowerModuleData::DarknessSpecialPowerModuleData()
 {
 	float radius = 10.0f;
 	m_darknessFX = 0;
-	m_vtable = reinterpret_cast<void *>(((unsigned int)vtbl_00C5E7A8));
+	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7CombineHordeSpecialPowerModuleData@@6B@")));
 	m_darknessRadius = radius;
 }

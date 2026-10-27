@@ -14,11 +14,9 @@
 // literal) is the sole raw caller; poolkey rowed at 0x4AB897. Row supersedes
 // the ctor pin. Zero new pins (base plus both callees already rowed/pinned).
 
-extern "C" const void *const vtbl_00C6FFFC[];  // folded, 10 classes; via ??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C6FFFC=??_7?$CategoryModuleClass@$00@FXParticleSystem@@6B@")
+extern "C" const void *const __identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@")[];  // folded vftable 0x00C6FFFC (10 classes), by its data-ledger name
 
-extern "C" const void *const vtbl_00BFB698[];  // ??_7LargeGroupAudioUpdate_B24@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BFB698=??_7LargeGroupAudioUpdate_B24@@6B@")
+extern "C" const void *const __identifier("??_7LargeGroupAudioUpdate_B24@@6B@")[];  // vftable 0x00BFB698
 extern "C" const void *const vtbl_00C548B8[];  // ??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B24@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C548B8=??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B24@@@")
 extern "C" const void *const vtbl_00C548E8[];  // ??_7LargeGroupAudioUpdate@@6BLargeGroupAudioUpdate_B20@@@
@@ -102,9 +100,9 @@ LargeGroupAudioUpdate::LargeGroupAudioUpdate(Thing *thing, const ModuleData *mod
 {
 	float fzero = 0.0f;
 	int *slotInit20 = (int *)&m_secondary20;
-	*slotInit20 = (int)((unsigned int)vtbl_00C6FFFC);
+	*slotInit20 = (int)((unsigned int)__identifier("??_7?$CategoryModuleClass@$04@FXParticleSystem@@6B@"));
 	int *slotInit24 = (int *)&m_secondary24;
-	*slotInit24 = (int)((unsigned int)vtbl_00BFB698);
+	*slotInit24 = (int)((unsigned int)__identifier("??_7LargeGroupAudioUpdate_B24@@6B@"));
 	int *vtab = (int *)&m_vtable;
 	*vtab = (int)((unsigned int)vtbl_00C549BC);
 	int *sec0C = (int *)&m_secondary0C;

@@ -14,26 +14,21 @@
 extern "C" const void *const vtbl_00BCF7E8[];  // ??_7Rva00104DB0Base@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BCF7E8=??_7Rva00104DB0Base@@6B@")
 
-extern "C" const void *const vtbl_00BC5128[];  // ??_7Rva001DA2D5Base@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BC5128=??_7Rva001DA2D5Base@@6B@")
+extern "C" const void *const __identifier("??_7Rva00051E4D@@6B@")[];  // vftable 0x00BC5128
 
 extern "C" const void *const vtbl_00BC745C[];  // ??_7Rva000851F3@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BC745C=??_7Rva000851F3@@6B@")
-extern "C" const void *const vtbl_00BC6F20[];  // folded, 7 classes; via ??_7Rva0007DF07@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BC6F20=??_7Rva0007DF07@@6B@")
+extern "C" const void *const __identifier("??_7Rva0007DF07@@6B@")[];  // folded vftable 0x00BC6F20 (7 classes), by its data-ledger name
 extern "C" const void *const vtbl_00BCEFA0[];  // folded, 3 classes; via ??_7BfmeShadowBufferOwnerBase@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BCEFA0=??_7BfmeShadowBufferOwnerBase@@6B@")
 extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
 extern "C" const void *const vtbl_00BE3990[];  // folded, 2 classes; via ??_7Rva00203E76@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BE3990=??_7Rva00203E76@@6B@")
-extern "C" const void *const vtbl_00BFBCBC[];  // folded, 2 classes; via ??_7Rva005F6941Base@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BFBCBC=??_7Rva005F6941Base@@6B@")
-extern "C" const void *const vtbl_00C078DC[];  // folded, 4 classes; via ??_7BfmeCtor001B3A20@@6BBfmeCtorVirtualBase001B3A20@@@
-#pragma comment(linker, "/alternatename:_vtbl_00C078DC=??_7BfmeCtor001B3A20@@6BBfmeCtorVirtualBase001B3A20@@@")
+extern "C" const void *const __identifier("??_7Rva005F0584Base0@@6B@")[];  // folded vftable 0x00BFBCBC (2 classes), by its data-ledger name
+extern "C" const void *const __identifier("??_7BfmeCtorVirtualBase001B3A20@@6B@")[];  // folded vftable 0x00C078DC (4 classes), by its data-ledger name
 extern "C" const void *const vtbl_00C3702C[];  // folded, 4 classes; via ??_7LivingWorldBattleListener@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C3702C=??_7LivingWorldBattleListener@@6B@")
-extern "C" const void *const vtbl_00C4EF80[];  // folded, 7 classes; via ??_7ContainIface34@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00C4EF80=??_7ContainIface34@@6B@")
+extern "C" const void *const __identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@")[];  // folded vftable 0x00C4EF80 (7 classes), by its data-ledger name
 extern "C" const void *const vtbl_00C60130[];  // folded, 2 classes; via ??_7MemoryPoolObject@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C60130=??_7MemoryPoolObject@@6B@")
 extern "C" const void *const vtbl_00C6E60C[];  // folded, 2 classes; via ??_7Rva00575E4EBase1@@6B@
@@ -53,8 +48,7 @@ extern "C" const void *const vtbl_00C75290[];  // ??_7Rva005CF872@@6B@
 extern "C" const void *const vtbl_00C6E330[];  // ??_7CreateAHeroData@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00C6E330=??_7CreateAHeroData@@6B@")
 
-extern "C" const void *const vtbl_00BBC8D4[];  // ??_7_Messages@_STL@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BBC8D4=??_7_Messages@_STL@@6B@")
+extern "C" const void *const __identifier("??_7_Messages@_STL@@6B@")[];  // vftable 0x00BBC8D4
 extern "C" const void *const vtbl_00BBE7EC[];  // ??_7DebugCmdInterface@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BBE7EC=??_7DebugCmdInterface@@6B@")
 extern "C" const void *const vtbl_00BC6778[];  // ??_7FileFactoryClass@@6B@
@@ -67,8 +61,7 @@ extern "C" const void *const vtbl_00BED658[];  // ??_7Rva0023A128Link@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BED658=??_7Rva0023A128Link@@6B@")
 extern "C" const void *const vtbl_00BFAD38[];  // ??_7DrawableLocoInfo@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BFAD38=??_7DrawableLocoInfo@@6B@")
-extern "C" const void *const vtbl_00BFB698[];  // ??_7LargeGroupAudioUpdate_B24@@6B@
-#pragma comment(linker, "/alternatename:_vtbl_00BFB698=??_7LargeGroupAudioUpdate_B24@@6B@")
+extern "C" const void *const __identifier("??_7LargeGroupAudioUpdate_B24@@6B@")[];  // vftable 0x00BFB698
 extern "C" const void *const vtbl_00BFDC30[];  // ??_7Rva004F5FD8@@6B@
 #pragma comment(linker, "/alternatename:_vtbl_00BFDC30=??_7Rva004F5FD8@@6B@")
 extern "C" const void *const vtbl_00C02A58[];  // ??_7?$DLListClass@USmudge@@@@6B@
@@ -241,7 +234,7 @@ public:
 
 Rva0010EFCD::~Rva0010EFCD()
 {
-	*(unsigned int *)this = ((unsigned int)vtbl_00BC5128);
+	*(unsigned int *)this = ((unsigned int)__identifier("??_7Rva00051E4D@@6B@"));
 }
 
 class Rva00270158DwordImmSetter
@@ -405,7 +398,7 @@ public:
 
 void Rva00019EC0DwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00BBC8D4);
+	m_value = ((unsigned int)__identifier("??_7_Messages@_STL@@6B@"));
 }
 
 // Native35780 is the scoped WideStrLenSource destructor; its complete C++
@@ -434,7 +427,7 @@ public:
 
 void Rva0005D23FEDwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00C078DC);
+	m_value = ((unsigned int)__identifier("??_7BfmeCtorVirtualBase001B3A20@@6B@"));
 }
 
 class Rva0006C5930DwordImmSetter
@@ -463,7 +456,7 @@ public:
 
 void Rva0005F686ADwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00BFBCBC);
+	m_value = ((unsigned int)__identifier("??_7Rva005F0584Base0@@6B@"));
 }
 
 class Rva0005E211FDwordImmSetter
@@ -515,7 +508,7 @@ public:
 
 void Rva0005277B3DwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00C4EF80);
+	m_value = ((unsigned int)__identifier("??_7GhostObject@@6BRva001B3E60SecondBaseCore@@@"));
 }
 
 class Rva0004EA016DwordImmSetter
@@ -541,7 +534,7 @@ public:
 
 void Rva0004E84A4DwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00BC6F20);
+	m_value = ((unsigned int)__identifier("??_7Rva0007DF07@@6B@"));
 }
 
 class Rva00049C38ADwordImmSetter
@@ -666,7 +659,7 @@ public:
 
 void Rva00028562EDwordImmSetter::apply()
 {
-	m_value = ((unsigned int)vtbl_00BFB698);
+	m_value = ((unsigned int)__identifier("??_7LargeGroupAudioUpdate_B24@@6B@"));
 }
 class Rva000225A55DwordImmSetter
 {
