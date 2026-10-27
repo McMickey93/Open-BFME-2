@@ -1,3 +1,5 @@
+#include <new.h>
+
 class BfmeThingDGG;
 
 class Gen007F0130
@@ -11,11 +13,6 @@ class Rva007FA990
 public:
 	Rva007FA990(void *arg) throw();
 };
-
-inline void *operator new(unsigned int, void *p)
-{
-	return p;
-}
 
 BfmeThingDGG *bfmeGoDGG(void *a)
 {

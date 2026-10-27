@@ -13,11 +13,7 @@
 // the copy constructor out-of-line. Target 0x001D9975 is matched separately in
 // stlport_construct_tailrecord156_copy.cpp. No matching named donor was found.
 
-typedef unsigned int size_t;
-inline void *operator new(size_t, void *place)
-{
-	return place;
-}
+#include <new.h>
 
 class Rva0036CA00Str
 {

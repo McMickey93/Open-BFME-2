@@ -10,9 +10,7 @@
 // the unit's tell: it writes add reg,1 and add reg,-1 where /G6 writes inc and
 // dec.
 
-void *operator new[](unsigned int size);
-inline void *operator new(unsigned int, void *place) { return place; }
-
+#include <new>
 #include "../../../../../reference/shims/wwmath/Vector2.h"
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib/refcount.h

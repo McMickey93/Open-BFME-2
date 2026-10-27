@@ -3,6 +3,8 @@
 // ShareBufferClass<Vector4> copy constructor. Twin of the landed Vector2
 // and Vector3 bodies.
 
+#include <new>
+
 // The compiler-generated vector constructor iterator (??_H) takes the
 // optimization state of the first function that needs it. Retail links one
 // copy, the /O1 body at 0x00001423; this unemitted anchor makes this unit's
@@ -15,9 +17,6 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
 #pragma auto_inline(on)
-
-void *operator new[](unsigned int size);
-inline void *operator new(unsigned int, void *place) { return place; }
 
 class Vector4
 {

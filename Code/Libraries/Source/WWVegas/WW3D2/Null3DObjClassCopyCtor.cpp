@@ -18,7 +18,6 @@
 // It can also change how later array constructions here compile; checked to
 // change nothing else in this unit, but if a function added later that builds
 // an array will not match, try it without this block.
-inline void *operator new(unsigned int, void *p) { return p; }
 struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
@@ -33,6 +32,7 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include "rendobj.h"
 #include "nullrobj.h"
 #include <string.h>
+#include <new.h>
 
 void * __cdecl operator new(unsigned int);
 

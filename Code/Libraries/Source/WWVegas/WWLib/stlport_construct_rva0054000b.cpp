@@ -5,7 +5,7 @@
 // rowed ??0Rva0054000B@@QAE@ABV0@@Z at 0x00540036 in Rva0053FDE6Init.cpp.
 // Same 18B frameless shape as rowed _Construct 0x001DD3AA. Evidence: callee
 // rowed; callers are the 0x28-stride copy loops at 0x005400B4 and 0x005400DA.
-typedef unsigned int size_t;
+#include <stddef.h>
 inline void *operator new(size_t, void *place)
 {
 	return place;

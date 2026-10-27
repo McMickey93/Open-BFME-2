@@ -795,20 +795,12 @@ Code/Libraries/Source/WWVegas/WW3D2/Null3DObjClassCopyCtor.cpp	unverified	unveri
 Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceBuildNotCenteredBFME2.cpp	unverified	unverified	2	2	0	0	0	0	0	0	0	0	0	<new>,<math.h>	no	yes	hand	27: reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:61 malloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:62 calloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:63 realloc(unknown)		operator delete [ ]:same,floor:same
 Code/Libraries/Source/WWVegas/WW3D2/Rva00174753GapFillerDtor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<crtdbg.h>,<new>	no	yes	hand			free:unverified,operator delete:same
 Code/Libraries/Source/WWVegas/WWLib/GeometryShapeConstruct005EA9A9.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
-Code/Libraries/Source/WWVegas/WWLib/Rva00080221Ctor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
-Code/Libraries/Source/WWVegas/WWLib/Rva0023E8D8Ctor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
 Code/Libraries/Source/WWVegas/WWLib/Rva0054103EConstruct.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
 Code/Libraries/Source/WWVegas/WWLib/setModelStateRva000C4E23Farm.cpp	unverified	unverified	2	0	1	0	1	0	0	0	0	0	0	<crtdbg.h>,<string.h>	no	yes	hand			free:unverified,_strnicmp:source
-Code/Libraries/Source/WWVegas/WWLib/sharebuf_unsigned_copy_ctor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new [ ]:same
-Code/Libraries/Source/WWVegas/WWLib/sharebuf_vector2_copy_ctor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new [ ]:same
-Code/Libraries/Source/WWVegas/WWLib/sharebuf_vector4_copy_ctor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new [ ]:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_construct_pod52_rva.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva001dd1b3.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
 Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva0054000b.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
-Code/Libraries/Source/WWVegas/WWLib/stlport_construct_tailrecord156.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
-Code/Libraries/Source/WWVegas/WWLib/stlport_stringtailrecord144_dtor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<windows.h>,<new.h>	yes	yes	hand			operator new:unverified,InterlockedIncrement:same
 Code/GameEngine/Source/Common/BfmeConv692.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
-Code/GameEngine/Source/Common/BfmeConv693.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
 Code/GameEngine/Source/Common/BfmeConv695.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
 Code/GameEngine/Source/Common/BfmeObjZHSetZH.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
 Code/GameEngine/Source/Common/BfmeSubBZCSet.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified

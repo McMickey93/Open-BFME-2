@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /arch:SSE /O1 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // ??1BfmeStringTailRecord144@@UAE@XZ: 128B EH destructor of the 144-byte
@@ -17,13 +18,14 @@
 // +0x84/+0x20/+0x1C/+0x10/+0x08/+0x04, plain reverse declaration order under
 // an empty dtor body. Zero new pins.
 #include "ascii_string.h"
+#include <windows.h>
+#include <new.h>
 class OpaqueRefCounted
 {
 public:
 	void Release_Ref();
 };
 typedef long Long;
-extern "C" __declspec(dllimport) Long __stdcall InterlockedIncrement(Long volatile *addend);
 struct BfmePoolHolder88
 {
     unsigned char m_pad[0x88];
@@ -114,7 +116,6 @@ __declspec(noinline) inline BfmePoolRef10::BfmePoolRef10(BfmePoolHolder88 *p) : 
         InterlockedIncrement((Long *)((char *)m_target + 0x8c));
 }
 // ??0BfmePoolRef10@@QAE@ABV0@@Z 0x00051950 33B copy ctor via InterlockedIncrement on holder+0x8c; 9 callers incl 0x519F1/0x51C7E; double-deref of source ref
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline BfmePoolRef10::BfmePoolRef10(const BfmePoolRef10 &other) : m_target(other.m_target)

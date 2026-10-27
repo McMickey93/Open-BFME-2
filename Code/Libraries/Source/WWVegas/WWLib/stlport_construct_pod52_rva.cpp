@@ -3,7 +3,7 @@
 // Null-guarded placement copy over the 52-byte element whose real copy ctor
 // is the rowed Rva001DD0A0 copy at 0x001DD0A0 (twin-pinned as BfmePod52 copy).
 // Same 18B frameless shape as rowed _Construct 0x004AE915.
-typedef unsigned int size_t;
+#include <stddef.h>
 
 inline void *operator new(size_t, void *place)
 {

@@ -9,7 +9,8 @@
 // builds a stack temp for ReflectionTexture/BlendUsingTerrainAlpha/
 // TransparentWaterDepth dispatch. Neighbours are STLport WWLib TUs; new TU
 // uses /O1 /MD per manual-vtable ctor precedent Rva00575540Ctor.cpp.
-void *__cdecl operator new(unsigned int size);
+#include <new.h>
+#include <new>
 
 // The impl is a class over a ref-counted base with an inline empty destructor,
 // so its vtable (VA 0x00BC6FF4 in retail) is emitted and resolved in this unit
@@ -138,7 +139,6 @@ private:
 	Impl004106FA *m_impl;
 };
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva004106FA::Rva004106FA(const int *arg)

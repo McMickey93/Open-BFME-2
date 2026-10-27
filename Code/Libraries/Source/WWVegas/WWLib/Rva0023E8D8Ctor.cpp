@@ -1,7 +1,7 @@
 // cl: /EHs /D_STLP_NO_EXCEPTIONS /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // ??0Rva0023E8D8@@QAE@PAX@Z 0x0023E8D8 53B retail ctor wrapper holding refcounted impl with func ptr
-void *__cdecl operator new(unsigned int);
-inline void *__cdecl operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+#include <new>
 
 struct Rva00080221RefImpl { virtual ~Rva00080221RefImpl() {} int m_ref; Rva00080221RefImpl() : m_ref(0) {} };
 class Rva0023E8D8Impl : public Rva00080221RefImpl

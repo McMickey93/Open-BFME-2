@@ -8,7 +8,7 @@
 // insert bodies at 0x0054181C/0x00541DBA/0x00541E09/0x00541E1B; 0x14 element
 // size with Region2D member proven by the copy ctor.
 
-typedef unsigned int size_t;
+#include <stddef.h>
 
 inline void *operator new(size_t, void *place)
 {

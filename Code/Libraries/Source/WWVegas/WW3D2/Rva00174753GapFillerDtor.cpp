@@ -22,6 +22,7 @@ void __cdecl Rva00030830FreeAllocation(void *);
 #define free Rva00030830FreeAllocation
 #include <vector>
 #undef free
+#include <new>
 struct Rva00087A93 { void *m_data; };
 struct BfmeAssignRecord32 {
  BfmeAssignRecord32(const BfmeAssignRecord32 &);
@@ -34,7 +35,6 @@ namespace _STL { template <> BfmeAssignRecord32 *vector<BfmeAssignRecord32>::era
 namespace _STL { template <> vector<BfmeAssignRecord32>::~vector(); }
 struct Rva00174350MeshView { char opaque00[0x310]; unsigned *slot310; };
 void __cdecl Rva00030830FreeAllocation(void *);
-void __cdecl operator delete(void *);
 struct Rva00174753Allocation : private _STL::_Vector_base<int,_STL::allocator<int> > { __declspec(noinline) Rva00174753Allocation() throw(); ~Rva00174753Allocation() {} };
 Rva00174753Allocation::Rva00174753Allocation() throw() : _STL::_Vector_base<int,_STL::allocator<int> >(_STL::allocator<int>()) {}
 struct Rva00174753ReleaseView { virtual void *releaseInstance(unsigned)=0; };

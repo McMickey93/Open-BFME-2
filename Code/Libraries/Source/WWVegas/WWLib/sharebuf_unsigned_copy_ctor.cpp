@@ -13,8 +13,7 @@
 // identifies the element type. /G7 writes add reg,1 and add reg,-1 where /G6
 // writes inc and dec.
 
-void *operator new[](unsigned int size);
-inline void *operator new(unsigned int, void *place) { return place; }
+#include <new>
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib/refcount.h
 // Retail's out-of-line RefCountClass deleting-dtor copy is the /O1 form
