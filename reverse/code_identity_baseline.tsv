@@ -57,7 +57,6 @@ Code/GameEngine/Source/Common/Rva006F84C0DeletingDtor.cpp	??_GRva006F84C0@@UAEPA
 Code/GameEngine/Source/Common/Rva007B5DE0StaticInstance.cpp	??__Es_rva006655B0@@YAXXZ	_$E2	0x007B9B90	wrong
 Code/GameEngine/Source/Common/Rva009F5970StateCtor.cpp	??0Rva009F5970State@@QAE@XZ	??1?$vector@UGen_p8cd@@V?$allocator@UGen_p8cd@@@_STL@@@_STL@@QAE@XZ	0x00142D70	wrong
 Code/GameEngine/Source/Common/Rva009F5970StateCtor.cpp	uw_007a78d0	??1?$vector@UGen_p8cd@@V?$allocator@UGen_p8cd@@@_STL@@@_STL@@QAE@XZ	0x00142D70	wrong
-Code/GameEngine/Source/Common/S4ParseThenRegister_Rva0035E278.cpp	?s4parse0059E860@@YAXPAVINI@@PAUGen_00489270@@@Z	??0S4Parsed0059E860@@QAE@XZ	0x0035E206	wrong
 Code/GameEngine/Source/Common/S4StlSortHelpers.cpp	??$__final_insertion_sort@PAUS4SortElem20@@US4Cmp002EB8E0@@@_STL@@YAXPAUS4SortElem20@@0US4Cmp002EB8E0@@@Z	??$__insertion_sort@PAUS4SortElem20@@US4Cmp002EB8E0@@@_STL@@YAXPAUS4SortElem20@@0US4Cmp002EB8E0@@@Z	0x00337960	wrong
 Code/GameEngine/Source/Common/S5ParseThenRegisterWide_Rva0035D0DC.cpp	?s5parse0059FB50@@YAXPAVINI@@PAUGen_00489270@@@Z	??0S5Built0059FB50@@QAE@XZ	0x0035D097	wrong
 Code/GameEngine/Source/Common/S5ParseThenRegisterWide_Rva003604C6.cpp	?s5parse0059DE10@@YAXPAVINI@@PAUGen_00489270@@@Z	??0S5Built0059DE10@@QAE@XZ	0x00360474	wrong
