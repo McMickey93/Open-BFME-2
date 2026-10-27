@@ -40,9 +40,9 @@ void __stdcall bfmeFailDXE(int code);
 // ?clearMissingVariant@@YAXXZ, retail 0x007B9B40 (22B).
 void clearMissingVariant()
 {
-	HRESULT r = VariantClear((VARIANTARG *)vtMissing);
-	if (r < 0)
-		bfmeFailDXE(r);
+	HRESULT hr = VariantClear((VARIANTARG *)vtMissing);
+	if (hr < 0)
+		bfmeFailDXE(hr);
 }
 
 // Retail's call sites in this unit's matched rows land on bodies rowed under

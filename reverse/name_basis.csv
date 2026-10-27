@@ -2742,3 +2742,8 @@ function,?rva0014D887@Rva0014D887This@@QAEXPAVRva0014D887Outer@@PAX@Z,?SetPositi
 carry,Rva0014D887This::rva0014D887::effect,Rva0014D887This::SetPosition::effect,inferred,scope renamed by Rename rva0014D887 to SetPosition (inferred),Code/GameEngine/Source/Common/Rva0014D887Init.cpp,0x0014D887
 carry,Rva0014D887This::rva0014D887::parameter,Rva0014D887This::SetPosition::parameter,inferred,scope renamed by Rename rva0014D887 to SetPosition (inferred),Code/GameEngine/Source/Common/Rva0014D887Init.cpp,0x0014D887
 member,Rva007EA9C0Owner::m_0C,Rva007EA9C0Owner::m_feslNaming,inferred,agree:nl-b4cb203e5341,Code/GameEngine/Source/GameNetwork/Rva007EA9C0Init.cpp,
+local,clearMissingVariant::r,clearMissingVariant::hr,inferred,agree:nl-b30523c1a8a4,Code/GameEngine/Source/Common/BfmeConv793.cpp,0x007B9B40
+member,Rva002BEFE5::m_6C,Rva002BEFE5::m_startZoom,inferred,agree:nl-98442d19c85c,Code/GameEngine/Source/Common/Rva002BEFE5.cpp,
+member,Rva002BEFE5::m_70,Rva002BEFE5::m_targetZoom,inferred,agree:nl-15727fc658d5,Code/GameEngine/Source/Common/Rva002BEFE5.cpp,
+param,Rva0006EE7A::Rva0006EE7A#2::b1,Rva0006EE7A::Rva0006EE7A#2::idx1,inferred,agree:nl-bd2fe761e43a,Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp,
+param,Rva0006EE7A::Rva0006EE7A#2::b2,Rva0006EE7A::Rva0006EE7A#2::idx2,inferred,agree:nl-1bbff2675323,Code/Libraries/Source/WWVegas/WW3D2/Rva0006EE7ABitSet.cpp,

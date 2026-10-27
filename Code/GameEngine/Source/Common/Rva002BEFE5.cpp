@@ -51,8 +51,8 @@ public:
 	float m_targetX;
 	float m_64;
 	float m_targetZ;
-	float m_6C;
-	float m_70;
+	float m_startZoom;
+	float m_targetZoom;
 	float m_moveProgress;
 	unsigned char m_isMoving;
 	char _pad79[3];
@@ -73,7 +73,7 @@ void Rva002BEFE5::rva002BEFE5(const Rva002BEFE5Vec *position, float a1, float a2
 	*(Rva002BEFE5Vec *)&m_targetX = *position;
 	m_targetZ = 0.0f;
 	m_84 = a1;
-	m_6C = v25();
+	m_startZoom = v25();
 	float t = a2;
-	m_70 = t < 0.0f ? 0.0f : (t > 1.0f ? 1.0f : t);
+	m_targetZoom = t < 0.0f ? 0.0f : (t > 1.0f ? 1.0f : t);
 }
