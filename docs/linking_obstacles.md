@@ -4741,6 +4741,18 @@ authored bytes) against index `bf3dd31211`. No source repair is needed;
 this extends the existing repair's caller evidence. Census confirmation remains
 pending; no new headline or runtime gain is claimed.
 
+Follow-up verification and header cleanup (2026-10-27, `87d14902cf`): the
+default picker served bfmedynamicvertexbuffer.cpp's historical thread-wrapper
+selected-copy blocker. With current BfmeDX8ThreadLock.cpp and
+BfmeDX8ThreadCheck.cpp, all three ordinary previews report LINKS before and
+after cleanup (6,860, 247 and 31 authored bytes). Replacing four handwritten
+allocation declarations with `<new>` preserves all 63 executable sections and
+90 external symbol records; all 46 rows and 14 EH graphs verify. A scoped
+Microsoft-header queue refresh retires this source's entry. Existing storage
+identity prerequisites remain in the prior data handoff. [Scoped evidence](../reverse/attempt_support/dynamic-vertex-buffer-header-20261027-codex.md).
+This extends the existing repair's caller evidence; census confirmation remains
+pending, with no new linked-byte gain claimed.
+
 ### LINK-110: a class view omits its base's out-of-line destructor, so an unused implicit inline dtor references an unprovided grand-base
 Status: Open (SubObjectsUpgrade subset repaired). Updated: 2026-10-27; inspected revision: 952d800df1; preview index: bf3dd31211 (2026-10-27 00:39), retail-truth-4.
 Evidence / affected units: under `/GX` a constructor makes the front end emit its base's implicit destructor for the unwind path even when the optimized body needs no frame. `SubObjectsUpgrade.cpp`'s private `UpgradeModule` view declared no destructor, so the object carried an unreferenced inline `??1UpgradeModule@@UAE@XZ` that jumps to the placeholder `??1ObjectModuleBase@@UAE@XZ`, which nothing provides (census: sole blocker, 1,108 B). Retail's owner is the rowed protected virtual `??1UpgradeModule@@MAE@XZ` at 0x0046089D (UpgradeModuleDtor.cpp), which ten other upgrade units already declare.

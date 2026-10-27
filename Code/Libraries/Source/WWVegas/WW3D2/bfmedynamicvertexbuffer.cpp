@@ -9,16 +9,8 @@
 extern class MeshModelClass *MeshModelListHead;
 
 #include <d3d9.h>
+#include <new>
 #include <string.h>
-void *__cdecl operator new(unsigned);
-// throw() as <new> declares them: otherwise every buffer destructor that
-// frees something grows an unwind frame for its base, which retail's have not.
-void __cdecl operator delete(void *) throw();
-void __cdecl operator delete[](void *) throw();
-// Without this declaration MSVC routes `new T[n]` to the SCALAR ??2@YAPAXI@Z
-// (0x0002FDA0); retail's sorting constructor calls the array form ??_U@YAPAXI@Z
-// at 0x0002FDE0, and those are two byte-verified distinct bodies here.
-void *__cdecl operator new[](unsigned);
 // The 96-byte vertex-format records of the fifteen dynamic pools, a table at
 // 0x00DF2AA0.  Only their FVF prefix (BfmeDynamicFVFPrefix) is examined here.
 struct BfmeFVFDescriptor {
