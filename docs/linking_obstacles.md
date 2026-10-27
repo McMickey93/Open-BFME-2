@@ -1282,6 +1282,17 @@ Whole-unit clearance and census confirmation remain pending.
   index repair is verified; broader data closure and census confirmation remain
   open. No new census or image-ownership gain is claimed.
 
+- **Update-module cached-key index follow-up (2026-10-27, control `b76477cafd`):**
+  [The current-object verification](../reverse/attempt_support/update-poolkey-data-index-20261027-codex.md)
+  refreshes nineteen standalone update getters' key/guard index entries after
+  the existing E039 guard-clearer retirement and getter renames. All 57 function
+  rows, nineteen literals and nineteen EH graphs pass; enforced and converged
+  data checks report zero findings. Ordinary previews preserve all nineteen
+  units' 1,493 authored bytes against index `73061d9452`. The owning tool retires
+  nineteen stale data keys. AssaultTransportAIUpdate's separately held unit and
+  mixed sources stay outside this repair. Broader data closure and census
+  confirmation remain open; no new census or ownership gain is claimed.
+
 - **Buffer-slot FVF table identity (2026-10-27, control `1710ea0aea`):**
   [The current-owner repair](../reverse/attempt_support/buffer-slot-fvf-data-20261027-codexb4.md)
   replaces the slot allocator's private table with the existing unsigned-array

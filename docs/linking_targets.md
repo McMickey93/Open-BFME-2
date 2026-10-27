@@ -545,6 +545,13 @@ handoff's reported matched-byte values.
 
 ### Data-ownership follow-up outside the blocked shortlist
 
+2026-10-27, control `b76477cafd`: nineteen standalone update cached-key units
+preserve LINKS (1,493 authored bytes) while their generated key/guard index rows
+catch up with the landed E039 guard cleanup and getter renames. All 57 rows,
+nineteen literals and nineteen EH graphs pass; the owning tool retires nineteen
+stale data keys. [Evidence](../reverse/attempt_support/update-poolkey-data-index-20261027-codex.md),
+LINK-007. No census or image-ownership gain is claimed.
+
 2026-10-27, control `eb4237832a`: the FESL constructor and destructor share
 the existing owner at RVA 0x008E3F08, removing duplicate destructor storage and
 retiring two data keys. Both rows and all eight executable sections verify;
