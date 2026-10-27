@@ -327,7 +327,6 @@ public:
 };
 
 class CreateAHeroData;
-struct BfmeE16;
 
 // The asset holder's out-of-line members, rowed under placeholder classes.
 class Rva0015168C
@@ -339,7 +338,7 @@ public:
 class Rva001518D1
 {
 public:
-	_STL::vector<BfmeE16> *rva001518D1();		// 0x001518D1: the asset's default parameters
+	Rva00082EB8 *rva001518D1();		// 0x001518D1: the asset's default parameters
 };
 
 class BfmeResetTextureRef
@@ -377,7 +376,7 @@ public:
 	}
 	const Rva00082EB8 &Default_Parameters()
 	{
-		return *(const Rva00082EB8 *)((Rva001518D1 *)this)->rva001518D1();
+		return *((Rva001518D1 *)this)->rva001518D1();
 	}
 	void Clear() { ((BfmeResetTextureRef *)this)->clear(); }
 
