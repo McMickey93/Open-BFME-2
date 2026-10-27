@@ -51,7 +51,6 @@ struct BFME2WideConcatPair
 	}
 	operator UnicodeString();
 };
-#pragma comment(linker, "/alternatename:??BBFME2WideConcatPair@@QAE?AVUnicodeString@@XZ=??BBFME2WideConcatPair@@QAE?AV?$StringBase@G@@XZ")
 inline BFME2WideConcatPair operator+(const UnicodeString &left,
 	const UnicodeString &right)
 {

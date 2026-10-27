@@ -6,67 +6,22 @@
 // Main/WinMainPairUnicode.cpp, but the two halves are nullable wide-string
 // references (pointer plus header length) instead of inline (pointer,
 // length) snapshots, so the materializer sizes through the header length
-// word and copies UTF16 payloads through memcpy. The temporaries stay at
-// the StringBase level so buffer, copy and release resolve to the pinned
+// word and copies UTF16 payloads through memcpy. Both materializers return
+// a UnicodeString, whose inline copy and destructor resolve to the
 // StringBase bodies.
 
 #include <string.h>
 
-template <typename T>
-class StringBase
-{
-	friend class UnicodeString;
-	friend struct BFME2WideStringRef;
-	friend class BFME2WideConcatPair;
-	StringBase(const T *text);
-	void releaseBuffer();
+#include "../../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
-public:
-	StringBase() : m_data(0) {}
-	StringBase(const StringBase &src);
-	~StringBase() { releaseBuffer(); }
-	int getLength() const { return m_data ? m_data->length : 0; }
-
-	struct Header
-	{
-		int ref_count;
-		unsigned short length;
-		unsigned short capacity;
-		T data[1];
-	};
-
-	T *getBufferForRead(int len);
-	void set(const StringBase &src);
-
-protected:
-	Header *m_data;
-};
-
-class UnicodeString : public StringBase<unsigned short>
-{
-public:
-	UnicodeString() {}
-	UnicodeString(const UnicodeString &src) : StringBase<unsigned short>(src) {}
-	const unsigned short *str() const { return m_data != 0 ? m_data->data : L""; }
-};
-
-// A nullable wide-string reference: the length and payload both come from
-// the header behind m_data, with the empty literal as the null fallback.
+// A wide-string reference: the length and payload come through the inline
+// getLength() and str(), whose null fallback is TheNullChr (retail loads
+// 0x007BB5C4).
 struct BFME2WideStringRef
 {
 	const UnicodeString *m_ptr;
 
-	__forceinline int length() const
-	{
-		StringBase<unsigned short>::Header *data = m_ptr->m_data;
-		return data != 0 ? data->length : 0;
-	}
-
-	__forceinline const unsigned short *payload() const
-	{
-		StringBase<unsigned short>::Header *data = m_ptr->m_data;
-		return data != 0 ? data->data : L"";
-	}
+	__forceinline int length() const { return m_ptr->getLength(); }
 
 	int copyPayloadTo(unsigned short *dst) const;
 };
@@ -74,19 +29,15 @@ struct BFME2WideStringRef
 // @0x0021AC32 (56B): ref payload copy
 int BFME2WideStringRef::copyPayloadTo(unsigned short *dst) const
 {
-	const UnicodeString *text = m_ptr;
-	StringBase<unsigned short>::Header *lengthData = text->m_data;
-	int len = lengthData != 0 ? lengthData->length : 0;
-	StringBase<unsigned short>::Header *payloadData =
-		*const_cast<StringBase<unsigned short>::Header * const volatile *>(&text->m_data);
-	memcpy(dst, payloadData != 0 ? payloadData->data : L"", len * 2);
+	int len = m_ptr->getLength();
+	memcpy(dst, m_ptr->str(), len * 2);
 	return len;
 }
 
 class BFME2WideConcatPair
 {
 public:
-	operator StringBase<unsigned short>();
+	operator UnicodeString();
 	int totalLength() const;
 	int copyPayloads(unsigned short *dst) const;
 
@@ -98,7 +49,7 @@ private:
 // @0x002198C8 (36B): pair length sum
 int BFME2WideConcatPair::totalLength() const
 {
-	return m_first.m_ptr->getLength() + m_second.m_ptr->getLength();
+	return m_first.length() + m_second.length();
 }
 
 // @0x0021B8A0 (37B): pair payload copy
@@ -134,8 +85,8 @@ int Rva002DCD9A::copyToBuffer(unsigned short *dst)
 	return first + second;
 }
 
-// ??BBFME2WideConcatPair@@QAE?AV?$StringBase@G@@XZ @0x0021C3F7 (98B)
-BFME2WideConcatPair::operator StringBase<unsigned short>()
+// @0x0021C3F7 (98B): pair materializer
+BFME2WideConcatPair::operator UnicodeString()
 {
 	UnicodeString tmp;
 	copyPayloads(tmp.getBufferForRead(totalLength()));

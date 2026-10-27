@@ -12,15 +12,13 @@
 typedef unsigned short Wide;
 class AsciiString;
 class UnicodeString;
-// The pair conversion returns a StringBase<Wide> temporary that parseMod destroys.
-#define BFME_STRINGBASE_PUBLIC_DTOR
 #include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 struct BFME2WideConcatPair {
     const UnicodeString *a,*b;
     BFME2WideConcatPair(const UnicodeString& unicodeString,const UnicodeString& y){b=&y;a=&unicodeString;}
-    operator StringBase<Wide>();
+    operator UnicodeString();
 };
 inline BFME2WideConcatPair operator+(const UnicodeString& a,const UnicodeString& b) {
     return BFME2WideConcatPair(a,b);
@@ -42,7 +40,7 @@ int parseMod(char *args[],int num) {
         UnicodeString modPath((AsciiString(args[1])));
         if(modPath.find(':') || modPath.startsWith((const Wide*)L"/") || modPath.startsWith((const Wide*)L"\\")) {
         } else {
-            modPath.set(TheWritableGlobalData->rva002360FC()+modPath);
+            modPath = TheWritableGlobalData->rva002360FC()+modPath;
         }
         if(!((BFME2FileSystemFacade *)TheFileSystem)->doesWideFileExist(modPath.str())) return 2;
         struct _stat statBuf;
