@@ -3563,7 +3563,7 @@ Remaining / next check: the same pattern may hold for other Zero Hour inline get
 Clearance: preview (link_check on current objects). Census confirmation: pending.
 
 ### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
-Status: Open. Updated: 2026-10-26; inspected revision: 14ea56bea7 (uw_gen_002/007/008 repoints).
+Status: Open. Updated: 2026-10-26; inspected revision: 092dc02d24.
 Evidence / affected units: `Code/gen_small/uw_gen_*.cpp` never links (its
 `gen_uw_ext`/`gen_uw_sink` are undefined by design), so each funclet must move
 to its matched parent's `$L` label. In `uw_gen_003.cpp`, all 69 funclets have a
@@ -3587,6 +3587,16 @@ ledger). In `uw_gen_012.cpp`, 42 of 44 EXACT-parent candidates fail the unmasked
 Labels: a scan over stale `build/match` objects can name an old `$L` number; build.sh accepts it
 via the parent's EH data ("verified past a renumbered $L label", which lists only five), so take
 the label from a fresh compile of the parent before writing the row.
+uw_gen_010/011/013/014 (2026-10-26): of 888 rows with one EXACT parent, 42 moved
+("Repoint 42 uw_gen_011/013/014 funclets"); the gate's own unmasked comparison
+refuses 841, each recorded as `blocked` with its cause. About 630 are a parent-TU
+dtor with no pin or row (484 distinct names; most common: the
+`hash_map<int, Rva00224C76Element>` dtor (9), `vector<PlayerAITypeEntry>` (8),
+`map<unsigned, void*, ..., Rva0039CAE1Allocator>` (6), `BFME2NativeNetworkBase`,
+`Rva005FA874` (5 each)). 72 resolve to a different body than retail's rel32. 129
+are labels that do not hold retail's bytes. 7 collide with a stale `$L` name on a
+neighbouring row in the same source, which has to be renamed first. uw_gen_010 has
+almost no clean rows left (1 of 299).
 Remaining / next check: name or row each missing element dtor at the address
 retail's funclet jumps to (`tools/pin_admission.py --add`, or a real row). For
 the two wrong-callee units, align the element type with retail's dtor. Then
