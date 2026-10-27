@@ -17951,12 +17951,12 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009E1F14,4,.data,global,?g_Va00DE1F14@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DE1Exx.cpp,provisional,?$S1@?1??Rva00074AFFGet@@YGPAVRva000748F6@@H@Z@4IA@Code/GameEngine/Source/Common/System/Rva00074AFFInit.cpp;?g_Va00DE1F14@@3IA,2,4
 0x009E1F18,8,.data,global,?g_00DE1F18@@3HA,,unowned,,0,2
 0x009E1F20,4,.data,global,?g_Va00DE1F20@@3IA,Code/GameEngine/Source/Common/Rva000F5B43Get.cpp,owned,,1,1
-0x009E1F24,4,.data,global,?g_00DE1F24@@3RCRAUShaderSlotObj@@C,,unowned,?g_00DE1F24@@3RCRAUShaderSlotObj@@C;?g_00DE1F24@@3RCRAVRva00075695Item@@C;_W3DShaders@Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp,1,4
+0x009E1F24,8,.data,global,?W3DShaders@@3PAPAVShaderInterface@@A,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,provisional,?W3DShaders@@3PAPAVShaderInterface@@A;?g_00DE1F24@@3RCRAUShaderSlotObj@@C,2,6
 0x009E1F28,4,.data,global,?g_Va00DE1F28@@3IA,Code/GameEngine/Source/Common/Rva000F5B43Get.cpp,owned,,1,1
 0x009E1F2C,40,.data,global,?W3DFilters@@3PAPAVW3DFilterInterface@@A,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,provisional,?W3DFilters@@3PAPAVW3DFilterInterface@@A;?g_00DE1F2C@@3RCRAVRva000756BFItem@@C;?g_00DE1F2C@@3RCRAVRva000756F1Item@@C;?g_00DE1F2C@@3RCRAVRva00075725Item@@C;_W3DFilters@Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp,2,10
 0x009E1F54,4,.data,global,?m_currentShader@W3DShaderManager@@1HA,,unowned,?g_00DE1F54@@3HA;?m_currentShader@W3DShaderManager@@1HA,0,5
 0x009E1F58,4,.data,global,?g_Va001FDE58@@3HA,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,owned,,1,27
-0x009E1F5C,4,.data,global,?m_currentFilter@W3DShaderManager@@1HA,,unowned,?g_00DE1F5C@@3HA;?m_currentFilter@W3DShaderManager@@1HA,0,3
+0x009E1F5C,4,.data,global,?m_currentFilter@W3DShaderManager@@1HA,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp,owned,,1,6
 0x009E1F60,4,.data,global,?m_renderingToTexture@W3DShaderManager@@1_NA,,unowned,?m_renderingToTexture@W3DShaderManager@@1_NA;?m_renderingToTexture@W3DShaderManager@@2_NA,0,4
 0x009E1F64,4,.data,global,?m_oldRenderSurface@W3DShaderManager@@2PAUIDirect3DSurface8@@A,Code/GameEngine/Source/Common/Rva000F630CGet.cpp,provisional,?m_oldRenderSurface@W3DShaderManager@@2PAUIDirect3DSurface8@@A;?rva012F9D04@@3PAUShaderComResourceRef@@A,1,4
 0x009E1F68,4,.data,global,?m_renderTexture@W3DShaderManager@@2PAUIDirect3DTexture8@@A,,unowned,?g_Va001FDE68@@3HA;?m_renderTexture@W3DShaderManager@@2PAUIDirect3DTexture8@@A;?rva012F9D08@@3PAUShaderComResourceRef@@A,1,4

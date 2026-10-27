@@ -542,17 +542,6 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDraw.cp
 Code/GameEngineDevice/Source/W3DDevice/GameClient/ScreenCrossFadeFilterUpdateFadeLevel.cpp	wrong-name	?TheTacticalView@@3PAVTacticalView@@A	0x009FEA3C
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	wrong-name	_mutex	0x009E4B34
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse.cpp	wrong-name	_threadMutex	0x009E5DA0
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManager.cpp	wrong-name	?ScreenTextureStageStateChanges@@3IA	0x009EDA68
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?g_bfmeTableDU@@3PAVBfmeHandleCX@@A	0x009E1F8C
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?m_resource012F9D24@W3DShaderManager@@1PAUShaderComResourceRef@@A	0x009E1F84
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?m_vertexBuffer012F9D1C@W3DShaderManager@@1PAVShaderVertexBuffer@@A	0x009E1F7C
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?rva012F9D04@@3PAUShaderComResourceRef@@A	0x009E1F64
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?rva012F9D08@@3PAUShaderComResourceRef@@A	0x009E1F68
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?rva012F9D0C@@3PAUShaderComResourceRef@@A	0x009E1F6C
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?rva012F9D1C@@3PAVShaderVertexBufferRef@@A	0x009E1F7C
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	?rva012F9D20@@3IA	0x009E1F80
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	_W3DFilters	0x009E1F2C
-Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DShaderManagerShutdown.cpp	wrong-name	_W3DShaders	0x009E1F24
 Code/Libraries/Source/DirtySock/Y2Rva007EBAE0Module.cpp	wrong-name	?g_Rva0112A210Lower@@3QBEB	0x008E1A60
 Code/Libraries/Source/DirtySock/Y4CommTransportLife.c	wrong-name	_g_Rva0130AD08Count	0x00A0A720
 Code/Libraries/Source/DirtySock/Y4DirtySockSocketWrappers.c	wrong-name	_g_Rva0130AB60	0x00A0A578

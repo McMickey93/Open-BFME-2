@@ -1174,6 +1174,20 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-27.**
 
+- **Shader filter storage and stale shutdown debt (2026-10-27, control c5dc2d6968):**
+  [The three-unit binding check](../reverse/attempt_support/shader-filter-data-identity-20261027-codex.md)
+  binds the merged manager's two free helpers to its existing protected
+  `m_currentFilter` static and removes the duplicate anonymous integer at
+  RVA 0x009E1F5C. All six native references now relocate to the same owner.
+  Two generated index rows reflect current providers; the owning retirement
+  tool removes ten shutdown keys and one manager key. All 23 rows, five data
+  rows, four EH parents and both data-check modes pass. Shutdown and
+  startRenderToTexture preserve ordinary-preview LINKS (367 and 378 authored
+  bytes). The manager still encounters deleted merge-donor objects in index
+  73061d9452 (LINK-122); its filter-state duplicate finding is gone, but the
+  remaining preview is inconclusive. Recheck in the next normal census.
+  Other provisional shader storage remains open; no census gain is claimed.
+
 - **FESL secondary-vtable anchor ownership (2026-10-27, control `eb4237832a`):**
   [The two-unit binding check](../reverse/attempt_support/fesl-secondary-data-20261027.md)
   removes the destructor's private anchor at RVA 0x008E3F08 by exposing the
