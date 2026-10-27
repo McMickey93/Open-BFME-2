@@ -4,10 +4,10 @@ The ignored freshness receipt was over 72 hours old. Before further source
 work, fetched official `https://github.com/Open-BFME/Open-BFME-1.git` master.
 The clean checkout and committed BFME 2 gitlink were both
 `4fa9d591641a743b86f2320343b7a276585b814b`; official master resolved to
-`e74410b3738a2bb75d626085d9ebfd3406a43ff7`. The two tips have one commit on
-each side of their common ancestor. This is a verified reference replacement,
-not a fast-forward claim. The old pointer remains recoverable from BFME 2's
-parent commit; no dirty or private checkout work was discarded.
+`e74410b3738a2bb75d626085d9ebfd3406a43ff7`. The comparison uses these exact
+revisions; this shallow clone does not establish their ancestry. The old pointer
+remains recoverable from BFME 2's parent commit; no dirty or private checkout
+work was discarded.
 
 The comparison fixes BFME 2 game inputs at `e1a73387fd8b18b30558d5b78b586c37dc10f207`:
 
@@ -54,3 +54,19 @@ No donor implementation was imported.
 
 This update changes the reference pointer and records verification evidence.
 It claims no new matched bytes, linked coverage or image ownership reduction.
+
+After three rebased pre-push gates passed but their transfers lost races with
+master, a fresh full `./build.sh` ran at local revision
+`55861fe97c79096d8701145a14baf5188d8c87e4`. `current-inputs.json` records its
+exact source, function-ledger, data-ledger and reference inputs. This is an
+additional check of the rebased inputs, separate from the fixed-input donor
+comparison above. Only evidence and documentation changed during this run.
+
+`current-full.txt` retains the zero-exit result: `FULL GATE: OK`, all
+98,276 function rows across 22,439 source files, all 2,227 data rows, the
+reference checks and the no-op patch. Dependency validation rebuilt 21 of
+22,438 TUs. The reference stayed at `e74410b3`; the source consolidation and
+additional data row are upstream changes, not gains from this reference update.
+A full-gate receipt can now cover these exact rebased inputs. The publication
+link audits' missing strict receipts remain open in LINK-008; this full byte
+check does not establish selected providers, lost-byte coverage or census gain.

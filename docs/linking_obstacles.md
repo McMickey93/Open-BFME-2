@@ -1244,7 +1244,7 @@ duplicate-definition keys; no census or image-ownership gain is claimed.
 
 ### LINK-008: include inventories prevent strict reusable graphics receipts
 
-**Status: Blocked on complete include inventories. Updated: 2026-10-26.**
+**Status: Blocked on complete include inventories. Updated: 2026-10-27.**
 
 - **Evidence / scope:** [graphics verification at `91fe970939`](../reverse/attempt_support/weightinfo-verification-20261025/readme.md)
   ran the normal gates successfully for 34 units, but its initial 17-unit
@@ -1256,6 +1256,19 @@ duplicate-definition keys; no census or image-ownership gain is claimed.
   path; no claim is made that all of them are uncacheable. The refusal is retained
   in the evidence, and no gate was relaxed. LINK-001's destructor preview result
   does not establish strict closure.
+- **BFME 1 refresh publication scope (2026-10-27):** three rebased pre-push
+  gates passed for 1,301, 1,314 and 1,322 sources, including upstream header
+  consumers since the local pre-rebase full-gate receipt `6803d7df5b`. This
+  batch itself changes no game source. The link audits remain inconclusive: index
+  `5ce093a71a` predates outgoing bases `9d6c94a6fe`, `fa8f0a9db4` and
+  `bf3ce2314b`; respectively 1,296, 1,309 and 1,317 objects lack current strict
+  receipts, first `Code/GameEngine/Source/Common/AIHarvestPrepareSiteState.cpp`.
+  No selected-provider or lost-byte conclusion follows. Carry this freshness
+  scope into the next normal census; successful byte checks do not clear it.
+  Each transfer was rejected because master moved during verification. The
+  [reference evidence](../reverse/attempt_support/bfme1-reference-e74410b3-20261027/readme.md)
+  preserves the separate fixed-input comparison; no census or ownership gain
+  is claimed.
 - **Non-graphics publication control (2026-10-26, source `cc68e92bcd`,
   evidence `b3bd2d6351`):** the
   [VP6 scratch publication audit](../reverse/attempt_support/vp6-filter-scratch-link-20261025/publication-audit.json)
