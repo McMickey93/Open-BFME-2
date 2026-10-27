@@ -16,7 +16,7 @@
 // holders 0x004F6943 / 0x004F692B / 0x004F6966 released through 0x0007DEEF.
 // The battle keeps its two unit vectors at +0x0C (12-byte stride).
 
-typedef unsigned int size_t;
+#include <string.h>
 
 struct TargetRef00217D4C
 {

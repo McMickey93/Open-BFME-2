@@ -4,7 +4,8 @@
 // Frees a malloc'd node tree with links at +8 (next) and +0xC (other) via rowed _free;
 // recurses on +0xC then loops on +8. Target evidence: caller 0x00204984 re-inits list head
 // after call; self-recursion at 0x00204148; _free row GameMemoryFree.cpp.
-extern "C" void __cdecl free(void *p);
+
+#include <stdlib.h>
 
 class Rva00204136 {
 	struct Node {

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHs-c-
+// platformsdk
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -25,9 +26,8 @@
 // WeaponTemplate alloc 0x002CA88B size 0x210 (22*0x18) calling with [esi+0xE0].
 // Gap between appendBonuses 0x002C96F7 and 0x002C9778 in WeaponBonusAppend.cpp;
 // needs /G7 for imul 6 (plain /O1 emits lea).
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
+
 typedef const char *ConstCharPtr;
 typedef const ConstCharPtr *ConstCharPtrArray;
 class INI

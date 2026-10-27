@@ -1,4 +1,5 @@
 // cl: /Oa /O1 /G7 /arch:SSE /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // Native416C69..4177B5 RET +32B eight-case table4177B5..4177D5.
 // /Oa reproduces the shared-global virtual-call scheduling; the target
@@ -17,6 +18,7 @@
 #include <vector>
 #include "ascii_string.h"
 #include "unicode_string.h"
+#include <windows.h>
 
 
 namespace _STL {
@@ -43,7 +45,6 @@ template <> __declspec(dllimport) __forceinline
 bool less<int>::operator()(const int &a, const int &b) const
 { return a < b; }
 }
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
 struct PeerResponse {
     PeerResponse();
     ~PeerResponse();

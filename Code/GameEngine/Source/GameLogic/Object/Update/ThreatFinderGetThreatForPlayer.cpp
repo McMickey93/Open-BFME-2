@@ -6,11 +6,11 @@
 // The record ctor's landed address owner is retained as a data-only base:
 // ThreatInfo's name comes from the WB return type, its extent from rep movsd.
 // Callback names remain addresses; their 0/1 EAX results are already proven.
+#include <string.h>
 #include "../../../Common/GameLogicObjectLookupView.h"
 #include "../../../Common/PartitionRangeQueryCallView.h"
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 extern PartitionManager *ThePartitionManager;
-extern "C" void *memset(void *, int, unsigned int);
 #pragma function(memset)
 extern GameLogic *TheGameLogic;
 extern int BfmeLogicFramesPerSecond;

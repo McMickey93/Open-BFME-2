@@ -3,10 +3,9 @@
 // (the caller supplies the hidden sret destination).  The caller-visible symbol
 // is kept RVA-derived because no named owner for this generated entry is proven.
 
+#include <stdio.h>
 #include <new>
 #include "ascii_string.h"
-
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *, const char *, ...);
 
 extern "C" AsciiString rva0060E7F0(int marker)
 {

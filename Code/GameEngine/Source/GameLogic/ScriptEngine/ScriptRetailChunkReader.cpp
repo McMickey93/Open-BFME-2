@@ -1,6 +1,8 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// platformsdk
 // BF1f989 ScriptsParseActionDataChunkThunk and ZH Scripts.cpp source guide.
-#define NULL 0
+
+#include <windows.h>
 
 class DataChunkInput;
 struct DataChunkInfo;

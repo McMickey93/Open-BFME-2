@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /G7 /arch:SSE /Ireference/shims/bfmecamera /Ireference/open-bfme-1/Code/GameEngine/Source/GameLogic/ScriptEngine /DNDEBUG /MD /EHsc
+// platformsdk
 // ?ParseAction@ScriptAction@@KAPAV1@AAVDataChunkInput@@PAUDataChunkInfo@@PAX@Z
 // readable ZH body: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source/GameLogic/ScriptEngine/Scripts.cpp
 //
@@ -27,8 +28,7 @@ typedef bool Bool;
 typedef unsigned short DataChunkVersionType;
 enum NameKeyType { NAMEKEY_INVALID = 0 };
 
-extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
-
+#include <windows.h>
 #include "ascii_string.h"
 
 class BFMERetailAsciiString

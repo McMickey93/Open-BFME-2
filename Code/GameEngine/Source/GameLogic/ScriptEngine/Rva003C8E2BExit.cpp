@@ -1,5 +1,7 @@
 // cl: -O1 -arch:SSE -G7 -Ireference/shims/bfme2_ascii -DNDEBUG -MD -EHsc -Ireference/shims/bfme2_ascii -Ireference/shims/bfmealloc -D_STLP_USE_STATIC_LIB -D_CRTIMP=
+// platformsdk
 // stlport
+#include <windows.h>
 #include "../../../Include/GameLogic/ScriptActionsBFME2.h"
 // ?Rva003C8E2BExit@ScriptActions@@QAEXABVAsciiString@@@Z retail 0x003C8E2B 94B
 // Team exit-all action (ZH doTeamExitAllBuildings shape).
@@ -56,7 +58,6 @@ public:
 // Zero Hour's ScriptActions::doTeamExitAllBuildings without its locomotor-set
 // call. Its explicit `if (!obj) continue;` is what makes cl keep one zero in
 // ESI for every push and compare, as retail does.
-#define NULL 0
 
 extern ScriptEngine *TheScriptEngine;
 

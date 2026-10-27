@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // Connection::processAck(NetCommandMsg *), retail 0x0058BD7B (37 bytes),
 // ported from Zero Hour's GameEngine/Source/GameNetwork/Connection.cpp
@@ -8,7 +9,8 @@
 // processAck(NetAckBothCommandMsg *)) into the one rowed body 0x0058BD4F
 // (ConnectionRva0058BD4F.cpp), so both branches call it. The command type
 // is NetCommandMsg +0x14 (target evidence).
-#define NULL 0
+
+#include <windows.h>
 
 class NetCommandRef;
 enum NetCommandType

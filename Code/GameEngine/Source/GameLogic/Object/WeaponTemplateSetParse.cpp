@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 //
 // WeaponTemplateSet FieldParse procs (retail WeaponSet.cpp run 0x002C726C..
 // 0x002C8C7A), split from the Zero Hour port in WeaponSet.cpp because the BFME 2
@@ -19,7 +20,7 @@
 // KindOfMaskType's self-parse is the pinned 0x00256499; the 0x4C flag set's
 // self-parse 0x000B937E is unrowed and pinned by address.
 
-#define NULL 0
+#include <windows.h>
 
 typedef unsigned int UnsignedInt;
 

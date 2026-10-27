@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // Retail 0x0044B7A9, 364 bytes. The body trims the by-value name, updates
 // LANAPI state, emits a type-2 lobby message, and updates the local LANPlayer.
@@ -12,8 +13,7 @@ typedef unsigned short WideChar;
 typedef unsigned char UnsignedByte;
 typedef bool Bool;
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-
+#include <windows.h>
 #include "ascii_string.h"
 
 

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?doBorderSwitch@ScriptActions@@IAEXH@Z,
 // retail 0x003BC3A8, 101 bytes. Dedicated TU.
@@ -13,9 +14,9 @@
 // pin, and both shroud calls dispatch through the 8-byte this-adjust thunks at
 // 0x7397B0/0x739790 (pinned).
 
-typedef int Int;
+#include <windows.h>
 
-#define NULL 0
+typedef int Int;
 
 enum NameKeyType
 {

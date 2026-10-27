@@ -3,10 +3,11 @@
 // name this member. Lookup goes through Rva007EBCA0; missing keys return
 // the __int64 default; a hit is sscanf("%I64d").
 
+#include <stdio.h>
+
 typedef __int64 FeslInt64;
 
 char *Rva007EBCA0(const char *record, const char *key);
-extern "C" int __cdecl sscanf(const char *buf, const char *fmt, ...);
 
 class Rva007E8810Message
 {

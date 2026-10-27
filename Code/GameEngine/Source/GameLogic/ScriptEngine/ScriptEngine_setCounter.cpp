@@ -10,9 +10,8 @@
 // rows, globals g_parseDurationMsecScale and g_00BBE358, IAT ceil, file literal
 // ScriptEngine.cpp. Identity: ScriptEngine method (ecx is ScriptEngine*) with
 // 4 stack args (ret 0x10), honest address name.
+#include <math.h>
 #include "ascii_string.h"
-
-extern "C" __declspec(dllimport) double __cdecl ceil(double);
 
 extern float g_parseDurationMsecScale;
 

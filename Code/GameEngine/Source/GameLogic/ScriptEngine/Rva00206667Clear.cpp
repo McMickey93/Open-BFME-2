@@ -1,6 +1,8 @@
 // cl: /EHsc
 // ?rva00206667@Rva00206667@@QAEXPAURva00206667Node@@@Z @0x00206667 53B thiscall recursive clear over child +0x0C with iteration over next +0x08 clearing value +0x10 via rowed StringBase clear 0x0048BA39 then free 0x00030830.
 // Evidence: unlock lane every callee rowed; same 53B shape as 0x00206706; self-call plus caller 0x00206F79.
+#include <stdlib.h>
+
 template <typename T>
 class StringBase
 {
@@ -28,8 +30,6 @@ private:
 	Rva00206667Head *m_head; // +0x00
 	int m_count; // +0x04
 };
-
-extern "C" void __cdecl free(void *block);
 
 void Rva00206667::rva00206667(Rva00206667Node *node)
 {

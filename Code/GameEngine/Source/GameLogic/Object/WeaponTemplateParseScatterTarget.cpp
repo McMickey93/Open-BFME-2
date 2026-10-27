@@ -1,4 +1,5 @@
 // cl: /Oy- /DNDEBUG /MD
+// platformsdk
 //
 // ?parseScatterTarget@WeaponTemplate@@CAXPAVINI@@PAX1PBX@Z, retail 0x002CE813
 // (54B). Zero Hour's WeaponTemplate::parseScatterTarget (Weapon.cpp) on the
@@ -9,10 +10,9 @@
 // Split from the Zero Hour port in Weapon.cpp, whose header layout puts the
 // vector at +0x50 and inlines the push_back.
 
-#define NULL 0
-
 typedef float Real;
 
+#include <windows.h>
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 
 class INI

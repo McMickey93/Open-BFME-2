@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /GX /MD /DNDEBUG /DWIN32 /D_WINDOWS /Ireference/shims/moduledata
+// platformsdk
 //
 // ??0ToppleUpdateModuleData@@QAE@XZ, retail 0x004A8173, 125 bytes.
 //
@@ -26,8 +27,7 @@
 
 typedef int Int;
 
-#define NULL 0
-
+#include <windows.h>
 #include "ascii_string.h"
 
 extern "C" const void *const vtbl_00C538A0[];  // ??_7ToppleUpdateModuleData@@6B@

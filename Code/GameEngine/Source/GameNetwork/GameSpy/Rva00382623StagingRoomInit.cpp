@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /MD /EHsc /DNDEBUG /Ireference/shims/bfme2_ascii
+// platformsdk
 //
 // ?rva00382623@Rva00382623@@QAEXXZ, retail 0x00382623..0x00382767 (324 bytes, EH,
 // thiscall RET 0): the host start-up of an online staging-room object (the owner
@@ -18,10 +19,10 @@
 // translate 0x6CB6A0, MapCache::updateCache 0x305749, getDefaultMap 0x30582D). The
 // owner class and its member names are address-derived; the GameSlot and GameInfo
 // views follow GameSlotCtor.cpp and GameSlotSetState.cpp.
+#include <windows.h>
 #include "ascii_string.h"
 #include "unicode_string.h"
 
-extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);
 enum SlotState
 {
 	SLOT_PLAYER = 6

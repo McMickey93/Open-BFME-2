@@ -1,6 +1,8 @@
 // cl: /Ob2 /DNDEBUG /MD
 /* GameSpy Peer SDK -- peerAutoMatch.c */
 
+#include <stdlib.h>
+
 typedef int PEERBool;
 
 typedef struct PEERConnection
@@ -38,7 +40,6 @@ PEERBool piSBStartListingAutoMatches(PEER peer);
 PEERBool piStartAutoMatchReporting(PEER peer);
 /* Match the peerAutoMatchClean sibling: retail imports msvcr71!free here. */
 #define gsifree free
-extern __declspec(dllimport) void __cdecl free(void *memory);
 void piRemoveOperation(PEER peer, void *operation);
 
 static __declspec(noinline) void piCleanAutoMatch(PEER peer)

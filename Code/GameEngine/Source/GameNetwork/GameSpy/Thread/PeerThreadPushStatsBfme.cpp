@@ -6,7 +6,8 @@
 // Static room key/value/buffer names and singleton names retain existing owners.
 // ABI record views match independently owned PersistentStorageThread.cpp
 // 154B core,190B open-play,208B strategic,548B aggregate; payload stays opaque.
-extern "C" __declspec(dllimport) int _snprintf(char*,unsigned,const char*,...);
+#include <stdio.h>
+
 class Rva00553E47StatsCore{public:virtual void reset();virtual void xfer0(void*);virtual void xfer1(void*);virtual void merge(const Rva00553E47StatsCore*);private:char payload[0x150];};
 class Rva003844D7:public Rva00553E47StatsCore{public:Rva003844D7(int);Rva003844D7(const Rva003844D7&);~Rva003844D7();Rva003844D7&operator=(const Rva003844D7&);private:char tail[0x3c];};
 class Rva0038454E:public Rva00553E47StatsCore{public:Rva0038454E(int);Rva0038454E(const Rva0038454E&);~Rva0038454E();Rva0038454E&operator=(const Rva0038454E&);private:char tail[0xb4];};

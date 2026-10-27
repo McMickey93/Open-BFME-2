@@ -1,5 +1,8 @@
 // cl: /Ob2 /DNDEBUG /MD
+// platformsdk
 /* GameSpy Peer SDK -- peerSB.c */
+
+#include <windows.h>
 
 typedef struct PEERConnection
 {
@@ -10,7 +13,6 @@ typedef struct PEERConnection
 
 typedef PEERConnection *PEER;
 
-unsigned short __stdcall htons(unsigned short port);
 void SBSendNatNegotiateCookieToServer(
 	void *serverList,
 	unsigned int ip,
