@@ -95,7 +95,8 @@ Rva006ED150::~Rva006ED150() {
 class EAStringC {
   void *data;
 };
-extern EAStringC g_00E18650;
+class AptValue;
+extern AptValue *gpGlobalGlobalObject;
 EAStringC *Rva0070B4F0GetString(int);
 class BfmeN1034 {
 public:
@@ -118,6 +119,6 @@ Rva006ED150::Rva006ED150() {
   m_2C = 0;
   EAStringC *key = Rva0070B4F0GetString(0x5e);
   BfmeN1034 *object =
-      ((Rva0070A5C0 *)*(void **)&g_00E18650)->rva0070A5C0((int)key);
+      ((Rva0070A5C0 *)gpGlobalGlobalObject)->rva0070A5C0((int)key);
   m_10->Set__Proto__(object->slot3()->prototype);
 }

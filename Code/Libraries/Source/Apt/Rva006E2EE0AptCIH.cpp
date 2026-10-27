@@ -134,7 +134,7 @@ public:
 };
 class BfmeN1034;
 class Rva0070A5C0 { public: BfmeN1034 *rva0070A5C0(int k); };
-extern Rva0070A5C0 *g_00E18650;
+extern AptValue *gpGlobalGlobalObject;
 class Rva0070B380 { public: void *lookup(const EAStringC &key); };
 extern AptNativeHash *g_bfmeAptHashAtE180E4;
 
@@ -226,7 +226,7 @@ void AptCIH::rva006E2EE0()
 	AptCharacter *character = inst->character;
 	AptMovie *movie = &character->base->movie;
 	inst->nativeHash->setPrototype((AptValue *)new Rva006DE1A0);
-	BfmeN1034Object *object = ((BfmeN1034Object *)g_00E18650->rva0070A5C0((int)Rva0070B4F0GetString(0x5e)))->asObject();
+	BfmeN1034Object *object = ((BfmeN1034Object *)((Rva0070A5C0 *)gpGlobalGlobalObject)->rva0070A5C0((int)Rva0070B4F0GetString(0x5e)))->asObject();
 	inst->nativeHash->setProto(object->m_prototype);
 
 	if (movie->exportCount <= 0)
