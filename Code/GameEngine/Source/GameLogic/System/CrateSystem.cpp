@@ -10,11 +10,51 @@ enum KindOfType
 {
 	KINDOF_INVALID = -1,
 	KINDOF_FIRST = 0,
-	KINDOF_COUNT = 192						///< width pin only; see above
+	KINDOF_COUNT = 224						///< width pin only; see below
 };
 typedef BitFlags<KINDOF_COUNT>	KindOfMaskType;
 #define MAKE_KINDOF_MASK(k) KindOfMaskType(KindOfMaskType::kInit, (k))
 #define CLEAR_KINDOFMASK(m) ((m).clear())
+// PreRTS.h reaches Common/Overridable.h (through Science.h), so the BFME view
+// below has to come first; these are PreRTS.h's own leading includes, in its order.
+#include <windows.h>
+#include "Lib/BaseType.h"
+#include "Common/STLTypedefs.h"
+#include "Common/Errors.h"
+#include "Common/Debug.h"
+#include "Common/AsciiString.h"
+#include "Common/SubsystemInterface.h"
+#include "Common/GameCommon.h"
+#include "Common/GameMemory.h"
+// BFME's Overridable is 0x10 bytes where Zero Hour's is 0x0C. CrateTemplate's
+// ctor (0x0035CC36) inlines the base ctor as +0x04 = NULL, +0x08 = false and
+// +0x0C = -1, its assignment (0x0035CE52) and every member access put the
+// name at +0x10, and the destructor 0x001E3624 is public (??1Overridable@@UAE@XZ).
+// Nothing in this TU reads +0x0C, so it carries no name. getFinalOverride and
+// deleteOverrides are out of line in retail (0x001E35DF, 0x001E35ED), and so is
+// the 5-byte base assignment (0x001FD28E).
+#define _OVERRIDABLE_H_
+class Overridable : public MemoryPoolObject
+{
+	private:
+		Overridable *m_nextOverride;
+		Bool m_isOverride;
+		Int m_field0C;
+
+	public:
+		Overridable() : m_nextOverride(NULL), m_isOverride(false), m_field0C(-1) {}
+		virtual ~Overridable();
+		Overridable &operator=(const Overridable &that);
+
+		const Overridable *getNextOverride( void ) const { return m_nextOverride; }
+		const Overridable *getFinalOverride( void ) const;
+		void setNextOverride(Overridable *nextOverridable) { m_nextOverride = nextOverridable; }
+		Overridable *friend_getNextOverride( void ) { return m_nextOverride; }
+		Overridable *friend_getFinalOverride( void );
+		const Overridable *friend_getFinalOverride( void ) const;
+		void markAsOverride( void ) { m_isOverride = true; }
+		Overridable *deleteOverrides( void );
+};
 #include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
 // BFME de-pooled this glue: retail's per-class `operator delete(void*, MagicEnum)`
 // is one 12-byte body (0x007EFFF0) that calls the CRT free IMPORT THUNK -- a
@@ -221,10 +261,12 @@ template void _STL::list<crateCreationEntry, _STL::allocator<crateCreationEntry>
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // BFME's KindOf list is longer than Zero Hour's, so KindOfMaskType is wider.
-// Retail CrateTemplate zeroes six dwords for m_killedByTypeKindof (this+0x18
-// through this+0x2F) where ZH's 121-bit mask needs four, which puts BFME's
-// KINDOF_COUNT in (160,192]: std::bitset rounds to whole 32-bit words, so any
-// count in that range gives the same six. Only the width is provable from
+// Retail's CrateTemplate ctor (0x0035CC36) zeroes seven dwords (0x1C bytes) for
+// m_killedByTypeKindof at this+0x1C, between m_veterancyLevel (+0x18) and
+// m_killerScience (+0x38), and its assignment (0x0035CE52) copies the same seven
+// with rep movsd; ZH's 121-bit mask needs four. That puts BFME's KINDOF_COUNT in
+// (192,224]: std::bitset rounds to whole 32-bit words, so any count in that
+// range gives the same seven. Only the width is provable from
 // these bytes - the names past ZH's list are not - so this substitutes a
 // width-only KindOfMaskType rather than inventing enumerators. Scoped to this
 // translation unit: inputs/reference/shims/bfmekindof/Common/KindOf.h carries the two
