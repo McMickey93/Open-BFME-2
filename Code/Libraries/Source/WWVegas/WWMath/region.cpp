@@ -28,20 +28,6 @@ public:
 struct ICoord2D;
 struct ICoord3D;
 
-struct IRegion2D
-{
-    bool operator==(const IRegion2D &that) const;
-    bool operator!=(const IRegion2D &that) const;
-    void expandBy(const ICoord2D &point);
-    int width() const;
-    int height() const;
-
-    int x_min;
-    int y_min;
-    int x_max;
-    int y_max;
-};
-
 struct IRegion3D
 {
     IRegion3D();
@@ -98,6 +84,11 @@ inline void Coord3D::scale(float scale)
 }
 
 Debug &operator<<(Debug &debug, const Coord3D &coord);
+
+// Included after Coord3D::scale on purpose: with IRegion2D's inline width and
+// height defined ahead of it, MSVC 7.1 keeps the scale factor in a register
+// instead of retail's three memory-operand mulss.
+#include "../../../Include/Lib/IRegion2D.h"
 
 #include "../../../Include/Lib/Coord2D.h"
 
@@ -184,10 +175,10 @@ struct Region3D
 
 bool IRegion2D::operator==(const IRegion2D &that) const
 {
-    return x_min == that.x_min &&
-        y_min == that.y_min &&
-        x_max == that.x_max &&
-        y_max == that.y_max;
+    return lo.x == that.lo.x &&
+        lo.y == that.lo.y &&
+        hi.x == that.hi.x &&
+        hi.y == that.hi.y;
 }
 
 Region2D::Region2D(const Coord2D &lower_left, const Coord2D &upper_right)
@@ -241,8 +232,8 @@ void Region2D::expandBy(const Coord2D &point)
 
 void IRegion2D::expandBy(const ICoord2D &point)
 {
-    expandRange(&x_min, point.x, &x_max);
-    expandRange(&y_min, point.y, &y_max);
+    expandRange(&lo.x, point.x, &hi.x);
+    expandRange(&lo.y, point.y, &hi.y);
 }
 
 void IRegion3D::expandBy(const ICoord3D &point)
@@ -256,34 +247,6 @@ bool IRegion2D::operator!=(const IRegion2D &that) const
 {
     return !(*this == that);
 }
-
-// Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
-// the anchor keeps the noinline body emitted.
-__declspec(noinline) inline int IRegion2D::width() const
-{
-    return x_max - x_min;
-}
-
-// ?bfmeAnchorIRegion2DWidth absent-from-retail
-int bfmeAnchorIRegion2DWidth(const IRegion2D *p)
-{
-	return p->width();
-}
-
-
-// Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
-// the anchor keeps the noinline body emitted.
-__declspec(noinline) inline int IRegion2D::height() const
-{
-    return y_max - y_min;
-}
-
-// ?bfmeAnchorIRegion2DHeight absent-from-retail
-int bfmeAnchorIRegion2DHeight(const IRegion2D *p)
-{
-	return p->height();
-}
-
 
 int IRegion3D::width() const
 {
@@ -416,7 +379,7 @@ Debug &operator<<(Debug &debug, const Region2D &region)
 
 Debug &operator<<(Debug &debug, const IRegion2D &region)
 {
-    debug << *(const ICoord2DBase *)&region.x_min << " - " << *(const ICoord2DBase *)&region.x_max;
+    debug << *(const ICoord2DBase *)&region.lo << " - " << *(const ICoord2DBase *)&region.hi;
     return debug;
 }
 
@@ -488,5 +451,15 @@ void _bfmeRegion3DInlineAnchor(Region3D *r, Region2D *q, Coord3D *c)
     c->scale(r->width() + r->height() + q->width() + q->height());
     r->Region3D::~Region3D();
     q->Region2D::~Region2D();
+}
+// ?bfmeAnchorIRegion2DWidth absent-from-retail
+int bfmeAnchorIRegion2DWidth(const IRegion2D *p)
+{
+    return p->width();
+}
+// ?bfmeAnchorIRegion2DHeight absent-from-retail
+int bfmeAnchorIRegion2DHeight(const IRegion2D *p)
+{
+    return p->height();
 }
 #pragma inline_depth()
