@@ -10,7 +10,6 @@
 // taking the whole allocation size: computing size-15 there is what makes
 // MSVC emit retail's add eax,-15 and load the old head first.
 #include <string.h>
-inline void *operator new(unsigned int, void *p) { return p; }
 // Use the allocation callback defined by DogmaPoolFreeBlock.cpp at VA 0x00E17728.
 extern void *(__cdecl *g_bfmeAptAllocAtE17728)(unsigned int);
 extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char *, const char *, int);

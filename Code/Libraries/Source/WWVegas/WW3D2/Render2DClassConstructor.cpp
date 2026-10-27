@@ -9,6 +9,7 @@ public:
 	int Value;
 };
 
+#include <new.h>
 #include "../../../../../reference/shims/wwmath/Vector2.h"
 
 class Render2DRawArray
@@ -131,7 +132,6 @@ private:
 // The Render2DClass constructor itself is rowed (retail 0x0011C0F0) in
 // Rva0011C0F0Finish.cpp; this unit only needs Render2DRawArray's inline
 // constructor (retail 0x00118D60) emitted, so construct one in place.
-inline void *operator new(unsigned int, void *where) { return where; }
 // ?bfmeAnchorRender2DRawArray absent-from-retail
 void bfmeAnchorRender2DRawArray(void *where)
 {

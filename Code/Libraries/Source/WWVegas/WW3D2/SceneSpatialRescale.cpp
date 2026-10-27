@@ -14,7 +14,7 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
 #include "rendobj.h"
 #include "aabox.h"
 #include "scene.h"
@@ -195,4 +195,3 @@ _Slist_base<int,allocator<int> >::_M_erase_after(_Slist_node_base* head,_Slist_n
  return head->_M_next=stop;
 }
 }
-

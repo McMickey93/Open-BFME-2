@@ -3,7 +3,8 @@
 // Dtor drains the list via the rowed Release_Head, then the rowed generic
 // base dtor runs. Single-inheritance chain so one vtable store lands.
 
-inline void *operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+
 class MultiListObjectClass;
 class RenderObjClass;
 

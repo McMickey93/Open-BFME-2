@@ -26,13 +26,14 @@
 // spilling. Vector3 is spelled with the donor's own definition, minus the
 // constructors the constructor under test never calls.
 
+#include <new.h>
+
 // The four stores are dword-at-a-time rather than the three `rep movsd` a plain
 // POD copy would get, because the donor's Vector3 declares its own copy
 // assignment: a user-defined operator= defeats the block-move recognition, so
 // N = normal becomes three separate mov/mov pairs. Dropping that operator (as a
 // bare three-float struct does) produces push esi/push edi and three `rep movsd`
 // instead -- 25 bytes, not retail's 32.
-inline void *operator new(unsigned int, void *p) { return p; }
 class Vector3
 {
 public:

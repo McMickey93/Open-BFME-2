@@ -14,7 +14,7 @@
 // @0x610640. Base flags (-EHsc-) kept: the retail dtor carries an SEH
 // prolog with states that /EHsc does not reproduce.
 
-inline void *operator new(unsigned int, void *where) { return where; }
+#include <new.h>
 
 class MultiListObjectClass
 {

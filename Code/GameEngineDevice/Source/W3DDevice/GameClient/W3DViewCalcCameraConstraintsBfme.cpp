@@ -17,6 +17,7 @@ typedef float Real;typedef int Int;typedef bool Bool;
 #include "../../../../Libraries/Include/Lib/Region3D.h"
 #include "vector3.h"
 
+#include <float.h>
 #include <math.h>
 inline float Coord3D::length()const{float squares=x*x+y*y+z*z;return(float)sqrt((double)squares); }
 class GlobalData
@@ -79,8 +80,6 @@ extern GlobalData *TheWritableGlobalData;
 #define TheGlobalData TheWritableGlobalData
 extern TerrainLogic *TheTerrainLogic;
 
-extern "C" __declspec(dllimport) int __cdecl _isnan(double value);
-
 void W3DView::calcCameraConstraints()
 {
 	if (TheTerrainLogic)
@@ -107,7 +106,6 @@ void W3DView::calcCameraConstraints()
 			center.x = (rayStart.X + ((maxEdgeZ - rayStart.Z) * ((rayEnd.X - rayStart.X) / (rayEnd.Z - rayStart.Z))));
 			center.y = (rayStart.Y + ((maxEdgeZ - rayStart.Z) * ((rayEnd.Y - rayStart.Y) / (rayEnd.Z - rayStart.Z))));
 			
-
 			screen.y = m_originY + 0.95f * getHeight();
 			getPickRay(&screen, &rayStart, &rayEnd);
 		}

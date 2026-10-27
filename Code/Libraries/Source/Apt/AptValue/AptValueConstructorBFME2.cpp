@@ -5,6 +5,7 @@
 // Its assertions name AptValue/AptValue.inl and require 0 < type < 47.
 // The exact original class name and meaning of the unused second argument
 // are unknown. This body is not the DrawableModule constructor.
+#include <new.h>
 class BfmeAptValue006DCD20
 {
     // The same one-slot vftable view Rva006DE2C0Ctors.cpp emits (declared virtual dtor),
@@ -38,7 +39,6 @@ BfmeAptValue006DCD20::BfmeAptValue006DCD20(int type, unsigned int)
 // AptValueVector::rva006E6C00 via global at 0x00E17710; callers pass type
 // constants (e.g. 9 at 0x006D6519); types 0x1c/0x2b/0x2c clear releaseAtEnd.
 // ?rva006DCCC0 naming would hide the proven class; this keeps the ctor family.
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline BfmeAptValue006DCD20::BfmeAptValue006DCD20(int type)

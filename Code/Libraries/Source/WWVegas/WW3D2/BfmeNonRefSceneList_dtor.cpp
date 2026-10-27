@@ -13,6 +13,8 @@
 // and Internal_Remove_List_Head are declared only (owned by multilist.cpp),
 // so the loop and the base unwind emit the cookie-SEH shape like retail.
 
+#include <new.h>
+
 class MultiListObjectClass;
 
 class MultiListNodeClass
@@ -77,8 +79,6 @@ inline BfmeNonRefSceneList::BfmeNonRefSceneList()
 }
 
 // Emit the native inline constructor with the same COMDAT linkage as its consumers.
-inline void *operator new(unsigned int, void *where) { return where; }
-
 // ?bfmeAnchorBfmeNonRefSceneListCtor absent-from-retail
 void *bfmeAnchorBfmeNonRefSceneListCtor(void *where)
 {

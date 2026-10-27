@@ -14,6 +14,8 @@
 // @0x610640. Base flags (-EHsc-) kept: the retail dtor carries an SEH
 // prolog with states that /EHsc does not reproduce.
 
+#include <new.h>
+
 class MultiListObjectClass
 {
 public:
@@ -69,8 +71,6 @@ inline Rva001447B0::Rva001447B0(void)
 }
 
 // Emit the native inline constructor with the same COMDAT linkage as its consumers.
-inline void *operator new(unsigned int, void *where) { return where; }
-
 // ?bfmeAnchorRva001447B0Ctor absent-from-retail
 void *bfmeAnchorRva001447B0Ctor(void *where)
 {

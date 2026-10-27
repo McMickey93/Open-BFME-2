@@ -14,7 +14,7 @@
 #define _CRTIMP
 #include <vector>
 #define _OPERATOR_NEW_DEFINED_
-void __cdecl operator delete[](void *) throw();
+#include <new>
 #include "vector.h"
 #include "vector2i.h"
 #include "vector2.h"

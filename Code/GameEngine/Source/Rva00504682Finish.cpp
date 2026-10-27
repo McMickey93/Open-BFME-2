@@ -18,6 +18,9 @@
 // the constructor the pin names, the body's own statement order is byte-exact
 // at 46B with no change to the bank's flags. The +0 field is the Curve* the
 // caller passes, not an int; the storage instruction is the same either way.
+
+#include <new.h>
+
 class Rva0006AB10Curve;
 
 class Rva0006AB90FunctionCurve
@@ -36,7 +39,6 @@ private:
 	unsigned char m_19;
 };
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva0006AB90FunctionCurve::Rva0006AB90FunctionCurve(Rva0006AB10Curve *curve)
@@ -56,4 +58,3 @@ void *bfmeAnchorRva0006AB90FunctionCurve(void *where, Rva0006AB10Curve *curve)
 {
 	return new (where) Rva0006AB90FunctionCurve(curve);
 }
-

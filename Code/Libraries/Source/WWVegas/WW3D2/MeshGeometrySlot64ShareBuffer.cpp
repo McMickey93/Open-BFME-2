@@ -8,11 +8,6 @@
 #include "bittype.h"
 #include <string.h>
 
-inline void *operator new(unsigned int, void *place)
-{
-	return place;
-}
-
 struct MeshGeometrySlot64Element_00923F70
 {
 	uint8 Data[16];
