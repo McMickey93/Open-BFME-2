@@ -1,6 +1,5 @@
 # source	check	symbol	address -- shrink-only; written by tools/data_check.py
 Code/GameEngine/Source/Common/Bfme/Rva004E65CFLeaf.cpp	wrong-name	?g_00DEC2D4@@3PAVRva004E65CFMgr@@A	0x009EC2D4
-Code/GameEngine/Source/Common/BfmeConv1335.cpp	wrong-name	?g_bfmeIidUKA@@3UBfmeGuidUKA@@A	0x007D4E3C
 Code/GameEngine/Source/Common/BfmeConv803O1.cpp	wrong-name	?g_bfmeObjEBL@@3VBfmeObjEBL@@A	0x00A01E68
 Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	wrong-name	?g_bfmeThingUCHead@@3PAVBfmeNodeUC@@A	0x00A0ABB0
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	duplicate-def	?g_Va00DF6FD0@@3HA	0x009F6FD0

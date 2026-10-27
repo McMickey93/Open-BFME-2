@@ -10,15 +10,9 @@ struct IUnknown;
 struct _GUID;
 void __stdcall _com_issue_errorex(long hr, IUnknown *punk, const _GUID &riid);
 
-struct BfmeGuidUKA
-{
-	char m_bfmeBytes[16];
-};
-
-extern BfmeGuidUKA g_bfmeIidUKA;
-// Both retail references resolve to VA 0x00BD4E3C with the same 16 bytes.
-// Reuse the existing GUID storage without asserting a separate IID identity.
-#pragma comment(linker, "/alternatename:?g_bfmeIidUKA@@3UBfmeGuidUKA@@A=?g_bfmeIidTSA@@3U_GUID@@A")
+// The interface IID is the 16 bytes at VA 0x00BD4E3C, which the data ledger
+// names g_bfmeIidTSA (WebBrowserComWrappers.cpp raises with the same IID).
+extern _GUID g_bfmeIidTSA;
 
 class BfmeThingUKA;
 
@@ -45,6 +39,6 @@ long BfmeThingUKA::bfmeGoUKA(void *a)
 {
 	long hr = m_bfmeVt->m_bfmeCallUKA(this, a);
 	if (hr < 0)
-		_com_issue_errorex(hr, (IUnknown *)this, *(const _GUID *)&g_bfmeIidUKA);
+		_com_issue_errorex(hr, (IUnknown *)this, g_bfmeIidTSA);
 	return hr;
 }
