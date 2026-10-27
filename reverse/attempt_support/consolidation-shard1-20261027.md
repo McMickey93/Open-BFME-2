@@ -59,3 +59,19 @@ These are source/header prerequisites for Sol; no TU, source, ledger or map chan
 `WindowLayout.cpp` passed allocation and planner checks. Its merge dry run accepted no donors: `window_layout.cpp` fails because `GameWindowManager::managerSlot35` is undeclared, while `BfmeQuickMatchScreenBaseDefaultCtor.cpp` cannot define the compiler-generated constructor. `AsciiStringFoldDeleters.cpp`'s carved `0x00538C5F` compiles and matches alone, but SplitLinkGuard rejects it because the moved selected destructor/vtable COMDATs lack matching private/weak-free context. `BfmeQuickMatchScreenBaseConstructor.cpp`'s carved `0x00538C6D` is refused because a copied helper would grow an escape-hatch count. No changes.
 
 `AutoDepositUpdate.cpp` passed allocation and planner checks. Its merge dry run accepted no donors: `AutoDepositUpdateCtor.cpp` has no declaration for `AutoDepositUpdate(Thing *, const ModuleData *)`, and `GlobalFlagClearers_E03Bxx.cpp` fails byte verification. The only mixed source, `Rva0024A797Derived.cpp`, has no row approved for this destination. No changes.
+
+## 2026-10-27 resumed-seat trials
+
+After rebasing the inherited handoff commits on current `origin/master`, these allocated TUs passed `--check-tu`, their scoped planner snapshots passed `--check`, and their merge dry runs made no source or ledger changes:
+
+- `GameEngine.cpp`: accepted none. Seed fails every merged flag set with C2226 `NetworkInterface` syntax and undeclared `TheNetwork`; LinkGuard names the seed plus eight other census-linked units. Donors fail on missing `GameEngine` declarations/members and a compiler-generated constructor.
+- `ProcessAnimateWindow.cpp`: accepted none. Donors fail on duplicate `ICoord2D`, missing `finished`/other class members, and undeclared `BfmeVciAnchorElem`; LinkGuard lists seven census-linked units.
+- `W3DDisplayString.cpp`: accepted none. Seed is blocked by LinkGuard because merged object loses `?TheNullChr@?1??str_RV@UnicodeString@@QBEPBGXZ@4GB`, still referenced by the census. Other donors fail on undeclared constructor and string/member declarations.
+- `RankInfo.cpp`: accepted none. Donors hit duplicate `_STL::vector::begin` and global `operator new`/`delete` linkage definitions. LinkGuard lists three census-linked units.
+- `Snow.cpp`: accepted none. Donors require missing `SnowManager` and `WeatherSetting` declarations/special members; plan reports `adopt_first: SubsystemInterface`. LinkGuard lists five census-linked units.
+- `TacticalAI.cpp`: accepted none. Donors fail on absent `AITargetChooser::rva00505408`, duplicate `_STL::allocator`, incompatible `void *` constructor argument, and absent `Object::m_ptr4`; LinkGuard lists six census-linked units.
+- `AIUnitBuilder.cpp`: accepted none. Donors fail on absent `AIUnitBuilder::rva00598016`/`getAI`, duplicate `_STL::hashtable`, and missing declarations; LinkGuard lists five census-linked units.
+- `INIWater.cpp`: accepted none. One donor is `bytes`; others fail on duplicate `_STL::allocator`/`vector`, a missing `WaterTransparencySetting(int)` declaration, and duplicate `OVERRIDE`; LinkGuard lists five census-linked units.
+- `Mouse.cpp`: merge stopped before donor trials because the TU itself loses one row under the carried flag override. `adopt_first` reports `SubsystemInterface` for `Rva001EE3DEDtor.cpp`; LinkGuard lists 15 census-linked units.
+
+No destination or donor claims were taken, so there are no live claims to release. All remaining failures need source/header, flag, or provider work outside this mechanical seat. No TU was merged; net source-file reduction is zero and all matched rows remain untouched.
