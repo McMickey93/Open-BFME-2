@@ -17724,14 +17724,12 @@ present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_Rva005E0DC0.
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-02-1DD38E.cpp	famgenDelete001DD38E@@YAXPAVBfmeRecord001DD3BC@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-02-201A17.cpp	famgenDelete0048C200Owner@@YAXPAVRva0048C200Owner@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-02-238DE4.cpp	famgenDelete00201B64@@YAXPAVHeaderTemplateManager@@@Z	1
-present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-03-31F831.cpp	famgenDelete0031F831@@YAXPAVRva0031F831@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-04-2AF53E.cpp	@0x002AF53E	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-04-4AFBE3.cpp	@0x004AFBE3	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-05-003EF728.cpp	famgenDelete003EF728@@YAXPAVRva003EF728@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-06-25EFF1.cpp	@0x0025EFF1	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-07-23DACC.cpp	famgenDelete0023DACC@@YAXPAVRva0023D377@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-12-3F1180.cpp	famgenDelete003F0C6C@@YAXPAVRva003F0C6C@@@Z	1
-present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-14-2004FD.cpp	famgenDelete002004FD@@YAXPAVRva002004FD@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-14-31AA18.cpp	famgenDelete0031AA18@@YAXPAVControlBarSchemeManager@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse07-2E6158.cpp	famgenDelete002E6158@@YAXPAVGameTextTable@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/GameEngineControl.cpp	Rva00211E75::Rva00211E75	1
@@ -18294,6 +18292,8 @@ present_unmatched	Code/GameEngine/Source/GameClient/GUI/AptPlayerTooltipMap.cpp	
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/AptWotrPanelCallbacks.cpp	1Rva0057B993@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/AptWotrPanelCallbacks.cpp	1TreeHintRef00217D4C@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/AptWotrPanelCallbacks.cpp	text)	1
+present_unmatched	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarScheme.cpp	famgenDelete002004FD@@YAXPAVRva002004FD@@@Z	1
+present_unmatched	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarScheme.cpp	famgenDelete0031F831@@YAXPAVRva0031F831@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0031B99A.cpp	markUIDirty@ControlBar@@QAEXXZ	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035B03E.cpp	0CommandButton@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035B03E.cpp	0CommandSet@@QAE@ABVAsciiString@@@Z	1
