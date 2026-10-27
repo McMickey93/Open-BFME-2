@@ -15259,7 +15259,7 @@ __heap_abort,,0x000398A0,80,Code/Libraries/Source/WWVegas/WWDebug/DebugHeapAbort
 ??0TooltipUpgrade@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B7A50,49,Code/GameEngine/Source/GameLogic/Object/Upgrade/TooltipUpgrade.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0AudioLoopUpgrade@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B7CBC,123,Code/GameEngine/Source/GameLogic/Object/Upgrade/AudioLoopUpgradeCtorModuleFactory.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0LockWeaponCreate@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B8C0E,42,Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
-??0PreorderCreate@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B9257,42,Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreateConstructor.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
+??0PreorderCreate@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B9257,42,Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0SupplyCenterCreate@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B8D81,42,Code/GameEngine/Source/GameLogic/Object/Create/SupplyCenterCreateConstructor.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0SupplyWarehouseCreate@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B8E78,42,Code/GameEngine/Source/GameLogic/Object/Create/SupplyWarehouseCreate.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls
 ??0SpecialPowerCreate@@QAE@PAVThing@@PBVModuleData@@@Z,,0x004B9345,42,Code/GameEngine/Source/GameLogic/Object/Create/SpecialPowerCreateConstructor.cpp,matched,BFME1 donor (/O1); callees pinned from the retail calls

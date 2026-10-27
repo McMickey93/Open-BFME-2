@@ -25,12 +25,6 @@ public:
 
 extern NameKeyGenerator *TheNameKeyGenerator;
 
-class PreorderCreate
-{
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 // Cold-slice B8-imm32 const-int returners (twin-free TU).
 //
 // Same shape as ConstIntGetters2.cpp/ConstIntGetters3.cpp (mov eax,<IMM32> /
@@ -137,7 +131,67 @@ class Rva00523825;
 
  Rva00523825 *__stdcall Rva002D21FBCreate(void *);
 
-// tu-skeleton: 0x004B9257 42B ??0PreorderCreate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreateConstructor.cpp (not merged yet)
+class Thing;
+
+class ModuleData;
+
+// upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/BehaviorModule.h
+class BehaviorModule
+{
+public:
+	virtual void behaviorModuleAnchor();
+
+private:
+	unsigned char m_data[8];
+};
+
+// upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/CreateModule.h
+class CreateModuleInterface
+{
+public:
+	virtual void createModuleInterfaceAnchor();
+};
+
+class ModuleInterface
+{
+public:
+	virtual void moduleInterfaceAnchor();
+};
+
+// upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/CreateModule.h
+class CreateModule : public BehaviorModule,
+	public CreateModuleInterface,
+	public ModuleInterface
+{
+public:
+	CreateModule( Thing *thing, const ModuleData *moduleData );
+protected:
+	virtual ~CreateModule();
+};
+
+// upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/PreorderCreate.h
+class PreorderCreate : public CreateModule
+{
+public:
+	PreorderCreate( Thing *thing, const ModuleData *moduleData );
+	virtual NameKeyType getModuleNameKey() const;
+protected:
+	virtual ~PreorderCreate();
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreateConstructor.cpp
+
+PreorderCreate::PreorderCreate( Thing *thing, const ModuleData *moduleData )
+	: CreateModule( thing, moduleData )
+{
+}
+
+// ??1PreorderCreate@@MAE@XZ present-unmatched
+PreorderCreate::~PreorderCreate()
+{
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp
 
 // ---- from Code/GameEngine/Source/Common/ConstIntGetters4.cpp
 
@@ -148,8 +202,6 @@ int Rva004B9281Get(void)
 {
 	return (int)"PreorderCreate";
 }
-
-// tu-skeleton: 0x004B9287 25B ??1Rva004B9287@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp
 
@@ -163,4 +215,4 @@ NameKeyType PreorderCreate::getModuleNameKey() const
 	return ThePreorderCreatePoolKey;
 }
 
-// tu-skeleton: 0x0078F27A 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp (not merged yet)
+// tu-skeleton: 0x004B9287 25B ??1Rva004B9287@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp (not merged yet)
