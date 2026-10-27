@@ -153,7 +153,59 @@ public:
 	virtual const char *GetSnapshotName() const;
 };
 
-BFME_LITERAL_NAME_GETTER(StealthDetectorUpdate, "StealthDetectorUpdate")
+// The module's class views spell the StealthDetectorUpdate TU's union
+// (the xfer and pool key join it).
+class Object;
+class Xfer;
+struct StealthDetectorUpdateModuleData;
+
+enum UpdateSleepTime { UPDATE_SLEEP_NONE = 1, UPDATE_SLEEP_FOREVER = 0x3fffffff };
+enum NameKeyType { NAMEKEY_INVALID = 0 };
+
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+// The module data and object pointers sit at +0x04/+0x08 under the primary
+// vptr, the other interface at +0x0C and the update interface at +0x10. The
+// primary slots are UpdateModule's as its retail vftable (0x00BF004C) holds
+// them: dtor, loadPostProcess (0x0058B03E), GetSnapshotName (0x002533CD),
+// xfer (0x0044DF9F), __purecall for getModuleNameKey; the module's own xfer
+// (0x004A2C30) sits in slot 3 and getModuleNameKey (0x004A2C74) in slot 4.
+// No constructor or vftable is defined from this view.
+class DetectorPrimary
+{
+public:
+	virtual ~DetectorPrimary();
+	const StealthDetectorUpdateModuleData *m_data;	// +0x04
+	Object *m_object;				// +0x08
+};
+class DetectorOther { public: virtual void other(); };
+class UpdateModuleInterface { public: virtual UpdateSleepTime update() = 0; };
+class UpdateModule : public DetectorPrimary, public DetectorOther, public UpdateModuleInterface
+{
+protected:
+	virtual void loadPostProcess();				// slot 1
+	virtual const char *GetSnapshotName() const;		// slot 2
+public:
+	virtual void xfer(Xfer *xfer);				// slot 3
+	virtual NameKeyType getModuleNameKey() const = 0;	// slot 4
+protected:
+	void setWakeFrame(Object *object, UpdateSleepTime wakeTime);	// rowed 0x0044DF71
+};
+class StealthDetectorUpdate : public UpdateModule
+{
+public:
+	virtual UpdateSleepTime update();
+	virtual NameKeyType getModuleNameKey() const;
+	Object *getObject() const { return m_object; }
+	const char *name() const;
+protected:
+	virtual void xfer(Xfer *xfer);
+};
 
 class BoneFXDamage
 {
@@ -167,27 +219,12 @@ protected:
 // banked-attempt sweep. Identity and evidence: see reverse/re_attempts.log.
 // ?rva004A2D49@Rva004A2D49@@QAEX_N@Z @0x004A2D49 30B
 // Evidence: target reads one boolean argument and the Object* at this+8, then calls rowed UpdateModule::setWakeFrame; class and field ownership remain address-based.
-class Object;
-
-enum UpdateSleepTime
-{
-	UPDATE_SLEEP_NONE = 0x3FFFFFFF,
-	UPDATE_SLEEP_FOREVER = 1
-};
-
-class UpdateModule
-{
-protected:
-	char m_base[8];
-	void setWakeFrame(Object *object, UpdateSleepTime wakeTime);
-};
-
+// The object pointer is UpdateModule's own (+0x08); an enabled module wakes
+// at once (UPDATE_SLEEP_NONE), a disabled one sleeps forever.
 class Rva004A2D49 : public UpdateModule
 {
 public:
-	void rva004A2D49(bool sleepForever);
-private:
-	Object *m_object;
+	void rva004A2D49(bool enabled);
 };
 
 // ?Rva004A2D67Init@@YGPAXPAX@Z @0x004A2D67 27B.
@@ -217,6 +254,11 @@ void *__cdecl ji_006291ae(void *dest, int val, unsigned int count);
 // No // cl: line (defaults match the frameless 6-byte shape, same as the
 // ModuleNameGetters.cpp precedent).
 
+const char *StealthDetectorUpdate::name() const
+{
+	return "StealthDetectorUpdate";
+}
+
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/StealthDetectorUpdate.cpp
 
 // ---- from Code/GameEngine/Source/Common/GapBodiesGE10.cpp
@@ -241,9 +283,9 @@ bool Rva004A2BF0::allow(Object *obj)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva004A2D49.cpp
 
-void Rva004A2D49::rva004A2D49(bool sleepForever)
+void Rva004A2D49::rva004A2D49(bool enabled)
 {
-	UpdateSleepTime wakeTime = sleepForever ? UPDATE_SLEEP_FOREVER : UPDATE_SLEEP_NONE;
+	UpdateSleepTime wakeTime = enabled ? UPDATE_SLEEP_NONE : UPDATE_SLEEP_FOREVER;
 	setWakeFrame(m_object, wakeTime);
 }
 
