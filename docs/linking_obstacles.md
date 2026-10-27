@@ -5179,3 +5179,23 @@ VA 0x00DEDBF0, which the ledger and dx8wrapper.cpp define as
 dx8wrapper.h omits that member, so the unit now binds the mangled name the way
 TextureMapperApply.cpp does, with no shared-shim edit. Builds 6/6 matched;
 `link_check.py` predicts LINKS 0 -> 2,027 B (census confirmation pending).
+
+Open leads (claude2, same pass; not edited):
+
+- DynamicDecalFXNuggetDoFXPos.cpp binds `g_00DEC2D4` for VA 0x00DEC2D4. Retail
+  `8b0dd4c2de00` (mov ecx,[0x00DEC2D4]) at doFXPos 0x001E0E43+238 and at
+  TerrainResourceClaimFeedback 0x004E7FCA+313 shows the address is
+  `TheProjectedShadowManager`, defined in W3DProjectedShadowUpdate.cpp (links);
+  TerrainResourceClaimFeedback.cpp already links through it. The ledger's owner
+  names it `g_00DEC2D4` in Rva0029E159Audio.cpp. Next: rename the ledger owner
+  to `TheProjectedShadowManager` and rebind both consumers (the file was held by
+  another seat during this pass).
+- Rva00415704Ctor.cpp (90 B) fails on unresolved
+  `??1Rva0022A809Subsystem@@UAE@XZ`, whose provider Rva00415CABDtor.cpp (272 B)
+  itself fails: comdat `??_7Rva0022A809Subsystem@@6B@` differs from the first
+  copy in link order. SubsystemInterface.cpp:274 declares the class as an empty
+  `SubsystemInterface` subclass with an implicit destructor (its slot vtable
+  emits a different `??_7`), while Rva00415CABDtor.cpp, Rva00415704Ctor.cpp and
+  OpaqueScalarDeletingDtorsB10.cpp declare a user virtual destructor.
+  Prerequisite: one class declaration for `TheCrowdResponseStore`'s type (a
+  shared header with the real destructor) used by all five units.
