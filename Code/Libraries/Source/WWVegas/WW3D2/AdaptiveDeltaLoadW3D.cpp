@@ -19,9 +19,11 @@
 // Donor: BFME1 WW3D2/motchan.cpp. Target 0x195FF0 reads the same 16-byte
 // channel header but stores data in its 0x1C-byte object without donor caches.
 // Field+10 holds bytes; allocation reserves that count plus one extra dword.
-// Declare array operators so MSVC keeps new[] on the target array allocator.
+// Declare the array operators (not <new>, whose placement bodies collide in
+// motchan.cpp) so MSVC keeps new[] on the target array allocator.
 
-#include <new>
+void * __cdecl operator new[](unsigned int);
+void __cdecl operator delete[](void *);
 class ChunkLoadClass {
 public:
     unsigned long Cur_Chunk_Length();
