@@ -126,6 +126,7 @@ static time_t startTime;
 // BFME2 hero deserialization is target reconstruction; no donor claim for it.
 class Rva0037B5DF {
 public:
+ ~Rva0037B5DF();
  int start,end,frame,crcInterval,mode;
  bool quitEarly,disconnected[8];char pad1D[3];
  AsciiString options;int localIndex;UnicodeString filename;bool forPlayback;char pad2D[3];
@@ -587,7 +588,7 @@ class GameLogic;
 
 struct RecorderFrameView { char opaque00[0x40]; int frame40; };
 
-class Rva0037B146 { public: void rva0037B146(); };
+class Rva0037B146 { public: void rva0037B146(); private: char m_pad00[0xE70]; unsigned char m_flagE70; };
 
 // Retail's own 20-byte wide string at RVA 0x00818798 (.rdata, file offset
 // 0x00817BD8): "Replays\" in UTF-16 followed by the terminating NUL and the
