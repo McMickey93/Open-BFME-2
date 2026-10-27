@@ -7723,7 +7723,6 @@ _D3DXCreateEffectFromFileA@32,0x0062AFAA,callee of ?Load@Impl@FXShaderAsset@@QAE
 ?push_back@?$vector@HV?$Rva002444BEAllocator@H@@@_STL@@QAEXABH@Z,0x004DFCB0,4-byte vector push_back fold; REL32s in populateRandomSideAndColor (pool and narrowed pools)
 ?push_back@?$vector@W4Rva002444BEFaction@@V?$allocator@W4Rva002444BEFaction@@@_STL@@@_STL@@QAEXABW4Rva002444BEFaction@@@Z,0x002E01C6,ICF twin of the rowed 4-byte enum vector push_back; REL32 in populateRandomSideAndColor template-value vector
 ?swap@?$vector@HV?$Rva002444BEAllocator@H@@@_STL@@QAEXAAV12@@Z,0x00567ECD,rowed E12 vector swap fold; REL32s in populateRandomSideAndColor narrowing the pool in place
-?Get_Default_Index_Count@DynamicIBAccessClass@@SAGXZ,0x00139090,callee of ?Flush_Sorting_Pool@SortingRendererClass@@CAXXZ
 ?rva0037D097@Rva0037D097CRCView@@QAEXI@Z,0x0037D097,callee of ?rva0037D0A7@Rva0037BBED@@QAEXIH_NI@Z
 ?rva0037BD64@Rva0037D097CRCView@@QAEIXZ,0x0037BD64,callee of ?rva0037D0A7@Rva0037BBED@@QAEXIH_NI@Z
 ?rva00241529@Rva00241529CRCView@@QAEXIHIPAX_N0@Z,0x00241529,callee of ?rva0037D0A7@Rva0037BBED@@QAEXIH_NI@Z

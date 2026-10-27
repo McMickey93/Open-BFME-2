@@ -16886,7 +16886,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009B6280,4,.data,global,?_PresetMultiplicativeSpriteShader@ShaderClass@@2V1@A,Code/Libraries/Source/WWVegas/WW3D2/shader.cpp,owned,,1,1
 0x009B6284,32,.data,global,_srcBlendLUT,Code/Libraries/Source/WWVegas/WW3D2/ShaderClassApply.cpp,owned,,1,1
 0x009B62A4,48,.data,global,_dstBlendLUT,Code/Libraries/Source/WWVegas/WW3D2/ShaderClassApply.cpp,owned,,1,1
-0x009B62D4,4,.data,global,?g_Va00DB62D4@@3GA,Code/GameEngine/Source/Common/GlobalWordGetters.cpp,provisional,?g_Va00DB62D4@@3GA;__DynamicDX8IndexBufferSize@Code/Libraries/Source/WWVegas/WW3D2/dx8indexbuffer.cpp,2,7
+0x009B62D4,4,.data,global,__DynamicDX8IndexBufferSize,Code/Libraries/Source/WWVegas/WW3D2/dx8indexbuffer.cpp,owned,,1,7
 0x009B62D8,8,.data,global,_unique,Code/Libraries/Source/WWVegas/WW3D2/vertmaterial.cpp,owned,,1,2
 0x009B62E0,69,.data,global,?default_settings@?1??Apply_Null@VertexMaterialClass@@CAXXZ@4U_D3DMATERIAL8@@A,Code/Libraries/Source/WWVegas/WW3D2/vertmaterial.cpp,owned,,1,1
 0x009B6325,31,.data,global,?first@?5??SetArray_MeshToJointToWorld_Matrix4x4@SourceNamespace_Skeleton@FXShaderParameterSourceNamespaceSAS@@QAEXPAUID3DXEffect@@PBD@Z@4_NA,Code/Libraries/Source/WWVegas/WW3D2/fxshadernamespacesas.cpp,owned,,1,2
