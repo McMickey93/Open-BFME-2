@@ -13,7 +13,7 @@
 // in base-init order, resolving to this TU's COMDAT vtables which are
 // DIR32-masked in comparison). The ZH donor ctor is followed for the body
 // with one BFME2 repair: the INVALID_ID loop over the 20-strong ID array
-// is a memset (W3DDebrisDraw precedent: extern-C memset plus /Oi inlines
+// is a memset (W3DDebrisDraw precedent: memset plus /Oi inlines
 // to push-imm/pop-ecx plus rep stosd, no call, zero new pins), then the
 // donor assignment order (owning/nextFree/firstValid/target plus inline
 // targetPosition.zero(), whose address-take emits the lea-plus-movss
@@ -67,8 +67,7 @@ enum
 
 // Coord3D: shared header/view; no private copy.
 #include "../../../../../Libraries/Include/Lib/Coord3DInline.h"
-
-extern "C" void *memset(void *, int, unsigned int);
+#include <string.h>
 
 class ProjectileStreamUpdate : public UpdateModule
 {

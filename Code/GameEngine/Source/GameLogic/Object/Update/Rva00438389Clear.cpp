@@ -3,6 +3,8 @@
 // Zeroes dword +0 byte +4 dwords +8 +0xC, resets 128-bit bitset at +0x10 via
 // rowed 0x0024CA24, memsets 0x10 at +0x10 via import thunk 0x006291AE,
 // clears byte +0x20, returns *this. Callers 0x004397AB 0x00439EE1.
+#include <string.h>
+
 namespace _STL
 {
 template <int N> class bitset
@@ -13,8 +15,6 @@ private:
 	char m_pad[0x10];
 };
 }
-
-extern "C" void *memset(void *s, int c, unsigned int n);
 
 class Rva00438389
 {

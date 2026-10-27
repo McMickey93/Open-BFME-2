@@ -13,9 +13,10 @@
 // BFME2 names from WorldBuilder's LuaScriptEngine.cpp: ProcessEventsElement
 // (:904-932, same Events / InternalEvent / ScriptedEvent / ModelConditionEvent /
 // ObjectStatusEvent dispatch) and ProcessInternalEvent for 0x00332C7A.
-typedef int Int;
 
-extern "C" int strcmp(const char *, const char *);
+#include <string.h>
+
+typedef int Int;
 
 class XmlNameSlotList
 {

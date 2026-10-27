@@ -22,7 +22,6 @@ public:
     static void parsePercentToReal(INI *, void *, void *, const void *);
     char unused[0x420]; const char *colon;
 };
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 struct INIException { char *message; int code; INIException() {} INIException(int argCount, const char *format, ...); };
 extern "C" void __stdcall _CxxThrowException(void *pExceptionObject, const _s__ThrowInfo *pThrowInfo);
 struct RespawnThrowInfoAnchor { int a,b,c,d; };

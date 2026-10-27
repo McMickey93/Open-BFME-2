@@ -14,10 +14,10 @@
 // and "EventList" through the still-carved body at 0x002EC0A0 (thunk
 // 0x0003ED33) -- before a final finish() == 1 check.
 
+#include <string.h>
+
 typedef int Int;
 typedef bool Bool;
-
-extern "C" int strcmp(const char *, const char *);
 
 class XmlNameSlotList
 {

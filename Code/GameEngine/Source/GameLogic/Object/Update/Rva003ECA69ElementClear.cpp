@@ -6,8 +6,6 @@
 // name claimed so the name keeps the address token with an honest Rva owner.
 #pragma function(memset)
 
-extern "C" void *memset(void *dst, int value, unsigned int size);
-
 class AsciiString;
 class UnicodeString;
 class PooledString;
@@ -26,6 +24,7 @@ class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
 
+#include <string.h>
 #include "../../../../Include/Common/BfmeXfer.h"
 
 class Rva003ECA69Element

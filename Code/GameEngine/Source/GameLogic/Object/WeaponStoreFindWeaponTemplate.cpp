@@ -12,13 +12,12 @@
 // conversion is the rowed NameKeyGenerator::nameToKey (0x009FA65)
 // through the 0xDF36A4 global; _strcmpi rides its msvcr71 IAT slot.
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
-
 enum NameKeyType
 {
 	NAMEKEY_INVALID = 0
 };
 
+#include <string.h>
 #include "ascii_string.h"
 
 class NameKeyGenerator

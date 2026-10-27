@@ -14,6 +14,7 @@
 // Explicit inline Matrix3D ctor restores the native3-row iterator; real128-bit
 // zero mask and post-initialization team lookup preserve native register homes.
 #include <bitset>
+#include <string.h>
 
 #include "ascii_string.h"
 
@@ -154,7 +155,6 @@ public:
 
 // newObject's third argument: a 16-byte bit mask, zeroed when constructed
 // (the same spelling as GameLogicInit.cpp and the other creators).
-extern "C" void *__cdecl memset(void *, int, unsigned int);
 struct CreateMask
 {
 	CreateMask() { memset(m_bits, 0, sizeof(m_bits)); }

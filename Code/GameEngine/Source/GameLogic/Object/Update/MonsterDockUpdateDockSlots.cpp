@@ -26,6 +26,7 @@
 // notifier 0x0028AE6D runs only when the bit changed (see
 // MonsterDockUpdateRva004A1610.cpp).
 
+#include <string.h>
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 class Matrix3D;
 enum PathfindLayerEnum { LAYER_GROUND=0 };
@@ -234,7 +235,6 @@ class TerrainLogic { public:
 };
 extern TerrainLogic *TheTerrainLogic;
 class Rva001E42F2 {public: void rva001E42F2(const int *);};
-extern "C" void *memset(void *,int,unsigned int);
 bool MonsterDockUpdate::action(Object *docker,Object *)
 {
  if(!docker) return false;

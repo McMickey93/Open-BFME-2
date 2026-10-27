@@ -8,9 +8,8 @@ extern "C" void _ReadWriteBarrier(void);
 #pragma intrinsic(_ReadWriteBarrier)
 #include "ascii_string.h"
 #include "Code/GameEngine/Source/Common/GameLogicObjectLookupView.h"
+#include <string.h>
 #pragma function(memset)
-extern "C" void *memset(void *dst, int value, unsigned int size);
-
 
 class ThingTemplate;
 class Team;

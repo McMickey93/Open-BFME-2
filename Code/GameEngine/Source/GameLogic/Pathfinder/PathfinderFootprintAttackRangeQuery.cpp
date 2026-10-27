@@ -10,7 +10,6 @@
 // Reuses the established floor/FISTP blocker, with no new assembly reconstruction.
 // Evidence: reverse/attempt_support/crack-x-wave4-handoff.json.
 #include "Coord3D.h"
-extern "C" __declspec(dllimport) double __cdecl floor(double);
 #include <math.h>
 #include "Code/Libraries/Include/Lib/ICoord2D.h"
 enum PathfindLayerEnum {OBSERVED_LAYER_1=1};

@@ -11,9 +11,8 @@
 // spelling; the +0x4c combined pitch-check flag gates everything.
 typedef float Real;
 
+#include <math.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
-
-extern "C" double fabs(double value);
 
 class GeometryInfo
 {
@@ -50,7 +49,7 @@ bool Weapon::isWithinTargetPitch(const Object *source, const Object *victim) con
 		const Coord3D *src = &source->m_position;
 		const Coord3D *dst = &victim->m_position;
 
-		float dz = (float)fabs(dst->z - src->z);
+		float dz = (float)fabs((double)(dst->z - src->z));
 		if (dz < 10.0f)
 			return true;
 

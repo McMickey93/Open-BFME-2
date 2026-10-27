@@ -26,8 +26,6 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 typedef unsigned int UnsignedInt;
 
-extern "C" int __cdecl strcmp(const char *, const char *);
-
 class INI
 {
 public:

@@ -7,9 +7,8 @@
 // Evidence: neighbour WeaponSetRva002C75D1 proves +0x2C autoChooseMask[6]
 // and next array at +0x44; caller 0x0033A888 constructs the same three
 // arrays (0x1C/0x1C/0x4C via 0x24C7B3/0x42526) then calls here.
+#include <string.h>
 #pragma function(memset)
-
-extern "C" void *memset(void *dst, int value, unsigned int size);
 
 struct Rva002C752F_1C
 {

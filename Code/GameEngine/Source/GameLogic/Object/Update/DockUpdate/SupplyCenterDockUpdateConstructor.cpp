@@ -3,6 +3,8 @@
 // Open-BFME5: SupplyCenterDockUpdate module ctor.
 // Out-of-line base MI, then four most-derived vtbls at +0/+0xC/+0x10/+0x20.
 
+#include <string.h>
+
 class Thing;
 class ModuleData;
 
@@ -325,8 +327,6 @@ void WeaponModeSpecialPowerUpdateIface4::weaponModeIface4Anchor()
 // first; pool factory-link, name, then the rest) and implements the same
 // walk. Only the walked fields are touched; BFME2's own factory layout past
 // them is unrecovered. No retail bytes are claimed (present-unmatched).
-extern "C" int __cdecl strcmp(const char *a, const char *b);
-
 class DynamicMemoryAllocator;
 
 class MemoryPool

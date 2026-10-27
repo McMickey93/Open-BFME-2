@@ -4,11 +4,10 @@
 // boundary-3D case.  BFME passes a position, a partition candidate, and an
 // unused integer to the procedure.
 
-extern "C" double __cdecl sqrt(double value);
-#pragma intrinsic(sqrt)
-
 // BfmeZeroRange is float 0.0 at 0x00BBAEAC (data_ledger literal); use 0.0f literal so the TU links.
 
+#include <math.h>
+#pragma intrinsic(sqrt)
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
 class BfmeBoundaryGeometry3D
@@ -52,7 +51,7 @@ float distCalcProc_BoundaryAndBoundary_3D(
 	BfmeBoundaryGeometry3D *geometry2 = candidate->getGeometry();
 	float distanceSquared = delta.y * delta.y + delta.x * delta.x;
 	distanceSquared += delta.z * delta.z;
-	float distance = static_cast<float>(sqrt(distanceSquared));
+	float distance = static_cast<float>(sqrt(static_cast<double>(distanceSquared)));
 	distance -= geometry2->m_radius;
 	if (distance < 0.0f)
 		return -distance * distance;

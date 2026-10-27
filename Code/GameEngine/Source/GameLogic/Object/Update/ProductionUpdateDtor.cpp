@@ -8,6 +8,7 @@
 // ??_GProductionUpdate, vtable stores at +0/+0xC/+0x10/+0x20/+0x24.
 #include <list>
 #include <vector>
+#include <string.h>
 #include "ascii_string.h"
 // bfme link decl-only begin
 namespace _STL { template <> void _Destroy<AsciiString>(AsciiString *); }
@@ -23,7 +24,6 @@ namespace _STL { template <> void allocator<AsciiString>::deallocate(AsciiString
 // BitFlags<11> is DisabledMaskType (BitFlags11DisabilityCtors.cpp); its
 // copy is a 4-byte memcpy call in retail.
 #pragma function(memcpy)
-extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
 
 template <int NUM_BITS>
 class BitFlags

@@ -10,9 +10,8 @@
 // The address-derived name is honest: identity beyond the shared memset
 // shape is not recovered, and no invented class name is claimed.
 
+#include <string.h>
 #pragma function(memset)
-
-extern "C" void *memset(void *dst, int value, unsigned int size);
 
 class Rva0024C7B3Member
 {

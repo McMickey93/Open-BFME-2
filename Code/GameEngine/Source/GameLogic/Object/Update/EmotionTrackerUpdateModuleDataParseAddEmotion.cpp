@@ -11,9 +11,9 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 { return a < b ? b : a; }
 }
 #include <vector>
+#include <string.h>
 #include "ascii_string.h"
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
 class INI { public: const char *getNextToken(const char *separators = 0); };
 class INIException {
 public:
