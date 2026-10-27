@@ -91,22 +91,6 @@ public:
 
 enum NameKeyType;
 
-class W3DProjectileStreamDraw : public DrawModule
-{
-public:
-	W3DProjectileStreamDraw(Thing *thing, const ModuleData *moduleData);
-	virtual NameKeyType getModuleNameKey() const;
-	virtual void setFullyObscuredByShroud(bool fullyObscured);
-
-protected:
-	virtual void xfer(Xfer *xfer);
-
-private:
-	void *m_pad0C;
-	SegmentedLineClass *m_allLines[0x14];
-	int m_linesValid;
-};
-
 //
 // W3DProjectileStreamDrawModuleData file-unit (parse first; the ctor at
 // 0xD11D2 remains pinned for a follow-up).
@@ -190,6 +174,47 @@ private:
 	int m_maxSegments; // +0x18
 };
 
+// ?getModuleNameKey@W3DProjectileStreamDraw@@UBE?AW4NameKeyType@@XZ @0xD140A
+// (69B): cached pool-name key for W3DProjectileStreamDraw. The class
+// identity comes from the pool-name string the body pushes
+// ("W3DProjectileStreamDraw"); the body guards a function-local static
+// key fetched once through TheNameKeyGenerator. It is NOT getClassMemoryPool:
+// retail stores nameToKey's return (a key, not a pool pointer) and returns it,
+// and the address carries no getClassMemoryPool row anywhere. /EHsc for the
+// static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
+// from retail, no pins; nameToKey resolves via its matched row).
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class W3DProjectileStreamDraw : public DrawModule
+{
+public:
+	W3DProjectileStreamDraw(Thing *thing, const ModuleData *moduleData);
+	virtual NameKeyType getModuleNameKey() const;
+	virtual void setFullyObscuredByShroud(bool fullyObscured);
+
+protected:
+	virtual void xfer(Xfer *xfer);
+
+private:
+	void *m_pad0C;
+	SegmentedLineClass *m_allLines[0x14];
+	int m_linesValid;
+};
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDraw.cpp
+
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDraw.cpp
 
 //
@@ -266,10 +291,44 @@ W3DProjectileStreamDrawModuleData::W3DProjectileStreamDrawModuleData()
 
 // tu-skeleton: 0x000D1407 3B ?Set_Animation@RenderObjClass@@UAEXPAVHAnimClass@@MH@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/RenderObjO1Inlines.cpp (not merged yet)
 
-// tu-skeleton: 0x000D140A 69B ?getModuleNameKey@W3DProjectileStreamDraw@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DProjectileStreamDrawPoolKey.cpp (not merged yet)
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DProjectileStreamDrawPoolKey.cpp
+
+// ?getModuleNameKey@W3DProjectileStreamDraw@@UBE?AW4NameKeyType@@XZ
+NameKeyType W3DProjectileStreamDraw::getModuleNameKey() const
+{
+	static NameKeyType TheW3DProjectileStreamDrawPoolKey =
+		TheNameKeyGenerator->nameToKey("W3DProjectileStreamDraw");
+	return TheW3DProjectileStreamDrawPoolKey;
+}
 
 // tu-skeleton: 0x000D144F 28B ??_GW3DProjectileStreamDraw@@UAEPAXI@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DDrawModuleDeletingDtors.cpp (not merged yet)
 
 // tu-skeleton: 0x000D146B 142B ??1W3DProjectileStreamDraw@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x000D14F9 385B ?doDrawModule@W3DProjectileStreamDraw@@UAEXPBVMatrix3D@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp (not merged yet)
+
+// tu-skeleton: 0x00762947 8B Unwind@00b62947 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0076294F 10B __ehhandler$??1W3DProjectileStreamDrawModuleData@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00762959 10B uw_00762959 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp (not merged yet)
+
+// tu-skeleton: 0x00762963 10B __ehhandler$?makeOrUpdateLine@W3DProjectileStreamDraw@@IAEXPAVVector3@@IH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp (not merged yet)
+
+// tu-skeleton: 0x0076296D 8B $L427 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00762975 11B Unwind@00b62975 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00762980 8B Unwind@00b62980 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00762988 10B __ehhandler$??0W3DProjectileStreamDraw@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007629A9 8B $L471 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007629B1 11B Unwind@00b629b1 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007629BC 10B __ehhandler$??1W3DProjectileStreamDraw@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007629C6 13B $L1763 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp (not merged yet)
+
+// tu-skeleton: 0x007629D3 10B __ehhandler$?doDrawModule@W3DProjectileStreamDraw@@UAEXPBVMatrix3D@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DProjectileStreamDrawModule.cpp (not merged yet)
