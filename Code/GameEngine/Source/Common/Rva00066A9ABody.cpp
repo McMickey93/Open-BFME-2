@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /MD
+// dxsdk
+// platformsdk
 //
 // Dump range 1 (0x00066A9A 55B): head calls plus dual guarded tail.
 // Head calls W3DShaderManager::init (0x00077F80), then the pinned 0x0007E89C
@@ -77,18 +79,10 @@ public:
 	virtual int init();
 };
 
-struct Rva00077F80VertexElement
-{
-	unsigned short stream;
-	unsigned short offset;
-	unsigned char type;
-	unsigned char method;
-	unsigned char usage;
-	unsigned char usageIndex;
-};
-
 extern Rva00077F80Shader **g_Va00DB43A4[];
 extern Rva00077F80Filter **g_Va00DB43AC[];
+
+#include <d3d9.h>
 
 struct IDirect3DDevice8;
 class DX8Wrapper
@@ -96,19 +90,6 @@ class DX8Wrapper
 protected:
 	friend void W3DShaderManager::init(void);
 	static IDirect3DDevice8 *D3DDevice;
-};
-
-struct Rva00077F80Device;
-struct Rva00077F80DeviceVtbl
-{
-	void *reserved[0x158 / 4];
-	long (__stdcall *createVertexShader)(Rva00077F80Device *device,
-		const Rva00077F80VertexElement *declaration, unsigned *shader);
-};
-
-struct Rva00077F80Device
-{
-	Rva00077F80DeviceVtbl *vtable;
 };
 
 extern unsigned g_fvfShader;
@@ -141,17 +122,17 @@ void W3DShaderManager::init(void)
 		}
 	}
 
-	Rva00077F80VertexElement declaration[4] = {
-		{ 0, 0, 3, 0, 0, 0 },
-		{ 0, 16, 4, 0, 10, 0 },
-		{ 0, 20, 1, 0, 5, 0 },
-		{ 0xFF, 0, 17, 0, 0, 0 }
+	D3DVERTEXELEMENT9 declaration[4] = {
+		{ 0, 0, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },
+		{ 0, 16, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_COLOR, 0 },
+		{ 0, 20, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0 },
+		D3DDECL_END()
 	};
 	if (g_fvfShader == 0) {
-		Rva00077F80Device *device =
-			(Rva00077F80Device *)DX8Wrapper::D3DDevice;
-		long hr = device->vtable->createVertexShader(
-			device, declaration, &g_fvfShader);
+		IDirect3DDevice9 *device =
+			reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice);
+		HRESULT hr = device->CreateVertexDeclaration(
+			declaration, reinterpret_cast<IDirect3DVertexDeclaration9 **>(&g_fvfShader));
 		if (hr < 0)
 			g_fvfShader = 0;
 	}
