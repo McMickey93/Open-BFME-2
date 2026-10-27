@@ -33,9 +33,8 @@ Cases met today:
   TheMessageStream use as wrong-name. Which name is intended?
   Resolved 2026-10-27: `TheMessageStream` (ZH; the `"TheMessageStream"`
   initSubsystem literal; BFME 1 spells MessageStreamSubsystem only as a
-  `#define` alias of it). The data row now names it; the one remaining
-  MessageStreamSubsystem reader is AptCampaignMenuCallbacks.cpp, after which
-  MessageStream.cpp's second definition goes.
+  `#define` alias of it). The data row names it, all readers spell it, and
+  MessageStream.cpp's second definition is gone.
 - **0x00A04424**: the verified owner is `g_Va00E04424`
   (Rva007ABBB3CtorInits.cpp); `data_ledger.csv` names Rva007B6880Thunks.cpp.
 - **0x00A01EDC / 0x00A030D8**: GameStateInit.cpp now spells

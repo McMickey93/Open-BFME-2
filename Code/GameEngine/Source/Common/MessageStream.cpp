@@ -29,10 +29,6 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 /// The singleton message stream for messages going to TheGameLogic
 MessageStream *TheMessageStream = NULL;
 
-// Second spelling of the same datum (a #define alias in the BFME 1 reference);
-// kept only until its last reader moves to TheMessageStream.
-MessageStream *MessageStreamSubsystem = NULL;
-
 CommandList *TheCommandList = NULL;
 
 //------------------------------------------------------------------------------------------------
