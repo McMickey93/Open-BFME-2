@@ -48,14 +48,13 @@ public:
 	void rva003A2A41();
 };
 
-class Rva003A3959
+class TeamRelationMap
 {
 public:
-	Rva003A3959();
+	TeamRelationMap();
 private:
 	char m_data[0x18];
 };
-typedef Rva003A3959 TeamRelationMap;
 
 class PlayerRelationMap
 {

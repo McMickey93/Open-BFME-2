@@ -59,7 +59,7 @@ struct Rva002ADF9C{void rva002ADF9C(const Player*,Object*);};
 class PolymorphicOwner {public: virtual ~PolymorphicOwner();};
 class UpgradeView:public PolymorphicOwner {public:char gap4[8];UpgradeView*next;};
 class PlayerRelationMap:public PolymorphicOwner {char opaque[20];public:PlayerRelationMap();};
-class Rva003A3959:public PolymorphicOwner {char opaque[20];public:Rva003A3959();};
+class TeamRelationMap:public PolymorphicOwner {char opaque[20];public:TeamRelationMap();};
 class Squad:public PolymorphicOwner {char opaque[24];public:Squad() throw();};
 struct Rva002AAC74PoolList {void*head;void clear();};
 struct Rva004F599E{void*vt;int words[42];void rva004F597F();};
@@ -118,7 +118,7 @@ Rva001FD42B cost;Rva000427195 time;Rva000427195 scratchTime;Rva000427195 timeCou
 PolymorphicOwner*ai;void*defaultTeam;PolymorphicOwner*resources;PolymorphicOwner*tunnel;
 int unknown2EC;char gap2F0[0x2FC-0x2F0];_STL::vector<unsigned int> disabled;_STL::vector<unsigned int>hidden;
 float bounty;char gap318[4];int unknown31C;_STL::vector<void*>elements;
-Rva002AAC74PoolList prototypes;PlayerRelationMap*playerRelations;Rva003A3959*teamRelations;
+Rva002AAC74PoolList prototypes;PlayerRelationMap*playerRelations;TeamRelationMap*teamRelations;
 bool canBuildBase,canBuildUnits,observer,flag33B,listInScoreScreen,unitsHunt,flag33E,flag33F;
 bool attackedBy[20];int attackedFrame;unsigned attackFrames[20];int unknown3A8;int unknown3AC;char gap3B0[12];
 ScoreKeeper score;char gap3BD[0x6F0-0x3BD];int unknown6F0;_STL::list<ProductionCostModifier*>modifiers;float unknown6F8;int unknown6FC;
@@ -135,7 +135,7 @@ void Player::init(const PlayerTemplate*pt){
  if(resources){::delete resources;resources=0;}if(tunnel){::delete tunnel;tunnel=0;}
  unknown2EC=0;bounty=0.0f;_STL::vector<void*>&items=elements;items.erase(items.begin(),items.end());unknown31C=0;
  if(playerRelations)::delete playerRelations;playerRelations=new PlayerRelationMap;
- if(teamRelations)::delete teamRelations;teamRelations=new Rva003A3959;
+ if(teamRelations)::delete teamRelations;teamRelations=new TeamRelationMap;
  canBuildBase=true;canBuildUnits=true;observer=false;flag33B=false;listInScoreScreen=true;unitsHunt=false;flag33E=false;flag33F=false;
  for(unsigned i=0;i<20;++i){attackedBy[i]=false;attackFrames[i]=0;}
  attackedFrame=0;unknown3A8=0;unknown3AC=-1;score.reset(index);

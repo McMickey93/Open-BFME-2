@@ -43,7 +43,16 @@ BFME_LITERAL_NAME_GETTER(PhysicsBehavior, "PhysicsBehavior")
 BFME_LITERAL_NAME_GETTER(RadiusDecalUpdate, "RadiusDecalUpdate")
 BFME_LITERAL_NAME_GETTER(CastleMemberBehavior, "CastleMemberBehavior")
 // ScoreKeeper::GetSnapshotName is owned by RTS/ScoreKeeperDtor.cpp.
-BFME_LITERAL_NAME_GETTER(Rva003A25ABNamed, "TeamRelationMap")
+// Slot 2 of TeamRelationMap's vftable 0x00C1ADFC: the Snapshot name slot.
+class TeamRelationMap
+{
+protected:
+	virtual const char *GetSnapshotName() const;
+};
+const char *TeamRelationMap::GetSnapshotName() const
+{
+	return "TeamRelationMap";
+}
 // TeamFactory::GetSnapshotName is owned by RTS/TeamFactoryDtor.cpp.
 BFME_LITERAL_NAME_GETTER(Rva003B03EDNamed, "GPUParticleSystemStorageModule")
 // Rva003B3662 "Script" is Script::GetSnapshotName, rowed under its real

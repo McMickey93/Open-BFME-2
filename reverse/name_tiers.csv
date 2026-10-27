@@ -9434,7 +9434,6 @@ _rva0060E7F0,0x00211245,address,placeholder
 ?rva003A1C3A@Team@@QAEX_N@Z,0x003A1C3A,address,placeholder
 ?dup_003a2470@@YAXXZ,0x003A2470,address,placeholder
 ?rva003A2539@Rva003A2539@@QAEPAURva003A2539Node@@ABU?$pair@$$CBVAsciiString@@UTreeHintPayload00207343@@@_STL@@@Z,0x003A2539,address,placeholder
-?name@Rva003A25ABNamed@@QBEPBDXZ,0x003A25AB,address,placeholder
 ?name@Rva003A261ENamed@@QBEPBDXZ,0x003A261E,address,placeholder
 ?Rva003A2875Get@@YAHXZ,0x003A2875,address,placeholder
 ?rva003A2897@Rva003A2897@@QAE_NW4NameKeyType@@@Z,0x003A2897,address,placeholder
@@ -9457,7 +9456,6 @@ _rva0060E7F0,0x00211245,address,placeholder
 ?rva003A3899@Rva003A3899@@QAEXXZ,0x003A3899,address,placeholder
 ?rva003A389E@TeamFactory@@QAEXXZ,0x003A389E,address,placeholder
 ??0Rva003A393A@@QAE@XZ,0x003A393A,address,placeholder
-??0Rva003A3959@@QAE@XZ,0x003A3959,address,placeholder
 ??1Rva003A4322@@UAE@XZ,0x003A4322,address,placeholder
 ?name@Rva003A433BNamed@@QBEPBDXZ,0x003A433B,address,placeholder
 ??_GRva003A4322@@UAEPAXI@Z,0x003A43EC,address,placeholder

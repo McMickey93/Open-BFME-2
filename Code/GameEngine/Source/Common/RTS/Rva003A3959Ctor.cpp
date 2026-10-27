@@ -1,6 +1,9 @@
 // cl: /Ireference/shims/bfme2_ascii /MD /GX /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS
 // stlport
-// ??0Rva003A3959@@QAE@XZ @0x003A3959 50B: outer ctor storing vtable 0x0081ADFC then constructing member at +4 via rowed 0x003A393A with EH frame.
+// ??0TeamRelationMap@@QAE@XZ @0x003A3959 50B: outer ctor storing vtable 0x0081ADFC then constructing member at +4 via rowed 0x003A393A with EH frame.
+// Identity: the stored table 0x00C1ADFC is TeamRelationMap's (slot 0 the rowed
+// ??_GTeamRelationMap 0x003A2A8A, slot 2 the getter returning "TeamRelationMap"),
+// and Team's ctor allocates this object into its +0x118 relations pointer.
 // Evidence: chain packet calls rowed 0x003A393A; vtable store at [this] plus EH_prolog with handler 0x00781A02; callers 0x002AF8BB and 0x003A3AB8; unblocks 0x003A39A7; empty base arms EH state 0 (ProductionUpdateModuleData precedent).
 #include <hash_map>
 #include <cstddef>
@@ -95,16 +98,16 @@ public:
 	}
 };
 
-class Rva003A3959 : public Rva003A3959Base
+class TeamRelationMap : public Rva003A3959Base
 {
 public:
-	Rva003A3959();
+	TeamRelationMap();
 private:
 	const void *m_vtable;
 	Rva003A393A m_inner;
 };
 
-Rva003A3959::Rva003A3959()
+TeamRelationMap::TeamRelationMap()
 	: Rva003A3959Base()
 	, m_vtable(__identifier("??_7TeamRelationMap@@6B@"))
 {

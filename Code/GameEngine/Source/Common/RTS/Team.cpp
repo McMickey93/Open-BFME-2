@@ -1251,7 +1251,7 @@ void Team::evacuateTeam(bool flag)
 
 // tu-skeleton: 0x003A2563 72B ??1TeamRelationMap@@MAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamRelationMapDtor_Rva003A2563.cpp (not merged yet)
 
-// tu-skeleton: 0x003A25AB 6B ?name@Rva003A25ABNamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/SubsystemNameGetters4.cpp (not merged yet)
+// tu-skeleton: 0x003A25AB 6B ?GetSnapshotName@TeamRelationMap@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/SubsystemNameGetters4.cpp (not merged yet)
 
 // tu-skeleton: 0x003A25B1 109B ??0TeamFactory@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/TeamFactoryCtor.cpp (not merged yet)
 
@@ -1506,7 +1506,7 @@ float Rva003A36D3::rva003A36D3(int arg)
 
 // tu-skeleton: 0x003A393A 31B ??0Rva003A393A@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/ArmorHashMapCtor003A393A.cpp (not merged yet)
 
-// tu-skeleton: 0x003A3959 50B ??0Rva003A3959@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp (not merged yet)
+// tu-skeleton: 0x003A3959 50B ??0TeamRelationMap@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp (not merged yet)
 
 // tu-skeleton: 0x003A39A7 471B ??0Team@@QAE@PAVTeamPrototype@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/TeamCtor.cpp (not merged yet)
 
@@ -1756,7 +1756,7 @@ float Rva003A36D3::rva003A36D3(int arg)
 
 // tu-skeleton: 0x007819FA 8B uw_007819fa -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
 
-// tu-skeleton: 0x00781A02 10B __ehhandler$??0Rva003A3959@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp (not merged yet)
+// tu-skeleton: 0x00781A02 10B __ehhandler$??0TeamRelationMap@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/Rva003A3959Ctor.cpp (not merged yet)
 
 // tu-skeleton: 0x00781A0C 8B Unwind@00b81a0c -- matched in Code/GameEngine/Source/Common/RTS/TeamCtor.cpp (not merged yet)
 
