@@ -9,13 +9,12 @@
 // matched 0x007B6760/0x007B6780 and 0x007B6830. The owning TUs are
 // unrecovered, so each keeps an honest address name and the storage keeps the
 // global its cleanup thunk already names. Retail bytes give every operand.
+#include <stdlib.h>
 
 inline void *operator new(unsigned int, void *where)
 {
 	return where;
 }
-
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 
 namespace _STL
 {

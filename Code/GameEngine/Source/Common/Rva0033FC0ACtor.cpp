@@ -6,6 +6,7 @@
 // 0x004D79E1, new 0x0002FDA0, state ctors 0x00342EAC/0x0033F6C0/0x0034005D,
 // defineState 0x004D7B0F; callers xfer 0x00343D33 onEnter; vtable store;
 // ids 0/1/2 success 1/2/0x270E failure 0x270F/0x270F/0x270E cond null.
+#include <new>
 
 class Object;
 
@@ -68,9 +69,6 @@ public:
 	// Leaving this implicit emits a competing call to the opaque base spelling.
 	virtual ~Rva0033FC0A();
 };
-
-extern void *__cdecl operator new(unsigned int size);
-inline void *__cdecl operator new(unsigned int, void *p) { return p; }
 
 Rva0033FC0A::Rva0033FC0A(Object *owner, unsigned int key)
 	: StateMachine(owner, key, false)

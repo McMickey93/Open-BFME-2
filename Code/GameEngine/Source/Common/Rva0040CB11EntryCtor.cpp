@@ -3,6 +3,8 @@
 // whose caller already emits the byte-exact inline definition.
 // Entry ctor for sorted vector: int key at +0, Holder value at +4 via copy ctor.
 // Evidence: 1 caller at 0x0040ED06; callee copy ctor 0x004F6093 now rowed; shared 8-byte entry layout with twin getters and binary search.
+#include <stddef.h>
+
 class Rva004F6093Holder
 {
 public:
@@ -22,8 +24,6 @@ private:
 inline Rva0040CB11Entry::Rva0040CB11Entry(const Rva0040CB11Entry &other) : m_first(other.m_first), m_second(other.m_second)
 {
 }
-
-typedef unsigned int size_t;
 
 inline void *operator new(size_t, void *place)
 {

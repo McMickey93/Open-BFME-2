@@ -8,19 +8,10 @@
 // supports native x87 conversion alongside SSE (/QIfist is incompatible).
 // Reuse the owned TheTerrainRenderObject global atDE1EAC; only its observed
 // vtable slot136 and three stack arguments are described by the notifier.
-// LINK: hide math.h's inline float ceil/floor wrappers (r3 LK4 recipe; they
-// arrive transitively via basetype.h below). The wrappers
-// ?ceil@@YAMM@Z/?floor@@YAMM@Z (+ _ceilf/_floorf) inline at the four calls
-// below but this TU's copies lose (first-copy); with them hidden the floats
-// promote to the CRT double imports directly. dllimport externs keep math.h's
-// indirect-call shape. No flags touched.
-#define ceil bfme_hidden_ceil
-#define floor bfme_hidden_floor
+// LINK: the four rounding calls pass double so they reach the CRT ceil/floor
+// imports, not math.h's inline float overloads, whose copies here lose at link.
 #include "basetype.h"
-#undef ceil
-#undef floor
-extern "C" __declspec(dllimport) double __cdecl ceil(double x);
-extern "C" __declspec(dllimport) double __cdecl floor(double x);
+#include <math.h>
 
 struct MaskCirclePoint {
     float x, y;
@@ -289,12 +280,12 @@ class MaskCircleTerrainNotify { public:
 };
 
 void Rva000ADA1AMask::rva000ADF90(const MaskCirclePoint *center,float radius,unsigned char value) {
- int xMin=fast_float2long_round((float)floor((center->x-radius)*0.1f))+border;
- int yMin=fast_float2long_round((float)floor((center->y-radius)*0.1f))+border;
+ int xMin=fast_float2long_round((float)floor(static_cast<double>((center->x-radius)*0.1f)))+border;
+ int yMin=fast_float2long_round((float)floor(static_cast<double>((center->y-radius)*0.1f)))+border;
  if(xMin<0)xMin=0;
  if(yMin<0)yMin=0;
- int xMax=fast_float2long_round((float)ceil((center->x+radius)*0.1f))+border;
- int yMax=fast_float2long_round((float)ceil((center->y+radius)*0.1f))+border;
+ int xMax=fast_float2long_round((float)ceil(static_cast<double>((center->x+radius)*0.1f)))+border;
+ int yMax=fast_float2long_round((float)ceil(static_cast<double>((center->y+radius)*0.1f)))+border;
  if(xMax>width)xMax=width;
  if(yMax>height)yMax=height;
  float radius2=radius*radius;MaskCirclePoint p(*center);p.x+=border*10.0f;p.y+=border*10.0f;float centerX=p.x,centerY=p.y;

@@ -5,17 +5,14 @@
 // plus new 0x20 plus ctor 0x002B644A (RegionAwardDispute) plus map<int int> subscript 0x0028932C
 // plus increment 0x00024250 loop; minimal _STL forward declares (no <map>
 // to keep direct E8 calls and avoid dllimport/redefinition).
+#include <new.h>
+#include <new>
+
 class RegionAwardDispute
 {
 public:
 	RegionAwardDispute();
 };
-
-void *__cdecl operator new(unsigned int size);
-inline void *__cdecl operator new(unsigned int, void *p)
-{
-	return p;
-}
 
 namespace _STL
 {

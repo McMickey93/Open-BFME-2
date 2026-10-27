@@ -752,22 +752,13 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp
 Code/GameEngineDevice/Source/W3DDevice/GameClient/RTS3DSceneRenderOneObject.cpp	unverified	unverified	3	1	0	0	2	0	0	0	0	0	0	<windows.h>	yes	yes	hand			TRUE:unverified,FALSE:unverified,NULL:same
 Code/Libraries/Source/WWVegas/WWLib/vector_class_resize.cpp	unverified	unverified	3	2	0	0	1	0	0	0	0	0	0	<new>	no	yes	hand			operator new [ ]:unverified,operator new [ ]:same,operator delete [ ]:same
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	unverified	unverified	2	0	0	0	2	0	0	0	0	0	0	<windows.h>	yes	no	hand			TRUE:unverified,FALSE:unverified
-Code/GameEngine/Source/Common/Open2Records.cpp	unverified	unverified	2	0	0	0	2	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified,operator delete:unverified
-Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp	unverified	unverified	2	0	0	0	2	0	0	0	0	0	0	<windows.h>	yes	yes	hand			TRUE:unverified,FALSE:unverified
-Code/GameEngine/Source/Common/Rva001E46E1Ratios.cpp	unverified	unverified	2	1	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand	27: reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:61 malloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:62 calloc(unknown); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/always.h:63 realloc(unknown)		atan2:unknown,sin:same
 Code/GameEngine/Source/Common/Rva001F8167Dtor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<crtdbg.h>,<new>	no	yes	hand			free:unverified,operator delete:same
 Code/GameEngine/Source/Common/Rva002147D1Get.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,memset:same
-Code/GameEngine/Source/Common/Rva002B9CFCFinish.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
-Code/GameEngine/Source/Common/Rva0033FC0ACtor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
-Code/GameEngine/Source/Common/Rva00343756Ctor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
-Code/GameEngine/Source/Common/Rva00380AB1Ctor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
-Code/GameEngine/Source/Common/Rva0039B8D8FillN.cpp	unverified	unverified	2	0	0	0	2	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified,operator delete:unverified
 Code/GameEngine/Source/Common/Rva0040CB11EntryCtor.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	no	hand			operator new:unverified,size_t:same
 Code/GameEngine/Source/Common/Rva00431AEC.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
 Code/GameEngine/Source/Common/Rva00469BEAConstruct.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
 Code/GameEngine/Source/Common/Rva004F6352Construct.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<string.h>,<new.h>	no	yes	hand			operator new:unverified,size_t:same
 Code/GameEngine/Source/Common/Rva00579E47Delegate.cpp	unverified	unverified	2	1	0	0	1	0	0	0	0	0	0	<new>,<new.h>	no	yes	hand			operator new:unverified,operator new:same
-Code/GameEngine/Source/Common/Rva00749A10MaskAX.cpp	unverified	unverified	2	0	2	0	0	0	0	0	0	0	0	<math.h>	no	yes	hand	2: reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/basetype.h:109 TRUE(unverified); reference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib/basetype.h:113 FALSE(unverified)		ceil:source,floor:source
 Code/GameEngine/Source/Common/Rva007AC6DDGlobalInits.cpp	unverified	unverified	2	0	1	0	1	0	0	0	0	0	0	<new.h>,<stdlib.h>	no	yes	hand			operator new:unverified,atexit:source
 Code/GameEngine/Source/Common/Rva007AC6DDGlobalInits_Rva007AC6DD.cpp	unverified	unverified	2	0	1	0	1	0	0	0	0	0	0	<new.h>,<stdlib.h>	no	yes	hand			operator new:unverified,atexit:source
 Code/GameEngine/Source/Common/Rva007ACDE1StlGlobalInits.cpp	unverified	unverified	2	0	1	0	1	0	0	0	0	0	0	<new.h>,<stdlib.h>	no	yes	hand			operator new:unverified,atexit:source

@@ -48,9 +48,7 @@ public:
 #include "string_base.h"
 
 #include "ascii_string.h"
-
-inline void *operator new( unsigned int, void *place ) { return place; }
-inline void operator delete( void *, void * ) {}
+#include <new.h>
 
 // -------------------------------------------------------------------------
 // 0x00134500 -- 105 bytes, ctor

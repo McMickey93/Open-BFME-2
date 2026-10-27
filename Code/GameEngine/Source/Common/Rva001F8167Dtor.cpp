@@ -11,8 +11,7 @@ void Rva00030830FreeAllocation(void *);
 #define free Rva00030830FreeAllocation
 #include <vector>
 #undef free
-
-void __cdecl operator delete(void *block);
+#include <new>
 
 class H1F8167Pointee
 {

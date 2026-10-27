@@ -3,6 +3,7 @@
 // Guarded indexed fetch through Rva0040327B::rva004032D3: bounds-check index
 // against (m_end-m_begin)-1, null-check the slot, else return 0. Evidence:
 // chain from 0x004032D3; callers at 0x004038BA 0x00403D56 0x0040408F.
+#include <string.h>
 class Object;
 class Rva0040327B
 {
@@ -13,7 +14,6 @@ public:
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 #pragma function(memset)
-extern "C" void *memset(void *dst, int value, unsigned int size);
 class WeaponTemplateSetHead
 {
 	char _m[0x4C];

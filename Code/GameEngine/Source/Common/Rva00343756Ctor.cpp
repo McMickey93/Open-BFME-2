@@ -12,6 +12,7 @@
 // condition table, retail's 36 bytes at 0x00813164: {0x0034373F, 0x270F, 0},
 // {0x0033FDEB, 0x270F, 2} and the terminator, the tests being the rowed
 // rva0034373F and rva0033FDEB.
+#include <new>
 
 class Object;
 
@@ -67,9 +68,6 @@ public:
 	AttackContesterStateMachine(Object *owner, int val, unsigned int name);
 	virtual ~AttackContesterStateMachine();
 };
-
-extern void *__cdecl operator new(unsigned int size);
-inline void *__cdecl operator new(unsigned int, void *p) { return p; }
 
 AttackContesterStateMachine::AttackContesterStateMachine(Object *owner, int val, unsigned int name)
 	: StateMachine(owner, name, false)

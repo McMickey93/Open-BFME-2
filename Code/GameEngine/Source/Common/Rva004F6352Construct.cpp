@@ -5,8 +5,7 @@
 // Null-checks the destination then thiscall-copy-constructs into it via
 // rowed copy ctor 0x004F62DE. Callers 0x004F6B1E 0x004F6B44 0x004F8F61
 // 0x004F93E7 are uninitialized-copy walks with stride 0xC.
-
-typedef unsigned int size_t;
+#include <stddef.h>
 
 inline void *operator new(size_t, void *place)
 {

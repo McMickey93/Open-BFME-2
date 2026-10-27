@@ -7,8 +7,7 @@
 // Evidence: called per element by 0x0046AC30 (which allocates 0x24 and
 // constructs at +0x10); 0x10 element size with Rva00469155 member proven by
 // the copy ctor. Caller 0x0046AC44.
-
-typedef unsigned int size_t;
+#include <stddef.h>
 
 inline void *operator new(size_t, void *place)
 {

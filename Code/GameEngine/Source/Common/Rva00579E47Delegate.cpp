@@ -15,6 +15,7 @@
 // 0x10); throw() new for null check; Base-with-virtual-dtor plus inline Impl
 // ctor gives retail and-before-vtable order with mov ecx first (probe test3/4
 // exact, 0 structural regions, vtable DIR32 filled by gate).
+#include <new.h>
 void *__cdecl operator new(unsigned int size) throw();
 
 struct DelegateDesc {
@@ -42,7 +43,6 @@ private:
     Impl *m_ptr;
 };
 
-inline void *operator new(unsigned int, void *p) { return p; }
 // Select-any like every other TU's copy (a strong definition would duplicate theirs at link time);
 // the anchor keeps the noinline body emitted.
 __declspec(noinline) inline Rva00579E47::Rva00579E47(const DelegateDesc &d)

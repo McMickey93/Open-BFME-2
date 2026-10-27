@@ -1,7 +1,7 @@
 // cl: /EHs /D_STLP_NO_EXCEPTIONS /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
 // ??0Rva00380AB1@@QAE@PAX@Z @ 0x00380AB1 (53B): ctor wrapper holding refcounted impl with func ptr twin of Rva0023E8D8. Retail new 0xc stores vtable 0x00C18F08 refcount func from *arg then AddRef. Caller 0x00380BE7.
-void *__cdecl operator new(unsigned int);
-inline void *__cdecl operator new(unsigned int, void *p) { return p; }
+#include <new.h>
+#include <new>
 
 struct Rva00080221RefImpl { virtual ~Rva00080221RefImpl() {} int m_ref; Rva00080221RefImpl() : m_ref(0) {} };
 class Rva00380AB1Impl : public Rva00080221RefImpl

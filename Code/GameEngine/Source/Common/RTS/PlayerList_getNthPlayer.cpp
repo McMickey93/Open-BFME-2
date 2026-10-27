@@ -24,8 +24,6 @@ typedef bool Bool;
 typedef int Int;
 #define MAX_PLAYER_COUNT 20
 #define BitTest(x, i) (((x) & (i)) != 0)
-#define TRUE true
-#define FALSE false
 
 enum NameKeyType { NAMEKEY_INVALID = 0 };
 enum Relationship { ENEMIES = 0, NEUTRAL = 1, ALLIES = 2 };

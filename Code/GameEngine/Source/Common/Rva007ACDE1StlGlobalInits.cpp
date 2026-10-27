@@ -10,13 +10,12 @@
 // and the original variable names are unrecovered; storage keeps the global
 // the cleanup thunk already names. Retail bytes give every operand.
 #include "../GameLogic/LargeGroupAudio/LargeGroupAudioKeyTreeStorage.h"
+#include <stdlib.h>
 
 inline void *operator new(unsigned int, void *where)
 {
 	return where;
 }
-
-extern "C" int __cdecl atexit(void (__cdecl *callback)());
 
 class DamageFX;
 enum NameKeyType {};
