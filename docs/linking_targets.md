@@ -346,7 +346,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E2857.cpp` | 73 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (1f0a322ceb, LINK-035); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva003609F7.cpp` | 73 | 4 (C=2, S=2) | Open |
 | `Code/GameEngine/Source/Common/S4StlSortHelpers.cpp` | 71 | 21 (U=13, C=5, S=3) | 2026-10-26, inspected `2a45addda180`: corrected element/comparator view and bounded instantiation. Cleared in ordinary-preview scope; census confirmation pending. [LINK-045](linking_obstacles.md#link-045-s4sortelem20-element-members-exist-only-as-private-comdats-under-a-placeholder-name); raw paired receipts in `build/link-worker-w6/`. |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00212A16.cpp` | 68 | 9 (U=3, C=3, S=3) | 2026-10-26 at `2a45addda1`: Native AsciiString-keyed resize, bucket and node owners disagree with the opaque key/value instantiation (LINK-002). Whole-unit clearance and census confirmation pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00212A16.cpp` | 68 | 9 (U=3, C=3, S=3) | 2026-10-26: LINKS in preview (33a4c45d14, LINK-083); census pending |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0002CCC3.cpp` | 67 | 4 (U=2, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00218FC2.cpp` | 67 | 4 (U=4) | Open |
 | `Code/GameEngine/Source/Common/RTS/ScoreKeeperPerFrameStatsDefaultResizeDeferred.cpp` | 66 | 4 (U=3, C=1) | Open |
@@ -457,7 +457,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 
 
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000AF1C2.cpp` | 0 | 3 (U=1, C=1, S=1) | 2026-10-26: retired (2360ac3cf8). Duplicate claim: 0x000AF1C2 is rowed and links in `Rva000AF1C2Forward.cpp`; sweep unit, row and its pin removed (LINK-060) |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | Blocked: callee rowed as 3-arg `__destroy_aux` (LINK-035) |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva000B0298.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: retired (1b06fe6829). Duplicate claim: 0x000B0298 is rowed and links in `Rva000B0298Clear.cpp`; sweep unit and row removed (LINK-060) |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001DE3E3.cpp` | 0 | 7 (U=3, C=2, S=2) | 2026-10-26 at `2a45addda1`: Assignment-only instantiation clears the unrelated equality dependency; native clear/copy identity and duplicate ownership remain (LINK-066, LINK-060). Whole-unit clearance and census confirmation pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva001FDEBC.cpp` | 0 | 7 (U=3, C=2, S=2) | 2026-10-26 at `2a45addda1`: Assignment-only instantiation clears the unrelated equality dependency; native clear/copy identity and duplicate ownership remain (LINK-066, LINK-060). Whole-unit clearance and census confirmation pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva0022DCDA.cpp` | 0 | 7 (U=5, C=1, S=1) | 2026-10-26: LINKS in preview (79e9273e2d, LINK-035); census pending |
