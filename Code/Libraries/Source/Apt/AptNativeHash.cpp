@@ -35,6 +35,8 @@ public:
     unsigned int rva006D3750() const;
     unsigned short rva006D3D10() const;
     bool IsEmpty() const;
+    void rva006D3470();
+    const char *rva00620090() const;
 };
 
 class AsciiString {
@@ -59,6 +61,7 @@ public:
 };
 
 struct AptHashItem;
+class BfmeAptValue006DCD20;
 
 class AptNativeHash {
     struct Entry { AsciiString key; AptValue *value; };
@@ -87,6 +90,7 @@ public:
     AsciiString *rva0070AA40();
     void rva0070AB30();
     Entry *rva0070AAA0(Entry *pItem);
+    void rva0070B180(BfmeAptValue006DCD20 *pValue, EAStringC *pStr, int bRemove);
 private:
     AptHashItem *HashFindKey(const EAStringC *const) const;
     friend class Rva0070B380;
