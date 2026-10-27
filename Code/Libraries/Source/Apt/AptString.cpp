@@ -85,7 +85,6 @@ private:
 // (0x006D3010). No call site names the helper, so the function and its owner
 // are address-derived.
 
-extern "C" int __cdecl vsprintf(char *buf, const char *fmt, char *args);
 
 class Rva006D7010Owner
 {

@@ -14,7 +14,7 @@
 // Entry is a local view: the key is opaque here, not a recovered donor key type.
 extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char *, const char *, int);
 extern int g_bfmeAptBreakOnAssertAtDDC01C;
-extern "C" void *__cdecl memset(void *, int, unsigned int);
+#include <string.h>
 #pragma intrinsic(memset)
 void __debugbreak();
 #pragma intrinsic(__debugbreak)
