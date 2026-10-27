@@ -4284,6 +4284,23 @@ proved by shared callees. Remaining: reconcile that identity and downstream
 provider contracts; confirm strict recursive closure and the next census.
 No census-linked-byte or image-ownership gain is claimed.
 
+**Real element names for two R3 rows (2026-10-27, seat halilkkaya-lk3,
+inspected `d16a31e4dc`, index `73061d9452`, retail-truth-4):**
+- `StlSweepR3Rva003F40EF.cpp` is `_STL::swap<ArmySummary>`. Target facts: the
+  75-byte body builds a 0x68 temporary through 0x0040E96D, assigns twice
+  through 0x0040EAED and destroys the temporary through 0x0040E499; those rows
+  are `ArmySummary`'s copy constructor, `operator=` and virtual destructor.
+  The unit now declares only those three members (no ZH or placeholder
+  record) and instantiates the real STLport `swap`; the row and its
+  `__ehhandler$` row are respelled `??$swap@VArmySummary@@@_STL@@...`, and the
+  one consumer (`LivingWorldBattle::BattlePlayer::SwapArmies`, 0x003F427D)
+  calls it under that name. The three `Rva003F40EFRecord` pins are dropped.
+  `./build.sh` 18/18 rows exact across both sources (EH labels verified past
+  renumbering); link_check: the unit 0 -> 85 B, LivingWorldBattle.cpp,
+  ArmySummaryCopyBFME2.cpp and ArmySummary.cpp still LINKS. The 0x00783FBC
+  unwind funclet stays in `uw_gen_001.cpp` (LINK-095 lane).
+- Census confirmation: awaiting the next census.
+
 ### LINK-069: the four-byte merge sweep combines a string buffer with opaque record helpers
 
 Status: Blocked on algorithm, element and provider-name reconciliation. Updated: 2026-10-26; inspected revision: `58598f540fd3c84610304b3659ed382a4c05acca`.

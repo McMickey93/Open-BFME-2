@@ -5,8 +5,8 @@
 // LivingWorldBattle.cpp -- battle-player members recovered from WorldBuilder
 // leads (reverse/wb_name_leads.csv): WB's debug build names the function;
 // retail supplies the bytes. Swapping two armies exchanges their pointers in
-// the array at +0x04 and swaps the matching 0x68-byte army records at +0x10
-// through 0x003F40EF (unnamed).
+// the array at +0x04 and swaps the matching 0x68-byte army summaries at +0x10
+// through _STL::swap<ArmySummary> (0x003F40EF).
 
 typedef int Int;
 
@@ -54,9 +54,9 @@ struct BattleArmyRecord
 	unsigned char m_data[0x68];
 };
 
-// The 104-byte swap worker is already owned by this STLport instantiation.
-struct Rva003F40EFRecord;
-namespace _STL { template<> void swap<Rva003F40EFRecord>(Rva003F40EFRecord&, Rva003F40EFRecord&); }
+// The 104-byte swap worker is the rowed _STL::swap<ArmySummary> (0x003F40EF).
+class ArmySummary;
+namespace _STL { template<> void swap<ArmySummary>(ArmySummary&, ArmySummary&); }
 
 template <class T> inline void swapValues(T &a, T &b)
 {
@@ -143,7 +143,7 @@ void LivingWorldBattle::rva003F5397(Int a0, Int a1, Int a2, Int a3)
 void LivingWorldBattle::BattlePlayer::SwapArmies(Int first, Int second)
 {
 	swapValues(m_armies[first], m_armies[second]);
-	_STL::swap(*(Rva003F40EFRecord*)&m_records[first], *(Rva003F40EFRecord*)&m_records[second]);
+	_STL::swap(*(ArmySummary*)&m_records[first], *(ArmySummary*)&m_records[second]);
 }
 
 // ComputeBattleResultsForPlayersAfterAutoBattle: WB 104B1D0 (assertions
