@@ -49069,10 +49069,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0060B7FB,12,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060B807,7,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060B80E,18,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B807..0x0060B820 noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
-0x0060B820,11,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/pooled_string_nocase.cpp
-0x0060B82B,36,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/pooled_string_nocase.cpp
+0x0060B820,11,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
+0x0060B82B,36,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060B84F,26,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B82B..0x0060B869 noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
-0x0060B869,29,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B82B..0x0060B886 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_bool_empty.cpp
+0x0060B869,29,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B82B..0x0060B886 noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060B886,64,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,S,S=Code/GameEngine/Source/Common/System/Xfer.cpp N=Code/GameEngine/Source/Common/System/Xfer.cpp noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060B8C6,19,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B886..0x0060B8D9 noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060B8D9,152,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B886..0x0060B971 noncontiguous,Code/GameEngine/Source/Common/System/XferVersionTransfer.cpp
@@ -49089,16 +49089,16 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0060BB7D,44,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B886..0x0060BBA9 noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060BBA9,44,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060B886..0x0060BBD5 noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060BBD5,125,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,S,S=Code/GameEngine/Source/Common/System/Xfer.cpp N=Code/GameEngine/Source/Common/System/Xfer.cpp noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
-0x0060BC53,88,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060BBD5..0x0060BCAB noncontiguous,Code/GameEngine/Source/Common/System/Rva0060BC53.cpp
+0x0060BC53,88,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060BBD5..0x0060BCAB noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060BCAB,55,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060BCE2,55,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060BD19,24,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060BCE2..0x0060BD31 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/ascii_string.cpp
-0x0060BD31,22,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060BCE2..0x0060BD47 noncontiguous,Code/GameEngine/Source/Common/System/Rva0060BC53.cpp
+0x0060BD31,22,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060BCE2..0x0060BD47 noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060BD47,37,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060BD6C,34,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060BD8E,37,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060BDB3,34,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
-0x0060BDD5,46,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060BDB3..0x0060BE03 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_bool_empty.cpp
+0x0060BDD5,46,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060BDB3..0x0060BE03 noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060BE03,40,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060BE2B,42,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
 0x0060BE55,42,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/GameEngine/Source/Common/System/PooledString.cpp noncontiguous,Code/GameEngine/Source/Common/System/PooledString.cpp
@@ -49113,9 +49113,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0060C45E,11,code,,,-,,Code/GameEngine/Source/Common/Rva0060C45EClear.cpp
 0x0060C469,129,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,S,S=Code/GameEngine/Source/Common/System/Xfer.cpp N=Code/Libraries/Source/xfer/Xfer.cpp noncontiguous,Code/Libraries/Source/xfer/xfer_load.cpp
 0x0060C4EA,95,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,U,N=Code/Libraries/Source/xfer/BlockStreamReader.cpp noncontiguous,Code/Libraries/Source/xfer/xfer_load.cpp
-0x0060C549,84,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060C4EA..0x0060C59D noncontiguous,Code/GameEngine/Source/Common/Gen009D8BD0.cpp
+0x0060C549,84,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060C4EA..0x0060C59D noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060C59D,93,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060C4EA..0x0060C5FA noncontiguous,Code/Libraries/Source/xfer/xfer_load.cpp
-0x0060C5FA,47,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060C4EA..0x0060C629 noncontiguous,Code/Libraries/Source/xfer/Rva0060C5FACtor.cpp
+0x0060C5FA,47,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,C,C=0x0060C4EA..0x0060C629 noncontiguous,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0060C629,205,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,S,S=Code/GameEngine/Source/Common/System/Xfer.cpp N=Code/Libraries/Source/xfer/Xfer.cpp noncontiguous,Code/Libraries/Source/xfer/xfer_load.cpp
 0x0060C6F6,183,code,Code/GameEngine/Source/Common/System/Xfer.cpp,proposed,S,S=Code/GameEngine/Source/Common/System/Xfer.cpp N=Code/Libraries/Source/xfer/Xfer.cpp noncontiguous,Code/Libraries/Source/xfer/xfer_load.cpp
 0x0060C7AD,260,code,Code/GameEngine/Source/Common/System/XferLoad.cpp,proposed,S,S=Code/GameEngine/Source/Common/System/XferLoad.cpp N=Code/Libraries/Source/xfer/XferLoad.cpp noncontiguous,Code/Libraries/Source/xfer/xfer_load.cpp
