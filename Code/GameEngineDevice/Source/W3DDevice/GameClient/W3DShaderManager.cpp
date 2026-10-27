@@ -56,16 +56,17 @@ public:
 
 class DX8Wrapper
 {
+	friend class W3DShaderManager;
 public:
 	static IDirect3DDevice8 *_Get_D3D_Device8() { return D3DDevice; }
 	static void Set_Render_Target(IDirect3DSurface8 *target, bool useDefaultDepth);
 
 protected:
 	static IDirect3DDevice8 *D3DDevice;
+	static unsigned texture_stage_state_changes;
 };
 
 extern unsigned number_of_DX8_calls;
-extern unsigned ScreenTextureStageStateChanges;
 
 class ScreenMotionBlurFilter
 {
@@ -96,22 +97,22 @@ IDirect3DTexture8 *W3DShaderManager::endRenderToTexture()
 	DX8Wrapper::Set_Render_Target(m_oldRenderSurface, true);
 	DX8Wrapper::_Get_D3D_Device8()->m_vtable->m_setSamplerState(DX8Wrapper::_Get_D3D_Device8(), 0, 1, 3);
 	++number_of_DX8_calls;
-	++ScreenTextureStageStateChanges;
+	++DX8Wrapper::texture_stage_state_changes;
 	DX8Wrapper::_Get_D3D_Device8()->m_vtable->m_setSamplerState(DX8Wrapper::_Get_D3D_Device8(), 0, 2, 3);
 	++number_of_DX8_calls;
-	++ScreenTextureStageStateChanges;
+	++DX8Wrapper::texture_stage_state_changes;
 	DX8Wrapper::_Get_D3D_Device8()->m_vtable->m_setSamplerState(DX8Wrapper::_Get_D3D_Device8(), 0, 3, 3);
 	++number_of_DX8_calls;
-	++ScreenTextureStageStateChanges;
+	++DX8Wrapper::texture_stage_state_changes;
 	DX8Wrapper::_Get_D3D_Device8()->m_vtable->m_setSamplerState(DX8Wrapper::_Get_D3D_Device8(), 0, 5, 2);
 	++number_of_DX8_calls;
-	++ScreenTextureStageStateChanges;
+	++DX8Wrapper::texture_stage_state_changes;
 	DX8Wrapper::_Get_D3D_Device8()->m_vtable->m_setSamplerState(DX8Wrapper::_Get_D3D_Device8(), 0, 6, 2);
 	++number_of_DX8_calls;
-	++ScreenTextureStageStateChanges;
+	++DX8Wrapper::texture_stage_state_changes;
 	DX8Wrapper::_Get_D3D_Device8()->m_vtable->m_setSamplerState(DX8Wrapper::_Get_D3D_Device8(), 0, 7, 0);
 	++number_of_DX8_calls;
-	++ScreenTextureStageStateChanges;
+	++DX8Wrapper::texture_stage_state_changes;
 	m_renderingToTexture = false;
 	return m_renderTexture;
 }

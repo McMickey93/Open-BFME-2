@@ -29,7 +29,8 @@ void Rva007F0120(void *a, void *b);
 Rva007EB810Diag *Rva007EB810Get();
 void Rva007EBAA0(void);
 
-extern ServiceHubImpl *g_Va0130A588;
+class T_007ea120;
+extern T_007ea120 *g_Va0130A588;
 extern unsigned char g_Va0130A58C;
 extern unsigned char g_Va0130A58D;
 
@@ -54,13 +55,11 @@ ServiceHubImpl *createServiceHubImpl(void *a, void *b, void *c, void *d, void *e
 	void *raw = Gen007F0130(0x2B0);
 	if (raw)
 	{
-		g_Va0130A588 = new (raw) ServiceHubImpl(a, b, c, d, e, f);
-		return g_Va0130A588;
+		g_Va0130A588 = (T_007ea120 *)new (raw) ServiceHubImpl(a, b, c, d, e, f);
+		return (ServiceHubImpl *)g_Va0130A588;
 	}
 	g_Va0130A588 = 0;
 }
-// ?g_Va0130A588@@3PAVServiceHubImpl@@A: the global at VA 0xe09fa4 is ?g_Va0130A588@@3PAVT_007ea120@@A.
-#pragma comment(linker, "/alternatename:?g_Va0130A588@@3PAVServiceHubImpl@@A=?g_Va0130A588@@3PAVT_007ea120@@A")
 
 // Primary semantic guide: whole BFME1 createServiceHubImpl.cpp, revision
 // 5cc75ddda6455c338a5068307e587a793f96d6b3, blob

@@ -340,7 +340,7 @@ struct RendererFVFDeleteListView
 	unsigned char pad[0x34];
 	FVFCategoryList list;
 };
-extern RendererFVFDeleteListView *RendererPtr00DF363C;
+extern "C" DX8MeshRendererClass *__identifier("?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A");
 void DX8FVFCategoryContainer::Remove_Texture_Category(DX8TextureCategoryClass* tex_category)
 {
 	for (unsigned pass=0;pass<passes;++pass) {
@@ -350,7 +350,7 @@ void DX8FVFCategoryContainer::Remove_Texture_Category(DX8TextureCategoryClass* t
 		// If any of the texture category lists has anything in it, no need to delete this container
 		if (texture_category_list[pass].Peek_Head() != NULL) return;
 	}
-	RendererFVFDeleteListView *renderer = RendererPtr00DF363C;
+	RendererFVFDeleteListView *renderer = (RendererFVFDeleteListView *)__identifier("?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A");
 	if (renderer)
 		renderer->list.Add_Tail(this);
 }
@@ -1194,7 +1194,7 @@ void DX8TextureCategoryClass::Render(void)
 			Vector3 mesh_position;
 			Vector3 camera_z_vector;
 
-			((DX8MeshRendererClass *)RendererPtr00DF363C)->Peek_Camera()->Get_Transform().Get_Z_Vector(&camera_z_vector);
+			__identifier("?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A")->Peek_Camera()->Get_Transform().Get_Z_Vector(&camera_z_vector);
 			const Matrix3D & mesh_tm = mesh->Get_Transform();
 			((const TCRTranslationView &)mesh_tm).Get_Translation(&mesh_position);
 
@@ -1205,7 +1205,7 @@ void DX8TextureCategoryClass::Render(void)
 			Vector3 mesh_position;
 			Vector3 camera_position;
 
-			const Matrix3D & camera_tm = ((DX8MeshRendererClass *)RendererPtr00DF363C)->Peek_Camera()->Get_Transform();
+			const Matrix3D & camera_tm = __identifier("?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A")->Peek_Camera()->Get_Transform();
 			camera_position.X = camera_tm[0][3];
 			camera_position.Y = camera_tm[1][3];
 			camera_position.Z = camera_tm[2][3];
@@ -1521,8 +1521,6 @@ void Invalidate_FVF_Category_Container_ListCaller(FVFCategoryList& list)
 // DX8MeshRendererClass::Invalidate: the byte-exact BFME2 definition is in
 // DX8MeshRendererClass_Invalidate_Thunk.cpp. The ZH definition formerly here
 // reset RegisteredMeshList, which retail omits, and duplicated that provider.
-// ?RendererPtr00DF363C@@3PAURendererFVFDeleteListView@@A: the global at VA 0xdf363c is ?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A.
-#pragma comment(linker, "/alternatename:?RendererPtr00DF363C@@3PAURendererFVFDeleteListView@@A=?TheDX8MeshRenderer@@3PAVDX8MeshRendererClass@@A")
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.

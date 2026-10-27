@@ -74,7 +74,12 @@ public:
 	void Free_Object_Memory(T *object);
 };
 
-extern ObjectPoolClass<HAnimComboDataClass, 256> TheHAnimComboDataPool;	///< retail [0x0134BC4C]
+template <class T, int NUM> class AutoPoolClass
+{
+	friend class HAnimComboDataClass;
+private:
+	static ObjectPoolClass<T, NUM> Allocator;
+};
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/hanim.h
 class HAnimComboDataClass
@@ -92,7 +97,7 @@ public:
 
 	void operator delete(void *block)
 	{
-		TheHAnimComboDataPool.Free_Object_Memory((HAnimComboDataClass *)block);
+		AutoPoolClass<HAnimComboDataClass, 256>::Allocator.Free_Object_Memory((HAnimComboDataClass *)block);
 	}
 
 private:
@@ -138,5 +143,3 @@ void	HAnimComboClass::Reset( void )
 	}
 	HAnimComboData.Reset_Active();
 }
-// ?TheHAnimComboDataPool@@3V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A: the global at VA 0xdfcec4 is ?Allocator@?$AutoPoolClass@VHAnimComboDataClass@@$0BAA@@@0V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A.
-#pragma comment(linker, "/alternatename:?TheHAnimComboDataPool@@3V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A=?Allocator@?$AutoPoolClass@VHAnimComboDataClass@@$0BAA@@@0V?$ObjectPoolClass@VHAnimComboDataClass@@$0BAA@@@A")

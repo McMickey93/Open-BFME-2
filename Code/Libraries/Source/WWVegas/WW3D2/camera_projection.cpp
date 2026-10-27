@@ -34,6 +34,7 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include "../../../../../reference/shims/bfme_projection_matrix_link/matrix4.h"
 #include "camera.h"
 #include "dx8wrapper.h"
+extern float bfmeProjectionBias;
 void DX8Wrapper::Set_Projection_Transform_With_Z_Bias(const Matrix4x4& matrix,float znear,float zfar)
 {
  ZFar=zfar;
@@ -43,7 +44,7 @@ void DX8Wrapper::Set_Projection_Transform_With_Z_Bias(const Matrix4x4& matrix,fl
  DeviceProjectionMatrix=ProjectionMatrix;
  if (ZNear!=ZFar) {
   float scale=ZNear*ZFar/(ZFar-ZNear);
-  float bias=ProjectionDepthBias*0.000625f;
+  float bias=bfmeProjectionBias*0.000625f;
   DeviceProjectionMatrix[3][2]-=scale*bias;
  }
  DX8CALL(SetTransform(D3DTS_PROJECTION,(D3DMATRIX*)&DeviceProjectionMatrix));
@@ -51,4 +52,3 @@ void DX8Wrapper::Set_Projection_Transform_With_Z_Bias(const Matrix4x4& matrix,fl
 
 // Retail's data references in this unit's matched rows land on globals defined
 // under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?ProjectionDepthBias@DX8Wrapper@@1MA=?bfmeProjectionBias@@3MA")

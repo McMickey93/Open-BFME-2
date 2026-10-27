@@ -57,7 +57,7 @@ struct GlobalA03354
 	StringBase<UnsignedShort> m_name;
 };
 
-extern GlobalA03354 *g_Va00A03354;
+extern int g_Va00A03354;
 void Rva00248D84Enable();
 
 class LANAPI
@@ -142,7 +142,7 @@ void LANAPI::OnAccept(const BfmeNetAddress *address, Bool flag)
 		BfmeNetAddress *slotAddr = &m_holder->m_slots[index].m_address;
 		if (slotAddr->Rva00248CBF(address))
 			goto found;
-		GlobalA03354 *g = g_Va00A03354;
+		GlobalA03354 *g = (GlobalA03354 *)g_Va00A03354;
 		if (g != 0)
 			g->m_name.validate();
 	}
@@ -165,5 +165,3 @@ done:
 		Rva00248D84Enable();
 	}
 }
-// ?g_Va00A03354@@3PAUGlobalA03354@@A: the global at VA 0xe03354 is ?g_Va00A03354@@3HA.
-#pragma comment(linker, "/alternatename:?g_Va00A03354@@3PAUGlobalA03354@@A=?g_Va00A03354@@3HA")

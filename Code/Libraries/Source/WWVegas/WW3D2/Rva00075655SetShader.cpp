@@ -6,9 +6,12 @@
 // 0x009E1F24, return 0 for an empty slot, else return its slot-0 virtual
 // called with the second arg. Called from W3DShroudMaterialPass install.
 
-extern int g_00DE1F54;
-// Owned here (its only reader); retail .bss zero-initializes it (VA 0x00DE1F54).
-int g_00DE1F54 = 0;
+class W3DShaderManager
+{
+	friend class Rva00075655;
+protected:
+	static int m_currentShader;
+};
 extern int g_00DE1F18;
 // Owned here (its only reader); retail .bss zero-initializes it (VA 0x00DE1F18).
 int g_00DE1F18 = 0;
@@ -30,9 +33,9 @@ public:
 
 int Rva00075655::setShader(int a, int b)
 {
-	if (a == g_00DE1F54 && b == g_00DE1F18)
+	if (a == W3DShaderManager::m_currentShader && b == g_00DE1F18)
 		return 1;
-	g_00DE1F54 = a;
+	W3DShaderManager::m_currentShader = a;
 	g_00DE1F18 = b;
 	if (g_00DE1F24[a] != 0)
 		return g_00DE1F24[a]->slot00(b);

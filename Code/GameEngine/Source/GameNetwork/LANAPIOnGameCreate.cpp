@@ -41,7 +41,7 @@ struct Rva004469D1Receiver
 {
 	void Rva004469D1Advance( void );
 };
-extern Rva004469D1Receiver *g_Va00E03354;
+extern int g_Va00A03354;
 
 // Rowed callee at 0x004469D1: ?OnGameCreate@AptLanLobby@@QAEXXZ (the LAN
 // lobby screen, named from WorldBuilder's AptLanLobby.cpp). Declared exactly as its owner row spells it;
@@ -146,9 +146,9 @@ void LANAPI::OnGameCreate( LANAPIInterface::ReturnType ret )
 {
 	if( ret == LANAPIInterface::RET_OK )
 	{
-		if( g_Va00E03354 )
+		if( g_Va00A03354 )
 		{
-			((AptLanLobby *)g_Va00E03354)->OnGameCreate();
+			((AptLanLobby *)g_Va00A03354)->OnGameCreate();
 		}
 		else
 		{
@@ -173,9 +173,3 @@ void LANAPI::OnGameCreate( LANAPIInterface::ReturnType ret )
 		}
 	}
 }
-
-// ?g_Va00E03354@@3PAURva004469D1Receiver@@A: the global at this VA is ?g_Va00A03354@@3HA; this name is an alias for it.
-#pragma comment(linker, "/alternatename:?g_Va00E03354@@3PAURva004469D1Receiver@@A=?g_Va00A03354@@3HA")
-#pragma comment(linker, "/alternatename:?g_Va00A03354@@3PAUOuter00446A77@@A=?g_Va00A03354@@3HA")
-// ?g_Va00E03354@@3PAURva004469D1Receiver@@A: the global at VA 0xe03354 is ?g_Va00A03354@@3HA.
-#pragma comment(linker, "/alternatename:?g_Va00E03354@@3PAURva004469D1Receiver@@A=?g_Va00A03354@@3HA")

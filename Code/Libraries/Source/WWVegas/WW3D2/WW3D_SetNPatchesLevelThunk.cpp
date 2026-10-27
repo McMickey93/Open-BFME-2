@@ -26,13 +26,14 @@ extern DX8MeshRendererClass *TheDX8MeshRenderer;
 // 0x012D6D8C.  Declared external rather than file-static so the optimizer
 // cannot reason about the only writer, which is what keeps the two reloads
 // retail performs around the first Invalidate call.
-extern unsigned NPatchesLevel;
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2/ww3d.h
 class WW3D
 {
 public:
 	static void Set_NPatches_Level( unsigned level );
+private:
+	static unsigned NPatchesLevel;
 };
 
 void WW3D::Set_NPatches_Level( unsigned level )
@@ -43,5 +44,3 @@ void WW3D::Set_NPatches_Level( unsigned level )
 	if( NPatchesLevel > 1 && level == 1 ) TheDX8MeshRenderer->Invalidate( false );
 	NPatchesLevel = level;
 }
-// ?NPatchesLevel@@3IA: the global at VA 0xdb5f94 is ?NPatchesLevel@WW3D@@0IA.
-#pragma comment(linker, "/alternatename:?NPatchesLevel@@3IA=?NPatchesLevel@WW3D@@0IA")

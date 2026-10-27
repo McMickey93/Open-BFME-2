@@ -123,7 +123,7 @@ public: virtual void Apply(int uv_array_index);
 // Matched Apply DIR32 slots place this 64-byte zero-fill matrix at VA
 // 0x00DEDBF0 (tools/find_dir32.py); it is the unnamed upload copy adjacent to
 // DX8Wrapper::ProjectionMatrix at 0x00DEDC30.
-Matrix4x4 g_mapperProjectionUpload_009EDBF0;
+extern "C" Matrix4 __identifier("?DeviceProjectionMatrix@DX8Wrapper@@1VMatrix4@@A");
 // Access shim only: no runtime instances or claim of a retail derived class.
 struct MapperTransformAccess : DX8Wrapper {
     enum { WORLD_CHANGED=1, VIEW_CHANGED=2, WORLD_IDENTITY=1<<18, VIEW_IDENTITY=1<<19 };
@@ -138,10 +138,10 @@ struct MapperTransformAccess : DX8Wrapper {
             render_state_changed=(render_state_changed & ~(unsigned)VIEW_IDENTITY) | (unsigned)VIEW_CHANGED;
             break;
         case D3DTS_PROJECTION:
-            g_mapperProjectionUpload_009EDBF0=ProjectionMatrix=matrix4x4.Transpose();
+            __identifier("?DeviceProjectionMatrix@DX8Wrapper@@1VMatrix4@@A")=ProjectionMatrix=matrix4x4.Transpose();
             ZFar=0.0f;
             ZNear=0.0f;
-            DX8CALL(SetTransform(D3DTS_PROJECTION,(D3DMATRIX*)&g_mapperProjectionUpload_009EDBF0));
+            DX8CALL(SetTransform(D3DTS_PROJECTION,(D3DMATRIX*)&__identifier("?DeviceProjectionMatrix@DX8Wrapper@@1VMatrix4@@A")));
             break;
         default:
             DX8_RECORD_MATRIX_CHANGE();

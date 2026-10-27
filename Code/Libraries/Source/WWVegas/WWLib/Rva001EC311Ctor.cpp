@@ -29,7 +29,7 @@ private:
 
 #include "../../../Include/Lib/BfmeE16.h"
 
-extern int g_007ED97C;
+extern unsigned int g_007ED97C;
 
 struct Rva001EC311
 {
@@ -53,5 +53,3 @@ Rva001EC311::Rva001EC311(const StringBase<char> &k)
 	, m_base18(_STL::allocator<BfmeE16>())
 {
 }
-// ?g_007ED97C@@3HA: the global at VA 0xbed97c is ?g_007ED97C@@3IA.
-#pragma comment(linker, "/alternatename:?g_007ED97C@@3HA=?g_007ED97C@@3IA")
