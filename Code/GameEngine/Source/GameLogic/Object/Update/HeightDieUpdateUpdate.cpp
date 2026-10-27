@@ -142,7 +142,9 @@ struct Rva00045411BitSet
 	Rva00045411BitSet(int unused, int bit) throw();
 };
 
-extern unsigned char g_00DFEFA4StoragePrototype[28]; // KINDOFMASK_NONE
+// The empty kind-of mask, owned by ThingIsAnyKindOf.cpp; only its address is taken.
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
 
 // vftable 0x00BC2908: accept what has every kind of the first mask and none
 // of the second (PartitionFilterAcceptByKindOf).
@@ -250,7 +252,7 @@ UpdateSleepTime HeightDieUpdate::update( void )
 			Real range = getObject()->getGeometryInfo().getBoundingCircleRadiusRV();
 			BfmeWideResult iter = ThePartitionManager->iterateObjectsInRange( getObject()->getPosition(),
 				range, FROM_BOUNDINGSPHERE_3D,
-				&Rva0004584D( reinterpret_cast<const BfmeFixedStorage0004543D &>(Rva00045411BitSet(0, 7 )), *(const BfmeFixedStorage0004543D *)g_00DFEFA4StoragePrototype ),
+				&Rva0004584D( reinterpret_cast<const BfmeFixedStorage0004543D &>(Rva00045411BitSet(0, 7 )), *(const BfmeFixedStorage0004543D *)&KINDOFMASK_NONE ),
 				0 );
 			Object *obj;
 
