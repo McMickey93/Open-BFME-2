@@ -64,6 +64,7 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #define FILTER_TABLE_GEN_START (16)
 #define FILTER_TABLE_GEN_SIZE  (FILTER_TABLE_SIZE - FILTER_TABLE_GEN_START)
 #define PACKET_SIZE (9)
+#include "always.h"
 
 static float filtertable[FILTER_TABLE_SIZE] = {
 	0.00000001f,
@@ -112,6 +113,8 @@ private:
 	int m_bfme0C;
 	int m_bfme10;
 };
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/motchan.cpp
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/motchan.cpp
 
@@ -1079,7 +1082,67 @@ int BfmePartBVID::bfmeComputeBVID()
 	return (m_bfme10 - m_bfme0C + 8) / 8 + 0x18;
 }
 
-// tu-skeleton: 0x00195C00 192B ?Load_W3D@BitChannelClass@@QAE_NAAVChunkLoadClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/BitChannelLoadW3D.cpp (not merged yet)
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/BitChannelLoadW3D.cpp
+
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+// BFME1 motchan.cpp BitChannel loader with target 24-byte field layout.
+// HRaw read_bit_channel at18D4A0 calls this parser; target reads the 10-byte
+// W3D bit-channel header and stores Bits at+14. Target omits the donor's
+// assertion-only chunk-length query and unconditionally frees the old array.
+
+bool BitChannelClass::Load_W3D(ChunkLoadClass & cload)
+{
+	Free();
+
+
+
+	W3dBitChannelStruct chan;
+	if (cload.Read(&chan,sizeof(W3dBitChannelStruct)) != sizeof(W3dBitChannelStruct)) {
+		return false;
+	}
+
+	FirstFrame = chan.FirstFrame;
+	LastFrame = chan.LastFrame;
+	Type = chan.Flags;
+	PivotIdx = chan.Pivot;
+	DefaultVal = chan.DefaultVal;
+
+	uint32 numbits = LastFrame - FirstFrame + 1;
+	uint32 numbytes = (numbits + 7) / 8;
+	uint32 bytesleft = numbytes - 1;
+
+
+
+	Bits = MSGW3DNEWARRAY("BitChannelClass::Bits") uint8[numbytes];
+	assert(Bits);
+
+	Bits[0] = chan.Data[0];
+
+	if (bytesleft > 0) {
+		if (cload.Read(&(Bits[1]),bytesleft) != bytesleft) {
+			Free();
+			return false;
+		}
+	}
+
+	return true;
+}
 
 // tu-skeleton: 0x00195F60 133B ??0AdaptiveDeltaMotionChannelClass@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/AdaptiveDeltaMotionChannelFinish.cpp (not merged yet)
 
