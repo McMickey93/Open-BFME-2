@@ -89,8 +89,30 @@ public:
 };
 
 // GameLogicInit.cpp's view of the retail 0x00BEE130 slots, so this unit's copy
-// of the GameLogic vtable is the one the constructor's unit emits.
-#include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
+// of the GameLogic vtable is the one the constructor's unit emits. The
+// canonical header declares only the destructor, so adopting it here emits a
+// one-slot ??_7GameLogic@@6BSubsystemInterface@@@ that loses to the
+// constructor's 13-slot copy; keep the same 13 virtuals instead.
+class SubsystemInterface
+{
+public:
+	SubsystemInterface(void);
+	virtual ~SubsystemInterface(void);
+	virtual void init(void) = 0;
+	virtual bool loadIniFilesFromLegend();
+	virtual void postProcessLoad();
+	virtual bool vslot04(int);
+	virtual bool vslot05();
+	virtual int vslot06();
+	virtual void vslot07(int);
+	virtual void vslot08();
+	virtual void reset(void);
+	virtual void update(void) {}
+
+private:
+	int m_04;
+	AsciiString m_name;
+};
 
 
 class Rva00242E71 { public: ~Rva00242E71(); private: unsigned char m_data[0x14]; };
