@@ -18076,9 +18076,7 @@ uw_00799d86,,0x00799D86,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;obj
 uw_00799d91,,0x00799D91,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L7559
 uw_00799dc0,,0x00799DC0,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12285
 uw_00799dc8,,0x00799DC8,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4778
-uw_00799ec5,,0x00799EC5,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3376
 uw_00799f50,,0x00799F50,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
-uw_00799fa4,,0x00799FA4,11,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3376
 uw_0079a0dc,,0x0079A0DC,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L5048
 $L5014,,0x0079A153,8,Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/InGameToggleStanceCommandButtonHotKeys.cpp,matched,gen-funclet;parent=?rva00567DA6@Impl@InGameToggleStanceCommandButton@@QAEXXZ; Matched parent 0x00567DA6's EH graph is EXACT (eh_verify) and binds compiler label $L5014 to retail Unwind@00b9a153 0x79A153; replaces generated uw_0079a153
 uw_0079a1b3,,0x0079A1B3,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2866
@@ -98619,3 +98617,5 @@ $L761,,0x007A9300,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,ma
 $L786,,0x007A9320,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_sendAndLoad@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E92B0's EH graph is EXACT (eh_verify) and binds compiler label $L786 to retail 0x007A9320; replaces generated uw_007a9320
 $L787,,0x007A9328,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_sendAndLoad@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E92B0's EH graph is EXACT (eh_verify) and binds compiler label $L787 to retail 0x007A9328; replaces generated uw_007a9328
 $L788,,0x007A9330,8,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp,matched,gen-funclet;parent=?sMethod_sendAndLoad@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z; Matched parent 0x006E92B0's EH graph is EXACT (eh_verify) and binds compiler label $L788 to retail 0x007A9330; replaces generated uw_007a9330
+$L2232,,0x00799EC5,11,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignAct.cpp,matched,gen-funclet;parent=??1Rva0056616B@@UAE@XZ; Matched parent 0x0056616B's EH graph is EXACT (eh_verify) and binds compiler label $L2232 to retail 0x00799EC5; replaces generated uw_00799ec5
+$L2367,,0x00799FA4,11,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignAct.cpp,matched,gen-funclet;parent=??0Rva0056616B@@QAE@ABVAsciiString@@@Z; Matched parent 0x00566BF6's EH graph is EXACT (eh_verify) and binds compiler label $L2367 to retail 0x00799FA4; replaces generated uw_00799fa4

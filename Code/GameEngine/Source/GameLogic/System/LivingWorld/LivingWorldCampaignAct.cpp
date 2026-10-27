@@ -28,7 +28,12 @@ struct Rva0052CD42:Header{__forceinline Rva0052CD42()throw():Header(Alloc()){} ~
 struct Rva0052CDE1:Header{__forceinline Rva0052CDE1()throw():Header(Alloc()){} ~Rva0052CDE1();};
 struct Rva0052D1CD:Header{__forceinline Rva0052D1CD()throw():Header(Alloc()){} ~Rva0052D1CD();};
 struct Rva0052D20C:Header{__forceinline Rva0052D20C()throw():Header(Alloc()){} ~Rva0052D20C();};
-struct AsciiVec:Header{__forceinline AsciiVec()throw():Header(Alloc()){} __forceinline ~AsciiVec(){reinterpret_cast<_STL::vector<AsciiString,_STL::allocator<AsciiString> >*>(this)->~vector();}};
+// The AsciiString list member is the vector itself (retail's unwind calls its
+// dtor directly), viewed over the same 12B header and 211E58 header ctor.
+namespace _STL {
+template<>class vector<AsciiString,allocator<AsciiString> >:public Header{public:__declspec(dllimport) __forceinline vector()throw():Header(Alloc()){} ~vector();AsciiString *erase(AsciiString*,AsciiString*); __declspec(dllimport) __forceinline void clear(){erase(reinterpret_cast<AsciiString*>(begin),reinterpret_cast<AsciiString*>(end));}};
+}
+typedef _STL::vector<AsciiString,_STL::allocator<AsciiString> > AsciiVec;
 struct Rva00565865Element;
 struct Rva00566A42Element;
 struct Rva005658CBElement;
@@ -71,7 +76,7 @@ reinterpret_cast<_STL::vector<Rva00565964Element,_STL::allocator<Rva00565964Elem
 reinterpret_cast<_STL::vector<Rva00565931Element,_STL::allocator<Rva00565931Element> >*>(&m_6C)->clear();
 reinterpret_cast<_STL::vector<Rva005658FEElement,_STL::allocator<Rva005658FEElement> >*>(&m_54)->clear();
 reinterpret_cast<Rva00566B81Vector*>(&m_60)->clear();
-reinterpret_cast<_STL::vector<AsciiString,_STL::allocator<AsciiString> >*>(&m_callActSubroutine)->clear();
+m_callActSubroutine.clear();
 reinterpret_cast<_STL::vector<Rva00565997Element,_STL::allocator<Rva00565997Element> >*>(&m_A8)->clear();
 }
 
