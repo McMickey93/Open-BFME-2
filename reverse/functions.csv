@@ -17779,8 +17779,6 @@ uw_00783cc6,,0x00783CC6,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obje
 uw_00783d5d,,0x00783D5D,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L9748
 uw_00783d6f,,0x00783D6F,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5852
 uw_00783e39,,0x00783E39,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4782
-uw_00783f72,,0x00783F72,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L4810
-uw_00783f98,,0x00783F98,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L3689
 uw_00783faa,,0x00783FAA,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L7312
 uw_00783fbc,,0x00783FBC,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L9856
 uw_00783fce,,0x00783FCE,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
@@ -18244,7 +18242,6 @@ uw_007910a6,,0x007910A6,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;obje
 uw_007910b8,,0x007910B8,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
 $L1217,,0x007910C0,8,Code/GameEngine/Source/GameNetwork/Rva004D5795Contents.cpp,matched,gen-funclet;parent=?getContentsAsAsciiString@Rva004D5795@@UAE?AVAsciiString@@XZ; Matched parent 0x004D5FB4's EH graph is EXACT (eh_verify) and binds compiler label $L1217 to retail Unwind@00b910c0 0x7910C0; replaces generated uw_007910c0
 uw_00791110,,0x00791110,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4958
-uw_00791171,,0x00791171,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L5028
 uw_00791183,,0x00791183,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0079119d,,0x0079119D,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4988
 uw_00791212,,0x00791212,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
@@ -98269,3 +98266,6 @@ $L356,,0x007A3323,8,Code/GameEngine/Source/Common/Rva005E1928HelpUpdate.cpp,matc
 $L5332,,0x007A38DD,8,Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIArmyDetailsCreateIcon.cpp,matched,gen-funclet;parent=?CreateIcon@Impl@ArmyDetailsPanel@StrategicInGameUI@@QAE?AUSBServer@@HPAVArmySummaryEntry@@@Z; Matched parent 0x005E4CA3's EH graph is EXACT (eh_verify) and binds compiler label $L5332 to retail 0x007A38DD; replaces generated uw_007a38dd
 $L13331,,0x007A7683,11,Code/Libraries/Source/assetmanager/Rva00622290CollectKeys.cpp,matched,gen-funclet;parent=?LoadAsset@AssetManagerImpl@@QAEXPAVRva009EF0D0Element@@@Z; Matched parent 0x00623600's EH graph is EXACT (eh_verify) and binds compiler label $L13331 to retail 0x007A7683; replaces generated uw_007a7683
 $L13332,,0x007A768E,8,Code/Libraries/Source/assetmanager/Rva00622290CollectKeys.cpp,matched,gen-funclet;parent=?LoadAsset@AssetManagerImpl@@QAEXPAVRva009EF0D0Element@@@Z; Matched parent 0x00623600's EH graph is EXACT (eh_verify) and binds compiler label $L13332 to retail 0x007A768E; replaces generated uw_007a768e
+$L4036,,0x00783F72,8,Code/GameEngine/Source/Common/Rva003F3AB5.cpp,matched,gen-funclet;parent=?rva003F3AB5@Rva003F3AB5@@QAEXIUDynamicPortalLink@@@Z; Matched parent 0x003F3AB5's EH graph is EXACT (eh_verify) and binds compiler label $L4036 to retail 0x00783F72; replaces generated uw_00783f72
+$L5063,,0x00783F98,8,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBattleRva003F4AD8.cpp,matched,gen-funclet;parent=?rva003F4AD8@LivingWorldBattle@@QAEXXZ; Matched parent 0x003F4AD8's EH graph is EXACT (eh_verify) and binds compiler label $L5063 to retail 0x00783F98; replaces generated uw_00783f98
+$L6381,,0x00791171,8,Code/GameEngine/Source/GameLogic/AI/SquadFromContainedMembers.cpp,matched,gen-funclet;parent=?rva004D6DF3@Squad@@QAEXPAVObject@@_N@Z; Matched parent 0x004D6DF3's EH graph is EXACT (eh_verify) and binds compiler label $L6381 to retail 0x00791171; replaces generated uw_00791171
