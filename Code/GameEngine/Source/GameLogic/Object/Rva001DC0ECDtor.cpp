@@ -39,7 +39,7 @@ public:
 	~Rva001DBC77();
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva001DC0EC
 {

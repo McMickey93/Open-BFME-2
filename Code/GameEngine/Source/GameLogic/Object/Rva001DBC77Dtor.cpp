@@ -25,7 +25,7 @@ public:
 	virtual void *v0(int x);
 };
 
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva001DBC77
 {

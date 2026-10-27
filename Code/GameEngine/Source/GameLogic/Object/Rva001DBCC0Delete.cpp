@@ -4,7 +4,7 @@
 // for the rowed dtor 0x001DBC77: destroys via that dtor then frees with rowed
 // operator delete when flags bit0 is set. Evidence: chain caller of landed
 // 0x001DBC77 plus rowed delete 0x0002FD60. Honest address name on proven owner.
-void __cdecl operator delete(void *p);
+#include <new>
 
 class Rva001DBC77
 {
