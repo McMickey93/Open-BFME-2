@@ -4254,6 +4254,14 @@ take one real type. Examples:
 
 Each one needs naming work that unifies ctor and dtor on one class (rename
 an owner row), not a source tweak.
+**uw_gen_004/005 ICF-fold dtor rows (K1, 2026-10-27):** of the 103 uw_gen_004/005
+funclets blocked on a missing dtor callee, 40 in 34 units now sit at their EXACT
+parents' `$L` labels. Each missing compiler-emitted dtor (33) is rowed at the retail
+body it ICF-folded onto (`add_match --icf-owner`, `fold-proof=<unit>`, the
+3eee2106d6 recipe), then the funclet is repointed with `--replace-rva`; every unit
+links as before or better (ThingTemplate.cpp did not link before either). Left:
+SaveGameInfoCopyBFME2.cpp (`??1XferMD5CRC` fails the fold verify at 0x0052B497),
+units claimed by other seats or touched in the last 6 h, and the rest not reached.
 
 **uw_gen_009 parent ownership cleanup (2026-10-26):**
 
