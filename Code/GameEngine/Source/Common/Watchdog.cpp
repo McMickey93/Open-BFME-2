@@ -42,6 +42,7 @@ class ThreadClass
 public:
 	ThreadClass(const char *name);
 	virtual ~ThreadClass();
+	static unsigned int _Get_Current_Thread_ID();
 	void Stop(void);
 
 private:
@@ -107,7 +108,7 @@ Watchdog *createWatchdog(int timeout, int warningInterval, int warningDelay)
 
 Watchdog::Watchdog(int timeout, int warningInterval, int warningDelay) :
 	ThreadClass(0),
-	m_parentThreadId(GetCurrentThreadId()),
+	m_parentThreadId(ThreadClass::_Get_Current_Thread_ID()),
 	m_timeout(timeout),
 	m_previousWarning(0),
 	m_warningInterval(warningInterval),

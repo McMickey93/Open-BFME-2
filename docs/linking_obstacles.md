@@ -815,6 +815,8 @@ Whole-unit clearance and census confirmation remain pending.
 
 **Assigned Common ASCII header package (2026-10-27; index `5ce093a71a`, `retail-truth-4`):** Passing consumers use the canonical AsciiString and StringBase interfaces, retain all matched rows and keep clean ordinary link previews. The command-points helper also adopts UnicodeString. Queue retirement uses only `header_adopt_lane.py accept`. The stopped consumers require owner reconciliation of nonthrowing comparison contracts, noninitializing or declaration-only construction, StringBase construction access, or the command-line cleanup and concat code shape. Their sources are restored exactly and their blocked verdicts are recorded through `re_log.py`. Per-unit raw before, trial, restored and final gates are in `build/header-ha1-ascii/`; the complete handoff is `build/header-report.md`. No canonical header, reference shim, function row, symbol pin or code-generation flag changes. Other consumers, class-wide closure and census confirmation remain open.
 
+**2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** Two provider-spelling repairs are cleared in ordinary-preview scope; census confirmation pending. `Common/Watchdog.cpp` now calls the existing `ThreadClass::_Get_Current_Thread_ID` row at 0x006105D0 from its constructor, matching the native REL32 at 0x0022563A. The former `_GetCurrentThreadId@0` reference selected the distinct import-thunk row at 0x00687E0A. All six Watchdog rows remain exact; Watchdog, WatchdogDtor, WatchdogThreadFunction and `WWLib/thread.cpp` all preview LINKS together. `AptOnlineHomeStatistics.cpp` declares the six existing globals at RVAs 0x00A06484 through 0x00A06524 as `FactionStatBlock`, matching their definitions in `Common/Rva005B947DTicker.cpp` and both existing consumers, while retaining the existing parameter ABI and block-copy views. Its one 100-byte row remains exact and it now previews LINKS; the ticker and refresh providers retain LINKS. The expanded 31-unit current-object preview also retains both clearances. The unchanged `Rva007B6880Thunks.cpp` has an independent unresolved `?g_lgaKeyRecords@@3PAIA` both before and after. Changed-source declaration, EH and shadow data checks, CSV integrity and pin consistency pass. Next: confirm both repaired units in the next normal census; the broader entry remains open.
+
 ### LINK-005: units blocked by several incompatible dependencies
 
 **Status: Open. Updated: 2026-10-25.**
@@ -1680,6 +1682,8 @@ confirmation remain pending.
   `~SpecialPowerModule` already resolves).
 - **Clearance:** preview scope only (the units listed).
 - **Census confirmation:** awaiting the next census.
+
+**2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** `BannerUI.cpp` still lacks `??1?$vector@UBfmePod28@@V?$allocator@UBfmePod28@@@_STL@@@_STL@@QAE@XZ`. Native constructor cleanup 0x0076E38E adds 0x28 to the BannerUI receiver and jumps to 0x0007FAB3, the existing 14-byte `vector<int>` destructor row in `GameClient/InGameUICtor.cpp` (load start, null test, game free 0x00030830, return). No new body, pin, container cast or element rename was attempted. All 28 BannerUI rows remain exact, and the current-object preview retains U1. Next: establish the emitted whole-body and relocation twin for the actual banner vector, then admit its folded name against that existing owner; the native folded target alone is not a completed fold-proof admission. No clearance or census gain is claimed.
 
 ### LINK-061: identity retirement does not resolve verified renumbered EH labels
 
@@ -2986,6 +2990,8 @@ Census confirmation: n/a.
 - **Clearance:** none.
 - **Census confirmation:** not claimed.
 
+**2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** The three current providers retain their prior results: `Scripts.cpp` U1/L1, `OrConditionCtor.cpp` LINKS and `Rva003B262EFinish.cpp` LINKS. The emitted Scripts table is now explicitly measured as eight bytes: protected deleting destructor plus `getObjectMemoryPool`; retail 0x0081F3F4 has the single deleting-destructor slot at 0x003B331E. The TU-local `MEMORY_POOL_GLUE_WITHOUT_GCMP` override in Scripts.cpp still declares that pool accessor virtual. Fixing only the public/protected destructor spelling would leave this extra slot. The existing 68-byte destructor row at 0x003B262E and 28-byte deleting destructor remain the required OrCondition rename candidates; no new match is needed for those bodies. No unchanged rename or pool trial was repeated. Next: settle the existing row identity and remove the unsupported virtual pool slot coherently, retaining the constructor, duplicate and parser rows. Clearance and census confirmation remain pending.
+
 ### LINK-072: Zero Hour port units for module classes BFME 2 never had
 
 **Status: Open (3 units repaired). Updated: 2026-10-26.**
@@ -3207,6 +3213,8 @@ Census confirmation: n/a.
   alone.
 - **Clearance:** none.
 - **Census confirmation:** not applicable.
+
+**2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** The current-provider cohort confirms the deferred ignore-family prerequisite. `getIgnores` at 0x003B224D has its tree-copy REL32 at body offset 174 targeting native 0x003B1EBB, while its decorated `_Rb_tree<int,pair<const int,AsciiString> >` constructor currently owns 0x0052D25D. The former is already rowed under `_Rb_tree<Rva003B1EBBElement>` in `StlSweepW4Rva003B1EBB.cpp`; 0x00383BAC is rowed as the int/int `_M_insert_00383BAC` and 0x00383EB2 as `Rva00383A28` destruction in `Rva0046A93EDtor.cpp`. These current owners preview LINKS, but the ignore unit retains L3/S2. The two pair-destructor digests remain split between WOLBuddyOverlay/PeerDefs and the deferred ignore/assign units. No consumer was rebound to a placeholder and no row or pin was changed. Next: reconcile those existing tree/value identities and the folded pair destructor before retrying suppression. No clearance or census gain is claimed.
 
 ### LINK-084: audio lookup emits an unrowed owner and an untyped tree-worker trampoline
 Status: Cleared in ordinary-preview scope; census confirmation pending. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.
@@ -3891,6 +3899,8 @@ Census confirmation: awaiting the next census.
   (86,849 + 312), so a fresh census should measure above the 08:28 peak's
   7,614,012 B if nothing else moves.
 
+**2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** The SubsystemInterface assignment copies in `SubsystemInterfaceCopy.cpp` and `SidesList_sidesInfo.cpp` have the same retail-proven digest `2f838b02686b`; the duplicate is a strong-versus-COMDAT collision. A `__declspec(noinline) inline` owner trial made the two-unit preview report LINKS but dropped `??4SubsystemInterface@@QAEAAV0@ABV0@@Z` from the owner object, so the 2-row byte check failed and the trial was reversed. The restored owner passes 2/2 and both units retain D1 in the final cohort. The canonical `Code/Libraries/Source/subsystem/SubsystemInterface.h` declares the copy constructor but omits copy assignment, allowing SidesList to emit an implicit assignment. Next: declare the existing out-of-line assignment in that shared header, retain its row in the owner and verify all header dependents. Shared-header edits were outside this package. No clearance or census gain is claimed.
+
 ### LINK-098: Snapshot and Coord2D header adoption prerequisites
 
 Status: Blocked for the remaining assigned units; retained adoptions verified in ordinary-preview scope. Updated: 2026-10-27; inspected revision: `6c583e82f0c53df8e12b2ac83e1a48206513de5e`.
@@ -3914,6 +3924,8 @@ Clearance: pending.
 Census confirmation: not claimed.
 
 ### LINK-107: obsolete video-buffer bodies still supply the BFME constructor's table
+
+**2026-10-27 package c140 follow-up, inspected `a0b82f68445de8ab0254437ef7e97332ce48cfb0`, ordinary-preview index `bf3dd31211` (2026-10-27 00:39):** The unchanged `W3DPropDraw.cpp` still has L3 in the paired preview with its module-data constructor, `DrawModule.cpp` and `W3DLaserDrawModuleDataDtor.cpp`; all five of its rows pass bytes. Its emitted `ModuleData` destructor is seven bytes referencing `??_7BfmeModuleDataSnapshotBase@@6B@`, inherited through the TU Snapshot macro. Its `DrawModule` table is 128 bytes and its deleting destructor is 14 bytes; the native vptr in the rowed constructor at 0x000B19A1 and complete destructor at 0x000CEB6F targets 0x007C9690. The current first DrawModule emitter models only the destructor, so copying that short table would not reconcile the native interface. Next: reconcile the shared DrawModule/ModuleData/Snapshot contracts, including actual slot owners, before changing this imported unit. No shared-header edit or emission-suppression trial was made. Clearance and census confirmation remain pending.
 
 ### LINK-101: obsolete video-buffer bodies still supply the BFME constructor's table
 Status: Blocked on the complete W3DVideoBuffer table and lifetime contract. Updated: 2026-10-27; inspected revision: 97c23353111e60304b56434c02d20bee3465d83f.
@@ -4031,5 +4043,22 @@ Evidence / affected units:
 - V3PolyDeferredCopyCtors2.cpp (216 B) is blocked by unresolved `??1Rva0028C62B@@UAE@XZ` and `??1Rva0028F68F@@UAE@XZ`, which only its local `??_G` copies reference. Its copy constructors 0x0028C62B and 0x0028F68F install one-slot retail tables at 0x007F91FC and 0x007F9200, and neither slot is a deleting destructor. Slot 0 of the first is the 273-byte damage-record xfer rowed as `?rva004D6FC4@Rva004D6FC4@@QAEXPAX@Z`, and slot 0 of the second is `?rva004D6F86@Rva00263895Member@@QAEXPAX@Z`. Retail therefore gives neither class a virtual destructor. The second class embeds the first at +0x04. Hypothesis to check before any rename: DamageInfo holding DamageInfoInput, whose `xfer` names are unresolved in seven census units.
 Completed: none. Each lead was found by tracing current objects against retail relocations.
 Remaining / next check: reconcile each identity in its own lane, then rerun link_check for the named units together with their providers.
+
+Completed: diagnosis only; no source or ledger change. Attempt evidence: `reverse/re_attempts.log` (blocked, 0x0049DD0B).
+Remaining / next check: emit that explicit specialization (the existing `Rva0039A48EElement` pattern in the same file) and move the parent row, its `$L6605` funclet (0x0078D8B3) and `__ehhandler$` row (0x0078D8C1) to the new name. `rename.py` refuses the signature change and `add_match.py --replace-rva` takes scaffold rows only, so retract the three rows in their own reviewed commit and re-add them with `add_match.py`; then `link_check.py` ProductionUpdate.cpp together with stlport_construct_stl_types.cpp.
+
+### LINK-113: BoneFXDamage imports the Zero Hour DamageModule Snapshot contract
+Status: Blocked on shared module interface and existing row identity reconciliation. Updated: 2026-10-27; inspected revision: a0b82f68445de8ab0254437ef7e97332ce48cfb0.
+Evidence / affected units: `GameLogic/Object/Damage/BoneFXDamage.cpp` remains U3/L1 with the current `DamageModuleCtor.cpp` provider against ordinary-preview index `bf3dd31211`. The unresolved `DamageModule::crc`, `xfer` and `loadPostProcess` names occur in unrowed BoneFXDamage donor methods and the emitted 56-byte DamageModule primary table. They are not direct REL32 references in the matched BoneFXDamage bodies. Native constructor 0x004B979C calls the rowed base constructor 0x004B9704, which installs table 0x008598E4. That native table begins with deleting destructor 0x004B973B, load hook 0x0058B03E, DamageModule name getter 0x004B9735 and xfer 0x004CE56D; the imported table begins crc, xfer and loadPostProcess instead.
+Completed: all seven BoneFXDamage rows pass byte verification, and the current-object references and native table were inspected without modifying source. Existing native owners include `UpdateModuleLoadPostProcess.cpp`, `ConstIntGetters4.cpp` and `Rva004CE56DXfer.cpp`; the latter xfer still has a placeholder owner. The base constructor provider retains LINKS. No unrelated donor body was removed and no new body or pin was added.
+Remaining / next check: reconcile the shared Snapshot/module contract and the existing base xfer/destructor owner identities before replacing the imported declarations. In particular, do not invent a crc match from an unrowed donor-only reference or replace the real DamageModule method call with a placeholder. The native 27-byte xfer at 0x004CE56D is an owner-identity lead, not an approved rename.
+Clearance: pending.
+Census confirmation: not claimed.
+
+### LINK-114: FireWeaponWhenDeadBehavior primary views omit different native slots
+Status: Blocked on complete primary-interface reconciliation. Updated: 2026-10-27; inspected revision: a0b82f68445de8ab0254437ef7e97332ce48cfb0.
+Evidence / affected units: `FireWeaponWhenDeadBehavior.cpp` retains L1 while current `Rva00589079Derived.cpp` and `FireWeaponWhenDeadBehaviorPoolKey.cpp` preview LINKS against index `bf3dd31211`. Both primary vptr relocations now name `??_7FireWeaponWhenDeadBehavior@@6BObjectModule@@@` and reach native table 0x008497B4: constructor 0x00482D80 body offset 55 and destructor 0x00482E96 body offset 2. The earlier UpdateModule-versus-ObjectModule naming collision is no longer the current difference. The constructor emits 20 bytes (five slots); the destructor provider emits 16 (four slots). Native has 13 slots, including getModuleNameKey at slot 4 (0x00482E51), four empty hooks at slots 5 through 8, a two-argument return at slot 9, null-return hooks at slots 10 and 11, and getUpdatePhase at slot 12 (0x0022C4CB).
+Completed: all four constructor-unit rows pass byte verification; current objects and native pointers were checked against the prior 2026-10-23 handoffs. No slot-only trial was repeated and no source change is retained. The existing provider row 0x00482E4B is still spelled `Rva00482E4BGet`, reached through the existing s02 alias; Snapshot-name ownership is a naming lead that must be resolved without adding another alias.
+Remaining / next check: reconcile the complete shared primary contract in both existing views, including the real slot owners, while preserving all three derived families in `Rva00589079Derived.cpp`. Adding only the missing pool-key slot would make the two short copies agree without supplying the eight remaining native slots. Recheck the constructor, destructor provider and pool-key unit together after that repair.
 Clearance: pending.
 Census confirmation: not claimed.

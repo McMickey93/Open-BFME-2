@@ -5,8 +5,9 @@
 // block copies followed by refresh of the online-home singleton.
 // Member/global content names remain unknown; target proves storage extents.
 struct Rva005B9717Block { unsigned int word[8]; };
-extern unsigned int g_Va00E06484, g_Va00E064A4, g_Va00E064C4;
-extern unsigned int g_Va00E064E4, g_Va00E06504, g_Va00E06524;
+struct FactionStatBlock;
+extern FactionStatBlock g_Va00E06484, g_Va00E064A4, g_Va00E064C4;
+extern FactionStatBlock g_Va00E064E4, g_Va00E06504, g_Va00E06524;
 extern int g_Va00E06480;
 // Full callee Ghidra 005B95B8..005B9717 is351B RET0, consumes ECX,
 // and invokes the rowed online-home ticker helper with three stack words.
