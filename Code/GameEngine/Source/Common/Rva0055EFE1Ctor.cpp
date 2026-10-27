@@ -11,8 +11,7 @@
 // The emitted donor table is independently checked as four bytes with
 // one __purecall relocation, whose matched body is at RVA 0x0003B810.
 // This establishes table contents; it assigns no donor class to the caller.
-extern "C" const void *const vtbl_00C1C780[];
-#pragma comment(linker, "/alternatename:_vtbl_00C1C780=??_7?$CategoryModuleInfo@$00@FXParticleSystem@@6B@")
+extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];
 
 extern "C" const void *const vtbl_00C1D2C0[];  // ??_7Rva005EA430@@6BV3Vt01111D90@@@
 #pragma comment(linker, "/alternatename:_vtbl_00C1D2C0=??_7Rva005EA430@@6BV3Vt01111D90@@@")
@@ -42,5 +41,5 @@ Rva0055EFE1::Rva0055EFE1( unsigned int a )
 	new( this ) Rva00563FE1( a );
 	volatile unsigned int *slots = (unsigned int *)this;
 	slots[ 0 ] = ((unsigned int)vtbl_00C1D2C0);
-	slots[ 2 ] = ((unsigned int)vtbl_00C1C780);
+	slots[ 2 ] = ((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 }

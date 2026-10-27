@@ -11,7 +11,7 @@
 // The three secondary tables fold to the same retail address but remain
 // separate symbols, as they are during normal C++ construction.
 namespace FXParticleSystem {
-extern "C" const void *const vtbl_00C1C780[];
+extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];
 extern "C" const void *const windBaseInfoTable[];
 extern "C" const void *const windCategoryInfoTable[];
 #pragma comment(linker, "/alternatename:_windBaseInfoTable=??_7?$CategoryModuleTemplateBase@$06@FXParticleSystem@@6BSecondaryModuleBase@1@@")
@@ -19,7 +19,6 @@ extern "C" const void *const windCategoryInfoTable[];
 extern "C" const void *const vtbl_00BBB58C[];
 extern "C" const void *const vtbl_00BE16C8[];
 extern "C" const void *const vtbl_00BE16D8[];
-#pragma comment(linker, "/alternatename:_vtbl_00C1C780=??_7?$CategoryModuleInfo@$00@FXParticleSystem@@6B@")
 #pragma comment(linker, "/alternatename:_vtbl_00BBB58C=??_7?$CategoryModuleTemplateBase@$06@FXParticleSystem@@6BModuleTemplate@1@@")
 #pragma comment(linker, "/alternatename:_vtbl_00BE16C8=??_7?$CategoryModuleTemplate@$06@FXParticleSystem@@6BModuleTemplate@1@@")
 #pragma comment(linker, "/alternatename:_vtbl_00BE16D8=??_7?$CategoryModuleTemplate@$06@FXParticleSystem@@6B@")
@@ -28,7 +27,7 @@ public:
     CategoryModuleTemplateBase() {
         *(void *volatile *)&v4=(void*)windBaseInfoTable;
         *(void **)this=(void*)vtbl_00BBB58C;
-        v4=(void*)vtbl_00C1C780;
+        v4=(void*)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@");
     }
     // LINK: the default ctor's COMDAT loses to the kept copy; the derived ctor calls a
     // TU-unique no-init ctor with the identical stores instead. No flags touched.
@@ -36,7 +35,7 @@ public:
     CategoryModuleTemplateBase(BfmeNoInitWind) {
         *(void *volatile *)&v4=(void*)windBaseInfoTable;
         *(void **)this=(void*)vtbl_00BBB58C;
-        v4=(void*)vtbl_00C1C780;
+        v4=(void*)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@");
     }
     virtual ~CategoryModuleTemplateBase();
     void *v4;

@@ -8,7 +8,6 @@
 #pragma comment(linker, "/alternatename:_vtbl_00C50250=??_7Rva00499934@@6B@")
 #pragma comment(linker, "/alternatename:_vtbl_00C50254=??_7Rva00499934@@6BRva0024A797_B2@@@")
 #pragma comment(linker, "/alternatename:_vtbl_00C50260=??_7Rva00499934@@6BRva0024A797_Root@@@")
-#pragma comment(linker, "/alternatename:_vtbl_00C1C780=??_7?$CategoryModuleInfo@$00@FXParticleSystem@@6B@")
 typedef float Real;
 typedef int Int;
 class ThingTemplate;
@@ -201,7 +200,7 @@ extern "C" const void *const vtbl_00C50254[];
 
 extern "C" const void *const vtbl_00C50260[];
 
-extern "C" const void *const vtbl_00C1C780[];
+extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];
 
 class Thing;
 
@@ -288,7 +287,7 @@ OneRingPenaltyUpdateModuleData::OneRingPenaltyUpdateModuleData()
 
   // ??_7Rva00499934@@6BRva0024A797_Root@@@
 
-  // folded, 49 classes; via ??_7?$CategoryModuleInfo@$00@FXParticleSystem@@6B@
+  // folded vftable 0x00C1C780 (49 classes), by its data-ledger name
 
 // ??0OneRingPenaltyUpdate@@QAE@PAVThing@@PBVModuleData@@@Z @0x00499A70
 OneRingPenaltyUpdate::OneRingPenaltyUpdate(Thing *thing, const ModuleData *moduleData)
@@ -296,7 +295,7 @@ OneRingPenaltyUpdate::OneRingPenaltyUpdate(Thing *thing, const ModuleData *modul
 {
 	float fzero = 0.0f;
 	int *slot20 = (int *)&m_20;
-	*slot20 = (int)((unsigned int)vtbl_00C1C780);
+	*slot20 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	int zero = 0;
 	m_vtable = (const void *)((unsigned int)vtbl_00C50260);
 	m_secondary0C = (const void *)((unsigned int)vtbl_00C49188);

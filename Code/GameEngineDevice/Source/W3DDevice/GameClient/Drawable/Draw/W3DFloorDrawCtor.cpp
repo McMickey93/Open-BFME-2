@@ -20,8 +20,7 @@
 // The emitted donor table is independently checked as four bytes with
 // one __purecall relocation, whose matched body is at RVA 0x0003B810.
 // This establishes table contents; it assigns no donor class to the caller.
-extern "C" const void *const vtbl_00C1C780[];
-#pragma comment(linker, "/alternatename:_vtbl_00C1C780=??_7?$CategoryModuleInfo@$00@FXParticleSystem@@6B@")
+extern "C" const void *const __identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@")[];
 
 extern "C" const void *const vtbl_00BCD4D8[];  // ??_7W3DFloorDraw@@6BW3DFloorDrawSecondBase@@@
 #pragma comment(linker, "/alternatename:_vtbl_00BCD4D8=??_7W3DFloorDraw@@6BW3DFloorDrawSecondBase@@@")
@@ -67,7 +66,7 @@ W3DFloorDraw::W3DFloorDraw(Thing *thing, const ModuleData *moduleData) :
 	W3DPropDraw(thing, moduleData)
 {
 	int *slot10 = (int *)&m_10;
-	*slot10 = (int)((unsigned int)vtbl_00C1C780);
+	*slot10 = (int)((unsigned int)__identifier("??_7SecondaryModuleBase@FXParticleSystem@@6B@"));
 	*(unsigned int *)this = ((unsigned int)vtbl_00BCD4E0);
 	m_10 = (const void *)((unsigned int)vtbl_00BCD4D8);
 	m_flag14 = false;

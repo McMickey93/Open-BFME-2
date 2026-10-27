@@ -2710,7 +2710,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v02@Rva0053ED1A
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v03@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v04@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0054467AFinish.cpp	_theLogicRandomLogFile	1
-alternatename	Code/GameEngine/Source/Common/Rva0055EFE1Ctor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/Common/Rva0055EFE1Ctor.cpp	_vtbl_00C1D2C0	1
 alternatename	Code/GameEngine/Source/Common/Rva0055F218Ctor.cpp	?g_00C1D1F4@@3QBQBXB	1
 alternatename	Code/GameEngine/Source/Common/Rva0056AC26Derived.cpp	?ac26Slot1@Rva0056AC26@@UAE_NXZ	1
@@ -3263,7 +3262,6 @@ alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/Butterfl
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_vtbl_00BBB58C	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_vtbl_00BE16C8	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_vtbl_00BE16D8	1
-alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_windBaseInfoTable	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_windCategoryInfoTable	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/ConcreteModuleTemplateCopyCtors.cpp	_Rva003AED3E_v18	1
@@ -3402,7 +3400,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/AutoAbilityBehavi
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BehaviorModuleXfer.cpp	?xfer@BehaviorModule@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BezierProjectileBehaviorDtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorCtor.cpp	_vtbl_00BE2B78	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorCtor.cpp	_vtbl_00C40818	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorCtor.cpp	_vtbl_00C408EC	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorCtor.cpp	_vtbl_00C408F0	1
@@ -3433,7 +3430,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ClickReactionBeha
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourDtor.cpp	?dynamicPortalExtraA@DynamicPortalExtraA@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourDtor.cpp	?dynamicPortalExtraB@DynamicPortalExtraB@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalLinkVector.cpp	??1DynamicPortalLinkVec@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourCtor.cpp	_vtbl_00C4EF80	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourDtor.cpp	?f2@FakePathfindPortalBehaviour_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourDtor.cpp	?f3@FakePathfindPortalBehaviour_B3@@UAEXXZ	1
@@ -3477,7 +3473,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBe
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorModuleDataCtor2.cpp	_vfn_0050B5C6	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorCtor.cpp	_vtbl_00BE2B78	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RebuildHoleBehavior.cpp	_vtbl_00C078DC	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RebuildHoleBehavior.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RebuildHoleBehaviorDtor.cpp	?getRebuildTemplate@RebuildHoleBehaviorInterface@@UBEPBVThingTemplate@@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RebuildHoleBehaviorDtor.cpp	?getReconstructedBuildingID@RebuildHoleBehaviorInterface@@UAE?AW4ObjectID@@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RebuildHoleBehaviorDtor.cpp	?getSpawnerID@RebuildHoleBehaviorInterface@@UAE?AW4ObjectID@@XZ	1
@@ -3486,7 +3481,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBeh
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorDtor.cpp	?slot00@SpawnBehaviorFourthBase@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorDtor.cpp	?slot04@SpawnBehaviorFourthBase@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/ReplenishUnitsBehaviorDtor.cpp	?slot08@SpawnBehaviorFourthBase@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RunOffMapBehaviorCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RunOffMapBehaviorCtor.cpp	_vtbl_00C42F1C	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/RunOffMapBehaviorModuleDataCtor.cpp	_vtbl_00BF3298	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00128780GateBehaviorResolver.cpp	?bfmeAskBJA@BfmeThingBJA@@QAE_NXZ	1
@@ -3520,7 +3514,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlaveWatcherBehav
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlaveWatcherBehaviorModuleDataCtor.cpp	_vfn_004846DE	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlaveWatcherBehaviorModuleDataCtor.cpp	_vfn_0050B5C6	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorCtor.cpp	??0ClearanceTestingSlowDeathBehaviorBase@@QAE@PAVThing@@PBVModuleData@@@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorCtor.cpp	_vtbl_00C42020	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorCtor.cpp	_vtbl_00C42030	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorCtor.cpp	_vtbl_00C42034	1
@@ -3533,7 +3526,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorCt
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorCtor.cpp	_vtbl_00C424D0	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorDtor.cpp	?stancesInterfaceA@StancesBehavior@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorDtor.cpp	?stancesInterfaceB@StancesBehavior@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorCtor.cpp	_vtbl_00C42B60	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorCtor.cpp	_vtbl_00C493E8	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/TerrainResourceBehaviorCtor.cpp	_vtbl_00C493F8	1
@@ -4027,7 +4019,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OilSpillUpdateDtor.
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OilSpillUpdateDtor.cpp	?unusedB@FireWeaponBaseB@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OilSpillUpdateDtor.cpp	?unusedC@FireWeaponBaseC@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OilSpillUpdateModuleDataCtor.cpp	_vtbl_00C4C2F8	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C49188	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C50250	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdate.cpp	_vtbl_00C50254	1
@@ -4071,7 +4062,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/ReplenishUnitsBehav
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateCtor.cpp	_vtbl_00BEFF90	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateBehaviorCtor.cpp	_vtbl_00C4D640	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateBehaviorDtor.cpp	_vtbl_00C4D640	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RubbleRiseUpdateCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RubbleRiseUpdateCtor.cpp	_vtbl_00C49188	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RubbleRiseUpdateCtor.cpp	_vtbl_00C52858	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/RubbleRiseUpdateCtor.cpp	_vtbl_00C5285C	1
@@ -4111,7 +4101,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateXfer.c
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdateCtor.cpp	_vtbl_00BEFF90	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdateCtor.cpp	_vtbl_00C1B158	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdateModuleDataCtor.cpp	_vtbl_00C1B268	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdateCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdateCtor.cpp	_vtbl_00C49188	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdateCtor.cpp	_vtbl_00C52638	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/StructureCollapseUpdateCtor.cpp	_vtbl_00C5263C	1
@@ -4153,7 +4142,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/UpdateModuleSetWake
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/UpdateModuleSetWakeFrame.cpp	?setWakeFrame@UpdateModule@@QAEXPAVObject@@I@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/UpdateModuleSetWakeFrame.cpp	?setWakeFrame@WeaponModeSpecialPowerUpdateBase@@IAEXPAVObject@@W4UpdateSleepTime@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateBehaviorCtor.cpp	_vtbl_00BE2B78	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateBehaviorCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateBehaviorCtor.cpp	_vtbl_00C49800	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateBehaviorCtor.cpp	_vtbl_00C54764	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateBehaviorCtor.cpp	_vtbl_00C54768	1
@@ -4290,7 +4278,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJ
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJM@BfmeMsgVJM@@QAEXPADH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJN@BfmeMsgVJN@@QAEXPADH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJO@BfmeMsgVJO@@QAEXPADH@Z	1
-alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingDGDConstructor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingDGDConstructor.cpp	_vtbl_00C6FFFC	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	??1Gen007F86D0@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingTWAConstructor.cpp	?set@BfmeThingTWA@@UAEXHH@Z	1
@@ -4375,7 +4362,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/Rva007F61E0HostedGameRequest.cp
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F65E0GameReply.cpp	?bfmeDoBDB@BfmeSubBDB@@QAEXPAXH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F76F0FeslKeyIndex.cpp	?bfmeFindFN@BfmeOwnerFN@@QAEHPAVBfmeVecFN@@PBD@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F99B0Busy.cpp	?onBusy@Rva007FA2C0@@QAEXPAX@Z	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007F9B80Ctor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F9B80Ctor.cpp	_vtbl_00C4EF80	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F9B80Ctor.cpp	_vtbl_00CE32D0	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F9B80Ctor.cpp	_vtbl_00CE32D4	1
@@ -4489,7 +4475,6 @@ alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DDebrisDrawCtor.cpp	_vtbl_00C6FFFC	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DFloorDrawCtor.cpp	_vtbl_00BCD4D8	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DFloorDrawCtor.cpp	_vtbl_00BCD4E0	1
-alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DFloorDrawCtor.cpp	_vtbl_00C1C780	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DLightDrawModuleDataConstructor.cpp	_vtbl_00BCD820	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawParticleCleanup.cpp	?findParticleSystemByID@ParticleSystemManager@@AAE?AUBfmeW3DParticleHandle@@W4ParticleSystemID@@@Z	1
 alternatename	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankDrawConstructor.cpp	?a@W3DTankDraw@@UAEXXZ	1
