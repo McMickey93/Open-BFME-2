@@ -75,8 +75,7 @@ unsigned char DefaultInterlacedScanBands[64] = {
 	9, 7, 5, 4, 6, 7, 9, 11, 12, 12, 13, 13, 14, 12, 11, 9,
 	7, 9, 11, 12, 14, 14, 14, 15, 13, 11, 13, 15, 15, 15, 15, 15,
 };
-extern "C" void *memset(void *,int,unsigned);
-extern "C" void *memcpy(void *,const void *,unsigned);
+#include <string.h>
 #pragma intrinsic(memset,memcpy)
 struct Rva009AAFE0Context;
 struct Rva009AB7F0Context;

@@ -11,8 +11,7 @@ struct ScaleFramePlanes {
     char *y,*u,*v;
 };
 extern "C" void __cdecl Scale2D(unsigned char*,int,unsigned,unsigned,unsigned char*,int,unsigned,unsigned,unsigned char*,unsigned char,unsigned,unsigned,unsigned,unsigned,unsigned);
-extern "C" void* memcpy(void*,const void*,unsigned);
-extern "C" void* memset(void*,int,unsigned);
+#include <string.h>
 extern "C" void __cdecl ScaleFrame(ScaleFramePlanes* src,ScaleFramePlanes* dst,unsigned char* temp,unsigned char tempHeight,unsigned hs,unsigned hr,unsigned vs,unsigned vr,unsigned interlaced)
 {
     int row;

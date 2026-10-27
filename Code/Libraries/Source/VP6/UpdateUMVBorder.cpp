@@ -27,8 +27,7 @@ struct UpdateUMVBorderInstance
 	int m_mvBorder;
 };
 
-extern "C" void *memset(void *, int, unsigned);
-extern "C" void *memcpy(void *, const void *, unsigned);
+#include <string.h>
 #pragma intrinsic(memset, memcpy)
 
 extern "C" void UpdateUMVBorder(UpdateUMVBorderInstance *pbi, unsigned char *buffer)
