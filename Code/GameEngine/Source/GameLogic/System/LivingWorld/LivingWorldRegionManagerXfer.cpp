@@ -24,43 +24,24 @@ union XferVersion
 	XferVersionFields fields;
 	unsigned value;
 };
-class Xfer
-{
-public:
-	void Version1();
-	virtual void slot00();
-	virtual bool IsLoading()const;
-	virtual void slot02();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion *);
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual Xfer &xferAsciiString(AsciiString *);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual Xfer &xferInt(int *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 struct Rva003EFE82Obj;
 int Rva003EFE82Get(Rva003EFE82Obj *, void *);
@@ -124,10 +105,10 @@ void LivingWorldRegionManager::XferRegions(Xfer *xfer)
 	_STL::vector<RegionSnapshotTransferView *> &regions = current->regions;
 	if (xfer->IsLoading()) {
 		int count;
-		xfer->xferInt(&count);
+		(*xfer == count);
 		for (int i = 0; i < count; ++i) {
 			AsciiString name;
-			xfer->xferAsciiString(&name);
+			(*xfer == name);
 			int id;
 			Rva003EFE82Get(reinterpret_cast<Rva003EFE82Obj *>(xfer), &id);
 			RegionSnapshotTransferView *region = reinterpret_cast<RegionSnapshotTransferView *>(
@@ -136,10 +117,10 @@ void LivingWorldRegionManager::XferRegions(Xfer *xfer)
 		}
 	} else {
 		int count = regions.size();
-		xfer->xferInt(&count);
+		(*xfer == count);
 		for (int i = 0; i < count; ++i) {
 			AsciiString name = regions[i]->name;
-			xfer->xferAsciiString(&name);
+			(*xfer == name);
 			int id = regions[i]->id;
 			Rva003EFE82Get(reinterpret_cast<Rva003EFE82Obj *>(xfer), &id);
 			regions[i]->DoXfer(xfer);
@@ -152,17 +133,17 @@ void LivingWorldRegionManager::xfer(Xfer *xfer)
 	XferVersion version;
 	version.fields.minimum = 1;
 	version.fields.current = 1;
-	xfer->xferVersion(&version);
-	xfer->xferInt(&field2C);
+	(*xfer == reinterpret_cast<Xfer::Version &>(version));
+	(*xfer == field2C);
 	XferLivingWorldBattleID(xfer, &battle30);
 	AsciiString name;
 	if (xfer->IsLoading()) {
 		current = 0;
-		xfer->xferAsciiString(&name);
+		(*xfer == name);
 		SelectCampaign(*reinterpret_cast<StringBase<char> *>(&name));
 	} else {
 		name = current->name;
-		xfer->xferAsciiString(&name);
+		(*xfer == name);
 	}
 	XferRegions(xfer);
 	reinterpret_cast<Rva0020EE29 *>(this)->rva002101C6(xfer);

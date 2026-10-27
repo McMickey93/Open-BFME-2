@@ -240,41 +240,8 @@ struct XferVersion
 	UnsignedByte m_currentVersion;
 };
 
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion &version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void xferSnapshot(void*);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(void *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-};
+#include "../../../Common/System/XferVectorTypes.h"
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class XferException
 {
@@ -307,19 +274,19 @@ namespace _STL {
 Xfer *Rva003F5729Xfer(Xfer*xfer, std::vector<ArmySummary>*vec)
 {
  XferVersion version;version.m_version=1;version.m_currentVersion=1;
- xfer->xferVersion(version);
+ (*xfer == reinterpret_cast<Xfer::Version &>(version));
  UnsignedInt count=(UnsignedInt)vec->size();
- xfer->xferTypeName("std::vector").xferUnsignedInt(count);
- if(xfer->isSaving()) {
+ (*xfer == XferVectorTypeName("std::vector")) == count;
+ if(xfer->IsStoring()) {
   ArmySummary*end=vec->end();ArmySummary*cur=vec->begin();
-  while(cur!=end){xfer->xferSnapshot(cur);++cur;}
+  while(cur!=end){(*xfer == *reinterpret_cast<Snapshot *>(cur));++cur;}
  }else{
   if(!vec->empty())throw XferException(4,"Vector must be empty on load");
   ((_STL::vector<BfmeAssignRecord104>*)vec)->reserve(count);
   ArmySummary value;
   while(count--){
    ((_STL::vector<BfmePod104>*)vec)->push_back(*(BfmePod104*)&value);
-   xfer->xferSnapshot(&vec->back());
+   (*xfer == *reinterpret_cast<Snapshot *>(&vec->back()));
   }
  }
  return xfer;
@@ -339,19 +306,19 @@ namespace _STL {
 Xfer *Rva001EC0A0Xfer(Xfer*xfer, std::vector<CarryoverUnit>*vec)
 {
  XferVersion version;version.m_version=1;version.m_currentVersion=1;
- xfer->xferVersion(version);
+ (*xfer == reinterpret_cast<Xfer::Version &>(version));
  UnsignedInt count=(UnsignedInt)vec->size();
- xfer->xferTypeName("std::vector").xferUnsignedInt(count);
- if(xfer->isSaving()) {
+ (*xfer == XferVectorTypeName("std::vector")) == count;
+ if(xfer->IsStoring()) {
   CarryoverUnit*end=vec->end();CarryoverUnit*cur=vec->begin();
-  while(cur!=end){xfer->xferSnapshot(cur);++cur;}
+  while(cur!=end){(*xfer == *reinterpret_cast<Snapshot *>(cur));++cur;}
  }else{
   if(!vec->empty())throw XferException(4,"Vector must be empty on load");
   ((_STL::vector<BfmeAssignRecord172>*)vec)->reserve(count);
   CarryoverUnit value;
   while(count--){
    ((_STL::vector<BfmePod172>*)vec)->push_back(*(BfmePod172*)&value);
-   xfer->xferSnapshot(&vec->back());
+   (*xfer == *reinterpret_cast<Snapshot *>(&vec->back()));
   }
  }
  return xfer;

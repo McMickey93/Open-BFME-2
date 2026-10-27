@@ -421,62 +421,45 @@ template<> void vector<const ModuleData *>::push_back(const ModuleData * const &
 template<> vector<void *>::iterator vector<void *>::erase(iterator,iterator);
 }
 
-class Xfer {
-public:
-    struct Version { unsigned char current, minimum; Version(unsigned char a,unsigned char b):current(a),minimum(b){} };
-    virtual void slot00();
-    virtual bool IsLoading() const;
-    virtual void slot02();
-    virtual void slot03();
-    virtual void slot04();
-    virtual void slot05();
-    virtual void slot06();
-    virtual void slot07();
-    virtual void slot08();
-    virtual void slot09();
-    virtual Xfer &xferVersion(Version &);
-    virtual void slot11();
-    virtual Xfer &xferSnapshot(void *);
-    virtual void slot13();
-    virtual void slot14();
-    virtual void slot15();
-    virtual void slot16();
-    virtual void slot17();
-    virtual void slot18();
-    virtual void slot19();
-    virtual void slot20();
-    virtual void slot21();
-    virtual void slot22();
-    virtual void slot23();
-    virtual void slot24();
-    virtual void slot25();
-    virtual void slot26();
-    virtual void slot27();
-    virtual void slot28();
-    virtual void slot29();
-    virtual void slot30();
-    virtual Xfer &xferInt(int &);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+class Xfer::Version { public: unsigned char current, minimum; Version(unsigned char a,unsigned char b):current(a),minimum(b){} };
 void XferOwningLivingWorldArmyVec(Xfer *xfer, _STL::vector<const ModuleData *> *armies)
 {
     Xfer::Version version(1,1);
-    xfer->xferVersion(version);
+    (*xfer == version);
     if (xfer->IsLoading()) {
         _STL::vector<void *> *pointerView = reinterpret_cast<_STL::vector<void *> *>(armies);
         pointerView->erase(pointerView->begin(), pointerView->end());
         int count;
-        xfer->xferInt(count);
+        (*xfer == count);
         armies->reserve(count);
         for (int i=0; i<count; ++i) {
             const ModuleData *army=reinterpret_cast<const ModuleData *>(new LivingWorldArmy);
-            xfer->xferSnapshot(const_cast<ModuleData *>(army));
+            (*xfer == *reinterpret_cast<Snapshot *>(const_cast<ModuleData *>(army)));
             armies->push_back(army);
         }
     } else {
         int count=armies->size();
-        xfer->xferInt(count);
+        (*xfer == count);
         for (unsigned int i=0; i<armies->size(); ++i)
-            xfer->xferSnapshot(const_cast<ModuleData *>((*armies)[i]));
+            (*xfer == *reinterpret_cast<Snapshot *>(const_cast<ModuleData *>((*armies)[i])));
     }
 }
 

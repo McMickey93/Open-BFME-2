@@ -17,41 +17,24 @@ typedef unsigned char UnsignedByte;
 typedef unsigned int UnsignedInt;
 typedef bool Bool;
 struct XferVersion {UnsignedByte m_version,m_currentVersion;};
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual Bool isLoading();
-	virtual Bool isSaving();
-	virtual void slot03();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual Xfer &xferVersion(XferVersion &version);
-	virtual Xfer &xferTypeName(const char *const &name);
-	virtual void xferSnapshot(void*);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(void *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual Xfer &xferUnsignedInt(UnsignedInt &value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 
 struct Rva003F4E07Player {char pad[0x14];int id;};
@@ -83,8 +66,8 @@ void LivingWorldBattle::BattlePlayer::DoXfer(Xfer *xfer)
 	XferVersion version;
 	version.m_version = 1;
 	version.m_currentVersion = 4;
-	xfer->xferVersion(version);
-	if (xfer->isLoading()) {
+	(*xfer == reinterpret_cast<Xfer::Version &>(version));
+	if (xfer->IsLoading()) {
 		int playerID;
 		XferLivingWorldPlayerID(xfer, &playerID);
 		m_player = (Rva003F4E07Player *)((Rva002BA8F1Logic *)TheLivingWorldLogic)->find(playerID, 0);
@@ -99,8 +82,8 @@ void LivingWorldBattle::BattlePlayer::DoXfer(Xfer *xfer)
 		Rva003F5729Xfer(xfer, (std::vector<ArmySummary> *)&m_records);
 	else if (version.m_currentVersion >= 4) {
 		UnsignedInt count = (UnsignedInt)m_records.size();
-		xfer->xferUnsignedInt(count);
-		if (xfer->isLoading()) {
+		(*xfer == count);
+		if (xfer->IsLoading()) {
 			m_records.clear();
 			((Rva003F5A06 *)&m_records)->rva003F5C4F(count);
 		}

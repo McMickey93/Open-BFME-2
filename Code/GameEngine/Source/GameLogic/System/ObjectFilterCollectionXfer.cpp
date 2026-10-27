@@ -17,43 +17,24 @@ struct FilterVersion
     FilterVersion(unsigned char min, unsigned char cur) : minimum(min), current(cur) {}
     unsigned char minimum, current;
 };
-class Xfer{public:virtual~Xfer();virtual void slot01();
-virtual bool IsStoring() const;
-virtual void slot03();
-virtual void slot04();
-virtual void slot05();
-virtual void slot06();
-virtual void slot07();
-virtual void slot08();
-virtual void slot09();
-virtual Xfer &xferVersion(FilterVersion *);
-virtual void slot11();
-virtual void slot12();
-virtual void slot13();
-virtual void slot14();
-virtual void slot15();
-virtual void slot16();
-virtual void slot17();
-virtual void slot18();
-virtual void slot19();
-virtual void slot20();
-virtual void slot21();
-virtual void slot22();
-virtual void slot23();
-virtual void slot24();
-virtual void slot25();
-virtual void slot26();
-virtual Xfer& xferAsciiString(AsciiString*);
-virtual void slot28();
-virtual void slot29();
-virtual void slot30();
-virtual Xfer& xferInt(int*);
-virtual void slot32();
-virtual void slot33();
-virtual void slot34();
-virtual void slot35();
-virtual Xfer &xferBool(bool *);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../Include/Common/BfmeXfer.h"
 namespace _STL {template<>void vector<AsciiString>::push_back(const AsciiString&);}
 class ThingTemplate
 {
@@ -81,11 +62,11 @@ public:
 void ObjectFilter::DoNamesXfer(Xfer *xfer, _STL::vector<AsciiString> *names)
 {
     int count;
-    xfer->xferInt(&count);
+    (*xfer == count);
     AsciiString name;
     for (int i = 0; i < count; ++i)
     {
-        xfer->xferAsciiString(&name);
+        (*xfer == name);
         names->push_back(name);
     }
 }
@@ -96,16 +77,16 @@ void ObjectFilter::DoTemplatesXfer(Xfer *xfer,
                                  _STL::vector<ThingTemplate *> *normal)
 {
     int count = special->size() + normal->size();
-    xfer->xferInt(&count);
+    (*xfer == count);
     _STL::vector<ThingTemplate *>::iterator it;
     for (it = special->begin(); it != special->end(); ++it)
     {
         AsciiString name("S:");
         name += (*it)->name;
-        xfer->xferAsciiString(&name);
+        (*xfer == name);
     }
     for (it = normal->begin(); it != normal->end(); ++it)
-        xfer->xferAsciiString(&(*it)->name);
+        (*xfer == (*it)->name);
 }
 
 // Existing verified 218-bit flag provider; only its member ABI is used here.
@@ -135,7 +116,7 @@ extern unsigned char*g_validityBegin;extern unsigned char*g_validityEnd;
 void ObjectFilter::DoXfer(Xfer *xfer)
 {
     FilterVersion version(1, 2);
-    xfer->xferVersion(&version);
+    (*xfer == reinterpret_cast<Xfer::Version &>(version));
     Rva00360F55 temp;
     Rva00360F55 *data;
     if (xfer->IsStoring())
@@ -146,11 +127,11 @@ void ObjectFilter::DoXfer(Xfer *xfer)
     }
     else
         data = &temp;
-    xfer->xferBool(reinterpret_cast<bool *>(data->bytes + 0x88));
-    xfer->xferInt(reinterpret_cast<int *>(data->bytes + 0x80));
+    (*xfer == *reinterpret_cast<bool *>(data->bytes + 0x88));
+    (*xfer == *reinterpret_cast<int *>(data->bytes + 0x80));
     reinterpret_cast<BitFlags<218> *>(data->bytes + 0x48)->xfer(xfer);
     reinterpret_cast<BitFlags<218> *>(data->bytes + 0x64)->xfer(xfer);
-    xfer->xferInt(reinterpret_cast<int *>(data->bytes + 0x84));
+    (*xfer == *reinterpret_cast<int *>(data->bytes + 0x84));
     if (xfer->IsStoring())
     {
         DoTemplatesXfer(xfer,
@@ -176,7 +157,7 @@ void ObjectFilter::DoXfer(Xfer *xfer)
         }
     }
     if (version.current >= 2)
-        xfer->xferInt(reinterpret_cast<int *>(data->bytes + 0x90));
+        (*xfer == *reinterpret_cast<int *>(data->bytes + 0x90));
 }
 
 class Team;

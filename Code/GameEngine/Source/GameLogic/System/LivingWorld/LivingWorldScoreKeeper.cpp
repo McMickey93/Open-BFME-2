@@ -301,29 +301,24 @@ struct XferVersion
 	UnsignedByte m_pad[2];
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual Bool isLoading(); // +0x04
-	virtual Bool isStoring(); // +0x08
-	virtual Bool isCRC(); // +0x0C
-	virtual void slot10(); virtual void slot14(); virtual void slot18();
-	virtual void slot1C(); virtual void slot20(); virtual void slot24();
-	virtual void xferVersion(XferVersion *version); // +0x28
-	virtual void slot2C(); virtual void slot30(); virtual void slot34();
-	virtual void slot38(); virtual void slot3C(); virtual void slot40();
-	virtual void slot44(); virtual void slot48(); virtual void slot4C();
-	virtual void slot50(); virtual void slot54(); virtual void slot58();
-	virtual void slot5C(); virtual void slot60(); virtual void slot64();
-	virtual void slot68(); virtual void slot6C(); virtual void slot70();
-	virtual void slot74();
-	virtual void xferUnsignedInt(UnsignedInt *value); // +0x78
-	virtual void xferInt(Int *value); // +0x7C
-	virtual void slot80(); virtual void slot84(); virtual void slot88();
-	virtual void slot8C();
-	virtual void xferBool(Bool *value); // +0x90
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class Xfer0051FFF5;
 void Rva004EE9E9(Xfer0051FFF5 *xfer, void *data);
@@ -337,11 +332,11 @@ void LivingWorldScoreKeeper::xfer(Xfer *xfer)
 	XferVersion version;
 	version.m_first = 1;
 	version.m_version = 7;
-	xfer->xferVersion(&version);
-	if (xfer->isCRC())
+	(*xfer == reinterpret_cast<Xfer::Version &>(version));
+	if (xfer->IsCRC())
 		return;
 
-	if (xfer->isStoring() && !xfer->isCRC())
+	if (xfer->IsStoring() && !xfer->IsCRC())
 	{
 		const ModuleData *current = TheLivingWorldLogic->m_FC;
 		((_STL::vector<const ModuleData *>*)&m_40)->push_back(current);
@@ -353,57 +348,57 @@ void LivingWorldScoreKeeper::xfer(Xfer *xfer)
 	Rva0040E269((Xfer0051FFF5 *)xfer, &m_4C);
 	Rva0060C253Xfer(xfer, &m_58);
 
-	if (!xfer->isCRC())
+	if (!xfer->IsCRC())
 	{
-		if (xfer->isStoring() && m_startTime != 0)
+		if (xfer->IsStoring() && m_startTime != 0)
 		{
 			UnsignedInt stamp = time(0) + (m_6C - m_startTime);
-			xfer->xferUnsignedInt(&stamp);
+			(*xfer == stamp);
 		}
 		else
 		{
-			xfer->xferUnsignedInt((UnsignedInt*)&m_6C);
+			(*xfer == *reinterpret_cast<UnsignedInt *>(&m_6C));
 		}
 	}
 
-	xfer->xferInt(&m_78);
+	(*xfer == m_78);
 	if (version.m_version >= 6)
-		xfer->xferInt(&m_7C);
+		(*xfer == m_7C);
 	for (Int i = 0; i < 5; ++i)
-		xfer->xferInt(&m_80[i]);
-	xfer->xferInt(&m_94);
-	xfer->xferInt(&m_98);
+		(*xfer == m_80[i]);
+	(*xfer == m_94);
+	(*xfer == m_98);
 	xferThingTemplateCountMap(xfer, (Rva004EED02CountMap*)&m_9C);
-	xfer->xferInt(&m_A8);
-	xfer->xferInt(&m_AC);
-	xfer->xferInt(&m_B0);
+	(*xfer == m_A8);
+	(*xfer == m_AC);
+	(*xfer == m_B0);
 	if (version.m_version >= 4)
 	{
-		xfer->xferInt(&m_E0);
-		xfer->xferInt(&m_E4);
+		(*xfer == m_E0);
+		(*xfer == m_E4);
 	}
 	else
 	{
 		Int unused = 0;
-		xfer->xferInt(&unused);
+		(*xfer == unused);
 		m_E0 = 0;
 		m_E4 = 0;
 	}
-	xfer->xferInt(&m_E8);
-	xfer->xferInt(&m_EC);
-	xfer->xferInt(&m_F0);
+	(*xfer == m_E8);
+	(*xfer == m_EC);
+	(*xfer == m_F0);
 	if (version.m_version >= 3)
 	{
-		xfer->xferUnsignedInt((UnsignedInt*)&m_74);
+		(*xfer == *reinterpret_cast<UnsignedInt *>(&m_74));
 		xferThingTemplateCountMap(xfer, (Rva004EED02CountMap*)&m_B4);
 		xferThingTemplateCountMap(xfer, (Rva004EED02CountMap*)&m_C0);
 		xferThingTemplateCountMap(xfer, (Rva004EED02CountMap*)&m_CC);
-		xfer->xferInt(&m_D8);
-		xfer->xferInt(&m_DC);
+		(*xfer == m_D8);
+		(*xfer == m_DC);
 	}
 	XferLivingWorldPlayerID(xfer, &m_playerIndex);
 	if (version.m_version >= 7)
-		xfer->xferBool(&m_F8);
+		(*xfer == m_F8);
 	else
 		m_F8 = false;
 }

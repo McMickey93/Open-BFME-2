@@ -17,47 +17,24 @@
 #include "Coord2D.h"
 
 class Snapshot;
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual bool isLoading();
-	virtual void slot02();
-	virtual bool isCRC();
-	virtual void slot04();
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void slot09();
-	virtual void xferVersion(void *version);
-	virtual void slot11();
-	virtual void xferSnapshot(void *snapshot);
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void xferCoord2D(Coord2D *value);
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual void xferInt(int *value);
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual void xferBool(bool *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 struct BuildPlotXferVersion
 {
@@ -162,12 +139,12 @@ public:
 void LivingWorldBuildPlot::DoXfer(Xfer *xfer)
 {
 	BuildPlotXferVersion version(1, 1);
-	xfer->xferVersion(&version);
+	(*xfer == reinterpret_cast<Xfer::Version &>(version));
 	XferLivingWorldBuildPlotID(xfer, &m_id);
-	xfer->xferCoord2D(&m_position);
-	xfer->xferInt(&m_buildFrames);
-	xfer->xferBool(&m_hidden);
-	if (xfer->isLoading()) {
+	(*xfer == m_position);
+	(*xfer == m_buildFrames);
+	(*xfer == m_hidden);
+	if (xfer->IsLoading()) {
 		int regionId;
 		Rva003EFE82Get((Rva003EFE82Obj *)xfer, &regionId);
 		m_region = 0;
@@ -177,24 +154,24 @@ void LivingWorldBuildPlot::DoXfer(Xfer *xfer)
 		Rva004E075FGet((Rva004E075FObj *)xfer, (int)&buildingId);
 		if (buildingId != 0) {
 			AsciiString templateName;
-			xfer->xferAsciiString(&templateName);
+			(*xfer == templateName);
 			const Rva003F1BD3TemplateView *templ = (const Rva003F1BD3TemplateView *)
 				((Rva0059E647Factory *)TheLivingWorldBuildingTemplateStore)->Lookup((int *)&templateName);
 			if (templ) {
 				m_building.rva00575674((Object *)new LivingWorldBuilding(m_region, m_position, templ, buildingId));
-				xfer->xferSnapshot(m_building.get());
+				(*xfer == *reinterpret_cast<Snapshot *>(m_building.get()));
 			} else {
 				templ = (const Rva003F1BD3TemplateView *)
 					((LivingWorldBuildingTemplateStore *)TheLivingWorldBuildingTemplateStore)->getEmergencyBackupTemplateForBadLoads();
 				m_building.rva00575674((Object *)new LivingWorldBuilding(m_region, m_position, templ, buildingId));
-				xfer->xferSnapshot(m_building.get());
+				(*xfer == *reinterpret_cast<Snapshot *>(m_building.get()));
 				((Rva000AD6F4 *)&m_building)->clear();
 				m_buildFrames = 0;
 				m_hidden = false;
 			}
 		}
 		AsciiString iconName;
-		xfer->xferAsciiString(&iconName);
+		(*xfer == iconName);
 		if (!iconName.isEmpty())
 			CreateIcon(iconName);
 	} else {
@@ -204,12 +181,12 @@ void LivingWorldBuildPlot::DoXfer(Xfer *xfer)
 		Rva004E075FGet((Rva004E075FObj *)xfer, (int)&buildingId);
 		if (m_building.m_building && buildingId != 0) {
 			AsciiString templateName(*m_building.m_building->m_template);
-			xfer->xferAsciiString(&templateName);
-			xfer->xferSnapshot(m_building.get());
+			(*xfer == templateName);
+			(*xfer == *reinterpret_cast<Snapshot *>(m_building.get()));
 		}
-		if (!xfer->isCRC()) {
+		if (!xfer->IsCRC()) {
 			AsciiString iconName(m_icon ? *m_icon->m_template : AsciiString::TheEmptyString);
-			xfer->xferAsciiString(&iconName);
+			(*xfer == iconName);
 		}
 	}
 }

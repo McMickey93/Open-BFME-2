@@ -33,47 +33,24 @@ struct XferVersion
 	unsigned char m_version;
 };
 
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual Bool isLoading();			// +0x04
-	virtual void slot08();
-	virtual Bool isCRC();				// +0x0C
-	virtual void slot10();
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual void slot24();
-	virtual void xferVersion(XferVersion &version);	// +0x28
-	virtual void slot2C();
-	virtual void slot30();
-	virtual void slot34();
-	virtual void slot38();
-	virtual void slot3C();
-	virtual void slot40();
-	virtual void slot44();
-	virtual void slot48();
-	virtual void slot4C();
-	virtual void slot50();
-	virtual void slot54();
-	virtual void slot58();
-	virtual void slot5C();
-	virtual void slot60();
-	virtual void slot64();
-	virtual void slot68();
-	virtual void slot6C();
-	virtual void slot70();
-	virtual void slot74();
-	virtual void xferUnsignedInt(UnsignedInt &value);	// +0x78
-	virtual void xferInt(Int &value);		// +0x7C
-	virtual void slot80();
-	virtual void slot84();
-	virtual void slot88();
-	virtual void slot8C();
-	virtual void xferBool(Bool &value);		// +0x90
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class ModuleData;
 namespace _STL
@@ -149,36 +126,36 @@ void LivingWorldLogic::rva002BB2B7(Xfer *xfer)
 	XferVersion version;
 	version.m_minVersion = 1;
 	version.m_version = 7;
-	xfer->xferVersion(version);
+	(*xfer == reinterpret_cast<Xfer::Version &>(version));
 	Rva003EFE82Get((Rva003EFE82Obj *)xfer, &m_regionB8);
-	if (!xfer->isCRC())
+	if (!xfer->IsCRC())
 	{
-		xfer->xferBool(m_flagC8);
-		xfer->xferBool(m_flagE8);
+		(*xfer == m_flagC8);
+		(*xfer == m_flagE8);
 		if (version.m_version >= 5)
 		{
-			xfer->xferInt(m_intE4);
-			xfer->xferBool(m_flag10A);
-			if (xfer->isLoading())
+			(*xfer == m_intE4);
+			(*xfer == m_flag10A);
+			if (xfer->IsLoading())
 				m_flag10A = false;
-			xfer->xferBool(m_flag176);
-			xfer->xferBool(m_flag177);
+			(*xfer == m_flag176);
+			(*xfer == m_flag177);
 		}
 	}
-	xfer->xferBool(m_flagE9);
-	if (!xfer->isCRC())
+	(*xfer == m_flagE9);
+	if (!xfer->IsCRC())
 		XferGameDifficulty(xfer, &m_difficultyEC);
 	if (version.m_version >= 4)
 	{
-		xfer->xferUnsignedInt(m_word100);
-		xfer->xferUnsignedInt(m_word104);
+		(*xfer == m_word100);
+		(*xfer == m_word104);
 	}
-	if (version.m_version >= 6 && !xfer->isCRC())
-		xfer->xferBool(m_flag175);
-	if (version.m_version >= 7 && !xfer->isCRC())
+	if (version.m_version >= 6 && !xfer->IsCRC())
+		(*xfer == m_flag175);
+	if (version.m_version >= 7 && !xfer->IsCRC())
 	{
-		xfer->xferBool(m_flag168);
-		xfer->xferUnsignedInt(m_word164);
+		(*xfer == m_flag168);
+		(*xfer == m_word164);
 	}
 	XferPlayers(xfer);
 	XferOwningLivingWorldArmyVec(xfer, (ModuleDataVector *)m_armies124);
@@ -186,10 +163,10 @@ void LivingWorldLogic::rva002BB2B7(Xfer *xfer)
 	((Rva002BA8F1Logic *)this)->rva002B8D06(xfer, (ModuleDataVector *)m_modules118);
 	Rva002B2435Get((Rva002B2435Obj *)xfer, &m_idF4);
 	Rva002B2435Get((Rva002B2435Obj *)xfer, &m_idF8);
-	if (!xfer->isCRC())
+	if (!xfer->IsCRC())
 	{
-		xfer->xferBool(m_flag108);
-		xfer->xferBool(m_flag109);
+		(*xfer == m_flag108);
+		(*xfer == m_flag109);
 	}
 	XferDelayedRegionVictories(xfer);
 	((Rva002B9CFC *)this)->rva002B9CFC((Other002B9CFC *)xfer);

@@ -27,47 +27,24 @@ union XferVersion
 	XferVersionFields m_fields;
 	UnsignedInt m_value;
 };
-class Xfer
-{
-public:
-	virtual void slot00();
-	virtual Bool IsLoading() const;
-	virtual Bool IsStoring() const;
-	virtual void slot03();
-	virtual Bool IsLightCRC() const;
-	virtual void slot05();
-	virtual void slot06();
-	virtual void slot07();
-	virtual void slot08();
-	virtual void xferUser(void *data, UnsignedInt size);
-	virtual void xferVersion(XferVersion *version);
-	virtual void slot11();
-	virtual void slot12();
-	virtual void slot13();
-	virtual void slot14();
-	virtual void slot15();
-	virtual void slot16();
-	virtual void slot17();
-	virtual void slot18();
-	virtual void slot19();
-	virtual void slot20();
-	virtual void slot21();
-	virtual void slot22();
-	virtual void slot23();
-	virtual void slot24();
-	virtual void slot25();
-	virtual void slot26();
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void slot28();
-	virtual void slot29();
-	virtual void slot30();
-	virtual void slot31();
-	virtual void slot32();
-	virtual void slot33();
-	virtual void slot34();
-	virtual void slot35();
-	virtual void xferBool(Bool *value);
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class Rva003B8F76;
 class LivingWorldCampaignManager
@@ -104,19 +81,19 @@ void Rva003B8F76::rva003B8F76(Xfer *xfer)
 		XferVersion version;
 		version.m_fields.m_version = 1;
 		version.m_fields.m_currentVersion = 1;
-		xfer->xferVersion(&version);
+		(*xfer == reinterpret_cast<Xfer::Version &>(version));
 		if (xfer->IsLoading()) {
 			AsciiString name;
-			xfer->xferAsciiString(&name);
+			(*xfer == name);
 			m_index = ((LivingWorldCampaignManager *)((char *)this - 0xC))->rva003B8E2B(name);
 			m_entries[m_index]->xfer(xfer);
 		} else {
 			Rva003B8F76Entry **entries = m_entries;
 			int i = m_index;
 			AsciiString name(entries[i]->m_name);
-			xfer->xferAsciiString(&name);
+			(*xfer == name);
 			{ Rva003B8F76Entry **v = m_entries; v[m_index]->xfer(xfer); }
 		}
-		xfer->xferBool(&m_flag20);
+		(*xfer == m_flag20);
 	}
 }

@@ -8,46 +8,24 @@
 // are reused; three first-name in-image pins describe opaque native methods
 // with proven Xfer/no-argument ABIs, not reconstructed callee progress.
 struct Version {unsigned char minimum,current;Version(unsigned char a,unsigned char b):minimum(a),current(b){}};
-class Xfer {public:
-virtual void s0();
-virtual bool IsLoading() const;
-virtual void s2();
-virtual bool IsCRC() const;
-virtual void s4();
-virtual void s5();
-virtual void s6();
-virtual void s7();
-virtual void s8();
-virtual void s9();
-virtual void xferVersion(Version*);
-virtual void s11();
-virtual void xferSnapshot(void*);
-virtual void s13();
-virtual void s14();
-virtual void s15();
-virtual void s16();
-virtual void s17();
-virtual void s18();
-virtual void s19();
-virtual void s20();
-virtual void s21();
-virtual void s22();
-virtual void s23();
-virtual void s24();
-virtual void s25();
-virtual void s26();
-virtual void s27();
-virtual void s28();
-virtual void s29();
-virtual void s30();
-virtual void xferInt(int*);
-virtual void s32();
-virtual void s33();
-virtual void s34();
-virtual void s35();
-virtual void xferBool(bool*);
-virtual void s37();
-};
+class Snapshot;
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
 void XferLivingWorldArmyID(Xfer*,int*);
 class Rva004E075FObj;int Rva004E075FGet(Rva004E075FObj*,int);
 void XferLivingWorldBuildPlotID(Xfer*,void*);
@@ -82,25 +60,25 @@ void LivingWorldLogic::xfer(Xfer*xfer){
   if(!enabledA8 || !((BfmeSelectionState*)((char*)this))->isSelectionLocked())return;
  }
  Version version(1,6);
- xfer->xferVersion(&version);
+ (*xfer == reinterpret_cast<Xfer::Version &>(version));
  XferLivingWorldArmyID(xfer,&army90);
  Rva004E075FGet((Rva004E075FObj*)xfer,(int)&building94);
  XferLivingWorldBuildPlotID(xfer,&plot98);
  Rva004E12D7Parse(xfer,&spawn9C);
  if(version.current>=5)XferLivingWorldPlayerID(xfer,&playerA0);
  if(xfer->IsLoading()){
-  xfer->xferBool(&loadEnabledBD);
+  (*xfer == loadEnabledBD);
   if(!loadEnabledBD){((Rva002BED10*)((Rva002D3627Host *)TheLivingWorld))->rva002BED10();return;}
   ((Rva002BED10*)((Rva002D3627Host *)TheLivingWorld))->rva002BED10();
   ((Rva002BBA45*)((BfmeSelectionState*)((char*)this)))->rva002BBA45(xfer);
  }else{
   loadEnabledBD=enabledA8;
-  xfer->xferBool(&loadEnabledBD);
+  (*xfer == loadEnabledBD);
   if(!loadEnabledBD)return;
   ((Rva002BB5DD*)((BfmeSelectionState*)((char*)this)))->rva002BB5DD(xfer);
  }
  ((RvaSnapshotView*)((char*)TheCampaignManager+12))->transfer(xfer);
- xfer->xferBool(&flagA9);
+ (*xfer == flagA9);
  if(xfer->IsLoading()){
   ((Rva002BBBE7*)&g_Va00E04544)->rva002BC39D();
   if(flagA9)((Glo012F1028Type*)((BfmeSelectionState*)((char*)this)))->rva002B7D03();
@@ -110,12 +88,12 @@ void LivingWorldLogic::xfer(Xfer*xfer){
  TheGameLogic->rva0023CFE4(xfer);
  if(!xfer->IsCRC()){
   ((RvaSnapshotView*)((char*)TheLivingWorldManager+12))->transfer(xfer);
-  if(version.current>=6)xfer->xferSnapshot(((Rva002D3627Host *)TheLivingWorld));
+  if(version.current>=6)(*xfer == *reinterpret_cast<Snapshot *>((Rva002D3627Host *)TheLivingWorld));
  }
  if(xfer->IsLoading()){
   if(((BfmeSelectionState*)((char*)this))->isSelectionLocked())((Rva002B6AA2*)((BfmeSelectionState*)((char*)this)))->rva002B6AA2();
   else ((RvaSnapshotResetView*)((Rva002D3627Host *)TheLivingWorld))->reset(0);
  }
- if(version.current>=2)xfer->xferInt(&counterF0);
+ if(version.current>=2)(*xfer == counterF0);
  else if(xfer->IsLoading())counterF0=0;
 }
