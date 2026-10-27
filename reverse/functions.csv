@@ -17173,7 +17173,6 @@ uw_0077386e,,0x0077386E,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;obje
 uw_00773ade,,0x00773ADE,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_00773b8c,,0x00773B8C,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2596
 uw_00773b97,,0x00773B97,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2599
-uw_00773bda,,0x00773BDA,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2949
 uw_00773e4b,,0x00773E4B,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5238
 uw_00773e5d,,0x00773E5D,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11194
 uw_00773e65,,0x00773E65,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4776
@@ -17372,10 +17371,8 @@ uw_00779d4b,,0x00779D4B,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;obje
 uw_00779ea0,,0x00779EA0,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5987
 uw_0077a041,,0x0077A041,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_0077a132,,0x0077A132,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2731
-uw_0077a147,,0x0077A147,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2949
 uw_0077a16b,,0x0077A16B,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L3598
 uw_0077a183,,0x0077A183,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5996
-uw_0077a25e,,0x0077A25E,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2949
 uw_0077a282,,0x0077A282,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L3643
 uw_0077a28a,,0x0077A28A,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L6032
 uw_0077a292,,0x0077A292,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
@@ -17415,7 +17412,6 @@ uw_0077b303,,0x0077B303,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;obje
 uw_0077b30b,,0x0077B30B,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12395
 uw_0077b31d,,0x0077B31D,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12395
 uw_0077b389,,0x0077B389,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5951
-uw_0077b3d1,,0x0077B3D1,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L2950
 uw_0077b411,,0x0077B411,8,Code/gen_small/uw_gen_006.cpp,matched,gen-funclet;object-symbol=$L3571
 uw_0077b423,,0x0077B423,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L8503
 uw_0077b466,,0x0077B466,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12395
@@ -98315,3 +98311,9 @@ $L2569,,0x00781F52,11,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB07
 $L2396,,0x007827FC,11,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB07.cpp,matched,gen-funclet;parent=??1Rva003B923B@@UAE@XZ; Matched parent 0x003B923B's EH graph is EXACT (eh_verify) and binds compiler label $L2396 to retail 0x007827FC; its callee ??1Rva003B923BBuffer@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_007827fc
 $L2517,,0x00784727,11,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB07.cpp,matched,gen-funclet;parent=??1Rva003FE58A@@UAE@XZ; Matched parent 0x003FE58A's EH graph is EXACT (eh_verify) and binds compiler label $L2517 to retail 0x00784727; its callee ??1Rva003FE58ABuffer@@QAE@XZ is rowed at its ICF fold 0x0007FAB3; replaces generated uw_00784727
 $L2519,,0x0078473D,11,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB07.cpp,matched,gen-funclet;parent=??1Rva003FE58A@@UAE@XZ; Matched parent 0x003FE58A's EH graph is EXACT (eh_verify) and binds compiler label $L2519 to retail 0x0078473D; its callee ??1Rva003FE58ARef@@QAE@XZ is rowed at its ICF fold 0x005F8F96; replaces generated uw_0078473d
+??1WaterHandleRef@@QAE@XZ,,0x005F8F96,12,Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp,matched,fold-proof=Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp; compiler-emitted destructor that retail ICF-folded with ??1Rva005F8F96@@QAE@XZ at 0x005F8F96: this unit compiles it to the same whole body; its unwind funclets call 0x005F8F96
+??1AreaRefValueView@@QAE@XZ,,0x005F8F96,12,Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp,matched,fold-proof=Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp; compiler-emitted destructor that retail ICF-folded with ??1Rva005F8F96@@QAE@XZ at 0x005F8F96: this unit compiles it to the same whole body; its unwind funclets call 0x005F8F96
+$L4625,,0x00773BDA,8,Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp,matched,gen-funclet;parent=?rva0028343D@Rva0028343D@@QAEXHVWaterHandleRef@@@Z; Matched parent 0x0028343D's EH graph is EXACT (eh_verify) and binds compiler label $L4625 to retail 0x00773BDA; its callee ??1WaterHandleRef@@QAE@XZ is rowed at its ICF fold 0x005F8F96; replaces generated uw_00773bda
+$L4554,,0x0077A147,8,Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp,matched,gen-funclet;parent=?insert@RiverAreaSetView@@QAEXHUAreaRefValueView@@@Z; Matched parent 0x0030C61B's EH graph is EXACT (eh_verify) and binds compiler label $L4554 to retail 0x0077A147; its callee ??1AreaRefValueView@@QAE@XZ is rowed at its ICF fold 0x005F8F96; replaces generated uw_0077a147
+$L4592,,0x0077A25E,8,Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp,matched,gen-funclet;parent=?insert@StandingWaveAreaSetView@@QAEXHUAreaRefValueView@@@Z; Matched parent 0x0030CE66's EH graph is EXACT (eh_verify) and binds compiler label $L4592 to retail 0x0077A25E; its callee ??1AreaRefValueView@@QAE@XZ is rowed at its ICF fold 0x005F8F96; replaces generated uw_0077a25e
+$L4692,,0x0077B3D1,8,Code/GameEngine/Source/GameLogic/Map/AreaSetInsert.cpp,matched,gen-funclet;parent=?rva003291F4@Rva003291F4@@QAEHUAreaRefValueView@@@Z; Matched parent 0x003291F4's EH graph is EXACT (eh_verify) and binds compiler label $L4692 to retail 0x0077B3D1; its callee ??1AreaRefValueView@@QAE@XZ is rowed at its ICF fold 0x005F8F96; replaces generated uw_0077b3d1
