@@ -37,7 +37,7 @@ public:
 	int m_argumentCount;
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 // ?parseFXList@INI@@SAXPAV1@PAX1PBX@Z
 void INI::parseFXList(INI *ini, void *, void *store, const void *)

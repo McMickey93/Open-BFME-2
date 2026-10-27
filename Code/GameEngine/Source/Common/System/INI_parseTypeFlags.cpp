@@ -77,7 +77,7 @@ extern const char *const BFME2DeathTypeNames[] = {
     "SLAUGHTERED",
     0
 };
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
+#include <string.h>
 struct INIException { char *message; int code; INIException(int argCount, const char *format, ...); };
 extern "C" void __stdcall _CxxThrowException(void *pExceptionObject, const _s__ThrowInfo *pThrowInfo);
 struct FlagsThrowInfoAnchor { int a,b,c,d; };

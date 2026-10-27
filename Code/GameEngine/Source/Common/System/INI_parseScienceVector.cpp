@@ -40,7 +40,7 @@ public:
 	static void parseScienceVector(INI *ini, void *instance, void *store, const void *userData);
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 // ?parseScienceVector@INI@@SAXPAV1@PAX1PBX@Z
 void INI::parseScienceVector(INI *ini, void *instance, void *store, const void *userData)
