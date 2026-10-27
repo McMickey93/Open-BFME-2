@@ -537,6 +537,12 @@ handoff's reported matched-byte values.
 
 ### Data-ownership follow-up outside the blocked shortlist
 
+2026-10-27, `e1a73387fd`: `UpgradeDie.cpp` preserves LINKS (120 authored bytes)
+while its stale local key/guard index is refreshed after the already landed
+rename and separate-clearer removal. The owning tool retires one data-debt key;
+four rows and one EH graph pass. [Evidence](../reverse/attempt_support/upgradedie-data-index-20261027.md).
+No census gain is claimed.
+
 2026-10-26, control `d831bc24031`: `DebugStatisticsRecordTexture.cpp` and
 `DebugStatisticsRecordTextureEnd.cpp` keep their existing 774/1,006 authored
 ordinary-preview bytes while binding eight scalar globals to `statistics.cpp`.

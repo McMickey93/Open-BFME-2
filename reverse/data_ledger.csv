@@ -20082,8 +20082,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03888,4,.data,global,_s_rva007B1328,Code/GameEngine/Source/Common/Rva007ABC6FFrameRateInits.cpp,owned,,1,1
 0x00A0388C,4,.data,global,?TheSpecialPowerCompletionDiePoolKey@?1??rva000486A2F@SpecialPowerCompletionDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/SpecialPowerCompletionDiePoolKey.cpp,owned,,1,2
 0x00A03890,4,.data,global,?g_Va00E03890@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E038xx.cpp,provisional,?$S1@?1??rva000486A2F@SpecialPowerCompletionDie@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/SpecialPowerCompletionDiePoolKey.cpp;?g_Va00E03890@@3IA,2,4
-0x00A03894,4,.data,global,?TheUpgradeDiePoolKey@?1??rva000486B75@UpgradeDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDie.cpp,owned,,1,2
-0x00A03898,4,.data,global,?g_Va00E03898@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E038xx.cpp,provisional,?$S1@?1??rva000486B75@UpgradeDie@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDie.cpp;?g_Va00E03898@@3IA,2,4
+0x00A03894,4,.data,global,?TheUpgradeDiePoolKey@?1??getModuleNameKey@UpgradeDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDie.cpp,owned,,1,2
+0x00A03898,4,.data,global,?$S1@?1??getModuleNameKey@UpgradeDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDie.cpp,owned,,1,4
 0x00A0389C,4,.data,global,_s_rva007B136C,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A038A0,4,.data,global,?TheKeepObjectDiePoolKey@?1??rva000486C95@KeepObjectDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/KeepObjectDie.cpp,owned,,1,2
 0x00A038A4,4,.data,global,?g_Va00E038A4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E038xx.cpp,provisional,?$S1@?1??rva000486C95@KeepObjectDie@@SA?AW4NameKeyType@@XZ@4IA@Code/GameEngine/Source/GameLogic/Object/Die/KeepObjectDie.cpp;?g_Va00E038A4@@3IA,2,4

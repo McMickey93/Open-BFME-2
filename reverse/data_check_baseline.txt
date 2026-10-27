@@ -372,7 +372,6 @@ Code/GameEngine/Source/GameLogic/Object/Die/RefundDiePoolKey.cpp	wrong-name	?$S1
 Code/GameEngine/Source/GameLogic/Object/Die/SpecialPowerCompletionDiePoolKey.cpp	wrong-name	?$S1@?1??rva000486A2F@SpecialPowerCompletionDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03890
 Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp	wrong-name	?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04010
 Code/GameEngine/Source/GameLogic/Object/Die/TransitionDamageFXPoolKey.cpp	wrong-name	?$S1@?1??rva0004BA437@TransitionDamageFX@@SA?AW4NameKeyType@@XZ@4IA	0x00A03FD0
-Code/GameEngine/Source/GameLogic/Object/Die/UpgradeDie.cpp	wrong-name	?$S1@?1??rva000486B75@UpgradeDie@@SA?AW4NameKeyType@@XZ@4IA	0x00A03898
 Code/GameEngine/Source/GameLogic/Object/FiringTrackerPoolKey.cpp	wrong-name	?$S1@?1??rva0004DEACB@FiringTracker@@SA?AW4NameKeyType@@XZ@4IA	0x00A04410
 Code/GameEngine/Source/GameLogic/Object/ObjectFindAttributeModifierPoolUpdate.cpp	wrong-name	?$S1@?1??findAttributeModifierPoolUpdate@Object@@ABEPAVAttributeModifierPoolUpdate@@XZ@4IA	0x009FECE8
 Code/GameEngine/Source/GameLogic/Object/ObjectFindDynamicPortalBehaviour.cpp	wrong-name	?$S1@?1??rva004608E0@DynamicPortalBehaviour@@SAPAVModule@@PAVObject@@@Z@4IA	0x00A035D8
