@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?read_prelit_material@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x0018B4F0 (249 bytes).
@@ -20,9 +21,7 @@
 // the retail REL32 displacements at the switch cases (jump-table indices
 // 2/3/4); read_shaders resolves via its matched row.
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 typedef unsigned long ulong;
 typedef unsigned int uint32;

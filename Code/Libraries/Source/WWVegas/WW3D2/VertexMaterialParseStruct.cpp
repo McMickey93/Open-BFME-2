@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?Parse_W3dVertexMaterialStruct@VertexMaterialClass@@QAEXABUW3dVertexMaterialStruct@@@Z,
 // retail 0x0013D030 (327 bytes).
@@ -16,9 +17,7 @@
 // Dedicated TU: vertmaterial.cpp carries the ZH original. No new pins
 // (no REL32 calls at all).
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 typedef unsigned int uint32;
 typedef unsigned char uint8;

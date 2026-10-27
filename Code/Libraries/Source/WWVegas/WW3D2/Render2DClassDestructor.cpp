@@ -12,9 +12,8 @@
 // state stores before those two frees: the import is extern "C" and so counts
 // as nothrow, unlike the game free the vector reaches under /GX.
 
+#include <stdlib.h>
 #include <vector>
-
-extern "C" __declspec(dllimport) void __cdecl free(void *pointer);
 
 class TextureBaseClass
 {

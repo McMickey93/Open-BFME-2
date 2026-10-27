@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?read_shaders@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x0018AC90 (160 bytes).
@@ -20,9 +21,7 @@
 // Dedicated TU: marker-less meshmdlio.cpp cannot take rows (PostProcess
 // precedent). No new pins (Read + Convert_Shader resolve via matched rows).
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 typedef unsigned char uint8;
 typedef unsigned long ulong;

@@ -1,8 +1,6 @@
 // cl: /DNDEBUG /MD /EHs-c-
 #include <math.h>
 
-extern "C" __declspec(dllimport) double __cdecl floor(double);
-
 __forceinline long bfme_fistp(float f)
 {
 	long i;

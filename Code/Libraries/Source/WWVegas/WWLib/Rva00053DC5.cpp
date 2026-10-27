@@ -3,7 +3,8 @@
 // Recurses on +0xC then frees node and follows +0x8; called from 0x00054B9A
 // list-head resetter which proves list-container context. Callees all rowed:
 // self-recursion plus row 0x00030830 free. Unlocks 0x00054B9A.
-extern "C" void __cdecl free(void *block);
+
+#include <stdlib.h>
 
 struct Node53DC5
 {

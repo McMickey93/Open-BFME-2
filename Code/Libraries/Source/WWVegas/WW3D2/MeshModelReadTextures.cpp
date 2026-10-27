@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /ICode/GameEngineDevice/Source/W3DDevice/GameClient
+// platformsdk
 //
 // ?read_textures@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x0018AE50 (284 bytes).
@@ -18,16 +19,13 @@
 // BfmeHandleCX remains the established vector element ABI; both handles own
 // one texture pointer with the same WORD acquisition and release sequence.
 
-#ifndef NULL
-#define NULL 0
-#endif
-
 class ChunkLoadClass
 {
 public:
 	bool Open_Chunk(void);
 };
 
+#include <windows.h>
 #include "BFME2ParticleTextureHandles.h"
 class BfmeHandleCX
 {

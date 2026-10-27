@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc /O2 /Ob2 /G7 /arch:SSE
+// platformsdk
 // BFME SurfaceClass is the one-pointer COM owner established by the matched
 // surface-level accessor and its caller TextureHandleApply.cpp. The query
 // and pixel-size helper retain address-qualified BFME identities. /G7 is
@@ -72,8 +73,8 @@ unsigned int SurfaceClass::GetSurfaceMemoryUsage() const
 // with Format/Width/Height at +0/+0x18/+0x1c; the null-surface path leaves
 // the caller's description untouched. The memset intrinsic is what emits the
 // retail xor-plus-eight-movs zeroing (brace init sinks the first store).
+#include <windows.h>
 #include <string.h>
-typedef long HRESULT;
 struct D3DSurfaceDesc
 {
     unsigned int Format;

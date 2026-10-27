@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?read_chunks@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x0018B790 (code through ret C2 08 00 at 0x18B965/0x18B96E, jump
@@ -16,9 +17,7 @@
 // - No SURRENDER_NORMALS/obsolete-material assert arms (release build).
 // Dedicated TU: marker-less meshmdlio.cpp cannot take rows (PostProcess precedent).
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 class ChunkLoadClass
 {

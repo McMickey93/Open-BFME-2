@@ -5,7 +5,8 @@
 // clear(0041EA88), bucket storage at +4, and throwing free(00030830).
 // Rva0041EA88Clear.cpp establishes the matching +4/+8/+10 table view.
 // The source names are address-derived; original container identity is unknown.
-extern "C" void __cdecl free(void *);
+#include <stdlib.h>
+
 struct OwnedBucketStorage
 {
     void **begin;
@@ -244,4 +245,3 @@ AsciiString &Rva002A9140::rva002A9140(const int &key)
                 reinterpret_cast<const StringBase<char> &>(AsciiString()))))) + 4 :
         reinterpret_cast<char *>(node) + 8);
 }
-

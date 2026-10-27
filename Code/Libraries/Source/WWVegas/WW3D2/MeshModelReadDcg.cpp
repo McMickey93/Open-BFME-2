@@ -1,4 +1,5 @@
 // cl: /O2 /arch:SSE /G7 /DNDEBUG /MD /GX- /Oy-
+// platformsdk
 //
 // ?read_dcg@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x00188BB0 (562 bytes).
@@ -19,9 +20,7 @@
 // Dedicated TU: the enum-typed meshmdlio.cpp cannot take rows (PostProcess
 // precedent). Get_Color_Array and Read resolve via matched rows.
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 #define WWINLINE __forceinline
 

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?read_texcoords@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x001896D0 (167 bytes).
@@ -15,10 +16,7 @@
 //   3 mesh-reader callers); Cur_Chunk_Length/Read resolve to matched rows.
 // Dedicated TU: marker-less meshmdlio.cpp cannot take rows (PostProcess precedent).
 
-#ifndef NULL
-#define NULL 0
-#endif
-
+#include <windows.h>
 #include "../../../../../reference/shims/wwmath/Vector2.h"
 
 struct W3dTexCoordStruct

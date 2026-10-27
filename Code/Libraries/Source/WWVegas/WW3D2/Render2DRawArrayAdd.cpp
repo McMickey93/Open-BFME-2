@@ -8,8 +8,7 @@
 // element type is deliberately kept local: the surrounding Render2D classes
 // have a different BFME layout from the vendored Zero Hour declaration.
 
-extern "C" __declspec(dllimport) void *__cdecl realloc(
-	void *pointer, unsigned int bytes);
+#include <stdlib.h>
 
 struct Render2DCharElement
 {

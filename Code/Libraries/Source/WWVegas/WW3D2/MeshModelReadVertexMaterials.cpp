@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// platformsdk
 //
 // ?read_vertex_materials@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x0018AD40 (237 bytes).
@@ -21,9 +22,7 @@
 // precedent). New resolves via its matched row, the ctor via its matched
 // row, Load_W3D via the harvested pin.
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 class ChunkLoadClass
 {

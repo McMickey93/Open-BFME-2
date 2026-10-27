@@ -1,10 +1,11 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 // ?rva0015148D@Rva0015148D@@QAEPAXXZ at 0x0015148D (37B).
 // Ref-holder getter: null check, ensure via Is_Initialized/Slot_2C virtuals,
 // then return inner pointer at +0x14+4. Evidence: slots 0x28/0x2c match
 // TexObject Is_Initialized/Slot_2C pattern, 22 callers, unblocks 7.
 
-#define NULL 0
+#include <windows.h>
 
 class Inner14
 {

@@ -25,7 +25,7 @@
 // No reverse/symbols.csv pin: the only reference is the CRT free import, which
 // resolves through the ledger.
 
-extern "C" __declspec(dllimport) void __cdecl free(void *memory);
+#include <stdlib.h>
 
 struct Rva00020570Thing
 {

@@ -1,4 +1,5 @@
 // cl: /O2 /arch:SSE /G7 /DNDEBUG /MD /EHsc
+// platformsdk
 // ?read_fx_shaders@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z @0x0018AF70 272B
 // MeshModelClass::read_fx_shaders, retail 0x0018AF70 (272 bytes):
 // Chunk 0x50 reader in read_chunks (MeshModelReadChunks.cpp:144) beside
@@ -16,9 +17,8 @@
 // This closes the older bank's persistent-context EBP versus cload swap.
 // The vector algorithm is the clean WWLib DynamicVectorClass Add pattern;
 // constructor and Load_W3D bind existing FXShaderSetup owners. No new pins.
-#ifndef NULL
-#define NULL 0
-#endif
+
+#include <windows.h>
 
 class ChunkLoadClass
 {

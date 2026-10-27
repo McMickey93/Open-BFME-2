@@ -5,6 +5,8 @@
 // Opaque node deleter calling the rowed holder release 0x0005333F on the
 // +4 value, then free.
 // Evidence: sole caller is deque clear loop 0x00056DA2; same flags as neighbours.
+#include <stdlib.h>
+
 class Rva0005333FHolder
 {
 public:
@@ -17,8 +19,6 @@ struct Rva00055864Node
 	void *m_next;
 	Rva0005333FHolder m_val;
 };
-
-extern "C" void __cdecl free(void *block);
 
 void __stdcall Rva00055864Free(Rva00055864Node *p)
 {

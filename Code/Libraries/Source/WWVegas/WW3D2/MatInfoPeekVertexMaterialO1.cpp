@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 // ?Peek_Vertex_Material@MaterialInfoClass@@QBEPAVVertexMaterialClass@@H@Z
 // retail 0x000636C9, 22 bytes, size-optimised (/O1).
 //
@@ -8,7 +9,7 @@
 // Retail callers: 0x0006374E, 0x000CE2A5, 0x0014BE36. The replica mangles
 // identically to the real member.
 
-#define NULL 0
+#include <windows.h>
 
 class VertexMaterialClass;
 

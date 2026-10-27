@@ -1,4 +1,5 @@
 // cl: /O2 /arch:SSE /G7 /DNDEBUG /MD /GX- /Oy-
+// platformsdk
 //
 // ?read_vertex_colors@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x00188760 (392 bytes, Ghidra FUN_00588760 389B truncated omits final ret8; retail full 392 incl ret8; next body 0x001888F0).
@@ -28,9 +29,7 @@
 // resolves via matched row 0xD1FBD; Read via matched row 0x6151A0. No new pins,
 // no shared-header edits, no mask-green or alternatename as proof.
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 #define WWINLINE __forceinline
 

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?read_material_pass@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x0018B400 (175 bytes).
@@ -19,9 +20,7 @@
 // shader_ids, texture_stage, Rva00189B50) plus committed pins (dcg, dig,
 // opaque 0x3F reader).
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 class ChunkLoadClass
 {

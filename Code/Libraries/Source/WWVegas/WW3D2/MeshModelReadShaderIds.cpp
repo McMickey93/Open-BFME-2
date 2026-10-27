@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /GX-
+// platformsdk
 //
 // ?read_shader_ids@MeshModelClass@@IAE_NAAVChunkLoadClass@@PAVMeshLoadContextClass@@@Z,
 // retail 0x001889B0 (307 bytes).
@@ -19,9 +20,7 @@
 // Dedicated TU: marker-less meshmdlio.cpp cannot take rows (PostProcess
 // precedent). 2 pins (Set_Single_Shader pre-existed at 0x15A7E0).
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
 
 typedef unsigned char uint8;
 typedef unsigned long ulong;

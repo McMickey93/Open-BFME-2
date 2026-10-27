@@ -9,9 +9,8 @@
 // Retail calls the rowed AsciiString dtor at 0x0048BA39 from this erase
 // body. Keep its one-pointer layout but leave the dtor out of line here so
 // this TU binds to that row instead of emitting the header's inline copy.
+#include <stdlib.h>
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
-
-extern "C" void __cdecl free(void *block);
 
 struct HashNode00056CF8
 {

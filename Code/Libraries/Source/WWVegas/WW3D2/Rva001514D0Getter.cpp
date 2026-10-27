@@ -1,10 +1,11 @@
 // cl: /DNDEBUG /MD
+// platformsdk
 // ?rva001514D0@Rva001514D0@@QAEPAXH@Z at 0x001514D0 (37B).
 // Indexed getter with 0<=i<1 bounds plus double null guard, returns
 // inner array slot at +0x24. Evidence: sibling 0x15148D outer+0/inner+0x14
 // shape, single caller 0x7B9A3, unblocks 0x7B93B.
 
-#define NULL 0
+#include <windows.h>
 
 struct Inner24
 {
