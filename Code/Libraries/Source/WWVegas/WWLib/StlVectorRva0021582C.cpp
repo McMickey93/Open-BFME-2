@@ -29,5 +29,5 @@ template void _STL::vector<Rva0021582CRecord>::reserve(unsigned int);
 // -> cdecl placement copy 21559C; clear 21580E calls destroy range 215783.
 // Both loops step 0x10, independently establishing this opaque view width.
 // These bindings identify operations on an ABI view, not a new game type.
-#pragma comment(linker, "/alternatename:??$_Construct@URva0021582CRecord@@U1@@_STL@@YAXPAURva0021582CRecord@@ABU1@@Z=??$_Construct@UBfmeVectorRecord002154F3@@U1@@_STL@@YAXPAUBfmeVectorRecord002154F3@@ABU1@@Z")
+#pragma comment(linker, "/alternatename:??$_Construct@URva0021582CRecord@@U1@@_STL@@YAXPAURva0021582CRecord@@ABU1@@Z=??$_Construct@UBfmeVectorRecord0002154F3@@U1@@_STL@@YAXPAUBfmeVectorRecord0002154F3@@ABU1@@Z")
 #pragma comment(linker, "/alternatename:??$_Destroy@PAURva0021582CRecord@@@_STL@@YAXPAURva0021582CRecord@@0@Z=??$_Destroy@PAUBfmeVectorRecord0002154F3@@@_STL@@YAXPAUBfmeVectorRecord0002154F3@@0@Z")

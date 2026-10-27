@@ -21,10 +21,9 @@ struct BfmeItemERE
 };
 
 struct BfmeVectorRecord0002154F3;
-struct Rva00215949Element;
 namespace _STL {
 template <> BfmeVectorRecord0002154F3 *vector<BfmeVectorRecord0002154F3, allocator<BfmeVectorRecord0002154F3> >::erase(BfmeVectorRecord0002154F3 *, BfmeVectorRecord0002154F3 *);
-template <> void vector<Rva00215949Element, allocator<Rva00215949Element> >::_M_fill_insert(Rva00215949Element *, unsigned int, const Rva00215949Element &);
+template <> void vector<BfmeVectorRecord0002154F3, allocator<BfmeVectorRecord0002154F3> >::_M_fill_insert(BfmeVectorRecord0002154F3 *, unsigned int, const BfmeVectorRecord0002154F3 &);
 }
 
 class BfmeVecERE
@@ -47,8 +46,8 @@ void BfmeVecERE::bfmeResizeERE(unsigned int count, BfmeItemERE value)
 		unsigned int extra =
 			count - (unsigned int)(m_bfmeLastERE - m_bfmeFirstERE);
 
-		reinterpret_cast<_STL::vector<Rva00215949Element> *>(this)->_M_fill_insert(
-			reinterpret_cast<Rva00215949Element *>(m_bfmeLastERE), extra,
-			*reinterpret_cast<const Rva00215949Element *>(&value));
+		reinterpret_cast<_STL::vector<BfmeVectorRecord0002154F3> *>(this)->_M_fill_insert(
+			reinterpret_cast<BfmeVectorRecord0002154F3 *>(m_bfmeLastERE), extra,
+			*reinterpret_cast<const BfmeVectorRecord0002154F3 *>(&value));
 	}
 }

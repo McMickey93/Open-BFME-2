@@ -53,7 +53,6 @@ name,address,notes
 ??$_Construct@UBfmeStringRecord00111ACF@@U1@@_STL@@YAXPAUBfmeStringRecord00111ACF@@ABU1@@Z,0x003F62C8,EH _Construct twin resolves uninitialized_copy call at 0x3F6303; rowed at 0xAD77B
 ??$_Construct@UBfmeStringRecord005DDD40@@U1@@_STL@@YAXPAUBfmeStringRecord005DDD40@@ABU1@@Z,0x003814A6,ICF twin of true Construct at 0x5DDD78; 45B EH plus copy ctor 0x5DDD40; scope table VA differs
 ??$_Construct@UBfmeStringTailRecord156@@U1@@_STL@@YAXPAUBfmeStringTailRecord156@@ABU1@@Z,0x004CC095,callee REL32 read by locate.py from a unique masked-byte placement emitted by stlport_asciistring_record_bodies.cpp
-??$_Construct@UBfmeVectorRecord0002154F3@@U1@@_STL@@YAXPAUBfmeVectorRecord0002154F3@@ABU1@@Z,0x0021559C,twin of rowed 002154F3 _Construct at this address by layout; resolves the 2155C9 worker call
 ??$_Construct@UElem36@@U1@@_STL@@YAXPAUElem36@@ABU1@@Z,0x001610F0,address read from the REL32 displacement at a placed body
 ??$_Construct@UGen_t_008fb570_p8pod@@U1@@_STL@@YAXPAUGen_t_008fb570_p8pod@@ABU1@@Z,0x0060C9D9,retail REL32 from deque<Gen_t_008fb570_p8pod>::_M_push_back_aux_v at 0x0073E2E0; BFME1 deque construct helper
 ??$_Construct@UGeometryShape@@U1@@_STL@@YAXPAUGeometryShape@@ABU1@@Z,0x005EA9A9,callee REL32 read by locate.py from a unique masked-byte placement emitted by GeometryInfoCopyConstructor.cpp
@@ -3818,7 +3817,6 @@ name,address,notes
 ??4BfmeStringRecord000B757D@@QAEAAU0@ABU0@@Z,0x001D9990
 ??4BfmeStringRecord002CF5B1@@QAEAAU0@ABU0@@Z,0x00564B1A,callee REL32 read by locate.py from a unique masked-byte placement emitted by ProductionPrerequisiteAssign.cpp
 ??4BfmeStringTailRecord144@@QAEAAU0@ABU0@@Z,0x00051C3F,callee REL32 read by locate.py from a unique masked-byte placement emitted by stlport_asciistring_record_bodies.cpp
-??4BfmeVectorRecord0002154F3@@QAEAAU0@ABU0@@Z,0x00215530,address read from the REL32 displacement at a placed body
 ??4BfmeWideResult@@QAEAAU0@ABU0@@Z,0x0041D5D0,"assignment of the partition iterate result (ref-counted handle: skip self, release the old block through its +0x10 count, take the other): REL32 at 0x005DA2DC in 0x005DA109 where the second iterateObjectsInRange result is assigned over the first before the temporary dtor 0x0004AA28"
 ??4CursorTextureSlot@@QAEXABVBFME2ParticleTextureHandle@@@Z,0x000424D0,counted-holder assign used by image-wide sites incl W3DMouse cursor fill; void return is load-bearing for the caller null-test register; REL32-decoded from the loadD3DCursorTextures body
 ??4GameWindowList@@QAEAAV0@ABV0@@Z,0x002C54EE,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
@@ -8232,13 +8230,6 @@ rva009C7380WeightPairs,0x009B84E0
 ??$_M_find@H@?$hashtable@U?$pair@$$CBHURva00054EBEElement@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva00054EBEElement@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva00054EBEElement@@@_STL@@@2@@_STL@@ABEPAU?$_Hashtable_node@U?$pair@$$CBHURva00054EBEElement@@@_STL@@@1@ABH@Z,0x00053FD2,
 ??$_M_find@H@?$hashtable@U?$pair@$$CBHURva000E0225Element@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva000E0225Element@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva000E0225Element@@@_STL@@@2@@_STL@@ABEPAU?$_Hashtable_node@U?$pair@$$CBHURva000E0225Element@@@_STL@@@1@ABH@Z,0x000E01B0,
 ?_M_create_node@?$_Rb_tree@PAXU?$pair@QAXURva0029FBC9Element@@@_STL@@U?$_Select1st@U?$pair@QAXURva0029FBC9Element@@@_STL@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXURva0029FBC9Element@@@_STL@@@2@@_STL@@IAEPAU?$_Rb_tree_node@U?$pair@QAXURva0029FBC9Element@@@_STL@@@2@ABU?$pair@QAXURva0029FBC9Element@@@2@@Z,0x0029E11A,
-??0Rva00215949Element@@QAE@ABU0@@Z,0x002154F3,
-??$__uninitialized_copy@PAURva00215949Element@@PAU1@@_STL@@YAPAURva00215949Element@@PAU1@00ABU__false_type@0@@Z,0x002155C9,
-??$__copy_backward_ptrs@PAURva00215949Element@@PAU1@@_STL@@YAPAURva00215949Element@@PAU1@00ABU__false_type@0@@Z,0x00215641,
-??$fill@PAURva00215949Element@@U1@@_STL@@YAXPAURva00215949Element@@0ABU1@@Z,0x0021565E,
-??$uninitialized_fill_n@PAURva00215949Element@@IU1@@_STL@@YAPAURva00215949Element@@PAU1@IABU1@@Z,0x0021567B,
-??1Rva00215949Element@@QAE@XZ,0x002154BE,
-?_M_insert_overflow@?$vector@URva00215949Element@@V?$allocator@URva00215949Element@@@_STL@@@_STL@@IAEXPAURva00215949Element@@ABU3@ABU__false_type@2@I_N@Z,0x00215895,
 ??0Rva0017422DElement@@QAE@ABU0@@Z,0x00173731,
 ??$__uninitialized_copy@PAURva0017422DElement@@PAU1@@_STL@@YAPAURva0017422DElement@@PAU1@00ABU__false_type@0@@Z,0x0017398C,
 ??$__copy_backward_ptrs@PAURva0017422DElement@@PAU1@@_STL@@YAPAURva0017422DElement@@PAU1@00ABU__false_type@0@@Z,0x00173786,

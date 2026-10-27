@@ -61,21 +61,16 @@ struct BfmeVectorRecord000C0BEC {
 BfmeVectorRecord000C0BEC::BfmeVectorRecord000C0BEC(const BfmeVectorRecord000C0BEC &other) : text(other.text), names(other.names), word10(other.word10) {}
 template void _STL::_Construct<BfmeVectorRecord000C0BEC,BfmeVectorRecord000C0BEC>(BfmeVectorRecord000C0BEC*,const BfmeVectorRecord000C0BEC&);
 
-// Complete retail record copy at 0x002154F3.
-struct BfmeVectorRecord002154F3 {
-    AsciiString text; _STL::vector<AsciiString> names;
-    BfmeVectorRecord002154F3(const BfmeVectorRecord002154F3 &other);
-};
-BfmeVectorRecord002154F3::BfmeVectorRecord002154F3(const BfmeVectorRecord002154F3 &other) : text(other.text), names(other.names) {}
-template void _STL::_Construct<BfmeVectorRecord002154F3,BfmeVectorRecord002154F3>(BfmeVectorRecord002154F3*,const BfmeVectorRecord002154F3&);
-
-// Retail 0x00215530: assignment for the 0x002154F3 record shape (pin spells
-// it 0002154F3); text via pinned AsciiString assign 0x366F0, names via rowed
-// vector assign 0xBDB46. Callers in 0x00215572 0x0021566B 0x00215696 dup.
+// Complete retail record copy at 0x002154F3 and assignment at 0x00215530:
+// text via pinned AsciiString assign 0x366F0, names via rowed vector assign
+// 0xBDB46. Callers in 0x00215572 0x0021566B 0x00215696 dup.
 struct BfmeVectorRecord0002154F3 {
     AsciiString text; _STL::vector<AsciiString> names;
+    BfmeVectorRecord0002154F3(const BfmeVectorRecord0002154F3 &other);
     BfmeVectorRecord0002154F3 &operator=(const BfmeVectorRecord0002154F3 &other);
 };
+BfmeVectorRecord0002154F3::BfmeVectorRecord0002154F3(const BfmeVectorRecord0002154F3 &other) : text(other.text), names(other.names) {}
+template void _STL::_Construct<BfmeVectorRecord0002154F3,BfmeVectorRecord0002154F3>(BfmeVectorRecord0002154F3*,const BfmeVectorRecord0002154F3&);
 BfmeVectorRecord0002154F3 &BfmeVectorRecord0002154F3::operator=(const BfmeVectorRecord0002154F3 &other)
 {
     text = other.text;

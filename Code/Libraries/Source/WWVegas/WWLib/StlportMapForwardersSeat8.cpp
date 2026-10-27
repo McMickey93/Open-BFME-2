@@ -18,7 +18,7 @@ class NamedTimerInfo;
 struct TreeHintPayload001F8ACB;
 struct Coord3D;
 struct BfmeStringRecord002CF550;
-struct Rva00215949Element { Rva00215949Element();Rva00215949Element(const Rva00215949Element&);~Rva00215949Element();Rva00215949Element&operator=(const Rva00215949Element&);char bytes[16]; bool operator<(const Rva00215949Element&)const; bool operator==(const Rva00215949Element&)const; };
+struct BfmeVectorRecord0002154F3;
 enum ScienceType { SCIENCE_INVALID = -1 };
 
 typedef _STL::map<AsciiString, NamedTimerInfo *> MapA;                       // 0x002A3F56
@@ -27,7 +27,7 @@ typedef _STL::map<AsciiString, Coord3D> MapC;                          // 0x0030
 typedef _STL::map<_STL::pair<AsciiString, AsciiString>, int> MapD;     // 0x0032C366
 typedef _STL::set<BfmeStringRecord002CF550> SetE;                     // 0x0033D000
 typedef _STL::map<int, int> MapF;                                      // 0x0032B4AD
-typedef _STL::vector<Rva00215949Element> VecG;                         // 0x00215A88
+typedef _STL::vector<BfmeVectorRecord0002154F3> VecG;                  // 0x00215A88
 typedef _STL::vector<float> VecH;                                      // 0x0030E90B
 typedef _STL::vector<_STL::vector<ScienceType> > VecI;                 // 0x0033A271
 
