@@ -636,7 +636,7 @@ Rva001DC0EC::Rva001DC0EC()
 // BFME2 list at +0 per ctor/dtor). No ZH inline-list body copied.
 // Providers: list<int>::push_back 0x0005548F (matched, stlport_list_int_o1.cpp),
 // no new pins, no DIR32, no EH/frame. TransitionWindow opaque (only pointer
-// passed; genuine 0x18 view in GroupTotalFrames TU, not needed here).
+// passed; its 0x18 layout is not needed here).
 // TU-scoped only, no shared-header edits, no new class view beyond proven 0x14.
 
 // vector<int> fill/insert otherwise instantiates the _Construct<int,int>
@@ -769,7 +769,8 @@ void GameWindowTransitionsHandler::rva001DC57C(_STL::list<int, _STL::allocator<i
 // ctor 0x1DBC61 (??0Rva00489BC0 R3ScalarFieldConstructors1.cpp, matched BFME1 donor),
 // initFromINI 0x2DE78 (?initFromINI@INI@@QAEXPAXPBUFieldParse@@@Z INI_initFromINI.cpp, matched),
 // addWindow 0x1DC19F (rowed 20B ?addWindow@TransitionGroup, r6 land), table parsers all rowed (see above).
-// No new class view: reuses HandlerGroups/GroupTotalFrames 0x18 TransitionWindow and TransitionGroup views;
+// No new class view: TransitionWindow stays opaque (fields written through the table above) and
+// TransitionGroup is this TU's 0x14 view;
 // AsciiString canonical untouched (no private copy; offsets hardcoded per ControlBar g_0080D720 precedent).
 // TU-scoped shims only, no shared-header edits. Single-local esi, nothrow ctor to avoid EH/ebp frame.
 
