@@ -179,4 +179,3 @@ void Rva00544884::onExit(StateExitType exitType)
 	m_machine->m_38 = false;
 	AIInternalMoveToState::onExit(exitType);
 }
-#pragma comment(linker, "/alternatename:_theLogicRandomLogFile=?g_00DFEFF0@@3PAXA")
