@@ -43286,7 +43286,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0056EDE8,46,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp
 0x0056EE16,45,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_online_country_tree.cpp
 0x0056EE43,28,code,Code/GameEngine/Source/Common/AptOnlineLogin.cpp,proposed,N,N=Code/GameEngine/Source/Common/AptOnlineLogin.cpp,Code/GameEngine/Source/Common/AptOnlineLogin.cpp
-0x0056EE5F,121,code,,,-,,Code/GameEngine/Source/Common/Rva0056EE5FRegistry.cpp
+0x0056EE5F,121,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
 0x0056EED8,141,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp
 0x0056EF65,141,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp
 0x0056EFF2,141,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp
@@ -43299,7 +43299,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0056F3B1,141,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp
 0x0056F43E,53,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_online_country_tree.cpp
 0x0056F473,34,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_online_country_tree.cpp
-0x0056F495,110,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,K,K=Rva0056EA91,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EA91CompareSet.cpp
+0x0056F495,110,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,K,K=Rva0056EA91,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
 0x0056F503,41,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,C,C=0x0056F495..0x0056F52C,Code/Libraries/Source/WWVegas/WWLib/stlport_online_country_tree.cpp
 0x0056F52C,89,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,C,C=0x0056F495..0x0056F585,Code/GameEngine/Source/Common/BigObfHookWrappers.cpp
 0x0056F585,89,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,C,C=0x0056F495..0x0056F5DE,Code/GameEngine/Source/Common/BigObfHookWrappers.cpp
@@ -43342,7 +43342,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0057166C,305,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
 0x0057179D,984,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
 0x00571B75,235,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
-0x00571C60,61,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,C,C=0x00571B75..0x00572571,Code/GameEngine/Source/Common/Rva0056EE5FRegistry.cpp
+0x00571C60,61,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,C,C=0x00571B75..0x00572571,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
 0x00572571,193,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,C,C=0x00571B75..0x00572632,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLoginLocale.cpp
 0x00572632,310,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
 0x00572768,265,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,proposed,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineLogin.cpp
