@@ -1,22 +1,13 @@
+// platformsdk
 // ?rva00882050PatchImport@@YA_NPBD00PAX@Z
 // Replace one imported function pointer in a loaded PE image.
 
-typedef void *RvaModuleHandle;
-typedef void *RvaProcAddress;
-
-extern "C" __declspec(dllimport) RvaModuleHandle __stdcall GetModuleHandleA(const char *name);
-extern "C" __declspec(dllimport) RvaProcAddress __stdcall GetProcAddress(RvaModuleHandle module, const char *name);
-extern "C" __declspec(dllimport) int __stdcall IsBadReadPtr(const void *address, unsigned long size);
-extern "C" __declspec(dllimport) RvaModuleHandle __stdcall GetCurrentProcess(void);
-extern "C" __declspec(dllimport) int __stdcall VirtualProtect(void *address, unsigned long size, unsigned long protection, unsigned long *oldProtection);
-extern "C" __declspec(dllimport) int __stdcall WriteProcessMemory(RvaModuleHandle process, void *address, const void *buffer, unsigned long size, unsigned long *written);
-
-extern "C" __declspec(dllimport) RvaModuleHandle __stdcall LoadLibraryA(const char *name);
+#include <windows.h>
 
 bool rva00882050PatchImport(const char *moduleName, const char *dllName,
                             const char *functionName, void *replacement)
 {
-    RvaProcAddress target = GetProcAddress(LoadLibraryA(dllName), functionName);
+    FARPROC target = GetProcAddress(LoadLibraryA(dllName), functionName);
     if (target == 0)
         return false;
 
@@ -41,7 +32,7 @@ bool rva00882050PatchImport(const char *moduleName, const char *dllName,
         unsigned long *iat = (unsigned long *)(image + *(unsigned long *)(descriptor + 4));
         while (*iat != 0)
         {
-            if ((RvaProcAddress)*iat == target)
+            if ((FARPROC)*iat == target)
             {
                 unsigned long restoredProtection = 4;
                 unsigned long oldProtection;

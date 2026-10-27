@@ -12,15 +12,9 @@
 // known. LANPreferences (vtable 0x00C3EF04) derives from it. The
 // UserPreferences model is the one in Common/UserPreferences.cpp.
 
+#include <stdio.h>
 #include <map>
 #include <stdlib.h>
-
-struct _iobuf;
-typedef struct _iobuf FILE;
-extern "C" __declspec(dllimport) FILE *__cdecl _wfopen(const unsigned short *name, const unsigned short *mode);
-extern "C" __declspec(dllimport) int __cdecl fprintf(FILE *fp, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __cdecl fclose(FILE *fp);
-extern "C" __declspec(dllimport) char *__cdecl fgets(char *buf, int n, FILE *fp);
 
 typedef bool Bool;
 typedef int Int;

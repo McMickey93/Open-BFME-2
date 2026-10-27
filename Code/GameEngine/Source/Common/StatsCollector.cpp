@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// platformsdk
 
 // ??0StatsCollector@@QAE@XZ, retail 0x004376FA (91 bytes).
 // BFME1 StatsCollector.cpp donor, trimmed to the constructor; the remaining
@@ -15,23 +16,11 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef int Bool;
 
-#define FALSE 0
-#define TRUE 1
+#include <time.h>
+#include <stdio.h>
+#include <windows.h>
 
 #include "ascii_string.h"
-
-
-struct _iobuf;
-typedef struct _iobuf FILE;
-typedef long time_t;
-struct tm;
-extern "C" __declspec(dllimport) FILE *__cdecl _wfopen(const unsigned short *name, const unsigned short *mode);
-extern "C" __declspec(dllimport) int __cdecl fprintf(FILE *fp, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __cdecl fclose(FILE *fp);
-extern "C" __declspec(dllimport) time_t __cdecl time(time_t *timer);
-extern "C" __declspec(dllimport) struct tm *__cdecl localtime(const time_t *timer);
-extern "C" __declspec(dllimport) char *__cdecl asctime(const struct tm *when);
-extern "C" __declspec(dllimport) unsigned int __cdecl strftime(char *str, unsigned int max, const char *fmt, const struct tm *tm);
 
 struct UnicodeStringData
 {

@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHa /Oy-
+// platformsdk
 //
 // Debug::PostStaticInit, retail 0x0003A250 (962 bytes). BFME 1 has it only
 // as a lift (b1 0x0088AF60).
@@ -14,27 +15,8 @@
 // The default-command walk keeps Zero Hour's shape, including the endless
 // loop on an empty line (DebugGetDefaultCommands returns NULL here anyway).
 
+#include <windows.h>
 #include <string.h>
-
-typedef void *HANDLE;
-typedef unsigned long DWORD;
-
-extern "C"
-{
-	__declspec(dllimport) DWORD __stdcall GetEnvironmentVariableA(const char *name, char *buffer,
-		DWORD size);
-	__declspec(dllimport) char *__stdcall GetCommandLineA(void);
-	__declspec(dllimport) DWORD __stdcall GetModuleFileNameA(void *module, char *name, DWORD size);
-	__declspec(dllimport) HANDLE __stdcall CreateFileA(const char *fileName, DWORD access,
-		DWORD shareMode, void *security, DWORD disposition, DWORD flags, HANDLE templateFile);
-	__declspec(dllimport) int __stdcall ReadFile(HANDLE file, void *buffer, DWORD bytes, DWORD *read,
-		void *overlapped);
-	__declspec(dllimport) int __stdcall CloseHandle(HANDLE handle);
-	__declspec(dllimport) char *__cdecl strstr(const char *text, const char *pattern);
-	__declspec(dllimport) char *__cdecl strchr(const char *text, int ch);
-	__declspec(dllimport) char *__cdecl strrchr(const char *text, int ch);
-	__declspec(dllimport) char *__cdecl strncpy(char *dest, const char *src, unsigned int count);
-}
 
 #pragma optimize("y", on)
 #include <new>      // placement new, as the debug library uses it
@@ -260,7 +242,7 @@ void Debug::PostStaticInit()
 			"get reliable stack and symbol information.\n\n";
 
 		char buf[256];
-		GetModuleFileNameA(DebugStackwalk::GetDbghelpHandle(), buf, sizeof(buf));
+		GetModuleFileNameA((HMODULE)DebugStackwalk::GetDbghelpHandle(), buf, sizeof(buf));
 		*theDebug <<
 			"Hint: The DLL got loaded as:\n" << buf << "\n" << RepeatChar('=', 79) << "\n\n";
 

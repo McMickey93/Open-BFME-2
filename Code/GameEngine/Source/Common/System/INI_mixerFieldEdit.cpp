@@ -1,4 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /O1 /Ob1 /EHsc /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 //
 // ?Rva0002CEB5ApplyFields@@YA_NPAXPBUFieldParse@@PAURva0002CF86View@@@Z @0x0002CEB5 (169B)
@@ -20,23 +21,11 @@
 // 0x00BBA180). Structural inference: a development-time live tweak hook for
 // INI fields ("mixer"); the original names are not recovered.
 
+#include <windows.h>
 #include <string.h>
 #include <vector>
 
 #include "ascii_string.h"
-
-typedef void *HANDLE;
-typedef int BOOL;
-typedef unsigned long DWORD;
-
-#define WINAPI __stdcall
-
-extern "C" __declspec(dllimport) HANDLE WINAPI CreateFileMappingA(HANDLE hFile, void *lpAttributes, DWORD flProtect,
-	DWORD dwMaximumSizeHigh, DWORD dwMaximumSizeLow, const char *lpName);
-extern "C" __declspec(dllimport) void *WINAPI MapViewOfFile(HANDLE hFileMappingObject, DWORD dwDesiredAccess,
-	DWORD dwFileOffsetHigh, DWORD dwFileOffsetLow, DWORD dwNumberOfBytesToMap);
-extern "C" __declspec(dllimport) BOOL WINAPI UnmapViewOfFile(const void *lpBaseAddress);
-extern "C" __declspec(dllimport) BOOL WINAPI CloseHandle(HANDLE hObject);
 
 class INI
 {

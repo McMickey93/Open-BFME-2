@@ -1,3 +1,4 @@
+// platformsdk
 // Preserve the old opaque breakpoint block's memory ordering: the debugger
 // must observe the dialog-answered store before INT3 and subsequent accesses after it.
 extern "C" void _ReadWriteBarrier(void);
@@ -27,27 +28,14 @@ extern "C" void _ReadWriteBarrier(void);
 // - The exit path releases the Debug critical section and decrements
 //   disableAssertsEtc with InterlockedDecrement.
 
-
-extern "C" __declspec(dllimport) int __cdecl wsprintfA(char *out, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void *owner, const char *text,
-	const char *caption, unsigned int type);
-extern "C" __declspec(dllimport) int __stdcall ShowWindow(void *window, int command);
-extern "C" __declspec(dllimport) int __stdcall EnumThreadWindows(unsigned long threadId,
-	int(__stdcall *callback)(void *, long), long param);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId(void);
-extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile *value);
-extern "C" __declspec(dllimport) __declspec(noreturn) void __cdecl exit(int code);
-extern "C" __declspec(dllimport) __declspec(noreturn) void __cdecl _exit(int code);
-extern "C" size_t strlen(const char *text);
-extern "C" char *strcpy(char *dest, const char *src);
-extern "C" char *strcat(char *dest, const char *src);
+#include <windows.h>
+#include <string.h>
+#include <stdlib.h>
 
 struct DebugCriticalSection
 {
 	unsigned char m_data[0x18];
 };
-
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(DebugCriticalSection *lock);
 
 extern DebugCriticalSection g_bfmeCsDWC;
 // Raised whenever the assert dialog was answered with anything but
@@ -241,7 +229,7 @@ bool Debug::AssertDone(int die)
 						break;
 					case 3:
 						curFrameEntry = 0;
-						LeaveCriticalSection(&g_bfmeCsDWC);
+						LeaveCriticalSection((LPCRITICAL_SECTION)&g_bfmeCsDWC);
 						exit(1);
 					case 5:
 						{
@@ -284,21 +272,21 @@ bool Debug::AssertDone(int die)
 		{
 			((Rva0088A1F0Owner *)this)->broadcast();
 
-			void *window = 0;
-			EnumThreadWindows(GetCurrentThreadId(), EnumThreadWndProc, (long)&window);
+			HWND window = 0;
+			EnumThreadWindows(GetCurrentThreadId(), (WNDENUMPROC)EnumThreadWndProc, (long)&window);
 			if (window)
 				ShowWindow(window, 6);
 			MessageBoxA(0, help, "Game crash", 0x11010);
 
 			curFrameEntry = 0;
-			LeaveCriticalSection(&g_bfmeCsDWC);
+			LeaveCriticalSection((LPCRITICAL_SECTION)&g_bfmeCsDWC);
 			((Rva0088A1F0Owner *)this)->broadcast();
 			_exit(1);
 		}
 	}
 
 	curFrameEntry = 0;
-	LeaveCriticalSection(&g_bfmeCsDWC);
+	LeaveCriticalSection((LPCRITICAL_SECTION)&g_bfmeCsDWC);
 	InterlockedDecrement(&disableAssertsEtc);
 	return false;
 }

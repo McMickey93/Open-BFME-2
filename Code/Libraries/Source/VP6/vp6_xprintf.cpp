@@ -1,4 +1,5 @@
 // cl: /O2 /G6 /DNDEBUG /MD
+// platformsdk
 // Clean room: reverse/vp6_cleanroom/specs/001c4c90.md plus retail only.
 // No decoder source was consulted.
 // _vp6_xprintf retail 0x001C4C90..0x001C4EF1 (610 bytes) cdecl variadic
@@ -12,32 +13,10 @@
 // bitmap a second time where the spec says the font is selected and keeps
 // that result as the font restore handle; any GDI failure skips to the
 // cleanup ladder. Callers 0x001BB5F0 and 0x001BB6C0 (vp6_showinfo pair).
+#include <windows.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
-
-struct Vp6XprintfRect
-{
-	int left;
-	int top;
-	int right;
-	int bottom;
-};
-
-extern "C" {
-__declspec(dllimport) void *__stdcall CreateCompatibleDC(void *);
-__declspec(dllimport) void *__stdcall CreateBitmap(int, int, unsigned int, unsigned int, const void *);
-__declspec(dllimport) void *__stdcall SelectObject(void *, void *);
-__declspec(dllimport) void *__stdcall CreateFontA(int, int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, const char *);
-__declspec(dllimport) unsigned long __stdcall SetTextColor(void *, unsigned long);
-__declspec(dllimport) unsigned long __stdcall SetBkColor(void *, unsigned long);
-__declspec(dllimport) int __stdcall SetBkMode(void *, int);
-__declspec(dllimport) int __stdcall BitBlt(void *, int, int, int, int, void *, int, int, unsigned long);
-__declspec(dllimport) int __stdcall ExtTextOutA(void *, int, int, unsigned int, const Vp6XprintfRect *, const char *, unsigned int, const int *);
-__declspec(dllimport) unsigned long __stdcall GetPixel(void *, int, int);
-__declspec(dllimport) int __stdcall DeleteObject(void *);
-__declspec(dllimport) int __stdcall DeleteDC(void *);
-}
 
 struct Vp6XprintfInstance
 {
@@ -54,12 +33,12 @@ extern "C" int vp6_xprintf(Vp6XprintfInstance *pbi, int offset, const char *form
 	unsigned char *dest = pbi->postProcBuffer + offset;
 	int length = 0;
 	va_list args;
-	Vp6XprintfRect rect;
-	void *dc;
-	void *bitmap;
-	void *oldBitmap;
-	void *font;
-	void *oldFont;
+	RECT rect;
+	HDC dc;
+	HBITMAP bitmap;
+	HGDIOBJ oldBitmap;
+	HFONT font;
+	HGDIOBJ oldFont;
 	int x, y;
 	va_start(args, format);
 	_vsnprintf(buffer, sizeof(buffer), format, args);

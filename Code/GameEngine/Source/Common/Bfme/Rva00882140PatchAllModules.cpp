@@ -1,41 +1,20 @@
+// platformsdk
 // ?rva00882140PatchAllModules@@YAPAXPBD0PAX@Z
 // Try rva00882050PatchImport against every module loaded in this process,
 // then resolve the target through LoadLibraryA/GetProcAddress regardless.
 
-typedef void *RvaModuleHandle;
-typedef unsigned long RvaDword;
-
-struct RvaModuleEntry32
-{
-    RvaDword dwSize;
-    RvaDword th32ModuleID;
-    RvaDword th32ProcessID;
-    RvaDword GlblcntUsage;
-    RvaDword ProccntUsage;
-    unsigned char *modBaseAddr;
-    RvaDword modBaseSize;
-    RvaModuleHandle hModule;
-    char szModule[256];
-    char szExePath[260];
-};
-
-extern "C" __declspec(dllimport) RvaDword __stdcall GetCurrentProcessId(void);
-extern "C" RvaModuleHandle __stdcall CreateToolhelp32Snapshot(RvaDword flags, RvaDword processId);
-extern "C" int __stdcall Module32First(RvaModuleHandle snapshot, RvaModuleEntry32 *entry);
-extern "C" int __stdcall Module32Next(RvaModuleHandle snapshot, RvaModuleEntry32 *entry);
-extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(RvaModuleHandle module, const char *name);
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(RvaModuleHandle h);
-extern "C" __declspec(dllimport) RvaModuleHandle __stdcall LoadLibraryA(const char *name);
+#include <windows.h>
+#include <TlHelp32.h>
 
 extern bool rva00882050PatchImport(const char *moduleName, const char *dllName,
                                     const char *functionName, void *replacement);
 
 void *rva00882140PatchAllModules(const char *dllName, const char *functionName, void *replacement)
 {
-    RvaModuleHandle snapshot = CreateToolhelp32Snapshot(8, GetCurrentProcessId());
+    HANDLE snapshot = CreateToolhelp32Snapshot(8, GetCurrentProcessId());
 
-    RvaModuleEntry32 entry;
-    entry.dwSize = sizeof(RvaModuleEntry32);
+    MODULEENTRY32 entry;
+    entry.dwSize = sizeof(MODULEENTRY32);
 
     if (Module32First(snapshot, &entry))
     {
@@ -47,5 +26,5 @@ void *rva00882140PatchAllModules(const char *dllName, const char *functionName, 
 
     CloseHandle(snapshot);
 
-    return GetProcAddress(LoadLibraryA(dllName), functionName);
+    return (void *)GetProcAddress(LoadLibraryA(dllName), functionName);
 }

@@ -1,4 +1,5 @@
 // cl: /O2 /MD /EHsc
+// platformsdk
 // PC export ?_Init@MemoryPool@@YAXXZ, RVA00030000, complete 406-byte body.
 // Audit lead: docs/audits/2026-10-05-openbfme2, direct-export-symbols.json.
 // Target evidence: the entry increments DE081C on repeat calls; otherwise it
@@ -9,15 +10,10 @@
 // argument roles remain unknown, so its constructor keeps an address identity.
 // BFME1 _Init was reviewed at 6583b3c1ff21db4a561285717028fdafc780b7db;
 // its different pool/guard-word implementation is not used as layout evidence.
+#include <windows.h>
 #include <new>
 #include <string.h>
 #pragma intrinsic(memset)
-extern "C" __declspec(dllimport) char *__stdcall GetCommandLineA();
-extern "C" __declspec(dllimport) char *__cdecl strstr(const char *, const char *);
-extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void *, const char *, const char *, unsigned int);
-extern "C" __declspec(dllimport) void *__stdcall HeapCreate(unsigned long, unsigned int, unsigned int);
-extern "C" __declspec(dllimport) void *__stdcall HeapAlloc(void *, unsigned long, unsigned int);
-extern "C" __declspec(dllimport) unsigned long __stdcall TlsAlloc();
 void Rva0000179A();
 // ?MemoryPoolAllocatorAssertion present-unmatched
 // Empty callback: native pointer VA00A9E440 is the shared ICF RET.
@@ -42,12 +38,9 @@ void rva00031420(const char *);
 // The lock the allocator creates on first setup: a CRITICAL_SECTION at +0
 // whose initialize/addref/release helpers are the rowed 0x30D90/0x30DD0/
 // 0x30DF0 family. Layout from that unit: 0x18-byte section, int at +0x18.
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall GetSystemInfo(void *info);
 struct Rva00030DD0Lock
 {
-    unsigned char m_cs[0x18];
+    CRITICAL_SECTION m_cs;
     volatile int m_ref;
 };
 Rva00030DD0Lock *Rva00030D90Init(Rva00030DD0Lock *lock);
@@ -137,7 +130,7 @@ bool Rva00033B90Allocator::rva00033700(void *a, unsigned int size, bool b,
     Rva00030DD0Lock *lock = (Rva00030DD0Lock *)m_4e4;
     if (lock != 0)
     {
-        EnterCriticalSection(lock);
+        EnterCriticalSection(&lock->m_cs);
         lock->m_ref = lock->m_ref + 1;
     }
 
@@ -177,15 +170,14 @@ bool Rva00033B90Allocator::rva00033700(void *a, unsigned int size, bool b,
     m_4cc = 0x10000;
     m_4d0 = m_440;
 
-    struct SysInfo { unsigned long m_00[9]; };
-    SysInfo info;
+    SYSTEM_INFO info;
     GetSystemInfo(&info);
-    m_4d4 = info.m_00[1];
+    m_4d4 = info.dwPageSize;
 
     if (lock != 0)
     {
         lock->m_ref = lock->m_ref - 1;
-        LeaveCriticalSection(lock);
+        LeaveCriticalSection(&lock->m_cs);
     }
 
 tail:
@@ -212,7 +204,7 @@ enum
 
 struct HeapTable
 {
-	void *m_win32Heap;
+	HANDLE m_win32Heap;
 	int m_count;
 	int m_reserved;
 	HeapRecord m_records[MAX_HEAPS];
@@ -273,7 +265,6 @@ void _Init()
 // constructor above installs at +0x4B8 with the allocator as its +0x4BC
 // context. It writes the expression to the debugger and breaks; the context
 // argument is unused (the default assertion handler of EA's allocator).
-extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA(const char *text);
 void Rva000327D0Assertion(const char *expression)
 {
     OutputDebugStringA(expression);

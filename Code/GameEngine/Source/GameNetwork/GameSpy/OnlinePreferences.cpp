@@ -8,6 +8,9 @@
 // own unit. The UserPreferences model is the one in
 // Code/GameEngine/Source/Common/UserPreferences.cpp.
 
+#include <stdio.h>
+#include <time.h>
+#include <string.h>
 #include <map>
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.
@@ -18,13 +21,6 @@ static inline bool operator!=(const _Rb_tree_iterator<T, LeftTraits>& a,
 { return a._M_node != b._M_node; }
 }
 #include <stdlib.h>
-
-struct _iobuf;
-typedef struct _iobuf FILE;
-extern "C" __declspec(dllimport) FILE *__cdecl _wfopen(const unsigned short *name, const unsigned short *mode);
-extern "C" __declspec(dllimport) int __cdecl fprintf(FILE *fp, const char *fmt, ...);
-extern "C" __declspec(dllimport) int __cdecl fclose(FILE *fp);
-extern "C" __declspec(dllimport) char *__cdecl fgets(char *buf, int n, FILE *fp);
 
 typedef bool Bool;
 typedef int Int;
@@ -275,7 +271,6 @@ int GameSpyMiscPreferences::rva005599C8()
 	return getInt("MaxMessagesPerUpdate", 100);
 }
 
-typedef long time_t;
 typedef unsigned short UnsignedShort;
 
 class LadderPref
@@ -296,8 +291,6 @@ AsciiString AsciiStringToQuotedPrintable(AsciiString original);
 AsciiString UnicodeStringToQuotedPrintable(UnicodeString original);
 AsciiString QuotedPrintableToAsciiString(AsciiString original);
 UnicodeString QuotedPrintableToUnicodeString(AsciiString original);
-extern "C" unsigned int __cdecl strlen(const char *s);
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *s) throw();
 
 typedef _STL::map<time_t, LadderPref> LadderPrefMap;
 

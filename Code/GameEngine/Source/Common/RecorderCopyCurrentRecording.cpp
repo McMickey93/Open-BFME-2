@@ -19,17 +19,9 @@
 // Pair8/Triple12 one at 0x0037BA97, kept visible; the pair's two words are
 // volatile so the branch string temporaries and the spills share the triple's
 // slots as retail does (T1 farm mutation volatile-member-pair, W7-U1 r7 port).
+#include <stdio.h>
+
 #include "unicode_string.h"
-struct _iobuf;
-typedef _iobuf FILE;
-extern "C" __declspec(dllimport) FILE *__cdecl _wfopen(const unsigned short *, const unsigned short *);
-extern "C" __declspec(dllimport) unsigned int __cdecl fread(void *, unsigned int, unsigned int, FILE *);
-extern "C" __declspec(dllimport) unsigned int __cdecl fwrite(const void *, unsigned int, unsigned int, FILE *);
-extern "C" __declspec(dllimport) int __cdecl fseek(FILE *, long, int);
-extern "C" __declspec(dllimport) long __cdecl ftell(FILE *);
-extern "C" __declspec(dllimport) int __cdecl fclose(FILE *);
-extern "C" __declspec(dllimport) int __cdecl fwprintf(FILE *, const unsigned short *, ...);
-extern "C" __declspec(dllimport) unsigned short __cdecl fputwc(unsigned short, FILE *);
 UnicodeString Rva0037B9D4Get();
 UnicodeString Rva0037BA48Get();
 UnicodeString Rva0037D55EGet();
@@ -140,7 +132,7 @@ bool RecorderClass::copyCurrentRecordingToFile(UnicodeString *name, UnicodeStrin
  path = Rva0037B9D4Get() + *name;
  else
  assignConcat(path, Rva0037B9D4Get(), Rva0037D55EGet(), Rva0037BA48Get());
- FILE *out = _wfopen(path.str(), (const unsigned short *)L"wb");
+ FILE *out = _wfopen(path.str(), L"wb");
  if (!out)
  return false;
  int seekRes = fseek(m_file, 0, 0);
@@ -150,7 +142,7 @@ bool RecorderClass::copyCurrentRecordingToFile(UnicodeString *name, UnicodeStrin
  if (seekRes != 0 || bytesRead < 0x25 || bytesWritten < 0x25)
  return false;
  UnicodeString oldTitle = ((Rva0037BBED *)this)->rva0037BCA8();
- fwprintf(out, (const unsigned short *)L"%ws", title->str());
+ fwprintf(out, L"%ws", title->str());
  fputwc(0, out);
  do 
  
