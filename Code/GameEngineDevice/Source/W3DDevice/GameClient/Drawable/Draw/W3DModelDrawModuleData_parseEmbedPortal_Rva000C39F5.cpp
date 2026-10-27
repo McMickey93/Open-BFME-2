@@ -1,4 +1,4 @@
-// cl: -DNDEBUG -MD -EHsc -D_STLP_USE_STATIC_LIB -D_STLP_NO_EXCEPTIONS -Ireference/open-bfme-1/game/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw
+// cl: /Ireference/shims/bfme2_ascii -DNDEBUG -MD -EHsc -D_STLP_USE_STATIC_LIB -D_STLP_NO_EXCEPTIONS -Ireference/open-bfme-1/game/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw
 //
 // ?parseEmbedPortal@W3DModelDrawModuleData@@SAXPAVINI@@PAX1PBX@Z
 // retail 0x000C39F5, 190 bytes. Dedicated TU ported from the Open-BFME-1
@@ -8,7 +8,6 @@
 // unclaimed .text). Only the placed body is defined here.
 // stlport
 // Retail field-table owner: W3DModelDrawModuleData::EmbedPortal at +0xF0.
-// class-gate: allow AsciiString the donor TU-local one-pointer AsciiString/StringBase view emits the retail 190B body at 0x000C39F5, whose compares call the rowed StringBase<char>::compare body at 0x000069B1
 
 typedef int Int;
 
@@ -22,49 +21,9 @@ struct Rva007719C0Element;
 struct TreeKey00242F5E;
 void Rva000BBA47Construct(TreeKey00242F5E *destination, const TreeKey00242F5E &source);
 
-template <typename T>
-class StringBase
-{
-    friend class AsciiString;
-    friend struct _STL::Rva007719C0Element;
 
-public:
-    StringBase() : m_data(0) {}
-    StringBase(const StringBase<T> &source);
-
-    StringBase<T> &operator=(const StringBase<T> &source)
-    {
-        set(source);
-        return *this;
-    }
-
-    void set(const StringBase<T> &source);
-    void toLower();
-    Int compare(const char *text) const;
-
-private:
-    void releaseBuffer();
-
-public:
-    void *m_data;
-};
-
-class AsciiString : private StringBase<char>
-{
-public:
-    AsciiString() : StringBase<char>() {}
-    AsciiString(const AsciiString &source) :
-        StringBase<char>(*(const StringBase<char> *)&source) {}
-    ~AsciiString();
-    AsciiString &operator=(const AsciiString &source);
-
-    void toLower() { StringBase<char>::toLower(); }
-    void set(const AsciiString &source)
-    {
-        ((StringBase<char> *)this)->set(
-            *(const StringBase<char> *)&source);
-    }
-};
+#define BFME_ASCII_DTOR_DECL
+#include "../../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 namespace _STL
 {
@@ -75,11 +34,10 @@ struct __false_type
 struct Rva007719C0Element
 {
     Int m_mode;
-    StringBase<char> m_name;
+    AsciiString m_name;
     Rva007719C0Element() : m_name() {}
     ~Rva007719C0Element()
     {
-        ((AsciiString *)&m_name)->~AsciiString();
     }
 };
 
@@ -167,7 +125,7 @@ void W3DModelDrawModuleData::parseEmbedPortal(INI *ini, void *, void *store,
         AsciiString mode = ini->getNextAsciiString();
         ((StringBase<char> &)(mode)).toLower();
         finish[-1].m_name =
-            *(const StringBase<char> *)&ini->getNextAsciiString();
+            ini->getNextAsciiString();
 
         // Retail's compares land on the rowed StringBase<char>::compare (0x000069B1).
         if (((const StringBase<char> &)(mode)).compare("ramp") == 0)

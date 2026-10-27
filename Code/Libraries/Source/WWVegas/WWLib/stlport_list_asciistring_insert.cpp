@@ -9,7 +9,7 @@
 // AsciiString) and create delegates per element to the matched StringBase
 // _Construct helper at 0x0002C485, which names the element type.
 #define BFME_ASCII_DTOR_DECL
-#include "ascii_string.h"
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 #include <list>
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.

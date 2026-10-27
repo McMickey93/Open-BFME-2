@@ -1,3 +1,4 @@
+// cl: /Ireference/shims/bfme2_ascii
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 //
 // ScriptEngine condition template table, retail 0x003CF6B7 (20,516 bytes).
@@ -29,30 +30,10 @@
 // all give the same result); routing it through an inline AsciiString::set
 // halves it to 338.
 
-template <typename T>
-class StringBase
-{
-public:
-	void set(const T *text);
 
-private:
-	T *m_data;
-};
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
-class AsciiString
-{
-public:
-	AsciiString &operator=(const char *text);
 
-private:
-	char *m_text;
-};
-
-inline AsciiString &AsciiString::operator=(const char *text)
-{
-	((StringBase<char> *)this)->set(text);
-	return *this;
-}
 
 class Template
 {

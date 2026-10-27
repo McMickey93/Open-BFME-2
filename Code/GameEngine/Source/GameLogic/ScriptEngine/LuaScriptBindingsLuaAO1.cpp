@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
 //
 // Lua binding bodies ported from Open-BFME-1's
 // GameLogic/ScriptEngine/LuaScriptBindingsLuaA.cpp (donor revision
@@ -136,35 +136,8 @@ public:
 };
 
 
-// class-gate: allow AsciiString the donor's out-of-line dtor/op= view over a StringBase<char> base whose C-string ctor retail calls at 0x00037BA0 (AsciiString's own const char * ctor, 0x0000654A, only forwards to it); dtor and op= are called at 0x00036410 and 0x000366F0, and both placed bodies are byte-exact under it
-template <typename T>
-class StringBase
-{
-	friend class AsciiString;
-	void releaseBuffer();
-public:
-	StringBase() { m_data = 0; }
-	StringBase( const T *text );
-	// Rowed at 0x000366F0 (StringBaseNarrowCopySet.cpp): retail's AsciiString
-	// copy assignment folds onto it, and the binding calls it there.
-	void set( const StringBase &other );
 
-	void *m_data;
-};
-
-class AsciiString : public StringBase<char>
-{
-public:
-	AsciiString() {}
-	AsciiString( const char *text ) : StringBase<char>( text ) {}
-	~AsciiString() { releaseBuffer(); }
-	__forceinline AsciiString &operator=( const AsciiString &text ) { set( text ); return *this; }
-	const char *str() const
-	{
-		return m_data ? (const char *)m_data + 8 : "";
-	}
-
-};
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/Common/Overridable.h
 class Overridable
@@ -207,7 +180,7 @@ int LuaScriptEngine::ObjectDescription( lua_State *state )
 	}
 	Object *object = TheGameLogic->findObjectByID( (ObjectID)id );
 	AsciiString result = DescribeObject( object );
-	lua_pushstring( state, result.m_data ? (const char *)result.m_data + 8 : "" );
+	lua_pushstring( state, result.str() );
 	return 1;
 }
 

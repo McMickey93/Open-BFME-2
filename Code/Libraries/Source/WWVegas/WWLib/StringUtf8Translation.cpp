@@ -21,18 +21,16 @@ void UnicodeString::translate(const char* text) {
     }
     releaseBuffer();
 }
-class AsciiString:public StringBase<char> {
-public: void translate(const Wide*);
-};
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 void AsciiString::translate(const Wide* text) {
     if(text && *text) {
         int length=BFME2WideToUtf8(text,-1,0,0);
-        ensureUniqueBufferOfSize(length-1,false,0,0);
-        int written=BFME2WideToUtf8(text,-1,m_data->data,length);
+        ((StringBase<char> *)this)->ensureUniqueBufferOfSize(length-1,false,0,0);
+        int written=BFME2WideToUtf8(text,-1,((StringBase<char> *)this)->m_data->data,length);
         if(written) {
-            m_data->length=written-1;
+            ((StringBase<char> *)this)->m_data->length=written-1;
             return;
         }
     }
-    releaseBuffer();
+    ((StringBase<char> *)this)->releaseBuffer();
 }

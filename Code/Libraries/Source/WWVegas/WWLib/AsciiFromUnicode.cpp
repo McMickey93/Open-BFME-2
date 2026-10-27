@@ -5,15 +5,12 @@
 // from the masked-identical reverse conversion6CB6D0; no duplicate range.
 typedef unsigned short Wide;
 #include "unicode_string.h"
-// The matched conversion inlines this null initialization. Keep that body
-// while the native StringBase constructor remains in string_base_clear.cpp.
+// The owned StringBase member supplies the null initialization and cleanup.
+// Its lifetime preserves the constructor's exception handling.
 template <> __declspec(dllimport) __forceinline
 StringBase<char>::StringBase() : m_data(0) {}
-class AsciiString:public StringBase<char> {
-public:
-    AsciiString(const UnicodeString&);
-    void translate(const Wide*);
-};
+#define BFME_ASCII_IMPLICIT_DTOR
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
 AsciiString::AsciiString(const UnicodeString& text) {
     translate(text.str());
 }
