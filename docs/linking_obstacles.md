@@ -5745,3 +5745,5 @@ Census confirmation of this edit remains pending.
   temp, so it no longer matches.
 - **Clearance:** preview scope (the seven units above, including StlSweepW5Rva00540197.cpp and stlport_pod_vector_malloc_bodies.cpp).
 - **Census confirmation:** awaiting the next census.
+
+**2026-10-27 motchan AdaptiveDelta resolved:** d232da8fd4c adds `reference/shims/bfmemotchan/motchan.h` (project shim scoped by motchan.cpp's `// cl:` line; vendored header untouched) naming +0x10 `DataByteCount` in retail's 0x1C prefix; 871817034c0 swaps AdaptiveDeltaLoadW3D.cpp's `#include <new>` for plain `operator new[]`/`delete[]` declarations (still 1/1); ccdd57dcda0 merges both donors into motchan.cpp (21/21, link_check LINKS 984 -> 1,535 B). The shim keeps BFME1's `CacheFrame`/`CacheData` after +0x1C only for the present-unmatched getframe/decompress bodies. Pattern for other C2084 `<new>` collisions: declare the array operators instead of including `<new>`. Remaining merge-queue rejections (private STL/StringBase redefinitions, `Rva*` placeholder classes, udp names, matpass flags) are unchanged.
