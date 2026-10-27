@@ -1,47 +1,18 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc
+// platformsdk
 //
-// ?isFileNewer@@YA_NABVAsciiString@@PBUSYSTEMTIME@@@Z @ 0x0002C025 (155B)
+// ?isFileNewer@@YA_NABVAsciiString@@PBU_SYSTEMTIME@@@Z @ 0x0002C025 (155B)
 // Free file-time check: empty name false; else _stat path and localtime of st_mtime,
 // compare tm (year+1900 mon+1 mday hour min sec) against SYSTEMTIME words.
 // Evidence: isEmpty row 0x1E2F; _stat/localtime IAT; g_Rva0107301CEmptyString for empty;
 // 0x76c=1900; caller 0x2D327 in 0x2D2C1 prepFile. Prev INILineAccessors // cl: reused.
 
-extern "C" __declspec(dllimport) int __cdecl _stat(const char *path, void *buffer);
-extern "C" __declspec(dllimport) struct tm *__cdecl localtime(const int *timer);
-
+#include <windows.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
 
 #include "ascii_string.h"
-
-typedef unsigned short WORD;
-
-struct SYSTEMTIME
-{
-	WORD wYear;
-	WORD wMonth;
-	WORD wDayOfWeek;
-	WORD wDay;
-	WORD wHour;
-	WORD wMinute;
-	WORD wSecond;
-	WORD wMilliseconds;
-};
-
-struct tm
-{
-	int tm_sec;
-	int tm_min;
-	int tm_hour;
-	int tm_mday;
-	int tm_mon;
-	int tm_year;
-};
-
-struct _statbuf
-{
-	char _pad[28];
-	int st_mtime;
-	int st_ctime;
-};
 
 bool isFileNewer(const AsciiString &filename, const SYSTEMTIME *st)
 {
@@ -50,7 +21,7 @@ bool isFileNewer(const AsciiString &filename, const SYSTEMTIME *st)
 	else
 	{
 		const char *path = filename.str();
-		struct _statbuf buf;
+		struct _stat buf;
 		_stat(path, &buf);
 		struct tm *t = localtime(&buf.st_mtime);
 		if (st->wYear < t->tm_year + 0x76C)

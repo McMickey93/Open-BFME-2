@@ -92,17 +92,6 @@ extern int BfmeINISavedMacroGeneration;
 unsigned BfmeINIMacroTableStorage[8];
 
 typedef unsigned short WORD;
-struct SYSTEMTIME
-{
-	WORD wYear;
-	WORD wMonth;
-	WORD wDayOfWeek;
-	WORD wDay;
-	WORD wHour;
-	WORD wMinute;
-	WORD wSecond;
-	WORD wMilliseconds;
-};
 
 struct SaveDate
 {
@@ -117,7 +106,9 @@ struct SaveDate
 };
 extern SaveDate BfmeINIReadTimestamp;
 
-bool isFileNewer(const AsciiString &filename, const SYSTEMTIME *date);
+// <windows.h>'s SYSTEMTIME (isFileNewer.cpp).
+struct _SYSTEMTIME;
+bool isFileNewer(const AsciiString &filename, const _SYSTEMTIME *date);
 
 class Rva0002CB98
 {
@@ -244,7 +235,7 @@ bool INI::prepFile(const AsciiString &filename, INILoadType loadType)
 	{
 		if (BfmeINISavedMacroGeneration == BfmeINIMacroGeneration)
 		{
-			if (!isFileNewer(filename, (const SYSTEMTIME *)&BfmeINIReadTimestamp))
+			if (!isFileNewer(filename, (const _SYSTEMTIME *)&BfmeINIReadTimestamp))
 				return false;
 		}
 		else if (((Rva0002CB98 *)&BfmeINIMacroTableStorage)->rva0002CB98(filename) == false)
