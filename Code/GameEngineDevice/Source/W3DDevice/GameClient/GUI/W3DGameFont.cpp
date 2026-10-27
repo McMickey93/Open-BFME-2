@@ -12,6 +12,7 @@
 #include "GameClient/GlobalLanguage.h"
 #include <new>
 #include "../../../../../Libraries/Source/WWVegas/WWLib/simplevec.h"
+#include "simplevec.h"
 
 class Rva0090034
 {
@@ -40,6 +41,10 @@ protected:
 	bool Grow(int new_size_hint);
 	friend bool SimpleDynVecClass<unsigned>::Add(const unsigned &object, int new_size_hint);
 };
+
+SimpleDynVecClass<FontCharsClass*> BfmeFontCharsCache;
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DGameFont.cpp
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DGameFont.cpp
 
@@ -161,14 +166,6 @@ Rva0090088::~Rva0090088()
 	}
 }
 
-// tu-skeleton: 0x00090055 51B ?Uninitialised_Grow@?$SimpleVecClass@UBfmePod4@@@@UAE_NH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x000900E3 38B ??0?$SimpleVecClass@UBfmePod4@@@@QAE@H@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00090109 28B ??0?$SimpleDynVecClass@UBfmePod4@@@@QAE@H@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00090125 37B ?Resize@?$SimpleDynVecClass@UBfmePod4@@@@UAE_NH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/simpledynvec_uint_add.cpp
 
 //
@@ -192,8 +189,43 @@ bool SimpleDynVecClass<unsigned>::Add(const unsigned &object, int new_size_hint)
 	return true;
 }
 
-// tu-skeleton: 0x0009017D 191B ?Rva0009017D@@YAPAXPBDM_NH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DFontCharsCache.cpp (not merged yet)
+// tu-skeleton: 0x00090055 51B ?Uninitialised_Grow@?$SimpleVecClass@UBfmePod4@@@@UAE_NH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x000900E3 38B ??0?$SimpleVecClass@UBfmePod4@@@@QAE@H@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00090109 28B ??0?$SimpleDynVecClass@UBfmePod4@@@@QAE@H@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00090125 37B ?Resize@?$SimpleDynVecClass@UBfmePod4@@@@UAE_NH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/wwlib_pod_container_bodies.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DFontCharsCache.cpp
+
+// ZH assetmgr.cpp Get_FontChars is the semantic donor; BFME1 575ba2b04
+// retains it. Target9017D..9023C is a four-argument cdecl worker used by
+// the rowed W3DFontLibrary::loadFontData. Its original name/owner is unknown.
+// Target calls establish FontCharsClass identity, size464 and refcount+4.
+// Cache at9E2084 is a sixteen-byte loader-zero object: pointer range+4/+8,
+// active count+C. The reference vector supplies the operations; exact local
+// Add51 and Grow59 twins establish their full body and relocation agreement.
+// Add visibility preserves the caller's ESI pointer; SSE enables Grow's CMOV.
+// BfmeFontCharsCache is a descriptive data owner, not a recovered identifier.
+
+void*Rva0009017D(const char*name,float size,bool bold,int extra){
+ for(int i=0;i<BfmeFontCharsCache.Count();++i){
+  if(BfmeFontCharsCache[i]->Is_Font(name,size,bold,extra)){
+   BfmeFontCharsCache[i]->Add_Ref();return BfmeFontCharsCache[i];
+  }
+ }
+ FontCharsClass*const font=new FontCharsClass;
+ FontCharsClass*cacheEntry=font;
+ font->Initialize_GDI_Font(name,size,bold,extra);font->Add_Ref();
+ BfmeFontCharsCache.Add(cacheEntry,0);
+ return font;
+}
 
 // tu-skeleton: 0x0009023C 106B ??1W3DFontLibrary@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DFontLibraryDestructor.cpp (not merged yet)
 
 // tu-skeleton: 0x000902A6 186B ?loadFontData@W3DFontLibrary@@QAE_NPAUGameFont@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DFontLibraryLoadFontData.cpp (not merged yet)
+
+// tu-skeleton: 0x0075FE4B 8B uw_0075fe4b -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DFontLibraryDestructor.cpp (not merged yet)
+
+// tu-skeleton: 0x0075FE53 10B __ehhandler$??1W3DFontLibrary@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DFontLibraryDestructor.cpp (not merged yet)
