@@ -16657,7 +16657,6 @@ uw_00761463,,0x00761463,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;obje
 uw_0076150e,,0x0076150E,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L4586
 uw_0076159b,,0x0076159B,8,Code/gen_small/uw_gen_002.cpp,matched,gen-funclet;object-symbol=$L293
 uw_0076160a,,0x0076160A,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;object-symbol=$L319
-uw_0076161c,,0x0076161C,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L1029
 uw_00761673,,0x00761673,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L3284
 uw_00761685,,0x00761685,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L5491
 uw_00761701,,0x00761701,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L6660
@@ -98269,3 +98268,5 @@ $L1888,,0x00799BB9,8,Code/GameEngine/Source/GameClient/System/FXParticleSystem/L
 $L1673,,0x0079E6BB,8,Code/GameEngine/Source/Common/Rva005A9CB3Tactic.cpp,matched,gen-funclet;parent=?initializeTeamTemplate@AISimpleSiegeTactic@@UAE_NPAVTeamPrototype@@H@Z; Matched parent 0x005A9F70's EH graph is EXACT (eh_verify) and binds compiler label $L1673 to retail 0x0079E6BB; replaces generated uw_0079e6bb
 $L7528,,0x007A391C,8,Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIArmyDetailsEntryAdded.cpp,matched,gen-funclet;parent=?OnEntryAddedToArmySummary@Impl@ArmyDetailsPanel@StrategicInGameUI@@UAEXABVArmySummary@@H@Z; Matched parent 0x005E4E55's EH graph is EXACT (eh_verify) and binds compiler label $L7528 to retail 0x007A391C; replaces generated uw_007a391c
 $L6325,,0x007A39BB,8,Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIArmyDetailsPopulate.cpp,matched,gen-funclet;parent=?rva005E52FD@Rva005E39AE@@QAEXXZ; Matched parent 0x005E52FD's EH graph is EXACT (eh_verify) and binds compiler label $L6325 to retail 0x007A39BB; replaces generated uw_007a39bb
+??1BfmeThingVKE@@QAE@XZ,,0x0048BA39,5,Code/GameEngine/Source/Common/Rva000B9887Permuted.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva000B9887Permuted.cpp; compiler-emitted destructor that retail ICF-folded with ??1?$StringBase@D@@AAE@XZ at 0x0048BA39: this unit compiles it to the same whole body; its unwind funclets call 0x0048BA39
+$L1240,,0x0076161C,8,Code/GameEngine/Source/Common/Rva000B9887Permuted.cpp,matched,gen-funclet;parent=?Rva000B9887Init@@YAXPAXPAUBfmePod32@@@Z; Matched parent 0x000B9887's EH graph is EXACT (eh_verify) and binds compiler label $L1240 to retail 0x0076161C; its callee ??1BfmeThingVKE is now an ICF-fold row at 0x0048BA39; replaces generated uw_0076161c
