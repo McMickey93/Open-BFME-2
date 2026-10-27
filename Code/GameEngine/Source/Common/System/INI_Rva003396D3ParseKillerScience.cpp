@@ -14,7 +14,8 @@ enum ScienceType
 	SCIENCE_INVALID = 0
 };
 
-extern int g_scienceStoreLoaded;
+class ScienceStore;
+extern ScienceStore *TheScienceStore;
 
 class INI
 {
@@ -36,7 +37,7 @@ enum ErrorCode
 void INI::Rva003396D3_ParseKillerScience(INI *ini, void *instance, void *store, const void *userData)
 {
 	const char *token = ini->getNextToken(0);
-	if (g_scienceStoreLoaded == 0) {
+	if (TheScienceStore == 0) {
 		throw ERROR_BUG;
 	}
 	*(int *)store = INI::scanScience(token);
@@ -48,10 +49,8 @@ void INI::Rva003396D3_ParseKillerScience(INI *ini, void *instance, void *store, 
 void INI::parseScience(INI *ini, void *instance, void *store, const void *userData)
 {
 	const char *token = ini->getNextToken(0);
-	if (g_scienceStoreLoaded == 0) {
+	if (TheScienceStore == 0) {
 		throw ERROR_BUG;
 	}
 	*(int *)store = INI::scanScience(token);
 }
-// ?g_scienceStoreLoaded@@3HA: the global at VA 0xdfe0e0 is ?TheScienceStore@@3PAVScienceStore@@A.
-#pragma comment(linker, "/alternatename:?g_scienceStoreLoaded@@3HA=?TheScienceStore@@3PAVScienceStore@@A")
