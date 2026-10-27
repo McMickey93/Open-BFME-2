@@ -1,38 +1,14 @@
 // cl: /MD /EHsc
+// dxsdk
+// platformsdk
 // ?ReAcquireResources@W3DVolumetricShadowManager@@QAE_NXZ @0x000F09E1 148B: reacquire IB plus VB via D3DDevice then manager reacquire under DX8 lock. Evidence: LINK BONUS names this mangling plus donor ZH ReAcquireResources plus chain callee 0x000F0972 row plus callers 0x0009A270 0x0009A390.
+#include <d3d9.h>
+
 void __cdecl BFME_DX8_Thread_Lock();
 bool __cdecl BFME_DX8_Thread_Assert();
-struct IDirect3DDevice8
-{
-	virtual void f00();
-	virtual void f01();
-	virtual void f02();
-	virtual void f03();
-	virtual void f04();
-	virtual void f05();
-	virtual void f06();
-	virtual void f07();
-	virtual void f08();
-	virtual void f09();
-	virtual void f10();
-	virtual void f11();
-	virtual void f12();
-	virtual void f13();
-	virtual void f14();
-	virtual void f15();
-	virtual void f16();
-	virtual void f17();
-	virtual void f18();
-	virtual void f19();
-	virtual void f20();
-	virtual void f21();
-	virtual void f22();
-	virtual void f23();
-	virtual void f24();
-	virtual void f25();
-	virtual long __stdcall CreateVertexBuffer(int a, int b, int c, int d, void **e, int f);
-	virtual long __stdcall CreateIndexBuffer(int a, int b, int c, int d, void **e, int f);
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (CreateVertexBuffer slot 26, CreateIndexBuffer slot 27).
+struct IDirect3DDevice8;
 // D3DDevice is protected in dx8wrapper.h; read it through WW3D2's accessor.
 class DX8Wrapper
 {
@@ -40,13 +16,6 @@ public:
 	static __forceinline IDirect3DDevice8 *_Get_D3D_Device8() { return D3DDevice; }
 protected:
 	static IDirect3DDevice8 *D3DDevice;
-};
-class Rva000F0972Releasable
-{
-public:
-	virtual void f0();
-	virtual void f1();
-	virtual void __stdcall f2();
 };
 // g_00DEBCE0: matched references place it at VA 0xdebce0 (retail .data initial value 0).
 struct IDirect3DIndexBuffer8; extern IDirect3DIndexBuffer8 *shadowIndexBufferD3D;
@@ -73,12 +42,14 @@ bool W3DVolumetricShadowManager::ReAcquireResources()
 {
 	Rva000F09E1LockGuard guard;
 	ReleaseResources();
-	IDirect3DDevice8 *dev = DX8Wrapper::_Get_D3D_Device8();
-	if (dev->CreateIndexBuffer(0x8000, 0x208, 0x65, 0, (void **)&(*(Rva000F0972Releasable * *)&shadowIndexBufferD3D), 0) < 0)
+	IDirect3DDevice9 *dev = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
+	if (FAILED(dev->CreateIndexBuffer(0x8000, D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC, D3DFMT_INDEX16,
+			D3DPOOL_DEFAULT, reinterpret_cast<IDirect3DIndexBuffer9 **>(&shadowIndexBufferD3D), 0)))
 		return false;
-	if ((*(Rva000F0972Releasable * *)&shadowVertexBufferD3D) == 0)
+	if (shadowVertexBufferD3D == 0)
 	{
-		if (dev->CreateVertexBuffer(0x18000, 0x208, 0, 0, (void **)&(*(Rva000F0972Releasable * *)&shadowVertexBufferD3D), 0) < 0)
+		if (FAILED(dev->CreateVertexBuffer(0x18000, D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC, 0,
+				D3DPOOL_DEFAULT, reinterpret_cast<IDirect3DVertexBuffer9 **>(&shadowVertexBufferD3D), 0)))
 			return false;
 	}
 	W3DBufferManager *mgr = TheW3DBufferManager;

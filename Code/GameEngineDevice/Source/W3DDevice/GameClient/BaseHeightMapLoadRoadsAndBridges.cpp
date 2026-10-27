@@ -1,4 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 //
 // ?loadRoadsAndBridges@BaseHeightMapRenderObjClass@@QAEXPAVW3DTerrainLogic@@_N@Z
@@ -9,10 +10,9 @@
 // road buffer (+0x386C, rowed W3DRoadBuffer::loadRoads) and the bridge
 // buffer (+0x3870, W3DBridgeBuffer::loadBridges 0x000DFB3C).
 
-#include <windows.h>
+#include <d3d9.h>
 
 typedef bool Bool;
-#define D3D_OK 0
 
 void __cdecl BFME_DX8_Thread_Lock(void);
 bool __cdecl BFME_DX8_Thread_Assert(void);
@@ -31,13 +31,9 @@ public:
 	}
 };
 
-struct IDirect3DDevice8
-{
-	virtual HRESULT __stdcall QueryInterface(const void *riid, void **ppvObj) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-	virtual HRESULT __stdcall TestCooperativeLevel() = 0;
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (TestCooperativeLevel, vtable slot 3).
+struct IDirect3DDevice8;
 
 class DX8Wrapper
 {
@@ -77,7 +73,7 @@ void BaseHeightMapRenderObjClass::loadRoadsAndBridges(W3DTerrainLogic *pTerrainL
 {
 	BFMEDX8DeviceLock guard;
 
-	if (DX8Wrapper::_Get_D3D_Device8() && (DX8Wrapper::_Get_D3D_Device8()->TestCooperativeLevel()) != D3D_OK)
+	if (DX8Wrapper::_Get_D3D_Device8() && (reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->TestCooperativeLevel()) != D3D_OK)
 		return;	//device not ready to render anything
 
 	if (m_roadBuffer) {

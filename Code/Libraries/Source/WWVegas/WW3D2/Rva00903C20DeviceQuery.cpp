@@ -1,22 +1,17 @@
 // cl: /O2 /Ob2
+// dxsdk
+// platformsdk
 // ?rva00903C20DeviceQuery@@YA_NXZ @ 0x0011CC30 (36B): reads the DX8 device global
-// at 0x00DEDA34 (inlined DX8Wrapper::_Get_D3D_Device8), calls vtable slot 70
-// (offset 0x118) with an out-parameter, and returns whether the result was 0.
+// at 0x00DEDA34 (inlined DX8Wrapper::_Get_D3D_Device8), calls
+// IDirect3DDevice9::ValidateDevice (vtable slot 70, offset 0x118) with an
+// out-parameter for the pass count, and returns whether the call succeeded.
 // Name is donor-derived from WW3D2 Rva00903C20DeviceQuery.cpp and is NOT proven
-// by target evidence; the slot-70 interface is unidentified.
-struct Rva00903C20Device;
-struct Rva00903C20Vtable
-{
-	void *m_prior[70];
-	long (__stdcall *m_slot70)(Rva00903C20Device *, unsigned *);
-};
-struct Rva00903C20Device
-{
-	Rva00903C20Vtable *m_vtable;
-};
+// by target evidence.
+#include <d3d9.h>
 
 // dx8wrapper.cpp's protected ?D3DDevice@DX8Wrapper@@1PAUIDirect3DDevice8@@A, read through a
-// TU-scoped friend view (real decoration, no alias).
+// TU-scoped friend view (real decoration, no alias). The device keeps its D3D8 type
+// name but is a Direct3D 9 device.
 struct IDirect3DDevice8;
 class DX8Wrapper
 {
@@ -27,7 +22,6 @@ protected:
 
 bool rva00903C20DeviceQuery()
 {
-	unsigned result = 0;
-	Rva00903C20Device *device = reinterpret_cast<Rva00903C20Device *>(DX8Wrapper::D3DDevice);
-	return device->m_vtable->m_slot70(device, &result) == 0;
+	DWORD passes = 0;
+	return reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::D3DDevice)->ValidateDevice(&passes) == D3D_OK;
 }
