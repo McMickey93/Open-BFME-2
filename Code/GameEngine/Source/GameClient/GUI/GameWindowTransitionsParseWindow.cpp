@@ -32,7 +32,8 @@
 // TU-scoped shims only, no shared-header edits. Single-local esi, nothrow ctor to avoid EH/ebp frame.
 #include <new>
 
-typedef void (*INIFieldParseProc)(class INI *ini, void *instance, void *store, const void *userData);
+class INI;
+typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
 struct FieldParse
 {
 	const char *token;

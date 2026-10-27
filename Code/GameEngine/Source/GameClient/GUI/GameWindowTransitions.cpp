@@ -11,7 +11,32 @@ class Xfer;
 
 enum INILoadType {INI_LOAD_INVALID, INI_LOAD_OVERWRITE};
 
-class INI {public: INI(); ~INI(); unsigned char loadFile(AsciiString,INILoadType,Xfer*); private: char storage[0x87C];};
+class INI;
+typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
+struct FieldParse
+{
+	const char *token;
+	INIFieldParseProc parse;
+	const void *userData;
+	int offset;
+};
+
+class INI
+{
+public:
+	INI();
+	~INI();
+	unsigned char loadFile(AsciiString, INILoadType, Xfer *);
+	const char *getNextToken(const char *seps = 0);
+	void initFromINI(void *what, const FieldParse *parseTable);
+	static void parseWindowTransitions( INI* ini );
+	static void parseAsciiString(INI *ini, void *instance, void *store, const void *userData);
+	static void parseInt(INI *ini, void *instance, void *store, const void *userData);
+	static void parseBool(INI *ini, void *instance, void *store, const void *userData);	// rowed 0x002E850
+	static void Rva001DCAED_ParseTransition(INI *ini, void *instance, void *store, const void *userData);
+private:
+	char storage[0x87C];
+};
 
 enum NameKeyType {NAMEKEY_INVALID=0,NAMEKEY_MAX=1<<23,FORCE_NAMEKEYTYPE_LONG=0x7fffffff};
 
@@ -157,14 +182,20 @@ void s5parse0059FB50(INI*, Gen_00489270*);
 
 void s4ParseFieldsRva0059D1F0(INI*, Gen_00489270*);
 
+// TransitionGroup's rowed bodies, on the address-named view.
 class Rva001DBDA4
 {
 public:
-	bool rva001DBD83() const;
-	void rva001DBE17();
-	void rva001DBE51();
-	void rva001DBD5D();
+	bool rva001DBD83() const; // isFinished
+	void rva001DBD5D();      // update
+	void rva001DBDC6();      // reverse
+	void rva001DBE17();      // BFME 2's step after skip
+	void rva001DBE34();      // skip
+	void rva001DBE51();      // draw
+	void rva001DC164();      // init
 };
+
+typedef bool Bool;
 
 // Retain bfmealloc's native null-checked free and proxy forwarding inline.
 // The matched bodies already inline these STLport ownership wrappers.
@@ -177,12 +208,6 @@ void _STLP_alloc_proxy<_List_node<int>*, _List_node<int>, allocator<_List_node<i
 { __stl_alloc_rebind(static_cast<_Base&>(*this), (_List_node<int>*)0).deallocate(p, n); }
 }
 
-// Declaration-only: retail has one list<int>::insert (rowed in stlport_list_int_insert.cpp, node creation out of line);
-// this unit calls it rather than emitting a copy with the node creation inlined.
-namespace _STL {
-template <> list<int, allocator<int> >::iterator list<int, allocator<int> >::insert(list<int, allocator<int> >::iterator, const int &);
-}
-
 namespace _STL {
 static inline void _Construct(int *__p, const int &__val)
 { new (__p) int(__val); }
@@ -190,23 +215,29 @@ static inline void _Construct(int *__p, const int &__val)
 
 class TransitionWindow;
 
+// The 0x14-byte group (genuine Rva001DC0EC home): the window list at +0, the
+// direction at +0x04, the current frame at +0x08, the name at +0x0C and
+// fireOnce at +0x10 (retail field table 0x007DBBCC).
 class TransitionGroup
 {
 public:
 	void addWindow(TransitionWindow *window);
-private:
-	_STL::list<int, _STL::allocator<int> > m_list; // +0, genuine Rva001DC0EC home
-	int m_04; // +0x04 direction
-	int m_currentFrame; // +0x08 current frame
-	int m_0C; // +0x0C name data
-	bool m_10; // +0x10 fireOnce
+	void init() { ((Rva001DBDA4 *)this)->rva001DC164(); }
+	void update() { ((Rva001DBDA4 *)this)->rva001DBD5D(); }
+	void reverse() { ((Rva001DBDA4 *)this)->rva001DBDC6(); }
+	void skip() { ((Rva001DBDA4 *)this)->rva001DBE34(); }
+	void draw() { ((Rva001DBDA4 *)this)->rva001DBE51(); }
+	void bfmeAfterSkip() { ((Rva001DBDA4 *)this)->rva001DBE17(); }
+	Bool isFinished() const { return ((const Rva001DBDA4 *)this)->rva001DBD83(); }
+	Bool isReversed() { return m_directionMultiplier < 0; }
+	Bool isFireOnce() { return m_fireOnce; }
+	_STL::list<int, _STL::allocator<int> > m_list; // +0x00
+	int m_directionMultiplier; // +0x04
+	int m_currentFrame;        // +0x08
+	AsciiString m_name;        // +0x0C
+	Bool m_fireOnce;           // +0x10
 };
-
-// LINK: single-node insert binds the verified native STLport owner at RVA
-// 0x005925E2; keep the out-of-line call without emitting a competing copy.
-namespace _STL {
-template <> list<int>::iterator list<int>::insert(iterator position, const int &x);
-}
+typedef _STL::list<TransitionGroup *> TransitionGroupList;
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base wrapper.
 namespace _STL {
@@ -248,14 +279,6 @@ private:
 	CRITICAL_SECTION *m_cs;
 };
 
-struct GroupView
-{
-	char _00[0x04];
-	int m_dir;
-	char _08[0x08];
-	unsigned char m_fireOnce;
-};
-
 class GameWindowManager
 {
 public:
@@ -288,6 +311,11 @@ public:
 	virtual void v10();
 	virtual void v11();
 	virtual void unk30();
+	virtual void v13();
+	virtual void v14();
+	virtual void v15();
+	virtual int unk40();
+	virtual int unk44();
 };
 
 extern GameWindowManager *TheWindowManager;
@@ -330,7 +358,6 @@ public:
 	void rva001DC1B3(_STL::list<int, _STL::allocator<int> > *dest);
 };
 
-class Rva001DBDA4;
 
 // The handler as its ctor 0x001DCBC3 lays it out: vftable 0x007DBC30 at +0,
 // the name-key parser map at +0x0C, the group list at +0x20, the current,
@@ -348,19 +375,31 @@ public:
 	void rva001DC07E();
 	void rva001DC57C(_STL::list<int, _STL::allocator<int> > *dest);
 	void rva001DC5EC();
+	const FieldParse *getFieldParse() const { return m_gameWindowTransitionsFieldParseTable; }
+	void setGroup( AsciiString groupName, Bool immidiate );
+	void reverse( AsciiString groupName );
+	void remove( AsciiString groupName, Bool skipPending = false );
+	static void parseWindow(INI *ini, void *instance, void *store, const void *userData);	// rowed 0x001DCB2F
+	TransitionGroup *getNewGroup( AsciiString name );
 private:
+	static const FieldParse m_gameWindowTransitionsFieldParseTable[];
+	TransitionGroup *findGroup( AsciiString groupName );
 	char m_pad04[0x8];
 	ObjectLookupMap m_table;
-	char m_pad20[0x4];
-	Rva001DBDA4 *m_24;
-	Rva001DBDA4 *m_28;
-	Rva001DBDA4 *m_2C;
-	Rva001DBDA4 *m_30;
+	TransitionGroupList m_transitionGroupList; // +0x20
+	TransitionGroup *m_currentGroup;       // +0x24
+	TransitionGroup *m_pendingGroup;       // +0x28
+	TransitionGroup *m_drawGroup;          // +0x2C
+	TransitionGroup *m_secondaryDrawGroup; // +0x30
 	char m_pad34[0x4];
 	CRITICAL_SECTION m_lock;
 	char m_pad50;
 	bool m_unk51;
-	char m_pad52[0x12];
+	char m_pad52[0x2];
+	int m_54;
+	int m_58;
+	int m_5C;
+	int m_60;
 	unsigned long m_64;
 	unsigned char m_68;
 	bool m_69;
@@ -382,8 +421,8 @@ bool GameWindowTransitionsHandler::isFinished()
 {
 	EnterCriticalSection(&m_lock);
 	bool b;
-	if (m_24)
-		b = m_24->rva001DBD83();
+	if (m_currentGroup)
+		b = m_currentGroup->isFinished();
 	else
 		b = true;
 	LeaveCriticalSection(&m_lock);
@@ -394,25 +433,25 @@ bool GameWindowTransitionsHandler::isFinished()
 // Evidence: vtable 0x007DBC30 slot 9 of the handler ctor; rowed rva001DBE17 callee; offsets +0x24 +0x28 +0x30 +0x2C +0x69; neighbours 0x001DBE51 and 0x001DBFEE.
 void GameWindowTransitionsHandler::reset()
 {
-	if (m_24)
+	if (m_currentGroup)
 	{
-		m_24->rva001DBE17();
-		m_24 = 0;
+		m_currentGroup->bfmeAfterSkip();
+		m_currentGroup = 0;
 	}
-	if (m_28)
+	if (m_pendingGroup)
 	{
-		m_28->rva001DBE17();
-		m_28 = 0;
+		m_pendingGroup->bfmeAfterSkip();
+		m_pendingGroup = 0;
 	}
-	if (m_30)
+	if (m_secondaryDrawGroup)
 	{
-		m_30->rva001DBE17();
-		m_30 = 0;
+		m_secondaryDrawGroup->bfmeAfterSkip();
+		m_secondaryDrawGroup = 0;
 	}
-	if (m_2C)
+	if (m_drawGroup)
 	{
-		m_2C->rva001DBE17();
-		m_2C = 0;
+		m_drawGroup->bfmeAfterSkip();
+		m_drawGroup = 0;
 	}
 	m_69 = false;
 }
@@ -421,10 +460,10 @@ void GameWindowTransitionsHandler::reset()
 // Evidence: vtable 0x007DBC30 slot 12 of the handler ctor; rowed rva001DBE51 callee; offsets +0x30 +0x2C.
 void GameWindowTransitionsHandler::draw()
 {
-	if (m_30)
-		m_30->rva001DBE51();
-	if (m_2C)
-		m_2C->rva001DBE51();
+	if (m_secondaryDrawGroup)
+		m_secondaryDrawGroup->draw();
+	if (m_drawGroup)
+		m_drawGroup->draw();
 }
 
 // Retail 0x001DBEB6 283B: GameWindowTransitionsHandler vftable 0x00BDBC30 slot 10 update.
@@ -443,45 +482,45 @@ void GameWindowTransitionsHandler::draw()
 void GameWindowTransitionsHandler::update()
 {
 	HandlerLock lock(&m_lock);
-	if (m_2C != m_24)
+	if (m_drawGroup != m_currentGroup)
 	{
-		if (m_30)
-			m_30->rva001DBE17();
-		m_30 = m_2C;
+		if (m_secondaryDrawGroup)
+			m_secondaryDrawGroup->bfmeAfterSkip();
+		m_secondaryDrawGroup = m_drawGroup;
 	}
-	else if (m_30)
+	else if (m_secondaryDrawGroup)
 	{
-		m_30->rva001DBE17();
-		m_30 = 0;
+		m_secondaryDrawGroup->bfmeAfterSkip();
+		m_secondaryDrawGroup = 0;
 	}
-	Rva001DBDA4 *cur = m_24;
-	m_2C = cur;
-	if (cur && !cur->rva001DBD83())
-		cur->rva001DBD5D();
-	cur = m_24;
-	if (cur && cur->rva001DBD83() && ((GroupView *)cur)->m_fireOnce && !m_28)
+	TransitionGroup *cur = m_currentGroup;
+	m_drawGroup = cur;
+	if (cur && !cur->isFinished())
+		cur->update();
+	cur = m_currentGroup;
+	if (cur && cur->isFinished() && cur->isFireOnce() && !m_pendingGroup)
 	{
 		if (m_69)
 			return;
-		cur->rva001DBE17();
-		m_24 = 0;
+		cur->bfmeAfterSkip();
+		m_currentGroup = 0;
 	}
-	cur = m_24;
-	if (cur && m_28 && cur->rva001DBD83())
+	cur = m_currentGroup;
+	if (cur && m_pendingGroup && cur->isFinished())
 	{
-		cur->rva001DBE17();
-		m_24 = m_28;
-		m_28 = 0;
+		cur->bfmeAfterSkip();
+		m_currentGroup = m_pendingGroup;
+		m_pendingGroup = 0;
 	}
-	if (!m_24 && m_28)
+	if (!m_currentGroup && m_pendingGroup)
 	{
-		m_24 = m_28;
-		m_28 = 0;
+		m_currentGroup = m_pendingGroup;
+		m_pendingGroup = 0;
 	}
-	cur = m_24;
-	if (cur && cur->rva001DBD83() && ((GroupView *)cur)->m_dir < 0)
-		m_24 = 0;
-	if (m_unk51 && !m_24 && !m_28)
+	cur = m_currentGroup;
+	if (cur && cur->isFinished() && cur->isReversed())
+		m_currentGroup = 0;
+	if (m_unk51 && !m_currentGroup && !m_pendingGroup)
 	{
 		TheMessageStream->appendMessage(GameMessage::MSG_IDLE_70);
 		m_unk51 = false;
@@ -666,14 +705,14 @@ void GameWindowTransitionsHandler::load() {
 void GameWindowTransitionsHandler::rva001DC57C(_STL::list<int, _STL::allocator<int> > *dest)
 {
 	CriticalSectionLock lock(&m_lock);
-	if (m_24 != 0)
-		((Rva001DC0EC *)m_24)->rva001DC1B3(dest);
-	if (m_28 != 0)
-		((Rva001DC0EC *)m_28)->rva001DC1B3(dest);
-	if (m_2C != 0)
-		((Rva001DC0EC *)m_2C)->rva001DC1B3(dest);
-	if (m_30 != 0)
-		((Rva001DC0EC *)m_30)->rva001DC1B3(dest);
+	if (m_currentGroup != 0)
+		((Rva001DC0EC *)m_currentGroup)->rva001DC1B3(dest);
+	if (m_pendingGroup != 0)
+		((Rva001DC0EC *)m_pendingGroup)->rva001DC1B3(dest);
+	if (m_drawGroup != 0)
+		((Rva001DC0EC *)m_drawGroup)->rva001DC1B3(dest);
+	if (m_secondaryDrawGroup != 0)
+		((Rva001DC0EC *)m_secondaryDrawGroup)->rva001DC1B3(dest);
 }
 
 // tu-skeleton: 0x001DC636 57B ??1?$hashtable@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@P6APAVTransition@@XZ@_STL@@@2@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsHandler.cpp (not merged yet)
