@@ -856,6 +856,37 @@ class LinkGuardTests(unittest.TestCase):
             why, _ = self.judge(self.ranked_guard(tmp), [self.TU, self.A], defined=("?t@@YAXXZ", "?a@@YAXXZ"))
             self.assertEqual(why, [])
 
+    def test_a_provider_merged_into_a_live_unit_since_the_census_is_not_this_merges_loss(self):
+        # Recorder.cpp's unchanged seed read "unresolved ??0Rva0060C5FA": the census's only
+        # definer, Rva0060C5FACtor.cpp, was merged into Xfer.cpp after the census.
+        import link_check as LC
+        import link_census as LCe
+        import link_debt
+        import build
+        donor = build.obj_path(build.ROOT / self.A).name
+
+        def why(owners, rank_extra=(), unresolved="?x@@YAXXZ"):
+            rank = {"t.obj": 0, "a.obj": 1, "b.obj": 2, donor: 1}   # the next census links no x.obj
+            rank.update(dict.fromkeys(rank_extra, 4))
+            found = {"unresolved": [unresolved], "duplicates": [], "comdat": [], "addresses": [],
+                     "selected": [], "unreferenced_differs": []}
+            with tempfile.TemporaryDirectory() as tmp:
+                g = T.LinkGuard(self.TU, root=tmp, index=self.index(), truth=object(), rank=rank, owners=owners)
+                with patch.object(LC, "check_object", return_value=found), \
+                        patch.object(LC, "new_variants", return_value=[]), \
+                        patch.object(LCe, "object_facts", return_value=([], ["?t@@YAXXZ", "?a@@YAXXZ"], [], [])), \
+                        patch.object(LCe, "common_definitions", return_value=set()), \
+                        patch.object(link_debt, "addresses", return_value=[]):
+                    self.assertIsNone(g.prepare([self.TU, self.A]))
+                    return g.judge(Path("m.obj"), [self.TU, self.A], "text")
+        self.assertEqual(why({"?x@@YAXXZ": {"live.obj"}}, ["live.obj"]), [])
+        refused = ["unresolved ?x@@YAXXZ"]
+        self.assertEqual(why({}), refused)                                       # no live row holds it
+        self.assertEqual(why({"?x@@YAXXZ": {"live.obj"}}), refused)              # its holder will not link
+        self.assertEqual(why({"?x@@YAXXZ": {donor}}), refused)                   # this merge should define it
+        self.assertEqual(why({"?n@@YAXXZ": {"live.obj"}}, ["live.obj"], "?n@@YAXXZ"),
+                         ["unresolved ?n@@YAXXZ"])                               # no census definer moved
+
     def judge_moved_copy(self, copies, emitted="old", *, outside_rank=13, strong=False, exception=False,
                          unknown_holder=False, portable=True, old_proof=True, cohort_route=None,
                          missing_cohort_proof=False, becomes_referenced=False, alias_only=False):

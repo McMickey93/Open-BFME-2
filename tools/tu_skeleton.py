@@ -768,9 +768,10 @@ class LinkGuard:
     (link_check --new-variants' rule). Without the census index a merge that
     touches a linked unit is blocked, never waved through."""
 
-    def __init__(self, tu, root=ROOT, index=None, truth=None, rank=None):
+    def __init__(self, tu, root=ROOT, index=None, truth=None, rank=None, owners=None):
         self.tu, self.root = tu, Path(root)
         self.index, self.truth, self.rank = index, truth, rank
+        self.owners = owners    # link_census.ledger_owners, loaded when first needed
         self.gone = set()
         self._status, self.touched, self.previous, self.cache = None, None, {}, {}
         self.fetch_error, self.fetched = None, False
@@ -941,6 +942,28 @@ class LinkGuard:
         self.before_contexts = self.census_contexts(want)
         return None
 
+    def moved_provider(self, name, files):
+        """Is `name` defined at the census only by units merged away since,
+        and now held by a live unit outside `files`? prepare() drops the gone
+        units' definitions and the census object of the unit that absorbed
+        them predates the move, so the view has no definer; the ledger row
+        does (its byte check found the symbol in that unit's object). The
+        merge that moved it answered for it (no longer defines ...), so an
+        unresolved reference to it is the census index's age, not this
+        merge's: Recorder.cpp's ??0Rva0060C5FA after Rva0060C5FACtor.cpp went
+        into Xfer.cpp, ControlBarScheme.cpp's ??0INI after INI_ctor.cpp went
+        into INI.cpp."""
+        definers = {at(entry) for table, at in LINK_TABLES if table != "alternates"
+                    for entry in self.index[table].get(name, ())}
+        if self.rank is None or not definers or not definers <= self.gone:
+            return False
+        if self.owners is None:
+            import link_census as LCe
+            self.owners = LCe.ledger_owners(LCe.ledger())
+        import build
+        mine = {build.obj_path(build.ROOT / f).name for f in files}
+        return any(o in self.rank and o not in mine for o in self.owners.get(name, ()))
+
     def view(self, obj, places):
         """The census index with the objects at `places` and every gone unit's
         removed and `obj` at the first of `places`; the reference graph is
@@ -1028,7 +1051,7 @@ class LinkGuard:
                                    or LCe.excused(n, view["excuses"]["runtime"], view["excuses"]["imported"],
                                                   view["excuses"]["stubs"]))
                 lost = sorted(n for n in dropped if not other(n) and LC.is_referenced(view, n))
-            why += ([f"unresolved {n}" for n in found["unresolved"]]
+            why += ([f"unresolved {n}" for n in found["unresolved"] if not self.moved_provider(n, files)]
                     + [f"duplicate {n}" for n in found["duplicates"]]
                     + [f"comdat {n} ({rule})" for n, rule, _ in found["comdat"]]
                     + [f"selected {n}" for n in found["selected"]]

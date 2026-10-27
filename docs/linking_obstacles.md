@@ -2686,6 +2686,14 @@ needs a real element name (or a sanctioned merge path) first. No edit made.
   `__node_alloc::deallocate`, two losing COMDATs). Initial gaps: the split lane
   (covered by the follow-up below), merges in which no unit links, and changes
   to other units since the census.
+- **Moved providers (2026-10-27):** with 790 commits since census bf3dd31211, the
+  guard blocked unchanged seeds: `Recorder.cpp` read `unresolved ??0Rva0060C5FA`
+  (its one census definer `Rva0060C5FACtor.cpp` went into `Xfer.cpp`, 0eff857b88)
+  and `ControlBarScheme.cpp` `unresolved ??0INI` (`INI_ctor.cpp` into `INI.cpp`,
+  ee70325db0). `LinkGuard.moved_provider` now excuses an unresolved name only
+  when every census definer is a gone unit and a matched ledger row puts it in a
+  unit outside the merge that the next census links. Other staleness (a live
+  unit's own changes since the census) remains a gap; the next census confirms.
 - **Split protection (2026-10-26):** `tu_skeleton.py --split` now compares a
   freshly compiled original mixed file and existing destination against the
   residual/destination pair, at their actual post-carve link positions. The
