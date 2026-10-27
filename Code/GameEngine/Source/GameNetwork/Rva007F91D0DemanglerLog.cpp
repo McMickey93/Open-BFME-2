@@ -1,5 +1,7 @@
 // cl: /O2 /GX- /GS
 
+#include <ctype.h>
+
 struct Rva00800E50Header
 {
 	unsigned m_type;
@@ -15,7 +17,6 @@ struct Rva007EB810Diag
 };
 
 extern Rva007EB810Diag *Rva007EB810Get();
-extern "C" int __cdecl isprint(int value);
 extern "C" int __cdecl Rva007EEC30(
 	const char *text, unsigned char *destination, int size, const char *empty);
 

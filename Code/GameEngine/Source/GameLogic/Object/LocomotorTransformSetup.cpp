@@ -20,7 +20,6 @@ struct SteeringCoord : Coord3D
     void subtract(const Coord3D &r) { x -= r.x; y -= r.y; z -= r.z; }
 };
 #include <math.h>
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
 Real normalizeAngle(Real angle);
 Real Cos(Real angle);
 Real Sin(Real angle);

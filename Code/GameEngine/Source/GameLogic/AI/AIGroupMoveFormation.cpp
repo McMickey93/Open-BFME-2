@@ -21,6 +21,7 @@ static __forceinline bool operator!=(const _List_iterator<T, L> &a, const _List_
 }
 
 #include <math.h>
+#include <stdlib.h>
 #include "Coord3D.h"
 inline float Coord3D::length() const { return (float)sqrt(x * x + y * y + z * z); }
 inline float Coord3D::GetLength() const
@@ -103,7 +104,6 @@ class LocomotorSet;
 class Rva0035149F;
 
 void Rva00030830GameFree(void *);
-extern "C" void free(void *block);
 enum AICommandType
 {
     AICMD_MOVE_TO_POSITION = 0

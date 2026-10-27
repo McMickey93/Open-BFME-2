@@ -1,4 +1,5 @@
 // cl: /EHs /MD /D_STLP_USE_STATIC_LIB /D_CRTIMP= /Ireference/shims/bfmealloc
+// platformsdk
 // stlport
 // BFME1 6583b3c1 WideCharStringToMultiByte.cpp provides UTF-8 conversion flow.
 // Native3289AC/179 calls the same two-pass Win32 API with code page65001,
@@ -17,6 +18,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 
 #include <string>
 #include <cstddef>
+#include <windows.h>
 // Keep _String_base<char>::~_String_base inline-only: no call here leaves it out
 // of line, and this TU's frameless COMDAT copy is not retail's 0x0000B3C0 body.
 namespace _STL {
@@ -45,9 +47,6 @@ void _STLP_alloc_proxy<char*, char, allocator<char> >::deallocate(char *__p, siz
 namespace _STL {
 template <> char *_STLP_alloc_proxy<char*, char, allocator<char> >::allocate(size_t);
 }
-extern "C" __declspec(dllimport) int __stdcall WideCharToMultiByte(
-    unsigned int, unsigned long, const unsigned short *, int,
-    char *, int, const char *, int *);
 namespace WcslenIAT { extern "C" __declspec(dllimport) unsigned int __cdecl wcslen(const unsigned short *); }
 _STL::string WideCharStringToMultiByte(const unsigned short *orig) {
     _STL::string ret;

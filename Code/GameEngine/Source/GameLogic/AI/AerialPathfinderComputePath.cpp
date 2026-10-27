@@ -17,21 +17,10 @@
 #include "../../../../Libraries/Source/profile/profile_highlevel.h"
 #include "../../Common/GameLogicObjectLookupView.h"
 
-// math.h's float sin/cos overloads inline at the probes, but as plain inlines this /O1 unit
-// still emitted their 17 B call-_sin/_cos copies, which lose to retail's fsin/fcos ones
-// (0x2FBB0/0x2FBC0). Only those two take wwmath.cpp's dllimport forceinline form: the
-// float atan2 overload must stay an out-of-line call to 0x000422CD.
-#define sin bfme_math_h_sin
-#define cos bfme_math_h_cos
+// The probes call sinf/cosf: math.h's float sin/cos overloads would emit call-_sin/_cos
+// copies that lose to retail's fsin/fcos ones (0x2FBB0/0x2FBC0).
 #include <math.h>
-#undef sin
-#undef cos
-extern "C" double __cdecl sin(double);
-extern "C" double __cdecl cos(double);
-__declspec(dllimport) __forceinline float __cdecl sin(float _X)
-        {return ((float)sin((double)_X)); }
-__declspec(dllimport) __forceinline float __cdecl cos(float _X)
-        {return ((float)cos((double)_X)); }
+#include <string.h>
 // coord3d.cpp's Coord3D::length (0x00003571) and ::normalize (0x000035B6), visible so cl
 // knows they keep no pointer to the local vectors (as AIAttackApproachComputePath.cpp).
 __declspec(noinline) inline float Coord3D::length() const
@@ -129,9 +118,6 @@ public:
     virtual void slot30(); virtual void slot34(); virtual void slot38(); virtual void slot3c();
     virtual void __cdecl message(UnicodeString);
 };
-extern "C" float __cdecl atan2f(float, float);
-float atan2(float, float);
-extern "C" int __cdecl strcmp(const char *, const char *);
 float normalizeAngle(float);
 
 struct AerialShapeBits {
@@ -225,12 +211,12 @@ bool AerialPathfinder::computeAerialPath(void *thing, const Coord3D *dest, Rva00
                 for (float angle = 0; angle < 3.1415927f; angle += step) {
                     if (tryPlus) {
                         float a = normalizeAngle(base + angle);
-                        q.x = sin(a) * (float)radius + target.x;
-                        q.y = cos(a) * (float)radius + target.y;
+                        q.x = sinf(a) * (float)radius + target.x;
+                        q.y = cosf(a) * (float)radius + target.y;
                         q.z = target.z;
                         if (!rva00375ED7((Object *)thing, &q, &push)) {
-                            q.x = sin(a + 2 * step) * (float)radius + target.x;
-                            q.y = cos(a + 2 * step) * (float)radius + target.y;
+                            q.x = sinf(a + 2 * step) * (float)radius + target.x;
+                            q.y = cosf(a + 2 * step) * (float)radius + target.y;
                             tryPlus = false;
                             if (havePoint) {
                                 haveSecond = true;
@@ -243,12 +229,12 @@ bool AerialPathfinder::computeAerialPath(void *thing, const Coord3D *dest, Rva00
                     }
                     if (tryMinus) {
                         float a = normalizeAngle(base - angle);
-                        q.x = sin(a) * (float)radius + target.x;
-                        q.y = cos(a) * (float)radius + target.y;
+                        q.x = sinf(a) * (float)radius + target.x;
+                        q.y = cosf(a) * (float)radius + target.y;
                         q.z = target.z;
                         if (!rva00375ED7((Object *)thing, &q, &push)) {
-                            q.x = sin(a - 2 * step) * (float)radius + target.x;
-                            q.y = cos(a - 2 * step) * (float)radius + target.y;
+                            q.x = sinf(a - 2 * step) * (float)radius + target.x;
+                            q.y = cosf(a - 2 * step) * (float)radius + target.y;
                             tryMinus = false;
                             if (havePoint) {
                                 haveSecond = true;
