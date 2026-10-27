@@ -666,6 +666,99 @@ class LinkGuardTests(unittest.TestCase):
         return T.LinkGuard(self.TU, root=tmp, index=index if index is not None else self.index(), truth=object(),
                            rank={"t.obj": 0, "a.obj": 1, "b.obj": 2, "x.obj": 3})
 
+    def reference_proof(self, guard):
+        guard.index["digests"] = {name: str(p) * 64 for p, name in enumerate(guard.index["objects"])}
+        records = {name: {"digest": guard.index["digests"][name], "roots": set(), "edges": {}, "weaks": ()}
+                   for name in guard.index["objects"]}
+        records["t.obj"].update(roots={"private"}, edges={"dead_inline": frozenset({"private"})})
+        guard.index["references"].update(objects=records, referenced={"private"},
+                                         edges={"dead_inline": frozenset({"private"})})
+        return records
+
+    def test_replacement_removes_only_proven_old_roots_and_edges(self):
+        import link_check as LC
+        with tempfile.TemporaryDirectory() as tmp:
+            guard = self.guard(tmp)
+            self.reference_proof(guard)
+            self.assertIsNone(guard.prepare([self.TU]))
+            view = guard.view(Path("merged.obj"), {0})
+            self.assertFalse(LC.is_referenced(view, "private"))
+            self.assertNotIn("dead_inline", view["references"]["edges"])
+            self.assertEqual(guard.index["references"]["referenced"], {"private"})
+            # The replacement itself can make the dropped definition live.
+            LC.add_references(view, [({"private"}, {})])
+            self.assertTrue(LC.is_referenced(view, "private"))
+
+    def test_outside_roots_edges_weak_defaults_and_aliases_survive_replacement(self):
+        import link_check as LC
+        for kind in ("root", "edge", "weak", "alias", "retail", "owner"):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as tmp:
+                guard = self.guard(tmp)
+                records = self.reference_proof(guard)
+                outside = records["x.obj"]
+                if kind == "root":
+                    outside["roots"] = {"private"}
+                elif kind == "edge":
+                    outside.update(roots={"dead_inline"}, edges={"dead_inline": frozenset({"private"})})
+                elif kind in ("weak", "alias"):
+                    outside["roots"] = {"route"}
+                    if kind == "weak":
+                        outside["weaks"] = (("route", "private"),)
+                    else:
+                        guard.index["alternates"]["route"] = [(3, "private")]
+                else:
+                    outside["edges"] = {"kept": frozenset({"private"})}
+                    if kind == "retail":
+                        guard.index["comdat"]["kept"] = [(3, "digest", "retail")]
+                    else:
+                        guard.index["selection"]["owners"]["kept"] = {"x.obj"}
+                self.assertIsNone(guard.prepare([self.TU]))
+                self.assertTrue(LC.is_referenced(guard.view(Path("merged.obj"), {0}), "private"))
+
+    def test_missing_or_unbound_reference_proof_keeps_the_census_reference(self):
+        import link_check as LC
+        for kind in ("missing", "partial", "digest", "unknown_object", "roots", "edges", "weaks"):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as tmp:
+                guard = self.guard(tmp)
+                records = self.reference_proof(guard)
+                if kind == "missing":
+                    del guard.index["references"]["objects"]
+                elif kind == "partial":
+                    del records["x.obj"]
+                elif kind == "digest":
+                    records["x.obj"]["digest"] = "f" * 64
+                elif kind == "unknown_object":
+                    records["unknown.obj"] = records["x.obj"]
+                else:
+                    records["x.obj"][kind] = "malformed"
+                self.assertIsNone(guard.prepare([self.TU]))
+                view = guard.view(Path("merged.obj"), {0})
+                self.assertTrue(LC.is_referenced(view, "private"))
+                self.assertNotIn("objects", view["references"])
+
+    def test_lost_definition_requires_an_outside_or_replacement_reference(self):
+        for outside in (False, True):
+            with self.subTest(outside=outside), tempfile.TemporaryDirectory() as tmp:
+                guard = self.guard(tmp)
+                records = self.reference_proof(guard)
+                guard.index["strong"]["private"] = [0]
+                if outside:
+                    records["x.obj"]["roots"] = {"private"}
+                why, _ = self.judge(guard, [self.TU], defined=("?t@@YAXXZ",))
+                self.assertEqual("no longer defines private, which the census still references" in why, outside)
+
+    def test_gone_objects_and_absorbed_aliases_do_not_retain_old_references(self):
+        import link_check as LC
+        with tempfile.TemporaryDirectory() as tmp:
+            guard = self.guard(tmp)
+            records = self.reference_proof(guard)
+            records["a.obj"]["roots"] = {"route"}
+            guard.index["alternates"]["route"] = [(0, "private")]
+            records["b.obj"]["roots"] = {"private"}
+            del guard.rank["b.obj"]
+            self.assertIsNone(guard.prepare([self.TU]))
+            self.assertFalse(LC.is_referenced(guard.view(Path("merged.obj"), {0}), "private"))
+
     def test_the_merged_object_replaces_every_absorbed_unit_at_the_first_place(self):
         with tempfile.TemporaryDirectory() as tmp:
             g = self.guard(tmp)

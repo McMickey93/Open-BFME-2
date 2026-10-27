@@ -15,6 +15,78 @@ def index(strong=None, comdat=None, blockers=None, sizes=None):
             "common_schema": C.COMMON_SCHEMA, "common": {}, "alternates": {}}
 
 
+def test_published_reference_provenance_retains_each_real_coff_contribution(tmp_path, monkeypatch):
+    import hashlib
+    import pickle
+    import link_census
+    import tu_skeleton
+    from test_gate_exploits import coff, TEXT
+    old, outside = tmp_path / "old.obj", tmp_path / "outside.obj"
+    old.write_bytes(coff([(".text", TEXT, b"\xe8\0\0\0\0\xc3", [(1, 1, 0x14)])],
+                         [("old", 0, 1, 0x20, 2, 0), ("private", 0, 0, 0, 2, 0)]))
+    outside.write_bytes(coff([(".text", TEXT, b"\xc3", [])], [("outside", 0, 1, 0x20, 2, 0)]))
+    present = [old, outside]
+    facts = [([], ["old"], ["private"], []), ([], ["outside"], [], [])]
+    refs = [link_census.object_references(obj) for obj in present]
+    roots, edges = link_census.merge_references(refs)
+    path = tmp_path / "link_index.pkl"
+    monkeypatch.setattr(C, "INDEX", path)
+    monkeypatch.setattr(link_census, "OUT", tmp_path)
+    monkeypatch.setattr(C, "source_bytes", lambda sources: {})
+    monkeypatch.setattr(C.build, "_pool_size", lambda: 1)
+    graph = {"edges": edges, "referenced": link_census.referenced_names(roots, edges)}
+
+    def publish(references):
+        C.write_index(present, facts, {"Code/T.cpp": {"object": old.name, "linked": True}},
+                      {"runtime": set(), "imported": set(), "stubs": set()}, {}, {}, references)
+
+    publish(graph)
+    with path.open("rb") as handle:
+        ix = pickle.load(handle)
+    for obj, (roots, edges) in zip(present, refs):
+        assert ix["references"]["objects"][obj.name] == {
+            "digest": hashlib.sha256(obj.read_bytes()).hexdigest(), "roots": roots, "edges": edges, "weaks": ()}
+    guard = tu_skeleton.LinkGuard("Code/T.cpp", root=tmp_path, index=ix, truth=object(),
+                                 rank={old.name: 0, outside.name: 1})
+    assert guard.prepare(["Code/T.cpp"]) is None
+    assert C.is_referenced(ix, "private")
+    assert not C.is_referenced(guard.view(Path("merged.obj"), {0}), "private")
+    # Once a preview contributes any new references, its old object proof is
+    # unusable even if the aggregate reachable set happens not to change.
+    C.add_references(ix, [(set(), {})])
+    assert "objects" not in ix["references"]
+    assert C.is_referenced(guard.view(Path("merged.obj"), {0}), "private")
+    published = path.read_bytes()
+    with pytest.raises(link_census.MissingObject, match="provenance changed"):
+        publish({"edges": edges, "referenced": set()})
+    assert path.read_bytes() == published
+
+    def moving_objects(objects):
+        found = [link_census.object_references(obj) for obj in objects]
+        old.write_bytes(old.read_bytes() + b"changed after extraction")
+        return found
+
+    monkeypatch.setattr(link_census, "read_references", moving_objects)
+    with pytest.raises(link_census.MissingObject, match="provenance changed"):
+        publish(graph)
+    assert path.read_bytes() == published
+
+
+def test_replacement_own_alias_keeps_its_target_referenced(tmp_path, monkeypatch):
+    import link_census
+    obj = tmp_path / "new.obj"
+    ix = index(strong={"target": [1]})
+    ix.update(selection={"owners": {}, "exceptions": {}},
+              excuses={"runtime": set(), "imported": set(), "stubs": set()},
+              references={"schema": C.REFERENCES_SCHEMA, "edges": {}, "referenced": set()})
+    monkeypatch.setattr(link_census, "common_definitions", lambda obj: {})
+    monkeypatch.setattr(link_census, "object_facts", lambda obj, truth: ([], [], ["route"], []))
+    monkeypatch.setattr(link_census, "object_references", lambda obj: ({"route"}, {}))
+    monkeypatch.setattr(C, "alternate_names", lambda obj: {"route": "target"})
+    assert C.check_object(obj, ix, object())["unresolved"] == []
+    assert C.is_referenced(ix, "target")
+
+
 def test_two_inline_copies_fold_silently():
     ix = index(comdat={"f": [(0, "x", None), (1, "y", None)]})
     assert not C.duplicate("f", 2, False, None, ix)

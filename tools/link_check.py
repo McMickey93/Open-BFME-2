@@ -131,10 +131,29 @@ def write_index(present, facts, blockers, excuses, meta, selection, references=N
     census, in one pickle. `facts` is link_census.read_facts(present);
     `selection` holds link_census.selection_verdicts' results, holder
     exceptions and ledger owners; `references` link_census.link_references'
-    {edges, referenced} (none: the index judges every name referenced)."""
+    {edges, referenced} (none: the index judges every name referenced).
+    New indexes also retain digest-bound object contributions so a merge can
+    rebuild the reference graph after replacing its original objects."""
     index = {"meta": meta, **index_tables(present, facts, selection, references), "blockers": blockers,
              "excuses": excuses,
              "bytes": source_bytes(set(blockers)), "digests": {obj.name: object_digest(obj) for obj in present}}
+    if references is not None:
+        # Preserve contributions before aggregation: subtracting a cohort from
+        # the union cannot distinguish its roots from identical outside roots.
+        per_object = link_census.read_references(present)
+        index["references"]["objects"] = {
+            obj.name: {"digest": index["digests"][obj.name], "roots": set(roots),
+                       "edges": dict(edges), "weaks": tuple(fact[3])}
+            for obj, fact, (roots, edges) in zip(present, facts, per_object)}
+        roots, edges = link_census.merge_references(per_object)
+        kept = set(selection.get("owners", {}))
+        kept.update(name for copies, _, _, _ in facts for name, _, _, verdict in copies if verdict is not None)
+        links = [pair for _, _, _, weaks in facts for pair in weaks]
+        links.extend((alias, target) for alias, entries in index["alternates"].items() for _, target in entries)
+        if (edges != references["edges"]
+                or link_census.referenced_names(roots, edges, kept, links) != references["referenced"]
+                or any(object_digest(obj) != index["digests"][obj.name] for obj in present)):
+            raise link_census.MissingObject("census reference provenance changed while writing the index")
     link_census.OUT.mkdir(parents=True, exist_ok=True)
     temp = INDEX.with_suffix(".tmp")
     with temp.open("wb") as handle:
@@ -203,6 +222,9 @@ def add_references(index, references, aliases=(), kept=()):
     graph = index_references(index)
     if graph is None:
         return
+    # This graph is becoming a preview, not the immutable census represented
+    # by its per-object contributions. Never reuse that proof after mutation.
+    graph.pop("objects", None)
     edges, found = graph["edges"], graph["referenced"]
     roots = set(kept)
     for more_roots, more_edges in references:
@@ -602,7 +624,8 @@ def check_object(obj, index, truth, source=None):
     if index_references(index) is not None:
         # This object's references join the census's (refresh merged them
         # already when it replaced its definitions; merging twice adds nothing).
-        add_references(index, [link_census.object_references(obj)], weaks, kept_copies(index, copies))
+        add_references(index, [link_census.object_references(obj)],
+                       [*weaks, *alternates.items()], kept_copies(index, copies))
     differs = []
     for name, digest, _, verdict in copies:
         found = [(i, d, v) for i, d, v in comdat.get(name, ()) if i != own]

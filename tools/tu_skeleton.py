@@ -966,8 +966,9 @@ class LinkGuard:
 
     def view(self, obj, places):
         """The census index with the objects at `places` and every gone unit's
-        removed and `obj` at the first of `places`; the reference graph is
-        copied (check_object adds to it)."""
+        removed and `obj` at the first of `places`. With complete census
+        provenance, rebuild the remaining objects' reference graph; otherwise
+        retain the conservative aggregate. check_object adds the replacement."""
         index, out = self.index, dict(self.index)
         first, places = min(places, default=None), set(places) | self.gone
         for table, at in LINK_TABLES:
@@ -986,6 +987,45 @@ class LinkGuard:
         graph = index.get("references")
         if isinstance(graph, dict) and isinstance(graph.get("edges"), dict):
             out["references"] = dict(graph, edges=dict(graph["edges"]), referenced=set(graph["referenced"]))
+            # The aggregate graph alone cannot prove a removed reference dead:
+            # an outside object may supply the very same root or COMDAT edge.
+            # New census indexes retain every object's contribution, bound to
+            # its census digest. Older or incomplete indexes stay conservative.
+            import link_check as LC
+            import link_census as LCe
+            records = graph.get("objects")
+            digests = index.get("digests", {})
+            def bound(name, record):
+                digest = digests.get(name)
+                return (isinstance(record, dict) and isinstance(digest, str)
+                        and re.fullmatch(r"[0-9a-f]{64}", digest) and record.get("digest") == digest
+                        and isinstance(record.get("roots"), (set, frozenset))
+                        and all(isinstance(n, str) for n in record["roots"])
+                        and isinstance(record.get("edges"), dict)
+                        and all(isinstance(n, str) and isinstance(targets, (set, frozenset))
+                                and all(isinstance(t, str) for t in targets)
+                                for n, targets in record["edges"].items())
+                        and isinstance(record.get("weaks"), (tuple, list))
+                        and all(isinstance(pair, (tuple, list)) and len(pair) == 2
+                                and all(isinstance(n, str) for n in pair) for pair in record["weaks"]))
+
+            if (graph.get("schema") == LC.REFERENCES_SCHEMA and isinstance(records, dict)
+                    and len(set(index["objects"])) == len(index["objects"])
+                    and set(records) == set(index["objects"])
+                    and all(bound(name, record) for name, record in records.items())):
+                remaining = [records[name] for p, name in enumerate(index["objects"]) if p not in places]
+                roots, edges = LCe.merge_references((r["roots"], r["edges"]) for r in remaining)
+                kept = set(out["selection"].get("owners", {}))
+                kept.update(name for name, copies in out["comdat"].items()
+                            if any(verdict is not None for _, _, verdict in copies))
+                links = [pair for r in remaining for pair in r["weaks"]]
+                links.extend((alias, target) for alias, entries in out["alternates"].items()
+                             for _, target in entries)
+                out["references"] = {"schema": LC.REFERENCES_SCHEMA, "edges": edges,
+                                     "referenced": LCe.referenced_names(roots, edges, kept, links)}
+            # A view has replaced providers and cannot itself serve as census
+            # provenance, including when validation above failed.
+            out["references"].pop("objects", None)
         return out
 
     def judge(self, obj, files, text):
