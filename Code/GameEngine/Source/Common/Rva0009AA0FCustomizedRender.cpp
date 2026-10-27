@@ -1,4 +1,5 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// dxsdk
 // platformsdk
 //
 // ?Customized_Render@Rva0009AA0F@@MAEXAAVRenderInfoClass@@@Z, retail
@@ -28,23 +29,14 @@
 // render info (push / call / pop): it is WW3D::Flush(RenderInfoClass &)
 //   ?Flush@WW3D@@SAXAAVRenderInfoClass@@@Z -> 0x001173F0
 
-#include <windows.h>
+#include <d3d9.h>
 
-typedef DWORD D3DRENDERSTATETYPE;
 typedef int Int;
 
-struct IDirect3DDevice8
-{
-#define G(n) virtual void __stdcall s##n() = 0;
-	G(00) G(01) G(02) G(03) G(04) G(05) G(06) G(07) G(08) G(09)
-	G(10) G(11) G(12) G(13) G(14) G(15) G(16) G(17) G(18) G(19)
-	G(20) G(21) G(22) G(23) G(24) G(25) G(26) G(27) G(28) G(29)
-	G(30) G(31) G(32) G(33) G(34) G(35) G(36) G(37) G(38) G(39)
-	G(40) G(41) G(42) G(43) G(44) G(45) G(46) G(47) G(48) G(49)
-	G(50) G(51) G(52) G(53) G(54) G(55) G(56)
-#undef G
-	virtual HRESULT __stdcall SetRenderState(D3DRENDERSTATETYPE state, DWORD value) = 0; // 57
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device
+// (SetRenderState, vtable slot 57). The wrapper's state parameter is the
+// DWORD its decorations carry (?Get_DX8_Render_State_Value_Name@...KI@Z).
+struct IDirect3DDevice8;
 
 class StringClass
 {
@@ -74,9 +66,9 @@ class DX8Wrapper
 public:
 	static void Set_Light(unsigned index, const _D3DLIGHT8 *light);
 	static void Apply_Render_State_Changes(void);
-	static void Get_DX8_Render_State_Value_Name(StringClass &name, D3DRENDERSTATETYPE state, unsigned value);
+	static void Get_DX8_Render_State_Value_Name(StringClass &name, unsigned long state, unsigned value);
 
-	static __forceinline void Set_DX8_Render_State(D3DRENDERSTATETYPE state, unsigned value)
+	static __forceinline void Set_DX8_Render_State(unsigned long state, unsigned value)
 	{
 		if (RenderStates[state] == value) return;
 		if (WW3D::Is_Snapshot_Activated()) {
@@ -84,7 +76,7 @@ public:
 			Get_DX8_Render_State_Value_Name(value_name, state, value);
 		}
 		RenderStates[state] = value;
-		D3DDevice->SetRenderState(state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(D3DDevice)->SetRenderState((D3DRENDERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		render_state_changes++;
 	}
@@ -335,9 +327,9 @@ void Rva0009AA0F::Customized_Render(RenderInfoClass &rinfo)
 	}
 
 	DX8Wrapper::Apply_Render_State_Changes();
-	DX8Wrapper::Set_DX8_Render_State(23, 4);
-	DX8Wrapper::Set_DX8_Render_State(14, 0);
-	DX8Wrapper::Set_DX8_Render_State(7, 1);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ZWRITEENABLE, FALSE);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ZENABLE, D3DZB_TRUE);
 
 	for (it.First(&RenderList); !it.Is_Done(); it.Next()) {
 		RenderObjClass *robj = it.Peek_Obj();
@@ -346,8 +338,8 @@ void Rva0009AA0F::Customized_Render(RenderInfoClass &rinfo)
 	}
 
 	rva001173f0(reinterpret_cast<unsigned int>(&rinfo));
-	DX8Wrapper::Set_DX8_Render_State(14, 1);
-	DX8Wrapper::Set_DX8_Render_State(23, 8);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ZWRITEENABLE, TRUE);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ZFUNC, D3DCMP_ALWAYS);
 
 	TheW3DShadowManager->queueShadows(true);
 	reinterpret_cast<Rva0009A361 *>(TheW3DShadowManager)->rva0009A361((Int)&rinfo);

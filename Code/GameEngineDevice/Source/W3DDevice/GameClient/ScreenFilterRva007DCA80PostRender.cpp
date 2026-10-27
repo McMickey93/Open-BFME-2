@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /ICode/Libraries/Include
+// dxsdk
+// platformsdk
 //
 // ?postRender@Rva007DCA80@@UAE_NW4FilterModes@@AAVCoord2D@@AA_NPAV3@@Z,
 // retail 0x000F9F82..0x000FA632 (1712 bytes, thiscall ret 0x10): slot 3 of
@@ -36,37 +38,16 @@ struct D3DXVECTOR4
 		: x(xValue), y(yValue), z(zValue), w(wValue) {}
 };
 
+#include <d3d9.h>
+
 struct IDirect3DSurface8;
 struct IDirect3DTexture8;
-struct IDirect3DBaseTexture8
-{
-	virtual long __stdcall QueryInterface(const void *, void **) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-};
+struct IDirect3DBaseTexture8 {};
 
-struct IDirect3DDevice8
-{
-#define SLOT(n) virtual void __stdcall slot##n() = 0;
-	SLOT(00) SLOT(01) SLOT(02) SLOT(03) SLOT(04) SLOT(05) SLOT(06) SLOT(07) SLOT(08) SLOT(09)
-	SLOT(10) SLOT(11) SLOT(12) SLOT(13) SLOT(14) SLOT(15) SLOT(16) SLOT(17) SLOT(18) SLOT(19)
-	SLOT(20) SLOT(21) SLOT(22) SLOT(23) SLOT(24) SLOT(25) SLOT(26) SLOT(27) SLOT(28) SLOT(29)
-	SLOT(30) SLOT(31) SLOT(32) SLOT(33) SLOT(34) SLOT(35) SLOT(36) SLOT(37) SLOT(38) SLOT(39)
-	SLOT(40) SLOT(41) SLOT(42) SLOT(43) SLOT(44) SLOT(45) SLOT(46) SLOT(47) SLOT(48) SLOT(49)
-	SLOT(50) SLOT(51) SLOT(52) SLOT(53) SLOT(54) SLOT(55) SLOT(56) SLOT(57) SLOT(58) SLOT(59)
-	SLOT(60) SLOT(61) SLOT(62) SLOT(63) SLOT(64)
-	virtual long __stdcall SetTexture(unsigned long stage, IDirect3DBaseTexture8 *texture) = 0;
-	SLOT(66) SLOT(67) SLOT(68)
-	virtual long __stdcall SetSamplerState(unsigned long sampler, unsigned long type, unsigned long value) = 0;
-	SLOT(70) SLOT(71) SLOT(72) SLOT(73) SLOT(74) SLOT(75) SLOT(76) SLOT(77) SLOT(78) SLOT(79)
-	SLOT(80) SLOT(81) SLOT(82)
-	virtual long __stdcall DrawPrimitiveUP(unsigned long type, unsigned count, const void *data, unsigned stride) = 0;
-	SLOT(84) SLOT(85) SLOT(86) SLOT(87) SLOT(88)
-	virtual long __stdcall SetFVF(unsigned long fvf) = 0;
-	SLOT(90) SLOT(91)
-	virtual long __stdcall SetVertexShader(void *shader) = 0;
-#undef SLOT
-};
+// The device and textures keep their D3D8 type names (DX8Wrapper's static
+// decorations) but are Direct3D 9 objects: SetTexture 65, SetSamplerState 69, DrawPrimitiveUP 83, SetFVF 89,
+// SetVertexShader 92; texture AddRef / Release 1 / 2.
+struct IDirect3DDevice8;
 
 extern unsigned number_of_DX8_calls;
 extern bool bfmeOnlyEmissiveDraws;
@@ -83,25 +64,25 @@ public:
 	static __forceinline void Set_DX8_Texture(unsigned stage, IDirect3DBaseTexture8 *texture)
 	{
 		if (stage >= 16) {
-			_Get_D3D_Device8()->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 			number_of_DX8_calls++;
 			return;
 		}
 		if (Textures[stage] == texture)
 			return;
 		if (Textures[stage])
-			Textures[stage]->Release();
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
 		if (Textures[stage])
-			Textures[stage]->AddRef();
-		_Get_D3D_Device8()->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->AddRef();
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		texture_changes++;
 	}
 
 	static __forceinline void Set_DX8_Sampler_State(unsigned stage, unsigned long state, unsigned value)
 	{
-		_Get_D3D_Device8()->SetSamplerState(stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetSamplerState(stage, (D3DSAMPLERSTATETYPE)state, value);
 		number_of_DX8_calls++;
 		texture_stage_state_changes++;
 	}
@@ -245,7 +226,7 @@ bool Rva007DCA80::postRender(FilterModes mode, Coord2D &scrollDelta, bool &doExt
 	W3DShaderManager::performGlow(((Rva000F9F82Settings *)Rva00309E4BGet())->m_glowStrength,
 		(const GlowSampleVector *)m_kernel, m_size, m_texture[0], m_surface[1], m_texture[1], m_surface[0]);
 
-	IDirect3DDevice8 *device = DX8Wrapper::_Get_D3D_Device8();
+	IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 
 	struct Vertex
 	{
@@ -283,10 +264,10 @@ bool Rva007DCA80::postRender(FilterModes mode, Coord2D &scrollDelta, bool &doExt
 	height = TheTacticalView->getHeight();
 
 	BFME2Set_Texture(1, *(const BFME2TextureRef *)&m_vapor2);
-	DX8Wrapper::Set_DX8_Sampler_State(1, 1, 1);
-	DX8Wrapper::Set_DX8_Sampler_State(1, 2, 1);
-	DX8Wrapper::Set_DX8_Sampler_State(2, 1, 1);
-	DX8Wrapper::Set_DX8_Sampler_State(2, 2, 1);
+	DX8Wrapper::Set_DX8_Sampler_State(1, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);
+	DX8Wrapper::Set_DX8_Sampler_State(1, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);
+	DX8Wrapper::Set_DX8_Sampler_State(2, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);
+	DX8Wrapper::Set_DX8_Sampler_State(2, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);
 	BFME2Set_Texture(2, *(const BFME2TextureRef *)&m_vapor1);
 	DX8Wrapper::Set_DX8_Texture(2, ((TextureBaseClass *)&m_vapor1)->Peek_D3D_Base_Texture());
 
@@ -330,21 +311,21 @@ bool Rva007DCA80::postRender(FilterModes mode, Coord2D &scrollDelta, bool &doExt
 
 	if (g_Va00DB5B08)
 	{
-		DX8Wrapper::Set_DX8_Render_State(0x13, 2);
-		DX8Wrapper::Set_DX8_Render_State(0x14, 4);
+		DX8Wrapper::Set_DX8_Render_State(D3DRS_SRCBLEND, D3DBLEND_ONE);
+		DX8Wrapper::Set_DX8_Render_State(D3DRS_DESTBLEND, D3DBLEND_INVSRCCOLOR);
 	}
 	else
 	{
-		DX8Wrapper::Set_DX8_Render_State(0x13, 5);
-		DX8Wrapper::Set_DX8_Render_State(0x14, 6);
+		DX8Wrapper::Set_DX8_Render_State(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+		DX8Wrapper::Set_DX8_Render_State(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 	}
-	DX8Wrapper::Set_DX8_Render_State(0x1B, 1);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ALPHABLENDENABLE, TRUE);
 	DX8Wrapper::Apply_Render_State_Changes();
-	DX8Wrapper::Set_DX8_Render_State(0x1B, 1);
+	DX8Wrapper::Set_DX8_Render_State(D3DRS_ALPHABLENDENABLE, TRUE);
 
-	DX8Wrapper::_Get_D3D_Device8()->SetVertexShader(0);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetVertexShader(0);
 	number_of_DX8_calls++;
-	DX8Wrapper::_Get_D3D_Device8()->SetFVF(0x344);
+	reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8())->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX3);
 	number_of_DX8_calls++;
 
 	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 1, 3);
@@ -370,7 +351,7 @@ bool Rva007DCA80::postRender(FilterModes mode, Coord2D &scrollDelta, bool &doExt
 	DX8Wrapper::Set_DX8_Texture_Stage_State(2, 5, 1);
 	DX8Wrapper::Set_DX8_Texture_Stage_State(2, 6, 2);
 
-	device->DrawPrimitiveUP(5, 2, vertices, sizeof(Vertex));
+	device->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(Vertex));
 	}
 	reset();
 	return true;

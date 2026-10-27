@@ -1,4 +1,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
+// dxsdk
+// platformsdk
 // ScreenMotionBlurFilter::postRender
 // ?postRender@ScreenMotionBlurFilter@@UAE_NW4FilterModes@@AAVCoord2D@@AA_NPAV3@@Z
 // Retail 0x000FD5B7..0x000FDB21 (1386 bytes) RET16; vftable 0x007CF410 slot 3
@@ -25,57 +27,18 @@ struct D3DXVECTOR4
     D3DXVECTOR4() {}
     D3DXVECTOR4(float a, float b, float c, float d) : x(a), y(b), z(c), w(d) {}
 };
-struct IDirect3DBaseTexture8
-{
-	virtual long __stdcall QueryInterface(const void *, void **) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-};
+#include <d3d9.h>
+
+struct IDirect3DBaseTexture8 {};
 
 struct IDirect3DTexture8 : IDirect3DBaseTexture8
 {
 };
 
-struct IDirect3DDevice8
-{
-	virtual long __stdcall QueryInterface(const void *, void **) = 0;
-	virtual unsigned long __stdcall AddRef() = 0;
-	virtual unsigned long __stdcall Release() = 0;
-#define RVA000FBA57_D3D_SLOT(n) virtual void slot##n() = 0;
-	RVA000FBA57_D3D_SLOT(03) RVA000FBA57_D3D_SLOT(04) RVA000FBA57_D3D_SLOT(05)
-	RVA000FBA57_D3D_SLOT(06) RVA000FBA57_D3D_SLOT(07) RVA000FBA57_D3D_SLOT(08)
-	RVA000FBA57_D3D_SLOT(09) RVA000FBA57_D3D_SLOT(10) RVA000FBA57_D3D_SLOT(11)
-	RVA000FBA57_D3D_SLOT(12) RVA000FBA57_D3D_SLOT(13) RVA000FBA57_D3D_SLOT(14)
-	RVA000FBA57_D3D_SLOT(15) RVA000FBA57_D3D_SLOT(16) RVA000FBA57_D3D_SLOT(17)
-	RVA000FBA57_D3D_SLOT(18) RVA000FBA57_D3D_SLOT(19) RVA000FBA57_D3D_SLOT(20)
-	RVA000FBA57_D3D_SLOT(21) RVA000FBA57_D3D_SLOT(22) RVA000FBA57_D3D_SLOT(23)
-	RVA000FBA57_D3D_SLOT(24) RVA000FBA57_D3D_SLOT(25) RVA000FBA57_D3D_SLOT(26)
-	RVA000FBA57_D3D_SLOT(27) RVA000FBA57_D3D_SLOT(28) RVA000FBA57_D3D_SLOT(29)
-	RVA000FBA57_D3D_SLOT(30) RVA000FBA57_D3D_SLOT(31) RVA000FBA57_D3D_SLOT(32)
-	RVA000FBA57_D3D_SLOT(33) RVA000FBA57_D3D_SLOT(34) RVA000FBA57_D3D_SLOT(35)
-	RVA000FBA57_D3D_SLOT(36) RVA000FBA57_D3D_SLOT(37) RVA000FBA57_D3D_SLOT(38)
-	RVA000FBA57_D3D_SLOT(39) RVA000FBA57_D3D_SLOT(40) RVA000FBA57_D3D_SLOT(41)
-	RVA000FBA57_D3D_SLOT(42) RVA000FBA57_D3D_SLOT(43) RVA000FBA57_D3D_SLOT(44)
-	RVA000FBA57_D3D_SLOT(45) RVA000FBA57_D3D_SLOT(46) RVA000FBA57_D3D_SLOT(47)
-	RVA000FBA57_D3D_SLOT(48) RVA000FBA57_D3D_SLOT(49) RVA000FBA57_D3D_SLOT(50)
-	RVA000FBA57_D3D_SLOT(51) RVA000FBA57_D3D_SLOT(52) RVA000FBA57_D3D_SLOT(53)
-	RVA000FBA57_D3D_SLOT(54) RVA000FBA57_D3D_SLOT(55) RVA000FBA57_D3D_SLOT(56)
-	RVA000FBA57_D3D_SLOT(57) RVA000FBA57_D3D_SLOT(58) RVA000FBA57_D3D_SLOT(59)
-	RVA000FBA57_D3D_SLOT(60) RVA000FBA57_D3D_SLOT(61) RVA000FBA57_D3D_SLOT(62)
-	RVA000FBA57_D3D_SLOT(63) RVA000FBA57_D3D_SLOT(64)
-	virtual long __stdcall SetTexture(unsigned, IDirect3DBaseTexture8 *) = 0;
-	RVA000FBA57_D3D_SLOT(66) RVA000FBA57_D3D_SLOT(67) RVA000FBA57_D3D_SLOT(68)
-	RVA000FBA57_D3D_SLOT(69) RVA000FBA57_D3D_SLOT(70) RVA000FBA57_D3D_SLOT(71)
-	RVA000FBA57_D3D_SLOT(72) RVA000FBA57_D3D_SLOT(73) RVA000FBA57_D3D_SLOT(74)
-	RVA000FBA57_D3D_SLOT(75) RVA000FBA57_D3D_SLOT(76) RVA000FBA57_D3D_SLOT(77)
-	RVA000FBA57_D3D_SLOT(78) RVA000FBA57_D3D_SLOT(79) RVA000FBA57_D3D_SLOT(80)
-	RVA000FBA57_D3D_SLOT(81) RVA000FBA57_D3D_SLOT(82)
-	virtual long __stdcall DrawPrimitiveUP(unsigned, unsigned, const void *, unsigned) = 0;
-	RVA000FBA57_D3D_SLOT(84) RVA000FBA57_D3D_SLOT(85) RVA000FBA57_D3D_SLOT(86)
-	RVA000FBA57_D3D_SLOT(87) RVA000FBA57_D3D_SLOT(88)
-	virtual long __stdcall SetVertexShader(unsigned long) = 0;
-#undef RVA000FBA57_D3D_SLOT
-};
+// The device and textures keep their D3D8 type names (DX8Wrapper's static
+// decorations) but are Direct3D 9 objects: SetTexture 65, DrawPrimitiveUP 83,
+// SetFVF 89; texture AddRef / Release 1 / 2.
+struct IDirect3DDevice8;
 
 extern unsigned number_of_DX8_calls;
 
@@ -91,20 +54,20 @@ public:
 	static __forceinline void Set_DX8_Texture(unsigned stage, IDirect3DBaseTexture8 *texture)
 	{
 		if (stage >= 16) {
-			IDirect3DDevice8 *device = _Get_D3D_Device8();
-			device->SetTexture(stage, texture);
+			IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8());
+			device->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 			number_of_DX8_calls++;
 			return;
 		}
 		if (Textures[stage] == texture)
 			return;
 		if (Textures[stage])
-			Textures[stage]->Release();
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
 		if (Textures[stage])
-			Textures[stage]->AddRef();
-		IDirect3DDevice8 *device = _Get_D3D_Device8();
-		device->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->AddRef();
+		IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8());
+		device->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		number_of_DX8_calls++;
 		texture_changes++;
 	}
@@ -135,27 +98,6 @@ enum FilterModes
 {
 	FM_VIEW_MB_END_PAN_ALPHA = 13,
 	FM_VIEW_MB_PAN_ALPHA = 16
-};
-
-struct BfmeDevice;
-
-struct BfmeDeviceVt
-{
-	char pad000[0x104];
-	int (__stdcall *SetTexture)(BfmeDevice *, unsigned int, void *);
-	char pad108[4];
-	int (__stdcall *SetTextureStageState)(BfmeDevice *, unsigned int,
-		unsigned int, unsigned int);
-	char pad110[0x3c];
-	int (__stdcall *DrawPrimitiveUP)(BfmeDevice *, unsigned int,
-		unsigned int, const void *, unsigned int);
-	char pad150[0x14];
-	int (__stdcall *SetVertexShader)(BfmeDevice *, unsigned int);
-};
-
-struct BfmeDevice
-{
-	BfmeDeviceVt *vt;
 };
 
 struct IDirect3DDevice8;
@@ -236,7 +178,7 @@ Bool ScreenMotionBlurFilter::postRender(FilterModes mode, Coord2D &scrollDelta,
 	if (!set(mode))
 		return false;
 
-	BfmeDevice *pDev = reinterpret_cast<BfmeDevice *>(DX8Wrapper::_Get_D3D_Device8());
+	IDirect3DDevice9 *pDev = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 	Bool continueEffect = true;
 	struct _TRANS_LIT_TEX_VERTEX
 	{
@@ -248,7 +190,7 @@ Bool ScreenMotionBlurFilter::postRender(FilterModes mode, Coord2D &scrollDelta,
 
 	Int xpos, ypos, width, height;
 
-	BfmeDevice *textureDevice = reinterpret_cast<BfmeDevice *>(DX8Wrapper::_Get_D3D_Device8());
+	IDirect3DDevice9 *textureDevice = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 	DX8Wrapper::Set_DX8_Texture(0, tex);
 	BfmeTacticalView *originView = theTacticalView();
 	originView->getOrigin(&xpos, &ypos);
@@ -288,8 +230,8 @@ Bool ScreenMotionBlurFilter::postRender(FilterModes mode, Coord2D &scrollDelta,
 	}
 	(*static_cast<void (*)(unsigned long, unsigned)>(&DX8Wrapper::Set_DX8_Render_State))(0x1b, false);
 	DX8Wrapper::Apply_Render_State_Changes();
-	BfmeDevice *fvfDevice = reinterpret_cast<BfmeDevice *>(DX8Wrapper::_Get_D3D_Device8());
-	fvfDevice->vt->SetVertexShader(fvfDevice, 0x144);
+	IDirect3DDevice9 *fvfDevice = reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
+	fvfDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
 	++number_of_DX8_calls;
 
 	Coord2D center;
@@ -359,7 +301,7 @@ Bool ScreenMotionBlurFilter::postRender(FilterModes mode, Coord2D &scrollDelta,
 	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 5, 1);
 	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 6, 2);
 	DX8Wrapper::Set_DX8_Texture_Stage_State(0, 4, 2);
-	pDev->vt->DrawPrimitiveUP(pDev, 5, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
+	pDev->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof(_TRANS_LIT_TEX_VERTEX));
 	(*static_cast<void (*)(unsigned long, unsigned)>(&DX8Wrapper::Set_DX8_Render_State))(0x1b, true);
 
 	DX8Wrapper::Apply_Render_State_Changes();
@@ -389,7 +331,7 @@ Bool ScreenMotionBlurFilter::postRender(FilterModes mode, Coord2D &scrollDelta,
 					v[i].v = ((v[i].v - center.y) * factor) + center.y;
 				}
 			}
-			pDev->vt->DrawPrimitiveUP(pDev, 5, 2, v,
+			pDev->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v,
 				sizeof(_TRANS_LIT_TEX_VERTEX));
 		}
 	}
