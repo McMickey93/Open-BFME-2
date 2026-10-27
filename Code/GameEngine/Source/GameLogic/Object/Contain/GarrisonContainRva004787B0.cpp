@@ -83,7 +83,7 @@ public:
 	const ThingTemplate *findTemplate(const AsciiString &name);
 	Object *newObject(const ThingTemplate *tmpl, Team *team, const CreateMask *mask, ObjectID flag);
 };
-extern "C" void *__cdecl memset(void *dst, int val, unsigned int size);
+#include <string.h>
 struct HolderData
 {
 	char m_pad[0xA4];

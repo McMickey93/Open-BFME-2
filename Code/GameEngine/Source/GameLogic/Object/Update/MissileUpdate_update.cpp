@@ -4,7 +4,7 @@
 // partial score=0.9826050638015957 date=2026-10-09
 // cl: /O1 /G7 /arch:SSE /MD /EHsc /I. /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib
 #include "Code/Libraries/Include/Lib/Coord3D.h"
-extern "C" double __cdecl sqrt(double);
+#include <math.h>
 enum UpdateSleepTime {UPDATE_SLEEP_NONE=1,UPDATE_SLEEP_FOREVER=0x3fffffff};
 enum PathfindLayerEnum {GROUND_LAYER=0,BRIDGE_LAYER=1};
 class Thing {public:virtual void anchor();void setPosition(const Coord3D*);const Coord3D *getPosition()const{return &m_position;}char pad[0x34];Coord3D m_position;};

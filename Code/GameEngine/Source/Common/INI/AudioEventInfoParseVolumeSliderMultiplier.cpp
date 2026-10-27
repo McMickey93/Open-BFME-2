@@ -54,7 +54,7 @@ public:
 	~INIException();
 };
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
+#include <string.h>
 
 class AudioEventInfo
 {

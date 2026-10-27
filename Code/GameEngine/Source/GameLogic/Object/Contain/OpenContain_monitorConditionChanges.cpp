@@ -12,7 +12,7 @@
 // compare and copy of the drawable's model-condition flags, calling slot 18
 // (redeployOccupants, 0x00464286) on a change.
 
-extern "C" void *__cdecl memset(void *dst, int c, unsigned int count);
+#include <string.h>
 bool Rva00045473Equal(const void *a, const void *b);
 
 class Drawable;

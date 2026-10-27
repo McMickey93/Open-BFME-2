@@ -28,7 +28,7 @@ extern GameLogic *TheGameLogic;
 
 typedef int Int;
 
-extern "C" void *memset(void *s, int c, unsigned n);
+#include <string.h>
 
 struct Coord3DBase;
 class UnicodeString;

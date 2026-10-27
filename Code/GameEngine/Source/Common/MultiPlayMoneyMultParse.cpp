@@ -9,7 +9,7 @@
 typedef int Int;
 typedef float Real;
 
-extern "C" __declspec(dllimport) int __cdecl _strcmpi( const char *, const char * );
+#include <string.h>
 
 // INI layout follows the verified PC token/scanner bodies; colon separators at +0x420.
 class INI
