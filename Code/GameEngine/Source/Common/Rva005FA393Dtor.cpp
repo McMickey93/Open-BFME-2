@@ -74,7 +74,7 @@ Rva005FA7EB::Rva005FA7EB(void *a, void *b, void *c)
 	m_member04 = new StrategicHUD::BattlePromptMovieClip::Impl((StrategicHUD::BattlePromptMovieClip*)this, (int)a, *(const AsciiString*)b, *(const Rva005F91F3Src*)c);
 }
 
-void __cdecl operator delete(void *);
+#include <new>
 
 StrategicHUD::BattlePromptMovieClip::~BattlePromptMovieClip()
 {

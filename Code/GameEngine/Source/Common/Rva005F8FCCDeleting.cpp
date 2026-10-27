@@ -8,7 +8,7 @@
 // 0x004F70CB 0x004F72F8; LINK 1 file 7B.
 struct TargetRef00217D4C { virtual void *destroy(unsigned int flags); int references; };
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *p);
-void operator delete(void *);
+#include <new>
 struct Rva005F8FCC
 {
 	TargetRef00217D4C *m_00;

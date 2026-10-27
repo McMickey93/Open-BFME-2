@@ -6,7 +6,7 @@ struct Rva005FEBC8
 {
 	~Rva005FEBC8();
 };
-void __cdecl operator delete(void *);
+#include <new>
 struct Rva005FA874
 {
 	Rva005FEBC8 *m_ptr00;
