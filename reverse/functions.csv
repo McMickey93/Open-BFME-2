@@ -74800,7 +74800,7 @@ uw_0077c2fc,,0x0077C2FC,8,Code/GameEngine/Source/Common/Rva00337424Insert.cpp,ma
 uw_0077d550,,0x0077D550,8,Code/GameEngine/Source/Common/Rva003560EDDtor.cpp,matched,gen-funclet;parent=??1Rva003560ED@@UAE@XZ;object-symbol=$L435
 uw_0077d578,,0x0077D578,8,Code/GameEngine/Source/Common/Rva003561BEDtor.cpp,matched,gen-funclet;parent=??1Rva003561BE@@UAE@XZ;object-symbol=$L1363
 uw_0077d770,,0x0077D770,10,Code/GameEngine/Source/Common/AttackPriorityInfo_setPriority.cpp,matched,gen-funclet;parent=?setPriority@AttackPriorityInfo@@QAEXPBVThingTemplate@@H@Z;object-symbol=$L4427
-uw_0077de39,,0x0077DE39,10,Code/GameEngine/Source/Common/Rva0035D6F9Parse.cpp,matched,gen-funclet;parent=?Rva0035D6F9Parse@@YAXPAVINI@@PAVRva0035D6F9Holder@@@Z;object-symbol=$L350
+uw_0077de39,,0x0077DE39,10,Code/GameEngine/Source/Common/Rva0035D6F9Parse.cpp,matched,gen-funclet;parent=?Rva0035D6F9Parse@@YAXPAVINI@@PAVRva0035D6F9Holder@@@Z;object-symbol=$L351
 uw_0077dec1,,0x0077DEC1,10,Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp,matched,gen-funclet;parent=?Rva0035E327Parse@@YAXPAVINI@@PAVRva0035E327Holder@@@Z;object-symbol=$L349
 uw_0077ded5,,0x0077DED5,10,Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp,matched,gen-funclet;parent=?Rva0035E650Parse@@YAXPAVINI@@PAVRva0035E650Holder@@@Z;object-symbol=$L349
 uw_0077defb,,0x0077DEFB,10,Code/GameEngine/Source/GameClient/GUI/GameWindowTransitionsStyles.cpp,matched,gen-funclet;parent=?Rva0035EEA7Parse@@YAXPAVINI@@PAVRva0035EEA7Holder@@@Z;object-symbol=$L348
