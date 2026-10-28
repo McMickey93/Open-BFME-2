@@ -234,7 +234,6 @@ Code/GameEngine/Source/GameClient/MapUtilGetDefaultMap.cpp	unverified	unverified
 Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemInfoCopyCtor.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	no	hand			operator new:unverified
 Code/GameEngine/Source/GameLogic/AI/AIMoveAndEvacuateStateUpdate.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<windows.h>	yes	yes	hand			FALSE:unverified
 Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudio.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
-Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioAudioMap.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioSoundKeyPair.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/Map/SidesListCastleBuildLists.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/GameLogic/Map/SidesListDataChunks.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
@@ -994,3 +993,4 @@ Code/GameEngineDevice/Source/W3DDevice/GameClient/BfmeResourceEnumerator.cpp	con
 Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayGatherAnimationDebuggingInfo.cpp	conflicting	abi	1	0	0	0	0	0	1	0	0	0	0	<stdio.h>	no	yes	hand		do not blanket-replace: verify the callee per body (sampled free callers call the game allocator wrapper at VA 0x430830, not CRT free's IAT entry 0xBBA6E8)	fprintf:abi
 Code/GameEngine/Source/GameLogic/SkirmishAI/AITeamBuilder/AITeamBuilder.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
 Code/GameEngine/Source/Common/BfmeThingTTD.cpp	conflicting	mangle	9	5	3	0	0	1	0	0	0	0	0	<windows.h>,<string.h>,<new>	yes	yes	hand			GUID:mangle,wcslen:source,wcscpy:source,CoCreateInstance:source,HRESULT:same,DWORD:same,ULONG:same,operator new [ ]:same,CoUninitialize:same
+Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioAudioMap.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<crtdbg.h>	no	yes	hand			free:unverified
