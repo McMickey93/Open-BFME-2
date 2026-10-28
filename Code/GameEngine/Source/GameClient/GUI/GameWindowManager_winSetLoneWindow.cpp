@@ -17,10 +17,6 @@ public:
 	V(48) V(49) V(50) V(51)
 #undef V
 	virtual void winSetLoneWindow(GameWindow *window);
-
-private:
-	unsigned char m_pad04[0x28];
-	GameWindow *m_loneWindow;
 };
 
 extern GameWindowManager *TheWindowManager;
@@ -49,14 +45,18 @@ public:
 	virtual void slot52(); virtual void slot53(); virtual void slot54(); virtual void slot55();
 	virtual void slot56(); virtual void slot57();
 	virtual WindowMsgHandledType winSendSystemMsg( GameWindow *window, UnsignedInt msg, WindowMsgData mData1, WindowMsgData mData2 );
+	// Native winSetLoneWindow reads/writes +0x2C; the shared ZH field is +0x28.
+	unsigned char m_pad04[0x28];
+	GameWindow *m_loneWindow;
 };
 
 void GameWindowManager::winSetLoneWindow(GameWindow *window)
 {
 	enum { GGM_CLOSE = 0x4005 };
-	if (m_loneWindow == window)
+	BfmeWindowManagerSendView *native = (BfmeWindowManagerSendView *)this;
+	if (native->m_loneWindow == window)
 		return;
-	if (m_loneWindow)
-		((BfmeWindowManagerSendView *)TheWindowManager)->winSendSystemMsg(m_loneWindow, GGM_CLOSE, 0, 0);
-	m_loneWindow = window;
+	if (native->m_loneWindow)
+		((BfmeWindowManagerSendView *)TheWindowManager)->winSendSystemMsg(native->m_loneWindow, GGM_CLOSE, 0, 0);
+	native->m_loneWindow = window;
 }

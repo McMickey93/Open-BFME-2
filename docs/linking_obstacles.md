@@ -5345,7 +5345,12 @@ donor's duplicate GGM_CLOSE and its slot-58 send view with the seed; its 51-byte
 body, COMDAT relocation identities and external symbols are preserved. The seed
 and donor pass 7/7 rows and both preview LINKS. Full evidence and remaining
 class/enum/STL blockers: `reverse/attempt_support/gamewindowmanager-consolidation-20261028-codexb.md`.
-The merge itself remains pending; this does not clear the census requirement.
+The retry exposed a second blocker: the shared header's lone-window field is
++0x28, while target code uses +0x2C. Extended the identical TU-local send view
+with the native field and routed the donor's field accesses through it. Both
+objects retain all COMDAT bytes, relocation identities and external symbols;
+a scratch composed-pair probe passes 7/7 rows and LinkGuard with no findings.
+The full merge itself remains pending; this does not clear the census requirement.
 Remaining / next check: rename the four vtable-slot placeholders above once their
 bodies are checked against Zero Hour.
 Clearance: pending.

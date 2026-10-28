@@ -165,6 +165,9 @@ public:
 	virtual void slot52(); virtual void slot53(); virtual void slot54(); virtual void slot55();
 	virtual void slot56(); virtual void slot57();
 	virtual WindowMsgHandledType winSendSystemMsg( GameWindow *window, UnsignedInt msg, WindowMsgData mData1, WindowMsgData mData2 );
+	// Native winSetLoneWindow reads/writes +0x2C; the shared ZH field is +0x28.
+	unsigned char m_pad04[0x28];
+	GameWindow *m_loneWindow;
 };
 
 // Three more: a constructor seeded from three globals, a two-level

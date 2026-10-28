@@ -35,9 +35,32 @@ The initial scope data_check found no findings; code identity remains shadow,
 with the pre-existing divergent list-base funclet in Rva002C5398Dtor.cpp untouched.
 The lone-window donor owns no debt-register, header-queue or hatch entries.
 
+## Native manager field prerequisite
+
+The full retry after the enum/dispatch prerequisite still accepted no merge:
+the lone-window donor progressed from a declaration error to a byte mismatch.
+The composed scratch object f9e565856d5f7c7c.obj read and wrote [esi+0x28],
+where the unchanged 51-byte matched donor reads and writes [esi+0x2C]. The
+slot-58 call remained correct. This is target object evidence of a field-offset
+difference, rather than evidence that the Zero Hour header is a BFME layout.
+
+Extend the existing BfmeWindowManagerSendView in both files with padding from
++4 through +0x2B and m_loneWindow at +0x2C. Access that field through the view,
+and remove the donor manager's now-unused private field/padding. This keeps
+the shared header unchanged and makes the declaration identical in both files.
+No assertion about an original target view/type name is made.
+
+Verification: ./build.sh again passes all seven rows; the complete COMDAT sets,
+bytes, relocation identities, defined and undefined externals of BOTH objects
+are identical to the pre-edit snapshots. Both frozen-file checks remain clean.
+A read-only pair probe through tu_skeleton.compose and tu_skeleton.Verifier
+(using its scratch try_compile_source, not build.compile_source) matches 7/7
+rows under union-first; LinkGuard.prepare returns None and judge returns [].
+The full tool run is still required to apply and register a merge.
+
 ## Remaining work
 
-Retry tools/tu_skeleton.py --merge after this prerequisite commit. Other donor
+Retry tools/tu_skeleton.py --merge after the native-field prerequisite commit. Other donor
 layout, duplicate-definition and byte blockers remain; do not combine their
 repairs or claim that the initial full merge succeeded. LINK-075's previous
 repair remains awaiting census confirmation. No runtime, image-ownership or
