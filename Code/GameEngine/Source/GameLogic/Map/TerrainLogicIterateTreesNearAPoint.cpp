@@ -10,6 +10,8 @@
 // re-read after the cylinder GeometryInfo is constructed for the CollidesWith
 // argument (native reloads +0x578 there).
 #include "Coord3D.h"
+// All floor operations inline here; keep the unused wrapper local.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 __forceinline long fast_float2long_round(float f) { long i; __asm { fld [f] } __asm { fistp [i] } return i; }
 struct TerrainTreeBounds {Coord3D lo,hi;};

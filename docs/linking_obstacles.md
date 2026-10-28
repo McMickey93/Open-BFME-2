@@ -7338,6 +7338,13 @@ affected consumer Common/0CreateAHeroManager21FE49.cpp lacks a current
 receipt. Carry the removed-helper scope and affected consumers into the next
 normal census; full selected-consumer coverage and census confirmation remain
 pending.
+
+TerrainLogicIterateTreesNearAPoint.cpp (2026-10-28, claude; census index at
+`c8734bec0c`): the same internal-linkage `floorf` declaration ahead of
+`<math.h>` stops the object exposing `_floorf`, its only selected-copy
+blocker. All 3 rows still byte-match. The Unwind funclet's `object-symbol=`
+hint follows the renumbered label (`$L1216` to `$L1219`). Ordinary preview:
+does not link to LINKS, 938 B. Census confirmation pending.
 ### GlowMaterial provisional composition (2026-10-28)
 
 Status: bounded merge verified; external consumer selection and census
