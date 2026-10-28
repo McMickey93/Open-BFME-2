@@ -31109,7 +31109,7 @@ _MmxFastDeInterlace,,0x001CDF60,232,Code/Libraries/Source/VP6/FastDeInterlace.cp
 ??1INI@@QAE@XZ,,0x0002CE5B,90,Code/GameEngine/Source/Common/INI/INI.cpp,matched,INI dtor: vector<AsciiString> +0x870 then AsciiString +0x86C then helper +0x838 then filename
 ??1CastleBehavior@@UAE@XZ,,0x0039857D,225,Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorDtor.cpp,matched,pinned name vtable 0x00C1A780 donor CastleBehaviorDestructorThunk caller deleting dtor 0x00399357
 ?Rva0040B14EConstruct@@YAXPAVRva0040AEE3@@ABV1@@Z,,0x0040B14E,45,Code/GameEngine/Source/Common/Thing/Rva0040AEE3Construct.cpp,matched,chain via rowed copy ctor 0x0040AEE3 placement new
-?rva00596FF5@Rva00596F18@@QAEXE@Z,,0x00596FF5,28,Code/GameEngine/Source/Common/Rva00596FF5.cpp,matched,setter byte 0x64 clears 0x24 0x68 calls slot7 neighbours prove class
+?rva00596FF5@Rva00596F18@@QAEXE@Z,,0x00596FF5,28,Code/GameEngine/Source/GameLogic/SkirmishAI/AIEconomyBuilder/AIFarm.cpp,matched,setter byte 0x64 clears 0x24 0x68 calls slot7 neighbours prove class
 ??1Rva005D791C@@UAE@XZ,,0x005D78E1,59,Code/GameEngine/Source/Common/Rva005D791CDtor.cpp,matched,vtable 0x00875DFC plus member 0x002F0B52 at +0x28 plus base 0x005EE30C
 ?rva00498DF3@GateOpenAndCloseBehavior@@QAEXPAURva00498DF3Arg@@M@Z,,0x00498DF3,59,Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00498F46Cmd.cpp,matched,unlock method plus rowed calls 0x00262DD3 0x0026C411; row moved home from Rva00498DF3Cmd.cpp
 ?recalculate@LineSegClass@@IAEXXZ,,0x0006A1E4,233,Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DRoadBuffer.cpp,matched,row moved home from LineSeg_recalculate.cpp
