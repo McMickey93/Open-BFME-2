@@ -375,6 +375,4 @@ void BeaconClientUpdate::clientUpdate()
     }
 }
 
-// tu-skeleton: 0x007904F3 13B ?Rva007904F3ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E043xx.cpp (not merged yet)
-
 // tu-skeleton: 0x00790512 8B uw_00790512 -- matched in Code/gen_small/uw_gen_002.cpp (not merged yet)
