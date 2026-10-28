@@ -9,107 +9,79 @@
 // reached bits at +0x6C (interface +0x4C). MonsterDockUpdate::onApproachReached
 // 0x004A159E calls it first, as Zero Hour's overrides call the base.
 // Evidence: offsets +0x40 +0x44 size sar2 plus vector bool call rowed 0x0006BE1F in DockUpdateCtor plus caller 0x004A159E passing object plus neighbour DockUpdateRemove layout.
-typedef int Int;
-typedef unsigned int UnsignedInt;
-typedef bool Bool;
-
-enum ObjectID
-{
-	INVALID_ID = 0,
-	FORCE_OBJECTID_TO_LONG_SIZE = 0x7fffffff
-};
-
+// Match the destination TU's existing secondary-interface view.
+// The accessed owners and reached-bit vector stay at interface +0x40/+0x4C.
 #include <stl/_bvector.h>
-
-namespace _STL
-{
-template <>
-class vector<ObjectID, allocator<ObjectID> > : public _Vector_base<ObjectID, allocator<ObjectID> >
-{
-public:
-	__forceinline vector() : _Vector_base<ObjectID, allocator<ObjectID> >(allocator<ObjectID>()) {}
-	unsigned int size() const
-	{
-		return (unsigned int)(_M_finish - _M_start);
-	}
-	ObjectID &operator[](unsigned int index)
-	{
-		return _M_start[index];
-	}
-};
-}
-
-typedef _STL::vector<ObjectID, _STL::allocator<ObjectID> > ObjectIDVector;
 typedef _STL::vector<bool, _STL::allocator<bool> > BoolVector;
 
 class Object
 {
 public:
-	ObjectID getID() const { return m_id; }
+	void rva0028CFB2(const int *clear, const int *set);
+	int m_pad74[0x74 / 4];	// vptr at +0x0, id at +0x74
+	int m_id;	// +0x74
+};
+
+class ObjectIDVector
+{
+public:
+	int *m_start;
+	int *m_finish;
+	int *m_endOfStorage;
+
+	unsigned int size() const
+	{
+		return (unsigned int)(m_finish - m_start);
+	}
+
+	int &operator[](unsigned int index)
+	{
+		return m_start[index];
+	}
+
+	const int &operator[](unsigned int index) const
+	{
+		return m_start[index];
+	}
+};
+
+class DockUpdate
+{
+public:
+	virtual bool isClearToApproach(const Object *docker) const;
+	virtual void dockSlot01();
+	virtual void dockSlot02();
+	virtual bool isClearToEnter(const Object *docker) const;
+	virtual void dockSlot04();
+	virtual void dockSlot05();
+	virtual void dockSlot06();
+	virtual void dockSlot07();
+	virtual void onApproachReached(Object *docker);
+	virtual void onEnterReached(Object *docker);
+	virtual void onDockReached(Object *docker);
+	virtual void onExitReached(Object *docker);
+	virtual void dockSlot12();
+	virtual void cancelDock(Object *docker);
+	virtual bool isDockOpen();
+	virtual void dockSlot15();
+	virtual void dockSlot16();
+	virtual void setDockCrippled(bool setting);
+	void rva00589AFF(int index);
 
 private:
-	char m_pad00[0x74];
-	ObjectID m_id; // +0x74
-};
-
-class ModuleData;
-class BehaviorModule
-{
-public:
-	virtual ~BehaviorModule();
-protected:
-	virtual void loadPostProcess();
-	const ModuleData *m_moduleData; // +0x04
-	Object *m_object; // +0x08
-};
-class BehaviorModuleInterface
-{
-public:
-	virtual void behaviorModuleInterfaceAnchor();
-};
-enum UpdateSleepTime
-{
-	UPDATE_SLEEP_NONE = 1
-};
-class UpdateModuleInterface
-{
-public:
-	virtual UpdateSleepTime update() = 0;
-};
-class UpdateModule : public BehaviorModule, public BehaviorModuleInterface, public UpdateModuleInterface
-{
-protected:
-	unsigned int m_14;
-	int m_18;
-	int m_1C;
-};
-struct Coord3D;
-class DockUpdateInterface
-{
-public:
-	virtual bool isClearToApproach(const Object *docker) const = 0;
-	virtual bool reserveApproachPosition(Object *docker, Coord3D *position, int *index) = 0;
-	virtual bool advanceApproachPosition(Object *docker, Coord3D *position, int *index) = 0;
-	virtual bool isClearToEnter(const Object *docker) const = 0;
-	virtual bool isClearToAdvance(const Object *docker, int dockerIndex) const = 0;
-	virtual void getEnterPosition(Object *docker, Coord3D *position) = 0;
-	virtual void getDockPosition(Object *docker, Coord3D *position) = 0;
-	virtual void getExitPosition(Object *docker, Coord3D *position) = 0;
-	virtual void onApproachReached(Object *docker) = 0;
-};
-class DockUpdate : public UpdateModule, public DockUpdateInterface
-{
-public:
-	virtual void onApproachReached(Object *docker);
-protected:
-	unsigned char m_pad24[0x60 - 0x24];
-	ObjectIDVector m_approachPositionOwners; // +0x60
-	BoolVector m_approachPositionReached; // +0x6C
+	unsigned char m_pre04[0x24];	// interface vptr at +0x0, count at +0x28
+	int m_numberApproachPositions;	// +0x28
+	unsigned char m_pre2C[0x14];	// +0x2C..+0x3F
+	ObjectIDVector m_approachPositionOwners;	// +0x40
+	BoolVector m_approachPositionReached;	// +0x4C..+0x5F
+	int m_activeDocker;	// +0x60
+	bool m_dockerInside;	// +0x64
+	bool m_dockCrippled;	// +0x65
 };
 
 void DockUpdate::onApproachReached(Object *docker)
 {
-	int target = docker->getID();
+	int target = docker->m_id;
 	for (unsigned int i = 0; i < m_approachPositionOwners.size(); ++i)
 	{
 		if (m_approachPositionOwners[i] == target)
