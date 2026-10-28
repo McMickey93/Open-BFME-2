@@ -15,7 +15,8 @@
 **	You should have received a copy of the GNU General Public License
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-// Modified for BFME2: local CRT declaration and original-binary compiler flags.
+// Modified for BFME2: original-binary compiler flags and native entry points.
+// platformsdk
 // cl: /Ireference/shims/bfme2_ascii /EHsc /MD
 //
 // /EHsc (VC's /GX) lets the extern "C" Win32 imports count as non-throwing.
@@ -31,8 +32,21 @@
 // separator string at 0x00BBB64C.  The retail cursor is at 0x00DDE034 and
 // strpbrk is the MSVCR71 import at 0x00BBA6CC.
 
-extern "C" __declspec(dllimport) char *__cdecl strpbrk(const char *,
-                                                         const char *);
+// The native window helpers use non-strict handle types in their symbols.
+#define NO_STRICT
+#define _WIN32_WINNT 0x0400
+#include <windows.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+// trimArgument (0x00001C2E) and its inlined WinMain copy call the
+// _mbscpy import thunk at 0x00629176 with E8, not through the IAT.
+#undef _CRTIMP
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
+#include <new>
 
 char *nextParam(char *newSource, char *seps)
 {
@@ -109,93 +123,6 @@ char *nextParam(char *newSource, char *seps)
 // recovered keep an address- or offset-derived placeholder name rather than an
 // invented one.
 //----------------------------------------------------------------------------
-
-typedef unsigned char BYTE;
-typedef unsigned long DWORD;
-typedef int BOOL;
-typedef long LONG;
-typedef unsigned int UINT;
-typedef long LRESULT;
-typedef unsigned int WPARAM;
-typedef long LPARAM;
-typedef void *HWND;
-typedef void *HDC;
-typedef void *HGDIOBJ;
-typedef void *HBITMAP;
-
-typedef struct tagRECT { LONG left, top, right, bottom; } RECT;
-typedef struct tagPAINTSTRUCT
-{
-	HDC  hdc;
-	BOOL fErase;
-	RECT rcPaint;
-	BOOL fRestore;
-	BOOL fIncUpdate;
-	BYTE rgbReserved[32];
-} PAINTSTRUCT;
-
-#define CALLBACK __stdcall
-#define WINAPI __stdcall
-#define NULL 0
-#define TRUE 1
-#define FALSE 0
-#define LOWORD(l) ((unsigned short)(l))
-#define HIWORD(l) ((unsigned short)(((unsigned long)(l) >> 16) & 0xFFFF))
-
-#define WM_SIZE          0x0005
-#define WM_ACTIVATE      0x0006
-#define WM_SETFOCUS      0x0007
-#define WM_KILLFOCUS     0x0008
-#define WM_PAINT         0x000F
-#define WM_CLOSE         0x0010
-#define WM_ERASEBKGND    0x0014
-#define WM_ACTIVATEAPP   0x001C
-#define WM_SETCURSOR     0x0020
-#define WM_NCHITTEST     0x0084
-#define WM_KEYDOWN       0x0100
-#define WM_SYSCOMMAND    0x0112
-#define WM_MOUSEMOVE     0x0200
-#define WM_LBUTTONDOWN   0x0201
-#define WM_LBUTTONUP     0x0202
-#define WM_LBUTTONDBLCLK 0x0203
-#define WM_RBUTTONDOWN   0x0204
-#define WM_RBUTTONUP     0x0205
-#define WM_RBUTTONDBLCLK 0x0206
-#define WM_MBUTTONDOWN   0x0207
-#define WM_MBUTTONUP     0x0208
-#define WM_MBUTTONDBLCLK 0x0209
-#define WM_MOUSEWHEEL    0x020A
-#define WM_POWERBROADCAST 0x0218
-
-#define WA_INACTIVE 0
-#define HTCLIENT    1
-#define VK_ESCAPE   0x1B
-#define SRCCOPY     (0x00CC0000 | 0x20)  // Win32 BitBlt ROP code (13369376); not a retail address
-#define SC_SIZE          0xF000
-#define SC_MOVE          0xF010
-#define SC_MAXIMIZE      0xF030
-#define SC_KEYMENU       0xF100
-#define SC_MONITORPOWER  0xF170
-#define PBT_APMQUERYSUSPEND  0x0000
-#define PBT_APMRESUMESUSPEND 0x0007
-
-extern "C" {
-__declspec(dllimport) BOOL WINAPI IsWindowUnicode(HWND);
-__declspec(dllimport) LRESULT WINAPI DefWindowProcA(HWND, UINT, WPARAM, LPARAM);
-__declspec(dllimport) LRESULT WINAPI DefWindowProcW(HWND, UINT, WPARAM, LPARAM);
-__declspec(dllimport) BOOL WINAPI ClipCursor(const RECT *);
-__declspec(dllimport) HDC WINAPI BeginPaint(HWND, PAINTSTRUCT *);
-__declspec(dllimport) BOOL WINAPI EndPaint(HWND, const PAINTSTRUCT *);
-__declspec(dllimport) BOOL WINAPI GetClientRect(HWND, RECT *);
-__declspec(dllimport) BOOL WINAPI GetWindowRect(HWND, RECT *);
-__declspec(dllimport) void WINAPI PostQuitMessage(int);
-__declspec(dllimport) int WINAPI SaveDC(HDC);
-__declspec(dllimport) BOOL WINAPI RestoreDC(HDC, int);
-__declspec(dllimport) HDC WINAPI CreateCompatibleDC(HDC);
-__declspec(dllimport) BOOL WINAPI DeleteDC(HDC);
-__declspec(dllimport) HGDIOBJ WINAPI SelectObject(HDC, HGDIOBJ);
-__declspec(dllimport) BOOL WINAPI BitBlt(HDC, int, int, int, int, HDC, int, int, DWORD);
-}
 
 // The Debug singleton at 0x00DE0880, reached here through vtable slot 0x74 --
 // a plain getter for the bool at this+0x9F64.  functions.csv already records
@@ -776,66 +703,9 @@ LRESULT CALLBACK WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam 
 // function whose every call it can see.
 //----------------------------------------------------------------------------
 
-typedef void *HANDLE;
-typedef void *HINSTANCE;
-typedef void *HICON;
-typedef void *HCURSOR;
-typedef void *HBRUSH;
-typedef void *HMENU;
-
-typedef LRESULT (CALLBACK *WNDPROC)(HWND, UINT, WPARAM, LPARAM);
-
-typedef struct tagWNDCLASSW
-{
-	UINT style;
-	WNDPROC lpfnWndProc;
-	int cbClsExtra;
-	int cbWndExtra;
-	HINSTANCE hInstance;
-	HICON hIcon;
-	HCURSOR hCursor;
-	HBRUSH hbrBackground;
-	const unsigned short *lpszMenuName;
-	const unsigned short *lpszClassName;
-} WNDCLASSW;
-
-#define CS_VREDRAW       0x0001
-#define CS_HREDRAW       0x0002
-#define CS_DBLCLKS       0x0008
-#define IMAGE_ICON       1
-#define LR_LOADFROMFILE  0x0010
-#define LR_DEFAULTSIZE   0x0040
-#define BLACK_BRUSH      4
-#define SM_CXSCREEN      0
-#define SM_CYSCREEN      1
-#define SWP_NOSIZE       0x0001
-#define SWP_NOMOVE       0x0002
-#define HWND_TOP         ((HWND)0)
-#define HWND_TOPMOST     ((HWND)-1)
-#define WS_POPUP         0x80000000L
-#define WS_VISIBLE       0x10000000L
-#define WS_CAPTION       0x00C00000L
-#define WS_DLGFRAME      0x00400000L
-#define WS_SYSMENU       0x00080000L
-#define WS_EX_TOPMOST    0x00000008L
-
 #define DEFAULT_XRESOLUTION 800
 #define DEFAULT_YRESOLUTION 600
 #define WINDOW_POS_SENTINEL (-1000000)
-
-extern "C" {
-__declspec(dllimport) HANDLE WINAPI LoadImageA(HINSTANCE, const char *, UINT, int, int, UINT);
-__declspec(dllimport) HGDIOBJ WINAPI GetStockObject(int);
-__declspec(dllimport) UINT WINAPI RegisterClassW(const WNDCLASSW *);
-__declspec(dllimport) BOOL WINAPI AdjustWindowRect(RECT *, DWORD, BOOL);
-__declspec(dllimport) int WINAPI GetSystemMetrics(int);
-__declspec(dllimport) HWND WINAPI CreateWindowExW(DWORD, const unsigned short *, const unsigned short *, DWORD, int, int, int, int, HWND, HMENU, HINSTANCE, void *);
-__declspec(dllimport) BOOL WINAPI SetWindowPos(HWND, HWND, int, int, int, int, UINT);
-__declspec(dllimport) HWND WINAPI SetFocus(HWND);
-__declspec(dllimport) BOOL WINAPI SetForegroundWindow(HWND);
-__declspec(dllimport) BOOL WINAPI ShowWindow(HWND, int);
-__declspec(dllimport) BOOL WINAPI UpdateWindow(HWND);
-}
 
 void bfmeNotifyDebugWindowed(unsigned runWindowed);
 
@@ -1056,50 +926,6 @@ void GameMain(int argc, char **argv)
 //     on the TheGlobalData byte at +0xC74.
 //----------------------------------------------------------------------------
 
-typedef struct _FILETIME { DWORD dwLowDateTime; DWORD dwHighDateTime; } FILETIME;
-
-typedef struct _WIN32_FIND_DATAW
-{
-	DWORD dwFileAttributes;
-	FILETIME ftCreationTime;
-	FILETIME ftLastAccessTime;
-	FILETIME ftLastWriteTime;
-	DWORD nFileSizeHigh;
-	DWORD nFileSizeLow;
-	DWORD dwReserved0;
-	DWORD dwReserved1;
-	unsigned short cFileName[260];
-	unsigned short cAlternateFileName[14];
-} WIN32_FIND_DATAW;
-
-#define INVALID_HANDLE_VALUE  ((HANDLE)-1)
-#define ERROR_ALREADY_EXISTS  183
-#define SW_RESTORE            9
-
-extern "C" {
-__declspec(dllimport) unsigned short *WINAPI GetCommandLineW();
-__declspec(dllimport) HANDLE WINAPI FindFirstFileW(const unsigned short *, WIN32_FIND_DATAW *);
-__declspec(dllimport) BOOL WINAPI FindClose(HANDLE);
-__declspec(dllimport) DWORD WINAPI GetModuleFileNameW(HINSTANCE, unsigned short *, DWORD);
-__declspec(dllimport) BOOL WINAPI SetCurrentDirectoryW(const unsigned short *);
-__declspec(dllimport) HANDLE WINAPI CreateMutexW(void *, BOOL, const unsigned short *);
-__declspec(dllimport) DWORD WINAPI GetLastError();
-__declspec(dllimport) HWND WINAPI FindWindowW(const unsigned short *, const unsigned short *);
-__declspec(dllimport) BOOL WINAPI CloseHandle(HANDLE);
-__declspec(dllimport) BOOL WINAPI DeleteObject(HGDIOBJ);
-__declspec(dllimport) HINSTANCE WINAPI LoadLibraryA(const char *);
-__declspec(dllimport) unsigned int __cdecl wcslen(const unsigned short *);
-__declspec(dllimport) unsigned long __cdecl strtoul(const char *, char **, int);
-__declspec(dllimport) int __cdecl _strcmpi(const char *, const char *);
-__declspec(dllimport) long __cdecl atol(const char *);
-__declspec(dllimport) int __cdecl sprintf(char *, const char *, ...);
-unsigned int __cdecl strlen(const char *);
-extern "C" char *__cdecl _mbscpy(char *, const char *);
-int __cdecl strcmp(const char *, const char *);
-}
-
-void *operator new[](unsigned int size);
-
 int BFME2WideToUtf8(const unsigned short *wide, int wideLength, char *utf8, int utf8Size);
 void Rva0005D6D0DisableImmTextFrameService();
 bool shutdownRenderDevice();
@@ -1218,7 +1044,7 @@ static inline char *trimArgument(char *buffer)
 		while (*source != 0 && (unsigned char)*source <= ' ')
 			source++;
 		if (source != buffer)
-			_mbscpy(buffer, source);
+			_mbscpy((unsigned char *)buffer, (const unsigned char *)source);
 		for (int index = strlen(buffer) - 1; index >= 0; index--)
 		{
 			if (*source != 0 && (unsigned char)buffer[index] <= ' ')
