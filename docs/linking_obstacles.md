@@ -5873,6 +5873,18 @@ Completed: link-tier triage at 73061d9452: 11 of 199 served units already LINK i
 Remaining / next check: census runners should clear objects of sources absent from the census tree before linking (or link_check should forget them, as it does index `forgotten` entries); until then merge previews stay inconclusive and the CrateSystem duplicate is expected.
 Clearance: none. Census confirmation: CrateSystem.cpp linked at 73061d9452.
 
+**2026-10-28 FX SAS consolidation follow-up (`3bfa975ff5` source base):**
+The supported merger absorbs 15 approved fragments into the provisional
+`WW3D2/FXShaderParameterSourceNamespaceSAS.cpp` TU, preserving all 19 rows
+(518 bytes), 23 external COMDAT byte/relocation digests, 16 strong definitions,
+one weak alias and 19 external dependencies. The census-linked merge guard and
+new-variant check accept it; ordinary preview cannot measure the new TU yet.
+The full outgoing batch audit is inconclusive against index `14dc3d2467`
+(baseline differs; per-object consumer names missing). Carry the moved scope
+to the next normal census; no linked-byte increase or complete outside-consumer
+clearance is claimed. Fourteen rejected donors and eight mixed files remain
+untouched. [Composition, path audit and prerequisites](../reverse/attempt_support/fxsas-consolidation-20261028-codex.md).
+
 ### LINK-123: LANAPI units bind a second name for the AptLanLobby singleton at 0x00A03354
 
 **Status: Open. Updated: 2026-10-27.**

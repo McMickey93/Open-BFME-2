@@ -12532,7 +12532,6 @@ present_unmatched	Code/GameEngine/Source/Common/Rva00109CB5Add.cpp	1Rva00109C27@
 present_unmatched	Code/GameEngine/Source/Common/Rva00111A05Finish.cpp	TileData::rva00111A05	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0014F699Assign.cpp	1Rva00BC6F24Base@@UAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva0014F699Assign.cpp	_bfmeRva0014F699Anchor	1
-present_unmatched	Code/GameEngine/Source/Common/Rva00150558Dtor.cpp	1Rva00BC6F24Base@@UAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00154320Cluster.cpp	Rva001544F0::~Rva001544F0	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00170999.cpp	1Rva001709F8@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00170999.cpp	Rva001709F8Delete@@YAXPAVRva001709F8@@@Z	1
@@ -14693,6 +14692,7 @@ present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/DX8WrapperSetDX8States.cpp
 present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/FXShaderGeometry.cpp	Rva0018C262::begin	1
 present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/FXShaderGeometry.cpp	Rva0018C262::end	1
 present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/FXShaderGeometry.cpp	Rva005E59FCKeyIterator::operator++	1
+present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterSourceNamespaceSAS.cpp	1Rva00BC6F24Base@@UAE@XZ	1
 present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassBlitChar.cpp	30	1
 present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassFreeCharacterArrays.cpp	a	1
 present_unmatched	Code/Libraries/Source/WWVegas/WW3D2/HAnimComboBFME1.cpp	HAnimComboClass::Clear	1
