@@ -8,6 +8,8 @@
 // returning a dword field). Retail keeps the config in edx across the
 // rva00380200 call, which cl only does when that getter was compiled earlier
 // in the same TU; the TU is /O1 so the getter is called rather than inlined.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "ascii_string.h"
 #include "Lib/BaseType.h"
 

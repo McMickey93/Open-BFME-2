@@ -24,6 +24,8 @@
 // with math.h's inline floorf and ceilf; one x and one y float carry first
 // the low corner and then the high corner, and the ceil results go back into
 // them, which is what gives retail's two float slots and x87 store order.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "Coord3D.h"
 #include <math.h>
 

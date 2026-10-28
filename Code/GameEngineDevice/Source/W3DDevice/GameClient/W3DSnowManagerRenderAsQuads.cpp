@@ -12,6 +12,8 @@
 // come from the verified Matrix3D overload at 0006A553, including projection.
 // Keep wind together and the other locals in their natural scopes: MSVC 7.1
 // then reproduces retail's stack homes. The box reference fixes SSE scheduling.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "reference/shims/bfme_matrix3d_sse_link/vector4.h"
 #include "matrix3d.h"
 #include "reference/shims/bfme_matrix4_rows_link/matrix4_bfme1_rows_link.h"

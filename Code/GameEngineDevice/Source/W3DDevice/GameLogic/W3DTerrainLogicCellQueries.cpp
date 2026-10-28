@@ -14,6 +14,8 @@
 // WorldHeightMap one per-cell question, exactly like isCliffCell at 0x000671B2.
 // The donor names of the four BFME queries are unknown, so they are
 // address-derived; return widths follow each callee's own return register use.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 

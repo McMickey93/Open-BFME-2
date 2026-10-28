@@ -9,6 +9,8 @@
 // and its resolved calls; they leave the existing source ownership unchanged.
 // Reuses the established floor/FISTP blocker, with no new assembly reconstruction.
 // Evidence: reverse/attempt_support/crack-x-wave4-handoff.json.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "Coord3D.h"
 #include <math.h>
 #include "Code/Libraries/Include/Lib/ICoord2D.h"

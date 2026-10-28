@@ -12,6 +12,8 @@
 // scan loop (retail 0x399) while xmm constants are still reloaded after every
 // call, which an out-of-line in-TU definition does not reproduce.
 
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "always.h"
 #include <math.h>
 #include <wwmath.h>

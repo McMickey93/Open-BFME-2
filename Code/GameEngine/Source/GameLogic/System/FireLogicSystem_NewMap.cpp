@@ -36,6 +36,8 @@
 // as ChangeFuelInArea does. Both callers (the record xfer at 0x0028002F and
 // 0x00283839) pass a ThingTemplate, and the other callers of 0x00285F43 pass
 // Thing+0x04 under a template flag test.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "Lib/Coord3D.h"
 
 typedef int Int;

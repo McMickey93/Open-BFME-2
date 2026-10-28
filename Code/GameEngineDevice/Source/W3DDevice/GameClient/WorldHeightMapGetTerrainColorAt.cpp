@@ -9,6 +9,8 @@
 // block and clobbers EDI (the MSVC inline-asm shape), uses partial-register
 // shl bh / mov ax,bx no C++ spelling lowers to, and the same unpack sequence
 // occurs at five more sites in the TileData code.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 __forceinline long fast_float2long_round(float f)
 {

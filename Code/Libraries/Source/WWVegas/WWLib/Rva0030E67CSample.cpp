@@ -10,6 +10,8 @@
 // row/column returns the sample itself; otherwise the cell is split along
 // its diagonal like Zero Hour's BaseHeightMap::getHeightMapHeight, selecting
 // the triangle by fy > fx. The method name is a placeholder for the address.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 
 #define MAP_XY_FACTOR 10.0f

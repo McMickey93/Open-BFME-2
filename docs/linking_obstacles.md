@@ -7345,6 +7345,24 @@ TerrainLogicIterateTreesNearAPoint.cpp (2026-10-28, claude; census index at
 blocker. All 3 rows still byte-match. The Unwind funclet's `object-symbol=`
 hint follows the renumbered label (`$L1216` to `$L1219`). Ordinary preview:
 does not link to LINKS, 938 B. Census confirmation pending.
+
+`_floorf` consumer batch (2026-10-28, claude; census index at `c8734bec0c`):
+35 more units whose only link blocker was the selected `_floorf` copy take the
+same internal-linkage declaration ahead of their first include
+(Bfme/Rva004E65CFLeaf.cpp plus 34 picked from the not-linked,
+wrong_selected-only units that include math.h). Every row still byte-matches
+(353 function rows across the 35 sources). Rva004E65CFLeaf's three Unwind
+hints follow their renumbered labels; in the other 34, 118 SEH funclet rows
+verify past renumbered `$L` labels through their parents' EH data and keep
+their ledger labels. Ordinary preview: all 35 change from does not link to
+LINKS, 59,705 B in total. Not touched: the retail `_floorf` owner
+(TerrainLogicAmbientColorRva0027DA6A.cpp, which must keep publishing it),
+gridcull.cpp (held by another worker; its header says retail links the CRT
+floorf), and nine candidates other workers held (Rva002F5925InfoRva002F5925, UnitHelpSource,
+InGameCommandButtonHelpRender, InGameNotificationBoxUpdateNotice,
+GameSubTitles, PathfinderProcessPathfindQueue,
+PathfinderRva002F4491CellCallback, PathfinderRva002F83F5Neighbors,
+Rva002ECE6AInfoCtor). Census confirmation pending.
 ### GlowMaterial provisional composition (2026-10-28)
 
 Status: bounded merge verified; external consumer selection and census

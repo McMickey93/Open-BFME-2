@@ -14,6 +14,8 @@
 //
 // The frame data's out-of-line copy constructor is ICF-folded with the rowed
 // Region3D copy constructor 0x0009AC04 (six dword copies, ret 4).
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include <vector>
 

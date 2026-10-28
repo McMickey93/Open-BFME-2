@@ -39,6 +39,8 @@ public:
 	float X, Y, Z;
 };
 
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 class WWMath
 {

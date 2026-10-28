@@ -12,6 +12,8 @@
 // gets the position shape and angle. The local shape dies through the rowed
 // GeometryInfo destructor 0x00050B2A. WB twin 0x00C483E0 (callgraph 3.1)
 // has the same order with GeometryInfo::CollidesWith.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
 #include "../../../../Libraries/Include/Lib/ICoord2D.h"

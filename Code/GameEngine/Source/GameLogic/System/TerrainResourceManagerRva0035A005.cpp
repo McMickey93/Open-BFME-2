@@ -12,6 +12,8 @@
 // 0x005FED52) is the same inline base view the sibling uses. Receiver and
 // argument spellings follow the existing address-derived pin; the receiver
 // is TerrainResourceManager by its callees but no name is asserted here.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "TerrainResourceVisitorView.h"
 

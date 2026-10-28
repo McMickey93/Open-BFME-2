@@ -9,6 +9,8 @@
 // no matrix identity is asserted by that call view.
 // Plain float casts emit _ftol2; the established WWMath fld/fistp conversion
 // reproduces the native rounding shape. Only this compiler blocker uses asm.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "TerrainResourceVisitorView.h"
 #include "../../../../Libraries/Include/Lib/Coord3D.h"

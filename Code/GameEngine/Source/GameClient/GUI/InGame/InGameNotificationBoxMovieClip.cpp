@@ -10,6 +10,8 @@
 // Constructor DIR32 binding needs no new pin. The two float-pair argument types follow retail accesses;
 // pointer types for its two unused words remain structural views.
 // No applicable clean BFME1/ZH donor body at the pinned f98983a7d revision.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "Coord2D.h"

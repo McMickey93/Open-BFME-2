@@ -10,6 +10,8 @@
 // at 0x009EC2D4 slot 8, float 2.0f at 0x007C28F4, pins for SetTexture 0x330995
 // plus Drawable::getPosition 0x2763E6, rowed Shadow::setOpacity
 // 0x3308F6, caller 0x004E6739, neighbours in same Bfme dir.
+// All floor operations inline here; keep the unused wrapper local.
+extern "C" { static float __cdecl floorf(float); }
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "wwmath.h"

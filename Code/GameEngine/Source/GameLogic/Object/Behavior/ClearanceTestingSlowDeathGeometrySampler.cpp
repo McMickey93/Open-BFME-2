@@ -1,6 +1,8 @@
 // cl: /O1 /arch:SSE /G7 /MD /EHsc /ICode/Libraries/Include /Ireference/shims/moduledata /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWDebug
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "Common/Snapshot.h"
 #include "vector3.h"
 #include "Lib/Coord2D.h"

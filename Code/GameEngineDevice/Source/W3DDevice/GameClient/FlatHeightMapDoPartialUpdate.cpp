@@ -11,6 +11,8 @@
 // enregistered, leaving retail's unused frame slot) converted with
 // REAL_TO_INT_FLOOR/CEIL spelled fast_float2long_round(floorf/ceilf(x)).
 // Tile callees: rowed rva00113110 and W3DTerrainBackground::doPartialUpdate (0x00115044).
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "Lib/ICoord2D.h"
 #include "Lib/IRegion2D.h"

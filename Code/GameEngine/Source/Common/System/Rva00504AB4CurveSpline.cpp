@@ -10,6 +10,8 @@
 // curves, then out-of-range times wrapped by whole periods and resolved per
 // end through the modes at +0x00/+0x04 (WB twin 012CBF10, same FCurve.cpp
 // lead). The CRT's C++ floorf inline gives retail's pop/fstp/pop cleanup.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 
 struct Rva00504AB4Key

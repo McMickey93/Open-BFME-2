@@ -13,6 +13,8 @@ typedef float Real;
 typedef bool Bool;
 typedef unsigned short UnsignedShort;
 
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include <stdlib.h>
 

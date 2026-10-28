@@ -24,6 +24,8 @@
 // UnicodeString at +0x28, Rva00524265 at +0x18, Rva0052413E at +0x0c, AsciiString
 // at +0x08. EH states 3/2/1/0/-1. Unblocks 0x0057A2B0 0x005D4141.
 // Evidence: callees rowed releaseBuffer narrow/wide plus rowed dtors, manager 0x009FEAD8 slot 0x3C.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include <math.h>

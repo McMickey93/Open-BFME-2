@@ -35,6 +35,8 @@
 // 0x00283839) pass a ThingTemplate, and the other callers of 0x00285F43 pass
 // Thing+0x04 under a template flag test.
 #define COORD3D_VIEW_DTOR
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include "Lib/Coord3DCtorView.h"
 #define COORD2D_VIEW_DTOR
 #include "Lib/Coord2DCtorView.h"

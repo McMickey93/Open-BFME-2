@@ -1,5 +1,7 @@
 // cl: /O1 /G7 /MD /EHsc /Ireference/shims/bfme2_ascii /DNDEBUG /arch:SSE
 // ?getTerrainNameAt@WorldHeightMap@@QAE?AVAsciiString@@MM@Z
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "ascii_string.h"
 static __forceinline int terrainRound(float f){int r;__asm {fld f
