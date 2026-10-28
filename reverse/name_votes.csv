@@ -12006,3 +12006,6 @@ Code/GameEngine/Source/Common/Rva004ADC38Forward.cpp|param|Rva004ADC38::rva004AD
 Code/GameEngine/Source/Common/Rva004ADC38Forward.cpp|param|Rva004ADC38::rva004ADC38|c,958254552bb3656475a54fb0,drz-k4,drz-k4-n8e2-17,w-855a0f400af4,2026-10-28
 Code/GameEngine/Source/Common/Rva004ADC38Forward.cpp|param|Rva004ADC38::rva004ADC38|d,6944bf2cc2771c94d9aac547,drz-k4,drz-k4-n8e2-17,w-855a0f400af4,2026-10-28
 Code/GameEngine/Source/Common/Rva004ADC38Forward.cpp|param|Rva004ADC38::rva004ADC38|e,df33036502e2f58047cb2a2e,drz-k4,drz-k4-n8e2-17,w-855a0f400af4,2026-10-28
+Code/GameEngine/Source/Common/System/Rva002D3756.cpp|member|Rva002D3756Mid|m_c4,831f0d43f09c2edcd370bc7e,drz-k3,drz-k3-n9b-14,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/Common/System/Rva002D3756.cpp|param|Rva002D3756::rva002D3756|p,4a602c1a8a2bcea3c7690ca0,drz-k3,drz-k3-n9b-14,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C0425.cpp|function|0x003C0425|Rva003C0425Do,3d250f09a04b4a90a8b26ba2,drz-k3,drz-k3-n9b-17,w-077d7aeb666b,2026-10-28
