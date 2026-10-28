@@ -70,6 +70,16 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **Animation debugger CRT declarations (2026-10-28, base `3459c2524c`):**
+  [The scoped cleanup](../reverse/attempt_support/animation-debugger-crt-20261028-codexb5.md)
+  adopts stdlib's atexit declaration and aligns the log caller with its existing
+  game provider. The owning Microsoft-header refresh reduces three local
+  declarations to one; the fprintf name collision remains queued. All 13 paired
+  rows, both data rows and two EH graphs verify, and all 74 debugger external
+  COMDAT digests remain identical. Before/after ordinary previews retain 2/2
+  LINKS and 3,137 authored bytes against index `14dc3d2467`. No new census gain
+  or full game/CRT identity clearance is claimed.
+
 - **Terrain background TU composition (2026-10-28, base `cb99205548`):**
   [The bounded composition evidence](../reverse/attempt_support/terrain-background-consolidation-20261028-codex.md)
   preserves twelve matched rows, one EXACT EH graph, all 579 external COMDAT
