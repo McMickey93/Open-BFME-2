@@ -20,10 +20,12 @@ class Rva001DBAA4
 public:
 	virtual ~Rva001DBAA4();
 	Rva001DBAA4();
-	int m_4;
-	bool m_8, m_9, m_A;
-	unsigned char m_pad0B;
-	int m_C;
+	int m_frameLength;	// +0x04
+	bool m_isFinished;	// +0x08
+	bool m_isForward;	// +0x09
+	bool m_isReversed;	// +0x0a
+	unsigned char m_pad0B;	// +0x0b
+	class GameWindow *m_win;	// +0x0c
 };
 
 extern const FieldParse CountUpTransitionFields[];
@@ -48,7 +50,7 @@ void s4ParseFieldsRva005A01F0(INI *ini, Gen_00489270 *sink)
 	TextOnFrameTransition *t = new TextOnFrameTransition;
 
 	ini->initFromINI(t, CountUpTransitionFields);
-	t->m_4 = t->m_endFrame;
+	t->m_frameLength = t->m_endFrame;
 
 	sink->m((int)t);
 }
