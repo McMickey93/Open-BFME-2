@@ -10,22 +10,8 @@
 // call targets read from retail REL32; true identities unproven.
 // GameSlot::isHuman is rowed at 0x003FF0F1 (GameSlotHumanSaveoff.cpp).
 #include <windows.h>
-class GameSlot
-{
-public:
-	bool isHuman() const;
-};
+#include "../GameNetwork/NATView.h"
 
-// The +0x28 sub-object's callees are rowed as PortNegotiationSchema members
-// (PortNegotiationSchema.cpp, Rva005DBCA6Get.cpp, Rva005DB98EGet.cpp).
-class PortNegotiationSchema
-{
-public:
-	bool isConnectionDone(unsigned short j, unsigned short i);	// 0x005DBBC1
-	void *peekPing(unsigned short j, unsigned short i);	// 0x005DB98E
-	bool isRetryConnectingOverLimit(unsigned short i, unsigned short j);	// 0x005DBC2E
-	void reconnectPlayers(unsigned short slot1, unsigned short slot2, bool resetRetries);	// 0x005DC187
-};
 // LINK: retail pushes the three arguments unconverted, so the rowed
 // reconnectPlayers keeps that int call shape through a member-pointer cast.
 typedef void (PortNegotiationSchema::*PortNegotiationReconnectShape)(int, int, int);
@@ -40,25 +26,6 @@ public:
 };
 typedef bool (Rva005A6709::*Rva005A6709BoolShape)() const;
 #define NAT_READY(p) ((((Rva005A6709 *)(p))->*reinterpret_cast<Rva005A6709BoolShape>(&Rva005A6709::rva005A6709))())
-
-struct NAT
-{
-	char pad0[8];
-	GameSlot **m_8;
-	int m_C;
-	int m_10;
-	int m_14;
-	char pad1[0x28 - 0x18];
-	PortNegotiationSchema m_28;
-	char pad2[0x8e4 - 0x29];
-	unsigned char m_8E4[8];
-	int m_8EC[8];
-	int *m_90C[8];
-
-	void reconnectPlayers(int slot1, int slot2, int resetRetries);
-	void rva005A6CA5();
-	void rva005A6D47();
-};
 
 // 0x009D35C8 (.data): the ping-age limit the pair scan compares against;
 // nothing else defines it, so it is defined here at its retail value.
@@ -75,23 +42,23 @@ void NAT::reconnectPlayers(int slot1, int slot2, int resetRetries)
 	if ((unsigned short)slot1 == (unsigned short)slot2)
 		return;
 	int an = (unsigned short)slot1;
-	GameSlot *oa = m_8[an];
+	GameSlot *oa = m_slotList[an];
 	if (oa == 0)
 		return;
 	int bn = (unsigned short)slot2;
-	if (m_8[bn] == 0)
+	if (m_slotList[bn] == 0)
 		return;
 	if (!oa->isHuman())
 		return;
-	if (!m_8[bn]->isHuman())
+	if (!m_slotList[bn]->isHuman())
 		return;
-	(m_28.*reinterpret_cast<PortNegotiationReconnectShape>(&PortNegotiationSchema::reconnectPlayers))(slot1, slot2, resetRetries);
-	if (an == m_14) {
-		m_10 = 1;
-		m_8E4[bn] = 0;
+	(m_schema.*reinterpret_cast<PortNegotiationReconnectShape>(&PortNegotiationSchema::reconnectPlayers))(slot1, slot2, resetRetries);
+	if (an == m_localSlot) {
+		m_mode = 1;
+		m_hostKnown[bn] = 0;
 	} else {
-		m_10 = 1;
-		m_8E4[an] = 0;
+		m_mode = 1;
+		m_hostKnown[an] = 0;
 	}
 }
 
@@ -108,12 +75,12 @@ void NAT::rva005A6CA5()
 	int stamp = timeGetTime();
 	int i = 0;
 	do {
-		GameSlot *gameSlot = m_8[i];
+		GameSlot *gameSlot = m_slotList[i];
 		if (gameSlot != 0 && gameSlot->isHuman()) {
 			int j = 0;
 			do {
 				if (i != j) {
-					GameSlot *otherSlot = m_8[j];
+					GameSlot *otherSlot = m_slotList[j];
 					if (otherSlot != 0 && otherSlot->isHuman()) {
 						PortNegotiationSchema *portNegotiationSchema = (PortNegotiationSchema *)((char *)self + 0x28);
 						if (portNegotiationSchema->isConnectionDone(i, j)) {
@@ -145,14 +112,14 @@ void NAT::rva005A6D47()
 		return;
 	int i = 0;
 	do {
-		GameSlot *gameSlot = m_8[i];
+		GameSlot *gameSlot = m_slotList[i];
 		if (gameSlot != 0 && gameSlot->isHuman()) {
 			int j = 0;
 			do {
 				if (i != j) {
-					GameSlot *otherSlot = m_8[j];
+					GameSlot *otherSlot = m_slotList[j];
 					if (otherSlot != 0 && otherSlot->isHuman()) {
-						if (m_28.isRetryConnectingOverLimit(i, j))
+						if (m_schema.isRetryConnectingOverLimit(i, j))
 							reconnectPlayers(i, j, 1);
 					}
 				}

@@ -16,6 +16,8 @@ public:
 	void *peekPing(unsigned short slot1, unsigned short slot2);		// 0x005DB98E
 	bool sentAPingPacket(unsigned short slot1, unsigned short slot2);	// 0x005DBF2D
 	int getActionID(unsigned short slot1, unsigned short slot2);		// 0x005DBCA6
+	bool isRetryConnectingOverLimit(unsigned short i, unsigned short j);	// 0x005DBC2E
+	void reconnectPlayers(unsigned short slot1, unsigned short slot2, bool resetRetries);	// 0x005DC187
 	unsigned char m_bytes[0x8E4 - 0x28];
 };
 
@@ -73,6 +75,9 @@ public:
 	void StartNegotiationAction(int slot, int value);
 	void sendAProbeToTarget();
 	void sendPings();
+	void reconnectPlayers(int slot1, int slot2, int resetRetries);
+	void rva005A6CA5();
+	void rva005A6D47();
 private:
 	int m_0;
 	Transport *m_04;
