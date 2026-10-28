@@ -20,7 +20,19 @@ class Rva00404781 { public: void AddDeath(float,int,int); int rva00404CF5(bool);
 class Rva0056C4D3 { public: void rva0056C4D3(void*,float,int,int); };
 class Rva0056C0F0 { public: void rva0056C0F0(unsigned int,Vec3*); };
 class Rva004051BC { public: void rva004051BC(int,const Coord3D*); };
-class CellGrid { public: int rva0056C16D(); unsigned width,height,count; float size,offset; Rva00404781 *cells; unsigned int *values; };
+class CellGrid
+{
+public:
+	int rva0056C16D();
+	CellGrid(int,int,float,float);
+	unsigned width; // +0x00
+	unsigned height; // +0x04
+	unsigned count; // +0x08
+	float size; // +0x0C
+	float offset; // +0x10
+	Rva00404781 *cells; // +0x14
+	unsigned int *values; // +0x18
+};
 class Rva00404927
 {
 public:

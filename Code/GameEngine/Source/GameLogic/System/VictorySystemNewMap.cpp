@@ -24,7 +24,20 @@ class NewMapTerrainView {public:
 class Player {public:char unknown00[0x58];AsciiString faction;};
 class PlayerList {public:Player *getNthPlayer(int);char unknown00[0x14];unsigned count;};
 extern PlayerList *ThePlayerList;
-class CellGrid {public:CellGrid(int,int,float,float);private:int width,height;unsigned count;float size,offset;void *cells,*values;};
+class Rva00404781;
+class CellGrid
+{
+public:
+	int rva0056C16D();
+	CellGrid(int,int,float,float);
+	unsigned width; // +0x00
+	unsigned height; // +0x04
+	unsigned count; // +0x08
+	float size; // +0x0C
+	float offset; // +0x10
+	Rva00404781 *cells; // +0x14
+	unsigned int *values; // +0x18
+};
 class Rva00404D70 {public:int rva00404D70(const AsciiString &) throw();};
 // VictorySystem: newMap is slot 14 of retail vftable 0x008388D4 (ctor
 // 0x004054E1). Call-only view: the unit emits no vftable.

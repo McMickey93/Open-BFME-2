@@ -17,7 +17,11 @@ class Xfer;
 
 class Rva00404781 {public:__declspec(dllimport) __forceinline Rva00404781(){rva0040475C();}__declspec(nothrow) void rva0040475C();float first[20],second[20];unsigned flags0,flags1;};
 
-struct Rva0040538FElement {char bytes[24];};
+struct Rva0040538FElement
+{
+public:
+	char bytes[24]; // +0x00
+};
 
 namespace _STL {template<>Rva0040538FElement*vector<Rva0040538FElement>::erase(Rva0040538FElement*,Rva0040538FElement*);}
 

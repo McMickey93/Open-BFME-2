@@ -10,7 +10,8 @@
 
 struct Rva0040538FElement
 {
-	unsigned char _pad[0x18];
+public:
+	char bytes[24]; // +0x00
 };
 
 class Rva001DE4F0
