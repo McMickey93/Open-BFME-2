@@ -11565,7 +11565,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0085DCCC,36,.rdata,vtable,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S3@@@,,literal,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S3@@@;_vtbl_00C5DCCC,0,2
 0x0085DCF0,12,.rdata,vtable,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S2@@@,,literal,??_7SiegeDeploySpecialPower@@6BSiegeDeploySpecialPower_S2@@@;_vtbl_00C5DCF0,0,2
 0x0085DCFC,72,.rdata,vtable,??_7SiegeDeploySpecialPower@@6BRva00589079@@@,,literal,??_7SiegeDeploySpecialPower@@6BRva00589079@@@;_vtbl_00C5DCFC,0,2
-0x0085DD44,32,.rdata,global,?g_00C5DD44@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerModuleDataParse.cpp,owned,,1,1
+0x0085DD44,32,.rdata,global,?g_00C5DD44@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPower.cpp,owned,,1,1
 0x0085DD64,36,.rdata,vtable,??_7SiegeDeployHordeSpecialPower@@6BSiegeDeployHordeSpecialPower_S3@@@,,literal,??_7SiegeDeployHordeSpecialPower@@6BSiegeDeployHordeSpecialPower_S3@@@;_s_secondary20@Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerCtor.cpp,1,2
 0x0085DD88,12,.rdata,vtable,??_7SiegeDeployHordeSpecialPower@@6BSiegeDeployHordeSpecialPower_S2@@@,,literal,??_7SiegeDeployHordeSpecialPower@@6BSiegeDeployHordeSpecialPower_S2@@@;_s_secondary10@Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerCtor.cpp,1,2
 0x0085DD94,116,.rdata,vtable,??_7SiegeDeployHordeSpecialPower@@6BRva00589079@@@,,literal,??_7SiegeDeployHordeSpecialPower@@6BRva00589079@@@;_s_vtable@Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerCtor.cpp,1,2
@@ -20635,8 +20635,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04288,8,.data,global,?$S1@?1??computeApproachPoint@SiegeDeploySpecialPower@@QAE?AURva004598F2Point@@PAVObject@@PAU3@PA_N@Z@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeploySpecialPowerComputeApproachPoint.cpp,owned,,1,2
 0x00A04290,4,.data,global,?g_Va00E04290@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E042xx.cpp,owned,,1,2
 0x00A04294,4,.data,global,_s_rva007B2A1C,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A04298,4,.data,global,?TheSiegeDeployHordeSpecialPowerPoolKey@?1??getModuleNameKey@SiegeDeployHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerPoolKey.cpp,owned,,1,2
-0x00A0429C,4,.data,global,?$S1@?1??getModuleNameKey@SiegeDeployHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPowerPoolKey.cpp,owned,,1,4
+0x00A04298,4,.data,global,?TheSiegeDeployHordeSpecialPowerPoolKey@?1??getModuleNameKey@SiegeDeployHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPower.cpp,owned,,1,2
+0x00A0429C,4,.data,global,?$S1@?1??getModuleNameKey@SiegeDeployHordeSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeSpecialPower.cpp,owned,,1,4
 0x00A042A0,4,.data,global,?key@?P@??initiateIntentToDoSpecialPower@SiegeDeployHordeSpecialPower@@UAEXPBVSpecialPowerTemplate@@PBVObject@@PBUCoord3D@@IPBVWaypoint@@@Z@4W4NameKeyType@@B,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeInitiate.cpp,owned,,1,2
 0x00A042A4,4,.data,global,?$S1@?P@??initiateIntentToDoSpecialPower@SiegeDeployHordeSpecialPower@@UAEXPBVSpecialPowerTemplate@@PBVObject@@PBUCoord3D@@IPBVWaypoint@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeInitiate.cpp,owned,,1,2
 0x00A042A8,4,.data,global,?TheStopSpecialPowerPoolKey@?1??getModuleNameKey@StopSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/StopSpecialPower.cpp,owned,,1,2
