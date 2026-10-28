@@ -20383,8 +20383,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03DC0,4,.data,global,?TheBaseUpgradePoolKey@?1??getModuleNameKey@BaseUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/Common/System/BaseUpgradePoolKey.cpp,owned,,1,2
 0x00A03DC4,4,.data,global,?$S1@?1??getModuleNameKey@BaseUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/Common/System/BaseUpgradePoolKey.cpp,owned,,1,4
 0x00A03DC8,4,.data,global,_s_rva007B1EFE,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03DCC,4,.data,global,?TheCommandSetUpgradePoolKey@?1??getModuleNameKey@CommandSetUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/Common/System/CommandSetUpgradePoolKey.cpp,owned,,1,2
-0x00A03DD0,4,.data,global,?$S1@?1??getModuleNameKey@CommandSetUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/Common/System/CommandSetUpgradePoolKey.cpp,owned,,1,4
+0x00A03DCC,4,.data,global,?TheCommandSetUpgradePoolKey@?1??getModuleNameKey@CommandSetUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Upgrade/CommandSetUpgrade.cpp,owned,,1,2
+0x00A03DD0,4,.data,global,?$S1@?1??getModuleNameKey@CommandSetUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Upgrade/CommandSetUpgrade.cpp,owned,,1,4
 0x00A03DD4,4,.data,global,_s_rva007B1F28,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03DD8,4,.data,global,?TheDelayedUpgradePoolKey@?1??getModuleNameKey@DelayedUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/Common/System/DelayedUpgradePoolKey.cpp,owned,,1,2
 0x00A03DDC,4,.data,global,?$S1@?1??getModuleNameKey@DelayedUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/Common/System/DelayedUpgradePoolKey.cpp,owned,,1,4

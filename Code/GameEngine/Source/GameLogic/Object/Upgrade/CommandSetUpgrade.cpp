@@ -74,17 +74,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class CommandSetUpgrade : public UpgradeModule
-{
-public:
-	CommandSetUpgrade( Thing *thing, const ModuleData *moduleData );
-
-protected:
-	virtual void upgradeRemovalImplementation();
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 // Target identity is established by the CommandSetUpgrade constructor at
 // 0x004B3AB2: it installs the UpgradeMux vtable at VA 0x00C57248, whose slot 8
 // at 0x00C57268 points to retail RVA 0x004B3B88. The target compares the
@@ -331,7 +320,36 @@ static BaselineFieldParse s_commandSetTable[2] = {
 	{ 0, 0, 0, 0 }
 };
 
-// tu-skeleton: 0x004B3A4B 69B ?getModuleNameKey@CommandSetUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/Common/System/CommandSetUpgradePoolKey.cpp (not merged yet)
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class CommandSetUpgrade : public UpgradeModule
+{
+public:
+	CommandSetUpgrade( Thing *thing, const ModuleData *moduleData );
+
+protected:
+	virtual void upgradeRemovalImplementation();
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
+// ---- from Code/GameEngine/Source/Common/System/CommandSetUpgradePoolKey.cpp
+
+// ?getModuleNameKey@CommandSetUpgrade@@UBE?AW4NameKeyType@@XZ
+NameKeyType CommandSetUpgrade::getModuleNameKey() const
+{
+	static NameKeyType TheCommandSetUpgradePoolKey =
+		TheNameKeyGenerator->nameToKey("CommandSetUpgrade");
+	return TheCommandSetUpgradePoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/CommandSetUpgrade.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataGetterBuildFieldParse.cpp
 
