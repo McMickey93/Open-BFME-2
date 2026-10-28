@@ -102,10 +102,16 @@ public:
 	int rva00260DED() const;	// 0x00260DED, current state ID
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class AnimalAIUpdate
 {
 public:
 	virtual UpdateSleepTime update();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 struct AnimalAIUpdateModuleDataView
