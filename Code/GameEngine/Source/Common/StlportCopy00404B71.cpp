@@ -1,4 +1,5 @@
-// cl: /MD
+// cl: /DNDEBUG /DBFME_SB_CLEAR_DECL /MD /GX /D_STLP_USE_STATIC_LIB /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata /Ireference/shims/bfmealloc /ICode/Libraries/Include
+// stlport
 // ??$__copy@PAURva0040538FElement@@PAU1@H@_STL@@YAPAURva0040538FElement@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z retail 0x00404B71 50 bytes.
 // STLport __copy for Rva0040538FElement view: count via (last-first)/0x18 then
 // copy-constructs each slot through rowed Rva001DE4F0 copy 0x00404A72.
@@ -6,7 +7,9 @@
 // 0x0040538F; callee copy rowed in Rva001DE4F0Copy.cpp; divisor 0x18 and
 // 0x18 adds prove 0x18 element. Recipe: Rva002DFC30CopyLoop 50B assume
 // placement-new (assume kills 7.1 null check) with for-i loop and throw.
-#include <new.h>
+// An explicit specialization of STLport's random-access __copy, built under
+// the VictorySystem TU's flags.
+#include <vector>
 
 struct Rva0040538FElement
 {
@@ -19,18 +22,6 @@ class Rva001DE4F0
 public:
 	Rva001DE4F0(const Rva001DE4F0 &other) throw();
 };
-
-namespace _STL
-{
-struct random_access_iterator_tag
-{
-};
-
-template <class _II, class _OI, class _D>
-_OI __copy(_II, _II, _OI, const random_access_iterator_tag &, _D *);
-template <>
-Rva0040538FElement *__copy<Rva0040538FElement *, Rva0040538FElement *, int>(Rva0040538FElement *, Rva0040538FElement *, Rva0040538FElement *, const random_access_iterator_tag &, int *);
-}
 
 template <>
 Rva0040538FElement *_STL::__copy<Rva0040538FElement *, Rva0040538FElement *, int>(Rva0040538FElement *__first, Rva0040538FElement *__last, Rva0040538FElement *__result, const random_access_iterator_tag &, int *) throw()
