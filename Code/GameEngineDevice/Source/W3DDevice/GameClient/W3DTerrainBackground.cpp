@@ -1,7 +1,7 @@
-// cl: /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /G7 /arch:SSE /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib
-// Link view first: scalar Vector3 operator* stays inline without emitting a copy that competes with retail's owners (0x00066382, 0x0007DFB3).
-#include "../../../../../reference/shims/bfme_vector3_full_link/vector3_full_link.h"
+// cl: /FIzh_ascii.h /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib -Ireference/open-bfme-1/game/GameEngineDevice/Source/W3DDevice/GameClient
 // stlport
+// TU Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackground.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
+#include "../../../../../reference/shims/bfme_vector3_full_link/vector3_full_link.h"
 // Ported verbatim from the Generals Zero Hour reference
 // (GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackground.cpp); this unit had no counterpart under Code/.
 // The compiler-generated vector constructor iterator (??_H) takes the
@@ -15,60 +15,10 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
-
-// BFME 2 has no W3D memory pools (see Code/Libraries/Source/WWVegas/WWLib/always.h).
 #include "always.h"
 #undef W3DMPO_GLUE
 #define W3DMPO_GLUE(ARGCLASS)
-/*
-**	Command & Conquer Generals Zero Hour(tm)
-**	Copyright 2025 Electronic Arts Inc.
-**
-**	This program is free software: you can redistribute it and/or modify
-**	it under the terms of the GNU General Public License as published by
-**	the Free Software Foundation, either version 3 of the License, or
-**	(at your option) any later version.
-**
-**	This program is distributed in the hope that it will be useful,
-**	but WITHOUT ANY WARRANTY; without even the implied warranty of
-**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-**	GNU General Public License for more details.
-**
-**	You should have received a copy of the GNU General Public License
-**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-////////////////////////////////////////////////////////////////////////////////
-//																																						//
-//  (c) 2001-2003 Electronic Arts Inc.																				//
-//																																						//
-////////////////////////////////////////////////////////////////////////////////
-
-// FILE: W3DTerrainBackground.cpp ////////////////////////////////////////////////
-//-----------------------------------------------------------------------------
-//                                                                          
-//                       EA Pacific.                          
-//                                                                          
-//                       Confidential Information                           
-//                Copyright (C) 2003 - All Rights Reserved                  
-//                                                                          
-//-----------------------------------------------------------------------------
-//
-// Project:   RTS3
-//
-// File name: W3DTerrainBackground.cpp
-//
-// Created:   John Ahlquist, March 2003
-//
-// Desc:      Draw buffer to handle backup terrain at lower res.
-//
-//-----------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------
-//         Includes                                                      
-//-----------------------------------------------------------------------------
 #include "W3DDevice/GameClient/W3DTerrainBackground.h"
-
 #include <stdio.h>
 #include <string.h>
 #include <assetmgr.h>
@@ -80,25 +30,289 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include "WW3D2/DX8Wrapper.h"
 #include "WW3D2/DX8Renderer.h"
 #include "WW3D2/Camera.h"
-
 #ifdef _INTERNAL
 // for occasional debugging...
 //#pragma optimize("", off)
 //#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
-#endif
 
-//-----------------------------------------------------------------------------
-//         Private Data                                                     
-//-----------------------------------------------------------------------------
-// A W3D shader that does alpha, texturing, tests zbuffer, doesn't update zbuffer.
+#endif
 #define SC_DETAIL ( SHADE_CNST(ShaderClass::PASS_LEQUAL, ShaderClass::DEPTH_WRITE_ENABLE, ShaderClass::COLOR_WRITE_ENABLE, ShaderClass::SRCBLEND_ONE, \
 	ShaderClass::DSTBLEND_ZERO, ShaderClass::FOG_DISABLE, ShaderClass::GRADIENT_MODULATE, ShaderClass::SECONDARY_GRADIENT_DISABLE, ShaderClass::TEXTURING_ENABLE, \
 	ShaderClass::ALPHATEST_DISABLE, ShaderClass::CULL_MODE_DISABLE, \
 	ShaderClass::DETAILCOLOR_DISABLE, ShaderClass::DETAILALPHA_DISABLE) )
+#define bfmeDrawTriangles __identifier("?Draw_Triangles@DX8Wrapper@@SAXIIII@Z")
+// ?FillFourSlots@Rva0011216CSlotQuartet@@QAEXXZ, retail 0x0011216C, 43 bytes.
+// Four-slot level filler: marks the quartet ready, then fills each slot's
+// per-level surfaces in the retail order (+0x38, +0x34, +0x40, +0x3C, the
+// last via tail-jump). The holder's true class is unknown, so it carries an
+// address-derived name; each 4-byte slot is a CursorTextureSlot (the level
+// filler row proves the call shape).
+
+class W3DRadarResetSurface
+{
+	void *m_surface;
+};
+struct CursorTextureSlot
+{
+	void *Ptr;
+
+	W3DRadarResetSurface Get_Surface_Level(int level);
+	void FillLevelSurfaces(void);
+};
+struct Rva00112153Elem
+{
+	char m_00;
+};
+#include <new>
 
 static ShaderClass detailShader(SC_DETAIL);
 
-const Int PIXELS_PER_GRID = 8; // default tex resolution allocated for each tile. jba. [3/24/2003]
+const Int PIXELS_PER_GRID = 8;
+
+const Int STEP=4;
+
+//=============================================================================
+// W3DTerrainBackground::updateCenter
+//=============================================================================
+/** Updates the culling status. */
+//=============================================================================
+
+//=============================================================================
+// W3DTerrainBackground::updateCenter
+//=============================================================================
+/** Updates the culling status. */
+//=============================================================================
+
+//=============================================================================
+// W3DTerrainBackground::renderTerrain
+//=============================================================================
+//=============================================================================
+// BFME2's DX8Wrapper draws a triangle list through the rowed 32-bit overload
+// DX8Wrapper::Draw_Triangles(unsigned x4) at 0x00120620; the Zero Hour header
+// here only declares the 16-bit one, which BFME2 does not have.
+extern "C" void __cdecl __identifier("?Draw_Triangles@DX8Wrapper@@SAXIIII@Z")(unsigned int, unsigned int, unsigned int, unsigned int);
+
+// Native [00112291,0011234C),187B, RET0. BFME1 ba7ddda
+// W3DTerrainBackgroundDtor.cpp is the primary lifetime guide.
+// Target has four owned texture handles34/38/3C/40, the map at5C,
+// and the established buffer and tile-array cleanup calls111F0E/112153.
+// Four member unwind states and each clear/release call are target facts.
+// Original owning class is not asserted by this borrowed prefix view.
+// Existing holder contract from dx8wrapper.cpp: the pointer uses
+// BfmeResetResource and its established Release_Ref binding.
+struct BfmeResetResource {
+public: void Release_Ref();
+};
+
+class BfmeResetTextureRef {
+public:
+ void clear();
+ ~BfmeResetTextureRef() { if (pointer) pointer->Release_Ref(); }
+private: BfmeResetResource *pointer;
+};
+
+class Rva00112291MapRef {
+public:
+ virtual void Delete_This();
+ void Release_Ref() { if (--refs == 0) Delete_This(); }
+private: int refs;
+};
+
+class Rva00111F0E {public: void rva00111F0E();};
+
+struct Rva0011216CSlotQuartet
+{
+	char m_pad00[0x34];
+	CursorTextureSlot m_slot34;
+	CursorTextureSlot m_slot38;
+	CursorTextureSlot m_slot3C;
+	CursorTextureSlot m_slot40;
+	char m_pad44[0x84 - 0x44];
+	bool m_ready84;
+	char m_pad85[0xD0 - 0x85];
+	Rva00112153Elem *m_ptrD0; // +0xD0 array cleaned by 0x00112153 via delete[]
+
+	void FillFourSlots(void);
+	void rva00112153(void); // @0x00112153 25B abutting FillFourSlots
+};
+
+class Rva00112291TerrainOwner {
+public: ~Rva00112291TerrainOwner();
+private:
+ char unknown00[0x34];
+ BfmeResetTextureRef texture34,texture38,texture3C,texture40;
+ char unknown44[0x5C-0x44];
+ Rva00112291MapRef *map;
+};
+
+// ?rva00115DA7@Rva00115DA7@@QAEXHHHHH@Z @0x00115DA7 43B. Identity: 5-int setter storing first four at +0xA8/+0xB0/+0xB8/+0xC0 via this+8 layout; fifth unused for ret 0x14.
+// Evidence: caller 0xE424C; neighbours 0x115F73/0x115DE8; no callees.
+class Rva00115DA7
+{
+public:
+	void rva00115DA7(int a, int b, int c, int d, int e);
+private:
+	unsigned char m_pad[0xA8];
+	int m_a8;
+	unsigned char m_gapAC[4];
+	int m_b0;
+	unsigned char m_gapB4[4];
+	int m_b8;
+	unsigned char m_gapBC[4];
+	int m_c0;
+};
+
+// tu-skeleton: 0x00111FCF 124B ?rva00111FCF@W3DTerrainBackground@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundMarkTileGrid.cpp (not merged yet)
+
+// tu-skeleton: 0x0011204B 264B ?isEdgeAligned@W3DTerrainBackground@@QAE_NHHH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundIsEdgeAligned.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouseCursorSlotQuartet.cpp
+
+// ?FillFourSlots@Rva0011216CSlotQuartet@@QAEXXZ
+void Rva0011216CSlotQuartet::FillFourSlots(void)
+{
+	m_ready84 = true;
+	m_slot38.FillLevelSurfaces();
+	m_slot34.FillLevelSurfaces();
+	m_slot40.FillLevelSurfaces();
+	m_slot3C.FillLevelSurfaces();
+}
+
+// ?rva00112153@Rva0011216CSlotQuartet@@QAEXXZ @0x00112153 25B: array cleanup
+// abutting FillFourSlots (0x112153+25=0x11216C). Retail: if (m_ptrD0)
+// delete[] m_ptrD0 via rowed ??_V@YAXPAX@Z 0x0002FD80; clear m_ptrD0.
+void Rva0011216CSlotQuartet::rva00112153(void)
+{
+	if (m_ptrD0) {
+		::operator delete[](m_ptrD0);
+		m_ptrD0 = 0;
+	}
+}
+
+// tu-skeleton: 0x00112197 50B ?rva00112197@Rva0011216CSlotQuartet@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00112197SlotQuartetReset.cpp (not merged yet)
+
+// tu-skeleton: 0x00112230 41B ?rva00112230@Rva00112230CameraGroup@@QBE?AV?$RefCountPtr@VCameraClass@@@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateCenter.cpp (not merged yet)
+
+// tu-skeleton: 0x00112259 56B ?rva00112259@Rva00112259@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00112259.cpp (not merged yet)
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00112291TerrainDtor.cpp
+
+Rva00112291TerrainOwner::~Rva00112291TerrainOwner() {
+ ((Rva00111F0E *)this)->rva00111F0E();
+ texture34.clear();
+ texture38.clear();
+ texture3C.clear();
+ texture40.clear();
+ if (map) {map->Release_Ref();map=0;}
+ ((Rva0011216CSlotQuartet *)this)->rva00112153();
+}
+
+// tu-skeleton: 0x0011234C 626B ?updateCenter@W3DTerrainBackground@@QAEXABVRva00112230CameraGroup@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateCenter.cpp (not merged yet)
+
+// tu-skeleton: 0x001125BE 319B ?updateTexture@W3DTerrainBackground@@QAE_NXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateTexture.cpp (not merged yet)
+
+// tu-skeleton: 0x001126FD 79B ?test@Rva00729300BitPlane@@QBE_NHH@Z -- matched in Code/GameEngine/Source/Common/Rva00729300BitPlanes.cpp (not merged yet)
+
+// tu-skeleton: 0x0011274C 166B ?advanceYThenX@Rva001127F2TerrainPrefix@@QAE_NAAUICoord2D@@HHHH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundTriangleFan.cpp (not merged yet)
+
+// tu-skeleton: 0x001127F2 166B ?advanceScan@Rva001127F2TerrainPrefix@@QAE_NAAUICoord2D@@HHHH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundTriangleFan.cpp (not merged yet)
+
+// tu-skeleton: 0x00112898 569B ?setFlipRecursive@W3DTerrainBackground@@QAEXHHH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundSetFlipRecursive.cpp (not merged yet)
+
+// tu-skeleton: 0x00112AD1 749B ?setFlipRecursive@W3DTerrainBackground@@QAEXHHHM@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundSetFlipRecursiveTolerance.cpp (not merged yet)
+
+// tu-skeleton: 0x00112DBE 277B ??0Rva00112291TerrainOwner@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00112291TerrainCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00112ED3 237B ?countUnsetCorners@W3DTerrainBackground@@QAEHHHHPA_N000@Z -- matched in Code/GameEngine/Source/Common/Rva00729300BitPlanes.cpp (not merged yet)
+
+// tu-skeleton: 0x00112FC0 273B ?checkUnsetEdges@W3DTerrainBackground@@QAEXHHHPA_N000@Z -- matched in Code/GameEngine/Source/Common/Rva00729300BitPlanes.cpp (not merged yet)
+
+// tu-skeleton: 0x001130D1 63B ?castTriangle@W3DTerrainBackground@@QAE_NAAVRayCollisionTestClass@@ABVVector3@@11@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundCastTriangle.cpp (not merged yet)
+
+// tu-skeleton: 0x00113110 65B ?rva00113110@Rva00113110Holder@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/Rva00113110BarrierSweep.cpp (not merged yet)
+
+// tu-skeleton: 0x00113151 73B ?rva00113151@Rva00113110Holder@@QAEXPAXM@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00113151Replace.cpp (not merged yet)
+
+// tu-skeleton: 0x0011319A 511B ?getTriangleIntersection@W3DTerrainBackground@@QAEXPAVVector3@@HHHHABV2@11@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundGetTriangleIntersection.cpp (not merged yet)
+
+// tu-skeleton: 0x00113399 2158B ?rva00113399@W3DTerrainBackground@@QAEXPAGPAXHHHH0AAH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundTriangleFan.cpp (not merged yet)
+
+// tu-skeleton: 0x00113C07 473B ?rva00113C07@W3DTerrainBackground@@QAEXPAGPAXHHHPA_N2220AAH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundRva00113C07.cpp (not merged yet)
+
+// tu-skeleton: 0x00113DE0 3083B ?rva00113DE0@W3DTerrainBackground@@QAEXPAGPAVVector3@@HHH0AAH@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundRva00113C07.cpp (not merged yet)
+
+// tu-skeleton: 0x001149EB 1625B ?doTesselatedUpdate@W3DTerrainBackground@@QAEXABUIRegion2D@@PAVWorldHeightMap@@_N@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00115044 1869B ?doPartialUpdate@W3DTerrainBackground@@QAEXABUIRegion2D@@PAVWorldHeightMap@@_N2@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoPartialUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00115791 121B ?rva00115791@W3DTerrainBackground@@QAEX_NM@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundRva00115791.cpp (not merged yet)
+
+// tu-skeleton: 0x0011580A 487B ?rva0011580A@W3DTerrainBackground@@QAEXAAVRenderInfoClass@@_NPAVRenderingMethod@FXShader@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDrawVisiblePolys.cpp (not merged yet)
+
+// tu-skeleton: 0x001159F1 106B ?rva001159F1@Rva001159F1@@QAEXPAX@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva001159F1.cpp (not merged yet)
+
+// tu-skeleton: 0x00115A5B 844B ?calcBlendHeight@W3DTerrainBackground@@QAEXMHPAM@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva001159F1.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva00115DA7.cpp
+
+void Rva00115DA7::rva00115DA7(int a, int b, int c, int d, int e)
+{
+	m_a8 = a;
+	m_b0 = b;
+	m_b8 = c;
+	m_c0 = d;
+	(void)e;
+}
+
+// tu-skeleton: 0x00115DD2 22B ?rva00115DD2@W3DTerrainBackground@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundRva00115DD2.cpp (not merged yet)
+
+// tu-skeleton: 0x00764A37 8B $L323 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00112259.cpp (not merged yet)
+
+// tu-skeleton: 0x00764A3F 10B __ehhandler$?rva00112259@Rva00112259@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva00112259.cpp (not merged yet)
+
+// tu-skeleton: 0x00764A7F 8B $L768 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateCenter.cpp (not merged yet)
+
+// tu-skeleton: 0x00764A87 10B __ehhandler$?updateCenter@W3DTerrainBackground@@QAEXABVRva00112230CameraGroup@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateCenter.cpp (not merged yet)
+
+// tu-skeleton: 0x00764A91 8B Unwind@00b64a91 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateTexture.cpp (not merged yet)
+
+// tu-skeleton: 0x00764A99 8B Unwind@00b64a99 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateTexture.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AA1 10B __ehhandler$?updateTexture@W3DTerrainBackground@@QAE_NXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundUpdateTexture.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AAB 11B $L1278 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AB6 10B $L1279 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AC0 8B Unwind@00b64ac0 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AC8 10B $L1281 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AD2 8B Unwind@00b64ad2 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764ADA 8B Unwind@00b64ada -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AE2 8B Unwind@00b64ae2 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AEA 8B Unwind@00b64aea -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AF2 10B __ehhandler$?doTesselatedUpdate@W3DTerrainBackground@@QAEXABUIRegion2D@@PAVWorldHeightMap@@_N@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoTesselatedUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764AFC 11B Unwind@00b64afc -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoPartialUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764B07 10B $L1262 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoPartialUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764B11 10B $L1263 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoPartialUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764B1B 8B Unwind@00b64b1b -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoPartialUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764B23 8B Unwind@00b64b23 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoPartialUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764B2B 10B __ehhandler$?doPartialUpdate@W3DTerrainBackground@@QAEXABUIRegion2D@@PAVWorldHeightMap@@_N2@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundDoPartialUpdate.cpp (not merged yet)
+
+// tu-skeleton: 0x00764B35 10B __ehhandler$?rva00115DD2@W3DTerrainBackground@@QAEXXZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DTerrainBackgroundRva00115DD2.cpp (not merged yet)
+
+ // default tex resolution allocated for each tile. jba. [3/24/2003]
 
 //-----------------------------------------------------------------------------
 //         Private Functions                                               
@@ -126,8 +340,6 @@ void W3DTerrainBackground::setFlip(WorldHeightMap *htMap)
 
 }
 
-
-const Int STEP=4;
 //=============================================================================
 // W3DTerrainBackground::doPartialUpdate
 //=============================================================================
@@ -555,29 +767,6 @@ void W3DTerrainBackground::allocateTerrainBuffers(WorldHeightMap *htMap, Int xOr
 	REF_PTR_SET(m_map, htMap);
 }
 
-
-//=============================================================================
-// W3DTerrainBackground::updateCenter
-//=============================================================================
-/** Updates the culling status. */
-//=============================================================================
-
-//=============================================================================
-// W3DTerrainBackground::updateCenter
-//=============================================================================
-/** Updates the culling status. */
-//=============================================================================
-
-//=============================================================================
-// W3DTerrainBackground::renderTerrain
-//=============================================================================
-//=============================================================================
-// BFME2's DX8Wrapper draws a triangle list through the rowed 32-bit overload
-// DX8Wrapper::Draw_Triangles(unsigned x4) at 0x00120620; the Zero Hour header
-// here only declares the 16-bit one, which BFME2 does not have.
-extern "C" void __cdecl __identifier("?Draw_Triangles@DX8Wrapper@@SAXIIII@Z")(unsigned int, unsigned int, unsigned int, unsigned int);
-#define bfmeDrawTriangles __identifier("?Draw_Triangles@DX8Wrapper@@SAXIIII@Z")
-
 // ?W3DTerrainBackground::drawVisiblePolys present-unmatched
 void W3DTerrainBackground::drawVisiblePolys(RenderInfoClass & rinfo, Bool disableTextures)
 {
@@ -623,8 +812,3 @@ void W3DTerrainBackground::drawVisiblePolys(RenderInfoClass & rinfo, Bool disabl
 	bfmeDrawTriangles(	0, m_curNumTerrainIndices/3, 0,	m_curNumTerrainVertices);
 #endif
 }
-
-
-
-
-

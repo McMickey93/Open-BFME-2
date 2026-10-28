@@ -70,6 +70,20 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **Terrain background TU composition (2026-10-28, base `cb99205548`):**
+  [The bounded composition evidence](../reverse/attempt_support/terrain-background-consolidation-20261028-codex.md)
+  preserves twelve matched rows, one EXACT EH graph, all 579 external COMDAT
+  byte/relocation digests and the definition/dependency sets while removing
+  three source files. The destination previews LINKS for 425 authored bytes
+  against index `14dc3d2467`; four unwind rows account for another 44 bytes.
+  The whole outgoing-range audit is **INCONCLUSIVE**: the index predates its
+  base and lacks per-object consumer names. Carry this moved scope into the
+  next normal census; full external consumer selection remains unverified.
+  Eighteen clean donors retain declaration/private-view prerequisites, and
+  four mixed sources remain satellites. The mixed UpdateCenter preview still
+  requires `RenderObjClass::Get_Position`; its body and coverage are not
+  diagnosed by that preview alone. No census or runtime gain is claimed.
+
 - **Component callback iterator identity (2026-10-28, base `e1b88db116ad`):**
   `Rva00462710ModeCheckForEach.cpp` now calls the existing
   `Rva000411084::next` owner instead of emitting a separate iterator family.
