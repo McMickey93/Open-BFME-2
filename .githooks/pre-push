@@ -401,7 +401,7 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
         printf '%s\0' "${range_files[@]}" | xargs -0 git diff --quiet "$local_sha" -- \
             || fail "the working tree differs from $local_sha in files this push changes: commit or stash first"
     fi
-    git diff --quiet "$local_sha" -- '*.h' '*.hpp' '*.hh' '*.hxx' '*.inl' '*.inc' reference/shims \
+    git diff --quiet "$local_sha" -- '*.h' '*.hpp' '*.hh' '*.hxx' '*.inl' '*.inc' reference/shims vendor/stlport-4.6 vendor/stlport-4.6-bfme tools/stlport_overlay.py \
         || fail "a tracked header or shim differs from $local_sha in the working tree: commit or stash it first"
 
     scope_from "$base"

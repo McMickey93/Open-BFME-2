@@ -1,0 +1,29 @@
+--- a/stl/_uninitialized.h
++++ b/stl/_uninitialized.h
+@@ -49,7 +49,7 @@
+ // Valid if copy construction is equivalent to assignment, and if the
+ //  destructor is trivial.
+ template <class _InputIter, class _ForwardIter>
+-inline _ForwardIter 
++__forceinline _ForwardIter 
+ __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+                      const __true_type&) {
+   return __copy_aux(__first, __last, __result, _BothPtrType< _InputIter, _ForwardIter> :: _Ret());
+@@ -203,7 +203,7 @@
+ }
+ 
+ template <class _ForwardIter, class _Size, class _Tp>
+-inline _ForwardIter 
++__forceinline _ForwardIter 
+ uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x) {
+   return __uninitialized_fill_n(__first, __n, __x, _IS_POD_ITER(__first, _ForwardIter));
+ }
+@@ -246,7 +246,7 @@
+ // Fills [result, mid) with x, and copies [first, last) into
+ //  [mid, mid + (last - first)).
+ template <class _ForwardIter, class _Tp, class _InputIter>
+-inline _ForwardIter 
++__forceinline _ForwardIter 
+ __uninitialized_fill_copy(_ForwardIter __result, _ForwardIter __mid, const _Tp& __x,
+                           _InputIter __first, _InputIter __last)
+ {

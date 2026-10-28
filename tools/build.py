@@ -70,6 +70,7 @@ import flag_defaults
 import compiler_profiles
 import ledger_io
 import stlport_folds
+import stlport_overlay
 from coffar import RELOC_WIDTH, read_archive
 from gen_case_shims import ensure_case_shims
 from portable_lock import lock, unlock
@@ -869,7 +870,11 @@ def compiler_environment(root, source=None):
     ide_dir = root / "Common7" / "IDE"
     base_dir = root.parents[1]
 
-    stlport = stlport_include_dir() if source_needs_stlport(source) else None
+    if stlport_overlay.selected(source):
+        stlport_overlay.materialize()
+        stlport = stlport_overlay.TREE / "stlport"
+    else:
+        stlport = stlport_include_dir() if source_needs_stlport(source) else None
 
     if os.name == "nt":
         include = str(root / "Vc7" / "include")
@@ -1272,7 +1277,8 @@ def compiler_command(source, output):
             # The SDK headers need the real windows.h/objbase.h, so a unit that
             # also names a sweep shim directory searches the Platform SDK first.
             command.append("-I" + wine_path(root / "Vc7" / "PlatformSDK" / "Include"))
-    command += compiler_profiles.source_options(compiler, source_extra_flags(source))
+    flags = stlport_overlay.include_dirs(source, source_extra_flags(source))
+    command += compiler_profiles.source_options(compiler, flags)
     command += [
         f"-Fo{output_arg}",
         source_arg,
@@ -1555,7 +1561,8 @@ def _directive_text(path):
 
 
 def _stlport_roots():
-    return [Path(p) for p in (ROOT / "vendor" / "stlport", stlport_include_dir()) if p is not None]
+    return [Path(p) for p in (ROOT / "vendor" / "stlport", stlport_include_dir(),
+            stlport_overlay.TREE / "stlport", ROOT / "build" / "stlport46") if p is not None]
 
 
 def _include_escapes_search_roots(path, stlport, roots=None, anchored=None):

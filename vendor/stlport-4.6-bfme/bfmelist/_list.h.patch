@@ -1,0 +1,87 @@
+--- a/stl/_list.h
++++ b/stl/_list.h
+@@ -98,22 +98,32 @@
+   _List_iterator_base(_List_node_base* __x) : _M_node(__x) {}
+   _List_iterator_base() {}
+ 
+-  void _M_incr() { _M_node = _M_node->_M_next; }
++  void _M_incr();
+   void _M_decr() { _M_node = _M_node->_M_prev; }
+   bool operator==(const _List_iterator_base& __y ) const { 
+     return _M_node == __y._M_node; 
+   }
+-  // Retail keeps one out-of-line copy (0x006CFE40, built without -G7); a
+-  // -G7 unit that calls it emits a different copy the link rejects. Such a
+-  // unit defines _STLP_BFME_LIST_NE_EXTERN to call retail's copy instead.
+-#ifdef _STLP_BFME_LIST_NE_EXTERN
+-  bool operator!=(const _List_iterator_base& __y ) const;
+-#else
+-  bool operator!=(const _List_iterator_base& __y ) const { 
+-    return _M_node != __y._M_node; 
+-  }
+-#endif
+-};  
++  bool operator!=(const _List_iterator_base& __y) const;
++};
++
++// The non-template iterator helpers have independently verified codegen:
++// complete7B6E25E increment uses EAX twice; complete22B6CFE40 comparison
++// materializes the two node pointers. Keep one shared class layout and
++// define these inline members outside the class so MSVC7.1 applies each
++// pragma to the member body rather than the class-end optimization state.
++#pragma optimize("t", off)
++#pragma optimize("sy", on)
++inline void _List_iterator_base::_M_incr() {
++  _M_node = _M_node->_M_next;
++}
++#pragma optimize("", on)
++#pragma optimize("s", off)
++#pragma optimize("t", on)
++inline bool _List_iterator_base::operator!=(const _List_iterator_base& __y) const {
++  return _M_node != __y._M_node;
++}
++#pragma optimize("", on)
++
+ 
+ 
+ 
+@@ -246,13 +256,16 @@
+   _STLP_DECLARE_BIDIRECTIONAL_REVERSE_ITERATORS;
+ 
+ protected:
+-  _Node* _M_create_node(const _Tp& __x)
++  // BFME inlines this: retail's insert bodies allocate the node and construct
++  // in place.  __forceinline alone will not do it -- MSVC will not inline a
++  // function containing a try region at any /Ob level -- so the
++  // _STLP_TRY/_STLP_UNWIND goes too, and retail's inlined copy has no unwind
++  // handler around the construct either.  Same shape that landed
++  // hashtable::_M_insert at 0x00620F60.
++  __forceinline _Node* _M_create_node(const _Tp& __x)
+   {
+     _Node* __p = this->_M_node.allocate(1);
+-    _STLP_TRY {
+-      _Construct(&__p->_M_data, __x);
+-    }
+-    _STLP_UNWIND(this->_M_node.deallocate(__p, 1));
++    _Construct(&__p->_M_data, __x);
+     return __p;
+   }
+ 
+@@ -552,6 +565,17 @@
+   return __i1 == __end1 && __i2 == __end2;
+ }
+ 
++// list<int> is the exception to the inlined _M_create_node above: retail keeps it
++// out of line (insert 0x005925E2 is 37 bytes and calls 0x000B6447, 29 bytes).
++template <>
++inline __declspec(noinline) list<int, allocator<int> >::_Node*
++list<int, allocator<int> >::_M_create_node(const int& __x)
++{
++  _Node* __p = this->_M_node.allocate(1);
++  new (&__p->_M_data) int(__x);
++  return __p;
++}
++
+ # define _STLP_EQUAL_OPERATOR_SPECIALIZED
+ # define _STLP_TEMPLATE_HEADER    template <class _Tp, class _Alloc>
+ # define _STLP_TEMPLATE_CONTAINER list<_Tp, _Alloc>

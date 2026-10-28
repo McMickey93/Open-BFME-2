@@ -1,0 +1,52 @@
+--- a/src/c_locale_win32/c_locale_win32.c
++++ b/src/c_locale_win32/c_locale_win32.c
+@@ -215,7 +215,6 @@
+ } _Locale_messages_t;
+ 
+ /* Internal function */
+-static void __FixGrouping(char *grouping);
+ static const char* __ConvertName(const char* lname, LOCALECONV* ConvTable, int TableSize);
+ static int __ParseLocaleString(const char* lname, char* lang, char* ctry, char* page);
+ static int __GetLCID(const char* lang, const char* ctry, LCID* lcid);
+@@ -378,7 +377,7 @@
+     GroupingBuffer=(char*)malloc(BufferSize);
+     if(!GroupingBuffer) { lnum->grouping=NULL; return lnum; }
+     GetLocaleInfoA(lnum->lcid, LOCALE_SGROUPING, GroupingBuffer, BufferSize);
+-    __FixGrouping(GroupingBuffer);
++    ((Rva0084E030Buffer *)GroupingBuffer)->squash();
+     lnum->grouping=GroupingBuffer;
+ 
+     return lnum;
+@@ -483,7 +482,7 @@
+     GroupingBuffer=(char*)malloc(BufferSize);
+     if(!GroupingBuffer) { lmon->grouping=NULL; return lmon; }
+     GetLocaleInfoA(lmon->lcid, LOCALE_SGROUPING, GroupingBuffer, BufferSize);
+-    __FixGrouping(GroupingBuffer);
++    ((Rva0084E030Buffer *)GroupingBuffer)->squash();
+     lmon->grouping=GroupingBuffer;
+ 
+     GetLocaleInfoA(lmon->lcid, LOCALE_SCURRENCY, lmon->curr_symbol, 6);
+@@ -1441,23 +1440,6 @@
+ } /* extern C */
+ _STLP_END_NAMESPACE
+ #endif
+-
+-void __FixGrouping(char *grouping)
+-{
+-  /* This converts NT version which uses '0' instead of 0, etc ; to ANSI */
+-  while (*grouping) {
+-    if (*grouping >= '0' && *grouping <= '9') {
+-      *grouping = *grouping - '0'; 
+-      grouping++;
+-    } else if (*grouping == ';') {
+-      char *tmp = grouping;
+-      /* remove ':' */
+-      for (tmp = grouping; *tmp; tmp++)
+-        *tmp = *(tmp+1);
+-    } else
+-      grouping++;
+-  } 
+-}
+ 
+ const char* __ConvertName(const char* lname, LOCALECONV* ConvTable, int TableSize)
+ {

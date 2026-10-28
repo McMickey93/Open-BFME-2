@@ -2178,7 +2178,13 @@ def main(argv=None):
     p.add_argument("--claim", action="store_true", help="atomically claim each selected file and its locks")
     p.add_argument("--class", dest="cls", type=lambda v: "drop-in candidate" if v in ("drop-in", "drop-in-candidate") else v,
                    choices=("drop-in candidate", "adapt", "unverified", "conflicting", "shim", "failed"))
+    p = sub.add_parser("stlport", help="STLport 4.6 full-file migration leads (fresh build required)")
+    p.add_argument("--tsv", action="store_true")
     args = ap.parse_args(argv)
+    if args.cmd == "stlport":
+        import stlport_trial
+        stlport_trial.queue(args)
+        return 0
     if args.cmd == "ms-headers":
         return serve_ms_headers(args)
     if args.cmd == "retired":

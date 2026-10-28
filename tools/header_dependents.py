@@ -322,6 +322,12 @@ def dependents(headers, includers, macro):
 
 def select(args):
     paths = [p for p in changed(args) if not p.startswith(IGNORED_ROOTS)]
+    # Extensionless upstream headers and patch files carry includes/code too;
+    # generated include paths have no static #include edge to their patch inputs.
+    stlport_inputs = [p for p in paths if p.startswith(("vendor/stlport-4.6/",
+                      "vendor/stlport-4.6-bfme/")) or p == "tools/stlport_overlay.py"]
+    if stlport_inputs:
+        raise Widen(f"{stlport_inputs[0]} is an STLport release/overlay input")
     wide = [p for p in paths if is_wide(p)]
     others = [p for p in paths if not is_wide(p) and p.startswith(("Code/", "reference/", "vendor/"))]
     if not wide and not others:

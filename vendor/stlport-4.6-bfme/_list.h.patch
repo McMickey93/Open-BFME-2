@@ -1,0 +1,38 @@
+--- a/stl/_list.h
++++ b/stl/_list.h
+@@ -76,6 +76,9 @@
+ template <class _Tp>
+ struct _List_node : public _List_node_base {
+   _Tp _M_data;
++#ifdef BFME_PARTICLE_LIST_NODE_TAIL
++  char _M_bfme_node_tail[0x20];
++#endif
+   __TRIVIAL_STUFF(_List_node)
+ 
+ #ifdef __DMC__
+@@ -100,9 +103,16 @@
+   bool operator==(const _List_iterator_base& __y ) const { 
+     return _M_node == __y._M_node; 
+   }
++  // Retail keeps one out-of-line copy (0x006CFE40, built without -G7); a
++  // -G7 unit that calls it emits a different copy the link rejects. Such a
++  // unit defines _STLP_BFME_LIST_NE_EXTERN to call retail's copy instead.
++#ifdef _STLP_BFME_LIST_NE_EXTERN
++  bool operator!=(const _List_iterator_base& __y ) const;
++#else
+   bool operator!=(const _List_iterator_base& __y ) const { 
+     return _M_node != __y._M_node; 
+   }
++#endif
+ };  
+ 
+ 
+@@ -367,7 +377,7 @@
+     return __last;
+   }
+ 
+-  void resize(size_type __new_size, _Tp __x);
++  void resize(size_type __new_size, const _Tp& __x);
+   void resize(size_type __new_size) { this->resize(__new_size, _Tp()); }
+ 
+   void pop_front() { erase(begin()); }

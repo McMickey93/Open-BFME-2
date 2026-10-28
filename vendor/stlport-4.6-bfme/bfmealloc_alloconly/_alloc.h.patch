@@ -1,0 +1,83 @@
+--- a/stl/_alloc.h
++++ b/stl/_alloc.h
+@@ -326,6 +326,15 @@
+ // templates, the typename keyword, and the use of the template keyword
+ // to refer to a template member of a dependent type.
+ 
++// BFME SHIM: the byte allocator the whole engine funnels through. It is a
++// static __cdecl taking (bytes, hint) and lives at 0x000307F0, where it
++// forwards to the game allocator table at 0x00DE0404 with memory class 3.
++// Declared before the primary template so the inline allocate above can name
++// it; MSVC does not instantiate that body until the container is used, so an
++// incomplete type here is enough.
++template <class _Tp> class allocator;
++_STLP_TEMPLATE_NULL class allocator<char>;
++
+ template <class _Tp>
+ class allocator {
+ public:
+@@ -351,16 +360,23 @@
+   pointer address(reference __x) const { return &__x; }
+   const_pointer address(const_reference __x) const { return &__x; }
+   // __n is permitted to be 0.  The C++ standard says nothing about what the return value is when __n == 0.
+-  _Tp* allocate(size_type __n, const void* = 0) { 
+-    return __n != 0 ? __REINTERPRET_CAST(value_type*,__sgi_alloc::allocate(__n * sizeof(value_type))) : 0;
++  // BFME SHIM: retail does not reach __sgi_alloc at all. Every allocating
++  // container in game.dat funnels through one raw byte allocator, called as
++  // (bytes, hint) __cdecl, and frees through the plain C free. See the header
++  // banner for the evidence.
++  _Tp* allocate(size_type __n, const void* __p = 0) { 
++    // Retail passes a literal 0 as the hint, not __p: allocator<BfmeE16>'s
++    // allocate at 0x002226BE is `push 0 / push <bytes> / call` where forwarding
++    // __p costs a `push [esp+8]` and two bytes.
++    return __n != 0 ? __REINTERPRET_CAST(value_type*,allocator<char>::allocate(__n * sizeof(value_type), 0)) : 0;
+   }
+   // __p is permitted to be a null pointer, only if n==0.
+   void deallocate(pointer __p, size_type __n) {
+     _STLP_ASSERT( (__p == 0) == (__n == 0) )
+-      if (__p != 0) __sgi_alloc::deallocate((void*)__p, __n * sizeof(value_type));
++      if (__p != 0) ::free((void*)__p);
+   }
+   // backwards compatibility
+-  void deallocate(pointer __p) const {  if (__p != 0) __sgi_alloc::deallocate((void*)__p, sizeof(value_type)); }
++  void deallocate(pointer __p) const {  if (__p != 0) ::free((void*)__p); }
+   size_type max_size() const _STLP_NOTHROW  { return size_t(-1) / sizeof(value_type); }
+   void construct(pointer __p, const _Tp& __val) { _STLP_STD::_Construct(__p, __val); }
+   void destroy(pointer __p) { _STLP_STD::_Destroy(__p); }
+@@ -368,6 +384,36 @@
+   template <class _T2> bool operator==(const allocator<_T2>&) const  _STLP_NOTHROW { return true; }
+   template <class _T2> bool operator!=(const allocator<_T2>&) const _STLP_NOTHROW { return false; }
+ # endif
++};
++
++// BFME SHIM: allocator<char> is where the out-of-line body actually lives.
++// Everything else folds onto it - the linker's identical-COMDAT pass collapses
++// every instantiation of this forwarding shape to the same address, which is
++// why the narrow and wide allocators share 0x000307F0 in the image.
++_STLP_TEMPLATE_NULL
++class allocator<char> {
++public:
++  typedef char       value_type;
++  typedef char*      pointer;
++  typedef const char* const_pointer;
++  typedef char&      reference;
++  typedef const char& const_reference;
++  typedef size_t     size_type;
++  typedef ptrdiff_t  difference_type;
++# if defined (_STLP_MEMBER_TEMPLATE_CLASSES)
++  template <class _Tp1> struct rebind { typedef allocator<_Tp1> other; };
++# endif
++  allocator() _STLP_NOTHROW {}
++  allocator(const allocator<char>&) _STLP_NOTHROW {}
++  ~allocator() _STLP_NOTHROW {}
++  pointer address(reference __x) const { return &__x; }
++  const_pointer address(const_reference __x) const { return &__x; }
++  static char* allocate(size_type __n, const void* __p);
++  void deallocate(pointer __p, size_type) { if (__p != 0) ::free((void*)__p); }
++  void deallocate(pointer __p) const { if (__p != 0) ::free((void*)__p); }
++  size_type max_size() const _STLP_NOTHROW { return size_t(-1); }
++  void construct(pointer __p, const char& __val) { _STLP_STD::_Construct(__p, __val); }
++  void destroy(pointer __p) { _STLP_STD::_Destroy(__p); }
+ };
+ 
+ _STLP_TEMPLATE_NULL

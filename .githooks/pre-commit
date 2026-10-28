@@ -210,7 +210,7 @@ while IFS= read -r path; do
         # could otherwise land a silent regression.
         # The suffixes tools/header_dependents.py walks (HEADER_SUFFIXES): a .hpp or
         # .inl edit reaches its includers exactly as a .h does.
-        *.h|*.hpp|*.hh|*.hxx|*.inl|*.inc|reference/shims/*) wide_change=1 ;;
+        *.h|*.hpp|*.hh|*.hxx|*.inl|*.inc|reference/shims/*|vendor/stlport-4.6/*|vendor/stlport-4.6-bfme/*|tools/stlport_overlay.py) wide_change=1 ;;
     esac
 done < "$staged_out"
 rm -f "$staged_out"
@@ -231,6 +231,7 @@ while IFS= read -r path; do
         reverse/data_rows.csv) data_rows_changed=1 ;;
         reverse/attempts/*) attempts_changed=1 ;;
         Code/*) deleted_source=1 ;;
+        vendor/stlport-4.6/*|vendor/stlport-4.6-bfme/*|tools/stlport_overlay.py) wide_change=1 ;;
     esac
 done < "$deleted_out"
 rm -f "$deleted_out"
@@ -293,6 +294,11 @@ fi
 # staged units need) would make them verify green against rows this commit does
 # not contain, leaving HEAD inconsistent; refuse before anything is verified.
 python3 tools/ledger_guard.py --staged || fail "unstaged ledger edits would be verified instead of the staged ledger (see above)"
+
+# The generated headers are read from working-tree patch bytes, so bind them
+# to the index even when the conservative path runs a full gate.
+git diff --quiet -- vendor/stlport-4.6 vendor/stlport-4.6-bfme tools/stlport_overlay.py \
+    || fail "unstaged STLport release/overlay inputs: build would verify the wrong bytes"
 
 if [ "$wide_change" -ne 0 ]; then
     # Byte-verify only the ledger sources the changed headers can reach

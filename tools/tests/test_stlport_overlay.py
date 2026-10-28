@@ -1,0 +1,175 @@
+"""Opt-in STLport overlay: exact patches, cache integrity, and unit isolation."""
+import hashlib
+import sys
+from pathlib import Path
+from types import SimpleNamespace
+
+import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import build
+import stlport_overlay as overlay
+import stlport_trial
+
+
+def test_patch_roundtrip_and_stale_context():
+    original = "one\ntwo\nthree\n"
+    patch = "--- a/stl/x.h\n+++ b/stl/x.h\n@@ -1,3 +1,3 @@\n one\n-two\n+changed\n three\n"
+    assert overlay.apply_patch(original, patch) == ("stl/x.h", "one\nchanged\nthree\n")
+    with pytest.raises(ValueError, match="context"):
+        overlay.apply_patch(original.replace("two", "stale"), patch)
+    with pytest.raises(ValueError, match="path"):
+        overlay.apply_patch(original, patch.replace("stl/x.h", "stl/../../x.h"))
+
+
+def test_locale_source_patch_is_bounded_and_binds_existing_owner():
+    patch = (overlay.PATCHES / "_c_locale_win32.c.patch").read_text(encoding="utf-8")
+    original = (overlay.TREE / overlay.LOCALE_SOURCE).read_text(encoding="utf-8")
+    rel, transformed = overlay.apply_patch(original, patch)
+    assert rel == overlay.LOCALE_SOURCE
+    assert transformed.count("((Rva0084E030Buffer *)GroupingBuffer)->squash();") == 2
+    assert "__FixGrouping" not in transformed
+    assert (overlay.materialize() / "base" / rel).read_text(encoding="utf-8").endswith(transformed)
+    with pytest.raises(ValueError, match="path"):
+        overlay.apply_patch(original, patch.replace(overlay.LOCALE_SOURCE, "src/other.c"))
+    with pytest.raises(ValueError, match="context"):
+        overlay.apply_patch(original.replace("static void __FixGrouping", "void __FixGrouping"), patch)
+
+
+def test_all_committed_patches_materialize_and_repair_cache():
+    result = overlay.materialize()
+    header = result / "base/stl/_list.h"
+    expected = header.read_bytes()
+    assert b"resize(size_type __new_size, const _Tp& __x)" in expected
+    assert b"_STLP_BFME_TREE_NODE_BASE_O2" in (result / "base/stl/_tree.h").read_bytes()
+    assert b"_BFME_RETAIL_TREE_INSERT_LAYOUT" in (result / "base/stl/_tree.c").read_bytes()
+    assert b"static char* allocate" in (result / "bfmealloc/stl/_alloc.h").read_bytes()
+    assert b"allocator<char>::allocate" not in (result / "base/stl/_list.h").read_bytes()
+    try:
+        header.write_bytes(b"corrupt generated header")
+        assert overlay.materialize() == result
+        assert header.read_bytes() == expected
+    finally:
+        header.write_bytes(expected)
+
+
+def test_missing_or_changed_upstream_fails_before_cache(tmp_path):
+    (tmp_path / "stlport").mkdir()
+    (tmp_path / "src").mkdir()
+    (tmp_path / "README").write_bytes(b"license")
+    (tmp_path / "SHA256SUMS").write_text(hashlib.sha256(b"license").hexdigest()+"  README\n")
+    overlay.verify_tree(tmp_path)
+    (tmp_path / "README").write_bytes(b"changed")
+    with pytest.raises(ValueError, match="missing or changed"):
+        overlay.verify_tree(tmp_path)
+    (tmp_path / "README").write_bytes(b"license")
+    (tmp_path / "stlport/injected.h").write_bytes(b"new header")
+    with pytest.raises(ValueError, match="inventory"):
+        overlay.verify_tree(tmp_path)
+
+
+@pytest.mark.parametrize("marker,selected", [("// stlport46", True), ("\ufeff// stlport46", True), ("// stlport", False),
+                                               ("// prose // stlport46", False), ("", False)])
+def test_marker_changes_only_opted_in_commands(tmp_path, monkeypatch, marker, selected):
+    source = tmp_path / "test.cpp"
+    source.write_text(marker+"\n// cl: /MD /Ireference/shims/bfmealloc\n", encoding="utf-8")
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    monkeypatch.setattr(overlay, "ROOT", tmp_path)
+    monkeypatch.setattr(build, "ensure_reference_current", lambda: None)
+    monkeypatch.setattr(build, "vc71_root", lambda: tmp_path)
+    monkeypatch.setattr(build, "source_extra_flags", lambda _: ["-MD", "-Ireference/shims/bfmealloc"])
+    monkeypatch.setattr(overlay, "materialize", lambda: tmp_path / "generated")
+    command, env = build.compiler_command(source, tmp_path / "x.obj")
+    if selected:
+        assert "-Igenerated/bfmealloc" in command
+        assert "-Igenerated/base" in command
+        assert str(overlay.TREE / "stlport") in env["INCLUDE"]
+        assert "-Ireference/shims/bfmealloc" not in command
+    else:
+        assert "-Ireference/shims/bfmealloc" in command
+        assert all("generated" not in c for c in command)
+        assert str(overlay.TREE / "stlport") not in env["INCLUDE"]
+
+
+def test_marker_checks_upstream_even_for_cached_command(tmp_path, monkeypatch):
+    source = tmp_path / "test.cpp"; source.write_text("// stlport46\n")
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    monkeypatch.setattr(overlay, "ROOT", tmp_path)
+    monkeypatch.setattr(build, "ensure_reference_current", lambda: None)
+    monkeypatch.setattr(build, "vc71_root", lambda: tmp_path)
+    def broken():
+        raise ValueError("upstream changed")
+    monkeypatch.setattr(overlay, "materialize", broken)
+    with pytest.raises(ValueError, match="upstream changed"):
+        build.compiler_command(source, tmp_path / "x.obj")
+
+
+def test_queue_uses_live_identity_and_extent(tmp_path, monkeypatch, capsys):
+    report = tmp_path / "report.csv"
+    report.write_text("kind,rva,size,name,source,header_46,knob,library_46\n"
+                      "library-copy,0x10,30,f,a.cpp,match-4.6,,\n"
+                      "library-copy,0x20,40,g,b.cpp,match-4.6,,\n")
+    ledger = tmp_path / "functions.csv"
+    ledger.write_text("name,target_rva,target_size,source,status\n"
+                      "f,0x10,30,a.cpp,matched\n"
+                      "g,0x20,41,b.cpp,matched\n")
+    monkeypatch.setattr(stlport_trial, "REPORT", report)
+    monkeypatch.setattr(build, "FUNCTIONS", ledger)
+    stlport_trial.queue(SimpleNamespace(tsv=True))
+    output = capsys.readouterr().out
+    assert "a.cpp" in output and "b.cpp" not in output
+
+
+def test_repair_queue_calls_the_stlport_lane(monkeypatch):
+    import repair_queue
+    calls = []
+    monkeypatch.setattr(stlport_trial, "queue", lambda args: calls.append(args.tsv))
+    assert repair_queue.main(["stlport", "--tsv"]) == 0
+    assert calls == [True]
+
+
+def test_unlisted_generated_header_cannot_shadow_upstream():
+    result = overlay.materialize()
+    injected = result / "base/stl/_alloc.h"
+    assert not injected.exists()
+    try:
+        injected.write_bytes(b"wrong allocator")
+        with pytest.raises(ValueError, match="unlisted generated"):
+            overlay.materialize()
+    finally:
+        injected.unlink(missing_ok=True)
+
+
+def test_queue_does_not_reserve_an_already_opted_in_file(tmp_path, monkeypatch, capsys):
+    report = tmp_path / "report.csv"
+    report.write_text("kind,rva,size,name,source,header_46,knob,library_46\n"
+                      "library-copy,0x10,30,f,a.cpp,match-4.6,,\n")
+    ledger = tmp_path / "functions.csv"
+    ledger.write_text("name,target_rva,target_size,source,status\n"
+                      "f,0x10,30,a.cpp,matched\n")
+    (tmp_path / "a.cpp").write_text("// stlport46\n")
+    monkeypatch.setattr(stlport_trial, "ROOT", tmp_path)
+    monkeypatch.setattr(stlport_trial, "REPORT", report)
+    monkeypatch.setattr(build, "FUNCTIONS", ledger)
+    stlport_trial.queue(SimpleNamespace(tsv=True))
+    assert capsys.readouterr().out == ""
+
+
+@pytest.mark.parametrize("relative", ["vendor/stlport-4.6/stlport/stl/_cwchar.h",
+                                     "build/stlport46/hash/base/stl/_cwchar.h"])
+def test_46_native_header_macros_use_the_stlport_inventory_rules(tmp_path, monkeypatch, relative):
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    monkeypatch.setattr(overlay, "TREE", tmp_path / "vendor/stlport-4.6")
+    header = tmp_path / relative
+    header.parent.mkdir(parents=True)
+    header.write_text("#include _STLP_NATIVE_C_HEADER(wchar.h)\n")
+    assert not build._include_escapes_search_roots(header, True)
+    assert build._include_escapes_search_roots(header, False)
+
+
+def test_legacy_non_utf8_comments_do_not_opt_in_or_fail(tmp_path):
+    source = tmp_path / "legacy.cpp"
+    source.write_bytes(b"// legacy comment \xff\x80\nvoid f() {}\n")
+    assert not overlay.selected(source)
+    flags = ["-MD", "-Ireference/shims/bfmealloc"]
+    assert overlay.include_dirs(source, flags) == flags

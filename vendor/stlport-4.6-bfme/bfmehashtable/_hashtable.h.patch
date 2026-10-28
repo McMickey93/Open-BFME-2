@@ -1,0 +1,37 @@
+--- a/stl/_hashtable.h
++++ b/stl/_hashtable.h
+@@ -562,15 +562,28 @@
+     return _M_bkt_num_key(_M_get_key(__obj), __n);
+   }
+ 
+-  _Node* _M_new_node(const value_type& __obj)
++  // BFME's hashtable::_M_insert INLINES this: retail allocates the node with
++  // `push 0 / push 0Ch / call` and constructs in place, where our build emits a
++  // call to _M_new_node.  __forceinline is what closes that; MSVC will not
++  // inline it on its own even at /Ob2.
++  // ...and the try region has to go with it.  MSVC will not inline a function
++  // containing a try block however hard you ask, and retail's inlined copy has
++  // no unwind handler around the construct -- it allocates, stores the null
++  // next pointer, constructs and returns.
++  // String-uint _M_insert at 0x0060D1B3 calls _M_new_node out of line
++  // (retail 68B); int _M_insert at 0x00620F60 needs the forced inline.
++  // Default keeps __forceinline; define BFME_HASHTABLE_NEW_NODE_NOFORCEINLINE
++  // in the TU that needs the out-of-line call (string-uint home TU only).
++#ifdef BFME_HASHTABLE_NEW_NODE_NOFORCEINLINE
++#define BFME_HASHTABLE_NEW_NODE_INLINE inline
++#else
++#define BFME_HASHTABLE_NEW_NODE_INLINE __forceinline
++#endif
++  BFME_HASHTABLE_NEW_NODE_INLINE _Node* _M_new_node(const value_type& __obj)
+   {
+     _Node* __n = _M_num_elements.allocate(1);
+     __n->_M_next = 0;
+-    _STLP_TRY {
+-      _Construct(&__n->_M_val, __obj);
+-      //      return __n;
+-    }
+-    _STLP_UNWIND(_M_num_elements.deallocate(__n, 1));
++    _Construct(&__n->_M_val, __obj);
+     return __n;
+   }
+   

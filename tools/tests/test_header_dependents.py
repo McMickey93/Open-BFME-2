@@ -391,3 +391,17 @@ def test_a_data_ledger_under_a_miscased_directory_is_refused(repo, capsys):
     git(repo, "commit", "-qm", "header")
     with pytest.raises(SystemExit):
         H.main(["--range", old, head(repo)])
+
+
+@pytest.mark.parametrize("path", ["vendor/stlport-4.6-bfme/_tree.c.patch",
+    "vendor/stlport-4.6/stlport/vector", "tools/stlport_overlay.py"])
+def test_stlport_generated_inputs_force_full_gate(repo, capsys, path):
+    base(repo)
+    put(repo, path, "input\n")
+    assert run(repo, capsys, "--staged")[0] == 2
+    git(repo, "commit", "-qm", "STLport input")
+    before = head(repo)
+    git(repo, "rm", "-q", path)
+    assert run(repo, capsys, "--staged")[0] == 2
+    git(repo, "commit", "-qm", "remove input")
+    assert run(repo, capsys, "--range", before, head(repo))[0] == 2
