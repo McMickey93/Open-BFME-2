@@ -5963,8 +5963,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x000AB450,25,code,,,-,,Code/GameEngine/Source/Common/S2DeleteHeldObject.cpp
 0x000AB469,28,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Rva00788A00Assign.cpp
 0x000AB485,886,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,N,N=Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp W=Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptAux.cpp provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimDataRenderData.cpp
-0x000AB7FB,64,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,C,C=0x000AB485..0x000AB83B provisional,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva000AB7FB.cpp
-0x000AB83B,182,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,N,N=Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptAuxGeometryLoad.cpp
+0x000AB7FB,64,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,C,C=0x000AB485..0x000AB83B provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
+0x000AB83B,182,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,N,N=Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
 0x000AB8F1,31,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva000AB8F1.cpp
 0x000AB910,70,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,K,K=Rva000AB910,Code/GameEngine/Source/Common/Rva000AB910Ctor.cpp
 0x000AB956,23,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,K,K=Rva000AB910,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp
@@ -63112,8 +63112,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00760EAE,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptDisplayString.cpp,approved,P,P=0x000AA966@FuncInfo0x009040B8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptDisplayStringCtor.cpp
 0x00760EB6,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptDisplayString.cpp,approved,P,P=0x000AA966@FuncInfo0x009040B8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptDisplayStringCtor.cpp
 0x00760EBE,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptDisplayString.cpp,approved,P,P=0x000AA966@FuncInfo0x009040B8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptDisplayStringCtor.cpp
-0x00760EC8,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva000AB7FB.cpp
-0x00760ED3,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva000AB7FB.cpp
+0x00760EC8,11,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
+0x00760ED3,10,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
 0x00760EDD,8,code,,,-,,Code/gen_small/uw_gen_010.cpp
 0x00760EE5,10,code,,,-,,Code/GameEngine/Source/Common/Rva000AAD26FamilyDtors.cpp
 0x00760EEF,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptDisplayString.cpp,proposed,P,P=0x000AADC1@FuncInfo0x0090412C,Code/GameEngine/Source/Common/Rva000AADC1Dtor.cpp
@@ -63127,10 +63127,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00760F3C,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,P,P=0x000AB193@FuncInfo0x00904194,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp
 0x00760F44,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,P,P=0x000AB193@FuncInfo0x00904194,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp
 0x00760F4C,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,P,P=0x000AB193@FuncInfo0x00904194,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp
-0x00760F56,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptAuxGeometryLoad.cpp
-0x00760F5E,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptAuxGeometryLoad.cpp
-0x00760F66,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptAuxGeometryLoad.cpp
-0x00760F6E,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptAuxGeometryLoad.cpp
+0x00760F56,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
+0x00760F5E,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
+0x00760F66,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
+0x00760F6E,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp,approved,P,P=0x000AB83B@FuncInfo0x009041C8 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptAnimData.cpp
 0x00760F78,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,P,P=0x000AB910@FuncInfo0x009041F4,Code/GameEngine/Source/Common/Rva000AB910Ctor.cpp
 0x00760F80,11,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,P,P=0x000AB910@FuncInfo0x009041F4,Code/gen_small/uw_gen_010.cpp
 0x00760F8B,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/AptShapeContainer.cpp,proposed,P,P=0x000AB910@FuncInfo0x009041F4,Code/GameEngine/Source/Common/Rva000AB910Ctor.cpp
