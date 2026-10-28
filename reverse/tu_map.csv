@@ -39679,8 +39679,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004BAB25,17,code,Code/GameEngine/Source/GameLogic/Object/Update/ReflectDamage.cpp,proposed,N,N=Code/GameEngine/Source/GameLogic/Object/Update/ReflectDamage.cpp,Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp
 0x004BAB36,25,code,Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamage.cpp,proposed,K,K=Rva004BAB36,Code/GameEngine/Source/Common/Rva004B96CCDerived.cpp
 0x004BAB4F,6,code,,,-,,Code/GameEngine/Source/Common/ModuleNameGetters3.cpp
-0x004BAB55,69,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamagePoolKey.cpp
-0x004BAB9A,26,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamageModuleDataCtor.cpp
+0x004BAB55,69,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp
+0x004BAB9A,26,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp
 0x004BABB4,42,code,Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamage.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamage.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamageConstructor.cpp
 0x004BABDE,28,code,Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamage.cpp,approved,C,C=0x004BABB4..0x004BABFA provisional,Code/GameEngine/Source/Common/Rva004B96CCDerived.cpp
 0x004BABFA,137,code,Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamage.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamage.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Damage/ReflectDamageOnDamage.cpp
@@ -81371,8 +81371,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078F516,8,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,P,P=0x004BA9E4@FuncInfo0x009404A0,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX_mapLoadPostProcess.cpp
 0x0078F51E,11,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,P,P=0x004BA9E4@FuncInfo0x009404A0,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX_mapLoadPostProcess.cpp
 0x0078F529,10,code,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,approved,P,P=0x004BA9E4@FuncInfo0x009404A0,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX_mapLoadPostProcess.cpp
-0x0078F533,13,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,P,P=0x004BAB55@FuncInfo0x009404C4 provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamagePoolKey.cpp
-0x0078F540,10,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,P,P=0x004BAB55@FuncInfo0x009404C4 provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamagePoolKey.cpp
+0x0078F533,13,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,P,P=0x004BAB55@FuncInfo0x009404C4 provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp
+0x0078F540,10,code,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp,approved,P,P=0x004BAB55@FuncInfo0x009404C4 provisional,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamage.cpp
 0x0078F54A,8,code,,,-,,Code/GameEngine/Source/Common/INI/INIInlineTableParsers.cpp
 0x0078F552,10,code,,,-,,Code/GameEngine/Source/Common/INI/INIInlineTableParsers.cpp
 0x0078F55C,8,code,Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamage.cpp,approved,P,P=0x004BAD10@FuncInfo0x00940514 provisional,Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamage.cpp
