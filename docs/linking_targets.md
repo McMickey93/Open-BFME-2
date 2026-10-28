@@ -34,6 +34,14 @@ selection and external consumer/census confirmation remain open; the batch
 audit is inconclusive.
 [Evidence](../reverse/attempt_support/color-picker-floor-link-20261028-codexb.md).
 
+Additional current target (2026-10-28, base `c58504c47d`, index `41c28839bf`):
+`Common/Rva000677CAHostRva0006DC8E.cpp` retains LINKS for 249 authored bytes
+with both rows exact after retiring two optimization pragmas and redundant
+`/Oy-`. Four unused iterator-copy diagnostics disappear. Strict preparation
+passes; the older-index batch audit remains inconclusive for external consumers.
+TU-approval prerequisites and census confirmation remain open.
+[Evidence](../reverse/attempt_support/baseheightmap-approval-cleanup-20261028-codexb.md).
+
 ## One blocker: fresh candidates
 
 Additional current target (2026-10-28, base `4154365966`, index `41c28839bf`):

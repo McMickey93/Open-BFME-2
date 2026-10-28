@@ -10662,8 +10662,6 @@ pragma_optimize	Code/GameEngine/Source/Common/RTS/Team.cpp	"s",off	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/Team.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/TeamFactoryList.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/RTS/TeamFactoryList.cpp	"gsy",on	1
-pragma_optimize	Code/GameEngine/Source/Common/Rva000677CAHostRva0006DC8E.cpp	"",on	1
-pragma_optimize	Code/GameEngine/Source/Common/Rva000677CAHostRva0006DC8E.cpp	"y",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva0007BEDAOverlap.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva0007BEDAOverlap.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva000A9DC4Get.cpp	"",on	1

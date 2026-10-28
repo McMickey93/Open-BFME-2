@@ -1,0 +1,62 @@
+{
+  "added": [],
+  "after_comdats": 9,
+  "after_sha256": "05fabb2e9e7476e68ec47986ac44970a7351b6fc87c869ae8c68b6118ef3235e",
+  "base_revision": "c58504c47db4fda5f64eb0714843ade39c46abdc",
+  "before_comdats": 9,
+  "before_sha256": "0a333b93912a3443adaf5cbc03479e372ad085c97b97bc532e7533c1f15aef40",
+  "changed": {
+    "??0?$_Bit_iter@_NPB_N@_STL@@QAE@ABU?$_Bit_iter@U_Bit_reference@_STL@@PAU12@@1@@Z": [
+      [
+        "24e5192d76e5",
+        22,
+        null
+      ],
+      [
+        "61b49965367b",
+        19,
+        null
+      ]
+    ],
+    "??G?$_Bit_iter@_NPB_N@_STL@@QBEHABU01@@Z": [
+      [
+        "52294bc6cc3b",
+        26,
+        null
+      ],
+      [
+        "ef47a5051f30",
+        23,
+        null
+      ]
+    ],
+    "?begin@?$vector@_NV?$allocator@_N@_STL@@@_STL@@QBE?AU?$_Bit_iter@_NPB_N@2@XZ": [
+      [
+        "5639f1fe1d9b",
+        20,
+        null
+      ],
+      [
+        "ccdd353e0161",
+        17,
+        null
+      ]
+    ],
+    "?end@?$vector@_NV?$allocator@_N@_STL@@@_STL@@QBE?AU?$_Bit_iter@_NPB_N@2@XZ": [
+      [
+        "c41c174990cf",
+        21,
+        null
+      ],
+      [
+        "74591f131973",
+        18,
+        null
+      ]
+    ]
+  },
+  "index_commit": "41c28839bf",
+  "remaining_facts_equal": true,
+  "removed": [],
+  "source": "Code/GameEngine/Source/Common/Rva000677CAHostRva0006DC8E.cpp"
+}

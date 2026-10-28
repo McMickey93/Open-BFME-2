@@ -1,4 +1,4 @@
-// cl: /O1 /Oy- /DNDEBUG /MD /arch:SSE /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC
+// cl: /O1 /DNDEBUG /MD /arch:SSE /D_CRTIMP= /D_STLP_USE_STATIC_LIB /D_STLP_USE_MALLOC
 //
 // ?updateView@Rva000677CAHost@@QAEX_NHHHH@Z, retail 0x0006dc8e, 195 bytes. Banked partial (score 1.0) closed by tools/permute.py;
 // the body is the banked one up to statement/operand order and local types.
@@ -11,8 +11,6 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
-// Retail's /O1 _Bit_reference::operator= (0x00066099): in-class inline members take the optimize state of their definition.
-#pragma optimize("y", on)
 #include <vector>
 // bfme link decl-only begin
 namespace _STL { template <> _Bit_reference _Bit_iter<_Bit_reference, _Bit_reference *>::operator*() const; }
@@ -28,7 +26,6 @@ namespace _STL { template <> _Bit_reference vector<bool,allocator<bool> >::opera
 // Suppress this TU's non-retail copy of ?resize@?$vector@_NV?$allocator@_N@_STL@@@_STL@@QAEXI_N@Z:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 namespace _STL { template <> void vector<bool,allocator<bool> >::resize(unsigned int,bool); }
-#pragma optimize("", on)
 
 // __malloc_alloc<0> allocate/deallocate otherwise instantiate per-TU
 // COMDATs (one byte shape per TU malloc/free wiring); explicit
