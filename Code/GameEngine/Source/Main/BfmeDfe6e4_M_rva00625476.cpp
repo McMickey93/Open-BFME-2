@@ -1,11 +1,8 @@
-// cl: /DNDEBUG /MD /EHsc /G7
+// cl: /DNDEBUG /MD /EHsc
 // ?_M_rva00625476@BfmeDfe6e4@@QAEXXZ
-// retail 0x00225476, 28 bytes. Dedicated TU: WinMain.cpp owns the class
-// declaration and the two call sites; this unit carries the byte-exact body
-// (guarded counter increment under the class critical section). /G7 for the
-// add-mem-1 counter (inc-to-add wall; Begin_Scene_Inner precedent — no source
-// spelling produces add-mem under /O1, and WinMain.cpp itself must keep its
-// own flags for its landed rows).
+// retail 0x00225476, 28 bytes. Guarded counter increment under the class
+// critical section. The volatile counter gives retail's add-mem under the
+// region's /O1 /G7, as in the _M_rva00625699 decrement sibling.
 
 struct CRITICAL_SECTION
 {
@@ -24,7 +21,7 @@ private:
 	// Retail layout: guarded counter at +0x6C, critical section at +0x70
 	// (the sibling _M_rva00625699 decrements the counter the same way).
 	unsigned char m_unreconstructed_00[0x6C];
-	int m_refCount; // +0x6C
+	volatile int m_refCount; // +0x6C
 	CRITICAL_SECTION m_cs; // +0x70
 };
 
