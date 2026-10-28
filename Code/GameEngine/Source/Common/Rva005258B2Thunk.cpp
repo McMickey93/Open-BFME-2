@@ -21,13 +21,13 @@ class Rva005258B2
 {
 public:
 	InGameHeroSelectInterface::Impl *m_ptr;
-	void rva005258B2(void *p);
+	void rva005258B2(void *hero);
 	void rva005258B9(const AsciiString *a);
 };
 
-void Rva005258B2::rva005258B2(void *p)
+void Rva005258B2::rva005258B2(void *hero)
 {
-	m_ptr->OnHeroAttacked(p);
+	m_ptr->OnHeroAttacked(hero);
 }
 
 void Rva005258B2::rva005258B9(const AsciiString *asciiString)

@@ -3664,3 +3664,4 @@ local,Rva001F72E8ColorScale::v,Rva001F72E8ColorScale::colorScale,inferred,agree:
 local,AptScoreScreen::OnSystemMsg::x,AptScoreScreen::OnSystemMsg::mouseX,inferred,agree:nl-eeec488ed42b,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenOnSystemMsg.cpp,0x0051C452
 local,AptScoreScreen::OnSystemMsg::y,AptScoreScreen::OnSystemMsg::mouseY,inferred,agree:nl-9036065aa650,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenOnSystemMsg.cpp,0x0051C452
 function,?Rva00149FD0SetModelFlags@@YAXPAVRva00149FD0RenderObj@@IH@Z,?Set_MeshModel_Flag@@YAXPAVRva00149FD0RenderObj@@IH@Z,inferred,agree:nl-876f7e4f7079,Code/Libraries/Source/WWVegas/WW3D2/Rva00149FD0MeshModelFlags.cpp,0x00149FD0
+param,Rva005258B2::rva005258B2::p,Rva005258B2::rva005258B2::hero,inferred,agree:nl-382d0d54cc4c,Code/GameEngine/Source/Common/Rva005258B2Thunk.cpp,0x005258B2
