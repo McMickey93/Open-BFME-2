@@ -43478,8 +43478,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0051267F,13,code,,,-,,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp
 0x0051268C,94,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowConstructor.cpp
 0x005126EA,11,code,,displaced,-,N=Code/GameEngine/Source/Common/_bfme_AptGameWindow.cpp,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB12.cpp
-0x005126F5,90,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowDestructor.cpp
-0x0051274F,136,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowMessages.cpp
+0x005126F5,90,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp provisional,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp
+0x0051274F,136,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp provisional,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp
 0x005127D7,28,code,,displaced,-,N=Code/GameEngine/Source/Common/_bfme_AptGameWindow.cpp,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB12.cpp
 0x005127F3,27,code,,,-,,Code/GameEngine/Source/Common/VslotSmallBodiesS.cpp
 0x0051280E,21,code,,,-,,Code/GameEngine/Source/Common/Rva0051280EEnable.cpp
@@ -83635,11 +83635,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00794E0E,10,code,Code/GameEngine/Source/Common/AptMessenger.cpp,approved,P,P=0x005125ED@FuncInfo0x009481EC provisional,Code/GameEngine/Source/Common/Rva00523775Dtor.cpp
 0x00794E18,8,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x0051268C@FuncInfo0x00948210 provisional,Code/gen_small/uw_gen_011.cpp
 0x00794E20,10,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x0051268C@FuncInfo0x00948210 provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowConstructor.cpp
-0x00794E2A,8,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x005126F5@FuncInfo0x0094823C provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowDestructor.cpp
-0x00794E32,22,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x005126F5@FuncInfo0x0094823C provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowDestructor.cpp
-0x00794E48,10,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x005126F5@FuncInfo0x0094823C provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowDestructor.cpp
-0x00794E52,8,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x0051274F@FuncInfo0x00948260 provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowMessages.cpp
-0x00794E5A,10,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x0051274F@FuncInfo0x00948260 provisional,Code/GameEngine/Source/GameClient/GUI/BfmeAptGameWindowMessages.cpp
+0x00794E2A,8,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x005126F5@FuncInfo0x0094823C provisional,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp
+0x00794E32,22,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x005126F5@FuncInfo0x0094823C provisional,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp
+0x00794E48,10,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x005126F5@FuncInfo0x0094823C provisional,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp
+0x00794E52,8,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x0051274F@FuncInfo0x00948260 provisional,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp
+0x00794E5A,10,code,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp,approved,P,P=0x0051274F@FuncInfo0x00948260 provisional,Code/GameEngine/Source/GameClient/GUI/_bfme_AptGameWindow.cpp
 0x00794E64,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignReview.cpp,approved,P,P=0x00512894@FuncInfo0x0094828C,Code/GameEngine/Source/GameClient/GUI/AptCampaignReview.cpp
 0x00794E6C,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignReview.cpp,approved,P,P=0x00512894@FuncInfo0x0094828C,Code/GameEngine/Source/GameClient/GUI/AptCampaignReview.cpp
 0x00794E74,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignReview.cpp,approved,P,P=0x00512894@FuncInfo0x0094828C,Code/GameEngine/Source/GameClient/GUI/AptCampaignReview.cpp
