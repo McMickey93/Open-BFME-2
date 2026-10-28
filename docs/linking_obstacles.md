@@ -7298,6 +7298,12 @@ Trial: `Rva00622290CollectKeys.cpp` with decl-only `insert`/`insert_unique` spec
 Remaining / next check:
 - `Render2DSentenceDrawBFME2.cpp`: `_floorf`, `operator=` and `??_EPendingSurfaceStruct` repaired (above); carry the 80 previewed units into the next census. Its own link waits on the `g_Va00DEC49C`/`_g_BfmeRender2DZ` naming.
 - `AIBuilder.cpp` (claimed by another seat): its `vector<Object *>` copies must equal retail or not be emitted; the next definer (GenericObjectCreationNuggetReallyCreate.cpp, 2709) is retail.
+  - 2026-10-28, base `7e5426520a`, index `41c28839bf`: the current
+    `GameLogicDestructor.cpp` preview also fails on the selected
+    `vector<Object *>` destructor. Its 30-row unit remains blocked by this
+    same provider selection; the previously documented AIBuilder suppression
+    trials were not repeated. Recheck this consumer after the provider or an
+    approved link-order rebaseline changes. Census confirmation is pending.
   - 2026-10-28 (claude-opus-5-5, index 41c28839bf): both AIBuilder-side routes fail for the destructor. Retail's
     `~vector<Object *>` is the 5-byte `jmp 0x001F1609` (0x001F22A3); AIBuilder emits its out-of-line copy only for
     `checkForNewUpgrades`' unwind funclets, while retail inlines the destructor (with the base cleanup) in that body.
