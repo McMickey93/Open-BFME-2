@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib
+// cl: /O1 /G7 /arch:SSE /Ireference/shims/bfme2_ascii /DNDEBUG /DWIN32 /D_WINDOWS /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib /D_CRTIMP=
 // stlport
 //
 // Bodies ported from Open-BFME-1's
@@ -26,7 +26,9 @@
 #include "ascii_string.h"
 
 #include <cstddef>
-extern "C" void __cdecl free(void *);
+// Node storage uses the game's direct C free wrapper at RVA 0x00030830.
+// /D_CRTIMP= keeps the CRT header declaration from selecting its IAT entry.
+#include <stdlib.h>
 // Keep __node_alloc<true,0>::deallocate inline-only: every call here is inlined,
 // and this TU's /O1 COMDAT copy differs from the copy the link keeps.
 namespace _STL {
