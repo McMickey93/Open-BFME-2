@@ -58,3 +58,39 @@ Verification before and after the repair:
 
 No ledger source moves, debt retirements, hatches or pins accompany this
 prerequisite repair. The supported merge remains a separate step.
+
+## Supported merge and outgoing path audit
+
+After the separately published repair (`9bd5afb745`), the refreshed naming
+snapshot passes `consolidate --check`. The supported merge dry run accepts
+only the destination and onApproachReached donor, eight rows total. Applying
+through `tu_skeleton.py --merge` removes one source file and repoints exactly
+one source cell each in functions.csv and tu_map.csv. It does not regenerate
+the committed TU map or change a row's name, extent or approval.
+
+The ordinary destination build passes 8/8, with frozen-file and ledger checks
+passing. The merged object retains exactly the premerge union of 23 external
+COMDAT names, byte/relocation digests and extents; external definitions and
+dependencies also match that union. The three remaining units (destination,
+Remove, GetExitPosition) preview LINKS for the same 1,304 authored bytes.
+The destination's 542-to-620 preview increase moves the existing 78-byte
+callback; it is not newly linked coverage. The outgoing batch audit remains
+INCONCLUSIVE for the same stale-index/missing-consumer evidence limitation.
+
+The path audit covers the complete pending range from `origin/master` at
+`d40cc2d9f2` through the repair and staged merge. The callback donor is the
+only removed path. A tracked-tree search for its basename/full path finds no
+active tool, hook, workflow, include, build configuration or fold-proof
+consumer. Remaining references are the merged source's provenance comment,
+the historical naming record in name_basis.csv, the historical census receipt
+in link_status.csv and a prior attempt's dry-run report; those stay historical.
+Active ledger ownership resolves to DockUpdate.cpp. Neither input has keys in
+the gate, data, code-identity or hatch registers or the header/MS-header queues.
+The merge tool refreshes those queues and reports no queue changes.
+
+Remaining donors are retained: header-backed trials now first report duplicate
+placement-new definitions in the shared GameMemory.h view; loadDockPositions
+and xfer still need full-object declarations; Remove and Compute/Update retain
+their field/view conflicts. The destructor trial reaches byte verification but
+does not match. No rejected candidate source is installed. Full consumer
+binding confirmation for the prerequisite repair remains a next-census task.

@@ -125,6 +125,8 @@ private:
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdate.cpp
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdate.cpp
+
 bool DockUpdate::isClearToApproach(const Object *docker) const
 {
 	if (m_numberApproachPositions == -1)
@@ -234,10 +236,6 @@ void DockUpdate::cancelDock(Object *docker)
 	}
 }
 
-// tu-skeleton: 0x0058966B 27B ??$uninitialized_fill_n@PAW4ObjectID@@IW41@@_STL@@YAPAW4ObjectID@@PAW41@IABW41@@Z -- matched in Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp (not merged yet)
-
-// tu-skeleton: 0x00589686 42B ??$__copy_backward@PAW4ObjectID@@PAW41@H@_STL@@YAPAW4ObjectID@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z -- matched in Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateModuleDataCtor.cpp
 
   // folded nine-class vftable 0x00C4ED70, by its data-ledger name
@@ -249,6 +247,10 @@ DockUpdateModuleData::DockUpdateModuleData()
 	m_vtable = (void *)((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@"));
 	m_0C = 1;
 }
+
+// tu-skeleton: 0x0058966B 27B ??$uninitialized_fill_n@PAW4ObjectID@@IW41@@_STL@@YAPAW4ObjectID@@PAW41@IABW41@@Z -- matched in Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp (not merged yet)
+
+// tu-skeleton: 0x00589686 42B ??$__copy_backward@PAW4ObjectID@@PAW41@H@_STL@@YAPAW4ObjectID@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z -- matched in Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp (not merged yet)
 
 // tu-skeleton: 0x005896C1 17B ?buildFieldParse@DockUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
 
@@ -268,7 +270,32 @@ DockUpdateModuleData::DockUpdateModuleData()
 
 // tu-skeleton: 0x00589A4E 99B ?getExitPosition@DockUpdate@@UAEXPAVObject@@PAUCoord3D@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateGetExitPosition.cpp (not merged yet)
 
-// tu-skeleton: 0x00589AB1 78B ?onApproachReached@DockUpdate@@UAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdate_onApproachReached.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdate_onApproachReached.cpp
+
+// ?onApproachReached@DockUpdate@@UAEXPAVObject@@@Z @0x00589AB1 78B.
+// Zero Hour DockUpdate::onApproachReached: finds the docker's ID (Object
+// +0x74) among the approach-position owners and sets that index's bit in the
+// approach-reached vector<bool>. DockUpdateInterface slot 8 of the docks'
+// +0x20 interface vtables 0x00C51AC0 0x00C51C30 0x00C53740 (0x00C51D18 holds
+// MonsterDockUpdate's override 0x004A159E), so `this` is the +0x20 subobject: owners at DockUpdate +0x60 (interface +0x40),
+// reached bits at +0x6C (interface +0x4C). MonsterDockUpdate::onApproachReached
+// 0x004A159E calls it first, as Zero Hour's overrides call the base.
+// Evidence: offsets +0x40 +0x44 size sar2 plus vector bool call rowed 0x0006BE1F in DockUpdateCtor plus caller 0x004A159E passing object plus neighbour DockUpdateRemove layout.
+// Match the destination TU's existing secondary-interface view.
+// The accessed owners and reached-bit vector stay at interface +0x40/+0x4C.
+
+void DockUpdate::onApproachReached(Object *docker)
+{
+	int target = docker->m_id;
+	for (unsigned int i = 0; i < m_approachPositionOwners.size(); ++i)
+	{
+		if (m_approachPositionOwners[i] == target)
+		{
+			m_approachPositionReached[i] = true;
+			break;
+		}
+	}
+}
 
 // tu-skeleton: 0x00589AFF 126B ?rva00589AFF@DockUpdate@@QAEXH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateRemove.cpp (not merged yet)
 
@@ -293,3 +320,25 @@ DockUpdateModuleData::DockUpdateModuleData()
 // tu-skeleton: 0x0058A290 384B ??0DockUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0058A410 439B ?xfer@DockUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC0F 22B ?rva0079cc0f@@YAXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateLoadDockPositions.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC25 10B __ehhandler$?loadDockPositions@DockUpdate@@IAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateLoadDockPositions.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC2F 8B Unwind@00b9cc2f -- matched in Code/GameEngine/Source/Common/Rva0058A0F4Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC37 11B Unwind@00b9cc37 -- matched in Code/GameEngine/Source/Common/Rva0058A0F4Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC42 11B Unwind@00b9cc42 -- matched in Code/GameEngine/Source/Common/Rva0058A0F4Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC4D 10B __ehhandler$??1DockUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0058A0F4Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC57 8B Unwind@00b9cc57 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC5F 11B Unwind@00b9cc5f -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC6A 11B Unwind@00b9cc6a -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC75 11B uw_0079cc75 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+
+// tu-skeleton: 0x0079CC80 10B __ehhandler$??0DockUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateCtor.cpp (not merged yet)

@@ -68,8 +68,9 @@ authored-byte previews or commit-title gains into a projected headline.
 
 ### DockUpdate approach callback composition (2026-10-28)
 
-Status: prerequisite repaired; complete composition and census confirmation
-pending. Inspected base: `662868151a`; preview index: `14dc3d2467`.
+Status: callback prerequisite repaired and callback merged into the approved
+TU; other donors and census confirmation pending. Inspected base:
+`662868151a`; preview index: `14dc3d2467`.
 
 The onApproachReached donor now uses the destination's existing secondary
 interface view. Native offsets and slot 8 agree, all eight edited-source rows
@@ -81,8 +82,12 @@ index predates the base and lacks per-object consumer names; carry the scope
 to the next normal census. No new linked bytes are claimed.
 
 [Evidence and remaining donor prerequisites](../reverse/attempt_support/dock-update-consolidation-20261028-codex.md).
-Next: use the supported merge tool for the reconciled callback; retain the
-other donors until their complete-object/header contracts are reconciled.
+The supported merge removes the callback donor file, preserves all eight rows
+and the exact union of 23 external COMDAT bodies, and keeps external
+definitions/dependencies unchanged. The remaining three units preview the
+same 1,304 authored bytes. The path/debt/queue audit is recorded in the evidence.
+Next: reconcile the remaining complete-object/header contracts; include the
+removed-provider scope in the next census. The batch audit remains inconclusive.
 
 ### LINK-001: landed repairs still appear in the historical census
 
