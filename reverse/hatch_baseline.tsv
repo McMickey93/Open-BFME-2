@@ -300,7 +300,6 @@ address_global	Code/GameEngine/Source/Common/Rva004EA420Init.cpp	g_Va00E04490	2
 address_global	Code/GameEngine/Source/Common/Rva004EDDD3.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/Rva004FB27EBufferCalls.cpp	g_Va00E04508	3
 address_global	Code/GameEngine/Source/Common/Rva004FB303Thunks.cpp	g_Va00E04508	4
-address_global	Code/GameEngine/Source/Common/Rva004FB582Init.cpp	g_Va00E04508	3
 address_global	Code/GameEngine/Source/Common/Rva00500606EqualRange.cpp	g_Va00E04544	3
 address_global	Code/GameEngine/Source/Common/Rva005009AANextStep.cpp	g_Va00E04544	3
 address_global	Code/GameEngine/Source/Common/Rva00503E17BezierCall.cpp	g_Va00863BFC	1
@@ -1150,6 +1149,7 @@ address_global	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
 address_global	Code/GameEngine/Source/GameLogic/System/GameLogic.cpp	g_Va00A04908	2
 address_global	Code/GameEngine/Source/GameLogic/System/GameLogic.cpp	g_Va00E032E8	3
 address_global	Code/GameEngine/Source/GameLogic/System/GameLogicInit.cpp	g_Va00DFE840	2
+address_global	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAI.cpp	g_Va00E04508	3
 address_global	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAIBuilderScores.cpp	g_Va007C26F0	2
 address_global	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAIOrders.cpp	g_Va00E04508	2
 address_global	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAISupport/LivingWorldAIArmyMover.cpp	g_Va00E04544	3
