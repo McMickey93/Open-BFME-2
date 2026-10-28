@@ -63,8 +63,8 @@ class FadeInTextRender {public:
 // 59668D and the single cloud animation are target-specific. Original method
 // spelling is retained as unknown; the class follows the named LoadAssets slot.
 void FadeInTextRender::rva00596908(Text004721F0* text, const ICoord2D* pos, unsigned frame) {
- int w, h;
- text->size(&w, &h);
+ int textWidth, h;
+ text->size(&textWidth, &h);
  UnicodeString s = text->getText();
  const ICoord2D &point = *pos;
  int y=point.y-(height-h)/2;

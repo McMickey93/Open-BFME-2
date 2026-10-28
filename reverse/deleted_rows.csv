@@ -3938,3 +3938,5 @@ __ehhandler$?rva002DC52B@GameState@@QAEXXZ,0x00777E76,"Renamed to __ehhandler$?g
 __ehhandler$?rva00177F82@Rva00177860@@QAEXAAVRenderInfoClass@@@Z,0x00767FE5,"Renamed to __ehhandler$?Render@Rva00177860@@QAEXAAVRenderInfoClass@@@Z by tools/rename.py (inferred)"
 ?rva005E118B@@YIXPAVRva005F8A7ESub@@@Z,0x005E118B,"Renamed to ?HideTimerOverlay@@YIXPAVRva005F8A7ESub@@@Z by tools/rename.py (inferred)"
 ?Rva00149FD0SetModelFlags@@YAXPAVRva00149FD0RenderObj@@IH@Z,0x00149FD0,"Renamed to ?Set_MeshModel_Flag@@YAXPAVRva00149FD0RenderObj@@IH@Z by tools/rename.py (inferred)"
+?Rva004D6B6E@@YAMM@Z,0x004D6B6E,"Renamed to ?focalLengthToFov@@YAMM@Z by tools/rename.py (inferred)"
+?Rva004D6BB8@@YAMM@Z,0x004D6BB8,"Renamed to ?focalLengthToFovDegrees@@YAMM@Z by tools/rename.py (inferred)"

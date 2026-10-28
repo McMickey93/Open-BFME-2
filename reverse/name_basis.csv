@@ -3665,3 +3665,7 @@ local,AptScoreScreen::OnSystemMsg::x,AptScoreScreen::OnSystemMsg::mouseX,inferre
 local,AptScoreScreen::OnSystemMsg::y,AptScoreScreen::OnSystemMsg::mouseY,inferred,agree:nl-9036065aa650,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenOnSystemMsg.cpp,0x0051C452
 function,?Rva00149FD0SetModelFlags@@YAXPAVRva00149FD0RenderObj@@IH@Z,?Set_MeshModel_Flag@@YAXPAVRva00149FD0RenderObj@@IH@Z,inferred,agree:nl-876f7e4f7079,Code/Libraries/Source/WWVegas/WW3D2/Rva00149FD0MeshModelFlags.cpp,0x00149FD0
 param,Rva005258B2::rva005258B2::p,Rva005258B2::rva005258B2::hero,inferred,agree:nl-382d0d54cc4c,Code/GameEngine/Source/Common/Rva005258B2Thunk.cpp,0x005258B2
+local,Rva001F52CC::rva001F52CC::d,Rva001F52CC::rva001F52CC::zRotationDamping,inferred,agree:nl-af306568e6a4,Code/GameEngine/Source/Common/Rva001F52CC.cpp,0x001F52CC
+function,?Rva004D6B6E@@YAMM@Z,?focalLengthToFov@@YAMM@Z,inferred,agree:nl-45e83b04049f,Code/GameEngine/Source/Common/Rva004D6B6EAngle.cpp,0x004D6B6E
+function,?Rva004D6BB8@@YAMM@Z,?focalLengthToFovDegrees@@YAMM@Z,inferred,agree:nl-97cfabd7bab2,Code/GameEngine/Source/Common/Rva004D6B6EAngle.cpp,0x004D6BB8
+local,FadeInTextRender::rva00596908::w,FadeInTextRender::rva00596908::textWidth,inferred,agree:nl-40ce7034084c,Code/GameEngine/Source/GameLogic/SkirmishAI/AIEconomyBuilder/rva00596908Rva00596908Farm.cpp,0x00596908

@@ -52,9 +52,9 @@ void Rva001F52CC::rva001F52CC(Vec2001F52CC *out)
 	Provider001F52CC *provider = m_ptr;
 	if (provider != 0)
 	{
-		const Data001F52CC *d = provider->fetch();
-		xValue = d->x;
-		yValue = d->y;
+		const Data001F52CC *zRotationDamping = provider->fetch();
+		xValue = zRotationDamping->x;
+		yValue = zRotationDamping->y;
 	}
 	out->x = xValue;
 	out->y = yValue;

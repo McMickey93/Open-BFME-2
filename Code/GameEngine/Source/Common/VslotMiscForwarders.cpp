@@ -174,8 +174,8 @@ void Rva0035D781Self::rva0035F49E() { slot2(0x0A); }	// vtable 0x00C1665C slot 6
 // ledger-named by address; 0x004D6B6E is also rowed as _atan).
 float Rva004D6B9D(float v);
 float Rva004D6B3A(float v);
-float Rva004D6BB8(float v);
-float Rva004D6B6E(float v);
+float focalLengthToFovDegrees(float v);
+float focalLengthToFov(float v);
 
 class Rva0025ED90Math
 {
@@ -188,8 +188,8 @@ public:
 
 float Rva0025ED90Math::rva0025ED90(float v) { return Rva004D6B9D(v); }
 float Rva0025ED90Math::rva0025EDA1(float v) { return Rva004D6B3A(v); }
-float Rva0025ED90Math::rva0025EDB2(float v) { return Rva004D6BB8(v); }
-float Rva0025ED90Math::rva0025EDC3(float v) { return Rva004D6B6E(v); }
+float Rva0025ED90Math::rva0025EDB2(float v) { return focalLengthToFovDegrees(v); }
+float Rva0025ED90Math::rva0025EDC3(float v) { return focalLengthToFov(v); }
 
 // --- Two members of `this` in a row, the second as a tail jump.
 #define BFME_TWO_CALLS(HOST, SLOT, FIRST, SECOND) \

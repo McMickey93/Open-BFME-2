@@ -1,5 +1,5 @@
 // cl: /MD /Oi-
-// ?Rva004D6B6E@@YAMM@Z @0x004D6B6E 47B, callers 0x0025EDCB and 0x004D6BC0.
+// ?focalLengthToFov@@YAMM@Z @0x004D6B6E 47B, callers 0x0025EDCB and 0x004D6BC0.
 // Free __cdecl float angle: pi/2 when value <= 0, else twice atan(12 / value).
 // Target evidence: SSE compare (movss/comiss) against the pooled 0.0 at
 // 0x00BBAEAC, x87 divide of the pooled 12.0 at 0x00BC2924, double atan via
@@ -27,7 +27,7 @@ float __cdecl Rva004D6B3A(float value)
 	return 1.0e10f;
 }
 
-float __cdecl Rva004D6B6E(float value)
+float __cdecl focalLengthToFov(float value)
 {
 	if (value > 0.0f)
 	{
@@ -45,11 +45,11 @@ float __cdecl Rva004D6B9D(float value)
 	return Rva004D6B3A(value * (3.14159265359f / 180.0f));
 }
 
-// ?Rva004D6BB8@@YAMM@Z @0x004D6BB8 21B, caller 0x0025EDBA: the same angle in
+// ?focalLengthToFovDegrees@@YAMM@Z @0x004D6BB8 21B, caller 0x0025EDBA: the same angle in
 // degrees. Target evidence: forwards its float to 0x004D6B6E and multiplies
 // by the pooled 57.2957763671875 at 0x00BBB8CC, which is 180.0f / PI with
 // the float PI rounded once (not the nearest float to 180/pi).
-float __cdecl Rva004D6BB8(float value)
+float __cdecl focalLengthToFovDegrees(float value)
 {
-	return Rva004D6B6E(value) * (180.0f / 3.14159265359f);
+	return focalLengthToFov(value) * (180.0f / 3.14159265359f);
 }
