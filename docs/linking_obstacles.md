@@ -2417,6 +2417,22 @@ Recorded as a false reject in `reverse/re_attempts.log`. Next check (tooling
 seat): admit TU-scoped C static function names, repoint the row, delete the
 union owner and retire the four piNextID keys. No clearance is claimed.
 
+#### Debug dialog flag ownership follow-up (2026-10-28)
+
+The shared external-flag trial remains blocked at base `2451819902`.
+Line-first formatting snapshots, an inline formatter and an aggregate snapshot
+preserve CrashDone's size and flag-store position but change four register
+encoding bytes. All trials were reverted; the paired original sources pass
+2/2 rows and retain their initial 2,078 authored ordinary-preview bytes.
+The duplicate-def and wrong-name keys remain. [Trial details and the banking refusal](../reverse/attempt_support/debug-dialog-data-20261028-codexb.md).
+Next: reconcile the approved Debug TU or a new argument-evaluation model;
+no source, debt or census gain is claimed for this attempt.
+
+The default GameEngineInit pick still reports the documented LINK-132
+Object-pointer vector-destructor selection blocker and an unresolved
+TheThreatFinderManager name against index `41c28839bf`. No source edit or
+repeated AIBuilder trial was made; the claim was released.
+
 ### LINK-008: include inventories prevent strict reusable graphics receipts
 
 **Status: Blocked on complete include inventories. Updated: 2026-10-27.**
