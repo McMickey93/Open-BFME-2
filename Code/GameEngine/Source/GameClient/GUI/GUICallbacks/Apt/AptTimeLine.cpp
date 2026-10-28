@@ -2,6 +2,7 @@
 // Vector2 comes from BFME1 donor9cbfb551fe20 game/WWVegas/WWMath/vector2.h.
 // This reference supplies only its established8B vector operations; native
 // timeline structure and formulas are independently established below.
+#define __PLACEMENT_VEC_NEW_INLINE  // always.h/GameMemory.h define array placement-new themselves; <new> must not
 #include "vector2.h"
 // Local consuming series view: retail calls count at slot0 and float value
 // at slot4. The original series and graph class names remain unknown.
