@@ -5350,7 +5350,16 @@ The retry exposed a second blocker: the shared header's lone-window field is
 with the native field and routed the donor's field accesses through it. Both
 objects retain all COMDAT bytes, relocation identities and external symbols;
 a scratch composed-pair probe passes 7/7 rows and LinkGuard with no findings.
-The full merge itself remains pending; this does not clear the census requirement.
+The subsequent full merge accepted that pair: winSetLoneWindow now lives in the
+approved GameWindowManager.cpp, removing one source file. All 70 scope rows
+still byte-match across 20 files. The merged object's 546 COMDATs and external
+dependencies equal the old pair's union, LinkGuard passes, and the 370-byte TU
+previews LINKS. The other 19 clean donors retain declaration or byte blockers;
+the handoff records them. Census confirmation remains pending.
+The outgoing batch audit is INCONCLUSIVE: index 14dc3d2467 predates the base
+a6874d8a6a and lacks per-object consumer names. Carry selected-provider and
+unchanged-consumer verification into the next ordinary census; the passing
+pair guard and byte/relocation comparison do not establish batch-wide closure.
 Remaining / next check: rename the four vtable-slot placeholders above once their
 bodies are checked against Zero Hour.
 Clearance: pending.

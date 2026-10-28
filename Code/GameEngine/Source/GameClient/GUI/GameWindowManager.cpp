@@ -116,6 +116,7 @@ public:
 //#pragma optimize("", off)
 //#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
 
+
 #endif
 #include "PreRTS.h"
 
@@ -186,7 +187,16 @@ public:
 // and independent GameWindow leaf walkers prove status8 and links1F8/1FC/200/204.
 struct BfmeManagerWindowLinks { char opaque00[8]; unsigned status; char opaque0C[0x1EC]; BfmeManagerWindowLinks *next,*prev,*parent,*child; };
 
+extern GameWindowManager *TheWindowManager;
+
+// Match the seed TU's BFME message ABI independently of its Zero Hour header.
+typedef unsigned int UnsignedInt;
+
+typedef unsigned int WindowMsgData;
+
 // tu-skeleton: 0x002C08EF 137B ?processDestroyList@GameWindowManager@@IAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_processDestroyList.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp
 
@@ -346,7 +356,7 @@ WindowMsgHandledType PassMessagesToParentSystem( GameWindow *window, UnsignedInt
 
 // GameWindowManager::winUnsetModal: defined in GameWindowManagerModal.cpp (its row's unit).
 
-// GameWindowManager::winSetLoneWindow: defined in GameWindowManager_winSetLoneWindow.cpp (its row's unit).
+// GameWindowManager::winSetLoneWindow: defined below in this TU.
 
 // GameWindowManager::gogoGadgetListBox: defined in GameWindowManager_gogoGadgetListBox.cpp (its row's unit).
 
@@ -362,19 +372,12 @@ WindowMsgHandledType PassMessagesToParentSystem( GameWindow *window, UnsignedInt
 
 // GameWindowManager::registerTabList: defined in GameWindowManager_registerTabList.cpp (its row's unit).
 
-// tu-skeleton: 0x002C0A0F 77B ?init@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_init.cpp (not merged yet)
 
-// tu-skeleton: 0x002C0A5C 24B ?reset@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
 
-// tu-skeleton: 0x002C0A74 21B ?update@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
 
-// tu-skeleton: 0x002C0A89 136B ?linkWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
 
-// tu-skeleton: 0x002C0B11 129B ?insertWindowAheadOf@GameWindowManager@@QAEXPAVGameWindow@@0@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
 
-// tu-skeleton: 0x002C0B92 69B ?unlinkWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
 
-// tu-skeleton: 0x002C0BD7 110B ?unlinkChildWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Bfme5SixtyNine.cpp
 
@@ -433,6 +436,20 @@ void GameWindowManager::addWindowToParent(GameWindow *window,GameWindow *parent)
  if(p) { w->prev=0; w->next=p->child; if(p->child) p->child->prev=w; p->child=w; w->parent=p; }
 }
 
+// tu-skeleton: 0x002C0A0F 77B ?init@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_init.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0A5C 24B ?reset@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0A74 21B ?update@GameWindowManager@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0A89 136B ?linkWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0B11 129B ?insertWindowAheadOf@GameWindowManager@@QAEXPAVGameWindow@@0@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0B92 69B ?unlinkWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
+// tu-skeleton: 0x002C0BD7 110B ?unlinkChildWindow@GameWindowManager@@QAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_linkWindow.cpp (not merged yet)
+
 // tu-skeleton: 0x002C0CED 80B ?addWindowToParentAtEnd@GameWindowManager@@UAEXPAVGameWindow@@0@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_enableWindowsInRange.cpp (not merged yet)
 
 // tu-skeleton: 0x002C0D3D 95B ?windowHiding@GameWindowManager@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
@@ -471,7 +488,18 @@ void GameWindowManager::addWindowToParent(GameWindow *window,GameWindow *parent)
 
 // tu-skeleton: 0x002C12A0 60B ?winUnsetModal@GameWindowManager@@UAEHPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManagerModal.cpp (not merged yet)
 
-// tu-skeleton: 0x002C12DC 51B ?winSetLoneWindow@GameWindowManager@@UAEXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winSetLoneWindow.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/GUI/GameWindowManager_winSetLoneWindow.cpp
+
+void GameWindowManager::winSetLoneWindow(GameWindow *window)
+{
+	enum { GGM_CLOSE = 0x4005 };
+	BfmeWindowManagerSendView *native = (BfmeWindowManagerSendView *)this;
+	if (native->m_loneWindow == window)
+		return;
+	if (native->m_loneWindow)
+		((BfmeWindowManagerSendView *)TheWindowManager)->winSendSystemMsg(native->m_loneWindow, GGM_CLOSE, 0, 0);
+	native->m_loneWindow = window;
+}
 
 // tu-skeleton: 0x002C1395 240B ?gogoGadgetListBox@GameWindowManager@@UAEPAVGameWindow@@PAVGadgetCreateView@@PAU_ListboxData@@PAVGameFont@@_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetListBox.cpp (not merged yet)
 

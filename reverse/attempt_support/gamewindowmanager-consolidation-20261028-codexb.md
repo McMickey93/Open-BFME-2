@@ -1,4 +1,4 @@
-# GameWindowManager consolidation prerequisite, 2026-10-28
+# GameWindowManager consolidation, 2026-10-28
 
 Inspected f5979062a5 with census index 2026-10-28 02:44 at 14dc3d2467.
 Scope: the 21 clean donors selected for GameWindowManager.cpp by the current
@@ -56,12 +56,68 @@ are identical to the pre-edit snapshots. Both frozen-file checks remain clean.
 A read-only pair probe through tu_skeleton.compose and tu_skeleton.Verifier
 (using its scratch try_compile_source, not build.compile_source) matches 7/7
 rows under union-first; LinkGuard.prepare returns None and judge returns [].
-The full tool run is still required to apply and register a merge.
+This probe preceded the full tool run described below.
+
+## Applied merge
+
+After the two separate prerequisite commits, tools/tu_skeleton.py --merge
+accepted GameWindowManager.cpp and GameWindowManager_winSetLoneWindow.cpp:
+seven rows, 370 bytes. Its census-linked donor guard passed. The tool deleted
+the donor and repointed its 0x002C12DC row in functions.csv and the source column
+of tu_map.csv; no TU assignment, approval, name, extent or address changed.
+The committed map was not regenerated. The old pointer comment now refers to
+the body in this TU; the tool's historical donor-path comment is preserved.
+
+The absorbed donor has no code/data identity debt, header queue, Microsoft
+header queue, flag override or hatch entries to transfer or retire. The seed
+retains the sole TheWindowManager definition at VA 0x00DFEF1C, its data row and
+data-ledger owner. The three Microsoft-header queue entries belong to rejected
+donors and remain unchanged. No debt retirement or hatch reduction is claimed.
+
+Final ./build.sh verification passes 70/70 rows across the 20 surviving sources,
+the data row, ten EH-label bindings and 13 string literals. Frozen-file,
+check_csv, allowed_symbols and data_check pass. Code identity remains shadow
+with only the same pre-existing divergent list-base funclet noted above.
+The merged object's 546 COMDAT names, bytes and relocation identities exactly
+equal the saved pair's union. No definitions or external dependencies were
+added or lost. Thus the moved provider and its call bindings are preserved;
+the full tool's LinkGuard also accepted the composition.
+
+progress.py reports SOURCE FILES 22,027 (-1 against the current HEAD's 22,028),
+with BYTE-MATCHED 100% and TU-APPROVED unchanged. Other workers' intervening
+changes explain the difference from the initial scope's source count. The new
+TU previews LINKS for all 370 own bytes against index 2026-10-28 02:44 at
+14dc3d2467. The preview's 151-to-370 comparison includes older seed additions
+and is not a linked-byte gain attributable to this merge or a census result.
+
+## Outgoing batch audit
+
+Audited origin/master a6874d8a6a through c84bb75ef8 plus the staged merge. The
+only removed path in the whole pending batch is the lone-window donor. One
+combined search of tracked full paths and basenames found no active tooling,
+hook, workflow, include or build-config consumer requiring an edit. Remaining
+mentions are the tool's historical donor comment, this handoff and the old
+reverse/link_status.csv census snapshot; that snapshot stays measurement-owned.
+The supported repointing changed only functions.csv and tu_map.csv's source
+column. Protected registers, header queues, fold proofs and the global's owner
+need no additional transfer; the merge refreshed the destination header scans.
+
+link_batch_audit.py ran against that base and the staged tree d1b5b7132b with
+all 20 byte-verified scope sources. It returned INCONCLUSIVE (exit 2): its
+14dc3d2467 index predates the outgoing base and lacks per-object consumer names.
+The direct composition guard and complete pair-object comparison pass, but the
+batch-wide selected-provider/unchanged-consumer audit is unverified. Carry this
+case into the next ordinary census; neither a clean batch audit nor a census
+link gain is claimed. No maintainer-only measurement or smoke job was started.
 
 ## Remaining work
 
-Retry tools/tu_skeleton.py --merge after the native-field prerequisite commit. Other donor
-layout, duplicate-definition and byte blockers remain; do not combine their
-repairs or claim that the initial full merge succeeded. LINK-075's previous
-repair remains awaiting census confirmation. No runtime, image-ownership or
-new linked-byte measurement is claimed.
+The full trial rejected the other 19 clean donors. Sixteen still fail to
+compile alongside the seed: duplicate enums, UnicodeString/STL definitions,
+missing or incompatible GameWindow/manager declarations (including slot0,
+native link fields and winCreate's overload). linkWindow, winDestroyAll and
+winPrevTab compile in a trial but fail byte comparison. Reconcile each donor
+in its own verified prerequisite before retrying; the trial is not evidence
+that their layouts or donor names are correct. Twelve mixed files remain
+outside this merge. LINK-075's previous repair still awaits census confirmation.
+No runtime, image-ownership or new linked-byte measurement is claimed.
