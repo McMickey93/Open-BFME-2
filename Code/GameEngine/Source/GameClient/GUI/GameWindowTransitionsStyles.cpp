@@ -322,6 +322,10 @@ struct WindowImages
 class ScoreScaleUpTransition : public Rva001DBAA4
 {
 public:
+	// Defined at 0x0035D6B8 (ScoreScaleUpTransition.cpp); declared here for
+	// the 0x0035D6F9 factory. No constructor body lives in this TU yet, so
+	// the vtable is not emitted here.
+	ScoreScaleUpTransition();
 	virtual void init(GameWindow *win);
 	virtual void update(Int frame);
 	virtual void slot3();

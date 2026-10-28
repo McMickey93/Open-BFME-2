@@ -21,11 +21,12 @@ class Rva001DBAA4
 public:
 	virtual ~Rva001DBAA4();
 	Rva001DBAA4();
-	int m_4;
-	bool m_8;
-	bool m_9;
-	bool m_A;
-	int m_C;
+	int m_frameLength;	// +0x04
+	bool m_isFinished;	// +0x08
+	bool m_isForward;	// +0x09
+	bool m_isReversed;	// +0x0a
+	unsigned char m_pad0B;	// +0x0b
+	class GameWindow *m_win;	// +0x0c
 };
 
 class ScoreScaleUpTransition : public Rva001DBAA4
