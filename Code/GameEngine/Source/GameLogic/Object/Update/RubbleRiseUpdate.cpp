@@ -30,8 +30,8 @@
 //   0x0028AE6D), body module +0x254 with updateBodyParticleSystems in slot
 //   0x28. The rubble height comes from TheTerrainLogic slot 0x1C with the
 //   object's layer (rowed 0x0028B511).
-// - The done call 0x004A4DBE is RubbleRiseUpdate's copy of the BoneFX stop;
-//   the ledger rows it under StructureCollapseUpdate::doCollapseDoneStuff.
+// - The done call 0x004A4DBE is RubbleRiseUpdate's copy of the BoneFX stop,
+//   doRubbleDoneStuff (defined in StructureCollapseUpdate.cpp).
 // The random calls carry the file string and the retail lines (0x9D, 0xAB,
 // 0xC4, 0xCD, 0xD6) through #line.
 // update reads the module data before the object, and builds the rising
@@ -300,15 +300,6 @@ public:
 
 class RubbleRiseUpdate;
 
-// 0x004A4DBE, rowed under this name (see above).
-class StructureCollapseUpdate
-{
-	friend class RubbleRiseUpdate;
-
-protected:
-	void doCollapseDoneStuff();
-};
-
 class RubbleRiseUpdate : public UpdateModule, public DieModuleInterface
 {
 public:
@@ -316,7 +307,7 @@ public:
 
 protected:
 	void doPhaseStuff(RubbleRisePhaseType rrphase, const Coord3D *target);
-	void doCollapseDoneStuff() { ((StructureCollapseUpdate *)this)->doCollapseDoneStuff(); }
+	void doRubbleDoneStuff(); // 0x004A4DBE
 
 	const RubbleRiseUpdateModuleData *getRubbleRiseUpdateModuleData() const
 	{
@@ -460,7 +451,7 @@ UpdateSleepTime RubbleRiseUpdate::update()
 			m_riseState = RISESTATE_DONE;
 			doPhaseStuff(RRPHASE_FINAL, obj->getPosition());
 
-			doCollapseDoneStuff();
+			doRubbleDoneStuff();
 
 			obj->clearModelConditionState(MODELCONDITION_RUBBLE_RISE_START);
 			obj->setModelConditionState(MODELCONDITION_RUBBLE_RISE_DONE);

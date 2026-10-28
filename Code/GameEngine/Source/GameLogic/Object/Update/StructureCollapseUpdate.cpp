@@ -50,6 +50,14 @@
 #include "GameClient/Drawable.h"
 #include "GameClient/InGameUI.h"
 
+// BFME 2's RubbleRiseUpdate (RubbleRiseUpdate.cpp): only the helper this unit
+// defines below (retail 0x004A4DBE).
+class RubbleRiseUpdate : public UpdateModule
+{
+protected:
+	void doRubbleDoneStuff();
+};
+
 const Int MAX_IDX = 32;
 
 //-------------------------------------------------------------------------------------------------
@@ -190,8 +198,14 @@ void StructureCollapseUpdate::doPhaseStuff(StructureCollapsePhaseType scphase, c
 }
 
 //-------------------------------------------------------------------------------------------------
+// ?doRubbleDoneStuff@RubbleRiseUpdate@@IAEXXZ, retail 0x004A4DBE (96B): Zero Hour's
+// doCollapseDoneStuff body (stop the object's BoneFX). Its only caller is
+// RubbleRiseUpdate::update 0x004A4F72 and it lies in RubbleRiseUpdate.cpp's run;
+// BFME 2's own StructureCollapseUpdate::doCollapseDoneStuff is 0x004A44B1
+// (Rva004A44B1.cpp), which StructureCollapseUpdate::update calls. BFME 1 names
+// the same RubbleRise copy RubbleRiseUpdate::doRubbleDoneStuff (0x002A38A0).
 //-------------------------------------------------------------------------------------------------
-void StructureCollapseUpdate::doCollapseDoneStuff() 
+void RubbleRiseUpdate::doRubbleDoneStuff() 
 {
 	static NameKeyType key_BoneFXUpdate = NAMEKEY("BoneFXUpdate");
 	BoneFXUpdate *bfxu = (BoneFXUpdate *)getObject()->findUpdateModule(key_BoneFXUpdate);

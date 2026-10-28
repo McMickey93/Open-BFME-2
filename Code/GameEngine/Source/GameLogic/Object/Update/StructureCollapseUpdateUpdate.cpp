@@ -17,9 +17,8 @@
 //   below, and a new ALMOST_FINAL phase fires below 70% of it (the BFME 2
 //   phase names table 0x00DCBC8C reads INITIAL, DELAY, BURST, ALMOST_FINAL,
 //   FINAL);
-// - the done state calls the BFME 2 doCollapseDoneStuff (0x004A44B1, rowed
-//   under its address name; it also destroys the object when the module data
-//   says so), clears model conditions 0x43, 0x44, 0x45 and 5 through the
+// - the done state calls the BFME 2 doCollapseDoneStuff (0x004A44B1; it also
+//   destroys the object when the module data says so), clears model conditions 0x43, 0x44, 0x45 and 5 through the
 //   pinned Object mask clear 0x001E42F2 and sets condition 59 (+0x110 bit 27,
 //   POST_RUBBLE in the model condition names table 0x00DBAA98)
 //   with the rowed notifier 0x0028AE6D, and its matrix reset passes
@@ -287,13 +286,6 @@ public:
 	virtual void dieModuleInterfaceSlot();
 };
 
-// BFME 2's doCollapseDoneStuff, rowed under its address name.
-class Rva004A44B1
-{
-public:
-	void doCollapseDoneStuff();
-};
-
 class StructureCollapseUpdate : public UpdateModule, public DieModuleInterface
 {
 public:
@@ -303,7 +295,7 @@ protected:
 	void beginStructureCollapse(const DamageInfo *damageInfo);
 	Real getCollapseHeight() const;
 	void doPhaseStuff(StructureCollapsePhaseType scphase, const Coord3D *target);
-	__declspec(dllimport) __forceinline void doCollapseDoneStuff() { ((Rva004A44B1 *)this)->doCollapseDoneStuff(); }
+	void doCollapseDoneStuff(); // 0x004A44B1
 
 	const StructureCollapseUpdateModuleData *getStructureCollapseUpdateModuleData() const
 	{

@@ -1,5 +1,9 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?doCollapseDoneStuff@Rva004A44B1@@QAEXXZ, retail 0x004A44B1, 122 bytes.
+// ?doCollapseDoneStuff@StructureCollapseUpdate@@IAEXXZ, retail 0x004A44B1, 122 bytes.
+// Identity: its only caller is StructureCollapseUpdate::update 0x004A46BF and it lies in
+// StructureCollapseUpdate.cpp's run (after doPhaseStuff 0x004A43E9); BFME 1's
+// StructureCollapseUpdate::doCollapseDoneStuff has the same sequence. The 96B Zero Hour
+// shaped copy at 0x004A4DBE is RubbleRiseUpdate's (doRubbleDoneStuff).
 // Evidence: static BoneFXUpdate key via TheNameKeyGenerator->nameToKey (same as StructureCollapseUpdate::doCollapseDoneStuff at 0x004A4DBE and poolkey at 0x004A429F); Object::findModule row 0x0028B6D6; BoneFXUpdate::stopAllBoneFX row 0x00487A95; GameLogic::destroyObject row 0x00242C09; caller 0x004A46BF.
 // Same UpdateModule layout as StructureCollapseUpdate (m_object at +8).
 
@@ -32,12 +36,12 @@ public:
 	void stopAllBoneFX();
 };
 
-class Rva004A44B1;
+class StructureCollapseUpdate;
 class Object
 {
 protected:
 	Module *findModule(NameKeyType key) const;
-	friend class Rva004A44B1;
+	friend class StructureCollapseUpdate;
 };
 
 #include "../../../Common/GameLogicObjectLookupView.h"
@@ -51,9 +55,9 @@ struct Holder04
 	unsigned char m_flag;
 };
 
-class Rva004A44B1
+class StructureCollapseUpdate
 {
-public:
+protected:
 	void doCollapseDoneStuff();
 
 private:
@@ -62,7 +66,7 @@ private:
 	Object *m_object;
 };
 
-void Rva004A44B1::doCollapseDoneStuff()
+void StructureCollapseUpdate::doCollapseDoneStuff()
 {
 	static NameKeyType key_BoneFXUpdate = TheNameKeyGenerator->nameToKey("BoneFXUpdate");
 	Module *mod = m_object->findModule(key_BoneFXUpdate);
