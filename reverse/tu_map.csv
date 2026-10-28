@@ -39823,11 +39823,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004BD5ED,25,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,proposed,K,K=Rva004BD5ED,Code/GameEngine/Source/Common/Rva004BB68EDerived.cpp
 0x004BD606,6,code,,,-,,Code/GameEngine/Source/Common/ModuleNameGetters3.cpp
 0x004BD60C,69,code,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollide.cpp,proposed,N,N=Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollide.cpp,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp
-0x004BD651,50,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/AnimationSteeringUpdateModuleDataCtor.cpp
+0x004BD651,50,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp
 0x004BD683,17,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp
-0x004BD694,42,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Collide/CivilianSpawnCollide.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Collide/CivilianSpawnCollideCtor.cpp
+0x004BD694,42,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Collide/CivilianSpawnCollide.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp
 0x004BD6BE,28,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,C,C=0x004BD694..0x004BD6DA provisional,Code/GameEngine/Source/Common/Rva004BB68EDerived.cpp
-0x004BD6DA,52,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeF1026.cpp provisional,Code/GameEngine/Source/Common/BfmeConv1026.cpp
+0x004BD6DA,52,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeF1026.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp
 0x004BD70E,28,code,,displaced,-,N=Code/GameEngine/Source/Common/CivilianSpawnCollide.cpp,Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-zqk.cpp
 0x004BD72A,48,code,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollideModuleDataDtor.cpp
 0x004BD75A,9,code,,,-,,Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp
@@ -81455,8 +81455,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078F860,10,code,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/SalvageCrateCollide.cpp,proposed,P,P=0x004BD442@FuncInfo0x00940A10,Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/SalvageCrateCollide.cpp
 0x0078F86A,13,code,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollide.cpp,proposed,P,P=0x004BD60C@FuncInfo0x00940A34,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp
 0x0078F877,10,code,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollide.cpp,proposed,P,P=0x004BD60C@FuncInfo0x00940A34,Code/GameEngine/Source/GameLogic/Object/Die/CivilianSpawnCollidePoolKey.cpp
-0x0078F881,8,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Update/AnimationSteeringUpdateModuleDataCtor.cpp
-0x0078F889,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Update/AnimationSteeringUpdateModuleDataCtor.cpp
+0x0078F881,8,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp
+0x0078F889,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnCollide.cpp
 0x0078F893,13,code,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp,approved,P,P=0x004BD85D@FuncInfo0x00940A7C,Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp
 0x0078F8A0,10,code,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp,approved,P,P=0x004BD85D@FuncInfo0x00940A7C,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp
 0x0078F8AA,8,code,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp,approved,P,P=0x004BD8BD@FuncInfo0x00940AA0,Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyCtor.cpp
