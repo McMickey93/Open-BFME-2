@@ -1,89 +1,20 @@
-// cl: /Ireference/shims/update_modules_bfme2 /DNDEBUG /MD /Oi
-//
-// ??0ProjectileStreamUpdate@@QAE@PAVThing@@PBVModuleData@@@Z, retail
-// 0x0033EE25, 86 bytes. Behavior-side ctor completing the
-// ProjectileStreamUpdate file-unit (cullFrontOfList 56B at 0x33F033 and
-// considerDying 37B at 0x33F06B placed from the ZH donor TU; behavior
-// factory rowed at 0x24FC59 with this pinned 2-arg ctor).
-//
-// Shape: frameless single-base ctor over the rowed UpdateModule base
-// 0x253390 (base-class layout mirrors UpdateModuleCtor.cpp exactly: MI
-// chain plus wake/index/reserved members, so the derived stores land at
-// +0x20/+0x70; the three vtable installs at +0/+0xC/+0x10 are implicit,
-// in base-init order, resolving to this TU's COMDAT vtables which are
-// DIR32-masked in comparison). The ZH donor ctor is followed for the body
-// with one BFME2 repair: the INVALID_ID loop over the 20-strong ID array
-// is a memset (W3DDebrisDraw precedent: memset plus /Oi inlines
-// to push-imm/pop-ecx plus rep stosd, no call, zero new pins), then the
-// donor assignment order (owning/nextFree/firstValid/target plus inline
-// targetPosition.zero(), whose address-take emits the lea-plus-movss
-// triple per the MissileUpdate precedent). Factory news fits the +0x8C
-// tail. Zero new pins (base resolves via its row).
-
-class Thing;
-class ModuleData;
-
-class BehaviorModuleBase
-{
-	virtual void unused();
-	int a;
-	int b;
-};
-
-class BehaviorModuleOther
-{
-	virtual void unused();
-};
-
-class BehaviorModule : public BehaviorModuleBase, public BehaviorModuleOther
-{
-public:
-	BehaviorModule(Thing *thing, const ModuleData *moduleData);
-};
-
-#include "GameLogic/Module/UpdateModuleInterface.h"
-
-class UpdateModule : public BehaviorModule, public UpdateModuleInterface
-{
-	unsigned m_nextCallFrameAndPhase;
-	int m_indexInLogic;
-	int m_bfmeReserved;
-
-public:
-	UpdateModule(Thing *thing, const ModuleData *moduleData);
-	virtual UpdateSleepTime update() = 0;
-	virtual DisabledMaskType getDisabledTypesToProcess() const;
-	virtual void rva0044DF8D(UpdateSleepTime wakeDelay);
-};
-
-typedef int ObjectID;
-typedef int Int;
-
-enum
-{
-	INVALID_ID = 0,
-	MAX_PROJECTILE_STREAM = 20
-};
-
-// Coord3D: shared header/view; no private copy.
-#include "../../../../../Libraries/Include/Lib/Coord3DInline.h"
+// cl: /FIzh_ascii.h /MD /Oi /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE -D_STLP_USE_STATIC_LIB -DNDEBUG -DWIN32 -D_WINDOWS /Ireference/shims/update_modules_bfme2 /Ireference/shims/moduledata /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/dockupdate /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/bfme_namekey /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/shims -ICode/Libraries/Source/Compression/LZHCompress/CompLibHeader /Ireference/shims/bfme2htree /Ireference/shims/bfme2renderobj /Ireference/shims/bfmecamera /Ireference/shims/bfmelight /Ireference/shims/bfmeparticlehandle /Ireference/shims/bfmeparticleload /Ireference/shims/bfmeparticlequat /Ireference/shims/bfmeparticlesave /Ireference/shims/bfmeparticleline /Ireference/shims/bfme2ray /Ireference/shims/bfme2scene /Ireference/shims/bfmefrustum
+// stlport
+#define BFME_SNAPSHOT_NAME_SLOT
+#define BFME_ZH_INLINE_FINDOBJECTBYID
+#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
+#include "GameLogic/Module/UpdateModule.h"
+#include "Common/Xfer.h"
+#include "GameLogic/GameLogic.h"
+#include "GameLogic/Object.h"
+#include "GameLogic/Module/ProjectileStreamUpdate.h"
+#include "WWMath/Vector3.h"
 #include <string.h>
 
-class ProjectileStreamUpdate : public UpdateModule
-{
-public:
-	ProjectileStreamUpdate(Thing *thing, const ModuleData *moduleData);
-	virtual UpdateSleepTime update();
-
-private:
-	ObjectID m_projectileIDs[MAX_PROJECTILE_STREAM]; // +0x20
-	Int m_nextFreeIndex; // +0x70
-	Int m_firstValidIndex; // +0x74
-	ObjectID m_owningObject; // +0x78
-	ObjectID m_targetObject; // +0x7C
-	Coord3D m_targetPosition; // +0x80
-};
-
+// Use the approved TU's module declarations: the constructor and its
+// callers share the native +0x20 ID ring and +0x8C object extent.
+// Keep its include order too: VC7.1 numbers inline pool static guards
+// across headers, and their names must agree in shared COMDAT copies.
 // ??0ProjectileStreamUpdate@@QAE@PAVThing@@PBVModuleData@@@Z @0x0033EE25
 ProjectileStreamUpdate::ProjectileStreamUpdate(Thing *thing, const ModuleData *moduleData) :
 	UpdateModule(thing, moduleData)
@@ -95,13 +26,3 @@ ProjectileStreamUpdate::ProjectileStreamUpdate(Thing *thing, const ModuleData *m
 	m_targetObject = INVALID_ID;
 	m_targetPosition.zero();
 }
-
-// Placeholder virtuals in this unit's vftables: in retail, every vftable that holds
-// each one has the same function in that slot (vftable addresses from matched vptr
-// stores). Bind them to the rows at those functions.
-#pragma comment(linker, "/alternatename:?unused@BehaviorModuleOther@@EAEXXZ=?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")
-
-// Placeholder virtuals this unit's vftables hold.  In retail each such slot
-// holds a rowed function; the vftable's address is proven by the vptr stores in
-// the matched destructors, so bind the placeholder to that row's name.
-#pragma comment(linker, "/alternatename:?unused@BehaviorModuleBase@@EAEXXZ=??_GRva0033EEC9@@UAEPAXI@Z")

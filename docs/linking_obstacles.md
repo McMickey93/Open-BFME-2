@@ -83,6 +83,19 @@ authored-byte previews or commit-title gains into a projected headline.
   object lacks a current strict receipt. External consumer selection remains
   unverified by that audit; carry this scope into the next normal census.
 
+- **ProjectileStreamUpdate constructor headers (2026-10-28, base `7c98b18b59`):**
+  [The scoped prerequisite and handoff](../reverse/attempt_support/projectile-stream-constructor-headers-20261028-codexb4.md)
+  replaces private constructor views with the destination's header environment
+  and removes two placeholder linker aliases. The 89-byte constructor remains
+  exact; all 594 COMDATs shared with the destination have identical byte and
+  relocation digests. The five-source paired preview preserves LINKS for
+  757 authored bytes against index `14dc3d2467`; shadow identity finds no new
+  finding. Staged-tree batch audit is **INCONCLUSIVE** because that index
+  predates the outgoing base and lacks consumer names. Carry the changed
+  constructor bindings into the next normal census. Composition still needs
+  compatible compiler flags, Xfer and lookup views, and the pool-key method
+  declaration; no merge, census or runtime gain is claimed.
+
 - **Terrain background TU composition (2026-10-28, base `cb99205548`):**
   [The bounded composition evidence](../reverse/attempt_support/terrain-background-consolidation-20261028-codex.md)
   preserves twelve matched rows, one EXACT EH graph, all 579 external COMDAT
