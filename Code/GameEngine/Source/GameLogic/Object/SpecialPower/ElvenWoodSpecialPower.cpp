@@ -151,6 +151,7 @@ class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
 #include "../../../../Include/Common/BfmeXfer.h"
+#pragma intrinsic(_ReadWriteBarrier)
 
 // ?getModuleNameKey@WeaponChangeSpecialPowerModule@@UBE?AW4NameKeyType@@XZ @0x4C4075
 // (68B): cached pool-name key for WeaponChangeSpecialPowerModule. The class
@@ -259,6 +260,80 @@ public:
 	virtual NameKeyType getModuleNameKey() const;
 };
 
+// ??0TaintSpecialPowerModuleData@@QAE@XZ at retail 0x004C4AB8 (51 bytes,
+// frameless): base call into the opaque intermediate 0x004930A0 (pinned),
+// explicit vtable store at +0, zeros at +0x7C/+0x84/+0x88, 10.0f at +0x80
+// matching the Taint table (TaintObject at +0x7C, TaintRadius at +0x80,
+// TaintFX at +0x84, TaintOCL at +0x88). Factory at 0x00251EE4 is the sole
+// caller. Row supersedes the ctor pin.
+// Retail VA 0x00C5D608 (.rdata): a 31-slot vftable no unit emits. Defined here as
+// data with retail's slot pointers, each bound to the ledger name at its
+// target (tools/vftable_map.py); its installers store this table.
+extern "C" void __identifier("?GetSnapshotName@ModuleData@@UBEPBDXZ")();
+
+extern "C" void __identifier("??1Coord2D@@QAE@XZ")();
+
+extern "C" void __identifier("?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z")();
+
+extern "C" void __identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")();
+
+extern "C" void __identifier("?IsCRC@Xfer@@UBE_NXZ")();
+
+extern "C" void __identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z")();
+
+extern "C" void __identifier("??_GTaintSpecialPowerModuleData@@UAEPAXI@Z")();
+
+extern "C" void __identifier("?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")();
+
+extern "C" const void *const vtbl_00C5D608[] = {
+	(const void *)&__identifier("??_GTaintSpecialPowerModuleData@@UAEPAXI@Z"),
+	(const void *)&__identifier("??1Coord2D@@QAE@XZ"),
+	(const void *)&__identifier("?GetSnapshotName@ModuleData@@UBEPBDXZ"),
+	(const void *)&__identifier("?DoXfer@EmissionVelocityInfo@FXParticleSystem@@UAEXAAVXfer@@@Z"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?rva000B69A1@Rva000B69A1@@QAE?AVAsciiString@@H@Z"),
+	(const void *)&__identifier("?IsCRC@Xfer@@UBE_NXZ"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"),
+	(const void *)&__identifier("?rva0050B5C6@Rva0050B5C6@@QAE_NXZ")
+};
+
+extern "C" void _ReadWriteBarrier(void);
+
+class TaintSpecialPowerModuleData : public SpecialPowerModuleData
+{
+public:
+	TaintSpecialPowerModuleData();
+
+	int m_taintObject;
+	float m_taintRadius;
+	int m_taintFX;
+	int m_taintOCL;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPower.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPower.cpp
 
 // Reuse the verified bool-constructor link view: inline the header body while
@@ -301,6 +376,113 @@ Object *ElvenWoodSpecialPower::addObject(const Coord3D *position, const AsciiStr
 		}
 	}
 	return 0;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Module/WeaponChangePowerPoolKey.cpp
+
+// ?getModuleNameKey@WeaponChangeSpecialPowerModule@@UBE?AW4NameKeyType@@XZ
+NameKeyType WeaponChangeSpecialPowerModule::getModuleNameKey() const
+{
+	static NameKeyType TheWeaponChangeSpecialPowerModulePoolKey =
+		TheNameKeyGenerator->nameToKey("WeaponChangeSpecialPowerModule");
+	return TheWeaponChangeSpecialPowerModulePoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/ScavengerSpecialPowerModuleDataCtor.cpp
+
+// Identity: ModuleFactory registers this data class under "WeaponChangeSpecialPowerModule" (addModule
+// pairs the name with this factory); formerly misnamed ScavengerSpecialPowerModuleData.
+//
+// ??0WeaponChangeSpecialPowerModuleData@@QAE@XZ, retail 0x004C4257 (123 bytes).
+// SpecialPower-side ModuleData for the Scavenger (toggle) power. The table
+// at 0x00C5D0F0 (FlagsUsedForToggle at +0x7C plus ToggleOnSleepFrames at
+// +0x8C plus ToggleOffSleepFrames at +0x90 plus ToggleOnAttributeModifier at
+// +0x94 plus ToggleOffAttributeModifier at +0x98) sizes the class at 0x9C
+// bytes over the 0x7C-byte SpecialPower base built by the out-of-line
+// 0x004930A0 constructor (pinned as SpecialPowerModuleData). The Scavenger pool key at
+// 0x4C4387 plus the name getter at 0x4C4381 sit in the same cluster and the
+// factory at 0x251D40 is rowed. The toggle words live in a TU-local member
+// type whose inline construction runs the rowed bitset<128>::reset at
+// 0x24CA24 over them. That reset call sits inside init so its setup hoists
+// above the compiler-emitted vtable store (Devastate precedent) which is
+// what orders the head as xor plus lea plus state plus vtable plus call.
+// Every member init lives in the init-list in retail order (toggle plus
+// sleep zeros plus inline string zeros) so the body holds only the memset
+// through the CRT import plus the two clears through the rowed 0x36410
+// fold. The base declared-only dtor arms state 0 and the two string
+// declared-only dtors advance the second store to state 2 with state 1
+// folded away. The nameA zero reuses the ebx zero through edi while the
+// nameB zero is the direct and-imm idiom.
+
+// ??0WeaponChangeSpecialPowerModuleData@@QAE@XZ @0x4C4257
+WeaponChangeSpecialPowerModuleData::WeaponChangeSpecialPowerModuleData()
+	: m_toggle(), m_sleepFrameA(0), m_sleepFrameB(0), m_nameA(), m_nameB()
+{
+	memset(m_toggle.m_words, 0, 0x10);
+	m_nameA.clear();
+	m_nameB.clear();
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/ScavengerSpecialPowerPoolKey.cpp
+
+// ?getModuleNameKey@ScavengerSpecialPower@@UBE?AW4NameKeyType@@XZ
+NameKeyType ScavengerSpecialPower::getModuleNameKey() const
+{
+	static NameKeyType TheScavengerSpecialPowerPoolKey =
+		TheNameKeyGenerator->nameToKey("ScavengerSpecialPower");
+	return TheScavengerSpecialPowerPoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/Rva004C447DXfer.cpp
+
+void Rva004C447D::xfer(Xfer *xfer)
+{
+	Xfer::Version version(1, 2);
+	*xfer == version;
+	Rva00493009::xfer(xfer);
+	if (version.m_minimum >= 2) {
+		*xfer == m_34;
+	}
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpecialPowerPoolKey.cpp
+
+// ?getModuleNameKey@CloudBreakSpecialPower@@UBE?AW4NameKeyType@@XZ
+NameKeyType CloudBreakSpecialPower::getModuleNameKey() const
+{
+	static NameKeyType TheCloudBreakSpecialPowerPoolKey =
+		TheNameKeyGenerator->nameToKey("CloudBreakSpecialPower");
+	return TheCloudBreakSpecialPowerPoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/TaintSpecialPowerPoolKey.cpp
+
+// ?getModuleNameKey@TaintSpecialPower@@UBE?AW4NameKeyType@@XZ
+NameKeyType TaintSpecialPower::getModuleNameKey() const
+{
+	static NameKeyType TheTaintSpecialPowerPoolKey =
+		TheNameKeyGenerator->nameToKey("TaintSpecialPower");
+	return TheTaintSpecialPowerPoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/FreezingRainSpecialPowerPoolKey.cpp
+
+// ?getModuleNameKey@FreezingRainSpecialPower@@UBE?AW4NameKeyType@@XZ
+NameKeyType FreezingRainSpecialPower::getModuleNameKey() const
+{
+	static NameKeyType TheFreezingRainSpecialPowerPoolKey =
+		TheNameKeyGenerator->nameToKey("FreezingRainSpecialPower");
+	return TheFreezingRainSpecialPowerPoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/DarknessSpecialPowerPoolKey.cpp
+
+// ?getModuleNameKey@DarknessSpecialPower@@UBE?AW4NameKeyType@@XZ
+NameKeyType DarknessSpecialPower::getModuleNameKey() const
+{
+	static NameKeyType TheDarknessSpecialPowerPoolKey =
+		TheNameKeyGenerator->nameToKey("DarknessSpecialPower");
+	return TheDarknessSpecialPowerPoolKey;
 }
 
 // tu-skeleton: 0x004C38FF 6B ?Rva004C38FFGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
@@ -355,52 +537,7 @@ Object *ElvenWoodSpecialPower::addObject(const Coord3D *position, const AsciiStr
 
 // tu-skeleton: 0x004C4069 12B ?doSpecialPowerUsingWaypoints@WeaponChangeSpecialPowerModule@@UAEXPAXMH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/WeaponChangeSpecialPowerModuleSlots.cpp (not merged yet)
 
-// ---- from Code/GameEngine/Source/GameLogic/Module/WeaponChangePowerPoolKey.cpp
-
-// ?getModuleNameKey@WeaponChangeSpecialPowerModule@@UBE?AW4NameKeyType@@XZ
-NameKeyType WeaponChangeSpecialPowerModule::getModuleNameKey() const
-{
-	static NameKeyType TheWeaponChangeSpecialPowerModulePoolKey =
-		TheNameKeyGenerator->nameToKey("WeaponChangeSpecialPowerModule");
-	return TheWeaponChangeSpecialPowerModulePoolKey;
-}
-
 // tu-skeleton: 0x004C40BA 413B ?doSpecialPower@WeaponChangeSpecialPowerModule@@UAEXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/WeaponChangeSpecialPowerModuleDoSpecialPower.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/ScavengerSpecialPowerModuleDataCtor.cpp
-
-// Identity: ModuleFactory registers this data class under "WeaponChangeSpecialPowerModule" (addModule
-// pairs the name with this factory); formerly misnamed ScavengerSpecialPowerModuleData.
-//
-// ??0WeaponChangeSpecialPowerModuleData@@QAE@XZ, retail 0x004C4257 (123 bytes).
-// SpecialPower-side ModuleData for the Scavenger (toggle) power. The table
-// at 0x00C5D0F0 (FlagsUsedForToggle at +0x7C plus ToggleOnSleepFrames at
-// +0x8C plus ToggleOffSleepFrames at +0x90 plus ToggleOnAttributeModifier at
-// +0x94 plus ToggleOffAttributeModifier at +0x98) sizes the class at 0x9C
-// bytes over the 0x7C-byte SpecialPower base built by the out-of-line
-// 0x004930A0 constructor (pinned as SpecialPowerModuleData). The Scavenger pool key at
-// 0x4C4387 plus the name getter at 0x4C4381 sit in the same cluster and the
-// factory at 0x251D40 is rowed. The toggle words live in a TU-local member
-// type whose inline construction runs the rowed bitset<128>::reset at
-// 0x24CA24 over them. That reset call sits inside init so its setup hoists
-// above the compiler-emitted vtable store (Devastate precedent) which is
-// what orders the head as xor plus lea plus state plus vtable plus call.
-// Every member init lives in the init-list in retail order (toggle plus
-// sleep zeros plus inline string zeros) so the body holds only the memset
-// through the CRT import plus the two clears through the rowed 0x36410
-// fold. The base declared-only dtor arms state 0 and the two string
-// declared-only dtors advance the second store to state 2 with state 1
-// folded away. The nameA zero reuses the ebx zero through edi while the
-// nameB zero is the direct and-imm idiom.
-
-// ??0WeaponChangeSpecialPowerModuleData@@QAE@XZ @0x4C4257
-WeaponChangeSpecialPowerModuleData::WeaponChangeSpecialPowerModuleData()
-	: m_toggle(), m_sleepFrameA(0), m_sleepFrameB(0), m_nameA(), m_nameB()
-{
-	memset(m_toggle.m_words, 0, 0x10);
-	m_nameA.clear();
-	m_nameB.clear();
-}
 
 // tu-skeleton: 0x004C42D2 28B ??_GWeaponChangeSpecialPowerModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDeletingDtors.cpp (not merged yet)
 
@@ -416,31 +553,9 @@ WeaponChangeSpecialPowerModuleData::WeaponChangeSpecialPowerModuleData()
 
 // tu-skeleton: 0x004C43A3 25B ??1Rva004C43A3@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
 
-// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/ScavengerSpecialPowerPoolKey.cpp
-
-// ?getModuleNameKey@ScavengerSpecialPower@@UBE?AW4NameKeyType@@XZ
-NameKeyType ScavengerSpecialPower::getModuleNameKey() const
-{
-	static NameKeyType TheScavengerSpecialPowerPoolKey =
-		TheNameKeyGenerator->nameToKey("ScavengerSpecialPower");
-	return TheScavengerSpecialPowerPoolKey;
-}
-
 // tu-skeleton: 0x004C4401 47B ?doSpecialPower@ScavengerSpecialPower@@UAEXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/ScavengerSpecialPowerDoSpecialPower.cpp (not merged yet)
 
 // tu-skeleton: 0x004C4430 77B ?pauseCountdown@Rva004C4430@@QAEX_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/Rva004C4430Finish.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/Rva004C447DXfer.cpp
-
-void Rva004C447D::xfer(Xfer *xfer)
-{
-	Xfer::Version version(1, 2);
-	*xfer == version;
-	Rva00493009::xfer(xfer);
-	if (version.m_minimum >= 2) {
-		*xfer == m_34;
-	}
-}
 
 // tu-skeleton: 0x004C44BD 27B ?buildFieldParse@CloudBreakSpecialPowerModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDataBuildFieldParse.cpp (not merged yet)
 
@@ -449,16 +564,6 @@ void Rva004C447D::xfer(Xfer *xfer)
 // tu-skeleton: 0x004C4502 6B ?Rva004C4502Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
 // tu-skeleton: 0x004C4508 25B ??1Rva004C4508@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpecialPowerPoolKey.cpp
-
-// ?getModuleNameKey@CloudBreakSpecialPower@@UBE?AW4NameKeyType@@XZ
-NameKeyType CloudBreakSpecialPower::getModuleNameKey() const
-{
-	static NameKeyType TheCloudBreakSpecialPowerPoolKey =
-		TheNameKeyGenerator->nameToKey("CloudBreakSpecialPower");
-	return TheCloudBreakSpecialPowerPoolKey;
-}
 
 // tu-skeleton: 0x004C4566 28B ??_GRva004C4508@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
 
@@ -484,23 +589,24 @@ NameKeyType CloudBreakSpecialPower::getModuleNameKey() const
 
 // tu-skeleton: 0x004C48C6 25B ??1Rva004C48C6@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
 
-// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/TaintSpecialPowerPoolKey.cpp
-
-// ?getModuleNameKey@TaintSpecialPower@@UBE?AW4NameKeyType@@XZ
-NameKeyType TaintSpecialPower::getModuleNameKey() const
-{
-	static NameKeyType TheTaintSpecialPowerPoolKey =
-		TheNameKeyGenerator->nameToKey("TaintSpecialPower");
-	return TheTaintSpecialPowerPoolKey;
-}
-
 // tu-skeleton: 0x004C4924 28B ??_GRva004C48C6@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
 
 // tu-skeleton: 0x004C4940 110B ?addObject@TaintSpecialPower@@QAEPAVObject@@PBUCoord3D@@ABVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/TaintSpecialPowerAddObject.cpp (not merged yet)
 
 // tu-skeleton: 0x004C49AE 266B ?rva004C49AE@TaintSpecialPower@@QAEXPBUCoord3D@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/TaintSpecialPowerRva004C49AE.cpp (not merged yet)
 
-// tu-skeleton: 0x004C4AB8 51B ??0TaintSpecialPowerModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/TaintSpecialPowerModuleDataCtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/TaintSpecialPowerModuleDataCtor.cpp
+
+TaintSpecialPowerModuleData::TaintSpecialPowerModuleData()
+	: SpecialPowerModuleData()
+{
+	int *taintObject = &m_taintObject;
+	*(unsigned int *)this = ((unsigned int)vtbl_00C5D608);
+	*taintObject = 0;
+	m_taintFX = 0;
+	m_taintOCL = 0;
+	m_taintRadius = 10.0f;
+}
 
 // tu-skeleton: 0x004C4AEB 28B ??_GTaintSpecialPowerModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/SpecialPower/SpecialPowerModuleDeletingDtors.cpp (not merged yet)
 
@@ -515,16 +621,6 @@ NameKeyType TaintSpecialPower::getModuleNameKey() const
 // tu-skeleton: 0x004C4BCB 6B ?Rva004C4BCBGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
 // tu-skeleton: 0x004C4BD1 25B ??1Rva004C4BD1@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/FreezingRainSpecialPowerPoolKey.cpp
-
-// ?getModuleNameKey@FreezingRainSpecialPower@@UBE?AW4NameKeyType@@XZ
-NameKeyType FreezingRainSpecialPower::getModuleNameKey() const
-{
-	static NameKeyType TheFreezingRainSpecialPowerPoolKey =
-		TheNameKeyGenerator->nameToKey("FreezingRainSpecialPower");
-	return TheFreezingRainSpecialPowerPoolKey;
-}
 
 // tu-skeleton: 0x004C4C2F 28B ??_GRva004C4BD1@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
 
@@ -543,16 +639,6 @@ NameKeyType FreezingRainSpecialPower::getModuleNameKey() const
 // tu-skeleton: 0x004C4DE3 6B ?Rva004C4DE3Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
 // tu-skeleton: 0x004C4DE9 25B ??1Rva004C4DE9@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/GameLogic/Object/SpecialPower/DarknessSpecialPowerPoolKey.cpp
-
-// ?getModuleNameKey@DarknessSpecialPower@@UBE?AW4NameKeyType@@XZ
-NameKeyType DarknessSpecialPower::getModuleNameKey() const
-{
-	static NameKeyType TheDarknessSpecialPowerPoolKey =
-		TheNameKeyGenerator->nameToKey("DarknessSpecialPower");
-	return TheDarknessSpecialPowerPoolKey;
-}
 
 // tu-skeleton: 0x004C4E47 28B ??_GRva004C4DE9@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp (not merged yet)
 

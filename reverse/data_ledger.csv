@@ -11547,7 +11547,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0085D468,256,.rdata,global,_vtbl_00C5D468,Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpecialPowerModuleDataCtor.cpp,owned,,1,1
 0x0085D568,100,.rdata,vtable,??_7Rva004C48C6@@6BRva004C48C6_B2@@@,,literal,??_7Rva004C48C6@@6BRva004C48C6_B2@@@;??_7TaintSpecialPower@@6BModuleInterface@@@,0,2
 0x0085D5CC,60,.rdata,vtable,??_7Rva004C48C6@@6BRva00493DEF@@@,,literal,??_7Rva004C48C6@@6BRva00493DEF@@@;??_7TaintSpecialPower@@6BBehaviorModule@@@,0,2
-0x0085D608,248,.rdata,global,_vtbl_00C5D608,Code/GameEngine/Source/GameLogic/Object/SpecialPower/TaintSpecialPowerModuleDataCtor.cpp,owned,,1,1
+0x0085D608,248,.rdata,global,_vtbl_00C5D608,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPower.cpp,owned,,1,1
 0x0085D700,100,.rdata,vtable,??_7FreezingRainSpecialPower@@6BModuleInterface@@@,,literal,??_7FreezingRainSpecialPower@@6BModuleInterface@@@;??_7Rva004C4BD1@@6BRva004C4BD1_B2@@@,0,2
 0x0085D764,140,.rdata,vtable,??_7FreezingRainSpecialPower@@6BBehaviorModule@@@,,literal,??_7FreezingRainSpecialPower@@6BBehaviorModule@@@;??_7Rva004C4BD1@@6BRva00493DEF@@@,0,2
 0x0085D7F0,100,.rdata,vtable,??_7DarknessSpecialPower@@6BModuleInterface@@@,,literal,??_7DarknessSpecialPower@@6BModuleInterface@@@;??_7Rva004C4DE9@@6BRva004C4DE9_B2@@@,0,2
