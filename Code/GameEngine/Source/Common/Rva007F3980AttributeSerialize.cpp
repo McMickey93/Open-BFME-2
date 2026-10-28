@@ -1,5 +1,5 @@
-// cl: /DNDEBUG /MD /GS
-// Transferred unchanged from Open-BFME-1 5cae4bdff game/GameEngine/Source/Common/Rva007F3980AttributeSerialize.cpp;
+// cl: /DNDEBUG /MD /GS /D_CRTIMP=
+// Based on Open-BFME-1 5cae4bdff game/GameEngine/Source/Common/Rva007F3980AttributeSerialize.cpp;
 // bfme1_sweep ambiguous: byte-identical bodies placed by the BFME1->BFME2 address map at 0x00660450.
 // Addresses in the donor text are BFME1.
 //
@@ -9,6 +9,9 @@
 // 0x112a640/0x112a62c). Identity of the owning message class is not
 // recovered; every callee is address-derived. /GS is proven by the
 // ___security_cookie load/check pair.
+
+// _CRTIMP= preserves both retail direct sprintf calls with the real declaration.
+#include <stdio.h>
 
 class Rva007E8AC0 { public: void run(); };
 class BfmeThingCIC { public: void bfmeGoCIC(void*, void*); };
@@ -29,7 +32,6 @@ struct Rva007F3980Pair
 	int value;
 };
 
-extern "C" int __cdecl sprintf(char *buffer, const char *format, ...);
 extern void *g_bfme0130A714;
 // g_bfme0130A714: matched references place it at VA 0xe0a130 (zero-filled .bss).
 void * g_bfme0130A714;
