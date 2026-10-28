@@ -5723,6 +5723,19 @@ Open leads (claude2, same pass; not edited):
   names it `g_00DEC2D4` in Rva0029E159Audio.cpp. Next: rename the ledger owner
   to `TheProjectedShadowManager` and rebind both consumers (the file was held by
   another seat during this pass).
+  **2026-10-28 follow-up (codex):** removed that duplicate unrowed definition;
+  all nine affected sources now bind the existing
+  `ProjectedShadowManager *TheProjectedShadowManager` owner in
+  W3DProjectedShadowUpdate.cpp, casting to existing private views where needed.
+  An explicit verified data row supersedes the heuristic owner at RVA
+  0x009EC2D4, and data_converged.csv protects the single name. Bounded singleton
+  binding cleanup verified: 74/74 function rows, 2/2 data rows, 13/13 EH rows,
+  zero data/convergence findings, and ten available ordinary link previews
+  pass against index 73061d9452. The decal unit already linked before this
+  cleanup; no new census gain is claimed. Merged W3DShadow.cpp is absent from
+  that index, so its current link closure and census confirmation remain open.
+  Evidence and donor/target separation:
+  reverse/attempt_support/20261028-projected-shadow-singleton.md.
 - Rva00415704Ctor.cpp (90 B) fails on unresolved
   `??1Rva0022A809Subsystem@@UAE@XZ`, whose provider Rva00415CABDtor.cpp (272 B)
   itself fails: comdat `??_7Rva0022A809Subsystem@@6B@` differs from the first

@@ -3,7 +3,7 @@
 // ?createPotentialClaimDecal@Impl@PlaceTerrainResourceClaimantFeedback@@QAEXXZ @0x004E65CF 191B
 // Leaf method on the 0x004E669A class (same this, +4/+8/+0xC/+0x1C): builds an
 // Shadow::ShadowTypeInfo temp from the +4 param-block string, scales the +0xC
-// float by 2.0f into its two sizes, adds it through g_00DEC2D4 slot 8 into +0x1C,
+// float by 2.0f into its two sizes, adds it through TheProjectedShadowManager slot 8 into +0x1C,
 // then on success zeroes decal+0x20, applies texture 0xFFFF8000, copies rope
 // position into decal+8 and sets +0x64/opacity. Evidence: rowed Shadow::ShadowTypeInfo
 // ctor 0x00079514 plus StringBase set 0x000366F0 plus dtor 0x000793FA, manager
@@ -86,7 +86,8 @@ public:
 };
 
 class AudioManager0029E159;
-extern AudioManager0029E159 *g_00DEC2D4;
+class ProjectedShadowManager;
+extern ProjectedShadowManager *TheProjectedShadowManager;
 extern float g_Va00BC28F4;
 // g_Va00BC28F4: matched references place it at VA 0xbc28f4 (retail .rdata value 2.0f).
 float g_Va00BC28F4 = 2.0f;
@@ -153,7 +154,7 @@ void PlaceTerrainResourceClaimantFeedback::Impl::createPotentialClaimDecal()
 	Shadow::ShadowTypeInfo ev;
 	ev.m_first = m_04->m_sound;
 	Rva004E65CFFloatSrc *p = m_0C;
-	Rva004E65CFMgr *mgr = (Rva004E65CFMgr *)g_00DEC2D4;
+	Rva004E65CFMgr *mgr = (Rva004E65CFMgr *)TheProjectedShadowManager;
 	ev.m_byte25 = 0;
 	ev.m_byte26 = 1;
 	ev.m_type = 0x2000;

@@ -74,7 +74,8 @@ public:
 	virtual Shadow *createEmitter(int a, Shadow::ShadowTypeInfo *b, Shadow::ShadowTypeInfo *c);
 };
 
-extern AudioManager0029E159 *g_00DEC2D4;
+class ProjectedShadowManager;
+extern ProjectedShadowManager *TheProjectedShadowManager;
 
 class Thing;
 class ModuleData;
@@ -121,7 +122,7 @@ void PartTheHeavensUpdate::rva004ACADA()
 	ev.m_byte26 = 1;
 	ev.m_float14 = 0.0f;
 	ev.m_float18 = 0.0f;
-	AudioManager0029E159 *mgr = g_00DEC2D4;
+	AudioManager0029E159 *mgr = (AudioManager0029E159 *)TheProjectedShadowManager;
 	m_shadow = mgr->createEmitter(type, &ev, &ev);
 	if (m_shadow != 0)
 	{

@@ -9,3 +9,4 @@ address,name,evidence
 0x009FF000,?TheThingFactory@@3PAVThingFactory@@A,b712e27e33: last two stub spellings (6241d0694b map) renamed
 0x009FE9D8,?TheDisplay@@3PAVDisplay@@A,b712e27e33: last stub spelling (6241d0694b map) renamed
 0x00A03CE0,?BfmeLargeGroupAudioRegistry@@3TBfmeModuleKeyRegistryStorage@@A,Native module registry lifetime requires20B; all consumers share the sole byte-verified storage owner; previous unsigned placeholder removed
+0x009EC2D4,?TheProjectedShadowManager@@3PAVProjectedShadowManager@@A,Native shadow-manager construction and decal reads share one slot; every source consumer binds the verified existing W3DProjectedShadowUpdate.cpp pointer owner

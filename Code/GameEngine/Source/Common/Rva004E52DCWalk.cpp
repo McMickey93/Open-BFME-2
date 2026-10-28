@@ -23,7 +23,7 @@ class Shadow{public:
  char pad0[8];Coord3D position;char pad14[12];float rotation;char pad24[64];bool flag64;
 };
 class CloudShadowFactoryView{public:virtual void slot0();virtual void slot1();virtual Shadow*create(Shadow::ShadowTypeInfo*);};
-class AudioManager0029E159;extern AudioManager0029E159*g_00DEC2D4;
+class ProjectedShadowManager;extern ProjectedShadowManager *TheProjectedShadowManager;
 float normalizeAngle(float);
 
 namespace _STL{template<> inline __declspec(noinline) _List_node<Shadow*>*list<Shadow*>::_M_create_node(Shadow*const&value){_List_node<Shadow*>*node=this->_M_node.allocate(1);_Construct(&node->_M_data,value);return node;}}
@@ -111,7 +111,7 @@ void Rva004E50C8::rva004E50C8(){
     float localRadius=radius-pieceLength*0.5f;
     Coord3D point;memcpy(&point.x,&center.x,4);memcpy(&point.y,&center.y,4);point.z=center.z;
     point.x=(float)(point.x+(sin((double)mid)*localRadius));point.y+=cos((double)mid)*localRadius;
-    Shadow*shadow=((CloudShadowFactoryView*)g_00DEC2D4)->create(&info);
+    Shadow*shadow=((CloudShadowFactoryView*)TheProjectedShadowManager)->create(&info);
     if(shadow){
      shadow->rotation=normalizeAngle(-mid);
      shadow->setColor(color);

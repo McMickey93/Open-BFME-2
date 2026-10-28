@@ -29,7 +29,7 @@
 // AudioEventRTS's; pinned under the ShadowTypeInfo names). Only
 // TERRAIN_DECAL_MAX (7) is rejected; the name always comes from
 // TerrainDecalTextureName (pinned data 0x009B4E8C). TheProjectedShadowManager
-// uses the rowed global g_00DEC2D4 through a view; addDecal is vslot 3 with
+// is the canonical singleton; addDecal is vslot 3 with
 // two extra zero arguments; the decal's render flag follows m_shadowEnabled
 // unless the +0x4B flag is set (as in setShadowsEnabled).
 
@@ -108,8 +108,7 @@ public:
 	virtual void slot02();
 	virtual Shadow *addDecal(RenderObjClass *robj, Shadow::ShadowTypeInfo *shadowInfo, int bfme2, int bfme3) = 0;
 };
-class AudioManager0029E159;
-extern AudioManager0029E159 *g_00DEC2D4;
+extern ProjectedShadowManager *TheProjectedShadowManager;
 class ThingTemplate
 {
 public:
@@ -180,8 +179,8 @@ void W3DModelDraw::setTerrainDecal(TerrainDecalType type)
 	decalInfo.m_sizeY = thingTemplate->getShadowSizeY();
 	decalInfo.m_offsetX = thingTemplate->getShadowOffsetX();
 	decalInfo.m_offsetY = thingTemplate->getShadowOffsetY();
-	if (g_00DEC2D4 != NULL)
-		m_terrainDecal = ((ProjectedShadowManager *)g_00DEC2D4)->addDecal(m_renderObject,&decalInfo,0,0);
+	if (TheProjectedShadowManager != NULL)
+		m_terrainDecal = TheProjectedShadowManager->addDecal(m_renderObject,&decalInfo,0,0);
 	if (m_terrainDecal != NULL)
 	{
 		m_terrainDecal->enableShadowInvisible(m_fullyObscuredByShroud);

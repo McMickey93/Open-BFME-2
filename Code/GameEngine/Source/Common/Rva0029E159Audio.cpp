@@ -4,7 +4,7 @@
 // its four-byte shadow handle using ShadowTypeInfo and manager slot 8.
 // The source descriptor is an AsciiString followed by two decal dimensions.
 // AudioManager0029E159 below is the existing borrowed manager ABI view;
-// its legacy type spelling is retained to preserve the current global binding.
+// consumers cast the canonical projected-shadow singleton to that private view.
 typedef int Int;
 
 template <typename T> struct BfmeStringData
@@ -57,8 +57,9 @@ public:
 	virtual int addDecal(Shadow::ShadowTypeInfo *ev) = 0;
 };
 
-// g_00DEC2D4: matched references place it at VA 0xdec2d4 (retail .data initial value 0).
-AudioManager0029E159 * g_00DEC2D4 = 0;
+// Retail VA 0x00DEC2D4 is owned by W3DProjectedShadowUpdate.cpp.
+class ProjectedShadowManager;
+extern ProjectedShadowManager *TheProjectedShadowManager;
 class InGameUI { public: class FormationPreviewDecal; };
 class InGameUI::FormationPreviewDecal
 {
@@ -75,7 +76,7 @@ InGameUI::FormationPreviewDecal::FormationPreviewDecal(const Source0029E159 &src
 	Shadow::ShadowTypeInfo ev;
 	ev.m_first = src.m_name;
 	ev.m_floatC = src.m_x;
-	AudioManager0029E159 *mgr = g_00DEC2D4;
+	AudioManager0029E159 *mgr = (AudioManager0029E159 *)TheProjectedShadowManager;
 	ev.m_float10 = src.m_y;
 	ev.m_byte25 = 0;
 	ev.m_byte26 = 1;

@@ -25,15 +25,14 @@ class Rva00108660ResourceManager;
 
 class Rva0007DA23ResourceManager;
 
-class AudioManager0029E159;
-
 extern W3DVolumetricShadowManager *TheW3DVolumetricShadowManager;
 
 extern W3DProjectedShadowManager *TheW3DProjectedShadowManager;
 
 extern Rva00108660ResourceManager *Rva00DEC2D8Manager;
 
-extern AudioManager0029E159 *g_00DEC2D4;
+class ProjectedShadowManager;
+extern ProjectedShadowManager *TheProjectedShadowManager;
 
 extern Rva0007DA23ResourceManager *Rva00DE1FF8Manager;
 
@@ -199,7 +198,6 @@ public:
 	Bool ReAcquireResources();
 };
 
-extern class ProjectedShadowManager *TheProjectedShadowManager;
 
 // The projected shadow manager's destructor (rowed 0x001076E9).
 class Rva0009A200
@@ -285,7 +283,7 @@ W3DShadowManager::W3DShadowManager() {
  TheW3DProjectedShadowManager=(W3DProjectedShadowManager*)new Rva005D2575;
  W3DProjectedShadowManager *projected=new W3DProjectedShadowManager;
  Rva00DEC2D8Manager=(Rva00108660ResourceManager*)projected;
- g_00DEC2D4=(AudioManager0029E159*)projected;
+ TheProjectedShadowManager=(ProjectedShadowManager*)projected;
  Rva00DE1FF8Manager=(Rva0007DA23ResourceManager*)new Rva0007C50B;
  ((W3DGameClientShadowShim*)this)->setLightPosition(0,m_lightPos[0].x,m_lightPos[0].y,m_lightPos[0].z);
 }
@@ -385,7 +383,7 @@ Rva009A500::~Rva009A500()
 
 	::delete Rva00DEC2D8Manager;
 	Rva00DEC2D8Manager = 0;
-	(*(AudioManager0029E159 **)&TheProjectedShadowManager) = 0;
+	TheProjectedShadowManager = 0;
 
 	delete (Rva0007BAD6 *)Rva00DE1FF8Manager;
 	Rva00DE1FF8Manager = 0;

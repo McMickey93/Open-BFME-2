@@ -99,8 +99,7 @@ public:
 	virtual void v00(); virtual void v01();
 	virtual Shadow *addDecal(Shadow::ShadowTypeInfo *shadowInfo);	// +0x08
 };
-class AudioManager0029E159;
-extern AudioManager0029E159 *g_00DEC2D4;	// TheProjectedShadowManager (ledger type)
+extern ProjectedShadowManager *TheProjectedShadowManager;	// retail singleton at VA 0x00DEC2D4
 
 extern float BfmeClientFramesPerMillisecond;	// seconds to frames
 
@@ -170,7 +169,7 @@ void DynamicDecalFXNugget::doFXPos(const Coord3D *primary, const Matrix3D *prima
 	pos.y += offset.y;
 	pos.z = TheTerrainLogic->getGroundHeight(pos.x, pos.y, 0);
 
-	Shadow *shadow = ((ProjectedShadowManager *)g_00DEC2D4)->addDecal(&decalInfo);
+	Shadow *shadow = TheProjectedShadowManager->addDecal(&decalInfo);
 	if (shadow)
 	{
 		if (primaryMtx && m_orientToObject)

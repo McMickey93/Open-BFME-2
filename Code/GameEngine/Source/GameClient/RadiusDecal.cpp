@@ -279,7 +279,8 @@ class LookAtTranslator;
 
 class AudioManager0029E159 { public:virtual void slot0()=0;virtual void slot1()=0;virtual Shadow *create(Shadow::ShadowTypeInfo *)=0; };
 
-extern AudioManager0029E159 *g_00DEC2D4;
+class ProjectedShadowManager;
+extern ProjectedShadowManager *TheProjectedShadowManager;
 
 class Player { public: __forceinline int getPlayerIndex() const {return index;}
  char pad00[0x54];int index;char pad58[0x280-0x58];unsigned color; };
@@ -630,7 +631,7 @@ void RadiusDecalTemplate::createDeathDecal(const Coord3D *pos,float angle,const 
  descriptor.sizeX=m_unmodelled24;descriptor.sizeY=m_unmodelled24;
  descriptor.allowUpdates=1;descriptor.worldAlign=1;
  descriptor.style=m_shadowType;descriptor.offsetX=0.0f;descriptor.offsetY=0.0f;
- out->m_shadow=g_00DEC2D4->create(&descriptor);
+ out->m_shadow=((AudioManager0029E159 *)TheProjectedShadowManager)->create(&descriptor);
  if(!out->m_shadow) return;
  out->m_shadow->setAngle(angle);
  out->m_shadow->setColor((int)*color);
@@ -650,7 +651,7 @@ void RadiusDecalTemplate::createRadiusDecal(const Coord3D &pos,float radius,cons
  descriptor.style=m_shadowType;
  descriptor.first.setCopyInline(m_name);descriptor.second.setCopyInline(m_secondName);
  descriptor.sizeX=radius*2.0f;descriptor.sizeY=radius*2.0f;
- out.m_shadow=g_00DEC2D4->create(&descriptor);
+ out.m_shadow=((AudioManager0029E159 *)TheProjectedShadowManager)->create(&descriptor);
  if(out.m_shadow) {
   out.m_shadow->setAngle(0.0f);
   unsigned c=m_color?m_color:player->color;
@@ -676,7 +677,7 @@ void RadiusDecalTemplate::createSelectionRadiusDecal(Coord3D pos,unsigned select
  float diameter=rva00330D3E(selected);
  descriptor.sizeX=diameter;descriptor.sizeY=diameter;
  descriptor.offsetX=0.0f;descriptor.offsetY=0.0f;descriptor.scale=scale;
- out->m_shadow=g_00DEC2D4->create(&descriptor);
+ out->m_shadow=((AudioManager0029E159 *)TheProjectedShadowManager)->create(&descriptor);
  if(out->m_shadow) {
   out->m_shadow->setAngle(0.0f);
   out->m_shadow->setColor(color);

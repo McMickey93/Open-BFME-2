@@ -1,11 +1,12 @@
 // cl: /Ireference/shims/bfme2_ascii /EHsc /DNDEBUG /MD
 // ?rva000B9DD9@Rva000B9DD9@@QAEXABVAsciiString@@@Z 0x000B9DD9 233B
-// Evidence: leaf slot 19 offset 0x4C of 6 W3D Draw vtables Horde Quadruped Supply Truck Tank Sail; prev own 0x000B9C8C; Shadow::ShadowTypeInfo ctor (0x00079514) set dtor (0x000793FA) rows; StringBase isEmpty set rows; g_00DEC2D4 vcall slot 0xC; m_5c vcall slot 8.
+// Evidence: leaf slot 19 offset 0x4C of 6 W3D Draw vtables Horde Quadruped Supply Truck Tank Sail; prev own 0x000B9C8C; Shadow::ShadowTypeInfo ctor (0x00079514) set dtor (0x000793FA) rows; StringBase isEmpty set rows; TheProjectedShadowManager vcall slot 0xC; m_5c vcall slot 8.
 
 #include "ascii_string.h"
 
 class AudioManager0029E159;
-extern AudioManager0029E159 *g_00DEC2D4;	// data ledger type at 0x00DEC2D4
+class ProjectedShadowManager;
+extern ProjectedShadowManager *TheProjectedShadowManager;	// retail singleton at VA 0x00DEC2D4
 
 extern "C" void __cdecl free(void *);
 
@@ -101,7 +102,7 @@ void Rva000B9DD9::rva000B9DD9(const AsciiString &asciiString)
 	ev.m10 = f->m4ec;
 	ev.m14 = f->m4f0;
 	ev.m18 = f->m4f4;
-	Rva000B9DD9Mgr *mgr = (Rva000B9DD9Mgr *)g_00DEC2D4;
+	Rva000B9DD9Mgr *mgr = (Rva000B9DD9Mgr *)TheProjectedShadowManager;
 	if (mgr != 0)
 		m5c = (Rva000B9DD9Cached *)mgr->m3(m50, &ev, 1, 0);
 	if (m5c != 0)
