@@ -7143,6 +7143,10 @@ Remaining / next check:
     unit cannot supply the kept copy: it needs the `link_order` rule question below, or a fold row that does not
     move AIBuilder ahead of GenericObjectCreationNuggetReallyCreate.cpp. Served unit
     `GenericObjectCreationNuggetPositionCreate.cpp` (535 B, wrong_selected only) waits on this.
+  - 2026-10-28 (claude-opus-5-5, index 41c28839bf): `WWLib/StlportVectorPushBackSiblings.cpp` (388 B, the
+    retail `vector<Object *>::push_back` owner 0x001F211B) is blocked only by `push_back` and
+    `_M_insert_overflow` selection: AIBuilder.obj (place 1996) holds the first, wrong copy of both. Same
+    prerequisite; no trial repeated.
 - Rule question for maintainers: 675 objects are positioned by an ICF-alias row (an address another object's row also claims), many already at the census. If `link_order` ignored such alias rows, objects would sit where their own code is; that is a census rule change (`tools/census_rebaseline.py`), not a seat edit. Until then, a commit that adds a low-address fold row to a unit should first check the unit's other COMDAT copies against the units it overtakes.
 
 Clearance: none. Census confirmation: the next census should show these losses unless the movers are repaired first.
