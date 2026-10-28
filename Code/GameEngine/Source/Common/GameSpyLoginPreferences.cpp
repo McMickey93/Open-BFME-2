@@ -109,10 +109,23 @@ namespace _STL { template <> _List_node<AsciiString> * _STLP_alloc_proxy<_List_n
 namespace _STL { template <> void _STLP_alloc_proxy<_List_node<AsciiString> *, _List_node<AsciiString>, allocator<_List_node<AsciiString> > >::deallocate(_List_node<AsciiString> *, unsigned int); }
 namespace _STL { template <> pair<AsciiString const, AsciiString>::~pair(); }
 // bfme link decl-only end
-// Suppress this TU's non-retail copy of ??0?$_Rb_tree_base@U?$pair@$$CBVAsciiString@@V1@@_STL@@V?$allocator@U?$pair@$$CBVAsciiStri:
-// the kept copy serves the link. Plain declaration-only form (no __imp_).
-class AsciiString;
-namespace _STL { template <> _Rb_tree_base<pair<AsciiString const ,AsciiString>,allocator<pair<AsciiString const ,AsciiString> > >::_Rb_tree_base(allocator<pair<AsciiString const ,AsciiString> > const &); }
+// Both preference maps share retail's 24-byte tree header constructor at
+// 0x001F0534. Preserve allocator-proxy construction, then use the established
+// byte allocator with its explicit null hint, as the retail call does.
+namespace _STL {
+template <> inline
+_Rb_tree_base<pair<const AsciiString, AsciiString>, allocator<pair<const AsciiString, AsciiString> > >::_Rb_tree_base(const allocator_type &a)
+    : _M_header(_STLP_CONVERT_ALLOCATOR(a, _Node), (_Node *)0)
+{
+    _M_header._M_data = static_cast<_Node *>(BucketAlloc::allocate(sizeof(_Node), 0));
+}
+template <> inline
+_Rb_tree_base<pair<const AsciiString, list<AsciiString> >, allocator<pair<const AsciiString, list<AsciiString> > > >::_Rb_tree_base(const allocator_type &a)
+    : _M_header(_STLP_CONVERT_ALLOCATOR(a, _Node), (_Node *)0)
+{
+    _M_header._M_data = static_cast<_Node *>(BucketAlloc::allocate(sizeof(_Node), 0));
+}
+}
 // Suppress this TU's non-retail copy of ??1?$_Rb_tree_base@U?$pair@$$CBVAsciiString@@V1@@_STL@@V?$allocator@U?$pair@$$CBVAsciiStri:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 class AsciiString;

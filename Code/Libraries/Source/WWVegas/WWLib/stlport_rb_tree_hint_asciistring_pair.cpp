@@ -30,6 +30,12 @@ bool operator<(const AsciiString &, const AsciiString &);
 // established AsciiString copy 0x000365F0 at offsets 0 and 4, with exception cleanup.
 typedef _STL::pair<const AsciiString, AsciiString> StringPair;
 typedef _STL::_Rb_tree<AsciiString, StringPair, _STL::_Select1st<StringPair>, _STL::less<AsciiString>, _STL::allocator<StringPair> > StringPairTree;
+// GameSpyLoginPreferences supplies the native header constructor, including
+// its static byte allocator and null hint. Suppress this unit's allocator
+// wrapper variant so it cannot displace that verified COMDAT.
+namespace _STL {
+template <> _Rb_tree_base<StringPair, allocator<StringPair> >::_Rb_tree_base(const allocator_type &);
+}
 // BFME replaces STLport allocation with a static byte allocator (RVA 0x307F0).
 namespace _STL {
 template <> class allocator<char> {
