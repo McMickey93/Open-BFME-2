@@ -3974,6 +3974,8 @@ alternatename	Code/Libraries/Source/STLport/Rva008312E0StringReplace.cpp	?bfmeIn
 alternatename	Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp	?bfmeImplVML@BfmeStrVML@@QAEXHHHHPAD@Z	1
 alternatename	Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp	?bfmeInsertV51@BfmeStrV51@@QAEXPAD0000@Z	1
 alternatename	Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp	?bfmeInsertV55@BfmeStrV55@@QAEXPAD0000@Z	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/AnimationAsset.cpp	?Get_HAnim@@YAPAVHAnimClass@@PBD@Z	1
+alternatename	Code/Libraries/Source/WWVegas/WW3D2/AnimationAsset.cpp	?Rva0061F230_GetPrototype@@YA?AVHierarchyPrototypeRef@@PBD@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/BfmeDX8ThreadLock.cpp	?BFME_DX8_Thread_Assert@@YAXXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/BfmeResetTextureRefClear.cpp	?clear@HAnimPrototypeOwner@@QAEXXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/BfmeResetTextureRefClear.cpp	?clear@HTreePrototypeOwner@@QAEXXZ	1
@@ -4052,8 +4054,6 @@ alternatename	Code/Libraries/Source/WWVegas/WW3D2/TextureStatisticsVectorWideExt
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/TextureStatisticsVectorWideExtras.cpp	?ID@?$DynamicVectorClassWide@UTextureStatisticsStructWide@@@@UAEHPBUTextureStatisticsStructWide@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/VertexBufferLockClasses.cpp	??1AppendLockClass@VertexBufferClass@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/aabtree.cpp	?rva00144010@Rva00144010Opaque@@QAEHXZ	1
-alternatename	Code/Libraries/Source/WWVegas/WW3D2/animasset.cpp	?Get_HAnim@@YAPAVHAnimClass@@PBD@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WW3D2/animasset.cpp	?Rva0061F230_GetPrototype@@YA?AVHierarchyPrototypeRef@@PBD@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/bfme2_texture_binding.cpp	?BoxSetTexture@@YAXIAAPAVTextureBaseClass@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	??0BfmeSortingVBAccess@@QAE@IIGI@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp	??0DX8VertexBufferClass@@QAE@IGW4UsageType@0@I@Z	1
