@@ -65,13 +65,13 @@ struct Rva000CF0FFRecord
 class Rva000CF0FF
 {
 public:
-	int rva000CF0FF() const;
+	int size() const;
 private:
 	Rva000CF0FFRecord *m_begin;
 	Rva000CF0FFRecord *m_end;
 };
 
-int Rva000CF0FF::rva000CF0FF() const
+int Rva000CF0FF::size() const
 {
 	return m_end - m_begin;
 }

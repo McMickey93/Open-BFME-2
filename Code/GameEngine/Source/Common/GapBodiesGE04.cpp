@@ -56,15 +56,15 @@ struct Rva00232654Record
 class Rva00232654
 {
 public:
-	int rva00232654(unsigned char index) const;
+	int getKeySequenceData(unsigned char index) const;
 	void rva00232660(unsigned char index, unsigned char flag);
-	void rva00232670(unsigned char index, unsigned char value);
+	void setKeyStateData(unsigned char index, unsigned char value);
 private:
 	char m_pad[0x1C];
 	Rva00232654Record m_records[1];
 };
 
-int Rva00232654::rva00232654(unsigned char index) const
+int Rva00232654::getKeySequenceData(unsigned char index) const
 {
 	return m_records[index].m_04;
 }
@@ -74,7 +74,7 @@ void Rva00232654::rva00232660(unsigned char index, unsigned char flag)
 	m_records[index].m_01 = flag;
 }
 
-void Rva00232654::rva00232670(unsigned char index, unsigned char value)
+void Rva00232654::setKeyStateData(unsigned char index, unsigned char value)
 {
 	m_records[index].m_02 = value;
 }
@@ -194,7 +194,7 @@ int Rva003B956E(char *args[], int)
 	return 1;
 }
 
-int Rva003B9582(char *args[], int)
+int parseNoMusic(char *args[], int)
 {
 	BFME2CommandFlags |= 4;
 	if (TheWritableGlobalData)

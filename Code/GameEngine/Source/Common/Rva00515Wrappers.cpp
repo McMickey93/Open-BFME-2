@@ -122,7 +122,7 @@ extern GlobalData *TheWritableGlobalData;
 struct Rva00515B0AGlobalData
 {
 	unsigned char m_pad00[0x2D];
-	bool m_2d;						// +0x2D
+	bool m_skipMapUnroll;						// +0x2D
 };
 
 // The open main menu's +0x280 flag (AptMainMenuCallbacks.cpp's m_280).
@@ -153,7 +153,7 @@ void __cdecl rva00515B0A(Rva00515Handle *handle, char side)
 	if (side)
 		reinterpret_cast<Rva00515B0ALogic *>(TheLivingWorldLogic)->m_campaignSide = g_Va00DD1538;
 	Rva003FE7E6(Rva00211E75Callback(reinterpret_cast<int>(&rva0051E280PreParchmentMapFadeStartNew)), &g_00E02EC4);
-	if (!reinterpret_cast<Rva00515B0AGlobalData *>(TheWritableGlobalData)->m_2d)
+	if (!reinterpret_cast<Rva00515B0AGlobalData *>(TheWritableGlobalData)->m_skipMapUnroll)
 		Rva003FE7E6(Rva00211E75Callback(reinterpret_cast<int>(&rva0051573A)), &g_00E02EC4);
 	Rva003FE7E6(Rva00211E75Callback(*handle), &g_00E02EC4);
 	reinterpret_cast<Rva00515B0AMenu *>(g_Va00E048DC)->m_280 = true;

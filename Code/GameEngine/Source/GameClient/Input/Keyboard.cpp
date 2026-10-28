@@ -746,11 +746,11 @@ void Keyboard::resetKeys()
 
 // tu-skeleton: 0x0023262C 23B ?rva0023262C@Rva0023262C@@QAEHEH@Z -- matched in Code/GameEngine/Source/Common/GapBodiesSeat1A.cpp (not merged yet)
 
-// tu-skeleton: 0x00232654 12B ?rva00232654@Rva00232654@@QBEHE@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
+// tu-skeleton: 0x00232654 12B ?getKeySequenceData@Rva00232654@@QBEHE@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
 
 // tu-skeleton: 0x00232660 16B ?rva00232660@Rva00232654@@QAEXEE@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
 
-// tu-skeleton: 0x00232670 19B ?rva00232670@Rva00232654@@QAEXEE@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
+// tu-skeleton: 0x00232670 19B ?setKeyStateData@Rva00232654@@QAEXEE@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
 
 // tu-skeleton: 0x002326FB 104B ?createStreamMessages@Keyboard@@UAEXXZ -- matched in Code/GameEngine/Source/GameClient/Input/KeyboardInitUpdate.cpp (not merged yet)
 

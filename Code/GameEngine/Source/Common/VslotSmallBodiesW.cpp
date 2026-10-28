@@ -229,13 +229,13 @@ extern ScriptEngine *TheScriptEngine;
 class Rva003BCC37
 {
 public:
-	void rva003BCC37(bool b);
+	void rva003BCC37(bool enableBonuses);
 };
-void Rva003BCC37::rva003BCC37(bool b)
+void Rva003BCC37::rva003BCC37(bool enableBonuses)
 {
 	for (Object *obj = TheGameLogic->getFirstObject(); obj; obj = obj->m_next8C)
-		obj->setReceivingDifficultyBonus(b);
-	*(bool *)((char *)TheScriptEngine + 0x1A4D5) = b;
+		obj->setReceivingDifficultyBonus(enableBonuses);
+	*(bool *)((char *)TheScriptEngine + 0x1A4D5) = enableBonuses;
 }
 
 // 0x00406B39 and 0x004059F6: ids drawn once each from the counter at VA
@@ -349,18 +349,18 @@ public:
 private:
 	Int m_00;
 	Int m_04;
-	ObjectID m_08;
+	ObjectID m_workerID;
 };
 void Rva004835FB::rva004835FB(Int)
 {
-	if (m_08)
+	if (m_workerID)
 	{
 		GameLogic *logic = TheGameLogic;
-		Object *obj = logic->findObjectByID(m_08);
+		Object *obj = logic->findObjectByID(m_workerID);
 		if (obj)
 		{
 			logic->destroyObject(obj);
-			m_08 = INVALID_ID;
+			m_workerID = INVALID_ID;
 		}
 	}
 }

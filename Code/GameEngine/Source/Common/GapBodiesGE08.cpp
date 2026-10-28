@@ -151,7 +151,7 @@ int Rva003B9622(char *args[], int)
 	return 1;
 }
 
-int Rva003B9636(char *args[], int)
+int parseNoWin(char *args[], int)
 {
 	if (TheWritableGlobalData)
 		((Rva003B960EGlobalData *)TheWritableGlobalData)->m_windowed = false;

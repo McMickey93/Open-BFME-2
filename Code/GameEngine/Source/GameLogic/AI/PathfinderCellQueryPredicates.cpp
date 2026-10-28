@@ -10,14 +10,14 @@ class Pathfinder
 public:
  	void *rva001E3647Pos(int a, const Coord3D *pos);
 	int GetGroundLayer(const Coord3D *pos);
-	bool IsWaterCell(int a, int b);
-	bool IsCliffCell(int a, int b);
-	int isBlockedGateObstacleCell(int a, int b);
-	int IsNonPinchedCliffCell(int a, int b);
-	bool IsPointOnWall(int a, bool b);
-	bool IsImpassableCell(int a, int b);
-	bool IsBuildRestrictedCell(const Coord3D *pos, bool b, bool c, int d);
-	void GetCellType(int a1, void *a2, void *a3, void *a4, int a5);
+	bool IsWaterCell(int pos, int layer);
+	bool IsCliffCell(int pos, int layer);
+	int isBlockedGateObstacleCell(int pos, int layer);
+	int IsNonPinchedCliffCell(int pos, int layer);
+	bool IsPointOnWall(int pos, bool b);
+	bool IsImpassableCell(int pos, int layer);
+	bool IsBuildRestrictedCell(const Coord3D *pos, bool b, bool c, int layer);
+	void GetCellType(int pos, void *a2, void *a3, void *a4, int layer);
 private:
 	char m_pad000[0x10];
 	int m_unk0010; // +0x10 null-guard read by GetGroundLayer
@@ -43,9 +43,9 @@ int Pathfinder::GetGroundLayer(const Coord3D *pos)
 // ?IsBuildRestrictedCell@Pathfinder@@QAE_NPBUCoord3D@@_N1H@Z @0x002E996E 79B: 4-arg combined
 // query: null->true; flag=(tag==2); unless b, flag|=tag in {1,7}; unless c,
 // flag|=tag==5.
-bool Pathfinder::IsBuildRestrictedCell(const Coord3D *pos, bool b, bool c, int d)
+bool Pathfinder::IsBuildRestrictedCell(const Coord3D *pos, bool b, bool c, int layer)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(d, pos);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, pos);
 	bool out;
 	if (rec == 0)
 		out = true;
@@ -70,9 +70,9 @@ bool Pathfinder::IsBuildRestrictedCell(const Coord3D *pos, bool b, bool c, int d
 }
 // ?GetCellType@Pathfinder@@QAEXHPAXPAXPAXH@Z @0x002E99BD 60B: ebp-frame
 // split-out: *a2=nonnull, *a4=tag, *a3=bit18.
-void Pathfinder::GetCellType(int a1, void *a2, void *a3, void *a4, int a5)
+void Pathfinder::GetCellType(int pos, void *a2, void *a3, void *a4, int layer)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(a5, (const Coord3D *)a1);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, (const Coord3D *)pos);
 	if (rec == 0)
 	{
 		*(unsigned char *)a2 = 0;
@@ -87,9 +87,9 @@ void Pathfinder::GetCellType(int a1, void *a2, void *a3, void *a4, int a5)
 	}
 }
 // ?IsWaterCell@Pathfinder@@QAE_NHH@Z @0x002E9897 47B: tag&0xf in {1,7}.
-bool Pathfinder::IsWaterCell(int a, int b)
+bool Pathfinder::IsWaterCell(int pos, int layer)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(b, (const Coord3D *)a);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, (const Coord3D *)pos);
 	if (rec != 0)
 	{
 		int tag = rec->m_flags & 0x0F;
@@ -98,15 +98,15 @@ bool Pathfinder::IsWaterCell(int a, int b)
 	return false;
 }
 // ?IsCliffCell@Pathfinder@@QAE_NHH@Z @0x002E98C6 36B: tag&0xf == 2.
-bool Pathfinder::IsCliffCell(int a, int b)
+bool Pathfinder::IsCliffCell(int pos, int layer)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(b, (const Coord3D *)a);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, (const Coord3D *)pos);
 	return rec != 0 ? (rec->m_flags & 0x0F) == 2 : false;
 }
 // ?isBlockedGateObstacleCell@Pathfinder@@QAEHHH@Z @0x002E98EA 47B: tag==4 && bit17.
-int Pathfinder::isBlockedGateObstacleCell(int a, int b)
+int Pathfinder::isBlockedGateObstacleCell(int pos, int layer)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(b, (const Coord3D *)a);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, (const Coord3D *)pos);
 	if (rec != 0)
 	{
 		int val = rec->m_flags;
@@ -123,9 +123,9 @@ int Pathfinder::isBlockedGateObstacleCell(int a, int b)
 	return 0;
 }
 // ?IsNonPinchedCliffCell@Pathfinder@@QAEHHH@Z @0x002E9919 47B: tag==2 && !bit16.
-int Pathfinder::IsNonPinchedCliffCell(int a, int b)
+int Pathfinder::IsNonPinchedCliffCell(int pos, int layer)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(b, (const Coord3D *)a);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, (const Coord3D *)pos);
 	if (rec != 0)
 	{
 		int val = rec->m_flags;
@@ -142,18 +142,18 @@ int Pathfinder::IsNonPinchedCliffCell(int a, int b)
 	return 0;
 }
 // ?IsImpassableCell@Pathfinder@@QAE_NHH@Z @0x002E9948 38B: null->true else tag==5.
-bool Pathfinder::IsImpassableCell(int a, int b)
+bool Pathfinder::IsImpassableCell(int pos, int layer)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(b, (const Coord3D *)a);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, (const Coord3D *)pos);
 	return rec != 0 ? (rec->m_flags & 0x0F) == 5 : true;
 }
 // ?IsPointOnWall@Pathfinder@@QAE_NH_N@Z @0x002E940F 51B: mid>0x10 and
 // (b==0 or low==0). Forwards (a 1) to rowed 0x001E3647 with ecx passthrough.
 // Evidence: ret 8 two args; test eax null; (flags>>4)&0x3F>0x10 via cl;
 // byte test of second arg; test al 0xf. Callers at 0x002CBF72 0x00345748.
-bool Pathfinder::IsPointOnWall(int a, bool b)
+bool Pathfinder::IsPointOnWall(int pos, bool b)
 {
-	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(1, (const Coord3D *)a);
+	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(1, (const Coord3D *)pos);
 	if (rec == 0)
 		return false;
 	unsigned int flags = rec->m_flags;

@@ -35,7 +35,7 @@ public:
 private:
 	StringBase<char> m_filenameToLoad;
 	OpaqueRefElement4 m_eventInfo;
-	int m_0C;
+	int m_playingHandle;
 	BfmePoolRef10 m_10;
 	int m_14;
 	int m_18;
@@ -46,8 +46,8 @@ private:
 	int m_2C;
 	int m_30;
 	int m_34;
-	int m_38;
-	Twelve m_3C;
+	int m_ownerType;
+	Twelve m_positionOfAudio;
 	unsigned char m_48;
 	unsigned char m_49;
 	unsigned char m_4A;
@@ -79,14 +79,14 @@ void Rva002D9893::rva002D9893(const Rva002D9893 &other)
 {
 	m_filenameToLoad.set(other.m_filenameToLoad);
 	m_eventInfo = other.m_eventInfo;
-	m_0C = other.m_0C;
+	m_playingHandle = other.m_playingHandle;
 	m_10 = other.m_10;
 	m_14 = other.m_14;
 	m_18 = other.m_18;
 	m_24 = other.m_24;
 	m_28 = other.m_28;
 	m_2C = other.m_2C;
-	m_38 = other.m_38;
+	m_ownerType = other.m_ownerType;
 	m_30 = other.m_30;
 	m_49 = other.m_49;
 	m_54 = other.m_54;
@@ -113,10 +113,10 @@ void Rva002D9893::rva002D9893(const Rva002D9893 &other)
 	m_80 = other.m_80;
 	m_84.set(other.m_84);
 	m_70 = other.m_70;
-	m_3C = other.m_3C;
+	m_positionOfAudio = other.m_positionOfAudio;
 	m_48 = other.m_48;
 	m_53 = other.m_53;
-	if (m_38 == 1 || m_38 == 2 || m_38 == 3 || m_38 == 4 || m_38 == 5)
+	if (m_ownerType == 1 || m_ownerType == 2 || m_ownerType == 3 || m_ownerType == 4 || m_ownerType == 5)
 		m_34 = other.m_34;
 }
 

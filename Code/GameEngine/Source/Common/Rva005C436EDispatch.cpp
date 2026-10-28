@@ -49,7 +49,7 @@ class Rva005C436E : public Snapshot
 {
 public:
 	virtual ~Rva005C436E();
-	void adjustCommandPoints(int v);
+	void adjustCommandPoints(int delta);
 	void activate();
 private:
 	Inner24 *m_04;
@@ -57,7 +57,7 @@ private:
 	bool m_0C;
 };
 
-void Rva005C436E::adjustCommandPoints(int v)
+void Rva005C436E::adjustCommandPoints(int delta)
 {
 	int idx = m_04->m_ptr->m_val;
 	Rva002E2903Player *player = (*(Rva002BA8F1Logic **)&TheLivingWorldLogic)->find(idx, 0);
@@ -65,10 +65,10 @@ void Rva005C436E::adjustCommandPoints(int v)
 		return;
 	switch (m_08->m_val) {
 	case 0:
-		((Rva002E07AC *)player)->add(v);
+		((Rva002E07AC *)player)->add(delta);
 		break;
 	case 1:
-		((Rva002E07B9 *)player)->add(v);
+		((Rva002E07B9 *)player)->add(delta);
 		break;
 	}
 }
