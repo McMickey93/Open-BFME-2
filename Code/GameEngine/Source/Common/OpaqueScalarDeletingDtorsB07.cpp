@@ -40,6 +40,7 @@
 // import: read <stdlib.h> without dllimport.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
 
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
@@ -177,7 +178,7 @@ public:
     unsigned int unmodelled10;
     Rva003B00D6Node *head14;
 };
-void __cdecl operator delete(void *);
+
 Rva003B00D6::~Rva003B00D6()
 {
     while (head14)
