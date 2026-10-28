@@ -42,18 +42,7 @@ struct RGBAColorInt
     unsigned int blue;
     unsigned int alpha;
 };
-// Snapshot's own transfer entry point sits at vtable slot 3: the transfer
-// operator below calls [vtable+0x0C] with the Xfer as its only argument, which
-// is what orders the three pure virtuals behind the destructor.
-class Xfer;
-class Snapshot
-{
-public:
-    virtual ~Snapshot();
-    virtual void crc(Xfer *xfer) = 0;
-    virtual void loadPostProcess() = 0;
-    virtual void xfer(Xfer *xfer) = 0;
-};
+#include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
 class AsciiString;
 class UnicodeString;
 class PooledString;

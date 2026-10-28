@@ -42,6 +42,8 @@ class Snapshot
 {
 
 friend class GameState;
+// Xfer::operator==(Snapshot &) (0x0060B8C6) calls slot 3 itself.
+friend class Xfer;
 friend class XferLoad;
 friend class XferSave;
 friend class XferCRC;
