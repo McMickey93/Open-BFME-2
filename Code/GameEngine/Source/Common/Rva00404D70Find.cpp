@@ -1,21 +1,22 @@
-// cl: /EHsc /MD /D_STLP_USE_STATIC_LIB /Ireference/shims/bfme2_ascii
+// cl: /DNDEBUG /DBFME_SB_CLEAR_DECL /MD /GX /D_STLP_USE_STATIC_LIB /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata /Ireference/shims/bfmealloc /ICode/Libraries/Include
 // stlport
 // ?rva00404D70@Rva00404D70@@QAEHABVAsciiString@@@Z @0x00404D70 117B
 // Range find over 0x18-byte records with AsciiString at +0 via
 // StringBase<char>::compareNoCase row 0x00006A00. Evidence: callers
 // 0x00404FDB 0x0040502F 0x00405697 pass AsciiString and test 0x7fffffff;
 // step 0x18 matches BfmeStringRecord00404BF3 neighbour TU.
-#include "ascii_string.h"
 #include <vector>
+#include "ascii_string.h"
 
 struct BfmeStringRecord00404BF3
 {
-	AsciiString text;
-	unsigned int word0;
-	unsigned int word1;
-	unsigned int word2;
-	unsigned int word3;
-	unsigned int word4;
+	AsciiString text; // +0x00
+	float f0; // +0x04
+	float f1; // +0x08
+	float f2; // +0x0C
+	float f3; // +0x10
+	float f4; // +0x14
+	BfmeStringRecord00404BF3(const AsciiString &s);
 };
 
 class Rva00404D70
