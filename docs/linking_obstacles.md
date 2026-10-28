@@ -1107,6 +1107,22 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-004: missing or incompatible shared providers and declarations
 
+- **Weapon assistance donor cleanup (2026-10-28, base `4b6b2ff79f`):**
+  [Scoped evidence](../reverse/attempt_support/weapon-assistance-cleanup-20261028-codexb.md)
+  removes the unused Zero Hour assistance callback/request type and two stale
+  constructor markers from Weapon.cpp. All 12 paired function rows and the
+  data row verify; the callback EH graph is EXACT. All 1,012 retained Weapon
+  COMDAT digests and five native assistance digests are unchanged, with no new
+  external dependencies. Three hatch occurrences retire. The ordinary preview
+  against `41c28839bf` preserves the native assistance unit's 267 authored
+  linking bytes; Weapon.cpp still has 18 unresolved names and its DamageInfo
+  constructor conflict. Shared class/provider reconciliation and census
+  confirmation remain open; no new census-linked coverage is claimed.
+  The outgoing audit is INCONCLUSIVE (older index and no current receipt for
+  affected consumer Common/0CreateAHeroManager21FE49.cpp). Both inspected
+  units have strict receipts; carry the removed-definition scope and affected
+  consumers into the next normal census.
+
 - **Team consolidation subset (2026-10-28, base `88160d0cb79`):**
   [The scoped audit](../reverse/attempt_support/team-consolidation-20261028-bce2/README.md)
   records the supported merge of forty donors into Team.cpp. All 139 ledger

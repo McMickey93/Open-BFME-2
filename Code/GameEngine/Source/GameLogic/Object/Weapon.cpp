@@ -257,7 +257,7 @@ const FieldParse WeaponTemplate::TheWeaponTemplateFieldParseTable[] =
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //-------------------------------------------------------------------------------------------------
-// ??0WeaponTemplate@@ present-unmatched
+
 // WeaponTemplate::WeaponTemplate(): dropped so this TU stops emitting the non-retail
 // ??0WeaponTemplate@@QAE@XZ copy that came first in link order ahead of retail's rowed
 // owner (0x002CD169, Rva002CD169Ctor.cpp), whose REL32 pin this TU's callers bind to.
@@ -1295,7 +1295,7 @@ void WeaponTemplate::dealDamageInternal(ObjectID sourceID, ObjectID victimID, co
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
-// ??0WeaponStore@@ present-unmatched
+
 // WeaponStore::WeaponStore(): dropped so this TU stops emitting the non-retail
 // ??0WeaponStore@@QAE@XZ copy that came first in link order ahead of retail's rowed
 // owner (0x002CC20E, Rva002CC20ECtor.cpp), whose REL32 pin this TU's callers bind to.
@@ -1995,57 +1995,8 @@ Bool Weapon::isDamageWeapon() const
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-class AssistanceRequestData
-{
-public:
-	AssistanceRequestData();
-
-	const Object *m_requestingObject;
-	Object *m_victimObject;
-	Real m_requestDistanceSquared;
-};
-
-//-------------------------------------------------------------------------------------------------
-// ??0AssistanceRequestData@@ present-unmatched
-AssistanceRequestData::AssistanceRequestData()
-{
-	m_requestingObject = NULL;
-	m_victimObject = NULL;
-	m_requestDistanceSquared = 0.0f;
-}
-
-//-------------------------------------------------------------------------------------------------
-static void makeAssistanceRequest( Object *requestOf, void *userData )
-{
-	AssistanceRequestData *requestData = (AssistanceRequestData *)userData;
-
-	// Don't ask ourselves (can't believe I forgot this one)
-	if( requestOf == requestData->m_requestingObject )
-		return;
-
-	// Only request of our kind of people
-	if( !requestOf->getTemplate()->isEquivalentTo( requestData->m_requestingObject->getTemplate() ) )
-		return;
-
-	// Who are close enough
-	Real distSq = ThePartitionManager->getDistanceSquared( requestOf, requestData->m_requestingObject, FROM_CENTER_2D );
-	if( distSq > requestData->m_requestDistanceSquared )
-		return;
-
-	// and respond to requests
-	static const NameKeyType key_assistUpdate = NAMEKEY("AssistedTargetingUpdate");
-	AssistedTargetingUpdate *assistModule = (AssistedTargetingUpdate*)requestOf->findUpdateModule(key_assistUpdate);
-	if( assistModule == NULL )
-		return;
-
-	// and say yes
-	if( !assistModule->isFreeToAssist() )
-		return;
-
-	assistModule->assistAttack( requestData->m_requestingObject, requestData->m_victimObject );
-}
-
-//-------------------------------------------------------------------------------------------------
+// The assistance callback and its request data live with the verified caller
+// in WeaponRva002C9DF5.cpp; BFME 2's callback returns int.
 // Weapon::processRequestAssistance (0x002C9DF5) is defined with its retail body in WeaponRva002C9DF5.cpp.
 
 //-------------------------------------------------------------------------------------------------
