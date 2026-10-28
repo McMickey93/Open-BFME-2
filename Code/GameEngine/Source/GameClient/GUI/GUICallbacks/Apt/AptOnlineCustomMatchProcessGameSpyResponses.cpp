@@ -28,7 +28,7 @@
 #include "unicode_string.h"
 #include <string.h>
 // Retail calls MSVCR71 _mbscat here (thunk 0x0062988C), not strcat.
-extern "C" char *__cdecl _mbscat(char *dest, const char *source);
+#include <mbstring.h>
 #include <stdlib.h>
 #include <stdio.h>
 namespace _STL { void __cdecl free(void *block) throw(...); }
@@ -55,7 +55,6 @@ typedef unsigned short UnsignedShort;
 typedef unsigned char UnsignedByte;
 typedef int Color;
 
-enum { FALSE = 0, TRUE = 1 };
 enum { MAX_SLOTS = 8 };
 enum { PLAYERTEMPLATE_OBSERVER = -2 };
 enum SlotState { SLOT_OPEN = 0, SLOT_PLAYER = 6 };
@@ -73,8 +72,10 @@ extern "C" __declspec(dllimport) int __cdecl atoi(const char *s);
 extern "C" __declspec(dllimport) int __cdecl _strcmpi(const char *a, const char *b);
 }
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-extern "C" __declspec(dllimport) unsigned long __stdcall htonl(unsigned long hostlong);
+#define NOMINMAX
+#include <WinSock2.h>
+#include <windows.h>
+#include <mmsystem.h>
 
 extern Color GameSpyColor[];
 
@@ -1367,7 +1368,7 @@ void AptOnlineCustomMatch::ProcessGameSpyResponses()
 								{
 									token.trim();
 									char buf[32] = "0x";
-									_mbscat(buf, token.str());
+									_mbscat((unsigned char *)buf, (const unsigned char *)token.str());
 									Int profileID = 0;
 									CrtIAT::sscanf(buf, "%x", &profileID);
 									slot->m_profileID = profileID;
