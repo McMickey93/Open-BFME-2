@@ -1588,6 +1588,7 @@ address_global	Code/Libraries/Source/WWVegas/WW3D2/simplestreakrender.cpp	g_Va00
 address_global	Code/Libraries/Source/WWVegas/WW3D2/simplestreakrender.cpp	g_Va00DEE870	3
 address_global	Code/Libraries/Source/WWVegas/WW3D2/statistics.cpp	g_Va00DEE8E8	6
 address_global	Code/Libraries/Source/WWVegas/WWLib/HordeMeleeSwarmXfer.cpp	g_Rva0107301CEmptyString	3
+address_global	Code/Libraries/Source/WWVegas/WWLib/LivingWorldAutoResolveBodyTemplate.cpp	g_Va00BBB8D8	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva001532E1Erase.cpp	g_Rva00153565Vec	4
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva00153565Register.cpp	g_Rva00153565Vec	7
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva001DABB6SoundsListParse.cpp	g_Rva0107301CEmptyString	3
@@ -1595,7 +1596,6 @@ address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp	g_Va00DB
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002EEA1DReset.cpp	g_Va00DBD4C8	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva0030E7D0Ctor.cpp	g_Va00BBB8D8	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva004119F3.cpp	g_Va00E0300C	2
-address_global	Code/Libraries/Source/WWVegas/WWLib/Rva00418573Lookup.cpp	g_Va00BBB8D8	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva00422D1CFind.cpp	g_Va00E0319C	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva0055C0E1.cpp	g_Va007C26F0	4
 address_global	Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0036ADF9.cpp	g_Va00E0362C	2
