@@ -7,6 +7,8 @@
 
 typedef int Int;
 #include "DisplayStaticDebugView.h"
+#include <windows.h>
+#include <string.h>
 
 // ?rva0025C8D3@Rva0025C6E2Elem@@QAEXPAVW3DDisplay@@HH@Z @0x0025C8D3 171B
 // Element image draw: early-out on null image or id mismatch, then single
@@ -200,6 +202,8 @@ extern float g_Va00BBB8D8;
 // tu-skeleton: 0x0025C238 34B ?rva0025C238@Display@@UAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0025C25A 8B ?rva0025C25A@Rva0025C25AForwarder@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSizedForwarders.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/Display.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/Display.cpp
 
@@ -443,24 +447,6 @@ void Display::rva0025D19E()
 	m_iE0 = -1;
 }
 
-// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C7F9 48B ?rva0025C7F9@Rva0025C7F9@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C97E 764B ?rva0025C97E@Display@@UAE_NVAsciiString@@HHH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieOpenRva0025C97E.cpp (not merged yet)
-
-// tu-skeleton: 0x0025CC7A 629B ?rva0025CC7A@Display@@QAE_N_N@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
-
-// tu-skeleton: 0x0025CF2A 485B ?rva0025CF2A@Display@@UAEIH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieFrameRva0025CF2A.cpp (not merged yet)
-
-// tu-skeleton: 0x0025D10F 25B ?rva0025D10F@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
-// tu-skeleton: 0x0025D128 118B ?bfmeVM0WorkerThread@@YAKPAX@Z -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/BfmeStrVM0SetText.cpp
 
 // ?rva0025D358@Display@@QAEXVUnicodeString@@MMHHH@Z, retail 0x0025D358, 112 bytes.
@@ -505,6 +491,24 @@ DisplayString *Display::rva0025D3C8()
 	return ds;
 }
 
+// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C7F9 48B ?rva0025C7F9@Rva0025C7F9@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C97E 764B ?rva0025C97E@Display@@UAE_NVAsciiString@@HHH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieOpenRva0025C97E.cpp (not merged yet)
+
+// tu-skeleton: 0x0025CC7A 629B ?rva0025CC7A@Display@@QAE_N_N@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
+
+// tu-skeleton: 0x0025CF2A 485B ?rva0025CF2A@Display@@UAEIH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieFrameRva0025CF2A.cpp (not merged yet)
+
+// tu-skeleton: 0x0025D10F 25B ?rva0025D10F@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
+
+// tu-skeleton: 0x0025D128 118B ?bfmeVM0WorkerThread@@YAKPAX@Z -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
+
 // tu-skeleton: 0x0025D489 509B ??0Display@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0025D489Ctor.cpp (not merged yet)
 
 // tu-skeleton: 0x0025D686 111B ??1Display@@UAE@XZ -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp (not merged yet)
@@ -517,7 +521,27 @@ DisplayString *Display::rva0025D3C8()
 
 // tu-skeleton: 0x0025DA73 26B ?bfmeTickVM0@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
 
-// tu-skeleton: 0x0025DA8D 160B ?rva0025DA8D@Display@@UAE_NVAsciiString@@H@Z -- matched in Code/GameEngine/Source/GameClient/DisplayRva0025DA8DPlayMovie.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/DisplayRva0025DA8DPlayMovie.cpp
+
+// platformsdk
+// ?rva0025DA8D@Display@@UAE_NVAsciiString@@H@Z, retail 0x0025DA8D (160 bytes, EH, RET 8),
+// display vtable slot 72 (W3DDisplay table 0x007C3C80). Refuses on Windows 9x
+// (GetVersionExA platform 1); otherwise hands a copy of the movie name, the flags without
+// bit 3 and two -1 limits to slot 66 (+0x108) and, when that starts, runs the rowed
+// bfmeTickVM0 step and reports success. The slot's own name is not recovered.
+
+bool Display::rva0025DA8D(AsciiString movieName, int flags)
+{
+	OSVERSIONINFOA info;
+	memset(&info, 0, sizeof(info));
+	info.dwOSVersionInfoSize = sizeof(info);
+	GetVersionExA(&info);
+	if (info.dwPlatformId != VER_PLATFORM_WIN32_WINDOWS && playMovieFlags(movieName, flags & ~8, -1, -1)) {
+		bfmeTickVM0();
+		return true;
+	}
+	return false;
+}
 
 // tu-skeleton: 0x00772B08 8B uw_00772b08 -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
 
