@@ -1,0 +1,12 @@
+--- a/Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DRadioButton.cpp
++++ b/Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DRadioButton.cpp
+@@ -72,7 +72,8 @@
+ #include "GameClient/GameWindowGlobal.h"
+ #include "GameClient/GameWindowManager.h"
+ #include "GameClient/GadgetRadioButton.h"
+-#include "W3DDevice/GameClient/W3DGadget.h"
++// These callbacks use GameWindow, not W3DGameWindow or its renderer.
++#include "GameClient/GameWindow.h"
+ #include "W3DDevice/GameClient/W3DDisplay.h"
+ 
+ // DEFINES ////////////////////////////////////////////////////////////////////
