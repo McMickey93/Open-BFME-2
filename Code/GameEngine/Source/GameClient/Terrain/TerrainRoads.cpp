@@ -459,7 +459,7 @@ public:
 	TerrainRoadType *findBridge( AsciiString name );
 	TerrainRoadType *findRoadOrBridge( AsciiString name );
 
-protected:
+private:
     TerrainRoadType *m_roadList;
     TerrainRoadType *m_bridgeList;
     static unsigned int m_idCounter;
