@@ -321,6 +321,19 @@ class EffectiveFlagsTests(unittest.TestCase):
         self.assertTrue(out.startswith("// cl: /O1 /arch:SSE /G7\n"))
 
 
+class MemberKeyTests(unittest.TestCase):
+    def test_a_declspec_does_not_hide_the_function_name(self):
+        plain = T.member_key("int getInt() const;")
+        self.assertEqual(plain, (("fn", "getInt", True), "safe"))
+        self.assertEqual(T.member_key("__declspec(dllimport) __forceinline int getInt() const { return m_int; }"), plain)
+        self.assertEqual(T.member_key("__declspec(noinline) bool f(Parameter *a);")[0], ("fn", "f", False))
+
+    def test_union_view_does_not_redeclare_a_declspec_member(self):
+        base = "class P\n{\npublic:\n\t__declspec(dllimport) __forceinline int getInt() const { return m_int; }\n\tint m_int;\n};"
+        other = "class P\n{\npublic:\n\tint getInt() const;\n\tint m_int;\n};"
+        self.assertEqual(T.union_view(base, [other]).count("getInt"), 1)
+
+
 class StlStaticFlagTests(unittest.TestCase):
     def test_an_md_set_with_the_alloc_shim_gets_the_define_before_its_includes(self):
         self.assertEqual(T.stl_static(["/MD", "/EHsc", "/Ireference/shims/bfmealloc", "/ICode"]),

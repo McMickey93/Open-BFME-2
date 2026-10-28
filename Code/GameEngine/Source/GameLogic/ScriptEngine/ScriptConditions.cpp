@@ -6,6 +6,13 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
+class Parameter;
+class Player;
+class PlayerList;
+class ScriptEngine;
+class Object;
+class Condition;
+class Team;
 // Zero Hour BaseType.h conversions; BFME2's ceil goes through the CRT.
 static __forceinline float fast_float_ceil(float f)
 {
@@ -43,7 +50,7 @@ public:
 	Real getReal() const { return m_real; }
 	const AsciiString &getString() const { return m_string; }
 
-	unsigned char m_pad00[8];
+	unsigned char m_padParm00[8];
 	Int m_int;				// +0x08
 	Real m_real;				// +0x0C
 	AsciiString m_string;			// +0x10
@@ -93,7 +100,7 @@ public:
 	Rva00261C89 *getField04() const { return m_field04; }
 
 private:
-	unsigned char m_pad00[4];
+	unsigned char m_padObj00[4];
 	Rva00261C89 *m_field04;			// +0x04
 	unsigned char m_pad08[0x38 - 8];
 	Coord3D m_pos;				// +0x38
@@ -106,7 +113,7 @@ public:
     Parameter *getParameter(Int ndx) const { if (ndx >= 0 && ndx < m_numParms) return m_parms[ndx]; return 0; }
 
 private:
-	unsigned char m_pad00[8];
+	unsigned char m_padCond00[8];
 	Int m_numParms;				// +0x08
 	Parameter *m_parms[13];			// +0x0C
 	char m_unknown40[0x0d];
@@ -347,7 +354,7 @@ extern const void *const g_00C35B34[];
 class GlobalData
 {
 public:
-    unsigned char m_pad[0x110C];
+    unsigned char m_padGlobal[0x110C];
     float m_secondsBeforeBaseCheckActive; // +0x110C, seconds before the destroyed conditions may fire
 };
 
@@ -417,7 +424,7 @@ class Parameter;
 class GameInfo
 {
 public:
-	unsigned char m_pad[0x68];
+	unsigned char m_padGameInfo[0x68];
 	int m_68;
 };
 

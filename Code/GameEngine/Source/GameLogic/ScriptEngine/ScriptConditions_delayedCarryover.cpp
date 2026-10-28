@@ -17,10 +17,12 @@ enum ObjectID { INVALID_ID = 0 };
 
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
+class UnitRevivalTracker;
+
 class Player
 {
 public:
-	class UnitRevivalTracker *getUnitRevivalTracker() { return (UnitRevivalTracker *)m_unitRevivalTracker; }
+	UnitRevivalTracker *getUnitRevivalTracker() { return (UnitRevivalTracker *)m_unitRevivalTracker; }
 	int getArmyID() const { return m_armyID; }
 
 private:

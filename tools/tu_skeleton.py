@@ -310,6 +310,7 @@ def member_key(m):
     if re.match(r"^(enum|struct|class|union|typedef)\b", s):
         names = re.findall(r"[A-Za-z_]\w*", s)
         return ("type", names[-1] if s.startswith("typedef") else names[1] if len(names) > 1 else s), "safe"
+    s = re.sub(r"__declspec\s*\([^()]*\)\s*", "", s)
     f = re.search(r"(~?[A-Za-z_]\w*|operator\s*\S+)\s*\(([^()]*(?:\([^()]*\)[^()]*)*)\)\s*(const)?", s)
     if f and not re.search(r"\(\s*\*", s[:f.start() + 3]):
         return ("fn", f.group(1), bool(f.group(3))), ("layout" if re.search(r"\bvirtual\b", s) else "safe")

@@ -3,6 +3,7 @@
 // retail 0x003E4C77 22B leaf free cdecl int of 0 params ret from 0x003EC0A7. Evidence:
 // TheAudio global plus vslot 0x9c slot 39 taking 0 returning int then logical not
 // via neg sbb inc like retail; sibling TheAudio forwarders Rva003BC4D1Do slot 0xb4.
+class AsciiString;
 class AudioManager
 {
 public:
@@ -38,7 +39,7 @@ public:
     virtual void s29();
     virtual void s30();
     virtual void s31();
-    virtual void s32();
+    virtual bool hasMusicTrackCompleted(const AsciiString &trackName, int numberOfTimes, int extraA, int extraB) const;
     virtual void s33();
     virtual void s34();
     virtual void s35();

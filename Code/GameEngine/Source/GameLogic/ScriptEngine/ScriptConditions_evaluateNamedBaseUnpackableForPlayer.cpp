@@ -28,82 +28,54 @@ class CommandButton;
 class CommandSet;
 class ThingTemplate;
 class ScriptEngine
-
 {
  public:
  Object *getUnitNamed(Parameter *);
  int rva00357B82(Parameter *);
- 
-}
-;
+};
 class PlayerList
-
 {
  public:
  Player *getPlayerFromMask(int);
- 
-}
-;
+};
 class Rva00395F57
-
 {
  public:
  bool canUnpack(bool);
- 
-}
-;
+};
 class Rva00397F45 : public Rva00395F57
-
 {
  public:
  bool rva00397F45(Player *, int);
- 
-}
-;
+};
 class Rva0039718B : public Rva00397F45
-
 {
  public:
  bool rva0039718B(Player *);
- 
-}
-;
+};
 class Rva00395686 : public Rva0039718B
-
 {
  public:
  bool rva00395686(Player *, ThingTemplate *);
- 
-}
-;
+};
 class CastleBehavior : public Rva00395686
-
 {
  public:
  static NameKeyType rva0003955DA();
- 
-}
-;
+};
 class CommandSet
-
 {
  public:
  const CommandButton *getCommandButton(int) const;
- 
-}
-;
+};
 class CommandButton
-
 {
  public:
  char pad[0x14];
  int m_command;
  const ThingTemplate *rva0035B570() const;
- 
-}
-;
+};
 class Object
-
 {
  public:
  Player *getControllingPlayer() const;
@@ -112,31 +84,20 @@ protected:
  friend class ScriptConditions;
 public:
  const AsciiString *rva00290E67() const;
- 
-}
-;
+};
 class Rva0031D5F8
-
 {
  public:
  void *rva0031D5F8(const AsciiString *);
- 
-}
-;
+};
 class ControlBar : public Rva0031D5F8 
-
 {
- 
-}
-;
+};
 class ScriptConditions
-
 {
  protected:
  bool evaluateNamedBaseUnpackableForPlayer(Parameter *, Parameter *);
- 
-}
-;
+};
 extern ScriptEngine *TheScriptEngine;
 extern PlayerList *ThePlayerList;
 extern ControlBar *TheControlBar;

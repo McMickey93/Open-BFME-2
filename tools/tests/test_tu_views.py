@@ -241,6 +241,17 @@ class Conflicts(unittest.TestCase):
         self.assertEqual(rep["classes"]["Foo"]["status"], "conflict")
         self.assertIn("fields overlap", rep["classes"]["Foo"]["evidence"])
 
+    def test_padding_named_like_another_classes_padding_is_still_a_gap(self):
+        donor = ("class Bar\n{\npublic:\n\tunsigned char m_pad[8];\n\tint m_z;\n};\n"
+                 "class Foo\n{\npublic:\n\tunsigned char m_pad[4];\n\tfloat m_y;\n};\n"
+                 "float g(Foo *f, Bar *b) { return f->m_y + b->m_z; }\n")
+        rep, _ = self.plan(SEED, donor)
+        self.assertEqual(rep["classes"]["Foo"]["status"], "plan")
+        used = "class Foo\n{\npublic:\n\tunsigned char m_pad[4];\n\tfloat m_y;\n};\n" \
+               "unsigned char *g(Foo *f) { return f->m_pad; }\n"
+        rep, _ = self.plan(SEED, used)
+        self.assertEqual(rep["classes"]["Foo"]["status"], "conflict")
+
     def test_one_offset_typed_as_different_things(self):
         donor = "class Foo\n{\npublic:\n\tint m_x;\n\tint m_count;\n};\nvoid g(Foo *f) { f->m_count = 0; }\n"
         rep, _ = self.plan(SEED, donor)
