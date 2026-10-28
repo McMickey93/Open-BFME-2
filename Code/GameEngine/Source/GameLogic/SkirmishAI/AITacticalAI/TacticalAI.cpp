@@ -37,6 +37,8 @@ class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
 #include "../../../../Include/Common/BfmeXfer.h"
+#include "../../../../../Libraries/Include/Lib/BfmeE16.h"
+#pragma comment(linker, "/alternatename:?v1@Rva00506B1B@@UAEXXZ=__purecall")
 
 class Xfer::Version
 {
@@ -206,6 +208,67 @@ public:
 	Player *rva002C5FD9();
 };
 
+class Xfer;
+
+class Rva002C5FBA
+{
+public:
+	void *rva002C5FBA(int index);
+
+private:
+	unsigned char m_pad[0xC];
+	AITargetChooser *m_chooser;			// +0x0C
+};
+
+// bfme link decl-only BfmeE16
+namespace _STL { template <> vector<BfmeE16, allocator<BfmeE16> >::~vector(); }
+
+class Rva00506B1B
+{
+public:
+	Rva00506B1B();
+	// Declared only: retail's unwind call lands on the rowed body at 0x00506B28.
+	virtual ~Rva00506B1B();
+	virtual void v1();
+	bool m_04;
+};
+
+struct Rva00506909Request;
+
+typedef AITacticsGenerator AITacticsGenerator;
+
+class Rva00506A34
+{
+public:
+	Rva00506A34(void *p);
+	char m_pad[0x10];
+};
+
+class Rva000C24EA
+{
+public:
+	~Rva000C24EA();
+};
+
+class Rva002C60E4 : public Rva00506B1B
+{
+public:
+	Rva002C60E4(void *arg0, bool arg1);
+	void rva002C61AF();
+	virtual ~Rva002C60E4() {}
+
+private:
+	void *m_08;
+	AITargetChooser *m_0C;
+	AITacticsGenerator *m_10;
+	int m_14;
+	int m_18;
+	Rva00506A34 *m_1C;
+	_STL::vector<BfmeE16, _STL::allocator<BfmeE16> > m_vec;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
 
 void TacticalAI::DoXfer(Xfer *xfer)
@@ -312,10 +375,6 @@ bool TacticalAI::checkEnemyForAttackMove(Object *object, Object *b)
     return false;
 }
 
-// tu-skeleton: 0x002C5FBA 17B ?rva002C5FBA@Rva002C5FBA@@QAEPAXH@Z -- matched in Code/GameEngine/Source/Common/Rva002C5FBAForward.cpp (not merged yet)
-
-// tu-skeleton: 0x002C5FCB 14B ?get@Rva002C5FCBNullAdjustField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/Disp8NullAdjustGetters.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva002C5FD9Get.cpp
 
 Player *Rva002C5FD9::rva002C5FD9()
@@ -324,24 +383,6 @@ Player *Rva002C5FD9::rva002C5FD9()
 		return m_0C->rva0050539C();
 	return 0;
 }
-
-// tu-skeleton: 0x002C5FE8 34B ?rva002C5FE8@Rva002C5FE8@@QAEPAXH@Z -- matched in Code/GameEngine/Source/Common/Rva002C5FE8Search.cpp (not merged yet)
-
-// tu-skeleton: 0x002C60A9 59B ?rva002C60A9@Rva002C5FE8@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva002C5FE8Search.cpp (not merged yet)
-
-// tu-skeleton: 0x002C60E4 203B ??0Rva002C60E4@@QAE@PAX_N@Z -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp (not merged yet)
-
-// tu-skeleton: 0x002C61AF 133B ?rva002C61AF@Rva002C60E4@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor.cpp (not merged yet)
-
-// tu-skeleton: 0x002C6234 288B ??0Rva002C5EF0@@QAE@ABUCoord3DBase@@MPAVPlayer@@@Z -- matched in Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp (not merged yet)
-
-// tu-skeleton: 0x002C6354 77B ??1Rva002C6354@@UAE@XZ -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp (not merged yet)
-
-// tu-skeleton: 0x002C63A1 303B ?DoXfer@Rva002C6354@@QAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp (not merged yet)
-
-// tu-skeleton: 0x002C65EB 28B ??_GRva002C6354@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp (not merged yet)
-
-// tu-skeleton: 0x002C6607 370B ?updateInterestZones@TacticalAI@@QAEXXZ -- matched in Code/GameEngine/Source/Common/TacticalAI_updateInterestZones.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAIInterestZones.cpp
 
@@ -359,17 +400,85 @@ void TacticalAI::rva002C6779() {
  tail->rva00506AFA();
 }
 
-// tu-skeleton: 0x00776E58 8B $L4195 -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva002C5FBAForward.cpp
 
-// tu-skeleton: 0x00776E60 11B $L4196 -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp (not merged yet)
+void *Rva002C5FBA::rva002C5FBA(int index)
+{
+	if (m_chooser)
+		return m_chooser->rva00505408(index);
+	return 0;
+}
 
-// tu-skeleton: 0x00776E6B 10B $L4371 -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp (not merged yet)
+// tu-skeleton: 0x002C5FCB 14B ?get@Rva002C5FCBNullAdjustField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/Disp8NullAdjustGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x00776E75 10B $L4372 -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp (not merged yet)
+// tu-skeleton: 0x002C5FE8 34B ?rva002C5FE8@Rva002C5FE8@@QAEPAXH@Z -- matched in Code/GameEngine/Source/Common/Rva002C5FE8Search.cpp (not merged yet)
 
-// tu-skeleton: 0x00776E7F 10B $L4373 -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp (not merged yet)
+// tu-skeleton: 0x002C60A9 59B ?rva002C60A9@Rva002C5FE8@@QAEXI@Z -- matched in Code/GameEngine/Source/Common/Rva002C5FE8Search.cpp (not merged yet)
 
-// tu-skeleton: 0x00776E89 10B __ehhandler$??0Rva002C60E4@@QAE@PAX_N@Z -- matched in Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
+
+// Split from Rva002C60E4Ctor.cpp: these definitions reference a callee with no matched body yet,
+// so they are kept apart from the unit's bodies that already link.
+//
+// ??0Rva002C60E4@@QAE@PAX_N@Z @0x002C60E4 203B
+// Evidence: unlock lane prev Rva002C5FE8Search next DispDword setter caller
+// 0x002C6EE0 callees Rva00506B1B ctor plus Vector_base BfmeE16 plus operator
+// new plus AITargetChooser/AITacticsGenerator/Rva00506A34 ctors vtable g_00C004E4
+// offsets 0x08/0x0c/0x10/0x14/0x18/0x1c/0x20 ret 8 two args voidptr plus bool.
+// Identity: honest-address thiscall ctor with two args.
+
+Rva002C60E4::Rva002C60E4(void *arg0, bool arg1)
+	: m_08(arg0), m_0C(0), m_14(0), m_18(0), m_1C(0)
+{
+	if (arg1)
+		m_0C = new AITargetChooser(arg0);
+	m_10 = new AITacticsGenerator(arg0);
+	m_1C = new Rva00506A34(arg0);
+}
+
+// Slot 1 of the Rva00506B1B vftable (0x00C63F9C) is the retail purecall stub at 0x0003B810.
+
+// ---- from Code/GameEngine/Source/Common/Rva002C60E4Ctor.cpp
+
+//
+// ??0Rva002C60E4@@QAE@PAX_N@Z @0x002C60E4 203B
+// Evidence: unlock lane prev Rva002C5FE8Search next DispDword setter caller
+// 0x002C6EE0 callees Rva00506B1B ctor plus Vector_base BfmeE16 plus operator
+// new plus AITargetChooser/AITacticsGenerator/Rva00506A34 ctors vtable g_00C004E4
+// offsets 0x08/0x0c/0x10/0x14/0x18/0x1c/0x20 ret 8 two args voidptr plus bool.
+// Identity: honest-address thiscall ctor with two args.
+
+// ?rva002C61AF@Rva002C60E4@@QAEXXZ @0x002C61AF 133B: releases the three owned
+// members (each guarded, the pointer cleared only when it was set) and then
+// the pointer vector at +0x20: delete every non-null element, erase the range.
+// Evidence: 0x002C60E4 ctor layout (+0x0C chooser, +0x10 generator, +0x1C
+// third member, vector at +0x20) and the rowed dtors 0x0050549A, 0x00505BBA,
+// 0x000796BC; the vector erase is the ICF'd void* erase 0x0031BD55.
+void Rva002C60E4::rva002C61AF()
+{
+	if (m_10) { delete m_10; m_10 = 0; }
+	if (m_0C) { delete m_0C; m_0C = 0; }
+	if (m_1C != 0) { delete (Rva000C24EA *)m_1C; m_1C = 0; }
+	void ***vec = (void ***)&m_vec;
+	if (vec[0] != vec[1]) {
+		void **finish = *(void ***)((char *)this + 0x24);
+		for (void **cur = *(void ***)((char *)this + 0x20); cur != finish; ++cur) {
+			if (*cur)
+				::operator delete(*cur);
+		}
+		((_STL::vector<void *, _STL::allocator<void *> > *)vec)->erase(vec[0], vec[1]);
+	}
+}
+
+// tu-skeleton: 0x002C6234 288B ??0Rva002C5EF0@@QAE@ABUCoord3DBase@@MPAVPlayer@@@Z -- matched in Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp (not merged yet)
+
+// tu-skeleton: 0x002C6354 77B ??1Rva002C6354@@UAE@XZ -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp (not merged yet)
+
+// tu-skeleton: 0x002C63A1 303B ?DoXfer@Rva002C6354@@QAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp (not merged yet)
+
+// tu-skeleton: 0x002C65EB 28B ??_GRva002C6354@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp (not merged yet)
+
+// tu-skeleton: 0x002C6607 370B ?updateInterestZones@TacticalAI@@QAEXXZ -- matched in Code/GameEngine/Source/Common/TacticalAI_updateInterestZones.cpp (not merged yet)
 
 // tu-skeleton: 0x00776E93 8B Unwind@00b76e93 -- matched in Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp (not merged yet)
 

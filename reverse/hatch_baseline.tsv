@@ -27,7 +27,6 @@ address_global	Code/GameEngine/Source/Common/BfmeOwnerCDECount.cpp	g_Va00BBB8D8	
 address_global	Code/GameEngine/Source/Common/BfmeThingBFGTail.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/BfmeThingBFGTail.cpp	g_Va00BC74F0	2
 address_global	Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	g_Va00E0ABB0	1
-address_global	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	g_Va00A03354	2
 address_global	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	g_Va00A04450	1
 address_global	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	g_Va00A046B4	1
 address_global	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	g_Va00A04904	1
@@ -92,7 +91,6 @@ address_global	Code/GameEngine/Source/Common/GapBodiesS3H.cpp	g_Va00DBD0F4	2
 address_global	Code/GameEngine/Source/Common/GapBodiesSeat1A.cpp	g_Va00DBB708	2
 address_global	Code/GameEngine/Source/Common/GapBodiesSeat1A_ModuleFactoryDataAt0025464A.cpp	g_Va00DBB708	1
 address_global	Code/GameEngine/Source/Common/GapBodiesSeat1B.cpp	g_Va00DBD4C8	2
-address_global	Code/GameEngine/Source/Common/GapBodiesSeat1C.cpp	g_Va00A03354	2
 address_global	Code/GameEngine/Source/Common/GapBodiesSeat1C.cpp	g_Va00DFEFD8	2
 address_global	Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp	g_Va00A04450	2
 address_global	Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp	g_Va00E04544	2
@@ -248,7 +246,6 @@ address_global	Code/GameEngine/Source/Common/Rva002E36D5Find.cpp	g_Va00DBD0F4	2
 address_global	Code/GameEngine/Source/Common/Rva002E373CClear.cpp	g_Va00DBD0F4	3
 address_global	Code/GameEngine/Source/Common/Rva002F0C55Helper.cpp	g_Va00DBD4C8	1
 address_global	Code/GameEngine/Source/Common/Rva00380705Free.cpp	g_Va00E032FC	2
-address_global	Code/GameEngine/Source/Common/Rva0038169DChatSubmit.cpp	g_Va00A03354	2
 address_global	Code/GameEngine/Source/Common/Rva0039B548Method.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/Rva003B242CGet.cpp	g_Va00E00944	2
 address_global	Code/GameEngine/Source/Common/Rva003B9E58.cpp	g_Va00DFE7AC	2
@@ -298,9 +295,7 @@ address_global	Code/GameEngine/Source/Common/Rva00437E72Dtor.cpp	g_Va00E032FC	4
 address_global	Code/GameEngine/Source/Common/Rva00437EDCFinish.cpp	g_Va00E032FC	6
 address_global	Code/GameEngine/Source/Common/Rva0043DB3DGlobalSet.cpp	g_Va00E03340	2
 address_global	Code/GameEngine/Source/Common/Rva004421E1Dtor.cpp	g_Va00E0333C	3
-address_global	Code/GameEngine/Source/Common/Rva00444525Init.cpp	g_Va00A03354	2
 address_global	Code/GameEngine/Source/Common/Rva00446A71Get.cpp	g_Va00A0335C	4
-address_global	Code/GameEngine/Source/Common/Rva00446A77Enable.cpp	g_Va00A03354	4
 address_global	Code/GameEngine/Source/Common/Rva00446A77Enable.cpp	g_Va00A0335C	2
 address_global	Code/GameEngine/Source/Common/Rva004DD9E3.cpp	g_Va00E049D8	2
 address_global	Code/GameEngine/Source/Common/Rva004E84ABMethod.cpp	g_Va00E04478	4
@@ -318,7 +313,6 @@ address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A03314	
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A03318	4
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A0331C	3
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A03320	4
-address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A03354	3
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A04450	4
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A0445C	4
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A04460	3
@@ -954,8 +948,6 @@ address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaig
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptFileTransferPopupCtor.cpp	g_Va00E06398	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptGuiFXCallbacks.cpp	g_Va00E022E0	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptInGameChat.cpp	g_Va00E04478	5
-address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptLanLobbyDestructor.cpp	g_Va00A03354	5
-address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptLanLobbyGamesListTooltip.cpp	g_Va00A03354	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptLoadScreen.cpp	g_Va00E0330C	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptLoadScreenCtor.cpp	g_Va00E0330C	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMainMenuCallbacks.cpp	g_Va00DD1538	2
@@ -1152,7 +1144,6 @@ address_global	Code/GameEngine/Source/GameLogic/Object/Update/Rva00254845Ctor.cp
 address_global	Code/GameEngine/Source/GameLogic/Object/Update/Rva0037441ELeaf.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp	g_Va00BBB8E0	2
 address_global	Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp	g_Va00DFECD0	4
-address_global	Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp	g_Va00E01EDC	2
 address_global	Code/GameEngine/Source/GameLogic/Pathfinder/rva002F14F9Rva002F14F9Farm.cpp	g_Va00DFECD0	2
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActionsRva003BBF51.cpp	g_Va007C26F0	2
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActionsRva003BBFFB.cpp	g_Va00BBB8D8	3
@@ -1209,10 +1200,6 @@ address_global	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp	
 address_global	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PersistentStorageThread.cpp	g_Rva0107301CEmptyString	3
 address_global	Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PersistentStorageThread.cpp	g_Va00E0333C	2
 address_global	Code/GameEngine/Source/GameNetwork/LANAPICallbacks.cpp	g_Va00E0333C	6
-address_global	Code/GameEngine/Source/GameNetwork/LANAPICallbacks.cpp	g_Va00E03354	9
-address_global	Code/GameEngine/Source/GameNetwork/LANAPILobbyMenuForwarders.cpp	g_Va00E03354	7
-address_global	Code/GameEngine/Source/GameNetwork/LANAPIOnGameCreate.cpp	g_Va00A03354	3
-address_global	Code/GameEngine/Source/GameNetwork/LANAPIRva00248D9D.cpp	g_Va00A03354	2
 address_global	Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp	g_Va00DD35D0	2
 address_global	Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp	g_Va00DD35D0	2
 address_global	Code/GameEngine/Source/GameNetwork/Rva007B55E0TxnNameInits.cpp	g_Va00DD7F48	21
@@ -2266,7 +2253,6 @@ alternatename	Code/GameEngine/Source/Common/Rva002B37B4.cpp	?rva0020F2F1@Rva0020
 alternatename	Code/GameEngine/Source/Common/Rva002B3D81.cpp	?rva002B2BAA@@YA_NXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva002B3F9F.cpp	?rva0040CBD7@Rva0040CBD7Vec@@QAEXPAPAXH@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva002B91EDElementCopy.cpp	??0Rva002B5558@@QAE@ABV0@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp	?v1@Rva00506B1B@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva002D76C6Remove.cpp	?rva002D76C6@Radar@@QAE_NPAURva002D76C6Owner@@PAPAURva002D76C6Node@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva002E0427Dtor.cpp	??1Rva0022C0CDSubsystem@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva002E15E6Method.cpp	?Rva002E17A0Copy@@YAPAVRva002E0D93@@PAV1@00PADH@Z	1
@@ -3448,6 +3434,7 @@ alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetC
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetChooser/AITargetChooser.cpp	?rva005055DE@AITargetChooser@@AAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetChooser/AITargetChooser.cpp	?rva005A910E@Rva005A9562@@QAEPAURva0050542BTarget@@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetChooser/AITargetChooser.cpp	?rva005A9693@Rva005A9562@@QAEXXZ	1
+alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp	?v1@Rva00506B1B@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	??0?$_Vector_base@PAVCrateTemplate@@V?$allocator@PAVCrateTemplate@@@_STL@@@_STL@@QAE@ABV?$allocator@PAVCrateTemplate@@@1@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	?erase@?$vector@PAVCrateTemplate@@V?$allocator@PAVCrateTemplate@@@_STL@@@_STL@@QAEPAPAVCrateTemplate@@PAPAV3@0@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	?erase@?$vector@PAVCrateTemplate@@V?$allocator@PAVCrateTemplate@@@_STL@@@_STL@@QAEPAPAVCrateTemplate@@PAPAV3@@Z	1
@@ -12394,6 +12381,7 @@ present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	parseStaticGameLODLe
 present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	refreshCustomStaticLODLevel@GameLODManager@@IAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	setDynamicLODLevel@GameLODManager@@QAE_NW4DynamicGameLODLevel@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	setStaticLODLevel@GameLODManager@@QAE_NW4StaticGameLODLevel@@@Z	1
+present_unmatched	Code/GameEngine/Source/Common/INI/INI.cpp	StringBase<char>::find	1
 present_unmatched	Code/GameEngine/Source/Common/INI/INI.cpp	findFieldParse	1
 present_unmatched	Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp	findFieldParse	1
 present_unmatched	Code/GameEngine/Source/Common/INI/LivingWorldBonusMapParsers.cpp	InsertValue::pair	1
@@ -12797,7 +12785,6 @@ present_unmatched	Code/GameEngine/Source/Common/System/FileSystem.cpp	update@Fil
 present_unmatched	Code/GameEngine/Source/Common/System/GeometryInfoCtor.cpp	bfmeEmitGeometryInfoCtor@@YAXPAVGeometryInfo@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/System/GeometryInfoDtor.cpp	bfmeEmitGeometryInfoDtor@@YAXPAVGeometryInfo@@PAUGeometryRecord@@11@Z	1
 present_unmatched	Code/GameEngine/Source/Common/System/INIMacroTableDtorO1.cpp	deallocate@allocator<void*>	1
-present_unmatched	Code/GameEngine/Source/Common/INI/INI.cpp	StringBase<char>::find	1
 present_unmatched	Code/GameEngine/Source/Common/System/MemoryPoolInit.cpp	MemoryPoolAllocatorAssertion	1
 present_unmatched	Code/GameEngine/Source/Common/System/RAMFileRead.cpp	RAMFile::convertToRAMFile	1
 present_unmatched	Code/GameEngine/Source/Common/System/Radar.cpp	RadarObject::RadarObject	1

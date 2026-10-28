@@ -21966,14 +21966,14 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002C5F8E,28,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,proposed,C,C=0x002C5EF0..0x002C5FAA,Code/GameEngine/Source/Common/RvaDeletingDtorBatch04.cpp
 0x002C5FAA,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
 0x002C5FB2,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
-0x002C5FBA,17,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C5FB2..0x002C5FCB,Code/GameEngine/Source/Common/Rva002C5FBAForward.cpp
+0x002C5FBA,17,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C5FB2..0x002C5FCB,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
 0x002C5FCB,14,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C5FB2..0x002C5FD9,Code/GameEngine/Source/Common/Disp8NullAdjustGetters.cpp
 0x002C5FD9,15,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C5FB2..0x002C5FE8,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
 0x002C5FE8,34,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C5FB2..0x002C600A,Code/GameEngine/Source/Common/Rva002C5FE8Search.cpp
 0x002C600A,159,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp W=Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
 0x002C60A9,59,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C600A..0x002C60E4,Code/GameEngine/Source/Common/Rva002C5FE8Search.cpp
-0x002C60E4,203,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C600A..0x002C61AF,Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
-0x002C61AF,133,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C600A..0x002C6234,Code/GameEngine/Source/Common/Rva002C60E4Ctor.cpp
+0x002C60E4,203,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C600A..0x002C61AF,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
+0x002C61AF,133,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C600A..0x002C6234,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
 0x002C6234,288,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C600A..0x002C6354,Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp
 0x002C6354,77,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,C=0x002C600A..0x002C63A1,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp
 0x002C63A1,303,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp C=0x002C600A..0x002C64D0,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp
@@ -71476,12 +71476,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00776E3C,10,code,Code/GameEngine/Source/Common/AITarget.cpp,approved,P,P=0x002C5C1F@FuncInfo0x0091E810 provisional,Code/GameEngine/Source/Common/Rva002C589BDtor.cpp
 0x00776E46,8,code,,,-,,Code/GameEngine/Source/Common/INI/INIThinFieldParsersEH.cpp
 0x00776E4E,10,code,,,-,,Code/GameEngine/Source/Common/INI/INIThinFieldParsersEH.cpp
-0x00776E58,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
-0x00776E60,11,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
-0x00776E6B,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
-0x00776E75,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
-0x00776E7F,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
-0x00776E89,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp
+0x00776E58,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
+0x00776E60,11,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
+0x00776E6B,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
+0x00776E75,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
+0x00776E7F,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
+0x00776E89,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C60E4@FuncInfo0x0091E878,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp
 0x00776E93,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C6234@FuncInfo0x0091E8BC,Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp
 0x00776E9B,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C6234@FuncInfo0x0091E8BC,Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp
 0x00776EA3,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/TacticalAI.cpp,approved,P,P=0x002C6234@FuncInfo0x0091E8BC,Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp
