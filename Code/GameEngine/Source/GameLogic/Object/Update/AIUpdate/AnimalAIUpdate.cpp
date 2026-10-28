@@ -107,13 +107,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class AnimalAIUpdate
-{
-public:
-	virtual UpdateSleepTime update();
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 struct AnimalAIUpdateModuleDataView
 {
 	unsigned char m_beforeFleeRange[0x64];
@@ -283,17 +276,46 @@ private:
 	int m_pad;
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class AnimalAIUpdate
+{
+public:
+	virtual UpdateSleepTime update();
+	virtual NameKeyType getModuleNameKey() const;
+};
+
+// tu-skeleton: 0x0047EB78 49B ??1AnimalAIUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0026E836Derived.cpp (not merged yet)
+
+// tu-skeleton: 0x0047EBA9 6B ?name@Rva0047EBA9Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters2.cpp (not merged yet)
+
 // tu-skeleton: 0x0047EBAF 107B ?xfer@AnimalAIUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AnimalAIUpdateXfer.cpp (not merged yet)
 
-// tu-skeleton: 0x0047EC1A 69B ?getModuleNameKey@AnimalAIUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AnimalAIUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/AnimalAIUpdatePoolKey.cpp
 
-// tu-skeleton: 0x0047EC5F 10B ?get@Rva0047EC5FByteChaseField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/Disp32FirstChaseGetters.cpp (not merged yet)
+// ?getModuleNameKey@AnimalAIUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType AnimalAIUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheAnimalAIUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("AnimalAIUpdate");
+	return TheAnimalAIUpdatePoolKey;
+}
+
+// tu-skeleton: 0x0047EC5F 10B ?rva0047EC5F@AnimalAIUpdate@@UBEEXZ -- matched in Code/GameEngine/Source/Common/Disp32FirstChaseGetters.cpp (not merged yet)
 
 // tu-skeleton: 0x0047EC69 63B ?makeStateMachine@AnimalAIUpdate@@MAEPAVAIStateMachine@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AnimalAIUpdateMakeStateMachine.cpp (not merged yet)
 
 // tu-skeleton: 0x0047ECA8 121B ??0AnimalAIUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AnimalAIUpdateCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0047ED21 28B ??_GRva0047EB78@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0026E836Derived.cpp (not merged yet)
+// tu-skeleton: 0x0047ED21 28B ??_GAnimalAIUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0026E836Derived.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AnimalAIUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AnimalAIUpdateDestinationLayer.cpp
 
@@ -635,10 +657,6 @@ Coord3D destination;
 
 	return UPDATE_SLEEP_NONE;
 }
-
-// tu-skeleton: 0x0078B80D 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AnimalAIUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078B81A 10B __ehhandler$?getModuleNameKey@AnimalAIUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AnimalAIUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078B824 10B uw_0078b824 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AnimalAIUpdateMakeStateMachine.cpp (not merged yet)
 
