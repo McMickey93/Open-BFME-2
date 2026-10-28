@@ -278,17 +278,19 @@ extern AI *TheAI;
 #include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 extern int BfmeLogicFramesPerSecond;
-struct DualWeaponBehaviorModuleData
-
+class DualWeaponBehaviorModuleData
 {
- unsigned char pad[8];
- float switchDistance;
- bool useCloseWhileMounted;
- unsigned int minimumSwitchTime;
- bool useHordeRangeWeapon, useRealVictimRange;
+public:
+	DualWeaponBehaviorModuleData();
 
-}
-;
+	const void *m_vtable; // +0
+	unsigned int m_unused04; // +4
+	float m_switchWeaponOnCloseRangeDistance; // +8
+	bool m_useCloseRangeWhileMounted; // +0xC
+	unsigned int m_minimumSwitchTime; // +0x10
+	bool m_useHordeRangeWeapon; // +0x14
+	bool m_useRealVictimRange; // +0x15
+};
 
 UpdateSleepTime DualWeaponBehavior::update()
 {
@@ -303,7 +305,7 @@ UpdateSleepTime DualWeaponBehavior::update()
 		return (UpdateSleepTime)BfmeLogicFramesPerSecond;
 	if (obj->getContainer() && !(obj->getContainer()->getTemplate()->kindWord & 0x2000))
 		return (UpdateSleepTime)BfmeLogicFramesPerSecond;
-	if (d->useHordeRangeWeapon && obj->getContainer() && (obj->getContainer()->getTemplate()->kindWord & 0x2000))
+	if (d->m_useHordeRangeWeapon && obj->getContainer() && (obj->getContainer()->getTemplate()->kindWord & 0x2000))
 	{
 		if (!obj->getContainer()->getWeaponSetFlags()->test(7))
 		{
@@ -328,10 +330,10 @@ UpdateSleepTime DualWeaponBehavior::update()
 		}
 		return (UpdateSleepTime)BfmeLogicFramesPerSecond;
 	}
-	float range = d->switchDistance;
+	float range = d->m_switchWeaponOnCloseRangeDistance;
 	unsigned int filter = 0x62;
 	Object *victim = 0;
-	if (d->useRealVictimRange && ai->getCurrentVictim())
+	if (d->m_useRealVictimRange && ai->getCurrentVictim())
 	{
 		victim = ai->getCurrentVictim();
 		Coord3D delta;
@@ -345,7 +347,7 @@ UpdateSleepTime DualWeaponBehavior::update()
 		victim = TheAI->findClosestEnemy(obj, range, filter, 0, 0, 0);
 	if (victim && fabs(victim->getPosition()->z - obj->getPosition()->z) > range * 0.5f)
 		victim = 0;
-	if (d->useCloseWhileMounted && obj->isKindOf((KindOfType)0xd6))
+	if (d->m_useCloseRangeWhileMounted && obj->isKindOf((KindOfType)0xd6))
 	{
 		if (!obj->getWeaponSetFlags()->test(7))
 		{
@@ -354,7 +356,7 @@ UpdateSleepTime DualWeaponBehavior::update()
 		}
 		return (UpdateSleepTime)BfmeLogicFramesPerSecond;
 	}
-	int remaining = m_switchTimer + d->minimumSwitchTime - TheGameLogic->getFrame();
+	int remaining = m_switchTimer + d->m_minimumSwitchTime - TheGameLogic->getFrame();
 	if (remaining > 0)
 		return (UpdateSleepTime)remaining;
 	m_switchTimer = TheGameLogic->getFrame();
