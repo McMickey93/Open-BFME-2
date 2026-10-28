@@ -12,38 +12,20 @@
 
 extern "C" const void *const __identifier("??_7ObjectHelperModuleData@@6B@")[];  // folded nine-class vftable 0x00C4ED70, by its data-ledger name
 
-class RainOfFireUpdateModuleData
-{
-public:
-	RainOfFireUpdateModuleData();
-
-private:
-	void *m_vtable;
-	int m_unused04;
-	int m_startRainTime;
-	int m_darknessFadeTime;
-	float m_rainEmitterHeight;
-	float m_darknessLevel;
-	float m_jitterRadius;
-	float m_dpsMin;
-	float m_dpsMax;
-	float m_dpsRampupTime;
-	float m_rainOffset;
-	float m_pad2C;
-};
+#include "RainOfFireUpdateView.h"
 
 // ??0RainOfFireUpdateModuleData@@QAE@XZ
 RainOfFireUpdateModuleData::RainOfFireUpdateModuleData()
 {
-	m_rainEmitterHeight = 100.0f;
-	m_darknessLevel = 0.25f;
-	m_vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
-	m_startRainTime = 150;
-	m_darknessFadeTime = 120;
-	m_jitterRadius = 0.0f;
-	m_dpsMin = 1.0f;
-	m_dpsMax = 1.0f;
-	m_dpsRampupTime = 0.0f;
-	m_rainOffset = 0.0f;
-	m_pad2C = 0.0f;
+	height = 100.0f;
+	darkness = 0.25f;
+	vtable = reinterpret_cast<void *>(((unsigned int)__identifier("??_7ObjectHelperModuleData@@6B@")));
+	startRainTime = 150;
+	darknessFadeTime = 120;
+	jitter = 0.0f;
+	dpsMin = 1.0f;
+	dpsMax = 1.0f;
+	rampup = 0.0f;
+	offset.x = 0.0f;
+	offset.y = 0.0f;
 }

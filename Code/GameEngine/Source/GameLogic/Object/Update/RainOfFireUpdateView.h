@@ -27,7 +27,9 @@ class Object;
 
 struct RainOfFireUpdateModuleData
 {
-    char pad[8];
+    RainOfFireUpdateModuleData();
+    void *vtable;
+    char pad[4];
     unsigned startRainTime, darknessFadeTime;
     float height, darkness, jitter, dpsMin, dpsMax, rampup;
     Coord2D offset;
