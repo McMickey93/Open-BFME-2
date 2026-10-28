@@ -20694,8 +20694,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04378,4,.data,global,?TheModelConditionAudioLoopClientBehaviorPoolKey@?1??getModuleNameKey@ModelConditionAudioLoopClientBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionAudioLoopClientBehaviorPoolKey.cpp,owned,,1,2
 0x00A0437C,4,.data,global,?$S1@?1??getModuleNameKey@ModelConditionAudioLoopClientBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/ModelConditionAudioLoopClientBehaviorPoolKey.cpp,owned,,1,4
 0x00A04380,4,.data,global,_s_rva007B2CDA,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A04384,4,.data,global,?TheTemporarilyDefectUpdatePoolKey@?1??getModuleNameKey@TemporarilyDefectUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdatePoolKey.cpp,owned,,1,2
-0x00A04388,4,.data,global,?$S1@?1??getModuleNameKey@TemporarilyDefectUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdatePoolKey.cpp,owned,,1,4
+0x00A04384,4,.data,global,?TheTemporarilyDefectUpdatePoolKey@?1??getModuleNameKey@TemporarilyDefectUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdate.cpp,owned,,1,2
+0x00A04388,4,.data,global,?$S1@?1??getModuleNameKey@TemporarilyDefectUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdate.cpp,owned,,1,4
 0x00A0438C,4,.data,global,?TheDominateEnemySpecialPowerPoolKey@?1??getModuleNameKey@DominateEnemySpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPower.cpp,owned,,1,2
 0x00A04390,4,.data,global,?$S1@?1??getModuleNameKey@DominateEnemySpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/DominateEnemySpecialPower.cpp,owned,,1,4
 0x00A04394,4,.data,global,?TheCurseSpecialPowerPoolKey@?1??getModuleNameKey@CurseSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/CurseSpecialPower.cpp,owned,,1,2

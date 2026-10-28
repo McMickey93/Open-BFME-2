@@ -204,21 +204,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class TemporarilyDefectUpdate
-{
-public:
-	virtual NameKeyType getModuleNameKey() const;
-	virtual UpdateSleepTime update();
-	bool rva004CC829();	// complete-object method, called through this - 0x10
-
-private:
-	unsigned char m_pad004[0x0C];
-	UnsignedInt m_endFrame;
-	UnsignedInt m_startFrame;
-	UnsignedInt m_defectorID;
-	unsigned char m_fxFired;
-};
-
 class Xfer::Version
 {
 public:
@@ -270,13 +255,46 @@ private:
 	ObjectID m_28;
 };
 
-// tu-skeleton: 0x004CC659 69B ?getModuleNameKey@TemporarilyDefectUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdatePoolKey.cpp (not merged yet)
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class TemporarilyDefectUpdate
+{
+public:
+	virtual NameKeyType getModuleNameKey() const;
+	virtual UpdateSleepTime update();
+	bool rva004CC829();	// complete-object method, called through this - 0x10
+
+private:
+	unsigned char m_pad004[0x0C];
+	UnsignedInt m_endFrame;
+	UnsignedInt m_startFrame;
+	UnsignedInt m_defectorID;
+	unsigned char m_fxFired;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdatePoolKey.cpp
+
+// ?getModuleNameKey@TemporarilyDefectUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType TemporarilyDefectUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheTemporarilyDefectUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("TemporarilyDefectUpdate");
+	return TheTemporarilyDefectUpdatePoolKey;
+}
 
 // tu-skeleton: 0x004CC69E 17B ?buildFieldParse@TemporarilyDefectUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
 // tu-skeleton: 0x004CC6AF 97B ??0TemporarilyDefectUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/PrisonDockUpdateCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004CC710 28B ??_GRva004CC63A@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdate.cpp
 
 // ---- from Code/GameEngine/Source/Common/Rva004CC63AXfer.cpp
 
@@ -296,10 +314,6 @@ void Rva004CC63A::xfer(Xfer *xfer)
 		XferObjectID(xfer, &m_28);
 	}
 }
-
-// tu-skeleton: 0x004CC795 148B ?defectNow@TemporarilyDefectUpdate@@QAEXPAVObject@@I@Z -- matched in Code/GameEngine/Source/Common/Rva004CC829Check.cpp (not merged yet)
-
-// tu-skeleton: 0x004CC829 89B ?rva004CC829@TemporarilyDefectUpdate@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/Rva004CC829Check.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdate.cpp
 
@@ -353,9 +367,9 @@ UpdateSleepTime TemporarilyDefectUpdate::update()
 	return UPDATE_SLEEP_10;
 }
 
-// tu-skeleton: 0x00790866 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdatePoolKey.cpp (not merged yet)
+// tu-skeleton: 0x004CC795 148B ?defectNow@TemporarilyDefectUpdate@@QAEXPAVObject@@I@Z -- matched in Code/GameEngine/Source/Common/Rva004CC829Check.cpp (not merged yet)
 
-// tu-skeleton: 0x00790873 10B __ehhandler$?getModuleNameKey@TemporarilyDefectUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/TemporarilyDefectUpdatePoolKey.cpp (not merged yet)
+// tu-skeleton: 0x004CC829 89B ?rva004CC829@TemporarilyDefectUpdate@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/Rva004CC829Check.cpp (not merged yet)
 
 // tu-skeleton: 0x0079087D 8B Unwind@00b9087d -- matched in Code/GameEngine/Source/GameLogic/Object/Update/PrisonDockUpdateCtor.cpp (not merged yet)
 
