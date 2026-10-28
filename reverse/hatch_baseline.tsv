@@ -1649,8 +1649,9 @@ alternatename	Code/GameEngine/Source/Common/AptUpgradeIconSetter.cpp	??1ArmyMemb
 alternatename	Code/GameEngine/Source/Common/AptUpgradeIconSetter_ArmyUnitIconMovieClip.cpp	??1ArmyMemberIconMovieClip@StrategicHUD@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/AtlSimpleArrayHInstanceAdd.cpp	?realloc@@YAPAXPAXI@Z	1
 alternatename	Code/GameEngine/Source/Common/Bfme/BfmeChainRecord.cpp	??0BfmeRecEQR@@QAE@PAX0PAPAV0@@Z	1
+alternatename	Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp	??RRva004E5CB0Deleter@@QBEXPAVRva004E5A78@@@Z	1
+alternatename	Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp	?release@Rva00036E70Releaser@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Bfme/Rva00477DF0OrderPairs.cpp	?orderPairs@GameWindow@@QAEXXZ	1
-alternatename	Code/GameEngine/Source/Common/Bfme/Rva004E5CB0Delete.cpp	??RRva004E5CB0Deleter@@QBEXPAVRva004E5A78@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Bfme/T_009F4FB0.cpp	?Rva006276E0@ShroudManager@@QAEXPBURegion3D@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Bfme/T_009F4FB0.cpp	?m@T_009f4fb0@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Bfme5DictStringPresence.cpp	??1Rva00329EE9StringValue@@QAE@XZ	1
@@ -2404,7 +2405,6 @@ alternatename	Code/GameEngine/Source/Common/Rva004CE36Dtor.cpp	??0Rva0004CDAFSlo
 alternatename	Code/GameEngine/Source/Common/Rva004CE36Dtor.cpp	??1Rva0004CDAFSlot@@QAE@XZ	2
 alternatename	Code/GameEngine/Source/Common/Rva004E063FFactory.cpp	?rva0052B003@Rva0052B278@@QAEX_N@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva004E32D5Ctor.cpp	??0BfmeVNITree@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/Rva004E58EDStrRelease.cpp	?release@Rva00036E70Releaser@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004E9B46Ctor.cpp	?v1@Rva004E9B46@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004E9B46Ctor.cpp	?v2@Rva004E9B46@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004E9BC6Dtor.cpp	?v1@Rva004E9B46@@UAEXXZ	1

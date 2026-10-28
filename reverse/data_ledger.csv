@@ -11812,7 +11812,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00862364,32,.rdata,string,??_C@_0CA@MNCDKNEL@AptObjectivesMenu?3?3ReturnToGame?$AA@,,literal,,0,1
 0x00862384,64,.rdata,string,??_C@_0CB@OJAAMMPE@AptObjectivesMenu?3?3OnInitialized@,,literal,,0,1
 0x008623C4,4,.rdata,vtable,??_7Rva004E5654@@6B@,,literal,,0,1
-0x008623C8,4,.rdata,global,?g_00C623C8@@3MA,Code/GameEngine/Source/Common/Bfme/Rva004E57E6Method.cpp,owned,,1,2
+0x008623C8,4,.rdata,global,?g_00C623C8@@3MA,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,owned,,1,2
 0x008623CC,56,.rdata,vtable,??_7Rva004E5A24@@6B@,,literal,??_7Rva004E5A24@@6B@;??_7Rva004E61C8@@6B@,0,2
 0x00862404,20,.rdata,string,??_C@_0BD@NAJJDABJ@PlaceHolderReticle?$AA@,,literal,,0,1
 0x00862418,40,.rdata,string,??_C@_0CH@BJEPHLE@GUI?3TerrainResourcePercentageCla@,,literal,,0,1
@@ -17465,8 +17465,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009CFA34,484,.data,global,?g_bfmeDisconnectPingResult@@3HA,,unowned,,0,2
 0x009CFC18,12,.data,global,?g_bfmeCoordDefault@@3UCoord3DBase@@A,Code/GameEngine/Source/GameClient/Drawable/PickAndPlayUnitVoiceResponse.cpp,owned,,1,5
 0x009CFC24,1156,.data,global,?g_00DCFC24@@3PAPBDA,Code/GameEngine/Source/Common/INI/INIAsciiIndexParse.cpp,owned,,1,2
-0x009D00A8,4,.data,global,?g_00DD00A8@@3HA,Code/GameEngine/Source/Common/Bfme/Rva004E57E6Method.cpp,provisional,?g_00DD00A8@@3HA;?g_00DD00A8@@3MA,1,2
-0x009D00AC,476,.data,global,?g_00DD00AC@@3HA,Code/GameEngine/Source/Common/Bfme/Rva004E57E6Method.cpp,provisional,?g_00DD00AC@@3HA;?g_00DD00AC@@3MA,1,2
+0x009D00A8,4,.data,global,?g_00DD00A8@@3HA,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,provisional,?g_00DD00A8@@3HA;?g_00DD00A8@@3MA,1,2
+0x009D00AC,476,.data,global,?g_00DD00AC@@3HA,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,provisional,?g_00DD00AC@@3HA;?g_00DD00AC@@3MA,1,2
 0x009D0288,1320,.data,global,?AIKindOfNames@@3PAPBDA,Code/GameEngine/Source/GameLogic/AI/AIKindOfFromName.cpp,owned,,1,1
 0x009D07B0,192,.data,global,?g_012A718C@@3PAPBDA,Code/GameEngine/Source/Common/INI/Rva0006AF00FunctionCurveParse_Rva005051da.cpp,owned,,1,1
 0x009D0870,2660,.data,global,?Gen00DD0870@@3UCoord3DBase@@A,Code/GameEngine/Source/Common/Rva00506B74CopyCompare.cpp,owned,,1,7
@@ -18806,7 +18806,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FEA44,4,.data,global,?g_bfmeBegKA@@3PAPAVBfmeItemKA@@A,,unowned,?g_00DFEA44@@3IA;?g_Va00DFEA44@@3IA;?g_bfmeBegKA@@3PAPAVBfmeItemKA@@A,0,5
 0x009FEA48,8,.data,global,?g_bfmeEndKA@@3PAPAVBfmeItemKA@@A,,unowned,,0,2
 0x009FEA50,136,.data,global,?g_00DFEA50@@3PAEA,,unowned,,0,1
-0x009FEAD8,4,.data,global,?TheDisplayStringManager@@3PAVDisplayStringManager@@A,Code/GameEngine/Source/Common/Bfme/Rva004E5821Method.cpp,provisional,?TheDisplayStringManager@@3PAVDisplayStringManager@@A;?g_009FEAD8@@3PAVDisplayManager@@A,1,84
+0x009FEAD8,4,.data,global,?TheDisplayStringManager@@3PAVDisplayStringManager@@A,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,provisional,?TheDisplayStringManager@@3PAVDisplayStringManager@@A;?g_009FEAD8@@3PAVDisplayManager@@A,1,84
 0x009FEADC,4,.data,global,?proneModuleKey@?1??privateGoProne@AIUpdateInterface@@MAEXPBVDamageInfo@@W4CommandSourceType@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp,owned,,1,2
 0x009FEAE0,4,.data,global,?$S129@?1??privateGoProne@AIUpdateInterface@@MAEXPBVDamageInfo@@W4CommandSourceType@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp,owned,,1,2
 0x009FEAE4,4,.data,global,?s_transportKey@?9??isQuickPathAvailable@AIUpdateInterface@@QBE_NPBUCoord3D@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AIUpdateInterface_isQuickPathAvailable.cpp,owned,,1,2

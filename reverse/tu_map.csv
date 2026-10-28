@@ -41752,30 +41752,30 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004E56E7,4,code,,,-,,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
 0x004E56EB,57,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,N,N=Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
 0x004E5724,194,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,U,N=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
-0x004E57E6,29,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E5803 provisional,Code/GameEngine/Source/Common/Bfme/Rva004E57E6Method.cpp
-0x004E5803,30,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E5821 provisional,Code/GameEngine/Source/Common/Bfme/Rva004E57E6Method.cpp
-0x004E5821,28,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E583D provisional,Code/GameEngine/Source/Common/Bfme/Rva004E5821Method.cpp
-0x004E583D,42,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E5867 provisional,Code/GameEngine/Source/Common/Rva004E583DDispat.cpp
-0x004E5867,38,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E588D provisional,Code/GameEngine/Source/GameClient/GUI/Rva0048E730LayoutRange_Rva004e5867.cpp
-0x004E588D,45,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E58BA provisional,Code/GameEngine/Source/Common/Bfme/Rva004E588DFill.cpp
+0x004E57E6,29,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E5803 provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E5803,30,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E5821 provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E5821,28,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E583D provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E583D,42,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E5867 provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E5867,38,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E588D provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E588D,45,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E58BA provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
 0x004E58BA,11,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5724..0x004E58C5 provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
 0x004E58C5,40,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,U,N=Code/GameEngine/Source/GameClient/GUI/NoticeLineInputView.cpp provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
-0x004E58ED,8,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E58F5 provisional,Code/GameEngine/Source/Common/Rva004E58EDStrRelease.cpp
-0x004E58F5,28,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E5911 provisional,Code/GameEngine/Source/Common/Rva004E58F5Delete.cpp
-0x004E5911,27,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E592C provisional,Code/GameEngine/Source/Common/Bfme/Rva004E592CMethod.cpp
-0x004E592C,34,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E594E provisional,Code/GameEngine/Source/Common/Bfme/Rva004E592CMethod.cpp
+0x004E58ED,8,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E58F5 provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E58F5,28,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E5911 provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E5911,27,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E592C provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
+0x004E592C,34,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E594E provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
 0x004E594E,96,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,W=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp C=0x004E58C5..0x004E59AE provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
-0x004E59AE,34,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E59D0 provisional,Code/GameEngine/Source/Common/Bfme/Rva004E59AEFunc.cpp
+0x004E59AE,34,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E59D0 provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
 0x004E59D0,11,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E59DB provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
 0x004E59DB,25,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E58C5..0x004E59F4 provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
 0x004E59F4,48,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,U,N=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
 0x004E5A24,84,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E59F4..0x004E5A78 provisional,Code/GameEngine/Source/Common/Bfme/Rva004E5A24Ctor.cpp
 0x004E5A78,118,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E59F4..0x004E5AEE provisional,Code/GameEngine/Source/Common/Bfme/Rva004E5A78Method.cpp
-0x004E5AEE,28,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E59F4..0x004E5B0A provisional,Code/GameEngine/Source/Common/Bfme/Rva004E5CB0Delete.cpp
+0x004E5AEE,28,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E59F4..0x004E5B0A provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
 0x004E5B0A,422,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E59F4..0x004E5CB0 provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
-0x004E5CB0,27,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E59F4..0x004E5CCB provisional,Code/GameEngine/Source/Common/Bfme/Rva004E5CB0Delete.cpp
+0x004E5CB0,27,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E59F4..0x004E5CCB provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
 0x004E5CCB,130,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,U,N=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
-0x004E5D4D,33,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5CCB..0x004E5D6E provisional,Code/GameEngine/Source/Common/Bfme/Rva004E5D4DForEach.cpp
+0x004E5D4D,33,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,C,C=0x004E5CCB..0x004E5D6E provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp
 0x004E5D6E,68,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,N,N=Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp provisional,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay_reset.cpp
 0x004E5DB2,268,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,U,N=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp W=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
 0x004E5EBE,778,code,Code/GameEngine/Source/Common/Bfme/IngameNoticeDisplay.cpp,approved,U,N=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp W=Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp provisional,Code/GameEngine/Source/GameClient/GUI/IngameNoticeDisplay.cpp
