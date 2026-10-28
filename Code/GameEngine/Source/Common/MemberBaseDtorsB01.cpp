@@ -642,23 +642,23 @@ public:
 class Rva00574910
 {
 public:
-	int rva00574910(void *arg);
+	int rva00574910(void *msg);
 };
 
 // Target evidence: calls 0x005CC26E on this+0x5C, virtual slot 2 through the
 // pointer at this+0x54, 0x005C9BE3 on this+0x28, then 0x005CBC95 on this.
 // Address-derived class and offsets do not establish the original identity.
 // ?Rva00574910::rva00574910 present-unmatched
-int Rva00574910::rva00574910(void *arg)
+int Rva00574910::rva00574910(void *msg)
 {
-	if (((Rva005CC26E *)((char *)this + 0x5C))->rva005CC26E(arg) == 1)
+	if (((Rva005CC26E *)((char *)this + 0x5C))->rva005CC26E(msg) == 1)
 		return 1;
 	Rva00574910Dispatch *dispatch = *(Rva00574910Dispatch **)((char *)this + 0x54);
-	if (dispatch && dispatch->check(arg) == 1)
+	if (dispatch && dispatch->check(msg) == 1)
 		return 1;
-	if (((Rva005C9BE3Call *)((char *)this + 0x28))->rva005C9BE3(arg) == 1)
+	if (((Rva005C9BE3Call *)((char *)this + 0x28))->rva005C9BE3(msg) == 1)
 		return 1;
-	return ((UserInputTranslator *)this)->UserInputTranslator::translateGameMessage((const GameMessage *)arg);
+	return ((UserInputTranslator *)this)->UserInputTranslator::translateGameMessage((const GameMessage *)msg);
 }
 
 
