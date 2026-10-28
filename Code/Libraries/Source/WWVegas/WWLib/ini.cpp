@@ -7,8 +7,6 @@
 #define _OPERATOR_NEW_DEFINED_
 extern void *__cdecl operator new(size_t);
 extern void __cdecl operator delete(void *);
-inline void *__cdecl operator new[](size_t, void *p) { return p; }
-inline void __cdecl operator delete[](void *, void *) {}
 #include "bfme_wwstring_teardown.h"
 
 // Match the plain compiler vector-constructor iterator to its canonical retail
