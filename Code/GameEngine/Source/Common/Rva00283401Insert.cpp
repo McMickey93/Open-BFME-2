@@ -1,8 +1,10 @@
-// cl: /MD
+// cl: /MD /D_CRTIMP=
 // ?Rva00283401Insert@@YGPAPAURva00283401Node@@PAPAU1@PAU1@PBX@Z, RVA 0x00283401, 37 bytes.
 // List insert helper: creates node via rowed 0x00282FE0 then splices between
 // pos and pos->m_next; stores node to *out and returns out.
 // Evidence: callee rowed CreateNode; caller 0x00283C76 passes (&arg, edx, arg).
+#include <stdlib.h>
+
 struct Rva00283401Node {
 	Rva00283401Node *m_prev;
 	Rva00283401Node *m_next;
@@ -33,7 +35,6 @@ public:
 private:
 	void *m_head;
 };
-extern "C" void __cdecl free(void *block);
 void Rva00283426::rva00283426()
 {
 	((Rva00283002 *)this)->rva00283002();
