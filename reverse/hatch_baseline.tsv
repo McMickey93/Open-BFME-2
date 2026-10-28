@@ -1137,7 +1137,7 @@ address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActionsRva003
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003BF045.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003BF5FE.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_rva003C062D.cpp	g_Va007C26F0	2
-address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditionsRva003E80DA.cpp	g_Va007C26F0	2
+address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions.cpp	g_Va007C26F0	2
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_evaluateConditionHelper.cpp	g_Va00E04450	2
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_appendMessage_Rva00341350AdjustVariableForwarder.cpp	g_Va00E02D64	2
 address_global	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptWriteDataChunk.cpp	g_Va00DD263CNames	2
