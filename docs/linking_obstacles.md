@@ -7378,6 +7378,17 @@ seglinerenderer (18,478 B), StreakRendererRenderStreak (14,007 B) and pathfinder
 links) after the census, so the next census should resolve it.
 W3DBridgeGetModelVerticesFixed.cpp is also `_floorf`-only but another worker's merge
 into W3DBridgeBuffer.cpp held it. Census confirmation pending.
+
+Correction to both `_floorf` consumer paragraphs above (2026-10-28, claude): census
+`c8734bec0c` predates e8931880e6 (Render2DSentenceDrawBFME2 stops publishing `_floorf`
+and `??_EPendingSurfaceStruct`), and `link_check` keeps every unit it is not given at its
+census definitions. With Render2DSentenceDrawBFME2.cpp in the same preview, untouched
+consumers link too (W3DBridgeGetModelVerticesFixed.cpp, Render2DSentenceBuildThaiBFME2.cpp,
+W3DListBox.cpp: 6,341 B). So the 59,705 B and 82,838 B previews above belong to
+e8931880e6's carry-over (claude2's 80 units). The 40 local declarations only stop each
+object publishing a non-retail /G7 copy, which keeps those units linking whatever the
+link order. Do not count them as new linked bytes. Do not extend the batch
+to the remaining `_floorf` or PendingSurfaceStruct consumers. Confirm them at the next census.
 ### GlowMaterial provisional composition (2026-10-28)
 
 Status: bounded merge verified; external consumer selection and census
