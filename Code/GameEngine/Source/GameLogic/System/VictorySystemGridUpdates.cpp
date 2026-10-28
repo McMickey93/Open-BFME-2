@@ -1,22 +1,24 @@
-// cl: /O1 /G7 /arch:SSE /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS
+// cl: /DNDEBUG /DBFME_SB_CLEAR_DECL /MD /GX /D_STLP_USE_STATIC_LIB /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata /Ireference/shims/bfmealloc /ICode/Libraries/Include
 // stlport
-#include <vector>
 // BFME1 semantic source: VictorySystemApplyCells.cpp at
 // 9cbfb551fe20dae985f91f2319d8997287b6a705. Target independently fixes
 // root cell +78, twenty player slots, grids12C/130 and values at grid+18.
 // Native callbacks 4050CE..4051BC and 405258..405315 use rowed Object,
 // root-cell and CellGrid providers. Original method names remain unknown.
+// Views and flags are those of the approved TU, VictorySystem.cpp.
+#include <vector>
+#include "ascii_string.h"
+#include "../../Common/GameLogicObjectLookupView.h"
+#include "Lib/Coord3D.h"
 class Object;
-class Player { public: char pad[0x54]; int index; };
+class Player {public:char unknown00[0x54];int index;AsciiString faction;};
 struct VictoryObjectTemplate { char pad[0x109]; unsigned char flags109; char pad10a[9]; unsigned char flags113; };
 class Object { public: Player *getControllingPlayer() const; char pad0[4]; VictoryObjectTemplate *tmpl; char pad8[0x438-8]; unsigned char flags438; };
 
-#include "../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
 struct VictoryDeathInfo { char pad[8]; ObjectID killer; };
 struct Vec3 { float x,y,z; };
-#include "../../../../Libraries/Include/Lib/Coord3D.h"
-class Rva00404781 { public: void AddDeath(float,int,int); int rva00404CF5(bool); float a[20],b[20]; unsigned int masks[2]; };
+class Rva00404781 {public:__declspec(dllimport) __forceinline Rva00404781(){rva0040475C();}__declspec(nothrow) void rva0040475C();void AddDeath(float,int,int);int rva00404CF5(bool);float first[20],second[20];unsigned flags0,flags1;};
 class Rva0056C4D3 { public: void rva0056C4D3(void*,float,int,int); };
 class Rva0056C0F0 { public: void rva0056C0F0(unsigned int,Vec3*); };
 class Rva004051BC { public: void rva004051BC(int,const Coord3D*); };
