@@ -4,6 +4,7 @@
 #include "ascii_string.h"
 #include "../../../Common/GameLogicObjectLookupView.h"
 extern GameLogic *TheGameLogic;
+enum NameKeyType { NAMEKEY_INVALID=0 };
 // Use the same witnessed retail allocator cleanup as the matched builder.
 // Reuse CastleBehavior's established growth-helper repair: inline the local
 // unsigned maximum so the unit emits no divergent generic max COMDAT.
@@ -244,12 +245,25 @@ class Rva004EAC8C { public: void rva004EAC8C(float); };
 // Matched constructor5970ED and complete activate body establish allocation44
 // and the timer at04. This allocation view declares the existing constructor
 // without defining a private vtable or guessing unobserved members.
-class Rva005970ED {
+class Rva005970ED
+{
 public:
-    Rva005970ED();
-    unsigned char unknown00[4];
-    float delay04;
-    unsigned char unknown08[0x44-8];
+	Rva005970ED();
+	virtual ~Rva005970ED();
+	virtual void slot01();
+	virtual void slot02();
+	virtual void slot03();
+	virtual void slot04();
+	virtual void slot05();
+	virtual void slot06();
+	virtual void slot07();
+	virtual void slot08();
+	virtual void slot09();
+	virtual void slot10();
+	virtual void slot11();
+	virtual void xfer(Xfer *, Player *);
+	float delay04; // +0x04
+	char m_pad08[0x3C];
 };
 
 // The callback's native stride8 and WB two-word record constructor prove
@@ -322,6 +336,7 @@ template<> __declspec(dllimport) __forceinline void vector<PolygonTrigger *,allo
 class AIWall
 {
 public:
+	virtual ~AIWall();
 	float rva004EADBA(const Coord2D *pt);	// 0x004EADBA: smallest squared distance to the wall polyline
 	WallPositionValue calcGatePosition();	// 0x004EAFBD: WB names calcGatePosition; hidden value result
 	void buildGate();
@@ -331,8 +346,9 @@ public:
 	bool rva004EB7CC(void *owner);
     void rva004EBB58();
     static void __cdecl informInstanceOnTriggerEntered(Object *, void *, bool);
+	bool init();
+	void DoXfer(Xfer *, bool detachOwner);
 private:
-	void *unknown00;
 	WallPositionOrderView *selected04;
 	_STL::vector<WallPositionOrderView *> orders08;
 	Rva004EB902Plan *m_14;	// +0x14
@@ -340,6 +356,8 @@ private:
     _STL::vector<PolygonTrigger *> triggers1c;
     _STL::vector<BfmeE8> triggerCounts28;
 	int state34, index38, state3c, index40;
+	unsigned int id44;
+	NameKeyType key48;
 };
 
 class Rva004EB5E9 {
