@@ -8,15 +8,17 @@
 // Reader 0x188AF0 calls setter 0x15D300, which obtains the buffer through 0x15B7A0.
 // The MatBuffer constructor supplies the reference pattern; target 0x15B230
 // independently establishes the 24-byte layout and vtables 0xBD3C8C/0xBD3CA4.
+#include <new.h>
+#include <new>
+// Use the CRT operators instead of always.h's duplicate allocation declarations.
+#define _OPERATOR_NEW_DEFINED_
 #include "always.h"
 #include <string.h>
-#include <new.h>
 // Retail's RefCountClass inline copies are the size form: compile refcount.h for size.
 #pragma optimize("s", on)
 #include <refcount.h>
 #pragma optimize("", on)
 #include <sharebuf.h>
-extern void __cdecl operator delete[](void *) throw();
 
 // Target buffer destructors free the raw array without clearing the base fields.
 template <>
