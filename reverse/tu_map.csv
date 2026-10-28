@@ -26987,17 +26987,17 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00355BDA,85,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Rva00355BDADtor.cpp
 0x00355C2F,10,code,Code/Libraries/Source/WWVegas/WW3D2/visrasterizer.cpp,approved,S,S=Code/Libraries/Source/WWVegas/WW3D2/visrasterizer.cpp N=Code/Libraries/Source/WWVegas/WW3D2/VisRasterizerClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/mesh.cpp
 0x00355C39,39,code,,,-,,Code/GameEngine/Source/Common/Rva00355CD8Dtor.cpp
-0x00355C60,23,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,N,N=Code/GameEngine/Source/Common/ProgressIndicator.cpp provisional,Code/GameEngine/Source/Common/Bfme5TinyTen.cpp
-0x00355C77,23,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,N,N=Code/GameEngine/Source/Common/ProgressIndicator.cpp W=Code/GameEngine/Source/GameClient/GUI/LoadScreen.cpp provisional,Code/GameEngine/Source/Common/Bfme5TinyTen.cpp
+0x00355C60,23,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,N,N=Code/GameEngine/Source/Common/ProgressIndicator.cpp provisional,Code/GameEngine/Source/Common/ProgressIndicator.cpp
+0x00355C77,23,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,N,N=Code/GameEngine/Source/Common/ProgressIndicator.cpp W=Code/GameEngine/Source/GameClient/GUI/LoadScreen.cpp provisional,Code/GameEngine/Source/Common/ProgressIndicator.cpp
 0x00355C8E,74,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355CD8 provisional,Code/GameEngine/Source/Common/Rva00355CD8Dtor.cpp
 0x00355CD8,62,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355D16 provisional,Code/GameEngine/Source/Common/Rva00355CD8Dtor.cpp
 0x00355D16,56,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355D4E provisional,Code/GameEngine/Source/Common/Rva00355CD8Dtor.cpp
-0x00355D4E,24,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355D66 provisional,Code/GameEngine/Source/Common/Bfme5TinyTen.cpp
+0x00355D4E,24,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355D66 provisional,Code/GameEngine/Source/Common/ProgressIndicator.cpp
 0x00355D66,73,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355DAF provisional,Code/GameEngine/Source/Common/Rva00355D66Dtor.cpp
 0x00355DAF,22,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355DC5 provisional,Code/GameEngine/Source/Common/Rva00355D66Dtor.cpp
 0x00355DC5,15,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355DD4 provisional,Code/GameEngine/Source/Common/Rva00355D66Dtor.cpp
 0x00355DD4,9,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355DDD provisional,Code/GameEngine/Source/Common/VtableSlotBodiesR3.cpp
-0x00355DDD,23,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355DF4 provisional,Code/GameEngine/Source/Common/Rva00355DDDMethod.cpp
+0x00355DDD,23,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355DF4 provisional,Code/GameEngine/Source/Common/ProgressIndicator.cpp
 0x00355DF4,44,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355E20 provisional,Code/GameEngine/Source/Common/Rva003560EDEngineRefresh.cpp
 0x00355E20,44,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355E4C provisional,Code/GameEngine/Source/Common/Rva003560EDEngineRefresh.cpp
 0x00355E4C,57,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355E85 provisional,Code/GameEngine/Source/Common/Rva003560EDEngineRefresh.cpp
@@ -27005,8 +27005,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00355EE1,27,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355EFC provisional,Code/GameEngine/Source/Common/Rva00355D66Dtor.cpp
 0x00355EFC,66,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355F3E provisional,Code/GameEngine/Source/Common/Rva00355D66Dtor.cpp
 0x00355F3E,55,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355F75 provisional,Code/GameEngine/Source/Common/Rva00355D66Dtor.cpp
-0x00355F75,48,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355FA5 provisional,Code/GameEngine/Source/Common/BfmeOneHundredSixteen.cpp
-0x00355FA5,28,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,N,N=Code/GameEngine/Source/Common/ProgressIndicator.cpp provisional,Code/GameEngine/Source/Common/Bfme5TinyTen.cpp
+0x00355F75,48,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,C,C=0x00355C77..0x00355FA5 provisional,Code/GameEngine/Source/Common/ProgressIndicator.cpp
+0x00355FA5,28,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,approved,N,N=Code/GameEngine/Source/Common/ProgressIndicator.cpp provisional,Code/GameEngine/Source/Common/ProgressIndicator.cpp
 0x00355FC1,28,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,proposed,K,K=Rva00355CD8,Code/GameEngine/Source/Common/Rva00355CD8Dtor.cpp
 0x00355FDD,28,code,Code/GameEngine/Source/Common/ProgressIndicator.cpp,proposed,K,K=Rva00355D66,Code/GameEngine/Source/Common/Rva00355D66Dtor.cpp
 0x00355FF9,109,code,Code/GameEngine/Source/GameClient/GUI/LoadScreen.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/GUI/LoadScreen.cpp S=Code/GameEngine/Source/GameClient/GUI/LoadScreen.cpp N=Code/GameEngine/Source/GameClient/GUI/LoadScreen.cpp,Code/GameEngine/Source/GameClient/GUI/LoadScreen.cpp
