@@ -198,9 +198,15 @@ struct SpecialEnemySenseUpdateModuleData
 	UpdateSleepTime m_scanInterval;		// +0x10 the delay
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class SpecialEnemySenseUpdate : public UpdateModule
 {
 public:
+	virtual NameKeyType getModuleNameKey() const;
 	virtual UpdateSleepTime update();
 private:
 	const SpecialEnemySenseUpdateModuleData *getSpecialEnemySenseUpdateModuleData() const
