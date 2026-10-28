@@ -713,14 +713,12 @@ address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E02E70	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E02E74	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E032E8	2
-address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E03318	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E03324	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E03328	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E0332C	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E03330	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E04444	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E04448	2
-address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E0445C	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E04490	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E048F4	2
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks.cpp	g_Va00E048FC	2
@@ -767,14 +765,12 @@ address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E02E70	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E02E74	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E032E8	1
-address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E03318	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E03324	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E03328	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E0332C	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E03330	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E04444	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E04448	1
-address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E0445C	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E04490	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E048F4	1
 address_global	Code/GameEngine/Source/Common/Rva007B6A00AtexitThunks_Rva007B7786.cpp	g_Va00E048FC	1
@@ -902,8 +898,8 @@ address_global	Code/GameEngine/Source/Common/System/Rva00030730Init.cpp	g_Va00DE
 address_global	Code/GameEngine/Source/Common/System/Rva0005CE32Method.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/System/Rva0007517FCtor.cpp	g_Va00BBB8D8	13
 address_global	Code/GameEngine/Source/Common/System/Rva0007517FCtor_Unresolved.cpp	g_Va00BBB8D8	1
-address_global	Code/GameEngine/Source/Common/System/Rva00318ABBFieldParse.cpp	g_Va00E01CF0	3
-address_global	Code/GameEngine/Source/Common/System/Rva00318ABBFieldParse.cpp	g_Va00E01CF4	5
+address_global	Code/GameEngine/Source/Common/System/Rva00318ABBFieldParse.cpp	g_Va00E01CF0	2
+address_global	Code/GameEngine/Source/Common/System/Rva00318ABBFieldParse.cpp	g_Va00E01CF4	2
 address_global	Code/GameEngine/Source/Common/System/Rva003F10D0Pick.cpp	g_Va00DC15DC	2
 address_global	Code/GameEngine/Source/Common/System/Rva003F10D0Pick.cpp	g_Va00DC15EC	2
 address_global	Code/GameEngine/Source/Common/System/Rva003F10D0Pick.cpp	g_Va00DC15FC	2
@@ -1126,7 +1122,7 @@ address_global	Code/GameEngine/Source/GameLogic/AI/GroupOrderHolderCtor.cpp	g_Va
 address_global	Code/GameEngine/Source/GameLogic/AI/Rva00355770GroupOrderMaps.cpp	g_Va00E05F74	2
 address_global	Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioKeyMapBfmeAddKey.cpp	g_Va00DFEC74	2
 address_global	Code/GameEngine/Source/GameLogic/Map/OldPolygonTrigger.cpp	g_Va00DBD0F4	2
-address_global	Code/GameEngine/Source/GameLogic/Map/PolygonTrigger.cpp	g_Va00DBD0F4	6
+address_global	Code/GameEngine/Source/GameLogic/Map/PolygonTrigger.cpp	g_Va00DBD0F4	4
 address_global	Code/GameEngine/Source/GameLogic/Map/Rva00282021WaterLookup.cpp	g_Va00DBB710	2
 address_global	Code/GameEngine/Source/GameLogic/Map/TerrainLogic.cpp	g_Va00DBB708	8
 address_global	Code/GameEngine/Source/GameLogic/Map/TerrainLogicWaypointLookups.cpp	g_Va00DBD0F4	2
@@ -2330,7 +2326,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0036804FCtor.cpp	?update@AIIntern
 alternatename	Code/GameEngine/Source/Common/Rva0036804FCtor.cpp	?xfer@AIInternalMoveToState@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva003896E7Permuted.cpp	?TheGameSpyBuddyMessageQueue@@3PAVGameSpyBuddyMessageQueueInterface@@A	1
 alternatename	Code/GameEngine/Source/Common/Rva0039597COpAssign.cpp	?Rva00395D45CopyAux@@YAPAVRva0039597C@@PAV1@00PADH@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00395F57CanUnpack.cpp	_theLogicRandomLogFile	1
 alternatename	Code/GameEngine/Source/Common/Rva0039B1F9Refresh.cpp	?bfmeCalcEFC@@YGMH@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva003ADEBFUIntCtor.cpp	_Rva003ADEBF_v0	1
 alternatename	Code/GameEngine/Source/Common/Rva003ADFDBCopyCtor.cpp	_Rva003ADEBF_v0	1
@@ -2480,7 +2475,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v01@Rva0053ED1A
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v02@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v03@Rva0053ED1A@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0053ED1ACtor.cpp	?v04@Rva0053ED1A@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/Common/Rva0054467AFinish.cpp	_theLogicRandomLogFile	1
 alternatename	Code/GameEngine/Source/Common/Rva0056AC26Derived.cpp	?ac26Slot1@Rva0056AC26@@UAE_NXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00576FD3Permuted.cpp	?observerSlot0@SecondBase005D2111@@UAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00576FD3Permuted.cpp	?observerSlot1@SecondBase005D2111@@UAEXPAXI@Z	1
@@ -5227,7 +5221,7 @@ pin	reverse/symbols.csv	0x000AB0F5	1
 pin	reverse/symbols.csv	0x000AB7FB	1
 pin	reverse/symbols.csv	0x000ABA2F	1
 pin	reverse/symbols.csv	0x000ABB82	2
-pin	reverse/symbols.csv	0x000ABB87	2
+pin	reverse/symbols.csv	0x000ABB87	1
 pin	reverse/symbols.csv	0x000ABD9A	1
 pin	reverse/symbols.csv	0x000AC514	1
 pin	reverse/symbols.csv	0x000AD6F4	3
@@ -7955,7 +7949,7 @@ pin	reverse/symbols.csv	0x00415843	1
 pin	reverse/symbols.csv	0x004158AF	1
 pin	reverse/symbols.csv	0x004159AA	1
 pin	reverse/symbols.csv	0x00416504	2
-pin	reverse/symbols.csv	0x00417B55	2
+pin	reverse/symbols.csv	0x00417B55	1
 pin	reverse/symbols.csv	0x0041848D	1
 pin	reverse/symbols.csv	0x004186F2	1
 pin	reverse/symbols.csv	0x00418BB7	1
@@ -12402,6 +12396,7 @@ present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	parseStaticGameLODLe
 present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	refreshCustomStaticLODLevel@GameLODManager@@IAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	setDynamicLODLevel@GameLODManager@@QAE_NW4DynamicGameLODLevel@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/GameLOD.cpp	setStaticLODLevel@GameLODManager@@QAE_NW4StaticGameLODLevel@@@Z	1
+present_unmatched	Code/GameEngine/Source/Common/INI/INI.cpp	findFieldParse	1
 present_unmatched	Code/GameEngine/Source/Common/INI/INI_initFromINIMulti.cpp	findFieldParse	1
 present_unmatched	Code/GameEngine/Source/Common/INI/LivingWorldBonusMapParsers.cpp	InsertValue::pair	1
 present_unmatched	Code/GameEngine/Source/Common/INI/WaterTransparencySettingCtor.cpp	WaterTransparencySetting::slot1	1
@@ -12528,7 +12523,6 @@ present_unmatched	Code/GameEngine/Source/Common/RTS/PlayerO1Shard.cpp	0ClosestKi
 present_unmatched	Code/GameEngine/Source/Common/RTS/PlayerRva002AA8EF.cpp	body	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/ProductionPrerequisite.cpp	init@ProductionPrerequisite@@QAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Rva0073DFD0Finish.cpp	Rva0073DFD0Element::Rva0073DFD0Element	1
-present_unmatched	Code/GameEngine/Source/Common/RTS/Rva0073DFD0Finish.cpp	Rva0073DFD0Element::~Rva0073DFD0Element	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/Science.cpp	callCreate@ScienceTreeExposer@@SAPAU?$_Rb_tree_node@U?$pair@$$CBW4ScienceType@@_N@_STL@@@_STL@@AAU1@ABU?$pair@$$CBW4ScienceType@@_N@3@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	ScoreKeeper::ScoreKeeper	1
 present_unmatched	Code/GameEngine/Source/Common/RTS/ScoreKeeper.cpp	ScoreKeeper::addObjectBuilt	1
@@ -12806,7 +12800,6 @@ present_unmatched	Code/GameEngine/Source/Common/System/GeometryInfoCtor.cpp	bfme
 present_unmatched	Code/GameEngine/Source/Common/System/GeometryInfoDtor.cpp	bfmeEmitGeometryInfoDtor@@YAXPAVGeometryInfo@@PAUGeometryRecord@@11@Z	1
 present_unmatched	Code/GameEngine/Source/Common/System/INIMacroTableDtorO1.cpp	deallocate@allocator<void*>	1
 present_unmatched	Code/GameEngine/Source/Common/System/INI_loadDirectory.cpp	StringBase<char>::find	1
-present_unmatched	Code/GameEngine/Source/Common/System/INI_mixerFieldEdit.cpp	findFieldParse	1
 present_unmatched	Code/GameEngine/Source/Common/System/MemoryPoolInit.cpp	MemoryPoolAllocatorAssertion	1
 present_unmatched	Code/GameEngine/Source/Common/System/RAMFileRead.cpp	RAMFile::convertToRAMFile	1
 present_unmatched	Code/GameEngine/Source/Common/System/Radar.cpp	RadarObject::RadarObject	1
