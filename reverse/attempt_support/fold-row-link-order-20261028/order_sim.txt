@@ -1,0 +1,158 @@
+index 2026-10-28 09:35 at 54b83e4f69
+names whose first copy turns retail: 11; turns non-retail: 3
+  + ??0?$slist@HV?$allocator@H@_STL@@@_STL@@QAE@ABV?$allocator@H@1@@Z
+  + ??1?$hashtable@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@PBVGameWindow@@UhashConstGameWindowPtr@WindowVideoManager@@U?$_Select1st@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@U?$equal_to@PBVGameWindow@@@2@V?$allocator@U?$pair@QBVGameWindow@@PAVWindowVideo@@@_STL@@@2@@_STL@@QAE@XZ
+  + ??1?$vector@PAVObject@@V?$allocator@PAVObject@@@_STL@@@_STL@@QAE@XZ
+  + ??4W3DRadarResetSurface@@QAEAAV0@ABV0@@Z
+  + ??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z
+  + ?_M_insert_overflow@?$vector@PAVObject@@V?$allocator@PAVObject@@@_STL@@@_STL@@IAEXPAPAVObject@@ABQAV3@ABU__true_type@2@I_N@Z
+  + ?_M_insert_overflow@?$vector@UICoord2D@@V?$allocator@UICoord2D@@@_STL@@@_STL@@IAEXPAUICoord2D@@ABU3@ABU__false_type@2@I_N@Z
+  + ?insert@?$set@PAURva001408C0Target@@U?$less@PAURva001408C0Target@@@_STL@@V?$allocator@PAURva001408C0Target@@@3@@_STL@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAURva001408C0Target@@U?$_Const_traits@PAURva001408C0Target@@@_STL@@@_STL@@_N@2@ABQAURva001408C0Target@@@Z
+  + ?insert_unique@?$_Rb_tree@PAURva001408C0Target@@PAU1@U?$_Identity@PAURva001408C0Target@@@_STL@@U?$less@PAURva001408C0Target@@@3@V?$allocator@PAURva001408C0Target@@@3@@_STL@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAURva001408C0Target@@U?$_Nonconst_traits@PAURva001408C0Target@@@_STL@@@_STL@@_N@2@ABQAURva001408C0Target@@@Z
+  + ?push_back@?$vector@PAVObject@@V?$allocator@PAVObject@@@_STL@@@_STL@@QAEXABQAVObject@@@Z
+  + _floorf
+  - ??1Rva004A9DF3Element@@QAE@XZ
+  - ?append@?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@QAEAAV12@PBD@Z
+  - ?rva002F83F5@Pathfinder@@QAEHPAVPathfindCell@@0ABVLocomotorSet@@_N2HPAUICoord2D@@PAVObject@@H@Z
+unlinked units blocked only by wrong_selected on gained names: 126, 270,718 B (upper bound: other new conflicts are not re-judged)
+  + Code/GameEngine/Source/Common/BaseHeightMapRenderObjClass_updateScorches.cpp 1493
+  + Code/GameEngine/Source/Common/Bfme/Rva004E65CFLeaf.cpp 869
+  + Code/GameEngine/Source/Common/GameEngineInit.cpp 9424
+  + Code/GameEngine/Source/Common/INI/FormationTemplate.cpp 925
+  + Code/GameEngine/Source/Common/RTS/GameLogic_QueueForNotifyPathfindCellChanged.cpp 79
+  + Code/GameEngine/Source/Common/Rva000E6EF0Bucket.cpp 295
+  + Code/GameEngine/Source/Common/Rva00208F90AssetWalk_Rva0006C950.cpp 69
+  + Code/GameEngine/Source/Common/Rva0027DF9DGridQueries.cpp 3831
+  + Code/GameEngine/Source/Common/Rva002858E5Read.cpp 195
+  + Code/GameEngine/Source/Common/Rva002F5925InfoRva002F5925.cpp 851
+  + Code/GameEngine/Source/Common/Rva00380200Getter.cpp 914
+  + Code/GameEngine/Source/Common/Rva004DFCE6SphereMerge.cpp 361
+  + Code/GameEngine/Source/Common/Rva005D40A6Dtor.cpp 2148
+  + Code/GameEngine/Source/Common/Rva005F2CBAProgress.cpp 4242
+  + Code/GameEngine/Source/Common/System/Rva00504AB4CurveSpline.cpp 675
+  + Code/GameEngine/Source/Common/WorldHeightMapGetTerrainNameAt.cpp 224
+  + Code/GameEngine/Source/Common/rva0052E4C9Rva0052E4C9Farm.cpp 539
+  + Code/GameEngine/Source/GameClient/AssetListOperatorInsert.cpp 532
+  + Code/GameEngine/Source/GameClient/CameraAnimation/CameraAnimationTrackLookAtCamera.cpp 1007
+  + Code/GameEngine/Source/GameClient/GUI/ControlBar/UnitHelpSource.cpp 1896
+  + Code/GameEngine/Source/GameClient/GUI/InGame/InGameCommandButtonHelpRender.cpp 1788
+  + Code/GameEngine/Source/GameClient/GUI/InGame/InGameNotificationBoxMovieClip.cpp 1390
+  + Code/GameEngine/Source/GameClient/GUI/InGame/InGameNotificationBoxUpdateNotice.cpp 723
+  + Code/GameEngine/Source/GameClient/GUI/InGame/Tactical/InGameHeroSelectInterface.cpp 4872
+  + Code/GameEngine/Source/GameClient/GUI/WindowVideoHashtableDtor.cpp 134
+  + Code/GameEngine/Source/GameClient/GameSubTitles.cpp 1673
+  + Code/GameEngine/Source/GameClient/InGameUI_selectMatchingAcrossRegion.cpp 687
+  + Code/GameEngine/Source/GameClient/Rva002239B2_Rva002239B2.cpp 47
+  + Code/GameEngine/Source/GameLogic/AI/AIGuard.cpp 1336
+  + Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyObjectFootprint.cpp 3378
+  + Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyWall.cpp 3018
+  + Code/GameEngine/Source/GameLogic/AI/PathfinderProcessPathfindQueue.cpp 664
+  + Code/GameEngine/Source/GameLogic/AI/PathfinderRva002F4491CellCallback.cpp 411
+  + Code/GameEngine/Source/GameLogic/AI/SquadCtor.cpp 42
+  + Code/GameEngine/Source/GameLogic/AI/SquadGetAllObjectsAndRemoveDead.cpp 171
+  + Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp 5463
+  + Code/GameEngine/Source/GameLogic/Map/PolygonTrigger.cpp 316
+  + Code/GameEngine/Source/GameLogic/Map/TerrainLogicAmbientColorRva0027DA6A.cpp 525
+  + Code/GameEngine/Source/GameLogic/Map/TerrainLogicIterateTreesNearAPoint.cpp 938
+  + Code/GameEngine/Source/GameLogic/Map/TerrainLogicRva0028449F.cpp 1582
+  + Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorRva00398E9A.cpp 723
+  + Code/GameEngine/Source/GameLogic/Object/Behavior/ClearanceTestingSlowDeathGeometrySampler.cpp 1368
+  + Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainIface11CSlots.cpp 23871
+  + Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainRva00475F61.cpp 1671
+  + Code/GameEngine/Source/GameLogic/Object/GenericObjectCreationNuggetPositionCreate.cpp 535
+  + Code/GameEngine/Source/GameLogic/Object/GenericObjectCreationNuggetReallyCreate.cpp 2619
+  + Code/GameEngine/Source/GameLogic/Object/GenericObjectCreationNuggetRequirements_Create.cpp 93
+  + Code/GameEngine/Source/GameLogic/Object/GenericObjectCreationNuggetWaypointPick.cpp 255
+  + Code/GameEngine/Source/GameLogic/Object/Rva004E00BA.cpp 31
+  + Code/GameEngine/Source/GameLogic/Object/SpecialPower/ManTheWallsSpecialPower.cpp 1143
+  + Code/GameEngine/Source/GameLogic/Object/SpecialPower/SiegeDeployHordeInitiate.cpp 467
+  + Code/GameEngine/Source/GameLogic/Object/SpecialPower/SplitHordeSpecialPower_doSpecialPower.cpp 133
+  + Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp 1101
+  + Code/GameEngine/Source/GameLogic/Pathfinder/PathfindLayerReset_~PathfindLayer_ClassifyBridgeCells.cpp 1338
+  + Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderBridgeUpdateRva0052ED74.cpp 2431
+  + Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderFootprintAttackRangeQuery.cpp 1390
+  + Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderNewMap.cpp 580
+  + Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRva002F83F5Neighbors.cpp 1799
+  + Code/GameEngine/Source/GameLogic/Pathfinder/Rva002ECE6AInfoCtor.cpp 699
+  + Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp 50353
+  + Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_doTeamPartialUseCommandButton.cpp 300
+  + Code/GameEngine/Source/GameLogic/SkirmishAI/AIBuilder.cpp 1765
+  + Code/GameEngine/Source/GameLogic/SkirmishAI/AISpecialPowers/AIRva005D8B0BCheck.cpp 194
+  + Code/GameEngine/Source/GameLogic/SkirmishAI/AISpecialPowers/AISPecialPowerTargetAoE.cpp 1716
+  + Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/AITactic.cpp 2626
+  + Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIRoamingDefenseTacticRoam.cpp 592
+  + Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/TargetlessTactics/AIStructureCreepTactic.cpp 4226
+  + Code/GameEngine/Source/GameLogic/SkirmishAI/AITeamBuilder/AITeamBuilder_checkIdleTeams.cpp 407
+  + Code/GameEngine/Source/GameLogic/System/FireLogicSystem_NewMap.cpp 399
+  + Code/GameEngine/Source/GameLogic/System/GameLogicDestructor.cpp 887
+  + Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva002B8573Method.cpp 343
+  + Code/GameEngine/Source/GameLogic/System/TerrainResourceManager.cpp 818
+  + Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerClaimRva00359E93.cpp 387
+  + Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerRva0035A005.cpp 340
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/BaseHeightMapCastRay.cpp 1918
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/BaseHeightMapEstimateMaxHeightAlongLine.cpp 591
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/BaseHeightMapGetHeightMapHeight.cpp 935
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/BaseHeightMapIsClearLineOfSight.cpp 916
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/BaseHeightMapRva000687EF.cpp 1369
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTankDrawDoDrawModule.cpp 771
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/FlatHeightMapDoPartialUpdate.cpp 340
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DCheckBox.cpp 948
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DComboBox.cpp 1209
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DHorizontalSlider.cpp 2675
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DListBox.cpp 2548
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DProgressBar.cpp 1411
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DPushButtonImageDispatch_Thunk.cpp 125
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DRadioButton.cpp 1237
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DStaticText.cpp 836
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DVerticalSlider.cpp 844
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptComponentColorPicker.cpp 1660
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DGameFont.cpp 428
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/RTS3DSceneFlushOccludedObjectsIntoStencil.cpp 1853
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/RTS3DSceneVisibilityCheck.cpp 977
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DProjectedShadowDecalHelpers.cpp 10338
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBridgeGetModelVerticesFixed.cpp 1602
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DBuffBuffer_AddBuff.cpp 214
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse_freeD3DAssets.cpp 112
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse_loadD3DCursorTextures.cpp 490
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DMouse_releaseD3DCursorTextures.cpp 121
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DSnowManagerRenderAsQuads.cpp 2440
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DVideoStateAllocate.cpp 254
+  + Code/GameEngineDevice/Source/W3DDevice/GameClient/WorldHeightMapGetTerrainColorAt.cpp 299
+  + Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DTerrainLogicCellQueries.cpp 377
+  + Code/Libraries/Source/WWVegas/WW3D2/BfmeFVFDescriptorVertexDeclaration.cpp 1820
+  + Code/Libraries/Source/WWVegas/WW3D2/PendingSurfaceStructResize.cpp 542
+  + Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceBuildNotCenteredBFME2.cpp 2240
+  + Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceBuildThaiBFME2.cpp 2191
+  + Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceDestructorBFME2.cpp 484
+  + Code/Libraries/Source/WWVegas/WW3D2/Render2DSentenceGlyphSurfaceBFME2.cpp 777
+  + Code/Libraries/Source/WWVegas/WW3D2/StreakRendererRenderStreak.cpp 14007
+  + Code/Libraries/Source/WWVegas/WW3D2/render2dsentence.cpp 1249
+  + Code/Libraries/Source/WWVegas/WW3D2/seglinerenderer.cpp 18478
+  + Code/Libraries/Source/WWVegas/WWLib/Rva0006C995Insert.cpp 87
+  + Code/Libraries/Source/WWVegas/WWLib/Rva00081EA8Insert.cpp 25
+  + Code/Libraries/Source/WWVegas/WWLib/Rva0030E67CSample.cpp 339
+  + Code/Libraries/Source/WWVegas/WWLib/Rva00E03CE0RegistryInsert.cpp 42
+  + Code/Libraries/Source/WWVegas/WWLib/StlportVectorObjectPtrInsertOverflow.cpp 161
+  + Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackSiblings.cpp 388
+  + Code/Libraries/Source/WWVegas/WWLib/mixfile.cpp 748
+  + Code/Libraries/Source/WWVegas/WWLib/stlport_set_ptr_Rva001408C0.cpp 171
+  + Code/Libraries/Source/WWVegas/WWLib/stlport_slist_int_ctor.cpp 18
+  + Code/Libraries/Source/WWVegas/WWMath/gridcull.cpp 11117
+  + Code/Libraries/Source/assetmanager/AssetManagerImplRefresh.cpp 3267
+  + Code/Libraries/Source/assetmanager/Rva0061FFA0.cpp 1365
+  + Code/Libraries/Source/assetmanager/assetmanager_impl.cpp 4037
+linked units touching a lost name: 14, 31,695 B (upper bound)
+  - Code/GameEngine/Source/Common/Bfme5ThirtyFour.cpp 4181
+  - Code/GameEngine/Source/Common/Rva004A9DF3ElementDtor.cpp 5
+  - Code/GameEngine/Source/Common/Thing/ModuleTagStringDtor.cpp 97
+  - Code/GameEngine/Source/Common/Thing/ModuleTagStringSwap.cpp 306
+  - Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderSidewaysAttack.cpp 2459
+  - Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThread.cpp 18622
+  - Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadNickError.cpp 394
+  - Code/GameEngine/Source/GameNetwork/GameSpy/Thread/PeerThreadStats_PackStatKey.cpp 295
+  - Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp 3148
+  - Code/Libraries/Source/Apt/AptHandleVectorDelete.cpp 112
+  - Code/Libraries/Source/Apt/AptRefArrayResize.cpp 397
+  - Code/Libraries/Source/Apt/Apt_Rva006CDB70Owner.cpp 753
+  - Code/Libraries/Source/WWVegas/WWDownload/urlBuilder.cpp 868
+  - Code/Libraries/Source/WWVegas/WWLib/StlportNarrowAppendCStr.cpp 58

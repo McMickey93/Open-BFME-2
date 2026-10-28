@@ -156,6 +156,19 @@ when ordering objects (they claim no placement), recorded through
 `allowed_symbols.link_order`, `link_check` and `tu_skeleton`. Before that, measure it
 with `link_check` positions recomputed under the rule. Alternatively move each fold
 row into the unit retail ICF kept, which only TU evidence can approve.
+Simulation (2026-10-28, revision `739f3c6957`, index `54b83e4f69`): the
+`Render2DSentenceDrawBFME2.cpp` 0x1E13 fold row puts it at link index 27, so its /O2
+`??4W3DRadarResetSurface@@QAEAAV0@ABV0@@Z` (`edx`) beats retail's /O1 body at 0x00072381
+(`ecx`); that is the sole blocker of byte-exact `W3DVideoStateAllocate.cpp`. The /O2
+emitters inline the operator in retail and MSVC 7.1 /O2 always emits the COMDAT, so no
+source spelling repairs it. Ignoring `fold-proof=` rows when ordering turns 11 names
+retail-first and 3 non-retail-first: up to 126 unlinked units (270,718 B) are blocked
+only by `wrong_selected` on gained names, and up to 14 linked units (31,695 B) touch a
+lost name (`??1Rva004A9DF3Element@@QAE@XZ`, `Pathfinder::rva002F83F5`,
+`basic_string<char>::append(const char *)`; re-judge them in the census after a rule
+change). Ignoring all shared-RVA rows is net negative (10 gains, 37 losses).
+[Simulation script and output](../reverse/attempt_support/fold-row-link-order-20261028/README.md);
+its `re_attempts.log` verdict cites this entry under its pre-rebase number LINK-131.
 Clearance: pending.
 Census confirmation: not claimed.
 
