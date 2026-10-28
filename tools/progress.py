@@ -998,18 +998,34 @@ def source_files_at(ref):
     return {path for path in out if path.lower().endswith(SOURCE_SUFFIXES)}
 
 
-def source_recovery_at(ref):
-    """Source recovery against the committed tu_map.csv: how many source files
-    there are, how many retail TUs the map names, and how far the approved
-    part reaches. A file is homed when every code row it holds is approved; it
-    is at its TU when every such row's approved TU is the file itself."""
-    files = source_files_at(ref)
+def tu_map_rows_at(ref):
+    """(tu_map rows, which map) at one state. The worktree (None) gets the map
+    tu_skeleton merges by: the committed one while fresh, else a rebuild from the
+    current inputs (tu_map.build, ~25 s). The committed map goes stale with every
+    ledger commit (2026-10-28: 10,846 approved code rows committed, 29,908
+    rebuilt), so a commit's own map is labelled as such."""
+    if ref is None:
+        import tu_map
+        layout = tu_map.Layout(ROOT)
+        if tu_map.check_fresh(layout):
+            return [{k: str(v) for k, v in r.items()} for r in tu_map.build(layout)], "current inputs"
+        return tu_map.read_csv(layout.out), "current inputs"
     text = _text_at(ref, TU_MAP)
-    if text is None:
+    return (list(csv.DictReader(text.splitlines())) if text is not None else None), f"{TU_MAP} at {ref}"
+
+
+def source_recovery_at(ref):
+    """Source recovery: how many source files there are, how many retail TUs
+    the map names, and how far the approved part reaches. A file is homed when
+    every code row it holds is approved; it is at its TU when every such row's
+    approved TU is the file itself."""
+    files = source_files_at(ref)
+    table, which = tu_map_rows_at(ref)
+    if table is None:
         return {"files": len(files)}
     named, approved, rows = set(), set(), {}
     total = approved_rows = 0
-    for row in csv.DictReader(text.splitlines()):
+    for row in table:
         if row["kind"] != "code":
             continue
         total += 1
@@ -1026,7 +1042,7 @@ def source_recovery_at(ref):
             homed += 1
             at_tu += all(r["tu"].lower() == source for r in held)
     return {"files": len(files), "tus": len(named), "approved_tus": len(approved), "rows": total,
-            "approved_rows": approved_rows, "homed": homed, "at_tu": at_tu}
+            "approved_rows": approved_rows, "homed": homed, "at_tu": at_tu, "map": which}
 
 
 def print_source_recovery(old, new):
@@ -1038,9 +1054,13 @@ def print_source_recovery(old, new):
         return
     print(f"SOURCE FILES   {new['files']:>12,} files  ({delta:+,} files)  <- .cpp/.c/.asm under Code/; "
           f"target: the {new['tus']:,} TUs {TU_MAP} names, approved or proposed")
+    # A commit's committed map and a rebuild from current inputs are not like for like.
+    change = (f"({new['approved_rows'] - old['approved_rows']:+,} rows)"
+              if "map" in old and old["map"].split(" at ")[0] == new["map"].split(" at ")[0]
+              else f"(vs {old.get('map', 'no map')}: n/a)")
     print(f"TU-APPROVED    {new['approved_rows']:>12,} rows ({percent(new['approved_rows'], new['rows']):6.2f}%)  "
-          f"({new['approved_rows'] - old.get('approved_rows', 0):+,} rows)  <- code rows in an approved TU "
-          f"({new['approved_tus']:,} of {new['tus']:,} TUs); only approved rows merge")
+          f"{change}  <- code rows in an approved TU ({new['approved_tus']:,} of {new['tus']:,} TUs), "
+          f"map from {new['map']}; only approved rows merge")
     print(f"               {new['homed']:,} files hold only approved rows; {new['at_tu']:,} of them are "
           f"already their TU (tools/tu_skeleton.py --queue merges the rest)")
 
