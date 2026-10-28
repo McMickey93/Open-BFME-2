@@ -147,10 +147,12 @@ class GameWindowManager {public:
 extern GameWindowManager *TheWindowManager;
 class Rva00072FE6 {public:~Rva00072FE6();};
 // The selection ids are a set<int>: its constructor is the shared 25-byte
-// STLport empty-set body at 0x000D3A71 (set<int> pinned there). The tree
-// destructor stays the rowed Rva00072FE6 one, so the set is constructed in
-// place over raw storage rather than held as a base.
-class Rva002EE9B7 {public:Rva002EE9B7(){::new(static_cast<void*>(this)) _STL::set<int>();}void *header;int count;int compare;};
+// STLport empty-set body at 0x000D3A71 (??0Rva002EE9B7@@QAE@XZ, provided by
+// HordeContainCtor.cpp). Declared only, as CastleBehaviorCtor.cpp does: an
+// inline body here emitted a 49-byte EH-framed placement-new copy that link
+// order now keeps ahead of the retail one. The tree destructor stays the
+// rowed Rva00072FE6 one, and set() views the same storage.
+class Rva002EE9B7 {public:Rva002EE9B7();void *header;int count;int compare;};
 struct NativeSelectionSet:public Rva002EE9B7 {
  __forceinline NativeSelectionSet(){}
  __forceinline ~NativeSelectionSet(){reinterpret_cast<Rva00072FE6*>(this)->~Rva00072FE6();}
