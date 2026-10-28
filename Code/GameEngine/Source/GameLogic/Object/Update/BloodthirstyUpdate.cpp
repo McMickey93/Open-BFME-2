@@ -222,23 +222,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class BloodthirstyUpdate : public B00, public B0C, public B10, public Iface20
-{
-public:
-	virtual void sacrificeHorde(Object *victim, CommandSourceType source);
-	virtual bool rva0044E12F(Object *obj);
-	virtual bool isValidSacrifice(Object *obj);
-	virtual void addSacrifice(Object *victim);
-	virtual void cancelSacrifice();
-	virtual UpdateSleepTime update();
-private:
-	ObjectID m_bestTargetID; // +0x24
-	ObjectID m_28; // +0x28
-	int m_kills; // +0x2C
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 class DrawableList : public _STL::list<Drawable *>
 {
 public:
@@ -266,19 +249,54 @@ public:
 
 bool pickAndPlayUnitVoiceResponse(const DrawableList *, GameMessage::Type, PickAndPlayInfo *);
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class BloodthirstyUpdate : public B00, public B0C, public B10, public Iface20
+{
+public:
+	virtual void sacrificeHorde(Object *victim, CommandSourceType source);
+	virtual bool rva0044E12F(Object *obj);
+	virtual bool isValidSacrifice(Object *obj);
+	virtual void addSacrifice(Object *victim);
+	virtual void cancelSacrifice();
+	virtual UpdateSleepTime update();
+private:
+	ObjectID m_bestTargetID; // +0x24
+	ObjectID m_28; // +0x28
+	int m_kills; // +0x2C
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
 // tu-skeleton: 0x0044DFE0 32B ??1BloodthirstyUpdate@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0044E000 6B ?name@Rva0044E000Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
 
 // tu-skeleton: 0x0044E006 78B ?xfer@BloodthirstyUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateXfer.cpp (not merged yet)
 
-// tu-skeleton: 0x0044E054 69B ?getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp
+
+// ?getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType BloodthirstyUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheBloodthirstyUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("BloodthirstyUpdate");
+	return TheBloodthirstyUpdatePoolKey;
+}
 
 // tu-skeleton: 0x0044E099 17B ?buildFieldParse@BloodthirstyUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
 // tu-skeleton: 0x0044E0AA 105B ??0BloodthirstyUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0044E113 28B ??_GBloodthirstyUpdate@@MAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateDtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateIfaceChecks.cpp
 
@@ -445,10 +463,6 @@ void BloodthirstyUpdate::addSacrifice(Object *victim)
 // tu-skeleton: 0x0044E2F7 30B ?rva0044E2F7@BloodthirstyUpdate@@UBE?AVRva002390CB@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateRva0044E2F7.cpp (not merged yet)
 
 // tu-skeleton: 0x0044E331 67B ??1BloodthirstyUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateModuleDataDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x007899F7 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x00789A04 10B __ehhandler$?getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x00789A0E 8B uw_00789a0e -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
 

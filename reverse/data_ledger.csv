@@ -19825,8 +19825,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03374,4,.data,global,?buttonYesID@?8??MessageBoxSystem@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/MessageBox.cpp,owned,,1,2
 0x00A03378,4,.data,global,?buttonOkID@?8??MessageBoxSystem@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/MessageBox.cpp,owned,,1,2
 0x00A0337C,4,.data,global,?$S1@?8??MessageBoxSystem@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z@4IA,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/MessageBox.cpp,owned,,1,16
-0x00A03380,4,.data,global,?TheBloodthirstyUpdatePoolKey@?1??getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp,owned,,1,2
-0x00A03384,4,.data,global,?$S1@?1??getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp,owned,,1,4
+0x00A03380,4,.data,global,?TheBloodthirstyUpdatePoolKey@?1??getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,owned,,1,2
+0x00A03384,4,.data,global,?$S1@?1??getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,owned,,1,4
 0x00A03388,4,.data,global,_s_rva007B0747,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A0338C,4,.data,global,?TheSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp,owned,,1,2
 0x00A03390,4,.data,global,?$S1@?1??getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp,owned,,1,4

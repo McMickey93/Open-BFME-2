@@ -35593,7 +35593,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0044DFE0,32,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateDtor.cpp
 0x0044E000,6,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,C,C=0x0044DFE0..0x0044E006 provisional,Code/GameEngine/Source/Common/ModuleNameGetters3.cpp
 0x0044E006,78,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateXfer.cpp
-0x0044E054,69,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp
+0x0044E054,69,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp
 0x0044E099,17,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp
 0x0044E0AA,105,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateCtor.cpp
 0x0044E113,28,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateDtor.cpp
@@ -79111,8 +79111,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007899DB,10,code,,,-,,Code/GameEngine/Source/Common/GameModePreferences.cpp
 0x007899E5,8,code,,,-,,Code/gen_small/uw_gen_008.cpp
 0x007899ED,10,code,,,-,,Code/GameEngine/Source/Common/Rva0044DEC1Finish.cpp
-0x007899F7,13,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,P,P=0x0044E054@FuncInfo0x00937D5C provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp
-0x00789A04,10,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,P,P=0x0044E054@FuncInfo0x00937D5C provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp
+0x007899F7,13,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,P,P=0x0044E054@FuncInfo0x00937D5C provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp
+0x00789A04,10,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,P,P=0x0044E054@FuncInfo0x00937D5C provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp
 0x00789A0E,8,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,P,P=0x0044E0AA@FuncInfo0x00937D80 provisional,Code/gen_small/uw_gen_011.cpp
 0x00789A16,10,code,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdate.cpp,approved,P,P=0x0044E0AA@FuncInfo0x00937D80 provisional,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateCtor.cpp
 0x00789A20,8,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateModuleDataCtor.cpp
