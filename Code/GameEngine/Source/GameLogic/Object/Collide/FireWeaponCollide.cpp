@@ -307,6 +307,8 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollide.cpp
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollide.cpp
+
 // ??1FireWeaponCollide@@UAE@XZ, retail 0x004BB6A7, 85 bytes (deleting dtor
 // ??_G at 0x004BB806, slot 0 of vtable 0x85A0FC).
 // Donor: BFME1 FireWeaponCollide.cpp dtor (delete m_collideWeapon) and Zero
@@ -356,12 +358,6 @@ int Rva004BB733Get(void)
 	return (int)"CollideModule";
 }
 
-// tu-skeleton: 0x004BB6FC 6B ?name@Rva004BB6FCNamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x004BB702 49B ??0CollideModule@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Collide/CollideModuleCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004BB739 28B ??_GRva004BB68E@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollidePoolKey.cpp
 
 // ?getModuleNameKey@FireWeaponCollide@@UBE?AW4NameKeyType@@XZ
@@ -371,8 +367,6 @@ NameKeyType FireWeaponCollide::getModuleNameKey() const
 		TheNameKeyGenerator->nameToKey("FireWeaponCollide");
 	return TheFireWeaponCollidePoolKey;
 }
-
-// tu-skeleton: 0x004BB822 58B ?onCollide@FireWeaponCollide@@UAEXPAVObject@@PBUCoord3D@@1@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollideOnCollide.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollideXfer.cpp
 
@@ -389,6 +383,29 @@ void FireWeaponCollide::xfer(Xfer *xfer)
 	*xfer == m_everFired;
 }
 
-// tu-skeleton: 0x004BB8BA 94B ?shouldFireWeapon@FireWeaponCollide@@MAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollideShouldFireWeapon.cpp (not merged yet)
+// tu-skeleton: 0x004BB6FC 6B ?name@Rva004BB6FCNamed@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x004BB702 49B ??0CollideModule@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Collide/CollideModuleCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004BB739 28B ??_GRva004BB68E@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp (not merged yet)
+
+// tu-skeleton: 0x004BB822 58B ?onCollide@FireWeaponCollide@@UAEXPAVObject@@PBUCoord3D@@1@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollideOnCollide.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Collide/FireWeaponCollideShouldFireWeapon.cpp
+
+bool FireWeaponCollide::shouldFireWeapon()
+{
+	const FireWeaponCollideModuleData *data = getFireWeaponCollideModuleData();
+	BfmeObject872Header tmp(m_object->m_status);
+	if (data->m_forbidden.test(&tmp))
+		return false;
+	for (unsigned i = 0; i < 4; ++i)
+		tmp.m_vals[i] = ~tmp.m_vals[i];
+	if (data->m_required.test(&tmp))
+		return false;
+	if (m_everFired && data->m_fireOnce)
+		return false;
+	return true;
+}
 
 // tu-skeleton: 0x004BB918 17B ?buildFieldParse@FireWeaponCollideModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
