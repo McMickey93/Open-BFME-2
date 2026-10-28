@@ -23,7 +23,7 @@ public:
 class Rva006DB270
 {
 public:
-	void freeBlock(void *block, int blockSize);
+	void freeBlock(void *,int);
 };
 
 extern Rva006DB270 *g_pChainBlockAllocator; // 0x00E176E8
@@ -32,10 +32,9 @@ class Rva00706330Stack
 {
 public:
 	void rva00706330();
-
-	int m_bfmeCount;
-	int m_bfmeCapacity;
-	Rva006FBDB0 **m_bfmeArray;
+	int m_bfmeCount; // +0x00
+	int m_bfmeCapacity; // +0x04
+	Rva006FBDB0 **m_bfmeArray; // +0x08
 };
 
 // ?rva00706330@Rva00706330Stack@@QAEXXZ

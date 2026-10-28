@@ -233,9 +233,17 @@ class Rva8D0D80Value;
 
 class Rva006D2A60 { public: void *allocBlock(int); void freeBlock(void *,int); };
 
-class Rva006DB160 { public: void *allocBlock(int); };
+class Rva006DB160
+{
+public:
+	void *allocBlock(int);
+};
 
-class Rva006DB270 { public: void freeBlock(void *,int); };
+class Rva006DB270
+{
+public:
+	void freeBlock(void *,int);
+};
 
 extern Rva006DB270 *g_pChainBlockAllocator;
 
@@ -275,7 +283,14 @@ template<class T> struct AptDebugStack
     void Rva006FE2F0(void *);
 };
 
-class Rva00706330Stack { public: void rva00706330(); };
+class Rva00706330Stack
+{
+public:
+	void rva00706330();
+	int m_bfmeCount; // +0x00
+	int m_bfmeCapacity; // +0x04
+	Rva006FBDB0 **m_bfmeArray; // +0x08
+};
 
 class AptPrototype : public AptValueWithHash
 {

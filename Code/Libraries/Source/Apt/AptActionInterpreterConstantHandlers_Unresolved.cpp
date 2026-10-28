@@ -94,13 +94,21 @@ class AptString : public AptValue { public: static AptString *Create(); EAString
 class AptInteger : public AptValue { public: static AptValue *Create(int); int GetInt() const; };
 int Rva006CD220Get();
 bool rva006fc370(AptValue *);
-class AptBoolean { public: static AptValue *Create(bool); bool GetBool() const; };
+class AptBoolean
+{
+public:
+	static AptValue *Create(bool value);
+};
 AptValue *Rva008A4EA0MakeFloat(float);
 EAStringC *Rva0070B4F0GetString(int);
 extern void *g_eaStringAtE177D4Storage;
 extern AptValue *gpUndefinedValue;
 extern AptValue *gpGlobalGlobalObject;
-class AptValueVector { public: int GetNumValues() const; void ReleaseValues(); };
+class AptValueVector
+{
+public:
+	void ReleaseValues();
+};
 extern AptValueVector *g_releaseVectorAtE17710;
 void Rva006CC110Log(int, const char *, ...);
 extern "C" void (__cdecl *g_bfmeAptLogAtE1773C)(const char *,const char *);
@@ -167,8 +175,16 @@ public:
 };
 
 class AptObject;
-class Rva006DB160 { public: void *allocBlock(int); };
-class Rva006DB270 { public: void freeBlock(void *,int); };
+class Rva006DB160
+{
+public:
+	void *allocBlock(int);
+};
+class Rva006DB270
+{
+public:
+	void freeBlock(void *,int);
+};
 extern Rva006DB270 *g_pChainBlockAllocator;
 class Rva006FBDB0 : public EAStringC {
 public:

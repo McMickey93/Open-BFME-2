@@ -22,7 +22,7 @@ void rva006FD630(EAStringC *);
 class AptBoolean
 {
 public:
-    static AptValue *Create(bool value);
+	static AptValue *Create(bool value);
 };
 bool rva006fc370(AptValue *value);
 

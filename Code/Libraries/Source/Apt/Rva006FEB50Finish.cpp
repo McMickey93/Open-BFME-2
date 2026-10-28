@@ -24,7 +24,7 @@ class AptScriptFunctionBase;
 class Rva006DB270
 {
 public:
-    void freeBlock(void *p, int bytes);
+	void freeBlock(void *,int);
 };
 extern Rva006DB270 *g_pChainBlockAllocator;
 class AptBasePtrStack

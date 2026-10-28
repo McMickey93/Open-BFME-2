@@ -36,7 +36,11 @@ public:
 extern AptValueVector *g_releaseVectorAtE17710;
 
 class AptInteger { public: static AptValue *Create(int value); };
-class AptBoolean { public: static AptValue *Create(bool value); };
+class AptBoolean
+{
+public:
+	static AptValue *Create(bool value);
+};
 AptValue *Rva008A4EA0MakeFloat(float value);
 extern AptValue *gpUndefinedValue;
 
@@ -44,8 +48,16 @@ struct StringNode0070D9F0;
 StringNode0070D9F0 *Rva0070DBB0Intern(const char *string);
 void Rva0070DDC0Remove(StringNode0070D9F0 *node);
 
-class Rva006DB160 { public: void *allocBlock(int blockSize); };
-class Rva006DB270 { public: void freeBlock(void *block, int blockSize); };
+class Rva006DB160
+{
+public:
+	void *allocBlock(int);
+};
+class Rva006DB270
+{
+public:
+	void freeBlock(void *,int);
+};
 extern Rva006DB270 *g_pChainBlockAllocator;
 // Native sized-delete cleanup calls the same22B pool-free owner at6D8680.
 // Expose that real forwarding body so each actual operator delete emits its
