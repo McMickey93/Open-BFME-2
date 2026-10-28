@@ -49020,19 +49020,19 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005AFA0E,18,code,,,-,,Code/GameEngine/Source/Common/VslotSmallBodiesAE.cpp
 0x005AFA20,28,code,,,-,,Code/GameEngine/Source/Common/Rva005AFE3FDerived.cpp
 0x005AFA3C,485,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp W=Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
-0x005AFC21,43,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFA3C..0x005AFC4C provisional,Code/GameEngine/Source/Common/Rva005AFC21Store.cpp
-0x005AFC4C,70,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFA3C..0x005AFC92 provisional,Code/GameEngine/Source/Common/Rva005AFC21Store.cpp
-0x005AFC92,34,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFA3C..0x005AFCB4 provisional,Code/GameEngine/Source/Common/Rva005AFC92Reset.cpp
+0x005AFC21,43,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFA3C..0x005AFC4C provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
+0x005AFC4C,70,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFA3C..0x005AFC92 provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
+0x005AFC92,34,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFA3C..0x005AFCB4 provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
 0x005AFCB4,56,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
 0x005AFCEC,19,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFCFF provisional,Code/GameEngine/Source/Common/VslotSmallBodiesAE.cpp
-0x005AFCFF,47,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFD2E provisional,Code/GameEngine/Source/Common/Rva005AFC92Reset.cpp
-0x005AFD2E,21,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFD43 provisional,Code/GameEngine/Source/Common/Rva005AFC92Reset.cpp
-0x005AFD43,70,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFD89 provisional,Code/GameEngine/Source/Common/Rva005AFD43SetText.cpp
-0x005AFD89,60,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFDC5 provisional,Code/GameEngine/Source/Common/Rva005AFD89Slot0.cpp
+0x005AFCFF,47,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFD2E provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
+0x005AFD2E,21,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFD43 provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
+0x005AFD43,70,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFD89 provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
+0x005AFD89,60,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFCB4..0x005AFDC5 provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
 0x005AFDC5,122,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
-0x005AFE3F,71,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFDC5..0x005AFE86 provisional,Code/GameEngine/Source/Common/Rva005AFE3FDtor.cpp
+0x005AFE3F,71,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFDC5..0x005AFE86 provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
 0x005AFE86,85,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFDC5..0x005AFEDB provisional,Code/GameEngine/Source/Common/Rva005AFE86Ctor.cpp
-0x005AFEDB,28,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFDC5..0x005AFEF7 provisional,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AFEDB.cpp
+0x005AFEDB,28,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,C,C=0x005AFDC5..0x005AFEF7 provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
 0x005AFEF7,277,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
 0x005B000C,188,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
 0x005B00C8,267,code,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp provisional,Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp
