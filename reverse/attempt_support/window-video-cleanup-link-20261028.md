@@ -63,3 +63,11 @@ The index predates this change's base. Ordinary previews establish the stated
 four-source scope only; the outgoing batch audit and next normal census must
 check broader current selection. No headline linked-byte increase, whole-image
 link, runtime result, ownership change or source-file reduction is claimed.
+
+Post-publication audit of `46b60c2874` against parent `8c36c2edab` exits 2,
+INCONCLUSIVE: the index predates the base, and affected consumer
+Common/0CreateAHeroManager21FE49.cpp lacks a current receipt. The whole-batch
+audit considers every symbol supplied by the edited source, a broader scope
+than the four users of the two removed cleanup copies above. Carry that
+consumer and the window-video cohort into the next normal census; this audit
+does not establish absence of losses across that broader scope.

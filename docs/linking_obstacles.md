@@ -1324,6 +1324,9 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   existing bucket/AsciiString findings; all four keys remain. Clearance is
   limited to the four-source preview. Carry this cohort into the next census;
   no headline gain or full-image result is claimed.
+  The post-publication batch audit is INCONCLUSIVE: index predates base
+  `8c36c2edab`, and affected consumer Common/0CreateAHeroManager21FE49.cpp
+  lacks a current receipt. Include that broader consumer scope in the census.
 
 - **Font vector lifetime identity (2026-10-27, inspected `5a987437d9f`):**
   [the native lifetime and withdrawal evidence](../reverse/attempt_support/font-vector-identity-link-20261027/readme.md)
