@@ -52,13 +52,6 @@ class ShroudTextureHandle
 public:
 	TextureClass *m_p;
 };
-// Two-reference overload at retail 0x0011E670; the upstream shared
-// textureloader.h declares a different three-argument overload.
-class TextureLoader
-{
-public:
-	static void Validate_Texture_Size(unsigned &width, unsigned &height);
-};
 void BFME_DX8_Thread_Lock();
 bool BFME_DX8_Thread_Assert();
 class BFMEDX8DeviceLock {
@@ -80,6 +73,8 @@ class CameraClass;
 
 class DX8Wrapper { public:
  static IDirect3DDevice9 *_Get_D3D_Device8() { return reinterpret_cast<IDirect3DDevice9 *>(D3DDevice); }
+ // retail 0x0011E670 (BFME's DXWrapper::AdjustTextureSize, two references)
+ static void AdjustTextureSize(unsigned &width, unsigned &height);
 protected:
  static IDirect3DDevice8 *D3DDevice;
 };
@@ -230,7 +225,7 @@ void W3DShroud::init(WorldHeightMap *map,
 		dstTextureWidth = m_numCellsX + 2;
 		dstTextureHeight = m_numCellsY + 2;
 		BFMEDX8DeviceLock lock;
-		TextureLoader::Validate_Texture_Size(
+		DX8Wrapper::AdjustTextureSize(
 			(unsigned &)dstTextureWidth, (unsigned &)dstTextureHeight);
 
 	}
