@@ -100,7 +100,7 @@ void Rva005E1168::rva005E1168(int count)
 
 // Native5E118B..5E1193 loads the same subobject word8 then jumps5E105E.
 // Existing fastcall pin uses only ECX; original outer name remains unknown.
-void __fastcall rva005E118B(Rva005F8A7ESub *p)
+void __fastcall HideTimerOverlay(Rva005F8A7ESub *p)
 {
     reinterpret_cast<Rva005E1008 *>(p->m_ptr08)->hideTimerOverlay();
 }

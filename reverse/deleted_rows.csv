@@ -3936,3 +3936,4 @@ __ehhandler$?rva002DC52B@GameState@@QAEXXZ,0x00777E76,"Renamed to __ehhandler$?g
 ?rva006D3B30@EAStringC@@QBE_NPBD@Z,0x006D3B30,"Renamed to ?endsWith@EAStringC@@QBE_NPBD@Z by tools/rename.py (inferred)"
 ?rva00177F82@Rva00177860@@QAEXAAVRenderInfoClass@@@Z,0x00177F82,"Renamed to ?Render@Rva00177860@@QAEXAAVRenderInfoClass@@@Z by tools/rename.py (inferred)"
 __ehhandler$?rva00177F82@Rva00177860@@QAEXAAVRenderInfoClass@@@Z,0x00767FE5,"Renamed to __ehhandler$?Render@Rva00177860@@QAEXAAVRenderInfoClass@@@Z by tools/rename.py (inferred)"
+?rva005E118B@@YIXPAVRva005F8A7ESub@@@Z,0x005E118B,"Renamed to ?HideTimerOverlay@@YIXPAVRva005F8A7ESub@@@Z by tools/rename.py (inferred)"
