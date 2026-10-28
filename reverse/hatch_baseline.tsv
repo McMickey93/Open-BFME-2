@@ -3308,7 +3308,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruc
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdateCtor.cpp	?f10@AIBase10@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdateCtor.cpp	?f20@AIBase20@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdateCtor.cpp	?f24@AIBase24@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/WanderAIUpdate.cpp	?aiDoCommand@AICommandInterface@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdateParseLocomotorSet.cpp	?_CxxThrowException@@YGXPAX0@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate_AIUpdateInterface_privateFollowWaypointPathAsTeam.cpp	?playMoveVoiceResponse@BFMEMoveVoiceAI@@QAEXPBUCoord3D@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate_AIUpdateInterface_privateFollowWaypointPathAsTeamExact.cpp	?playMoveVoiceResponse@BFMEMoveVoiceAI@@QAEXPBUCoord3D@@@Z	1

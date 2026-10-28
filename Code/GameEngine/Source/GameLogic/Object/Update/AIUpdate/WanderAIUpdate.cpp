@@ -160,10 +160,14 @@ protected:
 	char m_pad14[0x20 - 0x14];
 };
 
+struct AICommandParms;
+
+// The constructor installs VA 0x00C47B88 at +0x20. Its slot 0 is
+// AIUpdateInterface::aiDoCommand (VA 0x006673F6), with the command parameter.
 class AICommandInterface
 {
 public:
-	virtual void aiDoCommand();
+	virtual void aiDoCommand(const AICommandParms *) = 0;
 	void aiMoveToPosition(const Coord3D *pos, CommandSourceType cmdSource);	// 0x0026C26D
 	void rva0026C2D9(Object *target, int maxShots, CommandSourceType cmdSource);	// 0x0026C2D9
 };
@@ -173,6 +177,7 @@ class AIUpdateInterface : public UpdateModule, public AICommandInterface, public
 public:
  AIUpdateInterface(Thing *, const ModuleData *);
 	virtual UpdateSleepTime update();	// 0x0026E267
+	virtual void aiDoCommand(const AICommandParms *);	// 0x002673F6
 };
 
 // Only the primary-vtable call at byte offset 0x1B8 is used here.
@@ -356,8 +361,3 @@ WanderAIUpdate::WanderAIUpdate(Thing *thing, const ModuleData *data)
 	: AIUpdateInterface(thing, data)
 {
 }
-
-// Placeholder virtuals this unit's vftables hold.  In retail each such slot
-// holds a rowed function; the vftable's address is proven by the vptr stores in
-// the matched destructors, so bind the placeholder to that row's name.
-#pragma comment(linker, "/alternatename:?aiDoCommand@AICommandInterface@@UAEXXZ=?aiDoCommand@AIUpdateInterface@@UAEXPBUAICommandParms@@@Z")
