@@ -1,30 +1,59 @@
-// cl: /DNDEBUG /MD /EHsc /Oy- /Ireference/shims/bfme2_thread /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib
-#include "thread.h"
+// cl: /DNDEBUG /MD /EHsc
+// platformsdk
 // ?rva00225492@BfmeDfe6e4@@QAEXXZ
 // Refresh the timestamp on its owning thread under the class critical section.
-// The thread ID uses WWLib's wrapper; time() binds its IAT slot directly.
+// The thread ID uses WWLib's wrapper; time() binds its IAT slot directly. The
+// scoped lock's destructor keeps retail's EBP frame under the region's /O1.
 
-#ifndef NULL
-#define NULL 0
-#endif
+#include <windows.h>
+#include <time.h>
 
-typedef long time_t;
-
-struct CRITICAL_SECTION
+class ThreadClass
 {
-    unsigned char data[24];
+public:
+	static unsigned int _Get_Current_Thread_ID();
 };
 
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION *section);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION *section);
-extern "C" __declspec(dllimport) long __cdecl time(time_t *tod);
+class WatchdogCriticalSection
+{
+public:
+	void enter()
+	{
+		EnterCriticalSection(&m_storage);
+	}
+
+	void leave()
+	{
+		LeaveCriticalSection(&m_storage);
+	}
+
+private:
+	CRITICAL_SECTION m_storage;
+};
+
+class ScopedWatchdogLock
+{
+public:
+	ScopedWatchdogLock(WatchdogCriticalSection &section) : m_section(section)
+	{
+		m_section.enter();
+	}
+
+	~ScopedWatchdogLock()
+	{
+		m_section.leave();
+	}
+
+private:
+	WatchdogCriticalSection &m_section;
+};
 
 class BfmeDfe6e4
 {
 public:
 	void rva00225492();
-    void rva00225460();
-    void rva0022546B();
+	void rva00225460();
+	void rva0022546B();
 
 private:
 	// Retail layout: owning thread id at +0x50, timestamp at +0x54,
@@ -33,8 +62,8 @@ private:
 	unsigned long m_threadId; // +0x50
 	long m_timestamp; // +0x54
 	unsigned char m_unreconstructed_58[0x6C - 0x58];
-	int m_refCount; // +0x6C
-	CRITICAL_SECTION m_cs; // +0x70
+	volatile int m_refCount; // +0x6C
+	WatchdogCriticalSection m_cs; // +0x70
 };
 
 // ?rva00225492@BfmeDfe6e4@@QAEXXZ
@@ -45,9 +74,8 @@ void BfmeDfe6e4::rva00225492()
 	}
 	time_t now;
 	time(&now);
-	EnterCriticalSection(&m_cs);
+	ScopedWatchdogLock lock(m_cs);
 	m_timestamp = now;
-	LeaveCriticalSection(&m_cs);
 }
 
 // ?rva00225460@BfmeDfe6e4@@QAEXXZ / ?rva0022546B@BfmeDfe6e4@@QAEXXZ, retail
@@ -55,10 +83,10 @@ void BfmeDfe6e4::rva00225492()
 // leave the class critical section at +0x70 through the IAT.
 void BfmeDfe6e4::rva00225460()
 {
-    EnterCriticalSection(&m_cs);
+	m_cs.enter();
 }
 
 void BfmeDfe6e4::rva0022546B()
 {
-    LeaveCriticalSection(&m_cs);
+	m_cs.leave();
 }
