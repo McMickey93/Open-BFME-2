@@ -31,11 +31,11 @@ struct ArmySwapSummaryView {
  int entryCount()const{return last44-first40;}
 };
 struct ArmySwapView {
- char unknown00[0x18];AsciiString name18;
+ char unknown00[0x18];AsciiString m_name;
  char unknown1C[0x54-0x1c];int player54;
  char unknown58[0x78-0x58];ArmySwapSummaryView *summary78;
  char unknown7C[0x88-0x7c];LivingWorldArmyIcon *audio88;
- bool hasName()const{return !((const StringBase<char> *)&name18)->isEmpty();}
+ bool hasName()const{return !((const StringBase<char> *)&m_name)->isEmpty();}
 };
 class LivingWorldManager {
 public:

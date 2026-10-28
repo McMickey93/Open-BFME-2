@@ -70,7 +70,7 @@ class Rva0048F472Outer
 {
 public:
 	char m_pad[0x254];
-	Rva0048F472Inner *m_ptr254;
+	Rva0048F472Inner *m_body;
 };
 
 void AssaultTransportAIUpdate::beginAssault( const Object *designatedTarget ) const
@@ -86,11 +86,11 @@ void AssaultTransportAIUpdate::beginAssault( const Object *designatedTarget ) co
 bool __stdcall Rva0048F472IsEqual(void *p)
 {
 	Rva0048F472Outer *o = (Rva0048F472Outer *)p;
-	Rva0048F472Inner *q = o->m_ptr254;
-	if (q != 0) {
-		float a = q->s4();
-		float b = q->s6();
-		if (a == b)
+	Rva0048F472Inner *body = o->m_body;
+	if (body != 0) {
+		float health = body->s4();
+		float maxHealth = body->s6();
+		if (health == maxHealth)
 			return true;
 	}
 	return false;

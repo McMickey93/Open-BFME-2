@@ -52,8 +52,8 @@ class ObjectCreationList
 {
 public:
 	void create(void *a1, void *a2, void *a3, int a4);
-	void create(void *a1, void *a2, void *a3);
-	void create(void *a1, void *a2, void *a3, void *a4, int a5);
+	void create(void *primary, void *secondary, void *lifetimeFrames);
+	void create(void *primaryObj, void *primary, void *secondary, void *a4, int a5);
 	void rva001F0410(void *a1, void *a2);
 	void rva001F0468(Rva001F0468Node *head);
 
@@ -91,14 +91,14 @@ void ObjectCreationList::rva001F0410(void *a1, void *a2)
 		(*i)->v4(a1, a2);
 }
 
-void __cdecl Rva004C309CForward(void *ocl, void *a1, void *a2, void *a3, void *a4, int a5)
+void __cdecl Rva004C309CForward(void *ocl, void *primaryObj, void *primary, void *secondary, void *a4, int a5)
 {
 	if (ocl == 0)
 		return;
-	((ObjectCreationList *)ocl)->create(a1, a2, a3, a4, a5);
+	((ObjectCreationList *)ocl)->create(primaryObj, primary, secondary, a4, a5);
 }
 
-void ObjectCreationList::create(void *a1, void *a2, void *a3, void *a4, int a5)
+void ObjectCreationList::create(void *primaryObj, void *primary, void *secondary, void *a4, int a5)
 {
 	ObjectCreationList *cur = this;
 	while (cur->m_flag0c != 0)
@@ -116,10 +116,10 @@ void ObjectCreationList::create(void *a1, void *a2, void *a3, void *a4, int a5)
 		break;
 	}
 	for (ObjectCreationNugget **i = cur->m_nuggets.begin(); i != cur->m_nuggets.end(); ++i)
-		(*i)->v1(a1, a2, a3, a4, a5);
+		(*i)->v1(primaryObj, primary, secondary, a4, a5);
 }
 
-void ObjectCreationList::create(void *a1, void *a2, void *a3)
+void ObjectCreationList::create(void *primary, void *secondary, void *lifetimeFrames)
 {
 	ObjectCreationList *cur = this;
 	while (cur->m_flag0c != 0)
@@ -137,7 +137,7 @@ void ObjectCreationList::create(void *a1, void *a2, void *a3)
 		break;
 	}
 	for (ObjectCreationNugget **i = cur->m_nuggets.begin(); i != cur->m_nuggets.end(); ++i)
-		(*i)->v2(a1, a2, a3);
+		(*i)->v2(primary, secondary, lifetimeFrames);
 }
 
 void ObjectCreationList::rva001F0468(Rva001F0468Node *head)

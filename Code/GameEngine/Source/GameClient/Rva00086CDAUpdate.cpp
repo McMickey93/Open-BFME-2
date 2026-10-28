@@ -18,10 +18,10 @@ void Rva00086761CameraMove::rva00086CDA()
 	if (m_20C <= m_208) {
 		float denom = (float)m_208;
 		float num = (float)m_20C;
-		float t = m_220(num / denom);
+		float factor = m_220(num / denom);
 		float start = m_210;
 		float range = m_214 - start;
-		float v = range * t + start;
+		float v = range * factor + start;
 		m_3C = v;
 	}
 	if (m_20C < m_208)

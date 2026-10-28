@@ -42,10 +42,10 @@ void Rva00086D73::rva00086D73()
 	if (m_230 <= m_22C) {
 		float denom = (float)m_22C;
 		float num = (float)m_230;
-		float t = m_24C(num / denom);
+		float factor = m_24C(num / denom);
 		float start = m_23C;
 		float range = m_240 - start;
-		float v = range * t + start;
+		float v = range * factor + start;
 		m_6C = v * 0.017453292f;
 	}
 	if (m_230 < m_22C)

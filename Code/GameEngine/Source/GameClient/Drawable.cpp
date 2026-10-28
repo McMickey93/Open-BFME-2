@@ -146,7 +146,7 @@ public:
 struct BfmeDrawableDrawObject
 {
 	unsigned char pad000[0x438];
-	unsigned char status438;
+	unsigned char m_privateStatus;
 };
 // Retail dispatches doDrawModule through vtable +0x2c; the donor DrawModule
 // header has a shorter base vtable, so use only the slot this body proves.
@@ -193,7 +193,7 @@ void Drawable::draw(View *view)
 	BfmeDrawableDrawFields *self = (BfmeDrawableDrawFields *)this;
 	if (!(self->tintStatus & 8))
 	{
-		if (self->object && (self->object->status438 & 1))
+		if (self->object && (self->object->m_privateStatus & 1))
 			self->secondMaterialPassOpacity = 0.0f;
 		else if (self->secondMaterialPassOpacity > VERY_TRANSPARENT_MATERIAL_PASS_OPACITY)
 			self->secondMaterialPassOpacity *= MATERIAL_PASS_OPACITY_FADE_SCALAR;

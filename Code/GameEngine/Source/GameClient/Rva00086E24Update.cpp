@@ -42,10 +42,10 @@ void Rva00086E24::rva00086E24()
 	if (m_1E4 <= m_1E0) {
 		float denom = (float)m_1E0;
 		float num = (float)m_1E4;
-		float t = m_1FC(num / denom);
+		float factor = m_1FC(num / denom);
 		float start = m_1EC;
 		float range = m_1F0 - start;
-		float v = range * t + start;
+		float v = range * factor + start;
 		m_70 = v;
 	}
 	if (m_1E4 < m_1E0)

@@ -42,10 +42,10 @@ void Rva00086EBD::rva00086EBD()
 	if (m_25C <= m_258) {
 		float denom = (float)m_258;
 		float num = (float)m_25C;
-		float t = m_274(num / denom);
+		float factor = m_274(num / denom);
 		float start = m_264;
 		float range = m_268 - start;
-		float v = range * t + start;
+		float v = range * factor + start;
 		m_30 = v;
 	}
 	if (m_25C < m_258)
