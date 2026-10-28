@@ -8,6 +8,7 @@
 #pragma optimize("y",on)
 #include <new>      // needed for placement new prototype
 #include <new>
+#pragma optimize("y",off)
 #include <windows.h>
 #include <string.h>
 #pragma intrinsic(strlen)
@@ -53,7 +54,6 @@ class DebugIOInterface;
 // Debug I/O class con (console window)
 //////////////////////////////////////////////////////////////////////////////
 
-#pragma optimize("y",off)
 
 int DebugIOCon::Read(char *buf, int maxchar)
 {

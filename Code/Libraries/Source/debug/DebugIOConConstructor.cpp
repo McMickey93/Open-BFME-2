@@ -16,6 +16,15 @@
 #include <windows.h>
 #include <string.h>
 
+// WinCon.h/WinUser.h prototypes the TU's sweep windows.h lacks
+extern "C" {
+__declspec(dllimport) DWORD WINAPI GetConsoleTitleA(LPSTR lpConsoleTitle, DWORD nSize);
+__declspec(dllimport) HWND WINAPI FindWindowA(LPCSTR lpClassName, LPCSTR lpWindowName);
+__declspec(dllimport) HMENU WINAPI GetSystemMenu(HWND hWnd, BOOL bRevert);
+__declspec(dllimport) BOOL WINAPI DeleteMenu(HMENU hMenu, UINT uPosition, UINT uFlags);
+__declspec(dllimport) BOOL WINAPI DrawMenuBar(HWND hWnd);
+}
+
 class DebugIOConBase
 {
 public:
