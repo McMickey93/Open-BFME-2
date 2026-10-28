@@ -7801,3 +7801,12 @@ provider selection into the next scheduled census. Nineteen whole-file donors
 remain separate: private declarations, STL definitions and one selected-provider
 conflict need verified prerequisites before further composition. Ten mixed
 files remain outside this batch. Runtime closure remains unverified.
+
+Follow-up after b4e4871d41: a declaration-only ObjectID copy_backward
+specialization preserves the donor's external call and removes all seven
+redundant helper emissions, clearing the new shadow definition divergence.
+The final TU retains 132 identical COMDAT digests, with no added COMDATs
+relative to the accepted originals. Its 47 rows and six EH graphs still
+verify; the original three constructor-binding findings remain.
+The final preview retains LINKS for 2,341 authored bytes; the refreshed
+outgoing audit has the same older-index and six-receipt limitations above.

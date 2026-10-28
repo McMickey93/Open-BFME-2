@@ -99,3 +99,28 @@ trial before assigning a cause. The Rva0040AF66 push_back donor is separately
 rejected by the link guard for changed selected __uninitialized_copy,
 __uninitialized_fill_n and _M_insert_overflow providers. Keep these donors
 separate until verified prerequisite changes make composition safe.
+
+## Follow-up after b4e4871d41
+
+The commit hook identifies the unselected ObjectID __copy_backward_aux copy
+above as a shadow definition divergence. An explicit declaration of the
+ObjectID copy_backward specialization preserves the linear-insert donor's
+external call and suppresses all seven redundant helper emissions. All 47
+merged rows, 12 literals, two empty-string references and six TU-local EH
+graphs still verify. Strict preparation and enforced converged-data checks
+pass. Code identity now reports only the three pre-existing constructor
+bindings; the new definition divergence is gone.
+
+Against the original accepted files, the final object retains the same 132
+COMDAT byte-and-relocation digests and suppresses the same 21 ScienceType
+copies, with no added or changed COMDAT. It defines 144 external symbols and
+has 56 unresolved external dependencies: the char allocator dependency is
+removed and the ScienceType vector constructor/destructor dependencies are
+added. The ObjectID copy_backward call remains external as in the original
+linear-insert donor. The original comparison above records the merge commit;
+the audit data also records this final comparison. Source paths and the
+tooling compatibility audit scope are unchanged.
+
+The final preview retains LINKS for 2,341 authored bytes. The refreshed
+outgoing audit remains INCONCLUSIVE for the same older index and the same
+six missing receipts listed above.

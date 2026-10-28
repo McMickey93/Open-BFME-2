@@ -308,6 +308,10 @@ template <class _InputIter, class _OutputIter>
 _OutputIter copy_backward(_InputIter __first, _InputIter __last,
 	_OutputIter __result);
 
+// Keep the linear-insert donor's external ObjectID helper call. The combined
+// includes otherwise instantiate an unused copy of its helper chain here.
+template <> ObjectID *copy_backward<ObjectID *, ObjectID *>(ObjectID *, ObjectID *, ObjectID *);
+
 template <class _RandomAccessIter, class _Tp, class _Compare>
 void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val,
 	_Compare __comp);
