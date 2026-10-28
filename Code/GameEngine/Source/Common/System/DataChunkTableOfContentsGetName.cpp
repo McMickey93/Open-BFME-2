@@ -14,12 +14,15 @@ typedef unsigned int UnsignedInt;
 
 #include "ascii_string.h"
 
-struct Mapping
+// Use the seed DataChunk.cpp view: getName only reads these three fields;
+// it neither constructs a Mapping nor dispatches through its virtual slot.
+class Mapping
 {
-	virtual ~Mapping();
-	Mapping *next; ///< retail +0x04
-	AsciiString name; ///< retail +0x08
-	UnsignedInt id; ///< retail +0x0C
+public:
+	virtual void *deleteInstance(int flags);
+	Mapping *m_next; ///< retail +0x04
+	AsciiString m_name; ///< retail +0x08
+	unsigned int m_id; ///< retail +0x0C
 };
 
 class DataChunkTableOfContents
@@ -33,10 +36,10 @@ private:
 
 AsciiString DataChunkTableOfContents::getName(UnsignedInt id)
 {
-	for (Mapping *mapping = m_list; mapping; mapping = mapping->next)
+	for (Mapping *mapping = m_list; mapping; mapping = mapping->m_next)
 	{
-		if (mapping->id == id)
-			return mapping->name;
+		if (mapping->m_id == id)
+			return mapping->m_name;
 	}
 	return AsciiString::TheEmptyString;
 }
