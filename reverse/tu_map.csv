@@ -34105,10 +34105,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004211CA,92,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,proposed,K,K=Rva004211CA,Code/GameEngine/Source/Common/Rva004211CADtor.cpp
 0x00421226,28,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,proposed,K,K=Rva004211CA,Code/GameEngine/Source/Common/Rva004211CADtor.cpp
 0x00421242,33,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,proposed,K,K=Rva00421242,Code/GameEngine/Source/Common/Rva00421242Ctor.cpp
-0x00421263,47,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,N,N=Code/GameEngine/Source/Common/LightPointSystem.cpp provisional,Code/GameEngine/Source/Common/Rva00421263Find.cpp
+0x00421263,47,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,N,N=Code/GameEngine/Source/Common/LightPointSystem.cpp provisional,Code/GameEngine/Source/Common/LightPointSystem.cpp
 0x00421292,82,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,C,C=0x00421263..0x004212E4 provisional,Code/GameEngine/Source/Common/Rva00421520Find.cpp
 0x004212E4,46,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,C,C=0x00421263..0x00421312 provisional,Code/GameEngine/Source/GameLogic/System/LightPointSystem.cpp
-0x00421312,128,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,C,C=0x00421263..0x00421392 provisional,Code/GameEngine/Source/Common/Rva00421242Dtor.cpp
+0x00421312,128,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,C,C=0x00421263..0x00421392 provisional,Code/GameEngine/Source/Common/LightPointSystem.cpp
 0x00421392,16,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,N,N=Code/GameEngine/Source/Common/LightPointSystem.cpp provisional,Code/GameEngine/Source/Common/GapBodiesGE20.cpp
 0x004213A2,57,code,,,-,,Code/GameEngine/Source/Common/Rva004213A2Assign.cpp
 0x004213DB,33,code,,,-,,Code/GameEngine/Source/Common/Rva004213DBAdd.cpp
@@ -77987,9 +77987,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00786F7C,11,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,proposed,P,P=0x004211CA@FuncInfo0x00934350,Code/GameEngine/Source/Common/Rva004211CADtor.cpp
 0x00786F87,11,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,proposed,P,P=0x004211CA@FuncInfo0x00934350,Code/GameEngine/Source/Common/Rva004211CADtor.cpp
 0x00786F92,10,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,proposed,P,P=0x004211CA@FuncInfo0x00934350,Code/GameEngine/Source/Common/Rva004211CADtor.cpp
-0x00786F9C,8,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,P,P=0x00421312@FuncInfo0x0093437C provisional,Code/GameEngine/Source/Common/Rva00421242Dtor.cpp
+0x00786F9C,8,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,P,P=0x00421312@FuncInfo0x0093437C provisional,Code/GameEngine/Source/Common/LightPointSystem.cpp
 0x00786FA4,11,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,P,P=0x00421312@FuncInfo0x0093437C provisional,Code/gen_small/uw_gen_010.cpp
-0x00786FAF,10,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,P,P=0x00421312@FuncInfo0x0093437C provisional,Code/GameEngine/Source/Common/Rva00421242Dtor.cpp
+0x00786FAF,10,code,Code/GameEngine/Source/Common/LightPointSystem.cpp,approved,P,P=0x00421312@FuncInfo0x0093437C provisional,Code/GameEngine/Source/Common/LightPointSystem.cpp
 0x00786FB9,8,code,Code/GameEngine/Source/GameLogic/System/LightPointSystem.cpp,proposed,P,P=0x00421572@FuncInfo0x009343A0,Code/GameEngine/Source/GameLogic/System/LightPointSystem.cpp
 0x00786FC1,10,code,Code/GameEngine/Source/GameLogic/System/LightPointSystem.cpp,proposed,P,P=0x00421572@FuncInfo0x009343A0,Code/GameEngine/Source/GameLogic/System/LightPointSystem.cpp
 0x00786FCB,8,code,Code/Libraries/Source/WWVegas/WWLib/LightSubPoint.cpp,proposed,P,P=0x00421A84@FuncInfo0x009343CC,Code/GameEngine/Source/Common/Rva00425CE2Ctor.cpp
