@@ -11326,7 +11326,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x008578F0,72,.rdata,vtable,??_7Rva004B48D3@@6BUpgradeDerivedBaseC@@@,,literal,??_7Rva004B48D3@@6BUpgradeDerivedBaseC@@@;??_7StatusBitsUpgrade@@6BUpgradeMux@@@,0,2
 0x00857938,76,.rdata,vtable,??_7Rva004B48D3@@6BUpgradeDerivedBaseA@@@,,literal,??_7Rva004B48D3@@6BUpgradeDerivedBaseA@@@;??_7StatusBitsUpgrade@@6BBehaviorModule@@@,0,2
 0x00857984,48,.rdata,global,_s_statusBitsTable,Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataGetterBuildFieldParse.cpp,owned,,1,1
-0x008579B4,348,.rdata,global,?g_00C579B4@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeIfEldestKindofModuleDataParse.cpp,owned,,1,1
+0x008579B4,348,.rdata,global,?g_00C579B4@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeIfEldestKindof.cpp,owned,,1,1
 0x00857B10,72,.rdata,vtable,??_7DoCommandUpgrade@@6BUpgradeMux@@@,,literal,??_7DoCommandUpgrade@@6BUpgradeMux@@@;_s_secondary10@Code/GameEngine/Source/GameLogic/Object/Upgrade/DoCommandUpgradeCtor.cpp,1,2
 0x00857B58,108,.rdata,vtable,??_7DoCommandUpgrade@@6BBehaviorModule@@@,,literal,??_7DoCommandUpgrade@@6BBehaviorModule@@@;_s_vtable@Code/GameEngine/Source/GameLogic/Object/Upgrade/DoCommandUpgradeCtor.cpp,1,2
 0x00857BC4,52,.rdata,global,_s_doCommandTable,Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataGetterBuildFieldParse.cpp,owned,,1,1
