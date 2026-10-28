@@ -15,6 +15,7 @@ class INI
 public:
 	const char *getNextSubToken(const char *expected);
 	int scanInt(const char *token);
+	const char *getNextToken(const char *delimiters=0);
 };
 
 struct Rva0046133BWayPoint
@@ -59,6 +60,7 @@ class DynamicPortalBehaviourData
 {
 public:
 	static void parseWayPoint(INI *ini, void *instance, void *store, const void *userData);
+	static void parseLink(INI*,void*,void*,const void*);
 };
 
 void DynamicPortalBehaviourData::parseWayPoint(INI *ini, void *, void *store, const void *)

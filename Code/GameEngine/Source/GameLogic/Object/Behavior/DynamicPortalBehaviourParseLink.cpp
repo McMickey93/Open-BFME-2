@@ -6,7 +6,13 @@
 // C free keeps that, spelled as the first copies of the vector<long> helpers in
 // link order spell it.
 #include <vector>
-class INI {public: const char *getNextToken(const char *delimiters=0); const char *getNextSubToken(const char*); int scanInt(const char*);};
+class INI
+{
+public:
+	const char *getNextSubToken(const char *expected);
+	int scanInt(const char *token);
+	const char *getNextToken(const char *delimiters=0);
+};
 // Retail 0x004616B1 (252 B, cdecl): the Link line parser of DynamicPortalBehaviour's
 // module data. The target vector is read from the argument before the link is built
 // (the empty allocator temporary then takes a byte of the dead argument slot).
@@ -16,7 +22,12 @@ class INI {public: const char *getNextToken(const char *delimiters=0); const cha
 class DynamicPortalLink : public _STL::vector<long> {public: DynamicPortalLink(const _STL::allocator<long>&a) :_STL::vector<long>(a){} };
 template<>void _STL::vector<long>::push_back(const long&);
 template<>void _STL::vector<DynamicPortalLink>::push_back(const DynamicPortalLink&);
-class DynamicPortalBehaviourData {public:static void parseLink(INI*,void*,void*,const void*);};
+class DynamicPortalBehaviourData
+{
+public:
+	static void parseWayPoint(INI *ini, void *instance, void *store, const void *userData);
+	static void parseLink(INI*,void*,void*,const void*);
+};
 void DynamicPortalBehaviourData::parseLink(INI *ini,void*,void *store,const void*) {
  _STL::vector<DynamicPortalLink> *links = static_cast<_STL::vector<DynamicPortalLink>*>(store);
  DynamicPortalLink link((_STL::allocator<long>()));
