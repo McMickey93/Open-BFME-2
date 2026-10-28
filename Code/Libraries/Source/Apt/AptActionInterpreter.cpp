@@ -17,6 +17,10 @@
         g_bfmeAptAssertAtE17734(test, \
             "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptActionInterpreter.cpp", line); \
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak(); } } while (0)
+#pragma intrinsic(__debugbreak)
+#pragma comment(linker, "/alternatename:?rva006291C0@@YAKPBDPAXH@Z=?ji_006291c0@@YAXXZ")
+#pragma comment(linker, "/alternatename:?rva00629B6E@@YAHH@Z=?ji_00629b6e@@YAXXZ")
+#pragma intrinsic(__debugbreak, _ReadWriteBarrier)
 
 // ?rva006ff980@@YAXPAVAptValue@@AAVEAStringC@@H@Z
 // retail 0x006FF980..0x006FFC2A (682 bytes), cdecl, recursive.
@@ -404,91 +408,58 @@ extern "C" void Rva006FD040(void *first, void *last, void *comp)
 	BfmeAux006FC670(first, last, 0, comp);
 }
 
+int rva00629B6E(int c);
+
+unsigned long rva006291C0(const char *text, void *end, int base);
+
+extern "C" void _ReadWriteBarrier(void);
+
 // tu-skeleton: 0x006FC670 2512B _BfmeAux006FC670 -- matched in Code/Libraries/Source/Apt/AptActionInterpreterParseStream.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/Apt/AptActionInterpreter.cpp
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/Rva006FD040Siblings.cpp
 
-// tu-skeleton: 0x006FD060 149B ?Rva006FD060Forward@@YAXPAX000@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva006FD060Forward.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD100 454B ?rva006FD100@@YAEHHPAVEAStringC@@PAHPAD@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD2D0 47B ?callback006FD2D0@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD300 49B ?rva006FD300@AptActionInterpreter@@QAEPAXPAUAptActionSetup@@@Z -- matched in Code/Libraries/Source/Apt/AptInterpreterLightPrepare.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD340 171B ?rva006FD340@Rva006FD340Object@@QAEXPADPAX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva006FD340Cluster.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD3F0 203B ?_concatAsStrings@@YAPAVAptString@@PAVAptValue@@0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD4C0 233B ?rva006FD4C0@@YAXPAVEAStringC@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva006FD340Cluster.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD5B0 117B ?Rva006FD5B0@@YAEDD@Z -- matched in Code/Libraries/Source/Apt/Rva006FD5B0HexPair.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD630 199B ?rva006FD630@@YAXPAVEAStringC@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva006FD340Cluster.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD700 133B ?urlDecode@AptActionInterpreter@@AAEPBDPBDAAVEAStringC@@1@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD790 50B ?bfmeHasPrefix8C5680@@YGEPBD@Z -- matched in Code/Libraries/Source/EA/Apt/Bfme5PrefixCheck8C5680.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD7D0 121B ?doFSCommand@AptActionInterpreter@@QAEHPBD0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD850 35B ?_FunctionAptActionEnd@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD880 35B ?_FunctionAptActionToggleQuality@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD8B0 43B ?_FunctionAptActionStopDragMovie@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD8E0 35B ?_FunctionAptActionStringLessThan@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD910 35B ?_FunctionAptActionMBLength@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD940 35B ?_FunctionAptActionCharToAscii@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD970 35B ?_FunctionAptActionMBSubString@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD9A0 35B ?_FunctionAptActionMBCharToAscii@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FD9D0 35B ?_FunctionAptActionMBAsciiToChar@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FDA00 9B ?_FunctionAptActionReturn@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FDA10 35B ?_FunctionAptActionBitURShift@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FDA40 490B ?_FunctionAptActionGetUrl@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers_Unresolved__FunctionAptActionCloneSprite.cpp (not merged yet)
 
-// tu-skeleton: 0x006FDC30 33B ?_FunctionAptActionDefineDictionary@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FDC60 218B ?isObjectOfType@AptActionInterpreter@@SA_NPAVAptValue@@0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FE460 93B ??1Rva006FE460@@UAE@XZ -- matched in Code/Libraries/Source/Apt/Rva006FE460Dtor.cpp (not merged yet)
 
-// tu-skeleton: 0x006FE610 199B ?stackPushIndirect@AptActionInterpreter@@QAEXQAVAptValue@@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FE980 49B ??0AptActionInterpreter@@QAE@XZ -- matched in Code/Libraries/Source/Apt/AptInterpreterCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x006FE9C0 298B ??1AptActionInterpreter@@QAE@XZ -- matched in Code/Libraries/Source/Apt/AptActionInterpreterDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x006FEAF0 87B ?rva006FEAF0@AptActionInterpreter@@QAEXABUAptInitParmsT@@@Z -- matched in Code/Libraries/Source/Apt/AptInterpreterCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x006FEB50 171B ?rva006FEB50@AptActionInterpreter@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006FEB50Finish.cpp (not merged yet)
 
-// tu-skeleton: 0x006FEC00 251B ?rva006FEC00@@YAEHHPAVEAStringC@@PAH0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FED00 739B ?setVariable@AptActionInterpreter@@QAE_NPAVAptValue@@0PBVEAStringC@@0HHH@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterSetVariable.cpp (not merged yet)
 
-// tu-skeleton: 0x006FEFF0 1034B ?callback006FEFF0@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FF400 256B ?callback006FF400@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
-// tu-skeleton: 0x006FF500 198B ?Rva006FF500@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptMathCallbacksBFME2.cpp (not merged yet)
 
-// tu-skeleton: 0x006FF5D0 134B ?rva006ff5d0@@YAPAVAptValue@@PAUAptActionInterpreter@@H@Z -- matched in Code/Libraries/Source/Apt/Rva006ff5d0Cluster.cpp (not merged yet)
 
-// tu-skeleton: 0x006FF660 231B ?callback006FF660@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/Rva006ff5d0Cluster.cpp (not merged yet)
 
-// tu-skeleton: 0x006FF750 241B ?callback006FF750@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/Rva006ff5d0Cluster.cpp (not merged yet)
 
-// tu-skeleton: 0x006FF850 302B ?rva006ff850@@YAPAVAptValue@@PAUAptActionInterpreter@@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/Apt/AptActionInterpreter.cpp
 
@@ -792,6 +763,128 @@ AptObject *AptActionInterpreter::_createObject(AptValue *context, AptValue *with
 // Constructor execution is guarded by the fifth formal argument.
 
 // Each pool new expression retains its constructor-failure sized delete.
+
+// ---- from Code/Libraries/Source/WWVegas/WWLib/Rva006FD060Forward.cpp
+
+void __cdecl Rva006FD060Forward(void *a1, void *a2, void *a3, void *a4)
+{
+	if (!a1) {
+		g_bfmeAptAssertAtE17734("aActionStream", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptActionInterpreter.cpp", 0x379);
+		if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
+	}
+	if (!a2) {
+		g_bfmeAptAssertAtE17734("pBase", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptActionInterpreter.cpp", 0x37A);
+		if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
+	}
+	if (!a3) {
+		g_bfmeAptAssertAtE17734("aConstantFile", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptActionInterpreter.cpp", 0x37B);
+		if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
+	}
+	BfmeAux006FC670(a1, a2, a3, a4);
+}
+
+// tu-skeleton: 0x006FD100 454B ?rva006FD100@@YAEHHPAVEAStringC@@PAHPAD@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD2D0 47B ?callback006FD2D0@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD300 49B ?rva006FD300@AptActionInterpreter@@QAEPAXPAUAptActionSetup@@@Z -- matched in Code/Libraries/Source/Apt/AptInterpreterLightPrepare.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD340 171B ?rva006FD340@Rva006FD340Object@@QAEXPADPAX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva006FD340Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD3F0 203B ?_concatAsStrings@@YAPAVAptString@@PAVAptValue@@0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD4C0 233B ?rva006FD4C0@@YAXPAVEAStringC@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva006FD340Cluster.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/Apt/Rva006FD5B0HexPair.cpp
+
+unsigned char Rva006FD5B0(char hi, char lo)
+{
+	if (!rva00629B6E(hi))
+		return lo;
+	if (!rva00629B6E(lo)) {
+		g_bfmeAptAssertAtE17734("isxdigit(b)", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptActionInterpreter.cpp", 0xbed);
+		if (g_bfmeAptBreakOnAssertAtDDC01C)
+			__debugbreak();
+	}
+	char buf[3];
+	buf[0] = hi;
+	buf[1] = lo;
+	buf[2] = 0;
+	return (unsigned char)rva006291C0(buf, 0, 16);
+}
+
+// Each retail call in this body reads an address the ledger already carries
+// under the rowed name below. Bind the donor spelling to that owner so one
+// address keeps one definition and the unit links.
+//   0x006291C0 reads ?ji_006291c0@@YAXXZ
+
+//   0x00629B6E reads ?ji_00629b6e@@YAXXZ
+
+// tu-skeleton: 0x006FD630 199B ?rva006FD630@@YAXPAVEAStringC@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva006FD340Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD700 133B ?urlDecode@AptActionInterpreter@@AAEPBDPBDAAVEAStringC@@1@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD790 50B ?bfmeHasPrefix8C5680@@YGEPBD@Z -- matched in Code/Libraries/Source/EA/Apt/Bfme5PrefixCheck8C5680.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD7D0 121B ?doFSCommand@AptActionInterpreter@@QAEHPBD0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD850 35B ?_FunctionAptActionEnd@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD880 35B ?_FunctionAptActionToggleQuality@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD8B0 43B ?_FunctionAptActionStopDragMovie@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD8E0 35B ?_FunctionAptActionStringLessThan@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD910 35B ?_FunctionAptActionMBLength@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD940 35B ?_FunctionAptActionCharToAscii@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD970 35B ?_FunctionAptActionMBSubString@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD9A0 35B ?_FunctionAptActionMBCharToAscii@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FD9D0 35B ?_FunctionAptActionMBAsciiToChar@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FDA00 9B ?_FunctionAptActionReturn@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FDA10 35B ?_FunctionAptActionBitURShift@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FDA40 490B ?_FunctionAptActionGetUrl@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers_Unresolved__FunctionAptActionCloneSprite.cpp (not merged yet)
+
+// tu-skeleton: 0x006FDC30 33B ?_FunctionAptActionDefineDictionary@AptActionInterpreter@@CAXQAU1@QAULocalContextT@1@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FDC60 218B ?isObjectOfType@AptActionInterpreter@@SA_NPAVAptValue@@0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FE460 93B ??1Rva006FE460@@UAE@XZ -- matched in Code/Libraries/Source/Apt/Rva006FE460Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x006FE610 199B ?stackPushIndirect@AptActionInterpreter@@QAEXQAVAptValue@@@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FE980 49B ??0AptActionInterpreter@@QAE@XZ -- matched in Code/Libraries/Source/Apt/AptInterpreterCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x006FE9C0 298B ??1AptActionInterpreter@@QAE@XZ -- matched in Code/Libraries/Source/Apt/AptActionInterpreterDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x006FEAF0 87B ?rva006FEAF0@AptActionInterpreter@@QAEXABUAptInitParmsT@@@Z -- matched in Code/Libraries/Source/Apt/AptInterpreterCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x006FEB50 171B ?rva006FEB50@AptActionInterpreter@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006FEB50Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x006FEC00 251B ?rva006FEC00@@YAEHHPAVEAStringC@@PAH0@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FED00 739B ?setVariable@AptActionInterpreter@@QAE_NPAVAptValue@@0PBVEAStringC@@0HHH@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterSetVariable.cpp (not merged yet)
+
+// tu-skeleton: 0x006FEFF0 1034B ?callback006FEFF0@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FF400 256B ?callback006FF400@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
+
+// tu-skeleton: 0x006FF500 198B ?Rva006FF500@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/AptMathCallbacksBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x006FF5D0 134B ?rva006ff5d0@@YAPAVAptValue@@PAUAptActionInterpreter@@H@Z -- matched in Code/Libraries/Source/Apt/Rva006ff5d0Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006FF660 231B ?callback006FF660@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/Rva006ff5d0Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006FF750 241B ?callback006FF750@@YAPAVAptValue@@PAV1@H@Z -- matched in Code/Libraries/Source/Apt/Rva006ff5d0Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006FF850 302B ?rva006ff850@@YAPAVAptValue@@PAUAptActionInterpreter@@H@Z -- matched in Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp (not merged yet)
 
 // tu-skeleton: 0x006FFC30 174B ?rva006ffc30@@YAXPAVAptValue@@AAVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/Rva006ffc30Cluster.cpp (not merged yet)
 

@@ -3703,6 +3703,8 @@ alternatename	Code/Libraries/Source/ATL/atlimage.cpp	??1Bitmap@Gdiplus@@UAE@XZ	1
 alternatename	Code/Libraries/Source/ATL/atlimage.cpp	?GdiplusShutdown@Gdiplus@@YGXK@Z	1
 alternatename	Code/Libraries/Source/ATL/atlimage.cpp	?GdiplusStartup@Gdiplus@@YG?AW4Status@1@PAKPBUGdiplusStartupInput@1@PAUGdiplusStartupOutput@1@@Z	1
 alternatename	Code/Libraries/Source/Apt/Apt.cpp	?AptPushStaticData@@YAPAXXZ	1
+alternatename	Code/Libraries/Source/Apt/AptActionInterpreter.cpp	?rva006291C0@@YAKPBDPAXH@Z	1
+alternatename	Code/Libraries/Source/Apt/AptActionInterpreter.cpp	?rva00629B6E@@YAHH@Z	1
 alternatename	Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp	??0AptPrototype@@QAE@XZ	1
 alternatename	Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp	?Append@EAStringC@@QAEAAV1@QBDI@Z	1
 alternatename	Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp	?AptPushStaticData@@YAPAXXZ	1
@@ -3908,8 +3910,6 @@ alternatename	Code/Libraries/Source/Apt/AptValueShutdownBFME2.cpp	?rva0070A8B0@R
 alternatename	Code/Libraries/Source/Apt/Rva006CFCD0Apt.cpp	?rva006CFCD0@AptCIH@@QBE_NXZ	1
 alternatename	Code/Libraries/Source/Apt/Rva006F6A50Cluster.cpp	?rva006F7AC0@Rva006F7AC0@@QBE_NXZ	1
 alternatename	Code/Libraries/Source/Apt/Rva006FC1D0Ctor.cpp	??1Rva006D6360@@UAE@XZ	1
-alternatename	Code/Libraries/Source/Apt/Rva006FD5B0HexPair.cpp	?rva006291C0@@YAKPBDPAXH@Z	1
-alternatename	Code/Libraries/Source/Apt/Rva006FD5B0HexPair.cpp	?rva00629B6E@@YAHH@Z	1
 alternatename	Code/Libraries/Source/Benchmark/emfloat.cpp	?StartStopwatch@@YAKXZ	1
 alternatename	Code/Libraries/Source/Benchmark/nbench1.c	?ji_00879190@@YAXXZ	1
 alternatename	Code/Libraries/Source/Benchmark/nbench1.c	?ji_008793a0@@YAXXZ	1
