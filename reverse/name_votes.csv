@@ -12093,3 +12093,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate
 Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp|local|Rva0048F472IsEqual|a,241c12c723f26a3998aa224a,drz-k3,drz-k3-n10c-14,w-077d7aeb666b,2026-10-28
 Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp|local|Rva0048F472IsEqual|b,922b4d42bcdfdc45aeec6eb9,drz-k3,drz-k3-n10c-14,w-077d7aeb666b,2026-10-28
 Code/GameEngine/Source/Common/DamageFX.cpp|local|DamageFX::clear|v,8c02e70b7c74bfd14dc9c1cd,drz-k3,drz-k3-n10c-18,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameClient/Rva00086CDAUpdate.cpp|local|Rva00086761CameraMove::rva00086CDA|t,08e97ff84b788cd0598813ac,drz-k4,drz-k4-n10d-10,w-855a0f400af4,2026-10-28
+Code/GameEngine/Source/GameClient/Rva00086EBDUpdate.cpp|local|Rva00086EBD::rva00086EBD|t,d55efc2c90e34f25087738eb,drz-k4,drz-k4-n10d-11,w-855a0f400af4,2026-10-28
+Code/GameEngine/Source/GameClient/Rva00086E24Update.cpp|local|Rva00086E24::rva00086E24|t,1bf80f6034cedd8b4c76fd9d,drz-k4,drz-k4-n10d-12,w-855a0f400af4,2026-10-28
+Code/GameEngine/Source/GameClient/Rva00086D73Update.cpp|local|Rva00086D73::rva00086D73|t,d7b5551ca9b91d17518e9d2f,drz-k4,drz-k4-n10d-13,w-855a0f400af4,2026-10-28
