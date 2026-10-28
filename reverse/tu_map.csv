@@ -21732,7 +21732,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002BF391,354,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,N,N=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldSetActive.cpp
 0x002BF4F3,189,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF5B0 provisional,Code/Libraries/Source/WWVegas/WW3D2/Rva002BF4F3.cpp
 0x002BF5B0,107,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF61B provisional,Code/Libraries/Source/WWVegas/WW3D2/Rva002BF4F3.cpp
-0x002BF61B,55,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF652 provisional,Code/Libraries/Source/WWVegas/WW3D2/Rva002BF61BGroundPlacement.cpp
+0x002BF61B,55,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF652 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x002BF652,53,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF687 provisional,Code/GameEngine/Source/Common/Rva002BF6A7Forward.cpp
 0x002BF687,16,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF697 provisional,Code/GameEngine/Source/Common/Rva002BF6A7Forward.cpp
 0x002BF697,16,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF6A7 provisional,Code/GameEngine/Source/Common/Rva002BF6A7Forward.cpp
@@ -21740,7 +21740,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002BF6B7,31,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF6D6 provisional,Code/GameEngine/Source/GameClient/Rva002BF6B7Erase.cpp
 0x002BF6D6,57,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF70F provisional,Code/Libraries/Source/WWVegas/WWLib/Rva002BF6D6Dtor.cpp
 0x002BF70F,38,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF735 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_e16_resize_byvalue_000b0693.cpp
-0x002BF735,37,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF75A provisional,Code/GameEngine/Source/GameClient/Rva002BF735NewNode.cpp
+0x002BF735,37,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF75A provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x002BF75A,28,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF776 provisional,Code/GameEngine/Source/GameClient/Rva002BF75AFree.cpp
 0x002BF776,5,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF77B provisional,Code/Libraries/Source/WWVegas/WWLib/Rva002BF6D6Dtor.cpp
 0x002BF77B,49,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BF7AC provisional,Code/GameEngine/Source/GameClient/Rva002BF77BDispatch.cpp
@@ -21754,26 +21754,26 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002BFA4D,57,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BFA86 provisional,Code/Libraries/Source/WWVegas/WWLib/OwnedBucketTableDtorsO1.cpp
 0x002BFA86,80,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BFAD6 provisional,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BFA86.cpp
 0x002BFAD6,68,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BFB1A provisional,Code/GameEngine/Source/GameClient/Rva002BFAD6Insert.cpp
-0x002BFB1A,14,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BFB28 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva002BFB1AClear.cpp
+0x002BFB1A,14,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BFB28 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x002BFB28,5,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BF391..0x002BFB2D provisional,Code/Libraries/Source/WWVegas/WWLib/OwnedBucketTableDtorsO1.cpp
 0x002BFB2D,195,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,N,N=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldDtor.cpp
 0x002BFBF0,7,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFBF7 provisional,Code/GameEngine/Source/Common/GlobalFloatGetters.cpp
 0x002BFBF7,87,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFC4E provisional,Code/GameEngine/Source/Common/Rva002BFBF7.cpp
 0x002BFC4E,11,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFC59 provisional,Code/GameEngine/Source/Common/RvaEmbeddedMemberForwarders.cpp
 0x002BFC59,156,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFCF5 provisional,Code/GameEngine/Source/GameClient/GUI/AptPlayer.cpp
-0x002BFCF5,30,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFD13 provisional,Code/GameEngine/Source/Common/RvaPairCopyCallFamily.cpp
+0x002BFCF5,30,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFD13 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x002BFD13,64,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFD53 provisional,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva002BFD13.cpp
 0x002BFD53,28,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFD6F provisional,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp
 0x002BFD6F,63,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFB2D..0x002BFDAE provisional,Code/GameEngine/Source/GameLogic/Object/Rva002BFD6FReset.cpp
 0x002BFDAE,56,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,U,N=Code/GameEngine/Source/GameClient/GUI/LivingWorld.cpp W=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp provisional,Code/GameEngine/Source/GameClient/GUI/Rva002BFDAEFind.cpp
 0x002BFDE6,372,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002BFF5A provisional,Code/GameEngine/Source/GameClient/GUI/Rva002BFDE6Picker.cpp
-0x002BFF5A,69,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002BFF9F provisional,Code/GameEngine/Source/Common/Rva002BFF5A.cpp
-0x002BFF9F,53,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002BFFD4 provisional,Code/GameEngine/Source/Common/Rva002BFF5A.cpp
-0x002BFFD4,123,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002C004F provisional,Code/GameEngine/Source/Common/Rva002BFF5A.cpp
+0x002BFF5A,69,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002BFF9F provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x002BFF9F,53,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002BFFD4 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x002BFFD4,123,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002C004F provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x002C004F,114,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002C00C1 provisional,Code/GameEngine/Source/Common/Rva002C004FErase.cpp
 0x002C00C1,31,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002C00E0 provisional,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002C00C1.cpp
 0x002C00E0,64,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,C,C=0x002BFDAE..0x002C0120 provisional,Code/GameEngine/Source/Common/Rva005CBB0AWrap.cpp
-0x002C0120,250,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,N,N=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp W=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldCtor.cpp
+0x002C0120,250,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,N,N=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp W=Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x002C021A,64,code,,,-,,Code/GameEngine/Source/Common/Rva002C021AStep.cpp
 0x002C025A,33,code,,,-,,Code/GameEngine/Source/Common/Rva002C025AForward.cpp
 0x002C027B,23,code,,,-,,Code/GameEngine/Source/Common/Rva002C027BVirt.cpp
@@ -71396,18 +71396,18 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00776A9D,25,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002BFC59@FuncInfo0x0091E410 provisional,Code/GameEngine/Source/GameClient/GUI/AptPlayer.cpp
 0x00776AB6,25,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002BFC59@FuncInfo0x0091E410 provisional,Code/GameEngine/Source/GameClient/GUI/AptPlayer.cpp
 0x00776ACF,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002BFC59@FuncInfo0x0091E410 provisional,Code/GameEngine/Source/GameClient/GUI/AptPlayer.cpp
-0x00776AD9,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002BFFD4@FuncInfo0x0091E434 provisional,Code/GameEngine/Source/Common/Rva002BFF5A.cpp
-0x00776AE3,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002BFFD4@FuncInfo0x0091E434 provisional,Code/GameEngine/Source/Common/Rva002BFF5A.cpp
+0x00776AD9,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002BFFD4@FuncInfo0x0091E434 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x00776AE3,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002BFFD4@FuncInfo0x0091E434 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x00776AED,8,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C004F@FuncInfo0x0091E458 provisional,Code/GameEngine/Source/Common/Rva002C004FErase.cpp
 0x00776AF5,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C004F@FuncInfo0x0091E458 provisional,Code/GameEngine/Source/Common/Rva002C004FErase.cpp
 0x00776AFF,8,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C00E0@FuncInfo0x0091E47C provisional,Code/GameEngine/Source/Common/Rva005CBB0AWrap.cpp
 0x00776B07,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C00E0@FuncInfo0x0091E47C provisional,Code/GameEngine/Source/Common/Rva005CBB0AWrap.cpp
-0x00776B11,11,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldCtor.cpp
-0x00776B1C,8,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldCtor.cpp
-0x00776B24,11,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldCtor.cpp
-0x00776B2F,14,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldCtor.cpp
-0x00776B3D,14,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldCtor.cpp
-0x00776B4B,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldCtor.cpp
+0x00776B11,11,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x00776B1C,8,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x00776B24,11,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x00776B2F,14,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x00776B3D,14,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
+0x00776B4B,10,code,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp,approved,P,P=0x002C0120@FuncInfo0x0091E4C0 provisional,Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp
 0x00776B55,10,code,Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp,approved,P,P=0x002C0A0F@FuncInfo0x0091E4E4,Code/GameEngine/Source/GameClient/GUI/GameWindowManager_init.cpp
 0x00776B5F,10,code,Code/GameEngine/Source/GameClient/GUI/GameWindowManager.cpp,approved,P,P=0x002C0A0F@FuncInfo0x0091E4E4,Code/GameEngine/Source/GameClient/GUI/GameWindowManager_init.cpp
 0x00776B69,11,code,Code/GameEngine/Source/GameClient/GUI/TabWindowManagerView.cpp,proposed,P,P=0x002C1485@FuncInfo0x0091E508,Code/GameEngine/Source/GameClient/GUI/GameWindowManager_gogoGadgetSlider.cpp

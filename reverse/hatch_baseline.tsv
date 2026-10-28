@@ -2611,7 +2611,6 @@ alternatename	Code/GameEngine/Source/Common/RvaDeletingDtorBatch04.cpp	??1Rva002
 alternatename	Code/GameEngine/Source/Common/RvaDeletingDtorBatch04.cpp	??1Rva002C5F8E@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/RvaDeletingDtorBatch04.cpp	??1Rva002D28FF@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/RvaDeletingDtorBatch04.cpp	??1Rva002D339F@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/RvaPairCopyCallFamily.cpp	?helper@Rva002BFCF5@@AAEXPBUTwoInts002BFCF5@@@Z	1
 alternatename	Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp	??1Rva002076E7Map@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp	??1Rva0020779EMap@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp	??1Rva00256461Member@@QAE@XZ	1
@@ -2914,6 +2913,7 @@ alternatename	Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicIn
 alternatename	Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIRegionDetailsStructuresPage.cpp	?slot02@Impl@RegionDetailsStructuresPage@StrategicInGameUI@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIRegionDetailsStructuresPage.cpp	?slot03@Impl@RegionDetailsStructuresPage@StrategicInGameUI@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIRegionDetailsStructuresPage.cpp	?slot04@Impl@RegionDetailsStructuresPage@StrategicInGameUI@@UAEXXZ	1
+alternatename	Code/GameEngine/Source/GameClient/LivingWorld/LivingWorld.cpp	?helper@Rva002BFCF5@@AAEXPBUTwoInts002BFCF5@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldIconSubObjectCtor.cpp	?rva003FCCC9@Rva003FB65C@@QAEXE@Z	1
 alternatename	Code/GameEngine/Source/GameClient/MapMetaDataCopy.cpp	??1Rva00078460Elem@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameClient/MapMetaDataCopyDeferred.cpp	??0TreeHintOpaque00304573@@QAE@ABU0@@Z	1
