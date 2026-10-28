@@ -662,8 +662,13 @@ def upstream_files(layout, ledger):
         d, b = os.path.split((r.get("source") or "").lower())
         if b.endswith((".c", ".cpp")):
             stems[d].add(os.path.splitext(b)[0])
+    candidates = upstream_candidates(layout, ledger)
+    # The parent file on disk counts too: a parent whose rows left the ledger (or a
+    # ledger that never rowed it) must not turn its carve-out into a whole file.
+    for d in sorted({os.path.split(s)[0] for s in candidates}):
+        stems[d.lower()] |= set(upstream_siblings(layout, d))
     out = {}
-    for s, lib in sorted(upstream_candidates(layout, ledger).items()):
+    for s, lib in sorted(candidates.items()):
         try:
             text = (layout.root / s).read_text(encoding="latin-1")
         except OSError:
@@ -674,6 +679,15 @@ def upstream_files(layout, ledger):
         if not carved or b in {m.group(1).lower() for m in NAMED_FILE.finditer(text)}:
             out[s] = (lib, c_definitions(text))
     return out
+
+
+def upstream_siblings(layout, d):
+    """Lower-cased stems of the .c/.cpp files in directory `d` (a repo path) on disk."""
+    try:
+        names = os.listdir(layout.root / d)
+    except OSError:
+        return []
+    return sorted(os.path.splitext(n.lower())[0] for n in names if n.lower().endswith((".c", ".cpp")))
 
 
 def upstream_tus(files):
@@ -1277,10 +1291,13 @@ L_KEY = "vendored-upstream:Code"
 def upstream_digest(layout):
     """sha256 over the path and CRLF-normalised text of every file `upstream_files` reads (L)."""
     h = hashlib.sha256()
-    for s in sorted(upstream_candidates(layout, read_csv(layout.path("functions.csv")))):
+    candidates = sorted(upstream_candidates(layout, read_csv(layout.path("functions.csv"))))
+    for s in candidates:
         p = layout.root / s
         text = p.read_bytes().replace(b"\r\n", b"\n") if p.is_file() else b"missing"
         h.update(s.encode() + b"\0" + text + b"\0")
+    for d in sorted({os.path.split(s)[0] for s in candidates}):   # upstream_files' carve-out test
+        h.update(d.encode() + b"\0" + "\0".join(upstream_siblings(layout, d)).encode() + b"\0")
     return h.hexdigest()
 
 

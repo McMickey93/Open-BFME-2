@@ -1511,6 +1511,13 @@ def check_canonical(ctx, kind, evidence_kind, evidence, new_name, new_word, rva,
         raise Refusal(f"canonical:{evidence_kind} is not machine-checkable")
 
 
+def provisional_file(ctx, path):
+    """True when tu_map approves rows for the TU at `path` only under a provisional name
+    (tu_map.provisional_name) and never under a canonical one."""
+    rows = [r for r in ctx.dicts(TU_MAP) if path and r.get("tu") == path]
+    return any(tu_map.provisional_name(r) for r in rows) and not any(tu_map.canonical_tu(r) for r in rows)
+
+
 def check_basis(ctx, kind, basis, evidence, old_name, old_word, rva, *, new_name=None, new_word=None,
                 source=None):
     """Refuse a basis that may not replace `old_name`: an inferred name needs
@@ -1528,7 +1535,9 @@ def check_basis(ctx, kind, basis, evidence, old_name, old_word, rva, *, new_name
         return which
     new_name = new_name or new_word
     new_word = new_word or new_name
-    placeholder = is_placeholder(old_word, kind)
+    # A file named after a provisional TU (tu_map approved it for merging by grouping
+    # alone) carries no name evidence: it is as replaceable as a placeholder.
+    placeholder = is_placeholder(old_word, kind) or (kind == "file" and provisional_file(ctx, old_name))
     recorded = recorded_basis(ctx, old_name) or recorded_basis(ctx, old_word)
     if which == "inferred" and not placeholder:
         raise Refusal(f"{old_word} is a real name, not a placeholder; an inferred name may replace "

@@ -580,3 +580,19 @@ def test_a_provisional_tu_path_is_no_retail_tu_refusal(tree):
     _git(tree, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qam", "provisional")
     why = dict(rf.candidates(ctx_of(tree), basis="mechanical")[1])
     assert "approved retail TU" not in why.get(f"{D}/ApprRva0040E000.cpp", "")
+
+
+def test_a_file_named_after_a_provisional_tu_is_replaceable_like_a_placeholder(tree):
+    """A merge names its file after a provisional TU (grouping, no name evidence): a
+    better name may replace it even though the path reads like a real name."""
+    old, new = f"{D}/RealName.cpp", f"{D}/Real.cpp"
+    with pytest.raises(Refusal, match="real name"):
+        rename.check_basis(ctx_of(tree), "file", "inferred", "mechanical:rows", old, "RealName", None,
+                           new_name=new, new_word="Real", source=old)
+    (tree / "reverse/tu_map.csv").write_text(
+        TU_MAP + f"0x00411000,6,code,{old},approved,N,N={old} provisional,{old}\n")
+    _git(tree, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qam", "provisional")
+    ctx = ctx_of(tree)
+    assert rename.provisional_file(ctx, old) and not rename.provisional_file(ctx, f"{D}/ApprRva0040E000.cpp")
+    assert rename.check_basis(ctx, "file", "inferred", "mechanical:rows", old, "RealName", None,
+                              new_name=new, new_word="Real", source=old) == "inferred"

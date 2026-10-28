@@ -391,7 +391,12 @@ def row_route(row, direct, mapping, fresh, zh, bfme1, wb, cat):
     for item in mapping.get(rva, ()):
         own_anchors = tu_map.anchors(item.get("evidence", ""))
         approved = tu_map.approved_tu(mapping, item) if fresh else None
-        if approved:
+        if approved and tu_map.provisional_name(item):
+            # Approved for merging by grouping alone: its TU path is no proof of the
+            # original filename, so it routes as a hint, never as target evidence.
+            hints.add(approved)
+            evidence.append("provisional-tu-map: " + item["evidence"])
+        elif approved:
             facts.add(approved)
             evidence.append("approved-tu-map: " + item["evidence"])
         elif item.get("tu") and (item["tu"].casefold() in cat.entries

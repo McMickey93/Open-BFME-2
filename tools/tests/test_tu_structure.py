@@ -971,6 +971,18 @@ def test_a_carved_file_and_header_inline_libraries_name_no_tu(tmp_path, monkeypa
         assert "L=" not in out[rva]["evidence"] and out[rva]["confidence"] != "approved", hex(rva)
 
 
+def test_a_carved_file_stays_carved_when_its_parent_has_no_ledger_rows(tmp_path, monkeypatch):
+    """The parent on disk decides, not the ledger's coverage of it (review 2026-10-28)."""
+    files = {f"{LUA}/liolib.c": _lua("liolib.c", "int io_a (lua_State *L) {\n}\n"),
+             f"{LUA}/liolib_bfme1.c": _lua("liolib.c", "int io_b (lua_State *L) {\n}\nint io_c (lua_State *L) {\n}\n")}
+    out = _vendored(tmp_path, monkeypatch, files, [
+        ("_io_b", 0x1010, f"{LUA}/liolib_bfme1.c", "vendored=lua-4.0.1"),
+        ("_io_c", 0x1020, f"{LUA}/liolib_bfme1.c", "vendored=lua-4.0.1")])
+    assert not tu_map.upstream_files(tu_map.Layout(tmp_path), tu_map.read_csv(tmp_path / "reverse/functions.csv"))
+    for rva in (0x1010, 0x1020):
+        assert "L=" not in out[rva]["evidence"] and out[rva]["confidence"] != "approved", hex(rva)
+
+
 def test_l_anchors_nothing_while_retail_order_disagrees(tmp_path, monkeypatch):
     files = {f"{LUA}/{n}.c": _lua(f"{n}.c", "".join(f"void {n}_{i} (void) {{\n}}\n" for i in range(3)))
              for n in ("la", "lb")}

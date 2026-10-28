@@ -142,6 +142,15 @@ def test_conflicting_target_facts_cannot_be_voted_away():
     assert route["conflict"] and not route["target"]
 
 
+def test_provisional_name_approval_routes_as_a_hint_never_as_target_evidence():
+    row = dict(rva=0x1000, name="?f@Box@@QAEXXZ")
+    mapping = {0x1000: [dict(tu=HOME, confidence="approved", evidence=f"N={HOME} provisional", rva="0x1000")]}
+    route = layout.row_route(row, {}, mapping, True, {}, {}, {}, layout.Catalogue())
+    assert route["strength"] != "target"
+    assert any("provisional-tu-map" in e for e in route["evidence"])
+    assert not any(e.startswith("approved-tu-map") for e in route["evidence"])
+
+
 def test_stale_map_never_has_target_strength():
     row = dict(rva=0x1000, name="?f@Box@@QAEXXZ")
     mapping = {0x1000: [dict(tu=HOME, confidence="approved", evidence=f"F={HOME}", rva="0x1000")]}
