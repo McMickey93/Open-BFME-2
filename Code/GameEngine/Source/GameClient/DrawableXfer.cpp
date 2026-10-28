@@ -177,15 +177,12 @@ public:
 class AudioManager;
 extern AudioManager *TheAudio;
 
-// class-gate: allow Coord3D the bone array is built and torn down through BFME 2's out-of-line empty Coord3D constructor and destructor (the eh vector iterators push 0x0047A6A9 and 0x000B3FD0); the canonical data-only header cannot declare them; same three floats
-struct Coord3D
-{
-	Coord3D();
-	~Coord3D();
-	float x;
-	float y;
-	float z;
-};
+// The bone array is built and torn down through BFME 2's out-of-line empty
+// Coord3D constructor and destructor (the eh vector iterators push 0x0047A6A9
+// and 0x000B3FD0).
+#define COORD3D_VIEW_EXTERN_CTOR
+#define COORD3D_VIEW_EXTERN_DTOR
+#include "../../../Libraries/Include/Lib/Coord3DCtorView.h"
 
 class Waypoint
 {

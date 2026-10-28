@@ -4570,7 +4570,6 @@ class_gate_allow	Code/GameEngine/Source/Common/parseAutoResolveBodyDefinition.cp
 class_gate_allow	Code/GameEngine/Source/Common/parseAutoResolveBodyDefinition.cpp	Rva00418A12Node	1
 class_gate_allow	Code/GameEngine/Source/Common/parseAutoResolveBodyDefinition.cpp	Rva00418A12Result	1
 class_gate_allow	Code/GameEngine/Source/Common/parseAutoResolveBodyDefinition.cpp	Rva00418A8EHost	1
-class_gate_allow	Code/GameEngine/Source/GameClient/DrawableXfer.cpp	Coord3D	1
 class_gate_allow	Code/GameEngine/Source/GameClient/GUI/ControlBar/Rva0031DCF0ControlBarDtor.cpp	ControlBarSchemeManager	1
 class_gate_allow	Code/GameEngine/Source/GameClient/MapUtil_ParseObjectsDataChunk_Thunk_Rva00302b06.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/GameClient/MessageStream/SelectionXlatTranslateGameMessage.cpp	ICoord2D	1
