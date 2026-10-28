@@ -5801,7 +5801,7 @@ Remaining: the two slides still need canonical coordinate/private animation decl
 
 ### LINK-120: W3DPropDraw's vftables disagree between units and with retail
 
-**Status: Open. Updated: 2026-10-26; inspected revision: `60d0fc0a50`.**
+**Status: Open. Updated: 2026-10-28; inspected revision: `c64f680554`.**
 
 - **Evidence / affected units:**
   - `W3DPropDrawModuleDataCtor.cpp` (33 B) has one blocker: `??_7W3DPropDrawModuleData@@6B@`
@@ -5836,6 +5836,17 @@ Remaining: the two slides still need canonical coordinate/private animation decl
   Then give the ctor unit the same W3DPropDrawModuleData declaration. The ZH Module.h
   include chain in `W3DPropDraw.cpp` already defines `ModuleData`, so this means
   replacing that chain, not adding a header. No source was changed.
+- **2026-10-28 verification:** all five seed rows and all eight rows in the three
+  clean donors still byte-match. The ordinary preview against census index
+  `14dc3d2467` (2026-10-28 02:44) retains the three seed blockers above. A fresh
+  Draw-directory naming report and the current in-memory TU map produce a
+  15-row plan; ordinary `tu_skeleton.py --merge ... --dry-run` accepts no donor.
+  LinkGuard refuses the otherwise compiling PoolKey donor because it currently
+  links and the composition would not. The module-data ctor also still lacks
+  `m_distanceFog` in the seed view; React still collides on `Coord3D`. Those
+  declaration prerequisites do not clear the provider conflicts. No merge or
+  source edit was retained. Handoff:
+  `reverse/attempt_support/propdraw-link-contracts-20261028.md`.
 - **Clearance:** none.
 - **Census confirmation:** not claimed.
 
