@@ -12088,3 +12088,8 @@ Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp|param|
 Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp|param|ObjectCreationList::create#3|a1,d4a391bc521103becde1aaea,drz-k2,drz-k2-n10b-18,w-ded32b2e2c5e,2026-10-28
 Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp|param|ObjectCreationList::create#3|a2,54aa08c459e492ea76b09cdd,drz-k2,drz-k2-n10b-18,w-ded32b2e2c5e,2026-10-28
 Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp|param|ObjectCreationList::create#3|a3,74062da13b33fde034b6f2f1,drz-k2,drz-k2-n10b-18,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp|member|Rva0048F472Outer|m_ptr254,5b5d541e145a81068414d0aa,drz-k3,drz-k3-n10c-14,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp|local|Rva0048F472IsEqual|q,1cf83fb5a4be52973c10d8ea,drz-k3,drz-k3-n10c-14,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp|local|Rva0048F472IsEqual|a,241c12c723f26a3998aa224a,drz-k3,drz-k3-n10c-14,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdate.cpp|local|Rva0048F472IsEqual|b,922b4d42bcdfdc45aeec6eb9,drz-k3,drz-k3-n10c-14,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/Common/DamageFX.cpp|local|DamageFX::clear|v,8c02e70b7c74bfd14dc9c1cd,drz-k3,drz-k3-n10c-18,w-077d7aeb666b,2026-10-28
