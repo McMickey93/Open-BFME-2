@@ -19033,7 +19033,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FF0A8,8,.data,global,?$S1@?1??getConstructButtonHelp@LivingWorldBuildingTemplate@@QBE?AVUnicodeString@@PAVRva003F1C22@@@Z@4IA,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildingTemplateGetConstructButtonHelp.cpp,owned,,1,8
 0x009FF0B0,4,.data,global,?TheLivingWorldPlayerTemplateStore@@3PAVRva002E18C3Lookup@@A,Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva002BA8F1AddPlayer.cpp,owned,,1,8
 0x009FF0B4,4,.data,global,_s_rva007AE49E,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x009FF0B8,4,.data,global,?g_00DFF0B8@@3PAURva002E36D5Node@@A,Code/GameEngine/Source/Common/Rva002E3714Unlink.cpp,provisional,?g_00DFF0B8@@3HA;?g_00DFF0B8@@3PAURva002E36D5Node@@A,1,4
+0x009FF0B8,4,.data,global,?g_00DFF0B8@@3PAURva002E36D5Node@@A,Code/GameEngine/Source/GameLogic/Map/PolygonTrigger.cpp,provisional,?g_00DFF0B8@@3HA;?g_00DFF0B8@@3PAURva002E36D5Node@@A,1,4
 0x009FF0BC,4,.data,global,?TheGameText@@3PAVGameTextInterface@@A,Code/GameEngine/Source/GameClient/GameTextStringLookUpLess.cpp,owned,,1,448
 0x009FF0C0,4,.data,global,_s_rva007AE4DD,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x009FF0C4,12,.data,global,?TheTranslatedString@@3VUnicodeString@@A,,unowned,?TheTranslatedString@@3VUnicodeString@@A;?g_Va00DFF0C4@@3IA,0,3
