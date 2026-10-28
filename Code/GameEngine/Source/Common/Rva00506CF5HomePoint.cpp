@@ -18,25 +18,14 @@
 // Length2); that inline shape is what keeps retail's (x*x + y*y) + z*z
 // association and register order. The returns copy result member-wise
 // at each return site, so Coord3D here carries a user copy constructor.
-// class-gate: allow Coord3D proved codegen view: retail copies the returned Coord3D member-wise (movss) separately at each of the three return sites through a user copy constructor; the canonical data-only header's trivial copy merges the returns into one block move (657 bytes instead of 756)
 #define __PLACEMENT_VEC_NEW_INLINE
 #include <vector>
 #include "ascii_string.h"
 
-struct Coord3DBase
-{
-	float x;
-	float y;
-	float z;
-};
-
-struct Coord3D : public Coord3DBase
-{
- Coord3D(){}
- Coord3D(const Coord3D &pos){x=pos.x;y=pos.y;z=pos.z;}
-	bool equals(const Coord3DBase &that) const;
-	__declspec(dllimport) __forceinline void set(const Coord3DBase *that) { x = that->x; y = that->y; z = that->z; }
-};
+#define COORD3D_VIEW_INLINE
+#define COORD3D_VIEW_INLINE_ONLY
+#include "../../../Libraries/Include/Lib/Coord3DCtorView.h"
+#include "../../../Libraries/Include/Lib/Coord3DBase.h"
 
 extern Coord3DBase Gen00DD0870;
 
@@ -94,7 +83,7 @@ class Rva0040D701ArmySummary;
 class ArmySummary {public:bool getSpawnPositions(int,Coord3D*,Coord3D*,bool);};
 class Rva002BA8F1Logic {public:void rva002B323C(_STL::vector<Rva0040D701ArmySummary*>*,int);};
 Coord3D Rva00506CF5(void *owner,Coord3D *point) {
- Coord3D result;result.set(&Gen00DD0870);
+ Coord3D result;result.set((const Coord3D *)&Gen00DD0870);
  if(((TacticGameLogicView*)TheGameLogic)->mode==3) {
   GameSlot*slot=Rva00506C82Find((Rva00506C82Arg*)owner);
   if(slot) {
@@ -120,7 +109,7 @@ Coord3D Rva00506CF5(void *owner,Coord3D *point) {
     AsciiString name;name.format("Player_%d_Start",i+1);
     Waypoint*way=Rva00506CC3FindWaypoint(name);
     if(way){
-     float distance=HomeVector3::Distance2(HomeVector3(way->getLocation()),HomeVector3(position));
+     float distance=HomeVector3::Distance2(HomeVector3(way->getLocation()),HomeVector3(asBase(position)));
      if(!best||distance<bestDistance){best=way;bestDistance=distance;}
     }
    }
