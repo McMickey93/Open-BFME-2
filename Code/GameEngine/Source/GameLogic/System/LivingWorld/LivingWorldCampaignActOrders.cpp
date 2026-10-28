@@ -27,13 +27,34 @@ struct BfmePairWI
 class Rva00564DF2NameView { public: AsciiString rva00564DF2() const; };
 class Anim2DTemplate { public: AsciiString getName() const; };
 class Rva00564E0D { public: AsciiString rva00564E0D(); };
-class CDDrive { public: virtual AsciiString getDiskName(); };
 class Rva00564BF6 { public: BfmePairWI rva00564BF6(); };
 class AsciiStringWI;
 class Rva002B8767 { public: void rva002B8767(BfmePairWI,const AsciiStringWI&,bool,const AsciiStringWI&); };
 class Rva002B778A { public: void rva002B778A(const AsciiString&); };
 class GameWindow;
 class AptCampaignReview { public: void rva000D1407(const char*,void*,GameWindow*); };
+
+// ?get@Rva00564E28AsciiField@@QBE?AVAsciiString@@XZ, RVA 0x00564E28 size 27.
+// Target: a by-value AsciiString copy of +0x18; its only caller is
+// rva00564EC0 below, which applies it to the act's 0x28-byte entries, and the
+// body sits in this unit's run between 0x00564E0D and 0x00564E43. It was rowed
+// as the Zero Hour donor shape CDDrive::getDiskName, a virtual that no vftable
+// or absolute pointer in the image references; that name stays a fold alias.
+// The entry field's real name is unknown, so the class is address-derived.
+class Rva00564E28AsciiField
+{
+public:
+	AsciiString get() const;
+
+private:
+	char m_pad[0x18];
+	AsciiString m_value; // +0x18
+};
+
+AsciiString Rva00564E28AsciiField::get() const
+{
+	return m_value;
+}
 
 // One 0x28-byte entry of the act's +0x14 list.
 class LivingWorldCampaignActEntry
@@ -85,14 +106,14 @@ void LivingWorldCampaignAct::rva00564EC0()
 	for (UnsignedInt i = 0; i < m_entries.size(); ++i)
 	{
 		LivingWorldCampaignActEntry &entry = m_entries[i];
-		if (((CDDrive*)&entry)->CDDrive::getDiskName().getLength() != 0)
+		if (((const Rva00564E28AsciiField*)&entry)->get().getLength() != 0)
 		{
 			if (entry.getFlag1D())
 				((Rva002B778A*)TheLivingWorldLogic)->rva002B778A(((const Anim2DTemplate*)&entry)->getName());
 			else
 				((Rva002B8767*)TheLivingWorldLogic)->rva002B8767(
 					((Rva00564BF6*)&entry)->rva00564BF6(),
-					(const AsciiStringWI&)((CDDrive*)&entry)->CDDrive::getDiskName(),
+					(const AsciiStringWI&)((const Rva00564E28AsciiField*)&entry)->get(),
 					entry.getFlag1C(),
 					(const AsciiStringWI&)((const Anim2DTemplate*)&entry)->getName());
 		}

@@ -149,6 +149,7 @@ public:
 	void rva002D9ADC(void);
 	void generateFilename(void);
 	AsciiString getFilename(void);
+	AsciiString getAttackFilename(void) const;
 	void generatePlayInfo(void);
 	void internalXfer(Xfer *xfer, const void *version);
 	void rva002DAAD5(void);
@@ -418,20 +419,27 @@ AsciiString AudioEventRTS::getFilename(void)
 	return m_filenameToLoad;
 }
 
+// ?getAttackFilename@AudioEventRTS@@QBE?AVAsciiString@@XZ, RVA 0x002D9BA6 size 27.
+// Target: a by-value AsciiString copy of +0x1C (m_attackName, written by
+// generatePlayInfo below). Its callers are this unit's PP_Attack case and
+// MilesAudioManager::getAudioLengthMS 0x000549A3, which sums the lengths of
+// 0x002D9BA6, getFilename 0x002DA838 and 0x002D9BC1 in that order, as Zero
+// Hour's getAudioLengthMS sums getAttackFilename, getFilename and
+// getDecayFilename. Donor: ZH AudioEventRTS.cpp defines getAttackFilename as
+// `return m_attackName;`. The same 27 bytes are also called by NetPacket and
+// BFMEConnectionManager helpers through the CDDrive::getPath fold alias.
+AsciiString AudioEventRTS::getAttackFilename(void) const
+{
+	return m_attackName;
+}
+
 // ?rva002DA867@AudioEventRTS@@QAE?AVAsciiString@@XZ, RVA 0x002DA867 size 72.
 // Returns the string for the current play portion (+0x74 PP_Attack/Sound/Decay/Done).
 // Evidence: abuts rowed getFilename 0x002DA838 in this TU; switch on +0x74 matches
-// PP enum; case 1 calls rowed getFilename 0x002DA838; case 0 forwards to the rowed
-// +0x1C getter rowed as ?getPath@CDDrive@@UAE?AVAsciiString@@XZ (same offset as
-// m_attackName); case 2 forwards to the rowed +0x20 getter
+// PP enum; case 0 calls getAttackFilename 0x002D9BA6; case 1 calls rowed
+// getFilename 0x002DA838; case 2 forwards to the rowed +0x20 getter
 // ?get@Rva002D9BC1AsciiField@@QBE?AVAsciiString@@XZ (same offset as m_decayName);
 // default copies AsciiString::TheEmptyString. Callees called by their row names.
-class CDDrive
-{
-public:
-	virtual AsciiString getPath(void);
-};
-
 class Rva002D9BC1AsciiField
 {
 public:
@@ -443,7 +451,7 @@ AsciiString AudioEventRTS::rva002DA867(void)
 	switch (m_portionToPlayNext)
 	{
 	case PP_Attack:
-		return ((CDDrive *)this)->CDDrive::getPath();
+		return getAttackFilename();
 	case PP_Sound:
 		return getFilename();
 	case PP_Decay:
