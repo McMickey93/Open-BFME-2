@@ -1,4 +1,12 @@
-// cl: /O1 /Ob2 /EHsc /DNDEBUG /MD /Ireference/shims/bfme2_ascii
+// cl: /O1 /Ob2 /EHs /DNDEBUG /MD /Ireference/shims/bfme2_ascii
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 #include "../../Include/Common/Rva00041004Lock.h"
 //
@@ -143,7 +151,6 @@ Rva005FBBEE::Rva005FBBEE(unsigned level, const AsciiString &name)
 // words+C/+10 and word14 are unknown; no vector payload or full retail
 // allocation size is inferred. EH states distinguish both cleanup steps.
 // The call-only member destructor view uses the rowed reset's complete ABI.
-void free(void*);
 extern "C" const void *const vtbl_00BC6F20[];
 #pragma comment(linker, "/alternatename:_vtbl_00BC6F20=??_7Rva0007DF07@@6B@")
 class __declspec(novtable) Rva005FCF0EBase {

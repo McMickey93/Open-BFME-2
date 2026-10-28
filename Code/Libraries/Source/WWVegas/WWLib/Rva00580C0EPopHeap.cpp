@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /EHsc /MD
+// cl: /O1 /G7 /EHs /MD
 // ?Rva00580C0E@@YAXPAPAX00PAXVRva000795C1Record@@0@Z @0x00580C0E 97B: cdecl heap pop helper.
 // Stores the front element into the result slot, then descends the heap through the
 // rowed adjust worker 0x00580AAC with the comparator copied by value. The comparator
@@ -7,7 +7,12 @@
 // Rva005810B6Sort.cpp.
 void __cdecl Rva00580AAC(void **, int, int, void *, class Rva000795C1Record);
 
-void __cdecl free(void *);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva000795C1Record
 {

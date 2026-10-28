@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata
+// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHs /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata
 // ??1Object@@MAE@XZ retail 0x00299CE4 (962 bytes; pinned placeholder
 // ??1Rva00299CE4@@UAE@XZ).
 //
@@ -27,12 +27,18 @@
 // canonical view (GameLogicObjectLookupView.h), which needs a
 // sendObjectDestroyed declaration (0x0023CD67).
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 #define BFME_SNAPSHOT_NAME_SLOT
 #include "Common/Snapshot.h"
 #include "../../Common/GameLogicObjectLookupView.h"
 
-void free(void *);
 void operator delete[](void *);
 
 class Team;

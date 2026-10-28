@@ -1,4 +1,4 @@
-// cl: /EHsc /MD
+// cl: /EHs /MD
 //
 // ?unguardedLinearInsert@@YAXPAPAXPAXVRva000795C1Record@@@Z @0x00580776 88B
 // Unguarded linear insert for the 0x00580xxx introsort family: shifts while
@@ -6,7 +6,13 @@
 // 16-byte Rva000795C1Record teardown (cmp frame+14 / free) and EH prolog
 // match Rva005810B6Sort. Evidence: packet loop with lea esi [edi-4], two
 // rowed callees plus pin, callers 0x00580A2B 0x00580A7C, prev/next rows.
-void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

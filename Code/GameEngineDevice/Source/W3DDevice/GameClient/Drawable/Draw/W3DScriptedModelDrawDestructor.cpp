@@ -5,7 +5,7 @@
 // deleting-dtor wrapper 0x000C8617 (W3DDrawModuleDeletingDtors.cpp) whose
 // vtable slot calls this body. Landed from the T1 farm bank plus the
 // sweepeq4 equal-arm on the class-template read; 507/507 exact.
-// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata
+// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHs /Ireference/shims/bfme2_ascii /Ireference/shims/moduledata
 // ??0W3DScriptedModelDraw@@QAE@PAVThing@@PBVModuleData@@@Z retail 0x000C0DD8
 // Bank507: native C79C9..C7BC4 destructor with constructor-proven layout.
 // Constructor evidence originally: 1065 bytes. W3DScriptedModelDraw (Thing* ModuleData*) constructor: called
@@ -26,6 +26,14 @@
 // +0x13C +0x140) to the drawable (+0xE4 +0xE8 +0xEC); take the drawable's
 // transform (getTransformMatrix 0x0027628E) or identity; +0xBC from
 // 0x000B2BA3. Field names are not asserted.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 #define BFME_SNAPSHOT_NAME_SLOT
 #include "Common/Snapshot.h"
@@ -57,7 +65,6 @@ struct BfmeStringRecord000B757D
  
 }
 ;
-void __cdecl free(void*);
 struct Rva000B2BE5Src;
 class Rva000BB694 
 {

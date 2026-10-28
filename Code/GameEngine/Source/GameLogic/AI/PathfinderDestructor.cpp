@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /MD /EHsc /arch:SSE /Ireference/shims/moduledata /Ireference/shims/bfme2_ascii /ICode/Libraries/Include/Lib
+// cl: /O1 /G7 /MD /EHs /arch:SSE /Ireference/shims/moduledata /Ireference/shims/bfme2_ascii /ICode/Libraries/Include/Lib
 // Semantic source lead: BF1 2f243e26d PathfinderDestructor.cpp, with target
 // offsets from172B2F213F..2F21EB and the native unwind table. Snapshot +4,
 // sixteen40B layers +60, zone-manager accessed prefix +460,64 AsciiStrings
@@ -8,9 +8,15 @@
 // The target primary tableC05408 has seven entries (BF1/ZH has five); their
 // opaque declarations describe slot count only, not recovered signatures.
 #define BFME_SNAPSHOT_NAME_SLOT
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Common/Snapshot.h"
 #include "ascii_string.h"
-void free(void*);
 class PathfindLayer {public: ~PathfindLayer(); private:char storage[0x40];};
 class PathfindZoneManager {public: ~PathfindZoneManager(); private:char storage[0x1BA54];};
 class Rva002EE9B7 {public: ~Rva002EE9B7(); private:char storage[8];};

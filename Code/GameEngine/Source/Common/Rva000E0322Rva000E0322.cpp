@@ -21,7 +21,13 @@ struct Rva000E007DPair
 // routine accesses no receiver fields; reuse its established Armor provider
 // spelling without identifying this table as Armor. Vector/free spellings
 // name their verified providers; new-head reference preserves native stores.
-void __cdecl free(void*);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 class Rva000E0322;
 namespace _STL {
 template<class T>class allocator {public:allocator(){} allocator(const allocator&){} };

@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHsc
+// cl: /DNDEBUG /MD /EHs
 // ?rva0047971C@AICommandInterface@@QAEXABVRva0035149F@@PAVObject@@W4CommandSourceType@@@Z @ 0x0047971C (115B).
 // AICommandInterface wrapper cmd 0x0A: builds AICommandParms block via
 // 0x00351BD0 plus vector assign 0x0035149F into +0x20 plus m_obj store
@@ -8,6 +8,14 @@
 // follows AICommandInterfaceAttackCommands precedent.
 typedef int Int;
 typedef float Real;
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 class Object;
 enum AICommandType
@@ -18,7 +26,6 @@ enum CommandSourceType
 {
 	CMD_FROM_PLAYER = 0
 };
-void __cdecl free(void *block);
 class Rva0035149F
 {
 public:

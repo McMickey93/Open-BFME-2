@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc /Ireference/shims/moduledata /DBFME_SNAPSHOT_NAME_SLOT
+// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHs /Ireference/shims/moduledata /DBFME_SNAPSHOT_NAME_SLOT
 //
 // ??1Rva001F9D98@@UAE@XZ retail 0x001F9D98..0x001F9EA7 (271 bytes EH).
 // The destructor of FXParticleSystem::ParticleSystemManager: the class whose
@@ -16,9 +16,16 @@
 // map (0x001F8D70) the +0x80 reference the +0x68 handle (0x0004CBC0) and
 // the +0x4C list (0x001F81EC); the Snapshot base is inline and the
 // SubsystemInterface base dtor 0x001B4E74 is rowed.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Common/Snapshot.h"
 
-void __cdecl free(void *block);
 void BFME_DX8_Thread_Lock();
 bool BFME_DX8_Thread_Assert();
 

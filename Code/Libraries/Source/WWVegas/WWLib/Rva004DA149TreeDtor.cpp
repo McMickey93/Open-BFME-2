@@ -7,7 +7,13 @@
 // base-storage split. Pointer0 and count4 come from target clear evidence;
 // original application tree and payload identities remain unknown.
 // EHs retains retail's unwind-state transition before freeing the header.
-void free(void*);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 class Rva004D9B4B {public:void rva004D9FF2();};
 class Rva004DA149Storage {
 protected:void *head;unsigned int count;
@@ -15,4 +21,3 @@ public:__forceinline ~Rva004DA149Storage(){if(head) free(head);}
 };
 class Rva004DA149Tree:public Rva004DA149Storage {public:~Rva004DA149Tree();};
 Rva004DA149Tree::~Rva004DA149Tree(){reinterpret_cast<Rva004D9B4B*>(this)->rva004D9FF2();}
-#pragma comment(linker, "/alternatename:?free@@YAXPAX@Z=_free")

@@ -1,8 +1,14 @@
-// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs
 // ??1CastleBehavior@@UAE@XZ @0x0039857D 225B evidence: pinned name; vtable VA 0x00C1A780 slot0 deleting dtor caller 0x00399357; donor open-bfme-1 CastleBehaviorDestructorThunk.cpp; callees rowed 0x00397E50 0x003968D3 0x00036410 0x002F0B52 0x00030830 0x00455050
-#include "ascii_string.h"
 
-void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
+#include "ascii_string.h"
 
 class Rva00397E50
 {

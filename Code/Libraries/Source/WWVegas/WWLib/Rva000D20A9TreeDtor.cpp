@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /MD /EHsc
+// cl: /O1 /G7 /arch:SSE /MD /EHs
 // Native D3945..D397D is 56B; the old 76B Ghidra span includes the
 // already-rowed 20B iterator helper at D397D. The clear call at D395A
 // identifies the existing Rva000D20A9 tree owner. Native EH state zero
@@ -6,7 +6,14 @@
 // The owning-head view preserves the established 8B head/count layout.
 // C++ free is the existing game-allocator spelling at30830; its global
 // binding lives in GameMemoryFree.cpp and retains the native EH transition.
-void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva000D3945Head
 {
     void *pointer;

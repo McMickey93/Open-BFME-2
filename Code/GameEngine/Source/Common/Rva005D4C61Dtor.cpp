@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /DNDEBUG /MD /EHsc /arch:SSE
+// cl: /O1 /G7 /DNDEBUG /MD /EHs /arch:SSE
 // Native wrapper93 initializes16-byte listener storage at4 before the derived
 // vptr and allocates the verified40-byte implementation. A nonpolymorphic
 // storage base models that initialization order; original inheritance is
@@ -20,7 +20,13 @@ public:
 	virtual void notify(void *);
 };
 
-void __cdecl free(void *);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 void __cdecl operator delete(void *);
 
 class Rva005D4C01List

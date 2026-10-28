@@ -7,7 +7,7 @@
 // end() compare and /G7 removal do not change it; deleting either the vector
 // loop or the tree loop does. Wrapper views and placeholder pins for the
 // table twins 0x2129DD/0x21231B and thunks 0x2130CA/0x212379 are in place.
-// cl: /O1 /G7 /arch:SSE /Ireference/shims/moduledata /DNDEBUG /MD /EHsc
+// cl: /O1 /G7 /arch:SSE /Ireference/shims/moduledata /DNDEBUG /MD /EHs
 //
 // ??1LivingWorldManager@@UAE@XZ, retail 0x00214405..0x002146B8 (691 bytes);
 // pinned until now as the opaque ??1Rva00214405@@UAE@XZ.
@@ -34,11 +34,14 @@
 //   ??1Rva002129DD@@QAE@XZ -> 0x002129DD
 //   ??1Rva0021231B@@QAE@XZ -> 0x0021231B
 
-#include "Common/Snapshot.h"
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
-// C++-linkage free (?free@@YAXPAX@Z, pinned at 0x00030830), as in
-// Rva000427195Dtor.cpp: the decoration keeps retail's unwind state stores.
-void __cdecl free(void *block);
+#include "Common/Snapshot.h"
 
 class CreateAHeroData;
 

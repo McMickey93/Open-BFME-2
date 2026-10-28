@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /EHsc /MD
+// cl: /O1 /G7 /EHs /MD
 // Heap helpers of the introsort family in Rva005810B6Sort.cpp.
 // ?Rva005807CE@@YAXPAPAXHHPAXVRva000795C1Record@@@Z @0x005807CE 116B: cdecl push-heap worker.
 //   Moves the hole up through parents while the comparator orders the parent before the value,
@@ -6,7 +6,13 @@
 // ?Rva00580E10@@YAXPAPAX0VRva000795C1Record@@@Z @0x00580E10 79B: cdecl pop-heap step.
 //   Passes the comparator by value into the rowed Rva00580CE2 with a null third argument;
 //   the by-value temporary carries the EH frame.
-void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva000795C1Record
 {

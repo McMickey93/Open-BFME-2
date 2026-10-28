@@ -1,4 +1,4 @@
-// cl: /EHsc /MD
+// cl: /EHs /MD
 // Native Ghidra5810B6..58113D RET0: two four-byte iterator endpoints and a
 // sixteen-byte by-value record. The original element/comparator names and
 // key meaning are unknown. A dword followed by a twelve-byte owned vector
@@ -11,7 +11,14 @@
 // Boundary and ABI are target facts; the algorithm relationship is inferred
 // from both callees and the characteristic lg(distance)*2 wrapper.
 // ?Rva005810B6Sort@@YAXPAPAX0VRva000795C1Record@@@Z
-void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 namespace _STL {
 template <class T> class allocator { };
 template <class T, class A> class vector {
@@ -105,7 +112,7 @@ void ** __cdecl Rva00580646Median(void * const &a, void * const &b, void * const
 // Native580705..580776/113B: STLport __unguarded_partition with same record.
 // While compare(*first,pivot) ++first; --last; while compare(pivot,*last) --last;
 // return first when first>=last else swap and ++first. Callers 0x00580FD1IntroSort,
-// prev/next rows share // cl /O1 /G7 /EHsc /MD. Evidence packet leaf 0x00580705.
+// prev/next rows share // cl /O1 /G7 /EHs /MD. Evidence packet leaf 0x00580705.
 // ?Rva00580705Partition@@YAPAPAXPAPAX0PAXVRva000795C1Record@@@Z
 void ** __cdecl Rva00580705Partition(void **first, void **last, void *pivot, Rva000795C1Record compare) {
     while (true) {
