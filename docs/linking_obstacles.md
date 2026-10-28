@@ -7363,6 +7363,21 @@ InGameCommandButtonHelpRender, InGameNotificationBoxUpdateNotice,
 GameSubTitles, PathfinderProcessPathfindQueue,
 PathfinderRva002F4491CellCallback, PathfinderRva002F83F5Neighbors,
 Rva002ECE6AInfoCtor). Census confirmation pending.
+
+_floorf consumer follow-up (2026-10-28, claude; census index at `c8734bec0c`):
+four units the batch above skipped because they call `floor`/`floorf` take the
+same declaration: seglinerenderer.cpp, StreakRendererRenderStreak.cpp,
+Pathfinder/pathfinder.cpp and W3DTankDrawDoDrawModule.cpp. Their objects reference
+`_floorf` only from `.debug$F` (each call inlines to `__imp__floor`), so the
+static declaration changes no code. All 144 function rows still byte-match, and the
+four SEH funclet rows verify past renumbered `$L` labels. Ordinary preview:
+seglinerenderer (18,478 B), StreakRendererRenderStreak (14,007 B) and pathfinder
+(50,353 B) go from does not link to LINKS, 82,838 B in total. W3DTankDrawDoDrawModule
+(771 B) now shows only `?updateTreadPositions@W3DTankDraw@@IAEXM@Z` unresolved:
+7a9f82a892 renamed that provider row (W3DTankTruckDrawUpdateTreadPositions.cpp, which
+links) after the census, so the next census should resolve it.
+W3DBridgeGetModelVerticesFixed.cpp is also `_floorf`-only but another worker's merge
+into W3DBridgeBuffer.cpp held it. Census confirmation pending.
 ### GlowMaterial provisional composition (2026-10-28)
 
 Status: bounded merge verified; external consumer selection and census

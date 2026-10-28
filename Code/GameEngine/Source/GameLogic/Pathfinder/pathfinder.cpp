@@ -10,6 +10,8 @@
 // callee pin is supported by its selected-layer callsite and the GeneralsMD
 // PathfindLayer::setDestroyed(Bool) donor. Target arithmetic gives 64-byte
 // layers at +0x60 and the final manager-like subobject at +0x460.
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 // vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
 // overload takes the call instead, so this TU emits no external max COMDAT.
 namespace _STL {

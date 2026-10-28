@@ -7,6 +7,8 @@
 // particle-system handles (null handle -> Make001FCBD7). Early outs skip
 // the W3DModelDraw::doDrawModule (0x000C7BC4) tail call exactly as retail.
 
+// Keep math.h's inline floorf local: retail's object exposes no _floorf.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 
 #include "Lib/Coord3D.h"
