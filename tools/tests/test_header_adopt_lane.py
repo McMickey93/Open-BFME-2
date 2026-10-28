@@ -153,6 +153,35 @@ def test_dependency_views_go_with_the_class():
     assert out.count('#include "ascii_string.h"') == 1
 
 
+@pytest.mark.parametrize("indent", ["", "    ", "\t"])
+def test_swap_preserves_nested_snapshot_and_only_replaces_global_view(indent):
+    allocator = ("namespace EA { namespace Allocator {\n"
+                 "class GeneralAllocator {\npublic:\n"
+                 + indent + "struct Snapshot { unsigned m_magic; };\n"
+                 "};\n}}\n")
+    assert lane.body_span(allocator, "Snapshot") is None
+    assert lane.swap(allocator, ["Snapshot"], "Snapshot.h") is None
+    text = allocator + "    class Snapshot { int game; };\n"
+    out = lane.swap(text, ["Snapshot"], "Snapshot.h")
+    assert out == allocator + '#include "Snapshot.h"\n'
+
+
+def test_nested_record_does_not_bypass_header_acceptance(tmp_path, monkeypatch):
+    monkeypatch.setattr(lane, "ROOT", tmp_path)
+    (tmp_path / "Snapshot.h").write_text("class Snapshot {};\n")
+    (tmp_path / "unit.cpp").write_text("class Allocator {\nstruct Snapshot { int magic; };\n};\n")
+    assert lane.verdict("Snapshot", "unit.cpp", "Snapshot.h", gate=lambda _: None) == [
+        "does not #include Snapshot.h"]
+
+
+def test_indented_global_private_view_still_fails_acceptance(tmp_path, monkeypatch):
+    monkeypatch.setattr(lane, "ROOT", tmp_path)
+    (tmp_path / "Snapshot.h").write_text("class Snapshot {};\n")
+    (tmp_path / "unit.cpp").write_text('#include "Snapshot.h"\n    class Snapshot { int game; };\n')
+    assert lane.verdict("Snapshot", "unit.cpp", "Snapshot.h", gate=lambda _: None) == [
+        "still declares a private body"]
+
+
 def test_generated_header_spells_the_contract():
     text = lane.generate(CONTRACT, "data", {})
     assert "struct Coord3D {" in text and "float x;" in text and "float z;" in text

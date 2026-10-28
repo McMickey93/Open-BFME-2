@@ -6,6 +6,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import class_layouts  # noqa: E402
+import class_views  # noqa: E402
+import pytest
 
 
 def cv_class(name, size, forward=False, kind=0x1004):
@@ -46,6 +48,63 @@ def test_parsed_cache_changes_when_the_reader_changes(monkeypatch, tmp_path):
     monkeypatch.setattr(class_layouts, "PARSER_HASH", "fixed")
     assert class_layouts.parsed_path("stream") != stale
     assert not class_layouts.parsed_path("stream").exists()
+
+
+@pytest.mark.parametrize("indent", ["", "    ", "\t"])
+def test_nested_snapshot_is_not_a_global_private_view(indent):
+    text = ("namespace EA { namespace Allocator {\n"
+            "class GeneralAllocator {\npublic:\n"
+            + indent + "struct Snapshot { unsigned m_magic; };\n"
+            "};\n}}\n")
+    assert class_layouts.class_bodies(text) == ["GeneralAllocator"]
+    assert set(class_views.class_bodies(text)) == {"GeneralAllocator"}
+
+
+def test_scopes_ignore_literal_braces_and_skip_local_and_template_members():
+    text = '''namespace Detail {
+    class Owner {
+        const char *brace() { return "}"; }
+        char open() { return '{'; }
+struct Snapshot { int nested; };
+    };
+    struct Coord3D { float x, y, z; };
+}
+void local() {
+class Snapshot { int local; };
+}
+template <class T>
+class Container {
+struct Snapshot { int nested; };
+};
+class Snapshot { int global; };
+'''
+    expected = ["Owner", "Coord3D", "Snapshot"]
+    assert class_layouts.class_bodies(text) == expected
+    assert list(class_views.class_bodies(text)) == expected
+    assert "global" in class_views.class_bodies(text)["Snapshot"]
+
+
+@pytest.mark.parametrize("linkage", ["C", "C++"])
+def test_linkage_block_does_not_hide_a_namespace_scope_view(linkage):
+    text = 'extern "' + linkage + '" {\n    class Snapshot {};\n}\n'
+    assert class_layouts.class_bodies(text) == ["Snapshot"]
+    assert list(class_views.class_bodies(text)) == ["Snapshot"]
+
+
+def test_indented_private_view_is_still_refused_by_class_gate(monkeypatch):
+    import class_gate
+    monkeypatch.setattr(class_gate, "git_text", lambda _: None)
+    text = 'extern "C++" {\n    class Snapshot {};\n}\n'
+    assert class_gate.introduced("Code/New.cpp", text, {"Snapshot": "Snapshot.h"}) == ["Snapshot"]
+
+
+@pytest.mark.parametrize("source", ["Rva00034D10Snapshot.cpp", "Rva000353F0Trace.cpp", "memory_pool.cpp"])
+def test_allocator_false_reject_sources_do_not_declare_game_snapshot(source):
+    path = class_layouts.ROOT / "Code/GameEngine/Source/Common/System" / source
+    text = path.read_text(encoding="latin-1")
+    assert "struct Snapshot" in text
+    assert "Snapshot" not in class_layouts.class_bodies(text)
+    assert "Snapshot" not in class_views.class_bodies(text)
 
 
 def toolchain():

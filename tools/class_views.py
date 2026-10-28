@@ -48,13 +48,11 @@ import re
 import sys
 from pathlib import Path
 
+from class_layouts import class_body_spans
+
 ROOT = Path(__file__).resolve().parent.parent
 CANONICAL = ROOT / "reverse" / "canonical_classes.csv"
 
-# A class-head at namespace scope: `class Name` / `struct Name`, optionally
-# with a base clause, opening a body. Templates and nested types are
-# skipped (their name alone does not identify one class).
-HEAD = re.compile(r"^(?:class|struct)\s+(?:__declspec\([^)]*\)\s+)?([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)\s*(?::(?!:)[^{;]*)?\{", re.M)
 COMMENT = re.compile(r"//[^\n]*|/\*.*?\*/", re.S)
 
 
@@ -99,25 +97,9 @@ def link_status():
 def class_bodies(text):
     """{class name: normalised declaration} for each namespace-scope body."""
     found = {}
-    stripped = COMMENT.sub("", text)
-    for match in HEAD.finditer(stripped):
-        line_start = stripped.rfind("\n", 0, match.start()) + 1
-        if stripped[line_start:match.start()].strip():
-            continue
-        # skip `template <...>` heads: the previous non-blank line ends in '>'
-        before = stripped[:line_start].rstrip()
-        if before.endswith(">") and re.search(r"template\s*<[^;{}]*>$", before):
-            continue
-        depth, index = 1, match.end()
-        while depth and index < len(stripped):
-            char = stripped[index]
-            if char == "{":
-                depth += 1
-            elif char == "}":
-                depth -= 1
-            index += 1
-        body = " ".join(stripped[match.start():index].split())
-        found.setdefault(match.group(1), body)
+    for name, start, end, _ in class_body_spans(text):
+        body = " ".join(COMMENT.sub("", text[start:end]).split())
+        found.setdefault(name, body)
     return found
 
 

@@ -6083,6 +6083,15 @@ Census confirmation remains pending. [Durable scope and evidence](../reverse/att
 
 Status: Blocked for the remaining assigned units; retained adoptions verified in ordinary-preview scope. Updated: 2026-10-27; inspected revision: `6c583e82f0c53df8e12b2ac83e1a48206513de5e`.
 
+2026-10-28 tooling follow-up (base `8fb6f4493c`): private-view discovery and
+header replacement now share a brace-scope check, so the allocator's nested
+`Snapshot` is neither counted as engine `::Snapshot` nor replaced by its
+header. The three allocator sources retain all 56 matched rows and their
+data row. Header acceptance still requires the actual canonical include,
+byte verification and a usable link verdict; their existing queue entries
+remain. No linking or debt gain is claimed.
+[Regression checks and remaining queue prerequisite](../reverse/attempt_support/snapshot-scope-classifier-20261028-codexb.md).
+
 Evidence / affected units: the per-unit before/after builds, ordinary previews against index `5ce093a71a` (`retail-truth-4`), raw source and ledger witnesses, acceptance outputs and blocked verdicts are mapped by [the header handoff](../build/header-report.md) under `build/header-h3/`.
 
 Completed: `ModuleInfoVectorDeletingDtors.cpp` and `ParticleSystemInfoCopyCtor.cpp` use the canonical Snapshot with its existing capitalized, non-const name and reference-transfer switches. `CaveSystem.cpp` uses the canonical Snapshot and Xfer headers and their public transfer operators. Their queue entries leave only through `header_adopt_lane.py accept`; the retained cohort preserves every function row and its clean ordinary link previews. The Snapshot exceptions in the destructor and Cave units are removed. No shared header, ledger row, pin or compiler flag changes.

@@ -93,17 +93,13 @@ def body_span(text, name):
     """(start, end, key) of the namespace-scope definition of `name`, with a
     `template <...>` line above it and the closing `;` and newline; None if absent."""
     code = masked(text)
-    head = re.compile(r"^[ \t]*(template\s*<[^;{}]*>\s*)?(class|struct)[ \t]+(?:__declspec\([^)]*\)\s+)?"
-                      + re.escape(name) + r"\b\s*(?::(?!:)[^{;]*)?\{", re.M)
-    for match in head.finditer(code):
-        depth, index = 1, match.end()
-        while depth and index < len(code):
-            depth += (code[index] == "{") - (code[index] == "}")
-            index += 1
-        tail = re.match(r"[ \t]*;[ \t]*\r?\n?", code[index:])
-        if depth or not tail:
+    for found, start, index, key in class_layouts.class_body_spans(text, include_templates=True):
+        if found != name:
             continue
-        return match.start(), index + tail.end(), match.group(2)
+        tail = re.match(r"[ \t]*;[ \t]*\r?\n?", code[index:])
+        if not tail:
+            continue
+        return start, index + tail.end(), key
     return None
 
 

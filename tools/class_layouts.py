@@ -41,9 +41,14 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "build" / "class_layouts"
 PARSER_HASH = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()[:16]
 
-# A namespace-scope class head opening a body (class_views.HEAD's rule).
-HEAD = re.compile(r"^[ \t]*(?:class|struct)[ \t]+(?:__declspec\([^)]*\)\s+)?([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)\s*(?::(?!:)[^{;]*)?\{", re.M)
-COMMENT = re.compile(r"//[^\n]*|/\*.*?\*/", re.S)
+# Scope is checked below; indentation alone cannot distinguish private views
+# from nested records (GeneralAllocator::Snapshot is not ::Snapshot).
+HEAD = re.compile(r"^[ \t]*(?P<template>template\s*<[^;{}]*>\s*)?"
+                  r"(?P<key>class|struct)[ \t]+(?:__declspec\([^)]*\)\s+)?"
+                  r"(?P<name>[A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)\s*(?::(?!:)[^{;]*)?\{", re.M)
+NON_CODE = re.compile(r'//[^\n]*|/\*.*?(?:\*/|\Z)|"(?:\\.|[^"\\\n])*"?|\'(?:\\.|[^\'\\\n])*\'?', re.S)
+NAMESPACE = re.compile(r"\bnamespace\s*(?:[A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)?\s*\{")
+LINKAGE = re.compile(r'\bextern\s+"C(?:\+\+)?"\s*\{')
 
 PRIM = {0x03: ("void", 0), 0x10: ("char", 1), 0x20: ("uchar", 1), 0x70: ("char", 1), 0x68: ("int8", 1),
         0x69: ("uint8", 1), 0x11: ("short", 2), 0x21: ("ushort", 2), 0x72: ("short", 2), 0x73: ("ushort", 2),
@@ -286,16 +291,39 @@ def type_stream(obj_bytes):
 
 # ---------------------------------------------------------------- compile + cache
 
+def class_body_spans(text, include_templates=False):
+    """(name, start, end, key) for namespace-scope bodies, in source order.
+
+    End is just after the closing brace. Comments and literals retain their
+    offsets but cannot open or close scopes. Nested and local types are not
+    standalone private views, even when their heads start in column zero.
+    Explicitly qualified heads retain their full spelling.
+    """
+    code = NON_CODE.sub(lambda m: re.sub(r"[^\n]", " ", m.group()), text)
+    heads = {m.end() - 1: m for m in HEAD.finditer(code)}
+    namespaces = {m.end() - 1 for m in NAMESPACE.finditer(code)}
+    # Linkage specifications do not create a C++ scope. Check the masked
+    # prefix too, so an apparent extern block inside a comment is ignored.
+    namespaces.update(m.end() - 1 for m in LINKAGE.finditer(text)
+                      if code[m.start():m.start() + 6] == "extern")
+    stack, found = [], []
+    for brace in re.finditer(r"[{}]", code):
+        pos = brace.start()
+        if brace.group() == "{":
+            head = heads.get(pos)
+            if any(not namespace for namespace, _ in stack):
+                head = None
+            stack.append((pos in namespaces, head))
+        elif stack:
+            _, head = stack.pop()
+            if head and (include_templates or not head.group("template")):
+                found.append((head.group("name"), head.start(), pos + 1, head.group("key")))
+    return sorted(found, key=lambda span: span[1])
+
+
 def class_bodies(text):
     """Names of classes `text` declares a namespace-scope body for (private views)."""
-    stripped = COMMENT.sub("", text)
-    names = []
-    for match in HEAD.finditer(stripped):
-        before = stripped[:match.start()].rstrip()
-        if re.search(r"template\s*<[^;{}]*>$", before):
-            continue
-        names.append(match.group(1))
-    return names
+    return [name for name, _, _, _ in class_body_spans(text)]
 
 
 def sha(data):
