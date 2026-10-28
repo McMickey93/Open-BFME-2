@@ -19,6 +19,7 @@ class W3DPropDrawModuleData : public ModuleData
 {
 public:
 	AsciiString m_modelName;
+	Bool m_distanceFog;
 	W3DPropDrawModuleData();
 	~W3DPropDrawModuleData();
 	static void buildFieldParse(MultiIniFieldParse& p);
