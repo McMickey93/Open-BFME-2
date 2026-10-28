@@ -3619,6 +3619,20 @@ everse/re_attempts.log.
 - **Remaining:** 24 assigned units retain their queue rows and exact original source bytes. `Coord3DCopy.cpp` and `Rva0055A246Ctor.cpp` require a coordinated class-key migration. Other stops require constructor, copy or destructor lifetime contracts absent from the canonical POD header; `BridgeObjectCtor.cpp` additionally requires the base relationship and inline base `set`, while `SidesListDataChunks.cpp` requires inline `add` and `sub`. These prerequisites belong with the class owner and dependent recompute above.
 - **Evidence / next check:** per-unit before, rejected-candidate and final build/link outputs, blocked verdicts and final gates are recorded in local `build/header-report.md` and `build/header-h1/`. Final CSV and pin-consistency checks pass. Canonical headers, reference shims and the function and symbol ledgers are unchanged. Resolve each stopped unit's recorded interface or class-key prerequisite before retrying it; broader closure and census confirmation remain open.
 
+#### Coord3D companion acceptance follow-up, 2026-10-28
+
+- **Inspected `523e91ba00`; preview index `41c28839bf`:** after checker fix
+  `e46cd47132`, the owning header tool accepts the existing shared companions
+  in BridgeObjectCtor, BridgeBehaviorHandleObjectsOnBridgeOnDie,
+  OneRingPenaltyUpdate and AIStructureCreepTactic, retiring four queue rows.
+  All 68 function rows and eleven EH graphs remain exact. Game sources and
+  headers are unchanged. [Scoped evidence and remaining prerequisites](../reverse/attempt_support/coord3d-companion-retirement-20261028-codex3.md).
+- **Clearance:** header debt only. Three ordinary previews preserve LINKS
+  for 2,613 authored bytes; the tactic remains at 0 -> 0 with its existing
+  selected Object-vector destructor/push_back/growth blockers (LINK-132).
+  Eleven Coord3D queue entries and the broader class/provider work remain.
+  No new census-linked bytes or selected-provider clearance is claimed.
+
 #### Region3D adoption: separate Coord3D class-key/provider prerequisite
 
 - **2026-10-26, inspected `c973319b7d3`:** the Region3D queue serves
