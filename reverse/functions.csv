@@ -9283,7 +9283,7 @@ _SetupDeblocker,,0x001BD630,64,Code/Libraries/Source/VP6/PostProcInstance.cpp,ma
 ?bfmeParseYA@BfmeOwnerYA@@QAEXPBD@Z,,0x00661D80,130,Code/GameEngine/Source/Common/BfmeConv1857.cpp,matched,BFME1 byte-identical donor; b1 0x007F5560
 ?d_00889c90@Rva00889C90Class@@QAEXPAX0@Z,,0x00038D60,129,Code/GameEngine/Source/Common/Bfme/Rva00889C90.cpp,matched,BFME1 donor; realloc callee is matched DebugReAllocMemory (no pin); b1 0x00889C90
 ?rva007F7640@BfmeThingZI@@QAEXPAVRva007E8810Message@@@Z,,0x00663D30,144,Code/GameEngine/Source/GameNetwork/Rva007F7640GameBrowserEntry.cpp,matched,BFME1 byte-identical donor; b1 0x007F7640; 4 DIR32 string literal(s) agree
-?bfmeResizeV17@BfmeVecV17@@QAEXIH@Z,,0x0002A300,126,Code/GameEngine/Source/Common/BfmeConv1457.cpp,matched,BFME1 byte-identical donor; b1 0x0082FA70
+?bfmeResizeV17@BfmeVecV17@@QAEXIH@Z,,0x0002A300,126,Code/GameEngine/Source/Common/BfmeThingSVA.cpp,matched,BFME1 byte-identical donor; b1 0x0082FA70
 ?circleIntersectsBox@@YA_NPAURva00880D10Subject@@PAURva00880D10Info@@@Z,,0x006C0710,127,Code/GameEngine/Source/Common/Rva00880D10CircleBoxTest.cpp,matched,BFME1 byte-identical donor; b1 0x00880D10
 _ScaleOrCenter,,0x001BB330,126,Code/Libraries/Source/VP6/ScaleOrCenter.cpp,matched,Clean-room spec 001bb330; ScaleOrCenter: applies the border update when the level is set then centres via the any-ratio scaler (modes 0 and 1) or CenterImage (mode 2); same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001bb330.md and retail only
 ?bfmeCtorVLY@BfmeThingVLY@@QAEPAV1@XZ,,0x00026C10,28,Code/GameEngine/Source/Common/BfmeConv1424.cpp,matched,BFME1 byte-identical donor; b1 0x0082DDE0
@@ -9302,7 +9302,7 @@ _ScaleOrCenter,,0x001BB330,126,Code/Libraries/Source/VP6/ScaleOrCenter.cpp,match
 ?Compute_Ram_Size@MeshModelClass@@QAEHXZ,,0x001880E0,67,Code/Libraries/Source/WWVegas/WW3D2/MeshModelClass_ComputeRamSize.cpp,matched,BFME1 donor with BFME2 base repair 0x94 to 0x8C; retail reads +0x8C/+0x90/+0x98; b1 0x0096C9B0
 ?bfmeReverseVKK@BfmeStrVKK@@QAEPAV1@XZ,,0x006D59A0,75,Code/GameEngine/Source/Common/BfmeConv1404.cpp,matched,BFME1 byte-identical donor; b1 0x0089F3D0
 ?bfmeTruncVKK@BfmeStrVKK@@QAEXI@Z,,0x006D6230,31,Code/GameEngine/Source/Common/BfmeConv1404.cpp,matched,BFME1 byte-identical donor; b1 0x0089EC50
-?bfmeInsertQX@BfmeThingQX@@QAEPAU1@IIE@Z,,0x0002A140,104,Code/GameEngine/Source/Common/BfmeThreeHundredSix.cpp,matched,BFME1 byte-identical donor; b1 0x00830A50
+?bfmeInsertQX@BfmeThingQX@@QAEPAU1@IIE@Z,,0x0002A140,104,Code/GameEngine/Source/Common/BfmeThingSVA.cpp,matched,BFME1 byte-identical donor; b1 0x00830A50
 ?bfmeApplyEB@@YAXPAVBfmeObjEB@@@Z,,0x006BE450,96,Code/GameEngine/Source/Common/Rva0087EBB0Max.cpp,matched,BFME1 byte-identical donor; b1 0x0087EBB0
 ?bfmeFillQT@@YAPAPAHPAPAHI0@Z,,0x000246C0,95,Code/GameEngine/Source/Common/BfmeThreeHundredTwo.cpp,matched,BFME1 byte-identical donor; b1 0x0082BD20
 ?onLobby@Rva007F7980Browser@@QAEXPAVRva007E8810Message@@@Z,,0x00663600,138,Code/GameEngine/Source/GameNetwork/V2FeslBrowserRecords.cpp,matched,BFME1 byte-identical donor; b1 0x007F6F10
@@ -9364,8 +9364,8 @@ _CreatePostProcInstance,,0x001B6890,63,Code/Libraries/Source/VP6/PostProcInstanc
 ?bfmeFillCount82DD70@@YAPADPADIABD@Z,,0x00026BD0,42,Code/GameEngine/Source/Common/BfmeFillCount82DD70.cpp,matched,BFME1 byte-identical donor; b1 0x0082DD70; callee rva0082ADB0Fill pre-pinned at 0x000237C0; sweep dup pin stale
 ?initPool@Rva00803080@@QAEXXZ,,0x0066F120,71,Code/GameEngine/Source/GameNetwork/Rva008030C0FeslPoolInit.cpp,matched,BFME1 byte-identical donor; b1 0x008030C0
 ??0_ATL_BASE_MODULE70@ATL@@QAE@XZ,,0x00628CFE,26,Code/Libraries/Source/ATL/atlbasemodule.cpp,matched,vendored=atl-7.1;compiler-generated ctor of atlcore.h _ATL_BASE_MODULE70;atls.lib COMDAT places uniquely;was ??0Rva009F69B1@@QAE@XZ from a BFME1 donor
-?bfmeOneSVA@BfmeThingSVA@@QAEXH@Z,,0x0002A380,29,Code/GameEngine/Source/Common/BfmeConv1302.cpp,matched,BFME1 byte-identical donor; b1 0x0082FAF0
-?bfmeTwoSVA@BfmeThingSVA@@QAEXH@Z,,0x0002A120,29,Code/GameEngine/Source/Common/BfmeConv1302.cpp,matched,BFME1 byte-identical donor; b1 0x00830A30
+?bfmeOneSVA@BfmeThingSVA@@QAEXH@Z,,0x0002A380,29,Code/GameEngine/Source/Common/BfmeThingSVA.cpp,matched,BFME1 byte-identical donor; b1 0x0082FAF0
+?bfmeTwoSVA@BfmeThingSVA@@QAEXH@Z,,0x0002A120,29,Code/GameEngine/Source/Common/BfmeThingSVA.cpp,matched,BFME1 byte-identical donor; b1 0x00830A30
 ?bfmeFwdVMT@BfmeStrVMT@@QAEXHH@Z,,0x0002A900,43,Code/GameEngine/Source/Common/BfmeS1155.cpp,matched,BFME1 byte-identical donor; b1 0x00830F90
 ??1BfmeThingDGD@@QAE@XZ,,0x00664710,363,Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp,matched,BFME1 byte-identical donor with vtable-anchor repair; b1 0x007F8090
 ?Rva006E9160Init@@YGXPAUGen_006e9160_Triple@@@Z,,0x00043F99,32,Code/GameEngineDevice/Source/W3DDevice/GameClient/Gen_006e9160_Init.cpp,matched,BFME1 byte-identical donor; b1 0x006E9160
@@ -9635,7 +9635,7 @@ _math_randomseed,,0x00748A30,30,Code/Libraries/Source/Lua/lmathlib.c,matched,BFM
 ?rva00882140PatchAllModules@@YAPAXPBD0PAX@Z,,0x0002FF10,134,Code/GameEngine/Source/Common/Bfme/Rva00882140PatchAllModules.cpp,matched,BFME1 near-miss donor; b1 0x00882140; callback cell to LoadLibraryA import plus CloseHandle rename
 ?go@BfmeOwner803BF0@@QAEXPAVBfmeSrc803BF0@@@Z,,0x0066FC30,157,Code/GameEngine/Source/Common/BfmeConv803BF0.cpp,matched,BFME1 near-miss donor; b1 0x00803BF0; immediate-only drift
 ?invoke@Rva00958D30@@QAEJVBfmeBstrVGP@@PAX@Z,,0x00177240,111,Code/GameEngine/Source/GameNetwork/WOLBrowser/WebBrowserComWrappers.cpp,matched,BFME1 near-miss donor b1 0x00958EB0; immediate-only IID drift pre-pinned; callees pre-resolved
-?bfmeInsertChV38@@YGXHHID@Z,,0x0002A1B0,181,Code/GameEngine/Source/Common/BfmeConv1479.cpp,matched,BFME1 near-miss donor; b1 0x00830B10; call-displacement drift only; pin FillInsV38 @0x297D0 mirrors b1 pin (same 119B assign body)
+?bfmeInsertChV38@@YGXHHID@Z,,0x0002A1B0,181,Code/GameEngine/Source/Common/BfmeThingSVA.cpp,matched,BFME1 near-miss donor; b1 0x00830B10; call-displacement drift only; pin FillInsV38 @0x297D0 mirrors b1 pin (same 119B assign body)
 ?get@Rva008F7B00@@QAEDH@Z,,0x0073A0C0,28,Code/GameEngine/Source/Common/Rva008F7B00Get.cpp,matched,BFME1 near-miss donor repaired; b1 0x008F7B00; slots bound 16 to 20 and base pad A4 to C4 per retail
 ?bfmeForwardResultA@BfmeResultForwardA@@QAE?AUBfmeResultA@@XZ,,0x006256D0,32,Code/GameEngine/Source/Common/BfmeResultForwardA.cpp,matched,BFME1 near-miss donor repaired; b1 0x009F2A20; source member C to 10 per retail; callee bfmeMakeResultA pinned at 0x628980 per BFME1 identity
 ?bfmeGo1020M@BfmeM1020@@QAEXH@Z,,0x0051E3A3,32,Code/GameEngine/Source/Common/BfmeConv1020.cpp,matched,BFME1 near-miss donor trimmed; b1 0x005701D0; state +0x258->+0x27C; Reg virtual slot49 (donor direct)
