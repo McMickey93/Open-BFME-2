@@ -114,6 +114,17 @@ namespace _STL {
 template<> PointerTree::~_Rb_tree();
 template<> IntSetTreeCopyView::~_Rb_tree();
 template<> IntSetTreeCopyView::_Rb_tree(const IntSetTreeCopyView&);
+template<> pair<Rva001408C0Set::iterator, bool> Rva001408C0Set::insert(const Rva001408C0Key &);
+template<> pair<PointerTree::iterator, bool> PointerTree::insert_unique(const Rva001408C0Key &);
+}
+// The out-of-line set::insert (0x00080691) and insert_unique (0x00422047) are other
+// units' retail copies; this TU's /G6 builds of them differ, so both are declared only.
+// insertKeyInline is set::insert's own STLport body for the call sites retail inlines.
+static __forceinline _STL::pair<Rva001408C0Set::iterator, bool>
+insertKeyInline(Rva001408C0Set &keys, const Rva001408C0Key &x)
+{
+	_STL::pair<PointerTree::iterator, bool> p = ((PointerTree &)keys).insert_unique(x);
+	return _STL::pair<Rva001408C0Set::iterator, bool>(reinterpret_cast<const Rva001408C0Set::iterator &>(p.first), p.second);
 }
 
 // Keep STLport's pointer-set construction inline without competing external copies.
@@ -220,7 +231,7 @@ Rva00622290SetGroup Rva00622290::collectKeys()
 	ScalarHashMap622290::iterator it;
 	for (it = m_map4c.begin(); it != m_map4c.end(); ++it)
 	{
-		keys.m_tree.insert(*(const Rva001408C0Key *)&(*it).first);
+		insertKeyInline(keys.m_tree, *(const Rva001408C0Key *)&(*it).first);
 	}
 	return Rva00622290SetGroup(
 		*(const IntSetTreeCopyView *)&keys.m_tree);
@@ -616,7 +627,7 @@ void AssetManagerImpl::LoadAsset(Rva009EF0D0Element *asset)
 			{
 				for (int k = 0; asset->m_bfmeKeys[k]; ++k)
 				{
-					set.m_tree.insert(asset->m_bfmeKeys[k]);
+					insertKeyInline(set.m_tree, asset->m_bfmeKeys[k]);
 				}
 			}
 			if (set.m_tree.size() != 0)
