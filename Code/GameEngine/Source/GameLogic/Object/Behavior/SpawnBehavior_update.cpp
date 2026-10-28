@@ -21,8 +21,10 @@
 //   m_active = false), also called for m_killSpawnsBasedOnModelConditionState
 //   (+0x170).
 //
-// GameLogic::findObjectByID is declared as the header inline over the object
-// hash map at +0xB4; MSVC calls the out-of-line copy 0x00049DC5.
+// GameLogic::findObjectByID is defined here as the header inline over the
+// STLport object hash at +0xB4 (viewing the canonical map member); MSVC
+// calls the out-of-line copy 0x00049DC5, and this unit emits the _M_find
+// instance (0x002888D4) that inline instantiates.
 
 #define _STLP_NO_EXCEPTIONS 1
 #include <hash_map>
@@ -79,10 +81,7 @@ typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 enum UpdateSleepTime
 {
@@ -141,26 +140,19 @@ public:
 
 typedef _STL::hash_map<ObjectID, Object *, _STL::hash<int>, _STL::equal_to<ObjectID> > ObjectPtrHash;
 
-class GameLogic
+// The Generals header's inline findObjectByID over the object hash; the
+// canonical view models the map at +0xB4 as ObjectIdMap, so this body views
+// it as the STLport hash_map whose _M_find it instantiates.
+inline Object *GameLogic::findObjectByID(ObjectID id)
 {
-public:
-	UnsignedInt getFrame() const { return m_frame; }
-	Object *findObjectByID(ObjectID id)
-	{
-		if (id == INVALID_ID)
-			return 0;
-		ObjectPtrHash::iterator it = m_objHash.find(id);
-		if (it == m_objHash.end())
-			return 0;
-		return (*it).second;
-	}
-
-private:
-	char m_pad000[0x40];
-	UnsignedInt m_frame;
-	char m_pad044[0xB4 - 0x44];
-	ObjectPtrHash m_objHash;
-};
+	if (id == INVALID_OBJECT_ID)
+		return 0;
+	ObjectPtrHash &objHash = reinterpret_cast<ObjectPtrHash &>(m_map);
+	ObjectPtrHash::iterator it = objHash.find(id);
+	if (it == objHash.end())
+		return 0;
+	return (*it).second;
+}
 extern GameLogic *TheGameLogic;
 
 class UpgradeMuxData
@@ -314,7 +306,7 @@ UpdateSleepTime SpawnBehavior::update()
 	if (!m_initialBurstTimesInited)
 	{
 		m_initialBurstTimesInited = true;
-		Bool runtimeProduced = getObject()->getProducerID() != INVALID_ID;
+		Bool runtimeProduced = getObject()->getProducerID() != INVALID_OBJECT_ID;
 		Int burstInitCount = m_initialBurstCountdown;
 		for (Int listIndex = 0; listIndex < md->m_spawnNumberData; ++listIndex)
 		{

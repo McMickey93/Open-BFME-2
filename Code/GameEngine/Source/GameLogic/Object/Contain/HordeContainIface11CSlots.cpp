@@ -103,10 +103,7 @@ enum WeaponSetType
 	WEAPONSET_19 = 0x19,
 	WEAPONSET_1A = 0x1A
 };
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 enum ObjectStatusTypes
 {
 	OBJECT_STATUS_NONE = 0
@@ -687,25 +684,20 @@ private:
 typedef _STL::hash_map<ObjectID, Object *, _STL::hash<int>, _STL::equal_to<ObjectID> > ObjectPtrHash;
 // findObjectByID is the header inline over the object hash map at +0xB4;
 // cl calls its out-of-line copy 0x00049DC5.
-class GameLogic
+// The Generals header's inline findObjectByID over the object hash; the
+// canonical view models the map at +0xB4 as ObjectIdMap, so this body views
+// it as the STLport hash_map. MSVC still calls the out-of-line copy
+// 0x00049DC5, but only this inline body gives retail's register homes.
+inline Object *GameLogic::findObjectByID(ObjectID id)
 {
-public:
-	Object *findObjectByID(ObjectID id)
-	{
-		if (id == INVALID_ID)
-			return 0;
-		ObjectPtrHash::iterator it = m_objHash.find(id);
-		if (it == m_objHash.end())
-			return 0;
-		return (*it).second;
-	}
-	void destroyObject(Object *);
-	void rva0023D0C2(Object *obj, int value);
-	unsigned char m_pad00[0x40];
-	unsigned int m_frame; // +0x40
-	unsigned char m_pad44[0xB4 - 0x44];
-	ObjectPtrHash m_objHash; // +0xB4
-};
+	if (id == INVALID_OBJECT_ID)
+		return 0;
+	ObjectPtrHash &objHash = reinterpret_cast<ObjectPtrHash &>(m_map);
+	ObjectPtrHash::iterator it = objHash.find(id);
+	if (it == objHash.end())
+		return 0;
+	return (*it).second;
+}
 extern GameLogic *TheGameLogic;
 class ThingFactory
 {
@@ -3053,7 +3045,7 @@ void HordeContain::rva0046D8AE()
 		first->rva001E42F2(m_1B4.words);
 	if (second)
 		second->rva001E42F2(m_1B4.words);
-	m_1AC = INVALID_ID;
+	m_1AC = INVALID_OBJECT_ID;
 }
 
 // ?rva0046CB2C@HordeContain@@UAEPAVObject@@XZ @0x0046CB2C: slot 19; a random
@@ -3404,7 +3396,7 @@ void rva00469689(Object *obj, void *userData)
 	if (!thingTemplate || thingTemplate->hordeKindMask(68))
 		return;
 	Rva00469689Data *data = (Rva00469689Data *)userData;
-	if (data->m_id != INVALID_ID && !(obj->m_264->m_10 > data->m_best))
+	if (data->m_id != INVALID_OBJECT_ID && !(obj->m_264->m_10 > data->m_best))
 		return;
 	data->m_best = obj->m_264->m_10;
 	data->m_id = (ObjectID)obj->getID();
@@ -3416,7 +3408,7 @@ Object *HordeContain::rva0046CBCA()
 {
 	Rva00469689Data data;
 	data.m_best = -1.0f;
-	data.m_id = INVALID_ID;
+	data.m_id = INVALID_OBJECT_ID;
 	iterateContained(rva00469689, &data, 1);
 	return TheGameLogic->findObjectByID(data.m_id);
 }
@@ -3970,14 +3962,14 @@ void HordeContain::rva0046C20B()
 ObjectID HordeContain::rva0046DEA1(ObjectID want)
 {
 	const _STL::list<Object *> *items = containedItems();
-	ObjectID result = INVALID_ID;
+	ObjectID result = INVALID_OBJECT_ID;
 	for (_STL::list<Object *>::const_iterator it = items->begin(); it != items->end(); ++it)
 	{
 		Rva0046B850Module *module = (*it)->m_254;
 		if (module)
 		{
 			ObjectID id = module->slot18();
-			if (id != INVALID_ID)
+			if (id != INVALID_OBJECT_ID)
 			{
 				Object *obj = TheGameLogic->findObjectByID(id);
 				if (obj && obj->m_274)
@@ -3986,7 +3978,7 @@ ObjectID HordeContain::rva0046DEA1(ObjectID want)
 					if (other == want)
 						id = other;
 				}
-				if (id == want || result == INVALID_ID)
+				if (id == want || result == INVALID_OBJECT_ID)
 					result = id;
 			}
 		}
@@ -4005,7 +3997,7 @@ ObjectID HordeContain::rva0046DEA1(ObjectID want)
 				if (other == want)
 					id = other;
 			}
-			if (id != INVALID_ID && (id == want || result == INVALID_ID))
+			if (id != INVALID_OBJECT_ID && (id == want || result == INVALID_OBJECT_ID))
 				result = id;
 		}
 	}
@@ -4425,7 +4417,7 @@ static inline bool clearSpecialUnitID(ObjectID &slot, ObjectID id)
 {
 	if (slot == id)
 	{
-		slot = INVALID_ID;
+		slot = INVALID_OBJECT_ID;
 		return true;
 	}
 	return false;

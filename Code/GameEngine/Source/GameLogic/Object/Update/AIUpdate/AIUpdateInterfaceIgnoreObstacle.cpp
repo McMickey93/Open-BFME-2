@@ -51,10 +51,7 @@ private:
 	StringBase<char> m_name;
 };
 
-enum ObjectID
-{
-	INVALID_ID = 0
-};
+#include "../../../../Common/GameLogicObjectLookupView.h"
 
 class Object
 {
@@ -69,11 +66,6 @@ private:
 	ObjectID m_id;
 };
 
-class GameLogic
-{
-public:
-	Object *findObjectByID(ObjectID id);
-};
 
 extern GameLogic *TheGameLogic;
 
@@ -126,7 +118,7 @@ void AIUpdateInterface::ignoreObstacle(const Object *obj)
 			}
 		}
 	}
-	m_ignoreObstacleID = obj ? obj->getID() : INVALID_ID;
+	m_ignoreObstacleID = obj ? obj->getID() : INVALID_OBJECT_ID;
 }
 
 // ?getIgnoredObstacleID@AIUpdateInterface@@QBE?AW4ObjectID@@XZ present-unmatched

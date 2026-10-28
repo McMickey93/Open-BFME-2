@@ -36,32 +36,26 @@ static inline bool operator!=(const _List_iterator<_IterTp, _LeftTraits> &a,
 { return a._M_node != b._M_node; }
 }
 
-enum ObjectID
-{
-	INVALID_OBJECT_ID = 0
-};
+#include "../../../Common/GameLogicObjectLookupView.h"
 
 class Object;
 
 typedef _STL::hash_map<ObjectID, Object *, _STL::hash<int>, _STL::equal_to<ObjectID> > ObjectPtrHash;
 
-class GameLogic
+// The Generals header's inline findObjectByID over the object hash; the
+// canonical view models the map at +0xB4 as ObjectIdMap, so this body views
+// it as the STLport hash_map. MSVC still calls the out-of-line copy
+// 0x00049DC5, but only this inline body gives retail's register homes.
+inline Object *GameLogic::findObjectByID(ObjectID id)
 {
-public:
-	Object *findObjectByID(ObjectID id)
-	{
-		if (id == INVALID_OBJECT_ID)
-			return 0;
-		ObjectPtrHash::iterator it = m_objHash.find(id);
-		if (it == m_objHash.end())
-			return 0;
-		return (*it).second;
-	}
-
-private:
-	char m_pad000[0xB4];
-	ObjectPtrHash m_objHash;
-};
+	if (id == INVALID_OBJECT_ID)
+		return 0;
+	ObjectPtrHash &objHash = reinterpret_cast<ObjectPtrHash &>(m_map);
+	ObjectPtrHash::iterator it = objHash.find(id);
+	if (it == objHash.end())
+		return 0;
+	return (*it).second;
+}
 
 extern GameLogic *TheGameLogic;
 
