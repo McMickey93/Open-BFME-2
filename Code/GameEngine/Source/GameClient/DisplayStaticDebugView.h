@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "ascii_string.h"
+#include "unicode_string.h"
 
 // Shared prefix for the rowed static-image and debug-callback methods.
 // Retail W3DDisplay vtable RVA 0x007C3C80, slot 74 (+0x128), contains
@@ -12,6 +13,34 @@ class DebugDisplayInterface;
 typedef void DebugDisplayCallback(DebugDisplayInterface *, void *, FILE *);
 
 class W3DDisplay;
+class GameFont;
+
+// The display string TheDisplayStringManager hands out; only the virtual slots
+// rva0025D3C8 reaches are spelled (slot names follow Zero Hour's DisplayString,
+// a structural inference).
+class DisplayString
+{
+public:
+	virtual void s00();
+	virtual void setText(UnicodeString text);				// +0x04
+	virtual void s02(); virtual void s03(); virtual void s04(); virtual void s05();
+	virtual void setFont(GameFont *font);					// +0x18
+	virtual void s07(); virtual void s08(); virtual void s09();
+	virtual void setWordWrap(int a, int b);					// +0x28
+	virtual void s11(); virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15();
+	virtual unsigned int getWidth(int charPos);				// +0x40
+};
+
+class DisplayStringManager
+{
+public:
+	virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03();
+	virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07();
+	virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11();
+	virtual void s12(); virtual void s13();
+	virtual DisplayString *newDisplayString();				// +0x38
+};
+extern DisplayStringManager *TheDisplayStringManager;
 
 class BfmeVM0Timer
 {
@@ -124,6 +153,8 @@ public:
 	void DrawStaticImage(int index, int arg);
 	void SetMovieImage(int image, int index, float x0, float y0, float x1, float y1);
 	void SetStaticImage(int image, int index, float x0, float y0, float x1, float y1);
+	void rva0025D358(UnicodeString s, float fC0, float fC4, int iB4, int iB8, int iBC);
+	DisplayString *rva0025D3C8();
 	void rva0025D10F();
 	void rva0025D19E();
 	void rva0025C776(int a8, float fc, float f10, float f14, float f18, int a1c, int a20);
@@ -140,7 +171,12 @@ private:
 	bool m_b64; // +0x64
 	unsigned char m_pad65[0x68 - 0x65];
 	Rva0025C6E2Elem m_staticImages[MAX_STATIC_IMAGES]; // +0x68
-	unsigned char m_padB0[0xC8 - 0xB0];
+	UnicodeString m_sB0; // +0xB0
+	int m_iB4;
+	int m_iB8;
+	int m_iBC;
+	float m_fC0;
+	float m_fC4;
 	float m_fC8;
 	float m_fCC;
 	AsciiString m_name; // +0xD0
