@@ -253,3 +253,51 @@ name for the same role is `?doRubbleDoneStuff@RubbleRiseUpdate@@IAEXXZ`; its EH
 handler and funclet rows must be renamed with it), W3DStatusCircle.cpp +15 / W3DTerrainTracks.cpp +10 (each other's
 rows), StreamingArchiveFile.cpp +9 (`?close@LocalFile` 0x00605A7D), aabox.cpp
 +7 (`??1GridLinkClass` 0x00719CC0).
+
+## Session 3 (seat halilkkaya-tua2, base `54b884eef2`): results
+
+Same measurement (in-memory `build()` before and after each commit,
+`tu_skeleton.py --plan`, link_check on every touched unit). +148 approved code
+rows over five commits; every touched unit kept its link verdict and bytes.
+
+| Commit | Rows | Approved | Notes |
+|---|---|---:|---|
+| `9917dcb714` | retire the `TextureLoader::Validate_Texture_Size` fold alias of 0x0011E670 | 0 | W3DShroud::init (merge landed) now calls `DX8Wrapper::AdjustTextureSize`; alias body and row removed, tombstoned. |
+| `b208f0c320` | 0x004A4DBE -> `RubbleRiseUpdate::doRubbleDoneStuff`; 0x004A44B1 -> `StructureCollapseUpdate::doCollapseDoneStuff` (owner swap, six rows incl. EH handlers and funclets) | +40 | Each helper is called only by its own class's update and lies in its own TU's run; BFME 1 has both names. RubbleRiseUpdate.cpp 0 -> 18, StructureCollapseUpdate.cpp 0 -> 22. StructureCollapseUpdate.cpp (the TU path) now hosts the RubbleRise helper body: split it out before merging that TU. data_ledger.csv still spells the old static-local names until its generator runs. |
+| `09066a4f38` | 0x000CDFC8 -> `W3DTankDraw::updateTreadPositions` | +32 | Only caller W3DTankDraw::doDrawModule; walks W3DTankDraw's treads at +0x304. W3DTankDraw.cpp 0 -> 32. |
+| `b394b48653` | 0x00605A7D owner `StreamingArchiveFile::close`, `LocalFile::close` fold alias (row order only) | +27 | The kept File::close tail jump lies in StreamingArchiveFile.cpp's run. LocalFile.cpp 0 -> 17, StreamingArchiveFile.cpp 0 -> 10. |
+| `10b8c4f5ad` | 0x00719CC0 owner `~CullLinkClass`, `~GridLinkClass` fold alias | +49 | Restores CullLinkClass's vtable; sits between ??0CullLinkClass and ??_GCullLinkClass. gridcull.cpp 0 -> 40, aabox.cpp 0 -> 9 (5 of those 9 are header-inline COMDATs tu_map brackets into aabox.cpp; they stay in gridcull.cpp, a mixed file). |
+
+Left alone (no workable seat-level fix with good evidence):
+
+- **W3DStatusCircle / W3DTerrainTracks (+58 simulated).** Target facts:
+  0x0008E4EC (`??1TerrainTracksRenderObjClass`) stores the vtables 0x007C7850 and
+  0x007C784C that the matched `??0W3DStatusCircle` 0x0008E54F installs, then calls
+  0x0008E187; 0x0008E187 (`freeTerrainTracksResources@TerrainTracksRenderObjClass`)
+  is called by that destructor and by 0x0008E1F2; 0x0008E1F2
+  (`rva0008E1F2@TerrainTracksRenderObjClass`) is called only by
+  `W3DStatusCircle::Render` 0x0008E7A4; all three use W3DStatusCircle's +0xD4/DC/E0/E4
+  fields. They are `~W3DStatusCircle`, `freeMapResources` and `initData`
+  (Zero Hour W3DStatusCircle.cpp order). Blocker: W3DTerrainTracks.cpp (LINKS,
+  202 B) keeps present-unmatched Zero Hour bodies (init, releaseTrack, the
+  system's ReleaseResources) that call `~TerrainTracksRenderObjClass` and
+  `freeTerrainTracksResources`, and its rowed destructor needs EH rows moved
+  with it. Retiring the names loses that unit's link; a fold alias would need
+  duplicate EH handler and funclet rows at the same addresses. Find the real
+  TerrainTracksRenderObjClass bodies first, or remove those donor bodies
+  together with their consumers' providers.
+- **W3DDynamicLight.cpp (+23).** 0x0006E12F (`Peek_Inner_Scale_Channel@RingRenderObjClass`)
+  is `lea eax,[ecx+0x164]; ret` with no callers, placed by masked search among
+  W3DDynamicLight's COMDATs. The name is unproven, and nothing proves another one.
+- **Tool or maintainer rules** (correct names whose placement tu_map cannot
+  express): GameClient.cpp `??0WindowTranslator`, LANAPI.cpp `??0LANGameSlot`
+  copy constructor (keyed with the default constructor's Z), Anim2D.cpp
+  `INI::parseAnim2DDefinition` (BFME 2 moved it next to Anim2D),
+  Win32GameEngine.cpp `??1W3DModuleFactory` (implicit destructor emitted with
+  the inline factory), BoneFXDamage.cpp `GetSnapshotName@DamageModule`
+  (header inline), mutex.cpp `CriticalSectionClass` ctor/dtor (Zero Hour defines
+  the class in both mutex.cpp and critsection.cpp; Z picks critsection.cpp).
+- **Multi-row structure, not one identity:** AIDock.cpp (AIHarvestPrepareSiteState
+  hint merged into it), AIPlayer.cpp (24 AISkirmishPlayer rows), LANGameInfo.cpp
+  (33 LANAPI rows), SupplyCenterDockUpdate.cpp (9 RepairDockUpdate rows),
+  streakrender.cpp (52 streak.cpp rows), W3DTankTruckDraw.cpp (8 W3DTruckDraw rows).
