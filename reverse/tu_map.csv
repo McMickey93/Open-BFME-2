@@ -39615,7 +39615,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004B9428,42,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreateCtor.cpp
 0x004B9452,6,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,C,C=0x004B9428..0x004B9458 provisional,Code/GameEngine/Source/Common/ConstIntGetters4.cpp
 0x004B9458,25,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,C,C=0x004B9428..0x004B9471 provisional,Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp
-0x004B9471,69,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp
+0x004B9471,69,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
 0x004B94B6,17,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp
 0x004B94C7,28,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,C,C=0x004B94B6..0x004B94E3 provisional,Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp
 0x004B94E3,37,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreateXfer.cpp
@@ -81321,8 +81321,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078F287,10,code,Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp,approved,P,P=0x004B92A0@FuncInfo0x0094017C,Code/GameEngine/Source/GameLogic/Object/Create/PreorderCreate.cpp
 0x0078F291,13,code,Code/GameEngine/Source/GameLogic/Object/Create/SpecialPowerCreate.cpp,approved,P,P=0x004B938E@FuncInfo0x009401A0,Code/GameEngine/Source/GameLogic/Object/Create/SpecialPowerCreate.cpp
 0x0078F29E,10,code,Code/GameEngine/Source/GameLogic/Object/Create/SpecialPowerCreate.cpp,approved,P,P=0x004B938E@FuncInfo0x009401A0,Code/GameEngine/Source/GameLogic/Object/Create/SpecialPowerCreate.cpp
-0x0078F2A8,13,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B9471@FuncInfo0x009401C4 provisional,Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp
-0x0078F2B5,10,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B9471@FuncInfo0x009401C4 provisional,Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp
+0x0078F2A8,13,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B9471@FuncInfo0x009401C4 provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
+0x0078F2B5,10,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B9471@FuncInfo0x009401C4 provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
 0x0078F2BF,8,code,,,-,,Code/gen_small/uw_gen_013.cpp
 0x0078F2C7,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
 0x0078F2D1,8,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B959C@FuncInfo0x0094021C provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp

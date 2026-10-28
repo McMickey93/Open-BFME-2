@@ -78,19 +78,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class InheritUpgradeCreate
-{
-public:
-	virtual ~InheritUpgradeCreate();
-	void rva004B959C();
-
-private:
-	const InheritUpgradeCreateData *m_moduleData;	// +0x04
-	Object *m_object;	// +0x08
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 class Rva003623E5Filter
 {
 public:
@@ -107,13 +94,42 @@ private:
 	Rva003623E5Filter m_objectFilter; // +0x8C
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class InheritUpgradeCreate
+{
+public:
+	virtual ~InheritUpgradeCreate();
+	void rva004B959C();
+
+private:
+	const InheritUpgradeCreateData *m_moduleData;	// +0x04
+	Object *m_object;	// +0x08
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
 // tu-skeleton: 0x004B9428 42B ??0InheritUpgradeCreate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreateCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004B9452 6B ?Rva004B9452Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
 // tu-skeleton: 0x004B9458 25B ??1Rva004B9458@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva004B8CDEDerived.cpp (not merged yet)
 
-// tu-skeleton: 0x004B9471 69B ?getModuleNameKey@InheritUpgradeCreate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp
+
+// ?getModuleNameKey@InheritUpgradeCreate@@UBE?AW4NameKeyType@@XZ
+NameKeyType InheritUpgradeCreate::getModuleNameKey() const
+{
+	static NameKeyType TheInheritUpgradeCreatePoolKey =
+		TheNameKeyGenerator->nameToKey("InheritUpgradeCreate");
+	return TheInheritUpgradeCreatePoolKey;
+}
 
 // tu-skeleton: 0x004B94B6 17B ?buildFieldParse@InheritUpgradeCreateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
@@ -122,6 +138,8 @@ private:
 // tu-skeleton: 0x004B94E3 37B ?xfer@InheritUpgradeCreate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreateXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x004B9508 69B ??0InheritUpgradeCreateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreateModuleDataCtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreateModuleDataDtor.cpp
 
@@ -176,7 +194,3 @@ void InheritUpgradeCreate::rva004B959C()
 }
 
 // tu-skeleton: 0x004B96A9 27B ?onBuildComplete@InheritUpgradeCreate@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreateOnBuildComplete.cpp (not merged yet)
-
-// tu-skeleton: 0x0078F2A8 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078F2B5 10B __ehhandler$?getModuleNameKey@InheritUpgradeCreate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp (not merged yet)
