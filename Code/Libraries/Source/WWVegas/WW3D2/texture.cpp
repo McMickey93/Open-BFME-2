@@ -2097,7 +2097,7 @@ void VolumeTextureClass::Apply_New_Surface
 // Visible byte-exact setter, getter and dispatcher fix the allocation; the volatile count reference
 // reproduces retail's in-memory store and AND, which keeps every frame home (0x001321a7-20261019-w5-resume.md).
 #include <string.h>
-void *operator new[](unsigned);
+#include <new>
 struct TextureRecolorGUID
 {
  unsigned long a;
