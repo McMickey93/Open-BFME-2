@@ -17,7 +17,7 @@ typedef bool Bool;
 
 class Xfer;
 
-class Rva00404781 {public:__declspec(dllimport) __forceinline Rva00404781(){rva0040475C();}__declspec(nothrow) void rva0040475C();float first[20],second[20];unsigned flags0,flags1;};
+class Rva00404781 {public:__declspec(dllimport) __forceinline Rva00404781(){rva0040475C();}__declspec(nothrow) void rva0040475C();void AddDeath(float,int,int);int rva00404CF5(bool);float first[20],second[20];unsigned flags0,flags1;};
 
 struct Rva0040538FElement
 {
@@ -32,7 +32,7 @@ struct Rva00405350:public VictoryParameterBase {__forceinline Rva00405350():Vict
 class CellGrid;
 
 class VictorySystem:public SubsystemInterface,public Snapshot {
-public:VictorySystem();virtual ~VictorySystem();virtual void init();virtual void reset();virtual void update();virtual void LoadPostProcess(){}virtual const char*GetSnapshotName()const{return "VictorySystem";}virtual void DoXfer(Xfer*);virtual void newMap();
+public:VictorySystem();void rva00404B03();virtual ~VictorySystem();virtual void init();virtual void reset();virtual void update();virtual void LoadPostProcess(){}virtual const char*GetSnapshotName()const{return "VictorySystem";}virtual void DoXfer(Xfer*);virtual void newMap();
  float cellSize10;unsigned field14;float firstScale18,secondScale1c,field20,field24;
  int playerParameterIndex28[20];Rva00404781 root78;Rva00405350 parameters120;
  CellGrid*grids12c[2];bool initialized134;unsigned activeGrid138,currentPlayer13c;
