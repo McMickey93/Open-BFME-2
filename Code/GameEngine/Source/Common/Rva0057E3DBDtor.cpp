@@ -18,12 +18,9 @@ class MapMetaData
 public:
 	~MapMetaData();
 };
-void operator delete(void *p);
-
-// Retail calls free directly (the game allocator), not through the CRT
-// import: read <stdlib.h> without dllimport.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
 
 struct Buf0C
