@@ -1,4 +1,6 @@
 // cl: /DNDEBUG /MD /Ireference/shims/bfme2_thread /Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib
+// platformsdk
+#include <windows.h>
 #include "thread.h"
 
 // BFME_DX8_Thread_Lock at 0x0011F520.  BFME guards DX8 buffer access with a
@@ -12,15 +14,6 @@
 // WaitForSingleObject and the critical-section pair use the import table.
 // The thread ID comes from the WWLib wrapper at 0x006105D0.
 // /G7 is the tell (add eax,1 for the recursion count).
-
-extern "C" {
-__declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void *handle, unsigned long milliseconds);
-__declspec(dllimport) void __stdcall EnterCriticalSection(void *section);
-__declspec(dllimport) void __stdcall LeaveCriticalSection(void *section);
-__declspec(dllimport) int __stdcall ReleaseMutex(void *handle);
-}
-
-enum { BFME_WAIT_TIMEOUT = 0x102 };
 
 // Slot layout as Log_DX8_ErrorCode.cpp models it; only the slots called here
 // are named.
@@ -85,17 +78,17 @@ volatile int bfmeDX8DeviceRecursion = 0;			// 0x00DEDA8C
 
 void BFME_DX8_Thread_Lock(void)
 {
-	if (WaitForSingleObject(bfmeDX8DeviceMutex, 20000) == BFME_WAIT_TIMEOUT) {
+	if (WaitForSingleObject(bfmeDX8DeviceMutex, 20000) == WAIT_TIMEOUT) {
 		if (bfmeRva000387C0()) {
 			Debug::SkipNext(true);
 			theDebug->SkipNext();
 			(theDebug->CrashBegin(0, 0, 0) << "A thread held onto DirectX for more than 20000msec.").CrashDone(2);
 		}
 	}
-	EnterCriticalSection(bfmeDX8DeviceSection);
+	EnterCriticalSection((LPCRITICAL_SECTION)bfmeDX8DeviceSection);
 	bfmeDX8DeviceOwner = ThreadClass::_Get_Current_Thread_ID();
 	++bfmeDX8DeviceRecursion;
-	LeaveCriticalSection(bfmeDX8DeviceSection);
+	LeaveCriticalSection((LPCRITICAL_SECTION)bfmeDX8DeviceSection);
 }
 
 // 0x0011F5B0: the non-blocking twin -- wait up to the caller's timeout and
@@ -103,12 +96,12 @@ void BFME_DX8_Thread_Lock(void)
 // bookkeeping as the lock.  No Zero Hour counterpart; address-derived name.
 bool bfmeRva0011F5B0(unsigned long milliseconds)
 {
-	if (WaitForSingleObject(bfmeDX8DeviceMutex, milliseconds) == BFME_WAIT_TIMEOUT)
+	if (WaitForSingleObject(bfmeDX8DeviceMutex, milliseconds) == WAIT_TIMEOUT)
 		return false;
-	EnterCriticalSection(bfmeDX8DeviceSection);
+	EnterCriticalSection((LPCRITICAL_SECTION)bfmeDX8DeviceSection);
 	bfmeDX8DeviceOwner = ThreadClass::_Get_Current_Thread_ID();
 	++bfmeDX8DeviceRecursion;
-	LeaveCriticalSection(bfmeDX8DeviceSection);
+	LeaveCriticalSection((LPCRITICAL_SECTION)bfmeDX8DeviceSection);
 	return true;
 }
 
