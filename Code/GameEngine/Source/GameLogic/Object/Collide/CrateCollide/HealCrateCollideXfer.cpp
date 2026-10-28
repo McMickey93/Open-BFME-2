@@ -1,12 +1,17 @@
 // cl: /DNDEBUG /MD
 //
-// ?xfer@HealCrateCollide@@MAEXPAVXfer@@@Z @0x004BD2F9 27B: slot 3 (offset 0x0C)
-// of vtable 0x0085A868 (class of ??0HealCrateCollide at 0x004BC80F) and five
-// ICF-twin vtables 0x0085A8A0/0x0085A8D8/0x0085A914/0x0085A954/0x0085A9C0
-// (Money/Shroud/Unit/Veterancy/Salvage CrateCollide). Version1 via rowed
-// 0x000053EE then base CrateCollide xfer via rowed 0x004BC617; no extra
-// members. Donor is ZH CrateCollide::xfer pattern; BFME2 derived empties
-// fold to this Version1-plus-base shape.
+// ?xfer@SalvageCrateCollide@@MAEXPAVXfer@@@Z @0x004BD2F9 27B, with the fold alias
+// ?xfer@HealCrateCollide@@MAEXPAVXfer@@@Z (same body).
+// Target facts: slot 3 (offset 0x0C) of vtable 0x0085A868 (class of
+// ??0HealCrateCollide at 0x004BC80F) and of five more vtables
+// 0x0085A8A0/0x0085A8D8/0x0085A914/0x0085A954/0x0085A9C0
+// (Money/Shroud/Unit/Veterancy/Salvage CrateCollide): one identical-code fold.
+// Version1 via rowed 0x000053EE then base CrateCollide xfer via rowed
+// 0x004BC617; no extra members. The kept copy lies inside
+// SalvageCrateCollide.cpp's run, after the Salvage vtable's destructor
+// 0x004BD207, so it is the copy SalvageCrateCollide's object supplied.
+// Donor facts: Zero Hour SalvageCrateCollide::xfer and HealCrateCollide::xfer
+// are both xferVersion(1) then CrateCollide::xfer.
 class AsciiString;
 class UnicodeString;
 class PooledString;
@@ -62,6 +67,18 @@ protected:
 private:
     bool m_everExecuted;
 };
+class SalvageCrateCollide : public CrateCollide
+{
+public:
+    SalvageCrateCollide(Thing *thing, const ModuleData *moduleData);
+protected:
+    virtual void xfer(Xfer *xfer);
+};
+void SalvageCrateCollide::xfer(Xfer *xfer)
+{
+    xfer->Version1();
+    CrateCollide::xfer(xfer);
+}
 class HealCrateCollide : public CrateCollide
 {
 public:
@@ -69,6 +86,7 @@ public:
 protected:
     virtual void xfer(Xfer *xfer);
 };
+// Fold alias: HealCrateCollide's vtable slot names the same body.
 void HealCrateCollide::xfer(Xfer *xfer)
 {
     xfer->Version1();
