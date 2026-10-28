@@ -1,7 +1,7 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
 // W3DVideoBuffer::allocate, retail 0x00072760..0x0007280A (170 B, RET 0xC), vtable
 // 0x007C64D8 slot 2. WorldBuilder 0x0099C010 (callgraph score 1.0) carries the same body:
-// the ZH allocate spine (free, size copies, TextureLoader::Validate_Texture_Size, format
+// the ZH allocate spine (free, size copies, texture size validation, format
 // lookup) under a DX8 thread lock, plus a BFME bool stored at +0x49 and passed to the
 // format mapper, then one state allocation per buffered state (rowed 0x000725BC).
 void __cdecl BFME_DX8_Thread_Lock();
@@ -14,10 +14,12 @@ public:
 	~BFMEDX8DeviceLock() { BFME_DX8_Thread_Assert(); }
 };
 
-class TextureLoader
+// retail 0x0011E670: BFME's DXWrapper::AdjustTextureSize (Zero Hour's donor text calls
+// TextureLoader::Validate_Texture_Size here).
+class DX8Wrapper
 {
 public:
-	static void Validate_Texture_Size(unsigned int &width, unsigned int &height);
+	static void AdjustTextureSize(unsigned int &width, unsigned int &height);
 };
 
 int Rva0007240CGet(int kind, bool flag);
@@ -65,7 +67,7 @@ bool W3DVideoBuffer::allocate(unsigned int width, unsigned int height, bool flag
 	m_height = height;
 	m_texture_width = width;
 	m_texture_height = height;
-	TextureLoader::Validate_Texture_Size(m_texture_width, m_texture_height);
+	DX8Wrapper::AdjustTextureSize(m_texture_width, m_texture_height);
 	m_flag_49 = flag;
 	int format = Rva0007240CGet(m_format, flag);
 	if (format == 0)
