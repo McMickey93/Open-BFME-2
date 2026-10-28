@@ -1,0 +1,55 @@
+# UnitRevivalEntry canonical AsciiString adoption
+
+Inspected base: `52967e295106572252a325ff2adc595ae7fece05`.
+Source: `Code/GameEngine/Source/Common/UnitRevivalEntry.cpp`.
+Claim: `class:AsciiString` (codex3).
+
+## Target facts and retained reconstruction
+
+The existing default-constructor row `??0UnitRevivalEntry@@QAE@XZ` at
+`0x0037E352` covers 135 bytes. Its initialization sequence clears the
+128-byte member through `clear80` at `0x001EAE6F`, constructs the 24-byte
+record through the existing constructor at `0x004E04FD`, then initializes
+the final words, including the AsciiString buffer at offset `0xD4`.
+Those callees already have ledger owners; this is neither a missing body
+nor a new identity claim.
+
+The former private AsciiString view allowed a late raw null store. Simply
+including the canonical header moved default construction before the old
+constructor body. Expressing the entire initialization sequence in member
+initializers instead preserves the late canonical default construction.
+The record is now a typed 24-byte member, and a forced-inline member
+constructor calls the existing clear worker. The existing compiler barrier
+is retained before `m_D0` initialization to preserve the float-store order.
+Numeric member and helper names remain placeholders; no donor identity or
+original field names are claimed. Shared headers, pins and ledger rows are
+unchanged.
+
+## Verification
+
+- `find_declared_unmatched.py` passes before and after the change.
+- Normal `build.sh` verifies the sole row: all 135 bytes and the float
+  literal match retail.
+- `header_adopt_lane.py accept --class AsciiString` passes and retires the
+  source's one header-queue entry through the owning tool.
+- `link_check.py --prepare-current` produces a strict current receipt.
+  Both the ordinary preview and `--census-only` preview retain LINKS and
+  134 authored bytes against index `d92e7e6635` (2026-10-28 15:58).
+- Scoped allowed-symbol, data and class checks pass: two references bind
+  to their two owners, with zero wrong bindings or data findings.
+- Object comparison retains both existing COMDAT fingerprints, including
+  the constructor's bytes and relocations. It removes the unused placement
+  new adapter and adds unreferenced AsciiString constructor/destructor and
+  clear-member constructor copies. No root references, exclusive definitions
+  or weak bindings change. The new clear-member adapter is compiler-emitted
+  support, not a newly recovered retail body. See the companion JSON.
+
+## Remaining audit scope
+
+The staged `link_batch_audit.py` is INCONCLUSIVE: its index predates the
+outgoing base, and affected consumer
+`Code/GameEngine/Source/Common/0CreateAHeroManager21FE49.cpp` lacks a current
+receipt. Carry this provider and consumer into the next scheduled census.
+There is no proven link loss, but the wider consumer audit is unverified.
+No census or image-ownership gain is claimed. The other AsciiString header
+queue entries and LINK-100's remaining contracts stay open.

@@ -1,24 +1,21 @@
-// cl: /DNDEBUG /MD
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD
 // ??0UnitRevivalEntry@@QAE@XZ @0x0037E352 135B
 // Default ctor over UnitRevivalEntry: zeros plus ones plus clear80 0x001EAE6F plus
 // Rva004E04FD ctor plus float global 1.0f plus AsciiString null.
 // Neighbours in Rva0037E270Lookup.cpp share /O1 /DNDEBUG /MD; /arch:SSE for
 // retail xorps plus movss float zero and global float moves.
-class AsciiString
-{
-	char *m_text;
-public:
-	AsciiString &operator=(const AsciiString &other);
-};
-#include <new>
+#include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 class Rva001EAE6FHelper
 {
 	char m_data[0x80];
 public:
 	Rva001EAE6FHelper *clear80() throw();
+	// Keep the existing clear worker while constructing this member in order.
+	__forceinline Rva001EAE6FHelper() throw() { clear80(); }
 };
 class Rva004E04FD
 {
+	char m_data[0x18];
 public:
 	Rva004E04FD() throw();
 };
@@ -39,7 +36,7 @@ class UnitRevivalEntry {
     int m_A4;
     int m_A8;
     int m_AC;
-    char m_B0_raw[0x18];
+    Rva004E04FD m_B0;
     int m_C8;
     float m_CC;
     int m_D0;
@@ -48,28 +45,10 @@ public:
     UnitRevivalEntry();
 };
 UnitRevivalEntry::UnitRevivalEntry()
+    : m_00(0), m_04(0), m_08(0.0f), m_0C(1), m_10(1), m_14(),
+      m_94(0), m_98(-1), m_9C(0), m_A0(false), m_A1(false),
+      m_A4(0), m_A8(0), m_AC(0), m_B0(), m_C8(0), m_CC(1.0f),
+      // Retail stores m_CC before initializing the final two words.
+      m_D0((_ReadWriteBarrier(), 0)), m_str()
 {
-	m_00 = 0;
-	m_04 = 0;
-	m_08 = 0.0f;
-	m_0C = 1;
-	m_10 = 1;
-	m_14.clear80();
-	m_98 = -1;
-	m_94 = 0;
-	m_9C = 0;
-	m_A0 = 0;
-	m_A1 = 0;
-	m_A4 = 0;
-	m_A8 = 0;
-	m_AC = 0;
-	Rva004E04FD *pB0 = (Rva004E04FD *)m_B0_raw;
-	__assume(pB0 != 0);
-	new (pB0) Rva004E04FD();
-	float fCC = 1.0f;
-	m_C8 = 0;
-	m_CC = fCC;
-	_ReadWriteBarrier();
-	m_D0 = 0;
-	*(int *)&m_str = 0;
 }

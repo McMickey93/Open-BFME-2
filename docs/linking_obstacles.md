@@ -6467,6 +6467,20 @@ INCONCLUSIVE: its index predates the base, and the three ordinary verified
 objects lack census-grade receipts, so affected consumers remain unverified.
 Census confirmation is pending.
 
+**2026-10-28 UnitRevivalEntry default-constructor subset:** the constructor
+now uses the canonical AsciiString header. Initializing all members in
+declaration order retains the native late buffer initialization without a
+new shared-header constructor. The owning adoption tool retires this
+source's one header-queue entry; its 135-byte row remains exact, and both
+strict/current and ordinary scoped previews retain LINKS (134 authored
+bytes; index `d92e7e6635`). Existing COMDAT fingerprints and root bindings
+are unchanged. [Evidence and object comparison](../reverse/attempt_support/unit-revival-ascii-header-20261028-codex3.md).
+The staged batch audit is INCONCLUSIVE because the index predates the base
+and `Common/0CreateAHeroManager21FE49.cpp` lacks a current consumer receipt.
+Carry both units into the next scheduled census. Clearance is limited to
+this header consumer; the other contracts above remain open. No census
+gain is claimed.
+
 ### LINK-104: placeholder deleting destructors still emit nonretail complete destructors
 
 ### LINK-109: placeholder deleting destructors still emit nonretail complete destructors
