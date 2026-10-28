@@ -3678,13 +3678,6 @@ void Rva00517EA2::rva00517EA2()
 #pragma comment(linker, "/alternatename:??0PeerRequest@@QAE@XZ=??0BfmeOpaqueOwnedRecord492@@QAE@XZ")
 #pragma comment(linker, "/alternatename:??1PeerRequest@@QAE@XZ=??1BfmeOpaqueOwnedRecord492@@QAE@XZ")
 
-// This unit also owns the map<int, SBServer> tree inserts at 0x005E4415 and
-// 0x005E449D, which no body above instantiates.
-typedef _STL::pair<const Int, SBServer> BfmeServerPair;
-typedef _STL::_Rb_tree<Int, BfmeServerPair, _STL::_Select1st<BfmeServerPair>,
-	_STL::less<Int>, _STL::allocator<BfmeServerPair> > BfmeServerTree;
-template _STL::pair<BfmeServerTree::iterator, bool> BfmeServerTree::insert_unique(const BfmeServerPair &);
-
 // Native 388D61 forwards the last two pointers of the nine-entry tables.
 // The receiver field at +54 is opaque; the donor thunk name is not owner identity.
 extern void __cdecl dispatchIndexedValue(void *, int, void *, int, int *, int *);

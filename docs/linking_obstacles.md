@@ -245,6 +245,8 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 896af216804e1f1e34de28bd318285fbbbfcc536.**
 
+**PeerThread pointer-tree cleanup (2026-10-28, inspected `3b9f8855e0`, index `73061d9452`):** removed an unused explicit `map<int, _SBServer*>` tree insertion instantiation, its two false duplicate rows at 0x005E4415/0x005E449D, and its node pin at 0x005E42B1. Native node construction copies a nontrivial owned SBServer value; complete owners already exist in StlportMapSBServerSubscript.cpp and stlport_map_int_sbserver.cpp. PeerThread's remaining 174 rows and the providers' 26 rows verify exactly; all three remain LINKS in the ordinary preview. Unique covered ranges are preserved; this does not increase census coverage. Identity retirement refuses the deleted HEAD row names, so both registered keys remain intact. Seven rows retain identity findings; whole-unit reconciliation and census confirmation remain pending. [Evidence and retirement prerequisite](../reverse/attempt_support/peerthread-pointer-tree-cleanup-20261028-codex.md).
+
 - **Evidence / scope:** equal-sized `BfmePod28` / `BfmePod32` views conflate
   native types with different constructors and copy operations. The
   [element-split handoff](../reverse/attempt_support/pod-element-split-20261023/readme.md)
