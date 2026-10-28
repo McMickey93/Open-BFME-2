@@ -20358,8 +20358,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03D5C,4,.data,global,?TheDetachableRiderUpdatePoolKey@?1??getModuleNameKey@DetachableRiderUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp,owned,,1,2
 0x00A03D60,4,.data,global,?$S1@?1??getModuleNameKey@DetachableRiderUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp,owned,,1,4
 0x00A03D64,4,.data,global,_s_rva007B1DCE,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03D68,4,.data,global,?TheRespawnUpdatePoolKey@?1??getModuleNameKey@RespawnUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp,owned,,1,2
-0x00A03D6C,4,.data,global,?$S1@?1??getModuleNameKey@RespawnUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp,owned,,1,4
+0x00A03D68,4,.data,global,?TheRespawnUpdatePoolKey@?1??getModuleNameKey@RespawnUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,owned,,1,2
+0x00A03D6C,4,.data,global,?$S1@?1??getModuleNameKey@RespawnUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,owned,,1,4
 0x00A03D70,4,.data,global,_s_rva007B1DF8,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03D74,4,.data,global,?TheSpecialDisguiseUpdatePoolKey@?1??getModuleNameKey@SpecialDisguiseUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdatePoolKey.cpp,owned,,1,2
 0x00A03D78,4,.data,global,?$S1@?1??getModuleNameKey@SpecialDisguiseUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdatePoolKey.cpp,owned,,1,4

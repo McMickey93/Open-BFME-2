@@ -39056,7 +39056,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004AEFAD,94,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate_getPercentReady.cpp
 0x004AF00B,139,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateXfer.cpp
 0x004AF096,128,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateCtor.cpp
-0x004AF116,69,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp
+0x004AF116,69,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp
 0x004AF15B,6,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,U,N=Code/GameEngine/Source/Common/RespawnUpdate.cpp,Code/GameEngine/Source/Common/ModuleNameGetters.cpp
 0x004AF161,28,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,C,C=0x004AF15B..0x004AF17D,Code/GameEngine/Source/Common/VslotSmallBodiesAR.cpp
 0x004AF17D,5,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,C,C=0x004AF15B..0x004AF182,Code/GameEngine/Source/Common/VslotSmallBodiesAR.cpp
@@ -81029,8 +81029,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078E65B,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Behavior/DetachableRiderUpdateModuleDataDtor.cpp
 0x0078E665,8,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF096@FuncInfo0x0093EFD4,Code/gen_small/uw_gen_011.cpp
 0x0078E66D,10,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF096@FuncInfo0x0093EFD4,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateCtor.cpp
-0x0078E677,13,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF116@FuncInfo0x0093EFF8,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp
-0x0078E684,10,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF116@FuncInfo0x0093EFF8,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp
+0x0078E677,13,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF116@FuncInfo0x0093EFF8,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp
+0x0078E684,10,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF116@FuncInfo0x0093EFF8,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp
 0x0078E68E,8,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF1CE@FuncInfo0x0093F024,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate_searchForSuitableSpawnAtObject.cpp
 0x0078E696,8,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF1CE@FuncInfo0x0093F024,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate_searchForSuitableSpawnAtObject.cpp
 0x0078E69E,10,code,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp,approved,P,P=0x004AF1CE@FuncInfo0x0093F024,Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate_searchForSuitableSpawnAtObject.cpp

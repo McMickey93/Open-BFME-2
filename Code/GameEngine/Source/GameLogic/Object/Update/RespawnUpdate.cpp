@@ -163,6 +163,14 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
 class RespawnUpdate:public UpdateModule {
 public:
 	virtual UpdateSleepTime update();
@@ -194,7 +202,15 @@ public:
 
 // tu-skeleton: 0x004AF096 128B ??0RespawnUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x004AF116 69B ?getModuleNameKey@RespawnUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp
+
+// ?getModuleNameKey@RespawnUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType RespawnUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheRespawnUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("RespawnUpdate");
+	return TheRespawnUpdatePoolKey;
+}
 
 // tu-skeleton: 0x004AF15B 6B ?name@RespawnUpdate@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 
@@ -231,6 +247,8 @@ public:
 // tu-skeleton: 0x004AF63E 350B ?triggerDeathBeforeRespawn@RespawnUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate_triggerDeathBeforeRespawn.cpp (not merged yet)
 
 // tu-skeleton: 0x004AF79C 403B ?triggerRevival@RespawnUpdate@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateTriggerRevival.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate.cpp
 
@@ -290,18 +308,6 @@ UpdateSleepTime RespawnUpdate::update() {
  default:return UPDATE_SLEEP_FOREVER;
  }
 }
-
-// tu-skeleton: 0x004AFB01 21B ?rva004AFB01@Rva004AFB01@@QAEHXZ -- matched in Code/GameEngine/Source/Common/Rva004AFB01.cpp (not merged yet)
-
-// tu-skeleton: 0x004AFB16 21B ?rva004AFB16@Rva004AFB01@@QAEHXZ -- matched in Code/GameEngine/Source/Common/Rva004AFB01.cpp (not merged yet)
-
-// tu-skeleton: 0x004AFB2B 35B ?insert@BFME2RespawnRuleTree@@QAE?AURespawnInsertResult@@ABURespawnRule@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/RespawnRuleTreeInsert.cpp (not merged yet)
-
-// tu-skeleton: 0x004AFB4E 149B ??0RespawnUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateModuleDataConstruct.cpp (not merged yet)
-
-// tu-skeleton: 0x004AFBE3 28B ??_GRespawnUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-04-4AFBE3.cpp (not merged yet)
-
-// tu-skeleton: 0x004AFBFF 96B ??1RespawnUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateModuleDataDtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateParseRules.cpp
 
@@ -391,15 +397,23 @@ void RespawnUpdate::iniParseNewRuleForLevel(INI *ini, void *instance, void *stor
     rules->insert(rule);
 }
 
+// tu-skeleton: 0x004AFB01 21B ?rva004AFB01@Rva004AFB01@@QAEHXZ -- matched in Code/GameEngine/Source/Common/Rva004AFB01.cpp (not merged yet)
+
+// tu-skeleton: 0x004AFB16 21B ?rva004AFB16@Rva004AFB01@@QAEHXZ -- matched in Code/GameEngine/Source/Common/Rva004AFB01.cpp (not merged yet)
+
+// tu-skeleton: 0x004AFB2B 35B ?insert@BFME2RespawnRuleTree@@QAE?AURespawnInsertResult@@ABURespawnRule@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/RespawnRuleTreeInsert.cpp (not merged yet)
+
+// tu-skeleton: 0x004AFB4E 149B ??0RespawnUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateModuleDataConstruct.cpp (not merged yet)
+
+// tu-skeleton: 0x004AFBE3 28B ??_GRespawnUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-04-4AFBE3.cpp (not merged yet)
+
+// tu-skeleton: 0x004AFBFF 96B ??1RespawnUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateModuleDataDtor.cpp (not merged yet)
+
 // tu-skeleton: 0x004B0153 17B ?buildFieldParse@RespawnUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateModuleDataParse.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E665 8B uw_0078e665 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E66D 10B __ehhandler$??0RespawnUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E677 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E684 10B __ehhandler$?getModuleNameKey@RespawnUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E68E 8B $L497 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdate_searchForSuitableSpawnAtObject.cpp (not merged yet)
 
