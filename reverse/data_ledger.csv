@@ -20063,8 +20063,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03840,4,.data,global,?TheCreateObjectDieIfEldestKindofKey@?1??onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofOnDie.cpp,owned,,1,2
 0x00A03844,4,.data,global,?$S1@?1??onDie@CreateObjectDieIfEldestKindof@@UAEXPBVDamageInfo@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDieIfEldestKindofOnDie.cpp,owned,,1,4
 0x00A03848,4,.data,global,_s_rva007B1266,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A0384C,4,.data,global,?TheDamageFilteredCreateObjectDiePoolKey@?1??getModuleNameKey@DamageFilteredCreateObjectDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDiePoolKey.cpp,owned,,1,2
-0x00A03850,4,.data,global,?$S1@?1??getModuleNameKey@DamageFilteredCreateObjectDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDiePoolKey.cpp,owned,,1,4
+0x00A0384C,4,.data,global,?TheDamageFilteredCreateObjectDiePoolKey@?1??getModuleNameKey@DamageFilteredCreateObjectDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDie.cpp,owned,,1,2
+0x00A03850,4,.data,global,?$S1@?1??getModuleNameKey@DamageFilteredCreateObjectDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/DamageFilteredCreateObjectDie.cpp,owned,,1,4
 0x00A03854,4,.data,global,?TheCrushDiePoolKey@?1??getModuleNameKey@CrushDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp,owned,,1,2
 0x00A03858,4,.data,global,?$S1@?1??getModuleNameKey@CrushDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp,owned,,1,4
 0x00A0385C,4,.data,global,_s_rva007B12AA,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1

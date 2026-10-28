@@ -1,0 +1,42 @@
+{
+  "strict_receipt": true,
+  "old_comdats": [
+    [
+      "??0DamageFilteredCreateObjectDieModuleData@@QAE@XZ",
+      "62721dcad265",
+      35
+    ],
+    [
+      "??_C@_0BO@JGAHMKKP@DamageFilteredCreateObjectDie?$AA@",
+      "139da64cb08d",
+      30
+    ],
+    [
+      "?getModuleNameKey@DamageFilteredCreateObjectDie@@UBE?AW4NameKeyType@@XZ",
+      "9f78f24ce5b2",
+      69
+    ]
+  ],
+  "new_comdats": [
+    [
+      "??0DamageFilteredCreateObjectDieModuleData@@QAE@XZ",
+      "62721dcad265",
+      35
+    ],
+    [
+      "??_C@_0BO@JGAHMKKP@DamageFilteredCreateObjectDie?$AA@",
+      "139da64cb08d",
+      30
+    ],
+    [
+      "?getModuleNameKey@DamageFilteredCreateObjectDie@@UBE?AW4NameKeyType@@XZ",
+      "9f78f24ce5b2",
+      69
+    ]
+  ],
+  "comdats_equal": true,
+  "external_symbol_sets_equal": true,
+  "external_symbol_count": 10,
+  "lost": [],
+  "added": []
+}
