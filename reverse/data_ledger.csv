@@ -20344,8 +20344,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03D1C,4,.data,global,?TheGloriousChargeUpdatePoolKey@?1??getModuleNameKey@GloriousChargeUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/GloriousChargeUpdatePoolKey.cpp,owned,,1,2
 0x00A03D20,4,.data,global,?$S1@?1??getModuleNameKey@GloriousChargeUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/GloriousChargeUpdatePoolKey.cpp,owned,,1,4
 0x00A03D24,4,.data,global,_s_rva007B1D46,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03D28,4,.data,global,?TheToggleMountedSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@ToggleMountedSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdatePoolKey.cpp,owned,,1,2
-0x00A03D2C,4,.data,global,?$S1@?1??getModuleNameKey@ToggleMountedSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdatePoolKey.cpp,owned,,1,4
+0x00A03D28,4,.data,global,?TheToggleMountedSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@ToggleMountedSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdate.cpp,owned,,1,2
+0x00A03D2C,4,.data,global,?$S1@?1??getModuleNameKey@ToggleMountedSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdate.cpp,owned,,1,4
 0x00A03D34,4,.data,global,?g_Va00E03D34@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E03Dxx.cpp,owned,,1,2
 0x00A03D38,4,.data,global,_s_rva007B1D70,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03D3C,4,.data,global,?TheToggleHiddenSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@ToggleHiddenSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ToggleHiddenSpecialAbilityUpdatePoolKey.cpp,owned,,1,2
