@@ -326,7 +326,8 @@ void W3DTankTruckDraw::setHidden(Bool h)
 }
 
 /**Update uv coordinates on each tread object to simulate movement*/
-// W3DTankTruckDraw::updateTreadPositions: defined in W3DTankTruckDrawUpdateTreadPositions.cpp (its row's unit).
+// W3DTankTruckDraw::updateTreadPositions: retail body not identified (0x000CDFC8, once rowed
+// under this name, is W3DTankDraw::updateTreadPositions; see W3DTankTruckDrawUpdateTreadPositions.cpp).
 
 /**Grab pointers to the sub-meshes for each tread*/ 
 // ?updateTreadObjects@W3DTankTruckDraw@@ present-unmatched

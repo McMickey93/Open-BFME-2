@@ -141,13 +141,6 @@ struct TreadObjectInfo
 	Vector2 m_customUVOffset;
 };
 
-class W3DTankTruckDraw
-{
-	friend class W3DTankDraw;
-protected:
-	void updateTreadPositions(Real uvDelta);
-};
-
 class W3DModelDraw
 {
 public:
@@ -185,6 +178,7 @@ public:
 
 protected:
 	void updateTreadObjects(void);
+	void updateTreadPositions(Real uvDelta);	// 0x000CDFC8
 
 	BfmeParticleSystemHandle m_treadDebrisLeft;
 	BfmeParticleSystemHandle m_treadDebrisRight;
@@ -255,9 +249,9 @@ void W3DTankDraw::doDrawModule(const Matrix3D *transformMtx)
 			Real angleToGoal = dir.x * m_lastDirection.x + dir.y * m_lastDirection.y;
 			if (fabs(1.0f - angleToGoal) > 0.00001f) {
 				if (turn == -1)
-					((W3DTankTruckDraw *)this)->updateTreadPositions(-treadScrollSpeed);
+					updateTreadPositions(-treadScrollSpeed);
 				else
-					((W3DTankTruckDraw *)this)->updateTreadPositions(treadScrollSpeed);
+					updateTreadPositions(treadScrollSpeed);
 			}
 			m_lastDirection = dir;
 		} else if (obj->rva0028AC7D() / maxSpeed >= getW3DTankDrawModuleData()->m_treadDriveSpeedFraction) {
