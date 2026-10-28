@@ -588,6 +588,22 @@ Whole-unit clearance and census confirmation remain pending.
 
 ### LINK-004: missing or incompatible shared providers and declarations
 
+- **AutoHeal obsolete donor pulse removed (2026-10-28, base `0e774508a3`):**
+  [The cleanup evidence](../reverse/attempt_support/autoheal-obsolete-pulse-20261028-codex.md)
+  removes the unused one-argument Zero Hour pulse body and one
+  present-unmatched hatch. All four destination rows and the 13 native pulse
+  and PlayerScan rows verify; all 617 surviving destination COMDAT digests
+  are unchanged. The ordinary preview against index `54b83e4f69` clears the
+  pointer-return particle factory dependency (U7 -> U6) and preserves the
+  two native units' 1,926 linking bytes. Six UpgradeMux dependencies remain;
+  no census gain is claimed. The supported merge dry-run accepted no donor:
+  incompatible class views and the still-unlinked destination block source
+  consolidation. The batch audit remains INCONCLUSIVE despite strict receipts
+  for the three inspected sources: its index predates the base and affected
+  consumer `0CreateAHeroManager21FE49.cpp` lacks a current receipt. Carry that
+  wider closure into the next census. The earlier triage below remains the
+  prerequisite history.
+
 - **AutoHeal current-input triage (2026-10-28, `2fd3f18efc`):**
   The four matched rows in `AutoHealBehavior.cpp` remain exact, and the
   frozen-file check passes. The ordinary preview against published index
