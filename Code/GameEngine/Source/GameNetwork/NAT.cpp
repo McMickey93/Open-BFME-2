@@ -7,7 +7,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "unicode_string.h"
+#include "../../Include/GameNetwork/Transport.h"
+
 typedef unsigned int UnsignedInt;
+
 class GameInfo
 {
 public:
@@ -20,9 +23,11 @@ public:
 	unsigned char m_pad04[0x38 - 4];
 	unsigned int m_localIP;			// +0x38
 };
+
 class GameSpyStagingRoom : public GameInfo
 {
 };
+
 extern GameSpyStagingRoom *TheGameSpyGame;
 
 typedef unsigned short UnsignedShort;
@@ -64,6 +69,8 @@ public:
 // ledger already binds 0x00A063F8 to ?TheNAT@@3PAUNAT@@A (31 references, no
 // definition), so this definition is what links the unit.
 NAT *TheNAT = 0;
+
+// ---- from Code/GameEngine/Source/GameNetwork/NAT.cpp
 
 // ---- from Code/GameEngine/Source/GameNetwork/NAT.cpp
 
@@ -211,78 +218,6 @@ open:
 	m_time938 = timeGetTime() + g_00DD35BC;
 }
 
-// tu-skeleton: 0x005A678E 174B ?generatePortNumbers@NAT@@IAEXPAPAVGameSlot@@H@Z -- matched in Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp (not merged yet)
-
-// tu-skeleton: 0x005A683C 19B ?rva005A683C@Rva005A683C@@QAEXG@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE34.cpp (not merged yet)
-
-// tu-skeleton: 0x005A684F 26B ?get@NAT@@QBEII@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6869 22B ?rva005A6869@Rva005A683C@@QAEXF@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE34.cpp (not merged yet)
-
-// tu-skeleton: 0x005A687F 13B ?get@Rva005A687FCmpBoolField@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6903 92B ?processPlayerJoin@NAT@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/NAT.cpp (not merged yet)
-
-// tu-skeleton: 0x005A695F 97B ?processPlayerLeave@NAT@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/NAT.cpp (not merged yet)
-
-// tu-skeleton: 0x005A69C0 140B ?reconnectPlayers@NAT@@QAEXHHH@Z -- matched in Code/GameEngine/Source/Common/Rva005A69C0Box.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6B14 380B ?attachSlotList@NAT@@QAEXPAVGameInfo@@HII_N@Z -- matched in Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6B28 360B (unledgered) -- unmatched, no code, never credited
-
-// tu-skeleton: 0x005A6CA5 162B ?rva005A6CA5@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva005A69C0Box.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6D47 101B ?rva005A6D47@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva005A69C0Box.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6DAC 206B ?SetUDPSocketForSlot@NAT@@QAE_NGGPAX@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6EDA 24B ?Rva005A6EDADestroyRange@@YAXPAURva0052BF33Elem@@0@Z -- matched in Code/GameEngine/Source/Common/System/Rva0052BF33DestroyTagged.cpp (not merged yet)
-
-// tu-skeleton: 0x005A6EF2 640B ?sendPings@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendPings.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7172 63B ??1Rva005A7172@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
-
-// tu-skeleton: 0x005A71B1 79B ??1Rva005A71B1@@UAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7200 28B ??_GRva005A71B1@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x005A721C 303B ??0Rva005A734B@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x005A734B 119B ??1Rva005A734B@@UAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x005A73C2 28B ??_GRva005A734B@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x005A73DE 250B ?notifyTargetOfProbe@NAT@@QAEXPAURva005A7A96Slot@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
-
-// tu-skeleton: 0x005A74D8 427B ?notifyConnectionFromTargetDone@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7683 422B ?notifyConnectionToTargetFailed@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7829 331B ?notifyHostMyNATCreated@NAT@@QAEXH@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7974 290B ?rva005A7974@NAT@@QAEXGPAX@Z -- matched in Code/GameEngine/Source/Common/Rva005A8666BoxNat.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7A96 518B ?rva005A7A96@NAT@@QAEXPBV?$vector@URva005A7A96Pair@@V?$allocator@URva005A7A96Pair@@@_STL@@@_STL@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7C9C 576B ?notifyNATHostSlot@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
-
-// tu-skeleton: 0x005A7EDC 1090B ?processUDPPacket@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
-
-// tu-skeleton: 0x005A831E 231B ?sendAProbeToTarget@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
-
-// tu-skeleton: 0x005A8405 327B ?findMyMangledPort@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x005A854C 282B ?processManglerResponse@NAT@@QAEXG@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x005A8666 90B ?targetNotifyMeIWasProbed@NAT@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/Rva005A8666Box.cpp (not merged yet)
-
-// tu-skeleton: 0x005A86C0 219B ?gotTargetMangledPort@NAT@@QAEXHGH@Z -- matched in Code/GameEngine/Source/Common/Rva005A8666Box.cpp (not merged yet)
-
-// tu-skeleton: 0x005A879B 551B ?connectionUpdate@NAT@@QAEHXZ -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
-// tu-skeleton: 0x005A89C2 253B ?StartNegotiationAction@NAT@@QAEXHH@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameNetwork/NATProcessGlobalMessage.cpp
 
 //
@@ -402,6 +337,156 @@ void NAT::processGlobalMessage(Int slotNum, const char *options)
 		m_schema.handleNegotiationResult(first, second, cookie, 4);
 	}
 }
+
+// tu-skeleton: 0x005A678E 174B ?generatePortNumbers@NAT@@IAEXPAPAVGameSlot@@H@Z -- matched in Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp (not merged yet)
+
+// tu-skeleton: 0x005A683C 19B ?rva005A683C@Rva005A683C@@QAEXG@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE34.cpp (not merged yet)
+
+// tu-skeleton: 0x005A684F 26B ?get@NAT@@QBEII@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6869 22B ?rva005A6869@Rva005A683C@@QAEXF@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE34.cpp (not merged yet)
+
+// tu-skeleton: 0x005A687F 13B ?get@Rva005A687FCmpBoolField@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6903 92B ?processPlayerJoin@NAT@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/NAT.cpp (not merged yet)
+
+// tu-skeleton: 0x005A695F 97B ?processPlayerLeave@NAT@@QAEXH@Z -- matched in Code/GameEngine/Source/Common/NAT.cpp (not merged yet)
+
+// tu-skeleton: 0x005A69C0 140B ?reconnectPlayers@NAT@@QAEXHHH@Z -- matched in Code/GameEngine/Source/Common/Rva005A69C0Box.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6B14 380B ?attachSlotList@NAT@@QAEXPAVGameInfo@@HII_N@Z -- matched in Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6B28 360B (unledgered) -- unmatched, no code, never credited
+
+// tu-skeleton: 0x005A6CA5 162B ?rva005A6CA5@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva005A69C0Box.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6D47 101B ?rva005A6D47@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva005A69C0Box.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6DAC 206B ?SetUDPSocketForSlot@NAT@@QAE_NGGPAX@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6EDA 24B ?Rva005A6EDADestroyRange@@YAXPAURva0052BF33Elem@@0@Z -- matched in Code/GameEngine/Source/Common/System/Rva0052BF33DestroyTagged.cpp (not merged yet)
+
+// tu-skeleton: 0x005A6EF2 640B ?sendPings@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendPings.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7172 63B ??1Rva005A7172@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x005A71B1 79B ??1Rva005A71B1@@UAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7200 28B ??_GRva005A71B1@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x005A721C 303B ??0Rva005A734B@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x005A734B 119B ??1Rva005A734B@@UAE@XZ -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x005A73C2 28B ??_GRva005A734B@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x005A73DE 250B ?notifyTargetOfProbe@NAT@@QAEXPAURva005A7A96Slot@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
+
+// tu-skeleton: 0x005A74D8 427B ?notifyConnectionFromTargetDone@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7683 422B ?notifyConnectionToTargetFailed@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7829 331B ?notifyHostMyNATCreated@NAT@@QAEXH@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7974 290B ?rva005A7974@NAT@@QAEXGPAX@Z -- matched in Code/GameEngine/Source/Common/Rva005A8666BoxNat.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7A96 518B ?rva005A7A96@NAT@@QAEXPBV?$vector@URva005A7A96Pair@@V?$allocator@URva005A7A96Pair@@@_STL@@@_STL@@@Z -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7C9C 576B ?notifyNATHostSlot@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
+
+// tu-skeleton: 0x005A7EDC 1090B ?processUDPPacket@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
+
+// tu-skeleton: 0x005A831E 231B ?sendAProbeToTarget@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp (not merged yet)
+
+// tu-skeleton: 0x005A8405 327B ?findMyMangledPort@NAT@@QAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
+
+// tu-skeleton: 0x005A854C 282B ?processManglerResponse@NAT@@QAEXG@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva005A8666Box.cpp
+
+// NAT::targetNotifyMeIWasProbed @0x005A8666 90B (WorldBuilder name, its
+// __FUNCTION__ string "NAT::targetNotifyMeIWasProbed"): guarded one-shot setter.
+// Unless +0x94C already reads 5, resolve m_8[m_14]; a present object with
+// its 0x40 flag set and a present m_8[m_18] plus both byte gates leads
+// through the pinned 0x5A831E call to the pinned setter with 3, every other
+// failing path uses 5. The int parameter is unused (callback shape). Targets
+// read from retail REL32; the 0x5A6C90 callee is matched but spelled local.
+
+void NAT::targetNotifyMeIWasProbed(int unused)
+{
+	if (m_state94c == 5)
+		return;
+	NATSlotView *localPlayer = m_slotList[m_localSlot];
+	if (localPlayer == 0) {
+		rva005A6C90(5);
+		return;
+	}
+	if (m_942 != 0)
+		return;
+	m_942 = 1;
+	if ((localPlayer->m_flags40 & 8) == 0)
+		return;
+	if (m_slotList[m_targetSlot] == 0) {
+		rva005A6C90(5);
+		return;
+	}
+	if (m_25 == 0)
+		return;
+	if (m_24 == 0)
+		return;
+	sendAProbeToTarget();
+	rva005A6C90(3);
+}
+
+// NAT::gotTargetMangledPort @0x005A86C0 219B (WorldBuilder name, its
+// __FUNCTION__ string "NAT::gotTargetMangledPort"): validated triple apply.
+// Unless both +0x94C and +0x950 read 4, resolve both indexed slots; present
+// pair plus matching first arg stamps +0x25 and, when +0x970 is set, links
+// the pair's words (copying b into the peer's +4 and c over on full match).
+// A present +0x24 leads through the +4 sub-object consumer and, unless
+// +0x94C reads 2 with both flags against a cleared +0x942, through the gate
+// to the setter with 3. Same class as targetNotifyMeIWasProbed (shared layout and pins).
+void NAT::gotTargetMangledPort(int nodeNumber, unsigned short mangledPort, int mangledAddress)
+{
+	if (m_state94c == 4 && m_950 == 4)
+		return;
+	NATSlotView *targetPlayer = m_slotList[m_targetSlot];
+	if (targetPlayer == 0) {
+		rva005A6C90(5);
+		return;
+	}
+	NATSlotView *localPlayer = m_slotList[m_localSlot];
+	if (localPlayer == 0) {
+		rva005A6C90(5);
+		return;
+	}
+	if (nodeNumber != m_targetSlot)
+		return;
+	if (m_970 == 0) {
+		m_25 = 1;
+		goto check24;
+	}
+	m_25 = 1;
+	m_addresses[m_targetSlot]->port = mangledPort;
+	if (m_addresses[m_localSlot]->ip == m_addresses[m_targetSlot]->ip)
+		m_addresses[m_targetSlot]->ip = mangledAddress;
+check24:
+	if (m_24 == 0)
+		return;
+	m_04->setDestAddrToSocket(m_targetSlot, m_addresses[m_targetSlot]);
+	if (m_state94c != 2)
+		return;
+	if ((localPlayer->m_flags40 & 8) != 0) {
+		if (m_942 != 1 && (targetPlayer->m_flags40 & 8) == 0)
+			return;
+	}
+	sendAProbeToTarget();
+	rva005A6C90(3);
+}
+
+// tu-skeleton: 0x005A879B 551B ?connectionUpdate@NAT@@QAEHXZ -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
+
+// tu-skeleton: 0x005A89C2 253B ?StartNegotiationAction@NAT@@QAEXHH@Z -- matched in Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp (not merged yet)
 
 // tu-skeleton: 0x0079E489 10B uw_0079e489 -- matched in Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp (not merged yet)
 

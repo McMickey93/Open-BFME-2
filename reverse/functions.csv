@@ -48010,8 +48010,8 @@ uw_0077af8b,,0x0077AF8B,24,Code/GameEngine/Source/GameClient/GUI/ControlBar/Cont
 ?processPlayerJoin@NAT@@QAEXH@Z,,0x005A6903,92,Code/GameEngine/Source/Common/NAT.cpp,matched,bounds-checked slot refresh with pinned index consumer gate and free-function counter
 ?reconnectPlayers@NAT@@QAEXHHH@Z,,0x005A69C0,140,Code/GameEngine/Source/Common/Rva005A69C0Box.cpp,matched,two-slot validated prep with pinned presence checks and triple consumer
 ?rva005A6CA5@NAT@@QAEXXZ,,0x005A6CA5,162,Code/GameEngine/Source/Common/Rva005A69C0Box.cpp,matched,pair scan over 8 slots driving sibling Run via pinned sub-object queries
-?targetNotifyMeIWasProbed@NAT@@QAEXH@Z,,0x005A8666,90,Code/GameEngine/Source/Common/Rva005A8666Box.cpp,matched,guarded one-shot setter with pinned gate and 3-or-5 setter
-?gotTargetMangledPort@NAT@@QAEXHGH@Z,,0x005A86C0,219,Code/GameEngine/Source/Common/Rva005A8666Box.cpp,matched,validated triple apply with pair linking and gated consumer plus setter
+?targetNotifyMeIWasProbed@NAT@@QAEXH@Z,,0x005A8666,90,Code/GameEngine/Source/GameNetwork/NAT.cpp,matched,guarded one-shot setter with pinned gate and 3-or-5 setter
+?gotTargetMangledPort@NAT@@QAEXHGH@Z,,0x005A86C0,219,Code/GameEngine/Source/GameNetwork/NAT.cpp,matched,validated triple apply with pair linking and gated consumer plus setter
 ?rva005A7974@NAT@@QAEXGPAX@Z,,0x005A7974,290,Code/GameEngine/Source/Common/Rva005A8666BoxNat.cpp,matched,NAT PORT builder via format translate empty-fallback queue-slot-6
 ?checkForPatrol@ObjectOrderQueue@@QAEPBVArmorTemplate@@PAXPBV?$list@PAVCreateAHeroData@@V?$allocator@PAVCreateAHeroData@@@_STL@@@_STL@@@Z,,0x00548117,108,Code/GameEngine/Source/GameLogic/Object/ObjectOrderQueue.cpp,matched,list Armor pair via caller 0x0035545C find 0x00355155 contains 0x00548800
 ?checkForPatrol@ObjectOrderQueue@@QAEPBVArmorTemplate@@PAXPBVRva00548800@@@Z,,0x00548183,118,Code/GameEngine/Source/GameLogic/Object/ObjectOrderQueue.cpp,matched,sibling of 0x00548117 with precheck and subset 0x00548753 caller 0x00355514
