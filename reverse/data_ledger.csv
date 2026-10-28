@@ -17728,7 +17728,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009DDD80,64,.data,global,_GPConnectionManagerHostname,Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiConnect.c,owned,,1,1
 0x009DDDC0,64,.data,global,_GPSearchManagerHostname,Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiSearch.c,owned,,1,1
 0x009DDE00,360,.data,global,_GPIInfoCacheFilename,Code/GameEngine/Source/GameNetwork/GameSpy/gp/gpiProfile.c,owned,,1,4
-0x009DDF68,184,.data,global,?g_Rva00740A60Table@@3PAPBDA,Code/GameEngine/Source/Common/Rva00740A60Get.cpp,owned,,1,2
+0x009DDF68,184,.data,global,?g_Rva00740A60Table@@3PAPBDA,Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp,owned,,1,2
 0x009DE020,4,.data,global,?ApplicationHInstance@@3PAXA,Code/GameEngine/Source/Main/WinMain.cpp,owned,,1,2
 0x009DE024,4,.data,global,?ApplicationHWnd@@3PAXA,Code/GameEngine/Source/Main/WinMain.cpp,provisional,?ApplicationHWnd@@3PAUHWND__@@A;?ApplicationHWnd@@3PAXA,1,34
 0x009DE028,1,.data,global,?ApplicationIsWindowed@@3_NA,Code/GameEngine/Source/Main/WinMain.cpp,owned,,1,4

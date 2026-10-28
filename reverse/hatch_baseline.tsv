@@ -383,8 +383,6 @@ address_global	Code/GameEngine/Source/Common/Rva005FD8E5Apt.cpp	g_Va0087A290	1
 address_global	Code/GameEngine/Source/Common/Rva005FFCCBAppend.cpp	g_Rva0107301CEmptyString	3
 address_global	Code/GameEngine/Source/Common/Rva0060147B.cpp	g_Va00E06E60	2
 address_global	Code/GameEngine/Source/Common/Rva0062AF7Rva0027D815.cpp	g_Va00DBB710	2
-address_global	Code/GameEngine/Source/Common/Rva00740A45Create.cpp	g_Rva00789900Table	1
-address_global	Code/GameEngine/Source/Common/Rva00740A60Get.cpp	g_Rva00740A60Table	3
 address_global	Code/GameEngine/Source/Common/Rva00755C80GuardedQuery.cpp	g_Va001FDEB0	2
 address_global	Code/GameEngine/Source/Common/Rva007AB81ACtorInits.cpp	g_Va009F6F30	2
 address_global	Code/GameEngine/Source/Common/Rva007AB81ACtorInits.cpp	g_Va00DDEB24	2
@@ -909,6 +907,8 @@ address_global	Code/GameEngine/Source/Common/U2FixedSlotSearches.cpp	g_Rva0081C5
 address_global	Code/GameEngine/Source/Common/VslotSmallBodiesAI_Rva0057709A.cpp	g_Va00E0660C	2
 address_global	Code/GameEngine/Source/Common/VslotSmallBodiesAM.cpp	g_Va00DC908C	3
 address_global	Code/GameEngine/Source/Common/VslotSmallBodiesY.cpp	g_Va00A04908	2
+address_global	Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp	g_Rva00740A60Table	3
+address_global	Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp	g_Rva00789900Table	1
 address_global	Code/GameEngine/Source/Common/WW3DOptionSetter.cpp	g_Va00DEC40C	3
 address_global	Code/GameEngine/Source/Common/calc.cpp	g_Va00863BF8	2
 address_global	Code/GameEngine/Source/Common/calc.cpp	g_Va00863BFC	2
@@ -12718,7 +12718,6 @@ present_unmatched	Code/GameEngine/Source/Common/Rva006ED2A0Dtor.cpp	1Rva006ED2A0
 present_unmatched	Code/GameEngine/Source/Common/Rva006ED2A0Dtor.cpp	deleteRva006ED2A0@@YAXPAVRva006ED2A0@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/Rva006F84C0DeletingDtor.cpp	1Rva006F84C0@@UAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva007401F6Dtor.cpp	1Rva007401F6Base@@UAE@XZ	1
-present_unmatched	Code/GameEngine/Source/Common/Rva00740242Dtor.cpp	1Rva0074011F@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00749A10MaskAX.cpp	Rva000ADA1AMaskBytes::size	1
 present_unmatched	Code/GameEngine/Source/Common/Rva007AFF00OwnerDtor.cpp	1Rva007AFF00Base@@UAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/Rva00893030ManagerCopyOut.cpp	rva00892F00@Rva00893030Manager@@	1
@@ -12867,6 +12866,7 @@ present_unmatched	Code/GameEngine/Source/Common/Thing/WeaponTemplateSetUninitial
 present_unmatched	Code/GameEngine/Source/Common/TimedOperationNodeBFME2.h	TreeHintRef00217D4C::TreeHintRef00217D4C	1
 present_unmatched	Code/GameEngine/Source/Common/TimedOperationNodeBFME2.h	TreeHintRef00217D4C::~TreeHintRef00217D4C	1
 present_unmatched	Code/GameEngine/Source/Common/VectorPod88CopyConstructor.cpp	vector<Pod88Vector>::_M_insert_overflow	1
+present_unmatched	Code/GameEngine/Source/Common/W3DAptComponentView3D.cpp	1Rva0074011F@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/W3SmallValueInitializers.cpp	copyTo@Rva000643F0Value@@	1
 present_unmatched	Code/GameEngine/Source/Common/Watchdog.cpp	resumeTimeouts@Watchdog@@QAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/Watchdog.cpp	suppressTimeouts@Watchdog@@QAEXXZ	1
