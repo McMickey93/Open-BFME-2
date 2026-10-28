@@ -19,10 +19,7 @@ public:
 	char m_pad[0x2B0];
 };
 
-inline void *operator new(unsigned int, void *p)
-{
-	return p;
-}
+#include <new>
 
 class GenAlloc; GenAlloc *Gen007EFFC0();
 void Rva007F0120(void *a, void *b);
