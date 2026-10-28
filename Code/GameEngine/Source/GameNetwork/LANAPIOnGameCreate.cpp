@@ -41,14 +41,15 @@ struct Rva004469D1Receiver
 {
 	void Rva004469D1Advance( void );
 };
-extern int g_Va00A03354;
 
 // Rowed callee at 0x004469D1: ?OnGameCreate@AptLanLobby@@QAEXXZ (the LAN
 // lobby screen, named from WorldBuilder's AptLanLobby.cpp). Declared exactly as its owner row spells it;
 // the call casts the global.
 class AptLanLobby
 {
+	static AptLanLobby *s_instance;
 public:
+	static AptLanLobby *Instance() { return s_instance; }
 	void OnGameCreate( void );
 };
 
@@ -146,9 +147,9 @@ void LANAPI::OnGameCreate( LANAPIInterface::ReturnType ret )
 {
 	if( ret == LANAPIInterface::RET_OK )
 	{
-		if( g_Va00A03354 )
+		if( AptLanLobby::Instance() )
 		{
-			((AptLanLobby *)g_Va00A03354)->OnGameCreate();
+			AptLanLobby::Instance()->OnGameCreate();
 		}
 		else
 		{

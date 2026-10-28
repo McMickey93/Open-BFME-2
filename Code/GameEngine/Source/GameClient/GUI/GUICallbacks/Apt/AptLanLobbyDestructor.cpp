@@ -127,7 +127,6 @@ private:
 };
 class LANAPI { public: virtual void *deleteObject(int); };
 extern LANAPI *TheLAN;
-extern int g_Va00A03354;
 class BfmeAptWindowManager;
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
 class WindowManagerView { public:
@@ -201,10 +200,11 @@ private:
  UnicodeString name;
  int state; void *games;
  AptLanLobbyNameEntry entry;
+ static AptLanLobby *s_instance;
 };
 typedef char CheckSize[(sizeof(AptLanLobby)==0x6C4)?1:-1];
 AptLanLobby::~AptLanLobby() {
- if ((void*)g_Va00A03354 == this) {
+ if (s_instance == this) {
   rva004443E7();
   void *dead=TheLAN ? TheLAN->deleteObject(0) : 0;
   ::operator delete(dead);
@@ -212,7 +212,7 @@ AptLanLobby::~AptLanLobby() {
   entry.active=0;
   { AsciiString gadget("AptLanLobby::InitGadgets"); _bfme_closeAptScreen(gadget); }
   if (TheWindowManager) ((WindowManagerView*)TheWindowManager)->slot45();
-  g_Va00A03354=0;
+  s_instance=0;
   Rva00511F73Run();
  }
 }
@@ -243,8 +243,8 @@ AptLanLobby::AptLanLobby(void *context)
  :_bfme_AptGameWindow(context),panel((MpGameSetupOwner*)static_cast<Rva004444D2*>(this),0x400001A0),
  sorter((Rva005248D0*)this),preferences(-1),state(0),games(0) {
  entry.flag0=0;entry.flag1=0;entry.active=0;entry.flag3=0;entry.kind=2;entry.flag4=0;
- if (!g_Va00A03354) {
-  g_Va00A03354=(int)this;
+ if (!s_instance) {
+  s_instance=this;
   {
    FunctorMethod method=reinterpret_cast<FunctorMethod>(&AptLanLobby::OnInitialized);
    AsciiString name("AptLanLobby::OnInitialized");

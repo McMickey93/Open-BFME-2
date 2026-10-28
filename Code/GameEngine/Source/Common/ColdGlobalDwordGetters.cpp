@@ -86,14 +86,14 @@ int Rva00248D60Get(void)
 	return g_Va00E0333C;
 }
 
-extern int g_Va00A03354;
+class AptLanLobby { static AptLanLobby *s_instance; public: static AptLanLobby *Instance() { return s_instance; } };
 
 // ?Rva00248D66Get@@YAHXZ @ 0x00248d66 (6B) over 0x00E03354.
 // Follows a ret (prev C3), no .rdata vtable slot, no direct callers,
 // no branch sources. Opaque address-derived name.
 int Rva00248D66Get(void)
 {
-	return g_Va00A03354;
+	return (int)AptLanLobby::Instance();
 }
 
 // g_Va00DBB708: matched references place it at VA 0xdbb708 (retail .data initial value 1073741824).

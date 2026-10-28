@@ -163,12 +163,13 @@ void Rva004E432ASet(unsigned char val)
 // Guarded enabler: if int at 0x00A03354 is 0 return else tail-jmp to rowed
 // enable 0x00222479 on global 0x009FE4CC. Callers at 0x00444342 0x0044529B
 // 0x0044674E. Unlock lane.
-extern int g_Va00A03354;
-// g_Va00A03354: VA 0xe03354 (zero-filled .bss).
-int g_Va00A03354;
+// AptLanLobby::s_instance: VA 0xe03354 (zero-filled .bss), the LAN lobby
+// screen singleton (WorldBuilder's ~AptLanLobby asserts !(s_instance != this)).
+class AptLanLobby { static AptLanLobby *s_instance; public: static AptLanLobby *Instance() { return s_instance; } };
+AptLanLobby *AptLanLobby::s_instance;
 void Rva00444040Enable(void)
 {
-	if (g_Va00A03354 == 0)
+	if (AptLanLobby::Instance() == 0)
 		return;
 	(*(Rva00222479ByteOneSetter **)&g_bfmeAptWindowManager)->enable();
 }

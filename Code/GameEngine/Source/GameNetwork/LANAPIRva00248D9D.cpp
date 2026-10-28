@@ -57,7 +57,7 @@ struct GlobalA03354
 	StringBase<UnsignedShort> m_name;
 };
 
-extern int g_Va00A03354;
+class AptLanLobby { static AptLanLobby *s_instance; public: static AptLanLobby *Instance() { return s_instance; } };
 void Rva00248D84Enable();
 
 class LANAPI
@@ -142,7 +142,7 @@ void LANAPI::OnAccept(const BfmeNetAddress *address, Bool flag)
 		BfmeNetAddress *slotAddr = &m_holder->m_slots[index].m_address;
 		if (slotAddr->Rva00248CBF(address))
 			goto found;
-		GlobalA03354 *g = (GlobalA03354 *)g_Va00A03354;
+		GlobalA03354 *g = (GlobalA03354 *)AptLanLobby::Instance();
 		if (g != 0)
 			g->m_name.validate();
 	}

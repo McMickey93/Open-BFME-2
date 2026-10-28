@@ -344,11 +344,11 @@ Rva00380AF9::Rva00380AF9(int value) : Rva00380AB1(&value)
 
 // --- 0x00381440 (18B, cdecl): the +0x684 member of the object at VA
 // 0x00E03354, or null.
-extern int g_Va00A03354;
+class AptLanLobby { static AptLanLobby *s_instance; public: static AptLanLobby *Instance() { return s_instance; } };
 
 void *Rva00381440()
 {
-	char *p = (char *)g_Va00A03354;
+	char *p = (char *)AptLanLobby::Instance();
 	return p ? p + 0x684 : 0;
 }
 

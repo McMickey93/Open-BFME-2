@@ -428,11 +428,12 @@ extern Shell *TheShell;
 extern Bool LANbuttonPushed;
 
 struct Rva004469D1Receiver;
-extern Rva004469D1Receiver *g_Va00E03354;
 
 class AptLanLobby
 {
+	static AptLanLobby *s_instance;
 public:
+	static AptLanLobby *Instance() { return s_instance; }
 	void OnGameJoin( void );
 	void CancelMenu( void );
 };
@@ -666,8 +667,8 @@ void LANAPI::OnGameJoin( LANAPIInterface::ReturnType ret, LANGameInfo *theGame, 
 {
 	if( ret == LANAPIInterface::RET_OK )
 	{
-		if( g_Va00E03354 )
-			((AptLanLobby *)g_Va00E03354)->OnGameJoin();
+		if( AptLanLobby::Instance() )
+			AptLanLobby::Instance()->OnGameJoin();
 		else
 		{
 			LANbuttonPushed = true;
@@ -711,8 +712,8 @@ void LANAPI::OnGameJoin( LANAPIInterface::ReturnType ret, LANGameInfo *theGame, 
 		UnicodeString title, body;
 		title = TheGameText->fetch( "LAN:JoinFailed" );
 		body = ((LANAPIInterface *)this)->getErrorStringFromReturnType( ret );
-		if( g_Va00E03354 )
-			((Rva00444357DwordImmSetter *)g_Va00E03354)->apply();
+		if( AptLanLobby::Instance() )
+			((Rva00444357DwordImmSetter *)AptLanLobby::Instance())->apply();
 		MessageBoxOk( title, body, 0 );
 	}
 }
@@ -725,14 +726,14 @@ void LANAPI::OnPlayerLeave( UnicodeString player )
 
 	if( m_name.compare( player ) == 0 )
 	{
-		if( !g_Va00E03354 )
+		if( !AptLanLobby::Instance() )
 		{
 			TheShell->pop();
 			LANbuttonPushed = true;
 		}
 		else
 		{
-			((AptLanLobby *)g_Va00E03354)->CancelMenu();
+			AptLanLobby::Instance()->CancelMenu();
 		}
 	}
 	else
@@ -1101,10 +1102,10 @@ Bool LANAPI::OnGameOptionsPacked( const BfmeNetAddress &sender, Int playerSlot, 
 		}
 
 		Rva00248D84Enable();
-		if( !g_Va00E03354 )
+		if( !AptLanLobby::Instance() )
 			Rva00248E98Enable();
 		else
-			((Rva00444462 *)g_Va00E03354)->rva00444462();
+			((Rva00444462 *)AptLanLobby::Instance())->rva00444462();
 		LANGameOptionsRetries = 0;
 		return true;
 	}

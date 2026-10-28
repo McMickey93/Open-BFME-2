@@ -113,7 +113,7 @@ public:
 
 extern GameTextInterface *TheGameText;
 
-extern int g_Va00A03354; // Existing storage owner; this body only tests zero.
+class AptLanLobby { static AptLanLobby *s_instance; public: static AptLanLobby *Instance() { return s_instance; } }; // Existing storage owner; this body only tests zero.
 
 // Retail 0x00445BAA, 507 bytes: the custom games list tooltip. Donor
 // Open-BFME-1 GameNetwork/GameSpy/LanLobbyGamesTooltip.cpp
@@ -125,7 +125,7 @@ extern int g_Va00A03354; // Existing storage owner; this body only tests zero.
 // nonzero test); other columns list the human players' names.
 void Rva00445BAALanLobbyTooltip(GameWindow *window, WinInstanceData *, unsigned int mouse)
 {
-	if (!g_Va00A03354)
+	if (!AptLanLobby::Instance())
 		return;
 
 	int x, y, row, column;

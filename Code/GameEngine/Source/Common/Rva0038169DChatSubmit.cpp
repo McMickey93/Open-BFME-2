@@ -2,7 +2,7 @@
 // Rva0038169D, retail 0x0038169D (494 bytes): LAN chat submission.
 // Native38169D..38188B: channel and UnicodeString reference ABI; menu preferences at684; filtered whitespace and slash-command path; LAN virtual slot54 ordinary message request.
 // Honest address-derived identity; no recovered retail method name claimed.
-extern int g_Va00A03354;
+class AptLanLobby { static AptLanLobby *s_instance; public: static AptLanLobby *Instance() { return s_instance; } };
 class LANAPI;extern LANAPI *TheLAN;
 #include "unicode_string.h"
 #include <ctype.h>
@@ -15,7 +15,7 @@ class ChatLANCalls:public ChatLANSlots<21>{public:virtual void request(UnicodeSt
 static __forceinline bool chatEmpty(const UnicodeString&unicodeString){const char*p=*(const char*const*)&unicodeString;return !p||*(const unsigned short*)(p+4)==0;}
 static __forceinline unsigned short chatFirst(const UnicodeString&unicodeString){const char*p=*(const char*const*)&unicodeString;return p?*(const unsigned short*)(p+8):0;}
 bool Rva0038169D(int channel,const UnicodeString&input) {
- ChatMenuPreferenceView*menu=(ChatMenuPreferenceView*)g_Va00A03354;
+ ChatMenuPreferenceView*menu=(ChatMenuPreferenceView*)AptLanLobby::Instance();
  GameModePreferences*prefs=menu?&menu->preferences:0;
  if(!prefs)return false;
  UnicodeString text(input);TheLanguageFilter->filterLine(text);

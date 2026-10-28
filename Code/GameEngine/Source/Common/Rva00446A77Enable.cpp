@@ -21,13 +21,13 @@ struct Outer00446A77
 };
 
 extern unsigned char g_Va00A0335C;
-extern int g_Va00A03354;
+class AptLanLobby { static AptLanLobby *s_instance; public: static AptLanLobby *Instance() { return s_instance; } };
 
 void Rva00446A77Enable(void)
 {
 	if (g_Va00A0335C == 0)
 		return;
-	Outer00446A77 *p = (Outer00446A77 *)g_Va00A03354;
+	Outer00446A77 *p = (Outer00446A77 *)AptLanLobby::Instance();
 	if (p == 0)
 		return;
 	return p->m_sub.enable();
@@ -40,7 +40,7 @@ void Rva00446A77Enable(void)
 // Evidence: 6 callers in unclaimed bodies; landing unblocks 5 waiters.
 void Rva00248D84Enable(void)
 {
-	Outer00446A77 *p = (Outer00446A77 *)g_Va00A03354;
+	Outer00446A77 *p = (Outer00446A77 *)AptLanLobby::Instance();
 	if (p != 0)
 		return p->m_sub.enable();
 	return Rva00446A77Enable();
@@ -82,7 +82,7 @@ void Rva00248E98Enable(void)
 		return;
 	if (!Rva00446A71Get())
 		return;
-	Outer00446A77 *p = (Outer00446A77 *)g_Va00A03354;
+	Outer00446A77 *p = (Outer00446A77 *)AptLanLobby::Instance();
 	if (p == 0)
 		return;
 	return ((Rva00444462 *)p)->rva00444462();

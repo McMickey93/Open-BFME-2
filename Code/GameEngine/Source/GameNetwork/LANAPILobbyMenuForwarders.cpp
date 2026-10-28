@@ -1,8 +1,7 @@
 // cl: /DNDEBUG /MD /EHsc
 //
 // Four LANAPI virtuals (vtable 0x00C3E680) that BFME2 reduces to calls on the
-// LAN menu object at VA 0x00E03354 (ledger ?g_Va00A03354@@3HA; aliased as
-// g_Va00E03354 in LANAPIOnGameCreate.cpp) where Zero Hour updates its
+// LAN lobby screen singleton AptLanLobby::s_instance at VA 0x00E03354 where Zero Hour updates its
 // windows directly. Zero Hour's response handlers follow
 // ResetGameStartTimer (slot 31) in this table as they do upstream, and
 // OnPlayerJoin (35), OnAccept (38), OnGameCreate (47) and OnNameChange (48)
@@ -34,11 +33,12 @@ struct Rva004469D1Receiver
 // Rows 0x00444EC8 and 0x00445E3E are AptLanLobby members.
 class AptLanLobby
 {
+	static AptLanLobby *s_instance;
 public:
+	static AptLanLobby *Instance() { return s_instance; }
 	void rva00445E3E(LANGameInfo *gameList);
 	void rva00444EC8();
 };
-extern Rva004469D1Receiver *g_Va00E03354;
 
 class Shell
 {
@@ -68,29 +68,29 @@ protected:
 
 void LANAPI::rva00248E2F(Bool value)
 {
-	if (g_Va00E03354)
-		g_Va00E03354->rva0044446D(value);
+	if (AptLanLobby::Instance())
+		((Rva004469D1Receiver *)AptLanLobby::Instance())->rva0044446D(value);
 }
 
 void LANAPI::OnHostLeave()
 {
 	if (m_inLobby || !m_currentGame)
 		return;
-	if (!g_Va00E03354)
+	if (!AptLanLobby::Instance())
 	{
 		TheShell->pop();
 		LANbuttonPushed = true;
 	}
 	else
 	{
-		((AptLanLobby *)g_Va00E03354)->rva00444EC8();
+		AptLanLobby::Instance()->rva00444EC8();
 	}
 }
 
 void LANAPI::OnGameList(LANGameInfo *gameList)
 {
-	if (m_inLobby && g_Va00E03354)
-		((AptLanLobby *)g_Va00E03354)->rva00445E3E(gameList);
+	if (m_inLobby && AptLanLobby::Instance())
+		AptLanLobby::Instance()->rva00445E3E(gameList);
 }
 
 void LANAPI::rva00248E87()

@@ -5702,6 +5702,32 @@ Clearance: none. Census confirmation: CrateSystem.cpp linked at 73061d9452.
   it) through `tools/rename.py global` with an agreed or canonical basis; the
   rename rewrites every consumer, and then the two LANAPI units can declare that
   name with no hatch growth.
+- **Canonical name found (b1, 2026-10-28, inspected `2c1055bc13`):** WorldBuilder
+  names the slot. Its `AptLanLobby::~AptLanLobby` (wb_va 0x140D710,
+  `reverse/wb/wb_decomp.jsonl.xz`) asserts `"!(s_instance != this)"` exactly where
+  retail's dtor (AptLanLobbyDestructor.cpp) compares `this` against 0x00E03354 and
+  clears it. WB also has an `AptLanLobby::Instance` accessor. The sibling screens follow the
+  same pattern; `reverse/data_ledger.csv` already names 0x00A048D4
+  `?s_instance@AptCreateAHero@@0PAV1@A` (private static). The target name is
+  therefore `?s_instance@AptLanLobby@@0PAV1@A` (basis `canonical:wb`).
+  Prerequisites: `tools/rename.py global` refuses it today ("no
+  reverse/data_rows.csv row names ?g_Va00A03354@@3HA"), and its `--new` changes the
+  identifier only, while this rename changes the scope and type (int to
+  `AptLanLobby *`). That means hand-retyping the 12 consumer files (`rg -l
+  'g_Va00A03354|g_Va00E03354' Code`): add the private static plus a public inline
+  `Instance()` to each AptLanLobby view, so the mangling stays `0PAV1@A`.
+- **Repair (b1, 2026-10-28):** the hand rename does exactly that. All 12 consumers declare
+  `AptLanLobby::s_instance` (the definer is Rva0050E9D3Enable.cpp, and the AptLanLobbyDestructor.cpp
+  ctor/dtor use the member directly), and `reverse/data_ledger.csv`'s row is now
+  owned under that single name. `./build.sh` passes 286/286 rows byte-exact. `link_check.py` reports
+  LANAPICallbacks.cpp 0 -> 5,570 B and LANAPILobbyMenuForwarders.cpp 0 -> 105 B, and the
+  other 9 consumers still LINK. Rva0050E9D3Enable.cpp's preview fails only on
+  duplicates `?rva007B83E1@@YAXXZ`/`?rva007B8F26@@YAXXZ`: the census index still
+  holds Rva007B6A00AtexitThunks.cpp's copies, which 9b744c61f4 moved after the census (the
+  LINK-122 stale-object pattern), so that failure is expected until the next census. The address_global
+  counts for both tokens fall to 0 in all 12 files. `hatch_counters.py --update` did not tighten
+  `reverse/hatch_baseline.tsv` because of unrelated alternatename growth elsewhere.
+  Awaiting census.
 - **Clearance:** none.
 - **Census confirmation:** not claimed.
 
