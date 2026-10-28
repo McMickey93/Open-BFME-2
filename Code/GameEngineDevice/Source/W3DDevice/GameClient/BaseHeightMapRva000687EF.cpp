@@ -2,6 +2,9 @@
 // Native687EF..68D431364. ZH updateScorches supplies terrain-grid mesh semantics;
 // BFME2 uses tree queryEAFA4 for radius and atlas transforms, clips outside UVs
 // to the projection edge and samples the terrain virtual height there.
+// Keep the CRT's inlined floorf local; its public body is owned by the
+// terrain-lightmap unit at 0x0004D649.
+extern "C" { static float __cdecl floorf(float); }
 #include <math.h>
 #include "Lib/BaseType.h"
 struct Rva000EAFA4Coord3 {float x,y,z;};struct Rva000EAFA4Coord2 {float x,y;};

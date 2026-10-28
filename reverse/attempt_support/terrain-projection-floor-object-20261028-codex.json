@@ -1,0 +1,83 @@
+{
+  "source": "Code/GameEngineDevice/Source/W3DDevice/GameClient/BaseHeightMapRva000687EF.cpp",
+  "before_obj_sha256": "f78f1e1c31cbd9ff12dbd13ff5cfbd4ea198c47b51a24e3fa2cda484efd152d5",
+  "after_obj_sha256": "f20247cc7eccc14fc4420b1869abfa692ebc40f0c806b00d132d0682e57bda2b",
+  "removed": [
+    "_floorf"
+  ],
+  "added": [],
+  "changed": {},
+  "retained_comdats": 10,
+  "strong_before": [
+    "?rva000687EF@BaseHeightMapRenderObjClass@@QAEXXZ"
+  ],
+  "strong_after": [
+    "?rva000687EF@BaseHeightMapRenderObjClass@@QAEXXZ"
+  ],
+  "undefined_before": [
+    "??0WriteLockClass@IndexBufferClass@@QAE@PAV1@H@Z",
+    "??0WriteLockClass@VertexBufferClass@@QAE@PAV1@H@Z",
+    "??1WriteLockClass@IndexBufferClass@@QAE@XZ",
+    "??1WriteLockClass@VertexBufferClass@@QAE@XZ",
+    "?TheWritableGlobalData@@3PAVGlobalData@@A",
+    "?bfmeBitA@Gen_0074B410@@QBE_NHH@Z",
+    "?rva000EAFA4@W3DTreeBuffer@@QAE_NHPAURva000EAFA4Coord3@@PAMPAURva000EAFA4Coord2@@2@Z",
+    "__EH_prolog",
+    "___CxxFrameHandler",
+    "__except_list",
+    "__fltused",
+    "__imp__ceil",
+    "__imp__floor"
+  ],
+  "undefined_after": [
+    "??0WriteLockClass@IndexBufferClass@@QAE@PAV1@H@Z",
+    "??0WriteLockClass@VertexBufferClass@@QAE@PAV1@H@Z",
+    "??1WriteLockClass@IndexBufferClass@@QAE@XZ",
+    "??1WriteLockClass@VertexBufferClass@@QAE@XZ",
+    "?TheWritableGlobalData@@3PAVGlobalData@@A",
+    "?bfmeBitA@Gen_0074B410@@QBE_NHH@Z",
+    "?rva000EAFA4@W3DTreeBuffer@@QAE_NHPAURva000EAFA4Coord3@@PAMPAURva000EAFA4Coord2@@2@Z",
+    "__EH_prolog",
+    "___CxxFrameHandler",
+    "__except_list",
+    "__fltused",
+    "__imp__ceil",
+    "__imp__floor"
+  ],
+  "weak_before": [],
+  "weak_after": [],
+  "base_revision": "483b6ac114",
+  "index_meta": {
+    "date": "2026-10-28 09:35",
+    "commit": "54b83e4f69",
+    "clean_tree": true
+  },
+  "current_floorf_owner": [
+    {
+      "name": "_floorf",
+      "digest": "d9d07276ff39",
+      "size": 18
+    }
+  ],
+  "floorf_census_copy_count": 60,
+  "floorf_census_wrong_copies": [
+    {
+      "object": "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^render2^d^sentence^draw^b^f^m^e2.obj",
+      "digest": "39fd7295f71e",
+      "verdict": "wrong"
+    },
+    {
+      "object": "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_seglinerenderer.obj",
+      "digest": "39fd7295f71e",
+      "verdict": "wrong"
+    },
+    {
+      "object": "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^streak^renderer^render^streak.obj",
+      "digest": "39fd7295f71e",
+      "verdict": "wrong"
+    }
+  ],
+  "floorf_census_retail_digest_counts": {
+    "d9d07276ff39": 57
+  }
+}
