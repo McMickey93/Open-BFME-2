@@ -12073,3 +12073,4 @@ Code/GameEngine/Source/Common/BfmeConv1343.cpp|member|BfmeThingUUA|m_bfmeQueue,a
 Code/GameEngine/Source/Common/BfmeConv1343.cpp|member|BfmeThingUUA|m_bfmePending,4598a39f84b3b705b1bb1101,drz-k2,drz-k2-n8f2-17,w-ded32b2e2c5e,2026-10-28
 Code/Libraries/Source/VP6/PostProcInstance.cpp|local|UpdateFragQIndex|q,2bf10374ef2beacc4b038e45,drz-k2,drz-k2-n8f2-18,w-ded32b2e2c5e,2026-10-28
 Code/GameEngine/Source/GameLogic/Object/Made002CC7DEParse.cpp|param|q4Notify002CC7DE|m,0f90fdf1a7b08e7f8243d4ed,drz-k2,drz-k2-n8f2-20,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Rva001FE70FInit.cpp|global||g_00BE2070,b1a9b6e2f26f37741d67922f,drz-k1,drz-k1-n10a-20,w-d29055ee9848,2026-10-28
