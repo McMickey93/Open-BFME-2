@@ -79,7 +79,7 @@ extern void BFME_DX8_Thread_Lock(void);
 // funclet spills.  Declaring the deallocator nothrow removes the region
 // exactly.  The constructor keeps its frame either way -- operator new[] does
 // throw, and retail's constructor has the frame to prove it.
-void __cdecl operator delete[](void *block) throw();
+#include <new>
 #include "sphere.h"
 #include "thread.h"
 #include "wwmemlog.h"
