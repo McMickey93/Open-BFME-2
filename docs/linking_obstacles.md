@@ -7506,3 +7506,17 @@ pre-commit identity shadow reported a `uw_007a90d0` destructor
 binding for review. The remaining donors require class/declaration or flag
 reconciliation; two mixed files remain separate. Carry the moved provider and
 its consumers into the next census; external selection remains unverified.
+
+### AptLanLobby bounded composition (2026-10-28)
+
+Status: bounded composition verified; external consumer selection and census
+confirmation pending. At base `0b525938e6`, the supported merge absorbs seven
+approved donors into the provisional TU, removing six net source files. All
+46 rows and eight EH graphs remain exact; the link guard accepts the
+census-linked inputs and their composition. The destination has a strict
+receipt, but is absent from index `d92e7e6635` and cannot be previewed there.
+The outgoing audit is INCONCLUSIVE: the index predates the base and nine
+source objects lack current receipts. Carry moved providers and affected
+consumers into the next scheduled census. Five donors require declaration and
+class-view reconciliation; nine mixed files remain. No census gain is claimed.
+[Checks and path audit](../reverse/attempt_support/apt-lan-lobby-consolidation-20261028-codex4.md).
