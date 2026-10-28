@@ -30,20 +30,22 @@ private:
     SpecialPowerType m_type; // +0x1C
 };
 class Object;
+class ThingTemplate;
 class CommandButton
 {
 public:
-    const SpecialPowerTemplate *getSpecialPowerTemplate() const { return m_specialPower; }
-    const void *getUpgradeTemplate() const { return m_upgrade; }
-    int getCommandType() const { return m_commandType; }
-    bool isReady(const Object *obj) const;
+	const ThingTemplate *rva0035B570() const;
+	const SpecialPowerTemplate *getSpecialPowerTemplate() const { return m_specialPower; }
+	const void *getUpgradeTemplate() const { return m_upgrade; }
+	int getCommandType() const { return m_command; }
+	bool isReady(const Object *obj) const;
+	char m_pad00[0x14];
+	int m_command; // +0x14
+	char m_pad18[0xC];
 private:
-    unsigned char m_pad00[0x14];
-    int m_commandType;                         // +0x14
-    unsigned char m_pad18[0x24 - 0x18];
-    const void *m_upgrade;                     // +0x24
-    unsigned char m_pad28[0x44 - 0x28];
-    const SpecialPowerTemplate *m_specialPower; // +0x44
+	const void *m_upgrade; // +0x24 +0x24
+	char m_pad28[0x1C];
+	const SpecialPowerTemplate *m_specialPower; // +0x44 +0x44
 };
 class ControlBar
 {

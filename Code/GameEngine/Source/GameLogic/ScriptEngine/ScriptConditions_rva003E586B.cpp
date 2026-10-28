@@ -53,8 +53,8 @@ extern GameLogic *TheGameLogic;
 class GlobalData
 {
 public:
-    unsigned char m_pad[0x110C];
-    float m_secondsBeforeBaseCheckActive; // +0x110C
+	char m_pad00[0x110C];
+	float m_secondsBeforeBaseCheckActive; // +0x110C +0x110C, seconds before the destroyed conditions may fire
 };
 extern class GlobalData *TheWritableGlobalData;
 extern int BfmeLogicFramesPerSecond; // logic frames per second
