@@ -10,15 +10,15 @@ typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef void FILE;
 
-static UnsignedInt theGameClientSeed[6] =
-{
-	0xf22d0e56u, 0x883126e9u, 0xc624dd2fu, 0x0702c49cu, 0x9e353f7du, 0x6fdf3b64u
-};
+extern "C" UnsignedInt theGameClientSeed[6];
 
-static UnsignedInt theGameAudioSeed[6] =
+// Shared native seed storage; split readers declare the same C symbol.
+extern "C" {
+UnsignedInt theGameAudioSeed[6] =
 {
 	0xf22d0e56u, 0x883126e9u, 0xc624dd2fu, 0x0702c49cu, 0x9e353f7du, 0x6fdf3b64u
 };
+}
 
 UnsignedInt __fastcall randomValue(UnsignedInt *seed);
 

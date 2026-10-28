@@ -11,10 +11,7 @@ typedef void FILE;
 // Shared writable multiplier initialized by RandomValueMultFactorInit.cpp.
 extern "C" Real theMultFactor;
 
-static UnsignedInt theGameLogicSeed[6] =
-{
-	0xf22d0e56u, 0x883126e9u, 0xc624dd2fu, 0x0702c49cu, 0x9e353f7du, 0x6fdf3b64u
-};
+extern "C" UnsignedInt theGameLogicSeed[6];
 
 static FILE *theLogicRandomLogFile;
 

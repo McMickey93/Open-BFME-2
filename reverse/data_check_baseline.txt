@@ -4,13 +4,6 @@ Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0445
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E046B4@@3HA	0x00A046B4
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E04904@@3HA	0x00A04904
 Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	wrong-name	?g_Va00E0ABB0@@3HA	0x00A0ABB0
-Code/GameEngine/Source/Common/GameAudioRandomValue_getValueReal.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
-Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp	duplicate-def	_theGameClientSeed	0x009BA3A0
-Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameAudioSeed	0x009BA3B8
-Code/GameEngine/Source/Common/GameLogicRandomInit.cpp	duplicate-def	_theGameClientSeed	0x009BA3A0
-Code/GameEngine/Source/Common/GameLogicRandomSeedCRC_get.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
-Code/GameEngine/Source/Common/GameLogicRandomValue_getValueInt.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
-Code/GameEngine/Source/Common/GameLogicRandomValue_getValueReal.cpp	duplicate-def	_theGameLogicSeed	0x009BA3D0
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E03314@@3HA	0x00A03314
 Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	wrong-name	?g_Va00E09FA4@@3HA	0x00A09FA4
 Code/GameEngine/Source/Common/Rva001518D1Get.cpp	wrong-name	?empty@?3??rva001518D1@Rva001518D1@@QAEPAV?$vector@UBfmeE16@@V?$allocator@UBfmeE16@@@_STL@@@_STL@@XZ@4V34@A	0x009F6F10

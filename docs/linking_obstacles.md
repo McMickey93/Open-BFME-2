@@ -1343,6 +1343,17 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-28.**
 
+- **Shared random-seed storage (2026-10-28, control `87c6af16d4`):**
+  [The seven-source binding repair](../reverse/attempt_support/random-seed-storage-20261028-codex.md)
+  exposes each existing seed owner under its unchanged C symbol and replaces
+  seven duplicate arrays with declarations. All 12 code rows and 72 initialized
+  seed bytes verify; current objects have one definition per seed and both data
+  checks pass. The owning retirement tool removes seven registered keys from
+  six sources. Three generated inventory rows now report one owner each.
+  Paired ordinary previews retain 7/7 LINKS and 632 authored bytes against
+  `14dc3d2467`. Original TU recovery and broader storage closure remain open;
+  no census-linked, image-ownership or runtime gain is claimed.
+
 - **E036 containment guard-index follow-up (2026-10-28, control `d67dec6909`):**
   [The scoped handoff](../reverse/attempt_support/contain-e036-guard-data-index-20261028-codex.md)
   independently verifies twelve generated key/guard index rows after the E036

@@ -17078,9 +17078,9 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009BA34C,16,.data,global,?g_Va00DBA34C@@3PAHA,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp,owned,,1,1
 0x009BA35C,16,.data,global,?g_Va00DBA35C@@3PAHA,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp,owned,,1,1
 0x009BA36C,52,.data,global,?g_Va00DBA36C@@3PAHA,Code/GameEngine/Source/GameClient/GUI/Gadget/Rva0056EDBAPick.cpp,owned,,1,1
-0x009BA3A0,24,.data,global,_theGameClientSeed,Code/GameEngine/Source/GameClient/ClientRandomValue_getValueReal.cpp,provisional,_theGameClientSeed@Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp;_theGameClientSeed@Code/GameEngine/Source/Common/GameLogicRandomInit.cpp;_theGameClientSeed@Code/GameEngine/Source/GameClient/ClientRandomValue_getValueReal.cpp,3,3
-0x009BA3B8,24,.data,global,_theGameAudioSeed,Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp,provisional,_theGameAudioSeed@Code/GameEngine/Source/Common/GameAudioRandomValue_getValueReal.cpp;_theGameAudioSeed@Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp;_theGameAudioSeed@Code/GameEngine/Source/Common/GameLogicRandomInit.cpp,3,3
-0x009BA3D0,24,.data,global,_theGameLogicSeed,Code/GameEngine/Source/Common/GameLogicRandomInit.cpp,provisional,_theGameLogicSeed@Code/GameEngine/Source/Common/GameLogicRandomInit.cpp;_theGameLogicSeed@Code/GameEngine/Source/Common/GameLogicRandomSeedCRC_get.cpp;_theGameLogicSeed@Code/GameEngine/Source/Common/GameLogicRandomValue_getValueInt.cpp;_theGameLogicSeed@Code/GameEngine/Source/Common/GameLogicRandomValue_getValueReal.cpp,4,5
+0x009BA3A0,24,.data,global,_theGameClientSeed,Code/GameEngine/Source/GameClient/ClientRandomValue_getValueReal.cpp,owned,,1,3
+0x009BA3B8,24,.data,global,_theGameAudioSeed,Code/GameEngine/Source/Common/GameClientAudioRandomValue_getValueInt.cpp,owned,,1,3
+0x009BA3D0,24,.data,global,_theGameLogicSeed,Code/GameEngine/Source/Common/GameLogicRandomInit.cpp,owned,,1,5
 0x009BA3E8,52,.data,global,?DistributionTypeNames@GameClientRandomVariable@@2PAPBDA,,unowned,,0,1
 0x009BA41C,164,.data,global,_s_useLocalUserMaps,Code/GameEngine/Source/Common/System/RegistryAsciiPath.cpp,owned,,1,4
 0x009BA4C0,20,.data,global,?TheVeterancyNames@@3PAPBDA,Code/GameEngine/Source/GameLogic/Object/WeaponParseVetLevels.cpp,owned,,1,5

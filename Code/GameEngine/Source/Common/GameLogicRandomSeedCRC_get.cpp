@@ -3,11 +3,10 @@
 // Open-BFME-1 Code/GameEngine/Source/Common/System/random_value.cpp
 // (GetGameLogicRandomSeedCRC), calling ComputeCRC instead of CRC_Memory:
 // retail hashes the 6-word logic seed with the rotate-add packet hash.
-// Dedicated TU; the seed array is TU-local here and patched to retail's
-// data address.
+// The seed array is shared with InitGameLogicRandom and both logic readers.
 typedef unsigned int UnsignedInt;
 
-static UnsignedInt theGameLogicSeed[6];
+extern "C" UnsignedInt theGameLogicSeed[6];
 
 UnsignedInt ComputeCRC(const unsigned char *data, UnsignedInt length, UnsignedInt crc);
 

@@ -14,20 +14,17 @@
 
 typedef unsigned int UnsignedInt;
 
-static UnsignedInt theGameAudioSeed[6] =
-{
-	0xf22d0e56, 0x883126e9, 0xc624dd2f, 0x702c49c, 0x9e353f7d, 0x6fdf3b64
-};
+extern "C" UnsignedInt theGameAudioSeed[6];
 
-static UnsignedInt theGameClientSeed[6] =
-{
-	0xf22d0e56, 0x883126e9, 0xc624dd2f, 0x702c49c, 0x9e353f7d, 0x6fdf3b64
-};
+extern "C" UnsignedInt theGameClientSeed[6];
 
-static UnsignedInt theGameLogicSeed[6] =
+// Shared native seed storage; split readers declare the same C symbol.
+extern "C" {
+UnsignedInt theGameLogicSeed[6] =
 {
 	0xf22d0e56, 0x883126e9, 0xc624dd2f, 0x702c49c, 0x9e353f7d, 0x6fdf3b64
 };
+}
 
 // The getter at 0x00233F6A and both seeded initializers reference the same
 // zero-filled four-byte datum at RVA 0x009FE734. Keep the reader with its
