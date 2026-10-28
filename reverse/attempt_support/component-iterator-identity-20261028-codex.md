@@ -30,7 +30,7 @@ new pins, aliases, hatches, ledger rows or provider source changes are involved.
 
 The final 95-byte body is byte-for-byte identical to the previous object;
 its call relocation at offset 40 now names `?next@Rva000411084@@QAEPAXXZ`.
-No external code definition is added. Seven unused external COMDAT definitions
+No external code definition is added. Seven formerly emitted external COMDAT definitions
 from the component iterator/bucket family disappear; the outgoing batch audit
 must assess their consumers.
 
@@ -57,3 +57,22 @@ matched but changed symbol strength, so the final specialization is inline.
 
 The result is one retired identity debt key with matched and preview-linked
 coverage preserved. No new census or image-ownership result is claimed.
+
+## Outgoing audit follow-up
+
+Repair commit `5b1a2c883a` passed the normal pre-commit gates and was handed to
+the fleet publisher. The batch audit against base `e1b88db116ad` initially
+lacked a strict compiler receipt for the changed TU. `link_check.py
+--prepare-current SOURCE` then prepared a strict reusable receipt and passed
+the same six-row byte gate. The follow-up audit exits 2, **INCONCLUSIVE**:
+
+```
+link batch audit: INCONCLUSIVE baseline: index at 14dc3d2467, outgoing base e1b88db116ad11c6c1ec34b2bd99503a3501ef76; findings below are provisional since-index changes
+link batch audit: INCONCLUSIVE: census index lacks per-object consumer names; fetch a current index
+```
+
+The published index was fetched at selection time and was already this
+revision. The bounded ordinary previews above pass, but the batch audit
+cannot clear external consumers of the seven removed component template
+definitions. This removed-provider scope needs the next census; LINK-001
+records the remaining verification requirement.

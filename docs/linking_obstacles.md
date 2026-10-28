@@ -76,8 +76,12 @@ authored-byte previews or commit-title gains into a projected headline.
   All six rows and one EH graph remain exact; the owning retirement tool
   removes its sole identity key, with zero wrong bindings remaining.
   The component TU and both cursor providers preview LINKS before and after
-  (566 authored bytes, index `14dc3d2467`). Seven unused template COMDATs
-  disappear; the outgoing batch audit must assess their consumers.
+  (566 authored bytes, index `14dc3d2467`). Seven formerly emitted template
+  COMDATs disappear. The batch audit for repair `5b1a2c883a` is **INCONCLUSIVE**:
+  the index predates the base and lacks per-object consumer names, even after
+  preparing a strict reusable receipt for the changed source. Carry this
+  removed-provider scope into the next census; external consumers remain
+  unverified by the batch audit.
   [Evidence and limits](../reverse/attempt_support/component-iterator-identity-20261028-codex.md).
   No new census gain is claimed.
 
@@ -5828,6 +5832,14 @@ Remaining: the two slides still need canonical coordinate/private animation decl
 ### LINK-120: W3DPropDraw's vftables disagree between units and with retail
 
 **Status: Open. Updated: 2026-10-28; inspected revision: `c64f680554`.**
+
+- **Earlier recheck (2026-10-28, revision `e1b88db116ad`):** all five rows in `W3DPropDraw.cpp`
+  byte-verify, but its current object still previews blocked for all 124 authored
+  bytes against index `14dc3d2467`: the same ModuleData destructor, DrawModule
+  vftable and DrawModule deleting-destructor conflicts below. No source trial
+  or clearance; the shared-interface prerequisites remain.
+  [Recheck evidence](../reverse/attempt_support/propdraw-link-recheck-20261028-codex.md).
+  The original 2026-10-26 inspection at `60d0fc0a50` follows.
 
 - **Evidence / affected units:**
   - `W3DPropDrawModuleDataCtor.cpp` (33 B) has one blocker: `??_7W3DPropDrawModuleData@@6B@`
