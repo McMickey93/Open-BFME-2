@@ -74,12 +74,9 @@ struct Rva003FDEADParam38
 	int m_val54;
 };
 
+class Rva0056B929;
 class LivingWorldArmyIcon
 {
-	char m_pad00[0x14];
-	Rva003FDEADRefBlock *m_p14;
-	char m_pad18[0x20];
-	Rva003FDEADParam38 *m_p38;
 public:
 	void rva003FDEAD();
 	void rva003FDD41(int unused0,int unused1,int enabled);
@@ -87,6 +84,22 @@ public:
 	void rva003FDF1B();
 	void rva003FDF8B();
 	void rva003FDFFB();
+	void rva003FDE8C(unsigned char arg);
+	float rva003FE13E();
+	char m_pad00[0x14];
+private:
+	Rva003FDEADRefBlock *m_p14; // +0x14
+	float m_18; // +0x18
+	float m_1C; // +0x1C
+	char m_pad20[0xC];
+	Rva0056B929 **m_begin; // +0x2C +0x2C
+	Rva0056B929 **m_end; // +0x30 +0x30
+	char m_pad34[0x4];
+	Rva003FDEADParam38 *m_p38; // +0x38
+	char m_pad3C[0x14];
+	float m_50; // +0x50
+	float m_54; // +0x54
+	float m_58; // +0x58
 };
 
 class Rva005391A9 {public:void rva005391A9();};
@@ -172,8 +185,16 @@ void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *p);
 
 struct TreeHintRef00217D4C
 {
-    TargetRef00217D4C *m_ptr;
-    TreeHintRef00217D4C &operator=(const TreeHintRef00217D4C &other);
+public:
+	TreeHintRef00217D4C &operator=(const TreeHintRef00217D4C &other);
+	TreeHintRef00217D4C() : m_ptr(0) {}
+	TreeHintRef00217D4C(const TreeHintRef00217D4C &other) : m_ptr(other.m_ptr) {
+		if (m_ptr) ++m_ptr->references;
+	}
+	__forceinline ~TreeHintRef00217D4C() {
+		if (m_ptr) ReleaseTreeHintRef00217D4C(m_ptr);
+	}
+	TargetRef00217D4C *m_ptr; // +0x00
 };
 
 struct RvaF6Ret

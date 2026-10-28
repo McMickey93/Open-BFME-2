@@ -36,18 +36,34 @@ public:
 // GameClient.cpp owns this singleton with the class GlobalData spelling.
 extern GlobalData *TheWritableGlobalData;
 
+struct Rva003FDEADRefBlock;
+class Rva0056B929;
+struct Rva003FDEADParam38;
 class LivingWorldArmyIcon
 {
-	float m_pad00[6];
-	float m_18;
-	float m_1C;
-	char m_pad20[0x50 - 0x20];
-	float m_50;
-	float m_54;
-	float m_58;
-
 public:
+	void rva003FDEAD();
+	void rva003FDD41(int unused0,int unused1,int enabled);
+	void rva003FDDAC();
+	void rva003FDF1B();
+	void rva003FDF8B();
+	void rva003FDFFB();
+	void rva003FDE8C(unsigned char arg);
 	float rva003FE13E();
+	char m_pad00[0x14];
+private:
+	Rva003FDEADRefBlock *m_p14; // +0x14
+	float m_18; // +0x18
+	float m_1C; // +0x1C
+	char m_pad20[0xC];
+	Rva0056B929 **m_begin; // +0x2C +0x2C
+	Rva0056B929 **m_end; // +0x30 +0x30
+	char m_pad34[0x4];
+	Rva003FDEADParam38 *m_p38; // +0x38
+	char m_pad3C[0x14];
+	float m_50; // +0x50
+	float m_54; // +0x54
+	float m_58; // +0x58
 };
 
 template <class T> inline const T &Rva003FE13EMin(const T &lhs, const T &rhs)
