@@ -3659,3 +3659,4 @@ param,Rva003955AFData::query::f,Rva003955AFData::query::angle,inferred,agree:nl-
 param,Rva003955AFData::query::a4,Rva003955AFData::query::options,inferred,agree:nl-b5ecf8ea6a43,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
 param,Rva003955AFData::query::a5,Rva003955AFData::query::builderObject,inferred,agree:nl-60270834e4c4,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
 function,?rva005E118B@@YIXPAVRva005F8A7ESub@@@Z,?HideTimerOverlay@@YIXPAVRva005F8A7ESub@@@Z,inferred,agree:nl-1741de5d7beb,Code/GameEngine/Source/Common/Rva005E1158Forward.cpp,0x005E118B
+member,Rva004534F5PlayerPart::m_1BC,Rva004534F5PlayerPart::m_isEvil,inferred,agree:nl-dc1de56ca420,Code/GameEngine/Source/GameLogic/Object/Behavior/GettingBuiltBehaviorPrimarySlots.cpp,

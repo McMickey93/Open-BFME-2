@@ -77,7 +77,7 @@ public:
 struct Rva004534F5PlayerPart
 {
 	unsigned char m_pad000[0x1BC];
-	bool m_1BC; // +0x1BC
+	bool m_isEvil; // +0x1BC
 };
 
 class Player
@@ -142,7 +142,7 @@ void GettingBuiltBehavior::onObjectCreated()
 			Player *player = obj->getControllingPlayer();
 			if (player)
 			{
-				bool alt = player->m_34 ? player->m_34->m_1BC : false;
+				bool alt = player->m_34 ? player->m_34->m_isEvil : false;
 				if (alt)
 					named = rva004534F5Find(TheThingFactory, data->m_evilWorkerName);
 				else
