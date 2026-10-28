@@ -1,4 +1,5 @@
-// cl: /DNDEBUG /MD
+// cl: /MD /EHsc /D_STLP_USE_STATIC_LIB /D_STLP_NO_EXCEPTIONS /D_CRTIMP= -Ireference/open-bfme-1/inputs/reference/shims/sweep -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad -Ireference/open-bfme-1/game/GameEngine/Source/GameLogic/AI -Ireference/open-bfme-1/inputs/reference/shims/ini -Ireference/open-bfme-1/inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression -Ireference/open-bfme-1/game/GameEngine/Source/Common/INI /Ireference/shims/bfme2_ascii /Ireference/shims/bfmealloc /Ireference/shims/moduledata /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfmelist
+// stlport
 //
 // AI::getAdjustedVisionRangeForObject, retail 0x002FDD0A (138 bytes), ported
 // from Zero Hour's GameEngine/Source/GameLogic/AI/AI.cpp (GeneralsMD tree
@@ -10,78 +11,122 @@
 // largest-weapon-range override are absent, so only the mood factor
 // remains: sleep gives 0, alert and aggressive scale by the TAiData floats at
 // +0x4C and +0x50. getMoodMatrixValue is the pinned 0x00264F5E.
-typedef float Real;
-typedef int Int;
-typedef unsigned int UnsignedInt;
-
-enum
-{
-	AI_VISIONFACTOR_OWNERTYPE = 0x01,
-	AI_VISIONFACTOR_MOOD = 0x02,
-	AI_VISIONFACTOR_GUARDINNER = 0x04
-};
-
-enum MoodMatrixParameters
-{
-	MM_Controller_Player = 0x00000001,
-	MM_Controller_AI = 0x00000002,
-	MM_Mood_Sleep = 0x00000100,
-	MM_Mood_Passive = 0x00000200,
-	MM_Mood_Normal = 0x00000400,
-	MM_Mood_Alert = 0x00000800,
-	MM_Mood_Aggressive = 0x00001000,
-	MM_Mood_Bitmask = (MM_Mood_Sleep | MM_Mood_Passive | MM_Mood_Normal | MM_Mood_Alert | MM_Mood_Aggressive)
-};
-
-class AIUpdateInterface
-{
+// Built on the approved TU's (ai.cpp) prelude; the BFME 2 offsets are read
+// through retail-offset views of the Zero Hour classes.
+#define Matrix4x4 Matrix4  // BFME renamed it
+#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
+// BFME de-pooled this glue: retail's per-class `operator delete(void*, MagicEnum)`
+// is one 12-byte body (0x007EFFF0) that calls the CRT free IMPORT THUNK -- a
+// `call rel32` into `jmp [__imp__free]` -- where ::operator delete (0x00881EB0)
+// is a different function. <stdlib.h> declares free __declspec(dllimport) under
+// /MD, which compiles to the `ff 15` indirect form instead, so the C-linkage
+// redeclaration below is what names `_free` for the linker's thunk; it is
+// namespaced so every other free() call in this TU keeps the indirect form
+// retail also uses. Same TU-scoped override Team.cpp already carries.
+namespace BfmePoolGlue { extern "C" void __cdecl free(void *); }
+#undef MEMORY_POOL_GLUE_WITHOUT_GCMP
+#define MEMORY_POOL_GLUE_WITHOUT_GCMP(ARGCLASS) \
+protected: \
+	virtual ~ARGCLASS(); \
+public: \
+	enum ARGCLASS##MagicEnum { ARGCLASS##_GLUE_NOT_IMPLEMENTED = 0 }; \
+public: \
+	inline void *operator new(size_t s, ARGCLASS##MagicEnum e DECLARE_LITERALSTRING_ARG2) \
+	{ return MP_GLUE_ALLOCATE(ARGCLASS); } \
+public: \
+	inline void operator delete(void *p, ARGCLASS##MagicEnum e DECLARE_LITERALSTRING_ARG2) \
+	{ BfmePoolGlue::free(p); } \
+protected: \
+	inline void *operator new(size_t s) { return ::operator new(s); } \
+	inline void operator delete(void *p) { ::operator delete(p); } \
+private: \
+	virtual MemoryPool *getObjectMemoryPool() { return ARGCLASS::getClassMemoryPool(); } \
 public:
-	UnsignedInt getMoodMatrixValue(void) const;
-};
+#include "Common/CRCDebug.h"
+#include "Common/GameState.h"
+#include "Common/PerfTimer.h"
+#include "Common/Player.h"
+#include "Common/PlayerList.h"
+#include "Common/ThingTemplate.h"
+#include "Common/Xfer.h"
+#include "Common/XferCRC.h"
+#include "GameLogic/AI.h"
+#include "GameLogic/PartitionManager.h"
+#include "GameLogic/Module/AIUpdate.h"
+#include "GameLogic/Module/ContainModule.h"
+#include "GameLogic/ScriptEngine.h"
+#include "GameLogic/SidesList.h"
+#include "GameLogic/AIPathfind.h"
+#include "GameLogic/Weapon.h"
+#ifdef _INTERNAL
+// for occasional debugging...
+//#pragma optimize("", off)
+//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
 
-class Object
-{
+#endif
+#define Matrix4x4 Matrix4  // BFME renamed it
+#undef MEMORY_POOL_GLUE_WITHOUT_GCMP
+#define MEMORY_POOL_GLUE_WITHOUT_GCMP(ARGCLASS) \
+protected: \
+	virtual ~ARGCLASS(); \
+public: \
+	enum ARGCLASS##MagicEnum { ARGCLASS##_GLUE_NOT_IMPLEMENTED = 0 }; \
+public: \
+	inline void *operator new(size_t s, ARGCLASS##MagicEnum e DECLARE_LITERALSTRING_ARG2) \
+	{ return MP_GLUE_ALLOCATE(ARGCLASS); } \
+public: \
+	inline void operator delete(void *p, ARGCLASS##MagicEnum e DECLARE_LITERALSTRING_ARG2) \
+	{ BfmePoolGlue::free(p); } \
+protected: \
+	inline void *operator new(size_t s) { return ::operator new(s); } \
+	inline void operator delete(void *p) { ::operator delete(p); } \
+private: \
+	virtual MemoryPool *getObjectMemoryPool() { return ARGCLASS::getClassMemoryPool(); } \
 public:
-	Real getVisionRange() const;
-	Real getBfmeVisionBonus() const { return m_bfmeVisionBonusB8; }
-	// The AI is read directly: an inline getAI here would be one more COMDAT
-	// copy beside the Zero Hour header views' (ZH offset).
-	unsigned char m_pad00[0xB8];
-	Real m_bfmeVisionBonusB8; // +0xB8
-	unsigned char m_padBC[0x258 - 0xBC];
-	AIUpdateInterface *m_ai; // +0x258
+#ifdef _INTERNAL
+// for occasional debugging...
+//#pragma optimize("", off)
+//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
+
+#endif
+#include <stl/_algobase.h>
+#include <list>
+
+
+struct BfmeVisionObjectFields
+{
+	unsigned char m_unreconstructed_00[0xB8];
+	Real m_visionBonus;				///< retail +0xB8
+	unsigned char m_unreconstructed_BC[0x258 - 0xBC];
+	AIUpdateInterface *m_ai;		///< retail +0x258
 };
 
-struct TAiData
+struct BfmeVisionTAiDataFields
 {
-	unsigned char m_pad00[0x4C];
-	Real m_alertRangeModifier; // +0x4C
-	Real m_aggressiveRangeModifier; // +0x50
+	unsigned char m_unreconstructed_00[0x4C];
+	Real m_alertRangeModifier;		///< retail +0x4C
+	Real m_aggressiveRangeModifier;	///< retail +0x50
 };
 
-class AI
+struct BfmeVisionAIFields
 {
-public:
-	static Real getAdjustedVisionRangeForObject(const Object *object, Int factorsToConsider);
-	const TAiData *getAiData() const { return m_aiData; }
-private:
-	unsigned char m_pad00[0x18];
-	TAiData *m_aiData; // +0x18
+	unsigned char m_unreconstructed_00[0x18];
+	const BfmeVisionTAiDataFields *m_aiData;	///< retail +0x18
 };
-extern AI *TheAI;
 
 //-------------------------------------------------------------------------------------------------
 Real AI::getAdjustedVisionRangeForObject(const Object *object, Int factorsToConsider)
 {
 	Real originalRange = object->getVisionRange();
-	const AIUpdateInterface *ai = object->m_ai;
+	const BfmeVisionObjectFields *fields = (const BfmeVisionObjectFields *)object;
+	const AIUpdateInterface *ai = fields->m_ai;
 
 	if (!ai)
 	{
 		return 0.0f;
 	}
 
-	originalRange += object->getBfmeVisionBonus();
+	originalRange += fields->m_visionBonus;
 
 	UnsignedInt moodMatrixVal = ai->getMoodMatrixValue();
 
@@ -97,11 +142,11 @@ Real AI::getAdjustedVisionRangeForObject(const Object *object, Int factorsToCons
 				break;
 
 			case MM_Mood_Alert:
-				originalRange *= TheAI->getAiData()->m_alertRangeModifier;
+				originalRange *= ((const BfmeVisionAIFields *)TheAI)->m_aiData->m_alertRangeModifier;
 				break;
 
 			case MM_Mood_Aggressive:
-				originalRange *= TheAI->getAiData()->m_aggressiveRangeModifier;
+				originalRange *= ((const BfmeVisionAIFields *)TheAI)->m_aiData->m_aggressiveRangeModifier;
 				break;
 		}
 	}
