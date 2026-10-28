@@ -96,9 +96,24 @@ Remaining mentions are the destination's provenance comment, historical
 attempts/handoffs, and measured `reverse/link_status.csv`, which is retained
 as measurement history. This handoff also intentionally names the old path.
 
-The outgoing batch audit still needs an index current at the outgoing base
-and current affected-consumer receipts to prove batch-wide linking. The next
-census must confirm the new owner. No nightly, link cycle or smoke was run.
+The outgoing `link_batch_audit.py` returned INCONCLUSIVE: index `14dc3d2467`
+predates the outgoing base and lacks per-object consumer names. It cannot
+establish either batch-wide linking or a regression. The next census must
+confirm the new owner and affected consumer totals. No nightly, link cycle
+or smoke was run. Raw receipt: `build/transportcontain-batch-link-audit.txt`.
+
+The commit hook also reports the pre-existing unreferenced
+`Object::clearCondition` copy as an unregistered shadow identity finding.
+Its body/relocations are among the 648 unchanged COMDATs; this move does not
+repair it or add a baseline key. The hook passes in the current shadow mode.
+
+The first merge publication attempt stopped after rebasing with Git's
+"Cannot rebase onto multiple branches" error. A normal explicit
+`git pull --rebase origin master` then completed, CSV integrity passed, and
+the destination source and AGENTS.md were unchanged upstream. Because
+consolidation tooling changed upstream, the path-consumer audit was repeated
+before retrying publication; the remaining old-path mentions retain the
+same historical/provenance classification.
 
 ## Remaining prerequisites
 

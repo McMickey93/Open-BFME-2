@@ -3373,10 +3373,14 @@ all five EH graphs are EXACT, and the merged object's 648 external COMDATs
 equal the original provider union. The tool's before/after consumer guard
 accepts the composition. The ordinary preview still reports LINKS (own bytes
 2,667); this is existing destination-plus-parser coverage, not a census gain.
-No data findings or debt retirement are claimed; the actual shadow data check
-has zero findings. Twelve whole-file donors still need prerequisites, and
+The shadow data check has zero findings; no debt is retired. Twelve whole-file donors still need prerequisites, and
 the generated funclet at 0x0078AD97 remains in its existing owner. The next
 census must confirm the merged owner and batch-wide consumer totals.
+The outgoing batch audit is INCONCLUSIVE: the index predates the outgoing
+base and lacks per-object consumer names. This is unverified batch-wide
+linking, not evidence of a regression or a clean result. The existing
+unreferenced `Object::clearCondition` body is unchanged and remains a shadow
+identity finding without a register key.
 
 ### LINK-035: `StlSweepR3` vector-destructor units instantiated the whole `vector<RecordN>`
 Status: Open (6 of 7 repaired). Updated: 2026-10-26; inspected revision: 018ace6021; index d1f046749a.
