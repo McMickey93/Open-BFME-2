@@ -94,14 +94,14 @@ public:
 	AIUpdateInterface *m_ai; // +0x258
 };
 
-class TurretStateMachine
+class StateMachine
 {
 public:
 	virtual void slot00(); virtual void slot01(); virtual void slot02(); virtual void slot03();
 	virtual void slot04(); virtual void slot05(); virtual void slot06(); virtual void slot07();
 	virtual StateReturnType setState(int newStateID); // +0x20
 
-	Bool rva004D7ADD();
+	Bool isGoalObjectDestroyed() const;
 	Object *getGoalObject();
 	unsigned char m_pad04[0x14 - 0x04];
 	Object *m_owner; // +0x14
@@ -153,7 +153,7 @@ public:
 	virtual Bool computePath(); // +0x44
 public:
 	unsigned char m_pad04[0x18 - 0x04];
-	TurretStateMachine *m_machine; // +0x18
+	StateMachine *m_machine; // +0x18
 };
 
 class AIInternalMoveToState : public State
@@ -185,7 +185,7 @@ StateReturnType Rva00349611::rva00349611()
 {
 	Object *source = m_machine->m_owner;
 	AIUpdateInterface *ai = source->getObservedAI();
-	if (m_machine->rva004D7ADD())
+	if (m_machine->isGoalObjectDestroyed())
 	{
 		ai->notifyVictimIsDead();
 		ai->setCurrentVictim(0);

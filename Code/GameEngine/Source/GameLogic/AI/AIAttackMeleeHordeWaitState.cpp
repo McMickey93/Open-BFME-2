@@ -11,8 +11,7 @@ enum StateReturnType {STATE_CONTINUE=0,STATE_SUCCESS=-1,STATE_FAILURE=-2};
 enum ObjectStatusTypes {OBJECT_STATUS_26=0x26};
 class Object;class Thing;
 bool rva00344EB2Gate(Object *,Thing *);
-class TurretStateMachine {public:bool rva004D7ADD();};
-class StateMachine {public:Object *getGoalObject();char pad00[0x14];Object *m_owner;};
+class StateMachine {public:Object *getGoalObject();bool isGoalObjectDestroyed() const;char pad00[0x14];Object *m_owner;};
 class HordeContainInterface {public:
  virtual void slot0();
  virtual void slot1();
@@ -169,7 +168,7 @@ class AIAttackMeleeHordeWaitState {public:
 StateReturnType AIAttackMeleeHordeWaitState::onEnter()
 {
 	Object *attacker = m_machine->m_owner;
-	if (((TurretStateMachine *)m_machine)->rva004D7ADD())
+	if (m_machine->isGoalObjectDestroyed())
 		return STATE_SUCCESS;
 
 	Object *candidateVictim = m_machine->getGoalObject();

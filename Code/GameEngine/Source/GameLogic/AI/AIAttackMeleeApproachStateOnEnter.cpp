@@ -165,17 +165,16 @@ public:
 	virtual void slot13();
 	virtual void setGoalObject(const Object *obj);
 	Object *getOwner() const { return m_owner; }
+	Bool isGoalObjectDestroyed() const;
 private:
 	unsigned char m_pad04[0x14 - 0x04];
 	Object *m_owner; // +0x14
 };
 
-// StateMachine::isGoalObjectDestroyed (0x004D7ADD) and getGoalObject
-// (0x004D7726), rowed under these names.
+// StateMachine::getGoalObject (0x004D7726), rowed under this name.
 class TurretStateMachine
 {
 public:
-	Bool rva004D7ADD();
 	Object *getGoalObject();
 };
 
@@ -236,7 +235,7 @@ private:
 StateReturnType AIAttackMeleeApproachState::onEnter()
 {
 	Object *source = getMachineOwner();
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_FAILURE;
 
 	Object *victim = getMachineGoalObjectRV();

@@ -302,6 +302,7 @@ public:
 	virtual void setGoalObject(const Object *obj);
 	Object *getOwner() const { return m_owner; }
 	Object *getGoalObject();
+	Bool isGoalObjectDestroyed() const;
 	// This local +0x24 view must not emit the shared +0x28 getter.
 	const Coord3D *locomotorGoalPosition() const { return &m_goalPosition; }
 private:
@@ -309,13 +310,6 @@ private:
 	Object *m_owner; // +0x14
 	unsigned char m_pad18[0x24 - 0x18];
 	Coord3D m_goalPosition; // +0x24
-};
-
-// StateMachine::isGoalObjectDestroyed (0x004D7ADD), rowed under this name.
-class TurretStateMachine
-{
-public:
-	Bool rva004D7ADD();
 };
 
 class State
@@ -472,7 +466,7 @@ __declspec(noinline) inline StateReturnType AIAttackApproachTargetState::onEnter
 
 	m_ownerPosition = *source->getPosition();
 
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_FAILURE;
 
 	m_waiting = false;

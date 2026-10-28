@@ -633,6 +633,7 @@ public:
 	virtual void slot12();
 	virtual void slot13();
 	virtual void setGoalObject(const Object *obj);
+	Bool isGoalObjectDestroyed() const;
 	__declspec(dllimport) __forceinline UnsignedInt getCurrentStateID() const { return m_currentState ? m_currentState->m_id : INVALID_STATE_ID; }
 	inline Bool isInAttackState() const;
 	void setGoalPosition(const Coord3D *pos);
@@ -654,13 +655,6 @@ public:
 	Bool m_locked; // +0x38 (ZH lock()/unlock() without the debug owner string)
 	unsigned char m_pad39[0x4C - 0x39];
 	class Gen_0018BC70 *m_goalSquad; // +0x4C
-};
-
-// StateMachine::isGoalObjectDestroyed (0x004D7ADD), rowed under this name.
-class TurretStateMachine
-{
-public:
-	Bool rva004D7ADD();
 };
 
 class State

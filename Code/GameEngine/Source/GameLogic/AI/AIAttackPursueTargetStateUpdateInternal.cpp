@@ -96,10 +96,10 @@ public:
 	void *m_physics;
 };
 
-class TurretStateMachine
+class StateMachine
 {
 public:
-	Bool rva004D7ADD();
+	Bool isGoalObjectDestroyed() const;
 	Object *getGoalObject();
 	unsigned char m_pad00[0x14];
 	Object *m_owner;
@@ -162,7 +162,7 @@ public:
 	virtual Bool computePath();
 public:
 	unsigned char m_pad04[0x18 - 0x04];
-	TurretStateMachine *m_machine;
+	StateMachine *m_machine;
 };
 
 class AIInternalMoveToState : public State
@@ -187,7 +187,7 @@ private:
 StateReturnType AIAttackPursueTargetState::updateInternal()
 {
 	AIUpdateInterface *ai = m_machine->m_owner->m_ai;
-	if (m_machine->rva004D7ADD())
+	if (m_machine->isGoalObjectDestroyed())
 	{
 		ai->notifyVictimIsDead();
 		ai->setCurrentVictim(0);

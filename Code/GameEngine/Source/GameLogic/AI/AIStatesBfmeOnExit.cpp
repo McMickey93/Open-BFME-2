@@ -738,13 +738,6 @@ private:
 	unsigned char m_privateStatus; // +0x438 (bit 0: effectively dead)
 };
 
-// The rowed goal-destroyed test 0x004D7ADD (Zero Hour's
-// StateMachine::isGoalObjectDestroyed), rowed under this class name.
-class TurretStateMachine
-{
-public:
-	bool rva004D7ADD();
-};
 class StateMachine
 {
 public:
@@ -758,6 +751,7 @@ public:
 	virtual void setGoalObject(const Object *obj);
 	Object *getOwner() const { return m_owner; }
 	Object *getGoalObject();
+	Bool isGoalObjectDestroyed() const;
 	// This local +0x24 view must not emit the shared +0x28 getter.
 	const Coord3D *locomotorGoalPosition() const { return &m_goalPosition; }
 	void rva0034BF11ClearByte3A() { m_bfmeFlag3A = false; }
@@ -1578,7 +1572,7 @@ StateReturnType AIAttackMeleeHordeApproachTargetState::onEnter()
 		return (StateReturnType)STATE_FAILURE;
 	if (victim->rva002943B2(source->getControllingPlayer()))
 		return (StateReturnType)STATE_FAILURE;
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD() || !victim)
+	if (getMachine()->isGoalObjectDestroyed() || !victim)
 		return (StateReturnType)STATE_SUCCESS;
 	if (source->getContain() && !rva00344EB2Gate(source, victim))
 	{
@@ -1624,7 +1618,7 @@ StateReturnType AIAttackMeleeHordeApproachTargetState::update()
 	Object *source = getMachineOwner();
 	AIUpdateInterface *ai = source->getAI();
 
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 	{
 		ai->notifyVictimIsDead();
 		ai->setCurrentVictim(0);

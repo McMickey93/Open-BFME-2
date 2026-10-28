@@ -626,6 +626,7 @@ public:
 	virtual void slot12();
 	virtual void slot13();
 	virtual void setGoalObject(const Object *obj); // slot 14
+	Bool isGoalObjectDestroyed() const;
 	Bool isInIdleState() const { return m_currentState ? m_currentState->isIdle() : true; }
 	void setGoalPosition(const Coord3D *pos);
 	Object *getOwner() const { return m_owner; }
@@ -638,13 +639,6 @@ private:
 	Object *m_owner; // +0x14
 	unsigned char m_pad18[0x24 - 0x18];
 	Coord3D m_goalPosition; // +0x24
-};
-
-// StateMachine::isGoalObjectDestroyed (0x004D7ADD), rowed under this name.
-class TurretStateMachine
-{
-public:
-	Bool rva004D7ADD();
 };
 
 class State

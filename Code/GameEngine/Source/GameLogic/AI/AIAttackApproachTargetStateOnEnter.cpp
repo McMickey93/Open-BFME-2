@@ -631,6 +631,7 @@ public:
 	virtual void slot12();
 	virtual void slot13();
 	virtual void setGoalObject(const Object *obj);
+	Bool isGoalObjectDestroyed() const;
 	__declspec(dllimport) __forceinline UnsignedInt getCurrentStateID() const { return m_currentState ? m_currentState->m_id : INVALID_STATE_ID; }
 	inline Bool isInAttackState() const;
 	void setGoalPosition(const Coord3D *pos);
@@ -652,13 +653,6 @@ public:
 	Bool m_locked; // +0x38 (ZH lock()/unlock() without the debug owner string)
 	unsigned char m_pad39[0x4C - 0x39];
 	class Gen_0018BC70 *m_goalSquad; // +0x4C
-};
-
-// StateMachine::isGoalObjectDestroyed (0x004D7ADD), rowed under this name.
-class TurretStateMachine
-{
-public:
-	Bool rva004D7ADD();
 };
 
 class State
@@ -1146,7 +1140,7 @@ __declspec(noinline) inline StateReturnType AIAttackApproachTargetState::onEnter
 
 	m_ownerPosition = *source->getPosition();
 
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_FAILURE;
 
 	m_waiting = false;
@@ -1298,7 +1292,7 @@ StateReturnType AIAttackPursueTargetState::onEnter()
 	AIUpdateInterface *ai = source->getObservedAI();
 	if (source->isKindOfProjectile())
 		return STATE_SUCCESS;
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_SUCCESS;
 	if (!m_isAttackingObject)
 		return STATE_SUCCESS;
@@ -1414,7 +1408,7 @@ Bool AIAttackApproachTargetState00C12678::computePath()
 StateReturnType AIAttackFireDuringApproachState::onEnter()
 {
 	Object *source = getMachineOwner();
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_FAILURE;
 
 	critterDesyncLog("CritterDesync: setAdjustDestination(FALSE) 28");
@@ -1500,7 +1494,7 @@ StateReturnType AIAttackMeleeSquishState::onEnter()
 	Object *source = machine->getOwner();
 	if (!source->testStatus(OBJECT_STATUS_44) && !source->m_ai->m_3cc && source->getTemplate()->m_useCrushAttack)
 	{
-		if (!((TurretStateMachine *)machine)->rva004D7ADD())
+		if (!machine->isGoalObjectDestroyed())
 		{
 			critterDesyncLog("CritterDesync: setAdjustDestination(FALSE) 33");
 			setAdjustsDestination(false);
@@ -1567,7 +1561,7 @@ StateReturnType AIAttackMeleeSquishState::rva0034D98B()
 		}
 	}
 
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD() ||
+	if (getMachine()->isGoalObjectDestroyed() ||
 		(victim && ((victim->m_438 & 1) || victim->testStatus(OBJECT_STATUS_32))))
 	{
 		ai->setPathExtraDistance(0.0f);
@@ -1625,7 +1619,7 @@ StateReturnType AIAttackMeleeSquishState::rva0034D98B()
 StateReturnType AIAttackMeleeEngageState::onEnter()
 {
 	Object *source = getMachineOwner();
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_SUCCESS;
 
 	if (!m_fireState)
@@ -1757,7 +1751,7 @@ StateReturnType AIAttackPositionFireWeaponState::update()
 StateReturnType AIAttackMeleeHordeWaitPathState::update()
 {
 	Object *owner = getMachineOwner();
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_SUCCESS;
 	Object *goal = getMachineGoalObject();
 	if (!goal)
@@ -2066,13 +2060,13 @@ Bool AIAttackMeleeSquishState::computePath()
 }
 
 // Retail 0x00345076, 101 bytes: slot 4 of 0x00C10FA0. Clears +0x24, succeeds
-// at once when the pinned rva004D7ADD reports the goal gone or there is no goal
+// at once when isGoalObjectDestroyed reports the goal gone or there is no goal
 // object, otherwise waits from the current frame, one second and two frames
 // longer for an owner with status 0x44 or the AI's +0x3CC flag.
 StateReturnType AIAttackMeleeHordeWaitPathState::onEnter()
 {
 	m_bfmeValue24 = 0;
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_SUCCESS;
 	if (!getMachineGoalObject())
 		return STATE_SUCCESS;
@@ -2100,7 +2094,7 @@ struct ApproachLogStatusView {unsigned char pad[0x1B4]; Int value;};
 StateReturnType AIAttackApproachTargetState::updateInternal()
 {
 	AIUpdateInterface *ai = getMachineOwner()->getObservedAI();
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 	{
 		ai->notifyVictimIsDead();
 		ai->setCurrentVictim(0);

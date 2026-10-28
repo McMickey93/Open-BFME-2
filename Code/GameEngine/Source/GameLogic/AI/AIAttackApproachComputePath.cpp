@@ -629,6 +629,7 @@ public:
 	virtual void slot12();
 	virtual void slot13();
 	virtual void setGoalObject(const Object *obj);
+	Bool isGoalObjectDestroyed() const;
 	UnsignedInt getCurrentStateID() const { return m_currentState ? m_currentState->m_id : INVALID_STATE_ID; }
 	inline Bool isInAttackState() const;
 	void setGoalPosition(const Coord3D *pos);
@@ -648,13 +649,6 @@ private:
 	unsigned char m_pad30[0x38 - 0x30];
 public:
 	Bool m_locked; // +0x38 (ZH lock()/unlock() without the debug owner string)
-};
-
-// StateMachine::isGoalObjectDestroyed (0x004D7ADD), rowed under this name.
-class TurretStateMachine
-{
-public:
-	Bool rva004D7ADD();
 };
 
 class State
@@ -1131,7 +1125,7 @@ __declspec(noinline) inline StateReturnType AIAttackApproachTargetState::onEnter
 
 	m_ownerPosition = *source->getPosition();
 
-	if (((TurretStateMachine *)getMachine())->rva004D7ADD())
+	if (getMachine()->isGoalObjectDestroyed())
 		return STATE_FAILURE;
 
 	m_waiting = false;
