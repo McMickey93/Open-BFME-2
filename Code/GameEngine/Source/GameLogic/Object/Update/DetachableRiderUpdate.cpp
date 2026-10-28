@@ -7,6 +7,7 @@
 #include "ContainmentListView.h"
 #include <algorithm>
 #include <memory>
+#include "DetachableRiderXferPrefix.h"
 
 // Compare nodes locally so this TU does not emit a conflicting iterator-base
 // wrapper (_List_iterator_base::operator!=, retail's copy is 0x006CFE40).
@@ -163,15 +164,83 @@ public:
 
 extern NameKeyGenerator *TheNameKeyGenerator;
 
-class DetachableRiderUpdate
+class Xfer::Version
+{
+public:
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
+
+	unsigned char m_current;
+	unsigned char m_minimum;
+};
+
+class ObjectModule
+{
+public:
+	ObjectModule(Thing *, const ModuleData *);
+	virtual ~ObjectModule();
+protected:
+	const ModuleData *m_moduleData;
+	Object *m_object;
+};
+
+class BehaviorModuleInterface { public: virtual void behaviorSlot(); };
+
+class UpdateModuleInterface { public: virtual void updateSlot(); };
+
+class UpdateModule : public ObjectModule,
+	public BehaviorModuleInterface, public UpdateModuleInterface
+{
+public:
+	UpdateModule(Thing *thing, const ModuleData *data);
+	virtual ~UpdateModule();
+	void xfer(Xfer *xfer);
+
+private:
+	unsigned int m_nextCallFrameAndPhase;
+	int m_indexInLogic;
+	int m_updateState;
+};
+
+class DetachableRiderUpdate : public UpdateModule
 {
 public:
 	virtual NameKeyType getModuleNameKey() const;
+
+protected:
+	virtual void xfer(Xfer *xfer);
+
+private:
+	bool m_flag20;
+	bool m_flag21;
 };
 
-// tu-skeleton: 0x004AE7AD 72B ?xfer@DetachableRiderUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateXfer.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateXfer.cpp
+
+//
+// ?xfer@DetachableRiderUpdate@@MAEXPAVXfer@@@Z, retail 0x004AE7AD, 72 bytes.
+// Virtual slot 3 (offset 0x0C) of vtable 0x00855468 (slot 0 deleting dtor at
+// 0x004AE8DE, slot 2 name getter at 0x004AE7A7 returning the
+// DetachableRiderUpdate string, slot 4 pool-key body at 0x004AE832).
+// Version(1,1) via Xfer slot 0x28, then base UpdateModule xfer via rowed
+// 0x0044DF9F, then bools at +0x20/+0x21 via Xfer slot 0x90. Layout is the
+// rowed ctor TU DetachableRiderUpdateCtorModuleFactoryBody.cpp (UpdateModule
+// base 0x20 plus m_flag20 at +0x20 plus m_flag21 at +0x21, 0x24 allocation).
+// Recipe is the AIGateUpdateXfer/BloodthirstyUpdateXfer Version-first slot-3
+// pattern with protected xfer.
+
+void DetachableRiderUpdate::xfer(Xfer *xfer)
+{
+	Xfer::Version version(1, 1);
+	*xfer == version;
+	UpdateModule::xfer(xfer);
+	*xfer == m_flag20;
+	*xfer == m_flag21;
+}
 
 // tu-skeleton: 0x004AE7F5 28B ?allocate@?$allocator@VWeaponTemplateSet@@@_STL@@QBEPAVWeaponTemplateSet@@IPBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderDataRva004AEB84.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp
 

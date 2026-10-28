@@ -2610,6 +2610,14 @@ separate strict receipt limitation encountered there.
   retrying. No file reduction or census gain is claimed for the restored trial.
   [The handoff](../reverse/attempt_support/detachable-rider-consolidation-20261028-codex.md)
   retains the bounded proof, queue/debt audit and remaining donor prerequisites.
+  Follow-up: the separately committed qualified-class parser repair
+  `e368ad2c70` clears B1, and a fresh supported merge at base `c53dcf7920`
+  absorbs the transfer donor. All seven rows and the EH graph remain exact;
+  ownership, class and converged-data checks pass, all saved object/data
+  bindings are unchanged, and SOURCE FILES falls by one. The whole outgoing
+  audit remains INCONCLUSIVE because index `14dc3d2467` lacks per-object
+  consumer names and differs from the base. Carry the moved TU into the next
+  normal census; this clears only the bounded parser/composition blocker.
 
 - **Projectile-stream bounded composition (2026-10-27, input `e7da23e761`):**
   [The scoped audit](../reverse/attempt_support/projectile-stream-snapshot-20261027.md)

@@ -84,5 +84,34 @@ failures are `test_generated_placeholder_file_is_never_a_donor` (fixture's
 stale placement map yields no rows) and
 `test_repoint_moves_only_absorbed_donor_rows_and_keeps_terminators` (removed
 `tu_skeleton.repoint` API). Neither is changed here. All gate-exploit cases
-run with their existing refusal and positive controls. The qualified-class
+that are runnable pass their existing refusal and positive controls; the one
+skip is a pre-existing open red-team escape fixture. The qualified-class
 repair is committed separately from the restored trial and retry.
+
+## Completed retry
+
+The verifier repair is `e368ad2c70`. After the runner rebased onto
+`c53dcf7920`, both standalone sources were rebuilt (7/7) and their combined
+object identity was compared to the saved baseline again: unchanged. The
+supported planner was regenerated and its currency check passed. A fresh
+ordinary `tu_skeleton.py --merge` again accepts only the transfer donor,
+deletes it and repoints exactly one function source and one TU-map source.
+
+The retry passes the normal destination build (7/7, one literal), frozen-file,
+CSV, staged ownership and class gates, converged data (zero second names and
+zero unjudged rows), and the EXACT EH check. All 26 external COMDAT digests,
+26 definitions, 24 dependencies and six data bindings remain identical.
+The ordinary preview still reports LINKS for 849 authored bytes; the
+new-variant check passes. `progress.py` reports BYTE-MATCHED 100% and SOURCE
+FILES 22,283, down one from the retry base. No additional recovered byte or
+census-linked gain is claimed.
+
+The final whole-outgoing-range path audit at base `c53dcf7920` covers all 17
+absorbed paths and finds no active consumer needing an update. Existing debt
+keys and queues remain attached to their live owners; no protected key moves
+or retires in this absorption. The batch link audit compares staged code tree
+`6671a9e6f6292e9bf2c82324fa7b72b7285b5d04` to that base and is INCONCLUSIVE:
+index `14dc3d2467` differs from the base and lacks per-object consumer names.
+Carry all outgoing moved scopes, including this TU, to the next normal census.
+The bounded composition/parser blocker is cleared; broader consumer/provider
+closure and the other donor prerequisites remain open.
