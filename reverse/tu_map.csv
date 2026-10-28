@@ -46403,20 +46403,20 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00564C08,56,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp W=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignAct.cpp provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct_SetPlayerControlOfArmies.cpp
 0x00564C40,12,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564C4C provisional,Code/GameEngine/Source/Common/Disp8ImulAddDwordGetters.cpp
 0x00564C4C,12,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564C58 provisional,Code/GameEngine/Source/Common/T2IndexedArrayAccessors.cpp
-0x00564C58,37,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564C7D provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00564C58FillN.cpp
-0x00564C7D,40,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564CA5 provisional,Code/GameEngine/Source/Common/Bfme/Rva00564C7DFill.cpp
-0x00564CA5,47,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564CD4 provisional,Code/GameEngine/Source/Common/Bfme/Rva00564CA5Copy.cpp
+0x00564C58,37,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564C7D provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00564C7D,40,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564CA5 provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00564CA5,47,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564CD4 provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
 0x00564CD4,50,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564D06 provisional,Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteAssign.cpp
-0x00564D06,50,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564D38 provisional,Code/GameEngine/Source/Common/Bfme/Rva00564D06Copy.cpp
-0x00564D38,47,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564D67 provisional,Code/GameEngine/Source/Common/Bfme/Rva00564D38Copy.cpp
-0x00564D67,50,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564D99 provisional,Code/GameEngine/Source/Common/Bfme/Rva00564D67Copy.cpp
-0x00564D99,50,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564DCB provisional,Code/GameEngine/Source/Common/Bfme/Rva00564D99Copy.cpp
-0x00564DCB,39,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564DF2 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva00564DCBCopyAssign.cpp
+0x00564D06,50,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564D38 provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00564D38,47,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564D67 provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00564D67,50,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564D99 provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00564D99,50,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564DCB provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00564DCB,39,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564DF2 provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
 0x00564DF2,27,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564E0D provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/Rva0052C119CurrentEntry.cpp
-0x00564E0D,27,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564E43 provisional,Code/GameEngine/Source/GameClient/System/FXParticleSystem/Rva00564E0DGetter.cpp
+0x00564E0D,27,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564E43 provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
 0x00564E28,27,code,,displaced,-,Z=Code/GameEngine/Source/Common/System/CDManager.cpp S=Code/GameEngine/Source/Common/System/CDManager.cpp N=Code/GameEngine/Source/Common/System/CDDrive.cpp,Code/GameEngine/Source/Common/System/CDManager.cpp
 0x00564E43,125,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,C,C=0x00564C08..0x00564EC0 provisional,Code/GameEngine/Source/Common/System/Rva00564E43.cpp
-0x00564EC0,453,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignAct.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
+0x00564EC0,453,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignAct.cpp provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
 0x00565085,129,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp W=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignAct.cpp provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct_MoveArmies.cpp
 0x00565106,66,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,N,N=Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp provisional,Code/GameEngine/Source/Common/Rva00565106SpawnBuildings.cpp
 0x00565148,138,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignAct.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActEvents.cpp
@@ -85705,13 +85705,13 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00799DFA,11,code,,,-,,Code/GameEngine/Source/GameClient/System/FXParticleSystem/TerrainCollisionModuleTemplateWrite.cpp
 0x00799E05,8,code,,,-,,Code/GameEngine/Source/GameClient/System/FXParticleSystem/TerrainCollisionModuleTemplateWrite.cpp
 0x00799E0D,10,code,,,-,,Code/GameEngine/Source/GameClient/System/FXParticleSystem/TerrainCollisionModuleTemplateWrite.cpp
-0x00799E17,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
-0x00799E1F,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
-0x00799E27,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
-0x00799E2F,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
-0x00799E37,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
-0x00799E3F,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
-0x00799E47,10,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActOrders.cpp
+0x00799E17,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00799E1F,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00799E27,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00799E2F,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00799E37,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00799E3F,8,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
+0x00799E47,10,code,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp,approved,P,P=0x00564EC0@FuncInfo0x0094EB9C provisional,Code/GameEngine/Source/Common/LivingWorldCampaignAct.cpp
 0x00799E51,10,code,,,-,,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActEvents.cpp
 0x00799E5B,10,code,,,-,,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActEvents.cpp
 0x00799E65,10,code,Code/GameEngine/Source/Common/Glo012F1024Item.cpp,approved,P,P=0x00565344@FuncInfo0x0094EBEC provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaignActEvents.cpp
