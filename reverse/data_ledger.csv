@@ -10617,7 +10617,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0084291C,8,.rdata,string,??_C@_04PHLAALHH@Walk?$AA@,,literal,,0,1
 0x00842924,12,.rdata,string,??_C@_05FNNGFGLF@Index?$AA@,,literal,,0,1
 0x00842930,480,.rdata,vtable,??_7DynamicPortalBehaviourModuleData@@6B@,,literal,,0,1
-0x00842B10,48,.rdata,global,?g_00C42B10@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourModuleDataParse.cpp,owned,,1,2
+0x00842B10,48,.rdata,global,?g_00C42B10@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviour.cpp,owned,,1,2
 0x00842B40,16,.rdata,vtable,??_7FakePathfindPortalBehaviour@@6BFakePathfindPortalBehaviour_B4@@@,,literal,??_7FakePathfindPortalBehaviour@@6BFakePathfindPortalBehaviour_B4@@@;_s_secondary24@Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourCtor.cpp,1,2
 0x00842B50,4,.rdata,vtable,??_7FakePathfindPortalBehaviour@@6BFakePathfindPortalBehaviour_B3@@@,,literal,??_7FakePathfindPortalBehaviour@@6BFakePathfindPortalBehaviour_B3@@@;_s_secondary20@Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourCtor.cpp,1,2
 0x00842B54,12,.rdata,vtable,??_7FakePathfindPortalBehaviour@@6BFakePathfindPortalBehaviour_B2@@@,,literal,??_7FakePathfindPortalBehaviour@@6BFakePathfindPortalBehaviour_B2@@@;_s_secondary10@Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourCtor.cpp,1,2
@@ -19932,8 +19932,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A035E0,4,.data,global,?$S1@?1??getModuleNameKey@DynamicPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourPoolKey.cpp,owned,,1,4
 0x00A035E4,8,.data,global,_s_rva007B0C53,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A035EC,4,.data,global,?g_Va00E035EC@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E035xx.cpp,owned,,1,2
-0x00A035F0,4,.data,global,?TheFakePathfindPortalBehaviourPoolKey@?1??getModuleNameKey@FakePathfindPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourPoolKey.cpp,owned,,1,2
-0x00A035F4,4,.data,global,?$S1@?1??getModuleNameKey@FakePathfindPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviourPoolKey.cpp,owned,,1,4
+0x00A035F0,4,.data,global,?TheFakePathfindPortalBehaviourPoolKey@?1??getModuleNameKey@FakePathfindPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviour.cpp,owned,,1,2
+0x00A035F4,4,.data,global,?$S1@?1??getModuleNameKey@FakePathfindPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviour.cpp,owned,,1,4
 0x00A035F8,4,.data,global,_s_rva007B0C7D,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A035FC,4,.data,global,?TheGiantBirdSlowDeathBehaviorPoolKey@?1??getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp,owned,,1,2
 0x00A03600,4,.data,global,?$S1@?1??getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp,owned,,1,4
