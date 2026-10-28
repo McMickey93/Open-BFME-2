@@ -175,6 +175,12 @@ out of view. The retail AIBuilder TU's own copy was therefore discarded, so reta
 linked a unit with that copy earlier than AIBuilder. CastleBehavior (0x398E9A) and
 TerrainResourceManager (0x35A005) have the same cause (CollectKeys and Render2DSentence
 holders).
+Current-index check (2026-10-28, index `41c28839bf`):
+`WW3D2/render2dsentence.cpp` previews blocked for 1,249 authored bytes solely
+on `??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z` selecting a
+non-retail body. The earlier cached index `14dc3d2467` previewed this unit as
+LINKS; the refreshed result is a provider-selection obstacle, not evidence of
+a source byte regression. No repair or census gain is claimed.
 Remaining / next check: a census rule that ignores `fold-proof=` and gen-alias rows
 when ordering objects (they claim no placement), recorded through
 `census_rebaseline.py` with a Verifier-Change trailer, applied the same way in
