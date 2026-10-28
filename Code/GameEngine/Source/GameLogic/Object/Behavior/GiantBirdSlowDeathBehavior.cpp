@@ -66,13 +66,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class GiantBirdSlowDeathBehavior : public SlowDeathBehavior { public:
- virtual UpdateSleepTime update(); virtual void beginSlowDeath(const DamageInfo *);
- unsigned unknown50; Coord3D target; float unknown60; bool unknown64;
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 class BfmeFixedStorage0004543D { public:
  char bytes[28]; ~BfmeFixedStorage0004543D() {} __declspec(nothrow) BfmeFixedStorage0004543D(const BfmeFixedStorage0004543D &);
 };
@@ -136,13 +129,38 @@ private:
 	bool m_needToMaintainFlailingHeight; // +0x1C0
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class GiantBirdSlowDeathBehavior : public SlowDeathBehavior { public:
+ virtual UpdateSleepTime update(); virtual void beginSlowDeath(const DamageInfo *);
+ unsigned unknown50; Coord3D target; float unknown60; bool unknown64;
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
 // tu-skeleton: 0x00461E58 72B ??0GiantBirdSlowDeathBehavior@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00461EA0 69B ?getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp
+
+// ?getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ
+NameKeyType GiantBirdSlowDeathBehavior::getModuleNameKey() const
+{
+	static NameKeyType TheGiantBirdSlowDeathBehaviorPoolKey =
+		TheNameKeyGenerator->nameToKey("GiantBirdSlowDeathBehavior");
+	return TheGiantBirdSlowDeathBehaviorPoolKey;
+}
 
 // tu-skeleton: 0x00461EE5 6B ?name@Rva00461EE5Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 
 // tu-skeleton: 0x00461EEB 39B ??1Rva00461EEB@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0045D39EDerived.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehavior.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehavior.cpp
 
@@ -201,8 +219,6 @@ void GiantBirdSlowDeathBehavior::beginSlowDeath(const DamageInfo *damage)
  physics->rva00390557(&target,0.0f,30.0f,0,0);
 }
 
-// tu-skeleton: 0x00461F34 75B ?xfer@GiantBirdSlowDeathBehavior@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorXfer.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorModuleDataCtor.cpp
 
   // defined with its slots elsewhere (data, retail bytes)
@@ -220,10 +236,8 @@ GiantBirdSlowDeathBehaviorModuleData::GiantBirdSlowDeathBehaviorModuleData()
 	m_needToMaintainFlailingHeight = false;
 }
 
+// tu-skeleton: 0x00461F34 75B ?xfer@GiantBirdSlowDeathBehavior@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorXfer.cpp (not merged yet)
+
 // tu-skeleton: 0x00461FED 5B ??1GiantBirdSlowDeathBehaviorModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00461FF2 28B ??_GRva00461EEB@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0045D39EDerived.cpp (not merged yet)
-
-// tu-skeleton: 0x0078A9F1 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078A9FE 10B __ehhandler$?getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp (not merged yet)

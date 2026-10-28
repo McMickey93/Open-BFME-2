@@ -19934,8 +19934,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A035F0,4,.data,global,?TheFakePathfindPortalBehaviourPoolKey@?1??getModuleNameKey@FakePathfindPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviour.cpp,owned,,1,2
 0x00A035F4,4,.data,global,?$S1@?1??getModuleNameKey@FakePathfindPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/FakePathfindPortalBehaviour.cpp,owned,,1,4
 0x00A035F8,4,.data,global,_s_rva007B0C7D,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A035FC,4,.data,global,?TheGiantBirdSlowDeathBehaviorPoolKey@?1??getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp,owned,,1,2
-0x00A03600,4,.data,global,?$S1@?1??getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehaviorPoolKey.cpp,owned,,1,4
+0x00A035FC,4,.data,global,?TheGiantBirdSlowDeathBehaviorPoolKey@?1??getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehavior.cpp,owned,,1,2
+0x00A03600,4,.data,global,?$S1@?1??getModuleNameKey@GiantBirdSlowDeathBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/GiantBirdSlowDeathBehavior.cpp,owned,,1,4
 0x00A03604,4,.data,global,_s_rva007B0CA7,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03608,4,.data,global,_s_rva007B0CB7,Code/GameEngine/Source/Common/Rva007AD295ZeroInits.cpp,owned,,1,1
 0x00A0360C,4,.data,global,_s_rva007B0CC9,Code/GameEngine/Source/Common/Rva007AD295ZeroInits.cpp,owned,,1,1
