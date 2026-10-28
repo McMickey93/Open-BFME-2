@@ -33359,15 +33359,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0040FB2E,8,code,,,-,,Code/GameEngine/Source/Common/Rva0040FB2EWrapper.cpp
 0x0040FB36,7,code,,,-,,Code/GameEngine/Source/Common/GapBodiesS9A.cpp
 0x0040FB3D,13,code,,,-,,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp
-0x0040FB4A,82,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,proposed,K,K=Rva0040FB4A,Code/GameEngine/Source/Common/Rva0040FB4ADtor.cpp
+0x0040FB4A,82,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,proposed,K,K=Rva0040FB4A,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
 0x0040FB9C,221,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp provisional,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
-0x0040FC79,71,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FCC0 provisional,Code/GameEngine/Source/Common/Rva0040FC79Guard.cpp
-0x0040FCC0,92,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FD1C provisional,Code/GameEngine/Source/Common/Rva0040FCC0Shutdown.cpp
-0x0040FD1C,28,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FDA2 provisional,Code/GameEngine/Source/Common/Rva0040FB4ADtor.cpp
+0x0040FC79,71,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FCC0 provisional,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
+0x0040FCC0,92,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FD1C provisional,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
+0x0040FD1C,28,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FDA2 provisional,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
 0x0040FD38,68,code,,displaced,-,N=Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBase.cpp,Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBaseConstructor.cpp
 0x0040FD7C,19,code,,displaced,-,S=Code/GameEngine/Source/GameClient/GUI/WindowLayout.cpp N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WindowLayout.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/SkirmishGameOptionsMenu.cpp
 0x0040FD8F,19,code,,displaced,-,S=Code/GameEngine/Source/GameClient/GUI/WindowLayout.cpp N=Code/GameEngine/Source/GameClient/GUI/ControlBar/WindowLayout.cpp,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar.cpp
-0x0040FDA2,19,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FDB5 provisional,Code/GameEngine/Source/GameClient/GUI/window_layout_runShutdown_WindowLayout_UAEXPAX_Z.cpp
+0x0040FDA2,19,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FDB5 provisional,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
 0x0040FDB5,28,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,C,C=0x0040FB9C..0x0040FDD1 provisional,Code/GameEngine/Source/Common/AsciiStringFoldDeleters.cpp
 0x0040FDD1,169,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp provisional,Code/GameEngine/Source/GameClient/GUI/AptWindowLayoutConstructor.cpp
 0x0040FE7A,152,code,,,-,,Code/GameEngine/Source/GameClient/MessageStream/WindowXlat.cpp
@@ -77422,8 +77422,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00785A31,10,code,Code/GameEngine/Source/GameLogic/System/ArmySummary.cpp,proposed,P,P=0x0040F497@FuncInfo0x009324D0,Code/GameEngine/Source/GameLogic/System/ArmySummaryLoad.cpp
 0x00785A3B,8,code,Code/GameEngine/Source/Common/BfmeY1038.cpp,proposed,P,P=0x0040F7FD@FuncInfo0x009324F4,Code/GameEngine/Source/Common/Rva0040F7FDAutoSummon.cpp
 0x00785A43,10,code,Code/GameEngine/Source/Common/BfmeY1038.cpp,proposed,P,P=0x0040F7FD@FuncInfo0x009324F4,Code/GameEngine/Source/Common/Rva0040F7FDAutoSummon.cpp
-0x00785A4D,8,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,proposed,P,P=0x0040FB4A@FuncInfo0x00932518,Code/GameEngine/Source/Common/Rva0040FB4ADtor.cpp
-0x00785A55,10,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,proposed,P,P=0x0040FB4A@FuncInfo0x00932518,Code/GameEngine/Source/Common/Rva0040FB4ADtor.cpp
+0x00785A4D,8,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,proposed,P,P=0x0040FB4A@FuncInfo0x00932518,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
+0x00785A55,10,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,proposed,P,P=0x0040FB4A@FuncInfo0x00932518,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp
 0x00785A5F,11,code,,,-,,Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBaseConstructor.cpp
 0x00785A6A,10,code,,,-,,Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBaseConstructor.cpp
 0x00785A74,8,code,Code/GameEngine/Source/GameClient/GUI/AptWindowLayout.cpp,approved,P,P=0x0040FDD1@FuncInfo0x00932568 provisional,Code/gen_small/uw_gen_013.cpp
