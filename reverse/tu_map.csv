@@ -42617,14 +42617,14 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004FBDDF,24,code,,,-,,Code/GameEngine/Source/Common/System/XferEnumHelpers.cpp
 0x004FBDF7,131,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDisputeXfer.cpp
 0x004FBE7A,49,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDispute.cpp
-0x004FBEAB,43,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,C,C=0x004FBE7A..0x004FBED6 provisional,Code/GameEngine/Source/Common/System/Rva004FBEABContains.cpp
+0x004FBEAB,43,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,C,C=0x004FBE7A..0x004FBED6 provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp
 0x004FBED6,184,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp W=Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDispute.cpp
 0x004FBF8E,111,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDisputeRva004FBF8E.cpp
 0x004FBFFD,5,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDisputeRva004FBF8E.cpp
-0x004FC002,90,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDisputeCtor.cpp
+0x004FC002,90,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp
 0x004FC05C,81,code,,displaced,-,N=Code/GameEngine/Source/Common/RegionAwardDispute.cpp,Code/GameEngine/Source/Common/Rva002B644ADtor.cpp
 0x004FC0AD,64,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDispute.cpp
-0x004FC0ED,94,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDisputeCtor.cpp
+0x004FC0ED,94,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp
 0x004FC14B,24,code,,,-,,Code/GameEngine/Source/Common/System/XferEnumHelpers.cpp
 0x004FC163,19,code,,,-,,Code/GameEngine/Source/Common/GapBodiesGE26.cpp
 0x004FC176,15,code,,,-,,Code/GameEngine/Source/Common/PinnedForwarders1830.cpp
@@ -83019,8 +83019,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007935D6,11,code,,,-,,Code/GameEngine/Source/Common/Rva004FBCBEDtor.cpp
 0x007935E1,11,code,,,-,,Code/GameEngine/Source/Common/Rva004FBCBEDtor.cpp
 0x007935EC,10,code,,,-,,Code/GameEngine/Source/Common/Rva004FBCBEDtor.cpp
-0x007935F6,8,code,,,-,,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDisputeCtor.cpp
-0x007935FE,11,code,,,-,,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegionAwardDisputeCtor.cpp
+0x007935F6,8,code,,,-,,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp
+0x007935FE,11,code,,,-,,Code/GameEngine/Source/GameLogic/System/LivingWorld/RegionAwardDispute.cpp
 0x00793609,10,code,,,-,,Code/GameEngine/Source/Common/Rva002B644ADtor.cpp
 0x00793613,10,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildPlot.cpp,approved,P,P=0x004FC185@FuncInfo0x009462D0 provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildPlot.cpp
 0x0079361D,10,code,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildPlot.cpp,approved,P,P=0x004FC185@FuncInfo0x009462D0 provisional,Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildPlot.cpp
