@@ -28233,27 +28233,27 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0037F4C0,9,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,K,K=Rva0037F57E,Code/GameEngine/Source/Common/InlineDtorDeletingDtorsC01.cpp
 0x0037F4C9,7,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,K,K=Rva0037F57E,Code/GameEngine/Source/Common/InlineDtorDeletingDtorsC01.cpp
 0x0037F4D0,26,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,C,C=0x0037F4C9..0x0037F4EA,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
-0x0037F4EA,48,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,K,K=Rva0037F4EA,Code/GameEngine/Source/Common/Rva0037F4EA.cpp
+0x0037F4EA,48,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,K,K=Rva0037F4EA,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0037F51A,55,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,C,C=0x0037F4EA..0x0037F551,Code/GameEngine/Source/Common/Rva0037F51A.cpp
-0x0037F551,45,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,C,C=0x0037F4EA..0x0037F57E,Code/GameEngine/Source/Common/Rva0037F551.cpp
+0x0037F551,45,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,C,C=0x0037F4EA..0x0037F57E,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0037F57E,29,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,K,K=Rva0037F57E,Code/GameEngine/Source/Common/InlineDtorDeletingDtorsC01.cpp
-0x0037F59B,146,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetDefenderReinforcementWaypointLocations.cpp
+0x0037F59B,146,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0037F62D,189,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
-0x0037F6EA,53,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F71F provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacerRecordWaypoints.cpp
-0x0037F71F,18,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F731 provisional,Code/GameEngine/Source/Common/Rva0037F551.cpp
-0x0037F731,38,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F757 provisional,Code/GameEngine/Source/Common/Rva0037F551.cpp
-0x0037F757,37,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F77C provisional,Code/GameEngine/Source/Common/Rva0037F551.cpp
-0x0037F77C,45,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F7A9 provisional,Code/GameEngine/Source/Common/Rva0037F551.cpp
+0x0037F6EA,53,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F71F provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F71F,18,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F731 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F731,38,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F757 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F757,37,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F77C provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F77C,45,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F7A9 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0037F7A9,13,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F62D..0x0037F7B6 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_hash_map_int.cpp
-0x0037F7B6,196,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetWalkOnWaypointLocations.cpp
-0x0037F87A,50,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F8AC provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacerRecordWaypoints.cpp
-0x0037F8AC,99,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F90F provisional,Code/GameEngine/Source/Common/Rva0037F4EA.cpp
-0x0037F90F,65,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F950 provisional,Code/GameEngine/Source/Common/Rva0037F4EA.cpp
-0x0037F950,53,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F985 provisional,Code/GameEngine/Source/Common/Rva0037F4EA.cpp
+0x0037F7B6,196,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F87A,50,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F8AC provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F8AC,99,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F90F provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F90F,65,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F950 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037F950,53,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037F7B6..0x0037F985 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0037F985,321,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacerFarthestSpawnPoint.cpp
 0x0037FAC6,613,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,U,N=Code/GameEngine/Source/Common/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/Common/System/ArmyPlacerPlaceObjects.cpp
-0x0037FD2B,274,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp C=0x0037FAC6..0x0037FE3D provisional,Code/GameEngine/Source/Common/System/ArmyPlacerLivingWorld.cpp
-0x0037FE3D,102,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,U,N=Code/GameEngine/Source/Common/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/Common/System/Rva0037FE3D.cpp
+0x0037FD2B,274,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp C=0x0037FAC6..0x0037FE3D provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0037FE3D,102,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,U,N=Code/GameEngine/Source/Common/System/ArmyPlacer.cpp W=Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0037FEA3,125,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037FE3D..0x0037FF20 provisional,Code/Libraries/Source/WWVegas/WWLib/StlContainerRva0037FEA3.cpp
 0x0037FF20,189,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037FE3D..0x0037FFDD provisional,Code/Libraries/Source/WWVegas/WWLib/StlContainerRva0037FF20.cpp
 0x0037FFDD,55,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,C,C=0x0037FE3D..0x00380014 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackFamily.cpp
@@ -74776,12 +74776,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077F1D7,10,code,,,-,,Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp
 0x0077F1E1,11,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,P,P=0x0037F39E@FuncInfo0x0092974C provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
 0x0077F1EC,10,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,P,P=0x0037F39E@FuncInfo0x0092974C provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
-0x0077F1F6,8,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetDefenderReinforcementWaypointLocations.cpp
-0x0077F1FE,8,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetDefenderReinforcementWaypointLocations.cpp
-0x0077F206,10,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetDefenderReinforcementWaypointLocations.cpp
+0x0077F1F6,8,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0077F1FE,8,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
+0x0077F206,10,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0077F210,8,code,,,-,,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0077F218,8,code,,,-,,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
-0x0077F220,10,code,,,-,,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetWalkOnWaypointLocations.cpp
+0x0077F220,10,code,,,-,,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
 0x0077F22A,13,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037FAC6@FuncInfo0x009297D0 provisional,Code/GameEngine/Source/Common/System/ArmyPlacerPlaceObjects.cpp
 0x0077F237,13,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037FAC6@FuncInfo0x009297D0 provisional,Code/GameEngine/Source/Common/System/ArmyPlacerPlaceObjects.cpp
 0x0077F244,10,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037FAC6@FuncInfo0x009297D0 provisional,Code/GameEngine/Source/Common/System/ArmyPlacerPlaceObjects.cpp

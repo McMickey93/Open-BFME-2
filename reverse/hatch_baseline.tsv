@@ -10686,8 +10686,6 @@ pragma_optimize	Code/GameEngine/Source/Common/Rva002AC340Xfer.cpp	"s",off	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva002AC340Xfer.cpp	"t",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva002C6EA4Method.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva002C6EA4Method.cpp	"t",on	1
-pragma_optimize	Code/GameEngine/Source/Common/Rva0037F551.cpp	"",on	1
-pragma_optimize	Code/GameEngine/Source/Common/Rva0037F551.cpp	"y",off	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva0039C1C3Insert.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva0039C1C3Insert.cpp	"y",on	1
 pragma_optimize	Code/GameEngine/Source/Common/Rva003F9004.cpp	"",on	1
@@ -10889,6 +10887,8 @@ pragma_optimize	Code/GameEngine/Source/GameLogic/Rva00194810Split_Rva0032abda.cp
 pragma_optimize	Code/GameEngine/Source/GameLogic/ScriptEngine/Rva0054840AXfer.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/ScriptEngine/Rva0054840AXfer.cpp	"s",off	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/ScriptEngine/Rva0054840AXfer.cpp	"t",on	1
+pragma_optimize	Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp	"",on	1
+pragma_optimize	Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp	"y",off	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/System/AttributeModifierStore.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/System/AttributeModifierStore.cpp	"ty",on	1
 pragma_optimize	Code/GameEngine/Source/GameNetwork/BfmeThingDGDConstructor.cpp	"",on	1
