@@ -41093,14 +41093,14 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004D6F86,62,code,,,-,,Code/GameEngine/Source/Common/Rva004D6F86.cpp
 0x004D6FC4,273,code,Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate.cpp,proposed,K,K=Rva00263653 noncontiguous,Code/GameEngine/Source/GameLogic/Object/Rva004D6FC4Xfer.cpp
 0x004D70D5,82,code,,,-,,Code/GameEngine/Source/Common/Rva004D70D5.cpp
-0x004D7127,33,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,S,S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/Common/State.cpp noncontiguous,Code/GameEngine/Source/Common/StateRva004D7127.cpp
+0x004D7127,33,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,S,S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/Common/State.cpp noncontiguous,Code/GameEngine/Source/Common/StateMachine.cpp
 0x004D7148,226,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/Common/State.cpp W=Code/GameEngine/Source/Common/StateMachine.cpp noncontiguous,Code/GameEngine/Source/Common/StateMachineTransitions.cpp
 0x004D722A,115,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/Common/State.cpp W=Code/GameEngine/Source/Common/StateMachine.cpp noncontiguous,Code/GameEngine/Source/Common/StateMachineSleepTransitions.cpp
 0x004D729D,40,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D722A..0x004D72C5 noncontiguous,Code/GameEngine/Source/Common/GapBodiesGE24.cpp
 0x004D72C5,68,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
 0x004D7309,24,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,S,S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
 0x004D7321,98,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
-0x004D7383,18,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,U,N=Code/GameEngine/Source/Common/BfmeSub932C.cpp noncontiguous,Code/GameEngine/Source/Common/BfmeConv932Query932C.cpp
+0x004D7383,18,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,U,N=Code/GameEngine/Source/Common/BfmeSub932C.cpp noncontiguous,Code/GameEngine/Source/Common/StateMachine.cpp
 0x004D7395,15,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,S,S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
 0x004D73A4,9,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
 0x004D73AD,23,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,S,S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
@@ -41117,13 +41117,13 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004D7491,27,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D745C..0x004D74AC noncontiguous,Code/GameEngine/Source/Common/StateCtor.cpp
 0x004D74AC,27,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D745C..0x004D74C7 noncontiguous,Code/GameEngine/Source/Common/StateCtor.cpp
 0x004D74C7,27,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D745C..0x004D74E2 noncontiguous,Code/GameEngine/Source/Common/StateCtor.cpp
-0x004D74E2,45,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D745C..0x004D750F noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva004D74E2.cpp
+0x004D74E2,45,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D745C..0x004D750F noncontiguous,Code/GameEngine/Source/Common/StateMachine.cpp
 0x004D750F,14,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachine_setGoalObject.cpp
-0x004D751D,41,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D7546 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva004D751D.cpp
+0x004D751D,41,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D7546 noncontiguous,Code/GameEngine/Source/Common/StateMachine.cpp
 0x004D7546,20,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D755A noncontiguous,Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_o1.cpp
 0x004D755A,5,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D755F noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlportMapForwardersSeat8.cpp
-0x004D755F,56,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D7597 noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004D755F.cpp
-0x004D7597,5,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D759C noncontiguous,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004D755F.cpp
+0x004D755F,56,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D7597 noncontiguous,Code/GameEngine/Source/Common/StateMachine.cpp
+0x004D7597,5,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,C,C=0x004D750F..0x004D759C noncontiguous,Code/GameEngine/Source/Common/StateMachine.cpp
 0x004D759C,139,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/Common/StateMachine.cpp noncontiguous,Code/GameEngine/Source/Common/StateMachineDtor.cpp
 0x004D7627,37,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,S,S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
 0x004D764C,31,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,Z,Z=Code/GameEngine/Source/Common/StateMachine.cpp S=Code/GameEngine/Source/Common/StateMachine.cpp N=Code/GameEngine/Source/GameLogic/AI/StateMachine.cpp noncontiguous,Code/GameEngine/Source/GameLogic/AI/StateMachineGoal.cpp
@@ -82085,7 +82085,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00791171,8,code,Code/GameEngine/Source/GameLogic/AI/Squad.cpp,approved,P,P=0x004D6DF3@FuncInfo0x0094316C,Code/GameEngine/Source/GameLogic/AI/SquadFromContainedMembers.cpp
 0x00791179,10,code,Code/GameEngine/Source/GameLogic/AI/Squad.cpp,approved,P,P=0x004D6DF3@FuncInfo0x0094316C,Code/GameEngine/Source/GameLogic/AI/SquadFromContainedMembers.cpp
 0x00791183,8,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,P,P=0x004D755F@FuncInfo0x00943190,Code/gen_small/uw_gen_010.cpp
-0x0079118B,10,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,P,P=0x004D755F@FuncInfo0x00943190,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva004D755F.cpp
+0x0079118B,10,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,P,P=0x004D755F@FuncInfo0x00943190,Code/GameEngine/Source/Common/StateMachine.cpp
 0x00791195,8,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,P,P=0x004D759C@FuncInfo0x009431BC,Code/GameEngine/Source/Common/StateMachineDtor.cpp
 0x0079119D,11,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,P,P=0x004D759C@FuncInfo0x009431BC,Code/GameEngine/Source/Common/StateMachineDtor.cpp
 0x007911A8,10,code,Code/GameEngine/Source/Common/StateMachine.cpp,proposed,P,P=0x004D759C@FuncInfo0x009431BC,Code/GameEngine/Source/Common/StateMachineDtor.cpp
