@@ -6481,6 +6481,17 @@ Carry both units into the next scheduled census. Clearance is limited to
 this header consumer; the other contracts above remain open. No census
 gain is claimed.
 
+**Preparation recovery publication follow-up (2026-10-28):** the local
+UnitRevivalEntry byte, header-acceptance and dry-run push checks pass at base
+`13850b92b4`, but the fresh fleet publisher refuses its header-queue retirement:
+`link_check produced no usable per-unit verdict`. Restore the exact upstream
+queue entry and retain the verified canonical source. The prior paragraph's
+local retirement is deferred for publication; no header debt gain is claimed.
+The queue's original FAIL text is historical. Obtain a usable per-unit preview
+in the publisher checkout before the owning tool retires this row again.
+This does not clear or prove a linking loss for the pending consumer scope.
+[Recovery details](../reverse/attempt_support/preparation-recovery-20261028-codex3.md).
+
 ### LINK-104: placeholder deleting destructors still emit nonretail complete destructors
 
 ### LINK-109: placeholder deleting destructors still emit nonretail complete destructors

@@ -53,3 +53,17 @@ receipt. Carry this provider and consumer into the next scheduled census.
 There is no proven link loss, but the wider consumer audit is unverified.
 No census or image-ownership gain is claimed. The other AsciiString header
 queue entries and LINK-100's remaining contracts stay open.
+
+## Preparation recovery publication verdict
+
+The local acceptance and byte checks above passed again during recovery,
+including the actual dry-run push hook at base `13850b92b4`. The fresh fleet
+publisher nevertheless refused the queue retirement because its own
+`link_check` run produced no usable per-unit verdict. This is missing
+retirement evidence, not a reported byte mismatch or proven link loss.
+The recovery correction restores the exact upstream header-queue row while
+retaining the canonical source and this proposal's evidence. Its original
+FAIL text records the earlier private-view failure; the current prerequisite
+is a usable preview in the publisher checkout. Header debt remains open and
+may leave only through the owning adoption tool when publication can verify
+the verdict. No census, ownership or debt gain is claimed for this adoption.

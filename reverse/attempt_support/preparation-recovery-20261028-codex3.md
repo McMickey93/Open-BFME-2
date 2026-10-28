@@ -6,7 +6,7 @@ The preparation record names backup
 `fbf8577292cce4bde307de2f39cd75cfa3e1efcc` (nine outgoing commits).
 At recovery entry the recorded resync had already completed: HEAD exactly
 equalled the backup, the index and working tree were clean, and no rebase
-operation remained. No commit was skipped or rewritten in this recovery.
+operation remained. At that point no commit needed conflict resolution.
 The record names neither a stash nor a resync stash. No staged, unstaged or
 untracked edit needed restoration; older stashes and the backup remain intact.
 
@@ -60,3 +60,22 @@ predates base `49d65e3bea`, and 84 affected objects lack current receipts
 InvisibilityUpdate and UnitRevivalEntry obstacle entries retain the pending
 provider/consumer and scheduled-census scope. This recovery establishes no
 census-linked-byte gain, image ownership result or runtime result.
+
+## Fresh publisher retirement failure
+
+Upstream advanced to `13850b92b4816532610e33838ca82c9f336d3df2` during
+the next dry run. All ten commits rebased cleanly, without dropping a patch;
+the repeated dry run passed the same 211 functions and 29 EH graphs. The
+publisher accepted the fresh candidate, then its own checkout refused the
+UnitRevivalEntry AsciiString header-queue retirement: `link_check produced
+no usable per-unit verdict`. This supersedes the cached missing-donor refusal.
+It does not establish a byte mismatch or a proven linking loss.
+
+Restore that queue entry exactly from upstream in a new corrective commit,
+leaving the canonical source and original verification evidence intact. The
+source remains byte-verified; its debt is not retired until the owning tool
+and the publisher can both obtain the required preview verdict. The queue's
+original failure text is historical; the current obstacle is the publisher's
+missing preview evidence. No verifier, baseline limit or gate is weakened.
+The original source proposal, object evidence and successful local acceptance
+remain in the preserved adoption commit and its existing handoff/JSON.
