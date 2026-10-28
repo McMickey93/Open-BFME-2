@@ -194,11 +194,15 @@ verified and easy to rebase. Detail for the hook rules:
   verified. Cherry-pick the commits onto master, `./build.sh` their rows, push,
   then comment on the PR with the landed SHAs and that follow-up work stacks off
   `master`.
-- Prefer accumulating verified commits until the unpublished batch moves a
-  headline figure (linked bytes up, NOT OURS down, debt down), then push
-  together; batch linking repairs, renames and banked attempts the same way.
-  Keep substantive changes in separate commits. Publish a smaller final batch
-  when the work or session ends, even if no headline figure moved.
+- Push TU merges, splits and other source-path moves as soon as they verify
+  and the account's push clock allows: a held move keeps its scope claimed and
+  conflicts with every later move (2026-10-28: the last commit of a push
+  waited a median 12 minutes and a p90 of 189 minutes before landing). Batch
+  other verified commits until the batch moves a headline figure (linked bytes
+  up, NOT OURS down, debt down, source files down), and batch linking repairs,
+  renames and banked attempts the same way. Keep substantive changes in
+  separate commits. Publish a smaller final batch when the work or session
+  ends, even if no headline figure moved.
 - Allow at least five minutes between successful pushes by the same GitHub
   account to this repository; share that clock across workers using the
   account, and keep working during the cooldown.
