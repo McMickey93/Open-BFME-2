@@ -52,7 +52,7 @@ struct FireCellCentre
 class PolygonTrigger;
 #include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 #include "../../../../../reference/shims/moduledata/Common/Snapshot.h"
-#define NULL 0
+#include <stdlib.h>
 struct Rva00065964ObjectPool
 {
 	void FreeObject(void *obj);
