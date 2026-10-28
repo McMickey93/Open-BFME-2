@@ -3852,6 +3852,8 @@ Completed: replace each unrelated `stable_sort` instantiation with scalar `_STL:
 
 Remaining / next check: `00551B02`, `005838DC` and `005AFEDB` each retain only their record destructor as unresolved. Their retail calls already target rowed destructors: `GameSpyBuddyMessageQueue` at 00551988 (126 B, BuddyThread_Unresolved.cpp), `Rva005838B5` at 005838F8 (59 B, Rva00587F69Dtor.cpp), and `Rva005AFE3F` at 005AFE3F (71 B, Rva005AFE3FDtor.cpp). Reconcile the deleting-destructor row's class and virtual contract with its provider rather than adding an alias. The GameSpy class has a real-name lead; the other application class names remain unknown. Row renames were unavailable to this worker. BuddyThread_Unresolved.cpp retains its pre-existing deque blockers; the other two provider units remain LINKS.
 
+Update 2026-10-28: `tu_skeleton.py --merge` moved the `005AFEDB` record destructor (from `StlSweepR3Rva005AFEDB.cpp`) and its retail callee `??1Rva005AFE3F` at 005AFE3F (from `Rva005AFE3FDtor.cpp`) into the approved TU `Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp`; both rows byte-verify there. The class/contract reconciliation above is still open; census confirmation of the merged unit is pending.
+
 Clearance: `005CE7CE`, `005DA663` and `005E96DC` are cleared in ordinary-preview scope; census confirmation pending. The other three units remain blocked. Across the full paired worker scope, no previously clean unit becomes blocked and no compared unit gains a named blocker; raw before/after outputs are retained with the handoff. This does not clear the broader identity or whole-game linking scope.
 
 ### LINK-044: NetPacket private views and remaining list-copy identity

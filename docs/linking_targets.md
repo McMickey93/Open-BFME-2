@@ -421,7 +421,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00482A4D.cpp` | 28 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00551B02.cpp` | 28 | 4 (U=4) | 2026-10-28: merged into `Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp`. 2026-10-27: record destructor calls the owner's rowed `??1` by name; ordinary preview LINKS (0 -> 28 B) at index 73061d9452, LINK-078; census confirmation pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005838DC.cpp` | 28 | 4 (U=4) | 2026-10-27: record destructor calls the owner's rowed `??1` by name; ordinary preview LINKS (0 -> 28 B) at index 73061d9452, LINK-078; census confirmation pending. |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AFEDB.cpp` | 28 | 4 (U=4) | 2026-10-27: record destructor calls the owner's rowed `??1` by name; ordinary preview LINKS (0 -> 28 B) at index 73061d9452, LINK-078; census confirmation pending. |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005AFEDB.cpp` | 28 | 4 (U=4) | 2026-10-27: record destructor calls the owner's rowed `??1` by name; ordinary preview LINKS (0 -> 28 B) at index 73061d9452, LINK-078; census confirmation pending. 2026-10-28: unit removed; its row merged by `tu_skeleton.py --merge` into the approved TU `Code/GameEngine/Source/GameClient/GUI/ChatWindowsInGame.cpp` (byte-verified), which also holds the owner `??1Rva005AFE3F` (005AFE3F). Census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005CE7CE.cpp` | 28 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005DA663.cpp` | 28 | 3 (U=3) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva005E96DC.cpp` | 28 | 3 (U=3) | Open |
