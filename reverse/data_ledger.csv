@@ -20515,8 +20515,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03FD8,4,.data,global,?TheReflectDamagePoolKey@?1??getModuleNameKey@ReflectDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamagePoolKey.cpp,owned,,1,2
 0x00A03FDC,4,.data,global,?$S1@?1??getModuleNameKey@ReflectDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/ReflectDamagePoolKey.cpp,owned,,1,4
 0x00A03FE0,4,.data,global,_s_rva007B2514,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03FE4,4,.data,global,?TheEvacuateDamagePoolKey@?1??getModuleNameKey@EvacuateDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/EvacuateDamagePoolKey.cpp,owned,,1,2
-0x00A03FE8,4,.data,global,?$S1@?1??getModuleNameKey@EvacuateDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/EvacuateDamagePoolKey.cpp,owned,,1,4
+0x00A03FE4,4,.data,global,?TheEvacuateDamagePoolKey@?1??getModuleNameKey@EvacuateDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamage.cpp,owned,,1,2
+0x00A03FE8,4,.data,global,?$S1@?1??getModuleNameKey@EvacuateDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Damage/EvacuateDamage.cpp,owned,,1,4
 0x00A03FEC,4,.data,global,_s_rva007B253E,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03FF0,4,.data,global,?TheHordeTransportContainDamagePoolKey@?1??getModuleNameKey@HordeTransportContainDamage@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/HordeTransportContainDamagePoolKey.cpp,owned,,1,2
 0x00A03FF4,4,.data,global,?$S1@?1??getModuleNameKey@HordeTransportContainDamage@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/HordeTransportContainDamagePoolKey.cpp,owned,,1,4
