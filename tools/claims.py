@@ -506,8 +506,10 @@ def fetch(root=None):
         return True
     # A claim marker has no submodule inputs. An inherited submodule.recurse
     # setting must not make this coordination operation fetch donor sources.
+    # Frequent coordination reads must not run repository-wide maintenance;
+    # normal Git operations and scheduled maintenance keep their own policy.
     for attempt in range(5):
-        got = _git("fetch", "-q", "--prune", "--no-tags", "--recurse-submodules=no",
+        got = _git("fetch", "-q", "--no-auto-maintenance", "--prune", "--no-tags", "--recurse-submodules=no",
                    REMOTE, *_refspecs(SEEN), cwd=root, timeout=120)
         if got.returncode == 0:
             break

@@ -59,6 +59,32 @@ def hosts(tmp_path, monkeypatch):
     return act
 
 
+def test_claim_fetch_defers_maintenance_without_changing_config_or_pruning(hosts, monkeypatch):
+    peer = hosts("b")
+    assert claims.claim([0x100]).claimed == [0x100]
+    root = hosts("a")
+    _git(root, "config", "gc.auto", "1")
+    _git(root, "config", "maintenance.auto", "true")
+    real = claims._git
+    calls = []
+
+    def git(*args, **kwargs):
+        if args[:1] == ("fetch",):
+            calls.append(args)
+        return real(*args, **kwargs)
+
+    monkeypatch.setattr(claims, "_git", git)
+    assert claims.fetch(root)
+    assert claims._read_local(root)[0x100][1]["owner"] == "b"
+    assert claims.release([0x100], who="b", root=peer) == [0x100]
+    assert claims.fetch(root)
+    assert 0x100 not in claims._read_local(root)
+    assert all("--no-auto-maintenance" in args and "--prune" in args and
+               "--recurse-submodules=no" in args for args in calls)
+    assert _git(root, "config", "gc.auto").strip() == "1"
+    assert _git(root, "config", "maintenance.auto").strip() == "true"
+
+
 def test_a_claim_is_exclusive_across_hosts(hosts):
     hosts("a")
     assert claims.claim([0x100, 0x200]) == ([0x100, 0x200], [])
