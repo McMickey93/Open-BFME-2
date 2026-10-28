@@ -1,0 +1,284 @@
+{
+  "source": "Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/W3DAptComponentColorPicker.cpp",
+  "base_revision": "cea5d968c5892a24eb4c5e8c0dc3f2cb20026767",
+  "index_meta": {
+    "date": "2026-10-28 11:08",
+    "commit": "41c28839bf",
+    "clean_tree": true,
+    "census_date": "2026-10-28 10:03",
+    "census_commit": "c8734bec0c"
+  },
+  "removed": [
+    "_floorf"
+  ],
+  "added": [],
+  "changed": {},
+  "retained_comdats": 29,
+  "checks": {
+    "strong": true,
+    "undefined": true,
+    "weak": true,
+    "roots": true,
+    "retained_edges": true,
+    "no_floorf_reference_before": true
+  },
+  "before": {
+    "sha256": "a0f1ff2c4ee6ba597fca08e4dfc602683f28e42cdd468db2869ef7a8a39519e5",
+    "comdats": {
+      "??0AsciiString@@QAE@XZ": [
+        "595907fb5146",
+        6
+      ],
+      "??0AsciiString@@QAE@ABV0@@Z": [
+        "03a86ad5f8a0",
+        18
+      ],
+      "??1AsciiString@@QAE@XZ": [
+        "d08bf29c9c2b",
+        5
+      ],
+      "??4AsciiString@@QAEAAV0@ABV0@@Z": [
+        "db5e00c5a164",
+        18
+      ],
+      "_floorf": [
+        "d9d07276ff39",
+        18
+      ],
+      "?Float_To_Long@WWMath@@SAJM@Z": [
+        "975c9cad6d6e",
+        13
+      ],
+      "??0ColorFloatPoint@@QAE@MM@Z": [
+        "d3eb6fd845e3",
+        26
+      ],
+      "??0ColorIntPoint@@QAE@HH@Z": [
+        "e685bedae444",
+        18
+      ],
+      "?Get_Size@Image@@QBEPBUColorIntPoint@@XZ": [
+        "601407d42442",
+        4
+      ],
+      "?Get_UV@Image@@QBEPBUColorFloatPoint@@XZ": [
+        "72daabab8890",
+        4
+      ],
+      "??0FunctorBinding@@QAE@P8FunctorTarget@@AEXXZPAV1@@Z": [
+        "c7c976abf4ee",
+        25
+      ],
+      "?MakeBinding@@YA?AUFunctorBinding@@P8FunctorTarget@@AEXXZPAV2@@Z": [
+        "b4f91e603f7d",
+        42
+      ],
+      "??1BFME2ParticleTextureHandle@@QAE@XZ": [
+        "337312fe2c03",
+        12
+      ],
+      "??0ColorSurfaceLock@@QAE@AAVW3DRadarResetSurface@@PAHHHHHAAPAX@Z": [
+        "07b895fc0d39",
+        43
+      ],
+      "??1ColorSurfaceLock@@QAE@XZ": [
+        "1bca60b97af2",
+        7
+      ],
+      "??_C@_00CNPNBAHC@?$AA@": [
+        "5ba93c9db0cf",
+        1
+      ],
+      "?ExternFunc@W3DAptComponentColorPicker@@QAEXHPAD_N@Z": [
+        "70e34443d245",
+        235
+      ],
+      "??_C@_05KCDNKPCA@?$CFf?5?$CFf?$AA@": [
+        "a193b8cf8387",
+        6
+      ],
+      "??_C@_02GMHACPFF@?$CFu?$AA@": [
+        "0ec1393f2cb9",
+        3
+      ],
+      "?Render@W3DAptComponentColorPicker@@UAEXHHHH@Z": [
+        "abe8c67a073b",
+        1100
+      ],
+      "??_C@_09PKKOCJGB@SetCursor?$AA@": [
+        "ba64d0a6e834",
+        10
+      ],
+      "__real@3f000000": [
+        "fd1edc7bc3cb",
+        4
+      ],
+      "??_C@_08GPNJILIJ@SetColor?$AA@": [
+        "1734c0c59738",
+        9
+      ],
+      "??0?$AptRef@VAptExternHandler@@@@QAE@ABUFunctorBinding@@@Z": [
+        "3d63cc670a11",
+        18
+      ],
+      "??1?$AptRef@VAptExternHandler@@@@QAE@XZ": [
+        "361dbf55f6ea",
+        12
+      ],
+      "?Init@W3DAptComponentColorPicker@@UAEXABVAsciiString@@PBD@Z": [
+        "efc877c5fad3",
+        307
+      ],
+      "??_C@_05PDOBBJNA@Color?$AA@": [
+        "63ee4aaf5cd2",
+        6
+      ],
+      "??_C@_06OIIFPIKD@Cursor?$AA@": [
+        "ebe130f71625",
+        7
+      ],
+      "??_C@_0L@MJFFNDMA@_imageName?$AA@": [
+        "bd7e82ab835f",
+        11
+      ],
+      "??_C@_05DHHBLFPE@_path?$AA@": [
+        "f433d1feb23b",
+        6
+      ]
+    },
+    "strong": [
+      "?ExternFunc@W3DAptComponentColorPicker@@QAEXHPAD_N@Z",
+      "?Init@W3DAptComponentColorPicker@@UAEXABVAsciiString@@PBD@Z",
+      "?Render@W3DAptComponentColorPicker@@UAEXHHHH@Z"
+    ],
+    "undefined": [
+      "??0?$StringBase@D@@AAE@ABV0@@Z",
+      "??0Rva0057BC63FunctorHolder@@QAE@ABUFunctorBinding@@@Z",
+      "??1W3DRadarResetSurface@@QAE@XZ",
+      "?AddExternHandler@AptExternHandlerAdder@@QAEXABVAsciiString@@HV?$AptRef@VAptExternHandler@@@@@Z",
+      "?Get@TextureAsset@@SA?AVBFME2ParticleTextureHandle@@PBDHH@Z",
+      "?Get_Description@SurfaceClass@@QAEXAAUSurfaceDescription@1@@Z",
+      "?Get_Surface_Level@CursorTextureSlot@@QAE?AVW3DRadarResetSurface@@XZ",
+      "?ReleaseTreeHintRef00217D4C@@YIXPAUTargetRef00217D4C@@@Z",
+      "?Release_Ref@TextureClass@@QAEXXZ",
+      "?Rva000A8F58Get@@YAHXZ",
+      "?Rva000A8F5EGet@@YAHXZ",
+      "?Rva004128F0GetParam@@YA_NPBD0AAVAsciiString@@@Z",
+      "?Rva00525235Fire@@YAHPAX0PBD1PAH2@Z",
+      "?Rva00740EA1DistanceSquared@@YAHPBE0@Z",
+      "?Rva007410ECInvoke@@YAHPAVRva00222A8BTarget@@PAXPBD2ABI@Z",
+      "?TheDisplay@@3PAVDisplay@@A",
+      "?TheMappedImageCollection@@3PAVImageCollection@@A",
+      "?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A",
+      "?clear@Member0C00739C70@@QAEXXZ",
+      "?concat@?$StringBase@D@@QAEXPBD@Z",
+      "?findImageByName@ImageCollection@@QAEPBVImage@@ABVAsciiString@@@Z",
+      "?releaseBuffer@?$StringBase@D@@AAEXXZ",
+      "?rva0004D6B3@W3DDisplay@@QAEXPAVImage@@MMMMHH@Z",
+      "?rva001166E0@Rva001166E0@@QAEPAXPAHHHHH@Z",
+      "?set@?$StringBase@D@@QAEXABV1@@Z",
+      "__EH_prolog",
+      "___CxxFrameHandler",
+      "__except_list",
+      "__fltused",
+      "__imp___snprintf",
+      "__imp__floor",
+      "__imp__sscanf"
+    ],
+    "weak": [],
+    "roots": [
+      "??0?$StringBase@D@@AAE@ABV0@@Z",
+      "??0Rva0057BC63FunctorHolder@@QAE@ABUFunctorBinding@@@Z",
+      "??1AsciiString@@QAE@XZ",
+      "??1BFME2ParticleTextureHandle@@QAE@XZ",
+      "??1ColorSurfaceLock@@QAE@XZ",
+      "??1W3DRadarResetSurface@@QAE@XZ",
+      "??_C@_00CNPNBAHC@?$AA@",
+      "??_C@_02GMHACPFF@?$CFu?$AA@",
+      "??_C@_05DHHBLFPE@_path?$AA@",
+      "??_C@_05KCDNKPCA@?$CFf?5?$CFf?$AA@",
+      "??_C@_05PDOBBJNA@Color?$AA@",
+      "??_C@_06OIIFPIKD@Cursor?$AA@",
+      "??_C@_08GPNJILIJ@SetColor?$AA@",
+      "??_C@_09PKKOCJGB@SetCursor?$AA@",
+      "??_C@_0L@MJFFNDMA@_imageName?$AA@",
+      "?AddExternHandler@AptExternHandlerAdder@@QAEXABVAsciiString@@HV?$AptRef@VAptExternHandler@@@@@Z",
+      "?ExternFunc@W3DAptComponentColorPicker@@QAEXHPAD_N@Z",
+      "?Get@TextureAsset@@SA?AVBFME2ParticleTextureHandle@@PBDHH@Z",
+      "?Get_Description@SurfaceClass@@QAEXAAUSurfaceDescription@1@@Z",
+      "?Get_Surface_Level@CursorTextureSlot@@QAE?AVW3DRadarResetSurface@@XZ",
+      "?Release_Ref@TextureClass@@QAEXXZ",
+      "?Rva000A8F58Get@@YAHXZ",
+      "?Rva000A8F5EGet@@YAHXZ",
+      "?Rva004128F0GetParam@@YA_NPBD0AAVAsciiString@@@Z",
+      "?Rva00525235Fire@@YAHPAX0PBD1PAH2@Z",
+      "?Rva00740EA1DistanceSquared@@YAHPBE0@Z",
+      "?Rva007410ECInvoke@@YAHPAVRva00222A8BTarget@@PAXPBD2ABI@Z",
+      "?TheDisplay@@3PAVDisplay@@A",
+      "?TheMappedImageCollection@@3PAVImageCollection@@A",
+      "?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A",
+      "?clear@Member0C00739C70@@QAEXXZ",
+      "?concat@?$StringBase@D@@QAEXPBD@Z",
+      "?findImageByName@ImageCollection@@QAEPBVImage@@ABVAsciiString@@@Z",
+      "?releaseBuffer@?$StringBase@D@@AAEXXZ",
+      "?rva0004D6B3@W3DDisplay@@QAEXPAVImage@@MMMMHH@Z",
+      "?rva001166E0@Rva001166E0@@QAEPAXPAHHHHH@Z",
+      "?set@?$StringBase@D@@QAEXABV1@@Z",
+      "__EH_prolog",
+      "___CxxFrameHandler",
+      "__except_list",
+      "__imp___snprintf",
+      "__imp__floor",
+      "__imp__sscanf",
+      "__real@3f000000"
+    ],
+    "edges": {
+      "??0?$AptRef@VAptExternHandler@@@@QAE@ABUFunctorBinding@@@Z": [
+        "??0Rva0057BC63FunctorHolder@@QAE@ABUFunctorBinding@@@Z"
+      ],
+      "??0AsciiString@@QAE@ABV0@@Z": [
+        "??0?$StringBase@D@@AAE@ABV0@@Z"
+      ],
+      "??0AsciiString@@QAE@XZ": [],
+      "??0ColorFloatPoint@@QAE@MM@Z": [],
+      "??0ColorIntPoint@@QAE@HH@Z": [],
+      "??0ColorSurfaceLock@@QAE@AAVW3DRadarResetSurface@@PAHHHHHAAPAX@Z": [
+        "?rva001166E0@Rva001166E0@@QAEPAXPAHHHHH@Z"
+      ],
+      "??0FunctorBinding@@QAE@P8FunctorTarget@@AEXXZPAV1@@Z": [],
+      "??1?$AptRef@VAptExternHandler@@@@QAE@XZ": [
+        "?ReleaseTreeHintRef00217D4C@@YIXPAUTargetRef00217D4C@@@Z"
+      ],
+      "??1AsciiString@@QAE@XZ": [
+        "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+      ],
+      "??1BFME2ParticleTextureHandle@@QAE@XZ": [
+        "?Release_Ref@TextureClass@@QAEXXZ"
+      ],
+      "??1ColorSurfaceLock@@QAE@XZ": [
+        "?clear@Member0C00739C70@@QAEXXZ"
+      ],
+      "??4AsciiString@@QAEAAV0@ABV0@@Z": [
+        "?set@?$StringBase@D@@QAEXABV1@@Z"
+      ],
+      "??_C@_00CNPNBAHC@?$AA@": [],
+      "??_C@_02GMHACPFF@?$CFu?$AA@": [],
+      "??_C@_05DHHBLFPE@_path?$AA@": [],
+      "??_C@_05KCDNKPCA@?$CFf?5?$CFf?$AA@": [],
+      "??_C@_05PDOBBJNA@Color?$AA@": [],
+      "??_C@_06OIIFPIKD@Cursor?$AA@": [],
+      "??_C@_08GPNJILIJ@SetColor?$AA@": [],
+      "??_C@_09PKKOCJGB@SetCursor?$AA@": [],
+      "??_C@_0L@MJFFNDMA@_imageName?$AA@": [],
+      "?Float_To_Long@WWMath@@SAJM@Z": [],
+      "?Get_Size@Image@@QBEPBUColorIntPoint@@XZ": [],
+      "?Get_UV@Image@@QBEPBUColorFloatPoint@@XZ": [],
+      "?MakeBinding@@YA?AUFunctorBinding@@P8FunctorTarget@@AEXXZPAV2@@Z": [],
+      "__real@3f000000": [],
+      "_floorf": [
+        "__imp__floor"
+      ]
+    }
+  },
+  "after_sha256": "8fefe49b02e8c1f935dd622a57f6ec940b10c12ef3ff6bad9d43e55ff9f379f9"
+}

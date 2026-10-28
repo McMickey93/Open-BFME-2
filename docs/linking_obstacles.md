@@ -208,6 +208,19 @@ audit evidence is recorded in the handoff before publication.
 
 ### LINK-132: ICF fold rows move their unit early in census link order, so its non-retail copies are selected
 
+**Color-picker subset (2026-10-28, base `cea5d968c5`, index `41c28839bf`):**
+W3DAptComponentColorPicker.cpp now keeps math.h's unused `floorf` local.
+All 14 rows and both EH graphs remain exact; all 29 retained external COMDAT
+fingerprints and external dependencies are unchanged. Ordinary preview goes
+from blocked to LINKS for 1,660 authored bytes. The existing retail floor
+owner still reports the global selected-copy blocker. Strict receipts cover
+both sources (16/16 rows); scoped data checking retains an unchanged global
+wrong-name finding. The outgoing batch audit is INCONCLUSIVE: older index
+and missing current receipt for Common/0CreateAHeroManager21FE49.cpp.
+Carry this scope and consumer into the next scheduled census; global selection
+and census confirmation remain open.
+[Verification and object receipt](../reverse/attempt_support/color-picker-floor-link-20261028-codexb.md).
+
 Status: Open; needs a census link-order rule decision (maintainer).
 Updated: 2026-10-28; inspected revision: `4506f9bc93`, index at `c8734bec0c`.
 Evidence / affected units: `link_census.link_order` (and `allowed_symbols.link_order`,

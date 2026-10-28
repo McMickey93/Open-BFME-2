@@ -10,6 +10,8 @@
 // are target facts established by the holder provider and retail copies.
 // The scale getters retain their existing opaque integer-return ABI;
 // their returned addresses and paired float fields are native evidence.
+// All floor operations inline here; keep math.h's unused wrapper TU-local.
+extern "C" { static float __cdecl floorf(float); }
 #include "ascii_string.h"
 #include <stdio.h>
 #include "wwmath.h"

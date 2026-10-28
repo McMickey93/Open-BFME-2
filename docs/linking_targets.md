@@ -26,6 +26,14 @@ The global selected-copy issue and full consumer/census confirmation remain
 open; the outgoing audit is inconclusive.
 [Evidence](../reverse/attempt_support/pathfinder-footprint-floor-link-20261028-codex.md).
 
+Additional current target (2026-10-28, base `cea5d968c5`, index `41c28839bf`):
+`W3DAptComponentColorPicker.cpp` previews LINKS for 1,660 authored bytes after
+keeping its unused inline `floorf` local. All 14 rows, both EH graphs and
+retained external object bindings are unchanged. LINK-132/LINK-133 global
+selection and external consumer/census confirmation remain open; the batch
+audit is inconclusive.
+[Evidence](../reverse/attempt_support/color-picker-floor-link-20261028-codexb.md).
+
 ## One blocker: fresh candidates
 
 The handoff found no earlier served-queue entry for these 16 units. Follow-up:
