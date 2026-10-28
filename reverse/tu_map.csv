@@ -23393,11 +23393,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002E6C0E,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,proposed,C,C=0x002E6B19..0x002E6C18,Code/GameEngine/Source/Common/Disp8ShrAndDwordGetters.cpp
 0x002E6C18,5,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,proposed,C,C=0x002E6B19..0x002E6C1D,Code/GameEngine/Source/Common/Disp0PtrChaseDwordGetters.cpp
 0x002E6C1D,6,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,proposed,C,C=0x002E6B19..0x002E6C23,Code/GameEngine/Source/Common/Disp0PtrChaseDwordGetters.cpp
-0x002E6C23,42,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/Common/PathfindCell.cpp,Code/GameEngine/Source/Common/PathfindCell_IsObstaclePresent.cpp
-0x002E6C4D,19,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6C60,Code/GameEngine/Source/Common/Rva002E6C4DGet.cpp
+0x002E6C23,42,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/Common/PathfindCell.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E6C4D,19,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6C60,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E6C60,18,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6C72,Code/GameEngine/Source/Common/GapBodiesSeat1B.cpp
 0x002E6C72,7,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6C79,Code/GameEngine/Source/Common/GapLeavesSeat8.cpp
-0x002E6C79,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6C8D,Code/GameEngine/Source/Common/Rva002E6C79Get.cpp
+0x002E6C79,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6C8D,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E6C8D,7,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6C94,Code/GameEngine/Source/Common/Disp8DwordClearers.cpp
 0x002E6C94,14,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6CA2,Code/GameEngine/Source/Common/Disp8WordFieldSetters.cpp
 0x002E6CA2,14,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E6C23..0x002E6CB0,Code/GameEngine/Source/Common/Disp8WordFieldSetters.cpp
@@ -23428,28 +23428,28 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002E7087,97,code,,,-,,Code/GameEngine/Source/Common/BfmeOneHundredTen.cpp
 0x002E70E8,75,code,,displaced,-,N=Code/GameEngine/Source/GameLogic/Pathfinder/PathfindCell.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfindCellVectorDtor.cpp
 0x002E7133,12,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
-0x002E713F,57,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7133..0x002E7178,Code/GameEngine/Source/Common/Rva002E713FGuard.cpp
-0x002E7178,18,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/PathfindShimAddObject.cpp
-0x002E718A,17,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/PathfindShimAddObject.cpp
-0x002E719B,18,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/PathfindShimAddObject.cpp
-0x002E71AD,18,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/PathfindShimAddObject.cpp
-0x002E71BF,70,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/PathfindShimAddObject.cpp
+0x002E713F,57,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7133..0x002E7178,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E7178,18,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E718A,17,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E719B,18,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E71AD,18,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E71BF,70,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7205,62,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/Common/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/Common/Pathfinder_SetBridgeStateRepaired.cpp
-0x002E7243,30,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7205..0x002E7261,Code/GameEngine/Source/GameLogic/Object/PathfindShimAddObject.cpp
-0x002E7261,53,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7205..0x002E7296,Code/GameEngine/Source/GameLogic/Object/Rva002E7261.cpp
+0x002E7243,30,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7205..0x002E7261,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E7261,53,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7205..0x002E7296,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7296,158,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E7334,26,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E734E,Code/GameEngine/Source/Common/GapBodiesGE15.cpp
 0x002E734E,58,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E7388,Code/GameEngine/Source/Common/GapBodiesGE15.cpp
-0x002E7388,76,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E73D4,Code/GameEngine/Source/Common/Rva002E7388Set.cpp
-0x002E73D4,39,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E73FB,Code/GameEngine/Source/GameLogic/Object/Rva002E73D4Ctor.cpp
+0x002E7388,76,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E73D4,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E73D4,39,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E73FB,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E73FB,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E7414,Code/GameEngine/Source/Common/GapBodiesSeat1B.cpp
 0x002E7414,44,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E7440,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E7440,66,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E7482,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
-0x002E7482,42,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E74AC,Code/GameEngine/Source/GameLogic/Object/Rva002E7482.cpp
+0x002E7482,42,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E74AC,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E74AC,9,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7296..0x002E74B5,Code/GameEngine/Source/Common/GapThunksSeat8.cpp
 0x002E74B5,17,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/Pathfinder_SetDebugPathPosition.cpp
 0x002E74C6,124,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/Pathfinder_ChooseBestLocomotorForPosition.cpp
-0x002E7542,39,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E74C6..0x002E7569,Code/GameEngine/Source/GameLogic/Object/Rva002E7542Finish.cpp
+0x002E7542,39,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E74C6..0x002E7569,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7569,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E74C6..0x002E757D,Code/GameEngine/Source/GameLogic/AI/PathfinderCellObjectQuery.cpp
 0x002E757D,38,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Object/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Object/Pathfinder_IsPointOnRamp.cpp
 0x002E75A3,304,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
@@ -23459,44 +23459,44 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002E7917,77,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E7964,68,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E79A8,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E79A8,186,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7A62,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
-0x002E7A62,160,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp C=0x002E7917..0x002E7B02,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRadialOffset.cpp
-0x002E7B02,39,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp C=0x002E7917..0x002E7B29,Code/GameEngine/Source/GameLogic/Object/Rva002E7B02.cpp
+0x002E7A62,160,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp C=0x002E7917..0x002E7B02,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E7B02,39,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp C=0x002E7917..0x002E7B29,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7B29,143,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7BB8,Code/GameEngine/Source/Common/Rva002E7ED6InfoCellCallback.cpp
-0x002E7BB8,56,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7BF0,Code/GameEngine/Source/GameLogic/Object/Rva002E7BB8.cpp
+0x002E7BB8,56,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7BF0,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7BF0,169,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7C99,Code/GameEngine/Source/GameLogic/Pathfinder/Rva002E7BF0Probe.cpp
-0x002E7C99,50,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7CCB,Code/GameEngine/Source/GameLogic/Object/Rva002E7C99.cpp
+0x002E7C99,50,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7CCB,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7CCB,93,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7D28,Code/GameEngine/Source/GameLogic/AI/PathDebugOutput.cpp
 0x002E7D28,23,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7D3F,Code/GameEngine/Source/Common/BfmeConv939.cpp
-0x002E7D3F,46,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7D6D,Code/GameEngine/Source/Common/Rva002E7D3FContextInit.cpp
+0x002E7D3F,46,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7D6D,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7D6D,136,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7DF5,Code/GameEngine/Source/Common/Rva002E7ED6InfoCellCallback.cpp
-0x002E7DF5,49,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7E26,Code/GameEngine/Source/GameLogic/Object/Rva002E7DF5.cpp
+0x002E7DF5,49,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7E26,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7E26,176,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7ED6,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E7ED6,72,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F1E,Code/GameEngine/Source/Common/Rva002E7ED6InfoCellCallback.cpp
 0x002E7F1E,17,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F2F,Code/GameEngine/Source/Common/GapBodiesGE06.cpp
 0x002E7F2F,15,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F3E,Code/GameEngine/Source/Common/GapBodiesGE06.cpp
 0x002E7F3E,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F52,Code/GameEngine/Source/Common/GapBodiesGE06.cpp
-0x002E7F52,31,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F71,Code/GameEngine/Source/Common/System/SaveGame/LatchRestoreIntDtor.cpp
-0x002E7F71,15,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F80,Code/GameEngine/Source/Common/System/SaveGame/LatchRestoreIntDtor.cpp
-0x002E7F80,6,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F86,Code/GameEngine/Source/Common/System/SaveGame/LatchRestoreIntDtor.cpp
-0x002E7F86,37,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7FAB,Code/GameEngine/Source/Common/System/SaveGame/LatchRestoreIntDtor.cpp
+0x002E7F52,31,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F71,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E7F71,15,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F80,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E7F80,6,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7F86,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E7F86,37,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7FAB,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E7FAB,28,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7FC7,Code/GameEngine/Source/Common/FamilyDeletingDtors11.cpp
 0x002E7FC7,19,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7FDA,Code/GameEngine/Source/Common/GapBodiesSeat1B.cpp
 0x002E7FDA,19,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E7FED,Code/Libraries/Source/WWVegas/WWMath/region.cpp
-0x002E7FED,88,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E8045,Code/Libraries/Source/WWVegas/WWLib/Rva002E7FEDGet.cpp
+0x002E7FED,88,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E7917..0x002E8045,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E8045,256,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002E8145,268,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002E8251,247,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002E8348,256,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002E8448,256,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
-0x002E8548,101,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8448..0x002E85AD,Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp
+0x002E8548,101,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8448..0x002E85AD,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E85AD,454,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002E8773,724,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002E8A47,256,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
-0x002E8B47,31,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8B66,Code/GameEngine/Source/GameLogic/AI/Rva002E8B47Compare.cpp
+0x002E8B47,31,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8B66,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E8B66,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8B70,Code/GameEngine/Source/Common/Disp8ByteChaseGetters.cpp
 0x002E8B70,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8B7A,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp
 0x002E8B7A,33,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8B9B,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
-0x002E8B9B,52,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8BCF,Code/GameEngine/Source/Common/Rva002E8B9B.cpp
+0x002E8B9B,52,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8BCF,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E8BCF,41,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8A47..0x002E8BF8,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E8BF8,43,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E8C23,42,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8BF8..0x002E8C4D,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
@@ -23504,8 +23504,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002E8C6E,262,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E8D74,54,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8C6E..0x002E8DAA,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002E8DAA,571,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderNewMap.cpp
-0x002E8FE5,93,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp C=0x002E8DAA..0x002E9042,Code/GameEngine/Source/Common/Rva002E9042.cpp
-0x002E9042,93,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8DAA..0x002E909F,Code/GameEngine/Source/Common/Rva002E9042.cpp
+0x002E8FE5,93,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp C=0x002E8DAA..0x002E9042,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E9042,93,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E8DAA..0x002E909F,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E909F,203,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/Common/Pathfinder.cpp,Code/GameEngine/Source/Common/Pathfinder_IsValidMovementPositionForObject.cpp
 0x002E916A,437,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E909F..0x002E931F,Code/GameEngine/Source/GameLogic/Pathfinder/Rva002E916AFootprintCheck.cpp
 0x002E931F,136,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E909F..0x002E93A7,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderLineContexts.cpp
@@ -23522,8 +23522,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002E99BD,60,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellQueryPredicates.cpp
 0x002E99F9,211,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002E99F9.cpp
 0x002E9ACC,101,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E99F9..0x002E9B31,Code/GameEngine/Source/GameLogic/AI/PathfinderCellQueryPredicates.cpp
-0x002E9B31,180,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E99F9..0x002E9BE5,Code/GameEngine/Source/Common/Rva002E9B31Finish.cpp
-0x002E9BE5,292,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRadialOffset.cpp
+0x002E9B31,180,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E99F9..0x002E9BE5,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002E9BE5,292,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002E9D09,414,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002E9BE5..0x002E9EA7,Code/GameEngine/Source/GameLogic/AI/PathfinderCellObjectQuery.cpp
 0x002E9EA7,531,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRva002E9EA7.cpp
 0x002EA0BA,656,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCheckForMovement.cpp
@@ -23544,28 +23544,28 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002EAD84,24,code,,,-,,Code/GameEngine/Source/Common/GapBodiesGE04.cpp
 0x002EAD9C,24,code,,,-,,Code/GameEngine/Source/Common/GapBodiesGE04.cpp
 0x002EADB4,45,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/Rva002EADB4Release.cpp
-0x002EADE1,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002EADE1.cpp
+0x002EADE1,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EAE20,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002F95B7.cpp
 0x002EAE5F,700,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EB11B,700,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EB3D7,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002EB3D7.cpp
-0x002EB416,50,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB3D7..0x002EB448,Code/Libraries/Source/WWVegas/WWLib/Rva002EB416Release.cpp
-0x002EB448,38,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB3D7..0x002EB46E,Code/GameEngine/Source/GameLogic/AI/Rva002EB448.cpp
-0x002EB46E,50,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB3D7..0x002EB4A0,Code/Libraries/Source/WWVegas/WWLib/Rva002EB46ERelease.cpp
+0x002EB416,50,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB3D7..0x002EB448,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002EB448,38,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB3D7..0x002EB46E,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002EB46E,50,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB3D7..0x002EB4A0,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EB4A0,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EB4DF,406,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EB675,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002EB675.cpp
 0x002EB6B4,256,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002EB7B4,724,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
-0x002EBA88,67,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBACB,Code/GameEngine/Source/GameLogic/AI/Rva002EBA88.cpp
+0x002EBA88,67,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBACB,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EBACB,136,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBB53,Code/Libraries/Source/WWVegas/WWLib/stlport_horde_rank_set.cpp
-0x002EBB53,72,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBB9B,Code/Libraries/Source/WWVegas/WWLib/Rva002EBB53SiftUp.cpp
-0x002EBB9B,96,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBBFB,Code/Libraries/Source/WWVegas/WWLib/Rva002EBB53SiftUp.cpp
-0x002EBBFB,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder_layer.cpp C=0x002EB7B4..0x002EBC14,Code/GameEngine/Source/Common/Rva002EBBFBIsOdd.cpp
+0x002EBB53,72,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBB9B,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002EBB9B,96,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBBFB,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002EBBFB,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder_layer.cpp C=0x002EB7B4..0x002EBC14,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EBC14,32,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBC34,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
-0x002EBC34,37,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBC59,Code/GameEngine/Source/GameLogic/AI/Rva002EBC34.cpp
-0x002EBC59,38,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBC7F,Code/GameEngine/Source/GameLogic/AI/Rva002EBC59.cpp
-0x002EBC7F,40,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBCA7,Code/GameEngine/Source/GameLogic/AI/Rva002EBC7F.cpp
+0x002EBC34,37,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBC59,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002EBC59,38,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBC7F,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002EBC7F,40,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBCA7,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EBCA7,47,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBCD6,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EBCD6,32,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBCF6,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EBCF6,59,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EB7B4..0x002EBD31,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
@@ -23595,7 +23595,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002ED7F7,1280,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EDCF7,178,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EDDA9,178,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
-0x002EDE5B,80,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EDDA9..0x002EDEAB,Code/GameEngine/Source/Common/Rva002E8C23.cpp
+0x002EDE5B,80,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EDDA9..0x002EDEAB,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EDEAB,153,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/Pathfinder_SetDebugPath.cpp
 0x002EDF44,56,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002EDF44.cpp
 0x002EDF7C,65,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002EDF44.cpp
@@ -23609,7 +23609,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002EE7EE,381,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EE96B,53,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002EE96B.cpp
 0x002EE9A0,23,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EE96B..0x002EE9B7,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_ptr_o1.cpp
-0x002EE9B7,41,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EE96B..0x002EE9E0,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9B7Reset.cpp
+0x002EE9B7,41,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EE96B..0x002EE9E0,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EE9E0,41,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EE96B..0x002EEA09,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp
 0x002EEA09,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EE96B..0x002EEA1D,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp
 0x002EEA1D,41,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EE96B..0x002EEA46,Code/Libraries/Source/WWVegas/WWLib/Rva002EEA1DReset.cpp
@@ -23624,10 +23624,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002EF116,256,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCellLineWalks.cpp
 0x002EF216,35,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EF116..0x002EF239,Code/Libraries/Source/WWVegas/WWLib/Rva002EF216Push.cpp
 0x002EF239,34,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EF116..0x002EF25B,Code/Libraries/Source/WWVegas/WWLib/Rva002EF239CreateNode.cpp
-0x002EF25B,34,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EF116..0x002EF27D,Code/Libraries/Source/WWVegas/WWLib/Rva002EF25BCreateNode.cpp
+0x002EF25B,34,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EF116..0x002EF27D,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EF27D,41,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EF116..0x002EF2A6,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002EF27D.cpp
 0x002EF2A6,307,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderAdjustLayer.cpp
-0x002EF3D9,21,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EF2A6..0x002EF3EE,Code/GameEngine/Source/Common/Rva002EF3D9Forwards.cpp
+0x002EF3D9,21,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002EF2A6..0x002EF3EE,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002EF3EE,629,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EF663,41,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002EF68C,636,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
@@ -23641,8 +23641,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002F0A72,219,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002F0B4D,5,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0B52,Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp
 0x002F0B52,56,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0B8A,Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp
-0x002F0B8A,43,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0BB5,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0B8A.cpp
-0x002F0BB5,43,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0BE0,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0BB5.cpp
+0x002F0B8A,43,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0BB5,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002F0BB5,43,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0BE0,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F0BE0,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0BF4,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDeque.cpp
 0x002F0BF4,42,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0C1E,Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_set_base.cpp
 0x002F0C1E,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0A72..0x002F0C32,Code/GameEngine/Source/Common/Rva004FD448.cpp
@@ -23651,11 +23651,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002F0C78,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCoordLineWalk.cpp
 0x002F0CB7,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCoordLineWalk.cpp
 0x002F0CF6,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCoordLineWalk.cpp
-0x002F0D35,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0D4E,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F0D35.cpp
+0x002F0D35,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0D4E,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F0D4E,136,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0DD6,Code/Libraries/Source/WWVegas/WWLib/StlportIntMapInsertFamily.cpp
 0x002F0DD6,136,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0E5E,Code/Libraries/Source/WWVegas/WWLib/Rva002F0DD6Worker.cpp
-0x002F0E5E,134,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0EE4,Code/Libraries/Source/WWVegas/WWLib/Rva002F0E5EUniqueSearch.cpp
-0x002F0EE4,30,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0F02,Code/Libraries/Source/WWVegas/WWLib/Rva002F0EE4Finish.cpp
+0x002F0E5E,134,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0EE4,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002F0EE4,30,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0F02,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F0F02,5,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F0CF6..0x002F0F07,Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp
 0x002F0F07,666,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderProcessPathfindQueue.cpp
 0x002F11A1,411,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderUpdateLayer.cpp
@@ -23667,7 +23667,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002F1B66,60,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCoordLineWalk.cpp
 0x002F1BA2,51,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCoordLineWalk.cpp
 0x002F1BD5,80,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F1BA2..0x002F1C25,Code/GameEngine/Source/Common/System/Rva002F1BD5Finish.cpp
-0x002F1C25,48,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/Pathfinder_d_003e6e90.cpp
+0x002F1C25,48,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F1C55,5,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F1C25..0x002F1C5A,Code/Libraries/Source/WWVegas/WWLib/StlportMapForwardersSeat8.cpp
 0x002F1C5A,5,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F1C25..0x002F1C5F,Code/Libraries/Source/WWVegas/WWLib/StlportMapForwardersSeat8.cpp
 0x002F1C5F,42,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F1C25..0x002F1C89,Code/GameEngine/Source/Common/Rva002F1C5FSelfLink.cpp
@@ -23685,27 +23685,27 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002F21F1,8,code,,displaced,-,N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderDestructor.cpp
 0x002F21F9,429,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderXfer.cpp
 0x002F23A6,1215,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F21F9..0x002F2865,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
-0x002F2865,21,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F21F9..0x002F287A,Code/GameEngine/Source/Common/Rva002EF3D9Forwards.cpp
+0x002F2865,21,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F21F9..0x002F287A,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F287A,782,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002F2B88,1052,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002F2FA4,123,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002F301F,26,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F3039,Code/GameEngine/Source/Common/Rva002F301FRva002F301F.cpp
-0x002F3039,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F3052,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3039.cpp
+0x002F3039,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F3052,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F3052,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F3066,Code/Libraries/Source/WWVegas/WWLib/StlportIntMapInsertFamily.cpp
 0x002F3066,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F307A,Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_int_create_node.cpp
-0x002F307A,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F3093,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F307A.cpp
-0x002F3093,29,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F30B0,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3093.cpp
+0x002F307A,25,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F3093,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002F3093,29,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F2FA4..0x002F30B0,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F30B0,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCoordLineWalk.cpp
 0x002F30EF,63,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderCoordLineWalk.cpp
 0x002F312E,28,code,,displaced,-,N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderDestructor.cpp
 0x002F314A,544,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderAttackView.cpp
-0x002F336A,40,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F314A..0x002F3392,Code/GameEngine/Source/GameLogic/AI/Rva002F336ATargetCallback.cpp
-0x002F3392,541,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRadialOffset.cpp
+0x002F336A,40,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F314A..0x002F3392,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x002F3392,541,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F35AF,310,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002F36E5,40,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002F36E5.cpp
 0x002F370D,43,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002F36E5.cpp
 0x002F3738,33,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F370D..0x002F3759,Code/GameEngine/Source/GameLogic/AI/PathfinderRva002F3738Heap.cpp
-0x002F3759,69,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F370D..0x002F379E,Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3759.cpp
+0x002F3759,69,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,C,C=0x002F370D..0x002F379E,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x002F379E,467,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002F3971,506,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x002F3B6B,49,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderIsViewBlockedByObstacle.cpp
@@ -44470,7 +44470,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0052E6E6,558,code,,displaced,-,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyPolygonCell.cpp
 0x0052E914,1120,code,,displaced,-,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/Pathfinder/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderBridgeUpdateRva0052ED74.cpp
 0x0052ED74,1312,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,proposed,K,K=Rva002E713FOwner,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderBridgeUpdateRva0052ED74.cpp
-0x0052F294,88,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,proposed,K,K=Rva002E713FOwner,Code/GameEngine/Source/Common/Rva002E713FGuard.cpp
+0x0052F294,88,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,proposed,K,K=Rva002E713FOwner,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x0052F2EC,851,code,,displaced,-,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyMapRva0052F2EC.cpp
 0x0052F63F,3027,code,,displaced,-,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp W=Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder_classify.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyWall.cpp
 0x00530212,3381,code,,displaced,-,S=Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp N=Code/GameEngine/Source/GameLogic/AI/Pathfinder.cpp,Code/GameEngine/Source/GameLogic/AI/PathfinderClassifyObjectFootprint.cpp
@@ -72230,9 +72230,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00778D71,10,code,Code/GameEngine/Source/GameClient/GameText.cpp,approved,P,P=0x002E68EC@FuncInfo0x0093D650,Code/GameEngine/Source/GameClient/GameText.cpp
 0x00778D7B,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E8DAA@FuncInfo0x00920FDC,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderNewMap.cpp
 0x00778D85,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E8DAA@FuncInfo0x00920FDC,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderNewMap.cpp
-0x00778D8F,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E9BE5@FuncInfo0x00921008,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRadialOffset.cpp
-0x00778D97,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E9BE5@FuncInfo0x00921008,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRadialOffset.cpp
-0x00778D9F,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E9BE5@FuncInfo0x00921008,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderRadialOffset.cpp
+0x00778D8F,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E9BE5@FuncInfo0x00921008,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x00778D97,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E9BE5@FuncInfo0x00921008,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x00778D9F,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002E9BE5@FuncInfo0x00921008,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x00778DA9,13,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002EC479@FuncInfo0x0092102C,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderFootprintAttackRangeQuery.cpp
 0x00778DB6,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002EC479@FuncInfo0x0092102C,Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderFootprintAttackRangeQuery.cpp
 0x00778DC0,10,code,,,-,,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
@@ -72243,10 +72243,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00778DEE,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F00E9@FuncInfo0x00921098,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp
 0x00778DF8,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0B52@FuncInfo0x009210BC,Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp
 0x00778E00,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0B52@FuncInfo0x009210BC,Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp
-0x00778E0A,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0B8A@FuncInfo0x009210E0,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0B8A.cpp
-0x00778E12,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0B8A@FuncInfo0x009210E0,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0B8A.cpp
-0x00778E1C,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0BB5@FuncInfo0x00921104,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0BB5.cpp
-0x00778E24,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0BB5@FuncInfo0x00921104,Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva002F0BB5.cpp
+0x00778E0A,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0B8A@FuncInfo0x009210E0,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x00778E12,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0B8A@FuncInfo0x009210E0,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x00778E1C,8,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0BB5@FuncInfo0x00921104,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
+0x00778E24,10,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F0BB5@FuncInfo0x00921104,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp
 0x00778E2E,20,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F213F@FuncInfo0x00921150,Code/GameEngine/Source/GameLogic/AI/PathfinderDestructor.cpp
 0x00778E42,22,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F213F@FuncInfo0x00921150,Code/GameEngine/Source/GameLogic/AI/PathfinderDestructor.cpp
 0x00778E58,14,code,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,approved,P,P=0x002F213F@FuncInfo0x00921150,Code/GameEngine/Source/GameLogic/AI/PathfinderDestructor.cpp

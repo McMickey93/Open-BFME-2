@@ -1092,6 +1092,11 @@ address_global	Code/GameEngine/Source/GameClient/VideoPlayerRva009111BOpen.cpp	g
 address_global	Code/GameEngine/Source/GameClient/VideoPlayerRva009111BOpen.cpp	g_Va00DE4878	3
 address_global	Code/GameEngine/Source/GameClient/Win32BIGFileSystemRva006046B0.cpp	g_Va00E06E60	2
 address_global	Code/GameEngine/Source/GameLogic/AI/AIBurningDeathStateUpdate.cpp	g_Va00E01E08	2
+address_global	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	g_Va00BBB8D8	3
+address_global	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	g_Va00BBB8E0	2
+address_global	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	g_Va00DB9440	1
+address_global	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	g_Va00DBD4B8	3
+address_global	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	g_Va00DBD4C8	5
 address_global	Code/GameEngine/Source/GameLogic/AI/GroupOrderCopyCtor.cpp	g_Va00E05F74	4
 address_global	Code/GameEngine/Source/GameLogic/AI/GroupOrderHolderCtor.cpp	g_Va00E05F74	3
 address_global	Code/GameEngine/Source/GameLogic/AI/Rva00355770GroupOrderMaps.cpp	g_Va00E05F74	2
@@ -1120,8 +1125,6 @@ address_global	Code/GameEngine/Source/GameLogic/Object/ObjectRva0028FCD9.cpp	g_V
 address_global	Code/GameEngine/Source/GameLogic/Object/ObjectRva002E6B89.cpp	g_Va00DFECD0	2
 address_global	Code/GameEngine/Source/GameLogic/Object/ObjectSetTriggerAreaFlagsForChangeInPosition.cpp	g_Va00DBD0F4	2
 address_global	Code/GameEngine/Source/GameLogic/Object/Object_healCompletely.cpp	g_Va00BFBC84	3
-address_global	Code/GameEngine/Source/GameLogic/Object/Rva002E7BB8.cpp	g_Va00BBB8D8	3
-address_global	Code/GameEngine/Source/GameLogic/Object/Rva002E7DF5.cpp	g_Va00BBB8E0	2
 address_global	Code/GameEngine/Source/GameLogic/Object/Rva004DD890.cpp	g_Va00E049D8	2
 address_global	Code/GameEngine/Source/GameLogic/Object/Rva005003DF.cpp	g_Va00E04544	2
 address_global	Code/GameEngine/Source/GameLogic/Object/SpecialPower/CloudBreakSpecialPowerModuleDataCtor.cpp	g_Va00BC2428	1
@@ -1594,13 +1597,8 @@ address_global	Code/Libraries/Source/WWVegas/WWLib/HordeMeleeSwarmXfer.cpp	g_Rva
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva001532E1Erase.cpp	g_Rva00153565Vec	4
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva00153565Register.cpp	g_Rva00153565Vec	7
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva001DABB6SoundsListParse.cpp	g_Rva0107301CEmptyString	3
-address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp	g_Va00DB9440	1
-address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp	g_Va00DBD4C8	2
-address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002EB416Release.cpp	g_Va00DBD4B8	3
-address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002EB46ERelease.cpp	g_Va00DBD4C8	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp	g_Va00DBD4B8	3
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002EEA1DReset.cpp	g_Va00DBD4C8	2
-address_global	Code/Libraries/Source/WWVegas/WWLib/Rva002EF25BCreateNode.cpp	g_Va00DBD4C8	1
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva0030E7D0Ctor.cpp	g_Va00BBB8D8	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva004119F3.cpp	g_Va00E0300C	2
 address_global	Code/Libraries/Source/WWVegas/WWLib/Rva00418573Lookup.cpp	g_Va00BBB8D8	2
@@ -2992,6 +2990,9 @@ alternatename	Code/GameEngine/Source/GameLogic/AI/AIInternalMoveToStateOnExit_AI
 alternatename	Code/GameEngine/Source/GameLogic/AI/AIInternalMoveToStateOnExit_AIInternalMoveToState.cpp	?slot15@State@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/AIInternalMoveToStateOnExit_AIInternalMoveToState.cpp	?slot16@State@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/AIInternalMoveToStateOnExit_AIInternalMoveToState.cpp	?update@State@@UAE?AW4StateReturnType@@XZ	1
+alternatename	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	?_M_create_node@?$_Rb_tree@IU?$pair@$$CBII@_STL@@U?$_Select1st@U?$pair@$$CBII@_STL@@@2@URva002F0DD6Less@@V?$allocator@U?$pair@$$CBII@_STL@@@2@@_STL@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBII@_STL@@@2@ABU?$pair@$$CBII@2@@Z	1
+alternatename	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	?dup_0060C9D9@_STL@@YAXPAU?$pair@$$CBII@1@ABU21@@Z	1
+alternatename	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	?insert_unique@?$_Rb_tree@HU?$pair@$$CBHURva002F3093Record@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva002F3093Record@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva002F3093Record@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHURva002F3093Record@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHURva002F3093Record@@@_STL@@@2@@2@U32@ABU?$pair@$$CBHURva002F3093Record@@@2@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/AIPlayer_Rva004F0499.cpp	?firstUnlink@Rva004F0479@@QAEXPAVTeamInQueue@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/AIPlayer_Rva004F0499.cpp	?rva004F0479@Rva004F0479@@QAEXPAVTeamInQueue@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/AI/AIStatesSmallUpdates.cpp	?slot01@State@@UAEXXZ	1
@@ -4163,8 +4164,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002299F1MetadataConstructor
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002A8FE0Finish.cpp	?Free@Rva002A8FE0@@QAEXPAURva002A8D2DNode@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002CFA30Clone.cpp	?rva002CFA30@Rva002CFC7B@@QAEPAURva002CFA30Node@@PBU2@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002CFA4EClone.cpp	?rva002CFA4E@Rva002CFCEE@@QAEPAURva002CFA4ENode@@PBU2@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp	?_M_create_node@?$_Rb_tree@IU?$pair@$$CBII@_STL@@U?$_Select1st@U?$pair@$$CBII@_STL@@@2@URva002F0DD6Less@@V?$allocator@U?$pair@$$CBII@_STL@@@2@@_STL@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBII@_STL@@@2@ABU?$pair@$$CBII@2@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp	?dup_0060C9D9@_STL@@YAXPAU?$pair@$$CBII@1@ABU21@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0032E51BRangeForward.cpp	?Rva0032E51BRangeCallee@@YAPAURva0032E51BOutput@@PAURva0032E51BInput@@0PAU1@ABURva0032E51BIteratorTag@@PAH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva003615E5VectorDtor.cpp	??1Rva003615E5Record@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva004152E6NewNode.cpp	?rva004152E6@Rva000427195@@QAEPAXPBX@Z	1
@@ -4204,7 +4203,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00288874.cpp	??MR
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00289FBC.cpp	??4Rva00289FBCRecord@@QAEAAU0@ABU0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002A3FAF.cpp	??0Rva002A3FAFRecord@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002A3FAF.cpp	??1Rva002A3FAFRecord@@QAE@XZ	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3093.cpp	?insert_unique@?$_Rb_tree@HU?$pair@$$CBHURva002F3093Record@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva002F3093Record@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva002F3093Record@@@_STL@@@2@@_STL@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHURva002F3093Record@@@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHURva002F3093Record@@@_STL@@@2@@2@U32@ABU?$pair@$$CBHURva002F3093Record@@@2@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002FFC74.cpp	??4Rva002FFC74Record@@QAEAAU0@ABU0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00301621.cpp	??1Rva00301621Record@@QAE@XZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00383A51.cpp	?clear@?$_Rb_tree@HU?$pair@$$CBHURva00383A51Record@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva00383A51Record@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva00383A51Record@@@_STL@@@2@@_STL@@QAEXXZ	1
@@ -10831,6 +10829,9 @@ pragma_optimize	Code/GameEngine/Source/GameClient/SubtitleManagerAccessors.cpp	"
 pragma_optimize	Code/GameEngine/Source/GameClient/SubtitleManagerAccessors.cpp	"s",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/View.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameClient/View.cpp	"gsy",on	1
+pragma_optimize	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	"",on	3
+pragma_optimize	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	"s",off	3
+pragma_optimize	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	"t",on	3
 pragma_optimize	Code/GameEngine/Source/GameLogic/AI/GroupOrderDtor.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/AI/GroupOrderDtor.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/AI/ai.cpp	"",on	1
@@ -11712,15 +11713,6 @@ pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002AE577.cpp	"t
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BB6D7.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BB6D7.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002BB6D7.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F0D35.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F0D35.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F0D35.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3093.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3093.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3093.cpp	"t",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3759.cpp	"",on	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3759.cpp	"s",off	1
-pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002F3759.cpp	"t",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002FED07.cpp	"",on	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002FED07.cpp	"s",off	1
 pragma_optimize	Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva002FED07.cpp	"t",on	1
@@ -13160,6 +13152,7 @@ present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIGroupRva0036E1C3.cpp	get
 present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIGroupRva0036E1C3.cpp	setEmoticon@Drawable@@QAEXABV?$StringBase@D@@H@Z	1
 present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIInternalMoveToStateUpdate.cpp	isInIdleState@StateMachine@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIInternalMoveToStateUpdate.cpp	isSamePosition@@YA_NPBUCoord3D@@00@Z	1
+present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp	Rva002F0DD6Less::operator()	1
 present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIPlayerTeamBuild.cpp	TeamInQueue::disband	1
 present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIPlayerTeamBuild_DoUpgradesAndSkills.cpp	TeamInQueue::disband	1
 present_unmatched	Code/GameEngine/Source/GameLogic/AI/AIPlayerTeamBuild_QueueUnits.cpp	TeamInQueue::disband	1
@@ -15603,7 +15596,6 @@ present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva0020EE29Clear.cpp	rva00
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva0020EE29Clear.cpp	rva0021BF42@Rva0021BFxx	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva002299F1MetadataConstructors.cpp	RvaMapCacheEmptyAllocator::RvaMapCacheEmptyAllocator	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva002AE3F4Finish.cpp	append@Rva002A1B6FNativeList@@QAEXABQAX@Z	1
-present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp	Rva002F0DD6Less::operator()	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva00383BACFinish.cpp	_M_insert@?$_Rb_tree@HU?$pair@$$CBHH@_STL@@U?$_Select1st@U?$pair@$$CBHH@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHH@_STL@@@2@@_STL@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHH@_STL@@U?$_Nonconst_traits@U?$pair@$$CBHH@_STL@@@_STL@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBHH@2@0@Z	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva0043B35DErase.cpp	_STL::EraseIntIterator::_Rb_tree_iterator	1
 present_unmatched	Code/Libraries/Source/WWVegas/WWLib/Rva0043B35DErase.cpp	_STL::EraseIntTree::upper_bound	1

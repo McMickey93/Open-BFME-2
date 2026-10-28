@@ -17016,7 +17016,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009B93BC,72,.data,global,?thePlayerTemplateBlockParse@@3UBlockParse@@A,,unowned,,0,2
 0x009B9404,48,.data,global,?theRoadBlockParse@@3UBlockParse@@A,,unowned,,0,2
 0x009B9434,12,.data,global,?theScienceBlockParse@@3UBlockParse@@A,,unowned,,0,2
-0x009B9440,60,.data,global,?g_Va00DB9440@@3VRva002E8548@@A,Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp,owned,,1,9
+0x009B9440,60,.data,global,?g_Va00DB9440@@3VRva002E8548@@A,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,owned,,1,9
 0x009B947C,40,.data,global,?theRankBlockParse@@3UBlockParse@@A,,unowned,,0,2
 0x009B94A4,48,.data,global,?theSpecialPowerBlockParse@@3UBlockParse@@A,,unowned,,0,2
 0x009B94D4,12,.data,global,?theShellMenuSchemeBlockParse@@3UBlockParse@@A,,unowned,,0,2
@@ -17191,7 +17191,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009BD38C,292,.data,global,?deltaX@?BG@??CheckPathCost@Pathfinder@@QAEHPAVObject@@ABVLocomotorSet@@PBUCoord3D@@2@Z@4PAHA,Code/GameEngine/Source/GameLogic/Pathfinder/pathfinder.cpp,owned,,1,1
 0x009BD4B0,8,.data,global,?g_Va00DBD4B0@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,owned,,1,2
 0x009BD4B8,16,.data,global,?g_Va00DBD4B8@@3PAU_Rva002EB416Node@@A,Code/Libraries/Source/WWVegas/WWLib/Rva002EE9E0Reset.cpp,owned,,1,4
-0x009BD4C8,704,.data,global,?g_Va00DBD4C8@@3VRva002E8548@@A,Code/Libraries/Source/WWVegas/WWLib/Rva002E8548Pool.cpp,owned,,1,8
+0x009BD4C8,704,.data,global,?g_Va00DBD4C8@@3VRva002E8548@@A,Code/GameEngine/Source/GameLogic/AI/AIPathfind.cpp,owned,,1,8
 0x009BD788,48,.data,global,?GlobalLightingChunkVectors@@3PAULightingChunkVectorStorage@@A,Code/GameEngineDevice/Source/W3DDevice/GameClient/GlobalLightingDataChunk.cpp,owned,,1,18
 0x009BD7B8,36,.data,global,_s_glowEffectSaved,Code/GameEngine/Source/GameClient/Drawable_Rva00309fb3.cpp,owned,,1,1
 0x009BD7DC,36,.data,global,_s_glowEffectActive,Code/GameEngine/Source/GameClient/Drawable_Rva00309fb3.cpp,owned,,1,1
