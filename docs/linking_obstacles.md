@@ -236,6 +236,47 @@ lost name (`??1Rva004A9DF3Element@@QAE@XZ`, `Pathfinder::rva002F83F5`,
 change). Ignoring all shared-RVA rows is net negative (10 gains, 37 losses).
 [Simulation script and output](../reverse/attempt_support/fold-row-link-order-20261028/README.md);
 its `re_attempts.log` verdict cites this entry under its pre-rebase number LINK-131.
+Completed (halilkkaya-lk5, 2026-10-28, base `fd7b44f483`, ordinary `link_check` against
+index `41c28839bf`, which already holds the moved order). Five movers were repaired
+per unit, all rows exact:
+- `RTS3DSceneVisibilityCheck.cpp` (cause 547b34bc57) drops `/Oy-`. Retail's
+  `slist<int>(const allocator &)` at 0x00071233 is the 18-byte frameless body this
+  TU emits just ahead of Visibility_Check, and /Oy- had made it a 21-byte ebp-framed
+  copy. 4/4 rows; the unit and stlport_slist_int_ctor.cpp go 0 -> 995 B.
+- `BfmeFVFDescriptorVertexDeclaration.cpp` (760b73e4df): its import-inline
+  `__uninitialized_copy<ICoord2D *>` constructs with placement new. A call inside a
+  dllimport `__forceinline` body is never inlined, so `_Construct` stayed out of line
+  and `_M_insert_overflow` came out at 266 B. It is now byte-identical to MapUtil's
+  retail 259 B (0x00181770). 6/6 rows; 0 -> 1,820 B.
+- `OpaqueScalarDeletingDtorsB13.cpp` (a0c3cb8b6a) defines `~BaseA() {}` inline, as
+  OpaqueScalarDeletingDtorsB11.cpp does, so `??_GBaseA` is retail's 29 B. 29/29 rows;
+  0 -> 768 B.
+- `ChatWindowsLan.cpp` (991302b1d0) declares `Rva002EE9B7()` only, as
+  CastleBehaviorCtor.cpp does. Its call was already out of line, and the provider is
+  HordeContainCtor.cpp's retail copy. 13/13 rows; 0 -> 882 B.
+- `Rva00622290CollectKeys.cpp` (991302b1d0) declares `set<Rva001408C0Target *>::insert`
+  and `insert_unique` only. The trial above failed because retail inlines `set::insert`
+  at two sites (collectKeys and LoadAsset's key loop): those sites now use
+  `insertKeyInline`, `set::insert`'s verbatim STLport body. A bare `insert_unique` call
+  there swaps LoadAsset's eax/ecx. 14/14 rows; 12 of the 15 consumers go 0 -> 4,887 B.
+  assetmanager_impl.cpp (4,037 B) and AssetManagerImplRefresh.cpp (3,267 B) are left
+  with only `??0Q1ReceiverTreeStorage@@...`. BfmeResourceEnumerator.cpp's
+  /alternatename provides it, but that unit was merged after the index, so the census
+  must confirm both. CollectKeys itself stays blocked by its own signed `find<int>` copy
+  (retail 0x00759410 compares unsigned), the less<unsigned> map-family prerequisite in
+  `re_attempts.log` (0x0055401D, 0x00622290).
+- `window_video_manager.cpp` was already repaired upstream by fe7faa1c69; both of its
+  units preview LINKS (2,340 B).
+
+For every name whose first definer was one of these objects, the kept copy becomes
+proven retail's or the next definer's retail copy, so no consumer can lose. Of the
+seven census-linked consumers of those names, five LINK. CastleBehaviorCtor.cpp and
+EmotionTrackerUpdateCtor.cpp fail only on `?update@UpdateModuleInterface@@UAEXXZ`,
+whose provider the index forgot (a merge after the index), not on these names.
+Reusable pattern: before declaring a COMDAT only, try to make the unit's copy equal
+retail's (a flag the retail neighbour proves, or a helper the import-inline body could
+not inline). When declaring it only, give every site retail inlined the verbatim body
+under another name, so only the out-of-line calls bind to the declaration.
 Clearance: pending.
 Census confirmation: not claimed.
 
