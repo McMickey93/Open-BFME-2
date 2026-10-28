@@ -16677,10 +16677,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00235228,87,code,,,-,,Code/GameEngine/Source/Common/System/RegistryAsciiPath.cpp
 0x0023527F,15,code,,,-,,Code/GameEngine/Source/Common/GapLeavesSeat8.cpp
 0x0023528E,46,code,,,-,,Code/GameEngine/Source/Common/MultiPlayMoneyMultParse.cpp
-0x002352BC,86,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,Z,Z=Code/GameEngine/Source/Common/GlobalData.cpp S=Code/GameEngine/Source/Common/GlobalData.cpp N=Code/GameEngine/Source/Common/GlobalData.cpp,Code/GameEngine/Source/Common/GlobalDataSetTimeOfDay.cpp
+0x002352BC,86,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,Z,Z=Code/GameEngine/Source/Common/GlobalData.cpp S=Code/GameEngine/Source/Common/GlobalData.cpp N=Code/GameEngine/Source/Common/GlobalData.cpp,Code/GameEngine/Source/Common/GlobalData.cpp
 0x00235312,1060,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,S,S=Code/GameEngine/Source/Common/GlobalData.cpp N=Code/GameEngine/Source/Common/GlobalData.cpp,Code/GameEngine/Source/Common/rva00235312Rva00235312Farm.cpp
 0x00235736,52,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,Z,Z=Code/GameEngine/Source/Common/GlobalData.cpp S=Code/GameEngine/Source/Common/GlobalData.cpp N=Code/GameEngine/Source/Common/GlobalData.cpp W=Code/GameEngine/Source/Common/GlobalData.cpp,Code/GameEngine/Source/Common/GlobalData.cpp
-0x0023576A,312,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,S,S=Code/GameEngine/Source/Common/GlobalData.cpp N=Code/GameEngine/Source/Common/GlobalData.cpp,Code/GameEngine/Source/Common/GlobalDataOptionPreferences.cpp
+0x0023576A,312,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,S,S=Code/GameEngine/Source/Common/GlobalData.cpp N=Code/GameEngine/Source/Common/GlobalData.cpp,Code/GameEngine/Source/Common/GlobalData.cpp
 0x002358A2,64,code,Code/GameEngine/Source/Common/MultiPlayMults.cpp,proposed,N,N=Code/GameEngine/Source/Common/MultiPlayMults.cpp,Code/GameEngine/Source/Common/MultiPlayMoneyMultParse.cpp
 0x002358E2,26,code,Code/GameEngine/Source/Common/MultiPlayMults.cpp,proposed,N,N=Code/GameEngine/Source/Common/MultiPlayMults.cpp,Code/GameEngine/Source/Common/MultiPlayMoneyMultParse.cpp
 0x002358FC,27,code,Code/GameEngine/Source/Common/MultiPlayMults.cpp,proposed,N,N=Code/GameEngine/Source/Common/MultiPlayMults.cpp,Code/GameEngine/Source/Common/MultiPlayMultSetters.cpp
@@ -68786,8 +68786,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077011C,10,code,,,-,,Code/GameEngine/Source/Common/System/RegistryAsciiPath.cpp
 0x00770126,8,code,,,-,,Code/gen_small/uw_gen_013.cpp
 0x0077012E,10,code,,,-,,Code/GameEngine/Source/Common/System/RegistryVersion.cpp
-0x00770138,8,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,P,P=0x0023576A@FuncInfo0x009167C0,Code/GameEngine/Source/Common/GlobalDataOptionPreferences.cpp
-0x00770140,10,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,P,P=0x0023576A@FuncInfo0x009167C0,Code/GameEngine/Source/Common/GlobalDataOptionPreferences.cpp
+0x00770138,8,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,P,P=0x0023576A@FuncInfo0x009167C0,Code/GameEngine/Source/Common/GlobalData.cpp
+0x00770140,10,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,P,P=0x0023576A@FuncInfo0x009167C0,Code/GameEngine/Source/Common/GlobalData.cpp
 0x0077014A,8,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,P,P=0x0023611A@FuncInfo0x009167EC,Code/GameEngine/Source/Common/GlobalData.cpp
 0x00770152,8,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,P,P=0x0023611A@FuncInfo0x009167EC,Code/GameEngine/Source/Common/GlobalData.cpp
 0x0077015A,10,code,Code/GameEngine/Source/Common/GlobalData.cpp,approved,P,P=0x0023611A@FuncInfo0x009167EC,Code/GameEngine/Source/Common/GlobalData.cpp
