@@ -638,3 +638,13 @@ verification passes 42/42 rows and seven EXACT EH graphs; the indexed 18-unit
 cohort preview remains 0/18 with unchanged blockers. No link gain is claimed.
 [Evidence and remaining allocator-lifetime prerequisite](../reverse/attempt_support/object-vector-destructor-selection-20261028-codex3.md),
 LINK-132.
+
+### Horizontal slider follow-up outside the original snapshot
+
+2026-10-28, control `e0be65e163`, preview index `41c28839bf`:
+W3DHorizontalSlider.cpp replaces an unused W3DGadget renderer include with
+GameWindow.h and the same border-width macro. Seven rows and one EH graph
+remain exact; all 54 retained COMDAT fingerprints are unchanged. Ordinary
+preview changes from blocked to LINKS for 2,675 authored bytes. The global
+selected-copy obstacle and census confirmation remain pending (LINK-132).
+[Evidence](../reverse/attempt_support/horizontal-slider-link-20261028-codex.md).

@@ -179,6 +179,21 @@ its `re_attempts.log` verdict cites this entry under its pre-rebase number LINK-
 Clearance: pending.
 Census confirmation: not claimed.
 
+#### Horizontal slider consumer subset (2026-10-28)
+
+At `e0be65e163`, index `41c28839bf`, W3DHorizontalSlider.cpp's unused
+W3DGadget include pulled in the selected PendingSurfaceStruct destructor.
+The direct GameWindow include preserves all seven rows, one EXACT EH graph
+and all 54 retained external COMDAT fingerprints, while dropping two unused
+renderer/compiler helpers. Ordinary preview changes from blocked to LINKS
+for 2,675 authored bytes. This clears only the slider consumer in preview;
+LINK-132's global selection issue and census confirmation remain pending.
+[Evidence and object comparison](../reverse/attempt_support/horizontal-slider-link-20261028-codex.md).
+The batch audit is INCONCLUSIVE: the index predates the outgoing base and
+Common/0CreateAHeroManager21FE49.cpp lacks a current consumer receipt.
+Carry the removed-helper scope into the next normal census; full external
+consumer selection remains unverified.
+
 ### BannerCarrierUpdate string-header composition (2026-10-28)
 
 Status: destructor prerequisite repaired and merged into the approved TU;

@@ -1,0 +1,110 @@
+{
+  "source": "Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DHorizontalSlider.cpp",
+  "before_obj_sha256": "4816760010684ff524ba0b49ca089a90340a5d42ab1527d580835f8bc4f9d311",
+  "after_obj_sha256": "fd516e925b1535187821fa83e2c5b202fb6191abc3f63e9b77410c13945a9892",
+  "removed": [
+    "??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z",
+    "??_H@YGXPAXIHP6EPAX0@Z@Z"
+  ],
+  "added": [],
+  "changed": {},
+  "retained_comdats": 54,
+  "strong_before": [
+    "?W3DGadgetHorizontalSliderDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetHorizontalSliderImageDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetHorizontalSliderImageDrawA@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetHorizontalSliderImageDrawB@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z"
+  ],
+  "strong_after": [
+    "?W3DGadgetHorizontalSliderDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetHorizontalSliderImageDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetHorizontalSliderImageDrawA@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetHorizontalSliderImageDrawB@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z"
+  ],
+  "undefined_before": [
+    "??0?$StringBase@G@@AAE@ABV0@@Z",
+    "??1PendingSurfaceStruct@Render2DSentenceClass@@QAE@XZ",
+    "??3@YAXPAX@Z",
+    "??_M@YGXPAXIHP6EX0@Z@Z",
+    "??_V@YAXPAX@Z",
+    "?TheDisplay@@3PAVDisplay@@A",
+    "?TheWindowManager@@3PAVGameWindowManager@@A",
+    "?concat@?$StringBase@G@@QAEXABV1@@Z",
+    "?format@UnicodeString@@QAAXPBGZZ",
+    "?releaseBuffer@?$StringBase@G@@AAEXXZ",
+    "?setTooltipText@WinInstanceData@@QAEXVUnicodeString@@@Z",
+    "?winGetScreenPosition@GameWindow@@QAEHPAH0@Z",
+    "?winGetSize@GameWindow@@QAEHPAH0@Z",
+    "?winGetStatus@GameWindow@@QAEIXZ",
+    "?winGetUserData@GameWindow@@QAEPAXXZ",
+    "__EH_prolog",
+    "___CxxFrameHandler",
+    "__except_list",
+    "__fltused",
+    "__ftol2"
+  ],
+  "undefined_after": [
+    "??0?$StringBase@G@@AAE@ABV0@@Z",
+    "?TheDisplay@@3PAVDisplay@@A",
+    "?TheWindowManager@@3PAVGameWindowManager@@A",
+    "?concat@?$StringBase@G@@QAEXABV1@@Z",
+    "?format@UnicodeString@@QAAXPBGZZ",
+    "?releaseBuffer@?$StringBase@G@@AAEXXZ",
+    "?setTooltipText@WinInstanceData@@QAEXVUnicodeString@@@Z",
+    "?winGetScreenPosition@GameWindow@@QAEHPAH0@Z",
+    "?winGetSize@GameWindow@@QAEHPAH0@Z",
+    "?winGetStatus@GameWindow@@QAEIXZ",
+    "?winGetUserData@GameWindow@@QAEPAXXZ",
+    "__EH_prolog",
+    "___CxxFrameHandler",
+    "__except_list",
+    "__fltused",
+    "__ftol2"
+  ],
+  "weak_before": [],
+  "weak_after": [],
+  "index_meta": {
+    "date": "2026-10-28 11:08",
+    "commit": "41c28839bf",
+    "clean_tree": true,
+    "census_date": "2026-10-28 10:03",
+    "census_commit": "c8734bec0c"
+  },
+  "base_revision": "e0be65e163",
+  "removed_provider_index_examples": {
+    "??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z": [
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^g^u^i_^gadget_^w3^d^combo^box.obj",
+        "digest": "0437e6f87a6d",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^w3^d^game^client.obj",
+        "digest": "0437e6f87a6d",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^drawable_^draw_^w3^d^tank^truck^draw.obj",
+        "digest": "0437e6f87a6d",
+        "verdict": "retail"
+      }
+    ],
+    "??_H@YGXPAXIHP6EPAX0@Z@Z": [
+      {
+        "object": "^code_^game^engine^device_^source_^miles^audio^device_^rva00052^b3^d.obj",
+        "digest": "6246c280fc30",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^base^height^map^get^maximum^visible^box.obj",
+        "digest": "6246c280fc30",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^shadow_^w3^d^shadow^map^manager^texture^matrix.obj",
+        "digest": "6246c280fc30",
+        "verdict": "retail"
+      }
+    ]
+  }
+}
