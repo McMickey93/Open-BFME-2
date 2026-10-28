@@ -4704,6 +4704,16 @@ Remaining / next check: the same pattern may hold for other Zero Hour inline get
 Clearance: preview (link_check on current objects). Census confirmation: pending.
 
 ### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
+**Existing list-base unwind binding (2026-10-28, codex):** CRT-header cleanup
+in `Rva005262BFDtor.cpp` preserves its rows and EXACT parent EH graph, but
+the shadow code-identity check flags existing `uw_00796887`: the physical
+funclet names the list-base destructor at 0x004EC395 while retail jumps
+through the distinct five-byte destructor thunk at 0x00200667. The member
+view and destructor declaration predate that cleanup. Reconcile lifetime
+types and consumer bindings separately; byte/EH success does not clear
+this finding. Evidence and prerequisites:
+[`list-base-unwind-binding-20261028.md`](../reverse/attempt_support/list-base-unwind-binding-20261028.md).
+
 **Region-details first-base prerequisite (2026-10-27):**
 [Canonical counted-base adoption](../reverse/attempt_support/region-details-icon-counted-base-20261027.md)
 preserves the parent's three rows and EXACT EH graph and supplies the existing
