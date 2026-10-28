@@ -556,13 +556,19 @@ def reconcile(cls, views, seed, ledger=()):
         raise Refused(f"class-key differs ({', '.join(f'{v.path}: {v.key}' for v in views)}) "
                       "and no matched name spells it")
     key = lk or first.key
+    # A view with no bases, class declspec, vfptr or virtual method asserts nothing about
+    # the head; it takes the head the other views agree on (its fields must still clear it).
+    heads = [v for v in order if not head_free(v)] or order
     for attr, what in (("declspec", "declspec"), ("bases", "base clause")):
-        if len({getattr(v, attr) for v in views}) > 1:
-            raise Refused(f"{what} differs: " + "; ".join(f"{v.path}: `{getattr(v, attr) or '-'}`" for v in views))
-    if len({json.dumps(v.layout.get("bases", [])) for v in views}) > 1:
-        raise Refused("bases differ: " + "; ".join(f"{v.path}: {v.layout.get('bases')}" for v in views))
+        if len({getattr(v, attr) for v in heads}) > 1:
+            raise Refused(f"{what} differs: " + "; ".join(f"{v.path}: `{getattr(v, attr) or '-'}`" for v in heads))
+    if len({json.dumps(v.layout.get("bases", [])) for v in heads}) > 1:
+        raise Refused("bases differ: " + "; ".join(f"{v.path}: {v.layout.get('bases')}" for v in heads))
+    if len(heads) < len(order) and (heads[0].bases or heads[0].declspec):
+        plan.notes.append(f"{', '.join(v.path for v in order if v not in heads)} declare no base or virtual: "
+                          f"they take `{ws(heads[0].declspec + ' ' + cls + (' : ' + heads[0].bases if heads[0].bases else ''))}`")
     vfptr = any(v.layout.get("vfptr") for v in views)
-    start = own_start(first, vfptr)
+    start = own_start(heads[0], vfptr)
     # -- sizeof: a view stopping at its last real field claims no size; two views that
     # spell different sizes out (padding past their last real field) are a conflict
     size = max(v.layout["size"] for v in views)
@@ -598,7 +604,7 @@ def reconcile(cls, views, seed, ledger=()):
                 continue
             if off < start:
                 raise Refused(f"{v.path}: {m.name} at +0x{off:X} lies under the "
-                              f"{'vfptr' if vfptr and not first.layout.get('bases') else 'bases'} "
+                              f"{'vfptr' if vfptr and not heads[0].layout.get('bases') else 'bases'} "
                               f"(own data starts at +0x{start:X})")
             spans.setdefault((off, sz), []).append((v, m, cv))
     ordered = sorted(spans)
@@ -668,7 +674,8 @@ def reconcile(cls, views, seed, ledger=()):
             raise Refused(f"{n} is a field in one view and a {'/'.join(sorted(names[n]))} member in another")
     plan.entries, plan.intro, plan.size, plan.start, plan.vfptr = entries, intro, size, start, vfptr
     plan.empty = not any(m.kind == "data" for v in views for m in v.members)
-    plan.head = f"{key} {first.declspec + ' ' if first.declspec else ''}{cls}{' : ' + first.bases if first.bases else ''}"
+    h = heads[0]
+    plan.head = f"{key} {h.declspec + ' ' if h.declspec else ''}{cls}{' : ' + h.bases if h.bases else ''}"
     plan.vslots = {str(s): sig for s, (sig, _) in sorted(slots.items())}
     plan.block = render(plan)
     return plan
@@ -710,6 +717,14 @@ def claims_size(view, start):
     big = any(re.match(r"(double|int64|uint64)\b", f[2]) for f in real)
     align = 8 if big else 4 if (any(f[3] >= 4 for f in real) or start) else max([1] + [f[3] for f in real])
     return view.layout["size"] > (end + align - 1) // align * align
+
+
+def head_free(view):
+    """True when the view asserts nothing about the class head: no base, class declspec,
+    vfptr, virtual slot or virtual method."""
+    lay = view.layout
+    return not (view.bases or view.declspec or lay.get("bases") or lay.get("vfptr") or lay.get("vslots")
+                or lay.get("virtual") or any(m.kind == "fn" and m.virtual for m in view.members))
 
 
 def own_start(view, vfptr):
@@ -1262,6 +1277,8 @@ def print_report(rep, log=print):
     if "merge_before" in rep:
         log(f"donors accepted by tu_skeleton --merge --dry-run: {len(rep['merge_before'])} -> "
             f"{len(rep['merge_after'])}")
+        for f, why in sorted(rep.get("rejected_before", {}).items()):
+            log(f"  rejected before {f}: {why[:200]}")
         for f, why in sorted(rep.get("still_rejected", {}).items()):
             log(f"  still rejected {f}: {why[:200]}")
 
@@ -1278,7 +1295,7 @@ def main(argv=None):
     before = merge_dry_run(a.tu) if check else None
     rep = Tool(a.tu).run(dry_run=a.dry_run, only=set(a.only))
     if before is not None:
-        rep["merge_before"] = before[0]
+        rep["merge_before"], rep["rejected_before"] = before
         rep["merge_after"], rep["still_rejected"] = merge_dry_run(a.tu) if rep["applied"] else before
     print_report(rep)
     if a.json:

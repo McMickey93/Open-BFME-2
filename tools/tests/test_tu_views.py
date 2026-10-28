@@ -36,7 +36,9 @@ def fake_layouts(root):
                             "fields": [[0, "m_x", "bitfield", 0]], "virtual": [], "vslots": {}, "vfptr": False}
                 continue
             virt = [m for m in ms if m.kind == "fn" and m.virtual]
-            at = 4 if virt else 0
+            based = re.search(r":\s*public\s+(\w+)\s*\{", src)
+            parent = out.get(based.group(1)) if based else None
+            at = parent["size"] if parent and parent["fields"] else 4 if virt else 0
             fields = []
             for m in ms:
                 if m.kind != "data":
@@ -51,7 +53,8 @@ def fake_layouts(root):
                 fields.append([at, m.name, cv, size * count])
                 at += size * count
             size = (at + 3) // 4 * 4 if fields and any(f[3] >= 4 for f in fields) else max(at, 1)
-            out[cls] = {"fwd": False, "key": "class", "size": size, "bases": [], "fields": fields, "statics": [],
+            out[cls] = {"fwd": False, "key": "class", "size": size, "fields": fields, "statics": [],
+                        "bases": [[based.group(1), 0]] if parent else [],
                         "methods": sorted({m.name for m in ms if m.kind == "fn"}),
                         "virtual": sorted({m.name for m in virt}),
                         "vslots": {str(i): m.name + "()" for i, m in enumerate(virt)}, "vfptr": bool(virt)}
@@ -245,6 +248,19 @@ class Conflicts(unittest.TestCase):
         donor = "class Foo\n{\npublic:\n\tint b();\n};\nint Foo::b() { return 1; }\n"
         rep, _ = self.plan(SEED, donor)
         self.assertEqual(rep["classes"]["Foo"]["status"], "plan")
+
+    def test_a_view_declaring_no_base_or_virtual_takes_the_agreed_base(self):
+        base = "class Base\n{\npublic:\n\tint m_b;\n};\n"
+        seed = base + "class Foo : public Base\n{\npublic:\n\tvoid a();\n\tint m_x;\n};\n"
+        donor = base + "class Foo\n{\npublic:\n\tint b();\n};\nint Foo::b() { return 1; }\n"
+        rep, _ = self.plan(seed, donor)
+        entry = rep["classes"]["Foo"]
+        self.assertEqual(entry["status"], "plan")
+        self.assertTrue(entry["block"].startswith("class Foo : public Base\n"))
+        self.assertIn("int b();", entry["block"])
+        donor_fields = base + "class Foo\n{\npublic:\n\tint m_early;\n};\nvoid g(Foo *f) { f->m_early = 0; }\n"
+        rep, _ = self.plan(seed, donor_fields)
+        self.assertIn("lies under the bases", rep["classes"]["Foo"]["evidence"])
 
     def test_a_view_nothing_uses_takes_the_block_without_voting(self):
         unused = "class Foo\n{\npublic:\n\tshort m_lo, m_hi;\n};\n"
