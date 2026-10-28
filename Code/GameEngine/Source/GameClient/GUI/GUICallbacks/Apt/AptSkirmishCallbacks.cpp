@@ -747,7 +747,7 @@ class MessageStream {public:
  virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
  virtual GameMessage *append(int);
 };
-extern MessageStream *MessageStreamSubsystem;
+extern MessageStream *TheMessageStream;
 
 // Native 0x00521CFF..0x00521E65 and WB 0x01466D30
 // StartGameAfterCDCheck. Keep the existing target-address method identity.
@@ -768,13 +768,13 @@ void AptSkirmish::StartGameAfterCDCheck() {
    TheVideoPlayer->stopAll();
    TheGameLogic->clearGameData(false,false);
    ((Rva002D3627Host *)TheLivingWorld)->enable(true);
-   GameMessage *msg=MessageStreamSubsystem->append(31);
+   GameMessage *msg=TheMessageStream->append(31);
    if(msg) {msg->appendIntegerArgument(((StartGameInfoView *)(*(GameInfo * *)&TheSkirmishGameInfo))->scenario);msg->wb00EC9680(0);}
   } else {
    bool official=true;
    const MapMetaData *map=TheMapCache->findMap((*(GameInfo * *)&TheSkirmishGameInfo)->getMap());
    if(map) official=map->official;
-   GameMessage *msg=MessageStreamSubsystem->append(30);
+   GameMessage *msg=TheMessageStream->append(30);
    msg->appendIntegerArgument(official ? 2 : 0);
    msg->appendIntegerArgument(1);msg->appendIntegerArgument(0);
   }
