@@ -48750,7 +48750,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005A695F,97,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/Common/NAT.cpp W=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/Common/NAT.cpp
 0x005A69C0,140,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/Common/NAT.cpp,Code/GameEngine/Source/Common/Rva005A69C0Box.cpp
 0x005A6A4C,55,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NAT.cpp
-0x005A6A83,145,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/Common/NAT.cpp,Code/GameEngine/Source/Common/NAT_probeMangler.cpp
+0x005A6A83,145,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/Common/NAT.cpp,Code/GameEngine/Source/GameNetwork/NAT.cpp
 0x005A6B14,380,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,Z,Z=Code/GameEngine/Source/GameNetwork/NAT.cpp S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp
 0x005A6B28,360,code-unledgered,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,C,W=Code/GameEngine/Source/GameNetwork/NAT.cpp C=0x005A6B14..0x005A6C90,
 0x005A6C90,21,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NAT.cpp
