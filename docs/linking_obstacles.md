@@ -4483,6 +4483,16 @@ Clearance: only the shared record binding is cleared in ordinary-preview scope; 
 
 Status: Blocked on class and table reconciliation. Updated: 2026-10-26; inspected revision: `2a45addda1806342ac5c52757f63be902dcd428e`.
 
+**2026-10-28 current lifetime-unit check (`2b9f5c4d64`):**
+[The bounded prerequisite check](../reverse/attempt_support/icon-diamond-link-20261028-codex.md)
+confirms all nine unresolved virtual-slot names in `Rva005F422CDtor.cpp`
+against published index `73061d9452`; its ordinary preview retains zero of
+473 authored nonpadding bytes. The frozen-file check passes. No source trial
+or identity change was retained: the hero factory's class and hidden-result
+type still differ from the lifetime view, and the existing details-slot
+owners need the same full-table reconciliation. This confirms the existing
+prerequisite, with no new missing body or census clearance claimed.
+
 Evidence / affected units: `LivingWorld/InGameUI/ArmyHeroIconCtor.cpp` remains U10 and `Rva005E39F3Ctor.cpp` remains U7 against index `d1f046749a`, with current `Rva005F4179Dtor.cpp`, `Rva005F422CDtor.cpp`, `StrategicInGameUIArmyHeroIcon.cpp` and `StrategicInGameUIArmyUnitIcon.cpp`. Native tables 0x00879448, 0x00879468, 0x00877C50 and 0x00877C74 each have eight slots. The 40-byte hero destructor at 0x005F422C and 44-byte details destructor at 0x005E3A76 are already rowed under those address-derived class names. The real hero clip factory at 0x005F43B4 returns `HeroClipReference` from `AptMovieClipFrame *`; the second constructor unit declares a void return from `ArmyHeroIconMovieClip *`. Its slot-3 return type also differs from the rowed `TreeHintRef00217D4C` result.
 
 Completed: diagnosis only; all 12 assigned rows pass the byte gate. The full table-slot/owner evidence and provider previews are in `build/c136-gui-w2/native-tables.log`, `native-all.log`, `final-all-with-providers.log` and `build/link-report.md`. The anonymous `HeroDetailsPortion` emission requires the same details owner, rather than another local implementation.

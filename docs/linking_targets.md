@@ -224,7 +224,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp` | 517 | 9 (U=5, C=2, S=2) | Open |
 | `Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleModuleTemplateClones.cpp` | 501 | 6 (U=6) | Open |
 | `Code/Libraries/Source/STLport/Rva008314E0StringReplace.cpp` | 499 | 4 (C=2, S=2) | 2026-10-27 at `8a9e65cafe`: current-provider preview C1/S1 after erase binding repair; two identity keys and pins retired across the pair. replaceBase owner/frame prerequisite remains (LINK-006). [Evidence](../reverse/attempt_support/string-erase-binding-20261027.md); no census gain. |
-| `Code/GameEngine/Source/Common/Rva005F422CDtor.cpp` | 495 | 9 (U=9) | Open |
+| `Code/GameEngine/Source/Common/Rva005F422CDtor.cpp` | 495 | 9 (U=9) | 2026-10-28 at `2b9f5c4d64`: current object retains U9 against index `73061d9452` (473 authored nonpadding bytes). No source trial retained; reconcile hero/details class, result ABI and full virtual tables together. [Evidence](../reverse/attempt_support/icon-diamond-link-20261028-codex.md), LINK-086. |
 | `Code/GameEngine/Source/Common/V3PolyDeferredCopyCtors.cpp` | 491 | 13 (U=12, C=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0039C415.cpp` | 457 | 11 (C=5, S=6) | 2026-10-26 at `58598f540f`: Current-provider preview retains the COMDAT/selected blockers; reconcile native element/provider names and preserve the existing failed-trial boundaries (LINK-002). Evidence: `build/c136-w4sweep/`, `build/link-report.md`; census pending. |
 | `Code/Libraries/Source/WWVegas/WW3D2/mesh.cpp` | 454 | 6 (U=3, C=2, S=1) | Open |
