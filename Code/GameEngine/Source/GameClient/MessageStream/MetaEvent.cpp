@@ -6,6 +6,7 @@
 #include "../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
 class MetaMapRec;
+class INI;
 
 typedef int Int;
 
@@ -26,6 +27,7 @@ class GameMessage
 public:
 	enum Type
 	{
+		MSG_INVALID = 0,
 		MSG_RAW_MOUSE_BEGIN = 2,
 		MSG_RAW_MOUSE_LEFT_BUTTON_DOWN = 4,
 		MSG_RAW_MOUSE_LEFT_DOUBLE_CLICK = 5,
@@ -92,10 +94,13 @@ enum CommandUsableInType { COMMANDUSABLE_SHELL = 1, COMMANDUSABLE_GAME = 2 };
 class MetaMap : public SubsystemInterface
 {
 public:
+	MetaMap();
 	virtual ~MetaMap();
 	void *rva001DB66A(unsigned int flags);
 	const MetaMapRec *getFirstMetaMapRec() const { return m_metaMaps; }
+	static void parseMetaMap(INI *ini);
 protected:
+	GameMessage::Type findGameMessageMetaType(const char *name);
 	MetaMapRec *getMetaMapRec(GameMessage::Type t);
 private:
 	MetaMapRec *m_metaMaps;	// +0x0C
