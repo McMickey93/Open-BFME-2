@@ -27,7 +27,7 @@ _inflate,,0x00690880,1020,Code/Libraries/Source/Compression/ZLib/inflate.c,match
 _inflateSetDictionary,,0x00690C80,129,Code/Libraries/Source/Compression/ZLib/inflate.c,matched,vendored=zlib-1.1.4
 _inflateSync,,0x00690D10,198,Code/Libraries/Source/Compression/ZLib/inflate.c,matched,vendored=zlib-1.1.4
 _inflateSyncPoint,,0x00690DE0,37,Code/Libraries/Source/Compression/ZLib/inflate.c,matched,vendored=zlib-1.1.4
-_adler32,,0x00692AC0,297,Code/Libraries/Source/Compression/ZLib/adler32.c,matched,stock zlib 1.1.4 adler32.c as vendored in the tree
+_adler32,,0x00692AC0,297,Code/Libraries/Source/Compression/ZLib/adler32.c,matched,vendored=zlib-1.1.4; stock zlib 1.1.4 adler32.c as vendored in the tree
 _init_block,,0x00692BF0,100,Code/Libraries/Source/Compression/ZLib/trees.c,matched,vendored=zlib-1.1.4
 _pqdownheap,,0x00692C60,196,Code/Libraries/Source/Compression/ZLib/trees.c,matched,vendored=zlib-1.1.4
 _gen_bitlen,,0x00692D30,563,Code/Libraries/Source/Compression/ZLib/trees.c,matched,vendored=zlib-1.1.4
