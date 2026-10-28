@@ -49328,9 +49328,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005B930C,108,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineHomeCallbacks.cpp
 0x005B9378,178,code,,,-,,Code/GameEngine/Source/Common/AptHeroPowerText_Rva0043C8E4.cpp
 0x005B942A,83,code,,,-,,Code/GameEngine/Source/Common/AptHeroPowerText_Rva0043C8E4.cpp
-0x005B947D,104,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,N,N=Code/GameEngine/Source/Common/AptOnlineHome.cpp provisional,Code/GameEngine/Source/Common/Rva005B947DTicker.cpp
+0x005B947D,104,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,N,N=Code/GameEngine/Source/Common/AptOnlineHome.cpp provisional,Code/GameEngine/Source/Common/AptOnlineHome.cpp
 0x005B94E5,28,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,C,C=0x005B947D..0x005B9501 provisional,Code/GameEngine/Source/Common/Rva005B922FDtor.cpp
-0x005B9501,183,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,N,N=Code/GameEngine/Source/Common/AptOnlineHome.cpp provisional,Code/GameEngine/Source/Common/Rva005B922FTicker.cpp
+0x005B9501,183,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,N,N=Code/GameEngine/Source/Common/AptOnlineHome.cpp provisional,Code/GameEngine/Source/Common/AptOnlineHome.cpp
 0x005B95B8,351,code,,,-,,Code/GameEngine/Source/Common/rva005B95B8Rva005B95B8Farm.cpp
 0x005B9717,100,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineHomeStatistics.cpp
 0x005B977B,366,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineHomeTimeZone.cpp
@@ -88130,10 +88130,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0079F972,8,code,,,-,,Code/GameEngine/Source/Common/AptHeroPowerText_Rva0043C8E4.cpp
 0x0079F97A,10,code,,,-,,Code/GameEngine/Source/Common/AptHeroPowerText_Rva0043C8E4.cpp
 0x0079F984,8,code,,,-,,Code/gen_small/uw_gen_005.cpp
-0x0079F98C,10,code,,,-,,Code/GameEngine/Source/Common/Rva005B947DTicker.cpp
-0x0079F996,8,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,P,P=0x005B9501@FuncInfo0x0095670C provisional,Code/GameEngine/Source/Common/Rva005B922FTicker.cpp
-0x0079F99E,8,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,P,P=0x005B9501@FuncInfo0x0095670C provisional,Code/GameEngine/Source/Common/Rva005B922FTicker.cpp
-0x0079F9A6,10,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,P,P=0x005B9501@FuncInfo0x0095670C provisional,Code/GameEngine/Source/Common/Rva005B922FTicker.cpp
+0x0079F98C,10,code,,,-,,Code/GameEngine/Source/Common/AptOnlineHome.cpp
+0x0079F996,8,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,P,P=0x005B9501@FuncInfo0x0095670C provisional,Code/GameEngine/Source/Common/AptOnlineHome.cpp
+0x0079F99E,8,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,P,P=0x005B9501@FuncInfo0x0095670C provisional,Code/GameEngine/Source/Common/AptOnlineHome.cpp
+0x0079F9A6,10,code,Code/GameEngine/Source/Common/AptOnlineHome.cpp,approved,P,P=0x005B9501@FuncInfo0x0095670C provisional,Code/GameEngine/Source/Common/AptOnlineHome.cpp
 0x0079F9B0,8,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineHomeTimeZone.cpp
 0x0079F9B8,8,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineHomeTimeZone.cpp
 0x0079F9C0,8,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptOnlineHomeTimeZone.cpp
