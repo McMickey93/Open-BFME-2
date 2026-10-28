@@ -69,7 +69,7 @@ Follow-up: **Recheck the existing repair and its prerequisites** before retrying
 | `GameInfoSetMapSize.cpp` | 343 | Wrong selected | See LINK-006 map-metadata subset |
 | `stlport_narrow_string_substr.cpp` | 277 | Unresolved | Recheck repair |
 | `Rva001ECF66Finish.cpp` | 96 | Unresolved | Recheck repair |
-| `RtcStack.cpp` | 90 | Duplicates | Recheck repair |
+| `RtcStack.cpp` | 90 | Duplicates | 2026-10-28: current index `41c28839bf` still reports the native stack.obj duplicate; approve sibling ownership/placement before retrying (LINK-020). [Evidence](../reverse/attempt_support/rtc-stack-owner-20261028-codex.md). |
 | `w3d_dep.cpp` | 47 | Unresolved | Recheck repair |
 | `Rva003BBAF0Ctor_Rva003FD199.cpp` | 44 | Unresolved | LINK-011: preview cleared; census pending |
 | `SpecialPowerModule.cpp` | 36 | Unresolved | Recheck repair |

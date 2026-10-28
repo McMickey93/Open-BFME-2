@@ -3580,6 +3580,12 @@ Remaining / next check (each needs a decision, a row or a shared change; none is
   `DebugStatisticsRecordTexture.cpp`; the thunk belongs in that TU (consolidation).
 - `@_RTC_CheckStackVars@8` (D in `RtcStack.cpp`): also defined by the vendored msvc71crt lib. This needs
   an owner decision.
+  Rechecked 2026-10-28 at `51fa553a3c`, ordinary index `41c28839bf`: the
+  duplicate remains the sole blocker (86 authored preview bytes). The native
+  member supplies the rowed `__RTC_CheckEsp` sibling; moving the clean checker
+  back to the archive is forbidden, and neither address has approved TU
+  placement for a source move. No repeat of the failed inline trial or source
+  change. [Ownership prerequisite and checks](../reverse/attempt_support/rtc-stack-owner-20261028-codex.md).
 - `ChunkLoadClass(FileClass*)` (U in `w3d_dep.cpp`): retail's constructor takes `BFMEChunkInput*`
   (row 0x00614EF0). The unit also has six unresolved `__imp_` STL names.
 - `BridgeScaffoldBehavior.cpp`: the unresolved `UpdateModule::loadPostProcess` is gone on current
