@@ -1,4 +1,6 @@
 // cl: /O1 /arch:SSE /G7 /DNDEBUG /Ireference/shims/bfme2_ascii /MD /EHsc
+// dxsdk
+// platformsdk
 //
 // ?initW3DAssets@W3DMouse@@AAEXXZ, retail 0x00099B6F, 605 bytes.
 // Zero Hour's W3DMouse::initW3DAssets on BFME 2's layout and loaders. Under
@@ -40,15 +42,13 @@
 // after the thread block, not before it. The virtual setCursor calls go
 // through slot 19 (+0x4C) of the W3DMouse vtable 0x00BC86D8.
 
+#include <d3d9.h>
 #include "ascii_string.h"
 
 typedef int Int;
 typedef float Real;
 typedef bool Bool;
 
-#define NULL 0
-#define FALSE 0
-#define TRUE 1
 
 #include "../../../../../reference/shims/wwmath/Vector2.h"
 
@@ -243,16 +243,9 @@ public:
 
 struct IDirect3DSurface8;
 
-struct IDirect3DDevice8
-{
-	virtual void __stdcall slot00(); virtual void __stdcall slot01(); virtual void __stdcall slot02();
-	virtual void __stdcall slot03(); virtual void __stdcall slot04(); virtual void __stdcall slot05();
-	virtual void __stdcall slot06(); virtual void __stdcall slot07(); virtual void __stdcall slot08();
-	virtual void __stdcall slot09();
-	virtual long __stdcall SetCursorProperties( unsigned int x, unsigned int y, IDirect3DSurface8 *bitmap );	// slot 10 (+0x28)
-	virtual void __stdcall SetCursorPosition( int x, int y, unsigned long flags );	// slot 11 (+0x2C)
-	virtual int __stdcall ShowCursor( int bShow );		// slot 12 (+0x30)
-};
+// The device keeps its D3D8 type name but is a Direct3D 9 device:
+// SetCursorProperties is slot 10, SetCursorPosition 11, ShowCursor 12.
+struct IDirect3DDevice8;
 
 class DX8Wrapper
 {
@@ -324,16 +317,6 @@ enum MouseCursor
 	MOUSECURSOR_NONE = 0
 };
 
-extern "C" __declspec(dllimport) void *__stdcall SetCursor( void *cursor );
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime( void );
-
-struct POINT
-{
-	long x;
-	long y;
-};
-extern "C" __declspec(dllimport) int __stdcall GetCursorPos( POINT *point );
-extern "C" __declspec(dllimport) int __stdcall ScreenToClient( void *hwnd, POINT *point );
 extern void *ApplicationHWnd;
 
 #include "../../../../Libraries/Include/Lib/Coord2D.h"
@@ -614,7 +597,7 @@ void W3DMouse::setCursor( MouseCursor cursor )
 	{
 		SetCursor(NULL);	//Kill Windows Cursor
 
-		IDirect3DDevice8 *m_pDev=DX8Wrapper::_Get_D3D_Device8();
+		IDirect3DDevice9 *m_pDev=reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 		if (m_pDev != NULL)
 		{
 			m_pDev->ShowCursor(FALSE);	//disable DX8 cursor
@@ -630,7 +613,8 @@ void W3DMouse::setCursor( MouseCursor cursor )
 				m_currentHotSpot = m_cursorInfo[cursor].hotSpotPosition;
 				m_currentFMS = m_cursorInfo[cursor].fps*(1.0f/1000.0f);
 				m_currentAnimFrame = 0;	//reset animation when cursor changes
-				m_pDev->SetCursorProperties(m_currentHotSpot.x,m_currentHotSpot.y,m_currentD3DSurface[(Int)m_currentAnimFrame]);
+				m_pDev->SetCursorProperties(m_currentHotSpot.x,m_currentHotSpot.y,
+					reinterpret_cast<IDirect3DSurface9 *>(static_cast<IDirect3DSurface8 *>(m_currentD3DSurface[(Int)m_currentAnimFrame])));
 				m_pDev->ShowCursor(TRUE);	//Enable DX8 cursor
 				m_currentD3DFrame=(Int)m_currentAnimFrame;
 				m_currentD3DCursor = cursor;
@@ -774,7 +758,7 @@ void W3DMouse::draw(void)
 	{
 		//called from upate thread or rendering loop.  Tells D3D where
 		//to draw the mouse cursor.
-		IDirect3DDevice8 *m_pDev=DX8Wrapper::_Get_D3D_Device8();
+		IDirect3DDevice9 *m_pDev=reinterpret_cast<IDirect3DDevice9 *>(DX8Wrapper::_Get_D3D_Device8());
 		if (m_pDev)
 		{	m_pDev->ShowCursor(TRUE);	//Enable DX8 cursor
 
@@ -783,8 +767,8 @@ void W3DMouse::draw(void)
 				POINT ptCursor;
 
 				GetCursorPos( &ptCursor );
-				ScreenToClient( ApplicationHWnd, &ptCursor );
-				m_pDev->SetCursorPosition( ptCursor.x, ptCursor.y, 1);
+				ScreenToClient( (HWND)ApplicationHWnd, &ptCursor );
+				m_pDev->SetCursorPosition( ptCursor.x, ptCursor.y, D3DCURSOR_IMMEDIATE_UPDATE);
 			}
 			//Check if animated cursor and new frame
 			if (m_currentFrames > 1)
@@ -797,7 +781,8 @@ void W3DMouse::draw(void)
 				if ((Int)m_currentAnimFrame != m_currentD3DFrame)
 				{
 					m_currentD3DFrame=(Int)m_currentAnimFrame;
-					m_pDev->SetCursorProperties(m_currentHotSpot.x,m_currentHotSpot.y,m_currentD3DSurface[m_currentD3DFrame]);
+					m_pDev->SetCursorProperties(m_currentHotSpot.x,m_currentHotSpot.y,
+						reinterpret_cast<IDirect3DSurface9 *>(static_cast<IDirect3DSurface8 *>(m_currentD3DSurface[m_currentD3DFrame])));
 				}
 			}
 		}

@@ -1,4 +1,5 @@
 // ?render@W3DSmudgeManager@@QAEXAAVRenderInfoClass@@@Z
+// dxsdk
 // platformsdk
 // cl: /DNDEBUG /MD /EHsc /O1 /arch:SSE /G7
 //
@@ -36,7 +37,7 @@
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-#include <windows.h>
+#include <d3d9.h>
 
 #define SMUDGE_DRAW_SIZE 500
 
@@ -162,57 +163,13 @@ public:
 	CameraClass &Camera;
 };
 
-struct D3DSURFACE_DESC
-{
-	UINT Format;
-	UINT Type;
-	DWORD Usage;
-	UINT Pool;
-	UINT MultiSampleType;
-	DWORD MultiSampleQuality;
-	UINT Width;
-	UINT Height;
-};
-
-#define BFME_SLOT(n) virtual HRESULT __stdcall unused##n(void) = 0;
-
-struct IDirect3DBaseTexture8
-{
-	virtual HRESULT __stdcall QueryInterface(void) = 0;
-	virtual ULONG __stdcall AddRef(void) = 0;
-	virtual ULONG __stdcall Release(void) = 0;
-};
-
-struct IDirect3DTexture8 : public IDirect3DBaseTexture8
-{
-	BFME_SLOT(03) BFME_SLOT(04) BFME_SLOT(05) BFME_SLOT(06) BFME_SLOT(07)
-	BFME_SLOT(08) BFME_SLOT(09) BFME_SLOT(10) BFME_SLOT(11) BFME_SLOT(12)
-	BFME_SLOT(13) BFME_SLOT(14) BFME_SLOT(15) BFME_SLOT(16)
-	virtual HRESULT __stdcall GetLevelDesc(UINT level, D3DSURFACE_DESC *desc) = 0;
-};
-
-struct IDirect3DDevice8
-{
-	BFME_SLOT(00) BFME_SLOT(01) BFME_SLOT(02) BFME_SLOT(03) BFME_SLOT(04)
-	BFME_SLOT(05) BFME_SLOT(06) BFME_SLOT(07) BFME_SLOT(08) BFME_SLOT(09)
-	BFME_SLOT(10) BFME_SLOT(11) BFME_SLOT(12) BFME_SLOT(13) BFME_SLOT(14)
-	BFME_SLOT(15) BFME_SLOT(16) BFME_SLOT(17) BFME_SLOT(18) BFME_SLOT(19)
-	BFME_SLOT(20) BFME_SLOT(21) BFME_SLOT(22) BFME_SLOT(23) BFME_SLOT(24)
-	BFME_SLOT(25) BFME_SLOT(26) BFME_SLOT(27) BFME_SLOT(28) BFME_SLOT(29)
-	BFME_SLOT(30) BFME_SLOT(31) BFME_SLOT(32) BFME_SLOT(33) BFME_SLOT(34)
-	BFME_SLOT(35) BFME_SLOT(36) BFME_SLOT(37) BFME_SLOT(38) BFME_SLOT(39)
-	BFME_SLOT(40) BFME_SLOT(41) BFME_SLOT(42) BFME_SLOT(43)
-	virtual HRESULT __stdcall SetTransform(int state, const Matrix4 *matrix) = 0;
-	BFME_SLOT(45) BFME_SLOT(46) BFME_SLOT(47) BFME_SLOT(48) BFME_SLOT(49)
-	BFME_SLOT(50) BFME_SLOT(51) BFME_SLOT(52) BFME_SLOT(53) BFME_SLOT(54)
-	BFME_SLOT(55) BFME_SLOT(56) BFME_SLOT(57) BFME_SLOT(58) BFME_SLOT(59)
-	BFME_SLOT(60) BFME_SLOT(61) BFME_SLOT(62) BFME_SLOT(63) BFME_SLOT(64)
-	virtual HRESULT __stdcall SetTexture(DWORD stage, IDirect3DBaseTexture8 *texture) = 0;
-	BFME_SLOT(66)
-	virtual HRESULT __stdcall SetTextureStageState(DWORD stage, DWORD type, DWORD value) = 0;
-	BFME_SLOT(68)
-	virtual HRESULT __stdcall SetSamplerState(DWORD sampler, DWORD type, DWORD value) = 0;
-};
+// The textures and the device keep their D3D8 type names (the decorations of
+// DX8Wrapper's statics and W3DShaderManager::getRenderTexture) but are Direct3D 9
+// objects: texture AddRef / Release 1 / 2 and GetLevelDesc 17; device SetTexture
+// 65, SetTextureStageState 67 and SetSamplerState 69.
+struct IDirect3DBaseTexture8 {};
+struct IDirect3DTexture8 : public IDirect3DBaseTexture8 {};
+struct IDirect3DDevice8;
 
 class W3DShaderManager
 {
@@ -446,19 +403,19 @@ public:
 		if (Textures[stage] == texture)
 			return;
 		if (Textures[stage])
-			Textures[stage]->Release();
+			reinterpret_cast<IDirect3DBaseTexture9 *>(Textures[stage])->Release();
 		Textures[stage] = texture;
 		if (texture)
-			texture->AddRef();
-		IDirect3DDevice8 *device = _Get_D3D_Device8();
-		device->SetTexture(stage, texture);
+			reinterpret_cast<IDirect3DBaseTexture9 *>(texture)->AddRef();
+		IDirect3DDevice9 *device = reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8());
+		device->SetTexture(stage, reinterpret_cast<IDirect3DBaseTexture9 *>(texture));
 		++number_of_DX8_calls;
 		++texture_changes;
 	}
 
 	static __forceinline void Set_DX8_Sampler_State(unsigned stage, unsigned state, unsigned value)
 	{
-		_Get_D3D_Device8()->SetSamplerState(stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetSamplerState(stage, (D3DSAMPLERSTATETYPE)state, value);
 		++number_of_DX8_calls;
 		++texture_stage_state_changes;
 	}
@@ -473,7 +430,7 @@ public:
 			Get_DX8_Texture_Stage_State_Value_Name(value_name, state, value);
 		}
 		TextureStageStates[stage][stateIndex] = value;
-		_Get_D3D_Device8()->SetTextureStageState(stage, state, value);
+		reinterpret_cast<IDirect3DDevice9 *>(_Get_D3D_Device8())->SetTextureStageState(stage, (D3DTEXTURESTAGESTATETYPE)stateIndex, value);
 		++number_of_DX8_calls;
 		++texture_stage_state_changes;
 	}
@@ -619,7 +576,7 @@ void W3DSmudgeManager::render(RenderInfoClass &rinfo)
 	if (!backTexture || !W3DShaderManager::isRenderingToTexture())
 		return;
 
-	backTexture->GetLevelDesc(0, &D3DDesc);
+	reinterpret_cast<IDirect3DTexture9 *>(backTexture)->GetLevelDesc(0, &D3DDesc);
 
 	UnsignedInt surfaceWidth = D3DDesc.Width;
 	UnsignedInt surfaceHeight = D3DDesc.Height;
