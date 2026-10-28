@@ -12,27 +12,8 @@ struct TransportAddress
     unsigned int ip;
     unsigned short port;
 };
-struct NetPacketAddress
-{
-    unsigned int ip;
-    unsigned short port;
-    unsigned short padding;
-};
-class GameSlot
-{
-public:
-    bool isHuman() const;
-    unsigned char m_prefix[0x30];
-    UnicodeString m_name;
-    unsigned char m_pad34[4];
-    NetPacketAddress m_address;
-};
-class GameInfo
-{
-public:
-    unsigned char m_prefix[0x18];
-    GameSlot *m_slots[8];
-};
+#include "NATView.h"
+
 class GlobalData
 {
 public:
@@ -40,41 +21,6 @@ public:
     unsigned int m_forcedPort;
 };
 extern GlobalData *TheWritableGlobalData;
-class PortNegotiationSchema
-{
-public:
-    void attachSlotList(void *slotList, unsigned short localSlot);
-};
-class NAT
-{
-public:
-    void processPlayerJoin(int slot);
-    void attachSlotList(GameInfo *gameInfo, int localSlot, unsigned int localIP,
-        unsigned int timeout, bool isHost);
-protected:
-    void generatePortNumbers(GameSlot **slotList, int localSlot);
-private:
-    unsigned int m_00;
-    Transport *m_transport;
-    GameSlot **m_slotList;
-    int m_hostSlot;
-    int m_10;
-    int m_localSlot;
-    int m_18;
-    unsigned int m_localIP;
-    unsigned char m_pad20[0x28 - 0x20];
-    PortNegotiationSchema m_schema;
-    unsigned char m_pad29[0x8E4 - 0x29];
-    bool m_myConnections[8];
-    unsigned int m_8ec;
-    unsigned char m_pad8f0[0x90C - 0x8F0];
-    NetPacketAddress *m_addresses[8];
-    unsigned char m_pad92c[0x958 - 0x92C];
-    unsigned short m_startingPortNumber;
-    unsigned char m_pad95a[0x968 - 0x95A];
-    unsigned int m_timeoutTime;
-};
-
 void NAT::attachSlotList(GameInfo *gameInfo, int localSlot, unsigned int localIP,
     unsigned int timeout, bool isHost)
 {
@@ -89,7 +35,7 @@ void NAT::attachSlotList(GameInfo *gameInfo, int localSlot, unsigned int localIP
         m_hostSlot = localSlot;
     else
         m_hostSlot = 8;
-    m_transport = new Transport;
+    m_04 = new Transport;
     if (TheWritableGlobalData->m_forcedPort > 0)
         m_startingPortNumber = (unsigned short)TheWritableGlobalData->m_forcedPort;
     else
@@ -99,20 +45,20 @@ void NAT::attachSlotList(GameInfo *gameInfo, int localSlot, unsigned int localIP
         unsigned short port = (unsigned short)TheWritableGlobalData->m_forcedPort;
         unsigned int ip = m_localIP;
         TransportAddress address = {ip, port};
-        m_transport->init(&address);
+        m_04->init(&address);
     } else {
-        m_transport->rva004D53B5((void *)m_localIP);
+        m_04->rva004D53B5((void *)m_localIP);
     }
     m_schema.attachSlotList(m_slotList, (unsigned short)localSlot);
     if (m_slotList) {
         for (int i = 0; i < 8; ++i) {
             if (m_slotList[i] && m_slotList[i]->isHuman() && m_slotList[i]->m_name.getLength())
                 processPlayerJoin(i);
-            m_myConnections[i] = false;
-            m_8ec = 0;
+            m_hostKnown[i] = false;
+            m_slotCookie[0] = 0;
         }
     }
-    m_myConnections[localSlot] = true;
+    m_hostKnown[localSlot] = true;
     m_timeoutTime = timeGetTime() + timeout;
 }
 

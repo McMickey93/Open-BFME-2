@@ -11,19 +11,6 @@
 
 typedef unsigned int UnsignedInt;
 
-class GameInfo
-{
-public:
-	virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-	virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
-	virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-	virtual void v12();
-	virtual int getLocalSlotNum() const;	// slot 13 (+0x34)
-	const unsigned int &getLocalIP() const { return m_localIP; }
-	unsigned char m_pad04[0x38 - 4];
-	unsigned int m_localIP;			// +0x38
-};
-
 class GameSpyStagingRoom : public GameInfo
 {
 };
@@ -559,7 +546,7 @@ void NAT::sendPings()
 			}
 		}
 
-		m_04->queueSend((NetPacketAddress *)m_addresses[i], (const unsigned char *)pingStr.str(), pingStr.getLength() + 1);
+		m_04->queueSend(m_addresses[i], (const unsigned char *)pingStr.str(), pingStr.getLength() + 1);
 	}
 }
 
@@ -728,7 +715,7 @@ void NAT::processPlayerJoin(int idx)
 	(m_schema.*reinterpret_cast<PortNegotiationIntShape>(&PortNegotiationSchema::playerJoin))(idx);
 	idx = (unsigned short)idx;
 	GameSlot *o = m_slotList[idx];
-	Rva005A6A4CAddress *p = m_addresses[idx];
+	NetPacketAddress *p = m_addresses[idx];
 	p->ip = o->m_address.ip;
 	if (!(((Rva005A6709 *)this)->*reinterpret_cast<Rva005A6709BoolShape>(&Rva005A6709::rva005A6709))())
 		return;

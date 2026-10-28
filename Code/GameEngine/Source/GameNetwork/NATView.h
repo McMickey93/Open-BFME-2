@@ -18,6 +18,7 @@ public:
 	int getActionID(unsigned short slot1, unsigned short slot2);		// 0x005DBCA6
 	void playerJoin(unsigned short idx);					// 0x005DC291
 	void playerLeave(unsigned short idx);
+	void attachSlotList(void *slotList, unsigned short localSlot);
 	bool isRetryConnectingOverLimit(unsigned short i, unsigned short j);	// 0x005DBC2E
 	void reconnectPlayers(unsigned short slot1, unsigned short slot2, bool resetRetries);	// 0x005DC187
 	unsigned char m_bytes[0x8E4 - 0x28];
@@ -25,11 +26,11 @@ public:
 
 // A slot's address (+0x38 in each slot of the list at NAT +0x08; also the
 // pointee of NAT's +0x90C table).
-struct Rva005A6A4CAddress
+struct NetPacketAddress
 {
 	unsigned int ip;
 	unsigned short port;			// +4 (gotTargetMangledPort stores a short)
-	unsigned short m_6;
+	unsigned short padding;
 };
 
 // A slot of the list at NAT +0x08: the player name at +0x30 (translated and
@@ -41,11 +42,24 @@ public:
 	unsigned char m_pad00[0x30];
 	UnicodeString m_name;			// +0x30
 	unsigned char m_pad34[0x38 - 0x34];
-	Rva005A6A4CAddress m_address;		// +0x38
+	NetPacketAddress m_address;		// +0x38
 	unsigned char m_flags40;		// +0x40 (bit 3 tested by targetNotifyMeIWasProbed)
 };
 
-class GameInfo;
+class GameInfo
+{
+public:
+	virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+	virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+	virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+	virtual void v12();
+	virtual int getLocalSlotNum() const;	// slot 13 (+0x34)
+	const unsigned int &getLocalIP() const { return m_localIP; }
+	unsigned char m_pad04[0x18 - 4];
+	GameSlot *m_slots[8];			// +0x18 (attachSlotList)
+	unsigned int m_localIP;			// +0x38
+};
+
 class Transport;
 
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
@@ -82,6 +96,8 @@ public:
 	void rva005A6D47();
 	void processPlayerJoin(int idx);
 	void processPlayerLeave(int idx);
+protected:
+	void generatePortNumbers(GameSlot **slotList, int localSlot);
 private:
 	int m_0;
 	Transport *m_04;
@@ -90,7 +106,7 @@ private:
 	int m_mode;				// +0x10
 	int m_localSlot;			// +0x14
 	int m_targetSlot;			// +0x18
-	int m_1C;
+	unsigned int m_localIP;			// +0x1C
 	int m_cookie;				// +0x20
 	unsigned char m_24;			// +0x24
 	unsigned char m_25;			// +0x25
@@ -98,7 +114,7 @@ private:
 	PortNegotiationSchema m_schema;		// +0x28
 	unsigned char m_hostKnown[8];		// +0x8E4
 	int m_slotCookie[8];			// +0x8EC
-	Rva005A6A4CAddress *m_addresses[8];	// +0x90C
+	NetPacketAddress *m_addresses[8];	// +0x90C
 	char m_pad92C[0x934 - 0x92C];
 	unsigned short m_port934;		// +0x934 (probeMangler)
 	unsigned short m_port936;		// +0x936
@@ -110,7 +126,11 @@ private:
 	char m_pad948[0x94C - 0x948];
 	int m_state94c;				// +0x94C
 	int m_950;				// +0x950
-	char m_pad954[0x970 - 0x954];
+	char m_pad954[0x958 - 0x954];
+	unsigned short m_startingPortNumber;	// +0x958
+	char m_pad95A[0x968 - 0x95A];
+	unsigned int m_timeoutTime;		// +0x968
+	char m_pad96C[0x970 - 0x96C];
 	unsigned char m_970;			// +0x970
 };
 
