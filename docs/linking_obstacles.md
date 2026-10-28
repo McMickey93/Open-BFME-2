@@ -70,6 +70,17 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **CritterEmitter TU composition (2026-10-28, base `248318c9e2`):**
+  [The scoped composition evidence](../reverse/attempt_support/critter-emitter-consolidation-20261028-codex.md)
+  preserves seven matched rows, two EXACT EH graphs and all 17 external
+  COMDAT byte/relocation digests while removing one source file. The two
+  absorbed donors preview LINKS for 69 and 85 authored bytes against index
+  `73061d9452`; the new destination path has no historical census entry.
+  Full current-input batch verification and a new census result remain
+  unclaimed. Carry this moved scope to the next normal census; no new
+  linked-byte or runtime gain is claimed. The other private-view donors
+  retain the separately documented composition prerequisites.
+
 - **Production queue SDK constants (2026-10-27):**
   [the bounded header cleanup](../reverse/attempt_support/20261027-production-queue-sdk-constants.md)
   removes three local Microsoft macro copies while preserving all 47 queue

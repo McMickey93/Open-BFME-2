@@ -31,4 +31,4 @@ CritterEmitterUpdateModuleData::CritterEmitterUpdateModuleData()
 	m_i20 = 0;
 }
 
-// CritterEmitterUpdateModuleData::~CritterEmitterUpdateModuleData: defined in CritterEmitterUpdateModuleDataDtor.cpp (its row's unit).
+// CritterEmitterUpdateModuleData::~CritterEmitterUpdateModuleData: defined in CritterEmitterUpdate.cpp (its row's unit).
