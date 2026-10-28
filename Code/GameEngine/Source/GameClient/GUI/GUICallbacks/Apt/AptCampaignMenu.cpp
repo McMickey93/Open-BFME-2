@@ -3,6 +3,11 @@
 #include "ascii_string.h"
 #include "unicode_string.h"
 #pragma pointers_to_members(full_generality, multiple_inheritance)
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
+#include "../../../Include/GameClient/BfmeAptScreenBaseLayout.h"
 
 class GameWindow
 {
@@ -111,32 +116,9 @@ private:
 	unsigned char m_pad01C[0x58 - 0x1C];
 };
 
-class _bfme_AptGameWindow : public GameWindow, public Rva005248D0
-{
-public:
-	_bfme_AptGameWindow(void *context);
-	virtual ~_bfme_AptGameWindow();
-
-private:
-	AsciiString m_filename; // +0x270
-	int m_274;
-	char m_278;
-};
-
 // The campaign menu content TheLinearCampaignManager fills: mission name and
 // image name (dtor rowed 0x005211D1).
 struct Rva001EB6A5Out;
-
-class Rva005211D1
-{
-public:
-	Rva005211D1() : m_victorious(false) {}
-	~Rva005211D1();
-
-	AsciiString m_missionName;
-	AsciiString m_image;
-	bool m_victorious; // +0x08
-};
 
 class LinearCampaignManager;
 
@@ -169,38 +151,266 @@ extern const char BfmeCampaignMenuVictoriousName[] = "CampaignMenu:Victorious";
 
 const char *BfmeCampaignMenuQueryNames[2] = { BfmeCampaignMenuVictoriousName, 0 };
 
+class GameMessage;
+
+// Retail's TheMessageStream (VA 0x00E00950); appendMessage is
+// vslot 18. Use the existing data owner's spelling.
+class MessageStream
+{
+public:
+	virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+	virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+	virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11();
+	virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
+	virtual void v16(); virtual void v17();
+	virtual GameMessage *appendMessage(int type);
+};
+
+extern MessageStream *TheMessageStream;
+
+// TheLinearCampaignManager (VA 0x00DFDC8C, the data ledger's name); its unrowed 0x001ECEF6 forwards to its +0x10
+// member's 0x001ECE98 and is pinned by address.
+struct Rva0023D607Holder
+{
+	void rva001ECEF6();
+};
+
+void __cdecl Rva005210ECEnable(bool flag);
+
+class AptSaveLoad
+{
+public:
+	static void OpenScreen(int a, int b, bool c);
+};
+
+// TheWindowManager (VA 0x00DFEF1C); only its vslot 49 (+0xC4) is called here.
+class GameWindowManager
+{
+public:
+	virtual void v0();
+	virtual void v1();
+	virtual void v2();
+	virtual void v3();
+	virtual void v4();
+	virtual void v5();
+	virtual void v6();
+	virtual void v7();
+	virtual void v8();
+	virtual void v9();
+	virtual void v10();
+	virtual void v11();
+	virtual void v12();
+	virtual void v13();
+	virtual void v14();
+	virtual void v15();
+	virtual void v16();
+	virtual void v17();
+	virtual void v18();
+	virtual void v19();
+	virtual void v20();
+	virtual void v21();
+	virtual void v22();
+	virtual void v23();
+	virtual void v24();
+	virtual void v25();
+	virtual void v26();
+	virtual void v27();
+	virtual void v28();
+	virtual void v29();
+	virtual void v30();
+	virtual void v31();
+	virtual void v32();
+	virtual void v33();
+	virtual void v34();
+	virtual void v35();
+	virtual void v36();
+	virtual void v37();
+	virtual void v38();
+	virtual void v39();
+	virtual void v40();
+	virtual void v41();
+	virtual void v42();
+	virtual void v43();
+	virtual void v44();
+	virtual void v45();
+	virtual void v46();
+	virtual void v47();
+	virtual void v48();
+	virtual void vC4(void *owner);
+};
+
+extern GameWindowManager *TheWindowManager;
+
+class Rva001EB73C { public: bool rva001EB73C(); };
+
+class Rva001EB0CAHolder { public: unsigned char rva001EB0D9(); };
+
+class GameState { public: int rva002DD7E6AutoSave(); };
+
+extern GameState *TheGameState;
+
+class Shell { public: void showShell(bool); void push(AsciiString, bool); };
+
+extern Shell *TheShell;
+
+class Rva005211D1
+{
+public:
+	Rva005211D1() : m_victorious(false) {}
+	~Rva005211D1();
+
+	AsciiString m_missionName;
+	AsciiString m_image;
+	bool m_victorious; // +0x08
+};
+
+class _bfme_AptGameWindow : public GameWindow, public Rva005248D0
+{
+public:
+	_bfme_AptGameWindow(void *context);
+	virtual ~_bfme_AptGameWindow();
+
+private:
+	AsciiString m_filename; // +0x270
+	int m_274;
+	char m_278;
+};
+
+class BfmeAptFunctorMarker
+{
+public:
+	virtual void marker() = 0;
+};
+
 class AptCampaignMenu : public _bfme_AptGameWindow
 {
 public:
 	AptCampaignMenu(void *context);
+public:
 	virtual ~AptCampaignMenu();
-
+public:
 	void OnBttnMainMenu(const char *unused);
+public:
 	void OnBttnSaveGame(const char *unused);
+public:
 	void OnBttnLoadGame(const char *unused);
+public:
 	void OnBttnLastMission(const char *unused);
+public:
 	void OnBttnNextMission(const char *unused);
+public:
 	void Victorious(int query, char *result, bool skip);
-
 private:
-	Rva005211D1 m_content; // +0x27C
+	Rva005211D1 m_content;
+public:
+	static bool OpenScreen();
+public:
+	int rva00521116(int message, unsigned data1, unsigned data2);
+public:
+	void rva0052115F(const char *unused);
 };
 
-// tu-skeleton: 0x00521116 25B ?rva00521116@AptCampaignMenu@@QAEHHII@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp
 
-// tu-skeleton: 0x0052112F 48B ?Victorious@AptCampaignMenu@@QAEXHPAD_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+//
+// BFME2's campaign menu screen Apt callbacks, 0x00521172 onward, bound by
+// these names ("AptCampaignMenu::OnBttnMainMenu" ...) as member pointers by
+// the screen's registration; that binding is their only reference. The
+// class is named for the strings' prefix.
 
-// tu-skeleton: 0x0052115F 19B ?rva0052115F@AptCampaignMenu@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// Retail calls _mbscpy through the import thunk at 0x00629176.
 
-// tu-skeleton: 0x00521172 11B ?OnBttnMainMenu@AptCampaignMenu@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// Retail 0x0052115F, 19 bytes, between Victorious and OnBttnMainMenu with the
+// callbacks' (const char *) thiscall shape: passes this screen to
+// TheWindowManager's vslot 49. Its binding string is not found; address-derived
+// name.
+void AptCampaignMenu::rva0052115F(const char *unused)
+{
+	TheWindowManager->vC4(this);
+}
 
-// tu-skeleton: 0x0052117D 17B ?OnBttnSaveGame@AptCampaignMenu@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// Retail 0x00521172, 11 bytes: "AptCampaignMenu::OnBttnMainMenu".
+void AptCampaignMenu::OnBttnMainMenu(const char *unused)
+{
+	Rva005210ECEnable(true);
+}
 
-// tu-skeleton: 0x0052118E 17B ?OnBttnLoadGame@AptCampaignMenu@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// Retail 0x0052117D, 17 bytes: "AptCampaignMenu::OnBttnSaveGame".
+void AptCampaignMenu::OnBttnSaveGame(const char *unused)
+{
+	AptSaveLoad::OpenScreen(3, 1, false);
+}
 
-// tu-skeleton: 0x0052119F 26B ?OnBttnLastMission@AptCampaignMenu@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// Retail 0x0052118E, 17 bytes: "AptCampaignMenu::OnBttnLoadGame".
+void AptCampaignMenu::OnBttnLoadGame(const char *unused)
+{
+	AptSaveLoad::OpenScreen(2, 1, false);
+}
 
-// tu-skeleton: 0x005211B9 24B ?OnBttnNextMission@AptCampaignMenu@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// Retail 0x0052119F, 26 bytes: "AptCampaignMenu::OnBttnLastMission".
+void AptCampaignMenu::OnBttnLastMission(const char *unused)
+{
+	if (TheLinearCampaignManager)
+	{
+		((Rva0023D607Holder *)TheLinearCampaignManager)->rva001ECEF6();
+		Rva005210ECEnable(false);
+	}
+}
+
+// Retail 0x005211B9, 24 bytes: "AptCampaignMenu::OnBttnNextMission" posts
+// message 0x21.
+void AptCampaignMenu::OnBttnNextMission(const char *unused)
+{
+	TheMessageStream->appendMessage(0x21);
+	Rva005210ECEnable(false);
+}
+
+// Retail 0x0052112F, 67 bytes: "CampaignMenu:Victorious" (the name comes
+// from the string table 0x00DD1728), an Apt query answering "1" when won.
+void AptCampaignMenu::Victorious(int query, char *result, bool skip)
+{
+	if (!skip)
+	{
+		result[0] = '0';
+		result[1] = 0;
+	}
+	if (query == 0 && m_content.m_victorious)
+		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("1"));
+}
+
+// The primary native campaign-menu vtable C67720 slot1 points here; its
+// constructor installs this table and existing named callbacks establish the
+// same complete receiver. This is a separate25B body before Victorious, not
+// the LastMission callback misidentified by the aggregate Ghidra boundary.
+// Base/derived screen message methods establish the three-word input ABI.
+// Native inspects only the low byte of data1; the original method name is
+// unknown, so the address-derived spelling preserves that uncertainty.
+int AptCampaignMenu::rva00521116(int message, unsigned data1, unsigned data2)
+{
+ switch(message) {
+ case 0x15:
+  switch(static_cast<unsigned char>(data1)) {case 1:return 1;default:return 0;}
+ default:return 0;
+ }
+}
+
+bool AptCampaignMenu::OpenScreen()
+{
+ if (!g_Va00E0492C) {
+  if (((Rva001EB73C*)TheLinearCampaignManager)->rva001EB73C() &&
+      ((Rva001EB0CAHolder*)TheLinearCampaignManager)->rva001EB0D9()) {
+   TheShell->showShell(true);
+   return false;
+  }
+  if (((Rva001EB0CAHolder*)TheLinearCampaignManager)->rva001EB0D9())
+   TheGameState->rva002DD7E6AutoSave();
+  TheShell->push(AsciiString("CampaignMenu.apt"), false);
+  if (!g_Va00E0492C) return false;
+ }
+ return true;
+}
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenu.cpp
 
 // ---- from Code/GameEngine/Source/Common/Rva005211D1Dtor.cpp
 
@@ -210,8 +420,6 @@ private:
 Rva005211D1::~Rva005211D1()
 {
 }
-
-// tu-skeleton: 0x00521206 79B ??1AptCampaignMenu@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenu.cpp
 
@@ -288,10 +496,10 @@ AptCampaignMenu::AptCampaignMenu(void *context)
 	}
 }
 
-// tu-skeleton: 0x00521260 128B ?OpenScreen@AptCampaignMenu@@SA_NXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp
 
-// tu-skeleton: 0x005212E0 28B ??_GAptCampaignMenu@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00796239 8B $L421 -- matched in Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00796241 10B __ehhandler$??1AptCampaignMenu@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp (not merged yet)
+// ??1AptCampaignMenu@@UAE@XZ @0x00521206 79B: AptCampaignMenu screen dtor clearing global then member at +0x27C then base. Evidence: stores vtables 0x00867720/+0x218 0x0086771C; calls rowed 0x005211D1 and pin-only AptGameWindow 0x005126F5; caller 0x005212E0 deleting dtor; unlocks 0x005212E0.
+AptCampaignMenu::~AptCampaignMenu()
+{
+	g_Va00E0492C = 0;
+}

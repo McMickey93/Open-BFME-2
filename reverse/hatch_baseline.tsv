@@ -927,8 +927,7 @@ address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva00
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035b112.cpp	g_Rva005127A0InGameChat	2
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035b112.cpp	g_Rva012F340C	2
 address_global	Code/GameEngine/Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp	g_Va007C9260	3
-address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenu.cpp	g_Va00E0492C	3
-address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp	g_Va00E0492C	3
+address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenu.cpp	g_Va00E0492C	6
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptFileTransferPopupCtor.cpp	g_Va00E06398	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptGuiFXCallbacks.cpp	g_Va00E022E0	2
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptInGameChat.cpp	g_Va00E04478	5
@@ -1044,7 +1043,6 @@ address_global	Code/GameEngine/Source/GameClient/GUI/Rva00427157Ctor.cpp	g_Va00D
 address_global	Code/GameEngine/Source/GameClient/GUI/Rva0043D1C9Destructor.cpp	g_Va00E03314	2
 address_global	Code/GameEngine/Source/GameClient/GUI/Rva0043F483PopulatePlayerCombo.cpp	g_Va00E0333C	1
 address_global	Code/GameEngine/Source/GameClient/GUI/Rva005173F8Dtor.cpp	g_Va00E04904	5
-address_global	Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp	g_Va00E0492C	2
 address_global	Code/GameEngine/Source/GameClient/GUI/Rva0052B634ArmyActionPrime.cpp	g_Va00E04500	2
 address_global	Code/GameEngine/Source/GameClient/GUI/Rva0052B634ArmyActionPrime.cpp	g_Va00E065B4	2
 address_global	Code/GameEngine/Source/GameClient/GUI/Rva0052B634ArmyActionPrime.cpp	g_Va00E065B8	2
