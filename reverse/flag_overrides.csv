@@ -473,6 +473,7 @@ Code/GameEngineDevice/Source/W3DDevice/GameLogic/Rva0061EEE0Destructor.cpp,-O2 -
 Code/Libraries/Source/Apt/AptActionInterpreter.cpp,-O2,3,1,region default loses rows
 Code/Libraries/Source/Apt/AptActionInterpreterConstantHandlers.cpp,-O2,129,15,region default loses rows
 Code/Libraries/Source/Apt/AptAnimation.cpp,-O2,1,1,region default loses rows
+Code/Libraries/Source/Apt/AptArray.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/AptCIH.cpp,-O2,25,1,region default loses rows
 Code/Libraries/Source/Apt/AptCIHRender.cpp,-O2 -G6,1,1,region default loses rows
 Code/Libraries/Source/Apt/AptCharacterApplyTextFormat.cpp,-O2,1,1,region default loses rows
@@ -499,7 +500,6 @@ Code/Libraries/Source/Apt/AptValue/AptStringSlice.cpp,-O2,1,1,region default los
 Code/Libraries/Source/Apt/AptValue/AptValueToBoolBFME2.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/AptValue/AptValueToNumberBFME2.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/AptValue/PlaybackBufferResize.cpp,-O2,5,2,region default loses rows
-Code/Libraries/Source/Apt/AptValue/Rva006D9780Finish.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/AptValue/Rva006DF470Initialize.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/BfmeThingXSApply.cpp,,1,1,region default loses rows
 Code/Libraries/Source/Apt/DogmaAllocator.cpp,-O2,1,1,region default loses rows
