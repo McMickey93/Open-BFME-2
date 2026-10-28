@@ -136,6 +136,9 @@ public:
 
 class Rva004FA953List
 {
+public:
+	void forEach(void (Rva004FA953Listener::*notify)(void *, int), void *arg, int value);
+private:
 	void *m_begin;
 	void *m_end;
 	void *m_capacity;
