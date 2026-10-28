@@ -8,6 +8,25 @@
 #include <vector>
 #include <memory>
 
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+
+#include "../../../../Include/Common/BfmeXfer.h"
+
 //
 // ??1DynamicPortalBehaviour@@MAE@XZ, retail 0x00460C18, 91 bytes. Behavior-side
 // destructor completing the DynamicPortalBehaviour file-unit (ctor rowed at
@@ -28,6 +47,72 @@ class Thing;
 
 class ModuleData;
 
+typedef bool Bool;
+
+class Xfer::Version
+{
+public:
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
+
+	unsigned char m_current;
+	unsigned char m_minimum;
+};
+
+enum { INVALID_WAYPOINT_ID = 0x7fffffff };
+
+void XferWaypointID(Xfer *xfer, int *id);
+
+// The six portal waypoints: slot 0 deletes, the rowed 0x002E6ECA reads a
+// flag and +0x04 holds the waypoint ID.
+class Rva002E6ECA
+{
+public:
+	virtual void *destroy(unsigned);
+	int get() const;
+	int getID() const { return m_id; }
+private:
+	int m_id;
+};
+typedef Rva002E6ECA Rva0046094CWaypoint;
+
+class TerrainLogic
+{
+public:
+	virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03();
+	virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07();
+	virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11();
+	virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15();
+	virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19();
+	virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23();
+	virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27();
+	virtual void s28(); virtual void s29(); virtual void s30(); virtual void s31();
+	virtual void s32(); virtual void s33(); virtual void s34();
+	virtual Rva0046094CWaypoint *getWaypointByID(int waypointID);
+};
+
+extern TerrainLogic *TheTerrainLogic;
+
+class Rva0028BCF4Result
+{
+public:
+	virtual void v00() = 0;
+	virtual void v01() = 0;
+	virtual void rvaSlot2(int value) = 0;
+};
+
+class AIUpdateInterface;
+
+class Object
+{
+public:
+	void *rva0028BCF4() const;
+	AIUpdateInterface *getAI() const { return m_ai; }
+private:
+	unsigned char m_pad000[0x258];
+	AIUpdateInterface *m_ai;	// +0x258
+};
+
 enum NameKeyType
 {
 	NK_UNKNOWN = 0
@@ -46,8 +131,10 @@ class BehaviorModule
 public:
 	virtual void behaviorModuleAnchor();
 
-private:
-	unsigned char m_data[8];
+protected:
+	Object *getObject() const { return m_object; }
+	const ModuleData *m_moduleData; // +0x04
+	Object *m_object; // +0x08
 };
 
 class BehaviorModuleInterface
@@ -59,7 +146,18 @@ public:
 class UpgradeMux
 {
 public:
-	virtual void upgradeMuxAnchor();
+	virtual Bool isAlreadyUpgraded() const = 0;
+	virtual void m01() = 0;
+	virtual void m02() = 0;
+	virtual void m03() = 0;
+	virtual void m04() = 0;
+	virtual void m05() = 0;
+	virtual void m06() = 0;
+	virtual void m07() = 0;
+protected:
+	virtual void upgradeRemovalImplementation() = 0;
+	virtual void setUpgradeExecuted(Bool executed) = 0;
+	virtual void upgradeImplementation() = 0;
 
 private:
 	bool m_upgradeExecuted;
@@ -78,9 +176,12 @@ class UpgradeModule : public BehaviorModule,
 {
 public:
 	UpgradeModule(Thing *thing, const ModuleData *moduleData);
+	void rva004CE4A0();
+	void rva004CE4A8();
 
 protected:
 	virtual ~UpgradeModule();
+	virtual void xfer(Xfer *xfer);
 };
 
 class DynamicPortalExtraA
@@ -105,11 +206,14 @@ public:
 	virtual NameKeyType getModuleNameKey() const;
 protected:
 	virtual ~DynamicPortalBehaviour();
+	virtual void xfer(Xfer *xfer);
+	virtual void upgradeRemovalImplementation();
 
 private:
-	void *m_24[6];
-	unsigned char m_3C;
-	unsigned char m_3D;
+	enum { WAYPOINT_COUNT = 6 };
+	Rva0046094CWaypoint *m_24[WAYPOINT_COUNT];	// +0x24
+	bool m_3C;	// +0x3C
+	bool m_3D;	// +0x3D
 	unsigned char m_pad3E[2];
 };
 
