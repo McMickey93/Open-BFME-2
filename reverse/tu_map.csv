@@ -24856,7 +24856,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00318329,10,code,,displaced,-,Z=Code/GameEngine/Source/GameNetwork/IPEnumeration.cpp S=Code/GameEngine/Source/GameNetwork/IPEnumeration.cpp N=Code/GameEngine/Source/GameNetwork/IPEnumeration.cpp,Code/GameEngine/Source/GameNetwork/IPEnumerationCtor.cpp
 0x00318333,247,code,,,-,,Code/GameEngine/Source/GameNetwork/Rva00318333.cpp
 0x0031842A,142,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp
-0x003184B8,119,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,C,C=0x0031842A..0x0031852F provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemAudio.cpp
+0x003184B8,119,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,C,C=0x0031842A..0x0031852F provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp
 0x0031852F,42,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,C,C=0x0031842A..0x00318559 provisional,Code/GameEngine/Source/Common/Rva0028C6FB.cpp
 0x00318559,47,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,C,C=0x0031842A..0x00318588 provisional,Code/GameEngine/Source/Common/BitFlags304SetBitByName.cpp
 0x00318588,133,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemCtorDeferred.cpp
@@ -72903,8 +72903,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077A7E9,10,code,Code/GameEngine/Source/Common/TerrainTypes.cpp,approved,P,P=0x0031816C@FuncInfo0x009233B0,Code/GameEngine/Source/Common/TerrainTypes.cpp
 0x0077A7F3,8,code,,,-,,Code/gen_small/uw_gen_003.cpp
 0x0077A7FB,10,code,,,-,,Code/GameEngine/Source/Common/INI/ININamedRealListParsers.cpp
-0x0077A805,11,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,P,P=0x003184B8@FuncInfo0x009233F8 provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemAudio.cpp
-0x0077A810,10,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,P,P=0x003184B8@FuncInfo0x009233F8 provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemAudio.cpp
+0x0077A805,11,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,P,P=0x003184B8@FuncInfo0x009233F8 provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp
+0x0077A810,10,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,P,P=0x003184B8@FuncInfo0x009233F8 provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp
 0x0077A81A,8,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,P,P=0x00318588@FuncInfo0x00923434 provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemCtorDeferred.cpp
 0x0077A822,11,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,P,P=0x00318588@FuncInfo0x00923434 provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemCtorDeferred.cpp
 0x0077A82D,11,code,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystem.cpp,approved,P,P=0x00318588@FuncInfo0x00923434 provisional,Code/GameEngine/Source/GameLogic/System/GlobalWeatherSystemCtorDeferred.cpp
