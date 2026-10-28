@@ -72,10 +72,13 @@
 #include "GameClient/GameWindowGlobal.h"
 #include "GameClient/GameWindowManager.h"
 #include "GameClient/GadgetRadioButton.h"
-#include "W3DDevice/GameClient/W3DGadget.h"
+// These callbacks use GameWindow, not W3DGameWindow or its renderer.
+#include "GameClient/GameWindow.h"
 #include "W3DDevice/GameClient/W3DDisplay.h"
 
 // DEFINES ////////////////////////////////////////////////////////////////////
+// Preserve W3DGadget.h's exact border width without its renderer dependency.
+#define WIN_DRAW_LINE_WIDTH (1.0f)
 
 // PRIVATE TYPES //////////////////////////////////////////////////////////////
 

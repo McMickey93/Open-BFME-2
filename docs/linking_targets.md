@@ -691,3 +691,5 @@ remain exact; all 54 retained COMDAT fingerprints are unchanged. Ordinary
 preview changes from blocked to LINKS for 2,675 authored bytes. The global
 selected-copy obstacle and census confirmation remain pending (LINK-132).
 [Evidence](../reverse/attempt_support/horizontal-slider-link-20261028-codex.md).
+
+Additional current target (2026-10-28): W3DRadioButton.cpp received the bounded unused renderer dependency cleanup. The existing three rows remain exact, with retained external COMDAT fingerprints and weak bindings preserved. Current preview scope, limitations and remaining census prerequisites: [native handoff](../reverse/attempt_support/round5-bfme2-20261028-native-8.md).

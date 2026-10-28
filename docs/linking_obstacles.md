@@ -7825,3 +7825,7 @@ relative to the accepted originals. Its 47 rows and six EH graphs still
 verify; the original three constructor-binding findings remain.
 The final preview retains LINKS for 2,341 authored bytes; the refreshed
 outgoing audit has the same older-index and six-receipt limitations above.
+
+### Radio-button unused renderer dependencies (2026-10-28)
+
+Status: bounded include cleanup; census confirmation pending. The RadioButton TU stops publishing its unused renderer destructor and vector-construction iterator. All three existing rows remain exact; retained external COMDAT fingerprints and weak bindings are unchanged. Before/after ordinary-preview scope and remaining limitations are in [the native handoff](../reverse/attempt_support/round5-bfme2-20261028-native-8.md). No measured linking gain is claimed.
