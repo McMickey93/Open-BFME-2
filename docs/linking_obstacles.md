@@ -372,6 +372,14 @@ removed-provider scope in the next census. The batch audit remains inconclusive.
   and runtime results remain unclaimed; the other NAT donors retain their
   documented declaration/compiler prerequisites.
 
+- **DisconnectMenu.cpp TU (2026-10-28; index `14dc3d2467`):**
+  [The merge handoff](../reverse/attempt_support/disconnect-menu-consolidation-20261028-claude.md)
+  creates the TU from six donors (34 rows exact). The new
+  `DisconnectMenu.obj` has no census object, so LinkGuard refuses the
+  reconciled AptDisconnectScreenKick.cpp until a census records it; the
+  0x00513449 donor needs the screen's vftable slots first. Batch audits are
+  **INCONCLUSIVE**; no linked-byte gain is claimed.
+
 - **VictorySystem.cpp TU (2026-10-28; index `14dc3d2467`):**
   [The merge handoff](../reverse/attempt_support/victory-system-consolidation-20261028-claude.md)
   merges three files (14 rows exact, two EXACT EH graphs) and reconciles the
