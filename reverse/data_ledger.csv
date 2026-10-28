@@ -20215,8 +20215,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03AFC,4,.data,global,?TheOneRingPenaltyUpdatePoolKey@?1??getModuleNameKey@OneRingPenaltyUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdatePoolKey.cpp,owned,,1,2
 0x00A03B00,4,.data,global,?$S1@?1??getModuleNameKey@OneRingPenaltyUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/OneRingPenaltyUpdatePoolKey.cpp,owned,,1,4
 0x00A03B04,4,.data,global,_s_rva007B182B,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03B08,4,.data,global,?TheSpecialEnemySenseUpdatePoolKey@?1??getModuleNameKey@SpecialEnemySenseUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdatePoolKey.cpp,owned,,1,2
-0x00A03B0C,4,.data,global,?$S1@?1??getModuleNameKey@SpecialEnemySenseUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdatePoolKey.cpp,owned,,1,4
+0x00A03B08,4,.data,global,?TheSpecialEnemySenseUpdatePoolKey@?1??getModuleNameKey@SpecialEnemySenseUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdate.cpp,owned,,1,2
+0x00A03B0C,4,.data,global,?$S1@?1??getModuleNameKey@SpecialEnemySenseUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialEnemySenseUpdate.cpp,owned,,1,4
 0x00A03B10,4,.data,global,?TheAutoDepositUpdatePoolKey@?1??getModuleNameKey@AutoDepositUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp,owned,,1,2
 0x00A03B14,4,.data,global,?$S1@?1??getModuleNameKey@AutoDepositUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp,owned,,1,4
 0x00A03B18,4,.data,global,?TheHordeAIUpdatePoolKey@?1??getModuleNameKey@HordeAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/HordeAIUpdatePoolKey.cpp,owned,,1,2
