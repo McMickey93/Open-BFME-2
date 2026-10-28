@@ -37,15 +37,15 @@ public:
 
 bool NAT::rva005A6732() const
 {
-	if (m_14 < 0 || m_14 > 8) {
-		if (m_18 < 0 || m_18 > 8)
+	if (m_localSlot < 0 || m_localSlot > 8) {
+		if (m_targetSlot < 0 || m_targetSlot > 8)
 			return true;
 	}
-	if (m_8[m_14] == 0)
+	if (m_slotList[m_localSlot] == 0)
 		return true;
-	if (m_8[m_18] == 0)
+	if (m_slotList[m_targetSlot] == 0)
 		return true;
-	return (m_94C == 0 || m_94C == 4 || m_94C == 5)
+	return (m_state94c == 0 || m_state94c == 4 || m_state94c == 5)
 		&& (m_950 == 0 || m_950 == 4 || m_950 == 5);
 }
 
@@ -59,13 +59,13 @@ void NAT::setConnectionState(int a, int b, int expected, int val)
 		return;
 	if (a < 0 || a >= 8 || b < 0 || b >= 8)
 		return;
-	if (a == m_14)
+	if (a == m_localSlot)
 	{
-		if (b == m_18)
+		if (b == m_targetSlot)
 		{
-			if (expected != m_20)
+			if (expected != m_cookie)
 				return;
-			m_94C = val;
+			m_state94c = val;
 		}
 		else
 			goto checkSwap;
@@ -73,24 +73,24 @@ void NAT::setConnectionState(int a, int b, int expected, int val)
 	else
 	{
 checkSwap:
-		if (a != m_18)
+		if (a != m_targetSlot)
 			goto notify;
-		if (b != m_14)
+		if (b != m_localSlot)
 			goto notify;
-		if (expected != m_20)
+		if (expected != m_cookie)
 			return;
 		m_950 = val;
 	}
 notify:
 	if (val == 5)
-		m_28.handleNegotiationResult((unsigned short)a, (unsigned short)b, expected, 4);
+		m_schema.handleNegotiationResult((unsigned short)a, (unsigned short)b, expected, 4);
 	else if (val == 4)
-		m_28.handleNegotiationResult((unsigned short)a, (unsigned short)b, expected, 3);
+		m_schema.handleNegotiationResult((unsigned short)a, (unsigned short)b, expected, 3);
 }
 
 void NAT::rva005A6C90(int val)
 {
-	setConnectionState(m_14, m_18, m_20, val);
+	setConnectionState(m_localSlot, m_targetSlot, m_cookie, val);
 }
 
 // NAT::rva005A6A4C @0x005A6A4C 55B (unnamed in WB): with a slot list (+0x08),
@@ -99,11 +99,11 @@ void NAT::rva005A6C90(int val)
 // (0x004FE126) and 0x004FED35 call it on TheNAT before attaching its transport.
 void NAT::rva005A6A4C()
 {
-	if (m_8 != 0) {
+	if (m_slotList != 0) {
 		for (int i = 0; i < 8; ++i) {
-			Rva005A6A4CSlot *slot = m_8[i];
+			NATSlotView *slot = m_slotList[i];
 			if (slot != 0)
-				slot->m_address = *m_90C[i];
+				slot->m_address = *m_addresses[i];
 		}
 	}
 }

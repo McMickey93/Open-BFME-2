@@ -30,10 +30,10 @@ public:
 	virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
 	virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
 	virtual void v12();
-	virtual Int getLocalSlotNum() const;	// slot 13 (+0x34)
-	const UnsignedInt &getLocalIP() const { return m_localIP; }
+	virtual int getLocalSlotNum() const;	// slot 13 (+0x34)
+	const unsigned int &getLocalIP() const { return m_localIP; }
 	unsigned char m_pad04[0x38 - 4];
-	UnsignedInt m_localIP;			// +0x38
+	unsigned int m_localIP;			// +0x38
 };
 
 class GameSpyStagingRoom : public GameInfo
@@ -41,55 +41,8 @@ class GameSpyStagingRoom : public GameInfo
 };
 extern GameSpyStagingRoom *TheGameSpyGame;
 
-struct NATSlotView
-{
-	unsigned char m_pad00[0x30];
-	UnicodeString m_name;			// +0x30
-	unsigned char m_pad34[4];
-	UnsignedInt m_ip;			// +0x38
-};
+#include "NATView.h"
 
-struct NATAddressView
-{
-	UnsignedInt m_ip;
-};
-
-class PortNegotiationSchema
-{
-public:
-	void handleNegotiationResult(UnsignedShort first, UnsignedShort second, Int cookie, Int result);
-	unsigned char m_bytes[0x8E4 - 0x28];
-};
-
-struct NAT
-{
-	Int m_0;
-	void *m_04;
-	NATSlotView **m_slotList;		// +0x08
-	Int m_hostSlot;				// +0x0C
-	Int m_mode;				// +0x10
-	Int m_localSlot;			// +0x14
-	Int m_targetSlot;			// +0x18
-	Int m_1c;
-	Int m_cookie;				// +0x20
-	Int m_24;
-	PortNegotiationSchema m_schema;			// +0x28
-	unsigned char m_hostKnown[8];		// +0x8E4
-	Int m_slotCookie[8];			// +0x8EC
-	NATAddressView *m_addresses[8];		// +0x90C
-	unsigned char m_pad92c[0x94C - 0x92C];
-	Int m_state94c;				// +0x94C
-
-	void processGlobalMessage(Int slotNum, const char *options);
-	void attachSlotList(GameInfo *game, Int localSlot, UnsignedInt localIP, UnsignedInt arg, Bool isHost);
-	void setConnectionState(Int a, Int b, Int c, Int state);
-	void rva005A6C90(Int state);
-	void targetNotifyMeIWasProbed(Int slot);
-	void gotTargetMangledPort(Int slot, UnsignedShort port, Int addr);
-	Bool rva005A6732() const;
-	void notifyHostMyNATCreated(Int cookie);
-	void StartNegotiationAction(Int slot, Int value);
-};
 // TheNAT: defined here (zero-initialised, exactly as retail's image holds the
 // four bytes at VA 0x00E063F8) because the rowed body below proves the
 // address: NAT::processGlobalMessage at 0x005A8ABF loads dword [0x00E063F8]
@@ -120,7 +73,7 @@ void NAT::processGlobalMessage(Int slotNum, const char *options)
 		if (slot >= 8 || m_slotList == 0 || m_slotList[slot] == 0)
 			return;
 		NATSlotView *local = m_slotList[m_localSlot];
-		if (local == 0 || local->m_ip == 0)
+		if (local == 0 || local->m_address.ip == 0)
 			return;
 		AsciiString hostName;
 		hostName.translate(m_slotList[slot]->m_name);
@@ -129,7 +82,7 @@ void NAT::processGlobalMessage(Int slotNum, const char *options)
 			m_hostSlot = (UnsignedShort)slot;
 			m_hostKnown[m_hostSlot] = 1;
 			notifyHostMyNATCreated(cookie);
-			m_addresses[m_localSlot]->m_ip = m_slotList[m_localSlot]->m_ip;
+			m_addresses[m_localSlot]->ip = m_slotList[m_localSlot]->m_address.ip;
 		}
 	}
 	else if (!strncmp(ptr, "NATINITED", strlen("NATINITED")))
