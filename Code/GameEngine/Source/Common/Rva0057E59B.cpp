@@ -4,20 +4,7 @@
 // if w is null skip, else w->winEnable(enable) via rowed 0x00313BEC.
 // Same class and flags as the neighbour 0x0057E97A TU. Evidence: packet
 // disasm, single caller 0x0043DBE0, prev/next rows.
-class GameWindow
-{
-public:
-	int winEnable(bool enable);
-};
-
-class Rva0057E97A
-{
-public:
-	void rva0057E59B(int index, bool enable);
-private:
-	char m_pad0[0x7C]; // +0x00..+0x7B
-	class GameWindow **m_begin; // +0x7C
-};
+#include "../GameClient/GUI/GUICallbacks/Apt/AptMpGameRulesView.h"
 
 void Rva0057E97A::rva0057E59B(int index, bool enable)
 {

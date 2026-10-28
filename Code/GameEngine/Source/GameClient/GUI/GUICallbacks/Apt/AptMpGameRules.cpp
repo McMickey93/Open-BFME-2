@@ -12,13 +12,7 @@ int Rva00559F7EGet(int mode);
 
 int Rva00559F95Get(int mode);
 
-class GameWindow
-{
-public:
-	unsigned int winGetStyle();
-    int winHide(bool);
-    int winEnable(bool);
-};
+#include "AptMpGameRulesView.h"
 
 void GadgetComboBoxGetSelectedPos(GameWindow *window, int *selection);
 
@@ -152,7 +146,6 @@ void GadgetComboBoxHideDropDown(GameWindow *, bool);
 
 void GadgetCheckBoxSetChecked(GameWindow *, bool);
 
-class Rva0043DA65 {public: int rva0043DA65();};
 
 // Only the caller-proven +0x30 GameInfo dispatch is viewed here.
 class RuleGameInfoHostView {
@@ -291,7 +284,6 @@ struct RulesOverrideView {char padding[0x9D4]; unsigned char bits;};
 // address-named follow-up 0x0057E97A; true when done or already done. Body
 // banked exact by an earlier seat; this unit carries it with the class view of
 // AptMpGameRulesCallbacks.cpp at the /O1 G7 SSE flags its bytes need.
-class Rva0057E97A {public: void rva0057E97A();};
 
 class Rva002DB9B6
 {
