@@ -24,7 +24,7 @@ public:
 
 extern int g_Va00E0492C;
 
-class __multiple_inheritance AptCampaignMenu
+class AptCampaignMenu
 	: public _bfme_AptGameWindow, public BfmeAptFunctorMarker
 {
 public:

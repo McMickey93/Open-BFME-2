@@ -47,6 +47,19 @@ public:
 	static void OpenScreen(int a, int b, bool c);
 };
 
+// The campaign menu content TheLinearCampaignManager fills: mission name and
+// image name (dtor rowed 0x005211D1).
+class Rva005211D1
+{
+public:
+	Rva005211D1() : m_victorious(false) {}
+	~Rva005211D1();
+
+	AsciiString m_missionName;
+	AsciiString m_image;
+	bool m_victorious; // +0x08
+};
+
 class AptCampaignMenu
 {
 public:
@@ -61,8 +74,8 @@ public:
 	void rva0052115F(const char *unused);
 
 private:
-	unsigned char m_pad000[0x284];
-	bool m_victorious; // +0x284
+	unsigned char m_pad000[0x27C];
+	Rva005211D1 m_content; // +0x27C
 };
 
 // TheWindowManager (VA 0x00DFEF1C); only its vslot 49 (+0xC4) is called here.
@@ -176,7 +189,7 @@ void AptCampaignMenu::Victorious(int query, char *result, bool skip)
 		result[0] = '0';
 		result[1] = 0;
 	}
-	if (query == 0 && m_victorious)
+	if (query == 0 && m_content.m_victorious)
 		_mbscpy(reinterpret_cast<unsigned char *>(result), reinterpret_cast<const unsigned char *>("1"));
 }
 
