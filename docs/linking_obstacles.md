@@ -1252,6 +1252,16 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 **Status: Open; scoped storage repairs verified. Updated: 2026-10-27.**
 
+- **E038 update guard-index follow-up (2026-10-28, control `bd82c0156d2e`):**
+  [The scoped current-owner check](../reverse/attempt_support/update-e038-guard-data-index-20261028-codex.md)
+  adopts nine changed generated key/guard index rows for six standalone update
+  accessors after the earlier E038 clearer retirement and getter renames. All
+  18 function rows, six literals and six parent EH graphs pass; both data checks
+  report zero findings. The owning retirement tool removes six source keys.
+  Ordinary previews retain 6/6 LINKS and 466 authored bytes against index
+  `73061d9452`. Broader E038 storage closure and census confirmation remain
+  open; no new linked-byte or image-ownership gain is claimed.
+
 - **FX default-module guard index follow-up (2026-10-27, control `38e60a3ba930`):**
   [The current-owner check](../reverse/attempt_support/fx-default-guard-data-index-20261027-codex.md)
   refreshes twelve generated guard-index rows left stale by the earlier
@@ -5755,6 +5765,13 @@ Open leads (claude2, same pass; not edited):
   OpaqueScalarDeletingDtorsB10.cpp declare a user virtual destructor.
   Prerequisite: one class declaration for `TheCrowdResponseStore`'s type (a
   shared header with the real destructor) used by all five units.
+  **2026-10-28 current-input recheck (codex, `bd82c0156d2e`):** this historical
+  constructor lead is superseded by LINK-112's landed repair. All four ctor
+  rows pass the normal build; a joint ordinary preview with
+  Rva00415CABDtor.cpp and OpaqueScalarDeletingDtorsB10.cpp reports 3/3 LINKS
+  (90, 272 and 544 authored bytes, index `73061d9452`). No source edit was
+  needed. [Receipt](../reverse/attempt_support/update-e038-guard-data-index-20261028-codex.md).
+  Census confirmation remains pending.
 
 **2026-10-27 follow-up (lk1, inspected `d16a31e4dc`, index 73061d9452), same cause, a table this time:**
 `BfmeThreeHundredThirtyFour.cpp` (22 B) failed only on `_bfmeVftSF`, a stray name for
