@@ -20048,8 +20048,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03804,4,.data,global,?$S1@?1??getModuleNameKey@PassiveAreaEffectBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorPoolKey.cpp,owned,,1,4
 0x00A03808,4,.data,global,?ThePillageModulePoolKey@?1??getModuleNameKey@PillageModule@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Module/PillageModulePoolKey.cpp,owned,,1,2
 0x00A0380C,4,.data,global,?$S1@?1??getModuleNameKey@PillageModule@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Module/PillageModulePoolKey.cpp,owned,,1,4
-0x00A03810,4,.data,global,?TheAnnounceBirthAndDeathBehaviorPoolKey@?1??getModuleNameKey@AnnounceBirthAndDeathBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/AnnounceBirthAndDeathBehaviorPoolKey.cpp,owned,,1,2
-0x00A03814,4,.data,global,?$S1@?1??getModuleNameKey@AnnounceBirthAndDeathBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/AnnounceBirthAndDeathBehaviorPoolKey.cpp,owned,,1,4
+0x00A03810,4,.data,global,?TheAnnounceBirthAndDeathBehaviorPoolKey@?1??getModuleNameKey@AnnounceBirthAndDeathBehavior@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/AnnounceBirthAndDeathBehavior.cpp,owned,,1,2
+0x00A03814,4,.data,global,?$S1@?1??getModuleNameKey@AnnounceBirthAndDeathBehavior@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/AnnounceBirthAndDeathBehavior.cpp,owned,,1,4
 0x00A03818,4,.data,global,?TheRefundDiePoolKey@?1??getModuleNameKey@RefundDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/RefundDiePoolKey.cpp,owned,,1,2
 0x00A0381C,4,.data,global,?$S1@?1??getModuleNameKey@RefundDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/RefundDiePoolKey.cpp,owned,,1,4
 0x00A03820,4,.data,global,_s_rva007B1212,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
