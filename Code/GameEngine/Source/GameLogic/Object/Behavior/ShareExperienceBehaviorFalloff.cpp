@@ -163,10 +163,17 @@ class BehaviorModuleInterface
 public:
 	virtual void behaviorModuleInterfaceAnchor();
 };
+enum UpdateSleepTime
+{
+	UPDATE_SLEEP_NONE = 1,
+	UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
+};
+
 class Rva00480093Base10
 {
 public:
-	virtual void rva00480093Base10Anchor();
+	// Retail's update interface starts at +0x10; its first slot is 0x0047FF6B.
+	virtual UpdateSleepTime update() = 0;
 private:
 	char m_pad14[0x20 - 0x14];
 };
@@ -192,6 +199,7 @@ class ShareExperienceBehavior : public Module, public BehaviorModuleInterface, p
 {
 public:
 	float GetDropOffValue(Coord3D *a, Pos0047FFFE *b);
+	virtual UpdateSleepTime update();
 	virtual void rva00480093(float amount);
 };
 
