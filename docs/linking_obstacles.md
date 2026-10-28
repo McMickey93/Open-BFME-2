@@ -296,6 +296,16 @@ under another name, so only the out-of-line calls bind to the declaration.
 Clearance: pending.
 Census confirmation: not claimed.
 
+#### AssetList consumer refresh (2026-10-28)
+
+At `9974966c04`, a refreshed preview against index `41c28839bf` replaces
+stale provider definitions with current objects. AssetListOperatorInsert.cpp
+changes from the ordinary cached preview's two set selected-copy blockers to
+LINKS for 532 authored bytes. Rva00622290CollectKeys.cpp remains blocked by an
+unresolved integer tree copy constructor and an unproven `find<int>` COMDAT.
+This is a bounded preview, not a census result; carry both units into the next
+normal census. No source change or new census-linked coverage is claimed.
+
 #### Horizontal slider consumer subset (2026-10-28)
 
 At `e0be65e163`, index `41c28839bf`, W3DHorizontalSlider.cpp's unused
