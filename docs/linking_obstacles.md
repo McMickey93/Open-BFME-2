@@ -3378,6 +3378,13 @@ separate strict receipt limitation encountered there.
 
 ### LINK-018: canonical `Coord3D` member growth blocks header-adoption until dependents are recomputed
 
+**Matrix4D class-key prerequisite (2026-10-28):** The canonical struct changes
+eight existing class-key decorated Matrix4D symbols; a class forward declaration
+does not preserve them. The trial was reverted and the original unit passes
+24/24. Establish target identity and reconcile owners and consumers before
+adoption. [Scoped evidence](../reverse/attempt_support/matrix4d-coord3d-adoption-20261028-codexb5.md).
+No queue retirement or linking gain is claimed.
+
 **Status: Open. Updated: 2026-10-26; inspected revision: 5dcf22e436c (2026-10-25 trials).**
 
 - **Evidence / scope:** retiring coord3d_crossproduct.cpp's private
