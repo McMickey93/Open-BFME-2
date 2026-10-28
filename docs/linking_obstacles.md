@@ -1263,7 +1263,17 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 ### LINK-007: incomplete data ownership beyond clean symbol resolution
 
-**Status: Open; scoped storage repairs verified. Updated: 2026-10-27.**
+**Status: Open; scoped storage repairs verified. Updated: 2026-10-28.**
+
+- **E036 containment guard-index follow-up (2026-10-28, control `d67dec6909`):**
+  [The six-accessor check](../reverse/attempt_support/contain-e036-guard-data-index-20261028-codex.md)
+  adopts twelve generated key/guard index rows after the earlier E036 clearer
+  retirement and accessor renames. All 18 function rows, six literals and six
+  parent EH graphs pass; both data checks report zero findings. The owning
+  retirement tool removes six registered source keys. Paired ordinary previews
+  retain 6/6 LINKS and 472 authored bytes against index `14dc3d2467`.
+  Other E036/E037 entries, broader storage closure and census confirmation
+  remain open; no new linked-byte or image-ownership gain is claimed.
 
 - **E038 update guard-index follow-up (2026-10-28, control `bd82c0156d2e`):**
   [The scoped current-owner check](../reverse/attempt_support/update-e038-guard-data-index-20261028-codex.md)
