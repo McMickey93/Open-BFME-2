@@ -202,9 +202,18 @@ private:
 
 // tu-skeleton: 0x005211B9 24B ?OnBttnNextMission@AptCampaignMenu@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
 
-// tu-skeleton: 0x005211D1 53B ??1Rva005211D1@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva005211D1Dtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva005211D1Dtor.cpp
+
+// ??1Rva005211D1@@QAE@XZ retail 0x005211D1 53B
+// Evidence: unlock lane; two inlined releaseBuffer calls for members at +0/+4; caller 0x00521206 constructs member at +0x27c then calls this; callees rowed releaseBuffer 0x00036410; no vptr store so non-virtual public dtor.
+
+Rva005211D1::~Rva005211D1()
+{
+}
 
 // tu-skeleton: 0x00521206 79B ??1AptCampaignMenu@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenu.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCtor.cpp
 
@@ -282,10 +291,6 @@ AptCampaignMenu::AptCampaignMenu(void *context)
 // tu-skeleton: 0x00521260 128B ?OpenScreen@AptCampaignMenu@@SA_NXZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp (not merged yet)
 
 // tu-skeleton: 0x005212E0 28B ??_GAptCampaignMenu@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00796227 8B Unwind@00b96227 -- matched in Code/GameEngine/Source/Common/Rva005211D1Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0079622F 10B __ehhandler$??1Rva005211D1@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva005211D1Dtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00796239 8B $L421 -- matched in Code/GameEngine/Source/GameClient/GUI/Rva00521206Dtor.cpp (not merged yet)
 
