@@ -98,9 +98,7 @@ Watchdog::Watchdog(int timeout, int warningInterval, int warningDelay) :
 	InitializeCriticalSection(&m_criticalSection);
 }
 
-// Counter suppression and heartbeat refresh are already rowed in
-// Main/BfmeDfe6e4_M_rva00625476.cpp (0x00225476),
-// Main/BfmeDfe6e4_rva00225492.cpp (0x00225492), and
-// Main/BfmeDfe6e4_M_rva00625699.cpp (0x00225699).
-// Their placeholder class identity remains to be reconciled with Watchdog.
-// Watchdog::stop: defined in WatchdogThreadFunction.cpp (its row's unit).
+// Counter suppression and heartbeat refresh (0x00225476, 0x00225492,
+// 0x00225699) are rowed in Main/BfmeDfe6e4.cpp under a placeholder class
+// identity that remains to be reconciled with Watchdog.
+// Watchdog::stop: defined in Main/BfmeDfe6e4.cpp (its row's unit).
