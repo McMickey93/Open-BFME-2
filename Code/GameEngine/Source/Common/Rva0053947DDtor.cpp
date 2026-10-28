@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHs /O1 /G7 /arch:SSE /Ireference/shims/bfme2_vector3 /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib /Ireference/shims/sweep
+// cl: /DNDEBUG /MD /D_CRTIMP= /EHs /O1 /G7 /arch:SSE /Ireference/shims/bfme2_vector3 /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/game/Libraries/Source/WWVegas/WWLib /Ireference/shims/sweep
 // ??1Rva0053947D@@UAE@XZ @0x0053947D 87B:
 // Virtual dtor: vtable 0x00869228, base list at +4 via rowed forEach 0x005393F3
 // with forwarder 0x001FF3A9 and arg this, erase via rowed 0x002BF6B7 on
@@ -9,13 +9,12 @@
 // erase row, free row; /EHs for or -1 before free (neighbours use /EHsc).
 #include "vector3.h"
 #include <string.h>
+#include <stdlib.h>
 class Rva005393F3Listener
 {
 public:
 	virtual void notify(void *);
 };
-
-extern "C" void __cdecl free(void *p);
 
 class Rva005393F3List
 {
