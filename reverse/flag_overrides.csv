@@ -322,6 +322,8 @@ Code/GameEngine/Source/GameNetwork/BfmeHostBT_bfmeReportBT.cpp,-O2,1,1,region de
 Code/GameEngine/Source/GameNetwork/BfmeOneHundredFiftyEight.cpp,,3,3,region default loses rows
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDConstructor.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp,,5,2,region default loses rows
+Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp,,11,1,region default loses rows
+Code/GameEngine/Source/GameNetwork/BfmeThingUNC.cpp,-O2,4,4,region default loses rows
 Code/GameEngine/Source/GameNetwork/BfmeThingZI.cpp,,17,6,region default loses rows
 Code/GameEngine/Source/GameNetwork/ConnectionRva0058BD4F.cpp,-O2 -arch:SSE,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/DisconnectManager.cpp,,2,1,region default loses rows
@@ -414,7 +416,6 @@ Code/GameEngine/Source/GameNetwork/Rva00809E40FeslAdmission.cpp,-O2,2,1,region d
 Code/GameEngine/Source/GameNetwork/Rva0080A110Route.cpp,-O2,2,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva0080A280FeslHandler.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva0080A3C0FeslDispatcher.cpp,-O2,2,1,region default loses rows
-Code/GameEngine/Source/GameNetwork/Rva0080A940OwnerFinish.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva0080AA80LanTheater.cpp,-O2,2,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva0080AB50Handle.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/ServiceHubImpl.cpp,-O2,10,7,region default loses rows
@@ -444,10 +445,8 @@ Code/GameEngine/Source/GameNetwork/Y4FeslBuddyRequests.cpp,,18,4,region default 
 Code/GameEngine/Source/GameNetwork/Y4FeslBuddyRequests2.cpp,,6,6,region default loses rows
 Code/GameEngine/Source/GameNetwork/Y4FeslBuddyRequests3.cpp,,4,2,region default loses rows
 Code/GameEngine/Source/GameNetwork/Y4FeslFavGameAddress_accept.cpp,-O2,1,1,region default loses rows
-Code/GameEngine/Source/GameNetwork/Y4FeslFavGameList.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Y4FeslGameListRequest.cpp,,2,2,region default loses rows
 Code/GameEngine/Source/GameNetwork/Y4FeslLanGameCtor.cpp,-O2,2,2,region default loses rows
-Code/GameEngine/Source/GameNetwork/Y4FeslPlayerData.cpp,-O2,2,2,region default loses rows
 Code/GameEngine/Source/GameNetwork/Y4FeslPlayerEnter.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Y4FeslPresenceRequest.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Y4FeslSubTest.cpp,,1,1,region default loses rows

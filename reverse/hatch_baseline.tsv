@@ -1670,7 +1670,6 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv1052Do.cpp	?bfmeDo1052@Rva00
 alternatename	Code/GameEngine/Source/Common/BfmeConv1137Uninstall.cpp	?ScreenTextureStageStateChanges@@3IA	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1187.cpp	?bfmeCtorECMa@BfmeThingECMa@@QAEPAV1@XZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1208.cpp	?bfmeCallDXH@@YAXPAVBfmeSubDXH@@PAX0@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1293.cpp	?bfmeUseSB@BfmeSinkSB@@QAEXPAX0@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1303.cpp	?bfmeFwdSWA@BfmeThingSWA@@QAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1316.cpp	?bfmeBaseSJ@BfmeThingSJ@@QAEXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1316.cpp	?bfmeStepTKD@@YAXNH@Z	1
@@ -3469,6 +3468,7 @@ alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJ
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJO@BfmeMsgVJO@@QAEXPADH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	??1Gen007F86D0@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingTWA.cpp	?set@BfmeThingTWA@@UAEXHH@Z	1
+alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingUNC.cpp	?bfmeUseSB@BfmeSinkSB@@QAEXPAX0@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingZI.cpp	?bfmeFindFN@BfmeOwnerFN@@QAEHPAVBfmeVecFN@@PBD@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/CDownloadCtorEmit.cpp	?Abort@CDownload@@UAEJXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp	?find@FontCharMap@@QAEPAUFontCharNode@@ABG@Z	1
