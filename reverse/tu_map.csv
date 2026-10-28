@@ -50894,7 +50894,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005DB9E4,89,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,U,N=Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp
 0x005DBA3D,35,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,U,N=Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp
 0x005DBA60,60,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,U,N=Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp W=Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
-0x005DBA9C,177,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,N,N=Code/GameEngine/Source/Common/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp
+0x005DBA9C,177,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,N,N=Code/GameEngine/Source/Common/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/Common/Rva005DBA9CFinish.cpp
 0x005DBB4D,45,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBA9C..0x005DBB7A provisional,Code/GameEngine/Source/Common/GapBodiesGE15.cpp
 0x005DBB7A,43,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBA9C..0x005DBBA5 provisional,Code/GameEngine/Source/Common/GapBodiesGE38.cpp
 0x005DBBA5,28,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,N,N=Code/GameEngine/Source/Common/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/Common/PortNegotiationSchema_getTimeToSendPing.cpp
@@ -50906,12 +50906,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005DBD10,25,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBD29 provisional,Code/GameEngine/Source/Common/GapBodiesGE03.cpp
 0x005DBD29,20,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBD3D provisional,Code/GameEngine/Source/Common/GapBodiesGE03.cpp
 0x005DBD3D,18,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBD4F provisional,Code/Libraries/Source/WWVegas/WWLib/StlportConstructCopySiblings.cpp
-0x005DBD4F,41,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBD78 provisional,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp
+0x005DBD4F,41,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBD78 provisional,Code/GameEngine/Source/Common/Rva005DBD4FUninitCopy.cpp
 0x005DBD78,40,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBDA0 provisional,Code/GameEngine/Source/Common/Rva005DBD78FillN.cpp
-0x005DBDA0,58,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBDDA provisional,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp
+0x005DBDA0,58,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBDDA provisional,Code/GameEngine/Source/Common/Rva005DBDA0Copy.cpp
 0x005DBDDA,29,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBDF7 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorEraseRangeDeferred.cpp
-0x005DBDF7,115,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBE6A provisional,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp
-0x005DBE6A,43,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBE95 provisional,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp
+0x005DBDF7,115,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBE6A provisional,Code/GameEngine/Source/Common/Rva005DBDF7ListenerWalks.cpp
+0x005DBE6A,43,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,C,C=0x005DBCA6..0x005DBE95 provisional,Code/GameEngine/Source/Common/Rva005DBDF7ListenerWalks.cpp
 0x005DBE95,86,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,N,N=Code/GameEngine/Source/Common/PortNegotiationSchema.cpp W=Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/Common/Rva005DBEEB.cpp
 0x005DBEEB,66,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,N,N=Code/GameEngine/Source/Common/PortNegotiationSchema.cpp W=Code/GameEngine/Source/GameNetwork/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/Common/Rva005DBEEB.cpp
 0x005DBF2D,95,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,N,N=Code/GameEngine/Source/Common/PortNegotiationSchema.cpp provisional,Code/GameEngine/Source/Common/PortNegotiationSchema_sentAPingPacket.cpp
@@ -89443,8 +89443,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007A2B99,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionScreen.cpp,approved,P,P=0x005DB6E2@FuncInfo0x0095AA14 provisional,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionScreenConstructor.cpp
 0x007A2BA1,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionScreen.cpp,approved,P,P=0x005DB6E2@FuncInfo0x0095AA14 provisional,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionScreenConstructor.cpp
 0x007A2BA9,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionScreen.cpp,approved,P,P=0x005DB6E2@FuncInfo0x0095AA14 provisional,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionScreenConstructor.cpp
-0x007A2BB3,8,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,P,P=0x005DBDF7@FuncInfo0x0095AA38 provisional,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp
-0x007A2BBB,10,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,P,P=0x005DBDF7@FuncInfo0x0095AA38 provisional,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp
+0x007A2BB3,8,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,P,P=0x005DBDF7@FuncInfo0x0095AA38 provisional,Code/GameEngine/Source/Common/Rva005DBDF7ListenerWalks.cpp
+0x007A2BBB,10,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,P,P=0x005DBDF7@FuncInfo0x0095AA38 provisional,Code/GameEngine/Source/Common/Rva005DBDF7ListenerWalks.cpp
 0x007A2BC5,11,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,P,P=0x005DC43B@FuncInfo0x0095AA5C provisional,Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp
 0x007A2BD0,10,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,P,P=0x005DC43B@FuncInfo0x0095AA5C provisional,Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp
 0x007A2BDA,8,code,Code/GameEngine/Source/Common/PortNegotiationSchema.cpp,approved,P,P=0x005DC586@FuncInfo0x0095AA80 provisional,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
