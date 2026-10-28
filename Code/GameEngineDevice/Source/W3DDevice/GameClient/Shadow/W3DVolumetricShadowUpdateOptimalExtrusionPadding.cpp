@@ -22,8 +22,7 @@
 typedef float Real;
 typedef int Int;
 
-#define NULL 0
-
+#include <stddef.h>
 #include <math.h>
 
 class Vector3
