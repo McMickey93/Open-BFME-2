@@ -1,0 +1,45 @@
+{
+  "fork": "McMickey93/Open-BFME-2",
+  "control_branch": "codex/20261028-round4-filesize-sdk-transfer",
+  "result_branch": "codex/20261028-round4-filesize-sdk-verified",
+  "checkpoint_prefix": "codex/20261028-round4-filesize-sdk-checkpoint",
+  "completion_branch": "codex/20261028-round4-filesize-sdk-completed",
+  "release_branch": "codex/20261028-round4-filesize-sdk-release",
+  "branch": "refs/heads/codex/20261028-round4-filesize-sdk",
+  "base": "0b61e4a540470f6b9fd997376d44f3bc7801dd1f",
+  "transport_expected": "0b61e4a540470f6b9fd997376d44f3bc7801dd1f",
+  "agents_blob": "a2358475408be34cc5d0c16e28565982f494e8a6",
+  "native_preparation": true,
+  "source": "Code/stlport/FileSizeHelper.cpp",
+  "source_before": "2c64bce0dbbc2746a04d867814fb3aadf8ff2f20",
+  "source_blob": "5e6f6df4a8fb0b095b0d66dbc9b97e5777b5be49",
+  "verify_sources": [
+    "Code/stlport/FileSizeHelper.cpp"
+  ],
+  "claim_refs": [
+    "refs/heads/claims/0x0001D240",
+    "refs/heads/claims/file/0b4a7f866d179718"
+  ],
+  "claim_ref": "refs/heads/claims/0x0001D240",
+  "claim_owner": "github:McMickey93:bfme2:round4-20261028",
+  "claim_lease": "deaf68660cc641a6aa1a4d2e24790fe2",
+  "started": 1793183734,
+  "old_reference": "e74410b3738a2bb75d626085d9ebfd3406a43ff7",
+  "witness_sources": [
+    "Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerRva0035A005.cpp",
+    "Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerClaimRva00359E93.cpp"
+  ],
+  "reviewed_blobs": {
+    "reference/open-bfme-1": "e74410b3738a2bb75d626085d9ebfd3406a43ff7",
+    "Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerRva0035A005.cpp": "5ff3f7e90e1f382033320fd1321eb6fc4ebeb165",
+    "Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerClaimRva00359E93.cpp": "e3b2283c8c43b4817d7c5d8177337f1b30c0f721"
+  },
+  "files": [
+    "Code/stlport/FileSizeHelper.cpp",
+    "reverse/ms_header_queue.tsv",
+    "reverse/re_attempts.log",
+    "reverse/attempt_support/20261028-filesize-helper-windows-sdk.md"
+  ],
+  "evidence": "reverse/attempt_support/20261028-filesize-helper-windows-sdk.md",
+  "commit_message": "Use the Windows SDK in STLport's file-size helper\n\nReplace the two local API declarations and private LARGE_INTEGER stand-in with windows.h and LARGE_INTEGER. Preserve the existing 50-byte body, imports and runtime COFF sections; retire only this file's measured Microsoft-header queue row.\n\nClaim-Lease: 0x0001D240=deaf68660cc641a6aa1a4d2e24790fe2\nClaim-Lease: file/0b4a7f866d179718=deaf68660cc641a6aa1a4d2e24790fe2\nAgent-Authored: OpenAI Codex\n"
+}
