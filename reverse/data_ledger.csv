@@ -18848,8 +18848,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FEC74,12,.data,global,?g_Va00DFEC74@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,owned,,1,1
 0x009FEC80,4,.data,global,?g_Va00DFEC80@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFECxx.cpp,owned,,1,2
 0x009FEC84,16,.data,global,?g_Va00DFEC84@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,owned,,1,1
-0x009FEC94,20,.data,global,?g_pool00286116@@3URva00065964ObjectPool@@A,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp,provisional,?g_Va00DFEC94@@3IA;?g_pool00286116@@3URva00065964ObjectPool@@A,2,3
-0x009FECA8,28,.data,global,?g_pool00286136@@3URva00065964ObjectPool@@A,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp,provisional,?g_Va00DFECA8@@3IA;?g_pool00286136@@3URva00065964ObjectPool@@A,2,3
+0x009FEC94,20,.data,global,?g_pool00286116@@3URva00065964ObjectPool@@A,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,provisional,?g_Va00DFEC94@@3IA;?g_pool00286116@@3URva00065964ObjectPool@@A,2,3
+0x009FECA8,28,.data,global,?g_pool00286136@@3URva00065964ObjectPool@@A,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,provisional,?g_Va00DFECA8@@3IA;?g_pool00286136@@3URva00065964ObjectPool@@A,2,3
 0x009FECC4,4,.data,global,?TheExperienceLevelSystem@@3PAVExperienceLevelSystem@@A,Code/GameEngine/Source/GameLogic/System/DelayedExperienceLevelGrantXfer.cpp,provisional,?TheExperienceLevelStore@@3PAVExperienceLevelStore@@A;?TheExperienceLevelSystem@@3PAVExperienceLevelSystem@@A,1,63
 0x009FECC8,1,.data,global,_g_Va00DFECC8,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp,owned,,1,4
 0x009FECC9,3,.data,global,_g_Va00DFECC9,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp,owned,,1,3

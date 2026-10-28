@@ -493,7 +493,6 @@ Code/GameEngine/Source/Common/Rva0010F24FLock.cpp	conflicting	mangle	2	2	0	0	0	0
 Code/GameEngine/Source/Common/Rva0010F33CStart.cpp	conflicting	mangle	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Include/Common/Rva00041004Lock.h:4 CRITICAL_SECTION(mangle)		EnterCriticalSection:same,LeaveCriticalSection:same
 Code/GameEngine/Source/Common/Rva0010F38APause.cpp	conflicting	mangle	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Include/Common/Rva00041004Lock.h:4 CRITICAL_SECTION(mangle)		EnterCriticalSection:same,LeaveCriticalSection:same
 Code/GameEngine/Source/Common/Rva00151288SetPath.cpp	conflicting	abi	2	0	0	0	0	0	2	0	0	0	0	<stdlib.h>	no	no	hand			_splitpath:abi,_makepath:abi
-Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	1	<windows.h>,<excpt.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
 Code/GameEngine/Source/Common/Rva00407A6A.cpp	conflicting	mangle	2	1	0	0	0	1	0	0	0	0	0	<windows.h>	yes	yes	hand			GUID:mangle,CoCreateGuid:same
 Code/GameEngine/Source/Common/Rva005B5B39Box.cpp	conflicting	abi	2	0	0	0	0	0	2	0	0	0	0	<ctype.h>,<stdlib.h>	no	no	hand			isdigit:abi,atoi:abi
 Code/GameEngine/Source/Common/Rva00739D90Siblings.cpp	conflicting	abi	2	0	0	0	0	0	2	0	0	0	0	<math.h>	no	no	hand			floor:abi,ceil:abi
@@ -984,3 +983,4 @@ Code/GameEngine/Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp	conflict
 Code/GameEngine/Source/Common/MilesMutexGuard.cpp	conflicting	mangle	7	7	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Include/Common/Rva00041004Lock.h:4 CRITICAL_SECTION(mangle)		CloseHandle:same,WaitForSingleObject:same,EnterCriticalSection:same,LeaveCriticalSection:same,InitializeCriticalSection:same,DeleteCriticalSection:same,ReleaseMutex:same
 Code/GameEngine/Source/Common/PortNegotiationSchema.cpp	unverified	unverified	1	0	0	0	1	0	0	0	0	0	0	<new.h>	no	yes	hand			operator new:unverified
 Code/GameEngine/Source/Common/version.cpp	conflicting	abi	4	1	0	0	0	0	3	0	0	0	0	<stdlib.h>,<windows.h>,<stdio.h>	yes	no	hand			srand:abi,rand:abi,sscanf:abi,GetTickCount:same
+Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	1	<windows.h>,<excpt.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same

@@ -19458,17 +19458,17 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00285F43,102,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp W=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00285FA9,293,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002860CF,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemParseMaterial.cpp
 0x002860CF,61,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028610C,Code/GameEngine/Source/Common/Rva002860CF.cpp
-0x0028610C,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286116,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp
-0x00286116,22,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028612C,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp
-0x0028612C,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286136,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp
-0x00286136,22,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028614C,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp
-0x0028614C,55,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286183,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp
-0x00286183,45,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002861B0,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00286183.cpp
+0x0028610C,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286116,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00286116,22,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028612C,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x0028612C,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286136,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00286136,22,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028614C,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x0028614C,55,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286183,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00286183,45,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002861B0,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x002861B0,25,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002861C9,Code/GameEngine/Source/Common/Rva002861B0Copy6.cpp
-0x002861C9,38,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002861EF,Code/GameEngine/Source/Common/Rva002861C9Copy.cpp
-0x002861EF,37,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286214,Code/GameEngine/Source/Common/Rva002861EFFill.cpp
+0x002861C9,38,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002861EF,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x002861EF,37,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286214,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x00286214,73,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028625D,Code/GameEngine/Source/Common/Rva00286214Finish.cpp
-0x0028625D,45,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028628A,Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva00285bec.cpp
+0x0028625D,45,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x0028628A,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x0028628A,13,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x00286297,Code/GameEngine/Source/Common/Disp8DivAvgDwordGetters.cpp
 0x00286297,22,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002862AD,Code/GameEngine/Source/Common/Rva00286297Zero.cpp
 0x002862AD,28,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00285F43..0x002862C9,Code/GameEngine/Source/Common/Rva00285BECDtor.cpp
@@ -19479,7 +19479,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0028641F,199,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x002864E6,310,code,Code/GameEngine/Source/Common/FireLogicSystem.cpp,proposed,N,N=Code/GameEngine/Source/Common/FireLogicSystem.cpp noncontiguous,Code/GameEngine/Source/Common/FireLogicSystem_ChangeFuelInArea.cpp
 0x0028661C,17,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,K,K=Rva00286214,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
-0x0028662D,41,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,K,K=Rva0028614C,Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp
+0x0028662D,41,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,K,K=Rva0028614C,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x00286656,41,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,C,C=0x0028662D..0x0028667F,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00286656.cpp
 0x0028667F,20,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,K,K=Rva00286214,Code/GameEngine/Source/Common/GapBodiesSeat1A.cpp
 0x00286693,34,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,C,C=0x0028667F..0x002866B5,Code/Libraries/Source/WWVegas/WWLib/stlport_rbtree_create_00286693.cpp
@@ -19495,7 +19495,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00286AB4,528,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp W=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00286CC4,138,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00286D4E,229,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
-0x00286E33,149,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00286D4E..0x00286EC8,Code/Libraries/Source/WWVegas/WWLib/Rva00286E33InsertUnique.cpp
+0x00286E33,149,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00286D4E..0x00286EC8,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x00286EC8,185,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemCtorDtor.cpp
 0x00286F81,6,code,Code/GameEngine/Source/Common/FireLogicSystem.cpp,proposed,N,N=Code/GameEngine/Source/Common/FireLogicSystem.cpp noncontiguous,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp
 0x00286F87,8,code,Code/GameEngine/Source/Common/FireLogicSystem.cpp,proposed,N,N=Code/GameEngine/Source/Common/FireLogicSystem.cpp noncontiguous,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp
@@ -19505,7 +19505,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002871A4,278,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp W=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x002872BA,293,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x002873DF,314,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp W=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
-0x00287519,57,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x002873DF..0x00287552,Code/GameEngine/Source/Common/Rva00287519.cpp
+0x00287519,57,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x002873DF..0x00287552,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x00287552,1496,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00287B2A,35,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,K,K=Rva00286214,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00287B4D,184,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00287f76_overflow.cpp
@@ -19514,7 +19514,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00287C39,24,code,Code/GameEngine/Source/Common/FireLogicSystem.cpp,proposed,N,N=Code/GameEngine/Source/Common/FireLogicSystem.cpp noncontiguous,Code/GameEngine/Source/Common/FireLogicSystem.cpp
 0x00287C51,805,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp W=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00287F76,55,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,C,C=0x00287C51..0x00287FAD,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva00287f76_overflow.cpp
-0x00287FAD,1599,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp W=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemUpdate.cpp
+0x00287FAD,1599,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp W=Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x002885EC,7,code,,,-,,Code/GameEngine/Source/Common/DispByteFieldGetters.cpp
 0x002885F3,7,code,,,-,,Code/GameEngine/Source/Common/DispByteFieldGetters.cpp
 0x002885FA,5,code,,,-,,Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp
@@ -70346,8 +70346,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00773E7A,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,P,P=0x00285BEC@FuncInfo0x0091AEC0,Code/GameEngine/Source/Common/Rva00285BECDtor.cpp
 0x00773E82,20,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,P,P=0x00285BEC@FuncInfo0x0091AEC0,Code/GameEngine/Source/Common/Rva00285BECDtor.cpp
 0x00773E96,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,proposed,P,P=0x00285BEC@FuncInfo0x0091AEC0,Code/GameEngine/Source/Common/Rva00285BECDtor.cpp
-0x00773EA0,14,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x0028625D@FuncInfo0x0091AEE4,Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva00285bec.cpp
-0x00773EAE,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x0028625D@FuncInfo0x0091AEE4,Code/Libraries/Source/WWVegas/WWLib/stlport_construct_rva00285bec.cpp
+0x00773EA0,14,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x0028625D@FuncInfo0x0091AEE4,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00773EAE,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x0028625D@FuncInfo0x0091AEE4,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x00773EB8,13,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x002862C9@FuncInfo0x0091AF10,Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioKeyMapBfmeAddKey.cpp
 0x00773EC5,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x002862C9@FuncInfo0x0091AF10,Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioKeyMapBfmeAddKey.cpp
 0x00773ECD,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x002862C9@FuncInfo0x0091AF10,Code/GameEngine/Source/GameLogic/LargeGroupAudio/LargeGroupAudioKeyMapBfmeAddKey.cpp
@@ -70370,12 +70370,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00773F98,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287C51@FuncInfo0x0091B020,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00773FA0,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287C51@FuncInfo0x0091B020,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
 0x00773FA8,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287C51@FuncInfo0x0091B020,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemObjects.cpp
-0x00773FB2,11,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemUpdate.cpp
-0x00773FBD,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemUpdate.cpp
-0x00773FC5,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemUpdate.cpp
-0x00773FCD,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemUpdate.cpp
-0x00773FD5,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemUpdate.cpp
-0x00773FDD,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystemUpdate.cpp
+0x00773FB2,11,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00773FBD,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00773FC5,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00773FCD,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00773FD5,8,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
+0x00773FDD,10,code,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp,approved,P,P=0x00287FAD@FuncInfo0x0091B064,Code/GameEngine/Source/GameLogic/Map/FireLogicSystem.cpp
 0x00773FE7,8,code,,,-,,Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp
 0x00773FEF,10,code,,,-,,Code/GameEngine/Source/GameLogic/System/ExperienceLevelDtor.cpp
 0x00773FF9,8,code,Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp,approved,P,P=0x00288E8D@FuncInfo0x0091B0D8,Code/GameEngine/Source/Common/System/CrateCreationEntryList.cpp
