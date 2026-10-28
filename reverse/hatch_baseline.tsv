@@ -4621,9 +4621,6 @@ class_gate_allow	Code/GameEngine/Source/GameLogic/Pathfinder/Rva002E916AFootprin
 class_gate_allow	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_appendMessage_Rva00341350AdjustVariableForwarder.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/GameLogicDestructor.cpp	GameLogic	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/GameLogicDestructor.cpp	SubsystemInterface	1
-class_gate_allow	Code/GameEngine/Source/GameLogic/System/GameLogicDoXfer.cpp	GameLogic	1
-class_gate_allow	Code/GameEngine/Source/GameLogic/System/GameLogicDoXfer.cpp	ObjectIdMap	1
-class_gate_allow	Code/GameEngine/Source/GameLogic/System/GameLogicDoXfer.cpp	ObjectIdNode	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/GameLogicRegisterObject.cpp	GameLogic	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBattleCtor.cpp	Snapshot	1
 class_gate_allow	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldBuildPlot.cpp	Snapshot	1
