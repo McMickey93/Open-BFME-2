@@ -37,10 +37,11 @@ enum { MAX_PACKET_SIZE = 0x1DC };
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "../../../Libraries/Include/Lib/Coord3D.h"
+// The CRT headers omit these throw() contracts; under /EHs that adds cleanup
+// state updates to the rowed message readers and writers.
 extern "C" void *__cdecl memcpy(void *dest, const void *src, unsigned int count) throw();
 extern "C" unsigned char *__cdecl _mbscpy(unsigned char *dest, const unsigned char *src) throw();
-void *__cdecl operator new(unsigned int size);
-void *__cdecl operator new[](unsigned int size);
+#include <new>
 class NetCommandRef;
 class NetCommandMsg
 {
