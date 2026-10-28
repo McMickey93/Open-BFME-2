@@ -1,5 +1,6 @@
-// cl: /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /G7 /arch:SSE /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims
+// cl: /DNDEBUG /MD /EHsc /D_STLP_USE_STATIC_LIB /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims /Ireference/shims/subsystem_bfme2 /Ireference/shims/moduledata
 // stlport
+// TU Code/GameEngine/Source/Common/RTS/PlayerList.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
 // Ported verbatim from the Generals Zero Hour reference
 // (GameEngine/Source/Common/RTS/PlayerList.cpp); this unit had no counterpart under Code/.
 // The compiler-generated vector constructor iterator (??_H) takes the
@@ -13,6 +14,184 @@ struct BfmeVciAnchorElem { BfmeVciAnchorElem(); };
 #pragma optimize("gsy", on)
 static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #pragma optimize("", on)
+#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
+#include "Common/Errors.h"
+#include "Common/DataChunk.h"
+#include "Common/GameState.h"
+#include "Common/GlobalData.h"
+#include "Common/Player.h"
+#include "Common/PlayerList.h"
+#include "Common/PlayerTemplate.h"
+#include "Common/Team.h"
+#include "Common/WellKnownKeys.h"
+#include "Common/Xfer.h"
+#ifdef _DEBUG
+#include "GameLogic/Object.h"
+#endif
+#include "GameLogic/SidesList.h"
+#include "GameNetwork/NetworkDefs.h"
+#ifdef _INTERNAL
+// for occasional debugging...
+//#pragma optimize("", off)
+//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
+
+#endif
+#define BFME_STR_SET(dst, src) ((StringBase<char> &)(dst)).set((const StringBase<char> &)(src))
+
+//-----------------------------------------------------------------------------
+/*extern*/ PlayerList *ThePlayerList = NULL;
+
+class BfmeMemberRV
+{
+public:
+	bool bfmeAskRV();
+};
+
+struct BfmeWorldRV
+{
+	unsigned char m_bfmeHead[0x210];	// BFME1 0x274
+	BfmeMemberRV *m_bfmeOther;
+};
+
+extern class ControlBar *TheControlBar;
+
+class BfmeThingRV
+{
+public:
+	BfmeMemberRV *bfmePickRV();
+	unsigned char m_bfmeHead[0x10];	// BFME1 0xc
+	BfmeMemberRV *m_bfmeMine;
+};
+
+// Negated ask wrapper at retail 0x002A7DD0 (14 bytes), appended here: the
+// body is mov ecx,[ecx+0x10]; call bfmeAskRV; neg al; sbb eax,eax; inc eax;
+// ret, i.e. it returns the logical negation of BfmeMemberRV::bfmeAskRV on the
+// pointer-owned member at +0x10. The owning class is unproven (12 call sites
+// plus one tail-jmp at 0x0009DFD7), so the ledger name below claims only the
+// address plus the witnessed shape. Same declared-only callee as above, so
+// the gate resolves the call through its pin.
+
+class Rva002A7DD0
+{
+public:
+	bool rva002A7DD0();
+
+private:
+	char m_lead[0x10];
+	BfmeMemberRV *m_ptr10; // +0x10
+};
+
+// Retail 0x002A7DDE (54 bytes): thiscall, one pointer argument, ret 4. Reads
+// the Player pointer at +0x10; a null pointer answers false. Otherwise it asks
+// bfmeAskRV on that pointer and answers true when the ask is false, else it
+// compares getRelationship on the argument's Team at +0x304 with 2.
+class Team;
+
+class Player;
+
+class Rva002A7DDEArg
+{
+public:
+	char m_pad[0x304];
+	Team *m_team304;
+};
+
+class Rva002A7DDE
+{
+public:
+	bool rva002A7DDE(Rva002A7DDEArg *arg);
+
+private:
+	char m_lead[0x10];
+	Player *m_ptr10; // +0x10
+};
+
+class PartitionManager;
+
+extern PartitionManager *TheShroudManager;
+
+class Rva007397D0 { public: void rva007397D0(); };
+
+class ControlBar
+{
+public:
+    void rva0031BAC3(Player *);
+    void setControlBarSchemeByPlayer(Player *);
+};
+
+extern ControlBar *TheControlBar;
+
+class ClientFrameSubsystem;
+
+class GameClient;
+
+extern GameClient *TheGameClient;
+
+void ShowControlBar(bool);
+
+struct Rva002A7E42Entry;
+
+struct Rva002A7E42EntryVTable
+{
+    void *unknown00[13];
+    void (__fastcall *refresh)(Rva002A7E42Entry *);
+};
+
+struct Rva002A7E42Entry
+{
+    Rva002A7E42EntryVTable *vtable;
+    char unknown04[0x100];
+    Rva002A7E42Entry *next;
+};
+
+struct Rva002A7E42Client;
+
+struct Rva002A7E42ClientVTable
+{
+    void *unknown00[35];
+    Rva002A7E42Entry *(__fastcall *first)(Rva002A7E42Client *);
+};
+
+struct Rva002A7E42Client { Rva002A7E42ClientVTable *vtable; };
+
+class Rva002A7E42 { public: void rva002A7E42(Player *player); };
+
+// The element is a narrow string handle: retail assigns it through the rowed
+// StringBase<char>::set 0x000366F0 (the refcounted Rva0036CA00Str handle's own
+// assignment is OpaqueRefElement4::operator= 0x00239099, see Rva00403055CopyCtor.cpp).
+template <class T> class StringBase
+{
+public:
+	void set(const StringBase<T> &src);
+};
+
+class Rva0036CA00Str
+{
+private:
+	void *m_item;
+};
+
+class Rva000DF920
+{
+	Rva0036CA00Str *m_00;
+	Rva0036CA00Str *m_04;
+
+public:
+	Rva000DF920 &operator=(const Rva0036CA00Str *pair);
+};
+
+// tu-skeleton: 0x002A79A9 122B ??1PlayerList@@UAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerListDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7A23 6B ?name@Rva002A7A23Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/SubsystemNameGetters2.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7A29 24B ?getNthPlayer@PlayerList@@QAEPAVPlayer@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7A41 46B ?findPlayerWithNameKey@PlayerList@@QAEPAVPlayer@@W4NameKeyType@@@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_findPlayerWithNameKey.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7A6F 49B ?Rva002A7A6F@PlayerList@@QAEPAVPlayer@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_Rva002A7A6F.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/RTS/PlayerList.cpp
+
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -56,33 +235,6 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 // Desc:      @todo
 //
 //-----------------------------------------------------------------------------
-
-#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
-
-#include "Common/Errors.h"
-#include "Common/DataChunk.h"
-#include "Common/GameState.h"
-#include "Common/GlobalData.h"
-#include "Common/Player.h"
-#include "Common/PlayerList.h"
-#include "Common/PlayerTemplate.h"
-#include "Common/Team.h"
-#include "Common/WellKnownKeys.h"
-#include "Common/Xfer.h"
-#ifdef _DEBUG
-#include "GameLogic/Object.h"
-#endif
-#include "GameLogic/SidesList.h"
-#include "GameNetwork/NetworkDefs.h"
-
-#ifdef _INTERNAL
-// for occasional debugging...
-//#pragma optimize("", off)
-//#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
-#endif
-
-//-----------------------------------------------------------------------------
-/*extern*/ PlayerList *ThePlayerList = NULL;
 
 //-----------------------------------------------------------------------------
 // ?PlayerList::PlayerList present-unmatched
@@ -187,7 +339,9 @@ void PlayerList::xfer( Xfer *xfer )
 	for( Int i = 0; i < playerCount; ++i )
 		xfer->xferSnapshot( m_players[ i ] );
 
-}  // end xfer
+}
+
+  // end xfer
 
 // ------------------------------------------------------------------------------------------------
 /** Load post process */
@@ -196,5 +350,174 @@ void PlayerList::xfer( Xfer *xfer )
 void PlayerList::loadPostProcess( void )
 {
 
-}  // end postProcessLoad
+}
 
+  // end postProcessLoad
+
+// tu-skeleton: 0x002A7AB6 24B ?update@PlayerList@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_playerLoops.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7ACE 24B ?rva002A7ACE@PlayerList@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_playerLoops.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7AE6 24B ?newMap@PlayerList@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_playerLoops.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7AFE 30B ?rva002A7AFE@PlayerList@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerListRva002A7AFE.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7B1C 24B ?updateTeamStates@PlayerList@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_playerLoops.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7B34 93B ?setLocalPlayer@PlayerList@@QAEXPAVPlayer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_setLocalPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7B91 56B ?getPlayerFromMask@PlayerList@@QAEPAVPlayer@@H@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7BC9 66B ?getEachPlayerFromMask@PlayerList@@QAEPAVPlayer@@AAH@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7C0B 101B ?rva002A7C0B@PlayerList@@QAEH_N@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7C70 192B ?getPlayersWithRelationship@PlayerList@@QAEHHI_N@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7D30 51B ?rva002A7D30@PlayerList@@QAEHXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7D63 109B ?DoXfer@PlayerList@@UAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerListDoXfer.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/BfmeThreeHundredTwentyFour.cpp
+
+BfmeMemberRV *BfmeThingRV::bfmePickRV()
+{
+	BfmeMemberRV *mine = m_bfmeMine;
+	if (mine == 0)
+		return 0;
+	if (!mine->bfmeAskRV())
+	{
+		BfmeWorldRV *world = (*(BfmeWorldRV **)&TheControlBar);
+		if (world != 0)
+		{
+			BfmeMemberRV *other = world->m_bfmeOther;
+			if (other != 0)
+				return other;
+		}
+	}
+	return mine;
+}
+
+bool Rva002A7DD0::rva002A7DD0()
+{
+	return !m_ptr10->bfmeAskRV();
+}
+
+bool Rva002A7DDE::rva002A7DDE(Rva002A7DDEArg *arg)
+{
+	Player *player = m_ptr10;
+	if (player == 0)
+		return false;
+	if (!((BfmeMemberRV *)player)->bfmeAskRV())
+		return true;
+	int relationship = player->getRelationship(arg->m_team304);
+	if (relationship == 2)
+		return true;
+	return false;
+}
+
+// ---- from Code/GameEngine/Source/GameClient/Rva002A7E42PlayerRefresh.cpp
+
+void Rva002A7E42::rva002A7E42(Player *player)
+{
+    if (player)
+    {
+        if (TheShroudManager)
+            reinterpret_cast<Rva007397D0 *>(TheShroudManager)->rva007397D0();
+        TheControlBar->rva0031BAC3(player);
+        TheControlBar->setControlBarSchemeByPlayer(player);
+        Rva002A7E42Client *client = reinterpret_cast<Rva002A7E42Client *>(TheGameClient);
+        Rva002A7E42Entry *entry = client->vtable->first(client);
+        while (entry)
+        {
+            entry->vtable->refresh(entry);
+            entry = entry->next;
+        }
+        ShowControlBar(false);
+    }
+}
+
+// tu-skeleton: 0x002A7EA0 10B ?get@Rva002A7EA0CmpBoolField@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva000DF920Assign.cpp
+
+Rva000DF920 &Rva000DF920::operator=(const Rva0036CA00Str *pair)
+{
+	BFME_STR_SET(*m_00, pair[0]);
+	BFME_STR_SET(*m_04, pair[1]);
+	return *this;
+}
+
+// tu-skeleton: 0x002A7ECD 8B ??_EPlayerList@@WM@AEPAXI@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerListDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7ED5 28B ??_GPlayerList@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerListDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7EF1 57B ?init@PlayerList@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_playerLoops.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7F2A 49B ?createClonedAllyFor@PlayerList@@QAEPAVPlayer@@PAX@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_createClonedAllyFor.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7F5B 17B ?pointerAtA@Gen_000cd680@@QBEPAPAXH@Z -- matched in Code/GameEngine/Source/Common/Gen_000cd680.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7F6C 20B ?rva002A7F6C@Rva002A7F6C@@QAEPAHH@Z -- matched in Code/GameEngine/Source/Common/GapBodiesSeat1A.cpp (not merged yet)
+
+// tu-skeleton: 0x002A7F80 136B ??0PlayerList@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerListCtorBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x002A8008 766B ?newGame@PlayerList@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A8306 535B ?rva002A8306@PlayerList@@QAEX_N@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x002A851D 717B ?validateTeam@PlayerList@@QAEPAVTeam@@VAsciiString@@PAVMapObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x00775676 8B Unwind@00b75676 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077567E 20B $L408 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00775692 10B __ehhandler$??1PlayerList@@UAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerListDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077569C 8B Unwind@00b7569c -- matched in Code/GameEngine/Source/Common/RTS/PlayerListCtorBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x007756A4 11B Unwind@00b756a4 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListCtorBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x007756AF 10B uw_007756af -- matched in Code/GameEngine/Source/Common/RTS/PlayerListCtorBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x007756B9 10B __ehhandler$??0PlayerList@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerListCtorBFME2.cpp (not merged yet)
+
+// tu-skeleton: 0x007756C3 8B Unwind@00b756c3 -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x007756CB 8B Unwind@00b756cb -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x007756D3 8B Unwind@00b756d3 -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x007756DB 8B Unwind@00b756db -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x007756E3 8B Unwind@00b756e3 -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x007756EB 10B __ehhandler$?newGame@PlayerList@@UAEXXZ -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x007756F5 8B Unwind@00b756f5 -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x007756FD 8B Unwind@00b756fd -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x00775705 8B Unwind@00b75705 -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x0077570D 10B __ehhandler$?rva002A8306@PlayerList@@QAEX_N@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerList_getNthPlayer.cpp (not merged yet)
+
+// tu-skeleton: 0x00775717 8B Unwind@00b75717 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x0077571F 8B Unwind@00b7571f -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x00775727 8B $L5458 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x0077572F 8B Unwind@00b7572f -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x00775737 8B Unwind@00b75737 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x0077573F 8B Unwind@00b7573f -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x00775747 8B Unwind@00b75747 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x0077574F 8B Unwind@00b7574f -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x00775757 8B Unwind@00b75757 -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
+
+// tu-skeleton: 0x0077575F 10B __ehhandler$?validateTeam@PlayerList@@QAEPAVTeam@@VAsciiString@@PAVMapObject@@@Z -- matched in Code/GameEngine/Source/Common/RTS/PlayerListValidateTeam.cpp (not merged yet)
