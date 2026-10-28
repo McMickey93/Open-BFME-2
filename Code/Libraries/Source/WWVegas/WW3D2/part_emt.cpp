@@ -34,6 +34,16 @@ static void bfmeVciAnchor() { BfmeVciAnchorElem anchor[2]; (void)anchor; }
 #include <limits.h>
 #include "gcd_lcm.h"
 #include "quat.h"
+class VBase
+{
+public:
+	virtual void *slot0(int);
+	virtual void *slot1(int);
+	virtual void *slot2(int);
+	virtual void *slot3(int);
+	virtual void slot4(float);
+};
+#include <new>
 
 // Global variable which is only used to communicate the worldspace emitter
 // velocity from ParticleEmitterClass::Create_New_Particles() to
@@ -49,6 +59,26 @@ bool ParticleEmitterClass::DebugDisable = false;
 // (gth) 09/17/2000 - particle emitters now have a local RemoveOnComplete flag
 // which is initialized to the state of DefaultRemoveOnComplete.
 bool ParticleEmitterClass::DefaultRemoveOnComplete = true;
+
+class Rva001A1BF0
+{
+public:
+	void set(VBase *p);
+
+private:
+	char m_pad[0xd4];
+	VBase *m_ptr;
+};
+
+class Rva001A1C40
+{
+public:
+	void set(VBase *p);
+
+private:
+	char m_pad[0xe4];
+	VBase *m_ptr;
+};
 
 // tu-skeleton: 0x001A0C30 7B ?Is_Remove_On_Complete_Enabled@ParticleEmitterClass@@QAE_NXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_frame.cpp (not merged yet)
 
@@ -139,6 +169,8 @@ bool ParticleEmitterClass::DefaultRemoveOnComplete = true;
 // tu-skeleton: 0x001A1530 486B ??0ParticleEmitterClass@@QAE@ABV0@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_copy.cpp (not merged yet)
 
 // tu-skeleton: 0x001A1720 218B ??1ParticleEmitterClass@@UAE@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_destructor.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/part_emt.cpp
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/part_emt.cpp
 
@@ -568,22 +600,12 @@ void ParticleEmitterClass::Scale(float scale)
 	((Scale92Buffer *)Buffer)->Scale(scale);
 }
 
-// tu-skeleton: 0x001A1970 266B ?On_Frame_Update@ParticleEmitterClass@@UAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_frame.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/part_emt_is_stopped.cpp
 
 bool ParticleEmitterClass::Is_Stopped()
 {
 	return Active == false;
 }
-
-// tu-skeleton: 0x001A1BF0 66B ?set@Rva001A1BF0@@QAEXPAVVBase@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/Rva001A1BF0Cluster.cpp (not merged yet)
-
-// tu-skeleton: 0x001A1C40 69B ?set@Rva001A1C40@@QAEXPAVVBase@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/Rva001A1BF0Cluster.cpp (not merged yet)
-
-// tu-skeleton: 0x001A1C90 22B ?Get_Creation_Volume@ParticleEmitterClass@@QBEPAVVector3Randomizer@@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_build_definition.cpp (not merged yet)
-
-// tu-skeleton: 0x001A1CB0 40B ?Get_Velocity_Random@ParticleEmitterClass@@QBEPAVVector3Randomizer@@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_build_definition.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/part_emt_update_cached.cpp
 
@@ -594,14 +616,6 @@ void ParticleEmitterClass::Update_Cached_Bounding_Volumes(void) const
 	CachedBoundingBox.Extent.Set(0,0,0);
 	Validate_Cached_Bounding_Volumes();
 }
-
-// tu-skeleton: 0x001A1DE0 1076B ?Initialize_Particle@ParticleEmitterClass@@AAEXPAUNewParticleStruct@@IABVQuaternion@@ABVVector3@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_initialize.cpp (not merged yet)
-
-// tu-skeleton: 0x001A2220 55B ?Set_Name@ParticleEmitterClass@@UAEXPBD@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/ParticleEmitterSetName.cpp (not merged yet)
-
-// tu-skeleton: 0x001A2260 91B ?Update_On_Visibilty@ParticleEmitterClass@@MAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_update_visibility.cpp (not merged yet)
-
-// tu-skeleton: 0x001A22F0 869B ?Create_From_Definition@ParticleEmitterClass@@SAPAV1@ABVParticleEmitterDefClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_create_from_definition.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_emit.cpp
 
@@ -674,6 +688,43 @@ void ParticleEmitterClass::Emit(void)
 	   PrevOrig = Get_Transform().Get_Translation();
 	}
 }
+
+// tu-skeleton: 0x001A1970 266B ?On_Frame_Update@ParticleEmitterClass@@UAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_frame.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/WWVegas/WW3D2/Rva001A1BF0Cluster.cpp
+
+void Rva001A1BF0::set(VBase *vBase)
+{
+	if (m_ptr) {
+		operator delete(m_ptr->slot0(0));
+		m_ptr = 0;
+	}
+	m_ptr = vBase;
+}
+
+void Rva001A1C40::set(VBase *vBase)
+{
+	if (m_ptr) {
+		operator delete(m_ptr->slot0(0));
+		m_ptr = 0;
+	}
+	m_ptr = vBase;
+	if (vBase) {
+		vBase->slot4(0.001f);
+	}
+}
+
+// tu-skeleton: 0x001A1C90 22B ?Get_Creation_Volume@ParticleEmitterClass@@QBEPAVVector3Randomizer@@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_build_definition.cpp (not merged yet)
+
+// tu-skeleton: 0x001A1CB0 40B ?Get_Velocity_Random@ParticleEmitterClass@@QBEPAVVector3Randomizer@@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_build_definition.cpp (not merged yet)
+
+// tu-skeleton: 0x001A1DE0 1076B ?Initialize_Particle@ParticleEmitterClass@@AAEXPAUNewParticleStruct@@IABVQuaternion@@ABVVector3@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_initialize.cpp (not merged yet)
+
+// tu-skeleton: 0x001A2220 55B ?Set_Name@ParticleEmitterClass@@UAEXPBD@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/ParticleEmitterSetName.cpp (not merged yet)
+
+// tu-skeleton: 0x001A2260 91B ?Update_On_Visibilty@ParticleEmitterClass@@MAEXXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_update_visibility.cpp (not merged yet)
+
+// tu-skeleton: 0x001A22F0 869B ?Create_From_Definition@ParticleEmitterClass@@SAPAV1@ABVParticleEmitterDefClass@@@Z -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_create_from_definition.cpp (not merged yet)
 
 // tu-skeleton: 0x001A2B00 1486B ?Build_Definition@ParticleEmitterClass@@QBEPAVParticleEmitterDefClass@@XZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/particle_emitter_build_definition.cpp (not merged yet)
 
