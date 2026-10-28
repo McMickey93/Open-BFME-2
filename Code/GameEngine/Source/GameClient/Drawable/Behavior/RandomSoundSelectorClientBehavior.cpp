@@ -4,6 +4,66 @@
 #pragma inline_depth(0)
 #pragma inline_depth()
 #define TheRva00DFE77C (*(Rva00DFE77CHolder **)&TheGameClient)
+//
+// ??0RandomSoundSelectorClientBehavior@@QAE@PAVThing@@PBVModuleData@@@Z,
+// retail 0x004CBC2B, 124 bytes. Behavior-side ctor over the rowed opaque
+// intermediate base 0x252B68 (0x0C: vtable + 8 pad, DrawableModule-derived):
+// two-phase +0x0C slot (BE2B78 first via sourced-before address-take,
+// C5F368 second) plus vtable C5F378 plus float at +0x10 via
+// GetGameClientRandomValueReal(0.0f, 1.0f, file, 0x62) (rowed 0x234111,
+// x87 fld1/fldz + fstp, no /arch:SSE) plus conditional int at +0x14 via
+// the global holder at 0xDFE77C (slot1F, int return; ScriptEngine_setFrame
+// precedent) else zero. The rowed instance factory 0x252D2A (news 0x18)
+// is the sole raw caller. Row supersedes the ctor pin.
+
+extern "C" const void *const __identifier("??_7DamageModuleInterface@@6B@")[];
+  // folded vftable 0x00BE2B78 (9 classes), by its data-ledger name
+// The retail table at RVA 0x0085F378: 19 slots, each a rowed code owner (the next
+// word is not a code address or starts another ledger datum).
+extern "C" {
+void __identifier("??_GRva00252B68@@UAEPAXI@Z")();
+void __identifier("??1BfmeRadarMapPoint@@QAE@XZ")();
+void __identifier("?Rva004CBCA7Get@@YAHXZ")();
+void __identifier("?xfer@RandomSoundSelectorClientBehavior@@MAEXPAVXfer@@@Z")();
+void __identifier("?getModuleNameKey@RandomSoundSelectorClientBehavior@@UBE?AW4NameKeyType@@XZ")();
+void __identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z")();
+void __identifier("?Set_Animation@RenderObjClass@@UAEXPAVHAnimClass@@MH@Z")();
+void __identifier("?get@Rva000CA841MovLeaNegSbbField@@QBEHXZ")();
+}
+extern const void *const g_00C5F378[19] = {
+	(const void *)&__identifier("??_GRva00252B68@@UAEPAXI@Z"), // slot 0 0x00254C2F
+	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 1 0x000B3FD0
+	(const void *)&__identifier("?Rva004CBCA7Get@@YAHXZ"), // slot 2 0x004CBCA7
+	(const void *)&__identifier("?xfer@RandomSoundSelectorClientBehavior@@MAEXPAVXfer@@@Z"), // slot 3 0x004CBD7C
+	(const void *)&__identifier("?getModuleNameKey@RandomSoundSelectorClientBehavior@@UBE?AW4NameKeyType@@XZ"), // slot 4 0x004CBCAD
+	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 5 0x000B3FD0
+	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 6 0x000B3FD0
+	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 7 0x000B3FD0
+	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 8 0x000B3FD0
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"), // slot 9 0x000D43D0
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"), // slot 10 0x000D43D0
+	(const void *)&__identifier("?Set_Animation@RenderObjClass@@UAEXPAVHAnimClass@@MH@Z"), // slot 11 0x000D1407
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"), // slot 12 0x000D43D0
+	(const void *)&__identifier("?get@Rva000CA841MovLeaNegSbbField@@QBEHXZ"), // slot 13 0x000CA841
+	(const void *)&__identifier("?get@Rva000CA841MovLeaNegSbbField@@QBEHXZ"), // slot 14 0x000CA841
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"), // slot 15 0x000D43D0
+	(const void *)&__identifier("?ControlBarInput@@YA?AW4WindowMsgHandledType@@PAVGameWindow@@III@Z"), // slot 16 0x000D43D0
+	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 17 0x000B3FD0
+	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 18 0x000B3FD0
+};
+// The retail table at RVA 0x0085F368: 3 slots, each a rowed code owner (the next
+// word is not a code address or starts another ledger datum).
+extern "C" {
+void __identifier("?rva004CBDCF@Rva004CBDCF@@QAE_NHPAURva002C99FB@@@Z")();
+void __identifier("?rva004CBE31@Rva004CBE31@@QAE_NABVAsciiString@@PAURva002C99FB@@@Z")();
+void __identifier("?getSelectedValue@RandomSoundSelectorClientBehavior@@UAE_NPAI@Z")();
+}
+extern const void *const g_00C5F368[3] = {
+	(const void *)&__identifier("?rva004CBDCF@Rva004CBDCF@@QAE_NHPAURva002C99FB@@@Z"), // slot 0 0x004CBDCF
+	(const void *)&__identifier("?rva004CBE31@Rva004CBE31@@QAE_NABVAsciiString@@PAURva002C99FB@@@Z"), // slot 1 0x004CBE31
+	(const void *)&__identifier("?getSelectedValue@RandomSoundSelectorClientBehavior@@UAE_NPAI@Z"), // slot 2 0x004CBD44
+};
+#define TheRva00DFE77C (*(Rva00DFE77CHolder **)&TheGameClient)
 
 struct Rva004CAB3DSoundState
 {
@@ -624,6 +684,16 @@ public:
 	virtual void slot1C(); virtual void slot1D(); virtual void slot1E(); virtual int slot1F();
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+// ---- from Code/GameEngine/Source/GameClient/Drawable/Behavior/RandomSoundSelectorClientBehavior.cpp
+
 // ---- from Code/GameEngine/Source/GameClient/Drawable/Behavior/RandomSoundSelectorClientBehavior.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/Drawable/Behavior/RandomSoundSelectorClientBehavior.cpp
@@ -677,13 +747,9 @@ void RandomSoundSelectorClientBehaviorModuleData::buildFieldParse(MultiIniFieldP
 // collided with select-any copies. The anchor keeps this unit's row copies;
 // it is not retail code.
 
-// tu-skeleton: 0x004CBBF4 21B ?rva004CBBF4@Rva004CBBF4@@QBE_NPAH@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE24.cpp (not merged yet)
 
-// tu-skeleton: 0x004CBC2B 124B ??0RandomSoundSelectorClientBehavior@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x004CBCA7 6B ?Rva004CBCA7Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
-// tu-skeleton: 0x004CBCAD 69B ?getModuleNameKey@RandomSoundSelectorClientBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorPoolKey.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorXfer.cpp
 
@@ -722,4 +788,47 @@ void RandomSoundSelectorClientBehavior::reroll()
 		"C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameClient\\Drawable\\Behavior\\RandomSoundSelectorClientBehavior.cpp",
 		0x74);
 	m_lastFrame = TheRva00DFE77C->slot1F();
+}
+
+// tu-skeleton: 0x004CBBF4 21B ?rva004CBBF4@Rva004CBBF4@@QBE_NPAH@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE24.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorCtor.cpp
+
+// ??0RandomSoundSelectorClientBehavior@@QAE@PAVThing@@PBVModuleData@@@Z @0x004CBC2B
+RandomSoundSelectorClientBehavior::RandomSoundSelectorClientBehavior(Thing *thing, const ModuleData *moduleData)
+	: Rva00252B68(thing, moduleData)
+{
+	// The SoundSelectorSecondary vptr at +0x0C (a base conversion would add a null test).
+	int *slot0C = (int *)((char *)this + 0x0C);
+	*slot0C = (int)((unsigned int)__identifier("??_7DamageModuleInterface@@6B@"));
+	*(const void **)this = g_00C5F378;
+	*(const void **)((char *)this + 0x0C) = g_00C5F368;
+	m_randomSelection = GetGameClientRandomValueReal(0.0f, 1.0f, "C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameClient\\Drawable\\Behavior\\RandomSoundSelectorClientBehavior.cpp", 0x62);
+	Rva00DFE77CHolder *holder = TheRva00DFE77C;
+	if (holder != 0)
+		m_lastFrame = holder->slot1F();
+	else
+		m_lastFrame = 0;
+}
+
+// tu-skeleton: 0x004CBCA7 6B ?Rva004CBCA7Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/RandomSoundSelectorClientBehaviorPoolKey.cpp
+
+// ?getModuleNameKey@RandomSoundSelectorClientBehavior@@UBE?AW4NameKeyType@@XZ @0x4CBCAD
+// (69B): cached pool-name key for RandomSoundSelectorClientBehavior. The class
+// identity comes from the pool-name string the body pushes
+// ("RandomSoundSelectorClientBehavior"); the body guards a function-local static
+// key fetched once through TheNameKeyGenerator. It is NOT getClassMemoryPool:
+// retail stores nameToKey's return (a key, not a pool pointer) and returns it,
+// and the address carries no getClassMemoryPool row anywhere. /EHsc for the
+// static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
+// from retail, no pins; nameToKey resolves via its matched row).
+
+// ?getModuleNameKey@RandomSoundSelectorClientBehavior@@UBE?AW4NameKeyType@@XZ
+NameKeyType RandomSoundSelectorClientBehavior::getModuleNameKey() const
+{
+	static NameKeyType TheRandomSoundSelectorClientBehaviorPoolKey =
+		TheNameKeyGenerator->nameToKey("RandomSoundSelectorClientBehavior");
+	return TheRandomSoundSelectorClientBehaviorPoolKey;
 }
