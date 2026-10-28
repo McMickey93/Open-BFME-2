@@ -25365,7 +25365,7 @@ __Locale_wchar_toupper,,0x00020AC0,39,Code/Libraries/Source/WWVegas/WWLib/Rva008
 ??1Rva004444D2@@UAE@XZ,,0x004444D2,25,Code/GameEngine/Source/Common/Rva004444D2Dtor.cpp,matched,vtable plus array2 via CRT helper
 ??0Rva002542F3Member@@QAE@ABV0@@Z,,0x0043831C,109,Code/GameEngine/Source/GameLogic/Object/Update/Rva002542F3MemberCopy.cpp,matched,copy ctor via ctor TU layout and rowed copies
 ?rva00239435@Rva00239435@@QAE?AVRva002390CB@@H@Z,,0x00239435,34,Code/GameEngine/Source/Common/Rva00239435Get.cpp,matched,copy element at this+0x124 via rowed copy ctor
-??$__uninitialized_copy@PBUBfmeStringRecord005D511F@@PAU1@@_STL@@YAPAUBfmeStringRecord005D511F@@PBU1@0PAU1@ABU__false_type@0@@Z,,0x005D521B,38,Code/Libraries/Source/WWVegas/WWLib/Rva005D521BCopy.cpp,matched,uninitialized_copy 0x14 via rowed Construct 0x005D51EE callers 0x005D54D2 0x005D551D
+??$__uninitialized_copy@PBUBfmeStringRecord005D511F@@PAU1@@_STL@@YAPAUBfmeStringRecord005D511F@@PBU1@0PAU1@ABU__false_type@0@@Z,,0x005D521B,38,Code/GameEngine/Source/Common/BfmeStringRecord005D511F.cpp,matched,uninitialized_copy 0x14 via rowed Construct 0x005D51EE callers 0x005D54D2 0x005D551D
 ??1Display@@UAE@XZ,,0x0025D686,111,Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp,matched,Display dtor via helpers plus strings plus base
 ??_GDisplay@@UAEPAXI@Z,,0x0025DA57,28,Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp,matched,Display deleting dtor via TU vtable
 ??_GRva004444D2@@UAEPAXI@Z,,0x00444509,28,Code/GameEngine/Source/Common/Rva004444D2Dtor.cpp,matched,chain deleting dtor for Rva004444D2 via famgenDelete; rehomed from FamilyDeletingDtors_muse-08.cpp: Rva004444D2Dtor.cpp owns ~Rva004444D2 and emits this deleting dtor itself (the family placeholder dtor was a duplicate definition)
