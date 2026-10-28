@@ -68,6 +68,33 @@ def test_a_claim_is_exclusive_across_hosts(hosts):
     assert claims.active()[0x300]["owner"] == "b"
 
 
+def test_rename_claims_reuses_acquisition_snapshot_and_preserves_owned_lease(hosts, monkeypatch):
+    import rename
+
+    root = hosts("a")
+    previous = claims.claim([0x100])
+    real = claims._git
+    fetches, pushes = [], []
+
+    def git(*args, **kwargs):
+        if args[:1] == ("fetch",):
+            fetches.append(args)
+        elif args[:1] == ("push",):
+            pushes.append(args)
+        return real(*args, **kwargs)
+
+    monkeypatch.setattr(claims, "_git", git)
+    taken = rename.take_claims([0x100, 0x200], True, root)
+    assert len(fetches) == 1
+    assert len(pushes) == 1 and "--atomic" in pushes[0]
+    assert f"--force-with-lease={claims.ref_of(0x100)}:{previous.tokens[0x100]}" in pushes[0]
+    assert taken.new == [0x200] and set(taken.tokens) == {0x200}
+    assert claims.current_lease(0x100, root=root) == previous.leases[0x100]
+    assert taken.release(root) == [0x200]
+    remaining = claims.live(claims._read_local(root))
+    assert 0x100 in remaining and 0x200 not in remaining
+
+
 @pytest.mark.parametrize("upstream", [False, True])
 def test_fetch_snapshots_are_private_to_each_worktree(hosts, tmp_path, upstream):
     primary = hosts("a")

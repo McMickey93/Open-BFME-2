@@ -4915,14 +4915,14 @@ class Claimed:
 def take_claims(keys, enabled, root=None):
     """Claim `keys`. Returns a Claimed holding only the keys this run newly
     took, so releasing it never drops a claim the caller already held.
+    Prior ownership comes from claim()'s acquisition snapshot, not a separate
+    active() fetch that could be cached or race the acquisition.
     Refuses when another worker holds any key; keys origin could not confirm
     (network trouble, nobody else holding them) are reported, not refused."""
     if not enabled or os.environ.get("BFME_CLAIMS", "on") == "off" or not keys:
         return Claimed()
     import claims
     try:
-        names = set(claims._names(claims.owner(root), root))
-        held = {claims.key_of(k) for k, info in claims.active(root).items() if info.get("owner") in names}
         result = claims.claim(keys, note="tools/rename.py", root=root)
     except claims.ClaimsUnavailable as error:
         if error.refused:
@@ -4931,6 +4931,7 @@ def take_claims(keys, enabled, root=None):
         print(f"rename: warning: claims unavailable ({error}); working unclaimed", file=sys.stderr)
         return Claimed(new=list(error.claimed))
     claimed, refused = result
+    held = {claims.key_of(k) for k in result.prior}
     unconfirmed = set(getattr(result, "unconfirmed", []))
     taken = Claimed(new=[k for k in claimed if claims.key_of(k) not in held],
                     tokens={k: v for k, v in result.tokens.items() if claims.key_of(k) not in held},

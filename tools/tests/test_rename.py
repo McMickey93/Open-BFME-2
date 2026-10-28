@@ -253,9 +253,10 @@ def test_canonical_may_replace_a_placeholder(tree):
 
 
 class FakeResult(tuple):
-    def __new__(cls, claimed, refused, tokens=None, unconfirmed=()):
+    def __new__(cls, claimed, refused, tokens=None, unconfirmed=(), prior=()):
         self = tuple.__new__(cls, (list(claimed), list(refused)))
         self.tokens, self.unconfirmed = dict(tokens or {}), list(unconfirmed)
+        self.prior = set(prior)
         return self
 
 
@@ -313,7 +314,8 @@ def test_claims_taken_and_released_with_tokens(monkeypatch):
 def test_claims_already_held_are_never_released(monkeypatch):
     """Finding 12: claim() renews a claim the caller already holds and lists
     it as claimed; releasing it would drop the caller's own claim."""
-    fake = FakeClaims(result=FakeResult([0x401000, 0x402000], [], tokens={0x401000: "a", 0x402000: "b"}),
+    fake = FakeClaims(result=FakeResult([0x401000, 0x402000], [], tokens={0x401000: "a", 0x402000: "b"},
+                                       prior=[0x401000]),
                       active={0x401000: {"owner": "me"}, 0x403000: {"owner": "other"}})
     monkeypatch.setitem(sys.modules, "claims", fake)
     monkeypatch.delenv("BFME_CLAIMS", raising=False)
@@ -321,6 +323,29 @@ def test_claims_already_held_are_never_released(monkeypatch):
     assert taken.new == [0x402000]
     taken.release()
     assert fake.released == [([0x402000], {0x402000: "b"})]
+
+
+def test_prior_ownership_uses_acquisition_without_an_active_fetch(monkeypatch):
+    fake = FakeClaims(result=FakeResult([0x401000, 0x402000], [], tokens={0x401000: "a", 0x402000: "b"},
+                                       prior=[0x401000]))
+    monkeypatch.setitem(sys.modules, "claims", fake)
+    monkeypatch.delenv("BFME_CLAIMS", raising=False)
+    monkeypatch.setattr(fake, "active", lambda *args: pytest.fail("redundant claim snapshot fetch"))
+    taken = rename.take_claims([0x401000, 0x402000], True)
+    assert taken.new == [0x402000]
+    taken.release()
+    assert fake.released == [([0x402000], {0x402000: "b"})]
+
+
+def test_stale_active_cache_cannot_hide_a_newly_acquired_claim(monkeypatch):
+    fake = FakeClaims(result=FakeResult([0x401000], [], tokens={0x401000: "fresh"}),
+                      active={0x401000: {"owner": "me"}})
+    monkeypatch.setitem(sys.modules, "claims", fake)
+    monkeypatch.delenv("BFME_CLAIMS", raising=False)
+    taken = rename.take_claims([0x401000], True)
+    assert taken.new == [0x401000]
+    taken.release()
+    assert fake.released == [([0x401000], {0x401000: "fresh"})]
 
 
 def test_unconfirmed_claims_are_reported_not_refused(monkeypatch, capsys):
