@@ -505,55 +505,34 @@ template <> void vector<PrereqUnitRec, allocator<PrereqUnitRec> >::push_back(con
 }
 
 
-// The save/load stream: the slots XferDelayedRegionVictories reaches
-// (System/XferEnumHelpers.cpp's model: IsLoading +0x04, the version
-// operator +0x28, the int operator +0x7C), and the labelled helpers that
-// move a player id (rowed XferLivingWorldPlayerID), a region id and the
-// victory flags (rowed under placeholder names, label slot +0x94).
-class Xfer
+class PooledString;
+struct Coord3DBase;
+class ICoord3D;
+struct Region3D;
+class IRegion3D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+
+#include "../../../../Include/Common/BfmeXfer.h"
+
+class Xfer::Version
 {
 public:
-	class Version
-	{
-	public:
-		Version(unsigned char current, unsigned char minimum) : m_current(current), m_minimum(minimum) {}
-		unsigned char m_current;
-		unsigned char m_minimum;
-	};
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
 
-	virtual void slot00();
-	virtual Bool IsLoading() const;				// +0x04
-	virtual void slot08();
-	virtual Bool IsCRC() const;				// +0x0C
-	virtual void slot10();
-	virtual void slot14();
-	virtual void slot18();
-	virtual void slot1C();
-	virtual void slot20();
-	virtual Xfer &XferRawBytes(void *data, UnsignedInt size);	// +0x24
-	virtual Xfer &xferVersion(Version &value);		// +0x28
-	virtual void slot2C();
-	virtual Xfer &xferSnapshot(void *snapshot);		// +0x30, operator==(Snapshot &)
-	virtual void slot34();
-	virtual void slot38();
-	virtual void slot3C();
-	virtual void slot40();
-	virtual void slot44();
-	virtual void slot48();
-	virtual void slot4C();
-	virtual void slot50();
-	virtual void slot54();
-	virtual void slot58();
-	virtual void slot5C();
-	virtual void slot60();
-	virtual void slot64();
-	virtual void slot68();
-	virtual void slot6C();
-	virtual void slot70();
-	virtual void slot74();
-	virtual void slot78();
-	virtual Xfer &xferInt(Int &value);			// +0x7C
+	unsigned char m_current;
+	unsigned char m_minimum;
 };
+
+// The labelled helpers move a player id (rowed XferLivingWorldPlayerID), a
+// region id and the victory flags (rowed under placeholder names).
 void XferLivingWorldPlayerID(Xfer *xfer, int *playerID);	// 0x002034C4
 struct Rva003EFE82Obj;
 int __cdecl Rva003EFE82Get(Rva003EFE82Obj *obj, void *out);	// 0x003EFE82, "LivingWorldRegionID"
@@ -1674,11 +1653,11 @@ void LivingWorldLogic::armyMoveRequest(LivingWorldArmy *army, Rva00318C32Ret *ta
 void LivingWorldLogic::XferDelayedRegionVictories(Xfer *xfer)
 {
 	Xfer::Version version(1, 2);
-	xfer->xferVersion(version);
+	*xfer == version;
 	if (xfer->IsLoading())
 	{
 		Int count;
-		xfer->xferInt(count);
+		*xfer == count;
 		for (Int i = 0; i < count; ++i)
 		{
 			Int playerID;
@@ -1702,7 +1681,7 @@ void LivingWorldLogic::XferDelayedRegionVictories(Xfer *xfer)
 	else
 	{
 		Int count = m_delayedRegionVictories.size();
-		xfer->xferInt(count);
+		*xfer == count;
 		for (Int i = 0; i < count; ++i)
 		{
 			Int playerID = ((Rva002B4C35Player *)m_delayedRegionVictories[i].player)->m_id;
@@ -1756,17 +1735,17 @@ struct Rva002BAA3DLogic : public Rva002BAA3DBase18, public Rva002BA8F1Listener
 void LivingWorldLogic::XferPlayers(Xfer *xfer)
 {
 	Xfer::Version version(1, 1);
-	xfer->xferVersion(version);
+	*xfer == version;
 	if (xfer->IsLoading())
 	{
 		Int count;
-		xfer->xferInt(count);
+		*xfer == count;
 		((_STL::vector<void *> *)&m_players)->clear();
 		((_STL::vector<const ModuleData *> *)&m_players)->reserve(count);
 		for (Int i = 0; i < count; ++i)
 		{
 			Rva002E2AAE *player = new Rva002E2AAE;
-			xfer->xferSnapshot(player);
+			*xfer == *(Snapshot *)player;
 			((_STL::vector<const ModuleData *> *)&m_players)->push_back(*(const ModuleData **)&player);
 			player->m_observers.append((Rva002BA8F1Listener *)(Rva002BAA3DLogic *)this);
 		}
@@ -1777,9 +1756,9 @@ void LivingWorldLogic::XferPlayers(Xfer *xfer)
 	else
 	{
 		Int count = m_players.size();
-		xfer->xferInt(count);
+		*xfer == count;
 		for (Int i = 0; i < count; ++i)
-			xfer->xferSnapshot(m_players[i]);
+			*xfer == *(Snapshot *)m_players[i];
 		if (!xfer->IsCRC())
 		{
 			Int id = m_localPlayer ? ((Rva002B4C35Player *)m_localPlayer)->m_id : -1;
