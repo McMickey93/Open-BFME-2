@@ -3652,3 +3652,4 @@ local,BfmeSceneVector::rva00142330::y0,BfmeSceneVector::rva00142330::minY,inferr
 local,BfmeSceneVector::rva00142330::y1,BfmeSceneVector::rva00142330::maxY,inferred,agree:nl-a839b833dcf9,Code/Libraries/Source/WWVegas/WW3D2/SceneSpatialCollectBFME2.cpp,0x00142330
 param,Rva0041534BIter::t,Rva0041534BIter::table,inferred,agree:nl-0980875b263c,Code/Libraries/Source/WWVegas/WWLib/AsciiStringTableSubscripts.cpp,
 param,Rva00574910::rva00574910::arg,Rva00574910::rva00574910::msg,inferred,agree:nl-533cdbb48c0d,Code/GameEngine/Source/Common/MemberBaseDtorsB01.cpp,
+member,Rva0025E5F4Command::type14,Rva0025E5F4Command::m_commandType,inferred,agree:nl-ab4f05c7832d,Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp,

@@ -6,7 +6,7 @@
 class GameMessage;
 class NetGameCommandMsg {public:GameMessage *constructGameMessage();};
 class NetWrapperCommandMsg;
-struct Rva0025E5F4Command {char opaque00[8];int frame8;char opaque0c[8];int type14;};
+struct Rva0025E5F4Command {char opaque00[8];int frame8;char opaque0c[8];int m_commandType;};
 struct Rva0025E5F4Node {Rva0025E5F4Command *command;Rva0025E5F4Node *next;};
 class NetCommandList {public:virtual void *destroy(int);Rva0025E5F4Node *first;};
 class Rva004C54ECByte {public:__declspec(noinline) unsigned char get();char opaque00[0x1c];unsigned char value;};
@@ -106,7 +106,7 @@ void Rva0025E4CD::rva0025E5F4() {
  for(Rva0025E5F4Node *node=list->first;node;node=node->next) {
   Rva0025E5F4Command *command=node->command;
   if(!command)continue;
-  switch(command->type14) {
+  switch(command->m_commandType) {
   case 4:
    ((NetGameCommandMsg*)command)->constructGameMessage();
    TheCommandList->append(((NetGameCommandMsg*)command)->constructGameMessage());break;
