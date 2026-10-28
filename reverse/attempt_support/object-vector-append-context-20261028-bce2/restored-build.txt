@@ -1,0 +1,12 @@
+Source claims: OK (2 sources, scoped byte-verified)
+Compile: 1 of 2 TU(s) (deps-cache: 1 current)
+Funclet pins: 24 row(s) verified past a renumbered $L label
+    $L7499 (Code/GameEngine/Source/GameLogic/SkirmishAI/AIBuilder.cpp): $L7499 was renumbered; verified parent EH data places $L8328 at 0x007927DD
+    $L7500 (Code/GameEngine/Source/GameLogic/SkirmishAI/AIBuilder.cpp): $L7500 was renumbered; verified parent EH data places $L8329 at 0x007927E8
+    $L7501 (Code/GameEngine/Source/GameLogic/SkirmishAI/AIBuilder.cpp): $L7501 was renumbered; verified parent EH data places $L8330 at 0x007927F3
+    $L7502 (Code/GameEngine/Source/GameLogic/SkirmishAI/AIBuilder.cpp): $L7502 was renumbered; verified parent EH data places $L8331 at 0x00792801
+    $L7503 (Code/GameEngine/Source/GameLogic/SkirmishAI/AIBuilder.cpp): $L7503 was renumbered; verified parent EH data places $L8332 at 0x0079280F
+Functions: OK 194/194 matched across 2 source file(s)
+String-ref verify: OK (10 literals + 2 empty-string refs verified, 0 baselined, 0 unverified/skipped)
+Float-ref verify: OK (50 compiler literals verified)
+Import-ref verify: OK (0 named imports verified)

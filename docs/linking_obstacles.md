@@ -7208,6 +7208,16 @@ Clearance: unchanged prerequisite bytes/bindings only. Composition and selected-
 
 ### LINK-132: AIBuilder selects a non-retail Object-pointer vector destructor
 
+2026-10-28 append/overflow follow-up at `d6a91b0f7e6`, index `41c28839bf`:
+the served HordeContain file still has exactly the three AIBuilder-selected
+vector-operation blockers. Four new append/overflow/context trials change
+the parent; the frame-flag trial also changes other rows. All are reverted. Restored provider
+and consumer pass 194/194 rows and 17 EXACT EH graphs; all 89 provider
+bindings and external object facts equal control. The next repair must
+preserve the parent's loop/cleanup compiler context as well as the native
+operations. [Trial boundaries and restoration proof](../reverse/attempt_support/object-vector-append-context-20261028-bce2/README.md).
+No clearance or census gain is claimed.
+
 Status: Blocked; five clean-C++ configurations rejected and reverted. Updated: 2026-10-28; inspected revision: `3bb77a8a89`; ordinary-preview index: `54b83e4f69`.
 
 Evidence / affected units: the default SplitHordeSpecialPower::doSpecialPower pick byte-matches but selects AIBuilder.cpp's 14-byte vector destructor before the existing retail five-byte providers. AIBuilder's normal upgrade-check cleanup inlines deallocation while unwind 0x007928AC jumps to the vector destructor. [Target facts, trial configurations and restored checks](../reverse/attempt_support/object-vector-destructor-selection-20261028-codex3.md).

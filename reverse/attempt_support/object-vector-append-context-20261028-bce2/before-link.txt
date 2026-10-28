@@ -1,0 +1,6 @@
+Compile: 0 of 1 TU(s) (deps-cache: 1 current)
+Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainIface11CSlots.cpp: does not link  LINKED 0 -> 0 bytes (census 2026-10-28 11:08 at 41c28839bf; file's own bytes 23,871)
+  selected    ??1?$vector@PAVObject@@V?$allocator@PAVObject@@@_STL@@@_STL@@QAE@XZ  (the definition the link keeps is not retail's)
+  selected    ?_M_insert_overflow@?$vector@PAVObject@@V?$allocator@PAVObject@@@_STL@@@_STL@@IAEXPAPAVObject@@ABQAV3@ABU__true_type@2@I_N@Z  (the definition the link keeps is not retail's)
+  selected    ?push_back@?$vector@PAVObject@@V?$allocator@PAVObject@@@_STL@@@_STL@@QAEXABQAVObject@@@Z  (the definition the link keeps is not retail's)
+link_check: 0 of 1 link cleanly; LINKED 0 -> 0 bytes (4.2s)
