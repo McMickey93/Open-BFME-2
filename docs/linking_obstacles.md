@@ -3007,6 +3007,19 @@ separate strict receipt limitation encountered there.
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 377ffd1724.**
 
+- **StreakLine setter composition (2026-10-28, input `9e87a05faf`):**
+  Identical Shrink specialization spelling clears the SetPoints donor's
+  duplicate-definition blocker. The supported merge removes one source file,
+  preserves all 66 rows and three EXACT EH graphs, and retains all providers
+  except an unreferenced five-byte private helper. The destination, two
+  residuals and two direct callers preview LINKS with current receipts.
+  The final batch audit remains INCONCLUSIVE: index `54b83e4f69` predates the
+  outgoing base, and broader shared-helper consumers lack current receipts.
+  Carry this scope into the next normal census. Getter flags and destructor
+  specialization contracts remain prerequisites for the other donors.
+  [Bounded provider, path and register audit](../reverse/attempt_support/streak-consolidation-20261028-codexb4.md).
+  No new census-linked coverage is claimed.
+
 - **ToppleUpdate recovery publication (2026-10-28, recovered `7c60df7bfb`):**
   The retained pool-key merge lands as `76200c6615`, preserving upstream's
   current data names, retired debt and TU approval while transferring its
