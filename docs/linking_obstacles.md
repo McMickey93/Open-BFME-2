@@ -4689,6 +4689,19 @@ Clearance: only the removed unrelated emissions are cleared in ordinary-preview 
 
 **`StlSweepW4Rva0056DDF5.cpp` key identity (2026-10-27, seat halilkkaya-lk3, inspected `d16a31e4dc`, index `73061d9452`):** Repair landed / awaiting census. The key copy is one direct call to 0x00037050, the private `StringBase<unsigned short>` copy constructor, which is exactly what the canonical `UnicodeString`'s `__forceinline` copy constructor expands to (`reference/shims/bfme2_ascii/unicode_string.h`); the dword value lands at +4. The row is respelled `pair<const UnicodeString, int>::pair(const UnicodeString &, const int &)`, the unit includes the canonical header and instantiates only that constructor, and the `Rva0056DDF5Element` copy pin is dropped. Target fact: retail's `map<UnicodeString, int>` (online country list, `stlport_online_country_tree.cpp`) inlines the same constructor at 0x0056FE2C; the value type `int` follows that family and is not distinguishable from another dword by bytes. The two existing emitted copies of this name (AptOnlineLogin.cpp, stlport_online_country_tree.cpp, one digest) are now judged against 0x0056DDF5 and both units still LINKS. `./build.sh` 1/1 exact; link_check 0 -> 27 B. Not done: `StlSweepW4Rva0033A7DC.cpp` still needs a real name for the four-byte `BfmeFixedStorage002CF0F0` key (its earlier blocked verdict stands; respelling one placeholder into another was not attempted).
 
+**Tree-copy worker binding (2026-10-28, base `9daf20b530`, index `14dc3d2467`):**
+The `StlSweepW4Rva00501B33.cpp` subset is cleared in ordinary-preview scope.
+Its constructor now calls the existing proxy and 92-byte-value tree-copy
+owners directly, and suppresses the unrelated element-destruction emission.
+Both edited rows and the EH graph remain exact; five current sources pass
+97/97 rows and one data row. All five preview LINKS, with this unit 0 -> 183
+authored bytes and its four providers/callers unchanged. Two obsolete pins
+and their hatch keys retire. [Evidence and limits](../reverse/attempt_support/tree-copy-00501b33-link-20261028-codexb.md).
+The batch audit remains INCONCLUSIVE: the index predates the base and lacks
+per-object consumer names. Carry removed-helper consumers into the next normal
+census; no headline or runtime gain is claimed. The other LINK-054 identity
+prerequisites remain open.
+
 ### LINK-055: map and set sweep wrappers bind differently named existing tree workers
 
 Status: Blocked on row and receiver identity reconciliation. Updated: 2026-10-26; inspected revision: `896af216804e`.

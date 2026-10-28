@@ -7183,8 +7183,6 @@ rva009C7380WeightPairs,0x009B84E0
 ??0?$_Rb_tree_base@URva004FFFF9Element@@V?$allocator@URva004FFFF9Element@@@_STL@@@_STL@@QAE@ABV?$allocator@URva004FFFF9Element@@@1@@Z,0x001F0534,
 ?_M_copy@?$_Rb_tree@URva004FFFF9Element@@U1@U?$_Identity@URva004FFFF9Element@@@_STL@@U?$less@URva004FFFF9Element@@@3@V?$allocator@URva004FFFF9Element@@@3@@_STL@@AAEPAU?$_Rb_tree_node@URva004FFFF9Element@@@2@PAU32@0@Z,0x004FFD09,
 ?get_allocator@?$_Rb_tree_base@URva00501B33Element@@V?$allocator@URva00501B33Element@@@_STL@@@_STL@@QBE?AV?$allocator@URva00501B33Element@@@2@XZ,0x0021983A,
-??0?$_Rb_tree_base@URva00501B33Element@@V?$allocator@URva00501B33Element@@@_STL@@@_STL@@QAE@ABV?$allocator@URva00501B33Element@@@1@@Z,0x004FF55E,
-?_M_copy@?$_Rb_tree@URva00501B33Element@@U1@U?$_Identity@URva00501B33Element@@@_STL@@U?$less@URva00501B33Element@@@3@V?$allocator@URva00501B33Element@@@3@@_STL@@AAEPAU?$_Rb_tree_node@URva00501B33Element@@@2@PAU32@0@Z,0x0050146E,
 ?get_allocator@?$_Rb_tree_base@URva005F2439Element@@V?$allocator@URva005F2439Element@@@_STL@@@_STL@@QBE?AV?$allocator@URva005F2439Element@@@2@XZ,0x0021983A,
 ??0?$_Rb_tree_base@URva005F2439Element@@V?$allocator@URva005F2439Element@@@_STL@@@_STL@@QAE@ABV?$allocator@URva005F2439Element@@@1@@Z,0x00382A6E,
 ?_M_copy@?$_Rb_tree@URva005F2439Element@@U1@U?$_Identity@URva005F2439Element@@@_STL@@U?$less@URva005F2439Element@@@3@V?$allocator@URva005F2439Element@@@3@@_STL@@AAEPAU?$_Rb_tree_node@URva005F2439Element@@@2@PAU32@0@Z,0x005F230E,
