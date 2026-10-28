@@ -2563,6 +2563,12 @@ Object-pointer vector-destructor selection blocker and an unresolved
 TheThreatFinderManager name against index `41c28839bf`. No source edit or
 repeated AIBuilder trial was made; the claim was released.
 
+At base `1f13ae3586`, a refreshed preview against index `d92e7e6635`
+still reports the selected non-retail `vector<Object *>` destructor as the
+sole blocker for GameEngineInit (9,424 authored bytes). The earlier provider
+trials were not repeated. Provider reconciliation or an approved census rule
+decision remains necessary; census clearance is not claimed.
+
 ### LINK-008: include inventories prevent strict reusable graphics receipts
 
 **Status: Blocked on complete include inventories. Updated: 2026-10-27.**
