@@ -9423,7 +9423,7 @@ _vp6_showinfo2,,0x001BB5F0,121,Code/Libraries/Source/VP6/ShowInfo.cpp,matched,Cl
 ?bfmeGo@Rva00800B70Owner@@QAEPAXE@Z,,0x0066CF50,90,Code/GameEngine/Source/GameNetwork/Rva00800B70FeslDtor.cpp,matched,BFME1 byte-identical donor; b1 0x00800B70
 ?FreeMemory@@YAXPAXPAH@Z,,0x006B8D50,58,Code/GameEngine/Source/Common/FreeMemory.cpp,matched,BFME1 byte-identical donor; b1 0x008794C0
 ?d_008859d0@Cftp@@QAEXPBDPAD@Z,,0x006CA4E0,93,Code/Libraries/Source/WWVegas/WWDownload/FTP.CPP,matched,BFME1 donor with format-literal repair; b1 0x008859D0; plus0x34 layout proves class
-_luaO_equalObj,,0x0074E0C0,92,Code/Libraries/Source/Lua/lobject.c,matched,BFME1 byte-identical donor; b1 0x00996F60
+_luaO_equalObj,,0x0074E0C0,92,Code/Libraries/Source/Lua/lobject.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x00996F60
 _DeblockFrameInterlaced,,0x001BFD10,368,Code/Libraries/Source/VP6/DeblockFrameInterlaced.cpp,matched,Clean-room spec 001bfd10; DeblockFrameInterlaced: deblocks a frame as two Y fields plus U and V planes after building the bounding array; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001bfd10.md and retail only
 ?deallocate@?$__malloc_alloc@$0A@@_STL@@SAXPAXI@Z,,0x00023A70,18,Code/Libraries/Source/WWVegas/WWLib/STLMallocAlloc0Deallocate.cpp,matched,BFME1 byte-identical donor; b1 0x0082B100
 ?bfmeGo969D@BfmeD969@@QAEXXZ,,0x006617C0,39,Code/GameEngine/Source/Common/BfmeConv969.cpp,matched,BFME1 byte-identical donor; b1 0x007F4D20
@@ -9508,9 +9508,9 @@ _set2,,0x0074C3F0,26,Code/Libraries/Source/Lua/lbaselib.c,matched,BFME1 byte-ide
 _SetupBoundingValueArray_ForMMX,,0x001D3230,53,Code/Libraries/Source/VP6/SetupBoundingValueArrayMmx.cpp,matched,Clean-room spec 001d3230; SetupBoundingValueArray_ForMMX: cdecl twin of SetupDeblockValueArray_ForMMX on the scratch array at +0x34 returning the block; codec dispatch slot 2 of the SIMD tiers; implemented from the spec plus retail only (no VP6 source read); full 53B exact; replaces placeholder initPattern
 _SetupDeblockValueArray_ForMMX,,0x001C7640,53,Code/Libraries/Source/VP6/SetupDeblockValueArrayMmx.cpp,matched,Clean-room spec 001c7640; SetupDeblockValueArray_ForMMX: cdecl fill of the 32-byte aligned constant block at the midpoint of the postprocessor scratch array at +0x3C (limit / ones / fours as 16-bit pairs) returning the block; codec dispatch slot 1 of the SIMD tiers; implemented from the spec plus retail only (no VP6 source read); full 53B exact; replaces placeholder Rva009B6D40
 ?Rva0083F2F0Duplicate@@YAPAXPBXI@Z,,0x0001C120,55,Code/GameEngine/Source/Common/U2AllocatedRangeCopies.cpp,matched,BFME1 donor with malloc-memmove import repair; b1 0x0083F2F0; ICF pick among twins
-_lua_mathlibopen,,0x00748A50,78,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 byte-identical donor; b1 0x009918F0; 1 DIR32 string literal(s) agree
-_math_log,,0x00748670,38,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 byte-identical donor; b1 0x00991510
-_math_log10,,0x007486A0,38,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 byte-identical donor; b1 0x00991540
+_lua_mathlibopen,,0x00748A50,78,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x009918F0; 1 DIR32 string literal(s) agree
+_math_log,,0x00748670,38,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x00991510
+_math_log10,,0x007486A0,38,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x00991540
 ?bfmeGoVHR@@YAHPAUBfmeLuaVHR@@@Z,,0x0074AF10,92,Code/GameEngine/Source/Common/BfmeConv1367.cpp,matched,BFME1 byte-identical donor; b1 0x00993DB0; ICF-folded in BFME1 so the name is this sweep pick among its twins; 1 DIR32 string literal(s) agree
 ?bfmeGoVHS@@YAHPAUBfmeLuaVHR@@@Z,,0x0074AF70,109,Code/GameEngine/Source/Common/BfmeConv1367.cpp,matched,BFME1 byte-identical donor; b1 0x00993E10; ICF-folded in BFME1 so the name is this sweep pick among its twins; 1 DIR32 string literal(s) agree
 ?bfmeInsideAM@BfmeRangeAM@@QBEEI@Z,,0x00024A20,61,Code/GameEngine/Source/Common/BfmeOneHundredSixtyNine.cpp,matched,BFME1 byte-identical donor; b1 0x0082BF00; ICF-folded in BFME1 with bfmeWithinAM b1 0x0082BF80 so the name is this sweep pick among its twins; single-pick and twin not rowed
@@ -9615,14 +9615,14 @@ _errormessage,,0x0074DEB0,52,Code/Libraries/Source/Lua/lstate.c,matched,BFME1 by
 ?Rva009EBEC0@@YA?AVAssetReference@@ABVAssetName@@@Z,,0x0061F410,196,Code/GameEngineDevice/Source/W3DDevice/GameClient/Rva009EBEC0.cpp,matched,BFME1 donor with empty-string repair; b1 fallback address replaced by verified literal
 ?Rva0081C5C0Count@@YAHXZ,,0x006893D0,34,Code/GameEngine/Source/Common/U2FixedSlotSearches.cpp,matched,BFME1 byte-identical donor b1 0x0081C5C0; ICF-folded in BFME1 single pick; body already in TU with 4 claimed siblings
 ?bfmeGoAUZA@BfmeThingAUZA@@QBE?AUBfmeHandleUZA@@HH@Z,,0x00149540,43,Code/GameEngine/Source/Common/BfmeConv1347.cpp,matched,BFME1 donor with layout repair (m_bfmeSub at +0x94 not +0x9C); b1 0x0092CA60; ICF-folded in BFME1 single pick among twins
-_math_ldexp,,0x007487C0,62,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
-_math_atan,,0x007484C0,42,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
-_math_tan,,0x00748430,42,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
-_math_cos,,0x00748400,40,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
-_math_sin,,0x007483D0,40,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
-_math_abs,,0x007483A0,34,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
-_math_sqrt,,0x007485F0,34,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
-_math_randomseed,,0x00748A30,30,Code/Libraries/Source/Lua/lmathlib.c,matched,BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_ldexp,,0x007487C0,62,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_atan,,0x007484C0,42,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_tan,,0x00748430,42,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_cos,,0x00748400,40,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_sin,,0x007483D0,40,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_abs,,0x007483A0,34,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_sqrt,,0x007485F0,34,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
+_math_randomseed,,0x00748A30,30,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; BFME1 donor; ICF single pick disambiguated by FPU opcode
 ??$_Destroy@PAURva001D28F0Element@@@_STL@@YAXPAURva001D28F0Element@@0@Z,,0x00689CB0,33,Code/GameEngine/Source/GameClient/VideoPlayer.cpp,matched,vector TU already emits range destroy stride 0x1C via existing dtor row no source change
 ?buildFieldParse@Rva0050B107@@SAXAAVMultiIniFieldParse@@@Z,,0x0050B107,51,Code/GameEngine/Source/GameLogic/Object/Die/FXListDieModuleDataBuildFieldParse.cpp,matched,3-add pattern over DieMuxData table-getter pins + DIR32 data table; identity corrected 2026-10-05 from native ModuleFactory registrations; old upgrade-base and 0x50B107 parser names withdrawn where contradicted
 ??$__destroy_aux@PAURva001D28F0Element@@@_STL@@YAXPAURva001D28F0Element@@0ABU__false_type@0@@Z,,0x00689CB0,33,Code/GameEngine/Source/GameClient/VideoPlayer.cpp,matched,locate.py unique masked placement; stlport destroy_aux over Rva001D28F0Element; body already emitted by explicit vector instantiation
@@ -9770,7 +9770,7 @@ _Rva0088E100WatchdogThread@4,,0x0003D7E0,139,Code/Libraries/Source/debug/debug_e
 ?Rva007F3AF0@@YGXPAVRva007E8810Message@@_J1@Z,,0x006605C0,88,Code/GameEngine/Source/GameNetwork/V2FeslTxnRequests.cpp,matched,BFME1 byte-identical donor; b1 0x007F3AF0; ICF-folded BFME1 pick; 3 DIR32 string literal(s) agree
 ?Rva007F3F90@@YGXPAVRva007E8810Message@@_JH@Z,,0x00660A60,87,Code/GameEngine/Source/GameNetwork/V2FeslTxnRequests.cpp,matched,BFME1 byte-identical donor; b1 0x007F3F90; ICF-folded BFME1 pick; 3 DIR32 string literal(s) agree
 ?Rva007F2D10@@YGXPAVRva007E8810Message@@PBDH@Z,,0x0065F800,78,Code/GameEngine/Source/GameNetwork/V2FeslTxnRequests.cpp,matched,BFME1 byte-identical donor; b1 0x007F2D10; ICF-folded BFME1 pick; 3 DIR32 string literal(s) agree
-_invertjump,,0x00751F80,108,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; b1 0x0099E580
+_invertjump,,0x00751F80,108,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x0099E580
 _codepushbool,,0x00752970,151,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; b1 0x0099EF70; 2 DIR32 string literal(s) agree
 ??0MeshLoadContextClass@@AAE@XZ,,0x0018B5F0,405,Code/Libraries/Source/WWVegas/WW3D2/MeshLoadContextCtor.cpp,matched,Dedicated TU replica; +0x10C TextureVector via rowed 0x16ED80 shim and 0xBD4688 vtable per MaterialCollector precedent; 0x118 MeshMatDesc span per matched MeshModelReadTexcoords replica
 ?Set_Coordinate_Range@Render2DClass@@QAEXABVRectClass@@@Z,,0x001188C0,202,Code/Libraries/Source/WWVegas/WW3D2/render2d.cpp,matched,BFME1 Render2DSetCoordinateRangeThunk shape; unsigned screen globals; bias folded into CoordinateOffset with no call
@@ -9783,7 +9783,7 @@ _setnodevector,,0x007506E0,135,Code/Libraries/Source/Lua/ltable.c,matched,unclai
 ?get@Rva002004A1DwordField@@QBEHXZ,,0x002004A1,4,Code/GameEngine/Source/Common/Disp8DwordFieldGetters.cpp,matched,Disp8 dword getter; address-derived opaque holder
 _luaH_mainposition,,0x00750400,88,Code/Libraries/Source/Lua/ltable.c,matched,hash dispatcher with RVA jump table; ftol row serves the NUMBER case; emitted by ltable.c object; vendored=lua-4.0.1
 ?get@Rva003F3FCEDwordField@@QBEHXZ,,0x003F3FCE,4,Code/GameEngine/Source/Common/Disp8DwordFieldGetters.cpp,matched,Disp8 dword getter; address-derived opaque holder
-_luaK_testgo,,0x00752FC0,251,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; b1 0x0099F5C0
+_luaK_testgo,,0x00752FC0,251,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x0099F5C0
 _luaH_set,,0x007508F0,233,Code/Libraries/Source/Lua/ltable.c,matched,hash insert with mainposition and equalObj rows plus lua_error and realloc pins plus rehash pin; recursion self-serves; emitted by ltable.c object; vendored=lua-4.0.1
 _rehash,,0x00750830,183,Code/Libraries/Source/Lua/ltable.c,matched,TU-local static; numuse inlined; setnodevector and luaH_set rows plus realloc pin resolve calls; emitted by ltable.c object; vendored=lua-4.0.1
 ?get@Rva00225A98DwordField@@QBEHXZ,,0x00225A98,4,Code/GameEngine/Source/Common/Disp8DwordFieldGetters.cpp,matched,Disp8 dword getter; address-derived opaque holder
@@ -9791,13 +9791,13 @@ _rehash,,0x00750830,183,Code/Libraries/Source/Lua/ltable.c,matched,TU-local stat
 ?get@Rva0036750CDwordField@@QBEHXZ,,0x0036750C,4,Code/GameEngine/Source/Common/Disp8DwordFieldGetters.cpp,matched,Disp8 dword getter; address-derived opaque holder
 _luaH_setint,,0x007509E0,42,Code/Libraries/Source/Lua/ltable.c,matched,unclaimed_scan exact modulo relocs; single call to luaH_set row; emitted by ltable.c object; vendored=lua-4.0.1
 _luaH_setstrnum,,0x00750A10,55,Code/Libraries/Source/Lua/ltable.c,matched,unclaimed_scan exact modulo relocs; single call to luaH_set row; emitted by ltable.c object; vendored=lua-4.0.1
-_luaK_kstr,,0x00752780,139,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; b1 0x0099ED80; 2 DIR32 string literal(s) agree
-_luaK_infix,,0x007536C0,70,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; b1 0x0099FCC0
+_luaK_kstr,,0x00752780,139,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x0099ED80; 2 DIR32 string literal(s) agree
+_luaK_infix,,0x007536C0,70,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x0099FCC0
 ?get@Rva005C4AF9DwordField@@QBEHXZ,,0x005C4AF9,4,Code/GameEngine/Source/Common/Disp8DwordFieldGetters.cpp,matched,Disp8 dword getter; address-derived opaque holder
 _luaT_tag,,0x0074FDD0,28,Code/Libraries/Source/Lua/ltm.c,matched,call-free type switch unblocking call_binTM double call; emitted by ltm.c object; vendored=lua-4.0.1
 ?get@Rva0057E556DwordField@@QBEHXZ,,0x0057E556,4,Code/GameEngine/Source/Common/Disp8DwordFieldGetters.cpp,matched,Disp8 dword getter; address-derived opaque holder
 ?get@Rva005C4AE9DwordField@@QBEHXZ,,0x005C4AE9,4,Code/GameEngine/Source/Common/Disp8DwordFieldGetters.cpp,matched,Disp8 dword getter; address-derived opaque holder
-_luaK_jump,,0x00752690,166,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; b1 0x0099EC90; 2 DIR32 string literal(s) agree
+_luaK_jump,,0x00752690,166,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x0099EC90; 2 DIR32 string literal(s) agree
 ?_M_push_back_aux_v@?$deque@UBfmeE8@@V?$allocator@UBfmeE8@@@_STL@@@_STL@@IAEXABUBfmeE8@@@Z,,0x0054B456,101,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e8_pushback_aux.cpp,matched,stlport 4.5.3; dedicated TU with int-float element for movss copy and /Oy- ebp frame; a-then-b assignment order
 ?isRange@T2WideCtype@@QBEPBGPBG0PAI@Z,,0x00016D00,57,Code/GameEngine/Source/Common/T2CtypeTableFacets.cpp,matched,BFME1 byte-identical donor; b1 0x00840940
 ?narrowRange@T2WideCtype@@QBEPBGPBG0DPAD@Z,,0x00016E60,57,Code/GameEngine/Source/Common/T2CtypeTableFacets.cpp,matched,BFME1 byte-identical donor; b1 0x00840AA0
@@ -9935,7 +9935,7 @@ _luaY_parser,,0x007561C0,198,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 b
 ?get@Rva0001BC70ByteField@@QBEEXZ,,0x0001BC70,4,Code/GameEngine/Source/Common/Disp8ByteFieldGetters.cpp,matched,Disp8 byte getter; address-derived opaque holder
 ?get@Rva0009D6EDByteField@@QBEEXZ,,0x0009D6ED,4,Code/GameEngine/Source/Common/Disp8ByteFieldGetters.cpp,matched,Disp8 byte getter; address-derived opaque holder
 ?get@Rva0009D6F1ByteField@@QBEEXZ,,0x0009D6F1,4,Code/GameEngine/Source/Common/Disp8ByteFieldGetters.cpp,matched,Disp8 byte getter; address-derived opaque holder
-_lua_strlibopen,,0x0074A0B0,21,Code/Libraries/Source/Lua/lstrlib.c,matched,BFME1 byte-identical donor; b1 0x00992F50
+_lua_strlibopen,,0x0074A0B0,21,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x00992F50
 ??0BfmeThingDC@@QAE@PAUBfmeItemDC@@@Z,,0x00116600,25,Code/Libraries/Source/WWVegas/WW3D2/surfaceclass.cpp,matched,BFME1 byte-identical donor; b1 0x008FC590
 ?bfmeIsFree@Gen_000EE620@@QBE_NH@Z,,0x0023DB70,25,Code/GameEngine/Source/Common/Bfme5TinyThirteen.cpp,matched,BFME1 byte-identical donor; b1 0x000EE620
 ??0SupplyWarehouseDockUpdateModuleData@@QAE@XZ,,0x004A7FF0,29,Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/SupplyWarehouseDockUpdate.cpp,matched,BFME1 byte-identical donor; b1 0x002CFB00; base DockUpdateModuleData ctor pin 0x5896B0 pre-exists; unique in b2 (masked search); body already ZH-verbatim in-TU
@@ -10062,8 +10062,8 @@ _LoadChunk,,0x00756CF0,23,Code/Libraries/Source/Lua/lundump.c,matched,BFME1 byte
 _settabss,,0x00747DC0,30,Code/Libraries/Source/Lua/ldblib.c,matched,BFME1 byte-identical donor; b1 0x00990C60; ICF twin is the same source
 ?bfmeGo1034F@BfmeF1034@@QAEHH@Z,,0x0070F010,33,Code/Libraries/Source/Apt/AptMovie.cpp,matched,BFME1 byte-identical donor; b1 0x008D3280
 ?getThingTemplate@MapObject@@QBEPBVThingTemplate@@XZ,,0x0030D833,22,Code/GameEngine/Source/Common/BfmeConv932.cpp,matched,BFME1 donor b1 0x00087E80; tail jmp via ledger hook pin
-_luaK_code2,,0x00752240,976,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; b1 0x0099E880; exact via unclaimed_scan
-_luaK_tostack,,0x00753160,889,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_code2,,0x00752240,976,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; b1 0x0099E880; exact via unclaimed_scan
+_luaK_tostack,,0x00753160,889,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
 ?bfmeGo1026F@BfmeF1026@@QAEXHHH@Z,,0x004BD6DA,52,Code/GameEngine/Source/Common/BfmeConv1026.cpp,matched,BFME1 byte-identical donor b1 0x00217500; 0x28AFA9 rowed getControllingPlayer and 0x242C09 pinned destroyObject; 1 pin bfmeHas1026
 ?GadgetListBoxGetNumEntries@@YAHPAVGameWindow@@@Z,,0x0032475A,25,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetListBox.cpp,matched,BFME1 byte-identical donor; b1 0x004B77C0
 ?_M_deallocate@?$__node_alloc@$00$0A@@_STL@@CAXPAXI@Z,,0x00027B40,85,Code/Libraries/Source/WWVegas/WWLib/node_alloc_M_deallocateThunk.cpp,matched,BFME1 byte-identical donor; b1 0x0082E5F0
@@ -10075,7 +10075,7 @@ __Locale_ctype_name,,0x00021990,44,Code/Libraries/Source/WWVegas/WWLib/stlport_L
 ?GadgetListBoxSetAudioFeedback@@YAXPAVGameWindow@@_N@Z,,0x0032487B,25,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetListBox.cpp,matched,BFME1 byte-identical donor; b1 0x004B7960
 ?GadgetListBoxGetNumColumns@@YAHPAVGameWindow@@@Z,,0x003248B1,25,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetListBox.cpp,matched,BFME1 byte-identical donor; b1 0x004B79B0
 ?GadgetListBoxGetColumnWidth@@YAHPAVGameWindow@@H@Z,,0x003248CA,43,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetListBox.cpp,matched,BFME1 byte-identical donor; b1 0x004B79D0
-_discharge,,0x00752BD0,520,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
+_discharge,,0x00752BD0,520,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
 ?GadgetSliderGetEnabledSelectedThumbBorderColor@@YAHPAVGameWindow@@@Z,,0x00323D86,23,Code/GameEngine/Source/GameClient/GUI/Gadget/GadgetListBox.cpp,matched,BFME1 byte-identical donor; b1 0x004B6910
 ?getCommandOption@BattlePlanUpdate@@UBE?AW4CommandOption@@XZ,,0x0049771E,33,Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate_getCommandOption.cpp,matched,BFME1 byte-identical donor; b1 0x00285550
 ?bfmeGo928F@BfmeThing928F@@QAEXXZ,,0x0010C80A,27,Code/GameEngine/Source/Common/BfmeConv928.cpp,matched,BFME1 byte-identical donor; b1 0x007B4F80
@@ -10087,26 +10087,26 @@ _discharge,,0x00752BD0,520,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-
 ?disable@Rva001DBB87ZeroSetter@@QAEXXZ,,0x001DBB87,5,Code/GameEngine/Source/Common/Disp8ByteOneSetters.cpp,matched,Disp8 byte zero-setter
 ?disable@Rva00420B2AZeroSetter@@QAEXXZ,,0x00420B2A,5,Code/GameEngine/Source/Common/Disp8ByteOneSetters.cpp,matched,Disp8 byte zero-setter
 ?apply@Rva00395583DwordImmSetter@@QAEXXZ,,0x00395583,8,Code/GameEngine/Source/Common/Disp8DwordImmSetters.cpp,matched,Disp8 dword imm-setter
-_luaK_adjuststack,,0x00752A10,441,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_adjuststack,,0x00752A10,441,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
 ??0GridClassicEnvironmentMapperClass@@QAE@ABVINIClass@@PBDI@Z,,0x0013D2F0,37,Code/Libraries/Source/WWVegas/WW3D2/vertmaterial.cpp,matched,placed by masked whole-text search of the compiled body - single hit; base GridTextureMapper ctor already matched
-_luaK_storevar,,0x00752E10,421,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_patchlistaux,,0x00751FF0,332,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_setcallreturns,,0x00751EF0,137,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_codelineinfo,,0x007521D0,105,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_storevar,,0x00752E10,421,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_patchlistaux,,0x00751FF0,332,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_setcallreturns,,0x00751EF0,137,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_codelineinfo,,0x007521D0,105,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
 ?go@Rva00958C40@@QAEXXZ,,0x00176FF0,22,Code/GameEngine/Source/Common/R1GuardedReleaseHelpers.cpp,matched,BFME1 byte-identical donor shape b1 Rva00958C40; callee is donor-attested bfmeGoVGP pin at 0x176E90 (BFME1 opaque Gen00958BF0 handle is the same bstr Data release; no new pin)
 _listfields,,0x00754EA0,281,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_concat,,0x00752180,72,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan; fixjump pin 0x751D60
-_luaK_deltastack,,0x00751DE0,65,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_need_value,,0x00752140,61,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_patchlist,,0x00752610,56,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_getlabel,,0x00752740,51,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_goiftrue,,0x007530C0,37,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_code1,,0x00752670,26,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_error,,0x00751D20,23,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_concat,,0x00752180,72,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan; fixjump pin 0x751D60
+_luaK_deltastack,,0x00751DE0,65,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_need_value,,0x00752140,61,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_patchlist,,0x00752610,56,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_getlabel,,0x00752740,51,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_goiftrue,,0x007530C0,37,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_code1,,0x00752670,26,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_error,,0x00751D20,23,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
 _call_binTM,,0x0074E920,115,Code/Libraries/Source/Lua/lvm.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan; luaD_callTM pin 0x74DE70
 _luaV_strcomp,,0x0074E9D0,108,Code/Libraries/Source/Lua/lvm.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaO_verror,,0x0074E1D0,55,Code/Libraries/Source/Lua/lobject.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaO_power2,,0x0074E0A0,23,Code/Libraries/Source/Lua/lobject.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
+_luaO_verror,,0x0074E1D0,55,Code/Libraries/Source/Lua/lobject.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaO_power2,,0x0074E0A0,23,Code/Libraries/Source/Lua/lobject.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
 _close_func,,0x007540E0,207,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan; code0 pin 0x752650 + protook pin 0x751BC0
 _recfields,,0x00754DD0,201,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
 _explist1,,0x007541B0,177,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
@@ -10196,7 +10196,7 @@ _new_localvar,,0x00753BF0,116,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 
 ?get@Rva0023C418ByteField@@QBEEXZ,,0x0023C418,4,Code/GameEngine/Source/Common/Disp8ByteFieldGetters.cpp,matched,Disp8 byte getter
 ?get@Rva0023C561ByteField@@QBEEXZ,,0x0023C561,4,Code/GameEngine/Source/Common/Disp8ByteFieldGetters.cpp,matched,Disp8 byte getter
 ?apply@Rva004EDFF8DwordImmSetter@@QAEXXZ,,0x004EDFF8,7,Code/GameEngine/Source/Common/Disp0DwordImmSettersAddr.cpp,matched,Disp0 dword imm-setter; triple first (4EDFF8/F8+7/F8+14)
-_luaK_fixjump,,0x00751D60,88,Code/Libraries/Source/Lua/lcode.c,matched,vendored Lua code-generator; exact via unclaimed_scan; pin upgrade
+_luaK_fixjump,,0x00751D60,88,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; vendored Lua code-generator; exact via unclaimed_scan; pin upgrade
 ??1Rva00484EF4@@UAE@XZ,,0x00484EF4,25,Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp,matched,Opaque MI middle 25B order +0x10/+0/+0xC tail-jumping the 0x49B47C fold; shared PrimaryP plus own B2; upgrades opaque pin
 ??1BodyModule@@UAE@XZ,,0x004BD763,25,Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp,matched,BodyModule dtor: InactiveBody ctor 0x4BD8BD unwind destroys its BodyModule base here and BodyModule ctor 0x4BD7FD vftable slot 0 is ??_G 0x4BD841 calling it; Opaque MI middle 25B order +0x10/+0/+0xC tail-jumping the 0x49B47C fold; shared PrimaryP plus own B2; upgrades opaque pin
 ??1Rva004B96CC@@UAE@XZ,,0x004B96CC,25,Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp,matched,Opaque MI middle 25B order +0x10/+0/+0xC tail-jumping the 0x49B47C fold; shared PrimaryP plus own B2; upgrades opaque base pin
@@ -10305,12 +10305,12 @@ _open_func,,0x00754080,87,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte
 ?apply@Rva004BDA05DwordImmSetter@@QAEXXZ,,0x004BDA05,7,Code/GameEngine/Source/Common/Disp0DwordImmSettersAddr.cpp,matched,Disp0 dword imm-setter
 ?get@Rva002C5808LeaGetter@@QBEPAXXZ,,0x002C5808,7,Code/GameEngine/Source/Common/DispDwordLeaFieldGetters.cpp,matched,Disp32 LEA getter
 ?get@Rva002C8E8ALeaGetter@@QBEPAXXZ,,0x002C8E8A,7,Code/GameEngine/Source/Common/DispDwordLeaFieldGetters.cpp,matched,Disp32 LEA getter
-_luaK_code0,,0x00752650,23,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_lastisopen,,0x00751EB0,56,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_number_constant,,0x00751E30,123,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaK_prefix,,0x007534E0,479,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaO_chunkid,,0x0074E210,267,Code/Libraries/Source/Lua/lobject.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
-_luaO_openspace,,0x0074E120,58,Code/Libraries/Source/Lua/lobject.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_code0,,0x00752650,23,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_lastisopen,,0x00751EB0,56,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_number_constant,,0x00751E30,123,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaK_prefix,,0x007534E0,479,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaO_chunkid,,0x0074E210,267,Code/Libraries/Source/Lua/lobject.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
+_luaO_openspace,,0x0074E120,58,Code/Libraries/Source/Lua/lobject.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor; exact via unclaimed_scan
 _exp1,,0x00754270,33,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor; exact via unclaimed_scan
 _openwithcontrol,,0x0074B490,312,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,BFME1 byte-identical donor; b1 liolib.c openwithcontrol; exact via unclaimed_scan
 ?get@Rva0008BD27FloatField@@QBEMXZ,,0x0008BD27,4,Code/GameEngine/Source/Common/Disp8FloatFieldGetters.cpp,matched,Disp8 float getter; address-derived opaque holder
@@ -10545,7 +10545,7 @@ _luaH_getany,,0x00750460,81,Code/Libraries/Source/Lua/ltable.c,matched,BFME1 byt
 ?apply@Rva0005D2EA1DwordImmSetter@@QAEXXZ,,0x005D2EA1,7,Code/GameEngine/Source/Common/Disp0DwordImmSetters.cpp,matched,Disp0 dword imm-setter; Ghidra-standalone 7B; retail C7-01-782BBE00-C3
 _luaV_tonumber,,0x0074E320,56,Code/Libraries/Source/Lua/lvm.c,matched,BFME1 byte-identical donor b1 lvm.c; exact via unclaimed_scan
 ?get@Rva000CB0FFFildField@@QBENXZ,,0x000CB0FF,4,Code/GameEngine/Source/Common/Disp8FildFieldGetters.cpp,matched,Disp8 fild int-to-double getter; RET-PREV C3; retail DB-41-38-C3
-_luaO_str2d,,0x0074E160,112,Code/Libraries/Source/Lua/lobject.c,matched,BFME1 byte-identical donor b1 lobject.c; exact via unclaimed_scan
+_luaO_str2d,,0x0074E160,112,Code/Libraries/Source/Lua/lobject.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor b1 lobject.c; exact via unclaimed_scan
 ??1?$SimpleVecClass@VVector2@@@@UAE@XZ,,0x001883C0,41,Code/Libraries/Source/WWVegas/WW3D2/MeshLoadContextCtor.cpp,matched,strict relocations from its own object
 ??_G?$SimpleVecClass@VVector2@@@@UAEPAXI@Z,,0x00188540,61,Code/Libraries/Source/WWVegas/WW3D2/MeshLoadContextCtor.cpp,matched,strict relocations from its own object
 ?apply@Rva0005D10D6DwordImmSetter@@QAEXXZ,,0x005D10D6,7,Code/GameEngine/Source/Common/Disp0DwordImmSettersAddr.cpp,matched,Disp0 dword imm-setter; Ghidra-standalone 7B; retail C7-01-9C55C700-C3
@@ -10634,7 +10634,7 @@ _luaM_growaux,,0x00750AE0,97,Code/Libraries/Source/Lua/lmem.c,matched,BFME1 byte
 ?get@Rva00030CB0MaskedDwordField@@QBEHXZ,,0x00030CB0,7,Code/GameEngine/Source/Common/Disp8MaskedDwordFieldGetters.cpp,matched,disp8 masked dword getter; opaque holder
 ?name@Rva000B6DCCNamed@@QBEPBDXZ,,0x000B6DCC,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning LuaEventParameters; vtable ref in .rdata; address-derived placeholder name
 ?get@Rva00203502MaskedDwordField@@QBEHXZ,,0x00203502,7,Code/GameEngine/Source/Common/Disp8MaskedDwordFieldGetters.cpp,matched,disp8 masked dword getter; opaque holder
-_math_pow,,0x00748620,65,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.pow via check_number x2 + pow + pushnumber; callees pinned
+_math_pow,,0x00748620,65,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.pow via check_number x2 + pow + pushnumber; callees pinned
 ?get@Rva0045D397MaskedDwordField@@QBEHXZ,,0x0045D397,7,Code/GameEngine/Source/Common/Disp8MaskedDwordFieldGetters.cpp,matched,disp8 masked dword getter; opaque holder
 _lua_stackspace,,0x00746F20,13,Code/Libraries/Source/Lua/lapi.c,matched,object-symbol=_lua_stackspace; emitted by lapi.c object; vendored=lua-4.0.1
 _lua_remove,,0x00746F70,93,Code/Libraries/Source/Lua/lapi.c,matched,object-symbol=_lua_remove; emitted by lapi.c object; vendored=lua-4.0.1
@@ -10707,20 +10707,20 @@ _read_chars,,0x0074A910,145,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,obj
 ?name@Rva001FBEB1Named@@QBEPBDXZ,,0x001FBEB1,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning FXParticleSystem; vtable ref in .rdata; address-derived placeholder name
 ??_GRva00452D52@@UAEPAXI@Z,,0x00452EC1,28,Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ?get@Rva000B28C8AddDwordField@@QBEHXZ,,0x000B28C8,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
-_math_asin,,0x00748460,43,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.asin via check_number + CIasin + pushnumber; callees pinned
+_math_asin,,0x00748460,43,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.asin via check_number + CIasin + pushnumber; callees pinned
 ?name@ScriptEngine@@QBEPBDXZ,,0x002086B7,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning ScriptEngine; vtable ref in .rdata; address-derived placeholder name
 ??_GRva004C85A4@@UAEPAXI@Z,,0x004C8602,28,Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva004C86E4@@UAEPAXI@Z,,0x004C8742,28,Code/GameEngine/Source/Common/Rva00493DEFDerived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
-_math_acos,,0x00748490,43,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.acos via check_number + CIacos + pushnumber; callees pinned
+_math_acos,,0x00748490,43,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.acos via check_number + CIacos + pushnumber; callees pinned
 ?get@Rva002B236EAddDwordField@@QBEHXZ,,0x002B236E,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
-_math_atan2,,0x007484F0,67,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.atan2 via check_number x2 + pushnumber; callees pinned
+_math_atan2,,0x007484F0,67,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.atan2 via check_number x2 + pushnumber; callees pinned
 ?get@Rva0033F272AddDwordField@@QBEHXZ,,0x0033F272,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
 ??_GAIGuardRetaliateMachine@@UAEPAXI@Z,,0x005454B4,28,Code/GameEngine/Source/Common/Rva004D759CDerived.cpp,matched,scalar deleting dtor: slot 0 of vtable 0x00869E78 (slot 2 returns the name string AIGuardRetaliateMachine); calls the rowed ~AIGuardRetaliateMachine; emitted via the TU vtable; byte-exact
-_math_ceil,,0x00748540,41,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.ceil via check_number + pushnumber; callees pinned
-_math_floor,,0x00748570,41,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.floor via check_number + pushnumber; callees pinned
+_math_ceil,,0x00748540,41,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.ceil via check_number + pushnumber; callees pinned
+_math_floor,,0x00748570,41,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.floor via check_number + pushnumber; callees pinned
 ?get@Rva0033F94DAddDwordField@@QBEHXZ,,0x0033F94D,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
 ?GetSnapshotName@FireLogicSystem@@UBEPBDXZ,,0x00286F81,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning FireLogicSystem; vtable ref in .rdata; address-derived placeholder name
-_math_mod,,0x007485A0,65,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.mod via check_number x2 + CIfmod + pushnumber; callees pinned
+_math_mod,,0x007485A0,65,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.mod via check_number x2 + CIfmod + pushnumber; callees pinned
 ?name@CarryoverUnit@@QBEPBDXZ,,0x0037DC84,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning CarryoverUnit; vtable ref in .rdata; address-derived placeholder name
 ??_GRva000CAEC6@@UAEPAXI@Z,,0x000CAF6E,28,Code/GameEngine/Source/Common/Rva000C79C9Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva00486E18@@UAEPAXI@Z,,0x00486EE1,28,Code/GameEngine/Source/Common/Rva0024A797Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
@@ -10795,10 +10795,10 @@ _math_mod,,0x007485A0,65,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.m
 ??_GRva0033FC0A@@UAEPAXI@Z,,0x00343C9E,28,Code/GameEngine/Source/Common/Rva004D759CDerived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ?get@Rva0048E84BAddDwordField@@QBEHXZ,,0x0048E84B,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
 ?name@Rva00414307Named@@QBEPBDXZ,,0x00414307,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning ScoredKillEvaAnnouncer; vtable ref in .rdata; address-derived placeholder name
-_math_exp,,0x007486D0,54,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.exp via check_number + inline FPU + pushnumber; callees pinned
+_math_exp,,0x007486D0,54,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.exp via check_number + inline FPU + pushnumber; callees pinned
 ?GetSnapshotName@LivingWorldBuilding@@UAEPBDXZ,,0x004E0777,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning LivingWorldBuilding; vtable ref in .rdata; address-derived placeholder name
 ?get@Rva004989EEAddDwordField@@QBEHXZ,,0x004989EE,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
-_math_deg,,0x00748710,38,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.deg via check_number + pushnumber; callees pinned
+_math_deg,,0x00748710,38,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.deg via check_number + pushnumber; callees pinned
 ??_GRva005D9DC1@@UAEPAXI@Z,,0x005D9DE6,28,Code/GameEngine/Source/Common/Rva005EEDAADerived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva005EE30C@@UAEPAXI@Z,,0x005EE394,28,Code/GameEngine/Source/Common/Rva005EE30CChain.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ?Rva00452D86Get@@YAHXZ,,0x00452D86,6,Code/GameEngine/Source/Common/GlobalGetterSingles.cpp,matched,A1 global dword getter over 0x00DC908C; prev C3; unclaimed standalone
@@ -10821,10 +10821,10 @@ _math_deg,,0x00748710,38,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.d
 ??_GRva0025BFE3@@UAEPAXI@Z,,0x0025C045,28,Code/GameEngine/Source/Common/FreeMemberDeleters.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ?name@Rva001FC179Named@@QBEPBDXZ,,0x001FC179,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning FXParticle; vtable ref in .rdata; address-derived placeholder name
 ?get@Rva0059E81FAddDwordField@@QBEHXZ,,0x0059E81F,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
-_math_min,,0x00748800,113,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.min via gettop loop + check_number + pushnumber; callees pinned
+_math_min,,0x00748800,113,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.min via gettop loop + check_number + pushnumber; callees pinned
 ?get@Rva005CCB30AddDwordField@@QBEHXZ,,0x005CCB30,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
 ?GetSnapshotName@SequentialScript@@UAEPBDXZ,,0x002047C9,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning SequentialScript; vtable ref in .rdata; address-derived placeholder name
-_math_max,,0x00748880,113,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.max via gettop loop + check_number + pushnumber; callees pinned
+_math_max,,0x00748880,113,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.max via gettop loop + check_number + pushnumber; callees pinned
 ??_GRva0035D0D1@@UAEPAXI@Z,,0x0035D1F0,28,Code/GameEngine/Source/Common/Rva001DBAC3Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva0035D352@@UAEPAXI@Z,,0x0035D43E,28,Code/GameEngine/Source/Common/Rva001DBAC3Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva00596069@@UAEPAXI@Z,,0x00596079,28,Code/GameEngine/Source/Common/Rva0025BFE3Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
@@ -10836,7 +10836,7 @@ _math_max,,0x00748880,113,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.
 ??_GRva004AE1AC@@UAEPAXI@Z,,0x004AE211,28,Code/GameEngine/Source/Common/Rva00451F45Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva004C6943@@UAEPAXI@Z,,0x004C69DE,28,Code/GameEngine/Source/Common/Rva00451F45Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva004C6C5C@@UAEPAXI@Z,,0x004C6CC6,28,Code/GameEngine/Source/Common/Rva00451F45Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
-_math_rad,,0x00748740,38,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.rad via check_number + pushnumber; callees pinned
+_math_rad,,0x00748740,38,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.rad via check_number + pushnumber; callees pinned
 ??_GAnimalAIUpdate@@UAEPAXI@Z,,0x0047ED21,28,Code/GameEngine/Source/Common/Rva0026E836Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GAssaultTransportAIUpdate@@UAEPAXI@Z,,0x0048F5FE,28,Code/GameEngine/Source/Common/Rva0026E836Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GSiegeAIUpdate@@UAEPAXI@Z,,0x004905B5,28,Code/GameEngine/Source/Common/Rva0026E836Derived.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
@@ -10902,15 +10902,15 @@ _math_rad,,0x00748740,38,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.r
 ??_GRva005F86FE@@UAEPAXI@Z,,0x005F851A,28,Code/GameEngine/Source/Common/Rva000AD6F4Members.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ??_GRva006892F0@@UAEPAXI@Z,,0x00689300,30,Code/GameEngine/Source/Common/GameEngineDeletingBaseDerived2.cpp,matched,scalar deleting-dtor thunk emitted via TU vtable; byte-exact
 ?get@Rva005ED28AAddDwordField@@QBEHXZ,,0x005ED28A,7,Code/GameEngine/Source/Common/Disp8AddDwordFieldGetters.cpp,matched,disp8 add dword getter; opaque holder
-_math_frexp,,0x00748770,68,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.frexp via check_number + pushnumber x2; callees pinned
-_math_random,,0x00748900,298,Code/Libraries/Source/Lua/lmathlib.c,matched,Lua math.random via rand + gettop switch + check_int + pushnumber; callees pinned
+_math_frexp,,0x00748770,68,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.frexp via check_number + pushnumber x2; callees pinned
+_math_random,,0x00748900,298,Code/Libraries/Source/Lua/lmathlib.c,matched,vendored=lua-4.0.1; Lua math.random via rand + gettop switch + check_int + pushnumber; callees pinned
 ?name@Rva002AE621Named@@QBEPBDXZ,,0x002AE621,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning Command; vtable ref in .rdata; address-derived placeholder name
 ?GetSnapshotName@GeometryInfo@@UAEPBDXZ,,0x00050C2B,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning GeometryInfo; vtable ref at 0x7C4E9C with 0x4B3FD0 family slot pattern; address-derived placeholder name
-_str_len,,0x00748AA0,64,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string len via donor; callees pinned
+_str_len,,0x00748AA0,64,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string len via donor; callees pinned
 ?name@MilesAudioManager@@QBEPBDXZ,,0x000518B2,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning MilesAudioManager; vtable ref at 0x7C55A4; address-derived placeholder name
 ?GetSnapshotName@W3DRenderObjectSnapshot@@MBEPBDXZ,,0x000638A2,6,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp,matched,literal name getter returning W3DRenderObjectSnapshot; vtable ref at 0x7C59FC with 0x4B3FD0 family slot pattern; address-derived placeholder name; slot 2 of retail table 0xBC59F4 (Snapshot name getter); rehomed into its table's unit
-_str_sub,,0x00748AF0,173,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string sub via donor; callees pinned
-_str_rep,,0x00748CE0,114,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string rep via donor; callees pinned
+_str_sub,,0x00748AF0,173,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string sub via donor; callees pinned
+_str_rep,,0x00748CE0,114,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string rep via donor; callees pinned
 ?name@Rva0008BC8BNamed@@QBEPBDXZ,,0x0008BC8D,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning View; 2 vtable refs (0x7C7570/0x7F6180) with 0x4B3FD0 family slot pattern; address-derived placeholder name
 ?GetSnapshotName@DrawModule@@MBEPBDXZ,,0x000B19BD,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning DrawModule; vtable ref at 0x7C9698 with 0x4B3FD0 family slot pattern; address-derived placeholder name
 ?name@Rva00226309Named@@QBEPBDXZ,,0x00226309,6,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp,matched,literal name getter returning SaveMapPreview; vtable ref in .rdata; address-derived placeholder name
@@ -10974,18 +10974,18 @@ _read_word,,0x0074A700,184,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,stri
 ?Close@BufferedFileClass@@UAEXXZ,,0x0061AFD0,42,Code/Libraries/Source/WWVegas/WWLib/bufffile.cpp,matched,zh-sweep exact-unique placement in unclaimed text; ZH donor verbatim
 ?Seek@BufferedFileClass@@UAEHHH@Z,,0x0061B000,113,Code/Libraries/Source/WWVegas/WWLib/bufffile.cpp,matched,placed by masked whole-text search of the compiled body; ZH donor verbatim
 ?parseWaypointData@TerrainLogic@@IAE_NAAVDataChunkInput@@PAUDataChunkInfo@@PAX@Z,,0x0027FFF3,60,Code/GameEngine/Source/GameLogic/Map/TerrainLogic_parseWaypointData.cpp,matched,ZH TerrainLogic donor verbatim; NDEBUG drops end-of-chunk assert
-_str_byte,,0x00748D60,136,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_str_byte; Lua lstrlib static compiles to retail span
+_str_byte,,0x00748D60,136,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_str_byte; Lua lstrlib static compiles to retail span
 ?set@Rva0038895EDwordSlot@@QAEXH@Z,,0x0038895E,13,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp,matched,Disp32 dword setter
 ?enable@Rva0038896BByteOneSetter@@QAEXXZ,,0x0038896B,8,Code/GameEngine/Source/Common/DispByteOneSetters.cpp,matched,Disp32 byte one-setter
 ?get@Rva0038894ADwordField@@QBEHXZ,,0x0038894A,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ??0?$LatchRestore@_N@@QAE@AA_NAB_N@Z,,0x000519FC,31,Code/GameEngine/Source/Common/System/SaveGame/LatchRestoreCtor.cpp,matched,BFME1 byte-identical donor GameState.cpp; b1 0x0010D330
-_check_capture,,0x00748EA0,42,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_check_capture; Lua lstrlib static compiles to retail span
+_check_capture,,0x00748EA0,42,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_check_capture; Lua lstrlib static compiles to retail span
 ?get@Rva002B23BCDwordField@@QBEHXZ,,0x002B23BC,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva002B23D0DwordField@@QBEHXZ,,0x002B23D0,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva002B23E4DwordField@@QBEHXZ,,0x002B23E4,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?d_008acac0@@YAXXZ,,0x006EC1A0,572,Code/Libraries/Source/Apt/AptCharacter.cpp,matched,BFME1 Rva008ACAC0GlobalReleases.cpp donor + trailing 0x00E18200 block; b1 0x008ACAC0
 ?get@Rva003889A9DwordField@@QBEHXZ,,0x003889A9,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
-_luaI_classend,,0x00748F10,105,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_luaI_classend; Lua lstrlib static compiles to retail span
+_luaI_classend,,0x00748F10,105,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_luaI_classend; Lua lstrlib static compiles to retail span
 ?get@Rva00367473DwordField@@QBEHXZ,,0x00367473,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva00314105DwordField@@QBEHXZ,,0x00314105,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva00238D74DwordField@@QBEHXZ,,0x00238D74,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
@@ -10997,7 +10997,7 @@ _luaI_classend,,0x00748F10,105,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_s
 ?set@Rva00552C2CDwordSlot@@QAEXH@Z,,0x00552C2C,13,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp,matched,
 ??4Rva003B3080@@QAEAAV0@ABV0@@Z,,0x00564B41,57,Code/GameEngine/Source/Common/Rva003B3080Assign.cpp,matched,BFME1 Rva003B3080Assign.cpp donor under /O1 with StringBase<char>::set members; b1 0x003B3080
 ?get@Rva0027C2BBDwordField@@QBEHXZ,,0x0027C2BB,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
-_matchbalance,,0x007491A0,104,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_matchbalance; Lua lstrlib static compiles to retail span
+_matchbalance,,0x007491A0,104,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_matchbalance; Lua lstrlib static compiles to retail span
 ?get@Rva00332B35DwordField@@QBEHXZ,,0x00332B35,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva000B2906DwordField@@QBEHXZ,,0x000B2906,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva002C8F48DwordField@@QBEHXZ,,0x002C8F48,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
@@ -11006,10 +11006,10 @@ _matchbalance,,0x007491A0,104,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sw
 ??9@YAHABVMatrix4@@0@Z,,0x007167C0,26,Code/Libraries/Source/WWVegas/WWMath/matrix4_notequal.cpp,matched,Zero Hour matrix4.cpp donor return (!(a == b)); callee operator== is the matched row at 0x7166D0; dedicated TU per same-TU shadowing rule
 ?bfmeCopyAA@@YAPAUBfmeElemAA@@PAU1@00@Z,,0x006BE370,138,Code/GameEngine/Source/Common/Rva0087EAA0Copy.cpp,matched,BFME1 Rva0087EAA0Copy.cpp donor with StringBase set member plus trailing 0x21 byte; b1 0x0087EAA0
 ?get@Rva0028569CDwordField@@QBEHXZ,,0x0028569C,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
-_match_capture,,0x007493F0,81,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_match_capture; Lua lstrlib static compiles to retail span
+_match_capture,,0x007493F0,81,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_match_capture; Lua lstrlib static compiles to retail span
 ?get@Rva002C8EDDDwordField@@QBEHXZ,,0x002C8EDD,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva00367395DwordField@@QBEHXZ,,0x00367395,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
-_push_captures,,0x00749720,110,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_push_captures; Lua lstrlib static compiles to retail span
+_push_captures,,0x00749720,110,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_push_captures; Lua lstrlib static compiles to retail span
 ?Get_PKey@INIClass@@QBE?AVPKey@@_N@Z,,0x00619010,236,Code/Libraries/Source/WWVegas/WWLib/ini_PutPKey.cpp,matched,ZH ini.cpp verbatim; Decode Get_UUBlock XMP rows resolve
 ??0PKey@@QAE@XZ,,0x00615EC0,46,Code/Libraries/Source/WWVegas/WWLib/ini_PutPKey.cpp,matched,PKey default ctor inline COMDAT via Get_PKey; BFME1 pk.h verbatim
 ?get@Rva00381D2DDwordField@@QBEHXZ,,0x00381D2D,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
@@ -11018,8 +11018,8 @@ _push_captures,,0x00749720,110,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_s
 ?get@Rva002C8E39DwordField@@QBEHXZ,,0x002C8E39,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva003BA6D0DwordField@@QBEHXZ,,0x003BA6D0,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva004CEF1FDwordField@@QBEHXZ,,0x004CEF1F,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
-_luaI_addquoted,,0x00749C80,325,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_luaI_addquoted; Lua lstrlib static compiles to retail span
-_lmemfind,,0x007496B0,110,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep dir32 alias; object-symbol=_lmemfind; Lua lstrlib static compiles to retail span
+_luaI_addquoted,,0x00749C80,325,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_luaI_addquoted; Lua lstrlib static compiles to retail span
+_lmemfind,,0x007496B0,110,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep dir32 alias; object-symbol=_lmemfind; Lua lstrlib static compiles to retail span
 ?get@Rva004DE9C3DwordField@@QBEHXZ,,0x004DE9C3,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva00512678DwordField@@QBEHXZ,,0x00512678,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
 ?get@Rva0052AF70DwordField@@QBEHXZ,,0x0052AF70,7,Code/GameEngine/Source/Common/DispDwordFieldGetters.cpp,matched,Disp32 dword getter
@@ -11263,21 +11263,21 @@ ___TranslateToSystem,,0x00022320,57,Code/Libraries/Source/WWVegas/WWLib/stlport_
 ?name@CaveContain@@QBEPBDXZ,,0x00466444,6,Code/GameEngine/Source/Common/ModuleNameGetters.cpp,matched,literal name getter returning CaveContain; body VA has exactly 1 .rdata ref (module vtable closed by 004B3FD0 pair); address-derived placeholder name
 ?name@Rva00373411Named@@QBEPBDXZ,,0x00373411,6,Code/GameEngine/Source/Common/SubsystemNameGetters4.cpp,matched,literal name getter returning MineshaftPortalNetworkManager; vtable ref in .rdata; address-derived placeholder name (fourth getter unit)
 ?name@OpenContain@@QBEPBDXZ,,0x004647BA,6,Code/GameEngine/Source/Common/ModuleNameGetters.cpp,matched,literal name getter returning OpenContain; body VA has exactly 1 .rdata ref (module vtable closed by 004B3FD0 pair); address-derived placeholder name
-_add_s,,0x00749970,307,Code/Libraries/Source/Lua/lstrlib.c,matched,obj_sweep rel32 alias; object-symbol=_add_s; Lua lstrlib static compiles to retail span
+_add_s,,0x00749970,307,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; obj_sweep rel32 alias; object-symbol=_add_s; Lua lstrlib static compiles to retail span
 ?GetSnapshotName@W3DPropBuffer@@MBEPBDXZ,,0x000EEFE6,6,Code/GameEngine/Source/Common/W3DDrawNameGetters.cpp,matched,literal name getter returning W3DPropBuffer; vtable ref at 0x7CEED4; address-derived placeholder name
 _piAddListingGamesCallback,,0x0069F320,233,Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerCallbacks.c,matched,GameSpy piAddListingGamesCallback 233B; assignment-wrapped gamemode call batches 3 cdecl cleanups into retail add esp 0x20; gameListCallback at 0x1784 and gameListParam at 0x1788
-_str_lower,,0x00748BA0,154,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string lower via donor reg-table identity; callees pinned
-_str_upper,,0x00748C40,154,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string upper via donor reg-table identity; callees pinned
-_str_char,,0x00748DF0,164,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string char via donor reg-table identity; callees pinned
-_match_class,,0x00748F80,282,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua pattern class matcher via donor; leaf of match tree
-_matchbracketclass,,0x007490A0,147,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua pattern bracket class via donor; leaf of match tree
-_start_capture,,0x00749340,71,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua pattern start capture via donor; match core cluster
-_end_capture,,0x00749390,89,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua pattern end capture via donor; match core cluster
-_max_expand,,0x00749210,149,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua pattern max expand via donor; match core cluster
-_min_expand,,0x007492B0,136,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua pattern min expand via donor; match core cluster
-_match,,0x00749450,602,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua pattern match core via donor with jump table; match core cluster
-_str_find,,0x00749790,479,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string find via donor reg-table identity; match core placed
-_str_gsub,,0x00749AB0,460,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua string gsub via donor reg-table identity; match core placed
+_str_lower,,0x00748BA0,154,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string lower via donor reg-table identity; callees pinned
+_str_upper,,0x00748C40,154,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string upper via donor reg-table identity; callees pinned
+_str_char,,0x00748DF0,164,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string char via donor reg-table identity; callees pinned
+_match_class,,0x00748F80,282,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua pattern class matcher via donor; leaf of match tree
+_matchbracketclass,,0x007490A0,147,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua pattern bracket class via donor; leaf of match tree
+_start_capture,,0x00749340,71,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua pattern start capture via donor; match core cluster
+_end_capture,,0x00749390,89,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua pattern end capture via donor; match core cluster
+_max_expand,,0x00749210,149,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua pattern max expand via donor; match core cluster
+_min_expand,,0x007492B0,136,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua pattern min expand via donor; match core cluster
+_match,,0x00749450,602,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua pattern match core via donor with jump table; match core cluster
+_str_find,,0x00749790,479,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string find via donor reg-table identity; match core placed
+_str_gsub,,0x00749AB0,460,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua string gsub via donor reg-table identity; match core placed
 ?name@Rva00461EE5Named@@QBEPBDXZ,,0x00461EE5,6,Code/GameEngine/Source/Common/ModuleNameGetters.cpp,matched,literal name getter returning GiantBirdSlowDeathBehavior; body VA has exactly 1 .rdata ref (module vtable closed by 004B3FD0 pair); address-derived placeholder name
 ?name@SpawnBehavior@@QBEPBDXZ,,0x0045F6CD,6,Code/GameEngine/Source/Common/ModuleNameGetters.cpp,matched,literal name getter returning SpawnBehavior; body VA has exactly 1 .rdata ref (module vtable closed by 004B3FD0 pair); address-derived placeholder name
 ?name@BezierProjectileBehavior@@QBEPBDXZ,,0x0045BFD3,6,Code/GameEngine/Source/Common/ModuleNameGetters.cpp,matched,literal name getter returning BezierProjectileBehavior; body VA has exactly 1 .rdata ref (module vtable closed by 004B3FD0 pair); address-derived placeholder name
@@ -12228,7 +12228,7 @@ _assignment,,0x007559C0,192,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 by
 _ifstat,,0x00755D80,267,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor Lua 4.0.1 lparser.c; block inlines with chunk call; pinned from the _stat retail call
 _namestat,,0x00755E90,99,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor Lua 4.0.1 lparser.c; check_condition inlines to a direct luaK_error call
 _stat,,0x00755F00,513,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor Lua 4.0.1 lparser.c; jump table free dispatch over statement tokens
-_luaK_number,,0x00752810,349,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor Lua 4.0.1 lcode.c; pinned callee of _simpleexp
+_luaK_number,,0x00752810,349,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor Lua 4.0.1 lcode.c; pinned callee of _simpleexp
 _simpleexp,,0x00755650,581,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor Lua 4.0.1 lparser.c; expr inlines to a direct subexpr call
 _pushclosure,,0x00753FF0,142,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor Lua 4.0.1 lparser.c; static convention fixes the _body call site
 _body,,0x00754C70,182,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-identical donor Lua 4.0.1 lparser.c; new_localvarstr inlines; static pushclosure call
@@ -12262,8 +12262,8 @@ _subexpr,,0x007558A0,261,Code/Libraries/Source/Lua/lparser.c,matched,BFME1 byte-
 ?get@Rva000003638B3PtrChaseField@@QBEHXZ,,0x003638B3,7,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp,matched,disp8 pointer-chase dword getter; opaque holder
 ?get@Rva0000036CBEBPtrChaseField@@QBEHXZ,,0x0036CBEB,7,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp,matched,disp8 pointer-chase dword getter; opaque holder
 ?get@Rva00000468A1CPtrChaseField@@QBEHXZ,,0x00468A1C,7,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp,matched,disp8 pointer-chase dword getter; opaque holder
-_protomark,,0x00750B50,147,Code/Libraries/Source/Lua/lgc.c,matched,BFME1 byte-identical donor Lua 4.0.1 lgc.c; self-recursive over kproto
-_marktagmethods,,0x00750C20,110,Code/Libraries/Source/Lua/lgc.c,matched,BFME1 byte-identical donor Lua 4.0.1 lgc.c; markclosure inlines
+_protomark,,0x00750B50,147,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor Lua 4.0.1 lgc.c; self-recursive over kproto
+_marktagmethods,,0x00750C20,110,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor Lua 4.0.1 lgc.c; markclosure inlines
 ?get@Rva00000468A23PtrChaseField@@QBEHXZ,,0x00468A23,7,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp,matched,disp8 pointer-chase dword getter; opaque holder
 ?get@Rva0000048E828PtrChaseField@@QBEHXZ,,0x0048E828,7,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp,matched,disp8 pointer-chase dword getter; opaque holder
 ?get@Rva0000048E82FPtrChaseField@@QBEHXZ,,0x0048E82F,7,Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp,matched,disp8 pointer-chase dword getter; opaque holder
@@ -12328,10 +12328,10 @@ _marktagmethods,,0x00750C20,110,Code/Libraries/Source/Lua/lgc.c,matched,BFME1 by
 ?get@Rva0007E0F1FloatChaseField@@QBEMXZ,,0x0007E0F1,7,Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp,matched,disp8 float-chase getter; opaque holder
 ?get@Rva000910C0FloatChaseField@@QBEMXZ,,0x000910C0,7,Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp,matched,disp8 float-chase getter; opaque holder
 ?get@Rva001E3F27FloatChaseField@@QBEMXZ,,0x001E3F27,7,Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp,matched,disp8 float-chase getter; opaque holder
-_markobject,,0x00750C90,164,Code/Libraries/Source/Lua/lgc.c,matched,BFME1 byte-identical donor Lua 4.0.1 lgc.c; markclosure inlines to direct protomark calls
-_marklock,,0x00751290,50,Code/Libraries/Source/Lua/lgc.c,matched,BFME1 byte-identical donor Lua 4.0.1 lgc.c
-_markall,,0x007512D0,276,Code/Libraries/Source/Lua/lgc.c,matched,BFME1 byte-identical donor Lua 4.0.1 lgc.c; markstack inlines
-_luaK_posfix,,0x00753710,208,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-identical donor Lua 4.0.1 lcode.c; pinned callee of _subexpr; exact via explain_mismatch
+_markobject,,0x00750C90,164,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor Lua 4.0.1 lgc.c; markclosure inlines to direct protomark calls
+_marklock,,0x00751290,50,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor Lua 4.0.1 lgc.c
+_markall,,0x007512D0,276,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor Lua 4.0.1 lgc.c; markstack inlines
+_luaK_posfix,,0x00753710,208,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; BFME1 byte-identical donor Lua 4.0.1 lcode.c; pinned callee of _subexpr; exact via explain_mismatch
 _luaB_tostring,,0x0074BFA0,284,Code/Libraries/Source/Lua/luaB_tostring.c,matched,BFME1 donor Lua 4.0.1 luaB_tostring.c; true extent ret-to-pad; jump table plus sprintf import
 ?get@Rva002C7229FloatChaseField@@QBEMXZ,,0x002C7229,7,Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp,matched,disp8 float-chase getter; opaque holder
 ?get@Rva0033F981FloatChaseField@@QBEMXZ,,0x0033F981,7,Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp,matched,disp8 float-chase getter; opaque holder
@@ -13766,7 +13766,7 @@ _Scale2D,,0x001BA510,697,Code/Libraries/Source/VP6/Scale2D.cpp,matched,Clean-roo
 ??0HitReactionBehaviorModuleData@@QAE@XZ,,0x004591EA,45,Code/GameEngine/Source/GameLogic/Object/Behavior/HitReactionBehavior.cpp,matched,
 _auxsort,,0x0074C480,1038,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _errorfb,,0x0074B190,767,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_str_format,,0x00749DD0,736,Code/Libraries/Source/Lua/lstrlib.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_str_format,,0x00749DD0,736,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _luaB_tonumber,,0x0074B7A0,289,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaB__ERRORMESSAGE,,0x0074B620,215,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaB_tremove,,0x0074C330,186,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
@@ -13787,7 +13787,7 @@ _sort_comp,,0x0074C410,105,Code/Libraries/Source/Lua/lbaselib.c,matched,placed b
 _hookf,,0x007481B0,101,Code/Libraries/Source/Lua/ldblib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _protectedparser,,0x0074DAD0,100,Code/Libraries/Source/Lua/ldo.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaB_gettagmethod,,0x0074BB90,99,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_luaI_singlematch,,0x00749140,81,Code/Libraries/Source/Lua/lstrlib.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_luaI_singlematch,,0x00749140,81,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _LoadLines,,0x00756710,81,Code/Libraries/Source/Lua/lundump.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaB_sort,,0x0074C890,80,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _getnonullfile,,0x0074A170,80,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,placed by masked whole-.text search of the compiled body - single hit
@@ -13801,7 +13801,7 @@ _luaI_registerlocalvar,,0x00753BA0,67,Code/Libraries/Source/Lua/lparser.c,matche
 _passresults,,0x0074BCF0,66,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _closefile,,0x0074A2D0,66,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _lua_call,,0x0074DA90,64,Code/Libraries/Source/Lua/ldo.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_code_label,,0x00753120,63,Code/Libraries/Source/Lua/lcode.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_code_label,,0x00753120,63,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _lua_iscfunction,,0x007470F0,61,Code/Libraries/Source/Lua/lapi.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaB_globals,,0x0074BA40,61,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaZ_sopen,,0x00756DD0,60,Code/Libraries/Source/Lua/lzio.c,matched,placed by masked whole-.text search of the compiled body - single hit
@@ -13812,7 +13812,7 @@ _luaB_getn,,0x0074C240,55,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by
 _io_execute,,0x0074AED0,54,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaB_tag,,0x0074B940,53,Code/Libraries/Source/Lua/lbaselib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _dohook,,0x0074D750,53,Code/Libraries/Source/Lua/ldo.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_capture_to_close,,0x00748ED0,50,Code/Libraries/Source/Lua/lstrlib.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_capture_to_close,,0x00748ED0,50,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _emptybuffer,,0x00751570,46,Code/Libraries/Source/Lua/lauxlib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _init_entry,,0x0074FB10,46,Code/Libraries/Source/Lua/ltm.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaZ_mopen,,0x00756DA0,46,Code/Libraries/Source/Lua/lzio.c,matched,placed by masked whole-.text search of the compiled body - single hit
@@ -13826,18 +13826,18 @@ _luaB__ALERT,,0x0074B5F0,39,Code/Libraries/Source/Lua/lbaselib.c,matched,placed 
 _linef,,0x00748250,39,Code/Libraries/Source/Lua/ldblib.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _io_exit,,0x0074B160,39,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _io_getenv,,0x0074B000,39,Code/Libraries/Source/Lua/liolib_bfme1.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_discharge1,,0x00752DE0,38,Code/Libraries/Source/Lua/lcode.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_luaK_goiffalse,,0x007530F0,35,Code/Libraries/Source/Lua/lcode.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_discharge1,,0x00752DE0,38,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
+_luaK_goiffalse,,0x007530F0,35,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _restore_stack_limit,,0x0074D4F0,35,Code/Libraries/Source/Lua/ldo.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_markstack,,0x00751260,35,Code/Libraries/Source/Lua/lgc.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_markstack,,0x00751260,35,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _lua_unref,,0x00747BE0,33,Code/Libraries/Source/Lua/lapi.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _callf,,0x00748220,33,Code/Libraries/Source/Lua/ldblib.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_markclosure,,0x00750BF0,33,Code/Libraries/Source/Lua/lgc.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_markclosure,,0x00750BF0,33,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _protosize,,0x00751BA0,32,Code/Libraries/Source/Lua/lfunc.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaA_index,,0x00746EA0,31,Code/Libraries/Source/Lua/lapi.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaT_validevent,,0x0074FAF0,31,Code/Libraries/Source/Lua/ltm.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _luaA_indexAcceptable,,0x00746EC0,29,Code/Libraries/Source/Lua/lapi.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_luaK_getjump,,0x00751DC0,29,Code/Libraries/Source/Lua/lcode.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_luaK_getjump,,0x00751DC0,29,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _numuse,,0x00750810,29,Code/Libraries/Source/Lua/ltable.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _unexpectedEOZ,,0x007562A0,29,Code/Libraries/Source/Lua/lundump.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _currentpc,,0x0074CB20,28,Code/Libraries/Source/Lua/ldebug.c,matched,placed by masked whole-.text search of the compiled body - single hit
@@ -13858,7 +13858,7 @@ _luaB_dofile,,0x0074BDE0,109,Code/Libraries/Source/Lua/lbaselib.c,matched,placed
 _lua_equal,,0x00747250,92,Code/Libraries/Source/Lua/lapi.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _isLmark,,0x0074C9B0,30,Code/Libraries/Source/Lua/ldebug.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _getunopr,,0x007542A0,22,Code/Libraries/Source/Lua/lparser.c,matched,placed by masked whole-.text search of the compiled body - single hit
-_previous_instruction,,0x00751D40,21,Code/Libraries/Source/Lua/lcode.c,matched,placed by masked whole-.text search of the compiled body - single hit
+_previous_instruction,,0x00751D40,21,Code/Libraries/Source/Lua/lcode.c,matched,vendored=lua-4.0.1; placed by masked whole-.text search of the compiled body - single hit
 _optional,,0x00753940,21,Code/Libraries/Source/Lua/lparser.c,matched,placed by masked whole-.text search of the compiled body - single hit
 ___mbtowc,,0x00020BE0,106,Code/Libraries/Source/WWVegas/WWLib/stlport_LocaleMbtowc.c,matched,placed by masked whole-.text search of the compiled body - single hit
 _XMP_Randomize,,0x0061C3C0,92,Code/Libraries/Source/WWVegas/WWLib/mpmath.cpp,matched,placed by masked whole-.text search of the compiled body - single hit
@@ -16112,18 +16112,18 @@ _FilterBlock2dBil_SecondPass_8,,0x001B89C0,123,Code/Libraries/Source/VP6/FilterB
 ?buildFieldParse@ActivateModuleSpecialPowerModuleData@@SAXAAVMultiIniFieldParse@@@Z,,0x004CDFBE,27,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerModuleDataCtor.cpp,matched,Chained parse (rowed Rva base parse plus own table 0xC5FD70); callees rowed
 ?buildFieldParse@W3DBoatWakeModelDrawModuleData@@SAXAAVMultiIniFieldParse@@@Z,,0x000D0CF7,17,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DBoatWakeModelDrawModuleDataCtor.cpp,matched,Single-table parse proc (table 0xBCDEE4); callee rowed 0x2BC6E; ctor parked 0.97
 ?Apply@VertexMaterialClass@@ABEXXZ,,0x0013D570,1084,Code/Libraries/Source/WWVegas/WW3D2/VertexMaterialApply.cpp,matched,BFME1 vertmaterial.cpp donor (matched Apply); /G7 /arch:SSE; BFME2 Set_Transform (bfmecamera shim) and caps tail +0x2C4/+0x2D0
-_callgcTMudata,,0x00751120,253,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_collectudata,,0x00750FC0,169,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_collectstrings,,0x00750F20,160,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_invalidaterefs,,0x00750DA0,136,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_callgcTM,,0x007510A0,113,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_hasmark,,0x00750D40,84,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_collectproto,,0x00750E30,57,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_collectclosure,,0x00750E70,52,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_collecttable,,0x00750EB0,52,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_checkMbuffer,,0x00751070,48,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_checktab,,0x00750EF0,48,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_luaC_checkGC,,0x00751470,22,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_callgcTMudata,,0x00751120,253,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_collectudata,,0x00750FC0,169,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_collectstrings,,0x00750F20,160,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_invalidaterefs,,0x00750DA0,136,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_callgcTM,,0x007510A0,113,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_hasmark,,0x00750D40,84,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_collectproto,,0x00750E30,57,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_collectclosure,,0x00750E70,52,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_collecttable,,0x00750EB0,52,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_checkMbuffer,,0x00751070,48,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_checktab,,0x00750EF0,48,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_luaC_checkGC,,0x00751470,22,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 _getfuncname,,0x0074D1B0,154,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 _lua_setlocal,,0x0074CC40,148,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 _funcinfo,,0x0074CD00,133,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
@@ -16134,8 +16134,8 @@ _travtagmethods,,0x0074CD90,68,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.
 _setnormalized,,0x0074C980,43,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 _nups,,0x0074CA60,33,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 _infoLproto,,0x0074CCE0,23,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_luaC_collectgarbage,,0x007513F0,128,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
-_luaC_collect,,0x00751220,54,Code/Libraries/Source/Lua/lgc.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_luaC_collectgarbage,,0x007513F0,128,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
+_luaC_collect,,0x00751220,54,Code/Libraries/Source/Lua/lgc.c,matched,vendored=lua-4.0.1; Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 _getname,,0x0074CE40,135,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 _lua_getinfo,,0x0074D330,383,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 4.0.1 upstream body; BFME1 full-file transfer; unique masked placement
 ??0MineshaftPortalBehaviour@@QAE@PAVThing@@PBVModuleData@@@Z,,0x00373096,96,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourCtor.cpp,matched,Behavior-side ctor over rowed UpdateModule base plus implicit vector member; instance factory rowed at 0x24B625
@@ -26968,7 +26968,7 @@ _lua_setcallhook,,0x0074C9D0,15,Code/Libraries/Source/Lua/ldebug.c,matched,Lua 5
 ___isleadbyte,,0x00020BD0,14,Code/Libraries/Source/WWVegas/WWLib/stlport_LocaleMbtowc.c,matched,STLport 4.5.3 _Locale static helper; unique masked placement (place_bodies --min 8); immediately precedes rowed __mbtowc which follows it in source; no direct retail caller found
 _expr,,0x007559B0,13,Code/Libraries/Source/Lua/lparser.c,matched,Lua 5.0 lparser.c; unique masked placement (place_bodies --min 8); call reads rowed subexpr 0x007558A0; between rowed subexpr and assignment in this TU block
 _ZNAME,,0x00756290,10,Code/Libraries/Source/Lua/lundump.c,matched,Lua 5.0 lundump.c; unique masked placement (place_bodies --min 8); first definition in source and immediately precedes rowed unexpectedEOZ
-_posrelat,,0x00748AE0,9,Code/Libraries/Source/Lua/lstrlib.c,matched,Lua 5.0 lstrlib.c; unique masked placement (place_bodies --min 8); between rowed str_len and str_sub exactly as defined in source
+_posrelat,,0x00748AE0,9,Code/Libraries/Source/Lua/lstrlib.c,matched,vendored=lua-4.0.1; Lua 5.0 lstrlib.c; unique masked placement (place_bodies --min 8); between rowed str_len and str_sub exactly as defined in source
 __Locale_unshift,,0x00020DB0,63,Code/Libraries/Source/STLport/LocaleUnshiftStrwcmp.c,matched,BFME1 byte-identical donor (Open-BFME-1 5cae4bdff); b1 0x0084DAF0; bfme1_sweep T1 clean transfer; follows rowed _Locale_wctomb as in BFME1
 __Locale_strwcmp,,0x00020DF0,58,Code/Libraries/Source/STLport/LocaleUnshiftStrwcmp.c,matched,BFME1 byte-identical donor (Open-BFME-1 5cae4bdff); b1 0x0084DB30; bfme1_sweep T1 clean transfer; follows _Locale_unshift as in BFME1
 ??1HouseColorSystem@@UAE@XZ,,0x0022958D,74,Code/GameEngine/Source/Common/System/SaveGame/SaveGameInfoCopyBFME2.cpp,matched,dtor two AsciiStrings plus deleting base
