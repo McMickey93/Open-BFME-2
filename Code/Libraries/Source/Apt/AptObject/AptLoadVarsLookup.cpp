@@ -19,10 +19,40 @@ class EAStringC {void *data;public:__declspec(nothrow) EAStringC &clear();__decl
 // unwind funclets call ~EAStringC directly, as retail's do.
 class AsciiString;
 class AptNativeHash {public:struct Entry;AsciiString *rva0070AA40();Entry *rva0070AAA0(Entry *);void Unset(const EAStringC *const);};
-class AptValue {public:virtual void slot0();virtual void slot1();virtual void slot2();virtual AptNativeHash *GetNativeHashVirtual();void SetString(const char *);void toString(EAStringC &)const;EAStringC rva006ddde0();};
-class BfmeAptValue006DCD20 {public:void setGCRootCount(unsigned int);BfmeAptValue006DCD20 *rva006DD2E0();};
-class AptBasePtrStack {public:BfmeAptValue006DCD20 *At(int);};
-struct AptActionInterpreter {AptBasePtrStack stack;void loadVariables(AptValue *,AptValue *,const EAStringC *);};
+class AptValue
+{
+public:
+	void SetString(const char *);
+	void toString(EAStringC &)const;
+	EAStringC rva006ddde0();
+	virtual void slot0();
+	virtual void slot1();
+	virtual void slot2();
+	virtual AptNativeHash *GetNativeHashVirtual();
+};
+class BfmeAptValue006DCD20
+{
+public:
+	bool isCIH(bool=false) const;
+	void setGCRootCount(unsigned int);
+	BfmeAptValue006DCD20 *rva006DD2E0();
+	void rva006DD6C0(EAStringC *pBuffer);
+	virtual void slot0();
+};
+class AptBasePtrStack
+{
+public:
+	BfmeAptValue006DCD20 *At(int);
+	int count; // +0x00
+	int capacity; // +0x04
+	BfmeAptValue006DCD20 **elements; // +0x08
+};
+struct AptActionInterpreter
+{
+public:
+	void loadVariables(AptValue *,AptValue *,const EAStringC *);
+	AptBasePtrStack stack; // +0x00
+};
 extern AptActionInterpreter g_aptDateInterpreter;
 class AptBoolean {public:static AptValue *Create(bool);};
 void (__cdecl *g_bfmeAptSendVariablesAtE1776C)(const char *,const char *,const char *,const char *,int)=0;
@@ -36,11 +66,14 @@ void __debugbreak();
 #pragma intrinsic(__debugbreak)
 class Rva006D2A60 {public:void *allocBlock(int);void freeBlock(void *,int);};
 extern Rva006D2A60 *g_pChainBlockAllocatorF4;
-class Rva006D6500 {
- unsigned char storage[36];
-public:Rva006D6500(int);
- static void *operator new(unsigned int n){return g_pChainBlockAllocatorF4->allocBlock(n);}
- static void operator delete(void *p,unsigned int n){g_pChainBlockAllocatorF4->freeBlock(p,n);}
+class Rva006D6500
+{
+public:
+	Rva006D6500(int callback);
+	static void *operator new(unsigned int n){return g_pChainBlockAllocatorF4->allocBlock(n);}
+	static void operator delete(void *p,unsigned int n){g_pChainBlockAllocatorF4->freeBlock(p,n);}
+private:
+	unsigned char storage[36]; // +0x00
 };
 class Rva008B2BD0Item {public:virtual void unused0();virtual void release();};
 extern Rva008B2BD0Item *g_rva008B2BD0_0,*g_rva008B2BD0_1,*g_rva008B2BD0_2,*g_rva008B2BD0_3,*g_rva008B2BD0_4,*g_rva008B2BD0_5;
@@ -51,7 +84,11 @@ AptValue *rva006e9730(AptValue *);
 class AptString;
 // The existing pooled string factory returns AptString; SetString has the
 // actual AptValue provider. No complete string layout is assumed here.
-class AptString {public:static AptString *Create();};
+class AptString : public AptValue
+{
+public:
+	static AptString *Create();
+};
 class AptLoadVars {
 public:
  virtual AptValue *objectMemberLookup(AptValue *const,const EAStringC *const)const;

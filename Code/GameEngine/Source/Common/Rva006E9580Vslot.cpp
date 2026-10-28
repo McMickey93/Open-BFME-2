@@ -22,8 +22,11 @@ public:
 class BfmeAptValue006DCD20
 {
 public:
-	virtual void slot0();
+	bool isCIH(bool=false) const;
+	void setGCRootCount(unsigned int);
+	BfmeAptValue006DCD20 *rva006DD2E0();
 	void rva006DD6C0(EAStringC *pBuffer);
+	virtual void slot0();
 };
 
 void __cdecl Rva006CC110Log(int level, const char *fmt, ...);

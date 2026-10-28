@@ -189,17 +189,35 @@ extern Rva008A4630Item *g_rva008A4630_17;
 
 AptValue *aptMathTan(void *,int);
 
-class BfmeAptValue006DCD20 {
-public: bool isCIH(bool=false) const; void setGCRootCount(unsigned int);
+class BfmeAptValue006DCD20
+{
+public:
+	bool isCIH(bool=false) const;
+	void setGCRootCount(unsigned int);
+	BfmeAptValue006DCD20 *rva006DD2E0();
+	void rva006DD6C0(EAStringC *pBuffer);
+	virtual void slot0();
 };
 
 class Rva006DBB60ShrNAndField { public: bool get()const; };
 
 class Rva008A4570Owner { public: bool nameEquals(const char *); };
 
-class AptBasePtrStack {public: BfmeAptValue006DCD20 *At(int);int count,capacity;BfmeAptValue006DCD20 **elements;};
+class AptBasePtrStack
+{
+public:
+	BfmeAptValue006DCD20 *At(int);
+	int count; // +0x00
+	int capacity; // +0x04
+	BfmeAptValue006DCD20 **elements; // +0x08
+};
 
-struct AptActionInterpreter { AptBasePtrStack stack; };
+struct AptActionInterpreter
+{
+public:
+	void loadVariables(AptValue *,AptValue *,const EAStringC *);
+	AptBasePtrStack stack; // +0x00
+};
 
 extern AptActionInterpreter g_aptDateInterpreter;
 
@@ -212,12 +230,14 @@ extern Rva006E34D0 *g_bfmeAptPtrAtE176D0;
 class AptBoolean {public:static AptValue *Create(bool);};
 
 // Constructor storage view only; rowed native ctor initializes all36 bytes.
-class Rva006D6500 {
- unsigned char storage[36];
+class Rva006D6500
+{
 public:
- Rva006D6500(int callback);
- static void *operator new(unsigned int n){return g_pChainBlockAllocatorF4->allocBlock(n);}
- static void operator delete(void *p,unsigned int n){g_pChainBlockAllocatorF4->freeBlock(p,n);}
+	Rva006D6500(int callback);
+	static void *operator new(unsigned int n){return g_pChainBlockAllocatorF4->allocBlock(n);}
+	static void operator delete(void *p,unsigned int n){g_pChainBlockAllocatorF4->freeBlock(p,n);}
+private:
+	unsigned char storage[36]; // +0x00
 };
 
 class BfmeC1062 {public:virtual void bfmeSlot1062C_0();virtual void bfmeSlot1062C_1();};

@@ -17,17 +17,23 @@ public:
     const char *rva00620090() const;
 };
 
+class AptNativeHash;
 class AptValue
 {
 public:
-    EAStringC rva006ddde0();
-    void SetString(const char *text);
+	void SetString(const char *);
+	void toString(EAStringC &)const;
+	EAStringC rva006ddde0();
+	virtual void slot0();
+	virtual void slot1();
+	virtual void slot2();
+	virtual AptNativeHash *GetNativeHashVirtual();
 };
 
 class AptString : public AptValue
 {
 public:
-    static AptString *Create();
+	static AptString *Create();
 };
 
 AptValue *rva006e9730(AptValue *value)
