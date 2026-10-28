@@ -4716,6 +4716,20 @@ Remaining / next check: the same pattern may hold for other Zero Hour inline get
 Clearance: preview (link_check on current objects). Census confirmation: pending.
 
 ### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
+
+**Canonical Snapshot follow-up (2026-10-28, inspected `73c0328c5d`):**
+[The bounded parent-ownership repair](../reverse/attempt_support/uw013-snapshot-parent-repoints-20261028-codex.md)
+repoints four eight-byte uw_gen_013 cleanups (0x0075B560, 0x0075E4FF,
+0x00781D2B, 0x00783B20) to existing ParticleSystemInfo, W3D render-object,
+LifeEvent and living-world region-connection parents. Their canonical Snapshot
+base now supplies the rowed 0x0049B47C destructor; retail FuncInfo state 0 and
+EXACT parent graphs prove each current label. Complete unmasked verification
+replaces the old missing-callee prerequisite without new source or pins.
+The generated source stays untouched, retaining 134 rows / 1,222 bytes.
+The five-source build passes 197/197 rows and 11 EXACT EH graphs; paired parent
+previews retain all four LINKS and 4,110 authored bytes. Remaining generated
+rows still need per-parent placement and callee proof. Whole-unit closure, strict census confirmation and headline gains remain
+unclaimed.
 **Existing list-base unwind binding (2026-10-28, codex):** CRT-header cleanup
 in `Rva005262BFDtor.cpp` preserves its rows and EXACT parent EH graph, but
 the shadow code-identity check flags existing `uw_00796887`: the physical

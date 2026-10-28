@@ -16498,7 +16498,6 @@ _getluaproto,,0x0074CBA0,27,Code/Libraries/Source/Lua/ldebug.c,matched,placed by
 ??1Rva004E1B72@@UAE@XZ,,0x004E1B72,54,Code/GameEngine/Source/Common/Rva004E1B72Dtor.cpp,matched,unidentified class; formerly misnamed (see deleted_rows.csv)
 ??_GRva004E1B72@@UAEPAXI@Z,,0x004E1BA8,28,Code/GameEngine/Source/Common/Rva004E1B72Dtor.cpp,matched,unidentified class; formerly misnamed (see deleted_rows.csv)
 ?compressData@CompressionManager@@SAHW4CompressionType@@PAXH1H@Z,,0x0068A360,374,Code/Libraries/Source/Compression/CompressionManager_decompressData.cpp,matched,BFME1 donor graft; b1 0x0081E710; TU sandwich with decompressData; all callees rowed
-uw_0075b560,,0x0075B560,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_0075bcfa,,0x0075BCFA,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L3843
 uw_0075c92a,,0x0075C92A,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;object-symbol=$L320
 uw_0075c93c,,0x0075C93C,8,Code/gen_small/uw_gen_012.cpp,matched,gen-funclet;object-symbol=$L2880
@@ -16534,7 +16533,6 @@ uw_0075dd36,,0x0075DD36,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;obje
 uw_0075e1aa,,0x0075E1AA,8,Code/gen_small/uw_gen_009.cpp,matched,gen-funclet;object-symbol=$L3676
 uw_0075e3e4,,0x0075E3E4,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L3708
 uw_0075e47e,,0x0075E47E,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L6803
-uw_0075e4ff,,0x0075E4FF,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_0075e787,,0x0075E787,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L5572
 uw_0075e799,,0x0075E799,8,Code/gen_small/uw_gen_008.cpp,matched,gen-funclet;object-symbol=$L319
 uw_0075e839,,0x0075E839,14,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2799
@@ -17247,7 +17245,6 @@ uw_00781c16,,0x00781C16,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;obje
 uw_00781c45,,0x00781C45,11,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L6370
 uw_00781c50,,0x00781C50,8,Code/gen_small/uw_gen_000.cpp,matched,gen-funclet;object-symbol=$L7559
 uw_00781d03,,0x00781D03,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
-uw_00781d2b,,0x00781D2B,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_00781d87,,0x00781D87,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L8196
 uw_00781e7f,,0x00781E7F,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L8196
 uw_00781e91,,0x00781E91,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L12315
@@ -17282,7 +17279,6 @@ uw_007836ce,,0x007836CE,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;obje
 uw_00783747,,0x00783747,8,Code/gen_small/uw_gen_004.cpp,matched,gen-funclet;object-symbol=$L870
 uw_007837dd,,0x007837DD,11,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2602
 uw_00783867,,0x00783867,8,Code/gen_small/uw_gen_011.cpp,matched,gen-funclet;object-symbol=$L11364
-uw_00783b20,,0x00783B20,8,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4775
 uw_00783c09,,0x00783C09,11,Code/gen_small/uw_gen_013.cpp,matched,gen-funclet;object-symbol=$L4801
 uw_00783cc6,,0x00783CC6,8,Code/gen_small/uw_gen_010.cpp,matched,gen-funclet;object-symbol=$L2595
 uw_00783d5d,,0x00783D5D,8,Code/gen_small/uw_gen_001.cpp,matched,gen-funclet;object-symbol=$L9748
@@ -98940,3 +98936,7 @@ $L3075,,0x00767063,11,Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassConstruc
 ?rva007B8F26@@YAXXZ,,0x007B8F26,10,Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp,matched,compiler-shaped atexit cleanup thunk: ecx=&global VA 0x00E0445C then tail-jump to rowed ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ (0x0049B47C); registered by Rva004E4179Get in this unit; body moved here from Rva007B6A00AtexitThunks.cpp in 9b744c61f4
 ?bfmeSetSign@Gen_0088A5D0@@QAEXE@Z,,0x00039880,25,Code/Libraries/Source/debug/debug_cmd.cpp,matched,
 ??1?$StringBase@G@@QAE@XZ,,0x005B804E,5,Code/GameEngine/Source/Common/Rva002E0F1EDtor.cpp,matched,fold-proof=Code/GameEngine/Source/Common/Rva002E0F1EDtor.cpp; compiler-emitted public StringBase<unsigned short> destructor that retail ICF-folded with ~UnicodeString at 0x005B804E: this unit compiles it to the same whole jmp releaseBuffer body; its unwind funclets 0x00778744.. call 0x005B804E (row moved from WideConcatPair.cpp which no longer emits it)
+$L1219,,0x0075B560,8,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemInfoDestructor.cpp,matched,gen-funclet;parent=??1ParticleSystemInfo@FXParticleSystem@@UAE@XZ; Retail FuncInfo 0x008FD120 unwind state 0 binds this cleanup in the EXACT parent graph; canonical Snapshot destructor resolves to retail 0x0049B47C; replaces generated uw_0075b560
+$L3166,,0x0075E4FF,8,Code/GameEngineDevice/Source/W3DDevice/GameLogic/W3DGhostObjectScene.cpp,matched,gen-funclet;parent=??0W3DRenderObjectSnapshot@@AAE@PAVRenderObjClass@@PAUDrawableInfo@@_N@Z; EXACT parent EH graph binds unwind state 0 of FuncInfo 0x009009D4; canonical Snapshot destructor resolves retail 0x0049B47C; replaces generated uw_0075e4ff
+$L1261,,0x00783B20,8,Code/GameEngine/Source/Common/System/LivingWorldRegionConnectionDtor.cpp,matched,gen-funclet;parent=??1LivingWorldRegionConnection@@UAE@XZ; EXACT parent EH graph binds unwind state 0 of FuncInfo 0x0092FBFC; canonical Snapshot destructor resolves retail 0x0049B47C; replaces generated uw_00783b20
+$L407,,0x00781D2B,8,Code/GameEngine/Source/GameClient/System/FXParticleSystem/LifeEventModuleInfoDtor.cpp,matched,gen-funclet;parent=??1LifeEventModuleInfo@FXParticleSystem@@UAE@XZ; EXACT parent EH graph binds unwind state 0 of shared FuncInfo 0x0092CC98; canonical Snapshot destructor resolves retail 0x0049B47C; replaces generated uw_00781d2b
