@@ -99,8 +99,8 @@ address_global	Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp	g_Va00E04544	
 address_global	Code/GameEngine/Source/Common/GapLeavesSeat8.cpp	g_Va00DBD0F4	2
 address_global	Code/GameEngine/Source/Common/GapLeavesSeat8.cpp	g_Va00DFECD0	2
 address_global	Code/GameEngine/Source/Common/Gen006E2310Update.cpp	g_Va00DB47EC	2
-address_global	Code/GameEngine/Source/Common/Glo012F1024Entry_bfmeStep_Rva005669c2.cpp	g_Rva0060D5E0	1
-address_global	Code/GameEngine/Source/Common/Glo012F1024Entry_bfmeStep_Rva005669c2.cpp	g_Rva0060D620	1
+address_global	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	g_Rva0060D5E0	1
+address_global	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	g_Rva0060D620	1
 address_global	Code/GameEngine/Source/Common/GlobalByteFlagSetters.cpp	g_Va00E0302C	2
 address_global	Code/GameEngine/Source/Common/GlobalByteFlagSetters.cpp	g_Va00E1770C	2
 address_global	Code/GameEngine/Source/Common/GlobalByteGetters.cpp	g_Va00DB5F7D	3
@@ -1947,6 +1947,11 @@ alternatename	Code/GameEngine/Source/Common/Gen004502D0ParserRegistrationCtor.cp
 alternatename	Code/GameEngine/Source/Common/Gen009F5040Handle.cpp	?bfmeLinkEQR@BfmeHostEQR@@QAEXPAVBfmeRecEQR@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Gen_00942BC0.cpp	?bfmeSet1042@BfmeSub1042@@QAEXPADHH@Z	1
 alternatename	Code/GameEngine/Source/Common/GeometryInfoCalcPitches.cpp	?getCenterPosition@GeometryInfo@@QBEXABUCoord3D@@AAU2@@Z	1
+alternatename	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	??0Rva00565FC1Pair@@QAE@ABU0@@Z	1
+alternatename	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	?Rva0052C2CACopy@@YAPAURva00565FC1Pair@@PAU1@00ABURva00565FC1Tag@@@Z	1
+alternatename	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	?Rva00564C7DFill@@YAPAURva00565FC1Pair@@PAU1@IABU1@ABURva00565FC1Tag@@@Z	1
+alternatename	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	?allocate@Rva00565FC1Storage@@QAEPAURva00565FC1Pair@@IPBX@Z	1
+alternatename	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	?clear@Rva00565FC1@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	?g_Va00E03314@@3HA	1
 alternatename	Code/GameEngine/Source/Common/GlobalGetterSingles.cpp	?g_Va00E09FA4@@3HA	1
 alternatename	Code/GameEngine/Source/Common/INI/FormationSelectionCriteriaRva00424185.cpp	?append@Rva00424185Deque@@QAEXABURva00424185Criteria@@@Z	1
@@ -4191,11 +4196,6 @@ alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00523DB7Ctor.cpp	?Rva0023FC
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0054103ECopy.cpp	??4Rva0054103E@@QAEAAV0@ABV0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0054152DErase.cpp	??4Rva0054107FRecord@@QAEAAU0@ABU0@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva0054A0D8Insert.cpp	?cmp@Comp0054A0D8@@QAEEPAX0@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00565FC1VectorOverflow.cpp	??0Rva00565FC1Pair@@QAE@ABU0@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00565FC1VectorOverflow.cpp	?Rva0052C2CACopy@@YAPAURva00565FC1Pair@@PAU1@00ABURva00565FC1Tag@@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00565FC1VectorOverflow.cpp	?Rva00564C7DFill@@YAPAURva00565FC1Pair@@PAU1@IABU1@ABURva00565FC1Tag@@@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00565FC1VectorOverflow.cpp	?allocate@Rva00565FC1Storage@@QAEPAURva00565FC1Pair@@IPBX@Z	1
-alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00565FC1VectorOverflow.cpp	?clear@Rva00565FC1@@QAEXXZ	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva005680DERangeForward.cpp	?Rva005680DERangeCallee@@YAPAURva005680DEOutput@@PAU1@IPBURva005680DEInput@@ABURva005680DEIteratorTag@@@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva00569109RangeForward.cpp	?Rva00569109RangeCallee@@YAPAURva00569109Output@@PAURva00569109Input@@0PAU1@ABURva00569109IteratorTag@@PAH@Z	1
 alternatename	Code/Libraries/Source/WWVegas/WWLib/Rva005E3DE8Ctor.cpp	?pure@Rva005E3DE8@@UAEXXZ	2
@@ -4586,7 +4586,7 @@ asm_bytes	Code/gen_asm/d_004ff207.asm	*	135
 asm_bytes	Code/gen_asm/d_005c33dd.asm	*	74
 asm_bytes	Code/gen_asm/d_005e9687.asm	*	77
 class_gate_allow	Code/GameEngine/Source/Common/GapBodiesGE31.cpp	GameLogic	1
-class_gate_allow	Code/GameEngine/Source/Common/Glo012F1024Entry_bfmeStep_Rva005669c2.cpp	AsciiString	1
+class_gate_allow	Code/GameEngine/Source/Common/Glo012F1024Item.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva00285C88Assign.cpp	ICoord2D	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva003193EC.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva003FAAA1RayOverlap.cpp	Region3D	1
