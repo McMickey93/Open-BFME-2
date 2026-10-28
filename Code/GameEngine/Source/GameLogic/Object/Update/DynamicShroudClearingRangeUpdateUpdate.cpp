@@ -1,4 +1,6 @@
-// cl: /O1 /arch:SSE /G7 /DNDEBUG /MD /GX /ICode/Libraries/Include
+// cl: /DNDEBUG /MD /GX /Ireference/shims/dockupdate /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/bfme_namekey /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/shims -ICode/Libraries/Source/Compression/LZHCompress/CompLibHeader /Ireference/shims/bfme2htree /Ireference/shims/bfme2renderobj /Ireference/shims/bfmecamera /Ireference/shims/bfmelight /Ireference/shims/bfmeparticlehandle /Ireference/shims/bfmeparticleload /Ireference/shims/bfmeparticlequat /Ireference/shims/bfmeparticlesave /Ireference/shims/bfmeparticleline /Ireference/shims/bfme2ray /Ireference/shims/bfme2scene /Ireference/shims/bfmefrustum /ICode/Libraries/Include /Ireference/shims/moduledata
+// stlport
+#include "DynamicShroudClearingRangeUpdateView.h"
 //
 // DynamicShroudClearingRangeUpdate::update (BFME 2), from the Generals Zero
 // Hour DynamicShroudClearingRangeUpdate.cpp.
@@ -11,150 +13,19 @@
 // 0x0048B067, xfer 0x0048B505 and animateGridDecals 0x0048B256 use them. The
 // module data holds ShrinkTime +0xC, GrowTime +0x14, FinalVision +0x18,
 // ChangeInterval +0x1C, GrowInterval +0x20 and the grid decal template +0x28.
-#define NOMINMAX
-#include <windows.h>
-#include "Lib/Coord3D.h"
-
 typedef bool Bool;
 typedef int Int;
 typedef unsigned int UnsignedInt;
 typedef float Real;
-
-class Thing;
-class ModuleData;
 
 template <class T> inline const T &max(const T &lhs, const T &rhs)
 {
 	return lhs > rhs ? lhs : rhs;
 }
 
-enum UpdateSleepTime
-{
-	UPDATE_SLEEP_NONE = 1
-};
-
-class Thing
-{
-public:
-	const Coord3D *getPosition() const { return &m_position; }
-
-private:
-	char m_unknown00[0x38];
-	Coord3D m_position; // +0x38
-};
-
-class Object : public Thing
-{
-public:
-	void setShroudClearingRange(Real range);
-};
-
 #include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
-
-class RadiusDecalTemplate
-{
-};
-
-class RadiusDecal
-{
-	const void *m_template;
-	void *m_decal;
-	Bool m_empty;
-	Real m_unknown0C;
-};
-
-class DynamicShroudClearingRangeUpdateModuleData
-{
-public:
-	char m_unknown00[0x08];
-	UnsignedInt m_shrinkDelay; // +0x08
-	UnsignedInt m_shrinkTime; // +0x0C
-	UnsignedInt m_growDelay; // +0x10
-	UnsignedInt m_growTime; // +0x14
-	Real m_finalVision; // +0x18
-	UnsignedInt m_changeInterval; // +0x1C
-	UnsignedInt m_growInterval; // +0x20
-	char m_unknown24[0x04];
-	RadiusDecalTemplate m_gridDecalTemplate; // +0x28
-};
-
-class BehaviorModuleBase
-{
-public:
-	virtual void behaviorModuleBaseAnchor();
-	const ModuleData *m_moduleData;
-	Object *m_object;
-};
-
-class BehaviorModuleOther
-{
-public:
-	virtual void behaviorModuleOtherAnchor();
-};
-
-class BehaviorModule : public BehaviorModuleBase, public BehaviorModuleOther
-{
-public:
-	Object *getObject() const { return m_object; }
-};
-
-class UpdateModuleInterface
-{
-public:
-	virtual UpdateSleepTime update();
-};
-
-class UpdateModule : public BehaviorModule, public UpdateModuleInterface
-{
-protected:
-	unsigned m_nextCallFrameAndPhase;
-	int m_indexInLogic;
-	int m_bfmeReserved;
-};
-
-enum { GRID_FX_DECAL_COUNT = 30 };
-
-class DynamicShroudClearingRangeUpdate : public UpdateModule
-{
-public:
-	virtual UpdateSleepTime update();
-
-	void createGridDecals( const RadiusDecalTemplate& tmpl, Real radius, const Coord3D& pos );
-	void killGridDecals( void );
-	void rva0048B256( void ); // animateGridDecals
-
-protected:
-	const DynamicShroudClearingRangeUpdateModuleData *getDynamicShroudClearingRangeUpdateModuleData() const
-	{
-		return (const DynamicShroudClearingRangeUpdateModuleData *)m_moduleData;
-	}
-
-	enum DSCRU_STATE
-	{
-		DSCRU_NOT_STARTED_YET,
-		DSCRU_GROWING,
-		DSCRU_SUSTAINING,
-		DSCRU_SHRINKING,
-		DSCRU_DONE_FOREVER,
-		DSCRU_SLEEPING
-	};
-
-	DSCRU_STATE m_state; // +0x20
-	Int m_stateCountDown; // +0x24
-	Int m_totalFrames; // +0x28
-	UnsignedInt m_growStartDeadline; // +0x2C
-	UnsignedInt m_sustainDeadline; // +0x30
-	UnsignedInt m_shrinkStartDeadline; // +0x34
-	UnsignedInt m_doneForeverFrame; // +0x38
-	UnsignedInt m_changeIntervalCountdown; // +0x3C
-	Bool m_decalsCreated; // +0x40
-	Real m_visionChangePerInterval; // +0x44
-	Real m_nativeClearingRange; // +0x48
-	Real m_currentClearingRange; // +0x4C
-	RadiusDecal m_gridDecal[GRID_FX_DECAL_COUNT]; // +0x50
-};
 
 // ?update@DynamicShroudClearingRangeUpdate@@UAE?AW4UpdateSleepTime@@XZ @0x0048B33F 454B
 UpdateSleepTime DynamicShroudClearingRangeUpdate::update( void )
@@ -169,8 +40,8 @@ UpdateSleepTime DynamicShroudClearingRangeUpdate::update( void )
 
 	if ( ! m_decalsCreated )
 	{
-		createGridDecals(md->m_gridDecalTemplate, 100, *(me->getPosition()));
-		m_decalsCreated = TRUE;
+		createGridDecals(md->getGridDecalTemplate(), 100, *(me->getPosition()));
+		m_decalsCreated = true;
 	}
 	//-----------------------------------------------------
 

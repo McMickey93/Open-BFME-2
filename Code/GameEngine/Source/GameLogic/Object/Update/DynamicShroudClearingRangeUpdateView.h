@@ -1,10 +1,12 @@
 #pragma once
 
-// Shared accessed receiver for the existing destructor, decal and transfer rows.
-// Native rows place Object at +0x08, the update interfaces at +0x0C/+0x10,
-// state at +0x20, the boolean at +0x40 and the decal array at +0x50.
-// Preserve the seed's incomplete base interfaces and existing member names;
-// this does not adopt the separate update donor's interface declarations.
+// Shared class view for the behavior ctor, dtor, pool key, update, decal and
+// transfer rows and the ModuleData dtor. Native rows place Object at +0x08,
+// the update interfaces at +0x0C/+0x10, state at +0x20, the boolean at +0x40
+// and the decal array at +0x50. The interface names are the seed's (their
+// vftable names are data-ledger keys); retail's update slot is the +0x10 one.
+// The ModuleData ctor keeps its own view: it stores the derived vftable before
+// its member ctor, which this novtable class cannot express.
 // Keep Xfer operands beside its include to withstand merge include hoisting.
 
 class AsciiString;
@@ -26,10 +28,21 @@ class RGBAColorInt;
 class Snapshot;
 
 #include "../../../../Include/Common/BfmeXfer.h"
+#include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
 
 class Xfer;
 class Thing;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+enum UpdateSleepTime
+{
+	UPDATE_SLEEP_NONE = 1
+};
 
 class ModuleData;
 
@@ -54,9 +67,11 @@ public:
 	virtual void updateModuleInterfaceAnchor() {}
 };
 
+// Retail's update interface (vftable 0xC4BEB0, update in slot 0) sits at +0x10.
 class ModuleInterface
 {
 public:
+	virtual UpdateSleepTime update();
 	virtual void moduleInterfaceAnchor() {}
 };
 
@@ -65,7 +80,10 @@ struct Coord3D;
 class Object
 {
 public:
+	const Coord3D *getPosition() const { return (const Coord3D *)((const char *)this + 0x38); }
 	Player *getControllingPlayer() const;
+	float getShroudClearingRange() const;
+	void setShroudClearingRange(float range);
 };
 
 class UpdateModule : public ObjectModule, public UpdateModuleInterface, public ModuleInterface
@@ -74,6 +92,7 @@ public:
 	UpdateModule(Thing *thing, const ModuleData *moduleData);
 	virtual ~UpdateModule();
 	void xfer(Xfer *xfer);
+	Object *getObject() const { return m_object; }
 
 protected:
 	unsigned int m_nextCallFrameAndPhase;	// +0x14
@@ -110,16 +129,36 @@ public:
 	void createRadiusDecal(const Coord3D &pos, float radius, const Player *owningPlayer, RadiusDecal &result) const;
 };
 
+class DynamicShroudClearingRangeUpdateModuleData;
+
 class DynamicShroudClearingRangeUpdate : public UpdateModule
 {
 public:
+	DynamicShroudClearingRangeUpdate(Thing *thing, const ModuleData *moduleData);
 	virtual ~DynamicShroudClearingRangeUpdate();
+	virtual NameKeyType getModuleNameKey() const;
+	virtual UpdateSleepTime update();
 public:
 	void killGridDecals();
 	void rva0048B256();
 	void xfer(Xfer *xfer);
+protected:
+	const DynamicShroudClearingRangeUpdateModuleData *getDynamicShroudClearingRangeUpdateModuleData() const
+	{
+		return (const DynamicShroudClearingRangeUpdateModuleData *)m_moduleData;
+	}
+
+	enum DSCRU_STATE
+	{
+		DSCRU_NOT_STARTED_YET,
+		DSCRU_GROWING,
+		DSCRU_SUSTAINING,
+		DSCRU_SHRINKING,
+		DSCRU_DONE_FOREVER,
+		DSCRU_SLEEPING
+	};
 private:
-	int m_state;
+	DSCRU_STATE m_state;
 private:
 	int m_stateCountDown;
 private:
@@ -148,4 +187,37 @@ private:
 	RadiusDecal m_gridDecal[30];
 public:
 	void createGridDecals(const RadiusDecalTemplate &tmpl, float radius, const Coord3D &pos);
+};
+
+// 0xB6CF1 is rowed as BfmeStringRecord000B94D2's dtor.
+class BfmeStringRecord000B94D2
+{
+public:
+	~BfmeStringRecord000B94D2();
+
+private:
+	unsigned char m_data[0x34];
+};
+
+class __declspec(novtable) DynamicShroudClearingRangeUpdateModuleData : public Snapshot
+{
+public:
+	virtual ~DynamicShroudClearingRangeUpdateModuleData();
+
+	const RadiusDecalTemplate &getGridDecalTemplate() const
+	{
+		return *(const RadiusDecalTemplate *)&m_gridDecalTemplate;
+	}
+
+	unsigned int m_unused04; // +0x04, unstored gap
+	unsigned int m_shrinkDelay; // +0x08
+	unsigned int m_shrinkTime; // +0x0C
+	unsigned int m_growDelay; // +0x10
+	unsigned int m_growTime; // +0x14
+	float m_finalVision; // +0x18
+	unsigned int m_changeInterval; // +0x1C
+	unsigned int m_growInterval; // +0x20
+	bool m_doSpySatFX; // +0x24
+	unsigned char m_pad25[3];
+	BfmeStringRecord000B94D2 m_gridDecalTemplate; // +0x28
 };

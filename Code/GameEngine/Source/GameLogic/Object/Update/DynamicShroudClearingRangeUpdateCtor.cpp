@@ -1,5 +1,6 @@
-// cl: /DNDEBUG /MD /GX
+// cl: /DNDEBUG /MD /GX /Ireference/shims/dockupdate /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/bfme_namekey /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/shims -ICode/Libraries/Source/Compression/LZHCompress/CompLibHeader /Ireference/shims/bfme2htree /Ireference/shims/bfme2renderobj /Ireference/shims/bfmecamera /Ireference/shims/bfmelight /Ireference/shims/bfmeparticlehandle /Ireference/shims/bfmeparticleload /Ireference/shims/bfmeparticlequat /Ireference/shims/bfmeparticlesave /Ireference/shims/bfmeparticleline /Ireference/shims/bfme2ray /Ireference/shims/bfme2scene /Ireference/shims/bfmefrustum /ICode/Libraries/Include /Ireference/shims/moduledata
 // stlport
+#include "DynamicShroudClearingRangeUpdateView.h"
 //
 // ??0DynamicShroudClearingRangeUpdate@@QAE@PAVThing@@PBVModuleData@@@Z retail 0x0048B067
 // 253 bytes. Behavior-side ctor completing the DynamicShroudClearingRangeUpdate
@@ -19,87 +20,9 @@
 // The RadiusDecal element ctor/dtor ride the rowed/pinned 0x330DA4/0x330DD6
 // pair through the ehvec helper; clear resolves via its row.
 
-extern "C" const void *const __identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@")[];  // folded vftable 0x00BEFF90 (80 classes), by its data-ledger name
-
-extern "C" const void *const __identifier("??_7DynamicShroudClearingRangeUpdate@@6BModuleInterface@@@")[];  // vftable 0x00C4BEB0
-extern "C" const void *const __identifier("??_7DynamicShroudClearingRangeUpdate@@6BObjectModule@@@")[];  // vftable 0x00C4BEBC
-
-class Thing;
-class ModuleData;
-class Player;
-
-class Object
-{
-public:
-	Player *getControllingPlayer() const;
-	float getShroudClearingRange() const;
-};
-
 #include "../../../Common/GameLogicObjectLookupView.h"
 
 extern GameLogic *TheGameLogic;
-
-class UpdateModule
-{
-public:
-	UpdateModule(Thing *thing, const ModuleData *moduleData);
-	~UpdateModule();
-};
-
-class RadiusDecal
-{
-public:
-	RadiusDecal();
-	~RadiusDecal();
-	void clear();
-
-private:
-	const void *m_template;			// +0x00, rowed ctor zeroes
-	void *m_decal;					// +0x04, rowed ctor zeroes
-	unsigned char m_empty;			// +0x08, rowed ctor sets 1
-	unsigned char m_pad_09[3];
-	float m_unknown0C;				// +0x0C, rowed ctor zeroes (SSE)
-};
-
-class DynamicShroudClearingRangeUpdateModuleData
-{
-public:
-	unsigned char m_unreconstructed_00[0x08];
-	unsigned int m_shrinkDelay;			// +0x08
-	unsigned int m_shrinkTime;			// +0x0C
-	unsigned int m_growDelay;			// +0x10
-	unsigned int m_growTime;			// +0x14
-};
-
-class DynamicShroudClearingRangeUpdate : public UpdateModule
-{
-public:
-	DynamicShroudClearingRangeUpdate(Thing *thing, const ModuleData *moduleData);
-
-private:
-	const void *m_vtable;				// +0x00
-	const ModuleData *m_moduleData;		// +0x04
-	Object *m_object;					// +0x08
-	const void *m_secondary0C;			// +0x0C
-	const void *m_secondary10;			// +0x10
-	unsigned int m_nextCallFrameAndPhase;	// +0x14
-	int m_indexInLogic;					// +0x18
-	int m_reserved1C;					// +0x1C
-	int m_state;						// +0x20
-	int m_stateCountDown;				// +0x24
-	int m_totalFrames;					// +0x28
-	unsigned int m_growStartDeadline;	// +0x2C
-	unsigned int m_sustainDeadline;		// +0x30
-	unsigned int m_shrinkStartDeadline;	// +0x34
-	unsigned int m_doneForeverFrame;	// +0x38
-	unsigned int m_changeIntervalCountdown;	// +0x3C
-	unsigned char m_decalsCreated;		// +0x40
-	unsigned char m_pad_41[3];
-	float m_visionChangePerInterval;	// +0x44
-	float m_nativeClearingRange;		// +0x48
-	float m_currentClearingRange;		// +0x4C
-	RadiusDecal m_gridDecal[30];		// +0x50
-};
 
 template <class T>
 static const T &bfmeMax(const T &left, const T &right)
@@ -111,9 +34,6 @@ static const T &bfmeMax(const T &left, const T &right)
 DynamicShroudClearingRangeUpdate::DynamicShroudClearingRangeUpdate(
 	Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
-	, m_vtable(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7DynamicShroudClearingRangeUpdate@@6BObjectModule@@@"))))
-	, m_secondary0C(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7AttributeModifierPoolUpdate@@6BBehaviorModuleOther@@@"))))
-	, m_secondary10(reinterpret_cast<const void *>(((unsigned int)__identifier("??_7DynamicShroudClearingRangeUpdate@@6BModuleInterface@@@"))))
 {
 	const DynamicShroudClearingRangeUpdateModuleData *md =
 		(const DynamicShroudClearingRangeUpdateModuleData *)moduleData;
@@ -125,10 +45,10 @@ DynamicShroudClearingRangeUpdate::DynamicShroudClearingRangeUpdate(
 	m_growStartDeadline = m_stateCountDown - md->m_growDelay;
 	m_sustainDeadline = m_growStartDeadline - md->m_growTime;
 	m_doneForeverFrame = TheGameLogic->getFrame() + m_stateCountDown;
-	m_decalsCreated = 0;
+	m_decalsCreated = false;
 	m_nativeClearingRange = 200.0f;
 	m_currentClearingRange = 0.0f;
-	m_state = 0;
+	m_state = DSCRU_NOT_STARTED_YET;
 
 	Object *object = m_object;
 	if (!object)
