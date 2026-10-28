@@ -42,3 +42,38 @@ helper: 32 verified rows under the seed's existing flags, with the bounded
 census-linked donor guard. Twenty other whole-file donors remain rejected;
 twenty mixed sources are outside this merge. The prerequisite changes are
 committed separately before applying the supported merge.
+
+## Applied composition
+
+After prerequisite commit ca2e880d96, the supported merge absorbs exactly
+ExperienceLevelStoreRva00289BE0.cpp into ExperienceLevelSystem.cpp, removing
+one source file. Only the helper's source field moves in functions.csv and
+tu_map.csv; the map is not regenerated. No pin or symbol identity changes.
+The tool refreshes affected header/MS-header queues; neither has a key for the
+removed donor or destination. No code/data identity register key belongs to
+the removed helper; protected registers and hatch totals are unchanged by the
+merge. The seed's two unchanged shadow identity findings remain open.
+
+The written TU passes 32/32 normal byte matches, two data rows, four EXACT EH
+graphs, frozen-file, CSV, class and staged TU-ownership checks. Scoped and
+converged data checks have no findings. The before-union and merged object
+both expose 87 COMDATs with identical byte-and-relocation digests, 89 external
+definitions and 60 unresolved dependencies; no additions, removals or changed
+digests occur. The bounded donor link guard passes.
+
+The tooling compatibility audit covers both commits' single removed source
+path, its basename and destination. Repository-wide searches include tools,
+hooks, workflows, source/header includes, build/configuration files, ledgers,
+registers, header queues, fold-proof references and documentation. The only
+remaining old-path mentions are the merged source's provenance comment, this
+handoff, and the historical census snapshot reverse/link_status.csv. No active
+consumer needs a path update; the census snapshot is intentionally retained
+until the scheduled measurement. No affected register or queue names the
+removed donor.
+
+Final merge audit against outgoing base 161aae0a72: INCONCLUSIVE because the
+index predates the base and affected ExperienceTracker.cpp and
+W3DDisplayGatherDebugStats.cpp lack current receipts. The destination itself
+has a strict reusable receipt and previews LINKS for the combined 2110 authored
+bytes. Carry these consumers and moved-provider selection into the next
+scheduled census. No measured linked-byte or runtime gain is claimed.

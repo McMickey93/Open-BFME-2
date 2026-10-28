@@ -712,6 +712,29 @@ struct Rva00288BF9Record
 
 typedef char Rva00288BF9RecordSize[(sizeof(Rva00288BF9Record) == 16) ? 1 : -1];
 
+//
+// ?rva00289BE0@ExperienceLevelStore@@QAEHPBVExperienceTracker@@PAH@Z,
+// retail 0x00289BE0, 68B. Target evidence: finds the tracker's level list
+// (rowed FindExperienceLevelList), takes the entry for the tracker's level
+// (+0x0C, rowed 0x002897A8), and returns that entry's +0x18 requirement minus
+// the tracker's +0x10 experience truncated to int (0 when either lookup
+// fails), storing the entry's +0xFC through the optional out pointer. The
+// level-up loop 0x0039B4EC calls it with a null out pointer. Names past the
+// rowed callees are placeholders.
+class Overridable;
+
+class ExperienceLevelList;
+
+struct Rva00289BE0Level
+{
+	unsigned char m_pad0[0x18];
+	int m_requiredExperience;	// +0x18
+	unsigned char m_pad1C[0xFC - 0x1C];
+	int m_xFC;			// +0xFC
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp
 
 // ExperienceLevelSystem.cpp -- ExperienceLevelStore accessors recovered from
@@ -790,26 +813,6 @@ void ExperienceLevelStore::friend_parseExperienceLevelDefinition(INI *ini)
     }
 }
 
-// tu-skeleton: 0x002887EA 50B ?clear@?$_List_base@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
-
-// tu-skeleton: 0x0028881C 45B ?rva0028881C@Rva0028881C@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/RvaTreeEraseClearFamily.cpp (not merged yet)
-
-// tu-skeleton: 0x00288849 43B ?erase@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAE?AU?$_List_iterator@UcrateCreationEntry@@U?$_Nonconst_traits@UcrateCreationEntry@@@_STL@@@2@U32@@Z -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
-
-// tu-skeleton: 0x00288874 96B ??$_S_merge@URva00288874Record@@V?$allocator@URva00288874Record@@@_STL@@U?$less@URva00288874Record@@@3@@_STL@@YAXAAV?$list@URva00288874Record@@V?$allocator@URva00288874Record@@@_STL@@@0@0U?$less@URva00288874Record@@@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00288874.cpp (not merged yet)
-
-// tu-skeleton: 0x002888D4 47B ??$_M_find@W4NameKeyType@@@?$hashtable@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@@_STL@@ABEPAU?$_Hashtable_node@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@1@ABW4NameKeyType@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Armor.cpp (not merged yet)
-
-// tu-skeleton: 0x00288940 56B ?Rva00288940Find@@YGPBXPBX@Z -- matched in Code/GameEngine/Source/Common/Rva00288940Find.cpp (not merged yet)
-
-// tu-skeleton: 0x00288978 44B ??0?$_List_base@UBfmePod264@@V?$allocator@UBfmePod264@@@_STL@@@_STL@@QAE@ABV?$allocator@UBfmePod264@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_list_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x002889A4 23B ??1?$_List_base@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
-
-// tu-skeleton: 0x002889BB 41B ?rva002889BB@Rva0028881C@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RvaTreeEraseClearFamily.cpp (not merged yet)
-
-// tu-skeleton: 0x002889E4 45B ?Rva002889E4Construct@@YAXPAUTreeKey00242F5E@@ABU1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_game_structs.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00288A11.cpp
 
 TreeKey00242F5E *Rva00288A11UninitializedCopy(const TreeKey00242F5E *first, const TreeKey00242F5E *last, TreeKey00242F5E *result,
@@ -843,6 +846,57 @@ void Rva00288A5CAssign(CameraMarker *first, CameraMarker *last, CameraMarker *de
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.
 
+
+
+
+
+
+
+
+
+
+
+
+// ---- from Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp
+
+// Native 00288BF9/59 is a destructor, independently established by its
+// deleting caller 00288FEE/28 (flag1 calls rowed scalar delete 0002FD60),
+// and owner destructor 00289D7A/239 that invokes it before deleting records.
+// It releases an AsciiString at +0C via rowed 00036410, then frees the
+// pointer at +00 through rowed free 00030830. +04/+08 are not interpreted.
+// Donor vector<Record24> destructor lead is refuted: there is no record loop.
+// The allocation member is a structural lifetime view to preserve cleanup on exceptions,
+// not evidence for an original member type or application name.
+
+Rva00288BF9Record::~Rva00288BF9Record() {}
+
+void *Rva00288BF9Record::destroy(unsigned flags)
+{
+    this->~Rva00288BF9Record();
+    if (flags & 1) ::operator delete(this);
+    return this;
+}
+
+// tu-skeleton: 0x002887EA 50B ?clear@?$_List_base@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
+
+// tu-skeleton: 0x0028881C 45B ?rva0028881C@Rva0028881C@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/RvaTreeEraseClearFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x00288849 43B ?erase@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAE?AU?$_List_iterator@UcrateCreationEntry@@U?$_Nonconst_traits@UcrateCreationEntry@@@_STL@@@2@U32@@Z -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
+
+// tu-skeleton: 0x00288874 96B ??$_S_merge@URva00288874Record@@V?$allocator@URva00288874Record@@@_STL@@U?$less@URva00288874Record@@@3@@_STL@@YAXAAV?$list@URva00288874Record@@V?$allocator@URva00288874Record@@@_STL@@@0@0U?$less@URva00288874Record@@@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00288874.cpp (not merged yet)
+
+// tu-skeleton: 0x002888D4 47B ??$_M_find@W4NameKeyType@@@?$hashtable@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@5@V?$allocator@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@@_STL@@ABEPAU?$_Hashtable_node@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@1@ABW4NameKeyType@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Armor.cpp (not merged yet)
+
+// tu-skeleton: 0x00288940 56B ?Rva00288940Find@@YGPBXPBX@Z -- matched in Code/GameEngine/Source/Common/Rva00288940Find.cpp (not merged yet)
+
+// tu-skeleton: 0x00288978 44B ??0?$_List_base@UBfmePod264@@V?$allocator@UBfmePod264@@@_STL@@@_STL@@QAE@ABV?$allocator@UBfmePod264@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_list_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x002889A4 23B ??1?$_List_base@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
+
+// tu-skeleton: 0x002889BB 41B ?rva002889BB@Rva0028881C@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RvaTreeEraseClearFamily.cpp (not merged yet)
+
+// tu-skeleton: 0x002889E4 45B ?Rva002889E4Construct@@YAXPAUTreeKey00242F5E@@ABU1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_game_structs.cpp (not merged yet)
+
 // tu-skeleton: 0x00288A79 15B ?swap@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAEXAAV12@@Z -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
 
 // tu-skeleton: 0x00288A88 52B ?erase@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAE?AU?$_List_iterator@UcrateCreationEntry@@U?$_Nonconst_traits@UcrateCreationEntry@@@_STL@@@2@U32@0@Z -- matched in Code/GameEngine/Source/Common/System/CrateCreationEntryListClear.cpp (not merged yet)
@@ -864,26 +918,6 @@ void Rva00288A5CAssign(CameraMarker *first, CameraMarker *last, CameraMarker *de
 // tu-skeleton: 0x00288BBA 58B ??0Rva00288BBA@@QAE@ABVAsciiString@@@Z -- matched in Code/GameEngine/Source/Common/Rva00288BBACtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00288BF4 5B ?rva00288BF4@Rva00288BF4@@QAEXXZ -- matched in Code/GameEngine/Source/Common/RvaTreeDtorFamily.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/Common/Rva00288BF9RecordDtor.cpp
-
-// Native 00288BF9/59 is a destructor, independently established by its
-// deleting caller 00288FEE/28 (flag1 calls rowed scalar delete 0002FD60),
-// and owner destructor 00289D7A/239 that invokes it before deleting records.
-// It releases an AsciiString at +0C via rowed 00036410, then frees the
-// pointer at +00 through rowed free 00030830. +04/+08 are not interpreted.
-// Donor vector<Record24> destructor lead is refuted: there is no record loop.
-// The allocation member is a structural lifetime view to preserve cleanup on exceptions,
-// not evidence for an original member type or application name.
-
-Rva00288BF9Record::~Rva00288BF9Record() {}
-
-void *Rva00288BF9Record::destroy(unsigned flags)
-{
-    this->~Rva00288BF9Record();
-    if (flags & 1) ::operator delete(this);
-    return this;
-}
 
 // tu-skeleton: 0x00288D88 153B ?rva00288D88@ExperienceLevelStore@@QAE?AUExperienceLevelHandle@@HH@Z -- matched in Code/GameEngine/Source/Common/Rva0028867DCheck.cpp (not merged yet)
 
@@ -945,7 +979,21 @@ void *Rva00288BF9Record::destroy(unsigned flags)
 
 // tu-skeleton: 0x00289BC4 28B ??_GRva00289706@@QAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyDeletingDtors11.cpp (not merged yet)
 
-// tu-skeleton: 0x00289BE0 68B ?rva00289BE0@ExperienceLevelStore@@QAEHPBVExperienceTracker@@PAH@Z -- matched in Code/GameEngine/Source/GameLogic/System/ExperienceLevelStoreRva00289BE0.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/System/ExperienceLevelStoreRva00289BE0.cpp
+
+int ExperienceLevelStore::rva00289BE0(const ExperienceTracker *tracker, int *out)
+{
+	ExperienceLevelList *list = FindExperienceLevelList(tracker);
+	if (list == 0)
+		return 0;
+	const Rva00289BE0Level *level = (const Rva00289BE0Level *)((Rva0028951F *)this)->rva002897A8(list, tracker->m_currentLevel);
+	if (level == 0)
+		return 0;
+	int current = (int)tracker->m_experience;
+	if (out)
+		*out = level->m_xFC;
+	return level->m_requiredExperience - current;
+}
 
 // tu-skeleton: 0x00289C24 199B ?Rva00289C24Parse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/INI/INILevelUpFxParse.cpp (not merged yet)
 
@@ -1021,7 +1069,7 @@ void *Rva00288BF9Record::destroy(unsigned flags)
 
 // tu-skeleton: 0x007740D3 11B Unwind@00b740d3 -- matched in Code/GameEngine/Source/GameLogic/System/ExperienceLevelDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x007740DE 11B uw_007740de -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+// tu-skeleton: 0x007740DE 11B $L5083 -- matched in Code/GameEngine/Source/GameLogic/System/ExperienceLevelDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x007740E9 10B __ehhandler$??1Rva002894A2@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/System/ExperienceLevelDtor.cpp (not merged yet)
 
@@ -1041,7 +1089,7 @@ void *Rva00288BF9Record::destroy(unsigned flags)
 
 // tu-skeleton: 0x0077415D 10B __ehhandler$??0ExperienceLevelSystem@@QAE@XZ -- matched in Code/GameEngine/Source/Common/Rva00289ABDCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00774167 8B uw_00774167 -- matched in Code/gen_small/uw_gen_001.cpp (not merged yet)
+// tu-skeleton: 0x00774167 8B $L1344 -- matched in Code/GameEngine/Source/Common/INI/INILevelUpFxParse.cpp (not merged yet)
 
 // tu-skeleton: 0x0077416F 10B __ehhandler$?Rva00289C24Parse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/INI/INILevelUpFxParse.cpp (not merged yet)
 
@@ -1086,5 +1134,3 @@ void *Rva00288BF9Record::destroy(unsigned flags)
 // tu-skeleton: 0x0077426E 8B Unwind@00b7426e -- matched in Code/GameEngine/Source/GameLogic/System/ExperienceLevelStoreAddExperienceLevel.cpp (not merged yet)
 
 // tu-skeleton: 0x00774276 10B __ehhandler$?AddExperienceLevel@ExperienceLevelStore@@QAEXPAXPBUBfmePod264@@@Z -- matched in Code/GameEngine/Source/GameLogic/System/ExperienceLevelStoreAddExperienceLevel.cpp (not merged yet)
-
-// tu-skeleton: 0x00774280 8B uw_00774280 -- matched in Code/gen_small/uw_gen_002.cpp (not merged yet)
