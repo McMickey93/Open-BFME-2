@@ -1,5 +1,4 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD
-// class-gate: allow ICoord2D TU-local view: the canonical header lacks the ICoord2DBase base and operator!=, and retail calls the rowed out-of-line ICoord2D::operator!= at 0x00004CC9.
 //
 // ?rva00285C88@Rva00285C88@@QAEAAV1@ABV1@@Z retail 0x00285C88 73B. Takes
 // another record's +0x08 cell (an ICoord2D): when it differs (rowed
@@ -9,16 +8,8 @@
 // Both callees are thiscall on this record under their own address-derived
 // views; the record's own name is not recovered.
 
-struct ICoord2DBase
-{
-	int x;
-	int y;
-};
-
-struct ICoord2D : public ICoord2DBase
-{
-	bool operator!=(const ICoord2DBase &that) const;
-};
+#define ICOORD2D_VIEW_MATH_METHODS
+#include "../../../Libraries/Include/Lib/ICoord2DBase.h"
 
 class Rva0028572AHost
 {
@@ -47,7 +38,7 @@ Rva00285C88 &Rva00285C88::rva00285C88(const Rva00285C88 &that)
 		ICoord2D &dst = m_cell;
 		const ICoord2D &src = that.m_cell;
 		bool moved = false;
-		if (src != dst) {
+		if (src != asBase(dst)) {
 			((Rva0028572AHost *)this)->rva0028572A();
 			moved = true;
 		}
