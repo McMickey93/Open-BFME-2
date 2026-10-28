@@ -30,12 +30,21 @@ extern Rva006DB270 *g_pChainBlockAllocator;
 class AptBasePtrStack
 {
 public:
+    int count, capacity;
+    AptValue **items;
+    AptBasePtrStack() : count(0), capacity(0), items(0) {}
     void rva006FDE50();
 };
-template<class T> struct AptCtorStackView {
+template<class T> struct AptValuePtrStack {
     int count, capacity;
-    T **elements;
-    AptCtorStackView() : count(0), capacity(0), elements(0) {}
+    AptValue **items;
+    AptValuePtrStack() : count(0), capacity(0), items(0) {}
+};
+class Rva006FBDB0;
+struct AptCallDebugStack {
+    int count, capacity;
+    Rva006FBDB0 **items;
+    AptCallDebugStack() : count(0), capacity(0), items(0) {}
 };
 template<class T> class AptDebugStack
 {
@@ -47,9 +56,10 @@ public:
 };
 struct AptActionInterpreter {
     struct DebugCallStackInfo_t;
-    AptCtorStackView<AptValue> stack, withStack, setTargetStack, thisStack;
+    AptBasePtrStack stack;
+    AptValuePtrStack<AptValue> withStack, setTargetStack, thisStack;
     AptScriptFunctionBase *mpCurrentFunction;
-    AptCtorStackView<DebugCallStackInfo_t> debugCallStack;
+    AptCallDebugStack debugCallStack;
     unsigned char gap40[36];
     int mnStackFrameBase;
     void rva006FEB50();
@@ -57,27 +67,27 @@ struct AptActionInterpreter {
 
 void AptActionInterpreter::rva006FEB50()
 {
-    ((AptBasePtrStack *)&stack)->rva006FDE50();
-    if (withStack.elements) {
-        g_pChainBlockAllocator->freeBlock(withStack.elements, withStack.capacity * 4);
+    stack.rva006FDE50();
+    if (withStack.items) {
+        g_pChainBlockAllocator->freeBlock(withStack.items, withStack.capacity * 4);
     }
     withStack.capacity = 0;
     withStack.count = 0;
-    withStack.elements = 0;
+    withStack.items = 0;
     _ReadWriteBarrier();
-    if (setTargetStack.elements) {
-        g_pChainBlockAllocator->freeBlock(setTargetStack.elements, setTargetStack.capacity * 4);
+    if (setTargetStack.items) {
+        g_pChainBlockAllocator->freeBlock(setTargetStack.items, setTargetStack.capacity * 4);
     }
     setTargetStack.capacity = 0;
     setTargetStack.count = 0;
-    setTargetStack.elements = 0;
+    setTargetStack.items = 0;
     _ReadWriteBarrier();
-    if (thisStack.elements) {
-        g_pChainBlockAllocator->freeBlock(thisStack.elements, thisStack.capacity * 4);
+    if (thisStack.items) {
+        g_pChainBlockAllocator->freeBlock(thisStack.items, thisStack.capacity * 4);
     }
     thisStack.capacity = 0;
     thisStack.count = 0;
-    thisStack.elements = 0;
+    thisStack.items = 0;
     AptScriptFunctionBase::ShutdownStaticData();
     ((AptDebugStack<DebugCallStackInfo_t> *)&debugCallStack)->Shutdown();
     if (mnStackFrameBase != 0) {

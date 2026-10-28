@@ -17,10 +17,16 @@ struct AptInitParmsT
     int cap0;
     int capRest;
 };
-template<class T> struct AptCtorStackView {
+template<class T> struct AptValuePtrStack {
     int count, capacity;
-    T **elements;
-    AptCtorStackView() : count(0), capacity(0), elements(0) {}
+    AptValue **items;
+    AptValuePtrStack() : count(0), capacity(0), items(0) {}
+};
+class Rva006FBDB0;
+struct AptCallDebugStack {
+    int count, capacity;
+    Rva006FBDB0 **items;
+    AptCallDebugStack() : count(0), capacity(0), items(0) {}
 };
 template<class T> class AptDebugStack
 {
@@ -33,14 +39,18 @@ public:
 class AptBasePtrStack
 {
 public:
+    int count, capacity;
+    AptValue **items;
+    AptBasePtrStack() : count(0), capacity(0), items(0) {}
     void rva006FDDB0(int nCapacity);
     void rva006FE0B0(int nSize);
 };
 struct AptActionInterpreter {
     struct DebugCallStackInfo_t;
-    AptCtorStackView<AptValue> stack, withStack, setTargetStack, thisStack;
+    AptBasePtrStack stack;
+    AptValuePtrStack<AptValue> withStack, setTargetStack, thisStack;
     AptScriptFunctionBase *mpCurrentFunction;
-    AptCtorStackView<DebugCallStackInfo_t> debugCallStack;
+    AptCallDebugStack debugCallStack;
     unsigned char gap40[36];
     int mnStackFrameBase;
     unsigned char f68;
@@ -51,7 +61,7 @@ AptActionInterpreter::AptActionInterpreter() {}
 
 void AptActionInterpreter::rva006FEAF0(const AptInitParmsT &parms)
 {
-    ((AptBasePtrStack *)&stack)->rva006FDDB0(parms.cap0);
+    stack.rva006FDDB0(parms.cap0);
     ((AptBasePtrStack *)&withStack)->rva006FE0B0(parms.capRest);
     ((AptBasePtrStack *)&setTargetStack)->rva006FE0B0(parms.capRest);
     ((AptBasePtrStack *)&thisStack)->rva006FE0B0(parms.capRest);
