@@ -37445,7 +37445,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00486554,37,code,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp S=Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp N=Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp
 0x00486579,25,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,proposed,K,K=Rva00486579,Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp
 0x00486592,6,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,proposed,C,C=0x00486579..0x00486598,Code/GameEngine/Source/Common/ModuleNameGetters3.cpp
-0x00486598,69,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp N=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,Code/GameEngine/Source/GameLogic/Object/Die/FXListDiePoolKey.cpp
+0x00486598,69,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,S,S=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp N=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp
 0x004865DD,42,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp S=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp N=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,Code/GameEngine/Source/GameLogic/Object/Die/FXListDieConstructor.cpp
 0x00486607,28,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,C,C=0x004865DD..0x00486623,Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp
 0x00486623,100,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,Z,Z=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp S=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp N=Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,Code/GameEngine/Source/GameLogic/Object/Die/FXListDieOnDie.cpp
@@ -80069,8 +80069,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078C077,10,code,Code/GameEngine/Source/GameLogic/Object/Die/CrushDie.cpp,approved,P,P=0x00486327@FuncInfo0x0093B5C8,Code/GameEngine/Source/GameLogic/Object/Die/CrushDieOnDie.cpp
 0x0078C081,13,code,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp,approved,P,P=0x004864C9@FuncInfo0x0093B5EC,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp
 0x0078C08E,10,code,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp,approved,P,P=0x004864C9@FuncInfo0x0093B5EC,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp
-0x0078C098,13,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,P,P=0x00486598@FuncInfo0x0093B610,Code/GameEngine/Source/GameLogic/Object/Die/FXListDiePoolKey.cpp
-0x0078C0A5,10,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,P,P=0x00486598@FuncInfo0x0093B610,Code/GameEngine/Source/GameLogic/Object/Die/FXListDiePoolKey.cpp
+0x0078C098,13,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,P,P=0x00486598@FuncInfo0x0093B610,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp
+0x0078C0A5,10,code,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,approved,P,P=0x00486598@FuncInfo0x0093B610,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp
 0x0078C0AF,13,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDieFind.cpp
 0x0078C0BC,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDieFind.cpp
 0x0078C0C6,13,code,Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDie.cpp,approved,P,P=0x00486792@FuncInfo0x0093B658,Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDie.cpp

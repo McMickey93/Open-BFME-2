@@ -20071,8 +20071,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03860,4,.data,global,?TheDestroyDiePoolKey@?1??getModuleNameKey@DestroyDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp,owned,,1,2
 0x00A03864,4,.data,global,?$S1@?1??getModuleNameKey@DestroyDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/DestroyDie.cpp,owned,,1,2
 0x00A03868,4,.data,global,_s_rva007B12D4,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A0386C,4,.data,global,?TheFXListDiePoolKey@?1??rva000486598@FXListDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/FXListDiePoolKey.cpp,owned,,1,2
-0x00A03870,4,.data,global,?$S1@?1??rva000486598@FXListDie@@SA?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/FXListDiePoolKey.cpp,owned,,1,4
+0x00A0386C,4,.data,global,?TheFXListDiePoolKey@?1??rva000486598@FXListDie@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,owned,,1,2
+0x00A03870,4,.data,global,?$S1@?1??rva000486598@FXListDie@@SA?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/FXListDie.cpp,owned,,1,4
 0x00A03874,4,.data,global,?key@?1??Rva00486687Find@@YAPAXPAX@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDieFind.cpp,owned,,1,2
 0x00A03878,4,.data,global,?$S1@?1??Rva00486687Find@@YAPAXPAX@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDieFind.cpp,owned,,1,4
 0x00A0387C,4,.data,global,?TheRebuildHoleExposeDiePoolKey@?1??getModuleNameKey@RebuildHoleExposeDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/RebuildHoleExposeDie.cpp,owned,,1,2
