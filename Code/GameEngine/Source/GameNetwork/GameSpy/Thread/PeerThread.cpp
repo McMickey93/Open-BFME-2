@@ -3697,7 +3697,4 @@ template <> void deque<void *, allocator<void *> >::_M_reallocate_map(size_t, bo
 template <> AsciiString __default_constructed<AsciiString>(AsciiString *);
 template <> AsciiString __default_constructed_aux<AsciiString>(
     AsciiString *, const __false_type &);
-template <> _Rb_tree_node<pair<const AsciiString, AsciiString> > *
-allocator<_Rb_tree_node<pair<const AsciiString, AsciiString> > >::allocate(
-    size_t, const void *) const;
 }
