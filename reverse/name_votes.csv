@@ -11974,3 +11974,5 @@ Code/GameEngine/Source/Common/Rva0039161CCtor.cpp|param|Rva0039161C::Rva0039161C
 Code/GameEngine/Source/Common/Rva0039161CCtor.cpp|param|Rva0039161C::Rva0039161C|b,699998695f39b517d087b1d5,drz-k7,drz-k7-n8e-19,w-4471b1f6edef,2026-10-28
 Code/GameEngine/Source/Common/Rva002ED7B6Finish.cpp|param|Rva002ED7B6::rva002ED7B6|a,904c0a6f6ce2eebe4547db01,drz-k7,drz-k7-n8e-20,w-4471b1f6edef,2026-10-28
 Code/GameEngine/Source/Common/Rva002ED7B6Finish.cpp|param|Rva002ED7B6::rva002ED7B6|f,5ee1a357f38f0fccb32701ff,drz-k7,drz-k7-n8e-20,w-4471b1f6edef,2026-10-28
+Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldSetActive.cpp|member|LivingWorldStaticLODInfo|m_0C,62c0dfae3477c362158ac9d6,drz-k2,drz-k2-n9a-21b,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/GameClient/LivingWorld/LivingWorldSetActive.cpp|member|LivingWorldStaticLODInfo|m_0E,fef8c172d27a716a3da7d7f2,drz-k2,drz-k2-n9a-21b,w-ded32b2e2c5e,2026-10-28
