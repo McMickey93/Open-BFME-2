@@ -6787,3 +6787,13 @@ Completed: tested destructor suppression/declaration and the existing provider's
 Remaining / next check: reconcile allocator temporary lifetime and normal inline cleanup with the out-of-line unwind target together. Repeating destructor-only suppression changes either the parent or its unwind. Other container-operation blockers remain in the cohort; this is not a whole-family clearance. Carry a future verified provider repair and consumers into the normal census.
 
 Clearance: none; no source edit retained, debt retired or new linked bytes claimed. Census confirmation: no new result.
+
+### INIAudioEventInfo constructor consolidation: consumer receipts await refresh
+
+Status: Verified composition; outgoing link audit inconclusive. Updated: 2026-10-28; inspected base: `30537e7d64`; cached index: `54b83e4f69`.
+
+Completed: the supported merge absorbed Rva001DA2D5Ctor.cpp into INIAudioEventInfo.cpp, removing one source file and preserving all 31 rows plus the existing data row. Six EH graphs are EXACT; data checks have no findings and code identity has no new findings. The apply-time link guard accepts both census-linked inputs and their composition. The destination has a current strict receipt. [Scoped evidence, register/path audit and remaining donor blockers](../reverse/attempt_support/iniaudio-consolidation-20261028-codex.md).
+
+Remaining / next check: the outgoing audit is INCONCLUSIVE because its index predates the base and MilesAudioManager.cpp and Rva00433390Ctor.cpp lack current receipts. Carry the constructor's moved provider and these affected consumers into the next scheduled census. Eleven whole-file donors still need private-view, template or codegen reconciliation; twenty-three mixed files remain outside the merge.
+
+Clearance: source consolidation and scoped byte/data/EH checks only. Full selected-consumer coverage and census confirmation remain open; no measured linked-byte or image-ownership gain is claimed.
