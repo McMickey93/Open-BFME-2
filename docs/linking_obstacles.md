@@ -5575,6 +5575,22 @@ authored bytes, index `bf3dd31211`). This clears this destructor unit's header
 prerequisite only; the full ModuleData hierarchy and other Snapshot consumers
 retain their separate prerequisites. No new linked-byte or census gain claimed.
 
+**Vector deleting destructor follow-up (2026-10-28, inspected `9d85e4da51`):**
+[The bounded adoption](../reverse/attempt_support/snapshot-vector-delete-header-20261028-codexb.md)
+replaces V07's one-slot private Snapshot with the canonical abstract header.
+Calling the compiler-generated vector deleting destructor from the existing
+non-retail helper, following XferVectorDeletingDtor.cpp, emits the same 74-byte
+row without array construction. All seven retained body/table COMDATs other
+than Snapshot's table remain identical. The Snapshot table now has retail's
+four slots; the newly emitted scalar deleting destructor exactly matches the
+existing region-connection provider. The canonical constructor owner remains
+exact. The three units pass 11/11 rows and retain ordinary-preview LINKS
+(153, 32 and 122 authored bytes, index `14dc3d2467`). The owning acceptance
+tool retires one queue entry, and the hatch tool removes one obsolete class
+exception. No shared header, row, pin or flag changes. This clears V07's header
+prerequisite; other consumers above remain blocked. Carry the table/provider
+change into the next scheduled census; no new linked-byte gain is claimed.
+
 Clearance: only the named retained adoptions and their local preview scope are verified; no new linked-unit or headline gain claimed. Census confirmation: pending.
 
 ### LINK-108: PropDraw module-data units emit incompatible short tables

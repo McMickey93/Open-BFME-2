@@ -4602,7 +4602,6 @@ class_gate_allow	Code/GameEngine/Source/Common/Rva0075A4DCCluster.cpp	Video	1
 class_gate_allow	Code/GameEngine/Source/Common/Rva007ABBB3CtorInits_Rva007ADCAE.cpp	AsciiString	1
 class_gate_allow	Code/GameEngine/Source/Common/RvaHelperThenMemberForwarders.cpp	StringBase	1
 class_gate_allow	Code/GameEngine/Source/Common/System/MessageStreamCommandName.cpp	AsciiString	1
-class_gate_allow	Code/GameEngine/Source/Common/VectorDeletingDtorsV07.cpp	Snapshot	1
 class_gate_allow	Code/GameEngine/Source/Common/parseAutoResolveBodyDefinition.cpp	Rva004188B6	1
 class_gate_allow	Code/GameEngine/Source/Common/parseAutoResolveBodyDefinition.cpp	Rva0041890FRecord	1
 class_gate_allow	Code/GameEngine/Source/Common/parseAutoResolveBodyDefinition.cpp	Rva00418A12Node	1
