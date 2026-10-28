@@ -41,7 +41,7 @@ public:
     void initFromINIMulti(void *p, const MultiIniFieldParse &m);
 };
 
-void q4Notify002CCBCA(void *ini, Made002CCBCA *m, int c, int d)
+void q4Notify002CCBCA(void *ini, Made002CCBCA *m, int store, int d)
 {
     MultiIniFieldParse tmp;
     tmp.add((const FieldParse *)Rva00507552Get(), 0);

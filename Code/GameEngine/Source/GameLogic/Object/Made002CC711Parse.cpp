@@ -52,10 +52,10 @@ extern const FieldParse ParalyzeFieldTable[] =
     { 0, 0, 0, 0 }
 };
 
-void q4Notify002CC711(void *ini, Made002CC711 *m, int c, int d)
+void q4Notify002CC711(void *ini, Made002CC711 *nugget, int store, int d)
 {
     MultiIniFieldParse tmp;
     tmp.add((const FieldParse *)Rva00507552Get(), 0);
     tmp.add(ParalyzeFieldTable, 0);
-    ((INI *)ini)->initFromINIMulti(m, tmp);
+    ((INI *)ini)->initFromINIMulti(nugget, tmp);
 }

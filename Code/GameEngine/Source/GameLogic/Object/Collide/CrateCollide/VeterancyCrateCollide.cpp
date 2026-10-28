@@ -184,7 +184,7 @@ struct Holder
 class Rva004BCF92
 {
 public:
-	void rva004BCF92(const Object *obj, int arg);
+	void rva004BCF92(const Object *obj, int text);
 	char m_pad0[8];
 	Holder *m_holder;
 };
@@ -295,15 +295,15 @@ bool VeterancyCrateCollide::executeCrateBehavior(Object *other)
 // ?getControllingPlayer@Object@@QBEPAVPlayer@@XZ, the float 10.0 (0x00BC2428) and
 // TheInGameUI as annotated, ret 8 with two stack args.
 
-void Rva004BCF92::rva004BCF92(const Object *obj, int arg)
+void Rva004BCF92::rva004BCF92(const Object *obj, int text)
 {
 	const Object *heldObj = obj;
 	Coord3D *p = (Coord3D *)((char *)m_holder + 0x38);
-	Coord3D tmp;
-	tmp.x = p->x;
-	tmp.y = p->y;
-	tmp.z = p->z + 10.0f;
+	Coord3D pos;
+	pos.x = p->x;
+	pos.y = p->y;
+	pos.z = p->z + 10.0f;
 	Player *player = heldObj->getControllingPlayer();
 	int color = player->m_unk280 | 0xe6000000;
-	TheInGameUI->unk1A0(arg, &tmp, color);
+	TheInGameUI->unk1A0(text, &pos, color);
 }

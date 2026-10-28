@@ -37,7 +37,7 @@ struct Rva00154630SelectFont
 {
 	HDC dc;
 	HFONT old;
-	Rva00154630SelectFont(HDC d, HFONT f) : dc(d) { old = (HFONT)::SelectObject(d, f); }
+	Rva00154630SelectFont(HDC d, HFONT font) : dc(d) { old = (HFONT)::SelectObject(d, font); }
 	void restore() { ::SelectObject(dc, old); }
 };
 class FontCharsClass

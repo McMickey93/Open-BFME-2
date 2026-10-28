@@ -337,9 +337,9 @@ UpdateSleepTime AIUpdateInterface::rva0026A05D()
 		sleep = subMachineSleep;
 	}
 
-	int tmp = doLocomotor();
-	if (tmp < sleep)
-		sleep = tmp;
+	int locomotorSleep = doLocomotor();
+	if (locomotorSleep < sleep)
+		sleep = locomotorSleep;
 
 	m_isInUpdate = false;
 	if (!(m_completedWaypoint == 0)) {

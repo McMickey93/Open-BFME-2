@@ -49,8 +49,8 @@ PathfindCell *getCell(PathfindLayerEnum,Int,Int);
 float GetWallHeight(PathfindLayerEnum,const Coord3D *,Coord3D *);
 private: char prefix[0x1c]; Int m_width,m_height; char gap24[0x60-0x24]; PathfindLayer m_layers[16];
 };
-static __forceinline void copyCoord3D(Coord3D *d,const Coord3D *s){d->x=s->x;d->y=s->y;d->z=s->z;}
-static __forceinline void subCoord3D(Coord3D *d,const Coord3D *s){d->x-=s->x;d->y-=s->y;d->z-=s->z;}
+static __forceinline void copyCoord3D(Coord3D *dest,const Coord3D *src){dest->x=src->x;dest->y=src->y;dest->z=src->z;}
+static __forceinline void subCoord3D(Coord3D *dest,const Coord3D *src){dest->x-=src->x;dest->y-=src->y;dest->z-=src->z;}
 struct PathGroundCoord : Coord3D {
 PathGroundCoord() {}
 PathGroundCoord(const Coord3D &v) { x=v.x; y=v.y; z=v.z; }

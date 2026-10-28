@@ -34,12 +34,12 @@ class Gen_009431F0 { public: int map_x(float); int map_y(float); };
 struct SceneCollectPair { float X,Y; };
 struct SceneCollectRect {
  SceneCollectPair min,max;
- __forceinline void Add_Point(const Vector2 &p)
+ __forceinline void Add_Point(const Vector2 &point)
  {
-  if (p.X < min.X) min.X = p.X;
-  else if (p.X > max.X) max.X = p.X;
-  if (p.Y < min.Y) min.Y = p.Y;
-  else if (p.Y > max.Y) max.Y = p.Y;
+  if (point.X < min.X) min.X = point.X;
+  else if (point.X > max.X) max.X = point.X;
+  if (point.Y < min.Y) min.Y = point.Y;
+  else if (point.Y > max.Y) max.Y = point.Y;
  }
 };
 class BfmeSceneVector {
@@ -134,11 +134,11 @@ void BfmeSceneVector::rva00142170(Gen_00943CF0_Node **out, SceneCollectCell *nod
 
 void BfmeSceneVector::rva00142330(Gen_00943CF0_Node **out,const SceneCollectRect &rect,const float *margin)
 {
- int x0=((Gen_009431F0*)this)->map_x(rect.min.X-(margin ? margin[0] : 0.0f));
- int x1=((Gen_009431F0*)this)->map_x(rect.max.X+(margin ? margin[0] : 0.0f));
- int y0=((Gen_009431F0*)this)->map_y(rect.min.Y-(margin ? margin[1] : 0.0f));
- int y1=((Gen_009431F0*)this)->map_y(rect.max.Y+(margin ? margin[1] : 0.0f));
- rva00142170(out,vector,(unsigned)vector_max>>2,x0,y0,x1,y1,0,0,level_mask);
+ int minX=((Gen_009431F0*)this)->map_x(rect.min.X-(margin ? margin[0] : 0.0f));
+ int maxX=((Gen_009431F0*)this)->map_x(rect.max.X+(margin ? margin[0] : 0.0f));
+ int minY=((Gen_009431F0*)this)->map_y(rect.min.Y-(margin ? margin[1] : 0.0f));
+ int maxY=((Gen_009431F0*)this)->map_y(rect.max.Y+(margin ? margin[1] : 0.0f));
+ rva00142170(out,vector,(unsigned)vector_max>>2,minX,minY,maxX,maxY,0,0,level_mask);
 }
 
 

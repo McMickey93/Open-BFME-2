@@ -163,13 +163,13 @@ void UpgradeModule::xfer(Xfer *xfer)
 
 bool Rva004CE2B0::rva004CE2B0(Rva00406F9C *mask)
 {
-	Rva00406F9C buf100;
-	Rva00406F9C buf80;
-	((Rva001EAE6FHelper *)&buf80)->clear80();
-	((Rva001EAE6FHelper *)&buf100)->clear80();
-	v11(&buf80, &buf100);
+	Rva00406F9C conflicting;
+	Rva00406F9C activation;
+	((Rva001EAE6FHelper *)&activation)->clear80();
+	((Rva001EAE6FHelper *)&conflicting)->clear80();
+	v11(&activation, &conflicting);
 	for (unsigned i = 0; i < 32; ++i) {
-		if (buf80.m_data[i] != 0)
+		if (activation.m_data[i] != 0)
 			goto haveBits;
 	}
 	return false;
@@ -178,24 +178,24 @@ haveBits:
 		return false;
 	bool disp1;
 	if (v14())
-		disp1 = ((Rva002AA292 *)mask)->rva002AA292((const int *)&buf100);
+		disp1 = ((Rva002AA292 *)mask)->rva002AA292((const int *)&conflicting);
 	else
-		disp1 = mask->rva00406F9C(&buf100);
+		disp1 = mask->rva00406F9C(&conflicting);
 	if (disp1)
 		return false;
 	if (v13())
-		return ((Rva002AA292 *)mask)->rva002AA292((const int *)&buf80);
-	return mask->rva00406F9C(&buf80);
+		return ((Rva002AA292 *)mask)->rva002AA292((const int *)&activation);
+	return mask->rva00406F9C(&activation);
 }
 
 bool Rva004CE342::rva004CE342(Rva00406F9C *mask)
 {
-	Rva00406F9C buf100;
-	Rva00406F9C buf80;
-	((Rva001EAE6FHelper *)&buf80)->clear80();
-	((Rva001EAE6FHelper *)&buf100)->clear80();
-	v11(&buf80, &buf100);
-	if (!buf80.rva00406F9C(mask))
+	Rva00406F9C conflicting;
+	Rva00406F9C activation;
+	((Rva001EAE6FHelper *)&activation)->clear80();
+	((Rva001EAE6FHelper *)&conflicting)->clear80();
+	v11(&activation, &conflicting);
+	if (!activation.rva00406F9C(mask))
 		return false;
 	if (m_b04) {
 		m_b04 = false;

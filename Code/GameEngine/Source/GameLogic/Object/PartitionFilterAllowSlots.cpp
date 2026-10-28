@@ -191,12 +191,12 @@ private:
 
 Bool Rva00260EB1Filter::allow(Object *objOther)
 {
-	Relationship r;
+	Relationship relationship;
 	if (!m_fromOther)
-		r = m_obj->getRelationship(objOther);
+		relationship = m_obj->getRelationship(objOther);
 	else
-		r = objOther->getRelationship(m_obj);
-	return (m_flags & (1 << r)) ? true : false;
+		relationship = objOther->getRelationship(m_obj);
+	return (m_flags & (1 << relationship)) ? true : false;
 }
 
 int Rva00260EB1Filter::getPlayerMask()

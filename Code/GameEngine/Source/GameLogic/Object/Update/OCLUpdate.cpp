@@ -220,9 +220,9 @@ extern GameLogic *TheGameLogic;
 
 unsigned int OCLUpdate::getRemainingFrames() const
 {
-	int t = m_20;
+	int m_nextCreationFrame = m_20;
 	GameLogic *gameLogic = TheGameLogic;
-	return t - gameLogic->getFrame();
+	return m_nextCreationFrame - gameLogic->getFrame();
 }
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/OCLUpdate.cpp
@@ -265,10 +265,10 @@ unsigned char Rva0049B2A2::shouldCreate()
 
 void Rva0049B2A2::setNextCreationFrame()
 {
-	int r = GetGameLogicRandomValue(m_moduleData->m_0C, m_moduleData->m_10, (char *)"C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\Object\\Update\\OCLUpdate.cpp", 123);
+	int delay = GetGameLogicRandomValue(m_moduleData->m_0C, m_moduleData->m_10, (char *)"C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\Object\\Update\\OCLUpdate.cpp", 123);
 	unsigned cur = TheGameLogic->getFrame();
 	m_24 = cur;
-	m_20 = cur + r;
+	m_20 = cur + delay;
 }
 
 void Rva0049B2A2::xfer(Xfer *xfer)

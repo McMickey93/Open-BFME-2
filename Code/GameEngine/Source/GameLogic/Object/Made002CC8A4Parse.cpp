@@ -67,10 +67,10 @@ extern const FieldParse FieldTable002CC8A4[] =
     { 0, 0, 0, 0 }
 };
 
-void q4Notify002CC8A4(void *ini, Made002CC8A4 *m, int c, int d)
+void q4Notify002CC8A4(void *ini, Made002CC8A4 *instance, int store, int d)
 {
     MultiIniFieldParse tmp;
     tmp.add((const FieldParse *)Rva00507552Get(), 0);
     tmp.add(FieldTable002CC8A4, 0);
-    ((INI *)ini)->initFromINIMulti(m, tmp);
+    ((INI *)ini)->initFromINIMulti(instance, tmp);
 }

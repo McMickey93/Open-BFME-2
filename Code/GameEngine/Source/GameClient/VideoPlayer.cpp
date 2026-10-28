@@ -103,21 +103,21 @@ public:
 
 struct BfmeElemVIA
 {
-	AsciiString m_bfme00;
-	AsciiString m_bfme04;
-	AsciiString m_bfme08;
-	char m_bfme0c;
+	AsciiString m_filename;
+	AsciiString m_internalName;
+	AsciiString m_commentForWB;
+	char m_hasSubtitles;
 	char m_bfmePad0d[3];
 	int m_bfme10;
-	char m_bfme14;
+	char m_isDefault;
 	char m_bfmePad15[3];
-	int m_bfme18;
+	int m_subtitleManager;
 };
 
 struct BfmeNodeEQB
 {
 	void *m_bfmeSlotEQB;
-	BfmeNodeEQB *m_bfmeNextEQB;
+	BfmeNodeEQB *m_next;
 };
 
 extern "C" BfmeNodeEQB *g_bfmeHeadEQB;
@@ -258,19 +258,19 @@ BfmeRecJD * __stdcall bfmeSlotAt(int index)
 
 BfmeElemVIA *__cdecl bfmeCopyVIA(BfmeElemVIA *first, BfmeElemVIA *last, BfmeElemVIA *dest)
 {
-	int n = last - first;
-	if (n > 0)
+	int count = last - first;
+	if (count > 0)
 	{
-		int i = n;
+		int i = count;
 		do
 		{
-			((StringBase<char> *)&dest->m_bfme00)->set(*(const StringBase<char> *)&first->m_bfme00);
-			((StringBase<char> *)&dest->m_bfme04)->set(*(const StringBase<char> *)&first->m_bfme04);
-			((StringBase<char> *)&dest->m_bfme08)->set(*(const StringBase<char> *)&first->m_bfme08);
-			dest->m_bfme0c = first->m_bfme0c;
+			((StringBase<char> *)&dest->m_filename)->set(*(const StringBase<char> *)&first->m_filename);
+			((StringBase<char> *)&dest->m_internalName)->set(*(const StringBase<char> *)&first->m_internalName);
+			((StringBase<char> *)&dest->m_commentForWB)->set(*(const StringBase<char> *)&first->m_commentForWB);
+			dest->m_hasSubtitles = first->m_hasSubtitles;
 			dest->m_bfme10 = first->m_bfme10;
-			dest->m_bfme14 = first->m_bfme14;
-			dest->m_bfme18 = first->m_bfme18;
+			dest->m_isDefault = first->m_isDefault;
+			dest->m_subtitleManager = first->m_subtitleManager;
 			++first;
 			++dest;
 		} while (--i);
@@ -286,10 +286,10 @@ BfmeElemVIA *__cdecl bfmeCopyVIA(BfmeElemVIA *first, BfmeElemVIA *last, BfmeElem
 
 BfmeNodeEQB * __stdcall bfmeLinkEQB(BfmeNodeEQB *node)
 {
-	for (BfmeNodeEQB *p = g_bfmeHeadEQB; p != 0; p = p->m_bfmeNextEQB)
+	for (BfmeNodeEQB *p = g_bfmeHeadEQB; p != 0; p = p->m_next)
 		if (p == node)
 			return node;
-	node->m_bfmeNextEQB = g_bfmeHeadEQB;
+	node->m_next = g_bfmeHeadEQB;
 	g_bfmeHeadEQB = node;
 	return node;
 }

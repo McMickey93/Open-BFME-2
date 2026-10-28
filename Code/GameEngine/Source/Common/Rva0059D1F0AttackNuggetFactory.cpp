@@ -58,15 +58,15 @@ extern "C" int __identifier("??_7Rva0035D352@@6B@");
 
 struct S4BuiltRva0059D1F0 : public Rva00489210
 {
-	int m_10, m_14;
-	char m_18, m_19;
+	int m_startFrame, m_endFrame;
+	char m_fadeInUnfrozenSounds, m_19;
 
 	S4BuiltRva0059D1F0()
 	{
 		m_00 = &__identifier("??_7Rva0035D352@@6B@");
-		m_10 = 0;
-		m_14 = 0x1e;
-		m_18 = 1;
+		m_startFrame = 0;
+		m_endFrame = 0x1e;
+		m_fadeInUnfrozenSounds = 1;
 		m_19 = 0;
 		m_04 = 0x1e;
 	}
@@ -74,10 +74,10 @@ struct S4BuiltRva0059D1F0 : public Rva00489210
 
 void s4ParseFieldsRva0059D1F0(INI *ini, Gen_00489270 *sink)
 {
-	S4BuiltRva0059D1F0 *t = new S4BuiltRva0059D1F0;
+	S4BuiltRva0059D1F0 *transition = new S4BuiltRva0059D1F0;
 
-	ini->initFromINI(t, s4TableRva0059D1F0);
-	t->m_04 = t->m_14;
+	ini->initFromINI(transition, s4TableRva0059D1F0);
+	transition->m_04 = transition->m_endFrame;
 
-	sink->m((int)t);
+	sink->m((int)transition);
 }

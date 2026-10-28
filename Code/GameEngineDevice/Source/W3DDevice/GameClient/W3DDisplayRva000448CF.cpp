@@ -59,7 +59,7 @@ class W3DDisplay : public Display
 {
 public:
 	virtual void drawLine(float x1, float y1, float x2, float y2, float width, uint32 color);
-	virtual void drawLine(float x1, float y1, float x2, float y2, float width, uint32 color0, uint32 color1);
+	virtual void drawLine(float x1, float y1, float endX, float endY, float width, uint32 color0, uint32 color1);
 private:
 	char m_pad14[0x164];
 	Render2DClass *m_render2D;
@@ -82,18 +82,18 @@ void W3DDisplay::drawLine(float x1, float y1, float x2, float y2, float width, u
 // pattern, at BFME1 ba7ddda7e8. Target coordinates are floats, unlike the
 // donor's integer overload; BFME1's ledger now rows this float overload as
 // ?drawLine@W3DDisplay@@UAEXMMMMMKK@Z (0x006E9C00, matched).
-void W3DDisplay::drawLine(float x1, float y1, float x2, float y2, float width, uint32 color0, uint32 color1)
+void W3DDisplay::drawLine(float x1, float y1, float endX, float endY, float width, uint32 color0, uint32 color1)
 {
     m_render2D->m_flag48 = 0;
     if (m_isClippedEnabled) {
         ICoord2D start,end,returnStart,returnEnd;
         start.x=(int)x1; start.y=(int)y1;
-        end.x=(int)x2; end.y=(int)y2;
+        end.x=(int)endX; end.y=(int)endY;
         if (ClipLine2D(&start,&end,&returnStart,&returnEnd,&m_clipRegion))
             m_render2D->Add_Line(Vector2((float)returnStart.x,(float)returnStart.y),
                                 Vector2((float)returnEnd.x,(float)returnEnd.y),
                                 width,color0,color1);
     } else {
-        m_render2D->Add_Line(Vector2(x1,y1),Vector2(x2,y2),width,color0,color1);
+        m_render2D->Add_Line(Vector2(x1,y1),Vector2(endX,endY),width,color0,color1);
     }
 }

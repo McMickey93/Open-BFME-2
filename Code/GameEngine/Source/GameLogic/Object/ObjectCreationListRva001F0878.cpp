@@ -45,7 +45,7 @@ struct Rva001F0468Node
 {
 	char m_pad00[8];
 	Rva001F0468Node *m_next08;
-	Rva001F0468Node *m_child0c;
+	Rva001F0468Node *m_right;
 };
 
 class ObjectCreationList
@@ -147,7 +147,7 @@ void ObjectCreationList::rva001F0468(Rva001F0468Node *head)
 		return;
 	while (cur != 0)
 	{
-		rva001F0468(cur->m_child0c);
+		rva001F0468(cur->m_right);
 		Rva001F0468Node *next = cur->m_next08;
 		free(cur);
 		cur = next;
@@ -157,7 +157,7 @@ void ObjectCreationList::rva001F0468(Rva001F0468Node *head)
 struct Rva001F050BMid
 {
 	char m_pad00[4];
-	Rva001F0468Node *m_head04;
+	Rva001F0468Node *m_parent;
 	Rva001F050BMid *m_next08;
 	Rva001F050BMid *m_prev0c;
 };
@@ -176,9 +176,9 @@ void Rva001F050B::rva001F050B()
 {
 	if (m_count04 == 0)
 		return;
-	((ObjectCreationList *)this)->rva001F0468(m_ptr00->m_head04);
+	((ObjectCreationList *)this)->rva001F0468(m_ptr00->m_parent);
 	m_ptr00->m_next08 = m_ptr00;
-	m_ptr00->m_head04 = 0;
+	m_ptr00->m_parent = 0;
 	m_ptr00->m_prev0c = m_ptr00;
 	m_count04 = 0;
 }

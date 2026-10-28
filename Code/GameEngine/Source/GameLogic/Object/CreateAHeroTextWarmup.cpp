@@ -66,20 +66,20 @@ public:
  const AsciiString &GetBlingNameTag(int,unsigned,unsigned,unsigned);
 };
 void CreateAHeroManager::rva0021CB1F() {
- for(unsigned c=0;c<classes.size();++c) {
-  reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetClassDescTag(c),0);
-  reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetClassNameTag(c),0);
-  reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetClassPowersTag(c),0);
-  for(unsigned s=0;s<(unsigned)rva00219D52(c);++s) {
-   reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetSubClassNameTag(c,s),0);
-   reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetSubClassDescTag(c,s),0);
-   for(unsigned b=0;b<binders.size();++b) {
-    Rva0021CB1FBinder *binding=static_cast<Rva0021CB1FBinder*>(GetBlingBinder(b));
+ for(unsigned classIndex=0;classIndex<classes.size();++classIndex) {
+  reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetClassDescTag(classIndex),0);
+  reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetClassNameTag(classIndex),0);
+  reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetClassPowersTag(classIndex),0);
+  for(unsigned subClassIndex=0;subClassIndex<(unsigned)rva00219D52(classIndex);++subClassIndex) {
+   reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetSubClassNameTag(classIndex,subClassIndex),0);
+   reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetSubClassDescTag(classIndex,subClassIndex),0);
+   for(unsigned binderIndex=0;binderIndex<binders.size();++binderIndex) {
+    Rva0021CB1FBinder *binding=static_cast<Rva0021CB1FBinder*>(GetBlingBinder(binderIndex));
     reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(binding->description,0);
     reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(binding->name,0);
-    for(unsigned k=0;k<(unsigned)rva0021BEE0(binding->GetKey(),c,s);++k) {
-     reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetBlingDescTag(binding->GetKey(),c,s,k),0);
-     reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetBlingNameTag(binding->GetKey(),c,s,k),0);
+    for(unsigned k=0;k<(unsigned)rva0021BEE0(binding->GetKey(),classIndex,subClassIndex);++k) {
+     reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetBlingDescTag(binding->GetKey(),classIndex,subClassIndex,k),0);
+     reinterpret_cast<Rva0021CB1FTextView*>(TheGameText)->fetch(GetBlingNameTag(binding->GetKey(),classIndex,subClassIndex,k),0);
     }
    }
   }

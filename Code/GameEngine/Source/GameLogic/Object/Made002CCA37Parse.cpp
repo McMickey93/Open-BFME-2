@@ -34,9 +34,9 @@ public:
 	void initFromINIMulti(void *p, const MultiIniFieldParse &m);
 };
 
-void q4Notify002CCA37(void *ini, Made002CCA37 *m, int c, int d)
+void q4Notify002CCA37(void *ini, Made002CCA37 *nugget, int c, int d)
 {
 	MultiIniFieldParse tmp;
 	Rva0050B107::buildFieldParse(tmp);
-	((INI *)ini)->initFromINIMulti(m, tmp);
+	((INI *)ini)->initFromINIMulti(nugget, tmp);
 }

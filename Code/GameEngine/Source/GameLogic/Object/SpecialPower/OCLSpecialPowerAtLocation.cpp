@@ -64,7 +64,7 @@ virtual Waypoint *getWaypoint(const AsciiString &);
 extern TerrainLogic *TheTerrainLogic;
 class ObjectCreationList {public:void create(void*,void*,void*,int);void create(void*,void*,void*,void*,int);
  static inline void create(ObjectCreationList *ocl, Object *owner, Coord3D *a, const Coord3D *b,int c) { if(ocl)ocl->create(owner,a,(void*)b,c); }
- static inline void create(ObjectCreationList *ocl, Object *owner, Coord3D *a, const Coord3D *b,void *c,int d) { if(ocl)ocl->create(owner,a,(void*)b,c,d); }
+ static inline void create(ObjectCreationList *ocl, Object *owner, Coord3D *primary, const Coord3D *secondary,void *c,int d) { if(ocl)ocl->create(owner,primary,(void*)secondary,c,d); }
 };
 struct OCLData { char pad[0x8C]; int location; _STL::vector<AsciiString> upgrades; ObjectFilter filter; };
 class Module {public:virtual ~Module(); protected:const OCLData *data;};

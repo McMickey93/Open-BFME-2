@@ -77,7 +77,7 @@ struct Rva000ECA4DTree
 	Int m_fieldc8;
 	unsigned char m_padcc[0xd0 - 0xcc];
 	Int m_fieldd0;
-	Int m_fieldd4;
+	Int m_morphFramesLeft;
 	RenderObjClass *m_fieldd8;
 	RenderObjClass *m_fielddc;
 	unsigned char m_pade0[0xe8 - 0xe0];
@@ -131,7 +131,7 @@ void W3DTreeBuffer::startMorph(Int index, Int request)
 	if (m_trees[index].m_flagc4 || m_trees[index].m_field80 != 0)
 		return;
 
-	m_trees[index].m_fieldd4 = m_treeTypes[type].m_data->m_duration;
+	m_trees[index].m_morphFramesLeft = m_treeTypes[type].m_data->m_duration;
 	m_trees[index].m_fieldc8 = request;
 	if (m_trees[index].m_fieldd8 != 0) {
 		m_trees[index].m_fieldd8->Release_Ref();

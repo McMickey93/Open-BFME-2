@@ -51,7 +51,7 @@ extern const FieldParse SpawnAndFadeFieldTable[] =
     { 0, 0, 0, 0 }
 };
 
-void q4Notify002CCC2D(void *ini, Made002CCC2D *m, int c, int d)
+void q4Notify002CCC2D(void *ini, Made002CCC2D *m, int store, int d)
 {
     MultiIniFieldParse tmp;
     tmp.add((const FieldParse *)Rva00507552Get(), 0);

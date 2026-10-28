@@ -48,10 +48,10 @@ extern const FieldParse SpecialModelConditionFieldTable[] =
     { 0, 0, 0, 0 }
 };
 
-void q4Notify002CC6AE(void *ini, Made002CC6AE *m, int c, int d)
+void q4Notify002CC6AE(void *ini, Made002CC6AE *nugget, int c, int d)
 {
     MultiIniFieldParse tmp;
     tmp.add((const FieldParse *)Rva00507552Get(), 0);
     tmp.add(SpecialModelConditionFieldTable, 0);
-    ((INI *)ini)->initFromINIMulti(m, tmp);
+    ((INI *)ini)->initFromINIMulti(nugget, tmp);
 }

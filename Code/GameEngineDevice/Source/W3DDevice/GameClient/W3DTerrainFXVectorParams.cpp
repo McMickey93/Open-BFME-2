@@ -206,9 +206,9 @@ void Rva000E2DA4Level(ID3DXEffect *effect, D3DXHANDLE handle)
 void Rva000E2F24(ID3DXEffect *effect, D3DXHANDLE handle)
 {
 	Rva000E2409Vector4 value;
-	float s = 1e+01f;
-	value.x = s;
-	value.y = s;
+	float cellSize = 1e+01f;
+	value.x = cellSize;
+	value.y = cellSize;
 	value.z = 0.0f;
 	value.w = 0.0f;
 	effect->SetVector(handle, &value);
@@ -216,16 +216,16 @@ void Rva000E2F24(ID3DXEffect *effect, D3DXHANDLE handle)
 
 void Rva000E2F77(ID3DXEffect *effect, D3DXHANDLE handle)
 {
-	float v = 0.0f;
+	float borderWidth = 0.0f;
 	if (TheTerrainRenderObject)
 	{
-		BfmeTerrain37C0Target *t = TheTerrainRenderObject->m_37C0;
-		if (t)
+		BfmeTerrain37C0Target *heightMap = TheTerrainRenderObject->m_37C0;
+		if (heightMap)
 		{
-			v = (float)t->m_10 * 1e+01f;
+			borderWidth = (float)heightMap->m_10 * 1e+01f;
 		}
 	}
-	effect->SetFloat(handle, v);
+	effect->SetFloat(handle, borderWidth);
 }
 
 void Rva000E2EB7(ID3DXEffect *effect, D3DXHANDLE handle)

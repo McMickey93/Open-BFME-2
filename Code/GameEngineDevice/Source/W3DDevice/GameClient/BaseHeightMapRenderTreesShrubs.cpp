@@ -159,7 +159,7 @@ class BaseHeightMapRenderObjClass
 {
 public:
 	void rva0006B895(RenderInfoClass &rinfo);
-	void rva0006BBD9(int a, int b);
+	void rva0006BBD9(int rinfo, int b);
 	void rva000687EF();
 
 private:
@@ -289,7 +289,7 @@ void BaseHeightMapRenderObjClass::rva0006B895(RenderInfoClass &rinfo)
 	}
 }
 
-void BaseHeightMapRenderObjClass::rva0006BBD9(int a, int b)
+void BaseHeightMapRenderObjClass::rva0006BBD9(int rinfo, int b)
 {
 	if (m_37C0 == 0 || m_78 == 0 || m_buffBuffer == 0)
 		return;
@@ -305,5 +305,5 @@ void BaseHeightMapRenderObjClass::rva0006BBD9(int a, int b)
 		ScreenMaterial->Release_Ref();
 	ScreenMaterial = material;
 	DX8Wrapper::render_state_changed |= 0x4000;
-	m_buffBuffer->rva000D28FA(*(RenderInfoClass *)a, *(bool *)&b);
+	m_buffBuffer->rva000D28FA(*(RenderInfoClass *)rinfo, *(bool *)&b);
 }

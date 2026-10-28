@@ -15,7 +15,7 @@ struct Rva004DF207Inner
 {
 	char m_pad[0x548];
 	int m_val;
-	int m_54C;
+	int m_energyBonus;
 };
 struct Rva004DF207Outer
 {
@@ -155,11 +155,11 @@ void Energy::objectEnteringInfluence(Object *obj)
 	if (!obj)
 		return;
 	Rva004DF207Outer *o = (Rva004DF207Outer *)obj;
-	int v = o->m_ptr->m_val;
-	if (v < 0)
-		rva004DF1AF(-v);
-	else if (v > 0)
-		rva004DF18D(v);
+	int energy = o->m_ptr->m_val;
+	if (energy < 0)
+		rva004DF1AF(-energy);
+	else if (energy > 0)
+		rva004DF18D(energy);
 }
 
 void Energy::objectLeavingInfluence(Object *obj)
@@ -167,25 +167,25 @@ void Energy::objectLeavingInfluence(Object *obj)
 	if (!obj)
 		return;
 	Rva004DF231Outer *o = (Rva004DF231Outer *)obj;
-	int v = o->m_ptr->m_val;
-	if (v < 0)
-		rva004DF1AF(v);
-	else if (v > 0)
-		rva004DF18D(-v);
+	int energy = o->m_ptr->m_val;
+	if (energy < 0)
+		rva004DF1AF(energy);
+	else if (energy > 0)
+		rva004DF18D(-energy);
 }
 
 // ?addPowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z @ 0x004DF25B (25B)
 void Energy::addPowerBonus(Rva004DF207Outer *arg)
 {
 	if (arg)
-		rva004DF18D(arg->m_ptr->m_54C);
+		rva004DF18D(arg->m_ptr->m_energyBonus);
 }
 
 // ?removePowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z @ 0x004DF274 (28B)
 void Energy::removePowerBonus(Rva004DF207Outer *arg)
 {
 	if (arg)
-		rva004DF18D(-arg->m_ptr->m_54C);
+		rva004DF18D(-arg->m_ptr->m_energyBonus);
 }
 
 // ---- from Code/GameEngine/Source/Common/Rva004DF18DAdd.cpp

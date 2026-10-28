@@ -337,7 +337,7 @@ public:
 	void rva005ADC63();
 	void DoXfer(Xfer *xfer);
 	Rva0041E912Template *rva005ADCBE(int notFirst, const _STL::vector<Rva0041E912Template *> &list);
-	void parseTemplateIntoPhases(const Coord3D *point, float angle, Rva0041E912Template *tmpl);
+	void parseTemplateIntoPhases(const Coord3D *point, float angle, Rva0041E912Template *baseTemplate);
 	void loadBestFitTemplate(Coord3D *point, float angle, int notFirst);
 private:
 	_STL::vector<Rva005DCE08 *> m_items;	// +0x00
@@ -407,11 +407,11 @@ static inline void copyVector(Coord3D *dst, const Vector3 &vec)
 	dst->z = vec.Z;
 }
 
-void AIBase::parseTemplateIntoPhases(const Coord3D *point, float angle, Rva0041E912Template *tmpl)
+void AIBase::parseTemplateIntoPhases(const Coord3D *point, float angle, Rva0041E912Template *baseTemplate)
 {
 	Matrix3D rotation(true);
 	rotation.Rotate_Z(angle);
-	for (Rva00573E7C **it = tmpl->m_orders.begin(); it != tmpl->m_orders.end(); ++it) {
+	for (Rva00573E7C **it = baseTemplate->m_orders.begin(); it != baseTemplate->m_orders.end(); ++it) {
 		Rva00573E7C *order = new Rva00573E7C(**it);
 		int slot = order->m_50;
 		int missing = slot - m_items.size();
