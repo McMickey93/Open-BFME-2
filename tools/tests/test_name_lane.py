@@ -116,7 +116,7 @@ def no_checks(ctx, plan):
 
 def apply(root, **kw):
     args = SimpleNamespace(retry_blocked=kw.get("retry_blocked", False), lead=2, min_models=1, claim=False,
-                           only_labels=kw.get("only_labels"))
+                           only_labels=kw.get("only_labels"), key=kw.get("key"))
     return name_lane.cmd_apply(lane_of(root), args, verify=kw.get("verify", ok_verify), checks=no_checks)
 
 
@@ -317,12 +317,19 @@ def test_only_labels_applies_all_own_voters(tree, tmp_path, capsys):
     assert "0 key(s) with a voter outside" in capsys.readouterr().out
 
 
-def test_only_labels_skips_mixed_and_foreign_voters_untouched(tree, tmp_path, capsys):
+def test_only_labels_skips_mixed_and_foreign_voters_untouched(tree, tmp_path, capsys, monkeypatch):
     voters(tree, tmp_path, MEMBER_ANSWER, ["seat-a", "other-x"])       # one outside voter
     voters(tree, tmp_path, FN_ANSWER, ["other-x", "other-y"], tag="w")  # nobody of ours
     assert agreed_keys(tree) == {MEMBER_KEY, FN_KEY}
     before_text, before_agreed = (tree / SOURCE).read_bytes(), (tree / name_lane.AGREED).read_bytes()
-    assert apply(tree, only_labels="seat-a, seat-b") == 0
+    def unexpected_source_read(*args, **kwargs):
+        pytest.fail("excluded agreements must not read or analyze source files")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(name_lane.Lane, "text", unexpected_source_read)
+        patch.setattr(name_lane.Lane, "owned", unexpected_source_read)
+        patch.setattr(name_lane.Lane, "servable", unexpected_source_read)
+        assert apply(tree, only_labels="seat-a, seat-b") == 0
     assert (tree / SOURCE).read_bytes() == before_text
     assert (tree / name_lane.AGREED).read_bytes() == before_agreed      # nothing written: no blocked, no stale
     assert {k: r["status"] for k, r in name_lane.Lane(tree).state().items()} == {MEMBER_KEY: "agreed",
@@ -343,6 +350,17 @@ def test_only_labels_lands_own_key_and_leaves_the_other(tree, tmp_path):
     assert "int sumBox(" not in (tree / SOURCE).read_text()
 
 
+def test_apply_exact_key_leaves_other_agreements_untouched(tree, tmp_path):
+    voters(tree, tmp_path, MEMBER_ANSWER, ["seat-a", "seat-b"])
+    voters(tree, tmp_path, FN_ANSWER, ["seat-a", "seat-b"], tag="w")
+    apply(tree, key=[MEMBER_KEY])
+    state = name_lane.Lane(tree).state()
+    assert state[MEMBER_KEY]["status"] == "landed"
+    assert state[FN_KEY]["status"] == "agreed"
+    assert "int m_width;" in (tree / SOURCE).read_text()
+    assert "int sumBox(" not in (tree / SOURCE).read_text()
+
+
 def test_only_labels_skips_a_lead_that_rests_on_an_outside_voter(tree, tmp_path):
     # one seat of ours and two outside voters agree against a rival seat of ours: 3 vs 1 wins only with them
     voters(tree, tmp_path, FN_ANSWER, ["seat-a"], tag="a")
@@ -354,7 +372,7 @@ def test_only_labels_skips_a_lead_that_rests_on_an_outside_voter(tree, tmp_path)
     assert "sumBox" not in (tree / SOURCE).read_text()
 
 
-def test_only_labels_outside_rival_still_counts_against_lead(tree, tmp_path, capsys):
+def test_only_labels_outside_rival_still_counts_against_lead(tree, tmp_path, capsys, monkeypatch):
     vote(tree, tmp_path, "r0", {"rva00401000": "addBoxWidth"}, "other-x")
     voters(tree, tmp_path, FN_ANSWER, ["seat-a", "seat-b"], tag="a")
     assert not rows(tree, name_lane.AGREED)                                     # 2 vs 1 is not a win at lead 2
@@ -364,6 +382,12 @@ def test_only_labels_outside_rival_still_counts_against_lead(tree, tmp_path, cap
     lane_of(tree).append(name_lane.VOTES, name_lane.VOTE_COLUMNS, [
         {"key": FN_KEY, "hash": name_lane.digest(FN_KEY, "addBoxWidth"), "model": "other-y", "session": "late",
          "worker": "w-0123456789ab", "date": "2026-10-24"}])
+    def unexpected_source_read(*args, **kwargs):
+        pytest.fail("agreements without a winning vote must not analyze source files")
+
+    monkeypatch.setattr(name_lane.Lane, "text", unexpected_source_read)
+    monkeypatch.setattr(name_lane.Lane, "owned", unexpected_source_read)
+    monkeypatch.setattr(name_lane.Lane, "servable", unexpected_source_read)
     apply(tree, only_labels="seat-a,seat-b")
     assert "votes no longer agree" in capsys.readouterr().out
     assert name_lane.Lane(tree).state()[FN_KEY]["status"] == "agreed"
@@ -415,12 +439,14 @@ def test_cli_parses_only_labels():
     try:
         name_lane.cmd_apply = lambda l, a: seen.setdefault("apply", a) and 0
         name_lane.cmd_status = lambda l, a: seen.setdefault("status", a) and 0
-        name_lane.main(["apply", "--only-labels", "seat-a,seat-b", "--retry-blocked"], lane=lane)
+        name_lane.main(["apply", "--only-labels", "seat-a,seat-b", "--retry-blocked",
+                        "--key", MEMBER_KEY, "--key", FN_KEY], lane=lane)
         name_lane.main(["status", "--only-labels", "seat-a"], lane=lane)
         name_lane.main(["apply"], lane=lane)
     finally:
         name_lane.cmd_apply, name_lane.cmd_status = orig_apply, orig_status
     assert seen["apply"].only_labels == "seat-a,seat-b" and seen["apply"].retry_blocked
+    assert seen["apply"].key == [MEMBER_KEY, FN_KEY]
     assert seen["status"].only_labels == "seat-a" and seen["status"].lead == 2 and seen["status"].min_models == 1
 
 

@@ -805,33 +805,39 @@ def rename_kwargs(kind, scope, old, new, rva, rel):
 def cmd_apply(lane, args, *, verify=rename.build_verify, checks=rename.ledger_checks):
     state, tally, refused = lane.state(), lane.tally(), lane.disputed()
     only = label_list(args.only_labels) if getattr(args, "only_labels", None) else None
+    selected_keys = set(getattr(args, "key", None) or ())
     todo = collections.defaultdict(list)
+    landed = blocked = stale = outside = 0
+    pending = False
     for key, row in state.items():
+        if selected_keys and key not in selected_keys:
+            continue
         if row["status"] == "agreed" or (args.retry_blocked and row["status"] == "blocked"):
+            pending = True
+            mine = tally[key].get(digest(key, row["new"]), {})
+            if only and not own_voters(mine, only):
+                outside += 1
+                continue
+            gone = refuted(key, refused.get(key, ()))
+            rivals = [v for h, v in tally[key].items() if h != digest(key, row["new"]) and h not in gone]
+            if not wins(mine, rivals, lead=args.lead, min_models=args.min_models):
+                print(f"{key}: votes no longer agree under --lead {args.lead} --min-models {args.min_models}; left")
+                continue
             todo[split_key(key)[0]].append(row)
-    if not todo:
+    if not pending:
         print("name_lane: nothing agreed is waiting to land.")
         return 0
-    landed = blocked = stale = outside = 0
+    print(f"name_lane: selected {sum(map(len, todo.values()))} key(s) across {len(todo)} file(s).", flush=True)
     for rel, rows in sorted(todo.items()):
         live = {key_of(rel, k, s, i) for k, s, i, _ in lane.owned(rel)} if lane.text(rel) is not None \
             and lane.servable(rel) else set()
         for row in sorted(rows, key=lambda r: LAND_ORDER[r["kind"]]):
             key = row["key"]
             _, kind, scope, ident = split_key(key)
-            mine = tally[key].get(digest(key, row["new"]), {})
-            gone = refuted(key, refused.get(key, ()))
-            rivals = [v for h, v in tally[key].items() if h != digest(key, row["new"]) and h not in gone]
-            if only and not own_voters(mine, only):
-                outside += 1             # not this pass's agreement: no row, no message per key
-                continue
             outcome = dict(row, detail="")
             if key not in live:
                 outcome.update(status="stale", agents="", detail="the file changed or the placeholder is gone")
                 stale += 1
-            elif not wins(mine, rivals, lead=args.lead, min_models=args.min_models):
-                print(f"{key}: votes no longer agree under --lead {args.lead} --min-models {args.min_models}; left")
-                continue
             else:
                 try:
                     rename.run(kind, lane.ctx, claim=args.claim, verify=verify, checks=checks,
@@ -932,6 +938,7 @@ def main(argv=None, lane=None):
         p.add_argument("--min-models", type=int, default=1, help="distinct models among the agreeing workers")
     a = sub.add_parser("apply", help="land agreed names through tools/rename.py")
     a.add_argument("--retry-blocked", action="store_true", help="try blocked names again, e.g. after a fix")
+    a.add_argument("--key", action="append", help="apply only this exact source|kind|scope|placeholder key (repeatable)")
     a.add_argument("--lead", type=int, default=2)
     a.add_argument("--min-models", type=int, default=1)
     a.add_argument("--only-labels", metavar="L,L",
