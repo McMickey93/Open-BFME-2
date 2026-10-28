@@ -54,10 +54,28 @@ public:
 
 extern class Rva006DB270 *g_pChainBlockAllocator;
 
+class Rva006DBB40ShrAndField {
+public:
+    bool get() const;
+};
+
 class AptValue {
 public:
     virtual void AddRef();
     virtual void Release();
+    virtual void unused2();
+    virtual void unused3();
+    virtual void unused4();
+    virtual void unused5();
+    virtual void unused6();
+    virtual void unused7();
+    virtual void unused8();
+    virtual void unused9();
+    virtual void unused10();
+    virtual void unused11();
+    virtual void unused12();
+    virtual void unused13();
+    void setGCMark(bool value);
 };
 
 struct AptHashItem;
@@ -91,6 +109,7 @@ public:
     void rva0070AB30();
     Entry *rva0070AAA0(Entry *pItem);
     void rva0070B180(BfmeAptValue006DCD20 *pValue, EAStringC *pStr, int bRemove);
+    void rva0070B220(void *arg);
 private:
     AptHashItem *HashFindKey(const EAStringC *const) const;
     friend class Rva0070B380;
