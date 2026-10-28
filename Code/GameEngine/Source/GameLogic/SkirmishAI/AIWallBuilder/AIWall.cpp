@@ -38,6 +38,78 @@ class GameLogic;
 class Cleanup4EB5E9 { public: virtual void *releaseStorage(unsigned flags) = 0; };
 #include "../../../../../Libraries/Include/Lib/BfmeE16.h"
 #include <stl/_algobase.h>
+class AsciiString;
+// Retail Version stores minimum/current bytes and has an inline constructor;
+// that constructor form also reproduces the independent stack homes in DoXfer.
+struct WallVersion
+{
+    WallVersion(unsigned char min, unsigned char cur) : minimum(min), current(cur) {}
+    unsigned char minimum, current;
+};
+class Snapshot;
+class UnicodeString;
+class PooledString;
+struct Coord3DBase;
+struct ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+struct ICoord2D;
+struct Region2D;
+struct IRegion2D;
+class RealRange;
+struct RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+struct XferUnknown11;
+#include "../../../../Include/Common/BfmeXfer.h"
+class Player;
+struct WallPlayerIndexView { unsigned char unknown[0x54]; int index; int getIndex() const {return index;} };
+class PlayerList { public: Player *getNthPlayer(int); };
+extern PlayerList *ThePlayerList;
+class Rva00596CDF {
+public:
+    Rva00596CDF(unsigned int);
+    virtual ~Rva00596CDF();
+    virtual void slot01();
+    virtual void slot02();
+    virtual void slot03();
+    virtual void slot04();
+    virtual void slot05();
+    virtual void slot06();
+    virtual void slot07();
+    virtual void slot08();
+    virtual void slot09();
+    virtual void slot10();
+    virtual void slot11();
+
+    virtual void Rva00596CEA(Xfer *, void *);
+    unsigned char unknown04[0x4c];
+    unsigned int key50;
+    int value54;
+    bool value58;
+    unsigned int getKey() const {return key50;}
+};
+Xfer &__cdecl Rva00149101XferNameKey(Xfer &,NameKeyType &);
+// ?init@AIWall@@QAE_NXZ
+// ?init@AIWall@@QAE_NXZ
+// Named WB137B990/405 and complete native4EBEB7..4EBF4B establish AIWall::init.
+// Actual STLport vector operations eliminate the old bank's invented volatile
+// field qualifiers. This complete trial emits146B against native148B: frame,
+// sort argument construction and loop/state logic agree, but post-sort median
+// load order/register allocation still differ. Four source shapes were tested;
+// retaining an explicit median gives143B and incorrectly elides the reload.
+// Helper4EBB58's full673B native body was read and proves ECX/RET0. Its original
+// name is unknown (WB's Coord2D::Set label is an inline-source attribution).
+// No helper pin was added while the caller remains a byte mismatch.
+// W7-MP5 r3: T1 search (199 trials/14 generators) improved nd24->20, 146->147B
+// with gen_barrier at offset 64 (a _ReadWriteBarrier before the post-sort median
+// read). Residue: validation-loop iterator/end register roles are swapped
+// (retail iterator ECX/end EDI vs ours EDI/EDX) and the median load base
+// register; end-in-for-init, valid-first condition order and named-key shapes
+// were inert or worse.
+extern "C" void _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
 
 class Object;
 
@@ -387,6 +459,59 @@ private:
 	char m_pad[8];
 	_STL::vector<const ModuleData *> m_vec08;
 };
+
+// Reuse the owned serial-counter provider in Rva004EB583Ctor.cpp.
+extern int g_00E044A0;
+
+// WB 0x0137E7C0 names AIWall::DoXfer in AIWall.cpp (assert lines 611..633).
+// Retail 0x004EB092..0x004EB2CA proves the owner index, order range,
+// selected key, upgrade allocation and version-2 name-key transfer.
+// AIWall is the AIWall.cpp unit's view (owner +18, plan +14, order vectors
+// +08/+1C/+28, the three-pointer storage also seen in the owned ctor). Its
+// order elements are the Rva00596CDF objects this transfer walks, and its
+// plan is the Rva005970ED object it allocates; the casts below cross views.
+struct WallPositionValue;
+
+class WallPositionOrderView;
+
+class Rva004EB902Plan;
+
+class PolygonTrigger;
+
+struct BfmeE8;
+
+struct Rva004EBE74Item 
+{
+ unsigned char unknown00[0x50];
+ unsigned m_50;
+ unsigned getKey() const 
+ {
+  return m_50;
+  
+ }
+ 
+};
+
+struct Rva004EBE74Cmp 
+{
+ bool operator()(const Rva004EBE74Item *a, const Rva004EBE74Item *b) const 
+ {
+  return a->m_50 < b->m_50;
+  
+ }
+ 
+};
+
+namespace _STL 
+{
+ template<class Iterator, class Predicate>
+ void sort(Iterator first, Iterator last, Predicate predicate);
+ 
+}
+
+class Xfer;
+
+// ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWall.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWall.cpp
 
@@ -744,34 +869,6 @@ __declspec(noinline) inline float Coord3D::Normalize()
     return len;
 }
 
-// tu-skeleton: 0x004EAE9D 33B ??$__unguarded_insertion_sort_aux@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@00URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EAEBE 90B ??$__adjust_heap@PAPAURva004EBE74Item@@HPAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@HHPAU1@URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB092 568B ?DoXfer@AIWall@@QAEXPAVXfer@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWallDoXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB2CA 55B ??$__unguarded_partition@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAPAPAURva004EBE74Item@@PAPAU1@0PAU1@URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB301 23B ??$__unguarded_insertion_sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB318 41B ??$__pop_heap@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@H@_STL@@YAXPAPAURva004EBE74Item@@00PAU1@URva004EBE74Cmp@@PAH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB341 60B ??$__make_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@PAU1@H@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@0PAH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB37D 30B ??$__pop_heap_aux@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@00URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB39B 58B ??$__linear_insert@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0PAU1@URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB3D5 25B ??$make_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB3EE 23B ??$pop_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB51C 45B ??$__insertion_sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB549 58B ??$sort_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB583 102B ??0Rva004EB583@@QAE@H@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva004EB583Ctor.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva004EB5E9Dtor.cpp
 
 // ??1Rva004EB5E9@@UAE@XZ
@@ -821,12 +918,6 @@ Rva004EB5E9::~Rva004EB5E9()
  }
 }
 
-// tu-skeleton: 0x004EB6DD 68B ??$__final_insertion_sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB721 87B ??$__partial_sort@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@000URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
-
-// tu-skeleton: 0x004EB778 28B ??_GRva004EB5E9@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB11.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/WWVegas/WWLib/Rva004EB794Method.cpp
 
 // ?rva004EB794@Rva004EB794@@QAE_NPBVModuleData@@@Z @0x004EB794 56B
@@ -848,19 +939,133 @@ bool Rva004EB794::rva004EB794(const ModuleData *moduleData)
 	return true;
 }
 
+// tu-skeleton: 0x004EAE9D 33B ??$__unguarded_insertion_sort_aux@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@00URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EAEBE 90B ??$__adjust_heap@PAPAURva004EBE74Item@@HPAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@HHPAU1@URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWallDoXfer.cpp
+
+void AIWall::DoXfer(Xfer *xfer,bool detachOwner) {
+    WallVersion version(1,2);
+    xfer->operator==(reinterpret_cast<Xfer::Version &>(version));
+    int ownerIndex=m_18?reinterpret_cast<const WallPlayerIndexView *>(m_18)->getIndex():-1;
+    xfer->operator==(ownerIndex);
+    if(xfer->IsLoading() && ownerIndex!=-1)
+        m_18=detachOwner?0:ThePlayerList->getNthPlayer(ownerIndex);
+    {
+    unsigned int count=orders08.size();
+    xfer->operator==(count);
+    for(unsigned int i=0;i<count;++i) {
+        if(i<orders08.size())
+            reinterpret_cast<Rva00596CDF *>(orders08[i])->Rva00596CEA(xfer,m_18);
+        else {
+            Rva00596CDF unused(0);
+            unused.Rva00596CDF::Rva00596CEA(xfer,0);
+        }
+    }
+    }
+    unsigned int selectedID=selected04?reinterpret_cast<Rva00596CDF *>(selected04)->getKey():-1;
+    xfer->operator==(selectedID);
+    if(xfer->IsLoading() && selectedID!=-1) {
+        Rva00596CDF **end=reinterpret_cast<Rva00596CDF **>(orders08.end());
+        for(Rva00596CDF **it=reinterpret_cast<Rva00596CDF **>(orders08.begin());it!=end && selected04==0;++it)
+            if((*it)->getKey()==selectedID) selected04=reinterpret_cast<WallPositionOrderView *>(*it);
+    }
+    bool hasUpgrade=m_14!=0;
+    xfer->operator==(hasUpgrade);
+    if(xfer->IsStoring() && hasUpgrade)
+        reinterpret_cast<Rva005970ED *>(m_14)->xfer(xfer,m_18);
+    else if(xfer->IsLoading() && hasUpgrade) {
+        m_14=reinterpret_cast<Rva004EB902Plan *>(new Rva005970ED);
+        reinterpret_cast<Rva005970ED *>(m_14)->xfer(xfer,m_18);
+    }
+    unsigned int count2=triggers1c.size();
+    xfer->operator==(count2);
+    int value=state34;
+    xfer->operator==(value);
+    state34=value;
+    xfer->operator==(index38);
+    value=state3c;
+    xfer->operator==(value);
+    state3c=value;
+    xfer->operator==(index40);
+    xfer->operator==(id44);
+    xfer->operator==(*(reinterpret_cast<unsigned int *>(&g_00E044A0)));
+    if(version.current>=2) Rva00149101XferNameKey(*xfer,key48);
+}
+
+// tu-skeleton: 0x004EB2CA 55B ??$__unguarded_partition@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAPAPAURva004EBE74Item@@PAPAU1@0PAU1@URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB301 23B ??$__unguarded_insertion_sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB318 41B ??$__pop_heap@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@H@_STL@@YAXPAPAURva004EBE74Item@@00PAU1@URva004EBE74Cmp@@PAH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB341 60B ??$__make_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@PAU1@H@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@0PAH@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB37D 30B ??$__pop_heap_aux@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@00URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB39B 58B ??$__linear_insert@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0PAU1@URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB3D5 25B ??$make_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB3EE 23B ??$pop_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB51C 45B ??$__insertion_sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB549 58B ??$sort_heap@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB583 102B ??0Rva004EB583@@QAE@H@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva004EB583Ctor.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB6DD 68B ??$__final_insertion_sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB721 87B ??$__partial_sort@PAPAURva004EBE74Item@@PAU1@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@000URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
+
+// tu-skeleton: 0x004EB778 28B ??_GRva004EB5E9@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB11.cpp (not merged yet)
+
 // tu-skeleton: 0x004EBA7B 27B ??$partial_sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@00URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
 
 // tu-skeleton: 0x004EBDF9 123B ??$__introsort_loop@PAPAURva004EBE74Item@@PAU1@HURva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@00HURva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
 
 // tu-skeleton: 0x004EBE74 67B ??$sort@PAPAURva004EBE74Item@@URva004EBE74Cmp@@@_STL@@YAXPAPAURva004EBE74Item@@0URva004EBE74Cmp@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_sort_rva004ebe74.cpp (not merged yet)
 
-// tu-skeleton: 0x004EBEB7 148B ?init@AIWall@@QAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWall_init.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWall_init.cpp
 
-// tu-skeleton: 0x007926C8 8B uw_007926c8 -- matched in Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWallDoXfer.cpp (not merged yet)
+bool AIWall::init()
 
-// tu-skeleton: 0x007926D0 10B uw_007926d0 -- matched in Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWallDoXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x007926DA 10B __ehhandler$?DoXfer@AIWall@@QAEXPAVXfer@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/SkirmishAI/AIWallBuilder/AIWallDoXfer.cpp (not merged yet)
+{
+ if (orders08.size() > 1) 
+ {
+  _STL::sort(reinterpret_cast<Rva004EBE74Item **>(orders08.begin()), reinterpret_cast<Rva004EBE74Item **>(orders08.end()), Rva004EBE74Cmp());
+  unsigned count = orders08.size();
+  Rva004EBE74Item **beginp = reinterpret_cast<Rva004EBE74Item **>(&orders08[0]);
+  Rva004EBE74Item **endp = reinterpret_cast<Rva004EBE74Item **>(orders08.end());
+  *(volatile Rva004EBE74Item **)(beginp + (count >> 1)) = *(beginp + (count >> 1));
+  Rva004EBE74Item ** volatile *medianSlot = (Rva004EBE74Item ** volatile *)&orders08;
+  Rva004EBE74Item **medianBegin = *medianSlot;
+  selected04 = reinterpret_cast<WallPositionOrderView *>(*(medianBegin + (count >> 1)));
+  beginp = reinterpret_cast<Rva004EBE74Item **>(&orders08[0]);
+  count = orders08.size();
+  bool valid = true;
+  unsigned index = (unsigned)-1;
+  for (Rva004EBE74Item **p = beginp; p != endp && valid; ++p) 
+  {
+   if ((*p)->getKey() != ++index)
+   valid = false;
+   
+  }
+  if (valid) 
+  {
+   index38 = reinterpret_cast<Rva004EBE74Item *>(selected04)->getKey();
+   index40 = reinterpret_cast<Rva004EBE74Item *>(selected04)->getKey();
+   rva004EBB58();
+   return true;
+   
+  }
+  
+ }
+ return false;
+ 
+}
 
 // tu-skeleton: 0x007926E4 11B uw_007926e4 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
 
