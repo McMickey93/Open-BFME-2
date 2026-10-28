@@ -32,7 +32,6 @@ public:
 };
 
 extern BfmeAptWindowManager *g_bfmeAptWindowManager;
-extern const char *g_Va0087A290[];
 
 struct TargetRef00217D4C;
 void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C *ref); // 0x0007DEEF
@@ -103,53 +102,6 @@ public:
 private:
 	char m_pad[0xC];
 };
-
-// "prefix + name + text" concat nodes (layout as in System/RegistryAsciiPath.cpp).
-class Rva000B3F84Pair
-{
-public:
-	Rva000B3F84Pair() {}
-	Rva000B3F84Pair *init(const char *src); // 0x000B3F84
-
-	const char *m_ptr;
-	int m_len;
-};
-
-struct AsciiStringRef
-{
-	const AsciiString *m_string;
-};
-
-struct AsciiStringPlusString : AsciiStringRef
-{
-	AsciiStringRef m_second;
-};
-
-struct AsciiStringPlusStringText : AsciiStringPlusString
-{
-	operator AsciiString(); // 0x0050F74B
-
-	Rva000B3F84Pair m_right;
-};
-
-static __forceinline AsciiStringPlusString operator+(const AsciiString &left, const AsciiString &right)
-{
-	AsciiStringPlusString result;
-	result.m_string = &left;
-	result.m_second.m_string = &right;
-	return result;
-}
-
-// ?operator+(AsciiStringPlusString, text) present-unmatched (inline, emitted out of line; ICF-folded at 0x00109CFD; pinned)
-inline AsciiStringPlusStringText operator+(const AsciiStringPlusString &left, const char *right)
-{
-	Rva000B3F84Pair text;
-	text.init(right);
-	AsciiStringPlusStringText result;
-	static_cast<AsciiStringPlusString &>(result) = left;
-	result.m_right = text;
-	return result;
-}
 
 // The rowed TreeHintRef assignment (0x002174A4).
 struct TreeHintRef00217D4C

@@ -143,7 +143,7 @@ static __forceinline AsciiStringPlusString operator+(const AsciiString &left, co
 	return result;
 }
 
-// ?operator+(AsciiStringPlusString, text) present-unmatched (inline, emitted out of line; ICF-folded at 0x00109CFD; pinned)
+// The out-of-line copy is rowed in Rva005D25F2Dtor.cpp (ICF fold at 0x00109CFD).
 inline AsciiStringPlusStringText operator+(const AsciiStringPlusString &left, const char *right)
 {
 	Rva000B3F84Pair text;
