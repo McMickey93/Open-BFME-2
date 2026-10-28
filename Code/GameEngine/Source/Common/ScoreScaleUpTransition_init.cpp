@@ -2,7 +2,6 @@
 // ?init@ScoreScaleUpTransition@@UAEXPAVGameWindow@@@Z @0x0035D54B 121B: vslot init slot 1 offset 0x4 of vtable 0x00816510 (class of ??1Rva0035D53C) and 0x008165D0. Evidence: same vtable slot as rowed init pattern plus rowed winGetSize 0x00313BC6 plus rowed winGetScreenPosition 0x00313B3C plus virtual update slot 2 plus size/2 center plus size/6.
 
 typedef int Int;
-typedef unsigned char Bool;
 
 #include "../../../Libraries/Include/Lib/ICoord2D.h"
 
@@ -18,12 +17,12 @@ class Rva001DBAA4
 public:
 	virtual ~Rva001DBAA4();
 	Rva001DBAA4();
-	Int m_4;		// +0x04
-	Bool m_8;		// +0x08
-	Bool m_9;		// +0x09
-	Bool m_A;		// +0x0A
-	char m_padB;
-	GameWindow *m_win;	// +0x0C
+	Int m_frameLength;	// +0x04
+	bool m_isFinished;	// +0x08
+	bool m_isForward;	// +0x09
+	bool m_isReversed;	// +0x0a
+	unsigned char m_pad0B;	// +0x0b
+	GameWindow *m_win;	// +0x0c
 };
 
 class ScoreScaleUpTransition : public Rva001DBAA4
@@ -47,12 +46,12 @@ void ScoreScaleUpTransition::init(GameWindow *win)
 		m_win->winGetSize(&m_size.x, &m_size.y);
 		m_win->winGetScreenPosition(&m_pos.x, &m_pos.y);
 	}
-	m_9 = 0;
+	m_isForward = false;
 	update(0);
-	m_8 = 0;
+	m_isFinished = false;
 	m_24 = m_pos.x + m_size.x / 2;
 	m_28 = m_pos.y + m_size.y / 2;
 	m_2C = m_size.x / 6;
-	m_9 = 1;
+	m_isForward = true;
 	m_30 = m_size.y / 6;
 }
