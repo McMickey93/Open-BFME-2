@@ -10,7 +10,13 @@
 // The native loop records an overlap after adding the separation vector.
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../Common/PartitionRangeQueryCallView.h"
-class GeometryInfo { public: char prefix[0x14];float radius; };
+class GeometryInfo
+{
+public:
+	char prefix[0x14]; // +0x00
+	float radius; // +0x14
+};
+struct AerialMotionInfo { char prefix[0x48]; float height; };
 class ThingTemplate {public: char prefix[0x108];unsigned kinds[7];};
 class AerialPartner {public:char prefix[0x4C0];unsigned id;};
 class AerialAI {public:
@@ -18,6 +24,7 @@ class AerialAI {public:
 V(0) V(1) V(2) V(3) V(4) V(5) V(6) V(7) V(8) V(9) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19) V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30) V(31) V(32) V(33) V(34) V(35) V(36) V(37) V(38) V(39) V(40) V(41) V(42) V(43) V(44) V(45) V(46) V(47) V(48) V(49) V(50) V(51) V(52) V(53) V(54) V(55) V(56) V(57) V(58) V(59) V(60) V(61) V(62) V(63) V(64) V(65) V(66) V(67) V(68) V(69) V(70) V(71) V(72) V(73) V(74) V(75) V(76) V(77) V(78) V(79) V(80) V(81) V(82) V(83) V(84) V(85) V(86) V(87) V(88) V(89) V(90) V(91) V(92) V(93) V(94) V(95) V(96)
 #undef V
  virtual AerialPartner* getPartner();
+ char pad04[0x1F0-4];AerialMotionInfo* motion;
 };
 class Object {public:
  void* vtable;ThingTemplate* thing;char pad8[0x38-8];Coord3D position;float angle;
@@ -51,7 +58,20 @@ public:
 };
 class TerrainLogic;
 extern TerrainLogic *TheTerrainLogic;
-class AerialPathfinder {public:bool rva00375C28(Object*,const Coord3D*,float*,Coord3D*);bool rva00375A73(Rva00375A73Context*,float,Rva00375A73Coord*);bool rva00375DFF(Object*,Rva00375A73Context*,float,float);};
+class Rva00312C95;
+class AerialPathfinder
+{
+public:
+	bool rva00375C28(Object*,const Coord3D*,float*,Coord3D*);
+	bool rva00375A73(Rva00375A73Context*,float,Rva00375A73Coord*);
+	bool rva00375DFF(Object*,Rva00375A73Context*,float,float);
+	float rva00375B7A(float,float);
+	int rva00375ED7(Object*,const Coord3D*,Coord3D*);
+	bool computeAerialPath(void *, const Coord3D *, Rva00312C95 *, const unsigned char *, const unsigned char *, bool);
+	char m_pad00[0x258];
+private:
+	void *m_258; // +0x258 +0x258
+};
 // ?TheAerialPathfinder@@3PAVAerialPathfinder@@A, zero-filled .data at 0x00A01F10.
 // Owner from the retail layout: zero-filled globals follow their TUs in link
 // order, and 0x00A01F10 comes right after the StealthUpdate statics (code
