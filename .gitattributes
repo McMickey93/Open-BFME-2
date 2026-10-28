@@ -51,6 +51,19 @@ reverse/data_rows.csv text eol=lf merge=union
 reverse/name_basis.csv text eol=lf merge=union
 reverse/name_agreed.csv text eol=lf merge=union
 reverse/name_votes.csv text eol=lf merge=union
+# Ledgers tu_skeleton --merge and rename.py repoint through ledger_io.lf_terminator,
+# which refuses CRLF: a core.autocrlf=true checkout (T3 and other worktrees not made by
+# tools/worktree_setup.py) aborted merges halfway, after functions.csv was already
+# edited (2026-10-28). Not union-merged: each has one writer per change.
+reverse/tu_map.csv text eol=lf
+reverse/tu_map.inputs.sha256 text eol=lf
+reverse/hatch_baseline.tsv text eol=lf
+reverse/data_check_baseline.txt text eol=lf
+reverse/code_identity_baseline.tsv text eol=lf
+reverse/data_ledger.csv text eol=lf
+reverse/header_queue.tsv text eol=lf
+reverse/ms_header_queue.tsv text eol=lf
+reverse/data_converged.csv text eol=lf
 # image_ownership_history.csv (tools/image_ownership.py): append-only signed rows, checked
 # against the committed bytes; LF from birth like the other ledgers, never union-merged.
 reverse/image_ownership_history.csv text eol=lf
