@@ -9136,9 +9136,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00139470,6,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x00139410..0x00139480,Code/GameEngine/Source/Common/ConstGlobalGetters2.cpp
 0x00139480,5,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp S=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp N=Code/Libraries/Source/WWVegas/WW3D2/VertexBufferClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp
 0x00139490,5,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp S=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp N=Code/Libraries/Source/WWVegas/WW3D2/VertexBufferClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp
-0x001394A0,142,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x00139490..0x00139530,Code/Libraries/Source/WWVegas/WW3D2/VertexBufferLockClasses.cpp
-0x00139530,113,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x00139490..0x001395B0,Code/Libraries/Source/WWVegas/WW3D2/VertexBufferLockClasses.cpp
-0x001395B0,174,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x00139490..0x00139660,Code/Libraries/Source/WWVegas/WW3D2/VertexBufferLockClasses.cpp
+0x001394A0,142,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x00139490..0x00139530,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp
+0x00139530,113,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x00139490..0x001395B0,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp
+0x001395B0,174,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x00139490..0x00139660,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp
 0x00139660,112,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/BfmeDynamicSortingVB.cpp,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x001396D0,73,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/BfmeDynamicSortingVB.cpp,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x00139720,143,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/BfmeDynamicNativeVB.cpp,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
@@ -9156,7 +9156,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0013AA00,247,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x0013A8E0..0x0013AB00,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x0013AB00,108,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,C,C=0x0013A8E0..0x0013AB70,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x0013AB70,60,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp S=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp N=Code/Libraries/Source/WWVegas/WW3D2/DynamicVBAccessClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
-0x0013ABB0,7,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp S=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp N=Code/GameEngine/Source/Common/DynamicVBAccessClass.cpp,Code/GameEngine/Source/Common/GlobalWordGetters.cpp
+0x0013ABB0,7,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,Z,Z=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp S=Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp N=Code/GameEngine/Source/Common/DynamicVBAccessClass.cpp,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp
 0x0013ABC0,30,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/BfmeDynamicVBBase.cpp,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x0013ABE0,30,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/BfmeDynamicSortingVB.cpp,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x0013AC00,106,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,U,N=Code/Libraries/Source/WWVegas/WW3D2/BfmeDynamicNativeVB.cpp,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
@@ -65029,7 +65029,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00765CF0,8,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,P,P=0x001397B0@FuncInfo0x0090A2D0,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x00765CF8,10,code,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp,approved,P,P=0x001397B0@FuncInfo0x0090A2D0,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x00765D10,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
-0x00765D1B,10,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/VertexBufferLockClasses.cpp
+0x00765D1B,10,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/dx8vertexbuffer.cpp
 0x00765D30,11,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x00765D3B,10,code,,,-,,Code/Libraries/Source/WWVegas/WW3D2/bfmedynamicvertexbuffer.cpp
 0x00765D50,8,code,Code/Libraries/Source/WWVegas/WW3D2/rendobj.cpp,approved,P,P=0x0013B430@FuncInfo0x0090A320,Code/Libraries/Source/WWVegas/WW3D2/RenderObjCopy.cpp
