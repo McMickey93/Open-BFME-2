@@ -164,11 +164,22 @@ Rva003F3FEC::Rva003F3FEC(void *payload) : m_04(payload)
 {
 }
 
-// ??0Rva003F424F@@QAE@PAX@Z @0x003F424F 18B, vtable VA 0xc37080
-class Rva003F424F
+// ??0Rva003F424F@@QAE@PAX@Z @0x003F424F 18B, vtable VA 0xc37080: the
+// LivingWorldBattle traversal visitor (invoke at 0x003F55B6 in
+// VslotSmallBodiesL.cpp, inlined construction in Rva003F6A91Dtor.cpp); its
+// one-slot interface base keeps the emitted table and deleting destructor
+// identical in every unit.
+class Rva003F498ACallback
+{
+public:
+	virtual bool invoke(int) = 0;
+	~Rva003F498ACallback() {}
+};
+class Rva003F424F : public Rva003F498ACallback
 {
 public:
 	Rva003F424F(void *payload);
+	virtual bool invoke(int);
 	virtual ~Rva003F424F() {}
 private:
 	void *m_04;

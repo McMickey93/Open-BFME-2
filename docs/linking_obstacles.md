@@ -1099,6 +1099,32 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   is banked, production source/cache restored and claims released. Recover
   the complete class/table contracts and existing getter/transfer owners before
   retrying. This fixes no production unit and claims no new linking credit.
+  **Update (2026-10-28, claudeb3, base 723bd233a1):** the full gate went red
+  on DIR32 consistency (`??_7Rva0056224F@@6B@` bases 0x00BBB554/0x00C1D358).
+  The canonical Snapshot base landed in production as the gate repair: 7/7
+  exact, EH EXACT, `tools/dir32.py` one base each for `??_7Rva0056224F@@6B@`
+  and `??_7Snapshot@@6B@`, link_check LINKS 473 -> 480 B. The 16-byte table
+  still carries `__purecall` in the three Snapshot slots (the old view emitted
+  a one-slot table, also not retail's); recovering the native post-process,
+  name and transfer overrides remains open as above.
+
+- **LivingWorldBattle traversal visitor (2026-10-28, claudeb3, base
+  723bd233a1):** the same gate run found `??_7Rva003F498ACallback@@6B@` at
+  0x00C1C780 and 0x00C37080: Rva003F6A91Dtor.cpp kept the visitor
+  `Rva003F424F` novtable, so its inlined construction stored the interface's
+  table name at the visitor's table. Target facts: 0x00C37080 = {0x003F55B6,
+  0x003F4261}, the sibling 0x00C37064 = {0x003F5BBB, 0x003F4261}, and
+  0x003F5BBB is already `Rva005FED52::invoke`. The slot-0 body is now
+  `?invoke@Rva003F424F@@UAE_NH@Z` (VslotSmallBodiesL.cpp, same bytes), the
+  visitor is an ordinary class in the dtor unit and RvaSmallVtableCtors.cpp
+  shares its two-slot shape, so every emitter writes the same table and
+  deleting destructor. Verified: 8/8, 195/195 exact; link_check
+  Rva003F6A91Dtor.cpp 146 -> 153 B, VslotSmallBodiesL.cpp 165 -> 165 B,
+  RvaSmallVtableCtors.cpp 2,669 -> 2,669 B; `tools/dir32.py` one base each for
+  `??_7Rva003F498ACallback@@6B@` (0x00C1C780) and `??_7Rva003F424F@@6B@`
+  (0x00C37080). Open: the folded deleting
+  destructor 0x003F4261 is rowed only as `??_GRva005FED52`; the emitted
+  `??_GRva003F424F` COMDAT has no row. Census confirmation pending.
 
 - **Polygon renderer consolidation subset (2026-10-26, inspected cdf6e90a59):**
   [the scoped provider prerequisite](../reverse/attempt_support/sol-b5-polygon-provider-20261026.md)

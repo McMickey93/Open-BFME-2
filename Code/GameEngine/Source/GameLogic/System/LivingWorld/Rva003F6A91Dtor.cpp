@@ -80,7 +80,7 @@ public:
 
 class LivingWorldBattle;
 
-class __declspec(novtable) Rva003F424F : public Rva003F498ACallback
+class Rva003F424F : public Rva003F498ACallback
 {
 public:
 	explicit Rva003F424F(LivingWorldBattle *owner) : m_owner(owner) {}

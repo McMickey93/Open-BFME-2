@@ -22,9 +22,12 @@ private:
 };
 }
 
-// slot at VA 0x00C37080: hands this object's +0x04 entry, viewed as its
-// CreateAHeroData base at +0x04 (NULL stays NULL), to the rowed 0x002B7250 on
-// the argument's +0x08 member; answers true.
+// slot at VA 0x00C37080: LivingWorldBattle's traversal visitor (the class
+// whose inlined construction ~LivingWorldBattle stores, Rva003F6A91Dtor.cpp),
+// slot 0 of its two-slot table (slot 1 is the folded deleting destructor at
+// 0x003F4261). Hands the battle, viewed as its CreateAHeroData base at +0x04
+// (NULL stays NULL), to the rowed 0x002B7250 on the entry's +0x08 member;
+// answers true. Same shape as Rva005FED52::invoke (vtable 0x00C37064).
 class CreateAHeroData;
 class Rva002B7250
 {
@@ -47,17 +50,23 @@ struct Rva003F55B6Arg
 	char m_pad00[0x08];
 	Rva002B7250 m_08;
 };
-class Rva003F55B6
+class Rva003F498ACallback
 {
 public:
-	Bool rva003F55B6(Rva003F55B6Arg *arg);
-private:
-	char m_pad00[0x04];
-	Rva003F55B6Entry *m_04;
+	virtual bool invoke(int) = 0;
+	~Rva003F498ACallback() {}
 };
-Bool Rva003F55B6::rva003F55B6(Rva003F55B6Arg *arg)
+class Rva003F424F : public Rva003F498ACallback
 {
-	arg->m_08.rva002B7250(m_04);
+public:
+	virtual bool invoke(int entry);
+	virtual ~Rva003F424F() {}
+private:
+	Rva003F55B6Entry *m_owner;
+};
+bool Rva003F424F::invoke(int entry)
+{
+	reinterpret_cast<Rva003F55B6Arg *>(entry)->m_08.rva002B7250(m_owner);
 	return true;
 }
 
