@@ -92,6 +92,31 @@ template <> DynamicVectorClass<Vector3>::DynamicVectorClass(unsigned, Vector3 co
 //#define ENABLE_CATEGORY_LOG
 //#define ENABLE_STRIPING
 
+// BFME 2's category lists have their own destructor at 0x001446F0.
+// Keep the other donor list aliases, but use that existing class identity.
+#define TextureCategoryList LegacyTextureCategoryList
+#define TextureCategoryListIterator LegacyTextureCategoryListIterator
+#include "dx8list.h"
+#undef TextureCategoryList
+#undef TextureCategoryListIterator
+class TextureCategoryList : public GenericMultiListClass
+{
+public:
+	TextureCategoryList() {}
+	virtual ~TextureCategoryList();
+	bool Add(DX8TextureCategoryClass *obj, bool onlyonce = true) { return Internal_Add((MultiListObjectClass *)obj, onlyonce); }
+	bool Add_Tail(DX8TextureCategoryClass *obj, bool onlyonce = true) { return Internal_Add_Tail((MultiListObjectClass *)obj, onlyonce); }
+	bool Add_After(DX8TextureCategoryClass *obj, const DX8TextureCategoryClass *after, bool onlyonce = true) { return Internal_Add_After((MultiListObjectClass *)obj, (const MultiListObjectClass *)after, onlyonce); }
+	bool Remove(DX8TextureCategoryClass *obj) { return Internal_Remove((MultiListObjectClass *)obj); }
+	DX8TextureCategoryClass *Peek_Head() { return (DX8TextureCategoryClass *)Internal_Get_List_Head(); }
+	DX8TextureCategoryClass *Remove_Head() { return (DX8TextureCategoryClass *)Internal_Remove_List_Head(); }
+};
+class TextureCategoryListIterator : public GenericMultiListIterator
+{
+public:
+	TextureCategoryListIterator(TextureCategoryList *list) : GenericMultiListIterator(list) {}
+	DX8TextureCategoryClass *Peek_Obj() { return (DX8TextureCategoryClass *)Current_Object(); }
+};
 #include "../../../../../reference/shims/bfme_dx8renderer_link/dx8renderer.h"	// BFME 2 declares Render_Procedural_Material_Passes bool
 #include "dx8wrapper.h"
 // Zero Hour's dx8polygonrenderer.h class, with Render and Render_Sorted
