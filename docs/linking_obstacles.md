@@ -1310,6 +1310,21 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 
 ### LINK-006: compiler emission and the selected copy still disagree with retail
 
+- **WindowVideo cleanup provider selection (2026-10-28, inspected `3aba05733d`):**
+  the current preview reproduces the manager's wrong-selected hashtable
+  destructor ahead of the verified WindowVideoHashtableDtor.cpp owner.
+  Local declaration-only destructor/clear specializations remove exactly
+  those two copies; the other 112 external COMDAT digests remain unchanged.
+  All 43 rows byte-match, strict receipts pass, and eight EH graphs are EXACT.
+  Against index `54b83e4f69`, both units now preview LINKS (2,206 and 134
+  authored bytes). The two other indexed consumers retain LINKS (842 and
+  331 bytes); the four-source cohort has eleven EXACT EH graphs.
+  [Evidence and remaining prerequisites](../reverse/attempt_support/window-video-cleanup-link-20261028.md).
+  Identity retirement still refuses missing/stale provider receipts and
+  existing bucket/AsciiString findings; all four keys remain. Clearance is
+  limited to the four-source preview. Carry this cohort into the next census;
+  no headline gain or full-image result is claimed.
+
 - **Font vector lifetime identity (2026-10-27, inspected `5a987437d9f`):**
   [the native lifetime and withdrawal evidence](../reverse/attempt_support/font-vector-identity-link-20261027/readme.md)
   separates the constructor's actual BD3BE8/BD3B98 vector family from the

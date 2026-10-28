@@ -114,7 +114,25 @@ void *&vector<void*>::operator[](size_t __n)
 #include "ascii_string.h"
 #include "subsystem_interface.h"	// This must go first in EVERY cpp file int the GameEngine
 
+// Expose the nested hash type for the local STL specializations below, as in
+// Rva0041EC10Clear.cpp; this changes access only, not the shared header.
+#define private public
 #include "window_video_manager.h"
+#undef private
+// Use the matched table cleanup in WindowVideoHashtableDtor.cpp. This TU's
+// node allocator would otherwise emit competing clear/destructor copies.
+namespace _STL {
+template <> hashtable<pair<GameWindow const * const, WindowVideo *>,
+    GameWindow const *, WindowVideoManager::hashConstGameWindowPtr,
+    _Select1st<pair<GameWindow const * const, WindowVideo *> >,
+    equal_to<GameWindow const *>,
+    allocator<pair<GameWindow const * const, WindowVideo *> > >::~hashtable();
+template <> void hashtable<pair<GameWindow const * const, WindowVideo *>,
+    GameWindow const *, WindowVideoManager::hashConstGameWindowPtr,
+    _Select1st<pair<GameWindow const * const, WindowVideo *> >,
+    equal_to<GameWindow const *>,
+    allocator<pair<GameWindow const * const, WindowVideo *> > >::clear();
+}
 #include "game_window.h"
 #include "video_player.h"
 // display.h (shim bfme_windowvideo) declares TheDisplay as its private DisplayInterface
