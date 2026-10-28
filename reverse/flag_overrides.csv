@@ -20,7 +20,6 @@ Code/GameEngine/Source/Common/BfmeConv1150.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1152.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1153.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1154.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1155.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1173.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1173Store.cpp,,2,2,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1208.cpp,,1,1,region default loses rows
@@ -60,9 +59,6 @@ Code/GameEngine/Source/Common/BfmeConv1433.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1434.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1436.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1437.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1438.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1439.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1440.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1441.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1443.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1444.cpp,-Od,1,1,region default loses rows
@@ -74,23 +70,18 @@ Code/GameEngine/Source/Common/BfmeConv1459.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1460.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1461.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1462.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1463.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1464.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1466.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1468.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1471.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1472.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1473.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1476.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1477.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1478.cpp,-Od,2,2,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1479.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1480.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1481.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1483.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1484.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1485.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeConv1486.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1495.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1496.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeConv1497.cpp,-Od,1,1,region default loses rows
@@ -118,6 +109,7 @@ Code/GameEngine/Source/Common/BfmeOneHundredSixtyNine.cpp,-Od,1,1,region default
 Code/GameEngine/Source/Common/BfmeOwnerCDECount.cpp,,5,1,region default loses rows
 Code/GameEngine/Source/Common/BfmePackedColors1280.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeResultSourceA.cpp,-O2,3,1,region default loses rows
+Code/GameEngine/Source/Common/BfmeS1155.cpp,-Od,12,12,region default loses rows
 Code/GameEngine/Source/Common/BfmeSlotPool.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeSubBZCSet.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeThingCDEDestructor.cpp,-O2,5,1,region default loses rows
@@ -136,7 +128,6 @@ Code/GameEngine/Source/Common/BfmeTwoHundredFiftySeven.cpp,-Od,1,1,region defaul
 Code/GameEngine/Source/Common/BfmeTwoHundredFiftySeven_DoOV.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredFiftySeven_FindByte.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredFiftySeven_FindByteCore.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeTwoHundredFiftySix.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredFiftyThree.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredFiftyTwo.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredFortyNine.cpp,-Od,1,1,region default loses rows
@@ -149,7 +140,6 @@ Code/GameEngine/Source/Common/BfmeTwoHundredSeventySeven.cpp,-Od,1,1,region defa
 Code/GameEngine/Source/Common/BfmeTwoHundredSeventySix.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredSeventyTwo.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredSixtyFour.cpp,-Od,1,1,region default loses rows
-Code/GameEngine/Source/Common/BfmeTwoHundredSixtyNine.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredSixtySeven.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/BfmeTwoHundredSixtySix.cpp,-Od,1,1,region default loses rows
 Code/GameEngine/Source/Common/ConstIntGetters2.cpp,,5,1,region default loses rows
@@ -669,7 +659,6 @@ Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00620A00.cpp,-O2,1,1,region def
 Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00148B27.cpp,-O1 -G7,1,1,region default loses rows
 Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00626EF0.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/WWVegas/WWLib/StlportDequeIntAux.cpp,,2,2,region default loses rows
-Code/Libraries/Source/WWVegas/WWLib/StlportNarrowAppendCStr.cpp,-Od,1,1,region default loses rows
 Code/Libraries/Source/WWVegas/WWLib/StlportNarrowAppendString.cpp,-Od,1,1,region default loses rows
 Code/Libraries/Source/WWVegas/WWLib/bufffile.cpp,-arch:SSE -G7,9,1,region default loses rows
 Code/Libraries/Source/WWVegas/WWLib/cpudetect.cpp,-arch:SSE -G7,33,1,region default loses rows

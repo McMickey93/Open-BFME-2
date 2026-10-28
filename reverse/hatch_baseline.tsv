@@ -1704,14 +1704,12 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv1427.cpp	?bfmeFwdTwoSVA@Bfme
 alternatename	Code/GameEngine/Source/Common/BfmeConv1434.cpp	?bfmeImplVMN@BfmeStrVMN@@QAEXHHHH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1436.cpp	?bfmeImplVMO@BfmeStrVMO@@QAEXHHHH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1437.cpp	?bfmeImplVMP@BfmeStrVMP@@QAEXHHHH@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1440.cpp	?bfmeImplVMT@BfmeStrVMT@@QAEXHH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1444.cpp	?bfmeImplVMW@BfmeStrVMW@@QAEXHHPAD@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1453.cpp	?bfmeFillInsV38@BfmeStrV38@@QAEPAV1@PAD0ID@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1457.cpp	?bfmeEraseV17@BfmeVecV17@@QAEXPAH0@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1457.cpp	?bfmeFwdOneSVA@BfmeThingSVA@@QAEXHH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1457.cpp	?bfmeInsertV17@BfmeVecV17@@QAEXPAHI0@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1468.cpp	?bfmeDoOR@@YAXPAX0EPAE@Z	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1477.cpp	?bfmeAppendV36@BfmeStrV36@@QAEXPAD00@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1481.cpp	?bfmeFwdThreeSUA@BfmeThingSUA@@QAEXDH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1483.cpp	?bfmeDoPG@BfmeThingPG@@QAEXPADPAXH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1496.cpp	?bfmeInsertV52@BfmeStrV52@@QAEXPAD0000@Z	1
@@ -1806,6 +1804,8 @@ alternatename	Code/GameEngine/Source/Common/BfmeOneHundredTwentyFive.cpp	?Gen008
 alternatename	Code/GameEngine/Source/Common/BfmeOneHundredTwentyFive.cpp	?Gen008B5050@@YAHPBDI@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeOneHundredTwentySix.cpp	?Gen008B8510@@YAHPBDI@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeOwnedStringReset.cpp	??1Gen_dtor_0034dd90@@UAE@XZ	1
+alternatename	Code/GameEngine/Source/Common/BfmeS1155.cpp	?bfmeAppendV36@BfmeStrV36@@QAEXPAD00@Z	1
+alternatename	Code/GameEngine/Source/Common/BfmeS1155.cpp	?bfmeImplVMT@BfmeStrVMT@@QAEXHH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp	?v01@Display@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp	?v02@Display@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp	?v03@Display@@UAEXXZ	1
