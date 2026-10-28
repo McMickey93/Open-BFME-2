@@ -227,8 +227,9 @@ def test_index_tables_carry_the_reference_graph():
 
 
 def test_rules_ids_and_rebaseline_order():
-    assert (L.RULES, L.PREVIOUS_RULES) == ("retail-truth-4", "retail-truth-3")
+    assert (L.RULES, L.PREVIOUS_RULES, L.RETAIL_TRUTH_3) == ("retail-truth-5", "retail-truth-4", "retail-truth-3")
     assert {L.PREVIOUS_RULES, L.PREVIOUS_RULES_NO_WRONG_SELECTED, L.RULES_NO_WRONG_SELECTED,
+            L.RETAIL_TRUTH_3, L.RETAIL_TRUTH_3_NO_WRONG_SELECTED,
             L.RETAIL_TRUTH_2, L.RETAIL_TRUTH_2_NO_WRONG_SELECTED,
             L.RETAIL_TRUTH_1, L.RETAIL_TRUTH_1_NO_WRONG_SELECTED} <= set(L.KNOWN_RULES)
     previous = [{"date": "2026-10-17 19:27", "commit": "a", "rules": L.PREVIOUS_RULES}]
@@ -244,11 +245,28 @@ def test_rules_ids_and_rebaseline_order():
         L.check_history_rules(done, census, rebaseline={"rules": L.PREVIOUS_RULES})
 
 
+def test_no_earlier_rule_is_judged_in_process_since_placement_changed(tmp_path, monkeypatch):
+    # retail-truth-4 placed objects differently, so its figures need its own
+    # link (census_rebaseline.OLD_TOOL_RULES), never this census's log.
+    from test_link_census_currency import _record_harness, linked
+    obj, source = tmp_path / "f.obj", tmp_path / "f.cpp"
+    obj.write_bytes(b"object")
+    _record_harness(tmp_path, monkeypatch, obj, source)
+    assert L.IN_PROCESS_RULES == {}
+    monkeypatch.setattr(L, "read_history", lambda: [{"date": "2026-10-01 00:00", "commit": "x",
+                                                     "rules": L.PREVIOUS_RULES}])
+    monkeypatch.setattr(L, "write_status", lambda *a, **k: pytest.fail("judged retail-truth-4 on a retail-truth-5 link"))
+    with pytest.raises(SystemExit, match="same judgment"):
+        L.record(linked(obj), [], rebaseline=L.REBASELINE_IN_PROCESS)
+
+
 def test_in_process_rebaseline_records_previous_rules_from_the_same_judgment(tmp_path, monkeypatch):
+    # The mechanism for a future keep-rule-only change (none is in-process now).
     from test_link_census_currency import _record_harness, linked
     obj, source = tmp_path / "f.obj", tmp_path / "f.cpp"
     obj.write_bytes(b"object")
     accepted = _record_harness(tmp_path, monkeypatch, obj, source)
+    monkeypatch.setattr(L, "IN_PROCESS_RULES", {L.PREVIOUS_RULES: {"retail_first": False}})
     monkeypatch.setattr(L, "read_history", lambda: [{"date": "2026-10-01 00:00", "commit": "x",
                                                      "rules": L.PREVIOUS_RULES}])
     monkeypatch.setattr(L, "write_status", lambda *a, **k: (
@@ -276,6 +294,8 @@ def test_in_process_rebaseline_continues_a_history_that_skipped_a_rule(tmp_path,
     obj, source = tmp_path / "f.obj", tmp_path / "f.cpp"
     obj.write_bytes(b"object")
     accepted, asked = _record_harness(tmp_path, monkeypatch, obj, source), []
+    monkeypatch.setattr(L, "IN_PROCESS_RULES", {L.RETAIL_TRUTH_3: L.KEEP_RULE_VARIANTS[L.RETAIL_TRUTH_3],
+                                                L.RETAIL_TRUTH_2: L.KEEP_RULE_VARIANTS[L.RETAIL_TRUTH_2]})
     monkeypatch.setattr(L, "read_history", lambda: [{"date": "2026-10-01 00:00", "commit": "x",
                                                      "rules": L.RETAIL_TRUTH_2}])
 
@@ -289,7 +309,7 @@ def test_in_process_rebaseline_continues_a_history_that_skipped_a_rule(tmp_path,
     figure = L.record(linked(obj), [], rebaseline=L.REBASELINE_IN_PROCESS)
     assert asked == [L.RETAIL_TRUTH_2] and accepted == [True]
     assert (figure["rules"], figure["prev_rules"]) == (L.RULES, L.RETAIL_TRUTH_2)
-    assert L.IN_PROCESS_RULES[L.RETAIL_TRUTH_2] == {"retail_kept": False, "retail_first": False}
+    assert L.KEEP_RULE_VARIANTS[L.RETAIL_TRUTH_2] == {"retail_kept": False, "retail_first": False}
     monkeypatch.setattr(L, "read_history", lambda: [{"date": "2026-10-01 00:00", "commit": "x",
                                                      "rules": L.RETAIL_TRUTH_1}])
     with pytest.raises(SystemExit, match="same judgment"):

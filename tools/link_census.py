@@ -304,20 +304,54 @@ def data_names():
     return {row["name"] for row in _dir32_rows()}
 
 
+def code_places(rows, object_of=None):
+    """{object: the retail RVA that places it in link order}, from matched
+    functions.csv rows.
+
+    Retail's .text follows its link order and each object's code is
+    contiguous there, so an object goes where its own code sits: the lowest
+    retail RVA among its rows whose address no other object's row also claims.
+    An address several objects claim is an ICF alias (link.exe folded
+    identical bodies into one, in whichever object it kept; the ledger marks
+    some with fold-proof=, gen-alias or icf-owner=, most only in free text)
+    or an over-claim; either way it does not say which object retail placed
+    there, and a folded row can sit megabytes before its object's own code
+    (0x00001E13 placed Render2DSentenceDrawBFME2.cpp, whose code is at
+    0x001540B0, at the front of the link: LINK-133). Such rows are skipped;
+    the object that does own the address loses nothing, its other rows lie in
+    the same contiguous block. An object every row of which is shared keeps
+    the lowest of them (retail-truth-4's rule for every object). `object_of`
+    (default build.row_object) maps a row to its object."""
+    object_of = object_of or build.row_object
+    objects, claims, placed = {}, collections.defaultdict(set), []
+    for row in rows:
+        source = row["source"]
+        obj = objects.get(source)
+        if obj is None:
+            obj = object_of(row)
+            if not source.lower().endswith(build.LIB_SUFFIX):  # a lib's rows name different members
+                objects[source] = obj
+        rva = int(row["target_rva"], 16)
+        claims[rva].add(obj)
+        placed.append((obj, rva))
+    own, lowest = {}, {}
+    for obj, rva in placed:
+        lowest[obj] = min(lowest.get(obj, rva), rva)
+        if len(claims[rva]) == 1:
+            own[obj] = min(own.get(obj, rva), rva)
+    return {obj: own.get(obj, rva) for obj, rva in lowest.items()}
+
+
 def link_order(rows, data=()):
     """Every object of a matched ledger row or a matched data row, in link order.
 
-    Retail's .text follows its link order, so an object goes where its code
-    sits in retail: by the lowest retail RVA among its matched functions.csv
-    rows. Objects that own only data rows (a data-only TU) follow, by the
-    lowest retail RVA of their data. Ties, which only an over-claimed address
-    can produce, go by object path. Neither the ledger's row order nor a file's
-    name decides a place (before 2026-09-30 the first row naming an object
-    did, and functions.csv is not sorted by RVA)."""
-    code, data_only = {}, {}
-    for row in rows:
-        obj = build.row_object(row)
-        code[obj] = min(code.get(obj, int(row["target_rva"], 16)), int(row["target_rva"], 16))
+    Code objects go by code_places (the lowest retail RVA of their own,
+    unshared rows). Objects that own only data rows (a data-only TU) follow,
+    by the lowest retail RVA of their data. Ties, which only an over-claimed
+    address can produce, go by object path. Neither the ledger's row order nor
+    a file's name decides a place (before 2026-09-30 the first row naming an
+    object did, and functions.csv is not sorted by RVA)."""
+    code, data_only = code_places(rows), {}
     for row in data:
         obj = data_object(row)
         if obj not in code:
@@ -2267,7 +2301,7 @@ def write_status(log, rows, present, meta, kept, publish=True, previous_rules=No
 
     Returns (clean, files, blocking names, clean under the rule before
     wrong_selected, stats); stats["clean_previous_rules"] is the clean set
-    under PREVIOUS_RULES (every unproven copy that differs from the proven one charged). It also writes build/link_census/link_index.pkl, which tools/link_check.py
+    under retail-truth-3's keep rule (every unproven copy that differs from the proven one charged). It also writes build/link_census/link_index.pkl, which tools/link_check.py
     reads to check one file in seconds (`meta` names the census). With
     publish=False neither file is written until stats["accept"]() is called,
     so record() can refuse a run whose inputs moved without leaving a status
@@ -2285,11 +2319,12 @@ def write_status(log, rows, present, meta, kept, publish=True, previous_rules=No
     references = read_references(present)
     edges, referenced = link_references(present, facts, owners, references)
     losers = comdat_losers(present, rows, stats, facts, referenced)
-    # The previous rules (PREVIOUS_RULES, retail-truth-3, unless a re-baseline
-    # names another IN_PROCESS_RULES entry) differ from RULES only in
-    # keep_rule's exemptions: census_rebaseline.py records the figures.
+    # retail-truth-3's keep rule (unless an in-process re-baseline names
+    # another KEEP_RULE_VARIANTS entry) differs from RULES' only in
+    # keep_rule's exemptions: the report below, and census_rebaseline.py's
+    # in-process figures.
     previous_losers = comdat_losers(present, rows, previous_stats, facts, referenced,
-                                    **IN_PROCESS_RULES[previous_rules or PREVIOUS_RULES])
+                                    **KEEP_RULE_VARIANTS[previous_rules or RETAIL_TRUTH_3])
     differs = unreferenced_differs(present, facts, referenced)
     results, exceptions = selection_verdicts(present, facts, owners, kept)
     wrong_selected, unknown_selected = {}, {}
@@ -2305,7 +2340,7 @@ def write_status(log, rows, present, meta, kept, publish=True, previous_rules=No
           f"address by link order ({stats.get('losers_first', 0):,} losing copies), "
           f"{stats.get('symbols_unreferenced', 0):,} with no retail address that nothing the link keeps references; "
           f"{previous_stats.get('losers_retail', 0) - stats.get('losers_retail', 0):,} unproven copies lose "
-          f"nothing because the copy the link keeps is retail's ({PREVIOUS_RULES} charged them)")
+          f"nothing because the copy the link keeps is retail's ({RETAIL_TRUTH_3} charged them)")
     unresolved = collections.defaultdict(set)
     duplicates = collections.defaultdict(set)
     # An /alternatename alias whose target is an excused name: /NODEFAULTLIB
@@ -2701,16 +2736,21 @@ HISTORY = ROOT / "reverse/link_census_history.csv"
 # link_census.py on the same objects, retail-truth-1 (every differing copy of
 # a name with no retail address loses, referenced or not), retail-truth-2
 # (every copy proven wrong loses, even when another object supplies the
-# retail copy) and PREVIOUS_RULES (retail-truth-3: an unproven copy that
-# differs from the proven one loses, even when the copy the link keeps is
-# retail's), each measured in the same judgment as the rules after it
-# (REBASELINE_IN_PROCESS). Dates are UTC from RULES on (rows before it are mostly UTC; their
+# retail copy), retail-truth-3 (an unproven copy that differs from the proven
+# one loses, even when the copy the link keeps is retail's), each measured in
+# the same judgment as the rules after it (REBASELINE_IN_PROCESS), and
+# PREVIOUS_RULES (retail-truth-4: an object's lowest row places it in link
+# order even when another object's row claims that address, an ICF fold;
+# code_places), measured by the previous link_census.py, which links the same
+# objects in its own order. Dates are UTC from retail-truth-4 on (rows before it are mostly UTC; their
 # zone is whatever the runner had); rows stay in physical append order, and
 # readers take the last physical row as current.
-RULES = "retail-truth-4"
-RULES_NO_WRONG_SELECTED = "retail-truth-4-no-wrong-selected"
-PREVIOUS_RULES = "retail-truth-3"
-PREVIOUS_RULES_NO_WRONG_SELECTED = "retail-truth-3-no-wrong-selected"
+RULES = "retail-truth-5"
+RULES_NO_WRONG_SELECTED = "retail-truth-5-no-wrong-selected"
+PREVIOUS_RULES = "retail-truth-4"
+PREVIOUS_RULES_NO_WRONG_SELECTED = "retail-truth-4-no-wrong-selected"
+RETAIL_TRUTH_3 = "retail-truth-3"
+RETAIL_TRUTH_3_NO_WRONG_SELECTED = "retail-truth-3-no-wrong-selected"
 RETAIL_TRUTH_2 = "retail-truth-2"
 RETAIL_TRUTH_2_NO_WRONG_SELECTED = "retail-truth-2-no-wrong-selected"
 RETAIL_TRUTH_1 = "retail-truth-1"
@@ -2718,14 +2758,20 @@ RETAIL_TRUTH_1_NO_WRONG_SELECTED = "retail-truth-1-no-wrong-selected"
 LEGACY_RULES = "majority-0"
 KNOWN_RULES = (LEGACY_RULES, RETAIL_TRUTH_1_NO_WRONG_SELECTED, RETAIL_TRUTH_1,
                RETAIL_TRUTH_2_NO_WRONG_SELECTED, RETAIL_TRUTH_2,
+               RETAIL_TRUTH_3_NO_WRONG_SELECTED, RETAIL_TRUTH_3,
                PREVIOUS_RULES_NO_WRONG_SELECTED, PREVIOUS_RULES, RULES_NO_WRONG_SELECTED, RULES)
 REBASELINE_IN_PROCESS = object()  # record(rebaseline=...): the last row's rules measured in the same judgment
+# keep_rule's arguments for the earlier keep rules (write_status judges
+# KEEP_RULE_VARIANTS[RETAIL_TRUTH_3] beside RULES for its report).
+KEEP_RULE_VARIANTS = {RETAIL_TRUTH_3: {"retail_first": False},
+                      RETAIL_TRUTH_2: {"retail_kept": False, "retail_first": False}}
 # Earlier rules that differ from RULES only in keep_rule's exemptions, so a
-# re-baseline measures them on the same objects, log and /MAP: keep_rule's
-# arguments for each. A history that skipped a rule's own re-baseline (no
-# retail-truth-3 row was ever recorded) re-baselines from its last row.
-IN_PROCESS_RULES = {PREVIOUS_RULES: {"retail_first": False},
-                    RETAIL_TRUTH_2: {"retail_kept": False, "retail_first": False}}
+# re-baseline measures them on the same objects, log and /MAP. None does
+# since retail-truth-5: every earlier rule also placed objects by
+# retail-truth-4's link order, which changes the link itself, so a
+# re-baseline measures them with their own link_census.py
+# (census_rebaseline.OLD_TOOL_RULES).
+IN_PROCESS_RULES = {}
 HISTORY_FIELDS = ["date", "commit", "objects", "unresolved", "alias", "pinned_elsewhere", "dump", "data",
                   "import", "unpinned", "duplicates", "comdat_conflicts", "comdat_vtables",
                   "scaffold_aliases", "scaffold_unresolved", "scaffold_crashed",

@@ -129,7 +129,7 @@ def test_previous_rules_refuse_objects_that_change_under_them(tmp_path, monkeypa
 
         def main(self, argv):
             self.rows.append({"commit": "c0ffee"})
-    monkeypatch.setattr(rb, "load_old", lambda rev, out: Old())
+    monkeypatch.setattr(rb, "load_old", lambda rev, out, previous=None: Old())
     with pytest.raises(SystemExit, match="changed while the previous rules"):
         rb.measure_old("rev", tmp_path / "old")
 
@@ -139,7 +139,7 @@ def test_previous_rules_refuse_objects_the_census_did_not_link(tmp_path, monkeyp
     monkeypatch.setattr(link_census, "ledger", lambda: [])
     monkeypatch.setattr(link_census, "objects", lambda rows: (["a.obj"], []))
     monkeypatch.setattr(link_census, "objects_digest", lambda present: "rebuilt since")
-    monkeypatch.setattr(rb, "load_old", lambda rev, out: pytest.fail("measured other objects"))
+    monkeypatch.setattr(rb, "load_old", lambda rev, out, previous=None: pytest.fail("measured other objects"))
     with pytest.raises(SystemExit, match="not the ones the census linked"):
         rb.measure_old("rev", tmp_path / "old")
 
@@ -152,7 +152,7 @@ def test_previous_rules_are_judged_in_process_on_the_census_itself(tmp_path, mon
     _census_json(tmp_path, monkeypatch)
     rb.record_in_process()
     assert seen == [link_census.REBASELINE_IN_PROCESS]
-    for other in ({"commit": "beef"}, {"rules": link_census.PREVIOUS_RULES}):
+    for other in ({"commit": "beef"}, {"rules": link_census.PREVIOUS_RULES}):  # a retail-truth-4 census.json
         _census_json(tmp_path, monkeypatch, **other)
         with pytest.raises(SystemExit, match="not this commit's RULES census"):
             rb.record_in_process()
@@ -165,8 +165,8 @@ def _main_harness(monkeypatch, previous):
     monkeypatch.setattr(rb, "previous_rules", lambda: previous)
     monkeypatch.setattr(rb, "git", lambda *a, check=True: "c0ffee" if a[0] == "rev-parse" else "")
     monkeypatch.setattr(rb, "run", lambda *command: commands.append(command[1:]))
-    monkeypatch.setattr(rb, "default_old_tools", lambda: "oldrev")
-    monkeypatch.setattr(rb, "old_source", lambda rev: "")
+    monkeypatch.setattr(rb, "default_old_tools", lambda previous=None: "oldrev")
+    monkeypatch.setattr(rb, "old_source", lambda rev, previous=None: "")
     row = {"commit": "c0ffee", "files_linked": "2", "linked_authored": "20", "game_code": "100",
            "files_linked_prev_rule": "1", "linked_authored_prev_rule": "10"}
     monkeypatch.setattr(link_census, "read_history", lambda: [row])
@@ -174,14 +174,16 @@ def _main_harness(monkeypatch, previous):
     return commands
 
 
-def test_rebaseline_from_retail_truth_1_runs_no_previous_tool(monkeypatch, capsys):
-    commands = _main_harness(monkeypatch, link_census.PREVIOUS_RULES)
+def test_rebaseline_from_in_process_rules_runs_no_previous_tool(monkeypatch, capsys):
+    # No rule is in-process since retail-truth-5; the path stays for the next keep-rule-only change.
+    monkeypatch.setattr(link_census, "IN_PROCESS_RULES", {link_census.RETAIL_TRUTH_3: {"retail_first": False}})
+    commands = _main_harness(monkeypatch, link_census.RETAIL_TRUTH_3)
     assert rb.main([]) == 0
     steps = [c[0] if len(c) == 1 else " ".join(c[:2]) for c in commands]
     assert steps[:2] == ["tools/link_census.py --build", "tools/census_rebaseline.py --record-in-process"]
     assert not any("--measure-old" in c for c in commands)
     out = capsys.readouterr().out
-    assert f"prev_rules={link_census.PREVIOUS_RULES}" in out and "not committed" in out
+    assert f"prev_rules={link_census.RETAIL_TRUTH_3}" in out and "not committed" in out
     with pytest.raises(SystemExit, match="does not apply"):
         rb.main(["--old-tools", "rev"])
 
@@ -190,3 +192,98 @@ def test_rebaseline_refuses_a_history_it_cannot_continue(monkeypatch):
     _main_harness(monkeypatch, "retail-truth-0")
     with pytest.raises(SystemExit, match="re-baselines"):
         rb.main([])
+
+
+PREVIOUS_TOOL = OLD_TOOL.replace("COMDAT_EXEMPT_PREFIXES", "_GONE") + f'''
+{rb.PREVIOUS_MARKER}
+UNREFERENCED_COPIES = OUT / "unreferenced_copies.json"
+_INPUT_RECEIPTS = None
+def keep_rule(copies): pass
+def link_order(rows, data=()): pass
+'''
+
+
+def _placement_repo(tmp_path):
+    """retail-truth-4's tool, then the commit that introduces RULES."""
+    root = tmp_path / "repo"
+    (root / "tools").mkdir(parents=True)
+    run = lambda *a: subprocess.run(["git", "-C", str(root), *a], check=True, capture_output=True, text=True)
+    run("init", "-q")
+    for text in (PREVIOUS_TOOL, PREVIOUS_TOOL.replace(rb.PREVIOUS_MARKER, rb.MARKER)):
+        (root / "tools" / "link_census.py").write_text(text)
+        run("add", "tools/link_census.py")
+        run("-c", "user.name=T", "-c", "user.email=t@example.invalid", "commit", "-qm", "x")
+    return root, run("rev-parse", "HEAD~1").stdout.strip(), run("rev-parse", "HEAD").stdout.strip()
+
+
+def test_placement_change_measures_retail_truth_4_with_its_own_tool(tmp_path, monkeypatch):
+    # retail-truth-5 changes link placement, so retail-truth-4 links the same
+    # objects in its own order in its own process: the parent of the RULES commit.
+    root, old, new = _placement_repo(tmp_path)
+    monkeypatch.setattr(rb, "ROOT", root)
+    assert link_census.PREVIOUS_RULES in rb.OLD_TOOL_RULES
+    assert link_census.PREVIOUS_RULES not in link_census.IN_PROCESS_RULES
+    assert rb.default_old_tools(link_census.PREVIOUS_RULES) == old
+    assert rb.PREVIOUS_MARKER in rb.old_source(old, link_census.PREVIOUS_RULES)
+    for wrong in ((new, link_census.PREVIOUS_RULES), (old, link_census.LEGACY_RULES)):
+        with pytest.raises(SystemExit, match="not the previous rules"):
+            rb.old_source(*wrong)
+
+
+def test_previous_tool_sees_this_census_receipts_and_redirected_outputs(tmp_path, monkeypatch):
+    root, old, _ = _placement_repo(tmp_path)
+    monkeypatch.setattr(rb, "ROOT", root)
+    history = tmp_path / "history.csv"
+    history.write_text("header\n")
+    monkeypatch.setattr(link_census, "HISTORY", history)
+    receipts = object()
+    monkeypatch.setattr(link_census, "input_receipts", lambda: receipts)
+    module = rb.load_old(old, tmp_path / "old", link_census.PREVIOUS_RULES)
+    assert module._INPUT_RECEIPTS is receipts
+    assert module.UNREFERENCED_COPIES == tmp_path / "old" / "unreferenced_copies.json"
+    module.main(["--history"])
+    assert history.read_text() == "header\n"
+
+
+def test_previous_figures_must_be_measured_under_the_previous_rules(tmp_path, monkeypatch):
+    _census_json(tmp_path, monkeypatch)
+    monkeypatch.setattr(link_census, "ledger", lambda: [])
+    monkeypatch.setattr(link_census, "objects", lambda rows: (["a.obj"], []))
+    monkeypatch.setattr(link_census, "objects_digest", lambda present: "d1")
+    monkeypatch.setattr(link_census, "head", lambda: "c0ffee")
+    figures = {"files": "3", "files_linked": "2", "linked_bytes": "9", "linked_authored": "8", "game_code": "10",
+               "objects": "3", "commit": "c0ffee", "date": "2026-10-02 00:01"}
+
+    class Old:
+        def __init__(self, rules):
+            self.rows, self.rules = [{}], rules
+
+        def read_history(self):
+            return list(self.rows)
+
+        def main(self, argv):
+            self.rows.append({**figures, "rules": self.rules})
+    monkeypatch.setattr(rb, "OLD_FIGURES", tmp_path / "old_rules.json")
+    monkeypatch.setattr(rb, "load_old", lambda rev, out, previous=None: Old(link_census.RULES))
+    with pytest.raises(SystemExit, match="recorded retail-truth-5, not retail-truth-4"):
+        rb.measure_old("rev", tmp_path / "old", link_census.PREVIOUS_RULES)
+    monkeypatch.setattr(rb, "load_old", lambda rev, out, previous=None: Old(link_census.PREVIOUS_RULES))
+    got = rb.measure_old("rev", tmp_path / "old", link_census.PREVIOUS_RULES)
+    assert (got["rules"], got["files_linked"], got["linked_authored"]) == (link_census.PREVIOUS_RULES, 2, 8)
+    text = rb.message(got, {"commit": "c0ffee", "files_linked": 3, "linked_authored": 9, "game_code": 10})
+    assert f"prev_rules={link_census.PREVIOUS_RULES}" in text and "ICF fold" in text
+
+
+def test_rebaseline_from_retail_truth_4_runs_the_previous_tool(monkeypatch, capsys, tmp_path):
+    commands = _main_harness(monkeypatch, link_census.PREVIOUS_RULES)
+    old = {"rules": link_census.PREVIOUS_RULES, "old_tools": "oldrev", "objects_digest": "d" * 64,
+           "files_linked": 1, "linked_authored": 10, "game_code": 100}
+    monkeypatch.setattr(rb, "OLD_FIGURES", tmp_path / "old_rules.json")
+    rb.OLD_FIGURES.write_text(json.dumps(old))
+    monkeypatch.setattr(rb.OLD_FIGURES.__class__, "unlink", lambda self, missing_ok=False: None)
+    assert rb.main([]) == 0
+    steps = [" ".join(c[:2]) for c in commands]
+    assert steps[:3] == ["tools/link_census.py --build", "tools/census_rebaseline.py --measure-old",
+                         "tools/census_rebaseline.py --record-new"]
+    assert commands[1][2] == "oldrev"
+    assert f"prev_rules={link_census.PREVIOUS_RULES}" in capsys.readouterr().out

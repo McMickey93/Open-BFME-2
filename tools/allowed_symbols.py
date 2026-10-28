@@ -287,12 +287,11 @@ def row_object(row):
 
 
 def link_order(rows):
-    """Existing objects of the rows, in link_census.link_order's order (lowest
-    retail RVA of the object's rows, then path)."""
-    first = {}
-    for row in rows:
-        obj, rva = row_object(row), int(row["target_rva"], 16)
-        first[obj] = min(first.get(obj, rva), rva)
+    """Existing objects of the rows, in link_census.link_order's order
+    (code_places: the lowest retail RVA of the object's own, unshared rows,
+    then path)."""
+    import link_census
+    first = link_census.code_places(rows, row_object)
     return [p for p in sorted(first, key=lambda o: (first[o], o.as_posix())) if p.exists()]
 
 

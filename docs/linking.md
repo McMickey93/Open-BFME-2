@@ -44,6 +44,13 @@ Open-BFME-1's rules:
   name has no retail address and nothing the link keeps references it.
 - A file fails when a name it touches resolves to a kept definition proven not
   retail's (`wrong_selected`).
+- Link order is retail's layout: an object goes by the lowest retail RVA of its
+  own rows (`link_census.code_places`; `link_check.link_rank`, tu_skeleton's
+  merge guard and `allowed_symbols` reuse it). Since `retail-truth-5` a row
+  whose address another object's row also claims (an ICF fold or over-claim,
+  marked `fold-proof=` or not) does not place its object, unless every row of
+  the object is one (LINK-133). Before then a folded row at a low address could
+  move a unit megabytes ahead and make its non-retail COMDAT copies the kept ones.
 
 The census counts only objects proven current by census receipts and records
 nothing if objects, inputs or tools move during the run. Each

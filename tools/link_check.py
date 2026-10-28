@@ -742,19 +742,12 @@ def new_variants(obj, index, truth, previous=None, rank=None):
 
 def link_rank(rows):
     """{object name: place} in the order the next census links its objects
-    (link_census.link_order over the current ledger, lowest matched RVA
-    first). A unit the census has never seen gets the place its own rows give
-    it; an object no matched row names is not linked at all."""
-    # A compiled source's object is its path's alone, so its lowest row places
-    # it: the same order from one row per source, in a third of the time
-    # (69k rows: 1.3 s, not 3.9 s). A lib's rows name different members.
-    lowest, members = {}, []
-    for row in rows:
-        if row["source"].lower().endswith(build.LIB_SUFFIX):
-            members.append(row)
-        elif row["source"] not in lowest or int(row["target_rva"], 16) < int(lowest[row["source"]]["target_rva"], 16):
-            lowest[row["source"]] = row
-    order = link_census.link_order(members + list(lowest.values()), link_census.data_ledger())
+    (link_census.link_order over the current ledger: code_places, the lowest
+    retail RVA of an object's rows that no other object's row claims). A unit
+    the census has never seen gets the place its own rows give it; an object
+    no matched row names is not linked at all. Every row is needed: whether a
+    row places its object depends on the other objects' rows."""
+    order = link_census.link_order(rows, link_census.data_ledger())
     return {obj.name: place for place, obj in enumerate(order)}
 
 

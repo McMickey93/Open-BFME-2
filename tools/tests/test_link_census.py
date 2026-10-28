@@ -863,3 +863,42 @@ def test_call_through_any_proven_thunk_of_its_import_is_retail():
     assert t.addresses("_htons@4", L.RetailTruth.REL32) == {TEXT + 0x20}
     # never a DIR32 target or a body home
     assert t.addresses("_htonl@4", L.RetailTruth.DIR32) == {TEXT}
+
+
+def _fold_ledger(monkeypatch):
+    """owner.cpp's 8-byte destructor at 0x1000, which retail folded the
+    mover's identical copy into; the mover's own code is at 0x9000."""
+    monkeypatch.setattr(L.build, "row_object", lambda row: Path("/o") / (Path(row["source"]).stem + ".obj"))
+    return [{"name": "??1Owner", "target_rva": "0x00001000", "source": "Code/owner.cpp", "notes": ""},
+            {"name": "own", "target_rva": "0x00001010", "source": "Code/owner.cpp", "notes": ""},
+            {"name": "mid", "target_rva": "0x00005000", "source": "Code/mid.cpp", "notes": ""},
+            {"name": "??1Twin", "target_rva": "0x00001000", "source": "Code/mover.cpp",
+             "notes": "ICF twin;fold-proof=Code/owner.cpp"},
+            {"name": "body", "target_rva": "0x00009000", "source": "Code/mover.cpp", "notes": ""}]
+
+
+def test_a_fold_row_does_not_move_its_object(monkeypatch):
+    # LINK-133: 0x00001E13 put Render2DSentenceDrawBFME2.cpp at the front of
+    # the link, where its non-retail COMDAT copies became the kept ones.
+    rows = _fold_ledger(monkeypatch)
+    assert [obj.name for obj in L.link_order(rows)] == ["owner.obj", "mid.obj", "mover.obj"]
+    assert L.code_places(rows)[Path("/o/mover.obj")] == 0x9000
+    # The owner of the shared address stays in its own block (its next row).
+    assert L.code_places(rows)[Path("/o/owner.obj")] == 0x1010
+    # Marked or not: most ICF aliases carry no fold-proof= token, only prose.
+    unmarked = [dict(row, notes="") for row in rows]
+    assert [obj.name for obj in L.link_order(unmarked)] == ["owner.obj", "mid.obj", "mover.obj"]
+
+
+def test_an_object_of_only_fold_rows_keeps_its_lowest_row(monkeypatch):
+    rows = _fold_ledger(monkeypatch) + [
+        {"name": "??1Only", "target_rva": "0x00001000", "source": "Code/alias.cpp", "notes": ""},
+        {"name": "??1Only2", "target_rva": "0x00005000", "source": "Code/alias.cpp", "notes": ""}]
+    assert L.code_places(rows)[Path("/o/alias.obj")] == 0x1000  # retail-truth-4's rule
+    assert [obj.name for obj in L.link_order(rows)][:2] == ["alias.obj", "owner.obj"]
+
+
+def test_rows_of_one_object_at_one_address_are_not_shared(monkeypatch):
+    rows = _fold_ledger(monkeypatch)
+    rows.append({"name": "??1Owner_dup", "target_rva": "0x00001010", "source": "Code/owner.cpp", "notes": ""})
+    assert L.code_places(rows)[Path("/o/owner.obj")] == 0x1010

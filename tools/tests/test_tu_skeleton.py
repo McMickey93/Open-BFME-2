@@ -1558,3 +1558,27 @@ class ClaimTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LinkGuardPlacementTests(unittest.TestCase):
+    def test_the_guard_ranks_objects_in_the_census_link_order_skipping_fold_rows(self):
+        # LINK-133: a fold row (an address another object's row claims) places
+        # no object, in the census, link_check and the merge guard alike.
+        import link_check as LC
+        import link_census as LCe
+        rows = [{"name": "a", "source": "Code/Owner.cpp", "target_rva": "0x100", "notes": ""},
+                {"name": "b", "source": "Code/Owner.cpp", "target_rva": "0x110", "notes": ""},
+                {"name": "c", "source": "Code/Mid.cpp", "target_rva": "0x500", "notes": ""},
+                {"name": "d", "source": "Code/Mover.cpp", "target_rva": "0x100", "notes": "ICF twin"},
+                {"name": "e", "source": "Code/Mover.cpp", "target_rva": "0x900", "notes": ""}]
+        index = {"blockers": {}, "objects": [], **{table: {} for table, _ in T.LINK_TABLES}}
+        guard = T.LinkGuard("Code/Owner.cpp", index=index)
+        with patch.object(LCe, "ledger", return_value=rows), patch.object(LCe, "data_ledger", return_value=[]), \
+                patch.object(LCe, "RetailTruth", side_effect=lambda rows: object()), \
+                patch.object(LC, "require_common_index", return_value=None), \
+                patch.object(T.LinkGuard, "census_contexts", return_value={}):
+            self.assertIsNone(guard.prepare([]))
+            order = [p.name for p in LCe.link_order(rows, [])]
+        self.assertEqual(sorted(guard.rank, key=guard.rank.get), order)
+        import build
+        self.assertEqual(order, [build.obj_path(build.ROOT / f"Code/{s}.cpp").name for s in ("Owner", "Mid", "Mover")])

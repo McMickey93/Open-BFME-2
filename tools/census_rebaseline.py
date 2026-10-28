@@ -8,12 +8,19 @@ rules' figures for the very same objects in its *_prev_rule columns
 commit and appends that row; it never pushes. Which previous rules it
 measures, and how, follows from the history's last row:
 
-  PREVIOUS_RULES (retail-truth-3: RULES without keep_rule's `retail_first`
-    exemption, so an unproven copy that differs from the proven one loses even
-    when the copy the link keeps is retail's): measured in the same judgment as RULES, on the same link log,
-    /MAP and objects (link_census.record(rebaseline=REBASELINE_IN_PROCESS)).
-    Steps 1, 3, 4 and 5 below; step 2 does not apply.
-  LEGACY_RULES (majority-0): measured by the previous link_census.py, below.
+  IN_PROCESS_RULES (none since retail-truth-5; retail-truth-3 was RULES
+    without keep_rule's `retail_first` exemption): measured in the same
+    judgment as RULES, on the same link log, /MAP and objects
+    (link_census.record(rebaseline=REBASELINE_IN_PROCESS)). Steps 1, 3, 4 and
+    5 below; step 2 does not apply.
+  OLD_TOOL_RULES, measured by the previous link_census.py (step 2):
+    PREVIOUS_RULES (retail-truth-4: an object's lowest row places it in link
+    order even when another object's row claims that address). Placement
+    changes the link itself, so the previous rules cannot be judged on this
+    census's log: the previous tool links the same objects in its own order.
+    Its default is the parent of the commit that introduced RULES.
+    LEGACY_RULES (majority-0): its default is the parent of the commit that
+    ported Open-BFME-1's rules (keep_rule).
 
   python3 tools/census_rebaseline.py                 # build, measure both rules, append the row
   python3 tools/census_rebaseline.py --commit        # ... and commit it with the refreshed card
@@ -26,9 +33,12 @@ origin/master after the tools that introduced RULES landed:
      receipts), link in retail order, write build/link_census/census.json.
   2. The previous link_census.py (git show REV:tools/link_census.py), run in
      a separate process against the same objects with its outputs redirected
-     to build/link_census_rebaseline/old/: its link, its status and its
-     history row, from which the LEGACY_RULES figures are read. The objects'
-     digest must equal the census's before and after.
+     to build/link_census_rebaseline/old/: its link (in its own link order),
+     its status and its history row, from which the previous rules' figures
+     are read. It proves the objects current by step 1's compile receipts.
+     The objects' digest must equal the census's before and after.
+     link_check's index is the one output it cannot redirect; step 3
+     rewrites it.
   3. link_census.record(census, rows, rebaseline=old): the selection link,
      the new status and the one RULES row (UTC), refused unless the commit,
      tools and objects are still those of steps 1 and 2.
@@ -57,6 +67,11 @@ MARKER = f'RULES = "{link_census.RULES}"'
 # had the majority keeper's STLport/array-helper exemption instead.
 PORT_MARKER = "def keep_rule("
 LEGACY_MARKER = "COMDAT_EXEMPT_PREFIXES"
+PREVIOUS_MARKER = f'RULES = "{link_census.PREVIOUS_RULES}"'
+# The previous rules a separate run of their own link_census.py measures:
+# {rules: the text whose first appearance in tools/link_census.py introduced
+# the rules after them (default_old_tools takes that commit's parent)}.
+OLD_TOOL_RULES = {link_census.LEGACY_RULES: PORT_MARKER, link_census.PREVIOUS_RULES: MARKER}
 
 
 def git(*args, check=True):
@@ -66,20 +81,26 @@ def git(*args, check=True):
     return done.stdout.strip()
 
 
-def default_old_tools():
-    """The parent of the commit that ported Open-BFME-1's rules (the first
-    whose link_census.py defines keep_rule)."""
-    found = git("log", "--format=%H", "--reverse", "-S", PORT_MARKER, "--", "tools/link_census.py").split()
+def default_old_tools(previous=link_census.LEGACY_RULES):
+    """The parent of the commit that introduced the rules after `previous`:
+    for LEGACY_RULES the port of Open-BFME-1's rules (the first link_census.py
+    defining keep_rule), for PREVIOUS_RULES the first naming RULES."""
+    marker = OLD_TOOL_RULES[previous]
+    found = git("log", "--format=%H", "--reverse", "-S", marker, "--", "tools/link_census.py").split()
     if not found:
-        raise SystemExit(f"census_rebaseline: no commit introduces {PORT_MARKER}; pass --old-tools")
+        raise SystemExit(f"census_rebaseline: no commit introduces {marker}; pass --old-tools")
     return git("rev-parse", found[0] + "^")
 
 
-def old_source(rev):
-    """The previous rules' link_census.py: the majority keeper, no RULES."""
+def old_source(rev, previous=link_census.LEGACY_RULES):
+    """The previous rules' link_census.py: for LEGACY_RULES the majority
+    keeper, no RULES; for PREVIOUS_RULES the census naming them, not RULES."""
     text = git("show", f"{rev}:tools/link_census.py")
-    if (MARKER in text or PORT_MARKER in text or LEGACY_MARKER not in text
-            or "def write_status" not in text or "def record" not in text):
+    if previous == link_census.LEGACY_RULES:
+        wrong = MARKER in text or PORT_MARKER in text or LEGACY_MARKER not in text
+    else:
+        wrong = MARKER in text or PREVIOUS_MARKER not in text or "def link_order" not in text
+    if wrong or "def write_status" not in text or "def record" not in text:
         raise SystemExit(f"census_rebaseline: {rev}:tools/link_census.py is not the previous rules' census")
     return text
 
@@ -107,28 +128,32 @@ def previous_rules():
     return link_census.row_rules(history[-1]) if history else None
 
 
-def load_old(rev, out):
+def load_old(rev, out, previous=link_census.LEGACY_RULES):
     """The previous link_census.py as a module of its own, run as if it were
     tools/link_census.py (its ROOT), but with every output redirected under
-    `out`: it never writes the real status, history or link outputs."""
+    `out`: it never writes the real status, history or link outputs. It
+    proves its objects current by this census's compile receipts."""
     module = types.ModuleType("link_census_previous")
     module.__file__ = str(ROOT / "tools" / "link_census.py")
-    exec(compile(old_source(rev), f"{rev}:tools/link_census.py", "exec"), module.__dict__)
+    exec(compile(old_source(rev, previous), f"{rev}:tools/link_census.py", "exec"), module.__dict__)
     out.mkdir(parents=True, exist_ok=True)
     module.OUT = out
     module.STATUS = out / "link_status.csv"
     module.HISTORY = out / "link_census_history.csv"
     real = link_census.HISTORY
     module.HISTORY.write_bytes(real.read_bytes() if real.exists() else b"")
-    for name in ("SELECTED", "DUPLICATES", "ALIASED", "SELECTION"):
+    for name in ("SELECTED", "DUPLICATES", "ALIASED", "SELECTION", "UNREFERENCED_COPIES"):
         if hasattr(module, name):
             setattr(module, name, out / Path(getattr(module, name)).name)
+    if hasattr(module, "_INPUT_RECEIPTS"):
+        module._INPUT_RECEIPTS = link_census.input_receipts()
     return module
 
 
-def measure_old(rev, out=WORK / "old"):
-    """Step 2, in its own process: the previous rules' figures for the
-    objects the census linked."""
+def measure_old(rev, out=WORK / "old", previous=None):
+    """Step 2, in its own process: the previous rules' figures (`previous`,
+    default the history's last row's) for the objects the census linked."""
+    previous = previous or previous_rules() or link_census.LEGACY_RULES
     census = json.loads((link_census.OUT / "census.json").read_text(encoding="utf-8"))
     rows = link_census.ledger()
     present, missing = link_census.objects(rows)
@@ -137,7 +162,7 @@ def measure_old(rev, out=WORK / "old"):
     digest = link_census.objects_digest(present)
     if digest != census.get("objects_digest"):
         raise SystemExit("census_rebaseline: the objects are not the ones the census linked")
-    old = load_old(rev, out)
+    old = load_old(rev, out, previous)
     before = old.read_history()
     old.main(["--history"])
     after = old.read_history()
@@ -146,7 +171,9 @@ def measure_old(rev, out=WORK / "old"):
     if link_census.objects_digest(present) != digest:
         raise SystemExit("census_rebaseline: the objects changed while the previous rules measured them")
     row = after[-1]
-    figures = {"rules": link_census.LEGACY_RULES, "old_tools": rev, "commit": row["commit"], "date": row["date"],
+    if previous != link_census.LEGACY_RULES and link_census.row_rules(row) != previous:
+        raise SystemExit(f"census_rebaseline: the previous tool recorded {link_census.row_rules(row)}, not {previous}")
+    figures = {"rules": previous, "old_tools": rev, "commit": row["commit"], "date": row["date"],
                "objects_digest": digest, "census_when": census["when"],
                **{key: int(row[key]) for key in ("files", "files_linked", "linked_bytes", "linked_authored",
                                                  "game_code", "objects")}}
@@ -154,7 +181,7 @@ def measure_old(rev, out=WORK / "old"):
         raise SystemExit("census_rebaseline: the previous rules measured another commit")
     OLD_FIGURES.parent.mkdir(parents=True, exist_ok=True)
     OLD_FIGURES.write_text(json.dumps(figures, indent=1), encoding="utf-8")
-    print(f"census_rebaseline: {link_census.LEGACY_RULES}: {figures['files_linked']:,} files, "
+    print(f"census_rebaseline: {previous}: {figures['files_linked']:,} files, "
           f"authored {figures['linked_authored']:,} / {figures['game_code']:,}")
     return figures
 
@@ -216,16 +243,20 @@ def message_in_process(new, previous=None):
 def message(old, new):
     def pct(row, field="linked_authored"):
         return 100 * int(row[field]) / int(row["game_code"])
+    previous = old.get("rules") or link_census.LEGACY_RULES
+    why = {link_census.PREVIOUS_RULES: f".\n{previous} places an object by its lowest row even when another\n"
+                                       f"object's row claims that address (an ICF fold); {link_census.RULES}\n"
+                                       "by its own unshared rows, so each rule linked in its own order"}.get(previous, "")
     return (f"link_census: re-baseline LINKING under {link_census.RULES}\n\n"
             f"One census of {new['commit']} measured under both rules on the same objects\n"
             f"(objects digest {old['objects_digest'][:16]}); the previous rules by\n"
-            f"{old['old_tools'][:10]}:tools/link_census.py, outputs redirected.\n\n"
-            f"  {link_census.LEGACY_RULES:<22} {old['files_linked']:>6,} files  "
-            f"{old['linked_authored']:>10,} B  {pct(old):6.2f}%\n"
-            f"  {link_census.RULES:<22} {new['files_linked']:>6,} files  "
-            f"{new['linked_authored']:>10,} B  {pct(new):6.2f}%\n\n"
+            f"{old['old_tools'][:10]}:tools/link_census.py, outputs redirected{why}.\n\n"
+            f"  {previous:<22} {int(old['files_linked']):>6,} files  "
+            f"{int(old['linked_authored']):>10,} B  {pct(old):6.2f}%\n"
+            f"  {link_census.RULES:<22} {int(new['files_linked']):>6,} files  "
+            f"{int(new['linked_authored']):>10,} B  {pct(new):6.2f}%\n\n"
             "The row's *_prev_rule columns hold the previous rules' figures\n"
-            f"(prev_rules={link_census.LEGACY_RULES}); progress.py, the card and the chart\n"
+            f"(prev_rules={previous}); progress.py, the card and the chart\n"
             "report the step as a rule change, not as lost progress. Card, chart\n"
             "and map regenerated (no Discord post).\n")
 
@@ -253,13 +284,13 @@ def main(argv=None):
     in_process = previous in link_census.IN_PROCESS_RULES
     if in_process and args.old_tools:
         raise SystemExit(f"census_rebaseline: {previous} is measured in the same judgment; --old-tools does not apply")
-    if not in_process and previous != link_census.LEGACY_RULES:
+    if not in_process and previous not in OLD_TOOL_RULES:
         raise SystemExit(f"census_rebaseline: the history's last row is {previous}; this tool re-baselines "
-                         f"{link_census.RULES} from {', '.join(link_census.IN_PROCESS_RULES)} or "
-                         f"{link_census.LEGACY_RULES} only")
-    rev = None if in_process else args.old_tools or default_old_tools()
+                         f"{link_census.RULES} from "
+                         f"{', '.join([*link_census.IN_PROCESS_RULES, *OLD_TOOL_RULES])} only")
+    rev = None if in_process else args.old_tools or default_old_tools(previous)
     if rev:
-        old_source(rev)
+        old_source(rev, previous)
     print(f"census_rebaseline: measuring {head[:10]}; previous rules ({previous}) "
           f"{'in the same judgment' if in_process else 'from ' + rev[:10]}. "
           "Every other census publisher must be paused.", flush=True)

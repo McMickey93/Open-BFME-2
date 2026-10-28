@@ -270,8 +270,7 @@ def test_census_objects_the_ledger_no_longer_links_are_left_out(monkeypatch):
 def test_link_rank_is_the_census_link_order_of_the_ledger(monkeypatch):
     # This synthetic code/library ledger has no synthetic data providers.
     monkeypatch.setattr(C.link_census, "data_ledger", lambda: [])
-    # One row per compiled source places it as all of them would; a lib's rows
-    # name different members, so each counts.
+    # A lib's rows name different members, so each counts.
     rows = [{"source": "Code/B.cpp", "target_rva": "0x300"}, {"source": "Code/A.cpp", "target_rva": "0x200"},
             {"source": "Code/B.cpp", "target_rva": "0x100"},
             {"source": "Code/L.lib", "target_rva": "0x250", "notes": "member=x.obj"},
@@ -297,3 +296,21 @@ def test_shadow_reports_what_it_would_refuse(monkeypatch, tmp_path, capsys, shad
 def test_shadow_is_only_for_the_admission_form():
     with pytest.raises(SystemExit):
         C.main(["--shadow", "a.cpp"])
+
+
+def test_link_rank_skips_fold_rows_like_the_census(monkeypatch):
+    # A row whose address another object claims (an ICF fold) places neither
+    # object; link_rank (and tu_skeleton's LinkGuard, which takes it and
+    # link_order) must see the census's order, so it reads every row.
+    monkeypatch.setattr(C.link_census, "data_ledger", lambda: [])
+    rows = [{"source": "Code/Owner.cpp", "target_rva": "0x100"}, {"source": "Code/Owner.cpp", "target_rva": "0x110"},
+            {"source": "Code/Mid.cpp", "target_rva": "0x500"},
+            {"source": "Code/Mover.cpp", "target_rva": "0x100", "notes": "fold-proof=Code/Owner.cpp"},
+            {"source": "Code/Mover.cpp", "target_rva": "0x900"}]
+    rank = C.link_rank(rows)
+    assert rank == {obj.name: place for place, obj in enumerate(C.link_census.link_order(rows))}
+    names = [C.build.obj_path(C.ROOT / f"Code/{s}.cpp").name for s in ("Owner", "Mid", "Mover")]
+    assert sorted(rank, key=rank.get) == names
+    import allowed_symbols
+    monkeypatch.setattr(allowed_symbols.Path, "exists", lambda self: True)
+    assert [p.name for p in allowed_symbols.link_order(rows)] == names
