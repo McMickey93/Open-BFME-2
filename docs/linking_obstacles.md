@@ -70,6 +70,18 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **NAT predicate TU composition (2026-10-28, base `9c6829533a`):**
+  [The bounded consolidation evidence](../reverse/attempt_support/nat-predicate-consolidation-20261028-codex.md)
+  preserves five exact rows, all 14 external COMDAT byte/relocation digests and
+  the definition/dependency sets while removing one source file. The merged
+  NAT.cpp previews LINKS for the donors' combined 383 authored bytes against
+  index `14dc3d2467`. The whole-range batch audit is **INCONCLUSIVE**: that
+  index predates the outgoing base and lacks complete per-object consumer
+  names; the published asset is the same census. Carry this moved scope to
+  the next normal census. Full consumer selection, new census-linked bytes
+  and runtime results remain unclaimed; the other NAT donors retain their
+  documented declaration/compiler prerequisites.
+
 - **CritterEmitter TU composition (2026-10-28, base `248318c9e2`):**
   [The scoped composition evidence](../reverse/attempt_support/critter-emitter-consolidation-20261028-codex.md)
   preserves seven matched rows, two EXACT EH graphs and all 17 external
