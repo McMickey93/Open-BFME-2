@@ -48831,15 +48831,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005A9C71,50,code,Code/GameEngine/Source/Common/AISiegeGatesTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISiegeGatesTactic.cpp provisional,Code/GameEngine/Source/Common/Rva004ECECDTacticCreate.cpp
 0x005A9CA3,16,code,Code/GameEngine/Source/Common/AISiegeGatesTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISiegeGatesTactic.cpp provisional,Code/GameEngine/Source/Common/Rva005A9ACDTactic.cpp
 0x005A9CB3,11,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva005DC87BDerived.cpp
-0x005A9CBE,67,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic_canRun.cpp
+0x005A9CBE,67,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp
 0x005A9D01,5,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,C,C=0x005A9CBE..0x005A9D06 provisional,Code/GameEngine/Source/Common/Disp8DwordClearers.cpp
-0x005A9D06,45,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva005A9CB3Tactic.cpp
+0x005A9D06,45,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp
 0x005A9D33,83,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva004ECECDTacticCtors.cpp
 0x005A9D86,28,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva005DC87BDerived.cpp
 0x005A9DA2,50,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva004ECECDTacticCreate.cpp
-0x005A9DD4,245,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva005A9CB3Tactic.cpp
-0x005A9EC9,167,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva005A9CB3Tactic.cpp
-0x005A9F70,214,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp W=Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/Rva005A9CB3Tactic.cpp
+0x005A9DD4,245,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp
+0x005A9EC9,167,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp
+0x005A9F70,214,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,N,N=Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp W=Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/AISimpleSiegeTactic.cpp provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp
 0x005AA046,20,code,,,-,,Code/GameEngine/Source/Common/Rva005AA046Check.cpp
 0x005AA05A,112,code,,,-,,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/Rva005AA05APivotPoint.cpp
 0x005AA0CA,14,code,,,-,,Code/GameEngine/Source/Common/Rva005AA0CATake.cpp
@@ -87595,8 +87595,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0079E69D,10,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,P,P=0x005A9D33@FuncInfo0x00954B5C provisional,Code/GameEngine/Source/Common/Rva004ECECDTacticCtors.cpp
 0x0079E6A7,10,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,P,P=0x005A9DA2@FuncInfo0x00954B80 provisional,Code/GameEngine/Source/Common/Rva004ECECDTacticCreate.cpp
 0x0079E6B1,10,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,P,P=0x005A9DA2@FuncInfo0x00954B80 provisional,Code/GameEngine/Source/Common/Rva004ECECDTacticCreate.cpp
-0x0079E6BB,8,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,P,P=0x005A9F70@FuncInfo0x00954BA4 provisional,Code/GameEngine/Source/Common/Rva005A9CB3Tactic.cpp
-0x0079E6C3,10,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,P,P=0x005A9F70@FuncInfo0x00954BA4 provisional,Code/GameEngine/Source/Common/Rva005A9CB3Tactic.cpp
+0x0079E6BB,8,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,P,P=0x005A9F70@FuncInfo0x00954BA4 provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp
+0x0079E6C3,10,code,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp,approved,P,P=0x005A9F70@FuncInfo0x00954BA4 provisional,Code/GameEngine/Source/Common/AISimpleSiegeTactic.cpp
 0x0079E6CD,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/AIFlankAttackTactic.cpp,approved,P,P=0x005AA0D8@FuncInfo0x00954BC8,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/AIFlankAttackTactic.cpp
 0x0079E6D5,10,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/AIFlankAttackTactic.cpp,approved,P,P=0x005AA0D8@FuncInfo0x00954BC8,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/AIFlankAttackTactic.cpp
 0x0079E6DF,8,code,Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/OffensiveTactics/AIFlankAttackTactic.cpp,approved,P,P=0x005AA23E@FuncInfo0x00954BFC,Code/GameEngine/Source/Common/Rva004ECECDTacticCtors.cpp
