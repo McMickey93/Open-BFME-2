@@ -40046,8 +40046,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004C227A,25,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,proposed,K,K=Rva004C227A,Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp
 0x004C2293,6,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,proposed,C,C=0x004C227A..0x004C2299,Code/GameEngine/Source/Common/ModuleNameGetters3.cpp
 0x004C2299,48,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDieOnDie.cpp
-0x004C22C9,69,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDiePoolKey.cpp
-0x004C230E,22,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,C,C=0x004C22C9..0x004C2324 provisional,Code/GameEngine/Source/GameLogic/Object/Die/SpecialPowerCompletionDieModuleDataCtor.cpp
+0x004C22C9,69,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp
+0x004C230E,22,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,C,C=0x004C22C9..0x004C2324 provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp
 0x004C2324,42,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDieCtor.cpp
 0x004C234E,28,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,C,C=0x004C2324..0x004C236A provisional,Code/GameEngine/Source/GameLogic/Object/Die/DieModuleDerived.cpp
 0x004C236A,31,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDieOnDie.cpp
@@ -81558,8 +81558,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078FCBD,10,code,Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBody.cpp,proposed,P,P=0x004C1F10@FuncInfo0x00941034,Code/GameEngine/Source/GameLogic/Object/Body/OathbreakerBodyPoolKey.cpp
 0x0078FCC7,13,code,Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBody.cpp,proposed,P,P=0x004C2034@FuncInfo0x00941058,Code/GameEngine/Source/GameLogic/Object/Body/PorcupineFormationBodyModulePoolKey.cpp
 0x0078FCD4,10,code,Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBody.cpp,proposed,P,P=0x004C2034@FuncInfo0x00941058,Code/GameEngine/Source/GameLogic/Object/Body/PorcupineFormationBodyModulePoolKey.cpp
-0x0078FCDE,13,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,P,P=0x004C22C9@FuncInfo0x0094107C provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDiePoolKey.cpp
-0x0078FCEB,10,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,P,P=0x004C22C9@FuncInfo0x0094107C provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDiePoolKey.cpp
+0x0078FCDE,13,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,P,P=0x004C22C9@FuncInfo0x0094107C provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp
+0x0078FCEB,10,code,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,approved,P,P=0x004C22C9@FuncInfo0x0094107C provisional,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp
 0x0078FCF5,13,code,Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPower.cpp,approved,P,P=0x004C23D4@FuncInfo0x009410A0 provisional,Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPowerPoolKey.cpp
 0x0078FD02,10,code,Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPower.cpp,approved,P,P=0x004C23D4@FuncInfo0x009410A0 provisional,Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPowerPoolKey.cpp
 0x0078FD0C,8,code,Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPower.cpp,proposed,P,P=0x004C244D@FuncInfo0x009410CC,Code/GameEngine/Source/GameLogic/Object/Contain/MobNexusContainModuleDataCtor.cpp

@@ -20589,8 +20589,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04180,4,.data,global,?$S1@?1??getModuleNameKey@OathbreakerBody@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Body/OathbreakerBodyPoolKey.cpp,owned,,1,4
 0x00A04184,4,.data,global,?ThePorcupineFormationBodyModulePoolKey@?1??getModuleNameKey@PorcupineFormationBodyModule@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Body/PorcupineFormationBodyModulePoolKey.cpp,owned,,1,2
 0x00A04188,4,.data,global,?$S1@?1??getModuleNameKey@PorcupineFormationBodyModule@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Body/PorcupineFormationBodyModulePoolKey.cpp,owned,,1,4
-0x00A0418C,4,.data,global,?TheHeroDiePoolKey@?1??getModuleNameKey@HeroDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/HeroDiePoolKey.cpp,owned,,1,2
-0x00A04190,4,.data,global,?$S1@?1??getModuleNameKey@HeroDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/HeroDiePoolKey.cpp,owned,,1,4
+0x00A0418C,4,.data,global,?TheHeroDiePoolKey@?1??getModuleNameKey@HeroDie@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,owned,,1,2
+0x00A04190,4,.data,global,?$S1@?1??getModuleNameKey@HeroDie@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Die/HeroDie.cpp,owned,,1,4
 0x00A04194,4,.data,global,_s_rva007B285A,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A04198,4,.data,global,?TheInvisibilitySpecialPowerPoolKey@?1??getModuleNameKey@InvisibilitySpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPowerPoolKey.cpp,owned,,1,2
 0x00A0419C,4,.data,global,?$S1@?1??getModuleNameKey@InvisibilitySpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/InvisibilitySpecialPowerPoolKey.cpp,owned,,1,4
