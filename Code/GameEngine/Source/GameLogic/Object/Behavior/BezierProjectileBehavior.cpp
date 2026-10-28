@@ -127,11 +127,25 @@ struct BezierProjectileBehaviorModuleData
 	float m_postLandingEmotionRadius;			// +0xC0 the radius
 };
 
+// The cost accessor's satellite uses twelve-byte path elements at +0x44/+0x48.
+// Keep its pointer-difference contract alongside the detonation fields.
+class BfmeTripleDL
+{
+public:
+	int m_bfmeData[3];
+};
+
 class BezierProjectileBehavior
 {
 public:
 	void rva0045C026();
+	int bfmeCost(void) const;
 private:
+	unsigned int bfmeSize(void) const
+	{
+		return m_bfmeFinish - m_bfmeStart;
+	}
+
 	void *m_vtable;
 	const BezierProjectileBehaviorModuleData *m_moduleData;	// +0x04
 	Object *m_object;		// +0x08
@@ -141,7 +155,9 @@ private:
 	ObjectID m_victimID;		// +0x38
 	char m_pad3C[0x40 - 0x3C];
 	const WeaponTemplate *m_detonationWeaponTmpl;	// +0x40
-	char m_pad44[0x74 - 0x44];
+	BfmeTripleDL *m_bfmeStart;	// +0x44
+	BfmeTripleDL *m_bfmeFinish;	// +0x48
+	char m_pad4C[0x74 - 0x4C];
 	int m_extraBonusFlags;		// +0x74
 	char m_pad78[0x80 - 0x78];
 	bool m_hasDetonated;		// +0x80
