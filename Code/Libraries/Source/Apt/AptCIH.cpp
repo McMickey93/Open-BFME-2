@@ -144,6 +144,8 @@ public:
 	virtual AptValue *rva006E0520(AptValue *, const EAStringC *);
 public:
 	void SetEventHandler(int mask);
+	void DestroyGCPointers();
+	void rva006dbd80();
 public:
 	void RemoveEventHandler(int mask);
 public:

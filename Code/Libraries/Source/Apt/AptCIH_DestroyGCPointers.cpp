@@ -22,16 +22,16 @@ public:
 
 private:
 	char m_pad48[0x48];
-	Rva006E0460Ref *m_48; // +0x48
-	Rva006E0460Ref *m_4c; // +0x4C
+	AptCIH *m_parent; // +0x48
+	void *m_4C; // +0x4C
 };
 
 void AptCIH::DestroyGCPointers()
 {
-	if (m_4c != 0 && m_4c != (Rva006E0460Ref *)0xBAADF00D)
-		m_4c->vf2();
-	if (m_48 != 0)
-		m_48->vf1();
-	m_48 = 0;
+	if (m_4C != 0 && m_4C != (Rva006E0460Ref *)0xBAADF00D)
+		((Rva006E0460Ref *)m_4C)->vf2();
+	if (m_parent != 0)
+		((Rva006E0460Ref *)m_parent)->vf1();
+	m_parent = 0;
 	rva006dbd80();
 }
