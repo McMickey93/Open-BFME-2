@@ -1454,6 +1454,7 @@ Code/GameEngine/Source/Common/GlobalFlagClearers_E03Bxx.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/GlobalFlagClearers_E03Dxx.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/GlobalFlagClearers_E03Fxx.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/Common/GlobalFlagClearers_E043xx.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/GlobalFlagClearers_E044xx.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/GlobalFlagClearers_E1F4E0.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/GlobalFloatGetters.cpp,yes,0,0,0,0,0
@@ -3661,7 +3662,10 @@ Code/GameEngine/Source/Common/Rva002C589BXfer.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva002C5D8BChoice.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva002C5EF0Xfer.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva002C5F65.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/Common/Rva002C5FBAForward.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva002C5FE8Search.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/Common/Rva002C60E4Ctor.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/Common/Rva002C60E4Ctor_Rva002C60E4.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva002C6845Method.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva002C6E4EDtor.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva002C6EA4Method.cpp,yes,0,0,0,0,0
@@ -7164,6 +7168,7 @@ Code/GameEngine/Source/Common/Rva006DE2B0Slot11.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva006DE2B0Slot7.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva006DE350Derived.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva006DF5E0Cast.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/Common/Rva006E9580Vslot.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva006EB650.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva006EC670Cluster.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/Common/Rva006ECFC0Siblings.cpp,yes,0,0,0,0,0
@@ -13782,6 +13787,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateSetBattlePlan.cpp
 Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdateXfer.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate_getCommandOption.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/BattlePlanUpdate_onObjectCreated.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/GameLogic/Object/Update/BeaconClientUpdateXfer.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/BfmeAssignRecord52Assign.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/BfmeAssignRecord52Dtor.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdateCtor.cpp,yes,0,0,0,0,0
@@ -13832,6 +13838,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdateModuleDataCtor
 Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdateModuleDataDtor.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdatePoolKey.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/CivilianSpawnUpdateUpdate.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/GameLogic/Object/Update/CleanupHazardUpdateCtor.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/CleanupHazardUpdateFriendNew.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdateConstructor.cpp,yes,0,0,0,0,0
@@ -14246,6 +14253,7 @@ Code/GameEngine/Source/GameLogic/Object/Update/PickupStuffUpdateUpdate.cpp,yes,0
 Code/GameEngine/Source/GameLogic/Object/Update/PickupStuffUpdate_moveToStuff.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/PilotFindVehicleUpdateCtor.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/PilotFindVehicleUpdateFriendNew.cpp,yes,0,0,0,0,0
+Code/GameEngine/Source/GameLogic/Object/Update/PointDefenseLaserUpdateCtor.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/PoolMemberRelease.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/PrisonDockUpdateCtor.cpp,yes,0,0,0,0,0
 Code/GameEngine/Source/GameLogic/Object/Update/PrisonDockUpdateFriendNew.cpp,yes,0,0,0,0,0
