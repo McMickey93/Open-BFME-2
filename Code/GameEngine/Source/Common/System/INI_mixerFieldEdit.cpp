@@ -21,6 +21,7 @@
 // 0x00BBA180). Structural inference: a development-time live tweak hook for
 // INI fields ("mixer"); the original names are not recovered.
 
+#define NOMINMAX // INI.cpp declares its own _STL::max overload
 #include <windows.h>
 #include <string.h>
 #include <vector>
@@ -52,8 +53,8 @@ struct FieldParse
 // ?findFieldParse present-unmatched
 static INIFieldParseProc findFieldParse(const FieldParse *parseTable, const char *token, int &offset, const void *&userData)
 {
-	const FieldParse *parse = parseTable;
-	for (; parse->token; ++parse)
+	const FieldParse *parse;
+	for (parse = parseTable; parse->token; ++parse)
 	{
 		if (strcmp(parse->token, token) == 0)
 		{
@@ -71,7 +72,7 @@ static INIFieldParseProc findFieldParse(const FieldParse *parseTable, const char
 	}
 	else
 	{
-		return NULL;
+		return 0;
 	}
 }
 

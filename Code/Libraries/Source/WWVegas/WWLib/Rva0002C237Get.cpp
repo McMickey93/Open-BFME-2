@@ -2,6 +2,7 @@
 // platformsdk
 // stlport
 // ?Rva0002C237Get@@YAXPAVINI@@@Z @0x0002C237 144B: GetCurrentDirectoryA + INI::rva0002BFE5 filename + rva0002BBDE line + AsciiString::format into local.
+#define NOMINMAX // INI.cpp declares its own _STL::max overload
 #include <windows.h>
 #include "ascii_string.h"
 
