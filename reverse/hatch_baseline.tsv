@@ -3390,7 +3390,6 @@ alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ObjectTypesRemoveObj
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ObjectTypesRemoveObjectType.cpp	?erase@?$vector@UGen_t_001db910_p4cd@@V?$allocator@UGen_t_001db910_p4cd@@@_STL@@@_STL@@QAEPAUGen_t_001db910_p4cd@@PAU3@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/OrConditionCtor.cpp	??1OrCondition@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/Rva0020453CHolderBaseDtor.cpp	?holderSlot0@Rva0020453CHolderBase@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/Rva003B7C1EReset.cpp	??1Rva003B761E@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActionsRva003BBFFB.cpp	?g_Va00BCF628@@3MA	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_ctor.cpp	?init@ScriptActions@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptActions_playerOwnershipOfTypeCounter.cpp	?prepForPlayerCounting@ObjectTypes@@QAEHAAV?$vector@PBVThingTemplate@@V?$allocator@PBVThingTemplate@@@_STL@@@_STL@@AAV?$vector@HV?$allocator@H@_STL@@@3@@Z	1
@@ -3404,7 +3403,6 @@ alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_DllHand
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_DllHandleLoadFailure.cpp	_vtbl_00BD3B54	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGroupSkipCheck.cpp	?skipGroup@Rva003B485AHolder@@QAE_NPAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListElementDestroy.cpp	??1ScriptListElementName@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListSubrecordReset.cpp	?rva003B7167@Rva003B761E@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AIStatCollector/AIStatCollector.cpp	??0?$hash_map@HHU?$hash@H@_STL@@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHH@_STL@@@2@@_STL@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/AITactic.cpp	?slot08@AITactic@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetChooser/AITargetChooser.cpp	??1Rva005A9562@@QAE@XZ	1

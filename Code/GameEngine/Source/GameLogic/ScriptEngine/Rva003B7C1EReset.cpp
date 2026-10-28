@@ -4,6 +4,7 @@
 // empties the object by swapping it with a freshly built 0x20-byte one
 // (rowed constructor 0x003B761E, rowed swap 0x003B56A5) which the
 // destructor 0x003B766B then tears down. Built without EH, as retail.
+#include <new>
 
 class Rva003B56A5
 {
@@ -15,10 +16,16 @@ class Rva003B761E
 {
 public:
 	Rva003B761E();
-	~Rva003B761E();
-	void swapWith(void *other) { reinterpret_cast<Rva003B56A5 *>(this)->swap((Rva003B56A5 *)other); }
 private:
 	unsigned char m_data[0x20];
+};
+
+// Call-only view of the rowed destructor owner. The original type identity
+// remains unresolved; the separate views do not establish inheritance.
+class Rva003B872ASet
+{
+public:
+	~Rva003B872ASet();
 };
 
 class Rva003B7C1E
@@ -29,11 +36,8 @@ public:
 
 void Rva003B7C1E::rva003B7C1E()
 {
-	Rva003B761E().swapWith(this);
+	char storage[sizeof(Rva003B761E)];
+	Rva003B761E *tmp = new (storage) Rva003B761E;
+	((Rva003B56A5*)tmp)->swap((Rva003B56A5*)this);
+	((Rva003B872ASet*)storage)->~Rva003B872ASet();
 }
-
-// Each retail call in this body reads an address the ledger already carries
-// under the rowed name below; bind the donor spelling to that owner so one
-// address keeps one definition.
-//   0x003B766B -> ??1Rva003B872ASet@@QAE@XZ
-#pragma comment(linker, "/alternatename:??1Rva003B761E@@QAE@XZ=??1Rva003B872ASet@@QAE@XZ")
