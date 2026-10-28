@@ -6,12 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #pragma pointers_to_members(full_generality, multiple_inheritance)
-
 // Rva00559F7ESwitchGetters.cpp's per-mode counts.
 int Rva00559F7EGet(int mode);
-
 int Rva00559F95Get(int mode);
-
 #include "AptMpGameRulesView.h"
 
 void GadgetComboBoxGetSelectedPos(GameWindow *window, int *selection);
@@ -145,7 +142,6 @@ void GadgetComboBoxSetSelectedPos(GameWindow *, int, bool);
 void GadgetComboBoxHideDropDown(GameWindow *, bool);
 
 void GadgetCheckBoxSetChecked(GameWindow *, bool);
-
 
 // Only the caller-proven +0x30 GameInfo dispatch is viewed here.
 class RuleGameInfoHostView {
@@ -334,6 +330,8 @@ private:
 	char m_pad64[0x8C - 0x64];
 	int m_8C[10];
 };
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpGameRules.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpGameRulesCallbacks.cpp
 
@@ -613,16 +611,6 @@ void AptMpGameRules::PopulateCheckBoxes() {
     m_88 = true;
 }
 
-// tu-skeleton: 0x0057E59B 26B ?rva0057E59B@Rva0057E97A@@QAEXH_N@Z -- matched in Code/GameEngine/Source/Common/Rva0057E59B.cpp (not merged yet)
-
-// tu-skeleton: 0x0057E6D8 5B ?rva0057E6D8@Rva0057EE5C@@QAEXXZ -- matched in Code/GameEngine/Source/Common/TailJumpWrappers5B.cpp (not merged yet)
-
-// tu-skeleton: 0x0057E779 40B ?rva0057E779@AptMpGameRules@@QAEXHH@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE32.cpp (not merged yet)
-
-// tu-skeleton: 0x0057E97A 115B ?rva0057E97A@Rva0057E97A@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0057E97AEnable.cpp (not merged yet)
-
-// tu-skeleton: 0x0057E9ED 34B ?rva0057E9ED@Rva0057E97A@@QAEXIH@Z -- matched in Code/GameEngine/Source/Common/Rva0057E9ED.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva0057EA0F.cpp
 
 void Rva0057EE5C::rva0057EA0F()
@@ -678,6 +666,62 @@ bool AptMpGameRules::rva0057ED2B() {
     return true;
 }
 
+// ---- from Code/GameEngine/Source/Common/Rva0057E59B.cpp
+
+// ?rva0057E59B@Rva0057E97A@@QAEXH_N@Z @0x0057E59B 26B
+// Window enable helper of the Rva0057E97A holder: w = m_begin[index] at +0x7C,
+// if w is null skip, else w->winEnable(enable) via rowed 0x00313BEC.
+// Same class and flags as the neighbour 0x0057E97A TU. Evidence: packet
+// disasm, single caller 0x0043DBE0, prev/next rows.
+
+void Rva0057E97A::rva0057E59B(int index, bool enable)
+{
+	class GameWindow *gameWindow = m_begin[index];
+	if (gameWindow != 0)
+		gameWindow->winEnable(enable);
+}
+
+// tu-skeleton: 0x0057E6D8 5B ?rva0057E6D8@Rva0057EE5C@@QAEXXZ -- matched in Code/GameEngine/Source/Common/TailJumpWrappers5B.cpp (not merged yet)
+
+// tu-skeleton: 0x0057E779 40B ?rva0057E779@AptMpGameRules@@QAEXHH@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE32.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva0057E97AEnable.cpp
+
+// ?rva0057E97A@Rva0057E97A@@QAEXXZ @0x0057E97A 115B
+// Toggles a window list: reads holder at +0x58 via rowed 0x0043DA65 (row types
+// int but retail uses the return as an object pointer for slot-0x30 bool check;
+// cast is required to keep the row mangling), then enables each GameWindow in
+// [0x7C,0x80) with (flag && intAtB4[i]==1) via rowed GameWindow::winEnable.
+// Evidence: packet disasm with rowed callees 0x0043DA65 and 0x00313BEC;
+// callers 0x0057EA0F/0x0057ED2B of the same class; neighbours in Common.
+
+void Rva0057E97A::rva0057E97A()
+{
+	int tmp = m_holder->rva0043DA65();
+	bool use;
+	if (tmp != 0 && ((Rva0057E97AValidator *)tmp)->checkValid())
+		use = true;
+	else
+		use = false;
+	GameWindow **begin = m_begin;
+	m_updating = false;
+	if (begin != m_end)
+	{
+		unsigned int off = 0;
+		do
+		{
+			GameWindow *gameWindow = *begin;
+			if (gameWindow != 0)
+				gameWindow->winEnable(use && m_enableFlags[off] == 1);
+			++begin;
+			++off;
+		} while (begin != m_end);
+	}
+	m_updating = true;
+}
+
+// tu-skeleton: 0x0057E9ED 34B ?rva0057E9ED@Rva0057E97A@@QAEXIH@Z -- matched in Code/GameEngine/Source/Common/Rva0057E9ED.cpp (not merged yet)
+
 // tu-skeleton: 0x0057ED87 43B ??0?$vector@W4ObjectID@@V?$allocator@W4ObjectID@@@_STL@@@_STL@@QAE@IABW4ObjectID@@ABV?$allocator@W4ObjectID@@@1@@Z -- matched in Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp (not merged yet)
 
 // tu-skeleton: 0x0057EDB2 170B ??0Rva0057EE5C@@QAE@PAUTargetRef00217D4C@@@Z -- matched in Code/GameEngine/Source/Common/Rva0057EE5C_Rva0057EE5C.cpp (not merged yet)
@@ -698,7 +742,7 @@ bool AptMpGameRules::rva0057ED2B() {
 
 // tu-skeleton: 0x0079C4AA 8B uw_0079c4aa -- matched in Code/GameEngine/Source/Common/Rva0057EE5C_Rva0057EE5C.cpp (not merged yet)
 
-// tu-skeleton: 0x0079C4B2 11B uw_0079c4b2 -- matched in Code/gen_small/uw_gen_014.cpp (not merged yet)
+// tu-skeleton: 0x0079C4B2 11B $L5285 -- matched in Code/GameEngine/Source/Common/Rva0057EE5C_Rva0057EE5C.cpp (not merged yet)
 
 // tu-skeleton: 0x0079C4BD 11B Unwind@00b9c4bd -- matched in Code/GameEngine/Source/Common/Rva0057EE5C_Rva0057EE5C.cpp (not merged yet)
 
@@ -712,7 +756,7 @@ bool AptMpGameRules::rva0057ED2B() {
 
 // tu-skeleton: 0x0079C4F6 8B $L5382 -- matched in Code/GameEngine/Source/Common/Rva0057EE5C.cpp (not merged yet)
 
-// tu-skeleton: 0x0079C4FE 11B uw_0079c4fe -- matched in Code/gen_small/uw_gen_014.cpp (not merged yet)
+// tu-skeleton: 0x0079C4FE 11B $L5188 -- matched in Code/GameEngine/Source/Common/Rva0057EE5C.cpp (not merged yet)
 
 // tu-skeleton: 0x0079C509 11B Unwind@00b9c509 -- matched in Code/GameEngine/Source/Common/Rva0057EE5C.cpp (not merged yet)
 
