@@ -7257,6 +7257,14 @@ Clearance: unchanged prerequisite bytes/bindings only. Composition and selected-
 
 ### LINK-132: AIBuilder selects a non-retail Object-pointer vector destructor
 
+2026-10-28 AoE target consumer: at `1edb5beac7`, refreshed index
+`d92e7e6635`, `AISPecialPowerTargetAoE.cpp` has one preview blocker: the
+selected `vector<Object *>::push_back` copy is not retail. Its 19 rows
+byte-verify, and the frozen-file check passes. The consumer declares and calls
+the provider; the existing AIBuilder operation and context trials above remain
+the prerequisite. Recheck this consumer after that provider is reconciled.
+No repair or census gain is claimed.
+
 2026-10-28 append/overflow follow-up at `d6a91b0f7e6`, index `41c28839bf`:
 the served HordeContain file still has exactly the three AIBuilder-selected
 vector-operation blockers. Four new append/overflow/context trials change
