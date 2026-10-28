@@ -120,8 +120,6 @@ NameKeyType InactiveBody::getModuleNameKey() const
 
 // tu-skeleton: 0x004BD910 28B ??_GRva004BD78F@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp (not merged yet)
 
-// tu-skeleton: 0x0078F893 13B ?Rva0078F893ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp (not merged yet)
-
 // tu-skeleton: 0x0078F8AA 8B $L407 -- matched in Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078F8B2 10B __ehhandler$??0InactiveBody@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/InactiveBodyCtor.cpp (not merged yet)

@@ -222,8 +222,6 @@ NameKeyType W3DSupplyDraw::getModuleNameKey() const
 
 // tu-skeleton: 0x000CAF8A 28B ??_GW3DSupplyDrawModuleData@@UAEPAXI@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDrawModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00762382 13B ?Rva00762382ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_DEAFxx.cpp (not merged yet)
-
 // tu-skeleton: 0x00762399 8B Unwind@00b62399 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDrawModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x007623A1 10B __ehhandler$??1W3DSupplyDrawModuleData@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DSupplyDrawModuleDataDtor.cpp (not merged yet)

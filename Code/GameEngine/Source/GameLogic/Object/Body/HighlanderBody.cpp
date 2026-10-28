@@ -64,6 +64,6 @@ HighlanderBody::~HighlanderBody()
 
 // tu-skeleton: 0x004C082B 67B ?attemptDamage@HighlanderBody@@UAEXPAVDamageInfo@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyAttemptDamage.cpp (not merged yet)
 
-// tu-skeleton: 0x0078FB22 13B ?Rva0078FB22ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp (not merged yet)
+// tu-skeleton: 0x0078FB22 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078FB2F 10B __ehhandler$?getModuleNameKey@HighlanderBody@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp (not merged yet)

@@ -285,5 +285,3 @@ bool UnitCrateCollide::executeCrateBehavior(Object *other)
 	reinterpret_cast<UnitCrateAudioView *>(TheAudio)->addAudioEvent(&soundToPlay);
 	return true;
 }
-
-// tu-skeleton: 0x0078F7A2 13B ?Rva0078F7A2ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp (not merged yet)

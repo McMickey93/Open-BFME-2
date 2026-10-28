@@ -348,8 +348,6 @@ NameKeyType DetachableRiderUpdate::getModuleNameKey() const
 
 // tu-skeleton: 0x004AEF05 17B ?buildFieldParse@DetachableRiderUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
-// tu-skeleton: 0x0078E61F 13B ?Rva0078E61FClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E03Dxx.cpp (not merged yet)
-
 // tu-skeleton: 0x0078E636 8B Unwind@00b8e636 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E63E 10B __ehhandler$??0DetachableRiderUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdateCtorModuleFactoryBody.cpp (not merged yet)

@@ -512,7 +512,3 @@ void SquishCollide::onCollide(Object *other,const Coord3D *loc,const Coord3D *no
  }
  other->friend_setUndetectedDefector(false);
 }
-
-// tu-skeleton: 0x0078F693 13B ?Rva0078F693ClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp (not merged yet)
-
-// tu-skeleton: 0x0078F6AA 13B ?Rva0078F6AAClearFlag@@YAIXZ -- matched in Code/GameEngine/Source/Common/GlobalFlagClearers_E040xx.cpp (not merged yet)

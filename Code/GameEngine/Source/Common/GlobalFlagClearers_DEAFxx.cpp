@@ -1,6 +1,7 @@
-// 22 further clearers formerly here are rowed as their matched parents'
+// All 23 clearers formerly here are rowed as their matched parents'
 // /G7 guard-rollback $L funclets (EXACT EH graphs); see reverse/deleted_rows.csv.
-// Twenty-three B2-native flag-word clearers across twenty-one .data flag words of
+// What remains is the data_rows.csv-owned flag word below. The family was
+// twenty-three B2-native flag-word clearers across twenty-one .data flag words of
 // one contiguous run (0x007618F7-0x00762A01):
 //
 //     mov eax,[<address>] / and al,<mask8> / mov [<address>],eax / ret
@@ -12,15 +13,7 @@
 // GlobalFlagClearers_08.cpp.
 // cl: /G7 /MD /EHsc /DNDEBUG
 
-extern unsigned int g_Va00DEBB88;
-// g_Va00DEBB88: matched references place it at VA 0xdebb88 (zero-filled .bss).
-unsigned int g_Va00DEBB88;
 extern unsigned int g_Va00DEBBAC;
 // g_Va00DEBBAC: matched references place it at VA 0xdebbac (zero-filled .bss).
 unsigned int g_Va00DEBBAC;
-
-unsigned int Rva00762382ClearFlag(void)
-{
-	return g_Va00DEBB88 &= 0xFFFFFFFEu;
-}
 
