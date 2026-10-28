@@ -51,7 +51,13 @@ protected:
 	UnicodeString m_filename;
 };
 
-class OptionPreferences : public UserPreferences
+class Rva002E4272 : public UserPreferences
+{
+public:
+	virtual ~Rva002E4272();
+};
+
+class OptionPreferences : public Rva002E4272
 {
 public:
 	OptionPreferences();
