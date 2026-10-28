@@ -91,6 +91,93 @@ def test_no_carry_across_a_tree_wide_baseline_change(repo):
     assert R.find(commit(repo, "reverse/eh_baseline.csv", "shrunk")) == c2
 
 
+def _loads(tmp_path, *entries):
+    folder = tmp_path / "loads"
+    folder.mkdir(exist_ok=True)
+    (folder / "123").write_text("".join(f"{e}\n" for e in entries))
+    return folder
+
+
+def test_a_tool_the_gate_never_loaded_does_not_void_its_receipt(repo, tmp_path):
+    commit(repo, "tools/build.py", "b")
+    commit(repo, "tools/tu_skeleton.py", "1")
+    commit(repo, "tools/tests/test_tu_skeleton.py", "1")
+    c0 = commit(repo, "Code/a.cpp", "1")
+    R.record(c0, loads=_loads(tmp_path, "tools/build.py", "tools/ledger_io.py", "tools/"))
+    commit(repo, "tools/tu_skeleton.py", "2")  # another seat's tool and its test landed
+    assert R.find(commit(repo, "tools/tests/test_tu_skeleton.py", "2")) == c0
+
+
+def test_a_loaded_tool_or_hook_change_voids_the_receipt(repo, tmp_path):
+    commit(repo, "tools/build.py", "b")
+    c0 = commit(repo, "tools/ledger_io.py", "1")
+    loads = _loads(tmp_path, "tools/build.py", "tools/ledger_io.py", "tools/")
+    R.record(c0, loads=loads)
+    assert R.find(commit(repo, "tools/ledger_io.py", "2")) is None
+    c2 = commit(repo, "Code/b.cpp", "2")
+    R.record(c2, loads=loads)
+    assert R.find(commit(repo, ".githooks/pre-push", "changed")) is None
+
+
+def test_an_added_or_removed_entry_of_a_listed_directory_voids_the_receipt(repo, tmp_path):
+    commit(repo, "tools/build.py", "b")
+    commit(repo, "tools/tests/test_a.py", "1")
+    c0 = commit(repo, "tools/old_tool.py", "1")
+    loads = _loads(tmp_path, "tools/build.py", "tools/")
+    R.record(c0, loads=loads)
+    assert R.find(commit(repo, "tools/json.py", "shadows an import")) is None
+    c2 = commit(repo, "Code/b.cpp", "2")
+    R.record(c2, loads=loads)
+    assert R.find(commit(repo, "tools/tests/test_b.py", "1")) == c2  # tools/tests/ was not listed
+    c4 = commit(repo, "Code/c.cpp", "3")
+    R.record(c4, loads=loads)
+    assert R.find(commit(repo, "tools/newpkg/__init__.py", "")) is None  # a new subdirectory
+    c6 = commit(repo, "Code/d.cpp", "4")
+    R.record(c6, loads=loads)
+    git(repo, "rm", "-q", "tools/old_tool.py")
+    git(repo, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "rm")
+    assert R.find(git(repo, "rev-parse", "HEAD")) is None
+
+
+def test_a_carried_push_keeps_the_tool_list_of_the_receipt_it_carried_from(repo, tmp_path):
+    commit(repo, "tools/build.py", "b")
+    commit(repo, "tools/tu_skeleton.py", "0")
+    c0 = commit(repo, "Code/a.cpp", "1")
+    R.record(c0, loads=_loads(tmp_path, "tools/build.py", "tools/"))
+    c1 = commit(repo, "Code/b.cpp", "2")
+    R.record(c1, loads="", loads_from=c0)          # the pre-push hook's carried-push record
+    assert R.receipt_loads(c1) == R.receipt_loads(c0)
+    commit(repo, "tools/tu_skeleton.py", "1")       # a tool neither gate loaded changed: both carry
+    assert R.find(commit(repo, "Code/c.cpp", "3")) in (c0, c1)
+    c4 = commit(repo, "Code/d.cpp", "4")
+    R.record(c4, loads_from="0" * 40)               # an unknown receipt: all of tools/ counts
+    assert R.receipt_loads(c4) is None
+
+
+def test_a_receipt_without_a_usable_load_list_counts_all_of_tools(repo, tmp_path):
+    c0 = commit(repo, "Code/a.cpp", "1")
+    R.record(c0)
+    assert R.find(commit(repo, "tools/tu_skeleton.py", "1")) is None
+    c2 = commit(repo, "Code/b.cpp", "2")
+    R.record(c2, loads=_loads(tmp_path, "tools/ledger_io.py"))  # no build.py: an incomplete log
+    assert R.receipt_loads(c2) is None
+    assert R.find(commit(repo, "tools/tu_skeleton.py", "2")) is None
+    assert R.gate_loads(tmp_path / "missing") is None
+
+
+def test_build_logs_the_tools_it_loads(tmp_path):
+    tools = Path(__file__).resolve().parents[1]
+    folder = tmp_path / "loads"
+    folder.mkdir()
+    env = dict(os.environ, BFME_GATE_LOADS=str(folder))
+    code = "import build, eh_verify; open(build.ROOT / 'tools' / 'judges.json').close()"
+    subprocess.run([sys.executable, "-c", code], cwd=tools, env=env, check=True)
+    entries = R.gate_loads(folder)
+    assert {"tools/build.py", "tools/ledger_io.py", "tools/eh_verify.py", "tools/judges.json", "tools/"} <= entries
+    assert not any("__pycache__" in e for e in entries)
+    assert "tools/tu_skeleton.py" not in entries
+
+
 def test_cross_checks_byte_verify_what_they_had_to_rebuild(monkeypatch):
     import build
     import check_module_registry

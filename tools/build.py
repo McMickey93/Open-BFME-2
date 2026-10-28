@@ -16,6 +16,56 @@ import threading
 import time
 from pathlib import Path
 
+
+def _log_gate_loads():
+    """BFME_GATE_LOADS=DIR: append each tools/ file this process imports or opens,
+    and each tools/ directory it lists, to DIR/<pid>. Pool workers re-import this
+    module and log too. tools/full_gate_receipt.py keeps the list with a passed
+    full gate, so a change to a tool the gate never ran does not void it."""
+    folder = os.environ.get("BFME_GATE_LOADS")
+    if not folder:
+        return
+    tools = os.path.normcase(os.path.dirname(os.path.abspath(__file__))) + os.sep
+    log = open(os.path.join(folder, str(os.getpid())), "a", encoding="utf-8")
+    seen = set()
+
+    def note(path, listing=False):
+        try:
+            path = os.path.normcase(os.path.abspath(os.fsdecode(path)))
+        except (TypeError, ValueError):
+            return
+        if not (path + os.sep).startswith(tools):
+            return
+        parts = [p for p in path[len(tools):].split(os.sep) if p]
+        if "__pycache__" in parts:  # a cached module stands for its source
+            at = parts.index("__pycache__")
+            parts = parts[:at] + [parts[-1].split(".", 1)[0] + ".py"]
+        entry = "/".join(["tools"] + parts) + ("/" if listing else "")
+        if entry not in seen:
+            seen.add(entry)
+            log.write(entry + "\n")
+            log.flush()
+
+    note(tools, listing=True)  # import already listed it: tools/ is on sys.path
+    for module in list(sys.modules.values()):
+        if getattr(module, "__file__", None):
+            note(module.__file__)
+
+    def hook(event, args):
+        if not args or not isinstance(args[0], (str, bytes, os.PathLike)):
+            return
+        if event == "open":
+            note(args[0])
+        elif event in ("os.listdir", "os.scandir"):
+            note(args[0], listing=True)
+        elif event == "glob.glob":  # the directory above the first wildcard
+            pattern = os.fsdecode(args[0])
+            note(os.path.dirname(re.split(r"[*?[]", pattern, maxsplit=1)[0]) or ".", listing=True)
+    sys.addaudithook(hook)
+
+
+_log_gate_loads()
+
 import flag_defaults
 import compiler_profiles
 import ledger_io
