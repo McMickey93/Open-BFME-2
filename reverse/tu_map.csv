@@ -47665,16 +47665,16 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0057F2DE,111,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,K,K=Rva0057F2DE,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0057F34D,92,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,C,C=0x0057F2DE..0x0057F3A9,Code/GameEngine/Source/Common/Rva0057F34D.cpp
 0x0057F3A9,113,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,K,K=Rva0057F2DE,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
-0x0057F41A,108,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
+0x0057F41A,108,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
 0x0057F486,150,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,C,C=0x0057F41A..0x0057F51C,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0057F51C,28,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,C,C=0x0057F41A..0x0057F538,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0057F538,181,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,C,C=0x0057F41A..0x0057F5ED,Code/GameEngine/Source/Common/AptHeroPowerText.cpp
-0x0057F5ED,447,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp W=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0057F7AC,372,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp W=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0057F920,131,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0057F9A3,121,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0057FA1C,148,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansRva0057FA1C.cpp
-0x0057FAB0,453,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
+0x0057F5ED,447,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp W=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0057F7AC,372,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp W=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0057F920,131,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0057F9A3,121,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0057FA1C,148,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0057FAB0,453,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,N,N=Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
 0x0057FC75,234,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,K,K=Rva0057F2DE,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/rva0057FC75Rva0057FC75Farm.cpp
 0x0057FD5F,15,code,,,-,,Code/GameEngine/Source/Common/GapBodiesGE32.cpp
 0x0057FD6E,13,code,,,-,,Code/GameEngine/Source/Common/Rva0057FD6EForward.cpp
@@ -86723,8 +86723,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0079C5D3,25,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,P,P=0x0057F3A9@FuncInfo0x00951E70,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0079C5EC,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,P,P=0x0057F3A9@FuncInfo0x00951E70,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0079C5F4,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,P,P=0x0057F3A9@FuncInfo0x00951E70,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
-0x0079C5FE,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F41A@FuncInfo0x00951E94,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C606,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F41A@FuncInfo0x00951E94,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
+0x0079C5FE,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F41A@FuncInfo0x00951E94,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C606,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F41A@FuncInfo0x00951E94,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
 0x0079C610,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F486@FuncInfo0x00951EE0,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0079C618,11,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F486@FuncInfo0x00951EE0,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0079C623,14,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F486@FuncInfo0x00951EE0,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
@@ -86734,23 +86734,23 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0079C655,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F486@FuncInfo0x00951EE0,Code/GameEngine/Source/Common/Rva0057F2DE.cpp
 0x0079C65F,8,code,,,-,,Code/gen_small/uw_gen_009.cpp
 0x0079C667,8,code,,,-,,Code/gen_small/uw_gen_002.cpp
-0x0079C66F,10,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansRva0057FA1C.cpp
-0x0079C679,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C681,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C689,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C691,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C69B,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F7AC@FuncInfo0x00951F40,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6A3,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F7AC@FuncInfo0x00951F40,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6AB,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F7AC@FuncInfo0x00951F40,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6B5,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F920@FuncInfo0x00951F74,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6BD,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F920@FuncInfo0x00951F74,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6C5,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F920@FuncInfo0x00951F74,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6CF,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6D7,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6DF,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6E7,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6EF,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
-0x0079C6F7,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClansCallbacks.cpp
+0x0079C66F,10,code,,,-,,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C679,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C681,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C689,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C691,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F5ED@FuncInfo0x00951F14,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C69B,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F7AC@FuncInfo0x00951F40,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6A3,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F7AC@FuncInfo0x00951F40,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6AB,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F7AC@FuncInfo0x00951F40,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6B5,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F920@FuncInfo0x00951F74,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6BD,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F920@FuncInfo0x00951F74,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6C5,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057F920@FuncInfo0x00951F74,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6CF,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6D7,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6DF,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6E7,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6EF,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
+0x0079C6F7,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,approved,P,P=0x0057FAB0@FuncInfo0x00951FE4,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp
 0x0079C701,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,P,P=0x0057FC75@FuncInfo0x00952010,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/rva0057FC75Rva0057FC75Farm.cpp
 0x0079C709,8,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,P,P=0x0057FC75@FuncInfo0x00952010,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/rva0057FC75Rva0057FC75Farm.cpp
 0x0079C711,10,code,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMpClans.cpp,proposed,P,P=0x0057FC75@FuncInfo0x00952010,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/rva0057FC75Rva0057FC75Farm.cpp
