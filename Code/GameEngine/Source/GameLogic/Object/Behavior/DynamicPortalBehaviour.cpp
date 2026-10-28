@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <vector>
 #include <memory>
+#include "Code/Libraries/Include/Lib/Coord3D.h"
 class UnicodeString;
 class PooledString;
 struct XferUnknown11;
@@ -114,15 +115,31 @@ public:
 
 class AIUpdateInterface;
 
+class Matrix3D;
+
 class Object
 {
 public:
 	void *rva0028BCF4() const;
 	AIUpdateInterface *getAI() const { return m_ai; }
+	int getMultiLogicalBonePosition(const char *,int,Coord3D *,Matrix3D *,bool,int) const;
+	const Coord3D *getPosition() const { return &position; }
+	char pad[0x38];
+	Coord3D position;	// +0x38
 private:
-	unsigned char m_pad000[0x258];
+	unsigned char m_pad044[0x258 - 0x44];
 	AIUpdateInterface *m_ai;	// +0x258
 };
+
+// Existing 12-byte BfmeRadarWorldPoint view owns the byte-and-relocation-twin
+// empty coordinate callbacks 0x0047A6A9/0x000B3FD0.
+struct BfmeRadarWorldPoint : Coord3D {
+ BfmeRadarWorldPoint(); ~BfmeRadarWorldPoint();
+};
+typedef char PortalPointSize[(sizeof(BfmeRadarWorldPoint)==12)?1:-1];
+struct PortalQueryPoint {float x,y,z;__forceinline PortalQueryPoint(const Coord3D&r){x=r.x;y=r.y;z=r.z;}};
+class Pathfinder {public:bool IsPointOnWall(int,bool);};
+struct PortalAIView {char pad0[0x10];Pathfinder *pathfinder;};
 
 enum NameKeyType
 {
@@ -207,6 +224,8 @@ public:
 	virtual void dynamicPortalExtraB();
 };
 
+class DynamicPortalBehaviourModuleData;
+
 // LINK: the owner call binds the rowed 0x0046094C (DynamicPortalBehaviour::rva0046094C, defined below).
 class DynamicPortalBehaviour : public UpgradeModule,
 	public DynamicPortalExtraA,
@@ -214,6 +233,8 @@ class DynamicPortalBehaviour : public UpgradeModule,
 {
 public:
 	void rva0046094C();
+	bool IsEndPortalAboveWall(Coord3D *out);
+	const DynamicPortalBehaviourModuleData *getDynamicPortalBehaviourModuleData() const { return (const DynamicPortalBehaviourModuleData *)m_moduleData; }
 	virtual NameKeyType getModuleNameKey() const;
 protected:
 	virtual ~DynamicPortalBehaviour();
@@ -299,10 +320,18 @@ public:
 
 int Rva004CE29DGet(void);
 
+struct PortalWaypointDescriptor {int boneIndex,observed4; __forceinline PortalWaypointDescriptor(const PortalWaypointDescriptor&r):boneIndex(r.boneIndex),observed4(r.observed4){} };
+
 class DynamicPortalBehaviourModuleData
 {
 public:
 	static void buildFieldParse(MultiIniFieldParse &parse);
+	char pad0[0x118];
+	int numberOfBones;	// +0x118
+	const char *nameBuffer;	// +0x11C
+	std::vector<PortalWaypointDescriptor> waypoints;	// +0x120
+	char pad12C[0x140-0x12C];
+	int aboveWallIndex;	// +0x140
 };
 
 //

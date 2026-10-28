@@ -33,18 +33,20 @@ class Pathfinder {public:bool IsPointOnWall(int,bool);};
 class AI;
 extern AI *TheAI;
 struct PortalAIView {char pad0[0x10];Pathfinder *pathfinder;};
+class ModuleData;
 class DynamicPortalBehaviour {public:
  bool IsEndPortalAboveWall(Coord3D *out);
- void *vptr;const DynamicPortalBehaviourModuleData *data;Object *object;
+ const DynamicPortalBehaviourModuleData *getDynamicPortalBehaviourModuleData() const { return (const DynamicPortalBehaviourModuleData *)m_moduleData; }
+ void *vptr;const ModuleData *m_moduleData;Object *m_object;
 };
 bool DynamicPortalBehaviour::IsEndPortalAboveWall(Coord3D *out)
 {
- const DynamicPortalBehaviourModuleData *portalData=data;
+ const DynamicPortalBehaviourModuleData *portalData=getDynamicPortalBehaviourModuleData();
  if(portalData->aboveWallIndex<0)goto fallback; if(portalData->aboveWallIndex>=(int)portalData->waypoints.size()) { fallback:
-  if(out) {const Object *obj=object; *out=obj->position;} return true;
+  if(out) {const Object *obj=m_object; *out=obj->position;} return true;
  }
  BfmeRadarWorldPoint bones[16];
- const char *buf=portalData->nameBuffer;Object *obj=object;
+ const char *buf=portalData->nameBuffer;Object *obj=m_object;
  obj->getMultiLogicalBonePosition(buf ? buf+8 : "", portalData->numberOfBones,bones,0,true,0);
  PortalWaypointDescriptor way=portalData->waypoints[portalData->aboveWallIndex]; PortalQueryPoint selected(bones[way.boneIndex]);
  if(out)*out=*(const Coord3D*)&selected;
