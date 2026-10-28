@@ -3760,6 +3760,17 @@ separate strict receipt limitation encountered there.
 
 ### LINK-018: canonical `Coord3D` member growth blocks header-adoption until dependents are recomputed
 
+**Companion retirement deferred for publication (2026-10-28):** the
+constructor-companion adoptions in Rva003A35A0Element,
+Rva00506CF5HomePoint and stlport_vector_geometryshape_base stay in source and
+pass the local dry-run push hook (11 sources byte-verified) and local
+`link_check` (1,032, 763 and 121 linked bytes preserved). The fleet publisher's
+checkout builds no objects, gets `link_check produced no usable per-unit
+verdict`, and refuses their header-queue retirement. Their three queue entries
+are restored exactly from upstream; no header debt is claimed retired. Rerun
+`header_adopt_lane.py accept --class Coord3D` on them once the publisher's
+preview yields a per-unit verdict. No census gain is claimed.
+
 **Shared companion debt retirement (2026-10-28; base `9d2ee4a0f4`):**
 The existing companion-recognition fix `e46cd47132` resolves the recorded
 acceptance false rejection for BridgeObjectCtor,
