@@ -33106,36 +33106,36 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0040AA73,98,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp W=Code/GameEngine/Source/GameLogic/System/AwardSystem.cpp provisional,Code/GameEngine/Source/Common/Rva0040AA73Load.cpp
 0x0040AAD5,35,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AAF8 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_vector_bodies.cpp
 0x0040AAF8,173,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040ABA5 provisional,Code/GameEngine/Source/Common/Rva0040BAD0.cpp
-0x0040ABA5,179,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AC58 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040ABA5Find.cpp
+0x0040ABA5,179,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AC58 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040AC58,57,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AC91 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp
 0x0040AC91,47,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040ACC0 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp
 0x0040ACC0,23,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040ACD7 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_introsort_loop.cpp
 0x0040ACD7,41,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AD00 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp
 0x0040AD00,60,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AD3C provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp
 0x0040AD3C,30,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AD5A provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_introsort_loop.cpp
-0x0040AD5A,27,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AD75 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040ABA5Find.cpp
+0x0040AD5A,27,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AD75 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040AD75,56,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040ADAD provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_binary_search_int.cpp
 0x0040ADAD,25,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040ADC6 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp
 0x0040ADC6,23,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040ADDD provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_introsort_loop.cpp
 0x0040ADDD,29,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040ADFA provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040ADFA,50,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AE2C provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040ADFAContains.cpp
 0x0040AE2C,50,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AE5E provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040ADFAContains.cpp
-0x0040AE5E,52,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AE92 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_linear_insert.cpp
+0x0040AE5E,52,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AE92 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040AE92,58,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AECC provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_introsort_loop.cpp
 0x0040AECC,23,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AEE3 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
-0x0040AEE3,27,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AEFE provisional,Code/GameEngine/Source/Common/Thing/Rva0040AEE3CopyCtor.cpp
-0x0040AEFE,31,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AF1D provisional,Code/GameEngine/Source/Common/Thing/Rva0040AEE3CopyCtor.cpp
-0x0040AF1D,73,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AF66 provisional,Code/GameEngine/Source/Common/Thing/Rva0040AF1DCtor.cpp
+0x0040AEE3,27,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AEFE provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040AEFE,31,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AF1D provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040AF1D,73,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AF66 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040AF66,141,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040AFF3 provisional,Code/GameEngine/Source/Common/Rva0040AF66Copy.cpp
 0x0040AFF3,117,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B068 provisional,Code/GameEngine/Source/Common/Rva0040AFF3Dtor.cpp
 0x0040B068,104,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B0D0 provisional,Code/GameEngine/Source/Common/GapBodiesGE20.cpp
-0x0040B0D0,126,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B14E provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B0D0Contains.cpp
-0x0040B14E,45,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B17B provisional,Code/GameEngine/Source/Common/Thing/Rva0040AEE3Construct.cpp
+0x0040B0D0,126,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B14E provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040B14E,45,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B17B provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040B17B,45,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B1A8 provisional,Code/GameEngine/Source/Common/Rva0040B17BConstruct.cpp
-0x0040B1A8,37,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B1CD provisional,Code/GameEngine/Source/Common/Thing/Rva0040AEE3Fill.cpp
-0x0040B1CD,38,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B1F3 provisional,Code/GameEngine/Source/Common/Rva0040B1CDCopy.cpp
-0x0040B1F3,37,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B218 provisional,Code/GameEngine/Source/Common/Rva0040B1F3Fill.cpp
-0x0040B218,47,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B247 provisional,Code/GameEngine/Source/Common/Thing/Rva0040AEE3Copy.cpp
+0x0040B1A8,37,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B1CD provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040B1CD,38,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B1F3 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040B1F3,37,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B218 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040B218,47,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B247 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040B247,45,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B274 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_introsort_loop.cpp
 0x0040B274,81,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B2E1 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp
 0x0040B2C5,28,code,,displaced,-,N=Code/GameEngine/Source/Common/PodPayload20.cpp,Code/GameEngine/Source/Common/Rva0054FD83Destroy.cpp
@@ -33151,37 +33151,37 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0040B43B,123,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B4B6 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_introsort_loop.cpp
 0x0040B4B6,67,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B4F9 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp
 0x0040B4F9,53,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B52E provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B4F9Sort.cpp
-0x0040B52E,25,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B547 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_destroy_range_0040B52E.cpp
+0x0040B52E,25,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B547 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040B547,25,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B560 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_destroy_range_0040B547.cpp
 0x0040B560,63,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B59F provisional,Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp
 0x0040B59F,63,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B5DE provisional,Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp
-0x0040B5DE,30,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B5FC provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_destroy_range_0040B52E.cpp
-0x0040B5FC,30,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B61A provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_clear_range_0040B5FC.cpp
+0x0040B5DE,30,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B5FC provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040B5FC,30,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B61A provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040B61A,186,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B6D4 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_BfmeRecord0040B61A_assign.cpp
 0x0040B6D4,51,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B707 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B6D4Ctor.cpp
-0x0040B707,119,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B77E provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B707Copy.cpp
+0x0040B707,119,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B77E provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040B77E,99,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B7E1 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B77EDtor.cpp
 0x0040B7E1,83,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B834 provisional,Code/GameEngine/Source/Common/GapBodiesGE20.cpp
 0x0040B834,180,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B8E8 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AEE3_overflow.cpp
 0x0040B8E8,183,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B99F provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AF66_overflow.cpp
 0x0040B99F,45,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B9CC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportConstructFamily.cpp
-0x0040B9CC,38,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B9F2 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040C0C7_uninit_copy.cpp
-0x0040B9F2,37,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BA17 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040C0C7_uninit_copy.cpp
-0x0040BA17,28,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BA33 provisional,Code/GameEngine/Source/Common/FamilyDeletingDtors_Rva0040B77E.cpp
+0x0040B9CC,38,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040B9F2 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040B9F2,37,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BA17 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x0040BA17,28,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BA33 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040BA33,55,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BA6A provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AEE3_pushback.cpp
 0x0040BA6A,55,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BAA1 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AF66_pushback.cpp
-0x0040BAA1,9,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BAAA provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B77EDestroy.cpp
+0x0040BAA1,9,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BAAA provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040BAAA,38,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BAD0 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040BAD0,39,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040AA73..0x0040BAF7 provisional,Code/GameEngine/Source/Common/Rva0040BAD0.cpp
 0x0040BAF7,389,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040BC7C,548,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp provisional,Code/GameEngine/Source/Common/AwardSystemManagerParseThingStat.cpp
-0x0040BEA1,25,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040BC7C..0x0040BEBA provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B77EDestroy.cpp
+0x0040BEA1,25,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040BC7C..0x0040BEBA provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040BEBA,63,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040BC7C..0x0040BEF9 provisional,Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp
-0x0040BEF9,30,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040BC7C..0x0040BF17 provisional,Code/Libraries/Source/WWVegas/WWLib/Rva0040B77EDestroy.cpp
+0x0040BEF9,30,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040BC7C..0x0040BF17 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040BF17,147,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp W=Code/GameEngine/Source/GameLogic/System/AwardSystem.cpp provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
-0x0040BFAA,74,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp provisional,Code/GameEngine/Source/Common/Rva0040BFAADtor.cpp
+0x0040BFAA,74,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040BFF4,183,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,C,C=0x0040BFAA..0x0040C0AB provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040C0C7_overflow.cpp
-0x0040C0AB,28,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp provisional,Code/GameEngine/Source/Common/Rva0040BFAADtor.cpp
+0x0040C0AB,28,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AwardSystemManager.cpp provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0040C0C7,55,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,proposed,C,C=0x0040C0AB..0x0040C0FE,Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackFamily.cpp
 0x0040C0FE,39,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,proposed,K,K=Rva0040AAD5,Code/Libraries/Source/WWVegas/WWLib/StlportVectorRva0040AAD5Add.cpp
 0x0040C125,518,code,,,-,,Code/GameEngine/Source/Common/AwardSystemManager.cpp
@@ -77300,7 +77300,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00785580,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/Rva0040B77EDtor.cpp
 0x0078558B,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/Rva0040B77EDtor.cpp
 0x00785595,14,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportConstructFamily.cpp
-0x007855A3,10,code,,,-,,Code/GameEngine/Source/Common/Thing/Rva0040AEE3Construct.cpp
+0x007855A3,10,code,,,-,,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x007855AD,8,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BAF7@FuncInfo0x00931ED0 provisional,Code/gen_small/uw_gen_000.cpp
 0x007855B5,8,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BAF7@FuncInfo0x00931ED0 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x007855BD,13,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BAF7@FuncInfo0x00931ED0 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
@@ -77319,9 +77319,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078563F,11,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BF17@FuncInfo0x00931F50 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0078564A,11,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BF17@FuncInfo0x00931F50 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x00785655,10,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BF17@FuncInfo0x00931F50 provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
-0x0078565F,8,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BFAA@FuncInfo0x00931F7C provisional,Code/GameEngine/Source/Common/Rva0040BFAADtor.cpp
-0x00785667,11,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BFAA@FuncInfo0x00931F7C provisional,Code/GameEngine/Source/Common/Rva0040BFAADtor.cpp
-0x00785672,10,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BFAA@FuncInfo0x00931F7C provisional,Code/GameEngine/Source/Common/Rva0040BFAADtor.cpp
+0x0078565F,8,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BFAA@FuncInfo0x00931F7C provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x00785667,11,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BFAA@FuncInfo0x00931F7C provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
+0x00785672,10,code,Code/GameEngine/Source/Common/AwardSystemManager.cpp,approved,P,P=0x0040BFAA@FuncInfo0x00931F7C provisional,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x0078567C,8,code,,,-,,Code/gen_small/uw_gen_001.cpp
 0x00785684,13,code,,,-,,Code/GameEngine/Source/Common/AwardSystemManager.cpp
 0x00785691,13,code,,,-,,Code/GameEngine/Source/Common/AwardSystemManager.cpp

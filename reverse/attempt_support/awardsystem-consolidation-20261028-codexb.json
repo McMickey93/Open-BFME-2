@@ -1,0 +1,512 @@
+{
+  "base": "0026b1a5b8",
+  "outgoing_base": "840db2d67697c398b75956c9f3aad172ab6e5660",
+  "staged_tree": "0d4c5967df6f9b09798826154f68be573d0b3a71",
+  "census_index": "41c28839bf",
+  "object_comparison": {
+    "accepted": [
+      "Code/GameEngine/Source/Common/AwardSystemManager.cpp",
+      "Code/GameEngine/Source/Common/Rva0040BFAADtor.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/Rva0040B77EDestroy.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/Rva0040ABA5Find.cpp",
+      "Code/GameEngine/Source/Common/Thing/Rva0040AEE3CopyCtor.cpp",
+      "Code/GameEngine/Source/Common/Thing/Rva0040AEE3Construct.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/stlport_destroy_range_0040B52E.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040C0C7_uninit_copy.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/stlport_int_linear_insert.cpp",
+      "Code/GameEngine/Source/Common/Thing/Rva0040AF1DCtor.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/Rva0040B0D0Contains.cpp",
+      "Code/GameEngine/Source/Common/Thing/Rva0040AEE3Fill.cpp",
+      "Code/GameEngine/Source/Common/Rva0040B1CDCopy.cpp",
+      "Code/GameEngine/Source/Common/Rva0040B1F3Fill.cpp",
+      "Code/GameEngine/Source/Common/Thing/Rva0040AEE3Copy.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/stlport_clear_range_0040B5FC.cpp",
+      "Code/Libraries/Source/WWVegas/WWLib/Rva0040B707Copy.cpp",
+      "Code/GameEngine/Source/Common/FamilyDeletingDtors_Rva0040B77E.cpp"
+    ],
+    "before_comdat_names": 153,
+    "after_comdat_names": 139,
+    "lost_comdats": [
+      "??$_Construct@W4ScienceType@@W41@@_STL@@YAXPAW4ScienceType@@ABW41@@Z",
+      "??$_Destroy@PAW4ScienceType@@@_STL@@YAXPAW4ScienceType@@0@Z",
+      "??$_Destroy@W4ScienceType@@@_STL@@YAXPAW4ScienceType@@@Z",
+      "??$__destroy@PAW4ScienceType@@W41@@_STL@@YAXPAW4ScienceType@@00@Z",
+      "??$__destroy_aux@PAW4ScienceType@@@_STL@@YAXPAW4ScienceType@@0ABU__false_type@0@@Z",
+      "??$__stl_alloc_rebind@W4ScienceType@@W41@@_STL@@YAAAV?$allocator@W4ScienceType@@@0@AAV10@PBW4ScienceType@@@Z",
+      "??$__uninitialized_copy@PBW4ScienceType@@PAW41@@_STL@@YAPAW4ScienceType@@PBW41@0PAW41@ABU__false_type@0@@Z",
+      "??0?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@ABV?$allocator@W4ScienceType@@@1@PAW4ScienceType@@@Z",
+      "??0?$_Vector_base@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@IABV?$allocator@W4ScienceType@@@1@@Z",
+      "??0?$allocator@W4ScienceType@@@_STL@@QAE@ABV01@@Z",
+      "??0?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@ABV01@@Z",
+      "??1?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "??1?$_Vector_base@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "??1?$allocator@W4ScienceType@@@_STL@@QAE@XZ",
+      "??1?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "?allocate@?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAEPAW4ScienceType@@I@Z",
+      "?allocate@?$allocator@W4ScienceType@@@_STL@@QBEPAW4ScienceType@@IPBX@Z",
+      "?deallocate@?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAEXPAW4ScienceType@@I@Z",
+      "?deallocate@?$allocator@W4ScienceType@@@_STL@@QBEXPAW4ScienceType@@I@Z",
+      "?get_allocator@?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QBE?AV?$allocator@W4ScienceType@@@2@XZ",
+      "?size@?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QBEIXZ"
+    ],
+    "added_comdats": [
+      "??$_IsOKToMemCpy@W4ObjectID@@W41@@_STL@@YA?AU?$_OKToMemCpy@W4ObjectID@@W41@@0@PAW4ObjectID@@0@Z",
+      "??$__copy_backward@PAW4ObjectID@@PAW41@H@_STL@@YAPAW4ObjectID@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z",
+      "??$__copy_backward_aux@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00ABU__true_type@0@@Z",
+      "??$__copy_backward_ptrs@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00ABU__false_type@0@@Z",
+      "??$copy_backward@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00@Z",
+      "?_Ret@?$_BothPtrType@PAW4ObjectID@@PAW41@@_STL@@SA?AU__true_type@2@XZ",
+      "?_Ret@?$_OKToMemCpy@W4ObjectID@@W41@@_STL@@SA?AU__false_type@2@XZ"
+    ],
+    "changed_comdats": {},
+    "lost_definitions": [
+      "??$_Construct@W4ScienceType@@W41@@_STL@@YAXPAW4ScienceType@@ABW41@@Z",
+      "??$_Destroy@PAW4ScienceType@@@_STL@@YAXPAW4ScienceType@@0@Z",
+      "??$_Destroy@W4ScienceType@@@_STL@@YAXPAW4ScienceType@@@Z",
+      "??$__destroy@PAW4ScienceType@@W41@@_STL@@YAXPAW4ScienceType@@00@Z",
+      "??$__destroy_aux@PAW4ScienceType@@@_STL@@YAXPAW4ScienceType@@0ABU__false_type@0@@Z",
+      "??$__stl_alloc_rebind@W4ScienceType@@W41@@_STL@@YAAAV?$allocator@W4ScienceType@@@0@AAV10@PBW4ScienceType@@@Z",
+      "??$__uninitialized_copy@PBW4ScienceType@@PAW41@@_STL@@YAPAW4ScienceType@@PBW41@0PAW41@ABU__false_type@0@@Z",
+      "??0?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@ABV?$allocator@W4ScienceType@@@1@PAW4ScienceType@@@Z",
+      "??0?$_Vector_base@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@IABV?$allocator@W4ScienceType@@@1@@Z",
+      "??0?$allocator@W4ScienceType@@@_STL@@QAE@ABV01@@Z",
+      "??0?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@ABV01@@Z",
+      "??1?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "??1?$_Vector_base@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "??1?$allocator@W4ScienceType@@@_STL@@QAE@XZ",
+      "??1?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "?allocate@?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAEPAW4ScienceType@@I@Z",
+      "?allocate@?$allocator@W4ScienceType@@@_STL@@QBEPAW4ScienceType@@IPBX@Z",
+      "?deallocate@?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAEXPAW4ScienceType@@I@Z",
+      "?deallocate@?$allocator@W4ScienceType@@@_STL@@QBEXPAW4ScienceType@@I@Z",
+      "?get_allocator@?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QBE?AV?$allocator@W4ScienceType@@@2@XZ",
+      "?size@?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QBEIXZ"
+    ],
+    "added_definitions": [
+      "??$_IsOKToMemCpy@W4ObjectID@@W41@@_STL@@YA?AU?$_OKToMemCpy@W4ObjectID@@W41@@0@PAW4ObjectID@@0@Z",
+      "??$__copy_backward@PAW4ObjectID@@PAW41@H@_STL@@YAPAW4ObjectID@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z",
+      "??$__copy_backward_aux@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00ABU__true_type@0@@Z",
+      "??$__copy_backward_ptrs@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00ABU__false_type@0@@Z",
+      "??$copy_backward@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00@Z",
+      "?_Ret@?$_BothPtrType@PAW4ObjectID@@PAW41@@_STL@@SA?AU__true_type@2@XZ",
+      "?_Ret@?$_OKToMemCpy@W4ObjectID@@W41@@_STL@@SA?AU__false_type@2@XZ"
+    ],
+    "lost_dependencies": [
+      "??$copy_backward@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00@Z",
+      "?allocate@?$allocator@D@_STL@@SAPADIPBX@Z"
+    ],
+    "added_dependencies": [
+      "??0?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@ABV01@@Z",
+      "??1?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ"
+    ]
+  },
+  "provider_comparison": [
+    {
+      "symbol": "??$_Construct@W4ScienceType@@W41@@_STL@@YAXPAW4ScienceType@@ABW41@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "unknown"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "unknown"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "??$_Destroy@PAW4ScienceType@@@_STL@@YAXPAW4ScienceType@@0@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "??$_Destroy@W4ScienceType@@@_STL@@YAXPAW4ScienceType@@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "??$_IsOKToMemCpy@W4ObjectID@@W41@@_STL@@YA?AU?$_OKToMemCpy@W4ObjectID@@W41@@0@PAW4ObjectID@@0@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp",
+      "after_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp"
+    },
+    {
+      "symbol": "??$__copy_backward@PAW4ObjectID@@PAW41@H@_STL@@YAPAW4ObjectID@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp",
+      "after_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp"
+    },
+    {
+      "symbol": "??$__copy_backward_aux@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00ABU__true_type@0@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        "unknown"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp",
+      "after_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp"
+    },
+    {
+      "symbol": "??$__copy_backward_ptrs@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00ABU__false_type@0@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp",
+      "after_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp"
+    },
+    {
+      "symbol": "??$__destroy@PAW4ScienceType@@W41@@_STL@@YAXPAW4ScienceType@@00@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "??$__destroy_aux@PAW4ScienceType@@@_STL@@YAXPAW4ScienceType@@0ABU__false_type@0@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "??$__stl_alloc_rebind@W4ScienceType@@W41@@_STL@@YAAAV?$allocator@W4ScienceType@@@0@AAV10@PBW4ScienceType@@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "??$__uninitialized_copy@PBW4ScienceType@@PAW41@@_STL@@YAPAW4ScienceType@@PBW41@0PAW41@ABU__false_type@0@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "??$copy_backward@PAW4ObjectID@@PAW41@@_STL@@YAPAW4ObjectID@@PAW41@00@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp",
+      "after_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp"
+    },
+    {
+      "symbol": "??0?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@ABV?$allocator@W4ScienceType@@@1@PAW4ScienceType@@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp",
+      "after_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp"
+    },
+    {
+      "symbol": "??0?$_Vector_base@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@IABV?$allocator@W4ScienceType@@@1@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp",
+      "after_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp"
+    },
+    {
+      "symbol": "??0?$allocator@W4ScienceType@@@_STL@@QAE@ABV01@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp",
+      "after_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp"
+    },
+    {
+      "symbol": "??0?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@ABV01@@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp",
+      "after_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp"
+    },
+    {
+      "symbol": "??1?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "before": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        null
+      ],
+      "after": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        null
+      ],
+      "before_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp",
+      "after_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp"
+    },
+    {
+      "symbol": "??1?$_Vector_base@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "before": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "ok"
+      ],
+      "before_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp",
+      "after_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp"
+    },
+    {
+      "symbol": "??1?$allocator@W4ScienceType@@@_STL@@QAE@XZ",
+      "before": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        null
+      ],
+      "after": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        null
+      ],
+      "before_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp",
+      "after_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp"
+    },
+    {
+      "symbol": "??1?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAE@XZ",
+      "before": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "ok"
+      ],
+      "before_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp",
+      "after_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp"
+    },
+    {
+      "symbol": "?_Ret@?$_BothPtrType@PAW4ObjectID@@PAW41@@_STL@@SA?AU__true_type@2@XZ",
+      "before": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp",
+      "after_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp"
+    },
+    {
+      "symbol": "?_Ret@?$_OKToMemCpy@W4ObjectID@@W41@@_STL@@SA?AU__false_type@2@XZ",
+      "before": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^vector^object^i^d^fill^insert.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp",
+      "after_source": "Code/GameEngine/Source/Common/VectorObjectIDFillInsert.cpp"
+    },
+    {
+      "symbol": "?allocate@?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAEPAW4ScienceType@@I@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "unknown"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "unknown"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "?allocate@?$allocator@W4ScienceType@@@_STL@@QBEPAW4ScienceType@@IPBX@Z",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "unknown"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        "unknown"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    },
+    {
+      "symbol": "?deallocate@?$_STLP_alloc_proxy@PAW4ScienceType@@W41@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QAEXPAW4ScienceType@@I@Z",
+      "before": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "unknown"
+      ],
+      "after": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "unknown"
+      ],
+      "before_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp",
+      "after_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp"
+    },
+    {
+      "symbol": "?deallocate@?$allocator@W4ScienceType@@@_STL@@QBEXPAW4ScienceType@@I@Z",
+      "before": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "unknown"
+      ],
+      "after": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^f^x^shader^parameter^binder^init.obj",
+        "unknown"
+      ],
+      "before_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp",
+      "after_source": "Code/Libraries/Source/WWVegas/WW3D2/FXShaderParameterBinderInit.cpp"
+    },
+    {
+      "symbol": "?get_allocator@?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QBE?AV?$allocator@W4ScienceType@@@2@XZ",
+      "before": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^rva001^d^f2^d3^element^copy^ctor.obj",
+        "ok"
+      ],
+      "before_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp",
+      "after_source": "Code/GameEngine/Source/Common/Rva001DF2D3ElementCopyCtor.cpp"
+    },
+    {
+      "symbol": "?size@?$vector@W4ScienceType@@V?$allocator@W4ScienceType@@@_STL@@@_STL@@QBEIXZ",
+      "before": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "after": [
+        "^code_^game^engine_^source_^common_^r^t^s_^player.obj",
+        null
+      ],
+      "before_source": "Code/GameEngine/Source/Common/RTS/Player.cpp",
+      "after_source": "Code/GameEngine/Source/Common/RTS/Player.cpp"
+    }
+  ],
+  "non_owner_identity_comparison": {
+    "before_counts": {
+      "fold": 16,
+      "wrong": 8,
+      "alias": 9
+    },
+    "after_counts": {
+      "fold": 16,
+      "wrong": 8,
+      "alias": 9
+    },
+    "removed": [],
+    "added": []
+  },
+  "batch_audit_missing_receipts": [
+    "Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp",
+    "Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeBehaviorParseOCL.cpp",
+    "Code/GameEngine/Source/GameLogic/Object/CreateAHeroHero.cpp",
+    "Code/Libraries/Source/WWVegas/WWLib/StlportVectorPushBackFamily.cpp",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_int_algorithm_bodies.cpp",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_int_introsort_loop.cpp"
+  ],
+  "rejected_donors": {
+    "Code/GameEngine/Source/Common/Rva0040AA73Load.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.359271b328d01f02.tu_skeleton.cpp(226) : error C2039: 'loadFile' : is not a member of 'INI'",
+    "Code/GameEngine/Source/Common/Rva0040BAD0.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.440058a4f97e9f8a.tu_skeleton.cpp(23) : error C2065: 'NameKeyType' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.440058a4f97e9f8a.tu_skeleton.cpp(23) : error C2955: '_STL::allocator' : use of class template requires templ",
+    "Code/Libraries/Source/WWVegas/WWLib/Rva0040ADFAContains.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.b98dff2ced8f2e85.tu_skeleton.cpp(22) : error C2065: 'NameKeyType' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.b98dff2ced8f2e85.tu_skeleton.cpp(22) : error C2955: '_STL::allocator' : use of class template requires templ",
+    "Code/GameEngine/Source/Common/Rva0040AF66Copy.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.8817ea7a8e86509a.tu_skeleton.cpp(364) : error C2600: 'Rva0040AF66::Rva0040AF66' : cannot define a compiler-generated special member function (must be declared in the class first) | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.8817ea7a8e86509a.tu",
+    "Code/GameEngine/Source/Common/Rva0040B17BConstruct.cpp": "compile: ",
+    "Code/Libraries/Source/WWVegas/WWLib/Rva0040B2FDUninitCopy.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.740bb591f22c8ce4.tu_skeleton.cpp(217) : error C2011: '_STL::__false_type' : 'struct' type redefinition | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.740bb591f22c8ce4.tu_skeleton.cpp(227) : error C2995: '_ForwardIter _STL::__uninitialized_copy(_",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_BfmeRecord0040B61A_assign.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.57911e4082c1c6c7.tu_skeleton.cpp(9) : error C2065: 'Rva0040AEE3' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.57911e4082c1c6c7.tu_skeleton.cpp(9) : error C2059: syntax error : ',' | Code\\GameEngine\\Source\\Common\\.AwardS",
+    "Code/Libraries/Source/WWVegas/WWLib/Rva0040B6D4Ctor.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.bace4693196f0672.tu_skeleton.cpp(406) : error C2614: 'Rva0040B6D4' : illegal member initialization: 'm_18' is not a base or member | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.bace4693196f0672.tu_skeleton.cpp(406) : error C2614: 'Rva0040B6D4' ",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AEE3_overflow.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.e6507a216dafeadf.tu_skeleton.cpp(9) : error C2065: 'Rva0040AEE3' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.e6507a216dafeadf.tu_skeleton.cpp(9) : error C2059: syntax error : ',' | Code\\GameEngine\\Source\\Common\\.AwardS",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AF66_overflow.cpp": "compile: ",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AEE3_pushback.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.90fc23f84fa76a70.tu_skeleton.cpp(9) : error C2065: 'Rva0040AEE3' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.90fc23f84fa76a70.tu_skeleton.cpp(9) : error C2059: syntax error : ',' | Code\\GameEngine\\Source\\Common\\.AwardS",
+    "Code/GameEngine/Source/Common/AwardSystemManagerParseThingStat.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.abd6137b82f9cf55.tu_skeleton.cpp(24) : error C2065: 'NameKeyType' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.abd6137b82f9cf55.tu_skeleton.cpp(24) : error C2955: '_STL::allocator' : use of class template requires templ",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040C0C7_overflow.cpp": "compile: ",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_destroy_range_0040B547.cpp": "compile: ",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_BfmeRecord0040B61A_allocate_copy.cpp": "compile: ",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_binary_search_int.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.5999fe7ae4307989.tu_skeleton.cpp(318) : error C2953: '_STL::less' : template class has already been defined",
+    "Code/GameEngine/Source/Common/Thing/Rva0040AEE3CopyPtrs.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.d24cc282229d9eae.tu_skeleton.cpp(108) : error C2065: 'Rva0040AF66' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.d24cc282229d9eae.tu_skeleton.cpp(108) : error C2988: unrecognizable template declaration/definition | Code\\",
+    "Code/Libraries/Source/WWVegas/WWLib/Rva0040B4F9Sort.cpp": "compile: Code\\GameEngine\\Source\\Common\\.AwardSystemManager.d1d67e483fdae8af.tu_skeleton.cpp(108) : error C2065: 'Rva0040AF66' : undeclared identifier | Code\\GameEngine\\Source\\Common\\.AwardSystemManager.d1d67e483fdae8af.tu_skeleton.cpp(108) : error C2988: unrecognizable template declaration/definition | Code\\",
+    "Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AF66_pushback.cpp": "link: Code/Libraries/Source/WWVegas/WWLib/stlport_vector_Rva0040AF66_pushback.cpp links at the census; the merged object would not: selected ??$__uninitialized_copy@PAVRva0040AF66@@PAV1@@_STL@@YAPAVRva0040AF66@@PAV1@00ABU__false_type@0@@Z; selected ??$__uninitialized_fill_n@PAVRva0040AF66@@IV1@@_STL@@YAPAVRva0040AF66@@PAV1@IABV1@ABU__false_type@0@@Z; selected ?_M_insert_overflow@?$vector@VRva0040AF66@@V?$allocator@VRva0040AF66@@"
+  }
+}
