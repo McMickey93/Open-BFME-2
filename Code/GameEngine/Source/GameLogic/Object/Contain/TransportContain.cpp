@@ -1349,11 +1349,28 @@ private:
 	bool m_hiddenState;					// +0x10C
 };
 
+class INI
+{
+public:
+	const char *getNextToken(const char *seps = 0);
+	const char *getNextTokenOrNull(const char *seps = 0);
+	int scanInt(const char *token);
+};
+
+struct Rva00467DE6Payload
+{
+	Rva00467DE6Payload() : count(0) {}
+	AsciiString name;
+	int count;
+};
+
 // tu-skeleton: 0x00466DA9 19B ?isExitBusy@TransportContain@@UBE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/Rva00466D93ExitReserve.cpp (not merged yet)
 
 // tu-skeleton: 0x00466DBC 73B ?xfer@TransportContain@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x00466E05 5B ?rva00466E05@Rva00466E05@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp
 
@@ -1844,6 +1861,16 @@ TransportContainModuleData::TransportContainModuleData()
 		BfmeFixedStorage0004543D(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE)));
 }
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp
+
+// ?getModuleNameKey@TransportContain@@UBE?AW4NameKeyType@@XZ
+NameKeyType TransportContain::getModuleNameKey() const
+{
+	static NameKeyType TheTransportContainPoolKey =
+		TheNameKeyGenerator->nameToKey("TransportContain");
+	return TheTransportContainPoolKey;
+}
+
 // tu-skeleton: 0x00466E12 17B ??0Rva00466E12@@QAE@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE22.cpp (not merged yet)
 
 // tu-skeleton: 0x00466E58 12B ?rva00466E58@Rva00466E58@@QBEEH@Z -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAM.cpp (not merged yet)
@@ -1878,19 +1905,31 @@ TransportContainModuleData::TransportContainModuleData()
 
 // tu-skeleton: 0x0046781F 665B ?rva0046781F@Rva0046781F@@QAEXPAVObject@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainOnContaining.cpp (not merged yet)
 
-// tu-skeleton: 0x00467DE6 123B ?rva00467DE6@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/Rva00467DE6PayloadParse.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva00467DE6PayloadParse.cpp
+
+//
+// Retail 0x00467DE6 (123B, EH, cdecl), an EH-prolog start Ghidra never listed:
+// an INI field parse callback in the shape of Zero Hour's
+// TransportContainModuleData::parseInitialPayload (neighbours: the
+// TransportContain destructor and Rva00467DCDDestroy.cpp). It reads a name and
+// an optional count (default 1) and appends the {name, count} record to the
+// list at instance + 0xA4 through the rowed push_back 0x00467DB3, whose pinned
+// spelling is for a list of pointers; the record is passed by reference
+// through it. Names are address-derived.
+
+void __cdecl rva00467DE6(INI *ini, void *instance, void *store, const void *userData)
+{
+	const char *name = ini->getNextToken(0);
+	const char *countText = ini->getNextTokenOrNull(0);
+	int count = countText ? ini->scanInt(countText) : 1;
+	Rva00467DE6Payload payload;
+	payload.name.set(name);
+	payload.count = count;
+	reinterpret_cast<_STL::list<Rva00467DB3Obj *, _STL::allocator<Rva00467DB3Obj *> > *>(
+		static_cast<char *>(instance) + 0xA4)->push_back(reinterpret_cast<Rva00467DB3Obj *const &>(payload));
+}
 
 // tu-skeleton: 0x00467E61 128B ??1TransportContain@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
-
-// ---- from Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainPoolKey.cpp
-
-// ?getModuleNameKey@TransportContain@@UBE?AW4NameKeyType@@XZ
-NameKeyType TransportContain::getModuleNameKey() const
-{
-	static NameKeyType TheTransportContainPoolKey =
-		TheNameKeyGenerator->nameToKey("TransportContain");
-	return TheTransportContainPoolKey;
-}
 
 // tu-skeleton: 0x00467F26 6B ?name@TransportContain@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 
@@ -1926,8 +1965,6 @@ NameKeyType TransportContain::getModuleNameKey() const
 
 // tu-skeleton: 0x0078AD97 8B uw_0078ad97 -- matched in Code/gen_small/uw_gen_003.cpp (not merged yet)
 
-// tu-skeleton: 0x0078AD9F 10B __ehhandler$?rva00467DE6@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/Rva00467DE6PayloadParse.cpp (not merged yet)
-
 // tu-skeleton: 0x0078ADA9 8B Unwind@00b8ada9 -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078ADB1 10B __ehhandler$??1TransportContain@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainDtor.cpp (not merged yet)
@@ -1936,7 +1973,7 @@ NameKeyType TransportContain::getModuleNameKey() const
 
 // tu-skeleton: 0x0078ADDA 10B __ehhandler$?killRidersWhoAreNotFreeToExit@TransportContain@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/TransportContainRiders.cpp (not merged yet)
 
-// tu-skeleton: 0x0078ADE4 8B uw_0078ade4 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+// tu-skeleton: 0x0078ADE4 8B $L3374 -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
 
 // tu-skeleton: 0x0078ADEC 10B __ehhandler$??1Rva00467FCC@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp (not merged yet)
 

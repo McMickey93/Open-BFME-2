@@ -48,3 +48,71 @@ Local receipts: `build/transportcontain-before-build.txt`,
 `build/transportcontain-real-list-link.txt`, the rejected suppression trial
 `build/transportcontain-payload-dry-run.txt`, and saved before objects in
 `build/transportcontain-before/`. These scratch files are not progress.
+
+## Applied guarded merge
+
+After publishing the prerequisite, the consolidation planner was regenerated
+and `--check build/consolidation` passed. `tu_skeleton --merge` rebuilt TU
+assignments in memory and accepted the destination plus the payload parser.
+It absorbed both parser rows, kept all 26 destination rows, and deleted the
+donor. Only the two existing map source cells were repointed; the stale map
+was not regenerated into the commit.
+
+The ordinary build verifies 28/28 rows, including parent-proven renumbered
+funclet labels. All five EH graphs are EXACT, the frozen-file check passes,
+and CSV integrity passes. The merged object's 648 external COMDATs are
+identical to the union of the two before objects: no missing, changed or new
+body/relocation digest. The supported merge's provider/consumer guard accepts
+the composition; all fourteen original candidate units are census-linked.
+The ordinary after preview reports LINKS, own bytes 2,667, against the same
+index. This combines the existing 2,534 B destination and 133 B parser; it
+does not establish an increase in census-linked bytes.
+
+The shadow data check has zero findings. No parser data or identity key
+needed transfer, and no baseline debt is removed. The existing hatch register
+is unchanged after the tool's total-keeping update. Header adoption has no
+affected queue entry. The owning tool refreshed the MS-header row with
+identical content; its original queue position is retained to avoid a
+content-free reorder. Its allocator ABI warning remains. No new data name,
+pin, fold proof or escape hatch is introduced.
+
+`progress.py` reports SOURCE FILES -1 relative to HEAD and BYTE-MATCHED
+100.00%; TU-APPROVED remains 42,695. Temporary compiler-trial sources can
+inflate an absolute source count during a run, so the earlier scratch
+snapshot's total is not used to claim additional reductions.
+
+## Tooling compatibility audit
+
+Audited `origin/master..HEAD` plus the staged move, with origin observed at
+`a6874d8a6a`. The only removed path is
+`Code/GameEngine/Source/Common/Rva00467DE6PayloadParse.cpp`, now owned by
+`Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp`.
+An all-tracked-files, case-insensitive search for its basename/full path finds
+no active tool, hook, workflow, include, configuration or source-registry
+consumer. Generic source discovery still sees the destination under Code.
+Functions and map source cells resolve to the new owner; no protected
+register, active header queue or fold proof names the removed donor.
+Remaining mentions are the destination's provenance comment, historical
+attempts/handoffs, and measured `reverse/link_status.csv`, which is retained
+as measurement history. This handoff also intentionally names the old path.
+
+The outgoing batch audit still needs an index current at the outgoing base
+and current affected-consumer receipts to prove batch-wide linking. The next
+census must confirm the new owner. No nightly, link cycle or smoke was run.
+
+## Remaining prerequisites
+
+Twelve donors remain rejected and unchanged. The previous handoff's list in
+`transportcontain-consolidation-20261027.md` remains applicable except that
+the payload parser is now absorbed. The upgrade-parser diagnostic now also
+names unavailable `Elem00467DCD` dependencies. The destructor still differs
+in bytes; the other rejects remain class/header/view prerequisites. Mixed
+sources were not split. The generated funclet at 0x0078AD97 remains owned by
+`uw_gen_003.cpp`; the earlier missing destructor-identity blocker was not
+worked around or claimed repaired.
+
+Additional local receipts: `build/transportcontain-payload-merge.txt`,
+`build/transportcontain-merged-{build,link,data}.txt`,
+`build/transportcontain-premerge-providers.json`,
+`build/transportcontain-progress-after.txt`, and
+`build/transportcontain-path-audit.txt`.

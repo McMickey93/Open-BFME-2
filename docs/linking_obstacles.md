@@ -3318,7 +3318,7 @@ Census confirmation: not claimed.
 
 ### LINK-031: `TransportContain.cpp` predicts a duplicate module-data ctor after its merge
 
-Status: Open (original ctor diagnostic no longer reproduces; subsequent getter merge awaits index refresh). Updated: 2026-10-27; inspected revision: ae7b59bf7b plus the guarded pool-key merge (index bf3dd31211).
+Status: Open (original preview diagnostics absent; latest payload merge awaits census confirmation). Updated: 2026-10-28; inspected revision: f8b430a969 plus the payload prerequisite and guarded merge (index 14dc3d2467).
 Evidence / affected units: `link_check TransportContain.cpp` (with or without
 `ContainModuleDeletingDtors.cpp`) reports "does not link", LINKED 1,921 -> 0 B:
 `duplicate` + `selected` on `??0TransportContainModuleData@@QAE@XZ` (row 0x00468301).
@@ -3366,6 +3366,17 @@ are identical to the destination's providers. This addresses one remaining conso
 prerequisites without claiming native element-type recovery. The destination's
 unreferenced `Object::clearCondition` shadow diagnostic remains unchanged.
 Evidence: `reverse/attempt_support/transportcontain-payload-consolidation-20261028.md`.
+
+**2026-10-28 guarded payload merge:** the supported tool absorbed the parser
+and its EH-handler row into the approved destination. All 28 rows byte-match,
+all five EH graphs are EXACT, and the merged object's 648 external COMDATs
+equal the original provider union. The tool's before/after consumer guard
+accepts the composition. The ordinary preview still reports LINKS (own bytes
+2,667); this is existing destination-plus-parser coverage, not a census gain.
+No data findings or debt retirement are claimed; the actual shadow data check
+has zero findings. Twelve whole-file donors still need prerequisites, and
+the generated funclet at 0x0078AD97 remains in its existing owner. The next
+census must confirm the merged owner and batch-wide consumer totals.
 
 ### LINK-035: `StlSweepR3` vector-destructor units instantiated the whole `vector<RecordN>`
 Status: Open (6 of 7 repaired). Updated: 2026-10-26; inspected revision: 018ace6021; index d1f046749a.
