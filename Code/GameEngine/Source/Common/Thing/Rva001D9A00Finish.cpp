@@ -1,17 +1,12 @@
-// cl: /DNDEBUG /MD
+// cl: /DNDEBUG /MD /Ireference/shims/bfme2_ascii
 // ?rva001D9A00@Rva001D9A00@@QAE_NXZ @0x001D9A00 79B unlock
 // Same layout as sibling 0x001D98BD (+0xB0 type, +0x80/0x84 vector, +0x50/0x54
 // +0x60/0x64 +0x70/0x74 vectors, +0x0C string). Case 2 checks the three
 // pointer pairs, case 5 the +0x80 pair through its address, else the string
 // non-empty via rowed isEmpty 0x00001E2F. Caller 0x0005D7A3.
 // Neighbour FXBoneInfoAssign shares /O1 flags; no floats or EH.
-template <typename T> class StringBase
-{
-public:
-	bool isEmpty() const;
-private:
-	void *m_data;
-};
+#include "string_base.h"
+
 struct VecPair
 {
 	void *beg;
