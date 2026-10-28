@@ -19,7 +19,7 @@ typedef unsigned short UnsignedShort;
 #define MAP_HEIGHT_SCALE (MAP_XY_FACTOR/256.0f)  // BFME; Zero Hour divided by 16
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include/W3DDevice/GameClient/WorldHeightMap.h
-class BoundedShortGrid { public: short rva00062A58(Int,Int); };
+class BoundedShortGrid { public: short load(Int,Int); };
 
 // upstream layout: inputs/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include/W3DDevice/GameClient/BaseHeightMap.h
 class BaseHeightMapRenderObjClass
@@ -45,10 +45,10 @@ Bool BaseHeightMapRenderObjClass::evaluateAsVisibleCliff( Int xIndex, Int yIndex
 	BoundedShortGrid *map=m_map;
 	UnsignedShort bytes[4] =
 	{
-		map->rva00062A58( xIndex + 0, yIndex + 0 ),
-		map->rva00062A58( xIndex + 1, yIndex + 0 ),
-		map->rva00062A58( xIndex + 1, yIndex + 1 ),
-		map->rva00062A58( xIndex + 0, yIndex + 1 ),
+		map->load( xIndex + 0, yIndex + 0 ),
+		map->load( xIndex + 1, yIndex + 0 ),
+		map->load( xIndex + 1, yIndex + 1 ),
+		map->load( xIndex + 0, yIndex + 1 ),
 	};
 
 	Real heights[4] =

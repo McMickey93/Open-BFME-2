@@ -1,6 +1,6 @@
 // cl: /DNDEBUG /MD /EHsc /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/sweep
 
-// ?rva00062A58@BoundedShortGrid@@QAEFHH@Z @ 0x00062A58 (38B). Load twin of
+// ?load@BoundedShortGrid@@QAEFHH@Z @ 0x00062A58 (38B). Load twin of
 // ?store@BoundedShortGrid@@QAEXHHF@Z in BoundedShortGrid.cpp: returns
 // m_data[m_stride * b + a] with identical bounds checks returning 0.
 // Layout m_stride +0x08 m_capacity +0x20 m_data +0x24 proven by store.
@@ -10,7 +10,7 @@
 class BoundedShortGrid
 {
 public:
-	short rva00062A58(int a, int b);
+	short load(int a, int b);
 
 private:
 	unsigned char m_unknown00[0x08];
@@ -23,7 +23,7 @@ private:
 // Select-any like the BaseHeightMapInitHeightData.cpp copy (this retail body
 // comes first in link order, so it is the copy the link keeps); the anchor
 // keeps the noinline body emitted.
-inline __declspec(noinline) short BoundedShortGrid::rva00062A58(int a, int b)
+inline __declspec(noinline) short BoundedShortGrid::load(int a, int b)
 {
 	int idx = m_stride * b + a;
 	if (idx < 0)
@@ -39,5 +39,5 @@ inline __declspec(noinline) short BoundedShortGrid::rva00062A58(int a, int b)
 // ?bfmeEmitBoundedShortGridLoad@@YAXPAVBoundedShortGrid@@HH@Z absent-from-retail
 void bfmeEmitBoundedShortGridLoad(BoundedShortGrid *boundedShortGrid, int a, int b)
 {
-	boundedShortGrid->BoundedShortGrid::rva00062A58(a, b);
+	boundedShortGrid->BoundedShortGrid::load(a, b);
 }

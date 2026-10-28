@@ -5,7 +5,7 @@
 // cl: /O1 /G7 /arch:SSE /Oy- /MD /DNDEBUG
 class BoundedShortGrid 
 {
- public:short rva00062A58(int,int);
+ public:short load(int,int);
  
 }
 ;
@@ -36,7 +36,7 @@ class WorldHeightMap
  // The caller has no relocations to either wrapper; see terrain-inline-link-20261015.
  __declspec(dllimport) __forceinline unsigned short getHeight(int x,int y)
  {
-  return (unsigned short)((BoundedShortGrid*)this)->rva00062A58(x,y);
+  return (unsigned short)((BoundedShortGrid*)this)->load(x,y);
   
  }
  __forceinline bool getFlag(int x,int y)

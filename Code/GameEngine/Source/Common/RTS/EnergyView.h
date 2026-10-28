@@ -72,9 +72,9 @@ public:
 public:
 	void objectLeavingInfluence(Object *obj);
 public:
-	void rva004DF25B(Rva004DF207Outer *arg);
+	void addPowerBonus(Rva004DF207Outer *arg);
 public:
-	void rva004DF274(Rva004DF207Outer *arg);
+	void removePowerBonus(Rva004DF207Outer *arg);
 public:
 	void rva004DF18D(int delta);
 public:

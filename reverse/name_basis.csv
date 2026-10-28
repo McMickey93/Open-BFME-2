@@ -3566,3 +3566,12 @@ param,Rva00045411BitSet::Rva00045411BitSet::b3,Rva00045411BitSet::Rva00045411Bit
 param,Rva00045411BitSet::Rva00045411BitSet::b4,Rva00045411BitSet::Rva00045411BitSet::idx4,inferred,agree:nl-dd4ee539b2a5,Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorModuleDataCtor.cpp,
 param,Rva00045411BitSet::Rva00045411BitSet::b5,Rva00045411BitSet::Rva00045411BitSet::idx5,inferred,agree:nl-43d679d5ddad,Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorModuleDataCtor.cpp,
 local,Rva0048180C::rva00481A9E::arg,Rva0048180C::rva00481A9E::amount,inferred,agree:nl-75be9f88f2e8,Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehavior.cpp,0x00481A9E
+function,?rva004DF25B@Energy@@QAEXPAURva004DF207Outer@@@Z,?addPowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z,inferred,agree:nl-8b196706477f,Code/GameEngine/Source/Common/RTS/Energy.cpp,0x004DF25B
+function,?rva004DF274@Energy@@QAEXPAURva004DF207Outer@@@Z,?removePowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z,inferred,agree:nl-f7b3aabba39e,Code/GameEngine/Source/Common/RTS/Energy.cpp,0x004DF274
+function,?rva0049B3D2@Rva0049B2A2@@QAEEXZ,?shouldCreate@Rva0049B2A2@@QAEEXZ,inferred,agree:nl-a6d7ee860f7f,Code/GameEngine/Source/GameLogic/Object/Update/OCLUpdate.cpp,0x0049B3D2
+function,?rva0049B3F3@Rva0049B2A2@@QAEXXZ,?setNextCreationFrame@Rva0049B2A2@@QAEXXZ,inferred,agree:nl-2b156c8b28fa,Code/GameEngine/Source/GameLogic/Object/Update/OCLUpdate.cpp,0x0049B3F3
+function,?rva00062A58@BoundedShortGrid@@QAEFHH@Z,?load@BoundedShortGrid@@QAEFHH@Z,inferred,agree:nl-d6aeb1cbd2f0,Code/GameEngineDevice/Source/W3DDevice/GameClient/BoundedShortGridLoad.cpp,0x00062A58
+function,?rva006D3A40@EAStringC@@QAEHDD@Z,?Replace@EAStringC@@QAEHDD@Z,inferred,agree:nl-a2f29ffd0c8f,Code/Libraries/Source/EA/Apt/AptString/EAStringCFind.cpp,0x006D3A40
+function,?rva006D3AD0@EAStringC@@QBE_NPBD@Z,?startsWith@EAStringC@@QBE_NPBD@Z,inferred,agree:nl-60bdb96ef99c,Code/Libraries/Source/EA/Apt/AptString/EAStringCFind.cpp,0x006D3AD0
+function,?rva006D3B30@EAStringC@@QBE_NPBD@Z,?endsWith@EAStringC@@QBE_NPBD@Z,inferred,agree:nl-6d0e67948a04,Code/Libraries/Source/EA/Apt/AptString/EAStringCFind.cpp,0x006D3B30
+function,?rva00177F82@Rva00177860@@QAEXAAVRenderInfoClass@@@Z,?Render@Rva00177860@@QAEXAAVRenderInfoClass@@@Z,inferred,agree:nl-b465a878d854,Code/Libraries/Source/WWVegas/WW3D2/Rva00177860Render.cpp,0x00177F82

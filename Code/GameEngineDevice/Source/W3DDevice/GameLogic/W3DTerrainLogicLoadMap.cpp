@@ -75,7 +75,7 @@ extern GameClient *TheGameClient;
 class BoundedShortGrid
 {
 public:
-	short rva00062A58(Int x, Int y);
+	short load(Int x, Int y);
 };
 
 class WorldHeightMap
@@ -91,7 +91,7 @@ public:
 	}
 	__declspec(dllimport) __forceinline Int getXExtent() { return m_width; }
 	__declspec(dllimport) __forceinline Int getYExtent() { return m_height; }
-	UnsignedShort getHeight(Int x, Int y) { return ((BoundedShortGrid *)this)->rva00062A58(x, y); }
+	UnsignedShort getHeight(Int x, Int y) { return ((BoundedShortGrid *)this)->load(x, y); }
 
 	Int m_numRefs;
 	Int m_width;

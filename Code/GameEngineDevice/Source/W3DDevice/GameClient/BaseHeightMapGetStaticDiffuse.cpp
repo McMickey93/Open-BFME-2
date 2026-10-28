@@ -70,7 +70,7 @@ public:
 class BoundedShortGrid
 {
 public:
-	short rva00062A58(int x, int y);
+	short load(int x, int y);
 };
 
 template <class T> class RefMultiListIterator;
@@ -281,7 +281,7 @@ Int BaseHeightMapRenderObjClass::getStaticDiffuse(Int x, Int y, Bool skipFirstLi
 	Int border = m_map->m_border;
 	vertex.x = (x - border) * 10.0f;
 	vertex.y = (y - border) * 10.0f;
-	vertex.z = (unsigned short)((BoundedShortGrid *)m_map)->rva00062A58(x, y) * 0.0390625f;
+	vertex.z = (unsigned short)((BoundedShortGrid *)m_map)->load(x, y) * 0.0390625f;
 	vertex.u1 = 0;
 	vertex.v1 = 0;
 	vertex.u2 = 1;

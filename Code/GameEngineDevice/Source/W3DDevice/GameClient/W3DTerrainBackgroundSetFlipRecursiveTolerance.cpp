@@ -3,12 +3,12 @@
 // Shape follows ZH W3DTerrainBackground::setFlipRecursive (declaration order limitX/limitY,
 // match, minX/minY); maxX/maxY as full origin+offset+width expressions leave EBX to map.
 // cl: /O1 /G7 /arch:SSE /Oy- /MD /DNDEBUG
-class BoundedShortGrid {public:short rva00062A58(int,int);};
+class BoundedShortGrid {public:short load(int,int);};
 class Rva0006AB49BitPlane {public:bool test(int,int) const;};
 class Rva000ABD19 {public:bool rva000ABD19(int,int);};
 class Rva000AD9AB {public:void rva000AD9AB(int,int,bool);};
 class WorldHeightMap {public:char pad00[8];int width,height;
- __declspec(dllimport) __forceinline unsigned short getHeight(int x,int y){return (unsigned short)((BoundedShortGrid*)this)->rva00062A58(x,y);}
+ __declspec(dllimport) __forceinline unsigned short getHeight(int x,int y){return (unsigned short)((BoundedShortGrid*)this)->load(x,y);}
  __forceinline bool getFlag(int x,int y){return ((Rva0006AB49BitPlane*)this)->test(x,y);}
  __forceinline bool hasDetail(int x,int y){return ((Rva000ABD19*)this)->rva000ABD19(x,y);}
  __declspec(dllimport) __forceinline void setFlipState(int x,int y,bool b){((Rva000AD9AB*)this)->rva000AD9AB(x,y,b);}

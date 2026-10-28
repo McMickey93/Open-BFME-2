@@ -383,12 +383,12 @@ public:
 struct SHADOW_DECAL_DUAL_VERTEX { Real x, y, z; UnsignedInt diffuse; Real u0, v0, u1, v1; };
 class VertexBufferClass { public: class AppendLockClass { public: AppendLockClass(VertexBufferClass *, unsigned, unsigned, int); ~AppendLockClass(); void *Get_Vertex_Array() { return m_vertices; } VertexBufferClass *m_buffer; void *m_vertices; char m_lock[4]; }; };
 class IndexBufferClass { public: class AppendLockClass { public: AppendLockClass(IndexBufferClass *, unsigned, unsigned, int); ~AppendLockClass(); unsigned short *Get_Index_Array() { return m_indices; } IndexBufferClass *m_buffer; unsigned short *m_indices; char m_lock[4]; }; };
-class BoundedShortGrid { public: short rva00062A58(int, int); };
+class BoundedShortGrid { public: short load(int, int); };
 class Gen_0074B410 { public: bool bfmeBitA(int, int) const; };
 class WorldHeightMap
 {
 public:
-	UnsignedShort getHeight(Int x, Int y) { return ((BoundedShortGrid *)this)->rva00062A58(x, y); }
+	UnsignedShort getHeight(Int x, Int y) { return ((BoundedShortGrid *)this)->load(x, y); }
 	Real getDisplayHeight(Int x, Int y) { return getHeight(x, y) * MAP_HEIGHT_SCALE; }
 	// getFlipState is the bounds-checked bit-plane body rowed at 0x000ADF41
 	// (Gen_0074B410::bfmeBitA); retail's decal batch calls it directly.

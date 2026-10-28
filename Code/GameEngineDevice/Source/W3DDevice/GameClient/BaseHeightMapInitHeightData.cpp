@@ -28,7 +28,7 @@ class W3DShroud {public:void init(WorldHeightMap*,float,float);};
 class W3DTaint {public:void init(WorldHeightMap*,float,float);};
 class W3DRoadBuffer {public:void setMap(WorldHeightMap*);};
 class BoundedShortGrid {public:
- short rva00062A58(int a,int b){int idx=m_stride*b+a;if(idx<0)return 0;if(idx>=m_capacity)return 0;if(m_data)return m_data[idx];return 0;}
+ short load(int a,int b){int idx=m_stride*b+a;if(idx<0)return 0;if(idx>=m_capacity)return 0;if(m_data)return m_data[idx];return 0;}
  unsigned char m_unknown00[0x08];int m_stride;unsigned char m_unknown0C[0x20-0x0C];int m_capacity;short *m_data;};
 #include "../../../../Libraries/Include/Lib/Region2D.h"
 // Suppress this TU's non-retail copy of ??0?$set@PAURva001408C0Target@@U?$less@PAURva001408C0Target@@@_STL@@V?$allocator@PAURva001:
@@ -286,7 +286,7 @@ int BaseHeightMapRenderObjClass::initHeightData(int x,int y,WorldHeightMap*pMap,
   maxHt=0;
   for(j=0;j<mapDY;j++){
    for(i=0;i<mapDX;i++){
-    unsigned short cur=((BoundedShortGrid*)pMap)->rva00062A58(i,j);
+    unsigned short cur=((BoundedShortGrid*)pMap)->load(i,j);
     if(cur<minHt)minHt=cur;
     if(maxHt<cur)maxHt=cur;
    }

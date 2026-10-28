@@ -41,9 +41,9 @@ public:
 	int rva006D3980(int value);
 	int rva006D39B0(int value, const char *text);
 	int rva006D3A10(int value, int value2);
-	int rva006D3A40(char cOld, char cNew);
-	bool rva006D3AD0(const char *text) const;
-	bool rva006D3B30(const char *text) const;
+	int Replace(char cOld, char cNew);
+	bool startsWith(const char *text) const;
+	bool endsWith(const char *text) const;
 };
 
 // ?Find@EAStringC@@QAEHDH@Z
@@ -144,10 +144,10 @@ int EAStringC::rva006D3A10(int, int)
 	return 0;
 }
 
-// ?rva006D3A40@EAStringC@@QAEHDD@Z, retail 0x006D3A40 (140B): asserts
+// ?Replace@EAStringC@@QAEHDD@Z, retail 0x006D3A40 (140B): asserts
 // cOld/cNew non-zero (0x421/0x422), then replaces every cOld in the buffer
 // with cNew through the rowed strchr thunk 0x0062984A; returns 0.
-int EAStringC::rva006D3A40(char cOld, char cNew)
+int EAStringC::Replace(char cOld, char cNew)
 {
 	if (!(cOld != '\0')) {
 		g_bfmeAptAssertAtE17734("cOld != '\\0'",
@@ -167,9 +167,9 @@ int EAStringC::rva006D3A40(char cOld, char cNew)
 	return 0;
 }
 
-// ?rva006D3AD0@EAStringC@@QBE_NPBD@Z, retail 0x006D3AD0 (94B): text assert
+// ?startsWith@EAStringC@@QBE_NPBD@Z, retail 0x006D3AD0 (94B): text assert
 // (0x5DE); true when the buffer starts with text.
-bool EAStringC::rva006D3AD0(const char *text) const
+bool EAStringC::startsWith(const char *text) const
 {
 	if (!(text != 0)) {
 		g_bfmeAptAssertAtE17734("pStrText != NULL",
@@ -184,9 +184,9 @@ bool EAStringC::rva006D3AD0(const char *text) const
 	return r;
 }
 
-// ?rva006D3B30@EAStringC@@QBE_NPBD@Z, retail 0x006D3B30 (105B): text assert
+// ?endsWith@EAStringC@@QBE_NPBD@Z, retail 0x006D3B30 (105B): text assert
 // (0x602); true when the buffer ends with text.
-bool EAStringC::rva006D3B30(const char *text) const
+bool EAStringC::endsWith(const char *text) const
 {
 	if (!(text != 0)) {
 		g_bfmeAptAssertAtE17734("pStrText != NULL",

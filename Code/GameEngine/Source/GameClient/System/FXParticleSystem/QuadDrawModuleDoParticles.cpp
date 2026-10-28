@@ -53,7 +53,7 @@ class BFME2ParticleTextureHandle {public:~BFME2ParticleTextureHandle(){if(Ptr)Pt
 class TextureAsset {public:static BFME2ParticleTextureHandle Get(const char*,int,int);};
 template<class T>class RefCountPtr {public:const RefCountPtr&operator=(const RefCountPtr&);T*Ptr;};
 class Rva0090F8C0Holder {public:void set(int,RefCountClass*,RefCountClass*,RefCountClass*,RefCountClass*);};
-class Rva00177860 {public:void rva00177F82(RenderInfoClass&);void*refs[4];int count;RefCountPtr<TextureClass> texture;unsigned shader;float tail[4];};
+class Rva00177860 {public:void Render(RenderInfoClass&);void*refs[4];int count;RefCountPtr<TextureClass> texture;unsigned shader;float tail[4];};
 extern Rva00177860*g_00E0623C;
 enum D3DTRANSFORMSTATETYPE {D3DTS_VIEW=2,D3DTS_PROJECTION=3,D3DTS_WORLD=256,D3DTS_FORCE_DWORD=0x7fffffff};
 struct RenderStateStruct {char pad[0x1EC];Matrix4x4 world;Matrix4x4 view;};
@@ -135,7 +135,7 @@ int QuadDrawModule::doParticles(RenderInfoClass&rinfo,void*bounds,int*particleCo
    ShaderClass shader=ShaderClass::_PresetAdditiveSpriteShader;
    switch(getSystem()->shader){case 2:shader=*reinterpret_cast<const ShaderClass*>(&BfmeParticleType2ShaderBits);break;case 3:shader=ShaderClass::_PresetAlphaSpriteShader;break;case 4:shader=ShaderClass::_PresetATestSpriteShader;break;case 5:shader=ShaderClass::_PresetMultiplicativeSpriteShader;break;case 6:shader=ShaderClass::_PresetAdditive2DShader;break;case 7:shader=ShaderClass::_PresetAlpha2DShader;break;}
    if(DX8Wrapper::Get_Fog_Enable())shader.Enable_Fog("HardwareFog");g_00E0623C->shader=shader.ShaderBits;
-   ((Rva0090F8C0Holder*)g_00E0623C)->set(count,(RefCountClass*)g_00E065C8,(RefCountClass*)g_00E065CC,0,0);g_00E0623C->rva00177F82(rinfo);
+   ((Rva0090F8C0Holder*)g_00E0623C)->set(count,(RefCountClass*)g_00E065C8,(RefCountClass*)g_00E065CC,0,0);g_00E0623C->Render(rinfo);
   }
  }
  return count;

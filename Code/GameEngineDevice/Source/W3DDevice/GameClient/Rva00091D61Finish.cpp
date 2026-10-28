@@ -12,7 +12,7 @@
 class BoundedShortGrid
 {
 public:
-	short rva00062A58(int a, int b);
+	short load(int a, int b);
 	void store(int a, int b, short v);
 	unsigned char m_unknown00[0x08];
 	int m_stride;
@@ -183,7 +183,7 @@ void Rva00091D61::rva00091D61(int *p, int v)
 		return;
 	int x = p[0] + m_grid->m_off10;
 	int y = p[1] + m_grid->m_off10;
-	int cur = (unsigned short)m_grid->rva00062A58(x, y);
+	int cur = (unsigned short)m_grid->load(x, y);
 	if (cur > v) {
 		m_grid->store(x, y, (short)v);
 		Rva00091D61Notifier *notifier = m_notifier;

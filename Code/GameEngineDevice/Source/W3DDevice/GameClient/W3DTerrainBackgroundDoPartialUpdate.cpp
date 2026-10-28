@@ -242,7 +242,7 @@ extern GlobalData *TheGlobalData;
 class BoundedShortGrid
 {
 public:
-	short rva00062A58(int a, int b);
+	short load(int a, int b);
 
 private:
 	unsigned char m_unknown00[0x08];
@@ -254,7 +254,7 @@ private:
 
 // Select-any copy of the rowed grid reader (home BoundedShortGridLoad.cpp); keeping
 // its body visible in this unit is what reproduces retail's register allocation.
-inline __declspec(noinline) short BoundedShortGrid::rva00062A58(int a, int b)
+inline __declspec(noinline) short BoundedShortGrid::load(int a, int b)
 {
 	int idx = m_stride * b + a;
 	if (idx < 0)
@@ -339,7 +339,7 @@ public:
 	Int getXExtent() { return m_width; }
 	Int getYExtent() { return m_height; }
 	Int getBorderSize() { return m_borderSize; }
-	UnsignedShort getHeight(Int x, Int y) { return ((BoundedShortGrid *)this)->rva00062A58(x, y); }
+	UnsignedShort getHeight(Int x, Int y) { return ((BoundedShortGrid *)this)->load(x, y); }
 	bool isCliffCell(Int x, Int y) { return ((Rva000ABD19 *)this)->rva000ABD19(x, y); }
 	void getTerrainNormal(Int x, Int y, Vector3 *normal) { ((Rva0006653B *)this)->rva0006AA45(x, y, normal); }
 	void rva000AE44B(Int x, Int y, void *info);

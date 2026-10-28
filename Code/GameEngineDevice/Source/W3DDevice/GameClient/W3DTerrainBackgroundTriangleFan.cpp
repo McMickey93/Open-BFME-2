@@ -22,7 +22,7 @@ class Vector3
 class BoundedShortGrid
 {
 public:
-	short rva00062A58(int a, int b);
+	short load(int a, int b);
 private:
 	unsigned char m_unknown00[0x08];
 	int m_stride;
@@ -92,7 +92,7 @@ class WorldHeightMap
  }
  UnsignedShort getHeight(Int x, Int y) 
  {
-  return ((BoundedShortGrid *)this)->rva00062A58(x, y);
+  return ((BoundedShortGrid *)this)->load(x, y);
  }
  bool isInMesh(Int x, Int y) 
  {
@@ -199,7 +199,7 @@ class W3DTerrainBackground
  WorldHeightMap *m_map;
 };
 // ?rva00113399@W3DTerrainBackground@@QAEXPAGPAXHHHH0AAH@Z
-inline __declspec(noinline) short BoundedShortGrid::rva00062A58(int a, int b)
+inline __declspec(noinline) short BoundedShortGrid::load(int a, int b)
 {
 	int idx = m_stride * b + a;
 	if (idx < 0)

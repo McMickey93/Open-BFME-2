@@ -115,7 +115,7 @@ void Rva001159F1::rva001159F1(void *value)
 class BoundedShortGrid
 {
 public:
-	short rva00062A58(Int x, Int y);
+	short load(Int x, Int y);
 };
 
 class Rva00729300BitPlane
@@ -167,7 +167,7 @@ void W3DTerrainBackground::calcBlendHeight(Real param, Int mode, Real *maxDelta)
 				Int cx = x < mapXMax ? x : mapXMax;
 				Int cy = y < mapYMax ? y : mapYMax;
 				Int idx = (x - xOrigin) + (m_width + 1) * (y - yOrigin);
-				m_heights[idx].X = (UnsignedShort)((BoundedShortGrid *)m_map)->rva00062A58(cx, cy) * MAP_HEIGHT_SCALE;
+				m_heights[idx].X = (UnsignedShort)((BoundedShortGrid *)m_map)->load(cx, cy) * MAP_HEIGHT_SCALE;
 				m_heights[idx].Z = m_heights[idx].X;
 				m_heights[idx].Y = m_heights[idx].Z;
 			}

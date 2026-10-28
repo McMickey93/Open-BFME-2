@@ -78,8 +78,8 @@ protected:
 	virtual void xfer(Xfer *xfer);
 public:
 	virtual UpdateSleepTime update();
-	unsigned char rva0049B3D2();
-	void rva0049B3F3();
+	unsigned char shouldCreate();
+	void setNextCreationFrame();
 
 private:
 	unsigned int m_20;
@@ -255,7 +255,7 @@ OCLUpdateModuleData::OCLUpdateModuleData()
 
 // ---- from Code/GameEngine/Source/Common/Rva0049B2A2Xfer.cpp
 
-unsigned char Rva0049B2A2::rva0049B3D2()
+unsigned char Rva0049B2A2::shouldCreate()
 {
 	if (TheGameLogic->getFrame() < m_20) {
 		return 0;
@@ -263,7 +263,7 @@ unsigned char Rva0049B2A2::rva0049B3D2()
 	return (unsigned char)!m_object->testStatus(OBJECT_STATUS_2);
 }
 
-void Rva0049B2A2::rva0049B3F3()
+void Rva0049B2A2::setNextCreationFrame()
 {
 	int r = GetGameLogicRandomValue(m_moduleData->m_0C, m_moduleData->m_10, (char *)"C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngine\\Source\\GameLogic\\Object\\Update\\OCLUpdate.cpp", 123);
 	unsigned cur = TheGameLogic->getFrame();
@@ -295,15 +295,15 @@ void Rva0049B2A2::xfer(Xfer *xfer)
 // the module sleeps forever.
 UpdateSleepTime Rva0049B2A2::update()
 {
-	if (rva0049B3D2())
+	if (shouldCreate())
 	{
 		if (m_20 == 0)
 		{
-			rva0049B3F3();
+			setNextCreationFrame();
 			return UPDATE_SLEEP_NONE;
 		}
 
-		rva0049B3F3();
+		setNextCreationFrame();
 
 		Coord3D creationCoord;
 		if (getModuleData()->m_18)

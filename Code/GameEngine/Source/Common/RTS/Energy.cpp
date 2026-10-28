@@ -174,15 +174,15 @@ void Energy::objectLeavingInfluence(Object *obj)
 		rva004DF18D(-v);
 }
 
-// ?rva004DF25B@Energy@@QAEXPAURva004DF207Outer@@@Z @ 0x004DF25B (25B)
-void Energy::rva004DF25B(Rva004DF207Outer *arg)
+// ?addPowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z @ 0x004DF25B (25B)
+void Energy::addPowerBonus(Rva004DF207Outer *arg)
 {
 	if (arg)
 		rva004DF18D(arg->m_ptr->m_54C);
 }
 
-// ?rva004DF274@Energy@@QAEXPAURva004DF207Outer@@@Z @ 0x004DF274 (28B)
-void Energy::rva004DF274(Rva004DF207Outer *arg)
+// ?removePowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z @ 0x004DF274 (28B)
+void Energy::removePowerBonus(Rva004DF207Outer *arg)
 {
 	if (arg)
 		rva004DF18D(-arg->m_ptr->m_54C);

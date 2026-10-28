@@ -197,14 +197,14 @@ static __forceinline void FillPointUVs(float *output,int stride,float first,floa
 // BF1 f989 and rowed3377B PointGroup submission provide the shared pipeline.
 class Rva0007671F {public:Rva0007671F();private:Vector4 rows[4];};
 class RenderInfoClass;
-class Rva00177860 {public:void rva00177F82(RenderInfoClass&);
+class Rva00177860 {public:void Render(RenderInfoClass&);
  ShareBufferClass<Vector3> *locations;
  ShareBufferClass<Vector4> *diffuse;
  ShareBufferClass<Vector3> *normals;
  ShareBufferClass<Vector2> *texcoords;
  int count;TextureClass *texture;ShaderClass shader;Vector3 defaultColor;float defaultAlpha;
 };
-void Rva00177860::rva00177F82(RenderInfoClass&)
+void Rva00177860::Render(RenderInfoClass&)
 {
  if(count==0)return;
  shader.Set_Primary_Gradient(static_cast<ShaderClass::PriGradientType>(6));
