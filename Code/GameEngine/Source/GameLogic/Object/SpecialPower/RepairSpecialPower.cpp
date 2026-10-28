@@ -38,6 +38,11 @@ public:
 	virtual ~SpecialPowerModule();
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class RepairSpecialPower : public SpecialPowerModule
 {
 public:
@@ -45,6 +50,8 @@ public:
 
 protected:
 	virtual ~RepairSpecialPower();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 RepairSpecialPower::RepairSpecialPower( Thing *thing, const ModuleData *moduleData )

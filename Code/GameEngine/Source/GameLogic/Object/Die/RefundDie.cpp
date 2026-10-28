@@ -103,10 +103,17 @@ public:
 	DieModule( Thing *thing, const ModuleData *moduleData );
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class RefundDie : public DieModule
 {
 public:
 	RefundDie( Thing *thing, const ModuleData *moduleData );
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 RefundDie::RefundDie( Thing *thing, const ModuleData *moduleData )

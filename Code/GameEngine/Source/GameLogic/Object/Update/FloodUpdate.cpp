@@ -222,6 +222,11 @@ protected:
 	int m_bfmeReserved;
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class FloodUpdate : public UpdateModule
 {
 public:
@@ -238,6 +243,8 @@ protected:
 private:
 	_STL::list<Rva0048E16C *> m_records; // +0x20
 	Bool m_membersCreated; // +0x24
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // ?rva0048E189@FloodUpdate@@QAEXXZ @0x0048E189 421B

@@ -35,10 +35,17 @@ public:
 	SpecialPowerModule( Thing *thing, const ModuleData *moduleData );
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class ProductionSpeedBonus : public SpecialPowerModule
 {
 public:
 	ProductionSpeedBonus( Thing *thing, const ModuleData *moduleData );
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 ProductionSpeedBonus::ProductionSpeedBonus( Thing *thing, const ModuleData *moduleData )

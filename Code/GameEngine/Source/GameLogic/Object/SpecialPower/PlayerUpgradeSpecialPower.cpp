@@ -38,6 +38,11 @@ public:
 	virtual ~SpecialPowerModule();
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class PlayerUpgradeSpecialPower : public SpecialPowerModule
 {
 public:
@@ -45,6 +50,8 @@ public:
 
 protected:
 	virtual ~PlayerUpgradeSpecialPower();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 PlayerUpgradeSpecialPower::PlayerUpgradeSpecialPower( Thing *thing, const ModuleData *moduleData )

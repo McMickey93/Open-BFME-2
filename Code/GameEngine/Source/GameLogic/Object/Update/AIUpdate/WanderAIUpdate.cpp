@@ -297,6 +297,11 @@ class WanderIdleCallView { public:
 	virtual bool rva002645FF();	// slot 110 (0x002645FF)
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class WanderAIUpdate : public AIUpdateInterface
 {
 public:
@@ -307,6 +312,8 @@ private:
 	{
 		return (const WanderAIUpdateModuleData *)m_moduleData;
 	}
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 UpdateSleepTime WanderAIUpdate::update()

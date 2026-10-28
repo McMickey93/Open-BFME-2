@@ -37,12 +37,19 @@ public:
 	virtual ~SpecialPowerModule();
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class CombineHordeSpecialPower : public SpecialPowerModule
 {
 public:
 	CombineHordeSpecialPower( Thing *thing, const ModuleData *moduleData );
 protected:
 	virtual ~CombineHordeSpecialPower();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 CombineHordeSpecialPower::CombineHordeSpecialPower( Thing *thing, const ModuleData *moduleData )

@@ -37,12 +37,19 @@ public:
 	virtual ~SpecialPowerModule();
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class DevastateSpecialPower : public SpecialPowerModule
 {
 public:
 	DevastateSpecialPower( Thing *thing, const ModuleData *moduleData );
 protected:
 	virtual ~DevastateSpecialPower();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 DevastateSpecialPower::DevastateSpecialPower( Thing *thing, const ModuleData *moduleData )

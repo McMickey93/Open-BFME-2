@@ -217,6 +217,11 @@ private:
 	char m_unknown20[0x0C];
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class OilSpillUpdate : public FireWeaponUpdate
 {
 public:
@@ -231,6 +236,8 @@ protected:
 
 private:
 	_STL::vector<Coord3D> m_breadcrumbs; // +0x2C
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // ?update@OilSpillUpdate@@UAE?AW4UpdateSleepTime@@XZ @0x0048C30E 263B

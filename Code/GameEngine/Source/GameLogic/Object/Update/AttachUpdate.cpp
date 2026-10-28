@@ -230,6 +230,11 @@ protected:
 	char m_pad14[0x20 - 0x14];
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class AttachUpdate : public UpdateModule
 {
 public:
@@ -243,6 +248,8 @@ private:
 	}
 	ObjectID m_parentID;	// +0x20
 	int m_diedEvaEvent;	// +0x24
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // Lever 17: the WB twin 0x011E2340 keeps the object's position, the module

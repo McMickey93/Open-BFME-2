@@ -38,6 +38,11 @@ public:
 	virtual ~SpecialPowerModule();
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class SplitHordeSpecialPower : public SpecialPowerModule
 {
 public:
@@ -45,6 +50,8 @@ public:
 
 protected:
 	virtual ~SplitHordeSpecialPower();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 SplitHordeSpecialPower::SplitHordeSpecialPower( Thing *thing, const ModuleData *moduleData )

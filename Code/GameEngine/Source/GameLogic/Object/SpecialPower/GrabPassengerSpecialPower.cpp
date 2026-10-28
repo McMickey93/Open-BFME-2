@@ -38,6 +38,11 @@ public:
 	virtual ~SpecialPowerModule();
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class GrabPassengerSpecialPower : public SpecialPowerModule
 {
 public:
@@ -45,6 +50,8 @@ public:
 
 protected:
 	virtual ~GrabPassengerSpecialPower();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 GrabPassengerSpecialPower::GrabPassengerSpecialPower( Thing *thing, const ModuleData *moduleData )
