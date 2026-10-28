@@ -21,7 +21,7 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
 struct OpaqueRefElement4;
 namespace _STL { template <> _Deque_iterator<OpaqueRefElement4,_Nonconst_traits<OpaqueRefElement4> > copy_backward<_Deque_iterator<OpaqueRefElement4,_Nonconst_traits<OpaqueRefElement4> >,_Deque_iterator<OpaqueRefElement4,_Nonconst_traits<OpaqueRefElement4> > >(_Deque_iterator<OpaqueRefElement4,_Nonconst_traits<OpaqueRefElement4> >,_Deque_iterator<OpaqueRefElement4,_Nonconst_traits<OpaqueRefElement4> >,_Deque_iterator<OpaqueRefElement4,_Nonconst_traits<OpaqueRefElement4> >); }
-extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile *);
+#include <windows.h>
 class OpaqueRefCounted {
 public:
     virtual ~OpaqueRefCounted();
