@@ -213,6 +213,11 @@ public:
 
 // This interface view preserves the target secondary vtable slot order and
 // derived cave-index offset; unrelated slots remain intentionally opaque.
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class CaveContain : public OpenContain
 {
 public:
@@ -248,6 +253,8 @@ public:
 private:
 	unsigned char m_pad[0xE0];
 	int m_caveIndex;
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 template <> void _STL::_List_base<Rva0036ADF9Element, _STL::allocator<Rva0036ADF9Element> >::clear();

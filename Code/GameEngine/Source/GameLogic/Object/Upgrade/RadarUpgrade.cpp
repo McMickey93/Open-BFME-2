@@ -213,10 +213,17 @@ public:
 };
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/RadarUpgrade.h
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class RadarUpgrade : public UpgradeModule
 {
 public:
 	RadarUpgrade( Thing *thing, const ModuleData *moduleData );
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 //

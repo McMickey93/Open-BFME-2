@@ -304,6 +304,11 @@ private:
 	unsigned char m_pad[0xC4];
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class __declspec(novtable) DeployStyleAIUpdate : public AIUpdateInterface
 {
 public:
@@ -347,6 +352,8 @@ protected:
 	Bool m_4D4;		// +0x4D4
 	Bool m_4D5;		// +0x4D5
 	Bool m_4D6;		// +0x4D6
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 class Rva0028F59A {

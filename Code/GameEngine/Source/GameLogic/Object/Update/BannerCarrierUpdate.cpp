@@ -54,10 +54,17 @@ class BannerOther { public: virtual void slot0(); };
 
 class UpdateModuleInterface { public: virtual UpdateSleepTime update()=0; };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class BannerCarrierUpdate : public BannerBase, public BannerOther, public UpdateModuleInterface {
 public:
  virtual UpdateSleepTime update();
  void rva004973CF(); bool rva00496BD2(Object *);
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 class Rva0042526Member

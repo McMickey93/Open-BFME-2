@@ -159,6 +159,11 @@ protected:
 	Object *m_object;		// +0x08
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class StoreObjectsSpecialPower : public SpecialAbilityUpdate
 {
 public:
@@ -172,6 +177,8 @@ private:
 	Coord3D m_44;		// +0x44
 	char m_pad50[0x88 - 0x50];
 	_STL::vector<ObjectID, _STL::allocator<ObjectID> > m_88;	// +0x88
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // Cold-slice B8-imm32 const-int returners (twin-free TU).

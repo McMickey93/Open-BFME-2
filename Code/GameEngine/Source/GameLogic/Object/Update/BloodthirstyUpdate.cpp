@@ -217,6 +217,11 @@ public:
 	virtual void addSacrifice(Object *victim) = 0;
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class BloodthirstyUpdate : public B00, public B0C, public B10, public Iface20
 {
 public:
@@ -230,6 +235,8 @@ private:
 	ObjectID m_bestTargetID; // +0x24
 	ObjectID m_28; // +0x28
 	int m_kills; // +0x2C
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 class DrawableList : public _STL::list<Drawable *>

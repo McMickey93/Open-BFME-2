@@ -198,6 +198,11 @@ protected:
 	Object *m_object;		// +0x08
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class ReplaceObjectUpdate : public SpecialAbilityUpdate
 {
 public:
@@ -211,6 +216,8 @@ private:
 	}
 	char m_pad0C[0x44 - 0x0C];
 	Coord3D m_44;		// +0x44
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 //

@@ -73,6 +73,11 @@ struct InheritUpgradeCreateData
 	char m_pad8C[0x4];
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class InheritUpgradeCreate
 {
 public:
@@ -82,6 +87,8 @@ public:
 private:
 	const InheritUpgradeCreateData *m_moduleData;	// +0x04
 	Object *m_object;	// +0x08
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 class Rva003623E5Filter

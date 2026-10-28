@@ -69,6 +69,11 @@ public:
 };
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/CommandSetUpgrade.h
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class CommandSetUpgrade : public UpgradeModule
 {
 public:
@@ -76,6 +81,8 @@ public:
 
 protected:
 	virtual void upgradeRemovalImplementation();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // Target identity is established by the CommandSetUpgrade constructor at

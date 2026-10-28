@@ -207,6 +207,11 @@ protected:
 	virtual ~UpgradeModule(); // retail ??1UpgradeModule@@MAE@XZ, 0x0046089D
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class SubObjectsUpgrade : public UpgradeModule
 {
 public:
@@ -227,6 +232,8 @@ private:
 	unsigned char m_20;
 public:
 	SubObjectsUpgrade(Thing *thing, const ModuleData *moduleData);
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 extern int BfmeClientFramesPerSecond;

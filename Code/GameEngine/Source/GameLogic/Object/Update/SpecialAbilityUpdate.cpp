@@ -870,6 +870,8 @@ private:
 	bool m_82; // +0x82
 	bool m_approached; // +0x83
 	unsigned int m_84; // +0x84
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 class Rva0044EAF3

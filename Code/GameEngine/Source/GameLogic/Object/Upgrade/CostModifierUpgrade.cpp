@@ -66,6 +66,11 @@ public:
 };
 
 // upstream layout: reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameLogic/Module/CostModifierUpgrade.h
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class CostModifierUpgrade : public UpgradeModule, public CostModifierUpgradeInterface
 {
 public:
@@ -73,6 +78,8 @@ public:
 
 private:
 	bool m_enabled;
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 //

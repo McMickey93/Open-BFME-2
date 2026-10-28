@@ -61,9 +61,16 @@ class SlowDeathBehavior : public UpdateModule,public DieModuleInterface,public S
  char gap41[0x50-0x41];
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class GiantBirdSlowDeathBehavior : public SlowDeathBehavior { public:
  virtual UpdateSleepTime update(); virtual void beginSlowDeath(const DamageInfo *);
  unsigned unknown50; Coord3D target; float unknown60; bool unknown64;
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 class BfmeFixedStorage0004543D { public:

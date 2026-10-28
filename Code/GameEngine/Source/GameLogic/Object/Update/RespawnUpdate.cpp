@@ -158,6 +158,11 @@ struct BFME2RespawnRuleTree {
     RespawnInsertResult insert(const RespawnRule &);
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class RespawnUpdate:public UpdateModule {
 public:
 	virtual UpdateSleepTime update();
@@ -177,6 +182,8 @@ public:
 	static void iniParseNewRuleForLevel(INI *, void *, void *, const void *);
 public:
 	static void iniParseDefaultRule(INI *, void *, void *, const void *);
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // tu-skeleton: 0x004AEF46 103B ?rva004AEF46@RespawnUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RespawnUpdateRva004AEF46.cpp (not merged yet)

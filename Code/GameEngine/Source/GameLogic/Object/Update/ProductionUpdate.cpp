@@ -265,6 +265,11 @@ struct Rva0049DF81Input {char pad[0x3C];ObjectID id;};
 
 extern GameLogic *TheGameLogic;
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class ProductionUpdate
 {
 public:
@@ -301,6 +306,8 @@ private:
 	Bool m_cancellingAll;
 public:
 	void rva0049DF81(Rva0049DF81Input *,Object *);
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 //

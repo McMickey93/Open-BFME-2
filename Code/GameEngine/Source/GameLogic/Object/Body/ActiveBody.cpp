@@ -921,6 +921,8 @@ private:
 	const void *m_curArmorSet;		// +0xF4
 	Armor m_curArmor;			// +0xF8
 	DamageFX *m_curDamageFX;		// +0xFC
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // WB1252E80 copies XYZ before jittering them, then constructs a second

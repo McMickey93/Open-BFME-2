@@ -185,6 +185,11 @@ public:
 	virtual void exitObjectViaDoor( Object *newObj, ExitDoorType exitDoor ) = 0;
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class SupplyCenterProductionExitUpdate : public UpdateModule, public ExitInterface
 {
 public:
@@ -198,6 +203,8 @@ protected:
 private:
 	Coord3D m_rallyPoint;																											///< 0x24
 	Bool m_rallyPointExists;																									///< 0x30
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // tu-skeleton: 0x004A6569 69B ?getModuleNameKey@SupplyCenterProductionExitUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdatePoolKey.cpp (not merged yet)

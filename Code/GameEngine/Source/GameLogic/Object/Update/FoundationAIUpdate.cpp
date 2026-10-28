@@ -271,6 +271,8 @@ private:
 	int m_24;
 	ObjectID m_28; // +0x28
 	bool m_2C;
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 // ?rva00455B67@FoundationAIUpdate@@UAEXPAVPlayer@@0@Z @0x00455B67
 void FoundationAIUpdate::rva00455B67(Player *oldOwner, Player *newOwner)

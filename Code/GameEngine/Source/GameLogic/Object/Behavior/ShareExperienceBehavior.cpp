@@ -227,6 +227,11 @@ public:
 	virtual UpdateSleepTime update() = 0;
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class ShareExperienceBehavior : public Module, public BehaviorModuleInterface, public Rva00480093Base10,
 	public Rva00480093Iface20
 {
@@ -234,6 +239,8 @@ public:
 	float GetDropOffValue(Coord3D *a, Pos0047FFFE *b);
 	virtual UpdateSleepTime update();
 	virtual void rva00480093(float amount);
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // tu-skeleton: 0x0047FE4B 69B ?getModuleNameKey@ShareExperienceBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorPoolKey.cpp (not merged yet)

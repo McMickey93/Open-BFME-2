@@ -57,6 +57,11 @@ protected:
 	virtual ~UpgradeModule();
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class ArmorUpgrade : public UpgradeModule
 {
 public:
@@ -64,6 +69,8 @@ public:
 
 protected:
 	virtual ~ArmorUpgrade();
+public:
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/ArmorUpgradeDtor.cpp
