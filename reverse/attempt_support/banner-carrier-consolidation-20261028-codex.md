@@ -51,3 +51,39 @@ base and lacks per-object consumer names. The current receipt resolves its
 initial missing-receipt finding. The preview and identical existing helper
 bound this repair's evidence; full consumer selection awaits the next normal
 census. The next step is a supported merge after this prerequisite commit.
+
+## Supported merge and outgoing audit
+
+After prerequisite `5c9cf0fb28` was handed to the runner publisher, the naming
+snapshot was regenerated and passed its currency check. The supported merge
+accepts exactly BannerCarrierUpdate.cpp and Rva00496A63Dtor.cpp, nine rows.
+It removes one source file and repoints three source cells in each of
+functions.csv and tu_map.csv; names, extents and approvals are unchanged.
+The remaining ten whole-file donors retain their recorded blockers.
+
+The normal merged build passes 9/9, including all three unwind rows through
+their exact parent EH graphs. Frozen-file, canonical-class, TU ownership and
+CSV checks pass; scoped data checks report zero findings. The merged object
+has exactly the premerge union of nine external COMDAT bodies (names,
+byte/relocation digests and sizes), four exclusive definitions, 22 undefined
+externals and zero weak externals. No provider or dependency disappears.
+All eleven remaining units preview LINKS for the same 2,831 authored bytes
+against index 14dc3d2467. The destination's current-object increase from 637
+to 700 bytes is the moved 63-byte preview scope, not new linked coverage.
+The destination has a strict current receipt from link_check --prepare-current.
+
+The outgoing path audit covers the prerequisite and staged merge from local
+origin/master at 2ce8d0c077. The destructor donor is the only removed path.
+A tracked-tree search for its basename/path finds no active tool, hook,
+workflow, include, configuration, registry or fold-proof consumer. Remaining
+mentions are the merged source's provenance comment, this evidence, the
+historical link_status receipt and historical re_attempts records. They stay
+historical. The directory remains in use and its location is unchanged.
+All active row ownership names BannerCarrierUpdate.cpp. Neither input has
+gate, code-identity, data, hatch, compiler-override or header/MS-header queue
+keys. The merge tool refreshed header/MS-header reports without queue changes.
+
+The final staged batch audit remains INCONCLUSIVE for the older baseline and
+missing per-object consumer names. The exact object-union comparison bounds
+the merge itself; full consumer selection remains a next-census task. No
+rejected reconstruction was installed and no census headline was changed.

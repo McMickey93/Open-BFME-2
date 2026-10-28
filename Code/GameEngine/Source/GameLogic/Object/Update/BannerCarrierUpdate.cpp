@@ -132,13 +132,38 @@ private:
 	Thing *m_thing08;
 };
 
+class Rva00496A63
+{
+public:
+	~Rva00496A63();
+
+private:
+	AsciiString m_first; // +0
+	unsigned char m_pad04[0x54 - 4];
+	AsciiString m_second; // +0x54
+};
+
 // tu-skeleton: 0x00496A1E 69B ?getModuleNameKey@BannerCarrierUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp (not merged yet)
 
-// tu-skeleton: 0x00496A63 53B ??1Rva00496A63@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496A63Dtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva00496A63Dtor.cpp
+
+//
+// ??1Rva00496A63@@QAE@XZ, retail 0x00496A63, 53 bytes.
+// Target evidence: called per element of the +0x18 vector by
+// BannerCarrierUpdateModuleData dtor 0x00497056 and by the scalar wrapper
+// 0x00496B2C; donor BFME1 BannerCarrierUpdateModuleDataDestructors proves a
+// two-string element. Destroys AsciiStrings at +0 and +0x54 through
+// StringBase<char>::releaseBuffer at 0x00036410; no vptr restores so non-virtual.
+
+Rva00496A63::~Rva00496A63()
+{
+}
 
 // tu-skeleton: 0x00496A98 42B ??0BannerCarrierUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00496AC2 28B ??_GRva004969FF@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva00496ADE.cpp
 
@@ -156,12 +181,6 @@ Rva00496ADE::Rva00496ADE()
 	m_str54.set("");
 	m_str00.clear();
 }
-
-// tu-skeleton: 0x00496B2C 28B ??_GRva00496A63@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00496B48 138B ?rva00496B48@Rva00496B48@@QAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496B48Finish.cpp (not merged yet)
-
-// tu-skeleton: 0x00496BD2 214B ?rva00496BD2@BannerCarrierUpdate@@QAE_NPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateSpawn.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva00496CA8Broadcast.cpp
 
@@ -184,26 +203,6 @@ void Rva00496CA8::rva00496CA8(int key)
 		}
 	}
 }
-
-// tu-skeleton: 0x00496D43 96B ?rva00496D43@Rva00496D43@@QAEPAXPAXABVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496D43Finish.cpp (not merged yet)
-
-// tu-skeleton: 0x00496DA3 98B ?rva00496DA3@BannerCarrierUpdateModuleData@@QBE?AVAsciiString@@ABV2@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateLocomotorName.cpp (not merged yet)
-
-// tu-skeleton: 0x00496E05 299B ?rva00496E05@BannerCarrierUpdate@@QAEXPAX_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateMorph.cpp (not merged yet)
-
-// tu-skeleton: 0x00496F30 117B ??1Rva00496F30@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496F30Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00496FA5 149B ??0BannerCarrierUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0049703A 28B ??_GRva00496F30@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00497056 249B ??1BannerCarrierUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0049714F 345B ?parseBannerCarrierMorphCondition@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateParseMorphCondition.cpp (not merged yet)
-
-// tu-skeleton: 0x004972A9 293B ?parseBannerCarrierExpLevelDraw@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateParseMorphCondition.cpp (not merged yet)
-
-// tu-skeleton: 0x004973CF 341B ?rva004973CF@BannerCarrierUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateReplenish.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdate.cpp
 
@@ -244,6 +243,32 @@ UpdateSleepTime BannerCarrierUpdate::update() {
  return (UpdateSleepTime)bannerCarrierUpdateModuleData->delay;
 }
 
+// tu-skeleton: 0x00496B2C 28B ??_GRva00496A63@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00496B48 138B ?rva00496B48@Rva00496B48@@QAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496B48Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x00496BD2 214B ?rva00496BD2@BannerCarrierUpdate@@QAE_NPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateSpawn.cpp (not merged yet)
+
+// tu-skeleton: 0x00496D43 96B ?rva00496D43@Rva00496D43@@QAEPAXPAXABVAsciiString@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496D43Finish.cpp (not merged yet)
+
+// tu-skeleton: 0x00496DA3 98B ?rva00496DA3@BannerCarrierUpdateModuleData@@QBE?AVAsciiString@@ABV2@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateLocomotorName.cpp (not merged yet)
+
+// tu-skeleton: 0x00496E05 299B ?rva00496E05@BannerCarrierUpdate@@QAEXPAX_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateMorph.cpp (not merged yet)
+
+// tu-skeleton: 0x00496F30 117B ??1Rva00496F30@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496F30Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00496FA5 149B ??0BannerCarrierUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0049703A 28B ??_GRva00496F30@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00497056 249B ??1BannerCarrierUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0049714F 345B ?parseBannerCarrierMorphCondition@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateParseMorphCondition.cpp (not merged yet)
+
+// tu-skeleton: 0x004972A9 293B ?parseBannerCarrierExpLevelDraw@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateParseMorphCondition.cpp (not merged yet)
+
+// tu-skeleton: 0x004973CF 341B ?rva004973CF@BannerCarrierUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateReplenish.cpp (not merged yet)
+
 // tu-skeleton: 0x004976AE 28B ??_GBannerCarrierUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004976CA 17B ?buildFieldParse@BannerCarrierUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
@@ -251,10 +276,6 @@ UpdateSleepTime BannerCarrierUpdate::update() {
 // tu-skeleton: 0x0078D157 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078D164 10B __ehhandler$?getModuleNameKey@BannerCarrierUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078D16E 8B Unwind@00b8d16e -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496A63Dtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0078D176 10B __ehhandler$??1Rva00496A63@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496A63Dtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078D19D 13B $L380 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496B48Finish.cpp (not merged yet)
 
