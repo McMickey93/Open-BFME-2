@@ -28,17 +28,10 @@ static inline const unsigned int& max(const unsigned int& a, const unsigned int&
 #pragma optimize("", on)
 #include "ascii_string.h"
 #include <new>
-struct Coord3DBase {float x,y,z;};
-class Coord3D:public Coord3DBase {
-public:
-    Coord3D();
-    Coord3D(const Coord3D&);
-    ~Coord3D();
-    // Native constructor3118DF's loop inlines these three zero stores.
-    // This address-qualified helper adds no application method identity.
-    // ?Coord3D::rva003118DFZero absent-from-retail
-    __forceinline void rva003118DFZero() { x=0.0f;y=0.0f;z=0.0f; }
-};
+#define COORD3D_VIEW_EXTERN_CTOR
+#define COORD3D_VIEW_EXTERN_DTOR
+#define COORD3D_VIEW_INLINE
+#include "../../../../Libraries/Include/Lib/Coord3DCtorView.h"
 struct Rva00311FE2Words {
     // Native copy uses raw dwords; native default initialization uses SSE
     // zero stores. These two views describe storage and codegen only.
@@ -102,7 +95,7 @@ Rva003A35A0Element::Rva003A35A0Element()
     *(float*)&word00=0.0f;
     for(int i=0;i<10;++i) {
         values[i]=0.0f;
-        points[i].rva003118DFZero();
+        points[i].zero();
     }
 }
 
@@ -132,7 +125,7 @@ Rva003A35A0Element* Rva003A35A0Element::rva00311431(const Rva00311431Arg* arg)
     *(float*)&word00=0.0f;
     for(int i=0;i<10;++i) {
         values[i]=0.0f;
-        points[i].rva003118DFZero();
+        points[i].zero();
     }
     return this;
 }
