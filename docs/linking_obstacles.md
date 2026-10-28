@@ -139,7 +139,15 @@ Completed: FVF trial only. A declaration-only `vector<ICoord2D>::_M_insert_overf
 specialization, and the same as `extern template`, both make the inlined `push_back`
 materialize and zero its `__false_type` tag (`push ecx` ... `mov byte [esp+0x17],0`).
 That fails 0x181880 and 0x1818C0, so both trials were reverted. Per-unit suppression
-fails wherever the unit inlines the caller. CastleBehavior (0x398E9A) and
+fails wherever the unit inlines the caller. AIBuilder trials (27 blocked units
+checked together with link_check, all still blocked; every trial reverted). Dropping
+the import-inlined `~_Vector_base<Object*>` with /EHs keeps 29/29 rows, but the copies
+are still not retail's EH-framed shape. A declaration-only `~vector<Object*>`,
+`push_back` or `_M_insert_overflow` specialization breaks `checkForNewUpgrades`
+(0x004ECA01): its inlined dtor and register choice change. Retail's `push_back`
+(0x001F211B, zeroed tag) is the shape this TU only produces when the growth body is
+out of view. The retail AIBuilder TU's own copy was therefore discarded, so retail
+linked a unit with that copy earlier than AIBuilder. CastleBehavior (0x398E9A) and
 TerrainResourceManager (0x35A005) have the same cause (CollectKeys and Render2DSentence
 holders).
 Remaining / next check: a census rule that ignores `fold-proof=` and gen-alias rows
