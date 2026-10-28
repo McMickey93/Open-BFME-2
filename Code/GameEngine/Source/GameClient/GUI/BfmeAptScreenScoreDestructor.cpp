@@ -1,4 +1,11 @@
 // cl: -DNDEBUG -DWIN32 -D_WINDOWS -MD -EHs -Ireference/open-bfme-1/game/GameEngine/Source/GameClient/GUI
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "../../../Include/GameClient/BfmeAptScreenBaseLayout.h"
 
 #include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
@@ -31,7 +38,6 @@ struct GlobalA01E48;
 class Shell;
 extern Shell *TheShell;
 int g_00E04914;
-extern "C" void __cdecl free(void *ptr);
 
 // This member owns CRT storage. The terrain TU's similarly named helper
 // owns GameFree storage; they do not represent one native class.

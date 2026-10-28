@@ -3,7 +3,12 @@
 // Evidence: leaf lane; calls pinned 0x001B4C7A Rva001B4C7ATarget::rva001B4C7A
 //   on this, then frees the pointer at +0 via rowed 0x00030830 free if non-null;
 //   callers 0x001B4D45 and jmp 0x001B4D09.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // The callee is the rowed STLport _List_base<BfmeVectorRecord001B4A39>::clear.
 struct BfmeVectorRecord001B4A39;

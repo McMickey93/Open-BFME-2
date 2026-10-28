@@ -5,7 +5,11 @@
 // Evidence: self-recursive call at 0x226868; free row at 0x30830; caller 0x229984;
 // identical shape to Rva00226829TreeFree.cpp; prev Rva00226829 row.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva00226856
 {

@@ -24,9 +24,12 @@
 // HOISTED above the test here - the opposite of the wide twin, which needs it
 // scoped inside each arm.
 
-extern "C" __declspec(dllimport) void *__cdecl memmove(void *destination,
-		const void *source, unsigned int count);
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator at RVA 0x00030830) but
+// memmove through the CRT import: only <stdlib.h> is read without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+#include <string.h>
 
 namespace _STL
 {

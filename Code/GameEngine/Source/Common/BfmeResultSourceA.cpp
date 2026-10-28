@@ -6,7 +6,11 @@
 // The payload is viewed raw here (the vector view lives in the append TU):
 // retail destroys the item buffer with a plain free, not an stlport dtor.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Object;
 

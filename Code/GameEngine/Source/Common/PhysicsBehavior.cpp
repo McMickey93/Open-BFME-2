@@ -10,7 +10,12 @@
 // at +0x10 plus _free of +0x20 via rowed 0x00030830 plus base dtor
 // ??1Rva0024A797 rowed 0x0024A797; EH prolog 0x00629188; caller 0x003909DE.
 // MI fix: three vptrs are implicit via two empty polymorphic bases, moving and-ebp-4-0 late after load.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class UpdateModule
 {

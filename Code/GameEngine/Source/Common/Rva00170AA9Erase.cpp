@@ -4,7 +4,12 @@
 // at +16 via rowed 0x0017098D and free 0x00030830, then --count at +4, ret 4.
 // Evidence: callees 0x00025620 plus 0x0017098D plus 0x00030830 all rowed;
 // callers at 0x00170BA5 and 0x00170D2C; same 59B shape as 0x00383380.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 template <class T> class RefCountPtr { public: ~RefCountPtr(); };
 class TextureClass;

@@ -14,7 +14,11 @@
 // 0x4F72ED. Ghidra FUN_0048b470 63B; next byte is unrowed (no overlap with
 // rowed 0x8B64A/0x8E4EC siblings).
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 template <class E> struct RvaVectorFamilyBase
 {

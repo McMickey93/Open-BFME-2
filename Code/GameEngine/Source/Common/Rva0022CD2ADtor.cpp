@@ -8,7 +8,12 @@
 // after. Evidence: unlock packet calls rowed 0x0022C64A and rowed free
 // 0x00030830; callers at 0x0022D0E8 0x0022D94A 0x004142F5 and jmps at
 // 0x0022D28B 0x00786006; unblocks 0x0022D941 0x0022D0E5 0x0041428F.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva002268B0
 {

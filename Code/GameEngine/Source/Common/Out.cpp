@@ -2,9 +2,14 @@
 // ??1Out@@QAE@XZ, retail 0x00329182, 97 bytes.
 // Non-virtual dtor of parse holder Out in Rva00328A8AParse.cpp: frees ElevatedAreaPolygon buffer at +0x48 via rowed _free 0x00030830 then destroys AsciiString[6] at +0x14 via rowed 0x0048BA39 then AsciiStrings at +0x08/+0x04 via rowed releaseBuffer 0x00036410.
 // Evidence: same TU layout as Rva00328A8AParse 0x00328A8A (two AsciiStrings +6 array +ElevatedAreaPolygon at +0x48); caller 0x003295B4 constructs via 0x0032912D then parses then destroys; /EHs (not /EHsc) for map-insert-like state stores around C calls per shape-lever guide.
-#include "ascii_string.h"
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
+#include "ascii_string.h"
 
 class DataChunkInput;
 

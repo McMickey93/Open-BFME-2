@@ -3,7 +3,12 @@
 // Implicit-shape dtor: the member at +0x0C runs the rowed clear-then-free
 // dtor 0x0022C5DA (rowed as ??1Rva00226856@@QAE@XZ), then the inline CRT
 // buffer member at +0 frees its block.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva00226856
 {

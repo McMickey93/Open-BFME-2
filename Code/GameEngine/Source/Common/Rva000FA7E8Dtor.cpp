@@ -7,7 +7,11 @@
 // CRT free of its block). Same recipe as Rva000F82F5Dtor.cpp and
 // W3DRoadBufferRoadTypeDtor.cpp. Names address-derived.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class TextureClass
 {

@@ -6,7 +6,11 @@
 // ?Release_Ref@TextureClass@@QAEXXZ 0x0061ED10. Same handle view as
 // Rva000F82F5Dtor.cpp, plus a second buffer. Names address-derived.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class TextureClass
 {

@@ -8,7 +8,12 @@
 // that /EHsc drops for extern C free. Layout from Rva00226883TreeFree.cpp
 // (header +0x00 flag +0x04 no vtable). Callers 0x0047482C 0x0053AEDD
 // 0x005EB907 0x005EB913 plus thunk 0x0022CA3B. No new pins.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva00226883Header
 {

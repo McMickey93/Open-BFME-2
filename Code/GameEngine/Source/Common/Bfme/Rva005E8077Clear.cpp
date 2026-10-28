@@ -5,7 +5,13 @@
 // Evidence: pushes [esi+4] [esi] then calls 0x005E7FB0; reloads [esi] and frees.
 struct Rva005E74AA;
 void __cdecl Rva005E7FB0Forward(Rva005E74AA *first, Rva005E74AA *last);
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva005E8077
 {
 	Rva005E74AA *m_start;

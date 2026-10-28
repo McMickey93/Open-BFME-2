@@ -5,7 +5,11 @@
 // no stack args, null check before free. Holder models conditional free as
 // member lifetime to recover EH frame per shape-lever cleanup-member recipe.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva003628A6Node
 {

@@ -8,7 +8,12 @@
 // the free needs /EHs); twin 0x000BB65C calls unclaimed 0x000B92FB the same
 // way. Evidence: chain from 0x000B9324 plus callers 0x000C7B56 and jmp
 // 0x000BBF50 plus DisplayString dtor precedent for call plus disarm plus free.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva000B6498
 {

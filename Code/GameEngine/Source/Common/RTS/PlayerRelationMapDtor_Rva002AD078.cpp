@@ -11,11 +11,16 @@
 // native cleanup-state transition before the bucket allocation is freed.
 
 #define BFME_SNAPSHOT_NAME_SLOT
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Common/Snapshot.h"
 
 // Shared scalar-payload bucket clear, already rowed at 0x001DBCDC.
 class Rva004DFC20 { public: void clear(); };
-extern "C" void __cdecl free(void *);
 
 struct BfmePlayerRelationBuckets
 {

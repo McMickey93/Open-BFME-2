@@ -6,7 +6,11 @@
 // (same ctor plus slot 0 plus inlined RvaCoords free, flags /O1 /EHs /MD).
 // Evidence: immediates 0x36 0x00351BD0 0x00030830; callers 0x00395286 0x0039A44B 0x004560DF.
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 typedef int Int;
 typedef float Real;

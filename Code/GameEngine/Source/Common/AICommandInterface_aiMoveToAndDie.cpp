@@ -7,7 +7,11 @@
 // (same shape with 0x38, flags /O1 /EHs /MD).
 // Evidence: immediates 0x41 0x00351BD0 0x00030830; caller 0x004622FC; prev row 0x00462224.
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 typedef int Int;
 typedef float Real;

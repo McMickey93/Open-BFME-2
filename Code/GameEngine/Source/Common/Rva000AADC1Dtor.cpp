@@ -4,7 +4,12 @@
 // owned polymorphic entry of the void* vector at +0x04, clears it through the
 // rowed erase 0x0031BD55, frees its storage, then the inline base dtor restores vftable
 // 0x00BC93C8.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

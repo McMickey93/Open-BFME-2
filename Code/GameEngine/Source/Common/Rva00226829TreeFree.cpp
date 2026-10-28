@@ -5,7 +5,11 @@
 // Evidence: self-recursive call at 0x22683B; free row at 0x30830; caller 0x22995B;
 // identical twins at 0x226856 0x226883 0x2268B0 with same shape; prev GameEngineDestructor row.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva00226829
 {

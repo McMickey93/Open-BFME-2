@@ -45,7 +45,12 @@ struct BfmeNodeEBD
 // cleanup wrapper383415. It adjusts +4 to mapped-value dtor38240F; pair
 // constructor3829E5 constructs that same mapped subobject at +4.
 class BfmeNodeValueEBD { public: ~BfmeNodeValueEBD(); };
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // STLport's owning header proxy. Destructor384DEB calls the proven clear on
 // the same receiver, then destroys this header on normal and exceptional exits.

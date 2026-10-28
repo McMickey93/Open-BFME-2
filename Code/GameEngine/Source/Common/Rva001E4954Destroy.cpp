@@ -16,7 +16,13 @@ class Rva001E4954
 public:
 	void rva001E4954(Rva001E4954Node *p);
 };
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 void Rva001E4954::rva001E4954(Rva001E4954Node *p)
 {
 	if (!p)

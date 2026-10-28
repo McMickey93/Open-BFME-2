@@ -2,9 +2,15 @@
 // Existing B07 wrappers with unresolved or non-retail destructor providers.
 // Keep them together without excluding the independent exact B07 siblings.
 // Native wrapper/destructor/vtable relationships remain documented in B07.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 #include "../../../../reference/shims/moduledata/Common/Snapshot.h"
-extern "C" void __cdecl free(void *);
 struct EmitVtableTag;
 
 class Rva0036B8E6
