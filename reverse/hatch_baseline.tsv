@@ -10872,8 +10872,8 @@ pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdate.cpp	"
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/LaserUpdate.cpp	"gsy",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdate.cpp	"",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Update/StructureToppleUpdate.cpp	"gsy",on	1
-pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Upgrade/BaseUpgradeModuleDataCtor.cpp	"",on	1
-pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Upgrade/BaseUpgradeModuleDataCtor.cpp	"sy",on	1
+pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Upgrade/BaseUpgrade.cpp	"",on	1
+pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Upgrade/BaseUpgrade.cpp	"sy",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Weapon.cpp	"",on	2
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Weapon.cpp	"s",on	1
 pragma_optimize	Code/GameEngine/Source/GameLogic/Object/Weapon.cpp	"sp",on	1
