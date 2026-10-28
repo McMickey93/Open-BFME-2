@@ -530,8 +530,6 @@ address_global	Code/GameEngine/Source/Common/Rva007AC9B0FilterInits.cpp	g_Va00DE
 address_global	Code/GameEngine/Source/Common/Rva007AC9B0FilterInits.cpp	g_Va00DEC1DC	2
 address_global	Code/GameEngine/Source/Common/Rva007AC9B0FilterInits.cpp	g_Va00DEC1F0	3
 address_global	Code/GameEngine/Source/Common/Rva007ACDE1StlGlobalInits.cpp	g_Va00DF29B4	2
-address_global	Code/GameEngine/Source/Common/Rva007ACDE1StlGlobalInits.cpp	g_Va00DFF144	2
-address_global	Code/GameEngine/Source/Common/Rva007ACDE1StlGlobalInits.cpp	g_Va00DFF148	2
 address_global	Code/GameEngine/Source/Common/Rva007ACDE1StlGlobalInits.cpp	g_Va00DFF494	2
 address_global	Code/GameEngine/Source/Common/Rva007ACDE1StlGlobalInits.cpp	g_Va00E03168	2
 address_global	Code/GameEngine/Source/Common/Rva007ACDE1StlGlobalInits.cpp	g_Va00E03174	2
@@ -612,8 +610,6 @@ address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DFE4AC	
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DFEC74	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DFEC84	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DFF134	3
-address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DFF144	3
-address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DFF148	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DFF494	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00E00944	2
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00E01CF0	2

@@ -19057,8 +19057,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FF130,4,.data,global,_s_rva007AE595,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x009FF134,12,.data,global,?g_Va00DFF134@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,owned,,1,2
 0x009FF140,4,.data,global,_worldDict,Code/GameEngine/Source/GameClient/MapUtil.cpp,owned,,1,3
-0x009FF144,4,.data,global,?g_Va00DFF144@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,provisional,?g_Va00DFF144@@3IA;_m_supplyPositions@Code/GameEngine/Source/GameClient/MapUtil.cpp,2,2
-0x009FF148,4,.data,global,?g_Va00DFF148@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,provisional,?g_Va00DFF148@@3IA;_m_techPositions@Code/GameEngine/Source/GameClient/MapUtil.cpp,2,2
+0x009FF144,4,.data,global,_m_supplyPositions,Code/GameEngine/Source/GameClient/MapUtil.cpp,owned,,1,6
+0x009FF148,4,.data,global,_m_techPositions,Code/GameEngine/Source/GameClient/MapUtil.cpp,owned,,1,4
 0x009FF14C,8,.data,global,?TheSupplyAndTechImageLocations@@3VTechAndSupplyImages@@A,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/SkirmishGameOptionsMenu.cpp,provisional,?TheSupplyAndTechImageLocations@@3VTechAndSupplyImages@@A;?g_Va00DFF14C@@3IA,2,7
 0x009FF154,4,.data,global,?s@?1??Rva0030062CGet@@YAPAVAsciiString@@XZ@4V2@A,Code/GameEngine/Source/Common/Rva0030062CGet.cpp,owned,,1,2
 0x009FF158,4,.data,global,?$S1@?1??Rva0030062CGet@@YAPAVAsciiString@@XZ@4IA,Code/GameEngine/Source/Common/Rva0030062CGet.cpp,owned,,1,4

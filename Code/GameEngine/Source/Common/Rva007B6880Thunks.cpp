@@ -6397,23 +6397,23 @@ void __cdecl rva007B8590()
 	return receiver->~Rva00200667();
 }
 
-extern unsigned g_Va00DFF144;
-unsigned int g_Va00DFF144;
+// MapUtil.cpp owns the supply-position list at 0x009FF144.
+extern "C" unsigned int m_supplyPositions;
 
-// ?rva007B7A87@@YAXXZ @ 0x007B7A87 (10B). Global Rva00200667 dtor thunk: ecx=&g_Va00DFF144 then tail-jmp to pinned ??1Rva00200667@@QAE@XZ (0x00200667; deleting dtor 0x002821B3). No callers. Honest address name.
+// ?rva007B7A87@@YAXXZ @ 0x007B7A87 (10B). Global Rva00200667 dtor thunk: ecx=&m_supplyPositions then tail-jmp to pinned ??1Rva00200667@@QAE@XZ (0x00200667; deleting dtor 0x002821B3). No callers. Honest address name.
 void __cdecl rva007B7A87()
 {
-	Rva00200667 *receiver = (Rva00200667 *)&g_Va00DFF144;
+	Rva00200667 *receiver = (Rva00200667 *)&m_supplyPositions;
 	return receiver->~Rva00200667();
 }
 
-extern unsigned g_Va00DFF148;
-unsigned int g_Va00DFF148;
+// MapUtil.cpp owns the tech-position list at 0x009FF148.
+extern "C" unsigned int m_techPositions;
 
-// ?rva007B7A91@@YAXXZ @ 0x007B7A91 (10B). Global Rva00200667 dtor thunk: ecx=&g_Va00DFF148 then tail-jmp to pinned ??1Rva00200667@@QAE@XZ (0x00200667; deleting dtor 0x002821B3). No callers. Honest address name.
+// ?rva007B7A91@@YAXXZ @ 0x007B7A91 (10B). Global Rva00200667 dtor thunk: ecx=&m_techPositions then tail-jmp to pinned ??1Rva00200667@@QAE@XZ (0x00200667; deleting dtor 0x002821B3). No callers. Honest address name.
 void __cdecl rva007B7A91()
 {
-	Rva00200667 *receiver = (Rva00200667 *)&g_Va00DFF148;
+	Rva00200667 *receiver = (Rva00200667 *)&m_techPositions;
 	return receiver->~Rva00200667();
 }
 

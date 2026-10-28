@@ -140,8 +140,8 @@ struct Coord3D;
 struct BfmeWordValue4;
 
 extern unsigned int g_Va00E03174;
-extern unsigned int g_Va00DFF144;
-extern unsigned int g_Va00DFF148;
+extern "C" unsigned int m_supplyPositions;	// MapUtil.cpp
+extern "C" unsigned int m_techPositions;	// MapUtil.cpp
 void __cdecl rva007B82C9();
 void __cdecl rva007B7A87();
 void __cdecl rva007B7A91();
@@ -153,16 +153,16 @@ void rva007B02A6()
 	atexit(rva007B82C9);
 }
 
-// ?rva007AE5DA@@YAXXZ @0x007AE5DA 29B: list<Coord3D> ctor 0x0073F451 on &g_Va00DFF144 (MapUtil's supply positions), atexit(0x007B7A87).
+// ?rva007AE5DA@@YAXXZ @0x007AE5DA 29B: list<Coord3D> ctor 0x0073F451 on &m_supplyPositions (MapUtil's supply positions), atexit(0x007B7A87).
 void rva007AE5DA()
 {
-	new (&g_Va00DFF144) _STL::list<Coord3D>(_STL::allocator<Coord3D>());
+	new (&m_supplyPositions) _STL::list<Coord3D>(_STL::allocator<Coord3D>());
 	atexit(rva007B7A87);
 }
 
-// ?rva007AE5F7@@YAXXZ @0x007AE5F7 29B: list<Coord3D> ctor 0x0073F451 on &g_Va00DFF148 (MapUtil's tech positions), atexit(0x007B7A91).
+// ?rva007AE5F7@@YAXXZ @0x007AE5F7 29B: list<Coord3D> ctor 0x0073F451 on &m_techPositions (MapUtil's tech positions), atexit(0x007B7A91).
 void rva007AE5F7()
 {
-	new (&g_Va00DFF148) _STL::list<Coord3D>(_STL::allocator<Coord3D>());
+	new (&m_techPositions) _STL::list<Coord3D>(_STL::allocator<Coord3D>());
 	atexit(rva007B7A91);
 }
