@@ -11,6 +11,19 @@
 // base); the per-slot player template combo boxes are at +0x334 (as in
 // MpGameSetupOnInitGadget.cpp); +0x2C4 is a dirty flag.
 
+// ExternFunc calls the CRT _mbscpy import thunk at RVA 0x00629176.
+// Keep that direct call while taking the unsigned-byte API from its header.
+#define _CRTIMP
+#include <mbstring.h>
+#undef _CRTIMP
+#define _CRTIMP __declspec(dllimport)
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define NOMINMAX
+#include <windows.h>
+#include <mmsystem.h>
+
 // vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
 // overload takes the call instead, so this TU emits no external max COMDAT.
 namespace _STL {
@@ -71,8 +84,6 @@ public:
 extern Mouse *TheMouse;
 
 void *bfmeGo925A(BfmeKeyLC *comboBox);
-
-extern "C" __declspec(dllimport) int __cdecl atoi(const char *text);
 
 enum SlotState
 {
@@ -272,10 +283,6 @@ int GadgetComboBoxAddEntry(GameWindow *comboBox, UnicodeString text, int color);
 void GadgetComboBoxSetItemData(GameWindow *comboBox, int index, void *data);
 void GadgetComboBoxSetMaxDisplay(GameWindow *comboBox, int maxDisplay);
 int Rva0043DDF8(int count);
-
-extern "C" char *__cdecl _mbscpy(char *dest, const char *src);
-extern "C" int __cdecl strcmp(const char *left, const char *right);
-extern "C" __declspec(dllimport) int __cdecl sprintf(char *buffer, const char *format, ...);
 
 class Image;
 
@@ -564,7 +571,6 @@ public:
 
 extern GameTextInterface *TheGameText;
 
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 // Rva00511730Save.cpp's text entry helper.
 void Rva00511730(int value);
@@ -1258,19 +1264,19 @@ void AptMpGameSetup::ExternFunc(int query, char *result, bool skip)
 	{
 	case 0:
 		if (!skip)
-			_mbscpy(result, m_owner->v01() ? "1" : "0");
+			_mbscpy((unsigned char *)result, (const unsigned char *)(m_owner->v01() ? "1" : "0"));
 		break;
 	case 1:
 		if (!skip)
-			_mbscpy(result, rva00442C9C() ? "1" : "0");
+			_mbscpy((unsigned char *)result, (const unsigned char *)(rva00442C9C() ? "1" : "0"));
 		break;
 	case 2:
 		if (!skip)
-			_mbscpy(result, m_rules.m_04 == 1 && m_game->rva0043DA65() ? "1" : "0");
+			_mbscpy((unsigned char *)result, (const unsigned char *)(m_rules.m_04 == 1 && m_game->rva0043DA65() ? "1" : "0"));
 		break;
 	case 3:
 		if (!skip)
-			_mbscpy(result, m_flags & 0x80 ? "1" : "0");
+			_mbscpy((unsigned char *)result, (const unsigned char *)(m_flags & 0x80 ? "1" : "0"));
 		break;
 	}
 }

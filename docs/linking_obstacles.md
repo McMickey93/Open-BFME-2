@@ -283,6 +283,16 @@ removed-provider scope in the next census. The batch audit remains inconclusive.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **Multiplayer setup Microsoft headers (2026-10-28, base `38c5c62536`):**
+  [The scoped cleanup](../reverse/attempt_support/mpgamesetup-crt-headers-20261028-codexb.md)
+  removes five local declarations in MpGameSetupSlots.cpp. All 98 rows and 13
+  EH graphs verify; 141 external COMDAT bodies and 251 external symbol entries
+  are unchanged. Paired ordinary previews preserve LINKS for 7,530 authored
+  bytes against index `41c28839bf`. The staged-tree batch audit is INCONCLUSIVE:
+  index/base differ and the source lacks a current strict census receipt.
+  Carry the unit into the next normal census; no consumer clearance or census
+  gain is claimed.
+
 - **DogmaAllocator consolidation (2026-10-28, base `284a099880`):**
   [The consolidation audit](../reverse/attempt_support/dogma-consolidation-20261028-codexb4.md)
   absorbs DogmaPoolBytes.cpp and DogmaPoolFreeBlock.cpp into their approved TU,
@@ -1693,6 +1703,12 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
 **Assigned record-family audit (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`, index `d1f046749a`):** no source edit is retained in EvacuateDamageCtorModuleFactoryBody.cpp or ObjectCreationList.cpp. The Evacuate constructor's native EH cleanup reaches the existing 25-byte `Rva004B96CC` destructor, but two other rowed lifetimes in that source call the nocase-string tree destructor at 0x0002CC38 and the hashtable destructor at 0x0002CCC3. A declaration-only suppression would have no exact-name provider and would conceal those incompatible type identities. ObjectCreationList's rowed Payload vector construction reaches the existing 0x004F6A52 assignment worker, while destruction reaches the existing 0x005F85C8 stride-eight range worker. These are naming/type reconciliation prerequisites; no container reinterpretation, new pin or row change was attempted. Raw native references, exact owner names and the paired provider preview are in `build/c136-logic/`; all assigned sources pass the combined 118-row byte gate. The families remain blocked; no census clearance is claimed.
 
 **Evacuate constructor recheck (2026-10-27, inspected `90b5ece91e`; index `73061d9452`):** the current ordinary preview still reports U1/L2/S2. The 0x0002CD7B destructor remains the misidentified INIMacroTable lifetime, and its current TU-map row is displaced with no approved destination. No source trial was repeated. Resolve the real macro-table member types and approved row ownership before changing this family; declaration-only suppression would still remove its only named providers. The [bounded recheck and independent CRT cleanup](../reverse/attempt_support/tree-erase-crt-header-20261027.md) records the scope. Claims released; no clearance or census gain.
+
+**Evacuate selection review (2026-10-28, inspected `38c5c62536`):** current
+source, ownership map and prior handoffs retain the member-identity and approved
+TU prerequisites above. No repeated source trial or fresh link preview; claims
+released. The [selection record](../reverse/attempt_support/mpgamesetup-crt-headers-20261028-codexb.md)
+separates this blocked family from the independent header cleanup.
 
 **Assigned W3D unmatched-emission cleanup (2026-10-26, inspected `2a45addda1806342ac5c52757f63be902dcd428e`; index `d1f046749a`, retail-truth-4):** `W3DRadar.cpp` drops eight unrowed donor methods and their private stealth helper, retaining every existing matched definition, the surface-value helper and the existing private-convention caller. No new body, pin, declaration spelling, shared header or ledger change is used. Radar is cleared in ordinary-preview scope; census confirmation pending. Raw baseline, paired current-object previews, matched-row checks, provider-removal audit and final gates are mapped by `build/link-report.md` under `build/link-worker-w5-c136/`. The retained Radar cleanup label is verified through its parent's exact EH graph after compiler renumbering. A separate w3d_dep scanner-removal trial was fully reversed after the wider current-provider check found a linking string-list consumer losing seven helpers (LINK-020); its smaller-scope LINKS result is not retained repair credit. The broader entry remains open; verify Radar in the next normal maintainer census.
 
