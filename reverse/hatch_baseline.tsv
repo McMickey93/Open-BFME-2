@@ -14337,13 +14337,11 @@ present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Dra
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DDebrisDrawLegacy.cpp	setFullyObscuredByShroud@W3DDebrisDraw@@UAEX_N@Z	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DDebrisDrawLegacy.cpp	setShadowsEnabled@W3DDebrisDraw@@UAEX_N@Z	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DDebrisDrawSetModelName.cpp	The	1
-present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	0LogClass@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	0W3DAnimationInfo@@	2
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	0W3DModelDraw@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	0W3DModelDrawModuleData@@	1
-present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	1LogClass@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	1W3DAnimationInfo@@	1
-present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	4W3DAnimationInfo@@QAEAAV0@ABV0@@Z	2
+present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	4W3DAnimationInfo@@QAEAAV0@ABV0@@Z	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	addPublicBone@ModelConditionInfo@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	adjustAnimSpeedToMovementSpeed@W3DModelDraw@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	adjustAnimation@W3DModelDraw@@	1
@@ -14357,8 +14355,6 @@ present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Dra
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	crc@W3DModelDrawModuleData@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	doHideShowProjectileObjects@W3DModelDraw@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	doHideShowSubObjs@W3DModelDraw@@	1
-present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	dumpMatrix3D@LogClass@@	1
-present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	dumpReal@LogClass@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	findBestInfo@W3DModelDraw@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	findBestInfo@W3DModelDrawModuleData@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	findPristineBone@ModelConditionInfo@@	1
@@ -14382,7 +14378,6 @@ present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Dra
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	hideGarrisonFlags@W3DModelDraw@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	loadAnimations@ModelConditionInfo@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	loadPostProcess@W3DModelDrawModuleData@@	1
-present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	log@LogClass@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	matchesMode@ModelConditionInfo@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	nukeCurrentRender@W3DModelDraw@@	1
 present_unmatched	Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp	onDrawableBoundToObject@W3DModelDraw@@	1

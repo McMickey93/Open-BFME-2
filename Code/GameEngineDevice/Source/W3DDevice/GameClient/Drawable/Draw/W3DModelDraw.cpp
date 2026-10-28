@@ -222,6 +222,7 @@ static inline Bool isValidTimeToCalcLogicStuff()
 //-------------------------------------------------------------------------------------------------
 
 #if defined(DEBUG_CRC) && (defined(_DEBUG) || defined(_INTERNAL))
+// The retail release excludes these debug-only logging definitions.
 #include <cstdarg>
 
 // A declaration-only specialization stops this TU emitting its own
@@ -249,7 +250,7 @@ protected:
 	FILE *m_fp;
 };
 
-// ??0LogClass@@ present-unmatched
+// ??0LogClass@@ absent-from-retail
 LogClass::LogClass(const char *fname)
 {
 	char buffer[ _MAX_PATH ];
@@ -269,7 +270,7 @@ LogClass::LogClass(const char *fname)
 	m_fp = fopen(fullPath.str(), "wt");
 }
 
-// ??1LogClass@@ present-unmatched
+// ??1LogClass@@ absent-from-retail
 LogClass::~LogClass()
 {
 	if (m_fp)
@@ -278,7 +279,7 @@ LogClass::~LogClass()
 	}
 }
 
-// ?log@LogClass@@ present-unmatched
+// ?log@LogClass@@ absent-from-retail
 void LogClass::log(const char *fmt, ...)
 {
 	DEBUG_ASSERTCRASH(isValidTimeToCalcLogicStuff(), ("Calc'ing logic bone pos in client!!!"));
@@ -313,7 +314,7 @@ void LogClass::log(const char *fmt, ...)
 	fflush(m_fp);
 }
 
-// ?dumpMatrix3D@LogClass@@ present-unmatched
+// ?dumpMatrix3D@LogClass@@ absent-from-retail
 void LogClass::dumpMatrix3D(const Matrix3D *matrix3D, AsciiString name, AsciiString fname, Int line)
 {
 	((StringBase<char> &)(fname)).toLower();
@@ -326,7 +327,7 @@ void LogClass::dumpMatrix3D(const Matrix3D *matrix3D, AsciiString name, AsciiStr
 			AS_INT(matrix[(i<<2)+0]), AS_INT(matrix[(i<<2)+1]), AS_INT(matrix[(i<<2)+2]), AS_INT(matrix[(i<<2)+3]));
 }
 
-// ?dumpReal@LogClass@@ present-unmatched
+// ?dumpReal@LogClass@@ absent-from-retail
 void LogClass::dumpReal(Real r, AsciiString name, AsciiString fname, Int line)
 {
 	if (!m_fp || !isValidTimeToCalcLogicStuff())
@@ -479,7 +480,6 @@ W3DAnimationInfo::W3DAnimationInfo( const W3DAnimationInfo &w3DAnimationInfo ) :
 }
 
 //-------------------------------------------------------------------------------------------------
-// ??4W3DAnimationInfo@@QAEAAV0@ABV0@@Z present-unmatched
 // ??4W3DAnimationInfo@@QAEAAV0@ABV0@@Z present-unmatched
 W3DAnimationInfo& W3DAnimationInfo::operator=(const W3DAnimationInfo &r)
 {
