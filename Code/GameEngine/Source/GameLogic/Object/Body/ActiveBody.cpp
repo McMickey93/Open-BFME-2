@@ -1289,6 +1289,8 @@ private:
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp
+
 // ActiveBody.cpp -- ActiveBody members recovered from WorldBuilder leads
 // (reverse/wb_name_leads.csv): WB's debug build names the function (vtable
 // pairing); retail supplies the bytes. Zero Hour's setDamageState
@@ -2432,8 +2434,6 @@ void Rva004BDB37::rva004BDB37()
 	v10();
 }
 
-// tu-skeleton: 0x004BDB85 126B ?setMaxHealth@ActiveBody@@UAEXMW4MaxHealthChangeType@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodySetMaxHealth.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva0020E100ForwardAndFinish.cpp
 
 void Rva0020E100Owner::forwardAndFinish()
@@ -2442,8 +2442,6 @@ void Rva0020E100Owner::forwardAndFinish()
 	reinterpret_cast<Object *>(helper)->rva0028FCD9(reinterpret_cast<int>(m_value), m_kind);
 	finish();
 }
-
-// tu-skeleton: 0x004BDC1C 9B ??0Rva004BDC1C@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva0020E150PositiveRatio.cpp
 
@@ -2454,24 +2452,6 @@ float Rva0020E150Value::positiveRatio() const
 	}
 	return 0.0f;
 }
-
-// tu-skeleton: 0x004BDC41 7B ?get@Rva004BDC41FloatChaseField@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x004BDC48 7B ?get@Rva004BDC48PtrChaseField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x004BDC4F 7B ?get@Rva004BDC4FFloatChaseField@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x004BDC6D 54B ?getSingleBitFromName@?$BitFlags@$0BF@@@SAHPBD@Z -- matched in Code/GameEngine/Source/Common/BitFlags21VeterancyLevelGetSingleBitFromName.cpp (not merged yet)
-
-// tu-skeleton: 0x004BDCA3 9B ??0Rva004BDCA3@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp (not merged yet)
-
-// tu-skeleton: 0x004BDCE2 745B ?updateBodyParticleSystems@Rva0020FE20ActiveBodyInterface@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyParticlesRva004BDCE2.cpp (not merged yet)
-
-// tu-skeleton: 0x004BDFCB 139B ?Rva004BDFCBTest@@YAEPBVObject@@0@Z -- matched in Code/GameEngine/Source/Common/Rva004BDFCB.cpp (not merged yet)
-
-// tu-skeleton: 0x004BE0C7 42B ?rva004BE0C7@Rva004BE0C7@@QAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0028C6FB.cpp (not merged yet)
-
-// tu-skeleton: 0x004BE0F1 47B ?setBitByName@?$BitFlags@$0BF@@@QAE_NPBD@Z -- matched in Code/GameEngine/Source/Common/BitFlags304SetBitByName.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva004BE19DCtor.cpp
 
@@ -2485,8 +2465,6 @@ float Rva0020E150Value::positiveRatio() const
 Rva004BE19D::Rva004BE19D() : m_name(AsciiString::TheEmptyString)
 {
 }
-
-// tu-skeleton: 0x004BE1AE 156B ?validateArmorAndDamageFX@ActiveBody@@QBEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyValidateArmor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Body/Rva004BE722.cpp
 
@@ -2506,6 +2484,30 @@ void Rva004BE722::rva004BE722(void *arg)
 	((Rva004BE722Arg *)arg)->v24(buf, 3);
 }
 
+// tu-skeleton: 0x004BDB85 126B ?setMaxHealth@ActiveBody@@UAEXMW4MaxHealthChangeType@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodySetMaxHealth.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDC1C 9B ??0Rva004BDC1C@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDC41 7B ?get@Rva004BDC41FloatChaseField@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDC48 7B ?get@Rva004BDC48PtrChaseField@@QBEHXZ -- matched in Code/GameEngine/Source/Common/Disp8PtrChaseDwordGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDC4F 7B ?get@Rva004BDC4FFloatChaseField@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDC6D 54B ?getSingleBitFromName@?$BitFlags@$0BF@@@SAHPBD@Z -- matched in Code/GameEngine/Source/Common/BitFlags21VeterancyLevelGetSingleBitFromName.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDCA3 9B ??0Rva004BDCA3@@QAE@XZ -- matched in Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDCE2 745B ?updateBodyParticleSystems@Rva0020FE20ActiveBodyInterface@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyParticlesRva004BDCE2.cpp (not merged yet)
+
+// tu-skeleton: 0x004BDFCB 139B ?Rva004BDFCBTest@@YAEPBVObject@@0@Z -- matched in Code/GameEngine/Source/Common/Rva004BDFCB.cpp (not merged yet)
+
+// tu-skeleton: 0x004BE0C7 42B ?rva004BE0C7@Rva004BE0C7@@QAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0028C6FB.cpp (not merged yet)
+
+// tu-skeleton: 0x004BE0F1 47B ?setBitByName@?$BitFlags@$0BF@@@QAE_NPBD@Z -- matched in Code/GameEngine/Source/Common/BitFlags304SetBitByName.cpp (not merged yet)
+
+// tu-skeleton: 0x004BE1AE 156B ?validateArmorAndDamageFX@ActiveBody@@QBEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyValidateArmor.cpp (not merged yet)
+
 // tu-skeleton: 0x004BF186 98B ?setIndestructible@ActiveBody@@UAEX_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody_setIndestructible.cpp (not merged yet)
 
 // tu-skeleton: 0x004BF40F 191B ?rva004BF40F@Rva004BF40F@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva004BF40FLoadPostProcess.cpp (not merged yet)
@@ -2516,7 +2518,15 @@ void Rva004BE722::rva004BE722(void *arg)
 
 // tu-skeleton: 0x004BF6A1 423B ??0ActiveBody@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyConstructor.cpp (not merged yet)
 
-// tu-skeleton: 0x004BF848 69B ?getModuleNameKey@ActiveBody@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp
+
+// ?getModuleNameKey@ActiveBody@@UBE?AW4NameKeyType@@XZ
+NameKeyType ActiveBody::getModuleNameKey() const
+{
+	static NameKeyType TheActiveBodyPoolKey =
+		TheNameKeyGenerator->nameToKey("ActiveBody");
+	return TheActiveBodyPoolKey;
+}
 
 // tu-skeleton: 0x004BF88D 6B ?name@ActiveBody@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 
@@ -2581,10 +2591,6 @@ void Rva004BE722::rva004BE722(void *arg)
 // tu-skeleton: 0x0078FA32 14B Unwind@00b8fa32 -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyConstructor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078FA40 10B __ehhandler$??0ActiveBody@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyConstructor.cpp (not merged yet)
-
-// tu-skeleton: 0x0078FA4A 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078FA57 10B __ehhandler$?getModuleNameKey@ActiveBody@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078FA61 8B Unwind@00b8fa61 -- matched in Code/GameEngine/Source/GameLogic/Object/Body/BodyModuleDeletingDtors.cpp (not merged yet)
 
