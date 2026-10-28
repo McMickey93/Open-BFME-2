@@ -47,11 +47,72 @@ approved rows in the composed unit; its input files also carry the existing
 Heal transfer fold alias. Data identity reports no findings, and converged
 data enforcement checks 11 addresses with no second names or unjudged rows.
 
+## Applied composition and verification
+
+The declaration prerequisite is committed separately as `ca11d97fcb`. After
+the runner's publication rebase onto `dc5bd70524`, the refreshed scoped
+planner was reviewed again. The supported merge accepts the behavior unit,
+key getter and transfer source, removing two net source files. It rejects the
+constructor and leaves both mixed sources untouched. The five function-ledger
+cells (including the existing Heal fold), four TU-map source cells and two
+data-ledger ownership cells are repointed by the tool. The map's assignments
+are not regenerated in the commit. One whitespace-only line emitted by the
+composer is cleaned up before final verification.
+
+The composed unit passes `./build.sh`: 18/18 rows, five string references,
+and all three EH graphs EXACT. Its strict `link_check.py --prepare-current`
+receipt passes. Frozen-file, CSV, TU ownership, Microsoft-header staged check,
+code identity (18 rows, zero new findings in shadow) and data identity checks
+pass. Converged data enforcement checks 11 addresses with no second names or
+unjudged rows.
+
+Original versus composed COFF comparison preserves all 35 distinct external
+COMDAT byte-and-symbolic-relocation fingerprints, all 35 external definitions
+and all 40 unresolved external names. No conflicting original COMDAT copies.
+The initial scratch comparison accidentally counted three undefined entries
+also defined in the composed object as unresolved; those duplicate entries
+are referenced only by .debug$F records. Subtracting the object's definitions
+from both dependency sets gives the equal unresolved-name sets above.
+
+The merge engine's census-linked-input guard passes. The final ordinary
+preview LINKS for 982 authored bytes, equal to the sum of the original three
+inputs. The destination's apparent preview increase from 876 to 982 is moved
+ownership, not new census coverage. The preview index remains `41c28839bf`.
+
+## Registers and tooling compatibility audit
+
+Audit range: `dc5bd70524..ca11d97fcb` plus this composition, covering the queued
+W3DShaderManager resource donor and these two Salvage donors together. The
+combined old-path/basename search of tracked tools, hooks, workflows, source
+includes, build/configuration files, registers and documentation finds no
+active consumer requiring an update. Remaining mentions are origin banners,
+BFME 1 provenance and reference ledgers, historical attempts/evidence,
+deleted-row explanation and the published link-status snapshot. These are
+preserved. No directories move; dynamic source discovery is unchanged.
+
+No data-check or code-identity baseline keys, header-adoption rows or hatch
+ownership belong to the two absorbed Salvage donors. The merge transfers
+the two data-ledger owners without changing identities or totals, and
+refreshes header-adoption and Microsoft-header reports through their owning
+tools (no queue delta for these donors). Active function/map/data paths
+resolve to the destination. The constructor's private-vtable keys remain
+with the untouched constructor source. W3D's previously recorded register
+audit remains applicable; its 21 rows and five data rows pass again after
+resolving the publication rebase, which preserves both sides' header-queue
+entries.
+
+The outgoing batch audit of staged tree
+`2bd87b02db6e8fe956d921e3a38b39724e86604f` against `dc5bd70524` is
+INCONCLUSIVE: the index predates the base, and affected consumer
+Code/GameEngine/Source/Common/0CreateAHeroManager21FE49.cpp lacks a current
+receipt. Consumer selection remains unverified. This is the same outstanding
+census prerequisite recorded for the queued W3D merge, now covering the full
+batch; preserved object facts do not replace that verification.
+
 ## Remaining work
 
-Run the supported composition after the declaration prerequisite is committed.
-Keep the constructor separate unless its layout and explicit vtable stores
-can be reconciled without changing its verified code or bindings. Complete
-the path/register/provider audit and current destination receipt before
-publishing a merge; carry inconclusive consumer selection into the next
-scheduled census. No census or smoke runner is started by this work.
+Keep the constructor separate until its layout and explicit vtable stores
+can be reconciled without changing verified code or bindings. Carry the
+merged units and affected consumers into the next scheduled census. No
+census or smoke runner is started by this work, and no new linked-byte or
+image-ownership result is claimed.
