@@ -1425,8 +1425,23 @@ def merge(tu, dry_run=False, log=print, claim=True):
         report = _merge(tu, sk, don, report, dry_run)
         if "blocked" in report:   # nothing was written: give the scope back
             claims.release(claim_keys(tu, don))
+        return view_hint(report, tu, don)
+    return view_hint(_merge(tu, sk, don, report, dry_run), tu, don)
+
+
+def view_hint(report, tu, don):
+    """A donor rejected for a compile error, in a TU whose files declare their own
+    views of one class, is pointed at tools/tu_views.py: it gives every file the
+    same verified view, so the merge emits the class once."""
+    if not any(str(why).startswith("compile") for why in report.get("rejected", {}).values()):
         return report
-    return _merge(tu, sk, don, report, dry_run)
+    import tu_views
+    shared = tu_views.shared_private(sorted(don), ROOT)
+    if shared:
+        report["reconcile"] = (f"python3 tools/tu_views.py {tu} --dry-run, then without --dry-run: the donors "
+                               f"declare their own views of {', '.join(shared[:4])}{', ...' if len(shared) > 4 else ''}"
+                               " (docs/consolidation.md, \"Workflow per TU\", step 4)")
+    return report
 
 
 def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):

@@ -45,8 +45,16 @@ regenerated `tu_map.csv` from this lane.
 4. **Reconcile the rejected donors, one ordinary commit each.** The usual cause is
    a private view of a class or struct that differs from the seed's: a local
    `Coord3D`, an enum declared twice, a member declared `private` in one view and
-   reached from another. Make the donor compile against the seed's headers, or
-   move both to the canonical header (`tools/class_views.py --class X`,
+   reached from another. `python3 tools/tu_views.py TU --dry-run` plans the
+   mechanical part for every class two of the TU's files declare privately: one
+   superset view from the compiler's layouts (seed names, union of methods,
+   padding for gaps, forward declarations and enums a file lacks), the donors'
+   field references renamed, and a conflict with its evidence wherever the
+   views disagree on layout, vtable slots or mangling.
+   Without `--dry-run` it writes the classes that verify (layout re-read,
+   `./build.sh` exact, nothing newly unmatched) and restores the rest; commit
+   that as its own change. Otherwise make the donor compile against the seed's
+   headers, or move both to the canonical header (`tools/class_views.py --class X`,
    `tools/header_adopt_lane.py`). Verify the donor with `./build.sh` and commit it
    before merging. Duplicate *identical* declarations and donor-local copies of a
    type that the seed or an included header defines are removed by the merge

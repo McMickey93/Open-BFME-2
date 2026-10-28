@@ -1814,12 +1814,17 @@ def consolidation_items():
         return [], f"{TU_MAP} absent: consolidation queue skipped"
     tools_on_path()
     import tu_skeleton
+    import tu_views
     queue = tu_skeleton.queue(root=ROOT)
     items = []
     for entry in queue:
         tu = entry["tu"]
         don, _, _ = tu_skeleton.donors(tu, tu_skeleton.skeleton(tu))
         files = sorted(set(don) | {tu})
+        # donors declaring their own views of one class are the usual rejection: share them first
+        views = tu_views.shared_private(sorted(don), ROOT)
+        first = (f"python3 tools/tu_views.py {tu} (its donors declare their own views of "
+                 f"{', '.join(views[:3])}{', ...' if len(views) > 3 else ''}), then " if views else "")
         items.append({
             "tier": "consolidate", "check": "tu-merge", "function": tu, "source": tu, "target_rva": "",
             "size": 0, "count": entry["removes"],
@@ -1829,7 +1834,7 @@ def consolidation_items():
                     f"{entry['mixed']} mixed and {entry['refused']} refused file(s) stay; reconcile rejected donors "
                     "in their own commits first (docs/consolidation.md, \"Workflow per TU\")"),
             "start": (f"python3 tools/name_lane.py consolidate --under {posixpath.dirname(tu)}/, then "
-                      f"python3 tools/tu_skeleton.py --merge {tu} --dry-run"),
+                      f"{first}python3 tools/tu_skeleton.py --merge {tu} --dry-run"),
             "claim": [f"file:{f}" for f in files],
             "pass_test": (f"BFME_CLAIM_OWNER=<seat> python3 tools/tu_skeleton.py --merge {tu}, then ./build.sh {tu} "
                           f"and python3 tools/find_declared_unmatched.py {tu}: the donors are gone and every moved "
