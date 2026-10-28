@@ -13,14 +13,15 @@ spike measured why: one model alone named about 60% of placeholders right and
 2-9% misleadingly; two independent proposals that agreed were about 80% right
 and never misleading.
 
-    python3 tools/name_lane.py next --session S --model M [--count N] [--file F] [--list-only]
+    python3 tools/name_lane.py next --session S --model M [--count N] [--subsystem Code/...] [--file F] [--list-only]
     python3 tools/name_lane.py submit ANSWER.json --session S --model M
     python3 tools/name_lane.py apply [--retry-blocked] [--lead 2] [--min-models 1] [--only-labels L,L]
     python3 tools/name_lane.py dispute KEY... --reason TEXT
     python3 tools/name_lane.py status [--only-labels L,L] [--lead 2] [--min-models 1]
 
-`next` serves one matched, non-generated Code/ source with the identifiers
-that file alone decides -- functions it owns rows for, classes only it
+`next` serves matched, non-generated Code/ sources from one subsystem, with
+shared existing-source context. Each file decides only its own identifiers --
+functions it owns rows for, classes only it
 defines, their used members, parameters and locals (locals only where the unit
 compiles optimised: under /Od a local's name can reorder the frame), and file
 globals it owns data rows for -- that are placeholder or weak
@@ -98,7 +99,7 @@ import random
 import re
 import subprocess
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
@@ -301,6 +302,38 @@ class Lane:
                     by[r.get("source", "")].append(r)
             self.ctx._cache["_by_source"] = by
         return self.ctx._cache["_by_source"]
+
+    def subsystem(self, rel):
+        """(directory, basis) for scheduling, never a naming/merge approval.
+
+        A fresh map must approve every owned row under non-provisional TUs in
+        one directory to route a fragmented source elsewhere. Other files are
+        explicitly grouped by their actual source directory.
+        """
+        if not hasattr(self, "_subsystems"):
+            import tu_map
+            self._subsystems = {}
+            self.subsystem_map_stale = tu_map.check_fresh(tu_map.Layout(self.root))
+            if not self.subsystem_map_stale:
+                mapping = tu_map.load(self.root)
+                for source, rows in self.ledger().items():
+                    directories = set()
+                    for row in rows:
+                        entries = [r for r in mapping.get(rename._rva(row.get("target_rva")), ())
+                                   if r["kind"].startswith("code") and r.get("source") == source]
+                        targets = {tu_map.approved_tu(mapping, r) for r in entries
+                                   if not tu_map.provisional_name(r)}
+                        if len(entries) != 1 or len(targets) != 1 or None in targets:
+                            directories.add(None)
+                            break
+                        target = next(iter(targets))
+                        if not target.startswith("Code/"):
+                            directories.add(None)
+                            break
+                        directories.add(PurePosixPath(target).parent.as_posix())
+                    if len(directories) == 1 and None not in directories:
+                        self._subsystems[source] = (directories.pop(), "approved-tu-directory")
+        return self._subsystems.get(rel, (PurePosixPath(rel).parent.as_posix(), "source-directory"))
 
     def data_rows(self, rel):
         return [r for r in self.ctx.dicts(rename.DATA_ROWS) if r.get("source") == rel and r.get("status") == "matched"]
@@ -594,6 +627,49 @@ def queue(lane, worker, model, only=None):
     return files, voted_sessions
 
 
+def subsystem_prefix(value):
+    value = (value or "").replace("\\", "/").rstrip("/")
+    parts = value.split("/")
+    if not value or parts[0] != "Code" or any(p in ("", ".", "..") for p in parts):
+        fail("--subsystem must be a directory prefix under Code/ without . or .. components")
+    return value
+
+
+def under(path, prefix):
+    return path == prefix or path.startswith(prefix + "/")
+
+
+def subsystem_brief(lane, served, group):
+    """Shared context consists of existing source, never another seat's votes."""
+    lines = [f"SUBSYSTEM CONTEXT: {group}",
+             "Read these related files together before choosing names. Reuse existing",
+             "terminology when the roles match; do not equate private class views or",
+             "infer a layout merely because files share this scheduling group.",
+             "This packet supplies context, not canonical naming or TU evidence.",
+             "Existing source vocabulary (no unlanded proposals or vote answers):"]
+    context = [(rel, text, "naming target") for rel, text, _items in served]
+    selected = {rel for rel, _text, _items in served}
+    for rel in sorted(lane.ledger()):
+        if len(context) >= len(served) + 3:
+            break
+        if rel in selected or lane.subsystem(rel)[0] != group or not lane.servable(rel):
+            continue
+        text = lane.text(rel)
+        if text is not None and len(text) <= MAX_CHARS:
+            context.append((rel, text, "read-only related source"))
+    for rel, text, role in context:
+        code = name_metric.strip(text)
+        scopes = [s for s, *_ in name_metric.functions_in(code) if not name_metric.placeholder(s)]
+        types = [n for n in re.findall(r"\b(?:class|struct)\s+([A-Za-z_]\w*)", code)
+                 if not name_metric.placeholder(n)]
+        group_path, basis = lane.subsystem(rel)
+        words = ", ".join(dict.fromkeys(types + scopes))[:400] or "no established type/function names"
+        lines.append(f"  {rel} [{role}; {basis}: {group_path}]: {words}")
+    if getattr(lane, "subsystem_map_stale", []):
+        lines.append("TU map is missing/stale; source-directory groups do not assert original TU ownership.")
+    return "\n".join(lines)
+
+
 def callers(lane, rel, word, limit=6):
     lines = []
     for f in lane.git("grep", "-l", "-I", "-w", "-F", "-e", word, "--", "Code").split():
@@ -674,7 +750,26 @@ def cmd_next(lane, args):
     current = json.loads(record.read_text()) if record.exists() else {"model": model, "worker": worker, "files": {}}
     if current.get("worker") != worker and not args.list_only:
         fail(f"session {session} belongs to another worker; pick a session label of your own")
+    mixed = getattr(args, "mixed", False)
+    prefix = subsystem_prefix(args.subsystem) if getattr(args, "subsystem", None) else None
+    if mixed and prefix:
+        fail("--mixed and --subsystem cannot be combined")
+    sticky = lane.path(f"{LANE_DIR}/subsystems/{worker}.json")
+    preferred = current.get("subsystem")
+    if not mixed and not prefix and not args.file:
+        if not preferred and sticky.exists():
+            preferred = subsystem_prefix(json.loads(sticky.read_text())["subsystem"])
+        if preferred:
+            files.sort(key=lambda f: lane.subsystem(f)[0] != preferred)
+    selected = None
     for rel in files:
+        group, basis = lane.subsystem(rel) if not mixed else (None, "mixed")
+        if prefix and not (under(group, prefix) or under(rel, prefix)):
+            if args.file:
+                fail(f"{rel} is outside subsystem {prefix}")
+            continue
+        if not mixed and selected is not None and group != selected:
+            continue
         if rel in current["files"] or not lane.servable(rel):
             continue
         text = lane.text(rel)
@@ -684,8 +779,11 @@ def cmd_next(lane, args):
                  if needs_review(key_of(rel, *i[:3]), state, tally, refused)]
         if len(items) < (1 if voted[rel] or args.file else 3):      # an asked-for file needs one key
             continue
+        if not mixed and selected is None:
+            selected = group
         if args.list_only:
-            metadata.append({"file": rel, "chars": len(text), "kinds": dict(collections.Counter(i[0] for i in items))})
+            metadata.append({"file": rel, "chars": len(text), "subsystem": group, "group_basis": basis,
+                             "kinds": dict(collections.Counter(i[0] for i in items))})
         else:
             current["files"][rel] = {"sha": hashlib.sha256(text.encode("utf-8", "surrogateescape")).hexdigest(),
                                      "items": [list(i) for i in items]}
@@ -699,11 +797,17 @@ def cmd_next(lane, args):
         print(f"name_lane: no file is left for session {session} to name.")
         return 0
     record.parent.mkdir(parents=True, exist_ok=True)
+    if selected is not None:
+        current["subsystem"] = selected
+        sticky.parent.mkdir(parents=True, exist_ok=True)
+        sticky.write_text(json.dumps({"subsystem": selected}), encoding="utf-8")
     record.write_text(json.dumps(current, indent=1))
     briefs = lane.path(f"{LANE_DIR}/briefs")
     briefs.mkdir(parents=True, exist_ok=True)
     out = briefs / f"{session}.txt"
-    out.write_text("\n\n".join(brief_text(lane, rel, text, items, session, model) for rel, text, items in served),
+    context = subsystem_brief(lane, served, selected) if not mixed else ""
+    out.write_text(context + "\n\n" + "\n\n".join(
+                       brief_text(lane, rel, text, items, session, model) for rel, text, items in served),
                    encoding="utf-8", errors="surrogateescape")
     print(f"name_lane: brief for {len(served)} file(s) ({sum(len(i) for _, _, i in served)} keys): {out}")
     if len(served) > 1:
@@ -979,11 +1083,14 @@ def cmd_status(lane, args):
 def main(argv=None, lane=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    n = sub.add_parser("next", help="serve one file's placeholders as a brief")
+    n = sub.add_parser("next", help="serve placeholders from one subsystem as a shared brief")
     n.add_argument("--session", required=True, help="a label for this brief; who votes is the worker identity, not this")
     n.add_argument("--model", required=True, help="the label you vote under, e.g. seat-a")
     n.add_argument("--count", type=int, default=1, help="serve this many files")
     n.add_argument("--file", help="serve this file instead of the next in the queue")
+    n.add_argument("--subsystem", metavar="CODE_PREFIX",
+                   help="restrict to this source/approved-TU directory; one subsystem per batch")
+    n.add_argument("--mixed", action="store_true", help="retain the shuffled multi-subsystem queue")
     n.add_argument("--list-only", action="store_true",
                    help="print the queue's file/size/kind metadata as JSON; no session, no brief")
     s = sub.add_parser("submit", help="record a session's answers as hashed votes")

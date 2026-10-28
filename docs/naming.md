@@ -101,6 +101,34 @@ shared and refused.
 
 ## The engine: `tools/rename.py`
 
+### Naming within a subsystem
+
+`name_lane.py next --count N` serves up to N files from one subsystem, rather
+than filling the batch with unrelated files. A worker stays in that subsystem
+on subsequent calls until it has no eligible unvoted files there. Within the
+group the queue keeps its existing preference for another worker's/model's
+votes; an initial group is selected from that same priority order.
+
+The shared brief inventories existing type/function vocabulary across the
+selected files and up to three read-only related sources, followed by each
+target's source and evidence. Read the related files together before proposing
+names. Unlanded proposals and votes are never used as shared vocabulary.
+This provides context, not proof that two private class views are the same type.
+
+When the TU map is current, a fragmented file can be grouped by its approved
+TU directory only when every owned row has an approved, non-provisional
+assignment in that directory. Otherwise the packet explicitly labels the
+group as its actual source directory. Stale/provisional assignments do not
+become naming evidence. Grouping grants neither canonical names nor approval
+to merge files.
+
+Use `next --subsystem Code/GameEngine/Source/GameLogic/AI --count 6 ...` to
+restrict a pass to a source or approved-TU directory prefix. `--file` still
+selects exactly that file; a conflicting subsystem restriction is refused.
+`--list-only` previews the group without writing sessions or worker affinity.
+`--mixed` retains the old shuffled multi-subsystem batches for comparison.
+Apply, review thresholds, claims and verification are unchanged.
+
 Before renaming a fragmented subsystem, `python3 tools/name_lane.py consolidate`
 builds original-path and donor evidence packets alongside the naming work.
 It catalogues every retail path, WorldBuilder paths, ZH structure and BFME 1 EA

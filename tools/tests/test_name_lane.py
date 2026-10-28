@@ -294,6 +294,143 @@ def test_next_writes_brief_and_list_only_writes_nothing(tree, capsys):
     assert SOURCE in served["files"]
 
 
+def add_subsystem_source(tree, subsystem, number):
+    rel = f"Code/Game/{subsystem}/Part{number}.cpp"
+    word = f"rva{0x00410000 + number * 0x100:08X}"
+    path = tree / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes((f"// cl: /O2\nint {word}(int param_1, int a2) {{ int iVar3 = param_1 + a2; return iVar3; }}\n").encode())
+    ledger = tree / "reverse/functions.csv"
+    ledger.write_bytes(ledger.read_bytes() +
+        f"?{word}@@YAHHH@Z,,0x{0x00410000 + number * 0x100:08X},10,{rel},matched,\n".encode())
+    _git(tree, "add", rel, "reverse/functions.csv")
+    return rel
+
+
+def subsystem_next(tree, session="group", count=3, **kwargs):
+    args = SimpleNamespace(session=session, model="seat-a", count=count, file=None,
+                           list_only=False, subsystem=None, mixed=False)
+    args.__dict__.update(kwargs)
+    name_lane.cmd_next(lane_of(tree), args)
+    record = tree / f"build/name_lane/sessions/{session}.json"
+    return json.loads(record.read_text()) if record.exists() else None
+
+
+def test_subsystem_batch_keeps_related_files_and_shared_context(tree):
+    ai = [add_subsystem_source(tree, "AI", n) for n in range(3)]
+    add_subsystem_source(tree, "Audio", 4)
+    record = subsystem_next(tree, subsystem="Code/Game/AI", count=10)
+    assert set(record["files"]) == set(ai)  # do not fill with unrelated files
+    assert record["subsystem"] == "Code/Game/AI"
+    brief = (tree / "build/name_lane/briefs/group.txt").read_text()
+    assert brief.startswith("SUBSYSTEM CONTEXT: Code/Game/AI")
+    assert "source-directory" in brief and "not canonical naming or TU evidence" in brief
+    assert all(rel in brief for rel in ai)
+
+
+def test_worker_keeps_subsystem_then_moves_on_when_voted_files_are_exhausted(tree):
+    ai = [add_subsystem_source(tree, "AI", n) for n in range(3)]
+    audio = add_subsystem_source(tree, "Audio", 4)
+    first = subsystem_next(tree, "first", count=1, subsystem="Code/Game/AI")
+    assert first["subsystem"] == "Code/Game/AI"
+    second = subsystem_next(tree, "second", count=1)
+    assert second["subsystem"] == "Code/Game/AI"
+    lane = lane_of(tree)
+    lane.append(name_lane.VOTES, name_lane.VOTE_COLUMNS, [
+        {"key": name_lane.key_of(rel, "param", "run", "param_1"), "hash": "x",
+         "worker": lane.worker(), "model": "seat-a", "session": "done", "date": "2026-10-28"}
+        for rel in ai])
+    moved = subsystem_next(tree, "third", count=1)
+    assert moved["subsystem"] != "Code/Game/AI"
+    assert all(rel not in ai for rel in moved["files"])
+
+
+def test_related_context_does_not_authorize_answers_for_unserved_files(tree, tmp_path):
+    ai = {add_subsystem_source(tree, "AI", n) for n in range(2)}
+    record = subsystem_next(tree, count=1, subsystem="Code/Game/AI")
+    related = next(iter(ai - set(record["files"])))
+    brief = (tree / "build/name_lane/briefs/group.txt").read_text()
+    assert related in brief and "read-only related source" in brief
+    answer = tmp_path / "outside.json"
+    answer.write_text(json.dumps({related: {"madeUp": "name"}}))
+    with pytest.raises(SystemExit, match="not served"):
+        name_lane.cmd_submit(lane_of(tree), SimpleNamespace(session="group", model="seat-a", answer=str(answer)))
+    assert not rows(tree, name_lane.VOTES)
+
+
+def test_review_priority_still_selects_the_initial_subsystem(tree):
+    for n in range(3):
+        add_subsystem_source(tree, "AI", n)
+    rel = add_subsystem_source(tree, "Audio", 4)
+    lane = lane_of(tree)
+    lane.append(name_lane.VOTES, name_lane.VOTE_COLUMNS, [{
+        "key": name_lane.key_of(rel, "function", "0x00410400", "rva00410400"),
+        "hash": "x", "worker": "w-0123456789ab", "model": "other-model",
+        "session": "other", "date": "2026-10-28"}])
+    record = subsystem_next(tree)
+    assert set(record["files"]) == {rel}
+    assert record["subsystem"] == "Code/Game/Audio"
+
+
+@pytest.mark.parametrize("bad", ["../Code/Game", "Code/Game/../Audio", "Code//Game", "vendor", "/Code/Game"])
+def test_subsystem_prefix_rejects_ambiguous_paths(tree, bad):
+    with pytest.raises(SystemExit):
+        subsystem_next(tree, subsystem=bad)
+
+
+def test_explicit_file_is_respected_and_conflicting_subsystem_is_refused(tree):
+    ai = add_subsystem_source(tree, "AI", 1)
+    subsystem_next(tree, "first", subsystem="Code/Game/AI")
+    record = subsystem_next(tree, "override", file=SOURCE)
+    assert set(record["files"]) == {SOURCE}
+    with pytest.raises(SystemExit, match="outside subsystem"):
+        subsystem_next(tree, "bad", file=ai, subsystem="Code/Game/Audio")
+
+
+def test_subsystem_list_only_is_read_only_and_mixed_mode_can_span_groups(tree, capsys):
+    ai = add_subsystem_source(tree, "AI", 1)
+    audio = add_subsystem_source(tree, "Audio", 2)
+    subsystem_next(tree, list_only=True, subsystem="Code/Game/AI")
+    entries = json.loads(capsys.readouterr().out)
+    assert [e["file"] for e in entries] == [ai]
+    assert entries[0]["group_basis"] == "source-directory"
+    assert not (tree / "build/name_lane").exists()
+    record = subsystem_next(tree, count=20, mixed=True)
+    assert {ai, audio} <= set(record["files"])
+    with pytest.raises(SystemExit, match="cannot be combined"):
+        subsystem_next(tree, mixed=True, subsystem="Code/Game/AI")
+
+
+@pytest.mark.parametrize("stale,provisional", [(False, False), (True, False), (False, True)])
+def test_subsystem_uses_only_fresh_nonprovisional_approved_routes(tree, monkeypatch, stale, provisional):
+    import tu_map
+    monkeypatch.setattr(tu_map, "check_fresh", lambda layout: ["changed"] if stale else [])
+    row = {"rva": "0x00401000", "kind": "code", "source": SOURCE, "tu": "Code/Game/AI/Owner.cpp",
+           "confidence": "approved", "by": "F", "evidence": "provisional" if provisional else "F=Code/Game/AI/Owner.cpp"}
+    def load(root):
+        assert not stale, "stale map must not be used for scheduling routes"
+        return {0x00401000: [row]}
+    monkeypatch.setattr(tu_map, "load", load)
+    lane = lane_of(tree)
+    expected = ("Code/Game/AI", "approved-tu-directory") if not (stale or provisional) \
+        else ("Code/Game", "source-directory")
+    assert lane.subsystem(SOURCE) == expected
+    if expected[1] == "approved-tu-directory":
+        assert set(subsystem_next(tree, subsystem="Code/Game/AI")["files"]) == {SOURCE}
+
+
+def test_one_approved_row_cannot_route_a_mixed_source(tree, monkeypatch):
+    import tu_map
+    ledger = tree / "reverse/functions.csv"
+    ledger.write_bytes(ledger.read_bytes() +
+        f"?other@@YAHXZ,,0x00401100,10,{SOURCE},matched,\n".encode())
+    monkeypatch.setattr(tu_map, "check_fresh", lambda layout: [])
+    row = {"rva": "0x00401000", "kind": "code", "source": SOURCE, "tu": "Code/Game/AI/Owner.cpp",
+           "confidence": "approved", "by": "F", "evidence": "F=Code/Game/AI/Owner.cpp"}
+    monkeypatch.setattr(tu_map, "load", lambda root: {0x00401000: [row]})
+    assert lane_of(tree).subsystem(SOURCE) == ("Code/Game", "source-directory")
+
+
 # ---------------------------------------------------------------- submit
 
 def test_two_sessions_agree(tree, tmp_path):
@@ -950,7 +1087,8 @@ def test_real_tree_list_only(capsys):
     args = SimpleNamespace(session="pytest-smoke", model="claude-opus-5-5", count=2, file=None, list_only=True)
     assert name_lane.cmd_next(lane, args) == 0
     listed = json.loads(capsys.readouterr().out)
-    assert len(listed) == 2
+    assert 1 <= len(listed) <= 2  # --count is a cap; do not fill from unrelated groups
+    assert len({entry["subsystem"] for entry in listed}) == 1
     for entry in listed:
         assert entry["file"].startswith("Code/") and not entry["file"].startswith(rename.GENERATED)
         assert entry["chars"] <= name_lane.MAX_CHARS and sum(entry["kinds"].values()) >= 1
