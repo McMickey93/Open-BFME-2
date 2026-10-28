@@ -1,0 +1,116 @@
+{
+  "base_revision": "362bf9a27888b582a6eb3c9bce1e1486e5c2e12d",
+  "objects": [
+    {
+      "source": "Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScriptDrawData.cpp",
+      "before_obj_sha256": "3975fb1d42315fcf3fa7a5fa53a5d0578727e883f1af10214e9cfea5763bd1cd",
+      "after_obj_sha256": "e5582e0ac1ee14f8075b2c9f24277d60840537e32883f6812bbc44f7bc042791",
+      "removed_comdats": [],
+      "added_comdats": {
+        "??1AsciiString@@QAE@XZ": [
+          "d08bf29c9c2b",
+          5,
+          "retail"
+        ]
+      },
+      "changed_comdats": {
+        "?parseDrawData@@YA_NPADPAVWinInstanceData@@0PAX@Z": {
+          "before": [
+            "f6003f00ad1e",
+            1089,
+            "unknown"
+          ],
+          "after": [
+            "79af34257d7b",
+            1089,
+            "unknown"
+          ]
+        }
+      },
+      "retained_unchanged_comdats": 567,
+      "removed_definitions": [],
+      "added_definitions": [],
+      "removed_dependencies": [
+        "??1AsciiString@@QAE@XZ"
+      ],
+      "added_dependencies": [
+        "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+      ],
+      "weak_unchanged": true
+    },
+    {
+      "source": "Code/GameEngine/Source/Common/System/RegistrySetString.cpp",
+      "before_obj_sha256": "e93fbf718978e2e8e572e311549e4dc0f01dd7692910a77b203ffa37f8529488",
+      "after_obj_sha256": "e3f9c4a189f223effbf61e938e98746ba693fbe0cc9ed94e3d3a21ff88fe8c35",
+      "removed_comdats": [],
+      "added_comdats": {
+        "??1AsciiString@@QAE@XZ": [
+          "d08bf29c9c2b",
+          5,
+          "retail"
+        ]
+      },
+      "changed_comdats": {
+        "?setStringInRegistry@@YA_NPAXVAsciiString@@11@Z": {
+          "before": [
+            "487d610e5d6b",
+            201,
+            "unknown"
+          ],
+          "after": [
+            "3d887eef8ca9",
+            201,
+            "retail"
+          ]
+        }
+      },
+      "retained_unchanged_comdats": 2,
+      "removed_definitions": [],
+      "added_definitions": [],
+      "removed_dependencies": [
+        "??1AsciiString@@QAE@XZ"
+      ],
+      "added_dependencies": [
+        "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+      ],
+      "weak_unchanged": true
+    },
+    {
+      "source": "Code/GameEngine/Source/Common/System/RegistrySetUnsignedInt.cpp",
+      "before_obj_sha256": "831a7347538cbd020f0ec89d53bc6258178dd30d62edbf3887eaa49fa4a991ef",
+      "after_obj_sha256": "41547b78f649a08fdb712d346d229a02a1447126a39b5260959e815cb47020b4",
+      "removed_comdats": [],
+      "added_comdats": {
+        "??1AsciiString@@QAE@XZ": [
+          "d08bf29c9c2b",
+          5,
+          "retail"
+        ]
+      },
+      "changed_comdats": {
+        "?setUnsignedIntInRegistry@@YA_NPAXVAsciiString@@1I@Z": {
+          "before": [
+            "ba8bc5538e51",
+            158,
+            "unknown"
+          ],
+          "after": [
+            "115992b5ac83",
+            158,
+            "retail"
+          ]
+        }
+      },
+      "retained_unchanged_comdats": 2,
+      "removed_definitions": [],
+      "added_definitions": [],
+      "removed_dependencies": [
+        "??1AsciiString@@QAE@XZ"
+      ],
+      "added_dependencies": [
+        "?releaseBuffer@?$StringBase@D@@AAEXXZ"
+      ],
+      "weak_unchanged": true
+    }
+  ]
+}

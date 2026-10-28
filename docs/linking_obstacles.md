@@ -6342,6 +6342,20 @@ Clearance: the retained adoptions are verified only within the stated ordinary-p
 
 Census confirmation: not claimed.
 
+**2026-10-28 cleanup-binding subset:** at `362bf9a278`, the draw-data parser
+and the two registry setters adopt the existing canonical string header and
+its Common adapter. All ten rows and three EH graphs remain exact; the
+owning tool retires their three destructor-at-releaseBuffer identity keys
+with zero remaining source findings. All three ordinary previews retain
+LINKS (1,458 authored bytes; index `41c28839bf`). The 571 other COMDAT digests
+are unchanged, and the added destructor copies are the retail five-byte
+forwarder. [Evidence and remaining prerequisites](../reverse/attempt_support/ascii-cleanup-binding-20261028-codex3.md).
+This clears those consumer bindings only; the shared pin and remaining
+class/consumer prerequisites stay open. The staged batch audit is
+INCONCLUSIVE: its index predates the base, and the three ordinary verified
+objects lack census-grade receipts, so affected consumers remain unverified.
+Census confirmation is pending.
+
 ### LINK-104: placeholder deleting destructors still emit nonretail complete destructors
 
 ### LINK-109: placeholder deleting destructors still emit nonretail complete destructors
