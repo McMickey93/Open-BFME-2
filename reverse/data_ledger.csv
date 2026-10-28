@@ -17875,9 +17875,9 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009E0410,4,.data,global,?g_00DE0410@@3PAXA,,unowned,,0,1
 0x009E0414,1044,.data,global,?g_heaps@MemoryPool@@3UHeapTable@1@A,Code/GameEngine/Source/Common/System/memory_pool.cpp,owned,,1,47
 0x009E0828,36,.data,global,?g_Va00DE0828@@3IA,,unowned,?g_Va00DE0828@@3IA;?obj@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4V2@A@Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp,1,3
-0x009E084C,4,.data,global,?g_Va00DE084C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_06.cpp,provisional,?$S1@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4IA@Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp;?g_Va00DE084C@@3IA,2,4
+0x009E084C,4,.data,global,?$S1@?1??Rva00035C90Get@@YAPAVRva00041004@@XZ@4IA,Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp,owned,,1,4
 0x009E0850,36,.data,global,?g_Va00DE0850@@3IA,,unowned,?g_Va00DE0850@@3IA;?obj@?1??Rva00035DF0Get@@YAPAVRva00041004@@XZ@4V2@A@Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp,1,3
-0x009E0874,4,.data,global,?g_Va00DE0874@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_06.cpp,provisional,?$S3@?1??Rva00035DF0Get@@YAPAVRva00041004@@XZ@4IA@Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp;?g_Va00DE0874@@3IA,2,4
+0x009E0874,4,.data,global,?$S3@?1??Rva00035DF0Get@@YAPAVRva00041004@@XZ@4IA,Code/Libraries/Source/WWVegas/WWLib/StringBaseLockGetters.cpp,owned,,1,4
 0x009E0878,8,.data,string,??_C@_00CNPNBAHC@?$AA@,,literal,??_C@_00CNPNBAHC@?$AA@;?TheDefaultArmorTemplateName@@3VAsciiString@@A;?TheEmptyString@AsciiString@@2V1@A;?TheEmptyString@AsciiString@@2V1@B;?g_Va00DE0878@@3IA;?g_bfmeNullAdjustDE0878@@3UBfmeNullAdjustDefault@@A;?g_emptyModuleName@@3VBFMERetailAsciiString@@A;?g_str009E0878@@3V?$StringBase@D@@A,1,239
 0x009E0880,4,.data,global,?theDebug@@3PAVDebug@@A,Code/Libraries/Source/WWVegas/WWDebug/DebugPreStaticInit.cpp,provisional,?BfmeResetDebugInstance@@3PAVBfmeResetDebug@@A;?TheGen001336E5C@@3PAVGen001336E5C@@A;?theDebug@@3PAVDebug@@A;?theDebug@@3RAVDebug@@A;_g_bfme00DE0880,1,259
 0x009E0884,25,.data,global,?g_bfmeCsDWC@@3UDebugCriticalSection@@A,Code/Libraries/Source/WWVegas/WWDebug/Debug_CrashDone.cpp,provisional,?g_bfmeCsDWC@@3UBfmeCsDWA@@A;?g_bfmeCsDWC@@3UDebugCriticalSection@@A,1,15
@@ -18709,7 +18709,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FE49C,12,.data,global,?g_Va00DFE49C@@3IA,,unowned,,0,1
 0x009FE4A8,4,.data,global,?g_Va00DFE4A8@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFxx.cpp,owned,,1,2
 0x009FE4AC,12,.data,global,?g_Va00DFE4AC@@3IA,Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp,provisional,?g_Va00DFE4AC@@3IA;?s_map@?1??Rva002213D9Get@@YAPAV?$map@HPAXU?$less@H@_STL@@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@XZ@4V23@A@Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_init_002213D9.cpp,2,3
-0x009FE4B8,12,.data,global,?g_Va00DFE4B8@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFxx.cpp,provisional,?$S1@?1??Rva002213D9Get@@YAPAV?$map@HPAXU?$less@H@_STL@@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@XZ@4IA@Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_init_002213D9.cpp;?g_Va00DFE4B8@@3IA,2,4
+0x009FE4B8,12,.data,global,?$S1@?1??Rva002213D9Get@@YAPAV?$map@HPAXU?$less@H@_STL@@V?$allocator@U?$pair@$$CBHPAX@_STL@@@2@@_STL@@XZ@4IA,Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_ptr_init_002213D9.cpp,owned,,1,4
 0x009FE4C4,8,.data,global,?g_00DFE4C4@@3VRva00575674@@A,Code/GameEngine/Source/Common/Rva002220DCInit.cpp,provisional,?g_00DFE4C4@@3PAXA;?g_00DFE4C4@@3VRva00575674@@A;?g_Va00DFE4C4@@3IA,1,9
 0x009FE4CC,4,.data,global,?g_bfmeAptWindowManager@@3PAVBfmeAptWindowManager@@A,Code/GameEngine/Source/Common/Rva005832D0MapName.cpp,provisional,?TheAptPlayer@@3PAVAptPlayer@@A;?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A;?TheTarget@@3PAVRva00222A8BTarget@@A;?WindowManagerSubsystem@@3PAVClientSubsystem@@A;?g_Va009FE4CC@@3PAVRva00222479ByteOneSetter@@A;?g_Va009FE4CC@@3PAVRva00223A94@@A;?g_bfmeAptManager@@3PAXA;?g_bfmeAptWindowManager@@3PAVBfmeAptWindowManager@@A;?g_pRva00224BC9@@3PAVRva00224B7DTarget@@A;_g_pRva00224BC9,1,705
 0x009FE4D0,8,.data,global,_s_rva007ADB82,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
@@ -18931,7 +18931,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FEEC4,24,.data,global,?g_Va00DFEEC4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFEExx.cpp,provisional,?$S1@?BP@??createMouseoverHint@InGameUI@@UAEXPBVGameMessage@@@Z@4IA@Code/GameEngine/Source/GameClient/InGameUICreateMouseoverHint.cpp;?g_Va00DFEEC4@@3IA,2,8
 0x009FEEDC,4,.data,global,?g_Va00DFEEDC@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFEExx.cpp,owned,,1,4
 0x009FEEE0,4,.data,global,?key_GateOpenAndCloseBehavior@?6??selectDrawable@InGameUI@@UAEXPAVDrawable@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameClient/InGameUISelectDrawable.cpp,owned,,1,2
-0x009FEEE4,4,.data,global,?g_Va00DFEEE4@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFEExx.cpp,provisional,?$S1@?6??selectDrawable@InGameUI@@UAEXPAVDrawable@@@Z@4IA@Code/GameEngine/Source/GameClient/InGameUISelectDrawable.cpp;?g_Va00DFEEE4@@3IA,2,4
+0x009FEEE4,4,.data,global,?$S1@?6??selectDrawable@InGameUI@@UAEXPAVDrawable@@@Z@4IA,Code/GameEngine/Source/GameClient/InGameUISelectDrawable.cpp,owned,,1,2
 0x009FEEE8,4,.data,global,?ThePlayerList@@3PAVPlayerList@@A,Code/GameEngine/Source/Common/RTS/PlayerList.cpp,provisional,?ThePlayerList@@3PAUPlayerListView@@A;?ThePlayerList@@3PAVPlayerList@@A;?g_Va009FEEE8@@3PAURva0043C933Outer@@A,1,448
 0x009FEEEC,12,.data,global,_s_rva007AE120,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x009FEEF8,4,.data,global,?g_00DFEEF8@@3PAVRva002A8F24@@A,Code/GameEngine/Source/Common/Rva005EEA20Find.cpp,provisional,?g_00DFEEF8@@3PAUGlob004E93A8@@A;?g_00DFEEF8@@3PAUGlob004E93E8@@A;?g_00DFEEF8@@3PAURva002A8F24@@A;?g_00DFEEF8@@3PAURva002A9A18Global@@A;?g_00DFEEF8@@3PAURva00DFEEF8World@@A;?g_00DFEEF8@@3PAVRva002A8F24@@A;?g_00DFEEF8@@3PAVRva002A8F24Holder@@A;?g_00DFEEF8@@3PAVSkirmishAIManager@@A,1,183
@@ -19004,7 +19004,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FF02C,4,.data,global,_s_rva007AE39C,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x009FF030,4,.data,global,?g_Va00DFF030@@3IA,,unowned,,0,3
 0x009FF034,4,.data,global,?buttonID@?1??OnBttnSpellStore@AptPalantir@@QAEXPBD@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp,owned,,1,2
-0x009FF038,4,.data,global,?g_Va00DFF038@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFEExx.cpp,provisional,?$S1@?1??OnBttnSpellStore@AptPalantir@@QAEXPBD@Z@4IA@Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp;?g_Va00DFF038@@3IA,2,4
+0x009FF038,4,.data,global,?$S1@?1??OnBttnSpellStore@AptPalantir@@QAEXPBD@Z@4IA,Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp,owned,,1,2
 0x009FF03C,4,.data,global,?s_key@?1??Rva002D46ADSet@@YAXH@Z@4VAsciiString@@A,Code/GameEngine/Source/GameClient/Rva002D46AD.cpp,owned,,1,2
 0x009FF040,4,.data,global,?g_Va00DFF040@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFxx.cpp,provisional,?$S1@?1??Rva002D46ADSet@@YAXH@Z@4IA@Code/GameEngine/Source/GameClient/Rva002D46AD.cpp;?g_Va00DFF040@@3IA,2,4
 0x009FF044,4,.data,global,?g_Va00DFF044@@3IA,,unowned,?g_Va00DFF044@@3IA;?good@?6??rva002D4DD0@AptPalantir@@QAEXPBD@Z@4VAsciiString@@A@Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp,1,2
@@ -19015,7 +19015,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FF058,4,.data,global,?g_Va00DFF058@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFEExx.cpp,provisional,?$S5@?4??rva002D4E71@AptPalantir@@QAEXPBD@Z@4IA@Code/GameEngine/Source/GameClient/GUI/Palantir/AptPalantirCallbacks.cpp;?g_Va00DFF058@@3IA,2,8
 0x009FF05C,4,.data,global,?g_Va00DFF05C@@3IA,,unowned,?g_Va00DFF05C@@3IA;?s_bfmeOtherYU@?6??bfmeApplyYU@@YGXH@Z@4VAsciiStringYU@@A@Code/GameEngine/Source/GameClient/GUI/Palantir/BfmeObserverDispatchYU_Rva002d4f2d.cpp,1,2
 0x009FF060,4,.data,global,?g_Va00DFF060@@3IA,,unowned,?g_Va00DFF060@@3IA;?s_bfmeObjectivesYU@?4??bfmeApplyYU@@YGXH@Z@4VAsciiStringYU@@A@Code/GameEngine/Source/GameClient/GUI/Palantir/BfmeObserverDispatchYU_Rva002d4f2d.cpp,1,2
-0x009FF064,4,.data,global,?g_Va00DFF064@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_DFEExx.cpp,provisional,?$S1@?4??bfmeApplyYU@@YGXH@Z@4IA@Code/GameEngine/Source/GameClient/GUI/Palantir/BfmeObserverDispatchYU_Rva002d4f2d.cpp;?g_Va00DFF064@@3IA,2,8
+0x009FF064,4,.data,global,?$S1@?4??bfmeApplyYU@@YGXH@Z@4IA,Code/GameEngine/Source/GameClient/GUI/Palantir/BfmeObserverDispatchYU_Rva002d4f2d.cpp,owned,,1,8
 0x009FF068,4,.data,global,?TheAnim2DCollection@@3PAVAnim2DCollection@@A,Code/GameEngine/Source/GameClient/System/Anim2D.cpp,provisional,?TheAnim2DCollection@@3PAVAnim2DCollection@@A;?g_00DFF068@@3PAVRva002D752D@@A,1,26
 0x009FF06C,4,.data,global,_s_rva007AE3E1,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x009FF070,4,.data,global,?TheRadar@@3PAVRadar@@A,Code/GameEngine/Source/Common/Rva002D317CCalls.cpp,provisional,?Radar@@3PAVRadarSubsystem@@A;?TheRadar@@3PAVRadar@@A,1,51
@@ -20855,7 +20855,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A048F4,4,.data,global,?g_Va00E048F4@@3IA,,unowned,?campaign@?1??evilCampaignRva005158C2@@YAHM_N@Z@4VAsciiString@@A@Code/GameEngine/Source/Common/Rva00515921Permuted.cpp;?g_Va00E048F4@@3IA,1,2
 0x00A048F8,4,.data,global,?g_Va00E048F8@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E0102xx.cpp,provisional,?$S3@?1??evilCampaignRva005158C2@@YAHM_N@Z@4IA@Code/GameEngine/Source/Common/Rva00515921Permuted.cpp;?g_Va00E048F8@@3IA,2,4
 0x00A048FC,4,.data,global,?g_Va00E048FC@@3IA,,unowned,?campaign@?1??goodCampaignRva00515921@@YAHM_N@Z@4VAsciiString@@A@Code/GameEngine/Source/Common/Rva00515921Permuted.cpp;?g_Va00E048FC@@3IA,1,2
-0x00A04900,4,.data,global,?g_Va00E04900@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E049xx.cpp,provisional,?$S1@?1??goodCampaignRva00515921@@YAHM_N@Z@4IA@Code/GameEngine/Source/Common/Rva00515921Permuted.cpp;?g_Va00E04900@@3IA,2,4
+0x00A04900,4,.data,global,?$S1@?1??goodCampaignRva00515921@@YAHM_N@Z@4IA,Code/GameEngine/Source/Common/Rva00515921Permuted.cpp,owned,,1,4
 0x00A04904,4,.data,global,?g_Va00A04904@@3PAURva00517048@@A,Code/GameEngine/Source/Common/Rva004161F1Notify.cpp,provisional,?g_Va00A04904@@3PAURva00517048@@A;?g_Va00E04904@@3HA,1,13
 0x00A04908,4,.data,global,?g_Va00A04908@@3HA,Code/GameEngine/Source/Common/Rva00518262Enable.cpp,owned,,1,12
 0x00A0490C,4,.data,global,_s_rva007B3886,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
@@ -20926,7 +20926,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A05F58,4,.data,global,?g_Va00E05F58@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E05x.cpp,provisional,?$S1@?3??updateContextOCLTimer@ControlBar@@IAEXXZ@4IA@Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarUpdateContextOCLTimer.cpp;?g_Va00E05F58@@3IA,2,4
 0x00A05F5C,4,.data,global,_s_rva007B3BA4,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A05F60,4,.data,global,?descID@?1??updateConstructionTextDisplay@ControlBar@@QAEXPAVObject@@@Z@4IA,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarUpdateConstruction.cpp,owned,,1,2
-0x00A05F64,4,.data,global,?g_Va00E05F64@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E05x.cpp,provisional,?$S1@?1??updateConstructionTextDisplay@ControlBar@@QAEXPAVObject@@@Z@4IA@Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarUpdateConstruction.cpp;?g_Va00E05F64@@3IA,2,4
+0x00A05F64,4,.data,global,?$S1@?1??updateConstructionTextDisplay@ControlBar@@QAEXPAVObject@@@Z@4IA,Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarUpdateConstruction.cpp,owned,,1,2
 0x00A05F68,4,.data,global,_s_rva007B3BCE,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A05F6C,4,.data,global,_s_rva007B3BF8,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A05F70,4,.data,global,_s_rva007B3C22,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
