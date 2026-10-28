@@ -3226,7 +3226,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/TunnelContainDtor.
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	??0ExperienceLevelCreateBase@@QAE@PAVThing@@PBVModuleData@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	?crc@BehaviorModule@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/CreateModule.cpp	?f2@Rva004B8CDE_B2@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	??1CreateModuleData@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	?crc@LockWeaponCreate@@MAEXPAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	?loadPostProcess@LockWeaponCreate@@MAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp	?onCreate@LockWeaponCreate@@UAEXXZ	1

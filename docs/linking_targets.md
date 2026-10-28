@@ -360,7 +360,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WW3D2/ringobj.cpp` | 57 | 8 (U=7, C=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00058A86.cpp` | 57 | 4 (U=2, C=1, S=1) | Open |
 | `Code/GameEngine/Source/GameClient/InGameUI.cpp` | 55 | 9 (U=5, C=3, S=1) | Open |
-| `Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp` | 55 | 4 (U=2, C=2) | Open |
+| `Code/GameEngine/Source/GameLogic/Object/Create/LockWeaponCreate.cpp` | 55 | 4 (U=2, C=2) | 2026-10-28, `2f83fb883a`: one unused destructor alias retired; both rows and all 83 external COMDAT digests unchanged. Preview remains U2/C2 against `14dc3d2467`; canonical Snapshot trial reverted pending native interface/provider reconciliation. [Evidence](../reverse/attempt_support/lockweapon-dead-alias-cleanup-20261028-codex.md), LINK-004. No link gain claimed. |
 | `Code/GameEngine/Source/Common/RTS/Player.cpp` | 52 | 33 (U=24, C=6, S=3) | Open |
 | `Code/Libraries/Source/WWVegas/WW3D2/sphereobj.cpp` | 51 | 12 (U=7, C=5) | Open |
 | `Code/GameEngine/Source/Common/Rva003C2F40TreeCtor.cpp` | 50 | 3 (U=3) | Open |
