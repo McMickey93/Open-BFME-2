@@ -6556,3 +6556,17 @@ Remaining / next check: identity retirement refuses missing/stale provider recei
 Post-rebase verification (`b3739a6dfd`): both outgoing edited providers have strict receipts, 96/96 function rows and two data rows exact, six EH graphs EXACT. The outgoing audit remains INCONCLUSIVE because the index predates its base and lacks per-object consumer names. The hook's shadow Matrix3D subscript divergence has an unchanged 12-byte COMDAT fingerprint; retain it as an inherited class-view prerequisite, not a new list-repair regression.
 
 Clearance: byte/EH verification and seven destructor bindings only; full renderer linking and registered retirement remain open. Census confirmation: not claimed.
+
+### LINK-131: BezierProjectile composition awaits a census destination object
+
+Status: Blocked; verified declaration prerequisite published. Updated: 2026-10-28; inspected revision: `f37de6bb3b`; latest fetched index: `54b83e4f69`.
+
+Evidence / affected units: BezierProjectileBehavior.cpp and its existing cost accessor in Common/Bfme5FortyThree.cpp. The current supported merge plan has 47 approved rows and ten whole-file donors. [Scoped evidence and remaining private views](../reverse/attempt_support/bezier-projectile-consolidation-20261028-codexb4.md).
+
+Completed: expose the cost donor's existing twelve-byte element pointers at +0x44/+0x48 and size helper in the destination. Paired build passes 9/9 rows and one EXACT EH graph; all 21 destination external COMDAT digests and the external definition/dependency sets are unchanged. Frozen-file, class and strict receipt checks pass.
+
+Remaining / next check: the cost donor now passes the supported merge's compile/byte checks, but its census-linked body cannot move into a destination with no census object: the guard cannot verify the resulting link order. A fresh index fetch still leaves that destination absent from census `54b83e4f69`. Await the normal census/index, then retry the supported merge. Nine other whole-file donors require separate private-view/declaration repairs; all five mixed sources remain untouched. No applying merge or source-path move was performed.
+
+Outgoing audit: INCONCLUSIVE against parent `f7755f211c`; index `54b83e4f69` predates that base and affected consumer `Common/0CreateAHeroManager21FE49.cpp` lacks a current receipt. Both scoped providers have refreshed strict receipts (9/9 exact). Carry this consumer and scope into the next normal census.
+
+Clearance: unchanged prerequisite bytes/bindings only. Composition and selected-consumer coverage remain unverified; no linked-byte, source-file, debt, runtime or ownership gain is claimed.

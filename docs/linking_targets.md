@@ -615,3 +615,15 @@ retain their 4,604 byte-matched rows; the 548-unit preview goes from 484 to
 [Evidence and remaining scope](../reverse/attempt_support/subsystem-assignment-link-20261027-codex3.md),
 LINK-097. Census confirmation is pending; the original snapshot totals above
 remain unchanged.
+
+### LINK-131 BezierProjectile composition follow-up outside the original snapshot
+
+2026-10-28, `f37de6bb3b`: the destination adopts its existing cost donor's
+pointer/size contract; 9/9 paired rows and one EH graph remain exact, with
+21 unchanged destination external COMDATs and unchanged definition/dependency
+sets. The cost donor remains census-linked (29 authored bytes in its earlier
+ordinary preview). The supported merge is blocked because the destination is
+still absent from freshly fetched index `54b83e4f69`; await the normal census
+before retrying. No source-path move or new census gain is claimed.
+[Evidence and remaining private views](../reverse/attempt_support/bezier-projectile-consolidation-20261028-codexb4.md),
+LINK-131.
