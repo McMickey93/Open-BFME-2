@@ -1,51 +1,59 @@
 // cl: /MD
 // ??0AnimationSoundModuleManager@@QAE@XZ, retail 0x00432FA7, 72 bytes.
-// Ctor: baseConstruct 0x001B4E63 then vtable g_00C3CA30 then five ints at
-// +0xC/+0x10/+0x14/+0x18/+0x1C zeroed then three FLT_MAX floats at
-// +0x20/+0x24/+0x28 from pool 0x007BB8E0 then singleton TheAnimationSoundModuleManager set if zero.
-// Base size 0xC from BFME2NativeNetworkBaseConstruct (vptr+flag+value).
-// Precedent Rva0026201C 0x00262002 (/O1 /MD, baseConstruct then zeros then
-// vtable). Floats via FLT_MAX link (never extern per linking rule).
+// Ctor: SubsystemInterface base ctor 0x001B4E63, then the compiler's vtable
+// store (0x0083CA30), five pointers/ints at +0xC..+0x1C zeroed, three FLT_MAX
+// floats at +0x20/+0x24/+0x28 from pool 0x007BB8E0, then the singleton
+// TheAnimationSoundModuleManager is set if zero.
 #include <float.h>
-
-// LINK: the pin ?baseConstruct@BFME2NativeNetwork was retired when its address 0x1B4E63 was
-// rowed as SubsystemInterface::SubsystemInterface; the base is a non-polymorphic 0xC-byte view
-// whose extern ctor is that rowed symbol (first call, ecx = this, as before).
+#include "../../../Libraries/Include/Lib/Coord3D.h"
 #include "../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
-extern const void *const g_00C3CA30[];
 class AnimationSoundModuleManager;
 extern class AnimationSoundModuleManager *TheAnimationSoundModuleManager;
 
+// The list node is the AnimationSoundClientBehavior the manager registers; its
+// next/previous links sit at +0x14/+0x18 and its callers cast to this view.
+class Rva00432F23Node
+{
+public:
+	char m_pad[0x14];
+	Rva00432F23Node *m_next;	// +0x14
+	Rva00432F23Node *m_prev;	// +0x18
+};
+
+// Retail vtable 0x0083CA30 (slot 0 ??_G 0x0043312E); ctor 0x00432FA7 zeroes
+// +0x0C..+0x1C and sets the listener position to FLT_MAX.
 class AnimationSoundModuleManager : public SubsystemInterface
 {
-	int m_0C;
-	int m_10;
-	int m_14;
-	int m_18;
-	int m_1C;
-	float m_20;
-	float m_24;
-	float m_28;
 public:
 	AnimationSoundModuleManager();
+	virtual ~AnimationSoundModuleManager();
+	void update();
+	void remove(Rva00432F23Node *node);
+	void rva00432F7D(Rva00432F23Node *node);
+	void rva00432EC0(Rva00432F23Node *node);
+	void rva00432E5D(Rva00432F23Node *node);
+
+private:
+	Rva00432F23Node *m_cleanHead;	// +0x0C
+	Rva00432F23Node *m_cleanTail;	// +0x10
+	Rva00432F23Node *m_dirtyHead;	// +0x14
+	Rva00432F23Node *m_dirtyTail;	// +0x18
+	int m_count;			// +0x1C
+	Coord3D m_listenerPosition;	// +0x20
 };
 
 AnimationSoundModuleManager::AnimationSoundModuleManager()
 {
-	*(const void **)this = g_00C3CA30;
-	m_0C = 0;
-	m_10 = 0;
-	m_14 = 0;
-	m_18 = 0;
-	m_1C = 0;
-	m_20 = FLT_MAX;
-	m_24 = FLT_MAX;
-	m_28 = FLT_MAX;
+	m_cleanHead = 0;
+	m_cleanTail = 0;
+	m_dirtyHead = 0;
+	m_dirtyTail = 0;
+	m_count = 0;
+	m_listenerPosition.x = FLT_MAX;
+	m_listenerPosition.y = FLT_MAX;
+	m_listenerPosition.z = FLT_MAX;
 	if (TheAnimationSoundModuleManager == 0)
 		TheAnimationSoundModuleManager = this;
 }
 
-// Retail's data references in this unit's matched rows land on globals defined
-// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
-#pragma comment(linker, "/alternatename:?g_00C3CA30@@3QBQBXB=??_7AnimationSoundModuleManager@@6B@")
