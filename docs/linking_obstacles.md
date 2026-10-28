@@ -668,6 +668,9 @@ Whole-unit clearance and census confirmation remain pending.
   retains LINKS, 859 authored bytes, at index `bf3dd31211`; no census gain is
   claimed. [Scoped evidence](../reverse/attempt_support/tunneltracker-xfer-identity-20261027-codexb4.md).
   Other consolidation receivers and shared contracts remain separate prerequisites.
+  Recovery recheck (2026-10-28): retain the divergent identity key because the
+  owning retirement check lacks 74 ledger objects and 12 current providers.
+  The source binding is retained; current debt retirement remains pending.
 - **FireSpreadUpdate declaration trial (2026-10-26):**
   [The blocked prerequisite handoff](../reverse/attempt_support/consolidation-firespread-prerequisite-20261026-codex.md)
   preserves 11/11 baseline rows. A minimal declaration trial kept every object
@@ -701,9 +704,6 @@ Whole-unit clearance and census confirmation remain pending.
   Guard identity/transfer remains an actual-merge prerequisite alongside the
   other receiver/Coord3D/PartitionManager/mixed-source blockers. See the same
   handoff for exact checks. No merge, debt retirement or measured gain claimed.
-  Recovery recheck (2026-10-28): retain the divergent identity key because the
-  owning retirement check lacks 74 ledger objects and 12 current providers.
-  The source binding is retained; current debt retirement remains pending.
 
 - **HeaderTemplate provider inspection (2026-10-26):**
   [The scoped inspection](../reverse/attempt_support/consolidation-headertemplate-pushfront-prerequisite-20261026-codex.md)
@@ -6333,3 +6333,17 @@ restore CleanupHazardUpdateCtor.cpp. The standalone guard clearer was also
 retired by `e58affe130`. The saved checkout's earlier bounded checks remain
 in [its historical handoff](../reverse/attempt_support/beacon-client-update-consolidation-20261027-codexb4.md).
 No additional source-file or census gain is claimed during recovery.
+
+The complete recovered eleven-commit batch passed `git push --dry-run origin
+HEAD:master` against base `91b6036c49`: 119/119 function rows, two data rows
+and twelve EXACT EH graphs across seven checked sources. The four edited
+owners are TunnelTrackerXfer.cpp, Rva001518D1Get.cpp,
+SortingRendererBFME1.cpp and fxshadersetup.cpp; the batch has no source-path
+moves. Header-adoption, repair-queue and gate-exploit tests pass (314 passed,
+one skipped). The runner subsequently reported `publish: pushed`.
+
+The whole-batch link audit remains INCONCLUSIVE: cached index `bf3dd31211`
+predates that base and lacks per-object consumer names. Carry these owners and
+their affected consumers into the next normal census. This audit does not
+clear selected-provider coverage or claim new linked bytes, runtime results or
+image ownership. The TunnelTracker retirement limitation above remains open.
