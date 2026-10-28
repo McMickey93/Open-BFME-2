@@ -581,7 +581,6 @@ address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE1D00	
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE1D60	2
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE1E54	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE1E78	3
-address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE1E98	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE1FC8	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE2008	3
 address_global	Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	g_Va00DE4878	2
