@@ -10,7 +10,7 @@
 typedef bool Bool;
 #include "subsystem_interface.h"
 
-struct Rva002DAC58Node;
+class TerrainRoadType;
 
 class TerrainRoadCollection : public SubsystemInterface
 {
@@ -24,13 +24,13 @@ public:
 	virtual void update() {}
 private:
 	static unsigned int m_idCounter;
-	Rva002DAC58Node *m_list0C;
-	Rva002DAC58Node *m_list10;
+	TerrainRoadType *m_roadList;
+	TerrainRoadType *m_bridgeList;
 };
 
 TerrainRoadCollection::TerrainRoadCollection()
-	: m_list0C(0)
-	, m_list10(0)
+	: m_roadList(0)
+	, m_bridgeList(0)
 {
 	TerrainRoadCollection::m_idCounter = 1;
 }

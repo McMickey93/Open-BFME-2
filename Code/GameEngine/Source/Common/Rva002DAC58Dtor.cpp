@@ -1,6 +1,6 @@
 // cl: /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfme2_ascii /MD /EHsc
 // ??1TerrainRoadCollection@@UAE@XZ @0x002DAC58 128B: dtor with two node lists plus SubsystemInterface.
-// Evidence: vptr 0x00C03D64 store, lists at +0xC/+0x10 with virtual slot0 get(0) plus global delete row 0x2FD60, base dtor row 0x1B4E74, deleting dtor caller 0x002DACD8 28B, neighbour Rva002DB311Dtor /O1 /MD /EHsc.
+// Evidence: vptr 0x00C03D64 store, lists at +0xC/+0x10 with ::delete (virtual slot0 with flag 0, then global delete) row 0x2FD60, base dtor row 0x1B4E74, deleting dtor caller 0x002DACD8 28B, neighbour Rva002DB311Dtor /O1 /MD /EHsc.
 
 // BFME2 SubsystemInterface (12-byte base, 14-slot vtable 0x00BD77A0; ctor
 // 0x001B4E63 / dtor 0x001B4E74 rowed as ??0/??1SubsystemInterface) from the
@@ -8,11 +8,17 @@
 typedef bool Bool;
 #include "subsystem_interface.h"
 
-struct Rva002DAC58Node
+// TerrainRoads.cpp's road type: virtual dtor in slot 0, next link at +0x10.
+// Retail destroys each node through slot 0 with flag 0 and frees it with the
+// global operator delete, which is what ::delete does to a polymorphic object.
+class TerrainRoadType
 {
-	virtual void *get(int v);
+public:
+	virtual ~TerrainRoadType();
+	TerrainRoadType *friend_getNext() { return m_next; }
+protected:
 	char m_pad04[0xC];
-	Rva002DAC58Node *m_next;
+	TerrainRoadType *m_next;	///< 0x10
 };
 
 class TerrainRoadCollection : public SubsystemInterface
@@ -25,24 +31,24 @@ public:
 	virtual void reset() {}
 	virtual void update() {}
 private:
-	Rva002DAC58Node *m_list0C;
-	Rva002DAC58Node *m_list10;
+	TerrainRoadType *m_roadList;
+	TerrainRoadType *m_bridgeList;
 };
 
 TerrainRoadCollection::~TerrainRoadCollection()
 {
-	while (m_list0C)
+	TerrainRoadType *temp;
+
+	while( m_roadList )
 	{
-		Rva002DAC58Node *next = m_list0C->m_next;
-		void *p = m_list0C ? m_list0C->get(0) : 0;
-		::operator delete(p);
-		m_list0C = next;
+		temp = m_roadList->friend_getNext();
+		::delete m_roadList;
+		m_roadList = temp;
 	}
-	while (m_list10)
+	while( m_bridgeList )
 	{
-		Rva002DAC58Node *next = m_list10->m_next;
-		void *p = m_list10 ? m_list10->get(0) : 0;
-		::operator delete(p);
-		m_list10 = next;
+		temp = m_bridgeList->friend_getNext();
+		::delete m_bridgeList;
+		m_bridgeList = temp;
 	}
 }

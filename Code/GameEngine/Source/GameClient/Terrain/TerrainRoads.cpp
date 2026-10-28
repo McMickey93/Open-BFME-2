@@ -1,4 +1,4 @@
-// cl: /Ireference/shims/bfme2_ascii /MD /EHsc
+// cl: /Ireference/shims/subsystem_bfme2 /Ireference/shims/bfme2_ascii /MD /EHsc
 /*
 **	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -34,6 +34,10 @@ typedef bool Bool;
 typedef int Int;
 #define TRUE true
 #define FALSE false
+
+// BFME2 SubsystemInterface (12-byte base, 14-slot vtable 0x00BD77A0) from the
+// subsystem shim; TerrainRoadCollection's own vtable is retail 0x00C03D64.
+#include "subsystem_interface.h"
 
 enum BodyDamageType
 {
@@ -438,18 +442,27 @@ void TerrainRoadType::friend_setRepairedToSoundString( BodyDamageType state, con
 // TerrainRoadCollection: findRoad (0x002DB496), findBridge (0x002DB4DA) and
 // findRoadOrBridge are the Zero Hour lookups. findRoadOrBridge is the donor
 // body verbatim, placed by compiling the Open-BFME-1 donor at /O1.
-// Native collection list slots are +0x0C/+0x10; the subsystem prefix remains opaque.
-class TerrainRoadCollection
+// The lists sit at +0x0C/+0x10, after the 12-byte SubsystemInterface base.
+class TerrainRoadCollection : public SubsystemInterface
 {
-    char m_subsystemPrefix[0x0C];
-    TerrainRoadType *m_roadList;
-    TerrainRoadType *m_bridgeList;
-    static unsigned int m_idCounter;
 public:
+	TerrainRoadCollection();
+	virtual ~TerrainRoadCollection();
+	// Retail vtable 0x00C03D64 slots 1/9/10 (init/reset/update) are the folded
+	// empty body at 0x000B3FD0.
+	virtual void init() {}
+	virtual void reset() {}
+	virtual void update() {}
+
     TerrainRoadType *newRoad(AsciiString name);
 	TerrainRoadType *findRoad( AsciiString name );
 	TerrainRoadType *findBridge( AsciiString name );
 	TerrainRoadType *findRoadOrBridge( AsciiString name );
+
+protected:
+    TerrainRoadType *m_roadList;
+    TerrainRoadType *m_bridgeList;
+    static unsigned int m_idCounter;
 };
 
 // Native 0x009FF088 is a zero-initialized 4-byte counter. The collection
