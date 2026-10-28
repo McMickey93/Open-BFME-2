@@ -904,6 +904,8 @@ private:
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateBridgeApproach.cpp
 
 // ?rva0044E85E@SpecialAbilityUpdate@@QAE_NPAUCoord3D@@M@Z
@@ -1668,14 +1670,6 @@ void SpecialAbilityUpdate::finishAbility()
 	onExit(false, false);
 }
 
-// tu-skeleton: 0x0044EB54 378B ??0SpecialAbilityUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateModuleData.cpp (not merged yet)
-
-// tu-skeleton: 0x0044ECCE 199B ??1Rva0044ECCE@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0044ECCEDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0044ED95 17B ?buildFieldParse@SpecialAbilityUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
-
-// tu-skeleton: 0x0044EDA6 97B ?rva0044EDA6@SpecialAbilityUpdate@@UAE_NH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateSlot8.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva0044EECACheck.cpp
 
 bool Rva0044EECA::rva0044EECA(Rva0044EECAParam *p)
@@ -1703,11 +1697,27 @@ bool Rva0044EECA::rva0044EECA(Rva0044EECAParam *p)
 	return false;
 }
 
+// tu-skeleton: 0x0044EB54 378B ??0SpecialAbilityUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateModuleData.cpp (not merged yet)
+
+// tu-skeleton: 0x0044ECCE 199B ??1Rva0044ECCE@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0044ECCEDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0044ED95 17B ?buildFieldParse@SpecialAbilityUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
+
+// tu-skeleton: 0x0044EDA6 97B ?rva0044EDA6@SpecialAbilityUpdate@@UAE_NH@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateSlot8.cpp (not merged yet)
+
 // tu-skeleton: 0x0044EF42 28B ??_GRva0044ECCE@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0044ECCEDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0044EF5E 246B ??0Rva0044EF5E@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva0044EF5EFinish.cpp (not merged yet)
 
-// tu-skeleton: 0x0044F054 69B ?getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp
+
+// ?getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType SpecialAbilityUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheSpecialAbilityUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("SpecialAbilityUpdate");
+	return TheSpecialAbilityUpdatePoolKey;
+}
 
 // tu-skeleton: 0x0044F099 6B ?name@Rva0044F099Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 
@@ -1748,10 +1758,6 @@ bool Rva0044EECA::rva0044EECA(Rva0044EECAParam *p)
 // tu-skeleton: 0x00451FA2 846B ?update@SpecialAbilityUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp (not merged yet)
 
 // tu-skeleton: 0x004522F0 28B ??_GSpecialAbilityUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateDtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00789AC7 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x00789AD4 10B __ehhandler$?getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x00789ADE 8B uw_00789ade -- matched in Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateIsWithinStartAbilityRange.cpp (not merged yet)
 

@@ -19828,8 +19828,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03380,4,.data,global,?TheBloodthirstyUpdatePoolKey@?1??getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp,owned,,1,2
 0x00A03384,4,.data,global,?$S1@?1??getModuleNameKey@BloodthirstyUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/BloodthirstyUpdatePoolKey.cpp,owned,,1,4
 0x00A03388,4,.data,global,_s_rva007B0747,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A0338C,4,.data,global,?TheSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp,owned,,1,2
-0x00A03390,4,.data,global,?$S1@?1??getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdatePoolKey.cpp,owned,,1,4
+0x00A0338C,4,.data,global,?TheSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp,owned,,1,2
+0x00A03390,4,.data,global,?$S1@?1??getModuleNameKey@SpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdate.cpp,owned,,1,4
 0x00A03394,4,.data,global,?key_LaserUpdate@?1??initLaser@SpecialAbilityUpdate@@IAE_NPAVObject@@0@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp,owned,,1,2
 0x00A03398,8,.data,global,?$S1@?1??initLaser@SpecialAbilityUpdate@@IAE_NPAVObject@@0@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateRun.cpp,owned,,1,2
 0x00A033A0,4,.data,global,?g_Va00E033A0@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E033xx.cpp,owned,,1,2
