@@ -20712,8 +20712,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A043C0,4,.data,global,?$S1@?1??getModuleNameKey@EvacuateGarrisonSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/EvacuateGarrisonSpecialPowerPoolKey.cpp,owned,,1,4
 0x00A043C4,4,.data,global,?TheActivateModuleSpecialPowerPoolKey@?1??getModuleNameKey@ActivateModuleSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerPoolKey.cpp,owned,,1,2
 0x00A043C8,4,.data,global,?$S1@?1??getModuleNameKey@ActivateModuleSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ActivateModuleSpecialPowerPoolKey.cpp,owned,,1,4
-0x00A043CC,4,.data,global,?TheUnleashSpecialPowerPoolKey@?1??getModuleNameKey@UnleashSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/UnleashSpecialPowerPoolKey.cpp,owned,,1,2
-0x00A043D0,4,.data,global,?$S1@?1??getModuleNameKey@UnleashSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/UnleashSpecialPowerPoolKey.cpp,owned,,1,4
+0x00A043CC,4,.data,global,?TheUnleashSpecialPowerPoolKey@?1??getModuleNameKey@UnleashSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/UnleashSpecialPower.cpp,owned,,1,2
+0x00A043D0,4,.data,global,?$S1@?1??getModuleNameKey@UnleashSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/UnleashSpecialPower.cpp,owned,,1,4
 0x00A043D8,4,.data,global,?$S1@?3??rva004CE0D9@UnleashSpecialPower@@UAE_NH@Z@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/UnleashSpecialPowerRva004CE0D9.cpp,owned,,1,4
 0x00A043DC,4,.data,global,?key@?3??triggerAbilityEffect@UnleashSpecialPower@@UAEXXZ@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/UnleashSpecialPowerSlot17.cpp,owned,,1,2
 0x00A043E0,4,.data,global,?$S1@?3??triggerAbilityEffect@UnleashSpecialPower@@UAEXXZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/UnleashSpecialPowerSlot17.cpp,owned,,1,4
