@@ -9,8 +9,7 @@
 // It preserves the observed load/update/store operations around Enter/Leave.
 #include <string.h>
 
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *cs);
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *cs);
+#include <windows.h>
 
 struct Rva00030DD0Lock
 {
@@ -359,13 +358,13 @@ void *Rva006C1F60::rva00033ED0(unsigned int bytes, int flags)
         {
             Rva00030DD0Lock *lock = m_lock;
             --lock->m_ref;
-            LeaveCriticalSection(lock);
+            LeaveCriticalSection((CRITICAL_SECTION *)lock);
         }
         bool ok = m_grow(this, bytes, bytes + 0x40, m_4b0);
         for (int j = 0; j < refs; ++j)
         {
             Rva00030DD0Lock *lock = m_lock;
-            EnterCriticalSection(lock);
+            EnterCriticalSection((CRITICAL_SECTION *)lock);
             ++lock->m_ref;
         }
         if (!ok)
