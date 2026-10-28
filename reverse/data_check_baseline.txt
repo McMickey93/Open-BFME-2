@@ -80,13 +80,8 @@ Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp	wrong-name	?$S
 Code/GameEngine/Source/GameLogic/Object/Rva00220DCDInit.cpp	wrong-name	?g_00DFE490@@3VRva00575674@@A	0x009FE490
 Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp	wrong-name	?$S1@?1??rva00049A1CA@AutoDepositUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B14
 Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp	wrong-name	?$S1@?1??rva004C9607@BeaconClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04338
-Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp	wrong-name	?g_Va00DBA4E4@@3HA	0x009BA4E4
-Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp	wrong-name	?$S1@?1??rva000495344@CommandButtonHuntUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A3C
-Code/GameEngine/Source/GameLogic/Object/Update/DemoTrapUpdate.cpp	wrong-name	?$S1@?1??rva000495935@DemoTrapUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03A48
 Code/GameEngine/Source/GameLogic/Object/Update/DetachableRiderUpdate.cpp	wrong-name	?$S1@?1??rva004AE832@DetachableRiderUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03D60
-Code/GameEngine/Source/GameLogic/Object/Update/LifetimeUpdate.cpp	wrong-name	?$S1@?1??rva0003A4A27@LifetimeUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A028E4
 Code/GameEngine/Source/GameLogic/Object/Update/POWTruckAIUpdateCtor.cpp	duplicate-def	_s_dummyFD98	0x0085FD98
-Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdate.cpp	wrong-name	?$S1@?1??rva00049FE9A@ProneUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B78
 Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/SupplyTruckAIUpdate.cpp	wrong-name	?$S1@?1??rva0004A6DE4@SupplyTruckAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C50
 Code/GameEngine/Source/GameLogic/Object/Update/ToggleDeploySpecialAbilityUpdateCtor.cpp	duplicate-def	_s_secondary20	0x00855348
 Code/GameEngine/Source/GameLogic/Object/Update/ToggleDeploySpecialAbilityUpdateCtor.cpp	wrong-name	_s_secondary20	0x00855348
