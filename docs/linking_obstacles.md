@@ -66,6 +66,23 @@ authored-byte previews or commit-title gains into a projected headline.
 
 ## Obstacles and handoffs
 
+### BannerCarrierUpdate string-header composition (2026-10-28)
+
+Status: destructor prerequisite repaired; supported merge and census
+confirmation pending. Inspected base: `309f097ad1`; preview index: `14dc3d2467`.
+
+The destructor donor adopts the destination's shared AsciiString header,
+removing a conflicting private StringBase template. All three donor rows stay
+exact, frozen/class/data checks pass, and the donor still previews LINKS for
+63 authored bytes. The emitted string-destructor helper is identical to the
+destination's existing copy. A strict receipt is current; the batch audit is
+INCONCLUSIVE because the index predates the base and lacks per-object consumer
+names. No new linked coverage is claimed. Carry this scope into the next census.
+
+[Evidence and remaining donor prerequisites](../reverse/attempt_support/banner-carrier-consolidation-20261028-codex.md).
+Next: retry the supported merge; other donors still need layout, declaration
+and compiler-setting reconciliation. The initial trial accepted no donor.
+
 ### DockUpdate approach callback composition (2026-10-28)
 
 Status: callback prerequisite repaired and callback merged into the approved
