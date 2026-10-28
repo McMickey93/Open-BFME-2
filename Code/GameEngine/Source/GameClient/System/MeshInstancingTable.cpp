@@ -1,11 +1,17 @@
-// cl: /O1 /DNDEBUG /MD /EHsc
+// cl: /O1 /DNDEBUG /MD /EHs
 // ??1Rva0041FA59@@QAE@XZ, native 0x0041FA59..0x0041FA92 (57B).
 // Native AsciiString-keyed table destructor reached by MeshInstancingManager.
 // Its old gen-alias copy used another destructor's symbol/EH identity.
 // Clear owns string-node destruction; then the bucket storage is freed through
-// the verified GameMemory free override. No STL CRT header declaration is
-// imported, preserving the allocator's native potentially-throwing contract.
-extern "C" void __cdecl free(void *block) throw(...);
+// the verified GameMemory free override.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 class Rva000427195 { public: void rva003A2A41(); };
 struct MeshInstancingBucketHandle
 {

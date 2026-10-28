@@ -1,4 +1,4 @@
-// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc /Ireference/shims/moduledata
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs /Ireference/shims/moduledata
 //
 // ??1ActiveBodyModuleData@@UAE@XZ, retail 0x00256CB0, 93 bytes. Virtual
 // dtor over vtable 0x0085AFB8 (slot 0 deleting dtor at 0x004BF9B8 calls
@@ -12,7 +12,12 @@
 // the SupplyTruck precedent. Unblocks SymbioticStructuresBody 0x002570F9
 // plus deleting dtor 0x004BF9B8.
 
-extern "C" void __cdecl free(void *block) throw(...);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 #include "Common/Snapshot.h"
 

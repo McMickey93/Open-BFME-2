@@ -1,4 +1,4 @@
-// cl: /Ireference/shims/bfme2_ascii /O1 /G7 /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /O1 /G7 /MD /EHs
 //
 // ??1AptPlayer@@UAE@XZ retail 0x00224A90 (237B), the AptPlayer complete
 // destructor (vtable 0x007E6E80; base SubsystemInterface dtor 0x001B4E74).
@@ -9,9 +9,15 @@
 // Member types are named by the destructors rowed/pinned at the called
 // addresses (0x223FF1 ArchivedFileInfo map, 0x22366C and 0x224974 hash
 // tables, 0x06BF2A pointer set); their real identities are unproven.
-#include "ascii_string.h"
 
-extern "C" void __cdecl free(void *block) throw(...);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
+#include "ascii_string.h"
 
 namespace _STL {
 template <class A, class B> struct pair;

@@ -1,4 +1,4 @@
-// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
+// cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHs
 // ??1Rva00415366@@QAE@XZ @0x00415366 57B
 // Hash-table dtor sharing the rowed Rva000427195 clear 0x003A2A41 then freeing
 // the bucket array at +4 via free 0x00030830 with a null guard.
@@ -8,10 +8,13 @@
 // ??1Rva000427195@@QAE@XZ 0x001FDEDB and ??1Rva0022366C@@QAE@XZ 0x0022366C.
 // Layout matches that table: unused at +0 buckets at +4/+8/+0xC count at +0x10.
 // Callers at 0x00415D15 and jmp at 0x0041547C.
-// C++-linkage free (?free@@YAXPAX@Z, pinned at 0x00030830): the C++
-// decoration is what makes the caller emit the unwind state store retail
-// carries; same body as the extern C _free at that address.
-extern "C" void __cdecl free(void *block) throw(...);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva00415366BucketHandle
 {

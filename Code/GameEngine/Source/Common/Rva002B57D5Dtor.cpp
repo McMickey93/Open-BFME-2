@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHsc
+// cl: /DNDEBUG /MD /EHs
 // ??1Rva002B57D5@@QAE@XZ @0x002B62A6 56B.
 // List destructor for the Rva002B57D5 family: clears via the rowed
 // rva002B57D5, then the inline head-handle member dtor frees the sentinel
@@ -8,10 +8,13 @@
 // the inline member dtor needs unwind across the clear, giving the
 // __EH_prolog frame.
 // Callers at 0x002B82ED and jmp at 0x002B7396; unblocks 0x002B82D5.
-// C++-linkage free (?free@@YAXPAX@Z, pinned at 0x00030830): the C++
-// decoration is what makes the caller emit the unwind state store retail
-// carries; same body as the extern C _free at that address.
-extern "C" void __cdecl free(void *block) throw(...);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Node002B4509
 {

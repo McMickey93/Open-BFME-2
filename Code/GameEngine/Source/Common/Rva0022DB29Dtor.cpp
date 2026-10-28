@@ -1,6 +1,12 @@
-// cl: /DNDEBUG /MD /EHsc
+// cl: /DNDEBUG /MD /EHs
 // ??1Rva0022DB29@@QAE@XZ @0x0022DC62 57B: hash-table scalar dtor clears via rowed 0x0022DB29 then inline bucket-handle member dtor frees array at +4. Evidence: chain packet plus outer 0x00418298 lea-ecx-+0xC call plus 5B jmp at 0x0022DE29.
-extern "C" void __cdecl free(void *block) throw(...);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva0022D9B7Node;
 struct Rva0022DB29BucketHandle

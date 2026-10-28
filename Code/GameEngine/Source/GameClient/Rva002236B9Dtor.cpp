@@ -1,4 +1,4 @@
-// cl: /DNDEBUG /MD /EHsc
+// cl: /DNDEBUG /MD /EHs
 // ??1Rva002236B9@@QAE@XZ @0x002236B9 57B
 // Hash-table dtor sharing the rowed AsciiString-pair hashtable clear
 // 0x002234FE then freeing the bucket array at +4 via free 0x00030830.
@@ -9,7 +9,13 @@
 // Layout matches that table: unused at +0 buckets at +4/+8/+0xC count at +0x10.
 // Outer reuses the rowed clear via cast since the address already has a row.
 // Callers at 0x00224D63 and jmp at 0x002238E1.
-extern "C" void __cdecl free(void *block) throw(...);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class AsciiString;
 namespace rts

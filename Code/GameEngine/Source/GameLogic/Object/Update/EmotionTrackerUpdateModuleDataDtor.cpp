@@ -1,4 +1,4 @@
-// cl: /EHsc /DNDEBUG /MD
+// cl: /EHs /DNDEBUG /MD
 //
 // ??1EmotionTrackerUpdateModuleData@@UAE@XZ, retail 0x004B1285, 157 bytes.
 // EmotionTrackerUpdateModuleData destructor over the ctor TU layout
@@ -12,6 +12,13 @@
 // 0x00BBB554. The ??_G at 0x004B15AE calls this body directly. EH arms
 // count live tracked members (5/4/3/2/1/0).
 
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 #include "../../../../../../reference/shims/moduledata/Common/Snapshot.h"
 
@@ -31,8 +38,6 @@ class Rva004DC9EDEntry
 public:
 	~Rva004DC9EDEntry();
 };
-
-extern "C" void free(void *block) throw(...);
 
 struct EntryVec
 {

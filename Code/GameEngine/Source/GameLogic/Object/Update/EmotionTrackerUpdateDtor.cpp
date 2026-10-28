@@ -1,4 +1,4 @@
-// cl: /EHsc /DNDEBUG /MD
+// cl: /EHs /DNDEBUG /MD
 //
 // ??1EmotionTrackerUpdate@@UAE@XZ, retail 0x004B1322, 107 bytes.
 // EmotionTrackerUpdate destructor: reinstalls the four vptrs (+0 0x00C5667C,
@@ -13,7 +13,12 @@
 // rowed middle so the call mangles to the row name and links; vtable
 // immediates are DIR32.
 
-extern "C" void free(void *block) throw(...);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // UpdateModule carries its own three vptrs (+0x00/+0x0C/+0x10), as the
 // pinned ctor 0x004B21B9 and UpdateModule::~UpdateModule 0x0024A797 show, so

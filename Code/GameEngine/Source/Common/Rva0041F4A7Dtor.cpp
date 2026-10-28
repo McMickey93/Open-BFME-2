@@ -1,13 +1,16 @@
-// cl: /O1 /DNDEBUG /MD /EHsc
+// cl: /O1 /DNDEBUG /MD /EHs
 // Native 0041F4A7..0041F4E0, 57 bytes: clear POD hash nodes, then free
 // the bucket allocation. This replaces the old gen-alias at its own address.
 // Target accesses establish bucket pointers at +4/+8/+C and count at +10.
 // Original key/value identities remain unknown. Armor's template supplies
 // the already-rowed shared clear body, not this table's original identity.
-// Keep this allocator-owning body separate from headers importing CRT free:
-// retail uses the game allocator at 00030830 and a throwing declaration.
 
-extern "C" void __cdecl free(void *block) throw(...);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva004DFC20
 {

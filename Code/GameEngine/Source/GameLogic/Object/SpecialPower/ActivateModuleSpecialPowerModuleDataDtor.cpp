@@ -1,4 +1,4 @@
-// cl: /MD /DNDEBUG /EHsc
+// cl: /MD /DNDEBUG /EHs
 //
 // ??1ActivateModuleSpecialPowerModuleData@@UAE@XZ, retail 0x0025714A, 93 bytes.
 // Target evidence: the audited scalar deleting dtor 0x0025712E calls this
@@ -9,9 +9,12 @@
 // 0x0044ECCE (Rva0044ECCE, 0xC8 prefix). Vector modelled with the rowed
 // Rva002571A7Vector view; element type unrecovered.
 
-// C++-linkage free (pinned ?free@@YAXPAX@Z) as STLport compiles against: a
-// direct call that may throw, so the member teardown gets its EH state.
-extern "C" void __cdecl free(void *block) throw(...);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport. /EHs lets free throw,
+// preserving retail's unwind states.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva002571A7Elem
 {
