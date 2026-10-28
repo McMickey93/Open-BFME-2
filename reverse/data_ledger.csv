@@ -13043,12 +13043,12 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0086EE28,208,.rdata,vtable,??_7VBase00C6EE28@@6B@,,literal,??_7Base1@@6B@;??_7Base2@@6B@;??_7Rva00330C50Interface@@6B@;??_7VBase00C6EE28@@6B@;?g_00C6EE28@@3QBQBXB;_vtbl_00C6EE28,0,12
 0x0086EEF8,20,.rdata,vtable,??_7Item@ChecklistUIImpl@StrategicHUD@@6BRva005D40A6@@@,,literal,??_7Item@ChecklistUIImpl@StrategicHUD@@6BRva005D40A6@@@;??_7Rva0057A2B0@@6BRva005D40A6@@@,0,2
 0x0086EF0C,52,.rdata,vtable,??_7Item@ChecklistUIImpl@StrategicHUD@@6BRva005D1A6C@@@,,literal,??_7Item@ChecklistUIImpl@StrategicHUD@@6BRva005D1A6C@@@;??_7Rva0057A2B0@@6BRva0057A2B0B1@@@,0,2
-0x0086EF40,48,.rdata,global,?g_00C6EF40@@3PAURva0057A3B2Entry@@A,Code/GameEngine/Source/Common/Rva0057A3B2Lookup.cpp,owned,,1,2
+0x0086EF40,48,.rdata,global,?g_00C6EF40@@3PAURva0057A3B2Entry@@A,Code/GameEngine/Source/Common/StrategicHUD.cpp,owned,,1,2
 0x0086EF70,28,.rdata,string,??_C@_0BL@DOJIIJDJ@APT?3_level?$CFu?4?$CFs_TurnNumber?$AA@,,literal,,0,2
 0x0086EF8C,32,.rdata,string,??_C@_0BP@JELPJO@STRATEGICHUD?3TurnTimeRemaining?$AA@,,literal,,0,1
 0x0086EFAC,104,.rdata,string,??_C@_0BO@BAIMCMAM@APT?3_level?$CFu?4?$CFs_TimeRemaining?$AA@,,literal,,0,1
 0x0086F014,28,.rdata,string,??_C@_0BL@KFAIAAMC@APT?3_level?$CFu?4?$CFs_PhaseTitle?$AA@,,literal,,0,1
-0x0086F030,24,.rdata,global,_s_table,Code/GameEngine/Source/Common/Rva0057A685Apt.cpp,owned,,1,2
+0x0086F030,24,.rdata,global,_s_table,Code/GameEngine/Source/Common/StrategicHUD.cpp,owned,,1,2
 0x0086F048,24,.rdata,string,??_C@_0BG@ONHFMNNJ@SetTimeRemainingState?$AA@,,literal,,0,2
 0x0086F060,12,.rdata,string,??_C@_09JJBENIOI@CloseList?$AA@,,literal,,0,1
 0x0086F06C,12,.rdata,string,??_C@_08JJDENMEF@OpenList?$AA@,,literal,,0,1
@@ -20981,8 +20981,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A062FC,16,.data,global,?g_Va00E062FC@@3IA,,unowned,,0,6
 0x00A0630C,16,.data,global,?g_Va00E0630C@@3IA,,unowned,,0,6
 0x00A0631C,56,.data,global,?g_Va00E0631C@@3IA,,unowned,,0,1
-0x00A06354,10,.data,global,?g_00E06354@@3PAGA,Code/GameEngine/Source/Common/Rva0057A272Get.cpp,owned,,1,3
-0x00A0635E,2,.data,global,?g_00E0635E@@3EA,Code/GameEngine/Source/Common/Rva0057A272Get.cpp,owned,,1,2
+0x00A06354,10,.data,global,?g_00E06354@@3PAGA,Code/GameEngine/Source/Common/StrategicHUD.cpp,owned,,1,3
+0x00A0635E,2,.data,global,?g_00E0635E@@3EA,Code/GameEngine/Source/Common/StrategicHUD.cpp,owned,,1,2
 0x00A06360,20,.data,global,?g_Va00E06360@@3IA,,unowned,,0,3
 0x00A06374,4,.data,global,?g_00E06374@@3HA,,unowned,,0,1
 0x00A06378,4,.data,global,?g_00E06378@@3HA,,unowned,,0,1

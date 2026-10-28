@@ -339,8 +339,6 @@ address_global	Code/GameEngine/Source/Common/Rva00574499Dtor_Unresolved.cpp	g_Va
 address_global	Code/GameEngine/Source/Common/Rva005745D8.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/Rva005794EDDtor.cpp	g_Rva0107301CEmptyString	2
 address_global	Code/GameEngine/Source/Common/Rva00579676Parse.cpp	g_Va00E0631C	3
-address_global	Code/GameEngine/Source/Common/Rva00579900Fetch.cpp	g_Va007BB5C4	2
-address_global	Code/GameEngine/Source/Common/Rva0057A51CApt.cpp	g_Va007C9260	3
 address_global	Code/GameEngine/Source/Common/Rva00583015Destroy.cpp	g_Va00E06398	5
 address_global	Code/GameEngine/Source/Common/Rva005B02B5.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/Rva005B922FDtor.cpp	g_Va00E06480	3
@@ -864,6 +862,8 @@ address_global	Code/GameEngine/Source/Common/Rva007EB310Destroy.cpp	g_Va0130A58D
 address_global	Code/GameEngine/Source/Common/Rva00898D60GlobalTail.cpp	g_Rva01337A20	3
 address_global	Code/GameEngine/Source/Common/RvaSingletonFwdMisc.cpp	g_Va00E032FC	2
 address_global	Code/GameEngine/Source/Common/RvaSingletonFwdMisc.cpp	g_pRva00437E9C	2
+address_global	Code/GameEngine/Source/Common/StrategicHUD.cpp	g_Va007BB5C4	2
+address_global	Code/GameEngine/Source/Common/StrategicHUD.cpp	g_Va007C9260	3
 address_global	Code/GameEngine/Source/Common/System/FileSystemRestricted.cpp	g_Va00E06E60	2
 address_global	Code/GameEngine/Source/Common/System/FormationBuild.cpp	g_Va00E03174	2
 address_global	Code/GameEngine/Source/Common/System/GeometryInfoCtor.cpp	g_Va00BC2424	1
@@ -2451,7 +2451,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00576FD3Permuted.cpp	?observerSlo
 alternatename	Code/GameEngine/Source/Common/Rva00576FD3Permuted.cpp	?observerSlot4@SecondBase005D2111@@UAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva00579731Dtor.cpp	??0Rva005796FC@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00579731Dtor.cpp	??1Rva005796FC@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/Rva0057A51CApt.cpp	?g_Va007C9260@@3QBGB	1
 alternatename	Code/GameEngine/Source/Common/Rva0057BCD7Ctor.cpp	?base0@Rva0057BCD7Base0@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00589079Derived.cpp	??1Rva00019565FlatBase@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00589079Derived.cpp	?f2@Rva00481F82_S2@@UAEXXZ	1
@@ -2642,6 +2641,7 @@ alternatename	Code/GameEngine/Source/Common/S3PolymorphicArrayClear128.cpp	?bfme
 alternatename	Code/GameEngine/Source/Common/SmallGaps/Rva007F5A70VideoBufferValue.cpp	?m@Gen_007e88b0@@QAEHXZ	1
 alternatename	Code/GameEngine/Source/Common/SpawnArmyCopyCtor.cpp	??0BfmePod88@@QAE@ABU0@@Z	1
 alternatename	Code/GameEngine/Source/Common/StateMachineXfer.cpp	?XferObjectID@@YAAAVXfer@@PAV1@PAW4ObjectID@@@Z	1
+alternatename	Code/GameEngine/Source/Common/StrategicHUD.cpp	?g_Va007C9260@@3QBGB	1
 alternatename	Code/GameEngine/Source/Common/StringContainerRecordVector.cpp	?_M_clear@?$vector@URva0004B22EElement@@V?$allocator@URva0004B22EElement@@@_STL@@@_STL@@IAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/StringVectorRecordCtorC0BEC.cpp	??0BfmeAsciiStringStorage000BDD48@@QAE@ABUBfmeAsciiStringAllocator000BDD48@@@Z	1
 alternatename	Code/GameEngine/Source/Common/System/BfmeDataChunkParserBinding.cpp	?bfmeSlot0@BfmeParserBindingVE@@UAEXXZ	1
