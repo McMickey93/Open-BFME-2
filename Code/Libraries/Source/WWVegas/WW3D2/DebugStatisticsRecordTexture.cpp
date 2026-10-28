@@ -220,8 +220,11 @@ extern "C" int lightmap_texture_count;
 // Shared with the mode setter/getter in statistics.cpp (retail RVA 0x009EE8F4).
 extern Debug_Statistics::RecordTextureMode record_texture_mode;
 extern "C" int procedural_texture_count;
-static RefCountPtr<TextureClass> latest_texture;
-static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
+// Defined here, external so the other statistics.cpp fragments share this one
+// object until they merge; the compiler-emitted atexit destructors _$E2 and
+// _$E5 are retail's 0x007B7040 and 0x007B7060 (_$E1/_$E4 push them).
+RefCountPtr<TextureClass> latest_texture;
+DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
 
 static bool Find_Record_Texture(RefCountPtr<TextureClass> const &t)
 {

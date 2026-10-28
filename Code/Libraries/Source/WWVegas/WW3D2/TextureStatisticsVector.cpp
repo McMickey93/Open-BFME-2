@@ -245,8 +245,9 @@ extern "C" { int procedural_texture_memory; }
 extern "C" { int procedural_texture_count; }
 extern "C" { int record_count; }
 extern "C" { int texture_change_count; }
-static RefCountPtr<TextureClass> latest_texture;
-static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
+// Defined in DebugStatisticsRecordTexture.cpp (retail statistics.cpp's one pair).
+extern RefCountPtr<TextureClass> latest_texture;
+extern DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
 
 void Record_Texture_Begin()
 {

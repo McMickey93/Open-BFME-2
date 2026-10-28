@@ -16,9 +16,9 @@ private:
     T *Referent;
 };
 
-extern RefCountPtr<TextureClass> g_Va00DEE918;
+extern RefCountPtr<TextureClass> latest_texture;	// defined in DebugStatisticsRecordTexture.cpp
 
 void __cdecl rva007B7040()
 {
-    g_Va00DEE918.~RefCountPtr();
+    latest_texture.~RefCountPtr();
 }
