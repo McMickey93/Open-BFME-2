@@ -6,7 +6,7 @@
 // Static with internal caller in same TU restores compiler-private EAX-to-ESI
 // handoff (mov esi eax). Precedent static intToHexDigit rowed in
 // quoted_printable.cpp and shape-lever EAX-to-ESI handoff. Caller stub keeps the
-// static emitted with EAX ABI for Rva00542449Find.
+// static emitted with EAX ABI for findChar.
 #include <ctype.h>
 #include <string.h>
 
@@ -35,7 +35,7 @@ static char *skipIdentifier(char *text)
 
 // ?findChar@@YAPADPADD@Z @0x00542449 16B
 // Character find: advances until NUL or the stack-passed character, returning
-// the stop pointer. Same EAX-pointer private convention as Rva00542425Skip
+// the stop pointer. Same EAX-pointer private convention as skipIdentifier
 // directly before it (retail bytes: live-in eax, char at [esp+4], plain ret).
 static char *findChar(char *text, char c)
 {
@@ -62,7 +62,7 @@ char *Rva00542425Caller(char *text)
 // ?rva005424C4@XmlNameSlotList@@QAEHXZ @0x005424C4 535B
 // Element scanner: tail-jumped from XmlNameSlotList::finish 0x00542890 at '<'.
 // Skips whitespace after '<', reads an optional '/' (closing tag, kind 2),
-// the tag name (Rva00542425Skip), then for an opening tag up to 4
+// the tag name (skipIdentifier), then for an opening tag up to 4
 // name="value" / name='value' attributes into 33+64 byte slots at +0x2C
 // (stride 0x61, retail imul 0x61). '/' leaves the element open for finish's
 // "/>" arm, '>' is consumed; the tag name is NUL-terminated in place with the

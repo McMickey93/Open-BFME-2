@@ -203,7 +203,7 @@ extern Rva00548B97Helper *overlayLayouts[GSOVERLAY_MAX];
 // ?raiseOverlays present-unmatched  static emitter inlined into RaiseGSMessageBox
 void raiseOverlays( void )
 {
-	// Double-load of G00A05F88[i] yields retail mov eax,[esi]/mov ecx,eax
+	// Double-load of overlayLayouts[i] yields retail mov eax,[esi]/mov ecx,eax
 	// thiscall shape (single local would load straight into ecx, 30B miss).
 	for (int i=0; i<GSOVERLAY_MAX; ++i)
 	{
