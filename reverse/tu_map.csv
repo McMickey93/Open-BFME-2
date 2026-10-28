@@ -48759,7 +48759,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005A6DAC,206,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp W=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
 0x005A6E7A,96,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NAT.cpp
 0x005A6EDA,24,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,C,C=0x005A6E7A..0x005A6EF2,Code/GameEngine/Source/Common/System/Rva0052BF33DestroyTagged.cpp
-0x005A6EF2,640,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp W=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NATSendPings.cpp
+0x005A6EF2,640,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp W=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NAT.cpp
 0x005A7172,63,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,C,C=0x005A6EF2..0x005A71B1,Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp
 0x005A71B1,79,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,C,C=0x005A6EF2..0x005A7200,Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp
 0x005A7200,28,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,C,C=0x005A6EF2..0x005A721C,Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp
@@ -87539,9 +87539,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0079E493,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6B14@FuncInfo0x00954808,Code/GameEngine/Source/GameNetwork/NATAttachSlotList.cpp
 0x0079E49D,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6DAC@FuncInfo0x0095482C,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
 0x0079E4A7,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6DAC@FuncInfo0x0095482C,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
-0x0079E4B1,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6EF2@FuncInfo0x00954858,Code/GameEngine/Source/GameNetwork/NATSendPings.cpp
-0x0079E4B9,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6EF2@FuncInfo0x00954858,Code/GameEngine/Source/GameNetwork/NATSendPings.cpp
-0x0079E4C1,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6EF2@FuncInfo0x00954858,Code/GameEngine/Source/GameNetwork/NATSendPings.cpp
+0x0079E4B1,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6EF2@FuncInfo0x00954858,Code/GameEngine/Source/GameNetwork/NAT.cpp
+0x0079E4B9,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6EF2@FuncInfo0x00954858,Code/GameEngine/Source/GameNetwork/NAT.cpp
+0x0079E4C1,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A6EF2@FuncInfo0x00954858,Code/GameEngine/Source/GameNetwork/NAT.cpp
 0x0079E4CB,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A7172@FuncInfo0x0095487C,Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp
 0x0079E4D3,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A7172@FuncInfo0x0095487C,Code/GameEngine/Source/Common/RvaVectorDtorFamily.cpp
 0x0079E4DD,20,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A71B1@FuncInfo0x009548A0,Code/GameEngine/Source/Common/System/Rva005A71B1Dtor.cpp
