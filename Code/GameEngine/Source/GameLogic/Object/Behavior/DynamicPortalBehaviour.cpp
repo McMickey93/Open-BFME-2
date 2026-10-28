@@ -207,7 +207,7 @@ public:
 	virtual void dynamicPortalExtraB();
 };
 
-// LINK: the owner call binds the rowed 0x0046094C (DynamicPortalBehaviour::rva0046094C, DynamicPortalBehaviourClearPortals.cpp).
+// LINK: the owner call binds the rowed 0x0046094C (DynamicPortalBehaviour::rva0046094C, defined below).
 class DynamicPortalBehaviour : public UpgradeModule,
 	public DynamicPortalExtraA,
 	public DynamicPortalExtraB

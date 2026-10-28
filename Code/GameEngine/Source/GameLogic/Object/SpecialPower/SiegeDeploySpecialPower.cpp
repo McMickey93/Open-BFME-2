@@ -191,7 +191,7 @@ protected:
 	Module *findModule(NameKeyType key) const;	// 0x0028B6D6
 };
 
-// LINK: the owner call binds the rowed 0x0046094C (DynamicPortalBehaviour::rva0046094C, DynamicPortalBehaviourClearPortals.cpp).
+// LINK: the owner call binds the rowed 0x0046094C (DynamicPortalBehaviour::rva0046094C, DynamicPortalBehaviour.cpp).
 class DynamicPortalBehaviour
 {
 public:

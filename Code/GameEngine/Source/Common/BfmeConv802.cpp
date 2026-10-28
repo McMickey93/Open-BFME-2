@@ -7,7 +7,7 @@
 // 0x0046094C (bfmeCallEBC) and 0x00383EEA (bfmeCallEBD), the donor's own
 // family names on unclaimed ground.
 
-// LINK: the owner call binds the rowed 0x0046094C (DynamicPortalBehaviour::rva0046094C, DynamicPortalBehaviourClearPortals.cpp).
+// LINK: the owner call binds the rowed 0x0046094C (DynamicPortalBehaviour::rva0046094C, DynamicPortalBehaviour.cpp).
 class DynamicPortalBehaviour
 {
 public:
