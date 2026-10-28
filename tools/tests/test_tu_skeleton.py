@@ -596,22 +596,19 @@ class MergeDiagnosticsTests(unittest.TestCase):
         self.assertIn("C1001", out["blocked"])
 
 
-class RespellTests(unittest.TestCase):
-    """attempt() skips a spelling strategy that cannot touch what the compile errors name."""
-    BEFORE = "struct Object { int a; };\nstruct Range { int r; };\nint f() { return 0; }"
+class StrategySkipTests(unittest.TestCase):
+    """attempt() skips a spelling strategy only when its text repeats one already tried."""
 
-    def test_a_strategy_that_respells_a_named_type_is_tried(self):
-        errors = ["x.cpp(3) : error C2039: 'm_b' : is not a member of 'Object'"]
-        after = self.BEFORE.replace("int a;", "int a; int m_b;")
-        self.assertTrue(T.respells((self.BEFORE, errors), after))
+    def test_identical_texts_are_tried_once(self):
+        texts = {"union-first": "A", "union-longest": "A", "first": "B", "longest": "B"}
+        self.assertEqual(T.distinct_strategies(texts.get), [("union-first", "A"), ("first", "B")])
 
-    def test_a_strategy_that_changes_only_other_types_is_skipped(self):
-        errors = ["x.cpp(3) : error C2065: 'Rva00990030Range' : undeclared identifier"]
-        after = self.BEFORE.replace("int a;", "int a; int m_b;")
-        self.assertFalse(T.respells((self.BEFORE, errors), after))
-
-    def test_errors_that_name_nothing_never_skip(self):
-        self.assertTrue(T.respells((self.BEFORE, ["x.cpp(3) : fatal error C1001"]), self.BEFORE + " "))
+    def test_a_respelled_typedef_is_tried_even_when_the_errors_name_only_its_caller(self):
+        # review 2026-10-28: C2668 names only `choose`; the longest spelling of Arg cures it
+        first = "typedef int Arg;\nvoid choose(long); void choose(double);\nvoid g(Arg x) { choose(x); }"
+        longest = first.replace("typedef int Arg;", "typedef long Arg;")
+        texts = {"union-first": first, "union-longest": longest, "first": first, "longest": longest}
+        self.assertEqual([st for st, _ in T.distinct_strategies(texts.get)], ["union-first", "union-longest"])
 
 
 class AccretionTests(unittest.TestCase):

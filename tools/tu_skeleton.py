@@ -20,8 +20,8 @@ if the TU still compiles and NO baseline row is lost, and the best order wins.
 Accretion tries growing chunks of donors in one compile and bisects a chunk
 that fails; an order or flag set stops once it cannot beat the best so far, and
 a donor rejected for a compile error that also fails beside the seed alone is
-not retried in later orders (greedy(), screen()); a spelling strategy that
-changes no line the compile errors name is skipped (respells()). The accepted
+not retried in later orders (greedy(), screen()); a spelling strategy whose
+composed text equals one already tried is skipped (distinct_strategies()). The accepted
 set is composed and verified again before it is written.
 Duplicate declarations are emitted once; a type that two donors spell
 differently gets one spelling (first, else longest) and the byte check decides
@@ -487,15 +487,23 @@ def redefined(errors):
     return {next(g for g in m.groups() if g) for e in errors for m in [REDEFINED.search(e)] if m}
 
 
-def respells(failed, text):
-    """Whether `text` changes a line that names an identifier the compile errors
-    of `failed` (text, errors) quote. Spelling strategies differ only in the
-    types two donors spell differently; a strategy whose differences touch none
-    of the names the errors are about cannot cure them, so attempt() skips it."""
-    before, errors = failed
-    names = {n for e in errors for n in re.findall(r"'(?:[\w:]*::)?([A-Za-z_]\w*)", e)}
-    changed = set(before.splitlines()) ^ set(text.splitlines())
-    return not names or any(re.search(r"\b" + re.escape(n) + r"\b", line) for line in changed for n in names)
+STRATEGIES = ("union-first", "union-longest", "first", "longest")
+
+
+def distinct_strategies(first_text, strategies=STRATEGIES):
+    """[(strategy, its first composed text)], one strategy per distinct text.
+    Composing and compiling are deterministic, so a strategy whose text equals one
+    already tried ends exactly as that one did; attempt() skips only those. (A skip
+    judged by which names the compile errors quote lost merges: a respelled typedef
+    can cure an error that names only the overloaded function it reaches, review
+    2026-10-28.)"""
+    seen, out = set(), []
+    for st in strategies:
+        text = first_text(st)
+        if text not in seen:
+            seen.add(text)
+            out.append((st, text))
+    return out
 
 
 def composition_chunks(text):
@@ -1558,11 +1566,8 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
         best = None
         need = set().union(*(base[f] for f in files))
         rows = [r for f in files for r in don[f]]
-        failed = None   # (text, errors) of the last strategy that did not compile
-        for st in ("union-first", "union-longest", "first", "longest"):
+        for st, _first in distinct_strategies(lambda st: compose(tu, sk, files, texts, flags, st)):
             drop, drop_all = set(), set()
-            if failed and not respells(failed, compose(tu, sk, files, texts, flags, st)):
-                continue    # it changes no line the compile errors name: it fails the same way
             for _ in range(16):
                 text = compose(tu, sk, files, texts, flags, st, frozenset(drop), frozenset(drop_all))
                 got = v.matched(text, rows)
@@ -1578,8 +1583,6 @@ def _merge(tu, sk, don, report, dry_run, texts=None, applier=None, guard=None):
                 link_why[tuple(files)] = why
                 best = "link"   # matched, but a unit that links would stop linking
                 continue
-            if got is None:
-                failed = (text, list(v.all_errors))
             best = best or ("compile" if got is None else "bytes")
         return best
 
