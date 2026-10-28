@@ -11,6 +11,7 @@
 #undef _CRTIMP
 
 #include <map>
+#include <new>
 // The allocator binds to the engine's direct free provider.
 // Keep __node_alloc<true,0>::deallocate inline-only: every call here is inlined,
 // and this TU's /O1 COMDAT copy differs from the copy the link keeps.
@@ -27,8 +28,6 @@ static inline bool operator!=(const _Rb_tree_iterator<T, LeftTraits>& a,
                               const _Rb_tree_iterator<T, RightTraits>& b)
 { return a._M_node != b._M_node; }
 }
-
-void __cdecl operator delete(void *memory);
 
 class Gen_00654130
 {
