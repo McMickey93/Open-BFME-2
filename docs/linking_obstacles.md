@@ -193,6 +193,17 @@ removed-provider scope in the next census. The batch audit remains inconclusive.
   and runtime results remain unclaimed; the other NAT donors retain their
   documented declaration/compiler prerequisites.
 
+- **VictorySystem.cpp TU (2026-10-28; index `14dc3d2467`):**
+  [The merge handoff](../reverse/attempt_support/victory-system-consolidation-20261028-claude.md)
+  merges three files (14 rows exact, two EXACT EH graphs) and reconciles the
+  six remaining donors so they compile together (28/28 exact). The merge
+  moved the `0x00211E58` `_Vector_base<Rva0040538FElement>` fold row into the
+  TU, so its link rank (5964) is now far earlier than the census place of
+  `VictorySystem.obj` (13270); LinkGuard refuses the remaining donors until a
+  census records the merged object. The batch audit is **INCONCLUSIVE** (index
+  lacks per-object consumer names). Carry the TU to the next normal census;
+  no linked-byte gain is claimed.
+
 - **Allocated TU merge batch (2026-10-28, inspected `3dcdb924fc`; index
   `14dc3d2467`):** five TU merges preserve 15 matched rows and remove eight
   net source files across the outgoing range. The last merge into
