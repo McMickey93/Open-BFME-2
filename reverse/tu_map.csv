@@ -32876,8 +32876,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00404B03,105,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,N,N=Code/GameEngine/Source/Common/VictorySystem.cpp provisional,Code/GameEngine/Source/Common/VslotSmallBodiesAJ.cpp
 0x00404B6C,5,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,N,N=Code/GameEngine/Source/Common/VictorySystem.cpp provisional,Code/GameEngine/Source/Common/VslotSmallBodiesAJ.cpp
 0x00404B71,50,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x00404B6C..0x00404BA3 provisional,Code/GameEngine/Source/Common/StlportCopy00404B71.cpp
-0x00404BA3,34,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x00404B6C..0x00404BC5 provisional,Code/GameEngine/Source/Common/BfmeStringRecord00404BC5Ctor.cpp
-0x00404BC5,46,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeStringRecord00404BF3.cpp provisional,Code/GameEngine/Source/Common/BfmeStringRecord00404BC5Ctor.cpp
+0x00404BA3,34,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x00404B6C..0x00404BC5 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
+0x00404BC5,46,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeStringRecord00404BF3.cpp provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
 0x00404BF3,51,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,U,N=Code/GameEngine/Source/Common/BfmeStringRecord00404BF3.cpp provisional,Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp
 0x00404C26,58,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x00404BF3..0x00404C60 provisional,Code/GameEngine/Source/GameLogic/System/VictorySystemGridUpdates.cpp
 0x00404C60,45,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x00404BF3..0x00404C8D provisional,Code/GameEngine/Source/Common/StringRecordCopyBFME2.cpp
@@ -32900,7 +32900,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00405417,8,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,N,N=Code/GameEngine/Source/Common/VictorySystem.cpp provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
 0x0040541F,11,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x00405417..0x0040542A provisional,Code/GameEngine/Source/Common/VectorClearInstances.cpp
 0x0040542A,183,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x00405417..0x004054E1 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorGrowthFootprints.cpp
-0x004054E1,190,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/VictorySystem.cpp provisional,Code/GameEngine/Source/GameLogic/System/VictorySystemCtor.cpp
+0x004054E1,190,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/System/VictorySystem.cpp provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
 0x0040559F,28,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,N,N=Code/GameEngine/Source/Common/VictorySystem.cpp provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
 0x004055BB,55,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,C,C=0x0040559F..0x004055F2 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorGrowthFootprints.cpp
 0x004055F2,146,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,N,N=Code/GameEngine/Source/Common/VictorySystem.cpp provisional,Code/GameEngine/Source/Common/Rva00404D70Init.cpp
@@ -77106,10 +77106,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00784E59,8,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004053C2@FuncInfo0x00931480 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
 0x00784E61,20,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004053C2@FuncInfo0x00931480 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
 0x00784E75,10,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004053C2@FuncInfo0x00931480 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
-0x00784E7F,8,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/GameLogic/System/VictorySystemCtor.cpp
-0x00784E87,11,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/GameLogic/System/VictorySystemCtor.cpp
-0x00784E92,14,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/GameLogic/System/VictorySystemCtor.cpp
-0x00784EA0,10,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/GameLogic/System/VictorySystemCtor.cpp
+0x00784E7F,8,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
+0x00784E87,11,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
+0x00784E92,14,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
+0x00784EA0,10,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004054E1@FuncInfo0x009314B4 provisional,Code/GameEngine/Source/Common/VictorySystem.cpp
 0x00784EAA,8,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004055F2@FuncInfo0x009314E8 provisional,Code/GameEngine/Source/Common/Rva00404D70Init.cpp
 0x00784EB2,8,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004055F2@FuncInfo0x009314E8 provisional,Code/GameEngine/Source/Common/Rva00404D70Init.cpp
 0x00784EBA,10,code,Code/GameEngine/Source/Common/VictorySystem.cpp,approved,P,P=0x004055F2@FuncInfo0x009314E8 provisional,Code/GameEngine/Source/Common/Rva00404D70Init.cpp
