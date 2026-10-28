@@ -127,7 +127,15 @@ SmudgeSet::SmudgeSet(void)
 	m_usedSmudgeCount = 0;
 }
 #include "SmudgeViews.h"
+#define SmudgeSetFreeSmudgeList SmudgeSet::m_freeSmudgeList
+
 struct SmudgeSet;
+
+struct Smudge : public DLNodeClass<Smudge>
+{
+};
+
+// ---- from Code/GameEngine/Source/GameClient/System/Smudge.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/System/SmudgeManagerCtor.cpp
 
@@ -137,24 +145,6 @@ SmudgeManager::SmudgeManager(void)
 	m_smudgeCountLastFrame = 0;
 	m_hardwareSupportStatus = SMUDGE_SUPPORT_UNKNOWN;
 }
-
-// tu-skeleton: 0x002D25E2 49B ?Add_Head@?$DLListClass@USmudge@@@@QAEXPAV?$DLNodeClass@USmudge@@@@@Z -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D2613 33B ?Remove_Head@?$DLListClass@USmudge@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D2634 49B ?Add_Tail@?$DLListClass@USmudgeSet@@@@QAEXPAV?$DLNodeClass@USmudgeSet@@@@@Z -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D2665 54B ?Remove_Head@?$DLListClass@USmudgeSet@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D269B 35B ?reset@SmudgeSet@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeSetReset.cpp (not merged yet)
-
-// tu-skeleton: 0x002D26BE 66B ?Remove@?$DLNodeClass@USmudge@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D2700 117B ?Remove@?$DLNodeClass@USmudgeSet@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D2775 33B ?Remove_Tail@?$DLListClass@USmudge@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D2796 54B ?Remove_Tail@?$DLListClass@USmudgeSet@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/System/SmudgeManagerReset.cpp
 
@@ -180,18 +170,6 @@ void SmudgeManager::removeSmudgeSet(SmudgeSet &mySmudge)
 	m_freeSmudgeSetList.Add_Head(&mySmudge);	//add to free list.
 }
 
-// tu-skeleton: 0x002D282E 33B ?removeSmudgeFromSet@SmudgeSet@@QAEXAAUSmudge@@@Z -- matched in Code/GameEngine/Source/GameClient/System/SmudgeRemoveSmudgeFromSet.cpp (not merged yet)
-
-// tu-skeleton: 0x002D284F 5B ??1?$DLNodeClass@USmudge@@@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D2854 5B ??1?$DLNodeClass@USmudgeSet@@@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D287D 67B ??1SmudgeSet@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
-
-// tu-skeleton: 0x002D28C0 63B ??0Smudge@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/Smudge_SmudgeSet_addSmudgeToSet.cpp (not merged yet)
-
-// tu-skeleton: 0x002D28FF 28B ??_GRva002D28FF@@QAEPAXI@Z -- matched in Code/GameEngine/Source/Common/RvaDeletingDtorBatch04.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/System/SmudgeAddSmudgeSet.cpp
 
 // ?addSmudgeSet@SmudgeManager@@QAEPAUSmudgeSet@@XZ
@@ -208,13 +186,57 @@ SmudgeSet *SmudgeManager::addSmudgeSet(void)
 	return set;
 }
 
+// tu-skeleton: 0x002D25E2 49B ?Add_Head@?$DLListClass@USmudge@@@@QAEXPAV?$DLNodeClass@USmudge@@@@@Z -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D2613 33B ?Remove_Head@?$DLListClass@USmudge@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D2634 49B ?Add_Tail@?$DLListClass@USmudgeSet@@@@QAEXPAV?$DLNodeClass@USmudgeSet@@@@@Z -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D2665 54B ?Remove_Head@?$DLListClass@USmudgeSet@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/System/SmudgeSetReset.cpp
+
+// SmudgeSet::m_freeSmudgeList (donor static, defined by the engine binary at
+// retail 0x00DBCBF4): borrowed by address so this TU never defines it.
+
+// ?reset@SmudgeSet@@QAEXXZ
+void SmudgeSet::reset(void)
+{
+	Smudge *head;
+
+	while ((head = m_usedSmudgeList.Head()) != 0) {
+		m_usedSmudgeList.Remove_Head();
+		SmudgeSetFreeSmudgeList.Add_Head(head);	//add to free list
+	}
+}
+
+// tu-skeleton: 0x002D26BE 66B ?Remove@?$DLNodeClass@USmudge@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D2700 117B ?Remove@?$DLNodeClass@USmudgeSet@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D2775 33B ?Remove_Tail@?$DLListClass@USmudge@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D2796 54B ?Remove_Tail@?$DLListClass@USmudgeSet@@@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D282E 33B ?removeSmudgeFromSet@SmudgeSet@@QAEXAAUSmudge@@@Z -- matched in Code/GameEngine/Source/GameClient/System/SmudgeRemoveSmudgeFromSet.cpp (not merged yet)
+
+// tu-skeleton: 0x002D284F 5B ??1?$DLNodeClass@USmudge@@@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D2854 5B ??1?$DLNodeClass@USmudgeSet@@@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D287D 67B ??1SmudgeSet@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
+
+// tu-skeleton: 0x002D28C0 63B ??0Smudge@@QAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/Smudge_SmudgeSet_addSmudgeToSet.cpp (not merged yet)
+
+// tu-skeleton: 0x002D28FF 28B ??_GRva002D28FF@@QAEPAXI@Z -- matched in Code/GameEngine/Source/Common/RvaDeletingDtorBatch04.cpp (not merged yet)
+
 // tu-skeleton: 0x002D2996 97B ?addSmudgeToSet@SmudgeSet@@QAEPAUSmudge@@XZ -- matched in Code/GameEngine/Source/GameClient/System/Smudge_SmudgeSet_addSmudgeToSet.cpp (not merged yet)
 
 // tu-skeleton: 0x002D29F7 140B ??1SmudgeManager@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeManagerDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00777328 20B ?rva00777328@@YAXXZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
 
-// tu-skeleton: 0x0077733C 11B uw_0077733c -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+// tu-skeleton: 0x0077733C 11B $L662 -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
 
 // tu-skeleton: 0x00777347 10B __ehhandler$??1SmudgeSet@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeListAddHead.cpp (not merged yet)
 
@@ -226,8 +248,8 @@ SmudgeSet *SmudgeManager::addSmudgeSet(void)
 
 // tu-skeleton: 0x0077736D 10B __ehhandler$?addSmudgeToSet@SmudgeSet@@QAEPAUSmudge@@XZ -- matched in Code/GameEngine/Source/GameClient/System/Smudge_SmudgeSet_addSmudgeToSet.cpp (not merged yet)
 
-// tu-skeleton: 0x00777377 11B uw_00777377 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+// tu-skeleton: 0x00777377 11B $L496 -- matched in Code/GameEngine/Source/GameClient/System/SmudgeManagerDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00777382 11B uw_00777382 -- matched in Code/gen_small/uw_gen_011.cpp (not merged yet)
+// tu-skeleton: 0x00777382 11B $L497 -- matched in Code/GameEngine/Source/GameClient/System/SmudgeManagerDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0077738D 10B __ehhandler$??1SmudgeManager@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/System/SmudgeManagerDtor.cpp (not merged yet)
