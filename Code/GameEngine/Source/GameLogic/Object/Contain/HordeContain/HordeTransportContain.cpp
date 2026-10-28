@@ -22,7 +22,7 @@ namespace _STL {
 template<> void **vector<void*>::erase(void **,void **);
 template<> __declspec(dllimport) __forceinline void vector<void*>::clear() { erase(begin(),end()); }
 }
-extern "C" void *__cdecl memcpy(void *,const void *,unsigned int);
+#include <string.h>
 #pragma intrinsic(memcpy)
 #include "../../../../../Include/GameLogic/ContainmentListView.h"
 typedef ContainmentList IntList;
