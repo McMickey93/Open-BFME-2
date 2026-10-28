@@ -18664,7 +18664,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FE368,120,.data,global,?g_00DFE368@@3HA,,unowned,,0,2
 0x009FE3E0,4,.data,global,?g_00DFE3E0@@3HA,,unowned,,0,1
 0x009FE3E4,4,.data,global,?g_00DFE3E4@@3HA,,unowned,,0,2
-0x009FE3E8,4,.data,global,?g_Va00DFE3E8@@3IA,,unowned,?err@?1??GetSubClassNameTag@CreateAHeroClass@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4V4@A@Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp;?g_Va00DFE3E8@@3IA,1,2
+0x009FE3E8,4,.data,global,?err@?1??GetSubClassNameTag@CreateAHeroClass@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4V4@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE3EC,4,.data,global,?$S1@?1??GetSubClassNameTag@CreateAHeroClass@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
 0x009FE3F0,4,.data,global,?err@?1??GetSubClassImageName@CreateAHeroClass@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4V4@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE3F4,4,.data,global,?$S3@?1??GetSubClassImageName@CreateAHeroClass@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
@@ -18678,7 +18678,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FE414,4,.data,global,?$S11@?1??GetClassPowersTag@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
 0x009FE418,4,.data,global,?err@?1??GetClassImageName@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4V3@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE41C,4,.data,global,?$S13@?1??GetClassImageName@CreateAHeroManager@@QAEABVAsciiString@@I@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
-0x009FE420,4,.data,global,?g_Va00DFE420@@3IA,,unowned,?err@?1??GetSubClassNameTag@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4V3@A@Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp;?g_Va00DFE420@@3IA,1,2
+0x009FE420,4,.data,global,?err@?1??GetSubClassNameTag@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4V3@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE424,4,.data,global,?$S17@?1??GetSubClassNameTag@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
 0x009FE428,4,.data,global,?err@?1??GetSubClassImageName@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4V3@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE42C,4,.data,global,?$S19@?1??GetSubClassImageName@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
@@ -18686,9 +18686,9 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009FE434,4,.data,global,?$S15@?1??GetButtonImageName@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
 0x009FE438,4,.data,global,?err@?1??GetSubClassDescTag@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4V3@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE43C,4,.data,global,?$S21@?1??GetSubClassDescTag@CreateAHeroManager@@QAEABVAsciiString@@II@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
-0x009FE440,4,.data,global,?g_Va00DFE440@@3IA,,unowned,?err@?1??GetBlingNameTag@CreateAHeroManager@@QAEABVAsciiString@@HIII@Z@4V3@A@Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp;?g_Va00DFE440@@3IA,1,2
+0x009FE440,4,.data,global,?err@?1??GetBlingNameTag@CreateAHeroManager@@QAEABVAsciiString@@HIII@Z@4V3@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE444,4,.data,global,?$S23@?1??GetBlingNameTag@CreateAHeroManager@@QAEABVAsciiString@@HIII@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
-0x009FE448,4,.data,global,?g_Va00DFE448@@3IA,,unowned,?err@?1??GetBlingDescTag@CreateAHeroManager@@QAEABVAsciiString@@HIII@Z@4V3@A@Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp;?g_Va00DFE448@@3IA,1,2
+0x009FE448,4,.data,global,?err@?1??GetBlingDescTag@CreateAHeroManager@@QAEABVAsciiString@@HIII@Z@4V3@A,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,2
 0x009FE44C,4,.data,global,?$S25@?1??GetBlingDescTag@CreateAHeroManager@@QAEABVAsciiString@@HIII@Z@4IA,Code/GameEngine/Source/Common/Rva00219B9EAccessor.cpp,owned,,1,4
 0x009FE450,4,.data,global,?emptyKey@?1??parseCreateAHeroBlingBinder@@YAXPAVINI@@PAX1PBX@Z@4W4NameKeyType@@A,Code/GameEngine/Source/Common/CreateAHeroParseBlingBinder.cpp,owned,,1,2
 0x009FE454,4,.data,global,?noneKey@?1??parseCreateAHeroBlingBinder@@YAXPAVINI@@PAX1PBX@Z@4W4NameKeyType@@A,Code/GameEngine/Source/Common/CreateAHeroParseBlingBinder.cpp,owned,,1,2

@@ -38,3 +38,40 @@ thirteen literals, including float/import checks; `eh_verify.py` reports
 bytes against index `bf3dd31211` (2026-10-27 00:39, retail-truth-4). Clean symbol
 resolution does not resolve the data-owner conflict. No census gain or
 image-ownership receipt is claimed. The source claim was released.
+
+## Prerequisite resolved and debt retired (2026-10-28)
+
+Rechecked at `2621cae89b546a3ad861a3131615307b01cb075a`, seat codexb.
+Commit `76a2500f64` moved the four atexit cleanups above into the accessor
+unit's compiler-emitted cleanup bodies and removed the four external data
+owners. The current source, pins and data rows no longer name those globals.
+The guard index rows already reflect the current method names, but the four
+fallback rows still selected the removed external names as unowned globals.
+The first retirement check therefore refused four new-name findings; it
+changed no debt entries.
+
+`python3 tools/data_ledger.py --out build/codexb-createahero-data-ledger.csv`
+now generates each fallback as an owned four-byte local `AsciiString` in
+Rva00219B9EAccessor.cpp, with one definition and two relocation references.
+Copied only these four complete generated rows, unmodified, into the index.
+The full generator reports 58 unrelated matched sources without objects;
+no other inventory rows were accepted. These are compiler-local symbol
+identities backed by the existing parent/cleanup bodies, not new retail names.
+
+Verification:
+
+- `./build.sh`: 91/91 function rows and thirteen string literals pass.
+- `eh_verify.py`: all thirteen EH graphs EXACT, none baselined or missing.
+- `find_declared_unmatched.py`: all defined functions already matched.
+- `data_check.py`: zero findings after the four-row refresh.
+- Enforced converged-data check: eleven addresses, zero second names or
+  unjudged rows.
+- `repair_queue.py retire data`: PASS, all thirteen registered keys retired,
+  zero remaining findings. The owning tool alone removed the baseline lines.
+- Ordinary `link_check.py`: LINKS, unchanged 3,086 authored bytes against
+  index `41c28839bf` (2026-10-28 11:08).
+- `check_csv.py` and `git diff --check` pass.
+
+This closes the recorded accessor data-ownership prerequisite and its debt.
+No game source, function row, pin or source path changes. No new census-linked
+coverage or image-ownership result is claimed.
