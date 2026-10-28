@@ -59,14 +59,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class BannerCarrierUpdate : public BannerBase, public BannerOther, public UpdateModuleInterface {
-public:
- virtual UpdateSleepTime update();
- void rva004973CF(); bool rva00496BD2(Object *);
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 class Rva0042526Member
 {
 public:
@@ -150,7 +142,33 @@ private:
 	AsciiString m_second; // +0x54
 };
 
-// tu-skeleton: 0x00496A1E 69B ?getModuleNameKey@BannerCarrierUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp (not merged yet)
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class BannerCarrierUpdate : public BannerBase, public BannerOther, public UpdateModuleInterface {
+public:
+ virtual UpdateSleepTime update();
+ void rva004973CF(); bool rva00496BD2(Object *);
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp
+
+// ?getModuleNameKey@BannerCarrierUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType BannerCarrierUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheBannerCarrierUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("BannerCarrierUpdate");
+	return TheBannerCarrierUpdatePoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/Rva00496A63Dtor.cpp
 
@@ -165,10 +183,6 @@ private:
 Rva00496A63::~Rva00496A63()
 {
 }
-
-// tu-skeleton: 0x00496A98 42B ??0BannerCarrierUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00496AC2 28B ??_GRva004969FF@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdate.cpp
 
@@ -250,6 +264,10 @@ UpdateSleepTime BannerCarrierUpdate::update() {
  return (UpdateSleepTime)bannerCarrierUpdateModuleData->delay;
 }
 
+// tu-skeleton: 0x00496A98 42B ??0BannerCarrierUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00496AC2 28B ??_GRva004969FF@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Derived.cpp (not merged yet)
+
 // tu-skeleton: 0x00496B2C 28B ??_GRva00496A63@@QAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00496B48 138B ?rva00496B48@Rva00496B48@@QAE_NXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496B48Finish.cpp (not merged yet)
@@ -279,10 +297,6 @@ UpdateSleepTime BannerCarrierUpdate::update() {
 // tu-skeleton: 0x004976AE 28B ??_GBannerCarrierUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004976CA 17B ?buildFieldParse@BannerCarrierUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
-
-// tu-skeleton: 0x0078D157 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078D164 10B __ehhandler$?getModuleNameKey@BannerCarrierUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BannerCarrierUpdatePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078D19D 13B $L380 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/Rva00496B48Finish.cpp (not merged yet)
 
