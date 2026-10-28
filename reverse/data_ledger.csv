@@ -12007,7 +12007,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00864520,72,.rdata,vtable,??_7Made002CC774@@6B@,,literal,,0,1
 0x00864568,32,.rdata,global,?WeaponOCLFieldTable@@3UFieldParse@@B,,unowned,,0,1
 0x00864588,184,.rdata,vtable,??_7Made002CC7DE@@6B@,,literal,,0,1
-0x00864640,464,.rdata,global,_TheProjectileFieldTable,Code/GameEngine/Source/GameLogic/Object/Made002CC841Parse.cpp,owned,,1,1
+0x00864640,464,.rdata,global,_TheProjectileFieldTable,Code/GameEngine/Source/Common/Made002CC7DE.cpp,owned,,1,1
 0x00864810,400,.rdata,global,?FieldTable002CC8A4@@3UFieldParse@@B,,unowned,,0,1
 0x008649A0,144,.rdata,vtable,??_7Made002CC8A4@@6B@,,literal,,0,1
 0x00864A30,144,.rdata,global,?GrabFieldTable@@3UFieldParse@@B,,unowned,,0,1
@@ -20788,7 +20788,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A04560,12,.data,global,_s_rva007B3598,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A0456C,4,.data,global,?g_Va00E0456C@@3IA,Code/GameEngine/Source/Common/GlobalFlagClearers_E045xx.cpp,owned,,1,4
 0x00A04570,8,.data,global,_s_rva007B35C2,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A04578,4,.data,global,?$S1@?BO@??doEffectObject@ProjectileNugget@@UAEXPBUProjectileNuggetFireInfo@@PAVObject@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/WeaponEffects/ProjectileNuggetObjectEffect.cpp,owned,,1,2
+0x00A04578,4,.data,global,?$S1@?BO@??doEffectObject@ProjectileNugget@@UAEXPBUProjectileNuggetFireInfo@@PAVObject@@@Z@4IA,Code/GameEngine/Source/Common/Made002CC7DE.cpp,owned,,1,2
 0x00A0457C,8,.data,global,_s_rva007B35EC,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A04584,8,.data,global,?$S3@?6??rva0050AB37@Made002CC971@@QAE_NPBURva0050ACE0Arg@@PAVObject@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Made002CC971SlaveAttack.cpp,owned,,1,2
 0x00A0458C,4,.data,global,?$S2@?3??rva0050AC09@Made002CC971@@QAEXPAURva0050ACE0Arg@@PAVObject@@@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Made002CC971SlaveAttack.cpp,owned,,1,2
