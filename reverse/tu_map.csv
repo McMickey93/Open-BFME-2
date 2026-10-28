@@ -58749,7 +58749,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x006E03A0,75,code,Code/Libraries/Source/Apt/AptValue/BfmeAptValue006DCD20.cpp,proposed,N,N=Code/Libraries/Source/Apt/AptValue/BfmeAptValue006DCD20.cpp noncontiguous,Code/Libraries/Source/Apt/AptValue/AptValueTypePredicatesBFME2.cpp
 0x006E03F0,67,code,,,-,,Code/GameEngine/Source/Common/SmallGaps/wrapAngle.cpp
 0x006E0440,21,code,,,-,,Code/GameEngine/Source/Common/VslotSmallBodiesP.cpp
-0x006E0460,50,code,Code/Libraries/Source/Apt/AptCIH.cpp,approved,N,N=Code/Libraries/Source/Apt/AptCIH.cpp,Code/Libraries/Source/Apt/AptCIH_DestroyGCPointers.cpp
+0x006E0460,50,code,Code/Libraries/Source/Apt/AptCIH.cpp,approved,N,N=Code/Libraries/Source/Apt/AptCIH.cpp,Code/Libraries/Source/Apt/AptCIH.cpp
 0x006E04A0,88,code,Code/Libraries/Source/Apt/AptValue/BfmeAptValue006DCD20.cpp,proposed,N,N=Code/Libraries/Source/Apt/AptValue/BfmeAptValue006DCD20.cpp noncontiguous,Code/Libraries/Source/Apt/AptValue/AptValueTypePredicatesBFME2.cpp
 0x006E0500,5,code,,,-,,Code/GameEngine/Source/Common/VslotSmallBodiesAJ.cpp
 0x006E0510,12,code,,displaced,-,N=Code/GameEngine/Source/Common/BfmeAptValue006DCD20.cpp,Code/GameEngine/Source/Common/VslotSmallBodiesAN.cpp

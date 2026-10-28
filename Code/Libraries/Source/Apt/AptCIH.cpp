@@ -280,7 +280,34 @@ struct Rva006E1F00Instance
 // global at VA 0x00E180C0; only the loaded pointer value is used (DIR32)
 extern class AptRenderingContext *g_aptRenderingContextAtE180C0;
 
-// tu-skeleton: 0x006E0460 50B ?DestroyGCPointers@AptCIH@@QAEXXZ -- matched in Code/Libraries/Source/Apt/AptCIH_DestroyGCPointers.cpp (not merged yet)
+//
+// AptCIH::DestroyGCPointers at 0x006E0460, 50 bytes. Address-derived cleanup
+// worker: it releases the object at +0x4C through vtable slot 2 (skipping the
+// 0xBAADF00D uninitialised fill), releases the object at +0x48 through vtable
+// slot 1, nulls +0x48, then tail-jumps the 5-byte flag setter at 0x006DBD80
+// (or dword ptr [ecx+4],8; ret). No original identity is claimed.
+
+class Rva006E0460Ref
+{
+public:
+	virtual void vf0();
+	virtual void vf1(); // slot 1  (vtable +4)
+	virtual void vf2(); // slot 2  (vtable +8)
+};
+
+// ---- from Code/Libraries/Source/Apt/AptCIH_DestroyGCPointers.cpp
+
+void AptCIH::DestroyGCPointers()
+{
+	if (m_4C != 0 && m_4C != (Rva006E0460Ref *)0xBAADF00D)
+		((Rva006E0460Ref *)m_4C)->vf2();
+	if (m_parent != 0)
+		((Rva006E0460Ref *)m_parent)->vf1();
+	m_parent = 0;
+	rva006dbd80();
+}
+
+// ---- from Code/Libraries/Source/Apt/AptCIH.cpp
 
 // ---- from Code/Libraries/Source/Apt/AptCIH.cpp
 
@@ -625,14 +652,6 @@ int AptCIH::rva006E0B60() const
     return depth;
 }
 
-// tu-skeleton: 0x006E11B0 169B ?rva006E11B0@AptCIH@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006E11B0Cluster.cpp (not merged yet)
-
-// tu-skeleton: 0x006E1260 722B ?call@Rva006E1260@@QAEXPAX@Z -- matched in Code/Libraries/Source/Apt/Rva006E1260AptCihRefresh.cpp (not merged yet)
-
-// tu-skeleton: 0x006E15C0 1657B ?call@Rva006E15C0@@QAEXPAX0H@Z -- matched in Code/Libraries/Source/Apt/AptCIHRender.cpp (not merged yet)
-
-// tu-skeleton: 0x006E1C40 391B ?rva006E1C40@AptCIH@@QAEXPAVAptRenderingContext@@H@Z -- matched in Code/Libraries/Source/Apt/Rva006E1C40Draw.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/Apt/Rva006E1DD0Cluster.cpp
 
 // ?rva006E1DD0@AptCIH@@QAEXPAX@Z
@@ -650,6 +669,14 @@ void AptCIH::rva006E1DD0(void *pRect)
 	u[1] = 0x4E6E6B28u;
 	rva006E1C40((AptRenderingContext *)(*(void **)&g_aptRenderingContextAtE180C0), (int)pRect);
 }
+
+// tu-skeleton: 0x006E11B0 169B ?rva006E11B0@AptCIH@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006E11B0Cluster.cpp (not merged yet)
+
+// tu-skeleton: 0x006E1260 722B ?call@Rva006E1260@@QAEXPAX@Z -- matched in Code/Libraries/Source/Apt/Rva006E1260AptCihRefresh.cpp (not merged yet)
+
+// tu-skeleton: 0x006E15C0 1657B ?call@Rva006E15C0@@QAEXPAX0H@Z -- matched in Code/Libraries/Source/Apt/AptCIHRender.cpp (not merged yet)
+
+// tu-skeleton: 0x006E1C40 391B ?rva006E1C40@AptCIH@@QAEXPAVAptRenderingContext@@H@Z -- matched in Code/Libraries/Source/Apt/Rva006E1C40Draw.cpp (not merged yet)
 
 // tu-skeleton: 0x006E1E30 197B ?rva006E1E30@Rva006E1E30@@QAEXPAURva006F9FC0Rect@@@Z -- matched in Code/Libraries/Source/Apt/Rva006E1E30Cluster.cpp (not merged yet)
 
@@ -672,3 +699,23 @@ void AptCIH::rva006E1DD0(void *pRect)
 // tu-skeleton: 0x006E2D60 383B ?rva006E2D60@AptCIH@@QAEXXZ -- matched in Code/Libraries/Source/Apt/AptCIHRva006E2D60.cpp (not merged yet)
 
 // tu-skeleton: 0x006E2EE0 757B ?rva006E2EE0@AptCIH@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006E2EE0AptCIH.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9090 8B Unwind@00ba9090 -- matched in Code/Libraries/Source/Apt/AptCIHRender.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9098 8B Unwind@00ba9098 -- matched in Code/Libraries/Source/Apt/AptCIHRender.cpp (not merged yet)
+
+// tu-skeleton: 0x007A90A0 10B __ehhandler$?call@Rva006E15C0@@QAEXPAX0H@Z -- matched in Code/Libraries/Source/Apt/AptCIHRender.cpp (not merged yet)
+
+// tu-skeleton: 0x007A90B0 15B $L1015 -- matched in Code/Libraries/Source/Apt/AptCIHQueueClipEvents.cpp (not merged yet)
+
+// tu-skeleton: 0x007A90BF 10B __ehhandler$?queueClipEvents@AptCIH@@QAE_NHHH@Z -- matched in Code/Libraries/Source/Apt/AptCIHQueueClipEvents.cpp (not merged yet)
+
+// tu-skeleton: 0x007A90F0 15B $L427 -- matched in Code/Libraries/Source/Apt/AptCIHJumpToFrame.cpp (not merged yet)
+
+// tu-skeleton: 0x007A90FF 10B __ehhandler$?jumpToFrame@AptCIH@@QAEXH@Z -- matched in Code/Libraries/Source/Apt/AptCIHJumpToFrame.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9110 15B uw_007a9110 -- matched in Code/Libraries/Source/Apt/Rva006E2EE0AptCIH.cpp (not merged yet)
+
+// tu-skeleton: 0x007A911F 8B Unwind@00ba911f -- matched in Code/Libraries/Source/Apt/Rva006E2EE0AptCIH.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9127 10B __ehhandler$?rva006E2EE0@AptCIH@@QAEXXZ -- matched in Code/Libraries/Source/Apt/Rva006E2EE0AptCIH.cpp (not merged yet)
