@@ -12170,3 +12170,16 @@ Code/Libraries/Source/WWVegas/WW3D2/FontCharsClassCreateGDIFont.cpp|param|Rva001
 Code/GameEngine/Source/GameLogic/Object/Made002CCA37Parse.cpp|param|q4Notify002CCA37|m,7266f360aee6ab6d141a52d6,drz-k7,drz-k7-n11e-18,w-4471b1f6edef,2026-10-28
 Code/GameEngine/Source/GameLogic/Object/Made002CC9D4Parse.cpp|param|q4Notify002CC9D4|m,b4e1bde3a490ecb964f57d3b,drz-k7,drz-k7-n11e-19,w-4471b1f6edef,2026-10-28
 Code/GameEngine/Source/GameLogic/SkirmishAI/AIBaseBuilder/AIBase.cpp|param|AIBase::parseTemplateIntoPhases|tmpl,43341667564d06de5dff8a71,drz-k7,drz-k7-n11e-20,w-4471b1f6edef,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp|member|Rva001F0468Node|m_child0c,ffc9f40a330e4d9c0b905db2,drz-k1,drz-k1-n11a-1,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/ObjectCreationListRva001F0878.cpp|member|Rva001F050BMid|m_head04,230bb2f7c22449c0b5a97472,drz-k1,drz-k1-n11a-1,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScript_parseLayoutBlock.cpp|function|0x003172E9|parseLayoutClassRva003172E9,58fe9563f272d4d4e94a928e,drz-k1,drz-k1-n11a-9,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorModuleDataCtor.cpp|param|Rva00045411BitSet::Rva00045411BitSet|b1,02fb6003fee690dc462c5e3a,drz-k1,drz-k1-n11a-11,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorModuleDataCtor.cpp|param|Rva00045411BitSet::Rva00045411BitSet|b2,fd47ac6a386039ebd16f4dc8,drz-k1,drz-k1-n11a-11,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorModuleDataCtor.cpp|param|Rva00045411BitSet::Rva00045411BitSet|b3,f79fc20017b2a8b27baff837,drz-k1,drz-k1-n11a-11,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorModuleDataCtor.cpp|param|Rva00045411BitSet::Rva00045411BitSet|b4,29e641f194a8570b129e2311,drz-k1,drz-k1-n11a-11,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Behavior/CastleBehaviorModuleDataCtor.cpp|param|Rva00045411BitSet::Rva00045411BitSet|b5,9ee85dd12a3762caff8e469a,drz-k1,drz-k1-n11a-11,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Made002CC64BParse.cpp|param|q4Notify002CC64B|m,66c3e31d85ddf7a85ab85be8,drz-k1,drz-k1-n11a-17,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Made002CC64BParse.cpp|param|q4Notify002CC64B|c,7ae058a6a5bc07c8818402e7,drz-k1,drz-k1-n11a-17,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Made002CC64BParse.cpp|param|q4Notify002CC64B|d,be04b1932a00124ae293a300,drz-k1,drz-k1-n11a-17,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Map/Rva0019B850TeamRecUpdate_Rva0019BE80TeamRec_updateTeam.cpp|member|TeamRecord0019B850|field04,bc74193b76d55de412c87849,drz-k1,drz-k1-n11a-18,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/GameLogic/Map/Rva0019B850TeamRecUpdate_Rva0019BE80TeamRec_updateTeam.cpp|member|TeamRecord0019B850|field06,a2c4ac860c37c9d6754707a9,drz-k1,drz-k1-n11a-18,w-d29055ee9848,2026-10-28
