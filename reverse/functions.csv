@@ -26160,7 +26160,7 @@ __dup_0084EBC0,,0x00021D50,224,Code/Libraries/Source/WWVegas/WWLib/stlport_Local
 ??_GDisplayString@@UAEPAXI@Z,,0x003589CD,28,Code/GameEngine/Source/GameClient/DisplayString.cpp,matched,ZH DisplayString.cpp at its official path; vftable 0x00C15338
 ?rva00531132@Rva00531132@@QAEX_NH@Z,,0x00531132,77,Code/GameEngine/Source/Common/Rva00531132.cpp,matched,caller 0x005315A5 FINISH barrier reloads count in loop
 ??0Rva00402C0F@@QAE@ABV0@@Z,,0x00402C0F,63,Code/GameEngine/Source/GameLogic/Object/SpecialPower/Rva003F9FE6CopyCtor.cpp,matched,chain lane base 0x003F9FE6 vtable 0x00837898 extras
-?rva0070B220@AptNativeHash@@QAEXPAX@Z,,0x0070B220,145,Code/Libraries/Source/Apt/AptNativeHashMark.cpp,matched,AptNativeHash GC mark via forwarder 0x006DCC00 and callers
+?rva0070B220@AptNativeHash@@QAEXPAX@Z,,0x0070B220,145,Code/Libraries/Source/Apt/AptNativeHash.cpp,matched,AptNativeHash GC mark via forwarder 0x006DCC00 and callers
 ?rva003F0336@Rva003F02E4@@QAE_NPBVRva002E071E@@@Z,,0x003F0336,56,Code/GameEngine/Source/Common/Rva003F02E4.cpp,matched,chain predicate via global find plus rowed compare to 003F02E4
 ??0Rva00151632@@QAE@PBD@Z,,0x001515CA,98,Code/GameEngine/Source/Common/Rva00151632Ctor.cpp,matched,vtable 0x007D3A6C plus rowed dtor twin plus GenBase base plus fxShader format
 ??1Rva0034C5E0@@UAE@XZ,,0x0035822E,88,Code/GameEngine/Source/Common/Rva0034C5E0Dtor.cpp,matched,dtor null-checked tree dtor 0x00357C6A plus delete 0x0002FD60 then StringBase 0x00036410 vtable 0x008150E4 base 0x007BB554
@@ -26190,7 +26190,7 @@ _Rva000219C0LocaleName,,0x000219C0,23,Code/Libraries/Source/WWVegas/WWLib/stlpor
 ?rva0055EFC5@Rva0055EFC5@@UAEXPAVXfer@@@Z,,0x0055EFC5,28,Code/GameEngine/Source/GameClient/Rva0055EFC5.cpp,matched,chain parent xfer Version1 plus sub 0x0055EF6E
 ?rva0044D836@GameModePreferences@@QAEHXZ,,0x0044D836,86,Code/GameEngine/Source/Common/GameModePreferences.cpp,matched,Color getter via makeKey map find atoi plus lazy limit
 ?getPair@LivingWorldEyeTower@@AAEPAXXZ,,0x003F9A2B,110,Code/GameEngine/Source/GameClient/LivingWorldEyeTower.cpp,matched,BFME1 donor LivingWorldEyeTower getPair with LivingWorld path line 355 and caller layout
-?rva0070B180@AptNativeHash@@QAEXPAVBfmeAptValue006DCD20@@PAVEAStringC@@H@Z,,0x0070B180,159,Code/Libraries/Source/Apt/AptNativeHashRva0070B180.cpp,matched,AptNativeHash nEventHandlers bit table aSpriteGperfToActionFlag via isCIH len gperf
+?rva0070B180@AptNativeHash@@QAEXPAVBfmeAptValue006DCD20@@PAVEAStringC@@H@Z,,0x0070B180,159,Code/Libraries/Source/Apt/AptNativeHash.cpp,matched,AptNativeHash nEventHandlers bit table aSpriteGperfToActionFlag via isCIH len gperf
 ?setPriority@AttackPriorityInfo@@QAEXPBVThingTemplate@@H@Z,,0x00358333,116,Code/GameEngine/Source/Common/AttackPriorityInfo_setPriority.cpp,matched,lazy map init plus final override keyed subscript via rowed ctor and subscript
 ??_GRva002B923F@@QAEPAXI@Z,,0x002BADF3,28,Code/GameEngine/Source/Common/Rva002B82D5Dtor.cpp,matched,chain lane scalar deleting via anchor new-delete calls rowed dtor plus delete
 ??1Rva002BAEAB@@QAE@XZ,,0x002BAEAB,53,Code/GameEngine/Source/Common/Rva002BAEAB.cpp,matched,unlock lane EH dtor via pinned 0x002B80CE plus rowed WindModuleInfo 0x0049B47C unblocks 0x002BAE8F
@@ -32570,7 +32570,7 @@ _rva006D9D70Comparator,,0x006D9D70,203,Code/Libraries/Source/Apt/AptArray.cpp,ma
 ?rva00256F84@Rva00256F84@@QAEXXZ,,0x00256F84,49,Code/GameEngine/Source/Common/Rva00256F84Finish.cpp,matched,Intrusive list clear; unconditional circular reinit; _STL::free C++-linkage pin 0x30830
 ??0Rva002DAB18@@QAE@XZ,,0x002DAB18,70,Code/GameEngine/Source/Common/Rva002DAB18Finish.cpp,matched,Dual-vptr ctor; real secondary base SubsystemInterface 0x1B4E63; out-of-line SnapBase dtor forces EH restore; IntZero member ctor orders +0x10 last
 ?rva00469012@Rva00469012@@QAE_NPAVObject@@PBUCoord3D@@@Z,,0x00469012,99,Code/GameEngine/Source/GameLogic/Object/Update/Rva00469012Finish.cpp,matched,Object behind-check: volatile delta alias flips dot-product operand kinds to retail xmm/mulss shape
-?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z,,0x0070B2C0,191,Code/Libraries/Source/Apt/BfmeLookupErase1279.cpp,matched,linkbody lane; lookup mirror ids 0x699 0x6bbd; LINK BONUS name
+?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z,,0x0070B2C0,191,Code/Libraries/Source/Apt/AptNativeHash.cpp,matched,linkbody lane; lookup mirror ids 0x699 0x6bbd; LINK BONUS name
 ?rva0041EA88@Rva0041EA88@@QAEXXZ,,0x0041EA88,73,Code/Libraries/Source/WWVegas/WWLib/Rva0041EA88Clear.cpp,matched,chain hashtable clear via rowed node delete 0x0041EA2C
 ?DestroyGCPointers@Rva00709B80@@UAEXXZ,,0x00709E00,68,Code/Libraries/Source/Apt/AptObject/AptScriptFunction.cpp,matched,vslot 11 of 008EE8C8 tail-jmp to 0070DFE0 via BfmeAptValue006DCD20; spelled virtual: slot 11 of vftable 0x00CEE938 that the class's own destructor install at +0; retail never calls it directly
 ?rva00601941@Rva00601941@@QAEXXZ,,0x00601941,11,Code/GameEngine/Source/Common/System/INIHelperRva00601941.cpp,matched,vector erase-all wrapper via begin end with rowed erase

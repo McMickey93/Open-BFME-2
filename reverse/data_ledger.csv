@@ -16022,7 +16022,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x008EEAA8,64,.rdata,string,??_C@_0DP@FJOCLJOI@false?5?$CG?$CG?5?$CCArguments?5Array?5is?5uns@,,literal,,0,1
 0x008EEAE8,104,.rdata,vtable,??_7AptScriptFunctionByteCodeBlock@@6B@,,literal,,0,1
 0x008EEB50,88,.rdata,string,??_C@_0FI@GOCCBINA@c?3?2projects?2bfme2patch103?2bfme2?2@,,literal,,0,2
-0x008EEBA8,80,.rdata,global,?aSpriteGperfToActionFlag@@3PAHA,Code/Libraries/Source/Apt/AptNativeHashRva0070B180.cpp,owned,,1,1
+0x008EEBA8,80,.rdata,global,?aSpriteGperfToActionFlag@@3PAHA,Code/Libraries/Source/Apt/AptNativeHash.cpp,owned,,1,1
 0x008EEBF8,76,.rdata,string,??_C@_0EK@CJJKGMBO@c?3?2projects?2bfme2patch103?2bfme2?2@,,literal,,0,5
 0x008EEC44,28,.rdata,string,??_C@_0BK@PHHMDEHA@pHashItem?9?$DOmValue?5?$CB?$DN?5NULL?$AA@,,literal,,0,1
 0x008EEC60,24,.rdata,string,??_C@_0BC@IKPBGLOE@pHashItem?5?$CB?$DN?5NULL?$AA@,,literal,,0,1

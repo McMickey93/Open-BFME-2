@@ -21,6 +21,9 @@ extern int g_bfmeAptBreakOnAssertAtDDC01C;
 #pragma comment(linker, "/alternatename:?handle@Gen0089C880@@QAEXXZ=?DestroyGCPointers@AptNativeHash@@QAEXXZ")
 #pragma comment(linker, "/alternatename:??1AptNativeHash@@QAE@XZ=??1Rva0070A840@@QAE@XZ")
 #pragma comment(linker, "/alternatename:?add@Rva8D0D80Table@@QAEXPAVRva8D0D80String@@PAVRva8D0D80Value@@@Z=?Set@AptNativeHash@@QAEXQBVEAStringC@@QAVAptValue@@@Z")
+#pragma intrinsic(__debugbreak)
+#pragma data_seg(".rdata")
+#pragma data_seg()
 
 void __debugbreak();
 
@@ -79,6 +82,7 @@ public:
 };
 
 struct AptHashItem;
+
 class BfmeAptValue006DCD20;
 
 class AptNativeHash {
@@ -152,6 +156,26 @@ private:
 	void *m_field8;
 	void *m_fieldC;
 };
+
+class BfmeAptValue006DCD20 {
+public:
+    bool isCIH(bool bUndefOK) const;
+};
+
+struct R4Word {
+    const char *name;
+    int value;
+};
+
+const R4Word *__cdecl Rva008D48F0(const char *str, unsigned int len);
+
+extern int aSpriteGperfToActionFlag[19] = {
+	0x00000100, 0x00010000, 0x00008000, 2, 0x40, 0x80, -1,
+	1, 0x10, 8, 0x20, 0x400, 0x800, 0x1000, 0x4000, 0x2000,
+	-1, 4, 0x00080000,
+};
+
+// ---- from Code/Libraries/Source/Apt/AptNativeHash.cpp
 
 // ---- from Code/Libraries/Source/Apt/AptNativeHashBFME2.cpp
 
@@ -654,12 +678,6 @@ Rva0070A840::~Rva0070A840()
 	}
 }
 
-// tu-skeleton: 0x0070B180 159B ?rva0070B180@AptNativeHash@@QAEXPAVBfmeAptValue006DCD20@@PAVEAStringC@@H@Z -- matched in Code/Libraries/Source/Apt/AptNativeHashRva0070B180.cpp (not merged yet)
-
-// tu-skeleton: 0x0070B220 145B ?rva0070B220@AptNativeHash@@QAEXPAX@Z -- matched in Code/Libraries/Source/Apt/AptNativeHashMark.cpp (not merged yet)
-
-// tu-skeleton: 0x0070B2C0 191B ?Unset@AptNativeHash@@QAEXQBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/BfmeLookupErase1279.cpp (not merged yet)
-
 // ---- from Code/Libraries/Source/Apt/Rva0070B380Cluster.cpp
 
 void *Rva0070B380::lookup(const EAStringC &key)
@@ -682,4 +700,101 @@ void *Rva0070B380::lookup(const EAStringC &key)
 			return m_field8;
 	}
 	return 0;
+}
+
+// ---- from Code/Libraries/Source/Apt/AptNativeHashRva0070B180.cpp
+
+// Matched DIR32 witness (w=1) places the retail flag table at VA 0x00CEEBA8
+// (.rdata). The checked index range below bounds it to 19 ints (0x4c bytes),
+// ending at VA 0x00CEEBF4 before a zero padding DWORD and path text at
+// VA 0x00CEEBF8. Values are the retail initial bytes.
+
+void AptNativeHash::rva0070B180(BfmeAptValue006DCD20 *pValue, EAStringC *pStr, int bRemove)
+{
+    if (static_cast<unsigned char>(pValue->isCIH(false)))
+        return;
+    unsigned int len;
+    const R4Word *found;
+    len = pStr->rva006D3750();
+    found = Rva008D48F0(pStr->rva00620090(), len);
+    if (!found)
+        return;
+    int v = found->value;
+    if (v < 0xC8)
+        return;
+    int nTableIndex = v - 0xC8;
+    if (nTableIndex < 0 || nTableIndex >= 0x13) {
+        g_bfmeAptAssertAtE17734("nTableIndex >= 0 && nTableIndex < APT_ARRAYSIZE(aSpriteGperfToActionFlag)", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptNativeHash.cpp", 0x40C);
+        if (g_bfmeAptBreakOnAssertAtDDC01C)
+            __debugbreak();
+    }
+    int flag = aSpriteGperfToActionFlag[nTableIndex];
+    if (flag == -1)
+        return;
+    if (bRemove)
+        nEventHandlers &= ~flag;
+    else
+        nEventHandlers |= flag;
+}
+
+// ---- from Code/Libraries/Source/Apt/AptNativeHashMark.cpp
+
+void AptNativeHash::rva0070B220(void *arg)
+{
+    (void)arg;
+    if (mp__proto__) {
+        if (!((const Rva006DBB40ShrAndField *)mp__proto__)->get()) {
+            mp__proto__->setGCMark(true);
+            mp__proto__->unused13();
+        }
+    }
+    if (mpPrototype) {
+        if (!((const Rva006DBB40ShrAndField *)mpPrototype)->get()) {
+            mpPrototype->setGCMark(true);
+            mpPrototype->unused13();
+        }
+    }
+    if (mpData) {
+        for (int i = 0; i < mnTotalSize; ++i) {
+            if (mpData[i].value) {
+                if (!((const Rva006DBB40ShrAndField *)mpData[i].value)->get()) {
+                    mpData[i].value->setGCMark(true);
+                    mpData[i].value->unused13();
+                }
+            }
+        }
+    }
+}
+
+// ---- from Code/Libraries/Source/Apt/BfmeLookupErase1279.cpp
+
+void AptNativeHash::Unset(const EAStringC *const pKey)
+{
+	if (pKey->IsEmpty())
+		return;
+	unsigned int id = pKey->rva006D3D10();
+	if (mpData != 0) {
+		AptHashItem *found = HashFindKey(pKey);
+		if (found != 0) {
+			((EAStringC *)found)->rva006D3470();
+			UnsetAt(found);
+			return;
+		}
+	}
+	if (id == 0x699) {
+		if (pKey->rva006D3560(Rva0070B4F0GetString(0x78))) {
+			if (mpPrototype != 0) {
+				mpPrototype->Release();
+				mpPrototype = 0;
+			}
+		}
+	}
+	else if (id == 0x6bbd) {
+		if (pKey->rva006D3560(Rva0070B4F0GetString(0))) {
+			if (mp__proto__ != 0) {
+				mp__proto__->Release();
+				mp__proto__ = 0;
+			}
+		}
+	}
 }
