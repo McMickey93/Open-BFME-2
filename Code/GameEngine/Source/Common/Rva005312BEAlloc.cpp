@@ -34,8 +34,7 @@ public:
 	int m_count;
 	int m_items[12];
 };
-void *__cdecl operator new[](unsigned int size);
-void __cdecl operator delete[](void *p);
+#include <new>
 
 // Retail calls free directly (the game allocator), not through the CRT
 // import: read <stdlib.h> without dllimport.
