@@ -71,17 +71,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class CostModifierUpgrade : public UpgradeModule, public CostModifierUpgradeInterface
-{
-public:
-	CostModifierUpgrade( Thing *, const ModuleData * );
-
-private:
-	bool m_enabled;
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 //
 // ?upgradeRemovalImplementation@Rva004B5A65_Secondary@@QAEXXZ @0x004B5A65 91B: secondary-slot
 // UpgradeModule apply (vtable 0x00C580E8 slot 0) with the twins' MI shape:
@@ -238,9 +227,38 @@ private:
 	_STL::vector<AsciiString> m_applyToTheseUpgrades; // +0x130, ApplyToTheseUpgrades
 };
 
-// tu-skeleton: 0x004B59B7 69B ?getModuleNameKey@CostModifierUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradePoolKey.cpp (not merged yet)
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class CostModifierUpgrade : public UpgradeModule, public CostModifierUpgradeInterface
+{
+public:
+	CostModifierUpgrade( Thing *, const ModuleData * );
+
+private:
+	bool m_enabled;
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradePoolKey.cpp
+
+// ?getModuleNameKey@CostModifierUpgrade@@UBE?AW4NameKeyType@@XZ
+NameKeyType CostModifierUpgrade::getModuleNameKey() const
+{
+	static NameKeyType TheCostModifierUpgradePoolKey =
+		TheNameKeyGenerator->nameToKey("CostModifierUpgrade");
+	return TheCostModifierUpgradePoolKey;
+}
 
 // tu-skeleton: 0x004B59FC 10B ?get@Rva004B59FCByteChase32Field@@QBEEXZ -- matched in Code/GameEngine/Source/Common/Disp8ByteChaseGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp
 
@@ -249,8 +267,6 @@ CostModifierUpgrade::CostModifierUpgrade( Thing *thing, const ModuleData *module
 	  m_enabled( true )
 {
 }
-
-// tu-skeleton: 0x004B5A49 28B ??_GRva004B5982@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/Rva004B5A65Secondary.cpp
 
@@ -334,8 +350,6 @@ void __fastcall Rva004B5AC0_Primary::rva004B5AC0(int /*unused*/, Player *player1
 	}
 }
 
-// tu-skeleton: 0x004B5B82 42B ?rva004B5B82@Rva004B5B82@@UAEXXZ -- matched in Code/GameEngine/Source/Common/GapBodiesS3C.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradeModuleDataCtor.cpp
 
 //
@@ -376,15 +390,15 @@ CostModifierUpgradeModuleData::CostModifierUpgradeModuleData()
 	m_startsActive = false;
 }
 
+// tu-skeleton: 0x004B5A49 28B ??_GRva004B5982@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp (not merged yet)
+
+// tu-skeleton: 0x004B5B82 42B ?rva004B5B82@Rva004B5B82@@UAEXXZ -- matched in Code/GameEngine/Source/Common/GapBodiesS3C.cpp (not merged yet)
+
 // tu-skeleton: 0x004B5C64 28B ??_GCostModifierUpgradeModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDeletingDtors.cpp (not merged yet)
 
 // tu-skeleton: 0x004B5C80 105B ??1CostModifierUpgradeModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradeModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004B5CE9 34B ?buildFieldParse@CostModifierUpgradeModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleDataGetterBuildFieldParse.cpp (not merged yet)
-
-// tu-skeleton: 0x0078ED59 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078ED66 10B __ehhandler$?getModuleNameKey@CostModifierUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078EDBA 8B Unwind@00b8edba -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgradeModuleDataDtor.cpp (not merged yet)
 
