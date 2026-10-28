@@ -164,7 +164,7 @@ public:
 class SupplyTruckAIUpdate
 {
 public:
-	static NameKeyType rva0004A6DE4();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
 // ?loseOneBox@Rva004A6EHolder@@QAE_NXZ 0x004A6E8E 56B and ?gainOneBox@Rva004A6EHolder@@QAE_NH@Z 0x004A6EC6 68B
@@ -586,8 +586,8 @@ bool SupplyTruckStateMachine::ownerNotDockingOrIdle(State *thisState, void *user
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/SupplyTruckAIUpdatePoolKey.cpp
 
-// ?rva0004A6DE4@SupplyTruckAIUpdate@@SA?AW4NameKeyType@@XZ
-NameKeyType SupplyTruckAIUpdate::rva0004A6DE4()
+// ?getModuleNameKey@SupplyTruckAIUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType SupplyTruckAIUpdate::getModuleNameKey() const
 {
 	static NameKeyType TheSupplyTruckAIUpdatePoolKey =
 		TheNameKeyGenerator->nameToKey("SupplyTruckAIUpdate");
