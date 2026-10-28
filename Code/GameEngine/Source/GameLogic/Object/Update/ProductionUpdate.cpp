@@ -270,46 +270,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class ProductionUpdate
-{
-public:
-	virtual void i00();
-public:
-	virtual void i01();
-public:
-	virtual void i02();
-public:
-	virtual void i03();
-public:
-	virtual void cancelUpgrade(const UpgradeTemplate *upgrade);
-public:
-	virtual void i05();
-public:
-	virtual void i06();
-public:
-	virtual void i07();
-public:
-	virtual void i08();
-public:
-	virtual void i09();
-public:
-	virtual void cancelUnitCreate(Int productionID);
-public:
-	virtual void cancelAndRefundAllProduction();
-private:
-	unsigned char m_pad04[4];
-private:
-	ProductionEntry *m_productionQueue;
-private:
-	unsigned char m_pad0C[0xfd - 0xc];
-private:
-	Bool m_cancellingAll;
-public:
-	void rva0049DF81(Rva0049DF81Input *,Object *);
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 //
 // ?rva0049DC50@Rva0049DC50@@QAEXH@Z @0x0049DC50 187B.
 // Walk the list at +8. A node whose id matches the argument is removed
@@ -424,6 +384,7 @@ public:
 // (same call bytes) so this TU references the rowed body, not an undefined
 // _Construct<QuantityModifier> copy.
 void Rva0049DD0BConstruct(void *dest, const void *source);
+
 namespace _STL {
 template <> __declspec(dllimport) __forceinline
 void _Construct<QuantityModifier, QuantityModifier>(QuantityModifier *__p, const QuantityModifier &__val)
@@ -457,6 +418,54 @@ template void _STL::vector<QuantityModifier>::_M_insert_overflow(
 // ?push_back@?$vector@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@QAEXABUQuantityModifier@@@Z @0x0049FDC2 55B: vector<QuantityModifier>::push_back fast path via Construct 0x49DD0B else overflow 0x0049F729; caller INI parse 0x0049FDF9 to vector +0x1C.
 template void _STL::vector<QuantityModifier>::push_back(const QuantityModifier &);
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class ProductionUpdate
+{
+public:
+	virtual void i00();
+public:
+	virtual void i01();
+public:
+	virtual void i02();
+public:
+	virtual void i03();
+public:
+	virtual void cancelUpgrade(const UpgradeTemplate *upgrade);
+public:
+	virtual void i05();
+public:
+	virtual void i06();
+public:
+	virtual void i07();
+public:
+	virtual void i08();
+public:
+	virtual void i09();
+public:
+	virtual void cancelUnitCreate(Int productionID);
+public:
+	virtual void cancelAndRefundAllProduction();
+private:
+	unsigned char m_pad04[4];
+private:
+	ProductionEntry *m_productionQueue;
+private:
+	unsigned char m_pad0C[0xfd - 0xc];
+private:
+	Bool m_cancellingAll;
+public:
+	void rva0049DF81(Rva0049DF81Input *,Object *);
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
 // tu-skeleton: 0x0049CC15 33B ?rva0049CC15@ProductionUpdate@@UAEXW4ProductionID@@H@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
 
 // tu-skeleton: 0x0049CC36 43B ?rva0049CC36@ProductionUpdate@@UBE_NW4ProductionID@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
@@ -464,6 +473,8 @@ template void _STL::vector<QuantityModifier>::push_back(const QuantityModifier &
 // tu-skeleton: 0x0049CC61 60B ?rva0049CC61@ProductionUpdate@@UAEXPBVThingTemplate@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
 
 // tu-skeleton: 0x0049CC9D 83B ?rva0049CC9D@ProductionUpdate@@UAEXPBVThingTemplate@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp
 
@@ -609,6 +620,37 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 	modifiers.clear();
 }
 
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0049DD38.cpp
+
+// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
+
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW6Rva0049DD5E.cpp
+
+// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
+// Element identity and unconstrained fields remain address-derived structural inference.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---- from Code/Libraries/Source/WWVegas/WWLib/stlport_vector_quantitymodifier_insert_overflow_49F729.cpp
+
+// ?_M_insert_overflow@?$vector@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@IAEXPAUQuantityModifier@@ABU3@ABU__false_type@2@I_N@Z @0x0049F729 178B: vector<QuantityModifier> growth path same 178B sar-3 shape as BfmeStringRecord overflow 0x00426DE2; QuantityModifier is ProductionUpdateModuleData +0x1C AsciiString-plus-int 8-byte element proven by ctor TU and caller push_back 0x0049FDC2 via INI parse 0x0049FDF9; calls allocate 0x523D6C plus copy 0x49DD38 plus Construct 0x49DD0B plus fill_n 0x49DD5E plus clear 0x4C3D8B.
+// vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
+// overload takes the call instead, so this TU emits no external max COMDAT.
+
 // tu-skeleton: 0x0049CD24 43B ?rva0049CD24@ProductionUpdate@@QAEXPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/Rva0049CD24Apply.cpp (not merged yet)
 
 // tu-skeleton: 0x0049CD4F 170B ?calcTotalProductionFrames@ProductionUpdate@@QAEHPAVRva0049CD4FArg@@@Z -- matched in Code/GameEngine/Source/Common/ProductionUpdate_calcTotalProductionFrames.cpp (not merged yet)
@@ -647,15 +689,6 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 
 // tu-skeleton: 0x0049DD0B 45B ?Rva0049DD0BConstruct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
 
-// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0049DD38.cpp
-
-// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
-
-// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW6Rva0049DD5E.cpp
-
-// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
-// Element identity and unconstrained fields remain address-derived structural inference.
-
 // tu-skeleton: 0x0049DD83 234B ?rva0049DD83@Rva0049DD83@@QAEXPAVINI@@PAX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_uninitialized_fill_n.cpp (not merged yet)
 
 // tu-skeleton: 0x0049DE6D 91B ?Rva0049DE6DParse@@YAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateCostModifierParse.cpp (not merged yet)
@@ -672,7 +705,15 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 
 // tu-skeleton: 0x0049E14C 18B ?nextProduction@ProductionUpdate@@UBEPBVRva0049D1B1@@PBV2@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
 
-// tu-skeleton: 0x0049E15E 69B ?getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp
+
+// ?getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType ProductionUpdate::getModuleNameKey() const
+{
+	static NameKeyType TheProductionUpdatePoolKey =
+		TheNameKeyGenerator->nameToKey("ProductionUpdate");
+	return TheProductionUpdatePoolKey;
+}
 
 // tu-skeleton: 0x0049E1A3 28B ?getDisabledTypesToProcess@ProductionUpdate@@UBE?AV?$BitFlags@$0L@@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateDtor.cpp (not merged yet)
 
@@ -687,12 +728,6 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 // tu-skeleton: 0x0049E3B5 4969B ?update@ProductionUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp (not merged yet)
 
 // tu-skeleton: 0x0049F71E 11B ?clear@?$vector@UFXBoneInfo@@V?$allocator@UFXBoneInfo@@@_STL@@@_STL@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Thing/ModuleFactory.cpp (not merged yet)
-
-// ---- from Code/Libraries/Source/WWVegas/WWLib/stlport_vector_quantitymodifier_insert_overflow_49F729.cpp
-
-// ?_M_insert_overflow@?$vector@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@IAEXPAUQuantityModifier@@ABU3@ABU__false_type@2@I_N@Z @0x0049F729 178B: vector<QuantityModifier> growth path same 178B sar-3 shape as BfmeStringRecord overflow 0x00426DE2; QuantityModifier is ProductionUpdateModuleData +0x1C AsciiString-plus-int 8-byte element proven by ctor TU and caller push_back 0x0049FDC2 via INI parse 0x0049FDF9; calls allocate 0x523D6C plus copy 0x49DD38 plus Construct 0x49DD0B plus fill_n 0x49DD5E plus clear 0x4C3D8B.
-// vector::_M_insert_overflow inlines max(size(), n). A file-static unsigned
-// overload takes the call instead, so this TU emits no external max COMDAT.
 
 // tu-skeleton: 0x0049F7DB 178B ??0ProductionUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateModuleDataCtor.cpp (not merged yet)
 
@@ -726,10 +761,6 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 
 // tu-skeleton: 0x0078D92A 10B __ehhandler$??0ProductionUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078D934 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078D941 10B __ehhandler$?getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp (not merged yet)
-
 // tu-skeleton: 0x0078D94B 8B Unwind@00b8d94b -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0078D953 14B uw_0078d953 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateDtor.cpp (not merged yet)
@@ -738,7 +769,7 @@ ProductionUpdateModuleData::~ProductionUpdateModuleData()
 
 // tu-skeleton: 0x0078D96F 10B __ehhandler$??1ProductionUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0078D979 8B uw_0078d979 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+// tu-skeleton: 0x0078D979 8B $L16201 -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp (not merged yet)
 
 // tu-skeleton: 0x0078D981 10B __ehhandler$??1?$vector@UQuantityModifier@@V?$allocator@UQuantityModifier@@@_STL@@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp (not merged yet)
 

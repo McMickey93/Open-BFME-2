@@ -20235,8 +20235,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03B50,4,.data,global,_s_rva007B18F7,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03B54,4,.data,global,?key_RespawnUpdate@?7??rva0049DEC8@ProductionUpdate@@UAEXXZ@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp,owned,,1,2
 0x00A03B58,4,.data,global,?$S1@?7??rva0049DEC8@ProductionUpdate@@UAEXXZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp,owned,,1,2
-0x00A03B5C,4,.data,global,?TheProductionUpdatePoolKey@?1??getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp,owned,,1,2
-0x00A03B60,4,.data,global,?$S1@?1??getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdatePoolKey.cpp,owned,,1,4
+0x00A03B5C,4,.data,global,?TheProductionUpdatePoolKey@?1??getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp,owned,,1,2
+0x00A03B60,4,.data,global,?$S1@?1??getModuleNameKey@ProductionUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdate.cpp,owned,,1,4
 0x00A03B6C,4,.data,global,?$S2@?1??update@ProductionUpdate@@UAE?AW4UpdateSleepTime@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ProductionUpdateQueue.cpp,owned,,1,4
 0x00A03B70,4,.data,global,_s_rva007B1921,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03B74,4,.data,global,?TheProneUpdatePoolKey@?1??getModuleNameKey@ProneUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ProneUpdate.cpp,owned,,1,2
