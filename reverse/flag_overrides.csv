@@ -1,7 +1,6 @@
 source,flags,rows,default_lost,reason
 Code/GameEngine/Source/Common/Bfme5EightySeven.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/Bfme5FiftyFour.cpp,,1,1,region default loses rows
-Code/GameEngine/Source/Common/Bfme5FiftyTwo.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/Bfme5SeventyFive.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/Common/Bfme5SeventySix.cpp,,7,2,region default loses rows
 Code/GameEngine/Source/Common/Bfme5ThirtyFour.cpp,-O2,22,1,region default loses rows
@@ -323,7 +322,7 @@ Code/GameEngine/Source/GameNetwork/BfmeHostBT_bfmeReportBT.cpp,-O2,1,1,region de
 Code/GameEngine/Source/GameNetwork/BfmeOneHundredFiftyEight.cpp,,3,3,region default loses rows
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDConstructor.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp,,5,2,region default loses rows
-Code/GameEngine/Source/GameNetwork/BfmeThingDGDRva007F8400.cpp,,11,1,region default loses rows
+Code/GameEngine/Source/GameNetwork/BfmeThingZI.cpp,,17,6,region default loses rows
 Code/GameEngine/Source/GameNetwork/ConnectionRva0058BD4F.cpp,-O2 -arch:SSE,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/DisconnectManager.cpp,,2,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/FeslConnectionHandlerRva007F9D00.cpp,-O2,1,1,region default loses rows
@@ -372,7 +371,6 @@ Code/GameEngine/Source/GameNetwork/Rva007F6260GameBrowserConnect.cpp,-O2,1,1,reg
 Code/GameEngine/Source/GameNetwork/Rva007F6B30FindRecord.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007F6B80ArrayIndex.cpp,-O2,2,2,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007F7030Request.cpp,-O2,2,1,region default loses rows
-Code/GameEngine/Source/GameNetwork/Rva007F76F0FeslKeyIndex.cpp,,2,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007F7980BrowserRva007F63F0.cpp,-O2,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007F8790Demangler.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/Rva007F91D0DemanglerLog.cpp,-O2,1,1,region default loses rows
@@ -424,7 +422,6 @@ Code/GameEngine/Source/GameNetwork/ServiceHubImpl_ctor.cpp,-O2,1,1,region defaul
 Code/GameEngine/Source/GameNetwork/V2FeslArrayBlocks.cpp,,11,4,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslBrowserLobbyCounts.cpp,,1,1,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslBrowserRecords.cpp,,3,2,region default loses rows
-Code/GameEngine/Source/GameNetwork/V2FeslElementLists.cpp,,3,3,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslFeedbackRequest.cpp,,3,2,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslResultCursors.cpp,,10,9,region default loses rows
 Code/GameEngine/Source/GameNetwork/V2FeslTxnRequests.cpp,,11,2,region default loses rows

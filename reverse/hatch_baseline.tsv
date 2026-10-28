@@ -3478,6 +3478,7 @@ alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJ
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgVJH_ctor.cpp	?bfmeInitVJO@BfmeMsgVJO@@QAEXPADH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingDGDDestructor.cpp	??1Gen007F86D0@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingTWA.cpp	?set@BfmeThingTWA@@UAEXHH@Z	1
+alternatename	Code/GameEngine/Source/GameNetwork/BfmeThingZI.cpp	?bfmeFindFN@BfmeOwnerFN@@QAEHPAVBfmeVecFN@@PBD@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/CDownloadCtorEmit.cpp	?Abort@CDownload@@UAEJXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/ConnectionManager.cpp	?find@FontCharMap@@QAEPAUFontCharNode@@ABG@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/ConnectionManager_processGameSpyStatsAuthKey_Rva004CFE24.cpp	?getLoginName@GameSpyGameSlot@@QBE?AV?$StringBase@D@@XZ	1
@@ -3545,7 +3546,6 @@ alternatename	Code/GameEngine/Source/GameNetwork/Rva007F1DE0DerivedCtors.cpp	?se
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F5D10GameBrowser.cpp	?resetHpState@Rva007F5D10HostLookup@@QAEXPAVRva008022A0Owner@@@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F61E0HostedGameRequest.cpp	?BfmeGameBrowserVJPCallback@@YGXXZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F65E0GameReply.cpp	?bfmeDoBDB@BfmeSubBDB@@QAEXPAXH@Z	1
-alternatename	Code/GameEngine/Source/GameNetwork/Rva007F76F0FeslKeyIndex.cpp	?bfmeFindFN@BfmeOwnerFN@@QAEHPAVBfmeVecFN@@PBD@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F99B0Busy.cpp	?onBusy@Rva007FA2C0@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F9C50Dtor.cpp	??1Gen007FA290@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/Rva007F9C50Dtor.cpp	?v0@Rva007F9C50@@UAEXXZ	1
