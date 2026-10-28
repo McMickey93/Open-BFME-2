@@ -29,12 +29,9 @@ public:
     float m_low, m_high;
 };
 
-// Placement new, used only to force generated copy constructors out; nothing in
+// Placement new (from <new>), used only to force generated copy constructors out; nothing in
 // retail allocates through it.
-inline void *operator new(unsigned int, void *storage)
-{
-    return storage;
-}
+#include <new>
 
 class UpgradeTemplate;
 
