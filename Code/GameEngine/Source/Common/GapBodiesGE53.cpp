@@ -65,12 +65,12 @@ void *Rva001FF547::allocate(unsigned int n, const void *hint)
 extern int LODTextureReduction;
 extern unsigned char LODMeshCacheSetting;
 
-void rva00201D34(int value)
+void setLODTextureReduction(int value)
 {
 	LODTextureReduction = value;
 }
 
-void rva00201D3E(unsigned char value)
+void setLODMeshCacheSetting(unsigned char value)
 {
 	LODMeshCacheSetting = value;
 }

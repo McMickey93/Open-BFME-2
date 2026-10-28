@@ -28,7 +28,7 @@ public:
 	static unsigned rva006C16D0(const void *chunk);
 	void rva006C1710(int a, int b, int c);
 	int rva006C1770(short option);
-	bool rva006C19F0(void *a, unsigned int size, bool b, void *c, void *d, void *e);
+	bool Init(void *a, unsigned int size, bool b, void *c, void *d, void *e);
 };
 
 void *GeneralAllocatorDebug::rva006C20A0(void *block, unsigned length, unsigned short id, const void *data, unsigned dataLength)
@@ -173,7 +173,7 @@ struct Rva006C19F0State
 	int m_674;
 };
 
-bool GeneralAllocatorDebug::rva006C19F0(void *a, unsigned int size, bool b, void *c, void *d, void *e)
+bool GeneralAllocatorDebug::Init(void *a, unsigned int size, bool b, void *c, void *d, void *e)
 {
 	bool result = ((Rva00033B90Allocator *)this)->rva00033700(a, size, b, c, d, e);
 	Rva006C19F0State *state = (Rva006C19F0State *)this;

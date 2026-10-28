@@ -3461,3 +3461,6 @@ param,Rva005B269DRow::rva005B269D::v,Rva005B269DRow::rva005B269D::row,inferred,a
 param,Rva0007E971::rva00082536::x,Rva0007E971::rva00082536::key,inferred,agree:nl-ef2a04de4cac,Code/Libraries/Source/WWVegas/WWLib/RvaTreeEraseRangeFamily_Unresolved.cpp,0x00082536
 param,Rva000D20A9::rva000D3BFD::x,Rva000D20A9::rva000D3BFD::key,inferred,agree:nl-d802fe580bf8,Code/Libraries/Source/WWVegas/WWLib/RvaTreeEraseRangeFamily_Unresolved.cpp,0x000D3BFD
 param,Rva00362AB5::rva00362B89::x,Rva00362AB5::rva00362B89::key,inferred,agree:nl-e846d91e6bf8,Code/Libraries/Source/WWVegas/WWLib/RvaTreeEraseRangeFamily_Unresolved.cpp,0x00362B89
+function,?rva00201D34@@YAXH@Z,?setLODTextureReduction@@YAXH@Z,inferred,agree:nl-ccabc242540f,Code/GameEngine/Source/Common/GapBodiesGE53.cpp,0x00201D34
+function,?rva00201D3E@@YAXE@Z,?setLODMeshCacheSetting@@YAXE@Z,inferred,agree:nl-f142de0b3518,Code/GameEngine/Source/Common/GapBodiesGE53.cpp,0x00201D3E
+function,?rva006C19F0@GeneralAllocatorDebug@@QAE_NPAXI_N000@Z,?Init@GeneralAllocatorDebug@@QAE_NPAXI_N000@Z,inferred,agree:nl-bde62986fc0f,Code/GameEngine/Source/Common/Rva006C20A0DebugField.cpp,0x006C19F0
