@@ -199,9 +199,15 @@ extern MessageStream *TheMessageStream;
 
 extern InGameUI *TheInGameUI;
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 class TemporarilyDefectUpdate
 {
 public:
+	virtual NameKeyType getModuleNameKey() const;
 	virtual UpdateSleepTime update();
 	bool rva004CC829();	// complete-object method, called through this - 0x10
 
