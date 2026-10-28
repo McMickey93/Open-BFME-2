@@ -28,6 +28,11 @@ enum UpdateSleepTime
 	UPDATE_SLEEP_NONE = 1, UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 struct InvisibilityUpdateModuleData
 {
 	unsigned char m_pad000[0xC0];
@@ -80,6 +85,8 @@ public:
 	virtual bool rva004A3A09();
 	void rva004A39D0(bool on);
  virtual UpdateSleepTime update();
+	static NameKeyType rva0004A393C();
+	virtual NameKeyType getModuleNameKey() const;
 private:
 	bool m_24; // +0x24
 };

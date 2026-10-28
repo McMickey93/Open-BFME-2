@@ -7549,3 +7549,19 @@ source objects lack current receipts. Carry moved providers and affected
 consumers into the next scheduled census. Five donors require declaration and
 class-view reconciliation; nine mixed files remain. No census gain is claimed.
 [Checks and path audit](../reverse/attempt_support/apt-lan-lobby-consolidation-20261028-codex4.md).
+
+### InvisibilityUpdate name-key composition prerequisites (2026-10-28)
+
+Status: declarations verified; bounded composition and census confirmation
+pending. Inspected base `b861a801d6`; preview index `41c28839bf`.
+The callback class now declares its existing two name-key members, allowing
+the supported dry run to accept callbacks and PoolKey together. All 13 rows,
+three EH graphs and the callback object's external COMDAT digests and bindings
+are preserved. Both original units retain LINKS for 536 authored preview
+bytes. Four whole-file donors still need class/base/declaration reconciliation;
+four mixed sources remain separate. No measured linking gain is claimed.
+[Checks and remaining prerequisites](../reverse/attempt_support/invisibility-consolidation-20261028-codex3.md).
+
+The prerequisite staged-tree batch audit is INCONCLUSIVE: the index predates
+the base and affected consumer Common/0CreateAHeroManager21FE49.cpp lacks a
+current receipt. Carry the provider scope and consumer into the next census.
