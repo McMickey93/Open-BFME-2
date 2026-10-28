@@ -62,6 +62,14 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
 class ArmorUpgrade : public UpgradeModule
 {
 public:
@@ -73,16 +81,14 @@ public:
 	virtual NameKeyType getModuleNameKey() const;
 };
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/ArmorUpgrade.cpp
+
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/ArmorUpgradeDtor.cpp
 
 // ??1ArmorUpgrade@@MAE@XZ @0x004B33FD
 ArmorUpgrade::~ArmorUpgrade()
 {
 }
-
-// tu-skeleton: 0x004B341D 6B ?name@ArmorUpgrade@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
-
-// tu-skeleton: 0x004B3423 69B ?getModuleNameKey@ArmorUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/Common/System/ArmorUpgradePoolKey.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/ArmorUpgradeConstructor.cpp
 
@@ -91,6 +97,18 @@ ArmorUpgrade::ArmorUpgrade(
 	Thing *thing, const ModuleData *moduleData )
 	: UpgradeModule( thing, moduleData )
 {
+}
+
+// tu-skeleton: 0x004B341D 6B ?name@ArmorUpgrade@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/ArmorUpgradePoolKey.cpp
+
+// ?getModuleNameKey@ArmorUpgrade@@UBE?AW4NameKeyType@@XZ
+NameKeyType ArmorUpgrade::getModuleNameKey() const
+{
+	static NameKeyType TheArmorUpgradePoolKey =
+		TheNameKeyGenerator->nameToKey("ArmorUpgrade");
+	return TheArmorUpgradePoolKey;
 }
 
 // tu-skeleton: 0x004B34B5 192B ?upgradeImplementation@ArmorUpgrade@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/ArmorUpgradeUpgradeImplementation.cpp (not merged yet)
