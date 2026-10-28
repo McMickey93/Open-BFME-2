@@ -34,7 +34,7 @@
 // of the +0x118 word of its Drawable (0x005508E2) even when the lookup failed.
 //
 // Model-condition bits: the Object word array starts at +0x10C (see
-// GloriousChargeUpdateRva004AD554.cpp); masked-word accessors in a free
+// GloriousChargeUpdate_startPreparation.cpp); masked-word accessors in a free
 // __forceinline helper call the pinned notifier 0x0028AE6D on a change.
 
 #include "../../../../../../reference/shims/bfme2_ascii/ascii_string.h"
@@ -192,6 +192,11 @@ public:
 extern PartitionManager *ThePartitionManager;
 class Thing;
 class ModuleData;
+class Xfer;
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
 class BehaviorModule
 {
 public:
@@ -227,37 +232,55 @@ class SpecialPowerUpdateInterface
 public:
 	virtual void specialPowerUpdateAnchor();
 };
-// Primary-vtable slots 1..17 of SpecialAbilityUpdate (vtable 0x00C3FBA8);
-// only the positions of slots 15 and 17 matter to this unit.
+// Primary-vtable slots 1..17 of SpecialAbilityUpdate (vtable 0x00C3FBA8):
+// xfer 0x0044F996 in slot 3 and the pool key in slot 4; only the positions
+// of slots 15 and 17 matter to update().
 class SpecialAbilityUpdate : public UpdateModule, public SpecialPowerUpdateInterface
 {
 public:
-	virtual void slot01(); virtual void slot02(); virtual void slot03();
-	virtual void slot04(); virtual void slot05(); virtual void slot06();
+	virtual void slot01(); virtual void slot02();
+protected:
+	virtual void xfer(Xfer *xfer); // slot 3
+public:
+	virtual NameKeyType getModuleNameKey() const; // slot 4
+	virtual void slot05(); virtual void slot06();
 	virtual void slot07(); virtual void slot08(); virtual void slot09();
 	virtual void slot10(); virtual void slot11(); virtual void slot12();
 	virtual void slot13(); virtual void slot14();
-	virtual void slot15(); // 0x00450D9A, GloriousChargeUpdate 0x004AD554
+	virtual void startPreparation(); // slot 15; 0x00450D9A, GloriousChargeUpdate 0x004AD554
 	virtual void slot16();
 	virtual void triggerAbilityEffect(); // slot 17; GloriousChargeUpdate 0x004AD8E3
 private:
 	unsigned char m_pad24[0x88 - 0x24];
 };
-class GloriousChargeUpdateModuleData
+class SpecialAbilityUpdateModuleData
 {
 public:
+	SpecialAbilityUpdateModuleData();
+
+private:
 	unsigned char m_pad[0xC8];
+};
+class GloriousChargeUpdateModuleData : public SpecialAbilityUpdateModuleData
+{
+public:
+	GloriousChargeUpdateModuleData();
+
 	float m_bonusRadius; // +0xC8
-	unsigned int m_CC; // +0xCC
+	int m_speechDuration; // +0xCC
 	int m_updateInterval; // +0xD0
 };
 class GloriousChargeUpdate : public SpecialAbilityUpdate
 {
 public:
+	virtual NameKeyType getModuleNameKey() const;
+	virtual void startPreparation();
 	void rva004AD613();
 	void rva004AD7B6();
 	virtual void triggerAbilityEffect();
 	virtual UpdateSleepTime update();
+protected:
+	virtual void xfer(Xfer *xfer);
 private:
 	const GloriousChargeUpdateModuleData *getGloriousChargeData() const
 	{
@@ -293,8 +316,8 @@ UpdateSleepTime GloriousChargeUpdate::update()
 	{
 		if (!m_object->isKindOf((KindOfType)0xD6))
 			return (UpdateSleepTime)getGloriousChargeData()->m_updateInterval;
-		slot15();
-		m_8C = getGloriousChargeData()->m_CC + TheGameLogic->getFrame();
+		startPreparation();
+		m_8C = getGloriousChargeData()->m_speechDuration + TheGameLogic->getFrame();
 		m_90 = true;
 	}
 	if (TheGameLogic->getFrame() >= m_8C)

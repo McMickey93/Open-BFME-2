@@ -30,7 +30,6 @@ class GloriousChargeUpdateModuleData : public SpecialAbilityUpdateModuleData
 public:
 	GloriousChargeUpdateModuleData();
 
-private:
 	float m_bonusRadius; // +0xC8
 	int m_speechDuration; // +0xCC
 	int m_updateInterval; // +0xD0
