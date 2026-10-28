@@ -1,4 +1,4 @@
-// cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /EHsc
+// cl: /DNDEBUG /MD /GX
 //
 // ?update@HitReactionBehavior@@UAE?AW4UpdateSleepTime@@XZ, retail 0x004592A1,
 // 681 bytes: slot 0 of the UpdateModuleInterface vftable 0x00840FF8 whose
@@ -18,10 +18,88 @@
 
 #include "../../../Common/GameLogicObjectLookupView.h"
 
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+class Thing;
+class ModuleData;
+class Object;
+#include "../../../../Include/Common/BfmeXfer.h"
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
 enum UpdateSleepTime
 {
 	UPDATE_SLEEP_NONE = 1,
 	UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
+};
+
+class ObjectModule
+{
+public:
+	ObjectModule(Thing *, const ModuleData *);
+	virtual ~ObjectModule();
+protected:
+	const ModuleData *m_moduleData;
+	Object *m_object;
+};
+
+class BehaviorModuleInterface { public: virtual void behaviorSlot(); };
+
+class UpdateModuleInterface { public: virtual UpdateSleepTime update(); };
+
+// UpdateModule base; ctor and xfer resolve to their rows. The update()
+// override runs on the UpdateModuleInterface subobject at +0x10.
+class UpdateModule : public ObjectModule,
+	public BehaviorModuleInterface, public UpdateModuleInterface
+{
+public:
+	UpdateModule(Thing *thing, const ModuleData *data);
+	virtual ~UpdateModule();
+	void xfer(Xfer *xfer);
+
+protected:
+	void setWakeFrame(Object *obj, UpdateSleepTime frame);
+	Object *getObject() const { return m_object; }
+	const ModuleData *getModuleData() const { return m_moduleData; }
+
+private:
+	unsigned int m_nextCallFrameAndPhase;
+	int m_indexInLogic;
+	int m_updateState;
+};
+
+class HitReactionBehavior : public UpdateModule
+{
+public:
+	HitReactionBehavior(Thing *thing, const ModuleData *moduleData);
+	virtual ~HitReactionBehavior();
+	virtual NameKeyType getModuleNameKey() const;
+	virtual UpdateSleepTime update();
+
+protected:
+	virtual void xfer(Xfer *xfer);
+
+private:
+	int m_framesLeft; // +0x20
+	float m_lastHealth; // +0x24
 };
 
 enum DisabledType
@@ -140,69 +218,33 @@ private:
 
 extern GameLogic *TheGameLogic;
 
-class ModuleData;
-
 class HitReactionBehaviorModuleData
 {
 public:
-	const void *m_vtable;	// +0x00
-	unsigned int m_unused04;	// +0x04
-	int m_lifeTimer[3];	// +0x08
-	float m_threshold[3];	// +0x14
-	bool m_fastHitsReset;	// +0x20
-	bool m_hitsParalyze;	// +0x21
-};
-
-class Rva004592A1Module
-{
-public:
-	virtual void rva004592A1Module0();
-protected:
-	const ModuleData *m_moduleData;	// +0x04
-	Object *m_object;	// +0x08
-};
-
-class Rva004592A1Interface0C
-{
-public:
-	virtual void rva004592A1Interface0C0();
-};
-
-class UpdateModuleInterface
-{
-public:
-	virtual UpdateSleepTime update() = 0;
-};
-
-class UpdateModule : public Rva004592A1Module, public Rva004592A1Interface0C, public UpdateModuleInterface
-{
-protected:
-	Object *getObject() const { return m_object; }
-	const ModuleData *getModuleData() const { return m_moduleData; }
-	unsigned char m_pad14[0x20 - 0x14];
-};
-
-class HitReactionBehavior : public UpdateModule
-{
-public:
-	virtual UpdateSleepTime update();
+	HitReactionBehaviorModuleData();
 
 private:
-	__forceinline void clearHitReaction(Object *obj, Drawable *draw)
-	{
-		if (draw->testModelCondition(MODELCONDITION_HIT_REACTION))
-		{
-			obj->clearModelConditionState(MODELCONDITION_HIT_REACTION);
-			obj->clearModelConditionState(MODELCONDITION_HIT_LEVEL1);
-			obj->clearModelConditionState(MODELCONDITION_HIT_LEVEL2);
-			obj->clearModelConditionState(MODELCONDITION_HIT_LEVEL3);
-			draw->rva00274176(false);
-		}
-	}
+	const void *m_vtable; // +0x00
+	unsigned int m_unused04; // +0x04
 
-	int m_framesLeft;	// +0x20
-	float m_lastHealth;	// +0x24
+public:
+	int m_lifeTimer[3]; // +0x08
+	float m_threshold[3]; // +0x14
+	bool m_fastHitsReset; // +0x20
+	bool m_hitsParalyze; // +0x21
 };
+
+__forceinline void clearHitReaction(Object *obj, Drawable *draw)
+{
+	if (draw->testModelCondition(MODELCONDITION_HIT_REACTION))
+	{
+		obj->clearModelConditionState(MODELCONDITION_HIT_REACTION);
+		obj->clearModelConditionState(MODELCONDITION_HIT_LEVEL1);
+		obj->clearModelConditionState(MODELCONDITION_HIT_LEVEL2);
+		obj->clearModelConditionState(MODELCONDITION_HIT_LEVEL3);
+		draw->rva00274176(false);
+	}
+}
 
 UpdateSleepTime HitReactionBehavior::update()
 {

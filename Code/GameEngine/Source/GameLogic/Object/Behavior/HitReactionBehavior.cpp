@@ -14,41 +14,72 @@
 // setWakeFrame tail call via the rowed UpdateModule base and pinned 0x44DF71.
 // Row supersedes the ctor pin.
 
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
 class Thing;
-
 class ModuleData;
-
 class Object;
+#include "../../../../Include/Common/BfmeXfer.h"
 
-static int s_vtable;
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
 
-static int s_secondary0C;
-
-static int s_secondary10;
-
-// Opaque UpdateModule base; ctor resolves to its row. The declared-only
-// virtual dtor drives the single EH state with zero emitted code. Protected
-// slots mirror the retail stores.
 enum UpdateSleepTime
 {
 	UPDATE_SLEEP_NONE = 1,
 	UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
 };
 
-class UpdateModule
+class ObjectModule
 {
 public:
-	UpdateModule(Thing *thing, const ModuleData *moduleData);
+	ObjectModule(Thing *, const ModuleData *);
+	virtual ~ObjectModule();
+protected:
+	const ModuleData *m_moduleData;
+	Object *m_object;
+};
+
+class BehaviorModuleInterface { public: virtual void behaviorSlot(); };
+
+class UpdateModuleInterface { public: virtual UpdateSleepTime update(); };
+
+// UpdateModule base; ctor and xfer resolve to their rows. The update()
+// override runs on the UpdateModuleInterface subobject at +0x10.
+class UpdateModule : public ObjectModule,
+	public BehaviorModuleInterface, public UpdateModuleInterface
+{
+public:
+	UpdateModule(Thing *thing, const ModuleData *data);
 	virtual ~UpdateModule();
+	void xfer(Xfer *xfer);
 
 protected:
 	void setWakeFrame(Object *obj, UpdateSleepTime frame);
+	Object *getObject() const { return m_object; }
+	const ModuleData *getModuleData() const { return m_moduleData; }
 
-	const ModuleData *m_moduleData;
-	Object *m_object;
-	const void *m_p0C;
-	const void *m_p10;
-	unsigned char m_pad[0x20 - 0x14];
+private:
+	unsigned int m_nextCallFrameAndPhase;
+	int m_indexInLogic;
+	int m_updateState;
 };
 
 class HitReactionBehavior : public UpdateModule
@@ -56,10 +87,15 @@ class HitReactionBehavior : public UpdateModule
 public:
 	HitReactionBehavior(Thing *thing, const ModuleData *moduleData);
 	virtual ~HitReactionBehavior();
+	virtual NameKeyType getModuleNameKey() const;
+	virtual UpdateSleepTime update();
+
+protected:
+	virtual void xfer(Xfer *xfer);
 
 private:
-	int m_20;
-	float m_24;
+	int m_framesLeft; // +0x20
+	float m_lastHealth; // +0x24
 };
 
 //
@@ -87,6 +123,8 @@ public:
 private:
 	const void *m_vtable; // +0x00
 	unsigned int m_unused04; // +0x04
+
+public:
 	int m_lifeTimer[3]; // +0x08
 	float m_threshold[3]; // +0x14
 	bool m_fastHitsReset; // +0x20
@@ -99,19 +137,15 @@ private:
 HitReactionBehavior::HitReactionBehavior(Thing *thing, const ModuleData *moduleData)
 	: UpdateModule(thing, moduleData)
 {
-	m_p0C = &s_secondary0C;
-	m_p10 = &s_secondary10;
-	m_20 = 0;
-	m_24 = 0.0f;
-	setWakeFrame(m_object, UPDATE_SLEEP_NONE);
+	m_framesLeft = 0;
+	m_lastHealth = 0.0f;
+	setWakeFrame(getObject(), UPDATE_SLEEP_NONE);
 }
 
 // ??1HitReactionBehavior@@UAE@XZ @0x00459154: vftable 0x00841004 slot 0 is its deleting dtor
 // 0x00459285 (formerly the placeholder Rva00459154 in Rva0024A797Derived.cpp).
 HitReactionBehavior::~HitReactionBehavior()
 {
-	m_p0C = &s_secondary0C;
-	m_p10 = &s_secondary10;
 }
 
 // tu-skeleton: 0x0045916D 6B ?name@HitReactionBehavior@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters2.cpp (not merged yet)
