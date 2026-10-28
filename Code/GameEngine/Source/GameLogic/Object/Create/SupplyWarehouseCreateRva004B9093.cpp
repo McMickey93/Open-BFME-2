@@ -1,13 +1,19 @@
 // cl: /Ireference/shims/bfme2_ascii /MD
 // stlport
-// ?rva004B9093@SupplyWarehouseCreate@@UAEXXZ @0x004B9093 78B
-// vslot 13 of SupplyWarehouseCreate vtable 0x008593F8: upgrade grant on create.
-// Calls slot 3 bool gate, reads upgrade AsciiString at module-data +8 via
+// ?onBuildComplete@GrantUpgradeCreate@@UAEXXZ @0x004B9093 78B
+// Target facts: slot 1 of GrantUpgradeCreate's CreateModuleInterface vftable
+// 0x00859428 (stored at +0x10 by its matched constructor 0x004B8F62; slot 0 is
+// onCreate 0x004B901D). The earlier notes read slot 13 of SupplyWarehouseCreate's
+// primary vftable 0x008593F8, which ends at 0x00859428.
+// Donor fact: Zero Hour GrantUpgradeCreate::onBuildComplete returns unless
+// shouldDoOnBuildComplete(), runs CreateModule::onBuildComplete (clears the flag)
+// and grants the module data's upgrade.
+// Body: calls slot 3 bool gate, reads upgrade AsciiString at module-data +8 via
 // primary +4, Object at primary +8, clears bool at +0x14, via rowed
 // findUpgrade 0x0026F26D, rowed getControllingPlayer 0x0028AFA9, pin-only
 // Player::addUpgrade 0x002AE329, rowed Object::rva00293077 0x00293077,
-// global TheUpgradeCenter. Evidence: vtable slot, callers none, donor
-// SupplyWarehouseCreate header, MI vptrs +0/+0xC/+0x10 family precedent
+// global TheUpgradeCenter. Evidence: vtable slot, callers none, MI vptrs
+// +0/+0xC/+0x10 family precedent
 // Rva004B8CDEDerived.cpp, next GrantUpgradeCreateModuleData.
 #include "ascii_string.h"
 
@@ -56,7 +62,7 @@ public:
 	virtual void f1();
 };
 
-class SupplyWarehouseCreateThird
+class GrantUpgradeCreateThird
 {
 public:
 	virtual void f0();
@@ -72,18 +78,18 @@ public:
 	virtual void f10();
 	virtual void f11();
 	virtual void f12();
-	virtual void rva004B9093();
+	virtual void onBuildComplete();
 };
 
-class SupplyWarehouseCreate : public Rva004B8CDEBase, public MiBase1, public SupplyWarehouseCreateThird
+class GrantUpgradeCreate : public Rva004B8CDEBase, public MiBase1, public GrantUpgradeCreateThird
 {
 public:
-	void rva004B9093();
+	void onBuildComplete();
 private:
 	bool m_granted14;
 };
 
-void SupplyWarehouseCreate::rva004B9093()
+void GrantUpgradeCreate::onBuildComplete()
 {
 	if (!isReady())
 		return;

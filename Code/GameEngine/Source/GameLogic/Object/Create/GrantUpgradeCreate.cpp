@@ -40,22 +40,6 @@
 #include "GameLogic/Module/GrantUpgradeCreate.h"
 #include "GameLogic/Object.h"
 
-// BFME tests ExemptStatus / object status with Generals-style ObjectStatusBits
-// masks (UNDER_CONSTRUCTION = 1<<2), not ZH BitFlags indices.
-enum
-{
-	BFME_OBJECT_STATUS_UNDER_CONSTRUCTION = (1 << 2)
-};
-
-// Retail onCreate materializes 12 bytes from Object::m_status @ +0x90 even though
-// the live BitFlags field is 8 bytes (over-read of the next field).
-struct GrantUpgradeStatusBits12
-{
-	UnsignedInt d0;
-	UnsignedInt d1;
-	UnsignedInt d2;
-};
-
 // LINK-DUP: ??0GrantUpgradeCreateModuleData and
 // ?buildFieldParse@GrantUpgradeCreateModuleData are owned by
 // GrantUpgradeCreateModuleDataCtor.cpp and CreateModuleDataBuildFieldParse.cpp;
@@ -85,79 +69,12 @@ GrantUpgradeCreate::~GrantUpgradeCreate( void )
 }  // end ~GrantUpgradeCreate
 
 //-------------------------------------------------------------------------------------------------
-/** The create callback. */
+// GrantUpgradeCreate::onCreate (retail 0x004B901D) and ::onBuildComplete
+// (0x004B9093) are matched in SupplyWarehouseCreateRva004B901D.cpp and
+// SupplyWarehouseCreateRva004B9093.cpp: slots 0 and 1 of the CreateModuleInterface
+// vftable 0x00859428 that the constructor above stores at +0x10. The unmatched
+// Zero Hour bodies that stood here would define the same symbols a second time.
 //-------------------------------------------------------------------------------------------------
-// ?onCreate@GrantUpgradeCreate@@UAEXXZ
-// ?onCreate@GrantUpgradeCreate@@UAEXXZ present-unmatched
-void GrantUpgradeCreate::onCreate( void )
-{
-	// Evaluate object status first so MSVC 7.1 matches the retail load order.
-	// Retail tests Generals-style mask 0x4 (UNDER_CONSTRUCTION), not ZH BitFlags index 3.
-	// m_exemptStatus is ObjectStatusMaskType in the ZH header; BFME stores/tests it as a
-	// Generals bitmask in the first dword (test byte [moduleData+0xc], 4).
-	GrantUpgradeStatusBits12 currentStatus =
-		*reinterpret_cast<const GrantUpgradeStatusBits12 *>(
-			reinterpret_cast<const char *>( getObject() ) + 0x90 );
-	UnsignedInt exemptStatus =
-		*reinterpret_cast<const UnsignedInt *>(
-			&getGrantUpgradeCreateModuleData()->m_exemptStatus );
-	if( BitTest( exemptStatus, BFME_OBJECT_STATUS_UNDER_CONSTRUCTION ) == TRUE )
-	{
-		if( BitTest( currentStatus.d0, BFME_OBJECT_STATUS_UNDER_CONSTRUCTION ) == FALSE )
-		{
-			const UpgradeTemplate *upgradeTemplate = TheUpgradeCenter->findUpgrade( getGrantUpgradeCreateModuleData()->m_upgradeName );
-			if( !upgradeTemplate )
-			{
-				DEBUG_ASSERTCRASH( 0, ("GrantUpdateCreate for %s can't find upgrade template %s.", getObject()->getName(), getGrantUpgradeCreateModuleData()->m_upgradeName ) );
-				return;
-			}
-
-			if( upgradeTemplate->getUpgradeType() == UPGRADE_TYPE_PLAYER )
-			{
-				// get the player
-				Player *player = getObject()->getControllingPlayer();
-				player->addUpgrade( upgradeTemplate, UPGRADE_STATUS_COMPLETE );
-			}
-			else
-			{
-				getObject()->giveUpgrade( upgradeTemplate );
-			}
-		}
-	}
-
-}  // end onCreate
-
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-// ?onBuildComplete@GrantUpgradeCreate@@UAEXXZ present-unmatched
-void GrantUpgradeCreate::onBuildComplete( void )
-{
-	if( ! shouldDoOnBuildComplete() )
-		return;
-
-// (folded home from CreateModule.cpp, which no longer points here)
-// (?onBuildComplete@CreateModule@@UAEXXZ is claimed from this file now)
-// ?onBuildComplete@CreateModule@@UAEXXZ present-unmatched
-	CreateModule::onBuildComplete(); // extend
-
-	const UpgradeTemplate *upgradeTemplate = TheUpgradeCenter->findUpgrade( getGrantUpgradeCreateModuleData()->m_upgradeName );
-	if( !upgradeTemplate )
-	{
-		DEBUG_ASSERTCRASH( 0, ("GrantUpdateCreate for %s can't find upgrade template %s.", getObject()->getName(), getGrantUpgradeCreateModuleData()->m_upgradeName ) );
-		return;
-	}
-
-	if( upgradeTemplate->getUpgradeType() == UPGRADE_TYPE_PLAYER )
-	{
-		// get the player
-		Player *player = getObject()->getControllingPlayer();
-		player->addUpgrade( upgradeTemplate, UPGRADE_STATUS_COMPLETE );
-	}
-	else
-	{
-		getObject()->giveUpgrade( upgradeTemplate );
-	}
-}  // end onBuildComplete
 
 // ------------------------------------------------------------------------------------------------
 /** CRC */
