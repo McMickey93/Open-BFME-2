@@ -5,6 +5,26 @@
 #include "../../../../../Libraries/Include/Lib/Coord3DInline.h"
 #include "../../../Common/GameLogicObjectLookupView.h"
 #include "BridgeScaffoldXferPrefix.h"
+// ?rva0004583BD@BridgeScaffoldBehavior@@SA?AW4NameKeyType@@XZ @0x4583bd
+// (69B): cached pool-name key for BridgeScaffoldBehavior. The class
+// identity comes from the pool-name string the body pushes
+// ("BridgeScaffoldBehavior"); the body guards a function-local static
+// key fetched once through TheNameKeyGenerator. It is NOT getClassMemoryPool:
+// retail stores nameToKey's return (a key, not a pool pointer) and returns it,
+// and the address carries no getClassMemoryPool row anywhere. /EHsc for the
+// static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
+// from retail, no pins; nameToKey resolves via its matched row).
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+extern NameKeyGenerator *TheNameKeyGenerator;
 
 //
 // ??0BridgeScaffoldBehavior@@QAE@PAVThing@@PBVModuleData@@@Z, retail 0x0045831C,
@@ -51,6 +71,8 @@ public:
 extern GameLogic *TheGameLogic;
 
 void XferScaffoldTargetMotion(Xfer *xfer, int *value);
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeScaffoldBehavior.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeScaffoldBehavior.cpp
 
@@ -281,12 +303,6 @@ BridgeScaffoldBehavior::BridgeScaffoldBehavior(Thing *thing, const ModuleData *m
 	m_verticalSpeed = defaultSpeed;
 }
 
-// tu-skeleton: 0x004583A9 6B ?Rva4583A9Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
-
-// tu-skeleton: 0x004583BD 69B ?rva0004583BD@BridgeScaffoldBehavior@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeScaffoldBehaviorPoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x00458402 32B ??1Rva00458402@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeScaffoldBehaviorUpdate.cpp
 
 // Retail 0x00458422, 534B: BridgeScaffoldBehavior::update, entered through
@@ -472,3 +488,17 @@ void BridgeScaffoldBehavior::xfer(Xfer *xfer)
 	*xfer == m_verticalSpeed;
 	*xfer == *(Coord3DBase *)&m_targetPos;
 }
+
+// tu-skeleton: 0x004583A9 6B ?Rva4583A9Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/BridgeScaffoldBehaviorPoolKey.cpp
+
+// ?rva0004583BD@BridgeScaffoldBehavior@@SA?AW4NameKeyType@@XZ
+NameKeyType BridgeScaffoldBehavior::rva0004583BD()
+{
+	static NameKeyType TheBridgeScaffoldBehaviorPoolKey =
+		TheNameKeyGenerator->nameToKey("BridgeScaffoldBehavior");
+	return TheBridgeScaffoldBehaviorPoolKey;
+}
+
+// tu-skeleton: 0x00458402 32B ??1Rva00458402@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
