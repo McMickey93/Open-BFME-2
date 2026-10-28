@@ -1,0 +1,15 @@
+{
+  "bfme2_base": "45e593a068a79a62afcff66598199f9566849ad9",
+  "code_tree": "c242f6175916c0f4d6648eb685d608237ad2da0f",
+  "function_ledger": "8171a10e01dccfced84e355f42cfa0b0259ee161",
+  "data_rows": "2b9e196c167f9462814980807e16d0793eb60676",
+  "old_reference": "e74410b3738a2bb75d626085d9ebfd3406a43ff7",
+  "selected_official_reference": "7c48cfd16763638cdd7440ecd74466631e977b9f",
+  "changed_paths": 197,
+  "changed_game_sources": 112,
+  "changed_game_headers": 0,
+  "donor_scan_sha256": "27C1D273886CEDC3BE960120C6B321A9B054890E6F1110756FE6DFEF93F98AEC",
+  "old_gate_exit": "0",
+  "donor_scan_exit": "0",
+  "new_gate_exit": 0
+}
