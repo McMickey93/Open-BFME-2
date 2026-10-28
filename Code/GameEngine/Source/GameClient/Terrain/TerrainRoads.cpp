@@ -252,31 +252,6 @@ typedef char TerrainRoadTypeSizeCheck[sizeof(TerrainRoadType) == 0x14C ? 1 : -1]
 
 class TerrainRoadType;
 
-class AsciiElem
-{
-public:
-	~AsciiElem() {}
-private:
-	AsciiString m_text;
-};
-
-class OpaqueRefCounted
-{
-public:
-	void Release_Ref();
-};
-
-class BfmeStringTailRecord156
-{
-public:
-	~BfmeStringTailRecord156();
-private:
-	OpaqueRefCounted *m_ptr;
-};
-
-// "PRISTINE", "DAMAGED", "REALLYDAMAGED", "RUBBLE", NULL (retail 0x00DBCF30)
-extern const char *TheBodyDamageTypeNames[];
-
 // Most of the default bridge's by-value name getters are ICF-folded bodies
 // already rowed under other owners: 0x000DE59C (+0x34), 0x004DC8E7 (+0x3C),
 // 0x002041E1 Script::getConditionTeamName (+0x44), 0x0023E943 GameInfo::getMap
