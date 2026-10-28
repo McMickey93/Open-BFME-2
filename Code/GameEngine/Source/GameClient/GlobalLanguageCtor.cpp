@@ -24,31 +24,36 @@ namespace _STL { template <> void * __malloc_alloc<0>::allocate(unsigned int); }
 namespace _STL { template <> void __malloc_alloc<0>::deallocate(void *, unsigned int); }
 // bfme link decl-only end
 
-struct FontDesc
-{
-	FontDesc();
-
-	AsciiString name;
-	int size;
-	bool bold;
-};
-
 AsciiString GetRegistryLanguage();
 
-// The real list element is the two-string record the rowed destructor names.
-// The constructor never touches an element, so the ledger's already-rowed
-// 8-byte fold spelling stands in for the _List_base ctor call (the same
-// generator trick stlport_pod_map_bodies.cpp documents).
-struct BfmePod8
+struct FontDesc
 {
-	int words[2];
+public:
+	FontDesc();
+	AsciiString name; // +0x00
+	int size; // +0x04
+	bool bold; // +0x08
+	char m_pad09[0x3];
 };
 
+struct Rva001EA443
+{
+	AsciiString m_text0;
+	AsciiString m_text1;
+	Rva001EA443();
+	Rva001EA443(const Rva001EA443 &);
+	~Rva001EA443();
+};
+
+// Retail base vtable BD77A0 and destructor 1B4E74 prove the canonical 12-byte subsystem base.
 class GlobalLanguage : public SubsystemInterface
 {
 public:
 	GlobalLanguage();
 	virtual ~GlobalLanguage();
+	virtual void init();
+	int adjustFontSize(int theFontSize);
+	static void parseFontDesc(class INI *ini, void *instance, void *store, const void *userData);
 
 private:
 	AsciiString m_s00C;
@@ -82,7 +87,7 @@ private:
 	FontDesc m_f11C;
 	FontDesc m_f128;
 	float m_res134;
-	_STL::list<BfmePod8, _STL::allocator<BfmePod8> > m_list138;
+	_STL::list<Rva001EA443> localFonts;
 };
 
 GlobalLanguage::GlobalLanguage()

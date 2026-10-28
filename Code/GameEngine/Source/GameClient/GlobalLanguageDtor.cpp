@@ -18,48 +18,47 @@ namespace _STL { template <> void __malloc_alloc<0>::deallocate(void *, size_t);
 #include "ascii_string.h"
 
 
+typedef bool Bool;
+#include "subsystem_interface.h"
+
 struct FontDesc
 {
-	AsciiString name;
-	int size;
-	bool bold;
+public:
+	FontDesc();
+	AsciiString name; // +0x00
+	int size; // +0x04
+	bool bold; // +0x08
+	char m_pad09[0x3];
 };
 
 struct Rva001EA443
 {
-	StringBase<char> m_text0;
-	StringBase<char> m_text1;
+	AsciiString m_text0;
+	AsciiString m_text1;
 	Rva001EA443();
 	Rva001EA443(const Rva001EA443 &);
 	~Rva001EA443();
 };
 
-inline bool operator==(const Rva001EA443 &x, const Rva001EA443 &y) { return false; }
-inline bool operator<(const Rva001EA443 &x, const Rva001EA443 &y) { return false; }
-
-
-// Preserve retail's inline node/buffer free; the public allocator is supplied by its verified owner.
-namespace _STL {
-#pragma optimize("gsy", on)
-template <> __forceinline void allocator<_List_node< ::Rva001EA443 > >::deallocate(_List_node< ::Rva001EA443 > *p, size_t) const { if (p != 0) free(p); }
-#pragma optimize("", on)
-}
-
 // Retail base vtable BD77A0 and destructor 1B4E74 prove the canonical 12-byte subsystem base.
-typedef bool Bool;
-#include "subsystem_interface.h"
-
 class GlobalLanguage : public SubsystemInterface
 {
 public:
+	GlobalLanguage();
 	virtual ~GlobalLanguage();
+	virtual void init();
+	int adjustFontSize(int theFontSize);
+	static void parseFontDesc(class INI *ini, void *instance, void *store, const void *userData);
+
 private:
 	AsciiString m_s00C;
 	AsciiString m_s010;
 	AsciiString m_s014;
 	AsciiString m_s018;
 	AsciiString m_s01C;
-	FontDesc m_f020;
+	AsciiString m_language;
+	bool m_useHardWrap;
+	int m_militaryCaptionSpeed;
 	FontDesc m_f02C;
 	FontDesc m_f038;
 	FontDesc m_f044;
@@ -83,8 +82,19 @@ private:
 	FontDesc m_f11C;
 	FontDesc m_f128;
 	float m_res134;
-	_STL::list<Rva001EA443, _STL::allocator<Rva001EA443> > m_list138;
+	_STL::list<Rva001EA443> localFonts;
 };
+
+inline bool operator==(const Rva001EA443 &x, const Rva001EA443 &y) { return false; }
+inline bool operator<(const Rva001EA443 &x, const Rva001EA443 &y) { return false; }
+
+
+// Preserve retail's inline node/buffer free; the public allocator is supplied by its verified owner.
+namespace _STL {
+#pragma optimize("gsy", on)
+template <> __forceinline void allocator<_List_node< ::Rva001EA443 > >::deallocate(_List_node< ::Rva001EA443 > *p, size_t) const { if (p != 0) free(p); }
+#pragma optimize("", on)
+}
 
 GlobalLanguage::~GlobalLanguage() {}
 void famgenDeleteGlobalLanguage(GlobalLanguage *globalLanguage) { delete globalLanguage; }

@@ -57,7 +57,72 @@ class FileSystem{public:File *openFile(const char*,int,int=0);};
 
 extern FileSystem *TheFileSystem;
 
-struct Rva001EA443{AsciiString m_text0,m_text1;};
+typedef bool Bool;
+#include "subsystem_interface.h"
+
+struct FontDesc
+{
+public:
+	FontDesc();
+	AsciiString name; // +0x00
+	int size; // +0x04
+	bool bold; // +0x08
+	char m_pad09[0x3];
+};
+
+struct Rva001EA443
+{
+	AsciiString m_text0;
+	AsciiString m_text1;
+	Rva001EA443();
+	Rva001EA443(const Rva001EA443 &);
+	~Rva001EA443();
+};
+
+// Retail base vtable BD77A0 and destructor 1B4E74 prove the canonical 12-byte subsystem base.
+class GlobalLanguage : public SubsystemInterface
+{
+public:
+	GlobalLanguage();
+	virtual ~GlobalLanguage();
+	virtual void init();
+	int adjustFontSize(int theFontSize);
+	static void parseFontDesc(class INI *ini, void *instance, void *store, const void *userData);
+
+private:
+	AsciiString m_s00C;
+	AsciiString m_s010;
+	AsciiString m_s014;
+	AsciiString m_s018;
+	AsciiString m_s01C;
+	AsciiString m_language;
+	bool m_useHardWrap;
+	int m_militaryCaptionSpeed;
+	FontDesc m_f02C;
+	FontDesc m_f038;
+	FontDesc m_f044;
+	FontDesc m_f050;
+	FontDesc m_f05C;
+	FontDesc m_f068;
+	FontDesc m_f074;
+	FontDesc m_f080;
+	FontDesc m_f08C;
+	FontDesc m_f098;
+	FontDesc m_f0A4;
+	FontDesc m_f0B0;
+	FontDesc m_f0BC;
+	FontDesc m_f0C8;
+	FontDesc m_f0D4;
+	FontDesc m_f0E0;
+	FontDesc m_f0EC;
+	FontDesc m_f0F8;
+	FontDesc m_f104;
+	FontDesc m_f110;
+	FontDesc m_f11C;
+	FontDesc m_f128;
+	float m_res134;
+	_STL::list<Rva001EA443> localFonts;
+};
 
 namespace _STL{template<class T,class Traits>static inline bool operator!=(const _List_iterator<T,Traits>&a,const _List_iterator<T,Traits>&b){return a._M_node!=b._M_node;}}
 
@@ -88,18 +153,6 @@ public:
 
 extern class GlobalData *TheWritableGlobalData;
 
-class GlobalLanguage{
-public:
-	virtual void init();
-private:
-	char unknown04[0x138-4];
-private:
-	_STL::list<Rva001EA443> localFonts;
-public:
-	Int adjustFontSize(Int theFontSize);
-public:
-	static void parseFontDesc(class INI *ini, void *instance, void *store, const void *userData);
-};
 
 // INI::parseLanguageDefinition, retail 0x001EA3F4 (25 bytes): the "Language"
 // block parser (registration VA 0x00DB8F98 binds the token to 0x001EA3F4,
@@ -148,7 +201,7 @@ struct Rva001EAD69Owner;
 
 void parseStringEntryRva001EAD69(INI *ini, Rva001EAD69Owner *owner);
 
-extern class GlobalLanguage *TheGlobalLanguageData;
+extern GlobalLanguage *TheGlobalLanguageData;
 
 // Retail's language field table at VA 0x00BDEAA0 (.rdata, 512 bytes: 31
 // records and the zero sentinel), transcribed from retail's own bytes; the
