@@ -218,45 +218,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class CaveContain : public OpenContain
-{
-public:
-	virtual void onContaining(Object *, Bool);
-	virtual void removeFromContain(Object *obj, Bool exposeStealthUnits);
-	virtual void removeAllContained(Bool exposeStealthUnits);
-	virtual void iterateContained(void (*callback)(Object*,void*), void *data, unsigned int flags);
-	// Implemented for the CaveInterface subobject at complete-object +0xFC.
-	virtual void tryToSetCaveIndex(int newIndex);
-	// Implemented for the one-entry die interface at complete-object +0x28.
-	virtual void onDie(const DamageInfo *damageInfo);
-	virtual void addToContainList(Object *obj);
-	virtual Bool isValidContainerFor(Object *obj, Bool checkCapacity, Bool testPath);
-	virtual int rva00466504(BfmeTab1026 *tab);
-	virtual int getContainMax() const;
-	virtual Rva0036AE51ListView rva00466534();
-	// Implemented for the lifecycle interface at complete-object +0x34.
-	// Their bodies use that interface's explicit receiver view.
-	virtual void onCreate();
-	virtual void onBuildComplete();
-
-	Object *getObject() const
-	{
-		return *reinterpret_cast<Object *const *>(
-			reinterpret_cast<const char *>(this) - 0x18);
-	}
-	Object *getDieObject() const
-	{
-		return *reinterpret_cast<Object *const *>(
-			reinterpret_cast<const char *>(this) - 0x20);
-	}
-
-private:
-	unsigned char m_pad[0xE0];
-	int m_caveIndex;
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 template <> void _STL::_List_base<Rva0036ADF9Element, _STL::allocator<Rva0036ADF9Element> >::clear();
 
 template <> _STL::_List_base<Rva0036ADF9Element, _STL::allocator<Rva0036ADF9Element> >::~_List_base();
@@ -317,9 +278,64 @@ public:
 
 CaveSystem *TheCaveSystem;
 
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class CaveContain : public OpenContain
+{
+public:
+	virtual void onContaining(Object *, Bool);
+	virtual void removeFromContain(Object *obj, Bool exposeStealthUnits);
+	virtual void removeAllContained(Bool exposeStealthUnits);
+	virtual void iterateContained(void (*callback)(Object*,void*), void *data, unsigned int flags);
+	// Implemented for the CaveInterface subobject at complete-object +0xFC.
+	virtual void tryToSetCaveIndex(int newIndex);
+	// Implemented for the one-entry die interface at complete-object +0x28.
+	virtual void onDie(const DamageInfo *damageInfo);
+	virtual void addToContainList(Object *obj);
+	virtual Bool isValidContainerFor(Object *obj, Bool checkCapacity, Bool testPath);
+	virtual int rva00466504(BfmeTab1026 *tab);
+	virtual int getContainMax() const;
+	virtual Rva0036AE51ListView rva00466534();
+	// Implemented for the lifecycle interface at complete-object +0x34.
+	// Their bodies use that interface's explicit receiver view.
+	virtual void onCreate();
+	virtual void onBuildComplete();
+
+	Object *getObject() const
+	{
+		return *reinterpret_cast<Object *const *>(
+			reinterpret_cast<const char *>(this) - 0x18);
+	}
+	Object *getDieObject() const
+	{
+		return *reinterpret_cast<Object *const *>(
+			reinterpret_cast<const char *>(this) - 0x20);
+	}
+
+private:
+	unsigned char m_pad[0xE0];
+	int m_caveIndex;
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
 // tu-skeleton: 0x004663B2 77B ??1CaveContain@@MAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x004663FF 69B ?getModuleNameKey@CaveContain@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainPoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainPoolKey.cpp
+
+// ?getModuleNameKey@CaveContain@@UBE?AW4NameKeyType@@XZ
+NameKeyType CaveContain::getModuleNameKey() const
+{
+	static NameKeyType TheCaveContainPoolKey =
+		TheNameKeyGenerator->nameToKey("CaveContain");
+	return TheCaveContainPoolKey;
+}
 
 // tu-skeleton: 0x00466444 6B ?name@CaveContain@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 
@@ -328,6 +344,8 @@ CaveSystem *TheCaveSystem;
 // tu-skeleton: 0x00466457 16B ?rva00466457@Rva00466457@@UAEPAVRva00466457Base3@@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesS3B.cpp (not merged yet)
 
 // tu-skeleton: 0x00466467 7B ?get@Rva00466467ByteField@@QBEEXZ -- matched in Code/GameEngine/Source/Common/DispByteFieldGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Contain/CaveContain.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Contain/CaveContain.cpp
 
@@ -497,12 +515,6 @@ int Rva00466557Anchor(Rva00466557Object *object)
 	return Rva00466557(object);
 }
 
-// tu-skeleton: 0x00466577 185B ?xfer@CaveContain@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x00466630 125B ??0CaveContain@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004666AD 28B ??_GCaveContain@@MAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainDtor.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainOnBuildComplete.cpp
 
 // ?onCreate@CaveContain@@UAEXXZ
@@ -528,6 +540,12 @@ void CaveContain::onBuildComplete()
 	Rva004F56FC *myTracker = (Rva004F56FC *)TheCaveSystem->getTunnelTrackerForCaveIndex((unsigned int)view->m_caveIndex);
 	myTracker->rva004F56FC(*reinterpret_cast<Object **>((char *)this - 0x2C));
 }
+
+// tu-skeleton: 0x00466577 185B ?xfer@CaveContain@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainXfer.cpp (not merged yet)
+
+// tu-skeleton: 0x00466630 125B ??0CaveContain@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004666AD 28B ??_GCaveContain@@MAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x00466848 148B ?rva00466848@CaveContain@@QAEXPAVTeam@@_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/CaveContainOnRemoving.cpp (not merged yet)
 
