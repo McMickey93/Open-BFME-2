@@ -5056,7 +5056,7 @@ _Rva008143A0,,0x006802A0,38,Code/Libraries/Source/DirtySock/Y4CommTickIdle.c,mat
 ?set@Rva00193660@@QAEAAV1@PBURva00193660Src@@@Z,,0x0032A304,58,Code/GameEngine/Source/Common/Rva00193660Set.cpp,matched,
 ?orderPairs@Rva00477DF0@@QAEXXZ,,0x0031394A,33,Code/GameEngine/Source/Common/Bfme/Rva00477DF0OrderPairs.cpp,matched,
 _DeletePostProcInstance,,0x001B68D0,36,Code/Libraries/Source/VP6/PostProcInstance.cpp,matched,Clean-room spec 001b68d0; DeletePostProcInstance: cdecl deleting the post-processor instance buffers then freeing it and nulling the caller pointer; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001b68d0.md and retail only
-?bfmeGetBZA@BfmeThingBZA@@QAEPAVBfmeCacheBZA@@XZ,,0x00656E60,36,Code/GameEngine/Source/Common/BfmeConv556.cpp,matched,
+?bfmeGetBZA@BfmeThingBZA@@QAEPAVBfmeCacheBZA@@XZ,,0x00656E60,36,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,
 ?bfmeGoBZD@BfmeThingBZD@@QAEXPBDH@Z,,0x00667200,36,Code/GameEngine/Source/Common/BfmeConv559.cpp,matched,
 ?bfmeGoCEB@BfmeThingCEB@@QAEXPBDH@Z,,0x00667230,39,Code/GameEngine/Source/Common/BfmeConv585.cpp,matched,
 ?Update@CollisionManagerImpl@@QAEXXZ,,0x0075A490,41,Code/GameEngine/Source/Common/CollisionManagerImpl_Update.cpp,matched,
@@ -8943,8 +8943,8 @@ _FilterBlock2dBil_wmt,,0x001D7A40,192,Code/Libraries/Source/VP6/FilterBlock2dBil
 ?bfmeCombine1236@@YAXPAUBfmeTransform1236@@00@Z,,0x006F6840,188,Code/GameEngine/Source/Common/BfmeCombine1236.cpp,matched,BFME1 byte-identical donor; b1 0x008BCED0
 _FilterUnpackBlock2dBil_wmt,,0x001D7B00,188,Code/Libraries/Source/VP6/FilterUnpackBlock2dBilWmt.cpp,matched,Clean-room spec 001d7b00; FilterUnpackBlock2dBil_wmt: cdecl clean-room reimplementation of FilterUnpackBlock2dBil_wmt per the spec; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001d7b00.md and retail only
 _dequant_slow10,,0x001D65A0,182,Code/Libraries/Source/VP6/Dequant.cpp,matched,Clean-room spec 001d65a0; dequant_slow10: cdecl zero-filling the first 32 output entries then storing the first eleven coefficient products at their zig-zag raster positions; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001d65a0.md and retail only
-?bind@Rva007EA320Owner@@QAEXPAX0@Z,,0x006572D0,89,Code/GameEngine/Source/GameNetwork/Rva007EA320Bind.cpp,matched,BFME1 byte-identical donor; b1 0x007EA320
-?bind@Rva007EA380Owner@@QAEXPAX0@Z,,0x00657330,89,Code/GameEngine/Source/GameNetwork/Rva007EA320Bind.cpp,matched,BFME1 byte-identical donor; b1 0x007EA380
+?bind@Rva007EA320Owner@@QAEXPAX0@Z,,0x006572D0,89,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007EA320
+?bind@Rva007EA380Owner@@QAEXPAX0@Z,,0x00657330,89,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007EA380
 _VP6_PredictFiltered,,0x001D8DD0,170,Code/Libraries/Source/VP6/PredictFiltered.cpp,matched,Clean-room spec 001d8dd0; VP6_PredictFiltered: builds the loop-filtered 12x12 prediction neighbourhood through the dispatch function pointers; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001d8dd0.md and retail only
 ?bfmeInitVCB@BfmeThingVCB@@QAEXPAUBfmeSrcVCB@@H@Z,,0x0066E9D0,82,Code/GameEngine/Source/Common/BfmeConv1349.cpp,matched,BFME1 byte-identical donor; b1 0x00802810
 ?bfmeGoVCC@@YGXPAUBfmeThingVCC@@@Z,,0x00666030,79,Code/GameEngine/Source/Common/BfmeConv1349.cpp,matched,BFME1 byte-identical donor; b1 0x007F9AC0
@@ -8964,7 +8964,7 @@ _ReadHeaderBits,,0x001BCFC0,129,Code/Libraries/Source/VP6/ReadHeaderBits.cpp,mat
 ?parseGeometryOffset@GeometryInfo@@SAXPAVINI@@PAX1PBX@Z,,0x006BD610,64,Code/GameEngine/Source/Common/System/GeometryParseActiveAndOffset.cpp,matched,BFME1 byte-identical donor; b1 0x0087DE50
 _FilterBlock1d_vb8_mmx,,0x001D7080,125,Code/Libraries/Source/VP6/FilterBlock1dMmx.cpp,matched,Clean-room spec 001d7080; FilterBlock1d_vb8_mmx: MMX vertical two-tap filter packing eight bytes per row; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001d7080.md and retail only
 ?bfmeCalcBWF@BfmeCalcBWF@@QAE_NPAVBfmeRetBWF@@M0@Z,,0x006BD900,120,Code/GameEngine/Source/Common/BfmeCalcBWF.cpp,matched,BFME1 byte-identical donor; b1 0x0087E0D0
-?notify@Rva007EA0A0Owner@@QAEXPAX@Z,,0x00657050,118,Code/GameEngine/Source/GameNetwork/Rva007EA0A0Notify.cpp,matched,BFME1 byte-identical donor; b1 0x007EA0A0
+?notify@Rva007EA0A0Owner@@QAEXPAX@Z,,0x00657050,118,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007EA0A0
 ??0Rva007FA990@@QAE@PAX@Z,,0x00666EC0,117,Code/GameEngine/Source/GameNetwork/Rva007FA990Ctor.cpp,matched,BFME1 byte-identical donor; b1 0x007FA990
 _VP6_BuildHuffLookupTable,,0x001C6BA0,116,Code/Libraries/Source/VP6/HuffLookup.cpp,matched,Clean-room spec 001c6ba0; VP6_BuildHuffLookupTable: expands a Huffman tree into 64 six-bit prefix lookup entries; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001c6ba0.md and retail only
 _VP6_DecodeBool,,0x001C4F00,114,Code/Libraries/Source/VP6/DecodeBool.cpp,matched,Clean-room spec 001c4f00; VP6_DecodeBool: decodes one bool-coder symbol with renormalisation and byte refill; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001c4f00.md and retail only
@@ -9084,14 +9084,14 @@ _LastVerticalBand_1_2_Scale_C,,0x001BA3A0,28,Code/Libraries/Source/VP6/CopyHelpe
 ?isReady@Rva007F57C0ThresholdPredicate@@QBEHXZ,,0x00661F70,22,Code/GameEngine/Source/Common/Rva007F57C0ThresholdPredicate.cpp,matched,BFME1 byte-identical donor; b1 0x007F57C0
 ?set@Rva0026E4A0@@QAEAAV1@PAV1@@Z,,0x00262161,21,Code/GameEngine/Source/Common/Rva0026E4A0Set.cpp,matched,BFME1 byte-identical donor; b1 0x0026E4A0
 ?assign@Rva00427A70@@QAEPAXPAPAX@Z,,0x005E7184,20,Code/GameEngine/Source/Common/Bfme/Rva00427A70_assign.cpp,matched,BFME1 byte-identical donor; b1 0x00427A70
-?get@Rva007E9CE0@@QAEPAURva007E9CE0Cached@@XZ,,0x00656C90,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9CE0
-?get@Rva007E9D70@@QAEPAURva007E9D70Cached@@XZ,,0x00656D20,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9D70
-?get@Rva007E9DB0@@QAEPAURva007E9DB0Cached@@XZ,,0x00656D60,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9DB0
-?get@Rva007E9DF0@@QAEPAURva007E9DF0Cached@@XZ,,0x00656DA0,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9DF0
-?get@Rva007E9E30@@QAEPAURva007E9E30Cached@@XZ,,0x00656DE0,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9E30
-?get@Rva007E9E70@@QAEPAURva007E9E70Cached@@XZ,,0x00656E20,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9E70
-?get@Rva007E9EF0@@QAEPAURva007E9EF0Cached@@XZ,,0x00656EA0,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9EF0
-?get@Rva007E9F30@@QAEPAURva007E9F30Cached@@XZ,,0x00656EE0,56,Code/GameEngine/Source/Common/Q3LazyCachedAccessor.cpp,matched,BFME1 byte-identical donor; b1 0x007E9F30
+?get@Rva007E9CE0@@QAEPAURva007E9CE0Cached@@XZ,,0x00656C90,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9CE0
+?get@Rva007E9D70@@QAEPAURva007E9D70Cached@@XZ,,0x00656D20,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9D70
+?get@Rva007E9DB0@@QAEPAURva007E9DB0Cached@@XZ,,0x00656D60,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9DB0
+?get@Rva007E9DF0@@QAEPAURva007E9DF0Cached@@XZ,,0x00656DA0,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9DF0
+?get@Rva007E9E30@@QAEPAURva007E9E30Cached@@XZ,,0x00656DE0,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9E30
+?get@Rva007E9E70@@QAEPAURva007E9E70Cached@@XZ,,0x00656E20,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9E70
+?get@Rva007E9EF0@@QAEPAURva007E9EF0Cached@@XZ,,0x00656EA0,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9EF0
+?get@Rva007E9F30@@QAEPAURva007E9F30Cached@@XZ,,0x00656EE0,56,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9F30
 ?SeedNextCommandIDFromPlayerCount@@YAXG@Z,,0x00581194,20,Code/GameEngine/Source/GameNetwork/SeedNextCommandIDFromPlayerCount.cpp,matched,BFME1 donor b1 0x00682CF0; global VA differs (BFME2 0x00DD2DB4 per neighbor GenerateNextCommandID at 0x5811A8)
 ?calcDotProduct@@YAMABUCoord3D@@0@Z,,0x006BD370,21,Code/GameEngine/Source/Common/System/GeometryPointLineDistSquared.cpp,matched,BFME1 byte-identical donor; b1 0x0087DAF0
 ?calcDistSquared@@YAMABUCoord3D@@0@Z,,0x006BD650,39,Code/GameEngine/Source/Common/System/GeometryPointLineDistSquared.cpp,matched,BFME1 byte-identical donor; b1 0x0087DE90
@@ -9141,7 +9141,7 @@ _VP6_DeleteFrameInfo,,0x001B92D0,129,Code/Libraries/Source/VP6/DeleteFrameInfo.c
 ??0ServiceHubImpl@@QAE@PAX00000@Z,,0x00657DD0,780,Code/GameEngine/Source/GameNetwork/ServiceHubImpl_ctor.cpp,matched,BFME1 byte-identical donor; b1 0x007EAE30; 18 DIR32 string literal(s) agree
 ?copyName@@YGXPAURva00808C20Entry@@PBU1@@Z,,0x00674B70,44,Code/GameEngine/Source/Common/SmallGaps/copyName.cpp,matched,BFME1 byte-identical donor; b1 0x00808C20
 ?bfmeGoBLF@BfmeThingBLF@@QAEXPAX@Z,,0x00674B40,25,Code/GameEngine/Source/Common/BfmeConv487.cpp,matched,BFME1 byte-identical donor; b1 0x00808BF0
-?m@T_007ea120@@QAEXXZ,,0x006570D0,458,Code/GameEngine/Source/GameNetwork/Rva007EA120Teardown.cpp,matched,BFME1 byte-identical donor; b1 0x007EA120
+?m@T_007ea120@@QAEXXZ,,0x006570D0,458,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007EA120
 ?Lock@?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAEJXZ,,0x00628C56,19,Code/Libraries/Source/ATL/atlcomcritseclock.cpp,matched,vendored=atl-7.1;atlbase.h verbatim;was ?bfmeLockDWD@BfmeThingDWD@@QAEHXZ from a BFME1 donor
 ?Unlock@?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAEXXZ,,0x00628CAD,17,Code/Libraries/Source/ATL/atlcomcritseclock.cpp,matched,vendored=atl-7.1;atlbase.h verbatim;was ?bfmeUnlockDWD@BfmeThingDWD@@QAEXXZ from a BFME1 donor
 ?Notify_Added@LightClass@@UAEXPAVSceneClass@@@Z,,0x00130F00,29,Code/Libraries/Source/WWVegas/WW3D2/light_notify.cpp,matched,BFME1 byte-identical donor b1 0x0093BE20
@@ -9356,11 +9356,11 @@ _CreatePostProcInstance,,0x001B6890,63,Code/Libraries/Source/VP6/PostProcInstanc
 ?bfmeFindAEA@BfmeThingAEA@@QAE_NPAUBfmeKeyAEA@@PAX@Z,,0x0066ECA0,60,Code/GameEngine/Source/Common/BfmeThreeHundredEightyFour.cpp,matched,BFME1 byte-identical donor; b1 0x00802B70
 ?d_00889dd0@Rva00889DD0Class@@QAEXH@Z,,0x00038EA0,55,Code/GameEngine/Source/Common/Bfme/Rva00889DD0.cpp,matched,BFME1 byte-identical donor; b1 0x00889DD0
 ?lookup2A8@Rva00801340Owner@@QAEPAXPBD@Z,,0x0066D690,51,Code/GameEngine/Source/GameNetwork/Rva00801340FeslLookup.cpp,matched,BFME1 byte-identical donor; b1 0x00801340
-?bfmeRunRE@BfmeThingRE@@QAEXXZ,,0x006574A0,44,Code/GameEngine/Source/Common/BfmeThreeHundredTwelve.cpp,matched,BFME1 byte-identical donor; b1 0x007EA4F0
+?bfmeRunRE@BfmeThingRE@@QAEXXZ,,0x006574A0,44,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007EA4F0
 ?clear@Rva00803080@@QAEXXZ,,0x0066F040,79,Code/GameEngine/Source/GameNetwork/Rva00802FD0FeslClear.cpp,matched,BFME1 byte-identical donor; b1 0x00802FD0
 ?rva00802240@Rva00802380Owner@@UAEPAXPBD@Z,,0x0066E4D0,44,Code/GameEngine/Source/GameNetwork/Rva00802240FeslLookup.cpp,matched,BFME1 byte-identical donor; b1 0x00802240; spelled virtual: slot 4 of vftable 0x00CE3D14 that the class's own constructor and destructor install at +0; retail never calls it directly; the view takes the vptr at +0
 ?bfmeRunRG@BfmeThingRG@@QAEXXZ,,0x006574D0,44,Code/GameEngine/Source/Common/BfmeThreeHundredThirteen.cpp,matched,BFME1 byte-identical donor; b1 0x007EA520
-?bfmeGoBCE@BfmeThingBCE@@QAEXXZ,,0x00656E90,16,Code/GameEngine/Source/Common/BfmeConv441.cpp,matched,BFME1 byte-identical donor; b1 0x007E9EE0
+?bfmeGoBCE@BfmeThingBCE@@QAEXXZ,,0x00656E90,16,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9EE0
 ?bfmeFillCount82DD70@@YAPADPADIABD@Z,,0x00026BD0,42,Code/GameEngine/Source/Common/BfmeFillCount82DD70.cpp,matched,BFME1 byte-identical donor; b1 0x0082DD70; callee rva0082ADB0Fill pre-pinned at 0x000237C0; sweep dup pin stale
 ?initPool@Rva00803080@@QAEXXZ,,0x0066F120,71,Code/GameEngine/Source/GameNetwork/Rva008030C0FeslPoolInit.cpp,matched,BFME1 byte-identical donor; b1 0x008030C0
 ??0_ATL_BASE_MODULE70@ATL@@QAE@XZ,,0x00628CFE,26,Code/Libraries/Source/ATL/atlbasemodule.cpp,matched,vendored=atl-7.1;compiler-generated ctor of atlcore.h _ATL_BASE_MODULE70;atls.lib COMDAT places uniquely;was ??0Rva009F69B1@@QAE@XZ from a BFME1 donor
@@ -9900,13 +9900,13 @@ _luaK_jump,,0x00752690,166,Code/Libraries/Source/Lua/lcode.c,matched,BFME1 byte-
 ?str@Rva003879F0Str@@QAEPBDXZ,,0x0023E984,17,Code/GameEngine/Source/Common/Rva007BBDB0Str.cpp,matched,BFME1 byte-identical donor; b1 0x003879F0
 ?str@Rva007BBDD0Str@@QAEPBDXZ,,0x000F1ED3,17,Code/GameEngine/Source/Common/Rva007BBDB0Str.cpp,matched,BFME1 byte-identical donor; b1 0x007BBDD0
 ?bfmeTakeEC@BfmeThingEC@@QAEHPAH@Z,,0x006021A4,38,Code/GameEngine/Source/Common/System/MemoryReadFile.cpp,matched,BFME1 byte-identical donor; b1 0x009CB1F0
-?bfmeGo1037H@BfmeH1037@@QAEXXZ,,0x00656BC0,34,Code/GameEngine/Source/Common/BfmeConv1037.cpp,matched,BFME1 donor with WaitForSingleObject import repair; 1 DIR32 string agrees; b1 0x007E9BD0
+?bfmeGo1037H@BfmeH1037@@QAEXXZ,,0x00656BC0,34,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 donor with WaitForSingleObject import repair; 1 DIR32 string agrees; b1 0x007E9BD0
 ?bfmeGo1015L@BfmeL1015@@QAEXXZ,,0x00674830,50,Code/GameEngine/Source/Common/BfmeConv1015.cpp,matched,BFME1 byte-identical donor; b1 0x00808800
 ?allows@Rva000421C8@@QAE_NPAVObject@@@Z,,0x00625720,49,Code/GameEngine/Source/Common/BfmeOneHundredNinetyThree.cpp,matched,BFME1 byte-identical donor; b1 0x009F2A70
 ?bfmeFind@Gen_00800880@@QAEPAVBfmeSlotFB@@PAX@Z,,0x0066CC60,49,Code/GameEngine/Source/Common/Bfme5SeventyFive.cpp,matched,BFME1 byte-identical donor; b1 0x00800880
 ?bfmeInitVJT@BfmeThingVJT@@QAEPAV1@PAVBfmeMsgVJT@@@Z,,0x0065F090,49,Code/GameEngine/Source/Common/BfmeConv1394.cpp,matched,BFME1 byte-identical donor; b1 0x007F25A0
 ?bfmeSwap@Gen_003390D0@@QAEXPAV1@@Z,,0x00203EDC,33,Code/GameEngine/Source/Common/Bfme5TinyTwentyFive.cpp,matched,BFME1 byte-identical donor; b1 0x003390D0
-?bfmeGo1038D@BfmeD1038@@QAEXXZ,,0x00656BF0,32,Code/GameEngine/Source/Common/BfmeConv1038.cpp,matched,BFME1 donor with ReleaseMutex import repair; 1 DIR32 string agrees; b1 0x007E9C00
+?bfmeGo1038D@BfmeD1038@@QAEXXZ,,0x00656BF0,32,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 donor with ReleaseMutex import repair; 1 DIR32 string agrees; b1 0x007E9C00
 ?bfmeTellIO@BfmeThingIO@@QAEXPAX@Z,,0x0001BC20,44,Code/GameEngine/Source/Common/BfmeTwoHundredThirteen.cpp,matched,BFME1 byte-identical donor; b1 0x0083E8C0
 ?bfmeGo929B@BfmeThing929B@@QAEXPAX0@Z,,0x0065CE70,29,Code/GameEngine/Source/Common/BfmeConv929.cpp,matched,BFME1 byte-identical donor; b1 0x007EFF80
 ?bfmeFind@Gen_007F7110@@QBEPAVBfmeSlotDV@@PAX@Z,,0x00663800,36,Code/GameEngine/Source/Common/Bfme5FiftyTwo.cpp,matched,BFME1 byte-identical donor; b1 0x007F7110
@@ -12150,8 +12150,8 @@ _VP6_DeletePBInstance,,0x001B56A0,66,Code/Libraries/Source/VP6/PbInstanceTeardow
 ?bfmeGoBVG@BfmeThingBVG@@QAEHXZ,,0x004C0F92,35,Code/GameEngine/Source/Common/BfmeConv540.cpp,matched,BFME1 donor verbatim; head 0xD0 to 0xF0 per retail; ask pin 0x4C0D4F; tail jmp slot 17
 ?bfmeGoSA@BfmeHostSA@@QAEXPAVBfmeThingSA@@@Z,,0x0066F7E0,55,Code/GameEngine/Source/Common/BfmeConv1287.cpp,matched,BFME1 byte-identical donor; b1 0x008037A0; callee tiebreak over 0x0066F820 via unique bfmeUseSA sink
 ??0?$pair@$$CBVUnicodeString@@_N@_STL@@QAE@ABU01@@Z,,0x00387D03,27,Code/GameEngine/Source/GameClient/LanguageFilter.cpp,matched,callee tiebreak over pair AsciiString-char at 0x5117F6 which calls the narrow copy ctor
-?bfmeGoVJA@@YGXPAVBfmeMsgVJA@@PAXPAPAXHH@Z,,0x006565F0,174,Code/GameEngine/Source/Common/BfmeConv1381.cpp,matched,BFME1 byte-identical donor; b1 0x007E9600; ambiguous tiebreak: VJA-first order + 0x90 global spacing in both images
-?bfmeGoVJB@@YGXPAVBfmeMsgVJA@@PAXPAPAXHH@Z,,0x006566A0,174,Code/GameEngine/Source/Common/BfmeConv1381.cpp,matched,BFME1 byte-identical donor; b1 0x007E96B0; ambiguous tiebreak: VJB-second order + 0x90 global spacing in both images
+?bfmeGoVJA@@YGXPAVBfmeMsgVJA@@PAXPAPAXHH@Z,,0x006565F0,174,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9600; ambiguous tiebreak: VJA-first order + 0x90 global spacing in both images
+?bfmeGoVJB@@YGXPAVBfmeMsgVJA@@PAXPAPAXHH@Z,,0x006566A0,174,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E96B0; ambiguous tiebreak: VJB-second order + 0x90 global spacing in both images
 ?bfmeGoDHA@BfmeThingDHA@@QAEHXZ,,0x004C0E24,34,Code/GameEngine/Source/Common/BfmeConv698.cpp,matched,BFME1 donor verbatim; head 0xD0 to 0xF0 per retail; ask pin 0x4C0D4F; tail jmp slot 29
 ?bfmeGoDHB@BfmeThingDHB@@QAEHXZ,,0x004C0E46,34,Code/GameEngine/Source/Common/BfmeConv699.cpp,matched,BFME1 donor verbatim; head 0xD0 to 0xF0 per retail; ask pin 0x4C0D4F; tail jmp slot 15
 ?bfmeGoSB@BfmeHostSB@@QAEXPAVBfmeThingSB@@@Z,,0x0066F820,55,Code/GameEngine/Source/Common/BfmeConv1287.cpp,matched,BFME1 byte-identical donor; b1 0x008037E0; callee tiebreak over 0x0066F7E0 via 0x00675D00 sink; UseSB ICF-twinned with rowed bfmeGoSKA in b1
@@ -23374,7 +23374,7 @@ _ScaleFrame,,0x001BA7D0,865,Code/Libraries/Source/VP6/ScaleFrame.cpp,matched,Cle
 ?request@Rva007F7AE0Owner@@QAEXHHHHHHHHPB_JIPAPBDI@Z,,0x00664160,279,Code/GameEngine/Source/GameNetwork/Rva007F7AE0LobbyListRequest.cpp,matched,Clean Open-BFME-1 donor transfer from cd32c8ef06dfb0d995b2f47e93e41622e4447092; donor at 0x007F7AE0 has a unique BFME2 placement at 0x00664160 for 279 bytes; existing callees resolve; donor name and layout remain donor facts pending independent target evidence.
 ?Rva007FCDA0ReserveRequest@@YGXPAVRva007E8810Message@@PB_JIHH@Z,,0x006692A0,196,Code/GameEngine/Source/GameNetwork/Rva007FCDA0ReserveRequest.cpp,matched,BFME1 byte-identical donor; b1 0x007FCDA0; 6 DIR32 string literal(s) agree
 _CFastDeInterlace,,0x001C7580,183,Code/Libraries/Source/VP6/FastDeInterlace.cpp,matched,Clean-room spec 001c7580; CFastDeInterlace: cdecl generic vertical 1-2-1 deinterlace copying the first and last rows and blending the interior rows; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001c7580.md and retail only
-?write@Rva007E9310AccountWriter@@QAEXPAVRva007E8810Message@@PBD1E1@Z,,0x00656300,172,Code/GameEngine/Source/GameNetwork/Rva007E9310AccountWriter.cpp,matched,BFME1 byte-identical donor; b1 0x007E9310; 7 DIR32 string literal(s) agree
+?write@Rva007E9310AccountWriter@@QAEXPAVRva007E8810Message@@PBD1E1@Z,,0x00656300,172,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007E9310; 7 DIR32 string literal(s) agree
 _ScalarReconIntra,,0x001D56F0,153,Code/Libraries/Source/VP6/ScalarReconIntra.cpp,matched,Clean-room spec 001d56f0; ScalarReconIntra: scalar intra reconstruction adding 128 to 64 residuals then block store with saturation; same retail extent as the replaced placeholder; implemented from reverse/vp6_cleanroom/specs/001d56f0.md and retail only
 ?Rva007F8E10TaggedField@@YGIPBURva007F8E10Fields@@PBURva007F8E10Message@@@Z,,0x00665490,134,Code/GameEngine/Source/GameNetwork/Rva007F8E10TaggedField.cpp,matched,BFME1 byte-identical donor; b1 0x007F8E10
 ?Rva00844F60FindTwoWideRanges@@YAHGPBG0G@Z,,0x00018180,116,Code/Libraries/Source/WWVegas/WWLib/Rva00844F60DualRangeFind.cpp,matched,BFME1 byte-identical donor; b1 0x00844F60
@@ -23399,18 +23399,18 @@ _Rva0084DDD0Sign,,0x00021050,37,Code/Libraries/Source/WWVegas/WWLib/Rva0084DD20S
 ?element@Rva007F6C40Array@@QAEPADH@Z,,0x00663350,24,Code/GameEngine/Source/GameNetwork/Rva007F6B80ArrayIndex.cpp,matched,BFME1 byte-identical donor; b1 0x007F6C40
 ?copy@Rva00808AC0Owner@@QAEXPAD@Z,,0x00674A30,25,Code/GameEngine/Source/GameNetwork/Y4FeslFavGameAddress.cpp,matched,BFME1 byte-identical donor; b1 0x00808AC0
 ?copy@Rva00808900Owner@@QAEXPAD@Z,,0x00674890,22,Code/GameEngine/Source/GameNetwork/Y4FeslFavGameAddress.cpp,matched,BFME1 byte-identical donor; b1 0x00808900
-?set@Rva007EA490Owner@@QAEXHHH@Z,,0x00657440,42,Code/GameEngine/Source/GameNetwork/Rva007EA490SetFields.cpp,matched,BFME1 byte-identical donor; b1 0x007EA490
+?set@Rva007EA490Owner@@QAEXHHH@Z,,0x00657440,42,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 byte-identical donor; b1 0x007EA490
 ?bfmeInsert@Gen_008F7D90@@QAE_NPAUBfmeLink8F7D90@@0@Z,,0x0073A330,36,Code/GameEngine/Source/Common/Bfme5InsertLink8F7D90.cpp,matched,BFME1 donor bfmeInsert; target bytes verify link updates. Gen_008F7D90 and field layout are donor-derived pending independent target identity evidence; donor b1 0x008F7D90
 ?find@Rva007F6B30Array@@QAEPAURva007F6B30Record@@H@Z,,0x00663280,35,Code/GameEngine/Source/GameNetwork/Rva007F6B30FindRecord.cpp,matched,BFME1 byte-identical donor; same target record-family context as verified array accessors/clear; b1 0x007F6B30
 ??0Rva009263F0@@QAE@PBURva009263F0Triple@@PBI@Z,,0x0016CAF0,34,Code/GameEngine/Source/Common/Rva009263F0FourWordCtor.cpp,matched,BFME1 four-word copy constructor donor; bytes verify four sequential source-word loads/stores. Class and field names are donor-derived; b1 0x009263F0
 ?clear@Rva008FC2D0CellReset@@QAEXI@Z,,0x0073EC40,34,Code/GameEngine/Source/Common/RTS/ShroudManagerCell.cpp,matched,BFME1 byte-identical donor; target matches indexed linked-node cell clear. Structure names and exact owner remain donor-derived; b1 0x008FC2D0
 ?initialize0088D8E0@@YAXPAURva0088D8E0Record@@PAXII@Z,,0x0003CC50,33,Code/GameEngine/Source/Common/Rva0088D8E0RecordInitialize.cpp,matched,BFME1 byte-identical record initializer; target verifies three copied fields and two one-byte flags. Record type/field labels remain donor-derived; b1 0x0088D8E0
-?setPrefix@Rva007EA3E0Owner@@QAEXPBD@Z,,0x00657390,28,Code/GameEngine/Source/GameNetwork/Rva007EA3E0PrefixCopy.cpp,matched,BFME1 bounded prefix-copy donor; target bytes verify bounded copy to object offset. Owner/field labels remain donor-derived; b1 0x007EA3E0
+?setPrefix@Rva007EA3E0Owner@@QAEXPBD@Z,,0x00657390,28,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 bounded prefix-copy donor; target bytes verify bounded copy to object offset. Owner/field labels remain donor-derived; b1 0x007EA3E0
 ??0Rva007F9640Fields@@QAE@XZ,,0x00665BB0,25,Code/GameEngine/Source/GameNetwork/Rva007F9640FieldsCtor.cpp,matched,BFME1 zero-initializer donor; target bytes verify seven word stores. Field/class labels remain donor-derived; b1 0x007F9640
 ?clear@Rva007F90E0Fields@@QAEXXZ,,0x00665680,23,Code/GameEngine/Source/GameNetwork/Rva007F90E0ClearFields.cpp,matched,BFME1 seven-word clear donor; target bytes verify each word reset. Field/class labels remain donor-derived; no class identity inferred; b1 0x007F90E0
 ?reset@Rva007F2180State@@QAEXXZ,,0x0065ECA0,21,Code/GameEngine/Source/GameNetwork/Rva007F2180StateReset.cpp,matched,BFME1 reset donor; target bytes verify five individual field clears. Class/member names and offsets remain donor-derived pending independent layout evidence; b1 0x007F2180
 ?rva007F5900QueueCallback@@YAXPAVRva007E8810Message@@PAURva007F5900Context@@@Z,,0x006620A0,19,Code/GameEngine/Source/GameNetwork/Rva007F5900QueueCallback.cpp,matched,BFME1 queue callback donor; target call resolves to matched handleQueueReply at 0x00661FE0 adjacent to hosted-game reply; b1 0x007F5900
-?dispatch@Rva007E9FA0Owner@@QAEXXZ,,0x00656F50,17,Code/GameEngine/Source/GameNetwork/Rva007E9FA0NestedDispatch.cpp,matched,BFME1 nested virtual dispatch donor; target bytes verify the nested loads and slot-2 call. Class names and offsets are donor-derived; b1 0x007E9FA0
+?dispatch@Rva007E9FA0Owner@@QAEXXZ,,0x00656F50,17,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 nested virtual dispatch donor; target bytes verify the nested loads and slot-2 call. Class names and offsets are donor-derived; b1 0x007E9FA0
 ?set@Rva00945720PairSetter@@QAEXII@Z,,0x00143610,17,Code/Libraries/Source/WWVegas/WW3D2/Rva00945720PairSetter.cpp,matched,BFME1 pair-setter donor; target bytes verify two dword stores. Type and field names remain donor-derived; b1 0x00945720
 ?Rva009F4070DistanceSquared@@YAMPBUCoord2DBase@@PAVRva009F4070PositionProvider@@@Z,,0x00626A30,38,Code/Libraries/Source/WWVegas/WWMath/Rva009F4070DistanceSquared.cpp,matched,BFME1 distance donor with TU-local two-float Coord2DBase definition replacing missing coord2d.h; target bytes verify provider call and squared delta calculation; b1 0x009F4070
 ?set@Rva0090E190@@QAEXH@Z,,0x00132C7D,16,Code/GameEngine/Source/Common/Rva0090E190Set.cpp,matched,BFME1 guarded field setter donor; target bytes verify null guard and integer store. Inner type/offset remain donor-derived; b1 0x0090E190
@@ -31543,7 +31543,7 @@ _CpuProbe_Sse2Executes,,0x001D5540,126,Code/Libraries/Source/VP6/CpuProbeSse2.cp
 ??_GRva0022A9DDSubsystem@@UAEPAXI@Z,,0x0022DFB0,28,Code/GameEngine/Source/GameClient/Rva00418298Dtor.cpp,matched,deleting dtor slot0 vtable 0x007E76D0 calls rowed 0x00418298
 ?swap@Rva003B56A5@@QAEXPAV1@@Z,,0x003B56A5,55,Code/GameEngine/Source/Common/System/Rva003B56A5Swap.cpp,matched,Two-vector plus two-int swap via rowed vector swap and barrier-ordered tail
 ?Rva005F8EDAAptCall@@YAHPAVRva00222A8BTarget@@PAXPBD22PAPAX@Z,,0x005F8EDA,38,Code/GameEngine/Source/Common/Rva005F8EDAAptCall.cpp,matched,chain via twin pin deref local
-?rva006572A0@Rva006572A0@@QAEXXZ,,0x006572A0,8,Code/GameEngine/Source/GameNetwork/Rva007EA120Teardown.cpp,matched,leaf forwarder to rowed m via ptr at 4 caller 5521F8
+?rva006572A0@Rva006572A0@@QAEXXZ,,0x006572A0,8,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,leaf forwarder to rowed m via ptr at 4 caller 5521F8
 ?rva006575F0@Rva006575F0@@QAEXXZ,,0x006575F0,8,Code/GameEngine/Source/GameNetwork/Rva007EA5E0Forwarder.cpp,matched,leaf forwarder to pinned m via ptr at 4 same caller
 ?rva002234BA@Rva000427195@@QAEPAU?$pair@$$CBVAsciiString@@UNoCaseTreeValue4@@@_STL@@PBU23@@Z,,0x002234BA,68,Code/GameEngine/Source/GameClient/Rva002234BAInsert.cpp,matched,hash insert via rowed bucketIndex 0x00223149 and new-node 0x002230FF plus pin resize
 ?addVideo@VideoPlayer@@UAEXPAUVideo@@@Z,,0x00689FD0,270,Code/GameEngine/Source/GameClient/VideoPlayerAddVideo.cpp,matched,BFME1 clean donor 10af19f44a89 VideoPlayerAddVideo.cpp; native table BC7EBC slot15 with remove/get siblings; canonical Video28 and AsciiString; native helper66 copyctor122 overflow300 independently verified; shared relocatable E0ABB4 table
@@ -32042,12 +32042,12 @@ _Rva006FD040,,0x006FD040,26,Code/Libraries/Source/Apt/AptActionInterpreter.cpp,m
 ?rva0068A130@Rva0068A130@@QAEXXZ,,0x0068A130,35,Code/GameEngine/Source/Common/Rva0068A130Cluster.cpp,matched,address-derived vtable-slot0 deleting release helper
 ?rva006F1F50@@YAXPAVBfmeAptValue006DCD20@@@Z,,0x006F1F50,52,Code/GameEngine/Source/Common/Rva006F1F50Cluster.cpp,matched,address-derived AptValue isXml conversion helper
 ?f@Rva001333C6@@QAEXXZ,,0x001333C6,27,Code/GameEngine/Source/Common/Rva001333C6Cluster.cpp,matched,address-derived guarded member tail call
-?Rva00656590@@YGXPAUBfmeSetupRecord@@@Z,,0x00656590,44,Code/GameEngine/Source/Common/Rva00656590Cluster.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
-?Rva006565C0@@YGXPAUBfmeSetupRecord@@@Z,,0x006565C0,44,Code/GameEngine/Source/Common/Rva00656590Cluster.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
-?Rva00656890@@YGXPAUBfmeSetupRecord@@@Z,,0x00656890,44,Code/GameEngine/Source/Common/Rva00656590Cluster.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
-?Rva006568C0@@YGXPAUBfmeSetupRecord@@@Z,,0x006568C0,44,Code/GameEngine/Source/Common/Rva00656590Cluster.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
-?Rva00656980@@YGXPAUBfmeSetupRecord@@@Z,,0x00656980,44,Code/GameEngine/Source/Common/Rva00656590Cluster.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
-?Rva006569B0@@YGXPAUBfmeSetupRecord@@@Z,,0x006569B0,44,Code/GameEngine/Source/Common/Rva00656590Cluster.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
+?Rva00656590@@YGXPAUBfmeSetupRecord@@@Z,,0x00656590,44,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
+?Rva006565C0@@YGXPAUBfmeSetupRecord@@@Z,,0x006565C0,44,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
+?Rva00656890@@YGXPAUBfmeSetupRecord@@@Z,,0x00656890,44,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
+?Rva006568C0@@YGXPAUBfmeSetupRecord@@@Z,,0x006568C0,44,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
+?Rva00656980@@YGXPAUBfmeSetupRecord@@@Z,,0x00656980,44,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
+?Rva006569B0@@YGXPAUBfmeSetupRecord@@@Z,,0x006569B0,44,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,single-key acct TXN setup writer; DIR32 global is the only per-member difference
 ?rva00719800@Rva00719800@@QBEHXZ,,0x00719800,41,Code/Libraries/Source/WWVegas/WWMath/Rva00719800Cluster.cpp,matched,address-derived element-wise min>=max box predicate next to Init_Empty; identity unproven
 ?Rva00129640Get@@YAHH@Z,,0x00129640,23,Code/Libraries/Source/WWVegas/WW3D2/statistics.cpp,matched,bounded array read over g_stat10 and the 0x00DEE8E8 buffer; identity unproven
 ?Rva00129690@@YAXXZ,,0x00129690,86,Code/Libraries/Source/WWVegas/WW3D2/statistics.cpp,matched,cumulative push into the 0x00DEE8E8 three-entry buffer capped at 3; /G7 add idiom
@@ -36898,7 +36898,7 @@ _Rva14AA50VirtualDispatch,,0x0025EDD4,18,Code/GameEngine/Source/Common/Rva14AA50
 ?setFlag@ScriptEngine@@IAEXPAVScriptAction@@_N@Z,,0x00209405,129,Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_setFlag.cpp,matched,BFME1 donor game/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineFlagsAndCounters.cpp recompiled /Os; unique masked placement on unclaimed .text; dedicated TU; addCounter and subCounter omitted; read-side callee is the matched rva0020881A body pinned as bfmeFlagForRead
 ?setDate@Rva007FF700Date@@QAEHHHH@Z,,0x0066B9C0,56,Code/GameEngine/Source/GameNetwork/Y4DirtySockDate.cpp,matched,BFME1 byte-identical donor f57439f7f4 Y4DirtySockDate.cpp; b1 0x007FF4F0; setMonth/setYear inlined (TU /O2)
 ?notify@Rva00802A90Elem@@QAEXPAURva00802A90Query@@PAXHH@Z,,0x0066DF80,523,Code/GameEngine/Source/Common/Rva00801CB0.cpp,matched,BFME1 byte-identical donor; b1 0x00801CB0
-?forwardSentinel@Rva007EA0A0Owner@@QAEXXZ,,0x006572B0,20,Code/GameEngine/Source/Common/forwardSentinel.cpp,matched,BFME1 donor identity correction at 775a0370b7; target forwards live ECX to notify 0x00657050
+?forwardSentinel@Rva007EA0A0Owner@@QAEXXZ,,0x006572B0,20,Code/GameEngine/Source/Common/BfmeThingRE.cpp,matched,BFME1 donor identity correction at 775a0370b7; target forwards live ECX to notify 0x00657050
 ?bfmeCbBZC@Rva007F4740@@SAXPAXPAVRva007F4740Context@@@Z,,0x006611F0,35,Code/GameEngine/Source/Common/Rva007F4740.cpp,matched,BFME1 byte-identical donor; b1 0x007F4740
 ?rva00032920@GeneralAllocator@Allocator@EA@@QAE_NPBX@Z,,0x00032920,190,Code/GameEngine/Source/Common/System/Rva00032920Finish.cpp,matched,owns-address test split out of memory_pool.cpp; two release blocks so the small-list je reaches the intrusive block
 ?copyToBuffer@Rva005D0602@@QAEHPAG@Z,,0x005D0602,28,Code/GameEngine/Source/Common/System/Rva005D0602.cpp,matched,caller 005D061E ref plus char copy

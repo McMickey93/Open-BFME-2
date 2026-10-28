@@ -27,6 +27,7 @@ address_global	Code/GameEngine/Source/Common/BfmeConv982.cpp	g_Rva00F0692CTransf
 address_global	Code/GameEngine/Source/Common/BfmeOwnerCDECount.cpp	g_Va00BBB8D8	3
 address_global	Code/GameEngine/Source/Common/BfmeThingBFGTail.cpp	g_Va00BBB8D8	2
 address_global	Code/GameEngine/Source/Common/BfmeThingBFGTail.cpp	g_Va00BC74F0	2
+address_global	Code/GameEngine/Source/Common/BfmeThingRE.cpp	g_Rva0130A50CTxn	3
 address_global	Code/GameEngine/Source/Common/BfmeThreeHundredFiftyFour.cpp	g_Va00E0ABB0	1
 address_global	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	g_Va00A04450	1
 address_global	Code/GameEngine/Source/Common/ColdGlobalDwordGetters.cpp	g_Va00A046B4	1
@@ -1270,7 +1271,6 @@ address_global	Code/GameEngine/Source/GameNetwork/Rva007B55E0TxnNameInits.cpp	g_
 address_global	Code/GameEngine/Source/GameNetwork/Rva007B55E0TxnNameInits.cpp	g_Va00E0A1BC	2
 address_global	Code/GameEngine/Source/GameNetwork/Rva007E8D30FeslSetField.cpp	g_Rva011293A0HexFirst	2
 address_global	Code/GameEngine/Source/GameNetwork/Rva007E8D30FeslSetField.cpp	g_Rva011294A8HexSecond	2
-address_global	Code/GameEngine/Source/GameNetwork/Rva007E9310AccountWriter.cpp	g_Rva0130A50CTxn	3
 address_global	Code/GameEngine/Source/GameNetwork/Rva007E93C0Acct.cpp	g_Rva0130A4F4Txn	3
 address_global	Code/GameEngine/Source/GameNetwork/Rva007F14B0BlobWriter.cpp	g_Rva00E0A010	2
 address_global	Code/GameEngine/Source/GameNetwork/Rva007F14B0BlobWriter.cpp	g_Rva0130A768	1
@@ -1837,6 +1837,7 @@ alternatename	Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp	?v68@Display@@UAE
 alternatename	Code/GameEngine/Source/Common/BfmeThingBFGTail.cpp	?rva0025F30DCallView@BfmeThingBFG@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeThingCDEDestructor.cpp	?ArrayDeleteHelperBodyThunk@@YGXPAXII0@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeThingPF.cpp	?bfmeDoPG@BfmeThingPG@@QAEXPADPAXH@Z	1
+alternatename	Code/GameEngine/Source/Common/BfmeThingRE.cpp	?bfmeRunRE@BfmeThingRE@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeThingSVA.cpp	?bfmeEraseV17@BfmeVecV17@@QAEXPAH0@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeThingSVA.cpp	?bfmeFwdOneSVA@BfmeThingSVA@@QAEXHH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeThingSVA.cpp	?bfmeInsertV17@BfmeVecV17@@QAEXPAHI0@Z	1
@@ -1847,7 +1848,6 @@ alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredFiftyOne.cpp	??0stdi
 alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredFiftyThree.cpp	??1Rva0061ED80@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredFiftyThree.cpp	??1Rva009EB810TailBase@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredThirtyEight_Rva001320d0.cpp	?handle@BfmeThingSJ@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/Common/BfmeThreeHundredTwelve.cpp	?bfmeRunRE@BfmeThingRE@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeTwoHundredEightyThree.cpp	?bfmeDoPQ@@YAXPAD000@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeTwoHundredEightyThree.cpp	_bfmeCopy1152	1
 alternatename	Code/GameEngine/Source/Common/BfmeTwoHundredEightyThree.cpp	_bfmeCopy1153	1
@@ -12302,6 +12302,7 @@ present_unmatched	Code/GameEngine/Source/Common/BfmeOneHundredNinetyOne.cpp	Bfme
 present_unmatched	Code/GameEngine/Source/Common/BfmeOwnVVD.cpp	bfmeSlot0VVD@BfmeBaseVVD@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/Common/BfmeRefVGOCopyDtor.cpp	1Rva006D07E0Key@@QAE@XZ	1
 present_unmatched	Code/GameEngine/Source/Common/BfmeRefVGOCopyDtor.cpp	1Rva008A2BA0Handle@@QAE@XZ	1
+present_unmatched	Code/GameEngine/Source/Common/BfmeThingRE.cpp	Rva007EA0A0Owner::forwardSentinel	1
 present_unmatched	Code/GameEngine/Source/Common/BfmeTwoHundredOne.cpp	BfmeThingGH::bfmeSetGH	1
 present_unmatched	Code/GameEngine/Source/Common/BfmeTwoHundredOne.cpp	BfmeThingGL::bfmeReleaseGL	1
 present_unmatched	Code/GameEngine/Source/Common/BfmeTwoHundredOne.cpp	BfmeThingGM::bfmeDrainGM	1
@@ -12859,7 +12860,6 @@ present_unmatched	Code/GameEngine/Source/Common/bezier_segment.cpp	BezierSegment
 present_unmatched	Code/GameEngine/Source/Common/bezier_segment.cpp	BezierSegment::getApproximateLength	1
 present_unmatched	Code/GameEngine/Source/Common/bezier_segment.cpp	BezierSegment::s_bezBasisMatrix	1
 present_unmatched	Code/GameEngine/Source/Common/bezier_segment.cpp	splitSegmentAtT@BezierSegment@@	1
-present_unmatched	Code/GameEngine/Source/Common/forwardSentinel.cpp	Rva007EA0A0Owner::forwardSentinel	1
 present_unmatched	Code/GameEngine/Source/GameClient/CameraMarkerListFind.cpp	remove@CameraMarkerList@@QAEXPAUCameraMarker@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameClient/Drawable/Update/AnimationSoundClientBehavior.cpp	AnimationSoundNullRef::AnimationSoundNullRef	1
 present_unmatched	Code/GameEngine/Source/GameClient/Drawable/Update/AnimationSoundClientBehavior.cpp	Range::Range	1
