@@ -36,7 +36,7 @@ public:
 
 // The callbacks of the table below, all rowed; two have other signatures and
 // are cast to the field-parse type.
-void parseConnectionRva003F348F(INI *ini, void *instance, void *store, const void *userData);
+void parseConnection(INI *ini, void *instance, void *store, const void *userData);
 void Rva003F25DF(void *ini, void *instance, void *store, void *userData);
 class LivingWorldRegion
 {
@@ -72,7 +72,7 @@ extern const FieldParse Rva003F3F03Table[] =
 	{ "StrategicValue", INI::parseInt, 0, 0x58 },
 	{ "RegionBonus", INI::Rva003F156F_ParseRegionBonus, 0, 0x5C },
 	{ "ConnectsTo", INI::Rva003F341E_ParseConnections, 0, 0x60 },
-	{ "Connection", parseConnectionRva003F348F, 0, 0x60 },
+	{ "Connection", parseConnection, 0, 0x60 },
 	{ "OnWinActSubroutine", INI::parseAsciiString, 0, 0x6C },
 	{ "RegionPortrait", INI::parseAsciiString, 0, 0x70 },
 	{ "ArmyPlacementPos", INI::Rva002F592_ParseArmyPlacementPos, 0, 0x74 },

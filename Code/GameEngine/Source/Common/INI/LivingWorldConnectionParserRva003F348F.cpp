@@ -29,7 +29,7 @@ const FieldParse g_Va00C36FD4[]={
  {"Region",INI::parseAsciiString,0,4},
  {"DetourPoint",INI::Rva002F592_ParseArmyPlacementPos,0,12},
  {0,0,0,0}};
-void parseConnectionRva003F348F(INI*ini,void*,void*store,const void*) {
+void parseConnection(INI*ini,void*,void*store,const void*) {
  LivingWorldRegionConnection connection;
  ini->initFromINI(&connection,g_Va00C36FD4);
  reinterpret_cast<Rva003F309AVector*>(store)->append(connection);

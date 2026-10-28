@@ -118,8 +118,8 @@ Int g_value12A6FB0 = 0;		///< BFME2 .data VA 0x00DC1180
 Int g_value12A6FB4 = -1;	///< BFME2 .data VA 0x00DC1184
 extern Int NET_CRC_INTERVAL; // native RVA 0x009BC800
 
-// ?Rva00061260_parse@@YAHQAPADH@Z
-Int Rva00061260_parse(char *args[], int num)
+// ?parseDebugCRCFromFrame@@YAHQAPADH@Z
+Int parseDebugCRCFromFrame(char *args[], int num)
 {
 	if (num > 1)
 	{
@@ -131,8 +131,8 @@ Int Rva00061260_parse(char *args[], int num)
 	return 2;
 }
 
-// ?Rva000612B0_parse@@YAHQAPADH@Z
-Int Rva000612B0_parse(char *args[], int num)
+// ?parseDebugCRCUntilFrame@@YAHQAPADH@Z
+Int parseDebugCRCUntilFrame(char *args[], int num)
 {
 	if (num > 1)
 	{
@@ -144,8 +144,8 @@ Int Rva000612B0_parse(char *args[], int num)
 	return 2;
 }
 
-// ?Rva00061490_parse@@YAHQAPADH@Z
-Int Rva00061490_parse(char *args[], int num)
+// ?parseNetCRCInterval@@YAHQAPADH@Z
+Int parseNetCRCInterval(char *args[], int num)
 {
 	if (num > 1)
 	{

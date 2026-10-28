@@ -1623,7 +1623,7 @@ void *Rva002E7C99::rva002E7C99(int a, int b, int c, unsigned char d, int e, unsi
 
 // tu-skeleton: 0x002E7CCB 93B ??6@YAAAVDebug@@AAV0@ABVPath@@@Z -- matched in Code/GameEngine/Source/GameLogic/AI/PathDebugOutput.cpp (not merged yet)
 
-// tu-skeleton: 0x002E7D28 23B ?bfmeGo939E@@YAXPAVBfmeSub939E@@@Z -- matched in Code/GameEngine/Source/Common/BfmeConv939.cpp (not merged yet)
+// tu-skeleton: 0x002E7D28 23B ?parsePathfinderDefinition@@YAXPAVBfmeSub939E@@@Z -- matched in Code/GameEngine/Source/Common/BfmeConv939.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva002E7D3FContextInit.cpp
 

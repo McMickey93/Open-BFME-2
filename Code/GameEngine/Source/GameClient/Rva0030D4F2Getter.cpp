@@ -60,11 +60,11 @@ public:
 	int rva0030D50C();
 	int rva0030D428();
 	int rva0030D4D8();
-	void rva0030D442(int value);
-	void rva0030D460(const AsciiString &value);
-	void rva0030D47E(int value);
-	void rva0030D49C(const AsciiString &value);
-	void rva0030D4BA(int value);
+	void setWaypointID(int value);
+	void setWaypointName(const AsciiString &value);
+	void setGenericAIObjectID(int value);
+	void setGenericAIObjectName(const AsciiString &value);
+	void setGenericAIObjectWallHubNumber(int value);
 private:
 	char m_pad0[0x24];
 	Dict m_dict;
@@ -100,27 +100,27 @@ int Rva0030D4F2::rva0030D4D8()
 // at +0x24 through the rowed setInt 0x00313716 / setAsciiString 0x0031375A
 // with the key from the rowed NameKey cache get on the cache each names
 // (VA 0x00DBDC74, 0x00DBDC64, 0x00DBDC7C, 0x00DBDC6C, 0x00DBDC8C).
-void Rva0030D4F2::rva0030D442(int value)
+void Rva0030D4F2::setWaypointID(int value)
 {
 	m_dict.setInt(g_00DBDC74.get(), value);
 }
 
-void Rva0030D4F2::rva0030D460(const AsciiString &value)
+void Rva0030D4F2::setWaypointName(const AsciiString &value)
 {
 	m_dict.setAsciiString(g_00DBDC64.get(), value);
 }
 
-void Rva0030D4F2::rva0030D47E(int value)
+void Rva0030D4F2::setGenericAIObjectID(int value)
 {
 	m_dict.setInt(MapGenericAIObjectIDCache.get(), value);
 }
 
-void Rva0030D4F2::rva0030D49C(const AsciiString &value)
+void Rva0030D4F2::setGenericAIObjectName(const AsciiString &value)
 {
 	m_dict.setAsciiString(g_00DBDC6C.get(), value);
 }
 
-void Rva0030D4F2::rva0030D4BA(int value)
+void Rva0030D4F2::setGenericAIObjectWallHubNumber(int value)
 {
 	m_dict.setInt(g_00DBDC8C.get(), value);
 }

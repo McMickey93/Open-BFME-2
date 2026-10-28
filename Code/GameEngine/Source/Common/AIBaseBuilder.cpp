@@ -96,7 +96,7 @@ float distanceSquared(const Rva00506BADCoord *lhs, const Rva00506BADCoord *rhs)
 
 // tu-skeleton: 0x00506C39 43B ?rva00506C39@AIBaseBuilder@@QAE_NPAX@Z -- matched in Code/GameEngine/Source/Common/Rva00506B74Tactic.cpp (not merged yet)
 
-// tu-skeleton: 0x00506C64 30B ?rva00506C64@AIBaseBuilder@@QAEPAVRva005ADA40@@I@Z -- matched in Code/GameEngine/Source/Common/Rva00506B74Tactic.cpp (not merged yet)
+// tu-skeleton: 0x00506C64 30B ?getBase@AIBaseBuilder@@QAEPAVRva005ADA40@@I@Z -- matched in Code/GameEngine/Source/Common/Rva00506B74Tactic.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva00506C82Find.cpp
 

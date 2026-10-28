@@ -132,7 +132,7 @@ FieldParse g_bfmePathfinderFieldParse[2] = {
 
 class BfmeSub939E;
 
-void bfmeGo939E(BfmeSub939E *a)
+void parsePathfinderDefinition(BfmeSub939E *a)
 {
 	int tmp;
 	reinterpret_cast<INI *>(a)->initFromINI(&tmp, g_bfmePathfinderFieldParse);

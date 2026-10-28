@@ -88,14 +88,14 @@ class Rva0025349C
 public:
 	Rva0025349C() : m_repairHealthPercentPerSecond(0.0f), m_buildVariation(0) {}
 	virtual ~Rva0025349C() {}
-	static void rva002534B1(MultiIniFieldParse &p);
+	static void buildFieldParse(MultiIniFieldParse &p);
 private:
 	int m_04;
 	float m_repairHealthPercentPerSecond;
 	int m_buildVariation;
 };
 
-void Rva0025349C::rva002534B1(MultiIniFieldParse &multiIniFieldParse)
+void Rva0025349C::buildFieldParse(MultiIniFieldParse &multiIniFieldParse)
 {
 	multiIniFieldParse.add(s_Rva002534B1FieldParse, 0);
 }
@@ -107,6 +107,6 @@ ModuleData *ModuleFactoryDataAt002534C2(INI *ini)
 {
 	Rva0025349C *data = new Rva0025349C;
 	if (ini)
-		ini->initFromINIMultiProc(data, Rva0025349C::rva002534B1);
+		ini->initFromINIMultiProc(data, Rva0025349C::buildFieldParse);
 	return (ModuleData *)data;
 }

@@ -71,8 +71,8 @@ extern const FieldParse s5Table0059FB50[] = {
 
 void s5parse0059FB50(INI *ini, Gen_00489270 *sink)
 {
-    Rva0035D0D1 *t = new Rva0035D0D1;
-    ini->initFromINI(t, s5Table0059FB50);
-    t->m_4 = t->m_14;
-    sink->m((int)t);
+    Rva0035D0D1 *transition = new Rva0035D0D1;
+    ini->initFromINI(transition, s5Table0059FB50);
+    transition->m_4 = transition->m_14;
+    sink->m((int)transition);
 }

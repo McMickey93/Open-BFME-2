@@ -58,12 +58,12 @@ class GameState {
  _STL::list<Snapshot*> m_post;
  _STL::list<GameStatePostRecord> m_marks;
 public:
- void rva002DC52B();
+ void gameStatePostProcessLoad();
  void rva002DC4B8(void*,unsigned);
- void rva002DCF6C(Snapshot*,unsigned);
+ void addPostProcessSnapshot(Snapshot*,unsigned);
 };
 typedef char HeaderExtent[(sizeof(_STL::list<Snapshot*>)==4)?1:-1];
-void GameState::rva002DC52B()
+void GameState::gameStatePostProcessLoad()
 {
  GameStateFPScope guard;
  _STL::list<Snapshot*>::iterator it=m_post.begin();
@@ -94,13 +94,13 @@ void Rva002DC66F(void *unused,GameState *state,unsigned sequence)
 // Snapshot name slot, and paired list accesses establish the declaration;
 // its complete130-byte implementation below retains those list semantics.
 void Rva002DD908(Snapshot *snapshot,GameState *state,unsigned sequence)
-{state->rva002DCF6C(snapshot,sequence);}
+{state->addPostProcessSnapshot(snapshot,sequence);}
 
 // Native 2DCF6C..2DCFEE appends non-Weapon snapshots to the post-process list
 // (Object goes first), then records the snapshot and sequence in the marks list.
 // An equal-arm pointer selection preserves the late-folded source expression
 // that schedules the receiver LEA ahead of the outgoing argument PUSH.
-void GameState::rva002DCF6C(Snapshot *snapshot,unsigned sequence)
+void GameState::addPostProcessSnapshot(Snapshot *snapshot,unsigned sequence)
 {
  if(!snapshot)return;
  const char *name=snapshot->GetSnapshotName();

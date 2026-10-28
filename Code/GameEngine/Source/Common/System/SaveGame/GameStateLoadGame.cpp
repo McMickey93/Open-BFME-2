@@ -180,7 +180,7 @@ class GameState {
  bool m_isInLoadGame;
 public:
  void xferSaveData(Xfer*,SnapshotType);
- void rva002DC52B();
+ void gameStatePostProcessLoad();
  int rva002DE3C1(TreeHintOpaque0043671B);
  int doLoadGame(TreeHintOpaque0043671B);
  static bool s_inLoadGame;
@@ -247,7 +247,7 @@ checkLoadState:
   ((Rva0060C45E*)&load)->clear();
   streamClose(stream);
   ((GameLoadGhostView*)TheGhostObjectManager)->saved=false;
-  try {rva002DC52B();}catch(...) {error=1;}
+  try {gameStatePostProcessLoad();}catch(...) {error=1;}
   ((GameLoadShroudView*)TheShroudManager)->slot10();
   ((GameLoadAIView*)TheAI)->owner->rva002E713F();
   }

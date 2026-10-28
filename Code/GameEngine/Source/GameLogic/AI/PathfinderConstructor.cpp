@@ -38,7 +38,7 @@ public:
 // Native local registry callback2E7D28 uses its existing ledger name.
 // Passing the canonical INI callback type preserves the12B registration ABI.
 class BfmeSub939E;
-extern void bfmeGo939E(BfmeSub939E *);
+extern void parsePathfinderDefinition(BfmeSub939E *);
 typedef void (*INIBlockParse)(INI *);
 
 struct BlockParse;
@@ -102,7 +102,7 @@ Pathfinder::Pathfinder()
 {
  for(int i=0;i<64;++i)m_heads[i]=0;
  rva002F462C();
- static BlockParse pathfinderRegistration("Pathfinder",reinterpret_cast<INIBlockParse>(bfmeGo939E));
+ static BlockParse pathfinderRegistration("Pathfinder",reinterpret_cast<INIBlockParse>(parsePathfinderDefinition));
  INI ini;
  ini.loadFile(AsciiString("Data\\INI\\Pathfinder.ini"),INI_LOAD_OVERWRITE,(Xfer *)0);
 }

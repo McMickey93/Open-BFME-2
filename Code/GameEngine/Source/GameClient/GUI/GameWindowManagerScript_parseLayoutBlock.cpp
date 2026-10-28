@@ -225,7 +225,7 @@ Bool parseShutdown(char *, char *buffer, UnsignedInt, WindowLayoutInfo *info)
         TheNameKeyGenerator->nameToKey(layout->shutdownName));
     return TRUE;
 }
-Bool parseLayoutClassRva003172E9(char *, char *buffer, UnsignedInt, WindowLayoutInfo *info)
+Bool parseClass(char *, char *buffer, UnsignedInt, WindowLayoutInfo *info)
 {
     BfmeLayoutInfoPrefix *layout = reinterpret_cast<BfmeLayoutInfoPrefix *>(info);
     layout->className = strtok(buffer, " \n\r\t");
@@ -241,6 +241,6 @@ LayoutScriptParse layoutScriptTable[] = {
     {"LAYOUTINIT", parseInit},
     {"LAYOUTUPDATE", parseUpdate},
     {"LAYOUTSHUTDOWN", parseShutdown},
-    {"LAYOUTCLASS", parseLayoutClassRva003172E9},
+    {"LAYOUTCLASS", parseClass},
     {NULL, NULL}
 };

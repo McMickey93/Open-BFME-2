@@ -197,7 +197,7 @@ public:
 	void rva00506B96(const Coord3D *point);
 	Rva005AD9C0Hit *rva00506BF7(void *arg);
 	bool rva00506C39(void *arg);
-	Rva005ADA40 *rva00506C64(unsigned int index);
+	Rva005ADA40 *getBase(unsigned int index);
 	void postInit();
 	void notifyBuildingDestroyed(Object *obj);
 	void DoXfer(Xfer *xfer);
@@ -268,7 +268,7 @@ bool AIBaseBuilder::rva00506C39(void *arg)
 	return false;
 }
 
-Rva005ADA40 *AIBaseBuilder::rva00506C64(unsigned int index)
+Rva005ADA40 *AIBaseBuilder::getBase(unsigned int index)
 {
 	if (index < m_0C.size())
 		return m_0C[index];
