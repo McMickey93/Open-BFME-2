@@ -13266,28 +13266,28 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001EAEDC,15,code,,,-,,Code/GameEngine/Source/Common/GapBodiesSeat1C.cpp
 0x001EAEEB,14,code,,,-,,Code/GameEngine/Source/Common/Disp8DivMovDwordGetters.cpp
 0x001EAEF9,101,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPoolPop.cpp
-0x001EAF5E,29,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EAF7B provisional,Code/GameEngine/Source/Common/Rva001EAF7BClear.cpp
-0x001EAF7B,32,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EAF9B provisional,Code/GameEngine/Source/Common/Rva001EAF7BClear.cpp
+0x001EAF5E,29,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EAF7B provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
+0x001EAF7B,32,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EAF9B provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
 0x001EAF9B,21,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EAFB0 provisional,Code/GameEngine/Source/Common/GapBodiesGE51.cpp
 0x001EAFB0,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EAFC1 provisional,Code/GameEngine/Source/Common/GapBodiesGE51.cpp
 0x001EAFC1,61,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EAFFE provisional,Code/GameEngine/Source/Common/Rva001EAFC1Assign.cpp
 0x001EAFFE,37,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB023 provisional,Code/GameEngine/Source/Common/Rva001EAFFEElementAt.cpp
-0x001EB023,54,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB059 provisional,Code/GameEngine/Source/Common/Rva001EB023Search.cpp
-0x001EB059,5,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB05E provisional,Code/GameEngine/Source/Common/Rva001EB023Search.cpp
+0x001EB023,54,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB059 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
+0x001EB059,5,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB05E provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
 0x001EB05E,54,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB094 provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntryDtor.cpp
-0x001EB094,29,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0B1 provisional,Code/GameEngine/Source/Common/Rva001EB023Search.cpp
-0x001EB0B1,8,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0B9 provisional,Code/GameEngine/Source/Common/Rva001EB0B1Thunk.cpp
-0x001EB0B9,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0CA provisional,Code/GameEngine/Source/Common/Rva001EB0B9Getter.cpp
-0x001EB0CA,15,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0D9 provisional,Code/GameEngine/Source/Common/Rva001EB0CAFlag.cpp
-0x001EB0D9,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0EA provisional,Code/GameEngine/Source/Common/Rva001EB0CAFlag.cpp
+0x001EB094,29,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0B1 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
+0x001EB0B1,8,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0B9 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
+0x001EB0B9,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0CA provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
+0x001EB0CA,15,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0D9 provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
+0x001EB0D9,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0EA provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
 0x001EB0EA,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB0FB provisional,Code/GameEngine/Source/Common/GapBodiesGE51.cpp
-0x001EB0FB,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB10C provisional,Code/GameEngine/Source/Common/Rva001EB0FBHas.cpp
+0x001EB0FB,17,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB10C provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
 0x001EB10C,12,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB118 provisional,Code/GameEngine/Source/Common/Disp8ImulAddDwordGetters.cpp
 0x001EB118,24,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB130 provisional,Code/GameEngine/Source/Common/GapBodiesGE51.cpp
 0x001EB130,42,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB15A provisional,Code/GameEngine/Source/Common/Rva001EB130Clear.cpp
 0x001EB15A,89,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB1B3 provisional,Code/GameEngine/Source/Common/Rva001EB15ACopy.cpp
 0x001EB1B3,24,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,C,C=0x001EAEF9..0x001EB1CB provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_record_bodies.cpp
-0x001EB1CB,67,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPoolCtor.cpp
+0x001EB1CB,67,code,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/FreelistPool.cpp
 0x001EB20E,84,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/BfmeAssignRecord172Assign.cpp
 0x001EB262,54,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_asciistring_record_bodies.cpp
 0x001EB298,52,code,,,-,W=Code/GameEngine/Source/GameLogic/System/GameLogic.cpp,Code/GameEngine/Source/Common/Rva001EB298Setter.cpp
