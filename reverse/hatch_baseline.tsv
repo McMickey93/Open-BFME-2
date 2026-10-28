@@ -13823,6 +13823,7 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AssistedTargeti
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/AssistedTargetingUpdate.cpp	AssistedTargetingUpdate::~AssistedTargetingUpdate	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/BoneFXUpdate.cpp	loadPostProcess@BoneFXUpdate@@MAEXXZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/BoneFXUpdateUpdate.cpp	copy	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/CurseSpecialPower.cpp	1CurseSpecialPowerModuleData@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/DeletionUpdate.cpp	DeletionUpdate::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/DeletionUpdate.cpp	DeletionUpdate::~DeletionUpdate	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/DockUpdate/DockUpdateCtor.cpp	ObjectIDVector::erase	1
@@ -14045,7 +14046,6 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipU
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp	setSpecialPowerOverridableDestination@SpectreGunshipUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp	update@SpectreGunshipUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp	xfer@SpectreGunshipUpdate@@	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpyVisionUpdateCtor.cpp	1CurseSpecialPowerModuleData@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.cpp	0StealthUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.cpp	1StealthUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdate.cpp	StealthUpdate::calcSleepTime	1
