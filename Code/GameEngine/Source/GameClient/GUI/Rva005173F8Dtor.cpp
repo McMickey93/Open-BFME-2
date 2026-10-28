@@ -24,7 +24,7 @@ void __fastcall ReleaseTreeHintRef00217D4C(TargetRef00217D4C*);
 class Rva0057BC63FunctorHolder {
 public:
  Rva0057BC63FunctorHolder(const FunctorBinding&);
- Rva0057BC63FunctorHolder(const Rva0057BC63FunctorHolder&r):ptr(r.ptr){if(ptr)++ptr->references;}
+ Rva0057BC63FunctorHolder(const Rva0057BC63FunctorHolder&other):ptr(other.ptr){if(ptr)++ptr->references;}
  TargetRef00217D4C*ptr;
 };
 template<class T>class AptRef:public Rva0057BC63FunctorHolder {

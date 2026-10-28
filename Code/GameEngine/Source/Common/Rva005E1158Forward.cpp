@@ -32,7 +32,7 @@ void Rva005E1158::rva005E1158(const Image *image)
 	m_ptr08->SetImage(image);
 }
 
-// ?rva005E1178@Rva005E1178@@QAEXM@Z @0x005E1178 19B
+// ?ShowTimerOverlay@Rva005E1178@@QAEXM@Z @0x005E1178 19B
 // Leaf float forwarder to rowed Rva005E1008::rva005E1008 via +8, same shape
 // as the 8B pointer forwarder above. Pin names a stdcall free function but the
 // body reads ecx as this and rets 4 for one float, so honest method name.
@@ -46,13 +46,13 @@ public:
 class Rva005E1178
 {
 public:
-	void rva005E1178(float v);
+	void ShowTimerOverlay(float v);
 private:
 	char m_pad00[8];
 	Rva005E1008 *m_ptr08;
 };
 
-void Rva005E1178::rva005E1178(float v)
+void Rva005E1178::ShowTimerOverlay(float v)
 {
 	m_ptr08->showTimerOverlay(v);
 }
@@ -87,15 +87,15 @@ void __fastcall rva005E1170(Rva005F8A7ESub *p)
 class Rva005E1168
 {
 public:
-	void rva005E1168(int v);
+	void rva005E1168(int count);
 private:
 	unsigned char m_pad00[8];
 	StrategicHUD::CommandButtonMovieClip::Impl *m_ptr08;
 };
 
-void Rva005E1168::rva005E1168(int v)
+void Rva005E1168::rva005E1168(int count)
 {
-	m_ptr08->ShowProductionCount(v);
+	m_ptr08->ShowProductionCount(count);
 }
 
 // Native5E118B..5E1193 loads the same subobject word8 then jumps5E105E.

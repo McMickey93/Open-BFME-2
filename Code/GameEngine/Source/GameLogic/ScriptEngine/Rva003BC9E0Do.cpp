@@ -7,13 +7,13 @@ struct BfmeStringRecord00204A30;
 class ScriptEngine
 {
 public:
-	BfmeStringRecord00204A30 *rva00358853(const AsciiString &name, const AsciiString &text0, float word1, const AsciiString &text1, int word2);
+	BfmeStringRecord00204A30 *createNamedMapReveal(const AsciiString &name, const AsciiString &text0, float word1, const AsciiString &text1, int word2);
 	void doNamedMapReveal(const AsciiString &revealName);
 };
 extern class ScriptEngine *TheScriptEngine;
 void ScriptActions::Rva003BC9E0Do(const AsciiString &text0, float f, const AsciiString &text1, const AsciiString &name)
 {
-	TheScriptEngine->rva00358853(name, text0, f, text1, 0);
+	TheScriptEngine->createNamedMapReveal(name, text0, f, text1, 0);
 	TheScriptEngine->doNamedMapReveal(name);
 }
 

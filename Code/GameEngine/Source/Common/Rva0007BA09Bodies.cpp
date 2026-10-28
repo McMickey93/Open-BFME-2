@@ -110,12 +110,12 @@ public:
 Bool rva0007B68E(const PlaneClass *plane, const Rva0007B68EObj *box)
 {
 	const Vector3 *pv = &plane->N;
-	Vector3 t;
-	get_far_extent(*pv, box->m_vec, &t);
-	t.X = box->x - t.X;
-	t.Y = box->y - t.Y;
-	t.Z = box->z - t.Z;
-	return CollisionMath::Overlap_Test(*plane, t) == CollisionMath::POS;
+	Vector3 negFarPt;
+	get_far_extent(*pv, box->m_vec, &negFarPt);
+	negFarPt.X = box->x - negFarPt.X;
+	negFarPt.Y = box->y - negFarPt.Y;
+	negFarPt.Z = box->z - negFarPt.Z;
+	return CollisionMath::Overlap_Test(*plane, negFarPt) == CollisionMath::POS;
 }
 
 void rva0007BF5A(Region2D *region2D, Region2D *last, Region2D *c)

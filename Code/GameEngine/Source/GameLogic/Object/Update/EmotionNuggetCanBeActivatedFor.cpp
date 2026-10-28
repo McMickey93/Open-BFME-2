@@ -274,7 +274,7 @@ struct Rva004DD018Arg
  char m_pad00[0x04];
  Rva004DD018Inner *m_04;
  char m_pad08[0x74 - 0x08];
- int m_74;
+ int m_id;
  
 }
 ;
@@ -358,7 +358,7 @@ bool EmotionNugget::CanBeActivatedFor(int a, int b, Rva004DD018Arg *arg)
 	if (frame < m_frame10)
 		return false;
 	if (arg) {
-		int id = arg->m_74;
+		int id = arg->m_id;
 		_STL::map<int, unsigned int>::iterator it = m_map14x.find(id);
 		if (it != m_map14x.end()) {
 			if (frame < (unsigned int)it->second)

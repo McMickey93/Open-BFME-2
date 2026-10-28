@@ -137,7 +137,7 @@ public:
 	void rva000B710D(Matrix3D &mtx);
 	PolygonTrigger *getPolygon(RenderObjClass *robj, float *height);
 	bool getRamp(BridgeInfo *info, AsciiString boneName, PolygonTrigger **polygon, RenderObjClass **mesh, bool useObjectTransform);
-	static void setCoord(Coord3D &c, float x, float y, float z) { c.x = x; c.y = y; c.z = z; }
+	static void setCoord(Coord3D &coord, float x, float y, float z) { coord.x = x; coord.y = y; coord.z = z; }
 
 	Drawable *getDrawable() const { return m_drawable; }
 	const W3DScriptedModelDrawModuleData *getW3DModelDrawModuleData() const { return m_moduleData; }

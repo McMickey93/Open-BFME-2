@@ -437,7 +437,7 @@ ScienceType ScienceStore::getScienceFromInternalName(const AsciiString &name) co
 
 // tu-skeleton: 0x001FF51F 40B ?erase@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEPAPAXPAPAX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_vector_voidptr_opt.cpp (not merged yet)
 
-// tu-skeleton: 0x001FF547 24B ?rva001FF547@Rva001FF547@@QAEXPAXI@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE53.cpp (not merged yet)
+// tu-skeleton: 0x001FF547 24B ?deallocate@Rva001FF547@@QAEXPAXI@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE53.cpp (not merged yet)
 
 // tu-skeleton: 0x001FF55F 50B ?rva001FF55F@Rva001FF6D7@@QAEXPAURva001FF6D7Node@@@Z -- matched in Code/GameEngine/Source/Common/Rva001FF6D7List.cpp (not merged yet)
 
@@ -451,7 +451,7 @@ ScienceType ScienceStore::getScienceFromInternalName(const AsciiString &name) co
 
 // tu-skeleton: 0x001FF6D7 20B ?rva001FF6D7@Rva001FF6D7@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva001FF6D7List.cpp (not merged yet)
 
-// tu-skeleton: 0x001FF6EB 24B ?rva001FF6EB@Rva001FF547@@QAEPAXIPBX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE53.cpp (not merged yet)
+// tu-skeleton: 0x001FF6EB 24B ?allocate@Rva001FF547@@QAEPAXIPBX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE53.cpp (not merged yet)
 
 // tu-skeleton: 0x001FF743 43B ??1?$_Rb_tree@HU?$pair@$$CBHURva001FF743Element@@@_STL@@U?$_Select1st@U?$pair@$$CBHURva001FF743Element@@@_STL@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHURva001FF743Element@@@_STL@@@2@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW4Rva001FF743.cpp (not merged yet)
 

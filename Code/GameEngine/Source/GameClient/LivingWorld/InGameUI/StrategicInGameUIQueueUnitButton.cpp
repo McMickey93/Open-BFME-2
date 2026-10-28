@@ -225,7 +225,7 @@ TreeHintRef00217D4C StrategicInGameUI::QueueUnitButton::CreateHelp()
 // time at 20/28/2C and updates its button subobject at +8.
 class Rva005E1160Flag {public:void rva005E1160(bool);};
 class Rva005E1168 {public:void rva005E1168(int);};
-class Rva005E1178 {public:void rva005E1178(float);};
+class Rva005E1178 {public:void ShowTimerOverlay(float);};
 class Rva005F8A7ESub;
 void __fastcall rva005E1170(Rva005F8A7ESub*);
 void __fastcall rva005E118B(Rva005F8A7ESub*);
@@ -260,6 +260,6 @@ void Rva005F8A7E::rva005F8A7E() {
  int count=region?CountQueuedUnits(region->getBuildQueue(),unitID):0;
  if(count>0)((Rva005E1168*)((char*)this+8))->rva005E1168(count);
  else rva005E1170((Rva005F8A7ESub*)((char*)this+8));
- if(count>0)((Rva005E1178*)((char*)this+8))->rva005E1178(GetQueuedUnitProgress(regionID,unitID,buildTime));
+ if(count>0)((Rva005E1178*)((char*)this+8))->ShowTimerOverlay(GetQueuedUnitProgress(regionID,unitID,buildTime));
  else rva005E118B((Rva005F8A7ESub*)((char*)this+8));
 }

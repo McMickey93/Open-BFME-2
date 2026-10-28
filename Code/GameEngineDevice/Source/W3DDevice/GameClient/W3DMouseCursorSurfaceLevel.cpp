@@ -172,32 +172,32 @@ void CursorTextureSlot::FillLevelSurfaces(void)
 	int count = frame->m_ptr08->Slot_13();
 	for (int level = 1; level < count; level++)
 	{
-		float a;
-		float b;
-		float c;
+		float red;
+		float green;
+		float blue;
 		switch (level)
 		{
 		case 1:
-			a = 1.0f;
-			b = 0.0f;
-			c = 0.0f;
+			red = 1.0f;
+			green = 0.0f;
+			blue = 0.0f;
 			break;
 		case 2:
-			a = 0.0f;
-			b = 1.0f;
-			c = 0.0f;
+			red = 0.0f;
+			green = 1.0f;
+			blue = 0.0f;
 			break;
 		case 3:
-			a = 0.0f;
-			b = 0.0f;
-			c = 1.0f;
+			red = 0.0f;
+			green = 0.0f;
+			blue = 1.0f;
 			break;
 		default:
-			a = 1.0f;
-			b = 1.0f;
-			c = 0.0f;
+			red = 1.0f;
+			green = 1.0f;
+			blue = 0.0f;
 			break;
 		}
-		((SurfaceClass *)&Get_Surface_Level(level))->TintSurface(a, b, c);
+		((SurfaceClass *)&Get_Surface_Level(level))->TintSurface(red, green, blue);
 	}
 }

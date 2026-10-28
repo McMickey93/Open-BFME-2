@@ -125,7 +125,7 @@ struct DelegateDesc {
  Rva005FBC20 *m_object; void(Rva005FBC20::*m_method)(const char*);
 };
 class Rva00579E47Delegate : public Rva00579E47 {
-public: Rva00579E47Delegate(DelegateDesc d):Rva00579E47(d){}
+public: Rva00579E47Delegate(DelegateDesc desc):Rva00579E47(desc){}
 };
 void Rva005FBC20::OnChainHitAnim(const char*) { if(hitActive) owner->slot1(); }
 void Rva005FBC20::OnHitAnimDone(const char*) { if(hitActive) {hitActive=false; owner->slot2();} }

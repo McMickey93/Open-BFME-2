@@ -38,7 +38,7 @@ class Rva0073FF30Base
 public:
 	virtual void dummy();
 
-	Int unknown04;
+	Int m_totalTimeMilliseconds;
 	Int unknown08;
 	char unknown0c[4];
 	char unknown10[8];
@@ -162,7 +162,7 @@ void W3DView::cameraModLookToward(Coord3D *pLoc)
 				cameraPath.cameraAngles[i] = angle;
 			}
 		}
-		if (cameraPath.unknown04 == 1) {
+		if (cameraPath.m_totalTimeMilliseconds == 1) {
 			moveAlongWaypointPath(1);
 			cameraMovementMode = 1;
 			m_field138 = 0.0f;

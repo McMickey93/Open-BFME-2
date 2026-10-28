@@ -69,7 +69,7 @@ public:
 	virtual void s02();
 	virtual void s03();
 	virtual void s04();
- virtual void rva00539316(const Vector3 *arg);
+ virtual void rva00539316(const Vector3 *position);
  virtual void rva00539251(int arg);
  virtual void rva005392EC();
 	virtual void s08();
@@ -85,20 +85,20 @@ private:
 	Vector3 m_18;
 };
 
-void Rva0053947D::rva00539316(const Vector3 *arg)
+void Rva0053947D::rva00539316(const Vector3 *position)
 {
 	int count = s13();
 	for (int i = 0; i < count; ++i)
 	{
 		Rva00539316Elem *p = s15(i);
 		Vector3 tmp;
-		tmp.x = arg->x;
-		tmp.y = arg->y;
-		tmp.z = arg->z;
+		tmp.x = position->x;
+		tmp.y = position->y;
+		tmp.z = position->z;
 		tmp.z += p->m_b4;
 		p->f07(&tmp);
 	}
-	m_18 = *arg;
+	m_18 = *position;
 }
 
 void Rva0053947D::rva005392EC()

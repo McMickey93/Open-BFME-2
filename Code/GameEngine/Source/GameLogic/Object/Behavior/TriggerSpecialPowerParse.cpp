@@ -1,7 +1,7 @@
 // cl: /DNDEBUG /MD /GX-
 // platformsdk
 //
-// ?Rva004CDF2BParse@@YAXPAVINI@@PAX1PBX@Z, retail 0x004CDF2B (147B): the
+// ?parseTriggerSpecialPower@@YAXPAVINI@@PAX1PBX@Z, retail 0x004CDF2B (147B): the
 // TriggerSpecialPower FieldParse proc (row 0x00C5FD70). Up to eight
 // {name key, mode} entries are kept in the vector at instance + 0xC8: the
 // first token is keyed through TheNameKeyGenerator (rowed nameToKey
@@ -71,8 +71,8 @@ struct Rva004CDF2BOwner
 	_STL::vector<Rva004CDF2BTrigger, _STL::allocator<Rva004CDF2BTrigger> > m_triggers;	// +0xC8
 };
 
-// ?Rva004CDF2BParse@@YAXPAVINI@@PAX1PBX@Z
-void Rva004CDF2BParse(INI *ini, void *instance, void *, const void *)
+// ?parseTriggerSpecialPower@@YAXPAVINI@@PAX1PBX@Z
+void parseTriggerSpecialPower(INI *ini, void *instance, void *, const void *)
 {
 	_STL::vector<Rva004CDF2BTrigger, _STL::allocator<Rva004CDF2BTrigger> > &triggers = ((Rva004CDF2BOwner *)instance)->m_triggers;
 	if (triggers.size() >= 8)

@@ -101,7 +101,7 @@ class Object
 public:
 	void rva0028ACEE(int a, int b);
 protected: Module *findModule(NameKeyType) const;
-public: Module *lookupModule(NameKeyType n) const {return findModule(n);}
+public: Module *lookupModule(NameKeyType key) const {return findModule(key);}
 };
 
 class Rva0028CBFD

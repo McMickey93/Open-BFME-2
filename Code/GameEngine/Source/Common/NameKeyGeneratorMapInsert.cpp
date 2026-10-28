@@ -135,8 +135,8 @@ NameKeyGenerator::KeyToBucketMap::insert(const value_type &value)
 __declspec(noinline) inline NameKeyGenerator::KeyToBucketMap::insert_result
 NameKeyGenerator::KeyToBucketMap::do_insert(const value_type &value)
 {
-	const unsigned n = bkt_num(value);
-	Bucket *first = (Bucket *)tableAt(n);
+	const unsigned bucketIndex = bkt_num(value);
+	Bucket *first = (Bucket *)tableAt(bucketIndex);
 
 	for (Bucket *cur = first; cur != 0; cur = cur->next)
 	{
@@ -148,7 +148,7 @@ NameKeyGenerator::KeyToBucketMap::do_insert(const value_type &value)
 
 	Bucket *bucket = (Bucket *)allocateNode(value);
 	bucket->next = first;
-	tableAt(n) = bucket;
+	tableAt(bucketIndex) = bucket;
 	++m_count;
 
 	return insert_result(bucket, this, true);
@@ -165,11 +165,11 @@ __declspec(noinline) inline void *NameKeyGenerator::KeyToBucketMap::allocateNode
 int *NameKeyGenerator::KeyToBucketMap::insertNode(const value_type &value)
 {
 	resize(m_count + 1);
-	const unsigned n = (unsigned)lookupKey(value) % tableSize();
-	Bucket *oldHead = tableAt(n);
+	const unsigned bucketIndex = (unsigned)lookupKey(value) % tableSize();
+	Bucket *oldHead = tableAt(bucketIndex);
 	Bucket *node = (Bucket *)allocateNode(value);
 	node->next = oldHead;
-	tableAt(n) = node;
+	tableAt(bucketIndex) = node;
 	++m_count;
 	return &node->key;
 }
@@ -183,8 +183,8 @@ int *NameKeyGenerator::KeyToBucketMap::insertNode(const value_type &value)
 NameKeyGenerator::KeyToBucketMap::equal_result
 NameKeyGenerator::KeyToBucketMap::rva0005559F(const value_type &value)
 {
-	const unsigned n = bkt_num(value);
-	Bucket *first = (Bucket *)tableAt(n);
+	const unsigned bucketIndex = bkt_num(value);
+	Bucket *first = (Bucket *)tableAt(bucketIndex);
 
 	for (Bucket *cur = first; cur != 0; cur = cur->next)
 	{
@@ -200,7 +200,7 @@ NameKeyGenerator::KeyToBucketMap::rva0005559F(const value_type &value)
 
 	Bucket *bucket = (Bucket *)allocateNode(value);
 	bucket->next = first;
-	tableAt(n) = bucket;
+	tableAt(bucketIndex) = bucket;
 	++m_count;
 
 	return equal_result(bucket, this);

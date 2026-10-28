@@ -34,9 +34,9 @@ bool Rva0052DB4D::rva0052DB4D(int arg)
 	Rva0052DB4DHead *h = m_0;
 	if (!h)
 		return false;
-	for (Rva0052DB4DNode *n = h->m_1c; n; n = n->m_next)
+	for (Rva0052DB4DNode *node = h->m_1c; node; node = node->m_next)
 	{
-		if (((Rva0052DB4DObj *)n->m_8)->m_74 != arg)
+		if (((Rva0052DB4DObj *)node->m_8)->m_74 != arg)
 			return true;
 	}
 	return false;

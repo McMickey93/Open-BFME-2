@@ -172,16 +172,16 @@ struct SightedEventData
 
 void Drawable::onComingOutOfShroud()
 {
-	const ThingTemplate *tmpl = m_template;
+	const ThingTemplate *thingTemplate = m_template;
 
 	Object *obj = m_object;
 
 	Player *localPlayer = ThePlayerList ? ThePlayerList->getLocalPlayer() : 0;
-	if (!tmpl || !obj || !localPlayer || !TheGameLogic || TheGameLogic->getFrame() <= 5)
+	if (!thingTemplate || !obj || !localPlayer || !TheGameLogic || TheGameLogic->getFrame() <= 5)
 		return;
 
 	if (obj->rva00294471(localPlayer, 1)) {
-		if (!obj->isEffectivelyDead() && tmpl->m_sightedEvent != -1 && !tmpl->testKindInView(47) && !m_sightReported) {
+		if (!obj->isEffectivelyDead() && thingTemplate->m_sightedEvent != -1 && !thingTemplate->testKindInView(47) && !m_sightReported) {
 			Rva004A1828Holder *holder = (Rva004A1828Holder *)Rva004A1828Get((Rva004A1828Owner *)obj);
 			bool skip;
 			if (holder && holder->isReady()) {
@@ -189,7 +189,7 @@ void Drawable::onComingOutOfShroud()
 			} else {
 				Player *controller = obj->getControllingPlayer();
 				if (controller) {
-					int dataEvent = tmpl->m_sightedEvent;
+					int dataEvent = thingTemplate->m_sightedEvent;
 					SightedEventData data;
 					data.drawable = this;
 					data.event = dataEvent;
@@ -204,9 +204,9 @@ void Drawable::onComingOutOfShroud()
 			if (!skip) {
 				Object *nearest = ((Drawable *)obj)->rva00272AD5();
 				if (nearest) {
-					int event = tmpl->m_sightedEvent;
-					if (m_useAltSightedEvent && tmpl->m_sightedEventAlt != -1)
-						event = tmpl->m_sightedEventAlt;
+					int event = thingTemplate->m_sightedEvent;
+					if (m_useAltSightedEvent && thingTemplate->m_sightedEventAlt != -1)
+						event = thingTemplate->m_sightedEventAlt;
 					if (TheEva->reportEvaEvent((EvaEventID)event, nearest->getPosition(), obj->getPosition()) && holder && holder->isReady()) {
 						m_sightReported = true;
 						Object *holderObject = TheGameLogic->findObjectByID(holder->getID());
@@ -222,7 +222,7 @@ void Drawable::onComingOutOfShroud()
 
 		int mask80 = 0x80;
 
-		if ((((const unsigned char *)&tmpl->m_kindOf)[0] & mask80) && !(m_status & 0x40)) {
+		if ((((const unsigned char *)&thingTemplate->m_kindOf)[0] & mask80) && !(m_status & 0x40)) {
 			static NameKeyType key_CastleMemberBehavior = TheNameKeyGenerator->nameToKey("CastleMemberBehavior");
 			Module *member;
 			// Equivalent paths preserve VC7.1 allocation costs before tail merging.
@@ -254,7 +254,7 @@ void Drawable::onComingOutOfShroud()
 
 		if (!(m_status & mask80) && !obj->isEffectivelyDead()) {
 			m_status |= mask80;
-			int event = tmpl->m_revealedEvent;
+			int event = thingTemplate->m_revealedEvent;
 			if (event != -1) {
 				Object *nearest = ((Drawable *)obj)->rva00272AD5();
 				if (nearest)
@@ -267,7 +267,7 @@ void Drawable::onComingOutOfShroud()
 		int mask80 = 0x80;
 		if (!(m_status & mask80) && !obj->isEffectivelyDead()) {
 			m_status |= mask80;
-			int event = tmpl->m_shroudedEvent;
+			int event = thingTemplate->m_shroudedEvent;
 			if (event != -1) {
 				Object *nearest = ((Drawable *)obj)->rva00272AD5();
 				if (nearest)

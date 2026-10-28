@@ -49,13 +49,13 @@ void *rva0002FC60(unsigned int size)
 // --- 0x0002FC80 (24B): _msize: the block's size through the null-guarded
 // block-size forwarder 0x00030860, with the heap word the block-heap slot
 // (VA 0x00DE03F0, ?_GetBlockHeap@MemoryPool@@YAIPAX@Z) reports.
-extern void *g_00DE03F0;
+extern void *__gameMemGetBlockHeapPtr;
 unsigned int rva00030860(void *block, unsigned int heap);
 
 
 // --- 0x0002FCA0 (24B): realloc through the resize slot VA 0x00DE0400 with
 // two zero words.
-extern void *g_00DE0400;
+extern void *__gameMemReallocatePtr;
 
 
 // --- 0x0002FCC0 (68B): strdup through the rowed allocator<char>::allocate.
@@ -107,8 +107,8 @@ void *__cdecl operator new[](unsigned int size, const char *, int)
 // identity MemoryPool::InitFunctionPointers), register the slot at
 // VA 0x00DE040C with atexit, then tail-call the slot at VA 0x00DE0410.
 namespace MemoryPool { void InitFunctionPointers(); }
-extern void *g_00DE040C;
-extern void *g_00DE0410;
+extern void *__gameMemExitPtr;
+extern void *__gameMemInitPtr;
 
 
 // --- 0x0002F980 (22B): the registry block's once-gate on its own, ahead of

@@ -220,8 +220,8 @@ UpdateSleepTime SpecialEnemySenseUpdate::update()
 		Rva0049A037Members *members = obj->getContain() ? obj->getContain()->rva0049A037Slot31() : 0;
 		if (members) {
 			Rva0049A037Items items = members->rva0049A037Slot66();
-			for (Rva0049A037Node *n = items.m_list->m_head->m_next; n != items.m_list->m_head; n = n->m_next)
-				setModelConditionBit(n->m_object, 258);
+			for (Rva0049A037Node *node = items.m_list->m_head->m_next; node != items.m_list->m_head; node = node->m_next)
+				setModelConditionBit(node->m_object, 258);
 		} else {
 			setModelConditionBit(obj, 258);
 		}
@@ -229,8 +229,8 @@ UpdateSleepTime SpecialEnemySenseUpdate::update()
 		Rva0049A037Members *members = obj->getContain() ? obj->getContain()->rva0049A037Slot31() : 0;
 		if (members) {
 			Rva0049A037Items items = members->rva0049A037Slot66();
-			for (Rva0049A037Node *n = items.m_list->m_head->m_next; n != items.m_list->m_head; n = n->m_next)
-				clearModelConditionBit(n->m_object, 258);
+			for (Rva0049A037Node *node = items.m_list->m_head->m_next; node != items.m_list->m_head; node = node->m_next)
+				clearModelConditionBit(node->m_object, 258);
 		} else {
 			clearModelConditionBit(obj, 258);
 		}

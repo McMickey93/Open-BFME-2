@@ -45,7 +45,7 @@ public:
 struct BfmeSlotJA
 {
 	char m_bfmePad[4];
-	BfmeHookJA *m_bfmeHook;
+	BfmeHookJA *m_nextOverride;
 };
 
 class ThingTemplate;
@@ -67,7 +67,7 @@ const ThingTemplate *MapObject::getThingTemplate() const
 {
 	BfmeSlotJA *s = m_bfmeSlot;
 	if (s) {
-		BfmeHookJA *h = s->m_bfmeHook;
+		BfmeHookJA *h = s->m_nextOverride;
 		if (h)
 			return (const ThingTemplate *)h->bfmeCallJA();
 		return (const ThingTemplate *)s;

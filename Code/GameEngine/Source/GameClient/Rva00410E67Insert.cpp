@@ -41,11 +41,11 @@ private:
 _STL::pair<const AsciiString, TreeHintPayload00410B17> *Rva000427195::rva00410E67(const _STL::pair<const AsciiString, TreeHintPayload00410B17> *arg)
 {
 	rva00212858(m_numElements + 1);
-	int b = bucketIndex(&arg->first);
-	void *old = m_beginBuckets[b];
+	int bucket = bucketIndex(&arg->first);
+	void *old = m_beginBuckets[bucket];
 	void *n = rva00410997(arg);
 	*(void **)n = old;
-	m_beginBuckets[b] = n;
+	m_beginBuckets[bucket] = n;
 	++m_numElements;
 	return (_STL::pair<const AsciiString, TreeHintPayload00410B17> *)((char *)n + 4);
 }

@@ -158,7 +158,7 @@ class Rva00109236 { public: void rva00109236(); };
 class Rva0009A361
 {
 public:
-	void rva0009A361(int v);
+	void rva0009A361(int rinfo);
 
 private:
 	bool m_0;
@@ -329,7 +329,7 @@ void Rva0009A2CDRun()
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Shadow/W3DShadowManagerClearLists.cpp
 
-void rva0009A30A() {
+void removeAllShadows() {
  if(TheW3DVolumetricShadowManager) reinterpret_cast<Rva000F0AB2 *>(TheW3DVolumetricShadowManager)->rva000F0AB2();
  if(TheW3DProjectedShadowManager) reinterpret_cast<Rva00107152 *>(TheW3DProjectedShadowManager)->rva00107152();
  if(Rva00DEC2D8Manager) reinterpret_cast<Rva00109236 *>(Rva00DEC2D8Manager)->rva00109236();
@@ -340,10 +340,10 @@ void rva0009A30A() {
 // ---- from Code/GameEngine/Source/Common/Rva0009A361Guard.cpp
 
 // ?rva0009A361@Rva0009A361@@QAEXH@Z
-void Rva0009A361::rva0009A361(int v)
+void Rva0009A361::rva0009A361(int rinfo)
 {
 	if (TheW3DVolumetricShadowManager != 0 && m_0)
-		TheW3DVolumetricShadowManager->renderShadows(*(RenderInfoClass *)v);
+		TheW3DVolumetricShadowManager->renderShadows(*(RenderInfoClass *)rinfo);
 	m_0 = 0;
 }
 

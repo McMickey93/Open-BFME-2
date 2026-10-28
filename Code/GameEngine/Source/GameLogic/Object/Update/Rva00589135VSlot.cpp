@@ -57,7 +57,7 @@ public:
 	void rva00589135(int commandOptions);
 	void rva0058916B(int arg1, int commandOptions);
 	void rva005891A3(int arg1, int commandOptions);
-	void rva005891DB(int arg1, int angle, int commandOptions);
+	void rva005891DB(int loc, int angle, int commandOptions);
 	int rva005893AD();
 	bool rva005778AD();
 private:
@@ -109,7 +109,7 @@ void WeaponModeSpecialPowerUpdateBase::rva005891A3(int arg1, int commandOptions)
 }
 
 // ?rva005891DB@WeaponModeSpecialPowerUpdateBase@@QAEXHHH@Z, retail 0x005891DB 58B. Vslot 13 of 0x00870108 via rowed BitFlags 0x0023C58B any plus slot0 virtual on this-4 with 5 args. Same pattern as vslots 10-12 with three int args.
-void WeaponModeSpecialPowerUpdateBase::rva005891DB(int arg1, int angle, int commandOptions)
+void WeaponModeSpecialPowerUpdateBase::rva005891DB(int loc, int angle, int commandOptions)
 {
 	if (m_08 > 0)
 		return;
@@ -119,7 +119,7 @@ void WeaponModeSpecialPowerUpdateBase::rva005891DB(int arg1, int angle, int comm
 		return;
 	void *moduleData = *(void *const *)((const char *)this - 0x20);
 	VirtBase *vb = (VirtBase *)((char *)this - 4);
-	vb->vf(*(void **)((char *)moduleData + 8), 0, arg1, commandOptions, angle);
+	vb->vf(*(void **)((char *)moduleData + 8), 0, loc, commandOptions, angle);
 }
 
 int WeaponModeSpecialPowerUpdateBase::rva005893AD()

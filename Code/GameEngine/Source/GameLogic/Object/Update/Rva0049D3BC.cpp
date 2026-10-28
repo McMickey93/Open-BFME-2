@@ -11,16 +11,16 @@ extern GameLogic *TheGameLogic;
 struct Rva0049D3BCData
 {
 	char _pad[0x0C];
-	unsigned int m_0C;
-	unsigned int m_10;
-	unsigned int m_14;
+	unsigned int m_doorOpeningTime;
+	unsigned int m_doorWaitOpenTime;
+	unsigned int m_doorClosingTime;
 };
 
 struct Rva0049D3BCEntry
 {
-	unsigned int m_00;
-	unsigned int m_04;
-	unsigned int m_08;
+	unsigned int m_doorOpenedFrame;
+	unsigned int m_doorWaitOpenFrame;
+	unsigned int m_doorClosedFrame;
 	unsigned char m_flag;
 	char _pad[3];
 };
@@ -67,35 +67,35 @@ void ProductionUpdate::rva0049D3BC()
 	unsigned int cur = TheGameLogic->getFrame();
 	for (int i = 0; i < 4; ++i)
 	{
-		if (m_entries[i].m_00 != 0)
+		if (m_entries[i].m_doorOpenedFrame != 0)
 		{
-			if (cur - m_entries[i].m_00 > data->m_0C)
+			if (cur - m_entries[i].m_doorOpenedFrame > data->m_doorOpeningTime)
 			{
-				m_entries[i].m_00 = 0;
-				m_entries[i].m_04 = cur;
+				m_entries[i].m_doorOpenedFrame = 0;
+				m_entries[i].m_doorWaitOpenFrame = cur;
 				m_7C[ProductionDoorOpeningFlags[i] >> 5] |= (1u << (ProductionDoorOpeningFlags[i] & 31));
 				m_C8[ProductionDoorOpeningFlags[i] >> 5] &= ~(1u << (ProductionDoorOpeningFlags[i] & 31));
 				m_C8[ProductionDoorWaitingOpenFlags[i] >> 5] |= (1u << (ProductionDoorWaitingOpenFlags[i] & 31));
 				m_114 = 1;
 			}
 		}
-		else if (m_entries[i].m_04 != 0)
+		else if (m_entries[i].m_doorWaitOpenFrame != 0)
 		{
-			if (cur - m_entries[i].m_04 > data->m_10 && m_entries[i].m_flag == 0)
+			if (cur - m_entries[i].m_doorWaitOpenFrame > data->m_doorWaitOpenTime && m_entries[i].m_flag == 0)
 			{
-				m_entries[i].m_04 = 0;
-				m_entries[i].m_08 = cur;
+				m_entries[i].m_doorWaitOpenFrame = 0;
+				m_entries[i].m_doorClosedFrame = cur;
 				m_7C[ProductionDoorWaitingOpenFlags[i] >> 5] |= (1u << (ProductionDoorWaitingOpenFlags[i] & 31));
 				m_C8[ProductionDoorWaitingOpenFlags[i] >> 5] &= ~(1u << (ProductionDoorWaitingOpenFlags[i] & 31));
 				m_C8[ProductionDoorClosingFlags[i] >> 5] |= (1u << (ProductionDoorClosingFlags[i] & 31));
 				m_114 = 1;
 			}
 		}
-		else if (m_entries[i].m_08 != 0)
+		else if (m_entries[i].m_doorClosedFrame != 0)
 		{
-			if (m_entries[i].m_flag == 0 && cur - m_entries[i].m_08 > data->m_14)
+			if (m_entries[i].m_flag == 0 && cur - m_entries[i].m_doorClosedFrame > data->m_doorClosingTime)
 			{
-				m_entries[i].m_08 = 0;
+				m_entries[i].m_doorClosedFrame = 0;
 				m_7C[ProductionDoorClosingFlags[i] >> 5] |= (1u << (ProductionDoorClosingFlags[i] & 31));
 				m_C8[ProductionDoorClosingFlags[i] >> 5] &= ~(1u << (ProductionDoorClosingFlags[i] & 31));
 				m_114 = 1;

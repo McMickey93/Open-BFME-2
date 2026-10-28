@@ -31,7 +31,7 @@ struct Rva00131B1FSurface
 	int m_dim2C; // +0x2C
 	int m_dim30; // +0x30
 	int m_pad34[4]; // +0x34..0x43
-	int m_mip44; // +0x44: 1 skips the *4/3 upscale
+	int m_mipLevelCount; // +0x44: 1 skips the *4/3 upscale
 	int m_pad48; // +0x48..0x4B
 	int m_format; // +0x4C: WW3DFormat for Get_Bits_Per_Pixel
 
@@ -46,7 +46,7 @@ unsigned Rva00131B1FSurface::Get_Memory_Size() const
 		* m_dim30 * m_dim2C * m_dim28 >> 3;
 	if (m_type0C == 2)
 		mem *= 6;
-	if (m_mip44 != 1)
+	if (m_mipLevelCount != 1)
 		mem = mem * 4 / 3;
 	return mem + 0x58;
 }

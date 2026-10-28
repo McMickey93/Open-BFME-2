@@ -20,7 +20,7 @@ class Rva00421292
 public:
 	void rva00421292(Gen_0039BE00 *holder, const StringBase<char> *name);
 };
-extern Rva00421520 *g_00E03158;
+extern Rva00421520 *TheLightPointSystem;
 
 class Rva002A9F17
 {
@@ -34,9 +34,9 @@ private:
 
 void Rva002A9F17::rva002A9F17(const StringBase<char> *name)
 {
-	Rva00421520 *p = g_00E03158;
-	if (p)
-		p->rva00421520(&m_318, name);
+	Rva00421520 *lightPointSystem = TheLightPointSystem;
+	if (lightPointSystem)
+		lightPointSystem->rva00421520(&m_318, name);
 }
 
 // ?rva002A9F35@Rva002A9F17@@QAEXPBX@Z @0x002A9F35 30B sibling forwarder
@@ -45,10 +45,10 @@ void Rva002A9F17::rva002A9F17(const StringBase<char> *name)
 // (single push, no string evidence), so the callee pin keeps it void.
 void Rva002A9F17::rva002A9F35(const void *arg)
 {
-	Rva00421520 *p = g_00E03158;
-	if (p)
-		((Rva00421292 *)p)->rva00421292((Gen_0039BE00 *)&m_318, (const StringBase<char> *)arg);
+	Rva00421520 *lightPointSystem = TheLightPointSystem;
+	if (lightPointSystem)
+		((Rva00421292 *)lightPointSystem)->rva00421292((Gen_0039BE00 *)&m_318, (const StringBase<char> *)arg);
 }
 
 // g_00E03158: matched references place it at VA 0xe03158 (retail value 0).
-class Rva00421520 *g_00E03158 = 0;
+class Rva00421520 *TheLightPointSystem = 0;

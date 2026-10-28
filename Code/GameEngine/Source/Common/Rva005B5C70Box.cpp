@@ -50,9 +50,9 @@ struct Rva005B5C70Box
 
 void Rva005B5C70Box::Run(int a)
 {
-	int r;
-	GadgetListBoxGetSelected(m_8, &r);
-	Rva005B5C70Entry *e = (Rva005B5C70Entry *)GadgetListBoxGetItemData(m_8, r, 0);
+	int selected;
+	GadgetListBoxGetSelected(m_8, &selected);
+	Rva005B5C70Entry *e = (Rva005B5C70Entry *)GadgetListBoxGetItemData(m_8, selected, 0);
 	if (e == 0)
 		return;
 	AptMyHero *aptMyHero = (AptMyHero *)m_4;

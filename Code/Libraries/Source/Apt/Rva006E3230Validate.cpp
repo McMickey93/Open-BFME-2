@@ -84,8 +84,8 @@ class AptActionQueueC {
     int m_iActionPoolSize;
 public:
     void rva006E3230(Rva006E3230Action *pCur);
-    Rva006E3230Action *rva006E3DB0();
-    Rva006E3230Action *rva006E3920(int arg);
+    Rva006E3230Action *getCurrent();
+    Rva006E3230Action *rva006E3920(int index);
     void rva006E39A0();
     void rva006E3740(AptValue *pContext, AptValue *pA, AptValue *pB, int iD, int iE);
     void rva006E4B80(void *pArg1, AptCIH *pCIH, int iArg3, int iArg4);
@@ -103,7 +103,7 @@ void AptActionQueueC::rva006E3230(Rva006E3230Action *pCur)
         if (g_bfmeAptBreakOnAssertAtDDC01C) __debugbreak();
     }
 }
-Rva006E3230Action *AptActionQueueC::rva006E3DB0()
+Rva006E3230Action *AptActionQueueC::getCurrent()
 {
     rva006E3230(m_pCurrent);
     return m_pCurrent;
@@ -115,7 +115,7 @@ Rva006E3230Action *AptActionQueueC::rva006E3DB0()
 // AptAnimation.cpp:1911, then returns &pool[wrapped (arg + iOffset)] with a
 // signed modulo folded into range. Evidence: unlock lane, caller 0x006E39A0;
 // layout/stride/names shared with the two bodies above.
-Rva006E3230Action *AptActionQueueC::rva006E3920(int arg)
+Rva006E3230Action *AptActionQueueC::rva006E3920(int index)
 {
     int iOffset = m_pCurrent - m_aActionPool;
     if (iOffset < 0 || iOffset >= m_iActionPoolSize) {
@@ -123,7 +123,7 @@ Rva006E3230Action *AptActionQueueC::rva006E3920(int arg)
         if (g_bfmeAptBreakOnAssertAtDDC01C)
             __debugbreak();
     }
-    int idx = (arg + iOffset) % m_iActionPoolSize;
+    int idx = (index + iOffset) % m_iActionPoolSize;
     if (idx >= 0)
         return &m_aActionPool[idx];
     return &m_aActionPool[idx + m_iActionPoolSize];
@@ -153,13 +153,13 @@ void AptActionQueueC::rva006E39A0()
     if (iDelta > 0) {
         do {
             Rva006E3230ActionFull *a = (Rva006E3230ActionFull *)rva006E3920(k);
-            int t = a->eActionType;
-            if (t == 1) {
+            int m_actionType = a->eActionType;
+            if (m_actionType == 1) {
                 if (!((const Rva006DBB40ShrAndField *)a->m_pValues[2])->get()) {
                     a->m_pValues[2]->setGCMark(true);
                     a->m_pValues[2]->unused13();
                 }
-            } else if (t == 2) {
+            } else if (m_actionType == 2) {
                 if (!((const Rva006DBB40ShrAndField *)a->m_pValues[0])->get()) {
                     a->m_pValues[0]->setGCMark(true);
                     a->m_pValues[0]->unused13();
@@ -296,10 +296,10 @@ public:
     void rva006E0F30(AptValue *pContext, AptValue *pA, AptValue *pB, int iD, int iE);
 private:
     char m_pad00[0xA0];
-    AptActionQueueC *m_queueA0;
+    AptActionQueueC *m_actionQueue;
 };
 
-void Rva006E0F00Owner::rva006E0F00(void *pArg1, AptCIH *pCIH, int iArg3, int iArg4) { m_queueA0->rva006E4B80(pArg1, pCIH, iArg3, iArg4); }
-void Rva006E0F00Owner::rva006E0F10(void *pArg1, AptCIH *pCIH, int iArg3, int iArg4) { m_queueA0->rva006E4C70(pArg1, pCIH, iArg3, iArg4); }
-void Rva006E0F00Owner::rva006E0F20(AptValue *pContext, AptValue *pA, AptValue *pB, int iD, int iE) { m_queueA0->rva006E3740(pContext, pA, pB, iD, iE); }
-void Rva006E0F00Owner::rva006E0F30(AptValue *pContext, AptValue *pA, AptValue *pB, int iD, int iE) { m_queueA0->rva006E3810(pContext, pA, pB, iD, iE); }
+void Rva006E0F00Owner::rva006E0F00(void *pArg1, AptCIH *pCIH, int iArg3, int iArg4) { m_actionQueue->rva006E4B80(pArg1, pCIH, iArg3, iArg4); }
+void Rva006E0F00Owner::rva006E0F10(void *pArg1, AptCIH *pCIH, int iArg3, int iArg4) { m_actionQueue->rva006E4C70(pArg1, pCIH, iArg3, iArg4); }
+void Rva006E0F00Owner::rva006E0F20(AptValue *pContext, AptValue *pA, AptValue *pB, int iD, int iE) { m_actionQueue->rva006E3740(pContext, pA, pB, iD, iE); }
+void Rva006E0F00Owner::rva006E0F30(AptValue *pContext, AptValue *pA, AptValue *pB, int iD, int iE) { m_actionQueue->rva006E3810(pContext, pA, pB, iD, iE); }

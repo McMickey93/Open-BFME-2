@@ -460,7 +460,7 @@ class Rva002A8F24 {
 // coherent rename before landing. Never bind a second global at their address.
 extern Rva002A8F24 *TheSkirmishAIManager;
 class Rva00421520;
-extern Rva00421520 *g_00E03158;
+extern Rva00421520 *TheLightPointSystem;
 class LuaScriptEngine;
 extern LuaScriptEngine *TheLuaScriptEngine;
 struct BfmeDelayedLuaEventList;
@@ -635,7 +635,7 @@ void SpecialAbilityUpdate::triggerAbilityEffect() {
         if (player)
             player->skill.rva003805BB((float)skillPoints, false);
     }
-    if (g_00E03158) {
+    if (TheLightPointSystem) {
         Player *player = owner->getControllingPlayer();
         if (player)
             ((Rva002A9EFB *)player)

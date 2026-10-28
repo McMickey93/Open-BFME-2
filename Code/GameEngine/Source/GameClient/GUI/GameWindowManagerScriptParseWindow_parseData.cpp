@@ -36,7 +36,7 @@ public:
  GameWindow *field00;
  int field04,field08,field0c,field10,field14;
  void *field18,*field1c,*field20,*field24,*field28,*field2c;
- WinInstanceData *dword_30;
+ WinInstanceData *m_instData;
 };
 
 class GameWindowManager;
@@ -136,7 +136,7 @@ static GameWindow *createWindow( char *type, Int id, Open2479440Record *record, 
 		window = ( (Rva004874A0ManagerView *)TheWindowManager )->s74( record );
 		if( window )
 		{
-			record->dword_30->m_style |= 0x00000200;
+			record->m_instData->m_style |= 0x00000200;
 			( (Rva00478C90Object *)window )->store( id );
 		}
 	}
@@ -145,8 +145,8 @@ static GameWindow *createWindow( char *type, Int id, Open2479440Record *record, 
 		window = ( (Rva004874A0ManagerView *)TheWindowManager )->s74( record );
 		if( window )
 		{
-			record->dword_30->m_style |= 0x00004000;
-			window->winSetInstanceData( record->dword_30 );
+			record->m_instData->m_style |= 0x00004000;
+			window->winSetInstanceData( record->m_instData );
 			( (Rva00478C90Object *)window )->store( id );
 		}
 	}
@@ -170,7 +170,7 @@ static GameWindow *createWindow( char *type, Int id, Open2479440Record *record, 
 	}
 
 	if( window )
-		setWindowText( window, record->dword_30->m_textLabelString );
+		setWindowText( window, record->m_instData->m_textLabelString );
 
 	if( window && parent )
 		( (Rva004874A0ManagerView *)TheWindowManager )->sD8( parent, 0x16, id, 0 );

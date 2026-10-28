@@ -14,7 +14,7 @@
 struct Rva004FF207Point : Coord3D
 {
 	Rva004FF207Point(float xx, float yy) { x = xx; y = yy; z = 0.0f; }
-	Rva004FF207Point(const Rva004FF207Point &v) { x = v.x; y = v.y; z = v.z; }
+	Rva004FF207Point(const Rva004FF207Point &other) { x = other.x; y = other.y; z = other.z; }
 };
 struct Rva004FF207Pair : Coord2D
 {

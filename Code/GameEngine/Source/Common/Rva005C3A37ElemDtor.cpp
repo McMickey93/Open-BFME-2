@@ -67,7 +67,7 @@ class Rva005C3A37Elem {
 public:
  Rva005C3A37Elem(Rva005C3F02 *,void *,void *);
  ~Rva005C3A37Elem();
- void rva005C3DE1(int);
+ void onClosed(int);
  void Add(TreeHintRef00217D4C);
  void rva005C3B3E();
 };
@@ -78,7 +78,7 @@ Rva005C3A37Elem::~Rva005C3A37Elem() {}
 // holders are cleared in reverse order. Positive remaining count repeats;
 // the owner0 virtual slot8 is called after disabling18. Argument is unread.
 struct Rva002BED91 { void clear(); };
-void Rva005C3A37Elem::rva005C3DE1(int)
+void Rva005C3A37Elem::onClosed(int)
 {
  if(pending) {
   pending=false;
@@ -162,12 +162,12 @@ inline AsciiStringPlusStringText operator+(const AsciiStringPlusString &left,con
 // Default array callback independently equals13B005C39DE; established
 // lifecycle/layout and all three registered callback addresses are target facts.
 // Prefix and suffix concat pattern follows verified Palantir/HUD siblings.
-Rva005C3A37Elem::Rva005C3A37Elem(Rva005C3F02 *p,void *q,void *r)
- :owner(reinterpret_cast<Rva005C3DE1Owner *>(p)),unknown04(q),name(*static_cast<const AsciiString *>(r)),active(false),count(0),pending(false),reload(false)
+Rva005C3A37Elem::Rva005C3A37Elem(Rva005C3F02 *p,void *level,void *r)
+ :owner(reinterpret_cast<Rva005C3DE1Owner *>(p)),unknown04(level),name(*static_cast<const AsciiString *>(r)),active(false),count(0),pending(false),reload(false)
 {
  AsciiString prefix;
  prefix.format("_level%u.",unknown04);
  commands.AddCommandMapBinding(prefix+name+"_OnButtonFrameLoaded",DelegateDesc(this,&Rva005C3C0B::rva005C3C0B));
  commands.AddCommandMapBinding(prefix+name+"_OnButtonFrameUnloaded",DelegateDesc(this,&Rva005C3D5F::rva005C3D5F));
- commands.AddCommandMapBinding(prefix+name+"_OnClosed",DelegateDesc(this,&Rva005C3A37Elem::rva005C3DE1));
+ commands.AddCommandMapBinding(prefix+name+"_OnClosed",DelegateDesc(this,&Rva005C3A37Elem::onClosed));
 }

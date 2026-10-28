@@ -51,10 +51,10 @@ private:
 
 struct Rva0048BCBBNugget
 {
-	Rva0048BCBBNugget() : m_00(0), m_04(0), m_08(false), m_0C(0.0f), m_10(0.0f), m_14(0.0f) {}
+	Rva0048BCBBNugget() : m_00(0), m_fireDelay(0), m_oneShot(false), m_0C(0.0f), m_10(0.0f), m_14(0.0f) {}
 	int m_00;
-	int m_04;
-	bool m_08;
+	int m_fireDelay;
+	bool m_oneShot;
 	float m_0C;
 	float m_10;
 	float m_14;

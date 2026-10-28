@@ -110,10 +110,10 @@ struct Rva004F9F39Unit : public TargetRef00217D4C
 	Rva004F9F39Key *m_08; // +0x08
 	float m_health; // +0x0C
 	unsigned char m_pad10[0x1C - 0x10];
-	MedianKey004F60EC *m_1c; // +0x1C
+	MedianKey004F60EC *m_leadershipBonus; // +0x1C
 	unsigned char m_pad20[0x2C - 0x20];
 	Rva004F9F39Template *m_template; // +0x2C
-	MedianKey004F60EC *getBonus() const { return m_1c; }
+	MedianKey004F60EC *getBonus() const { return m_leadershipBonus; }
 };
 struct Rva004F9F39Mask
 {
@@ -185,7 +185,7 @@ void LivingWorldAutoResolveBattle::rva004F9F39()
 					unsigned int bit = unit->m_template->m_autoResolveUnitType;
 					if ((info->m_mask.m_bits[bit >> 5] & (1u << (bit & 31))) && unit != (Rva004F9F39Unit *)record->m_08.m_ptr && !(unit->m_health <= 0.0f))
 					{
-						unit->m_1c = record->m_ptr;
+						unit->m_leadershipBonus = record->m_ptr;
 						--count;
 					}
 				}

@@ -14,7 +14,7 @@ class Rva002C7492
 {
 public:
 	void rva002C7492(const Rva002C7492 *other);
-	Rva002C7492 *rva002C760B(int v0, int v1, int v2, int v3, int v4, int v5, int v6, int v7);
+	Rva002C7492 *rva002C760B(int v0, int idx1, int idx2, int idx3, int idx4, int idx5, int idx6, int idx7);
 
 private:
 	int m_mask[19];
@@ -32,17 +32,17 @@ void Rva002C7492::rva002C7492(const Rva002C7492 *other)
 // Evidence: sole caller 0x002C777E passes zero plus 7 bit ids per case;
 // neighbour Rva002C76B2Build.cpp proves extern C memset import 0x6291AE
 // and unsigned bit idiom; class layout int[19] from the OR-merge above.
-Rva002C7492 *Rva002C7492::rva002C760B(int v0, int v1, int v2, int v3, int v4, int v5, int v6, int v7)
+Rva002C7492 *Rva002C7492::rva002C760B(int v0, int idx1, int idx2, int idx3, int idx4, int idx5, int idx6, int idx7)
 {
 	(void)v0;
 	memset(this, 0, 0x4C);
 	unsigned *bits = (unsigned *)m_mask;
-	bits[(unsigned)v1 >> 5] |= 1u << ((unsigned)v1 & 31);
-	bits[(unsigned)v2 >> 5] |= 1u << ((unsigned)v2 & 31);
-	bits[(unsigned)v3 >> 5] |= 1u << ((unsigned)v3 & 31);
-	bits[(unsigned)v4 >> 5] |= 1u << ((unsigned)v4 & 31);
-	bits[(unsigned)v5 >> 5] |= 1u << ((unsigned)v5 & 31);
-	bits[(unsigned)v6 >> 5] |= 1u << ((unsigned)v6 & 31);
-	bits[(unsigned)v7 >> 5] |= 1u << ((unsigned)v7 & 31);
+	bits[(unsigned)idx1 >> 5] |= 1u << ((unsigned)idx1 & 31);
+	bits[(unsigned)idx2 >> 5] |= 1u << ((unsigned)idx2 & 31);
+	bits[(unsigned)idx3 >> 5] |= 1u << ((unsigned)idx3 & 31);
+	bits[(unsigned)idx4 >> 5] |= 1u << ((unsigned)idx4 & 31);
+	bits[(unsigned)idx5 >> 5] |= 1u << ((unsigned)idx5 & 31);
+	bits[(unsigned)idx6 >> 5] |= 1u << ((unsigned)idx6 & 31);
+	bits[(unsigned)idx7 >> 5] |= 1u << ((unsigned)idx7 & 31);
 	return this;
 }

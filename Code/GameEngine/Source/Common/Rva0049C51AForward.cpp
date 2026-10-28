@@ -25,7 +25,7 @@ public:
 class Rva0049C51A
 {
 public:
-	void rva0049C51A(int a, int b, int c, int d, int e);
+	void rva0049C51A(int specialPowerTemplate, int targetObj, int targetPos, int commandOptions, int way);
 
 private:
 	char m_pad[0x20];
@@ -34,9 +34,9 @@ private:
 	unsigned char m_flag69;
 };
 
-void Rva0049C51A::rva0049C51A(int a, int b, int c, int d, int e)
+void Rva0049C51A::rva0049C51A(int specialPowerTemplate, int targetObj, int targetPos, int commandOptions, int way)
 {
 	Object *found = TheGameLogic->findObjectByID(m_id);
 	if (found == 0 || m_flag69 == 0)
-		((SpecialAbilityUpdate *)this)->SpecialAbilityUpdate::initiateIntentToDoSpecialPower((const SpecialPowerTemplate *)a, (const Object *)b, (const Coord3D *)c, (unsigned int)d, (const Waypoint *)e);
+		((SpecialAbilityUpdate *)this)->SpecialAbilityUpdate::initiateIntentToDoSpecialPower((const SpecialPowerTemplate *)specialPowerTemplate, (const Object *)targetObj, (const Coord3D *)targetPos, (unsigned int)commandOptions, (const Waypoint *)way);
 }

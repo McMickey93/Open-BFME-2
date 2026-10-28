@@ -18,7 +18,7 @@ struct Rva0018C4A9Result
 class Rva0018C4A9
 {
 public:
-	Rva0018C4A9Result rva0018C4A9(short *key);
+	Rva0018C4A9Result insert_unique(short *key);
 };
 class Rva0018C6D5
 {
@@ -31,6 +31,6 @@ void Rva0018C6D5::rva0018C6D5(const unsigned short *first, const unsigned short 
 {
 	for (const unsigned short *p = first; p != last; ++p) {
 		short w = (short)*p;
-		((Rva0018C4A9 *)this)->rva0018C4A9(&w);
+		((Rva0018C4A9 *)this)->insert_unique(&w);
 	}
 }

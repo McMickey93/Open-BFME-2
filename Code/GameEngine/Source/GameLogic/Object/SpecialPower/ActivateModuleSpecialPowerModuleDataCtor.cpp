@@ -43,7 +43,7 @@ struct FieldParse
 };
 
 // Rowed parse proc (retail 0x004CDF2B).
-void Rva004CDF2BParse(INI *ini, void *instance, void *store, const void *userData);
+void parseTriggerSpecialPower(INI *ini, void *instance, void *store, const void *userData);
 
 class MultiIniFieldParse
 {
@@ -94,7 +94,7 @@ void ActivateModuleSpecialPowerModuleData::buildFieldParse(MultiIniFieldParse &p
 	// Own table (retail .data 0x00C5FD70): one entry and the terminator.
 	static const FieldParse dataFieldParse[] =
 	{
-		{ "TriggerSpecialPower", Rva004CDF2BParse, 0, 0 },
+		{ "TriggerSpecialPower", parseTriggerSpecialPower, 0, 0 },
 		{ 0, 0, 0, 0 }
 	};
 	parse.add(dataFieldParse, 0);

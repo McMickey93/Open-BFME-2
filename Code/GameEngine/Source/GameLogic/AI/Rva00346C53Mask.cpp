@@ -31,12 +31,12 @@ class Rva00346BC0;
 class Object
 {
 public:
-	void rva00293D3B(const Rva00346BC0 &mask, bool set);
+	void setStatusForHorde(const Rva00346BC0 &mask, bool set);
 	void rva00346C53(ObjectStatusTypes a, bool b);
 };
 
 void Object::rva00346C53(ObjectStatusTypes a, bool b)
 {
 	ObjectStatusMask mask;
-	rva00293D3B(*reinterpret_cast<Rva00346BC0 *>(((Rva0023DA79 *)&mask)->rva0023DA79(0, a)), b);
+	setStatusForHorde(*reinterpret_cast<Rva00346BC0 *>(((Rva0023DA79 *)&mask)->rva0023DA79(0, a)), b);
 }

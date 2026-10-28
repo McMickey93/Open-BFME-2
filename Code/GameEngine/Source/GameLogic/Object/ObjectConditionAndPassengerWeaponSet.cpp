@@ -139,7 +139,7 @@ public:
 	void rva0028AE6D();
 	void makeDirty();
 	void rva0028CDEB(const Rva00346BC0 &mask, bool set);
-	void rva00293D3B(const Rva00346BC0 &mask, bool set);
+	void setStatusForHorde(const Rva00346BC0 &mask, bool set);
 	Object *rva002931F5(bool flag);
 	void *rva0028C197() const;
 	void setWeaponSetFlag(WeaponSetType wst);
@@ -150,7 +150,7 @@ public:
 	void rva0029130C(int mode);
 	void clearModelConditionStateForHorde(ModelConditionFlagType mc);
 	void setModelConditionStateForHorde(ModelConditionFlagType mc);
-	void clearAndSetModelConditionStateForHorde(ModelConditionFlagType a, ModelConditionFlagType b);
+	void clearAndSetModelConditionStateForHorde(ModelConditionFlagType clr, ModelConditionFlagType b);
 	void rva001E42F2(const int *x);
 	void rva00293BBF(const int *x);
 	void rva001E431E(const int *x);
@@ -259,7 +259,7 @@ void Object::setModelConditionStateForHorde(ModelConditionFlagType mc)
 		}
 	}
 }
-void Object::clearAndSetModelConditionStateForHorde(ModelConditionFlagType a, ModelConditionFlagType b)
+void Object::clearAndSetModelConditionStateForHorde(ModelConditionFlagType clr, ModelConditionFlagType b)
 {
 	Object *top = rva002931F5(false);
 	if (top)
@@ -272,16 +272,16 @@ void Object::clearAndSetModelConditionStateForHorde(ModelConditionFlagType a, Mo
 			for (Rva00293DACNode *node = range.m_list->m_head->m_next; node != range.m_list->m_head; node = node->m_next)
 			{
 				Object *obj = node->m_object;
-				if (obj->m_conditionBits.testIndex(a) != 0 || obj->m_conditionBits.testIndex(b) == 0)
+				if (obj->m_conditionBits.testIndex(clr) != 0 || obj->m_conditionBits.testIndex(b) == 0)
 				{
-					obj->m_conditionBits.clearIndex(a);
+					obj->m_conditionBits.clearIndex(clr);
 					obj->m_conditionBits.setIndex(b);
 					obj->rva0028AE6D();
 				}
 			}
-			if (top->m_conditionBits.testIndex(a) != 0 || top->m_conditionBits.testIndex(b) == 0)
+			if (top->m_conditionBits.testIndex(clr) != 0 || top->m_conditionBits.testIndex(b) == 0)
 			{
-				top->m_conditionBits.clearIndex(a);
+				top->m_conditionBits.clearIndex(clr);
 				top->m_conditionBits.setIndex(b);
 				top->rva0028AE6D();
 			}
@@ -292,7 +292,7 @@ void Object::clearAndSetModelConditionStateForHorde(ModelConditionFlagType a, Mo
 // Native 0x00293D3B, 113 bytes, RET8: mask plus bool. Same Object receiver,
 // container/list interface and raw node layout as adjacent matched 0x293DAC.
 // Leaf 0x28CDEB independently ends RET8 and reads both incoming arguments.
-void Object::rva00293D3B(const Rva00346BC0 &mask, bool set)
+void Object::setStatusForHorde(const Rva00346BC0 &mask, bool set)
 {
 	if (m_statusPropagationGuard455)
 		return;

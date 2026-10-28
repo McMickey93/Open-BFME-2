@@ -56,7 +56,7 @@ public:
 class Rva004213A2 { public: Rva004213A2 &operator=(const Rva004213A2 &); };
 class Rva004214C3 { public: void rva004214C3(const ModuleData *); };
 class Rva00421520;
-extern Rva00421520 *g_00E03158;
+extern Rva00421520 *TheLightPointSystem;
 class Overridable { public: Overridable *friend_getFinalOverride(); };
 typedef void (*FieldParseProc)(class INI *, void *, void *, const void *);
 struct FieldParse { const char *token; FieldParseProc parse; const void *userData; int offset; };
@@ -85,12 +85,12 @@ public:
 // found reassigned (no separate base) to keep the ESI/EDI roles.
 void LightPointSystem::friend_parseLightPointLevelDefinition(INI *ini)
 {
-    if (!g_00E03158) return;
+    if (!TheLightPointSystem) return;
     AsciiString name(ini->getNextToken());
     if (ini->loadType == 2)
     {
-        Rva004211CA *found = (Rva004211CA *)reinterpret_cast<const LightPointSystem *>(g_00E03158)->rva00421263(
-            (const Rva00421263Vec *)((char *)g_00E03158 + 12), *reinterpret_cast<const StringBase<char> *>(&name));
+        Rva004211CA *found = (Rva004211CA *)reinterpret_cast<const LightPointSystem *>(TheLightPointSystem)->rva00421263(
+            (const Rva00421263Vec *)((char *)TheLightPointSystem + 12), *reinterpret_cast<const StringBase<char> *>(&name));
         if (!found) throw INIException(3, "Light point level %s not found in map.ini", name.str());
         Rva004211CA *level = new Rva004211CA;
         if (found->m_next) found = (Rva004211CA *)((Overridable *)found->m_next)->friend_getFinalOverride();
@@ -104,6 +104,6 @@ void LightPointSystem::friend_parseLightPointLevelDefinition(INI *ini)
         Rva004211CA *level = new Rva004211CA;
         level->m_name = name;
         ini->initFromINI(level, g_00C3BE74);
-        ((Rva004214C3 *)g_00E03158)->rva004214C3((const ModuleData *)level);
+        ((Rva004214C3 *)TheLightPointSystem)->rva004214C3((const ModuleData *)level);
     }
 }

@@ -21,16 +21,16 @@ void __cdecl Rva0054A67BSiftUp(DequeE8CIter first, int hole, int top, BfmeE8 val
 	const_cast<BfmeE8 &>(*(first + hole)) = value;
 }
 
-// ?rva0054A82C@Rva0054A82C@@QAEHPAH@Z @0x0054A82C 75B via deque iterator compare plus increment and float zero
+// ?nextWithNumeric@Rva0054A82C@@QAEHPAH@Z @0x0054A82C 75B via deque iterator compare plus increment and float zero
 // Evidence: 75B thiscall ret 4 calls rowed _M_increment 0x00549E19; copies 16B from this+0x24 via movsd; callers at 0x0054B7FE/0x0054B812 in 0x0054B7B7 family
 struct Rva0054A82C {
 	int pad00;
 	DequeE8Iter it04;
 	char pad14[16];
 	DequeE8Iter it24;
-	int rva0054A82C(int *out);
+	int nextWithNumeric(int *out);
 };
-int Rva0054A82C::rva0054A82C(int *out)
+int Rva0054A82C::nextWithNumeric(int *out)
 {
 	DequeE8Iter tmp = it24;
 	if (it04._M_cur != tmp._M_cur) {

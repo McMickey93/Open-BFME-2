@@ -13,10 +13,10 @@ public:
 	void *rva0040D008(int id);
 	const AsciiString *rva0040D041(int id);
 };
-const AsciiString *ArmySummarySystem::rva0040D041(int v)
+const AsciiString *ArmySummarySystem::rva0040D041(int armyId)
 {
-	BfmeY1038 *y = (BfmeY1038 *)rva0040D008(v);
-	if (y == 0)
+	BfmeY1038 *army = (BfmeY1038 *)rva0040D008(armyId);
+	if (army == 0)
 		return &AsciiString::TheEmptyString;
-	return &y->m_64;
+	return &army->m_64;
 }

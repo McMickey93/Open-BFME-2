@@ -20,10 +20,10 @@ public:
 };
 void LivingWorldRegionManager::SetRegionReinforcements(int idx, int a2, int a3, int a4, int a5, int a6, int a7)
 {
-	Rva0020E89C *p = ((Rva0020EAF6View *)this)->rva0020EAF6(idx);
-	if (p == 0)
+	Rva0020E89C *region = ((Rva0020EAF6View *)this)->rva0020EAF6(idx);
+	if (region == 0)
 		return;
-	((Rva003F1AB9 *)p)->rva003F1AB9(a2, a3, a4, a5, a6, a7);
+	((Rva003F1AB9 *)region)->rva003F1AB9(a2, a3, a4, a5, a6, a7);
 }
 // The retail call in this body reads 0x003F1AB9, an address the ledger already
 // carries as ?rva003F1AB9@Rva003F1AB9Owner@@QAEXABV?$vector@HV?$allocator@H@_STL@@@_STL@@HHH_N1@Z. Bind the donor spelling to that rowed owner so one

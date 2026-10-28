@@ -24,9 +24,9 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class LifetimeUpdate { public: void setLifetimeRange(unsigned int,unsigned int); };
 class FXList { public: static void doFXObj(const FXList*,const Object*,const Object*); };
 struct Rva004C167EData {
- unsigned char prefix[0x6C]; unsigned int time6C; bool flag70;
- unsigned char gap71[3]; const FXList *fx74; bool flag78;
- unsigned char gap79[3]; const UpgradeTemplate *upgrade7C;
+ unsigned char prefix[0x6C]; unsigned int m_delayedDeathTime; bool flag70;
+ unsigned char gap71[3]; const FXList *m_invulnerableFX; bool m_doHealthCheck;
+ unsigned char gap79[3]; const UpgradeTemplate *m_delayedDeathPrerequisiteUpgrade;
 };
 class RespawnBody { public: virtual void internalChangeHealth(float,DamageInfo*); };
 class DelayedDeathBody
@@ -48,17 +48,17 @@ void DelayedDeathBody::internalChangeHealth(float amount,DamageInfo *info)
  bool transitioned=false;
  if(!started) {
   if(!(checked && info && info->flag24==1)) {
-   if(!module->flag78) goto finish;
+   if(!module->m_doHealthCheck) goto finish;
    if(!(health()+amount<=0.0f)) goto finish;
   }
-  if(module->upgrade7C) {
-   bool playerComplete=player && player->rva002AB87D(module->upgrade7C);
-   bool objectComplete=obj->hasUpgrade(module->upgrade7C);
+  if(module->m_delayedDeathPrerequisiteUpgrade) {
+   bool playerComplete=player && player->rva002AB87D(module->m_delayedDeathPrerequisiteUpgrade);
+   bool objectComplete=obj->hasUpgrade(module->m_delayedDeathPrerequisiteUpgrade);
    if(!playerComplete && !objectComplete) goto finish;
   }
   LifetimeUpdate *lifetime=(LifetimeUpdate*)object()->findModule((NameKeyType)TheNameKeyGenerator->nameToKey("LifetimeUpdate"));
-  if(lifetime) lifetime->setLifetimeRange(module->time6C,module->time6C);
-  if(!started) FXList::doFXObj(module->fx74,object(),0);
+  if(lifetime) lifetime->setLifetimeRange(module->m_delayedDeathTime,module->m_delayedDeathTime);
+  if(!started) FXList::doFXObj(module->m_invulnerableFX,object(),0);
   info->flag24=0;
   started=1;
   transitioned=true;

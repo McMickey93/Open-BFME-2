@@ -48,14 +48,14 @@ class Rva0007E971
 public:
 	void rva0007FAC1();
 	void rva0007FB07(IntPtrTree::iterator first, IntPtrTree::iterator last);
-	unsigned int rva00082536(const int &x);
+	unsigned int rva00082536(const int &key);
 };
 
 
 // 0x00082536 73B: erase(const int &) over rva0007FB07
-unsigned int Rva0007E971::rva00082536(const int &x)
+unsigned int Rva0007E971::rva00082536(const int &key)
 {
-	_STL::pair<IntPtrTree::iterator, IntPtrTree::iterator> p = reinterpret_cast<IntPtrTree *>(this)->equal_range(x);
+	_STL::pair<IntPtrTree::iterator, IntPtrTree::iterator> p = reinterpret_cast<IntPtrTree *>(this)->equal_range(key);
 	unsigned int n = _STL::distance(p.first, p.second);
 	rva0007FB07(p.first, p.second);
 	return n;
@@ -66,14 +66,14 @@ class Rva000D20A9
 public:
 	void rva000D2294();
 	void rva000D22BD(IntPtrTree::iterator first, IntPtrTree::iterator last);
-	unsigned int rva000D3BFD(const int &x);
+	unsigned int rva000D3BFD(const int &key);
 };
 
 
 // 0x000D3BFD 73B: erase(const int &) over rva000D22BD
-unsigned int Rva000D20A9::rva000D3BFD(const int &x)
+unsigned int Rva000D20A9::rva000D3BFD(const int &key)
 {
-	_STL::pair<IntPtrTree::iterator, IntPtrTree::iterator> p = reinterpret_cast<IntPtrTree *>(this)->equal_range(x);
+	_STL::pair<IntPtrTree::iterator, IntPtrTree::iterator> p = reinterpret_cast<IntPtrTree *>(this)->equal_range(key);
 	unsigned int n = _STL::distance(p.first, p.second);
 	rva000D22BD(p.first, p.second);
 	return n;
@@ -124,14 +124,14 @@ class Rva00362AB5
 public:
 	void rva00362AB5();
 	void rva00362ADE(IntPtrTree::iterator first, IntPtrTree::iterator last);
-	unsigned int rva00362B89(const int &x);
+	unsigned int rva00362B89(const int &key);
 };
 
 
 // 0x00362B89 73B: erase(const int &) over rva00362ADE
-unsigned int Rva00362AB5::rva00362B89(const int &x)
+unsigned int Rva00362AB5::rva00362B89(const int &key)
 {
-	_STL::pair<IntPtrTree::iterator, IntPtrTree::iterator> p = reinterpret_cast<IntPtrTree *>(this)->equal_range(x);
+	_STL::pair<IntPtrTree::iterator, IntPtrTree::iterator> p = reinterpret_cast<IntPtrTree *>(this)->equal_range(key);
 	unsigned int n = _STL::distance(p.first, p.second);
 	rva00362ADE(p.first, p.second);
 	return n;

@@ -45,11 +45,11 @@ public:
 struct Holder00521658
 {
 	char m_pad[0x288];
-	AptMpGameSetup m_288;
+	AptMpGameSetup m_gameSetup;
 	char m_pad28C[0x668 - 0x28C];
 	Obj00521658_668 m_668;
 	char m_pad66C[0x698 - 0x66C];
-	SkirmishPreferences m_698;
+	SkirmishPreferences m_skirmishPreferences;
 	char m_pad69C[0x6C4 - 0x69C];
 	int m_6C4;
 	Obj00521658_6C8 m_6C8;
@@ -59,10 +59,10 @@ struct Holder00521658
 void Holder00521658::Rva00521658()
 {
 	m_668.slot04();
-	m_698.rva0043BE7C();
-	m_698.v3slotC();
-	m_288.slot01();
-	m_288.InitGadgets();
+	m_skirmishPreferences.rva0043BE7C();
+	m_skirmishPreferences.v3slotC();
+	m_gameSetup.slot01();
+	m_gameSetup.InitGadgets();
 	m_6C4 &= 0;
 	m_6C8.slot01(0);
 }

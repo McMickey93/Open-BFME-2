@@ -57,8 +57,8 @@ void Rva004BDA67::rva004BDA67()
 	Rva003BD306Target *t = obj->m_target264;
 	if (t != 0)
 		t->rva0039B548();
-	Rva004BDA67M04 *m04 = (Rva004BDA67M04 *)m_04;
-	if (m04->m_flag50 != 0)
+	Rva004BDA67M04 *moduleData = (Rva004BDA67M04 *)m_04;
+	if (moduleData->m_flag50 != 0)
 		obj->rva0028DA28();
 	Rva004BDA67ObjInner *inner = *(Rva004BDA67ObjInner **)((char *)obj + 4);
 	if (inner->m_val61C > 0)

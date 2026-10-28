@@ -82,7 +82,7 @@ public:
 	virtual void s24();
 	void rva004891DE(Rva004891DEArg *arg, int value);
 	char m_pad[0x20];
-	int m_24;
+	int m_audioHandle;
 };
 
 void Rva004891DE::rva004891DE(Rva004891DEArg *arg, int value)
@@ -92,5 +92,5 @@ void Rva004891DE::rva004891DE(Rva004891DEArg *arg, int value)
 	s24();
 	BfmeAudioEventPrefix136 evt(arg->m_ref, 0);
 	((Rva002D9531 *)&evt)->rva002D9531(value);
-	m_24 = reinterpret_cast<Rva004891DEAudio *>(TheAudio)->addAudioEvent(&evt);
+	m_audioHandle = reinterpret_cast<Rva004891DEAudio *>(TheAudio)->addAudioEvent(&evt);
 }

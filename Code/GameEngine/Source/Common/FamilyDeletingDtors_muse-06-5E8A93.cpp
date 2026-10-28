@@ -4,6 +4,6 @@
 struct EmitVtableTag;
 
 struct Rva005F888CRef; struct Rva005F8CB0Ref;
-class Rva005E8AAF { public: Rva005E8AAF(EmitVtableTag *); virtual ~Rva005E8AAF(); virtual Rva005F888CRef rva005E8A31() const; virtual Rva005F8CB0Ref rva005E89DD(void *); };
+class Rva005E8AAF { public: Rva005E8AAF(EmitVtableTag *); virtual ~Rva005E8AAF(); virtual Rva005F888CRef clone() const; virtual Rva005F8CB0Ref rva005E89DD(void *); };
 // ?<Rva005E8AAF::Rva005E8AAF> absent-from-retail
 Rva005E8AAF::Rva005E8AAF(EmitVtableTag *) {}

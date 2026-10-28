@@ -274,7 +274,7 @@ public:
 public:
 	void rva000FE188();
 public:
-	__declspec(noinline) FeNode *rva000FE207(const float *,const float *,int);
+	__declspec(noinline) FeNode *findTrack(const float *,const float *,int);
 public:
 	void *vertexBuffer,*indexBuffer;
 public:
@@ -346,7 +346,7 @@ public:
 
 // tu-skeleton: 0x000FE1AC 91B ?rva000FE1AC@WaterTracksRenderSystem@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva000FE1ACUpdate.cpp (not merged yet)
 
-// tu-skeleton: 0x000FE207 137B ?rva000FE207@WaterTracksRenderSystem@@QAEPAUFeNode@@PBM0H@Z -- matched in Code/GameEngine/Source/Common/Rva000FE207Find.cpp (not merged yet)
+// tu-skeleton: 0x000FE207 137B ?findTrack@WaterTracksRenderSystem@@QAEPAUFeNode@@PBM0H@Z -- matched in Code/GameEngine/Source/Common/Rva000FE207Find.cpp (not merged yet)
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Water/W3DWaterTracks.cpp
 
@@ -425,7 +425,7 @@ void WaterTracksObj::init(float width,float length,Vector2 &start,Vector2 &end,c
 
 // Retail 0x000FE207, rowed in Rva000FE207Find.cpp; this select-any copy shows loadTracks
 // that the search keeps no endpoint address.
-inline FeNode *WaterTracksRenderSystem::rva000FE207(const float *a, const float *b, int c)
+inline FeNode *WaterTracksRenderSystem::findTrack(const float *a, const float *b, int c)
 {
 	FeNode *node = m_tail10;
 	while (node != 0)
@@ -474,7 +474,7 @@ void Rva0007E90ECallee::rva000FF5E6(int filename)
     wakFile->read(&endPos,sizeof(endPos));
     wakFile->read(&wtype,sizeof(wtype));
     //Check if this track already exists.
-    if(reinterpret_cast<WaterTracksRenderSystem*>(this)->rva000FE207(&startPos.X,&endPos.X,wtype)) {
+    if(reinterpret_cast<WaterTracksRenderSystem*>(this)->findTrack(&startPos.X,&endPos.X,wtype)) {
      i++;
      goto tryagain;
     }
@@ -522,7 +522,7 @@ void Rva0007E90ECallee::rva000FF5E6(int filename)
     endPos+=perp;
     wtype=WaveTypeOcean;
     //Check if this track already exists.
-    if(reinterpret_cast<WaterTracksRenderSystem*>(this)->rva000FE207(&startPos.X,&endPos.X,wtype))continue;
+    if(reinterpret_cast<WaterTracksRenderSystem*>(this)->findTrack(&startPos.X,&endPos.X,wtype))continue;
     WaterTracksObj *track=TheWaterTracksRenderSystem->bindTrack(wtype);
     if(track) {
      float fraction=GetGameClientRandomValueReal(0.0f,1.0f,"C:\\projects\\bfme2patch103\\bfme2\\Code\\GameEngineDevice\\Source\\W3DDevice\\GameClient\\Water\\W3DWaterTracks.cpp",1141);

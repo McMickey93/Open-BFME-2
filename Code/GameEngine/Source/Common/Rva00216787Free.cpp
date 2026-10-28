@@ -25,9 +25,9 @@ struct Rva00216787Node {
     int m_head;
     Rva00216108 m_strs;
 };
-void __stdcall Rva00216787Free(Rva00216787Node *p)
+void __stdcall Rva00216787Free(Rva00216787Node *node)
 {
-    p->m_strs.~Rva00216108();
-    if (p)
-        free(p);
+    node->m_strs.~Rva00216108();
+    if (node)
+        free(node);
 }

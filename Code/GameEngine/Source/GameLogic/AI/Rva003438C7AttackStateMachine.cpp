@@ -98,15 +98,15 @@ Bool rva0033FDD6(Rva00343F8A *thisState, void *userData);
 
 AttackPositionStateMachine::AttackPositionStateMachine(Object *owner, Rva003438C7Host *host, UnsignedInt nameKey) : StateMachine(owner, nameKey, false)
 {
-	static const StateConditionInfo g_condC131A0[] =
+	static const StateConditionInfo positionConditions[] =
 	{
 		{ (void *)rva0033FD98, 600, NULL },
 		{ NULL, 0, NULL }	// keep last
 	};
 
 	// order matters: first state is the default state.
-	defineState( 601, new Rva0033F3EF( this ), 602, 9999, g_condC131A0 );
-	defineState( 602, new Rva0033F4B1( this, (int)static_cast<Rva003438C7HostInterface *>(host) ), 603, 600, g_condC131A0 );
+	defineState( 601, new Rva0033F3EF( this ), 602, 9999, positionConditions );
+	defineState( 602, new Rva0033F4B1( this, (int)static_cast<Rva003438C7HostInterface *>(host) ), 603, 600, positionConditions );
 	defineState( 603, new Rva0033F43D( this ), 601, 9999 );
     static const StateConditionInfo portableConditions[] = { {(void*)rva0033FDD6,601,0}, {0,0,0} };
     AttackKindPrefixView *thing=reinterpret_cast<AttackOwnerPrefixView*>(owner)->thing;

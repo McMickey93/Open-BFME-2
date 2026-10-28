@@ -31,13 +31,13 @@ public:
 };
 void Rva00421BF7::rva00421BF7(void *n)
 {
-	Rva00421BF7Node *p = (Rva00421BF7Node *)n;
-	while (p != 0)
+	Rva00421BF7Node *node = (Rva00421BF7Node *)n;
+	while (node != 0)
 	{
-		rva00421BF7(p->m_child);
-		Rva00421BF7Node *next = p->m_next;
-		free(p);
-		p = next;
+		rva00421BF7(node->m_child);
+		Rva00421BF7Node *next = node->m_next;
+		free(node);
+		node = next;
 	}
 }
 void Rva00421BF7::rva00421EEA()
@@ -54,22 +54,22 @@ class Rva00421C24
 {
 public:
 	void rva00421C24(void *n);
-	void rva00421F13();
+	void clear();
 	Rva00421BF7Header *m_header;
 	int m_count;
 };
 void Rva00421C24::rva00421C24(void *n)
 {
-	Rva00421BF7Node *p = (Rva00421BF7Node *)n;
-	while (p != 0)
+	Rva00421BF7Node *node = (Rva00421BF7Node *)n;
+	while (node != 0)
 	{
-		rva00421C24(p->m_child);
-		Rva00421BF7Node *next = p->m_next;
-		free(p);
-		p = next;
+		rva00421C24(node->m_child);
+		Rva00421BF7Node *next = node->m_next;
+		free(node);
+		node = next;
 	}
 }
-void Rva00421C24::rva00421F13()
+void Rva00421C24::clear()
 {
 	if (m_count == 0)
 		return;
@@ -89,13 +89,13 @@ public:
 };
 void Rva00421CE9::rva00421CE9(void *n)
 {
-	Rva00421BF7Node *p = (Rva00421BF7Node *)n;
-	while (p != 0)
+	Rva00421BF7Node *node = (Rva00421BF7Node *)n;
+	while (node != 0)
 	{
-		rva00421CE9(p->m_child);
-		Rva00421BF7Node *next = p->m_next;
-		free(p);
-		p = next;
+		rva00421CE9(node->m_child);
+		Rva00421BF7Node *next = node->m_next;
+		free(node);
+		node = next;
 	}
 }
 void Rva00421CE9::rva00421FDE()

@@ -18,12 +18,12 @@ class Rva00222479ByteOneSetter { public: void enable(); };
 extern class BfmeAptWindowManager *g_bfmeAptWindowManager;
 void __cdecl Rva0051AF0BEnable(int val)
 {
-	GlobalA04910 *p = (*(GlobalA04910 * *)&TheAptQuitMenu);
-	if (!p)
+	GlobalA04910 *quitMenu = (*(GlobalA04910 * *)&TheAptQuitMenu);
+	if (!quitMenu)
 		return;
-	if (p->flag)
+	if (quitMenu->flag)
 		return;
-	p->flag = 1;
+	quitMenu->flag = 1;
 	(*(GlobalA04910 * *)&TheAptQuitMenu)->val = val;
 	((GlobalA01E48 *)TheShell)->flag = 1;
 	(*(Rva00222479ByteOneSetter **)&g_bfmeAptWindowManager)->enable();

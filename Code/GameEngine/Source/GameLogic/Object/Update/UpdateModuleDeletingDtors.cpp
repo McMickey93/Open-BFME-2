@@ -6,7 +6,7 @@
 
 #include "ascii_string.h"
 
-// ?rva0049B8A0@Rva0049B8A0@@QAEXPAVINI@@PAX@Z @0x0049B8A0 234B
+// ?parse@Rva0049B8A0@@QAEXPAVINI@@PAX@Z @0x0049B8A0 234B
 // Bitstring-list INI driver, same shape as the KindOf driver Rva00256499
 // (System/Rva00256499Parse.cpp) and the ModelCondition twin Rva000B937E.
 // The worker is the rowed 0x0049B750 single-token worker.
@@ -39,10 +39,10 @@ public:
 class Rva0049B8A0 : public Rva0049B750
 {
 public:
-	void rva0049B8A0(INI *ini, void *extra);
+	void parse(INI *ini, void *extra);
 };
 
-void Rva0049B8A0::rva0049B8A0(INI *ini, void *extra)
+void Rva0049B8A0::parse(INI *ini, void *extra)
 {
 	AsciiString *accum = (AsciiString *)extra;
 	if (accum != 0)

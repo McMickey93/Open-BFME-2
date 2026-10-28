@@ -15,33 +15,33 @@ extern "C" GameFreeFunction __gameMemFreePtr;
 extern "C" GameAllocateFunction __gameMemAllocatePtr;
 // Owned as the cdecl ?_AddHeap@MemoryPool@@YAXII@Z slot (Rva000308E0AddHeap.cpp).
 extern void (__cdecl *g_Va00DE03E8)(unsigned int, unsigned int);
-void * g_00DE0410;	// retail RVA 0x009E0410 (.bss), defined here
-void * g_00DE040C;	// retail RVA 0x009E040C (.bss), defined here
-void * g_00DE0408;	// retail RVA 0x009E0408 (.bss), defined here
-void * g_00DE0400;	// retail RVA 0x009E0400 (.bss), defined here
+void * __gameMemInitPtr;	// retail RVA 0x009E0410 (.bss), defined here
+void * __gameMemExitPtr;	// retail RVA 0x009E040C (.bss), defined here
+void * __gameMemDumpFragmentationPtr;	// retail RVA 0x009E0408 (.bss), defined here
+void * __gameMemReallocatePtr;	// retail RVA 0x009E0400 (.bss), defined here
 extern void *g_00DE03F8;
 extern void *g_00DE03F4;
-void * g_00DE03F0;	// retail RVA 0x009E03F0 (.bss), defined here
+void * __gameMemGetBlockHeapPtr;	// retail RVA 0x009E03F0 (.bss), defined here
 extern void *g_00DE03EC;
 extern void *g_00DE03E4;
-void * g_00DE03E0;	// retail RVA 0x009E03E0 (.bss), defined here
+void * __gameMemGetHeapAllocatorByIndexPtr;	// retail RVA 0x009E03E0 (.bss), defined here
 namespace MemoryPool
 {
 void InitFunctionPointers()
 {
 	HMODULE hMod = GetModuleHandleA(0);
-	g_00DE0410 = (void *)GetProcAddress(hMod, "?_Init@MemoryPool@@YAXXZ");
-	g_00DE040C = (void *)GetProcAddress(hMod, "?_Exit@MemoryPool@@YAXXZ");
-	g_00DE0408 = (void *)GetProcAddress(hMod, "?_DumpFragmentation@MemoryPool@@YAXPAU_iobuf@@_NPBD@Z");
+	__gameMemInitPtr = (void *)GetProcAddress(hMod, "?_Init@MemoryPool@@YAXXZ");
+	__gameMemExitPtr = (void *)GetProcAddress(hMod, "?_Exit@MemoryPool@@YAXXZ");
+	__gameMemDumpFragmentationPtr = (void *)GetProcAddress(hMod, "?_DumpFragmentation@MemoryPool@@YAXPAU_iobuf@@_NPBD@Z");
 	__gameMemAllocatePtr = (GameAllocateFunction)GetProcAddress(hMod, "?_Allocate@MemoryPool@@YAPAXIW4AllocType@1@I@Z");
-	g_00DE0400 = (void *)GetProcAddress(hMod, "?_Reallocate@MemoryPool@@YAPAXPAXIW4AllocType@1@I@Z");
+	__gameMemReallocatePtr = (void *)GetProcAddress(hMod, "?_Reallocate@MemoryPool@@YAPAXPAXIW4AllocType@1@I@Z");
 	__gameMemFreePtr = (GameFreeFunction)GetProcAddress(hMod, "?_Free@MemoryPool@@YAXPAXW4AllocType@1@@Z");
 	g_00DE03F8 = (void *)GetProcAddress(hMod, "?_IsValidBlock@MemoryPool@@YA_NPAXI@Z");
 	g_00DE03F4 = (void *)GetProcAddress(hMod, "?_GetBlockSize@MemoryPool@@YAIPAXI@Z");
-	g_00DE03F0 = (void *)GetProcAddress(hMod, "?_GetBlockHeap@MemoryPool@@YAIPAX@Z");
+	__gameMemGetBlockHeapPtr = (void *)GetProcAddress(hMod, "?_GetBlockHeap@MemoryPool@@YAIPAX@Z");
 	g_00DE03EC = (void *)GetProcAddress(hMod, "?_VerifyIntegrity@MemoryPool@@YAXXZ");
 	g_Va00DE03E8 = (void (__cdecl *)(unsigned int, unsigned int))GetProcAddress(hMod, "?_AddHeap@MemoryPool@@YAXII@Z");
 	g_00DE03E4 = (void *)GetProcAddress(hMod, "?_GetHeapAllocator@MemoryPool@@YAPAVGeneralAllocator@Allocator@EA@@I@Z");
-	g_00DE03E0 = (void *)GetProcAddress(hMod, "?_GetHeapAllocatorByIndex@MemoryPool@@YAPAVGeneralAllocator@Allocator@EA@@I@Z");
+	__gameMemGetHeapAllocatorByIndexPtr = (void *)GetProcAddress(hMod, "?_GetHeapAllocatorByIndex@MemoryPool@@YAPAVGeneralAllocator@Allocator@EA@@I@Z");
 }
 }

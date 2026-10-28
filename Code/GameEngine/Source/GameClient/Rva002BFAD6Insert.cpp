@@ -38,11 +38,11 @@ private:
 void *Rva002BFAD6::rva002BFAD6(const void *src)
 {
 	((Rva000427195 *)this)->rva00212858(m_numElements + 1);
-	int b = ((Rva000427195 *)this)->bucketIndex((const AsciiString *)src);
-	void *old = m_beginBuckets[b];
+	int bucket = ((Rva000427195 *)this)->bucketIndex((const AsciiString *)src);
+	void *old = m_beginBuckets[bucket];
 	void *n = ((Rva002BF735 *)this)->rva002BF735(src);
 	*(void **)n = old;
-	m_beginBuckets[b] = n;
+	m_beginBuckets[bucket] = n;
 	++m_numElements;
 	return (char *)n + 4;
 }

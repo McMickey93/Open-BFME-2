@@ -11,8 +11,8 @@ struct Rva005025DBNode
 {
 	int m_00;
 	int m_04;
-	Rva005025DBNode *m_08;
-	Rva005025DBNode *m_0c;
+	Rva005025DBNode *m_left;
+	Rva005025DBNode *m_right;
 };
 
 struct Rva005025DB
@@ -27,8 +27,8 @@ void Rva005025DB::rva005025DB(void *p)
 		return;
 	while (x != 0)
 	{
-		rva005025DB(x->m_0c);
-		Rva005025DBNode *y = x->m_08;
+		rva005025DB(x->m_right);
+		Rva005025DBNode *y = x->m_left;
 		((Rva0050174A *)((char *)x + 0x10))->~Rva0050174A();
 		free(x);
 		x = y;

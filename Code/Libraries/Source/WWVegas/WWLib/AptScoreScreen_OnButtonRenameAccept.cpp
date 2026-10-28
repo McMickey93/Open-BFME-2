@@ -20,7 +20,7 @@ extern int g_00DD16C4 = -1;
 
 struct Rva0051C17EInner {
 	char _00[0xA0];
-	UnicodeString m_A0;
+	UnicodeString m_name;
 };
 
 class AptScoreScreen
@@ -40,13 +40,13 @@ void AptScoreScreen::OnButtonRenameAccept(int dummy)
 	(void)dummy;
 	if (!m_2A8)
 		return;
-	UnicodeString tmp = GadgetTextEntryGetText(m_2A4);
-	UnicodeString &dst = m_2A8->m_A0;
-	dst.set(tmp);
+	UnicodeString newName = GadgetTextEntryGetText(m_2A4);
+	UnicodeString &dst = m_2A8->m_name;
+	dst.set(newName);
 	if (m_2A0) {
 		m_2A0->winEnable(true);
 		if (m_2AC >= 0)
-			GadgetListBoxAddEntryText(m_2A0, tmp, g_00DD16C4, m_2AC, 1, true);
+			GadgetListBoxAddEntryText(m_2A0, newName, g_00DD16C4, m_2AC, 1, true);
 	}
 	m_2A8 = 0;
 	m_2AC = -1;

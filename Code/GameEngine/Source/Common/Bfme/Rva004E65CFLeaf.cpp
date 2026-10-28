@@ -53,7 +53,7 @@ struct Rva004E65CFParams
 struct Rva004E65CFFloatSrc
 {
 	char m_pad00[8];
-	float m_f08;
+	float m_radius;
  char m_pad0C[8];
  bool m_flag14;
 };
@@ -158,7 +158,7 @@ void PlaceTerrainResourceClaimantFeedback::Impl::createPotentialClaimDecal()
 	ev.m_byte25 = 0;
 	ev.m_byte26 = 1;
 	ev.m_type = 0x2000;
-	float f = p->m_f08 * g_Va00BC28F4;
+	float f = p->m_radius * g_Va00BC28F4;
 	ev.m_float10 = f;
 	ev.m_floatC = f;
 	m_1C = mgr->play(&ev);
@@ -218,8 +218,8 @@ void PlaceTerrainResourceClaimantFeedback::Impl::updateStringPos(ICoord2D *p)
  int v1=*pp1;
  bounds.zero=0;
  m_position.x=v1;
- int t2=((FeedbackTacticalView*)TheTacticalView)->height()-bounds.height;
- int *pp2=(t2<m_position.y)?&t2:&m_position.y;
+ int maxY=((FeedbackTacticalView*)TheTacticalView)->height()-bounds.height;
+ int *pp2=(maxY<m_position.y)?&maxY:&m_position.y;
  if(*pp2<0) pp2=&bounds.zero;
  m_position.y=*pp2;
 }
@@ -243,7 +243,7 @@ float PlaceTerrainResourceClaimantFeedback::Impl::rva004E6295()
    int index=player ? player->index : 0;
    Rva004E65CFFloatSrc *data=m_0C;
    const Coord3D *position=m_08->getPosition();
-   return view->rva00359A0C(position->x,m_08->getPosition()->y,data->m_f08,data->m_flag14,index);
+   return view->rva00359A0C(position->x,m_08->getPosition()->y,data->m_radius,data->m_flag14,index);
   }
  }
  return 0.0f;
@@ -257,7 +257,7 @@ float PlaceTerrainResourceClaimantFeedback::Impl::rva004E6295()
 // Native4E6455..4E65CF RET4; both local helpers are separately exact.
 void PlaceTerrainResourceClaimantFeedback::Impl::update(ICoord2D *position)
 {
- unsigned char r,g,b;
+ unsigned char red,g,b;
  if(m_10) {
   UnicodeString format=((FeedbackTextInterface*)TheGameText)->fetch("GUI:TerrainResourcePercentageClaimable",0);
   UnicodeString text;
@@ -266,14 +266,14 @@ void PlaceTerrainResourceClaimantFeedback::Impl::update(ICoord2D *position)
   m_10->setText(text);
   updateStringPos(position);
   float fraction=rva004E6295();
-  if(fraction>0.75f) { r=0;g=255;b=0; }
-  else if(fraction>=0.5f) {r=255;g=255;b=0;}
-  else if(fraction>=0.25f) {r=255;g=0;b=0;}
-  else {r=0;g=0;b=0;}
-  m_10->setColor((255u<<24)|((unsigned)r<<16)|((unsigned)g<<8)|b,255u<<24);
+  if(fraction>0.75f) { red=0;g=255;b=0; }
+  else if(fraction>=0.5f) {red=255;g=255;b=0;}
+  else if(fraction>=0.25f) {red=255;g=0;b=0;}
+  else {red=0;g=0;b=0;}
+  m_10->setColor((255u<<24)|((unsigned)red<<16)|((unsigned)g<<8)|b,255u<<24);
  }
  if(m_1C) {
-  m_1C->SetTexture((void*)((255u<<24)|((unsigned)r<<16)|((unsigned)g<<8)|b));
+  m_1C->SetTexture((void*)((255u<<24)|((unsigned)red<<16)|((unsigned)g<<8)|b));
   const Coord3D *pos=m_08->getPosition();
   m_1C->m_pos08=*pos;
  }

@@ -3,8 +3,8 @@
 // Ported from Open-BFME-1 GameEngine/Source/Common/BfmeConv808.cpp
 // (donor revision 6d9434269164392c5ba62aaa7c15a86b5b020d76, donor flags plus /O1). Compiled that way each body
 // places uniquely on unclaimed game.dat .text by masked whole-.text search:
-//   ?bfmeGoEFFa@@YAHPAX@Z 0x00333722 (25B)
-//   ?bfmeGoEFFb@@YAHPAX@Z 0x0033373B (25B)
+//   ?CurDrawableHideModule@@YAHPAX@Z 0x00333722 (25B)
+//   ?CurDrawableShowModule@@YAHPAX@Z 0x0033373B (25B)
 // Callee addresses are read off retail call sites (reverse/symbols.csv).
 struct BfmeAEFC
 {
@@ -50,7 +50,7 @@ struct BfmeThingEFE
 void *__cdecl bfmeOneEFF(void *a, int n);
 void __cdecl bfmeTwoEFF(int n, void *r);
 
-int bfmeGoEFFa(void *a)
+int CurDrawableHideModule(void *a)
 {
 	bfmeTwoEFF(1, bfmeOneEFF(a, 1));
 	return 0;
@@ -69,7 +69,7 @@ public:
 
 void __cdecl bfmeTwoEFFb(int n, void *r);
 
-int bfmeGoEFFb(void *a)
+int CurDrawableShowModule(void *a)
 {
 	bfmeTwoEFFb(0, bfmeOneEFF(a, 1));
 	return 0;

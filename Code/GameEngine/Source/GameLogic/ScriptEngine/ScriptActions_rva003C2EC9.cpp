@@ -89,7 +89,7 @@ void ScriptActions::Rva003C2EC9Do(const void *a1, const void *a2, const void *a3
 	mustBeSet.m_words[kind >> 5] |= (1u << (kind & 31));
 	memset(&mustBeClear, 0, sizeof(mustBeClear));
 	memset(&mustBeClear, 0, sizeof(mustBeClear));
-	int v = counts->rva0039BF67(mustBeSet, mustBeClear);
+	int count = counts->rva0039BF67(mustBeSet, mustBeClear);
 	ScriptCounter *counter = TheScriptEngine->bfmeCounter((AsciiString &)counterName);
-	counter->m_value = v;
+	counter->m_value = count;
 }

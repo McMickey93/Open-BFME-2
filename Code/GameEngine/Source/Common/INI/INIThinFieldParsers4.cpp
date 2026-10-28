@@ -42,8 +42,8 @@ public:
 	~INIException();
 };
 
-extern const LookupListRec g_00BDD0B4[];
-extern const LookupListRec g_00BDD1D0[];
+extern const LookupListRec shakeTypeNames[];
+extern const LookupListRec scorchTypeNames[];
 extern const char *g_00DCAE84[];
 extern const char *const TheStanceNames[];
 

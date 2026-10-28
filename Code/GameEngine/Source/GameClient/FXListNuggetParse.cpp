@@ -614,8 +614,8 @@ void _bfmeFXListNuggetParseInlineAnchor()
 // 0x148, the derived class's from 0x148).
 void Rva000B9468Parse(INI *ini, void *instance, void *store, const void *userData);
 void Rva001DEE74Parse(INI *ini, void *instance, void *store, const void *userData);
-void Rva001DFBC7Parse(INI *ini, void *instance, void *store, const void *userData);
-void Rva001DFC09Parse(INI *ini, void *instance, void *store, const void *userData);
+void parseShakeType(INI *ini, void *instance, void *store, const void *userData);
+void parseScorchType(INI *ini, void *instance, void *store, const void *userData);
 void Rva001DFC2AParse(INI *ini, void *instance, void *store, const void *userData);
 void iniParseObjectFilter(INI *ini, void *instance, void *store, const void *userData);
 
@@ -813,14 +813,14 @@ extern const FieldParse CursorParticleSystemFXNuggetFieldParse[] =
 // retail .rdata 0x007DD7F4 (1 entry + terminator)
 extern const FieldParse ViewShakeFXNuggetFieldParse[] =
 {
-	{ "Type", Rva001DFBC7Parse, 0, 0x148 },
+	{ "Type", parseShakeType, 0, 0x148 },
 	{ 0, 0, 0, 0 }
 };
 
 // retail .rdata 0x007DD8A0 (3 entries + terminator)
 extern const FieldParse TerrainScorchFXNuggetFieldParse[] =
 {
-	{ "Type", Rva001DFC09Parse, 0, 0x148 },
+	{ "Type", parseScorchType, 0, 0x148 },
 	{ "Radius", INI::parseReal, 0, 0x14C },
 	{ "RandomRange", INI::parseICoord2D, 0, 0x150 },
 	{ 0, 0, 0, 0 }

@@ -13,7 +13,7 @@ class StateMachine;
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
 // Retail inlines these three zero stores; the canonical Coord3D::zero is the out-of-line owner.
-static inline void zeroInline(Coord3D &c) { c.x = 0.0f; c.y = 0.0f; c.z = 0.0f; }
+static inline void zeroInline(Coord3D &coord) { coord.x = 0.0f; coord.y = 0.0f; coord.z = 0.0f; }
 
 class State
 {

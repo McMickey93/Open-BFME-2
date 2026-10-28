@@ -1,5 +1,5 @@
 // cl: /Ireference/shims/bfme2_ascii /DNDEBUG /MD /EHsc
-// ?rva00358853@ScriptEngine@@QAEPAUBfmeStringRecord00204A30@@ABVAsciiString@@0M0H@Z @0x00358853 148B.
+// ?createNamedMapReveal@ScriptEngine@@QAEPAUBfmeStringRecord00204A30@@ABVAsciiString@@0M0H@Z @0x00358853 148B.
 // ScriptEngine get-or-create helper over the vector<BfmeStringRecord00204A30>
 // at +0x1A49C: CRCs the name via rowed Rva003ECA13Get, scans the 0x14-stride
 // array for the CRC, returns the hit, else builds a temp record, push_backs
@@ -43,10 +43,10 @@ class ScriptEngine
 	char m_pad[0x1a49c];
 public:
 	_STL::vector<BfmeStringRecord00204A30, _STL::allocator<BfmeStringRecord00204A30> > m_vec;
-	BfmeStringRecord00204A30 *rva00358853(const AsciiString &name, const AsciiString &text0, float word1, const AsciiString &text1, int word2);
+	BfmeStringRecord00204A30 *createNamedMapReveal(const AsciiString &name, const AsciiString &text0, float word1, const AsciiString &text1, int word2);
 };
 
-BfmeStringRecord00204A30 *ScriptEngine::rva00358853(const AsciiString &name, const AsciiString &text0, float word1, const AsciiString &text1, int word2)
+BfmeStringRecord00204A30 *ScriptEngine::createNamedMapReveal(const AsciiString &name, const AsciiString &text0, float word1, const AsciiString &text1, int word2)
 {
 	unsigned long crc = Rva003ECA13Get(name);
 	BfmeStringRecord00204A30 *begin = m_vec.m_start;

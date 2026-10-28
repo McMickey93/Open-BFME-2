@@ -618,13 +618,13 @@ class Rva00421C24
 public:
 	RvaTreeFamilyHolder m_header;
 	int m_flag;
-	void rva00421F13();
+	void clear();
 	~Rva00421C24();
 };
 
 Rva00421C24::~Rva00421C24()
 {
-	rva00421F13();
+	clear();
 }
 
 // ??1Rva00421CE9@@QAE@XZ @0x00422717 56B -> Rva00421CE9::rva00421FDE

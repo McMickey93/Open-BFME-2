@@ -38,35 +38,35 @@ namespace _STL
 // --- 0x0002FC80 (24B): _msize: the block's size through the null-guarded
 // block-size forwarder 0x00030860, with the heap word the block-heap slot
 // (VA 0x00DE03F0, ?_GetBlockHeap@MemoryPool@@YAIPAX@Z) reports.
-extern void *g_00DE03F0;
+extern void *__gameMemGetBlockHeapPtr;
 unsigned int rva00030860(void *block, unsigned int heap);
 
 unsigned int rva0002FC80(void *block)
 {
-	return rva00030860(block, ((unsigned int (__cdecl *)(void *))g_00DE03F0)(block));
+	return rva00030860(block, ((unsigned int (__cdecl *)(void *))__gameMemGetBlockHeapPtr)(block));
 }
 
 // --- 0x0002FCA0 (24B): realloc through the resize slot VA 0x00DE0400 with
 // two zero words.
-extern void *g_00DE0400;
+extern void *__gameMemReallocatePtr;
 
 void *rva0002FCA0(void *block, unsigned int size)
 {
-	return ((void *(__cdecl *)(void *, unsigned int, int, int))g_00DE0400)(block, size, 0, 0);
+	return ((void *(__cdecl *)(void *, unsigned int, int, int))__gameMemReallocatePtr)(block, size, 0, 0);
 }
 
 // --- 0x0002FFA0 (25B): run the resolver 0x00030730 (its WorldBuilder
 // identity MemoryPool::InitFunctionPointers), register the slot at
 // VA 0x00DE040C with atexit, then tail-call the slot at VA 0x00DE0410.
 namespace MemoryPool { void InitFunctionPointers(); }
-extern void *g_00DE040C;
-extern void *g_00DE0410;
+extern void *__gameMemExitPtr;
+extern void *__gameMemInitPtr;
 
 void rva0002FFA0()
 {
 	MemoryPool::InitFunctionPointers();
-	atexit((void (__cdecl *)(void))g_00DE040C);
-	((void (__cdecl *)(void))g_00DE0410)();
+	atexit((void (__cdecl *)(void))__gameMemExitPtr);
+	((void (__cdecl *)(void))__gameMemInitPtr)();
 }
 
 // --- 0x0002F980 (22B): the registry block's once-gate on its own, ahead of

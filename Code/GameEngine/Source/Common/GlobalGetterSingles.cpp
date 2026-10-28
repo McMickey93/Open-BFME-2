@@ -58,13 +58,13 @@ int Rva0002BACFGet(void)
 	return (*(int *)&theBlockParseList);
 }
 
-// ?Rva0006E16FGet@@YAHXZ @ 0x0006E16F (6B) over 0x00DB5FA0.
+// ?getLODTextureReduction@@YAHXZ @ 0x0006E16F (6B) over 0x00DB5FA0.
 
 extern int LODTextureReduction;
 // LODTextureReduction: matched references place it at VA 0xdb5fa0 (retail .data initial value 2).
 int LODTextureReduction = 2;
 
-int Rva0006E16FGet(void)
+int getLODTextureReduction(void)
 {
 	return LODTextureReduction;
 }

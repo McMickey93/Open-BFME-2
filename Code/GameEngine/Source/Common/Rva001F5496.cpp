@@ -23,17 +23,17 @@ struct Target001F5496
 class Rva001F5496
 {
 public:
-	void rva001F5496(const RvaSmartPtr12 &arg);
+	void rva001F5496(const RvaSmartPtr12 &slave);
 private:
 	char m_pad00[0x15C];
 	RvaSmartPtr12 m_smart;
 	int m_val168;
 };
 
-void Rva001F5496::rva001F5496(const RvaSmartPtr12 &arg)
+void Rva001F5496::rva001F5496(const RvaSmartPtr12 &slave)
 {
-	m_smart = arg;
-	void *m_slaveSystem = arg.m_ptr;
+	m_smart = slave;
+	void *m_slaveSystem = slave.m_ptr;
 	int m_slaveSystemID;
 	if (m_slaveSystem != 0)
 		m_slaveSystemID = ((Target001F5496 *)m_slaveSystem)->m_val;

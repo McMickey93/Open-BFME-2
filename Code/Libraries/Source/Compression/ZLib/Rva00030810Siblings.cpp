@@ -5,9 +5,9 @@
 // 0x00DE0400. The middle argument is the immediate 3. The pointer is
 // g_00DE0400, defined in Rva00030730Init.cpp (which stores it from
 // GetProcAddress); this thunk calls it through its four-argument type.
-extern void *g_00DE0400;
+extern void *__gameMemReallocatePtr;
 
 int __cdecl rva00030810(void *z, const char *version, int stream_size)
 {
-	return ((int (__cdecl *)(void *, const char *, int, int))g_00DE0400)(z, version, 3, stream_size);
+	return ((int (__cdecl *)(void *, const char *, int, int))__gameMemReallocatePtr)(z, version, 3, stream_size);
 }

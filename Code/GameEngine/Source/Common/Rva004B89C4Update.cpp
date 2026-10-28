@@ -15,7 +15,7 @@
 // destroyed; otherwise the fraction is copied to the drawable's +0xB0. Either
 // way it tail-calls the sleep helper below.
 //
-// ?rva004B8AE1@OathbreakersFadeAwayBehavior@@QAE?AW4UpdateSleepTime@@XZ, retail 0x004B8AE1
+// ?calcSleepTime@OathbreakersFadeAwayBehavior@@QAE?AW4UpdateSleepTime@@XZ, retail 0x004B8AE1
 // (46 bytes): sleep forever once the Object is effectively dead (+0x438 bit
 // 0), every frame while it is of kind 0xD7, else one logic second
 // (BfmeLogicFramesPerSecond frames).
@@ -127,7 +127,7 @@ class OathbreakersFadeAwayBehavior : public Rva004B89C4Primary, public Rva004B89
 {
 public:
 	virtual UpdateSleepTime update();
-	UpdateSleepTime rva004B8AE1();
+	UpdateSleepTime calcSleepTime();
 	void rva004B8B0F(); // fade start, rowed in Rva004B8B0F.cpp
 private:
 	unsigned char m_pad14[0x20 - 0x14];
@@ -135,7 +135,7 @@ private:
 	Real m_fraction;	// +0x24
 };
 
-UpdateSleepTime OathbreakersFadeAwayBehavior::rva004B8AE1()
+UpdateSleepTime OathbreakersFadeAwayBehavior::calcSleepTime()
 {
 	if (m_object->m_privateStatus & 1)
 		return UPDATE_SLEEP_FOREVER;
@@ -174,5 +174,5 @@ UpdateSleepTime OathbreakersFadeAwayBehavior::update()
 				draw->m_B0 = m_fraction;
 		}
 	}
-	return rva004B8AE1();
+	return calcSleepTime();
 }

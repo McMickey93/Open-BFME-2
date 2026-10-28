@@ -71,14 +71,14 @@ public:
 extern AudioManager *TheAudio;
 extern float g_Va00BCF628;
 extern float g_Va00BBB8D8;
-void ScriptActions::doAudioSetVolume(int a, float b)
+void ScriptActions::doAudioSetVolume(int whichToAffect, float newVolumeLevel)
 {
-	float v = *(const volatile float *)&b * g_Va00BCF628;
-	if (v < 0.0f)
-		v = 0.0f;
-	else if (v > g_Va00BBB8D8)
-		v = g_Va00BBB8D8;
-	TheAudio->s59(v, a, 0);
+	float volume = *(const volatile float *)&newVolumeLevel * g_Va00BCF628;
+	if (volume < 0.0f)
+		volume = 0.0f;
+	else if (volume > g_Va00BBB8D8)
+		volume = g_Va00BBB8D8;
+	TheAudio->s59(volume, whichToAffect, 0);
 }
 
 // Retail's data references in this unit's matched rows land on globals defined

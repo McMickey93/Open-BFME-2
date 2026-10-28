@@ -99,11 +99,11 @@ bool Pathfinder::isAttackViewBlockedByObstacle(const Object *attacker, const Coo
                         z = victimPos.z;
                     pos.assign(attackerPos);
                     pos.z = z;
-                    PathfindLayerEnum a = TheTerrainLogic->getLayerForDestination(0, &pos);
+                    PathfindLayerEnum attackerTerrainLayer = TheTerrainLogic->getLayerForDestination(0, &pos);
                     pos = victimPos;
                     pos.z = z;
-                    PathfindLayerEnum b = TheTerrainLogic->getLayerForDestination(0, &pos);
-                    if (a == b)
+                    PathfindLayerEnum victimTerrainLayer = TheTerrainLogic->getLayerForDestination(0, &pos);
+                    if (attackerTerrainLayer == victimTerrainLayer)
                         return true;
                 }
             }

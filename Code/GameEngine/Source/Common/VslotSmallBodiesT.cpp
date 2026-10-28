@@ -100,16 +100,16 @@ public:
 class Rva005C4212
 {
 public:
-	void rva005C4212(Rva005C4212Visitor *v);
-	void rva005C4221(Rva005C4212Visitor *v);
+	void rva005C4212(Rva005C4212Visitor *visitor);
+	void rva005C4221(Rva005C4212Visitor *visitor);
 };
-void Rva005C4212::rva005C4212(Rva005C4212Visitor *v)
+void Rva005C4212::rva005C4212(Rva005C4212Visitor *visitor)
 {
-	v->v03(this);
+	visitor->v03(this);
 }
-void Rva005C4212::rva005C4221(Rva005C4212Visitor *v)
+void Rva005C4212::rva005C4221(Rva005C4212Visitor *visitor)
 {
-	v->v02(this);
+	visitor->v02(this);
 }
 
 // 0x005DAA9E and 0x005DAC6D: copy the three words at +0x30 (resp. +0x2C)

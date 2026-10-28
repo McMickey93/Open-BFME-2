@@ -92,6 +92,6 @@ private:
 void Rva00893030Manager::rva00892F00(BfmeElemCU *out, int count)
 {
 	int i = 0;
-	for (Rva00893030Node *n = m_head; n; n = n->m_next)
-		out[i++] = BfmeElemCU(n->m_object);
+	for (Rva00893030Node *node = m_head; node; node = node->m_next)
+		out[i++] = BfmeElemCU(node->m_object);
 }

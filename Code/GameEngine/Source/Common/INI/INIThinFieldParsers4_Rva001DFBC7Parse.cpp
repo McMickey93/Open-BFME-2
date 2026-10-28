@@ -45,11 +45,11 @@ public:
 };
 
 // Retail pointer/value pairs, including the terminating pair.
-extern const LookupListRec g_00BDD0B4[] = {
+extern const LookupListRec shakeTypeNames[] = {
     { "SUBTLE", 0 }, { "NORMAL", 1 }, { "STRONG", 2 }, { "SEVERE", 3 },
     { "CINE_EXTREME", 4 }, { "CINE_INSANE", 5 }, { 0, 0 }
 };
-extern const LookupListRec g_00BDD1D0[] = {
+extern const LookupListRec scorchTypeNames[] = {
     { "SCORCH_1", 0 }, { "SCORCH_2", 1 }, { "SCORCH_3", 2 },
     { "SCORCH_4", 3 }, { "SCORCH_5", 4 }, { "SCORCH_6", 5 },
     { "SCORCH_7", 6 }, { "SCORCH_8", 7 }, { "SCORCH_9", 8 },
@@ -83,16 +83,16 @@ private:
 };
 }
 
-// ?Rva001DFBC7Parse@@YAXPAVINI@@PAX1PBX@Z
-void Rva001DFBC7Parse(INI *ini, void *, void *store, const void *)
+// ?parseShakeType@@YAXPAVINI@@PAX1PBX@Z
+void parseShakeType(INI *ini, void *, void *store, const void *)
 {
-	*(int *)store = ini->scanLookupList(ini->getNextToken(), g_00BDD0B4);
+	*(int *)store = ini->scanLookupList(ini->getNextToken(), shakeTypeNames);
 }
 
-// ?Rva001DFC09Parse@@YAXPAVINI@@PAX1PBX@Z
-void Rva001DFC09Parse(INI *ini, void *, void *store, const void *)
+// ?parseScorchType@@YAXPAVINI@@PAX1PBX@Z
+void parseScorchType(INI *ini, void *, void *store, const void *)
 {
-	*(int *)store = ini->scanLookupList(ini->getNextToken(), g_00BDD1D0);
+	*(int *)store = ini->scanLookupList(ini->getNextToken(), scorchTypeNames);
 }
 
 // ?Rva00492F6AParse@@YAXPAVINI@@PAX1PBX@Z

@@ -77,8 +77,8 @@ public:
 	void rva006C33D0(int policy, int limit);
 	void *rva00033ED0(unsigned int size, int flags);
 	void *rva006C1CC0(unsigned int size, int flags);
-	void rva006C37E0(TraceFunction function, void *functionContext, void *context, int blockTypes);
-	void *rva006C3810(int blockTypes, bool copy, void *storage, unsigned int storageSize);
+	void TraceAllocatedMemory(TraceFunction function, void *functionContext, void *context, int blockTypes);
+	void *TakeSnapshot(int blockTypes, bool copy, void *storage, unsigned int storageSize);
 
 	char unknown0[0x4e4];
 	Rva00030DD0Lock *lock;
@@ -105,13 +105,13 @@ public:
 // (policy 0) and then forward the four arguments to the allocator body at
 // 0x00034D10, returning its result. Its twin 0x006C37E0 does the same in
 // front of 0x000353F0. Names address-derived.
-void *Rva006C1F60::rva006C3810(int blockTypes, bool copy, void *storage, unsigned int storageSize)
+void *Rva006C1F60::TakeSnapshot(int blockTypes, bool copy, void *storage, unsigned int storageSize)
 {
 	rva006C33D0(0, 0);
 	return rva00034D10(blockTypes, copy, storage, storageSize);
 }
 
-void Rva006C1F60::rva006C37E0(TraceFunction function, void *functionContext, void *context, int blockTypes)
+void Rva006C1F60::TraceAllocatedMemory(TraceFunction function, void *functionContext, void *context, int blockTypes)
 {
 	rva006C33D0(0, 0);
 	rva000353F0(function, functionContext, context, blockTypes);

@@ -99,7 +99,7 @@ public:
 	Rva005E8AAF(const Rva005E8908 &value);
 	__forceinline Rva005E8AAF(const Rva005E8AAF &other) : m_08(other.m_08) {}
 	virtual ~Rva005E8AAF();
-	virtual Rva005F888CRef rva005E8A31() const;
+	virtual Rva005F888CRef clone() const;
  virtual Rva005F8CB0Ref rva005E89DD(void*);
 
 private:
@@ -120,7 +120,7 @@ Rva005E8AAF::Rva005E8AAF(const Rva005E8908 &value)
 {
 }
 
-Rva005F888CRef Rva005E8AAF::rva005E8A31() const
+Rva005F888CRef Rva005E8AAF::clone() const
 {
 	return Rva005F888CRef(new Rva005E8AAF(*this));
 }

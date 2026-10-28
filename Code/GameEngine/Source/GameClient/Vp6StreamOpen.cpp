@@ -74,14 +74,14 @@ int Rva007E3C20Vp6Stream::rva000911F6( int flags )
 		return resultFlags;
 	int targetFrame = ((Rva00090FE0 *)this)->rva00090FE0((unsigned int)flags);
 	if ( g_00DE4498 != 0 || nonBlocking != 0 || ( flags & 0x40 ) != 0 ) {
-		int m44 = c; int m40 = this->b;
+		int scale = c; int rate = this->b;
 		DWORD now = timeGetTime();
 		// Equal-valued divisor alternatives retain this compiler
 		// home for the saved flag; both use the same measured rate.
-		int diff = (int)now - (int)( ( (__int64)( m44 * 1000 ) * targetFrame ) / (nonBlocking ? m40 : m40) );
-		int q1 = m40 / m44;
-		int q2 = 1000 / q1;
-		if ( diff - start > q2 )
+		int diff = (int)now - (int)( ( (__int64)( scale * 1000 ) * targetFrame ) / (nonBlocking ? rate : rate) );
+		int framesPerSecond = rate / scale;
+		int msPerFrame = 1000 / framesPerSecond;
+		if ( diff - start > msPerFrame )
 			start = diff;
 	}
 	int limit = targetFrame;

@@ -1,5 +1,5 @@
 // cl: /Ireference/shims/bfmelist /O1 /GX /MD /D_CRTIMP= /D_STLP_USE_STATIC_LIB /Ireference/shims/bfmealloc
-// ?rva0018C262@Rva0018C262@@QAEXPAURva0018C262Node@@@Z @ 0x0018C262 45B unlock: recursive node free via rowed _free. Caller 0x0018C316 passes node+4.
+// ?_M_erase@Rva0018C262@@QAEXPAURva0018C262Node@@@Z @ 0x0018C262 45B unlock: recursive node free via rowed _free. Caller 0x0018C316 passes node+4.
 #include <stdlib.h>
 struct Rva0018C262Node {
 	int m_00;
@@ -26,8 +26,8 @@ struct Rva0018C262HeaderOwner {
 class Rva0018C262 : public Rva0018C262HeaderOwner {
 public:
 	__declspec(noinline) ~Rva0018C262();
-	void rva0018C262(Rva0018C262Node *node);
-	void rva0018C316();
+	void _M_erase(Rva0018C262Node *node);
+	void clear();
 	Rva0018C262Node *rva0018C28F(const unsigned short *key);
 	Rva0018C262Node *&rva0018C33F(Rva0018C262Node *&out, Rva0018C262Node *a, Rva0018C262Node *b, const unsigned short *v, Rva0018C262Node *c);
 	int m_size;
@@ -44,22 +44,22 @@ public:
 	static _Rb_tree_node_base *_M_decrement(_Rb_tree_node_base *x);
 };
 }
-void Rva0018C262::rva0018C262(Rva0018C262Node *node)
+void Rva0018C262::_M_erase(Rva0018C262Node *node)
 {
 	if (!node)
 		return;
 	do {
-		rva0018C262(node->m_0C);
+		_M_erase(node->m_0C);
 		Rva0018C262Node *next = node->m_08;
 		free(node);
 		node = next;
 	} while (node);
 }
-void Rva0018C262::rva0018C316()
+void Rva0018C262::clear()
 {
 	if (m_size == 0)
 		return;
-	rva0018C262(m_head->m_04);
+	_M_erase(m_head->m_04);
 	m_head->m_08 = m_head;
 	m_head->m_04 = 0;
 	m_head->m_0C = m_head;
@@ -108,7 +108,7 @@ Rva0018C262Node *&Rva0018C262::rva0018C33F(Rva0018C262Node *&out, Rva0018C262Nod
 // still unknown. No change to the established header/count offsets 0/4.
 Rva0018C262::~Rva0018C262()
 {
-	rva0018C316();
+	clear();
 }
 
 // Native 0x0018C4A9..0x0018C533 compares signed short keys at node+0x10,
@@ -130,9 +130,9 @@ class Rva0018C4A9 {
 	Rva0018C262Head *m_head;
 	unsigned int m_size;
 public:
-	Rva0018C4A9Result rva0018C4A9(short *key);
+	Rva0018C4A9Result insert_unique(short *key);
 };
-Rva0018C4A9Result Rva0018C4A9::rva0018C4A9(short *key)
+Rva0018C4A9Result Rva0018C4A9::insert_unique(short *key)
 {
 	Rva0018C262Head *header = m_head;
 	Rva0018C262Node *x = header->m_04;

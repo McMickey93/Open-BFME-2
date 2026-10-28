@@ -28,5 +28,5 @@ void __stdcall bfmeGo1034A(int a, int b)
 // address keeps one definition and the unit links.
 //   0x000366F0 reads ?set@?$StringBase@D@@QAEXABV1@@Z
 #pragma comment(linker, "/alternatename:?bfmeAdd1034@BfmeSubA1034@@QAEXH@Z=?set@?$StringBase@D@@QAEXABV1@@Z")
-//   0x0040DAA0 reads ?rva0040DAA0@Rva0040DAA0@@QBEPAXABV?$StringBase@D@@PAH@Z
-#pragma comment(linker, "/alternatename:?bfmeFind1034@@YGPAUBfmeX1034@@HH@Z=?rva0040DAA0@Rva0040DAA0@@QBEPAXABV?$StringBase@D@@PAH@Z")
+//   0x0040DAA0 reads ?findByName@Rva0040DAA0@@QBEPAXABV?$StringBase@D@@PAH@Z
+#pragma comment(linker, "/alternatename:?bfmeFind1034@@YGPAUBfmeX1034@@HH@Z=?findByName@Rva0040DAA0@@QBEPAXABV?$StringBase@D@@PAH@Z")

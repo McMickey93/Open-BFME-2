@@ -90,10 +90,10 @@ unsigned Rva0059E0F7(unsigned key)
 
 void *Rva003FE20FGet(void *input)
 {
-	Rva003FE20FVisitor v;
-	v.value = 0;
-	static_cast<Rva003FE20FInput *>(input)->slot1(&v);
-	return v.value;
+	Rva003FE20FVisitor visitor;
+	visitor.value = 0;
+	static_cast<Rva003FE20FInput *>(input)->slot1(&visitor);
+	return visitor.value;
 }
 struct Rva003FE245Result
 {
@@ -107,15 +107,15 @@ extern "C" Rva003FE245Holder *Rva003FE245Lookup(unsigned key)
 }
 extern "C" Rva0052B1EFHolder *Rva0052B1EFLookup(unsigned key)
 {
-	Rva0052B1EFVisitor v;
-	v.value = 0;
-	reinterpret_cast<Rva003FE20FInput *>(key)->slot1(&v);
-	return static_cast<Rva0052B1EFHolder *>(v.value);
+	Rva0052B1EFVisitor visitor;
+	visitor.value = 0;
+	reinterpret_cast<Rva003FE20FInput *>(key)->slot1(&visitor);
+	return static_cast<Rva0052B1EFHolder *>(visitor.value);
 }
 extern "C" Rva0059E0C1Holder *Rva0059E0C1Lookup(unsigned key)
 {
-	Rva0059E0C1Visitor v;
-	v.value = 0;
-	reinterpret_cast<Rva003FE20FInput *>(key)->slot1(&v);
-	return static_cast<Rva0059E0C1Holder *>(v.value);
+	Rva0059E0C1Visitor visitor;
+	visitor.value = 0;
+	reinterpret_cast<Rva003FE20FInput *>(key)->slot1(&visitor);
+	return static_cast<Rva0059E0C1Holder *>(visitor.value);
 }

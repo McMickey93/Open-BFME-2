@@ -40,13 +40,13 @@ int rva000309D0(unsigned int x)
 }
 
 // --- 0x000309E0 (17B): is x a multiple of the power-of-two a.
-bool rva000309E0(unsigned int x, unsigned int a)
+bool IsAligned(unsigned int x, unsigned int a)
 {
 	return (x & (a - 1)) == 0;
 }
 
 // --- 0x00030A00 (18B): round x up to the power-of-two a.
-unsigned int rva00030A00(unsigned int x, unsigned int a)
+unsigned int AlignUp(unsigned int x, unsigned int a)
 {
 	return (x + a - 1) & ~(a - 1);
 }
@@ -95,7 +95,7 @@ void rva00030B90(GapChunk *chunk, unsigned int size)
 }
 
 // --- 0x00030BA0 (25B): link a chunk between fd and bk.
-void rva00030BA0(GapChunk *chunk, GapChunk *fd, GapChunk *bk)
+void LinkChunk(GapChunk *chunk, GapChunk *fd, GapChunk *bk)
 {
 	chunk->m_fd = fd;
 	chunk->m_bk = bk;
@@ -104,7 +104,7 @@ void rva00030BA0(GapChunk *chunk, GapChunk *fd, GapChunk *bk)
 }
 
 // --- 0x00030BC0 (23B): unlink a chunk.
-void rva00030BC0(GapChunk *chunk)
+void UnlinkChunk(GapChunk *chunk)
 {
 	chunk->m_fd->m_bk = chunk->m_bk;
 	chunk->m_bk->m_fd = chunk->m_fd;
@@ -380,13 +380,13 @@ unsigned int rva00030AB0(GapChunk *chunk)
 }
 
 // --- 0x00030AC0 (13B): the chunk size without its flag bits.
-unsigned int rva00030AC0(GapChunk *chunk)
+unsigned int GetChunkSize(GapChunk *chunk)
 {
 	return GAP_CHUNK_SIZE(chunk);
 }
 
 // --- 0x00030AD0 (15B): the chunk that follows.
-GapChunk *rva00030AD0(GapChunk *chunk)
+GapChunk *GetNextChunk(GapChunk *chunk)
 {
 	return GAP_CHUNK_AT(chunk, GAP_CHUNK_SIZE(chunk));
 }
@@ -464,7 +464,7 @@ public:
 
 // --- 0x00031770 (24B): bin index of any chunk size: small sizes index by
 // eight-byte steps, larger ones go to the large-bin helper (a tail call).
-unsigned int rva00031770(unsigned int size)
+unsigned int GetBinIndexFromChunkSize(unsigned int size)
 {
 	if (size < 0x200)
 		return size >> 3;

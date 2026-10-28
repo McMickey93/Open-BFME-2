@@ -61,7 +61,7 @@ public:
 	Bool rva004211A0(const Rva004211A0Key *key, const Overridable *power);
 };
 class Rva00421520;
-extern Rva00421520 *g_00E03158;
+extern Rva00421520 *TheLightPointSystem;
 
 class Player
 {
@@ -99,8 +99,8 @@ public:
 // ?rva002A9ED9@Player@@QAE_NPBVSpecialPowerTemplate@@@Z
 Bool Player::rva002A9ED9(const SpecialPowerTemplate *power)
 {
-	if (g_00E03158)
-		return reinterpret_cast<Rva004211A0Host *>(g_00E03158)->rva004211A0(
+	if (TheLightPointSystem)
+		return reinterpret_cast<Rva004211A0Host *>(TheLightPointSystem)->rva004211A0(
 			reinterpret_cast<const Rva004211A0Key *>(m_318),
 			reinterpret_cast<const Overridable *>(power));
 	return true;

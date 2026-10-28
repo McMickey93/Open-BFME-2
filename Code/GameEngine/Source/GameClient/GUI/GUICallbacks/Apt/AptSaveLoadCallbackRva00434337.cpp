@@ -39,10 +39,10 @@ void Rva00434337::rva00434337(int v)
 			m_27C = 7;
 		else if (m_27C == 0xB)
 		{
-			UnicodeString s = GadgetTextEntryGetText(m_win290);
+			UnicodeString filename = GadgetTextEntryGetText(m_win290);
 			void *p = TheGameState->rva002DBC97Get(6);
-			s.concat((const unsigned short *)p);
-			TheGameLogic->rva0023D30F(1, 0, &s);
+			filename.concat((const unsigned short *)p);
+			TheGameLogic->rva0023D30F(1, 0, &filename);
 		}
 		break;
 	case 3:

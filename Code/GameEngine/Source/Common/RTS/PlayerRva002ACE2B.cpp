@@ -53,16 +53,16 @@ struct Rva002ACE2BEntry
 class Player
 {
 public:
-	int getProductionCostChangeByObjectFilterID(void *arg);
+	int getProductionCostChangeByObjectFilterID(void *objectFilterID);
 private:
 	char m_pad[0x6f4];
 	_STL::list<int> m_list6f4;
 };
 
-int Player::getProductionCostChangeByObjectFilterID(void *arg)
+int Player::getProductionCostChangeByObjectFilterID(void *objectFilterID)
 {
 	int i = 0;
-	float f = 0.0f;
+	float change = 0.0f;
 	_STL::list<int>::iterator end = m_list6f4.end();
 	for (_STL::list<int>::iterator it = m_list6f4.begin(); it._M_node != end._M_node; ++it) {
 		Rva002ACE2BEntry *e = (Rva002ACE2BEntry *)(*it);
@@ -71,13 +71,13 @@ int Player::getProductionCostChangeByObjectFilterID(void *arg)
 			continue;
 		if (obj->isKindOf((KindOfType)0x44))
 			continue;
-		if (*(void **)e->m_00 != arg)
+		if (*(void **)e->m_00 != objectFilterID)
 			continue;
 		if ((unsigned int)i < e->m_04.size())
-			f = e->m_04[i];
+			change = e->m_04[i];
 		++i;
 	}
-	float prod = f * 100.0f;
+	float prod = change * 100.0f;
 	float diff = g_Va007C26F0 - prod;
 	double d = floor((double)diff);
 	float t = (float)d;

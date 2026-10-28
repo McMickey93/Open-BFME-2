@@ -57,7 +57,7 @@ class BaseHeightMapRenderObjClass
 public:
 	void addProp( Int id, Coord3D location, Real angle, Real scale, const AsciiString &modelName, Bool distanceFog );
 	Bool rva000683AC( Int id, Coord3D location, Real angle, Real scale );
-	void rva00068494( DataChunkOutput *chunk );
+	void writeEnvironmentData( DataChunkOutput *chunk );
 private:
 	char m_unrecovered0000[ 0x37e4 ];
 	Real m_37e4;																							///< 0x37e4
@@ -100,7 +100,7 @@ Bool BaseHeightMapRenderObjClass::rva000683AC(Int id, Coord3D location, Real ang
 // chunk (version 3) through the rowed DataChunkOutput writers: the two reals
 // at +0x37E4 and +0x37E8, the flag at +0x3834, then the strings at +0x382C
 // and +0x3820. Field meanings and the member name are not recovered.
-void BaseHeightMapRenderObjClass::rva00068494(DataChunkOutput *chunk)
+void BaseHeightMapRenderObjClass::writeEnvironmentData(DataChunkOutput *chunk)
 {
 	chunk->openDataChunk("EnvironmentData", 3);
 	chunk->writeReal(m_37e4);

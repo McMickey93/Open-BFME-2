@@ -91,7 +91,7 @@ struct Rva001E8C1BTemplate
 	char m_pad000[0xd8];
 	int m_canReverse; // +0xD8
 	char m_pad0DC[0x13c - 0xdc];
-	Bool m_13C; // +0x13C
+	Bool m_backingUpStopWhenTurning; // +0x13C
 	char m_pad13D[3];
 	Real m_reverseDistance; // +0x140
 	Real m_reversePathDistance; // +0x144
@@ -180,7 +180,7 @@ void Rva001E8C1B::rva001E8C1B(int objArg, int goalArg, Real onPathDistToGoal, Re
 		if (angleCoeff > 1.0f)
 			angleCoeff = 1.0f;
 		Real goalSpeed;
-		if (m_template->m_13C && reversing())
+		if (m_template->m_backingUpStopWhenTurning && reversing())
 		{
 			if (obj->modelTest(5) || obj->modelTest(6))
 				goalSpeed = 0.0f;

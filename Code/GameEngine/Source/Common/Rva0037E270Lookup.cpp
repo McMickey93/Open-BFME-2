@@ -13,9 +13,9 @@ extern ThingFactory *TheThingFactory;
 struct Rva0037E3D9Def
 {
 	char m_pad00[0x4DC];
-	float m_float4DC;
+	float m_buildTime;
 	char m_pad4E0[0x5DA - 0x4E0];
-	unsigned short m_word5DA;
+	unsigned short m_buildCost;
 };
 class UnitRevivalEntry {
     char m_pad00[0x94];
@@ -44,6 +44,6 @@ void UnitRevivalEntry::setThingTemplateName(const AsciiString &asciiString)
     void *def = getThingTemplate();
     if (!def)
         return;
-    m_94 = ((Rva0037E3D9Def *)def)->m_word5DA;
-    m_9C = (int)((Rva0037E3D9Def *)def)->m_float4DC;
+    m_94 = ((Rva0037E3D9Def *)def)->m_buildCost;
+    m_9C = (int)((Rva0037E3D9Def *)def)->m_buildTime;
 }

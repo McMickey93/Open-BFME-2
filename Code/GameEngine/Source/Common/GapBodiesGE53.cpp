@@ -40,11 +40,11 @@ public:
 class Rva001FF547
 {
 public:
-	void rva001FF547(void *block, unsigned int n);
-	void *rva001FF6EB(unsigned int n, const void *hint);
+	void deallocate(void *block, unsigned int n);
+	void *allocate(unsigned int n, const void *hint);
 };
 
-void Rva001FF547::rva001FF547(void *block, unsigned int n)
+void Rva001FF547::deallocate(void *block, unsigned int n)
 {
 	if (block)
 	{
@@ -53,7 +53,7 @@ void Rva001FF547::rva001FF547(void *block, unsigned int n)
 	}
 }
 
-void *Rva001FF547::rva001FF6EB(unsigned int n, const void *hint)
+void *Rva001FF547::allocate(unsigned int n, const void *hint)
 {
 	if (n > 1)
 		return 0;

@@ -90,7 +90,7 @@ private:
 
 // Existing native +4/+24 cursor/finish view, with integer result and optional
 // numeric output. The original element identity is not established.
-struct Rva0054A82C { int rva0054A82C(int *); };
+struct Rva0054A82C { int nextWithNumeric(int *); };
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/Rva0054BBB5.cpp
 
@@ -113,12 +113,12 @@ void SimpleObjectIterator::rva0054B414()
 // cursor from deque.begin(), then requests the next item without a numeric out.
 int SimpleObjectIterator::first() {
 	m_cursor = m_deque.begin();
-	return reinterpret_cast<Rva0054A82C *>(this)->rva0054A82C(0);
+	return reinterpret_cast<Rva0054A82C *>(this)->nextWithNumeric(0);
 }
 
 // Vtable slot 2 at C6A6A0; native 54B7FC..54B804 delegates without resetting.
 int SimpleObjectIterator::next() {
-	return reinterpret_cast<Rva0054A82C *>(this)->rva0054A82C(0);
+	return reinterpret_cast<Rva0054A82C *>(this)->nextWithNumeric(0);
 }
 
 // Native 54C64A..54C729: the same 8-byte record view as the owned sort

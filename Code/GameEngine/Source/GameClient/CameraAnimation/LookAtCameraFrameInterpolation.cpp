@@ -22,13 +22,13 @@ public:
     void *rva005C71AD(void *,float,void *,void *,void *,void *,void *,void *,void *,void *);
     int mode;
 };
-Rva00540D94 Rva00540DCAGet(float t,Rva00540D94 *a,int ta,Rva00540D94 *b,int tb,Rva00540D94 *c,int tc,Rva00540D94 *d,int td)
+Rva00540D94 Rva00540DCAGet(float t,Rva00540D94 *prevFrame,int ta,Rva00540D94 *startFrame,int tb,Rva00540D94 *endFrame,int tc,Rva00540D94 *nextFrame,int td)
 {
     Rva00540E9DSrc position;
     return Rva00540D94(
-        *(Rva00540E9DSrc *)((Rva005C71ADView *)b)->rva005C71AD(&position,t,&a->position,(void *)ta,&b->position,(void *)tb,&c->position,(void *)tc,&d->position,(void *)td),
-        ((CameraAnimationFrameData *)b)->doInterpolate(t,&a->scalar10,ta,&b->scalar10,tb,&c->scalar10,tc,&d->scalar10,td),
-        ((CameraAnimationFrameData *)b)->doInterpolate(t,&a->scalar14,ta,&b->scalar14,tb,&c->scalar14,tc,&d->scalar14,td),
-        b->mode);
+        *(Rva00540E9DSrc *)((Rva005C71ADView *)startFrame)->rva005C71AD(&position,t,&prevFrame->position,(void *)ta,&startFrame->position,(void *)tb,&endFrame->position,(void *)tc,&nextFrame->position,(void *)td),
+        ((CameraAnimationFrameData *)startFrame)->doInterpolate(t,&prevFrame->scalar10,ta,&startFrame->scalar10,tb,&endFrame->scalar10,tc,&nextFrame->scalar10,td),
+        ((CameraAnimationFrameData *)startFrame)->doInterpolate(t,&prevFrame->scalar14,ta,&startFrame->scalar14,tb,&endFrame->scalar14,tc,&nextFrame->scalar14,td),
+        startFrame->mode);
 }
 

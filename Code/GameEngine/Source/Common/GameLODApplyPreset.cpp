@@ -39,7 +39,7 @@ struct LODPresetBFME2 {
 };
 struct LODGlobalDataView {
  char gap0[0x1C];
- LODBool field1C;
+ LODBool m_showProps;
  char gap1D[0x7];
  LODBool field24;
  LODBool field25;
@@ -51,7 +51,7 @@ struct LODGlobalDataView {
  char gap5F[0x1];
  LODBool m_useShadowVolumes;
  LODBool m_useShadowDecals;
- LODBool field62;
+ LODBool m_useShadowMapping;
  char gap63[0x21];
  LODBool m_showSoftWaterEdge;
  char gap85[0x8B];
@@ -59,16 +59,16 @@ struct LODGlobalDataView {
  int m_maxTankTrackOpaqueEdges;
  int m_maxTankTrackFadeDelay;
  char gap11C[0x889];
- LODBool field9A5;
+ LODBool m_showSelectedUnitMarker;
  char gap9A6[0x1];
- LODBool field9A7;
+ LODBool m_useSimpleMergeDecals;
  char gap9A8[0x16];
  LODBool field9BE;
  char gap9BF[0x109];
  int m_maxParticleCount;
  char gapACC[0x24];
- LODBool fieldAF0;
- LODBool fieldAF1;
+ LODBool m_shellMapOn;
+ LODBool m_shellMapOffByCommandArgument;
 };
 #define GD ((LODGlobalDataView*)TheWritableGlobalData)
 class OptionPreferences {public: OptionPreferences();virtual ~OptionPreferences();bool getAllHealthBars();char storage[16];};
@@ -271,12 +271,12 @@ void Rva00DFE144Globals::rva002022E9(int level)
 {
  const LODPresetBFME2 &info=presets[level];
  controlParticles=info.particles;controlProcessor=info.processor;controlSamples=info.sample;controlStreams=info.stream;
- GD->field9A5=info.healthStyle>0;GD->field9A7=info.healthStyle<2;
- if(!GD->field9A5)GD->field9BE=1;
+ GD->m_showSelectedUnitMarker=info.healthStyle>0;GD->m_useSimpleMergeDecals=info.healthStyle<2;
+ if(!GD->m_showSelectedUnitMarker)GD->field9BE=1;
  else {OptionPreferences preferences;GD->field9BE=preferences.getAllHealthBars();}
  GD->field25=info.fpsLimit;GD->m_maxParticleCount=info.maxParticles;controlMinimum=info.minimumFps;
- GD->m_useShadowVolumes=info.shadowVolumes;GD->m_useShadowDecals=info.shadowDecals;GD->field62=info.shadowsOff;
- if(GD->field62){GD->m_useShadowVolumes=0;GD->m_useShadowDecals=0;}
+ GD->m_useShadowVolumes=info.shadowVolumes;GD->m_useShadowDecals=info.shadowDecals;GD->m_useShadowMapping=info.shadowsOff;
+ if(GD->m_useShadowMapping){GD->m_useShadowVolumes=0;GD->m_useShadowDecals=0;}
  int option=info.option;
  if(!usePresetOption)option=presets[0].option;
  Rva00117BB0SetOption(option);
@@ -284,17 +284,17 @@ void Rva00DFE144Globals::rva002022E9(int level)
  if(LODMeshCacheSetting!=info.meshSetting){LODMeshCacheSetting=info.meshSetting;if(!TheGameClient)goto after_client;WW3D::_Invalidate_Mesh_Cache();}
  if(TheGameClient){
   ((LODClientSlots*)TheGameClient)->slot33();((LODClientSlots*)TheGameClient)->slot34();
-  Rva0012641FClear();SimpleStreakRendererClass::Init(GD->field62);
+  Rva0012641FClear();SimpleStreakRendererClass::Init(GD->m_useShadowMapping);
  }
  after_client:
  GD->field49=info.cloud;GD->field4A=info.light;
  controlCloud=GD->field49?2:(GD->field4A!=0);
  GD->field5E=info.sample>=2;GD->m_showSoftWaterEdge=info.softWater;
  GD->m_maxTankTrackEdges=info.trackEdges;GD->m_maxTankTrackOpaqueEdges=info.opaqueEdges;GD->m_maxTankTrackFadeDelay=info.fadeDelay;
- GD->field24=info.particles<=0;GD->field1C=info.treeSway;
+ GD->field24=info.particles<=0;GD->m_showProps=info.treeSway;
  control44=info.opaque44;control48=info.opaque48;
  if(TheTerrainRenderObject){LODRenderLock lock;((LODTerrainSlots*)TheTerrainRenderObject)->slot129();((LODTerrainSlots*)TheTerrainRenderObject)->slot130();}
  if(TheTerrainVisual)((LODPostSlots*)TheTerrainVisual)->slot9();
- GD->fieldAF0=controlProcessor>1&&!GD->fieldAF1;
+ GD->m_shellMapOn=controlProcessor>1&&!GD->m_shellMapOffByCommandArgument;
  if(TheShell)TheShell->showShellMap(true,true);
 }

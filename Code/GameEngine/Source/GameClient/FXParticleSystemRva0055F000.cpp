@@ -57,10 +57,10 @@ class Rva001F3828 { public: bool rva001F3828(int a, int b); };
 class ParticleSystem
 {
 public:
-	void rva001F385A(Coord3D *p) { ((Rva001F385A *)this)->rva001F385A(p); }
+	void rva001F385A(Coord3D *position) { ((Rva001F385A *)this)->rva001F385A(position); }
 	float gravity() { return ((Rva001F510D *)this)->rva001F510D(); }
 	const RGBColor *drift() const { return ((const Rva001F512FSlot *)this)->get(); }
-	bool rva001F3828(Coord3D *p, Coord3D *out) { return ((Rva001F3828 *)this)->rva001F3828((int)p, (int)out); }
+	bool rva001F3828(Coord3D *position, Coord3D *out) { return ((Rva001F3828 *)this)->rva001F3828((int)position, (int)out); }
 };
 
 ParticleSystem *Make001FCBD7();

@@ -47,7 +47,7 @@ public:
 class Rva0049B8A0
 {
 public:
-	void rva0049B8A0(INI *ini, void *str);
+	void parse(INI *ini, void *str);
 	static void parseFromINI(INI *ini, void *instance, void *store, const void *userData);
 };
 
@@ -91,7 +91,7 @@ void Rva00417DFB::parseFromINI(INI *ini, void * /*instance*/, void *store, const
 // @0x0049BBA3 16B
 void Rva0049B8A0::parseFromINI(INI *ini, void * /*instance*/, void *store, const void * /*userData*/)
 {
-	((Rva0049B8A0 *)store)->rva0049B8A0(ini, 0);
+	((Rva0049B8A0 *)store)->parse(ini, 0);
 }
 
 // @0x0049DF62 16B
