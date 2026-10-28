@@ -20599,8 +20599,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A041AC,4,.data,global,?$S1@?1??rva004C29D4@DefectorSpecialPower@@SA?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/DefectorSpecialPowerPoolKey.cpp,owned,,1,4
 0x00A041B0,4,.data,global,?TheLevelGrantSpecialPowerPoolKey@?1??getModuleNameKey@LevelGrantSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/LevelGrantSpecialPower.cpp,owned,,1,2
 0x00A041B4,4,.data,global,?$S1@?1??getModuleNameKey@LevelGrantSpecialPower@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/LevelGrantSpecialPower.cpp,owned,,1,4
-0x00A041B8,4,.data,global,?TheProductionSpeedBonusPoolKey@?1??getModuleNameKey@ProductionSpeedBonus@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ProductionSpeedBonusPoolKey.cpp,owned,,1,2
-0x00A041BC,4,.data,global,?$S1@?1??getModuleNameKey@ProductionSpeedBonus@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ProductionSpeedBonusPoolKey.cpp,owned,,1,4
+0x00A041B8,4,.data,global,?TheProductionSpeedBonusPoolKey@?1??getModuleNameKey@ProductionSpeedBonus@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ProductionSpeedBonus.cpp,owned,,1,2
+0x00A041BC,4,.data,global,?$S1@?1??getModuleNameKey@ProductionSpeedBonus@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ProductionSpeedBonus.cpp,owned,,1,4
 0x00A041C0,4,.data,global,?TheOCLSpecialPowerPoolKey@?1??rva0004C3147@OCLSpecialPower@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPowerPoolKey.cpp,owned,,1,2
 0x00A041C4,4,.data,global,?$S1@?1??rva0004C3147@OCLSpecialPower@@SA?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/SpecialPower/OCLSpecialPowerPoolKey.cpp,owned,,1,4
 0x00A041C8,4,.data,global,?TheElvenWoodSpecialPowerPoolKey@?1??getModuleNameKey@ElvenWoodSpecialPower@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/SpecialPower/ElvenWoodSpecialPowerPoolKey.cpp,owned,,1,2
