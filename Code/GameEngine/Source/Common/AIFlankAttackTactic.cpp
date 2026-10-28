@@ -7,7 +7,13 @@
 // EH prolog with state stores, free/delete pair, base call, and the 28B
 // caller at 0x005AA62B (unclaimed, ??_G shape). Base size unproven: base is
 // declared vptr-only here and the derived pads to the retail +0x58 offset.
-extern "C" void free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 void operator delete(void *block);
 
 class AITacticOffensive

@@ -36,10 +36,14 @@
 //   0x003FD173  0x003FCE38  0x00C37C30#0
 //   0x003FE5F3  0x003FE58A  0x00C37E48#0
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 #include "../../../../reference/shims/moduledata/Common/Snapshot.h"
-
-extern "C" void __cdecl free(void *);
 
 struct EmitVtableTag;
 

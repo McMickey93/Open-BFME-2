@@ -4,6 +4,12 @@
 // rowed operator delete 0x30830. Evidence: 3 callers in 0x410D05/0x410D96,
 // unblocks 2.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 
 
@@ -29,7 +35,6 @@ struct Holder00410AAB
 };
 
 void __cdecl operator delete(void *p);
-extern "C" void __cdecl free(void *p);
 
 void __stdcall Rva00410AABFree(void *p);
 

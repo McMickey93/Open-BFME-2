@@ -7,7 +7,11 @@
 // dtor runs the rowed ?rva002B2EA0@Rva002B2EA0@@QAEXXZ 0x002B2EA0.
 // Names address-derived.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva002B2EA0
 {

@@ -51,7 +51,11 @@ void Rva002A752FDestroy(Rva002A73B8 *first, Rva002A73B8 *last)
 		first->~Rva002A73B8();
 }
 
-extern "C" void __cdecl free(void *);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva002A7677
 {

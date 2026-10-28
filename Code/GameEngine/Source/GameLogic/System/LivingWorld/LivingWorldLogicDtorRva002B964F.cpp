@@ -26,10 +26,14 @@
 // reference at +0x160 (rowed release 0x0007DEEF) and the auto battle
 // resolver holder at +0x178 (rowed clear 0x002B9099).
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "unicode_string.h"
 #include "Common/Snapshot.h"
-
-extern "C" void __cdecl free(void *p);
 
 #include "../../../../../Libraries/Source/subsystem/SubsystemInterface.h"
 
