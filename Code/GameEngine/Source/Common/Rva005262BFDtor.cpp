@@ -1,5 +1,7 @@
-// cl: /DNDEBUG /MD /EHs
-// ??1Rva005262BF@@QAE@XZ retail 0x005262BF 76B
+// cl: /DNDEBUG /MD /EHs /D_CRTIMP=
+// Retail calls the game allocator at RVA 0x00030830 directly.
+#include <stdlib.h>
+// ??1Rva005262BF@@QAE@XZ retail 0x005262BF 74B
 // Pointee dtor of the owning-pointer reset 0x00526F2C. Members torn down in
 // reverse order: STLport int list bases at +0x14 and +0x10 (rowed
 // 0x004EC395), then the inline CRT buffer member at +0 frees its block.
@@ -17,8 +19,6 @@ namespace _STL
 		void *m_node;
 	};
 }
-
-extern "C" void __cdecl free(void *);
 
 struct Rva005262BFBuffer
 {

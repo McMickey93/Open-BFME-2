@@ -1,4 +1,6 @@
-// cl: /O1 /G7 /arch:SSE /MD /EHsc
+// cl: /O1 /G7 /arch:SSE /MD /EHsc /D_CRTIMP=
+// Retail calls the game allocator at RVA 0x00030830 directly.
+#include <stdlib.h>
 
 // ?rva00504E6D@Rva00504DF8@@QAE?AURva00504E6DResult@@PBX@Z 64B @0x00504E6D.
 // Target facts: the body calls 0x005049C6 with its value pointer, compares
@@ -97,8 +99,6 @@ Rva00504DF8Owner *Rva00504DF8Owner::rva00504DF8(const Rva00504DF8Owner *src)
 // Builds an Rva00504DF8Owner temp from the source, runs the pinned
 // 0x0050492F on this with the temp address, frees the dword at temp+8
 // through rowed _free when nonzero. Outer identity unproven.
-extern "C" void __cdecl free(void *block);
-
 class Rva0050492F
 {
 public:
