@@ -116,8 +116,9 @@ def no_checks(ctx, plan):
 
 def apply(root, **kw):
     args = SimpleNamespace(retry_blocked=kw.get("retry_blocked", False), lead=2, min_models=1, claim=False,
-                           only_labels=kw.get("only_labels"), key=kw.get("key"))
-    return name_lane.cmd_apply(lane_of(root), args, verify=kw.get("verify", ok_verify), checks=no_checks)
+                           only_labels=kw.get("only_labels"), key=kw.get("key"), no_batch=kw.get("no_batch", False))
+    return name_lane.cmd_apply(lane_of(root), args, verify=kw.get("verify", ok_verify),
+                               checks=kw.get("checks", no_checks))
 
 
 FN_KEY = name_lane.key_of(SOURCE, "function", "0x00401000", "rva00401000")
@@ -440,13 +441,14 @@ def test_cli_parses_only_labels():
         name_lane.cmd_apply = lambda l, a: seen.setdefault("apply", a) and 0
         name_lane.cmd_status = lambda l, a: seen.setdefault("status", a) and 0
         name_lane.main(["apply", "--only-labels", "seat-a,seat-b", "--retry-blocked",
-                        "--key", MEMBER_KEY, "--key", FN_KEY], lane=lane)
+                        "--key", MEMBER_KEY, "--key", FN_KEY, "--no-batch"], lane=lane)
         name_lane.main(["status", "--only-labels", "seat-a"], lane=lane)
         name_lane.main(["apply"], lane=lane)
     finally:
         name_lane.cmd_apply, name_lane.cmd_status = orig_apply, orig_status
     assert seen["apply"].only_labels == "seat-a,seat-b" and seen["apply"].retry_blocked
     assert seen["apply"].key == [MEMBER_KEY, FN_KEY]
+    assert seen["apply"].no_batch
     assert seen["status"].only_labels == "seat-a" and seen["status"].lead == 2 and seen["status"].min_models == 1
 
 
@@ -677,6 +679,138 @@ def test_revert_cli_dry_run(tree, tmp_path, capsys):
                         "--no-claim", "--root", str(tree)]) == 0
     assert "Rename Rva00401000Box::m_width to m_x2C (restored)" in capsys.readouterr().out
     assert (tree / SOURCE).read_bytes() == before
+
+
+# ---------------------------------------------------------------- scoped batches
+
+BATCH_ANSWERS = {"rva00401000:param_1": "box", "rva00401000:a2": "increment",
+                 "rva00401000:iVar3": "sum"}
+
+
+def batch_requests(tree):
+    requests = []
+    for key, row in lane_of(tree).state().items():
+        rel, kind, scope, ident = name_lane.split_key(key)
+        requests.append((kind, dict(basis="inferred", evidence=f"agree:{row['id']}",
+                                   **name_lane.rename_kwargs(kind, scope, ident, row["new"], row["rva"], rel))))
+    return requests
+
+
+def test_scoped_batch_builds_combined_result_once(tree, tmp_path):
+    agree_on(tree, tmp_path, BATCH_ANSWERS)
+    builds, checked = [], []
+
+    def verify(ctx, sources):
+        builds.append(sources)
+        text = (tree / SOURCE).read_text()
+        assert "int sum = box->m_x2C + increment;" in text
+        assert len(rows(tree, rename.NAME_BASIS)) == 3
+        return True
+
+    def checks(ctx, plan):
+        checked.append(set(plan.written()))
+        return []
+
+    apply(tree, verify=verify, checks=checks)
+    assert builds == [[SOURCE]]
+    assert checked == [set(), {SOURCE, rename.NAME_BASIS}]
+    assert {r["status"] for r in lane_of(tree).state().values()} == {"landed"}
+    assert not list((tree / rename.JOURNAL_DIR).glob("*.json"))
+
+
+def test_scoped_batch_opt_out_keeps_per_name_verification(tree, tmp_path):
+    agree_on(tree, tmp_path, BATCH_ANSWERS)
+    builds = []
+    apply(tree, no_batch=True, verify=lambda ctx, sources: builds.append(sources) or True)
+    assert builds == [[SOURCE]] * 3
+    assert {r["status"] for r in lane_of(tree).state().values()} == {"landed"}
+
+
+def test_scoped_batch_precedes_enclosing_function_rename(tree, tmp_path):
+    agree_on(tree, tmp_path, dict(BATCH_ANSWERS, rva00401000="sumBox"))
+    builds = []
+    apply(tree, verify=lambda ctx, sources: builds.append(sources) or True)
+    text = (tree / SOURCE).read_text()
+    assert "int sumBox(Rva00401000Box *box, int increment)" in text
+    assert "int sum = box->m_x2C + increment;" in text
+    assert len(builds) == 2                         # scoped batch, then ordinary symbol rename
+    assert {r["status"] for r in lane_of(tree).state().values()} == {"landed"}
+
+
+def test_failed_scoped_batch_restores_before_individual_fallback(tree, tmp_path):
+    agree_on(tree, tmp_path, BATCH_ANSWERS)
+    builds = []
+
+    def verify(ctx, sources):
+        text = (tree / SOURCE).read_text()
+        builds.append(text)
+        return len(builds) != 1
+
+    apply(tree, verify=verify)
+    assert len(builds) == 4                         # failed batch, then three ordinary attempts
+    assert "int sum = box->m_x2C + increment;" in builds[0]
+    assert "int iVar3 = box->m_x2C + a2;" in builds[1]  # no edits leaked from failed batch
+    assert len(rows(tree, rename.NAME_BASIS)) == 3
+    assert {r["status"] for r in lane_of(tree).state().values()} == {"landed"}
+
+
+@pytest.mark.parametrize("failure", ["build", "checks", "interrupt"])
+def test_scoped_batch_failure_restores_all_files_and_journal(tree, tmp_path, failure):
+    agree_on(tree, tmp_path, BATCH_ANSWERS)
+    before = (tree / SOURCE).read_bytes()
+    basis = (tree / rename.NAME_BASIS).read_bytes() if (tree / rename.NAME_BASIS).exists() else None
+    ctx = rename.Context(tree, object_scan=False)
+
+    def verify(ctx, sources):
+        assert list((tree / rename.JOURNAL_DIR).glob("*.json"))
+        if failure == "interrupt":
+            raise KeyboardInterrupt
+        return failure != "build"
+
+    def checks(ctx, plan):
+        return ["test: reject combined result"] if failure == "checks" and plan.written() else []
+
+    with pytest.raises(KeyboardInterrupt if failure == "interrupt" else rename.VerifyFailed):
+        rename.run_scoped_batch(ctx, batch_requests(tree), claim=False, verify=verify, checks=checks)
+    assert (tree / SOURCE).read_bytes() == before
+    assert ((tree / rename.NAME_BASIS).read_bytes() if (tree / rename.NAME_BASIS).exists() else None) == basis
+    assert not ctx.kept
+    assert not list((tree / rename.JOURNAL_DIR).glob("*.json"))
+
+
+def test_scoped_batch_planning_refusal_writes_nothing(tree, tmp_path):
+    agree_on(tree, tmp_path, BATCH_ANSWERS)
+    before = (tree / SOURCE).read_bytes()
+    requests = batch_requests(tree)
+    requests[1][1]["new"] = "box"                   # captures the preceding parameter rename
+    with pytest.raises(rename.Refusal):
+        rename.run_scoped_batch(rename.Context(tree, object_scan=False), requests, claim=False,
+                                verify=lambda *args: pytest.fail("refused plans must not build"), checks=no_checks)
+    assert (tree / SOURCE).read_bytes() == before
+    assert not (tree / rename.NAME_BASIS).exists()
+    assert not list((tree / rename.JOURNAL_DIR).glob("*.json"))
+
+
+@pytest.mark.parametrize("success", [True, False])
+def test_scoped_batch_claims_union_once_and_releases_on_failure(tree, tmp_path, monkeypatch, success):
+    agree_on(tree, tmp_path, BATCH_ANSWERS)
+    taken, released = [], []
+    claimed = rename.Claimed()
+    monkeypatch.setattr(claimed, "release", lambda root: released.append(root))
+
+    def take(keys, enabled, root):
+        taken.append((keys, enabled, root))
+        return claimed
+
+    monkeypatch.setattr(rename, "take_claims", take)
+    ctx = rename.Context(tree, object_scan=False)
+    if success:
+        rename.run_scoped_batch(ctx, batch_requests(tree), verify=ok_verify, checks=no_checks)
+    else:
+        with pytest.raises(rename.VerifyFailed):
+            rename.run_scoped_batch(ctx, batch_requests(tree), verify=lambda *args: False, checks=no_checks)
+    assert taken == [([0x00401000, f"file:{SOURCE}"], True, tree)]
+    assert released == ([] if success else [tree])
 
 
 # ---------------------------------------------------------------- real tree

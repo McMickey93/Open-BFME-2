@@ -61,6 +61,10 @@ puts landed names back through rename.py's own reversal entry point
 append-only as basis `restored`), records the reason, and refuses that
 spelling for the key from then on.
 
+Eligible parameter/local renames in the same file share one transaction,
+claim operation, build and set of ledger checks. A failed batch is restored
+and retried individually. `apply --no-batch` retains per-name verification.
+
 `apply` lands every waiting key whose votes win, including agreements that
 only other contributors' voters reached. `apply --only-labels seat-a,seat-b`
 restricts a pass to agreements reached by its own seats: a key is applied only
@@ -829,11 +833,37 @@ def cmd_apply(lane, args, *, verify=rename.build_verify, checks=rename.ledger_ch
         return 0
     print(f"name_lane: selected {sum(map(len, todo.values()))} key(s) across {len(todo)} file(s).", flush=True)
     for rel, rows in sorted(todo.items()):
-        live = {key_of(rel, k, s, i) for k, s, i, _ in lane.owned(rel)} if lane.text(rel) is not None \
+        text = lane.text(rel)
+        live = {key_of(rel, k, s, i) for k, s, i, _ in lane.owned(rel, text)} if text is not None \
             and lane.servable(rel) else set()
-        for row in sorted(rows, key=lambda r: LAND_ORDER[r["kind"]]):
+        ordered = sorted(rows, key=lambda r: LAND_ORDER[r["kind"]])
+        scoped = [r for r in ordered if r["kind"] in ("param", "local") and r["key"] in live]
+        batched = set()
+        batch_attempted = getattr(args, "no_batch", False)
+        for row in ordered:
             key = row["key"]
+            if key in batched:
+                continue
             _, kind, scope, ident = split_key(key)
+            if not batch_attempted and kind in ("param", "local") and len(scoped) > 1:
+                batch_attempted = True
+                requests = []
+                for candidate in scoped:
+                    _, k, s, old = split_key(candidate["key"])
+                    requests.append((k, dict(basis="inferred", evidence=f"agree:{candidate['id']}",
+                                            **rename_kwargs(k, s, old, candidate["new"], candidate["rva"], rel))))
+                try:
+                    rename.run_scoped_batch(lane.ctx, requests, claim=args.claim, verify=verify, checks=checks)
+                except (rename.Refusal, rename.VerifyFailed) as exc:
+                    print(f"name_lane: scoped batch refused ({exc}); retrying individually.", flush=True)
+                else:
+                    for candidate in scoped:
+                        lane.append(AGREED, AGREED_COLUMNS, [dict(candidate, status="landed",
+                                    detail=f"two-agent agreement: {candidate['agents']}")])
+                        batched.add(candidate["key"])
+                    landed += len(scoped)
+                    if key in batched:
+                        continue
             outcome = dict(row, detail="")
             if key not in live:
                 outcome.update(status="stale", agents="", detail="the file changed or the placeholder is gone")
@@ -939,6 +969,7 @@ def main(argv=None, lane=None):
     a = sub.add_parser("apply", help="land agreed names through tools/rename.py")
     a.add_argument("--retry-blocked", action="store_true", help="try blocked names again, e.g. after a fix")
     a.add_argument("--key", action="append", help="apply only this exact source|kind|scope|placeholder key (repeatable)")
+    a.add_argument("--no-batch", action="store_true", help="verify each parameter/local rename separately")
     a.add_argument("--lead", type=int, default=2)
     a.add_argument("--min-models", type=int, default=1)
     a.add_argument("--only-labels", metavar="L,L",

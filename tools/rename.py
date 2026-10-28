@@ -4956,6 +4956,71 @@ def _on_sigterm(signum, frame):
     raise _Terminated(f"signal {signum}")
 
 
+def run_scoped_batch(ctx, requests, *, claim=True, verify=build_verify, checks=ledger_checks):
+    """Compose same-file param/local plans in memory, then claim and verify once.
+
+    Each request still goes through its ordinary planner, including agreement,
+    capture and optimisation checks. The usual apply journal covers the combined
+    before-state, so a failed build/check or interruption restores every edit.
+    """
+    from portable_lock import lock, unlock
+
+    class View(Context):
+        def read(self, rel):
+            return combined.after[rel] if rel in combined.after else ctx.read(rel)
+
+    if len(requests) < 2:
+        raise Refusal("a scoped batch needs at least two renames")
+    refuse_pending_journal(ctx)
+    combined = Plan("local", "scoped names", "readable names", "inferred", "", None, None,
+                    new_word=f"{len(requests)} readable names")
+    view = View(ctx.root, object_scan=ctx.object_scan, sweep_dirs=ctx.sweep_dirs)
+    plans = []
+    previous = None
+    if threading.current_thread() is threading.main_thread():
+        previous = signal.signal(signal.SIGTERM, _on_sigterm)
+    try:
+        with ctx.path(LOCK).open("a") as handle:
+            lock(handle, exclusive=True, wait_notice="rename: waiting for the ledger lock...")
+            try:
+                for kind, kwargs in requests:
+                    if kind not in ("param", "local"):
+                        raise Refusal("scoped batches support only parameter and local renames")
+                    plan = plan_rename(kind, ctx=view, **kwargs)
+                    if combined.source is None:
+                        combined.source = plan.source
+                    if plan.source != combined.source or plan.moves or set(plan.after) - {plan.source, NAME_BASIS}:
+                        raise Refusal("scoped batch plans must edit one source and its naming records only")
+                    for rel, before in plan.before.items():
+                        combined.before.setdefault(rel, before)
+                    combined.after.update(plan.after)
+                    combined.claims += claim_keys(plan)
+                    combined.verify = sorted(set(combined.verify) | set(plan.verify))
+                    plans.append(plan)
+                    view._cache.clear()
+                combined.claims = claim_keys(combined)
+                for plan in plans:
+                    print(plan.report())
+                print(f"rename: batch of {len(plans)} scoped names; one verification.", flush=True)
+                claimed = take_claims(combined.claims, claim, ctx.root)
+                try:
+                    apply_rename(combined, ctx=ctx, verify=verify, checks=checks, claimed=claimed)
+                except BaseException:
+                    claimed.release(ctx.root)
+                    raise
+                if claimed.new:
+                    print("rename: claims kept until the rename is pushed; then run: python3 tools/claims.py release "
+                          + " ".join(map(claim_label, claimed.new)))
+                print(f"rename: batch verified OK ({len(plans)} names, {len(combined.verify)} source(s)).")
+                return plans
+            finally:
+                ctx._cache.clear()
+                unlock(handle)
+    finally:
+        if previous is not None:
+            signal.signal(signal.SIGTERM, previous)
+
+
 def run(kind, ctx, *, dry_run=False, claim=True, keep_claims=None, verify=build_verify, checks=ledger_checks,
         **kwargs):
     """Plan under the ledger lock, then (unless dry-run) claim, apply and
