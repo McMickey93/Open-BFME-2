@@ -1,0 +1,40 @@
+{
+  "source": "Code/GameEngine/Source/Common/Rva005F2CBAProgress.cpp",
+  "base_revision": "88160d0cb79ffad492171d17c3f74eb47b126fcd",
+  "index": {
+    "date": "2026-10-28 11:08",
+    "commit": "41c28839bf",
+    "clean_tree": true,
+    "census_date": "2026-10-28 10:03",
+    "census_commit": "c8734bec0c"
+  },
+  "before_obj_sha256": "27891c3153ece0abcc6d5ddd411f1069dc75278539227146787ec5785825492d",
+  "after_obj_sha256": "df157f71da93162e7fc21a701ca6a3143e2905acae2a287bdc1720603bc6b227",
+  "removed": [
+    "_floorf"
+  ],
+  "added": [],
+  "changed": {},
+  "retained_comdats": 138,
+  "strong_unchanged": true,
+  "undefined_unchanged": true,
+  "weak_unchanged": true,
+  "floorf_copy_count": 60,
+  "wrong_floorf_copies": [
+    {
+      "object": "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^render2^d^sentence^draw^b^f^m^e2.obj",
+      "digest": "39fd7295f71e",
+      "verdict": "wrong"
+    },
+    {
+      "object": "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_seglinerenderer.obj",
+      "digest": "39fd7295f71e",
+      "verdict": "wrong"
+    },
+    {
+      "object": "^code_^libraries_^source_^w^w^vegas_^w^w3^d2_^streak^renderer^render^streak.obj",
+      "digest": "39fd7295f71e",
+      "verdict": "wrong"
+    }
+  ]
+}
