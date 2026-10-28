@@ -9,22 +9,25 @@
 class Rva00507823
 {
 public:
-    virtual ~Rva00507823();
-    Rva00507823();
-private:
-    char m_pad04[0x128 - 4];
+	Rva00507823();
+	virtual ~Rva00507823();
+	char m_pad04[0x124];
 };
+struct Input005093C6;
+struct Coord3D;
+class WeaponTemplate;
 class Made002CC774 : public Rva00507823
 {
 public:
-    Made002CC774();
+	void rva005093C6(Input005093C6 *input, const Coord3D *position);
+	Made002CC774();
 private:
-    int m_128;
-    int m_12c;
-    AsciiString m_130;
+	WeaponTemplate *m_weapon; // +0x128
+	unsigned int m_lifetime; // +0x12C
+	AsciiString m_130; // +0x130
 };
 Made002CC774::Made002CC774()
 {
-    m_128 = 0;
-    m_12c = 0;
+    m_weapon = 0;
+    m_lifetime = 0;
 }

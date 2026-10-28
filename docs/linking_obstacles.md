@@ -66,6 +66,19 @@ authored-byte previews or commit-title gains into a projected headline.
 
 ## Obstacles and handoffs
 
+### Made002CC774 provisional TU composition (2026-10-28)
+
+Status: declaration prerequisite verified; applying merge pending. Inspected
+base: `fd7b44f483`; preview index: `41c28839bf`.
+The two private views now share the constructor declaration and the existing
+member spellings at +0x128/+0x12C/+0x130. All nine rows and two EH graphs remain
+exact; all nine external COMDAT digests and the definition/reference sets are
+unchanged. Strict receipts pass and both ordinary previews retain LINKS for
+489 authored bytes. The supported dry run now accepts both donors.
+[Evidence and remaining checks](../reverse/attempt_support/made002cc774-consolidation-20261028-codexb4.md).
+Next: apply the supported merge, audit moved providers and confirm the changed
+consumer selection in the next normal census. No new linked bytes are claimed.
+
 ### Terrain projection inline floor linkage (2026-10-28)
 
 Status: consumer repair verified in ordinary preview; global selected-copy

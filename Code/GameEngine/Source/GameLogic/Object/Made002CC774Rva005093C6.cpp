@@ -22,22 +22,19 @@ struct CreateMask
 {
  unsigned int words[4];
  
-}
-;
+};
 enum NameKeyType 
 
 {
  NAMEKEY_INVALID = 0 
  
-}
-;
+};
 class Thing 
 
 {
  public: void setPosition(const Coord3D *);
  
-}
-;
+};
 class Object : public Thing
 
 {
@@ -48,8 +45,7 @@ class Object : public Thing
  Player *getControllingPlayer() const;
  void setProducer(Object *);
  
-}
-;
+};
 enum ObjectID; class ThingFactory
 
 {
@@ -57,8 +53,7 @@ enum ObjectID; class ThingFactory
  const ThingTemplate *findTemplate(const AsciiString &);
  Object *newObject(const ThingTemplate *, Team *, const CreateMask *, ObjectID);
  
-}
-;
+};
 extern ThingFactory *TheThingFactory;
 extern GameLogic *TheGameLogic;
 class NameKeyGenerator 
@@ -66,8 +61,7 @@ class NameKeyGenerator
 {
  public: NameKeyType nameToKey(const char *);
  
-}
-;
+};
 extern NameKeyGenerator *TheNameKeyGenerator;
 class GlobalData;
 extern GlobalData *TheWritableGlobalData;
@@ -77,60 +71,50 @@ struct GlobalDataView
  char m_pad000[0x14];
  AsciiString m_name014;
  
-}
-;
+};
 struct PlayerView 
 
 {
  char m_pad000[0x2EC];
  Team *m_team;
  
-}
-;
+};
 class FireWeaponUpdate 
 
 {
  public: void rva0048B9D0(const WeaponTemplate *);
  
-}
-;
+};
 class DeletionUpdate 
 
 {
  public: void setLifetimeRange(unsigned int, unsigned int);
  
-}
-;
+};
 struct Input005093C6 
 
 {
  char m_pad000[8];
  ObjectID m_objectID;
  
-}
-;
+};
 class Rva00507823
-
 {
- public:
- virtual ~Rva00507823();
- private:
- char m_pad04[0x128 - 4];
- 
-}
-;
+public:
+	Rva00507823();
+	virtual ~Rva00507823();
+	char m_pad04[0x124];
+};
 class Made002CC774 : public Rva00507823
-
 {
- public:
- void rva005093C6(Input005093C6 *input, const Coord3D *position);
- private:
- WeaponTemplate *m_weapon;
- unsigned int m_lifetime;
- AsciiString m_130;
- 
-}
-;
+public:
+	void rva005093C6(Input005093C6 *input, const Coord3D *position);
+	Made002CC774();
+private:
+	WeaponTemplate *m_weapon; // +0x128
+	unsigned int m_lifetime; // +0x12C
+	AsciiString m_130; // +0x130
+};
 void Made002CC774::rva005093C6(Input005093C6 *input, const Coord3D *position)
 
 {
