@@ -27,6 +27,8 @@ struct Rva005A6A4CSlot
 class NAT
 {
 public:
+	bool rva005A6732() const;
+public:
 	void setConnectionState(int a, int b, int expected, int val);
 public:
 	void rva005A6C90(int val);
