@@ -41,6 +41,7 @@ private:
 //#pragma optimize("", off)
 //#pragma MESSAGE("************************************** WARNING, optimization disabled for debugging purposes")
 
+
 #endif
 #define MESSAGE_QUEUE ((GameSpyBuddyMessageQueue *)TheGameSpyBuddyMessageQueue)
 //
@@ -100,37 +101,6 @@ class BuddyThreadClass;
 class Rva0009990D {public:MutexClass::LockClass *m_ptr;void clear();~Rva0009990D(){clear();}};
 
 class Rva00550B4C {public:void rva00550B4C();};
-
-class GameSpyBuddyMessageQueue : public GameSpyBuddyMessageQueueInterface
-{
-public:
-	virtual ~GameSpyBuddyMessageQueue();
-	GameSpyBuddyMessageQueue();
-	virtual void startThread( void );
-	virtual void endThread( void );
-	virtual Bool isThreadRunning( void );
-	virtual Bool isConnected( void );
-	virtual Bool isConnecting( void );
-
-	virtual void addRequest( const BuddyRequest& req );
-	virtual Bool getRequest( BuddyRequest& req );
-
-	virtual void addResponse( const BuddyResponse& resp );
-	virtual Bool getResponse( BuddyResponse& resp );
-
-	virtual GPProfile getLocalProfileID( void );
-
-	BuddyThreadClass* getThread( void ) { return m_thread; }
-
-private:
-	MutexClass m_requestMutex;
-	MutexClass m_responseMutex;
-	RequestQueue m_requests;
-	ResponseQueue m_responses;
-	BuddyThreadClass *m_thread;
-	MutexClass m_bfme_rva0063e080_mutex68;
-	Rva0009990D m_bfme_lock70;
-};
 
 extern GameSpyBuddyMessageQueueInterface *TheGameSpyBuddyMessageQueue;
 
@@ -337,6 +307,42 @@ namespace _STL { template <> BuddyResponse * * allocator<BuddyResponse *>::alloc
 
 namespace _STL { template <> BuddyResponse * allocator<BuddyResponse>::allocate(unsigned int,void const *) const; }
 
+class GameSpyBuddyMessageQueue : public GameSpyBuddyMessageQueueInterface
+{
+public:
+	virtual ~GameSpyBuddyMessageQueue();
+	GameSpyBuddyMessageQueue();
+	virtual void startThread( void );
+	virtual void endThread( void );
+	virtual Bool isThreadRunning( void );
+	virtual Bool isConnected( void );
+	virtual Bool isConnecting( void );
+
+	virtual void addRequest( const BuddyRequest& req );
+	virtual Bool getRequest( BuddyRequest& req );
+
+	virtual void addResponse( const BuddyResponse& resp );
+	virtual Bool getResponse( BuddyResponse& resp );
+
+	virtual GPProfile getLocalProfileID( void );
+
+	BuddyThreadClass* getThread( void ) { return m_thread; }
+
+private:
+	MutexClass m_requestMutex;
+	MutexClass m_responseMutex;
+	RequestQueue m_requests;
+	ResponseQueue m_responses;
+	BuddyThreadClass *m_thread;
+	MutexClass m_bfme_rva0063e080_mutex68;
+	Rva0009990D m_bfme_lock70;
+};
+
+struct Rva00551B02Record { __declspec(dllimport) __forceinline ~Rva00551B02Record() { ((GameSpyBuddyMessageQueue *)this)->GameSpyBuddyMessageQueue::~GameSpyBuddyMessageQueue(); } char bytes[1]; };
+
+// Scalar destruction also emits the compiler-generated deleting destructor.
+template void _STL::_Destroy<Rva00551B02Record>(Rva00551B02Record *);
+
 // tu-skeleton: 0x00550691 143B ?statusCallback@BuddyThreadClass@@QAEXPAVGPConnection@@PAUGPRecvBuddyStatusArg@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp (not merged yet)
 
 // tu-skeleton: 0x00550720 79B ?rva00550720@BuddyThreadClass@@QAEXPAVGPConnection@@PAUGPRecvBuddyRequestArg@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp (not merged yet)
@@ -353,21 +359,16 @@ namespace _STL { template <> BuddyResponse * allocator<BuddyResponse>::allocate(
 
 // tu-skeleton: 0x005507E7 23B ?_M_set_node@?$_Deque_iterator@VBuddyRequest@@@_STL@@QAEXPAPAVBuddyRequest@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/BuddyRequestDequePushBackAux.cpp (not merged yet)
 
+// ---- from Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
+
 // ---- from Code/Libraries/Source/WWVegas/WWLib/stlport_vector_pod2148_allocator.cpp
 
-// tu-skeleton: 0x0055081D 23B ?_M_set_node@?$_Deque_iterator@VBuddyResponse@@@_STL@@QAEXPAPAVBuddyResponse@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/BuddyResponseDequePushBackAux.cpp (not merged yet)
 
-// tu-skeleton: 0x00550834 36B ?_M_create_nodes@?$_Deque_base@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXPAPAVBuddyRequest@@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_noexc_bodies.cpp (not merged yet)
 
-// tu-skeleton: 0x00550858 36B ?_M_create_nodes@?$_Deque_base@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@IAEXPAPAUBfmeOpaqueOwnedRecord2148@@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
 
-// tu-skeleton: 0x0055087C 41B ?_M_increment@?$_Deque_iterator_base@VBuddyRequest@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
 
-// tu-skeleton: 0x005508A5 41B ?_M_increment@?$_Deque_iterator_base@UBfmeOpaque2148@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
 
-// tu-skeleton: 0x005508CE 20B ??$?9UBfmeE12@@@_STL@@YA_NABU?$_Deque_iterator_base@UBfmeE12@@@0@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva00585B16Dtor.cpp (not merged yet)
 
-// tu-skeleton: 0x005508E9 7B ?Decal_Count@RigidDecalMeshClass@@UAEHXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/S1PointerOrDefaultGetters.cpp
 
@@ -388,10 +389,6 @@ const char *Rva0063B060::get() const
 	}
 	return "";
 }
-
-// tu-skeleton: 0x00550918 9B ??0Rva00550918@@QAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadClassThreadFunction.cpp (not merged yet)
-
-// tu-skeleton: 0x00550921 116B ?rva00550921@Rva00550918@@UAEXHIPBH@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadFeslCallback.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/Rva00550995LockCleanup.cpp
 
@@ -419,52 +416,6 @@ void Rva00550995Owner::rva005509AF(CriticalSectionClass::LockClass *newLock)
         return;
     delete old;
 }
-
-// tu-skeleton: 0x005509D2 131B ?_M_initialize_map@?$_Deque_base@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_noexc_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550A55 46B ?_M_pop_front_aux@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550A83 131B ?_M_initialize_map@?$_Deque_base@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
-
-// tu-skeleton: 0x00550B06 46B ?_M_pop_front_aux@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x00550B34 12B ??E?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@QAEAAU01@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550B40 12B ??E?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@QAEAAU01@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x00550B4C 55B ?rva00550B4C@Rva00550B4C@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0009990DSet.cpp (not merged yet)
-
-// tu-skeleton: 0x00550B83 28B ?pop_front@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550B9F 28B ?pop_front@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x00550BBB 75B ??0?$_Deque_base@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAE@ABV?$allocator@VBuddyRequest@@@1@I@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550C06 75B ??0?$_Deque_base@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@QAE@ABV?$allocator@UBfmeOpaqueOwnedRecord2148@@@1@I@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
-
-// tu-skeleton: 0x00550C51 24B ??$__destroy_aux@U?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@0@0ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550C69 24B ??$__destroy_aux@U?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@0@0ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x00550C81 5B ?rva00550C81@Rva00550C81@@QAEXXZ -- matched in Code/GameEngine/Source/Common/GapBodiesSeat10O1.cpp (not merged yet)
-
-// tu-skeleton: 0x00550C86 5B ?rva00550C86@Rva00550C86@@QAEXXZ -- matched in Code/GameEngine/Source/Common/GapBodiesSeat10O1.cpp (not merged yet)
-
-// tu-skeleton: 0x00550C8B 20B ??0?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAE@ABV?$allocator@VBuddyRequest@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550C9F 20B ??0?$deque@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@QAE@ABV?$allocator@UBfmeOpaqueOwnedRecord2148@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
-
-// tu-skeleton: 0x00550CB3 250B ?_M_reallocate_map@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXI_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550DAD 250B ?_M_reallocate_map@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXI_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x00550EA7 45B ??$__destroy@U?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@VBuddyRequest@@@_STL@@YAXU?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@0@0PAVBuddyRequest@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x00550ED4 45B ??$__destroy@U?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@UBfmeOpaque2148@@@_STL@@YAXU?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@0@0PAUBfmeOpaque2148@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x00550F01 220B ??0BuddyThreadClass@@QAE@PAVMutexClass@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadClassCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x00550FDD 144B ?startThread@GameSpyBuddyMessageQueue@@UAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadStartThread.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread.cpp
 
@@ -662,22 +613,6 @@ void BuddyThreadClass::errorCallback( GPConnection *con, GPErrorArg *errorArg )
 	}
 }
 
-// tu-skeleton: 0x005510D3 102B ?getResponse@GameSpyBuddyMessageQueue@@UAE_NAAVBuddyResponse@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
-
-// tu-skeleton: 0x00551139 172B ?messageCallback@BuddyThreadClass@@QAEXPAVGPConnection@@PAUGPRecvBuddyMessageArg@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp (not merged yet)
-
-// tu-skeleton: 0x005511E5 160B ?requestCallback@BuddyThreadClass@@QAEXPAVGPConnection@@PAUGPRecvBuddyRequestArg@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp (not merged yet)
-
-// tu-skeleton: 0x00551285 41B ??$_Destroy@U?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@0@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x005512AE 41B ??$_Destroy@U?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@0@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x005512D7 38B ?_M_reserve_map_at_back@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
-
-// tu-skeleton: 0x005512FD 38B ?_M_reserve_map_at_back@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
-
-// tu-skeleton: 0x00551323 28B ??_GRva0055133F@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB12.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva0055133FDtor.cpp
 
 // ??1Rva0055133F@@UAE@XZ, retail 0x0055133F..0x005513E9 (170 bytes, EH):
@@ -699,19 +634,12 @@ Rva0055133F::~Rva0055133F()
 // carries as ??1ThreadClass@@UAE@XZ. Bind the donor spelling to that rowed owner so one
 // address keeps one definition and the unit links.
 
-// tu-skeleton: 0x0055182E 58B ??1?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
 
-// tu-skeleton: 0x00551868 58B ??1?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
 
-// tu-skeleton: 0x005518A2 110B ?_M_push_back_aux_v@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXABVBuddyRequest@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
 
-// tu-skeleton: 0x00551910 110B ?_M_push_back_aux_v@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXABUBfmeOpaque2148@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
 
-// tu-skeleton: 0x0055197E 5B ??1?$queue@VBuddyRequest@@V?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
-// tu-skeleton: 0x00551983 5B ??1Rva00551983@@QAE@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesSeat10O1.cpp (not merged yet)
 
-// tu-skeleton: 0x00551988 126B ??1GameSpyBuddyMessageQueue@@UAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/stlport_queue_buddyrequest_ctor.cpp
 
@@ -729,13 +657,110 @@ Rva0055133F::~Rva0055133F()
 
 // bfme link decl-only end
 
+// tu-skeleton: 0x0055081D 23B ?_M_set_node@?$_Deque_iterator@VBuddyResponse@@@_STL@@QAEXPAPAVBuddyResponse@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/BuddyResponseDequePushBackAux.cpp (not merged yet)
+
+// tu-skeleton: 0x00550834 36B ?_M_create_nodes@?$_Deque_base@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXPAPAVBuddyRequest@@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_noexc_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550858 36B ?_M_create_nodes@?$_Deque_base@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@IAEXPAPAUBfmeOpaqueOwnedRecord2148@@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
+
+// tu-skeleton: 0x0055087C 41B ?_M_increment@?$_Deque_iterator_base@VBuddyRequest@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x005508A5 41B ?_M_increment@?$_Deque_iterator_base@UBfmeOpaque2148@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x005508CE 20B ??$?9UBfmeE12@@@_STL@@YA_NABU?$_Deque_iterator_base@UBfmeE12@@@0@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva00585B16Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x005508E9 7B ?Decal_Count@RigidDecalMeshClass@@UAEHXZ -- matched in Code/Libraries/Source/WWVegas/WW3D2/decalmsh.cpp (not merged yet)
+
+// tu-skeleton: 0x00550918 9B ??0Rva00550918@@QAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadClassThreadFunction.cpp (not merged yet)
+
+// tu-skeleton: 0x00550921 116B ?rva00550921@Rva00550918@@UAEXHIPBH@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadFeslCallback.cpp (not merged yet)
+
+// tu-skeleton: 0x005509D2 131B ?_M_initialize_map@?$_Deque_base@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_noexc_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550A55 46B ?_M_pop_front_aux@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550A83 131B ?_M_initialize_map@?$_Deque_base@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
+
+// tu-skeleton: 0x00550B06 46B ?_M_pop_front_aux@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x00550B34 12B ??E?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@QAEAAU01@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550B40 12B ??E?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@QAEAAU01@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x00550B4C 55B ?rva00550B4C@Rva00550B4C@@QAEXXZ -- matched in Code/GameEngine/Source/Common/Rva0009990DSet.cpp (not merged yet)
+
+// tu-skeleton: 0x00550B83 28B ?pop_front@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550B9F 28B ?pop_front@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@QAEXXZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x00550BBB 75B ??0?$_Deque_base@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAE@ABV?$allocator@VBuddyRequest@@@1@I@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550C06 75B ??0?$_Deque_base@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@QAE@ABV?$allocator@UBfmeOpaqueOwnedRecord2148@@@1@I@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
+
+// tu-skeleton: 0x00550C51 24B ??$__destroy_aux@U?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@0@0ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550C69 24B ??$__destroy_aux@U?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@0@0ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x00550C81 5B ?rva00550C81@Rva00550C81@@QAEXXZ -- matched in Code/GameEngine/Source/Common/GapBodiesSeat10O1.cpp (not merged yet)
+
+// tu-skeleton: 0x00550C86 5B ?rva00550C86@Rva00550C86@@QAEXXZ -- matched in Code/GameEngine/Source/Common/GapBodiesSeat10O1.cpp (not merged yet)
+
+// tu-skeleton: 0x00550C8B 20B ??0?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAE@ABV?$allocator@VBuddyRequest@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550C9F 20B ??0?$deque@UBfmeOpaqueOwnedRecord2148@@V?$allocator@UBfmeOpaqueOwnedRecord2148@@@_STL@@@_STL@@QAE@ABV?$allocator@UBfmeOpaqueOwnedRecord2148@@@1@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportOwnedRecordDeque.cpp (not merged yet)
+
+// tu-skeleton: 0x00550CB3 250B ?_M_reallocate_map@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXI_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550DAD 250B ?_M_reallocate_map@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXI_N@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x00550EA7 45B ??$__destroy@U?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@VBuddyRequest@@@_STL@@YAXU?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@0@0PAVBuddyRequest@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00550ED4 45B ??$__destroy@U?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@UBfmeOpaque2148@@@_STL@@YAXU?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@0@0PAUBfmeOpaque2148@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x00550F01 220B ??0BuddyThreadClass@@QAE@PAVMutexClass@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadClassCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00550FDD 144B ?startThread@GameSpyBuddyMessageQueue@@UAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadStartThread.cpp (not merged yet)
+
+// tu-skeleton: 0x005510D3 102B ?getResponse@GameSpyBuddyMessageQueue@@UAE_NAAVBuddyResponse@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
+
+// tu-skeleton: 0x00551139 172B ?messageCallback@BuddyThreadClass@@QAEXPAVGPConnection@@PAUGPRecvBuddyMessageArg@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp (not merged yet)
+
+// tu-skeleton: 0x005511E5 160B ?requestCallback@BuddyThreadClass@@QAEXPAVGPConnection@@PAUGPRecvBuddyRequestArg@@@Z -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadCallbacks.cpp (not merged yet)
+
+// tu-skeleton: 0x00551285 41B ??$_Destroy@U?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@VBuddyRequest@@U?$_Nonconst_traits@VBuddyRequest@@@_STL@@@0@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x005512AE 41B ??$_Destroy@U?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@_STL@@@_STL@@YAXU?$_Deque_iterator@UBfmeOpaque2148@@U?$_Nonconst_traits@UBfmeOpaque2148@@@_STL@@@0@0@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x005512D7 38B ?_M_reserve_map_at_back@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x005512FD 38B ?_M_reserve_map_at_back@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x00551323 28B ??_GRva0055133F@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB12.cpp (not merged yet)
+
+// tu-skeleton: 0x0055182E 58B ??1?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00551868 58B ??1?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@QAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x005518A2 110B ?_M_push_back_aux_v@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@IAEXABVBuddyRequest@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
+
+// tu-skeleton: 0x00551910 110B ?_M_push_back_aux_v@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@IAEXABUBfmeOpaque2148@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
+
+// tu-skeleton: 0x0055197E 5B ??1?$queue@VBuddyRequest@@V?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
+
+// tu-skeleton: 0x00551983 5B ??1Rva00551983@@QAE@XZ -- matched in Code/GameEngine/Source/Common/GapBodiesSeat10O1.cpp (not merged yet)
+
+// tu-skeleton: 0x00551988 126B ??1GameSpyBuddyMessageQueue@@UAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
+
 // tu-skeleton: 0x00551A30 50B ?push_back@?$deque@VBuddyRequest@@V?$allocator@VBuddyRequest@@@_STL@@@_STL@@QAEXABVBuddyRequest@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_pod_large_bodies.cpp (not merged yet)
 
 // tu-skeleton: 0x00551A62 50B ?push_back@?$deque@UBfmeOpaque2148@@V?$allocator@UBfmeOpaque2148@@@_STL@@@_STL@@QAEXABUBfmeOpaque2148@@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlportDeque2148Cleanup.cpp (not merged yet)
 
 // tu-skeleton: 0x00551A94 110B ??0GameSpyBuddyMessageQueue@@QAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
-// tu-skeleton: 0x00551B02 28B ??_GRva00551B02Record@@QAEPAXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00551B02.cpp (not merged yet)
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepR3Rva00551B02.cpp
+
+// STLport 4.5.3 reference instantiation. Target boundary and byte comparison prove operation shape.
+// Element spelling/layout is donor inference; opaque records have address-derived identity.
 
 // tu-skeleton: 0x00551B1E 5B ?rva00551B1E@Rva00551B1E@@QAEXABVBuddyRequest@@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesSeat10O1.cpp (not merged yet)
 
@@ -775,7 +800,7 @@ Rva0055133F::~Rva0055133F()
 
 // tu-skeleton: 0x007989CF 10B __ehhandler$?startThread@GameSpyBuddyMessageQueue@@UAEXXZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThreadStartThread.cpp (not merged yet)
 
-// tu-skeleton: 0x00798A5D 8B uw_00798a5d -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+// tu-skeleton: 0x00798A5D 8B $L38840 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
 // tu-skeleton: 0x00798A65 11B Unwind@00b98a65 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
@@ -783,7 +808,7 @@ Rva0055133F::~Rva0055133F()
 
 // tu-skeleton: 0x00798A7B 11B $L40120 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
-// tu-skeleton: 0x00798A86 11B uw_00798a86 -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+// tu-skeleton: 0x00798A86 11B $L38844 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
 // tu-skeleton: 0x00798A91 11B Unwind@00b98a91 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
@@ -791,7 +816,7 @@ Rva0055133F::~Rva0055133F()
 
 // tu-skeleton: 0x00798AA7 10B __ehhandler$??1GameSpyBuddyMessageQueue@@UAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
-// tu-skeleton: 0x00798AB1 8B uw_00798ab1 -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+// tu-skeleton: 0x00798AB1 8B $L38872 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
 // tu-skeleton: 0x00798AB9 11B Unwind@00b98ab9 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
@@ -799,7 +824,7 @@ Rva0055133F::~Rva0055133F()
 
 // tu-skeleton: 0x00798ACF 11B $L40182 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
-// tu-skeleton: 0x00798ADA 11B uw_00798ada -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+// tu-skeleton: 0x00798ADA 11B $L38876 -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 
 // tu-skeleton: 0x00798AE5 10B __ehhandler$??0GameSpyBuddyMessageQueue@@QAE@XZ -- matched in Code/GameEngine/Source/GameNetwork/GameSpy/Thread/BuddyThread_Unresolved.cpp (not merged yet)
 

@@ -5228,6 +5228,10 @@ Evidence / affected units:
   the owner's unit, retire the sweep file and its pin. Blocked because
   `reverse/tu_map.csv` approves no unit for any of the three: 0x005838DC has
   none, and the other two are only proposed. Deferred (re_attempts.log).
+  2026-10-28: `tu_map.csv` now approves `GameSpy/Thread/BuddyThread.cpp` for
+  0x00551B02, and `tu_skeleton --merge` moved `StlSweepR3Rva00551B02.cpp` into
+  it (`./build.sh`: 24/24 matched). Remaining for that address: re-row it as
+  `??_GGameSpyBuddyMessageQueue` inside BuddyThread.cpp.
   2026-10-27 link repair (inspected `95cc135fbd`, index `73061d9452`): each
   sweep unit's record now has a `dllimport __forceinline` destructor that calls
   the owner's rowed `??1` by its own name (`??1GameSpyBuddyMessageQueue@@UAE@XZ`
