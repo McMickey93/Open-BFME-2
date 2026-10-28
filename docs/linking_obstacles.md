@@ -449,6 +449,19 @@ unresolved integer tree copy constructor and an unproven `find<int>` COMDAT.
 This is a bounded preview, not a census result; carry both units into the next
 normal census. No source change or new census-linked coverage is claimed.
 
+#### AssetRegistry worker consumer refresh (2026-10-28)
+
+At `03498faf5f`, index `41c28839bf`, the picker still serves
+`assetmanager/Rva0061FFA0.cpp` for the same two set-insertion selected-copy
+blockers. Its ordinary cached preview reproduces both. The supported
+`link_check.py --refresh` replaces 1,904 objects rebuilt since the census,
+and the unit previews LINKS for 1,365 authored bytes without a source edit.
+The normal build verifies all eight function rows, its data row and ten
+named imports; its worker EH graph is EXACT. The frozen-file check passes.
+This verifies this consumer against refreshed providers, not the whole
+set-insertion family. Carry it into the next normal census; no new measured
+linked coverage or source recovery is claimed.
+
 #### Horizontal slider consumer subset (2026-10-28)
 
 At `e0be65e163`, index `41c28839bf`, W3DHorizontalSlider.cpp's unused
