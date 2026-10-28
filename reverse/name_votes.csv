@@ -11893,3 +11893,10 @@ Code/GameEngine/Source/Common/Rva00531978.cpp|local|PathfindZoneManager::CellTyp
 Code/GameEngine/Source/Common/Rva0040D2FDSet.cpp|param|ArmySummarySystem::rva0040D2FD|a,c96a07d3ea0b26c9651fac58,drz-k1,drz-k1-n8a-16,w-d29055ee9848,2026-10-28
 Code/GameEngine/Source/Common/Rva0040D2FDSet.cpp|local|ArmySummarySystem::rva0040D2FD|y,dc60ea41437618134c466683,drz-k1,drz-k1-n8a-16,w-d29055ee9848,2026-10-28
 Code/GameEngine/Source/Common/Rva002B52CE.cpp|local|Rva002B52CE::rva002B52CE|p,9b3bc423a587a0e92138d6e5,drz-k1,drz-k1-n8a-18,w-d29055ee9848,2026-10-28
+Code/GameEngine/Source/Common/Rva00170BFFInsertFinish.cpp|function|0x00170BFF|rva00170BFF,dc193401820269e165b5cce6,drz-k2,drz-k2-n8b-2,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/Common/Rva00068119Bodies.cpp|param|Rva00068119::rva00068119|a,9070ac8b999d381017d990d3,drz-k2,drz-k2-n8b-3,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/Common/Rva00068119Bodies.cpp|param|Rva00068119::rva00068119|f,6ee4ac7f0973d54dd9741983,drz-k2,drz-k2-n8b-3,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/GameClient/Rva0055D3F5Xfer.cpp|member|Rva0055D3F5|m_24,edae3f4c4f64a3e577103e9a,drz-k2,drz-k2-n8b-9,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/Common/ThreatBreakdown_postInit.cpp|param|ThreatBreakdown::postInit|arg,cab526c668881508f7342e39,drz-k2,drz-k2-n8b-10,w-ded32b2e2c5e,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/FlatHeightMapUpdateCenter.cpp|param|Rva000E3B41::rva000E3CE1|arg,70956ccf4b57dd2df0a692f3,drz-k2,drz-k2-n8b-20,w-ded32b2e2c5e,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/FlatHeightMapUpdateCenter.cpp|param|Rva00082C98Host::rva00082C98|n,cf5a23e514a0a67dfe55c0fe,drz-k2,drz-k2-n8b-20,w-ded32b2e2c5e,2026-10-28
