@@ -12843,3 +12843,10 @@ Code/GameEngine/Source/GameClient/GUI/InGameCommandButtonHelpDisplayStrings.cpp|
 Code/GameEngine/Source/GameClient/GUI/InGameCommandButtonHelpDisplayStrings.cpp|param|InGameCommandButtonHelp::Impl::Impl|d,abb74daebbcae6d831529428,claude-opus-5-5,claude3-20261028-151351-5,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/GameClient/GUI/InGameCommandButtonHelpDisplayStrings.cpp|param|InGameCommandButtonHelp::Impl::Impl|c,d76e3fdeb610eca224f6af6c,claude-opus-5-5,claude3-20261028-151351-5,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/GameLogic/Object/Upgrade/CostModifierUpgrade.cpp|function|0x004B5AC0|rva004B5AC0,46cce9cbea1a245af046f6fc,claude-opus-5-5,claude3-20261028-151351-8,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameClient/System/ParticleSystemManagerFindTemplate.cpp|local|Rva001F9105Snapshot::rva001F9105|templ,b50324dfe409f15e449cccce,claude-opus-5-5,claude3-20261028-171206-1,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameClient/GUI/Rva00427157Ctor.cpp|function|0x00427114|Rva00427114Parse,f154a5d1b53fd3079edb723d,claude-opus-5-5,claude3-20261028-171206-2,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameClient/GUI/Rva00427157Ctor.cpp|local|Rva00427114Parse|f,af58ff96f727892eaa952f32,claude-opus-5-5,claude3-20261028-171206-2,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameClient/GUI/Rva00427157Ctor.cpp|global||g_00C3C614,4188761ff7dc734688d86dda,claude-opus-5-5,claude3-20261028-171206-2,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/MemberBaseDtorsB01.cpp|param|Rva00574910::rva00574910|arg,5bf81a3cc33e94fb7d24b2bb,claude-opus-5-5,claude3-20261028-171206-5,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB04.cpp|class||Rva00214405,64f60fba3f9585a5dc650af1,claude-opus-5-5,claude3-20261028-171206-7,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB04.cpp|class||Rva00224A90,6cc65a9a70ea6a850b79ffc8,claude-opus-5-5,claude3-20261028-171206-7,w-29a6ae2a2f9f,2026-10-28
