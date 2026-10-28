@@ -1652,7 +1652,6 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv1037_bfmeGo1037F_YGXHHH_Z.cp
 alternatename	Code/GameEngine/Source/Common/BfmeConv1037_bfmeGo1037F_YGXHHH_Z.cpp	?bfmeFind1037F@@YGPAVBfmeG1037@@H@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1045.cpp	_bfmeVft1045A	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1045.cpp	_bfmeVft1045B	1
-alternatename	Code/GameEngine/Source/Common/BfmeConv1052Do.cpp	?bfmeDo1052@Rva00800E50Owner@@QAEXHPAURva00800E50Stamp@@H@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1137Uninstall.cpp	?ScreenTextureStageStateChanges@@3IA	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1187.cpp	?bfmeCtorECMa@BfmeThingECMa@@QAEPAV1@XZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeConv1208.cpp	?bfmeCallDXH@@YAXPAVBfmeSubDXH@@PAX0@Z	1
@@ -1767,6 +1766,7 @@ alternatename	Code/GameEngine/Source/Common/BfmeConv986.cpp	?rva0036D3A3@BfmeC98
 alternatename	Code/GameEngine/Source/Common/BfmeConv986.cpp	?rva00372B09@BfmeC986@@QAEXHHH@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeDualVtableReleaseDtorCtor.cpp	_vtbl_00BE3994	1
 alternatename	Code/GameEngine/Source/Common/BfmeFiveArgCtorWI.cpp	??1AsciiStringWI@@QAE@XZ	1
+alternatename	Code/GameEngine/Source/Common/BfmeH1052.cpp	?bfmeDo1052@Rva00800E50Owner@@QAEXHPAURva00800E50Stamp@@H@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeMakeBZA.cpp	?bfme5MakeObj70@@YAPAUBfme5Obj70@@H@Z	1
 alternatename	Code/GameEngine/Source/Common/BfmeNodeValueEBDDestructor.cpp	??1CountUpBuffer@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/BfmeObject476Copy.cpp	?_M_copy_from@?$hashtable@U?$pair@$$CBHURva001FDCE1Record@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva001FDCE1Record@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva001FDCE1Record@@@_STL@@@2@@_STL@@AAEXABV12@@Z	1

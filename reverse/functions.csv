@@ -9418,7 +9418,7 @@ _set2,,0x0074C3F0,26,Code/Libraries/Source/Lua/lbaselib.c,matched,BFME1 byte-ide
 ?measure@Rva00801EC0Owner@@QAEXPAVRva007FBEF0GameRecord@@@Z,,0x0066DA40,155,Code/GameEngine/Source/GameNetwork/Rva00801EC0FeslMeasure.cpp,matched,BFME1 byte-identical donor b1 0x00801740
 ?bfmeGoFDE@TransitionDamageFX@@QAEXXZ,,0x004B9D86,35,Code/GameEngine/Source/GameLogic/Object/Damage/TransitionDamageFX.cpp,matched,BFME1 near-miss donor FDE-only; b1 0x002522B0; held +0x200 to +0x254
 ?Clone@BfmeD1039@@QAEPAVBfmeC1039@@XZ,,0x00187630,44,Code/GameEngine/Source/Common/BfmeConv1039.cpp,matched,BFME1 near-miss donor C-only; b1 0x0096A580; alloc 0x34 to 0x38
-?bfmeDo1052@BfmeH1052@@QAEXHPAVBfmeI1052@@H@Z,,0x0066CFB0,164,Code/GameEngine/Source/Common/BfmeConv1052Do.cpp,matched,BFME1 near-miss donor trial as-is
+?bfmeDo1052@BfmeH1052@@QAEXHPAVBfmeI1052@@H@Z,,0x0066CFB0,164,Code/GameEngine/Source/Common/BfmeH1052.cpp,matched,BFME1 near-miss donor trial as-is
 ?invoke@Rva00958C80@@QAEJVBfmeBstrVGP@@0JJJJJJPAX@Z,,0x00177010,170,Code/GameEngine/Source/GameNetwork/WOLBrowser/WebBrowserComWrappers.cpp,matched,BFME1 near-miss donor trimmed to served invoke; b1 0x00958C80; 2 callee pins same batch
 ?Set_Visible@ParticleEmitterClass@@UAEXHH@Z,,0x001A1480,34,Code/Libraries/Source/WWVegas/WW3D2/ParticleEmitterVisibilityWrappers.cpp,matched,BFME1 near-miss donor Set_Visible-only; b1 0x0097EA40; slot 0x214 to 0x210
 ?Rva001207B0Init@@YAXPAX@Z,,0x001207B0,152,Code/Libraries/Source/WWVegas/WW3D2/DX8CapsRecreate.cpp,matched,BFME1 near-miss donor d_00906e70 b1 0x00906E70; 0x2E4 caps + base-pointer delete; keeps standing pin name
@@ -16289,7 +16289,7 @@ _getluaproto,,0x0074CBA0,27,Code/Libraries/Source/Lua/ldebug.c,matched,placed by
 ??0SpecialDisguiseUpdateModuleData@@QAE@XZ,,0x004B0255,61,Code/GameEngine/Source/GameLogic/Object/Update/SpecialDisguiseUpdateModuleDataCtor.cpp,matched,Disguise module data ctor; table 0xBEF8B8 six fields; factory 0x24F9D8 news 0xE0 sole caller; proc 0x24F982 chained
 ??0StancesBehavior@@QAE@PAVThing@@PBVModuleData@@@Z,,0x0045EF80,54,Code/GameEngine/Source/GameLogic/Object/Behavior/StancesBehaviorCtor.cpp,matched,Behavior ctor over rowed UpdateModule base plus pinned 0x330757 member at plus 0x20 plus trailing zero plus vtable fold
 ?checkForSupplyCenter@AIPlayer@@IAEXPAVBuildListInfo@@PAVObject@@@Z,,0x004F29E9,211,Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp,matched,BFME1 AIPlayerSupply donor reconstruction; BFME2 moves side to player+0x58 and AI chain to +0x18/+0xF4; volatile side read inside while loop; all 4 callees rowed
-?bfmeGo1052H@BfmeH1052@@QAEXPAVBfmeI1052@@@Z,,0x0066D080,38,Code/GameEngine/Source/Common/BfmeConv1052.cpp,matched,BFME1 BfmeConv1052.cpp donor; BFME2 /G7 /arch:SSE
+?bfmeGo1052H@BfmeH1052@@QAEXPAVBfmeI1052@@@Z,,0x0066D080,38,Code/GameEngine/Source/Common/BfmeH1052.cpp,matched,BFME1 BfmeConv1052.cpp donor; BFME2 /G7 /arch:SSE
 ??0BfmeTagZB@@QAE@ABV0@@Z,,0x0014A120,21,Code/GameEngine/Source/Common/BfmeConv1733.cpp,matched,BFME1 BfmeConv1733.cpp donor; BFME2 /G7 /arch:SSE
 ?positiveRatio@Rva0020E150Value@@QBEMXZ,,0x004BDC25,28,Code/GameEngine/Source/GameLogic/Object/Body/ActiveBody.cpp,matched,BFME1 Rva0020E150PositiveRatio.cpp donor; BFME2 /G7 /arch:SSE
 ?eq@Rva0025A3F0@@QBE_NH@Z,,0x00494ADF,20,Code/GameEngine/Source/GameLogic/Object/Update/WeaponModeSpecialPowerUpdate.cpp,matched,BFME1 Rva0025A3F0Eq.cpp donor; BFME2 /G7 /arch:SSE
@@ -23108,7 +23108,7 @@ _Rva008572C0InlineName,,0x00698880,17,Code/GameEngine/Source/GameNetwork/GameSpy
 ?invoke@Rva007EB6E0Object@@QAEXXZ,,0x00658670,16,Code/GameEngine/Source/Common/Rva007EB6E0VirtualTail.cpp,matched,BFME1 byte-identical donor; b1 0x007EB6E0; target label provisional
 ?at@Rva00801550@@QAEPAVRva00801550Elem@@H@Z,,0x0066D870,27,Code/GameEngine/Source/Common/S3PolymorphicArrayClear.cpp,matched,BFME1 byte-identical donor; b1 0x00801550; address-derived target type remains provisional
 ?at@Rva008029F0@@QAEPAVRva008029F0Elem@@H@Z,,0x0066EB20,24,Code/GameEngine/Source/Common/S3PolymorphicArrayClear.cpp,matched,BFME1 byte-identical donor; b1 0x008029F0; address-derived target type remains provisional
-?forward00800C80@BfmeH1052@@QAEXPAUBfmeRecord00800C80@@@Z,,0x0066D060,21,Code/GameEngine/Source/Common/BfmeConv1052Do.cpp,matched,BFME1 byte-identical donor; b1 0x00800C80; record label and field semantics remain donor-derived
+?forward00800C80@BfmeH1052@@QAEXPAUBfmeRecord00800C80@@@Z,,0x0066D060,21,Code/GameEngine/Source/Common/BfmeH1052.cpp,matched,BFME1 byte-identical donor; b1 0x00800C80; record label and field semantics remain donor-derived
 ?bfmeHasPrefix8C5680@@YGEPBD@Z,,0x006FD790,50,Code/Libraries/Source/EA/Apt/Bfme5PrefixCheck8C5680.cpp,matched,BFME1 byte-identical donor; b1 0x008C5680; target prefix behavior follows bytes; donor name remains provisional
 ?aptKeyValue@@YAPAVAptValue@@XZ,,0x006E8BF0,59,Code/GameEngine/Source/Common/SmallGaps/aptKeyCode.cpp,matched,BFME1 byte-identical donor b1 0x008A52F0; adjacent matched aptKeyCode supports family; donor callback name provisional
 _Rva00858100StopAutoMatchIfTitled,,0x006996C0,28,Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerMainBlockingOperations.c,matched,BFME1 byte-identical donor b1 0x00858100; field access follows target piConnection; donor name provisional
