@@ -1940,6 +1940,8 @@ alternatename	Code/GameEngine/Source/Common/INI/Rva004DD206TwoTreeConstructor.cp
 alternatename	Code/GameEngine/Source/Common/INI/Rva004DD206TwoTreeConstructor.cpp	?releaseNative@Rva004DD206TreeView@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/LadderPreferencesDtor.cpp	??1S4Base009A1A40@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/LeapYearPredicateThunk.cpp	?dateIsYearLeap@AptDate@@QAE_NH@Z	1
+alternatename	Code/GameEngine/Source/Common/LivingWorldAutoResolveUnit.cpp	?getChars@NarrowStrSource0059B0DD@@UBEHPAD@Z	1
+alternatename	Code/GameEngine/Source/Common/LivingWorldAutoResolveUnit.cpp	?getLength@NarrowStrSource0059B0DD@@UBEHXZ	1
 alternatename	Code/GameEngine/Source/Common/LocomotorSetXferSelfAndCurLocoPtrRva001E70C2.cpp	?Version1@Rva001E70C2XferView@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/MainMenuMediumScaleUpTransition.cpp	_vtbl_00C16574	1
 alternatename	Code/GameEngine/Source/Common/NarrowStringRecordCopyBFME2.cpp	??0Pivot24@@QAE@ABU0@@Z	1
@@ -2452,8 +2454,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0058A0F4Derived.cpp	?fe@Rva0058A0
 alternatename	Code/GameEngine/Source/Common/Rva0058A0F4Dtor.cpp	?f20@Rva0058A0F4_B20@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00595E46Firewall.cpp	??1OptionPreferences@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva00595F80Firewall.cpp	??1OptionPreferences@@UAE@XZ	1
-alternatename	Code/GameEngine/Source/Common/Rva0059B0DDConcat.cpp	?getChars@NarrowStrSource0059B0DD@@UBEHPAD@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva0059B0DDConcat.cpp	?getLength@NarrowStrSource0059B0DD@@UBEHXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0059B7CBCtor.cpp	?slot00@Rva0059B7CB@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005BA2CBDtor.cpp	??1Rva005A0009@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva005BA2CBDtor.cpp	?s60@Rva005BA23ABase60@@UAEXXZ	1
