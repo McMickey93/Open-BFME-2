@@ -20340,8 +20340,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03D10,4,.data,global,?TheRousingSpeechUpdatePoolKey@?1??getModuleNameKey@RousingSpeechUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdate.cpp,owned,,1,2
 0x00A03D14,4,.data,global,?$S1@?1??getModuleNameKey@RousingSpeechUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdate.cpp,owned,,1,4
 0x00A03D18,4,.data,global,_s_rva007B1D1C,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03D1C,4,.data,global,?TheGloriousChargeUpdatePoolKey@?1??getModuleNameKey@GloriousChargeUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/GloriousChargeUpdatePoolKey.cpp,owned,,1,2
-0x00A03D20,4,.data,global,?$S1@?1??getModuleNameKey@GloriousChargeUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/GloriousChargeUpdatePoolKey.cpp,owned,,1,4
+0x00A03D1C,4,.data,global,?TheGloriousChargeUpdatePoolKey@?1??getModuleNameKey@GloriousChargeUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/GloriousChargeUpdate.cpp,owned,,1,2
+0x00A03D20,4,.data,global,?$S1@?1??getModuleNameKey@GloriousChargeUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/GloriousChargeUpdate.cpp,owned,,1,4
 0x00A03D24,4,.data,global,_s_rva007B1D46,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A03D28,4,.data,global,?TheToggleMountedSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@ToggleMountedSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdate.cpp,owned,,1,2
 0x00A03D2C,4,.data,global,?$S1@?1??getModuleNameKey@ToggleMountedSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ToggleMountedSpecialAbilityUpdate.cpp,owned,,1,4
