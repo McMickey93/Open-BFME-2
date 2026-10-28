@@ -47,7 +47,11 @@ struct ConnectionVec
 	LivingWorldRegionConnection *m_end_of_storage;
 };
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // ?Rva003F29D2_CopyRange@@YAPAVLivingWorldRegionConnection@@PAV1@00@Z @0x3F29D2
 LivingWorldRegionConnection *Rva003F29D2_CopyRange(LivingWorldRegionConnection *first, LivingWorldRegionConnection *last, LivingWorldRegionConnection *result)

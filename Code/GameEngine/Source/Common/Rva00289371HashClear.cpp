@@ -26,7 +26,11 @@ template <class A, class B> struct pair
 }
 typedef _STL::pair<const int, _STL::list<BfmePod264, _STL::allocator<BfmePod264> > > Rva00288B89;
 
-extern "C" void __cdecl free(void *);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva00289371HashTable
 {

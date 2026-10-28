@@ -11,6 +11,12 @@
 // The shared mutable-copy provider's existing 68/41-byte link discrepancy
 // is unchanged; this conversion claims only the caller's complete body.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include <string.h>
 namespace _STL
 {
@@ -92,8 +98,6 @@ inline _ForwardIter Rva000179B0UninitializedCopy(_InputIter __first, _InputIter 
 	return __uninitialized_copy(__first, __last, __result, __true_type());
 }
 }
-
-extern "C" void free(void *);
 
 #pragma intrinsic(memcpy)
 

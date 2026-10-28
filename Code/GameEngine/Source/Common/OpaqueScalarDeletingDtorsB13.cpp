@@ -393,7 +393,13 @@ Rva005990DF::Rva005990DF(EmitVtableTag *)
 
 // Target destructor proves cleanup on this, then free of the vector's first
 // pointer and an external base destructor. Original owner identity is unknown.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva0059E242Buffer
 {
     void *begin, *end, *capacity;

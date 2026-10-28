@@ -37,7 +37,11 @@ typedef _STL::vector<const LocomotorTemplate *, _STL::allocator<const LocomotorT
 typedef _STL::pair<const LocomotorSetType, Rva0026E1A6Templates> Rva0026E1A6Value;
 typedef _STL::_Rb_tree<LocomotorSetType, Rva0026E1A6Value, _STL::_Select1st<Rva0026E1A6Value>, _STL::less<LocomotorSetType>, _STL::allocator<Rva0026E1A6Value> > Rva0026E1A6Tree;
 
-extern "C" void __cdecl free(void *);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva0026E1A6Header
 {
