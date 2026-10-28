@@ -125,7 +125,11 @@ public:
 
 private:
 	AsciiString m_filename; // +0x270
+
+protected:
 	int m_274;
+
+private:
 	char m_278;
 };
 
@@ -141,6 +145,8 @@ public:
 	// Shows or hides a slot's kick button and records it at +0x286
 	// (rowed in Rva00512CE9Kick.cpp).
 	void rva00512CE9(int player, bool show);
+	// Whether a slot's kick button is shown (+0x286).
+	bool rva00512D47(int player);
 	virtual ~AptDisconnectScreen();
 
 	// AptDisconnectScreenKick.cpp and AptLobbyScreenInitCallbacks.cpp.
