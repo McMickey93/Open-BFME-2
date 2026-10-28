@@ -6,24 +6,6 @@ extern "C" void _ReadWriteBarrier(void);
 #include <vector>
 #include "ascii_string.h"
 class Drawable;
-class Rva0010CConditionBits
-{
-public:
-	unsigned int test(int bit) const
-	{
-		return m_words[bit >> 5] & (1U << (bit & 0x1f));
-	}
-	void set(int bit)
-	{
-		m_words[bit >> 5] |= 1U << (bit & 0x1f);
-	}
-	void clear(int bit)
-	{
-		m_words[bit >> 5] &= ~(1U << (bit & 0x1f));
-	}
-private:
-	unsigned int m_words[20];
-};
 #include "../../../Common/GameLogicObjectLookupView.h"
 enum KindOfType
 {
@@ -36,32 +18,11 @@ class ExperienceTracker
 public:
 	bool rva0039B4EC(int levels, bool flag1, bool flag2);
 };
-class Object
-{
-public:
-	void rva0028AE6D();
-	Drawable *getDrawable() const;
-	bool isKindOf(KindOfType t) const;
-	Player *getControllingPlayer() const; // 0x0028AFA9
-	const Coord3D *getPosition() const { return &m_pos; }
-	ObjectID getID() const { return m_id; }
-	unsigned char m_pad000[0x38];
-	Coord3D m_pos; // +0x38
-	unsigned char m_pad044[0x74 - 0x44];
-	ObjectID m_id; // +0x74
-	unsigned char m_pad078[0x10C - 0x78];
-	Rva0010CConditionBits m_conditionBits; // +0x10C
-	unsigned char m_pad15C[0x264 - 0x15C];
-	ExperienceTracker *m_experienceTracker264; // +0x264
-	unsigned char m_pad268[0x44C - 0x268];
-	int m_44C; // +0x44C
-};
 class FXList
 {
 public:
 	static void doFXObj(const FXList *fx, const Object *primary, const Object *secondary);
 };
-
 class AsciiString;
 class UnicodeString;
 class PooledString;
@@ -89,7 +50,6 @@ public:
 	unsigned char m_current;
 	unsigned char m_minimum;
 };
-
 class Rva00360D26Member
 {
 public:
@@ -98,7 +58,6 @@ public:
 private:
 	unsigned char m_data[4];
 };
-
 class Rva0044ECCE
 {
 public:
@@ -107,35 +66,12 @@ public:
 private:
 	unsigned char m_pad[0xC8 - 4];
 };
-
-// Field names from the chained parse table 0x00C54F28 (10 of 10 BFME1
-// fields); layout from the rowed ctor 0x4AD0EE.
-class __declspec(novtable) RousingSpeechUpdateModuleData : public Rva0044ECCE
-{
-public:
-	virtual ~RousingSpeechUpdateModuleData();
-
-	float m_bonusRadius; // +0xC8
-	int m_speechDuration; // +0xCC
-	int m_updateInterval; // +0xD0
-	const FXList *m_leaderFX; // +0xD4
-	const FXList *m_followerFX; // +0xD8
-	bool m_createWave; // +0xDC
-	unsigned char m_padDD[3]; // +0xDD
-	float m_waveWidth; // +0xE0
-	_STL::vector<AsciiString> m_modifierNames; // +0xE4
-	bool m_levelUp; // +0xF0
-	unsigned char m_padF1[3]; // +0xF1
-	Rva00360D26Member m_objectFilter; // +0xF4
-};
-
 struct Rva004AD613Node
 {
 	Rva004AD613Node *m_next;
 	Rva004AD613Node *m_prev;
 	ObjectID m_id;
 };
-
 struct Rva004AD613Iterator
 {
 	Rva004AD613Node *m_node;
@@ -143,12 +79,10 @@ struct Rva004AD613Iterator
 	Rva004AD613Iterator &operator++() { m_node = m_node->m_next; return *this; }
 	bool operator!=(const Rva004AD613Iterator &other) const { return m_node != other.m_node; }
 };
-
 // Native2A1B6F and its whole insertion helper copy one opaque four-byte
 // element into a 12-byte list node; they never dereference the word as a
 // pointer. Reuse that existing owner for these ObjectID payloads.
 class Rva002A1B6FNativeList { public: void append(void *const &value); };
-
 class Rva0029FB3BMember
 {
 public:
@@ -158,16 +92,12 @@ public:
 	void reset();
 	Rva004AD613Node *m_head;
 };
-
 class Thing;
-
 class ModuleData;
-
 enum NameKeyType
 {
 	NK_UNKNOWN = 0
 };
-
 class BehaviorModule
 {
 public:
@@ -176,25 +106,21 @@ protected:
 	const ModuleData *m_moduleData; // +0x04
 	Object *m_object; // +0x08
 };
-
 class BehaviorModuleInterface
 {
 public:
 	virtual void behaviorModuleInterfaceAnchor();
 };
-
 enum UpdateSleepTime
 {
 	UPDATE_SLEEP_NONE = 1,
 	UPDATE_SLEEP_FOREVER = 0x3fffffff
 };
-
 class UpdateModuleInterface
 {
 public:
 	virtual UpdateSleepTime update() = 0;
 };
-
 class UpdateModule : public BehaviorModule, public BehaviorModuleInterface, public UpdateModuleInterface
 {
 protected:
@@ -202,11 +128,166 @@ protected:
 	int m_18;
 	int m_1C;
 };
-
 class SpecialPowerUpdateInterface
 {
 public:
 	virtual void specialPowerUpdateAnchor();
+};
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+extern NameKeyGenerator *TheNameKeyGenerator;
+extern GameLogic *TheGameLogic;
+// BFME2's partition filters (the view AIStructureCreepTactic.cpp documents):
+// a vptr, the +0x04 link to the next filter (0x00625790), then each filter's
+// own members.
+class Rva000421C8
+{
+public:
+	Rva000421C8() : m_next(0) {}
+	virtual ~Rva000421C8() {}
+	virtual bool allow(Object *obj) = 0;
+	virtual int getPlayerMask();
+	Rva000421C8 *link(Rva000421C8 *next);	// 0x00625790
+	Rva000421C8 *m_next;
+};
+// vftable 0x00BFAD10, allow 0x0026119D: not effectively dead.
+class Rva0026119DFilter : public Rva000421C8
+{
+public:
+	virtual bool allow(Object *obj);
+};
+// vftable 0x00BFBC90, allow 0x00260EB1: the object, relationship flags and
+// whether a hit allows.
+class Rva00260EB1Filter : public Rva000421C8
+{
+public:
+	Rva00260EB1Filter(const Object *obj, int flags, bool match)
+		: m_obj(obj), m_flags(flags), m_match(match) {}
+	virtual bool allow(Object *obj);
+	virtual int getPlayerMask();
+	const Object *m_obj;
+	int m_flags;
+	bool m_match;
+};
+// vftable 0x00BF91BC, allow 0x002611BF: +0x08 an object.
+class Rva002611BFFilter : public Rva000421C8
+{
+public:
+	Rva002611BFFilter(const Object *obj) : m_obj(obj) {}
+	virtual bool allow(Object *obj);
+	const Object *m_obj;
+};
+// vftable 0x00BCECF0, allow 0x002614EC: +0x08 what to compare, +0x0C a
+// player, +0x10 whether a hit allows.
+class Rva002614ECFilter : public Rva000421C8
+{
+public:
+	Rva002614ECFilter(const void *what, Player *player, bool match)
+		: m_what(what), m_player(player), m_match(match) {}
+	virtual bool allow(Object *obj);
+	const void *m_what;
+	Player *m_player;
+	bool m_match;
+};
+// vftable 0x00C54EB4, allow 0x004ACDAC (this unit's own filter): +0x08 a
+// radius, +0x0C a centre.
+class Rva004ACDACFilter : public Rva000421C8
+{
+public:
+	Rva004ACDACFilter(float radius, const Coord3D *centre)
+		: m_radius(radius), m_centre(centre) {}
+	virtual bool allow(Object *obj);
+	float m_radius;
+	const Coord3D *m_centre;
+};
+#include "../../../Common/PartitionRangeQueryCallView.h"
+#pragma intrinsic(_ReadWriteBarrier)
+#pragma intrinsic(_ReadWriteBarrier)
+#define _STLP_NO_EXCEPTIONS 1
+#include <hash_map>
+#pragma intrinsic(_ReadWriteBarrier)
+
+extern PartitionManager *ThePartitionManager;
+
+void XferObjectID(Xfer *xfer, ObjectID *id);
+
+struct BridgeBehaviorObjectIDNode
+{
+	BridgeBehaviorObjectIDNode *m_next;
+	BridgeBehaviorObjectIDNode *m_previous;
+	ObjectID m_value;
+};
+
+class BridgeBehaviorObjectIDList
+{
+public:
+	void push_back(const ObjectID &value);
+	BridgeBehaviorObjectIDNode *m_node;
+};
+
+Xfer *xferSTLObjectIDList(Xfer *xfer, BridgeBehaviorObjectIDList *list);
+
+// Keep the inline accessors without emitting per-unit COMDAT copies (retail's
+// one out-of-line vector<void*> size/begin is the /Od body at 0x00023BC0/0x00023B90).
+namespace _STL {
+template <> __declspec(dllimport) __forceinline
+void *const *vector<void*>::begin() const { return this->_M_start; }
+template <> __declspec(dllimport) __forceinline
+size_t vector<void*>::size() const { return size_t(this->_M_finish - this->_M_start); }
+template <> __declspec(dllimport) __forceinline void *const &vector<void *>::operator[](size_t __n) const { return *(begin() + __n); }
+}
+
+class Rva0010CConditionBits
+{
+public:
+	unsigned int test(int bit) const
+	{
+		return m_words[bit >> 5] & (1U << (bit & 0x1f));
+	}
+	void set(int bit)
+	{
+		m_words[bit >> 5] |= 1U << (bit & 0x1f);
+	}
+	void clear(int bit)
+	{
+		m_words[bit >> 5] &= ~(1U << (bit & 0x1f));
+	}
+private:
+	unsigned int m_words[20];
+};
+
+class Object
+{
+public:
+	void rva0028AE6D();
+	Drawable *getDrawable() const;
+	bool isKindOf(KindOfType t) const;
+	Player *getControllingPlayer() const; // 0x0028AFA9
+	const Coord3D *getPosition() const { return &m_pos; }
+	ObjectID getID() const { return m_id; }
+	unsigned char m_pad000[0x38];
+	Coord3D m_pos; // +0x38
+	unsigned char m_pad044[0x74 - 0x44];
+	ObjectID m_id; // +0x74
+	unsigned char m_pad078[0x10C - 0x78];
+	Rva0010CConditionBits m_conditionBits; // +0x10C
+	unsigned char m_pad15C[0x264 - 0x15C];
+	ExperienceTracker *m_experienceTracker264; // +0x264
+	unsigned char m_pad268[0x44C - 0x268];
+	int m_44C; // +0x44C
+};
+
+namespace {
+typedef _STL::hash_map<ObjectID, Object *, _STL::hash<int>, _STL::equal_to<ObjectID> > ObjectPtrHashVF;
+}
+
+class Rva00270619
+{
+public:
+	void Rva00270619Clear(int bit);
 };
 
 // Primary-vtable slots 1..17 of SpecialAbilityUpdate (vtable 0x00C3FBA8):
@@ -229,6 +310,27 @@ public:
 	virtual void triggerAbilityEffect(); // slot 17; 0x0045108D, RousingSpeechUpdate 0x004AD399
 private:
 	unsigned char m_pad24[0x88 - 0x24];
+};
+
+// Field names from the chained parse table 0x00C54F28 (10 of 10 BFME1
+// fields); layout from the rowed ctor 0x4AD0EE.
+class __declspec(novtable) RousingSpeechUpdateModuleData : public Rva0044ECCE
+{
+public:
+	virtual ~RousingSpeechUpdateModuleData();
+
+	float m_bonusRadius; // +0xC8
+	int m_speechDuration; // +0xCC
+	int m_updateInterval; // +0xD0
+	const FXList *m_leaderFX; // +0xD4
+	const FXList *m_followerFX; // +0xD8
+	bool m_createWave; // +0xDC
+	unsigned char m_padDD[3]; // +0xDD
+	float m_waveWidth; // +0xE0
+	_STL::vector<AsciiString> m_modifierNames; // +0xE4
+	bool m_levelUp; // +0xF0
+	unsigned char m_padF1[3]; // +0xF1
+	Rva00360D26Member m_objectFilter; // +0xF4
 };
 
 class RousingSpeechUpdate : public SpecialAbilityUpdate
@@ -254,106 +356,9 @@ private:
 	float m_98; // +0x98
 };
 
-class NameKeyGenerator
-{
-public:
-	NameKeyType nameToKey(const char *name);
-};
+// tu-skeleton: 0x004ACD73 27B ?buildFieldParse@RousingSpeechUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
 
-extern NameKeyGenerator *TheNameKeyGenerator;
-
-extern GameLogic *TheGameLogic;
-
-// BFME2's partition filters (the view AIStructureCreepTactic.cpp documents):
-// a vptr, the +0x04 link to the next filter (0x00625790), then each filter's
-// own members.
-class Rva000421C8
-{
-public:
-	Rva000421C8() : m_next(0) {}
-	virtual ~Rva000421C8() {}
-	virtual bool allow(Object *obj) = 0;
-	virtual int getPlayerMask();
-	Rva000421C8 *link(Rva000421C8 *next);	// 0x00625790
-	Rva000421C8 *m_next;
-};
-
-// vftable 0x00BFAD10, allow 0x0026119D: not effectively dead.
-class Rva0026119DFilter : public Rva000421C8
-{
-public:
-	virtual bool allow(Object *obj);
-};
-
-// vftable 0x00BFBC90, allow 0x00260EB1: the object, relationship flags and
-// whether a hit allows.
-class Rva00260EB1Filter : public Rva000421C8
-{
-public:
-	Rva00260EB1Filter(const Object *obj, int flags, bool match)
-		: m_obj(obj), m_flags(flags), m_match(match) {}
-	virtual bool allow(Object *obj);
-	virtual int getPlayerMask();
-	const Object *m_obj;
-	int m_flags;
-	bool m_match;
-};
-
-// vftable 0x00BF91BC, allow 0x002611BF: +0x08 an object.
-class Rva002611BFFilter : public Rva000421C8
-{
-public:
-	Rva002611BFFilter(const Object *obj) : m_obj(obj) {}
-	virtual bool allow(Object *obj);
-	const Object *m_obj;
-};
-
-// vftable 0x00BCECF0, allow 0x002614EC: +0x08 what to compare, +0x0C a
-// player, +0x10 whether a hit allows.
-class Rva002614ECFilter : public Rva000421C8
-{
-public:
-	Rva002614ECFilter(const void *what, Player *player, bool match)
-		: m_what(what), m_player(player), m_match(match) {}
-	virtual bool allow(Object *obj);
-	const void *m_what;
-	Player *m_player;
-	bool m_match;
-};
-
-// vftable 0x00C54EB4, allow 0x004ACDAC (this unit's own filter): +0x08 a
-// radius, +0x0C a centre.
-class Rva004ACDACFilter : public Rva000421C8
-{
-public:
-	Rva004ACDACFilter(float radius, const Coord3D *centre)
-		: m_radius(radius), m_centre(centre) {}
-	virtual bool allow(Object *obj);
-	float m_radius;
-	const Coord3D *m_centre;
-};
-
-#include "../../../Common/PartitionRangeQueryCallView.h"
-
-extern PartitionManager *ThePartitionManager;
-
-void XferObjectID(Xfer *xfer, ObjectID *id);
-
-struct BridgeBehaviorObjectIDNode
-{
-	BridgeBehaviorObjectIDNode *m_next;
-	BridgeBehaviorObjectIDNode *m_previous;
-	ObjectID m_value;
-};
-
-class BridgeBehaviorObjectIDList
-{
-public:
-	void push_back(const ObjectID &value);
-	BridgeBehaviorObjectIDNode *m_node;
-};
-
-Xfer *xferSTLObjectIDList(Xfer *xfer, BridgeBehaviorObjectIDList *list);
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp
 
 static __forceinline void setModelConditionBit(Object *object, int bit)
 {
@@ -373,6 +378,101 @@ static __forceinline void clearModelConditionBit(Object *object, int bit)
 	}
 }
 
+// Complete native4ACDAC..4ACE11/101B, range-filter vtable C54EB4 slot1.
+// Target independently proves Object position38, radius8 and centreC.
+bool Rva004ACDACFilter::allow(Object *obj)
+{
+    const Coord3D *p = obj->getPosition();
+    float x = p->x, y = p->y, z = p->z;
+    _ReadWriteBarrier();
+    const Coord3D *c = m_centre;
+    float cx = c->x, cy = c->y, cz = c->z;
+    _ReadWriteBarrier();
+    Coord3D delta;
+    delta.x = x - cx;
+    delta.y = y - cy;
+    delta.z = z - cz;
+    if (delta.GetLength2D() > m_radius) return true;
+    return false;
+}
+
+UpdateSleepTime RousingSpeechUpdate::update()
+{
+	rva004ACF1D();
+	if (!m_90)
+	{
+		startPreparation();
+		m_8C = getRousingSpeechData()->m_speechDuration + TheGameLogic->getFrame();
+		m_90 = true;
+	}
+	const RousingSpeechUpdateModuleData *data = getRousingSpeechData();
+	if (TheGameLogic->getFrame() < m_8C && !(m_94 >= data->m_bonusRadius))
+	{
+		if (data->m_createWave)
+		{
+			m_94 = m_98;
+			m_98 += data->m_waveWidth;
+			if (m_98 > data->m_bonusRadius)
+				m_98 = data->m_bonusRadius;
+		}
+		triggerAbilityEffect();
+		return (UpdateSleepTime)getRousingSpeechData()->m_updateInterval;
+	}
+	m_90 = false;
+	clearModelConditionBit(m_object, 6 * 32 + 15);
+	return UPDATE_SLEEP_FOREVER;
+}
+
+void RousingSpeechUpdate::rva004AD176()
+{
+	const RousingSpeechUpdateModuleData *data = getRousingSpeechData();
+	Object *self = m_object;
+	BfmeWideResult hits = ThePartitionManager->iterateObjectsInRange(self->getPosition(), m_98, 0,
+		Rva00260EB1Filter(self, 4, false).link(Rva002614ECFilter(&data->m_objectFilter, self->getControllingPlayer(), true)
+			.link(Rva0026119DFilter().link(Rva002611BFFilter(self).link(&Rva004ACDACFilter(m_94, self->getPosition()))))), 1);
+	for (Object *obj = hits.next(); obj; obj = hits.next()) {
+		if (obj == self)
+			continue;
+		const ObjectID id = obj->getID();
+		reinterpret_cast<Rva002A1B6FNativeList *>(&m_88)->append(
+			reinterpret_cast<void *const &>(id));
+	}
+}
+
+void rva004ACD8E(Object *obj)
+{
+	if (obj && obj->m_experienceTracker264)
+		obj->m_experienceTracker264->rva0039B4EC(1, true, false);
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdate_startPreparation.cpp
+
+void RousingSpeechUpdate::startPreparation()
+{
+	SpecialAbilityUpdate::startPreparation();
+	setModelConditionBit(m_object, 6 * 32 + 15);
+	const RousingSpeechUpdateModuleData *data = (const RousingSpeechUpdateModuleData *)m_moduleData;
+	if (data->m_leaderFX)
+		FXList::doFXObj(data->m_leaderFX, m_object, 0);
+	m_94 = 0.0f;
+	if (data->m_createWave)
+	{
+		m_98 = data->m_waveWidth;
+		if (m_98 > data->m_bonusRadius)
+			m_98 = data->m_bonusRadius;
+	}
+	else
+	{
+		m_98 = data->m_bonusRadius;
+	}
+}
+
+// tu-skeleton: 0x004ACE96 60B ??1RousingSpeechUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateBehaviorDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004ACED2 6B ?name@RousingSpeechUpdate@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdate.cpp
+
 // ?getModuleNameKey@RousingSpeechUpdate@@UBE?AW4NameKeyType@@XZ @0x4ACED8
 // (69B): cached pool-name key for RousingSpeechUpdate. The class
 // identity comes from the pool-name string the body pushes
@@ -383,17 +483,11 @@ static __forceinline void clearModelConditionBit(Object *object, int bit)
 // static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
 // from retail, no pins; nameToKey resolves via its matched row).
 
-// tu-skeleton: 0x004ACD73 27B ?buildFieldParse@RousingSpeechUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
 
-// tu-skeleton: 0x004ACD8E 30B ?rva004ACD8E@@YAXPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
 
-// tu-skeleton: 0x004ACDAC 101B ?allow@Rva004ACDACFilter@@UAE_NPAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
 
-// tu-skeleton: 0x004ACE11 133B ?startPreparation@RousingSpeechUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdate_startPreparation.cpp (not merged yet)
 
-// tu-skeleton: 0x004ACE96 60B ??1RousingSpeechUpdate@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateBehaviorDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x004ACED2 6B ?name@RousingSpeechUpdate@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters3.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdatePoolKey.cpp
 
@@ -404,22 +498,6 @@ NameKeyType RousingSpeechUpdate::getModuleNameKey() const
 		TheNameKeyGenerator->nameToKey("RousingSpeechUpdate");
 	return TheRousingSpeechUpdatePoolKey;
 }
-
-// tu-skeleton: 0x004ACF1D 89B ?rva004ACF1D@RousingSpeechUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateRva004ACF1D.cpp (not merged yet)
-
-// tu-skeleton: 0x004ACF76 135B ??0RousingSpeechUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateBehaviorCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004ACFFD 28B ??_GRousingSpeechUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyDeletingDtors.cpp (not merged yet)
-
-// tu-skeleton: 0x004AD019 213B ?update@RousingSpeechUpdate@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x004AD0EE 136B ??0RousingSpeechUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateModuleDataCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004AD176 313B ?rva004AD176@RousingSpeechUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x004AD2AF 132B ?xfer@RousingSpeechUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateXfer.cpp (not merged yet)
-
-// tu-skeleton: 0x004AD333 28B ??_GRousingSpeechUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateModuleDataCtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateModuleDataDtor.cpp
 
@@ -445,6 +523,80 @@ RousingSpeechUpdateModuleData::~RousingSpeechUpdateModuleData()
 {
 }
 
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateRva004ACF1D.cpp
+
+// ?rva004ACF1D@RousingSpeechUpdate@@QAEXXZ
+// partial score=0.83 date=2026-10-01
+// ?rva004ACF1D@RousingSpeechUpdate@@QAEXXZ retail 0x004ACF1D (89 bytes): the
+// RousingSpeechUpdate twin of the matched GloriousChargeUpdate list helper
+// 0x004AD613 (walks the +0x88 ObjectID list clearing condition bit 6*32+9 and
+// the +0x44C dword of each live object, then resets the list), called only by
+// the matched RousingSpeechUpdate::update 0x004AD019. Same model as
+// RousingSpeechUpdateUpdate.cpp; this body is exact except that cl gives the
+// list address edi and the object ebx where retail uses ebx and edi (15 bytes).
+// Tried: reference or pointer local for the list, continue form, while loop,
+// object and iterator declared at function scope, a forceinline Object member
+// for the clear-and-zero.
+
+inline Object *GameLogic::findObjectByID(ObjectID id)
+{
+	if (id == 0)
+		return 0;
+	ObjectPtrHashVF &objectPtrHashVF = *(ObjectPtrHashVF *)((char *)this + 0xB4);
+	ObjectPtrHashVF::iterator it = objectPtrHashVF.find(id);
+	if (it == objectPtrHashVF.end())
+		return 0;
+	return (*it).second;
+}
+
+void RousingSpeechUpdate::rva004ACF1D()
+{
+	if (!m_88.empty())
+	{
+		for (Rva004AD613Iterator it = m_88.begin(); it != m_88.end(); ++it)
+		{
+			Object *object = TheGameLogic->findObjectByID(*it);
+			if (object)
+			{
+				clearModelConditionBit(object, 6 * 32 + 9);
+				object->m_44C = 0;
+			}
+		}
+		m_88.reset();
+	}
+}
+
+// tu-skeleton: 0x004ACF76 135B ??0RousingSpeechUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateBehaviorCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004ACFFD 28B ??_GRousingSpeechUpdate@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/FamilyDeletingDtors.cpp (not merged yet)
+
+// tu-skeleton: 0x004AD0EE 136B ??0RousingSpeechUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateModuleDataCtor.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateXfer.cpp
+
+// ?xfer@RousingSpeechUpdate@@MAEXPAVXfer@@@Z @0x004AD2AF
+void RousingSpeechUpdate::xfer(Xfer *xfer)
+{
+	SpecialAbilityUpdate::xfer(xfer);
+
+	if (xfer->IsLightCRC())
+		return;
+
+	Xfer::Version version(1, 2);
+	*xfer == version;
+
+	xferSTLObjectIDList(xfer, reinterpret_cast<BridgeBehaviorObjectIDList *>(&m_88));
+	*xfer == m_90;
+	*xfer == m_8C;
+	if (version.m_minimum >= 2)
+	{
+		*xfer == m_94;
+		*xfer == m_98;
+	}
+}
+
+// tu-skeleton: 0x004AD333 28B ??_GRousingSpeechUpdateModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateModuleDataCtor.cpp (not merged yet)
+
 // tu-skeleton: 0x004AD399 345B ?triggerAbilityEffect@RousingSpeechUpdate@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateTrigger.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E43D 8B uw_0078e43d -- matched in Code/gen_small/uw_gen_012.cpp (not merged yet)
@@ -456,20 +608,6 @@ RousingSpeechUpdateModuleData::~RousingSpeechUpdateModuleData()
 // tu-skeleton: 0x0078E457 14B uw_0078e457 -- matched in Code/gen_small/uw_gen_009.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E465 10B __ehhandler$??0RousingSpeechUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateModuleDataCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E46F 8B uw_0078e46f -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E477 8B uw_0078e477 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E47F 8B uw_0078e47f -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E487 8B uw_0078e487 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E48F 8B uw_0078e48f -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E497 8B uw_0078e497 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
-
-// tu-skeleton: 0x0078E49F 10B __ehhandler$?rva004AD176@RousingSpeechUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateUpdate.cpp (not merged yet)
 
 // tu-skeleton: 0x0078E4C9 8B $L6177 -- matched in Code/GameEngine/Source/GameLogic/Object/Update/RousingSpeechUpdateTrigger.cpp (not merged yet)
 
