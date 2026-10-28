@@ -232,16 +232,26 @@ class Member:
 
     def __init__(self, kind, access, text, **kw):
         self.kind, self.access, self.text = kind, access, text
-        self.body = None
+        self.body, self.lead, self.tail, self.text_orig = None, [], "", None
         self.__dict__.update(kw)
 
     def __repr__(self):
         return f"Member({self.kind} {self.access} {self.text!r})"
 
 
-def members(body, cls, typedefs):
-    """[Member] of one class body (comments already blanked). Raises Refused on a
-    construct this reader does not model."""
+def comment_text(text):
+    """The words of one `// ...` or `/* ... */` comment."""
+    t = text.strip()
+    if t.startswith("//"):
+        return t.lstrip("/").lstrip("<").strip()
+    return re.sub(r"^/\*+|\*+/$", "", t).strip()
+
+
+def members(body, cls, typedefs, orig=None):
+    """[Member] of one class body (comments already blanked; `orig` is the same span
+    with its comments, which ride with the member they precede or end the line of).
+    Raises Refused on a construct this reader does not model."""
+    orig = body if orig is None else orig
     code = hal.masked(body)
     pieces, start, depth, par, i, n = [], 0, 0, 0, 0, len(body)
     while i < n:
@@ -262,22 +272,37 @@ def members(body, cls, typedefs):
                                          head) and re.match(r"\s*[A-Za-z_*&]", code[j:]):
                     raise Refused(f"nested type with a declarator: {ws(body[start:j])[:60]}")
                 end = j + (semi.end() if semi else 0)
-                pieces.append(body[start:end])
+                pieces.append((start, end))
                 start = i = end
                 continue
         elif c == ";" and depth == 0 and par == 0:
-            pieces.append(body[start:i + 1])
+            pieces.append((start, i + 1))
             start = i + 1
         elif c == ":" and depth == 0 and par == 0 and code[i + 1:i + 2] != ":" and code[i - 1:i] != ":" \
                 and re.fullmatch(r"\s*(public|protected|private)\s*", code[start:i]):
-            pieces.append(body[start:i + 1])
+            pieces.append((start, i + 1))
             start = i + 1
         i += 1
     if body[start:].strip():
         raise Refused(f"unterminated member: {ws(body[start:])[:60]}")
-    out, access = [], None
-    for piece in pieces:
-        p = piece.strip()
+    out, access, last = [], None, None
+    for s, e in pieces + [(start, len(body))]:
+        c, o = body[s:e], orig[s:e]
+        k = 0
+        nl = c.find("\n")
+        if nl >= 0 and not c[:nl].strip():           # the rest of the previous member's line
+            if last is not None and o[:nl].strip():
+                last.tail = comment_text(o[:nl])
+            k = nl + 1
+        lead = []
+        while True:                                    # whole comment lines before the member
+            nl = c.find("\n", k)
+            if nl < 0 or c[k:nl].strip():
+                break
+            if o[k:nl].strip():
+                lead.append(o[k:nl].strip())
+            k = nl + 1
+        p = c.strip()
         m = ACCESS.match(p)
         if m and not p[m.end():].strip():
             access = m.group(1)
@@ -285,7 +310,12 @@ def members(body, cls, typedefs):
         if not p or p == ";":
             continue
         got = member(p, access, cls, typedefs)
-        out.extend(got if isinstance(got, list) else [got])
+        got = got if isinstance(got, list) else [got]
+        got[0].lead = lead
+        if got[0].kind == "fn" and got[0].body and "\n" in p:
+            got[0].text_orig = o[k:].strip()            # a multi-line inline body keeps its comments
+        out.extend(got)
+        last = got[-1]
     return out
 
 
@@ -409,11 +439,13 @@ class View:
             raise Refused(f"{path}: unreadable class head `{self.head[:60]}`")
         self.key, self.declspec, self.bases = hm.group(1), ws(hm.group(2) or ""), ws(hm.group(3) or "")
         self.typedefs = file_typedefs(text)
-        self.members = [] if inert else members(src[open_ + 1:close], cls, self.typedefs)
+        self.members = [] if inert else members(src[open_ + 1:close], cls, self.typedefs,
+                                                text[span[0]:span[1]][open_ + 1:close])
         default = "public" if self.key == "struct" else "private"
         cv_virtual = set(layout.get("virtual", []))
         for m in self.members:
             m.access = m.access or default
+            m.src = path
             if m.kind == "fn" and m.name in cv_virtual:
                 m.virtual = True
         rest = code[:span[0]] + " " * (span[1] - span[0]) + code[span[1]:]
@@ -517,7 +549,7 @@ def merge_fn(cls, a, b, ledger):
                                              if k not in ("kind", "access", "text")})
     if not out.body and (ma.body or mb.body):
         src = ma if ma.body else mb
-        out.text, out.body = src.text, src.body
+        out.text, out.body, out.text_orig, out.src = src.text, src.body, src.text_orig, getattr(src, "src", None)
     return out
 
 
@@ -672,6 +704,14 @@ def reconcile(cls, views, seed, ledger=()):
     for n in named:
         if n in names:
             raise Refused(f"{n} is a field in one view and a {'/'.join(sorted(names[n]))} member in another")
+    for k, (m, v) in list(entries.items()):          # a donor's inline body speaks the superset's names
+        mapping = plan.renames.get(getattr(m, "src", None) or v.path)
+        if mapping and m.kind == "fn" and m.body:
+            m = Member(m.kind, m.access, rename(m.text, mapping), **{a: b for a, b in m.__dict__.items()
+                                                                     if a not in ("kind", "access", "text")})
+            m.body = rename(m.body, mapping)
+            m.text_orig = rename(m.text_orig, mapping) if m.text_orig else None
+            entries[k] = (m, v)
     plan.entries, plan.intro, plan.size, plan.start, plan.vfptr = entries, intro, size, start, vfptr
     plan.empty = not any(m.kind == "data" for v in views for m in v.members)
     h = heads[0]
@@ -761,17 +801,24 @@ def render(plan):
         for r in rows[1:]:
             lines.append(("\t" + r[cut:]).rstrip() if r.strip() else "")
 
+    def member(m, text):
+        for line in m.lead:                            # the chosen spelling's own comments ride along
+            put(m.access, line)
+        put(m.access, text + (f" // {m.tail}" if m.tail else ""))
+
     for kind in ("nested", "static", "fn"):
         for k, (m, _v) in plan.entries.items():
             if m.kind == kind and k[0] != "slot":
-                put(m.access, spelled(m))
+                member(m, spelled(m))
     for k in plan.intro:
-        put(plan.entries[k][0].access, spelled(plan.entries[k][0]))
+        member(plan.entries[k][0], spelled(plan.entries[k][0]))
     at = plan.start
     for off, sz, m, _path in plan.fields:
         if off > at:
             put(state[0] or "public", f"char m_pad{at:02X}[0x{off - at:X}];")
-        put(m.access, f"{m.base} {m.decl}; // +0x{off:02X}")
+        for line in m.lead:
+            put(m.access, line)
+        put(m.access, f"{m.base} {m.decl}; // +0x{off:02X}" + (f" {m.tail}" if m.tail else ""))
         at = off + sz
     if plan.size > at and not (plan.empty and plan.size == 1 and at == 0):
         put(state[0] or "public", f"char m_pad{at:02X}[0x{plan.size - at:X}];")
@@ -781,7 +828,7 @@ def render(plan):
 
 def spelled(m):
     if m.kind == "fn" and m.body:
-        return m.text.strip()
+        return (m.text_orig or m.text).strip()
     text = ws(m.text)
     return text if text.endswith((";", "}")) else text + ";"
 

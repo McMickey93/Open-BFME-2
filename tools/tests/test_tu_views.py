@@ -185,6 +185,24 @@ class LineEndings(unittest.TestCase):
                 fx.close()
 
 
+class Spelling(unittest.TestCase):
+    def test_comments_ride_with_their_member_and_donor_bodies_use_superset_names(self):
+        seed = ("class Foo\n{\npublic:\n\t// why a() stays out of line\n\tvoid a();\n"
+                "\tint m_x; // retail +0x00\n\tfloat m_y;\n};\n")
+        donor = ("class Foo\n{\npublic:\n\tint get()\n\t{\n\t\treturn m_first; // the count\n\t}\n"
+                 "\tint m_first;\n\tchar m_pad04[4];\n};\nint g(Foo *f) { return f->get(); }\n")
+        fx = Fixture({"Seed.cpp": seed, "Donor.cpp": donor})
+        try:
+            rep = fx.run(dry_run=True)
+            block = rep["classes"]["Foo"]["block"]
+            self.assertIn("\t// why a() stays out of line\n\tvoid a();", block)
+            self.assertIn("int m_x; // +0x00 retail +0x00", block)
+            self.assertIn("return m_x; // the count", block)
+            self.assertNotIn("m_first", block)
+        finally:
+            fx.close()
+
+
 class Dependencies(unittest.TestCase):
     def test_the_block_carries_an_enum_and_forward_declares_a_class_the_donor_lacks(self):
         seed = ("class Label\n{\npublic:\n\tint m_p;\n};\n"
