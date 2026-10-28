@@ -14,7 +14,7 @@
 // (+0x14..+0x1C), restarts the timer from its LifeTimer (+0x08..+0x10), sets
 // condition 172 plus the level's, pokes the 0x0028BD3A interface and, with
 // HitsParalyze (+0x21), disables the object (type 4) until the timer ends.
-// Module data names follow HitReactionBehaviorModuleDataCtor.cpp.
+// Module data names follow HitReactionBehavior.cpp (ModuleData ctor).
 
 #include "../../../Common/GameLogicObjectLookupView.h"
 
