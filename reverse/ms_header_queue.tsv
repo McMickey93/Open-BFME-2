@@ -509,9 +509,7 @@ Code/GameEngine/Source/Common/Rva0010F33CStart.cpp	conflicting	mangle	2	2	0	0	0	
 Code/GameEngine/Source/Common/Rva0010F38APause.cpp	conflicting	mangle	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand	1: Code/GameEngine/Include/Common/Rva00041004Lock.h:4 CRITICAL_SECTION(mangle)		EnterCriticalSection:same,LeaveCriticalSection:same
 Code/GameEngine/Source/Common/Rva00151288SetPath.cpp	conflicting	abi	2	0	0	0	0	0	2	0	0	0	0	<stdlib.h>	no	no	hand			_splitpath:abi,_makepath:abi
 Code/GameEngine/Source/Common/Rva00286116PoolFrees.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	1	<windows.h>,<excpt.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	NULL:same
-Code/GameEngine/Source/Common/Rva002B74DEDtor.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	1	<excpt.h>,<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/Rva00407A6A.cpp	conflicting	mangle	2	1	0	0	0	1	0	0	0	0	0	<windows.h>	yes	yes	hand			GUID:mangle,CoCreateGuid:same
-Code/GameEngine/Source/Common/Rva00410AABFree.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	1	<excpt.h>,<new>	no	yes	hand		prove with ./build.sh: byte gate is the authority	operator delete:same
 Code/GameEngine/Source/Common/Rva005B5B39Box.cpp	conflicting	abi	2	0	0	0	0	0	2	0	0	0	0	<ctype.h>,<stdlib.h>	no	no	hand			isdigit:abi,atoi:abi
 Code/GameEngine/Source/Common/Rva00739D90Siblings.cpp	conflicting	abi	2	0	0	0	0	0	2	0	0	0	0	<math.h>	no	no	hand			floor:abi,ceil:abi
 Code/GameEngine/Source/Common/SmallGaps/probeFile.cpp	conflicting	abi	2	0	0	0	0	0	2	0	0	0	0	<stdio.h>	no	no	hand			fopen:abi,fclose:abi

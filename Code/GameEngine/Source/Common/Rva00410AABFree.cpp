@@ -8,6 +8,7 @@
 // import: read <stdlib.h> without dllimport.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
 
 #include "ascii_string.h"
@@ -34,7 +35,7 @@ struct Holder00410AAB
 	Rva00410688 m_04;
 };
 
-void __cdecl operator delete(void *p);
+
 
 void __stdcall Rva00410AABFree(void *p);
 

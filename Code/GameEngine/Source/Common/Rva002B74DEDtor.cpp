@@ -11,6 +11,7 @@
 // import: read <stdlib.h> without dllimport.
 #define _CRTIMP
 #include <stdlib.h>
+#include <new>
 #undef _CRTIMP
 
 class Rva002B2EA0
@@ -26,7 +27,7 @@ private:
 };
 
 class Rva004FA2E2 { public: ~Rva004FA2E2(); };
-void __cdecl operator delete(void *);
+
 class Rva002B430C
 {
 public:
