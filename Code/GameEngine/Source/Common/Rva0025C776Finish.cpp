@@ -11,39 +11,7 @@
 // the volatile qualifier emits the identical mov/movss encodings and the
 // function has no externally visible behaviour change.
 
-struct Rva0025C6E2Elem
-{
-	int m_00;
-	float m_04;
-	float m_08;
-	float m_0c;
-	float m_10;
-	int m_14;
-};
-
-class Display
-{
-public:
-	virtual ~Display();
-	void SetMovieImage(int v0, int idx, float f0, float f1, float f2, float f3);
-	void SetStaticImage(int v0, int idx, float f0, float f1, float f2, float f3);
-	void rva0025C776(int a8, float fc, float f10, float f14, float f18, int a1c, int a20);
-private:
-	char m_pad04[0x64];
-	Rva0025C6E2Elem m_arr[3];
-	char m_padB0[0x60];
-	int m_110;
-	char m_pad114[4];
-	int m_118;
-	float m_11c;
-	float m_120;
-	int m_124;
-	float m_128;
-	float m_12c;
-	float m_130;
-	float m_134;
-	int m_138;
-};
+#include "../GameClient/DisplayStaticDebugView.h"
 
 extern float g_Va00BBB8D8;
 

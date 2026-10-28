@@ -14,6 +14,7 @@ class Image;
 
 class Rva0025C6E2Elem
 {
+	friend class Display;
 public:
 	void rva0025C8D3(W3DDisplay *disp, int id, int color);
 	void rva0025C829(W3DDisplay *disp, int id);
@@ -106,6 +107,9 @@ public:
 	virtual void pad73();
 	virtual void setDebugDisplayCallback(DebugDisplayCallback *callback, void *userData = NULL);
 	void DrawStaticImage(int index, int arg);
+	void SetMovieImage(int image, int index, float x0, float y0, float x1, float y1);
+	void SetStaticImage(int image, int index, float x0, float y0, float x1, float y1);
+	void rva0025C776(int a8, float fc, float f10, float f14, float f18, int a1c, int a20);
 
 private:
 	unsigned char m_pad04[8];
@@ -116,6 +120,18 @@ private:
 	void *m_debugDisplayUserData; // +0x34
 	unsigned char m_pad38[0x68 - 0x38];
 	Rva0025C6E2Elem m_staticImages[MAX_STATIC_IMAGES]; // +0x68
+	unsigned char m_padB0[0x110 - 0xB0];
+	int m_110;
+	unsigned char m_pad114[4];
+	int m_118;
+	float m_11c;
+	float m_120;
+	int m_124;
+	float m_128;
+	float m_12c;
+	float m_130;
+	float m_134;
+	int m_138;
 };
 
 #endif
