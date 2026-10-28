@@ -9297,3 +9297,12 @@ Code/GameEngine/Source/Common/VslotSmallBodiesAT.cpp|local|Rva0006297CClamp|w,c3
 Code/GameEngine/Source/Common/VslotSmallBodiesAT.cpp|local|Rva0006297CClamp|h,7c837b4884b1057ad6765461,drz-k9,drz-k9-n3d-14,w-4d4d8f8584bc,2026-10-27
 Code/GameEngine/Source/Common/VslotSmallBodiesAT.cpp|local|Rva0006297CClamp|w2,548511da6c131001efba374b,drz-k9,drz-k9-n3d-14,w-4d4d8f8584bc,2026-10-27
 Code/GameEngine/Source/Common/EbpParamForwarders.cpp|param|Rva002B2955::rva002B2955|a,35deac8425a37fa7bf577b7c,drz-k9,drz-k9-n3d-23,w-4d4d8f8584bc,2026-10-28
+Code/GameEngine/Source/GameClient/GUI/GameWindowManagerScriptParseWindow_parseData.cpp|member|Open2479440Record|dword_30,e352f68f0665ae5c11b2e6ab,drz-k11,drz-k11-n3a-1,w-09889333d128,2026-10-27
+Code/GameEngine/Source/GameNetwork/Rva007F2350StatsCursor.cpp|class||Rva007F27C0Stat,8499f717b55b942eb2985933,drz-k11,drz-k11-n3a-3,w-09889333d128,2026-10-27
+Code/GameEngine/Source/GameNetwork/Rva007F2350StatsCursor.cpp|class||Rva007F27C0User,d4a5c961e2b08a50982c4429,drz-k11,drz-k11-n3a-3,w-09889333d128,2026-10-27
+Code/GameEngine/Source/Common/Rva005D40A6Dtor.cpp|local|StrategicHUD::ChecklistUIItemMovieClip::Flash|s,0c295a141f274173f808fd87,drz-k11,drz-k11-n3a-8,w-09889333d128,2026-10-27
+Code/GameEngine/Source/Common/Rva005D40A6Dtor.cpp|param|Rva00579E47|r,8484412d0edbcdba89458bc2,drz-k11,drz-k11-n3a-8,w-09889333d128,2026-10-27
+Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawOnDrawableBound.cpp|class||Rva000C14F5Anim,deb18dbae74959cd316c4503,drz-k11,drz-k11-n3a-19,w-09889333d128,2026-10-28
+Code/GameEngine/Source/Common/rva00104A75Rva00104A75Farm.cpp|class||Rva00104A75Rect,c2eb46c32d62eed2ade8c0eb,drz-k11,drz-k11-n3a-21,w-09889333d128,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Upgrade/ObjectCreationUpgrade.cpp|member|UpgradeData0C|m_cond140,fcbad48db67e78bdbcb89d05,drz-k11,drz-k11-n3a-25,w-09889333d128,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Upgrade/ObjectCreationUpgrade.cpp|member|UpgradeData0C|m_val144,63625d15a39141bb16480508,drz-k11,drz-k11-n3a-25,w-09889333d128,2026-10-28
