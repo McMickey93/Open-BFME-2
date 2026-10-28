@@ -162,6 +162,37 @@ def test_owned_skips_locals_under_od(tree):
     assert ("param", "param_1") in got and ("local", "iVar1") not in got
 
 
+@pytest.mark.parametrize("kinds", [{"param"}, {"local"}, {"param", "local"}, {"class"}, {"member"},
+                                  {"function"}, {"global"}, {"member", "param"}, set()])
+def test_owned_kind_selection_keeps_the_same_candidates(tree, kinds):
+    expected = [item for item in lane_of(tree).owned(SOURCE) if item[0] in kinds]
+    assert lane_of(tree).owned(SOURCE, kinds=kinds) == expected
+
+
+def test_scoped_owned_skips_unrelated_type_searches_and_preserves_od_rule(tree, monkeypatch):
+    lane = lane_of(tree)
+    monkeypatch.setattr(lane, "type_definers", lambda *args: pytest.fail("unrelated type ownership scan"))
+    got = {(k, i) for k, _, i, _ in lane.owned(SOURCE, kinds={"param", "local"})}
+    assert ("param", "param_1") in got and ("local", "iVar3") in got
+    assert not lane.owned("Code/Game/Slow.cpp", kinds={"local"})
+
+
+def test_selected_type_renames_still_check_other_definers(tree, monkeypatch):
+    lane = lane_of(tree)
+    calls = []
+    monkeypatch.setattr(lane, "type_definers", lambda word: calls.append(word) or [SOURCE, "Code/Other.cpp"])
+    assert not lane.owned(SOURCE, kinds={"class", "member"})
+    assert calls
+
+
+def test_local_selection_keeps_parameter_shadowing_deduplication(tree):
+    (tree / SOURCE).write_text(BOX.replace("    return iVar3;", "    { int a2 = 0; }\n    return iVar3;"))
+    expected = [item for item in lane_of(tree).owned(SOURCE) if item[0] == "local"]
+    selected = lane_of(tree).owned(SOURCE, kinds={"local"})
+    assert selected == expected
+    assert not any(ident == "a2" for _, _, ident, _ in selected)
+
+
 def test_owned_keeps_donor_spelled_weak_params(tree):
     """WWMath's own Dot_Product(const Vector3 &a, const Vector3 &b): a weak
     spelling the donor wrote is not served; a placeholder always is."""
@@ -292,6 +323,15 @@ def test_apply_lands_through_rename(tree, tmp_path):
     assert {b["evidence"] for b in basis} == {f"agree:{states[k]['id']}" for k in (FN_KEY, MEMBER_KEY, PARAM_KEY)}
     assert any(r["name"] == "?sumBox@@YAHPAURva00401000Box@@H@Z" for r in rows(tree, "reverse/functions.csv"))
     assert any(r["name"] == FN for r in rows(tree, "reverse/deleted_rows.csv"))
+
+
+def test_local_apply_does_not_search_unselected_types(tree, tmp_path, monkeypatch):
+    agree_on(tree, tmp_path, {"rva00401000:iVar3": "sum"})
+    monkeypatch.setattr(name_lane.Lane, "type_definers",
+                        lambda *args: pytest.fail("local apply must not scan unselected class/member owners"))
+    apply(tree)
+    assert "int sum = param_1->m_x2C + a2;" in (tree / SOURCE).read_text()
+    assert {row["status"] for row in lane_of(tree).state().values()} == {"landed"}
 
 
 # ---------------------------------------------------------------- apply --only-labels

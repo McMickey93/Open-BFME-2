@@ -431,33 +431,39 @@ class Lane:
             return False
         return not any("vendored=" in (r.get("notes") or "") or r.get("export_rva") for r in rows)
 
-    def owned(self, rel, text=None):
+    def owned(self, rel, text=None, *, kinds=None):
         """[(kind, scope, ident, rva)] the file alone decides, in reading order.
         scope: a function's RVA (0x...), a member's class, a param's or
-        local's function (name_metric.functions_in spelling, #N for overloads)."""
+        local's function (name_metric.functions_in spelling, #N for overloads).
+        Scoped-only requests skip type ownership searches; the scoped planners
+        still check captures, headers and optimisation before any edit."""
+        wanted = None if kinds is None else frozenset(kinds)
+        if wanted == frozenset():
+            return []
         text = self.text(rel) if text is None else text
         code = name_metric.strip(text)
         rows = self.ledger().get(rel, [])
         items = []
-        decls = list(name_metric.DECL.finditer(code))
-        for t in dict.fromkeys(m.group(1) for m in decls):
-            if name_metric.placeholder(t) and self.type_definers(t) in ([], [rel]):
-                items.append(("class", "", t, None))
-        holders = collections.defaultdict(set)
-        macros = set(MACRO.findall(code))
-        for m in decls:
-            # a #define/#undef inside a class body is not a declaration (BFME_AI_SLOT(n) slot tables)
-            body = DIRECTIVE.sub("", code[m.end():name_metric.close(code, m.end() - 1)])
-            for name in name_metric.members(body):
-                if name not in macros:
-                    holders[name].add(m.group(1))
-        for name, classes in holders.items():
-            # only a class this file alone defines: a member of a class with other views
-            # (Object's 13 private copies) is renamed across all of them, not decided here
-            if (len(classes) == 1 and name_metric.placeholder(name) and not name_metric.PAD.match(name)
-                    and len(re.findall(rf"\b{re.escape(name)}\b", code)) > 1     # used, so not padding
-                    and self.type_definers(next(iter(classes))) in ([], [rel])):
-                items.append(("member", next(iter(classes)), name, None))
+        if wanted is None or not wanted <= {"param", "local"}:
+            decls = list(name_metric.DECL.finditer(code))
+            for t in dict.fromkeys(m.group(1) for m in decls):
+                if name_metric.placeholder(t) and self.type_definers(t) in ([], [rel]):
+                    items.append(("class", "", t, None))
+            holders = collections.defaultdict(set)
+            macros = set(MACRO.findall(code))
+            for m in decls:
+                # a #define/#undef inside a class body is not a declaration (BFME_AI_SLOT(n) slot tables)
+                body = DIRECTIVE.sub("", code[m.end():name_metric.close(code, m.end() - 1)])
+                for name in name_metric.members(body):
+                    if name not in macros:
+                        holders[name].add(m.group(1))
+            for name, classes in holders.items():
+                # only a class this file alone defines: a member of a class with other views
+                # (Object's 13 private copies) is renamed across all of them, not decided here
+                if (len(classes) == 1 and name_metric.placeholder(name) and not name_metric.PAD.match(name)
+                        and len(re.findall(rf"\b{re.escape(name)}\b", code)) > 1     # used, so not padding
+                        and self.type_definers(next(iter(classes))) in ([], [rel])):
+                    items.append(("member", next(iter(classes)), name, None))
         scopes = collections.defaultdict(set)
         parsed = []
         for r in rows:
@@ -505,7 +511,8 @@ class Lane:
             slot = (scope, ident) if kind in ("param", "local") else ident
             if slot not in seen:
                 seen.add(slot)
-                out.append((kind, scope, ident, rva))
+                if wanted is None or kind in wanted:
+                    out.append((kind, scope, ident, rva))
         return out
 
     # ------------------------------------------------------------ refusals
@@ -834,7 +841,8 @@ def cmd_apply(lane, args, *, verify=rename.build_verify, checks=rename.ledger_ch
     print(f"name_lane: selected {sum(map(len, todo.values()))} key(s) across {len(todo)} file(s).", flush=True)
     for rel, rows in sorted(todo.items()):
         text = lane.text(rel)
-        live = {key_of(rel, k, s, i) for k, s, i, _ in lane.owned(rel, text)} if text is not None \
+        live = {key_of(rel, k, s, i) for k, s, i, _ in
+                lane.owned(rel, text, kinds={r["kind"] for r in rows})} if text is not None \
             and lane.servable(rel) else set()
         ordered = sorted(rows, key=lambda r: LAND_ORDER[r["kind"]])
         scoped = [r for r in ordered if r["kind"] in ("param", "local") and r["key"] in live]
