@@ -7,7 +7,6 @@
 #include <cstdlib>
 #include <vector>
 #include <memory>
-
 class UnicodeString;
 class PooledString;
 struct XferUnknown11;
@@ -24,8 +23,19 @@ class RGBColor;
 class RGBAColorReal;
 class RGBAColorInt;
 class Snapshot;
-
 #include "../../../../Include/Common/BfmeXfer.h"
+//
+// ?xfer@DynamicPortalBehaviour@@MAEXPAVXfer@@@Z, retail 0x004609BC, 201 bytes.
+// Slot 3 of ??_7DynamicPortalBehaviour 0x00C428C4 (slot-2 name getter
+// returns "DynamicPortalBehaviour"). The rowed UpgradeModule::xfer 0x004CE3F9
+// first, then the light-CRC out, Version(1,2), six waypoints at +0x24 by
+// waypoint ID (the rowed XferWaypointID 0x00305C62; 0x7FFFFFFF is no
+// waypoint; on load resolved through TheTerrainLogic slot 35, on save read
+// from Waypoint+0x04), a bool at +0x3C and, from version 2, a bool at +0x3D.
+// Member names not recovered.
+
+class AsciiString;
+class Object;
 
 //
 // ??1DynamicPortalBehaviour@@MAE@XZ, retail 0x00460C18, 91 bytes. Behavior-side
@@ -74,6 +84,7 @@ public:
 private:
 	int m_id;
 };
+
 typedef Rva002E6ECA Rva0046094CWaypoint;
 
 class TerrainLogic
@@ -294,9 +305,130 @@ public:
 	static void buildFieldParse(MultiIniFieldParse &parse);
 };
 
-// tu-skeleton: 0x0046094C 112B ?rva0046094C@DynamicPortalBehaviour@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourClearPortals.cpp (not merged yet)
+//
+// ?rva0046094C@DynamicPortalBehaviour@@QAEXXZ, retail 0x0046094C (112 bytes):
+// called by the destructor 0x00460C18 and upgradeRemovalImplementation
+// 0x00460C7D. With the +0x3C portals-created flag set it removes each of the
+// six waypoint slots at +0x24 from TheAI's +0x10 pathfinder (rowed
+// 0x002E9042) when the waypoint reports so (rowed 0x002E6ECA), deletes it
+// through its slot-0 destructor and clears the slot, then lets the
+// pathfinder rebuild (rowed 0x002E7023) and clears the flag. The same body
+// as FakePathfindPortalBehaviour's two-slot 0x0046183B. The method name is a
+// placeholder.
 
-// tu-skeleton: 0x004609BC 201B ?xfer@DynamicPortalBehaviour@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourXfer.cpp (not merged yet)
+class AI;
+
+extern AI *TheAI;
+
+class Rva002E9042
+{
+public:
+	void rva002E9042(void *arg);
+};
+
+// The pathfinder rebuild walk, rowed as Rva004618D4Caller::rva002E7023
+// (0x002E7023), called as a thiscall on the AI's pathfinder pointer.
+class Rva004618D4Caller { public: void rva002E7023(); };
+
+struct Rva004618D4AI
+{
+	char m_pad00[0x10];
+	Rva002E9042 *m_p10;
+};
+
+class Waypoint
+{
+public:
+	int getID() const { return m_id; }
+private:
+	void *m_unknown00;
+	int m_id;
+};
+
+class ObjectModuleBase
+{
+public:
+	virtual ~ObjectModuleBase();
+protected:
+	Object *getObject() const { return m_object; }
+	const ModuleData *m_moduleData; // +0x04
+	Object *m_object; // +0x08
+};
+
+class UpgradeModuleInterface
+{
+public:
+	virtual void upgradeModuleInterfaceAnchor();
+};
+
+class UpgradeMuxIface
+{
+public:
+	virtual Bool isAlreadyUpgraded() const = 0;
+	virtual void m01() = 0;
+	virtual void m02() = 0;
+	virtual void m03() = 0;
+	virtual void m04() = 0;
+	virtual void m05() = 0;
+	virtual void m06() = 0;
+	virtual void m07() = 0;
+protected:
+	virtual void upgradeRemovalImplementation() = 0;
+	virtual void setUpgradeExecuted(Bool executed) = 0;
+	virtual void upgradeImplementation() = 0;
+};
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourClearPortals.cpp
+
+void DynamicPortalBehaviour::rva0046094C()
+{
+ if(m_3C) {
+  Rva0046094CWaypoint **p=m_24;
+  for(int i=0;i<6;++i,++p) {
+   Rva0046094CWaypoint *wp=*p;
+   if(wp) {
+    if((unsigned char)wp->get()) (*reinterpret_cast<Rva004618D4AI**>(&TheAI))->m_p10->rva002E9042(wp);
+    ::operator delete(*p ? (*p)->destroy(0) : 0);
+    *p=0;
+   }
+  }
+  reinterpret_cast<Rva004618D4Caller*>((*reinterpret_cast<Rva004618D4AI**>(&TheAI))->m_p10)->rva002E7023();
+  m_3C=false;
+ }
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourXfer.cpp
+
+// ?xfer@DynamicPortalBehaviour@@MAEXPAVXfer@@@Z @0x004609BC
+void DynamicPortalBehaviour::xfer(Xfer *xfer)
+{
+	UpgradeModule::xfer(xfer);
+
+	if (xfer->IsLightCRC())
+		return;
+
+	Xfer::Version version(1, 2);
+	*xfer == version;
+
+	for (int i = 0; i < WAYPOINT_COUNT; ++i)
+	{
+		if (xfer->IsLoading())
+		{
+			int id;
+			XferWaypointID(xfer, &id);
+			m_24[i] = id == INVALID_WAYPOINT_ID ? 0 : TheTerrainLogic->getWaypointByID(id);
+		}
+		else
+		{
+			int id = m_24[i] ? m_24[i]->getID() : INVALID_WAYPOINT_ID;
+			XferWaypointID(xfer, &id);
+		}
+	}
+
+	*xfer == m_3C;
+	if (version.m_minimum >= 2)
+		*xfer == m_3D;
+}
 
 // tu-skeleton: 0x00460A85 19B ?bfmeGoEBC@BfmeThingEBC@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/BfmeConv802.cpp (not merged yet)
 
@@ -316,7 +448,17 @@ public:
 
 // tu-skeleton: 0x00460BCD 6B ?Rva00460BCDGet@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
-// tu-skeleton: 0x00460BD3 69B ?getModuleNameKey@DynamicPortalBehaviour@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourPoolKey.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourPoolKey.cpp
+
+// ?getModuleNameKey@DynamicPortalBehaviour@@UBE?AW4NameKeyType@@XZ
+NameKeyType DynamicPortalBehaviour::getModuleNameKey() const
+{
+	static NameKeyType TheDynamicPortalBehaviourPoolKey =
+		TheNameKeyGenerator->nameToKey("DynamicPortalBehaviour");
+	return TheDynamicPortalBehaviourPoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviour.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourDtor.cpp
 
@@ -330,15 +472,10 @@ DynamicPortalBehaviour::~DynamicPortalBehaviour()
 // each one has the same function in that slot (vftable addresses from matched vptr
 // stores). Bind them to the rows at those functions.
 
-// tu-skeleton: 0x00460C73 10B ?get@Rva00460C73FloatChase32Field@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp (not merged yet)
 
-// tu-skeleton: 0x00460C7D 61B ?upgradeRemovalImplementation@DynamicPortalBehaviour@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourUpgradeRemoval.cpp (not merged yet)
 
-// tu-skeleton: 0x00460CBA 288B ?rva00460CBA@DynamicPortalBehaviour@@QAEXPAUCoord3D@@@Z -- matched in Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderFootprintAttackRangeQuery.cpp (not merged yet)
 
-// tu-skeleton: 0x00460DF6 290B ?IsEndPortalAboveWall@DynamicPortalBehaviour@@QAE_NPAUCoord3D@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourGetPosition.cpp (not merged yet)
 
-// tu-skeleton: 0x00460F18 45B ?Rva00460F18Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/stlport_uninitialized_copy_vector.cpp
 
@@ -351,33 +488,19 @@ DynamicPortalBehaviour::~DynamicPortalBehaviour()
 // rowed at 0x000796E8), so the specialization below spells the STLport loop
 // against that row and emits the 38B push-esi/edi body.
 
-// tu-skeleton: 0x00460F6B 37B ??$__uninitialized_fill_n@PAURva00460F6BElement@@IU1@@_STL@@YAPAURva00460F6BElement@@PAU1@IABU1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00460F6B.cpp (not merged yet)
 
-// tu-skeleton: 0x00460F90 711B ?createWaypoints@DynamicPortalBehaviour@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourCreateWaypoints.cpp (not merged yet)
 
-// tu-skeleton: 0x00461257 29B ?rva00461257@DynamicPortalBehaviour@@AAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
 
-// tu-skeleton: 0x00461274 16B ?loadPostProcess@DynamicPortalBehaviour@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourLoadPostProcess.cpp (not merged yet)
 
-// tu-skeleton: 0x00461284 22B ?mapLoadPostProcess@DynamicPortalBehaviour@@UAEXPBVDict@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
 
-// tu-skeleton: 0x0046129A 149B ?upgradeImplementation@DynamicPortalBehaviour@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
 
-// tu-skeleton: 0x0046132F 12B ?onBuildComplete@DynamicPortalBehaviour@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
 
-// tu-skeleton: 0x0046133B 176B ?parseWayPoint@DynamicPortalBehaviourData@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/INI/INIWayPointParse.cpp (not merged yet)
 
-// tu-skeleton: 0x004613EB 63B ??1?$vector@UDynamicPortalLink@@V?$allocator@UDynamicPortalLink@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalLinkVector.cpp (not merged yet)
 
-// tu-skeleton: 0x0046142A 261B ??0DynamicPortalBehaviourModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourModuleDataCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0046152F 183B ?_M_insert_overflow@?$vector@VDynamicPortalLink@@V?$allocator@VDynamicPortalLink@@@_STL@@@_STL@@IAEXPAVDynamicPortalLink@@ABV3@ABU__false_type@2@I_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/Rva0046152FFinish.cpp (not merged yet)
 
-// tu-skeleton: 0x004615E6 28B ??_GDynamicPortalBehaviourModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00461602 120B ??1DynamicPortalBehaviourModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourModuleDataDtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0046167A 55B ?push_back@?$vector@VDynamicPortalLink@@V?$allocator@VDynamicPortalLink@@@_STL@@@_STL@@QAEXABVDynamicPortalLink@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/Rva0046152FFinish.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourParseLink.cpp
 
@@ -407,13 +530,61 @@ void DynamicPortalBehaviourModuleData::buildFieldParse(MultiIniFieldParse &parse
 	parse.add(reinterpret_cast<const FieldParse *>(s_dynamicPortalFieldTable), 0);
 }
 
+// tu-skeleton: 0x00460C73 10B ?get@Rva00460C73FloatChase32Field@@QBEMXZ -- matched in Code/GameEngine/Source/Common/Disp8FloatChaseGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourUpgradeRemoval.cpp
+
+void DynamicPortalBehaviour::upgradeRemovalImplementation()
+{
+	setUpgradeExecuted(false);
+	rva0046094C();
+	rva004CE4A8();
+	Object *obj = m_object;
+	if (obj->getAI())
+	{
+		Rva0028BCF4Result *result = (Rva0028BCF4Result *)obj->rva0028BCF4();
+		if (result)
+			result->rvaSlot2(0);
+	}
+}
+
+// tu-skeleton: 0x00460CBA 288B ?rva00460CBA@DynamicPortalBehaviour@@QAEXPAUCoord3D@@@Z -- matched in Code/GameEngine/Source/GameLogic/Pathfinder/PathfinderFootprintAttackRangeQuery.cpp (not merged yet)
+
+// tu-skeleton: 0x00460DF6 290B ?IsEndPortalAboveWall@DynamicPortalBehaviour@@QAE_NPAUCoord3D@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourGetPosition.cpp (not merged yet)
+
+// tu-skeleton: 0x00460F18 45B ?Rva00460F18Construct@@YAXPAXPBX@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/stlport_construct_stl_types.cpp (not merged yet)
+
+// tu-skeleton: 0x00460F6B 37B ??$__uninitialized_fill_n@PAURva00460F6BElement@@IU1@@_STL@@YAPAURva00460F6BElement@@PAU1@IABU1@ABU__false_type@0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00460F6B.cpp (not merged yet)
+
+// tu-skeleton: 0x00460F90 711B ?createWaypoints@DynamicPortalBehaviour@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourCreateWaypoints.cpp (not merged yet)
+
+// tu-skeleton: 0x00461257 29B ?rva00461257@DynamicPortalBehaviour@@AAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
+
+// tu-skeleton: 0x00461274 16B ?loadPostProcess@DynamicPortalBehaviour@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourLoadPostProcess.cpp (not merged yet)
+
+// tu-skeleton: 0x00461284 22B ?mapLoadPostProcess@DynamicPortalBehaviour@@UAEXPBVDict@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
+
+// tu-skeleton: 0x0046129A 149B ?upgradeImplementation@DynamicPortalBehaviour@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
+
+// tu-skeleton: 0x0046132F 12B ?onBuildComplete@DynamicPortalBehaviour@@UAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourSlots.cpp (not merged yet)
+
+// tu-skeleton: 0x0046133B 176B ?parseWayPoint@DynamicPortalBehaviourData@@SAXPAVINI@@PAX1PBX@Z -- matched in Code/GameEngine/Source/Common/INI/INIWayPointParse.cpp (not merged yet)
+
+// tu-skeleton: 0x004613EB 63B ??1?$vector@UDynamicPortalLink@@V?$allocator@UDynamicPortalLink@@@_STL@@@_STL@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalLinkVector.cpp (not merged yet)
+
+// tu-skeleton: 0x0046142A 261B ??0DynamicPortalBehaviourModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0046152F 183B ?_M_insert_overflow@?$vector@VDynamicPortalLink@@V?$allocator@VDynamicPortalLink@@@_STL@@@_STL@@IAEXPAVDynamicPortalLink@@ABV3@ABU__false_type@2@I_N@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/Rva0046152FFinish.cpp (not merged yet)
+
+// tu-skeleton: 0x004615E6 28B ??_GDynamicPortalBehaviourModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00461602 120B ??1DynamicPortalBehaviourModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourModuleDataDtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0046167A 55B ?push_back@?$vector@VDynamicPortalLink@@V?$allocator@VDynamicPortalLink@@@_STL@@@_STL@@QAEXABVDynamicPortalLink@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/Rva0046152FFinish.cpp (not merged yet)
+
 // tu-skeleton: 0x0078A7D8 8B uw_0078a7d8 -- matched in Code/gen_small/uw_gen_012.cpp (not merged yet)
 
 // tu-skeleton: 0x0078A7E0 10B __ehhandler$??0UpgradeModule@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/UpgradeModuleCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x0078A7EA 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourPoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078A7F7 10B __ehhandler$?getModuleNameKey@DynamicPortalBehaviour@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078A813 22B ?rva0078a813@@YAXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/DynamicPortalBehaviourGetPosition.cpp (not merged yet)
 
