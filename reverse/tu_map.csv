@@ -28213,13 +28213,13 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0037E898,125,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037E473..0x0037E915 provisional,Code/GameEngine/Source/Common/Rva0037E421Accessor.cpp
 0x0037E915,53,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037E473..0x0037E94A provisional,Code/GameEngine/Source/Common/Rva0037E421Accessor.cpp
 0x0037E94A,386,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,N,N=Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp W=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp
-0x0037EACC,81,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037E94A..0x0037EB1D provisional,Code/GameEngine/Source/Common/Rva0037EACCCopy.cpp
-0x0037EB1D,31,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037E94A..0x0037EB3C provisional,Code/GameEngine/Source/Common/Rva0037EB1DCopy.cpp
+0x0037EACC,81,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037E94A..0x0037EB1D provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
+0x0037EB1D,31,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037E94A..0x0037EB3C provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
 0x0037EB3C,174,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTrackerArmySummary.cpp
 0x0037EBEA,476,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,N,N=Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp W=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp
 0x0037EDC6,26,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037EBEA..0x0037EDE0 provisional,Code/GameEngine/Source/Common/Rva0037E421Accessor.cpp
 0x0037EDE0,108,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp
-0x0037EE4C,109,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037EDE0..0x0037EEB9 provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTrackerEntryIndex.cpp
+0x0037EE4C,109,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037EDE0..0x0037EEB9 provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
 0x0037EEB9,67,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/UnitRevivalTracker.cpp W=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/UnitRevivalTracker_removeBuildUnit.cpp
 0x0037EEFC,49,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/Rva0037EF2DErase.cpp
 0x0037EF2D,48,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/Rva0037EF2DErase.cpp
@@ -28229,7 +28229,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0037F2C0,111,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,C,C=0x0037F27B..0x0037F32F provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTrackerRva0037F2C0Finish.cpp
 0x0037F32F,96,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp W=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp
 0x0037F38F,15,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/UnitRevivalTracker_addRevivableUnit.cpp
-0x0037F39E,290,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTrackerXfer.cpp
+0x0037F39E,290,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,U,N=Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
 0x0037F4C0,9,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,K,K=Rva0037F57E,Code/GameEngine/Source/Common/InlineDtorDeletingDtorsC01.cpp
 0x0037F4C9,7,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,K,K=Rva0037F57E,Code/GameEngine/Source/Common/InlineDtorDeletingDtorsC01.cpp
 0x0037F4D0,26,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,proposed,C,C=0x0037F4C9..0x0037F4EA,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp
@@ -74774,8 +74774,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077F1C2,10,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,P,P=0x0037F27B@FuncInfo0x00929704 provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTrackerCtorBFME2.cpp
 0x0077F1CC,11,code,,,-,,Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp
 0x0077F1D7,10,code,,,-,,Code/GameEngine/Source/Common/RTS/UnitRevivalTracker.cpp
-0x0077F1E1,11,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,P,P=0x0037F39E@FuncInfo0x0092974C provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTrackerXfer.cpp
-0x0077F1EC,10,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,P,P=0x0037F39E@FuncInfo0x0092974C provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalTrackerXfer.cpp
+0x0077F1E1,11,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,P,P=0x0037F39E@FuncInfo0x0092974C provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
+0x0077F1EC,10,code,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp,approved,P,P=0x0037F39E@FuncInfo0x0092974C provisional,Code/GameEngine/Source/Common/RTS/UnitRevivalEntry.cpp
 0x0077F1F6,8,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetDefenderReinforcementWaypointLocations.cpp
 0x0077F1FE,8,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetDefenderReinforcementWaypointLocations.cpp
 0x0077F206,10,code,Code/GameEngine/Source/GameLogic/System/ArmyPlacer.cpp,approved,P,P=0x0037F59B@FuncInfo0x00929778 provisional,Code/GameEngine/Source/GameLogic/System/ArmyPlacer_GetDefenderReinforcementWaypointLocations.cpp
