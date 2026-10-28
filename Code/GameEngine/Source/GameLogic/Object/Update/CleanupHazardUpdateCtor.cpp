@@ -4,20 +4,10 @@
 // ??0BeaconClientUpdateModuleData@@QAE@XZ at retail 0x004C964C.
 // Root-class default ctor: vtable plus two int members. No base, no calls.
 // Factory stub order names it; stub size 0x10 confirms the layout.
-class BeaconClientUpdateModuleData
-{
-public:
-	BeaconClientUpdateModuleData();
-	virtual ~BeaconClientUpdateModuleData();
-
-private:
-	int m_pad04;
-	int m_i08;
-	int m_i0C;
-};
+#include "../../../GameClient/Drawable/Update/BeaconClientUpdateView.h"
 
 BeaconClientUpdateModuleData::BeaconClientUpdateModuleData()
-	: m_i08(0x1E), m_i0C(0x0F)
+	: framesBetweenRadarPulses(0x1E), radarPulseDuration(0x0F)
 {
 }
 

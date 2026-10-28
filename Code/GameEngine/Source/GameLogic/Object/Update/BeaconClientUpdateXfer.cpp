@@ -35,32 +35,9 @@ class Object;
 
 #include "../../../../Include/Common/BfmeXfer.h"
 
+#include "../../../GameClient/Drawable/Update/BeaconClientUpdateView.h"
+
 void XferParticleSystemID(Xfer *xfer, int *value);
-
-class ObjectModule
-{
-public:
-	ObjectModule(Thing *thing, const ModuleData *moduleData);
-	virtual ~ObjectModule();
-	void xfer(Xfer *xfer);
-
-protected:
-	const ModuleData *m_moduleData;
-	Object *m_object;
-};
-
-class BeaconClientUpdate : public ObjectModule
-{
-public:
-	BeaconClientUpdate(Thing *thing, const ModuleData *moduleData);
-
-protected:
-	virtual void xfer(Xfer *xfer);
-
-private:
-	int m_particleSystemID;
-	unsigned int m_lastRadarPulse;
-};
 
 void BeaconClientUpdate::xfer(Xfer *xfer)
 {
@@ -68,6 +45,6 @@ void BeaconClientUpdate::xfer(Xfer *xfer)
 	ObjectModule::xfer(xfer);
 	if (xfer->IsLightCRC())
 		return;
-	XferParticleSystemID(xfer, &m_particleSystemID);
-	*xfer == m_lastRadarPulse;
+	XferParticleSystemID(xfer, (int *)&id);
+	*xfer == lastRadarPulse;
 }

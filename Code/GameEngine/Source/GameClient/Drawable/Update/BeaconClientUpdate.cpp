@@ -203,12 +203,6 @@ class GameLogic;
 
 extern GameLogic *TheGameLogic;
 
-struct ClockView
-{
-    char pad[0x40];
-    unsigned frame;
-};
-
 enum RadarEventType
 {
     RADAR_EVENT_BEACON_PULSE = 6
@@ -221,12 +215,6 @@ class Radar
 };
 
 extern Radar *TheRadar;
-
-struct BeaconClientUpdateModuleData
-{
-    char pad[8];
-    unsigned framesBetweenRadarPulses, radarPulseDuration;
-};
 
 extern float g_secondsPerLogicFrame;
 
@@ -323,7 +311,7 @@ static BfmeParticleSystemHandle createParticleSystem(Drawable *draw)
 
 void BeaconClientUpdate::hideBeacon()
 {
-    Drawable *drawable = draw;
+    Drawable *drawable = getDrawable();
     if (drawable)
     {
         drawable->setDrawableHidden(true);
@@ -348,7 +336,7 @@ void BeaconClientUpdate::hideBeacon()
 
 void BeaconClientUpdate::clientUpdate()
 {
-    Drawable *drawable = draw;
+    Drawable *drawable = getDrawable();
     if (!drawable)
         return;
     if (id == INVALID_PARTICLE_SYSTEM_ID)
@@ -359,7 +347,7 @@ void BeaconClientUpdate::clientUpdate()
     }
     if (!((Rva00270260 *)drawable)->rva00270260())
     {
-        const BeaconClientUpdateModuleData *md = data;
+        const BeaconClientUpdateModuleData *md = getBeaconClientUpdateModuleData();
         if (((ClockView *)TheGameLogic)->frame > lastRadarPulse + md->framesBetweenRadarPulses)
         {
             TheRadar->createEvent(drawable->getPosition(), RADAR_EVENT_BEACON_PULSE,
