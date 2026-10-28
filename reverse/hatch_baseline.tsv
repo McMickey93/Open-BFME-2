@@ -313,7 +313,6 @@ address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A046B4	
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00A04934	3
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00E03314	1
 address_global	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	g_Va00E04450	1
-address_global	Code/GameEngine/Source/Common/Rva0051318EVotes.cpp	g_Va007C9260	3
 address_global	Code/GameEngine/Source/Common/Rva00515Wrappers.cpp	g_Va00DD1538	5
 address_global	Code/GameEngine/Source/Common/Rva00515Wrappers.cpp	g_Va00E048DC	2
 address_global	Code/GameEngine/Source/Common/Rva00516E92Enable.cpp	g_Va00A04904	2
@@ -934,6 +933,7 @@ address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva00
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035B03E.cpp	g_Va012F4C38	1
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035b112.cpp	g_Rva005127A0InGameChat	2
 address_global	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035b112.cpp	g_Rva012F340C	2
+address_global	Code/GameEngine/Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp	g_Va007C9260	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenu.cpp	g_Va00E0492C	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCampaignMenuCallbacks.cpp	g_Va00E0492C	3
 address_global	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptFileTransferPopupCtor.cpp	g_Va00E06398	3
@@ -2415,7 +2415,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00504DF8Copy.cpp	?rva0050492F@Rva
 alternatename	Code/GameEngine/Source/Common/Rva00504DF8Copy.cpp	?rva00504D57@Rva00504DF8@@QAEPAXPAXPBX@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	?g_Va00E03314@@3HA	1
 alternatename	Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	?g_Va00E04450@@3HA	1
-alternatename	Code/GameEngine/Source/Common/Rva0051318EVotes.cpp	?g_Va007C9260@@3QBGB	1
 alternatename	Code/GameEngine/Source/Common/Rva005183A0Finish.cpp	??1OptionPreferences@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0051BED7Poll.cpp	?rva0051B09B@Rva0051BED7@@QAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0051BF47.cpp	?Rva0051ED7ETail@@YAXXZ	1
@@ -2836,6 +2835,7 @@ alternatename	Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBaseCons
 alternatename	Code/GameEngine/Source/GameClient/GUI/BfmeQuickMatchScreenBaseConstructor.cpp	?bfmeSlot1@BfmeQuickMatchScreenBase@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBarRva00320158.cpp	?g_0080D720@@3UFieldParse@@B	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/ControlBar/ControlBar_Rva0035B03E.cpp	?isValidRelationshipTarget@CommandButton@@QBE_NW4Relationship@@@Z	1
+alternatename	Code/GameEngine/Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp	?g_Va007C9260@@3QBGB	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHeroCtor.cpp	?DoXfer@CreateAHeroData@@UAEXAAVXfer@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHeroCtor.cpp	?Update@CreateAHeroData@@UAE_NH@Z	1
 alternatename	Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptMyHero_Unresolved.cpp	??1MyHeroBlingBlock@@QAE@XZ	1

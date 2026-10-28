@@ -6,6 +6,8 @@
 #include "unicode_string.h"
 #include <string.h>
 #pragma pointers_to_members(full_generality, multiple_inheritance)
+#pragma pointers_to_members(full_generality, multiple_inheritance)
+#pragma comment(linker, "/alternatename:?g_Va007C9260@@3QBGB=??_C@_15KNBIKKIN@?$AA?$CF?$AAd?$AA?$AA@")
 
 class GameWindow
 {
@@ -312,15 +314,51 @@ public:
 
 extern GameWindowManager *TheWindowManager;
 
+extern "C" __declspec(dllimport) int __cdecl sprintf(char *, const char *, ...);
+
+extern const unsigned short g_Va007C9260[];
+
+class DisconnectMenu
+{
+public:
+	void updateVotes(int slot, int votes);
+};
+
 // tu-skeleton: 0x00512CDF 10B ?OnInitialized@AptDisconnectScreen@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptLobbyScreenInitCallbacks.cpp (not merged yet)
 
-// tu-skeleton: 0x00512CE9 94B ?rva00512CE9@AptDisconnectScreen@@QAEXH_N@Z -- matched in Code/GameEngine/Source/Common/Rva00512CE9Kick.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva00512CE9Kick.cpp
 
-// tu-skeleton: 0x00512D47 14B ?rva00512D47@AptDisconnectScreen@@QAE_NH@Z -- matched in Code/GameEngine/Source/Common/Rva00512CE9Kick.cpp (not merged yet)
+//
+// ?rva00512CE9@AptDisconnectScreen@@QAEXH_N@Z, retail 0x00512CE9, 94 bytes.
+// Kick-button UI: formats player index via sprintf %d then invokes Apt
+// ShowKickButton/HideKickButton with 1 plus buffer plus 0s plus owner at
+// +0x274 via TheAptPlayer at 0x9FE4CC (SubsystemInterface registers it)
+// and stores bool to +0x286 indexed array. Callers at 0x4D45F6 etc.
+// Flags /O1 /MD (EBP frame, sprintf IAT, no EH, no STL).
+// Views and flags are those of the approved TU, DisconnectMenu.cpp; sprintf
+// stays an IAT call (the TU's /D_CRTIMP= would make it a thunk call).
+
+void AptDisconnectScreen::rva00512CE9(int player, bool show)
+{
+	char buf[32];
+	sprintf(buf, "%d", player);
+	const char *which = show ? "ShowKickButton" : "HideKickButton";
+	(*(Rva00222A8BTarget **)&g_bfmeAptWindowManager)->invoke((void *)m_274, which, 1, buf, 0, 0, 0, 0);
+	m_kickButtons[player] = show;
+}
+
+// ?rva00512D47@AptDisconnectScreen@@QAE_NH@Z @0x00512D47 14B: getter for m_286[player] bool array at +0x286.
+// Evidence: same +0x286 indexed store in rva00512CE9 setter in this TU; callers at 0x004D45CB 0x004D45E4.
+bool AptDisconnectScreen::rva00512D47(int player)
+{
+	return m_kickButtons[player];
+}
 
 // tu-skeleton: 0x00512D55 66B ?Kick@AptDisconnectScreen@@QAEXPBD@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenKick.cpp (not merged yet)
 
 // tu-skeleton: 0x00512D97 26B ?PlayerColor@AptDisconnectScreen@@QAEXHPAD_N@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenKick.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreen.cpp
 
@@ -471,8 +509,6 @@ void __cdecl bfmeShowDisconnectScreen(void)
 	g_disconnectMenuLayout->v0(0);
 }
 
-// tu-skeleton: 0x00512ED2 11B ??_EAptDisconnectScreen@@WCBI@AEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB11.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/Rva00513040Finish.cpp
 
 //
@@ -498,8 +534,6 @@ void Rva00513040::rva00513040(int v1, int v2)
 	((Rva00222A8BTarget *)g_bfmeAptWindowManager)->invoke(owner, "SetBarPercent", 2, p1, (void *)p2, 0, 0, 0);
 }
 
-// tu-skeleton: 0x005130E2 86B ?rva005130E2@AptDisconnectScreen@@QAEXVUnicodeString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenKick.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva00513138Listbox.cpp
 
 // ?rva00513138@Rva00513138@@QAEXVUnicodeString@@@Z @0x00513138 86B: listbox wrapper passing this+0x27c with incoming UnicodeString by value plus global color plus -1 -1 true.
@@ -511,7 +545,31 @@ void Rva00513138::rva00513138(class UnicodeString text)
 	GadgetListBoxAddEntryText(m_listbox, text, g_00DD1488, -1, -1, true);
 }
 
-// tu-skeleton: 0x0051318E 140B ?updateVotes@DisconnectMenu@@QAEXHH@Z -- matched in Code/GameEngine/Source/Common/Rva0051318EVotes.cpp (not merged yet)
+// tu-skeleton: 0x00512ED2 11B ??_EAptDisconnectScreen@@WCBI@AEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB11.cpp (not merged yet)
+
+// tu-skeleton: 0x005130E2 86B ?rva005130E2@AptDisconnectScreen@@QAEXVUnicodeString@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenKick.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva0051318EVotes.cpp
+
+// ?updateVotes@DisconnectMenu@@QAEXHH@Z @0x0051318E 140B: DisconnectScreen VotesReceived update via AsciiString format plus Unicode wide space plus conditional format plus bfmeSetText.
+// Identity: all three callers (0x004D3C81, 0x004D3D20, 0x004D414E) load TheDisconnectMenu (0x00E048D0)
+// into ecx before the call, and the ZH donor's updateVotes(slot, votes) takes the same two arguments;
+// the body never reads `this`, so it was first rowed as a stdcall free function.
+// Evidence: literal DisconnectScreen::VotesReceived%d plus rowed AsciiString format 0x00038150 plus StringBase PBG 0x00037E30 plus UnicodeString format 0x006CB5D0 plus bfmeSetText pin 0x00225301 plus releaseBuffers 0x00036E70 0x00036410; callers 0x004D3C81 0x004D3D20 0x004D414E; donor DisconnectMenuVotes.cpp updateVotes.
+// Uses shared ascii header for AsciiString and StringBase; UnicodeString minimal with PBG ctor forwarding to the rowed base.
+
+void DisconnectMenu::updateVotes(int slot, int votes)
+{
+	AsciiString key;
+	key.format("DisconnectScreen::VotesReceived%d", slot);
+	UnicodeString value(L" ");
+	if (votes)
+		value.format(g_Va007C9260, votes);
+	g_bfmeAptWindowManager->bfmeSetText(key, value, false);
+}
+
+// Retail's data references in this unit's matched rows land on globals defined
+// under other spellings at the same addresses (addend-corrected DIR32). Bind them.
 
 // tu-skeleton: 0x0051321A 184B ?InitGadgets@AptDisconnectScreen@@QAEXPBDPAXPAVGameWindow@@@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenKick.cpp (not merged yet)
 
@@ -524,12 +582,6 @@ void Rva00513138::rva00513138(class UnicodeString text)
 // tu-skeleton: 0x00513449 78B ?rva00513449@AptDisconnectScreen@@UAEHHII@Z -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenRva00513449.cpp (not merged yet)
 
 // tu-skeleton: 0x00513497 193B ?rva00513497@Rva00513497@@QAEXHVUnicodeString@@@Z -- matched in Code/GameEngine/Source/Common/AptHeroPowerText.cpp (not merged yet)
-
-// tu-skeleton: 0x00794F72 8B Unwind@00b94f72 -- matched in Code/GameEngine/Source/Common/Rva0051318EVotes.cpp (not merged yet)
-
-// tu-skeleton: 0x00794F7A 8B Unwind@00b94f7a -- matched in Code/GameEngine/Source/Common/Rva0051318EVotes.cpp (not merged yet)
-
-// tu-skeleton: 0x00794F82 10B __ehhandler$?updateVotes@DisconnectMenu@@QAEXHH@Z -- matched in Code/GameEngine/Source/Common/Rva0051318EVotes.cpp (not merged yet)
 
 // tu-skeleton: 0x00794F8C 8B Unwind@00b94f8c -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptDisconnectScreenKick.cpp (not merged yet)
 
