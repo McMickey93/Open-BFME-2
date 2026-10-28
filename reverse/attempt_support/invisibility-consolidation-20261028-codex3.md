@@ -57,3 +57,48 @@ INCONCLUSIVE: index 41c28839bf predates the base, and affected consumer
 Common/0CreateAHeroManager21FE49.cpp lacks a current receipt. Carry that
 consumer and the name-key/provider scope into the next normal census. Full
 consumer coverage remains unverified.
+
+## Applied bounded composition
+
+After prerequisite `9f19eab5c5`, the supported merge accepts only Slots and
+PoolKey, writes the approved InvisibilityUpdate.cpp, and deletes both donors.
+Source-file count falls by one. It repoints 13 function rows and the existing
+TU map's source cells; the map is not regenerated. Its protected-register
+transfer carries the four local-static/guard data records without changing
+their addresses, names, ownership or counts. The four rejected whole-file
+donors and four mixed sources remain outside this change. The planner report
+is refreshed after composition and its currency check passes.
+
+The new TU passes ./build.sh: 13/13 rows, two string references, no compiler
+float literals or named imports. All three EH graphs are EXACT; the frozen-file
+check passes. Against the saved original pair of objects, the merged object
+preserves all 18 external COMDAT byte-and-symbolic-relocation digests, six
+strong external definitions, 21 undefined externals and two weak bindings.
+Scoped data checks report zero findings; enforced converged checking covers
+11 addresses with zero second names or unjudged rows. Staged code identity
+reports 13 rows and zero new findings, and staged TU ownership passes.
+The destination's Microsoft-header audit is clean with /MD enabled.
+
+The active path-consumer audit covers the outgoing range from origin/master
+through the prerequisite and staged merge. These are its only source-path
+moves: Slots and PoolKey to InvisibilityUpdate.cpp. A combined tracked search
+of their paths and basenames finds no active tool, hook, workflow, include,
+build/configuration or documentation consumer needing repair. All shared
+path-column ledgers, protected registers, header queues, symbol fold proofs,
+doxygen inputs, converged data and the unclaimed-source list have no old-path
+entries. Header reports were refreshed by the merge tool. Remaining mentions
+are the merge provenance comments, historical link_status census rows,
+deleted_rows retirement explanations, old attempt evidence and this handoff.
+They are retained as history; existing local-static symbol spelling also
+remains intact. check_csv and diff whitespace checks pass.
+
+Strict preparation creates a current reusable receipt for the new TU without
+changing census/index/status. Ordinary preview refuses to score the destination
+because it is not in census c8734bec0c; the next scheduled census must measure
+the new object. The final staged-tree batch audit against prerequisite HEAD
+is INCONCLUSIVE: index 41c28839bf predates the base, and the affected provider
+ToggleHiddenSpecialAbilityUpdateSlots23And24.cpp lacks a current receipt.
+This supersedes neither the earlier missing-consumer finding nor the census
+limitation. Carry both that provider and Common/0CreateAHeroManager21FE49.cpp,
+plus the two retired providers and new destination, into the next normal
+census. No measured linking/ownership gain or runtime success is claimed.
