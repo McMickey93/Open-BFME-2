@@ -189,6 +189,7 @@ address_global	Code/GameEngine/Source/Common/INI/FormationTemplate.cpp	g_Va00E03
 address_global	Code/GameEngine/Source/Common/INI/INIEnvironment.cpp	g_Va00DFF494	2
 address_global	Code/GameEngine/Source/Common/INI/INIParticleSystemDefinition.cpp	g_Va00DFE014	2
 address_global	Code/GameEngine/Source/Common/INI/LivingWorldConnectionParserRva003F348F.cpp	g_Va00C36FD4	3
+address_global	Code/GameEngine/Source/Common/MovieWindowPlayback.cpp	g_Va00E04938	2
 address_global	Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB06.cpp	g_Va00DFF030	2
 address_global	Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB12.cpp	g_Va00E048DC	3
 address_global	Code/GameEngine/Source/Common/PinnedForwarders1830.cpp	g_Va00A03314	2
@@ -325,7 +326,6 @@ address_global	Code/GameEngine/Source/Common/Rva00518769Dtor.cpp	g_Va00A04908	3
 address_global	Code/GameEngine/Source/Common/Rva005210ECEnable.cpp	g_Va00E0492C	2
 address_global	Code/GameEngine/Source/Common/Rva00523775Dtor.cpp	g_Va00A04934	3
 address_global	Code/GameEngine/Source/Common/Rva00524B7ACtor.cpp	g_Va00E04938	2
-address_global	Code/GameEngine/Source/Common/Rva00524CC6LookupErase.cpp	g_Va00E04938	2
 address_global	Code/GameEngine/Source/Common/Rva00528B37Compare.cpp	g_Va00BC2424	4
 address_global	Code/GameEngine/Source/Common/Rva0052DC3F.cpp	g_Va007C26F0	1
 address_global	Code/GameEngine/Source/Common/Rva0052DC3F.cpp	g_Va00BC2428	2
