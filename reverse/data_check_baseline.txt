@@ -33,9 +33,6 @@ Code/GameEngine/Source/Common/Rva004DF418Finish.cpp	duplicate-def	_s_10	0x008615
 Code/GameEngine/Source/Common/Rva00515921Permuted.cpp	wrong-name	?$S1@?1??goodCampaignRva00515921@@YAHM_N@Z@4IA	0x00A04900
 Code/GameEngine/Source/Common/Rva00515921Permuted.cpp	wrong-name	?campaign@?1??goodCampaignRva00515921@@YAHM_N@Z@4VAsciiString@@A	0x00A048FC
 Code/GameEngine/Source/Common/Rva00598CBC.cpp	wrong-name	?g_00E063D4@@3VAsciiString@@A	0x00A063D4
-Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?$S1@?7??rva005F2B76@Rva005F2FEF@@QAEXH@Z@4IA	0x00A068D8
-Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?$S3@?7??rva005F2D41@Rva005F2FEF@@QAEXH@Z@4IA	0x00A068E0
-Code/GameEngine/Source/Common/Rva005F2FEFApt.cpp	wrong-name	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	0x009FE4CC
 Code/GameEngine/Source/Common/Rva00627AA0Call.cpp	wrong-name	?g_rva00627AA0@@3PAURva00627AA0Obj@@A	0x00A05FBC
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00DE1E98@@3IA	0x009E1E98
 Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	duplicate-def	?g_Va00E02C48@@3IA	0x00A02C48
@@ -46,7 +43,6 @@ Code/GameEngine/Source/Common/Rva007B6880Thunks.cpp	wrong-name	?g_Va00E02C4C@@3I
 Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	duplicate-def	?g_rva00E08D3CString@@3VStringClass@@A	0x00A08D3C
 Code/GameEngine/Source/Common/Rva00E08D3CString.cpp	wrong-name	?g_rva00E08D3CString@@3VStringClass@@A	0x00A08D3C
 Code/GameEngine/Source/Common/StaticInit/Rva00C6E31EInitializers.cpp	wrong-name	?g_rva0134FB38@@3URva0134FB38Storage@@A	0x00A09E50
-Code/GameEngine/Source/GameLogic/Object/Upgrade/ModelConditionUpgrade.cpp	wrong-name	?$S1@?1??rva0004B63E3@ModelConditionUpgrade@@SA?AW4NameKeyType@@XZ@4IA	0x00A03EC8
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Source@@3VAsciiString@@A	0x00A01CF0
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva00318A95Target@@3VAsciiString@@A	0x00A01CF4
 Code/GameEngine/Source/Common/VslotSmallBodiesK.cpp	wrong-name	?g_rva004AB9D5Value@@3VBfmeFixedStorage002CF0F0@@A	0x00A030D0
@@ -87,17 +83,13 @@ Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S1@?7??checkForSup
 Code/GameEngine/Source/GameLogic/AI/AIPlayer.cpp	wrong-name	?$S2@?N@??findSupplyCenter@AIPlayer@@IAEPAVObject@@H@Z@4IA	0x00A044C0
 Code/GameEngine/Source/GameLogic/AI/AIStatesBfmeComputePath.cpp	wrong-name	?g_00DFEFF0@@3PAXA	0x009FEFF0
 Code/GameEngine/Source/GameLogic/Object/AttackNuggetCreate.cpp	wrong-name	?$S1@?7??create@AttackNugget@@UBEPAVObject@@PBV3@PBUCoord3D@@1M@Z@4IA	0x009FDCD8
-Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDamagedBehaviorPoolKey.cpp	wrong-name	?$S1@?1??rva0004827AA@FireWeaponWhenDamagedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A0379C
-Code/GameEngine/Source/GameLogic/Object/Behavior/PoisonedBehavior.cpp	wrong-name	?$S1@?1??rva000482F27@PoisonedBehavior@@SA?AW4NameKeyType@@XZ@4IA	0x00A037B4
 Code/GameEngine/Source/GameLogic/Object/Body/HighlanderBodyPoolKey.cpp	wrong-name	?$S1@?1??rva004C07CA@HighlanderBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04128
 Code/GameEngine/Source/GameLogic/Object/Body/InactiveBody.cpp	wrong-name	?$S1@?1??rva004BD85D@InactiveBody@@SA?AW4NameKeyType@@XZ@4IA	0x00A04090
 Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/UnitCrateCollide.cpp	wrong-name	?$S1@?1??rva00004BCC5C@UnitCrateCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04068
 Code/GameEngine/Source/GameLogic/Object/Contain/Rva00588D24.cpp	wrong-name	?g_bfmeWorldRV@@3PAUBfmeWorldRV@@A	0x00A01CFC
 Code/GameEngine/Source/GameLogic/Object/Contain/TransportContain.cpp	wrong-name	?$S1@?1??rva000467EE1@TransportContain@@SA?AW4NameKeyType@@XZ@4IA	0x00A03660
-Code/GameEngine/Source/GameLogic/Object/Die/CreateObjectDie.cpp	wrong-name	?$S1@?1??rva000485A2F@CreateObjectDieIfEldestKindof@@SA?AW4NameKeyType@@XZ@4IA	0x00A0383C
 Code/GameEngine/Source/GameLogic/Object/Collide/SquishCollide.cpp	wrong-name	?$S1@?1??rva0004BB98A@SquishCollide@@SA?AW4NameKeyType@@XZ@4IA	0x00A04010
 Code/GameEngine/Source/GameLogic/Object/Rva00220DCDInit.cpp	wrong-name	?g_00DFE490@@3VRva00575674@@A	0x009FE490
-Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/TransportAIUpdate.cpp	wrong-name	?$S1@?1??rva004A90A7@TransportAIUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03C9C
 Code/GameEngine/Source/GameLogic/Object/Update/AutoDepositUpdate.cpp	wrong-name	?$S1@?1??rva00049A1CA@AutoDepositUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A03B14
 Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp	wrong-name	?$S1@?1??rva004C9607@BeaconClientUpdate@@SA?AW4NameKeyType@@XZ@4IA	0x00A04338
 Code/GameEngine/Source/GameLogic/Object/Update/CommandButtonHuntUpdate.cpp	wrong-name	?g_Va00DBA4E4@@3HA	0x009BA4E4
