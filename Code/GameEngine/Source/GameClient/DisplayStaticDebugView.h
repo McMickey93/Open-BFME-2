@@ -141,13 +141,13 @@ public:
 	virtual void pad63();
 	virtual void pad64();
 	virtual void pad65();
-	virtual void pad66();
+	virtual bool playMovieFlags(AsciiString movieName, int flags, int first, int second); // +0x108
 	virtual void pad67();
 	virtual void pad68();
 	virtual void pad69();
 	virtual void pad70();
 	virtual void pad71();
-	virtual void pad72();
+	virtual bool rva0025DA8D(AsciiString movieName, int flags); // +0x120
 	virtual void pad73();
 	virtual void setDebugDisplayCallback(DebugDisplayCallback *callback, void *userData = NULL);
 	void DrawStaticImage(int index, int arg);
@@ -156,6 +156,7 @@ public:
 	void rva0025D358(UnicodeString s, float fC0, float fC4, int iB4, int iB8, int iBC);
 	DisplayString *rva0025D3C8();
 	void rva0025D10F();
+	void bfmeTickVM0();
 	void rva0025D19E();
 	void rva0025C776(int a8, float fc, float f10, float f14, float f18, int a1c, int a20);
 
