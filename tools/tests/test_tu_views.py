@@ -368,9 +368,11 @@ class Reader(unittest.TestCase):
 
     def test_ledger_settles_member_attributes(self):
         rows = [{"name": "?f@Foo@@IBEXXZ"}, {"name": "??0Foo@@QAE@XZ"}, {"name": "?h@Foo@@SGXXZ"}]
-        self.assertEqual(V.ledger_member_attrs("Foo", "f", rows), {("protected", "plain", True, "__thiscall")})
-        self.assertEqual(V.ledger_member_attrs("Foo", "Foo", rows), {("public", "plain", False, "__thiscall")})
-        self.assertEqual(V.ledger_member_attrs("Foo", "h", rows), {("public", "static", False, "__stdcall")})
+        self.assertEqual(V.ledger_member_attrs("Foo", "f", rows), {("protected", "plain", True, False, "__thiscall")})
+        self.assertEqual(V.ledger_member_attrs("Foo", "Foo", rows), {("public", "plain", False, False, "__thiscall")})
+        self.assertEqual(V.ledger_member_attrs("Foo", "h", rows), {("public", "static", False, False, "__stdcall")})
+        self.assertEqual(V.ledger_member_attrs("Foo", "v", [{"name": "?v@Foo@@QCEXXZ"}]),
+                         {("public", "plain", False, True, "__thiscall")})
         self.assertEqual(V.ledger_class_key("Foo", [{"name": "?x@@YAXPAVFoo@@@Z"}]), "class")
         self.assertEqual(V.ledger_class_key("Foo", [{"name": "?x@@YAXPAUFoo@@@Z"}]), "struct")
 
@@ -418,6 +420,72 @@ class Wiring(unittest.TestCase):
         self.assertIn("then python3 tools/tu_views.py Code/T.cpp (its donors declare their own views of Foo)",
                       item["start"])
         self.assertTrue(item["start"].endswith("python3 tools/tu_skeleton.py --merge Code/T.cpp --dry-run"))
+
+
+class ReviewDefects(unittest.TestCase):
+    """The 2026-10-28 review's cases: each would otherwise apply."""
+
+    def run_fx(self, seed, donor, ledger=(), dry_run=False, build=None, symbols=None):
+        fx = Fixture({"Seed.cpp": seed, "Donor.cpp": donor}, ledger=ledger)
+        if build is not None:
+            fx.tool.build = build
+        if symbols is not None:
+            fx.tool.symbols = symbols
+        try:
+            rep = fx.run(dry_run=dry_run)
+            return rep, fx.text("Seed.cpp"), fx.text("Donor.cpp")
+        finally:
+            fx.close()
+
+    def test_an_interrupt_during_verification_restores_every_file(self):
+        def interrupted(changed):
+            raise KeyboardInterrupt
+        fx = Fixture({"Seed.cpp": SEED, "Donor.cpp": DONOR})
+        fx.tool.build = interrupted
+        try:
+            with self.assertRaises(KeyboardInterrupt):
+                fx.run()
+            self.assertEqual((fx.text("Seed.cpp"), fx.text("Donor.cpp")), (SEED, DONOR))
+        finally:
+            fx.close()
+
+    def test_a_changed_external_symbol_reverts_the_class(self):
+        calls = []
+
+        def symbols(f):            # before: one name; after the rewrite: another
+            calls.append(f)
+            return frozenset({("?m_first@@3HA", False)}) if len(calls) <= 2 else frozenset({("?m_x@@3HA", False)})
+        rep, seed, donor = self.run_fx(SEED, DONOR, symbols=symbols)
+        self.assertEqual(rep["applied"], [])
+        self.assertIn("external symbols", rep["failed"]["Foo"])
+        self.assertEqual((seed, donor), (SEED, DONOR))
+
+    def test_a_plain_global_with_the_fields_name_refuses_the_rename(self):
+        donor = DONOR + "int m_first;\nint get() { return m_first; }\n"
+        rep, _, text = self.run_fx(SEED, donor)
+        self.assertEqual(rep["applied"], [])
+        self.assertEqual(text, donor)
+
+    def test_a_volatile_difference_without_ledger_evidence_is_refused(self):
+        seed = SEED.replace("void a();", "void a() volatile;")
+        rep, _, text = self.run_fx(seed, DONOR.replace("int b();", "int b();\n\tvoid a();"), dry_run=True)
+        self.assertNotEqual(rep["classes"]["Foo"]["status"], "plan")
+        self.assertIn("volatile", str(rep["classes"]["Foo"]))
+
+    def test_inline_bodies_differing_only_in_literals_are_refused(self):
+        seed = SEED.replace("void a();", "char c() { return 'A'; }\n\tvoid a();")
+        donor = DONOR.replace("int b();", "int b();\n\tchar c() { return 'B'; }")
+        rep, _, _ = self.run_fx(seed, donor, dry_run=True)
+        self.assertNotEqual(rep["classes"]["Foo"]["status"], "plan")
+        self.assertIn("two different inline bodies", str(rep["classes"]["Foo"]))
+
+    def test_another_overloads_ledger_name_settles_nothing(self):
+        seed = SEED.replace("void a();", "void a();\n\tstatic void f(int);\n\tstatic void f(float);")
+        donor = DONOR.replace("int b();", "int b();\nprivate:\n\tstatic void f(float);\npublic:")
+        rep, _, _ = self.run_fx(seed, donor, ledger=[{"name": "?f@Foo@@SAXH@Z", "source": "Seed.cpp"}],
+                                dry_run=True)
+        self.assertNotEqual(rep["classes"]["Foo"]["status"], "plan")
+        self.assertIn("overloaded", str(rep["classes"]["Foo"]))
 
 
 if __name__ == "__main__":

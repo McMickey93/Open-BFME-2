@@ -79,6 +79,7 @@ import json
 import os
 import re
 import shutil
+import struct
 import subprocess
 import sys
 from pathlib import Path
@@ -412,8 +413,9 @@ def function(p, cls, typedefs):
                  DECLSPEC.sub(" ", words))
     special = name.lstrip("~") == cls.split("::")[-1] or name.startswith("operator ")
     params = param_types(p[open_ + 1:close], typedefs)
-    return Member("fn", None, p.strip(), name=name, params=params, const=bool(re.match(r"^const\b", post_s)),
-                  virtual=virtual, static=static, cc=cc, declspec=declspec, body=body,
+    cv = post_s.split("=")[0].split("throw")[0]
+    return Member("fn", None, p.strip(), name=name, params=params, const=bool(re.search(r"\bconst\b", cv)),
+                  volatile=bool(re.search(r"\bvolatile\b", cv)), virtual=virtual, static=static, cc=cc, declspec=declspec, body=body,
                   ret="" if special else type_norm(ret, typedefs), key=("fn", name, params))
 
 
@@ -468,7 +470,7 @@ def ledger_class_key(cls, rows):
 
 
 def ledger_member_attrs(cls, name, rows):
-    """{(access, kind, const, cc)} that the ledger's mangled names give member `name` of `cls`."""
+    """{(access, kind, const, volatile, cc)} that the ledger's mangled names give member `name` of `cls`."""
     if name == cls:
         prefix = "??0" + cls + "@@"
     elif name == "~" + cls:
@@ -485,10 +487,10 @@ def ledger_member_attrs(cls, name, rows):
         access, kind = MEMBER_CODE[n[len(prefix)]]
         if kind == "thunk":
             continue
-        rest, const = n[len(prefix) + 1:], False
-        if kind != "static" and rest:
-            const, rest = rest[0] in "BD", rest[1:]
-        out.add((access, kind, const, CC_CODE.get(rest[:1], "")))
+        rest, const, volatile = n[len(prefix) + 1:], False, False
+        if kind != "static" and rest:      # the this-pointer cv code: A, B const, C volatile, D both
+            const, volatile, rest = rest[0] in "BD", rest[0] in "CD", rest[1:]
+        out.add((access, kind, const, volatile, CC_CODE.get(rest[:1], "")))
     return out
 
 
@@ -509,15 +511,25 @@ def fn_attr(m, attr):
 
 
 def ledger_attr(entry, attr):
-    access, kind, const, cc = entry
+    access, kind, const, volatile, cc = entry
     return {"access": access, "virtual": kind == "virtual", "static": kind == "static", "const": const,
-            "cc": cc}[attr]
+            "volatile": volatile, "cc": cc}[attr]
 
 
-def merge_fn(cls, a, b, ledger):
-    """The one spelling of a method two views declare, or Refused."""
+# Comments and literals; code_text keeps the literals (they are behaviour) and blanks comments.
+NON_CODE = re.compile(r'//[^\n]*|/\*.*?(?:\*/|\Z)|"(?:\\.|[^"\\\n])*"?|\'(?:\\.|[^\'\\\n])*\'?', re.S)
+
+
+def code_text(text):
+    return NON_CODE.sub(lambda m: m.group() if m.group()[:1] in "\"'" else " ", text)
+
+
+def merge_fn(cls, a, b, ledger, overloaded=False):
+    """The one spelling of a method two views declare, or Refused. `overloaded`: the views
+    declare more than one parameter list under this name, so a ledger name matched by its
+    prefix may be another overload's and is no evidence."""
     (ma, va), (mb, vb) = a, b
-    if ma.body and mb.body and ws(hal.masked(ma.body)) != ws(hal.masked(mb.body)):
+    if ma.body and mb.body and ws(code_text(ma.body)) != ws(code_text(mb.body)):
         raise Refused(f"{cls}::{ma.name}: two different inline bodies ({va.path}, {vb.path})")
     if ma.ret != mb.ret:
         raise Refused(f"{cls}::{ma.name}: return type `{ma.ret}` ({va.path}) vs `{mb.ret}` ({vb.path})")
@@ -525,10 +537,13 @@ def merge_fn(cls, a, b, ledger):
         raise Refused(f"{cls}::{ma.name}: __declspec `{ma.declspec}` ({va.path}) vs `{mb.declspec}` ({vb.path})")
     led = None
     pick, access = ma, ma.access
-    for attr in ("virtual", "static", "const", "cc", "access"):
+    for attr in ("virtual", "static", "const", "volatile", "cc", "access"):
         x, y = fn_attr(ma, attr), fn_attr(mb, attr)
         if x == y:
             continue
+        if overloaded:
+            raise Refused(f"{cls}::{ma.name}: {attr} differs ({va.path} `{x}`, {vb.path} `{y}`) on an overloaded "
+                          "name; the ledger's names are not matched to one overload")
         led = ledger_member_attrs(cls, ma.name, ledger) if led is None else led
         want = {ledger_attr(e, attr) for e in led}
         if len(want) != 1:
@@ -540,8 +555,8 @@ def merge_fn(cls, a, b, ledger):
             continue
         if fn_attr(pick, attr) == w:
             continue
-        if fn_attr(mb, attr) == w and all(fn_attr(mb, at) == fn_attr(pick, at) for at in ("virtual", "static", "const",
-                                                                                            "cc") if at != attr):
+        if fn_attr(mb, attr) == w and all(fn_attr(mb, at) == fn_attr(pick, at)
+                                          for at in ("virtual", "static", "const", "volatile", "cc") if at != attr):
             pick = mb
             continue
         raise Refused(f"{cls}::{ma.name}: no view spells the ledger's {attr} `{w}`")
@@ -671,6 +686,11 @@ def reconcile(cls, views, seed, ledger=()):
                 plan.renames.setdefault(ov.path, {})[om.name] = m.name
     # -- methods, statics, nested types (introducing virtuals by slot)
     entries, intro = collections.OrderedDict(), []
+    lists = collections.defaultdict(set)        # parameter lists each method name is declared with
+    for v in order:
+        for m in v.members:
+            if m.kind == "fn":
+                lists[m.name].add(m.params)
     for v in order:
         own = collections.defaultdict(list)
         for s, sig in sorted(v.layout.get("vslots", {}).items(), key=lambda kv: int(kv[0])):
@@ -690,8 +710,9 @@ def reconcile(cls, views, seed, ledger=()):
                 if v is vmax:
                     intro.append(k)
             if k in entries:
-                merge = merge_fn if m.kind == "fn" else merge_other
-                entries[k] = (merge(cls, entries[k], (m, v), ledger), entries[k][1])
+                merged = (merge_fn(cls, entries[k], (m, v), ledger, overloaded=len(lists[m.name]) > 1)
+                          if m.kind == "fn" else merge_other(cls, entries[k], (m, v), ledger))
+                entries[k] = (merged, entries[k][1])
             else:
                 entries[k] = (m, v)
     names = collections.defaultdict(set)
@@ -871,6 +892,11 @@ def rename_problem(view, mapping):
         if re.search(r"(?m)^[^\n{}]*\b(?:extern|static|typedef)\b[^\n]*\b" + re.escape(old) + r"\b", outside) or \
                 re.search(r"(?m)^[ \t]*#[ \t]*define[ \t]+" + re.escape(old) + r"\b", outside):
             return f"{view.path}: {old} is also a file-scope name"
+        # Any other appearance at file scope (a plain `int m_first;` global, an `extern "C"`
+        # or parameter spelling): a token rename would reach a name that is not the field.
+        for m in re.finditer(r"\b" + re.escape(old) + r"\b", view.code):
+            if not view.span[0] <= m.start() < view.span[1] and not depth_at(view.code, m.start()):
+                return f"{view.path}: {old} also appears at file scope; a token rename would reach it"
     return None
 
 
@@ -1050,9 +1076,11 @@ class Tool:
     `ledger` are injectable for tests."""
 
     def __init__(self, tu, root=ROOT, layouts=None, build=None, unmatched=None, ledger=None, held=None,
-                 canon=None):
+                 canon=None, symbols=None):
         self.tu, self.root = tu, Path(root)
         self._layouts = layouts or (lambda f: class_layouts.compile_layouts(f))
+        # injected layouts (tests) compile nothing, so they get no object to read either
+        self.symbols = symbols or (external_symbols if layouts is None else (lambda f: frozenset()))
         self.build = build or build_files
         self.unmatched = unmatched or declared_unmatched
         self.held = held or held_by_others
@@ -1209,9 +1237,16 @@ class Tool:
                 entry["status"], entry["why"] = "conflict", (f"{f}: its renames would change the shared view "
                                                              f"of {lost[0].split(chr(10))[0]}")
                 return
-        for f in changed:
-            self.write(f, new[f])
-        why = self.verify(plan, changed, before)
+        syms = {f: self.symbols(f) for f in changed}
+        try:
+            for f in changed:
+                self.write(f, new[f])
+            why = self.verify(plan, changed, before) or self.symbol_drift(changed, syms)
+        except BaseException:     # an error or interrupt mid-apply: put every file back first
+            for f in changed:
+                self.write(f, texts[f])
+                self.cache.pop(f, None)
+            raise
         if why:
             for f in changed:
                 self.write(f, texts[f])
@@ -1228,6 +1263,21 @@ class Tool:
         entry["status"], entry["files_changed"] = "applied", changed
         report["failed"].pop(c, None)
         report["applied"].append(c)
+
+    def symbol_drift(self, changed, before):
+        """None when every changed file's object defines and references exactly the
+        external names it did before the rewrite, else why not. A field rename or a
+        reconciled declaration changes no symbol; a changed one (a global the rename
+        reached, another overload's access, a dropped volatile) can leave the bytes
+        identical, because the byte gate masks relocation targets."""
+        for f in changed:
+            self.cache.pop(f, None)
+            after = self.symbols(f)
+            if after != before[f]:
+                gone, new = sorted(before[f] - after), sorted(after - before[f])
+                return (f"{f}: the rewrite changes the object's external symbols "
+                        f"(lost {[n for n, _ in gone][:3]}, gained {[n for n, _ in new][:3]})")
+        return None
 
     def verify(self, plan, changed, before):
         """None when every changed file keeps the planned layout, builds exact and
@@ -1269,6 +1319,35 @@ def bash():
         if git and (Path(git).parent / rel).resolve().exists():
             return str((Path(git).parent / rel).resolve())
     raise SystemExit("tu_views: no Git bash found to run ./build.sh")
+
+
+def coff_externals(data):
+    """{(name, defined)} of a COFF object's EXTERNAL and WEAK_EXTERNAL symbols."""
+    table, count = struct.unpack_from("<II", data, 8)
+    strings, out, index = table + 18 * count, set(), 0
+    while index < count:
+        entry = table + 18 * index
+        raw = data[entry:entry + 8]
+        if raw[:4] == b"\0\0\0\0":
+            start = strings + struct.unpack_from("<I", raw, 4)[0]
+            name = data[start:data.index(b"\0", start)]
+        else:
+            name = raw.rstrip(b"\0")
+        section, storage = struct.unpack_from("<h", data, entry + 12)[0], data[entry + 16]
+        if storage in (2, 105):                       # IMAGE_SYM_CLASS_EXTERNAL, WEAK_EXTERNAL
+            out.add((name.decode("latin-1"), section > 0))
+        index += 1 + data[entry + 17]
+    return frozenset(out)
+
+
+def external_symbols(f):
+    """coff_externals of the object class_layouts compiled `f` to (its own flags, -Z7)."""
+    class_layouts.compile_layouts(f)
+    rel = (class_layouts.ROOT / f).resolve().relative_to(class_layouts.ROOT).as_posix()
+    obj = class_layouts.CACHE / (re.sub(r"[^\w.-]", "_", rel) + ".obj")
+    if not obj.exists():                              # a parse cached without its object
+        class_layouts.compile_layouts(f, use_cache=False)
+    return coff_externals(obj.read_bytes())
 
 
 def build_files(files):
