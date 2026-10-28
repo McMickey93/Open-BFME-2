@@ -183,9 +183,9 @@ void LivingWorldAutoResolveArmorStore::parseArmorDefinition(INI *ini)
 		ini->initFromINI(&local, g_00C3C614);
 		return;
 	}
-	Rva00427157 *p = new Rva00427157(AsciiString(token), defaultArmor);
-	TheLivingWorldAutoResolveArmorStore->m_map[key] = p;
-	ini->initFromINI(p, g_00C3C614);
+	Rva00427157 *armor = new Rva00427157(AsciiString(token), defaultArmor);
+	TheLivingWorldAutoResolveArmorStore->m_map[key] = armor;
+	ini->initFromINI(armor, g_00C3C614);
 }
 
 

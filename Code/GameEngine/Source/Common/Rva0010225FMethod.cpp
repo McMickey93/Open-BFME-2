@@ -70,9 +70,9 @@ private:
 
 #include <new>
 
-void Rva0010225F::rva0010225F(const _STL::vector<EvaMessageInfo> &arg)
+void Rva0010225F::rva0010225F(const _STL::vector<EvaMessageInfo> &parameters)
 {
-	m_04 = arg;
+	m_04 = parameters;
 	if (m_00) {
 		m_00->rva00116496();
 		((Rva00116482 *)m_00)->rva00116482();

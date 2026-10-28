@@ -52,7 +52,7 @@ class AptSaveLoad {public:
 	static AptSaveLoad *s_instance;void rva00433D71(int);void rva00435224();int rva00437053();void rva00434432();void rva00436FF6();void rva00435819();};
 class Rva00434337 {public:void rva00434337(int);};
 struct FunctorBinding { FunctorBinding(){}
- template<class T> FunctorBinding(T*t,void(T::*f)(int)):m_target(reinterpret_cast<FunctorTarget*>(t)),m_method(reinterpret_cast<FunctorMethod>(f)){}
+ template<class T> FunctorBinding(T*target,void(T::*f)(int)):m_target(reinterpret_cast<FunctorTarget*>(target)),m_method(reinterpret_cast<FunctorMethod>(f)){}
  FunctorTarget*m_target;unsigned int m_pad;FunctorMethod m_method;
 };
 struct TargetRef00217D4C;
@@ -120,7 +120,7 @@ struct ScopedFunctor {
  ~ScopedFunctor(){if(holder.m_ptr)ReleaseTreeHintRef00217D4C((TargetRef00217D4C*)holder.m_ptr);}
 };
 
-template<class T> __forceinline const FunctorBinding& bindAgain(FunctorBinding& original,FunctorBinding& copy,T*t,void(T::*m)(int)){original.m_target=reinterpret_cast<FunctorTarget*>(t);original.m_method=reinterpret_cast<FunctorMethod>(m);copy=original;return copy;}
+template<class T> __forceinline const FunctorBinding& bindAgain(FunctorBinding& original,FunctorBinding& copy,T*target,void(T::*m)(int)){original.m_target=reinterpret_cast<FunctorTarget*>(target);original.m_method=reinterpret_cast<FunctorMethod>(m);copy=original;return copy;}
 struct AptSaveLoadPromptScreen
 {
 	unsigned char m_pad000[0x27C];

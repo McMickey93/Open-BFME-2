@@ -117,36 +117,36 @@ static inline float topExtent(const GeometryShape &geometryShape) {
  switch(geometryShape.type) { case 0: extent=geometryShape.major; break; case 1: case 2: extent=geometryShape.height; break; }
  return extent+geometryShape.offset.z;
 }
-static __forceinline bool overlap(GeometryContact &geometryContact,GeometryContact &b,bool cur) {
+static __forceinline bool overlap(GeometryContact &geometryContact,GeometryContact &otherContact,bool cur) {
  switch(geometryContact.shape.type) {
  case 0: case 1:
-  if(b.shape.type==2) return circleIntersectsBox((Rva00880D10Subject *)&geometryContact,(Rva00880D10Info *)&b);
-  return bfmeSphereOverlap((const BfmeCollisionShape *)&geometryContact,(const BfmeCollisionShape *)&b);
+  if(otherContact.shape.type==2) return circleIntersectsBox((Rva00880D10Subject *)&geometryContact,(Rva00880D10Info *)&otherContact);
+  return bfmeSphereOverlap((const BfmeCollisionShape *)&geometryContact,(const BfmeCollisionShape *)&otherContact);
  case 2:
-  if(b.shape.type==2) return rva006C0630((Rva00880D10Info *)&geometryContact,(Rva00880D10Info *)&b);
-  return circleIntersectsBox((Rva00880D10Subject *)&b,(Rva00880D10Info *)&geometryContact);
+  if(otherContact.shape.type==2) return rva006C0630((Rva00880D10Info *)&geometryContact,(Rva00880D10Info *)&otherContact);
+  return circleIntersectsBox((Rva00880D10Subject *)&otherContact,(Rva00880D10Info *)&geometryContact);
  }
  return cur;
 }
-bool GeometryInfo::CollidesWith(const Coord3D &p,float angle,const GeometryInfo &other,const Coord3D &q,float otherAngle) const {
+bool GeometryInfo::CollidesWith(const Coord3D &pos,float angle,const GeometryInfo &other,const Coord3D &otherPos,float otherAngle) const {
  bool found=false;
  for(GeometryShape *geometryShape=begin;geometryShape!=end;++geometryShape) {
   if(!geometryShape->enabled) continue;
   if(found) break;
   Rva0087E900Coord temp;
-  Rva006BEB80Point ownCenter=*Rva0087E900(&temp,(const Rva0087E900Coord *)&p,(const Rva0087E900Shape *)geometryShape,angle);
+  Rva006BEB80Point ownCenter=*Rva0087E900(&temp,(const Rva0087E900Coord *)&pos,(const Rva0087E900Shape *)geometryShape,angle);
   GeometryContact a(*geometryShape,ownCenter,angle);
   float h=topExtent(*geometryShape);
-  for(GeometryShape *t=other.begin;t!=other.end;++t) {
-   if(!t->enabled) continue;
+  for(GeometryShape *otherShape=other.begin;otherShape!=other.end;++otherShape) {
+   if(!otherShape->enabled) continue;
    if(found) break;
    Rva0087E900Coord temp2;
-   Rva006BEB80Point otherCenter=*Rva0087E900(&temp2,(const Rva0087E900Coord *)&q,(const Rva0087E900Shape *)t,otherAngle);
-   GeometryContact b(*t,otherCenter,otherAngle);
-   float ht=topExtent(*t);
+   Rva006BEB80Point otherCenter=*Rva0087E900(&temp2,(const Rva0087E900Coord *)&otherPos,(const Rva0087E900Shape *)otherShape,otherAngle);
+   GeometryContact b(*otherShape,otherCenter,otherAngle);
+   float ht=topExtent(*otherShape);
    float lower=0.0f;
    if(b.shape.type==0) lower=ht;
-   if(ownCenter.z+h<q.z-lower || ownCenter.z>otherCenter.z+ht) continue;
+   if(ownCenter.z+h<otherPos.z-lower || ownCenter.z>otherCenter.z+ht) continue;
    found=overlap(a,b,found);
   }
  }

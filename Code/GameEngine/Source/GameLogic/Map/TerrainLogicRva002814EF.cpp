@@ -126,13 +126,13 @@ public:
 	virtual void slot18();
 	virtual Bool isUnderwater(Real x, Real y, Real *waterZ, Real *terrainZ, void *handle);
 
-	Bool rva002814EF(const Coord3D *p0, const Coord3D *p1, Coord3D *out);
+	Bool rva002814EF(const Coord3D *start, const Coord3D *p1, Coord3D *out);
 
 	char m_pad04[0x50 - 0x04];
 	Rva002814EFSet *m_waterAreas;		// +0x50
 };
 
-Bool TerrainLogic::rva002814EF(const Coord3D *p0, const Coord3D *p1, Coord3D *out)
+Bool TerrainLogic::rva002814EF(const Coord3D *start, const Coord3D *p1, Coord3D *out)
 {
 	for (Rva002814EFIterator it = m_waterAreas->begin(); !Rva002814EFEqual(it, m_waterAreas->end()); ++it.m_index)
 	{
@@ -142,18 +142,18 @@ Bool TerrainLogic::rva002814EF(const Coord3D *p0, const Coord3D *p1, Coord3D *ou
 		Vector3 point(center.y, center.x, (Real)area->shape()->height());
 		PlaneClass plane(Vector3(0.0f, 0.0f, 1.0f), point);
 		Real t = 0.0f;
-		if (plane.Compute_Intersection(Vector3(p0->x, p0->y, p0->z), Vector3(p1->x, p1->y, p1->z), &t))
+		if (plane.Compute_Intersection(Vector3(start->x, start->y, start->z), Vector3(p1->x, p1->y, p1->z), &t))
 		{
 			*out = (out->x ? (*p1) : (*p1));
-			out->x -= p0->x;
-			out->y -= p0->y;
-			out->z -= p0->z;
+			out->x -= start->x;
+			out->y -= start->y;
+			out->z -= start->z;
 			out->x *= (out->y ? t : t);
 			out->y *= t;
 			out->z *= t;
-			out->x += p0->x;
-			out->y += p0->y;
-			out->z += p0->z;
+			out->x += start->x;
+			out->y += start->y;
+			out->z += start->z;
 			if (isUnderwater(out->x, out->y, &out->z, 0, 0))
 			{
 				Rva0030D111Shape *shape = area->shape();

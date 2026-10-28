@@ -218,7 +218,7 @@ class RegionDetailsMovieClip
 public:
 	class Impl;
 
-	RegionDetailsMovieClip(int level, const AsciiString &name, int arg);
+	RegionDetailsMovieClip(int level, const AsciiString &name, int defaultPage);
 	// Slot 0: the scalar deleting dtor 0x005E326E over the rowed dtor 0x005E3258.
 	virtual ~RegionDetailsMovieClip();
 	// Slot 1 (__purecall in vtable 0x00877BB4): builds the page movie for a slot.
@@ -262,8 +262,8 @@ static __forceinline void FillFlags(bool *first, bool *last, bool value)
 		*first = value;
 }
 
-StrategicHUD::RegionDetailsMovieClip::Impl::Impl(RegionDetailsMovieClip *owner, int level, const AsciiString &name, int arg)
-	: m_owner(owner), m_level(level), m_name(name), m_0C(arg), m_currentPage(-1), m_selectedTab(-1)
+StrategicHUD::RegionDetailsMovieClip::Impl::Impl(RegionDetailsMovieClip *owner, int level, const AsciiString &name, int defaultPage)
+	: m_owner(owner), m_level(level), m_name(name), m_0C(defaultPage), m_currentPage(-1), m_selectedTab(-1)
 {
 	FillFlags(m_pageEnabled, m_pageEnabled + 3, true);
 
@@ -338,8 +338,8 @@ void StrategicHUD::RegionDetailsMovieClip::Impl::SetCurrentPage(int page)
 
 // The owner's ctor 0x005E3463 (ret 0xC): vtable 0x00877BB4 and its Impl
 // (new 0x34) built with this and the three arguments.
-StrategicHUD::RegionDetailsMovieClip::RegionDetailsMovieClip(int level, const AsciiString &name, int arg)
-	: m_impl(new Impl(this, level, name, arg))
+StrategicHUD::RegionDetailsMovieClip::RegionDetailsMovieClip(int level, const AsciiString &name, int defaultPage)
+	: m_impl(new Impl(this, level, name, defaultPage))
 {
 }
 
@@ -393,11 +393,11 @@ void StrategicHUD::RegionDetailsMovieClip::Impl::HidePage(int page)
 // Native5E2CFA44B cdecl table lookup. WB PageIDToSlot identifies its role;
 // the original slot enum spelling and declaration remain unproven, so this
 // recovered body keeps its existing address-derived four-byte return view.
-void *PageIDToSlot(const char *s)
+void *PageIDToSlot(const char *pageID)
 {
 	for (unsigned int i = 0; i < 3; ++i)
 	{
-		if (strcmp(s, g_00C77B40[i].m_name) == 0)
+		if (strcmp(pageID, g_00C77B40[i].m_name) == 0)
 			return g_00C77B40[i].m_result;
 	}
 	return 0;
@@ -406,12 +406,12 @@ void *PageIDToSlot(const char *s)
 // Native5E2D8A97B RET: WB ParsePageSlot obtains the id parameter and maps
 // it through PageIDToSlot. Preserve the established address-derived ABI;
 // use the canonical string accessor rather than the old private-layout read.
-void *ParsePageSlot(const char *p)
+void *ParsePageSlot(const char *path)
 {
-	AsciiString tmp;
-	if (!Rva004128F0GetParam(p, "id", tmp))
+	AsciiString pageID;
+	if (!Rva004128F0GetParam(path, "id", pageID))
 		return 0;
-	return PageIDToSlot(tmp.str());
+	return PageIDToSlot(pageID.str());
 }
 
 // Native005E2E3A..005E2E91 RET8; WB15F4D00 SetPageEnabled and the retail

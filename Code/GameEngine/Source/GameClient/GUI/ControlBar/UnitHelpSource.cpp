@@ -266,8 +266,8 @@ TreeHintRef00217D4C Rva004E7506::rva004E7506()
     if(ranged>=0){text.format(TheGameText->formatText("TOOLTIP:RangedDamage",0),ranged);Rva004E74E0Append(&details,&text);}
    }
    const unsigned long *upgradeWords=reinterpret_cast<const unsigned long *>(&obj->upgrades());
-   if(obj->upgrades().any())for(int n=0;n<1024;++n)if((upgradeWords[((unsigned int)n)>>5] & (1UL<<(n&31)))) {
-    const UpgradeTemplate *up=TheUpgradeCenter->rva0026EEA0(n);
+   if(obj->upgrades().any())for(int upgradeIndex=0;upgradeIndex<1024;++upgradeIndex)if((upgradeWords[((unsigned int)upgradeIndex)>>5] & (1UL<<(upgradeIndex&31)))) {
+    const UpgradeTemplate *up=TheUpgradeCenter->rva0026EEA0(upgradeIndex);
     if(up && !up->label.isEmpty()) {Rva004E74E0Append(&details,&TheGameText->fetch(up->label,0));}
    }
    if(obj->battles()>0){UnicodeString text;text.format(TheGameText->formatText("TOOLTIP:BattlesFought",0),obj->battles());Rva004E74E0Append(&details,&text);}

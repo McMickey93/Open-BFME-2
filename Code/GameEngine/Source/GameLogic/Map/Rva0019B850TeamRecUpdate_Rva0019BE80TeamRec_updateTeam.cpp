@@ -36,7 +36,7 @@ template<> pair<const TeamKey0019B850,int>::~pair();
 template<> inline __declspec(noinline) TeamPair0019B850 make_pair(const TeamKey0019B850& key, const int& index) { return TeamPair0019B850(key,index); }
 }
 struct TeamRecord0019B850 {
-    short field00, field02, field04, field06;
+    short field00, field02, m_prevIndex, m_nextIndex;
     _STL::_Rb_tree_node_base* field08;
     Dict field0c;
 };
@@ -55,8 +55,8 @@ void TeamsInfoRec::addToIndex(int index) {
         team->field08 = field00.insert(_STL::make_pair(key,index)).first._M_node;
     } else {
         int previous = static_cast<_STL::_Rb_tree_node<TeamValue0019B850>*>(team->field08)->_M_value_field.second;
-        TeamRecord0019B850* prior = field0c.begin() + previous; prior->field06 = (short)index;
-        team->field04 = (short)previous;
+        TeamRecord0019B850* prior = field0c.begin() + previous; prior->m_nextIndex = (short)index;
+        team->m_prevIndex = (short)previous;
         static_cast<_STL::_Rb_tree_node<TeamValue0019B850>*>(team->field08)->_M_value_field.second = index;
     }
 }

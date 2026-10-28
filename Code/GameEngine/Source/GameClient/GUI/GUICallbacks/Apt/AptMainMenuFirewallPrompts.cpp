@@ -41,7 +41,7 @@ class __multiple_inheritance FunctorTarget;
 typedef void (FunctorTarget::*FunctorMethod)();
 struct FunctorBinding {
  FunctorTarget *target; unsigned pad; FunctorMethod method;
- FunctorBinding(FunctorMethod m,FunctorTarget *functorTarget):target(functorTarget),method(m){}
+ FunctorBinding(FunctorMethod functorMethod,FunctorTarget *functorTarget):target(functorTarget),method(functorMethod){}
 };
 class FunctorWrapperHead {
 public:
@@ -71,7 +71,7 @@ struct Rva004F6986Member {
  __forceinline Rva004F6986Member(FunctorBinding binding) {
   reinterpret_cast<Rva0057BC63FunctorHolder *>(this)->Rva0057BC63FunctorHolder::Rva0057BC63FunctorHolder(binding);
  }
- Rva004F6986Member(const Rva004F6986Member &o):ptr(o.ptr){if(ptr)++ptr->references;}
+ Rva004F6986Member(const Rva004F6986Member &other):ptr(other.ptr){if(ptr)++ptr->references;}
  ~Rva004F6986Member(){if(ptr)ReleaseTreeHintRef00217D4C(ptr);}
 };
 struct Rva004C5DD0Ref {int m_00,m_refs;};
@@ -88,7 +88,7 @@ struct Rva0044BEB9;
 struct Rva0044BF40 {
  TargetRef00217D4C *ptr;
  Rva0044BF40(Rva004C5DD0 pair);
- Rva0044BF40(const Rva0044BF40 &o):ptr(o.ptr){if(ptr)++ptr->references;}
+ Rva0044BF40(const Rva0044BF40 &other):ptr(other.ptr){if(ptr)++ptr->references;}
  ~Rva0044BF40(){if(ptr)ReleaseTreeHintRef00217D4C(ptr);}
 };
 extern "C" void __cdecl Rva00437F61(int,const UnicodeString &,const UnicodeString &,Rva0044BF40);

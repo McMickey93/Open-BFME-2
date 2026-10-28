@@ -63,12 +63,12 @@ void Rva002214C5Get(_STL::vector<BfmeE16, _STL::allocator<BfmeE16> > *out)
     MapNoCase::iterator it = map->begin();
     MapNoCase::iterator last = map->end();
     for (; it != last; ++it) {
-        FieldParse e;
-        e.token = it->first.str();
-        e.parse = (void *)&Rva0022104EParse;
-        e.userdata = *(void **)&it->second;
-        e.offset = 0;
-        tmp.push_back(*(const BfmeE16 *)&e);
+        FieldParse entry;
+        entry.token = it->first.str();
+        entry.parse = (void *)&Rva0022104EParse;
+        entry.userdata = *(void **)&it->second;
+        entry.offset = 0;
+        tmp.push_back(*(const BfmeE16 *)&entry);
     }
     tmp.push_back(*(const BfmeE16 *)g_emptyFieldParseTable);
     (( _STL::vector<struct BfmeE12, _STL::allocator<struct BfmeE12> > *)out)->swap(*( _STL::vector<struct BfmeE12, _STL::allocator<struct BfmeE12> > *)&tmp);

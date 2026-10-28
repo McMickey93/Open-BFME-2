@@ -26,11 +26,11 @@ public:
 
 Rva000748F6 *__stdcall Rva00074AFFGet(int dummy);
 
-static __forceinline void scaleAxes(Matrix3D &matrix3D, float x, float y, float z)
+static __forceinline void scaleAxes(Matrix3D &matrix3D, float scaleX, float scaleY, float scaleZ)
 {
-	matrix3D[0][0] *= x; matrix3D[1][0] *= x; matrix3D[2][0] *= x;
-	matrix3D[0][1] *= y; matrix3D[1][1] *= y; matrix3D[2][1] *= y;
-	matrix3D[0][2] *= z; matrix3D[1][2] *= z; matrix3D[2][2] *= z;
+	matrix3D[0][0] *= scaleX; matrix3D[1][0] *= scaleX; matrix3D[2][0] *= scaleX;
+	matrix3D[0][1] *= scaleY; matrix3D[1][1] *= scaleY; matrix3D[2][1] *= scaleY;
+	matrix3D[0][2] *= scaleZ; matrix3D[1][2] *= scaleZ; matrix3D[2][2] *= scaleZ;
 }
 
 Rva000748F6 *__stdcall Rva00074B3BGet(const Vector3 *from, const Vector3 *to, int arg34, unsigned char arg38, int dummy)

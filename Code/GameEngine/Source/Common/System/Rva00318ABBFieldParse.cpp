@@ -75,12 +75,12 @@ public:
 	void rva00318A87();
 private:
 	char m_pad[0x0C];
-	AsciiString m_0C;
+	AsciiString m_sunbeamObject;
 };
 
 void Rva00318A87::rva00318A87()
 {
-	m_0C = sunbeamTarget();
+	m_sunbeamObject = sunbeamTarget();
 }
 
 // slots at VA 0x00BC82BC and 0x00BC82F8: copies the source string over the

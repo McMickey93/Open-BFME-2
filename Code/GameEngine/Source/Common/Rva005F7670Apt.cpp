@@ -152,15 +152,15 @@ void StrategicHUD::BuildQueueDetailsMovieClip::Impl::HideBuildTime()
 void StrategicHUD::BuildQueueDetailsMovieClip::Impl::ShowCommandPoints(int val)
 {
 	if (val != m_cmdPts60) {
-		UnicodeString tmp;
+		UnicodeString label;
 		if (val >= 0) {
 			UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:CommandPointsLabel", 0);
-			tmp.format(fetched.str(), val);
+			label.format(fetched.str(), val);
 		}
 		AsciiString key;
 		const char *team = m_team08 ? m_team08->m_name : "";
 		key.format("APT:_level%u.%s_CommandPoints", m_level04, team);
-		g_bfmeAptWindowManager->bfmeSetText(key, tmp, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, label, false);
 		m_cmdPts60 = val;
 	}
 	if (!m_shown66) {
@@ -174,19 +174,19 @@ void StrategicHUD::BuildQueueDetailsMovieClip::Impl::ShowCommandPoints(int val)
 void StrategicHUD::BuildQueueDetailsMovieClip::Impl::ShowBuildTime(int val)
 {
 	if (val != m_buildTime5C) {
-		UnicodeString tmp;
+		UnicodeString label;
 		if (val >= 0) {
 			if (val == 1) {
-				tmp.set(TheGameText->fetch("STRATEGICHUD:BuildTimeSingularLabel", 0));
+				label.set(TheGameText->fetch("STRATEGICHUD:BuildTimeSingularLabel", 0));
 			} else {
 				UnicodeString fetched = TheGameText->fetch("STRATEGICHUD:BuildTimePluralLabel", 0);
-				tmp.format(fetched.str(), val);
+				label.format(fetched.str(), val);
 			}
 		}
 		AsciiString key;
 		const char *team = m_team08 ? m_team08->m_name : "";
 		key.format("APT:_level%u.%s_BuildTime", m_level04, team);
-		g_bfmeAptWindowManager->bfmeSetText(key, tmp, false);
+		g_bfmeAptWindowManager->bfmeSetText(key, label, false);
 		m_buildTime5C = val;
 	}
 	if (!m_shown65) {

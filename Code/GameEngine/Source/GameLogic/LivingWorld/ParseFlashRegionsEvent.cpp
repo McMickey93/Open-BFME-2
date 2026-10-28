@@ -31,13 +31,13 @@ public:
 class Rva003B7190Record
 {
 public:
-	Rva003B7190Record() : m_04( 0 ), m_flag08( false ), m_0C( 0 ) {}
+	Rva003B7190Record() : m_delayFromActStart( 0 ), m_flag08( false ), m_flashTime( 0 ) {}
 	virtual ~Rva003B7190Record() {}
 
 private:
-	Int m_04;
+	Int m_delayFromActStart;
 	bool m_flag08;
-	Int m_0C;
+	Int m_flashTime;
 };
 
 // BFME 2's complete table at RVA 0x008619E0. Each callback and offset

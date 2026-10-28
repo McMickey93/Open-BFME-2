@@ -168,16 +168,16 @@ void AptMyHero::rva005B1019(){
 		else preset=&view->preset48;
 	}
 	Rva005B01D3 *lerp=(Rva005B01D3 *)view;
-	float v10=useLerp?lerp->rva005B05E8(t):preset->field10;
+	float offsetY=useLerp?lerp->rva005B05E8(t):preset->field10;
 	float v00=useLerp?lerp->rva005B0569(t):preset->field00;
 	float v04=useLerp?lerp->rva005B0588(t):preset->field04;
 	float v08=useLerp?lerp->rva005B05A8(t):preset->field08;
-	float v0C=useLerp?lerp->rva005B05C8(t):preset->field0C;
+	float m_offsetX=useLerp?lerp->rva005B05C8(t):preset->field0C;
 	float fovZoom=0.83f;
 	float roll=0;
 	float rot=view->field64;
 	float angle=rot+info->b;
-	MyHeroOffset offset(v0C,v10,0.0f);
+	MyHeroOffset offset(m_offsetX,offsetY,0.0f);
 	offset.Rotate_ZF(angle);
 	CameraPosition pos(object->getX(),object->posY,object->posZ);
 	pos+=CameraPosition(offset.X,offset.Y,offset.Z);

@@ -83,7 +83,7 @@ private:
 class Rva005DB5F2
 {
 public:
-	void rva005DB5F2(int a, int b, int c);
+	void rva005DB5F2(int schema, int b, int c);
 };
 
 struct Rva005DB5F2Container : public Rva005DB512
@@ -99,7 +99,7 @@ struct Rva005DB5F2Container : public Rva005DB512
 class Rva005DB628
 {
 public:
-	void rva005DB628(PortNegotiationSchema *schema, int a, int b);
+	void rva005DB628(PortNegotiationSchema *schema, int row, int column);
 };
 
 // ---- from Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionGridCallbacks.cpp
@@ -195,17 +195,17 @@ void AptConnectionScreen::UpdateGrid(PortNegotiationSchema *schema, int row, int
 
 // ---- from Code/GameEngine/Source/Common/Rva005DB5F2Fwd.cpp
 
-void Rva005DB5F2::rva005DB5F2(int a, int b, int c)
+void Rva005DB5F2::rva005DB5F2(int schema, int b, int c)
 {
 	Rva005DB5F2Container *o = (Rva005DB5F2Container *)((char *)this - 0x58);
-	((AptConnectionScreen *)o)->UpdateGrid((PortNegotiationSchema *)a, b, c);
-	((AptConnectionScreen *)o)->UpdateGrid((PortNegotiationSchema *)a, c, b);
+	((AptConnectionScreen *)o)->UpdateGrid((PortNegotiationSchema *)schema, b, c);
+	((AptConnectionScreen *)o)->UpdateGrid((PortNegotiationSchema *)schema, c, b);
 	((AptConnectionScreen *)o)->UpdateSlotName(b);
 }
 
-void Rva005DB628::rva005DB628(PortNegotiationSchema *schema, int a, int b)
+void Rva005DB628::rva005DB628(PortNegotiationSchema *schema, int row, int column)
 {
-	((AptConnectionScreen *)((char *)this - 0x58))->UpdateGrid(schema, a, b);
+	((AptConnectionScreen *)((char *)this - 0x58))->UpdateGrid(schema, row, column);
 }
 
 // tu-skeleton: 0x005DB681 89B ??1AptConnectionScreen@@UAE@XZ -- matched in Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptConnectionScreenDestructor.cpp (not merged yet)

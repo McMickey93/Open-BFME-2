@@ -48,7 +48,7 @@ void *operator new(unsigned int s) throw();
 class Drawable
 {
 public:
-	void colorFlash(const RGBColor *peak, unsigned int a1, unsigned int a2, unsigned int a3);
+	void colorFlash(const RGBColor *peak, unsigned int decayFrames, unsigned int attackFrames, unsigned int sustainAtPeak);
 	void colorTint(const RGBColor *peak);
 private:
 	unsigned char m_pad00[0x68];
@@ -57,12 +57,12 @@ private:
 	int m_114;
 };
 
-void Drawable::colorFlash(const RGBColor *peak, unsigned int a1, unsigned int a2, unsigned int a3)
+void Drawable::colorFlash(const RGBColor *peak, unsigned int decayFrames, unsigned int attackFrames, unsigned int sustainAtPeak)
 {
 	if (m_68 == 0)
 		m_68 = new Rva00271826;
 	if (peak != 0) {
-		((TintEnvelope *)m_68)->play(peak, a2, a1, a3);
+		((TintEnvelope *)m_68)->play(peak, attackFrames, decayFrames, sustainAtPeak);
 	} else {
 		float white = 1.0f;
 		RGBColor tmp;

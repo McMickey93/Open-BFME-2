@@ -44,11 +44,11 @@ extern GameTextInterface* TheGameText;
 // then UnicodeString format 0x6CB660. Same 8B layout no vptr returns this.
 class Rva005DD9F9 : public Rva005DD772 {
 public:
-    Rva005DD9F9(float v);
+    Rva005DD9F9(float percent);
 };
-Rva005DD9F9::Rva005DD9F9(float v) : Rva005DD772() {
-    m04 = v;
-    int i = (int)(v + 0.5f);
+Rva005DD9F9::Rva005DD9F9(float percent) : Rva005DD772() {
+    m04 = percent;
+    int i = (int)(percent + 0.5f);
     ((UnicodeString*)this)->format(&TheGameText->slot44("GUI:WinPercent"), i);
 }
 
@@ -83,14 +83,14 @@ class Rva005DD88A : public UnicodeString
 {
 public:
 	float m04;
-	int rva005DD88A(GameWindow *win, int a, int b, float f);
+	int rva005DD88A(GameWindow *win, int row, int column, float f);
 };
 
-int Rva005DD88A::rva005DD88A(GameWindow *win, int a, int b, float f)
+int Rva005DD88A::rva005DD88A(GameWindow *win, int row, int column, float f)
 {
 	int color = (m04 == f) ? 0xFF64FF64 : -1;
-	int idx = GadgetListBoxAddEntryText(win, *(UnicodeString *)this, color, a, b, true);
-	GadgetListBoxJustifyEntry(win, idx, b, 2);
+	int idx = GadgetListBoxAddEntryText(win, *(UnicodeString *)this, color, row, column, true);
+	GadgetListBoxJustifyEntry(win, idx, column, 2);
 	return idx;
 }
 

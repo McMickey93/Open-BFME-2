@@ -198,15 +198,15 @@ inline const int&clampPoints(const int&points,const int&minimum){return points<m
 inline int difficultyPoints(const int*n){int middle=n[3];middle+=n[5]*2;return middle*2+n[4]*3+n[2];}
 void StatsReporter::ProcessStrategicSinglePlayerGame(LivingWorldPlayer*player) {
  if(player->isGuarded())return;
- LivingWorldScoreKeeper*s=player->getScoreKeeper();
+ LivingWorldScoreKeeper*m_scoreKeeper=player->getScoreKeeper();
  const PlayerTemplate*playerTemplate=ThePlayerTemplateStore->findPlayerTemplate(TheNameKeyGenerator->nameToKey(player->getSide()->getName()));
  if(!playerTemplate)return;
  const AsciiString&side=playerTemplate->getSide();
  SkirmishPreferences profile(1);
  StrategicStatsPreferences prefs(profile.Rva0043B9F5());
  prefs.rva005378E9(side,TheLivingWorldLogic->getFrame()+1);
- unsigned int firstSeconds=s->rva004EE037();
- firstSeconds+=s->rva004EE016();
+ unsigned int firstSeconds=m_scoreKeeper->rva004EE037();
+ firstSeconds+=m_scoreKeeper->rva004EE016();
  prefs.rva00537A9B(side,(float)firstSeconds);
  if(!player->isLost()) {
   prefs.rva00535BAF(side,prefs.rva00535BF6(side)+1);
@@ -229,10 +229,10 @@ void StatsReporter::ProcessStrategicSinglePlayerGame(LivingWorldPlayer*player) {
   int enemies[7];int allies[7];memset(enemies,0,sizeof(enemies));memset(allies,0,sizeof(allies));
   int numEnemies=0;
   for(int i=0;i<TheLivingWorldLogic->getPlayerCount();++i) {
-   LivingWorldPlayer*p=reinterpret_cast<LivingWorldPlayer*>(reinterpret_cast<Rva002BA8F1Logic*>(TheLivingWorldLogic)->GetPlayerAtIndex(i));
-   if(p!=player && p->getPlayerKind()==1) {
-    int difficulty=reinterpret_cast<const Rva0009AAA4DwordField*>(p)->get();
-    if(allied(p,player))++allies[difficulty];
+   LivingWorldPlayer*otherPlayer=reinterpret_cast<LivingWorldPlayer*>(reinterpret_cast<Rva002BA8F1Logic*>(TheLivingWorldLogic)->GetPlayerAtIndex(i));
+   if(otherPlayer!=player && otherPlayer->getPlayerKind()==1) {
+    int difficulty=reinterpret_cast<const Rva0009AAA4DwordField*>(otherPlayer)->get();
+    if(allied(otherPlayer,player))++allies[difficulty];
     else {++numEnemies;++enemies[difficulty];}
    }
   }
@@ -249,13 +249,13 @@ void StatsReporter::ProcessStrategicSinglePlayerGame(LivingWorldPlayer*player) {
   }
  }
  for(int i=0;i<TheLivingWorldLogic->getPlayerCount();++i) {
-  LivingWorldPlayer*p=reinterpret_cast<LivingWorldPlayer*>(reinterpret_cast<Rva002BA8F1Logic*>(TheLivingWorldLogic)->GetPlayerAtIndex(i));
-  if(!allied(p,player)) {
-   const PlayerTemplate*enemyTemplate=ThePlayerTemplateStore->findPlayerTemplate(TheNameKeyGenerator->nameToKey(p->getSide()->getName()));
+  LivingWorldPlayer*otherPlayer=reinterpret_cast<LivingWorldPlayer*>(reinterpret_cast<Rva002BA8F1Logic*>(TheLivingWorldLogic)->GetPlayerAtIndex(i));
+  if(!allied(otherPlayer,player)) {
+   const PlayerTemplate*enemyTemplate=ThePlayerTemplateStore->findPlayerTemplate(TheNameKeyGenerator->nameToKey(otherPlayer->getSide()->getName()));
    if(enemyTemplate) {
     const AsciiString&enemy=enemyTemplate->getSide();
     if(!player->isLost())prefs.rva0053740C(side,enemy,prefs.rva0053745E(side,enemy)+1);
-    else if(!p->isLost())prefs.rva005374B3(side,enemy,prefs.rva00537505(side,enemy)+1);
+    else if(!otherPlayer->isLost())prefs.rva005374B3(side,enemy,prefs.rva00537505(side,enemy)+1);
    }
   }
  }
@@ -267,19 +267,19 @@ void StatsReporter::ProcessStrategicSinglePlayerGame(LivingWorldPlayer*player) {
  }else prefs.rva005361B6(side);
  Rva00045411BitSet buildMask(0,7);
  const Rva00045411BitSet&mask=buildMask;
- prefs.rva0053626B(side,prefs.rva005362B2(side)+reinterpret_cast<Rva004EE35D*>(s)->rva004EE35D(mask,reinterpret_cast<const Rva00045411BitSet&>(KINDOFMASK_NONE)));
- prefs.rva005362FC(side,prefs.rva00536343(side)+reinterpret_cast<Rva004EE3AB*>(s)->rva004EE3AB(mask,reinterpret_cast<const Rva00045411BitSet&>(KINDOFMASK_NONE)));
- prefs.rva0053638D(side,prefs.rva005363D4(side)+reinterpret_cast<Rva004EE3F9*>(s)->rva004EE3F9(mask,reinterpret_cast<const Rva00045411BitSet&>(KINDOFMASK_NONE)));
- prefs.rva0053641E(side,prefs.rva00536465(side)+reinterpret_cast<Rva004EE447*>(s)->rva004EE447());
- prefs.rva005364AF(side,prefs.rva005364F6(side)+reinterpret_cast<Rva004EE485*>(s)->rva004EE485());
- prefs.rva00536540(side,prefs.rva00536587(side)+reinterpret_cast<Rva004EE4C3*>(s)->rva004EE4C3());
- prefs.rva00536A1D(side,prefs.rva00536A64(side)+s->counter94);
- prefs.rva00536AAE(side,prefs.rva00536AF5(side)+s->counter98);
- prefs.rva00536C61(side,prefs.rva00536CA8(side)+s->counterDC);
- prefs.rva00536CF2(side,prefs.rva00536D39(side)+s->counterD8);
- prefs.rva00536D83(side,prefs.rva00536DCA(side)+s->counterE4);
- prefs.rva00536E14(side,prefs.rva00536E5B(side)+s->counterE0);
- prefs.rva00536EA5(side,prefs.rva00536EEC(side)+s->counterE8);
- prefs.rva00536F36(side,prefs.rva00536F7D(side)+s->counterECValue());
+ prefs.rva0053626B(side,prefs.rva005362B2(side)+reinterpret_cast<Rva004EE35D*>(m_scoreKeeper)->rva004EE35D(mask,reinterpret_cast<const Rva00045411BitSet&>(KINDOFMASK_NONE)));
+ prefs.rva005362FC(side,prefs.rva00536343(side)+reinterpret_cast<Rva004EE3AB*>(m_scoreKeeper)->rva004EE3AB(mask,reinterpret_cast<const Rva00045411BitSet&>(KINDOFMASK_NONE)));
+ prefs.rva0053638D(side,prefs.rva005363D4(side)+reinterpret_cast<Rva004EE3F9*>(m_scoreKeeper)->rva004EE3F9(mask,reinterpret_cast<const Rva00045411BitSet&>(KINDOFMASK_NONE)));
+ prefs.rva0053641E(side,prefs.rva00536465(side)+reinterpret_cast<Rva004EE447*>(m_scoreKeeper)->rva004EE447());
+ prefs.rva005364AF(side,prefs.rva005364F6(side)+reinterpret_cast<Rva004EE485*>(m_scoreKeeper)->rva004EE485());
+ prefs.rva00536540(side,prefs.rva00536587(side)+reinterpret_cast<Rva004EE4C3*>(m_scoreKeeper)->rva004EE4C3());
+ prefs.rva00536A1D(side,prefs.rva00536A64(side)+m_scoreKeeper->counter94);
+ prefs.rva00536AAE(side,prefs.rva00536AF5(side)+m_scoreKeeper->counter98);
+ prefs.rva00536C61(side,prefs.rva00536CA8(side)+m_scoreKeeper->counterDC);
+ prefs.rva00536CF2(side,prefs.rva00536D39(side)+m_scoreKeeper->counterD8);
+ prefs.rva00536D83(side,prefs.rva00536DCA(side)+m_scoreKeeper->counterE4);
+ prefs.rva00536E14(side,prefs.rva00536E5B(side)+m_scoreKeeper->counterE0);
+ prefs.rva00536EA5(side,prefs.rva00536EEC(side)+m_scoreKeeper->counterE8);
+ prefs.rva00536F36(side,prefs.rva00536F7D(side)+m_scoreKeeper->counterECValue());
  prefs.UserPreferences::write();
 }

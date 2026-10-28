@@ -54,7 +54,7 @@ struct IntPair
 {
 	int pad[9];
 	int v24;
-	int v28;
+	int m_height;
 };
 struct ScalePair
 {
@@ -143,14 +143,14 @@ void InGameCommandButtonHelp::Impl::ComputeIconSizes(FloatPair *floatPair, Float
 	ScalePair *scale = reinterpret_cast<Rva00222A8BTarget *>(g_bfmeAptWindowManager)->v15();
 	if (m_icon30 != 0) {
 		floatPair->x = (float)m_icon30->v24 * scale->x;
-		floatPair->y = (float)m_icon30->v28 * scale->y;
+		floatPair->y = (float)m_icon30->m_height * scale->y;
 	} else {
 		floatPair->x = 0.0f;
 		floatPair->y = 0.0f;
 	}
 	if (m_icon34 != 0) {
 		b->x = (float)m_icon34->v24 * scale->x;
-		b->y = (float)m_icon34->v28 * scale->y;
+		b->y = (float)m_icon34->m_height * scale->y;
 	} else {
 		b->x = 0.0f;
 		b->y = 0.0f;

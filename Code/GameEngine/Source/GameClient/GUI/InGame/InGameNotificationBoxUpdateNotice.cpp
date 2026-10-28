@@ -290,8 +290,8 @@ void InGameNotificationBoxMovieClip::UpdateNotice()
   BfmeAudioEventPrefix136 sound(notice.get()->audio,2);
   reinterpret_cast<NotificationAudioSlots*>(TheAudio)->addAudioEvent(&sound);
  }
- int w,h;
- surface->getSize(&w,&h);
+ int width,h;
+ surface->getSize(&width,&h);
  openNotice(reinterpret_cast<Rva00222A8BTarget*>(g_bfmeAptWindowManager),owner,(float)h*reinterpret_cast<NotificationAptScales*>(g_bfmeAptWindowManager)->getScale16()[1],&notice.get()->openOption,&noticeLocations[notice.get()->location]);
  state=2;
  active=notice.rva004E6BF6();

@@ -166,15 +166,15 @@ typedef char Rva0039A027MapSize[(sizeof(_STL::map<int, BfmeStringRecord004071F7>
 typedef char Rva0039A027DataSize[(sizeof(CastleBehaviorModuleData) == 0x78) ? 1 : -1];
 
 #include <string.h>
-Rva00045411BitSet::Rva00045411BitSet(int unused, int b1, int b2, int b3, int b4, int b5)
+Rva00045411BitSet::Rva00045411BitSet(int unused, int idx1, int idx2, int idx3, int idx4, int idx5)
 {
     (void)unused;
     memset(this, 0, 0x1c);
-    m_words[(unsigned)b1 >> 5] |= (1u << (b1 & 31));
-    m_words[(unsigned)b2 >> 5] |= (1u << (b2 & 31));
-    m_words[(unsigned)b3 >> 5] |= (1u << (b3 & 31));
-    m_words[(unsigned)b4 >> 5] |= (1u << (b4 & 31));
-    m_words[(unsigned)b5 >> 5] |= (1u << (b5 & 31));
+    m_words[(unsigned)idx1 >> 5] |= (1u << (idx1 & 31));
+    m_words[(unsigned)idx2 >> 5] |= (1u << (idx2 & 31));
+    m_words[(unsigned)idx3 >> 5] |= (1u << (idx3 & 31));
+    m_words[(unsigned)idx4 >> 5] |= (1u << (idx4 & 31));
+    m_words[(unsigned)idx5 >> 5] |= (1u << (idx5 & 31));
 }
 BfmeFixedStorage0004543D::BfmeFixedStorage0004543D(int unused, int bit)
 {

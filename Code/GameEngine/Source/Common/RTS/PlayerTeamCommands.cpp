@@ -268,9 +268,9 @@ class PlayerIdleObject
 {
 public:
 	void *m_vptr;
-	FlagObj *m_04;
+	FlagObj *m_template;
 	char m_08[0x30];
-	Coord3D m_38;
+	Coord3D m_cachedPos;
 	char m_44[0x258 - 0x44];
 	AIClass *m_258;
 };
@@ -449,9 +449,9 @@ void Player::setUnitsShouldIdleOrResume(bool idle) {
    for(DLINK_ITERATOR<Object> objects=team->iterate_TeamMemberList();!objects.done();objects.advance()){
     Object*obj=objects.cur();if(!obj)continue;
     PlayerIdleObject*view=reinterpret_cast<PlayerIdleObject*>(obj);
-    if(view->m_04->m_flag&0x80)continue;
+    if(view->m_template->m_flag&0x80)continue;
     AIClass*ai=view->m_258;if(!ai)continue;
-    if(idle) reinterpret_cast<AICommandInterface*>(reinterpret_cast<char*>(ai)+0x20)->aiMoveToPosition(&view->m_38,CMD_FROM_SCRIPT);
+    if(idle) reinterpret_cast<AICommandInterface*>(reinterpret_cast<char*>(ai)+0x20)->aiMoveToPosition(&view->m_cachedPos,CMD_FROM_SCRIPT);
     else if(ai->v110()){AISecond*supply=ai->v95();if(supply)supply->s11(1);}
    }
   }

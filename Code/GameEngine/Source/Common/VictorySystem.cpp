@@ -144,7 +144,7 @@ VictorySystem::~VictorySystem() {}
 // byte-and-relocation twin of the existing211E58 constructor.
 
 VictorySystem::VictorySystem():cellSize10(0),field14(0),firstScale18(0),secondScale1c(0),field20(0),field24(1.0f),initialized134(false),activeGrid138(0),currentPlayer13c(2){
- for(int g=0;g<2;++g)grids12c[g]=0;
+ for(int gridIndex=0;gridIndex<2;++gridIndex)grids12c[gridIndex]=0;
  for(int p=0;p<20;++p)playerParameterIndex28[p]=0;
  _STL::vector<Rva0040538FElement>*p=reinterpret_cast<_STL::vector<Rva0040538FElement>*>(&parameters120);p->erase(p->begin(),p->end());
 }

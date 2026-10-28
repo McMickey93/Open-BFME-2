@@ -76,13 +76,13 @@ void SmoothCameraHeightField::Initialize( const R3HeightSample *source, int unus
 		for( outputY = 0; outputY < m_height; ++outputY )
 		{
 			float value = 0.0f;
-			for( int x = outputX * 4; x < outputX * 4 + 4; ++x )
+			for( int sourceX = outputX * 4; sourceX < outputX * 4 + 4; ++sourceX )
 			{
-				for( int y = outputY * 4; y < outputY * 4 + 4; ++y )
+				for( int sourceY = outputY * 4; sourceY < outputY * 4 + 4; ++sourceY )
 				{
-					if( x < sourceWidth && y < sourceHeight )
+					if( sourceX < sourceWidth && sourceY < sourceHeight )
 					{
-						float sample=clamp(low,(float)(int)source[y*sourceWidth+x]*0.0390625f,high);
+						float sample=clamp(low,(float)(int)source[sourceY*sourceWidth+sourceX]*0.0390625f,high);
 						if( value < sample )
 							value = sample;
 					}
@@ -92,8 +92,8 @@ void SmoothCameraHeightField::Initialize( const R3HeightSample *source, int unus
 		}
 	}
 
-	int x;
-	int y;
+	int sourceX;
+	int sourceY;
 	bool changed = false;
 	int passes = m_width;
 	if( m_height > passes )
@@ -105,20 +105,20 @@ void SmoothCameraHeightField::Initialize( const R3HeightSample *source, int unus
 		{
 			for( outputY = 0; outputY < m_height; ++outputY )
 			{
-				for( x = outputX - 1; x < outputX + 2; ++x )
+				for( sourceX = outputX - 1; sourceX < outputX + 2; ++sourceX )
 				{
-					if( x < 0 || x >= m_width )
+					if( sourceX < 0 || sourceX >= m_width )
 						continue;
-					for( y = outputY - 1; y < outputY + 2; ++y )
+					for( sourceY = outputY - 1; sourceY < outputY + 2; ++sourceY )
 					{
-						if( y >= 0 && y < m_height )
+						if( sourceY >= 0 && sourceY < m_height )
 						{
 							float delta = setting;
 							delta *= m_scale;
 							delta *= 0.6f;
-							if( x != outputX && y != outputY )
+							if( sourceX != outputX && sourceY != outputY )
 								delta *= 1.4f;
-							float candidate = m_data[ y * m_width + x ] - delta;
+							float candidate = m_data[ sourceY * m_width + sourceX ] - delta;
 							if( candidate > m_data[outputY*m_width+outputX] )
 							{
 								m_data[outputY*m_width+outputX] = candidate;

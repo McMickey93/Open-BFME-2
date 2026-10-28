@@ -106,13 +106,13 @@ void Rva0050407AParseColorControlPointBlock(INI *ini, void *instance, void *, co
 		Rva0050406E record;
 		ini->initFromINI(&record, g_00C63CE8);
 		record.m_base.m_time = msecToFramesRva00503E4F(record.m_base.m_time);
-		Rva002BE7DBValue tmp;
-		Rva002BE7DBValue &rv = ((Rva002BE7DB *)&record)->rva002BE7DB(tmp);
+		Rva002BE7DBValue color;
+		Rva002BE7DBValue &rv = ((Rva002BE7DB *)&record)->rva002BE7DB(color);
 		float v = rv.x;
-		tmp.x = v;
-		tmp.y = v;
-		tmp.z = v;
-		*(Block12 *)&record = *(const Block12 *)&tmp;
+		color.x = v;
+		color.y = v;
+		color.z = v;
+		*(Block12 *)&record = *(const Block12 *)&color;
 		Rva0050407ACallback callback = (Rva0050407ACallback)userData;
 		if (callback)
 			callback(instance, &record);

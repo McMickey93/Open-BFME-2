@@ -53,7 +53,7 @@ class AptOnlineCustomMatch
 {
 public:
 	void rva005A083C();
-	void InitGadgets(const char *a1, int a2, GameWindow *a3);
+	void InitGadgets(const char *name, int a2, GameWindow *a3);
 	// Rowed 0x005A08C8 in AptOnlineCustomMatch.cpp.
 	static void GamesListTooltipFunc(GameWindow *window, WinInstanceData *data, unsigned int flags);
 private:
@@ -68,11 +68,11 @@ private:
 
 
 
-void AptOnlineCustomMatch::InitGadgets(const char *a1, int a2, GameWindow *gameWindow)
+void AptOnlineCustomMatch::InitGadgets(const char *name, int a2, GameWindow *gameWindow)
 {
 	if (gameWindow == 0)
 		return;
-	if (strcmp(a1, "GameList") == 0) {
+	if (strcmp(name, "GameList") == 0) {
 		GadgetListBoxReset(gameWindow);
 		m_48C = gameWindow;
 		Rva005A0C6EUserData *ud = (Rva005A0C6EUserData *)gameWindow->winGetUserData();
@@ -81,22 +81,22 @@ void AptOnlineCustomMatch::InitGadgets(const char *a1, int a2, GameWindow *gameW
 		gameWindow->winSetTooltipFunc(GamesListTooltipFunc);
 		return;
 	}
-	if (strcmp(a1, "Lobbies") == 0) {
+	if (strcmp(name, "Lobbies") == 0) {
 		m_490 = gameWindow;
 		return;
 	}
-	if (strcmp(a1, "GameInfo") == 0) {
+	if (strcmp(name, "GameInfo") == 0) {
 		GadgetListBoxReset(gameWindow);
 		m_494 = gameWindow;
 		return;
 	}
-	if (strcmp(a1, "GameName") == 0) {
+	if (strcmp(name, "GameName") == 0) {
 		m_498 = (int)gameWindow;
 		GadgetTextEntrySetMaxChars((BfmeKeyLC *)gameWindow, 0x14);
 		gameWindow->winSetStatus(2);
 		rva005A083C();
 	} else {
-		if (strcmp(a1, "GamePassword") != 0)
+		if (strcmp(name, "GamePassword") != 0)
 			return;
 		m_49C = (int)gameWindow;
 		GadgetTextEntrySetValidationFlags(gameWindow, 5);

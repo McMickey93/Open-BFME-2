@@ -192,10 +192,10 @@ TerrainTypeCollection::~TerrainTypeCollection()
 
 // ?friend_setName@TerrainType@@QAEXVAsciiString@@@Z @0x00317C34 52B: TerrainType name setter (ZH newTerrain calls it at 0x003181D7; pinned): AsciiString setter at +4 via operator= 0x000366F0 then param release via 0x00036410 with EH prolog. Evidence: retail lea ebp+8 plus add ecx 4 plus pin-only operator= plus rowed releaseBuffer plus EH_prolog with scope 0x00B7A71F; caller 0x003181D7; same 52B shape as 0x004D65F9 and 0x002AAE81.
 
-void TerrainType::friend_setName(AsciiString s)
+void TerrainType::friend_setName(AsciiString name)
 {
 	AsciiString &slot = m_str04;
-	slot = s;
+	slot = name;
 }
 
 // ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW6Rva00317CCD.cpp

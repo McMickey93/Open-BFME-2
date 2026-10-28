@@ -191,9 +191,9 @@ __declspec(noinline) inline void UpgradeMuxData::getUpgradeActivationMasks(
 }
 
 // ?bfmeAnchorUpgradeMuxDataMasks absent-from-retail
-void bfmeAnchorUpgradeMuxDataMasks(const UpgradeMuxData *p, UpgradeMaskType &a, UpgradeMaskType &c)
+void bfmeAnchorUpgradeMuxDataMasks(const UpgradeMuxData *muxData, UpgradeMaskType &activation, UpgradeMaskType &conflicting)
 {
-	p->getUpgradeActivationMasks(a, c);
+	muxData->getUpgradeActivationMasks(activation, conflicting);
 }
 
 

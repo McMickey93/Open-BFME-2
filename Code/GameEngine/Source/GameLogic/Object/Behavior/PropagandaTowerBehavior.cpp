@@ -313,7 +313,7 @@ void Rva0048180C::rva00481A9E(Object *tgt, bool flag, Rva00481A9EInfo *info)
 		// Retail ends the x87 chain with a single `fmulp st(1),st`; the product
 		// is a named float argument temp (inline call-argument forms keep the
 		// non-pop `fmul` plus a separate `fstp st(0)`).
-		float arg = body->f6() * (fsel / (float)BfmeLogicFramesPerSecond); tgt->attemptHealingFromSoleBenefactor(arg, m_owner, info->m_extra);
+		float amount = body->f6() * (fsel / (float)BfmeLogicFramesPerSecond); tgt->attemptHealingFromSoleBenefactor(amount, m_owner, info->m_extra);
 	} else {
 		((unsigned char *)&tgt->m_flags380)[1] &= 0x7e;
 	}

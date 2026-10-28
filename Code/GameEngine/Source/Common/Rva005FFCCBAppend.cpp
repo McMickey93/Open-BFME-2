@@ -257,16 +257,16 @@ private:
 	Rva005FFA56 m_4c[2]; // +0x4C; sizeof 0x50 (the owner ctor's new)
 };
 
-int StrategicHUD::BattlePromptPlayerPageMovieClip::Impl::AddHeroArmyPanel(const TreeHintRef00217D4C &arg)
+int StrategicHUD::BattlePromptPlayerPageMovieClip::Impl::AddHeroArmyPanel(const TreeHintRef00217D4C &factory)
 {
 	int idx = m_48;
 	m_48 = idx + 1;
 	Rva005FFCCBElem *e = (Rva005FFCCBElem *)((char *)this + (idx + 3) * 12);
-	e->m_hint = arg;
+	e->m_hint = factory;
 	e->m_8 = idx;
-	AsciiString tmp;
-	tmp.format("%s%d", "hero", idx);
-	const char *raw = *(const char *const *)&tmp;
+	AsciiString panelName;
+	panelName.format("%s%d", "hero", idx);
+	const char *raw = *(const char *const *)&panelName;
 	const char *state;
 	if (raw)
 		state = raw + 8;

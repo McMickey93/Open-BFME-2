@@ -151,7 +151,7 @@ public:
 private: HeroOwnerView *m_owner; Rva005F42FFHero *m_hero; HeroClipHolder m_clip;
 };
 }
-StrategicInGameUI::ArmyHeroIcon::ArmyHeroIcon(void *o,void *c,void *e):Rva005F4179(c),m_owner((HeroOwnerView*)o),m_hero((Rva005F42FFHero*)e),m_clip() {}
+StrategicInGameUI::ArmyHeroIcon::ArmyHeroIcon(void *owner,void *clip,void *hero):Rva005F4179(clip),m_owner((HeroOwnerView*)owner),m_hero((Rva005F42FFHero*)hero),m_clip() {}
 
 // The hero composite (Rva005F422CDtor.cpp's Rva005E4202: this icon plus the
 // 16-byte details portion, sharing the virtual base at +0x24) reaches the
