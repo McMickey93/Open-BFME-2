@@ -56,15 +56,15 @@ struct Smudge : public DLNodeClass<Smudge>
 
 struct SmudgeSet : public DLNodeClass<SmudgeSet>
 {
-public:
-	SmudgeSet(void);
-	virtual ~SmudgeSet();
-	void reset(void);
-
 private:
 	static DLListClass<Smudge> m_freeSmudgeList;
-	DLListClass<Smudge> m_usedSmudgeList;
-	Int m_usedSmudgeCount;
+public:
+	SmudgeSet(void);
+	void reset(void);
+	virtual ~SmudgeSet();
+private:
+	DLListClass<Smudge> m_usedSmudgeList; // +0x10
+	Int m_usedSmudgeCount; // +0x1C
 };
 
 // SmudgeSet::m_freeSmudgeList (donor static, defined by the engine binary at

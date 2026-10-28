@@ -106,14 +106,15 @@ inline void DLListClass<T>::Add_Head(DLNodeClass<T> *n)
 struct Smudge;
 struct SmudgeSet : public DLNodeClass<SmudgeSet>
 {
+private:
+	static DLListClass<Smudge> m_freeSmudgeList;
 public:
 	SmudgeSet(void);
-	virtual ~SmudgeSet();
 	void reset(void);
-
+	virtual ~SmudgeSet();
 private:
-	DLListClass<Smudge> m_usedSmudgeList;
-	Int m_usedSmudgeCount;
+	DLListClass<Smudge> m_usedSmudgeList; // +0x10
+	Int m_usedSmudgeCount; // +0x1C
 };
 // ??0SmudgeSet@@QAE@XZ
 //
