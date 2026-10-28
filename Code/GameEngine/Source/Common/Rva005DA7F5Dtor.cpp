@@ -8,7 +8,11 @@
 // EH state 0 (base subobject) around the extern "C" free, which cl only does
 // under /EHs (TU-scoped flag). Identity unproven; address-derived names.
 
-extern "C" void __cdecl free(void *);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // Base view as in V3PolyCopyCtors.cpp / Rva005DA64BCtor.cpp (two virtuals),
 // so this unit's ??_7Rva005DAA36@@6B@ copy is the one the link keeps.

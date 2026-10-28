@@ -7,7 +7,12 @@
 // vtable store plus lea ecx [esi+0x18] plus free branch; ctor sibling at
 // 0x0053FAB7 installs same vtable; deleting-dtor candidate at 0x0053FB75
 // calls here then operator delete.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 template <typename T>
 class StringBase

@@ -7,6 +7,13 @@
 // lea ecx [esi+0x2C] call releaseBuffer EH1, test/free +0x14 EH0,
 // then free +0x4; tail-called by 4 derived dtors in Rva004EDCE9Derived.cpp;
 // LINK BONUS 156B file waits for this name.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 
 class AITactic
@@ -14,8 +21,6 @@ class AITactic
 public:
 	void end(bool a, bool b);
 };
-
-extern "C" void __cdecl free(void *p);
 
 struct Rva004EDCE9Buf
 {

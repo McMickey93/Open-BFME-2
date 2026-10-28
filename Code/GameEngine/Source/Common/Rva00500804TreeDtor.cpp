@@ -11,7 +11,11 @@
 // caller found.
 // ??1Rva00500804Header@@QAE@XZ present-unmatched (inline base dtor emitted for EH unwind)
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva00500804Header
 {

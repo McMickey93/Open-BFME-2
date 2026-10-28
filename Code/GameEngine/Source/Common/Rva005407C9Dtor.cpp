@@ -3,7 +3,12 @@
 // Retail frees +0x10 then +0 via rowed _free with __EH_prolog frame.
 // Evidence: unlock lane; caller 0x0054080A lea ecx [esi+0x24] then base
 // ??1Rva0053FB33@@UAE@XZ; pattern copied from Rva0053FB33Dtor TU.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva005407C9Holder
 {

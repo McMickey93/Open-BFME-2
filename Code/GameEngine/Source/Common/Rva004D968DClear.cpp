@@ -4,7 +4,12 @@
 // via rowed _free 0x00030830, iterate via +0x8 sibling. Evidence: unlock lane,
 // self-call plus free plus loop shape, callers 0x004D969F 0x004D9A70,
 // unblocks 0x004D9A62.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva004D968DNode
 {

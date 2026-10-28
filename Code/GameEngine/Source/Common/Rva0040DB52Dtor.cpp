@@ -8,9 +8,15 @@
 // derived store, leaving an empty body.
 // Layout: two heap members at +0x14/+0x20 freed via inlined AsciiString-like
 // dtors (test plus free), other members trivial.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Common/Snapshot.h"
 
-extern "C" void __cdecl free(void *ptr);
 struct AsciiStringLike
 {
 	char *m_str;

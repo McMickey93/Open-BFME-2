@@ -8,9 +8,14 @@
 // ctor 0x000D3A71 for +8; true type is trivial tree Rva00072FE6 with no
 // payload dtor per 0x00072F7C which only frees nodes. Caller 0x004E3E91
 // builds temp via ctor then destroys via this body. /EHs for C-call states.
-#include "ascii_string.h"
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
+#include "ascii_string.h"
 
 class Rva00072FE6 {
 public:

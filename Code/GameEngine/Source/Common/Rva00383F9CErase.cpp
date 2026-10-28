@@ -2,7 +2,12 @@
 // ?rva00383F9C@Rva00383F9C@@QAEXPAURva00383F9CNode@@@Z 0x00383F9C 59B
 // Rb erase: rebalance-for-erase then destroy Rva value at +16 and free.
 // Evidence: calls 0x00025620 rebalance-erase plus 0x00382B3F dtor plus _free; caller 0x00384F07.
-extern "C" void __cdecl free(void* block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

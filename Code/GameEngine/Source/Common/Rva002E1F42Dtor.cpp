@@ -12,7 +12,11 @@ public:
 	virtual ~SubsystemInterface();
 };
 
-extern "C" void free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva002E1F42 : public SubsystemInterface
 {

@@ -1,6 +1,12 @@
 // cl: /MD
 // ?rva0046A9D2@Rva0046A9D2@@QAEXPAURva0046A9D2Node@@@Z 0x0046A9D2 45B evidence: unlock frees via rowed free 0x30830 plus self recursion caller 0x46AB8B in clear 0x46AB7D
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva0046A9D2Node
 {
 	char m_pad[8];

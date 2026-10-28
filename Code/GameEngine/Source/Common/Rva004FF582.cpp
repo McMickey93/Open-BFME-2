@@ -6,7 +6,12 @@ class Rva004FF2F4 {
 public:
 	~Rva004FF2F4();
 };
-extern "C" void free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva004FF582Node {
 	char m_00[8];

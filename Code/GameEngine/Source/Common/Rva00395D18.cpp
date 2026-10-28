@@ -1,6 +1,12 @@
 // cl: /DNDEBUG /MD /EHsc
 // ?rva00395D18@Rva00395D18@@QAEXPAX@Z RVA 0x00395D18 size 45 unlock recursive free via +C iterate via +8.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva00395D18Node
 {
 	int m_a;

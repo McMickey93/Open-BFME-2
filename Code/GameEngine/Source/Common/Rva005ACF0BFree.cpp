@@ -1,7 +1,12 @@
 // cl: /MD
 // ?rva005ACF0B@Rva005ACF0B@@QAEXPAURva005ACF0BNode@@@Z retail 0x005ACF0B 45B
 // Evidence: unlock lane; recursive child free via [esi+0xc] plus next-chain free via [esi+0x8] with game _free 0x00030830; ret 4 so thiscall with one stack param; caller 0x005AD093.
-extern "C" void __cdecl free(void *ptr);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva005ACF0BNode
 {

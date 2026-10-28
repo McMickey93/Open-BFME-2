@@ -3,7 +3,12 @@
 // Dtor twin of 0x004DFED8: vstore 0x008615D4, calls rowed clear 0x002827F3, frees vec buffers
 // at +0x10 and +0x4 via rowed free 0x00030830.
 // Evidence: same vtable and clear as Rva004DFED8Dtor; caller 0x00283246 deleting dtor; callees all rowed.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

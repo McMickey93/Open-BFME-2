@@ -6,7 +6,12 @@
 // member order). Uses /EHs like NarrowStringRecord0041A5D2Dtor (the /EHsc
 // sibling drops those states). Callers: deleting-dtor 0x0020E32A (28B,
 // test al+delete pattern) plus 0x00210895.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva003EF728Ptr
 {

@@ -4,7 +4,12 @@
 // at +0x10 and +0x4 via rowed free 0x00030830.
 // Evidence: deleting dtor 0x004E005E calls it; callers 0x004E0061 0x004E01AB;
 // callees all rowed; twin 0x00283081 shares vtable and clear.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

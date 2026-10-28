@@ -5,7 +5,12 @@
 // 0x001B4E74, with __EH_prolog frame 0x00629188. Same EH plus free shape as
 // Rva0053FB33Dtor (66B). Evidence: vtable store plus free branch plus base
 // call; caller at 0x00420A10; unblocks 0x00420A0D.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // Base ctor 0x001B4E63 / dtor 0x001B4E74 by their row names ??0/??1SubsystemInterface (SubsystemInterface.cpp).
 #include "../../../Libraries/Source/subsystem/SubsystemInterface.h"

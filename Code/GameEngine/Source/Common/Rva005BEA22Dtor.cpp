@@ -5,7 +5,11 @@
 // global-scope delete) and cleared; then the buffer member at +4 runs its
 // inline dtor, which frees its block with the CRT free. Names address-derived.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva005BEA22Owned
 {

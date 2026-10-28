@@ -8,7 +8,11 @@
 // Byte twin of Rva003F8728Dtor.cpp (vptr C37314), sharing its EH handler.
 // Names address-derived; functor view as in Rva0059E2DCBox.cpp.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class FileClass;
 

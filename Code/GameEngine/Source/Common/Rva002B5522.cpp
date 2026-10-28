@@ -3,7 +3,13 @@
 // Chain lane; calls rowed 0x002B438D recursive free; clears sentinel and count.
 // Evidence: calls 0x002B438D which this session landed; callers 0x002B602E 56B 0x002B964F 606B 0x002B5FF1 56B pass ecx with no pushes.
 // TU-local honest-address class; Node layout from Rva002B438D.cpp.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Node002B438D
 {
 	char m_pad[8];

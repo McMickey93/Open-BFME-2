@@ -2,7 +2,12 @@
 // ?rva003833BB@Rva003833BB@@QAEXPAURva003833BBNode@@@Z 0x003833BB 53B
 // Rb _M_erase: recurse-right via +12 walk-left via +8 destroy value at +16 via rowed CameraMarker dtor 0x29D7C2 and free 0x30830 ret 4.
 // Evidence: callees 0x29D7C2 plus 0x30830 both rowed; caller clear 0x383A28 pushes root at +4 and resets header; same 53B shape as landed erases 0x380EB1 and 0x4D1B38.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct CameraMarker
 {

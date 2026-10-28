@@ -13,7 +13,12 @@ public:
 };
 
 void Rva0032AF56Destroy(Rva00329D0E *first, Rva00329D0E *last);
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva0032C4D5
 {

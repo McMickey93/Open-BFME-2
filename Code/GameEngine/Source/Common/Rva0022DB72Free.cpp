@@ -6,7 +6,12 @@
 // lea ecx [esi+4] call-test-je free shape. Caller at 0x0022DD3A sets ecx
 // (thiscall) and pushes the node pointer; incoming this is unused.
 // Unblocks 0x0022DD19.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva0022D1DF
 {

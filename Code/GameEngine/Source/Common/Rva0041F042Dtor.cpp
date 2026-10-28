@@ -6,7 +6,12 @@
 // Retail's free (0x00030830) may throw, so this unit compiles /EHs and calls it
 // through its C name, as the first OwnedBucketStorage destructor in link order
 // (OwnedBucketTableDtorsO1.cpp) does.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva004DFC20
 {

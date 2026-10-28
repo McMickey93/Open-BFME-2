@@ -5,7 +5,11 @@
 // Evidence: chain from 0x005C8F17 landing callees 0x5C8F17 0x30830 0x5C8D2E
 // 0x50ED3 callers deleting dtor 0x005C80B8 and STL destroy_aux.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class OpaqueRefCounted
 {

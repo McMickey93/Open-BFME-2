@@ -1,6 +1,11 @@
 // cl: /EHs /MD
 // ??1Rva005016C3Dtor@@QAE@XZ @0x005016C3 135B: dtor destroying tree at +0x4c plus five null-checked frees; evidence rowed tree dtor 0x00500E05 rowed free 0x00030830 rowed EH_prolog 0x00629188 and jmp member 0x0050174A
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva00500804
 {

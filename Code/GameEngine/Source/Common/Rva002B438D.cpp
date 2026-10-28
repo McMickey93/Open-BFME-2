@@ -3,7 +3,13 @@
 // Unlock lane; sibling of 0x002B4360 identical recursive child (+0xC) plus next (+8) free.
 // Calls self and rowed free 0x00030830; unblocks 0x002B5522. ret 4.
 // TU-local honest-address class.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Node002B438D {
     char m_pad[8];
     Node002B438D *m_next8;

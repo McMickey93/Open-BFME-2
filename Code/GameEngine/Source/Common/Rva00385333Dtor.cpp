@@ -3,7 +3,12 @@
 // _free 0x00030830 when non-null then base ??1Rva003844D7 at +0 rowed in
 // Rva003844D7Dtor.cpp. Callers 0x3853AA 0x555FD3 unclaimed thiscall.
 // No vptr store so non-virtual QAE. Precedent Rva002E1F42Dtor.cpp.
-extern "C" void __cdecl free(void *p);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva003844D7
 {

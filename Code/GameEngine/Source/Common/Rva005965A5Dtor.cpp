@@ -7,7 +7,11 @@
 // follows from the folded erase (4-byte enum stride), not the ctor's view in
 // Rva005965A5Ctor.cpp. Names address-derived.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 enum ScienceType
 {

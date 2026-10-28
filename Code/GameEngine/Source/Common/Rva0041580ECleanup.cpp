@@ -5,8 +5,14 @@
 // Evidence: self-call at 0x00415820 with [esi+0xC], lea ecx [esi+0x10] call
 // rowed 0x004156FC, push esi call rowed _free 0x00030830, loop via [esi+8];
 // callers at 0x00415820 (self) 0x00415894; unblocks 0x00415886.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "../../../Libraries/Source/WWVegas/WWLib/string_base.h"
-extern "C" void __cdecl free(void *block);
 
 class Rva0041579E
 {

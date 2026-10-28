@@ -4,7 +4,13 @@
 // this then free the node via rowed _free 0x00030830 and advance to +0x8.
 // Same 45B shape as Rva00254D0BFree plus Rva001FD42BErase. Caller 0x0059BDC7.
 // Evidence: self-call plus unlock lane.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva0059BD58Node
 {
 	char m_pad[8];

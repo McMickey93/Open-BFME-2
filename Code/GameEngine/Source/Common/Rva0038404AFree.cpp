@@ -2,7 +2,12 @@
 // ?rva0038404A@Rva0038404A@@QAEXPAURva0038404ANode@@@Z 0x0038404A 53B
 // Tree free with member dtor at +16: recurse child, save next, destroy, free.
 // Evidence: self-call plus 0x00382B3F dtor plus _free; caller 0x00384E9C.
-extern "C" void __cdecl free(void* block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct BuddyInfo
 {

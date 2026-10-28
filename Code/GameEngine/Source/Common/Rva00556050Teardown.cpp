@@ -6,7 +6,11 @@
 // +0x10; children are torn down first, then the member is destroyed
 // explicitly and the node freed. Caller 0x005562DD.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Gen_uw_00385371
 {

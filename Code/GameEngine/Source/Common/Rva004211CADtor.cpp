@@ -6,7 +6,12 @@
 // Evidence: mov [esi] vtable, test+free +0x18, releaseBuffer +0x14 wide
 // +0x10 narrow, base call 0x001E3624, caller 0x00421229, neighbours
 // 0x004210B0 and 0x0042169B.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 template <typename T>
 class StringBase

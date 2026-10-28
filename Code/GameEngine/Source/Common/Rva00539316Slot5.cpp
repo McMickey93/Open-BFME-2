@@ -12,7 +12,11 @@ struct Vector3
 	float z;
 };
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva005393F3Listener
 {
