@@ -48781,7 +48781,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005A86C0,219,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/Common/NAT.cpp,Code/GameEngine/Source/Common/Rva005A8666Box.cpp
 0x005A879B,551,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,Z,Z=Code/GameEngine/Source/GameNetwork/NAT.cpp S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
 0x005A89C2,253,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,S,S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
-0x005A8ABF,1176,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,Z,Z=Code/GameEngine/Source/GameNetwork/NAT.cpp S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp W=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NATProcessGlobalMessage.cpp
+0x005A8ABF,1176,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,Z,Z=Code/GameEngine/Source/GameNetwork/NAT.cpp S=Code/GameEngine/Source/GameNetwork/NAT.cpp N=Code/GameEngine/Source/GameNetwork/NAT.cpp W=Code/GameEngine/Source/GameNetwork/NAT.cpp,Code/GameEngine/Source/GameNetwork/NAT.cpp
 0x005A8F57,418,code,,,-,,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
 0x005A90F9,21,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_e8_ptr_sort.cpp
 0x005A910E,23,code,,,-,,Code/GameEngine/Source/Common/System/Rva005A910EGet.cpp
@@ -87575,9 +87575,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0079E5E9,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A7EDC@FuncInfo0x00954A04,Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp
 0x0079E5F3,8,code,,,-,,Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp
 0x0079E5FB,10,code,,,-,,Code/GameEngine/Source/GameNetwork/NATSendNegotiationRequests.cpp
-0x0079E605,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A8ABF@FuncInfo0x00954A54,Code/GameEngine/Source/GameNetwork/NATProcessGlobalMessage.cpp
-0x0079E60D,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A8ABF@FuncInfo0x00954A54,Code/GameEngine/Source/GameNetwork/NATProcessGlobalMessage.cpp
-0x0079E615,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A8ABF@FuncInfo0x00954A54,Code/GameEngine/Source/GameNetwork/NATProcessGlobalMessage.cpp
+0x0079E605,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A8ABF@FuncInfo0x00954A54,Code/GameEngine/Source/GameNetwork/NAT.cpp
+0x0079E60D,8,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A8ABF@FuncInfo0x00954A54,Code/GameEngine/Source/GameNetwork/NAT.cpp
+0x0079E615,10,code,Code/GameEngine/Source/GameNetwork/NAT.cpp,approved,P,P=0x005A8ABF@FuncInfo0x00954A54,Code/GameEngine/Source/GameNetwork/NAT.cpp
 0x0079E61F,8,code,,,-,,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
 0x0079E627,10,code,,,-,,Code/GameEngine/Source/GameNetwork/NATUpdateBfme.cpp
 0x0079E631,8,code,Code/GameEngine/Source/Common/AIBasePenetrationTroopsTactic.cpp,approved,P,P=0x005A9988@FuncInfo0x00954AAC provisional,Code/GameEngine/Source/Common/Rva004ECECDTacticCtors.cpp
