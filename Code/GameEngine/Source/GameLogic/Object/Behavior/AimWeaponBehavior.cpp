@@ -57,6 +57,17 @@ public:
 	unsigned char m_minimum;
 };
 
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+enum UpdateSleepTime
+{
+	UPDATE_SLEEP_NONE = 1,
+	UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
+};
+
 class ObjectModule
 {
 public:
@@ -69,7 +80,7 @@ protected:
 
 class BehaviorModuleInterface { public: virtual void behaviorSlot(); };
 
-class UpdateModuleInterface { public: virtual void updateSlot(); };
+class UpdateModuleInterface { public: virtual UpdateSleepTime update(); };
 
 class UpdateModule : public ObjectModule,
 	public BehaviorModuleInterface, public UpdateModuleInterface
@@ -78,6 +89,9 @@ public:
 	UpdateModule(Thing *thing, const ModuleData *data);
 	virtual ~UpdateModule();
 	void xfer(Xfer *xfer);
+
+protected:
+	void setWakeFrame(Object *obj, UpdateSleepTime frame);
 
 private:
 	unsigned int m_nextCallFrameAndPhase;
@@ -104,11 +118,6 @@ private:
 // static-guard EH prologue; globals are TU-local externs (DIR32 slots patch
 // from retail, no pins; nameToKey resolves via its matched row).
 
-enum NameKeyType
-{
-	NK_UNKNOWN = 0
-};
-
 class NameKeyGenerator
 {
 public:
@@ -116,12 +125,6 @@ public:
 };
 
 extern NameKeyGenerator *TheNameKeyGenerator;
-
-class AimWeaponBehavior
-{
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
 
 class AimWeaponBehaviorModuleData
 {
@@ -131,10 +134,30 @@ public:
 private:
 	const void *m_vtable; // +0
 	unsigned int m_unused04; // +4 (retail never stores it)
+
+public:
 	float m_aimLowThreshold; // +8
 	float m_aimHighThreshold; // +0xC
 	float m_aimNearDistance; // +0x10
 	float m_aimFarDistance; // +0x14
+};
+
+class AimWeaponBehavior : public UpdateModule
+{
+public:
+	AimWeaponBehavior(Thing *thing, const ModuleData *moduleData);
+	virtual ~AimWeaponBehavior();
+	virtual NameKeyType getModuleNameKey() const;
+	virtual UpdateSleepTime update();
+
+private:
+	const Object *getObject() const { return m_object; }
+	const AimWeaponBehaviorModuleData *getAimWeaponBehaviorModuleData() const
+	{
+		return (const AimWeaponBehaviorModuleData *)m_moduleData;
+	}
+
+	bool m_isAiming; // +0x20
 };
 
 // tu-skeleton: 0x0045B134 25B ??1AimWeaponBehavior@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/AimWeaponBehaviorCtor.cpp (not merged yet)

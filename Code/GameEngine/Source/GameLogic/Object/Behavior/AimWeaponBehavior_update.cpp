@@ -18,7 +18,6 @@
 // cl: /O1 /G7 /arch:SSE /DNDEBUG /MD /I. /ICode/Libraries/Include
 #include <math.h>
 #include "Lib/Coord3D.h"
-enum UpdateSleepTime {UPDATE_SLEEP_NONE=1,UPDATE_SLEEP_FOREVER=0x3fffffff};
 enum WeaponSlotType {PRIMARY_WEAPON=0};
 class Drawable {public:void rva00274176(bool);};
 class Thing {public:Drawable*getDrawable()const;};
@@ -148,11 +147,85 @@ class Object {public:
  char pad158[0x258-0x158];AimAIView*ai;
  char pad25c[0x38c-0x25c];Coord3D aim;
 };
-class AimWeaponBehaviorModuleData {public:char pad[8];float low,high,nearRange,farRange;};
-class Module {public:virtual void anchor();AimWeaponBehaviorModuleData*data;Object*object;};
-class BehaviorInterface {public:virtual void other();};
-class UpdateInterface {public:virtual UpdateSleepTime update();};
-class AimWeaponBehavior:public Module,public BehaviorInterface,public UpdateInterface {public:unsigned frame;int index,reserved;bool aiming;virtual UpdateSleepTime update();};
+class ModuleData;
+class Xfer;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+enum UpdateSleepTime
+{
+	UPDATE_SLEEP_NONE = 1,
+	UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
+};
+
+class ObjectModule
+{
+public:
+	ObjectModule(Thing *, const ModuleData *);
+	virtual ~ObjectModule();
+protected:
+	const ModuleData *m_moduleData;
+	Object *m_object;
+};
+
+class BehaviorModuleInterface { public: virtual void behaviorSlot(); };
+
+class UpdateModuleInterface { public: virtual UpdateSleepTime update(); };
+
+class UpdateModule : public ObjectModule,
+	public BehaviorModuleInterface, public UpdateModuleInterface
+{
+public:
+	UpdateModule(Thing *thing, const ModuleData *data);
+	virtual ~UpdateModule();
+	void xfer(Xfer *xfer);
+
+protected:
+	void setWakeFrame(Object *obj, UpdateSleepTime frame);
+
+private:
+	unsigned int m_nextCallFrameAndPhase;
+	int m_indexInLogic;
+	int m_updateState;
+};
+
+class AimWeaponBehaviorModuleData
+{
+public:
+	AimWeaponBehaviorModuleData();
+
+private:
+	const void *m_vtable; // +0
+	unsigned int m_unused04; // +4 (retail never stores it)
+
+public:
+	float m_aimLowThreshold; // +8
+	float m_aimHighThreshold; // +0xC
+	float m_aimNearDistance; // +0x10
+	float m_aimFarDistance; // +0x14
+};
+
+class AimWeaponBehavior : public UpdateModule
+{
+public:
+	AimWeaponBehavior(Thing *thing, const ModuleData *moduleData);
+	virtual ~AimWeaponBehavior();
+	virtual NameKeyType getModuleNameKey() const;
+	virtual UpdateSleepTime update();
+
+private:
+	const Object *getObject() const { return m_object; }
+	const AimWeaponBehaviorModuleData *getAimWeaponBehaviorModuleData() const
+	{
+		return (const AimWeaponBehaviorModuleData *)m_moduleData;
+	}
+
+	bool m_isAiming; // +0x20
+};
+
 __forceinline const int *aimFlagWords(const Rva0028F59A &v){return v.words;}
 struct AimDelta {
  float x,y,z;
@@ -161,7 +234,7 @@ struct AimDelta {
  __forceinline double lengthSqr2D()const{return y*y+x*x;}
 };
 UpdateSleepTime AimWeaponBehavior::update(){
- Object*o=object;
+ Object*o=m_object;
  AimAIView*ai=o->ai;
  Drawable*draw=((const Thing*)o)->getDrawable();
  Weapon*weapon=o->getCurrentWeapon(0);
@@ -174,17 +247,17 @@ UpdateSleepTime AimWeaponBehavior::update(){
   float ten=10.0f;
   float*chosen=10.0f>len?&ten:&len;
   float denom=*chosen;
-  const AimWeaponBehaviorModuleData*md=data;
+  const AimWeaponBehaviorModuleData*md=getAimWeaponBehaviorModuleData();
   float pitch=delta.z/denom;
-  if(pitch>md->high){aiming=true;if(!(o->model.test(0x40000))){o->model.set(0x40000);o->rva0028AE6D();}}
-  else if(pitch<md->low){aiming=true;if(!(o->model.test(0x100000))){o->model.set(0x100000);o->rva0028AE6D();}}
-  else {aiming=true;if(!(o->model.test(0x80000))){o->model.set(0x80000);o->rva0028AE6D();}}
-  if(denom<(*(volatile float*)&md->nearRange)){aiming=true;o->rva0028CFB2(static_cast<const Rva0028F59A&>(Rva0028F59A(0,182)).words,static_cast<const Rva0028F59A&>(Rva0028F59A(0,181)).words);}
-  else if(denom>md->farRange){aiming=true;o->rva0028CFB2(static_cast<const Rva0028F59A&>(Rva0028F59A(0,181)).words,static_cast<const Rva0028F59A&>(Rva0028F59A(0,182)).words);}
+  if(pitch>md->m_aimHighThreshold){m_isAiming=true;if(!(o->model.test(0x40000))){o->model.set(0x40000);o->rva0028AE6D();}}
+  else if(pitch<md->m_aimLowThreshold){m_isAiming=true;if(!(o->model.test(0x100000))){o->model.set(0x100000);o->rva0028AE6D();}}
+  else {m_isAiming=true;if(!(o->model.test(0x80000))){o->model.set(0x80000);o->rva0028AE6D();}}
+  if(denom<(*(volatile float*)&md->m_aimNearDistance)){m_isAiming=true;o->rva0028CFB2(static_cast<const Rva0028F59A&>(Rva0028F59A(0,182)).words,static_cast<const Rva0028F59A&>(Rva0028F59A(0,181)).words);}
+  else if(denom>md->m_aimFarDistance){m_isAiming=true;o->rva0028CFB2(static_cast<const Rva0028F59A&>(Rva0028F59A(0,181)).words,static_cast<const Rva0028F59A&>(Rva0028F59A(0,182)).words);}
   changed=true;
  }
- if(aiming && !active){
-  aiming=false;
+ if(m_isAiming && !active){
+  m_isAiming=false;
   Rva000B6253 flags;
   ((Rva001E42F2*)o)->rva001E42F2(flags.rva000B6253(0,181,182,180,179,178)->words);
   changed=true;

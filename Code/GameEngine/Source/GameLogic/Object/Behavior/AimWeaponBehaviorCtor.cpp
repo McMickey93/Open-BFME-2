@@ -16,31 +16,11 @@
 class Thing;
 class ModuleData;
 class Object;
+class Xfer;
 
-class BehaviorModuleBase
+enum NameKeyType
 {
-public:
-	virtual void behaviorModuleBaseAnchor();
-	const ModuleData *m_moduleData;
-	Object *m_object;
-};
-
-class BehaviorModuleOther
-{
-public:
-	virtual void behaviorModuleOtherAnchor();
-};
-
-class BehaviorModule : public BehaviorModuleBase, public BehaviorModuleOther
-{
-public:
-	BehaviorModule(Thing *thing, const ModuleData *moduleData);
-};
-
-class UpdateModuleInterface
-{
-public:
-	virtual void update();
+	NK_UNKNOWN = 0
 };
 
 enum UpdateSleepTime
@@ -49,17 +29,51 @@ enum UpdateSleepTime
 	UPDATE_SLEEP_FOREVER = 0x3FFFFFFF
 };
 
-class UpdateModule : public BehaviorModule, public UpdateModuleInterface
+class ObjectModule
 {
 public:
-	UpdateModule(Thing *thing, const ModuleData *moduleData);
+	ObjectModule(Thing *, const ModuleData *);
+	virtual ~ObjectModule();
+protected:
+	const ModuleData *m_moduleData;
+	Object *m_object;
+};
+
+class BehaviorModuleInterface { public: virtual void behaviorSlot(); };
+
+class UpdateModuleInterface { public: virtual UpdateSleepTime update(); };
+
+class UpdateModule : public ObjectModule,
+	public BehaviorModuleInterface, public UpdateModuleInterface
+{
+public:
+	UpdateModule(Thing *thing, const ModuleData *data);
 	virtual ~UpdateModule();
+	void xfer(Xfer *xfer);
+
 protected:
 	void setWakeFrame(Object *obj, UpdateSleepTime frame);
+
 private:
-	unsigned m_nextCallFrameAndPhase;
+	unsigned int m_nextCallFrameAndPhase;
 	int m_indexInLogic;
-	int m_bfmeReserved;
+	int m_updateState;
+};
+
+class AimWeaponBehaviorModuleData
+{
+public:
+	AimWeaponBehaviorModuleData();
+
+private:
+	const void *m_vtable; // +0
+	unsigned int m_unused04; // +4 (retail never stores it)
+
+public:
+	float m_aimLowThreshold; // +8
+	float m_aimHighThreshold; // +0xC
+	float m_aimNearDistance; // +0x10
+	float m_aimFarDistance; // +0x14
 };
 
 class AimWeaponBehavior : public UpdateModule
@@ -67,16 +81,24 @@ class AimWeaponBehavior : public UpdateModule
 public:
 	AimWeaponBehavior(Thing *thing, const ModuleData *moduleData);
 	virtual ~AimWeaponBehavior();
+	virtual NameKeyType getModuleNameKey() const;
+	virtual UpdateSleepTime update();
+
 private:
 	const Object *getObject() const { return m_object; }
-	bool m_bfme20;
+	const AimWeaponBehaviorModuleData *getAimWeaponBehaviorModuleData() const
+	{
+		return (const AimWeaponBehaviorModuleData *)m_moduleData;
+	}
+
+	bool m_isAiming; // +0x20
 };
 
 // ??0AimWeaponBehavior@@QAE@PAVThing@@PBVModuleData@@@Z @0x0045B226
 AimWeaponBehavior::AimWeaponBehavior(Thing *thing, const ModuleData *moduleData) :
 	UpdateModule(thing, moduleData)
 {
-	m_bfme20 = false;
+	m_isAiming = false;
 	setWakeFrame(const_cast<Object*>(getObject()), UPDATE_SLEEP_NONE);
 }
 
