@@ -7,7 +7,20 @@
 // shouldFireWeapon plus ZH FireWeaponCollide.h. Follow retail order
 // forbidden then required.
 class Thing;
+
 class ModuleData;
+
+class WeaponTemplate;
+
+// The class views are FireWeaponCollide.cpp's, so this body merges into it.
+class Weapon
+{
+public:
+	virtual void *deleteInstance(int flags);
+
+	unsigned char m_pad04[4];
+	unsigned int m_status; // +0x08
+};
 
 class BfmeObject872Header
 {
@@ -23,68 +36,70 @@ public:
 	int m_vals[4];
 };
 
-class Weapon
+class Object
 {
 public:
-	virtual void *deleteInstance(int flags);
+	unsigned char m_pad[0x74];
+	int m_weaponStatus; // +0x74
+	unsigned char m_pad78[0x1C];
+	BfmeObject872Header m_status; // +0x94
+};
+
+class Xfer;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
 };
 
 class ObjectModule
 {
 public:
 	virtual ~ObjectModule();
+
 protected:
 	const ModuleData *m_moduleData;
-	void *m_object;
+	Object *m_object;
 };
 
 class BehaviorModuleInterface
 {
 public:
-	virtual void behaviorSlot();
+	virtual void *behaviorSlot() { return 0; }
 };
 
 class BehaviorModule : public ObjectModule, public BehaviorModuleInterface
 {
 public:
+	BehaviorModule(Thing *thing, const ModuleData *moduleData);
 	virtual ~BehaviorModule() {}
+
+protected:
+	virtual void loadPostProcess();				// slot 1
+	virtual const char *GetSnapshotName() const;		// slot 2
 };
 
 class CollideModuleInterface
 {
 public:
-	virtual void collideSlot();
+	virtual void *collideSlot() { return 0; }
 };
 
 class CollideModule : public BehaviorModule, public CollideModuleInterface
 {
 public:
+	CollideModule(Thing *thing, const ModuleData *moduleData);
 	virtual ~CollideModule();
 };
-
-namespace _STL
-{
-template <unsigned _Bits>
-class bitset
-{
-public:
-	unsigned long m_words[(_Bits + 31) / 32];
-};
-}
 
 class FireWeaponCollideModuleData
 {
 public:
-	char m_pad[0x0C];
-	Rva00331682Holder m_required;
-	Rva00331682Holder m_forbidden;
-	bool m_fireOnce;
-};
-
-struct ObjectStatusArea
-{
-	char m_pad[0x94];
-	BfmeObject872Header m_status;
+	unsigned char m_pad[8];
+	const WeaponTemplate *m_collideWeaponTemplate; // +0x08
+	Rva00331682Holder m_required; // +0x0C
+	Rva00331682Holder m_forbidden; // +0x1C
+	bool m_fireOnce; // +0x2C
 };
 
 class FireWeaponCollide : public CollideModule
@@ -92,18 +107,30 @@ class FireWeaponCollide : public CollideModule
 public:
 	FireWeaponCollide(Thing *thing, const ModuleData *moduleData);
 	virtual ~FireWeaponCollide();
+
 protected:
-	virtual bool shouldFireWeapon();
+	virtual void xfer(Xfer *xfer);				// slot 3
+
+public:
+	virtual NameKeyType getModuleNameKey() const;		// slot 4
+
+protected:
+	virtual bool shouldFireWeapon();			// retail slot 12
+
 private:
-	Weapon *m_collideWeapon;
-	bool m_everFired;
+	const FireWeaponCollideModuleData *getFireWeaponCollideModuleData() const
+	{
+		return reinterpret_cast<const FireWeaponCollideModuleData *>(m_moduleData);
+	}
+
+	Weapon *m_collideWeapon; // +0x14
+	bool m_everFired; // +0x18
 };
 
 bool FireWeaponCollide::shouldFireWeapon()
 {
-	const FireWeaponCollideModuleData *data = (const FireWeaponCollideModuleData *)m_moduleData;
-	ObjectStatusArea *obj = (ObjectStatusArea *)m_object;
-	BfmeObject872Header tmp(obj->m_status);
+	const FireWeaponCollideModuleData *data = getFireWeaponCollideModuleData();
+	BfmeObject872Header tmp(m_object->m_status);
 	if (data->m_forbidden.test(&tmp))
 		return false;
 	for (unsigned i = 0; i < 4; ++i)

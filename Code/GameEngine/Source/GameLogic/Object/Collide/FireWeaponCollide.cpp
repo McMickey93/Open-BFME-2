@@ -46,10 +46,12 @@ public:
 // shared these exact flags. One class view carries the offsets each body was
 // verified against: module data +0x04, object +0x08, collide weapon +0x14,
 // ever-fired +0x18; module data template +0x08; object weapon status +0x74;
-// weapon deleteInstance slot 0, status +0x08.
-// shouldFireWeapon stays split: it is primary slot 12 of retail's vftable,
-// and slots 5-11 hold folded bodies no ledger row names as members here.
+// weapon deleteInstance slot 0, status +0x08; module data required and
+// forbidden status masks +0x0C/+0x1C, fire-once +0x2C; object status +0x94.
 // xfer and getModuleNameKey are declared in their retail slots (3 and 4).
+// shouldFireWeapon is retail's primary slot 12, but slots 5-11 hold folded
+// bodies no ledger row names as members here, so the view declares it next;
+// onCollide, which calls it through slot 12, stays split.
 
 class Thing;
 
@@ -79,11 +81,29 @@ public:
 
 extern WeaponStore *TheWeaponStore;
 
+// Status mask copy and overlap test over Object's status bits (rowed
+// 0x002CF108 and 0x00331682).
+class BfmeObject872Header
+{
+public:
+	BfmeObject872Header(const BfmeObject872Header &other);
+	int m_vals[4];
+};
+
+class Rva00331682Holder
+{
+public:
+	bool test(const void *other) const;
+	int m_vals[4];
+};
+
 class Object
 {
 public:
 	unsigned char m_pad[0x74];
 	int m_weaponStatus; // +0x74
+	unsigned char m_pad78[0x1C];
+	BfmeObject872Header m_status; // +0x94
 };
 
 class Xfer;
@@ -122,6 +142,7 @@ public:
 class BehaviorModule : public ObjectModule, public BehaviorModuleInterface
 {
 public:
+	BehaviorModule(Thing *thing, const ModuleData *moduleData);
 	virtual ~BehaviorModule() {}
 
 protected:
@@ -147,6 +168,9 @@ class FireWeaponCollideModuleData
 public:
 	unsigned char m_pad[8];
 	const WeaponTemplate *m_collideWeaponTemplate; // +0x08
+	Rva00331682Holder m_required; // +0x0C
+	Rva00331682Holder m_forbidden; // +0x1C
+	bool m_fireOnce; // +0x2C
 };
 
 class FireWeaponCollide : public CollideModule
@@ -160,6 +184,9 @@ protected:
 
 public:
 	virtual NameKeyType getModuleNameKey() const;		// slot 4
+
+protected:
+	virtual bool shouldFireWeapon();			// retail slot 12
 
 private:
 	const FireWeaponCollideModuleData *getFireWeaponCollideModuleData() const

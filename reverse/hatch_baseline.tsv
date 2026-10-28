@@ -3134,7 +3134,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyConstruct
 alternatename	Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyConstructor.cpp	?slot3@ActiveBody@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Body/ImmortalBodyConstructor.cpp	?slot4@ActiveBody@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Body/PorcupineFormationBodyModuleSlots.cpp	?Rva004C20D5IsWithin@PorcupineFormationBodyModule@@QAE_NMPBUCoord3D@@0@Z	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Collide/CollideModuleCtor.cpp	?getCollide@CollideModule@@UAEPAVCollideModuleInterface@@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Collide/CrateCollide/SalvageCrateCollideModuleDataDtor.cpp	??1CrateCollideModuleData@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp	?f0C@Iface0C@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp	?f2C@Iface2C@@UAEXXZ	1

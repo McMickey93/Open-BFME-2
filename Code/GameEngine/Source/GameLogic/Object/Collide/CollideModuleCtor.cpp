@@ -1,4 +1,4 @@
-// cl: /O1 /DNDEBUG /MD
+// cl: /DNDEBUG /MD /GX
 //
 // ??0CollideModule@@QAE@PAVThing@@PBVModuleData@@@Z, retail 0x004BB702,
 // 49 bytes. CollideModule intermediate base ctor: five raw callers are
@@ -9,45 +9,47 @@
 // CollideModuleInterface with an inline ctor). BFME2 outlines it: the rowed
 // BehaviorModule ctor runs first, the inline CollideModuleInterface ctor
 // stores its vtable at +0x10, then the derived installs its three vtables at
-// +0/+0xC/+0x10. Zero new pins (all callees rowed; vtable immediates are
-// DIR32-masked). Row supersedes the pin at the same address.
+// +0/+0xC/+0x10 (retail 0x00C5A130, 0x00C5A040, 0x00C5A00C; the primary's
+// slot 2 is CollideModule's snapshot-name getter Rva004BB733Get). The class
+// views are FireWeaponCollide.cpp's, so this body merges into it.
 
 class Thing;
-class ModuleData;
-class Object;
-class Coord3D;
 
-class BehaviorModuleBase
+class ModuleData;
+
+class Object;
+
+class ObjectModule
 {
 public:
-	virtual void behaviorModuleBaseAnchor();
+	virtual ~ObjectModule();
+
+protected:
 	const ModuleData *m_moduleData;
 	Object *m_object;
 };
 
-class BehaviorModuleOther
+class BehaviorModuleInterface
 {
 public:
-	virtual void behaviorModuleOtherAnchor();
+	virtual void *behaviorSlot() { return 0; }
 };
 
-class BehaviorModule : public BehaviorModuleBase, public BehaviorModuleOther
+class BehaviorModule : public ObjectModule, public BehaviorModuleInterface
 {
 public:
 	BehaviorModule(Thing *thing, const ModuleData *moduleData);
+	virtual ~BehaviorModule() {}
+
+protected:
+	virtual void loadPostProcess();				// slot 1
+	virtual const char *GetSnapshotName() const;		// slot 2
 };
 
 class CollideModuleInterface
 {
 public:
-	CollideModuleInterface() {}
-	virtual void onCollide(Object *other, const Coord3D *loc, const Coord3D *normal) = 0;
-	virtual bool wouldLikeToCollideWith(const Object *other) const = 0;
-	virtual bool isHijackedVehicleCrateCollide() const = 0;
-	virtual bool isSabotageBuildingCrateCollide() const = 0;
-	virtual bool isCarBombCrateCollide() const = 0;
-	virtual bool isRailroad() const = 0;
-	virtual bool isSalvageCrateCollide() const = 0;
+	virtual void *collideSlot() { return 0; }
 };
 
 class CollideModule : public BehaviorModule, public CollideModuleInterface
@@ -55,7 +57,6 @@ class CollideModule : public BehaviorModule, public CollideModuleInterface
 public:
 	CollideModule(Thing *thing, const ModuleData *moduleData);
 	virtual ~CollideModule();
-	virtual CollideModuleInterface *getCollide();
 };
 
 // ??0CollideModule@@QAE@PAVThing@@PBVModuleData@@@Z @0x004BB702
@@ -63,9 +64,3 @@ CollideModule::CollideModule(Thing *thing, const ModuleData *moduleData) :
 	BehaviorModule(thing, moduleData)
 {
 }
-
-
-// Placeholder virtuals in this unit's vftables: in retail, every vftable that holds
-// each one has the same function in that slot (vftable addresses from matched vptr
-// stores). Bind them to the rows at those functions.
-#pragma comment(linker, "/alternatename:?getCollide@CollideModule@@UAEPAVCollideModuleInterface@@XZ=?Rva004BB733Get@@YAHXZ")
