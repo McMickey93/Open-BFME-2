@@ -20,13 +20,16 @@ max<unsigned int>(const unsigned int &a, const unsigned int &b)
 struct FxVertexElement {unsigned short stream,offset;unsigned char type,method,usage,index;};
 
 namespace _STL {
-// Keep STLport's copy loop inline without a competing external copy.
+// Keep STLport's copy loop inline without a competing external copy. Placement
+// new, not _Construct (which the import-inline body calls out of line), so the
+// emitted vector<ICoord2D>::_M_insert_overflow is retail's 259-byte body
+// (0x00181770, MapUtil.cpp's copy).
 template <> __declspec(dllimport) __forceinline ICoord2D *
 __uninitialized_copy<ICoord2D *, ICoord2D *>(ICoord2D *first, ICoord2D *last, ICoord2D *result, const __false_type &)
 {
  ICoord2D *cur = result;
  for (; first != last; ++first, ++cur)
-  _Construct(&*cur, *first);
+  new (cur) ICoord2D(*first);
  return cur;
 }
 typedef vector<ICoord2D> FxVertexElements;
