@@ -56,12 +56,6 @@ class ToppleBits {public:unsigned words[19];
  __forceinline void set(int bit){words[bit>>5]|=1U<<(bit&31);}
 };
 
-class Object:public Thing {public:
- void kill(DamageType,DeathType);void rva0028AE6D();
- char pad00[0x38];Coord3D position;float angle;char pad48[0x2C];unsigned id;char pad78[0x94];ToppleBits conditions;char pad158[0x2E0];unsigned char status438;
- __forceinline void setCondition0(){if(!conditions.mask(0)){conditions.set(0);rva0028AE6D();}}
-};
-
 class ScriptEngine {public:void rva00357340(void *,Coord3D *);};
 
 extern ScriptEngine *TheScriptEngine;
@@ -102,7 +96,65 @@ class GeometryInfo {public:float getMaxHeightAbovePosition()const;};
 
 void Rva004A82BAAttemptDamage(Object *);
 
+// ?Rva004A82BAAttemptDamage@@YAXPAVObject@@@Z @0x004A82BA 59B
+// Free function: build DamageInfo (0x7C) on stack via rowed Rva00263895Member ctor,
+// set fields +8=0 +0x10=8 +0x1C=6 +0x20=float from g_00C53840, call Object::attemptDamage.
+// Evidence: leaf lane; callees rowed 0x00263895 ctor and pinned 0x0029848E attemptDamage;
+// callers in 0x004A86E7 region; DamageInfo 0x7C view per Rva00263895Init.cpp;
+// and [m],0 zero idiom needs /O1; movss needs /arch:SSE.
+float g_00C53840 = 999999.0f;
+
+  // retail 0x00853840
+
+class DamageInfo;
+
+class Object:public Thing {
+public:
+	void kill(DamageType,DeathType);
+public:
+	void rva0028AE6D();
+public:
+	char pad00[0x38];
+public:
+	Coord3D position;
+public:
+	float angle;
+public:
+	char pad48[0x2C];
+public:
+	unsigned id;
+public:
+	char pad78[0x94];
+public:
+	ToppleBits conditions;
+public:
+	char pad158[0x2E0];
+public:
+	unsigned char status438;
+public:
+	__forceinline void setCondition0(){if(!conditions.mask(0)){conditions.set(0);rva0028AE6D();}}
+public:
+	void attemptDamage(DamageInfo *info);
+};
+
+class Rva00263895Member
+{
+public:
+	Rva00263895Member();
+
+	char m_00[8];
+	int m_08;
+	char m_0C[4];
+	int m_10;
+	char m_14[8];
+	int m_1C;
+	float m_20;
+	char m_24[0x58];
+};
+
 // tu-skeleton: 0x004A8125 9B ?isAbleToBeToppled@ToppleUpdate@@QBE_NXZ -- matched in Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdatePoolKey.cpp
 
@@ -113,20 +165,6 @@ NameKeyType ToppleUpdate::getModuleNameKey() const
 		TheNameKeyGenerator->nameToKey("ToppleUpdate");
 	return TheToppleUpdatePoolKey;
 }
-
-// tu-skeleton: 0x004A8173 125B ??0ToppleUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateModuleDataCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004A81F0 17B ?buildFieldParse@ToppleUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
-
-// tu-skeleton: 0x004A8201 157B ??0ToppleUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004A829E 28B ??_GRva004A8091@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
-
-// tu-skeleton: 0x004A82BA 59B ?Rva004A82BAAttemptDamage@@YAXPAVObject@@@Z -- matched in Code/GameEngine/Source/Common/Rva004A82BADamage.cpp (not merged yet)
-
-// tu-skeleton: 0x004A82F5 150B ?rva004A82F5@Rva004A82F5@@QAEXPAVObject@@HH@Z -- matched in Code/GameEngine/Source/Common/Rva004A82F5Topple.cpp (not merged yet)
-
-// tu-skeleton: 0x004A83A7 48B ??1ToppleUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateModuleDataDtor.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdate.cpp
 
@@ -287,6 +325,30 @@ UpdateSleepTime ToppleUpdate::update()
 
 	return UPDATE_SLEEP_NONE;
 }
+
+// tu-skeleton: 0x004A8173 125B ??0ToppleUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateModuleDataCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004A81F0 17B ?buildFieldParse@ToppleUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
+
+// tu-skeleton: 0x004A8201 157B ??0ToppleUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x004A829E 28B ??_GRva004A8091@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Rva004A82BADamage.cpp
+
+void __cdecl Rva004A82BAAttemptDamage(Object *obj)
+{
+	Rva00263895Member info;
+	info.m_08 = 0;
+	info.m_10 = 8;
+	info.m_1C = 6;
+	info.m_20 = g_00C53840;
+	obj->attemptDamage((DamageInfo *)&info);
+}
+
+// tu-skeleton: 0x004A82F5 150B ?rva004A82F5@Rva004A82F5@@QAEXPAVObject@@HH@Z -- matched in Code/GameEngine/Source/Common/Rva004A82F5Topple.cpp (not merged yet)
+
+// tu-skeleton: 0x004A83A7 48B ??1ToppleUpdateModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ToppleUpdateModuleDataDtor.cpp (not merged yet)
 
 // tu-skeleton: 0x004A86E7 168B ?xfer@Rva004A8091@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/Rva004A8091Xfer.cpp (not merged yet)
 
