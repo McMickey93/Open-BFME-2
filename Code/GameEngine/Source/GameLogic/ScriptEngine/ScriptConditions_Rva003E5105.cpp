@@ -32,8 +32,9 @@ public:
 class AI
 {
 public:
-	char m_pad[0x10];
-	Pathfinder *m_10;
+	Pathfinder *pathfinder() { return m_10; }
+	char m_pad[0x10]; // +0x00
+	Pathfinder *m_10; // +0x10
 };
 extern AI *TheAI;
 

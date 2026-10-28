@@ -50,8 +50,9 @@ public:
 // The 224-bit KindOf mask; the (unused, bit) constructor is 0x00045411.
 struct Rva00045411BitSet
 {
-	unsigned m_bits[7];
-	Rva00045411BitSet(int unused, int bit) throw();	// 0x00045411
+public:
+	Rva00045411BitSet(int unused, int bit) throw(); // 0x00045411
+	unsigned m_bits[7]; // +0x00
 };
 
 class BfmeFixedStorage0004543D
@@ -69,8 +70,8 @@ class Rva0004584D : public Rva000421C8
 public:
 	Rva0004584D(const BfmeFixedStorage0004543D &a, const BfmeFixedStorage0004543D &b) throw();
 	virtual bool allow(Object *obj);
-	BfmeFixedStorage0004543D m_08;
-	BfmeFixedStorage0004543D m_24;
+	BfmeFixedStorage0004543D m_08; // +0x08
+	BfmeFixedStorage0004543D m_24; // +0x24
 };
 template <int N> class BitFlags;
 extern BitFlags<116> KINDOFMASK_NONE;
@@ -109,8 +110,8 @@ class Module
 {
 public:
 	virtual void moduleSlot();
-	char m_pad04[0x88 - 0x04];
-	unsigned m_boxesStored;	// +0x88
+	char m_pad04[0x84];
+	unsigned m_boxesStored; // +0x88 +0x88
 };
 
 class Object

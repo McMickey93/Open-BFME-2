@@ -83,7 +83,7 @@ public:
 class Rva00261C89
 {
 public:
-	Bool rva00261C89();			// 0x00261C89
+	Bool rva00261C89(); // 0x00261C89
 };
 
 class Object
@@ -140,7 +140,8 @@ class SpecialPowerTemplate;
 class SpecialPowerStore
 {
 public:
-	const SpecialPowerTemplate *findSpecialPowerTemplate(AsciiString name);	// 0x0029B6EB
+	const SpecialPowerTemplate *findSpecialPowerTemplate(AsciiString name); // 0x0029B6EB
+	Bool canUseSpecialPower(Object *obj, const SpecialPowerTemplate *power);
 };
 
 extern SpecialPowerStore *TheSpecialPowerStore;

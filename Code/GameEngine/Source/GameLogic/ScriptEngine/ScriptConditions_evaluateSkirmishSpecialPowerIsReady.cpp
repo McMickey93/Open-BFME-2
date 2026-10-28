@@ -52,9 +52,11 @@ public:
 
 class BfmeObjectThingPad
 {
+public:
+	const ThingTemplate *getTemplate() const { return m_template; }
 private:
-	const ThingTemplate *m_template; // Object+0x04
-	unsigned char m_pad[0x64 - 4];
+	const ThingTemplate *m_template; // +0x00 Object+0x04
+	unsigned char m_pad[0x64 - 4]; // +0x04
 };
 
 template <int NUMBITS>
@@ -200,7 +202,7 @@ public:
 class SpecialPowerStore
 {
 public:
-	const SpecialPowerTemplate *findSpecialPowerTemplate(AsciiString name);
+	const SpecialPowerTemplate *findSpecialPowerTemplate(AsciiString name); // 0x0029B6EB
 	Bool canUseSpecialPower(Object *obj, const SpecialPowerTemplate *power);
 };
 extern SpecialPowerStore *TheSpecialPowerStore;

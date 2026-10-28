@@ -36,7 +36,9 @@ public:
 class Module
 {
 public:
-    virtual void moduleSlot();
+	virtual void moduleSlot();
+	char m_pad04[0x84];
+	unsigned m_boxesStored; // +0x88 +0x88
 };
 
 class Object

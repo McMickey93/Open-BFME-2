@@ -52,8 +52,8 @@ class BfmeObjectThingPad
 public:
 	const ThingTemplate *getTemplate() const { return m_template; }
 private:
-	const ThingTemplate *m_template; // Object+0x04
-	unsigned char m_pad[0x64 - 4];
+	const ThingTemplate *m_template; // +0x00 Object+0x04
+	unsigned char m_pad[0x64 - 4]; // +0x04
 };
 
 class Object : public BfmeObjectVtbl, public BfmeObjectDlinkBase,
@@ -132,7 +132,7 @@ private:
 class ThingFactory
 {
 public:
-	const ThingTemplate *findTemplate(const AsciiString &name);
+	const ThingTemplate *findTemplate(const AsciiString &key);
 };
 extern ThingFactory *TheThingFactory;
 

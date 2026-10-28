@@ -32,13 +32,14 @@ extern ScriptEngine *TheScriptEngine;
 class Pathfinder
 {
 public:
-	bool QuickDoesPathExist(Object *obj, const Coord3D *from, const Coord3D *to, int v);
+	bool QuickDoesPathExist(Object *obj, const Coord3D *from, const Coord3D *to, int x);
 };
 class AI
 {
 public:
-	char m_pad[0x10];
-	Pathfinder *m_pf;
+	Pathfinder *pathfinder() { return m_10; }
+	char m_pad[0x10]; // +0x00
+	Pathfinder *m_10; // +0x10
 };
 extern AI *TheAI;
 
@@ -59,6 +60,6 @@ bool ScriptConditions::evaluateTeamCanPathToNamed(Parameter *parameter, Paramete
 	Object *unitObj = TheScriptEngine->getUnitNamed(p1);
 	if (!unitObj)
 		return false;
-	Pathfinder *pf = TheAI->m_pf;
+	Pathfinder *pf = TheAI->m_10;
 	return pf->QuickDoesPathExist(teamObj, &teamObj->m_pos, &unitObj->m_pos, 0);
 }

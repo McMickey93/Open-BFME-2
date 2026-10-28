@@ -31,8 +31,8 @@ extern ScriptEngine *TheScriptEngine;
 class Waypoint
 {
 public:
-	char m_pad[0x0c];
-	Coord3D m_location;
+	char m_pad[0x0c]; // +0x00
+	Coord3D m_0c; // +0x0C
 };
 class TerrainLogic
 {
@@ -48,13 +48,14 @@ extern TerrainLogic *TheTerrainLogic;
 class Pathfinder
 {
 public:
-	bool QuickDoesPathExist(Object *obj, const Coord3D *from, const Coord3D *to, int v);
+	bool QuickDoesPathExist(Object *obj, const Coord3D *from, const Coord3D *to, int x);
 };
 class AI
 {
 public:
-	char m_pad[0x10];
-	Pathfinder *m_pf;
+	Pathfinder *pathfinder() { return m_10; }
+	char m_pad[0x10]; // +0x00
+	Pathfinder *m_10; // +0x10
 };
 extern AI *TheAI;
 
@@ -75,6 +76,6 @@ bool ScriptConditions::evaluateTeamCanPathToWaypoint(Parameter *parameter, Param
 	Waypoint *way = TheTerrainLogic->findWaypoint(p1->m_string);
 	if (!way)
 		return false;
-	Pathfinder *pf = TheAI->m_pf;
-	return pf->QuickDoesPathExist(teamObj, &teamObj->m_pos, &way->m_location, 0);
+	Pathfinder *pf = TheAI->m_10;
+	return pf->QuickDoesPathExist(teamObj, &teamObj->m_pos, &way->m_0c, 0);
 }

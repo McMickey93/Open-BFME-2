@@ -46,16 +46,17 @@ private:
 class Rva0004584D : public Rva000421C8
 {
 public:
-	Rva0004584D(const BfmeFixedStorage0004543D &a, const BfmeFixedStorage0004543D &b);
+	Rva0004584D(const BfmeFixedStorage0004543D &a, const BfmeFixedStorage0004543D &b) throw();
 	virtual bool allow(Object *obj);
-	BfmeFixedStorage0004543D m_08;
-	BfmeFixedStorage0004543D m_24;
+	BfmeFixedStorage0004543D m_08; // +0x08
+	BfmeFixedStorage0004543D m_24; // +0x24
 };
 
 struct Rva00045411BitSet
 {
-	Rva00045411BitSet(int unused, int bit);	// 0x00045411
-	unsigned int m_bits[7];
+public:
+	Rva00045411BitSet(int unused, int bit) throw(); // 0x00045411
+	unsigned m_bits[7]; // +0x00
 };
 template <int N> class BitFlags;
 extern BitFlags<116> KINDOFMASK_NONE;
@@ -124,15 +125,15 @@ extern PartitionManager *ThePartitionManager;
 class Pathfinder
 {
 public:
-	bool QuickDoesPathExist(Object *obj, const Coord3D *from, const Coord3D *to, int flags);
+	bool QuickDoesPathExist(Object *obj, const Coord3D *from, const Coord3D *to, int x);
 };
 
 class AI
 {
 public:
-	Pathfinder *pathfinder() { return m_pathfinder; }
-	char m_pad00[0x10];
-	Pathfinder *m_pathfinder;	// +0x10
+	Pathfinder *pathfinder() { return m_10; }
+	char m_pad[0x10]; // +0x00
+	Pathfinder *m_10; // +0x10
 };
 extern AI *TheAI;
 

@@ -23,7 +23,7 @@ public:
 class Rva00261C89
 {
 public:
-    bool rva00261C89();
+	Bool rva00261C89(); // 0x00261C89
 };
 
 class Object

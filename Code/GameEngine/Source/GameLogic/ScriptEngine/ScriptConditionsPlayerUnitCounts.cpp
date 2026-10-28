@@ -207,7 +207,7 @@ extern UpgradeCenter *TheUpgradeCenter;
 class ThingFactory
 {
 public:
-	const ThingTemplate *findTemplate(const AsciiString &name);
+	const ThingTemplate *findTemplate(const AsciiString &key);
 };
 extern ThingFactory *TheThingFactory;
 

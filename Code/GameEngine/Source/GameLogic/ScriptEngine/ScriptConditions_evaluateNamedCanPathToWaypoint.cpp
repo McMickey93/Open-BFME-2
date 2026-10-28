@@ -25,10 +25,11 @@ public:
 };
 extern ScriptEngine *TheScriptEngine;
 
-struct Waypoint
+class Waypoint
 {
-	char m_pad[0x0c];
-	Coord3D m_0c;
+public:
+	char m_pad[0x0c]; // +0x00
+	Coord3D m_0c; // +0x0C
 };
 
 class TerrainLogic
@@ -81,8 +82,9 @@ public:
 class AI
 {
 public:
-	char m_pad[0x10];
-	Pathfinder *m_10;
+	Pathfinder *pathfinder() { return m_10; }
+	char m_pad[0x10]; // +0x00
+	Pathfinder *m_10; // +0x10
 };
 extern AI *TheAI;
 
