@@ -12850,3 +12850,12 @@ Code/GameEngine/Source/GameClient/GUI/Rva00427157Ctor.cpp|global||g_00C3C614,418
 Code/GameEngine/Source/Common/MemberBaseDtorsB01.cpp|param|Rva00574910::rva00574910|arg,5bf81a3cc33e94fb7d24b2bb,claude-opus-5-5,claude3-20261028-171206-5,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB04.cpp|class||Rva00214405,64f60fba3f9585a5dc650af1,claude-opus-5-5,claude3-20261028-171206-7,w-29a6ae2a2f9f,2026-10-28
 Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB04.cpp|class||Rva00224A90,6cc65a9a70ea6a850b79ffc8,claude-opus-5-5,claude3-20261028-171206-7,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/CreateAHeroTextWarmup.cpp|class||Rva0021CB1FBinder,bf432bec50115c30f643170b,claude-opus-5-5,claude3-20261028-172353-1,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawRva000B61AB.cpp|class||Rva000B61ABDrawTemplate,a1a2b7ea7a2acaf1bafd1df8,claude-opus-5-5,claude3-20261028-172353-3,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/Rva00368C7A.cpp|class||Rva00368C7AMetrics,8ce8e10c6a8e54bc7b8d9e96,claude-opus-5-5,claude3-20261028-172353-4,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/Rva00368C7A.cpp|member|Rva00368C7AMetrics|value48,c9b081b3c0f75a7f25f963a4,claude-opus-5-5,claude3-20261028-172353-4,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdate_update.cpp|param|scaled|a,acafe7ff2ebbf0fc98f4f015,claude-opus-5-5,claude3-20261028-172353-5,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/StrafeAreaUpdate_update.cpp|local|StrafeAreaUpdate::update|s,1cba608065e6408169c89a0b,claude-opus-5-5,claude3-20261028-172353-5,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp|class||Rva0025E5F4Command,abf86b0b43f410ad29d20624,claude-opus-5-5,claude3-20261028-172353-6,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp|class||Rva0025E5F4Node,c67b857ce6b2b122806637fc,claude-opus-5-5,claude3-20261028-172353-6,w-29a6ae2a2f9f,2026-10-28
+Code/GameEngine/Source/GameNetwork/Rva0025E5F4RelayCommands.cpp|member|Rva0025E5F4Command|type14,179368d5bfb815d0351e4d3e,claude-opus-5-5,claude3-20261028-172353-6,w-29a6ae2a2f9f,2026-10-28
