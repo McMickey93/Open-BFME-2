@@ -1127,8 +1127,8 @@ address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHero.cpp	g_Va00DFE
 address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHeroHero.cpp	g_Va00DFE348	2
 address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHero_FindBlingByUpgradeName.cpp	g_Va00DFE348	1
 address_global	Code/GameEngine/Source/GameLogic/Object/LocomotorCtor.cpp	g_Va00DFDC64	2
-address_global	Code/GameEngine/Source/GameLogic/Object/Made002CCB04Rva0050B479.cpp	g_Va00DFEFD8	2
-address_global	Code/GameEngine/Source/GameLogic/Object/Made002CCB04Rva0050B519.cpp	g_Va00BBB8D8	3
+address_global	Code/GameEngine/Source/GameLogic/Object/Made002CCB04.cpp	g_Va00BBB8D8	3
+address_global	Code/GameEngine/Source/GameLogic/Object/Made002CCB04.cpp	g_Va00DFEFD8	2
 address_global	Code/GameEngine/Source/GameLogic/Object/ObjectRva0028FCD9.cpp	g_Va00BFBF34	6
 address_global	Code/GameEngine/Source/GameLogic/Object/ObjectRva002E6B89.cpp	g_Va00DFECD0	2
 address_global	Code/GameEngine/Source/GameLogic/Object/ObjectSetTriggerAreaFlagsForChangeInPosition.cpp	g_Va00DBD0F4	2
