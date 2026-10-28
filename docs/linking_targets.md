@@ -407,7 +407,7 @@ through `tools/progress.py`'s provenance and retail-byte functions.
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0030B378.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0038151E.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva003F447F.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
-| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00428421.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
+| `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00428421.cpp` | 29 | 3 (U=1, C=1, S=1) | 2026-10-28: unit removed; its row merged by `tu_skeleton.py --merge` into the approved TU `Code/GameEngine/Source/Common/VersionBlockParser.cpp` (byte-verified). Census pending. |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00469C85.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva005FE089.cpp` | 29 | 3 (U=1, C=1, S=1) | Open |
 | `Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB03Deferred.cpp` | 28 | 3 (U=2, C=1) | Open |
