@@ -12599,3 +12599,17 @@ Code/GameEngine/Source/Common/AptOnlineCustomMatch_InitGadgets.cpp|param|AptOnli
 Code/GameEngine/Source/Common/System/SaveGame/GameStatePostProcess.cpp|function|0x002DC52B|rva002DC52B,d6c713baff2098f2c45f9074,drz-k7,drz-k7-n12e-19,w-4471b1f6edef,2026-10-28
 Code/GameEngine/Source/Common/System/SaveGame/GameStatePostProcess.cpp|function|0x002DCF6C|rva002DCF6C,ac7bf1b1a5be07b5234d9965,drz-k7,drz-k7-n12e-19,w-4471b1f6edef,2026-10-28
 Code/GameEngine/Source/Common/System/Rva00318ABBFieldParse.cpp|member|Rva00318A87|m_0C,041957b91fc4b5a587ebf8f4,drz-k7,drz-k7-n12e-20,w-4471b1f6edef,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Made002CC774Parse.cpp|param|q4Notify002CC774|m,d0aa16710969c6efa09929cb,drz-k3,drz-k3-n12b2-6,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Made002CC6AEParse.cpp|param|q4Notify002CC6AE|m,1b83aa0c0a4069c49ceb72b6,drz-k3,drz-k3-n12b2-7,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/Common/RTS/PlayerTeamCommands.cpp|member|PlayerIdleObject|m_04,d5997e821109f3af3c1e991c,drz-k3,drz-k3-n12b2-8,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/Common/RTS/PlayerTeamCommands.cpp|member|PlayerIdleObject|m_38,89119fc93fe528ae764cfa83,drz-k3,drz-k3-n12b2-8,w-077d7aeb666b,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayRva000448CF.cpp|param|W3DDisplay::drawLine|x2,4cb821398157cbe42fb93c18,drz-k3,drz-k3-n12b2-12,w-077d7aeb666b,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayRva000448CF.cpp|param|W3DDisplay::drawLine|y2,64ee55b00d7c127608764e78,drz-k3,drz-k3-n12b2-12,w-077d7aeb666b,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayRva000448CF.cpp|param|W3DDisplay::drawLine#2|x2,1263bb01d28106a7ffbe1da6,drz-k3,drz-k3-n12b2-12,w-077d7aeb666b,2026-10-28
+Code/GameEngineDevice/Source/W3DDevice/GameClient/W3DDisplayRva000448CF.cpp|param|W3DDisplay::drawLine#2|y2,5ad8f64a4bcf547beb6ac007,drz-k3,drz-k3-n12b2-12,w-077d7aeb666b,2026-10-28
+Code/Libraries/Source/EA/Apt/AptString/EAStringCFind.cpp|function|0x006D3A40|rva006D3A40,ad26e99e97f56beb96b4eaed,drz-k3,drz-k3-n12b2-15,w-077d7aeb666b,2026-10-28
+Code/Libraries/Source/EA/Apt/AptString/EAStringCFind.cpp|function|0x006D3AD0|rva006D3AD0,f11fd698e36bcd74c30b7884,drz-k3,drz-k3-n12b2-15,w-077d7aeb666b,2026-10-28
+Code/Libraries/Source/EA/Apt/AptString/EAStringCFind.cpp|function|0x006D3B30|rva006D3B30,ae89af3ecbd5f361e71ce837,drz-k3,drz-k3-n12b2-15,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/Common/BfmeConv1378.cpp|local|bfmeGoVIT|g,60cf879f6f1d22ce9edfd2dc,drz-k3,drz-k3-n12b2-20,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/Common/BfmeConv1378.cpp|local|bfmeGoVIU|g,721286d99b08ab21989d35f0,drz-k3,drz-k3-n12b2-20,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/Common/BfmeConv1378.cpp|local|bfmeGoVIV|g,d31880171276483939b06dc0,drz-k3,drz-k3-n12b2-20,w-077d7aeb666b,2026-10-28
