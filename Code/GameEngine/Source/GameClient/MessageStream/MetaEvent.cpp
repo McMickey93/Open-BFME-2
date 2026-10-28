@@ -92,7 +92,7 @@ enum MappableKeyModState { NONE = 0, CTRL = 4, SHIFT = 16, ALT = 64 };
 
 enum CommandUsableInType { COMMANDUSABLE_SHELL = 1, COMMANDUSABLE_GAME = 2 };
 
-// The rowed constructor/destructor in Common/MetaMap.cpp establish the
+// The rowed constructor/destructor below (0x001DB3E8, 0x001DB60F) establish the
 // canonical 12-byte subsystem base and record-list pointer at +0x0C.
 class MetaMap : public SubsystemInterface
 {
