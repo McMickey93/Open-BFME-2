@@ -107,15 +107,14 @@ struct AptConstantFile
 
 extern "C" void BfmeAux006FC670(const unsigned char *aActionStream, int pBase, AptConstantFile *aConstantFile, int *pnCurrentConstantIndex);
 
+class AptCIH;
+struct AptCharacterInst;
 class AptActionInterpreter
 {
 	friend void BfmeAux006FC670(const unsigned char *, int, AptConstantFile *, int *);
-	struct FunctionTable
-	{
-		int mCheckAlignment;
-		void *mFunctionPointer;
-	};
-	static FunctionTable sGlobalTable[];
+	struct LocalContextT { const unsigned char *pInstruction; AptCIH *pCurrentContext; AptValue *pCurWith; const unsigned char *pRemoveWithAt; AptValue *pSuper; bool bEncounteredReturn; AptCharacterInst *pParentCharacter; };
+	struct FunctionTable { int mCheckAlignment; void (__cdecl *mFunctionPointer)(AptActionInterpreter *const,LocalContextT *const); };
+	static FunctionTable sGlobalTable[185];
 };
 
 struct ActionPushStringData { const char *szStringToBePushed; };
