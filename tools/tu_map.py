@@ -31,6 +31,19 @@ Signals, strongest first (one letter each in the `by` and `evidence` columns):
      its test. A lead never anchors the row whose name it supplied (the row's notes
      cite WorldBuilder, or it took the lead's class after the lead was cut): that
      row's hint is the lead's path again, so the TU needs an independent anchor.
+  L  a vendored library built from upstream's own files, one TU each (UPSTREAM_TU_LIBS:
+     GameSpy, Lua, zlib, LZHL; a `vendored=<lib>-<ver>` ledger tag marks the file): a
+     function that exactly one whole upstream file of its library defines is in that
+     file. Header-inline "vendored" code (ATL, GDI+, strsafe, the CRT splits, STLport) is
+     emitted as COMDATs wherever it was used and never names a TU; a file carved out of
+     an upstream file (liolib_bfme1.c from liolib.c) is not one either. F/Z/S never reach
+     library code, so L's gate is retail order instead: each L row held out, the nearest
+     rows below and above that carry their own F, Z, S or L must name its file
+     (`l_score`, GAP apart at most); L anchors only while that holds at >= 99% on >= 100
+     rows, and `--validate` prints it. Owner decision 2026-10-28 (an alternative gate for
+     byte-verified upstream files): at d71e8bb289, 892 L rows in 55 files, 785/785
+     held-out rows agree, none carries F/Z/S of its own; +923 approved code rows (891 L,
+     26 C, 6 U), 601 -> 656 TUs, no approved row lost or retargeted.
   C  address contiguity: the nearest assigned rows on both sides agree and are
      within 0x3000 bytes (retail object order keeps a TU contiguous).
   K  placeholder-class propagation (`??1Rva...` follows its `??_GRva...`).
@@ -80,18 +93,18 @@ a body no signal reaches), so the map carries the extents `tu_at()` needs:
     unsplit function would start. Without the image it is at most proposed.
 
 Confidence:
-  approved  the TU's main cluster holds at least one F/Z/S/W anchor, the row is
-            assigned by F/Z/S/N/U or bracketed (C) by approved rows, its own
+  approved  the TU's main cluster holds at least one F/Z/S/L/W anchor, the row is
+            assigned by F/Z/S/L/N/U or bracketed (C) by approved rows, its own
             F/Z/S do not contradict the TU, and no row that could be approved
             for a different TU sits inside the TU's address span (a TU that is
             not contiguous in retail is not trusted). A row "could be approved"
-            when its TU is anchored and it is assigned by F/Z/S/N/U/C; a K row,
+            when its TU is anchored and it is assigned by F/Z/S/L/N/U/C; a K row,
             or a row of a TU no F/Z/S anchors (a naming hint for a class this
             repo named, alone), never can, so it does not break its host's
-            span. A TU's span is the extent of its own F/Z/S/N/U rows (every
+            span. A TU's span is the extent of its own F/Z/S/L/N/U rows (every
             row that could be approved for it lies within): a K row emitted
             far from its class's TU does not stretch it, and neither does an
-            island (`islands()`: at most ISLAND rows of one TU, none F or Z, between
+            island (`islands()`: at most ISLAND rows of one TU, none F, Z or L, between
             longer runs of one other TU; a header COMDAT emitted in the host's
             object or a row named for the wrong class): it breaks no span and
             is itself never approved. A run of C rows is
@@ -102,12 +115,14 @@ Confidence:
   (empty)   a known body no signal reaches; it has no TU.
 
 The output is a pure function of the ledger, ghidra_functions.csv,
-string_xrefs.tsv, data_xrefs.tsv and the ZH tree: rerunning on unchanged inputs
-writes the same bytes. Never edit tu_map.csv by hand; regenerate it. Writing it
-also writes `tu_map.inputs.sha256` (sha256sum-like, line endings normalised):
-the hashes of those inputs, of this tool and of the map, and the ZH tree's
-identity -- its git tree id (and commit) in a clean default checkout, else a
-hash of its .cpp files -- which `--check-fresh` compares in about a second.
+string_xrefs.tsv, data_xrefs.tsv, the vendored files L reads and the ZH tree:
+rerunning on unchanged inputs writes the same bytes. Never edit tu_map.csv by
+hand; regenerate it. Writing it also writes `tu_map.inputs.sha256`
+(sha256sum-like, line endings normalised): the hashes of those inputs (the
+vendored files as one `vendored-upstream:Code` hash), of this tool and of the
+map, and the ZH tree's identity -- its git tree id (and commit) in a clean
+default checkout, else a hash of its .cpp files -- which `--check-fresh`
+compares in about a second.
 
 Usage:
   python3 tools/tu_map.py                write tu_map.csv (+ fingerprint), print a summary
@@ -140,10 +155,11 @@ GAP = 0x3000          # max distance between bracketing anchors (C)
 UNION_SPAN = 0x2000   # clusters this small that interleave are one TU
 PAD = 0xCC            # MSVC fills between functions with int3
 COLUMNS = ["rva", "size", "kind", "tu", "confidence", "by", "evidence", "source"]
-APPROVABLE = {"F", "Z", "S", "N", "U"}
+APPROVABLE = {"F", "Z", "S", "L", "N", "U"}
 SPAN_BREAKERS = APPROVABLE | {"C"}
 WB_LEADS = "wb_name_leads.csv"
 W_GATE, W_MIN = 0.99, 20  # W anchors only while it agrees with F on >= W_MIN rows at >= W_GATE
+L_GATE, L_MIN = 0.99, 100  # L anchors only while retail order agrees with it on >= L_MIN held-out rows
 FINGERPRINTED = ("functions.csv", "ghidra_functions.csv", "string_xrefs.tsv", "data_xrefs.tsv", WB_LEADS)
 
 
@@ -544,6 +560,135 @@ def w_passes(rows):
     return n >= W_MIN and ok >= W_GATE * n
 
 
+# ---------------------------------------------------------------- vendored upstream TUs (L)
+# Libraries built from upstream's own files, one retail TU per file. A library vendored as
+# headers (ATL, GDI+, strsafe, the CRT splits, STLport) is emitted as COMDATs in whichever
+# object used it, so its files name no TU and it is not listed here.
+UPSTREAM_TU_LIBS = ("gamespy", "lua", "zlib", "lzhl")
+VENDORED_TAG = re.compile(r"\bvendored=([a-z0-9]+)-")
+NAMED_FILE = re.compile(r"(?<![\w.])([A-Za-z_]\w*\.(?:c|cpp))(?!\w)", re.I)
+# A function head at file scope: column 0, no statement keyword, the name right before `(`.
+C_HEAD = re.compile(r"^(?!(?:return|else|if|while|for|do|switch|case|goto|sizeof|typedef|struct|union|enum)\b)"
+                    r"(?=[A-Za-z_])[^;(){}=\n#:\"]*?\b([A-Za-z_]\w*)(?=\s*(?:\(|$))")
+FREE_CXX = re.compile(r"^\?([A-Za-z_]\w*)@@[YZ]")
+C_SYMBOL = re.compile(r"^[_@]([A-Za-z_]\w*?)(?:@\d+)?$")
+
+
+def c_definitions(text):
+    """Names of the functions a C or C++ file defines: `name` for a file-scope function whose
+    balanced parameter list is followed by its body, directly (ANSI) or after `;`-terminated
+    parameter declarations (K&R, zlib 1.1.4's style), and `Class::method` for zh_definitions'
+    out-of-line members. A prototype (`;` right after the list) defines nothing."""
+    code = CPP_NOISE.sub(_blank, text)
+    out = {f"{c}::{m}" for c, m in zh_definitions(text)}
+    at = 0
+    for line in code.split("\n"):
+        start, at = at, at + len(line) + 1
+        m = C_HEAD.match(line)
+        if not m:
+            continue
+        i, depth = start + m.end(), 0
+        while i < len(code) and code[i].isspace():     # GameSpy's `GPResult gpiFoo` / `(` on the next line
+            i += 1
+        if i >= len(code) or code[i] != "(":
+            continue
+        while i < len(code):
+            if code[i] == "(":
+                depth += 1
+            elif code[i] == ")":
+                depth -= 1
+                if not depth:
+                    break
+            elif code[i] in ";{}":
+                break
+            i += 1
+        body = code.find("{", i) if not depth and i < len(code) else -1
+        decls = code[i + 1:body].strip() if body >= 0 else ";"
+        if not decls or (decls[0] not in ";," and decls.endswith(";") and not re.search(r"[{}=]", decls)):
+            out.add(m.group(1))
+    return out
+
+
+def c_symbol(name):
+    """The source spelling of a ledger symbol: `f` for a C name (`_f`, `_f@8`, `@f@8`) or a
+    free C++ function (`?f@@YA...`), `Class::method` for a member; else None."""
+    m = FREE_CXX.match(name)
+    if m:
+        return m.group(1)
+    cls, meth = demangle(name)
+    if cls:
+        return f"{cls}::{meth}"
+    m = C_SYMBOL.match(name)
+    return m.group(1) if m else None
+
+
+def upstream_candidates(layout, ledger):
+    """{source: library} of the .c/.cpp files a ledger row tags `vendored=<lib>-<ver>` with a
+    library of UPSTREAM_TU_LIBS (`upstream_files` decides which of them are whole files)."""
+    out = {}
+    for r in ledger:
+        s = r.get("source") or ""
+        m = VENDORED_TAG.search(r.get("notes") or "")
+        if m and m.group(1) in UPSTREAM_TU_LIBS and s.startswith(layout.src) and s.lower().endswith((".c", ".cpp")):
+            out.setdefault(s, m.group(1))
+    return out
+
+
+def upstream_files(layout, ledger):
+    """{source: (library, names it defines)} of the vendored files that are whole upstream
+    files, each its own retail TU. A file carved out of one (`liolib_bfme1.c` from
+    `liolib.c`, `peerCallbacksFinished.c` from `peerCallbacks.c`) is not: its stem extends the
+    stem of a ledger source beside it and its text never names the file itself, where a
+    whole file's own banner does (`$Id: lapi.c,v`, `/* deflate.c -- `, `gp.c`)."""
+    stems = collections.defaultdict(set)
+    for r in ledger:
+        d, b = os.path.split((r.get("source") or "").lower())
+        if b.endswith((".c", ".cpp")):
+            stems[d].add(os.path.splitext(b)[0])
+    out = {}
+    for s, lib in sorted(upstream_candidates(layout, ledger).items()):
+        try:
+            text = (layout.root / s).read_text(encoding="latin-1")
+        except OSError:
+            continue
+        d, b = os.path.split(s.lower())
+        stem = os.path.splitext(b)[0]
+        carved = any(x != stem and stem.startswith(x) for x in stems[d])
+        if not carved or b in {m.group(1).lower() for m in NAMED_FILE.finditer(text)}:
+            out[s] = (lib, c_definitions(text))
+    return out
+
+
+def upstream_tus(files):
+    """{(library, symbol): source} for the symbols exactly one whole upstream file of their
+    library defines."""
+    seen = collections.defaultdict(set)
+    for s, (lib, names) in files.items():
+        for n in names:
+            seen[(lib, n)].add(s)
+    return {k: next(iter(v)) for k, v in seen.items() if len(v) == 1}
+
+
+def l_score(rows):
+    """(held-out L rows retail order predicts, of them agreeing): each row with an L candidate
+    (`Lcand`, before the gate), its own evidence set aside, is predicted by the nearest rows
+    below and above that carry their own F, Z, S or L, when both name one TU within GAP (a
+    TU is contiguous in retail .text)."""
+    seq = [(r["rva"], r["F"] or r["Z"] or r["S"] or r["Lcand"], r["Lcand"]) for r in rows
+           if r["F"] or r["Z"] or r["S"] or r["Lcand"]]
+    n = ok = 0
+    for (lo, a, _), (rva, _, own), (hi, b, _) in zip(seq, seq[1:], seq[2:]):
+        if own and same(a, b) and hi - lo <= GAP:
+            n += 1
+            ok += same(own, a)
+    return n, ok
+
+
+def l_passes(rows):
+    n, ok = l_score(rows)
+    return n >= L_MIN and ok >= L_GATE * n
+
+
 def same(a, b):
     return bool(a and b and a.lower() == b.lower())
 
@@ -644,12 +789,16 @@ def evidence_rows(layout, ledger=None):
     zhead = zh_header_members(layout)
     F = file_strings(layout, paths, owner)
     W = wb_files(layout, paths)
+    upstream = upstream_files(layout, ledger)
+    defined = upstream_tus(upstream)
     for r in rows:
         r["cls"], r["meth"] = demangle(r["name"]) if r["name"] else (None, None)
         r["F"] = F.get(r["rva"])
         r["W"], lead = W.get(r["rva"], (None, None))
         r["Wself"] = bool(lead and wb_self(lead, r))
         r["Z"] = zmeth.get((r["cls"], r["meth"])) if r["cls"] else None
+        lib = upstream.get(r["source"], (None,))[0]
+        r["Lcand"] = r["source"] if lib and defined.get((lib, c_symbol(r["name"]))) == r["source"] else None
     z_anchors = sorted((r["rva"], r["Z"]) for r in rows if r["Z"])   # out-of-line ZH definitions
     z_rvas = [a for a, _ in z_anchors]
     for r in rows:
@@ -662,7 +811,10 @@ def evidence_rows(layout, ledger=None):
         base = re.sub(r"ModuleData$", "", cls or "")
         r["N"] = (os.path.dirname(r["source"]) + "/" + base + ".cpp") if base and r["source"] \
             and not PLACEHOLDER.match(base) and not inline else None
-        r["hard"] = r["F"] or r["Z"] or r["S"]
+    use_l = l_passes(rows)
+    for r in rows:
+        r["L"] = r["Lcand"] if use_l else None
+        r["hard"] = r["F"] or r["Z"] or r["S"] or r["L"]
         r["hint"] = r["hard"] or r["N"]
         r["C"] = r["K"] = None
     return rows
@@ -762,11 +914,11 @@ def build(layout, ledger=None):
     for r in rows:
         a = r["A"]
         r["by"] = ("F" if same(r["F"], a) else "Z" if same(r["Z"], a) else "S" if same(r["S"], a) else
-                   "C" if r["C"] else "K" if r["K"] else "N" if same(r["N"], a) else "U" if a else "")
+                   "L" if same(r["L"], a) else "C" if r["C"] else "K" if r["K"] else "N" if same(r["N"], a) else "U" if a else "")
         r["contra"] = contradicts(a, r["F"], r["Z"], r["S"])
 
     # Confidence. Retail object order: a TU must be contiguous in .text. Its span is the
-    # extent of the rows that could be approved for it (F/Z/S/N/U; a C row inside them
+    # extent of the rows that could be approved for it (F/Z/S/L/N/U; a C row inside them
     # needs approved brackets, so it lies within): a K row is never approved, and one
     # emitted far away must not stretch the span over other TUs' rows.
     assigned = [r for r in rows if r["A"]]
@@ -781,7 +933,7 @@ def build(layout, ledger=None):
         lo_hi[k] = (min(lo, r["rva"]), max(hi, r["rva"]))
     idx = [r["rva"] for r in assigned]
     # Only a row that could be approved contradicts a span: one of an anchored TU,
-    # assigned by F/Z/S/N/U/C. A K row or an unanchored TU's naming hint never can.
+    # assigned by F/Z/S/L/N/U/C. A K row or an unanchored TU's naming hint never can.
     broken = set()
     for k, (lo, hi) in lo_hi.items():
         i, j = bisect.bisect_left(idx, lo), bisect.bisect_right(idx, hi)
@@ -814,7 +966,7 @@ def build(layout, ledger=None):
     out = []
     for r in rows:
         ev = []
-        for s in "FZSNW":
+        for s in "FZSLNW":
             if r[s]:
                 ev.append(f"{s}={r[s]}")
         if r["C"]:
@@ -841,18 +993,18 @@ ISLAND = 2
 
 def islands(assigned, roots):
     """ids of the rows of island runs. In address order, the rows that could break a span
-    (an anchored TU's, by F/Z/S/N/U/C) form runs of one TU each; a run of at most ISLAND
+    (an anchored TU's, by F/Z/S/L/N/U/C) form runs of one TU each; a run of at most ISLAND
     rows, none of them F, shorter than the runs of one other TU on both sides of it, is
     an island: a header body emitted as a COMDAT in the host's object, or a row this repo
     named for the wrong class. It neither breaks the host's span nor counts in its own.
-    A run holding an F or Z row (an out-of-line definition in its own TU) is never an
+    A run holding an F, Z or L row (an out-of-line definition in its own TU) is never an
     island: naming around it must not override it."""
     seq = [r for r in assigned if r["A"].lower() in roots and r["by"] in SPAN_BREAKERS]
     runs = [list(g) for _, g in itertools.groupby(seq, key=lambda r: r["A"].lower())]
     out = set()
     for a, run, b in zip(runs, runs[1:], runs[2:]):
         if (len(run) <= ISLAND and len(run) < min(len(a), len(b)) and a[0]["A"].lower() == b[0]["A"].lower()
-                and not any(x["by"] in ("F", "Z") for x in run)):
+                and not any(x["by"] in ("F", "Z", "L") for x in run)):
             out.update(id(x) for x in run)
     return out
 
@@ -1041,6 +1193,17 @@ def _digest(path):
 
 
 ZH_KEY = "zh:GeneralsMD/Code"
+L_KEY = "vendored-upstream:Code"
+
+
+def upstream_digest(layout):
+    """sha256 over the path and CRLF-normalised text of every file `upstream_files` reads (L)."""
+    h = hashlib.sha256()
+    for s in sorted(upstream_candidates(layout, read_csv(layout.path("functions.csv")))):
+        p = layout.root / s
+        text = p.read_bytes().replace(b"\r\n", b"\n") if p.is_file() else b"missing"
+        h.update(s.encode() + b"\0" + text + b"\0")
+    return h.hexdigest()
 
 
 def _git(cwd, *args):
@@ -1089,6 +1252,7 @@ def fingerprint(layout, zh_kind=None):
         out.append(f"{_digest(p)}  {p.resolve().relative_to(layout.root.resolve()).as_posix()}")
     if _evidence().PROMOTED:                 # a promoted layout signal reads the retail image
         out.append(f"{_digest(layout.image)}  {layout.image.resolve().relative_to(layout.root.resolve()).as_posix()}")
+    out.append(f"{upstream_digest(layout)}  {L_KEY}")
     digest, note = zh_identity(layout, zh_kind)
     out.append(f"{digest}  {ZH_KEY}")
     out.append(f"# {ZH_KEY}: {note}")
@@ -1176,10 +1340,16 @@ def report_validation(layout, rev, out=None):
     n, bad = self_check(read_csv(layout.out) if out is None else out)
     print(f"self-check: {bad} of {n} approved code rows in {layout.out.name} have their own F/Z/S "
           f"naming another TU")
-    n, ok = w_score(evidence_rows(layout))
+    rows = evidence_rows(layout)
+    n, ok = w_score(rows)
     print(f"W (WorldBuilder lead path) against the row's own F: {ok}/{n} agree "
           f"({100 * ok / n:.1f}%); anchors {'on' if n >= W_MIN and ok >= W_GATE * n else 'OFF'} "
           f"(gate {W_GATE:.0%}, at least {W_MIN} rows)" if n else "W: no row has both W and F; anchors OFF")
+    n, ok = l_score(rows)
+    print(f"L (vendored upstream file) held out against retail order: {ok}/{n} agree "
+          f"({100 * ok / n:.1f}%); anchors {'on' if l_passes(rows) else 'OFF'} "
+          f"(gate {L_GATE:.0%}, at least {L_MIN} rows); {sum(1 for r in rows if r['L'])} L rows"
+          if n else "L: retail order predicts no L row; anchors OFF")
     landed, tally, misses = validate(layout, rev)
     print(f"landed since {rev}: {landed} named rows with F/Z/S evidence at addresses its ledger had no row for")
     for conf in ("approved", "proposed"):

@@ -15,7 +15,7 @@ merges continue through `tools/tu_skeleton.py` and the normal verification gates
 | Tool | Role |
 |---|---|
 | `tools/name_lane.py consolidate` | The evidence planner: catalogues original paths and donor structure, identifies candidate groups and flags routing, declaration, include and compiler prerequisites. |
-| `tools/tu_map.py` | Which TU each retail function came from: `__FILE__` strings, Zero Hour definitions and class sites, WorldBuilder leads that corroborate a hinted path, naming inside an anchored address cluster, contiguity. `approved` rows are the only ones a merge moves. |
+| `tools/tu_map.py` | Which TU each retail function came from: `__FILE__` strings, Zero Hour definitions and class sites, whole vendored upstream files (L), WorldBuilder leads that corroborate a hinted path, naming inside an anchored address cluster, contiguity. `approved` rows are the only ones a merge moves. |
 | `tools/tu_skeleton.py` | The lane: `--queue`, `--plan`, `--merge`. It verifies every merge by compiling and byte-matching, claims its scope, and repoints the ledger. |
 | `tools/tu_evidence.py` | Retail layout signals (funclet order, vftables, initializers, .rdata order, funclet parentage) for rows nothing else places; proposal-only until a signal passes its 99% precision gate and is promoted. |
 | `tools/tu_ownership.py` | The commit hook's invariants (a row moved to a file other than its approved TU, a second body for one address). Shadow mode. |
@@ -118,6 +118,21 @@ deleted donor. It prints:
   `repair_queue.py retire identity|data TU`, and `flag_defaults.py propose TU`
   for a carried override. Retiring in the merge commit itself would hide the
   transfer from verify-removed.
+
+## Vendored libraries built from upstream's files (L)
+
+GameSpy, Lua, zlib and LZHL were compiled from upstream's own files, one retail
+TU per file, and their vendored copies sit at the official BFME paths. tu_map's
+L signal anchors a row to its own file when that file is a whole upstream file
+(a ledger row tags it `vendored=<lib>-<ver>`; a carve-out such as
+`liolib_bfme1.c` or `peerCallbacksFinished.c` is not one) and is the only whole
+file of its library defining the row's name. Header-inline "vendored" code (ATL,
+GDI+, strsafe, the CRT splits, STLport) is emitted as COMDATs in whichever object
+used it and never names a TU. F/Z/S never reach library code, so L has its own
+gate, approved by the owner on 2026-10-28: each L row held out, the nearest
+anchored rows on both sides in retail order must name its file, at >= 99% on
+>= 100 rows (785/785 when it landed; `tu_map.py --validate` prints it). Below the
+gate L anchors nothing.
 
 ## Retail layout evidence (the TU-evidence lane)
 

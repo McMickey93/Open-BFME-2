@@ -911,3 +911,105 @@ def test_b2_fingerprint_is_diagnostic_only(repo):
     found = tu_ownership.check("HEAD", None)
     assert [r for r, _ in found] == ["B2"]
     assert tu_ownership.report(found, shadow=False) == 0
+
+
+# ---------------------------------------------------------------- vendored upstream TUs (L)
+def _vendored(tmp_path, monkeypatch, files, ledger, l_min=2):
+    """A tree holding vendored library files and their ledger rows; L's gate sized for it."""
+    monkeypatch.setattr(tu_map, "L_MIN", l_min)
+    for rel, text in files.items():
+        (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+        (tmp_path / rel).write_text(text, newline="\n")
+    (tmp_path / "reverse").mkdir(exist_ok=True)
+    (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join(
+        row(name, rva, 16, src, notes=notes) for name, rva, src, notes in ledger), newline="\n")
+    return {int(r["rva"], 16): r for r in tu_map.build(tu_map.Layout(tmp_path))}
+
+
+LUA = "Code/Libraries/Source/Lua"
+
+
+def _lua(name, body):
+    return f"/*\n** $Id: {name},v 1.1 $\n*/\n" + body
+
+
+def test_whole_upstream_file_anchors_the_functions_it_alone_defines(tmp_path, monkeypatch):
+    files = {f"{LUA}/lapi.c": _lua("lapi.c", "int lua_a (lua_State *L) {\n}\nstatic void b (int x)\n{\n}\n"
+                                   "int lua_c (lua_State *L) {\n}\nint lua_d (lua_State *L) {\n}\n"),
+             f"{LUA}/lauxlib.c": _lua("lauxlib.c", "void luaL_x (void) {\n}\nvoid luaL_y (void) {\n}\n"
+                                      "void luaL_z (void) {\n}\nstatic void b (int y)\n{\n}\n")}
+    tag = "vendored=lua-4.0.1"
+    out = _vendored(tmp_path, monkeypatch, files, [
+        ("_lua_a", 0x1000, f"{LUA}/lapi.c", tag), ("_b", 0x1010, f"{LUA}/lapi.c", ""),
+        ("_lua_c", 0x1020, f"{LUA}/lapi.c", ""), ("_lua_d", 0x1030, f"{LUA}/lapi.c", ""),
+        ("_luaL_x", 0x2000, f"{LUA}/lauxlib.c", tag), ("_luaL_y", 0x2010, f"{LUA}/lauxlib.c", ""),
+        ("_luaL_z", 0x2020, f"{LUA}/lauxlib.c", "")])
+    for rva in (0x1000, 0x1020, 0x1030, 0x2000, 0x2010, 0x2020):
+        assert (out[rva]["by"], out[rva]["confidence"]) == ("L", "approved"), hex(rva)
+        assert out[rva]["tu"] == out[rva]["source"] and f"L={out[rva]['source']}" in out[rva]["evidence"]
+    # `b` is defined in both files (two statics): no L, but contiguity still places it
+    assert "L=" not in out[0x1010]["evidence"]
+    assert (out[0x1010]["by"], out[0x1010]["tu"], out[0x1010]["confidence"]) == ("C", f"{LUA}/lapi.c", "approved")
+
+
+def test_a_carved_file_and_header_inline_libraries_name_no_tu(tmp_path, monkeypatch):
+    files = {f"{LUA}/liolib.c": _lua("liolib.c", "int io_a (lua_State *L) {\n}\n"),
+             # carved out of liolib.c: its stem extends liolib's and its text never names itself
+             f"{LUA}/liolib_bfme1.c": _lua("liolib.c", "int io_b (lua_State *L) {\n}\nint io_c (lua_State *L) {\n}\n"),
+             "Code/Libraries/Source/ATL/atlbase.cpp": "/* atlbase.cpp */\nvoid AtlThing (void) {\n}\n"}
+    out = _vendored(tmp_path, monkeypatch, files, [
+        ("_io_a", 0x1000, f"{LUA}/liolib.c", "vendored=lua-4.0.1"),
+        ("_io_b", 0x1010, f"{LUA}/liolib_bfme1.c", "vendored=lua-4.0.1"),
+        ("_io_c", 0x1020, f"{LUA}/liolib_bfme1.c", "vendored=lua-4.0.1"),
+        ("_AtlThing", 0x5000, "Code/Libraries/Source/ATL/atlbase.cpp", "vendored=atl-7.1")])
+    assert set(tu_map.upstream_files(tu_map.Layout(tmp_path), tu_map.read_csv(tmp_path / "reverse/functions.csv"))) \
+        == {f"{LUA}/liolib.c"}
+    for rva in (0x1010, 0x1020, 0x5000):
+        assert "L=" not in out[rva]["evidence"] and out[rva]["confidence"] != "approved", hex(rva)
+
+
+def test_l_anchors_nothing_while_retail_order_disagrees(tmp_path, monkeypatch):
+    files = {f"{LUA}/{n}.c": _lua(f"{n}.c", "".join(f"void {n}_{i} (void) {{\n}}\n" for i in range(3)))
+             for n in ("la", "lb")}
+    ledger = [(f"_{n}_{i}", 0x1000 + 0x20 * (2 * i + k), f"{LUA}/{n}.c", "vendored=lua-4.0.1")
+              for i in range(3) for k, n in enumerate(("la", "lb"))]     # la, lb, la, lb, ... interleaved
+    rows = None
+    monkeypatch.setattr(tu_map, "L_MIN", 2)
+    out = _vendored(tmp_path, monkeypatch, files, ledger)
+    rows = tu_map.evidence_rows(tu_map.Layout(tmp_path))
+    n, ok = tu_map.l_score(rows)
+    assert n >= 2 and ok == 0 and not tu_map.l_passes(rows)
+    assert not any(r["L"] for r in rows)
+    assert not any(r["confidence"] == "approved" for r in out.values())
+
+
+def test_c_definitions_read_ansi_k_and_r_and_next_line_heads():
+    text = ("local void fill_window OF((deflate_state *s));\n"          # a prototype through a macro
+            "int ZEXPORT compress2 (dest, destLen)\n    Bytef *dest;\n    uLongf *destLen;\n{\n}\n"
+            "static GPResult gpiNewTransfer\n(\n  GPConnection * connection\n)\n{\n}\n"
+            "int lua_gettop (lua_State *L) {\n}\n"
+            "int declared_only (int x);\n"
+            "void LZHLEncoder::flush (void) {\n}\n"
+            "/* void commented_out (void) {\n} */\n")
+    assert tu_map.c_definitions(text) == {"compress2", "gpiNewTransfer", "lua_gettop", "LZHLEncoder::flush"}
+
+
+def test_c_symbol_spells_the_source_name():
+    assert [tu_map.c_symbol(s) for s in ("_lua_gettop", "_SetErrorMode@4", "@fast@8", "__tr_init",
+                                         "?free@@YAXXZ", "?flush@LZHLEncoder@@QAEXXZ", "$L123")] == \
+        ["lua_gettop", "SetErrorMode", "fast", "_tr_init", "free", "LZHLEncoder::flush", None]
+
+
+def test_fingerprint_tracks_the_vendored_files_l_reads(tmp_path):
+    (tmp_path / "reverse").mkdir()
+    (tmp_path / ZH_REL / "GameEngine").mkdir(parents=True)
+    lapi = tmp_path / LUA / "lapi.c"
+    lapi.parent.mkdir(parents=True)
+    lapi.write_text(_lua("lapi.c", "int lua_a (void) {\n}\n"), newline="\n")
+    (tmp_path / "reverse/functions.csv").write_text(
+        HEADER + row("_lua_a", 0x1000, 16, f"{LUA}/lapi.c", notes="vendored=lua-4.0.1"), newline="\n")
+    assert tu_map.main(["--root", str(tmp_path)]) == 0
+    assert f"  {tu_map.L_KEY}\n" in (tmp_path / "reverse/tu_map.inputs.sha256").read_text()
+    assert tu_map.check_fresh(tu_map.Layout(tmp_path)) == []
+    lapi.write_text(_lua("lapi.c", "int lua_a (void) {\n}\nint lua_b (void) {\n}\n"), newline="\n")
+    assert tu_map.check_fresh(tu_map.Layout(tmp_path)) == [tu_map.L_KEY]

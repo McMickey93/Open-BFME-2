@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Retail-structural TU evidence: where the image's own layout places a body.
 
-tools/tu_map.py places a row by its names and strings (F/Z/S/N/U) and by address
+tools/tu_map.py places a row by its names and strings (F/Z/S/L/N/U) and by address
 contiguity (C). Most code rows have neither: no `__FILE__` string, no Zero Hour
 definition, no usable name, no bracketing anchors. The linker lays out more than
 .text in object order, and this module reads those layouts out of the retail image
@@ -27,7 +27,7 @@ definition, no usable name, no bracketing anchors. The linker lays out more than
      `parent=` notes.
 
 R, V, I and E share one rule: a function's entries in the layout, the nearest
-anchored entries below and above each of them (an anchor is an approved F/Z/S/N/U
+anchored entries below and above each of them (an anchor is an approved F/Z/S/L/N/U
 map row; never C, so a bracket does not lean on contiguity), both naming one TU
 within the signal's gap. A function whose entries name two TUs gets nothing.
 
@@ -88,7 +88,7 @@ import tu_map  # noqa: E402
 SIGNALS = ("E", "I", "V", "R", "P")            # order of preference when several agree
 PROMOTED = frozenset("EP")                    # approval-capable signals (Verifier-Change commit)
 GATE = 0.99
-ANCHOR_BY = frozenset("FZSNU")
+ANCHOR_BY = frozenset("FZSLNU")
 TEST_BY = frozenset("FZS")
 # Max distance (bytes in the signal's own layout) between the two bracketing anchors.
 GAPS = {"R": 0x100, "V": 0x400, "I": 0x40, "E": 0x2000}
