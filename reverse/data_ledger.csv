@@ -2811,7 +2811,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x007D5DE4,64,.rdata,string,??_C@_0DO@DNBAMEBN@?5indexes?5a?5bone?5not?5present?5in?5t@,,literal,,0,1
 0x007D5E24,20,.rdata,string,??_C@_0BC@EBAMJJON@ERROR?$CB?5animation?5?$AA@,,literal,,0,1
 0x007D5E38,24,.rdata,vtable,??_7Rva00191120@@6B@,,literal,??_7Rva00191120@@6B@;??_7Vector3Randomizer@@6B@,0,2
-0x007D5E50,4,.rdata,float,__real@42480000,,literal,?MAX_LINE_TILING_FACTOR@?1??Set_Texture_Tile_Factor@SegLineRendererClass@@QAEXM@Z@4MB@Code/Libraries/Source/WWVegas/WW3D2/seglinerenderer.cpp;__real@42480000;_c_emotionPulseRadiusDefault@Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdateModuleDataCtor2.cpp,2,32
+0x007D5E50,4,.rdata,float,__real@42480000,,literal,?MAX_LINE_TILING_FACTOR@?1??Set_Texture_Tile_Factor@SegLineRendererClass@@QAEXM@Z@4MB@Code/Libraries/Source/WWVegas/WW3D2/seglinerenderer.cpp;__real@42480000;_c_emotionPulseRadiusDefault@Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdate.cpp,2,32
 0x007D5E54,4,.rdata,float,__real@30000000,,literal,,0,2
 0x007D5E58,48,.rdata,vtable,??_7?$VectorClass@PAVHAnimComboDataClass@@@@6B@,,literal,??_7?$VectorClass@M@@6B@;??_7?$VectorClass@PAVHAnimComboDataClass@@@@6B@,0,5
 0x007D5E88,24,.rdata,vtable,??_7?$DynamicVectorClass@PAVHAnimComboDataClass@@@@6B@,,literal,??_7?$DynamicVectorClass@M@@6B@;??_7?$DynamicVectorClass@PAVHAnimComboDataClass@@@@6B@,0,4
@@ -20150,8 +20150,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A039A0,4,.data,global,?TheArrowStormUpdatePoolKey@?1??getModuleNameKey@ArrowStormUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ArrowStormUpdatePoolKey.cpp,owned,,1,2
 0x00A039A4,4,.data,global,?$S1@?1??getModuleNameKey@ArrowStormUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ArrowStormUpdatePoolKey.cpp,owned,,1,4
 0x00A039A8,4,.data,global,_s_rva007B15F1,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A039AC,4,.data,global,?TheModelConditionSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@ModelConditionSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdatePoolKey.cpp,owned,,1,2
-0x00A039B0,4,.data,global,?$S1@?1??getModuleNameKey@ModelConditionSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdatePoolKey.cpp,owned,,1,4
+0x00A039AC,4,.data,global,?TheModelConditionSpecialAbilityUpdatePoolKey@?1??getModuleNameKey@ModelConditionSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdate.cpp,owned,,1,2
+0x00A039B0,4,.data,global,?$S1@?1??getModuleNameKey@ModelConditionSpecialAbilityUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ModelConditionSpecialAbilityUpdate.cpp,owned,,1,4
 0x00A039B4,4,.data,global,?TheDamageFieldUpdatePoolKey@?1??getModuleNameKey@DamageFieldUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/DamageFieldUpdatePoolKey.cpp,owned,,1,2
 0x00A039B8,4,.data,global,?$S1@?1??getModuleNameKey@DamageFieldUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/DamageFieldUpdatePoolKey.cpp,owned,,1,4
 0x00A039BC,4,.data,global,?TheMonitorConditionUpdatePoolKey@?1??getModuleNameKey@MonitorConditionUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/MonitorConditionUpdatePoolKey.cpp,owned,,1,2
