@@ -2310,7 +2310,6 @@ alternatename	Code/GameEngine/Source/Common/Rva0041580ECleanup.cpp	?rva004158AFR
 alternatename	Code/GameEngine/Source/Common/Rva00415CABDtor.cpp	??1Rva0022BD25Subsystem@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva004161F1Notify.cpp	?g_Va00E04904@@3HA	1
 alternatename	Code/GameEngine/Source/Common/Rva00418BFBSearch.cpp	??RRva00418BFBComp@@QBE_NPBX0@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva0041F042OwnerDtor.cpp	??1Rva0022BD9ASubsystem@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0041FE0ECtor.cpp	_vtbl_00C3B988	1
 alternatename	Code/GameEngine/Source/Common/Rva00420110Method.cpp	?TheRva00222A8BTarget@@3PAVRva00222A8BTarget@@A	1
 alternatename	Code/GameEngine/Source/Common/Rva004246BDObjListPush.cpp	?_M_create_node@?$list@PAVRva004246BDObj@@V?$allocator@PAVRva004246BDObj@@@_STL@@@_STL@@IAEPAU?$_List_node@PAVRva004246BDObj@@@2@ABQAVRva004246BDObj@@@Z	1
@@ -3393,6 +3392,7 @@ alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_DllHand
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_DllHandleLoadFailure.cpp	_vtbl_00BD3B54	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGroupSkipCheck.cpp	?skipGroup@Rva003B485AHolder@@QAE_NPAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListElementDestroy.cpp	??1ScriptListElementName@@QAE@XZ	1
+alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AIBaseBuilder/BaseTemplateLibrary.cpp	??1Rva0022BD9ASubsystem@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AIStatCollector/AIStatCollector.cpp	??0?$hash_map@HHU?$hash@H@_STL@@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHH@_STL@@@2@@_STL@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITacticsGenerator/AITactic.cpp	?slot08@AITactic@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITargetChooser/AITargetChooser.cpp	??1Rva005A9562@@QAE@XZ	1
