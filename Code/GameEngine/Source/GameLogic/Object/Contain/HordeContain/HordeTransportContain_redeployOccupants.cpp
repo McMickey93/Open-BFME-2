@@ -40,42 +40,35 @@ struct Rva0046247DPair
  void *a;
  IntList *objects;
  
-}
-;
+};
 class Rva0046247D 
 {
  public:void rva0046247D(Rva0046247DPair &);
  
-}
-;
+};
 class Rva0047A040Base9E0 
 {
  public:void *rva00588B8A(void *);
  
-}
-;
+};
 class Rva00270260 
 {
  public:bool rva00270260();
  
-}
-;
+};
 class Rva002716Holder 
 {
  public:void rva00271601(unsigned char);
  
-}
-;
+};
 enum DamageType 
 {
  DeathDamage=8 
-}
-;
+};
 enum DeathType 
 {
  NormalDeath=0 
-}
-;
+};
 class Drawable;
 // Only the accessed template prefix is established here: native477556
 // tests byte115 bit20, independently agreeing with WB's kind-of109 test.
@@ -84,8 +77,7 @@ struct Rva00477513TemplateView
  unsigned char prefix00[0x115];
  unsigned char flags115;
  
-}
-;
+};
 class Object 
 {
  public:
@@ -95,8 +87,7 @@ class Object
  const Rva00477513TemplateView *templateView;
  const Rva00477513TemplateView *getTemplate() const { return templateView; }
  
-}
-;
+};
 #define V(n) virtual void s##n()=0;
 class RiderContain 
 {
@@ -110,8 +101,7 @@ class RiderContain
  V(53) V(54) V(55) V(56) V(57) V(58) V(59) V(60) V(61) V(62) V(63) V(64) V(65)
  virtual Rva0036AE51ListView s108()=0;
  
-}
-;
+};
 class RemovalNotice 
 {
  public:
@@ -121,8 +111,7 @@ class RemovalNotice
  V(30) V(31) V(32) V(33) V(34) V(35) V(36) V(37) V(38) V(39) V(40)
  virtual void sA4(Object *,int)=0;
  
-}
-;
+};
 #undef V
 class Thing;
 struct Rva0047727EObjectPositionView;
@@ -137,8 +126,7 @@ class HordeTransportContain
  unsigned char prefix00[8];
  Rva0047727EObjectPositionView *m_object;
  
-}
-;
+};
 #include "../../../../../../Libraries/Include/Lib/Coord3D.h"
 // Suppress this TU's non-retail copy of ?deallocate@?$allocator@U?$_List_node@H@_STL@@@_STL@@QBEXPAU?$_List_node@H@2@I@Z:
 // the kept copy serves the link. Plain declaration-only form (no __imp_).
@@ -147,8 +135,7 @@ class Thing
 {
  public: void setPosition(const Coord3D *position);
  
-}
-;
+};
 // Native477513..4775FD is a complete EH-protected body. WB119FE80 supplies
 // the list-flattening algorithm; native calls, offsets and element accesses
 // establish the target-specific adaptations. BF1 f98983a7's whole
