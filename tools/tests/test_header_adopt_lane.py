@@ -28,19 +28,22 @@ CONTRACT = {"class": "Coord3D", "key": "struct", "key_by": "bytes", "size": 12, 
                        for o, n in ((0, "x"), (4, "y"), (8, "z"))]}
 
 
-@pytest.fixture(params=["Coord2D", "Coord3D"])
+@pytest.fixture(params=[("Coord2D", "Coord2DCtorView"),
+                        ("Coord3D", "Coord3DCtorView"),
+                        ("Coord3D", "Coord3DDerivedView"),
+                        ("Coord3D", "Coord3DInline")])
 def constructor_companion(tmp_path, monkeypatch, request):
-    name = request.param
+    name, companion_name = request.param
     directory = "Code/Libraries/Include/Lib"
     header = f"{directory}/{name}.h"
-    companion = f"{directory}/{name}CtorView.h"
+    companion = f"{directory}/{companion_name}.h"
     for path in (header, companion):
         full = tmp_path / path
         full.parent.mkdir(parents=True, exist_ok=True)
         full.write_text(f"class {name} {{}};\n")
     source = "Code/Body.cpp"
     body = tmp_path / source
-    body.write_text(f'#include "Libraries/Include/Lib/{name}CtorView.h"\n')
+    body.write_text(f'#include "Libraries/Include/Lib/{companion_name}.h"\n')
     queue = tmp_path / "header_queue.tsv"
     queue.write_text("class\tsource\theader\n" + f"{name}\t{source}\t{header}\n")
     monkeypatch.setattr(lane, "ROOT", tmp_path)
@@ -87,10 +90,11 @@ def test_constructor_companion_does_not_bypass_adoption_checks(constructor_compa
     elif case == "missing":
         (lane.ROOT / companion).unlink()
     elif case == "ambiguous":
-        body.write_text(f'#include "{name}CtorView.h"\n')
-        monkeypatch.setattr(lane, "tracked_headers", lambda: [header, companion, f"Code/Other/{name}CtorView.h"])
+        basename = Path(companion).name
+        body.write_text(f'#include "{basename}"\n')
+        monkeypatch.setattr(lane, "tracked_headers", lambda: [header, companion, f"Code/Other/{basename}"])
     elif case in ("unapproved", "other-class"):
-        fake = (f"Code/Other/{name}CtorView.h" if case == "unapproved" else
+        fake = (f"Code/Other/{Path(companion).name}" if case == "unapproved" else
                 "Code/Libraries/Include/Lib/" + ("Coord3D" if name == "Coord2D" else "Coord2D") + "CtorView.h")
         (lane.ROOT / fake).parent.mkdir(parents=True, exist_ok=True)
         (lane.ROOT / fake).write_text(f"#define CANONICAL_{name.upper()}_H\nclass {name} {{}};\n")

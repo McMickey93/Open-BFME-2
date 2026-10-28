@@ -504,16 +504,17 @@ COMMENTS = re.compile(r"//[^\n]*|/\*.*?(?:\*/|\Z)", re.S)
 INCLUDE = re.compile(r"^[ \t]*#[ \t]*include[ \t]*[<\"]([^>\"\n]+)[>\"]", re.M)
 DIRECTIVE = re.compile(r"^[ \t]*#[ \t]*(\w+)(.*)$")
 
-# These existing companions supply retail's non-POD coordinate lifetimes while
-# the registered headers preserve the POD view needed by other matched units.
-# See each companion's retail ctor/dtor evidence and docs/recipes.md. They take
+# These existing companions provide coordinate views needed by matched units.
+# See each companion's evidence and docs/recipes.md. They take
 # the canonical include guard instead of including the POD declaration. Keep
 # exact class/header pairs: a filename suffix or a copied guard proves nothing.
-CONSTRUCTOR_COMPANIONS = {
+HEADER_COMPANIONS = {
     ("Coord2D", "Code/Libraries/Include/Lib/Coord2D.h"):
-        "Code/Libraries/Include/Lib/Coord2DCtorView.h",
+        ("Code/Libraries/Include/Lib/Coord2DCtorView.h",),
     ("Coord3D", "Code/Libraries/Include/Lib/Coord3D.h"):
-        "Code/Libraries/Include/Lib/Coord3DCtorView.h",
+        ("Code/Libraries/Include/Lib/Coord3DCtorView.h",
+         "Code/Libraries/Include/Lib/Coord3DDerivedView.h",
+         "Code/Libraries/Include/Lib/Coord3DInline.h"),
 }
 
 
@@ -578,9 +579,10 @@ def verdict(name, source, header=None, gate=None):
     problems = []
     if name in class_layouts.class_bodies((ROOT / source).read_text(encoding="latin-1")):
         problems.append("still declares a private body")
-    companion = CONSTRUCTOR_COMPANIONS.get((name, header))
+    companions = HEADER_COMPANIONS.get((name, header), ())
     if not (includes_header(source, header) or
-            (companion and (ROOT / companion).is_file() and includes_header(source, companion))):
+            any((ROOT / companion).is_file() and includes_header(source, companion)
+                for companion in companions)):
         problems.append(f"does not #include {header}")
     why = (gate or gate_one)(source)
     if why:
