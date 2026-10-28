@@ -5043,6 +5043,13 @@ Clearance: preview (link_check on current objects). Census confirmation: pending
 
 ### LINK-095: generated EH funclets whose parent TU emits an unpinned or wrong dtor callee
 
+**2026-10-28 picker recheck (base `47c952289b`):** `uw_gen_008.cpp`
+still fails the ordinary preview against index `14dc3d2467`, on
+`??1Gen_uw_0048ba39@@QAE@XZ` and `gen_uw_ext`. Its 58 remaining generated
+rows require verified parent repoints; the previously recorded 0x007A3734
+repoint still has an unmasked byte mismatch. No row was moved and no census
+gain is claimed. Recheck parent evidence or its callee before retrying.
+
 **Canonical Snapshot follow-up (2026-10-28, inspected `73c0328c5d`):**
 [The bounded parent-ownership repair](../reverse/attempt_support/uw013-snapshot-parent-repoints-20261028-codex.md)
 repoints four eight-byte uw_gen_013 cleanups (0x0075B560, 0x0075E4FF,

@@ -7,6 +7,8 @@
 // The class keeps an address-derived name; the tables use address-named
 // aliases like the base. Base is opaque here so the call never inlines.
 
+#include <new.h>
+
 // Address-named alias: retail RVA 0x0081C780 is one __purecall slot.
 // The emitted donor table is independently checked as four bytes with
 // one __purecall relocation, whose matched body is at RVA 0x0003B810.
@@ -28,11 +30,6 @@ public:
 private:
 	unsigned char m_storage[ 0x0c ];
 };
-
-inline void *__cdecl operator new( unsigned int, void *p )
-{
-	return p;
-}
 
 Rva0055EFE1::Rva0055EFE1( unsigned int a )
 {
