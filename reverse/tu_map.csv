@@ -13594,22 +13594,22 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001F3A25,247,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemRotateLocalTransform.cpp
 0x001F3B1C,247,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemRotateLocalTransform.cpp
 0x001F3C13,13,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3B1C..0x001F3C20,Code/GameEngine/Source/Common/DispByteFieldSetters.cpp
-0x001F3C20,35,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3B1C..0x001F3C43,Code/GameEngine/Source/Common/Rva001F3C20Slots.cpp
-0x001F3C43,29,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3B1C..0x001F3C60,Code/GameEngine/Source/Common/Rva001F3C20Slots.cpp
-0x001F3C60,11,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3B1C..0x001F3C6B,Code/GameEngine/Source/Common/Rva001F3C20Slots.cpp
+0x001F3C20,35,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3B1C..0x001F3C43,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F3C43,29,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3B1C..0x001F3C60,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F3C60,11,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3B1C..0x001F3C6B,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F3C6B,47,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/FXParticleSystem/FXPSStorageModuleRva003B0869.cpp
-0x001F3C9A,105,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F3D03,Code/GameEngine/Source/Common/Rva001F3C9ACheck.cpp
+0x001F3C9A,105,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F3D03,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F3D03,30,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F3D21,Code/GameEngine/Source/Common/Rva001F3D03Set.cpp
 0x001F3D21,13,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F3D2E,Code/GameEngine/Source/Common/DispDwordFieldSetters.cpp
 0x001F3D2E,674,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F3FD0,Code/GameEngine/Source/GameClient/ParticleSystemTemplate.cpp
-0x001F3FD0,26,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F3FEA,Code/GameEngine/Source/Common/Rva001F3FD0Set.cpp
+0x001F3FD0,26,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F3FEA,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F3FEA,24,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F3C6B..0x001F4002,Code/GameEngine/Source/GameClient/System/FXParticleSystem/FXParticleSystemStaticInitModules.cpp
-0x001F4002,173,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F3C6B..0x001F40AF,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x001F40AF,189,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F416C,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x001F416C,67,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F41AF,Code/GameEngine/Source/Common/Rva001F416CInsert.cpp
-0x001F41AF,30,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F41CD,Code/GameEngine/Source/Common/Rva001F41AFAssign.cpp
-0x001F41CD,57,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4206,Code/GameEngine/Source/Common/Rva001F41CDAssign.cpp
-0x001F4206,21,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F421B,Code/GameEngine/Source/Common/Rva001F4206.cpp
+0x001F4002,173,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F3C6B..0x001F40AF,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F40AF,189,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F416C,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F416C,67,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F41AF,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F41AF,30,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F41CD,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F41CD,57,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4206,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F4206,21,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F421B,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F421B,25,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4234,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F4234,12,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4240,Code/GameEngine/Source/Common/S2NullCheckedTailDispatch.cpp
 0x001F4240,14,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F424E,Code/GameEngine/Source/Common/S2NullCheckedTailDispatch.cpp
@@ -13619,9 +13619,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001F429A,32,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F42BA,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F42BA,32,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F42DA,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F42DA,48,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F430A,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_ostream_put_num.cpp
-0x001F430A,12,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4316,Code/Libraries/Source/WWVegas/WWLib/Rva001F430A.cpp
+0x001F430A,12,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4316,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F4316,15,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4325,Code/Libraries/Source/WWVegas/WWLib/Rva0055C0E1.cpp
-0x001F4325,16,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4335,Code/Libraries/Source/WWVegas/WWLib/StlSweepW6Rva001F4325.cpp
+0x001F4325,16,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4335,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F4335,6,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F433B,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F433B,6,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4341,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F4341,22,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4357,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
@@ -13650,22 +13650,22 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001F4466,6,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F446C,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F446C,5,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4471,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F4471,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F448D,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ButterflyDrawModuleTemplateCtorThunk.cpp
-0x001F448D,87,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F44E4,Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp
+0x001F448D,87,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F44E4,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F44E4,64,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4524,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F4524,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F4540,Code/GameEngine/Source/GameClient/FXParticleSystem.cpp
 0x001F4540,75,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F458B,Code/GameEngine/Source/Common/VectorDeletingDtorsV02_Unresolved.cpp
-0x001F458B,29,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45A8,Code/GameEngine/Source/Common/Rva001F458BWrite.cpp
+0x001F458B,29,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45A8,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F45A8,9,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45B1,Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp
 0x001F45B1,9,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45BA,Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp
 0x001F45BA,9,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45C3,Code/GameEngine/Source/Common/RvaSmallVtableCtors.cpp
 0x001F45C3,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45DF,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB08.cpp
-0x001F45DF,16,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45EF,Code/GameEngine/Source/Common/Rva001F45DFGet.cpp
-0x001F45EF,5,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45F4,Code/GameEngine/Source/Common/Rva001F4206.cpp
+0x001F45DF,16,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45EF,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F45EF,5,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F3C6B..0x001F45F4,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F45F4,56,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemRva001F45F4.cpp
-0x001F462C,50,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystem_destroy.cpp
+0x001F462C,50,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F465E,56,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemRva001F465E.cpp
 0x001F4696,354,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemRva001F4696.cpp
-0x001F47F8,138,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F4696..0x001F4882,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
+0x001F47F8,138,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F4696..0x001F4882,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F4882,93,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4696..0x001F48DF,Code/GameEngine/Source/Common/Rva001F4882Unlink.cpp
 0x001F48DF,123,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4696..0x001F495A,Code/GameEngine/Source/Common/Rva001F48DFOldestParticle.cpp
 0x001F495A,5,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4696..0x001F495F,Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp
@@ -13695,7 +13695,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001F4B63,260,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F4C67,Code/GameEngine/Source/GameClient/System/ParticleBaseConstructor.cpp
 0x001F4C67,159,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F4C67,Code/GameEngine/Source/Common/Rva001F4C67Finish.cpp
 0x001F4D06,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4C67..0x001F4D22,Code/GameEngine/Source/Common/Rva001F4D06Ctor.cpp
-0x001F4D22,11,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F4D22,Code/GameEngine/Source/Common/Rva001F4D22Dtor.cpp
+0x001F4D22,11,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F4D22,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F4D2D,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4D22..0x001F4D4F,Code/GameEngine/Source/Common/Rva001F4D2DFloat.cpp
 0x001F4D4F,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4D22..0x001F4D76,Code/GameEngine/Source/Common/Rva001F4D4FFinish.cpp
 0x001F4D76,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4D22..0x001F4D9D,Code/GameEngine/Source/Common/Rva001F4D76.cpp
@@ -13720,45 +13720,45 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001F529D,47,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4D22..0x001F52CC,Code/GameEngine/Source/Common/Rva001F529D.cpp
 0x001F52CC,52,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4D22..0x001F5300,Code/GameEngine/Source/Common/Rva001F52CC.cpp
 0x001F5300,76,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F4D22..0x001F534C,Code/GameEngine/Source/Common/Rva001F5300Finish.cpp
-0x001F534C,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/Common/Rva001F553F.cpp
+0x001F534C,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F5373,55,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F534C..0x001F53AA,Code/GameEngine/Source/Common/Rva001F5373.cpp
 0x001F53AA,18,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F534C..0x001F53BC,Code/GameEngine/Source/Common/Rva001F53AAGet.cpp
 0x001F53BC,18,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F534C..0x001F53CE,Code/GameEngine/Source/Common/Rva001F53BCGet.cpp
-0x001F53CE,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/Common/Rva001F553F.cpp
+0x001F53CE,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F53F0,17,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F53CE..0x001F5401,Code/GameEngine/Source/Common/Rva001F53F0.cpp
-0x001F5401,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/Common/Rva001F553F.cpp
-0x001F5423,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/Common/Rva001F553F.cpp
-0x001F5445,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/Common/Rva001F553F.cpp
+0x001F5401,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5423,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5445,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,K,K=Rva001F553F,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F5467,47,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F5445..0x001F5496,Code/GameEngine/Source/Common/Rva001F5467.cpp
 0x001F5496,47,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,C,C=0x001F5445..0x001F54C5,Code/GameEngine/Source/Common/Rva001F5496.cpp
 0x001F54C5,122,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/Common/ParticleSystem.cpp,Code/GameEngine/Source/Common/ParticleSystemManagerFindByID.cpp
-0x001F553F,105,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F54C5..0x001F55A8,Code/GameEngine/Source/Common/Rva001F553F.cpp
+0x001F553F,105,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F54C5..0x001F55A8,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F55A8,812,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
-0x001F58D4,79,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F55A8..0x001F5923,Code/GameEngine/Source/Common/Rva001F58D4.cpp
+0x001F58D4,79,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F55A8..0x001F5923,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F5923,327,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F55A8..0x001F5A6A,Code/GameEngine/Source/GameClient/System/rva001F5923Rva001F5923Farm.cpp
 0x001F5A6A,58,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/Common/ParticleSystemManager.cpp,Code/GameEngine/Source/Common/ParticleSystemManagerFindByID.cpp
 0x001F5AA4,102,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/Common/ParticleSystemManager.cpp,Code/GameEngine/Source/Common/ParticleSystemManagerFindByID.cpp
 0x001F5B0A,111,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/Common/ParticleSystemManager.cpp,Code/GameEngine/Source/Common/ParticleSystemManagerFindByID.cpp
-0x001F5B79,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/Common/ParticleSystemManager.cpp,Code/GameEngine/Source/Common/ParticleSystemManagerDestroyByID.cpp
+0x001F5B79,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/Common/ParticleSystemManager.cpp,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F5BBE,123,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5C39,Code/GameEngine/Source/Common/Rva001F5BBE.cpp
-0x001F5C39,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5C60,Code/GameEngine/Source/Common/Rva001F5C39.cpp
-0x001F5C60,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5C87,Code/GameEngine/Source/Common/Rva001F5C60.cpp
+0x001F5C39,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5C60,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5C60,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5C87,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F5C87,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5CA9,Code/Libraries/Source/WWVegas/WWLib/stlport_list_create_nodes.cpp
-0x001F5CA9,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5CD0,Code/GameEngine/Source/Common/Rva001F5CA9.cpp
-0x001F5CD0,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5CF7,Code/GameEngine/Source/Common/Rva001F5CD0.cpp
-0x001F5CF7,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D0E,Code/GameEngine/Source/Common/Rva001F5CF7.cpp
-0x001F5D0E,42,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D38,Code/GameEngine/Source/Common/Rva001F5D0E.cpp
-0x001F5D38,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D4F,Code/GameEngine/Source/Common/Rva001F5D38.cpp
+0x001F5CA9,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5CD0,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5CD0,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5CF7,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5CF7,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D0E,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5D0E,42,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D38,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5D38,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D4F,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F5D4F,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D71,Code/GameEngine/Source/Common/Rva001F5D4F.cpp
-0x001F5D71,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D98,Code/GameEngine/Source/Common/Rva001F5D71.cpp
-0x001F5D98,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DAC,Code/GameEngine/Source/Common/Rva001F5D98Get.cpp
-0x001F5DAC,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DC0,Code/GameEngine/Source/Common/Rva001F5DACGet.cpp
-0x001F5DC0,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DD4,Code/GameEngine/Source/Common/Rva001F5DC0Get.cpp
-0x001F5DD4,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DE8,Code/GameEngine/Source/Common/Rva001F5DD4Get.cpp
-0x001F5DE8,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DFC,Code/GameEngine/Source/Common/Rva001F5DE8Get.cpp
-0x001F5DFC,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5E10,Code/GameEngine/Source/Common/Rva001F5DFCGet.cpp
-0x001F5E10,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5E24,Code/GameEngine/Source/Common/Rva001F5E10Get.cpp
-0x001F5E24,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5E38,Code/GameEngine/Source/Common/Rva001F5E24Get.cpp
+0x001F5D71,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5D98,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5D98,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DAC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5DAC,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DC0,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5DC0,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DD4,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5DD4,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DE8,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5DE8,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5DFC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5DFC,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5E10,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5E10,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5E24,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001F5E24,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5E38,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F5E38,25,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5E51,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_ostream_put_num.cpp
 0x001F5E51,276,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F5F65,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_ostream_put_num.cpp
 0x001F5F65,286,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F609F,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_ostream_put_num.cpp
@@ -13773,7 +13773,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001F61B3,11,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F61BE,Code/GameEngine/Source/GameClient/Rva001F43BDSet.cpp
 0x001F61BE,11,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F61C9,Code/GameEngine/Source/GameClient/Rva001F43BDSet.cpp
 0x001F61C9,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F61E5,Code/GameEngine/Source/Common/Rva001F4C67Finish.cpp
-0x001F61E5,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F6201,Code/GameEngine/Source/Common/Rva001F4D22Dtor.cpp
+0x001F61E5,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F5B79..0x001F6201,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001F6201,142,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001F5B79..0x001F628F,Code/GameEngine/Source/GameClient/System/FXParticleSystem/CPUParticleLoadPostProcess.cpp
 0x001F628F,221,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemLoadPostProcessBfme2.cpp
 0x001F636C,93,code,,,-,,Code/GameEngine/Source/Common/Rva001F636C.cpp
@@ -13961,13 +13961,13 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001FA440,31,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA45F,Code/GameEngine/Source/Common/Thing/Rva001FA440Ctor.cpp
 0x001FA45F,20,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA473,Code/GameEngine/Source/GameClient/Rva001F93A3Insert.cpp
 0x001FA473,26,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA48D,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_ostringstream_dtor.cpp
-0x001FA48D,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA4A4,Code/GameEngine/Source/Common/Thing/Rva001FA48D.cpp
-0x001FA4A4,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA4C6,Code/GameEngine/Source/Common/Thing/Rva001FA4A4.cpp
+0x001FA48D,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA4A4,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FA4A4,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA4C6,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FA4C6,42,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA4F0,Code/GameEngine/Source/Common/Rva001F6492Chain.cpp
-0x001FA4F0,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA507,Code/GameEngine/Source/Common/Thing/Rva001FA4F0.cpp
-0x001FA507,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA529,Code/GameEngine/Source/Common/Thing/Rva001FA507.cpp
-0x001FA529,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA54D,Code/GameEngine/Source/Common/Thing/Rva001FA529Forward.cpp
-0x001FA54D,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA574,Code/GameEngine/Source/Common/Thing/Rva001FA54DForward.cpp
+0x001FA4F0,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA507,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FA507,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA529,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FA529,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA54D,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FA54D,39,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA574,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FA574,16,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA584,Code/GameEngine/Source/Common/Rva005A0B4CListAppend.cpp
 0x001FA584,19,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA597,Code/GameEngine/Source/GameLogic/Object/Rva001FA584Ctor.cpp
 0x001FA597,14,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA5A5,Code/GameEngine/Source/Common/BigChainBaseDtors.cpp
@@ -13978,13 +13978,13 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001FA676,41,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA69F,Code/GameEngine/Source/Common/Rva001F9CCAAssignChain.cpp
 0x001FA69F,218,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA779,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerDtor.cpp
 0x001FA779,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA795,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerDtor.cpp
-0x001FA795,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA7AC,Code/GameEngine/Source/Common/Thing/Rva001FA795.cpp
-0x001FA7AC,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA7CE,Code/GameEngine/Source/Common/Thing/Rva001FA7AC.cpp
+0x001FA795,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA7AC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FA7AC,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA7CE,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FA7CE,42,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA7F8,Code/GameEngine/Source/Common/Rva001F6492Chain.cpp
-0x001FA7F8,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA80F,Code/GameEngine/Source/Common/Thing/Rva001FA7F8.cpp
-0x001FA80F,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA831,Code/GameEngine/Source/Common/Thing/Rva001FA80F.cpp
+0x001FA7F8,23,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA80F,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FA80F,34,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA831,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FA831,5,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA836,Code/GameEngine/Source/Common/GapJmpThunksSeat8.cpp
-0x001FA836,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA85C,Code/GameEngine/Source/Common/Thing/Rva001FA836ForwardChain.cpp
+0x001FA836,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA85C,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FA85C,129,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA8DD,Code/Libraries/Source/WWVegas/WWLib/stlport_narrow_ostringstream_ctor.cpp
 0x001FA8DD,110,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA94B,Code/GameEngine/Source/GameLogic/Object/Rva001FA8DDParse.cpp
 0x001FA94B,15,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001F9F66..0x001FA95A,Code/GameEngine/Source/GameLogic/Object/Rva001FA584Ctor.cpp
@@ -13999,68 +13999,68 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x001FB864,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB8A9,Code/GameEngine/Source/Common/Thing/Rva001F9C73CopyChain.cpp
 0x001FB8A9,18,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB8BB,Code/GameEngine/Source/GameLogic/Object/Rva001FA5A5Ctor.cpp
 0x001FB8BB,41,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB8E4,Code/GameEngine/Source/Common/Rva001F9CCAAssignChain.cpp
-0x001FB8E4,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB8EC,Code/GameEngine/Source/Common/Thing/Rva001FA529Forward.cpp
-0x001FB8EC,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB912,Code/GameEngine/Source/Common/Thing/Rva001FA836ForwardChain.cpp
+0x001FB8E4,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB8EC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FB8EC,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB912,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FB912,43,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB93D,Code/GameEngine/Source/GameLogic/Object/Rva001FB912Init.cpp
 0x001FB93D,18,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB94F,Code/GameEngine/Source/GameLogic/Object/Rva001FA584Ctor.cpp
-0x001FB94F,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB98A,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
+0x001FB94F,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB98A,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FB98A,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FB9C5,Code/GameEngine/Source/Common/Rva001F8BE8DtorChain.cpp
 0x001FB9C5,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBA00,Code/GameEngine/Source/Common/Rva001F8BE8DtorChain.cpp
 0x001FBA00,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBA45,Code/GameEngine/Source/Common/Thing/Rva001F9C73CopyChain.cpp
 0x001FBA45,22,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBA5B,Code/GameEngine/Source/GameLogic/Object/Rva001FA5A5Ctor.cpp
 0x001FBA5B,41,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBA84,Code/GameEngine/Source/Common/Rva001F9CCAAssignChain.cpp
-0x001FBA84,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBA8C,Code/GameEngine/Source/Common/Thing/Rva001FA529Forward.cpp
-0x001FBA8C,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBAB2,Code/GameEngine/Source/Common/Thing/Rva001FA836ForwardChain.cpp
+0x001FBA84,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBA8C,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FBA8C,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBAB2,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FBAB2,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBAD8,Code/GameEngine/Source/GameLogic/Object/Rva001FB912Init.cpp
 0x001FBAD8,22,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBAEE,Code/GameEngine/Source/GameLogic/Object/Rva001FA584Ctor.cpp
-0x001FBAEE,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBB29,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
+0x001FBAEE,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBB29,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FBB29,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBB64,Code/GameEngine/Source/Common/Rva001F8BE8DtorChain.cpp
 0x001FBB64,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBB9F,Code/GameEngine/Source/Common/Rva001F8BE8DtorChain.cpp
 0x001FBB9F,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBBE4,Code/GameEngine/Source/Common/Thing/Rva001F9C73CopyChain.cpp
 0x001FBBE4,18,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBBF6,Code/GameEngine/Source/GameLogic/Object/Rva001FA5A5Ctor.cpp
 0x001FBBF6,41,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBC1F,Code/GameEngine/Source/Common/Rva001F9CCAAssignChain.cpp
-0x001FBC1F,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBC43,Code/GameEngine/Source/GameLogic/Object/Rva001FBC1FForward.cpp
-0x001FBC43,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBC69,Code/GameEngine/Source/Common/Thing/Rva001FA836ForwardChain.cpp
+0x001FBC1F,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBC43,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FBC43,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBC69,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FBC69,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBC8F,Code/GameEngine/Source/GameLogic/Object/Rva001FB912Init.cpp
 0x001FBC8F,18,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBCA1,Code/GameEngine/Source/GameLogic/Object/Rva001FA584Ctor.cpp
-0x001FBCA1,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBCDC,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
+0x001FBCA1,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBCDC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FBCDC,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FAB59..0x001FBD17,Code/GameEngine/Source/Common/Rva001F8BE8DtorChain.cpp
 0x001FBD17,410,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemDestructor.cpp
 0x001FBEB1,6,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBEB7,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp
 0x001FBEB7,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBEF2,Code/GameEngine/Source/Common/Rva001F8BE8DtorChain.cpp
 0x001FBEF2,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBF37,Code/GameEngine/Source/Common/Thing/Rva001F9C73CopyChain.cpp
 0x001FBF37,22,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBF4D,Code/GameEngine/Source/GameLogic/Object/Rva001FA5A5Ctor.cpp
-0x001FBF4D,80,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBF9D,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemTemplateCopyCtor.cpp
+0x001FBF4D,80,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBF9D,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FBF9D,41,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBFC6,Code/GameEngine/Source/Common/Rva001F9CCAAssignChain.cpp
-0x001FBFC6,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBFEA,Code/GameEngine/Source/GameLogic/Object/Rva001FBFC6Forward.cpp
-0x001FBFEA,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC010,Code/GameEngine/Source/Common/Thing/Rva001FA836ForwardChain.cpp
+0x001FBFC6,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FBFEA,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FBFEA,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC010,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FC010,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC036,Code/GameEngine/Source/GameLogic/Object/Rva001FB912Init.cpp
 0x001FC036,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC052,Code/GameEngine/Source/Common/RvaDeletingDtorBatch02.cpp
 0x001FC052,78,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC0A0,Code/GameEngine/Source/Common/VectorDeletingDtorsV05.cpp
 0x001FC0A0,22,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC0B6,Code/GameEngine/Source/GameLogic/Object/Rva001FA584Ctor.cpp
-0x001FC0B6,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC0F1,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
-0x001FC0F1,136,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC179,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
+0x001FC0B6,59,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC0F1,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FC0F1,136,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC179,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FC179,6,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC19B,Code/GameEngine/Source/Common/SubsystemNameGetters.cpp
 0x001FC17F,28,code,,displaced,-,N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemDestructor.cpp
 0x001FC19B,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC1E0,Code/GameEngine/Source/Common/Thing/Rva001F9C73CopyChain.cpp
-0x001FC1E0,81,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC231,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemTemplateCopyCtor.cpp
+0x001FC1E0,81,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC231,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FC231,41,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FBD17..0x001FC25A,Code/GameEngine/Source/Common/Rva001F9CCAAssignChain.cpp
 0x001FC25A,217,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystemManager.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerNewTemplate.cpp
-0x001FC333,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC357,Code/GameEngine/Source/GameLogic/Object/Rva001FC333Forward.cpp
-0x001FC357,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC37D,Code/GameEngine/Source/Common/Thing/Rva001FA836ForwardChain.cpp
+0x001FC333,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC357,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FC357,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC37D,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FC37D,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC3A3,Code/GameEngine/Source/GameLogic/Object/Rva001FB912Init.cpp
-0x001FC3A3,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC3BF,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
+0x001FC3A3,28,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC3BF,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FC3BF,69,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC404,Code/GameEngine/Source/Common/Thing/Rva001F9C73CopyChain.cpp
 0x001FC404,41,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC42D,Code/GameEngine/Source/Common/Rva001F9CCAAssignChain.cpp
-0x001FC42D,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC451,Code/GameEngine/Source/GameLogic/Object/Rva001FC42DForward.cpp
-0x001FC451,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC477,Code/GameEngine/Source/Common/Thing/Rva001FA836ForwardChain.cpp
+0x001FC42D,36,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC451,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FC451,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC477,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FC477,38,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC49D,Code/GameEngine/Source/GameLogic/Object/Rva001FB912Init.cpp
 0x001FC49D,612,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC25A..0x001FC701,Code/GameEngine/Source/GameClient/System/RenderParticleConstructor.cpp
 0x001FC701,1238,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystem.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemConstructor.cpp
 0x001FCBD7,156,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC701..0x001FCC73,Code/GameEngine/Source/GameClient/System/ParticleSystemMake001FCBD7.cpp
 0x001FCC73,504,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,W=Code/GameEngine/Source/GameClient/System/FXParticleSystem.cpp C=0x001FC701..0x001FCE6B,Code/GameEngine/Source/GameClient/System/ParticleSystemCreateParticle.cpp
-0x001FCE6B,102,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC701..0x001FCED1,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemTemplateCopyCtor.cpp
-0x001FCED1,64,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC701..0x001FCF11,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemTemplateCopyCtor.cpp
+0x001FCE6B,102,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC701..0x001FCED1,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x001FCED1,64,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,C,C=0x001FC701..0x001FCF11,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x001FCF11,261,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,S,S=Code/GameEngine/Source/GameClient/System/ParticleSys.cpp N=Code/GameEngine/Source/GameClient/System/ParticleSystemManager.cpp,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerRva001FCF11.cpp
 0x001FD016,12,code,,,-,,Code/GameEngine/Source/GameClient/System/ParticleSystemHandle_dtor.cpp
 0x001FD022,38,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Rva001FB912Init.cpp
@@ -66920,16 +66920,16 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0076B2ED,8,code,Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp,proposed,P,P=0x001F335D@FuncInfo0x009107F4,Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp
 0x0076B2F5,8,code,Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp,proposed,P,P=0x001F335D@FuncInfo0x009107F4,Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp
 0x0076B2FD,10,code,Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp,proposed,P,P=0x001F335D@FuncInfo0x009107F4,Code/GameEngine/Source/GameLogic/Object/ObjectCreationList.cpp
-0x0076B307,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F4002@FuncInfo0x00910818,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x0076B30F,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F4002@FuncInfo0x00910818,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x0076B319,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F40AF@FuncInfo0x00910844,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x0076B321,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F40AF@FuncInfo0x00910844,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x0076B32B,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F40AF@FuncInfo0x00910844,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x0076B335,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F448D@FuncInfo0x00910868,Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp
-0x0076B33D,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F448D@FuncInfo0x00910868,Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp
-0x0076B347,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,P,P=0x001F47F8@FuncInfo0x00910894,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x0076B34F,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,P,P=0x001F47F8@FuncInfo0x00910894,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
-0x0076B357,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,P,P=0x001F47F8@FuncInfo0x00910894,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemManagerGetShaderSetup.cpp
+0x0076B307,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F4002@FuncInfo0x00910818,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B30F,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F4002@FuncInfo0x00910818,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B319,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F40AF@FuncInfo0x00910844,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B321,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F40AF@FuncInfo0x00910844,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B32B,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F40AF@FuncInfo0x00910844,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B335,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F448D@FuncInfo0x00910868,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B33D,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F448D@FuncInfo0x00910868,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B347,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,P,P=0x001F47F8@FuncInfo0x00910894,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B34F,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,P,P=0x001F47F8@FuncInfo0x00910894,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B357,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,proposed,P,P=0x001F47F8@FuncInfo0x00910894,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x0076B361,8,code,,,-,,Code/gen_small/uw_gen_010.cpp
 0x0076B369,11,code,,,-,,Code/gen_small/uw_gen_010.cpp
 0x0076B374,11,code,,,-,,Code/gen_small/uw_gen_010.cpp
@@ -66995,7 +66995,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0076B5BB,8,code,,,-,,Code/GameEngine/Source/Common/Thing/Rva001F8CC2Assign.cpp
 0x0076B5C3,10,code,,,-,,Code/GameEngine/Source/Common/Thing/Rva001F8CC2Assign.cpp
 0x0076B5CD,8,code,,,-,,Code/gen_small/uw_gen_011.cpp
-0x0076B5D5,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
+0x0076B5D5,10,code,,,-,,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x0076B5DF,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F9105@FuncInfo0x00910D18,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerFindTemplate.cpp
 0x0076B5E7,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F9105@FuncInfo0x00910D18,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerFindTemplate.cpp
 0x0076B5EF,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001F9105@FuncInfo0x00910D18,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerFindTemplate.cpp
@@ -67061,12 +67061,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0076B85F,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FBD17@FuncInfo0x00910F84,Code/GameEngine/Source/GameClient/System/ParticleSystemDestructor.cpp
 0x0076B869,8,code,,,-,,Code/gen_small/uw_gen_009.cpp
 0x0076B871,14,code,,,-,,Code/gen_small/uw_gen_012.cpp
-0x0076B87F,10,code,,,-,,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemTemplateCopyCtor.cpp
-0x0076B889,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC0F1@FuncInfo0x00910FDC,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
-0x0076B891,14,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC0F1@FuncInfo0x00910FDC,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
-0x0076B89F,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC0F1@FuncInfo0x00910FDC,Code/GameEngine/Source/GameLogic/Object/Rva001FB94FDtor.cpp
-0x0076B8A9,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC1E0@FuncInfo0x00911000,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemTemplateCopyCtor.cpp
-0x0076B8B1,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC1E0@FuncInfo0x00911000,Code/GameEngine/Source/GameClient/System/FXParticleSystem/ParticleSystemTemplateCopyCtor.cpp
+0x0076B87F,10,code,,,-,,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B889,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC0F1@FuncInfo0x00910FDC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B891,14,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC0F1@FuncInfo0x00910FDC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B89F,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC0F1@FuncInfo0x00910FDC,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B8A9,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC1E0@FuncInfo0x00911000,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
+0x0076B8B1,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC1E0@FuncInfo0x00911000,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp
 0x0076B8BB,10,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC25A@FuncInfo0x00911034,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerNewTemplate.cpp
 0x0076B8C5,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC25A@FuncInfo0x00911034,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerNewTemplate.cpp
 0x0076B8CD,8,code,Code/GameEngine/Source/GameClient/System/ParticleSys.cpp,approved,P,P=0x001FC25A@FuncInfo0x00911034,Code/GameEngine/Source/GameClient/System/ParticleSystemManagerNewTemplate.cpp

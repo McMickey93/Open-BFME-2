@@ -2719,7 +2719,6 @@ alternatename	Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteCtor.cpp
 alternatename	Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteVectorPushBack.cpp	?dup_002cfbae@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Thing/ProductionPrerequisiteVectorPushBack.cpp	?dup_0033e0b7@@YAXXZ	1
 alternatename	Code/GameEngine/Source/Common/Thing/Rva001F9C73CopyChain.cpp	??0Rva001F41AF@@QAE@ABV0@@Z	1
-alternatename	Code/GameEngine/Source/Common/Thing/Rva001FA54DForward.cpp	?accept@T1Sink_005C8D40@@QAEPAXPAX0@Z	1
 alternatename	Code/GameEngine/Source/Common/Thing/Rva0033BFA6Insert.cpp	?_M_create_node@Rva0033BFA6@@QAEPAURva0033BFA6Node@@ABURva0033BFA6Key@@@Z	1
 alternatename	Code/GameEngine/Source/Common/Thing/Rva0033E102Rebuild.cpp	??1Rva0033B84ETok@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Thing/Rva0033E102Rebuild.cpp	?erase@?$vector@UBfmeContainerRecord002CF46E@@V?$allocator@UBfmeContainerRecord002CF46E@@@_STL@@@_STL@@QAEXPAUBfmeContainerRecord002CF46E@@0@Z	1
@@ -2908,9 +2907,6 @@ alternatename	Code/GameEngine/Source/GameClient/ScreenFilterRva000F8348Ctor.cpp	
 alternatename	Code/GameEngine/Source/GameClient/ScreenFilterRva000F9C3CCtor.cpp	?slot0@Rva000F9C3C@@UAEHXZ	1
 alternatename	Code/GameEngine/Source/GameClient/Shadow_setOpacity.cpp	?SetTexture@Rva00330995@@QAEXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/ButterflyDrawModuleTemplateCopyCtorThunk.cpp	_ButterflyDrawModuleTemplate_cvtbl0	1
-alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_vtbl_00BBB58C	1
-alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_vtbl_00BE16C8	1
-alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/CategoryWindModuleTemplateCtor.cpp	_vtbl_00BE16D8	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/DefaultModuleTemplate01InlineCopyCtors.cpp	_Rva003AEA42_v14a	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/DefaultModuleTemplate01InlineCopyCtors.cpp	_Rva003AEA42_v14b	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/DefaultModuleTemplate01InlineCopyCtors.cpp	_Rva003AEA42_v18a	1
@@ -2958,6 +2954,10 @@ alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/WindModu
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/WindModuleConstructor.cpp	?noOp@Rva005FEA50WindInfoBase@FXParticleSystem@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/WindModuleConstructor.cpp	?refresh@Rva005FEAD0DefaultModule7@FXParticleSystem@@UAEXPAVBfmeFlagTarget@2@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/System/FXParticleSystem/WindModuleConstructor.cpp	?update@Rva005FEAD0DefaultModule7@FXParticleSystem@@UAEXXZ	1
+alternatename	Code/GameEngine/Source/GameClient/System/ParticleSys.cpp	?accept@T1Sink_005C8D40@@QAEPAXPAX0@Z	1
+alternatename	Code/GameEngine/Source/GameClient/System/ParticleSys.cpp	_vtbl_00BBB58C	1
+alternatename	Code/GameEngine/Source/GameClient/System/ParticleSys.cpp	_vtbl_00BE16C8	1
+alternatename	Code/GameEngine/Source/GameClient/System/ParticleSys.cpp	_vtbl_00BE16D8	1
 alternatename	Code/GameEngine/Source/GameClient/System/Rva00204316.cpp	?slot00@Rva00203EFD@@UAEXPBDABVParticleSystemTemplate@FXParticleSystem@@@Z	1
 alternatename	Code/GameEngine/Source/GameClient/System/Rva00204316.cpp	?slot04@Rva00203EFD@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameClient/System/Rva00204316.cpp	?slot08@Rva00203EFD@@UAEXXZ	1
