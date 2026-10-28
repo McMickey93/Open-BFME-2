@@ -20104,8 +20104,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A038EC,4,.data,global,?TheDozerAIUpdatePoolKey@?1??getModuleNameKey@DozerAIUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Module/DozerAIUpdatePoolKey.cpp,owned,,1,2
 0x00A038F0,4,.data,global,?$S1@?1??getModuleNameKey@DozerAIUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Module/DozerAIUpdatePoolKey.cpp,owned,,1,4
 0x00A038F4,4,.data,global,_s_rva007B142E,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A038F8,4,.data,global,?TheDynamicShroudClearingRangeUpdatePoolKey@?1??getModuleNameKey@DynamicShroudClearingRangeUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdatePoolKey.cpp,owned,,1,2
-0x00A038FC,4,.data,global,?$S1@?1??getModuleNameKey@DynamicShroudClearingRangeUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdatePoolKey.cpp,owned,,1,4
+0x00A038F8,4,.data,global,?TheDynamicShroudClearingRangeUpdatePoolKey@?1??getModuleNameKey@DynamicShroudClearingRangeUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdate.cpp,owned,,1,2
+0x00A038FC,4,.data,global,?$S1@?1??getModuleNameKey@DynamicShroudClearingRangeUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/DynamicShroudClearingRangeUpdate.cpp,owned,,1,4
 0x00A03900,4,.data,global,?TheFireSpreadUpdatePoolKey@?1??rva00048B690@FireSpreadUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/FireSpreadUpdate.cpp,owned,,1,2
 0x00A03904,4,.data,global,?$S1@?1??rva00048B690@FireSpreadUpdate@@SA?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/FireSpreadUpdate.cpp,owned,,1,4
 0x00A03908,4,.data,global,?key_FlammableUpdate@?1??allow@PartitionFilterFlammable@@UAE_NPAVObject@@@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/FireSpreadUpdate.cpp,owned,,1,2
