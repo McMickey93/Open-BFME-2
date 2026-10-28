@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Two-agent agreement on an inferred name: one definition for the lane that
+"""Review of an inferred name: one definition for the lane that
 records votes (tools/name_lane.py) and the engine that lands names
 (tools/rename.py).
 
-The owner rule is that a name nobody can prove lands only when two
-independent agents proposed it blind and agreed. Two things make that rule
-checkable instead of asserted:
+An uncontested parameter or local name needs one worker's proposal. Every
+other inferred name, including a contested scoped name, still needs two
+independent blind proposals. Two things make that rule checkable:
 
   workers   every vote carries the identity of the worker that cast it, taken
             from the environment, not from a flag the caller types. A session
@@ -20,7 +20,7 @@ checkable instead of asserted:
   votes     reverse/name_votes.csv (append-only, union-merged) holds each vote
             as sha256(key|canon(name))[:24]. The agreement record in
             reverse/name_agreed.csv is only an index into those votes: the
-            engine recomputes the agreement from them (two or more distinct
+            engine recomputes the approval from them (the required distinct
             workers voted the landed spelling's hash, no rival spelling has as
             many, the record and the spelling are not disputed), so a
             hand-written agreement row authorises nothing.
@@ -98,13 +98,35 @@ def disputed(agreed_rows):
     return out
 
 
-def wins(mine, rivals, *, lead=2, min_models=1):
-    """`mine` and each rival are {worker: model} for one spelling. Two
-    distinct workers agree, from at least `min_models` models, and the name
-    leads every rival spelling by `lead` workers: when another worker named
-    the thing differently, two workers sharing a guess is not enough."""
-    return (len(mine) >= 2 and len(set(mine.values())) >= min_models
-            and len(mine) - max((len(r) for r in rivals), default=0) >= lead)
+def review_workers(key, rivals):
+    """One worker for an uncontested scoped name; two for every other name.
+
+    A missing or malformed key never opts into lighter review. Rivals are
+    already filtered for disputed spellings by the caller.
+    """
+    parts = (key or "").split("|")
+    scoped = (len(parts) == 4 and parts[0].startswith("Code/")
+              and parts[1] in ("param", "local") and parts[2] and parts[3])
+    return 1 if scoped and not any(rivals) else 2
+
+
+def review_detail(key, voters, rivals=()):
+    policy = "single-worker scoped approval" if review_workers(key, rivals) == 1 and len(voters) == 1 \
+        else "two-agent agreement"
+    agents = ";".join(f"{w}@{m}" for w, m in sorted(voters.items()))
+    return f"{policy}: {agents}"
+
+
+def wins(mine, rivals, *, lead=2, min_models=1, key=None):
+    """`mine` and each rival are {worker: model} for one spelling. Uncontested
+    scoped keys need one worker; all others need two and the requested lead.
+    `min_models` applies to either policy. `key=None` keeps the two-worker rule."""
+    needed = review_workers(key, rivals)
+    # --lead still governs competing proposals; an uncontested local or
+    # parameter needs one proposal. --min-models remains an independent floor.
+    margin = 1 if needed == 1 else lead
+    return (len(mine) >= needed and len(set(mine.values())) >= min_models
+            and len(mine) - max((len(r) for r in rivals), default=0) >= margin)
 
 
 def standing(votes, agreed_rows, key, name):
@@ -118,17 +140,19 @@ def standing(votes, agreed_rows, key, name):
 
 def verify(votes, agreed_rows, key, name, *, lead=1):
     """Problems (empty when the votes carry `name` for `key`): the floor the
-    engine enforces whatever --lead the lane ran with -- two distinct workers
-    and no rival spelling with as many (`lead` 1) -- and the spelling and
-    the record not disputed."""
+    engine enforces whatever --lead the lane ran with: one worker for an
+    uncontested scoped name, otherwise two and no equally supported rival
+    (`lead` 1). The spelling and the record must not be disputed."""
     problems = []
     if canon(name) in disputed(agreed_rows).get(key, ()):
         problems.append(f"{name} was disputed for {key}")
     mine, rivals = standing(votes, agreed_rows, key, name)
-    if len(mine) < 2:
-        problems.append(f"{len(mine)} distinct worker(s) voted it in {VOTES} (two are needed)")
+    needed = review_workers(key, rivals)
+    if len(mine) < needed:
+        requirement = "one is needed for an uncontested scoped name" if needed == 1 else "two are needed"
+        problems.append(f"{len(mine)} distinct worker(s) voted it in {VOTES} ({requirement})")
     top = max((len(r) for r in rivals), default=0)
-    if mine and len(mine) - top < lead:
+    if mine and len(mine) - top < (1 if needed == 1 else lead):
         problems.append(f"a rival spelling has {top} worker(s) against its {len(mine)}")
     return problems
 

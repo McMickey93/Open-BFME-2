@@ -13,7 +13,7 @@ records its basis, and which tools make a rename safe. Open-BFME-1's
 | The name is | What backs it | Where it is recorded |
 |---|---|---|
 | a **placeholder** (`Rva0026C320Owner`, `?rva0052F63F@...`, `bfmeHit1173`, `m_0C`, `param_1`, `iVar3`, `a1`) | nothing: it admits ignorance | `address` tier, or nothing at all |
-| **inferred** (`AwardRecordView`, `m_markerHandle`) | two agents proposed it blind and agreed, or a file stem was read from the real-named rows the file owns | `reverse/name_basis.csv`, basis `inferred` |
+| **inferred** (`AwardRecordView`, `m_markerHandle`) | one uncontested proposal for a parameter/local; otherwise two agents proposed it blind and agreed; or a file stem was read from the real-named rows the file owns | `reverse/name_basis.csv`, basis `inferred` |
 | **canonical** (`?ClassifyWall@Pathfinder@@...`) | evidence a tool can check: export, vendored, retail string, Zero Hour or BFME 1 same body, WorldBuilder self-assert, ... | `reverse/name_basis.csv`, basis `canonical:<kind>`, or a fact the tier tool reads directly (exports, `vendored=`, `.lib`) |
 
 A placeholder is acceptable as a starting point but never as a final name. An inferred name is
@@ -432,16 +432,25 @@ waiting keys the filter would select (pass the same `--lead` and `--min-models`;
 it does not read the source, so `apply` may still find a selected key stale).
 Without the option `apply` behaves as before.
 
-## The two-agent rule
+## Review by naming scope
 
-An inferred name lands only when two independent agents proposed it blind and
-agreed. BFME 1 measured the reason on 2026-09-29: one model alone named about 60% of
+An uncontested inferred **parameter or local** name may land from one worker's
+proposal. It is scoped to one function, remains inferred and revocable, and
+still goes through `rename.py`'s scope/collision checks, byte verification and
+ledger checks. A competing non-disputed proposal restores the existing
+two-worker requirement and voting lead; `apply` and the engine recheck votes,
+so a late rival stops a single-proposal approval before it lands.
+
+Functions, classes, members and globals still require two independent agents
+to propose a name blind and agree. BFME 1 measured the original blanket rule's
+reason on 2026-09-29: one model alone named about 60% of
 placeholders right and 2-9% of them misleadingly; two agreeing blind proposals were about
 80% right and never misleading.
 
 - Each vote is stored in `reverse/name_votes.csv` only as
   `sha256(key|canon(name))[:24]`. No name text enters the repository until a
-  second worker matches it, so one worker cannot copy another's answer.
+  second worker matches it for names requiring blind agreement. An uncontested
+  parameter/local proposal writes its name to the approval record immediately.
 - `canon()` folds word order, plurals and common abbreviations, so
   `m_ladderComboBox` and `m_comboBoxLadder` count as one vote.
 - Agreement counts distinct **workers**, not session labels. The worker id
@@ -449,11 +458,19 @@ placeholders right and 2-9% of them misleadingly; two agreeing blind proposals w
   session, otherwise `tools/claims.py`'s owner), stored hashed. Print yours with
   `python3 tools/name_agreement.py whoami`. An orchestrator running blind seats
   gives each seat its own `BFME_CLAIM_OWNER`, as it already does for claims.
-- A name wins with two or more workers and a lead of `--lead` (2) over every
-  rival spelling. `--min-models` can also require distinct models.
+- An uncontested parameter/local wins with one worker. Other names need two
+  or more workers and a lead of `--lead` (2) over every rival spelling.
+  `--min-models` applies to both paths: requiring two models also requires
+  a second proposal for an otherwise uncontested parameter/local.
 - `rename.py` treats `name_agreed.csv` only as an index. It recomputes the
   agreement from the votes, so a hand-written agreement row authorises
   nothing.
+
+Old single votes contain hashes, not recoverable name text. This policy does
+not automatically turn that backlog into approved names; an existing proposal
+must be recovered from its original answer or independently proposed again.
+The lighter path changes review cost, not evidence: it does not make a name
+canonical or prove its meaning correct.
 
 Do not show your proposal to another seat or read theirs, and do not cast votes for a
 second seat yourself.
@@ -499,7 +516,7 @@ signature change, a cross-directory move), a hand rename must still:
 
 - replace only a placeholder, and only with a name whose evidence would pass the
   canonical table above. Never hand-land an inferred name, because those need the
-  two-agent rule;
+  scope-dependent review rule;
 - cite the evidence in the commit message and record it with `tools/re_log.py`;
 - rename pins in place, update every caller's view, and append a
   `deleted_rows.csv` tombstone `Renamed to <new>: <evidence>` for each old

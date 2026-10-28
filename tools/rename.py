@@ -68,8 +68,9 @@ Both bases are checked, never asserted:
   inferred   --evidence agree:<id> names a row of reverse/name_agreed.csv
              for this very rename, and the agreement is recomputed from the
              hashed votes in reverse/name_votes.csv (tools/name_agreement.py):
-             two or more distinct workers -- identities taken from the
-             environment, not from a session label -- voted the spelling, no
+             one worker for an uncontested parameter/local, otherwise two
+             distinct workers -- identities taken from the environment, not
+             from a session label -- voted the spelling, no
              rival spelling has as many, nothing disputed it. The record is an
              index, never the authority. A file may instead take mechanical:<rows>, a stem
              derived from a real-named row it owns. Refused, too, over a
@@ -1274,17 +1275,18 @@ def fragments_text(symbol):
 
 
 def check_agreement(ctx, kind, evidence, old_names, new_names, rva):
-    """An inferred name's two-agent agreement: `agree:<id>` names a row of
+    """An inferred name's review record: `agree:<id>` names a row of
     reverse/name_agreed.csv for this very rename, and the votes it indexes
     carry it. The row is only an index (kind, old, new, rva and the lane key
     source|kind|scope|placeholder); its `agents` column is not trusted. The
     agreement is recomputed from reverse/name_votes.csv by
-    tools/name_agreement.py: two or more distinct workers voted the landed
-    spelling, no rival spelling has as many, and neither the record nor the
+    tools/name_agreement.py: one worker for an uncontested scoped name,
+    otherwise two distinct workers voted the landed spelling; no rival
+    spelling has as many, and neither the record nor the
     spelling has been disputed."""
     match = re.fullmatch(r"agree:([A-Za-z0-9_.:-]+)", evidence.strip())
     if not match:
-        raise Refusal("an inferred name lands only on a two-agent agreement: --evidence agree:<record-id> "
+        raise Refusal("an inferred name needs a recorded naming approval: --evidence agree:<record-id> "
                       f"naming a row of {AGREED} (or mechanical:<rows> for a file named from its own rows)")
     rid = match.group(1)
     rows = [r for r in ctx.dicts(AGREED) if r.get("id") == rid]
@@ -1521,7 +1523,7 @@ def provisional_file(ctx, path):
 def check_basis(ctx, kind, basis, evidence, old_name, old_word, rva, *, new_name=None, new_word=None,
                 source=None):
     """Refuse a basis that may not replace `old_name`: an inferred name needs
-    the two-agent agreement record (or, for a file, a stem derived from its
+    the naming approval record (or, for a file, a stem derived from its
     own real-named rows) and may replace only a placeholder with no evidence
     on record; a canonical basis is verified against the record it cites."""
     which = basis_kind(basis)
@@ -5557,7 +5559,7 @@ def main(argv=None):
     common.add_argument("--basis", required=True, help="'inferred' or 'canonical:<evidence-kind>' "
                         f"({', '.join(sorted(CANONICAL_KINDS))})")
     common.add_argument("--evidence", required=True,
-                        help="canonical: the evidence; inferred: the two-agent agreement record")
+                        help="canonical: the evidence; inferred: the naming approval record")
     common.add_argument("--dry-run", action="store_true", help="print the full plan, write nothing")
     common.add_argument("--no-claim", action="store_true", help="skip tools/claims.py (tests)")
     common.add_argument("--no-object-scan", action="store_true",

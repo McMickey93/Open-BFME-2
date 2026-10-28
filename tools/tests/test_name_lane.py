@@ -135,6 +135,41 @@ def test_canon_folds_order_plurals_synonyms():
     assert name_lane.digest("k", "boxIndex") != name_lane.digest("other", "boxIndex")
 
 
+@pytest.mark.parametrize("kind", ["param", "local", "function", "class", "member", "global"])
+def test_scoped_review_threshold_is_shared_by_lane_and_engine(kind):
+    key = name_lane.key_of(SOURCE, kind, "rva00401000", "param_1")
+    worker = "w-0123456789ab"
+    mine = {worker: "seat-a"}
+    vote_row = {"key": key, "hash": name_agreement.digest(key, "box"),
+                "worker": worker, "model": "seat-a"}
+    scoped = kind in ("param", "local")
+    assert name_agreement.wins(mine, [], key=key) == scoped
+    assert (not name_agreement.verify([vote_row], [], key, "box")) == scoped
+    assert not name_agreement.wins(mine, [], key=key, min_models=2)
+    assert name_agreement.verify([], [], key, "box")
+    assert name_agreement.verify([{**vote_row, "worker": "fake"}], [], key, "box")
+
+
+@pytest.mark.parametrize("kind", ["param", "local"])
+def test_scoped_competing_and_disputed_proposals_keep_review(kind):
+    key = name_lane.key_of(SOURCE, kind, "rva00401000", "param_1")
+    votes = [{"key": key, "hash": name_agreement.digest(key, name), "worker": worker,
+              "model": "seat-a"} for name, worker in
+             [("box", "w-0123456789ab"), ("destination", "w-abcdef012345")]]
+    assert name_agreement.verify(votes, [], key, "box")
+    assert not name_agreement.wins({"a": "m"}, [{"b": "m"}], key=key)
+    assert not name_agreement.wins({"a": "m", "b": "m"}, [{"c": "m"}], key=key)
+    assert name_agreement.wins({"a": "m", "b": "m", "c": "m"}, [{"d": "m"}], key=key)
+    assert name_agreement.verify(votes[:1], [{"key": key, "new": "box", "status": "disputed"}],
+                                 key, "box")
+
+
+@pytest.mark.parametrize("key", [None, "param", "Code/Game/Test.cpp|param||a",
+                                 "Code/Game/Test.cpp|local|run|", "vendor/Test.cpp|local|run|a"])
+def test_malformed_or_non_game_keys_do_not_get_single_proposal_review(key):
+    assert not name_agreement.wins({"w-0123456789ab": "seat-a"}, [], key=key)
+
+
 def test_wins_rules():
     two = {"s1": "a", "s2": "a"}
     assert name_lane.wins(two, [])
@@ -306,7 +341,12 @@ def test_session_votes_once_and_bad_names_rejected(tree, tmp_path, capsys):
 
 def agree_on(tree, tmp_path, answers):
     vote(tree, tmp_path, "s1", answers)
-    vote(tree, tmp_path, "s2", answers, model="gpt-6.1-sol")
+    # Uncontested scoped names already have approval after the first proposal.
+    approved = {name_lane.answer_key(*name_lane.split_key(k)[1:]): row
+                for k, row in lane_of(tree).state().items()}
+    pending = {key: value for key, value in answers.items() if key not in approved}
+    if pending:
+        vote(tree, tmp_path, "s2", pending, model="gpt-6.1-sol")
 
 
 def test_apply_lands_through_rename(tree, tmp_path):
@@ -323,6 +363,54 @@ def test_apply_lands_through_rename(tree, tmp_path):
     assert {b["evidence"] for b in basis} == {f"agree:{states[k]['id']}" for k in (FN_KEY, MEMBER_KEY, PARAM_KEY)}
     assert any(r["name"] == "?sumBox@@YAHPAURva00401000Box@@H@Z" for r in rows(tree, "reverse/functions.csv"))
     assert any(r["name"] == FN for r in rows(tree, "reverse/deleted_rows.csv"))
+
+
+def test_single_scoped_proposal_lands_and_disputes_through_engine(tree, tmp_path):
+    vote(tree, tmp_path, "single", {"rva00401000:param_1": "box"})
+    state = lane_of(tree).state()[PARAM_KEY]
+    assert state["status"] == "agreed"
+    assert state["detail"].startswith("single-worker scoped approval:")
+    assert len(rows(tree, name_lane.VOTES)) == 1
+    assert apply(tree) == 0
+    assert "Rva00401000Box *box" in (tree / SOURCE).read_text()
+    assert lane_of(tree).state()[PARAM_KEY]["detail"].startswith("single-worker scoped approval:")
+    args = SimpleNamespace(keys=[PARAM_KEY], reason="the proposed role was wrong", claim=False)
+    name_lane.cmd_dispute(lane_of(tree), args, verify=ok_verify, checks=no_checks)
+    assert "Rva00401000Box *param_1" in (tree / SOURCE).read_text()
+    assert lane_of(tree).state()[PARAM_KEY]["status"] == "disputed"
+
+
+def test_late_rival_stops_single_proposal_before_source_analysis(tree, tmp_path):
+    vote(tree, tmp_path, "single", {"rva00401000:param_1": "box"})
+    lane = lane_of(tree)
+    lane.append(name_lane.VOTES, name_lane.VOTE_COLUMNS, [{"key": PARAM_KEY,
+        "hash": name_lane.digest(PARAM_KEY, "destination"), "worker": "w-abcdef012345",
+        "model": "seat-b", "session": "prepared-before-first-submission", "date": "2026-10-28"}])
+    before = (tree / SOURCE).read_bytes()
+    apply(tree, verify=lambda *args: pytest.fail("a contested single vote must not reach verification"))
+    assert (tree / SOURCE).read_bytes() == before
+    assert lane_of(tree).state()[PARAM_KEY]["status"] == "agreed"
+    # A new reviewer can resolve the contest instead of leaving an unservable
+    # pending approval. Three proposals beat the original one by default lead 2.
+    for seat in ("review-1", "review-2"):
+        vote(tree, tmp_path, seat, {"rva00401000:param_1": "destination"})
+    assert lane_of(tree).state()[PARAM_KEY]["new"] == "destination"
+    assert apply(tree) == 0
+    assert "Rva00401000Box *destination" in (tree / SOURCE).read_text()
+
+
+def test_single_scoped_proposal_keeps_byte_verification_rollback(tree, tmp_path):
+    vote(tree, tmp_path, "single", {"rva00401000:param_1": "box"})
+    before = (tree / SOURCE).read_bytes()
+    builds = []
+    def refuse(ctx, sources):
+        builds.append(sources)
+        return False
+    apply(tree, verify=refuse)
+    assert builds == [[SOURCE]]
+    assert (tree / SOURCE).read_bytes() == before
+    assert lane_of(tree).state()[PARAM_KEY]["status"] == "blocked"
+    assert not rows(tree, "reverse/name_basis.csv")
 
 
 def test_local_apply_does_not_search_unselected_types(tree, tmp_path, monkeypatch):

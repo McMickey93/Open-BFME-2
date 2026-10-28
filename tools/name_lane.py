@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""The inferred-name lane: a name nobody can prove lands only when two agents
-proposed it blind and agreed.
+"""The inferred-name lane: one uncontested proposal for parameters/locals;
+two independent blind proposals for other names or contested scoped names.
 
 Most placeholders (Rva..., bfme..., m_2C, param_1, iVar3) sit where no export,
 WorldBuilder lead, Zero Hour twin or retail string says what the thing is
 called; tools/name_evidence.py serves the few that do. For the rest the owner
 rule is BFME 1's: a descriptive name that is not proven canonical still gets a
-clean readable identifier, but only on blind agreement of two independent
-agents, and the ledger -- reverse/name_basis.csv, written by tools/rename.py --
+clean readable identifier under the review policy above, and the ledger --
+reverse/name_basis.csv, written by tools/rename.py --
 records it as `inferred`, revocable through `dispute`. BFME 1's 2026-09-29
 spike measured why: one model alone named about 60% of placeholders right and
 2-9% misleadingly; two independent proposals that agreed were about 80% right
@@ -35,8 +35,9 @@ wrong name misleads readers.
 `submit` stores each vote only as sha256(key|canon(name))[:24] in
 reverse/name_votes.csv (append-only). canon() folds word order, plurals and
 common abbreviations, so m_ladderComboBox and m_comboBoxLadder are one vote,
-and no name text enters the repo until a second worker matches it -- a
-worker cannot copy what it cannot read. Every vote and every served session
+and names requiring blind agreement stay hidden until a second worker matches.
+An uncontested parameter/local proposal may enter its approval record at once.
+Every vote and every served session
 record carries the voter's worker identity (tools/name_agreement.py: hashed
 BFME_CLAIM_OWNER / BFME_RUN_ID, else CLAUDE_CODE_SESSION_ID, else
 tools/claims.py's owner), read from the environment rather than from
@@ -44,8 +45,9 @@ tools/claims.py's owner), read from the environment rather than from
 to another worker, a worker votes once per key whatever label it uses, and
 agreement counts distinct workers. An orchestrator running blind seats gives
 each its own BFME_CLAIM_OWNER, as it already does for claims. When a vote
-makes a name win (two distinct workers, a lead of `--lead` votes over every
-rival spelling, optionally `--min-models` distinct models; files another
+makes a name win (one uncontested scoped proposal, otherwise two distinct
+workers with a lead of `--lead` votes over every rival spelling, optionally
+`--min-models` distinct models under either policy; files another
 model voted on are served first), the name is written to
 reverse/name_agreed.csv as `agreed`.
 
@@ -552,6 +554,19 @@ def split_key(key):
     return rel, kind, scope, ident
 
 
+def needs_review(key, state, tally, refused):
+    """Reopen a pending scoped approval when a late rival removes its quorum."""
+    row = state.get(key)
+    if row is None or row["status"] == "disputed":
+        return True
+    if row["status"] != "agreed" or split_key(key)[1] not in ("param", "local"):
+        return False
+    h = digest(key, row["new"])
+    gone = refuted(key, refused.get(key, ()))
+    rivals = [v for other, v in tally[key].items() if other != h and other not in gone]
+    return not wins(tally[key].get(h, {}), rivals, key=key)
+
+
 def answer_key(kind, scope, ident):
     if kind in ("param", "local"):
         return f"{scope}:{ident}"
@@ -629,9 +644,10 @@ original EA programmer most likely used, judging from what the code does and
 the evidence. Style (fixed): types CamelCase, members m_camelCase, params and
 locals camelCase, functions and methods camelCase unless the class already
 uses CamelCase. Answer "skip" when you cannot justify a name: a skip costs
-nothing, a wrong name misleads readers. A name lands only when another
-session independently proposes the same one, so your proposal must be your
-own: do not take names from, or show yours to, another model or session.
+nothing, a wrong name misleads readers. An uncontested parameter/local name
+can land from your one proposal. Other names and competing scoped proposals
+need independent blind agreement. Your proposal must be your own: do not take
+names from, or show yours to, another model or session.
 Write your answer with a file-writing tool, never inline in a shell command
 (other sessions can read command lines). If a stand-in type IS a real class
 that a game or Zero Hour header declares, answer that class's name.
@@ -651,6 +667,7 @@ def cmd_next(lane, args):
     session, model = session_id(args.session), model_id(args.model)
     worker = lane.worker()
     state = lane.state()
+    tally, refused = lane.tally(), lane.disputed()
     files, voted = queue(lane, worker, model, args.file)
     served, metadata = [], []
     record = lane.path(f"{LANE_DIR}/sessions/{session}.json")
@@ -663,8 +680,8 @@ def cmd_next(lane, args):
         text = lane.text(rel)
         if text is None or len(text) > MAX_CHARS:
             continue
-        items = [i for i in lane.owned(rel, text) if key_of(rel, *i[:3]) not in state
-                 or state[key_of(rel, *i[:3])]["status"] == "disputed"]
+        items = [i for i in lane.owned(rel, text)
+                 if needs_review(key_of(rel, *i[:3]), state, tally, refused)]
         if len(items) < (1 if voted[rel] or args.file else 3):      # an asked-for file needs one key
             continue
         if args.list_only:
@@ -750,15 +767,15 @@ def cmd_submit(lane, args, *, lead=2, min_models=1):
             votes.append({"key": key, "hash": h, "model": model, "session": session, "worker": worker,
                           "date": now})
             tally[key][h][worker] = model
-            open_key = key not in state or state[key]["status"] == "disputed"
+            open_key = needs_review(key, state, tally, refused)
             gone = refuted(key, refused.get(key, ()))
             rivals = [v for h2, v in tally[key].items() if h2 != h and h2 not in gone]
-            if open_key and wins(tally[key][h], rivals, lead=lead, min_models=min_models):
+            if open_key and wins(tally[key][h], rivals, lead=lead, min_models=min_models, key=key):
                 agents = ";".join(f"{w}@{m}" for w, m in sorted(tally[key][h].items()))
                 name = lane_spelling(lane, answer, kind)
                 row = {"id": record_id(key, name), "kind": kind, "old": ident, "new": name,
                        "rva": f"0x{rva:08X}" if rva is not None else "", "agents": agents, "key": key,
-                       "status": "agreed", "detail": f"two-agent agreement: {agents}"}
+                       "status": "agreed", "detail": name_agreement.review_detail(key, tally[key][h], rivals)}
                 agreed.append(row)
                 state[key] = row
     lane.append(VOTES, VOTE_COLUMNS, votes)
@@ -831,7 +848,7 @@ def cmd_apply(lane, args, *, verify=rename.build_verify, checks=rename.ledger_ch
                 continue
             gone = refuted(key, refused.get(key, ()))
             rivals = [v for h, v in tally[key].items() if h != digest(key, row["new"]) and h not in gone]
-            if not wins(mine, rivals, lead=args.lead, min_models=args.min_models):
+            if not wins(mine, rivals, lead=args.lead, min_models=args.min_models, key=key):
                 print(f"{key}: votes no longer agree under --lead {args.lead} --min-models {args.min_models}; left")
                 continue
             todo[split_key(key)[0]].append(row)
@@ -867,7 +884,8 @@ def cmd_apply(lane, args, *, verify=rename.build_verify, checks=rename.ledger_ch
                 else:
                     for candidate in scoped:
                         lane.append(AGREED, AGREED_COLUMNS, [dict(candidate, status="landed",
-                                    detail=f"two-agent agreement: {candidate['agents']}")])
+                                    detail=name_agreement.review_detail(candidate["key"],
+                                        tally[candidate["key"]][digest(candidate["key"], candidate["new"])]))])
                         batched.add(candidate["key"])
                     landed += len(scoped)
                     if key in batched:
@@ -881,7 +899,8 @@ def cmd_apply(lane, args, *, verify=rename.build_verify, checks=rename.ledger_ch
                     rename.run(kind, lane.ctx, claim=args.claim, verify=verify, checks=checks,
                                basis="inferred", evidence=f"agree:{row['id']}",
                                **rename_kwargs(kind, scope, ident, row["new"], row["rva"], rel))
-                    outcome.update(status="landed", detail=f"two-agent agreement: {row['agents']}")
+                    outcome.update(status="landed", detail=name_agreement.review_detail(key,
+                        tally[key][digest(key, row["new"])]))
                     landed += 1
                 except (rename.Refusal, rename.VerifyFailed) as exc:
                     outcome.update(status="blocked", detail=" ".join(str(exc).split())[:300])
@@ -948,7 +967,7 @@ def cmd_status(lane, args):
             gone = refuted(key, refused.get(key, ()))
             rivals = [v for h2, v in tally[key].items() if h2 != h and h2 not in gone]
             mine = tally[key].get(h, {})
-            picked += wins(mine, rivals, lead=args.lead, min_models=args.min_models) and own_voters(mine, only)
+            picked += wins(mine, rivals, lead=args.lead, min_models=args.min_models, key=key) and own_voters(mine, only)
         print(f"--only-labels {','.join(sorted(only))}: apply would select {picked} of {count['agreed']} "
               f"waiting key(s) (--lead {args.lead} --min-models {args.min_models})")
     if args.metric:
