@@ -52327,9 +52327,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005F5749,143,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,N,N=Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp W=Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUICancelArmyMemberMoveButton.cpp provisional,Code/GameEngine/Source/GameClient/ArmyUnitSwapperSelection.cpp
 0x005F57D8,26,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F57F2 provisional,Code/GameEngine/Source/GameClient/ArmyUnitSwapperSelection.cpp
 0x005F57F2,39,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F5819 provisional,Code/GameEngine/Source/GameClient/ArmyUnitSwapperSelection.cpp
-0x005F5819,97,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F587A provisional,Code/GameEngine/Source/Common/Rva005F5819Permuted.cpp
-0x005F587A,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F5882 provisional,Code/GameEngine/Source/Common/Rva005F5819Permuted.cpp
-0x005F5882,28,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F589E provisional,Code/GameEngine/Source/Common/Rva005F5819Permuted.cpp
+0x005F5819,97,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F587A provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
+0x005F587A,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F5882 provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
+0x005F5882,28,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F589E provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
 0x005F589E,174,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F594C provisional,Code/GameEngine/Source/Common/Rva005F589ECtor.cpp
 0x005F594C,28,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5749..0x005F5968 provisional,Code/GameEngine/Source/Common/Rva005CC468Family.cpp
 0x005F5968,142,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,N,N=Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp W=Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIUpgradeUnitButton.cpp provisional,Code/GameEngine/Source/GameClient/ArmyUnitSwapperSelection.cpp
@@ -52339,9 +52339,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x005F5B0F,104,code,,displaced,-,N=Code/GameEngine/Source/Common/StrategicInGameUI.cpp W=Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIUpgradeUnitButton.cpp,Code/GameEngine/Source/Common/StrategicInGameUI_SendCancelUpgradeMessages.cpp
 0x005F5B77,55,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5BAE provisional,Code/GameEngine/Source/GameClient/ArmyUnitSwapperSelection.cpp
 0x005F5BAE,68,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5BF2 provisional,Code/GameEngine/Source/GameClient/ArmyUnitSwapperSelection.cpp
-0x005F5BF2,97,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5C53 provisional,Code/GameEngine/Source/Common/Rva005F5BF2Dtor.cpp
-0x005F5C53,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5C5B provisional,Code/GameEngine/Source/Common/Rva005F5BF2Dtor.cpp
-0x005F5C5B,28,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5C77 provisional,Code/GameEngine/Source/Common/Rva005F5BF2Dtor.cpp
+0x005F5BF2,97,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5C53 provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
+0x005F5C53,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5C5B provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
+0x005F5C5B,28,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5C77 provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
 0x005F5C77,174,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5D25 provisional,Code/GameEngine/Source/Common/Rva005F5C77Ctor.cpp
 0x005F5D25,28,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,C,C=0x005F5A5A..0x005F5D41 provisional,Code/GameEngine/Source/Common/Rva005CC468Family.cpp
 0x005F5D41,173,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,N,N=Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp W=Code/GameEngine/Source/GameClient/LivingWorld/InGameUI/StrategicInGameUIDisbandArmyMemberButton.cpp provisional,Code/GameEngine/Source/GameClient/ArmyUnitSwapperSelection.cpp
@@ -90473,10 +90473,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007A53A5,11,code,,,-,,Code/GameEngine/Source/Common/Rva005F54DADtor.cpp
 0x007A53B0,11,code,,,-,,Code/GameEngine/Source/Common/Rva005F54DADtor.cpp
 0x007A53BB,10,code,,,-,,Code/GameEngine/Source/Common/Rva005F54DADtor.cpp
-0x007A53C5,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5819@FuncInfo0x0095E21C provisional,Code/GameEngine/Source/Common/Rva005F5819Permuted.cpp
+0x007A53C5,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5819@FuncInfo0x0095E21C provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
 0x007A53CD,20,code-unledgered,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5819@FuncInfo0x0095E21C provisional,
-0x007A53E1,20,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5819@FuncInfo0x0095E21C provisional,Code/GameEngine/Source/Common/Rva005F5819Permuted.cpp
-0x007A53F5,10,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5819@FuncInfo0x0095E21C provisional,Code/GameEngine/Source/Common/Rva005F5819Permuted.cpp
+0x007A53E1,20,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5819@FuncInfo0x0095E21C provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
+0x007A53F5,10,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5819@FuncInfo0x0095E21C provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
 0x007A53FF,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F589E@FuncInfo0x0095E260 provisional,Code/GameEngine/Source/Common/Rva005F589ECtor.cpp
 0x007A5407,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F589E@FuncInfo0x0095E260 provisional,Code/GameEngine/Source/Common/Rva005F589ECtor.cpp
 0x007A540F,11,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F589E@FuncInfo0x0095E260 provisional,Code/GameEngine/Source/Common/Rva005F589ECtor.cpp
@@ -90484,10 +90484,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007A5425,10,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F589E@FuncInfo0x0095E260 provisional,Code/GameEngine/Source/Common/Rva005F589ECtor.cpp
 0x007A542F,8,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Rva007B52E6Global.cpp
 0x007A5437,10,code,,,-,,Code/GameEngine/Source/GameClient/GUI/Rva007B52E6Global.cpp
-0x007A5441,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5BF2@FuncInfo0x0095E2B8 provisional,Code/GameEngine/Source/Common/Rva005F5BF2Dtor.cpp
+0x007A5441,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5BF2@FuncInfo0x0095E2B8 provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
 0x007A5449,20,code-unledgered,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5BF2@FuncInfo0x0095E2B8 provisional,
-0x007A545D,20,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5BF2@FuncInfo0x0095E2B8 provisional,Code/GameEngine/Source/Common/Rva005F5BF2Dtor.cpp
-0x007A5471,10,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5BF2@FuncInfo0x0095E2B8 provisional,Code/GameEngine/Source/Common/Rva005F5BF2Dtor.cpp
+0x007A545D,20,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5BF2@FuncInfo0x0095E2B8 provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
+0x007A5471,10,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5BF2@FuncInfo0x0095E2B8 provisional,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp
 0x007A547B,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5C77@FuncInfo0x0095E2FC provisional,Code/GameEngine/Source/Common/Rva005F5C77Ctor.cpp
 0x007A5483,8,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5C77@FuncInfo0x0095E2FC provisional,Code/GameEngine/Source/Common/Rva005F5C77Ctor.cpp
 0x007A548B,11,code,Code/GameEngine/Source/GameClient/StrategicInGameUI.cpp,approved,P,P=0x005F5C77@FuncInfo0x0095E2FC provisional,Code/GameEngine/Source/Common/Rva005F5C77Ctor.cpp
