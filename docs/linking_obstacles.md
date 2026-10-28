@@ -70,6 +70,17 @@ authored-byte previews or commit-title gains into a projected headline.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **Component callback iterator identity (2026-10-28, base `e1b88db116ad`):**
+  `Rva00462710ModeCheckForEach.cpp` now calls the existing
+  `Rva000411084::next` owner instead of emitting a separate iterator family.
+  All six rows and one EH graph remain exact; the owning retirement tool
+  removes its sole identity key, with zero wrong bindings remaining.
+  The component TU and both cursor providers preview LINKS before and after
+  (566 authored bytes, index `14dc3d2467`). Seven unused template COMDATs
+  disappear; the outgoing batch audit must assess their consumers.
+  [Evidence and limits](../reverse/attempt_support/component-iterator-identity-20261028-codex.md).
+  No new census gain is claimed.
+
 - **NAT predicate TU composition (2026-10-28, base `9c6829533a`):**
   [The bounded consolidation evidence](../reverse/attempt_support/nat-predicate-consolidation-20261028-codex.md)
   preserves five exact rows, all 14 external COMDAT byte/relocation digests and

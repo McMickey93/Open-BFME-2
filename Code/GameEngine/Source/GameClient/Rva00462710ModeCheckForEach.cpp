@@ -90,9 +90,26 @@ typedef _STL::hashtable<Rva0045F0A0Input, AsciiString, rts::hash<AsciiString>,
 	Rva0045F0A0ExtractKey, _STL::equal_to<AsciiString>,
 	_STL::allocator<Rva0045F0A0Input> > Rva0045F0A0Table;
 
-template Rva0045F0A0 _STL::for_each<Rva0045F0A0Table::iterator,
-	Rva0045F0A0>(Rva0045F0A0Table::iterator, Rva0045F0A0Table::iterator,
-	Rva0045F0A0);
+// The native for_each calls the shared two-word cursor advance at 0x00411084,
+// already owned by EvaMessageName.cpp. This is an ABI view of that cursor,
+// not an assertion that the component and Eva tables store the same records.
+class Rva000411084
+{
+public:
+	void *next();
+	void *advance();
+	void *m_current;
+	void *m_owner;
+};
+
+template <> inline Rva0045F0A0 _STL::for_each<Rva0045F0A0Table::iterator,
+	Rva0045F0A0>(Rva0045F0A0Table::iterator first,
+	Rva0045F0A0Table::iterator last, Rva0045F0A0 function)
+{
+	for (; first != last; reinterpret_cast<Rva000411084 *>(&first)->next())
+		function(*first);
+	return function;
+}
 
 // The global Apt callbacks bound as "EnableComponents" and "DisableComponents"
 // through the 0x0023E8D8 holder by the global registration (sites 0x00412531
