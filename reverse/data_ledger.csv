@@ -17345,7 +17345,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x009BE8D8,128,.data,global,?BFME2DeathTypeNames@@3QBQBDB,,unowned,,0,1
 0x009BE958,28,.data,global,?TimeOfDayNames@@3PAPADA,,unowned,,0,2
 0x009BE974,60,.data,global,?g_00DBE974@@3QBQBXB,,unowned,,0,2
-0x009BE9B0,808,.data,global,?g_rva0033A3F4Table@@3PAPBDA,Code/GameEngine/Source/Common/Rva0033A3F4Lookup.cpp,provisional,?g_rva0033A3F4Table@@3PAPBDA;_kFactions@Code/GameEngine/Source/Common/Rva005C1AE4Points.cpp;_kFactions@Code/GameEngine/Source/Common/UserPreferencesRva00535CE4.cpp;_kFactions@Code/GameEngine/Source/Common/UserPreferencesWinsLossesVs.cpp,4,15
+0x009BE9B0,808,.data,global,?g_rva0033A3F4Table@@3PAPBDA,Code/GameEngine/Source/Common/Rva0033A3F4Lookup.cpp,provisional,?g_rva0033A3F4Table@@3PAPBDA;_kFactions@Code/GameEngine/Source/Common/Rva005C1AE4Points.cpp;_kFactions@Code/GameEngine/Source/Common/UserPreferences.cpp;_kFactions@Code/GameEngine/Source/Common/UserPreferences.cpp,4,15
 0x009BECD8,3072,.data,global,?s_objectFieldParseTable@ThingTemplate@@0QBUFieldParse@@B,Code/GameEngine/Source/Common/Thing/ThingTemplate.cpp,owned,,1,3
 0x009BF8D8,360,.data,global,_s_flammabilityTable,Code/GameEngine/Source/Common/Thing/ThingTemplateFlammabilityParse.cpp,owned,,1,23
 0x009BFA40,100,.data,float,__real@43480000,,literal,,0,1
