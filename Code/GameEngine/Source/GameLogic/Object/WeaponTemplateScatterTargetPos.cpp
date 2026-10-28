@@ -57,7 +57,7 @@ public:
 	Real X, Y, Z;
 };
 
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
+#include <math.h>
 Real Cos(Real x);
 Real Sin(Real x);
 Real GetGameLogicRandomValueReal(Real lo, Real hi, char *file, Int line);

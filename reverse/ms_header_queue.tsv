@@ -68,7 +68,6 @@ Code/GameEngine/Source/GameLogic/Object/ArmorHashtableRtsCtor.cpp	adapt	unknown	
 Code/GameEngine/Source/GameLogic/Object/Behavior/SlowDeathBehaviorUpdate.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/GameLogic/Object/CreateAHeroHero.cpp	adapt	source	1	0	1	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			CreateDirectoryW:source
 Code/GameEngine/Source/GameLogic/Object/Update/Rva0016DEE0Cluster.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand			operator==:unknown
-Code/GameEngine/Source/GameLogic/Object/WeaponTemplateScatterTargetPos.cpp	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<math.h>	no	yes	hand			atan2:unknown
 Code/GameEngine/Source/GameLogic/System/ArmySummary.h	adapt	unknown	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand	1: Code/GameEngine/Source/GameLogic/System/ArmySummary.h:5 ascii_string.h(unknown)		free:same
 Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c	adapt	unknown	1	0	0	1	0	0	0	0	0	0	0	<SCardSsp.h>	yes	yes	hand	1: Code/GameEngine/Source/GameNetwork/GameSpy/chat/chatSocket.c:77 nonport.h(unknown)		RESET:unknown
 Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c	adapt	unknown	1	0	1	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand	7: Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c:31 ghttpMain.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c:32 ghttpASCII.h(unknown); Code/GameEngine/Source/GameNetwork/GameSpy/ghttp/ghttpMain.c:33 ghttpConnection.h(unknown)		strdup:source
