@@ -3696,6 +3696,19 @@ separate strict receipt limitation encountered there.
 
 ### LINK-018: canonical `Coord3D` member growth blocks header-adoption until dependents are recomputed
 
+**Shared companion debt retirement (2026-10-28; base `9d2ee4a0f4`):**
+The existing companion-recognition fix `e46cd47132` resolves the recorded
+acceptance false rejection for BridgeObjectCtor,
+BridgeBehaviorHandleObjectsOnBridgeOnDie, AIStructureCreepTactic and
+OneRingPenaltyUpdate. The owning acceptance tool now passes all four and
+retires their queue entries; their sources and shared headers are unchanged.
+The combined build passes 68/68 rows. Ordinary preview against `41c28839bf`
+preserves 2,613 linked bytes across the three linked units; AIStructureCreepTactic
+remains 0 -> 0 with the three existing vector<Object *> selected-copy blockers
+(LINK-132/LINK-133). Remaining class-key/member/codegen prerequisites stay open.
+This clears four header-debt entries only; no census gain is claimed.
+[Scoped evidence](../reverse/attempt_support/coord3d-companion-retirement-20261028-codexb.md).
+
 **Matrix4D class-key prerequisite (2026-10-28):** The canonical struct changes
 eight existing class-key decorated Matrix4D symbols; a class forward declaration
 does not preserve them. The trial was reverted and the original unit passes
