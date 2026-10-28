@@ -210,7 +210,7 @@ public:
 };
 extern NameKeyGenerator *TheNameKeyGenerator;
 
-float __cdecl atan2(float y, float x);	// math.h's float overload, retail 0x000422CD
+#include <math.h>
 void calcRandomForceRva0045D636(Real minMag, Real maxMag, Real minPitch, Real maxPitch, Coord3D *force);
 // Logic frames per second.
 extern int BfmeLogicFramesPerSecond;
