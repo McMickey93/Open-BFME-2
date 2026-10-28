@@ -68,6 +68,18 @@ remains unverified. Carry both this moved scope and the earlier terrain
 composition into the next normal census; do not treat the guard's acceptance
 as full-batch clearance. No runtime or image-ownership result is claimed.
 
+The normal commit hook also reports two unregistered shadow identity findings:
+unwind row 0x00776B2F names `??1Rva002BF6D6@@QAE@XZ` for retail target
+0x002BF776, and 0x00776B3D names `??1Rva002BF75A@@QAE@XZ` for 0x002BFB28.
+Both classify `wrong`, detail `extent`: the retail targets have their own
+five-byte forwarder rows, distinct from the named destructors. A read-only
+comparison of the cached original donor's `$L561`/`$L562` against the new
+object's EH-verified `$L5479`/`$L5480` finds identical complete 14-byte bodies
+and identical relocation offsets, kinds and symbol names. Thus these
+bindings were carried from the donor; byte/EH verification does not clear
+them. Reconcile the member cleanup contracts and forwarder identities in a
+separate verified repair. No register entry is added or retired here.
+
 ## Registers and whole-batch path audit
 
 The absorbed donors and destination have no code-identity, data, header-queue
