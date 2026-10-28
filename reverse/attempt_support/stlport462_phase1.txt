@@ -1,0 +1,93 @@
+STLport 4.6.2 phase 1 handoff - 2026-10-25
+
+Status: blocked, no active STLport migration committed, no rows/bytes moved.
+Worktree: C:/Users/Jonathan/Open-BFME-2/.claude/worktrees/stlport-462
+Base: 750486b749. Valid prerequisite commit: a01aee6c18 (bounded vendor
+placement exception, normal hooks and six regression cases). No branch push.
+BFME1 checkout remains pinned at 0bf534ea7ccde110c456edb9cd2dd5dae823c953.
+
+Prepared import and overlay (uncommitted working-tree files):
+- vendor/stlport-4.6.2: official archive SHA256
+  b506f0e79adc60663a0dbef7192efa0936566c0d5bcf67637807df70541b9fe3.
+  Re-downloaded archive; all 530 copied payloads compared byte for byte and
+  their indexed Git blobs SHA256-checked. PROVENANCE.md, SHA256SUMS and
+  .gitattributes preserve release bytes. Payload came from the earlier trial
+  worktree named in the task; no pristine source edits.
+- vendor/stlport-4.6.2-bfme: 12 exact-context patches over pristine headers.
+  Base carries existing tree/list/copy-helper changes; named layers preserve
+  bfmealloc, bfmealloc_alloconly, bfmehashtable and bfmelist selections.
+  4.6 allocator API const changes are retained, including the backward
+  one-argument deallocate const overload. Modified headers are materialized
+  under build/stlport462/<content hash>, never into the pristine tree.
+- tools/stlport_overlay.py and build.py select exact // stlport462 markers.
+  Unmarked command construction is preserved. Manifest hashes are checked
+  before cache admission; generated files are repaired or unexpected files
+  refused. Native-header inventory recognizes the new tree and generated
+  headers. Marker detection handles BOM and legacy non-UTF-8 comments.
+- repair_queue.py stlport [--tsv] calls stlport_trial.py queue. Historical
+  reverse/stlport_trial.csv leads are filtered against current names, RVAs,
+  extents and already opted-in files. Queue counts are not full-file proof.
+- Hook/dependency/protected-path changes cover patch files, extensionless
+  headers, deletions, helper edits and unstaged input guards. Prepared commit
+  message is build/commit-overlay.txt with Verifier-Change and coauthor.
+
+Gate evidence and limits:
+- Focused suites: 116 passed, 1 skipped (empty fixture parameter set), covering
+  overlay, placement, header selection, exploit regressions and DX migration.
+  Full output: build/stlport-focused-tests.log.
+- Original and restored LocaleFacets controls: 20/20, 6118 bytes, 13 literals
+  and 118 imports; Code and functions.csv/data_rows.csv unchanged from HEAD.
+- Vendor commit first correctly refused unstaged tools/build.py; exact log
+  build/vendor-commit.log. Saving/restoring our compiler inputs resolved that.
+- Full vendor-only run: 98244/98244 functions, 31536 string literals plus 2257
+  empty refs, 9116 float literals, 6419 imports, DIR32, pins and module registry
+  passed. Source claims reported six zero-row Code sources. This is NOT a
+  green full gate. Data/no-op final results were not recovered.
+- The CP1252 logging wrapper lost the tail of full-hook output. Git nevertheless
+  created local acdb840c23; it was NOT accepted as verified and was removed
+  from this branch with a soft reset, retaining all import files. The logging
+  wrapper was fixed; no hooks were bypassed or disabled deliberately.
+- Fresh ./build.sh Code/ reproduces all six source-claim failures; exact output
+  is build/source-claims-reproduction.log. Sources, whitelist and ledgers were
+  untouched; no protected register or gate was weakened. Baseline blockers:
+  Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLGameSetupMenu.cpp
+  Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/JetAIUpdate.cpp
+  Code/GameEngine/Source/GameLogic/Object/Update/MobMemberSlavedUpdate.cpp
+  Code/Libraries/Source/WWVegas/WW3D2/shattersystem.cpp
+  Code/Libraries/Source/WWVegas/WW3D2/w3d_dep.cpp
+  Code/Libraries/Source/WWVegas/WWLib/wwfont.cpp
+
+First transfer trial, stopping condition:
+- Existing stlport_LocaleFacets.cpp owns 20 rows/6118 B, while the historical
+  queue lists only 13 rows/3900 B. All 20 RVAs and file scope were claimed.
+- Candidate is stlport462_locale_candidate.cpp.txt beside this handoff. Copy
+  only to its original Code/Libraries/Source/WWVegas/WWLib path to reproduce;
+  its relative include expects that path. It imports pristine 4.6.2 c_locale.c,
+  uses the upstream C compile flags plus the Platform SDK marker, and keeps
+  existing Rva wrapper identities via local macro spelling (no ledger rename).
+- Fresh ./build.sh <original source> reports Functions: FAIL 2/20:
+  __Locale_monetary_create 0x00022F00/509: first diff +0x158, four REL32 bytes.
+  __Locale_numeric_create 0x00022890/354: first diff +0x14E, four REL32 bytes.
+  Both are unresolved ___FixGrouping calls; other bytes of both bodies equal
+  retail. The other 18 pass byte comparison, including the five previously
+  unsampled extraction wrappers. Literal/import checks for the new candidate
+  were not reached after the function failure. No row was repointed or dropped.
+- Both retail calls land at RVA 0x00021290, currently owned by the matched 52B
+  ?squash@Rva0084E030Buffer@@QAEXXZ in U2CStringScans.cpp. Original callers
+  explicitly call that thiscall member. Do not add a second pin as a workaround.
+  A compatibility call through the existing owner is a supported next hypothesis,
+  not a tested fix; changing the canonical identity needs the naming rules.
+- Original source restored byte for byte, SHA256
+  34142b31bf1d74fb478dece354f60aeb6395d3a7f1ad666d1ac8f3773bf50b4c,
+  and fresh restored control passed all 20 plus literal/import checks.
+  Logs: build/stlport-locale-462.log, build/stlport-locale-restored.log.
+
+Next steps: reconcile the six baseline sources with their owners; then commit
+vendor import and overlay separately through normal hooks. Before vendor-only
+commit, save the overlay changes and restore compiler inputs to HEAD (the
+ledger guard correctly rejects unstaged compiler edits). Keep BUILD_POOL=1/2.
+Resolve the locale compatibility binding, rerun all 20 rows, and only then
+repoint with add_match --replace-existing and continue the file queue. No
+STLport-outside-vendor ban has been added; that remains the requested later phase.
+
+All 20 RVA claims and the file-scope claim were released before handoff.

@@ -1,0 +1,46 @@
+STLport 4.6.2 phase 2 handoff - 2026-10-25
+
+Status: six files migrated and verified in the stlport-462 worktree; nothing
+pushed. Base 8baadbb7c1 (phase 1 handoff). Claims held by owner
+stlport-462-phase2 (all 178 RVAs); add_match keeps them until origin holds the
+rows. BUILD_POOL=2 throughout.
+
+Migrated files (every row kept, same name/RVA/extent; repointed via
+add_match --replace-existing, notes gain migrated=stlport-4.6.2):
+  stlport_LocaleFacets.cpp           20 rows  6118 B  (20/20, 13 literals, 118 imports)
+  stlport_create_filebuf.cpp         39 rows  4523 B  (39/39, 2 data rows, 20 imports)
+  stlport_float_format.cpp           23 rows  2620 B
+  stlport_wide_filebuf.cpp           38 rows  2613 B
+  StlportStrstreamConstructors.cpp   21 rows  2479 B
+  stlport_narrow_filebuf.cpp         37 rows  2071 B
+  total                             178 rows 20424 B
+Row inventory: stlport462_phase2_rows.tsv (beside this file).
+
+Target facts:
+- __Locale_numeric_create 0x00022890 and __Locale_monetary_create 0x00022F00
+  call 0x00021290, the matched 52 B ?squash@Rva0084E030Buffer@@QAEXXZ owner in
+  U2CStringScans.cpp (thiscall). The locale TU declares that class locally and
+  the checked c_locale_win32 patch calls it in place of ___FixGrouping; no
+  second pin, no rename. Donor fact only: upstream names it __FixGrouping.
+- Retail's IAT spells the ANSI import lstrcmpi; the adapter declares it and
+  maps lstrcmpiA to it.
+- The five extraction wrappers keep their Rva0002xxxx names via macros.
+
+Dependencies (why nothing but this note is committed):
+1. Pristine vendor import (vendor/stlport-4.6.2, .gitattributes) runs the full
+   gate, which fails Source claims on six zero-row sources. Owned by claim
+   codex-skidr-bfme-20261025-source-claims; do not fix here. Rebase onto it.
+2. Overlay (tools/build.py, tools/stlport_overlay.py, vendor/stlport-4.6.2-bfme,
+   hooks, header_dependents, protected_paths, tests) waits on 1 and on the
+   tools/build.py claim of codex-skidr-bfme-20261024-coordinator; rebase onto
+   their change first. Needs a Verifier-Change trailer (build/commit-overlay.txt).
+3. repair_queue.py stlport + stlport_trial.py + reverse/stlport_trial.csv
+   import stlport_overlay: commit with or after 2.
+4. The six source migrations, functions.csv, data rows and re_attempts.log
+   landed entries all need the // stlport462 overlay: commit after 2, one
+   commit per file or a single migration batch.
+Order: source-claims fix lands -> rebase -> vendor commit -> overlay commit
+(after build.py claim clears) -> lane tools -> migrations.
+
+Upstream drift to watch on rebase: origin/master edits .githooks/pre-commit
+and repoints many gen_uw funclets (none in these six files as of cc0d667e34).

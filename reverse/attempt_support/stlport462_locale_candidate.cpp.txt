@@ -1,0 +1,12 @@
+// cl: /O2 /GR /EHsc /MD /DNDEBUG /DWIN32 /D_WINDOWS /D_MBCS /D_STLP_USE_STATIC_LIB /D_STLP_NO_FORCE_INSTANTIATE /TC
+// stlport462
+// platformsdk
+// STLport 4.6.2 src/c_locale.c; migration trial, existing ledger identities retained.
+// The extraction-name mappings below preserve existing identities; this trial
+// does not rename the five inferred Rva wrappers or assert new upstream names.
+#define _Locale_extract_ctype_name Rva00023100
+#define _Locale_extract_numeric_name Rva00023210
+#define _Locale_extract_time_name Rva00023320
+#define _Locale_extract_collate_name Rva00023430
+#define _Locale_extract_monetary_name Rva00023540
+#include "../../../../../vendor/stlport-4.6.2/src/c_locale.c"
