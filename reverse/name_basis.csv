@@ -3660,3 +3660,7 @@ param,Rva003955AFData::query::a4,Rva003955AFData::query::options,inferred,agree:
 param,Rva003955AFData::query::a5,Rva003955AFData::query::builderObject,inferred,agree:nl-60270834e4c4,Code/GameEngine/Source/Common/Rva003955AF.cpp,0x003955AF
 function,?rva005E118B@@YIXPAVRva005F8A7ESub@@@Z,?HideTimerOverlay@@YIXPAVRva005F8A7ESub@@@Z,inferred,agree:nl-1741de5d7beb,Code/GameEngine/Source/Common/Rva005E1158Forward.cpp,0x005E118B
 member,Rva004534F5PlayerPart::m_1BC,Rva004534F5PlayerPart::m_isEvil,inferred,agree:nl-dc1de56ca420,Code/GameEngine/Source/GameLogic/Object/Behavior/GettingBuiltBehaviorPrimarySlots.cpp,
+local,Rva001F72E8ColorScale::v,Rva001F72E8ColorScale::colorScale,inferred,agree:nl-9fb818c09e51,Code/GameEngine/Source/Common/Rva001F69B1ParticleDrawBinder.cpp,0x001F72E8
+local,AptScoreScreen::OnSystemMsg::x,AptScoreScreen::OnSystemMsg::mouseX,inferred,agree:nl-eeec488ed42b,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenOnSystemMsg.cpp,0x0051C452
+local,AptScoreScreen::OnSystemMsg::y,AptScoreScreen::OnSystemMsg::mouseY,inferred,agree:nl-9036065aa650,Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptScoreScreenOnSystemMsg.cpp,0x0051C452
+function,?Rva00149FD0SetModelFlags@@YAXPAVRva00149FD0RenderObj@@IH@Z,?Set_MeshModel_Flag@@YAXPAVRva00149FD0RenderObj@@IH@Z,inferred,agree:nl-876f7e4f7079,Code/Libraries/Source/WWVegas/WW3D2/Rva00149FD0MeshModelFlags.cpp,0x00149FD0

@@ -70,7 +70,7 @@ public:
 	int NumRefs;
 };
 
-void __cdecl Rva00149FD0SetModelFlags(Rva00149FD0RenderObj *robj, unsigned int flags, int onoff)
+void __cdecl Set_MeshModel_Flag(Rva00149FD0RenderObj *robj, unsigned int flags, int onoff)
 {
 	if (robj->Class_ID() == 0) {
 		Rva00149FD0Model *model = robj->v05()->Get_Model();
@@ -84,7 +84,7 @@ void __cdecl Rva00149FD0SetModelFlags(Rva00149FD0RenderObj *robj, unsigned int f
 		for (int i = 0; i < count; i++) {
 			Rva00149FD0RenderObj *sub = robj->Get_Sub_Object(i);
 			if (sub) {
-				Rva00149FD0SetModelFlags(sub, flags, onoff);
+				Set_MeshModel_Flag(sub, flags, onoff);
 				sub->Release_Ref();
 			}
 		}

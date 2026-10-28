@@ -249,15 +249,15 @@ int AptScoreScreen::OnSystemMsg(int message, unsigned int wParam, unsigned int l
   {
    if ((GameWindow *)wParam != m_units)
    break;
-   int x = lParam & 0xFFFF;
-   int y = lParam >> 16;
-   if (x == m_lastX && y == m_lastY)
+   int mouseX = lParam & 0xFFFF;
+   int mouseY = lParam >> 16;
+   if (mouseX == m_lastX && mouseY == m_lastY)
    ++m_hoverFrames;
    else
    m_hoverFrames = 0;
    int row;
    int column;
-   GadgetListBoxGetEntryBasedOnXY((GameWindow *)wParam, x, y, row, column);
+   GadgetListBoxGetEntryBasedOnXY((GameWindow *)wParam, mouseX, mouseY, row, column);
    if (m_hoverFrames == 10)
    
    {
@@ -302,8 +302,8 @@ int AptScoreScreen::OnSystemMsg(int message, unsigned int wParam, unsigned int l
     TheMouse->rva001EEA6D(TheGameText->fetch(m_tooltip), -1, 0, 1.0f);
     
    }
-   m_lastX = x;
-   m_lastY = y;
+   m_lastX = mouseX;
+   m_lastY = mouseY;
    break;
    
   }

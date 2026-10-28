@@ -256,9 +256,9 @@ void Rva001F72E8ColorScale(ID3DXEffect *effect, D3DXHANDLE handle)
 	D3DXVECTOR4 scale(0.0f, 0.0f, 0.0f, 0.0f);
 	if (TheParticleSystemManager && TheParticleSystemManager->get())
 	{
-		Vec2001F5373 v;
-		TheParticleSystemManager->get()->rva001F5373(&v);
-		scale = D3DXVECTOR4(v.x, v.y, 0.0f, 0.0f);
+		Vec2001F5373 colorScale;
+		TheParticleSystemManager->get()->rva001F5373(&colorScale);
+		scale = D3DXVECTOR4(colorScale.x, colorScale.y, 0.0f, 0.0f);
 	}
 	effect->SetVector(handle, &scale);
 }
