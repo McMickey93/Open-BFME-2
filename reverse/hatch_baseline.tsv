@@ -14016,7 +14016,6 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdate.cp
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdate.cpp	SlavedUpdate::onSlaverDie	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdate.cpp	SlavedUpdate::xfer	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SlavedUpdate.cpp	SlavedUpdate::~SlavedUpdate	1
-present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpecialAbilityUpdateCtor.cpp	1TeleportToCasterSpecialPowerModuleData@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp	0SpectreGunshipUpdate@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp	0SpectreGunshipUpdateModuleData@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SpectreGunshipUpdate.cpp	1SpectreGunshipUpdate@@	1
@@ -14049,6 +14048,7 @@ present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/StructureTopple
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterDockUpdateCtor.cpp	1EvacuateGarrisonSpecialPower@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SupplyCenterProductionExitUpdateCtor.cpp	1StoreObjectsSpecialPowerModuleData@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/SupplyTruckAIUpdateCtor.cpp	1HordeDispatchSpecialPower@@	1
+present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/TeleportToCasterSpecialPower.cpp	1TeleportToCasterSpecialPowerModuleData@@	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/TurretAI_setTurretTargetObject.cpp	TurretStateMachine::getCurrentStateID	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Update/UntamedAllegianceSpecialPowerModuleDataCtor.cpp	1UntamedAllegianceSpecialPowerModuleData@@UAE@XZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/Object/Upgrade/StatusBitsUpgradeIfEldestKindofModuleDataDtor.cpp	1StatusBitsUpgradeModuleData@@UAE@XZ	1
