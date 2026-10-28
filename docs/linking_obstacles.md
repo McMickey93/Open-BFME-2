@@ -4729,7 +4729,12 @@ The generated source stays untouched, retaining 134 rows / 1,222 bytes.
 The five-source build passes 197/197 rows and 11 EXACT EH graphs; paired parent
 previews retain all four LINKS and 4,110 authored bytes. Remaining generated
 rows still need per-parent placement and callee proof. Whole-unit closure, strict census confirmation and headline gains remain
-unclaimed.
+unclaimed. The post-handover strict audit of `6a90d0dd78` exits 2:
+index `73061d9452` is behind its base and lacks per-object consumer names;
+a fresh fetch supplies no newer index. The comparison is unverified. Carry
+these four rebindings into the next maintainer census and repeat with current
+consumer metadata (the same evidence prerequisite tracked in LINK-008).
+
 **Existing list-base unwind binding (2026-10-28, codex):** CRT-header cleanup
 in `Rva005262BFDtor.cpp` preserves its rows and EXACT parent EH graph, but
 the shadow code-identity check flags existing `uw_00796887`: the physical

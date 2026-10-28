@@ -62,6 +62,18 @@ The old generated source remains in all registries and retains its orphaned
 harness code, as required. Existing renumbered W3D funclet labels are verified
 by the parent's EH data; this batch does not rename those separate rows.
 
+## Strict batch audit after handover
+
+Commit `6a90d0dd78` was handed to the runner publisher. Auditing its parent
+against that tip with the five byte-verified sources exits 2, INCONCLUSIVE:
+the available census index is at `73061d9452`, behind the outgoing base, and
+lacks per-object consumer names. A fresh fetch retained that same available
+index. The audit stops before a current consumer comparison, so this is
+unverified strict batch evidence, not a clean audit or a proven regression.
+Carry these four ledger rebindings into the next maintainer census and repeat
+the batch comparison when an index with consumer metadata is available. No
+nightly, direct census cycle or smoke run was started.
+
 ## Remaining prerequisites
 
 LINK-095 remains open for the other 134 generated rows. Earlier unmasked
