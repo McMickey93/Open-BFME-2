@@ -11292,7 +11292,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00856D50,16,.rdata,vtable,??_7AISpecialPowerUpdate@@6B@,,literal,??_7AISpecialPowerUpdate@@6B@;_s_secondary10@Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdateCtor.cpp,1,2
 0x00856D60,188,.rdata,vtable,??_7AISpecialPowerUpdate@@6BBehaviorModuleOther@@@,,literal,??_7AISpecialPowerUpdate@@6BBehaviorModuleOther@@@;_s_secondary0C@Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdateCtor.cpp,1,2
 0x00856E1C,300,.rdata,vtable,??_7AISpecialPowerUpdate@@6BBehaviorModuleBase@@@,,literal,??_7AISpecialPowerUpdate@@6BBehaviorModuleBase@@@;_s_vtable@Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdateCtor.cpp,1,2
-0x00856F48,124,.rdata,global,_vtbl_00C56F48,Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdateModuleDataCtor.cpp,owned,,1,1
+0x00856F48,124,.rdata,global,_vtbl_00C56F48,Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdate.cpp,owned,,1,1
 0x00856FC4,4,.rdata,string,??_C@_02MIICKFIN@?4?6?$AA@,,literal,,0,1
 0x00856FC8,8,.rdata,string,??_C@_06IINMKENM@?$CJ?5for?5?$AA@,,literal,,0,1
 0x00856FD0,60,.rdata,string,??_C@_0DJ@KBENGAKO@Special?5power?5type?5is?5invalid?5fo@,,literal,,0,1
@@ -20376,8 +20376,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A03DA0,4,.data,global,?TheReplaceObjectUpdatePoolKey@?1??getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp,owned,,1,2
 0x00A03DA4,4,.data,global,?$S1@?1??getModuleNameKey@ReplaceObjectUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ReplaceObjectUpdatePoolKey.cpp,owned,,1,4
 0x00A03DA8,4,.data,global,_s_rva007B1E90,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
-0x00A03DAC,4,.data,global,?TheAISpecialPowerUpdatePoolKey@?1??getModuleNameKey@AISpecialPowerUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdatePoolKey.cpp,owned,,1,2
-0x00A03DB0,4,.data,global,?$S1@?1??getModuleNameKey@AISpecialPowerUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdatePoolKey.cpp,owned,,1,4
+0x00A03DAC,4,.data,global,?TheAISpecialPowerUpdatePoolKey@?1??getModuleNameKey@AISpecialPowerUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdate.cpp,owned,,1,2
+0x00A03DB0,4,.data,global,?$S1@?1??getModuleNameKey@AISpecialPowerUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/AISpecialPowerUpdate.cpp,owned,,1,4
 0x00A03DB4,4,.data,global,?TheArmorUpgradePoolKey@?1??getModuleNameKey@ArmorUpgrade@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/Common/System/ArmorUpgradePoolKey.cpp,owned,,1,2
 0x00A03DB8,4,.data,global,?$S1@?1??getModuleNameKey@ArmorUpgrade@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/Common/System/ArmorUpgradePoolKey.cpp,owned,,1,4
 0x00A03DBC,4,.data,global,_s_rva007B1ED4,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
