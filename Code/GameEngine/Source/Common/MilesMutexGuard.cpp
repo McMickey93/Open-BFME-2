@@ -33,13 +33,16 @@ class Rva00041037Mutex
 {
 public:
     virtual bool vf0(int x);
+    virtual unsigned char vf1();
 };
 
 class MilesMutexGuard
 {
 public:
     MilesMutexGuard(void *m, int x);
+    ~MilesMutexGuard();
     bool rva00041037(int x);
+    bool rva00041055();
 private:
     Rva00041037Mutex *m_mutex; // +0
     bool m_flag; // +4
