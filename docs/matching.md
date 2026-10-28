@@ -661,8 +661,14 @@ coverage, ownership, freshness and history checks as other apparent gaps.
 - DirectX SDK: `next_work.py --tier dx [--claim]` serves a unit to move off the
   `reference/shims` DirectX stand-ins onto the vendored August 2005 SDK
   (`vendor/dxsdk-aug2005/`, opted in with a `// dxsdk` line).
-- STLport: a 4.6.2 migration is in progress and has not landed; until it does,
-  STLport rows keep their current sources and rules.
+- STLport: retail linked STLport 4.6 (evidence: `vendor/stlport-4.6/PROVENANCE.md`),
+  not the 4.5.3 in `vendor/stlport`. A unit moves to the pristine 4.6 headers
+  and the BFME patch layer (`vendor/stlport-4.6-bfme/`) with an exact
+  `// stlport46` line. `python3 tools/repair_queue.py stlport` serves whole files
+  whose rows the trial lane (`tools/stlport_trial.py`, `reverse/stlport_trial.csv`)
+  saw match under 4.6; the queue is a lead, `./build.sh` of the whole file is the
+  proof. Repoint every row with `add_match.py --replace-existing`, notes gaining
+  `migrated=stlport-4.6`.
 
 ### Work the file, not the row
 
