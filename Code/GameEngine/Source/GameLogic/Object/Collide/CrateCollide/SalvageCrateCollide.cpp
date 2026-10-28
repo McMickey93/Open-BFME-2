@@ -31,6 +31,12 @@
 
 class Object;
 class Player;
+class Xfer;
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
 
 class Rva000421C8
 {
@@ -228,6 +234,7 @@ class CrateCollide
 public:
 	virtual ~CrateCollide();
 protected:
+	virtual void xfer(Xfer *xfer);
 	virtual bool executeCrateBehavior(Object *other);
 	virtual bool isValidToExecute(const Object *other) const;	// 0x004BC6C2
 	const void *m_moduleData;	// +0x04
@@ -236,7 +243,10 @@ protected:
 
 class SalvageCrateCollide : public CrateCollide
 {
+public:
+	virtual NameKeyType getModuleNameKey() const;
 protected:
+	virtual void xfer(Xfer *xfer);
 	virtual bool executeCrateBehavior(Object *other);
 	virtual bool isValidToExecute(const Object *other) const;
 private:
