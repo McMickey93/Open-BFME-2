@@ -7347,13 +7347,20 @@ public:
 	~Rva002859EADtor();
 };
 
-extern unsigned g_Va00DE1E98;
-unsigned int g_Va00DE1E98;
+class CameraShakeSystemClass { public: class CameraShakerClass; };
+template<class T, int N> class ObjectPoolClass;
+void __cdecl rva007B6B73();
+template<class T, int N> class AutoPoolClass
+{
+	friend void __cdecl rva007B6B73();
+private:
+	static ObjectPoolClass<T, N> Allocator;
+};
 
-// ?rva007B6B73@@YAXXZ @ 0x007B6B73 (10B). Global dtor thunk: ecx=&g_Va00DE1E98 then tail-jmp to pinned ??1Rva002859EADtor@@QAE@XZ (0x002859EA). No callers. Honest address name.
+// The camera-shaker TU owns this pool at retail RVA 0x009E1E98.
 void __cdecl rva007B6B73()
 {
-	Rva002859EADtor *receiver = (Rva002859EADtor *)&g_Va00DE1E98;
+	Rva002859EADtor *receiver = (Rva002859EADtor *)&AutoPoolClass<CameraShakeSystemClass::CameraShakerClass, 256>::Allocator;
 	return receiver->~Rva002859EADtor();
 }
 
