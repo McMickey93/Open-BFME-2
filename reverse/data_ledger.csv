@@ -10768,7 +10768,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00849188,192,.rdata,vtable,??_7PropagandaTowerBehavior@@6BPB_Iface1@@@,,literal,??_7PropagandaTowerBehavior@@6BPB_Iface1@@@;??_7RebuildHoleBehavior@@6BBehaviorModuleOther@@@;??_7Rva0048180C@@6BRva0024A797_Mid@@@;??_7Rva00499934@@6BRva0024A797_Mid@@@;??_7Rva004A4214@@6BRva0024A797_Mid@@@;??_7Rva004A4C19@@6BRva0024A797_Mid@@@;??_7Rva004A54A8@@6BRva0024A797_Mid@@@;??_7StructureToppleUpdate@@6BBehaviorModuleOther@@@;_s_secondary0C@Code/GameEngine/Source/GameLogic/Object/Behavior/RebuildHoleBehavior.cpp;_vtbl_00C49188,1,12
 0x00849248,64,.rdata,vtable,??_7PropagandaTowerBehavior@@6BPB_DeepBase@@@,,literal,??_7PropagandaTowerBehavior@@6BPB_DeepBase@@@;??_7Rva0048180C@@6BRva0024A797_Root@@@,0,2
 0x00849288,224,.rdata,global,_vtbl_00C49288,Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorModuleDataCtor2.cpp,owned,,1,1
-0x00849368,128,.rdata,global,?g_00C49368@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorModuleDataParse.cpp,owned,,1,1
+0x00849368,128,.rdata,global,?g_00C49368@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehavior.cpp,owned,,1,1
 0x008493E8,16,.rdata,vtable,??_7Rva00481F82@@6BRva00481F82_S4@@@,,literal,??_7Rva00481F82@@6BRva00481F82_S4@@@;_vtbl_00C493E8,0,2
 0x008493F8,4,.rdata,vtable,??_7Rva00481F82@@6BRva00481F82_S3@@@,,literal,??_7Rva00481F82@@6BRva00481F82_S3@@@;_vtbl_00C493F8,0,2
 0x008493FC,12,.rdata,vtable,??_7Rva00481F82@@6BRva00481F82_S2@@@,,literal,??_7Rva00481F82@@6BRva00481F82_S2@@@;_vtbl_00C493FC,0,2

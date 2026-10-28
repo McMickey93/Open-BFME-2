@@ -124,21 +124,6 @@ private:
 	const UpgradeTemplate *m_tmpl; // +0x2c
 };
 
-class __declspec(novtable) PropagandaTowerBehaviorModuleData : public Snapshot
-{
-public:
-	virtual ~PropagandaTowerBehaviorModuleData();
-private:
-	int m_unused04; // +0x04
-	float m_radius; // +0x08
-	int m_delayBetweenUpdates; // +0x0C
-	float m_healPercentEachSecond; // +0x10
-	const void *m_pulseFX; // +0x14
-	AsciiString m_upgradeRequired; // +0x18
-	float m_upgradedHealPercentEachSecond; // +0x1C
-	const void *m_upgradedPulseFX; // +0x20
-};
-
 class PropagandaTowerBehaviorModuleData;
 
 extern GameLogic *TheGameLogic;
@@ -177,6 +162,83 @@ private:
 	ObjectTracker *m_insideList;
 };
 
+//
+// PropagandaTowerBehaviorModuleData file-unit (parse first; the ctor
+// remains pinned for a follow-up). Distinct TU name because
+// PropagandaTowerBehaviorModuleDataCtor.cpp already holds the
+// DetachableRiderUpdateModuleData ctor at 0x4AEAB7.
+//
+// ?buildFieldParse@PropagandaTowerBehaviorModuleData@@SAXAAVMultiIniFieldParse@@@Z,
+// retail 0x004819BE, 17 bytes. Single-table parse proc (table 0x00C49368)
+// through the rowed MultiIniFieldParse::add at 0x2BC6E. Row supersedes the
+// parse pin.
+
+class MultiIniFieldParse;
+
+class INI;
+
+typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
+
+struct FieldParse
+{
+	const char *token;
+	INIFieldParseProc parse;
+	const void *userData;
+	int offset;
+};
+
+class INI
+{
+public:
+	static void parseAsciiString(INI *ini, void *instance, void *store, const void *userData);
+	static void parseDurationUnsignedInt(INI *ini, void *instance, void *store, const void *userData);
+	static void parseFXList(INI *ini, void *instance, void *store, const void *userData);
+	static void parsePercentToReal(INI *ini, void *instance, void *store, const void *userData);
+	static void parseReal(INI *ini, void *instance, void *store, const void *userData);
+};
+
+// Retail VA 0x00C49368 (.rdata): 7 field records and a zero sentinel.
+extern const FieldParse g_00C49368[] = {
+	{ "Radius", &INI::parseReal, 0, 0x8 },
+	{ "DelayBetweenUpdates", &INI::parseDurationUnsignedInt, 0, 0xC },
+	{ "HealPercentEachSecond", &INI::parsePercentToReal, 0, 0x10 },
+	{ "UpgradedHealPercentEachSecond", &INI::parsePercentToReal, 0, 0x1C },
+	{ "PulseFX", &INI::parseFXList, 0, 0x14 },
+	{ "UpgradeRequired", &INI::parseAsciiString, 0, 0x18 },
+	{ "UpgradedPulseFX", &INI::parseFXList, 0, 0x20 },
+	{ 0, 0, 0, 0 }
+};
+
+class MultiIniFieldParse
+{
+public:
+	void add(const FieldParse *parseTable, unsigned int extraOffset);
+};
+
+class __declspec(novtable) PropagandaTowerBehaviorModuleData : public Snapshot
+{
+public:
+	virtual ~PropagandaTowerBehaviorModuleData();
+private:
+	int m_unused04;
+private:
+	float m_radius;
+private:
+	int m_delayBetweenUpdates;
+private:
+	float m_healPercentEachSecond;
+private:
+	const void *m_pulseFX;
+private:
+	AsciiString m_upgradeRequired;
+private:
+	float m_upgradedHealPercentEachSecond;
+private:
+	const void *m_upgradedPulseFX;
+public:
+	static void buildFieldParse(MultiIniFieldParse &parse);
+};
+
 // tu-skeleton: 0x00481842 216B ?xfer@PropagandaTowerBehavior@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x0048191A 69B ?getModuleNameKey@PropagandaTowerBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorPoolKey.cpp (not merged yet)
@@ -185,11 +247,19 @@ private:
 
 // tu-skeleton: 0x0048197C 66B ??0PropagandaTowerBehaviorModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorModuleDataCtor2.cpp (not merged yet)
 
-// tu-skeleton: 0x004819BE 17B ?buildFieldParse@PropagandaTowerBehaviorModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorModuleDataParse.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorModuleDataParse.cpp
+
+// ?buildFieldParse@PropagandaTowerBehaviorModuleData@@SAXAAVMultiIniFieldParse@@@Z @0x004819BE
+void PropagandaTowerBehaviorModuleData::buildFieldParse(MultiIniFieldParse &parse)
+{
+	parse.add(g_00C49368, 0);
+}
 
 // tu-skeleton: 0x004819CF 105B ??0PropagandaTowerBehavior@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorConstructor.cpp (not merged yet)
 
 // tu-skeleton: 0x00481A38 28B ??_GRva0048180C@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva0024A797Grandchildren.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehavior.cpp
 
 // ---- from Code/GameEngine/Source/Common/BfmeConv491.cpp
 
@@ -207,8 +277,6 @@ void BfmeThingBMD::bfmeGoBMD()
 	m_bfmeGot = (void *)TheUpgradeCenter->findUpgrade(
 		*reinterpret_cast<const AsciiString *>((const char *)m_bfmeWhat + 0x18));
 }
-
-// tu-skeleton: 0x00481A6E 48B ?rva00481A6E@Rva00481A6E@@UAEXHPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesS3C.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorEffectLogic.cpp
 
@@ -251,12 +319,6 @@ void Rva0048180C::rva00481A9E(Object *tgt, bool flag, Rva00481A9EInfo *info)
 	}
 }
 
-// tu-skeleton: 0x00481B7F 44B ??0?$BitFlags@$0L@@@QAE@W4BogusInitType@0@H@Z -- matched in Code/GameEngine/Source/Common/System/BitFlags11DisabilityCtors.cpp (not merged yet)
-
-// tu-skeleton: 0x00481BAB 7B ?Rva00481BABInvert@@YAXPAI@Z -- matched in Code/GameEngine/Source/Common/GapBodiesS9A.cpp (not merged yet)
-
-// tu-skeleton: 0x00481BB2 28B ??_GPropagandaTowerBehaviorModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/BehaviorModuleDeletingDtors.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorModuleDataDtor.cpp
 
 //
@@ -272,10 +334,6 @@ void Rva0048180C::rva00481A9E(Object *tgt, bool flag, Rva00481A9EInfo *info)
 PropagandaTowerBehaviorModuleData::~PropagandaTowerBehaviorModuleData()
 {
 }
-
-// tu-skeleton: 0x00481BFE 14B ?Rva00481BFE@@YA_NPBXABV?$BitFlags@$0L@@@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE22.cpp (not merged yet)
-
-// tu-skeleton: 0x00481C0C 320B ?update@PropagandaTowerBehavior@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorUpdate.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorRemoveAllInfluence.cpp
 
@@ -295,4 +353,36 @@ void PropagandaTowerBehavior::removeAllInfluence()
 	}
 }
 
+// tu-skeleton: 0x00481A6E 48B ?rva00481A6E@Rva00481A6E@@UAEXHPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesS3C.cpp (not merged yet)
+
+// tu-skeleton: 0x00481B7F 44B ??0?$BitFlags@$0L@@@QAE@W4BogusInitType@0@H@Z -- matched in Code/GameEngine/Source/Common/System/BitFlags11DisabilityCtors.cpp (not merged yet)
+
+// tu-skeleton: 0x00481BAB 7B ?Rva00481BABInvert@@YAXPAI@Z -- matched in Code/GameEngine/Source/Common/GapBodiesS9A.cpp (not merged yet)
+
+// tu-skeleton: 0x00481BB2 28B ??_GPropagandaTowerBehaviorModuleData@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/BehaviorModuleDeletingDtors.cpp (not merged yet)
+
+// tu-skeleton: 0x00481BFE 14B ?Rva00481BFE@@YA_NPBXABV?$BitFlags@$0L@@@@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE22.cpp (not merged yet)
+
+// tu-skeleton: 0x00481C0C 320B ?update@PropagandaTowerBehavior@@UAE?AW4UpdateSleepTime@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorUpdate.cpp (not merged yet)
+
 // tu-skeleton: 0x00481DA4 478B ?doScan@PropagandaTowerBehavior@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BAF1 13B $L310 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorPoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BAFE 10B __ehhandler$?getModuleNameKey@PropagandaTowerBehavior@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorPoolKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB08 8B Unwind@00b8bb08 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB10 10B __ehhandler$??0PropagandaTowerBehavior@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorConstructor.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB2C 11B Unwind@00b8bb2c -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB37 8B Unwind@00b8bb37 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB3F 8B Unwind@00b8bb3f -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB47 8B Unwind@00b8bb47 -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB4F 8B uw_0078bb4f -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp (not merged yet)
+
+// tu-skeleton: 0x0078BB57 10B __ehhandler$?doScan@PropagandaTowerBehavior@@MAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorDoScan.cpp (not merged yet)
