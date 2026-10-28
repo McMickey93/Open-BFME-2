@@ -7,6 +7,7 @@
 
 typedef int Int;
 #include "DisplayStaticDebugView.h"
+
 // ?rva0025C8D3@Rva0025C6E2Elem@@QAEXPAVW3DDisplay@@HH@Z @0x0025C8D3 171B
 // Element image draw: early-out on null image or id mismatch, then single
 // W3DDisplay draw call whose four float coords are unsigned virtual results
@@ -15,6 +16,7 @@ typedef int Int;
 // row W3DDisplayDrawImageMode.cpp; virtual slots 0x40/0x44 no-arg unsigned;
 // float const 0x007C26EC is 2^32 for unsigned conversion; caller 0x0025D2F0.
 class Image;
+
 class W3DDisplay
 {
 public:
@@ -187,6 +189,8 @@ public:
 
 extern GlobalData *TheWritableGlobalData;
 
+extern float g_Va00BBB8D8;
+
 // tu-skeleton: 0x0025C134 25B ?rva0025C134@Display@@UAEXPAV1@@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C134.cpp (not merged yet)
 
 // tu-skeleton: 0x0025C14D 62B ?rva0025C14D@Display@@UAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp (not merged yet)
@@ -196,6 +200,8 @@ extern GlobalData *TheWritableGlobalData;
 // tu-skeleton: 0x0025C238 34B ?rva0025C238@Display@@UAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Dtor.cpp (not merged yet)
 
 // tu-skeleton: 0x0025C25A 8B ?rva0025C25A@Rva0025C25AForwarder@@QAEXXZ -- matched in Code/GameEngine/Source/Common/VslotSizedForwarders.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/GameClient/Display.cpp
 
 // ---- from Code/GameEngine/Source/GameClient/Display.cpp
 
@@ -296,12 +302,6 @@ bool Rva0025CEEFCheck(bool wanted)
 	return found;
 }
 
-// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameClient/DisplaySetDebugDisplayCallback.cpp
 
 // ?setDebugDisplayCallback@Display@@UAEXP6AXPAVDebugDisplayInterface@@PAXPAU_iobuf@@@Z1@Z,
@@ -316,14 +316,6 @@ void Display::setDebugDisplayCallback(DebugDisplayCallback *callback, void *user
 	m_debugDisplayUserData = userData;
 	TheWritableGlobalData->m_networkDebugDisplay = (callback == NetworkDebugDisplay);
 }
-
-// tu-skeleton: 0x0025C6E2 74B ?SetMovieImage@Display@@QAEXHHMMMM@Z -- matched in Code/GameEngine/Source/Common/Display.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C72C 74B ?SetStaticImage@Display@@QAEXHHMMMM@Z -- matched in Code/GameEngine/Source/Common/Display.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C776 131B ?rva0025C776@Display@@QAEXHMMMMHH@Z -- matched in Code/GameEngine/Source/Common/Rva0025C776Finish.cpp (not merged yet)
-
-// tu-skeleton: 0x0025C7F9 48B ?rva0025C7F9@Rva0025C7F9@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva0025C8D3.cpp
 
@@ -354,6 +346,77 @@ void Rva0025C6E2Elem::rva0025C829(W3DDisplay *disp, int id)
 		(float)(unsigned)disp->unused17() * m_10,
 		-1, 2);
 }
+
+// tu-skeleton: 0x0025C46E 54B ?rva0025C46E@Display@@QAEXXZ -- matched in Code/GameEngine/Source/Common/BfmeConv1435.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C4A4 79B ?rva0025C4A4@Display@@QAEHH@Z -- matched in Code/GameEngine/Source/Common/BfmeStrVM0Rva0025C4A4.cpp (not merged yet)
+
+// tu-skeleton: 0x0025C4F3 458B ?update@Display@@QAEXXZ -- matched in Code/GameEngine/Source/GameClient/DisplayMovieUpdateRva0025CC7A.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/Display.cpp
+
+// ?SetMovieImage@Display@@QAEXHHMMMM@Z @0x0025C6E2 74B evidence: same TU class Display as neighbours rva0025C46E rva0025D10F in BfmeConv1435.cpp; array at +0x68 element 24B bounds 3; 6 stack args ret 0x18; unblocks 0x00356724 0x00356889
+// ?SetStaticImage@Display@@QAEXHHMMMM@Z @0x0025C72C 74B twin with const 2 at +0x14 via same array bounds and G7 imul; unblocks 0x0023958B 0x0035C566
+
+void Display::SetMovieImage(int v0, int idx, float f0, float f1, float f2, float f3)
+{
+	if (idx >= 3)
+		return;
+	Rva0025C6E2Elem &e = m_staticImages[idx];
+	e.m_04 = f0;
+	e.m_08 = f1;
+	e.m_0c = f2;
+	e.m_00 = (Image *)v0;
+	e.m_10 = f3;
+	e.m_14 = 1;
+}
+
+void Display::SetStaticImage(int v0, int idx, float f0, float f1, float f2, float f3)
+{
+	if (idx >= 3)
+		return;
+	Rva0025C6E2Elem &e = m_staticImages[idx];
+	e.m_04 = f0;
+	e.m_08 = f1;
+	e.m_0c = f2;
+	e.m_00 = (Image *)v0;
+	e.m_10 = f3;
+	e.m_14 = 2;
+}
+
+// ---- from Code/GameEngine/Source/Common/Rva0025C776Finish.cpp
+
+// ?rva0025C776@Display@@QAEXHMMMMHH@Z @0x0025C776 131B
+// Third Display block setter, sibling of SetMovieImage/SetStaticImage in
+// Rva0025C6E2.cpp: same object model, the +0x110/+0x124/+0x138 scalar block.
+// Seven stack args (ret 0x1c); the reciprocal stores
+// 1.0f / (float)a20 at +0x11c and the same literal at +0x120, both read from
+// the compiler literal pool at 0x00BBB8D8 (modelled as a private extern float).
+// The stores are written through volatile lvalues so MSVC 2003's /O1 list
+// scheduler keeps the retail store order (m_124, m_130, m_134, m_138, m_110)
+// instead of sinking the +0x138 immediate past the divss into its latency slot;
+// the volatile qualifier emits the identical mov/movss encodings and the
+// function has no externally visible behaviour change.
+
+// ?rva0025C776@Display@@QAEXHMMMMHH@Z @0x0025C776
+void Display::rva0025C776(int a8, float fc, float f10, float f14, float f18, int a1c, int a20)
+{
+	m_128 = fc;
+	m_12c = f10;
+	*(volatile int *)&m_124 = a8;
+	int t_a1c = a1c;
+	*(volatile float *)&m_130 = f14;
+	*(volatile float *)&m_134 = f18;
+	float one = g_Va00BBB8D8;
+	*(volatile int *)&m_138 = 1;
+	*(volatile int *)&m_110 = t_a1c;
+	float fdiv = one / (float)a20;
+	m_118 = a20;
+	m_11c = fdiv;
+	m_120 = one;
+}
+
+// tu-skeleton: 0x0025C7F9 48B ?rva0025C7F9@Rva0025C7F9@@QAEXPAX@Z -- matched in Code/GameEngine/Source/Common/GapBodiesGE04.cpp (not merged yet)
 
 // tu-skeleton: 0x0025C97E 764B ?rva0025C97E@Display@@UAE_NVAsciiString@@HHH@Z -- matched in Code/GameEngine/Source/GameClient/DisplayMovieOpenRva0025C97E.cpp (not merged yet)
 
