@@ -5339,6 +5339,13 @@ pointer comments (`winCreate` in `GameWindowManager_dumpWindow.cpp`, and
 to retail 0x00001423 (34 bytes compared). 25 hatches retired (23 `present_unmatched`,
 2 `pragma_optimize`). Both rows pass `./build.sh`, and `find_declared_unmatched.py`
 is clean. Preview: LINKS, LINKED 0 -> 151.
+Consolidation prerequisite (2026-10-28, inspected `f5979062a5`): the initial
+21-donor/70-row merge trial accepted no combination. Reconciled the lone-window
+donor's duplicate GGM_CLOSE and its slot-58 send view with the seed; its 51-byte
+body, COMDAT relocation identities and external symbols are preserved. The seed
+and donor pass 7/7 rows and both preview LINKS. Full evidence and remaining
+class/enum/STL blockers: `reverse/attempt_support/gamewindowmanager-consolidation-20261028-codexb.md`.
+The merge itself remains pending; this does not clear the census requirement.
 Remaining / next check: rename the four vtable-slot placeholders above once their
 bodies are checked against Zero Hour.
 Clearance: pending.
