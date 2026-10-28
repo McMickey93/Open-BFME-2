@@ -1,10 +1,6 @@
-// cl: /FIzh_ascii.h /Ireference/shims/bfme2_ascii_zh /DBFME_ASCII_DTOR_DECL /Ireference/shims/bfme2_ascii /O1 /G7 /arch:SSE /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib
+// cl: /FIzh_ascii.h /DBFME_ASCII_DTOR_DECL /MD /EHsc /DNDEBUG /DWIN32 /D_WINDOWS /D_STLP_USE_STATIC_LIB /D_CRTIMP= /D_STLP_USE_MALLOC /D_STLP_NO_EXCEPTIONS /DBFME_MODULE_NO_MPO /DZH_EMIT_POOL_GLUE /Ireference/shims/bfme2_ascii_zh /Ireference/shims/bfme2_ascii /Ireference/shims/bfmerendobj /Ireference/shims/debugvtable /Ireference/shims/sweep /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/Compression /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/debug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngineDevice/Include /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Main /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWLib /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WW3D2 /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWMath /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWSaveLoad /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/Wwutil /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDownload /Ireference/open-bfme-1/Code/Libraries/Source/WWVegas/WWDebug /Ireference/open-bfme-1/Code/Libraries/Source/Compression /Ireference/shims/bfmeanimobj /Ireference/shims/indexbuffercount /Ireference/shims/bfmecaps /Ireference/shims/bfmehcanim /Ireference/shims/bfmevector /Ireference/shims/bfmemapper /Ireference/shims/meshmatdesclayout /Ireference/shims/bfmeshader /Ireference/shims/bfmecpudetect /Ireference/shims/bfmepool /Ireference/open-bfme-1/Code/GameEngine/Include/Precompiled /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/GameEngine/Include/GameNetwork /Ireference/open-bfme-1/reference/CnC_Generals_Zero_Hour/GeneralsMD/Code/Libraries/Source/WWVegas/WWAudio /Ireference/shims/bfmealloc /Ireference/shims/bfmehashtable /Ireference/shims/bfmelist /Ireference/shims/asciistring_downloadmanager /Ireference/shims/stlp_nodealloc /Ireference/shims/asciistring_thin /ICode/GameEngine/Source/Common /Ireference/shims/w3droadbuffer /Ireference/shims/bfmeterraintracks /ICode/Libraries/Include/Lib /Ireference/shims/moduledata /ICode/Libraries/Include
 // stlport
-// Ported verbatim from the Generals Zero Hour reference
-// (GameEngine/Source/Common/System/Upgrade.cpp); this unit had no counterpart under Code/.
-// Retail keeps one unsigned max, RVA 0x00013740 (the vendored STLport row). This unit's
-// flags (/G7 /arch:SSE) compile a different copy, and retail kept another unit's. This unit-local
-// overload keeps the inlined code and offers the link no second copy.
+// TU Code/GameEngine/Source/Common/System/Upgrade.cpp: generated by tools/tu_skeleton.py from tu_map.csv (approved rows, retail order)
 #include <stl/_algobase.h>
 namespace _STL {
 static inline const unsigned int &max(const unsigned int &a, const unsigned int &b)
@@ -12,6 +8,186 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
     return a < b ? b : a;
 }
 }
+#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
+#define DEFINE_VETERANCY_NAMES
+#include "Common/Upgrade.h"
+#include "Common/Player.h"
+#include "Common/Xfer.h"
+#include "GameClient/InGameUI.h"
+#include "GameClient/Image.h"
+#pragma comment(linker, "/alternatename:?push_back@?$BfmeVector@VAsciiString@@@@QAEXABVAsciiString@@@Z=?push_back@?$vector@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@QAEXABVAsciiString@@@Z")
+#include <vector>
+#include <memory>
+#include "ascii_string.h"
+#include "../../../../Libraries/Include/Lib/BfmeE16.h"
+
+const char *TheUpgradeTypeNames[] = 
+{
+	"PLAYER",
+	"OBJECT",
+	NULL
+};
+
+// PUBLIC /////////////////////////////////////////////////////////////////////////////////////////
+class UpgradeCenter *TheUpgradeCenter = NULL;
+
+// ?rva0026F0F0@Rva0026F0F0@@QAEPAXPBX@Z @0x0026F0F0 42B
+// Find over +0xc list: return first node whose +0x38 bit is set in the
+// caller mask array, following +0x64 links. Unlocks 8 callers.
+// Evidence: and 0x1f shl shr-5 test [mask+word*4] bit pattern ret 4.
+struct Rva0026F0F0Node
+{
+	char m_pad00[0x38];
+	int m_bit;
+	char m_pad3c[0x28];
+	Rva0026F0F0Node *m_next;
+};
+
+struct Rva0026F0F0
+{
+	char m_pad00[0x0c];
+	Rva0026F0F0Node *m_head;
+	void *rva0026F0F0(const void *mask);
+};
+
+//
+// ?findUpgrade@UpgradeCenter@@QBEPBVUpgradeTemplate@@ABVAsciiString@@@Z,
+// retail 0x0026F26D, 28 bytes. Dedicated TU (Upgrade.cpp itself is
+// unstageable: ~20 unmarked defs trip the declare gate; and the callee
+// findUpgradeByKey must stay declared-not-defined here or it inlines and
+// breaks this body's out-of-line call).
+//
+// Zero Hour reference
+// (reference/open-bfme-1/reference/CnC_Generals_Zero_Hour/Generals/Code/GameEngine/Source/Common/System/Upgrade.cpp,
+// UpgradeCenter::findUpgrade): name-to-key via TheNameKeyGenerator, then
+// delegate to the const key walk. Callees resolve via matched rows, no
+// pins: nameToKey(AsciiString) 0x009FA65, findUpgradeByKey 0x0026EEB8.
+
+class AsciiString;
+
+class UpgradeTemplate;
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+struct Rva0026F4F4Element { unsigned words[1];bool operator<(const Rva0026F4F4Element&)const;bool operator==(const Rva0026F4F4Element&)const; };
+
+namespace _STL {template<>struct __type_traits<Rva0026F4F4Element> : __type_traits_aux<1> {};}
+
+// Instantiate the recovered operation and its required template dependencies.
+template _STL::vector<Rva0026F4F4Element, _STL::allocator<Rva0026F4F4Element> > & _STL::vector<Rva0026F4F4Element, _STL::allocator<Rva0026F4F4Element> >::operator=(_STL::vector<Rva0026F4F4Element, _STL::allocator<Rva0026F4F4Element> > const &);
+
+// bfme link decl-only BfmeE16
+namespace _STL { template <> vector<BfmeE16, allocator<BfmeE16> >::~vector(); }
+
+class OpaqueRefCounted
+{
+public:
+	void Release_Ref();
+};
+
+struct OpaqueRefPtr
+{
+	OpaqueRefCounted *m_ptr;
+	OpaqueRefPtr() : m_ptr(0) {}
+	~OpaqueRefPtr() { if (m_ptr) m_ptr->Release_Ref(); }
+};
+
+struct MallocPtr
+{
+	void *m_ptr;
+	~MallocPtr() { if (m_ptr) free(m_ptr); }
+};
+
+void __cdecl free(void *p);
+
+class Rva00360D26Member
+{
+public:
+	~Rva00360D26Member();
+private:
+	unsigned m_unknown;
+};
+
+class Rva003623E5Member
+{
+public:
+	Rva003623E5Member();
+};
+
+class Rva0026F684
+{
+public:
+	Rva0026F684();
+	virtual ~Rva0026F684();
+private:
+	int m_04;
+	AsciiString m_08;
+	int m_0C;
+	_STL::vector<BfmeE16> m_10;
+	_STL::vector<BfmeE16> m_1C;
+	AsciiString m_28;
+	AsciiString m_2C;
+	float m_30;
+	int m_34;
+	int m_38;
+	AsciiString m_3C;
+	OpaqueRefPtr m_40;
+	int m_44;
+	OpaqueRefPtr m_48;
+	int m_4C;
+	int m_50;
+	int m_54;
+	int m_58;
+	int m_5C;
+	int m_60;
+	int m_64;
+	int m_68;
+	AsciiString m_6C;
+	int m_70;
+	AsciiString m_74;
+	unsigned char m_78;
+	unsigned char m_79;
+	AsciiString m_7C;
+	Rva003623E5Member m_80;
+	int m_84;
+	int m_88;
+	AsciiString m_8C;
+	int m_90;
+	unsigned char m_94;
+	int m_98;
+};
+
+// tu-skeleton: 0x0026EDDC 29B ??0Upgrade@@QAE@PBVUpgradeTemplate@@@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EDF9 6B ?name@Upgrade@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/SubsystemNameGetters2.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EDFF 18B ??1Upgrade@@UAE@XZ -- matched in Code/GameEngine/Source/Common/System/UpgradeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EE11 31B ?rva0026EE11@Rva0026EE11@@QAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/Common/System/XferUpgradeStatusTransfer.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EE30 112B ?rva0026EE30@UpgradeTemplate@@QAEHPAX0@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeRva0026EE30.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EEA0 24B ?rva0026EEA0@UpgradeCenter@@QBEPBVUpgradeTemplate@@H@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EEB8 24B ?findUpgradeByKey@UpgradeCenter@@QBEPBVUpgradeTemplate@@W4NameKeyType@@@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EED0 34B ?linkUpgrade@UpgradeCenter@@QAEXPAVUpgradeTemplate@@@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EEF2 44B ?unlinkUpgrade@UpgradeCenter@@IAEXPAVUpgradeTemplate@@@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EF1E 22B ?attemptRefresh@UpgradeCenter@@UAE_NXZ -- matched in Code/GameEngine/Source/Common/ReloadIniFileNotices.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EF34 28B ??_GUpgrade@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0026EF50 315B ?calcCostToBuild@UpgradeTemplate@@QBEIPAVPlayer@@I@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeTemplateCalcCostToBuild.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/Upgrade.cpp
+
+// Ported verbatim from the Generals Zero Hour reference
+// (GameEngine/Source/Common/System/Upgrade.cpp); this unit had no counterpart under Code/.
+// Retail keeps one unsigned max, RVA 0x00013740 (the vendored STLport row). This unit's
+// flags (/G7 /arch:SSE) compile a different copy, and retail kept another unit's. This unit-local
+// overload keeps the inlined code and offers the link no second copy.
 
 /*
 **	Command & Conquer Generals Zero Hour(tm)
@@ -43,25 +219,6 @@ static inline const unsigned int &max(const unsigned int &a, const unsigned int 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // USER INCLUDES //////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
-
-#define DEFINE_VETERANCY_NAMES
-#include "Common/Upgrade.h"
-#include "Common/Player.h"
-#include "Common/Xfer.h"
-#include "GameClient/InGameUI.h"
-#include "GameClient/Image.h"
-
-
-const char *TheUpgradeTypeNames[] = 
-{
-	"PLAYER",
-	"OBJECT",
-	NULL
-};
-
-// PUBLIC /////////////////////////////////////////////////////////////////////////////////////////
-class UpgradeCenter *TheUpgradeCenter = NULL;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UPGRADE ////////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +233,9 @@ class UpgradeCenter *TheUpgradeCenter = NULL;
 Upgrade::~Upgrade( void )
 {
 
-}  // end ~Upgrade
+}
+
+  // end ~Upgrade
 
 // ------------------------------------------------------------------------------------------------
 /** CRC */
@@ -85,7 +244,9 @@ Upgrade::~Upgrade( void )
 void Upgrade::crc( Xfer *xfer )
 {
 
-}  // end crc
+}
+
+  // end crc
 
 // ------------------------------------------------------------------------------------------------
 /** Xfer method
@@ -104,7 +265,9 @@ void Upgrade::xfer( Xfer *xfer )
 	// status
 	xfer->xferUser( &m_status, sizeof( UpgradeStatusType ) );
 
-}  // end xfer
+}
+
+  // end xfer
 
 // ------------------------------------------------------------------------------------------------
 /** Load post process */
@@ -113,7 +276,9 @@ void Upgrade::xfer( Xfer *xfer )
 void Upgrade::loadPostProcess( void )
 {
 
-}  // end loadPostProcess
+}
+
+  // end loadPostProcess
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UPGRADE TEMPLATE ///////////////////////////////////////////////////////////////////////////////
@@ -141,7 +306,9 @@ Int UpgradeTemplate::calcTimeToBuild( Player *player ) const
 	///@todo modify this by power state of player
 	return m_buildTime * LOGICFRAMES_PER_SECOND;
 
-}  // end calcTimeToBuild
+}
+
+  // end calcTimeToBuild
 
 //-------------------------------------------------------------------------------------------------
 /** Calculate the cost takes this player to build this upgrade */
@@ -153,7 +320,9 @@ Int UpgradeTemplate::calcCostToBuild( Player *player ) const
 	///@todo modify this by any player handicaps
 	return m_cost;
 
-}  // end calcCostToBuild
+}
+
+  // end calcCostToBuild
 
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
@@ -226,7 +395,9 @@ UpgradeTemplate *UpgradeCenter::firstUpgradeTemplate( void )
 	
 	return m_upgradeList;
 
-}  // end firstUpgradeTemplate
+}
+
+  // end firstUpgradeTemplate
 
 //-------------------------------------------------------------------------------------------------
 /** Find upgrade matching name key */
@@ -280,7 +451,9 @@ Bool UpgradeCenter::canAffordUpgrade( Player *player, const UpgradeTemplate *upg
 
 	return TRUE;  // all is well
 
-}  // end canAffordUpgrade
+}
+
+  // end canAffordUpgrade
 
 //-------------------------------------------------------------------------------------------------
 /** generate a list of upgrade names for WorldBuilder */
@@ -300,7 +473,9 @@ std::vector<AsciiString> UpgradeCenter::getUpgradeNames( void ) const
 
 	return upgradeNames;
 
-}  // end getUpgradeNames
+}
+
+  // end getUpgradeNames
 
 //-------------------------------------------------------------------------------------------------
 /** Parse an upgrade definition */
@@ -311,4 +486,167 @@ std::vector<AsciiString> UpgradeCenter::getUpgradeNames( void ) const
 
 // Callers elsewhere reach bodies in this unit through other spellings; retail's
 // call sites in their matched rows land on these addresses (same ABI). Bind them.
-#pragma comment(linker, "/alternatename:?push_back@?$BfmeVector@VAsciiString@@@@QAEXABVAsciiString@@@Z=?push_back@?$vector@VAsciiString@@V?$allocator@VAsciiString@@@_STL@@@_STL@@QAEXABVAsciiString@@@Z")
+
+// ---- from Code/GameEngine/Source/Common/System/Rva0026F0F0Find.cpp
+
+void *Rva0026F0F0::rva0026F0F0(const void *mask)
+{
+	const unsigned int *bits = (const unsigned int *)mask;
+	for (Rva0026F0F0Node *node = m_head; node; node = node->m_next) {
+		unsigned int bit = (unsigned int)node->m_bit;
+		if (bits[bit >> 5] & (1u << (bit & 0x1f)))
+			return node;
+	}
+	return 0;
+}
+
+// tu-skeleton: 0x0026F11A 83B ?bfmeCanAffordUpgrade@@YG_NPAVPlayer@@PBVUpgradeTemplate@@I_N@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterCanAffordUpgrade.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F16D 56B ?attemptReload@UpgradeCenter@@UAE_NH@Z -- matched in Code/GameEngine/Source/Common/ReloadIniFileNotices.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F1A5 113B ?friend_makeVeterancyUpgrade@UpgradeTemplate@@QAEXW4VeterancyLevel@@@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeTemplate_friend_makeVeterancyUpgrade.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F216 87B ?cacheButtonImage@UpgradeTemplate@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/UpgradeTemplate_cacheButtonImage.cpp (not merged yet)
+
+// ---- from Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgrade.cpp
+
+// ?findUpgrade@UpgradeCenter@@QBEPBVUpgradeTemplate@@ABVAsciiString@@@Z
+const UpgradeTemplate *UpgradeCenter::findUpgrade(const AsciiString &name) const
+{
+	return findUpgradeByKey(TheNameKeyGenerator->nameToKey(name));
+}
+
+// tu-skeleton: 0x0026F28B 325B ?Rva0026F28BParse@@YAXPAVINI@@PAXPAI@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterParseUpgradeMask.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F419 44B ??0UpgradeCenter@@QAE@XZ -- matched in Code/GameEngine/Source/Common/UpgradeCenter.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F445 175B ??1UpgradeCenter@@UAE@XZ -- matched in Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0026F4F4.cpp
+
+// STLport4.5.3 reference operation. Target boundary, calls and full bytes are verified.
+// Element identity and unconstrained fields remain address-derived structural inference.
+
+// tu-skeleton: 0x0026F597 28B ??_GRva0026F445@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp (not merged yet)
+
+// ---- from Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
+
+// ??0Rva0026F684@@QAE@XZ @0x0026F5B3 209B
+// Evidence: same vtable 0x7FABF0 as dtor 0x0026F684 in Rva0026F684Dtor.cpp; prev stlport_vector_4b_assign; next is own dtor; Rva003623E5Member pin 0x003623E5 at +0x80; vectors E16 bases via 0x00211E58
+
+Rva0026F684::Rva0026F684()
+	: m_04(0)
+	, m_08()
+	, m_0C(0)
+	, m_10(_STL::allocator<BfmeE16>())
+	, m_1C(_STL::allocator<BfmeE16>())
+	, m_28()
+	, m_2C()
+	, m_30(0.0f)
+	, m_34(0)
+	, m_38(-1)
+	, m_3C()
+	, m_40()
+	, m_44(-1)
+	, m_48()
+	, m_4C(-1)
+	, m_50(-1)
+	, m_54(-1)
+	, m_58(-1)
+	, m_5C(-1)
+	, m_60(-1)
+	, m_64(0)
+	, m_68(0)
+	, m_6C()
+	, m_70(0)
+	, m_74()
+	, m_78(0)
+	, m_79(0)
+	, m_7C()
+	, m_80()
+	, m_84(0)
+	, m_88(0)
+	, m_8C()
+	, m_90(0)
+	, m_94(0)
+	, m_98(-1)
+{
+}
+
+// tu-skeleton: 0x0026F684 227B ??1Rva0026F684@@UAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F767 339B ??4Rva0026F684@@QAEAAV0@ABV0@@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Assign.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F8BA 28B ??_GRva0026F684@@UAEPAXI@Z -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F8D6 102B ?friend_resolveSubUpgradeNames@UpgradeTemplate@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/UpgradeTemplateResolveSubUpgradeNames.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F93C 22B ?rva0026F93C@UpgradeCenter@@QAEXXZ -- matched in Code/GameEngine/Source/Common/System/UpgradeTemplateResolveSubUpgradeNames.cpp (not merged yet)
+
+// tu-skeleton: 0x0026F952 179B ?newUpgrade@UpgradeCenter@@QAEPAVUpgradeTemplate@@ABVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterNewUpgrade.cpp (not merged yet)
+
+// tu-skeleton: 0x0026FA05 249B ?parseUpgradeDefinition@UpgradeCenter@@SAXPAVINI@@@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0026FAFE 190B ?init@UpgradeCenter@@UAEXXZ -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterInit.cpp (not merged yet)
+
+// tu-skeleton: 0x0026FBBC 51B ?reset@UpgradeCenter@@UAEXXZ -- matched in Code/GameEngine/Source/Common/GapBodiesGE06.cpp (not merged yet)
+
+// tu-skeleton: 0x00773104 8B Unwind@00b73104 -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterParseUpgradeMask.cpp (not merged yet)
+
+// tu-skeleton: 0x0077310C 8B Unwind@00b7310c -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterParseUpgradeMask.cpp (not merged yet)
+
+// tu-skeleton: 0x00773114 10B __ehhandler$?Rva0026F28BParse@@YAXPAVINI@@PAXPAI@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterParseUpgradeMask.cpp (not merged yet)
+
+// tu-skeleton: 0x0077311E 8B Unwind@00b7311e -- matched in Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773126 11B Unwind@00b73126 -- matched in Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773131 10B __ehhandler$??1UpgradeCenter@@UAE@XZ -- matched in Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773146 11B uw_00773146 -- matched in Code/gen_small/uw_gen_009.cpp (not merged yet)
+
+// tu-skeleton: 0x007731BE 11B Unwind@00b731be -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007731C9 11B Unwind@00b731c9 -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007731D4 11B uw_007731d4 -- matched in Code/gen_small/uw_gen_010.cpp (not merged yet)
+
+// tu-skeleton: 0x007731DF 11B Unwind@00b731df -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007731EA 11B Unwind@00b731ea -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x007731F5 11B Unwind@00b731f5 -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773200 11B $L4946 -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077320B 11B $L4947 -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773216 11B Unwind@00b73216 -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773221 11B Unwind@00b73221 -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077322C 11B Unwind@00b7322c -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773237 14B Unwind@00b73237 -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x00773245 10B __ehhandler$??1Rva0026F684@@UAE@XZ -- matched in Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp (not merged yet)
+
+// tu-skeleton: 0x0077324F 10B uw_0077324f -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterNewUpgrade.cpp (not merged yet)
+
+// tu-skeleton: 0x00773259 8B $L1260 -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterNewUpgrade.cpp (not merged yet)
+
+// tu-skeleton: 0x00773261 10B __ehhandler$?newUpgrade@UpgradeCenter@@QAEPAVUpgradeTemplate@@ABVAsciiString@@_N@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterNewUpgrade.cpp (not merged yet)
+
+// tu-skeleton: 0x0077326B 8B Unwind@00b7326b -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x00773273 11B uw_00773273 -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x0077327E 10B __ehhandler$?parseUpgradeDefinition@UpgradeCenter@@SAXPAVINI@@@Z -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgradeByKey.cpp (not merged yet)
+
+// tu-skeleton: 0x00773288 8B Unwind@00b73288 -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterInit.cpp (not merged yet)
+
+// tu-skeleton: 0x00773290 8B Unwind@00b73290 -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterInit.cpp (not merged yet)
+
+// tu-skeleton: 0x00773298 8B Unwind@00b73298 -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterInit.cpp (not merged yet)
+
+// tu-skeleton: 0x007732A0 10B __ehhandler$?init@UpgradeCenter@@UAEXXZ -- matched in Code/GameEngine/Source/Common/System/UpgradeCenterInit.cpp (not merged yet)

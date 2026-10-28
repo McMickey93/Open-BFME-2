@@ -18832,19 +18832,19 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0026EF34,28,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,N,N=Code/GameEngine/Source/Common/System/Upgrade.cpp,Code/GameEngine/Source/Common/System/UpgradeCtor.cpp
 0x0026EF50,315,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/System/UpgradeTemplate.cpp,Code/GameEngine/Source/Common/System/UpgradeTemplateCalcCostToBuild.cpp
 0x0026F08B,101,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026EF50..0x0026F0F0,Code/GameEngine/Source/Common/System/Upgrade.cpp
-0x0026F0F0,42,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026EF50..0x0026F11A,Code/GameEngine/Source/Common/System/Rva0026F0F0Find.cpp
+0x0026F0F0,42,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026EF50..0x0026F11A,Code/GameEngine/Source/Common/System/Upgrade.cpp
 0x0026F11A,83,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026EF50..0x0026F16D,Code/GameEngine/Source/Common/System/UpgradeCenterCanAffordUpgrade.cpp
 0x0026F16D,56,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,S,S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/UpgradeCenter.cpp W=Code/GameEngine/Source/Common/System/Upgrade.cpp,Code/GameEngine/Source/Common/ReloadIniFileNotices.cpp
 0x0026F1A5,113,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/System/UpgradeTemplate.cpp,Code/GameEngine/Source/Common/System/UpgradeTemplate_friend_makeVeterancyUpgrade.cpp
 0x0026F216,87,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/System/UpgradeTemplate.cpp,Code/GameEngine/Source/Common/System/UpgradeTemplate_cacheButtonImage.cpp
-0x0026F26D,30,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/System/UpgradeCenter.cpp,Code/GameEngine/Source/Common/System/UpgradeCenterFindUpgrade.cpp
+0x0026F26D,30,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/System/UpgradeCenter.cpp,Code/GameEngine/Source/Common/System/Upgrade.cpp
 0x0026F28B,325,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F26D..0x0026F3D0,Code/GameEngine/Source/Common/System/UpgradeCenterParseUpgradeMask.cpp
 0x0026F3D0,73,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/System/UpgradeCenter.cpp,Code/GameEngine/Source/Common/System/Upgrade.cpp
 0x0026F419,44,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/UpgradeCenter.cpp,Code/GameEngine/Source/Common/UpgradeCenter.cpp
 0x0026F445,175,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,Z,Z=Code/GameEngine/Source/Common/System/Upgrade.cpp S=Code/GameEngine/Source/Common/System/Upgrade.cpp N=Code/GameEngine/Source/Common/UpgradeCenter.cpp,Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp
-0x0026F4F4,163,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F597,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0026F4F4.cpp
+0x0026F4F4,163,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F597,Code/GameEngine/Source/Common/System/Upgrade.cpp
 0x0026F597,28,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F5B3,Code/GameEngine/Source/Common/OpaqueScalarDeletingDtorsB05.cpp
-0x0026F5B3,209,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F684,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
+0x0026F5B3,209,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F684,Code/GameEngine/Source/Common/System/Upgrade.cpp
 0x0026F684,227,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F767,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp
 0x0026F767,339,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F8BA,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Assign.cpp
 0x0026F8BA,28,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,C,C=0x0026F445..0x0026F8D6,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp
@@ -70016,18 +70016,18 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0077311E,8,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F445@FuncInfo0x00919E68,Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp
 0x00773126,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F445@FuncInfo0x00919E68,Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp
 0x00773131,10,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F445@FuncInfo0x00919E68,Code/GameEngine/Source/Common/UpgradeCenterDestructor.cpp
-0x0077313B,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
+0x0077313B,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
 0x00773146,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/gen_small/uw_gen_009.cpp
-0x00773151,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x0077315C,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x00773167,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x00773172,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x0077317D,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x00773188,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x00773193,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x0077319E,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x007731A9,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
-0x007731B4,10,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Ctor.cpp
+0x00773151,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x0077315C,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x00773167,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x00773172,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x0077317D,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x00773188,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x00773193,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x0077319E,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x007731A9,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
+0x007731B4,10,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F5B3@FuncInfo0x00919EDC,Code/GameEngine/Source/Common/System/Upgrade.cpp
 0x007731BE,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F684@FuncInfo0x00919F58,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp
 0x007731C9,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F684@FuncInfo0x00919F58,Code/Libraries/Source/WWVegas/WWLib/Rva0026F684Dtor.cpp
 0x007731D4,11,code,Code/GameEngine/Source/Common/System/Upgrade.cpp,approved,P,P=0x0026F684@FuncInfo0x00919F58,Code/gen_small/uw_gen_010.cpp
