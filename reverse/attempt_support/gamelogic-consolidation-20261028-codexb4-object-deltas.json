@@ -1,0 +1,214 @@
+{
+  "inspected_base": "7de37e8ca6",
+  "index_commit": "41c28839bf",
+  "scope": "Final normal build confirmed against saved original objects; every external COMDAT fingerprint equals the reviewed dry-run candidate. Index per-object touches provide bounded consumer evidence; no census gain is inferred.",
+  "deltas": [
+    {
+      "source": "Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0024619A.cpp",
+      "name": "?_M_initialize_buckets@?$hashtable@U?$pair@$$CBHURva0024619AElement@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@@_STL@@AAEXI@Z",
+      "new_name": "?_M_initialize_buckets@?$hashtable@U?$pair@$$CBHURva0024619AElement@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@@_STL@@AAEXI@Z",
+      "old_size": 64,
+      "new_size": 59,
+      "bytes_equal": false,
+      "old_relocations": [
+        [
+          12,
+          20,
+          "?_M_next_size@?$hashtable@U?$pair@$$CBHURva0024619AElement@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@@_STL@@ABEII@Z"
+        ],
+        [
+          25,
+          20,
+          "?reserve@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXI@Z"
+        ],
+        [
+          41,
+          20,
+          "?end@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEPAPAXXZ"
+        ],
+        [
+          49,
+          20,
+          "?insert@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXPAPAXIABQAX@Z"
+        ]
+      ],
+      "new_relocations": [
+        [
+          12,
+          20,
+          "?_M_next_size@?$hashtable@U?$pair@$$CBHURva0024619AElement@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@@_STL@@ABEII@Z"
+        ],
+        [
+          25,
+          20,
+          "?reserve@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXI@Z"
+        ],
+        [
+          44,
+          20,
+          "?insert@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXPAPAXIABQAX@Z"
+        ]
+      ],
+      "index_affected_sources": [
+        "Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva0024619A.cpp"
+      ],
+      "index_selection": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w^lib_^stl^sweep^w5^rva0024619^a.obj",
+        null
+      ]
+    },
+    {
+      "source": "Code/GameEngine/Source/Common/RTS/Rva00246FD7Finish.cpp",
+      "name": "?_M_initialize_buckets@?$hashtable@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@Rva00246FD7Twin@@V?$allocator@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@@_STL@@AAEXI@Z",
+      "new_name": "?_M_initialize_buckets@?$hashtable@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@Rva00246FD7Twin@@V?$allocator@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@@_STL@@AAEXI@Z",
+      "old_size": 64,
+      "new_size": 59,
+      "bytes_equal": false,
+      "old_relocations": [
+        [
+          12,
+          20,
+          "?_M_next_size@?$hashtable@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@Rva00246FD7Twin@@V?$allocator@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@@_STL@@ABEII@Z"
+        ],
+        [
+          25,
+          20,
+          "?reserve@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXI@Z"
+        ],
+        [
+          41,
+          20,
+          "?end@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEPAPAXXZ"
+        ],
+        [
+          49,
+          20,
+          "?insert@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXPAPAXIABQAX@Z"
+        ]
+      ],
+      "new_relocations": [
+        [
+          12,
+          20,
+          "?_M_next_size@?$hashtable@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@Rva00246FD7Twin@@V?$allocator@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@@_STL@@ABEII@Z"
+        ],
+        [
+          25,
+          20,
+          "?reserve@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXI@Z"
+        ],
+        [
+          44,
+          20,
+          "?insert@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEXPAPAXIABQAX@Z"
+        ]
+      ],
+      "index_affected_sources": [
+        "Code/GameEngine/Source/Common/RTS/Rva00246FD7Finish.cpp"
+      ],
+      "index_selection": [
+        "^code_^game^engine_^source_^common_^r^t^s_^rva00246^f^d7^finish.obj",
+        null
+      ]
+    },
+    {
+      "source": "Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00240D34.cpp",
+      "name": "?insert@?$list@URva00240D34Element@@V?$allocator@URva00240D34Element@@@_STL@@@_STL@@QAE?AU?$_List_iterator@URva00240D34Element@@U?$_Nonconst_traits@URva00240D34Element@@@_STL@@@2@U32@ABURva00240D34Element@@@Z",
+      "new_name": "?insert@?$list@URva00240D34Element@@V?$allocator@URva00240D34Element@@@_STL@@@_STL@@QAE?AU?$_List_iterator@URva00240D34Element@@U?$_Nonconst_traits@URva00240D34Element@@@_STL@@@2@U32@ABURva00240D34Element@@@Z",
+      "old_size": 37,
+      "new_size": 54,
+      "bytes_equal": false,
+      "old_relocations": [
+        [
+          5,
+          20,
+          "?_M_create_node@?$list@URva00240D34Element@@V?$allocator@URva00240D34Element@@@_STL@@@_STL@@IAEPAU?$_List_node@URva00240D34Element@@@2@ABURva00240D34Element@@@Z"
+        ]
+      ],
+      "new_relocations": [
+        [
+          5,
+          20,
+          "?allocate@?$allocator@D@_STL@@SAPADIPBX@Z"
+        ]
+      ],
+      "index_affected_sources": [
+        "Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00240D34.cpp"
+      ],
+      "index_selection": [
+        "^code_^libraries_^source_^w^w^vegas_^w^w^lib_^stl^sweep^w5^rva00240^d34.obj",
+        null
+      ]
+    },
+    {
+      "source": "Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-07-23DACC.cpp",
+      "name": "?famgenDelete0023DACC@@YAXPAVRva0023D377@@@Z",
+      "new_name": "?famgenDelete0023DACC@@YAXPAURva0023D377@@@Z",
+      "old_size": 25,
+      "new_size": 25,
+      "bytes_equal": true,
+      "old_relocations": [
+        [
+          12,
+          20,
+          "??1Rva0023D377@@QAE@XZ"
+        ],
+        [
+          18,
+          20,
+          "??3@YAXPAX@Z"
+        ]
+      ],
+      "new_relocations": [
+        [
+          12,
+          20,
+          "??1Rva0023D377@@QAE@XZ"
+        ],
+        [
+          18,
+          20,
+          "??3@YAXPAX@Z"
+        ]
+      ],
+      "index_affected_sources": [
+        "Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-07-23DACC.cpp"
+      ],
+      "index_selection": [
+        "^code_^game^engine_^source_^common_^family^deleting^dtors_muse-07-23^d^a^c^c.obj",
+        null
+      ]
+    }
+  ],
+  "summary": {
+    "old_files": 25,
+    "old_comdat_copies": 318,
+    "old_unique_comdats": 295,
+    "old_conflicts": [],
+    "old_external_definitions": 296,
+    "old_unresolved_names": 139,
+    "new_comdats": 295,
+    "changed_comdats": [
+      "?_M_initialize_buckets@?$hashtable@U?$pair@$$CBHURva0024619AElement@@@_STL@@HU?$hash@H@2@U?$_Select1st@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHURva0024619AElement@@@_STL@@@2@@_STL@@AAEXI@Z",
+      "?_M_initialize_buckets@?$hashtable@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@W4NameKeyType@@U?$hash@W4NameKeyType@@@rts@@U?$_Select1st@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@U?$equal_to@W4NameKeyType@@@Rva00246FD7Twin@@V?$allocator@U?$pair@$$CBW4NameKeyType@@VArmorTemplate@@@_STL@@@2@@_STL@@AAEXI@Z",
+      "?insert@?$list@URva00240D34Element@@V?$allocator@URva00240D34Element@@@_STL@@@_STL@@QAE?AU?$_List_iterator@URva00240D34Element@@U?$_Nonconst_traits@URva00240D34Element@@@_STL@@@2@U32@ABURva00240D34Element@@@Z"
+    ],
+    "removed_comdats": [
+      "?famgenDelete0023DACC@@YAXPAVRva0023D377@@@Z"
+    ],
+    "added_comdats": [
+      "?famgenDelete0023DACC@@YAXPAURva0023D377@@@Z"
+    ],
+    "new_external_definitions": 296,
+    "removed_defs": [
+      "?famgenDelete0023DACC@@YAXPAVRva0023D377@@@Z"
+    ],
+    "added_defs": [
+      "?famgenDelete0023DACC@@YAXPAURva0023D377@@@Z"
+    ],
+    "removed_unresolved": [
+      "?end@?$vector@PAXV?$allocator@PAX@_STL@@@_STL@@QAEPAPAXXZ"
+    ],
+    "added_unresolved": []
+  }
+}

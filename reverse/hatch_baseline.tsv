@@ -1153,8 +1153,8 @@ address_global	Code/GameEngine/Source/GameLogic/SkirmishAI/AISpecialPowers/AISpe
 address_global	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	g_Va00DFECC8	5
 address_global	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	g_Va00DFECC9	4
 address_global	Code/GameEngine/Source/GameLogic/System/GameLogic.cpp	g_Va00A04908	2
+address_global	Code/GameEngine/Source/GameLogic/System/GameLogic.cpp	g_Va00E032E8	3
 address_global	Code/GameEngine/Source/GameLogic/System/GameLogicInit.cpp	g_Va00DFE840	2
-address_global	Code/GameEngine/Source/GameLogic/System/GameLogicRva00240866.cpp	g_Va00E032E8	3
 address_global	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAIBuilderScores.cpp	g_Va007C26F0	2
 address_global	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAIOrders.cpp	g_Va00E04508	2
 address_global	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldAISupport/LivingWorldAIArmyMover.cpp	g_Va00E04544	3
@@ -2149,7 +2149,6 @@ alternatename	Code/GameEngine/Source/Common/Rva00229811Ctor.cpp	??0TreeHintOpaqu
 alternatename	Code/GameEngine/Source/Common/Rva00229811Ctor.cpp	??1Rva005B804B@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0022C38BSubsystemCtor.cpp	??1Rva0022C38BSubsystem@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0022CC67Clear.cpp	?Free@Rva0022CC67@@QAEXPAURva0022C8FBElem@@@Z	1
-alternatename	Code/GameEngine/Source/Common/Rva00242F1ARva00242F1A.cpp	?rva00240D0F@Rva00240D0F@@QAEPAXPBX@Z	1
 alternatename	Code/GameEngine/Source/Common/Rva0024A797DeletingDtor.cpp	??1UpdateModule@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0024A797Derived.cpp	?f2@Rva00253E19_B2@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/Common/Rva0024A797Derived.cpp	?f2@Rva00253EF5_B2@@UAEXXZ	1
@@ -3417,6 +3416,7 @@ alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	?e
 alternatename	Code/GameEngine/Source/GameLogic/System/CrateSystemLifetime.cpp	?erase@?$vector@PAVCrateTemplate@@V?$allocator@PAVCrateTemplate@@@_STL@@@_STL@@QAEPAPAVCrateTemplate@@PAPAV3@@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	?Rva00030830FreeAllocation@@YAXPAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	?Rva00288A5CAssign@@YAPAVCameraMarker@@PAV1@00PAX@Z	1
+alternatename	Code/GameEngine/Source/GameLogic/System/GameLogic.cpp	?rva00240D0F@Rva00240D0F@@QAEPAXPBX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot1@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot2@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot3@XferSave@@UAEXXZ	1
@@ -12310,7 +12310,6 @@ present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-04-2AF5
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-04-4AFBE3.cpp	@0x004AFBE3	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-05-003EF728.cpp	famgenDelete003EF728@@YAXPAVRva003EF728@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-06-25EFF1.cpp	@0x0025EFF1	1
-present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-07-23DACC.cpp	famgenDelete0023DACC@@YAXPAVRva0023D377@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-12-3F1180.cpp	famgenDelete003F0C6C@@YAXPAVRva003F0C6C@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-14-31AA18.cpp	famgenDelete0031AA18@@YAXPAVControlBarSchemeManager@@@Z	1
 present_unmatched	Code/GameEngine/Source/Common/FamilyDeletingDtors_muse07-2E6158.cpp	famgenDelete002E6158@@YAXPAVGameTextTable@@@Z	1
@@ -14098,6 +14097,7 @@ present_unmatched	Code/GameEngine/Source/GameLogic/SkirmishAI/AITacticalAI/AITac
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ArmySummary.h	ArmySummary::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ArmySummaryCopyBFME2.cpp	ArmySummary::loadPostProcess	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/ExperienceLevelSystem.cpp	Rva00288BF9AllocationLifetime::~Rva00288BF9AllocationLifetime	1
+present_unmatched	Code/GameEngine/Source/GameLogic/System/GameLogic.cpp	famgenDelete0023DACC@@YAXPAVRva0023D377@@@Z	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp	dummy@Rva003A6F70@@UAEXXZ	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldLogic.cpp	LivingWorldLogic::rva002B4B83	1
 present_unmatched	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldRegion.cpp	LivingWorldRegion::rva003F0588	1
