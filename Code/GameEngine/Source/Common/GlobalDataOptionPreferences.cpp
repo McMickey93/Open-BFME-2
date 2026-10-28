@@ -4,7 +4,8 @@
 // GlobalData's user-preference overrides, retail 0x0023576A (312 bytes):
 // the tail of Zero Hour's GlobalData::parseGameDataDefinition, which BFME 2
 // runs as a member on the global instance. It reads OptionPreferences and
-// copies the scroll factor (into two fields), LAN IP, firewall settings,
+// copies the scroll factor (into the horizontal and vertical scroll speed
+// factors the GlobalData INI table names at 0xA9C/0xAA0), LAN IP, firewall settings,
 // alternate-mouse flag, gamma and resolution; both replay-camera flags are
 // simply cleared. The gamma curve keeps Zero Hour's shape with the
 // constants folded (0.4/50 = 0.008, 1/50 = 0.02). Only the GlobalData
@@ -113,9 +114,8 @@ private:
 	UnsignedInt m_firewallPortOverride;
 	Short m_firewallPortAllocationDelta;
 	unsigned char m_unreconstructed_a5a[ 0x42 ];
-	Real m_keyboardScrollFactor;
-	// Written from the same preference; its reader is not identified here.
-	Real m_secondaryScrollFactor;
+	Real m_horizontalScrollSpeedFactor;
+	Real m_verticalScrollSpeedFactor;
 	unsigned char m_unreconstructed_aa4[ 0xCC ];
 	Bool m_saveCameraInReplay;
 	Bool m_useCameraInReplay;
@@ -127,8 +127,8 @@ private:
 void GlobalData::applyOptionPreferences()
 {
 	OptionPreferences optionPref;
-	m_keyboardScrollFactor = optionPref.getScrollFactor();
-	m_secondaryScrollFactor = optionPref.getScrollFactor();
+	m_horizontalScrollSpeedFactor = optionPref.getScrollFactor();
+	m_verticalScrollSpeedFactor = optionPref.getScrollFactor();
 	m_defaultIP = optionPref.getLANIPAddress();
 	m_firewallSendDelay = optionPref.getSendDelay();
 	m_firewallBehavior = optionPref.getFirewallBehavior();
