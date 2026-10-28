@@ -53,11 +53,12 @@
 #include "GameClient/GameWindowGlobal.h"
 #include "GameClient/GameWindowManager.h"
 #include "GameClient/GadgetStaticText.h"
-#include "W3DDevice/GameClient/W3DGameWindow.h"
-#include "W3DDevice/GameClient/W3DGadget.h"
+#include "GameClient/GameWindow.h"
 #include "W3DDevice/GameClient/W3DDisplay.h"
 
 // DEFINES ////////////////////////////////////////////////////////////////////
+// Static-text callbacks use the gadget border width without its renderer.
+#define WIN_DRAW_LINE_WIDTH (1.0f)
 
 // PRIVATE TYPES //////////////////////////////////////////////////////////////
 

@@ -1,0 +1,96 @@
+{
+  "source": "Code/GameEngineDevice/Source/W3DDevice/GameClient/GUI/Gadget/W3DStaticText.cpp",
+  "base_revision": "4154365966",
+  "before_obj_sha256": "6884e5f4ab20c2fcd272ed057c817ea43e219c1ec33cdaaf34b38881d77d3fa1",
+  "after_obj_sha256": "d233e0c19c422ee6e5638b740694c0c41d718db0a00a010e2f1ec663feb4f8f6",
+  "removed": [
+    "??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z",
+    "??_H@YGXPAXIHP6EPAX0@Z@Z"
+  ],
+  "added": [],
+  "changed": {},
+  "retained_comdats": 14,
+  "index_meta": {
+    "date": "2026-10-28 11:08",
+    "commit": "41c28839bf",
+    "clean_tree": true,
+    "census_date": "2026-10-28 10:03",
+    "census_commit": "c8734bec0c"
+  },
+  "strong_before": [
+    "?W3DGadgetStaticTextDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetStaticTextImageDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z"
+  ],
+  "strong_after": [
+    "?W3DGadgetStaticTextDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z",
+    "?W3DGadgetStaticTextImageDraw@@YAXPAVGameWindow@@PAVWinInstanceData@@@Z"
+  ],
+  "undefined_before": [
+    "??1PendingSurfaceStruct@Render2DSentenceClass@@QAE@XZ",
+    "??3@YAXPAX@Z",
+    "??_M@YGXPAXIHP6EX0@Z@Z",
+    "??_V@YAXPAX@Z",
+    "?TheWindowManager@@3PAVGameWindowManager@@A",
+    "?TheWritableGlobalData@@3PAVGlobalData@@A",
+    "?winGetDisabledTextBorderColor@GameWindow@@QAEHXZ",
+    "?winGetDisabledTextColor@GameWindow@@QAEHXZ",
+    "?winGetEnabledTextBorderColor@GameWindow@@QAEHXZ",
+    "?winGetEnabledTextColor@GameWindow@@QAEHXZ",
+    "?winGetScreenPosition@GameWindow@@QAEHPAH0@Z",
+    "?winGetSize@GameWindow@@QAEHPAH0@Z",
+    "?winGetStatus@GameWindow@@QAEIXZ",
+    "?winGetUserData@GameWindow@@QAEPAXXZ",
+    "__fltused"
+  ],
+  "undefined_after": [
+    "?TheWindowManager@@3PAVGameWindowManager@@A",
+    "?TheWritableGlobalData@@3PAVGlobalData@@A",
+    "?winGetDisabledTextBorderColor@GameWindow@@QAEHXZ",
+    "?winGetDisabledTextColor@GameWindow@@QAEHXZ",
+    "?winGetEnabledTextBorderColor@GameWindow@@QAEHXZ",
+    "?winGetEnabledTextColor@GameWindow@@QAEHXZ",
+    "?winGetScreenPosition@GameWindow@@QAEHPAH0@Z",
+    "?winGetSize@GameWindow@@QAEHPAH0@Z",
+    "?winGetStatus@GameWindow@@QAEIXZ",
+    "?winGetUserData@GameWindow@@QAEPAXXZ",
+    "__fltused"
+  ],
+  "weak_before": [],
+  "weak_after": [],
+  "removed_provider_index_examples": {
+    "??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z": [
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^g^u^i_^gadget_^w3^d^combo^box.obj",
+        "digest": "0437e6f87a6d",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^w3^d^game^client.obj",
+        "digest": "0437e6f87a6d",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^drawable_^draw_^w3^d^tank^truck^draw.obj",
+        "digest": "0437e6f87a6d",
+        "verdict": "retail"
+      }
+    ],
+    "??_H@YGXPAXIHP6EPAX0@Z@Z": [
+      {
+        "object": "^code_^game^engine^device_^source_^miles^audio^device_^rva00052^b3^d.obj",
+        "digest": "6246c280fc30",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^base^height^map^get^maximum^visible^box.obj",
+        "digest": "6246c280fc30",
+        "verdict": "retail"
+      },
+      {
+        "object": "^code_^game^engine^device_^source_^w3^d^device_^game^client_^shadow_^w3^d^shadow^map^manager^texture^matrix.obj",
+        "digest": "6246c280fc30",
+        "verdict": "retail"
+      }
+    ]
+  }
+}

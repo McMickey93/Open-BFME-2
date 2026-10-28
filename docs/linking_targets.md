@@ -36,6 +36,16 @@ audit is inconclusive.
 
 ## One blocker: fresh candidates
 
+Additional current target (2026-10-28, base `4154365966`, index `41c28839bf`):
+`W3DStaticText.cpp` previews LINKS for 836 authored bytes after removing unused
+renderer includes and retaining the donor border-width macro locally.
+All three rows and all 14 retained external COMDAT fingerprints are unchanged.
+Global selected-copy repair and census confirmation remain pending under
+LINK-132/LINK-133. The batch audit is inconclusive because the index predates
+the base and Common/0CreateAHeroManager21FE49.cpp lacks a current receipt;
+carry the removed-helper scope and consumer into the next normal census.
+[Evidence](../reverse/attempt_support/static-text-link-20261028-codex3.md).
+
 The handoff found no earlier served-queue entry for these 16 units. Follow-up:
 **Open / current-input verification pending** for each row.
 
