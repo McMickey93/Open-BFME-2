@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?rva0004A00C2@QueueProductionExitUpdate@@SA?AW4NameKeyType@@XZ @0x4a00c2
+// ?getModuleNameKey@QueueProductionExitUpdate@@UBE?AW4NameKeyType@@XZ @0x4a00c2
 // (69B): cached pool-name key for QueueProductionExitUpdate. The class
 // identity comes from the pool-name string the body pushes
 // ("QueueProductionExitUpdate"); the body guards a function-local static
@@ -25,11 +25,11 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class QueueProductionExitUpdate
 {
 public:
-	static NameKeyType rva0004A00C2();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
-// ?rva0004A00C2@QueueProductionExitUpdate@@SA?AW4NameKeyType@@XZ
-NameKeyType QueueProductionExitUpdate::rva0004A00C2()
+// ?getModuleNameKey@QueueProductionExitUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType QueueProductionExitUpdate::getModuleNameKey() const
 {
 	static NameKeyType TheQueueProductionExitUpdatePoolKey =
 		TheNameKeyGenerator->nameToKey("QueueProductionExitUpdate");

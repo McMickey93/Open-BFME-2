@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?rva0000B1C97@W3DDebrisDraw@@SA?AW4NameKeyType@@XZ @0xB1C97
+// ?getModuleNameKey@W3DDebrisDraw@@UBE?AW4NameKeyType@@XZ @0xB1C97
 // (69B): cached pool-name key for W3DDebrisDraw. The class
 // identity comes from the pool-name string the body pushes
 // ("W3DDebrisDraw"); the body guards a function-local static
@@ -25,11 +25,11 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class W3DDebrisDraw
 {
 public:
-	static NameKeyType rva0000B1C97();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
-// ?rva0000B1C97@W3DDebrisDraw@@SA?AW4NameKeyType@@XZ
-NameKeyType W3DDebrisDraw::rva0000B1C97()
+// ?getModuleNameKey@W3DDebrisDraw@@UBE?AW4NameKeyType@@XZ
+NameKeyType W3DDebrisDraw::getModuleNameKey() const
 {
 	static NameKeyType TheW3DDebrisDrawPoolKey =
 		TheNameKeyGenerator->nameToKey("W3DDebrisDraw");

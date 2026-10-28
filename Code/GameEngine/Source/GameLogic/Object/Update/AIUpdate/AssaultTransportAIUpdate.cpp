@@ -99,7 +99,7 @@ bool __stdcall Rva0048F472IsEqual(void *p)
 
 // tu-skeleton: 0x0048F365 123B ?Rva0048F365Helper@AssaultTransportAIUpdate@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdateHelper.cpp (not merged yet)
 // tu-skeleton: 0x0048F3E0 49B ??1Rva0048F3E0@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0026E836Derived.cpp (not merged yet)
-// tu-skeleton: 0x0048F411 69B ?rva00048F411@AssaultTransportAIUpdate@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AssaultTransportAIUpdatePoolKey.cpp (not merged yet)
+// tu-skeleton: 0x0048F411 69B ?getModuleNameKey@AssaultTransportAIUpdate@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AssaultTransportAIUpdatePoolKey.cpp (not merged yet)
 // tu-skeleton: 0x0048F456 6B ?name@Rva0048F456Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 // tu-skeleton: 0x0048F46D 5B ?rva0048F46D@Rva0048F46D@@QAE_NXZ -- matched in Code/GameEngine/Source/Common/VslotSmallBodiesAJ.cpp (not merged yet)
 // tu-skeleton: 0x0048F4AC 247B ?xfer@AssaultTransportAIUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/AIUpdate/AssaultTransportAIUpdateXfer.cpp (not merged yet)

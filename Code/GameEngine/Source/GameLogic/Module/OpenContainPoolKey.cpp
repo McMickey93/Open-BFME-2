@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?rva00464775@OpenContain@@SA?AW4NameKeyType@@XZ @0x464775
+// ?getModuleNameKey@OpenContain@@UBE?AW4NameKeyType@@XZ @0x464775
 // (68B): cached pool-name key for OpenContain. The class
 // identity comes from the pool-name string the body pushes
 // ("OpenContain"); the body guards a function-local static
@@ -25,11 +25,11 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class OpenContain
 {
 public:
-	static NameKeyType rva00464775();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
-// ?rva00464775@OpenContain@@SA?AW4NameKeyType@@XZ
-NameKeyType OpenContain::rva00464775()
+// ?getModuleNameKey@OpenContain@@UBE?AW4NameKeyType@@XZ
+NameKeyType OpenContain::getModuleNameKey() const
 {
 	static NameKeyType TheOpenContainPoolKey =
 		TheNameKeyGenerator->nameToKey("OpenContain");

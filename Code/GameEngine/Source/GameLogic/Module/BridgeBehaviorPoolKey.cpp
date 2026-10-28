@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?rva004571A9@BridgeBehavior@@SA?AW4NameKeyType@@XZ @0x4571A9
+// ?getModuleNameKey@BridgeBehavior@@UBE?AW4NameKeyType@@XZ @0x4571A9
 // (69B): cached pool-name key for BridgeBehavior. The class
 // identity comes from the pool-name string the body pushes
 // ("BridgeBehavior"); the body guards a function-local static
@@ -25,11 +25,11 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class BridgeBehavior
 {
 public:
-	static NameKeyType rva004571A9();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
-// ?rva004571A9@BridgeBehavior@@SA?AW4NameKeyType@@XZ
-NameKeyType BridgeBehavior::rva004571A9()
+// ?getModuleNameKey@BridgeBehavior@@UBE?AW4NameKeyType@@XZ
+NameKeyType BridgeBehavior::getModuleNameKey() const
 {
 	static NameKeyType TheBridgeBehaviorPoolKey =
 		TheNameKeyGenerator->nameToKey("BridgeBehavior");

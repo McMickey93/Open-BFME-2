@@ -154,7 +154,7 @@ BFME_DISP8_BYTECHASE_BEFORE_GETTER(Rva0047840CByteChase32Field, 0x1C, 0xA1)
 
 // tu-skeleton: 0x00477F06 278B ??0GarrisonContain@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Contain/GarrisonContainCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x0047801C 69B ?rva0047801C@GarrisonContain@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Module/GarrisonContainPoolKey.cpp (not merged yet)
+// tu-skeleton: 0x0047801C 69B ?getModuleNameKey@GarrisonContain@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/GameLogic/Module/GarrisonContainPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x00478061 6B ?name@GarrisonContain@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/ModuleNameGetters.cpp (not merged yet)
 

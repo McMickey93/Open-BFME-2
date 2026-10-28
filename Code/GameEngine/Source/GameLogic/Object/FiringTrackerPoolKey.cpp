@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?rva0004DEACB@FiringTracker@@SA?AW4NameKeyType@@XZ @0x4DEACB
+// ?getModuleNameKey@FiringTracker@@UBE?AW4NameKeyType@@XZ @0x4DEACB
 // (69B): cached pool-name key for FiringTracker. The class
 // identity comes from the pool-name string the body pushes
 // ("FiringTracker"); the body guards a function-local static
@@ -25,11 +25,11 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class FiringTracker
 {
 public:
-	static NameKeyType rva0004DEACB();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
-// ?rva0004DEACB@FiringTracker@@SA?AW4NameKeyType@@XZ
-NameKeyType FiringTracker::rva0004DEACB()
+// ?getModuleNameKey@FiringTracker@@UBE?AW4NameKeyType@@XZ
+NameKeyType FiringTracker::getModuleNameKey() const
 {
 	static NameKeyType TheFiringTrackerPoolKey =
 		TheNameKeyGenerator->nameToKey("FiringTracker");

@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?rva00048F411@AssaultTransportAIUpdate@@SA?AW4NameKeyType@@XZ @0x48f411
+// ?getModuleNameKey@AssaultTransportAIUpdate@@UBE?AW4NameKeyType@@XZ @0x48f411
 // (69B): cached pool-name key for AssaultTransportAIUpdate. The class
 // identity comes from the pool-name string the body pushes
 // ("AssaultTransportAIUpdate"); the body guards a function-local static
@@ -25,11 +25,11 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class AssaultTransportAIUpdate
 {
 public:
-	static NameKeyType rva00048F411();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
-// ?rva00048F411@AssaultTransportAIUpdate@@SA?AW4NameKeyType@@XZ
-NameKeyType AssaultTransportAIUpdate::rva00048F411()
+// ?getModuleNameKey@AssaultTransportAIUpdate@@UBE?AW4NameKeyType@@XZ
+NameKeyType AssaultTransportAIUpdate::getModuleNameKey() const
 {
 	static NameKeyType TheAssaultTransportAIUpdatePoolKey =
 		TheNameKeyGenerator->nameToKey("AssaultTransportAIUpdate");

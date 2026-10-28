@@ -19,7 +19,7 @@ void __identifier("??_GBridgeBehavior@@UAEPAXI@Z")();
 void __identifier("?loadPostProcess@Rva00497805@@MAEXXZ")();
 void __identifier("?GetSnapshotName@BridgeBehavior@@MBEPBDXZ")();
 void __identifier("?xfer@BridgeBehavior@@MAEXPAVXfer@@@Z")();
-void __identifier("?rva004571A9@BridgeBehavior@@SA?AW4NameKeyType@@XZ")();
+void __identifier("?getModuleNameKey@BridgeBehavior@@UBE?AW4NameKeyType@@XZ")();
 void __identifier("??1BfmeRadarMapPoint@@QAE@XZ")();
 void __identifier("?rva00456A3E@Rva00456A3E@@QAEXXZ")();
 void __identifier("?Add_Dependencies_To_List@RenderObjClass@@MAEXAAV?$DynamicVectorClass@VStringClass@@@@_N@Z")();
@@ -31,7 +31,7 @@ extern "C" const void *const vtbl_00C409DC[13] = {
 	(const void *)&__identifier("?loadPostProcess@Rva00497805@@MAEXXZ"), // slot 1 0x00497805
 	(const void *)&__identifier("?GetSnapshotName@BridgeBehavior@@MBEPBDXZ"), // slot 2 0x004571EE
 	(const void *)&__identifier("?xfer@BridgeBehavior@@MAEXPAVXfer@@@Z"), // slot 3 0x00457E72
-	(const void *)&__identifier("?rva004571A9@BridgeBehavior@@SA?AW4NameKeyType@@XZ"), // slot 4 0x004571A9
+	(const void *)&__identifier("?getModuleNameKey@BridgeBehavior@@UBE?AW4NameKeyType@@XZ"), // slot 4 0x004571A9
 	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 5 0x000B3FD0
 	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 6 0x000B3FD0
 	(const void *)&__identifier("??1BfmeRadarMapPoint@@QAE@XZ"), // slot 7 0x000B3FD0

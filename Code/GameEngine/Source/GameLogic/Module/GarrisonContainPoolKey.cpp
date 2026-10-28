@@ -1,5 +1,5 @@
 // cl: /DNDEBUG /MD /EHsc
-// ?rva0047801C@GarrisonContain@@SA?AW4NameKeyType@@XZ @0x47801C
+// ?getModuleNameKey@GarrisonContain@@UBE?AW4NameKeyType@@XZ @0x47801C
 // (68B): cached pool-name key for GarrisonContain. The class
 // identity comes from the pool-name string the body pushes
 // ("GarrisonContain"); the body guards a function-local static
@@ -25,11 +25,11 @@ extern NameKeyGenerator *TheNameKeyGenerator;
 class GarrisonContain
 {
 public:
-	static NameKeyType rva0047801C();
+	virtual NameKeyType getModuleNameKey() const;
 };
 
-// ?rva0047801C@GarrisonContain@@SA?AW4NameKeyType@@XZ
-NameKeyType GarrisonContain::rva0047801C()
+// ?getModuleNameKey@GarrisonContain@@UBE?AW4NameKeyType@@XZ
+NameKeyType GarrisonContain::getModuleNameKey() const
 {
 	static NameKeyType TheGarrisonContainPoolKey =
 		TheNameKeyGenerator->nameToKey("GarrisonContain");

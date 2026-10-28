@@ -36,7 +36,7 @@ void W3DDebrisDraw::reactToTransformChange( const Matrix3D *oldMtx,
 
 // tu-skeleton: 0x000B1C41 86B ??0W3DDebrisDraw@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DDebrisDrawCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x000B1C97 69B ?rva0000B1C97@W3DDebrisDraw@@SA?AW4NameKeyType@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DDebrisDrawPoolKey.cpp (not merged yet)
+// tu-skeleton: 0x000B1C97 69B ?getModuleNameKey@W3DDebrisDraw@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/W3DDebrisDrawPoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x000B1CDC 6B ?GetSnapshotName@W3DDebrisDraw@@MBEPBDXZ -- matched in Code/GameEngine/Source/Common/SubsystemNameGetters.cpp (not merged yet)
 
