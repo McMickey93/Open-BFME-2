@@ -255,8 +255,6 @@ private:
 	unsigned char m_14;
 };
 
-// tu-skeleton: 0x00420B61 301B ?rva00420B61@DelayedExperienceLevelGrantSystem@@QAEXPBVOverridable@@PAVObject@@@Z -- matched in Code/GameEngine/Source/GameLogic/System/DelayedExperienceLevelGrantFX.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/GameLogic/System/DelayedExperienceLevelGrantApply.cpp
 
 // ?rva00420C8E@DelayedExperienceLevelGrantSystem@@QAEXPAUExperienceLevelView@@PAVObject@@_N@Z
