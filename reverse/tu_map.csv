@@ -22896,15 +22896,15 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x002DAFEC,238,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadType.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB0DB,238,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadType.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB1CA,327,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/Common/TerrainRoadType.cpp,Code/GameEngine/Source/Common/TerrainRoadType.cpp
-0x002DB311,318,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/Common/TerrainRoadType.cpp,Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp
+0x002DB311,318,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/Common/TerrainRoadType.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB44F,20,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,S,S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadType.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB463,23,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,S,S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadType.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
-0x002DB47A,28,code,,displaced,-,N=Code/GameEngine/Source/Common/TerrainRoadType.cpp,Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp
+0x002DB47A,28,code,,displaced,-,N=Code/GameEngine/Source/Common/TerrainRoadType.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB496,68,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollection.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB4DA,68,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollection.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB51E,97,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollection.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB57F,207,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollection.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
-0x002DB64E,564,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollection.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp
+0x002DB64E,564,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,Z,Z=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp S=Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp N=Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollection.cpp,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x002DB882,33,code,Code/GameEngine/Source/Common/BfmeThingJC.cpp,proposed,N,N=Code/GameEngine/Source/Common/BfmeThingJC.cpp,Code/GameEngine/Source/Common/BfmeConv901.cpp
 0x002DB8A3,23,code,,,-,,Code/GameEngine/Source/Common/Rva0044F320VirtualChain.cpp
 0x002DB8BA,5,code,,,-,,Code/GameEngine/Source/Common/TailJumpWrappers5B.cpp
@@ -71830,18 +71830,18 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00777CF2,22,code,,,-,,Code/GameEngine/Source/Common/TerrainRoadType.cpp
 0x00777D08,22,code,,,-,,Code/GameEngine/Source/Common/TerrainRoadType.cpp
 0x00777D1E,22,code,,,-,,Code/GameEngine/Source/Common/TerrainRoadType.cpp
-0x00777D34,24,code,,,-,,Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp
-0x00777D4C,24,code,,,-,,Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp
-0x00777D64,24,code,,,-,,Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp
-0x00777D7C,10,code,,,-,,Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp
+0x00777D34,24,code,,,-,,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
+0x00777D4C,24,code,,,-,,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
+0x00777D64,24,code,,,-,,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
+0x00777D7C,10,code,,,-,,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x00777D86,8,code,,,-,,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x00777D8E,10,code,,,-,,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x00777D98,8,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB57F@FuncInfo0x0091FB20,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x00777DA0,10,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB57F@FuncInfo0x0091FB20,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x00777DAA,10,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB57F@FuncInfo0x0091FB20,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
-0x00777DB4,8,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB64E@FuncInfo0x0091FB4C,Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp
-0x00777DBC,10,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB64E@FuncInfo0x0091FB4C,Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp
-0x00777DC6,10,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB64E@FuncInfo0x0091FB4C,Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp
+0x00777DB4,8,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB64E@FuncInfo0x0091FB4C,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
+0x00777DBC,10,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB64E@FuncInfo0x0091FB4C,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
+0x00777DC6,10,code,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp,approved,P,P=0x002DB64E@FuncInfo0x0091FB4C,Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 0x00777DD0,10,code,Code/GameEngine/Source/GameClient/MapPreviewTextureAssetFactory.cpp,proposed,P,P=0x002DB8BF@FuncInfo0x0091FB70,Code/GameEngine/Source/GameClient/MapPreviewTextureAsset.cpp
 0x00777DDA,10,code,Code/GameEngine/Source/GameClient/MapPreviewTextureAssetFactory.cpp,proposed,P,P=0x002DB8BF@FuncInfo0x0091FB70,Code/GameEngine/Source/GameClient/MapPreviewTextureAsset.cpp
 0x00777DE4,8,code,,,-,,Code/GameEngine/Source/GameClient/GUI/BfmeMapPictureTextureCtor.cpp

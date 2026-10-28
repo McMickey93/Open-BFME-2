@@ -6,6 +6,16 @@ typedef int Int;
 #define TRUE true
 #define FALSE false
 #include "subsystem_interface.h"
+// Identity: newRoad/newBridge allocate this type at 0x002DB1CA; their
+// native field accesses and ZH TerrainRoadType agree on name +4, bridge +8,
+// id +0xC, next +0x10, widths +0x14/+0x18 and texture +0x38. Existing
+// constructor/destructor ownership and all member cleanup bytes are retained.
+// ??1TerrainRoadType@@UAE@XZ @0x002DB311 318B
+// Evidence: unlock lane; vtable g_00C03E24; callees clear 0x0048BA39 releaseBuffer 0x00036410 TailRecord dtor 0x0010F149 and ??_M CRT; 11 singles + 7 arrays to 0x144.
+extern const void *const g_00C03E24[];
+#include "../../../../../reference/shims/bfme2_ascii/ascii_string.h"
+#define TRUE true
+#define FALSE false
 
 enum BodyDamageType
 {
@@ -240,6 +250,49 @@ unsigned int TerrainRoadCollection::m_idCounter;
 typedef char TerrainRoadTypeSizeCheck[sizeof(TerrainRoadType) == 0x14C ? 1 : -1];
 
 class TerrainRoadType;
+
+class AsciiElem
+{
+public:
+	~AsciiElem() {}
+private:
+	AsciiString m_text;
+};
+
+class OpaqueRefCounted
+{
+public:
+	void Release_Ref();
+};
+
+class BfmeStringTailRecord156
+{
+public:
+	~BfmeStringTailRecord156();
+private:
+	OpaqueRefCounted *m_ptr;
+};
+
+// "PRISTINE", "DAMAGED", "REALLYDAMAGED", "RUBBLE", NULL (retail 0x00DBCF30)
+extern const char *TheBodyDamageTypeNames[];
+
+// Most of the default bridge's by-value name getters are ICF-folded bodies
+// already rowed under other owners: 0x000DE59C (+0x34), 0x004DC8E7 (+0x3C),
+// 0x002041E1 Script::getConditionTeamName (+0x44), 0x0023E943 GameInfo::getMap
+// (+0x40), 0x000DE5B7 (+0x48) and 0x0027F5A6 (+0x50); the calls name those rows.
+class Script { public: AsciiString getConditionTeamName() const; };
+
+class GameInfo { public: AsciiString getMap() const; };
+
+class Rva000DE59C { public: AsciiString rva000DE59C(); };
+
+class Rva004DC8E7AsciiField { public: AsciiString get() const; };
+
+class Rva000DE5B7 { public: AsciiString rva000DE5B7(); };
+
+class Rva0027F5A6 { public: AsciiString rva0027F5A6(); };
+
+// ---- from Code/GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
 
 // ---- from Code/GameEngine/Source/Common/TerrainRoadCollection.cpp
 
@@ -605,12 +658,106 @@ TerrainRoadType *TerrainRoadCollection::newRoad(AsciiString name)
 
 // tu-skeleton: 0x002DB1CA 327B ??0TerrainRoadType@@QAE@XZ -- matched in Code/GameEngine/Source/Common/TerrainRoadType.cpp (not merged yet)
 
-// tu-skeleton: 0x002DB311 318B ??1TerrainRoadType@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva002DB311Dtor.cpp
 
-// tu-skeleton: 0x002DB64E 564B ?newBridge@TerrainRoadCollection@@QAEPAVTerrainRoadType@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp (not merged yet)
+// Native scalar strings own one pointer and release it directly. Keep the
+// array element's native cleanup ABI by using the same genuine ownership.
 
-// tu-skeleton: 0x00777DB4 8B $L1553 -- matched in Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp (not merged yet)
+TerrainRoadType::~TerrainRoadType()
+{
+}
 
-// tu-skeleton: 0x00777DBC 10B uw_00777dbc -- matched in Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp
 
-// tu-skeleton: 0x00777DC6 10B __ehhandler$?newBridge@TerrainRoadCollection@@QAEPAVTerrainRoadType@@VAsciiString@@@Z -- matched in Code/GameEngine/Source/GameClient/Terrain/TerrainRoadCollectionNewBridge.cpp (not merged yet)
+/*
+**	Command & Conquer Generals Zero Hour(tm)
+**	Copyright 2025 Electronic Arts Inc.
+**
+**	This program is free software: you can redistribute it and/or modify
+**	it under the terms of the GNU General Public License as published by
+**	the Free Software Foundation, either version 3 of the License, or
+**	(at your option) any later version.
+**
+**	This program is distributed in the hope that it will be useful,
+**	but WITHOUT ANY WARRANTY; without even the implied warranty of
+**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**	GNU General Public License for more details.
+**
+**	You should have received a copy of the GNU General Public License
+**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// FILE: TerrainRoads.cpp /////////////////////////////////////////////////////////////////////////
+// Author: Colin Day, December 2001
+// Desc:   Terrain road descriptions
+//
+// Ported from Zero Hour's GameEngine/Source/GameClient/Terrain/TerrainRoads.cpp
+// (GeneralsMD tree vendored under reference/open-bfme-1/inputs/reference).
+// BFME 2 keeps the bridge transition tables but moves the friend_set*String
+// accessors out of line, and the INI parsers throw an INIException carrying
+// Zero Hour's DEBUG_CRASH text instead of INI_INVALID_DATA.
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+//-------------------------------------------------------------------------------------------------
+/** Allocate a new bridge type, linked to the bridge list, with defaults from "DefaultBridge" */
+//-------------------------------------------------------------------------------------------------
+TerrainRoadType *TerrainRoadCollection::newBridge( AsciiString name )
+{
+	TerrainRoadType *bridge = new TerrainRoadType;
+
+	// assign the name
+	bridge->friend_setName( name );
+
+	// assign unique id
+	bridge->friend_setID( m_idCounter++ );
+
+	// is a bridge
+	bridge->friend_setBridge( TRUE );
+
+	// set defaults from the default bridge
+	TerrainRoadType *defaultBridge = findBridge( AsciiString( "DefaultBridge" ) );
+	if( defaultBridge )
+	{
+		
+		bridge->friend_setTexture( defaultBridge->getTexture() );
+		bridge->friend_setBridgeScale( defaultBridge->getBridgeScale() );
+		bridge->friend_setBridgeModelName( ((Rva000DE59C *)defaultBridge)->rva000DE59C() );
+		bridge->friend_setBridgeModelNameDamaged( ((const Rva004DC8E7AsciiField *)defaultBridge)->get() );
+		bridge->friend_setBridgeModelNameReallyDamaged( ((const Script *)defaultBridge)->getConditionTeamName() );
+		bridge->friend_setBridgeModelNameBroken( defaultBridge->getBridgeModelNameBroken() );
+		bridge->friend_setTextureDamaged( ((const GameInfo *)defaultBridge)->getMap() );
+		bridge->friend_setTextureReallyDamaged( ((Rva000DE5B7 *)defaultBridge)->rva000DE5B7() );
+		bridge->friend_setTextureBroken( ((Rva0027F5A6 *)defaultBridge)->rva0027F5A6() );
+
+		bridge->friend_setTransitionEffectsHeight( defaultBridge->getTransitionEffectsHeight() );
+		bridge->friend_setNumFXPerType( defaultBridge->getNumFXPerType() );
+		for( Int state = BODY_PRISTINE; state < BODYDAMAGETYPE_COUNT; state++ )
+		{
+
+			bridge->friend_setDamageToSoundString( (BodyDamageType)state, defaultBridge->getDamageToSoundString( (BodyDamageType)state ) );
+			bridge->friend_setRepairedToSoundString( (BodyDamageType)state, defaultBridge->getRepairedToSoundString( (BodyDamageType)state ) );
+
+			for( Int i = 0; i < MAX_BRIDGE_BODY_FX; i++ )
+			{
+
+				bridge->friend_setDamageToOCLString( (BodyDamageType)state, i, defaultBridge->getDamageToOCLString( (BodyDamageType)state, i ) );
+				bridge->friend_setDamageToFXString( (BodyDamageType)state, i, defaultBridge->getDamageToOCLString( (BodyDamageType)state, i ) );
+				bridge->friend_setRepairedToOCLString( (BodyDamageType)state, i, defaultBridge->getDamageToOCLString( (BodyDamageType)state, i ) );
+				bridge->friend_setRepairedToFXString( (BodyDamageType)state, i, defaultBridge->getDamageToOCLString( (BodyDamageType)state, i ) );
+
+			}  // end for i
+
+		}  // end for
+
+	}  // end if
+
+	// link to list
+	bridge->friend_setNext( m_bridgeList );
+	m_bridgeList = bridge;
+
+	// return the new bridge
+	return bridge;
+
+}
+
+  // end newBridge

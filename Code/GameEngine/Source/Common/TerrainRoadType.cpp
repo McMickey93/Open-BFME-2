@@ -73,7 +73,7 @@ public:
 	float m_144;
 	int m_148;
 };
-// TerrainRoadType::~TerrainRoadType: defined in Rva002DB311Dtor.cpp (its row's unit).
+// TerrainRoadType::~TerrainRoadType: defined in GameClient/Terrain/TerrainRoads.cpp (its row's unit).
 TerrainRoadType::TerrainRoadType()
 {
 	float v0 = 0.0f;
