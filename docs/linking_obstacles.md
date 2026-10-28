@@ -66,6 +66,19 @@ authored-byte previews or commit-title gains into a projected headline.
 
 ## Obstacles and handoffs
 
+### PolygonTrigger writer and selected floorf (2026-10-28)
+
+Status: partial repair; writer provider and census confirmation pending. Inspected
+base `7dbe9f83c8`, index `41c28839bf`. Giving the unused math-header `floorf`
+internal linkage removes the selected-copy failure from
+`GameLogic/Map/PolygonTrigger.cpp`. Its 18 function rows and data row still
+byte-verify, and strict preparation verifies it and the 14 rows of
+`Common/AreaPolygonBase.cpp` together. The ordinary preview still reports
+`?rva0030B2FE@Rva0030B2FE@@QAEXPAVDataChunkOutput@@@Z` unresolved; the ledger
+owns that body in AreaPolygonBase, which is absent from the census preview.
+The refreshed published index remains at `41c28839bf`. Verify that provider
+and its consumer together in the next census; no linked-byte gain is claimed.
+
 ### SalvageCrateCollide composition prerequisites (2026-10-28)
 
 Status: bounded composition verified; class reconciliation and census consumer
