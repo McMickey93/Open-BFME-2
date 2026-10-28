@@ -3265,7 +3265,6 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0028D8EB.cpp	?hasSpecia
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003552BD.cpp	?dup_00355257@@YAXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00355B61Ctor.cpp	??1Rva00355B61@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00355BDADtor.cpp	??1ArmorTemplateMap@@QAE@XZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Rva0036105BCopyCtor.cpp	?Rva003614F4Copy@@YAPAVRva0036105B@@PAV1@00ABUrandom_access_iterator_tag@_STL@@PAH@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva00361594Assign.cpp	?Rva00361594Assign@@YAPAVRva0036105B@@PAV1@00PAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	??0Rva003623E5Filter@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Rva003623E5MemberCtor.cpp	?construct@Rva003623E5Member@@QAEXXZ	1
@@ -3445,6 +3444,7 @@ alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.c
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot3@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/GameLogicCRC_Rva00225A2D.cpp	?slot4@XferSave@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/System/LivingWorld/LivingWorldCampaign.cpp	?R2Data010EC760@@3HA	1
+alternatename	Code/GameEngine/Source/GameLogic/System/ObjectFilter.cpp	?Rva003614F4Copy@@YAPAVRva0036105B@@PAV1@00ABUrandom_access_iterator_tag@_STL@@PAH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BFMEDisconnectManager_voterEligibility.cpp	?_bfme_slotIsLocalOrLive@ConnectionManager@@QAE_NH@Z	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgCtor.cpp	??1BfmeMsg803A00@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameNetwork/BfmeMsgCtor.cpp	??1BfmeMsg803B60@@QAE@XZ	1
