@@ -6,7 +6,6 @@ Code/GameEngine/Source/Common/FprintfAppendLine.cpp	drop-in candidate	same	2	2	0
 Code/GameEngine/Source/Common/Rva0050E9D3Enable.cpp	drop-in candidate	same	2	1	0	0	0	0	0	1	0	0	0	<ShlObj.h>,<stdlib.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	atexit:same
 Code/GameEngine/Source/GameNetwork/GameSpy/peer/peerOperations.c	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	closesocket:same,WSACleanup:same
 Code/stlport/FileSizeHelper.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	yes	hand		prove with ./build.sh: byte gate is the authority	GetFileSize:same,GetLastError:same
-Code/stlport/NarrowFilebufInputError.cpp	drop-in candidate	same	2	2	0	0	0	0	0	0	0	0	0	<windows.h>	yes	no	hand		prove with ./build.sh: byte gate is the authority	UnmapViewOfFile:same,CloseHandle:same
 Code/GameEngine/Source/Common/BfmeIntVecG.h	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<stdlib.h>	no	no	hand		prove with ./build.sh: byte gate is the authority	free:same
 Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenAndCloseBehaviorPushOut.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same
 Code/GameEngine/Source/GameLogic/Object/Update/WallUpgradeUpdateScan.cpp	drop-in candidate	same	1	1	0	0	0	0	0	0	0	0	0	<string.h>	no	yes	hand		prove with ./build.sh: byte gate is the authority	memset:same

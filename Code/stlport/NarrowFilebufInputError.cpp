@@ -1,10 +1,7 @@
 // stlport
 // STLport 4.5.3 narrow filebuf input-error transition.
 
-extern "C" {
-__declspec(dllimport) int __stdcall UnmapViewOfFile(const void *base);
-__declspec(dllimport) int __stdcall CloseHandle(void *handle);
-}
+#include <windows.h>
 
 namespace _STL {
 
