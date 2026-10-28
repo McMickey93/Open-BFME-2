@@ -88,14 +88,21 @@ consumer selection and new census-linked bytes remain unclaimed.
 
 ### ShareExperienceBehavior update composition (2026-10-28)
 
-Status: update-interface declaration prerequisite verified; composition and
-remaining class contracts pending. Inspected base: `76c011c831`; preview index:
+Status: update-interface prerequisite and two-fragment composition verified;
+remaining class contracts and census confirmation pending. Inspected base: `76c011c831`; preview index:
 `c8734bec0c`. [Scoped evidence and remaining prerequisites](../reverse/attempt_support/share-experience-consolidation-20261028-codexb.md).
 All ten paired rows remain exact and all 28 falloff external COMDAT digests
 are unchanged. Both units preserve LINKS for 696 authored bytes. The pool-key,
 constructor and module-data destructor views still need reconciliation.
 No census or runtime gain is claimed; changed consumer selection awaits the
 next normal census.
+The supported merge removes one net source file and preserves all ten rows,
+the EXACT EH graph, all 30 external COMDAT digests and all 64 external
+definition/reference entries. The destination is absent from the index, so
+ordinary post-merge preview is unavailable. The batch audit is INCONCLUSIVE:
+the index predates the outgoing base and affected consumer
+Common/0CreateAHeroManager21FE49.cpp lacks a current receipt. Carry this moved
+scope into the next normal census; full consumer selection remains unverified.
 
 ### LINK-131: WanderAIUpdate composition needs a coherent primary interface
 

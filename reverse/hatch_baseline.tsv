@@ -1113,7 +1113,7 @@ address_global	Code/GameEngine/Source/GameLogic/Object/ArmorStoreReload.cpp	g_Va
 address_global	Code/GameEngine/Source/GameLogic/Object/AttackNuggetCreate.cpp	g_Va00DFDCD8	1
 address_global	Code/GameEngine/Source/GameLogic/Object/Behavior/BezierProjectileBehavior.cpp	g_Va00DFEFD8	3
 address_global	Code/GameEngine/Source/GameLogic/Object/Behavior/Rva00395A82.cpp	g_Va00BBB8D8	2
-address_global	Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehaviorFalloff.cpp	g_Va00BBB8D8	4
+address_global	Code/GameEngine/Source/GameLogic/Object/Behavior/ShareExperienceBehavior.cpp	g_Va00BBB8D8	4
 address_global	Code/GameEngine/Source/GameLogic/Object/Body/ActiveBodyConstructor.cpp	g_Va00DE0878	2
 address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHero.cpp	g_Va00DFE348	3
 address_global	Code/GameEngine/Source/GameLogic/Object/CreateAHeroHero.cpp	g_Va00DFE348	2
