@@ -3575,6 +3575,10 @@ member,S4BuiltRva0059D1F0::m_10,S4BuiltRva0059D1F0::m_startFrame,inferred,agree:
 member,S4BuiltRva0059D1F0::m_14,S4BuiltRva0059D1F0::m_endFrame,inferred,agree:nl-935bf66a416e,Code/GameEngine/Source/Common/Rva0059D1F0AttackNuggetFactory.cpp,
 member,S4BuiltRva0059D1F0::m_18,S4BuiltRva0059D1F0::m_fadeInUnfrozenSounds,inferred,agree:nl-5eab4c10365a,Code/GameEngine/Source/Common/Rva0059D1F0AttackNuggetFactory.cpp,
 local,s4ParseFieldsRva0059D1F0::t,s4ParseFieldsRva0059D1F0::transition,inferred,agree:nl-34df27203dfb,Code/GameEngine/Source/Common/Rva0059D1F0AttackNuggetFactory.cpp,0x0035D35D
+class,S4BuiltRva0059D1F0,FreezePostLoadSoundsTransition,inferred,agree:nl-65529612dd20,Code/GameEngine/Source/Common/Rva0059D1F0AttackNuggetFactory.cpp,
+carry,S4BuiltRva0059D1F0::m_startFrame,FreezePostLoadSoundsTransition::m_startFrame,inferred,scope renamed by Rename S4BuiltRva0059D1F0 to FreezePostLoadSoundsTransition (inferred),Code/GameEngine/Source/Common/Rva0059D1F0AttackNuggetFactory.cpp,
+carry,S4BuiltRva0059D1F0::m_endFrame,FreezePostLoadSoundsTransition::m_endFrame,inferred,scope renamed by Rename S4BuiltRva0059D1F0 to FreezePostLoadSoundsTransition (inferred),Code/GameEngine/Source/Common/Rva0059D1F0AttackNuggetFactory.cpp,
+carry,S4BuiltRva0059D1F0::m_fadeInUnfrozenSounds,FreezePostLoadSoundsTransition::m_fadeInUnfrozenSounds,inferred,scope renamed by Rename S4BuiltRva0059D1F0 to FreezePostLoadSoundsTransition (inferred),Code/GameEngine/Source/Common/Rva0059D1F0AttackNuggetFactory.cpp,
 member,BfmeElemVIA::m_bfme00,BfmeElemVIA::m_filename,inferred,agree:nl-827b594c074c,Code/GameEngine/Source/GameClient/VideoPlayer.cpp,
 member,BfmeElemVIA::m_bfme04,BfmeElemVIA::m_internalName,inferred,agree:nl-80aa10451a78,Code/GameEngine/Source/GameClient/VideoPlayer.cpp,
 member,BfmeElemVIA::m_bfme08,BfmeElemVIA::m_commentForWB,inferred,agree:nl-2bebe0f2ffe6,Code/GameEngine/Source/GameClient/VideoPlayer.cpp,

@@ -3927,6 +3927,7 @@ __ehhandler$?rva002DC52B@GameState@@QAEXXZ,0x00777E76,"Renamed to __ehhandler$?g
 ?rva0030D4BA@Rva0030D4F2@@QAEXH@Z,0x0030D4BA,"Renamed to ?setGenericAIObjectWallHubNumber@Rva0030D4F2@@QAEXH@Z by tools/rename.py (inferred)"
 ?rva004DF25B@Energy@@QAEXPAURva004DF207Outer@@@Z,0x004DF25B,"Renamed to ?addPowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z by tools/rename.py (inferred)"
 ?rva004DF274@Energy@@QAEXPAURva004DF207Outer@@@Z,0x004DF274,"Renamed to ?removePowerBonus@Energy@@QAEXPAURva004DF207Outer@@@Z by tools/rename.py (inferred)"
+??0S4BuiltRva0059D1F0@@QAE@XZ,0x0035D32B,"Renamed to ??0FreezePostLoadSoundsTransition@@QAE@XZ by tools/rename.py (inferred)"
 ?rva0049B3D2@Rva0049B2A2@@QAEEXZ,0x0049B3D2,"Renamed to ?shouldCreate@Rva0049B2A2@@QAEEXZ by tools/rename.py (inferred)"
 ?rva0049B3F3@Rva0049B2A2@@QAEXXZ,0x0049B3F3,"Renamed to ?setNextCreationFrame@Rva0049B2A2@@QAEXXZ by tools/rename.py (inferred)"
 ?rva00062A58@BoundedShortGrid@@QAEFHH@Z,0x00062A58,"Renamed to ?load@BoundedShortGrid@@QAEFHH@Z by tools/rename.py (inferred)"

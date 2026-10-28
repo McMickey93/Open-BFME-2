@@ -56,12 +56,12 @@ public:
 // Rva001DBAC3Derived.cpp emits the vtable installed at +0.
 extern "C" int __identifier("??_7Rva0035D352@@6B@");
 
-struct S4BuiltRva0059D1F0 : public Rva00489210
+struct FreezePostLoadSoundsTransition : public Rva00489210
 {
 	int m_startFrame, m_endFrame;
 	char m_fadeInUnfrozenSounds, m_19;
 
-	S4BuiltRva0059D1F0()
+	FreezePostLoadSoundsTransition()
 	{
 		m_00 = &__identifier("??_7Rva0035D352@@6B@");
 		m_startFrame = 0;
@@ -74,7 +74,7 @@ struct S4BuiltRva0059D1F0 : public Rva00489210
 
 void s4ParseFieldsRva0059D1F0(INI *ini, Gen_00489270 *sink)
 {
-	S4BuiltRva0059D1F0 *transition = new S4BuiltRva0059D1F0;
+	FreezePostLoadSoundsTransition *transition = new FreezePostLoadSoundsTransition;
 
 	ini->initFromINI(transition, s4TableRva0059D1F0);
 	transition->m_04 = transition->m_endFrame;
