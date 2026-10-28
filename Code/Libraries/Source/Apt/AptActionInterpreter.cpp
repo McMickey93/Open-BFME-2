@@ -189,10 +189,10 @@ struct AptActionInterpreter
     char pad0C[0x24 - 12];
     AptValuePtrStack<AptValue> thisStack; // +0x24
     AptScriptFunctionBase *mpCurrentFunction; // +0x30
-    char debug[12];
+    char pad34[12];
     AptConstantPool constantPool; // +0x40
     char pad48[0x60 - 0x48];
-    int unwind; // +0x60
+    AptValue *mpThrownValue; // +0x60
 
     const unsigned char *runStream(const unsigned char *, AptCIH *, int,
                                    struct AptCharacterInst *);
@@ -580,7 +580,7 @@ void AptActionInterpreter::callFunction(AptValue *context, AptValue *function, i
         stack.PushNoInc(gpUndefinedValue);
     }
     int nStackElementsPost = stack.count;
-    if (unwind) {
+    if (mpThrownValue) {
         if (nStackElementsPost > nStackElementsPre)
             stack.rva006E3AA0(nStackElementsPost - nStackElementsPre);
     } else {

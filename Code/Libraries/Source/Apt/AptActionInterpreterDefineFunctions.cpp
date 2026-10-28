@@ -22,9 +22,9 @@ struct AptCharacterInst;
 struct AptActionInterpreter {
     struct LocalContextT { const unsigned char *pInstruction; AptCIH *pCurrentContext; AptValue *pCurWith; const unsigned char *pRemoveWithAt; AptValue *pSuper; bool bEncounteredReturn; AptCharacterInst *pParentCharacter; };
     AptBasePtrStack stack;
-    unsigned char prefix[0x30-12];
+    unsigned char pad0C[0x30-12];
     AptScriptFunctionBase *mpCurrentFunction;
-    unsigned char prefix2[12];
+    unsigned char pad34[12];
     AptConstantPool constantPool;
     bool setVariable(AptValue *,AptValue *,const EAStringC *,AptValue *,int=1,int=1,int=0);
 private:

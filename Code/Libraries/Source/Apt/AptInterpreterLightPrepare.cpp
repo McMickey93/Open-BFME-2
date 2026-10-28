@@ -10,7 +10,7 @@ void __debugbreak();
 #pragma intrinsic(__debugbreak)
 struct AptActionSetup;
 class AptActionInterpreter {
-    char prefix[0x60];
+    char pad00[0x60];
     AptValue *mpThrownValue;
 public:
     void *rva006FD300(AptActionSetup *);

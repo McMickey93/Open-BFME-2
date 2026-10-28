@@ -267,12 +267,12 @@ private:
 public:
     AptBasePtrStack stack;
     AptValuePtrStack<AptValue> withStack;
-    unsigned char m_betweenWithAndThis[0x24-0x18];
+    unsigned char m_pad18[0x24-0x18];
     AptValuePtrStack<AptValue> thisStack;
     AptScriptFunctionBase *mpCurrentFunction;
     AptCallDebugStack debugCallStack;
     AptConstantPool constantPool;
-    unsigned char m_betweenPoolAndFrameBase[0x60-0x48];
+    unsigned char m_pad48[0x60-0x48];
     AptValue *mpThrownValue; // PC Throw reads/writes+60; donor supplies semantic role.
     // Original Godfather debug/release field100; native Pop reads +0x64.
     int mnStackFrameBase;
