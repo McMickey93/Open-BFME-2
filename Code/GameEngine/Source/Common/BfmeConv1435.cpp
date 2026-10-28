@@ -1,4 +1,4 @@
-// cl: /Ob0
+// cl: /Ob0 /Ireference/shims/bfme2_ascii
 // platformsdk
 // Near-miss donor from Open-BFME-1 BfmeConv1435.cpp
 // (?bfmeTickVM0@Display@@QAEXXZ @0x0040FE40):
@@ -22,121 +22,7 @@ extern double g_bfmeVM0Scale;
 double g_bfmeVM0Scale;
 // g_bfmeVM0Factor: matched references place it at VA 0xbf5d50 (retail .rdata value 0.03333333333333333).
 
-class BfmeVM0Timer
-{
-public:
-	virtual int v0();
-	virtual int v1();
-	virtual int v2();
-	virtual int v3();
-	virtual int v4();
-	virtual int v5();
-	virtual int v6();
-	virtual int v7();
-	virtual int v8();
-	virtual int v9();
-	virtual int v10();
-	virtual int v11();
-	virtual int v12();
-	virtual int v13();
-	virtual int v14();
-	virtual int v15();
-	virtual int readTickCounter();
-};
-
-class Display
-{
-public:
-	virtual int v0();
-	virtual int v1();
-	virtual int v2();
-	virtual int v3();
-	virtual int v4();
-	virtual int v5();
-	virtual int v6();
-	virtual int v7();
-	virtual int v8();
-	virtual int v9();
-	virtual int v10();
-	virtual int v11();
-	virtual int v12();
-	virtual int v13();
-	virtual int v14();
-	virtual int v15();
-	virtual int v16();
-	virtual int v17();
-	virtual int v18();
-	virtual int v19();
-	virtual int v20();
-	virtual int v21();
-	virtual int v22();
-	virtual int v23();
-	virtual int v24();
-	virtual int v25();
-	virtual int v26();
-	virtual int v27();
-	virtual int v28();
-	virtual int v29();
-	virtual int v30();
-	virtual int v31();
-	virtual int v32();
-	virtual int v33();
-	virtual int v34();
-	virtual int v35();
-	virtual int v36();
-	virtual int v37();
-	virtual int v38();
-	virtual int v39();
-	virtual int v40();
-	virtual int v41();
-	virtual int v42();
-	virtual int v43();
-	virtual int v44();
-	virtual int v45();
-	virtual int v46();
-	virtual int v47();
-	virtual int v48();
-	virtual int v49();
-	virtual int v50();
-	virtual int v51();
-	virtual int v52();
-	virtual int v53();
-	virtual int v54();
-	virtual int v55();
-	virtual int v56();
-	virtual int v57();
-	virtual int v58();
-	virtual int v59();
-	virtual int v60();
-	virtual int v61();
-	virtual int v62();
-	virtual int v63();
-	virtual int v64();
-	virtual int v65();
-	virtual int v66();
-	virtual int v67();
-	virtual int v68();
-	virtual bool bfmePredVM0();
-	virtual bool bfmeProbeVM0();
-	virtual int v71();
-	virtual int v72();
-	virtual void bfmeKickVM0(int value);
-	void StartRenderThread(int);
-	void bfmeTickVM0();
-	void rva0025C46E();
-	void rva0025D9CB(bool flag);
-	void rva0025D10F();
-	int rva0025C4A4(int value);
-	char m_pad04[0x34];
-	BfmeVM0Timer *m_timer;
-	char m_pad3C[0x4];
-	HANDLE volatile m_firstMutex;
-	HANDLE volatile m_secondMutex;
-	char m_pad48[0x18];
-	int m_mode;
-	char m_pad64[0xD8];
-	volatile int m_armed;
-};
+#include "../GameClient/DisplayStaticDebugView.h"
 
 // ?bfmeVM0WorkerThread@@YAKPAX@Z retail 0x0025D128 (118B), the CreateThread
 // start StartRenderThread pushes. It holds the first mutex while it runs and

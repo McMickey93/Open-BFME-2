@@ -53,6 +53,15 @@ public:
 	virtual int v5();
 	virtual int v6();
 	virtual int v7();
+	virtual int v8();
+	virtual int v9();
+	virtual int v10();
+	virtual int v11();
+	virtual int v12();
+	virtual int v13();
+	virtual int v14();
+	virtual int v15();
+	virtual int readTickCounter();
 };
 class Image;
 
@@ -74,6 +83,7 @@ enum { MAX_STATIC_IMAGES = 3 };
 
 class Display
 {
+	friend unsigned long __cdecl bfmeVM0WorkerThread(void *param);
 public:
 	virtual void pad00();
 	virtual void pad01();
@@ -144,11 +154,11 @@ public:
 	virtual bool playMovieFlags(AsciiString movieName, int flags, int first, int second); // +0x108
 	virtual void pad67();
 	virtual void pad68();
-	virtual void pad69();
-	virtual void pad70();
+	virtual bool bfmePredVM0(); // +0x114
+	virtual bool bfmeProbeVM0(); // +0x118
 	virtual void pad71();
 	virtual bool rva0025DA8D(AsciiString movieName, int flags); // +0x120
-	virtual void pad73();
+	virtual void bfmeKickVM0(int value); // +0x124
 	virtual void setDebugDisplayCallback(DebugDisplayCallback *callback, void *userData = NULL);
 	void DrawStaticImage(int index, int arg);
 	void SetMovieImage(int image, int index, float x0, float y0, float x1, float y1);
@@ -157,6 +167,10 @@ public:
 	DisplayString *rva0025D3C8();
 	void rva0025D10F();
 	void bfmeTickVM0();
+	void StartRenderThread(int mode);
+	void rva0025C46E();
+	void rva0025D9CB(bool flag);
+	int rva0025C4A4(int value);
 	void rva0025D19E();
 	void rva0025C776(int a8, float fc, float f10, float f14, float f18, int a1c, int a20);
 
@@ -168,7 +182,11 @@ private:
 	DebugDisplayCallback *m_debugDisplayCallback; // +0x30
 	void *m_debugDisplayUserData; // +0x34
 	BfmeVM0Timer *m_timer; // +0x38
-	unsigned char m_pad3C[0x64 - 0x3C];
+	unsigned char m_pad3C[0x40 - 0x3C];
+	void *volatile m_firstMutex; // +0x40
+	void *volatile m_secondMutex; // +0x44
+	unsigned char m_pad48[0x60 - 0x48];
+	int m_mode; // +0x60
 	bool m_b64; // +0x64
 	unsigned char m_pad65[0x68 - 0x65];
 	Rva0025C6E2Elem m_staticImages[MAX_STATIC_IMAGES]; // +0x68
@@ -198,6 +216,7 @@ private:
 	float m_130;
 	float m_134;
 	int m_138;
+	volatile int m_armed; // +0x13C
 };
 
 #endif
