@@ -81,3 +81,26 @@ in separately verified prerequisite commits before retrying them.
 The three mixed files (ModuleNameGetters3, ModuleDataBuildFieldParse and
 UpdateModuleDataDeletingDtors) stay in place. No rejected reconstruction or
 temporary trial is left in `Code/`.
+
+## Post-rebase checks and data-retirement boundary
+
+Publication rebased the queued batch onto `00531d7c2f`. An older queued E038
+retirement conflicted with upstream's broader retirement: all six original
+deleted keys were already absent upstream. The resolution preserves that
+absence and adds no baseline key or new retirement. CritterEmitter's seven
+rows remain approved in the refreshed map. Its merge is `e34bb74f39` after
+rebase; the normal paired build again passes 8/8 rows and `check_csv.py` passes.
+The complete outgoing range has no other source-path move.
+
+The merge's normal pre-commit hook passes with zero new code-identity findings,
+two EXACT EH graphs, eight exact function rows and zero enforced converged-data
+collisions. Its shadow data scan finds two wrong-name keys: the local guard
+at `0x00A04318` and cached key at `0x00A04314` now use the already-recovered
+`getModuleNameKey` mangling, while their data-index entries retain the older
+`rva0004C8D41` identities (the guard also has an external clearer definition).
+These are preserved input identities, not new definitions from composition.
+After the merge, `repair_queue.py retire data` refuses because both current
+findings fall outside the carried old-name key. It changes nothing. A separate
+data-identity repair must reconcile the current owners and shared clearer
+before the owning tool can retire the remaining baseline key; no key is added
+or hand-deleted here.
