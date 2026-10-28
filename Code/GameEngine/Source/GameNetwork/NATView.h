@@ -4,7 +4,7 @@
 // Private NAT view shared by the NAT.cpp TU and its not-yet-merged donors.
 // Unknown fields keep padding; each named field cites the body that proves it.
 
-#include "unicode_string.h"
+#include "../../../../reference/shims/bfme2_ascii/unicode_string.h"
 class AsciiString;
 
 class PortNegotiationSchema
@@ -19,7 +19,8 @@ public:
 struct Rva005A6A4CAddress
 {
 	unsigned int ip;
-	unsigned int port;
+	unsigned short port;			// +4 (gotTargetMangledPort stores a short)
+	unsigned short m_6;
 };
 
 // A slot of the list at NAT +0x08: the player name at +0x30 (translated and
@@ -30,9 +31,11 @@ struct NATSlotView
 	UnicodeString m_name;			// +0x30
 	unsigned char m_pad34[0x38 - 0x34];
 	Rva005A6A4CAddress m_address;		// +0x38
+	unsigned char m_flags40;		// +0x40 (bit 3 tested by targetNotifyMeIWasProbed)
 };
 
 class GameInfo;
+class Transport;
 
 // flags: region default (reverse/retail_inventory/flag_regions.csv)
 // ?rva005A6732@NAT@@QBE_NXZ @0x005A6732 92B. Unlock lane: range plus
@@ -61,9 +64,10 @@ public:
 	void gotTargetMangledPort(int slot, unsigned short port, int addr);
 	void notifyHostMyNATCreated(int cookie);
 	void StartNegotiationAction(int slot, int value);
+	void sendAProbeToTarget();
 private:
 	int m_0;
-	void *m_04;
+	Transport *m_04;
 	NATSlotView **m_slotList;		// +0x08
 	int m_hostSlot;				// +0x0C
 	int m_mode;				// +0x10
@@ -71,7 +75,9 @@ private:
 	int m_targetSlot;			// +0x18
 	int m_1C;
 	int m_cookie;				// +0x20
-	int m_24;
+	unsigned char m_24;			// +0x24
+	unsigned char m_25;			// +0x25
+	unsigned char m_pad26[2];
 	PortNegotiationSchema m_schema;		// +0x28
 	unsigned char m_hostKnown[8];		// +0x8E4
 	int m_slotCookie[8];			// +0x8EC
@@ -80,11 +86,15 @@ private:
 	unsigned short m_port934;		// +0x934 (probeMangler)
 	unsigned short m_port936;		// +0x936
 	unsigned long m_time938;		// +0x938
-	char m_pad93C[0x944 - 0x93C];
+	char m_pad93C[0x942 - 0x93C];
+	unsigned char m_942;			// +0x942
+	char m_pad943[0x944 - 0x943];
 	unsigned long m_addr944;		// +0x944
 	char m_pad948[0x94C - 0x948];
 	int m_state94c;				// +0x94C
 	int m_950;				// +0x950
+	char m_pad954[0x970 - 0x954];
+	unsigned char m_970;			// +0x970
 };
 
 #endif

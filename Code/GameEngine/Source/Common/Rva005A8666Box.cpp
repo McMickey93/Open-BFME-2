@@ -6,53 +6,14 @@
 // through the pinned 0x5A831E call to the pinned setter with 3, every other
 // failing path uses 5. The int parameter is unused (callback shape). Targets
 // read from retail REL32; the 0x5A6C90 callee is matched but spelled local.
-struct Rva005A8666Obj
-{
-	char pad[0x40];
-	unsigned char m_40;
-};
-
-struct Rva005A8666Ptr
-{
-	int m_0;
-	short m_4;
-};
-
 #include "../../Include/GameNetwork/Transport.h"
-
-struct NAT
-{
-	int m_0;
-	Transport *m_04;
-	Rva005A8666Obj **m_8;
-	int m_C;
-	int m_10;
-	int m_14;
-	int m_18;
-	char pad1[0x24 - 0x1c];
-	unsigned char m_24;
-	unsigned char m_25;
-	char pad2[0x90c - 0x26];
-	Rva005A8666Ptr *m_90C[8];
-	char pad2b[0x942 - 0x92c];
-	unsigned char m_942;
-	char pad3[0x94c - 0x943];
-	int m_94C;
-	int m_950;
-	char pad4[0x970 - 0x954];
-	unsigned char m_970;
-
-	void sendAProbeToTarget();
-	void rva005A6C90(int code);
-	void targetNotifyMeIWasProbed(int unused);
-	void gotTargetMangledPort(int nodeNumber, unsigned short mangledPort, int mangledAddress);
-};
+#include "../GameNetwork/NATView.h"
 
 void NAT::targetNotifyMeIWasProbed(int unused)
 {
-	if (m_94C == 5)
+	if (m_state94c == 5)
 		return;
-	Rva005A8666Obj *localPlayer = m_8[m_14];
+	NATSlotView *localPlayer = m_slotList[m_localSlot];
 	if (localPlayer == 0) {
 		rva005A6C90(5);
 		return;
@@ -60,9 +21,9 @@ void NAT::targetNotifyMeIWasProbed(int unused)
 	if (m_942 != 0)
 		return;
 	m_942 = 1;
-	if ((localPlayer->m_40 & 8) == 0)
+	if ((localPlayer->m_flags40 & 8) == 0)
 		return;
-	if (m_8[m_18] == 0) {
+	if (m_slotList[m_targetSlot] == 0) {
 		rva005A6C90(5);
 		return;
 	}
@@ -84,36 +45,36 @@ void NAT::targetNotifyMeIWasProbed(int unused)
 // to the setter with 3. Same class as targetNotifyMeIWasProbed (shared layout and pins).
 void NAT::gotTargetMangledPort(int nodeNumber, unsigned short mangledPort, int mangledAddress)
 {
-	if (m_94C == 4 && m_950 == 4)
+	if (m_state94c == 4 && m_950 == 4)
 		return;
-	Rva005A8666Obj *targetPlayer = m_8[m_18];
+	NATSlotView *targetPlayer = m_slotList[m_targetSlot];
 	if (targetPlayer == 0) {
 		rva005A6C90(5);
 		return;
 	}
-	Rva005A8666Obj *localPlayer = m_8[m_14];
+	NATSlotView *localPlayer = m_slotList[m_localSlot];
 	if (localPlayer == 0) {
 		rva005A6C90(5);
 		return;
 	}
-	if (nodeNumber != m_18)
+	if (nodeNumber != m_targetSlot)
 		return;
 	if (m_970 == 0) {
 		m_25 = 1;
 		goto check24;
 	}
 	m_25 = 1;
-	m_90C[m_18]->m_4 = mangledPort;
-	if (m_90C[m_14]->m_0 == m_90C[m_18]->m_0)
-		m_90C[m_18]->m_0 = mangledAddress;
+	m_addresses[m_targetSlot]->port = mangledPort;
+	if (m_addresses[m_localSlot]->ip == m_addresses[m_targetSlot]->ip)
+		m_addresses[m_targetSlot]->ip = mangledAddress;
 check24:
 	if (m_24 == 0)
 		return;
-	m_04->setDestAddrToSocket(m_18, m_90C[m_18]);
-	if (m_94C != 2)
+	m_04->setDestAddrToSocket(m_targetSlot, m_addresses[m_targetSlot]);
+	if (m_state94c != 2)
 		return;
-	if ((localPlayer->m_40 & 8) != 0) {
-		if (m_942 != 1 && (targetPlayer->m_40 & 8) == 0)
+	if ((localPlayer->m_flags40 & 8) != 0) {
+		if (m_942 != 1 && (targetPlayer->m_flags40 & 8) == 0)
 			return;
 	}
 	sendAProbeToTarget();
