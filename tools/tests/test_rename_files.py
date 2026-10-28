@@ -571,3 +571,12 @@ def test_cli_json_records_the_inferred_basis(tree, tmp_path):
     report = json.loads(out.read_text())
     assert report["basis"] == "inferred" and report["basis_note"] is None
 
+
+def test_a_provisional_tu_path_is_no_retail_tu_refusal(tree):
+    """tu_map approves a TU nothing anchors under a provisional name: a merge may move its
+    rows, but the path is only a naming hint, so it is no canonical name and stays renameable."""
+    (tree / "reverse/tu_map.csv").write_text(
+        TU_MAP.replace(",approved,F,F,", f",approved,N,N={D}/ApprRva0040E000.cpp provisional,"))
+    _git(tree, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qam", "provisional")
+    why = dict(rf.candidates(ctx_of(tree), basis="mechanical")[1])
+    assert "approved retail TU" not in why.get(f"{D}/ApprRva0040E000.cpp", "")

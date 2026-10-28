@@ -15,7 +15,7 @@ merges continue through `tools/tu_skeleton.py` and the normal verification gates
 | Tool | Role |
 |---|---|
 | `tools/name_lane.py consolidate` | The evidence planner: catalogues original paths and donor structure, identifies candidate groups and flags routing, declaration, include and compiler prerequisites. |
-| `tools/tu_map.py` | Which TU each retail function came from: `__FILE__` strings, Zero Hour definitions and class sites, whole vendored upstream files (L), WorldBuilder leads that corroborate a hinted path, naming inside an anchored address cluster, contiguity. `approved` rows are the only ones a merge moves. |
+| `tools/tu_map.py` | Which TU each retail function came from: `__FILE__` strings, Zero Hour definitions and class sites, whole vendored upstream files (L), WorldBuilder leads that corroborate a hinted path, naming inside an anchored address cluster, contiguity. `approved` rows are the only ones a merge moves; a TU nothing anchors can be approved under a provisional name (below). |
 | `tools/tu_skeleton.py` | The lane: `--queue`, `--plan`, `--merge`. It verifies every merge by compiling and byte-matching, claims its scope, and repoints the ledger. |
 | `tools/tu_evidence.py` | Retail layout signals (funclet order, vftables, initializers, .rdata order, funclet parentage) for rows nothing else places; proposal-only until a signal passes its 99% precision gate and is promoted. |
 | `tools/tu_ownership.py` | The commit hook's invariants (a row moved to a file other than its approved TU, a second body for one address). Shadow mode. |
@@ -76,7 +76,8 @@ regenerated `tu_map.csv` from this lane.
 7. **Name while you are there.** The rows of the TU are a natural naming group:
    rename placeholder rows with `tools/rename.py` (`docs/naming.md`) in separate
    commits. A merged TU path is an approved retail TU, so `rename_files.py` never
-   renames it.
+   renames it, unless its name is provisional (see "Provisional names" below): then
+   proving the file's real name is part of this step.
 8. **Release** the `file:` claims after the push
    (`python3 tools/claims.py release file:<path> ...`) and let
    `python3 tools/claims.py release --landed` settle the RVAs.
@@ -133,6 +134,27 @@ gate, approved by the owner on 2026-10-28: each L row held out, the nearest
 anchored rows on both sides in retail order must name its file, at >= 99% on
 >= 100 rows (785/785 when it landed; `tu_map.py --validate` prints it). Below the
 gate L anchors nothing.
+
+## Provisional names: grouping proven, file name not
+
+A TU nothing anchors (no `__FILE__` string, Zero Hour definition, whole upstream
+file or corroborating WorldBuilder lead) is still approved when grouping alone
+holds it together: at least two rows share its naming hint (N/U), no row another
+TU could claim sits inside its address span, and its span overlaps no anchored
+TU's. Its rows, and the C, funclet and data rows that follow them, carry the
+evidence token `provisional` in `tu_map.csv`. `tu_skeleton.py` merges them like
+any approved rows (a provisional TU is an approved unit), but the TU path is only
+the naming hint: `rename.py` and `rename_files.py` do not take it for a proven
+file name, so the merged file can still be renamed once a naming lane proves the
+real one, and `progress.py` counts these rows separately under TU-APPROVED.
+
+The owner approved this on 2026-10-28, conditional on 99% precision. Measured by
+holding out every anchor of the 601 anchored TUs (five folds, the map rebuilt
+each time): all 13,655 rows approved provisionally landed in a group whose other
+rows share their TU, 4,627/4,627 among rows with their own F/Z/S, and no group
+mixed two TUs. A TU can split into several provisional groups (25 of the 427
+recovered did), so merging can leave more than one file for a TU until it is
+named, never one file for two TUs.
 
 ## Retail layout evidence (the TU-evidence lane)
 

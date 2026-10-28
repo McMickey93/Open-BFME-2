@@ -76,8 +76,8 @@ Both bases are checked, never asserted:
              real-named pin, a WorldBuilder lead or an evidence-tier name at
              the address, and for a word only shaped like a placeholder that a
              Zero Hour, BFME 1 or vendored/SDK view declares.
-  canonical  export, module, rtti, vendored/lib, file (an approved TU or a
-             retail __FILE__ path); wb, zh and bfme1 re-graded by
+  canonical  export, module, rtti, vendored/lib, file (an approved TU whose name is
+             not provisional, or a retail __FILE__ path); wb, zh and bfme1 re-graded by
              tools/name_evidence.py's proof() -- the very rules that grade
              its candidates, so a hint never lands as a permanent name --
              with zh/bfme1 also citing a <path>:<line> that spells the name
@@ -121,7 +121,8 @@ INPUT line. A unit keyed in a protected path-keyed register
 (flag_overrides.csv, hatch_baseline.tsv, data_check_baseline.txt,
 code_identity_baseline.tsv, data_ledger.csv) is refused as needing a
 Verifier-Change commit, as is one that expands __FILE__ (the path reaches its
-bytes), one another file #includes, and an approved retail TU path.
+bytes), one another file #includes, and an approved retail TU path (a TU tu_map
+approved under a provisional name is not one: its name still needs proof).
 
 A `class` (one class/struct/union/enum token) is respelled as a whole token:
 in every mangled name it scopes or types -- functions.csv names and notes
@@ -225,6 +226,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ledger_io  # noqa: E402
 import name_agreement  # noqa: E402
 import name_metric  # noqa: E402
+import tu_map  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 FUNCTIONS = "reverse/functions.csv"
@@ -1490,7 +1492,7 @@ def check_canonical(ctx, kind, evidence_kind, evidence, new_name, new_word, rva,
             raise Refusal(f"canonical:iniblock needs --evidence naming the block token {token}")
     elif evidence_kind == "file":
         base = posixpath.basename(new_name).lower()
-        approved = any(r.get("tu") == new_name and r.get("confidence") == "approved" for r in ctx.dicts(TU_MAP))
+        approved = any(r.get("tu") == new_name and tu_map.canonical_tu(r) for r in ctx.dicts(TU_MAP))
         retail = any(line.split("\t")[0].replace("\\", "/").lower().endswith("/" + base)
                      for line in (ctx.read(STRING_XREFS) or b"").decode("utf-8", errors="replace").splitlines())
         if kind != "file" or not (approved or retail):
@@ -2989,7 +2991,7 @@ def plan_file(ctx, source, new, basis, evidence, *, max_files=25):
         recorded = recorded_basis(ctx, candidate)
         if recorded and recorded.startswith("canonical"):
             raise Refusal(f"canonical name: {candidate} is recorded canonical ({recorded}) in {NAME_BASIS}")
-    if any(r.get("tu") == old and r.get("confidence") == "approved" for r in ctx.dicts(TU_MAP)):
+    if any(r.get("tu") == old and tu_map.canonical_tu(r) for r in ctx.dicts(TU_MAP)):
         raise Refusal(f"canonical name: {old} is an approved retail TU in {TU_MAP}")
     refuse_vendored(ctx, [old], f"renaming {old}")
     which = check_basis(ctx, "file", basis, evidence, old, old_stem, None, new_name=new, new_word=new_stem,

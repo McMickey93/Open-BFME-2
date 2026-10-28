@@ -82,6 +82,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import name_metric  # noqa: E402
+import tu_map  # noqa: E402
 import rename  # noqa: E402
 from rename import Refusal, VerifyFailed  # noqa: E402
 
@@ -177,7 +178,7 @@ class Tree:
             if raw:
                 for line in raw.decode("utf-8", errors="replace").splitlines():
                     self.keyed.update(re.split(r"[\t,]", line))
-        self.approved = {r.get("tu") for r in ctx.dicts(rename.TU_MAP) if r.get("confidence") == "approved"}
+        self.approved = {r.get("tu") for r in ctx.dicts(rename.TU_MAP) if tu_map.canonical_tu(r)}
         self.canonical = {r.get("new") for r in ctx.dicts(rename.NAME_BASIS)
                           if (r.get("basis") or "").startswith("canonical")}
         included = ctx.git("grep", "-h", "-i", "-o", "-E", r"#[[:space:]]*include[[:space:]]*[<\"][^>\"]*[>\"]",

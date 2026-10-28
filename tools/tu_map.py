@@ -109,6 +109,23 @@ Confidence:
             object or a row named for the wrong class): it breaks no span and
             is itself never approved. A run of C rows is
             approved exactly when the two rows that bracket the whole run are.
+            Provisional names (PROVISIONAL, `provisional()`): a TU nothing
+            anchors is approved as well when grouping alone holds it together:
+            at least PROV_MIN N/U rows, no row that could be approved for another
+            TU (an anchored one or another such candidate) inside its span, and
+            no overlap with an anchored TU's span. Its rows, and the C/P/E/X rows
+            that follow them, carry the evidence token `provisional`: a merge
+            moves them, but the TU path is only the naming hint, so rename.py and
+            rename_files.py never take it for a proven file name (`canonical_tu`).
+            Owner decision 2026-10-28, conditional on >= 99%: a 5-fold hold-out
+            of the 601 F/Z/S/W-anchored TUs (every F/Z/S/L/W naming a held-out
+            TU stripped and the map rebuilt) put 13,655/13,655 provisionally
+            approved rows in a group whose other rows share their TU (N 4,522,
+            P 4,829, C 3,091, U 1,211, E 2), 0 of 484 groups mixing TUs; on the
+            rows with their own F/Z/S, independent of the grouping, 4,627/4,627.
+            25 of the 427 TUs recovered split into 2-19 groups (a recall cost:
+            several provisional files for one TU, never one file for two). At
+            1155a9f61c: +11,860 approved code rows in 517 provisional TUs.
   proposed  assigned, but by N/K only, by brackets that are not approved, in a
             non-contiguous span, or contradicted. The queue for investigation.
   displaced a naming hint sat outside its TU's cluster (COMDAT pile).
@@ -940,15 +957,18 @@ def build(layout, ledger=None):
         if any(x["A"].lower() != k and x["A"].lower() in roots and x["by"] in SPAN_BREAKERS
                and id(x) not in island for x in assigned[i:j]):
             broken.add(k)
+    prov, island_p = provisional(assigned, roots, lo_hi) if PROVISIONAL else (set(), set())
     for r in rows:
         k = r["A"].lower() if r["A"] else None
         if not k:
             r["conf"] = "displaced" if r["disp"] else ""
             continue
-        ok = (k in roots and k not in broken and r["by"] in APPROVABLE and not r["contra"]
-              and id(r) not in island)
+        isle = island_p if k in prov else island
+        ok = ((k in roots and k not in broken or k in prov) and r["by"] in APPROVABLE and not r["contra"]
+              and id(r) not in isle)
         r["conf"] = "approved" if ok else "proposed"
-        r["island"] = id(r) in island
+        r["island"] = id(r) in isle
+        r["prov"] = k in prov
     # C rows inherit approval only from two approved brackets. Within a run the
     # upper bracket is the next C row up, so walk down from the top until the
     # whole run resolves to its two ends (a fixed pass count left long runs
@@ -980,6 +1000,8 @@ def build(layout, ledger=None):
             ev.append("island")
         if r["contra"]:
             ev.append("contradicted")
+        if r.get("prov") and r["conf"] == "approved":
+            ev.append(PROV_TOKEN)
         out.append({"rva": f"0x{r['rva']:08X}", "size": r["size"], "kind": r["kind"],
                     "tu": r["A"] or "", "confidence": r["conf"], "by": r["by"] or "-",
                     "evidence": " ".join(ev), "source": r["source"]})
@@ -989,6 +1011,57 @@ def build(layout, ledger=None):
 
 
 ISLAND = 2
+PROVISIONAL = True    # approve unanchored TUs under a provisional name (provisional())
+PROV_MIN = 2          # approvable (N/U) rows a provisional TU needs
+PROV_TOKEN = "provisional"
+
+
+def provisional(assigned, roots, lo_hi):
+    """(TU keys approved under a provisional name, their island rows). A TU no F/Z/S/L/W
+    anchors, grouped by its rows' naming hints (N/U) alone, is approved for merging when it
+    holds at least PROV_MIN such rows, no row that could be approved for another TU -- an
+    anchored one's or another candidate's, islands aside -- sits inside its span, and its
+    span overlaps no anchored TU's. Its name is the naming hint, still unproven: its rows
+    carry PROV_TOKEN, so the naming lanes and the counts can tell them apart."""
+    cand = {k for k in lo_hi if k not in roots}
+    both = roots | cand
+    island_p = islands(assigned, both)
+    span, count = {}, collections.Counter()
+    for r in assigned:
+        k = r["A"].lower()
+        if k in cand and r["by"] in APPROVABLE and id(r) not in island_p:
+            lo, hi = span.get(k, (r["rva"], r["rva"]))
+            span[k] = (min(lo, r["rva"]), max(hi, r["rva"]))
+            count[k] += 1
+    anchored = sorted(v for k, v in lo_hi.items() if k in roots)
+    starts = [lo for lo, _ in anchored]
+    reach = list(itertools.accumulate((hi for _, hi in anchored), max))
+    idx = [r["rva"] for r in assigned]
+    out = set()
+    for k, (lo, hi) in span.items():
+        if count[k] < PROV_MIN:
+            continue
+        i, j = bisect.bisect_left(idx, lo), bisect.bisect_right(idx, hi)
+        if any(x["A"].lower() != k and x["A"].lower() in both and x["by"] in SPAN_BREAKERS
+               and id(x) not in island_p for x in assigned[i:j]):
+            continue
+        a = bisect.bisect_right(starts, hi) - 1          # anchored spans starting at or before hi
+        if a >= 0 and reach[a] >= lo:                    # one of them reaches into [lo, hi]
+            continue
+        out.add(k)
+    return out, island_p
+
+
+def provisional_name(row):
+    """True when a tu_map row (or tu_at answer) is approved under a provisional name: a
+    merge may move it, but its TU path is no evidence of the file's name."""
+    return row.get("confidence") == "approved" and PROV_TOKEN in (row.get("evidence") or "").split()
+
+
+def canonical_tu(row):
+    """True when a tu_map row is approved under a name its evidence proves (not provisional):
+    the only kind of approval rename.py and rename_files.py read as a canonical file name."""
+    return row.get("confidence") == "approved" and not provisional_name(row)
 
 
 def islands(assigned, roots):
@@ -1030,7 +1103,7 @@ def data_rows(layout, rows):
         f = line.split("\t")
         if len(f) < 8 or not f[0].startswith("0x"):
             continue
-        tus, confs = set(), set()
+        tus, confs, prov = set(), set(), False
         for c in filter(None, f[7].split(",")):
             i = bisect.bisect_right(starts, int(c, 16)) - 1
             r = rows[i] if i >= 0 else None
@@ -1039,12 +1112,15 @@ def data_rows(layout, rows):
                 continue
             tus.add(r["A"].lower())
             confs.add(r["conf"])
+            prov = prov or bool(r.get("prov"))
         if len(tus) != 1 or None in tus:
             continue
         tu = spelled[next(iter(tus))]
+        approved = confs == {"approved"}
         out.append({"rva": f[0], "size": f[2], "kind": "data:" + f[1], "tu": tu,
-                    "confidence": "approved" if confs == {"approved"} else "proposed",
-                    "by": "X", "evidence": f"X={len(f[7].split(','))}refs", "source": ""})
+                    "confidence": "approved" if approved else "proposed", "by": "X",
+                    "evidence": f"X={len(f[7].split(','))}refs" + (f" {PROV_TOKEN}" if approved and prov else ""),
+                    "source": ""})
     return out
 
 
@@ -1180,8 +1256,10 @@ def tu_at(m, rva, index=None):
     if gap == "padding":
         return None
     conf = "approved" if gap == "start" and a["confidence"] == b["confidence"] == "approved" else "proposed"
+    prov = conf == "approved" and (provisional_name(a) or provisional_name(b))
     return {"rva": f"0x{rva:08X}", "size": "", "kind": "code-inferred", "tu": a["tu"], "confidence": conf,
-            "by": "C", "evidence": f"C=0x{lo:08X}..0x{hi:08X} gap={gap or 'unread'}", "source": ""}
+            "by": "C", "evidence": f"C=0x{lo:08X}..0x{hi:08X} gap={gap or 'unread'}" + (f" {PROV_TOKEN}" if prov else ""),
+            "source": ""}
 
 
 # ---------------------------------------------------------------- freshness
@@ -1369,9 +1447,11 @@ def summary(out, prefix=None):
     conf = collections.Counter((r["kind"].split(":")[0], r["confidence"] or "none") for r in rows)
     by = collections.Counter(r["by"] for r in rows if r["confidence"] == "approved")
     tus = collections.Counter(r["tu"] for r in rows if r["confidence"] == "approved")
+    prov = [r for r in rows if r["kind"].startswith("code") and provisional_name(r)]
     print(f"rows {len(rows)}  " + "  ".join(f"{k[0]}/{k[1]}={v}" for k, v in sorted(conf.items())))
     print("approved by " + " ".join(f"{k}={v}" for k, v in sorted(by.items())))
-    print(f"approved TUs {len(tus)} (with >=2 rows: {sum(1 for v in tus.values() if v > 1)})")
+    print(f"approved TUs {len(tus)} (with >=2 rows: {sum(1 for v in tus.values() if v > 1)}); "
+          f"{len({r['tu'].lower() for r in prov})} of them under a provisional name ({len(prov)} code rows)")
 
 
 def main(argv=None):

@@ -426,9 +426,12 @@ def apply(layout, out, signals=None, st=None):
     roots, broken, spans = approvable(out)
     _, spelled = anchors_of(out)
     new, conf = list(out), {}
+    prov = set()                              # TUs tu_map approved under a provisional name
     for i, r in enumerate(out):
         if r["kind"].startswith("code"):
             conf[int(r["rva"], 16)] = r["confidence"]
+            if tu_map.provisional_name(r):
+                prov.add(r["tu"].lower())
     for funclets in (False, True):            # parents first: a P row follows its parent's confidence
         for i, r in enumerate(out):
             rva = int(r["rva"], 16) if r["kind"].startswith("code") else None
@@ -440,7 +443,8 @@ def apply(layout, out, signals=None, st=None):
             ok = key in roots and key not in broken and not other
             if s == "P":
                 ok = ok and conf.get(st.parent[rva][0]) == "approved"
-            ev = " ".join(x for x in (r["evidence"], ref, f"inside={spelled.get(other, other)}" if other else "") if x)
+            ev = " ".join(x for x in (r["evidence"], ref, f"inside={spelled.get(other, other)}" if other else "",
+                                      tu_map.PROV_TOKEN if ok and key in prov else "") if x)
             new[i] = dict(r, tu=spelled.get(key, key), confidence="approved" if ok else "proposed", by=s,
                           evidence=ev)
             conf[rva] = new[i]["confidence"]

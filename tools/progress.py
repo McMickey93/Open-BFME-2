@@ -1023,8 +1023,8 @@ def source_recovery_at(ref):
     table, which = tu_map_rows_at(ref)
     if table is None:
         return {"files": len(files)}
-    named, approved, rows = set(), set(), {}
-    total = approved_rows = 0
+    named, approved, provisional, rows = set(), set(), set(), {}
+    total = approved_rows = provisional_rows = 0
     for row in table:
         if row["kind"] != "code":
             continue
@@ -1034,6 +1034,9 @@ def source_recovery_at(ref):
         if row["confidence"] == "approved":
             approved_rows += 1
             approved.add(row["tu"].lower())
+            if "provisional" in (row.get("evidence") or "").split():   # tu_map.PROV_TOKEN
+                provisional_rows += 1
+                provisional.add(row["tu"].lower())
         if row["source"]:
             rows.setdefault(row["source"].lower(), []).append(row)
     homed = at_tu = 0
@@ -1042,7 +1045,8 @@ def source_recovery_at(ref):
             homed += 1
             at_tu += all(r["tu"].lower() == source for r in held)
     return {"files": len(files), "tus": len(named), "approved_tus": len(approved), "rows": total,
-            "approved_rows": approved_rows, "homed": homed, "at_tu": at_tu, "map": which}
+            "approved_rows": approved_rows, "provisional_rows": provisional_rows,
+            "provisional_tus": len(provisional), "homed": homed, "at_tu": at_tu, "map": which}
 
 
 def print_source_recovery(old, new):
@@ -1061,6 +1065,9 @@ def print_source_recovery(old, new):
     print(f"TU-APPROVED    {new['approved_rows']:>12,} rows ({percent(new['approved_rows'], new['rows']):6.2f}%)  "
           f"{change}  <- code rows in an approved TU ({new['approved_tus']:,} of {new['tus']:,} TUs), "
           f"map from {new['map']}; only approved rows merge")
+    if new.get("provisional_rows"):
+        print(f"               {new['provisional_rows']:,} of them in {new['provisional_tus']:,} TUs approved under a "
+              f"provisional name (grouping proven, file name not; tools/tu_map.py)")
     print(f"               {new['homed']:,} files hold only approved rows; {new['at_tu']:,} of them are "
           f"already their TU (tools/tu_skeleton.py --queue merges the rest)")
 

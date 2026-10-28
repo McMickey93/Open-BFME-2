@@ -75,9 +75,11 @@ def test_header_inline_comdat_far_from_its_class_is_displaced(mapped):
     assert mapped[0x9000]["confidence"] == "displaced" and mapped[0x9000]["tu"] == ""
 
 
-def test_naming_convention_alone_is_only_proposed(mapped):
-    assert mapped[0x40000]["confidence"] == "proposed"
-    assert mapped[0x40000]["tu"] == "Code/GameEngine/Source/Die/Lone.cpp"
+def test_naming_convention_alone_is_approved_only_under_a_provisional_name(mapped):
+    for rva in (0x40000, 0x40010):    # two rows, one naming hint, nothing else in their span
+        assert mapped[rva]["tu"] == "Code/GameEngine/Source/Die/Lone.cpp"
+        assert tu_map.provisional_name(mapped[rva]) and not tu_map.canonical_tu(mapped[rva])
+    assert tu_map.canonical_tu(mapped[0x1000])
 
 
 def test_unledgered_retail_function_between_anchors_gets_no_ledger_source(mapped):
@@ -183,6 +185,7 @@ def test_worldbuilder_lead_naming_the_hinted_path_anchors_the_tu(tmp_path, monke
     out = _wb(tmp_path, monkeypatch, "Foo.cpp")
     for rva in (0x1000, 0x1100):
         assert (out[rva]["tu"], out[rva]["by"], out[rva]["confidence"]) == ("Code/X/Foo.cpp", "N", "approved")
+        assert tu_map.canonical_tu(out[rva])
     assert "W=Code/X/Foo.cpp" in out[0x1000]["evidence"]
 
 
@@ -197,24 +200,24 @@ def test_worldbuilder_lead_does_not_corroborate_the_name_it_supplied(tmp_path, m
     out = _wb(tmp_path, monkeypatch, "Foo.cpp", foo_name="Foo::a", foo_was=was, foo_kind=kind,
               foo_notes=notes)
     assert "W=Code/X/Foo.cpp" in out[0x1000]["evidence"]
-    for rva in (0x1000, 0x1100):
-        assert (out[rva]["tu"], out[rva]["confidence"]) == ("Code/X/Foo.cpp", "proposed"), hex(rva)
+    for rva in (0x1000, 0x1100):     # not anchored: approved only under a provisional name
+        assert (out[rva]["tu"], tu_map.provisional_name(out[rva])) == ("Code/X/Foo.cpp", True), hex(rva)
 
 
 def test_worldbuilder_lead_corroborates_a_class_named_before_it(tmp_path, monkeypatch):
     out = _wb(tmp_path, monkeypatch, "Foo.cpp", foo_name="Foo::a", foo_was="Foo::rva00001000",
               foo_kind="PIN_ONLY")
-    assert out[0x1000]["confidence"] == out[0x1100]["confidence"] == "approved"
+    assert tu_map.canonical_tu(out[0x1000]) and tu_map.canonical_tu(out[0x1100])
 
 
 def test_worldbuilder_lead_naming_another_path_anchors_nothing(tmp_path, monkeypatch):
     out = _wb(tmp_path, monkeypatch, "Elsewhere.cpp")
-    assert out[0x1000]["tu"] == "Code/X/Foo.cpp" and out[0x1000]["confidence"] == "proposed"
+    assert out[0x1000]["tu"] == "Code/X/Foo.cpp" and not tu_map.canonical_tu(out[0x1000])
 
 
 def test_worldbuilder_leads_that_disagree_with_file_strings_anchor_nothing(tmp_path, monkeypatch):
     out = _wb(tmp_path, monkeypatch, "Foo.cpp", bar_lead="NotBar.cpp")
-    assert out[0x1000]["confidence"] == "proposed"
+    assert not tu_map.canonical_tu(out[0x1000])
     rows = tu_map.evidence_rows(tu_map.Layout(tmp_path))
     assert tu_map.w_score(rows) == (1, 0) and not tu_map.w_passes(rows)
 
@@ -1013,3 +1016,54 @@ def test_fingerprint_tracks_the_vendored_files_l_reads(tmp_path):
     assert tu_map.check_fresh(tu_map.Layout(tmp_path)) == []
     lapi.write_text(_lua("lapi.c", "int lua_a (void) {\n}\nint lua_b (void) {\n}\n"), newline="\n")
     assert tu_map.check_fresh(tu_map.Layout(tmp_path)) == [tu_map.L_KEY]
+
+
+# ---------------------------------------------------------------- provisional names
+def _prov(tmp_path, ledger, data=""):
+    """A.cpp is anchored by its ZH definitions; every other class is named by this tree alone."""
+    zh = tmp_path / ZH_REL / "X"
+    zh.mkdir(parents=True)
+    (zh / "A.cpp").write_text("void A::f()\n{\n}\nvoid A::g()\n{\n}\n")
+    (tmp_path / "reverse").mkdir()
+    (tmp_path / "reverse/functions.csv").write_text(HEADER + "".join(
+        row(name, rva, 16, f"Code/X/{src}") for name, rva, src in ledger))
+    if data:
+        (tmp_path / "reverse/data_xrefs.tsv").write_text(
+            "rva\tsection\tsize_bound\twidths\tfloat\tkinds\tref_count\tcallers\n" + data)
+    return {int(r["rva"], 16): r for r in tu_map.build(tu_map.Layout(tmp_path))}
+
+
+def test_unanchored_contiguous_tu_is_approved_under_a_provisional_name(tmp_path):
+    out = _prov(tmp_path, [("?f@A@@QAEXXZ", 0x1000, "Af.cpp"), ("?g@A@@QAEXXZ", 0x1100, "Ag.cpp"),
+                           ("?a@Foo@@QAEXXZ", 0x5000, "FooA.cpp"),
+                           ("?rva00005010@Rva00005010@@QAEXXZ", 0x5010, "Rva00005010.cpp"),
+                           ("?b@Foo@@QAEXXZ", 0x5020, "FooB.cpp")],
+                data="0x00900000\t.data\t4\t4\t0\tread\t2\t0x5004,0x5024\n")
+    for rva, by in ((0x5000, "N"), (0x5010, "C"), (0x5020, "N")):
+        r = out[rva]
+        assert (r["tu"], r["by"], r["confidence"]) == ("Code/X/Foo.cpp", by, "approved"), hex(rva)
+        assert tu_map.provisional_name(r) and not tu_map.canonical_tu(r)
+    assert all(tu_map.canonical_tu(out[rva]) for rva in (0x1000, 0x1100))
+    data = out[0x900000]                       # referenced only by the provisional TU's rows
+    assert data["tu"] == "Code/X/Foo.cpp" and tu_map.provisional_name(data)
+
+
+def test_a_single_naming_hint_is_never_a_provisional_tu(tmp_path):
+    out = _prov(tmp_path, [("?f@A@@QAEXXZ", 0x1000, "Af.cpp"), ("?a@Lone@@QAEXXZ", 0x8000, "LoneA.cpp")])
+    assert (out[0x8000]["tu"], out[0x8000]["confidence"]) == ("Code/X/Lone.cpp", "proposed")
+
+
+def test_unanchored_tu_inside_an_anchored_span_stays_proposed(tmp_path):
+    # A's span is wider than UNION_SPAN, so naming does not fold Bar into A (U)
+    out = _prov(tmp_path, [("?f@A@@QAEXXZ", 0x1000, "Af.cpp"), ("?a@Bar@@QAEXXZ", 0x2000, "BarA.cpp"),
+                           ("?b@Bar@@QAEXXZ", 0x2010, "BarB.cpp"), ("?g@A@@QAEXXZ", 0x3800, "Ag.cpp")])
+    assert [(out[rva]["tu"], out[rva]["confidence"]) for rva in (0x2000, 0x2010)] ==         [("Code/X/Bar.cpp", "proposed")] * 2
+    assert tu_map.canonical_tu(out[0x1000]) and tu_map.canonical_tu(out[0x3800])
+
+
+def test_interleaved_unanchored_tus_are_neither_provisional(tmp_path):
+    # spans wider than UNION_SPAN, so naming does not merge them into one file
+    out = _prov(tmp_path, [("?a@Foo@@QAEXXZ", 0x5000, "FooA.cpp"), ("?a@Bar@@QAEXXZ", 0x6000, "BarA.cpp"),
+                           ("?b@Foo@@QAEXXZ", 0x8000, "FooB.cpp"), ("?b@Bar@@QAEXXZ", 0x9000, "BarB.cpp")])
+    assert {out[rva]["tu"] for rva in (0x5000, 0x8000)} == {"Code/X/Foo.cpp"}
+    assert all(out[rva]["confidence"] == "proposed" for rva in (0x5000, 0x6000, 0x8000, 0x9000))
