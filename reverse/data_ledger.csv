@@ -19237,8 +19237,8 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A01EE0,4,.data,global,_s_rva007AEEAF,Code/GameEngine/Source/Common/Rva007AB7F0HalfRateInits.cpp,owned,,1,1
 0x00A01EE4,4,.data,global,?s_key@?1??Rva00372D3AFind@@YAPAXPAX@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourFind.cpp,owned,,1,2
 0x00A01EE8,4,.data,global,?$S1@?1??Rva00372D3AFind@@YAPAXPAX@Z@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourFind.cpp,owned,,1,4
-0x00A01EEC,4,.data,global,?TheMineshaftPortalBehaviourPoolKey@?1??getModuleNameKey@MineshaftPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourPoolKey.cpp,owned,,1,2
-0x00A01EF0,4,.data,global,?$S1@?1??getModuleNameKey@MineshaftPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourPoolKey.cpp,owned,,1,2
+0x00A01EEC,4,.data,global,?TheMineshaftPortalBehaviourPoolKey@?1??getModuleNameKey@MineshaftPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviour.cpp,owned,,1,2
+0x00A01EF0,4,.data,global,?$S1@?1??getModuleNameKey@MineshaftPortalBehaviour@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviour.cpp,owned,,1,2
 0x00A01EF4,4,.data,global,?TheStealthUpdatePoolKey@?1??rva000373CCA@StealthUpdate@@SA?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdatePoolKey.cpp,owned,,1,2
 0x00A01EF8,4,.data,global,?$S1@?1??rva000373CCA@StealthUpdate@@SA?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdatePoolKey.cpp,owned,,1,4
 0x00A01EFC,4,.data,global,?key_ToggleHiddenSpecialAbilityUpdate@?1??rva00373D5E@StealthUpdate@@QAEXXZ@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/Object/Update/StealthUpdateLogic.cpp,owned,,1,2

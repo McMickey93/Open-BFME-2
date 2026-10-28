@@ -3059,10 +3059,10 @@ alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDea
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp	?fe@Rva004B5982_E@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp	?fe@Rva004B5D0B_E@@UAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/GettingBuiltBehaviorXfer.cpp	?push_back@?$list@VRva004530ED@@V?$allocator@VRva004530ED@@@_STL@@@_STL@@QAEXABVRva004530ED@@@Z	1
+alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviour.cpp	??0FakePathfindPortalBehaviourModuleData@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourCtor.cpp	?unused@BehaviorModuleBase@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourCtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourCtor.cpp	?update@UpdateModule@@UAEXXZ	1
-alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/MineshaftPortalBehaviourModuleDataCtor.cpp	??0FakePathfindPortalBehaviourModuleData@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorCtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PassiveAreaEffectBehaviorDtor.cpp	?unused@BehaviorModuleOther@@EAEXXZ	1
 alternatename	Code/GameEngine/Source/GameLogic/Object/Behavior/PropagandaTowerBehaviorConstructor.cpp	?slot@PB_Iface1@@UAEXXZ	1
