@@ -104,12 +104,22 @@ def is_wide(path):
     return path.lower().endswith(HEADER_SUFFIXES) or path.startswith(("reference/shims/", "build/toolchains/"))
 
 
+STLPORT_ROOTS = ("code/libraries/source/stlport/",)
+
+
 def in_stlport(path):
-    """Whether `path` lies inside an STLport directory (vendor/stlport/,
-    Code/Libraries/Source/STLport/). Matching the file NAME instead sent every
-    edit of the ~1,200 game units named Stlport*.cpp / stlport_*.cpp to the
-    full gate, since a macro include anywhere makes every changed unit a root."""
-    return any(part.lower() == "stlport" for part in path.replace("\\", "/").split("/")[:-1])
+    """Whether `path` is part of an STLport tree: a vendored release
+    (vendor/stlport*/, already a full-gate root) or a header or inline file under
+    Code/Libraries/Source/STLport/. Matching the file NAME sent every edit of the
+    ~1,200 game units named Stlport*.cpp / stlport_*.cpp to the full gate (a macro
+    include anywhere makes every changed unit a root); matching any directory
+    named stlport did the same for the game units in Code/stlport/ (694c36df81
+    voided the STLport 4.6 push's receipt). A compiled source there is an
+    ordinary unit, bounded like any other."""
+    lower = path.replace("\\", "/").lower()
+    if lower.startswith("vendor/stlport"):
+        return True
+    return lower.startswith(STLPORT_ROOTS) and not lower.endswith(SOURCE_SUFFIXES)
 
 
 def name(path):

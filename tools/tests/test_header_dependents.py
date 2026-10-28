@@ -114,15 +114,35 @@ def test_a_game_unit_named_stlport_is_not_vendored(repo, capsys):
     assert run(repo, capsys, "--staged")[0] == 0
 
 
-def test_a_change_inside_an_stlport_directory_needs_the_full_gate(repo, capsys):
+@pytest.mark.parametrize("path", ["Code/Libraries/Source/STLport/_ios_base.h",
+                                  "Code/Libraries/Source/STLport/_ios_base.c.inl",
+                                  "vendor/stlport/stl/_ios_base.h"])
+def test_a_change_to_an_stlport_header_needs_the_full_gate(repo, capsys, path):
     base(repo)
     put(repo, "Code/D.cpp", MACRO_INCLUDER)
-    put(repo, "Code/Libraries/Source/STLport/IosBase.cpp", "void i() {}\n")
-    ledger(repo, "Code/A.cpp", "Code/B.cpp", "Code/C.cpp", "Code/D.cpp",
-           "Code/Libraries/Source/STLport/IosBase.cpp")
+    put(repo, path, "int i;\n")
+    ledger(repo, "Code/A.cpp", "Code/B.cpp", "Code/C.cpp", "Code/D.cpp")
     git(repo, "commit", "-qm", "lib")
-    put(repo, "Code/Libraries/Source/STLport/IosBase.cpp", "void i2() {}\n")
+    put(repo, path, "int i2;\n")
     assert run(repo, capsys, "--staged")[0] == 2
+
+
+@pytest.mark.parametrize("path", ["Code/stlport/NarrowFilebufInputError.cpp",
+                                  "Code/Libraries/Source/STLport/IosBase.cpp",
+                                  "Code/Libraries/Source/STLport/LocaleUnshiftStrwcmp.c"])
+def test_a_game_unit_in_an_stlport_directory_is_bounded(repo, capsys, path):
+    # 694c36df81 edited Code/stlport/NarrowFilebufInputError.cpp, an ordinary unit:
+    # its includers (here only the macro includer) are the scope, not the full gate.
+    base(repo)
+    put(repo, "Code/D.cpp", MACRO_INCLUDER)
+    put(repo, path, "void i() {}\n")
+    ledger(repo, "Code/A.cpp", "Code/B.cpp", "Code/C.cpp", "Code/D.cpp", path)
+    git(repo, "commit", "-qm", "lib")
+    old = head(repo)
+    put(repo, path, "void i2() {}\n")
+    assert run(repo, capsys, "--staged") == (0, ["Code/D.cpp"])
+    git(repo, "commit", "-qm", "edit")
+    assert run(repo, capsys, "--range", old, head(repo)) == (0, ["Code/D.cpp"])
 
 
 def test_limit_falls_back_to_the_full_gate(repo, capsys):
