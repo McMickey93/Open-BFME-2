@@ -41901,12 +41901,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004E8FB7,63,code,,,-,,Code/GameEngine/Source/Common/GapBodiesGE26.cpp
 0x004E8FF6,74,code,,,-,,Code/GameEngine/Source/Common/Rva004E8FF6Twins.cpp
 0x004E9040,76,code,,,-,,Code/GameEngine/Source/Common/Rva004E8FF6Twins.cpp
-0x004E908C,37,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorListRva004E908C.cpp
-0x004E90B1,200,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorListRva004E90B1.cpp
-0x004E9179,197,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorListRva004E9179.cpp
-0x004E923E,249,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorListRva004E923E.cpp
-0x004E9337,28,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,C,C=0x004E923E..0x004E9353 provisional,Code/GameEngine/Source/Common/Rva004E9337Clear.cpp
-0x004E9353,37,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenAndCloseBehaviorCtor.cpp
+0x004E908C,37,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp
+0x004E90B1,200,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp
+0x004E9179,197,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp
+0x004E923E,249,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp
+0x004E9337,28,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,C,C=0x004E923E..0x004E9353 provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp
+0x004E9353,37,code,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Behavior/GateOpenBehaviorList.cpp
 0x004E9378,20,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Behavior/Rva004E9378.cpp
 0x004E938C,28,code,Code/GameEngine/Source/GameLogic/SkirmishAI/SkirmishAI.cpp,proposed,K,K=Rva002C6E4E,Code/GameEngine/Source/Common/FamilyDeletingDtors12.cpp
 0x004E93A8,64,code,,,-,,Code/GameEngine/Source/Common/Rva004E93A8Count.cpp
