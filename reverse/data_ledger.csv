@@ -19633,9 +19633,9 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A02E34,4,.data,global,?g_00E02E34@@3_NA,,unowned,,0,2
 0x00A02E38,4,.data,global,?key@?9??evaluateSkirmishSuppliesWithinDistancePerimeter@ScriptConditions@@QAE_NPAVParameter@@000@Z@4W4NameKeyType@@A,Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003EA566.cpp,owned,,1,2
 0x00A02E3C,4,.data,global,?$S1@?9??evaluateSkirmishSuppliesWithinDistancePerimeter@ScriptConditions@@QAE_NPAVParameter@@000@Z@4IA,Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptConditions_Rva003EA566.cpp,owned,,1,2
-0x00A02E40,4,.data,global,?TheThreatFinderUpdatePoolKey@?1??getModuleNameKey@ThreatFinderUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ThreatFinderUpdatePoolKey.cpp,owned,,1,2
-0x00A02E44,4,.data,global,?$S1@?1??getModuleNameKey@ThreatFinderUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ThreatFinderUpdatePoolKey.cpp,owned,,1,4
-0x00A02E48,4,.data,global,?g_manager@@3PAVRva003ED2A3Manager@@A,Code/GameEngine/Source/GameLogic/Object/Update/Rva003ECDB7Unregister.cpp,owned,,1,5
+0x00A02E40,4,.data,global,?TheThreatFinderUpdatePoolKey@?1??getModuleNameKey@ThreatFinderUpdate@@UBE?AW4NameKeyType@@XZ@4W43@A,Code/GameEngine/Source/GameLogic/Object/Update/ThreatFinderUpdate.cpp,owned,,1,2
+0x00A02E44,4,.data,global,?$S1@?1??getModuleNameKey@ThreatFinderUpdate@@UBE?AW4NameKeyType@@XZ@4IA,Code/GameEngine/Source/GameLogic/Object/Update/ThreatFinderUpdate.cpp,owned,,1,4
+0x00A02E48,4,.data,global,?g_manager@@3PAVRva003ED2A3Manager@@A,Code/GameEngine/Source/GameLogic/Object/Update/ThreatFinderUpdate.cpp,owned,,1,5
 0x00A02E4C,4,.data,global,?g_lgaNextKey@@3IA,,unowned,,0,6
 0x00A02E50,16,.data,global,?g_lgaKeyRecords@@3V?$_Rb_tree@VAsciiString@@U?$pair@$$CBVAsciiString@@URva003D3F90Value@@@_STL@@U?$_Select1st@U?$pair@$$CBVAsciiString@@URva003D3F90Value@@@_STL@@@3@UBfmeStringNoCaseLess@@V?$allocator@U?$pair@$$CBVAsciiString@@URva003D3F90Value@@@_STL@@@3@@_STL@@A,,unowned,?g_00A02E50@@3PAU_Rb_tree_node_base@_STL@@A;?g_Va00E02E50@@3IA;?g_lgaKeyRecords@@3V?$_Rb_tree@VAsciiString@@U?$pair@$$CBVAsciiString@@URva003D3F90Value@@@_STL@@U?$_Select1st@U?$pair@$$CBVAsciiString@@URva003D3F90Value@@@_STL@@@3@UBfmeStringNoCaseLess@@V?$allocator@U?$pair@$$CBVAsciiString@@URva003D3F90Value@@@_STL@@@3@@_STL@@A,2,12
 0x00A02E60,4,.data,global,?TheLivingWorldRegionEffectsManagerStore@@3PAVRva003EF328@@A,Code/GameEngine/Source/Common/Rva003EE746ColorProvider.cpp,owned,,1,3
