@@ -161,8 +161,10 @@ public:
 	virtual void slot11();
 	virtual void slot12();
 	virtual void slot13();
-	virtual void slot14();
-	virtual bool slot15(Parameter *, Parameter *, Parameter *, bool);
+	virtual bool evaluateCondition(Condition *condition);
+protected:
+	virtual bool evaluateSkirmishCommandButtonIsReady(Parameter *, Parameter *, Parameter *, bool);
+public:
 	bool evaluateIsNumOfUnitsBelongingToPlayerNearEvaEventLastPlayedLocationComparisonInt(Parameter *, float, const AsciiString *, int, int);
 	bool evaluateEnemySighted(const AsciiString &, Parameter *, Parameter *);
 	bool rva003E5CB1(Parameter *, Parameter *);
@@ -569,9 +571,9 @@ bool ScriptConditions::evaluateConditionHelper(Condition *condition)
 	case 88:
 		return this->evaluateSkirmishSuppliesWithinDistancePerimeter(condition->getParameter(0), condition->getParameter(1), condition->getParameter(2), condition->getParameter(3));
 	case 89:
-		return this->slot15(condition->getParameter(0), condition->getParameter(1), condition->getParameter(2), true);
+		return evaluateSkirmishCommandButtonIsReady(condition->getParameter(0), condition->getParameter(1), condition->getParameter(2), true);
 	case 90:
-		return this->slot15(condition->getParameter(0), condition->getParameter(1), condition->getParameter(2), false);
+		return evaluateSkirmishCommandButtonIsReady(condition->getParameter(0), condition->getParameter(1), condition->getParameter(2), false);
 	case 91:
 		return this->evaluateSkirmishUnownedFactionUnitComparison(condition->getParameter(0), condition->getParameter(1), condition->getParameter(2));
 	case 92:
