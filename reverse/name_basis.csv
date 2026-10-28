@@ -2810,3 +2810,5 @@ class,Rva0015FC20TransformPrefix,RigidTransform,inferred,agree:nl-5300797de33d,C
 carry,Rva0015FC20TransformPrefix::compose::rotatedPosition,RigidTransform::compose::rotatedPosition,inferred,scope renamed by Rename Rva0015FC20TransformPrefix to RigidTransform (inferred),Code/Libraries/Source/WWVegas/WW3D2/Rva0015FC20TransformCompose.cpp,0x0015FC20
 local,Rva005C6D4D::rva005C6D9C::p,Rva005C6D4D::rva005C6D9C::buttonFlash,inferred,agree:nl-a414175ab5de,Code/GameEngine/Source/Common/Rva005C6CCC.cpp,0x005C6D9C
 param,same::b,same::other,inferred,agree:nl-d2087894098b,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawGetCurrentBonePositions.cpp,
+local,Rva00261C72Filter::allow::arg,Rva00261C72Filter::allow::objectView,inferred,agree:nl-e67d43666978,Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp,0x00261C72
+local,Rva00261C58Filter::allow::arg,Rva00261C58Filter::allow::objectView,inferred,agree:nl-0c05d03ac8ac,Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp,0x00261C58

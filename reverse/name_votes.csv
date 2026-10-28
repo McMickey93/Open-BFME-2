@@ -8617,3 +8617,7 @@ Code/GameEngine/Source/Common/Rva00090360Ctor.cpp|param|W3DDisplayStringManager:
 Code/GameEngine/Source/GameClient/GUI/GUICallbacks/Apt/AptCreateAHeroConstructor.cpp|member|GlobalData2|m_D45,d0d43a5c87da24e082d54feb,claude-opus-5-5,b1s19a,w-7c16e3a18092,2026-10-28
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawGetCurrentBonePositions.cpp|param|same|b,d2087894098b519b1af3f950,timing-a,timing-second-a,w-1b77bf5c14f0,2026-10-27
 Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawGetCurrentBonePositions.cpp|param|same|b,d2087894098b519b1af3f950,timing-b,timing-second-b,w-27710a9b7723,2026-10-27
+Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp|local|Rva00261C72Filter::allow|arg,a38daeda77984c37d67f9313,batch-timing-a,batch-timing-a,w-b19c1421eace,2026-10-27
+Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp|local|Rva00261C58Filter::allow|arg,a7018c909cd5349ec19def92,batch-timing-a,batch-timing-a,w-b19c1421eace,2026-10-27
+Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp|local|Rva00261C58Filter::allow|arg,a7018c909cd5349ec19def92,batch-timing-c,batch-timing-c,w-789091861b86,2026-10-27
+Code/GameEngine/Source/Common/VslotSmallBodiesF.cpp|local|Rva00261C58Filter::allow|arg,a7018c909cd5349ec19def92,batch-timing-d,batch-timing-d,w-ef12dacb32a5,2026-10-27
