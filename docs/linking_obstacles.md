@@ -1406,6 +1406,11 @@ No registered-debt, ownership, census or runtime gain is claimed; see LINK-095.
   names. Carry this scope to the next census. The separate folded table at
   RVA 0x007EFF90 and class identity remain prerequisites; no census or runtime
   gain is claimed.
+  The normal hook for `ac22442be5` also reports the unchanged constructor
+  funclet `uw_007917c3` targeting the 0x00268AFF forwarder through a member
+  destructor name pinned to 0x00268902. Its member-lifetime identity needs
+  separate reconciliation with PoolMemberRelease.cpp and other callers;
+  byte/EH acceptance and the data retirement do not clear that shadow finding.
 
 - **Shared random-seed storage (2026-10-28, control `87c6af16d4`):**
   [The seven-source binding repair](../reverse/attempt_support/random-seed-storage-20261028-codex.md)

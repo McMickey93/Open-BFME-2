@@ -51,3 +51,14 @@ Verification:
   the next normal census; full external-consumer selection is unverified.
 
 No new census-linked bytes, image ownership or runtime result is claimed.
+
+The normal commit hook accepted `ac22442be5` and again verified all six code
+rows, the data row and the EXACT EH graph. Its shadow identity check also
+reports `uw_007917c3` binding `??1Rva0029FB3BMember@@QAE@XZ` to native
+0x00268AFF, while that symbol remains pinned to the full cleanup at
+0x00268902. The constructor's member-destructor source, pin and funclet row
+are unchanged by this storage repair. Native 0x00268AFF already has a rowed
+five-byte cleanup forwarder in PoolMemberRelease.cpp; the full cleanup is
+rowed there at 0x00268902. Reconciling the member lifetime/forwarder identity
+and its other callers remains separate work. No identity key was retired or
+added, and the clean data verdict does not clear this shadow finding.
