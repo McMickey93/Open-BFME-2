@@ -14,6 +14,9 @@
 // Flags and layouts follow the matched Render2DSentenceAllocateSurfaceBFME2.cpp.
 
 void __cdecl operator delete[](void *) throw();
+// math.h's inline floorf gets internal linkage (the mapper.cpp form): this
+// /G7 unit's public copy is not retail's, and WWMath::Floor inlines it anyway.
+extern "C" { static float __cdecl floorf(float); }
 #include "vector.h"
 #include "vector2i.h"
 #include "vector2.h"
@@ -51,7 +54,9 @@ public:
 	__declspec(dllimport) __forceinline W3DRadarResetSurface() : m_surface(0) {}
 	~W3DRadarResetSurface();
 
-	W3DRadarResetSurface &operator=(const W3DRadarResetSurface &that)
+	// Import-inline like the constructor: every use here inlines, so the unit
+	// stops publishing its /G7-scheduled copy of the assignment.
+	__declspec(dllimport) __forceinline W3DRadarResetSurface &operator=(const W3DRadarResetSurface &that)
 	{
 		if (that.m_surface)
 			that.m_surface->AddRef();
@@ -191,6 +196,13 @@ private:
 	Vector2 DefaultScale;
 	float TargetWidth, TargetHeight;
 };
+
+// Suppress this TU's /G7 copy of the compiler-generated
+// ??_EPendingSurfaceStruct@Render2DSentenceClass@@QAEPAXI@Z, which only these
+// unused virtuals' delete[] would need: the kept copy serves the link.
+// Plain declaration-only form (no __imp_).
+template <> void VectorClass<Render2DSentenceClass::PendingSurfaceStruct>::Clear();
+template <> bool VectorClass<Render2DSentenceClass::PendingSurfaceStruct>::Resize(int, Render2DSentenceClass::PendingSurfaceStruct const *);
 
 template<> inline bool DynamicVectorClass<int>::Add(int const & object)
 {
