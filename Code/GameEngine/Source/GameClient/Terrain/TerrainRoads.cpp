@@ -107,6 +107,15 @@ public:
     const AsciiString &getTexture() const { return m_texture; }
     float getRoadWidth() const { return m_roadWidth; }
     float getRoadWidthInTexture() const { return m_roadWidthInTexture; }
+    AsciiString getBridgeModelNameBroken();
+    float getBridgeScale() const { return m_bridgeScale; }
+    void friend_setBridgeScale(float scale) { m_bridgeScale = scale; }
+    float getTransitionEffectsHeight() const { return m_transitionEffectsHeight; }
+    Int getNumFXPerType() const { return m_numFXPerType; }
+    void friend_setTransitionEffectsHeight(float height) { m_transitionEffectsHeight = height; }
+    void friend_setNumFXPerType(Int n) { m_numFXPerType = n; }
+    const OpaqueRefElement4 &getDamageToSoundString(BodyDamageType state) const { return m_damageToSoundString[state]; }
+    const OpaqueRefElement4 &getRepairedToSoundString(BodyDamageType state) const { return m_repairedToSoundString[state]; }
 	static void parseTransitionToOCL( INI *ini, void *instance, void *store, const void *userData );
 	static void parseTransitionToFX( INI *ini, void *instance, void *store, const void *userData );
 
@@ -140,10 +149,10 @@ protected:
 	AsciiString m_bridgeModelNameBroken;        ///< 0x4C
 	AsciiString m_textureBroken;                ///< 0x50
 	AsciiString m_towerObjectName[4];           ///< 0x54
-	AsciiString m_damageToSoundString[ BODYDAMAGETYPE_COUNT ];								///< 0x64
+	OpaqueRefElement4 m_damageToSoundString[ BODYDAMAGETYPE_COUNT ];								///< 0x64
 	AsciiString m_damageToOCLString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];		///< 0x74
 	AsciiString m_damageToFXString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];		///< 0xA4
-	AsciiString m_repairedToSoundString[ BODYDAMAGETYPE_COUNT ];							///< 0xD4
+	OpaqueRefElement4 m_repairedToSoundString[ BODYDAMAGETYPE_COUNT ];							///< 0xD4
 	AsciiString m_repairedToOCLString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];	///< 0xE4
 	AsciiString m_repairedToFXString[ BODYDAMAGETYPE_COUNT ][ MAX_BRIDGE_BODY_FX ];	///< 0x114
 	float m_transitionEffectsHeight;            ///< 0x144
@@ -208,6 +217,7 @@ public:
 	virtual void update() {}
 
     TerrainRoadType *newRoad(AsciiString name);
+    TerrainRoadType *newBridge(AsciiString name);
 	TerrainRoadType *findRoad( AsciiString name );
 	TerrainRoadType *findBridge( AsciiString name );
 	TerrainRoadType *findRoadOrBridge( AsciiString name );
@@ -395,12 +405,12 @@ void TerrainRoadType::friend_setRepairedToFXString( BodyDamageType state, Int in
 // 0x002DB7B8 / 0x002DB7C3).
 void TerrainRoadType::friend_setDamageToSoundString( BodyDamageType state, const OpaqueRefElement4 &sound )
 {
-	((OpaqueRefElement4 *)m_damageToSoundString)[ state ] = sound;
+	m_damageToSoundString[ state ] = sound;
 }
 
 void TerrainRoadType::friend_setRepairedToSoundString( BodyDamageType state, const OpaqueRefElement4 &sound )
 {
-	((OpaqueRefElement4 *)m_repairedToSoundString)[ state ] = sound;
+	m_repairedToSoundString[ state ] = sound;
 }
 
 // ------------------------------------------------------------------------------------------------
