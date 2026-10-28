@@ -1,0 +1,60 @@
+{
+  "comparison_base": "88160d0cb79ffad492171d17c3f74eb47b126fcd",
+  "bfme2_code_tree": "a2dbb94489467ecc1babf92e34beaf12374debcc",
+  "bfme2_patch_sha256": "97c7a355c726cdff05b894de51542435f62cc2e6113f1c94991a65ac3f43e004",
+  "old_reference": "7c48cfd16763638cdd7440ecd74466631e977b9f",
+  "selected_official_reference": "0424131c818fba6641613ef826222ecf30845025",
+  "function_ledger_sha256": "8b38071e64529b955dca9e53bcabbd704eedfe836c947afd7de0f16949e35b7f",
+  "data_ledger_sha256": "567e2db4e999233429116019a86c1578e5820a3c4726fe96771e375bccd06037",
+  "changed_paths": [
+    "docs/shape_levers.md",
+    "game/GameEngine/Source/Common/Rva00784A70Cleanup.cpp",
+    "game/GameEngine/Source/GameClient/Terrain/TerrainRoads_find.cpp",
+    "game/GameEngine/Source/GameLogic/AI/PathfinderClearCellForDiameter.cpp",
+    "game/GameEngine/Source/GameLogic/Object/Behavior/Rva00206B40ClaimNearest.cpp",
+    "game/GameEngine/Source/GameLogic/Object/Rva00477B30.cpp",
+    "targets/game/reverse/attempt_history/0x00201d70/4c70a507ec148b71639593f25b71b09f48d8193e72d9981494d05bc3e3e3dfce.json",
+    "targets/game/reverse/attempt_support/20261028-resource-bar-livingworld-owner.md",
+    "targets/game/reverse/attempt_support/20261028-resource-bar-owner-trial.patch",
+    "targets/game/reverse/attempts/0x00206890.cpp",
+    "targets/game/reverse/attempts/0x003dc780.cpp",
+    "targets/game/reverse/deleted_rows.csv",
+    "targets/game/reverse/functions.csv",
+    "targets/game/reverse/hatch_baseline.tsv",
+    "targets/game/reverse/identity_evidence/00477b30-not-object-getai.md",
+    "targets/game/reverse/identity_evidence/00784a70-refhandle008958d0-dtor.md",
+    "targets/game/reverse/ilt_contradicted_baseline.txt",
+    "targets/game/reverse/name_corrections.json",
+    "targets/game/reverse/re_attempts.log"
+  ],
+  "changed_headers": [],
+  "reference_preflight": "New checkout initially refused until the explicit gitlink was staged; no verification ran under a mismatched pin.",
+  "donor_scan": {
+    "command": "python3 tools/bfme1_sweep.py scan --min-size 16",
+    "reference_revision": "0424131c818fba6641613ef826222ecf30845025",
+    "exit_code": 0,
+    "match_json_sha256": "b12c7422e5aaf94d8fea8c2d084ff3e0a62849d151fa3c1fbb05e8b7c46b75d1",
+    "unique_placements": 5538,
+    "independent_boundary_controls": 5531,
+    "free_placements": 0,
+    "near_misses": 617,
+    "affected_compile_trials": "No compile trial is used for this maintenance update; build/bfme1_sweep contains no cached compile trials."
+  },
+  "source_delta_consumers": "Search of Code and reference/shims finds only an AsciiString.cpp provenance comment naming TerrainRoads_find.cpp; none of the five changed donor C++ paths is textually included.",
+  "gate_results": {
+    "old": {
+      "exit_code": 0,
+      "log_sha256": "950b04c0edadfdfd69dd156b8f1827c97bd8782ea2e582f04045e78acdd1d0ac",
+      "functions": 98941,
+      "function_sources": 21807,
+      "data_rows": 2203
+    },
+    "new": {
+      "exit_code": 0,
+      "log_sha256": "33f915984270aecb198a3b8634600860472795ba81f783f4ed07cdc6f5544625",
+      "functions": 98941,
+      "function_sources": 21807,
+      "data_rows": 2203
+    }
+  }
+}
