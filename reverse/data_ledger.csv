@@ -10702,7 +10702,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00846560,16,.rdata,vtable,??_7GarrisonContain@@6BB2@@@,,literal,??_7GarrisonContain@@6BB2@@@;??_7GarrisonContain@@6BUpdateModuleInterface@@@;??_7HordeGarrisonContain@@6BIface10@@@;??_7ProductionQueueHordeContain@@6BB2@@@;_s_secondary10@Code/GameEngine/Source/GameLogic/Object/Contain/ProductionQueueHordeContainCtor.cpp,1,5
 0x00846570,136,.rdata,vtable,??_7HordeGarrisonContain@@6BIface00@@@,,literal,,0,1
 0x008465F8,480,.rdata,vtable,??_7HorseHordeContainModuleData@@6B@,,literal,??_7HorseHordeContainModuleData@@6B@;??_7Rva0024B9BA@@6B@;_vtbl_00C465F8,0,3
-0x008467D8,344,.rdata,global,?g_00C467D8@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainModuleDataParse.cpp,owned,,1,1
+0x008467D8,344,.rdata,global,?g_00C467D8@@3QBUFieldParse@@B,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,owned,,1,1
 0x00846930,620,.rdata,vtable,??_7AODHordeContain@@6BIface11C@@@,,literal,,0,2
 0x00846B9C,20,.rdata,vtable,??_7AODHordeContain@@6BIface34@@@,,literal,??_7AODHordeContain@@6BIface34@@@;??_7HordeContain@@6BB8@@@;??_7HorseHordeContain@@6BB8@@@;_s_secondary34@Code/GameEngine/Source/GameLogic/Object/Contain/HorseHordeContainCtor.cpp,1,6
 0x00846BB0,376,.rdata,vtable,??_7AODHordeContain@@6BIface20@@@,,literal,,0,2

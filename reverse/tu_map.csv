@@ -36940,11 +36940,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0047A251,88,code,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContainModuleDataCtor.cpp
 0x0047A2A9,13,code,,,-,,Code/GameEngine/Source/Common/DispByteFieldSetters.cpp
 0x0047A2B6,43,code,,,-,,Code/GameEngine/Source/Common/DispByteFieldSetters.cpp
-0x0047A2E1,207,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainModuleDataCtor.cpp
-0x0047A3B0,27,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainModuleDataParse.cpp
+0x0047A2E1,207,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
+0x0047A3B0,27,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0047A3CB,72,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainOnContaining.cpp
 0x0047A413,608,code,,displaced,-,N=Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain.cpp,Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainRva0047A895.cpp
-0x0047A673,38,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A3CB..0x0047A69C provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainSmoothSqrt.cpp
+0x0047A673,38,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A3CB..0x0047A69C provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0047A699,3,code,,displaced,-,S=Code/GameEngine/Source/Common/System/Xfer.cpp N=Code/GameEngine/Source/Common/System/Xfer.cpp,Code/GameEngine/Source/Common/System/Xfer.cpp
 0x0047A69C,3,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A3CB..0x0047A69F provisional,Code/GameEngine/Source/GameClient/System/FXParticleSystem/EmissionInfoCopyCtors.cpp
 0x0047A69F,5,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A3CB..0x0047A6A4 provisional,Code/gen_small/gthunks_000_admitted.cpp
@@ -36953,11 +36953,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0047A6AC,8,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A3CB..0x0047A6B4 provisional,Code/GameEngine/Source/Common/DispMovsxByteFieldGetters.cpp
 0x0047A6B4,12,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A3CB..0x0047A6C0 provisional,Code/GameEngine/Source/Common/Disp8DivAvgDwordGetters.cpp
 0x0047A6C0,45,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A3CB..0x0047A6ED provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_pod24_allocate_copy.cpp
-0x0047A6ED,21,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp
-0x0047A702,34,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A6ED..0x0047A724 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp
+0x0047A6ED,21,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
+0x0047A702,34,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A6ED..0x0047A724 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0047A724,5,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A6ED..0x0047A729 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/ContainModuleDataFriendNew.cpp
-0x0047A729,85,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp
-0x0047A77E,247,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp
+0x0047A729,85,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
+0x0047A77E,247,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0047A875,12,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A77E..0x0047A881 provisional,Code/GameEngine/Source/Common/Disp8ImulAddDwordGetters.cpp
 0x0047A881,20,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047A77E..0x0047AC8F provisional,Code/GameEngine/Source/Common/GapBodiesGE22.cpp
 0x0047A895,1018,code,,displaced,-,N=Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain.cpp,Code/GameEngine/Source/GameLogic/Object/Contain/HordeContainRva0047A895.cpp
@@ -36965,11 +36965,11 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0047B2AA,81,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainRefresh.cpp
 0x0047B2FB,99,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainXfer.cpp
 0x0047B35E,125,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047B2FB..0x0047B3DB provisional,Code/Libraries/Source/WWVegas/WWLib/StlportReserveRva0047B35E.cpp
-0x0047B3DB,317,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp
+0x0047B3DB,317,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0047B518,6,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047B3DB..0x0047B51E provisional,Code/GameEngine/Source/Common/ConstIntGetters4.cpp
 0x0047B51E,69,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainPoolKey.cpp
 0x0047B563,197,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainDtor.cpp
-0x0047B628,76,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047B563..0x0047B674 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainTrackUpdate.cpp
+0x0047B628,76,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,C,C=0x0047B563..0x0047B674 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0047B674,28,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainDtor.cpp
 0x0047B690,757,code,Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/AODHordeContain.cpp,approved,F,F=Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/AODHordeContain.cpp N=Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp W=Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/AODHordeContain.cpp,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainInitOffsets.cpp
 0x0047B985,14,code,,displaced,-,S=Code/GameEngine/Source/GameLogic/Object/Object.cpp N=Code/GameEngine/Source/Common/Object.cpp,Code/GameEngine/Source/Common/GapBodiesGE22.cpp
@@ -79793,10 +79793,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078B55C,10,code,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContain.cpp,approved,P,P=0x0047A0E6@FuncInfo0x0093A498 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContainPoolKey.cpp
 0x0078B566,8,code,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContain.cpp,approved,P,P=0x0047A14C@FuncInfo0x0093A4BC provisional,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContain_exitObjectViaDoor.cpp
 0x0078B56E,10,code,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContain.cpp,approved,P,P=0x0047A14C@FuncInfo0x0093A4BC provisional,Code/GameEngine/Source/GameLogic/Object/Contain/HordeGarrisonContain_exitObjectViaDoor.cpp
-0x0078B578,8,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp
+0x0078B578,8,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0078B580,14,code,,,-,,Code/gen_small/uw_gen_010.cpp
 0x0078B58E,24,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainDtor.cpp
-0x0078B5A6,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainCtor.cpp
+0x0078B5A6,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp
 0x0078B5B0,13,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,P,P=0x0047B51E@FuncInfo0x0093A514 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainPoolKey.cpp
 0x0078B5BD,10,code,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContain.cpp,approved,P,P=0x0047B51E@FuncInfo0x0093A514 provisional,Code/GameEngine/Source/GameLogic/Object/Contain/AODHordeContainPoolKey.cpp
 0x0078B5C7,8,code,Code/GameEngine/Source/GameLogic/Object/Contain/HordeContain/HordeSiegeEngineContain.cpp,approved,P,P=0x0047BBA7@FuncInfo0x0093A538,Code/GameEngine/Source/GameLogic/Object/Contain/SiegeEngineContainCreatePayload.cpp
