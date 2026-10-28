@@ -55,3 +55,39 @@ and historical census; StructureTopple is distinct. Existing evidence in topple-
 vegetation-binder-headers-20261027.md records historical references and the
 separate StructureToppleUpdatePoolKey.cpp owner. Banking changes no consumer.
 The normal pre-push audit supplies its current-input and provider verdict.
+
+## Second recovery, 2026-10-28
+
+The resynced preparation record stopped while replaying the Watchdog commit
+onto `b472f3ccfe`. All nine retained commits were continued without a skip or
+abort. Both workers' obstacle findings and upstream's newer LINK-112 clearance
+were kept; the AIFlank consolidation note received an unnumbered heading to
+avoid duplicating upstream's LINK-119 identifier. The AIFlank CRT-header change
+was completed over upstream's partial allocator-header adoption. Upstream's
+current ToppleUpdate data names and TU approval were preserved, only the
+absorbed source was repointed, and already retired data keys stayed retired.
+Unrelated header queue entries and baseline retirements were preserved while
+removing the two repaired DX8Caps keys.
+
+Applying the retained stash with `git stash apply --index` again restored
+exactly the same three files without conflict. Its 48 added lines and the
+complete saved patch are identical to the banked patch above. The stash index
+has no additional edit and its untracked tree is empty. Only that banked trial
+was reversed from Code after accounting for it; no unfinished source is lost
+or admitted as progress. The stash and backup ref above remain intact.
+
+At recovered tip `7c60df7bfb`, the five changed C++ sources pass 951/951 function
+rows and 18 data rows. `check_csv.py` and whitespace checks pass. The complete
+`git push --dry-run origin HEAD:master` hook exits zero: 989/989 functions
+across eight affected sources, 20 data rows, nine EXACT EH graphs, and zero
+converged-data second names or unjudged rows. Its link batch audit remains
+INCONCLUSIVE because index `bf3dd31211` predates the outgoing base and lacks
+per-object consumer names. Carry that limitation under LINK-017 into the next
+scheduled census; no whole-batch link clearance is claimed.
+
+The fresh whole-batch path audit again finds only ToppleUpdatePoolKey.cpp's
+absorption. Remaining old-path mentions are provenance and historical census
+or attempt records; StructureToppleUpdatePoolKey.cpp remains a distinct source.
+No active tooling consumer needs a change. `/opt/runner/publish --now` reports
+`publish: pushed`; the nine commits land as `da83d0f49c` through `05cc366d36`.
+The publisher resync reaches `1a79a8b1fa` without changing these five sources.

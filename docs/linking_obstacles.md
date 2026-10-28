@@ -2614,6 +2614,21 @@ separate strict receipt limitation encountered there.
 
 **Status: Open. Updated: 2026-10-26; inspected revision: 377ffd1724.**
 
+- **ToppleUpdate recovery publication (2026-10-28, recovered `7c60df7bfb`):**
+  The retained pool-key merge lands as `76200c6615`, preserving upstream's
+  current data names, retired debt and TU approval while transferring its
+  three code rows and two data paths to ToppleUpdate.cpp. The complete
+  outgoing dry-run hook passes 989/989 functions, 20 data rows and nine EXACT
+  EH graphs across eight affected sources. The batch link audit remains
+  INCONCLUSIVE: index `bf3dd31211` predates base `b472f3ccfe` and lacks
+  per-object consumer names. Carry the merged TU and its outside consumers
+  into the next scheduled census. The bounded composition evidence in
+  [the original handoff](../reverse/attempt_support/topple-pool-consolidation-20261027.md)
+  survives; whole-batch closure and census confirmation remain open.
+  [The recovery receipt](../reverse/attempt_support/string-record-cleanup-recovery-20261027.md)
+  accounts for every saved edit and the successful publication. No new
+  census-linked-byte or image-ownership gain is claimed.
+
 - **DetachableRiderUpdate transfer trial (2026-10-28, input `253cb497cc`):**
   The separately published getter declaration prerequisite makes the transfer
   donor compose into its approved TU. The trial preserves all seven matched
