@@ -82,6 +82,17 @@ authored-byte previews or commit-title gains into a projected headline.
   and runtime results remain unclaimed; the other NAT donors retain their
   documented declaration/compiler prerequisites.
 
+- **Allocated TU merge batch (2026-10-28, inspected `3dcdb924fc`; index
+  `14dc3d2467`):** five TU merges preserve 15 matched rows and remove eight
+  net source files across the outgoing range. The last merge into
+  LivingWorldRegionEffectsManager.cpp preserves three rows; its merge guard
+  identifies all three donors as census-linked. The whole-range
+  `tools/link_batch_audit.py --base origin/master --tip HEAD` is
+  **INCONCLUSIVE** because the index lacks per-object consumer names. The
+  changed source-path audit found no active hard-coded path consumers. Carry
+  all five moved TUs to the next normal census; no linked-byte gain or full
+  provider/consumer clearance is claimed.
+
 - **CritterEmitter TU composition (2026-10-28, base `248318c9e2`):**
   [The scoped composition evidence](../reverse/attempt_support/critter-emitter-consolidation-20261028-codex.md)
   preserves seven matched rows, two EXACT EH graphs and all 17 external
