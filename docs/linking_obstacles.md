@@ -7012,6 +7012,16 @@ Trial: `Rva00622290CollectKeys.cpp` with decl-only `insert`/`insert_unique` spec
 Remaining / next check:
 - `Render2DSentenceDrawBFME2.cpp`: `_floorf`, `operator=` and `??_EPendingSurfaceStruct` repaired (above); carry the 80 previewed units into the next census. Its own link waits on the `g_Va00DEC49C`/`_g_BfmeRender2DZ` naming.
 - `AIBuilder.cpp` (claimed by another seat): its `vector<Object *>` copies must equal retail or not be emitted; the next definer (GenericObjectCreationNuggetReallyCreate.cpp, 2709) is retail.
+  - 2026-10-28 (claude-opus-5-5, index 41c28839bf): both AIBuilder-side routes fail for the destructor. Retail's
+    `~vector<Object *>` is the 5-byte `jmp 0x001F1609` (0x001F22A3); AIBuilder emits its out-of-line copy only for
+    `checkForNewUpgrades`' unwind funclets, while retail inlines the destructor (with the base cleanup) in that body.
+    (1) A declaration-only `~vector` specialization stops the copy but makes the body call it (FAIL 1/29).
+    (2) An explicit `~vector` defined under `#pragma inline_depth(0)` still calls the base cleanup through
+    `__imp_` (the unit's import-inline `~_Vector_base`) and changes `checkForNewUpgrades`' register allocation
+    (`edi`/`esi` swap from 0x004ECACF; FAIL 1/29). Both reverted. Retail discarded AIBuilder's own copy too, so this
+    unit cannot supply the kept copy: it needs the `link_order` rule question below, or a fold row that does not
+    move AIBuilder ahead of GenericObjectCreationNuggetReallyCreate.cpp. Served unit
+    `GenericObjectCreationNuggetPositionCreate.cpp` (535 B, wrong_selected only) waits on this.
 - Rule question for maintainers: 675 objects are positioned by an ICF-alias row (an address another object's row also claims), many already at the census. If `link_order` ignored such alias rows, objects would sit where their own code is; that is a census rule change (`tools/census_rebaseline.py`), not a seat edit. Until then, a commit that adds a low-address fold row to a unit should first check the unit's other COMDAT copies against the units it overtakes.
 
 Clearance: none. Census confirmation: the next census should show these losses unless the movers are repaired first.
