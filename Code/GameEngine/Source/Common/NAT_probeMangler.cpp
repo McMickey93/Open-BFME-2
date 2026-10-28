@@ -36,19 +36,7 @@ public:
 	Bool sendToManglerFromPort(UnsignedLong address, UnsignedShort port, UnsignedShort packetID, UnsignedShort destPort, Bool blitzme);
 };
 
-class NAT
-{
-public:
-	void probeMangler();
-
-private:
-	unsigned char m_pad00[0x934];
-	UnsignedShort m_port934;                // +0x934
-	UnsignedShort m_port936;                // +0x936
-	UnsignedLong m_time938;                 // +0x938
-	unsigned char m_pad93C[0x944 - 0x93C];
-	UnsignedLong m_addr944;                 // +0x944
-};
+#include "../GameNetwork/NATView.h"
 
 void NAT::probeMangler()
 {
