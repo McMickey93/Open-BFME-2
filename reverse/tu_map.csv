@@ -34769,7 +34769,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00432FA7,72,code,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp W=Code/GameEngine/Source/GameClient/AnimationSoundModuleManager.cpp provisional,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp
 0x00432FEF,54,code,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp provisional,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp
 0x00433025,201,code,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp,approved,U,N=Code/GameEngine/Source/GameClient/AnimationSoundModuleManager.cpp W=Code/GameEngine/Source/GameClient/AnimationSoundModuleManager.cpp provisional,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp
-0x004330EE,64,code,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp,approved,C,C=0x00433025..0x0043312E provisional,Code/GameEngine/Source/GameClient/Drawable/Behavior/parseAnimationSoundClientBehaviorGlobalSetting.cpp
+0x004330EE,64,code,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp,approved,C,C=0x00433025..0x0043312E provisional,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp
 0x0043312E,28,code,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp,approved,N,N=Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp provisional,Code/GameEngine/Source/Common/AnimationSoundModuleManager.cpp
 0x0043314A,18,code,,,-,,Code/GameEngine/Source/Common/Rva00051DF9Ctor.cpp
 0x0043315C,10,code,,,-,,Code/GameEngine/Source/Common/Disp8MaskedDwordFieldGetters.cpp
