@@ -59,6 +59,10 @@ class Rva00594DC0
 {
 public:
 	void rva00594DC0(Rva00594DC0Msg *msg);
+	bool rva005952C4(void *src, unsigned short len, unsigned short *out);
+	char m_pad00[0x88];
+private:
+	unsigned short m_88; // +0x88
 };
 class Rva00594E07
 {
