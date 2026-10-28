@@ -24,6 +24,7 @@
 // ZH queueDecal the semantic guide. Its getDecalOffset(1) call is the
 // out-of-line accessor copy at 0x1089EA (cl inlines the [0] call only).
 // The remaining emission pattern anchors only the extrema helper.
+extern "C" { static float __cdecl floorf(float); }
 #include "wwmath.h"
 #include "vector3.h"
 #include "matrix3d.h"
