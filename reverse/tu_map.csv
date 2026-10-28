@@ -39621,8 +39621,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004B94E3,37,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreateXfer.cpp
 0x004B9508,69,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreateModuleDataCtor.cpp
 0x004B954D,28,code,,displaced,-,N=Code/GameEngine/Source/Common/InheritUpgradeCreate.cpp,Code/GameEngine/Source/Common/FamilyDeletingDtors_muse-01b0.cpp
-0x004B9569,51,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreateModuleDataDtor.cpp
-0x004B959C,269,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Update/rva004B959CRva004B959CFarm.cpp
+0x004B9569,51,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
+0x004B959C,269,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,U,N=Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
 0x004B96A9,27,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,N,N=Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreateOnBuildComplete.cpp
 0x004B96C4,8,code,,,-,,Code/GameEngine/Source/Common/GapBodiesS9B.cpp
 0x004B96CC,25,code,,,-,,Code/GameEngine/Source/Common/Rva0049B47CThreeVptrDerived.cpp
@@ -81324,10 +81324,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x0078F2A8,13,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B9471@FuncInfo0x009401C4 provisional,Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp
 0x0078F2B5,10,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B9471@FuncInfo0x009401C4 provisional,Code/GameEngine/Source/GameLogic/Object/Upgrade/InheritUpgradeCreatePoolKey.cpp
 0x0078F2BF,8,code,,,-,,Code/gen_small/uw_gen_013.cpp
-0x0078F2C7,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Update/InheritUpgradeCreateModuleDataDtor.cpp
-0x0078F2D1,8,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B959C@FuncInfo0x0094021C provisional,Code/GameEngine/Source/GameLogic/Object/Update/rva004B959CRva004B959CFarm.cpp
-0x0078F2D9,8,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B959C@FuncInfo0x0094021C provisional,Code/GameEngine/Source/GameLogic/Object/Update/rva004B959CRva004B959CFarm.cpp
-0x0078F2E1,10,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B959C@FuncInfo0x0094021C provisional,Code/GameEngine/Source/GameLogic/Object/Update/rva004B959CRva004B959CFarm.cpp
+0x0078F2C7,10,code,,,-,,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
+0x0078F2D1,8,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B959C@FuncInfo0x0094021C provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
+0x0078F2D9,8,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B959C@FuncInfo0x0094021C provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
+0x0078F2E1,10,code,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp,approved,P,P=0x004B959C@FuncInfo0x0094021C provisional,Code/GameEngine/Source/GameLogic/Object/Create/InheritUpgradeCreate.cpp
 0x0078F2EB,13,code,Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp,proposed,P,P=0x004B9757@FuncInfo0x00940240,Code/GameEngine/Source/GameLogic/Object/Update/BoneFXDamagePoolKey.cpp
 0x0078F2F8,10,code,Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp,proposed,P,P=0x004B9757@FuncInfo0x00940240,Code/GameEngine/Source/GameLogic/Object/Update/BoneFXDamagePoolKey.cpp
 0x0078F302,13,code,Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp,proposed,P,P=0x004B97E2@FuncInfo0x00940264,Code/GameEngine/Source/GameLogic/Object/Damage/BoneFXDamage.cpp
