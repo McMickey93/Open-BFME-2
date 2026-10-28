@@ -5,9 +5,14 @@
 // then inlined vector-free of m_coords start via rowed free 0x00030830.
 // Evidence: immediates 0x11 0x00351BD0 0x00030830; unblocks 0x0036FAF8 0x00353F13 0x0036FB57;
 // precedent Rva0047ED64AICommand.cpp same recipe with 0x2E and m_obj.
-#include <stddef.h>
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
 
 typedef int Int;
 typedef float Real;

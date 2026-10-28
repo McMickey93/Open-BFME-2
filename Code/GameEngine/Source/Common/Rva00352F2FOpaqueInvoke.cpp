@@ -5,9 +5,14 @@
 // then inlined vector-free via rowed free 0x00030830.
 // Evidence: pin 0x00352F2F Waypoint plus int plus source; callers 0x0036FA34 0x003C87E5 matched rows;
 // precedent Rva00352F9DAICommand.cpp 110B same recipe with 0x11, gap between 0x00352ECA and 0x00352F9D.
-#include <stddef.h>
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
 
 typedef int Int;
 typedef float Real;

@@ -5,9 +5,14 @@
 // rowed free 0x00030830. Recipe from landed precedent Rva00352ECAAICommand.cpp
 // (101B, same obj/src shape) and sibling Rva00336B88AICommand.cpp (92B).
 // Evidence: caller at 0x00337119; immediates 0x2F 0x00351BD0 0x00030830.
-#include <stddef.h>
 
-extern "C" void __cdecl free(void *p);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport, and <stddef.h> with it so
+// their _errno declarations agree.
+#define _CRTIMP
+#include <stddef.h>
+#include <stdlib.h>
+#undef _CRTIMP
 
 typedef int Int;
 typedef float Real;
