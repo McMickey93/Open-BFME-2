@@ -71,3 +71,17 @@ with its constructor, with regression coverage in a separate tooling change;
 refresh the required objects before attempting registered retirement. Recheck
 renderer closure and removed-provider consumers in the next normal census.
 No new census, image-ownership or runtime result is claimed.
+
+## Post-rebase outgoing verification
+
+The runner accepted repair `b3739a6dfd` with the earlier animation-debugger
+cleanup after preserving both independent header-queue rows and both obstacle
+handoffs during rebase. Explicit `link_check.py --prepare-current` passes for
+both edited providers: 96/96 function rows, two data rows, strict reusable
+compiler receipts; their six EH graphs are EXACT. The outgoing audit remains
+INCONCLUSIVE: index `14dc3d2467` predates the outgoing base and lacks per-object
+consumer names. This is not external-consumer clearance.
+
+The commit hook also reports a shadow divergent `Matrix3D::operator[]` copy.
+Its 12-byte COMDAT fingerprint is unchanged from the pre-edit verified object
+(`6484505ef93b`); it is an inherited class-view issue, outside this list repair.
