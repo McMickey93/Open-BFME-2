@@ -169,7 +169,7 @@ extern WeaponStore *TheWeaponStore;
 struct Rva00495A2B_H04
 {
 	unsigned char m_pad[8];
-	const WeaponTemplate *m_wt08;
+	const WeaponTemplate *m_detonationWeaponTemplate;
 };
 
 class Xfer::Version
@@ -315,7 +315,7 @@ void Rva00495A2B::rva00495A2B()
 		goto doKill;
 	if (obj->testStatus(STATUS_SOLD))
 		goto doKill;
-	TheWeaponStore->createAndFireTempWeapon(m_p04->m_wt08, obj, &obj->m_pos38);
+	TheWeaponStore->createAndFireTempWeapon(m_p04->m_detonationWeaponTemplate, obj, &obj->m_pos38);
 doKill:
 	obj->kill(DAMAGE_8, DEATH_0);
 	m_b24 = 1;

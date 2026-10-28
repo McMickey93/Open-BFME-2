@@ -106,12 +106,12 @@ struct Rva000D1D2BNode
 	Rva000D1D2BNode *m_right;
 };
 
-Rva000D1D2BNode **Rva000D1D2BLeft(Rva000D1D2BNode *node)
+Rva000D1D2BNode **_S_left(Rva000D1D2BNode *node)
 {
 	return &node->m_left;
 }
 
-Rva000D1D2BNode **Rva000D1EA2Parent(Rva000D1D2BNode *node)
+Rva000D1D2BNode **_S_parent(Rva000D1D2BNode *node)
 {
 	return &node->m_parent;
 }

@@ -17,7 +17,7 @@ public:
 	bool IsPointOnWall(int pos, bool b);
 	bool IsImpassableCell(int pos, int layer);
 	bool IsBuildRestrictedCell(const Coord3D *pos, bool b, bool c, int layer);
-	void GetCellType(int pos, void *a2, void *a3, void *a4, int layer);
+	void GetCellType(int pos, void *a2, void *a3, void *cellType, int layer);
 private:
 	char m_pad000[0x10];
 	int m_unk0010; // +0x10 null-guard read by GetGroundLayer
@@ -70,7 +70,7 @@ bool Pathfinder::IsBuildRestrictedCell(const Coord3D *pos, bool b, bool c, int l
 }
 // ?GetCellType@Pathfinder@@QAEXHPAXPAXPAXH@Z @0x002E99BD 60B: ebp-frame
 // split-out: *a2=nonnull, *a4=tag, *a3=bit18.
-void Pathfinder::GetCellType(int pos, void *a2, void *a3, void *a4, int layer)
+void Pathfinder::GetCellType(int pos, void *a2, void *a3, void *cellType, int layer)
 {
 	Rva001E3647Result *rec = (Rva001E3647Result *)rva001E3647Pos(layer, (const Coord3D *)pos);
 	if (rec == 0)
@@ -81,7 +81,7 @@ void Pathfinder::GetCellType(int pos, void *a2, void *a3, void *a4, int layer)
 	{
 		*(unsigned char *)a2 = 1;
 		unsigned int val = rec->m_flags;
-		*(unsigned int *)a4 = val & 0x0F;
+		*(unsigned int *)cellType = val & 0x0F;
 		unsigned int val2 = rec->m_flags;
 		*(unsigned char *)a3 = (unsigned char)((val2 >> 18) & 1);
 	}

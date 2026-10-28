@@ -154,7 +154,7 @@ bool Rva007F2350StatsCursor::nextAdditionalStat(Rva007F2350StatsRecord *record)
 // selection. The named12B UpdateStats record is independently initialized
 // by7B5AA0. Its data owner and request are verified together.
 class Rva007E8AC0 {public:void run();};
-struct Rva007F27C0Stat
+struct RankStat
 {
 	int userType;
 	const char *key;
@@ -172,7 +172,7 @@ struct Rva007F27C0UserHeader
 struct Rva007F27C0UserData
 {
 	int statCount;
-	Rva007F27C0Stat *stats;
+	RankStat *stats;
  __forceinline int GetType(int index)const{return stats[index].userType;}
  __forceinline const char * GetKey(int index)const{return stats[index].key;}
  __forceinline float GetValue(int index)const{return stats[index].value;}

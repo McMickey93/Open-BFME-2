@@ -270,7 +270,7 @@ class W3DPropBuffer
 {
 public:
 	virtual ~W3DPropBuffer( void );
-	void addProp( Int id, Coord3D location, Real angle, Real scale, const AsciiString &modelName, Bool bfmeFlag );
+	void addProp( Int id, Coord3D location, Real angle, Real scale, const AsciiString &modelName, Bool distanceFog );
 	Int addPropType( const AsciiString &modelName, Bool distanceFog );
 
 protected:
@@ -318,7 +318,7 @@ Int W3DPropBuffer::addPropType(const AsciiString &modelName, Bool distanceFog)
 //=============================================================================
 /** Adds a prop.  Name is the W3D model name, supposed to be unique. */
 //=============================================================================
-void W3DPropBuffer::addProp(Int id, Coord3D location, Real angle,Real scale, const AsciiString &modelName, Bool bfmeFlag)
+void W3DPropBuffer::addProp(Int id, Coord3D location, Real angle,Real scale, const AsciiString &modelName, Bool distanceFog)
 {
 	if (!((const PropBufferGlobalDataView *)TheWritableGlobalData)->m_showProps) {
 		return;
@@ -338,7 +338,7 @@ void W3DPropBuffer::addProp(Int id, Coord3D location, Real angle,Real scale, con
 		}
 	}
 	if (propType<0) {
-		propType = addPropType(modelName, bfmeFlag);
+		propType = addPropType(modelName, distanceFog);
 		if (propType<0) {
 			return;
 		}

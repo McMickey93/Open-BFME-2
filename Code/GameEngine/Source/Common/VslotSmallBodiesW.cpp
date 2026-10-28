@@ -103,11 +103,11 @@ public:
 	bool isOwnersCurWeaponOnTurret();
 private:
 	char m_pad00[0x18];
-	Rva003412A5Machine *m_18;
+	Rva003412A5Machine *m_machine;
 };
 bool Rva003412A5::isOwnersCurWeaponOnTurret()
 {
-	Object *owner = m_18->m_owner14;
+	Object *owner = m_machine->m_owner14;
 	WeaponSlotType slot;
 	const Weapon *weapon = owner->getCurrentWeapon(&slot);
 	if (weapon && (weapon->m_04->get() || weapon->m_04->m_78 >= 0))
@@ -131,7 +131,7 @@ public:
 struct Rva00347AACOwner
 {
 	char m_pad00[0x258];
-	AIUpdateInterface *m_ai258;
+	AIUpdateInterface *m_ai;
 };
 struct Rva00347AACMachine
 {
@@ -153,7 +153,7 @@ public:
 void Rva00347AAC::onExit(StateExitType status)
 {
 	AIInternalMoveToState::onExit(status);
-	AIUpdateInterface *ai = m_machine18->m_owner14->m_ai258;
+	AIUpdateInterface *ai = m_machine18->m_owner14->m_ai;
 	if (ai)
 	{
 		ai->destroyPath();

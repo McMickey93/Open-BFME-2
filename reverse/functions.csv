@@ -72869,8 +72869,8 @@ __Locale_ctype_default,,0x00021980,5,Code/Libraries/Source/WWVegas/WWLib/stlport
 ?get@Rva000B2380CmpBoolField@@QBE_NXZ,,0x000B2380,11,Code/GameEngine/Source/Common/Disp8CmpBoolGetters.cpp,matched,byte flag +0x43C ternary bool getter; no direct caller
 ?Rva000C32C7@@YAXPAVRva000C19C3@@PAXPB_N@Z,,0x000C32C7,18,Code/GameEngine/Source/Common/Rva000C32C7Callback.cpp,matched,cdecl callback forwarding args 2 and 3 to the thiscall member 0x000C19C3 of arg 1 (shape of the GameState post-process callbacks); no direct caller
 ?Rva000A47AEGet@@YAHPBURva000A47AERecord@@@Z,,0x000A47AE,8,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,cdecl read of +0x58 of its argument; no direct caller
-?Rva000D1D2BLeft@@YAPAPAURva000D1D2BNode@@PAU1@@Z,,0x000D1D2B,8,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,cdecl address of the +8 link word (STLport _S_left shape); no direct caller
-?Rva000D1EA2Parent@@YAPAPAURva000D1D2BNode@@PAU1@@Z,,0x000D1EA2,8,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,cdecl address of the +4 link word (STLport _S_parent shape); no direct caller
+?_S_left@@YAPAPAURva000D1D2BNode@@PAU1@@Z,,0x000D1D2B,8,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,cdecl address of the +8 link word (STLport _S_left shape); no direct caller
+?_S_parent@@YAPAPAURva000D1D2BNode@@PAU1@@Z,,0x000D1EA2,8,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,cdecl address of the +4 link word (STLport _S_parent shape); no direct caller
 ?rva000E0F0E@Rva000E0F0E@@QAEXXZ,,0x000E0F0E,8,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,sets the byte flag at +0x44555; no direct caller
 ?Rva0009DBF4Log10@@YANM@Z,,0x0009DBF4,17,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,log10 of a float via the msvcr71 import thunk 0x0062997C; no direct caller
 ??0Rva000A87E1@@QAE@PAX@Z,,0x000A87E1,18,Code/GameEngine/Source/Common/GapBodiesSeat2B.cpp,matched,ctor running only the rowed ??0Rva0073F4F3@@QAE@PAX@Z 0x0073F468 base with its argument; no direct caller
@@ -72987,11 +72987,11 @@ __ehhandler$?rva00115DD2@W3DTerrainBackground@@QAEXXZ,,0x00764B35,10,Code/GameEn
 ?Rva003B9889Parse@@YAHQAPADH@Z,,0x003B9889,20,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line switch parser: guarded TheWritableGlobalData byte store then 1
 ?Rva003B989DParse@@YAHQAPADH@Z,,0x003B989D,20,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line switch parser: guarded TheWritableGlobalData byte store then 1
 ?parseSeed@@YAHQAPADH@Z,,0x003B98B1,46,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line parser: guarded atoi of next argument into TheWritableGlobalData int then 2
-?Rva003B98DFParse@@YAHQAPADH@Z,,0x003B98DF,20,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line switch parser: guarded TheWritableGlobalData byte store then 1
+?parseIncrAGPBuf@@YAHQAPADH@Z,,0x003B98DF,20,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line switch parser: guarded TheWritableGlobalData byte store then 1
 ?parseNetMinPlayers@@YAHQAPADH@Z,,0x003B98F3,46,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line parser: guarded atoi of next argument into TheWritableGlobalData int then 2
 ?Rva003B9921Parse@@YAHQAPADH@Z,,0x003B9921,20,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line switch parser: guarded TheWritableGlobalData byte store then 1
 ?parsePlayStats@@YAHQAPADH@Z,,0x003B9935,46,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line parser: guarded atoi of next argument into TheWritableGlobalData int then 2
-?Rva003B9963Parse@@YAHQAPADH@Z,,0x003B9963,20,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line switch parser: guarded TheWritableGlobalData byte store then 1
+?parseDemoLoadScreen@@YAHQAPADH@Z,,0x003B9963,20,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line switch parser: guarded TheWritableGlobalData byte store then 1
 ?rva004E37CF@Rva004E37CF@@QAEXABVAsciiString@@PAVRva004E37CFValue@@@Z,,0x004E37CF,71,Code/GameEngine/Source/Common/Rva004E37CFNamedReplace.cpp,matched,AsciiString map replace-or-insert: shared _M_find 0x001F8437 then global-scope delete of old value or rowed operator[] 0x004E368A
 ?Rva003B94FCParse@@YAHQAPADH@Z,,0x003B94FC,9,Code/GameEngine/Source/Common/CommandLineUnlistedSwitches.cpp,matched,unlisted command-line parser calling the shared empty body 0x000B3FD0 then 1; twin of rowed Rva003B9D23
 ?rva0052B83B@Rva0052B7F8Owner@@QAEHHH@Z,,0x0052B83B,20,Code/GameEngine/Source/Common/Rva0052B83BForward.cpp,matched,hidden-result forwarder to rowed Rva0052B7F8Owner::fwd 0x0052B7F8 returning the result slot; twin of rowed equal_range 0x002B8120

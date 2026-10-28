@@ -46,7 +46,7 @@ public:
 
 	char m_pad00[0x10];
 	BfmeAVJP *m_protocol;
-	Transactor *m_bfme14;
+	Transactor *m_transactor;
 	char m_pad18[0x10];
 	int m_bfme28;
 	int m_bfme2c;
@@ -69,5 +69,5 @@ void GameBrowser::bfmeGoVJP(int a1, int a2, int a3, int a4, int a5,
 		selected = m_bfme28;
 	m_protocol->send(&msg, a1, a2, m_bfme36, a3, selected, a7, a4,
 		a5, a6, a9, a10, a11, a12, a13);
-	m_bfme14->send(&msg, BfmeGameBrowserVJPCallback, this, m_requestTimeout);
+	m_transactor->send(&msg, BfmeGameBrowserVJPCallback, this, m_requestTimeout);
 }

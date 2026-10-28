@@ -247,9 +247,9 @@ struct CommandLineSwitchView2
     char pad0A48[0xab5 - 0xa48];
     bool m_buildMapCache;
     char pad0AB6[0xb01 - 0xab6];
-    bool m_bfmeB01;
+    bool m_incrementalAGPBuf;
     char pad0B02[0xb6e - 0xb02];
-    bool m_bfmeB6E;
+    bool m_loadScreenDemo;
     char pad0B6F[0xc30 - 0xb6f];
     int m_playStats;
 };
@@ -344,9 +344,9 @@ int parseSeed(char *args[],int num) {
 }
 
 // Native 3B98DF: sets +B01 true.
-int Rva003B98DFParse(char *args[],int num) {
+int parseIncrAGPBuf(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches2->m_bfmeB01=true;
+        TheSwitches2->m_incrementalAGPBuf=true;
     return 1;
 }
 
@@ -372,9 +372,9 @@ int parsePlayStats(char *args[],int num) {
 }
 
 // Native 3B9963: sets +B6E true.
-int Rva003B9963Parse(char *args[],int num) {
+int parseDemoLoadScreen(char *args[],int num) {
     if(TheWritableGlobalData)
-        TheSwitches2->m_bfmeB6E=true;
+        TheSwitches2->m_loadScreenDemo=true;
     return 1;
 }
 

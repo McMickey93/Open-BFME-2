@@ -3752,3 +3752,7 @@ __ehhandler$??BBFME2WideConcatPair@@QAE?AV?$StringBase@G@@XZ,0x0076E846,Follows 
 ?Rva003B9582@@YAHQAPADH@Z,0x003B9582,"Renamed to ?parseNoMusic@@YAHQAPADH@Z by tools/rename.py (inferred)"
 ?Rva003B9636@@YAHQAPADH@Z,0x003B9636,"Renamed to ?parseNoWin@@YAHQAPADH@Z by tools/rename.py (inferred)"
 ?rva000CF0FF@Rva000CF0FF@@QBEHXZ,0x000CF0FF,"Renamed to ?size@Rva000CF0FF@@QBEHXZ by tools/rename.py (inferred)"
+?Rva003B98DFParse@@YAHQAPADH@Z,0x003B98DF,"Renamed to ?parseIncrAGPBuf@@YAHQAPADH@Z by tools/rename.py (inferred)"
+?Rva003B9963Parse@@YAHQAPADH@Z,0x003B9963,"Renamed to ?parseDemoLoadScreen@@YAHQAPADH@Z by tools/rename.py (inferred)"
+?Rva000D1D2BLeft@@YAPAPAURva000D1D2BNode@@PAU1@@Z,0x000D1D2B,"Renamed to ?_S_left@@YAPAPAURva000D1D2BNode@@PAU1@@Z by tools/rename.py (inferred)"
+?Rva000D1EA2Parent@@YAPAPAURva000D1D2BNode@@PAU1@@Z,0x000D1EA2,"Renamed to ?_S_parent@@YAPAPAURva000D1D2BNode@@PAU1@@Z by tools/rename.py (inferred)"
