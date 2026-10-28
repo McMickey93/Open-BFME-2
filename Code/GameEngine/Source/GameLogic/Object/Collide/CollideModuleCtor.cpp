@@ -39,9 +39,9 @@ class BehaviorModule : public ObjectModule, public BehaviorModuleInterface
 {
 public:
 	BehaviorModule(Thing *thing, const ModuleData *moduleData);
-	virtual ~BehaviorModule() {}
 
 protected:
+	virtual ~BehaviorModule();				// census COMDAT ??1BehaviorModule@@MAE@XZ
 	virtual void loadPostProcess();				// slot 1
 	virtual const char *GetSnapshotName() const;		// slot 2
 };
