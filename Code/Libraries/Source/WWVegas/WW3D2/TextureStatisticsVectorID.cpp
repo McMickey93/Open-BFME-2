@@ -317,17 +317,6 @@ template bool VectorClass<TextureStatisticsStruct>::operator==(
 	VectorClass<TextureStatisticsStruct> const &) const;
 template VectorClass<TextureStatisticsStruct>::~VectorClass();
 
-static int texture_memory;
-static int texture_count;
-static int lightmap_texture_memory;
-static int lightmap_texture_count;
-static int procedural_texture_memory;
-static int procedural_texture_count;
-static int record_count;
-static int texture_change_count;
-static RefCountPtr<TextureClass> latest_texture;
-static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
-
 // Record_Texture_Begin: defined in TextureStatisticsVector.cpp (its row's unit).
 void Record_Texture_Begin();
 

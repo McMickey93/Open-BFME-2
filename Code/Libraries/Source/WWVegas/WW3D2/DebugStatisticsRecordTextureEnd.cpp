@@ -178,6 +178,7 @@ template<class T>
 class VectorClass
 {
 public:
+	virtual ~VectorClass();
 	int Length() const { return VectorMax; }
 	__declspec(dllimport) __forceinline T &operator[](int index) { return Vector[index]; }
 
@@ -203,7 +204,8 @@ extern "C" int procedural_texture_count;
 // The reset unit owns these current-frame counters.
 extern "C" int record_count;
 extern "C" int texture_change_count;
-static DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
+// Defined in DebugStatisticsRecordTexture.cpp (retail statistics.cpp's one object).
+extern DynamicVectorClass<TextureStatisticsStruct> texture_statistics;
 // The reporting getters in statistics.cpp own these same retail counters.
 extern int last_frame_texture_memory;
 extern int last_frame_texture_count;
