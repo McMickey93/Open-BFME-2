@@ -3,6 +3,40 @@
 #include "Lib/Coord3D.h"
 #include "ascii_string.h"
 #include "BeaconClientUpdateView.h"
+//
+// ?xfer@BeaconClientUpdate@@MAEXPAVXfer@@@Z, retail 0x004C95C9, 62 bytes.
+// Virtual slot 3 (offset 0x0C) of vtable 0x0085EB30 (VA 0x00C5EB30, class of
+// rowed ctor ??0BeaconClientUpdate@@QAE@PAVThing@@PBVModuleData@@@Z in
+// PointDefenseLaserUpdateCtor.cpp): Version1 via rowed 0x000053EE then base
+// ObjectModule xfer via rowed 0x00560AE1 then IsLightCRC early-out via Xfer
+// slot 0x10 then ParticleSystemID at +0x0C via rowed XferParticleSystemID
+// 0x0030600A then uint at +0x10 via Xfer slot 0x78. Layout is ObjectModule
+// base 0x0C plus int at +0x0C plus uint at +0x10. Donor is ZH
+// BeaconClientUpdate::xfer (xferVersion plus ClientUpdateModule base plus
+// xferUser plus xferUnsignedInt); BFME2 uses Version1 plus ObjectModule base
+// plus IsLightCRC guard plus helper plus operator==.
+
+class AsciiString;
+class UnicodeString;
+class PooledString;
+struct XferUnknown11;
+class Coord3DBase;
+class ICoord3D;
+class Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+class Thing;
+class ModuleData;
+class Object;
+#include "../../../../Include/Common/BfmeXfer.h"
 
 class ParticleSystem
 {
@@ -218,11 +252,47 @@ extern Radar *TheRadar;
 
 extern float g_secondsPerLogicFrame;
 
-// tu-skeleton: 0x004C9598 43B ??0BeaconClientUpdate@@QAE@PAVThing@@PBVModuleData@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/PointDefenseLaserUpdateCtor.cpp (not merged yet)
+// PointDefenseLaserUpdate_vftable: matched references place it at VA 0xc5eb30 (retail .rdata value -26).
+extern "C" char PointDefenseLaserUpdate_vftable = -26;
+
+void XferParticleSystemID(Xfer *xfer, int *value);
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/PointDefenseLaserUpdateCtor.cpp
+
+// Identity: ModuleFactory registers this module as "BeaconClientUpdate" (addModule pairs
+// the name with its factories); formerly misnamed PointDefenseLaserUpdate.
+// Trial: ??0BeaconClientUpdate@@QAE@PAVThing@@PBVModuleData@@@Z.
+// Base 0x00362EC7 (pinned opaque); and-zeroed slot, hand-placed vtable
+// (novtable), then a global-pointer member load. Factory stub order.
+
+BeaconClientUpdate::BeaconClientUpdate(Thing *thing, const ModuleData *moduleData)
+	: Rva00362EC7(thing, moduleData)
+{
+	id = INVALID_PARTICLE_SYSTEM_ID;
+	*reinterpret_cast<char **>(this) = &PointDefenseLaserUpdate_vftable;
+	lastRadarPulse = ((ClockView *)TheGameLogic)->frame;
+}
+
+// ??1BeaconClientUpdate@@ present-unmatched
+BeaconClientUpdate::~BeaconClientUpdate()
+{
+}
 
 // tu-skeleton: 0x004C95C3 6B ?Rva004C95C3Get@@YAHXZ -- matched in Code/GameEngine/Source/Common/ConstIntGetters4.cpp (not merged yet)
 
-// tu-skeleton: 0x004C95C9 62B ?xfer@BeaconClientUpdate@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/BeaconClientUpdateXfer.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/BeaconClientUpdateXfer.cpp
+
+void BeaconClientUpdate::xfer(Xfer *xfer)
+{
+	xfer->Version1();
+	ObjectModule::xfer(xfer);
+	if (xfer->IsLightCRC())
+		return;
+	XferParticleSystemID(xfer, (int *)&id);
+	*xfer == lastRadarPulse;
+}
+
+// ---- from Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Update/BeaconClientUpdatePoolKey.cpp
 
@@ -243,10 +313,6 @@ NameKeyType BeaconClientUpdate::getModuleNameKey() const
 		TheNameKeyGenerator->nameToKey("BeaconClientUpdate");
 	return TheBeaconClientUpdatePoolKey;
 }
-
-// tu-skeleton: 0x004C964C 23B ??0BeaconClientUpdateModuleData@@QAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Update/CleanupHazardUpdateCtor.cpp (not merged yet)
-
-// tu-skeleton: 0x004C9663 17B ?buildFieldParse@BeaconClientUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp
 
@@ -363,4 +429,22 @@ void BeaconClientUpdate::clientUpdate()
     }
 }
 
-// tu-skeleton: 0x00790512 8B uw_00790512 -- matched in Code/gen_small/uw_gen_002.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/GameLogic/Object/Update/CleanupHazardUpdateCtor.cpp
+
+// Identity: ModuleFactory registers this data class under "BeaconClientUpdateModuleData" (addModule
+// pairs the name with this factory); formerly misnamed CleanupHazardUpdate/CleanupHazardUpdateModuleData.
+// ??0BeaconClientUpdateModuleData@@QAE@XZ at retail 0x004C964C.
+// Root-class default ctor: vtable plus two int members. No base, no calls.
+// Factory stub order names it; stub size 0x10 confirms the layout.
+
+BeaconClientUpdateModuleData::BeaconClientUpdateModuleData()
+	: framesBetweenRadarPulses(0x1E), radarPulseDuration(0x0F)
+{
+}
+
+// ??1BeaconClientUpdateModuleData@@ present-unmatched
+BeaconClientUpdateModuleData::~BeaconClientUpdateModuleData()
+{
+}
+
+// tu-skeleton: 0x004C9663 17B ?buildFieldParse@BeaconClientUpdateModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParse.cpp (not merged yet)

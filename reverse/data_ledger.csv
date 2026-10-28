@@ -11606,7 +11606,7 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x0085EA50,60,.rdata,global,_FirestormDynamicGeometryInfoUpdate_vftable,Code/GameEngine/Source/GameLogic/Object/Update/FirestormDynamicGeometryInfoUpdateCtor.cpp,owned,,1,1
 0x0085EA8C,60,.rdata,global,_Rva004C908B_vftable,Code/GameEngine/Source/GameLogic/Object/Update/Rva004C908BCtor.cpp,owned,,1,1
 0x0085EAC8,104,.rdata,string,??_C@_0GH@PLONKHAA@C?3?2projects?2bfme2patch103?2bfme2?2@,,literal,,0,1
-0x0085EB30,188,.rdata,global,_PointDefenseLaserUpdate_vftable,Code/GameEngine/Source/GameLogic/Object/Update/PointDefenseLaserUpdateCtor.cpp,owned,,1,1
+0x0085EB30,188,.rdata,global,_PointDefenseLaserUpdate_vftable,Code/GameEngine/Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp,owned,,1,1
 0x0085EBEC,348,.rdata,global,_s_first0C,Code/GameEngine/Source/GameLogic/Object/Create/EvaAnnounceClientCreateCtor.cpp,owned,,1,1
 0x0085ED48,8,.rdata,global,_s_secondary0C,Code/GameEngine/Source/GameLogic/Object/Create/EvaAnnounceClientCreateCtor.cpp,owned,,1,1
 0x0085ED50,104,.rdata,global,_s_vtable,Code/GameEngine/Source/GameLogic/Object/Create/EvaAnnounceClientCreateCtor.cpp,owned,,1,1
