@@ -131,9 +131,33 @@ BfmeSubobject00229875::BfmeSubobject00229875()
 	rva002DBA6A();
 }
 
-// Xfer as BFME2's save code calls it: slot 1 isLoading, slot 10 the
-// two-byte version, slot 12 a snapshot, slots 26/27 the strings and the
-// reversed overload run ending with int (31) and unsigned short (32).
+class PooledString;
+class ICoord3D;
+struct Region3D;
+class IRegion3D;
+class Coord2D;
+class ICoord2D;
+class Region2D;
+class IRegion2D;
+class RealRange;
+class RGBColor;
+class RGBAColorReal;
+class RGBAColorInt;
+class Snapshot;
+
+#include "../../../../Include/Common/BfmeXfer.h"
+
+// The two-byte version record (slot 10); m_minimum holds the loaded version.
+class Xfer::Version
+{
+public:
+	Version(unsigned char current, unsigned char minimum)
+		: m_current(current), m_minimum(minimum) {}
+
+	unsigned char m_current;
+	unsigned char m_minimum;
+};
+
 template <int N> class VSlots : public VSlots<N - 1>
 {
 public:
@@ -141,36 +165,6 @@ public:
 };
 template <> class VSlots<0>
 {
-};
-struct BfmeXferVersion
-{
-	BfmeXferVersion(unsigned char v) : current(1), version(v) {}
-	unsigned char current;
-	unsigned char version;	// the loaded version after xferVersion
-};
-class Xfer
-{
-public:
-	virtual ~Xfer();
-	virtual bool isLoading();
-	virtual void slot02(); virtual void slot03(); virtual void slot04();
-	virtual void slot05(); virtual void slot06(); virtual void slot07();
-	virtual void slot08(); virtual void slot09();
-	virtual void xferVersion(BfmeXferVersion *version);
-	virtual void slot11();
-	virtual void xferSnapshot(Rva0022CE19SnapshotBase *snapshot);
-	virtual void slot13(); virtual void slot14(); virtual void slot15();
-	virtual void slot16(); virtual void slot17(); virtual void slot18();
-	virtual void slot19(); virtual void slot20(); virtual void slot21();
-	virtual void slot22(); virtual void slot23(); virtual void slot24();
-	virtual void slot25();
-	virtual void xferUnicodeString(UnicodeString *value);
-	virtual void xferAsciiString(AsciiString *value);
-	virtual void xferReal(float *value);
-	virtual void xferInt64(__int64 *value);
-	virtual void xferUnsignedInt(unsigned int *value);
-	virtual void xferInt(int *value);
-	virtual void xferUnsignedShort(unsigned short *value);
 };
 void XferSaveFileType(Xfer *xfer, int *value);	// 0x00305D52
 struct Rva002DB9EFObj;
@@ -316,7 +310,13 @@ class XferSave : public Xfer
 public:
 	XferSave();
 	virtual ~XferSave();
+	virtual int BeginBlock(const char *name);
+	virtual void EndBlock();
+	virtual void SkipBlock(const char *name);
+	virtual Xfer &operator==(const char *const &value);
 	void close();				// 0x0060C8CD
+protected:
+	virtual void XferData(unsigned int type, void *data, unsigned int size);
 private:
 	char m_data[0x3C];
 };
@@ -352,41 +352,41 @@ extern bool TheLiteCRC;
 // army previews and the session's slots, digest and CRC.
 void BfmeSubobject0022CE19::xfer(Xfer *xfer)
 {
-	BfmeXferVersion version(3);
-	xfer->xferVersion(&version);
+	Xfer::Version version(1, 3);
+	*xfer == version;
 	XferSaveFileType(xfer, &word24);
-	xfer->xferAsciiString(&text2C);
-	xfer->xferUnsignedShort(&date10.values[0]);
-	xfer->xferUnsignedShort(&date10.values[1]);
-	xfer->xferUnsignedShort(&date10.values[2]);
-	xfer->xferUnsignedShort(&date10.values[3]);
-	xfer->xferUnsignedShort(&date10.values[4]);
-	xfer->xferUnsignedShort(&date10.values[5]);
-	xfer->xferUnsignedShort(&date10.values[6]);
-	xfer->xferUnsignedShort(&date10.values[7]);
-	xfer->xferUnicodeString(&text20);
-	xfer->xferAsciiString(&text0C);
-	if (version.version < 2)
+	*xfer == text2C;
+	*xfer == date10.values[0];
+	*xfer == date10.values[1];
+	*xfer == date10.values[2];
+	*xfer == date10.values[3];
+	*xfer == date10.values[4];
+	*xfer == date10.values[5];
+	*xfer == date10.values[6];
+	*xfer == date10.values[7];
+	*xfer == text20;
+	*xfer == text0C;
+	if (version.m_minimum < 2)
 	{
 		AsciiString unusedText;
 		int unusedValue = 0;
-		xfer->xferAsciiString(&unusedText);
-		xfer->xferInt(&unusedValue);
+		*xfer == unusedText;
+		*xfer == unusedValue;
 	}
-	if (version.version >= 3)
+	if (version.m_minimum >= 3)
 		Rva002DB9EFGet((Rva002DB9EFObj *)xfer, &word28);
-	else if (xfer->isLoading())
+	else if (xfer->IsLoading())
 		word28 = 0;
-	xfer->xferUnicodeString(&text30);
-	xfer->xferUnicodeString(&text34);
+	*xfer == text30;
+	*xfer == text34;
 	if (word24 != 4 && word24 != 6)
 		return;
-	if (xfer->isLoading())
+	if (xfer->IsLoading())
 	{
 		BfmePreviewRange *range = (BfmePreviewRange *)&range38;
 		range->clear();
 		int count = range->m_finish - range->m_start;
-		xfer->xferInt(&count);
+		*xfer == count;
 		for (int i = 0; i < count; ++i)
 		{
 			SaveMapPreview preview;
@@ -424,7 +424,7 @@ void BfmeSubobject0022CE19::xfer(Xfer *xfer)
 				}
 			}
 			int count = range->m_finish - range->m_start;
-			xfer->xferInt(&count);
+			*xfer == count;
 			for (int i = 0; i < count; ++i)
 				((SaveMapPreview *)range->m_start)[i].xfer(xfer);
 		}
@@ -452,7 +452,7 @@ void BfmeSubobject0022CE19::xfer(Xfer *xfer)
 			memcpy(&object44.blockD64, digest.GetCRC(), 16);
 			BFMECRCWriter crc(TheLiteCRC);
 			Xfer *writer = &crc;
-			writer->xferSnapshot(*(Rva002BA8F1Logic **)&TheLivingWorldLogic);
+			*writer == *(Snapshot *)(Rva0022CE19SnapshotBase *)*(Rva002BA8F1Logic **)&TheLivingWorldLogic;
 			((Gen009D6DD0 *)&crc)->bfmeClose();
 		}
 		((Rva002DB9B6 *)game)->rva002DB9B6(&object44.blockD74);
