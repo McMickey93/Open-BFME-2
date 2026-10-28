@@ -2507,6 +2507,21 @@ separate strict receipt limitation encountered there.
   The current TU map already approves all 14 rows; the remaining three merge
   donors still require their recorded class-interface reconciliation. Verify
   the consolidated provider universe in the next normal census.
+  **Donor reconciliation (2026-10-28, `141c5b5c1a`..`223bb08d5e`):**
+  CollideModuleCtor.cpp and FireWeaponCollideShouldFireWeapon.cpp now carry
+  the TU's class views; ShouldFireWeapon is merged. An inline
+  `~BehaviorModule() {}` in the shared view made the ctor emit its own
+  `??_7BehaviorModule@@6B...` tables, which differ from the copy the ten census
+  objects agree on. Declaring the dtor protected and out of line binds the
+  census COMDAT `??1BehaviorModule@@MAE@XZ` and emits no table. link_check at
+  index `73061d9452`: CollideModuleCtor.cpp 49 -> 49 and FireWeaponCollide.cpp
+  237 -> 504 bytes, all LINKS. Remaining: the CollideModuleCtor merge is
+  refused only because that index still lists the ctor's old
+  `??_7CollideModule@@6BBehaviorModuleBase@@@`/`...Other@@@` names (no edge
+  references them). Retry `tu_skeleton.py --merge` after the next census.
+  FireWeaponCollideOnCollide.cpp calls shouldFireWeapon through slot 12
+  (`[eax+0x30]`); slots 5-11 have no ledger-named members, so it stays a
+  donor with private views.
 
 - **Camera-shake bounded composition (2026-10-26, input `6db4bffb3e`):**
   [The consolidation audit](../reverse/attempt_support/camera-shake-consolidation-20261026-codexb4.md)
