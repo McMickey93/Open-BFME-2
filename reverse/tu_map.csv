@@ -34227,7 +34227,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00422D3E,5,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00422D43 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDeque.cpp
 0x00422D43,5,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00422D48 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportDeque40Iterators.cpp
 0x00422D48,58,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00422D82 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDeque.cpp
-0x00422D82,24,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00422D9A provisional,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00422D82.cpp
+0x00422D82,24,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00422D9A provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
 0x00422D9A,294,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00422EC0 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_map_bodies.cpp
 0x00422EC0,294,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00422FE6 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_map_int_int_os.cpp
 0x00422FE6,55,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x0042301D provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_lower_bound.cpp
@@ -34240,7 +34240,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00423134,108,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004231A0 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_partition_rva00422ca8.cpp
 0x004231A0,73,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004231E9 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_unguarded_partition_rva00422ca8.cpp
 0x004231E9,45,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423216 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_sort.cpp
-0x00423216,48,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423246 provisional,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00423216.cpp
+0x00423216,48,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423246 provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
 0x00423246,28,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423262 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDeque.cpp
 0x00423262,49,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423293 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_int_sort_rva00422ca8.cpp
 0x00423293,67,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004232D6 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_partition.cpp
@@ -34253,8 +34253,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x004234A7,114,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423519 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_vector_bodies.cpp
 0x00423519,63,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423558 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_pE12_range.cpp
 0x00423558,90,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004235B2 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_o1.cpp
-0x004235B2,27,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004235CD provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_upper_bound_rva00422ca8.cpp
-0x004235CD,123,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423648 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDequeAuxV.cpp
+0x004235B2,27,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004235CD provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
+0x004235CD,123,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423648 provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
 0x00423648,45,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423675 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportConstructFamilyW3G15.cpp
 0x00423675,128,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004236F5 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDeque.cpp
 0x004236F5,411,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423890 provisional,Code/GameEngine/Source/GameClient/InGameUIObjectListSort.cpp
@@ -34266,10 +34266,10 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00423990,47,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x004239BF provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_sort.cpp
 0x004239BF,94,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423A1D provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_push_heap_rva00422ca8.cpp
 0x00423A1D,45,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423A4A provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_partition.cpp
-0x00423A4A,30,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423A68 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_pE12_holder_00423A4A.cpp
+0x00423A4A,30,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423A68 provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
 0x00423A68,13,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,C,C=0x00422D1C..0x00423A75 provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_moduledatavector_push.cpp
 0x00423A75,119,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_moduledatavector_push.cpp
-0x00423AEC,147,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp W=Code/GameEngine/Source/Common/System/FormationAssistant.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant_getValidSelectedObjectsForPlayer.cpp
+0x00423AEC,147,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp W=Code/GameEngine/Source/Common/System/FormationAssistant.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
 0x00423B7F,89,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_pod_map_bodies.cpp
 0x00423BD8,37,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlSweepW5Rva00423BD8.cpp
 0x00423BFD,41,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_deque_e12_o1.cpp
@@ -77997,8 +77997,8 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00786FDE,10,code,Code/Libraries/Source/WWVegas/WWLib/LightSubPoint.cpp,proposed,P,P=0x00421A84@FuncInfo0x009343CC,Code/GameEngine/Source/Common/Rva00425CE2Ctor.cpp
 0x00786FE8,8,code,,,-,,Code/GameEngine/Source/Common/System/FormationAssistant.cpp
 0x00786FF0,10,code,,,-,,Code/GameEngine/Source/Common/System/FormationAssistant.cpp
-0x00786FFA,8,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,P,P=0x004235CD@FuncInfo0x0093445C provisional,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDequeAuxV.cpp
-0x00787002,10,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,P,P=0x004235CD@FuncInfo0x0093445C provisional,Code/Libraries/Source/WWVegas/WWLib/StlportNestedWordDequeAuxV.cpp
+0x00786FFA,8,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,P,P=0x004235CD@FuncInfo0x0093445C provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
+0x00787002,10,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,P,P=0x004235CD@FuncInfo0x0093445C provisional,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp
 0x0078700C,8,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,P,P=0x004236F5@FuncInfo0x009344AC provisional,Code/GameEngine/Source/GameClient/InGameUIObjectListSort.cpp
 0x00787014,22,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,P,P=0x004236F5@FuncInfo0x009344AC provisional,Code/GameEngine/Source/GameClient/InGameUIObjectListSort.cpp
 0x0078702A,10,code,Code/Libraries/Source/WWVegas/WWLib/FormationAssistant.cpp,approved,P,P=0x004236F5@FuncInfo0x009344AC provisional,Code/GameEngine/Source/GameClient/InGameUIObjectListSort.cpp
