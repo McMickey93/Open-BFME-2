@@ -6797,12 +6797,12 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x000C695D,30,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_rva000bedf0_mclear.cpp
 0x000C697B,186,code,,,-,,Code/GameEngine/Source/Common/Containers/BfmeVectorRecord000BDF17Ctor.cpp
 0x000C6A35,24,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportVectorGrowthFootprints.cpp
-0x000C6A4D,202,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x000C6B17,317,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x000C6C54,240,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,C,C=0x000C6B17..0x000C6D44 provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
+0x000C6A4D,202,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x000C6B17,317,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x000C6C54,240,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,C,C=0x000C6B17..0x000C6D44 provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
 0x000C6D44,214,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,N,N=Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248ElementDtor.cpp
 0x000C6E1A,2175,code,,displaced,-,S=Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp N=Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDraw.cpp,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawParticleBones.cpp
-0x000C7699,135,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,C,C=0x000C6D44..0x000C7720 provisional,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawTrackedRenderCleanup.cpp
+0x000C7699,135,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,C,C=0x000C6D44..0x000C7720 provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
 0x000C7720,63,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,C,C=0x000C6D44..0x000C775F provisional,Code/Libraries/Source/WWVegas/WWLib/StlportVectorDtorFamily.cpp
 0x000C775F,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,C,C=0x000C6D44..0x000C776A provisional,Code/GameEngine/Source/Common/VectorClearInstances.cpp
 0x000C776A,180,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,C,C=0x000C6D44..0x000C781E provisional,Code/Libraries/Source/WWVegas/WWLib/stlport_vector_record_bdf17_allocate_copy.cpp
@@ -63449,7 +63449,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00761C5E,13,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C4069@FuncInfo0x009051FC,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/Rva000C4069PristineQuery.cpp
 0x00761C6B,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C4069@FuncInfo0x009051FC,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/Rva000C4069PristineQuery.cpp
 0x00761C75,8,code,,,-,,Code/gen_small/uw_gen_000.cpp
-0x00761C7D,10,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawTrackedRenderCleanup.cpp
+0x00761C7D,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
 0x00761C87,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C445D@FuncInfo0x0090524C,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawSubObjectVisibility.cpp
 0x00761C8F,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C445D@FuncInfo0x0090524C,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawSubObjectVisibility.cpp
 0x00761C97,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C445D@FuncInfo0x0090524C,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawSubObjectVisibility.cpp
@@ -63511,25 +63511,25 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x00761EAC,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C5C04@FuncInfo0x00905480,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawXfer.cpp
 0x00761EB4,8,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C5C04@FuncInfo0x00905480,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawXfer.cpp
 0x00761EBC,10,code,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDraw.cpp,proposed,P,P=0x000C5C04@FuncInfo0x00905480,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DScriptedModelDrawXfer.cpp
-0x00761EC6,8,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761ECE,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761ED9,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761EE4,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761EEF,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761EFA,14,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761F08,14,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761F16,14,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761F24,10,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761F2E,8,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761F36,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
-0x00761F41,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
+0x00761EC6,8,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761ECE,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761ED9,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761EE4,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761EEF,11,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761EFA,14,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761F08,14,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761F16,14,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761F24,10,code,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp,approved,P,P=0x000C6A4D@FuncInfo0x009054DC provisional,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761F2E,8,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761F36,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
+0x00761F41,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
 0x00761F4C,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248ElementDtor.cpp
 0x00761F57,11,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248ElementDtor.cpp
 0x00761F62,14,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248ElementDtor.cpp
 0x00761F70,14,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248ElementDtor.cpp
 0x00761F7E,14,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248ElementDtor.cpp
 0x00761F8C,24,code-unledgered,,,-,,
-0x00761FA4,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/StlportPod248Assign.cpp
+0x00761FA4,10,code,,,-,,Code/Libraries/Source/WWVegas/WWLib/BfmePod248.cpp
 0x00761FAE,8,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawParticleBones.cpp
 0x00761FB6,8,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawParticleBones.cpp
 0x00761FBE,8,code,,,-,,Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DModelDrawParticleBones.cpp
