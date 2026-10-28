@@ -21598,9 +21598,9 @@ address,size,section,kind,name,source,status,names,defs,refs
 0x00A1771D,3,.data,global,?g_aptInitFlag39@@3EA,Code/Libraries/Source/Apt/Apt.cpp,owned,,1,1
 0x00A17720,4,.data,global,?gpAptXmlImpl@@3PAVAptXmlImpl@@A,,unowned,,0,4
 0x00A17724,4,.data,global,?g_Va00E17724@@3HA,Code/GameEngine/Source/Common/ColdGlobalDwordSetters.cpp,owned,,1,2
-0x00A17728,4,.data,global,?g_bfmeAptAllocAtE17728@@3P6APAXI@ZA,Code/Libraries/Source/Apt/DogmaPoolFreeBlock.cpp,provisional,?g_00E17728@@3P6APAXI@ZA;?g_bfmeAptAllocAtE17728@@3P6APAXI@ZA,1,11
+0x00A17728,4,.data,global,?g_bfmeAptAllocAtE17728@@3P6APAXI@ZA,Code/Libraries/Source/Apt/DogmaAllocator.cpp,provisional,?g_00E17728@@3P6APAXI@ZA;?g_bfmeAptAllocAtE17728@@3P6APAXI@ZA,1,11
 0x00A1772C,4,.data,global,?g_aptFreeCallback@@3P6AXPAX@ZA,Code/Libraries/Source/Apt/Apt.cpp,provisional,?g_Va00E1772C@@3P6AXPAX@ZA;?g_aptFreeCallback@@3P6AXPAX@ZA,1,3
-0x00A17730,4,.data,global,?g_bfmeAptFreeSizeAtE17730@@3P6AXPAXI@ZA,Code/Libraries/Source/Apt/DogmaPoolFreeBlock.cpp,provisional,?g_Va00E17730@@3P6AXPAXI@ZA;?g_bfmeAptFreeSizeAtE17730@@3P6AXPAXI@ZA,1,17
+0x00A17730,4,.data,global,?g_bfmeAptFreeSizeAtE17730@@3P6AXPAXI@ZA,Code/Libraries/Source/Apt/DogmaAllocator.cpp,provisional,?g_Va00E17730@@3P6AXPAXI@ZA;?g_bfmeAptFreeSizeAtE17730@@3P6AXPAXI@ZA,1,17
 0x00A17734,4,.data,global,?g_bfmeAptAssertAtE17734@@3P6AXPBD0H@ZA,Code/GameEngine/Source/Common/Rva006CD3F0Get.cpp,owned,,1,767
 0x00A17738,4,.data,global,?g_aptBackgroundCallback@@3P6AXH@ZA,Code/Libraries/Source/Apt/AptMovieFrameControls.cpp,owned,,1,2
 0x00A1773C,4,.data,global,_g_bfmeAptLogAtE1773C,Code/GameEngine/Source/Common/Rva006CC110Log.cpp,owned,,1,3

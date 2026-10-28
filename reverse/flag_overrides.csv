@@ -511,8 +511,8 @@ Code/Libraries/Source/Apt/AptValue/PlaybackBufferResize.cpp,-O2,5,2,region defau
 Code/Libraries/Source/Apt/AptValue/Rva006D9780Finish.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/AptValue/Rva006DF470Initialize.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/BfmeThingXSApply.cpp,,1,1,region default loses rows
+Code/Libraries/Source/Apt/DogmaAllocator.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/DogmaPoolAllocBlock.cpp,-O2,3,1,region default loses rows
-Code/Libraries/Source/Apt/DogmaPoolFreeBlock.cpp,-O2,1,1,region default loses rows
 Code/Libraries/Source/Apt/Rva006E1260AptCihRefresh.cpp,-O2 -G6,1,1,region default loses rows
 Code/Libraries/Source/Apt/Rva006E3230Validate.cpp,-O2,6,2,region default loses rows
 Code/Libraries/Source/Apt/Rva006E4D50.cpp,-O2,1,1,region default loses rows

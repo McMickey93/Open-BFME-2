@@ -110,6 +110,18 @@ removed-provider scope in the next census. The batch audit remains inconclusive.
 
 **Status: Repair landed / awaiting verification. Updated: 2026-10-25.**
 
+- **DogmaAllocator consolidation (2026-10-28, base `284a099880`):**
+  [The consolidation audit](../reverse/attempt_support/dogma-consolidation-20261028-codexb4.md)
+  absorbs DogmaPoolBytes.cpp and DogmaPoolFreeBlock.cpp into their approved TU,
+  preserving six code rows, the data row and all thirteen external providers.
+  The allocation satellite remains mixed. The merge link guard protects the
+  three previously linked units; a strict-receipt paired preview retains LINKS
+  for the destination and allocation satellite against index `14dc3d2467`.
+  The staged-tree batch audit is **INCONCLUSIVE**: the index predates the base
+  and lacks per-object consumer names. Changed ownership and the two references
+  now resolved inside the TU need the next normal census; no linking gain or
+  external consumer clearance is claimed.
+
 - **Animation debugger CRT declarations (2026-10-28, base `3459c2524c`):**
   [The scoped cleanup](../reverse/attempt_support/animation-debugger-crt-20261028-codexb5.md)
   adopts stdlib's atexit declaration and aligns the log caller with its existing
@@ -423,6 +435,8 @@ with no new census coverage claimed. Other container identities remain open.
 **Resize record repair (2026-10-27, inspected `2eea4ae57b`, index `bf3dd31211`, retail-truth-4):** BfmeConv1950.cpp now uses the native AsciiString plus vector<AsciiString> ownership and calls the rowed range-erase and fill-insert providers directly. Its four unresolved donor-only names clear; the ordinary preview changes from blocked to LINKS (0 -> 100 authored bytes). All three rows and the parent EH graph remain exact, declaration and shadow data checks pass, and `repair_queue.py retire identity` removes its one destructor-binding key with zero remaining findings. The paired preview preserves LINKS for the record allocation/copy and erase providers; StlSweepW4Rva00215949.cpp remains blocked by its three element lifetime/assignment spellings and nonretail overflow copy. This clears only the resize consumer and its registered identity debt. Reconcile that provider's record identity before claiming dependency closure; census confirmation remains pending. [Scoped evidence](../reverse/attempt_support/resize-record-link-20261027-codex3.md).
 
 **Fill-insert record reconcile (2026-10-27, inspected `112342859a`, index `73061d9452`):** `StlSweepW4Rva00215949.cpp` now instantiates `vector<BfmeVectorRecord0002154F3>::_M_fill_insert` on the AsciiString plus vector<AsciiString> record instead of the placeholder `Rva00215949Element`. The record copy 0x002154F3 and its `_Construct` 0x0021559C were respelled from the second placeholder `BfmeVectorRecord002154F3` to the class every other helper row already uses (StringVectorRecordCopyBFME2.cpp now holds one record struct with copy and assignment); the 0x00215A88 `insert` forwarder, the handler and funclet tokens follow, with tombstones. The /Ob0 overflow copy's out-of-line helpers (`_STLP_alloc_proxy::allocate/deallocate`, `__destroy`, `__destroy_aux`) are declared as specializations so the unit emits no non-retail copies; an `_M_insert_overflow` specialization instead perturbs the fill-insert frame (zeroed `__false_type` temp, 0x14 frame), confirming the 000C225D bank. Seven `Rva00215949Element` pins and two pins duplicating row names are dropped (pin 10621 -> 10612). All 14 sources naming the record build exact (108/108). Preview, all changed providers together: StlSweepW4Rva00215949.cpp LINKS 0 -> 274 B, BfmeConv1950.cpp, StringVectorRecordCopyBFME2.cpp, stlport_vector_record_2154f3_allocate_copy.cpp and StlportMapForwardersSeat8.cpp keep LINKS, and StlVectorRva0021582C.cpp (its `_Construct` alternatename now names the respelled provider) keeps LINKS 105 B. The same recipe (retype the element to the rowed record, declare the overflow's out-of-line helpers) is the next check for the other W4 fill-insert units. Census confirmation pending.
+
+**Served fill-insert recheck (2026-10-28, inspected `284a099880`, index `14dc3d2467`):** StlSweepW4Rva00215949.cpp still verifies all three rows and previews LINKS for 274 authored bytes. No source change was needed; the picker was serving a previously repaired unit. This clears the current-object recheck only; census confirmation and other record families remain pending. [Scoped audit](../reverse/attempt_support/dogma-consolidation-20261028-codexb4.md).
 
 **Reserve record reconcile (2026-10-28, inspected `75ded31a74`, index `73061d9452`):** `StlVectorRva0021582C.cpp` now instantiates `vector<BfmeVectorRecord0002154F3>::reserve` 0x0021582C instead of the placeholder `Rva0021582CRecord`, so its two `/alternatename` aliases (`_Construct`, `_Destroy` onto the record's rowed 0x0021559C and 0x00215783) are gone; the hatch register already recorded 0 for both (c89d8d78e5), whose missing source change made every tree-wide `hatch_counters.py --update` (and so every `tu_skeleton.py --merge` apply) refuse. `PlayerAITypeSetParse.cpp` calls the reserve directly. The PAU `_M_allocate_and_copy` pin moves from the 319C84 record's 0x00319304 to 0x00215614 with a fold-proof admission; three placeholder pins drop. Verification: build.sh 9/9 across the two units and the 319C84 reserve; link_check with StringVectorRecordCopyBFME2.cpp and the allocate-copy provider: all four LINKS (reserve 105 -> 105 B).
 
