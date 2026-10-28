@@ -20,11 +20,7 @@
 #include "../../Include/GameNetwork/Transport.h"
 #include <windows.h>
 
-class GameSlot
-{
-public:
-	bool isHuman() const;		// 0x003FF0F1
-};
+#include "NATView.h"
 
 // The schema's ping record (peekPing's result).
 struct Elem005DB98E
@@ -37,37 +33,6 @@ struct Elem005DB98E
 	float rva005DB95B();		// 0x005DB95B: the latency estimate
 	float getOutstanding() const { return m_0C; }
 	float getFailures() const { return m_08; }
-};
-
-class PortNegotiationSchema
-{
-public:
-	bool isConnectionDone(unsigned short slot1, unsigned short slot2);	// 0x005DBBC1
-	int getTimeToSendPing(unsigned short slot);				// 0x005DBBA5
-	void *peekPing(unsigned short slot1, unsigned short slot2);		// 0x005DB98E
-	bool sentAPingPacket(unsigned short slot1, unsigned short slot2);	// 0x005DBF2D
-	int getActionID(unsigned short slot1, unsigned short slot2);		// 0x005DBCA6
-
-	unsigned char m_pad[1];
-};
-
-
-class NAT
-{
-public:
-	void sendPings();
-
-private:
-	int m_00;
-	Transport *m_transport;			// +0x04
-	GameSlot **m_slotList;			// +0x08
-	int m_hostSlot;				// +0x0C
-	int m_10;
-	int m_localSlot;			// +0x14
-	unsigned char m_pad18[0x28 - 0x18];
-	PortNegotiationSchema m_schema;		// +0x28
-	unsigned char m_pad29[0x90C - 0x29];
-	NetPacketAddress *m_addresses[8];	// +0x90C
 };
 
 void NAT::sendPings()
@@ -129,6 +94,6 @@ void NAT::sendPings()
 			}
 		}
 
-		m_transport->queueSend(m_addresses[i], (const unsigned char *)pingStr.str(), pingStr.getLength() + 1);
+		m_04->queueSend((NetPacketAddress *)m_addresses[i], (const unsigned char *)pingStr.str(), pingStr.getLength() + 1);
 	}
 }

@@ -148,7 +148,7 @@ void NAT::rva005A6A4C()
 {
 	if (m_slotList != 0) {
 		for (int i = 0; i < 8; ++i) {
-			NATSlotView *slot = m_slotList[i];
+			GameSlot *slot = m_slotList[i];
 			if (slot != 0)
 				slot->m_address = *m_addresses[i];
 		}
@@ -255,7 +255,7 @@ void NAT::processGlobalMessage(Int slotNum, const char *options)
 		sscanf(c, "%d %d %s", &slot, &cookie, name);
 		if (slot >= 8 || m_slotList == 0 || m_slotList[slot] == 0)
 			return;
-		NATSlotView *local = m_slotList[m_localSlot];
+		GameSlot *local = m_slotList[m_localSlot];
 		if (local == 0 || local->m_address.ip == 0)
 			return;
 		AsciiString hostName;
@@ -416,7 +416,7 @@ void NAT::targetNotifyMeIWasProbed(int unused)
 {
 	if (m_state94c == 5)
 		return;
-	NATSlotView *localPlayer = m_slotList[m_localSlot];
+	GameSlot *localPlayer = m_slotList[m_localSlot];
 	if (localPlayer == 0) {
 		rva005A6C90(5);
 		return;
@@ -450,12 +450,12 @@ void NAT::gotTargetMangledPort(int nodeNumber, unsigned short mangledPort, int m
 {
 	if (m_state94c == 4 && m_950 == 4)
 		return;
-	NATSlotView *targetPlayer = m_slotList[m_targetSlot];
+	GameSlot *targetPlayer = m_slotList[m_targetSlot];
 	if (targetPlayer == 0) {
 		rva005A6C90(5);
 		return;
 	}
-	NATSlotView *localPlayer = m_slotList[m_localSlot];
+	GameSlot *localPlayer = m_slotList[m_localSlot];
 	if (localPlayer == 0) {
 		rva005A6C90(5);
 		return;

@@ -11,6 +11,11 @@ class PortNegotiationSchema
 {
 public:
 	void handleNegotiationResult(unsigned short first, unsigned short second, int cookie, int result);
+	bool isConnectionDone(unsigned short slot1, unsigned short slot2);	// 0x005DBBC1
+	int getTimeToSendPing(unsigned short slot);				// 0x005DBBA5
+	void *peekPing(unsigned short slot1, unsigned short slot2);		// 0x005DB98E
+	bool sentAPingPacket(unsigned short slot1, unsigned short slot2);	// 0x005DBF2D
+	int getActionID(unsigned short slot1, unsigned short slot2);		// 0x005DBCA6
 	unsigned char m_bytes[0x8E4 - 0x28];
 };
 
@@ -25,8 +30,10 @@ struct Rva005A6A4CAddress
 
 // A slot of the list at NAT +0x08: the player name at +0x30 (translated and
 // compared by processGlobalMessage) and the address at +0x38.
-struct NATSlotView
+class GameSlot
 {
+public:
+	bool isHuman() const;			// 0x003FF0F1
 	unsigned char m_pad00[0x30];
 	UnicodeString m_name;			// +0x30
 	unsigned char m_pad34[0x38 - 0x34];
@@ -65,10 +72,11 @@ public:
 	void notifyHostMyNATCreated(int cookie);
 	void StartNegotiationAction(int slot, int value);
 	void sendAProbeToTarget();
+	void sendPings();
 private:
 	int m_0;
 	Transport *m_04;
-	NATSlotView **m_slotList;		// +0x08
+	GameSlot **m_slotList;		// +0x08
 	int m_hostSlot;				// +0x0C
 	int m_mode;				// +0x10
 	int m_localSlot;			// +0x14
