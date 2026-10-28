@@ -182,30 +182,95 @@ public:
 
 extern GameLogic *TheGameLogic;
 
-class DominateEnemySpecialPowerModuleData
+class SpecialAbilityUpdateModuleData
 {
 public:
-	char m_pad00[0xC8];
-	float m_dominateRadius;			// +0xC8 the radius
-	const FXList *m_CC;		// +0xCC
-	const FXList *m_D0;		// +0xD0
-	bool m_permanentlyConvert;			// +0xD4
-	char m_padD5[3];
-	Rva2225E0Filter m_attributeModifierAffects;		// +0xD8
+	SpecialAbilityUpdateModuleData();
+	virtual ~SpecialAbilityUpdateModuleData();
+
+private:
+	unsigned char m_pad[0xC8 - 4];
 };
 
-class SpecialAbilityUpdate
+class BfmeFixedStorage0004543D
+{
+	char m_bytes[28];
+public:
+	__declspec(nothrow) BfmeFixedStorage0004543D(const BfmeFixedStorage0004543D &);
+};
+
+template <int N> class BitFlags;
+extern BitFlags<116> KINDOFMASK_NONE;
+
+// The +0xD8 object filter: built by 0x003623E5, torn down by 0x00360D26;
+// the per-target helper tests it through the 0x00362437 view.
+class Rva003623E5Filter
 {
 public:
-	virtual void triggerAbilityEffect();	// slot 17 (0x0045108D)
+	Rva003623E5Filter();
+	void applyFilter(BfmeFixedStorage0004543D arg);
+	~Rva003623E5Filter();
+
+private:
+	int m_handle;
+};
+
+class DominateEnemySpecialPowerModuleData : public SpecialAbilityUpdateModuleData
+{
+public:
+	DominateEnemySpecialPowerModuleData();
+	virtual ~DominateEnemySpecialPowerModuleData();
+
+	float m_dominateRadius;			// +0xC8 the radius
+	const FXList *m_triggerFX;	// +0xCC
+	const FXList *m_dominatedFX;	// +0xD0
+	bool m_permanentlyConvert;			// +0xD4
+	Rva003623E5Filter m_attributeModifierAffects;		// +0xD8
+};
+
+enum NameKeyType
+{
+	NK_UNKNOWN = 0
+};
+
+class Thing;
+class ModuleData;
+
+// Opaque 0x88-byte UpdateModule-derived intermediate; ctor resolves to the
+// opaque pin at 0x0044EF5E. Protected slots mirror the stores the ctor
+// repeats and the fields slot 17 reads.
+class Rva0044EF5E
+{
+public:
+	Rva0044EF5E(Thing *thing, const ModuleData *moduleData);
+	virtual ~Rva0044EF5E();
+
 protected:
 	const void *m_moduleData;	// +0x04
 	Object *m_object;		// +0x08
+	const void *m_p0C;
+	const void *m_p10;
+	unsigned char m_pad1[0x20 - 0x14];
+	const void *m_p20;
+	unsigned char m_pad2[0x40 - 0x24];
+	ObjectID m_40;		// +0x40
+	Coord3D m_44;		// +0x44
+	unsigned char m_pad3[0x88 - 0x50];
 };
 
-class DominateEnemySpecialPower : public SpecialAbilityUpdate
+// The base slot 17 (0x0045108D) the override calls directly.
+class SpecialAbilityUpdate
 {
 public:
+	virtual void triggerAbilityEffect();
+};
+
+class DominateEnemySpecialPower : public Rva0044EF5E
+{
+public:
+	DominateEnemySpecialPower(Thing *thing, const ModuleData *moduleData);
+	virtual ~DominateEnemySpecialPower();
+	virtual NameKeyType getModuleNameKey() const;
 	virtual void triggerAbilityEffect();
 	void rva004CCB0E(Object *target, Object *owner, const DominateEnemySpecialPowerModuleData *data, bool flag);
 private:
@@ -213,9 +278,6 @@ private:
 	{
 		return (const DominateEnemySpecialPowerModuleData *)m_moduleData;
 	}
-	char m_pad0C[0x40 - 0x0C];
-	ObjectID m_40;		// +0x40
-	Coord3D m_44;		// +0x44
 };
 
 void DominateEnemySpecialPower::rva004CCB0E(Object *target, Object *owner,
@@ -243,14 +305,14 @@ void DominateEnemySpecialPower::rva004CCB0E(Object *target, Object *owner,
 		target->defect(owner, false);
 	Rva004CCB0EResult *result = (Rva004CCB0EResult *)target->rva0029439D();
 	if (result)
-		result->rva004CCB0ESlot123(data->m_D0);
+		result->rva004CCB0ESlot123(data->m_dominatedFX);
 	else
-		FXList::doFXObj(data->m_D0, target, 0);
+		FXList::doFXObj(data->m_dominatedFX, target, 0);
 }
 
 void DominateEnemySpecialPower::triggerAbilityEffect()
 {
-	SpecialAbilityUpdate::triggerAbilityEffect();
+	((SpecialAbilityUpdate *)this)->SpecialAbilityUpdate::triggerAbilityEffect();
 	const DominateEnemySpecialPowerModuleData *data = getDominateEnemySpecialPowerModuleData();
 	Object *owner = m_object;
 	Object *target = TheGameLogic->findObjectByID(m_40);
@@ -266,5 +328,5 @@ void DominateEnemySpecialPower::triggerAbilityEffect()
 	Object *other;
 	while ((other = hits.next()) != 0)
 		rva004CCB0E(other, owner, data, false);
-	FXList::doFXPos(data->m_CC, &m_44, 0, 0.0f, 0);
+	FXList::doFXPos(data->m_triggerFX, &m_44, 0, 0.0f, 0);
 }

@@ -62,7 +62,7 @@ private:
 	int m_triggerFX; // +0xCC
 	int m_dominatedFX; // +0xD0
 	bool m_permanentlyConvert; // +0xD4
-	Rva003623E5Filter m_filter; // +0xD8
+	Rva003623E5Filter m_attributeModifierAffects; // +0xD8
 };
 
 // ??0DominateEnemySpecialPowerModuleData@@QAE@XZ @0x4CCA24
@@ -71,7 +71,7 @@ DominateEnemySpecialPowerModuleData::DominateEnemySpecialPowerModuleData()
 	, m_triggerFX(0)
 	, m_dominatedFX(0)
 	, m_permanentlyConvert(false)
-	, m_filter()
+	, m_attributeModifierAffects()
 {
-	m_filter.applyFilter(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
+	m_attributeModifierAffects.applyFilter(*reinterpret_cast<const BfmeFixedStorage0004543D *>(&KINDOFMASK_NONE));
 }
