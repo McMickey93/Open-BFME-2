@@ -212,30 +212,6 @@ enum NameKeyType
 	NK_UNKNOWN = 0
 };
 
-class SubObjectsUpgrade : public UpgradeModule
-{
-public:
-	bool swapTextures(Drawable*,int);
-public:
-	bool rva004B4EC3(Drawable*,void*,float,float);
-public:
-	bool rva004B4F11(Drawable*,void*,float,float);
-protected:
-	virtual void upgradeRemovalImplementation();
-protected:
-	virtual void upgradeImplementation();
-private:
-	unsigned char m_pad14[0x1C - 0x14];
-private:
-	void *m_1C;
-private:
-	unsigned char m_20;
-public:
-	SubObjectsUpgrade(Thing *thing, const ModuleData *moduleData);
-public:
-	virtual NameKeyType getModuleNameKey() const;
-};
-
 extern int BfmeClientFramesPerSecond;
 
 struct SubA004B4DBF
@@ -265,7 +241,49 @@ private:
 	unsigned int m_1C;
 };
 
-// tu-skeleton: 0x004B4D1E 69B ?getModuleNameKey@SubObjectsUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp (not merged yet)
+class NameKeyGenerator
+{
+public:
+	NameKeyType nameToKey(const char *name);
+};
+
+extern NameKeyGenerator *TheNameKeyGenerator;
+
+class SubObjectsUpgrade : public UpgradeModule
+{
+public:
+	bool swapTextures(Drawable*,int);
+public:
+	bool rva004B4EC3(Drawable*,void*,float,float);
+public:
+	bool rva004B4F11(Drawable*,void*,float,float);
+protected:
+	virtual void upgradeRemovalImplementation();
+protected:
+	virtual void upgradeImplementation();
+private:
+	unsigned char m_pad14[0x1C - 0x14];
+private:
+	void *m_1C;
+private:
+	unsigned char m_20;
+public:
+	SubObjectsUpgrade(Thing *thing, const ModuleData *moduleData);
+public:
+	virtual NameKeyType getModuleNameKey() const;
+};
+
+// ---- from Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp
+
+// ?getModuleNameKey@SubObjectsUpgrade@@UBE?AW4NameKeyType@@XZ
+NameKeyType SubObjectsUpgrade::getModuleNameKey() const
+{
+	static NameKeyType TheSubObjectsUpgradePoolKey =
+		TheNameKeyGenerator->nameToKey("SubObjectsUpgrade");
+	return TheSubObjectsUpgradePoolKey;
+}
+
+// ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/SubObjectsUpgrade.cpp
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/SubObjectsUpgradeCtor.cpp
 
@@ -288,8 +306,6 @@ SubObjectsUpgrade::SubObjectsUpgrade(Thing *thing, const ModuleData *moduleData)
 	m_1C = (void *)TheGameLogic->getFrame();
 	m_20 = 0;
 }
-
-// tu-skeleton: 0x004B4DA3 28B ??_GRva004B4CDF@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/Common/Rva004B4DBFRates.cpp
 
@@ -318,8 +334,6 @@ void Rva004B4DBF::rva004B4DBF(float *p1, float *p2)
 	if (a->m_14C != 0.0f)
 		*p2 = 1.0f / a->m_14C / (float)BfmeClientFramesPerSecond;
 }
-
-// tu-skeleton: 0x004B4E56 109B ?rva004B4E56@Rva004B4E56@@QAEEXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/Rva004B4E56Check.cpp (not merged yet)
 
 // ---- from Code/GameEngine/Source/GameLogic/Object/Upgrade/SubObjectsUpgrade.cpp
 
@@ -492,6 +506,10 @@ void __cdecl rva004B5293(INI *ini, void *instance, void *store, const void *user
 		record->m_second.set(token);
 }
 
+// tu-skeleton: 0x004B4DA3 28B ??_GRva004B4CDF@@UAEPAXI@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/FireWeaponWhenDeadBehaviorDerived.cpp (not merged yet)
+
+// tu-skeleton: 0x004B4E56 109B ?rva004B4E56@Rva004B4E56@@QAEEXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/Rva004B4E56Check.cpp (not merged yet)
+
 // tu-skeleton: 0x004B4F67 42B ?xfer@Rva004B4CDF@@MAEXPAVXfer@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Behavior/Rva004B4CDFXfer.cpp (not merged yet)
 
 // tu-skeleton: 0x004B5209 11B ?clear@?$vector@URva00B6CF1@@V?$allocator@URva00B6CF1@@@_STL@@@_STL@@QAEXXZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/SubObjectsUpgradeModuleDataDestructor.cpp (not merged yet)
@@ -499,10 +517,6 @@ void __cdecl rva004B5293(INI *ini, void *instance, void *store, const void *user
 // tu-skeleton: 0x004B5214 127B ??1SubObjectsUpgradeModuleData@@UAE@XZ -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/SubObjectsUpgradeModuleDataDestructor.cpp (not merged yet)
 
 // tu-skeleton: 0x004B52EB 34B ?buildFieldParse@SubObjectsUpgradeModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngine/Source/GameLogic/Object/Update/ModuleDataBuildFieldParseChained.cpp (not merged yet)
-
-// tu-skeleton: 0x0078EC73 13B $L310 -- matched in Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp (not merged yet)
-
-// tu-skeleton: 0x0078EC80 10B __ehhandler$?getModuleNameKey@SubObjectsUpgrade@@UBE?AW4NameKeyType@@XZ -- matched in Code/GameEngine/Source/Common/System/SubObjectsUpgradePoolKey.cpp (not merged yet)
 
 // tu-skeleton: 0x0078EC9C 8B Unwind@00b8ec9c -- matched in Code/GameEngine/Source/GameLogic/Object/Upgrade/SubObjectsUpgradeModuleDataDestructor.cpp (not merged yet)
 
