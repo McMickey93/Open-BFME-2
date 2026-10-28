@@ -41,13 +41,6 @@ public:
 	virtual ~W3DTreeDrawModuleDataBase() {}
 };
 
-class W3DTreeDrawModuleData : public W3DTreeDrawModuleDataBase {
-public:
-	unsigned int m_unused04;
-	AsciiString m_modelName;
-	virtual AsciiString rva000CED14(int dummy);
-};
-
 class NameKeyGenerator
 {
 public:
@@ -62,6 +55,97 @@ public:
 	W3DTreeDraw(Thing *thing, const ModuleData *moduleData);
 	virtual NameKeyType getModuleNameKey() const;
 };
+
+//
+// ?buildFieldParse@W3DTreeDrawModuleData@@SAXAAVMultiIniFieldParse@@@Z
+// retail 0x000CED03 (17 bytes: a single MultiIniFieldParse::add of the class
+// table at 0x00BCCFE8 with offset 0). The table runs ModelName, TextureName,
+// MoveOutwardTime, MoveInwardTime, MoveOutwardDistanceFactor, DarkeningFactor,
+// ToppleFX, BounceFX, StumpName, KillWhenFinishedToppling, DoTopple,
+// InitialVelocityPercent, InitialAccelPercent, BounceVelocityPercent,
+// MinimumToppleSpeed, SinkDistance, SinkTime, MorphTree, MorphTime, MorphFX,
+// TaintedTree, FadeRate, FadeTarget, FadeDistance (25 entries plus terminator,
+// class size 0x64). The two-phase ModuleData factory at retail 0x00064C0B
+// pushes this proc's address before calling INI::initFromINIMultiProc, which
+// names the class; the BFME1 W3DTreeDraw donor
+// (reference/open-bfme-1/.../Draw/W3DTreeDraw.cpp:90) registers the same
+// ModelName/TextureName/MoveOutwardTime/MoveInwardTime spine plus the topple
+// block, with BFME2 extending it by Morph/Fade/Tainted entries.
+
+class MultiIniFieldParse;
+
+class INI;
+
+typedef void (*INIFieldParseProc)(INI *ini, void *instance, void *store, const void *userData);
+
+struct FieldParse
+{
+	const char *token;
+	INIFieldParseProc parse;
+	const void *userData;
+	int offset;
+};
+
+class INI
+{
+public:
+	static void parseUnsignedInt(INI *ini, void *instance, void *store, const void *userData);
+	static void parseAsciiString(INI *ini, void *instance, void *store, const void *userData);
+	static void parseBool(INI *ini, void *instance, void *store, const void *userData);
+	static void parseDurationUnsignedInt(INI *ini, void *instance, void *store, const void *userData);
+	static void parseFXList(INI *ini, void *instance, void *store, const void *userData);
+	static void parsePercentToReal(INI *ini, void *instance, void *store, const void *userData);
+	static void parsePositiveNonZeroReal(INI *ini, void *instance, void *store, const void *userData);
+	static void parseReal(INI *ini, void *instance, void *store, const void *userData);
+};
+
+// Retail VA 0x00BCCFE8 (.rdata): 24 field records and a zero sentinel.
+extern const FieldParse g_00BCCFE8[] = {
+	{ "ModelName", &INI::parseAsciiString, 0, 0x8 },
+	{ "TextureName", &INI::parseAsciiString, 0, 0xC },
+	{ "MoveOutwardTime", &INI::parseDurationUnsignedInt, 0, 0x10 },
+	{ "MoveInwardTime", &INI::parseDurationUnsignedInt, 0, 0x14 },
+	{ "MoveOutwardDistanceFactor", &INI::parseReal, 0, 0x18 },
+	{ "DarkeningFactor", &INI::parseReal, 0, 0x1C },
+	{ "ToppleFX", &INI::parseFXList, 0, 0x20 },
+	{ "BounceFX", &INI::parseFXList, 0, 0x24 },
+	{ "StumpName", &INI::parseAsciiString, 0, 0x28 },
+	{ "KillWhenFinishedToppling", &INI::parseBool, 0, 0x3C },
+	{ "DoTopple", &INI::parseBool, 0, 0x3D },
+	{ "InitialVelocityPercent", &INI::parsePercentToReal, 0, 0x2C },
+	{ "InitialAccelPercent", &INI::parsePercentToReal, 0, 0x30 },
+	{ "BounceVelocityPercent", &INI::parsePercentToReal, 0, 0x34 },
+	{ "MinimumToppleSpeed", &INI::parsePositiveNonZeroReal, 0, 0x38 },
+	{ "SinkDistance", &INI::parsePositiveNonZeroReal, 0, 0x44 },
+	{ "SinkTime", &INI::parseDurationUnsignedInt, 0, 0x40 },
+	{ "MorphTree", &INI::parseAsciiString, 0, 0x48 },
+	{ "MorphTime", &INI::parseDurationUnsignedInt, 0, 0x4C },
+	{ "MorphFX", &INI::parseFXList, 0, 0x50 },
+	{ "TaintedTree", &INI::parseBool, 0, 0x54 },
+	{ "FadeRate", &INI::parseUnsignedInt, 0, 0x58 },
+	{ "FadeTarget", &INI::parseUnsignedInt, 0, 0x5C },
+	{ "FadeDistance", &INI::parseReal, 0, 0x60 },
+	{ 0, 0, 0, 0 }
+};
+
+class MultiIniFieldParse
+{
+public:
+	void add(const FieldParse *parse, unsigned int extraOffset);
+};
+
+class W3DTreeDrawModuleData : public W3DTreeDrawModuleDataBase {
+public:
+	unsigned int m_unused04;
+public:
+	AsciiString m_modelName;
+public:
+	virtual AsciiString rva000CED14(int dummy);
+public:
+	static void buildFieldParse(MultiIniFieldParse &parse);
+};
+
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDraw.cpp
 
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDraw.cpp
 
@@ -83,10 +167,6 @@ AsciiString W3DTreeDrawModuleData::rva000CED14(int dummy)
 	return m_modelName;
 }
 
-// tu-skeleton: 0x000CEB69 6B ?name@Rva000CEB69Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/W3DDrawNameGetters.cpp (not merged yet)
-
-// tu-skeleton: 0x000CEB6F 11B ??1Rva000CEB6F@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0049B47CDerived.cpp (not merged yet)
-
 // ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleNameKey.cpp
 
 NameKeyType W3DTreeDraw::getModuleNameKey() const
@@ -95,15 +175,27 @@ NameKeyType W3DTreeDraw::getModuleNameKey() const
 	return nk;
 }
 
+// tu-skeleton: 0x000CEB69 6B ?name@Rva000CEB69Named@@QBEPBDXZ -- matched in Code/GameEngine/Source/Common/W3DDrawNameGetters.cpp (not merged yet)
+
+// tu-skeleton: 0x000CEB6F 11B ??1Rva000CEB6F@@UAE@XZ -- matched in Code/GameEngine/Source/Common/Rva0049B47CDerived.cpp (not merged yet)
+
 // tu-skeleton: 0x000CEBBF 231B ??0W3DTreeDrawModuleData@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtorG7.cpp (not merged yet)
 
 // tu-skeleton: 0x000CECA6 93B ??1W3DTreeDrawModuleData@@UAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x000CED03 17B ?buildFieldParse@W3DTreeDrawModuleData@@SAXAAVMultiIniFieldParse@@@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataBuildFieldParse.cpp (not merged yet)
+// ---- from Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataBuildFieldParse.cpp
+
+void W3DTreeDrawModuleData::buildFieldParse(MultiIniFieldParse &parse)
+{
+	parse.add(g_00BCCFE8, 0);
+}
+
+// Callers elsewhere reach bodies in this unit through other spellings; retail's
+// call sites in their matched rows land on these addresses (same ABI). Bind them.
 
 // tu-skeleton: 0x000CED2F 28B ??_GW3DTreeDrawModuleData@@UAEPAXI@Z -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtor.cpp (not merged yet)
 
-// tu-skeleton: 0x00762670 8B uw_00762670 -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+// tu-skeleton: 0x00762670 8B $L1232 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtorG7.cpp (not merged yet)
 
 // tu-skeleton: 0x00762678 11B Unwind@00b62678 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtorG7.cpp (not merged yet)
 
@@ -115,7 +207,7 @@ NameKeyType W3DTreeDraw::getModuleNameKey() const
 
 // tu-skeleton: 0x007626A4 10B __ehhandler$??0W3DTreeDrawModuleData@@QAE@XZ -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtorG7.cpp (not merged yet)
 
-// tu-skeleton: 0x007626AE 8B uw_007626ae -- matched in Code/gen_small/uw_gen_013.cpp (not merged yet)
+// tu-skeleton: 0x007626AE 8B $L1226 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtor.cpp (not merged yet)
 
 // tu-skeleton: 0x007626B6 11B Unwind@00b626b6 -- matched in Code/GameEngineDevice/Source/W3DDevice/GameClient/Drawable/Draw/W3DTreeDrawModuleDataCtor.cpp (not merged yet)
 
