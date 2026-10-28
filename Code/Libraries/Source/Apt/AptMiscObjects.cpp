@@ -18,12 +18,7 @@
 	}
 #pragma intrinsic(__debugbreak)
 #include "AptObject/AptScriptFunction.h"
-
-// Stage-property lookup recovered as clean C++. Native6E9800..6E9A39 includes
-// the six-target table and101-entry case map. Original member spelling is unknown.
-// Recovered Math/LoadVars siblings supply dispatch purpose and declarations;
-// every case, assertion, callback ABI and literal below is independently retail.
-class EAStringC {void *data;public:const char *rva00620090()const;unsigned int rva006D3750()const;bool rva006D3510(const char *)const;};
+#pragma intrinsic(__debugbreak)
 
 class AptValue;
 
@@ -283,6 +278,46 @@ Rva008A4AC0Object* Rva008A4AC0First;
 	// VA 0x00e18190
 Rva008A4AC0Object* Rva008A4AC0Second;
 
+ 
+ 
+ 
+ 
+class EAStringC {
+private:
+	void *data;
+public:
+	const char *rva00620090()const;
+public:
+	unsigned int rva006D3750()const;
+public:
+	bool rva006D3510(const char *)const;
+public:
+	EAStringC();
+public:
+	EAStringC &clear();
+public:
+	bool rva006D3490(const char *text) const;
+public:
+	EAStringC &Assign(const EAStringC &other);
+public:
+	~EAStringC();
+};
+
+void __cdecl Rva006CC110Log(int level, const char *fmt, ...);
+
+extern void (__cdecl *g_bfmeAptAssertAtE17734)(const char *, const char *, int);
+
+class Rva006E9580
+{
+public:
+	bool rva006E9580(int, EAStringC *pName, BfmeAptValue006DCD20 *pValue);
+
+private:
+	char m_pad[0x20];
+	EAStringC m_message;
+	EAStringC m_name;
+};
+
 // tu-skeleton: 0x006E8FD0 309B ?sMethod_load@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
 
 // tu-skeleton: 0x006E9110 402B ?sMethod_send@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
@@ -293,7 +328,32 @@ Rva008A4AC0Object* Rva008A4AC0Second;
 
 // tu-skeleton: 0x006E9530 80B ?sMethod_getBytesLoaded@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
 
-// tu-skeleton: 0x006E9580 333B ?rva006E9580@Rva006E9580@@QAE_NHPAVEAStringC@@PAVBfmeAptValue006DCD20@@@Z -- matched in Code/GameEngine/Source/Common/Rva006E9580Vslot.cpp (not merged yet)
+// ---- from Code/GameEngine/Source/Common/Rva006E9580Vslot.cpp
+
+bool Rva006E9580::rva006E9580(int, EAStringC *pName, BfmeAptValue006DCD20 *pValue)
+{
+	if (pName->rva006D3490("message")) {
+		EAStringC tmp;
+		pValue->rva006DD6C0(&tmp);
+		m_message.Assign(tmp);
+		return true;
+	}
+	if (pName->rva006D3490("name")) {
+		EAStringC tmp;
+		pValue->rva006DD6C0(&tmp);
+		m_name.Assign(tmp);
+		return true;
+	}
+	if (pName->rva006D3510("message") || pName->rva006D3510("name")) {
+		Rva006CC110Log(3, "AptError: Incorrect case for '%s'.\n", pName->rva00620090());
+		g_bfmeAptAssertAtE17734("0", "C:\\projects\\bfme2patch103\\bfme2\\Code\\Libraries\\Source\\Apt\\AptMiscObjects.cpp", 0x518);
+		if (g_bfmeAptBreakOnAssertAtDDC01C)
+			__debugbreak();
+	}
+	return false;
+}
+
+// ---- from Code/Libraries/Source/Apt/AptMiscObjects.cpp
 
 // ---- from Code/Libraries/Source/Apt/AptMiscObjects.cpp
 
@@ -567,8 +627,6 @@ AptValue *AptMouse::objectMemberLookup(AptValue *const,const EAStringC *const na
  return 0;
 }
 
-// tu-skeleton: 0x006E9730 102B ?rva006e9730@@YAPAVAptValue@@PAV1@@Z -- matched in Code/Libraries/Source/Apt/Rva006e9730Cluster.cpp (not merged yet)
-
 // ---- from Code/GameEngine/Source/Common/Rva006E97A0Cluster.cpp
 
 	// retail RVA 0x00A1818C (.data, 4 bytes), defined here: nothing else owns it
@@ -591,6 +649,8 @@ void releasePair()
 	if (Rva008A4AC0Second) { Rva008A4AC0Second->release(); Rva008A4AC0Second = 0; }
 }
 
+// tu-skeleton: 0x006E9730 102B ?rva006e9730@@YAPAVAptValue@@PAV1@@Z -- matched in Code/Libraries/Source/Apt/Rva006e9730Cluster.cpp (not merged yet)
+
 // tu-skeleton: 0x006E9B20 35B ??_GRva006E8F30@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva006D6470Derived.cpp (not merged yet)
 
 // tu-skeleton: 0x006E9B50 35B ??_GRva006E9B50@@UAEPAXI@Z -- matched in Code/GameEngine/Source/Common/Rva006CBF40Deferred.cpp (not merged yet)
@@ -598,3 +658,41 @@ void releasePair()
 // tu-skeleton: 0x006EA700 1064B ?objectMemberLookup@AptLoadVars@@UBEPAVAptValue@@QAV2@QBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
 
 // tu-skeleton: 0x006EAB30 398B ?objectMemberLookup@AptError@@UBEPAVAptValue@@QAV2@QBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptFactoryConstructors_AptError.cpp (not merged yet)
+
+// tu-skeleton: 0x007A92F0 8B $L759 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A92F8 8B $L760 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9300 8B $L761 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9308 8B Unwind@00ba9308 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9310 10B __ehhandler$?sMethod_send@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9320 8B $L786 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9328 8B $L787 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9330 8B $L788 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9338 8B Unwind@00ba9338 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9340 10B __ehhandler$?sMethod_sendAndLoad@AptLoadVars@@SAPAVAptValue@@PAV2@H@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A94D0 15B Unwind@00ba94d0 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A94DF 15B Unwind@00ba94df -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A94EE 15B Unwind@00ba94ee -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A94FD 15B $L922 -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A950C 15B Unwind@00ba950c -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A951B 15B Unwind@00ba951b -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A952A 10B __ehhandler$?objectMemberLookup@AptLoadVars@@UBEPAVAptValue@@QAV2@QBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp (not merged yet)
+
+// tu-skeleton: 0x007A9540 15B $L2483 -- matched in Code/Libraries/Source/Apt/AptObject/AptFactoryConstructors_AptError.cpp (not merged yet)
+
+// tu-skeleton: 0x007A954F 10B __ehhandler$?objectMemberLookup@AptError@@UBEPAVAptValue@@QAV2@QBVEAStringC@@@Z -- matched in Code/Libraries/Source/Apt/AptObject/AptFactoryConstructors_AptError.cpp (not merged yet)

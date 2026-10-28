@@ -58920,7 +58920,7 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x006E92B0,546,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,U,N=Code/Libraries/Source/Apt/AptObject/AptLoadVars.cpp,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp
 0x006E94E0,80,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,U,N=Code/Libraries/Source/Apt/AptObject/AptLoadVars.cpp,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp
 0x006E9530,80,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,U,N=Code/Libraries/Source/Apt/AptObject/AptLoadVars.cpp,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp
-0x006E9580,333,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,F,F=Code/Libraries/Source/Apt/AptMiscObjects.cpp W=Code/Libraries/Source/Apt/AptMiscObjects.cpp,Code/GameEngine/Source/Common/Rva006E9580Vslot.cpp
+0x006E9580,333,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,F,F=Code/Libraries/Source/Apt/AptMiscObjects.cpp W=Code/Libraries/Source/Apt/AptMiscObjects.cpp,Code/Libraries/Source/Apt/AptMiscObjects.cpp
 0x006E96D0,95,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,U,N=Code/Libraries/Source/Apt/S4Dtor00587B30.cpp,Code/Libraries/Source/Apt/AptMiscObjects.cpp
 0x006E9730,102,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,C,C=0x006E96D0..0x006E97A0,Code/Libraries/Source/Apt/Rva006e9730Cluster.cpp
 0x006E97A0,26,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,C,C=0x006E96D0..0x006E97C0,Code/Libraries/Source/Apt/AptMiscObjects.cpp
@@ -91852,9 +91852,9 @@ rva,size,kind,tu,confidence,by,evidence,source
 0x007A9330,8,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E92B0@FuncInfo0x00962CFC,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp
 0x007A9338,8,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E92B0@FuncInfo0x00962CFC,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp
 0x007A9340,10,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E92B0@FuncInfo0x00962CFC,Code/Libraries/Source/Apt/AptObject/AptLoadVarsLookup.cpp
-0x007A9350,8,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E9580@FuncInfo0x00962D28,Code/GameEngine/Source/Common/Rva006E9580Vslot.cpp
-0x007A9358,8,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E9580@FuncInfo0x00962D28,Code/GameEngine/Source/Common/Rva006E9580Vslot.cpp
-0x007A9360,10,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E9580@FuncInfo0x00962D28,Code/GameEngine/Source/Common/Rva006E9580Vslot.cpp
+0x007A9350,8,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E9580@FuncInfo0x00962D28,Code/Libraries/Source/Apt/AptMiscObjects.cpp
+0x007A9358,8,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E9580@FuncInfo0x00962D28,Code/Libraries/Source/Apt/AptMiscObjects.cpp
+0x007A9360,10,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E9580@FuncInfo0x00962D28,Code/Libraries/Source/Apt/AptMiscObjects.cpp
 0x007A9370,8,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E96D0@FuncInfo0x00962D54,Code/Libraries/Source/Apt/AptMiscObjects.cpp
 0x007A9378,11,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E96D0@FuncInfo0x00962D54,Code/Libraries/Source/Apt/AptMiscObjects.cpp
 0x007A9383,10,code,Code/Libraries/Source/Apt/AptMiscObjects.cpp,approved,P,P=0x006E96D0@FuncInfo0x00962D54,Code/Libraries/Source/Apt/AptMiscObjects.cpp
