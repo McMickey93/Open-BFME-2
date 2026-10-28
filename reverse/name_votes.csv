@@ -11900,3 +11900,7 @@ Code/GameEngine/Source/GameClient/Rva0055D3F5Xfer.cpp|member|Rva0055D3F5|m_24,ed
 Code/GameEngine/Source/Common/ThreatBreakdown_postInit.cpp|param|ThreatBreakdown::postInit|arg,cab526c668881508f7342e39,drz-k2,drz-k2-n8b-10,w-ded32b2e2c5e,2026-10-28
 Code/GameEngineDevice/Source/W3DDevice/GameClient/FlatHeightMapUpdateCenter.cpp|param|Rva000E3B41::rva000E3CE1|arg,70956ccf4b57dd2df0a692f3,drz-k2,drz-k2-n8b-20,w-ded32b2e2c5e,2026-10-28
 Code/GameEngineDevice/Source/W3DDevice/GameClient/FlatHeightMapUpdateCenter.cpp|param|Rva00082C98Host::rva00082C98|n,cf5a23e514a0a67dfe55c0fe,drz-k2,drz-k2-n8b-20,w-ded32b2e2c5e,2026-10-28
+Code/GameEngine/Source/GameLogic/Object/Update/Rva004B0FEBCheck.cpp|local|EmotionTrackerUpdate::TauntPointFilter::Allow|flags108,26689816ab83338eff112782,drz-k3,drz-k3-n8c-3,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameClient/Rva003F7737NewNode.cpp|function|0x003F7737|rva003F7737,9554b747a126f0cfdbc662a1,drz-k3,drz-k3-n8c-6,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameClient/Rva003F7737NewNode.cpp|local|Rva003F7737::rva003F7737|n,a570546f4c82f36b055e834d,drz-k3,drz-k3-n8c-6,w-077d7aeb666b,2026-10-28
+Code/GameEngine/Source/GameClient/MapPreviewTextureAsset.cpp|member|MapPreviewTextureAssetFactory|m_name18,ddebe6805b7846499d74502c,drz-k3,drz-k3-n8c-7,w-077d7aeb666b,2026-10-28
