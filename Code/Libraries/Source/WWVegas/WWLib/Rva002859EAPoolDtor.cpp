@@ -9,7 +9,12 @@
 // BlockListHead, delete each block); an earlier attempt compiled the
 // CameraShakeSystemClass instantiation and lost only on the delete binding.
 // Retail frees straight through free, so the owner stays address-named.
-extern "C" void __cdecl free(void *p);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva002859EABlock
 {

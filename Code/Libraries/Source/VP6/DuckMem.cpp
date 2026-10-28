@@ -15,7 +15,11 @@ public:
 
 #define TheDuckAllocator (*(DuckAllocator **)&G00DFDA54)
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // RVA 0x001B6380..0x001B638A: install the allocator object.
 extern "C" void __cdecl duck_mem_set_allocator(DuckAllocator *allocator)

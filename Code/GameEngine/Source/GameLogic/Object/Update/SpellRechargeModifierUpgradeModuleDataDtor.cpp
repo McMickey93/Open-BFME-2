@@ -16,6 +16,12 @@
 // frees) plus EmotionTrackerUpdateModuleDataDtor (custom EntryVec with
 // null-checked free carrying the unwind state).
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Common/Snapshot.h"
 
 template <typename T>
@@ -27,8 +33,6 @@ public:
 private:
 	T *m_data;
 };
-
-extern "C" void free(void *p);
 
 struct Vec118
 {

@@ -26,10 +26,15 @@
 //   (0x00298C76) and cleared.
 // Names past the rowed callees are structural, not recovered.
 #define COORD3D_INLINE_NOTHROW_ESTIMATE
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Coord3DInline.h"
 #include "GameLogic/BfmeStoredAICommandView.h"
 
-extern "C" void free(void *);
 enum AICommandType { AICMD_NO_COMMAND = -1 };
 enum CommandSourceType { CMD_FROM_AI = 2 };
 struct AICommandParms : public Rva00351570Src

@@ -2,7 +2,11 @@
 // ??1Rva004962EA@@QAE@XZ 0x004962EA 30B vector teardown via destroy range and free no EH
 // Evidence: calls 0x00496292 destroy and _free at 0x00030830; members at +0 and +4; caller at 0x00496442.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct BfmeStringRecord00426A5B {
 	~BfmeStringRecord00426A5B();

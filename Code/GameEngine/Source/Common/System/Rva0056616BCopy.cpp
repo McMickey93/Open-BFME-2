@@ -2,6 +2,13 @@
 // ??0Rva0056616B@@QAE@ABV0@@Z @0x0052D555 333B
 // Copy ctor for Rva0056616B (vtable 0x008689D0) copying 16 members in order via rowed StringBase 0x365F0 vector copy ctors and custom copies then byte at +0xB4.
 // Evidence: unlock lane; callees all rowed per packet (StringBase FXList Pod40 Pod88 Rva0052BDE6 Rva0052BE33 AsciiString Pod32 Rva004E32F2 Rva0052CD81 Rva0052C867 Rva0052C8AB E16 Rva005668E9 Rva0052BEF0); prev vector copy family next deleting dtor share layout.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 
 class FXList;
@@ -22,7 +29,6 @@ class Rva0052BEF0;
 // The native cleanup at 0x0079727B calls the existing 63B owner at
 // 0x0052CCC4. Its verified three-pointer vector destruction supplies the
 // storage cleanup; this does not establish the original element type.
-extern "C" void __cdecl free(void *);
 template <class T> struct RvaCopyVectorStorage {
  T *m_start; T *m_finish; T *m_end;
  ~RvaCopyVectorStorage() { if (m_start) free(m_start); }

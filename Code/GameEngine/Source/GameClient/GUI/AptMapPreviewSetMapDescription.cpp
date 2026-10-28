@@ -3,6 +3,12 @@
 // Descriptive bfme names do not claim original source spellings. The metadata
 // getter calls the cached map.str text loader, then returns its first line.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "unicode_string.h"
 
 
@@ -11,7 +17,6 @@ class GameWindow
 public:
 	int winEnable(bool enable);
 };
-extern "C" void __cdecl free(void *p);
 void GadgetListBoxReset(GameWindow *listbox);
 int GadgetListBoxAddEntryText(GameWindow *listbox, UnicodeString text,
     int color, int row, int column, bool overwrite);

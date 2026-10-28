@@ -6,6 +6,13 @@
 // The predecessor ends at 0x004E4E76; the destructor at 0x004E5086 calls
 // this entry directly. The following 5-byte tail thunk ends at Ghidra's
 // 0x004E4EA3 boundary.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 #include "../../../Libraries/Include/Lib/Coord3D.h"
 
@@ -80,7 +87,6 @@ public:
     ~ResourceOwnedEntryList() { rva004E5542(); }
     ResourceOwnedEntryNode *head;
 };
-extern "C" void __cdecl free(void *);
 
 // Retail 4E54ED/49B: destroy each node+8 entry, free the node, reset head.
 void ResourceOwnedEntryList::rva004E54ED()

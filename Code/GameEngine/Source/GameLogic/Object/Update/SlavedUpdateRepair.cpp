@@ -67,6 +67,12 @@
 // aiGoProne). They run on the +0x20 subobject, behind UpdateModule's 0x20
 // bytes (interface vptrs at +0x0C and +0x10).
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Common/BfmeAudioEventPrefix136.h"
 
 typedef float Real;
@@ -607,7 +613,6 @@ private:
 	unsigned char m_pad[0x44];
 	unsigned int m_flags; // +0x44
 };
-extern "C" void free(void *block);
 enum AICommandType
 {
 	AICMD_MOVE_TO_POSITION = 0

@@ -9,7 +9,12 @@
 // +0x08 member through its rowed destructor 0x00385371. The gap at +0x580
 // holds no destructor. Member names are placeholders; the five buffer
 // destructors in retail are inline, the unwind funclets call them.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class PSPlayerAllStats
 {

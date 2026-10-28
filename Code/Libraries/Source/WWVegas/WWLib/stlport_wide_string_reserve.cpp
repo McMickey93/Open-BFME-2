@@ -31,7 +31,11 @@
 // alias; bind that spelling to the matched raw-byte allocator provider.
 #pragma comment(linker, "/alternatename:?allocate@?$allocator@G@_STL@@SAPAGIPBX@Z=?allocate@?$allocator@D@_STL@@SAPADIPBX@Z")
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

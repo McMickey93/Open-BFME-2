@@ -4,7 +4,13 @@
 // asset-registry and three display-string groups. The owned base111B
 // destructor and target unwind prove base and allocation-member lifetimes.
 // Views claim only the fields accessed here; original allocation type unknown.
-extern "C" void __cdecl free(void*);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 void __cdecl Rva0012641FClear();void __cdecl Rva001296F0Destroy();
 bool __cdecl shutdownRenderDevice();void __cdecl DX8_Assert();
 class W3DShaderManager {public:static void shutdown();};

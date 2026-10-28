@@ -12,7 +12,12 @@
 // OilSpillUpdateDtor (void* plus free plus base) with HeroMode precedent
 // (novtable suppresses derived vtable store retail lacks). Donor: BFME1
 // GiveUpgradeUpdateModuleDataDestructor.cpp virtual dtor.
-extern "C" void free(void *p);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva0044ECCE
 {

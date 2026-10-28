@@ -16,9 +16,13 @@
 // type is unproven (the ctor TU's BfmeE16 stand-in has no destructor), so
 // the vector keeps a stand-in name; only its layout and calls are claimed.
 
-#include "Common/Snapshot.h"
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
-extern "C" void __cdecl free(void *);
+#include "Common/Snapshot.h"
 
 void destroyRange(void *first, void *last);
 

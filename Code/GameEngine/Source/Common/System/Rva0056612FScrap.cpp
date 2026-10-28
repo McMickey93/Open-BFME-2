@@ -2,7 +2,13 @@
 //
 // ?rva0056612F@Rva0056612FVec@@QAEXXZ retail 0x0056612F 30B
 // Evidence: unlock lane; callee Rva0052CEDDClear 0x0052CEDD plus _free 0x00030830; caller 0x0056644E; prev ScrapStorage and next 0x0056614D same shape same flags; members start finish end.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 class Rva004E1A04
 {
 public:

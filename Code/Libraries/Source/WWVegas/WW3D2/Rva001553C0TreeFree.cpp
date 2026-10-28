@@ -2,7 +2,11 @@
 // ?rva001553C0@Rva001553C0@@QAEXPAURva001553C0_Node@@@Z at 0x001553C0 51B: recursive free of sibling/child tree via free.
 // Evidence: self-call 0x001553C0, free 0x00030830 rowed, callers 0x00156640 and 0x00156FA0 reset list sentinel.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva001553C0_Node
 {

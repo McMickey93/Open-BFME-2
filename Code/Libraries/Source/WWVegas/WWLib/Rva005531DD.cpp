@@ -1,6 +1,12 @@
 // cl: /MD
 // ?rva005531DD@Rva005531DD@@QAEXPAX@Z @0x005531DD 45B: Tree erase helper recurses +0xC loops +8 frees via free. Evidence: unlock lane callee of 0x005532D6 plus self recursion plus free 0x00030830 rowed.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva005531DDNode
 {
 	char pad00[8];

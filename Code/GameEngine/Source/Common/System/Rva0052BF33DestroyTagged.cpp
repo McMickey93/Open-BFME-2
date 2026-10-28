@@ -4,7 +4,13 @@
 // virtual dtor (scalar-deleting slot with zero flag); caller 0x005A6EDA is the
 // tag-dispatch DestroyRange. Same shape as Rva0052BF81_DestroyTagged in
 // LivingWorldRegionConnectionHelpers.cpp but stride 8. Next is that TU.
-extern "C" void free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 namespace _STL
 {
 struct __false_type

@@ -25,7 +25,11 @@
 //     the spill sinks into the arm that actually needs its address for max,
 //     exactly where retail has it.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

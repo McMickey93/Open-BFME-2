@@ -5,7 +5,12 @@
 // ??1Rva0022304A@@QAE@XZ and rowed _free 0x00030830. Caller at 0x00224184
 // sets ecx (thiscall) and pushes the node pointer; incoming this is unused.
 // Unblocks 0x00224163.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva0022304A
 {

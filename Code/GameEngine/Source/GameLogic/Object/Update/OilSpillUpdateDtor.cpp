@@ -1,7 +1,12 @@
 // cl: /O1 /GX /DNDEBUG /MD
 // ??1OilSpillUpdate@@UAE@XZ @0x0048C2A3 79B
 // Dtor restores three vptrs (+0 +0xC +0x10) then frees buffer at +0x2C via rowed _free and calls rowed base ??1FireWeaponUpdate at 0x0048BD11. Buffer is the vector<int> payload at +0x2C proven by ctor TU; modeled as void* since trivial-int destruction only frees. Model otherwise follows OilSpillUpdateCtor.
-extern "C" void free(void *p);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Thing;
 class ModuleData;

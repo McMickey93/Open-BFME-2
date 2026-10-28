@@ -1,7 +1,12 @@
 // cl: /EHs /O1 /MD /D_STLP_USE_STATIC_LIB
 // stlport
 // ?Rva001F949DConvert@@YA?AV?$basic_string@DV?$char_traits@D@_STL@@V?$allocator@D@2@@_STL@@ABV?$basic_string@GV?$char_traits@G@_STL@@V?$allocator@G@2@@2@D@Z 0x001F949D 135B evidence: rowed wide get_allocator 0x001627F0 narrow reserve-ctor 0x00027150 narrow append(const string&) 0x0002B250 narrow push_back 0x0000C330 narrow copy-ctor 0x00009170 free 0x00030830 caller writeINI 0x001FB449
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

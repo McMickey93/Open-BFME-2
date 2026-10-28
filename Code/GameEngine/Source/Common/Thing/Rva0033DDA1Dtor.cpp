@@ -7,7 +7,12 @@
 // resolves to its rowed body or symbols.csv pin; only the PtrHolder tails
 // inline (free 0x00030830). Member order and sizes mirror the banked 0.99
 // layout (+0x364 is the Rva0033BD50 holder, not a CD02Vec).
-extern "C" void free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 #include "ascii_string.h"
 

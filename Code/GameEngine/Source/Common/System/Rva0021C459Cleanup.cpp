@@ -22,7 +22,13 @@ private:
 	Node0021C459 *m_header;
 	int m_count;
 };
-extern "C" void free(void *ptr);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 void Rva0021C459::rva0021C459(Node0021C459 *node)
 {
 	if (node == 0)

@@ -6,7 +6,11 @@
 // that shape with call displacements and the EH handler record masked; the clear
 // each calls names its owner, whose tree is not otherwise recovered.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct RvaTreeFamilyHeader;
 struct RvaTreeFamilyHolder

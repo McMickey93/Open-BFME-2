@@ -3,7 +3,12 @@
 // Destroys member at +4 via pin 0x0022630F then frees through game free
 // 0x00030830 if non-null. Caller 0x0022CC88 in 0x0022CC67. Evidence:
 // rowed free plus pin-only member dtor plus ret 4 stdcall shape.
-extern "C" void free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva00229487
 {

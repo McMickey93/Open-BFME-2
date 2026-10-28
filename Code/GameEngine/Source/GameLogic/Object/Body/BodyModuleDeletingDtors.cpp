@@ -15,7 +15,12 @@
 // ??_GActiveBody@@UAEPAXI@Z @0x004BF9D1 28B: slot 0 of vtable 0x00C5B038; calls ??1 at 0x004BF951.
 // Owner evidence (audited 2026-09-26): retail slot 4 -> RVA 0x004BF848 uses class-name string "ActiveBody".
 // ?releaseBuffer@?$StringBase@D@@AAEXXZ is rowed in StringBaseWideReleaseBuffer.cpp
-extern "C" void free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 template <typename T>
 class StringBase

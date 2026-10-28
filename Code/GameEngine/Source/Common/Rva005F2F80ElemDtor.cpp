@@ -7,10 +7,15 @@
 // ?clear@Rva000AD6F4@@QAEXXZ 0x000AD6F4, the vector wrapper +0x10 (rowed
 // 0x0052413E) and AsciiString +0xC (releaseBuffer 0x00036410); then the
 // base's inline dtor restores C6EE20. Names address-derived.
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 #include "unicode_string.h"
-
-extern "C" void __cdecl free(void *block);
 
 class Rva0052413E
 {

@@ -6,7 +6,13 @@
 // honest address-derived names.
 struct Rva002115C5;
 void __cdecl Rva00212AD6Get(Rva002115C5 *first, Rva002115C5 *last);
-extern "C" void __cdecl free(void *p);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva0021397C
 {
 	Rva002115C5 *m_first;

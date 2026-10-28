@@ -5,7 +5,12 @@
 // free node, loop on +0x8 next. Evidence: chain lane (calls landed 0x0023D377);
 // same value dtor plus free as landed Rva00383F9CErase; callers 0x0023FBED
 // self plus 0x00240C6E; ghidra size 53 vs 72 trust ret plus int3.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // Rva004393D6 is a reference-only view here: the only fact this body needs is
 // the destructor address, so the view claims no members.

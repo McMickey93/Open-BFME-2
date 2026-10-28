@@ -3,7 +3,12 @@
 // Free-node for 12-byte node (4 next + 8 pair<const AsciiString TreeHintRef002BF0D6>): destroys pair at +4 via rowed 0x002BF0D6 then frees node via _free 0x00030830 with null guard.
 // Evidence: unlock lane plus callers 0x002BF7DF 0x002BFAC9 set ecx plus node arg plus same shape as rowed ?rva00223591@Rva00223591@@QAEXPAX@Z 0x00223591 and ?rva00223898@Rva00223898@@QAEXPAX@Z 0x00223898.
 // Private AsciiString kept not shared header: header inlines AsciiString teardown and the pair call stops resolving to rowed 0x002BF0D6.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 #include "../../../../reference/shims/bfme2_ascii/ascii_string.h"
 

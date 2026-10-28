@@ -13,7 +13,11 @@
 // because the real append name already rows a different 241B body at 0x00013160
 // and pin_consistency forbids same name different bodies; follow retail.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

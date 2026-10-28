@@ -17,6 +17,12 @@
 // name calls SetText (0x000AA7B2) else the Apt window manager adds the
 // display string; then the rowed 0x000A97A9 update runs on the params.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 #include "unicode_string.h"
 #include "../../../../../Libraries/Include/Lib/Coord2D.h"
@@ -25,8 +31,6 @@
 typedef bool Bool;
 typedef float Real;
 typedef int Int;
-
-extern "C" void __cdecl free(void *block);
 
 class GameFont;
 class Rva00222CCB;

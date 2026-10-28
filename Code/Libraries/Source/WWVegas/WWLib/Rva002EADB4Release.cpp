@@ -2,7 +2,12 @@
 // ?rva002EADB4@Rva002EADB4@@QAEXPAU_Rva002EADB4Node@@@Z retail 0x002EADB4 45 bytes.
 // Recursive release depth-first via +0xC chain via +0x8 free via rowed 0x00030830.
 // Evidence: self-call with [esi+0xC] plus caller 0x002EE9B7 passes [eax+0x4] plus sibling Rva002EB416Release shape.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct _Rva002EADB4Node {
     void *_m_link;

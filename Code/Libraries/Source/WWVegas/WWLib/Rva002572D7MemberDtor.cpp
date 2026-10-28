@@ -10,7 +10,11 @@ protected:
 	void *m_head00;
 };
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva002572D7Member : public Rva00256F84
 {

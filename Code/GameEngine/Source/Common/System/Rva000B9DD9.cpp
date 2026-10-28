@@ -2,13 +2,17 @@
 // ?rva000B9DD9@Rva000B9DD9@@QAEXABVAsciiString@@@Z 0x000B9DD9 233B
 // Evidence: leaf slot 19 offset 0x4C of 6 W3D Draw vtables Horde Quadruped Supply Truck Tank Sail; prev own 0x000B9C8C; Shadow::ShadowTypeInfo ctor (0x00079514) set dtor (0x000793FA) rows; StringBase isEmpty set rows; TheProjectedShadowManager vcall slot 0xC; m_5c vcall slot 8.
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "ascii_string.h"
 
 class AudioManager0029E159;
 class ProjectedShadowManager;
 extern ProjectedShadowManager *TheProjectedShadowManager;	// retail singleton at VA 0x00DEC2D4
-
-extern "C" void __cdecl free(void *);
 
 struct Rva000B9DD9Node
 {

@@ -24,7 +24,13 @@
 // ??_GXferSave@@UAEPAXI@Z @0x0060D24D 28B: slot 0 of vtable 0x00C7B010; calls ??1 at 0x0060D0B3.
 // Owner evidence (audited 2026-09-26): BFME1 reconstructed donor slots 6/38 at RVAs 0x0060CA26/0x0060C935 implement save-side block finalization and stream writes; ctor/dtor RVAs 0x0060D1F7/0x0060D0B3 share this primary vptr; class spelling remains donor-derived.
 class Rva00BBB910Base { public: virtual ~Rva00BBB910Base() {} };
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct BfmePositionVector {
     int *m_begin;
     int *m_end;

@@ -1,13 +1,18 @@
 // cl: /ICode/Libraries/Include/Lib /O1 /G7 /arch:SSE /DNDEBUG /MD /EHs
 // AIStates.cpp's evacuation helper 0x003532BF (WorldBuilder 0x00DFA1A0 names it ShipEvacuate::Evacuate), with
 // visible copies of the three command helpers retail's unit defines in front of it (/EHs keeps their state store).
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "Coord3D.h"
 
 typedef bool Bool;
 typedef float Real;
 typedef int Int;
-
-extern "C" void __cdecl free(void *p);
 
 enum AICommandType
 {

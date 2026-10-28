@@ -94,7 +94,11 @@ public:
 	virtual bool rva0045BF06(Object *victim) = 0;
 };
 
-extern "C" void free(void *ptr);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct BezierProjectileVec
 {

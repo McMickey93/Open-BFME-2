@@ -12,7 +12,13 @@ class Rva0029B63A {
 public:
 	void rva0029B63A(Rva0029B63ANode *p);
 };
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 void Rva0029B63A::rva0029B63A(Rva0029B63ANode *p)
 {
 	if (p == 0)

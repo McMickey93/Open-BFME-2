@@ -9,7 +9,11 @@
 // destructor 0x002046BB (pinned). Which trees they are is not recovered, so
 // owners are named after their erase's address.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct Rva002046BBValue
 {

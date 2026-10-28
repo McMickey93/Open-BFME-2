@@ -1,5 +1,12 @@
 // cl: /EHsc /MD /Ireference/shims/bfme2_ascii
 //
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "unicode_string.h"
 // ?rva006007A5@Rva006007A5@@QAEXPAX@Z @0x006007A5 45B. Recursive list/tree
 // free helper: if node null return else loop over siblings at +8 recursing
@@ -7,8 +14,6 @@
 // 0x00030830. Same recipe as AnimationSoundTree::rva004CA167 without the
 // payload dtor. Evidence: self-call at 0x006007B7; callers at 0x00600839
 // (clear checking count +4) and self; ret 4.
-
-extern "C" void free(void *);
 
 class Rva006007A5
 {

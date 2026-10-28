@@ -16,7 +16,12 @@
 // 0x00351BD0 and free its coordinate buffer inline on the way out, the recipe
 // of the rowed AICommandInterface commands (AICommandInterfaceAttackCommands.cpp,
 // Rva00336B23AICommand.cpp). The commands keep address names.
-extern "C" void __cdecl free(void *p);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 #include "../../../../../Libraries/Include/Lib/Coord3D.h"
 

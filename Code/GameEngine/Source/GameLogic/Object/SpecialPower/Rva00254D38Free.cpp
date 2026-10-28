@@ -4,7 +4,13 @@
 // at +0xC with same this then free the node via rowed _free 0x00030830 and
 // advance to +0x8. Self-call at 0x00254D4A plus caller 0x00255CB6.
 // __thiscall method (this in ecx saved to ebx). Neighbour flags /O1 /DNDEBUG.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 struct Rva00254D38Node
 {
 	char m_pad[8];

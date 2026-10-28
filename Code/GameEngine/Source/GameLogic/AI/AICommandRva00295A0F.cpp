@@ -7,6 +7,12 @@
 typedef int Int;
 typedef float Real;
 
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 #include "../../../../Libraries/Include/Lib/Coord3D.h"
 
 class Object;
@@ -25,8 +31,6 @@ enum CommandSourceType
 	CMD_FROM_SCRIPT = 1,
 	CMD_FROM_AI = 2
 };
-
-extern "C" void free(void *block);
 
 class Rva003427DD
 {

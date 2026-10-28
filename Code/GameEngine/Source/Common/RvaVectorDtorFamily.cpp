@@ -9,7 +9,11 @@
 // element types can share an ICF-folded range destructor, so the vector itself
 // is not identified and each keeps its own address.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 namespace _STL
 {

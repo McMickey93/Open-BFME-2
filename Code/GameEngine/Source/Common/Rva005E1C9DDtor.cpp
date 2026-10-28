@@ -1,6 +1,12 @@
 // cl: /DNDEBUG /MD /GX
 // ??1Rva005E1C9D@@QAE@XZ @ 0x005E1C9D (63B). Vector-like dtor over TreeHintRef range destroys via rowed 0x005F97BC then base frees via 0x00030830 with null guard. Evidence: callers 0x005E1D23 plus chain from 0x005E1D07 prev next same dir pattern follows RvaVectorDtorFamily 63B dtors.
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 namespace _STL
 {
 template <class I> void __cdecl _Destroy(I first, I last);

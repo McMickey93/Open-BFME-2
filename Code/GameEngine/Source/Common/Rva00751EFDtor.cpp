@@ -15,7 +15,11 @@ public:
 	virtual ~Rva00074626() {}
 };
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 // The record's teardown frees its first pointer: the 14-byte body retail
 // ICF-folds with vector<int>'s destructor at 0x0007FAB3.

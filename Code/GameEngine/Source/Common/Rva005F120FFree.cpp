@@ -7,7 +7,13 @@
 // cl: /MD
 struct Rva005F0647;
 void __cdecl Rva005EF5EFClear(Rva005F0647 *first, Rva005F0647 *last);
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
+
 class Rva005F120F
 {
 public:

@@ -8,7 +8,11 @@
 // destructor and free (0x00030830). The value destructor gives the node's value
 // type; the tree itself is not recovered, so owners are named after their erase.
 
-extern "C" void __cdecl free(void *block);
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class AsciiString;
 class AudioEventRTS;

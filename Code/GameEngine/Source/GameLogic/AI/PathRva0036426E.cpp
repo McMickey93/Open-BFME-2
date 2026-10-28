@@ -5,7 +5,12 @@
 // then free via rowed _free walking +8. Evidence: self-call plus _free row
 // 0x00030830 and callers 0x00364A37/0x00364A60; Path neighbours prove
 // /O1 /arch:SSE flags; LINK BONUS via 0x00364521 chain.
-extern "C" void __cdecl free(void *);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 struct FreeNode
 {

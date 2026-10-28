@@ -5,7 +5,12 @@
 // but no SEH frame. Caller 0x00220EBA. No vtable.
 class LocomotorStore;
 void __cdecl Rva00220AEBDestroy(LocomotorStore *first, LocomotorStore *last);
-extern "C" void __cdecl free(void *block);
+
+// Retail calls free directly (the game allocator), not through the CRT
+// import: read <stdlib.h> without dllimport.
+#define _CRTIMP
+#include <stdlib.h>
+#undef _CRTIMP
 
 class Rva00220C56
 {
