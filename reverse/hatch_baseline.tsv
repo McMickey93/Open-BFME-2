@@ -3389,7 +3389,6 @@ alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineGetUnitN
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngineRva00357AF8.cpp	?g_str009E0878@@3V?$StringBase@D@@A	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_DllHandleExceptionCopies.cpp	_vtbl_00BD3B54	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptEngine_DllHandleLoadFailure.cpp	_vtbl_00BD3B54	1
-alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptGroupSkipCheck.cpp	?skipGroup@Rva003B485AHolder@@QAE_NPAX@Z	1
 alternatename	Code/GameEngine/Source/GameLogic/ScriptEngine/ScriptListElementDestroy.cpp	??1ScriptListElementName@@QAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AIBaseBuilder/BaseTemplateLibrary.cpp	??1Rva0022BD9ASubsystem@@UAE@XZ	1
 alternatename	Code/GameEngine/Source/GameLogic/SkirmishAI/AIStatCollector/AIStatCollector.cpp	??0?$hash_map@HHU?$hash@H@_STL@@U?$equal_to@H@2@V?$allocator@U?$pair@$$CBHH@_STL@@@2@@_STL@@QAE@XZ	1
@@ -7628,7 +7627,6 @@ pin	reverse/symbols.csv	0x003B410E	1
 pin	reverse/symbols.csv	0x003B464F	1
 pin	reverse/symbols.csv	0x003B469A	1
 pin	reverse/symbols.csv	0x003B46C7	1
-pin	reverse/symbols.csv	0x003B485A	1
 pin	reverse/symbols.csv	0x003B55F9	2
 pin	reverse/symbols.csv	0x003B5603	1
 pin	reverse/symbols.csv	0x003B57E5	2

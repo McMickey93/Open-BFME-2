@@ -6530,7 +6530,6 @@ name,address,notes
 ?showmanyc@?$basic_streambuf@GV?$char_traits@G@_STL@@@_STL@@MAEHXZ,0x0065CE90,STLport 4.5.3 wide streambuf base default - folded onto sync by identical COMDAT folding - both are the three-byte xor eax eax / ret and the wide streambuf vtable holds this address in slots 4 and 5
 ?shroud@Object@@IAEXXZ,0x0029D200,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
 ?shutdownAll@SubsystemInterfaceList@@QAEXXZ,0x00523F8C,donor_sweep: call target read from retail at a unique placement of a BFME 1 donor body compiled /O1
-?skipGroup@Rva003B485AHolder@@QAE_NPAX@Z,0x003B485A,bool spelling of the matched ?skipGroup@Rva003B485AHolder@@QAEHPAX@Z body: the byte-true WriteGroupDataChunk call site at 0x003B6975+0x18 tests al; the body's xor/inc eax tail fits either return type
 ?spin@LockClass@FastCriticalSectionClass@@CIXPAI@Z,0x0006577F,ObjectPoolClass Allocate_Object_Memory spinlock acquire; address read from the REL32 displacement at 0x00610680+0x24 in a masked-recompile probe of ObjectPoolAllocateObjectMemory.cpp
 ?splice@?$list@FV?$allocator@F@_STL@@@_STL@@QAEXU?$_List_iterator@FU?$_Nonconst_traits@F@_STL@@@2@AAV12@0@Z,0x004CEA94,REL32 displacement at the byte-true list<short>::sort call site 0x0052611D; ICF-folded with the int instantiation
 ?splice@?$list@UcrateCreationEntry@@V?$allocator@UcrateCreationEntry@@@_STL@@@_STL@@QAEXU?$_List_iterator@UcrateCreationEntry@@U?$_Nonconst_traits@UcrateCreationEntry@@@_STL@@@2@AAV12@0@Z,0x004CEA94

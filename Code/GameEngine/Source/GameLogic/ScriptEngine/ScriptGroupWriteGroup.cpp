@@ -12,12 +12,11 @@
 // entries, AsciiString at +8) through matched writeAsciiString, actives at
 // real+0x0C/+0x0D through matched writeByte, subgroup at real+4 via self
 // recursion, scripts at real+8 via the 0x3B5994 pin, input walks via +0x00,
-// open/close via matched rows. The skip call reads AL (alias QAE_N pin);
-// the skip body row is the Int twin at the same address.
+// open/close via matched rows. The skip call reads AL, so truncate the rowed
+// Int result to Byte, as the recursive clear caller at 0x003B4982 does.
 
 typedef int Int;
 typedef unsigned char Byte;
-typedef bool Bool;
 
 class AsciiString;
 class Script;
@@ -67,7 +66,7 @@ public:
 class Rva003B485AHolder
 {
 public:
-	Bool skipGroup(void *group);
+	Int skipGroup(void *group);
 };
 
 class Rva003B40A1Holder
@@ -84,7 +83,7 @@ void WriteGroupDataChunk(DataChunkOutput &chunkWriter, ScriptList *scriptList, S
 	ScriptList *list = scriptList;
 	ScriptGroupInput *input;
 	for (input = (ScriptGroupInput *)(void *)scriptGroup; input; input = (ScriptGroupInput *)(void *)input->m_next) {
-		if (((Rva003B485AHolder *)list)->skipGroup(input))
+		if ((Byte)((Rva003B485AHolder *)list)->skipGroup(input))
 			continue;
 		ScriptGroupReal *real = (ScriptGroupReal *)(void *)((Rva003B40A1Holder *)list)->captureGroup(input);
 		chunkWriter.openDataChunk("ScriptGroup", 3);
