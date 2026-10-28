@@ -26,10 +26,11 @@ public:
 class BfmeI1052
 {
 public:
-	int m_00;
-	int m_04;
-	int m_08;
-	int m_0c;
+	int bfmeFind1052(char *n, int f);
+	int m_00; // +0x00
+	int m_04; // +0x04
+	int m_08; // +0x08
+	int m_0c; // +0x0C
 };
 
 struct BfmeRecord00800C80
@@ -45,9 +46,9 @@ class BfmeH1052
 public:
 	void bfmeDo1052(int a, BfmeI1052 *p, int r);
 	void forward00800C80(BfmeRecord00800C80 *record);
-
-	char m_pad[0x10];
-	void *m_10;
+	void bfmeGo1052H(BfmeI1052 *p);
+	char m_pad00[0x10];
+	void *m_10; // +0x10
 };
 
 void BfmeH1052::bfmeDo1052(int a, BfmeI1052 *p, int r)

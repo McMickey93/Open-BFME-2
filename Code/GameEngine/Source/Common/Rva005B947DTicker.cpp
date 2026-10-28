@@ -10,15 +10,17 @@ class Rva005B9378
 {
 public:
 	void rva005B9378(int index, const UnicodeString &value);
+	void rva005B942A(int index, int value);
 };
 
 class AptOnlineHome
 {
 public:
 	void rva005B947D(int index, int a, int b);
+	virtual void rva005B9501();
+	char m_pad04[0x60];
 private:
-	char m_pad[0x64];
-	UnicodeString m_64;	// +0x64
+	UnicodeString m_64; // +0x64 +0x64
 };
 
 void AptOnlineHome::rva005B947D(int index, int a, int b)

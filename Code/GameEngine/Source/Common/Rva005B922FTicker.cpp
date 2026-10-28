@@ -40,7 +40,11 @@ extern int g_009C075C;
 class AptOnlineHome
 {
 public:
+	void rva005B947D(int index, int a, int b);
 	virtual void rva005B9501();
+	char m_pad04[0x60];
+private:
+	UnicodeString m_64; // +0x64 +0x64
 };
 
 void AptOnlineHome::rva005B9501()
