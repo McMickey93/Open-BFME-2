@@ -1,0 +1,58 @@
+{
+  "fork": "McMickey93/Open-BFME-2",
+  "control_branch": "codex/20261028-round4-filesize-sdk-finish-7e542652-control",
+  "result_branch": "codex/20261028-round4-filesize-sdk-finish-7e542652-verified",
+  "checkpoint_prefix": "codex/20261028-round4-filesize-sdk-finish-7e542652-checkpoint",
+  "completion_branch": "codex/20261028-round4-filesize-sdk-finish-7e542652-completed",
+  "release_branch": "codex/20261028-round4-filesize-sdk-finish-7e542652-release",
+  "branch": "refs/heads/codex/20261028-round4-filesize-sdk-finish-7e542652-source",
+  "base": "7e5426520afca6b8da482a6de6cb8586ea863d73",
+  "transport_expected": "7e5426520afca6b8da482a6de6cb8586ea863d73",
+  "agents_blob": "a2358475408be34cc5d0c16e28565982f494e8a6",
+  "native_preparation": true,
+  "source": "Code/stlport/FileSizeHelper.cpp",
+  "source_before": "2c64bce0dbbc2746a04d867814fb3aadf8ff2f20",
+  "source_blob": "27b5e219e22cf3f81740d7c26a813428f58c523f",
+  "verify_sources": [
+    "Code/stlport/FileSizeHelper.cpp"
+  ],
+  "claim_refs": [
+    "refs/heads/claims/0x0001D240",
+    "refs/heads/claims/file/0b4a7f866d179718"
+  ],
+  "claim_ref": "refs/heads/claims/0x0001D240",
+  "claim_owner": "github:McMickey93:bfme2:round4-20261028",
+  "claim_lease": "deaf68660cc641a6aa1a4d2e24790fe2",
+  "started": 1793183734,
+  "old_reference": "0424131c818fba6641613ef826222ecf30845025",
+  "witness_sources": [
+    "Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerRva0035A005.cpp",
+    "Code/GameEngine/Source/GameLogic/System/TerrainResourceManagerClaimRva00359E93.cpp"
+  ],
+  "reviewed_blobs": {
+    "reference/open-bfme-1": "0424131c818fba6641613ef826222ecf30845025",
+    "reverse/attempt_support/bfme1-reference-0424131c-20261028-codex3/README.md": "bd0ca10e481c2793114cf070bb7d0701a0caf035",
+    "reverse/attempt_support/bfme1-reference-0424131c-20261028-codex3/input-receipt.json": "c11b46c7dce7e3274dbff10f2ca91ba1c0ac70c1",
+    "reverse/attempt_support/bfme1-reference-0424131c-20261028-codex3/old-full-gate.log": "6779a1b020fbc54438c91842ae06b5e677f0f9c0",
+    "reverse/attempt_support/bfme1-reference-0424131c-20261028-codex3/new-full-gate.log": "ece0ce8f8fe8890a196cb473907ff95f07d7d0d2",
+    "reverse/attempt_support/bfme1-reference-0424131c-20261028-codex3/donor-scan.log": "69156f96b6db8e008215e7bd6fbb9086e88011f7"
+  },
+  "files": [
+    "Code/stlport/FileSizeHelper.cpp",
+    "reverse/ms_header_queue.tsv",
+    "reverse/re_attempts.log",
+    "reverse/attempt_support/20261028-filesize-helper-windows-sdk.md"
+  ],
+  "evidence": "reverse/attempt_support/20261028-filesize-helper-windows-sdk.md",
+  "commit_message": "Use the Windows SDK in STLport's file-size helper\n\nReplace the two local API declarations and private LARGE_INTEGER stand-in with windows.h and LARGE_INTEGER. Use WIN32_LEAN_AND_MEAN and retire the unused STLport include profile so the SDK adds no automatic library dependencies. Preserve the existing 50-byte body, imports, runtime COFF sections and linker directives; retire only this file's measured Microsoft-header queue row.\n\nClaim-Lease: 0x0001D240=deaf68660cc641a6aa1a4d2e24790fe2\nClaim-Lease: file/0b4a7f866d179718=deaf68660cc641a6aa1a4d2e24790fe2\nAgent-Authored: OpenAI Codex\n",
+  "foreign_claim_refs": [
+    "refs/claims/0x0001D240",
+    "refs/claims/file/0b4a7f866d179718",
+    "refs/heads/claims/class/_FileSizeLargeInteger",
+    "refs/claims/class/_FileSizeLargeInteger"
+  ],
+  "reference_proof": "reverse/attempt_support/bfme1-reference-0424131c-20261028-codex3",
+  "reference_proof_commit": "67587ea6ec644ca847cf1cf77cd6f3bcba6401a6",
+  "reference_stamp_lower_bound": "2026-10-28T11:20:47Z",
+  "stage_prefix": "codex/20261028-round4-filesize-sdk-finish-7e542652-stage"
+}
