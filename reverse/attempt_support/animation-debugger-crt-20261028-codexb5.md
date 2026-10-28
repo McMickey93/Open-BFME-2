@@ -52,3 +52,10 @@ No new matched bytes, census-linked bytes, image ownership or full fprintf
 identity clearance is claimed. The remaining game/CRT name collision is separate
 work; carry this scope into the next normal maintainer census if the outgoing
 batch audit cannot verify external consumers.
+
+The outgoing audit of `origin/master..e9280d5551` exits 2, INCONCLUSIVE:
+index `14dc3d2467` predates base `3459c2524c`, and the changed debugger object
+lacks a current strict receipt. External consumer selection is unverified by
+that audit. Carry this source scope into the next normal census; the paired
+ordinary preview and identical external COMDAT comparison remain the bounded
+evidence, with no census confirmation claimed.
